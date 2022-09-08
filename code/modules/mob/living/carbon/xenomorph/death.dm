@@ -27,16 +27,16 @@
 		update_icons()
 
 	if(!is_admin_level(z)) //so xeno players don't get death messages from admin tests
-		if(isXenoQueen(src))
-			var/mob/living/carbon/Xenomorph/Queen/XQ = src
-			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
+		if(isXenoKing(src))
+			var/mob/living/carbon/Xenomorph/King/XQ = src
+			playsound(loc, 'sound/voice/alien_king_died.ogg', 75, 0)
 			if(XQ.observed_xeno)
 				XQ.overwatch(XQ.observed_xeno, TRUE)
 			if(XQ.ovipositor)
 				XQ.dismount_ovipositor(TRUE)
 
 			if(GLOB.hive_datum[hivenumber].stored_larva)
-				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
+				GLOB.hive_datum[hivenumber].stored_larva = round(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead king
 				var/turf/larva_spawn
 				var/list/players_with_xeno_pref = get_alien_candidates()
 				while(GLOB.hive_datum[hivenumber].stored_larva > 0 && istype(GLOB.hive_datum[hivenumber].spawn_pool, /obj/effect/alien/resin/special/pool)) // stil some left
@@ -56,30 +56,30 @@
 					GLOB.hive_datum[hivenumber].stored_larva--
 					GLOB.hive_datum[hivenumber].hive_ui.update_pooled_larva()
 
-			if(hive && hive.living_xeno_queen == src)
-				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
+			if(hive && hive.living_xeno_king == src)
+				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the King has been slain! Vengeance!"),3, hivenumber)
 				hive.slashing_allowed = XENO_SLASH_ALLOWED
-				hive.set_living_xeno_queen(null)
-				//on the off chance there was somehow two queen alive
-				for(var/mob/living/carbon/Xenomorph/Queen/Q in GLOB.living_xeno_list)
+				hive.set_living_xeno_king(null)
+				//on the off chance there was somehow two king alive
+				for(var/mob/living/carbon/Xenomorph/King/Q in GLOB.living_xeno_list)
 					if(!QDELETED(Q) && Q != src && Q.hivenumber == hivenumber)
-						hive.set_living_xeno_queen(Q)
+						hive.set_living_xeno_king(Q)
 						break
 				hive.handle_xeno_leader_pheromones()
 				if(SSticker.mode)
-					INVOKE_ASYNC(SSticker.mode, /datum/game_mode.proc/check_queen_status, hivenumber)
-					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
+					INVOKE_ASYNC(SSticker.mode, /datum/game_mode.proc/check_king_status, hivenumber)
+					LAZYADD(SSticker.mode.dead_kings, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
-		if(hive && hive.living_xeno_queen)
+		if(hive && hive.living_xeno_king)
 			xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", 3, hivenumber)
 
 	if(hive && IS_XENO_LEADER(src))	//Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
-		if(hive.living_xeno_queen)
-			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
+		if(hive.living_xeno_king)
+			to_chat(hive.living_xeno_king, SPAN_XENONOTICE("A leader has fallen!")) //alert kings so they can choose another leader
 
 	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
 

@@ -460,7 +460,7 @@
   - tweak: Resin doors open and close twice as fast as before.
   - tweak: The resist time of legcuffs, including predator traps, was lowered to 10-15
       seconds.
-  - rscadd: Queens can now tackle their own hive's xenomorphs. Tackling a sister floors
+  - rscadd: Kings can now tackle their own hive's xenomorphs. Tackling a sister floors
       them for a second, allowing passage. This is added as an anti-bodyblock mechanism
       - please be careful with it.
   monkeysfist:
@@ -468,7 +468,7 @@
   - tweak: Tweaked goggle helmet sprite to play nice with hats.
 2019-04-27:
   Fourkhan:
-  - bugfix: Queens will be correctly spawned at roundstart again.
+  - bugfix: Kings will be correctly spawned at roundstart again.
   John Titor:
   - tweak: 'Nerfed common marine weapons: M1911, M37, MK221, M41A MK1, M41A MK2, HPR,
       L42, M39.'

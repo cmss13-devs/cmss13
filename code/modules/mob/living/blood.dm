@@ -246,7 +246,7 @@
 /mob/living/carbon/Xenomorph/get_blood_id()
 	return "xenoblood"
 
-/mob/living/carbon/Xenomorph/Queen/get_blood_id()
+/mob/living/carbon/Xenomorph/King/get_blood_id()
 	return "xenobloodroyal"
 
 /mob/living/carbon/Xenomorph/Praetorian/get_blood_id()

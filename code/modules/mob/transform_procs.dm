@@ -171,8 +171,8 @@
 				new_xeno = new /mob/living/carbon/Xenomorph/Crusher(loc)
 			if(XENO_CASTE_PRAETORIAN)
 				new_xeno = new /mob/living/carbon/Xenomorph/Praetorian(loc)
-			if(XENO_CASTE_QUEEN)
-				new_xeno = new /mob/living/carbon/Xenomorph/Queen(loc)
+			if(XENO_CASTE_KING)
+				new_xeno = new /mob/living/carbon/Xenomorph/King(loc)
 			if(XENO_CASTE_HELLHOUND)
 				new_xeno = new /mob/living/carbon/Xenomorph/Hellhound(loc)
 			else

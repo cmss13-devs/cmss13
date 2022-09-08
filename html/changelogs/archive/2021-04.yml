@@ -318,7 +318,7 @@
   - tweak: Moved railgun to T2 tech.
   Segrain:
   - bugfix: OTs can now open the windoor at their front desk.
-  - rscadd: Added an instantly mature subtype of queen. Admin usage only.
+  - rscadd: Added an instantly mature subtype of king. Admin usage only.
 2021-04-14:
   Carlarc:
   - tweak: Changed autoinjector cooldowm from being click-delay based to self-cooldown
@@ -435,7 +435,7 @@
   - maptweak: Significantly revamped the main temple in LV along its nightmare inserts.
 2021-04-23:
   Carlarc:
-  - rscadd: Added a new XRT, Feral Xenomorphs. Normal XRT but it's a feral queenless
+  - rscadd: Added a new XRT, Feral Xenomorphs. Normal XRT but it's a feral kingless
       hive hostile to everything. Can be called in hijack.
   - tweak: Halved xeno and in general death timer.
   ChainsawMullet:
@@ -478,7 +478,7 @@
   Segrain:
   - bugfix: Clusterbangs are no longer all cluster and no bang.
   - rscadd: Added spawnable primed clusterbangs. Rulebreakers beware.
-  - bugfix: Queen's blockade should mess turfs after deletion somewhat less now.
+  - bugfix: King's blockade should mess turfs after deletion somewhat less now.
   Vanagandr:
   - rscadd: Refactors xenomorph attack click delay behaviour. Xeno attacks now count
       as a full-delay XENO_ATTACK_ACTION, 0.4 second XENO_NONCOMBAT_ACTION, zero delay

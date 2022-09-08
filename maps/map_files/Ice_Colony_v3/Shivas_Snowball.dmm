@@ -764,8 +764,8 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/queen.dmi';
-	icon_state = "Normal Queen Knocked Down";
+	icon = 'icons/mob/hostiles/king.dmi';
+	icon_state = "Normal King Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
 	pixel_x = -15;
@@ -1396,7 +1396,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "afM" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -2289,7 +2289,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "akj" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/shiva{
 	icon_state = "wredfull"
 	},
@@ -7386,7 +7386,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "bgC" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "bhB" = (
@@ -10512,7 +10512,7 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_pawn,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_pawn,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_pawn,
-/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_queen,
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_king,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_rook,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_rook,
 /turf/open/floor/shiva{
@@ -11860,7 +11860,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "gtp" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "gtx" = (
@@ -13007,7 +13007,7 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn,
-/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_queen,
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_king,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_rook,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_rook,
 /turf/open/auto_turf/snow/layer1,
@@ -16261,7 +16261,7 @@
 /area/shiva/interior/colony/research_hab)
 "kTI" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_queen{
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_king{
 	pixel_y = 7
 	},
 /turf/open/floor/shiva{
@@ -24810,7 +24810,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "udJ" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "multi_tiles"

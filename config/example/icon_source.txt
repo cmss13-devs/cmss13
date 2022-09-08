@@ -6,8 +6,8 @@ alien_crusher icons/custom/mob/xenos/crusher.dmi
 alien_lurker icons/custom/mob/xenos/lurker.dmi
 alien_praetorian icons/custom/mob/xenos/praetorian.dmi
 alien_predalien icons/custom/mob/xenos/predalien.dmi
-alien_queen_standing icons/custom/mob/xenos/queen.dmi
-alien_queen_ovipositor icons/custom/mob/xenos/Ovipositor.dmi
+alien_king_standing icons/custom/mob/xenos/king.dmi
+alien_king_ovipositor icons/custom/mob/xenos/Ovipositor.dmi
 alien_sentinel icons/custom/mob/xenos/sentinel.dmi
 alien_spitter icons/custom/mob/xenos/spitter.dmi
 alien_gib_48x48 icons/custom/mob/xenos_old/xenomorph_48x48.dmi

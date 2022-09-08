@@ -18,11 +18,11 @@
 	var/last_dock_attempt_time = 0
 	var/alerts_allowed = 1 //NOT A BOOLEAN. Number of alerts allowed on this particular shuttle, so only once
 	var/locked = 0
-	var/queen_locked = 0 //If the Queen locked the ship by interacting with its onboard console. If this happens, Marines lose control of the ship permanently
+	var/king_locked = 0 //If the King locked the ship by interacting with its onboard console. If this happens, Marines lose control of the ship permanently
 	var/last_locked = 0 //world.time value to determine if it can be contested
-	var/door_override = 0 //similar to queen_locked, but only affects doors
+	var/door_override = 0 //similar to king_locked, but only affects doors
 	var/last_door_override = 0 //world.time value to determine if it can be contested
-	
+
 	var/in_transit_time_left = 0
 
 /datum/shuttle/ferry/short_jump(var/area/origin,var/area/destination)
@@ -154,7 +154,7 @@
 	return
 
 /datum/shuttle/ferry/proc/can_launch()
-	if(moving_status != SHUTTLE_IDLE || locked || in_use) 
+	if(moving_status != SHUTTLE_IDLE || locked || in_use)
 		return FALSE
 	return TRUE
 

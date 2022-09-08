@@ -112,7 +112,7 @@
   - refactor: Refactored a whole lot of Yautja code, some things may be wonky.
   Git-Nivrak:
   - rscadd: A dead banished xeno will now be unable to rejoin that hive until 30 minutes
-      have passed, The xeno is readmitted or the Queen dies.
+      have passed, The xeno is readmitted or the King dies.
   Jeser:
   - rscadd: Added transport without Firing Ports Weapons interior.
   - bugfix: Replaced floor with void in some parts of APC interiors to prevent weeds
@@ -333,7 +333,7 @@
   - bugfix: fixed being able to telepathically toggle the mode of laser designators.
   stanalbatross:
   - bugfix: bodybag boxes will no longer runtime on init
-  - bugfix: Ravagers will no longer count holograms such as the queen eye as enemies
+  - bugfix: Ravagers will no longer count holograms such as the king eye as enemies
       for the purposes of empowering.
 2022-06-27:
   Geeves:

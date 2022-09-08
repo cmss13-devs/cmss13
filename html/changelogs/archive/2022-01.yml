@@ -75,7 +75,7 @@
   - rscadd: Added the ability to look at a flare/laze's camera via the CAS weapon
       control menu.
   Segrain:
-  - bugfix: Hive leaders once again properly broadcast queen's pheromones.
+  - bugfix: Hive leaders once again properly broadcast king's pheromones.
   Stan_Albatross:
   - bugfix: The SL indicator in the \"dark\" mode HUD has been moved down so it will
       no longer overlap with status effect icons

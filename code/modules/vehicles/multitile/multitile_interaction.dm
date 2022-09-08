@@ -255,8 +255,8 @@
 
 	var/damage_mult = 1
 	//Ravs, as designated vehicles fighters do a heckin double damage
-	//Queen, being Queen, does x2 damage to discourage blocking her
-	if(X.caste == XENO_CASTE_RAVAGER || X.caste == XENO_CASTE_QUEEN)
+	//King, being King, does x2 damage to discourage blocking her
+	if(X.caste == XENO_CASTE_RAVAGER || X.caste == XENO_CASTE_KING)
 		damage_mult = 2
 
 	//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier

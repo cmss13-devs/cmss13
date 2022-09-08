@@ -313,7 +313,7 @@
 	else
 		return
 
-/obj/effect/alien/resin/marker/proc/hud_set_queen_overwatch()
+/obj/effect/alien/resin/marker/proc/hud_set_king_overwatch()
 	//the stupidest way around feeding effects in as mobs to overwatch() lmao
 	return
 

@@ -329,8 +329,8 @@
   - bugfix: Fixed M42A sniper rifle ammo being unable to hit targets near screen border
       when zoomed.
   - imageadd: Added several stages for big ammo and magazines boxes.
-  - bugfix: Queen Mother has finally revealed the secret of healing burns to her children.
-      Both Queen ovipositor and drone healing will properly heal burn damage now.
+  - bugfix: King Mother has finally revealed the secret of healing burns to her children.
+      Both King ovipositor and drone healing will properly heal burn damage now.
   - rscadd: It became much easier to notice a drone's attempt to heal you.
   - tweak: Made message describing tunnel controls, that appears when you enter tunnel,
       almost impossible to miss. (Did you know, that you can exit tunnel by Alt+Clicking

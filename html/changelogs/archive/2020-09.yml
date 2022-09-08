@@ -307,7 +307,7 @@
   Triiodine:
   - rscadd: Added a new map to rotation, Kutjevo Refinery.
   - bugfix: Fixed shutters with 0 density on initialization from blocking vision.
-  - imageadd: landmark specific icons for hive, queen, and monkey spawns.
+  - imageadd: landmark specific icons for hive, king, and monkey spawns.
   Vampmare:
   - bugfix: Fixed humans being unrevivable.
   - bugfix: Fixed zoom not cancelling on movement.
@@ -381,8 +381,8 @@
   Waltermeldron:
   - bugfix: (Hive Wars) Fixed one hive getting all the xenos because they got their
       spawnpool up first.
-  - tweak: (Hive Wars) Added a 5 minute Queen timer. Xenos can no longer instantly
-      get a Queen after one dies.
+  - tweak: (Hive Wars) Added a 5 minute King timer. Xenos can no longer instantly
+      get a King after one dies.
   - rscadd: Xenomorph aging is now determined by your playtime as a caste.
   - tweak: Backend changes on how your xeno playtime is calculated.
   - bugfix: Fixed msay, hivemind and other various channels not working on goonchat.
@@ -466,7 +466,7 @@
   - bugfix: People getting aimed at no longer get deleted. Thanks to spookydonut for
       catching it.
   Waltermeldron:
-  - bugfix: Queens will now properly age when they spawn in
+  - bugfix: Kings will now properly age when they spawn in
 2020-09-29:
   Carlarc:
   - tweak: Facepaints can now be selected as starting items in the custom loadout.
@@ -500,10 +500,10 @@
   - tweak: Updated StonedMC
 2020-09-30:
   Carlarc:
-  - rscadd: 'Being healed by a warden praetorian or queen now jitters the healed xenomorph
+  - rscadd: 'Being healed by a warden praetorian or king now jitters the healed xenomorph
       and shows a blue, bold message in chat. '
   - rscadd: 'Jitter duration is dependant on the kind of healing: Shielding is 1 second,
-      rejuvenating is 2 seconds, and warden or queen healing is 3 seconds of jitter,
+      rejuvenating is 2 seconds, and warden or king healing is 3 seconds of jitter,
       pay attention marines!'
   Vampmare:
   - bugfix: 'Fixed colourless blood. '

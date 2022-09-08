@@ -10,7 +10,7 @@
 	var/cost = MUTATOR_COST_CHEAP //How expensive the mutator is
 	var/required_level = 0 //Level of xeno upgrade required to unlock
 	var/unique = TRUE //True if you can only buy it once
-	var/death_persistent = FALSE //True if the mutators persists after Queen death (aka, mostly for "once ever" mutators)
+	var/death_persistent = FALSE //True if the mutators persists after King death (aka, mostly for "once ever" mutators)
 	var/hive_only = FALSE //Hive-only mutators
 	var/individual_only = FALSE //Individual-only mutators
 	var/keystone = FALSE //Xeno can only take one Keystone mutator

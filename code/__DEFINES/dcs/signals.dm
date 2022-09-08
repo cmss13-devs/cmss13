@@ -255,10 +255,10 @@
 /// from /mob/living/carbon/Xenomorph/movement_delay()
 #define COMSIG_XENO_MOVEMENT_DELAY "xeno_movement_delay"
 
-/// From /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor
-#define COMSIG_QUEEN_MOUNT_OVIPOSITOR "queen_mount_ovipositor"
-/// From /mob/living/carbon/Xenomorph/Queen/proc/dismount_ovipositor(): (instant_dismount)
-#define COMSIG_QUEEN_DISMOUNT_OVIPOSITOR "queen_dismount_ovipositor"
+/// From /mob/living/carbon/Xenomorph/King/proc/mount_ovipositor
+#define COMSIG_KING_MOUNT_OVIPOSITOR "king_mount_ovipositor"
+/// From /mob/living/carbon/Xenomorph/King/proc/dismount_ovipositor(): (instant_dismount)
+#define COMSIG_KING_DISMOUNT_OVIPOSITOR "king_dismount_ovipositor"
 
 /// From /turf/closed/wall/resin/attack_alien(): (mob/living/carbon/Xenomorph/X)
 #define COMSIG_WALL_RESIN_XENO_ATTACK "wall_resin_attack_alien"

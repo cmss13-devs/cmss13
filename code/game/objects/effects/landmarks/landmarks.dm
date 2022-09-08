@@ -142,16 +142,16 @@
 	GLOB.thunderdome_observer -= src
 	return ..()
 
-/obj/effect/landmark/queen_spawn
-	name = "queen spawn"
-	icon_state = "queen_spawn"
+/obj/effect/landmark/king_spawn
+	name = "king spawn"
+	icon_state = "king_spawn"
 
-/obj/effect/landmark/queen_spawn/Initialize(mapload, ...)
+/obj/effect/landmark/king_spawn/Initialize(mapload, ...)
 	. = ..()
-	GLOB.queen_spawns += src
+	GLOB.king_spawns += src
 
-/obj/effect/landmark/queen_spawn/Destroy()
-	GLOB.queen_spawns -= src
+/obj/effect/landmark/king_spawn/Destroy()
+	GLOB.king_spawns -= src
 	return ..()
 
 /obj/effect/landmark/xeno_spawn

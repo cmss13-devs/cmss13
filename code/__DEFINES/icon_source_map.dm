@@ -9,7 +9,7 @@ GLOBAL_LIST_INIT(icon_source_files, list(
 	"icons/mob/hostiles/hivelord.dmi" = 'icons/mob/hostiles/hivelord.dmi',
 	"icons/mob/hostiles/lurker.dmi" = 'icons/mob/hostiles/lurker.dmi',
 	"icons/mob/hostiles/praetorian.dmi" = 'icons/mob/hostiles/praetorian.dmi',
-	"icons/mob/hostiles/queen.dmi" = 'icons/mob/hostiles/queen.dmi',
+	"icons/mob/hostiles/king.dmi" = 'icons/mob/hostiles/king.dmi',
 	"icons/mob/hostiles/Ovipositor.dmi" = 'icons/mob/hostiles/Ovipositor.dmi',
 	"icons/mob/hostiles/ravager.dmi" = 'icons/mob/hostiles/ravager.dmi',
 	"icons/mob/hostiles/runner.dmi" = 'icons/mob/hostiles/runner.dmi',

@@ -651,7 +651,7 @@
 
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
-//Exception is Queen and shuttles, because plot power
+//Exception is King and shuttles, because plot power
 /obj/structure/machinery/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(unslashable || health <= 0)
 		to_chat(M, SPAN_WARNING("You stare at [src] cluelessly."))
@@ -710,7 +710,7 @@
 
 
 /datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/Xenomorph/M, shuttle_tag)
-	if(!queen_locked) //we have not hijacked it yet
+	if(!king_locked) //we have not hijacked it yet
 		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
 			to_chat(M, SPAN_XENODANGER("You can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 			return
@@ -729,7 +729,7 @@
 		if(almayer_orbital_cannon)
 			almayer_orbital_cannon.is_disabled = TRUE
 			addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
-		queen_locked = 1
+		king_locked = 1
 
 /datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/Xenomorph/M, shuttle_tag)
 	if(!door_override)
@@ -904,7 +904,7 @@
 		return XENO_ATTACK_ACTION
 
 /obj/structure/girder/attack_alien(mob/living/carbon/Xenomorph/M)
-	if((M.caste && M.caste.tier < 2 && !isXenoQueen(M)) || unacidable)
+	if((M.caste && M.caste.tier < 2 && !isXenoKing(M)) || unacidable)
 		to_chat(M, SPAN_WARNING("Your claws aren't sharp enough to damage [src]."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)

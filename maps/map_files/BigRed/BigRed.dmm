@@ -30860,7 +30860,7 @@
 /area/bigredv2/caves)
 "eEm" = (
 /obj/effect/landmark/crap_item,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -34836,7 +34836,7 @@
 /area/bigredv2/caves/mining)
 "mOZ" = (
 /obj/effect/landmark/crap_item,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -36027,7 +36027,7 @@
 "pbK" = (
 /obj/effect/landmark/hunter_secondary,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -39790,7 +39790,7 @@
 /area/bigredv2/caves/eta/research)
 "wfC" = (
 /obj/effect/landmark/xeno_hive_spawn,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"

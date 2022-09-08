@@ -23,7 +23,7 @@
 	is_intelligent = TRUE
 	tier = 1
 	attack_delay = -2
-	can_be_queen_healed = FALSE
+	can_be_king_healed = FALSE
 
 	behavior_delegate_type = /datum/behavior_delegate/predalien_base
 
@@ -77,7 +77,7 @@
 <span class='role_body'>|______________________|</span>
 <span class='role_header'>You are a predator-alien hybrid!</span>
 <span class='role_body'>You are a very powerful xenomorph creature that was born of a Yautja warrior body.
-You are stronger, faster, and smarter than a regular xenomorph, but you must still listen to the queen.
+You are stronger, faster, and smarter than a regular xenomorph, but you must still listen to the king.
 You have a degree of freedom to where you can hunt and claim the heads of the hive's enemies, so check your verbs.
 Your health meter will not regenerate normally, so kill and die for the hive!</span>
 <span class='role_body'>|______________________|</span>

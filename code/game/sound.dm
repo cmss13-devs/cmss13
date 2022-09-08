@@ -24,7 +24,7 @@
 //Proc used to play a sound effect. Avoid using this proc for non-IC sounds, as there are others
 //source: self-explanatory.
 //soundin: the .ogg to use.
-//vol: the initial volume of the sound, 0 is no sound at all, 75 is loud queen screech.
+//vol: the initial volume of the sound, 0 is no sound at all, 75 is loud king screech.
 //freq: the frequency of the sound. Setting it to 1 will assign it a random frequency
 //sound_range: the maximum theoretical range (in tiles) of the sound, by default is equal to the volume.
 //vol_cat: the category of this sound, used in client volume. There are 3 volume categories: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes) and VOLUME_ADM (Admin sounds and some other stuff)
@@ -275,8 +275,8 @@
 				S = pick('sound/voice/alien_roar1.ogg','sound/voice/alien_roar2.ogg','sound/voice/alien_roar3.ogg','sound/voice/alien_roar4.ogg','sound/voice/alien_roar5.ogg','sound/voice/alien_roar6.ogg')
 			if("alien_roar_larva")
 				S = pick('sound/voice/alien_roar_larva1.ogg','sound/voice/alien_roar_larva2.ogg')
-			if("queen")
-				S = pick('sound/voice/alien_queen_command.ogg','sound/voice/alien_queen_command2.ogg','sound/voice/alien_queen_command3.ogg')
+			if("king")
+				S = pick('sound/voice/alien_king_command.ogg','sound/voice/alien_king_command2.ogg','sound/voice/alien_king_command3.ogg')
 			// Human
 			if("male_scream")
 				S = pick('sound/voice/human_male_scream_1.ogg','sound/voice/human_male_scream_2.ogg','sound/voice/human_male_scream_3.ogg','sound/voice/human_male_scream_4.ogg',5;'sound/voice/human_male_scream_5.ogg',5;'sound/voice/human_jackson_scream.ogg',5;'sound/voice/human_ack_scream.ogg')

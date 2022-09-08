@@ -98,8 +98,8 @@
 	if(!message || stat || !hive)
 		return
 
-	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions)
-		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+	if(!hive.living_xeno_king && !SSticker?.mode?.hardcore && !hive.allow_no_king_actions)
+		to_chat(src, SPAN_WARNING("There is no King. You are alone."))
 		return
 
 	log_hivemind("[key_name(src)] : [message]")
@@ -123,13 +123,13 @@
 			if(istype(S,/mob/dead/observer))
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"
-					if(isXenoQueen(src))
-						var/mob/hologram/queen/queen_eye = client?.eye
-						if(istype(queen_eye))
-							track += " (<a href='byond://?src=\ref[S];track=\ref[queen_eye]'>E</a>)"
-						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
+					if(isXenoKing(src))
+						var/mob/hologram/king/king_eye = client?.eye
+						if(istype(king_eye))
+							track += " (<a href='byond://?src=\ref[S];track=\ref[king_eye]'>E</a>)"
+						ghostrend = SPAN_XENOKING("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
 					else if(hive.leading_cult_sl == src)
-						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
+						ghostrend = SPAN_XENOKING("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
 					else if(istype(X) && IS_XENO_LEADER(X))
 						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [src.name][track] hisses, <span class='normal'>'[message]'</span>")
 					else
@@ -140,8 +140,8 @@
 				if(isXeno(src) && isXeno(S))
 					overwatch_insert = " (<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
 
-				if(isXenoQueen(src) || hive.leading_cult_sl == src)
-					rendered = SPAN_XENOQUEEN("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+				if(isXenoKing(src) || hive.leading_cult_sl == src)
+					rendered = SPAN_XENOKING("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else if(istype(X) && IS_XENO_LEADER(X))
 					rendered = SPAN_XENOLEADER("Hivemind, Leader [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else

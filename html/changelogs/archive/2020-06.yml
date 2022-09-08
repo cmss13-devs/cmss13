@@ -299,7 +299,7 @@
       than a drone's door. (12052)
   - bugfix: Fixed the CMP's ID color. It's now silver as with all commissioned officers'.
       (11879)
-  - bugfix: Fixed the Queen not being able to build nests. (12277)
+  - bugfix: Fixed the King not being able to build nests. (12277)
   - tweak: The type of the two roundstart OB warheads are now random. You can start
       with 2 HEs, 2 incediaries, 2 clusters or any of their variations. The number
       of warheads did not change. (12101)

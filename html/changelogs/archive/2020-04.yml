@@ -48,10 +48,10 @@
   - tweak: Flamer Sentry now has IFF on the bullet.
   - tweak: Reduced Planted Flag range from 7x7 to 5x5.
   - tweak: Added a roundstart mortar kit with some shells to REQ.
-  - tweak: 'Hive core can always be built by the Queen. Building a new one will destroy
+  - tweak: 'Hive core can always be built by the King. Building a new one will destroy
       the old one. '
   - tweak: Spawn Pool is now the new mechanic for burrowed larva. Burrowed larva spawn
-      in periods from observers or when people join xenos from the lobby. Queen does
+      in periods from observers or when people join xenos from the lobby. King does
       not need to be in ovi anymore. Giving it bursted bodies will just increase stored
       larva by 1. Renamed to pooled larva.
   - tweak: Collectors and resource nodes have been removed for now. Building structures
@@ -140,7 +140,7 @@
       less upgrade), marines (more marines, more upgrade) and time (more time, more
       upgrade). To top it off, it is all finally related to number of Larva. If you
       have no larva, this bonus is not applied. The more larva you have, the proportionally
-      more upgrade speed you will have. These effects are active only when queen is
+      more upgrade speed you will have. These effects are active only when king is
       in ovipositor or first few minutes of the round.
   - tweak: Example, 100 marines, 10 xenos and 30 larva. Boost is 6.5x for the first
       ten minutes then it goes to 13x if NO XENOS JOIN after 40 minutes. If xenos
@@ -210,7 +210,7 @@
   - tweak: Spitter acid DOT takes much less time to resist out of.
   - tweak: Removed action button click delay (this also means macro click delay was
       removed).
-  - tweak: Increased the cooldown of Queen gib to 15 minutes.
+  - tweak: Increased the cooldown of King gib to 15 minutes.
   - tweak: Reduced the amount of time between acid splash procs.
   - tweak: Slightly reduced the movement speed buff conferred by weeds.
   - rscadd: Completely redid most Xenos' ability kits and basic stats.
@@ -437,7 +437,7 @@
       sometimes turning it into a death machine.
   Vampmare:
   - tweak: Nests and eggs can now only be planted on hive weeds. No matter distance
-      to Queen or if she's in ovi.
+      to King or if she's in ovi.
   - tweak: Xeno leaders can now slash XSS structures to destroy them.
 2020-04-25:
   Fourkhan:

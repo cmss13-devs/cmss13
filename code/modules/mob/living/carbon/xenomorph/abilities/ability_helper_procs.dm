@@ -359,7 +359,7 @@
 		return FALSE
 
 	if(HAS_TRAIT(target, TRAIT_ABILITY_OVIPOSITOR))
-		to_chat(src, SPAN_WARNING("You can't transfer plasma to a queen mounted on her ovipositor."))
+		to_chat(src, SPAN_WARNING("You can't transfer plasma to a king mounted on her ovipositor."))
 		return FALSE
 
 	if(HAS_TRAIT(target, TRAIT_ABILITY_NO_PLASMA_TRANSFER))

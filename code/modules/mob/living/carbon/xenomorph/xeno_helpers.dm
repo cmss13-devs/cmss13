@@ -19,7 +19,7 @@
 				return TRUE
 		if(hive.destruction_allowed == NORMAL_XENO && isXenoBuilder(src))
 			return TRUE
-		if(isXenoQueen(src))
+		if(isXenoKing(src))
 			return TRUE
 
 	return FALSE

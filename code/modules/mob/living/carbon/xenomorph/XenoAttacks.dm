@@ -155,9 +155,9 @@
 		if(INTENT_DISARM)
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "disarm")
-			var/is_shover_queen = isXenoQueen(M)
-			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isXenoQueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
-			var/can_mega_shove = is_shover_queen || IS_XENO_LEADER(M)
+			var/is_shover_king = isXenoKing(M)
+			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isXenoKing(src) || IS_XENO_LEADER(src)) && !is_shover_king)
+			var/can_mega_shove = is_shover_king || IS_XENO_LEADER(M)
 			if(can_mega_shove && !can_resist_shove)
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \

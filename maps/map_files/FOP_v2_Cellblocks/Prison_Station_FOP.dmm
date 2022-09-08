@@ -16086,7 +16086,7 @@
 	},
 /area/prison/hallway/central/east)
 "aPM" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -34950,7 +34950,7 @@
 /area/prison/toilet/security)
 "bQs" = (
 /obj/effect/landmark/hunter_primary,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -45634,7 +45634,7 @@
 /area/prison/cellblock/mediumsec/west)
 "cws" = (
 /obj/effect/landmark/hunter_primary,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "yellowcorner"

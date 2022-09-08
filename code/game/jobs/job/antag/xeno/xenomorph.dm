@@ -5,7 +5,7 @@
 	title = JOB_XENOMORPH
 	role_ban_alternative = "Alien"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
-	supervisors = "Queen"
+	supervisors = "King"
 	selection_class = "job_xeno"
 	// Unlimited for the precount purposes, later set_spawn_positions gets called and sets
 	// a proper limit.

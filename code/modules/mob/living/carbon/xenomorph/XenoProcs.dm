@@ -72,10 +72,10 @@
 		evolve_progress = "[round(amount_grown)]/[max_grown]"
 	else if(caste && caste.evolution_allowed)
 		evolve_progress = "[round(evolution_stored)]/[evolution_threshold]"
-		if(hive && !hive.allow_no_queen_actions)
-			if(!hive.living_xeno_queen)
-				evolve_progress += " (NO QUEEN)"
-			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
+		if(hive && !hive.allow_no_king_actions)
+			if(!hive.living_xeno_king)
+				evolve_progress += " (NO KING)"
+			else if(!(hive.living_xeno_king.ovipositor || hive.evolution_without_ovipositor))
 				evolve_progress += " (NO OVIPOSITOR)"
 
 	if(evolve_progress)
@@ -110,10 +110,10 @@
 		. += ""
 
 	if(hive)
-		if(!hive.living_xeno_queen)
-			. += "Queen's Location: NO QUEEN"
-		else if(!(caste_type == XENO_CASTE_QUEEN))
-			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
+		if(!hive.living_xeno_king)
+			. += "King's Location: NO KING"
+		else if(!(caste_type == XENO_CASTE_KING))
+			. += "King's Location: [hive.living_xeno_king.loc.loc.name]"
 
 		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
 			. += "Slashing: PERMITTED"
@@ -125,14 +125,14 @@
 		else if(hive.construction_allowed == NORMAL_XENO)
 			. += "Construction Placement: ANYONE"
 		else
-			. += "Construction Placement: QUEEN"
+			. += "Construction Placement: KING"
 
 		if(hive.destruction_allowed == XENO_LEADER)
 			. += "Special Structure Destruction: LEADERS"
 		else if(hive.destruction_allowed == NORMAL_XENO)
 			. += "Special Structure Destruction: BUILDERS and LEADERS"
 		else
-			. += "Special Structure Destruction: QUEEN"
+			. += "Special Structure Destruction: KING"
 
 		if(hive.hive_orders)
 			. += "Hive Orders: [hive.hive_orders]"
@@ -147,7 +147,7 @@
 		if(is_mob_incapacitated() || lying || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
-		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
+		else if(caste_type != XENO_CASTE_KING && observed_xeno)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
 	else
@@ -475,19 +475,19 @@
 		pixel_x = old_x
 		pixel_y = old_y
 
-//When the Queen's pheromones are updated, or we add/remove a leader, update leader pheromones
+//When the King's pheromones are updated, or we add/remove a leader, update leader pheromones
 /mob/living/carbon/Xenomorph/proc/handle_xeno_leader_pheromones()
 	if(!hive)
 		return
-	var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
-	if(!Q || !Q.ovipositor || hive_pos == NORMAL_XENO || !Q.current_aura || Q.loc.z != loc.z) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
+	var/mob/living/carbon/Xenomorph/King/Q = hive.living_xeno_king
+	if(!Q || !Q.ovipositor || hive_pos == NORMAL_XENO || !Q.current_aura || Q.loc.z != loc.z) //We are no longer a leader, or the King attached to us has dropped from her ovi, disabled her pheromones or even died
 		leader_aura_strength = 0
 		leader_current_aura = ""
-		to_chat(src, SPAN_XENOWARNING("Your pheromones wane. The Queen is no longer granting you her pheromones."))
+		to_chat(src, SPAN_XENOWARNING("Your pheromones wane. The King is no longer granting you her pheromones."))
 	else
 		leader_aura_strength = Q.aura_strength
 		leader_current_aura = Q.current_aura
-		to_chat(src, SPAN_XENOWARNING("Your pheromones have changed. The Queen has new plans for the Hive."))
+		to_chat(src, SPAN_XENOWARNING("Your pheromones have changed. The King has new plans for the Hive."))
 	hud_set_pheromone()
 
 /mob/living/carbon/Xenomorph/proc/nocrit(var/wowave)

@@ -205,13 +205,13 @@
 	name = "\improper White King bottle"
 	icon_state = "w_king"
 
-/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_queen
-	name = "\improper Black Queen bottle"
-	icon_state = "b_queen"
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_king
+	name = "\improper Black King bottle"
+	icon_state = "b_king"
 
-/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_queen
-	name = "\improper White Queen bottle"
-	icon_state = "w_queen"
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_king
+	name = "\improper White King bottle"
+	icon_state = "w_king"
 
 /obj/item/reagent_container/food/drinks/bottle/tequilla
 	name = "\improper Caccavo Guaranteed Quality Tequilla"

@@ -119,7 +119,7 @@
 	automated_launch_timer = addtimer(CALLBACK(src, .proc/automated_launch), automated_launch_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /datum/shuttle/ferry/marine/proc/automated_launch()
-	if(!queen_locked)
+	if(!king_locked)
 		launch()
 	else
 		automated_launch = FALSE
@@ -251,7 +251,7 @@
 
 	sleep(warmup_time) //Warming up
 
-	if(!queen_locked)
+	if(!king_locked)
 		for(var/turf/T in turfs_src)
 			var/mob/living/carbon/Xenomorph/X = locate(/mob/living/carbon/Xenomorph) in T
 			if(X && X.stat != DEAD)

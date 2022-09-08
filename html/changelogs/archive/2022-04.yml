@@ -35,14 +35,14 @@
       clients bypass this timer), this will kick those logged in but inactive for
       10 minutes(Admins are immune to this kicking), along with allowing xenomorph
       mobs to be taken if the client is inactive for 5 minutes (larva 1.3 minutes),
-      this includes the Queen.
+      this includes the King.
   Stan_Albatross:
   - bugfix: attacking people with chairs while on surgery mode and help intent will
       no longer silently stamina damage them.
   forest2001:
   - bugfix: Fixes me being stupid in whitelist tag settings.
   ihatethisengine2:
-  - bugfix: heal_over_time effect (queen's heal, fruits) now also heals burn damage.
+  - bugfix: heal_over_time effect (king's heal, fruits) now also heals burn damage.
 2022-04-04:
   Stan_Albatross:
   - tweak: The shoulder holster can now hold two pistol magazines or speedloaders,

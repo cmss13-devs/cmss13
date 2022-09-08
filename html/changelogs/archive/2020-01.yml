@@ -3,7 +3,7 @@
   - rscadd: Xenomorph Acid Splashback when being damaged will now have a cooldown
       between each proc. No more acid stacking on multiple hits.
   - rscadd: Updated Command tablet software with new Apple Inc. version 5.0.
-  - rscadd: The orbital cannon will now disable for 10 minutes after the Queen disables
+  - rscadd: The orbital cannon will now disable for 10 minutes after the King disables
       remote control.
   - tweak: Survivor is now timelocked to 3 hours of squad roles.
   Foolosopher:
@@ -141,13 +141,13 @@
   - tweak: Facehugger jump range has been decreased.
 2020-01-12:
   Neth:
-  - tweak: Eggs can now be planted only in a 15 cell radius around queen in ovipositor.
-      If there is no queen - eggs can be planted whereever. Queen cannot plant her
+  - tweak: Eggs can now be planted only in a 15 cell radius around king in ovipositor.
+      If there is no king - eggs can be planted whereever. King cannot plant her
       own eggs while not in ovipositor. This has no effect on humans planting eggs
       in research.
-  - rscadd: Queen can plant eggs while in ovipositor withing 3 tiles range from her.
+  - rscadd: King can plant eggs while in ovipositor withing 3 tiles range from her.
   - tweak: You can't plant eggs if you do not belong to any hive.
-  - rscadd: Both queen ovi planting range and egg planting radius for hive can be
+  - rscadd: Both king ovi planting range and egg planting radius for hive can be
       changed by admins during the game for event purposes.
   TobiNerd:
   - tweak: You can now dump contents from basically any storage container, including
@@ -157,9 +157,9 @@
   - tweak: Added a small windup to hugging someone.
   - tweak: Synthetics cant be nested anymore.
   - tweak: Reduced the multiburst average output.
-  - tweak: If there is a Queen alive, nests are now only buildable if the Queen is
-      in Ovipositor and the nest is built within 15 tiles of the Queen. If there is
-      no Queen, its free game as usual.
+  - tweak: If there is a King alive, nests are now only buildable if the King is
+      in Ovipositor and the nest is built within 15 tiles of the King. If there is
+      no King, its free game as usual.
 2020-01-18:
   Cakey:
   - bugfix: Fixed the L42 zero damage falloff (It wasn't working).
@@ -174,11 +174,11 @@
   - bugfix: Oppressor Prae smoke now extinguishes mobs more consistently.
   - tweak: Greatly increased the efficiency of some small components of the combat
       backend.
-  - tweak: Increased Queen's Neuro Cooldown by 1 second.
-  - tweak: Decreased the max range for Queen's neuro from 8+ to 6 tiles.
-  - tweak: Effectively, this means Queen neuro has 100% hit chance while there are
-      4 or less tiles between the Queen and the Marine, NOT counting the tile the
-      Queen or Marine is standing on.
+  - tweak: Increased King's Neuro Cooldown by 1 second.
+  - tweak: Decreased the max range for King's neuro from 8+ to 6 tiles.
+  - tweak: Effectively, this means King neuro has 100% hit chance while there are
+      4 or less tiles between the King and the Marine, NOT counting the tile the
+      King or Marine is standing on.
   Jeser:
   - bugfix: Fixed announcements being seen by players in lobby.
   - bugfix: Fixed dropship hijack announcement not been played.

@@ -130,7 +130,7 @@
 				show_fact = FALSE
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive)
-				dat += "<BR><B style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[hivenumber]]</B> <B style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</B>"
+				dat += "<BR><B style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[hivenumber]]</B> <B style='color:#4D0096'>(King: [hive.living_xeno_king ? "Alive" : "Dead"])</B>"
 			else
 				dat += "<BR><B style='color:#F00'>Error: no hive datum detected for [hivenumber].</B>"
 			hive = null

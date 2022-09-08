@@ -3025,7 +3025,7 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/kutjevo/exterior/runoff_dunes)
 "dWU" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "dXC" = (
@@ -5620,7 +5620,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/Northwest_Colony)
 "huV" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "hvq" = (
@@ -13889,7 +13889,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/Northwest_Colony)
 "sWP" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "sXj" = (
@@ -17038,7 +17038,7 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "xqV" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "xra" = (

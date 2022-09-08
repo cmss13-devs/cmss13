@@ -32,7 +32,7 @@ const filterXenos = data => {
       ref: xeno_info[nicknumber].ref,
       is_ssd: xeno_vitals[nicknumber].is_ssd,
       is_leader: key.is_leader,
-      is_queen: key.is_queen,
+      is_king: key.is_king,
     };
     xeno_entries.push(entry);
   });
@@ -114,7 +114,7 @@ export const HiveStatus = (props, context) => {
 const GeneralInformation = (props, context) => {
   const { data } = useBackend(context);
   const {
-    queen_location, hive_location,
+    king_location, hive_location,
     total_xenos, pooled_larva,
     evilution_level,
   } = data;
@@ -127,8 +127,8 @@ const GeneralInformation = (props, context) => {
       <Flex.Item
         textAlign="center"
       >
-        <h3 className="whiteTitle">The Queen is in:</h3>
-        <h1 className="whiteTitle">{queen_location}</h1>
+        <h3 className="whiteTitle">The King is in:</h3>
+        <h1 className="whiteTitle">{king_location}</h1>
       </Flex.Item>
       {!!hive_location && (
         <Flex.Item
@@ -411,7 +411,7 @@ const XenoList = (props, context) => {
                     />
                   </Flex.Item>
                   {!!is_in_ovi && (
-                    <QueenOviButtons target_ref={entry.ref} />
+                    <KingOviButtons target_ref={entry.ref} />
                   )}
                 </Flex>
               )}
@@ -425,11 +425,11 @@ const XenoList = (props, context) => {
 
 const StatusIcon = (props, context) => {
   const { entry } = props;
-  const { is_ssd, is_leader, is_queen } = entry;
+  const { is_ssd, is_leader, is_king } = entry;
 
   if (is_ssd) {
     return <div unselectable="on" className="ssdIcon" />;
-  } else if (is_leader || is_queen) {
+  } else if (is_leader || is_king) {
     return (
       <div unselectable="on" className="leaderIcon">
         <Icon name="star" ml={0.2} />
@@ -455,7 +455,7 @@ const XenoCollapsible = (props, context) => {
   );
 };
 
-const QueenOviButtons = (props, context) => {
+const KingOviButtons = (props, context) => {
   const { act, data } = useBackend(context);
   const { target_ref } = props;
 

@@ -1,4 +1,4 @@
-#define is_hive_living(hive) (!hive.hardcore || hive.living_xeno_queen)
+#define is_hive_living(hive) (!hive.hardcore || hive.living_xeno_king)
 
 /datum/game_mode/xenovs
 	name = "Hive Wars"
@@ -113,16 +113,16 @@
 			transform_xeno(ghost_mind, hive_spots[hive], hive.hivenumber, FALSE)
 			ghost_mind.current.close_spawn_windows()
 
-	// Have to spawn the queen last or the mind will be added to xenomorphs and double spawned
-	for(var/datum/hive_status/hive in picked_queens)
-		transform_queen(picked_queens[hive], hive_spots[hive], hive.hivenumber)
-		var/datum/mind/M = picked_queens[hive]
+	// Have to spawn the king last or the mind will be added to xenomorphs and double spawned
+	for(var/datum/hive_status/hive in picked_kings)
+		transform_king(picked_kings[hive], hive_spots[hive], hive.hivenumber)
+		var/datum/mind/M = picked_kings[hive]
 		M.current.close_spawn_windows()
 
 	for(var/datum/hive_status/hive in hive_spots)
 		new/obj/effect/alien/resin/special/pool(hive_spots[hive], hive) // Spawn a hive pool so they all get fair xenos
 		var/obj/effect/alien/resin/special/pylon/core/C = new(hive_spots[hive], hive)
-		C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
+		C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a King
 		hive_cores += C
 
 /datum/game_mode/xenovs/proc/transform_xeno(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL, var/should_spawn_nest = TRUE)
@@ -153,7 +153,7 @@
 		var/mob/living/carbon/Xenomorph/Larva/L = new(xeno_turf, null, hivenumber)
 		ghost_mind.transfer_to(L)
 
-/datum/game_mode/xenovs/pick_queen_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/xenovs/pick_king_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
 	if(!.) return
 	// Spawn additional hive structures
@@ -186,7 +186,7 @@
 
 			if(!sudden_death && world.time > round_time_sd)
 				sudden_death = TRUE
-				xeno_announcement("The hives have entered sudden death mode. No more respawns, no more Queens", "everything", HIGHER_FORCE_ANNOUNCE)
+				xeno_announcement("The hives have entered sudden death mode. No more respawns, no more Kings", "everything", HIGHER_FORCE_ANNOUNCE)
 				for(var/obj/effect/alien/resin/special/pylon/core/C in hive_cores)
 					qdel(C)
 				hive_cores = list()

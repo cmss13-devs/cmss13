@@ -11,7 +11,7 @@
   - bugfix: also fixed dropship autolaunch delay having a broken input
 2022-09-02:
   Drathek:
-  - bugfix: Fixes transformation of a queen breaking hive status and hivemind
+  - bugfix: Fixes transformation of a king breaking hive status and hivemind
   - refactor: Improves some variable readability
 2022-09-03:
   Alardunx:

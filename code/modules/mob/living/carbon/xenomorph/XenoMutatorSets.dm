@@ -1,15 +1,15 @@
-#define MUTATOR_GAIN_PER_QUEEN_LEVEL 6
+#define MUTATOR_GAIN_PER_KING_LEVEL 6
 #define MUTATOR_GAIN_PER_XENO_LEVEL 3
 
 //A class that holds mutators for a given Xeno hive
-//Each time a Queen matures, the hive gets more points
-//Each time a Queen dies, the mutators are reset
+//Each time a King matures, the hive gets more points
+//Each time a King dies, the mutators are reset
 
 //The class contains a lot of variables that are applied to various xenos' stats and actions
 /datum/mutator_set
 	var/remaining_points = 1 //How many points the xeno / hive still has to spend on mutators
 	var/list/purchased_mutators = list() //List of purchased mutators
-	var/user_level = 0 //Level of the Queen for Hive or the individual xeno. Starting at -1 so at tier 0 you'd get some mutators to play with
+	var/user_level = 0 //Level of the King for Hive or the individual xeno. Starting at -1 so at tier 0 you'd get some mutators to play with
 
 	var/tackle_strength_bonus = 0
 
@@ -81,20 +81,20 @@
 	var/bonus_larva_spawn_chance = 0
 
 /datum/mutator_set/hive_mutators/list_and_purchase_mutators()
-	if(!hive || !hive.living_xeno_queen)
-		return //somehow Queen is not set but this function was called...
-	if(hive.living_xeno_queen.is_dead())
+	if(!hive || !hive.living_xeno_king)
+		return //somehow King is not set but this function was called...
+	if(hive.living_xeno_king.is_dead())
 		return //Dead xenos can't mutate!
-	if(hive.living_xeno_queen.hardcore)
+	if(hive.living_xeno_king.hardcore)
 		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
 		return
-	if(!hive.living_xeno_queen.ovipositor)
+	if(!hive.living_xeno_king.ovipositor)
 		to_chat(usr, "You must be in Ovipositor to purchase Hive Mutators.")
 		return
 	. = ..()
 	if (. == TRUE && purchased_mutators.len)
 		var/m = purchased_mutators[purchased_mutators.len]
-		log_mutator("[hive.living_xeno_queen.name] purchased Hive Mutator '[m]'")
+		log_mutator("[hive.living_xeno_king.name] purchased Hive Mutator '[m]'")
 
 /datum/mutator_set/hive_mutators/can_purchase_mutator(var/mutator_name)
 	if (..() == FALSE)
@@ -104,7 +104,7 @@
 		return FALSE //We can't buy individual mutators on a Hive level
 	return TRUE
 
-//Called when the Queen dies
+//Called when the King dies
 // This isn't currently used, but if anyone wants to, expect it to be broken because
 // I haven't made any effort to integrate it into the new system (Fourkhan, 5/11/19)
 /datum/mutator_set/hive_mutators/proc/reset_mutators()
@@ -132,7 +132,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_everything()
-			to_chat(X, SPAN_XENOANNOUNCE("Queen's influence wanes. You feel weak!"))
+			to_chat(X, SPAN_XENOANNOUNCE("King's influence wanes. You feel weak!"))
 			playsound(X.loc, "alien_help", 25)
 			X.xeno_jitter(15)
 
@@ -140,31 +140,31 @@
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_everything()
-			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
+			to_chat(X, SPAN_XENOANNOUNCE("King has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/recalculate_stats(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_stats()
-			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
+			to_chat(X, SPAN_XENOANNOUNCE("King has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/recalculate_actions(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_actions()
-			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
+			to_chat(X, SPAN_XENOANNOUNCE("King has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/recalculate_pheromones(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_pheromones()
-			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
+			to_chat(X, SPAN_XENOANNOUNCE("King has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/proc/recalculate_maturation(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_maturation()
-			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
+			to_chat(X, SPAN_XENOANNOUNCE("King has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/proc/recalculate_hive(var/description)
 	hive.recalculate_hive()
@@ -172,7 +172,7 @@
 /datum/mutator_set/hive_mutators/give_feedback(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
-			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
+			to_chat(X, SPAN_XENOANNOUNCE("King has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 
 //Mutators applying to an individual xeno
@@ -215,7 +215,7 @@
 	xeno.xeno_jitter(15)
 
 
-/mob/living/carbon/Xenomorph/Queen/verb/purchase_hive_mutators()
+/mob/living/carbon/Xenomorph/King/verb/purchase_hive_mutators()
 	set name = "Purchase Hive Mutators"
 	set desc = "Purchase Mutators affecting the entire Hive."
 	set category = "Alien"

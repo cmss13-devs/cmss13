@@ -17,7 +17,7 @@
 #define HEALTH_HUD_XENO		"16" // health HUD for xenos
 #define PLASMA_HUD			"17" // indicates the plasma level of xenos.
 #define PHEROMONE_HUD		"18" // indicates which pheromone is active on a xeno.
-#define QUEEN_OVERWATCH_HUD	"19" // indicates which xeno the queen is overwatching.
+#define KING_OVERWATCH_HUD	"19" // indicates which xeno the king is overwatching.
 #define ARMOR_HUD_XENO		"20" // armor HUD for xenos
 #define XENO_STATUS_HUD		"21" // Whether xeno is a leader and its current upgrade level
 #define ORDER_HUD			"22" // If humans are affected by orders or not
@@ -59,6 +59,6 @@
 #define TRACKER_DSL					"_dsl" // Delta Squad Leader
 #define TRACKER_ESL					"_esl" // Echo Squad Leader
 
-//for tracking the queen/hivecore on xeno locator huds
-#define TRACKER_QUEEN	"Queen"
+//for tracking the king/hivecore on xeno locator huds
+#define TRACKER_KING	"King"
 #define TRACKER_HIVE	"Hive Core"

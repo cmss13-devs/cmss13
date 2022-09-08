@@ -87,7 +87,7 @@
       tiles from Shaman if Shaman has 1 non-Shaman xenomorph nearby, and increases
       by 0.5 tiles per nearby xeno, up to limit of 7. This ability cannot hit same
       target more than once in 20 seconds. It also won't affect recently screeched
-      by queen targets.
+      by king targets.
   - rscadd: 'Third Shaman ability is Adrenal Pheromones (300). After channeling for
       2.5 seconds Shaman starts emitting ALL pheromones with effect starting at 1
       (lowest level) when 1 non-Shaman xeno is nearby, and with 0.5 increase per xeno,
@@ -117,8 +117,8 @@
       are in a tunnel.
   - bugfix: Marines - Fixed the flare gun allowing flares to be shot into dense turfs
       (walls).
-  - tweak: Xenomorph - Clicking on the queen locator will now make you overwatch the
-      Queen.
+  - tweak: Xenomorph - Clicking on the king locator will now make you overwatch the
+      King.
   - tweak: ERTs - The RCMP is now an E7, being actually in charge of the other RMPs.
 2020-02-09:
   Cakey:
@@ -272,7 +272,7 @@
   - tweak: Flare guns will now always hit the clicked target provided that there's
       a clear line of sight
   Cakey:
-  - tweak: Xenomorphs on fire that are not fire immune can no longer be queen healed.
+  - tweak: Xenomorphs on fire that are not fire immune can no longer be king healed.
   Foolosopher:
   - soundadd: Added new sounds and replaced some old ones
   - soundadd: Fully added ambient sounds to Big Red and Ice Colony.
@@ -304,9 +304,9 @@
   - bugfix: Requisitions - Fixed the Next button of RO Line 2.
 2020-02-17:
   Atebite:
-  - rscadd: Queens can now banish xenos from the hive. Banished xenos can be attacked
+  - rscadd: Kings can now banish xenos from the hive. Banished xenos can be attacked
       by all other xenos, but cannot retaliate.
-  - rscadd: Queens can also readmit banished xenos back into the hive.
+  - rscadd: Kings can also readmit banished xenos back into the hive.
   - rscadd: The hive gets a burrowed larva when a banished xenomorph dies. Abusing
       this is a great way to get banned quickly.
   Foolosopher:
@@ -382,4 +382,4 @@
       remains direcitonal
   - bugfix: Fixed parts of large explosions temporarily freezing
   Vampmare:
-  - tweak: Queen can now heal extinguished xenos again.
+  - tweak: King can now heal extinguished xenos again.

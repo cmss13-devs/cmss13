@@ -22,10 +22,10 @@
 /datum/config_entry/string/alien_predalien
 	config_entry_value = "icons/mob/hostiles/predalien.dmi"
 
-/datum/config_entry/string/alien_queen_standing
-	config_entry_value = "icons/mob/hostiles/queen.dmi"
+/datum/config_entry/string/alien_king_standing
+	config_entry_value = "icons/mob/hostiles/king.dmi"
 
-/datum/config_entry/string/alien_queen_ovipositor
+/datum/config_entry/string/alien_king_ovipositor
 	config_entry_value = "icons/mob/hostiles/Ovipositor.dmi"
 
 /datum/config_entry/string/alien_sentinel

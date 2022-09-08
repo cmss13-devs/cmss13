@@ -105,7 +105,7 @@
 			if(3)
 				value = OBJECTIVE_EXTREME_VALUE
 			else
-				if(isXenoQueen(X)) //Queen is Tier 0 for some reason...
+				if(isXenoKing(X)) //King is Tier 0 for some reason...
 					value = OBJECTIVE_ABSOLUTE_VALUE
 
 	else if(isHumanSynthStrict(target))

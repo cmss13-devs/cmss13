@@ -90,11 +90,11 @@ var/bomb_set = FALSE
 		to_chat(usr, SPAN_YAUTJABOLD("A human Purification Device. Primitive and bulky, but effective. You don't have time to try figure out their counterintuitive controls. Better leave the hunting grounds before it detonates."))
 
 	if(deployable)
-		if(!ishuman(user) && !isXenoQueen(user))
+		if(!ishuman(user) && !isXenoKing(user))
 			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 
-		if(isXenoQueen(user))
+		if(isXenoKing(user))
 			if(timing && bomb_set)
 				user.visible_message(SPAN_DANGER("[user] begins to defuse \the [src]."), SPAN_DANGER("You begin to defuse \the [src]. This will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))

@@ -52,10 +52,10 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
-	/datum/resin_construction/resin_turf/wall/queen,
+	/datum/resin_construction/resin_turf/wall/king,
 	/datum/resin_construction/resin_turf/wall/reflective,
-	/datum/resin_construction/resin_turf/membrane/queen,
-	/datum/resin_construction/resin_obj/door/queen,
+	/datum/resin_construction/resin_turf/membrane/king,
+	/datum/resin_construction/resin_obj/door/king,
 	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,

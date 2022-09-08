@@ -1,5 +1,5 @@
 // File that holds everything related to Xeno overwatch.
-// The action for watching another Xeno (Queen still has some shitty leftovers, but it's mostly been cleaned out)
+// The action for watching another Xeno (King still has some shitty leftovers, but it's mostly been cleaned out)
 /datum/action/xeno_action/watch_xeno
 	name = "Watch Xenomorph"
 	action_icon_state = "watch_xeno"
@@ -22,21 +22,21 @@
 	if (!X.check_state(TRUE))
 		return FALSE
 
-	var/isQueen = FALSE
-	if (X.caste_type == XENO_CASTE_QUEEN)
-		isQueen = TRUE
+	var/isKing = FALSE
+	if (X.caste_type == XENO_CASTE_KING)
+		isKing = TRUE
 
-	if(!X.hive.living_xeno_queen && !X.hive.allow_no_queen_actions)
-		to_chat(X, SPAN_WARNING("There is no Queen. You are alone."))
+	if(!X.hive.living_xeno_king && !X.hive.allow_no_king_actions)
+		to_chat(X, SPAN_WARNING("There is no King. You are alone."))
 		return
 
 	// We are already overwatching something
 	if (X.observed_xeno)
-		if (isQueen)
+		if (isKing)
 			var/mob/living/carbon/Xenomorph/oldXeno = X.observed_xeno
 			X.overwatch(X.observed_xeno, TRUE)
 			if (oldXeno)
-				oldXeno.hud_set_queen_overwatch()
+				oldXeno.hud_set_king_overwatch()
 		else
 			X.overwatch(X.observed_xeno, TRUE)
 		return
@@ -50,19 +50,19 @@
 
 	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || is_admin_level(selected_xeno.z) || !X.check_state(TRUE))
 		X.overwatch(X.observed_xeno, TRUE) // Cancel OW
-	else if (!isQueen) // Regular Xeno OW vs Queen
+	else if (!isKing) // Regular Xeno OW vs King
 		X.overwatch(selected_xeno)
-	else // We are a queen
+	else // We are a king
 		var/mob/living/carbon/Xenomorph/oldXeno = X.observed_xeno
 		X.overwatch(selected_xeno, FALSE)
 		if (oldXeno)
-			oldXeno.hud_set_queen_overwatch()
+			oldXeno.hud_set_king_overwatch()
 
 	if (selected_xeno && !QDELETED(selected_xeno))
-		selected_xeno.hud_set_queen_overwatch()
+		selected_xeno.hud_set_king_overwatch()
 
 // Generic Xeno overwatch proc, very simple for now. If you want it to cancel the overwatch, hand in TRUE in the second var.
-// Third var is only for custom event handlers for OW hud indicators, currently only used for the Queen icon
+// Third var is only for custom event handlers for OW hud indicators, currently only used for the King icon
 // If you use it, be sure to manually specify the second var, even if its the default value.
 /mob/living/carbon/Xenomorph/proc/overwatch(mob/living/carbon/Xenomorph/targetXeno, stop_overwatch = FALSE)
 	if(stop_overwatch)
@@ -74,13 +74,13 @@
 
 		if(oldXeno)
 			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))
-			oldXeno.hud_set_queen_overwatch()
+			oldXeno.hud_set_king_overwatch()
 	else
 		if(!hive)
 			return
 
-		if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
-			to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+		if(!hive.living_xeno_king && !hive.allow_no_king_actions)
+			to_chat(src, SPAN_WARNING("There is no King. You are alone."))
 			return
 
 		if(targetXeno == src)
@@ -98,7 +98,7 @@
 			to_chat(src, SPAN_XENOWARNING("You are already watching that sister!"))
 			return
 
-		if(caste_type != XENO_CASTE_QUEEN && is_zoomed)
+		if(caste_type != XENO_CASTE_KING && is_zoomed)
 			zoom_out()
 
 		if(observed_xeno)
@@ -106,11 +106,11 @@
 			observed_xeno = null
 
 			SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH_XENO, oldXeno)
-			oldXeno.hud_set_queen_overwatch()
+			oldXeno.hud_set_king_overwatch()
 
 		observed_xeno = targetXeno
 
-		observed_xeno.hud_set_queen_overwatch()
+		observed_xeno.hud_set_king_overwatch()
 		SEND_SIGNAL(src, COMSIG_XENO_OVERWATCH_XENO, observed_xeno)
 		RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, .proc/overwatch_handle_mob_move_or_look)
 
@@ -132,14 +132,14 @@
 	UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
 	return COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK
 
-/mob/living/carbon/Xenomorph/Queen/overwatch_handle_mob_move_or_look(mob/living/carbon/Xenomorph/Queen/mover, var/actually_moving, var/direction, var/specific_direction)
+/mob/living/carbon/Xenomorph/King/overwatch_handle_mob_move_or_look(mob/living/carbon/Xenomorph/King/mover, var/actually_moving, var/direction, var/specific_direction)
 	if(!actually_moving)
 		return
 
 	var/mob/living/carbon/Xenomorph/observed_xeno = mover.observed_xeno
 	mover.overwatch(observed_xeno, TRUE)
 	if(observed_xeno)
-		observed_xeno.hud_set_queen_overwatch()
+		observed_xeno.hud_set_king_overwatch()
 	UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
 	return COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK
 
@@ -163,7 +163,7 @@
 		if(!check_state(TRUE))
 			return
 
-		var/isQueen = (src.caste_type == XENO_CASTE_QUEEN)
+		var/isKing = (src.caste_type == XENO_CASTE_KING)
 
 		var/mob/living/carbon/Xenomorph/xenoTarget = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in GLOB.living_xeno_list
 		var/mob/living/carbon/Xenomorph/xenoSrc = locate(href_list[XENO_OVERWATCH_SRC_HREF]) in GLOB.living_xeno_list
@@ -174,15 +174,15 @@
 		if(!istype(xenoSrc) || xenoSrc.stat == DEAD)
 			return
 
-		if (!isQueen)
+		if (!isKing)
 			xenoSrc.overwatch(xenoTarget)
 		else
 			var/mob/living/carbon/Xenomorph/oldXeno = xenoSrc.observed_xeno
 			xenoSrc.overwatch(xenoTarget, FALSE)
 			if (oldXeno)
-				oldXeno.hud_set_queen_overwatch()
+				oldXeno.hud_set_king_overwatch()
 			if (xenoTarget && !QDELETED(xenoTarget))
-				xenoTarget.hud_set_queen_overwatch()
+				xenoTarget.hud_set_king_overwatch()
 	if(href_list["overwatch"])
 		var/input = href_list["target"]
 		var/obj/effect/alien/resin/marker/target = locate(input)

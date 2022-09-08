@@ -172,7 +172,7 @@
   - bugfix: Fixed the UNHOLY LAG caused by nukes. Hopefully.
   - rscadd: Fridges are now nuke-proof.
   MattAtlas:
-  - bugfix: The non-primary dropship may no longer be called down by the Queen.
+  - bugfix: The non-primary dropship may no longer be called down by the King.
   - tweak: Sentry crates now contain high cap cells. When a sentry is built, it automatically
       spawns with an highcap inside.
   - tweak: Hivelord plasma storage has been increased.
@@ -245,7 +245,7 @@
   - rscadd: Larvae now get a notification once they are ready to evolve.
   - tweak: The Stats panel for Xenomorphs was tweaked to give more important information
       in a less cluttered way.
-  - tweak: The Stats panel now notifies the Queen of available leader slots and the
+  - tweak: The Stats panel now notifies the King of available leader slots and the
       number of leftover larvae.
   RavingManiac:
   - rscadd: If a sentry turret hasn't fired in a while, it will beep before firing.
@@ -509,7 +509,7 @@
   - bugfix: Ghosts can no longer buckle people to operating tables.
   - tweak: Holocards moved to new and hopefully more visible location.
   - bugfix: Fixed an infinite metal exploit.
-  - bugfix: Hopefully fixed the larva that unburrow upon queen death not receiving
+  - bugfix: Hopefully fixed the larva that unburrow upon king death not receiving
       players.
   - tweak: Various xeno abilities (pheromones, spittype etc) can now be used while
       resting.

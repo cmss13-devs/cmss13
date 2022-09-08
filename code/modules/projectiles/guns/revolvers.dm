@@ -624,7 +624,7 @@
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/explosive
 	color = "#FF0000"
-	fire_sound = 'sound/voice/alien_queen_xmas.ogg'
+	fire_sound = 'sound/voice/alien_king_xmas.ogg'
 	starting_attachment_types = list(/obj/item/attachable/heavy_barrel)
 
 /obj/item/weapon/gun/revolver/mateba/engraved

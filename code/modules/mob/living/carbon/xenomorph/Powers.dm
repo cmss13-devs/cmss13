@@ -24,7 +24,7 @@
 
 	var/turf/current_turf = get_turf(A)
 
-	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, A) > src.caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
+	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, A) > src.caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and kings 0
 		to_chat(src, SPAN_XENOWARNING("You can't build from that far!"))
 		return SECRETE_RESIN_FAIL
 	else if(thick) //hivelords can thicken existing resin structures.
@@ -130,12 +130,12 @@
 		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, .proc/remove_built_structure)
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
-	
+
 	if(istype(new_resin, /turf/closed))
 		for(var/mob/living/carbon/human/enclosed_human in new_resin.contents)
 			if(enclosed_human.stat == DEAD)
 				msg_admin_niche("[src.ckey]/([src]) has built a closed resin structure, [new_resin.name], on top of a dead human, [enclosed_human.ckey]/([enclosed_human]), at [new_resin.x],[new_resin.y],[new_resin.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[new_resin.x];Y=[new_resin.y];Z=[new_resin.z]'>JMP</a>)")
-	
+
 	return SECRETE_RESIN_SUCCESS
 
 /mob/living/carbon/Xenomorph/proc/remove_built_structure(var/atom/A)
@@ -157,7 +157,7 @@
 		SPAN_XENONOTICE("You designate a new [structure_template] construction."), null, 5)
 	playsound(new_structure, "alien_resin_build", 25)
 
-	if(hive.living_xeno_queen)
+	if(hive.living_xeno_king)
 		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize_area(current_area_name)]!", 3, hivenumber)
 
 /mob/living/carbon/Xenomorph/proc/make_marker(turf/target_turf)
@@ -186,11 +186,11 @@
 	if(!found_weeds)
 		to_chat(src, SPAN_XENOMINORWARNING("You made the resin mark on ground with no weeds, it will break soon without any."))
 
-	if(isXenoQueen(src))
+	if(isXenoKing(src))
 		NM.color = "#7a21c4"
 	else
 		NM.color = "#db6af1"
-	if(hive.living_xeno_queen)
+	if(hive.living_xeno_king)
 		var/current_area_name = get_area_name(target_turf)
 
 		for(var/mob/living/carbon/Xenomorph/X in hive.totalXenos)

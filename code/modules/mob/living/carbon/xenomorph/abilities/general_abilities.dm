@@ -62,8 +62,8 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
-/datum/action/xeno_action/onclick/choose_resin/queen_macro //so it doesn't screw other macros up
-	ability_primacy = XENO_PRIMARY_ACTION_4 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
+/datum/action/xeno_action/onclick/choose_resin/king_macro //so it doesn't screw other macros up
+	ability_primacy = XENO_PRIMARY_ACTION_4 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for king since her playstyle is very different
 
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
@@ -88,7 +88,7 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	return X.selected_resin
 
-/datum/action/xeno_action/activable/secrete_resin/queen_macro //see above for reasoning
+/datum/action/xeno_action/activable/secrete_resin/king_macro //see above for reasoning
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
@@ -113,7 +113,7 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', "mark_[x.icon_state]")
 
-/datum/action/xeno_action/activable/info_marker/queen
+/datum/action/xeno_action/activable/info_marker/king
 	max_markers = 5
 
 // Corrosive Acid

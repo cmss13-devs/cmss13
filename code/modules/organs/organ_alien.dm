@@ -92,7 +92,7 @@
 	var/stored_plasma = 0
 	var/max_plasma = 500
 
-/datum/internal_organ/xenos/plasmavessel/queen
+/datum/internal_organ/xenos/plasmavessel/king
 	name = "bloated plasma vessel"
 	stored_plasma = 200
 	max_plasma = 500

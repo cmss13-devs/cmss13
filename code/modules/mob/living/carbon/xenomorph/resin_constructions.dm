@@ -124,12 +124,12 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /turf/closed/wall/resin/thick
 
 
-/datum/resin_construction/resin_turf/wall/queen
-	name = "Queen Resin Wall"
+/datum/resin_construction/resin_turf/wall/king
+	name = "King Resin Wall"
 	desc = "A resin wall, able to block passage. Constructed type depends on weeds."
-	construction_name = "queen resin wall"
+	construction_name = "king resin wall"
 
-	cost = XENO_RESIN_WALL_QUEEN_COST
+	cost = XENO_RESIN_WALL_KING_COST
 
 	build_path = /turf/closed/wall/resin
 	build_path_thick = /turf/closed/wall/resin/thick
@@ -153,11 +153,11 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	build_path = /turf/closed/wall/resin/membrane
 
-/datum/resin_construction/resin_turf/membrane/queen
-	name = "Queen Resin Membrane"
+/datum/resin_construction/resin_turf/membrane/king
+	name = "King Resin Membrane"
 	desc = "Resin membrane that can be seen through. Constructed type depends on weeds."
-	construction_name = "queen resin membrane"
-	cost = XENO_RESIN_MEMBRANE_QUEEN_COST
+	construction_name = "king resin membrane"
+	cost = XENO_RESIN_MEMBRANE_KING_COST
 
 	build_path = /turf/closed/wall/resin/membrane
 	build_path_thick = /turf/closed/wall/resin/membrane/thick
@@ -202,11 +202,11 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	return TRUE
 
-/datum/resin_construction/resin_obj/door/queen
-	name = "Queen Resin Door"
+/datum/resin_construction/resin_obj/door/king
+	name = "King Resin Door"
 	desc = "A resin door that only sisters may pass. Constructed type depends on weeds."
-	construction_name = "queen resin door"
-	cost = XENO_RESIN_DOOR_QUEEN_COST
+	construction_name = "king resin door"
+	cost = XENO_RESIN_DOOR_KING_COST
 
 	build_path = /obj/structure/mineral_door/resin
 	build_path_thick = /obj/structure/mineral_door/resin/thick

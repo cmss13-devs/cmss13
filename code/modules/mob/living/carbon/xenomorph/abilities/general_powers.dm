@@ -257,8 +257,8 @@
 	if(target_turf.z != X.z)
 		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
-	if(!X.hive.living_xeno_queen || X.hive.living_xeno_queen.z != X.z)
-		to_chat(X, SPAN_XENOWARNING("You have no queen, the psychic link is gone!"))
+	if(!X.hive.living_xeno_king || X.hive.living_xeno_king.z != X.z)
+		to_chat(X, SPAN_XENOWARNING("You have no king, the psychic link is gone!"))
 		return
 
 	var/tally = 0
@@ -348,7 +348,7 @@
 		SPAN_XENOWARNING("You begin to emit '[pheromone]' pheromones."), null, 5)
 		playsound(loc, "alien_drool", 25)
 
-	if(isXenoQueen(src) && hive && hive.xeno_leader_list.len && anchored)
+	if(isXenoKing(src) && hive && hive.xeno_leader_list.len && anchored)
 		for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 
@@ -556,8 +556,8 @@
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)
 		to_chat(X, SPAN_WARNING("Construction is currently restricted to Leaders only!"))
 		return FALSE
-	else if(X.hive && X.hive.construction_allowed == XENO_QUEEN && !istype(X.caste, /datum/caste_datum/queen))
-		to_chat(X, SPAN_WARNING("Construction is currently restricted to Queen only!"))
+	else if(X.hive && X.hive.construction_allowed == XENO_KING && !istype(X.caste, /datum/caste_datum/king))
+		to_chat(X, SPAN_WARNING("Construction is currently restricted to King only!"))
 		return FALSE
 
 	var/turf/T = get_turf(A)
@@ -603,7 +603,7 @@
 	if(!spacecheck(X,T,structure_template)) //doublechecking
 		return FALSE
 
-	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
+	if((choice == XENO_STRUCTURE_CORE) && isXenoKing(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
 		if(X.hive.hive_location.hardcore || world.time > HIVECORE_COOLDOWN_CUTOFF)
 			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
 			return
@@ -624,9 +624,9 @@
 		qdel(structure_template)
 		return FALSE
 
-	var/queen_on_zlevel = !X.hive.living_xeno_queen || X.hive.living_xeno_queen.z == T.z
-	if(!queen_on_zlevel)
-		to_chat(X, SPAN_WARNING("Your link to the Queen is too weak here. She is on another world."))
+	var/king_on_zlevel = !X.hive.living_xeno_king || X.hive.living_xeno_king.z == T.z
+	if(!king_on_zlevel)
+		to_chat(X, SPAN_WARNING("Your link to the King is too weak here. She is on another world."))
 		qdel(structure_template)
 		return FALSE
 

@@ -4,10 +4,10 @@
   TheDonkified:
   - tweak: LV fog will always drop 35 minutes after round start.
   Waltermeldron:
-  - bugfix: Fixed quirky bug with queen aging.
+  - bugfix: Fixed quirky bug with king aging.
   - bugfix: Fixed HUD colours being off for xenos of other hives. Also applies to
       marines if they're ever coloured by admins.
-  - rscadd: The Queen of a hive can now set the hive's alliances via the View Alliance
+  - rscadd: The King of a hive can now set the hive's alliances via the View Alliance
       Status verb. If they set their own hive, cultists that belong to their hive
       will gain the benefits of being allied.
   - rscadd: An allied faction to a hive will suffer no slowdown on weeds, will be
@@ -16,7 +16,7 @@
       any of their support castes.
   - tweak: Increased XvX slash damage. Slightly reduced XvX acid damage.
   - tweak: Massively reduced armour effectiveness in XvX.
-  - bugfix: Fixed queen screech stunning.
+  - bugfix: Fixed king screech stunning.
   - tweak: Changed corporate dome to be the garage for the survivor trucks. Can be
       opened from the nexus armoury.
   - tweak: Changed luminosity variable to 8 from 4 for trucks.
@@ -31,7 +31,7 @@
   - bugfix: Windoors will now correctly block bullet based on their direction... kinda
   ghostsheet:
   - bugfix: Mortar will no longer jam if a pylon is built mid firing.
-  - rscadd: Motion detector can now detect Queen's eye.
+  - rscadd: Motion detector can now detect King's eye.
   optimisticdude:
   - tweak: 'Synthvivor knockdown/stun resistance buffed from 2 to 3.5. '
   - tweak: 'Synthvivor movement delay reintroduced and worsened, now a 1.4 movement
@@ -160,7 +160,7 @@
   - rscadd: T2s and below can now crawl under van by simply walking into them. T2s
       and below can no longer be pushed by the van and they are also able to drag
       stunned marines under the van.
-  - rscadd: Queens and Crushers can now push the truck, however, it will not crush
+  - rscadd: Kings and Crushers can now push the truck, however, it will not crush
       anything if it doesn't have a driver, nor will it open plasteel barricades.
   - tweak: Pipeline will now check tgui using the linter.
 2021-01-07:
@@ -251,7 +251,7 @@
   - tweak: Hive Status now uses TGUI
   - experiment: Hive Status revamped
   - rscadd: You can now collapse sections of hive status
-  - rscadd: Queen now has hive status buttons to heal and give plasma while ovi'd
+  - rscadd: King now has hive status buttons to heal and give plasma while ovi'd
   - rscadd: Can now set a max health filter for the xeno list
   - rscadd: Can now choose where the hive status search checks
   - tweak: There is no longer a "Watch" button next to yourself
@@ -307,7 +307,7 @@
       water tiles or beach tiles will also stop footprints from being made.
   - rscadd: Getting hit with xeno acid blood will give you the appropriate overlay
       on your armor or uniform.
-  - tweak: Queen can be gibbed again.
+  - tweak: King can be gibbed again.
 2021-01-11:
   BIgboyyo:
   - rscadd: 'Added a certain type of Cat with floppy ears, spawnable by admins. '
@@ -333,9 +333,9 @@
   - bugfix: Trucks can no longer self repair whilst inside the vehicle.
   - bugfix: Manually fixed the bad regexes with some of the tgui inputs.
   - bugfix: Fixed CAS tgui
-  - bugfix: Fixed queen colours for the queen eye. Also fixed Queen eye ignoring other
+  - bugfix: Fixed king colours for the king eye. Also fixed King eye ignoring other
       hives.
-  - rscadd: Gave a different colour when queens point.
+  - rscadd: Gave a different colour when kings point.
   - tweak: The TGUI Input List will now autofocus on the first element.
   monkeysfist101:
   - rscadd: Added new brand of cigars to vendors on both Almayer and groundside.
@@ -367,7 +367,7 @@
       spawn. You can choose your traits via the "Character Traits" button in character
       preferences.
   - rscadd: Moved the ability to speak languages into traits.
-  - tweak: Xenos will now get pooled larva even if there is no queen.
+  - tweak: Xenos will now get pooled larva even if there is no king.
   - tweak: Makes bloody feet into a bespoke element to lower memory usage.
   alardun:
   - rscadd: Added the nailgun, a hybrid tool/weapon found in most colonies in the
@@ -557,9 +557,9 @@
   - rscdel: 'ACID Harness can now be modified by the user independently of skill limits. '
 2021-01-18:
   Fourkhan:
-  - tweak: Decreased the total percentage health healed by Queen Heal from 40% to
+  - tweak: Decreased the total percentage health healed by King Heal from 40% to
       30%.
-  - tweak: Removed the 75 instant HP granted by Queen heal.
+  - tweak: Removed the 75 instant HP granted by King heal.
   - tweak: Increased the CD of Empower by 4 seconds.
   - tweak: Crusher HP decreased by 50.
   - tweak: Duration of Crusher's shield (Master of Defense) decreased by 3 seconds.
@@ -570,9 +570,9 @@
   - tweak: Warden shield now expires after 1 minute.
   TheDonkified:
   - bugfix: Flamer sentry has IFF again.
-  - bugfix: Queen heal should work after someone tries to set you on fire while you're
+  - bugfix: King heal should work after someone tries to set you on fire while you're
       on fire.
-  - bugfix: Queen heal should work after Rejuvenating a xeno on fire.
+  - bugfix: King heal should work after Rejuvenating a xeno on fire.
 2021-01-19:
   BIgboyyo:
   - maptweak: 'LV Caves has been reworked to (hopefully) be more enjoyable to fight
@@ -593,7 +593,7 @@
   - tweak: Lurker slash variance changes reverted. It now has a consistent 35 slash
       damage.
   - tweak: Staff "Rejuvenate" verb on xenos resets all cooldowns.
-  - tweak: There is no longer a delay to evolve for queen.
+  - tweak: There is no longer a delay to evolve for king.
   senjx:
   - rscdel: Removed the permanently-fixed S8 scope from the M4RA battle rifle.
   - rscadd: The M4RA battle rifle now has a modular top attachment slot. It can mount
@@ -615,7 +615,7 @@
   - tweak: MK1 has had its firing rate increased.
   - rscadd: MK1 can now load regular pulse rifle AP mags and regular pulse rifle mags.
   TheDonkified:
-  - bugfix: Xenos who fail to be ignited by incendiary bullets (ie queen) will now
+  - bugfix: Xenos who fail to be ignited by incendiary bullets (ie king) will now
       properly send them a message when they are shot by one.
   - tweak: Ravager can be set on fire now. They will not receive any damage but it
       will block heals and recovery pheromones.
@@ -749,10 +749,10 @@
       a UI button or a verb.
   - bugfix: Fixed how evolving calculates the number of open slots.
   - bugfix: Hive status displays the correct number of T2s and T3s now.
-  - rscadd: Queen can no longer be gibbed.
+  - rscadd: King can no longer be gibbed.
   - tweak: Hive status displays the amount of guaranteed slots left.
-  - tweak: Hive status will now update every 2 seconds when queen is alive and every
-      10 seconds when queen is dead.
+  - tweak: Hive status will now update every 2 seconds when king is alive and every
+      10 seconds when king is dead.
   - tweak: Converted spaces to tabs in the hive_status.dm file.
   - bugfix: Reverted an accidental hidden buff that made T3 slots equal to 25% of
       the total hive count rather than 20%.

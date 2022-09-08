@@ -11069,7 +11069,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/civres_blue)
 "gGx" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "gGB" = (
@@ -14245,7 +14245,7 @@
 	},
 /area/fiorina/station/power_ring)
 "iGX" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "iHn" = (
@@ -22974,8 +22974,8 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/queen.dmi';
-	icon_state = "Normal Queen Knocked Down";
+	icon = 'icons/mob/hostiles/king.dmi';
+	icon_state = "Normal King Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
 	pixel_x = -15;
@@ -23562,7 +23562,7 @@
 	},
 /area/fiorina/station/power_ring)
 "oiR" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -33497,7 +33497,7 @@
 	},
 /area/fiorina/station/chapel)
 "uqo" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitegreencorner"
@@ -36321,7 +36321,7 @@
 	},
 /area/fiorina/station/botany)
 "wcP" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "wcW" = (

@@ -70,7 +70,7 @@
 			last_living_human = H
 		if(last_living_human)
 			// Tell the xenos where the human is.
-			xeno_announcement("I sense the last tallhost hiding in [get_area(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+			xeno_announcement("I sense the last tallhost hiding in [get_area(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[KING_MOTHER_ANNOUNCE]"))
 			// Tell the human he is the last guy.
 			if(last_living_human.client)
 				to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Panic creeps up your spine. You realize that you are the last survivor."))

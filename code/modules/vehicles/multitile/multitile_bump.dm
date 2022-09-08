@@ -534,7 +534,7 @@
 			else if(dir_between == reverse_dir[dir])	// rear hit (facing directly away from the vehicle)
 				takes_damage = TRUE
 			//side hit
-			else if(caste.caste_type == XENO_CASTE_QUEEN)	// queen blocks even with sides
+			else if(caste.caste_type == XENO_CASTE_KING)	// king blocks even with sides
 				blocked = TRUE
 			else
 				momentum_penalty = TRUE
@@ -589,8 +589,8 @@
 		H.livingmob_interact(src)
 
 	if(takes_damage)
-		//This could 100% be coded as max(VEHICLE_TRAMPLE_DAMAGE_MIN, 22.5-4.5*X.tier) but I think this is more readable, plus it lets me avoid a special case for Queen/Larva/Abom.
-		var/damage_percentage = VEHICLE_TRAMPLE_DAMAGE_SPECIAL // Queen and abomb
+		//This could 100% be coded as max(VEHICLE_TRAMPLE_DAMAGE_MIN, 22.5-4.5*X.tier) but I think this is more readable, plus it lets me avoid a special case for King/Larva/Abom.
+		var/damage_percentage = VEHICLE_TRAMPLE_DAMAGE_SPECIAL // King and abomb
 		switch (tier)
 			if (1)
 				damage_percentage = VEHICLE_TRAMPLE_DAMAGE_TIER_1 // 2.5 * 9 = 22.5

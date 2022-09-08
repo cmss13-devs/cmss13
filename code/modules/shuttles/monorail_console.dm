@@ -28,7 +28,7 @@
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 
 	if(!isXeno(user) && (onboard || is_ground_level(z)))
-		if(shuttle.queen_locked)
+		if(shuttle.king_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
 				SPAN_NOTICE("You try to take back the control over the monorail. It will take around 1 minute."))
@@ -36,7 +36,7 @@
 					if(user.lying)
 						return 0
 					shuttle.last_locked = world.time
-					shuttle.queen_locked = 0
+					shuttle.king_locked = 0
 					shuttle.last_door_override = world.time
 					shuttle.door_override = 0
 					user.visible_message(SPAN_NOTICE("The [src] blinks with blue lights."),
@@ -49,7 +49,7 @@
 				else
 					to_chat(user, SPAN_NOTICE("You interact with the pilot's console and re-enable remote control."))
 					shuttle.last_locked = world.time
-					shuttle.queen_locked = 0
+					shuttle.king_locked = 0
 		if(shuttle.door_override)
 			if(world.time < shuttle.last_door_override + MONORAIL_LOCK_COOLDOWN)
 				to_chat(user, SPAN_WARNING("You can't seem to reverse the door override. Please wait another [time_left_until(shuttle.last_door_override + MONORAIL_LOCK_COOLDOWN, world.time, 1 MINUTES)] minutes before trying again."))
@@ -141,7 +141,7 @@
 		if(shuttle.recharging) //Prevent the shuttle from moving again until it finishes recharging. This could be made to look better by using the shuttle computer's visual UI.
 			to_chat(usr, SPAN_WARNING("The monorail is loading and unloading. Please hold."))
 
-		if(shuttle.queen_locked && !isXenoQueen(usr))
+		if(shuttle.king_locked && !isXenoKing(usr))
 			to_chat(usr, SPAN_WARNING("The monorail isn't responding to prompts, it looks like remote control was disabled."))
 			return
 
@@ -156,11 +156,11 @@
 			if(shuttle.locked)
 				return
 
-			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
-			if(isXenoQueen(usr) && shuttle.location == 1 && shuttle.alerts_allowed)
+			//Alert code is the King is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
+			if(isXenoKing(usr) && shuttle.location == 1 && shuttle.alerts_allowed)
 				var/i = alert("Confirm hijack and launch?", "WARNING", "Yes", "No")
 
-				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging)
+				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.king_locked || shuttle.recharging)
 					return
 
 				if(istype(shuttle, /datum/shuttle/ferry/marine) && is_ground_level(z) && i == "Yes")
@@ -171,10 +171,10 @@
 					//round_statistics.count_hijack_mobs_for_statistics()
 					marine_announcement("Unauthorized monorail departure detected", "CORSAT Monorail Authority Alert", 'sound/misc/notice2.ogg')
 					to_chat(usr, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					var/mob/living/carbon/Xenomorph/Queen/Q = usr // typechecked above
-					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal crawler to depart! Rejoice!"), 3 ,Q.hivenumber)
+					var/mob/living/carbon/Xenomorph/King/Q = usr // typechecked above
+					xeno_message(SPAN_XENOANNOUNCE("The King has commanded the metal crawler to depart! Rejoice!"), 3 ,Q.hivenumber)
 
-					playsound(src, 'sound/misc/queen_alarm.ogg')
+					playsound(src, 'sound/misc/king_alarm.ogg')
 					shuttle1.launch(src)
 
 				else if(i == "No")

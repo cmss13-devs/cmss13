@@ -2,14 +2,14 @@
 #define UPP_COMMAND_ANNOUNCE	"UPP Command Announcement"
 #define CLF_COMMAND_ANNOUNCE	"CLF Command Announcement"
 #define PMC_COMMAND_ANNOUNCE	"PMC Command Announcement"
-#define QUEEN_ANNOUNCE			"The words of the Queen reverberate in your head..."
-#define QUEEN_MOTHER_ANNOUNCE	"Queen Mother Psychic Directive"
-#define XENO_GENERAL_ANNOUNCE	"You sense something unusual..."	//general xeno announcement that don't involve Queen, for nuke for example
+#define KING_ANNOUNCE			"The words of the King reverberate in your head..."
+#define KING_MOTHER_ANNOUNCE	"King Mother Psychic Directive"
+#define XENO_GENERAL_ANNOUNCE	"You sense something unusual..."	//general xeno announcement that don't involve King, for nuke for example
 #define YAUTJA_ANNOUNCE			"You receive a message from your ship AI..."	//preds announcement
 #define HIGHER_FORCE_ANNOUNCE 	SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
 
 //xenomorph hive announcement
-/proc/xeno_announcement(var/message, var/hivenumber, var/title = QUEEN_ANNOUNCE)
+/proc/xeno_announcement(var/message, var/hivenumber, var/title = KING_ANNOUNCE)
 	var/list/targets = GLOB.living_xeno_list + GLOB.dead_mob_list
 	if(hivenumber == "everything")
 		for(var/mob/M in targets)
@@ -17,7 +17,7 @@
 			if(!isobserver(X) && !istype(X))	//filter out any potential non-xenomorphs/observers mobs
 				targets.Remove(X)
 
-		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
+		announcement_helper(message, title, targets, sound(get_sfx("king"),wait = 0,volume = 50))
 	else
 		for(var/mob/M in targets)
 			if(isobserver(M))
@@ -26,7 +26,7 @@
 			if(!istype(X) || !X.ally_of_hivenumber(hivenumber))	//additionally filter out those of wrong hive
 				targets.Remove(X)
 
-		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
+		announcement_helper(message, title, targets, sound(get_sfx("king"),wait = 0,volume = 50))
 
 
 //general marine announcement

@@ -83,14 +83,14 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
-/obj/effect/overlay/temp/point/big/queen
+/obj/effect/overlay/temp/point/big/king
 	icon_state = "big_arrow_grey"
 	invisibility = INVISIBILITY_MAXIMUM
 
 	var/list/client/clients
 	var/image/self_icon
 
-/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(var/client/C)
+/obj/effect/overlay/temp/point/big/king/proc/show_to_client(var/client/C)
 	if(!C)
 		return
 
@@ -98,7 +98,7 @@
 	clients |= C
 
 
-/obj/effect/overlay/temp/point/big/queen/Initialize(mapload, mob/owner)
+/obj/effect/overlay/temp/point/big/king/Initialize(mapload, mob/owner)
 	. = ..()
 
 	self_icon = image(icon, src, icon_state = icon_state)
@@ -114,7 +114,7 @@
 		var/mob/M = i
 		show_to_client(M.client)
 
-/obj/effect/overlay/temp/point/big/queen/Destroy()
+/obj/effect/overlay/temp/point/big/king/Destroy()
 	for(var/i in clients)
 		var/client/C = i
 		if(!C) continue

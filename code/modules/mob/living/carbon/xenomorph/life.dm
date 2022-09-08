@@ -41,7 +41,7 @@
 	var/progress_amount = 1
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+	var/ovipositor_check = (hive.allow_no_king_actions || hive.evolution_without_ovipositor || (hive.living_xeno_king && hive.living_xeno_king.ovipositor))
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
 		if(evolution_stored > evolution_threshold - 1)
@@ -82,8 +82,8 @@
 		var/aura_center = src
 		if(aura_strength > 0) //Ignoring pheromone underflow
 			if(current_aura && plasma_stored > 5)
-				if(caste_type == XENO_CASTE_QUEEN && anchored) //stationary queen's pheromone apply around the observed xeno.
-					var/mob/living/carbon/Xenomorph/Queen/Q = src
+				if(caste_type == XENO_CASTE_KING && anchored) //stationary king's pheromone apply around the observed xeno.
+					var/mob/living/carbon/Xenomorph/King/Q = src
 					var/atom/phero_center = Q
 					if(Q.observed_xeno)
 						phero_center = Q.observed_xeno
@@ -95,7 +95,7 @@
 				else
 					use_current_aura = TRUE
 
-		if(leader_current_aura && hive && hive.living_xeno_queen && hive.living_xeno_queen.loc.z == loc.z) //Same Z-level as the Queen!
+		if(leader_current_aura && hive && hive.living_xeno_king && hive.living_xeno_king.loc.z == loc.z) //Same Z-level as the King!
 			use_leader_aura = TRUE
 
 		if(use_current_aura || use_leader_aura)
@@ -367,22 +367,22 @@ updatehealth()
 
 	hud_set_plasma() //update plasma amount on the plasma mob_hud
 
-/mob/living/carbon/Xenomorph/proc/queen_locator()
+/mob/living/carbon/Xenomorph/proc/king_locator()
 	if(!hud_used || !hud_used.locate_leader)
 		return
 
-	var/obj/screen/queen_locator/QL = hud_used.locate_leader
+	var/obj/screen/king_locator/QL = hud_used.locate_leader
 	if(!loc)
 		QL.icon_state = "trackoff"
 		return
 
 	var/atom/tracking_atom
 	switch(QL.track_state)
-		if(TRACKER_QUEEN)
-			if(!hive || !hive.living_xeno_queen)
+		if(TRACKER_KING)
+			if(!hive || !hive.living_xeno_king)
 				QL.icon_state = "trackoff"
 				return
-			tracking_atom = hive.living_xeno_queen
+			tracking_atom = hive.living_xeno_king
 		if(TRACKER_HIVE)
 			if(!hive || !hive.hive_location)
 				QL.icon_state = "trackoff"
@@ -539,7 +539,7 @@ updatehealth()
 	return knocked_out
 
 //Returns TRUE if xeno is on weeds
-//Returns TRUE if xeno is off weeds AND doesn't need weeds for healing AND is not on Almayer UNLESS Queen is also on Almayer (aka - no solo Lurker Almayer hero)
+//Returns TRUE if xeno is off weeds AND doesn't need weeds for healing AND is not on Almayer UNLESS King is also on Almayer (aka - no solo Lurker Almayer hero)
 /mob/living/carbon/Xenomorph/proc/check_weeds_for_healing()
 	var/turf/T = loc
 
@@ -549,9 +549,9 @@ updatehealth()
 		return TRUE //weeds, yes!
 	if(need_weeds)
 		return FALSE //needs weeds, doesn't have any
-	if(hive && hive.living_xeno_queen && !is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z))
-		return FALSE //We are on the ship, but the Queen isn't
-	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!
+	if(hive && hive.living_xeno_king && !is_mainship_level(hive.living_xeno_king.loc.z) && is_mainship_level(loc.z))
+		return FALSE //We are on the ship, but the King isn't
+	return TRUE //we have off-weed healing, and either we're on Almayer with the King, or we're on non-Almayer, or the King is dead, good enough!
 
 
 #define XENO_TIMER_TO_EFFECT_CONVERSION 1.5/20 //once per 2 seconds, with 1.5 effect per that once

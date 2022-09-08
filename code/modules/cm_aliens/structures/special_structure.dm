@@ -56,7 +56,7 @@
 /obj/effect/alien/resin/special/Destroy()
 	if(linked_hive)
 		linked_hive.remove_special_structure(src)
-		if(linked_hive.living_xeno_queen)
+		if(linked_hive.living_xeno_king)
 			xeno_message("Hive: \A [name] has been destroyed at [sanitize_area(get_area_name(src))]!", 3, linked_hive.hivenumber)
 	linked_hive = null
 	STOP_PROCESSING(SSfastobj, src)

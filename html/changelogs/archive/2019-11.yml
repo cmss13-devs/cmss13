@@ -10,7 +10,7 @@
   - tweak: Decreased the amount the barrel charger nerfs accuracy and fire delay.
   - tweak: Burrowed larva no longer count towards tier 3 slots.
   - tweak: Xenos now have 5 minutes of free evolution at roundstart regardless of
-      whether or not the Queen is on her Ovi.
+      whether or not the King is on her Ovi.
   Jeser:
   - rscadd: Added assisted reload for RPG. In order to perform an assisted reload,
       RPG operator should wield rocket launcher, marine with rocket should stand right
@@ -235,7 +235,7 @@
       Losch]
   - bugfix: Can now throw stuff into disposals bins. [Wintermote]
   - bugfix: Fixes visual bug with leader star and pheromone HUD icons not updating
-      when queen dies, deovis, etc. [Vicacrov/Watermelon]
+      when king dies, deovis, etc. [Vicacrov/Watermelon]
   - bugfix: You cannot climb structures through diagonals. [Vicacrov]
   - bugfix: When burn damage is patched up, the {B} part should remove now. [Ranged]
   - bugfix: When you ghost, mob will properly reflect that you have ghosted.

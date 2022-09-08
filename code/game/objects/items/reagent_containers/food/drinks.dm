@@ -210,7 +210,7 @@
 
 /obj/item/reagent_container/food/drinks/tea
 	name = "\improper Duke Purple Tea"
-	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
+	desc = "An insult to Duke Purple is an insult to the Space King! Any proper gentleman will fight you, if you sully this tea."
 	icon_state = "tea"
 	item_state = "coffee"
 	center_of_mass = "x=16;y=14"

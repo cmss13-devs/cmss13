@@ -777,7 +777,7 @@
 
 	if(isCarbonSizeXeno(L))
 		var/mob/living/carbon/Xenomorph/X = L
-		if(X.tier != 1) // 0 is queen!
+		if(X.tier != 1) // 0 is king!
 			return
 	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
 		return
@@ -807,7 +807,7 @@
 	//If there's an obstacle on the far side, superslow and do extra damage.
 	if(isCarbonSizeXeno(L)) //Unless they're a strong xeno, in which case the slowdown is drastically reduced
 		var/mob/living/carbon/Xenomorph/X = L
-		if(X.tier != 1) // 0 is queen!
+		if(X.tier != 1) // 0 is king!
 			super_slowdown_duration = 0.5
 	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
 		super_slowdown_duration = 0.5
@@ -2386,7 +2386,7 @@
 
 	shell_speed = AMMO_SPEED_TIER_3
 
-/datum/ammo/xeno/toxin/queen
+/datum/ammo/xeno/toxin/king
 	name = "neurotoxic spit"
 	spit_cost = 50
 	effect_power = 2
@@ -2394,7 +2394,7 @@
 	accuracy = HIT_ACCURACY_TIER_5*2
 	max_range = 6 - 1
 
-/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/xeno/toxin/king/on_hit_mob(mob/M,obj/item/projectile/P)
 	neuro_callback.Invoke(M, effect_power, TRUE)
 
 /datum/ammo/xeno/toxin/shotgun

@@ -2,7 +2,7 @@
 	// i mean so basically im braum
 	name = "STRAIN: Praetorian - Warden"
 	description = "You trade your corrosive acid and your dash for an internal hitpoint pool. The pool is filled by your spits and slashes, and can be spent to protect your allies and yourself."
-	flavor_description = "Only in Death does your sisters' service to the Queen end. Keep them fighting using your own blood and claws."
+	flavor_description = "Only in Death does your sisters' service to the King end. Keep them fighting using your own blood and claws."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_PRAETORIAN)  	// Only bae

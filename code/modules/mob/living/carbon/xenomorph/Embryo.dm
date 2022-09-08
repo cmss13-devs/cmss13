@@ -179,8 +179,8 @@
 		SSround_recording.recorder.track_player(new_xeno)
 
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
-		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
-		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
+		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the King. If there's no King, you can become the King yourself by evolving into a drone.</B>")
+		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the king!')")
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
 	stage = 6
@@ -235,7 +235,7 @@
 			round_statistics.total_larva_burst++
 		burstcount++
 
-		if(!L.ckey && L.poolable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
+		if(!L.ckey && L.poolable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_king && hive.living_xeno_king.z == loc.z)
 			L.visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
 			if(round_statistics && !L.statistic_exempt)
 				round_statistics.track_new_participant(faction, -1) // keep stats sane
@@ -244,7 +244,7 @@
 			qdel(L)
 
 		if(!victim.first_xeno)
-			to_chat(L, SPAN_XENOHIGHDANGER("The Queen's will overwhelms your instincts..."))
+			to_chat(L, SPAN_XENOHIGHDANGER("The King's will overwhelms your instincts..."))
 			to_chat(L, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
 			log_attack("[key_name(victim)] chestbursted, the larva was [key_name(L)].") //this is so that admins are not spammed with los logs
 

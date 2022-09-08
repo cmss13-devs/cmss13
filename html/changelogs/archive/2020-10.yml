@@ -251,11 +251,11 @@
   - bugfix: Fixed warden gaining internal hitpoints from spitting at objects.
   - bugfix: Fixed all larvas going to only one hive in XvX.
   - bugfix: Observers can now see end-round statistics
-  - bugfix: Fixed players being unable to unlock Queen due to a timelock bug.
+  - bugfix: Fixed players being unable to unlock King due to a timelock bug.
   - bugfix: Fixed timelocks not calculating correctly.
 2020-10-18:
   Vampmare:
-  - rscadd: Xenos now get some initial defenses/structs setup at the chosen Queen
+  - rscadd: Xenos now get some initial defenses/structs setup at the chosen King
       spawn. Should include a hive core and spawn pool, if I missed any spawn point
       with those two, report it as a bug.
   Waltermeldron:
@@ -304,7 +304,7 @@
   - tweak: Warrior lunge no longer works on T2 mobs.
 2020-10-23:
   Carlarc:
-  - rscadd: Vastly reduced queen dragging speed. Get a runner to help you screechdrag
+  - rscadd: Vastly reduced king dragging speed. Get a runner to help you screechdrag
       now.
   - rscadd: When a base warrior gains slash shield, they will roar and get the warden
       shield overlay.

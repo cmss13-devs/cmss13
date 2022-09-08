@@ -202,7 +202,7 @@
   sg2002:
   - bugfix: Resin Whisperer Hivelord can no longer build thick structures selected
       before mutating.
-  - bugfix: The Queen can no longer build structures selected for her eye before de-oving.
+  - bugfix: The King can no longer build structures selected for her eye before de-oving.
 2021-11-19:
   Geeves:
   - rscadd: Yautja translators have received some tweaks.
@@ -411,7 +411,7 @@
   - bugfix: Clan bracers can no longer be stripped. Bracers now only clamp when they're
       on the gloves slot.
   Jeser:
-  - tweak: Queen now deals 150% of damage to multitile vehicles to discourage blocking.
+  - tweak: King now deals 150% of damage to multitile vehicles to discourage blocking.
       Ravagers still do 200% of damage.
   - experiment: Temporary PARS-159 Boyars Dual Cannon tweaks until vehicle weapon
       system overhaul is finished.
@@ -486,8 +486,8 @@
   Stan_Albatross:
   - bugfix: removed the ability of burrowed xenos to overwatch, preventing burrowers
       from being able to bypass their screen vision while burrowing.
-  - bugfix: applied incapacitation and buckled checks to Queen overwatching via the
-      Queen locator
+  - bugfix: applied incapacitation and buckled checks to King overwatching via the
+      King locator
 2021-11-29:
   Geeves:
   - bugfix: Yautja translator type preference now properly saves.
@@ -495,7 +495,7 @@
       in their overhead chat.
   - tweak: Marine Tacmaps no longer care about which squad is being overwatched, all
       squads will always have their regular squad colors.
-  - rscadd: Queens on ovi now have access to a Xeno Tacmap in the Alien tabs, as 'View
+  - rscadd: Kings on ovi now have access to a Xeno Tacmap in the Alien tabs, as 'View
       Xeno Tacmap'. The structure of the cave isn't shrouded for them, but it does
       not showcase human movement, only xeno.
   - rscadd: Yautja hunter globes now have a combination of Marine and Xeno tacmaps.

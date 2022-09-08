@@ -39532,7 +39532,7 @@
 /area/corsat/gamma/foyer)
 "eeG" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -51726,7 +51726,7 @@
 "mTz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -59490,7 +59490,7 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "sFF" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "sFI" = (

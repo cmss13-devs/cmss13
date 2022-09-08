@@ -328,7 +328,7 @@
   - tweak: Added a stamp for the RO to use definitively. Changed default stamp stamp
       overlay.
   - tweak: RO and XO no longer spawn with sidearms.
-  - rscadd: Queen locking the dropship will now enable weeds around LZ if it isn't
+  - rscadd: King locking the dropship will now enable weeds around LZ if it isn't
       already active.
   - bugfix: Hijack now deletes xenos on take-off, rather than as soon as the dropship
       is spooled up.

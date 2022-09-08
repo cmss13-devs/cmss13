@@ -210,7 +210,7 @@
       symmetrical.
   - tweak: The View Objectives Clues verb was updated. Now it shows way more information
       on the current DEFCON objectives. It also shows the current DEFCON percentage.
-  - tweak: The roundend list of queens, predators, and medals now display in a more
+  - tweak: The roundend list of kings, predators, and medals now display in a more
       rapid succession.
   - rscdel: The roundend In Flanders Fields section was removed, the DEFCON list was
       moved to View Objectives Clues (in a simplified version).

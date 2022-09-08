@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/alien
 	name = "Drone"
 	var/caste_name = null
-	desc = "A builder of hives. Only drones may evolve into Queens."
+	desc = "A builder of hives. Only drones may evolve into Kings."
 	icon = 'icons/mob/hostiles/drone.dmi'
 	icon_gib = "syndicate_gib"
 	layer = BIG_XENO_LAYER

@@ -157,7 +157,7 @@
 	UI_HEALTH_LOC 				= "EAST-1:28,7:13"
 
 	var/ui_alien_nightvision 	= "EAST-1:28,9:13"
-	var/ui_queen_locator 		= "EAST-1:28,8:13"
+	var/ui_king_locator 		= "EAST-1:28,8:13"
 	var/ui_alienplasmadisplay 	= "EAST-1:28,6:13"
 	var/ui_alienarmordisplay 	= "EAST-1:28,5:13"
 	var/ui_mark_locator 		= "EAST-1:28,10:13"

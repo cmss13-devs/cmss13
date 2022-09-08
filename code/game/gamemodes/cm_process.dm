@@ -1,5 +1,5 @@
 
-#define QUEEN_DEATH_COUNTDOWN 			 10 MINUTES //10 minutes. Can be changed into a variable if it needs to be manipulated later.
+#define KING_DEATH_COUNTDOWN 			 10 MINUTES //10 minutes. Can be changed into a variable if it needs to be manipulated later.
 
 #define MODE_INFESTATION_X_MAJOR		"Xenomorph Major Victory"
 #define MODE_INFESTATION_M_MAJOR		"Marine Major Victory"
@@ -26,8 +26,8 @@ This is meant for infestation type game modes for right now (marines vs. aliens,
 of predators), but can be added to include variant game modes (like humans vs. humans).
 */
 
-//If the queen is dead after a period of time, this will end the game.
-/datum/game_mode/proc/check_queen_status()
+//If the king is dead after a period of time, this will end the game.
+/datum/game_mode/proc/check_king_status()
 	return
 
 //===================================================\\
@@ -54,11 +54,11 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_xenomorphs()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	if(LAZYLEN(xenomorphs) || LAZYLEN(dead_queens))
+	if(LAZYLEN(xenomorphs) || LAZYLEN(dead_kings))
 		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("<br>The xenomorph Queen(s) were:")
+		dat += SPAN_ROUNDBODY("<br>The xenomorph King(s) were:")
 		var/mob/M
-		for (var/msg in dead_queens)
+		for (var/msg in dead_kings)
 			dat += msg
 		for(var/datum/mind/X in xenomorphs)
 			if(!istype(X))
@@ -67,7 +67,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			M = X.current
 			if(!M || !M.loc)
 				M = X.original
-			if(M && M.loc && isXenoQueen(M) && M.stat != DEAD) // Dead queens handled separately
+			if(M && M.loc && isXenoKing(M) && M.stat != DEAD) // Dead kings handled separately
 				dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("(SURVIVED)")]"
 
 		to_world("[dat]")
@@ -219,7 +219,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	if (world.time > nextAdminBioscan)
 		nextAdminBioscan += 30 MINUTES//every 30 minutes, straight
 		//Message the admins first before we tweak the numbers
-		message_staff("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
+		message_staff("A bioscan/King Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
 
 	//Pick one random location to disclose
 	var/RandomHostsPlanetLocation = ""
@@ -269,14 +269,14 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.
 		for(var/i in GLOB.living_xeno_list)
 			var/mob/M = i
-			M << sound(get_sfx("queen"), wait = 0, volume = 50)
-			to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
+			M << sound(get_sfx("king"), wait = 0, volume = 50)
+			to_chat(M, SPAN_XENOANNOUNCE("The King Mother reaches into your mind from worlds away."))
 			var/metalhive_hosts = "[numHostsShip ? "approximately [numHostsShip]":"no"]"
 			var/plural = "[!numHostsShip || numHostsShip > 1 ? "s":""]"
 			var/metalhive_location = "[numHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""]"
 			var/planet_hosts = "[numHostsPlanet ? "[numHostsPlanet]":"none"]"
 			var/planet_location = "[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""]"
-			to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location]."))
+			to_chat(M, SPAN_XENOANNOUNCE("To my children and their King. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location]."))
 
 
 	if(world.time > nextHumanBioscan)
@@ -354,7 +354,7 @@ Only checks living mobs with a client attached.
 
 
 /*
-#undef QUEEN_DEATH_COUNTDOWN
+#undef KING_DEATH_COUNTDOWN
 #undef MODE_INFESTATION_X_MAJOR
 #undef MODE_INFESTATION_M_MAJOR
 #undef MODE_INFESTATION_X_MINOR

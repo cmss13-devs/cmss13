@@ -75,7 +75,7 @@
 		// Makes attacking hives very profitable if they can successfully wipe them out without suffering any significant losses
 		var/mob/living/carbon/Xenomorph/X = M
 		if(X.hivenumber != linked_hive.hivenumber)
-			if(isXenoQueen(X))
+			if(isXenoKing(X))
 				larva_amount = 5
 			else
 				larva_amount += max(X.tier, 1) // Now you always gain larva.

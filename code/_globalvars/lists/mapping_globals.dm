@@ -9,7 +9,7 @@ GLOBAL_DATUM(vehicle_elevator, /turf)
 GLOBAL_REFERENCE_LIST_INDEXED(nmreaders, /datum/nmreader, name)
 
 GLOBAL_LIST_EMPTY(spawns_by_job)
-GLOBAL_LIST_EMPTY(queen_spawns)
+GLOBAL_LIST_EMPTY(king_spawns)
 GLOBAL_LIST_EMPTY(xeno_spawns)
 GLOBAL_LIST_EMPTY(xeno_hive_spawns)
 GLOBAL_LIST_EMPTY(survivor_spawns)

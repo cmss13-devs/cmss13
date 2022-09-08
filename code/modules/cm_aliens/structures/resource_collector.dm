@@ -20,7 +20,7 @@
 	. = ..()
 	if(hive_ref)
 		linked_hive = hive_ref
-		if(linked_hive.living_xeno_queen)
+		if(linked_hive.living_xeno_king)
 			var/current_area_name = get_area_name(src)
 			xeno_message("Hive: \A [src] has been constructed at [sanitize_area(current_area_name)]!", 3, linked_hive.hivenumber)
 	if(new_node)
@@ -49,7 +49,7 @@
 	var/current_area_name = get_area_name(src)
 	if(!connected_node)
 		visible_message(SPAN_DANGER("\The [src] groans and collapses as its contents are reduced to nothing!"))
-		if(linked_hive.living_xeno_queen)
+		if(linked_hive.living_xeno_king)
 			xeno_message("Hive: \A [src] has been depleted at [sanitize_area(current_area_name)]!", 3, linked_hive.hivenumber)
 		qdel(src)
 		return

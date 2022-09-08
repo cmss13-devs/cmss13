@@ -28,25 +28,25 @@ GLOBAL_LIST_INIT(hive_state, setup_hive_states())
 	return UI_CLOSE
 
 /**
- * tgui state: hive_state_queen
+ * tgui state: hive_state_king
  *
- * Checks that the user is part of a hive and is the leading queen of that hive.
+ * Checks that the user is part of a hive and is the leading king of that hive.
  *
  */
 
-GLOBAL_LIST_INIT(hive_state_queen, setup_hive_queen_states())
+GLOBAL_LIST_INIT(hive_state_king, setup_hive_king_states())
 
-/proc/setup_hive_queen_states()
+/proc/setup_hive_king_states()
 	. = list()
 	for(var/hivenumber in GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		.[hive.internal_faction] = new/datum/ui_state/hive_state/queen(hive.hivenumber)
+		.[hive.internal_faction] = new/datum/ui_state/hive_state/king(hive.hivenumber)
 
-/datum/ui_state/hive_state/queen/can_use_topic(src_object, mob/user)
+/datum/ui_state/hive_state/king/can_use_topic(src_object, mob/user)
 	. = ..()
 	if(. == UI_CLOSE)
 		return
 
-	if(hive.living_xeno_queen == user)
+	if(hive.living_xeno_king == user)
 		return UI_INTERACTIVE
 	return UI_UPDATE

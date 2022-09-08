@@ -5,7 +5,7 @@
 /mob/living/carbon/Xenomorph/langchat_color = "#b491c8"
 /mob/living/carbon/Xenomorph/Carrier/langchat_height = 64
 /mob/living/carbon/Xenomorph/Ravager/langchat_height = 64
-/mob/living/carbon/Xenomorph/Queen/langchat_height = 64
+/mob/living/carbon/Xenomorph/King/langchat_height = 64
 /mob/living/carbon/Xenomorph/Praetorian/langchat_height = 64
 /mob/living/carbon/Xenomorph/Hivelord/langchat_height = 64
 /mob/living/carbon/Xenomorph/Defender/langchat_height = 48

@@ -7,8 +7,8 @@
 	if(!hive)
 		return
 
-	if((!hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !hive.allow_no_queen_actions) //No Hive status on WO
-		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+	if((!hive.living_xeno_king || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !hive.allow_no_king_actions) //No Hive status on WO
+		to_chat(src, SPAN_WARNING("There is no King. You are alone."))
 		return
 
 	if(interference)
@@ -25,8 +25,8 @@
 	if(!hive)
 		return
 
-	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO
-		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+	if((!hive.living_xeno_king || Check_WO()) && !hive.allow_no_king_actions) //No Hive status on WO
+		to_chat(src, SPAN_WARNING("There is no King. You are alone."))
 		return
 
 	if(interference)

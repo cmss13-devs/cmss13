@@ -304,7 +304,7 @@
   - rscadd: Examining rangefinders/designators now shows the last coordinates taken
       by rangefinder functionality.
   TheDonkified:
-  - bugfix: Dead queens are now listed at round end. Issues with living queens not
+  - bugfix: Dead kings are now listed at round end. Issues with living kings not
       being listed still need to be looked into.
   TobiNerd:
   - rscadd: When using the Synthesis Simulator in AMPLIFY, SUPPRESS or RELATE mode,
@@ -398,15 +398,15 @@
 2020-11-25:
   Carlarc:
   - rscadd: Many xenomorph abilities that were unmacroed now have an assigned macro.
-  - tweak: Planting weeds is set to Xeno-Primary-Action-One, except for queen.
+  - tweak: Planting weeds is set to Xeno-Primary-Action-One, except for king.
   - tweak: Toggling between spit types is set to Xeno-Primary-Action-Two (Including
-      for queen! Yes, she can switch between neuro and acid spit. Did you know you
+      for king! Yes, she can switch between neuro and acid spit. Did you know you
       can macro Screech with "Screech"? It activates it instantly, though.)
   - tweak: Switching between resin structure type is set to Xeno-Primary-Action-Two.
-      (Three, for queen.)
+      (Three, for king.)
   - tweak: Placing a resin structure down is set to Xeno-Primary-Action-Three. (Four,
-      for queen.)
-  - tweak: Queen's macros while on ovipositor are Xeno-Primary-Action-One for setting
+      for king.)
+  - tweak: King's macros while on ovipositor are Xeno-Primary-Action-One for setting
       leaders, -Two for healing, -Three for plasma, and -Four for devolving.
   - tweak: Hivelord's resin walker is set to Xeno-Primary-Action-Four.
   - tweak: Praetorian's Vanguard Cleave, and Warden Heal type can be toggled with
@@ -418,7 +418,7 @@
       a facehugger, and 4 for grabbing an egg.
   - tweak: Runner's long-range toggle is set to Xeno-Primary-Action-Three, and Boiler's
       to Xeno-Primary-Action-Four.
-  - rscadd: Queen can now banish and readmit xenomorphs off the ovipositor.
+  - rscadd: King can now banish and readmit xenomorphs off the ovipositor.
   TheDonkified:
   - tweak: AT rocket range is now 5 tiles max.
   - tweak: HE rocket range is now 6 tiles max.
@@ -508,11 +508,11 @@
       Lowered plasma gain a tier. Lowered max plasma 1000->800. Lost armour.
   - tweak: Dancer/Vanguard/Oppressor Praetorian, now has 25 armour. Dancer Praetorian,
       lost evasion.
-  - tweak: Queen, reduced health 1000->850, increased armour 30->35.
-  - rscadd: Ovipositor Queen gets a new ability Projected Resin, Queen can build resin
+  - tweak: King, reduced health 1000->850, increased armour 30->35.
+  - rscadd: Ovipositor King gets a new ability Projected Resin, King can build resin
       around a xeno she's currently overwatching, as long as the xeno has direct line
       sight.
-  - tweak: Ovipositor queen Heal and Plasma now have two separate cooldowns. Heal
+  - tweak: Ovipositor king Heal and Plasma now have two separate cooldowns. Heal
       now heals 40% of overwatched xenos max health over a 20 second period + 75 flat
       heal. Plasma fills up 50% of xenos max plasma instantly. Both of these affect
       a 5x5 AOE around the overwatched xeno.
@@ -565,7 +565,7 @@
   - bugfix: Holsters and G8 pouches worn in the armour slot were not visible on the
       character sprite when playing on Prison Station due to missing sprites.
   Waltermeldron:
-  - rscadd: Added the Queen Eye, where they are able to move around freely to anywhere
+  - rscadd: Added the King Eye, where they are able to move around freely to anywhere
       with weeds.
   - rscadd: 'Controls whilst in Eye Mode: CTRL-CLICK on a turf to teleport to a turf
       with weeds. CTRL-CLICK on a Xeno to observe it. No other abilities.'
@@ -616,9 +616,9 @@
   TheFlyingFlail:
   - bugfix: Added shoes to most survivor presets.
   Waltermeldron:
-  - rscadd: You can now point through the Queen eye. Only xenomorphs and observers
+  - rscadd: You can now point through the King eye. Only xenomorphs and observers
       can see this point.
-  - tweak: The Queen can no longer move off of a xeno whilst in eye mode as they are
+  - tweak: The King can no longer move off of a xeno whilst in eye mode as they are
       overwatching them if they the xeno is not on weeds. They are still able to teleport
       to weeds.
   - bugfix: Fixed ladders.

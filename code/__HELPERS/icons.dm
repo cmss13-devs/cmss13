@@ -599,7 +599,7 @@ proc/sort_atoms_by_layer(var/list/atoms)
 	if(A)
 		A.overlays.Remove(src)
 
-/mob/proc/flick_heal_overlay(time, color = "#00FF00") //used for warden and queen healing
+/mob/proc/flick_heal_overlay(time, color = "#00FF00") //used for warden and king healing
 	var/image/I = image('icons/mob/mob.dmi', src, "heal_overlay")
 	switch(icon_size)
 		if(48)

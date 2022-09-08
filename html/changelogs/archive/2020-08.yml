@@ -24,11 +24,11 @@
   - bugfix: '"Fixed a bug where Souto man was not dispensing diet souto."'
   - rscadd: '"ARES now greets marines when they wake up! At roundstart only."'
   - tweak: '"ARES snitching on Xenomorphs on the dropship now also has an audio cue."'
-  - bugfix: '"Fixed the Queen''s Gut skill applying the 15 minutes of cooldown at
+  - bugfix: '"Fixed the King''s Gut skill applying the 15 minutes of cooldown at
       the start of the gibbing, not upon finishing it."'
   - rscdel: '"Evacuation is now possible pre-13:00."'
   Waltermeldron:
-  - rscadd: Xenos can now pry open unpowered shutters. The Queen can pry open research
+  - rscadd: Xenos can now pry open unpowered shutters. The King can pry open research
       containment cell shutters.
   - tweak: Xenos open unpowered doors much faster than powered doors.
   - bugfix: Containment walls, lights and cameras can no longer be slashed.
@@ -156,7 +156,7 @@
       (instead of 10).
   - tweak: Acider Runner Acid Slashes acid recovery buffed from 5 to 10 per slash.
   Waltermeldron:
-  - tweak: Decreased Queen defuse timer for nukes from 15 seconds to 5 seconds
+  - tweak: Decreased King defuse timer for nukes from 15 seconds to 5 seconds
   - rscadd: Changed the Big Red CL spawn to spawn in as an R&D Assistant Manager.
       They outrank the CL, but belong to a separate division; they cannot and should
       not give orders to the CL.
@@ -202,7 +202,7 @@
   - tweak: Tweaked the Chem ERT objective description.
   - bugfix: If Chem ERT doesn't get a name for the chemical they need to retrieve
       they will instead be told to find chemicals with the DNA Disintegrating property.
-  - bugfix: Fixed the Queen not being able to pry open the CL cell shutter.
+  - bugfix: Fixed the King not being able to pry open the CL cell shutter.
 2020-08-12:
   NethIafin:
   - bugfix: fixed issues with entity deletion and detaching.
@@ -250,7 +250,7 @@
 2020-08-16:
   Jeser and Vampmare:
   - bugfix: Fixed roundstart initializations and survivor spawning being delayed by
-      Queens choosing Hive location.
+      Kings choosing Hive location.
   Waltermeldron:
   - bugfix: Fixed underbarrel flamer doing more damage than it should.
   - bugfix: Fixed inhand sprite for flamer tanks.
@@ -400,7 +400,7 @@
   - rscadd: Clans now have their own ships.
   - rscadd: Predators now span with their clan rank.
   - rscadd: Small HUD icon for predators, to signify which clan they belong to.
-  - bugfix: Fixed queen screech being inconsistent sometimes.
+  - bugfix: Fixed king screech being inconsistent sometimes.
   - bugfix: Predship now loads in at compile time
 2020-08-26:
   Lengord:
@@ -425,7 +425,7 @@
   - tweak: Warden Prae no longer gets self-heal when on fire.
   - bugfix: Staff will no longer break MapDaemon by manually delaying the round.
   Vicacrov:
-  - tweak: Added a check to hijacking. The Queen can no longer hijack without at least
+  - tweak: Added a check to hijacking. The King can no longer hijack without at least
       half of her hive being onboard.
   - tweak: Raised the specialists' armor storage slots from 2 to 3, to be in line
       with regular (light, medium, heavy) armors.

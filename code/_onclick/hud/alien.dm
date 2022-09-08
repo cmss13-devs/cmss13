@@ -19,7 +19,7 @@
 	draw_nightvision(ui_alien_datum)
 	draw_plasma_display(ui_alien_datum)
 	draw_armor_display(ui_alien_datum)
-	draw_locate_queen(ui_alien_datum)
+	draw_locate_king(ui_alien_datum)
 	draw_locate_mark(ui_alien_datum)
 
 /datum/hud/alien/proc/draw_nightvision(var/datum/custom_hud/alien/ui_alien_datum)
@@ -45,10 +45,10 @@
 	alien_armor_display.screen_loc = ui_alien_datum.ui_alienarmordisplay
 	infodisplay += alien_armor_display
 
-/datum/hud/alien/proc/draw_locate_queen(var/datum/custom_hud/alien/ui_alien_datum)
-	locate_leader = new /obj/screen/queen_locator()
+/datum/hud/alien/proc/draw_locate_king(var/datum/custom_hud/alien/ui_alien_datum)
+	locate_leader = new /obj/screen/king_locator()
 	locate_leader.icon = ui_alien_datum.ui_style_icon
-	locate_leader.screen_loc = ui_alien_datum.ui_queen_locator
+	locate_leader.screen_loc = ui_alien_datum.ui_king_locator
 	infodisplay += locate_leader
 
 /datum/hud/alien/proc/draw_locate_mark(var/datum/custom_hud/alien/ui_alien_datum)
@@ -91,9 +91,9 @@
 	using.screen_loc = ui_alien_datum.ui_alien_nightvision
 	infodisplay += using
 
-	locate_leader = new /obj/screen/queen_locator()
+	locate_leader = new /obj/screen/king_locator()
 	locate_leader.icon = ui_alien_datum.ui_style_icon
-	locate_leader.screen_loc = ui_alien_datum.ui_queen_locator
+	locate_leader.screen_loc = ui_alien_datum.ui_king_locator
 	infodisplay += locate_leader
 
 

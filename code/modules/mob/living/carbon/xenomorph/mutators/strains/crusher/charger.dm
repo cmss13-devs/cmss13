@@ -375,7 +375,7 @@
 			X.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([ckey])</font>")
 			log_attack("[X] ([X.ckey]) xeno charged [src] ([ckey])")
 			apply_damage(CCA.momentum * 10, BRUTE) // half damage to avoid sillyness
-		if(anchored) //Ovipositor queen can't be pushed
+		if(anchored) //Ovipositor king can't be pushed
 			CCA.stop_momentum()
 			return
 		if(HAS_TRAIT(src, TRAIT_CHARGING))

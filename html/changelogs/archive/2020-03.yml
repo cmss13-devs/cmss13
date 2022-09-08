@@ -7,8 +7,8 @@
   Cakey:
   - tweak: Xenos who are not fire immune will no longer recover health when on fire.
   - rscadd: Xenomorph Hive Structures have been added to the game. Special construction
-      nodes can be built by builder castes, leaders, or the queen depending on the
-      desired restriction set by the queen at any time. Most structures require special
+      nodes can be built by builder castes, leaders, or the king depending on the
+      desired restriction set by the king at any time. Most structures require special
       hive weeds to be built and require Plasmagas as a construction resource, which
       can be gathered and delivered to construction nodes by builder castes.
   - rscadd: Added Plasmagas to the game. Plasmagas is a resource found on key locations
@@ -39,7 +39,7 @@
       being effective around hive locations.
   - rscadd: Added the spawn pool, a hive structure that can be fed bursted corpses
       in order to respawn a single xenomorph that was killed in action. Spawning can
-      be disrupted by either killing the queen or destroying the pool.
+      be disrupted by either killing the king or destroying the pool.
   - rscadd: Added the egg morpher, a hive structure that can be fed bursted corpses
       in order to generate a total of 6 facehuggers (per corpse) gradually without
       the need of an egg. Also fires at intruders in a larger radius than normal eggs.
@@ -118,9 +118,9 @@
       rework.
 2020-03-26:
   Atebite:
-  - rscadd: Queens can now banish xenos from the hive. Banished xenos can be attacked
+  - rscadd: Kings can now banish xenos from the hive. Banished xenos can be attacked
       by all other xenos, but cannot retaliate.
-  - rscadd: Queens can also readmit banished xenos back into the hive.
+  - rscadd: Kings can also readmit banished xenos back into the hive.
   - rscadd: The hive gets a burrowed larva when a banished xenomorph dies. Abusing
       this is a great way to get banned quickly.
   Cakey:
@@ -128,7 +128,7 @@
       instead now only root and screenshake for half the duration of the intended
       knockdown. This applies to PFC Heavy armor, M3-G4 and B18 heavy armors, as well
       as several non-marine heavy armor sets.
-  - tweak: Queens will now start with 100 plasmagas when evolving.
+  - tweak: Kings will now start with 100 plasmagas when evolving.
   - tweak: Adjusted the amount of resin pylons allowed from 4 to 8.
   Neth:
   - tweak: Changed how body is rendered. Instead of server blending all the bodyparts

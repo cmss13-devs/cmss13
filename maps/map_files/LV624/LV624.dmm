@@ -14565,7 +14565,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "dOQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "dTm" = (
@@ -16409,7 +16409,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "iiK" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "ilf" = (
@@ -19975,7 +19975,7 @@
 /area/lv624/lazarus/quartstorage)
 "qaE" = (
 /obj/effect/landmark/hunter_primary,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)

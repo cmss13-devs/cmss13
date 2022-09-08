@@ -290,7 +290,7 @@
   - ui: changed the filtration console UI from HTML to TGUI
   - ui: changed the binoculars UI from HTML to TGUI
   - ui: changed the AA cannon UI from HTML to TGUI
-  - bugfix: fixed resin markers and the queen exit hologram buttons being "FIX ME"
+  - bugfix: fixed resin markers and the king exit hologram buttons being "FIX ME"
   - rscadd: shooting bottles will now cause them to break
   - rscadd: gave glasses the same shattering mechanics as bottles
   - bugfix: BEs will now actually fire bullets again
@@ -448,7 +448,7 @@
   - rscadd: Added Give Royal Jelly ability (costs 500 plasma) to select a current
       or previous xeno and grant an award to be displayed at round end just like a
       marine award.
-  - imageadd: Added dev art for Queen Award depicting purple jelly above a xeno head.
+  - imageadd: Added dev art for King Award depicting purple jelly above a xeno head.
   - code_imp: Added totalDeadXenos list to hive_status to track any xenos that aren't
       hard removed (changed hives).
   - code_imp: Added view_record/medal_view to support queries to the DB for medal

@@ -1218,7 +1218,7 @@
 
 
 
-//very similar to xeno's queen_locator() but this is for locating squad leader.
+//very similar to xeno's king_locator() but this is for locating squad leader.
 /mob/living/carbon/human/proc/locate_squad_leader(var/tracker_setting = TRACKER_SL)
 	if(!hud_used)
 		return

@@ -516,7 +516,7 @@
 	log_admin("[key_name_admin(src)] [faction] command report: [input]")
 
 /client/proc/cmd_admin_xeno_report()
-	set name = "Report: Queen Mother"
+	set name = "Report: King Mother"
 	set desc = "Basically a command announcement, but only for selected Xenos Hive"
 	set category = "Admin.Factions"
 
@@ -549,10 +549,10 @@
 	if(hivenumber == "everything")
 		xeno_announcement(input, hivenumber, HIGHER_FORCE_ANNOUNCE)
 	else
-		xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][QUEEN_MOTHER_ANNOUNCE]"))
+		xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][KING_MOTHER_ANNOUNCE]"))
 
-	message_staff("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
-	log_admin("[key_name_admin(src)] Queen Mother ([hive_choice]): [input]")
+	message_staff("[key_name_admin(src)] has created a [hive_choice] King Mother report")
+	log_admin("[key_name_admin(src)] King Mother ([hive_choice]): [input]")
 
 /client/proc/cmd_admin_create_AI_report()
 	set name = "Report: ARES Comms"

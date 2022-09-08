@@ -149,7 +149,7 @@
 				update_all_data()
 				. = TRUE
 				return
-			else if(isXenoQueen(X))
+			else if(isXenoKing(X))
 				var/mob/living/carbon/Xenomorph/mark_to_destroy_owner
 				to_chat(X, SPAN_XENONOTICE("You psychically command the [mark_to_destroy.mark_meaning.name] resin mark to be destroyed."))
 				for(var/mob/living/carbon/Xenomorph/XX in X.hive.totalXenos)
@@ -166,7 +166,7 @@
 			var/obj/effect/alien/resin/marker/mark_to_force = locate(params["type"])
 			if(!mark_to_force)
 				return
-			if(!isXenoQueen(X))
+			if(!isXenoKing(X))
 				to_chat(X, SPAN_XENONOTICE("You lack the permissions to do this."))
 				return
 			var/FunkTownOhyea = "Force all to track"
@@ -180,7 +180,7 @@
 
 			if(selected_xeno == FunkTownOhyea)
 				for(var/mob/living/carbon/Xenomorph/forced_xeno in X.hive.totalXenos)
-					to_chat(forced_xeno, SPAN_XENOANNOUNCE("Hive! Your queen commands: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
+					to_chat(forced_xeno, SPAN_XENOANNOUNCE("Hive! Your king commands: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
 					forced_xeno.start_tracking_resin_mark(mark_to_force)
 					. = TRUE
 				update_all_data()
@@ -188,7 +188,7 @@
 			if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno.stat == DEAD || is_admin_level(selected_xeno.z) || !X.check_state(1))
 				return
 			else
-				to_chat(selected_xeno, SPAN_XENOBOLDNOTICE("Your queen commands you to follow: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
+				to_chat(selected_xeno, SPAN_XENOBOLDNOTICE("Your king commands you to follow: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
 				selected_xeno.start_tracking_resin_mark(mark_to_force)
 				update_all_data()
 				. = TRUE

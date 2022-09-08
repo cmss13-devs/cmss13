@@ -59,7 +59,7 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_RADIO,
     name: 'Radio',
     description: 'All departments of radio messages',
-    selector: '.radio, .xeno, .xenoqueen, .xenoleader, .alert, .newscaster',
+    selector: '.radio, .xeno, .xenoking, .xenoleader, .alert, .newscaster',
   },
   {
     type: MESSAGE_TYPE_INFO,

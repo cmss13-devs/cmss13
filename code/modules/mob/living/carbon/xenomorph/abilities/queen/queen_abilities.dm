@@ -21,7 +21,7 @@
 	xeno_cooldown = 3 SECONDS
 
 
-/datum/action/xeno_action/activable/queen_heal
+/datum/action/xeno_action/activable/king_heal
 	name = "Heal Xenomorph (600)"
 	action_icon_state = "heal_xeno"
 	ability_name = "xenomorph heal"
@@ -56,7 +56,7 @@
 	action_icon_state = "xeno_readmit"
 	plasma_cost = 100
 
-/datum/action/xeno_action/activable/secrete_resin/remote/queen
+/datum/action/xeno_action/activable/secrete_resin/remote/king
 	name = "Projected Resin (100)"
 	action_icon_state = "secrete_resin"
 	ability_name = "projected resin"
@@ -69,11 +69,11 @@
 
 	var/boosted = FALSE
 
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
+/datum/action/xeno_action/activable/secrete_resin/remote/king/give_to(mob/L)
 	. = ..()
-	SSticker.OnRoundstart(CALLBACK(src, .proc/apply_queen_build_boost))
+	SSticker.OnRoundstart(CALLBACK(src, .proc/apply_king_build_boost))
 
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/apply_queen_build_boost()
+/datum/action/xeno_action/activable/secrete_resin/remote/king/proc/apply_king_build_boost()
 	var/boost_duration = 30 MINUTES
 	// In the event secrete_resin is given after round start
 	if(SSticker.round_start_time)
@@ -85,7 +85,7 @@
 		RegisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS, .proc/override_secrete_thick_resin)
 		addtimer(CALLBACK(src, .proc/disable_boost), boost_duration)
 
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/disable_boost()
+/datum/action/xeno_action/activable/secrete_resin/remote/king/proc/disable_boost()
 	xeno_cooldown = 2 SECONDS
 	plasma_cost = 100
 	boosted = FALSE
@@ -94,48 +94,48 @@
 	if(owner)
 		to_chat(owner, SPAN_XENODANGER("Your boosted building has been disabled!"))
 
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/override_secrete_thick_resin()
+/datum/action/xeno_action/activable/secrete_resin/remote/king/proc/override_secrete_thick_resin()
 	return COMPONENT_THICK_BYPASS
 
-/datum/action/xeno_action/activable/bombard/queen
+/datum/action/xeno_action/activable/bombard/king
 	// Range and other config
 	interrupt_flags = NO_FLAGS
 	xeno_cooldown = 4 SECONDS
 
 	charges = 0
 
-/datum/action/xeno_action/activable/bombard/queen/give_to(mob/living/carbon/Xenomorph/Queen/Q)
+/datum/action/xeno_action/activable/bombard/king/give_to(mob/living/carbon/Xenomorph/King/Q)
 	. = ..()
 	if(!Q.ovipositor)
 		hide_from(Q)
-	RegisterSignal(Q, COMSIG_QUEEN_MOUNT_OVIPOSITOR, .proc/handle_mount_ovipositor)
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, .proc/handle_dismount_ovipositor)
+	RegisterSignal(Q, COMSIG_KING_MOUNT_OVIPOSITOR, .proc/handle_mount_ovipositor)
+	RegisterSignal(Q, COMSIG_KING_DISMOUNT_OVIPOSITOR, .proc/handle_dismount_ovipositor)
 
-/datum/action/xeno_action/activable/bombard/queen/remove_from(mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/activable/bombard/king/remove_from(mob/living/carbon/Xenomorph/X)
 	. = ..()
 	UnregisterSignal(X, list(
-		COMSIG_QUEEN_MOUNT_OVIPOSITOR,
-		COMSIG_QUEEN_DISMOUNT_OVIPOSITOR,
+		COMSIG_KING_MOUNT_OVIPOSITOR,
+		COMSIG_KING_DISMOUNT_OVIPOSITOR,
 	))
 
-/datum/action/xeno_action/activable/bombard/queen/proc/handle_mount_ovipositor(mob/living/carbon/Xenomorph/Queen/Q)
+/datum/action/xeno_action/activable/bombard/king/proc/handle_mount_ovipositor(mob/living/carbon/Xenomorph/King/Q)
 	SIGNAL_HANDLER
 	unhide_from(Q)
 
-/datum/action/xeno_action/activable/bombard/queen/proc/handle_dismount_ovipositor(mob/living/carbon/Xenomorph/Queen/Q)
+/datum/action/xeno_action/activable/bombard/king/proc/handle_dismount_ovipositor(mob/living/carbon/Xenomorph/King/Q)
 	SIGNAL_HANDLER
 	hide_from(Q)
 
-/datum/action/xeno_action/activable/bombard/queen/get_bombard_source()
-	var/mob/hologram/queen/H = owner?.client?.eye
+/datum/action/xeno_action/activable/bombard/king/get_bombard_source()
+	var/mob/hologram/king/H = owner?.client?.eye
 	if(istype(H))
 		return H
 	return owner
 
-/datum/action/xeno_action/activable/place_queen_beacon
-	name = "Place Queen Beacon"
-	action_icon_state = "place_queen_beacon"
-	ability_name = "place queen beacon"
+/datum/action/xeno_action/activable/place_king_beacon
+	name = "Place King Beacon"
+	action_icon_state = "place_king_beacon"
+	ability_name = "place king beacon"
 	plasma_cost = 0
 	action_type = XENO_ACTION_CLICK
 
@@ -144,27 +144,27 @@
 	var/datum/hive_status/hive
 	var/list/transported_xenos
 
-/datum/action/xeno_action/activable/place_queen_beacon/give_to(mob/living/carbon/Xenomorph/Queen/Q)
+/datum/action/xeno_action/activable/place_king_beacon/give_to(mob/living/carbon/Xenomorph/King/Q)
 	. = ..()
 	hive = Q.hive
 	if(!Q.ovipositor)
 		hide_from(Q)
-	RegisterSignal(Q, COMSIG_QUEEN_MOUNT_OVIPOSITOR, .proc/handle_mount_ovipositor)
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, .proc/handle_dismount_ovipositor)
+	RegisterSignal(Q, COMSIG_KING_MOUNT_OVIPOSITOR, .proc/handle_mount_ovipositor)
+	RegisterSignal(Q, COMSIG_KING_DISMOUNT_OVIPOSITOR, .proc/handle_dismount_ovipositor)
 
-/datum/action/xeno_action/activable/place_queen_beacon/remove_from(mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/activable/place_king_beacon/remove_from(mob/living/carbon/Xenomorph/X)
 	. = ..()
 	hive = null
 	UnregisterSignal(X, list(
-		COMSIG_QUEEN_MOUNT_OVIPOSITOR,
-		COMSIG_QUEEN_DISMOUNT_OVIPOSITOR,
+		COMSIG_KING_MOUNT_OVIPOSITOR,
+		COMSIG_KING_DISMOUNT_OVIPOSITOR,
 	))
 
-/datum/action/xeno_action/activable/place_queen_beacon/proc/handle_mount_ovipositor(mob/living/carbon/Xenomorph/Queen/Q)
+/datum/action/xeno_action/activable/place_king_beacon/proc/handle_mount_ovipositor(mob/living/carbon/Xenomorph/King/Q)
 	SIGNAL_HANDLER
 	unhide_from(Q)
 
-/datum/action/xeno_action/activable/place_queen_beacon/proc/handle_dismount_ovipositor(mob/living/carbon/Xenomorph/Queen/Q)
+/datum/action/xeno_action/activable/place_king_beacon/proc/handle_dismount_ovipositor(mob/living/carbon/Xenomorph/King/Q)
 	SIGNAL_HANDLER
 	hide_from(Q)
 
@@ -183,24 +183,24 @@
 	var/brittle_time = 45 SECONDS
 	var/decay_time = 45 SECONDS
 
-/datum/action/xeno_action/activable/blockade/give_to(mob/living/carbon/Xenomorph/Queen/Q)
+/datum/action/xeno_action/activable/blockade/give_to(mob/living/carbon/Xenomorph/King/Q)
 	. = ..()
 	if(!Q.ovipositor)
 		hide_from(Q)
-	RegisterSignal(Q, COMSIG_QUEEN_MOUNT_OVIPOSITOR, .proc/handle_mount_ovipositor)
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, .proc/handle_dismount_ovipositor)
+	RegisterSignal(Q, COMSIG_KING_MOUNT_OVIPOSITOR, .proc/handle_mount_ovipositor)
+	RegisterSignal(Q, COMSIG_KING_DISMOUNT_OVIPOSITOR, .proc/handle_dismount_ovipositor)
 
 /datum/action/xeno_action/activable/blockade/remove_from(mob/living/carbon/Xenomorph/X)
 	. = ..()
 	UnregisterSignal(X, list(
-		COMSIG_QUEEN_MOUNT_OVIPOSITOR,
-		COMSIG_QUEEN_DISMOUNT_OVIPOSITOR,
+		COMSIG_KING_MOUNT_OVIPOSITOR,
+		COMSIG_KING_DISMOUNT_OVIPOSITOR,
 	))
 
-/datum/action/xeno_action/activable/blockade/proc/handle_mount_ovipositor(mob/living/carbon/Xenomorph/Queen/Q)
+/datum/action/xeno_action/activable/blockade/proc/handle_mount_ovipositor(mob/living/carbon/Xenomorph/King/Q)
 	SIGNAL_HANDLER
 	unhide_from(Q)
 
-/datum/action/xeno_action/activable/blockade/proc/handle_dismount_ovipositor(mob/living/carbon/Xenomorph/Queen/Q)
+/datum/action/xeno_action/activable/blockade/proc/handle_dismount_ovipositor(mob/living/carbon/Xenomorph/King/Q)
 	SIGNAL_HANDLER
 	hide_from(Q)

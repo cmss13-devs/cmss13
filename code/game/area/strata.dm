@@ -89,14 +89,14 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	name = "Landing Zone 1 Pad - Mining Aerodrome"
 	icon_state = "landingzone_1"
 	weather_enabled = FALSE
-	unlimited_power = 1 //So the DS computer always works for the Queen
+	unlimited_power = 1 //So the DS computer always works for the King
 	is_landing_zone = TRUE
 
 /area/strata/ag/exterior/landingzone_2
 	name = "Landing Zone 2 Pad - Ice Fields"
 	icon_state = "landingzone_2"
 	weather_enabled = FALSE
-	unlimited_power = 1 //So the DS computer always works for the Queen
+	unlimited_power = 1 //So the DS computer always works for the King
 	is_landing_zone = TRUE
 
 /area/strata/ag/interior/nearlz1

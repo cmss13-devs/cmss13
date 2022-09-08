@@ -379,7 +379,7 @@ CULT
 	if(!hive)
 		return
 
-	if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
+	if(!hive.living_xeno_king && !hive.allow_no_king_actions)
 		return
 
 	return hive
@@ -392,7 +392,7 @@ CULT
 	var/datum/hive_status/hive = get_hive()
 
 	if(!istype(hive))
-		to_chat(owner, SPAN_DANGER("There is no Queen. You are alone."))
+		to_chat(owner, SPAN_DANGER("There is no King. You are alone."))
 		return
 
 	if(!can_use_action())
@@ -441,7 +441,7 @@ CULT
 	var/datum/hive_status/hive = get_hive()
 
 	if(!istype(hive))
-		to_chat(owner, SPAN_DANGER("There is no Queen. You are alone."))
+		to_chat(owner, SPAN_DANGER("There is no King. You are alone."))
 		return
 
 	if(!can_use_action())

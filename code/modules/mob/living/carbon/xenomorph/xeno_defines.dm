@@ -26,7 +26,7 @@
 
 	var/list/evolves_to = list() //This is where you add castes to evolve into. "Seperated", "by", "commas"
 	var/list/deevolves_to = list()  // what caste or castes to de-evolve to.
-	var/is_intelligent = 0 //If they can use consoles, etc. Set on Queen
+	var/is_intelligent = 0 //If they can use consoles, etc. Set on King
 	var/caste_desc = null
 
 	// Tackles
@@ -73,11 +73,11 @@
 
 	var/xeno_explosion_resistance = 0 //Armor but for explosions
 
-	//Queen vars
+	//King vars
 	var/can_hold_facehuggers = 0
 	var/can_hold_eggs = CANNOT_HOLD_EGGS
 
-	var/can_be_queen_healed = TRUE
+	var/can_be_king_healed = TRUE
 	var/can_be_revived = TRUE
 
 	var/can_vent_crawl = 1
@@ -121,7 +121,7 @@
 				evolution_threshold = 200
 			if(2)
 				evolution_threshold = 500
-			//Other tiers (T3, Queen, etc.) can't evolve anyway
+			//Other tiers (T3, King, etc.) can't evolve anyway
 
 	resin_build_order = GLOB.resin_build_order_drone
 
@@ -169,9 +169,9 @@
 	var/internal_faction
 
 	var/hivenumber = XENO_HIVE_NORMAL
-	var/mob/living/carbon/Xenomorph/Queen/living_xeno_queen
+	var/mob/living/carbon/Xenomorph/King/living_xeno_king
 	var/egg_planting_range = 15
-	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
+	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the king to turn on or off slashing. Slashing off means harm intent does much less damage.
 	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
 	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
 	var/unnesting_allowed = TRUE
@@ -179,7 +179,7 @@
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
 	var/prefix = ""
-	var/queen_leader_limit = 2
+	var/king_leader_limit = 2
 	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
 	var/list/xeno_leader_list[2] // Ordered list (i.e. index n holds the nth xeno leader)
 	var/stored_larva = 0
@@ -195,9 +195,9 @@
 	var/list/tier_3_xenos = list()//list of living tier3 xenos
 	var/list/totalXenos	= list()  //list of living xenos
 	var/list/totalDeadXenos = list()//list of previously living xenos
-	var/xeno_queen_timer
+	var/xeno_king_timer
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
-	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
+	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied King. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location.
 	var/obj/effect/alien/resin/special/pool/spawn_pool = null // Ref to the spawn pool if there is one
 	var/crystal_stored = 0 //How much stockpiled material is stored for the hive to use.
@@ -214,10 +214,10 @@
 	var/evolution_rate = 3 // Only has use if dynamic_evolution is false
 	var/evolution_bonus = 0
 
-	var/allow_no_queen_actions = FALSE
+	var/allow_no_king_actions = FALSE
 	var/evolution_without_ovipositor = TRUE //Temporary for the roundstart.
-	var/allow_queen_evolve = TRUE // Set to true if you want to prevent evolutions into Queens
-	var/hardcore = FALSE // Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
+	var/allow_king_evolve = TRUE // Set to true if you want to prevent evolutions into Kings
+	var/hardcore = FALSE // Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the king no longer exists
 
 	var/list/hive_inherant_traits
 
@@ -283,10 +283,10 @@
 	if(X in totalXenos)
 		return
 
-	// Can only have one queen.
-	if(isXenoQueen(X))
-		if(!living_xeno_queen && !is_admin_level(X.z)) // Don't consider xenos in admin level
-			set_living_xeno_queen(X)
+	// Can only have one king.
+	if(isXenoKing(X))
+		if(!living_xeno_king && !is_admin_level(X.z)) // Don't consider xenos in admin level
+			set_living_xeno_king(X)
 
 	X.hivenumber = hivenumber
 	X.hive = src
@@ -316,15 +316,15 @@
 	if(!(xeno in totalXenos))
 		return
 
-	// This might be a redundant check now that Queen/Destroy() checks, but doesn't hurt to double check
-	if(living_xeno_queen == xeno)
-		var/mob/living/carbon/Xenomorph/Queen/next_queen = null
-		for(var/mob/living/carbon/Xenomorph/Queen/queen in totalXenos)
-			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
-				next_queen = queen
+	// This might be a redundant check now that King/Destroy() checks, but doesn't hurt to double check
+	if(living_xeno_king == xeno)
+		var/mob/living/carbon/Xenomorph/King/next_king = null
+		for(var/mob/living/carbon/Xenomorph/King/king in totalXenos)
+			if(!is_admin_level(king.z) && king != src && !QDELETED(king))
+				next_king = king
 				break
 
-		set_living_xeno_queen(next_queen) // either null or a queen
+		set_living_xeno_king(next_king) // either null or a king
 
 	// We allow "soft" removals from the hive (the xeno still retains information about the hive)
 	// This is so that xenos can add themselves back to the hive if they should die or otherwise go "on leave" from the hive
@@ -344,35 +344,35 @@
 		hive_ui.update_xeno_counts()
 		hive_ui.xeno_removed(xeno)
 
-/datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/queen)
-	if(!queen)
+/datum/hive_status/proc/set_living_xeno_king(var/mob/living/carbon/Xenomorph/King/king)
+	if(!king)
 		mutators.reset_mutators()
 		SStracking.delete_leader("hive_[hivenumber]")
-		SStracking.stop_tracking("hive_[hivenumber]", living_xeno_queen)
+		SStracking.stop_tracking("hive_[hivenumber]", living_xeno_king)
 		SShive_status.wait = 10 SECONDS
 	else
-		SStracking.set_leader("hive_[hivenumber]", queen)
+		SStracking.set_leader("hive_[hivenumber]", king)
 		SShive_status.wait = 2 SECONDS
 
-	living_xeno_queen = queen
+	living_xeno_king = king
 
 	recalculate_hive()
 
 /datum/hive_status/proc/recalculate_hive()
-	if (!living_xeno_queen)
-		queen_leader_limit = 0 //No leaders for a Hive without a Queen!
+	if (!living_xeno_king)
+		king_leader_limit = 0 //No leaders for a Hive without a King!
 	else
-		queen_leader_limit = 4 + mutators.leader_count_boost
+		king_leader_limit = 4 + mutators.leader_count_boost
 
-	if (xeno_leader_list.len > queen_leader_limit)
+	if (xeno_leader_list.len > king_leader_limit)
 		var/diff = 0
-		for (var/i in queen_leader_limit + 1 to xeno_leader_list.len)
+		for (var/i in king_leader_limit + 1 to xeno_leader_list.len)
 			if(!open_xeno_leader_positions.Remove(i))
 				remove_hive_leader(xeno_leader_list[i])
 			diff++
 		xeno_leader_list.len -= diff // Changing the size of xeno_leader_list needs to go at the end or else it won't iterate through the list properly
-	else if (xeno_leader_list.len < queen_leader_limit)
-		for (var/i in xeno_leader_list.len + 1 to queen_leader_limit)
+	else if (xeno_leader_list.len < king_leader_limit)
+		for (var/i in xeno_leader_list.len + 1 to king_leader_limit)
 			open_xeno_leader_positions += i
 			xeno_leader_list.len++
 
@@ -416,7 +416,7 @@
 		xeno.hud_update() // To remove leader star
 
 	// Need to maintain ascending order of open_xeno_leader_positions
-	for (var/i in 1 to queen_leader_limit)
+	for (var/i in 1 to king_leader_limit)
 		if (i > open_xeno_leader_positions.len || open_xeno_leader_positions[i] > leader_num)
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break
@@ -465,8 +465,8 @@
 /datum/hive_status/proc/get_xeno_counts()
 	// Every caste is manually defined here so you get
 	var/list/xeno_counts = list(
-		// Yes, Queen is technically considered to be tier 0
-		list(XENO_CASTE_LARVA = 0, "Queen" = 0),
+		// Yes, King is technically considered to be tier 0
+		list(XENO_CASTE_LARVA = 0, "King" = 0),
 		list(XENO_CASTE_DRONE = 0, XENO_CASTE_RUNNER = 0, XENO_CASTE_SENTINEL = 0, XENO_CASTE_DEFENDER = 0),
 		list(XENO_CASTE_HIVELORD = 0, XENO_CASTE_BURROWER = 0, XENO_CASTE_CARRIER = 0, XENO_CASTE_LURKER = 0, XENO_CASTE_SPITTER = 0, XENO_CASTE_WARRIOR = 0),
 		list(XENO_CASTE_BOILER = 0, XENO_CASTE_CRUSHER = 0, XENO_CASTE_PRAETORIAN = 0, XENO_CASTE_RAVAGER = 0)
@@ -504,7 +504,7 @@
 			"nicknumber" = X.nicknumber,
 			"tier" = X.tier, // This one is only important for sorting
 			"is_leader" = (IS_XENO_LEADER(X)),
-			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
+			"is_king" = istype(X.caste, /datum/caste_datum/king),
 			"caste_type" = X.caste_type
 		)
 
@@ -518,7 +518,7 @@
 	return xenos
 
 // This sorts the xeno info list by multiple criteria. Prioritized in order:
-// 1. Queen
+// 1. King
 // 2. Leaders
 // 3. Tier
 // It uses a slightly modified insertion sort to accomplish this
@@ -538,14 +538,14 @@
 			var/current = sorted_list[j]
 			var/prev = sorted_list[j-1]
 
-			// Queen comes first, always
-			if(current["is_queen"])
+			// King comes first, always
+			if(current["is_king"])
 				sorted_list.Swap(j-1, j)
 				j--
 				continue
 
-			// don't muck up queen's slot
-			if(prev["is_queen"])
+			// don't muck up king's slot
+			if(prev["is_king"])
 				j--
 				continue
 
@@ -597,7 +597,7 @@
 	if(!C || C == hive_location)
 		return
 	var/area/A = get_area(C)
-	xeno_message(SPAN_XENOANNOUNCE("The Queen has set the hive location as \the [A]."), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("The King has set the hive location as \the [A]."), 3, hivenumber)
 	hive_location = C
 	hive_ui.update_hive_location()
 
@@ -685,13 +685,13 @@
 
 // returns if that location can be used to plant eggs
 /datum/hive_status/proc/in_egg_plant_range(var/turf/T)
-	if(!istype(living_xeno_queen))
-		return TRUE // xenos already dicked without queen. Let them plant whereever
+	if(!istype(living_xeno_king))
+		return TRUE // xenos already dicked without king. Let them plant whereever
 
-	if(!living_xeno_queen.ovipositor)
-		return FALSE // ovid queen only
+	if(!living_xeno_king.ovipositor)
+		return FALSE // ovid king only
 
-	return get_dist(living_xeno_queen, T) <= egg_planting_range
+	return get_dist(living_xeno_king, T) <= egg_planting_range
 
 /datum/hive_status/proc/can_build_structure(var/structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name])
@@ -754,7 +754,7 @@
 	return hive_structures[name_ref].len
 
 /datum/hive_status/proc/abandon_on_hijack()
-	var/area/hijacked_dropship = get_area(living_xeno_queen)
+	var/area/hijacked_dropship = get_area(living_xeno_king)
 	for(var/name_ref in hive_structures)
 		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
 			if(get_area(S) == hijacked_dropship)
@@ -763,11 +763,11 @@
 			qdel(S)
 	for(var/mob/living/carbon/Xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
-			if(xeno.hunter_data.hunted && !isXenoQueen(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
+			if(xeno.hunter_data.hunted && !isXenoKing(xeno))
+				to_chat(xeno, SPAN_XENOANNOUNCE("The King has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("The King has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				qdel(xeno)
 			stored_larva++
 	for(var/i in GLOB.alive_mob_list)
@@ -810,10 +810,10 @@
 
 	return faction_is_ally(C.faction)
 
-/datum/hive_status/proc/faction_is_ally(var/faction, var/ignore_queen_check = FALSE)
+/datum/hive_status/proc/faction_is_ally(var/faction, var/ignore_king_check = FALSE)
 	if(faction == internal_faction)
 		return TRUE
-	if(!ignore_queen_check && !living_xeno_queen)
+	if(!ignore_king_check && !living_xeno_king)
 		return FALSE
 
 	return allies[faction]
@@ -886,10 +886,10 @@
 	color = "#828296"
 	ui_color = "#828296"
 
-	construction_allowed = XENO_QUEEN
+	construction_allowed = XENO_KING
 	dynamic_evolution = FALSE
-	allow_no_queen_actions = TRUE
-	allow_queen_evolve = FALSE
+	allow_no_king_actions = TRUE
+	allow_king_evolve = FALSE
 	ignore_slots = TRUE
 
 /datum/hive_status/forsaken
@@ -900,8 +900,8 @@
 	ui_color = "#cc8ec4"
 
 	dynamic_evolution = FALSE
-	allow_no_queen_actions = TRUE
-	allow_queen_evolve = FALSE
+	allow_no_king_actions = TRUE
+	allow_king_evolve = FALSE
 	ignore_slots = TRUE
 
 	need_round_end_check = TRUE
@@ -915,8 +915,8 @@
 	internal_faction = FACTION_YAUTJA
 
 	dynamic_evolution = FALSE
-	allow_no_queen_actions = TRUE
-	allow_queen_evolve = FALSE
+	allow_no_king_actions = TRUE
+	allow_king_evolve = FALSE
 	ignore_slots = TRUE
 
 	need_round_end_check = TRUE
@@ -940,8 +940,8 @@
 	color = "#80ff80"
 
 	dynamic_evolution = FALSE
-	allow_no_queen_actions = TRUE
-	allow_queen_evolve = FALSE
+	allow_no_king_actions = TRUE
+	allow_king_evolve = FALSE
 	ignore_slots = TRUE
 
 	var/mob/living/carbon/human/leader

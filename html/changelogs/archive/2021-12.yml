@@ -44,7 +44,7 @@
       size or smaller.
 2021-12-10:
   Geeves:
-  - bugfix: Queens modifying build, slash, nesting, etc. perms will now send the message
+  - bugfix: Kings modifying build, slash, nesting, etc. perms will now send the message
       to the correct hive. Humans evaccing will now be sent to all hives.
   - rscadd: Setting Survivor to high will now change your preview character to a survivor
       relevant to the current map.
@@ -91,7 +91,7 @@
   Stan_Albatross:
   - tweak: You no longer need piloting skill to cancel flybys, instead only needing
       access to the console.
-  - tweak: Queens can no longer cancel flybys.
+  - tweak: Kings can no longer cancel flybys.
   - tweak: Added a synth-specific version of the snow suit with no armour for the
       snowflake vendor
   - tweak: 'All synth specific exosuit/coat items (bomber jackets, synth snow suit,

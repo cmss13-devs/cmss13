@@ -761,8 +761,8 @@ var/global/players_preassigned = 0
 			M = /mob/living/carbon/Xenomorph/Warrior
 		if(XENO_CASTE_DEFENDER)
 			M = /mob/living/carbon/Xenomorph/Defender
-		if(XENO_CASTE_QUEEN)
-			M = /mob/living/carbon/Xenomorph/Queen
+		if(XENO_CASTE_KING)
+			M = /mob/living/carbon/Xenomorph/King
 		if(XENO_CASTE_CRUSHER)
 			M = /mob/living/carbon/Xenomorph/Crusher
 		if(XENO_CASTE_BOILER)

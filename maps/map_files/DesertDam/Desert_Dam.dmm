@@ -532,7 +532,7 @@
 /area/desert_dam/exterior/river/riverside_central_north)
 "abH" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -11525,7 +11525,7 @@
 /area/desert_dam/interior/caves/central_caves)
 "aGY" = (
 /obj/effect/landmark/yautja_teleport,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGZ" = (
@@ -12851,7 +12851,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "aKX" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/desert/dirt{
 	dir = 5;
 	icon_state = "desert_transition_edge1"
@@ -67478,7 +67478,7 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "smJ" = (
 /obj/effect/landmark/xeno_hive_spawn,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";

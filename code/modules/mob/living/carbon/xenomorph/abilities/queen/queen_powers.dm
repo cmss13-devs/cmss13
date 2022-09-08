@@ -1,6 +1,6 @@
 // devolve a xeno - lots of old, vaguely shitty code here
 /datum/action/xeno_action/onclick/deevolve/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 	if(!X.observed_xeno)
@@ -64,7 +64,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	to_chat(T, SPAN_XENOWARNING("The queen is deevolving you for the following reason: [reason]"))
+	to_chat(T, SPAN_XENOWARNING("The king is deevolving you for the following reason: [reason]"))
 
 	var/xeno_type
 	var/level_to_switch_to = T.get_vision_level()
@@ -116,8 +116,8 @@
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [T]."), \
 	SPAN_XENODANGER("[X] makes you regress into your previous form."))
 
-	if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
-		X.hive.living_xeno_queen.overwatch(new_xeno)
+	if(X.hive.living_xeno_king && X.hive.living_xeno_king.observed_xeno == T)
+		X.hive.living_xeno_king.overwatch(new_xeno)
 
 	message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
@@ -129,7 +129,7 @@
 	return
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 
@@ -152,7 +152,7 @@
 
 
 /datum/action/xeno_action/onclick/grow_ovipositor/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 
@@ -201,7 +201,7 @@
 
 
 /datum/action/xeno_action/onclick/set_xeno_lead/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 
@@ -222,7 +222,7 @@
 				to_chat(X, SPAN_XENOWARNING("Unable to add the leader."))
 				return
 			to_chat(X, SPAN_XENONOTICE("You've selected [T] as a Hive Leader."))
-			to_chat(T, SPAN_XENOANNOUNCE("[X] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
+			to_chat(T, SPAN_XENOANNOUNCE("[X] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the King's pheromones."))
 		else
 			hive.remove_hive_leader(T)
 			to_chat(X, SPAN_XENONOTICE("You've demoted [T] from Hive Leader."))
@@ -243,8 +243,8 @@
 			to_chat(X, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
 
 
-/datum/action/xeno_action/activable/queen_heal/use_ability(atom/A, verbose)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+/datum/action/xeno_action/activable/king_heal/use_ability(atom/A, verbose)
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 
@@ -278,7 +278,7 @@
 		if(Xa.stat == DEAD || QDELETED(Xa))
 			continue
 
-		if(!Xa.caste.can_be_queen_healed)
+		if(!Xa.caste.can_be_king_healed)
 			continue
 
 		new /datum/effects/heal_over_time(Xa, Xa.maxHealth * 0.3, 2 SECONDS, 2)
@@ -288,7 +288,7 @@
 	to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
 
 /datum/action/xeno_action/onclick/banish/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 
@@ -352,7 +352,7 @@
 // Readmission = un-banish
 
 /datum/action/xeno_action/onclick/readmit/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 
@@ -399,7 +399,7 @@
 
 	X.hive.banished_ckeys.Remove(banished_name)
 
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/A)
+/datum/action/xeno_action/activable/secrete_resin/remote/king/use_ability(atom/A)
 	. = ..()
 	if(!.)
 		return
@@ -417,7 +417,7 @@
 
 /datum/action/xeno_action/onclick/eye
 	name = "Enter Eye Form"
-	action_icon_state = "queen_eye"
+	action_icon_state = "king_eye"
 	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/eye/use_ability(atom/A)
@@ -425,7 +425,7 @@
 	if(!owner)
 		return
 
-	new /mob/hologram/queen(owner.loc, owner)
+	new /mob/hologram/king(owner.loc, owner)
 	qdel(src)
 
 /datum/action/xeno_action/activable/expand_weeds
@@ -440,7 +440,7 @@
 	return ..()
 
 /datum/action/xeno_action/activable/expand_weeds/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 
@@ -511,8 +511,8 @@
 /datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(var/turf/T)
 	recently_built_turfs -= T
 
-/datum/action/xeno_action/activable/place_queen_beacon/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/Q = owner
+/datum/action/xeno_action/activable/place_king_beacon/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/King/Q = owner
 	if(!Q.check_state())
 		return FALSE
 
@@ -530,7 +530,7 @@
 	for(var/i in transported_xenos)
 		UnregisterSignal(i, COMSIG_MOVABLE_PRE_MOVE)
 
-	to_chat(Q, SPAN_XENONOTICE("You rally the hive to the queen beacon!"))
+	to_chat(Q, SPAN_XENONOTICE("You rally the hive to the king beacon!"))
 	LAZYCLEARLIST(transported_xenos)
 	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, .proc/tunnel_xeno)
 	for(var/xeno in hive.totalXenos)
@@ -541,29 +541,29 @@
 	addtimer(CALLBACK(src, .proc/transport_xenos, T), 3 SECONDS)
 	return TRUE
 
-/datum/action/xeno_action/activable/place_queen_beacon/proc/tunnel_xeno(datum/source, mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/activable/place_king_beacon/proc/tunnel_xeno(datum/source, mob/living/carbon/Xenomorph/X)
 	SIGNAL_HANDLER
 	if(X.z == owner.z)
-		to_chat(X, SPAN_XENONOTICE("You begin tunneling towards the queen beacon!"))
+		to_chat(X, SPAN_XENONOTICE("You begin tunneling towards the king beacon!"))
 		RegisterSignal(X, COMSIG_MOVABLE_PRE_MOVE, .proc/cancel_movement)
 		LAZYADD(transported_xenos, X)
 
-/datum/action/xeno_action/activable/place_queen_beacon/proc/transport_xenos(turf/target)
+/datum/action/xeno_action/activable/place_king_beacon/proc/transport_xenos(turf/target)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
 	for(var/xeno in transported_xenos)
 		var/mob/living/carbon/Xenomorph/X = xeno
-		to_chat(X, SPAN_XENONOTICE("You tunnel to the queen beacon!"))
+		to_chat(X, SPAN_XENONOTICE("You tunnel to the king beacon!"))
 		UnregisterSignal(X, COMSIG_MOVABLE_PRE_MOVE)
 		if(target)
 			X.forceMove(target)
 
-/datum/action/xeno_action/activable/place_queen_beacon/proc/cancel_movement()
+/datum/action/xeno_action/activable/place_king_beacon/proc/cancel_movement()
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_MOVE
 
-/datum/action/xeno_action/activable/place_queen_beacon/proc/check_turf(mob/living/carbon/Xenomorph/Queen/Q, turf/T)
+/datum/action/xeno_action/activable/place_king_beacon/proc/check_turf(mob/living/carbon/Xenomorph/King/Q, turf/T)
 	if(!T || T.density)
-		to_chat(Q, SPAN_XENOWARNING("You can't place a queen beacon here."))
+		to_chat(Q, SPAN_XENOWARNING("You can't place a king beacon here."))
 		return FALSE
 
 	if(T.z != Q.z)
@@ -572,14 +572,14 @@
 
 	var/obj/effect/alien/weeds/located_weeds = locate() in T
 	if(!located_weeds)
-		to_chat(Q, SPAN_XENOWARNING("You need to place the queen beacon on weeds."))
+		to_chat(Q, SPAN_XENOWARNING("You need to place the king beacon on weeds."))
 		return FALSE
 
 	return TRUE
 
 
 /datum/action/xeno_action/activable/blockade/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/Q = owner
+	var/mob/living/carbon/Xenomorph/King/Q = owner
 	if(!Q.check_state())
 		return FALSE
 
@@ -630,7 +630,7 @@
 
 	return TRUE
 
-/datum/action/xeno_action/activable/blockade/proc/check_turf(mob/living/carbon/Xenomorph/Queen/Q, turf/T)
+/datum/action/xeno_action/activable/blockade/proc/check_turf(mob/living/carbon/Xenomorph/King/Q, turf/T)
 	if(T.density)
 		to_chat(Q, SPAN_XENOWARNING("You can't place a blockade here."))
 		return FALSE

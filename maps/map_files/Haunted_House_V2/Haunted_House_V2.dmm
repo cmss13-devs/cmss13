@@ -2289,7 +2289,7 @@
 	pixel_x = 8;
 	pixel_y = 5
 	},
-/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_queen{
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_king{
 	pixel_x = -8;
 	pixel_y = -3
 	},
@@ -2551,7 +2551,7 @@
 	melee_damage_lower = 75;
 	melee_damage_upper = 75;
 	move_to_delay = 3;
-	name = "queen hunter spider";
+	name = "king hunter spider";
 	poison_per_bite = 20
 	},
 /turf/open/floor{
@@ -3280,7 +3280,7 @@
 	maxHealth = 50000;
 	melee_damage_lower = 500;
 	melee_damage_upper = 500;
-	name = "Queen Spider"
+	name = "King Spider"
 	},
 /turf/open/floor/greengrid,
 /area/event/deep_underground/dynamic)
@@ -6945,7 +6945,7 @@
 	melee_damage_lower = 50;
 	melee_damage_upper = 50;
 	move_to_delay = 4;
-	name = "queen fire-venom spider";
+	name = "king fire-venom spider";
 	poison_per_bite = 20;
 	poison_type = "chlorine trifluoride"
 	},

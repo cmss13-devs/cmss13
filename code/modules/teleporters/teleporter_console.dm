@@ -32,7 +32,7 @@
     ui_interact(user)
 
 /obj/structure/machinery/computer/teleporter_console/attack_alien(var/mob/living/carbon/Xenomorph/X)
-	if(!isXenoQueen(X))
+	if(!isXenoKing(X))
 		return FALSE
 	attack_hand(X)
 	return XENO_ATTACK_ACTION

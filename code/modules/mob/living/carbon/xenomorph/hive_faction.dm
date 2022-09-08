@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(hive_alliable_factions, generate_alliable_factions())
 	assoc_hive = hive_to_assign
 
 /datum/hive_faction_ui/ui_state(mob/user)
-	return GLOB.hive_state_queen[assoc_hive.internal_faction]
+	return GLOB.hive_state_king[assoc_hive.internal_faction]
 
 /datum/hive_faction_ui/tgui_interact(mob/user, datum/tgui/ui)
 	if(!assoc_hive)

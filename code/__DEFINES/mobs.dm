@@ -297,8 +297,8 @@
 //	STRAIN FLAGS	//
 //	------------	//
 
-// Queen strain flags
-#define QUEEN_NORMAL		"Normal"
+// King strain flags
+#define KING_NORMAL		"Normal"
 
 // Drone strain flags
 #define DRONE_NORMAL		"Normal"

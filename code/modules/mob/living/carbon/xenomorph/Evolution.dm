@@ -8,7 +8,7 @@
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
 	set category = "Alien"
-	var/potential_queens = 0
+	var/potential_kings = 0
 
 	if (!evolve_checks())
 		return
@@ -20,19 +20,19 @@
 	if(!evolve_checks())
 		return
 
-	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !isXenoLarva(src) && !hive.allow_no_queen_actions)
-		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. You can't find the strength to evolve."))
+	if((!hive.living_xeno_king) && castepick != XENO_CASTE_KING && !isXenoLarva(src) && !hive.allow_no_king_actions)
+		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last King. You can't find the strength to evolve."))
 		return
 
-	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
+	if(castepick == XENO_CASTE_KING) //Special case for dealing with kingae
 		if(!hardcore)
-			if(SSticker.mode && hive.xeno_queen_timer > world.time)
-				to_chat(src, SPAN_WARNING("You must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
+			if(SSticker.mode && hive.xeno_king_timer > world.time)
+				to_chat(src, SPAN_WARNING("You must wait about [DisplayTimeText(hive.xeno_king_timer - world.time, 1)] for the hive to recover from the previous King's death."))
 				return
 
 			if(plasma_stored >= 500)
-				if(hive.living_xeno_queen)
-					to_chat(src, SPAN_WARNING("There already is a living Queen."))
+				if(hive.living_xeno_king)
+					to_chat(src, SPAN_WARNING("There already is a living King."))
 					return
 			else
 				to_chat(src, SPAN_WARNING("You require more plasma! Currently at: [plasma_stored] / 500."))
@@ -40,12 +40,12 @@
 		else
 			to_chat(src, SPAN_WARNING("Nuh-uhh."))
 			return
-	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
+	if(evolution_threshold && castepick != XENO_CASTE_KING) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
 			to_chat(src, SPAN_WARNING("You must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
 
-	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
+	// Used for restricting benos to evolve to drone/king when they're the only potential king
 	for(var/mob/living/carbon/Xenomorph/M in GLOB.living_xeno_list)
 		if(hivenumber != M.hivenumber)
 			continue
@@ -54,12 +54,12 @@
 			if(0)
 				if(isXenoLarvaStrict(M))
 					if(M.client && M.ckey)
-						potential_queens++
+						potential_kings++
 				continue
 			if(1)
 				if(isXenoDrone(M))
 					if(M.client && M.ckey)
-						potential_queens++
+						potential_kings++
 
 	var/mob/living/carbon/Xenomorph/M = null
 
@@ -69,7 +69,7 @@
 		to_chat(usr, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
 		return
 
-	if(!can_evolve(castepick, potential_queens))
+	if(!can_evolve(castepick, potential_kings))
 		return
 	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support your evolution to [SPAN_BOLD(castepick)]!"))
 
@@ -88,17 +88,17 @@
 
 	if(!isturf(loc)) //qdel'd or moved into something
 		return
-	if(castepick == XENO_CASTE_QUEEN) //Do another check after the tick.
-		if(jobban_isbanned(src, XENO_CASTE_QUEEN))
-			to_chat(src, SPAN_WARNING("You are jobbanned from the Queen role."))
+	if(castepick == XENO_CASTE_KING) //Do another check after the tick.
+		if(jobban_isbanned(src, XENO_CASTE_KING))
+			to_chat(src, SPAN_WARNING("You are jobbanned from the King role."))
 			return
-		if(hive.living_xeno_queen)
-			to_chat(src, SPAN_WARNING("There already is a Queen."))
+		if(hive.living_xeno_king)
+			to_chat(src, SPAN_WARNING("There already is a King."))
 			return
-		if(!hive.allow_queen_evolve)
-			to_chat(src, SPAN_WARNING("You can't find the strength to evolve into a Queen"))
+		if(!hive.allow_king_evolve)
+			to_chat(src, SPAN_WARNING("You can't find the strength to evolve into a King"))
 			return
-	else if(!can_evolve(castepick, potential_queens))
+	else if(!can_evolve(castepick, potential_kings))
 		return
 
 	//From there, the new xeno exists, hopefully
@@ -142,9 +142,9 @@
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You emerge in a greater form from the husk of your old body. For the hive!"))
 
-	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
-		hive.living_xeno_queen.overwatch(new_xeno)
-		
+	if(hive.living_xeno_king && hive.living_xeno_king.observed_xeno == src)
+		hive.living_xeno_king.overwatch(new_xeno)
+
 	src.transfer_observers_to(new_xeno)
 
 	qdel(src)
@@ -211,7 +211,7 @@
 
 	return TRUE
 
-// The queen de-evo, but on yourself. Only usable once
+// The king de-evo, but on yourself. Only usable once
 /mob/living/carbon/Xenomorph/verb/Deevolve()
 	set name = "De-Evolve"
 	set desc = "De-evolve into a lesser form."
@@ -321,12 +321,12 @@
 	if(round_statistics && !new_xeno.statistic_exempt)
 		round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
-	
+
 	src.transfer_observers_to(new_xeno)
-	
+
 	qdel(src)
 
-/mob/living/carbon/Xenomorph/proc/can_evolve(castepick, potential_queens)
+/mob/living/carbon/Xenomorph/proc/can_evolve(castepick, potential_kings)
 	var/selected_caste = GLOB.xeno_datum_list[castepick]?.type
 	var/free_slots = LAZYACCESS(hive.free_slots, selected_caste)
 	if(free_slots)
@@ -347,14 +347,14 @@
 
 	var/totalXenos = length(hive.totalXenos) + pooled_factor
 
-	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != XENO_CASTE_QUEEN)
+	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != XENO_CASTE_KING)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))
 		return FALSE
-	else if(tier == 2 && ((used_tier_3_slots / length(hive.totalXenos)) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
+	else if(tier == 2 && ((used_tier_3_slots / length(hive.totalXenos)) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_KING)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
 		return FALSE
-	else if(hive.allow_queen_evolve && !hive.living_xeno_queen && potential_queens == 1 && isXenoLarva(src) && castepick != XENO_CASTE_DRONE)
-		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
+	else if(hive.allow_king_evolve && !hive.living_xeno_king && potential_kings == 1 && isXenoLarva(src) && castepick != XENO_CASTE_DRONE)
+		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become King! The survival of the hive requires you to be a Drone!"))
 		return FALSE
 
 	return TRUE

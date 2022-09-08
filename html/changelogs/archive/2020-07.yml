@@ -15,7 +15,7 @@
   - tweak: Decreased the range of the miniscope attachment on the M5 RPG and M92 Grenade
       Launcher from 6 to 3 additional tiles.
   - tweak: Shortened the slug stun from 1 to .7 seconds.
-  - tweak: Increased the durability of the Queen's armor.
+  - tweak: Increased the durability of the King's armor.
   - tweak: Increased the damage of base sniper bullets (Sniper spec default mags)
       from 76 -> 88.
   - tweak: Decreased the damage of flak sniper bullets (Sniper spec flak mags) from
@@ -117,7 +117,7 @@
       but use civilian command access.
   - tweak: Updated various survivor access to use some newly added access classes.
   - maptweak: CORSAT now has some Powerloader pamphlets around the Powerloader bays
-      for those ungas that want to go Ripley on Queen's thorax.
+      for those ungas that want to go Ripley on King's thorax.
   - tweak: Synth defibbing timer has been extended to give ghosts more time to get
       back into their body.
   - tweak: Defib healing amount has been made flat to that of a doctor skill.
@@ -199,11 +199,11 @@
       than a drone's door. (12052)
   - bugfix: Fixed the CMP's ID color. It's now silver as with all commissioned officers'.
       (11879)
-  - bugfix: Fixed the Queen not being able to build nests. (12277)
+  - bugfix: Fixed the King not being able to build nests. (12277)
   - tweak: The type of the two roundstart OB warheads are now random. You can start
       with 2 HEs, 2 incediaries, 2 clusters or any of their variations. The number
       of warheads did not change. (12101)
-  - rscadd: The Queen can now toggle between two unnesting modes. Default - only drone
+  - rscadd: The King can now toggle between two unnesting modes. Default - only drone
       castes can unnest. Toggled - everyone can unnest.
   - tweak: Warriors can now punch infected marines. (12358)
   - rscdel: Instruments have been removed.
@@ -269,7 +269,7 @@
       lowered overall by 20%.
   - tweak: Age/maturity is now a fluff indicator of how long a xeno has survived in
       a round.
-  - tweak: Queen can now have 4 leaders and loses half of the pooled larva upon death.
+  - tweak: King can now have 4 leaders and loses half of the pooled larva upon death.
       It used to scale with age.
   - tweak: Robotic limbs no longer give damage reduction. This means Synthetics will
       no longer double dip on damage reduction. This may lead to them being too weak,
@@ -304,7 +304,7 @@
       down any xeno that is not of the appropriate hive. Fast resin will only affect
       xenos of the appropriate hive.
   - rscadd: Most xeno abilities will now work on hostile xenos. Stuns will not work
-      on big xenos. There are some exceptions, however, such as Queen screech
+      on big xenos. There are some exceptions, however, such as King screech
   - rscadd: Burrower traps will now trigger against hostile hives
   - rscadd: Projectiles from xenos will hit hostile xenos now
   - tweak: Most objects and special structures will now properly resemble the colour
@@ -313,7 +313,7 @@
       resin trap does not belong to the xenomorph's hive
   - tweak: Eggs will show which hive they belong to upon examination
   - tweak: Eggs can only be planted on their appropriate hive weeds
-  - tweak: Queen screech will now affect xenos of different hives
+  - tweak: King screech will now affect xenos of different hives
   - tweak: Neurotoxin will now only apply a slowdown to other xenos. No longer will
       it disable your abilities.
   - tweak: Hive-specific special structures can now only be built on their appropriate
@@ -321,7 +321,7 @@
   - tweak: Xenos now deal more damage to each other now. This also applies to XvX
       projectiles and abilities
   - bugfix: Weed nodes can no longer be planted on hive weeds.
-  - bugfix: Queens can no longer overwatch and devolve/banish xenos that do not belong
+  - bugfix: Kings can no longer overwatch and devolve/banish xenos that do not belong
       to her hive.
   - bugfix: Weeds on walls will now disappear if there is no nearby node.
 2020-07-22:
@@ -448,7 +448,7 @@
       turf
   - rscadd: Admins now have access to the matrix editor
   - rscadd: 'Xenomorphs can now put hostile xenomorphs into their spawnpool for larva.
-      Queens give 3 larva, T3s give 2 and T2s give 1. T1s and larva will give no larva
+      Kings give 3 larva, T3s give 2 and T2s give 1. T1s and larva will give no larva
       (Alardun #12747)'
   - rscadd: 'Larvae inside a host will now be coloured towards whichever hive it belongs
       to (Alardun #12747)'
@@ -721,7 +721,7 @@
   - tweak: RPG no longer has miniscope
   - bugfix: Defenders cannot rest while fortified any more.
   Vampmare:
-  - rscdel: Queen minimap over xenos removed. It was not being used enough to warrant
+  - rscdel: King minimap over xenos removed. It was not being used enough to warrant
       the extreme performance cost of tracking everything. Xenos have other tools
       to keep track of each other.
   Waltermeldron:
@@ -749,7 +749,7 @@
   - tweak: Synth vendor marine boots now spawn with a boot knife.
   - rscadd: The Synth Council now spawn with a snowflake uniform like the other councils.
       Sprited by Bongosz.
-  - tweak: Crusher, Ravager, Dancer strain and Queen can now open acid holes on reinforced
+  - tweak: Crusher, Ravager, Dancer strain and King can now open acid holes on reinforced
       walls/normal walls by slashing them. Lurker and Warrior can do it on normal
       walls. The same for window frames, except they get destroyed. 10 hits for walls.
       3 hits for window frames. 5 hits for reinforced window frames.
@@ -867,7 +867,7 @@
   - experiment: 'Runner: MIN=2, MAX=6, CHANCE=40%'
   - experiment: 'Praetorian: MIN=2, MAX=5, CHANCE=45%'
   - experiment: 'Predalien: MIN=3, MAX=6, CHANCE=35%'
-  - experiment: 'Queen: MIN=2, MAX=6, CHANCE=55%'
+  - experiment: 'King: MIN=2, MAX=6, CHANCE=55%'
   - experiment: 'Ravager: MIN=2, MAX=5, CHANCE=35%'
   - experiment: 'Sentinel: MIN=2, MAX=6, CHANCE=50%'
   - experiment: 'Spitter: MIN=2, MAX=6, CHANCE=45%'

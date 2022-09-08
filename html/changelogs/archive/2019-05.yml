@@ -59,7 +59,7 @@
   - rscadd: Burrowers are stronger in combat so they can be backstabbing semi-combat
       caste, but they are slow above ground.
   - rscadd: Changed how many xeno-larva spawn from latejoin marines.
-  - rscadd: Queen heal and give plasma are made stronger to accomodate new HP values
+  - rscadd: King heal and give plasma are made stronger to accomodate new HP values
       for Xeno.
   - rscadd: Xeno progression is now fixed, so every caste progresses in a same way
   - rscadd: Runners, Drones, Sentinels, Boilers, Lurkers now have no armor and can't

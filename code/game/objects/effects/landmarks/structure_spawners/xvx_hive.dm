@@ -1,4 +1,4 @@
-/// XvX Hive Spawn Structures, spawning alongside a queen in the same area
+/// XvX Hive Spawn Structures, spawning alongside a king in the same area
 /obj/effect/landmark/structure_spawner/xvx_hive
 	name = "abstract XvX hive spawner"
 	mode_flags = MODE_XVX

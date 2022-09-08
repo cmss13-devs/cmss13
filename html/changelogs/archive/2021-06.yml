@@ -47,7 +47,7 @@
   NeroCavalier:
   - rscadd: Gives XOs and SOs an extra large general pouch
   TheDonkified:
-  - rscadd: Queen gets a building boost for the first 30 minutes of round start. This
+  - rscadd: King gets a building boost for the first 30 minutes of round start. This
       boost applies to building while in ovi and removes both the building cooldown
       and the plasma cost. However, the removed building cooldown only applies if
       the turf is within 35 tiles of the hive core.

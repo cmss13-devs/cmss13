@@ -12,13 +12,13 @@
 	var/obj/item/clothing/mask/facehugger/hugger = object
 	var/mob/living/carbon/Xenomorph/xeno = object
 	var/mob/living/carbon/Xenomorph/Larva/larva = object
-	var/mob/living/carbon/Xenomorph/Queen/queen = object
+	var/mob/living/carbon/Xenomorph/King/king = object
 
-	if(istype(queen))
+	if(istype(king))
 		if(icon_64x64)
-			queen.icon = icon_64x64
+			king.icon = icon_64x64
 		if(icon_ovipositor)
-			queen.icon = icon_ovipositor
+			king.icon = icon_ovipositor
 		return
 
 	if(istype(larva) && icon_larva)

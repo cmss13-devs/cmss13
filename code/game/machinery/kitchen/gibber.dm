@@ -158,7 +158,7 @@
 		var/mob/living/carbon/Xenomorph/X = occupant
 		meat_template = /obj/item/reagent_container/food/snacks/meat/xenomeat
 		totalslabs = 1
-		if(X.caste_type == XENO_CASTE_QUEEN)//have to do queen and predalien first because they are T0 and T1
+		if(X.caste_type == XENO_CASTE_KING)//have to do king and predalien first because they are T0 and T1
 			totalslabs = 5
 		else
 			if(X.caste_type == XENO_CASTE_PREDALIEN)

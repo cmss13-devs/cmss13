@@ -8,7 +8,7 @@
   - tweak: The minimum age for characters has been increased to 19.
   Fourkhan:
   - tweak: Overwatching a Xeno now cancels long-range sight for all Castes except
-      Queen.
+      King.
   - bugfix: Most Xeno abilities cannot be activated in overwatch (Sorry, Boilers).
   - bugfix: Burrowers can no longer use Xeno overwatch to teleport across Z-levels.
   Frans_Feiffer:
@@ -53,7 +53,7 @@
   - tweak: Halved re-cloak timer.
   - rscadd: Added a zoom function to the predator clan mask.
   - tweak: Predator primaries & the pred knife should no longer be able to miss.
-  - rscadd: Predator primary weapons now temporarily prevent queen healing, overwatch
+  - rscadd: Predator primary weapons now temporarily prevent king healing, overwatch
       and hivemind usage. Be careful...
   - tweak: Predators now feel less pain.
   - tweak: Wristblades now cut fences much faster.
@@ -75,7 +75,7 @@
   - rscadd: When you posses a xeno body (by staff ckeying you in, or by Joining as
       Xeno into an SSD xeno body) it will gain your prefix and postfix but will retain
       old number.
-  - tweak: Xeno Queens lack any identification, their CKEY is shared at the end anyways
+  - tweak: Xeno Kings lack any identification, their CKEY is shared at the end anyways
       and it doesn't fit the naming convention to give them prefixes/postfixes.
   - tweak: You are free to change Xeno Id at any time, there is no 'lock' mechanic
       on any xeno-id.
@@ -321,7 +321,7 @@
   - rscadd: Added a bunch of backend support for a possible full quickcast system
       later down the line.
   Neth Iafin:
-  - tweak: Non-queen neuro requires 3 hits now (instead of 4) to knock down.
+  - tweak: Non-king neuro requires 3 hits now (instead of 4) to knock down.
   - tweak: Extended neuro knockdown time to 1 second, small slow to 6 seconds, big
       slow to 4 seconds.
   - bugfix: Fixed species knockdown resistances not being taken into account.
@@ -341,12 +341,12 @@
   - tweak: Sentinel Neurotoxin plasma cost 25 (from 50)
   - tweak: Sentinel Neurotoxin is 1.75x stronger timewise than Spitter Neurotoxin.
       Stuns for ~1.75 of a second against 0 Endurance marine.
-  - tweak: Non-Queen Neurotoxin again requires 4 shots to Knockdown.
+  - tweak: Non-King Neurotoxin again requires 4 shots to Knockdown.
   - tweak: Sentinel has new type of ammo - Neurotoxic Air Splash. It costs 50 and
       hits everyone in square 1. It also reacts and airbursts if enemy is nearby.
       It stuns for less time, so it is useful to get marines to dazed state en-masse,
       but less useful as pinning tool.
-  - tweak: Queen Neurotoxin Stuns for 2 seconds now (assuming 0 Endurance marine).
+  - tweak: King Neurotoxin Stuns for 2 seconds now (assuming 0 Endurance marine).
   Vicacrov:
   - rscadd: The intelligence officer equipment rack now also lets you choose your
       belt and pouches.

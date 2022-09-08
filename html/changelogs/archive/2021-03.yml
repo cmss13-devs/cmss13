@@ -59,7 +59,7 @@
       fight and they heavily shut down and can in fact stunlock T2s and T1s, primarily
       warriors and spitters, in a 1v1 and lock down lanes at any range, which a single
       marine should not be able to do with a common ammotype and weapon. This is a
-      problem because it is one of the things stacking power onto t3s and combat queen,
+      problem because it is one of the things stacking power onto t3s and combat king,
       forcing lower tiers to sit in the back, either sidelining or waiting for evo.
   - tweak: Slugs no longer daze, instead, they have gained almost double damage and
       increased penetration.
@@ -67,7 +67,7 @@
       piss off xenos heavily. In addition, they heavily shut down T2s and T1s, primarily
       warriors and spitters, in a 1v1 and lock down lanes at any range, which a single
       marine should not be able to do with a common ammotype and weapon. This is a
-      problem because it is one of the things stacking power onto t3s and combat queen,
+      problem because it is one of the things stacking power onto t3s and combat king,
       forcing lower tiers to sit in the back, either sidelining or waiting for evo,
       and encourages holding chokes instead of pushing out.
   Firartix:
@@ -358,7 +358,7 @@
   - bugfix: Fixed hold order being ridiculously strong on warbanner flags.
   - bugfix: Fixed warbanner flags stacking on themselves.
   - bugfix: Fixed stacking sentries very close to each other
-  - bugfix: Fixed queens being unable to remotely build.
+  - bugfix: Fixed kings being unable to remotely build.
   - bugfix: Fixed a href exploit.
   naut:
   - bugfix: M46C no longer locks itself when vended to a CO who latejoined.
@@ -378,8 +378,8 @@
   Segrain:
   - bugfix: Mines once again can be triggered by nonhumans.
   WalterMeldron:
-  - tweak: Changed queen age timer from 15 minutes to 10 minutes
-  - rscadd: Re-added back a 5 minute timer for another Queen to evolve.
+  - tweak: Changed king age timer from 15 minutes to 10 minutes
+  - rscadd: Re-added back a 5 minute timer for another King to evolve.
   Waltermeldron:
   - bugfix: Fixed IMP mount working whilst dead.
   - rscdel: Removed the pillgun from the medic CZSP.
@@ -570,7 +570,7 @@
       even if they were gibbed.
   - rscadd: Added offensive structures tech which unlocking movable walls, shield
       pillar and the acid grenade.
-  - rscadd: Added communications blackout tech, preventing radios on the queen's zlevel
+  - rscadd: Added communications blackout tech, preventing radios on the king's zlevel
       from being used for a temporary amount of time.
   - rscadd: Added evolution boost, which boosts the rate of evolution considerably
       for a temporary amount of time.

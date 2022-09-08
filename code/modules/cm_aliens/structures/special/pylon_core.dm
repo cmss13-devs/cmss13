@@ -165,9 +165,9 @@
 		linked_hive.hivecore_cooldown = TRUE
 		INVOKE_ASYNC(src, .proc/cooldownFinish,linked_hive) // start cooldown
 		if(hardcore)
-			xeno_message(SPAN_XENOANNOUNCE("You can no longer gain new sisters or another Queen. Additionally, you are unable to heal if your Queen is dead"), 2, linked_hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("You can no longer gain new sisters or another King. Additionally, you are unable to heal if your King is dead"), 2, linked_hive.hivenumber)
 			linked_hive.hardcore = TRUE
-			linked_hive.allow_queen_evolve = FALSE
+			linked_hive.allow_king_evolve = FALSE
 			linked_hive.hive_structures_limit[XENO_STRUCTURE_CORE] = 0
 			linked_hive.hive_structures_limit[XENO_STRUCTURE_POOL] = 0
 			xeno_announcement("\The [linked_hive.name] has lost their hive core!", "everything", HIGHER_FORCE_ANNOUNCE)

@@ -107,7 +107,7 @@
   - bugfix: Defenders and Praetorians should not be able to gain unfair speed advantage
       anymore.
   - bugfix: Insanely weak pheromones should not have infinite range.
-  - tweak: Xenos can heal regardless of Queen Z level, but Queen's pheromones and
+  - tweak: Xenos can heal regardless of King Z level, but King's pheromones and
       healing abilities still don't reach beyond her Z level.
   - bugfix: Ghosts should now be able to view faxes properly.
   - bugfix: Whiskey Outpost gear presets should be fixed now.
@@ -145,8 +145,8 @@
 2019-01-18:
   Alexshreds:
   - tweak: Evolving no longer needs full plasma, plasma ratio is preserved. (Drone
-      -> Queen not changed)
-  - rscadd: Queens get a message when leaders die.
+      -> King not changed)
+  - rscadd: Kings get a message when leaders die.
   - tweak: Reworked tunnels quite a bit, they are now a single network and up to 3
       xenos can stay inside of a single tunnel at a time.
   - rscadd: Xenos recieve messages when T2+ slots become open.
@@ -267,7 +267,7 @@
   ThePiachu:
   - rscadd: Added a new Keystone Mutator for Boiler - Lingering Gas. It makes their
       gas linger for longer before dissipating.
-  - tweak: Queen has stronger weeds by default.
+  - tweak: King has stronger weeds by default.
   - bugfix: Burrowers can't burrow on a dropship or into space anymore.
   - tweak: Burrowers now have acid.
   - tweak: Every acid-producing caste can arm acid traps.

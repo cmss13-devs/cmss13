@@ -67,7 +67,7 @@
 	if (!istype(shuttle))
 		return
 	if(shuttle.door_override)
-		return // its been locked down by the queen
+		return // its been locked down by the king
 	if(is_mainship_level(z)) // on the almayer
 		return
 	for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)

@@ -28,16 +28,16 @@
 /mob/living/carbon/Xenomorph/proc/update_icon_source()
 	if(HAS_TRAIT(src, TRAIT_XENONID))
 		icon = icon_xenonid
-		if(isXenoQueen(src))
-			var/mob/living/carbon/Xenomorph/Queen/Q = src
-			Q.queen_standing_icon = icon_xenonid
-			Q.queen_ovipositor_icon = 'icons/mob/xenonids/ovipositor.dmi'
+		if(isXenoKing(src))
+			var/mob/living/carbon/Xenomorph/King/Q = src
+			Q.king_standing_icon = icon_xenonid
+			Q.king_ovipositor_icon = 'icons/mob/xenonids/ovipositor.dmi'
 	else
 		icon = icon_xeno
-		if(isXenoQueen(src))
-			var/mob/living/carbon/Xenomorph/Queen/Q = src
-			Q.queen_standing_icon = icon_xeno
-			Q.queen_ovipositor_icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
+		if(isXenoKing(src))
+			var/mob/living/carbon/Xenomorph/King/Q = src
+			Q.king_standing_icon = icon_xeno
+			Q.king_ovipositor_icon = get_icon_from_source(CONFIG_GET(string/alien_king_ovipositor))
 
 	update_icons()
 

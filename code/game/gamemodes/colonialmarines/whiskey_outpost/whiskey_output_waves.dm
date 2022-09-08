@@ -60,7 +60,7 @@
 		var/xeno_type = RoleAuthority.get_caste_by_text(userInput)
 		var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(spawn_loc)
 		if(new_xeno.hive.construction_allowed == NORMAL_XENO)
-			new_xeno.hive.construction_allowed = XENO_QUEEN
+			new_xeno.hive.construction_allowed = XENO_KING
 		new_xeno.nocrit(xeno_wave)
 		xeno_pool -= userInput
 		if(isnewplayer(xeno_candidate))
@@ -222,7 +222,7 @@
 					XENO_CASTE_DRONE,
 					XENO_CASTE_DRONE,
 					XENO_CASTE_WARRIOR)
-	sound_effect = list('sound/voice/alien_queen_command.ogg')
+	sound_effect = list('sound/voice/alien_king_command.ogg')
 	command_announcement = list("Our garrison forces are reaching seventy percent casualties, we are losing our grip on LV-624. It appears that vanguard of the hostile force is still approaching, and most of the other Dust Raider platoons have been shattered. We're counting on you to keep holding.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave10

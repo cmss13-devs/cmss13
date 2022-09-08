@@ -260,7 +260,7 @@
 				if(shuttle.moving_status != SHUTTLE_INTRANSIT)
 					to_chat(usr, SPAN_WARNING("Dropship can only fire while in flight."))
 					return
-				if(shuttle.queen_locked)
+				if(shuttle.king_locked)
 					return
 				if(!selected_equipment || !selected_equipment.is_weapon)
 					to_chat(usr, SPAN_WARNING("No weapon selected."))

@@ -574,21 +574,21 @@
 	if(!user.hive)
 		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
 		return FALSE
-	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Without a queen your psychic link is broken!"))
+	if(!user.hive.living_xeno_king)
+		to_chat(user, SPAN_WARNING("Without a king your psychic link is broken!"))
 		return FALSE
 	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	user.hive.mark_ui.update_all_data()
 	user.hive.mark_ui.open_mark_menu(user)
 
-/obj/screen/queen_locator
-	name = "queen locator"
+/obj/screen/king_locator
+	name = "king locator"
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "trackoff"
-	var/track_state = TRACKER_QUEEN
+	var/track_state = TRACKER_KING
 
-/obj/screen/queen_locator/clicked(mob/living/carbon/Xenomorph/user, mods)
+/obj/screen/king_locator/clicked(mob/living/carbon/Xenomorph/user, mods)
 	if(!istype(user))
 		return FALSE
 	if(mods["shift"])
@@ -600,8 +600,8 @@
 		return FALSE
 	if(mods["alt"])
 		var/list/options = list()
-		if(user.hive.living_xeno_queen)
-			options["Queen"] = TRACKER_QUEEN
+		if(user.hive.living_xeno_king)
+			options["King"] = TRACKER_KING
 		if(user.hive.hive_location)
 			options["Hive Core"] = TRACKER_HIVE
 		var/xeno_leader_index = 1
@@ -614,12 +614,12 @@
 		if(selected)
 			track_state = options[selected]
 		return
-	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Your hive doesn't have a living queen!"))
+	if(!user.hive.living_xeno_king)
+		to_chat(user, SPAN_WARNING("Your hive doesn't have a living king!"))
 		return FALSE
 	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
-	user.overwatch(user.hive.living_xeno_queen)
+	user.overwatch(user.hive.living_xeno_king)
 
 /obj/screen/xenonightvision
 	icon = 'icons/mob/hud/alien_standard.dmi'

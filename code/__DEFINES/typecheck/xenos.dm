@@ -14,8 +14,8 @@
 #define isXenoLarva(A) (istype(A, /mob/living/carbon/Xenomorph/Larva))
 #define isXenoLarvaStrict(A) (isXenoLarva(A) && !istype(A, /mob/living/carbon/Xenomorph/Larva/predalien))
 #define isXenoPraetorian(A) (istype(A, /mob/living/carbon/Xenomorph/Praetorian))
-#define isXenoQueen(A) (istype(A, /mob/living/carbon/Xenomorph/Queen))
-#define isXenoQueenLeadingHive(A) (isXenoQueen(A) && A?:hive?:living_xeno_queen == A)
+#define isXenoKing(A) (istype(A, /mob/living/carbon/Xenomorph/King))
+#define isXenoKingLeadingHive(A) (isXenoKing(A) && A?:hive?:living_xeno_king == A)
 #define isXenoRavager(A) (istype(A, /mob/living/carbon/Xenomorph/Ravager))
 #define isXenoRunner(A) (istype(A, /mob/living/carbon/Xenomorph/Runner))
 #define isXenoSentinel(A) (istype(A, /mob/living/carbon/Xenomorph/Sentinel))
@@ -23,7 +23,7 @@
 #define isXenoWarrior(A) (istype(A, /mob/living/carbon/Xenomorph/Warrior))
 #define isXenoBurrower(A) (istype(A, /mob/living/carbon/Xenomorph/Burrower))
 
-#define isXenoBuilder(A) (isXenoDrone(A) || isXenoHivelord(A) || isXenoCarrier(A) || isXenoBurrower(A) || isXenoQueen(A))
+#define isXenoBuilder(A) (isXenoDrone(A) || isXenoHivelord(A) || isXenoCarrier(A) || isXenoBurrower(A) || isXenoKing(A))
 
 /mob/living/carbon/Xenomorph/proc/can_not_harm(var/mob/living/carbon/C)
 	if(!istype(C))

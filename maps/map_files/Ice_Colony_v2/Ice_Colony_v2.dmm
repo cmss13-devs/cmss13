@@ -1522,7 +1522,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/survivor_spawner,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "aeE" = (
@@ -25030,7 +25030,7 @@
 /area/ice_colony/underground/engineering)
 "boP" = (
 /obj/effect/landmark/hunter_primary,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -39256,7 +39256,7 @@
 /area/ice_colony/underground/hangar)
 "tEG" = (
 /obj/effect/landmark/xeno_hive_spawn,
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "tFy" = (
@@ -39392,7 +39392,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "xkk" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/king_spawn,
 /turf/open/floor/icefloor{
 	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "floor7"

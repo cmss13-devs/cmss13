@@ -140,7 +140,7 @@ var/list/datum/mob_hud/huds = list(
 
 //Xeno status hud, for xenos
 /datum/mob_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, KING_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 
 /datum/mob_hud/xeno_hostile
 	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
@@ -195,7 +195,7 @@ var/list/datum/mob_hud/huds = list(
 /mob/proc/add_to_all_mob_huds()
 	return
 
-/mob/hologram/queen/add_to_all_mob_huds()
+/mob/hologram/king/add_to_all_mob_huds()
 	var/datum/mob_hud/hud = huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
 
@@ -215,7 +215,7 @@ var/list/datum/mob_hud/huds = list(
 /mob/proc/remove_from_all_mob_huds()
 	return
 
-/mob/hologram/queen/remove_from_all_mob_huds()
+/mob/hologram/king/remove_from_all_mob_huds()
 	var/datum/mob_hud/hud = huds[MOB_HUD_XENO_STATUS]
 	hud.remove_from_hud(src)
 
@@ -327,7 +327,7 @@ var/list/datum/mob_hud/huds = list(
 	hud_set_plasma()
 	hud_set_pheromone()
 
-/mob/hologram/queen/med_hud_set_status()
+/mob/hologram/king/med_hud_set_status()
 	var/image/holder = hud_list[XENO_STATUS_HUD]
 	holder.icon_state = "hudeye"
 	holder.color = color
@@ -526,16 +526,16 @@ var/list/datum/mob_hud/huds = list(
 	hud_list[PHEROMONE_HUD] = holder
 
 
-/mob/living/carbon/Xenomorph/proc/hud_set_queen_overwatch()
-	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
+/mob/living/carbon/Xenomorph/proc/hud_set_king_overwatch()
+	var/image/holder = hud_list[KING_OVERWATCH_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
 	if (stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
+		var/mob/living/carbon/Xenomorph/King/Q = hive.living_xeno_king
 		if (Q && Q.observed_xeno == src)
-			holder.icon_state = "queen_overwatch"
-	hud_list[QUEEN_OVERWATCH_HUD] = holder
+			holder.icon_state = "king_overwatch"
+	hud_list[KING_OVERWATCH_HUD] = holder
 
 /mob/living/carbon/Xenomorph/proc/hud_update_banished()
 	var/image/holder = hud_list[XENO_BANISHED_HUD]

@@ -61,8 +61,8 @@
   - rscadd: Role timelocks are here. Once enabled, new players will be unable to play
       as roles they do not meet the playtime requirements to. You will be able to
       view any unmet requirements for a role in the character creation menu. Additionally,
-      Queen will be timelocked as well (Only for round-start, anyone can still evolve
-      to queen after the round has started). Existing players with playtime in a role
+      King will be timelocked as well (Only for round-start, anyone can still evolve
+      to king after the round has started). Existing players with playtime in a role
       will have their roles unlocked without needing to meet any requirements.
   - rscadd: Added the Senior Enlisted advisor, a mentor-only role dedicated to helping
       and teaching players about game mechanics, regulations, law, and potentially
@@ -199,7 +199,7 @@
       lower accuracy. This means that xenos under 50% health can now actually hit
       things. '
   - tweak: The superslow duration of neuro has been reduced.
-  - tweak: Reduced Queen neuro accuracy.
+  - tweak: Reduced King neuro accuracy.
   - tweak: Total acid spit damage has been reduced.
   - tweak: Neuro airbust range has been reduced from 5x5 to 3x3.
   - tweak: Getting hit by neuro airbust while you're nested now does nothing.

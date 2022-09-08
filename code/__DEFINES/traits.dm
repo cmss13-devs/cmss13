@@ -155,7 +155,7 @@
 // -- ability traits --
  /// Xenos with this trait cannot have plasma transfered to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
- /// Shows that the xeno queen is on ovi
+ /// Shows that the xeno king is on ovi
 #define TRAIT_ABILITY_OVIPOSITOR "t_ability_ovipositor"
 
 //-- item traits --

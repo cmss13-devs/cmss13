@@ -135,7 +135,7 @@
 	key = "q"
 	flags = RESTRICTED|HIVEMIND
 
-//Make queens BOLD text
+//Make kings BOLD text
 /datum/language/xenos/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
 	if(iscarbon(speaker))
 		var/mob/living/carbon/C = speaker

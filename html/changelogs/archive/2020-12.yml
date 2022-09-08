@@ -143,7 +143,7 @@
   - tweak: OB warning messages have underlines under their direction component.
   Waltermeldron:
   - bugfix: Fixed van stalling for a second after turning.
-  - tweak: Van can no longer bump immobile mobs (Queen and Crusher).
+  - tweak: Van can no longer bump immobile mobs (King and Crusher).
   - rscadd: Added viewports to the interior of the van.
   - bugfix: Fixed viewports in vehicles overriding the interaction of whoever was
       driving.
@@ -170,7 +170,7 @@
   - bugfix: Staff "Rejuvenate" verb works on dead xenos again.
   - experiment: Reverted or tweaked some changes from the balance patch a few weeks
       ago.
-  - tweak: Queen health and armor change reverted. Armor is 25 (from 35). Health is
+  - tweak: King health and armor change reverted. Armor is 25 (from 35). Health is
       1000 (from 850).
   - tweak: Ravager health and armor change reverted (hedgehog and berserker still
       have less health than base ravager from the old balance patch). Armor is 25
@@ -216,11 +216,11 @@
   - bugfix: Medical dummy tablet can now give it IB properly.
   Waltermeldron:
   - bugfix: Crushers can no longer ventcrawl.
-  - rscadd: Added more queen abilities.
-  - rscadd: Queen Heal and Plasma Transfer is now an activable that no longer requires
+  - rscadd: Added more king abilities.
+  - rscadd: King Heal and Plasma Transfer is now an activable that no longer requires
       overwatching.
-  - rscadd: Queen can now build resin structures without having to overwatch a xenomorph.
-  - rscadd: Added weak weeds, which the Queen can place down. Placing down weak weeds
+  - rscadd: King can now build resin structures without having to overwatch a xenomorph.
+  - rscadd: Added weak weeds, which the King can place down. Placing down weak weeds
       on weak weeds will turn it into a weak node, which'll expand like a regular
       node. Weak weeds have no slowdown for marines and the nodes are 1-shot. However,
       drones can plant over the weak nodes to instantly convert all connected weak
@@ -597,7 +597,7 @@
   TheDonkified:
   - bugfix: Fixed issues with fire not igniting people.
   - bugfix: Fixed death squad SG not having proper armor sprites.
-  - rscadd: Added a new napalm variant Napalm EX that can ignite queens and ravs.
+  - rscadd: Added a new napalm variant Napalm EX that can ignite kings and ravs.
       It is admin-spawn only.
   Waltermeldron:
   - tweak: Fix NanoUI renamed to Fix Interfaces. This will now forcefully close tgui
@@ -607,7 +607,7 @@
   - bugfix: Fixed changelogs.
   - bugfix: Fixed headers.
   forest2001:
-  - rscadd: Added two variables to the Queen to allow her sprite to be changed during
+  - rscadd: Added two variables to the King to allow her sprite to be changed during
       the round.
   - bugfix: Agents can now leave their shuttle again
   ghostsheet:
@@ -694,13 +694,13 @@
   - tweak: 'Buffed weak weeds. They now deploy regular weeds. Reverted the cooldown
       to 0.5 seconds from 1 second. Reverted the plasma usage to 50 from 100. Decreased
       the time needed before weeds can be placed on a turf again. '
-  - bugfix: Queens can no longer spread weeds on the landing zone.
-  - rscadd: New Queens now start as young and will achieve maturity status after 15
-      minutes. This is to make Queen death more significant as it'll put a key role
+  - bugfix: Kings can no longer spread weeds on the landing zone.
+  - rscadd: New Kings now start as young and will achieve maturity status after 15
+      minutes. This is to make King death more significant as it'll put a key role
       out of combat for an additional 15 minutes.
-  - rscadd: Young Queens spawn without neuro and screech. They also have a 0.5x health
-      multiplier. Normal Queen remains unchanged. Young Queen retains all of her abilities
-      on ovipositor and is identical to a normal queen on ovipositor.
+  - rscadd: Young Kings spawn without neuro and screech. They also have a 0.5x health
+      multiplier. Normal King remains unchanged. Young King retains all of her abilities
+      on ovipositor and is identical to a normal king on ovipositor.
   - rscdel: Oppressor Praetorians can no longer reel in stunned targets. This does
       not apply to people who are resting.
   - tweak: Throwing players in crit will now instantly kill them similar to devouring

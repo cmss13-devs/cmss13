@@ -2,7 +2,7 @@
   Geeves, monkeysfist101:
   - rscadd: Yautja now have a falcon drone, a surveillance gadget that lets them scout
       the hunting grounds.
-  - expansion: You can now examine when your vision is detached from your body (queen
+  - expansion: You can now examine when your vision is detached from your body (king
       eye, falcon drone, etc.)
   Joooks:
   - spellcheck: fixed typos in req vend AMG=AGM
@@ -19,7 +19,7 @@
       more variation and adding more spots for latejoins'
   - bugfix: added back latejoin landmarks to cryo
   - expansion: Cats will now meow at random intervals while not dead.
-  - qol: reduced the frequency of the queen ASMR breathing
+  - qol: reduced the frequency of the king ASMR breathing
 2022-05-02:
   50RemAndCounting:
   - qol: You can now examine medical storage rigs and lifesaver belts to check which
@@ -98,7 +98,7 @@
   - bugfix: MRE Matchbook weight its now tiny
 2022-05-08:
   Geevies:
-  - rscdel: Yautja no longer have a Queen Stomp emote.
+  - rscdel: Yautja no longer have a King Stomp emote.
   Git-Nivrak:
   - rscadd: Adds missing vehicle blockers in shivas around research and Med-Sec-Sci
       megastructure
@@ -177,11 +177,11 @@
       xeno that eats it for 15 seconds.
   - balance: Resin surge now strengthens structures for 15 seconds rather than 3.
   - balance: Gardener drones can now plant 4 fruits rather than 3.
-  - balance: Ovi'd queens can now only build thick walls/doors/membrane on hiveweeds,
+  - balance: Ovi'd kings can now only build thick walls/doors/membrane on hiveweeds,
       otherwise it'll just be normal. Building them costs an amount of plasma roughly
-      in the middle of the two. The queen can build thick structures on normal weeds
+      in the middle of the two. The king can build thick structures on normal weeds
       while her building is boosted (first 30 minutes of the round).
-  - balance: Ovi'd queens can no longer be fed plasma by drones.
+  - balance: Ovi'd kings can no longer be fed plasma by drones.
   Shad0vvs:
   - bugfix: Examining vehicles as a xenomorph now tells you the correct amount of
       hosts inside.
@@ -337,8 +337,8 @@
   - bugfix: Whiskey Outpost Smartgun using roles (HG Team Leader and Smartgunner)
       now properly spawn with M56 visors equipped (for real this time)
   stanalbatross:
-  - qol: added action buttons for the "word of the queen" and "view xeno tacmap" verbs
-      to the queen.
+  - qol: added action buttons for the "word of the king" and "view xeno tacmap" verbs
+      to the king.
 2022-05-27:
   Youtubeboy139:
   - imageadd: New goggle sprites

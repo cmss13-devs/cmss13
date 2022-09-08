@@ -228,7 +228,7 @@
   - tweak: All Operating Tables start with an anesthetic tank by default. This should
       make sure all OTs on all maps are useful for field surgery.
   - bugfix: Fixed a chemical addiction runtime bug.
-  - tweak: Added a new option for Xeno Queen to set who can destroy the special resin
+  - tweak: Added a new option for Xeno King to set who can destroy the special resin
       structures - builders and leaders, only leaders or only herself.
   - bugfix: Ice Colony survivors will now spawn with proper ice gear.
   - tweak: Botanist survivor now spawns with a satchel.
@@ -388,7 +388,7 @@
   - tweak: Removed duplicate alphabet lists.
   - tweak: Xeno tunnels get a more unique default name to help distinguish them on
       some maps.
-  - tweak: Drones and Queens can now rename xeno tunnels.
+  - tweak: Drones and Kings can now rename xeno tunnels.
   - tweak: Scout cloak disables itself when user gets hugged.
   - tweak: Motion detectors and data detectors disable themselves on huggers applied,
       death and when dropped onto the floor to save some processing cycles.

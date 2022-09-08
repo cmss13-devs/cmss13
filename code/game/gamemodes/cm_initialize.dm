@@ -40,17 +40,17 @@ Additional game mode variables.
 
 /datum/game_mode
 	var/list/datum/mind/xenomorphs[] = list() //These are our basic lists to keep track of who is in the game.
-	var/list/datum/mind/picked_queens = list()
+	var/list/datum/mind/picked_kings = list()
 	var/datum/mind/survivors[] = list()
 	var/datum/mind/synth_survivor = null
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
-	var/list/dead_queens // A list of messages listing the dead queens
+	var/list/dead_kings // A list of messages listing the dead kings
 	var/predators = list()
 
 	var/xeno_required_num 	= 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
 	var/xeno_starting_num 	= 0 //To clamp starting xenos.
 	var/xeno_bypass_timer 	= 0 //Bypass the five minute timer before respawning.
-	var/xeno_queen_deaths 	= 0 //How many times the alien queen died.
+	var/xeno_king_deaths 	= 0 //How many times the alien king died.
 	var/surv_starting_num 	= 0 //To clamp starting survivors.
 	var/merc_starting_num 	= 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
@@ -251,25 +251,25 @@ Additional game mode variables.
 //If this is an optional behavior, just override this proc or make an override here.
 /datum/game_mode/proc/initialize_starting_xenomorph_list(var/list/hives = list(XENO_HIVE_NORMAL), var/force_xenos = FALSE)
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
-	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
-	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
+	var/list/datum/mind/possible_kings = get_players_for_role(JOB_XENOMORPH_KING)
+	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only King.
 		to_world("<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>")
 		return
 
 	//Minds are not transferred at this point, so we have to clean out those who may be already picked to play.
-	for(var/datum/mind/A in possible_queens)
+	for(var/datum/mind/A in possible_kings)
 		var/mob/living/original = A.current
 		var/client/client = GLOB.directory[A.ckey]
-		if(jobban_isbanned(original, XENO_CASTE_QUEEN) || !can_play_special_job(client, XENO_CASTE_QUEEN))
-			LAZYREMOVE(possible_queens, A)
+		if(jobban_isbanned(original, XENO_CASTE_KING) || !can_play_special_job(client, XENO_CASTE_KING))
+			LAZYREMOVE(possible_kings, A)
 
-	if(LAZYLEN(possible_queens)) // Pink one of the people who want to be Queen and put them in
+	if(LAZYLEN(possible_kings)) // Pink one of the people who want to be King and put them in
 		for(var/hive in hives)
-			var/new_queen = pick(possible_queens)
-			if(new_queen)
-				setup_new_xeno(new_queen)
-				picked_queens += list(GLOB.hive_datum[hive] = new_queen)
-				LAZYREMOVE(possible_xenomorphs, new_queen)
+			var/new_king = pick(possible_kings)
+			if(new_king)
+				setup_new_xeno(new_king)
+				picked_kings += list(GLOB.hive_datum[hive] = new_king)
+				LAZYREMOVE(possible_xenomorphs, new_king)
 
 	for(var/datum/mind/A in possible_xenomorphs)
 		if(A.roundstart_picked)
@@ -315,7 +315,7 @@ Additional game mode variables.
 	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
 	So they may have been removed from the list, oh well.
 	*/
-	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_queens) != LAZYLEN(hives))
+	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_kings) != LAZYLEN(hives))
 		to_world("<h2 style=\"color:red\">Could not find any candidates after initial alien list pass. <b>Aborting</b>.</h2>")
 		return
 
@@ -384,7 +384,7 @@ Additional game mode variables.
 
 				for(var/mob_name in SP.linked_hive.banished_ckeys)
 					if(SP.linked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-						to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
+						to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the King re-admits you or dies."))
 						return
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/N = xeno_candidate
@@ -435,7 +435,7 @@ Additional game mode variables.
 			N.close_spawn_windows()
 		for(var/mob_name in new_xeno.hive.banished_ckeys)
 			if(new_xeno.hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
+				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the King re-admits you or dies."))
 				return
 		if(transfer_xeno(xeno_candidate, new_xeno))
 			return 1
@@ -483,22 +483,22 @@ Additional game mode variables.
 			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
 	return TRUE
 
-/// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
-/datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
+/// Pick and setup a king spawn from landmarks, then spawns the player there alongside any required setup
+/datum/game_mode/proc/pick_king_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
 	RETURN_TYPE(/turf)
 
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive.living_xeno_queen || !original || !original.client)
+	if(hive.living_xeno_king || !original || !original.client)
 		return
 
-	if(!length(GLOB.queen_spawns))
-		transform_queen(ghost_mind, get_turf(pick(GLOB.xeno_spawns)), hivenumber)
+	if(!length(GLOB.king_spawns))
+		transform_king(ghost_mind, get_turf(pick(GLOB.xeno_spawns)), hivenumber)
 		return
 
 	// Make the list pretty
 	var/list/spawn_list_map = list()
-	for(var/obj/effect/landmark/queen_spawn/T as anything in GLOB.queen_spawns)
+	for(var/obj/effect/landmark/king_spawn/T as anything in GLOB.king_spawns)
 		var/area_name = get_area_name(T)
 		var/spawn_name = area_name
 		var/spawn_counter = 1
@@ -506,46 +506,46 @@ Additional game mode variables.
 			spawn_name = "[area_name] [++spawn_counter]"
 		spawn_list_map[spawn_name] = T
 
-	var/selected_spawn = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
+	var/selected_spawn = tgui_input_list(original, "Where do you want to spawn?", "King Spawn", spawn_list_map, KING_SPAWN_TIMEOUT, theme="hive_status")
 
 	var/turf/QS
-	var/obj/effect/landmark/queen_spawn/QSI
+	var/obj/effect/landmark/king_spawn/QSI
 	if(selected_spawn)
 		QSI = spawn_list_map[selected_spawn]
 		QS = get_turf(QSI)
 
 	// Pick a random one if nothing was picked
 	if(isnull(QS))
-		QSI = pick(GLOB.queen_spawns)
+		QSI = pick(GLOB.king_spawns)
 		QS = get_turf(QSI)
-		// Support maps without queen spawns
+		// Support maps without king spawns
 		if(isnull(QS))
 			QS = get_turf(pick(GLOB.xeno_spawns))
-	transform_queen(ghost_mind, QS, hivenumber)
+	transform_king(ghost_mind, QS, hivenumber)
 	return QS
 
-/datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/proc/transform_king(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL)
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive.living_xeno_queen || !original || !original.client)
+	if(hive.living_xeno_king || !original || !original.client)
 		return
 
-	var/mob/living/carbon/Xenomorph/new_queen = new /mob/living/carbon/Xenomorph/Queen(xeno_turf, null, hivenumber)
-	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
+	var/mob/living/carbon/Xenomorph/new_king = new /mob/living/carbon/Xenomorph/King(xeno_turf, null, hivenumber)
+	ghost_mind.transfer_to(new_king) //The mind is fine, since we already labeled them as a xeno. Away they go.
 	ghost_mind.name = ghost_mind.current.name
 
-	new_queen.generate_name()
+	new_king.generate_name()
 
-	SSround_recording.recorder.track_player(new_queen)
+	SSround_recording.recorder.track_player(new_king)
 
-	to_chat(new_queen, "<B>You are now the alien queen!</B>")
-	to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
-	to_chat(new_queen, "<B>You should start by building a hive core.</B>")
-	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+	to_chat(new_king, "<B>You are now the alien king!</B>")
+	to_chat(new_king, "<B>Your job is to spread the hive.</B>")
+	to_chat(new_king, "<B>You should start by building a hive core.</B>")
+	to_chat(new_king, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
 	// Xeno ressource collection
-	//new_queen.crystal_stored = XENO_STARTING_CRYSTAL
-	new_queen.update_icons()
+	//new_king.crystal_stored = XENO_STARTING_CRYSTAL
+	new_king.update_icons()
 
 //===================================================\\
 

@@ -71,7 +71,7 @@
 		msg_admin_niche("[X]/([key_name(X)]) has named a new tunnel \"[msg]\".")
 		tunnelobj.tunnel_desc = "[msg]"
 
-	if(X.hive.living_xeno_queen || X.hive.allow_no_queen_actions)
+	if(X.hive.living_xeno_king || X.hive.allow_no_king_actions)
 		for(var/mob/living/carbon/Xenomorph/target_for_message as anything in X.hive.totalXenos)
 			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
 			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
@@ -86,7 +86,7 @@
 	to_chat(X, SPAN_NOTICE("You are ready to dig a tunnel again."))
 	X.tunnel_delay = 0
 
-//Queen Abilities
+//King Abilities
 /datum/action/xeno_action/activable/screech
 	name = "Screech (250)"
 	action_icon_state = "screech"
@@ -98,7 +98,7 @@
 	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
 
 /datum/action/xeno_action/activable/screech/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	var/mob/living/carbon/Xenomorph/King/X = owner
 
 	if (!istype(X))
 		return
@@ -164,8 +164,8 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/gut/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	X.queen_gut(A)
+	var/mob/living/carbon/Xenomorph/King/X = owner
+	X.king_gut(A)
 	..()
 
 /datum/action/xeno_action/onclick/psychic_whisper
@@ -224,9 +224,9 @@
 	to_chat(X, SPAN_XENONOTICE("You said: \"[msg]\" to [targetstring]"))
 	log_say("PsychicRadiance: [key_name(X)]->[targetstring] : [msg]")
 
-/datum/action/xeno_action/activable/queen_give_plasma
+/datum/action/xeno_action/activable/king_give_plasma
 	name = "Give Plasma (400)"
-	action_icon_state = "queen_give_plasma"
+	action_icon_state = "king_give_plasma"
 	ability_name = "give plasma"
 	plasma_cost = 400
 	macro_path = /datum/action/xeno_action/verb/verb_plasma_xeno
@@ -234,8 +234,8 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 12 SECONDS
 
-/datum/action/xeno_action/activable/queen_give_plasma/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+/datum/action/xeno_action/activable/king_give_plasma/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 
@@ -255,7 +255,7 @@
 		to_chat(X, SPAN_WARNING("You can only target xenos part of your hive!"))
 		return
 
-	if(!target.caste.can_be_queen_healed)
+	if(!target.caste.can_be_king_healed)
 		to_chat(X, SPAN_XENOWARNING("This caste cannot be given plasma!"))
 		return
 
@@ -271,41 +271,41 @@
 	apply_cooldown()
 	to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
 
-/datum/action/xeno_action/onclick/queen_order
+/datum/action/xeno_action/onclick/king_order
 	name = "Give Order (100)"
-	action_icon_state = "queen_order"
+	action_icon_state = "king_order"
 	plasma_cost = 100
 
-/datum/action/xeno_action/onclick/queen_order/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+/datum/action/xeno_action/onclick/king_order/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 	if(X.observed_xeno)
 		var/mob/living/carbon/Xenomorph/target = X.observed_xeno
 		if(target.stat != DEAD && target.client)
 			if(X.check_plasma(plasma_cost))
-				var/input = stripped_input(X, "This message will be sent to the overwatched xeno.", "Queen Order", "")
+				var/input = stripped_input(X, "This message will be sent to the overwatched xeno.", "King Order", "")
 				if(!input)
 					return
-				var/queen_order = SPAN_XENOANNOUNCE("<b>[X]</b> reaches you:\"[input]\"")
+				var/king_order = SPAN_XENOANNOUNCE("<b>[X]</b> reaches you:\"[input]\"")
 				if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_xeno != target || target.stat == DEAD)
 					return
 				if(target.client)
 					X.use_plasma(plasma_cost)
-					to_chat(target, "[queen_order]")
-					log_admin("[queen_order]")
-					message_staff("[key_name_admin(X)] has given the following Queen order to [target]: \"[input]\"", 1)
+					to_chat(target, "[king_order]")
+					log_admin("[king_order]")
+					message_staff("[key_name_admin(X)] has given the following King order to [target]: \"[input]\"", 1)
 
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
 
-/datum/action/xeno_action/onclick/queen_award
+/datum/action/xeno_action/onclick/king_award
 	name = "Give Royal Jelly (500)"
-	action_icon_state = "queen_award"
+	action_icon_state = "king_award"
 	plasma_cost = 500
 
-/datum/action/xeno_action/onclick/queen_award/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
+/datum/action/xeno_action/onclick/king_award/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/King/xeno = owner
 	if(!xeno.check_state())
 		return
 	if(!xeno.check_plasma(plasma_cost))
@@ -313,22 +313,22 @@
 	if(give_jelly_award(xeno.hive))
 		xeno.use_plasma(plasma_cost)
 
-/datum/action/xeno_action/onclick/queen_word
-	name = "Word of the Queen (50)"
-	action_icon_state = "queen_word"
+/datum/action/xeno_action/onclick/king_word
+	name = "Word of the King (50)"
+	action_icon_state = "king_word"
 	plasma_cost = 50
 
-/datum/action/xeno_action/onclick/queen_word/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+/datum/action/xeno_action/onclick/king_word/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	X.hive_message()
 
-/datum/action/xeno_action/onclick/queen_tacmap
+/datum/action/xeno_action/onclick/king_tacmap
 	name = "View Xeno Tacmap"
-	action_icon_state = "toggle_queen_zoom"
+	action_icon_state = "toggle_king_zoom"
 	plasma_cost = 0
 
-/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+/datum/action/xeno_action/onclick/king_tacmap/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	X.xeno_tacmap()
 
 /datum/action/xeno_action/deevolve
@@ -337,7 +337,7 @@
 	plasma_cost = 500
 
 /datum/action/xeno_action/deevolve/action_activate()
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	var/mob/living/carbon/Xenomorph/King/X = owner
 	if(!X.check_state())
 		return
 	if(X.observed_xeno)
@@ -395,7 +395,7 @@
 		if(T.health <= 0)
 			return
 
-		to_chat(T, SPAN_XENOWARNING("The queen is deevolving you for the following reason: [reason]"))
+		to_chat(T, SPAN_XENOWARNING("The king is deevolving you for the following reason: [reason]"))
 
 		var/xeno_type
 
@@ -447,8 +447,8 @@
 		new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [T]."), \
 		SPAN_XENODANGER("[X] makes you regress into your previous form."))
 
-		if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
-			X.hive.living_xeno_queen.overwatch(new_xeno)
+		if(X.hive.living_xeno_king && X.hive.living_xeno_king.observed_xeno == T)
+			X.hive.living_xeno_king.overwatch(new_xeno)
 
 		message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 

@@ -250,7 +250,7 @@
   - bugfix: Fixed sniper pre-equipped loadout overriding generic spec's, breaking
       it in character preview and some admin ERTs
   John:
-  - tweak: All Xenomorphs, excluding runners, lurkers, and the Queen, have had their
+  - tweak: All Xenomorphs, excluding runners, lurkers, and the King, have had their
       health increased by 25%.
   - rscadd: Added more Xenomorph health tiers.
   John_Titor_Back_Again:

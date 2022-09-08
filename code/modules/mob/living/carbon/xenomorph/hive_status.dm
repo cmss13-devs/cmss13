@@ -38,7 +38,7 @@
 	if(send_update)
 		SStgui.update_uis(src)
 
-	xeno_counts[1] -= "Queen" // don't show queen in the amount of xenos
+	xeno_counts[1] -= "King" // don't show king in the amount of xenos
 
 	// Also update the amount of T2/T3 slots
 	tier_slots = assoc_hive.get_tier_slots()
@@ -132,12 +132,12 @@
 	.["xeno_keys"] = xeno_keys
 	.["xeno_info"] = xeno_info
 	.["xeno_vitals"] = xeno_vitals
-	.["queen_location"] = get_area_name(assoc_hive.living_xeno_queen)
+	.["king_location"] = get_area_name(assoc_hive.living_xeno_king)
 	.["hive_location"] = hive_location
 	.["pooled_larva"] = pooled_larva
 	.["evilution_level"] = evilution_level
 
-	var/mob/living/carbon/Xenomorph/Queen/Q = user
+	var/mob/living/carbon/Xenomorph/King/Q = user
 	.["is_in_ovi"] = istype(Q) && Q.ovipositor
 
 /datum/hive_status_ui/ui_static_data(mob/user)
@@ -182,7 +182,7 @@
 			if(xenoSrc.stat == DEAD)
 				return
 
-			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_give_plasma)
+			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/king_give_plasma)
 			A?.use_ability_wrapper(xenoTarget)
 
 		if("heal")
@@ -195,7 +195,7 @@
 			if(xenoSrc.stat == DEAD)
 				return
 
-			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
+			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/king_heal)
 			A?.use_ability_wrapper(xenoTarget, TRUE)
 
 		if("overwatch")

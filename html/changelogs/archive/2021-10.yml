@@ -100,11 +100,11 @@
   Geeves:
   - rscadd: Fullscreen users can now access the Options and Messages menu under the
       File tab.
-  - rscadd: Ghosts can now follow the Queen Eye by pressing the E next to her name
+  - rscadd: Ghosts can now follow the King Eye by pressing the E next to her name
       when she speaks.
   - tweak: Changed the observer tracking word "(Follow)" to "(F)" to conserve space.
   - tweak: Xeno Construction Placement is now allowed to everyone at roundstart, as
-      is unnesting. Queens can still modify it as they wish.
+      is unnesting. Kings can still modify it as they wish.
   - rscadd: Added a UPP Doctor role for Faction Clash.
   - rscadd: Smartgunners can now set their M56 head mounted sight to Far Sight mode,
       which slowly drains powerpack battery while active, but provides an extra tile
@@ -340,7 +340,7 @@
   KatherineSmith:
   - tweak: Increased reagent tank transfer values to include 200 and 300
   Nivrak:
-  - bugfix: Queen can now unlock DS2s doors
+  - bugfix: King can now unlock DS2s doors
   Stan_albatross:
   - tweak: Ceilings now tell you in chat what kinds of fire support they block.
   - tweak: screwdrivers now fit in ear slots
@@ -369,7 +369,7 @@
 2021-10-26:
   Geeves:
   - rscadd: Xenos now get a message when a new tunnel is created, if there is a living
-      queen to relay it.
+      king to relay it.
   - rscadd: PO sentry deployment is now pinpoint accurate when launched, but cannot
       be launched next to or on top of another deployed defenses structure, and cannot
       be deployed on walls anymore.

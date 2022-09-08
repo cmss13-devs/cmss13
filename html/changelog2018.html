@@ -249,7 +249,7 @@ should be listed in the changelog upon commit though. Thanks. -->
 	<h2 class='date'>December 20 2018</h2>
 	<h3 class='author'>ThePiachu updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='rscadd'>Added a few more mutators - faster egg production for Queen, more storage capacity for Carrier, longer pounce for pouncing castes, and a tackle mutator for everyone, both individually and Hive-wide.</li>
+		<li class='rscadd'>Added a few more mutators - faster egg production for King, more storage capacity for Carrier, longer pounce for pouncing castes, and a tackle mutator for everyone, both individually and Hive-wide.</li>
 		<li class='rscadd'>Added a new Hive mutator - "Resilient larva". It boosts larva gestation speed and gives you a small chance of spawning an extra larva from (almost) all types of hosts.</li>
 		<li class='tweak'>Mutators have been disabled for Whiskey Outpost.</li>
 		<li class='tweak'>The maximum larva that can burst from a single human has been reduced from 7 to 4. A 4-larva burst still gibs the host.</li>
@@ -279,7 +279,7 @@ should be listed in the changelog upon commit though. Thanks. -->
 	</ul>
 	<h3 class='author'>Neth Iafin updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='bugfix'>Queen respawn timer reinstated.</li>
+		<li class='bugfix'>King respawn timer reinstated.</li>
 	</ul>
 </div>
 
@@ -339,9 +339,9 @@ should be listed in the changelog upon commit though. Thanks. -->
 	<ul class='changes bgimages16'>
 		<li class='experiment'>First part of the Xeno Overhaul, the Xeno Mutators, is here!</li>
 		<li class='experiment'>Every xeno receives a few mutator points every maturity level they reach. They can spend them to buy various boosts to their stats and abilities. Those mutators are reset upon evolving.</li>
-		<li class='experiment'>Queen can also purchase mutators for the entire Hive. Those work like individual mutators, except they apply to all xenos of that Hive (and stack with individual mutators). The Hive gets more mutator points as the Queen matures. If a Queen dies however, those mutators are reset.</li>
+		<li class='experiment'>King can also purchase mutators for the entire Hive. Those work like individual mutators, except they apply to all xenos of that Hive (and stack with individual mutators). The Hive gets more mutator points as the King matures. If a King dies however, those mutators are reset.</li>
 		<li class='experiment'>This is a major experimental feature, expect things to be bugged, imbalanced, etc.</li>
-		<li class='tweak'>When Queen dies, Xeno leader status is removed.</li>
+		<li class='tweak'>When King dies, Xeno leader status is removed.</li>
 		<li class='tweak'>Boiler's gas radius is a bit smaller, but scales up with age.</li>
 		<li class='tweak'>Implemented #3774 - PFCs can now buy a (limited) amount of extras in their gear vendor. This should alleviate Requisitions a bit, plus bring a bit of joy to PFCs' lives.</li>
 	</ul>
@@ -379,7 +379,7 @@ should be listed in the changelog upon commit though. Thanks. -->
 		<li class='tweak'>Xenos (larva specifically) can't be buckled into nests anymore.</li>
 		<li class='bugfix'>Fixed #5157</li>
 		<li class='bugfix'>Made CLF medics spawn with a medic belt to ensure their satchel is not overloaded with big magazines.</li>
-		<li class='bugfix'>Admin-level Queens should not take over Hives anymore.</li>
+		<li class='bugfix'>Admin-level Kings should not take over Hives anymore.</li>
 		<li class='tweak'>Humans may attempt to use certain Yautja bracer functions. Be careful, however, as alien technology can be hazardous to your health.</li>
 		<li class='tweak'>Synth vendor items have been tweaked - Tool Pouches are now empty, added Light Replacer and Space Cleaner.</li>
 	</ul>
@@ -406,7 +406,7 @@ should be listed in the changelog upon commit though. Thanks. -->
 		<li class='tweak'>Fixes #3904 et al - xeno run, hide and intent preferences carry over upon evolution.</li>
 		<li class='tweak'>Xenos retain their plasma ratio when upgrading - this means if you were full before upgrading, you will remain full!</li>
 		<li class='tweak'>Implemented #1154, #2699 - Ghosts can see Hive Status now.</li>
-		<li class='tweak'>Xenos will now retain their language knowledge on evolution and upgrades (watch out for Tradeband speaking Queens, they are up to no good...).</li>
+		<li class='tweak'>Xenos will now retain their language knowledge on evolution and upgrades (watch out for Tradeband speaking Kings, they are up to no good...).</li>
 	</ul>
 	<h3 class='author'>RavingManiac updated:</h3>
 	<ul class='changes bgimages16'>
@@ -828,7 +828,7 @@ should be listed in the changelog upon commit though. Thanks. -->
 	<ul class='changes bgimages16'>
 		<li class='bugfix'>Yautja will no longer stuff every item into their hunting pouch when they press E.</li>
 		<li class='rscadd'>Added squad tags to marine comms. Now any time you talk in a channel other than your squad channel, everyone will know what squad you are.</li>
-		<li class='rscadd'>The 'Join as Xeno' button will now attempt to join as a buried larva if some exist and the queen is on her ovipositor. This joining ignores the one-minute timer for ghosts to occupy them, and is only an option from the lobby.</li>
+		<li class='rscadd'>The 'Join as Xeno' button will now attempt to join as a buried larva if some exist and the king is on her ovipositor. This joining ignores the one-minute timer for ghosts to occupy them, and is only an option from the lobby.</li>
 	</ul>
 </div>
 
@@ -1163,8 +1163,8 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	</ul>
 	<h3 class='author'>Spookydonut updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='experiment'>Added ability for queen in ovipositor showing the positions of her xenos and any humans they can see.  The minimap updates every 5 second automatically, darker red is higher tier xenos, blue/green is hosts.  Marine versions will come soon after performance profiling of queen version.</li>
-		<li class='tweak'>Queen map now 2x scaled and updates twice as often.</li>
+		<li class='experiment'>Added ability for king in ovipositor showing the positions of her xenos and any humans they can see.  The minimap updates every 5 second automatically, darker red is higher tier xenos, blue/green is hosts.  Marine versions will come soon after performance profiling of king version.</li>
+		<li class='tweak'>King map now 2x scaled and updates twice as often.</li>
 		<li class='rscadd'>Morgue trays now show the name of their occupant.</li>
 		<li class='rscadd'>Bodybags now scoop up detached limbs again.</li>
 		<li class='bugfix'>Temporary fix for vents being disconnected, if you get the message about the vent being disconnected just give it 5-10 and try again.</li>
@@ -1242,7 +1242,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 		<li class='tweak'>Standing mobs now get knocked down and knocked back when hit by tank, you can still run over prone things.</li>
 		<li class='rscadd'>If someone trained in engineering skill examines the tank, they'll be able to see the integrity of each module on the tank.</li>
 		<li class='rscadd'>Allowed the tank to run over more things.</li>
-		<li class='rscadd'>The queen and crusher can no longer be run over by the tank, and will stop it in it's tracks.</li>
+		<li class='rscadd'>The king and crusher can no longer be run over by the tank, and will stop it in it's tracks.</li>
 		<li class='rscadd'>Added in a vendor in the vehicle bay to allow tankers to choose a loadout to start with, to reduce the points load on req.</li>
 	</ul>
 </div>
@@ -1316,7 +1316,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 		<li class='rscadd'>Body and stasis bags now display the name of their occupant on mouse-over.</li>
 		<li class='bugfix'>Fixed issues with Warrior lunge cooldown.</li>
 		<li class='experiment'>When the hijacked shuttle departs the planet, all burrowed larva and xenos left behind are deleted.  This is intended to reduce any round-end delay.</li>
-		<li class='experiment'>When the Queen dies, a proportion of the burrowed larva die, the older the queen, the less larva that die.  The remaining larva will all spawn above ground around the map.  This is intended to make losing the Queen more punishing.</li>
+		<li class='experiment'>When the King dies, a proportion of the burrowed larva die, the older the king, the less larva that die.  The remaining larva will all spawn above ground around the map.  This is intended to make losing the King more punishing.</li>
 	</ul>
 	<h3 class='author'>dylanstrategie updated:</h3>
 	<ul class='changes bgimages16'>
@@ -1385,8 +1385,8 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h2 class='date'>July 1 2018</h2>
 	<h3 class='author'>Spookydonut updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='tweak'>Removed Queen Charge ability.</li>
-		<li class='tweak'>Reduced overall speed of Queen.</li>
+		<li class='tweak'>Removed King Charge ability.</li>
+		<li class='tweak'>Reduced overall speed of King.</li>
 	</ul>
 </div>
 
@@ -1483,7 +1483,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 		<li class='bugfix'>Fixes putting attachment on pred guns.</li>
 		<li class='bugfix'>Fixes refresh issue with chem_dispenser window.</li>
 		<li class='tweak'>Buffs the effect of crossing fire.</li>
-		<li class='bugfix'>Fixes queen not appearing at round end if gibbed.</li>
+		<li class='bugfix'>Fixes king not appearing at round end if gibbed.</li>
 		<li class='bugfix'>Fixes defender headbutt damaging the dead.</li>
 		<li class='bugfix'>Fixes assembly items not correctly being removed from storage object.</li>
 		<li class='tweak'>Reduces damage from Crusher running over a marine.</li>
@@ -1522,7 +1522,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h2 class='date'>June 23 2018</h2>
 	<h3 class='author'>BMC777 updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='imageadd'>Added new Queen and Carrier sprites courtesy of Fridge.</li>
+		<li class='imageadd'>Added new King and Carrier sprites courtesy of Fridge.</li>
 		<li class='imageadd'>Added Nicboone's new invisible Lurker sprite which should be much harder to spot.</li>
 	</ul>
 </div>
@@ -1873,7 +1873,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h3 class='author'>Spookydonut updated:</h3>
 	<ul class='changes bgimages16'>
 		<li class='tweak'>Sandbags no longer constructable on dropships.</li>
-		<li class='tweak'>Barricades no longer able to be dragged onto dropships, with the dropship door and lockdown changes barricades on dropships only serve to delay the round where the Queen is attempting to call down and take over the dropship.</li>
+		<li class='tweak'>Barricades no longer able to be dragged onto dropships, with the dropship door and lockdown changes barricades on dropships only serve to delay the round where the King is attempting to call down and take over the dropship.</li>
 	</ul>
 </div>
 
@@ -1922,7 +1922,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 		<li class='tweak'>PDAs no longer spawn as roundstart equipment for shipside roles.</li>
 		<li class='tweak'>Renamed LV colony areas to give a better idea of outdoor locations.</li>
 		<li class='tweak'>Renamed Big Red colony areas to give a better idea of outdoor locations.</li>
-		<li class='bugfix'>Queen locator should work correctly on ice and almayer.</li>
+		<li class='bugfix'>King locator should work correctly on ice and almayer.</li>
 		<li class='bugfix'>Fixed ice colony bugs #2336 #2760 #2843 #2895.</li>
 		<li class='bugfix'>Fixed prison bug #2749.</li>
 		<li class='bugfix'>Fixed LV cargo dome having metal roof in exposed areas.</li>
@@ -1972,8 +1972,8 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 		<li class='rscadd'>Xenomorphs dragging bodies into flames ignites the xenomorph.</li>
 		<li class='tweak'>Crusher stomp no longer damages corpses, and charging over corpses does no damage and slows the crusher a small amount.  100 bodies on the same tile will slow the same amount as 1 body to prevent marines using corpse walls.</li>
 		<li class='tweak'>Acid spit no longer damages corpses.</li>
-		<li class='tweak'>Leader pheromones and queen healing no longer work when not in the same level as the Queen, ice colony and almayer are both considered one level for the purposes of this change.</li>
-		<li class='tweak'>Xenos don't heal or have their upgrade level progress when on a different level from the Queen.</li>
+		<li class='tweak'>Leader pheromones and king healing no longer work when not in the same level as the King, ice colony and almayer are both considered one level for the purposes of this change.</li>
+		<li class='tweak'>Xenos don't heal or have their upgrade level progress when on a different level from the King.</li>
 		<li class='tweak'>The intention of this change to make xenos on the Almayer a distraction and minor disruption instead of an unstoppable murder machine of mostly unarmed and noncombat players.</li>
 		<li class='tweak'>Burrowed larva now only emerge one per minute.</li>
 	</ul>
@@ -2006,7 +2006,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<ul class='changes bgimages16'>
 		<li class='tweak'>Mortars can now be deployed under glass ceilings</li>
 		<li class='rscadd'>Forcesay now triggered by damage, screaming, getting knocked down or falling unconscious. Forcesay message will vary depending on cause</li>
-		<li class='tweak'>Queen no longer restricted by cooldown when hijacking shuttle</li>
+		<li class='tweak'>King no longer restricted by cooldown when hijacking shuttle</li>
 		<li class='rscadd'>Examining weeds now indicates the ceiling type of the area</li>
 		<li class='tweak'>Ice colony underground hangar now considered to have no ceiling</li>
 		<li class='tweak'>Prison station areas tweaked</li>
@@ -2068,8 +2068,8 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 		<li class='rscadd'>OB can penetrate up to underground (but not deep underground) ceilings. CAS can penetrate up to glass ceilings (due to laser spot visibility). Supply drops can penetrate up to glass ceilings. Medevacs can penetrate up to glass ceilings. Mortars can penetrate up to metal ceilings.</li>
 		<li class='rscadd'>CAS, OB, supply drops, medevacs and mortars will generate ceiling debris based on ceiling type.</li>
 		<li class='rscadd'>Hull windows no longer indestructible - instead, pressure shutters will automatically close when the window is destroyed.</li>
-		<li class='tweak'>Dropship airlocks now have a separate hijack and door override. The queen can override the doors from the LZ console, but not hijack the shuttle. The shuttle can be hijacked and the doors overidden from either the shuttle cockpit console or the passenger area lockdown button. There is no cooldown for the queen overriding the doors, but there is a cooldown for marines reversing the override.</li>
-		<li class='tweak'>Hive status is unavailable if there is no living queen.</li>
+		<li class='tweak'>Dropship airlocks now have a separate hijack and door override. The king can override the doors from the LZ console, but not hijack the shuttle. The shuttle can be hijacked and the doors overidden from either the shuttle cockpit console or the passenger area lockdown button. There is no cooldown for the king overriding the doors, but there is a cooldown for marines reversing the override.</li>
+		<li class='tweak'>Hive status is unavailable if there is no living king.</li>
 		<li class='tweak'>Cleaned up areas on Big Red.</li>
 		<li class='tweak'>Minor prison station alterations.</li>
 		<li class='bugfix'>Fixed bug which was preventing using guns in aim mode.</li>
@@ -2101,7 +2101,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h3 class='author'>Spookydonut updated:</h3>
 	<ul class='changes bgimages16'>
 		<li class='rscadd'>Xenos on fire have any facehuggers in their hands die, stored huggers on carriers are unaffected.</li>
-		<li class='rscadd'>Ghosts now receive queen mother and word of the queen messages.</li>
+		<li class='rscadd'>Ghosts now receive king mother and word of the king messages.</li>
 		<li class='rscadd'>Hive status now shows xeno leaders.</li>
 		<li class='rscadd'>Hive status now shows number of burrowed larva.</li>
 		<li class='bugfix'>SSD and ghosted xenos no longer get upgrade and evolution progress or count towards tier slots unlocking.  They still take up t2/t3 slots.</li>
@@ -2129,7 +2129,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h2 class='date'>March 21 2018</h2>
 	<h3 class='author'>Spookydonut updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='rscadd'>SSD larva near the ovi'd queen now burrow back underground.</li>
+		<li class='rscadd'>SSD larva near the ovi'd king now burrow back underground.</li>
 		<li class='bugfix'>Added 5 minute timer to taking over a larva.</li>
 	</ul>
 </div>
@@ -2159,8 +2159,8 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<ul class='changes bgimages16'>
 		<li class='experiment'>Changed how larva get spawned both normally and via latejoins.</li>
 		<li class='experiment'>Larva that burst from a nested host without a player controlling them burrow underground for later.  Latejoin larva add to this tally of 'stored' larva.</li>
-		<li class='experiment'>These 'stored' larva will spawn at the Queen when she is ovipositor and there is a player with xeno preference turned on.</li>
-		<li class='experiment'>This is should encourage the Queen to either stay in ovipositor or regularly grow one to replenish losses and allow existing xenomorphs to evolve.</li>
+		<li class='experiment'>These 'stored' larva will spawn at the King when she is ovipositor and there is a player with xeno preference turned on.</li>
+		<li class='experiment'>This is should encourage the King to either stay in ovipositor or regularly grow one to replenish losses and allow existing xenomorphs to evolve.</li>
 		<li class='experiment'>If you attempt to join as xeno when none are available then your xeno preference is turned on for you, but not from the lobby latejoin screen.</li>
 	</ul>
 </div>
@@ -2184,14 +2184,14 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h2 class='date'>March 15 2018</h2>
 	<h3 class='author'>dylanstrategie updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='rscadd'>Significantly increased the role of Xenomorph Leaders. They are now limited in number based on Queen upgrade, but they will broadcast the Queen's pheromones around them as long as the Queen is on her ovipositor, even if not within current overwatch range. This allows them to act as true decentralized leaders instead of overwatch bookmarks and pseudo-medals.</li>
+		<li class='rscadd'>Significantly increased the role of Xenomorph Leaders. They are now limited in number based on King upgrade, but they will broadcast the King's pheromones around them as long as the King is on her ovipositor, even if not within current overwatch range. This allows them to act as true decentralized leaders instead of overwatch bookmarks and pseudo-medals.</li>
 	</ul>
 	<h3 class='author'>Spookydonut updated:</h3>
 	<ul class='changes bgimages16'>
 		<li class='experiment'>Fixed dropships.</li>
 		<li class='experiment'>Dropship shutters removed, replaced with the ability to lock all doors.</li>
 		<li class='experiment'>Doors can't be welded, hacked, melted or exploded.</li>
-		<li class='experiment'>When the queen locks the shuttle all doors unlock and can not be locked.</li>
+		<li class='experiment'>When the king locks the shuttle all doors unlock and can not be locked.</li>
 		<li class='experiment'>Shuttle doors all unlock on landing.</li>
 		<li class='experiment'>The wall button in the passenger area can lock down the shuttle but only the pilot console can lift the lockdown.</li>
 		<li class='experiment'>Shuttle passenger seats can now be folded down flat into the floor with a wrench.</li>
@@ -2321,7 +2321,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	</ul>
 	<h3 class='author'>RavingManiac updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='rscadd'>Without a Queen, xenomorphs can neither communicate over hivechat nor recieve death notifications.</li>
+		<li class='rscadd'>Without a King, xenomorphs can neither communicate over hivechat nor recieve death notifications.</li>
 		<li class='bugfix'>Fixed a bug preventing items from spawning in ERT backpacks. They should feel a lot fuller now.</li>
 	</ul>
 </div>
@@ -2515,7 +2515,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h3 class='author'>dylanstrategie updated:</h3>
 	<ul class='changes bgimages16'>
 		<li class='experiment'>Cargo and Preparation general vendor inventories rebalanced across the board. Further tweaks may happen depending on results.</li>
-		<li class='rscadd'>Crusher and Queen explosive resistance is no longer absolute, they will instead enjoy a significant damage reduction. They are still immune to explosive stuns however.</li>
+		<li class='rscadd'>Crusher and King explosive resistance is no longer absolute, they will instead enjoy a significant damage reduction. They are still immune to explosive stuns however.</li>
 		<li class='rscadd'>Added the surgical tray. The surgical tray will neatly store all the tools you need for your surgery needs, reducing clutter. These replace the massive mounds of surgical tools on the ship.</li>
 		<li class='rscadd'>Surgery crate will now contain two filled surgery trays.</li>
 		<li class='bugfix'>Give verb will no longer propose giving an item to yourself, and should respond immediately if only one person is next to you.</li>
@@ -2533,10 +2533,10 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	</ul>
 	<h3 class='author'>dylanstrategie updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='rscadd'>Queen now gets Ravager delimb, Crusher explosive immunity, and Spitter-equivalent spit.</li>
+		<li class='rscadd'>King now gets Ravager delimb, Crusher explosive immunity, and Spitter-equivalent spit.</li>
 		<li class='rscdel'>Removed BFA from Scout rifle, removed Gyro from HPR.</li>
-		<li class='tweak'>Screeching now immediately kills the Queen's charge.</li>
-		<li class='tweak'>Queen now has a 15 seconds cooldown on all her active leadership abilities (Heal, Plasma, Xeno Leader Promote). This cooldown is shared between abilities.</li>
+		<li class='tweak'>Screeching now immediately kills the King's charge.</li>
+		<li class='tweak'>King now has a 15 seconds cooldown on all her active leadership abilities (Heal, Plasma, Xeno Leader Promote). This cooldown is shared between abilities.</li>
 		<li class='tweak'>Add a 1.5 second nesting cooldown to make combat nesting a bit harder.</li>
 		<li class='tweak'>Resin structures now take significantly less damage from bullets, melee and fire damage unchanged.</li>
 	</ul>
@@ -2579,7 +2579,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h2 class='date'>February 9 2018</h2>
 	<h3 class='author'>Rahlzel updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='soundadd'>Large sound update focused on Xenos. 60+ new sounds - slashing metal (robots, power loaders), slashing flesh, building resin, breaking resin as a human, eggs destroyed, growls, bites, tail attacks, charging as a Crusher/Queen, buttoning up humans into nests, acid sizzling when an object is destroyed, 6 new roars, and more.</li>
+		<li class='soundadd'>Large sound update focused on Xenos. 60+ new sounds - slashing metal (robots, power loaders), slashing flesh, building resin, breaking resin as a human, eggs destroyed, growls, bites, tail attacks, charging as a Crusher/King, buttoning up humans into nests, acid sizzling when an object is destroyed, 6 new roars, and more.</li>
 		<li class='soundadd'>Xenos - check the IC > Emotes verb or type *help in chat to see all the new emotes. They have been split up to allow players to pick and choose their favorite emote (hiss1, hiss2, etc) or you can simply use an emote without a number to have the game choose randomly for you (hiss). Remember, these can also be added <a href="https://cm-ss13.com/wiki/Macros">as a macro</a> for a bit more personalization (just don't spam them please).</li>
 	</ul>
 </div>
@@ -2711,7 +2711,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 		<li class='experiment'>Turret statistics reworked to turn it into more of a suppresion weapon. Magazines now have 500-round drums and fire 10 shots per burst. Time between rounds and between bursts reduced significantly. Turret munitions now much less accurate and less damaging.</li>
 		<li class='rscadd'>MG Nests now deal more damage per hit to fit more of a damage dealer/crew weapon role.</li>
 		<li class='rscadd'>Added a roundstart timelock to the shuttles. It is now impossible to take off before 12:25. No need to rush it, Commander.</li>
-		<li class='rscadd'>Changed how Xenomorph hijacking works. The Queen using the groundside console now immediately locks the shuttle.</li>
+		<li class='rscadd'>Changed how Xenomorph hijacking works. The King using the groundside console now immediately locks the shuttle.</li>
 		<li class='rscadd'>Lock cannot be contested for the next 10 minutes, giving the Xenos plenty of time to board, make at home, and deal with cockpit humpers.</li>
 	</ul>
 </div>
@@ -2747,8 +2747,8 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	</ul>
 	<h3 class='author'>dylanstrategie updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='imageadd'>New Queen charging sprite, courtesy of nicboone. Unleash the inner fast Queen in you today.</li>
-		<li class='bugfix'>Re-enabled Queen charge.</li>
+		<li class='imageadd'>New King charging sprite, courtesy of nicboone. Unleash the inner fast King in you today.</li>
+		<li class='bugfix'>Re-enabled King charge.</li>
 	</ul>
 </div>
 
@@ -2823,8 +2823,8 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	</ul>
 	<h3 class='author'>dylanstrategie updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='experiment'>Queen can now charge like the Crusher, to match her mobility in the movies. This includes everything charges usually achieve.</li>
-		<li class='experiment'>Queen now has an armored crest like the Crusher, directional.</li>
+		<li class='experiment'>King can now charge like the Crusher, to match her mobility in the movies. This includes everything charges usually achieve.</li>
+		<li class='experiment'>King now has an armored crest like the Crusher, directional.</li>
 		<li class='rscadd'>Pounce freeze durations have been fixed. Runner should now be much shorter, Hunter a little bit shorter.</li>
 		<li class='tweak'>LMG Crate now costs 75 points, up from 40.</li>
 	</ul>
@@ -2923,7 +2923,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 		<li class='tweak'>Reduced the size of the xeno upgrade level chevrons on the xeno hud.</li>
 		<li class='rscadd'>Xeno Leaders now get a big green arrow when pointing, just like SLs.</li>
 		<li class='bugfix'>Fixed (for real this time) xeno upgrade chevron not disappearing from the hud when the xeno dies.</li>
-		<li class='tweak'>Stationary Queen's pheromone is no longer global, it is now identical to the mobile queen pheromone except it is centered around the xeno she's currently observing.</li>
+		<li class='tweak'>Stationary King's pheromone is no longer global, it is now identical to the mobile king pheromone except it is centered around the xeno she's currently observing.</li>
 	</ul>
 
 	<h3 class='author'>Spookydonut updated:</h3>
@@ -2954,7 +2954,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h2 class='date'>January 12 2018</h2>
 	<h3 class='author'>Spookydonut updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='rscadd'>The Queen must now provide a reason for de-evolving a xeno, the xeno will be given this reason.</li>
+		<li class='rscadd'>The King must now provide a reason for de-evolving a xeno, the xeno will be given this reason.</li>
 	</ul>
 	<h3 class='author'>BMC777 updated:</h3>
 	<ul class='changes bgimages16'>
@@ -2974,7 +2974,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h3 class='author'>Spookydonut updated:</h3>
 	<ul class='changes bgimages16'>
 		<li class='rscadd'>Body scanner now pings and displays a message when it stores a scan report.</li>
-		<li class='rscadd'>Xeno players now get a global message when the queen grow/sheds her ovipositor and the status panel displays whether progress is paused do to it.</li>
+		<li class='rscadd'>Xeno players now get a global message when the king grow/sheds her ovipositor and the status panel displays whether progress is paused do to it.</li>
 		<li class='rscadd'>Humans can now plant eggs in the containment cells in research.</li>
 	</ul>
 
@@ -2989,10 +2989,10 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 		<li class='bugfix'>Fixes praetorian's sticky resin being able to land on turf that has resin structures on it.</li>
 		<li class='rscdel'>Remove the resin membrane from the list of possible resin structures.</li>
 		<li class='tweak'>The ability to change the type of resin structure you build now works by cycling through the options instead of having to select a type in a list on a window.</li>
-		<li class='tweak'>Queen can now overwatch xenos in pipes.</li>
+		<li class='tweak'>King can now overwatch xenos in pipes.</li>
 		<li class='tweak'>When inside pipes, the pipe system now appear above objects like doors for better visibility, and is slightly transparent.</li>
 		<li class='rscadd'>Upgrading no longer stops you from evolving, you don't keep your upgrades when evolving.</li>
-		<li class='tweak'>Queen de-evolving a xeno now compensate the xeno by giving it one upgrade level (Mature Crusher -> Elite Hunter).</li>
+		<li class='tweak'>King de-evolving a xeno now compensate the xeno by giving it one upgrade level (Mature Crusher -> Elite Hunter).</li>
 		<li class='tweak'>Upgrading is now automated, as soon as you hit the threshold you auto-upgrade (must be at full health). Evolution and Upgrade have separate thresholds.</li>
 	</ul>
 
@@ -3009,9 +3009,9 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 		<li class='rscadd'>Resin holes with a hugger now make the victim trip and fall, and the Carrier who planted it now senses when a trap is triggered and is given the trap's area name.</li>
 		<li class='rscadd'>Carrier's hugger mechanic is modified. Using the Throw Hugger ability now puts a hugger in your hand if it is empty. If you have a hugger in hand it throws that hugger. You can directly store a hugger by using that ability on a hugger on the ground next to you. Carrier can now pick up huggers normally like drones. Clicking a hugger in your active hand stores it.</li>
 		<li class='tweak'>Removing a hugger from a resin hole puts it directly in your hand. instead of on the ground.</li>
-		<li class='rscadd'>The Queen gets a lot of new abilities when in stationary mode, all linked to the xenomorph she's observing. She can now heal, give plasma, assign leadership, give a direct order, and de-evolve the xeno she's currently observing.</li>
-		<li class='tweak'>The xeno hud now shows: upgrade level, leadership token, whether the queen is currently watching you.</li>
-		<li class='tweak'>The queen's automated egg production no longer cost plasma.</li>
+		<li class='rscadd'>The King gets a lot of new abilities when in stationary mode, all linked to the xenomorph she's observing. She can now heal, give plasma, assign leadership, give a direct order, and de-evolve the xeno she's currently observing.</li>
+		<li class='tweak'>The xeno hud now shows: upgrade level, leadership token, whether the king is currently watching you.</li>
+		<li class='tweak'>The king's automated egg production no longer cost plasma.</li>
 	</ul>
 	<h3 class='author'>Spookydonut updated:</h3>
 	<ul class='changes bgimages16'>
@@ -3040,7 +3040,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	</ul>
 	<h3 class='author'>phil235 updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='tweak'>Queen global pheromone strength reduced.</li>
+		<li class='tweak'>King global pheromone strength reduced.</li>
 	</ul>
 
 	<h3 class='author'>RavingManiac updated:</h3>
@@ -3055,7 +3055,7 @@ Whiskey Outpost will NOT have Marine Law; HOWEVER, being a dick will get you ban
 	<h2 class='date'>January 7 2018</h2>
 	<h3 class='author'>phil235 updated:</h3>
 	<ul class='changes bgimages16'>
-		<li class='rscadd'>The Xenomorph Queen gameplay is overhauled. You no longer click an ability to lay eggs, you now use an actual ovipositor. The "lay egg" ability is replaced by a "grow ovipositor" ability. Once your ovipositor is grown you cannot move and your abilities changes. The Queen now passively lay eggs and those eggs must be picked up and planted on weeds by the hive castes (Drone, Hivelord, Carrier, Queen). The planted eggs start already grown. The Queen gains new ability when in egg laying mode. She can toggle a wider vision mode and she can overwatch a xenomorph. The Queen pheromones are stronger and affect all xenomorphs when in egg-laying mode. The Queen can detach herself from the ovipositort. After that, the Queen must wait 5 minutes before being able to grow a new ovipositor. The Xenomorphs evolution progress stop when the Queen is not in egg-laying mode.</li>
+		<li class='rscadd'>The Xenomorph King gameplay is overhauled. You no longer click an ability to lay eggs, you now use an actual ovipositor. The "lay egg" ability is replaced by a "grow ovipositor" ability. Once your ovipositor is grown you cannot move and your abilities changes. The King now passively lay eggs and those eggs must be picked up and planted on weeds by the hive castes (Drone, Hivelord, Carrier, King). The planted eggs start already grown. The King gains new ability when in egg laying mode. She can toggle a wider vision mode and she can overwatch a xenomorph. The King pheromones are stronger and affect all xenomorphs when in egg-laying mode. The King can detach herself from the ovipositort. After that, the King must wait 5 minutes before being able to grow a new ovipositor. The Xenomorphs evolution progress stop when the King is not in egg-laying mode.</li>
 		<li class='tweak'>All zoom modes no longer change your HUD to the 'reduced' mode.</li>
 	</ul>
 </div>

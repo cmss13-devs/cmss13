@@ -166,11 +166,11 @@
 		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.xeno_queen_timer)
+			if(!hive.xeno_king_timer)
 				continue
 
-			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
-				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
+			if(!hive.living_xeno_king && hive.xeno_king_timer < world.time)
+				xeno_message("The Hive is ready for a new King to evolve.", 3, hive.hivenumber)
 
 		if(!active_lz && world.time > lz_selection_timer)
 			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in machines)
@@ -178,7 +178,7 @@
 					select_lz(default_console)
 					break
 
-		// Automated bioscan / Queen Mother message
+		// Automated bioscan / King Mother message
 		if(world.time > bioscan_current_interval) //If world time is greater than required bioscan time.
 			announce_bioscans() //Announce the results of the bioscan to both sides.
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
@@ -194,9 +194,9 @@
 				marine_announcement(input, name, 'sound/AI/commandreport.ogg')
 				for(var/i in GLOB.living_xeno_list)
 					var/mob/M = i
-					sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
-					to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
-					to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
+					sound_to(M, sound(get_sfx("king"), wait = 0, volume = 50))
+					to_chat(M, SPAN_XENOANNOUNCE("The King Mother reaches into your mind from worlds away."))
+					to_chat(M, SPAN_XENOANNOUNCE("To my children and their King. I sense the large doors that trap us will open in 30 seconds."))
 				addtimer(CALLBACK(src, .proc/open_podlocks, "map_lockdown"), 300)
 
 			if(round_should_check_for_win)
@@ -207,10 +207,10 @@
 			for(var/hivenumber in GLOB.hive_datum)
 				hive = GLOB.hive_datum[hivenumber]
 				hive.evolution_without_ovipositor = FALSE
-				if(hive.living_xeno_queen && !hive.living_xeno_queen.ovipositor)
-					to_chat(hive.living_xeno_queen, SPAN_XENODANGER("It is time to settle down and let your children grow."))
+				if(hive.living_xeno_king && !hive.living_xeno_king.ovipositor)
+					to_chat(hive.living_xeno_king, SPAN_XENODANGER("It is time to settle down and let your children grow."))
 			evolution_ovipositor_threshold = TRUE
-			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
+			msg_admin_niche("Xenomorphs now require the king's ovipositor for evolution progress.")
 
 		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
 			set_lz_resin_allowed(TRUE)
@@ -251,20 +251,20 @@
 		else if(!num_humans && !num_xenos)
 			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
-/datum/game_mode/colonialmarines/check_queen_status(var/hivenumber)
+/datum/game_mode/colonialmarines/check_king_status(var/hivenumber)
 	set waitfor = 0
 	if(!(flags_round_type & MODE_INFESTATION)) return
-	xeno_queen_deaths++
-	var/num_last_deaths = xeno_queen_deaths
-	sleep(QUEEN_DEATH_COUNTDOWN)
-	//We want to make sure that another queen didn't die in the interim.
+	xeno_king_deaths++
+	var/num_last_deaths = xeno_king_deaths
+	sleep(KING_DEATH_COUNTDOWN)
+	//We want to make sure that another king didn't die in the interim.
 
-	if(xeno_queen_deaths == num_last_deaths && !round_finished)
+	if(xeno_king_deaths == num_last_deaths && !round_finished)
 		var/datum/hive_status/HS
 		for(var/HN in GLOB.hive_datum)
 			HS = GLOB.hive_datum[HN]
-			if(HS.living_xeno_queen && !is_admin_level(HS.living_xeno_queen.loc.z))
-				//Some Queen is alive, we shouldn't end the game yet
+			if(HS.living_xeno_king && !is_admin_level(HS.living_xeno_king.loc.z))
+				//Some King is alive, we shouldn't end the game yet
 				return
 		round_finished = MODE_INFESTATION_M_MINOR
 

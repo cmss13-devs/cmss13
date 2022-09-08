@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		return
 
 	if(!isXeno(user) && (onboard || is_ground_level(z)) && !shuttle.iselevator)
-		if(shuttle.queen_locked)
+		if(shuttle.king_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
 				SPAN_NOTICE("You try to take back the control over the shuttle. It will take around 3 minutes."))
@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					if(user.lying)
 						return 0
 					shuttle.last_locked = world.time
-					shuttle.queen_locked = 0
+					shuttle.king_locked = 0
 					shuttle.last_door_override = world.time
 					shuttle.door_override = 0
 					user.visible_message(SPAN_NOTICE("The [src] blinks with blue lights."),
@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				else
 					to_chat(user, SPAN_NOTICE("You interact with the pilot's console and re-enable remote control."))
 					shuttle.last_locked = world.time
-					shuttle.queen_locked = 0
+					shuttle.king_locked = 0
 		if(shuttle.door_override)
 			if(world.time < shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN)
 				to_chat(user, SPAN_WARNING("You can't seem to reverse the door override. Please wait another [time_left_until(shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN, world.time, 1 MINUTES)] minutes before trying again."))
@@ -221,14 +221,14 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			else
 				to_chat(usr, SPAN_WARNING("The shuttle's engines are still recharging and cooling down."))
 			return
-		if(shuttle.queen_locked && !isXenoQueen(usr))
+		if(shuttle.king_locked && !isXenoKing(usr))
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like remote control was disabled."))
 			return
 		//Comment to test
 		if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
 			to_chat(usr, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 			return
-		if(SSticker.mode.active_lz != src && !onboard && isXenoQueen(usr))
+		if(SSticker.mode.active_lz != src && !onboard && isXenoKing(usr))
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle."))
 			return
 		if(istype(shuttle, /datum/shuttle/ferry/marine))
@@ -241,11 +241,11 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			if(shuttle.locked) return
 			var/mob/M = usr
 
-			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
-			if(isXenoQueen(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
-				var/mob/living/carbon/Xenomorph/Queen/Q = M
+			//Alert code is the King is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
+			if(isXenoKing(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
+				var/mob/living/carbon/Xenomorph/King/Q = M
 
-				// Check for onboard xenos, so the Queen doesn't leave most of her hive behind.
+				// Check for onboard xenos, so the King doesn't leave most of her hive behind.
 				var/count = Q.count_hivemember_same_area()
 
 				// Check if at least half of the hive is onboard. If not, we don't launch.
@@ -253,7 +253,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					to_chat(Q, SPAN_WARNING("More than half of your hive is not on board. Don't leave without them!"))
 					return
 
-				// Allow the queen to choose the ship section to crash into
+				// Allow the king to choose the ship section to crash into
 				var/crash_target = tgui_input_list(usr, "Choose a ship section to target","Hijack", almayer_ship_sections + list("Cancel"))
 				if(crash_target == "Cancel")
 					return
@@ -262,7 +262,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				if(i == "No")
 					return
 
-				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging)
+				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.king_locked || shuttle.recharging)
 					return
 
 				//Shit's about to kick off now
@@ -288,12 +288,12 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					shuttle.alerts_allowed--
 
 					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
+					xeno_message(SPAN_XENOANNOUNCE("The King has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
 					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."),2,Q.hivenumber)
 
 					// Notify the yautja too so they stop the hunt
-					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
-					playsound(src, 'sound/misc/queen_alarm.ogg')
+					message_all_yautja("The serpent King has commanded the landing shuttle to depart.")
+					playsound(src, 'sound/misc/king_alarm.ogg')
 
 					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 
@@ -315,7 +315,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 						update_use_power(4080)
 					shuttle.launch(src)
 
-			else if(!onboard && isXenoQueen(M) && shuttle.location == 1 && !shuttle.iselevator)
+			else if(!onboard && isXenoKing(M) && shuttle.location == 1 && !shuttle.iselevator)
 				to_chat(M, SPAN_WARNING("Hrm, that didn't work. Maybe try the one on the ship?"))
 				return
 			else
@@ -352,7 +352,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	if(href_list["lockdown"])
 		if(shuttle.door_override)
-			return // its been locked down by the queen
+			return // its been locked down by the king
 
 		var/ship_id = "sh_dropship1"
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
@@ -415,7 +415,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	if(href_list["side door"])
 		if(shuttle.door_override)
-			return // its been locked down by the queen
+			return // its been locked down by the king
 
 		var/ship_id = "sh_dropship1"
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
@@ -442,7 +442,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	if(href_list["rear door"])
 		if(shuttle.door_override)
-			return // its been locked down by the queen
+			return // its been locked down by the king
 
 		var/ship_id = "sh_dropship1"
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
@@ -483,7 +483,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
 				to_chat(usr, SPAN_NOTICE("Automated flights are not available at this time."))
 				return
-			if(dropship.queen_locked)
+			if(dropship.king_locked)
 				to_chat(usr, SPAN_WARNING("ERROR: Automatic Departure Schedule unavailable. Reason: Unknown."))
 				return
 

@@ -44,7 +44,7 @@
 	see_in_dark = 12
 	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, KING_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
@@ -128,7 +128,7 @@
 	// Hive-related vars
 	var/datum/hive_status/hive
 	hivenumber = XENO_HIVE_NORMAL
-	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
+	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = king; 2+ = hive leader)
 
 	// Variables that can be mutated
 	var/ability_speed_modifier = 0.0 //Things that add on top of our base speed, based on what powers we are using
@@ -145,7 +145,7 @@
 
 	var/pslash_delay = 0
 
-	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution, deactivates dchat death messages
+	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and king evolution, deactivates dchat death messages
 
 	//Naming variables
 	var/caste_type = "Drone"
@@ -157,8 +157,8 @@
 	var/list/inherent_verbs = list()
 
 	//Leader vars
-	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen
-	var/leader_current_aura = "" //Pheromone type inherited from Queen
+	var/leader_aura_strength = 0 //Pheromone strength inherited from King
+	var/leader_current_aura = "" //Pheromone type inherited from King
 
 	/// List of actions (typepaths) that a
 	/// xenomorph type is given upon spawn
@@ -209,7 +209,7 @@
 	var/list/xeno_shields = list() // List of /datum/xeno_shield that holds all active shields on the Xeno.
 	var/acid_splash_cooldown = 5 SECONDS //Time it takes between acid splash retaliate procs
 	var/acid_splash_last //Last recorded time that an acid splash procced
-	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
+	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, king overwatching, etc.
 	var/mob/living/carbon/Xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision
 	var/need_weeds = TRUE // Do we need weeds to regen HP?
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
@@ -247,7 +247,7 @@
 	var/crest_defense = 0
 	var/agility = 0		// 0 - upright, 1 - all fours
 	var/ripping_limb = 0
-	// Related to zooming out (primarily queen and boiler)
+	// Related to zooming out (primarily king and boiler)
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
 	var/can_stack_builds = FALSE
@@ -336,7 +336,7 @@
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
 	if(oldXeno)
 		for(var/datum/language/L in oldXeno.languages)
-			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
+			add_language(L.name)//Make sure to keep languages (mostly for event Kings that know English)
 
 	// Well, not yet, technically
 	var/datum/hive_status/in_hive = GLOB.hive_datum[hivenumber]
@@ -380,14 +380,14 @@
 
 	generate_name()
 
-	if(isXenoQueen(src))
+	if(isXenoKing(src))
 		SStracking.set_leader("hive_[hivenumber]", src)
 	SStracking.start_tracking("hive_[hivenumber]", src)
 
 	. = ..()
 	//WO GAMEMODE
 	if(SSticker?.mode?.hardcore)
-		hardcore = 1 //Prevents healing and queen evolution
+		hardcore = 1 //Prevents healing and king evolution
 	time_of_birth = world.time
 
 	add_inherent_verbs()
@@ -466,9 +466,9 @@
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
-/mob/living/carbon/Xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
+/mob/living/carbon/Xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/King/king)
 	SIGNAL_HANDLER
-	if(queen.can_not_harm(src))
+	if(king.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 
 
@@ -544,7 +544,7 @@
 		age_xeno()
 	color = in_hive.color
 
-	//Queens have weird, hardcoded naming conventions based on age levels. They also never get nicknumbers
+	//Kings have weird, hardcoded naming conventions based on age levels. They also never get nicknumbers
 	if(isXenoPredalien(src))
 		name = "[name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 	else if(caste)
@@ -790,8 +790,8 @@
 		L.update_icons() // larva renaming done differently
 	else
 		generate_name()
-	if(istype(src, /mob/living/carbon/Xenomorph/Queen))
-		update_living_queens()
+	if(istype(src, /mob/living/carbon/Xenomorph/King))
+		update_living_kings()
 
 	lock_evolve = FALSE
 	banished = FALSE
@@ -813,8 +813,8 @@
 	recalculate_pheromones()
 	recalculate_maturation()
 	update_icon_source()
-	if(hive && hive.living_xeno_queen && hive.living_xeno_queen == src)
-		hive.recalculate_hive() //Recalculating stuff around Queen maturing
+	if(hive && hive.living_xeno_king && hive.living_xeno_king == src)
+		hive.recalculate_hive() //Recalculating stuff around King maturing
 
 
 /mob/living/carbon/Xenomorph/proc/recalculate_stats()

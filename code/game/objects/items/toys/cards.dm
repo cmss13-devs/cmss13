@@ -38,7 +38,7 @@
 /obj/item/toy/deck/proc/populate_deck()
 	var/card_id = 1
 	for(var/suit in list("spades", "clubs", "diamonds", "hearts"))
-		for(var/number in list("ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"))
+		for(var/number in list("ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "king", "king"))
 			cards += new /datum/playing_card("[number] of [suit]", "[suit]_[number]", "back_[base_icon]", card_id++)
 
 /obj/item/toy/deck/uno

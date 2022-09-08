@@ -111,7 +111,7 @@
       removed from the codebase. Syndicate, traitors, names of systems, religions,
       factions, criminal organisations, have been removed. Magic has also been deleted
       from the game.
-  - tweak: Off-weed healing doesn't work if you are on Almayer and the Queen isn't.
+  - tweak: Off-weed healing doesn't work if you are on Almayer and the King isn't.
   - tweak: Motion detector and whistle now come with a HUD icons.
   - tweak: Burrowers now can dig tunnels in ice floors.
   - tweak: Attacking snow as xeno with any non-help intent will start clearing it.
@@ -132,7 +132,7 @@
       Caves, etc).
   - rscadd: Big Red. Added sinks to the Hospital operation room, to Kitchen and to
       Hydroponics (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/5640">#5640</a>).
-  - rscdel: Big Red. Removed Virology Queen (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/3957">#3957</a>)
+  - rscdel: Big Red. Removed Virology King (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/3957">#3957</a>)
       and off-weed xenomorph spawn points.
   - bugfix: Big Red. Fixed some lighting issues (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/4869">#4869</a>).
   - rscadd: Almayer. Added a disposal chute from Medbay to Requisitions for spare
@@ -152,7 +152,7 @@
 2019-02-08:
   Cakey:
   - rscadd: Added the ability to select primary landing zones. Dropship consoles have
-      been added to LZ2 on all maps and will now only allow the Xenomorph Queen to
+      been added to LZ2 on all maps and will now only allow the Xenomorph King to
       interact with them if designated as primary LZ. The primary LZ can be selected
       from the CO's communications console. Primary LZ is defaulted to LZ1 25 minutes
       into the round.
@@ -177,14 +177,14 @@
       go dark and you will receive a message. You still can execute Fire Missions.'
   - tweak: 'NEW: Signal Flares has to be ON THE GROUND to work. Not in hand or in
       backpack. If you pick signal flare mid flight, Fire Mission will be aborted.'
-  - tweak: Above changes made to prevent queen killing in Ovipositor and some unfair
+  - tweak: Above changes made to prevent king killing in Ovipositor and some unfair
       air raids on spawn points. These changes do not completely remove it, they just
       make so that all parts of the marine forces has to cooperate to acheive game
       turning actions, and not just PO looking into every flare and jumping from offset
       to offset.
   - imageadd: PO's can now return their dropship home at any point from a Fly-By mission
       by hitting Abort. This sets the time left to land to 10 seconds.
-  - imageadd: PO's and Queen can now see how much time left to fly.
+  - imageadd: PO's and King can now see how much time left to fly.
   - imageadd: Most of the round start PO equipment was removed (excluding ammo and
       few attachments). Points were refunded.
   - imageadd: Added signal flares to SL and PFC vendors. Those act as flares that
@@ -271,7 +271,7 @@
       to your location being null.
   - bugfix: ASRS shouldn't try giving you a null box causing the Requisition lift
       to bork.
-  - bugfix: You can use tunnels even without a Queen being alive.
+  - bugfix: You can use tunnels even without a King being alive.
   - bugfix: Running a fire mission without ammo shouldn't cause a runtime error.
   Triiodine:
   - imageadd: The M42C has been visually redrawn. Wield sprites added.
@@ -374,7 +374,7 @@
       about midway from old Young to old Mature, while Matures retain full Mature
       T3 strength. Elder Tier 3s and Ancient Tier 3s now receive very slight bonuses
       to stats, and nothing major.
-  - tweak: The Queen keeps its old power curve and upgrade timer.
+  - tweak: The King keeps its old power curve and upgrade timer.
   - tweak: Lurkers have been tweaked to do slightly less damage overall, with pounce
       delay being a little higher.
   - tweak: Upgrade and evolve timers for tier ones have been halved. The time to upgrade
@@ -498,7 +498,7 @@
       be deployed on the colony to wipe out any living thing from the mortal realm.
       With a set timer of 5 minutes (pending change), the xenomorphs will be alerted
       of its activation, and will be shown a pinpointer to its position. The Xenomorph
-      Queen can diffuse the bomb by clicking on it, and this takes 15 seconds.
+      King can diffuse the bomb by clicking on it, and this takes 15 seconds.
   - rscadd: Tank crewmen have been re-enabled as roundstart crew. The tank vendor
       has been replaced with a tank part fabricator, which starts at 0 points. DEFCON
       rewards can grant the tank part fabricator points to build additional parts,
@@ -525,7 +525,7 @@
       system and select it using the cockpit while in transit. Balloons set up by
       ground-side troops will only last 3 minutes, so pick your targets carefully!
   MattAtlas:
-  - bugfix: Queens may no longer set themselves as leaders.
+  - bugfix: Kings may no longer set themselves as leaders.
   Miraviel:
   - tweak: Almayer. Medical. Moved the sleeper to the bottom right corner, added another
       body scanner in its former place. Cryotubes were changed to eject patients whichever

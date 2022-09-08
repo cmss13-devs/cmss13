@@ -504,3 +504,8 @@
 	name = "10x99mm XM42B casing pipe"
 	desc = "The XM42B was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by ARMAT systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
 	icon_state = "bullet_pipe"
+
+/obj/item/prop/helmetgarb/cat_ears
+	name = "Cat Ears"
+	desc = "The USCM antidepression team used to issue this attachment to soldiers in order to boost morale among the marines. Discontinued after a scientific analysis proved them useless"
+	icon_state = "cat_ears"

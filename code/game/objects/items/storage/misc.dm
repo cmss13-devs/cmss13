@@ -68,10 +68,10 @@
 	new /obj/item/attachable/mateba/long(src)
 	new /obj/item/weapon/mateba_key(src)
 
-/obj/item/storage/mateba_case/captain/commodore
+/obj/item/storage/mateba_case/captain/council
 	icon_state = "c_matebacase"
-	name = "commodore's mateba customization kit case"
-	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is custom-made for commodores."
+	name = "colonel's mateba customization kit case"
+	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is custom-made for colonels."
 
 /obj/item/storage/mateba_case/general
 	icon_state = "c_matebacase"

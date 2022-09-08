@@ -92,7 +92,7 @@
 	action_icon_state = "rav_eviscerate"
 	ability_name = "eviscerate"
 	macro_path = /datum/action/xeno_action/verb/verb_eviscerate
-	action_type = XENO_ACTION_CLICK
+	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
 	xeno_cooldown = 230

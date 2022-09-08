@@ -110,6 +110,8 @@
       repaired after being broken
   - code_imp: improved the sensor tower's code for readability
 2022-09-08:
+  Shad0vvs:
+  - bugfix: Possibly fixes disconnection/crash issues.
   stanalbatross:
   - bugfix: doing pushups now checks if you can do them once you select an option
       BEFORE doing the transform

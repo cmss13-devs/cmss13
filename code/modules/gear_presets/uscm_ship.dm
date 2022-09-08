@@ -373,7 +373,7 @@
 /datum/equipment_preset/uscm_ship/commander/council/plus
 	name = "USCM Commanding Officer (CO++)"
 	idtype = /obj/item/card/id/general
-	paygrade = "MO5"
+	paygrade = "MO6"
 
 /datum/equipment_preset/uscm_ship/commander/council/plus/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/councilchief(H), WEAR_HEAD)

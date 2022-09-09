@@ -429,7 +429,7 @@
 
 /obj/item/clothing/head/beret/marine/commander/councilchief
 	name = "marine colonel beret"
-	desc = "A dark blue, custom-tailored armored beret signifying The Colonel. Definitely not an alias for an General."
+	desc = "A dark blue, custom-tailored armored beret signifying The Colonel. Definitely not an alias for a General."
 	icon_state = "cdrechiefberet"
 
 /obj/item/clothing/head/marine/peaked

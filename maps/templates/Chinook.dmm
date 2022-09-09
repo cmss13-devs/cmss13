@@ -1221,7 +1221,7 @@
 "dZ" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Colonel, Fifth Division"
+	name = "\improper Colonel, Fifth Division"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -2819,7 +2819,7 @@
 "jc" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Colonel, Third Division"
+	name = "\improper Colonel, Third Division"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -2841,7 +2841,7 @@
 "jg" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Colonel, First Division"
+	name = "\improper Colonel, First Division"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -3162,7 +3162,7 @@
 "ki" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Colonel, Second Division"
+	name = "\improper Colonel, Second Division"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -5592,7 +5592,7 @@
 "rX" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Colonel, Fourth Division"
+	name = "\improper Colonel, Fourth Division"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)

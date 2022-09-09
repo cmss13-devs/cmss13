@@ -118,6 +118,10 @@
 2022-09-09:
   Drulikar:
   - bugfix: Fixed index out of bounds runtime that was preventing runtime logging.
+  realforest2001:
+  - bugfix: majority of remaining IC references to commodores have been thoroughly
+      nuked.
+  - tweak: CO Senator set to MO6 full Colonel with permission from lore team.
   stanalbatross:
   - bugfix: the orbit menu now has its refresh button back, and it properly works
   - bugfix: the orbit menu now uses tgui_interact procs, as it should

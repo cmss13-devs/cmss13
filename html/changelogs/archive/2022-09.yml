@@ -115,3 +115,6 @@
   stanalbatross:
   - bugfix: doing pushups now checks if you can do them once you select an option
       BEFORE doing the transform
+2022-09-09:
+  Drulikar:
+  - bugfix: Fixed index out of bounds runtime that was preventing runtime logging.

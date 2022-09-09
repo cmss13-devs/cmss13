@@ -67,13 +67,13 @@
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/uscm_ship/so, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Inspector sent by USCM High Command!"))
-		to_chat(H, SPAN_ROLE_BODY("An unannouced inspection is scheduled for the [MAIN_SHIP_NAME] during their present assignment. You have been sent to evaluate the effectivnes and compliance with SOP of all departaments on the ship."))
-		to_chat(H, SPAN_ROLE_BODY("Tour the ship, monitor the organization and effeciveness of its respective departaments, inteview its crew and find any issues. Relay the results of your inspection to both the Officer in Command of the ship and USCM High Command."))
-		to_chat(H, SPAN_WARNING("Remember, your inspection may not interrupt regular operation of the ship and you do not have privilages to make Marine Law enforcement related calls. Ahelp if you have any questions of you wish to offer the role to someone else."))
+		to_chat(H, SPAN_ROLE_BODY("An unannounced inspection is scheduled for the [MAIN_SHIP_NAME] during their present assignment. You have been sent to evaluate the effectivnes and compliance with SOP of all departments on the ship."))
+		to_chat(H, SPAN_ROLE_BODY("Tour the ship, monitor the organization and effectiveness of its respective departments, interview its crew and find any issues. Relay the results of your inspection to both the Officer in Command of the ship and USCM High Command."))
+		to_chat(H, SPAN_WARNING("Remember, your inspection may not interrupt regular operation of the ship and you do not have privileges to make Marine Law enforcement related calls. Ahelp if you have any questions of you wish to offer the role to someone else."))
 	else
 		arm_equipment(H, /datum/equipment_preset/uscm/engineer_equipped, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are part of an inspection sent by USCM High Command!"))
-		to_chat(H, SPAN_ROLE_BODY("An unannouced inspection is scheduled for the [MAIN_SHIP_NAME] during their present assignment. You serve both as security detail to the officer performing the inspection and their assistant should they need your experise."))
+		to_chat(H, SPAN_ROLE_BODY("An unannounced inspection is scheduled for the [MAIN_SHIP_NAME] during their present assignment. You serve both as security detail to the officer performing the inspection and their assistant should they need your expertise."))
 		to_chat(H, SPAN_ROLE_BODY("Follow the inspector as they perform their duties on the ship. Feel free to offer your insight if you feel like you have any and help then as they request it. Remember, while you do not answer directly to the officers on the ship, you still need to respect their position."))
 		to_chat(H, SPAN_WARNING("Remember, you may not interrupt regular operation and are expected to follow orders of the Inspector at all times. Ahelp if you have any questions of you wish to offer the role to someone else."))
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
@@ -102,8 +102,8 @@
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/uscm_event/uaac/tis/io, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Intelligence Officer working for the UAAC-TIS!"))
-		to_chat(H, SPAN_ROLE_BODY("The UAAC-TIS, also known as the Three Eyes, is responsible for the collection, colation and delivery of Intelligence across UA assets. As such, your Handler will contact you about the exact nature of your mission on board the [MAIN_SHIP_NAME]."))
-		to_chat(H, SPAN_ROLE_BODY("While you do not have any direct authority over the USCM, the TIS mandate also allows you to investigate any percieved abuse of the Law, be it written or implied. Remember, you have the authority to make calls on ML should the crew of the Almayer request it or your Handler order you to resolve ML issues."))
+		to_chat(H, SPAN_ROLE_BODY("The UAAC-TIS, also known as the Three Eyes, is responsible for the collection, collation and delivery of Intelligence across UA assets. As such, your Handler will contact you about the exact nature of your mission on board the [MAIN_SHIP_NAME]."))
+		to_chat(H, SPAN_ROLE_BODY("While you do not have any direct authority over the USCM, the TIS mandate also allows you to investigate any perceived abuse of the Law, be it written or implied. Remember, you have the authority to make calls on ML should the crew of the Almayer request it or your Handler order you to resolve ML issues."))
 		to_chat(H, SPAN_WARNING("Remember that you cannot take antagonistic action unless green lighted by your Handler. You are also expected to know ML and SOP. Ahelp if you have any questions or wish to release this mob for other players."))
 	else
 		arm_equipment(H, /datum/equipment_preset/uscm_event/provost/enforcer, TRUE, TRUE)
@@ -145,15 +145,15 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_SQUAD_LEADER), time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland Yutani PMC Inpsector!"))
-		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. You are being dispatched to the [MAIN_SHIP_NAME] to make sure that the local Liaison has not outstepped themselves or worse, thought to bite the hand that feeds them."))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland Yutani PMC Inspector!"))
+		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. You are being dispatched to the [MAIN_SHIP_NAME] to make sure that the local Liaison has not forgotten their priorities or worse, thought to bite the hand that feeds them."))
 		to_chat(H, SPAN_ROLE_BODY("Remember the USCM personnel on the ship may not appreciate your presence there. Should the Liaison be in jail, you are not to act as legal counsel in any way unless instructed to by Dispatch. Your basic duty is to make a detailed report of anything involving the Liaison and any other WY personnel on board the ship."))
 		to_chat(H, SPAN_WARNING("Unless ordered otherwise by Dispatch, you are to avoid open conflict with the Marines. Retreat and make a report if they are outright hostile. Ahelp if you have any more questions or wish to release this character for other players."))
 	else
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are part of a WWeyland-Yutani PMC Investigation Team!"))
-		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. The Lead Investiagtor is in charge, your duty is to provide backup, counsel and any other form of assitance you can render to make sure their mission is a success."))
-		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. Unless ordered otherwise by Dipsatch, you and your Team Leader are to avoid open conflict with the Marines. Your main priority is making sure that your Lead survives to write the report they are due."))
+		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. The Lead Investigator is in charge, your duty is to provide backup, counsel and any other form of assistance you can render to make sure their mission is a success."))
+		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. Unless ordered otherwise by Dispatch, you and your Team Leader are to avoid open conflict with the Marines. Your main priority is making sure that your Lead survives to write the report they are due."))
 		to_chat(H, SPAN_WARNING("Unless ordered otherwise by Dispatch, you are to avoid open conflict with the Marines. Your priority is the safety of your team, if the ship gets to hot, your best bet is evacuation. Ahelp if you have any more questions or wish to release this character for other players."))
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 

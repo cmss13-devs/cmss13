@@ -397,7 +397,7 @@
 /obj/item/clothing/head/helmet/beret/marine/mp/tis
 	name = "\improper UAAC-TIS Special Agent Beret"
 	icon_state = "berettis"
-	desc = "A Kevlar reinforced beret with the UAAC-TIS insignia emblazoned on it. Used by officers permanently assigned to the clandestine intelligence service. "
+	desc = "A Kevlar reinforced beret with the UAAC-TIS insignia emblazoned on it. A mark of a TIS Special Agent, these berets are one of the only pieces of equipment that the TIS actually manufactures for itself and earning one is one of the rare signs of achievement the Three Eyes allows."
 
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine captain beret"

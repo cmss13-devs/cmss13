@@ -369,8 +369,8 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	cooldown_message = "You feel your spit glands swell with ichor. You can spit again."
 	xeno_cooldown = 60 SECONDS
+	var/sound_to_play = 0
 	var/spitting = FALSE // For windup spits, indicates if we are already spitting so we can't queue up multiple spits at the same time
-	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"

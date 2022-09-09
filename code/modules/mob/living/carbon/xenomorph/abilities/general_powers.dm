@@ -677,6 +677,7 @@
 	return TRUE
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/A)
+	sound_to_play = pick('sound/voice/alien_spitacid.ogg','sound/voice/alien_spitacid2.ogg')
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state())
 		return
@@ -712,8 +713,8 @@
 			spitting = FALSE
 			return FALSE
 	X.visible_message(SPAN_XENOWARNING("[X] spits at [A]!"), \
-	SPAN_XENOWARNING("You spit at [A]!") )
 
+	SPAN_XENOWARNING("You spit at [A]!") )
 	playsound(X.loc, sound_to_play, 25, 1)
 
 	var/obj/item/projectile/P = new /obj/item/projectile(current_turf, create_cause_data(initial(X.caste_type), X))

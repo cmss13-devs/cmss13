@@ -85,3 +85,20 @@
 // No special behavior for boilers
 /datum/behavior_delegate/boiler_base
 	name = "Base Boiler Behavior Delegate"
+
+	var/frontal_armor = 20
+	var/side_armor = 5000000000000000
+
+/datum/behavior_delegate/boiler_base/add_to_xeno()
+	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, .proc/apply_directional_armor)
+
+/datum/behavior_delegate/boiler_base/proc/apply_directional_armor(mob/living/carbon/Xenomorph/X, list/damagedata)
+	SIGNAL_HANDLER
+	var/projectile_direction = damagedata["direction"]
+	if(X.dir & REVERSE_DIR(projectile_direction))
+		damagedata["armor"] += frontal_armor
+	else
+		for(var/side_direction in get_perpen_dir(X.dir))
+			if(projectile_direction == side_direction)
+				damagedata["armor"] += side_armor
+				return

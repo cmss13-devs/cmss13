@@ -468,6 +468,33 @@
 	. = ..()
 	access = get_all_marine_access()
 
+/datum/equipment_preset/uscm_event/uaac/tis/io
+	name = "UAAC-TIS Intelligence Officer (NO2)"
+	minimum_age = 25
+	skills = /datum/skills/intel
+
+	assignment = JOB_TIS_SA
+	rank = "UAAC-TIS Intelligence Officer"
+	paygrade = "NO2"
+	role_comm_title = "TIS-IO"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+/datum/equipment_preset/uscm_event/uaac/tis/io/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/satchel/sec
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/security
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/uaac/tis/io(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(H), WEAR_WAIST)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
+
 /datum/equipment_preset/uscm_event/uaac/tis/sa
 	name = "UAAC-TIS Special Agent (NO5)"
 	minimum_age = 30

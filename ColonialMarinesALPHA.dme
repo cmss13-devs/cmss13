@@ -394,6 +394,7 @@
 #include "code\datums\emergency_calls\emergency_call.dm"
 #include "code\datums\emergency_calls\feral_xenos.dm"
 #include "code\datums\emergency_calls\hefa_knight.dm"
+#include "code\datums\emergency_calls\inspection.dm"
 #include "code\datums\emergency_calls\mercs.dm"
 #include "code\datums\emergency_calls\pirates.dm"
 #include "code\datums\emergency_calls\pizza.dm"

@@ -151,7 +151,7 @@
 	S.time_to_live = 3
 	S.spread_speed = 1000000
 
-/datum/action/xeno_action/onclick/dump_acid/remove_from(mob/L)
+/datum/action/xeno_action/onclick/dump_acid/remove_from()
 	remove_speed_buff()
 	..()
 

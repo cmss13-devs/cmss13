@@ -394,6 +394,10 @@
 	icon_state = "coblackberet"
 	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package."
 
+/obj/item/clothing/head/helmet/beret/marine/mp/tis
+	name = "\improper UAAC-TIS Special Agent Beret"
+	icon_state = "berettis"
+	desc = "A Kevlar reinforced beret with the UAAC-TIS insignia emblazoned on it. Used by officers permanently assigned to the clandestine intelligence service. "
 
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine captain beret"

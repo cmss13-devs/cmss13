@@ -614,6 +614,7 @@
 #include "code\game\jobs\job\marine\squad\specialist.dm"
 #include "code\game\jobs\job\marine\squad\standard.dm"
 #include "code\game\jobs\job\special\provost.dm"
+#include "code\game\jobs\job\special\uaac.dm"
 #include "code\game\jobs\job\special\uscm.dm"
 #include "code\game\machinery\adv_med.dm"
 #include "code\game\machinery\air_alarm.dm"

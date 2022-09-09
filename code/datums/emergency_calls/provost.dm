@@ -23,7 +23,7 @@
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command!"))
 		to_chat(H, SPAN_ROLE_BODY("You only answer to Marine Law and High Command!"))
 	else
-		arm_equipment(H, /datum/equipment_preset/uscm_event/provost/officer, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm_event/provost/enforcer, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a member of a Provost Inspection Team!"))
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command or your Inspector!"))
 		to_chat(H, SPAN_ROLE_BODY("You only answer to your superior, Marine Law and High Command!"))

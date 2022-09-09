@@ -384,6 +384,26 @@
 	name = "\improper Provost Chief Marshal Uniform"
 	desc = "The crisp uniform of the Provost Chief Marshal."
 
+//==================//UNITED AMERICAS ALLIED COMMAND\\===================\\
+//=======================================================================\\
+
+/obj/item/clothing/under/uaac/tis
+	name = "\improper UAAC-TIS Uniform"
+	desc = "A modified USCM Provost uniform, with its original insigna replaced by those of the UAAC-TIS Intelligence Service."
+	flags_jumpsuit = FALSE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	siemens_coefficient = 0.9
+	icon_state = "tis"
+	worn_state = "tis"
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\
 

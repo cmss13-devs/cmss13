@@ -149,17 +149,6 @@
 		else
 			icon_state = icon_opened
 
-/obj/structure/closet/secure_closet/detective/empty
-	name = "Secure Wooden Cabinet"
-	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
-	icon_state = "cabinetdetective_locked"
-	icon_closed = "cabinetdetective"
-	icon_locked = "cabinetdetective_locked"
-	icon_opened = "cabinetdetective_open"
-	icon_broken = "cabinetdetective_broken"
-	icon_off = "cabinetdetective_broken"
-
-
 /obj/structure/closet/secure_closet/injection
 	name = "Lethal Injections"
 	req_access = list(ACCESS_MARINE_COMMANDER)

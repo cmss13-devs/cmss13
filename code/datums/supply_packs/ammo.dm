@@ -380,19 +380,14 @@
 					/obj/item/ammo_box/magazine/blank
 					)
 	cost = RO_PRICE_WORTHLESS
-	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M41A BLANK magazines crate"
-	group = "Ammo"
 
 /datum/supply_packs/ammo_abr40_mag_box/blank
 	name = "Magazine box (ABR-40, 32x BLANK mags)"
 	contains = list(
 					/obj/item/ammo_box/magazine/l42a/half/blank
 					)
-	cost = RO_PRICE_WORTHLESS
-	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper ABR-40 BLANK magazines crate"
-	group = "Ammo"
 
 //This crate has a little bit of everything, mostly okay stuff, but it does have some really unique picks.
 /datum/supply_packs/ammo_surplus

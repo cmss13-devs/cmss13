@@ -1410,27 +1410,16 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/carbine/wood
 	name = "\improper L42 wooden stock"
 	desc = "A fully polished wood stock, heavy yet sturdy. Attaches to the L42A Battle Rifle. You can bash someone good with this."
-	slot = "stock"
-	size_mod = 1
 	icon_state = "l42_fullstock"
 	attach_icon = "l42fullstock_a"
-	pixel_shift_x = 37
-	pixel_shift_y = 8
 	melee_mod = 6
 	wield_delay_mod = WIELD_DELAY_SLOW
-	hud_offset_mod = 2
 
-/obj/item/attachable/stock/carbine/wood/New()
+/obj/item/attachable/stock/carbine/wood/Initialize()
 	..()
-	//it makes stuff much better when two-handed
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_8
 	recoil_mod = -RECOIL_AMOUNT_TIER_3
 	scatter_mod = -SCATTER_AMOUNT_TIER_9
-	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
-	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
-	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 
 /obj/item/attachable/stock/carbine/wood/drill
 	name = "\improper L42 exotic wood stock"

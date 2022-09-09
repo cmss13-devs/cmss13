@@ -91,6 +91,7 @@
 		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]")	//adding base color stripes
 		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	//adding base color stripes
 
+
 //---------------------INTERACTION PROCS
 
 /obj/item/ammo_box/magazine/examine(mob/living/user)
@@ -356,8 +357,9 @@
 	name = "magazine box (BLANK M41A x 10)"
 	desc = "Upon closer examination, a label reads: 'BLANK ROUNDS - FOR TRAINING AND CEREMONIAL USE ONLY - DO NOT USE IN COMBAT SITUATIONS'"
 	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = "_45_training"
+	overlay_ammo_type = "_training"
 	overlay_content = "_training"
+	overlay_gun_type = "_m41"
 	magazine_type = /obj/item/ammo_magazine/rifle/blank
 
 /obj/item/ammo_box/magazine/blank/empty
@@ -480,7 +482,7 @@
 /obj/item/ammo_box/magazine/l42a/half/blank
 	name = "magazine box (BLANK L42A x 32)"
 	desc = "Upon closer examination, a label reads: 'BLANK ROUNDS - FOR TRAINING AND CEREMONIAL USE ONLY - DO NOT USE IN COMBAT SITUATIONS'"
-	overlay_ammo_type = "_45_training"
+	overlay_ammo_type = "_training"
 	overlay_content = "_training"
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/half/blank
 
@@ -532,7 +534,7 @@
 /obj/item/ammo_box/magazine/lever_action/training
 	name = "45-70 blank box (45-70 x 300)"
 	icon_state = "base_4570"
-	overlay_ammo_type = "_45_training"
+	overlay_ammo_type = "_training"
 	overlay_gun_type = "_4570"
 	overlay_content = "_training"
 	magazine_type = /obj/item/ammo_magazine/handful/lever_action/training

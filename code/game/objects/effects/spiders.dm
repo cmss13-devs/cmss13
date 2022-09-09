@@ -158,6 +158,30 @@
 			new spawn_type(src.loc)
 			qdel(src)
 
+/obj/effect/spider/spiderling/nogrow/Initialize(mapload, ...)
+	. = ..()
+	pixel_x = rand(6,-6)
+	pixel_y = rand(6,-6)
+	START_PROCESSING(SSobj, src)
+/obj/effect/spider/spiderling/nogrow/process()
+	//=================
+	if(prob(25))
+		var/list/nearby = oview(5, src)
+		if(nearby.len)
+			var/target_atom = pick(nearby)
+			walk_to(src, target_atom, 5)
+			if(prob(25))
+				src.visible_message(SPAN_NOTICE("\the [src] skitters[pick(" away"," around","")]."))
+	else if(prob(5))
+		//vent crawl!
+		for(var/obj/structure/pipes/vents/pump/v in view(7,src))
+			if(!v.welded)
+				entry_vent = v
+				walk_to(src, entry_vent, 5)
+				break
+
+	if(prob(1))
+		src.visible_message(SPAN_NOTICE("\the [src] chitters."))
 /obj/effect/decal/cleanable/spiderling_remains
 	name = "spiderling remains"
 	desc = "Green squishy mess."

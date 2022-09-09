@@ -308,3 +308,33 @@
 /turf/open/auto_turf/strata_grass/layer1
 	icon_state = "grass_1"
 	bleed_layer = 1
+
+//Chance's Claim / Hadley Shale dirt
+
+/turf/open/auto_turf/shale
+	layer_name = list("wind blown dirt", "volcanic plate rock", "volcanic plate and rock", "this layer does not exist")
+	icon = 'icons/turf/floors/auto_shale.dmi'
+	icon_prefix = "shale"
+
+/turf/open/auto_turf/shale/get_dirt_type()
+	return DIRT_TYPE_SHALE
+
+/turf/open/auto_turf/shale/layer0
+	icon_state = "shale_0"
+	bleed_layer = 0
+
+/turf/open/auto_turf/shale/layer0_puddle
+	icon_state = "shale_0_puddle"
+	bleed_layer = 0
+
+/turf/open/auto_turf/shale/layer0_plate //for inner plate shenanigans
+	icon_state = "shale_1_alt"
+	bleed_layer = 0
+
+/turf/open/auto_turf/shale/layer1
+	icon_state = "shale_1"
+	bleed_layer = 1
+
+/turf/open/auto_turf/shale/layer2
+	icon_state = "shale_2"
+	bleed_layer = 2

@@ -1248,7 +1248,7 @@
 
 /obj/item/weapon/gun/rifle/l42a/abr40
 	name = "\improper ABR-40 rifle"
-	desc = "Essentially the civilian predecessor to the L42A, the ABR-40 bears similarities to the L42 in inner workings while sporting a 'hunting rifle' esque wood colored furniture. Legal in California!"
+	desc = "Essentially the civilian predecessor to the L42A, the ABR-40 bears similarities to the L42 in inner workings while sporting a 'hunting rifle' esque furniture made from cheap replica wood."
 	icon_state = "l42wood"
 	item_state = "l42wood"
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/half
@@ -1282,7 +1282,7 @@
 // Essentially L42 Custom, though more of a sidegrade due to 0 attachments, higher weild delay and the fact that you have to find better magazines.
 /obj/item/weapon/gun/rifle/l42a/abr40/drill
 	name = "\improper ABR-40 Ceremonial Rifle"
-	desc = "An ABR-40 battle rifle, the L42A's predecessor, with an authentic polished wood furniture for ceremonial usage. Its frame is shined to perfection and you can even see your reflection in the bolt. Lacks the threaded barrel and underbarrel rail for attachments, with only the bayonet lug being the only place to attach anything. Too cumbersome to be fired with one hand, and the Sergeant Major would kill any marine caught trying."
+	desc = "An ABR-40 battle rifle, the L42A's predecessor, with a fully polished and almost indistinguishable replica-wood furniture for ceremonial usage. Its frame is shined to perfection and you can even see your reflection in the bolt. Lacks the threaded barrel and underbarrel rail for attachments, with only the bayonet lug being the only place to attach anything. Too cumbersome to be fired with one hand, and the Sergeant Major would kill any marine caught trying."
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,

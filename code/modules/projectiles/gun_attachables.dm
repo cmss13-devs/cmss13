@@ -1408,8 +1408,8 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 
 /obj/item/attachable/stock/carbine/wood
-	name = "\improper L42 wooden stock"
-	desc = "A fully polished wood stock, heavy yet sturdy. Attaches to the L42A Battle Rifle. You can bash someone good with this."
+	name = "\improper ABR-40-L42 \"wooden\" stock"
+	desc = "A polished replica wood stock, heavy yet sturdy. Compatible with the L42A and ABR-40s Battle Rifles. You can bash someone good with this."
 	icon_state = "l42_fullstock"
 	attach_icon = "l42fullstock_a"
 	melee_mod = 6
@@ -1422,8 +1422,8 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_9
 
 /obj/item/attachable/stock/carbine/wood/drill
-	name = "\improper L42 exotic wood stock"
-	desc = "A fully polished non detachable wood stock attached to select L42A ceremonial rifles. You can bash someone good with this."
+	name = "\improper ABR-40 exotic \"wood\" stock"
+	desc = "A fully polished non detachable replica wood stock attached to select ABR-40 ceremonial rifles. You can bash someone good with this."
 	flags_attach_features = NO_FLAGS
 	wield_delay_mod = WIELD_DELAY_NORMAL // these already have bad wield delay
 

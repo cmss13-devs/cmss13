@@ -127,3 +127,9 @@
   - bugfix: the orbit menu now uses tgui_interact procs, as it should
   - ui: the orbit menu no longer shows empty sections
   - ui: the orbit menu has been made a bit wider
+2022-09-10:
+  Jeser:
+  - rscadd: Added vehicle-specific version of Cancel View action called Vehicle Unbuckle.
+      This one will properly unbuckle you.
+  - bugfix: Fixed unbuckling with tank artillery module active leaving you with huge
+      view range.

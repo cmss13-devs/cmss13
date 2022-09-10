@@ -561,3 +561,38 @@ CULT
 	H.client.change_view(world_view_size, target)
 	H.client.pixel_x = 0
 	H.client.pixel_y = 0
+
+ //Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
+ //Unbuckles them, which handles the view and offsets resets and other stuff.
+/datum/action/human_action/vehicle_unbuckle
+	name = "Vehicle Unbuckle"
+	action_icon_state = "unbuckle"
+
+/datum/action/human_action/vehicle_unbuckle/give_to(user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from)//since unbuckling from special vehicle seats also resets the view, gonna use same signal
+
+/datum/action/human_action/vehicle_unbuckle/remove_from(mob/L)
+	. = ..()
+	UnregisterSignal(L, COMSIG_MOB_RESET_VIEW)
+
+/datum/action/human_action/vehicle_unbuckle/action_activate()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+	if(H.buckled)
+		if(istype(H.buckled, /obj/structure/bed/chair/comfy/vehicle))
+			H.buckled.unbuckle()
+		else if(!isVehicleMultitile(H.interactee))
+			remove_from(H)
+	else if(!isVehicleMultitile(H.interactee))
+		remove_from(H)
+
+	H.unset_interaction()
+	H.client.change_view(world_view_size, target)
+	H.client.pixel_x = 0
+	H.client.pixel_y = 0
+	H.reset_view()
+	remove_from(H)
+

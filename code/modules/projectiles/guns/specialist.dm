@@ -1259,6 +1259,10 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		to_chat(user, SPAN_NOTICE("The roof above you is too dense."))
 		return
 		
+	if(!istype(ammo, /datum/ammo/flare))
+		to_chat(user, SPAN_NOTICE("\The [src] jams as it is somehow loaded with incorrect ammo!"))
+		return
+		
 	if(user.action_busy)
 		return
 	
@@ -1268,10 +1272,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	current_mag.current_rounds--
 	
 	flare_turf.ceiling_debris()
-		
-	if(!istype(ammo, /datum/ammo/flare))
-		to_chat(user, SPAN_NOTICE("\The [src] jams as it is somehow loaded with incorrect ammo!"))
-		return
 		
 	var/datum/ammo/flare/explicit_ammo = ammo
 		

@@ -140,3 +140,6 @@
       This one will properly unbuckle you.
   - bugfix: Fixed unbuckling with tank artillery module active leaving you with huge
       view range.
+  Morrow:
+  - bugfix: Shocked doors without a real power source will now shock correctly.
+  - bugfix: Xeno shock chances made consistent across ways to open airlocks.

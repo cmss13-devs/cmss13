@@ -128,6 +128,13 @@
   - ui: the orbit menu no longer shows empty sections
   - ui: the orbit menu has been made a bit wider
 2022-09-10:
+  Drathek:
+  - bugfix: Fixed initialization runtimes for updateVisibility by changing ticket_list
+      definition to not be an effect.
+  - bugfix: 'Fixed /datum/config_entry/flag/vote_adjustment_callback not initializing
+      by adding:'
+  - config: Added ALLOW_VOTE_ADJUSTMENT_CALLBACK where when present in config will
+      allow the usage of VOTE_ADJUSTMENT_CALLBACK some_number to adjust votes.
   Jeser:
   - rscadd: Added vehicle-specific version of Cancel View action called Vehicle Unbuckle.
       This one will properly unbuckle you.

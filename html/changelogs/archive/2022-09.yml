@@ -143,3 +143,6 @@
   Morrow:
   - bugfix: Shocked doors without a real power source will now shock correctly.
   - bugfix: Xeno shock chances made consistent across ways to open airlocks.
+2022-09-11:
+  Geevies:
+  - rscadd: You can now see who's playing the Queen / her hive leaders from the lobby.

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, Flex, ProgressBar } from '../components';
+import { Button, Section, Flex, Box } from '../components';
 import { Window } from '../layouts';
 import { logger } from '../logging';
 
@@ -31,20 +31,20 @@ const VendableItem = (props: VenableItem, context) => {
     progress = record.prod_amount / record.prod_initial
   }
   return (
-    <Flex align="stretch" justify="space-between" align-items="stretch" spacing={2}>
-      <Flex.Item grow={2}>
+    <Flex align="stretch" justify="space-between" align-items="stretch">
+      <Flex.Item grow={1}>
         {record.prod_name}
       </Flex.Item>
 
-      <Flex.Item style={{'text-align': 'center'}} grow={1}>
+      <Flex.Item style={{'text-align': 'center'}}>
         {record.prod_amount}
       </Flex.Item>
 
-      <Flex.Item grow={1}>
-        <ProgressBar value={progress}/>
+      <Flex.Item>
+        <Box width={5}></Box>
       </Flex.Item>
 
-      <Flex.Item grow={1} justify="right">
+      <Flex.Item justify="right">
         <Button
           style={{'text-align': 'center'}}
           onClick={() => act('vend', record)}

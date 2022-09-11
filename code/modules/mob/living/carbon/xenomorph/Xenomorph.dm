@@ -227,6 +227,8 @@
 	var/acid_blood_damage = 25
 	var/nocrit = FALSE
 
+	var/got_evolution_message = FALSE
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -327,6 +329,7 @@
 		nicknumber = oldXeno.nicknumber
 		life_kills_total = oldXeno.life_kills_total
 		life_damage_taken_total = oldXeno.life_damage_taken_total
+		evolution_stored = oldXeno.evolution_stored
 		if(oldXeno.iff_tag)
 			iff_tag = oldXeno.iff_tag
 			iff_tag.forceMove(src)

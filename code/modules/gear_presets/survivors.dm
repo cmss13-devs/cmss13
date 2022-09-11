@@ -8,7 +8,7 @@
 	paygrade = "C"
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	faction_group = list(FACTION_SURVIVOR)
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, var/randomise)
@@ -26,7 +26,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(H), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/load_id(mob/living/carbon/human/H, client/mob_client)
 	var/obj/item/clothing/under/uniform = H.w_uniform
@@ -652,7 +652,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-		
+
 	..()
 
 

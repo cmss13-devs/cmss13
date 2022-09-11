@@ -1101,6 +1101,18 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	item_state_slots = list(WEAR_JACKET = "pmc_sniper")
 
+/obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth
+	name = "\improper M4 synthetic PMC armor"
+	desc = "A modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, offering protection and storage while not restricting movement."
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	storage_slots = 3
+
+/obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth/Initialize()
+	flags_atom |= NO_NAME_OVERRIDE
+	flags_marine_armor |= SYNTH_ALLOWED
+	return ..()
+
 /obj/item/clothing/suit/storage/marine/veteran/PMC/leader
 	name = "\improper M4 pattern PMC leader armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."

@@ -889,31 +889,24 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
 
 /datum/equipment_preset/proc/add_survivor_weapon(var/mob/living/carbon/human/H) // Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet. For the most part you will stil get a shotgun but there is an off chance you get something unique. If you dont like the weapon deal with it. With exception of CMB SHotgun, everything else has some level of ammo. Some weapons may not appear at all in a colony so they will need the extra ammo. MERC, and DB needed a handfull of shells to compete with the normal CMB.
-	var/random_weapon = rand(0,15)
+	// a high chance to just not have a primary weapon
+	if(prob(60))
+		return
+
+	var/random_weapon = rand(0, 3)
 	switch(random_weapon)
-		if(0 to 8)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/cmb(H), WEAR_L_HAND)
-		if(9)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/fp9000(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/fp9000(H), WEAR_WAIST)
-		if(10)
+		if(0)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/hunting(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/hunting(H), WEAR_WAIST)
-		if(11)
+		if(1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/mar40(H), WEAR_WAIST)
-		if(12)
+		if(2)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/mp5(H), WEAR_WAIST)
-		if(13)
+		if(3)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m16(H), WEAR_WAIST)
-		if(14)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
-		if(15)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H), WEAR_IN_BACK)
 
 
 /////////////// Antag Vendor Equipment ///////////////

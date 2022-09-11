@@ -44,6 +44,7 @@
 	tacklestrength_max = 6
 
 	minimum_xeno_playtime = 9 HOURS
+	minimum_evolve_time = 0
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
@@ -244,8 +245,6 @@
 	attack_sound = null
 	friendly = "nuzzles"
 	wall_smash = 0
-	amount_grown = 0
-	max_grown = 10
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_IMMOBILE

@@ -146,3 +146,6 @@
 2022-09-11:
   Geevies:
   - rscadd: You can now see who's playing the Queen / her hive leaders from the lobby.
+  Nanu:
+  - bugfix: Fixes the TP function so you can now choose between the Colony chapel
+      and Almayer.

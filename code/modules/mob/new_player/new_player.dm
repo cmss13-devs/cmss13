@@ -52,6 +52,7 @@
 
 	else
 		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"
+		output += "<a href='byond://?src=\ref[src];lobby_choice=hiveleaders'>View Hive Leaders</A><br><br>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join'>Join the USCM!</A></p>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
 		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
@@ -62,7 +63,7 @@
 	output += "</div>"
 	if (refresh)
 		close_browser(src, "playersetup")
-	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 380];can_close=0;can_minimize=0")
+	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 460];can_close=0;can_minimize=0")
 	return
 
 /mob/new_player/Topic(href, href_list[])
@@ -198,6 +199,9 @@
 
 		if("manifest")
 			ViewManifest()
+
+		if("hiveleaders")
+			ViewHiveLeaders()
 
 		if("SelectedJob")
 
@@ -405,6 +409,41 @@
 	dat += GLOB.data_core.get_manifest(FALSE, TRUE)
 
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
+
+/mob/new_player/proc/ViewHiveLeaders()
+	if(!GLOB.hive_leaders_tgui)
+		GLOB.hive_leaders_tgui = new /datum/hive_leaders()
+	GLOB.hive_leaders_tgui.tgui_interact(src)
+
+/datum/hive_leaders/Destroy(force, ...)
+	SStgui.close_uis(src)
+	return ..()
+
+/datum/hive_leaders/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "HiveLeaders", "Hive Leaders")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
+// Player panel
+/datum/hive_leaders/ui_data(mob/user)
+	var/list/data = list()
+
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	var/list/queens = list()
+	if(main_hive.living_xeno_queen)
+		queens += list(list("designation" = main_hive.living_xeno_queen.full_designation, "caste_type" = main_hive.living_xeno_queen.name))
+	data["queens"] = queens
+	var/list/leaders = list()
+	for(var/mob/living/carbon/Xenomorph/xeno_leader in main_hive.xeno_leader_list)
+		leaders += list(list("designation" = xeno_leader.full_designation, "caste_type" = xeno_leader.caste_type))
+	data["leaders"] = leaders
+	return data
+
+
+/datum/hive_leaders/ui_state(mob/user)
+	return GLOB.always_state
 
 /mob/new_player/Move()
 	return 0

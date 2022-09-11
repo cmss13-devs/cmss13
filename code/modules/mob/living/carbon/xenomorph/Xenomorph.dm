@@ -150,6 +150,7 @@
 	//Naming variables
 	var/caste_type = "Drone"
 	var/nicknumber = 0 //The number after the name. Saved right here so it transfers between castes.
+	var/full_designation = ""
 
 	//This list of inherent verbs lets us take any proc basically anywhere and add them.
 	//If they're not a xeno subtype it might crash or do weird things, like using human verb procs
@@ -540,8 +541,8 @@
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
-
 		age_xeno()
+	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 	color = in_hive.color
 
 	//Queens have weird, hardcoded naming conventions based on age levels. They also never get nicknumbers

@@ -387,8 +387,10 @@
 
 	target_clicked = target
 
-	if(cause_data)
+	if(istype(cause_data))
 		weapon_cause_data = cause_data
+	else if(cause_data)
+		weapon_cause_data = create_cause_data(cause_data)
 	else
 		weapon_cause_data = create_cause_data(initial(name), null)
 

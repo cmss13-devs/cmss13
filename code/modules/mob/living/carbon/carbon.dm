@@ -74,10 +74,10 @@
 	if(severity >= 30)
 		flash_eyes()
 
-	last_damage_data = cause_data
+	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
 	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
-		gib(cause_data)
+		gib(last_damage_data)
 		return
 
 	apply_damage(severity, BRUTE)

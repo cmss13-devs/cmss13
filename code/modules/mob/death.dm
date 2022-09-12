@@ -52,6 +52,7 @@
 
 	if(cause_data && !istype(cause_data))
 		stack_trace("death called with string cause instead of datum")
+		cause_data = create_cause_data(cause_data)
 
 	stat = DEAD
 
@@ -102,7 +103,7 @@
 
 /mob/proc/handle_death_cause(var/datum/cause_data/cause_data, var/turf/death_loc)
 	track_mob_death(cause_data, death_loc)
-	if(cause_data)
+	if(cause_data && istype(cause_data))
 		var/obj/O = cause_data.resolve_cause()
 		if(isdefenses(O))
 			var/obj/structure/machinery/defenses/TR = O

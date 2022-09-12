@@ -265,7 +265,7 @@
 	var/gas_damage = 20
 
 /obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
-	var/mob/living/carbon/Xenomorph/X = cause_data.resolve_mob()
+	var/mob/living/carbon/Xenomorph/X = cause_data?.resolve_mob()
 	if (istype(X) && X.hivenumber)
 		hivenumber = X.hivenumber
 
@@ -493,8 +493,7 @@
 		lifetime = smoke_time
 	radius = min(radius, 10)
 	amount = radius
-	if(new_cause_data)
-		cause_data = new_cause_data
+	cause_data = istype(new_cause_data) ? new_cause_data : create_cause_data(new_cause_data)
 
 /datum/effect_system/smoke_spread/start()
 	if(holder)

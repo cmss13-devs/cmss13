@@ -246,12 +246,9 @@ cases. Override_icon_state should be a list.*/
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/card/id))
-		to_chat_immediate(world,"A")
 		if(((flags_item & MOB_LOCK_ON_EQUIP)) && (user == locked_to_mob))
-			to_chat_immediate(world,"B")
 			if (alert(user, "Would you like to disable the ID lock for \the [src]. This cannot be undone!", "Confirm", "Yes", "No") == "Yes")
 				to_chat(user, SPAN_WARNING("You unlock \the [src]."))
-				to_chat_immediate(world,"C")
 				src.flags_item &= ~MOB_LOCK_ON_EQUIP
 				locked_to_mob = null
 			return

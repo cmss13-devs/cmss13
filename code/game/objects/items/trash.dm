@@ -189,3 +189,8 @@
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
+
+/obj/item/trash/pillpacket
+	name = "Empty pill packet"
+	icon_state = "pill_packet"
+	desc = "A piece of plastic that once contained pills."

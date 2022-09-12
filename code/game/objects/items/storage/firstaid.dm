@@ -632,7 +632,7 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 //---------PILL PACKETS---------
-obj/item/storage/pill_bottle/packet
+/obj/item/storage/pill_bottle/packet
 	name = "\improper pill packet"
 	desc = "Contains pills. Once you take them out, they don't go back in."
 	icon_state = "pill_packet"
@@ -643,6 +643,19 @@ obj/item/storage/pill_bottle/packet
 	skilllock = SKILL_MEDICAL_DEFAULT
 	storage_flags = STORAGE_FLAGS_BOX
 	display_maptext = FALSE
+	var/icon_original
+
+/obj/item/storage/pill_bottle/packet/Initialize()
+	. = ..()
+	icon_original = icon_state
+
+/obj/item/storage/pill_bottle/packet/update_icon()
+	if(length(contents) == 0)
+		new /obj/item/trash/pillpacket(src.loc)
+		qdel(src)
+		return
+	if(length(contents) < storage_slots)
+		icon_state = "[icon_original]_[length(contents)]"
 
 /obj/item/storage/pill_bottle/packet/tricordrazine
 	name = "Tricordazine pill packet"

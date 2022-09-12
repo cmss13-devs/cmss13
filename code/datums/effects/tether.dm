@@ -42,8 +42,8 @@
 		return
 
 	if(isStructure(tethered.affected_atom))//we are attached to a structure, shouldnt move it (too heavy)
-		var/obj/structure/Big_boi = tethered.affected_atom
-		if(Big_boi.anchored)
+		var/obj/structure/anchored_object = tethered.affected_atom
+		if(anchored_object.anchored)
 			return
 
 	var/atom/movable/A = tethered.affected_atom

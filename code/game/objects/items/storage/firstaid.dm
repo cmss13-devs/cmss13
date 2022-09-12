@@ -643,11 +643,9 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	storage_flags = STORAGE_FLAGS_BOX
 	display_maptext = FALSE
-	var/icon_original
 
 /obj/item/storage/pill_bottle/packet/Initialize()
 	. = ..()
-	icon_original = icon_state
 
 /obj/item/storage/pill_bottle/packet/update_icon()
 	if(length(contents) == 0)
@@ -655,7 +653,7 @@
 		qdel(src)
 		return
 	if(length(contents) < storage_slots)
-		icon_state = "[icon_original]_[length(contents)]"
+		icon_state = "[initial(icon_state)]_[length(contents)]"
 
 /obj/item/storage/pill_bottle/packet/tricordrazine
 	name = "Tricordazine pill packet"

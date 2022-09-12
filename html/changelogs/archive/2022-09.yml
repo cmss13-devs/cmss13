@@ -154,3 +154,5 @@
   - ui: the chem dispenser now uses tgui
   - rscadd: added visual indicators on chem dispensers of beakers being in them
   - spellcheck: changed "tequilla" to "tequila"
+  - ui: upgraded font-awesome to v6.1.2. What does this mean? Many, many more varied
+      icons can be put in TGUI interfaces now.

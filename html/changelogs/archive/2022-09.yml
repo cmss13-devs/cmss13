@@ -149,3 +149,8 @@
   Nanu:
   - bugfix: Fixes the TP function so you can now choose between the Colony chapel
       and Almayer.
+2022-09-12:
+  stanalbatross:
+  - ui: the chem dispenser now uses tgui
+  - rscadd: added visual indicators on chem dispensers of beakers being in them
+  - spellcheck: changed "tequilla" to "tequila"

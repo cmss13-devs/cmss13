@@ -54,7 +54,7 @@ explosion resistance exactly as much as their health
 /obj/effect/explosion/proc/initiate_explosion(turf/epicenter, power0, falloff0 = 20, var/datum/cause_data/new_explosion_cause_data)
 	if(!istype(new_explosion_cause_data))
 		if(new_explosion_cause_data)
-			stack_trace("initiate_explosion called with string cause instead of datum")
+			stack_trace("initiate_explosion called with string cause ([new_explosion_cause_data]) instead of datum")
 			new_explosion_cause_data = create_cause_data(new_explosion_cause_data)
 		else
 			stack_trace("initiate_explosion called without cause_data.")

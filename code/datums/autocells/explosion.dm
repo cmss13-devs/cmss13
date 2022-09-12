@@ -255,7 +255,7 @@
 
 	if(!istype(explosion_cause_data))
 		if(explosion_cause_data)
-			stack_trace("cell_explosion called with string cause instead of datum")
+			stack_trace("cell_explosion called with string cause ([explosion_cause_data]) instead of datum")
 			explosion_cause_data = create_cause_data(explosion_cause_data)
 		else
 			stack_trace("cell_explosion called without cause_data.")

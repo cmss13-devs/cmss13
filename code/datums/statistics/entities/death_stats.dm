@@ -65,7 +65,7 @@
 		return
 
 	if(cause_data && !istype(cause_data))
-		stack_trace("track_mob_death called with string cause instead of datum")
+		stack_trace("track_mob_death called with string cause ([cause_data]) instead of datum")
 		cause_data = create_cause_data(cause_data)
 
 	var/datum/entity/statistic/death/new_death = DB_ENTITY(/datum/entity/statistic/death)

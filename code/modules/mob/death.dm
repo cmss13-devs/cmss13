@@ -51,7 +51,7 @@
 		visible_message("<b>\The [src.name]</b> [deathmessage]")
 
 	if(cause_data && !istype(cause_data))
-		stack_trace("death called with string cause instead of datum")
+		stack_trace("death called with string cause ([cause_data]) instead of datum")
 		cause_data = create_cause_data(cause_data)
 
 	stat = DEAD

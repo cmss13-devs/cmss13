@@ -147,7 +147,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 		playsound(X.loc, 'sound/effects/blobattack.ogg', 25)
 
-		M.gib("butchering")
+		M.gib(create_cause_data("butchering", X))
 
 		return TRUE
 

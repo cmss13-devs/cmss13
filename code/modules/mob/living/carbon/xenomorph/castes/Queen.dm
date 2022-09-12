@@ -720,7 +720,7 @@
 
 		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [key_name(victim)]</font>")
 		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>was gibbed by [key_name(src)]</font>")
-		victim.gib(initial(name)) //Splut
+		victim.gib(create_cause_data("Queen gutting", src)) //Splut
 
 		stop_pulling()
 

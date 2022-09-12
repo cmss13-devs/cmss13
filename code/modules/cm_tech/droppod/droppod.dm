@@ -152,7 +152,7 @@
 /obj/structure/droppod/proc/post_land()
 	density = TRUE
 	for(var/mob/M in loc)
-		M.gib(initial(name))
+		M.gib(create_cause_data(initial(name)))
 
 	for(var/obj/structure/O in loc)
 		O.update_health(-land_damage)

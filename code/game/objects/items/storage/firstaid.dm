@@ -644,9 +644,6 @@
 	storage_flags = STORAGE_FLAGS_BOX
 	display_maptext = FALSE
 
-/obj/item/storage/pill_bottle/packet/Initialize()
-	. = ..()
-
 /obj/item/storage/pill_bottle/packet/update_icon()
 	if(length(contents) == 0)
 		new /obj/item/trash/pillpacket(src.loc)

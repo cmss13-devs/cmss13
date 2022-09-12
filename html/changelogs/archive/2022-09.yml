@@ -127,3 +127,35 @@
   - bugfix: the orbit menu now uses tgui_interact procs, as it should
   - ui: the orbit menu no longer shows empty sections
   - ui: the orbit menu has been made a bit wider
+2022-09-10:
+  Drathek:
+  - bugfix: Fixed initialization runtimes for updateVisibility by changing ticket_list
+      definition to not be an effect.
+  - bugfix: 'Fixed /datum/config_entry/flag/vote_adjustment_callback not initializing
+      by adding:'
+  - config: Added ALLOW_VOTE_ADJUSTMENT_CALLBACK where when present in config will
+      allow the usage of VOTE_ADJUSTMENT_CALLBACK some_number to adjust votes.
+  Jeser:
+  - rscadd: Added vehicle-specific version of Cancel View action called Vehicle Unbuckle.
+      This one will properly unbuckle you.
+  - bugfix: Fixed unbuckling with tank artillery module active leaving you with huge
+      view range.
+  Morrow:
+  - bugfix: Shocked doors without a real power source will now shock correctly.
+  - bugfix: Xeno shock chances made consistent across ways to open airlocks.
+2022-09-11:
+  Geevies:
+  - rscadd: You can now see who's playing the Queen / her hive leaders from the lobby.
+  Nanu:
+  - bugfix: Fixes the TP function so you can now choose between the Colony chapel
+      and Almayer.
+2022-09-12:
+  stanalbatross:
+  - ui: the chem dispenser now uses tgui
+  - rscadd: added visual indicators on chem dispensers of beakers being in them
+  - spellcheck: changed "tequilla" to "tequila"
+  - ui: upgraded font-awesome to v6.1.2. What does this mean? Many, many more varied
+      icons can be put in TGUI interfaces now.
+  - ui: converted the fax machine to tgui
+  - ui: added a new WY themed tgui theme
+  - soundadd: ported some tgstation computer sounds

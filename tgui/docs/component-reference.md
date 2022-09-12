@@ -941,7 +941,7 @@ Make sure to use the `fill` property.
         </Section>
       </Stack.Item>
       <Stack.Item grow>
-        <Stack fill vertical>
+         fill vertical>
           <Stack.Item grow>
             <Section fill scrollable>
               Main content

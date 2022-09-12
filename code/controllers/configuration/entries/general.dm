@@ -125,7 +125,7 @@ Administrative related.
 
 /datum/config_entry/flag/allow_admin_ooccolor // Allows admins to customize their OOC color.
 
-/datum/config_entry/flag/vote_adjustment_callback
+/datum/config_entry/flag/allow_vote_adjustment_callback
 
 /datum/config_entry/number/vote_adjustment_callback
 	config_entry_value = 0.1

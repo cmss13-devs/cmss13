@@ -156,3 +156,6 @@
   - spellcheck: changed "tequilla" to "tequila"
   - ui: upgraded font-awesome to v6.1.2. What does this mean? Many, many more varied
       icons can be put in TGUI interfaces now.
+  - ui: converted the fax machine to tgui
+  - ui: added a new WY themed tgui theme
+  - soundadd: ported some tgstation computer sounds

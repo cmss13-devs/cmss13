@@ -807,7 +807,8 @@ IN_USE						used for vending/denying
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
 
-	var/initial_product_count = list()
+	var/list/initial_product_count = list()
+	var/list/product_icon_list = list()
 
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list = list(
@@ -905,9 +906,20 @@ IN_USE						used for vending/denying
 	populate_product_list(1.2)
 
 	for (var/i in 1 to length(listed_products))
+		// initial item count setup
 		var/item_name = listed_products[i][1]
 		var/initial_count = listed_products[i][2]
 		initial_product_count[item_name] = initial_count
+
+		// icon setup
+		var/typepath = listed_products[i][3]
+		var/obj/item/I = typepath
+		var/icon_ref = initial(I.icon)
+		var/icon_state = initial(I.icon_state)
+		var/icon/r = icon(icon_ref, icon_state, SOUTH, 1)
+		var/result = icon2html(r, world, icon_state, sourceonly=FALSE)
+
+		product_icon_list[item_name] = result
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
@@ -933,13 +945,14 @@ IN_USE						used for vending/denying
 	data["vendor_name"] = name
 	data["theme"] = vendor_theme
 
-	var/list/display_list = list()
 	var/list/ui_listed_products = get_listed_products(user)
 	if(!LAZYLEN(ui_listed_products))	//runtimed for vendors without goods in them
 		to_chat(user, SPAN_WARNING("Vendor wasn't properly initialized, tell an admin!"))
 		return
 
-	for(var/i in 1 to length(ui_listed_products))
+	var/list/ui_categories = list()
+
+	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
 
 		var/p_name = myprod[1]					//taking it's name
@@ -947,20 +960,40 @@ IN_USE						used for vending/denying
 		var/prod_available = p_amount > 0		//checking if it's available
 		var/list/initial_vals = initial_product_count
 
+		var/result = product_icon_list[p_name]
 		var/initial_amount = initial_vals[p_name]
+		var/is_category = p_amount < 0
+		var/typepath = myprod[3]
+		var/obj/item/I = typepath
+
 		//forming new list with index, name, amount, available or not, color and add it to display_list
-		display_list += list(list(
+		var/display_item = list(
 			"prod_index" = i,
 			"prod_name" = p_name,
 			"prod_amount" = p_amount,
 			"prod_available" = prod_available,
 			"prod_color" = myprod[4],
-			"prod_initial" = initial_amount
-			)
+			"prod_initial" = initial_amount,
+			"prod_icon" = result,
+			"prod_desc" = initial(I.desc)
 		)
 
+		if (is_category == 1)
+			ui_categories += list(list(
+				"name" = p_name,
+				"items" = list()
+			))
+			continue
 
-	data["displayed_records"] = display_list
+		if (!LAZYLEN(ui_categories))
+			ui_categories += list(list(
+				"name" = "",
+				"items" = list()
+			))
+		var/last_index = LAZYLEN(ui_categories)
+		var/last_category = ui_categories[last_index]
+		last_category["items"] += list(display_item)
+	data["displayed_categories"] = ui_categories
 	return data
 
 /obj/structure/machinery/cm_vending/sorted/tgui_interact(mob/user, datum/tgui/ui)

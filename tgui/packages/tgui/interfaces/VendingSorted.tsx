@@ -3,19 +3,30 @@ import { Button, Section, Flex, Box } from '../components';
 import { Window } from '../layouts';
 import { logger } from '../logging';
 
+const VENDOR_ITEM_REGULAR = 1
+const VENDOR_ITEM_MANDATORY = 2
+const VENDOR_ITEM_RECOMMENDED = 3
+
 type VendingRecord = {
   prod_index: number,
   prod_name: string,
   prod_amount: number,
   prod_available: number,
   prod_initial: number,
-  prod_color?: number
+  prod_color?: number;
+  prod_icon: string;
+  prod_desc?: string;
+}
+
+type VendingCategory = {
+  name: string;
+  items: VendingRecord[];
 }
 
 type VendingData = {
-  vendor_name: string,
-  theme: string,
-  displayed_records: VendingRecord[]
+  vendor_name: string;
+  theme: string;
+  displayed_categories: VendingCategory[];
 }
 
 type VenableItem = {
@@ -26,27 +37,40 @@ const VendableItem = (props: VenableItem, context) => {
   const { act } = useBackend(context);
   const { record } = props;
   const available = record.prod_available > 0
-  let progress = 0;
-  if (record.prod_initial > 0) {
-    progress = record.prod_amount / record.prod_initial
-  }
+  const color = record.prod_color == null || record.prod_color == VENDOR_ITEM_REGULAR
+    ? "white"
+    : record.prod_color == VENDOR_ITEM_MANDATORY
+      ? "orange"
+      : "green";
+  const icon = {__html: record.prod_icon}
   return (
-    <Flex align="stretch" justify="space-between" align-items="stretch">
+    <Flex align="center" justify="space-between" align-items="stretch">
       <Flex.Item grow={1}>
-        {record.prod_name}
+        <span style={{color: color}}>
+          {record.prod_name}
+        </span>
       </Flex.Item>
-
-      <Flex.Item style={{'text-align': 'center'}}>
-        {record.prod_amount}
+      <Flex.Item>
+        <div dangerouslySetInnerHTML={icon}/>
       </Flex.Item>
 
       <Flex.Item>
-        <Box width={5}></Box>
+        <Box width={5}/>
+      </Flex.Item>
+
+      <Flex.Item width={5}>
+        <span style={{color: color}}>
+          {record.prod_amount}
+        </span>
+      </Flex.Item>
+
+      <Flex.Item>
+        <Box width={5}/>
       </Flex.Item>
 
       <Flex.Item justify="right">
         <Button
-          style={{'text-align': 'center'}}
+          style={{textAlign: 'center'}}
           onClick={() => act('vend', record)}
           disabled={!available}
           width="80px">
@@ -56,44 +80,16 @@ const VendableItem = (props: VenableItem, context) => {
     </Flex>)
 }
 
-type VendingCategory = {
-  category: string,
-  records: VendingRecord[]
-}
 
 export const VendingSorted = (_, context) => {
   const { data } = useBackend<VendingData>(context);
-  const vendingmap = new Array<VendingCategory>();
-  let currentCategory:VendingCategory|null = null;
-
-  for (var i of data.displayed_records) {
-    if (i.prod_amount === -1) {
-      const newCategory: VendingCategory = {
-        category: i.prod_name,
-        records: []
-      }
-      currentCategory = newCategory
-      vendingmap.push(newCategory)
-      continue;
-    }
-    if (currentCategory === null) {
-      const newCategory: VendingCategory = {
-        category: "",
-        records: []
-      }
-      currentCategory = newCategory
-      vendingmap.push(newCategory)
-    }
-
-    currentCategory.records.push(i)
-  }
-
+  const categories = data.displayed_categories ?? []
   return (<Window width={600} height={700}>
-    <Window.Content scrollable>
-        {vendingmap.map((x, i) => (
-          <Section title={x.category} key={i}>
+    <Window.Content scrollable={true}>
+        {categories.map((category, i) => (
+          <Section title={category.name ?? ""} key={i}>
             <Flex direction="column">
-              {x.records.map(record => (
+              {category.items.map(record => (
                 <Flex.Item mb={1} key={record.prod_index}>
                   <VendableItem record={record}/>
                 </Flex.Item>)

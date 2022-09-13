@@ -29,18 +29,11 @@
 			break
 
 		if(isliving(A))
-			var/mob/living/L = A
-			if(L.faction == src.faction && !attack_same)
-				continue
-			else if(L in friends)
-				continue
-			else if (istype(src, /mob/living/simple_animal/hostile/alien) && (isXeno(L) || (isSilicon(L))))
-				continue
-			else
-				if(!L.stat)
-					stance = HOSTILE_STANCE_ATTACK
-					T = L
-					break
+			var/mob/living/L = evaluate_target(A)
+			if(L)
+				stance = HOSTILE_STANCE_ATTACK
+				T = L
+				break
 
 		if(istype(A, /obj/structure/machinery/bot))
 			var/obj/structure/machinery/bot/B = A
@@ -50,6 +43,14 @@
 				break
 	return T
 
+/mob/living/simple_animal/hostile/proc/evaluate_target(var/mob/living/target)
+	if(target.faction == src.faction && !attack_same)
+		return FALSE
+	else if(target in friends)
+		return FALSE
+	else
+		if(!target.stat)
+			return target
 
 /mob/living/simple_animal/hostile/proc/Found(var/atom/A)
 	return
@@ -123,7 +124,7 @@
 	if(client)
 		return 0
 
-	if(!stat)
+	if(!stat && canmove)
 		switch(stance)
 			if(HOSTILE_STANCE_IDLE)
 				target_mob = FindTarget()
@@ -134,9 +135,12 @@
 				MoveToTarget()
 
 			if(HOSTILE_STANCE_ATTACKING)
-				if(destroy_surroundings)
+				if(!AttackTarget() && destroy_surroundings)
 					DestroySurroundings()
-				AttackTarget()
+
+/mob/living/simple_animal/hostile/stop_moving()
+	..()
+	stance = HOSTILE_STANCE_IDLE
 
 /mob/living/simple_animal/hostile/proc/OpenFire(target_mob)
 	var/target = target_mob

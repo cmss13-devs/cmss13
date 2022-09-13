@@ -219,10 +219,8 @@
 							A.vars[variable] = O.vars[variable]
 
 		if("num")
-			var/new_value = input("Enter new number:","Num",\
-					O.vars[variable]) as num|null
+			var/new_value = tgui_input_real_number(usr, "Enter new number:","Num",O.vars[variable])
 			if(new_value == null) return
-
 			if(variable=="luminosity")
 				O.SetLuminosity(new_value)
 			else

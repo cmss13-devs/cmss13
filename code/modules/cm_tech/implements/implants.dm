@@ -142,7 +142,7 @@
 
 /obj/item/device/internal_implant/nvg/proc/remove_health(var/mob/living/M)
 	SIGNAL_HANDLER
-	implant_health -= 1
+	implant_health--
 	if(implant_health <= 0)
 		UnregisterSignal(M, list(
 			COMSIG_HUMAN_POST_UPDATE_SIGHT,

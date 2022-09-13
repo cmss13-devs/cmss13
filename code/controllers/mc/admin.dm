@@ -1,23 +1,23 @@
 // Clickable stat() button.
-/obj/effect/statclick
+/obj/statclick
 	name = "Initializing..."
 	var/target
 
-INITIALIZE_IMMEDIATE(/obj/effect/statclick)
+INITIALIZE_IMMEDIATE(/obj/statclick)
 
-/obj/effect/statclick/Initialize(mapload, text, target) //Don't port this to Initialize it's too critical
+/obj/statclick/Initialize(mapload, text, target) //Don't port this to Initialize it's too critical
 	. = ..()
 	name = text
 	src.target = target
 
-/obj/effect/statclick/proc/update(text)
+/obj/statclick/proc/update(text)
 	name = text
 	return src
 
-/obj/effect/statclick/debug
+/obj/statclick/debug
 	var/class
 
-/obj/effect/statclick/debug/clicked()
+/obj/statclick/debug/clicked()
 	if(!usr.client.admin_holder || !target)
 		return
 	if(!class)

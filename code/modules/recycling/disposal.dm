@@ -66,7 +66,10 @@
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
 				return
-		else if(istype(I, /obj/item/tool/weldingtool) && mode == -1)
+		else if(iswelder(I) && mode == -1)
+			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+				return
 			if(contents.len > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
@@ -780,7 +783,10 @@
 	if(T.intact_tile)
 		return //Prevent interaction with T-scanner revealed pipes
 	add_fingerprint(user)
-	if(istype(I, /obj/item/tool/weldingtool))
+	if(iswelder(I))
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/W = I
 
 		if(W.remove_fuel(0, user))
@@ -1263,7 +1269,10 @@
 	if(T.intact_tile)
 		return //Prevent interaction with T-scanner revealed pipes
 	add_fingerprint(user)
-	if(istype(I, /obj/item/tool/weldingtool))
+	if(iswelder(I))
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0, user))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -1370,7 +1379,10 @@
 			mode = 0
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
-	else if(istype(I, /obj/item/tool/weldingtool) && mode == 1)
+	else if(iswelder(I) && mode == 1)
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0, user))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)

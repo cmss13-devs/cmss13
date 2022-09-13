@@ -282,7 +282,7 @@
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
-	if(stat != DEAD || chestburst || spawned_corpse)
+	if(stat != DEAD || chestburst)
 		return TRUE
 
 	if(status_flags & XENO_HOST)

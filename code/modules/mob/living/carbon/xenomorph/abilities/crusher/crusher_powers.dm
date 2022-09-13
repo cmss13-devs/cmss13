@@ -146,7 +146,6 @@
 			continue
 		if(Human.client)
 			shake_camera(Human, 10, 2)
-			playsound(Human,"bone_break",50,TRUE)
 		if(Targeted)
 			to_chat(Human, SPAN_XENOHIGHDANGER("You watch as [Targeted] gets crushed by [Xeno]!"))
 		to_chat(Human, SPAN_XENOHIGHDANGER("You are shaken as [Xeno] quakes the earth!"))

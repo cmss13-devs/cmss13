@@ -645,10 +645,8 @@
 	display_maptext = FALSE
 
 /obj/item/storage/pill_bottle/packet/update_icon()
-	if(length(contents) == 0)
-		new /obj/item/trash/pillpacket(src.loc)
-		qdel(src)
-		return
+	..()
+	if(QDELETED(src)) return
 	if(length(contents) < storage_slots)
 		icon_state = "[initial(icon_state)]_[length(contents)]"
 

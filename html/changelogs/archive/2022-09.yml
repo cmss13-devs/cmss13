@@ -165,5 +165,7 @@
       being incredibly strong, the mistakes have been found and all current phone
       lines are recalled and replaced with weaker one to save on cost, they will now
       break if pulling a heavy objects.
+  morrowwolf:
+  - bugfix: Fixed non-bursted spawned corpses being grabbable.
   stanalbatross:
   - server: byond version 1586 is now blacklisted as it breaks vision.

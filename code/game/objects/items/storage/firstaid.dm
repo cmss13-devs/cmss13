@@ -646,9 +646,19 @@
 
 /obj/item/storage/pill_bottle/packet/update_icon()
 	..()
-	if(QDELETED(src)) return
 	if(length(contents) < storage_slots)
 		icon_state = "[initial(icon_state)]_[length(contents)]"
+		to_chat(world,"3")
+
+/obj/item/storage/pill_bottle/_item_removal(obj/item/W as obj, atom/new_location)
+	..()
+	if(QDELETED(src)) return // no qdel loop 4 u
+	to_chat(world,"2")
+	if(length(contents) == 0)
+		to_chat(world,"D")
+		new /obj/item/trash/pillpacket(get_turf(src))
+		qdel(src)
+		return
 
 /obj/item/storage/pill_bottle/packet/tricordrazine
 	name = "Tricordazine pill packet"

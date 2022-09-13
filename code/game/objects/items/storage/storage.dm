@@ -510,9 +510,6 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(W.maptext && (storage_flags & STORAGE_CONTENT_NUM_DISPLAY))
 		W.maptext = ""
 	W.on_exit_storage(src)
-	if(length(contents) == 0 && max_w_class == 0)
-		Destroy(src)
-		return
 	update_icon()
 	W.mouse_opacity = initial(W.mouse_opacity)
 

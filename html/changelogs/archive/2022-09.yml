@@ -159,3 +159,9 @@
   - ui: converted the fax machine to tgui
   - ui: added a new WY themed tgui theme
   - soundadd: ported some tgstation computer sounds
+2022-09-13:
+  The_Boondock:
+  - bugfix: due to unintended materials being used in phone lines resulting in them
+      being incredibly strong, the mistakes have been found and all current phone
+      lines are recalled and replaced with weaker one to save on cost, they will now
+      break if pulling a heavy objects.

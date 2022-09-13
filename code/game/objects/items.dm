@@ -251,6 +251,7 @@ cases. Override_icon_state should be a list.*/
 				to_chat(user, SPAN_WARNING("You unlock \the [src]."))
 				src.flags_item &= ~MOB_LOCK_ON_EQUIP
 				locked_to_mob = null
+				log_admin("[user] has removed the ID lock on \the [src]. Owner of the item was [locked_to_mob] (CKEY: ([user.ckey]))")
 			return
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W

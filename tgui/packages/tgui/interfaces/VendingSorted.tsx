@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, Flex, Box } from '../components';
+import { Button, Section, Flex, Box, Tooltip } from '../components';
 import { Window } from '../layouts';
 import { logger } from '../logging';
 
@@ -50,6 +50,7 @@ const VendableItem = (props: VenableItem, context) => {
           {record.prod_name}
         </span>
       </Flex.Item>
+
       <Flex.Item>
         <div dangerouslySetInnerHTML={icon}/>
       </Flex.Item>
@@ -91,7 +92,9 @@ export const VendingSorted = (_, context) => {
             <Flex direction="column">
               {category.items.map(record => (
                 <Flex.Item mb={1} key={record.prod_index}>
-                  <VendableItem record={record}/>
+                  <Tooltip position="bottom" content={record.prod_desc}>
+                    <VendableItem record={record}/>
+                  </Tooltip>
                 </Flex.Item>)
               )}
             </Flex>

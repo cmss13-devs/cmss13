@@ -1279,6 +1279,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	to_chat(user, SPAN_NOTICE("You fire \the [fired_flare] into the air!"))
 	fired_flare.visible_message(SPAN_WARNING("\A [fired_flare] bursts into brilliant light in the sky!"))
 	fired_flare.invisibility = INVISIBILITY_MAXIMUM
+	fired_flare.mouse_opacity = FALSE
 	playsound(user.loc, fire_sound, 50, 1)
 	
 	if(fired_flare.activate_signal(user))

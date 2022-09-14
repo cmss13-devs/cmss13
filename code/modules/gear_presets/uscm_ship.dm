@@ -328,9 +328,9 @@
 			if("Mateba")
 				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 				kit = /obj/item/storage/mateba_case/captain
-			if("Commodore's Mateba")
-				sidearmpath = /obj/item/storage/belt/gun/mateba/commodore/full
-				kit = /obj/item/storage/mateba_case/captain/commodore
+			if("Colonel's Mateba")
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
+				kit = /obj/item/storage/mateba_case/captain/council
 			if("Desert Eagle")
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
 			if("Golden Desert Eagle")
@@ -355,28 +355,28 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/uscm_ship/commander/commodore
+/datum/equipment_preset/uscm_ship/commander/council
 	name = "USCM Commanding Officer (CO+)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
-	idtype = /obj/item/card/id/gold/commodore
+	idtype = /obj/item/card/id/gold/council
 	rank = JOB_CO
 	paygrade = "MO5"
 	role_comm_title = "CO"
 	minimum_age = 35
 
-/datum/equipment_preset/uscm_ship/commander/commodore/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/cdre(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(H), WEAR_HEAD)
 	. = ..()
 
-/datum/equipment_preset/uscm_ship/commander/commodore/plus
+/datum/equipment_preset/uscm_ship/commander/council/plus
 	name = "USCM Commanding Officer (CO++)"
 	idtype = /obj/item/card/id/general
-	paygrade = "MO5"
+	paygrade = "MO6"
 
-/datum/equipment_preset/uscm_ship/commander/commodore/plus/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/cdrechief(H), WEAR_HEAD)
+/datum/equipment_preset/uscm_ship/commander/council/plus/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/councilchief(H), WEAR_HEAD)
 	. = ..()
 
 //*****************************************************************************************************/

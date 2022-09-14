@@ -46,10 +46,11 @@
 
 /obj/item/storage/box/spec/sniper
 	name = "\improper Sniper equipment case"
-	desc = "A large case containing your very own long-range M42A sniper rifle, M45 ghillie armor and helmet, M42 scout sight, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing your very own long-range M42A sniper rifle, M45 ghillie armor and helmet, M42 scout sight, ammunition, spotter equipment, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "sniper"
 
 /obj/item/storage/box/spec/sniper/fill_preset_inventory()
+	// sniper
 	new /obj/item/clothing/suit/storage/marine/ghillie(src)
 	new /obj/item/clothing/head/helmet/marine/ghillie(src)
 	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
@@ -64,7 +65,8 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/weapon/gun/rifle/sniper/M42A(src)
 	new /obj/item/facepaint/sniper(src)
-
+	// spotter
+	new /obj/item/storage/box/kit/spotter(src)
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
@@ -461,6 +463,22 @@
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/m4a3(src)
 
+/obj/item/storage/box/kit/cryo_self_defense
+	name = "\improper Cryo Self Defense Kit"
+	desc = "A basic self-defense kit reserved for emergencies. As you might expect, not much care was put into keeping the stock fresh, who would be insane enough to attack a USCM ship directly?"
+	icon_state = "cryo_defense_kit"
+	storage_slots = 2
+
+/obj/item/storage/box/kit/cryo_self_defense/update_icon()
+	if(LAZYLEN(contents))
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]_e"
+
+/obj/item/storage/box/kit/cryo_self_defense/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/mod88/flashlight(src)
+	new /obj/item/attachable/bayonet(src)
+	new /obj/item/reagent_container/food/snacks/packaged_meal(src, pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender"))
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"
@@ -490,3 +508,15 @@
 	new /obj/item/storage/pouch/general/large(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+
+/obj/item/storage/box/kit/spotter
+	name = "\improper Spotter Kit"
+	pro_case_overlay = "spotter"
+
+/obj/item/storage/box/kit/spotter/fill_preset_inventory()
+	new /obj/item/clothing/head/helmet/marine/ghillie(src)
+	new /obj/item/clothing/suit/storage/marine/ghillie(src)
+	new /obj/item/clothing/glasses/night/m42_night_goggles/spotter(src)
+	new /obj/item/storage/backpack/marine/smock(src)
+	new /obj/item/device/binoculars/range/designator/spotter(src)
+	new /obj/item/pamphlet/skill/spotter(src)

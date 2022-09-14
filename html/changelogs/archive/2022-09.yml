@@ -47,3 +47,131 @@
       xeno will go through mobs, and will land on the tile behind you if it is not
       dense.'
   - rscadd: added "xeno primary action five" and support for it as a macro
+2022-09-04:
+  Geeves, QuickLoad:
+  - rscadd: Latejoiners now get a self defense kit if the ship is in red alert or
+      higher, or when evac has been called.
+  - rscadd: Marines can now latejoin for up to three minutes after hijack.
+  Geevies:
+  - balance: The sniper ghillie now required either the sniper spec skill, or spotter
+      skill to be able to camouflage.
+  - code_imp: Aimed shot is now tied to the sniper rifle, not the ghillie suit.
+  - balance: Added spotter equipment to the sniper box, which comes with a ghillie
+      suit, the helmet, a smock, a spotter's laser designator, and a spotter instructional
+      pamphlet.
+  - balance: You no longer need to prepare position before using aimed shot as sniper.
+  - rscadd: Headset tracking HUDs now bring up a list of options rather than cycling
+      through them.
+  - rscadd: The WY encryption key now enables you to track the CL using the SL tracker.
+      Non-HvH PMC headsets automatically track the CL.
+  - balance: You can now only track someone wearing a uniform with their sensors set
+      to Location/Maximum.
+2022-09-05:
+  FoxyStalin:
+  - rscadd: Added Large Shotgun Shell Pouches to vendors for Drop-ship Pilots, DCCs,
+      Vehicle Crewmen, and Senior Enlisted Advisors.
+  - rscdel: Removes Duplicate Large Pistol Mag Pouch from SEA vendors
+  Morrow:
+  - bugfix: Mechanical lock against unauthorized people giving medals.
+  - rscdel: Removed MP timelocks from Staff Officer.
+  Shad0vvs:
+  - bugfix: Fixed being able to pick up damaged turrets in some cases.
+  - bugfix: Fixed attachments being allowed on the QH-4 Shoulder-Mounted Anti-Tank
+      RPG.
+  Tisx:
+  - bugfix: Changed the max rendering range of rifle bullets so that they don't magically
+      disappear when using a S8 scope.
+  nauticall:
+  - imageadd: 'Resprited the following items: Mounted flash, APC terminal, cell charger,
+      hydroponics machines.'
+  - imageadd: '- Depowered button; will now be gray instead of blue to be less confusing.'
+  stanalbatross:
+  - bugfix: if a normal limb with a robot hand/foot on the end of it is cut off, the
+      robot hand/foot will also be cut off with it and exist as an item, not vanish
+      into nothingness
+  - bugfix: the robot limb item sprites now more closely mirror their onmob sprites
+  - balance: increased the scatter and decreased the accuracy of dual wielding
+2022-09-06:
+  Morrow:
+  - bugfix: Fixes wording of "Remove Jacket" on uniforms to "Toggle Jacket"
+2022-09-07:
+  Geevies:
+  - balance: Unnesting someone by hand now takes eight seconds, cutting them free
+      with something sharp like a knife takes three seconds, and using a blowtorch
+      to cut through takes one second.
+  Morrow:
+  - bugfix: Screwdrivers don't open airlocks again
+  - bugfix: Area soundscapes will now properly exit. No more looping medbay songs
+      forever.
+  stanalbatross:
+  - bugfix: you can no longer stack do_afters when unanchoring/anchoring structures
+  - bugfix: fixed some runtimes at round start
+  - rscadd: xenos can now break the trijent/kutjevo sensor tower, it can still be
+      repaired after being broken
+  - code_imp: improved the sensor tower's code for readability
+2022-09-08:
+  Shad0vvs:
+  - bugfix: Possibly fixes disconnection/crash issues.
+  stanalbatross:
+  - bugfix: doing pushups now checks if you can do them once you select an option
+      BEFORE doing the transform
+2022-09-09:
+  Drulikar:
+  - bugfix: Fixed index out of bounds runtime that was preventing runtime logging.
+  realforest2001:
+  - bugfix: majority of remaining IC references to commodores have been thoroughly
+      nuked.
+  - tweak: CO Senator set to MO6 full Colonel with permission from lore team.
+  stanalbatross:
+  - bugfix: the orbit menu now has its refresh button back, and it properly works
+  - bugfix: the orbit menu now uses tgui_interact procs, as it should
+  - ui: the orbit menu no longer shows empty sections
+  - ui: the orbit menu has been made a bit wider
+2022-09-10:
+  Drathek:
+  - bugfix: Fixed initialization runtimes for updateVisibility by changing ticket_list
+      definition to not be an effect.
+  - bugfix: 'Fixed /datum/config_entry/flag/vote_adjustment_callback not initializing
+      by adding:'
+  - config: Added ALLOW_VOTE_ADJUSTMENT_CALLBACK where when present in config will
+      allow the usage of VOTE_ADJUSTMENT_CALLBACK some_number to adjust votes.
+  Jeser:
+  - rscadd: Added vehicle-specific version of Cancel View action called Vehicle Unbuckle.
+      This one will properly unbuckle you.
+  - bugfix: Fixed unbuckling with tank artillery module active leaving you with huge
+      view range.
+  Morrow:
+  - bugfix: Shocked doors without a real power source will now shock correctly.
+  - bugfix: Xeno shock chances made consistent across ways to open airlocks.
+2022-09-11:
+  Geevies:
+  - rscadd: You can now see who's playing the Queen / her hive leaders from the lobby.
+  Nanu:
+  - bugfix: Fixes the TP function so you can now choose between the Colony chapel
+      and Almayer.
+2022-09-12:
+  stanalbatross:
+  - ui: the chem dispenser now uses tgui
+  - rscadd: added visual indicators on chem dispensers of beakers being in them
+  - spellcheck: changed "tequilla" to "tequila"
+  - ui: upgraded font-awesome to v6.1.2. What does this mean? Many, many more varied
+      icons can be put in TGUI interfaces now.
+  - ui: converted the fax machine to tgui
+  - ui: added a new WY themed tgui theme
+  - soundadd: ported some tgstation computer sounds
+2022-09-13:
+  Shad0vvs:
+  - bugfix: Removed a test logging of every adminhelp.
+  The_Boondock:
+  - bugfix: due to unintended materials being used in phone lines resulting in them
+      being incredibly strong, the mistakes have been found and all current phone
+      lines are recalled and replaced with weaker one to save on cost, they will now
+      break if pulling a heavy objects.
+  morrowwolf:
+  - bugfix: Fixed non-bursted spawned corpses being grabbable.
+  stanalbatross:
+  - server: byond version 1586 is now blacklisted as it breaks vision.
+2022-09-14:
+  Drathek:
+  - bugfix: Fixed Boiler Dump Acid exploit.
+  - bugfix: Fixed onclick actions not removing their macro verb.

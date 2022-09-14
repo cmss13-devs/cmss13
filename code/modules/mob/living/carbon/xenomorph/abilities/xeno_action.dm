@@ -62,6 +62,8 @@
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
+	if(!istype(X))
+		return FALSE
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
@@ -156,7 +158,7 @@
 /datum/action/xeno_action/activable/proc/action_deselect()
 	button.icon_state = "template"
 
-/datum/action/xeno_action/activable/remove_from(mob/living/carbon/Xenomorph/xeno)
+/datum/action/xeno_action/remove_from(mob/living/carbon/Xenomorph/xeno)
 	..()
 	if(xeno.selected_ability == src)
 		xeno.selected_ability = null

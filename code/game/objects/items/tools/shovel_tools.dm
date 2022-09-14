@@ -122,7 +122,7 @@
 					SB = null
 					continue
 					
-				if(dirt_amt == 0) // check if the user has already used all the dirt
+				if(dirt_amt <= 0) // check if the user has already used all the dirt
 					continue
 
 				var/dirttransfer_amount = min(SB.amount, dirt_amt)

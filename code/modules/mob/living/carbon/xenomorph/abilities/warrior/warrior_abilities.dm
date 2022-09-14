@@ -7,7 +7,6 @@
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 10
 
-
 /datum/action/xeno_action/onclick/toggle_agility/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())

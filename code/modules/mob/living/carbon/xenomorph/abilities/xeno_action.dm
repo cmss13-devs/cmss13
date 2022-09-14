@@ -152,7 +152,7 @@
 		if(charges != NO_ACTION_CHARGES)
 			to_chat(X, SPAN_INFO("It has [charges] uses left."))
 
-/datum/action/xeno_action/activable/remove_from(mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/remove_from(mob/living/carbon/Xenomorph/X)
 	..()
 	if(X.selected_ability == src)
 		X.selected_ability = null

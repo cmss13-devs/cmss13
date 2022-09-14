@@ -5,8 +5,8 @@
 	ability_name = "toggle agility"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_agility
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_4
-	xeno_cooldown = 40
+	xeno_cooldown = 10
+
 
 /datum/action/xeno_action/onclick/toggle_agility/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner

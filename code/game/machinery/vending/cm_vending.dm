@@ -916,10 +916,17 @@ IN_USE						used for vending/denying
 		var/obj/item/I = typepath
 		var/icon_ref = initial(I.icon)
 		var/icon_state = initial(I.icon_state)
+		var/map_decor = initial(I.map_specific_decoration)
+		if (map_decor)
+			icon_ref = "icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi"
 		var/icon/r = icon(icon_ref, icon_state, SOUTH, 1)
-		var/result = icon2html(r, world, icon_state, sourceonly=FALSE)
+		var/result = icon2html(r, world, icon_state, sourceonly=TRUE)
 
-		product_icon_list[item_name] = result
+		product_icon_list[item_name] = list(
+			"icon_sheet"=icon_ref,
+			"icon_state"=icon_state,
+			"href"=result
+		)
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)

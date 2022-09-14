@@ -7,6 +7,12 @@ const VENDOR_ITEM_REGULAR = 1
 const VENDOR_ITEM_MANDATORY = 2
 const VENDOR_ITEM_RECOMMENDED = 3
 
+type IconRecord = {
+  icon_sheet: string;
+  icon_state: string;
+  href: string;
+}
+
 type VendingRecord = {
   prod_index: number,
   prod_name: string,
@@ -14,7 +20,7 @@ type VendingRecord = {
   prod_available: number,
   prod_initial: number,
   prod_color?: number;
-  prod_icon: string;
+  prod_icon: IconRecord;
   prod_desc?: string;
 }
 
@@ -42,21 +48,20 @@ const VendableItem = (props: VenableItem, context) => {
     : record.prod_color == VENDOR_ITEM_MANDATORY
       ? "orange"
       : "green";
-  const icon = {__html: record.prod_icon}
   return (
     <Flex align="center" justify="space-between" align-items="stretch">
-      <Flex.Item grow={1}>
-        <span style={{color: color}}>
-          {record.prod_name}
-        </span>
-      </Flex.Item>
-
       <Flex.Item>
-        <div dangerouslySetInnerHTML={icon}/>
+        <img src={record.prod_icon.href}/>
       </Flex.Item>
 
       <Flex.Item>
         <Box width={5}/>
+      </Flex.Item>
+
+      <Flex.Item grow={1}>
+        <span style={{color: color}}>
+          {record.prod_name}
+        </span>
       </Flex.Item>
 
       <Flex.Item width={5}>

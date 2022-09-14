@@ -135,6 +135,8 @@
 /datum/action/xeno_action/activable/action_activate()
 	if(!owner)
 		return
+	if(src.hidden)
+		return // There's no where we want a hidden action to be selectable right?
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if(xeno.selected_ability == src)
 		if(xeno.deselect_timer > world.time)

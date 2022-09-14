@@ -201,9 +201,7 @@
 			if("pageturn")
 				S = pick('sound/effects/pageturn1.ogg', 'sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg')
 			if("terminal_button")
-				S = pick('sound/machines/terminal_button01.ogg', 'sound/machines/terminal_button02.ogg', 'sound/machines/terminal_button03.ogg', \
-								'sound/machines/terminal_button04.ogg', 'sound/machines/terminal_button05.ogg', 'sound/machines/terminal_button06.ogg', \
-								'sound/machines/terminal_button07.ogg', 'sound/machines/terminal_button08.ogg')
+				S = pick('sound/machines/terminal_button01.ogg', 'sound/machines/terminal_button02.ogg', 'sound/machines/terminal_button03.ogg','sound/machines/terminal_button04.ogg', 'sound/machines/terminal_button05.ogg', 'sound/machines/terminal_button06.ogg', 'sound/machines/terminal_button07.ogg', 'sound/machines/terminal_button08.ogg')
 			if("keyboard")
 				S = pick('sound/machines/keyboard1.ogg', 'sound/machines/keyboard2.ogg','sound/machines/keyboard3.ogg')
 			if("keyboard_alt")
@@ -225,8 +223,6 @@
 			// Weapons/bullets
 			if("shell_load")
 				S = pick('sound/weapons/shell_load1.ogg','sound/weapons/shell_load2.ogg','sound/weapons/shell_load3.ogg','sound/weapons/shell_load4.ogg')
-			if("shotgunpump")
-				S = pick('sound/weapons/shotgunpump1.ogg','sound/weapons/shotgunpump2.ogg')
 			if("ballistic_hit")
 				S = pick('sound/bullets/bullet_impact1.ogg','sound/bullets/bullet_impact2.ogg','sound/bullets/bullet_impact1.ogg','sound/bullets/impact_flesh_1.ogg','sound/bullets/impact_flesh_2.ogg','sound/bullets/impact_flesh_3.ogg','sound/bullets/impact_flesh_4.ogg')
 			if("ballistic_armor")
@@ -267,7 +263,7 @@
 			if("m4a3")
 				S = pick('sound/weapons/gun_m4a3_1.ogg','sound/weapons/gun_m4a3_2.ogg','sound/weapons/gun_m4a3_3.ogg','sound/weapons/gun_m4a3_4.ogg','sound/weapons/gun_m4a3_5.ogg')
 			if("88m4")
-				S = pick('sound/weapons/gun_88m4_1.ogg','sound/weapons/gun_88m4_2.ogg','sound/weapons/gun_88m4_3.ogg','sound/weapons/gun_88m4_4.ogg')
+				S = pick('sound/weapons/gun_88m4_v7.ogg')
 			if("gun_casing_shotgun")
 				S = pick ('sound/bullets/bulletcasing_shotgun_fall1.ogg')
 			if("gun_nsg23")

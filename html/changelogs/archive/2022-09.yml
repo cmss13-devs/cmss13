@@ -171,3 +171,7 @@
   - bugfix: Fixed non-bursted spawned corpses being grabbable.
   stanalbatross:
   - server: byond version 1586 is now blacklisted as it breaks vision.
+2022-09-14:
+  Drathek:
+  - bugfix: Fixed Boiler Dump Acid exploit.
+  - bugfix: Fixed onclick actions not removing their macro verb.

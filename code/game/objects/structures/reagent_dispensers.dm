@@ -124,7 +124,7 @@
 	desc = "A sulfuric acid tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "sacidtank"
-	chemical = "sacid"
+	chemical = "sulphuric acid"
 
 /obj/structure/reagent_dispensers/pacidtank
 	name = "polytrinic acid tank"

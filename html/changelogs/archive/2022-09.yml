@@ -149,3 +149,25 @@
   Nanu:
   - bugfix: Fixes the TP function so you can now choose between the Colony chapel
       and Almayer.
+2022-09-12:
+  stanalbatross:
+  - ui: the chem dispenser now uses tgui
+  - rscadd: added visual indicators on chem dispensers of beakers being in them
+  - spellcheck: changed "tequilla" to "tequila"
+  - ui: upgraded font-awesome to v6.1.2. What does this mean? Many, many more varied
+      icons can be put in TGUI interfaces now.
+  - ui: converted the fax machine to tgui
+  - ui: added a new WY themed tgui theme
+  - soundadd: ported some tgstation computer sounds
+2022-09-13:
+  Shad0vvs:
+  - bugfix: Removed a test logging of every adminhelp.
+  The_Boondock:
+  - bugfix: due to unintended materials being used in phone lines resulting in them
+      being incredibly strong, the mistakes have been found and all current phone
+      lines are recalled and replaced with weaker one to save on cost, they will now
+      break if pulling a heavy objects.
+  morrowwolf:
+  - bugfix: Fixed non-bursted spawned corpses being grabbable.
+  stanalbatross:
+  - server: byond version 1586 is now blacklisted as it breaks vision.

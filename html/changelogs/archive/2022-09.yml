@@ -175,5 +175,7 @@
   Drathek:
   - bugfix: Fixed Boiler Dump Acid exploit.
   - bugfix: Fixed onclick actions not removing their macro verb.
+  Lengord:
+  - rscadd: Passable floodlight
   Morrow:
   - bugfix: Fixed zero stack sandbags

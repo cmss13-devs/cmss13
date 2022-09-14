@@ -175,3 +175,5 @@
   Drathek:
   - bugfix: Fixed Boiler Dump Acid exploit.
   - bugfix: Fixed onclick actions not removing their macro verb.
+  Morrow:
+  - bugfix: Fixed zero stack sandbags

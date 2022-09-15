@@ -62,7 +62,6 @@
 
 /obj/structure/reagent_dispensers/proc/healthcheck()
 	if(health <= 0)
-		Destroy()
 		qdel(src)
 
 /obj/structure/reagent_dispensers/bullet_act(var/obj/item/projectile/Proj)

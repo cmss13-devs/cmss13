@@ -205,7 +205,7 @@
 	var/gloves_blood_amt = 0 //taken from blood.dm
 	var/hide_prints = FALSE
 
-/obj/item/clothing/gloves/marine/Initialize(mapload, ...)
+/obj/item/clothing/gloves/Initialize(mapload, ...)
 	. = ..()
 	if(armor_melee || armor_bullet || armor_laser armor_energy || armor_bomb || armor_bio || armor_rad)
 		AddComponent(/datum/component/armor_link, WEAR_JACKET, TRUE)

@@ -9919,18 +9919,11 @@
 	},
 /area/fiorina/tumor/ship)
 "fTs" = (
-/obj/structure/largecrate/random/barrel/blue,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = 2;
-	pixel_y = 20
-	},
+/obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
+	icon_state = "darkyellow2"
 	},
-/area/fiorina/station/flight_deck)
+/area/fiorina/lz/near_lzI)
 "fTx" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -10642,12 +10635,9 @@
 	},
 /area/fiorina/lz/near_lzI)
 "gnS" = (
-/obj/effect/spawner/random/gun/rifle,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkyellow2"
-	},
-/area/fiorina/lz/near_lzI)
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/station/power_ring)
 "gnV" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "cryomid"
@@ -14559,6 +14549,19 @@
 	},
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
+"iMC" = (
+/obj/structure/largecrate/random/barrel/blue,
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = 2;
+	pixel_y = 20
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate (SOUTHWEST)"
+	},
+/area/fiorina/station/flight_deck)
 "iMF" = (
 /obj/structure/platform,
 /turf/open/floor/prison{
@@ -16512,8 +16515,9 @@
 	},
 /area/fiorina/station/lowsec)
 "jRZ" = (
-/obj/structure/machinery/light/double/blue,
+/obj/effect/spawner/random/gun/rifle,
 /turf/open/floor/prison{
+	dir = 10;
 	icon_state = "darkyellow2"
 	},
 /area/fiorina/lz/near_lzI)
@@ -19660,10 +19664,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/lz/near_lzI)
-"lHK" = (
-/obj/structure/machinery/light/double/blue,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/power_ring)
 "lHL" = (
 /obj/structure/surface/rack,
 /obj/item/device/flashlight,
@@ -84149,7 +84149,7 @@ jOO
 pOd
 xbB
 mny
-fTs
+iMC
 wXf
 ycX
 wXf
@@ -86078,7 +86078,7 @@ qHC
 fxY
 qcT
 hlK
-xDw
+dOX
 deL
 dzl
 dzl
@@ -86297,7 +86297,7 @@ bTo
 pcu
 sVv
 bQM
-dzl
+hfT
 dzl
 bVk
 vAi
@@ -86710,10 +86710,10 @@ tRa
 sEi
 sEi
 sEi
-gnS
+jRZ
 sYM
 hlK
-jRZ
+fTs
 lRT
 ajx
 afk
@@ -87774,7 +87774,7 @@ dlW
 dlW
 pbF
 uxY
-xDw
+dOX
 xDw
 xDw
 xDw
@@ -89086,7 +89086,7 @@ lAS
 lAS
 vEK
 vEK
-lHK
+gnS
 mxQ
 bzO
 rzt

@@ -9920,10 +9920,8 @@
 /area/fiorina/tumor/ship)
 "fTs" = (
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/prison{
-	icon_state = "darkyellow2"
-	},
-/area/fiorina/lz/near_lzI)
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/station/power_ring)
 "fTx" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -10635,9 +10633,12 @@
 	},
 /area/fiorina/lz/near_lzI)
 "gnS" = (
-/obj/structure/machinery/light/double/blue,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/power_ring)
+/obj/effect/spawner/random/gun/rifle,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/lz/near_lzI)
 "gnV" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "cryomid"
@@ -14549,19 +14550,6 @@
 	},
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
-"iMC" = (
-/obj/structure/largecrate/random/barrel/blue,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = 2;
-	pixel_y = 20
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
-	},
-/area/fiorina/station/flight_deck)
 "iMF" = (
 /obj/structure/platform,
 /turf/open/floor/prison{
@@ -15914,9 +15902,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "jBj" = (
-/obj/effect/spawner/random/gun/rifle/highchance,
+/obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison{
-	dir = 8;
 	icon_state = "darkyellow2"
 	},
 /area/fiorina/lz/near_lzI)
@@ -16515,12 +16502,18 @@
 	},
 /area/fiorina/station/lowsec)
 "jRZ" = (
-/obj/effect/spawner/random/gun/rifle,
+/obj/structure/largecrate/random/barrel/blue,
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = 2;
+	pixel_y = 20
+	},
 /turf/open/floor/prison{
 	dir = 10;
-	icon_state = "darkyellow2"
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate (SOUTHWEST)"
 	},
-/area/fiorina/lz/near_lzI)
+/area/fiorina/station/flight_deck)
 "jSC" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/prison{
@@ -17047,6 +17040,13 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
+"kge" = (
+/obj/effect/spawner/random/gun/rifle/highchance,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/lz/near_lzI)
 "kgP" = (
 /obj/item/tool/wrench,
 /turf/open/floor/prison{
@@ -84149,7 +84149,7 @@ jOO
 pOd
 xbB
 mny
-iMC
+jRZ
 wXf
 ycX
 wXf
@@ -86283,7 +86283,7 @@ iJf
 qWa
 lbe
 sEi
-jBj
+kge
 sEi
 oMy
 vED
@@ -86710,10 +86710,10 @@ tRa
 sEi
 sEi
 sEi
-jRZ
+gnS
 sYM
 hlK
-fTs
+jBj
 lRT
 ajx
 afk
@@ -88637,7 +88637,7 @@ hsA
 hsA
 lRT
 fjd
-xDw
+lRT
 xDw
 lRT
 rOa
@@ -89086,7 +89086,7 @@ lAS
 lAS
 vEK
 vEK
-gnS
+fTs
 mxQ
 bzO
 rzt
@@ -93096,7 +93096,7 @@ bTo
 pcu
 iWq
 bQM
-xDw
+lRT
 xDw
 xDw
 lRT

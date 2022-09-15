@@ -43,6 +43,16 @@
 	H.sec_hud_set_ID()
 	H.hud_set_squad()
 
+	if(H.wear_l_ear)
+		if(istype(H.wear_l_ear, /obj/item/device/radio/headset/almayer/marine))
+			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = H.wear_l_ear
+			equipped_headset.add_hud_tracker(H)
+	if(H.wear_r_ear)
+		if(istype(H.wear_r_ear, /obj/item/device/radio/headset/almayer/marine))
+			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = H.wear_r_ear
+			equipped_headset.add_hud_tracker(H)
+
+
 //*****************************************************************************************************/
 /datum/equipment_preset/uscm/pfc
 	name = "USCM Squad Rifleman"

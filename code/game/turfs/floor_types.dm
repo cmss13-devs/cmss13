@@ -30,12 +30,12 @@
 
 
 /turf/open/floor/plating/attackby(obj/item/C, mob/user)
-	if(istype(C, /obj/item/stack/rods))
+	if(istypestrict(C, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = C
 		if(R.get_amount() < 2)
 			to_chat(user, SPAN_WARNING("You need more rods."))
 			return
-		to_chat(user, SPAN_NOTICE("Reinforcing the floor."))
+		to_chat(user, SPAN_NOTICE("You start reinforcing the floor."))
 		var/current_type = type
 		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && current_type == type)
 			if(!R)
@@ -369,7 +369,7 @@
 		return
 	if(!user)
 		return
-	if(HAS_TRAIT(C, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(C, TRAIT_TOOL_CROWBAR))
 		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s protective cover."),
 		SPAN_NOTICE("You start removing [src]'s protective cover."))
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)

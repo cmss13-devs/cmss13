@@ -133,6 +133,7 @@
 
 #define COMSIG_KB_XENO_CORROSIVE_ACID "keybinding_xeno_corrosive_acid"
 #define COMSIG_KB_XENO_TECH_SECRETE_RESIN "keybinding_xeno_tech_secrete_resin"
+#define COMSIG_KB_XENO_SCREECH "keybinding_xeno_screech"
 
 // Yautja
 

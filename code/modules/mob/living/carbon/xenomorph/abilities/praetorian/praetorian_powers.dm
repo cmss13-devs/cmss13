@@ -552,30 +552,31 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/prae_dodge/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!istype(X) || !X.check_state())
+	if (!istype(xeno) || !xeno.check_state())
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	if (X.mutation_type != PRAETORIAN_DANCER)
+	if (xeno.mutation_type != PRAETORIAN_DANCER)
 		return
 
-	var/datum/behavior_delegate/praetorian_dancer/BD = X.behavior_delegate
-	if (!istype(BD))
+	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
+	if (!istype(behavior))
 		return
 
-	BD.dodge_activated = TRUE
-	to_chat(X, SPAN_XENOHIGHDANGER("You can now dodge through mobs!"))
-	X.speed_modifier -= speed_buff_amount
-	X.add_temp_pass_flags(PASS_MOB_THRU)
-	X.recalculate_speed()
+	behavior.dodge_activated = TRUE
+	button.icon_state = "template_active"
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You can now dodge through mobs!"))
+	xeno.speed_modifier -= speed_buff_amount
+	xeno.add_temp_pass_flags(PASS_MOB_THRU)
+	xeno.recalculate_speed()
 
 	addtimer(CALLBACK(src, .proc/remove_effects), duration)
 
@@ -583,25 +584,26 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/prae_dodge/proc/remove_effects()
-	var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
+	var/mob/living/carbon/Xenomorph/xeno = owner
 
-	if (!istype(X))
+	if (!istype(xeno))
 		return
 
-	if (X.mutation_type != PRAETORIAN_DANCER)
+	if (xeno.mutation_type != PRAETORIAN_DANCER)
 		return
 
-	var/datum/behavior_delegate/praetorian_dancer/BD = X.behavior_delegate
-	if (!istype(BD))
+	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
+	if (!istype(behavior))
 		return
 
-	if (BD.dodge_activated)
-		BD.dodge_activated = FALSE
-		X.speed_modifier += speed_buff_amount
-		X.remove_temp_pass_flags(PASS_MOB_THRU)
-		X.recalculate_speed()
-		to_chat(X, SPAN_XENOHIGHDANGER("You can no longer dodge through mobs!"))
+	if (behavior.dodge_activated)
+		behavior.dodge_activated = FALSE
+		button.icon_state = "template"
+		xeno.speed_modifier += speed_buff_amount
+		xeno.remove_temp_pass_flags(PASS_MOB_THRU)
+		xeno.recalculate_speed()
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You can no longer dodge through mobs!"))
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner

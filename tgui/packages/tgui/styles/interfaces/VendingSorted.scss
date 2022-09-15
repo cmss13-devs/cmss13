@@ -20,9 +20,15 @@ $title-text-color: base.$color-fg !default;
   padding-right: 10px;
 }
 
+.VendingSorted__CategorySection {
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
+  width: 100%
+}
+
 .VendingSorted__Category {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
   width: 100%
 }
 
@@ -38,15 +44,19 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__VendButton {
-  width: 90px
+  width: 30px
 }
 
 .VendingSorted__Icon {
-  width: 100%
+  width: 125%
 }
 
 .VendingSorted__Text {
   font-size: 14px;
+}
+
+.VendingSorted__Failure {
+  color: red;
 }
 
 .VendingSorted__RegularItemText {
@@ -62,5 +72,16 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__Spacer {
-  width: 10px
+  width: 15px
+}
+
+.VendingSorted__ItemBox {
+  height: 25px;
+}
+
+.VendingSorted__Description {
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: -1px;
+  margin-bottom: -1px;
 }

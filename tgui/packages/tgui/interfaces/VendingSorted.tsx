@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Section, Flex, Box, Tooltip, Input } from '../components';
+import { Button, Section, Flex, Box, Tooltip, Input, NoticeBox, Icon } from '../components';
 import { Window } from '../layouts';
 import { classes } from 'common/react';
 
@@ -52,7 +52,7 @@ const VendableItem = (props: VenableItem, context) => {
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
 
   return (
-    <Flex align="center" justify="space-between" align-items="stretch">
+    <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
       <Flex.Item>
         <img className="VendingSorted__Icon" src={record.prod_icon.href} />
       </Flex.Item>
@@ -68,12 +68,16 @@ const VendableItem = (props: VenableItem, context) => {
           isMandatory && 'VendingSorted__MandatoryItemText',
           isRecommended && 'VendingSorted__RecommendedItemText',
         ])}>
-          {record.prod_name}
+          {record.prod_name} <Icon name="circle-info" />
         </span>
       </Flex.Item>
 
+      <Flex.Item>
+        <Box className="VendingSorted__Spacer" />
+      </Flex.Item>
+
       <Flex.Item width={5}>
-        <span className={classes(['VendingSorted__Text'])}>
+        <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
           {record.prod_amount}
         </span>
       </Flex.Item>
@@ -86,11 +90,10 @@ const VendableItem = (props: VenableItem, context) => {
         <Button
           className={classes(["VendingSorted__Button", 'VendingSorted__VendButton'])}
           preserveWhitespace
-          icon={available ? "eject" : null}
+          icon={available ? "eject" : "xmark"}
           onClick={() => act('vend', record)}
           textAlign="center"
-          disabled={!available}
-          content={available ? "vend" : "SOLD OUT"} />
+          disabled={!available} />
       </Flex.Item>
     </Flex>);
 };
@@ -111,15 +114,20 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
   }
 
   return (
-    <Section title={category.name ?? ""}>
+    <Section title={category.name ?? ""} className="VendingSorted__CategorySection">
       <Flex direction="column">
-        {filteredCategories.map(record => (
-          <Flex.Item mb={1} key={record.prod_index}>
-            <Tooltip position="bottom" content={record.prod_desc}>
-              <VendableItem record={record} />
-            </Tooltip>
-          </Flex.Item>)
-        )}
+        {filteredCategories
+          .sort((a, b) => a.prod_name.localeCompare(b.prod_name))
+          .map(record => (
+            <Flex.Item mb={1} key={record.prod_index}>
+              <Tooltip
+                position="bottom"
+                content={<NoticeBox info className="VendingSorted__Description">{record.prod_desc}</NoticeBox>}
+              >
+                <VendableItem record={record} />
+              </Tooltip>
+            </Flex.Item>)
+          )}
       </Flex>
     </Section>);
 
@@ -159,6 +167,7 @@ export const VendingSorted = (_, context) => {
             </Flex.Item>
             <Flex.Item>
               <Input
+                autoFocus
                 value={searchTerm}
                 onInput={(_, value) => setSearchTerm(value)}
                 width="160px"
@@ -170,7 +179,7 @@ export const VendingSorted = (_, context) => {
         <Box className="VendingSorted__ItemContainer">
           <Flex direction="column">
             {categories.map((category, i) => (
-              <Flex.Item key={i} className="VendingSorted__Category">
+              <Flex.Item key={i} className={"VendingSorted__Category"}>
                 <ViewVendingCategory category={category} />
               </Flex.Item>))}
           </Flex>

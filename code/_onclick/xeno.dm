@@ -37,7 +37,32 @@
 		if(XENO_NO_DELAY_ACTION)
 			next_move = world.time
 		else
-			if(!tile_attack)
+			if(!tile_attack && src.a_intent == INTENT_HELP) // Patting flames for Xenos
+				var/fire_level_to_extinguish = 13
+				var/turf/T = target
+				for(var/obj/flamer_fire/FF in T)
+					if((FF.firelevel > fire_level_to_extinguish) && (!FF.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
+						FF.firelevel -= fire_level_to_extinguish
+						FF.update_flame()
+					else
+						switch(FF.fire_variant)
+							if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, extinguishes faster.
+								if(FF.firelevel > 2*fire_level_to_extinguish)
+									FF.firelevel -= 2*fire_level_to_extinguish
+									FF.update_flame()
+
+					xeno_miss_delay(src)
+					animation_attack_on(target)
+					playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 10, 1) //Quiet to limit spam/nuisance.
+					visible_message(SPAN_DANGER("[src] pats at the fire!"), \
+					SPAN_DANGER("You pat the fire!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+					return TRUE
+				xeno_miss_delay(src)
+				animation_attack_on(target)
+				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 10, 1) //Quiet to limit spam/nuisance.
+				visible_message(SPAN_DANGER("[src] swipes at [target]!"), \
+				SPAN_DANGER("You swipe at [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			else if(!tile_attack)
 				xeno_miss_delay(src)
 				animation_attack_on(target)
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 10, 1) //Quiet to limit spam/nuisance.

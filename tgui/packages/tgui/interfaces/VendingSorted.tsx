@@ -115,18 +115,23 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
 
   return (
     <Section title={category.name ?? ""} className="VendingSorted__CategorySection">
-      <Flex direction="column">
+      <Flex direction="column" className="VendingSorted__ItemFlex">
         {filteredCategories
           .sort((a, b) => a.prod_name.localeCompare(b.prod_name))
-          .map(record => (
-            <Flex.Item mb={1} key={record.prod_index}>
-              <Tooltip
-                position="bottom"
-                content={<NoticeBox info className="VendingSorted__Description">{record.prod_desc}</NoticeBox>}
-              >
-                <VendableItem record={record} />
-              </Tooltip>
-            </Flex.Item>)
+          .map((record, i) =>
+          {
+            const isLast = (filteredCategories.length - 1) === i;
+            return (
+              <Flex.Item mb={1} key={record.prod_index}>
+                <Tooltip
+                  position="bottom"
+                  content={<NoticeBox info className="VendingSorted__Description">{record.prod_desc}</NoticeBox>}
+                >
+                  <VendableItem record={record} />
+                </Tooltip>
+                {!isLast && <hr className="VendingSorted__ItemSeparator" />}
+              </Flex.Item>);
+          }
           )}
       </Flex>
     </Section>);
@@ -153,7 +158,6 @@ export const VendingSorted = (_, context) => {
   const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', "");
   return (
     <Window
-      width={600}
       height={700}
       theme={getTheme(data.theme)}
     >

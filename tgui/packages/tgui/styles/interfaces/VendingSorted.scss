@@ -48,11 +48,12 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__Icon {
-  width: 125%
+  width: 100%
 }
 
 .VendingSorted__Text {
   font-size: 14px;
+  flex-wrap: nowrap;
 }
 
 .VendingSorted__Failure {
@@ -75,8 +76,22 @@ $title-text-color: base.$color-fg !default;
   width: 15px
 }
 
+.VendingSorted__ItemFlex {
+  margin-top: 5px;
+}
+
 .VendingSorted__ItemBox {
   height: 25px;
+}
+
+
+.VendingSorted__ItemSeparator {
+  height: 1px;
+  border: none;
+  background-color: base.$color-bg;
+  position: absolute;
+  width: 100%;
+  margin-top: -0px;
 }
 
 .VendingSorted__Description {

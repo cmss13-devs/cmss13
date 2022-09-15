@@ -201,11 +201,6 @@
 		if (channels[message_mode]) // only broadcast if the channel is set on
 			return secure_radio_connections[message_mode]
 
-	if(frequency)
-		for(var/cycled_channel in radiochannels)
-			if(radiochannels[cycled_channel] == frequency && cycled_channel == message_mode)
-				return radio_connection
-
 	// If we were to send to a channel we don't have, drop it.
 	return null
 

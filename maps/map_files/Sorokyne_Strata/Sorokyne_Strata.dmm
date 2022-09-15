@@ -34704,6 +34704,12 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/med)
+"jsd" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/strata{
+	icon_state = "floor2"
+	},
+/area/strata/ag/interior/outpost/med)
 "jso" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata{
@@ -38927,6 +38933,13 @@
 	tag = "icon-beach (SOUTHEAST)"
 	},
 /area/strata/ug/interior/jungle/deep/tearlake)
+"qxt" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan3"
+	},
+/area/strata/ag/interior/outpost/med)
 "qxD" = (
 /obj/structure/machinery/weather_siren{
 	dir = 4;
@@ -64683,7 +64696,7 @@ blN
 bsB
 bvd
 bzb
-bTF
+jsd
 bGy
 bKL
 bOA
@@ -67392,7 +67405,7 @@ bOH
 bVF
 ceG
 ckz
-cnk
+qxt
 cnk
 cnk
 jAE

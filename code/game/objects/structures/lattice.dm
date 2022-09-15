@@ -51,7 +51,10 @@
 		var/turf/T = get_turf(src)
 		T.attackby(C, user) //BubbleWrap - hand this off to the underlying turf instead
 		return
-	if (istype(C, /obj/item/tool/weldingtool))
+	if (iswelder(C))
+		if(!HAS_TRAIT(C, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = C
 		if(WT.remove_fuel(0, user))
 			to_chat(user, SPAN_NOTICE(" Slicing lattice joints ..."))

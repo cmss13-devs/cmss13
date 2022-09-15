@@ -818,11 +818,12 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_L_STORE)
 	add_random_survivor_equipment(H)
 
 /datum/equipment_preset/corpse/pmc/burst
@@ -858,6 +859,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_L_STORE)
 	spawn_merc_helmet(H)
 
 /datum/equipment_preset/corpse/freelancer/burst
@@ -895,7 +898,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(H), WEAR_FEET)
 	spawn_merc_helmet(H)
 

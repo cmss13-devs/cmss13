@@ -4,7 +4,7 @@
 	set instant = TRUE
 	set hidden = TRUE
 
-	client_keysend_amount += 1
+	client_keysend_amount++
 
 	var/cache = client_keysend_amount
 

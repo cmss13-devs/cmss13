@@ -134,7 +134,7 @@
 			drowsyness = max(0,drowsyness - 2)
 			eye_blurry = max(2, eye_blurry)
 			if(drowsyness > 10 && prob(5))
-				sleeping += 1
+				sleeping++
 				KnockOut(5)
 
 		confused = max(0, confused - 1)

@@ -247,7 +247,7 @@
 		spawn(50)
 			T.build(src.loc)
 			src.repairing = 0
-			src.amount -= 1
+			src.amount--
 			src.updateicon()
 			src.anchored = 0
 			src.target = null
@@ -257,7 +257,7 @@
 		spawn(50)
 			src.loc.icon_state = "floor"
 			src.repairing = 0
-			src.amount -= 1
+			src.amount--
 			src.updateicon()
 			src.anchored = 0
 			src.target = null
@@ -319,7 +319,7 @@
 	new /obj/item/device/assembly/prox_sensor(Tsec)
 
 	if (prob(50))
-		new /obj/item/robot_parts/l_arm(Tsec)
+		new /obj/item/robot_parts/arm/l_arm(Tsec)
 
 	while (amount)//Dumps the tiles into the appropriate sized stacks
 		if(amount >= 16)

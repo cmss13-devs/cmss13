@@ -41,13 +41,12 @@
 // state intrinsic to all Xenos.
 // Any strain or caste-specific state should be stored on behavior_delegate objects
 // which use_ability invocations can modify using typechecks and typecasts where appropriate.
-/datum/action/xeno_action/proc/use_ability(atom/A)
+/datum/action/xeno_action/proc/use_ability(atom/target)
 	if(!owner)
 		return FALSE
 	track_xeno_ability_stats()
-	for(var/X in owner.actions)
-		var/datum/action/act = X
-		act.update_button_icon()
+	for(var/datum/action/action in owner.actions)
+		action.update_button_icon()
 	return TRUE
 
 // Track statistics for this ability
@@ -63,6 +62,8 @@
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
+	if(!istype(X))
+		return FALSE
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
@@ -151,7 +152,7 @@
 		if(charges != NO_ACTION_CHARGES)
 			to_chat(X, SPAN_INFO("It has [charges] uses left."))
 
-/datum/action/xeno_action/activable/remove_from(mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/remove_from(mob/living/carbon/Xenomorph/X)
 	..()
 	if(X.selected_ability == src)
 		X.selected_ability = null

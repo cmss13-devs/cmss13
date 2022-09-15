@@ -425,7 +425,7 @@
 
 /obj/item/reagent_container/glass/beaker/sulphuric/Initialize()
 	. = ..()
-	reagents.add_reagent("sacid", 60)
+	reagents.add_reagent("sulphuric acid", 60)
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/ethanol

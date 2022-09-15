@@ -933,7 +933,7 @@
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/magnetic_harness)
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY|GUN_SUPPORT_PLATFORM
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()
@@ -1112,7 +1112,7 @@
 	item_state = "type71c"
 	aim_slowdown = SLOWDOWN_ADS_QUICK //Carbine is more lightweight
 	wield_delay = WIELD_DELAY_VERY_FAST
-	bonus_overlay_x = -2
+	bonus_overlay_x = 2
 
 	random_spawn_muzzle = list() //no default bayonet
 
@@ -1159,7 +1159,8 @@
 	random_spawn_chance = 0
 	random_spawn_rail = list()
 	random_spawn_muzzle = list()
-	bonus_overlay_y = 1
+	bonus_overlay_x = 1
+	bonus_overlay_y = 0
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/handle_starting_attachment()//Making the gun have an invisible silencer since it's supposed to have one.
 	..()

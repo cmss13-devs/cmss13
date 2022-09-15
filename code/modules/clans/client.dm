@@ -267,7 +267,7 @@
 				if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
 					return
 
-				var/input = input(src, "Input the new honor", "Set Honor", target_clan.honor) as num|null
+				var/input = tgui_input_number(src, "Input the new honor", "Set Honor", target_clan.honor)
 
 				if((!input && input != 0) || input == target_clan.honor)
 					return

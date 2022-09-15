@@ -49,7 +49,7 @@
 		var/atom/A = i
 		options[initial(A.name)] = i
 
-	var/input = tgui_input_list(usr, "Choose a structure type to clear", "Clear Built Structures", options)
+	var/input = tgui_input_list(usr, "Choose a structure type to clear", "Clear Built Structures", options, theme="hive_status")
 
 	if(!input)
 		return
@@ -58,7 +58,7 @@
 
 	var/cleared_amount = 0
 	for(var/i in built_structures[type])
-		cleared_amount += 1
+		cleared_amount++
 		if(isturf(i))
 			var/turf/T = i
 			T.ScrapeAway()

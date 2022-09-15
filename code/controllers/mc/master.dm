@@ -324,12 +324,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		//Byond resumed us late. assume it might have to do the same next tick
 		if (last_run + CEILING(world.tick_lag * (processing * sleep_delta), world.tick_lag) < world.time)
-			sleep_delta += 1
+			sleep_delta++
 
 		sleep_delta = MC_AVERAGE_FAST(sleep_delta, 1) //decay sleep_delta
 
 		if (starting_tick_usage > (TICK_LIMIT_MC*0.75)) //we ran 3/4 of the way into the tick
-			sleep_delta += 1
+			sleep_delta++
 
 		//debug
 		if (make_runtime)

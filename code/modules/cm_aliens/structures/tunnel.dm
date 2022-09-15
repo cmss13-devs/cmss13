@@ -114,7 +114,7 @@
 				continue
 
 			tunnels += list(T.tunnel_desc = T)
-		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", tunnels)
+		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", tunnels, theme="hive_status")
 		if(!pick)
 			return FALSE
 

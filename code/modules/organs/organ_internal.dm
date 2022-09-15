@@ -179,7 +179,7 @@
 		var/filter_effect = 3
 		if(!(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS))
 			if(is_bruised())
-				filter_effect -= 1
+				filter_effect--
 			if(is_broken())
 				filter_effect -= 2
 

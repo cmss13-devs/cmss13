@@ -1004,7 +1004,10 @@
 	for(var/obj/item/W in embedded_items)
 		var/obj/limb/organ = W.embedded_organ
 		// Check if shrapnel
-		if(istype(W, /obj/item/shard/shrapnel))
+		if(istype(W, /obj/item/large_shrapnel))
+			var/obj/item/large_shrapnel/embedded = W
+			embedded.on_embedded_movement(src)
+		else if(istype(W, /obj/item/shard/shrapnel))
 			var/obj/item/shard/shrapnel/embedded = W
 			embedded.on_embedded_movement(src)
 		// Check if its a sharp weapon
@@ -1257,13 +1260,18 @@
 		if(TRACKER_XO)
 			H = GLOB.marine_leaders[JOB_XO]
 			tracking_suffix = "_xo"
+		if(TRACKER_CL)
+			var/datum/job/civilian/liaison/liaison_job = RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
+			if(liaison_job?.active_liaison)
+				H = liaison_job.active_liaison
+			tracking_suffix = "_cl"
 		else
 			if(tracker_setting in squad_leader_trackers)
 				var/datum/squad/S = RoleAuthority.squads_by_type[squad_leader_trackers[tracker_setting]]
 				H = S.squad_leader
 				tracking_suffix = tracker_setting
 
-	if(!H)
+	if(!H || H.w_uniform?.sensor_mode != SENSOR_MODE_LOCATION)
 		return
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
@@ -1430,7 +1438,7 @@
 					W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
 					W.add_fingerprint(HS)
 					for(var/obj/limb/l in to_splint)
-						amount_removed += 1
+						amount_removed++
 						l.status &= ~LIMB_SPLINTED
 						pain.recalculate_pain()
 						if(l.status & LIMB_SPLINTED_INDESTRUCTIBLE)

@@ -121,7 +121,7 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(20) && bleed_layer)
-				bleed_layer -= 1
+				bleed_layer--
 				update_icon(1, 0)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(60) && bleed_layer)

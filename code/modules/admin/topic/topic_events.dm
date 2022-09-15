@@ -22,6 +22,8 @@
 			add_req_points()
 		if("medal")
 			owner.award_medal()
+		if("jelly")
+			owner.award_jelly()
 		if("pmcguns")
 			owner.toggle_gun_restrictions()
 		if("monkify")
@@ -79,7 +81,7 @@
 			message_staff("[key_name_admin(usr)] changed research clearance level to [level].")
 			chemical_data.clearance_level = level
 		if("give_research_credits")
-			var/amount = input(usr, "How many credits to add?") as num
+			var/amount = tgui_input_real_number(usr, "How many credits to add?")
 			if(amount != 0) //can add negative numbers too!
 				message_staff("[key_name_admin(usr)] added [amount] research credits.")
 				chemical_data.update_credits(amount)

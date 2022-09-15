@@ -1,3 +1,8 @@
+#define QUICK_EQUIP_PRIMARY 1
+#define QUICK_EQUIP_SECONDARY 2
+#define QUICK_EQUIP_TERTIARY 3
+#define QUICK_EQUIP_QUATERNARY 4
+
 /datum/keybinding/human
 	category = CATEGORY_HUMAN
 	weight = WEIGHT_MOB
@@ -18,7 +23,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb("none")
+	H.holster_verb(QUICK_EQUIP_PRIMARY)
 	return TRUE
 
 /datum/keybinding/human/quick_equip_secondary
@@ -34,7 +39,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb("shift")
+	H.holster_verb(QUICK_EQUIP_SECONDARY)
 	return TRUE
 
 /datum/keybinding/human/quick_equip_tertiary
@@ -50,7 +55,23 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	H.holster_verb("ctrl")
+	H.holster_verb(QUICK_EQUIP_TERTIARY)
+	return TRUE
+	
+/datum/keybinding/human/quick_equip_quaternary
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "quick_equip_quaternary"
+	full_name = "Unholster quaternary"
+	description = "Take out your quaternary item."
+	keybind_signal = COMSIG_KB_HUMAN_QUATERNARY_DOWN
+
+/datum/keybinding/human/quick_equip_quaternary/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+	H.holster_verb(QUICK_EQUIP_QUATERNARY)
 	return TRUE
 
 /datum/keybinding/human/quick_equip_inventory
@@ -136,3 +157,8 @@
 	var/mob/living/carbon/human/H = user.mob
 	H.spec_activation_two()
 	return TRUE
+	
+#undef QUICK_EQUIP_PRIMARY
+#undef QUICK_EQUIP_SECONDARY
+#undef QUICK_EQUIP_TERTIARY
+#undef QUICK_EQUIP_QUATERNARY

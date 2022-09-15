@@ -85,6 +85,11 @@
 	trait_desc = "Boosts the JTAC skill by 1. Crewmember received additional training in using JTAC equipment."
 	skill = SKILL_JTAC
 
+/datum/character_trait/skills/spotter
+	trait_name = "Spotter Training"
+	trait_desc = "Boosts the JTAC skill by 1. Crewmember received additional training in using JTAC equipment and Ghillie outfits."
+	skill = SKILL_JTAC
+
 /datum/character_trait/skills/powerloader
 	trait_name = "Powerloader Usage Training"
 	trait_desc = "Boosts the powerloader skill to 1. Crewmember received training in operating powerloaders."

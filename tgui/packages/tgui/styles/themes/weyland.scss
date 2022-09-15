@@ -1,0 +1,67 @@
+/**
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
+ */
+
+@use 'sass:color';
+@use 'sass:meta';
+
+$weyland: #af7f38;
+
+@use '../colors.scss' with (
+  $primary: #000000,
+  $fg-map-keys: (),
+  $bg-map-keys: (),
+);
+@use '../base.scss' with (
+  $color-bg: #252832,
+  $color-bg-grad-spread: 0%,
+  $border-radius: 0,
+);
+
+.theme-weyland {
+  // Atomic classes
+  @include meta.load-css('../atomic/color.scss');
+
+  // Components
+  @include meta.load-css('../components/Button.scss', $with: (
+    'color-default': $weyland,
+    'color-selected': #9d0808,
+    'color-caution': #be6209,
+    'color-danger': #9a9d00,
+    'color-transparent-text': color.scale($weyland, $lightness: 30%),
+  ));
+  @include meta.load-css('../components/ProgressBar.scss', $with: (
+    'background-color': #252832,
+  ));
+  @include meta.load-css('../components/Section.scss');
+
+  // Layouts
+  @include meta.load-css('../layouts/Layout.scss');
+  @include meta.load-css('../layouts/Window.scss');
+  @include meta.load-css('../layouts/TitleBar.scss', $with: (
+    'background-color': color.scale(#252832, $lightness: -25%),
+  ));
+
+  .Button {
+    font-family: consolas;
+    color: #161613;
+    border: base.em(2px) outset #E8E4C9;
+    outline: base.em(1px) solid #161613;
+  }
+
+  .Layout__content {
+    background-color: #252832;
+    background-image: url('../../assets/bg-weyland.png');
+    background-position: top;
+    background-size: contain;
+    background-repeat: repeat no-repeat;
+  }
+
+  .TitleBar {
+    background-image: url('../../assets/titlebar-weyland.png');
+    background-position: right 40px top 50%;
+    background-repeat: no-repeat;
+  }
+
+}

@@ -12,7 +12,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
 	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
 	"1428" = "bug causing right-click menus to show too many verbs that's been fixed in version 1429",
-	"1548" = "bug breaking the \"alpha\" functionality in the game, allowing clients to be able to see things/mobs they should not be able to see."
+	"1548" = "bug breaking the \"alpha\" functionality in the game, allowing clients to be able to see things/mobs they should not be able to see.",
+	"1586" = "bug breaking the display of all icons in its entirety, can't be exploited but the game is unplayable on this version.",
 	))
 
 #define LIMITER_SIZE	5
@@ -135,6 +136,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	else if(href_list["FaxView"])
 		var/info = locate(href_list["FaxView"])
 		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
+
+	else if(href_list["medals_panel"])
+		GLOB.medals_panel.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
@@ -343,7 +347,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_HUGE("Your version of byond is blacklisted.")))
 		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].")))
 		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Please download a new version of byond. If [byond_build] is the latest (which it shouldn't be), you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")))
-		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("Have a CM day.")))
+		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("You will now be automatically disconnected. Have a CM day.")))
 		qdel(src)
 		return
 
@@ -626,6 +630,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if("OOC")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
+				if("LOOC")
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if("Me")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
 				if("Whisper")

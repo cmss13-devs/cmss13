@@ -143,7 +143,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	next_fire = world.time + fire_cooldown
 
 	addtimer(CALLBACK(src, .proc/recharge_ammo), ammo_recharge_time, TIMER_UNIQUE)
-	ammo -= 1
+	ammo--
 
 	to_chat(H, SPAN_NOTICE("[icon2html(src)] Firing shell. [SPAN_BOLD("([ammo]/[max_ammo] shells left).")]"))
 
@@ -203,8 +203,8 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	#define INPUT_COORD "Input Co-ordinates"
 	if(tgui_alert(H, "View a specific co-ordinate, or continue without inputting a co-ordinate?", \
 		"Railgun Computer", list(INPUT_COORD, "Continue without inputting a co-ordinate")) == INPUT_COORD)
-		var/x_coord = input(H, "Longitude") as num|null
-		var/y_coord = input(H, "Latitude") as num|null
+		var/x_coord = tgui_input_real_number(H, "Longitude")
+		var/y_coord = tgui_input_real_number(H, "Latitude")
 
 		if(!x_coord || !y_coord)
 			return

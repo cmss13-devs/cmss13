@@ -67,7 +67,7 @@
 		client.buildmode.object_click(src, mods, A)
 		return
 
-	if(istype(A, /obj/effect/statclick))
+	if(istype(A, /obj/statclick))
 		A.clicked(src, mods)
 		return
 

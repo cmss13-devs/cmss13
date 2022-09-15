@@ -42,7 +42,7 @@ var/list/datum/decorator/manual/admin_runtime/admin_runtime_decorators = list()
 		to_chat(usr, "Only administrators may use this command.")
 		return
 
-	var/num_value = input("Enter new number:","Num") as null|num
+	var/num_value = tgui_input_real_number(src, "Enter new number:","Num")
 
 	if(!num_value)
 		return

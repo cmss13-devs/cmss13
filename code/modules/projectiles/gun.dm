@@ -1515,8 +1515,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		gun_scatter += max(0, movement_onehanded_acc_penalty_mult * SCATTER_AMOUNT_TIER_10)
 
 	if(dual_wield) //akimbo firing gives terrible accuracy
-		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(3,5))
-		gun_scatter += SCATTER_AMOUNT_TIER_4
+		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(5,7))
+		gun_scatter += SCATTER_AMOUNT_TIER_3
 
 	// Apply any skill-based bonuses to accuracy
 	if(user && user.mind && user.skills)
@@ -1631,7 +1631,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	else
 		total_recoil += recoil_unwielded
 		if(flags_gun_features & GUN_BURST_FIRING)
-			total_recoil += 1
+			total_recoil++
 
 	if(user && user.mind && user.skills)
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms

@@ -42429,7 +42429,7 @@
 /obj/item/weapon/gun/pistol/m4a3{
 	current_mag = null;
 	desc = "An M4A3 Service Pistol, the standard issue sidearm of the Colonial Marines. Fires 9mm pistol rounds. This one has a worn out initial engraved into the grip.";
-	name_label = J&#
+	name = "\improper M4A3 service pistol J&#"
 	},
 /turf/open/floor/almayer{
 	dir = 9;

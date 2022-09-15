@@ -365,10 +365,6 @@
 /obj/item/ammo_box/magazine/blank/empty
 	empty = TRUE
 
-/obj/item/ammo_box/magazine/blank/sus
-	name = "odd magazine box (WP M41A x 10)"
-	desc = "An old beat up ammuniton. A badly written message in white crayon reads 'BRAND NEW M41 WP ROUNDS'"
-
 //-----------------------M39 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m39

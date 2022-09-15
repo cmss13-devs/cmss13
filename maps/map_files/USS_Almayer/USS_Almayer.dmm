@@ -2663,7 +2663,7 @@
 	name = "Blank Ammunition"
 	},
 /obj/item/ammo_box/magazine/l42a/half/blank,
-/obj/item/ammo_box/magazine/blank/empty,
+/obj/item/ammo_box/magazine/blank,
 /turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "ahv" = (
@@ -4006,7 +4006,10 @@
 /turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "alg" = (
-/obj/item/ammo_box/magazine/blank/sus,
+/obj/item/ammo_box/magazine/blank{
+	name = "odd magazine box (M41A x 10)";
+	desc = "An old beat up ammuniton. A badly written message in white crayon reads 'BRAND NEW M41 WP ROUNDS'"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -131570,7 +131573,7 @@ hje
 haq
 oyG
 vuR
-alg
+cAH
 rDi
 pXn
 cAH
@@ -131773,7 +131776,7 @@ haq
 haq
 cAH
 vuR
-cAH
+alg
 vuR
 dcS
 cAH

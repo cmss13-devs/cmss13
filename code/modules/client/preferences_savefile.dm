@@ -118,6 +118,8 @@
 	S["ghost_vision_pref"]	>> ghost_vision_pref
 	S["ghost_orbit"]		>> ghost_orbit
 
+	S["human_name_ban"] >> human_name_ban
+
 	S["xeno_prefix"]		>> xeno_prefix
 	S["xeno_postfix"]		>> xeno_postfix
 	S["xeno_name_ban"]		>> xeno_name_ban
@@ -267,6 +269,8 @@
 	S["fps"]				<< fps
 	S["ghost_vision_pref"]	<< ghost_vision_pref
 	S["ghost_orbit"]		<< ghost_orbit
+
+	S["human_name_ban"] << human_name_ban
 
 	S["xeno_prefix"]		<< xeno_prefix
 	S["xeno_postfix"]		<< xeno_postfix

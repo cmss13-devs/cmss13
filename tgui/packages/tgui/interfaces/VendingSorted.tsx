@@ -45,7 +45,6 @@ type VenableItem = {
 }
 
 const VendableItem = (props: VenableItem, context) => {
-  const [searchTerm, _] = useLocalState(context, 'searchTerm', "");
   const { act } = useBackend(context);
   const { record } = props;
   const available = record.prod_available > 0
@@ -53,19 +52,16 @@ const VendableItem = (props: VenableItem, context) => {
     ? "white"
     : record.prod_color == VENDOR_ITEM_MANDATORY
       ? "orange"
-      : "green";
-  if (!record.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
-    return <></>
-  }
+      : "#56E97B";
+
   const vendstyle = {
-    textAlign: 'center',
-    margin: '0 auto',
-    display: 'block'
+    border: '2px outset #E8E4C9',
+    outline: '1px solid white'
   }
   return (
     <Flex align="center" justify="space-between" align-items="stretch">
       <Flex.Item>
-        <img src={record.prod_icon.href} style={{width: "150%"}}/>
+        <img src={record.prod_icon.href} style={{width: "100%"}}/>
       </Flex.Item>
 
       <Flex.Item>
@@ -90,13 +86,14 @@ const VendableItem = (props: VenableItem, context) => {
 
       <Flex.Item justify="right">
         <Button
-          style={{textAlign: 'center'}}
-          icon="eject"
+          style={vendstyle}
+          preserveWhitespace
+          icon={available ? "eject" : null}
           onClick={() => act('vend', record)}
+          textAlign="center"
           disabled={!available}
-          width="90px">
-            {available ? "vend" : "SOLD OUT"}
-            </Button>
+          width="90px"
+          content={available ? "vend" : "SOLD OUT"}/>
       </Flex.Item>
     </Flex>)
 }
@@ -108,10 +105,16 @@ type VendingCategoryProps = {
 
 export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
   const {category, key} = props;
+  const [searchTerm, _] = useLocalState(context, 'searchTerm', "");
+  const searchFilter = (x: VendingRecord) => x.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+  const filteredCategories = category.items.filter(searchFilter)
+  if (filteredCategories.length === 0) {
+    return null
+  }
 
   return <Section title={category.name ?? ""} key={key}>
     <Flex direction="column">
-      {category.items.map(record => (
+      {filteredCategories.map(record => (
         <Flex.Item mb={1} key={record.prod_index}>
           <Tooltip position="bottom" content={record.prod_desc}>
             <VendableItem record={record}/>

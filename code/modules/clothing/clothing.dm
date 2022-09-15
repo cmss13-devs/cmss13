@@ -207,7 +207,7 @@
 
 /obj/item/clothing/gloves/Initialize(mapload, ...)
 	. = ..()
-	if(armor_melee || armor_bullet || armor_laser armor_energy || armor_bomb || armor_bio || armor_rad)
+	if(armor_melee || armor_bullet || armor_laser || armor_energy || armor_bomb || armor_bio || armor_rad)
 		AddComponent(/datum/component/armor_link, WEAR_JACKET, TRUE)
 
 /obj/item/clothing/gloves/update_clothing_icon()
@@ -336,7 +336,7 @@
 
 /obj/item/clothing/shoes/Initialize(mapload, ...)
 	. = ..()
-	if(armor_melee || armor_bullet || armor_laser armor_energy || armor_bomb || armor_bio || armor_rad)
+	if(armor_melee || armor_bullet || armor_laser || armor_energy || armor_bomb || armor_bio || armor_rad)
 		AddComponent(/datum/component/armor_link, WEAR_JACKET, TRUE)
 
 /obj/item/clothing/shoes/update_clothing_icon()

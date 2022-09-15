@@ -240,3 +240,7 @@
   - code_imp: Added /datum/action/xeno_action/activable/proc/action_deselect to be
       an overridable proc called when a different action is clicked on that causes
       the current action to be deselected.
+  Geeves, Triiodine:
+  - rscadd: Adds the XM-VESG-1 Flamer Nozzle, an attachment for the standard M240A1
+      incinerator unit. Available in Req and Squad-Req as an underbarrel attachment.
+  - imageadd: Resprites the M240A1 and M240-T incinerator units.

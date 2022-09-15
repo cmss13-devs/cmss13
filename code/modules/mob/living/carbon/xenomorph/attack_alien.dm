@@ -363,7 +363,7 @@
 	if(is_wired)
 		xeno.visible_message(SPAN_DANGER("The barbed wire slices into \the [xeno]'s tail!"), SPAN_DANGER("The barbed wire slices into your tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		xeno.apply_damage(5)
-	return 1
+	return TAILSTRIKE_COOLDOWN_NORMAL
 
 /obj/structure/surface/rack/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)

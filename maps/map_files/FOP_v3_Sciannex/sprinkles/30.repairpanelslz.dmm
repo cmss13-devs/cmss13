@@ -139,6 +139,9 @@
 /obj/item/clothing/head/cardborg,
 /turf/open/space,
 /area/space)
+"A" = (
+/turf/closed/wall/r_wall/prison,
+/area/space)
 "B" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 4
@@ -287,7 +290,7 @@
 /area/space)
 
 (1,1,1) = {"
-x
+A
 C
 F
 F
@@ -305,7 +308,7 @@ M
 m
 Z
 u
-F
+A
 F
 "}
 (3,1,1) = {"

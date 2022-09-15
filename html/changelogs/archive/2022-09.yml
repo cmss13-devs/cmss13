@@ -179,3 +179,64 @@
   - rscadd: Passable floodlight
   Morrow:
   - bugfix: Fixed zero stack sandbags
+2022-09-15:
+  Drathek:
+  - rscadd: Added Screech macro hotkey for Queen Screech. YOU SHOULD RE-BIND SCREECH
+      AS QUEEN, IT IS NOT IN THE DEFAULT XENO-ACTION MACRO LIST.
+  - qol: Changed mobile Queen ability primary hotkeys to 1:Weed, 2:Change Spit, 3:Spit,
+      4:Choose Resin Structure, 5:Secrete Resin.
+  - qol: Changed ovi Queen ability primary hotkeys to 1:Heal, 2:Plasma, 3:Expand Weeds,
+      4:Choose Resin Structure, 5:Secrete Resin.
+  - qol: Set Order Construction as fifth primary ability hotkey for any caste that
+      can use it except Queen and Gardener.
+  - qol: Set Generate Egg as third primary ability hotkey for Eggsac Carrier strain.
+      (1:Weed, 3:Generate Egg, 4:Retrieve Egg, 5:Order Construction).
+  - qol: Set Change Fruit as fifth primary ability hotkey for Gardener strain. (1:Weed,
+      2:Hardy Weed, 3:Resin Surge, 4:Plant Fruit, 5:Change Fruit)
+  - qol: Shifted primary ability hotkeys for Acid Runner to 1:Acid, 2:For the Hive.
+  - qol: Added 10s cooldown to Word of the Queen ability and implemented button status
+      for the cooldown.
+  - qol: Added cooldown status for Queen's Gut ability.
+  - qol: Added cooldown status for Grow Ovipositor ability.
+  - qol: Rearranged ability buttons for Queen, base/whisperer Hivelords, Eggsac Carrier,
+      and Warden.
+  - qol: 'The following abilities now are instantly cast instead of select and then
+      MMB/Shift click: Screech (Queen), Empower (Rav), Spike Shield (Hedgehog), Spike
+      Shed (Hedgehog), Dodge (Dancer), Tremor (Burrower), Roar (Abom), and Smash (Abom).'
+  - qol: Eviscerate (Rav) is now instantly cast when used via hotkey, but not when
+      selected by mouse (this is the existing behavior for Defender Fortify).
+  - qol: 'The following abilities now use the purple button template to indicate active
+      state (like Use Pain already does): Hide, Rest, Toggle Long Range Sight, Resin
+      Walker (Hivelords), Toggle Charging (Charger), Toggle Crest Defense (Defenders),
+      Fortify (Defenders), Empower (Rav), Spike Shield (Hedgehog), Dodge (Dancer),
+      Paralyzing Slash (Sentinel), Crippling Strike (Lurker), Turn Invisible (Lurker),
+      and Defensive Shield (Crusher).'
+  - qol: Added a 0.5 second spam prevention measure when toggling the same ability
+      off to help prevent accidental de-selecting.
+  - bugfix: Fixed Corrosive Acid incorrectly being detected as XENO_PRIMARY_ACTION_5
+      due to overlap in its define with XENO_CORROSIVE_ACID (it has its own dedicated
+      macro anyways).
+  - bugfix: Fixed Word of the Queen ability button missing for pre-ovi young queen.
+  - bugfix: Fixed some abilities such as Remove Eggsac ability re-arranging after
+      second ovi.
+  - bugfix: Fixed Choose Resin Structure ability icon not updating when changing ovi
+      state or becoming a resin whisperer (it basically always reverts back to resin
+      wall on change).
+  - bugfix: Fixed Queen's Gut ability preventing new hive orders when it was on cooldown.
+  - bugfix: Fixed possibility of using plasma for hive orders when unconscious.
+  - bugfix: Fixed possibility of using plasma for Word of the Queen when canceling
+      the message.
+  - bugfix: Fixed De-evolve ability not using plasma nor actually requiring a reason.
+  - bugfix: Fixed Banish ability not using plasma nor actually requiring a reason.
+  - bugfix: Fixed Re-admit ability not using plasma.
+  - bugfix: 'Fixed statistics tracking when using De-evolve ability: It was still
+      tracking old mob and incorrectly incrementing the participant count.'
+  - bugfix: Fixed missing ability_name for Charger Tumble.
+  - bugfix: Fixed incorrect ability_name for Shaman Remember Pain.
+  - bugfix: Fixed selecting xeno actions via verb when hidden (should only apply to
+      queen).
+  - code_imp: Improved more variable readability.
+  - code_imp: Removed unused De-evolve ability code in Abilities.dm.
+  - code_imp: Added /datum/action/xeno_action/activable/proc/action_deselect to be
+      an overridable proc called when a different action is clicked on that causes
+      the current action to be deselected.

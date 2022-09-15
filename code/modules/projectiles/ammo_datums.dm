@@ -1360,7 +1360,7 @@
 	accurate_range = 8 //Big low-velocity projectile; this is for blasting dangerous game at close range.
 	max_range = 14 //At this range, it's lost all its damage anyway.
 	damage = 300 //Hits like a buckshot PB.
-	penetration = 15
+	penetration = ARMOR_PENETRATION_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_1 * 3 //It has a lot of energy, but the 26mm bullet drops off fast.
 	effective_range_max	= EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
 	var/hit_messages = list()
@@ -1393,7 +1393,7 @@
 	name = "lever-action bullet"
 
 	damage = 80
-	penetration = ARMOR_PENETRATION_TIER_1
+	penetration = 0
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
 	accurate_range = 14
@@ -1433,6 +1433,28 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_6
 	handful_state = "marksman_lever_action_bullet"
+
+/datum/ammo/bullet/lever_action/xm88
+	name = ".458 SOCOM round"
+
+	damage = 80
+	penetration = 0
+	accuracy = HIT_ACCURACY_TIER_1
+	shell_speed = AMMO_SPEED_TIER_6
+	accurate_range = 14
+	handful_state = "boomslang_bullet"
+
+/datum/ammo/bullet/lever_action/xm88/pen10
+	penetration = ARMOR_PENETRATION_TIER_2
+
+/datum/ammo/bullet/lever_action/xm88/pen20
+	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/lever_action/xm88/pen30
+	penetration = ARMOR_PENETRATION_TIER_6
+
+/datum/ammo/bullet/lever_action/xm88/pen40
+	penetration = ARMOR_PENETRATION_TIER_8
 
 /*
 //======

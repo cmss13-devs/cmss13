@@ -503,19 +503,7 @@
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
 		if(!R) continue
-		switch(R.slot)
-			if("rail") 	dat += "It has [icon2html(R)] [R.name] mounted on the top.<br>"
-			if("muzzle") 	dat += "It has [icon2html(R)] [R.name] mounted on the front.<br>"
-			if("stock") 	dat += "It has [icon2html(R)] [R.name] for a stock.<br>"
-			if("under")
-				dat += "It has [icon2html(R)] [R.name]"
-				if(istype(R, /obj/item/attachable/attached_gun/extinguisher))
-					var/obj/item/attachable/attached_gun/extinguisher/E = R
-					dat += " ([E.internal_extinguisher.reagents.total_volume]/[E.internal_extinguisher.max_water])"
-				else if(R.flags_attach_features & ATTACH_WEAPON)
-					dat += " ([R.current_rounds]/[R.max_rounds])"
-				dat += " mounted underneath.<br>"
-			else dat += "It has [icon2html(R)] [R.name] attached.<br>"
+		dat += R.handle_attachment_description()
 
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
 		if(current_mag && current_mag.current_rounds > 0)

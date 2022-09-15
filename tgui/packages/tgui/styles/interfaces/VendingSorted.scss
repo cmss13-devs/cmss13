@@ -53,7 +53,11 @@ $title-text-color: base.$color-fg !default;
 
 .VendingSorted__Text {
   font-size: 14px;
-  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: inherit;
 }
 
 .VendingSorted__Failure {

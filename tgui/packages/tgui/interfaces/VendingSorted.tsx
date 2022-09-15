@@ -102,6 +102,12 @@ type VendingCategoryProps = {
   category: VendingCategory;
 }
 
+const ItemDescriptionViewer = (props: {desc: string, name: string}, context) => {
+  return (<Section title={props.name}>
+    <span>{props.desc}</span>
+  </Section>);
+};
+
 export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
   const { category } = props;
   const [searchTerm, _] = useLocalState(context, 'searchTerm', "");
@@ -125,7 +131,11 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
               <Flex.Item mb={1} key={record.prod_index}>
                 <Tooltip
                   position="bottom"
-                  content={<NoticeBox info className="VendingSorted__Description">{record.prod_desc}</NoticeBox>}
+                  content={<NoticeBox
+                    info
+                    className="VendingSorted__Description"
+                  > <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
+                           </NoticeBox>}
                 >
                   <VendableItem record={record} />
                 </Tooltip>

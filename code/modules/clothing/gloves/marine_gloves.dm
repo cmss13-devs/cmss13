@@ -23,10 +23,6 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	var/adopts_squad_color = TRUE
 
-/obj/item/clothing/gloves/marine/Initialize(mapload, ...)
-	. = ..()
-	AddComponent(/datum/component/armor_link, WEAR_JACKET, TRUE)
-
 /obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/H, slot)
 	var/image/ret = ..()
 	if(adopts_squad_color && slot == WEAR_HANDS && istype(H) && H.assigned_squad)

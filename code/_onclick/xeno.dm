@@ -40,7 +40,7 @@
 			if(!tile_attack) // Patting flames for Xenos
 				var/firepatted = FALSE
 				if(src.a_intent == INTENT_HELP)
-					var/fire_level_to_extinguish = 13
+					var/fire_level_to_extinguish = 5
 					var/turf/T = target
 					for(var/obj/flamer_fire/FF in T)
 						firepatted = TRUE
@@ -54,6 +54,8 @@
 										firepatted = TRUE
 										FF.firelevel -= 2*fire_level_to_extinguish
 										FF.update_flame()
+									else qdel(FF)
+								else qdel(FF)
 				xeno_miss_delay(src)
 				animation_attack_on(target)
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 10, 1) //Quiet to limit spam/nuisance.

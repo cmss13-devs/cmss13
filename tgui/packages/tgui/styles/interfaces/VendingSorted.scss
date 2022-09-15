@@ -1,0 +1,66 @@
+@use '../base.scss';
+@use '../colors.scss';
+@use '../functions.scss' as *;
+
+$title-text-color: base.$color-fg !default;
+
+.VendingSorted__SearchBox {
+  position: fixed;
+  width: calc(100% - 25px);
+  margin: 0px;
+  z-index: 1;
+  background-color: base.$color-bg;
+  top: 31px;
+}
+
+.VendingSorted__ItemContainer {
+  margin-top: 30px;
+  position: absolute;
+  width: 100%;
+  padding-right: 10px;
+}
+
+.VendingSorted__Category {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%
+}
+
+.VendingSorted__Input {
+  border: 1px solid white;
+  color: white;
+}
+
+.VendingSorted__Button {
+  border: 2px outset #E8E4C9;
+  outline: 1px solid white;
+  text-align: "center";
+}
+
+.VendingSorted__VendButton {
+  width: 90px
+}
+
+.VendingSorted__Icon {
+  width: 100%
+}
+
+.VendingSorted__Text {
+  font-size: 14px;
+}
+
+.VendingSorted__RegularItemText {
+  color: white;
+}
+
+.VendingSorted__MandatoryItemText {
+  color: orange;
+}
+
+.VendingSorted__RecommendedItemText {
+  color: #56E97B;
+}
+
+.VendingSorted__Spacer {
+  width: 10px
+}

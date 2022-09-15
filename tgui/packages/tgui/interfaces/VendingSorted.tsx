@@ -1,16 +1,16 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Section, Flex, Box, Tooltip, TextArea, NoticeBox, Input } from '../components';
+import { Button, Section, Flex, Box, Tooltip, Input } from '../components';
 import { Window } from '../layouts';
-import { logger } from '../logging';
+import { classes } from 'common/react';
 
 const THEME_COMP = 0;
 const THEME_USCM = 1;
 const THEME_CLF = 2;
 const THEME_UPP = 3;
 
-const VENDOR_ITEM_REGULAR = 1
-const VENDOR_ITEM_MANDATORY = 2
-const VENDOR_ITEM_RECOMMENDED = 3
+const VENDOR_ITEM_REGULAR = 1;
+const VENDOR_ITEM_MANDATORY = 2;
+const VENDOR_ITEM_RECOMMENDED = 3;
 
 type IconRecord = {
   icon_sheet: string;
@@ -47,125 +47,135 @@ type VenableItem = {
 const VendableItem = (props: VenableItem, context) => {
   const { act } = useBackend(context);
   const { record } = props;
-  const available = record.prod_available > 0
-  const color = record.prod_color == null || record.prod_color == VENDOR_ITEM_REGULAR
-    ? "white"
-    : record.prod_color == VENDOR_ITEM_MANDATORY
-      ? "orange"
-      : "#56E97B";
+  const available = record.prod_available > 0;
+  const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
+  const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
 
-  const vendstyle = {
-    border: '2px outset #E8E4C9',
-    outline: '1px solid white'
-  }
   return (
     <Flex align="center" justify="space-between" align-items="stretch">
       <Flex.Item>
-        <img src={record.prod_icon.href} style={{width: "100%"}}/>
+        <img className="VendingSorted__Icon" src={record.prod_icon.href} />
       </Flex.Item>
 
       <Flex.Item>
-        <Box width={5}/>
+        <Box className="VendingSorted__Spacer" />
       </Flex.Item>
 
       <Flex.Item grow={1}>
-        <span style={{color: color}}>
+        <span className={classes([
+          'VendingSorted__Text',
+          'VendingSorted__RegularItemText',
+          isMandatory && 'VendingSorted__MandatoryItemText',
+          isRecommended && 'VendingSorted__RecommendedItemText',
+        ])}>
           {record.prod_name}
         </span>
       </Flex.Item>
 
       <Flex.Item width={5}>
-        <span style={{color: color}}>
+        <span className={classes(['VendingSorted__Text'])}>
           {record.prod_amount}
         </span>
       </Flex.Item>
 
       <Flex.Item>
-        <Box width={5}/>
+        <Box className="VendingSorted__Spacer" />
       </Flex.Item>
 
       <Flex.Item justify="right">
         <Button
-          style={vendstyle}
+          className={classes(["VendingSorted__Button", 'VendingSorted__VendButton'])}
           preserveWhitespace
           icon={available ? "eject" : null}
           onClick={() => act('vend', record)}
           textAlign="center"
           disabled={!available}
-          width="90px"
-          content={available ? "vend" : "SOLD OUT"}/>
+          content={available ? "vend" : "SOLD OUT"} />
       </Flex.Item>
-    </Flex>)
-}
+    </Flex>);
+};
 
 type VendingCategoryProps = {
   category: VendingCategory;
-  key: any;
 }
 
 export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
-  const {category, key} = props;
+  const { category } = props;
   const [searchTerm, _] = useLocalState(context, 'searchTerm', "");
-  const searchFilter = (x: VendingRecord) => x.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
-  const filteredCategories = category.items.filter(searchFilter)
+  const searchFilter = (x: VendingRecord) =>
+    x.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+
+  const filteredCategories = category.items.filter(searchFilter);
   if (filteredCategories.length === 0) {
-    return null
+    return null;
   }
 
-  return <Section title={category.name ?? ""} key={key}>
-    <Flex direction="column">
-      {filteredCategories.map(record => (
-        <Flex.Item mb={1} key={record.prod_index}>
-          <Tooltip position="bottom" content={record.prod_desc}>
-            <VendableItem record={record}/>
-          </Tooltip>
-        </Flex.Item>)
-      )}
-    </Flex>
-  </Section>
-}
+  return (
+    <Section title={category.name ?? ""}>
+      <Flex direction="column">
+        {filteredCategories.map(record => (
+          <Flex.Item mb={1} key={record.prod_index}>
+            <Tooltip position="bottom" content={record.prod_desc}>
+              <VendableItem record={record} />
+            </Tooltip>
+          </Flex.Item>)
+        )}
+      </Flex>
+    </Section>);
+
+};
 
 
-function getTheme(value: string|number): string {
+const getTheme = (value: string | number): string => {
   switch (value) {
     case THEME_UPP:
-      return "abductor"
+      return "abductor";
     case THEME_CLF:
-      return "retro"
+      return "retro";
     case THEME_COMP:
-      return "weyland"
+      return "weyland";
     default:
-      return "usmc"
+      return "usmc";
   }
-}
+};
 
 export const VendingSorted = (_, context) => {
   const { data } = useBackend<VendingData>(context);
-  const categories = data.displayed_categories ?? []
+  const categories = data.displayed_categories ?? [];
   const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', "");
-  return (<Window
+  return (
+    <Window
       width={600}
       height={700}
       theme={getTheme(data.theme)}
     >
-    <Window.Content scrollable={true}>
-      <Box className='Section'>
-        <Flex align="center" justify="space-between" align-items="stretch" className="Section__title">
-          <Flex.Item>
+      <Window.Content scrollable>
+        <Box className={classes([
+          "VendingSorted__SearchBox",
+        ])}>
+          <Flex align="center" justify="space-between" align-items="stretch" className="Section__title">
+            <Flex.Item>
               <span className="Section__titleText">Search</span>
-          </Flex.Item>
-          <Flex.Item>
-            <Input
-                style={{border: '1px solid white', color: 'white'}}
-
+            </Flex.Item>
+            <Flex.Item>
+              <Input
                 value={searchTerm}
                 onInput={(_, value) => setSearchTerm(value)}
                 width="160px"
               />
-          </Flex.Item>
-        </Flex>
-      </Box>
-        {categories.map((category, i) => (<ViewVendingCategory category={category} key={i}/>))}
-    </Window.Content>
-  </Window>)
-}
+            </Flex.Item>
+          </Flex>
+        </Box>
+
+        <Box className="VendingSorted__ItemContainer">
+          <Flex direction="column">
+            {categories.map((category, i) => (
+              <Flex.Item key={i} className="VendingSorted__Category">
+                <ViewVendingCategory category={category} />
+              </Flex.Item>))}
+          </Flex>
+        </Box>
+      </Window.Content>
+
+    </Window>);
+};

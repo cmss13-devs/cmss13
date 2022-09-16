@@ -105,7 +105,7 @@ type VendingCategoryProps = {
 const ItemDescriptionViewer = (props: {desc: string, name: string}, context) => {
   return (<Section title={props.name}>
     <span>{props.desc}</span>
-  </Section>);
+          </Section>);
 };
 
 export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
@@ -135,7 +135,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
                     info
                     className="VendingSorted__Description"
                   > <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
-                           </NoticeBox>}
+                  </NoticeBox>}
                 >
                   <VendableItem record={record} />
                 </Tooltip>
@@ -147,7 +147,6 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
     </Section>);
 
 };
-
 
 const getTheme = (value: string | number): string => {
   switch (value) {

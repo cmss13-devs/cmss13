@@ -245,6 +245,27 @@
       incinerator unit. Available in Req and Squad-Req as an underbarrel attachment.
   - imageadd: Resprites the M240A1 and M240-T incinerator units.
 2022-09-16:
+  Forest2001,Joe lampost, Triiodine, Stan_Albatross,Geevies:
+  - rscadd: Adds a new surgery for use only by predators to heal
+  - rscadd: Adds the medicomp
+  - rscdel: will remove all herbs from the predator ship
+  - qol: makes predator healing easier for preds themselves by guaranteeing they are
+      healed to full after completing the steps of
+  - balance: will remove the ability for preds to instantly kit to 90% HP mid fight.
+  - bugfix: Fixed the predator health bar not showing the predators current health
+      correctly
+  - soundadd: Added a loud roar for predators using the final stage of the healing
+      process which points out their location.
+  - soundadd: Adds two unique sounds for the tools in use during the surgery
+  - tweak: removes all of the brute and burn healing properties of thwei changed the
+      name of the healing crystal.
+  - mapadd: removed 80% of the herbs from the predator ship left the ones in the arena
+      and replaced the racks with more trophy stands also added two extra medicomps
+      in the pred ship medbay if for some reason someone loses the one they spawn
+      with.
+  - spriteadd: Adds four new surgical tools for predators to use during the medicomps
+      operation
+  - imageadd: add Adds a sprite for the medicomp itself
   totalepicness:
   - qol: Liquid tanks are now destroyable by bullets and xenos alike
   - qol: Water tanks can now be wrenched and unwrenched at will.

@@ -115,7 +115,7 @@
 	desc = "Apply corpse before closing."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morguet"
-	icon_tray = ""
+	var/icon_tray = ""
 	density = 1
 	layer = OBJ_LAYER
 	var/obj/structure/morgue/linked_morgue = null
@@ -144,7 +144,7 @@
 	if(user != O)
 		for(var/mob/B in viewers(user, 3))
 			B.show_message(SPAN_DANGER("[user] stuffs [O] into [src]!"), 1)
-			if(B.stat=DEAD)
+			if(B.stat==DEAD)
 				bloody = TRUE
 				update_icon()
 

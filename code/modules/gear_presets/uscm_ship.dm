@@ -445,7 +445,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
 
-dress_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey)
+	dress_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey)
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/sea

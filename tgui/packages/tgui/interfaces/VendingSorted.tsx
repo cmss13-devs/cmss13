@@ -100,7 +100,12 @@ type VendingCategoryProps = {
   category: VendingCategory;
 }
 
-const ItemDescriptionViewer = (props: {desc: string, name: string}, context) => {
+type DescriptionProps = {
+  desc: string;
+  name: string;
+}
+
+const ItemDescriptionViewer = (props: DescriptionProps, context) => {
   return (<Section title={props.name}>
     <span>{props.desc}</span>
   </Section>);

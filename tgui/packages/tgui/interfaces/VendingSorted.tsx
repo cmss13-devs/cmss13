@@ -21,7 +21,6 @@ type IconRecord = {
 type VendingRecord = {
   prod_index: number,
   prod_name: string,
-  prod_amount: number,
   prod_available: number,
   prod_initial: number,
   prod_color?: number;
@@ -38,6 +37,7 @@ type VendingData = {
   vendor_name: string;
   theme: string;
   displayed_categories: VendingCategory[];
+  stock_listing: Array<number>;
 }
 
 type VenableItem = {
@@ -45,12 +45,11 @@ type VenableItem = {
 }
 
 const VendableItem = (props: VenableItem, context) => {
-  const { act } = useBackend(context);
+  const { data, act } = useBackend<VendingData>(context);
   const { record } = props;
   const available = record.prod_available > 0;
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
-
   return (
     <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
       <Flex.Item>
@@ -78,14 +77,13 @@ const VendableItem = (props: VenableItem, context) => {
 
       <Flex.Item width={5}>
         <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
-          {record.prod_amount}
+          {data.stock_listing[record.prod_index - 1]}
         </span>
       </Flex.Item>
 
       <Flex.Item>
         <Box className="VendingSorted__Spacer" />
       </Flex.Item>
-
       <Flex.Item justify="right">
         <Button
           className={classes(["VendingSorted__Button", 'VendingSorted__VendButton'])}
@@ -105,10 +103,11 @@ type VendingCategoryProps = {
 const ItemDescriptionViewer = (props: {desc: string, name: string}, context) => {
   return (<Section title={props.name}>
     <span>{props.desc}</span>
-          </Section>);
+  </Section>);
 };
 
 export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
+  const { data } = useBackend<VendingData>(context);
   const { category } = props;
   const [searchTerm, _] = useLocalState(context, 'searchTerm', "");
   const searchFilter = (x: VendingRecord) =>
@@ -135,7 +134,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
                     info
                     className="VendingSorted__Description"
                   > <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
-                  </NoticeBox>}
+                           </NoticeBox>}
                 >
                   <VendableItem record={record} />
                 </Tooltip>

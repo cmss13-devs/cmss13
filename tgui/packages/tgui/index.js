@@ -17,7 +17,7 @@ import './styles/themes/retro.scss';
 import './styles/themes/syndicate.scss';
 import './styles/themes/wizard.scss';
 import './styles/themes/weyland.scss';
-import './styles/themes/usmc.scss';
+import './styles/themes/uscm.scss';
 import './styles/themes/xeno.scss';
 import './styles/themes/hive_status.scss';
 

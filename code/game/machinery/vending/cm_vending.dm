@@ -923,8 +923,6 @@ IN_USE						used for vending/denying
 		var/result = icon2html(r, world, icon_state, sourceonly=TRUE)
 
 		product_icon_list[item_name] = list(
-			"icon_sheet"=icon_ref,
-			"icon_state"=icon_state,
 			"href"=result
 		)
 
@@ -947,7 +945,7 @@ IN_USE						used for vending/denying
 			return FALSE
 	return
 
-/obj/structure/machinery/cm_vending/sorted/ui_data(mob/user)
+/obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	var/list/data = list()
 	data["vendor_name"] = name
 	data["theme"] = vendor_theme
@@ -958,7 +956,6 @@ IN_USE						used for vending/denying
 		return
 
 	var/list/ui_categories = list()
-
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
 
@@ -977,7 +974,6 @@ IN_USE						used for vending/denying
 		var/display_item = list(
 			"prod_index" = i,
 			"prod_name" = p_name,
-			"prod_amount" = p_amount,
 			"prod_available" = prod_available,
 			"prod_color" = myprod[4],
 			"prod_initial" = initial_amount,
@@ -1001,6 +997,23 @@ IN_USE						used for vending/denying
 		var/last_category = ui_categories[last_index]
 		last_category["items"] += list(display_item)
 	data["displayed_categories"] = ui_categories
+	return data
+
+/obj/structure/machinery/cm_vending/sorted/ui_data(mob/user)
+	var/list/data = list()
+
+	var/list/ui_listed_products = get_listed_products(user)
+	if(!LAZYLEN(ui_listed_products))	//runtimed for vendors without goods in them
+		to_chat(user, SPAN_WARNING("Vendor wasn't properly initialized, tell an admin!"))
+		return
+
+	var/list/ui_categories = list()
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/p_amount = myprod[2]				//amount left
+		ui_categories += list(p_amount)
+	data["stock_listing"] = ui_categories
 	return data
 
 /obj/structure/machinery/cm_vending/sorted/tgui_interact(mob/user, datum/tgui/ui)

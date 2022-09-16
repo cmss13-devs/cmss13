@@ -8027,9 +8027,7 @@
 	},
 /area/almayer/living/pilotbunks)
 "avi" = (
-/obj/structure/reagent_dispensers/fueltank/custom{
-	anchored = 1
-	},
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -56457,9 +56455,7 @@
 	dir = 1;
 	tag = "icon-tube1 (WEST)"
 	},
-/obj/structure/reagent_dispensers/watertank{
-	anchored = 1
-	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
@@ -67741,9 +67737,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/structure/reagent_dispensers/watertank{
-	anchored = 1
-	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"

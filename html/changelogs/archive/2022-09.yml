@@ -244,3 +244,9 @@
   - rscadd: Adds the XM-VESG-1 Flamer Nozzle, an attachment for the standard M240A1
       incinerator unit. Available in Req and Squad-Req as an underbarrel attachment.
   - imageadd: Resprites the M240A1 and M240-T incinerator units.
+2022-09-16:
+  totalepicness:
+  - qol: Liquid tanks are now destroyable by bullets and xenos alike
+  - qol: Water tanks can now be wrenched and unwrenched at will.
+  - bugfix: Fixed the random anchored watertanks in Almayer
+  - bugfix: Fixed anchored OT custom reagent tanks in OT fuel room

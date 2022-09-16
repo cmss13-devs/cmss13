@@ -266,6 +266,18 @@
   - spriteadd: Adds four new surgical tools for predators to use during the medicomps
       operation
   - imageadd: add Adds a sprite for the medicomp itself
+  Jeser:
+  - bugfix: Fixed DEAFENING echo in vehicle interiors.
+  - rscadd: Added new viewport to van - windshield and fixed it having armored vehicles
+      version of viewports.
+  - rscadd: Added proper handling of explosions for vehicle hardpoint modules. They
+      will now take damage instead of having chance to be instantly deleted even from
+      smallest explosions.
+  - rscadd: Hardpoints will show warning message once their integrity reaches zero
+      due to explosion or when being uninstalled from a vehicle before being deleted.
+  - code_imp: Added grille, chairs, windows (not framed), inflatable wall and door,
+      various Trijent Dam props, trees, colony floodlights, hydro trays vehicle bumps
+      handling.
   totalepicness:
   - qol: Liquid tanks are now destroyable by bullets and xenos alike
   - qol: Water tanks can now be wrenched and unwrenched at will.

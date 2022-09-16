@@ -110,8 +110,8 @@
 	desc = "A sturdy jacket issued to USCM Vehicle crewmen"
 	has_buttons = TRUE
 	flags_atom = NO_SNOW_TYPE
-	item_state = "jacket_tanker"
 	icon_state = "jacket_tanker"
+	initial_icon_state = "jacket_tanker"
 	storage_slots = 2
 	armor_bomb = CLOTHING_ARMOR_HIGH
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)

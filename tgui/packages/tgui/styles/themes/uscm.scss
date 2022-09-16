@@ -17,8 +17,7 @@ $weyland: #af7f38;
 // USMC Theme
 .theme-usmc{
   .Layout__content {
-    background-color: #0c0e1e;
-    background-image: url('../../assets/bg-uscm2.png');
+    background-image: linear-gradient(#0c0e1e, #000000);
     background-position: top;
     background-size: contain;
     background-repeat: no-repeat;

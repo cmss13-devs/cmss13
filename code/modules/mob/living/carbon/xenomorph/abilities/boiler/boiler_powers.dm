@@ -117,6 +117,7 @@
 	RegisterSignal(X, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
 	addtimer(CALLBACK(src, .proc/remove_speed_buff), buffs_duration)
 	X.speed_modifier -= speed_buff_amount
+	movespeed_buff_applied = TRUE
 	X.recalculate_speed()
 
 	to_chat(X, SPAN_XENOHIGHDANGER("You dump your acid, disabling your offensive abilities to escape!"))
@@ -133,10 +134,11 @@
 	return
 
 /datum/action/xeno_action/onclick/dump_acid/proc/remove_speed_buff()
-	if (isXeno(owner))
-		var/mob/living/carbon/Xenomorph/X = owner
-		X.speed_modifier += speed_buff_amount
-		X.recalculate_speed()
+	if (movespeed_buff_applied && isXeno(owner))
+		var/mob/living/carbon/Xenomorph/xeno = owner
+		xeno.speed_modifier += speed_buff_amount
+		xeno.recalculate_speed()
+		movespeed_buff_applied = FALSE
 		UnregisterSignal(owner, COMSIG_MOB_MOVE_OR_LOOK)
 
 /datum/action/xeno_action/onclick/dump_acid/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
@@ -148,6 +150,10 @@
 	var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(mover), 1, create_cause_data(initial(mover.caste_type), mover))
 	S.time_to_live = 3
 	S.spread_speed = 1000000
+
+/datum/action/xeno_action/onclick/dump_acid/remove_from()
+	remove_speed_buff()
+	..()
 
 /////////////////////////////// Trapper boiler powers
 

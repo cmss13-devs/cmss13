@@ -51,6 +51,8 @@
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
 
+	var/flamer_reagent_type = /datum/reagent/napalm/ut
+
 /datum/ammo/New()
 	set_bullet_traits()
 
@@ -210,10 +212,12 @@
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/T, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
-	if(!istype(T)) return
-	if(locate(/obj/flamer_fire) in T) return
+	if(!istype(T))
+		return
+	if(locate(/obj/flamer_fire) in T)
+		return
 
-	var/datum/reagent/napalm/ut/R = new()
+	var/datum/reagent/R = new flamer_reagent_type()
 	new /obj/flamer_fire(T, cause_data, R)
 
 
@@ -895,6 +899,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	max_range = 24 //So S8 users don't have their bullets magically disappaer at 22 tiles (S8 can see 24 tiles)
 
 /datum/ammo/bullet/rifle/holo_target
 	name = "holo-targeting rifle bullet"
@@ -1181,10 +1186,10 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_5
 	accurate_range = 4
 	max_range = 4
-	damage = 60
+	damage = 65
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
-	penetration	= 0
+	penetration	= ARMOR_PENETRATION_TIER_1
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
@@ -1220,7 +1225,7 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 4
 	max_range = 6
-	damage = 60
+	damage = 65
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_1
@@ -2896,7 +2901,7 @@
 	name = "flame"
 	icon_state = "pulse0"
 	damage_type = BURN
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_HITS_TARGET_TURF
 
 	max_range = 6
 	damage = 35
@@ -2919,16 +2924,12 @@
 /datum/ammo/flamethrower/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
-/datum/ammo/flamethrower/tank_flamer/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
-		return
-	if(locate(/obj/flamer_fire) in T)
-		return
-	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, cause_data, R, 2)
+/datum/ammo/flamethrower/tank_flamer
+	flamer_reagent_type = /datum/reagent/napalm/blue
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
+	flamer_reagent_type = /datum/reagent/napalm/blue
 
 	accuracy = HIT_ACCURACY_TIER_8
 	accurate_range = 6
@@ -2940,12 +2941,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
-
-/datum/ammo/flamethrower/sentry_flamer/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
-		return
-	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, cause_data, R, 0)
 
 /datum/ammo/flamethrower/sentry_flamer/glob
 	max_range = 14
@@ -2989,6 +2984,7 @@
 	shell_speed = AMMO_SPEED_TIER_3
 
 	var/flare_type = /obj/item/device/flashlight/flare/on/gun
+	handful_type = /obj/item/device/flashlight/flare
 
 /datum/ammo/flare/set_bullet_traits()
 	. = ..()
@@ -3019,6 +3015,7 @@
 	name = "signal flare"
 	icon_state = "flare_signal"
 	flare_type = /obj/item/device/flashlight/flare/signal/gun
+	handful_type = /obj/item/device/flashlight/flare/signal
 
 /datum/ammo/flare/signal/drop_flare(turf/T, mob/firer)
 	var/obj/item/device/flashlight/flare/signal/gun/G = ..()

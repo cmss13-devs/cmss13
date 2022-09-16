@@ -445,11 +445,17 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(A.attach_icon)
 			item_icon = A.attach_icon
 		I = image(A.icon,src, item_icon)
-		I.pixel_x = attachable_offset["[slot]_x"] - A.pixel_shift_x
-		I.pixel_y = attachable_offset["[slot]_y"] - A.pixel_shift_y
+		I.pixel_x = attachable_offset["[slot]_x"] - A.pixel_shift_x + x_offset_by_attachment_type(A.type)
+		I.pixel_y = attachable_offset["[slot]_y"] - A.pixel_shift_y + y_offset_by_attachment_type(A.type)
 		attachable_overlays[slot] = I
 		overlays += I
 	else attachable_overlays[slot] = null
+
+/obj/item/weapon/gun/proc/x_offset_by_attachment_type(var/attachment_type)
+	return 0
+
+/obj/item/weapon/gun/proc/y_offset_by_attachment_type(var/attachment_type)
+	return 0
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
 	var/image/I = attachable_overlays["mag"]
@@ -506,74 +512,44 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 					//				   \\
 					//				   \\
 //----------------------------------------------------------
-/mob/living/carbon/human/
-	var/static/list/holster_default = list(
-		"s_store",
-		"belt",
-		"back",
-		"l_store",
-		"r_store",
-		"w_uniform",
-		"shoes",
-		)
 
-	var/static/list/holster_shift = list(
-		"back",
-		"belt",
-		"l_store",
-		"r_store",
-		"w_uniform",
-		"shoes",
-		"s_store",
-		)
 
-	var/static/list/holster_ctrl =  list(
-		"w_uniform",
-		"belt",
-		"l_store",
-		"r_store",
-		"shoes",
-		"s_store",
-		"back",
-		)
 
-/mob/living/carbon/human/proc/holster_unholster_from_storage_slot(var/obj/item/storage/slot)
-	if(isnull(slot)) return
+/mob/living/carbon/human/proc/can_unholster_from_storage_slot(var/obj/item/storage/slot)
+	if(isnull(slot)) 
+		return FALSE
 	if(slot == shoes)//Snowflakey check for shoes and uniform
 		if(shoes.stored_item && isweapon(shoes.stored_item))
-			shoes.attack_hand(src)
-			return TRUE
-		return
+			return shoes
+		return FALSE
 
 	if(slot == w_uniform)
-		for(var/obj/item/storage/internal/accessory/holster/T in w_uniform.accessories)
-			if(T.current_gun)
-				w_uniform.attack_hand(src)
-				return TRUE
-		for(var/obj/item/clothing/accessory/storage/holster/H in w_uniform.accessories)
-			var/obj/item/storage/internal/accessory/holster/HS = H.hold
-			if(HS.current_gun)
-				HS.current_gun.attack_hand(src)
-				return TRUE
-		return
+		for(var/obj/item/storage/internal/accessory/holster/cycled_holster in w_uniform.accessories)
+			if(cycled_holster.current_gun)
+				return w_uniform
+		for(var/obj/item/clothing/accessory/storage/holster/cycled_holster in w_uniform.accessories)
+			var/obj/item/storage/internal/accessory/holster/holster = cycled_holster.hold
+			if(holster.current_gun)
+				return holster.current_gun
+		return FALSE
 
 	if(istype(slot) && (slot.storage_flags & STORAGE_ALLOW_QUICKDRAW))
-		for(var/obj/wep in slot.return_inv())
-			if(isweapon(wep))
-				slot.attack_hand(src)
-				return TRUE
+		for(var/obj/cycled_weapon in slot.return_inv())
+			if(isweapon(cycled_weapon))
+				return slot
 
 	if(isweapon(slot)) //then check for weapons
-		slot.attack_hand(src)
-		return TRUE
+		return slot
+		
+	return FALSE
 
 //For the holster hotkey
-/mob/living/silicon/robot/verb/holster_verb(var/keymod = "none" as text)
+/mob/living/silicon/robot/verb/holster_verb(var/unholster_number_offset = 1 as num)
 	set name = "holster"
 	set hidden = 1
 	uneq_active()
 
-/mob/living/carbon/human/verb/holster_verb(var/keymod = "none" as text)
+/mob/living/carbon/human/verb/holster_verb(var/unholster_number_offset = 1 as num)
 	set name = "holster"
 	set hidden = 1
 	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained())
@@ -598,20 +574,24 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 		quick_equip()
 	else //empty hand, start checking slots and holsters
-		var/list/slot_order
-		switch(keymod)
-			if("none")
-				slot_order = holster_default	//default order: suit, belt, back, pockets, uniform, shoes
-
-			if("shift")			//shift keymod, do common secondary weapon locations first.
-				slot_order = holster_shift		//order: back, belt, pockets, uniform, shoes, suit.
-
-			if("ctrl", "alt")	//control and alt keymods, do common tertiary weapon locations first. In case ctrl is awkward for some people but alt is not.
-				slot_order = holster_ctrl		//order: uniform, belt, pockets, shoes, back, suit.
+		
+		//default order: suit, belt, back, pockets, uniform, shoes
+		var/list/slot_order = list("s_store", "belt", "back", "l_store", "r_store", "w_uniform", "shoes")
+		
+		var/obj/item/slot_selected
 
 		for(var/slot in slot_order)
-			if(holster_unholster_from_storage_slot(vars[slot]))
-				return
+			var/slot_type = can_unholster_from_storage_slot(vars[slot])
+			if(slot_type)
+				slot_selected = slot_type
+				if(unholster_number_offset == 1)
+					break
+				else
+					unholster_number_offset--
+		
+		if(slot_selected)
+			slot_selected.attack_hand(src)
+
 
 /obj/item/weapon/gun/verb/field_strip()
 	set category = "Weapons"

@@ -191,7 +191,7 @@
 					/obj/item/reagent_container/food/snacks/grown/lime,
 					/obj/item/reagent_container/food/snacks/grown/lime,
 					/obj/item/reagent_container/food/drinks/bottle/whiskey,
-					/obj/item/reagent_container/food/drinks/bottle/tequilla,
+					/obj/item/reagent_container/food/drinks/bottle/tequila,
 					/obj/item/reagent_container/food/drinks/bottle/rum,
 					/obj/item/reagent_container/food/drinks/bottle/wine,
 					/obj/item/reagent_container/food/drinks/bottle/wine,

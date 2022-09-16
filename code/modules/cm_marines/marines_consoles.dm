@@ -831,7 +831,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 			if(is_mainship_level(pos.z))
 				entry["side"] = "Almayer"
 			var/area/A = get_area(H)
-			entry["area"] = sanitize(A.name)
+			entry["area"] = sanitize_area(A.name)
 
 		// Trackability
 		entry["can_track"] = H.detectable_by_ai()

@@ -234,6 +234,7 @@
 		list("Black Webbing Vest", round(scale * 1), /obj/item/clothing/accessory/storage/black_vest, VENDOR_ITEM_REGULAR),
 		list("Webbing", round(scale * 3), /obj/item/clothing/accessory/storage/webbing, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", round(scale * 1), /obj/item/clothing/accessory/storage/droppouch, VENDOR_ITEM_REGULAR),
+		list("Shoulder Holster", round(scale * 1), /obj/item/clothing/accessory/storage/holster, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACKS", -1, null, null),
 		list("Lightweight IMP Backpack", round(scale * 15), /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -524,6 +525,7 @@
 		list("Gyroscopic Stabilizer", round(scale * 4.5), /obj/item/attachable/gyro, VENDOR_ITEM_REGULAR),
 		list("Laser Sight", round(scale * 9.5), /obj/item/attachable/lasersight, VENDOR_ITEM_REGULAR),
 		list("Mini Flamethrower", round(scale * 4.5), /obj/item/attachable/attached_gun/flamer, VENDOR_ITEM_REGULAR),
+		list("XM-VESG-1 Flamer Nozzle", round(scale * 4.5), /obj/item/attachable/attached_gun/flamer_nozzle, VENDOR_ITEM_REGULAR),
 		list("U7 Underbarrel Shotgun", round(scale * 4.5), /obj/item/attachable/attached_gun/shotgun, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Extinguisher", round(scale * 4.5), /obj/item/attachable/attached_gun/extinguisher, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Flashlight Grip", round(scale * 9.5), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
@@ -596,6 +598,7 @@
 		list("Gyroscopic Stabilizer", round(scale * 1.5), /obj/item/attachable/gyro, VENDOR_ITEM_REGULAR),
 		list("Laser Sight", round(scale * 3), /obj/item/attachable/lasersight, VENDOR_ITEM_REGULAR),
 		list("Mini Flamethrower", round(scale * 1.5), /obj/item/attachable/attached_gun/flamer, VENDOR_ITEM_REGULAR),
+		list("XM-VESG-1 Flamer Nozzle", round(scale * 1.5), /obj/item/attachable/attached_gun/flamer_nozzle, VENDOR_ITEM_REGULAR),
 		list("U7 Underbarrel Shotgun", round(scale * 1.5), /obj/item/attachable/attached_gun/shotgun, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Extinguisher", round(scale * 1.5), /obj/item/attachable/attached_gun/extinguisher, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", round(scale * 3), /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),

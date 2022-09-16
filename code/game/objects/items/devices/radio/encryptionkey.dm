@@ -9,6 +9,7 @@
 	var/translate_hive = FALSE
 	var/syndie = FALSE //Signifies that it de-crypts Syndicate transmissions
 	var/list/channels = list()
+	var/list/tracking_options
 	var/abstract = FALSE
 
 /obj/item/device/encryptionkey/binary
@@ -190,6 +191,7 @@
 	name = "\improper Weyland-Yutani encryption key"
 	icon_state = "wy_key"
 	channels = list(RADIO_CHANNEL_WY = 1)
+	tracking_options = list("Corporate Liaison" = TRACKER_CL)
 //ERT, PMC
 
 /obj/item/device/encryptionkey/ert

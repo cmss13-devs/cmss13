@@ -930,6 +930,14 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
 	return
 
+/obj/structure/machinery/cm_vending/sorted/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
+/obj/structure/machinery/cm_vending/sorted/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+
 /obj/structure/machinery/cm_vending/sorted/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	tgui_interact(user)
 	return

@@ -254,7 +254,7 @@
 
 /datum/reagent/toxin/acid
 	name = "Sulphuric acid"
-	id = "sacid"
+	id = "sulphuric acid"
 	description = "A common and very corrosive mineral acid used for many industrial purposes."
 	reagent_state = LIQUID
 	spray_warning = TRUE

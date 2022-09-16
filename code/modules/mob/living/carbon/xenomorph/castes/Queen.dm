@@ -261,7 +261,6 @@
 
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
-	var/ovipositor_cooldown = 0
 	var/queen_ability_cooldown = 0
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
@@ -276,16 +275,17 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/grow_ovipositor,
+		/datum/action/xeno_action/activable/place_construction/queen_macro, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/activable/gut,
-		/datum/action/xeno_action/onclick/plant_weeds, //here so its overridden by xeno_spit, and fits near the resin structure macros.
-		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //third macro
-		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
+		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
+		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
+		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
 		/datum/action/xeno_action/onclick/queen_award,
@@ -306,30 +306,30 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/grow_ovipositor,
+		/datum/action/xeno_action/activable/place_construction/queen_macro, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/activable/gut,
-		/datum/action/xeno_action/activable/screech, //custom macro, Screech
-		/datum/action/xeno_action/activable/xeno_spit, //first macro
-		/datum/action/xeno_action/onclick/shift_spits, //second macro
-		/datum/action/xeno_action/onclick/plant_weeds, //here so its overridden by xeno_spit, and fits near the resin structure macros.
-		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //third macro
-		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
+		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
+		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
+		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
 		/datum/action/xeno_action/onclick/queen_award,
 		/datum/action/xeno_action/activable/info_marker/queen,
+		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
+		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
 
 	// Abilities they get when they've successfully aged.
 	var/mobile_aged_abilities = list(
-		/datum/action/xeno_action/activable/screech, //custom macro, Screech
-		/datum/action/xeno_action/activable/xeno_spit, //first macro
+		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
+		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
 	mutation_type = QUEEN_NORMAL
@@ -376,6 +376,13 @@
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 	set_resin_build_order(GLOB.resin_build_order_drone)
+	for(var/datum/action/xeno_action/action in actions)
+		// Also update the choose_resin icon since it resets
+		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
+			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
+			if(choose_resin_ability)
+				choose_resin_ability.update_button_icon(selected_resin)
+				break // Don't need to keep looking
 
 	if(hive.dynamic_evolution && !queen_aged)
 		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -418,8 +425,13 @@
 	if(ovipositor)
 		return
 
-	for(var/datum/action/xeno_action/A in actions)
-		A.hide_from(src)
+	for(var/datum/action/xeno_action/action in actions)
+		action.hide_from(src)
+		// Also update the choose_resin icon since it resets
+		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
+			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
+			if(choose_resin_ability)
+				choose_resin_ability.update_button_icon(selected_resin)
 
 	var/list/abilities_to_give = mobile_abilities.Copy()
 
@@ -441,8 +453,15 @@
 /mob/living/carbon/Xenomorph/Queen/Destroy()
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
+
 	if(hive && hive.living_xeno_queen == src)
-		hive.set_living_xeno_queen(null)
+		var/mob/living/carbon/Xenomorph/Queen/next_queen = null
+		for(var/mob/living/carbon/Xenomorph/Queen/queen in hive.totalXenos)
+			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
+				next_queen = queen
+				break
+		hive.set_living_xeno_queen(next_queen) // either null or a queen
+
 	return ..()
 
 /mob/living/carbon/Xenomorph/Queen/Life(delta_time)
@@ -500,13 +519,13 @@
 
 	if(!check_state())
 		return
-	if(!check_plasma(50))
-		return
 	if(last_special > world.time)
 		return
-	plasma_stored -= 50
-	var/txt = strip_html(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders",""))
+	if(!check_plasma(50))
+		return
+	use_plasma(50)
 
+	var/txt = strip_html(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders",""))
 	if(txt)
 		xeno_message("<B>The Queen's will overwhelms your instincts...</B>", 3, hivenumber)
 		xeno_message("<B>\""+txt+"\"</B>", 3, hivenumber)
@@ -516,27 +535,40 @@
 	else
 		hive.hive_orders = ""
 
-	last_special = world.time + 150
+	last_special = world.time + 15 SECONDS
 
 /mob/living/carbon/Xenomorph/Queen/proc/hive_message()
 	set category = "Alien"
 	set name = "Word of the Queen (50)"
 	set desc = "Send a message to all aliens in the hive that is big and visible"
-	if(!check_plasma(50))
-		return
-	plasma_stored -= 50
 	if(health <= 0)
 		to_chat(src, SPAN_WARNING("You can't do that while unconcious."))
-		return 0
+		return FALSE
+	if(!check_plasma(50))
+		return FALSE
+	
+	// Get a reference to the ability to utilize cooldowns
+	var/datum/action/xeno_action/onclick/queen_word/word_ability
+	for(var/datum/action/xeno_action/action in actions)
+		if(istype(action, /datum/action/xeno_action/onclick/queen_word))
+			word_ability = action
+			if(!word_ability.action_cooldown_check())
+				return FALSE
+			break
+	
 	var/input = stripped_multiline_input(src, "This message will be broadcast throughout the hive.", "Word of the Queen", "")
 	if(!input)
-		return
+		return FALSE
+
+	use_plasma(50)
+	if(word_ability)
+		word_ability.apply_cooldown()
 
 	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in your head...")
 
 	log_and_message_staff("[key_name_admin(src)] has created a Word of the Queen report:")
 	log_admin("[key_name_admin(src)] Word of the Queen: [input]")
-
+	return TRUE
 
 /mob/living/carbon/Xenomorph/proc/claw_toggle()
 	set name = "Permit/Disallow Slashing"
@@ -647,65 +679,60 @@
 		var/datum/action/A = Z
 		A.update_button_icon()
 
-/mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/A)
+/mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/target)
+	if(!iscarbon(target))
+		return FALSE
 
-	if(!iscarbon(A))
-		return
-
-	var/mob/living/carbon/victim = A
+	var/mob/living/carbon/victim = target
 
 	if(get_dist(src, victim) > 1)
-		return
+		return FALSE
 
 	if(!check_state())
-		return
-
-	if(last_special > world.time)
-		return
+		return FALSE
 
 	if(isSynth(victim))
 		var/obj/limb/head/synthhead = victim.get_limb("head")
 		if(synthhead.status & LIMB_DESTROYED)
-			return
+			return FALSE
 
 	if(locate(/obj/item/alien_embryo) in victim) //Maybe they ate it??
-		var/mob/living/carbon/human/H = victim
-		if(H.status_flags & XENO_HOST)
+		var/mob/living/carbon/human/human_victim = victim
+		if(human_victim.status_flags & XENO_HOST)
 			if(victim.stat != DEAD) //Not dead yet.
 				to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
-				return
-			else if(istype(H) && ( world.time <= H.timeofdeath + H.revive_grace_period )) //Dead, but the host can still hatch, possibly.
+				return FALSE
+			else if(istype(human_victim) && (world.time <= human_victim.timeofdeath + human_victim.revive_grace_period)) //Dead, but the host can still hatch, possibly.
 				to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
-				return
+				return FALSE
 
 	if(isXeno(victim))
 		var/mob/living/carbon/Xenomorph/xeno = victim
 		if(hivenumber == xeno.hivenumber)
 			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
-			return
+			return FALSE
 
 	var/turf/cur_loc = victim.loc
 	if(!istype(cur_loc))
-		return
+		return FALSE
 
 	if(action_busy)
-		return
+		return FALSE
 
 	if(!check_plasma(200))
-		return
+		return FALSE
 
 	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."), \
 	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
 	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
-			return
+			return FALSE
 		if(victim.loc != cur_loc)
-			return
+			return FALSE
 		if(!check_plasma(200))
-			return
+			return FALSE
 
 		use_plasma(200)
-		last_special = world.time + 15 MINUTES
 
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
@@ -716,6 +743,7 @@
 		victim.gib(initial(name)) //Splut
 
 		stop_pulling()
+		return TRUE
 
 /mob/living/carbon/Xenomorph/Queen/death(var/cause, var/gibbed)
 	if(hive.living_xeno_queen == src)
@@ -729,35 +757,43 @@
 		return //sanity check
 	ovipositor = TRUE
 
-	for(var/datum/action/xeno_action/A in actions)
-		A.hide_from(src)
+	set_resin_build_order(GLOB.resin_build_order_ovipositor) // This needs to occur before we update the abilities so we can update the choose resin icon
+	for(var/datum/action/xeno_action/action in actions)
+		action.hide_from(src)
+		// Also update the choose_resin icon since it resets
+		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
+			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
+			if(choose_resin_ability)
+				choose_resin_ability.update_button_icon(selected_resin)
 
 	var/list/immobile_abilities = list(
+		// These already have their placement locked in:
 		/datum/action/xeno_action/onclick/regurgitate,
-		/datum/action/xeno_action/onclick/remove_eggsac,
-		/datum/action/xeno_action/activable/screech,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/place_construction/queen_macro,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/set_xeno_lead,
-		/datum/action/xeno_action/activable/queen_heal,
-		/datum/action/xeno_action/activable/queen_give_plasma,
-		/datum/action/xeno_action/onclick/queen_order,
-		/datum/action/xeno_action/onclick/choose_resin,
-		/datum/action/xeno_action/activable/expand_weeds,
-		/datum/action/xeno_action/activable/secrete_resin/remote/queen,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/deevolve,
+		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
 		/datum/action/xeno_action/onclick/queen_award,
+		/datum/action/xeno_action/activable/info_marker/queen,
+		// Screech is typically new for this list, but its possible they never ovi and it then is forced here:
+		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
+		// These are new and their arrangement matters:
+		/datum/action/xeno_action/onclick/remove_eggsac,
+		/datum/action/xeno_action/onclick/set_xeno_lead,
+		/datum/action/xeno_action/activable/queen_heal, //first macro
+		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
+		/datum/action/xeno_action/onclick/deevolve,
+		/datum/action/xeno_action/onclick/queen_order,
+		/datum/action/xeno_action/activable/expand_weeds, //third macro
+		/datum/action/xeno_action/activable/secrete_resin/remote/queen, //fifth macro
 		/datum/action/xeno_action/onclick/queen_tacmap,
 		/datum/action/xeno_action/onclick/eye,
-		/datum/action/xeno_action/activable/info_marker/queen
 	)
-
 
 	for(var/path in immobile_abilities)
 		give_action(src, path)
@@ -767,15 +803,14 @@
 	ADD_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
-	set_resin_build_order(GLOB.resin_build_order_ovipositor)
 	extra_build_dist = IGNORE_BUILD_DISTANCE
 	anchored = TRUE
 	resting = FALSE
 	update_canmove()
 	update_icons()
 
-	for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
-		L.handle_xeno_leader_pheromones()
+	for(var/mob/living/carbon/Xenomorph/leader in hive.xeno_leader_list)
+		leader.handle_xeno_leader_pheromones()
 
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has grown an ovipositor, evolution progress resumed."), 3, hivenumber)
 
@@ -804,6 +839,7 @@
 		overwatch(observed_xeno, TRUE)
 	zoom_out()
 
+	set_resin_build_order(GLOB.resin_build_order_drone) // This needs to occur before we update the abilities so we can update the choose resin icon
 	give_combat_abilities()
 
 	remove_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
@@ -814,9 +850,12 @@
 	recalculate_actions()
 
 	egg_amount = 0
-	set_resin_build_order(GLOB.resin_build_order_drone)
 	extra_build_dist = initial(extra_build_dist)
-	ovipositor_cooldown = world.time + 5 MINUTES //5 minutes
+	for(var/datum/action/xeno_action/action in actions)
+		if(istype(action, /datum/action/xeno_action/onclick/grow_ovipositor))
+			var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = action
+			ovi_ability.apply_cooldown()
+			break
 	anchored = FALSE
 	update_canmove()
 

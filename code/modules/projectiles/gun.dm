@@ -503,19 +503,7 @@
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
 		if(!R) continue
-		switch(R.slot)
-			if("rail") 	dat += "It has [icon2html(R)] [R.name] mounted on the top.<br>"
-			if("muzzle") 	dat += "It has [icon2html(R)] [R.name] mounted on the front.<br>"
-			if("stock") 	dat += "It has [icon2html(R)] [R.name] for a stock.<br>"
-			if("under")
-				dat += "It has [icon2html(R)] [R.name]"
-				if(istype(R, /obj/item/attachable/attached_gun/extinguisher))
-					var/obj/item/attachable/attached_gun/extinguisher/E = R
-					dat += " ([E.internal_extinguisher.reagents.total_volume]/[E.internal_extinguisher.max_water])"
-				else if(R.flags_attach_features & ATTACH_WEAPON)
-					dat += " ([R.current_rounds]/[R.max_rounds])"
-				dat += " mounted underneath.<br>"
-			else dat += "It has [icon2html(R)] [R.name] attached.<br>"
+		dat += R.handle_attachment_description()
 
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
 		if(current_mag && current_mag.current_rounds > 0)
@@ -1515,8 +1503,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		gun_scatter += max(0, movement_onehanded_acc_penalty_mult * SCATTER_AMOUNT_TIER_10)
 
 	if(dual_wield) //akimbo firing gives terrible accuracy
-		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(3,5))
-		gun_scatter += SCATTER_AMOUNT_TIER_4
+		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(5,7))
+		gun_scatter += SCATTER_AMOUNT_TIER_3
 
 	// Apply any skill-based bonuses to accuracy
 	if(user && user.mind && user.skills)

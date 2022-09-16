@@ -150,8 +150,8 @@
 	clearance_access = 4
 
 /obj/item/card/id/silver/clearance_badge/cl
-	name = "corporate liason badge"
-	desc = "A corporate holo-badge in unique corporate orange and white. It is fingerprint locked with clearance level 5 access. It is commonly held by corporate liasons."
+	name = "corporate liaison badge"
+	desc = "A corporate holo-badge in unique corporate orange and white. It is fingerprint locked with clearance level 5 access. It is commonly held by corporate liaisons."
 	icon_state = "cl"
 	clearance_access = 5
 
@@ -189,9 +189,9 @@
 	desc = "A corporate holo-badge. It's a unique Corporate orange and white."
 	icon_state = "cl"
 
-/obj/item/card/id/gold/commodore
+/obj/item/card/id/gold/council
 	name = "identification holo-badge"
-	desc = "A real bronze gold Commodore's holo-badge. Commands respect, authority, and it makes an excellent paperweight."
+	desc = "A real bronze gold Colonel's holo-badge. Commands respect, authority, and it makes an excellent paperweight."
 	icon_state = "commodore"
 
 /obj/item/card/id/pmc

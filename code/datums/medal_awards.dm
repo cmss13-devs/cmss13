@@ -163,6 +163,16 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.highcom_paygrades)))
 		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
 		return
+	
+	if(!card.registered_ref)
+		user.visible_message("ERROR: ID card not registered in USCM registry. Potential medal fraud detected.")
+		return
+	
+	var/real_owner_ref = card.registered_ref
+		
+	if(real_owner_ref != WEAKREF(user))
+		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
+		return
 
 	if(give_medal_award(get_turf(printer)))
 		user.visible_message(SPAN_NOTICE("[printer] prints a medal."))

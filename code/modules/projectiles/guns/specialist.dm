@@ -8,12 +8,162 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	wield_delay = WIELD_DELAY_SLOW
 
-	able_to_fire(mob/living/user)
-		. = ..()
-		if(. && istype(user)) //Let's check all that other stuff first.
-			if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
-				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-				return 0
+	var/has_aimed_shot = TRUE
+	var/aiming_time = 1.25 SECONDS
+	var/aimed_shot_cooldown
+	var/aimed_shot_cooldown_delay = 2.5 SECONDS
+
+/obj/item/weapon/gun/rifle/sniper/Initialize(mapload, spawn_empty)
+	if(has_aimed_shot)
+		LAZYADD(actions_types, /datum/action/item_action/specialist/aimed_shot)
+	return ..()
+
+/obj/item/weapon/gun/rifle/sniper/able_to_fire(mob/living/user)
+	. = ..()
+	if(. && istype(user)) //Let's check all that other stuff first.
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			return 0
+
+// Aimed shot ability
+/datum/action/item_action/specialist/aimed_shot
+	ability_primacy = SPEC_PRIMARY_ACTION_2
+	var/minimum_aim_distance = 2
+
+/datum/action/item_action/specialist/aimed_shot/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Aimed Shot"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "sniper_aim")
+	button.overlays += IMG
+	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
+	sniper_rifle.aimed_shot_cooldown = world.time
+
+
+/datum/action/item_action/specialist/aimed_shot/action_activate()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	if(H.selected_ability == src)
+		to_chat(H, "You will no longer use [name] with \
+			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		button.icon_state = "template"
+		H.selected_ability = null
+	else
+		to_chat(H, "You will now use [name] with \
+			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		if(H.selected_ability)
+			H.selected_ability.button.icon_state = "template"
+			H.selected_ability = null
+		button.icon_state = "template_on"
+		H.selected_ability = src
+
+/datum/action/item_action/specialist/aimed_shot/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && (holder_item == H.r_hand || holder_item || H.l_hand))
+		return TRUE
+
+/datum/action/item_action/specialist/aimed_shot/proc/use_ability(atom/A)
+	var/mob/living/carbon/human/H = owner
+	if(!istype(A, /mob/living))
+		return
+
+	var/mob/living/M = A
+
+	if(M.stat == DEAD || M == H)
+		return
+
+	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
+	if(world.time < sniper_rifle.aimed_shot_cooldown)
+		return
+
+	if(!check_can_use(M))
+		return
+
+	sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay
+
+	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
+	var/distance = round(get_dist(M, H) * 0.5)
+	var/f_aiming_time = sniper_rifle.aiming_time + distance
+	if(HAS_TRAIT(M, TRAIT_SPOTTER_LAZED))
+		f_aiming_time *= 0.5
+
+	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-sniper", dir = get_cardinal_dir(M, H))
+	M.overlays += I
+	if(H.client)
+		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
+	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
+
+	if(!do_after(H, f_aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
+		M.overlays -= I
+		return
+
+	M.overlays -= I
+
+	if(!check_can_use(M, TRUE))
+		return
+
+	var/obj/item/projectile/P = sniper_rifle.in_chamber
+	P.homing_target = M
+	P.projectile_override_flags |= AMMO_HOMING
+	sniper_rifle.Fire(M, H)
+
+/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M, var/cover_lose_focus)
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
+
+	if(!can_use_action())
+		return FALSE
+
+	if(sniper_rifle != H.r_hand && sniper_rifle != H.l_hand)
+		to_chat(H, SPAN_WARNING("How do you expect to do this without your sniper rifle?"))
+		return FALSE
+
+	if(!(sniper_rifle.flags_item & WIELDED))
+		to_chat(H, SPAN_WARNING("Your aim is not stable enough with one hand. Use both hands!"))
+		return FALSE
+
+	if(!sniper_rifle.in_chamber)
+		to_chat(H, SPAN_WARNING("\The [sniper_rifle] is unloaded!"))
+		return FALSE
+
+	if(get_dist(H, M) < minimum_aim_distance)
+		to_chat(H, SPAN_WARNING("\The [M] is too close to get a proper shot!"))
+		return FALSE
+
+	var/obj/item/projectile/P = sniper_rifle.in_chamber
+	// TODO: Make the below logic only occur in certain circumstances. Check goggles, maybe? -Kaga
+	if(check_shot_is_blocked(H, M, P))
+		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
+		if(cover_lose_focus)
+			to_chat(H, SPAN_WARNING("You lose focus."))
+			sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay * 0.5
+		return FALSE
+
+	return TRUE
+
+/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(var/mob/firer, var/mob/target, obj/item/projectile/P)
+	var/list/turf/path = getline2(firer, target, include_from_atom = FALSE)
+	if(!path.len || get_dist(firer, target) > P.ammo.max_range)
+		return TRUE
+
+	var/blocked = FALSE
+	for(var/turf/T in path)
+		if(T.density || T.opacity)
+			blocked = TRUE
+			break
+
+		for(var/obj/O in T)
+			if(O.get_projectile_hit_boolean(P))
+				blocked = TRUE
+				break
+
+		for(var/obj/effect/particle_effect/smoke/S in T)
+			blocked = TRUE
+			break
+
+	return blocked
 
 //Pow! Headshot.
 /obj/item/weapon/gun/rifle/sniper/M42A
@@ -198,6 +348,7 @@
 						/obj/item/attachable/bipod,
 						/obj/item/attachable/scope/variable_zoom/slavic)
 
+	has_aimed_shot = FALSE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
 
 
@@ -285,7 +436,7 @@
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
 
 //-------------------------------------------------------
@@ -607,7 +758,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	. = ..()
 	if (. && istype(user))
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
 
 
@@ -637,7 +788,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	. = ..()
 	if (. && istype(user))
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
 
 
@@ -755,7 +906,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_WARNING("You can't fire that here!"))
 			return 0*/
 		if(skill_locked && !skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return 0
 		if(user.faction == FACTION_MARINE && explosive_grief_check(src))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
@@ -918,7 +1069,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 	current_mag = /obj/item/ammo_magazine/rocket/anti_tank
 
-	attachable_allowed = null
+	attachable_allowed = list()
 
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 
@@ -1035,7 +1186,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	update_attachables()
 
 
-/obj/item/weapon/gun/flare/rocket/set_gun_attachment_offsets()
+/obj/item/weapon/gun/flare/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
 /obj/item/weapon/gun/flare/set_gun_config_values()
@@ -1073,5 +1224,24 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			current_mag.current_rounds++
 			qdel(I)
 			update_icon()
-		else to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
-	else to_chat(user, SPAN_WARNING("That's not a flare!"))
+		else 
+			to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
+	else 
+		to_chat(user, SPAN_WARNING("That's not a flare!"))
+		
+/obj/item/weapon/gun/flare/unload(mob/user)
+	if(flags_gun_features & GUN_BURST_FIRING)
+		return
+	unload_flare(user)
+	
+/obj/item/weapon/gun/flare/proc/unload_flare(mob/user)
+	if(!current_mag)
+		return
+	if(current_mag.current_rounds)
+		var/obj/item/device/flashlight/flare/unloaded_flare = new ammo.handful_type(get_turf(src))
+		playsound(user, reload_sound, 25, TRUE)
+		current_mag.current_rounds--
+		if(user)
+			to_chat(user, SPAN_NOTICE("You unload \the [unloaded_flare] from \the [src]."))
+			user.put_in_hands(unloaded_flare)
+		update_icon()

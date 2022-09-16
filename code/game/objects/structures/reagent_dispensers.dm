@@ -1,4 +1,3 @@
-
 /obj/structure/reagent_dispensers
 	name = "dispenser"
 	desc = "..."
@@ -6,8 +5,10 @@
 	icon_state = "watertank"
 	density = 1
 	anchored = 0
+	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
-
+	wrenchable = TRUE
+	unslashable = FALSE
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100,200,300)
 	var/chemical = ""
@@ -39,6 +40,11 @@
 	else
 		to_chat(user, SPAN_NOTICE(" Nothing."))
 
+/obj/structure/reagent_dispensers/Destroy()
+	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
+	visible_message(SPAN_NOTICE("\The [src] falls apart as its contents spill everywhere!"))
+	. = ..()
+
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
 	set category = "Object"
@@ -53,6 +59,31 @@
 	var/N = tgui_input_list(usr, "Amount per transfer from this:","[src]", possible_transfer_amounts)
 	if(N)
 		amount_per_transfer_from_this = N
+
+/obj/structure/reagent_dispensers/proc/healthcheck()
+	if(health <= 0)
+		qdel(src)
+
+/obj/structure/reagent_dispensers/bullet_act(var/obj/item/projectile/Proj)
+	health -= Proj.damage
+	if(Proj.firer)
+		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+		log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	healthcheck()
+	return TRUE
+
+/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/user)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	user.animation_attack_on(src)
+	health -= (rand(user.melee_damage_lower, user.melee_damage_upper))
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	user.visible_message(SPAN_DANGER("[user] slashes \the [src]!"), \
+	SPAN_DANGER("You slash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	healthcheck()
+	return XENO_ATTACK_ACTION
+
 
 /obj/structure/reagent_dispensers/verb/set_transfer_direction() //set amount_per_transfer_from_this
 	set name = "Set transfer direction"
@@ -124,7 +155,7 @@
 	desc = "A sulfuric acid tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "sacidtank"
-	chemical = "sacid"
+	chemical = "sulphuric acid"
 
 /obj/structure/reagent_dispensers/pacidtank
 	name = "polytrinic acid tank"

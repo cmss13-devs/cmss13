@@ -6,7 +6,7 @@
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_RAVAGER)
 	mutator_actions_to_remove = list(
-		/datum/action/xeno_action/activable/empower,
+		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/pounce/charge,
 		/datum/action/xeno_action/activable/scissor_cut,
 	)

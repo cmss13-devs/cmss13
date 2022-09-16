@@ -45,6 +45,7 @@
 #define COMSIG_KB_HUMAN_QUICKEQUIP_DOWN "keybinding_human_quickequip_down"
 #define COMSIG_KB_HUMAN_SECONDARY_DOWN "keybinding_human_secondary_down"
 #define COMSIG_KB_HUMAN_TERTIARY_DOWN "keybinding_human_tertiary_down"
+#define COMSIG_KB_HUMAN_QUATERNARY_DOWN "keybinding_human_quaternary_down"
 #define COMSIG_KB_HUMAN_QUICK_EQUIP_DOWN "keybinding_human_quick_equip_down"
 
 #define COMSIG_KB_HUMAN_ISSUE_ORDER "keybinding_human_issue_order"
@@ -123,6 +124,7 @@
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_TWO "keybinding_xeno_primary_attack_two"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_THREE "keybinding_xeno_primary_attack_three"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR "keybinding_xeno_primary_attack_four"
+#define COMSIG_KB_XENO_PRIMARY_ATTACK_FIVE "keybinding_xeno_primary_attack_five"
 
 #define COMSIG_KB_XENO_EMIT_PHEROMONES "keybinding_xeno_emit_pheromones"
 #define COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY "keybinding_xeno_emit_pheromones_frenzy"
@@ -131,6 +133,7 @@
 
 #define COMSIG_KB_XENO_CORROSIVE_ACID "keybinding_xeno_corrosive_acid"
 #define COMSIG_KB_XENO_TECH_SECRETE_RESIN "keybinding_xeno_tech_secrete_resin"
+#define COMSIG_KB_XENO_SCREECH "keybinding_xeno_screech"
 
 // Yautja
 
@@ -150,6 +153,7 @@
 #define COMSIG_KB_YAUTJA_CHANGE_EXPLOSION_TYPE "keybinding_yautja_change_explosion_type"
 #define COMSIG_KB_YAUTJA_ACTIVATE_SUICIDE "keybinding_yautja_activate_suicide"
 #define COMSIG_KB_YAUTJA_INJECTORS "keybinding_yautja_injectors"
+#define COMSIG_KB_YAUTJA_CAPSULE "keybinding_yautja_capsule"
 #define COMSIG_KB_YAUTJA_CALL_DISK "keybinding_yautja_call_disk"
 #define COMSIG_KB_YAUTJA_REMOVE_TRACKED_ITEM "keybinding_yautja_remove_tracked_item"
 #define COMSIG_KB_YAUTJA_ADD_TRACKED_ITEM "keybinding_yautja_add_tracked_item"

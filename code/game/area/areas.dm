@@ -387,6 +387,9 @@
 /area/Exited(A)
 	if(istype(A, /obj/structure/machinery))
 		remove_machine(A)
+	else if(ismob(A))
+		var/mob/exiting_mob = A
+		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
 /area/proc/add_machine(var/obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)

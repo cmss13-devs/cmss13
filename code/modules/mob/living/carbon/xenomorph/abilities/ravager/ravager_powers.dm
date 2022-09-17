@@ -420,8 +420,8 @@
 
 		valid_count++
 
-// This is the heal
-		X.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
+	// This is the heal
+	X.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
 	X.frozen = 0
 	X.anchored = 0

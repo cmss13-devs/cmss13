@@ -9176,6 +9176,7 @@
 	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	id = "cic_interior";
 	name = "\improper Combat Information Center"
 	},
 /turf/open/floor/almayer{
@@ -9925,6 +9926,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	id = "cic_exterior";
 	name = "\improper Combat Information Center"
 	},
 /turf/open/floor/almayer{
@@ -10136,13 +10138,21 @@
 	dir = 8
 	},
 /obj/structure/machinery/door_control{
-	id = "cic_exterior";
-	name = "CIC Door Control";
+	id = "cic_interior";
+	name = "Interior CIC Door Control";
 	normaldoorcontrol = 1;
+	pixel_x = -10;
 	pixel_y = -14;
 	req_one_access_txt = "19"
 	},
 /obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/door_control{
+	id = "cic_exterior";
+	name = "Exterior CIC Door Control";
+	normaldoorcontrol = 1;
+	pixel_y = -14;
+	req_one_access_txt = "19"
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "aAT" = (
@@ -23062,6 +23072,12 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bxO" = (
+/obj/item/device/radio/intercom{
+	frequency = 1443;
+	name = "dropship intercom";
+	pixel_x = -8;
+	pixel_y = 25
+	},
 /turf/closed/shuttle/dropship2{
 	icon_state = "37"
 	},
@@ -23802,20 +23818,25 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bAn" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.8
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
 	},
-/obj/item/device/radio/intercom{
-	frequency = 1443;
-	name = "dropship intercom";
-	pixel_y = 10
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	id = "cic_interior";
+	name = "\improper Combat Information Center"
 	},
-/area/shuttle/drop2/sulaco)
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/command/cic)
 "bAo" = (
 /turf/closed/shuttle/dropship2{
 	icon_state = "25"
@@ -23858,20 +23879,18 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bAy" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.8
+/obj/structure/machinery/door_control{
+	id = "sh_dropship1";
+	name = "Dropship Lockdown";
+	normaldoorcontrol = 3;
+	pixel_x = -15;
+	pixel_y = 14;
+	req_one_access_txt = "3;22";
+	throw_range = 15
 	},
-/obj/item/device/radio/intercom{
-	canhear_range = 7;
-	frequency = 1441;
-	layer = 2.9;
-	name = "alamo dropship intercom";
-	pixel_y = 5
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+/turf/closed/shuttle/dropship1{
+	icon_state = "43";
+	tag = "icon-43"
 	},
 /area/shuttle/drop1/sulaco)
 "bAz" = (
@@ -46785,6 +46804,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	id = ""cic_exterior"";
 	name = "\improper Combat Information Center"
 	},
 /turf/open/floor/almayer{
@@ -49962,12 +49982,19 @@
 	},
 /area/almayer/living/gym)
 "iZc" = (
-/obj/structure/machinery/camera/autoname/almayer/dropship_one,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
+/obj/item/device/radio/intercom{
+	canhear_range = 7;
+	frequency = 1441;
+	layer = 2.9;
+	name = "alamo dropship intercom";
+	pixel_x = -8;
+	pixel_y = 25
 	},
-/area/shuttle/drop2/sulaco)
+/turf/closed/shuttle/dropship1{
+	icon_state = "43";
+	tag = "icon-43"
+	},
+/area/shuttle/drop1/sulaco)
 "iZg" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -52539,6 +52566,20 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/engineering/engine_core)
+"klb" = (
+/obj/structure/platform{
+	dir = 8;
+	layer = 2.7
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_two{
+	dir = 4;
+	pixel_x = -16
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
 "klH" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4;
@@ -72833,12 +72874,19 @@
 	},
 /area/almayer/medical/hydroponics)
 "tyF" = (
-/obj/structure/machinery/camera/autoname/almayer/dropship_one,
+/obj/structure/platform{
+	dir = 8;
+	layer = 2.7
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_two{
+	dir = 4;
+	pixel_x = -16
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/shuttle/drop1/sulaco)
+/area/shuttle/drop2/sulaco)
 "tyK" = (
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer{
@@ -102204,7 +102252,7 @@ btK
 oYG
 bwr
 gHh
-gHh
+tyF
 gHh
 nwO
 bDd
@@ -102608,8 +102656,8 @@ btJ
 btJ
 btJ
 bvi
-bAn
-iZc
+mzu
+bpl
 bpl
 bpl
 rAr
@@ -105957,7 +106005,7 @@ ayt
 aCf
 wVW
 aCf
-hzL
+bAn
 aCf
 wVW
 wVW
@@ -106670,7 +106718,7 @@ btS
 mjN
 bwC
 bxT
-bxT
+klb
 bxT
 xUO
 bDq
@@ -107074,8 +107122,8 @@ btR
 btR
 btR
 bvo
-bAy
-tyF
+sRE
+bpq
 bpq
 bpq
 iNO
@@ -107683,8 +107731,8 @@ ttD
 rfu
 btS
 bvp
-mFL
-mFL
+bAy
+iZc
 bzc
 bAz
 mFL

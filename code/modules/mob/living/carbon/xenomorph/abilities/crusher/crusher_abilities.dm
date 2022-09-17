@@ -82,8 +82,8 @@
 	plasma_cost = 10
 	// Configurables
 	fling_distance = 3
-	stun_power = FALSE
-	weaken_power = FALSE
+	stun_power = 0
+	weaken_power = 0
 	slowdown = 8
 
 

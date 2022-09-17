@@ -474,7 +474,7 @@
 	minimum_age = 25
 	skills = /datum/skills/intel
 
-	assignment = JOB_TIS_SA
+	assignment = JOB_TIS_IO
 	rank = "UAAC-TIS Intelligence Officer"
 	paygrade = "NO2"
 	role_comm_title = "TIS-IO"

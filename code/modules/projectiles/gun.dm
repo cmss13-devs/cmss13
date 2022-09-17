@@ -1098,7 +1098,8 @@ and you're good to go.
 		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.
 		if(!projectile_to_fire) //If there is nothing to fire, click.
 			click_empty(user)
-			break
+			flags_gun_features &= ~GUN_BURST_FIRING
+			return
 
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, reflex, dual_wield) //User can be passed as null.
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
@@ -1317,6 +1318,7 @@ and you're good to go.
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired) //We add any damage effects that we need.
 
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
+		SEND_SIGNAL(user, COMSIG_DIRECT_BULLET_HIT, M)
 		simulate_recoil(1, user)
 
 		if(projectile_to_fire.ammo.bonus_projectiles_amount)

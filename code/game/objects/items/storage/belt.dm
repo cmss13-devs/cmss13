@@ -647,6 +647,24 @@
 	else
 		return ..()
 
+/obj/item/storage/belt/shotgun/xm88
+	name = "\improper M300 pattern .458 SOCOM loading rig"
+	desc = "An ammunition belt designed to hold the large .458 SOCOM caliber bullets for the XM88 heavy rifle."
+	icon_state = "boomslang-belt"
+	item_state = "marinebelt"
+	w_class = SIZE_LARGE
+	storage_slots = 14
+	max_w_class = SIZE_SMALL
+	max_storage_space = 28
+	can_hold = list(/obj/item/ammo_magazine/handful)
+
+/obj/item/storage/belt/shotgun/xm88/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/lever_action/xm88))
+		var/obj/item/ammo_magazine/lever_action/xm88/B = W
+		dump_ammo_to(B, user, B.transfer_handful_amount)
+	else
+		return ..()
+
 /obj/item/storage/belt/shotgun/full/quackers
 	icon_state = "inflatable"
 	item_state = "inflatable"

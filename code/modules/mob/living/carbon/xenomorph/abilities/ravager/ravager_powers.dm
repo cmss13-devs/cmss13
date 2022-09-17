@@ -349,10 +349,10 @@
 /datum/action/xeno_action/activable/eviscerate/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if(!action_cooldown_check() || X.action_busy)
+	if(!action_cooldown_check() || xeno.action_busy)
 		return
 
-	if(!X.check_state())
+	if(!xeno.check_state())
 		return
 
 	var/damage = base_damage
@@ -362,60 +362,60 @@
 	var/max_lifesteal = 300
 	var/lifesteal_range =  1
 
-	if (X.mutation_type == RAVAGER_BERSERKER)
-		var/datum/behavior_delegate/ravager_berserker/BD = X.behavior_delegate
-		if (BD.rage == 0)
-			to_chat(X, SPAN_XENODANGER("You cannot eviscerate when you have 0 rage!"))
+	if (xeno.mutation_type == RAVAGER_BERSERKER)
+		var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
+		if (behavior.rage == 0)
+			to_chat(xeno, SPAN_XENODANGER("You cannot eviscerate when you have 0 rage!"))
 			return
-		damage = damage_at_rage_levels[Clamp(BD.rage, 1, BD.max_rage)]
-		range = range_at_rage_levels[Clamp(BD.rage, 1, BD.max_rage)]
-		windup_reduction = windup_reduction_at_rage_levels[Clamp(BD.rage, 1, BD.max_rage)]
-		BD.decrement_rage(BD.rage)
+		damage = damage_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
+		range = range_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
+		windup_reduction = windup_reduction_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
+		behavior.decrement_rage(behavior.rage)
 
 		apply_cooldown()
 
 	if (range > 1)
-		X.visible_message(SPAN_XENOHIGHDANGER("[X] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a massive strike!"))
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a massive strike!"))
 	else
-		X.visible_message(SPAN_XENODANGER("[X] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a strike!"))
+		xeno.visible_message(SPAN_XENODANGER("[xeno] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a strike!"))
 
-	X.frozen = 1
-	X.anchored = 1
-	X.update_canmove()
+	xeno.frozen = 1
+	xeno.anchored = 1
+	xeno.update_canmove()
 
-	if (do_after(X, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		X.emote("roar")
-		X.spin_circle()
+	if (do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		xeno.emote("roar")
+		xeno.spin_circle()
 
-		for (var/mob/living/carbon/H in orange(X, range))
-			if(!isXenoOrHuman(H) || X.can_not_harm(H))
+		for (var/mob/living/carbon/human in orange(xeno, range))
+			if(!isXenoOrHuman(human) || xeno.can_not_harm(human))
 				continue
 
-			if (H.stat == DEAD)
+			if (human.stat == DEAD)
 				continue
 
-			if(!check_clear_path_to_target(X, H))
+			if(!check_clear_path_to_target(xeno, human))
 				continue
 
 			if (range > 1)
-				X.visible_message(SPAN_XENOHIGHDANGER("[X] rips open the guts of [H]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [H]!"))
-				H.spawn_gibs()
-				playsound(get_turf(H), 'sound/effects/gibbed.ogg', 30, 1)
-				H.KnockDown(get_xeno_stun_duration(H, 1))
+				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [human]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [human]!"))
+				human.spawn_gibs()
+				playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, 1)
+				human.KnockDown(get_xeno_stun_duration(human, 1))
 			else
-				X.visible_message(SPAN_XENODANGER("[X] claws [H]!"), SPAN_XENODANGER("You claw [H]!"))
-				playsound(get_turf(H), "alien_claw_flesh", 30, 1)
+				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("You claw [human]!"))
+				playsound(get_turf(human), "alien_claw_flesh", 30, 1)
 
-			H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+			human.apply_armoured_damage(get_xeno_damage_slash(human, damage), ARMOR_MELEE, BRUTE, "chest", 20)
 
 	var/valid_count = 0
-	var/list/mobs_in_range = oviewers(lifesteal_range, X)
+	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)
 
 	for(var/mob/mob as anything in mobs_in_range)
 		if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
 			continue
 
-		if(X.can_not_harm(mob))
+		if(xeno.can_not_harm(mob))
 			continue
 
 		valid_count++
@@ -423,9 +423,9 @@
 	// This is the heal
 	X.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
-	X.frozen = 0
-	X.anchored = 0
-	X.update_canmove()
+	xeno.frozen = 0
+	xeno.anchored = 0
+	xeno.update_canmove()
 
 	..()
 	return

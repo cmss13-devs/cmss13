@@ -360,6 +360,8 @@
 	breakable_tile = FALSE
 	burnable_tile = FALSE
 	baseturfs = /turf/open/floor
+	tool_flags = REMOVE_CROWBAR
+
 
 /turf/open/floor/engine/make_plating()
 	return

@@ -106,9 +106,11 @@ type DescriptionProps = {
 }
 
 const ItemDescriptionViewer = (props: DescriptionProps, context) => {
-  return (<Section title={props.name}>
-    <span>{props.desc}</span>
-  </Section>);
+  return (
+    <Section title={props.name}>
+      <span>{props.desc}</span>
+    </Section>
+  );
 };
 
 export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
@@ -135,19 +137,21 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
               <Flex.Item mb={1} key={record.prod_index}>
                 <Tooltip
                   position="bottom"
-                  content={<NoticeBox
-                    info
-                    className="VendingSorted__Description"
-                  >
-                    <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
-                  </NoticeBox>}
+                  content={(
+                    <NoticeBox
+                      info
+                      className="VendingSorted__Description"
+                    >
+                      <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
+                    </NoticeBox>
+                  )}
                 >
                   <VendableItem record={record} />
                 </Tooltip>
                 {!isLast && <hr className="VendingSorted__ItemSeparator" />}
-              </Flex.Item>);
-          }
-          )}
+              </Flex.Item>
+            );
+          })}
       </Flex>
     </Section>);
 

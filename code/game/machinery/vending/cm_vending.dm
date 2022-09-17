@@ -954,6 +954,9 @@ IN_USE						used for vending/denying
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
+	var/list/has_access = can_access(usr)
+	if (has_access[1] == FALSE)
+		return UI_CLOSE
 
 /obj/structure/machinery/cm_vending/sorted/attack_hand(mob/user)
 	if(stat & TIPPED_OVER)

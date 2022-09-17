@@ -347,7 +347,7 @@
 	return
 
 /datum/action/xeno_action/activable/eviscerate/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/Xenomorph/xeno = owner
 
 	if(!action_cooldown_check() || xeno.action_busy)
 		return

@@ -232,9 +232,9 @@ IN_USE						used for vending/denying
 
 	var/mob/living/carbon/human/H = user
 
-	var/list/has_access = can_access(usr)
+	var/list/has_access = can_access(user)
 	if (has_access[1] == FALSE)
-		to_chat(usr, SPAN_WARNING(has_access[2]))
+		to_chat(user, SPAN_WARNING(has_access[2]))
 		vend_fail()
 		return
 
@@ -905,7 +905,7 @@ IN_USE						used for vending/denying
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
-	var/list/has_access = can_access(usr)
+	var/list/has_access = can_access(user)
 	if (has_access[1] == FALSE)
 		return UI_CLOSE
 

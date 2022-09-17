@@ -287,6 +287,13 @@
 /obj/structure/machinery/camera/mortar/isXRay()
 	return TRUE
 
+/obj/structure/machinery/camera/overwatch
+	alpha = 0
+	mouse_opacity = 0
+	density = FALSE
+	invuln = TRUE
+	network = list(CAMERA_NET_OVERWATCH)
+
 /obj/structure/machinery/camera/cas
 	name = "cas camera"
 	invisibility = 101

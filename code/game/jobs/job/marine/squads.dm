@@ -38,6 +38,7 @@
 	var/max_smartgun = 1
 	var/max_leaders = 1
 	var/radio_freq = 1461 //Squad radio headset frequency.
+	var/network //For Overwatch terminals
 
 	///Variables for showing up in various places
 	var/usable = FALSE	 //Is it used in-game?
@@ -95,30 +96,35 @@
 
 /datum/squad/marine/alpha
 	name = SQUAD_MARINE_1
+	network = SQUAD_MARINE_1
 	color = 1
 	access = list(ACCESS_MARINE_ALPHA)
 	radio_freq = ALPHA_FREQ
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
+	network = SQUAD_MARINE_2
 	color = 2
 	access = list(ACCESS_MARINE_BRAVO)
 	radio_freq = BRAVO_FREQ
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
+	network = SQUAD_MARINE_3
 	color = 3
 	access = list(ACCESS_MARINE_CHARLIE)
 	radio_freq = CHARLIE_FREQ
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
+	network = SQUAD_MARINE_4
 	color = 4
 	access = list(ACCESS_MARINE_DELTA)
 	radio_freq = DELTA_FREQ
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
+	network = SQUAD_MARINE_5
 	color = 5
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	radio_freq = ECHO_FREQ
@@ -130,6 +136,7 @@
 
 /datum/squad/marine/cryo
 	name = SQUAD_MARINE_CRYO
+	network = SQUAD_MARINE_CRYO
 	color = 6
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 
@@ -142,6 +149,7 @@
 
 /datum/squad/marine/marsoc
 	name = SQUAD_MARSOC
+	network = SQUAD_MARSOC
 	color = 7
 	radio_freq = MARSOC_FREQ
 	squad_type = "Team"

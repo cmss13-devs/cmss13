@@ -327,6 +327,45 @@
 /obj/structure/machinery/computer/security/almayer_network/vehicle
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
+/obj/structure/machinery/computer/security/overwatch
+	name = "Overwatch Camera Interface"
+	alpha = 0
+	mouse_opacity = 0
+	density = FALSE
+	use_power = 0
+	idle_power_usage = 0
+	active_power_usage = 0
+	network = list("")
+	exproof = TRUE
+	colony_camera_mapload = FALSE
+
+/obj/structure/machinery/computer/security/overwatch/emp_act(severity)
+	return FALSE
+
+/obj/structure/machinery/computer/security/overwatch/tgui_interact(mob/user, datum/tgui/ui)
+	// Update UI
+	ui = SStgui.try_update_ui(user, src, ui)
+
+	// Update the camera, showing static if necessary and updating data if the location has moved.
+	update_active_camera_screen()
+
+	if(!ui)
+		var/user_ref = WEAKREF(user)
+		var/is_living = isliving(user)
+		// Ghosts shouldn't count towards concurrent users, which produces
+		// an audible terminal_on click.
+		if(is_living)
+			concurrent_users += user_ref
+		// Turn on the console
+		if(length(concurrent_users) == 1 && is_living)
+			use_power(active_power_usage)
+		// Register map objects
+		user.client.register_map_obj(cam_screen)
+		user.client.register_map_obj(cam_background)
+		// Open UI
+		ui = new(user, src, "OverwatchCameraConsole", name)
+		ui.open()
+
 /obj/structure/machinery/computer/security/mortar
 	name = "Mortar Camera Interface"
 	alpha = 0

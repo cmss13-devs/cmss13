@@ -38,13 +38,13 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__Button {
-  border: 2px outset #E8E4C9;
-  outline: 1px solid white;
-  text-align: "center";
+  text-align: center;
 }
 
 .VendingSorted__VendButton {
-  width: 30px
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
 }
 
 .VendingSorted__Icon {

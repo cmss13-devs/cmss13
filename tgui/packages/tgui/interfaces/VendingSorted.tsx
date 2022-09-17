@@ -47,9 +47,11 @@ type VenableItem = {
 const VendableItem = (props: VenableItem, context) => {
   const { data, act } = useBackend<VendingData>(context);
   const { record } = props;
-  const available = record.prod_available > 0;
+
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
+  const quantity = data.stock_listing[record.prod_index - 1];
+  const available = quantity > 0;
   return (
     <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
       <Flex.Item>
@@ -77,7 +79,7 @@ const VendableItem = (props: VenableItem, context) => {
 
       <Flex.Item width={5}>
         <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
-          {data.stock_listing[record.prod_index - 1]}
+          {quantity}
         </span>
       </Flex.Item>
 
@@ -88,7 +90,7 @@ const VendableItem = (props: VenableItem, context) => {
         <Button
           className={classes(["VendingSorted__Button", 'VendingSorted__VendButton'])}
           preserveWhitespace
-          icon={available ? "eject" : "xmark"}
+          icon={available ? "circle-down" : "xmark"}
           onClick={() => act('vend', record)}
           textAlign="center"
           disabled={!available} />
@@ -136,7 +138,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
             return (
               <Flex.Item mb={1} key={record.prod_index}>
                 <Tooltip
-                  position="bottom"
+                  position="bottom-start"
                   content={(
                     <NoticeBox
                       info
@@ -176,7 +178,8 @@ export const VendingSorted = (_, context) => {
   const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', "");
   return (
     <Window
-      height={700}
+      height={800}
+      width={500}
       theme={getTheme(data.theme)}
     >
       <Window.Content scrollable>

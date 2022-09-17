@@ -935,8 +935,6 @@ IN_USE						used for vending/denying
 		to_chat(user, SPAN_WARNING(has_access[2]))
 		vend_fail()
 		return
-
-	user.set_interaction(src)
 	tgui_interact(user)
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
@@ -1026,7 +1024,6 @@ IN_USE						used for vending/denying
 	if(!(in_range(src, usr) && isturf(loc) && ishuman(usr)))
 		return
 
-	usr.set_interaction(src)
 	var/mob/living/carbon/human/H = usr
 	switch (action)
 		if ("vend")
@@ -1056,7 +1053,6 @@ IN_USE						used for vending/denying
 			vend_succesfully(L, H, T)
 
 	add_fingerprint(usr)
-	tgui_interact(usr, ui, state)
 
 /obj/structure/machinery/cm_vending/sorted/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)

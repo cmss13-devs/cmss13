@@ -138,8 +138,9 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
                   content={<NoticeBox
                     info
                     className="VendingSorted__Description"
-                  > <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
-                           </NoticeBox>}
+                  >
+                    <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
+                  </NoticeBox>}
                 >
                   <VendableItem record={record} />
                 </Tooltip>

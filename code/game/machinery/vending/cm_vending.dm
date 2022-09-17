@@ -446,6 +446,23 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/proc/vend_succesfully()
 	return
 
+/obj/structure/machinery/cm_vending/proc/can_access(mob/user)
+	if(!hacked)
+		if(!allowed(user))
+			return list(FALSE, "Access denied.")
+
+		var/mob/living/carbon/human/H = user
+		var/obj/item/card/id/I = H.wear_id
+		if(!istype(I))
+			return list(FALSE, "Access denied. No ID card detected")
+
+		if(I.registered_name != user.real_name)
+			return list(FALSE, "Wrong ID card owner detected.")
+
+		if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
+			return list(FALSE, "This machine isn't for you.")
+	return list(TRUE, "")
+
 /obj/structure/machinery/cm_vending/proc/vend_fail()
 	stat |= IN_USE
 	if(vend_delay)
@@ -938,9 +955,35 @@ IN_USE						used for vending/denying
 	if(inoperable())
 		return UI_CLOSE
 
-/obj/structure/machinery/cm_vending/sorted/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/cm_vending/sorted/attack_hand(mob/user)
+	if(stat & TIPPED_OVER)
+		if(user.action_busy)
+			return
+		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
+		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			flip_back()
+		return
+
+	if(inoperable())
+		return
+
+	if(user.client && user.client.remote_control)
+		tgui_interact(user)
+		return
+
+	if(!ishuman(user))
+		vend_fail()
+		return
+
+	var/list/has_access = can_access(usr)
+	if (has_access[1] == FALSE)
+		to_chat(usr, SPAN_WARNING(has_access[2]))
+		vend_fail()
+		return
+
+	user.set_interaction(src)
 	tgui_interact(user)
-	return
 
 /obj/structure/machinery/cm_vending/sorted/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -1038,34 +1081,16 @@ IN_USE						used for vending/denying
 		return
 
 	usr.set_interaction(src)
+	var/mob/living/carbon/human/H = usr
 	switch (action)
 		if ("vend")
 			if(stat & IN_USE)
 				return
-			var/mob/living/carbon/human/H = usr
-			if(!hacked)
-
-				if(!allowed(usr))
-					to_chat(usr, SPAN_WARNING("Access denied."))
-					vend_fail()
-					return
-
-				var/obj/item/card/id/I = H.wear_id
-				if(!istype(I))
-					to_chat(usr, SPAN_WARNING("Access denied. No ID card detected"))
-					vend_fail()
-					return
-
-				if(I.registered_name != usr.real_name)
-					to_chat(usr, SPAN_WARNING("Wrong ID card owner detected."))
-					vend_fail()
-					return
-
-				if(LAZYLEN(vendor_role) && !vendor_role.Find(usr.job))
-					to_chat(usr, SPAN_WARNING("This machine isn't for you."))
-					vend_fail()
-					return
-
+			var/has_access = can_access(usr)
+			if (has_access[1] == FALSE)
+				to_chat(usr, SPAN_WARNING(has_access[2]))
+				vend_fail()
+				return
 
 			var/idx=params["prod_index"]
 			var/list/topic_listed_products = get_listed_products(usr)
@@ -1073,12 +1098,12 @@ IN_USE						used for vending/denying
 
 			var/turf/T = get_appropriate_vend_turf(H)
 			if(T.contents.len > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
+				to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
 				vend_fail()
 				return
 
 			if(L[2] <= 0)	//to avoid dropping more than one product when there's
-				to_chat(H, SPAN_WARNING("[L[1]] is out of stock."))
+				to_chat(usr, SPAN_WARNING("[L[1]] is out of stock."))
 				vend_fail()
 				return		// one left and the player spam click during a lagspike.
 

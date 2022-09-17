@@ -1,8 +1,6 @@
 @use 'sass:color';
 @use 'sass:meta';
 
-$weyland: #af7f38;
-
 @use '../colors.scss' with (
   $primary: #000000,
   $fg-map-keys: (),

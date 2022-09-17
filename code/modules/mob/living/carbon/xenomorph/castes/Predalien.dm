@@ -49,8 +49,8 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/pounce/predalien,
-		/datum/action/xeno_action/activable/predalien_roar,
-		/datum/action/xeno_action/activable/smash,
+		/datum/action/xeno_action/onclick/predalien_roar,
+		/datum/action/xeno_action/onclick/smash,
 		/datum/action/xeno_action/activable/devastate,
 	)
 	mutation_type = "Normal"

@@ -222,6 +222,22 @@ Defined in conflicts.dm of the #defines folder.
 	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN_ATTACHMENT, src) // Because of this, the . = ..() check should be called last, just before firing
 	return TRUE
 
+/obj/item/attachable/proc/handle_attachment_description()
+	switch(slot)
+		if("rail")
+			return "It has a [icon2html(src)] [name] mounted on the top.<br>"
+		if("muzzle")
+			return "It has a [icon2html(src)] [name] mounted on the front.<br>"
+		if("stock")
+			return "It has a [icon2html(src)] [name] for a stock.<br>"
+		if("under")
+			var/output = "It has a [icon2html(src)] [name]"
+			if(flags_attach_features & ATTACH_WEAPON)
+				output += " ([current_rounds]/[max_rounds])"
+			output += " mounted underneath.<br>"
+			return output
+	return "It has a [icon2html(src)] [name] attached.<br>"
+
 
 /////////// Muzzle Attachments /////////////////////////////////
 
@@ -2083,9 +2099,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/extinguisher/examine(mob/user)
 	..()
 	if(internal_extinguisher)
-		to_chat(user, "It contains [internal_extinguisher.reagents.total_volume] units of water left!")
+		to_chat(user, SPAN_NOTICE("It has [internal_extinguisher.reagents.total_volume] unit\s of water left!"))
 		return
-	to_chat(user, "It's empty.")
+	to_chat(user, SPAN_WARNING("It's empty."))
+
+/obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(var/slot)
+	return "It has a [icon2html(src)] [name] ([internal_extinguisher.reagents.total_volume]/[internal_extinguisher.max_water]) mounted underneath.<br>"
 
 /obj/item/attachable/attached_gun/extinguisher/New()
 	..()
@@ -2113,6 +2132,81 @@ Defined in conflicts.dm of the #defines folder.
 	internal_extinguisher.safety = FALSE
 	internal_extinguisher.create_reagents(internal_extinguisher.max_water)
 	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
+
+/obj/item/attachable/attached_gun/flamer_nozzle
+	name = "XM-VESG-1 flamer nozzle"
+	desc = "A special nozzle designed to alter flamethrowers to be used in a more offense orientated manner. As the inside of the nozzle is coated in a special gel and resin substance that takes the fuel that passes through and hardens it. Upon exiting the barrel, a cluster of burning gel is projected instead of a stream of burning naphtha."
+	desc_lore = "The Experimental Volatile-Exothermic-Sphere-Generator clip-on nozzle attachment for the M240A1 incinerator unit was specifically designed to allow marines to launch fireballs into enemy foxholes and bunkers. Despite the gel and resin coating, the flaming ball of naptha tears apart due the drag caused by launching it through the air, leading marines to use the attachment as a makeshift firework launcher during shore leave."
+	icon_state = "flamer_nozzle"
+	attach_icon = "flamer_nozzle_a_1"
+	w_class = SIZE_MEDIUM
+	slot = "under"
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
+	pixel_shift_x = 4
+	pixel_shift_y = 14
+
+	max_range = 6
+	last_fired = 0
+	attachment_firing_delay = 2 SECONDS
+
+	var/projectile_type = /datum/ammo/flamethrower
+	var/fuel_per_projectile = 3
+
+	var/static/list/fire_sounds = list(
+		'sound/weapons/gun_flamethrower1.ogg',
+		'sound/weapons/gun_flamethrower2.ogg',
+		'sound/weapons/gun_flamethrower3.ogg'
+	)
+
+/obj/item/attachable/attached_gun/flamer_nozzle/handle_attachment_description(var/slot)
+	return "It has a [icon2html(src)] [name] mounted beneath the barrel.<br>"
+
+/obj/item/attachable/attached_gun/flamer_nozzle/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
+	. = ..()
+	attach_icon = "flamer_nozzle_a_[G.active_attachable == src ? 0 : 1]"
+	G.update_icon()
+
+/obj/item/attachable/attached_gun/flamer_nozzle/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
+	. = ..()
+
+	if(world.time < gun.last_fired + gun.fire_delay)
+		return
+
+	if((gun.flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(gun.flags_item & WIELDED))
+		to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
+		return
+
+	if(gun.flags_gun_features & GUN_TRIGGER_SAFETY)
+		to_chat(user, SPAN_WARNING("\The [gun] isn't lit!"))
+		return
+
+	if(!istype(gun.current_mag, /obj/item/ammo_magazine/flamer_tank))
+		to_chat(user, SPAN_WARNING("\The [gun] needs a flamer tank installed!"))
+		return
+
+	if(!length(gun.current_mag.reagents.reagent_list))
+		to_chat(user, SPAN_WARNING("\The [gun] doesn't have enough fuel to launch a projectile!"))
+		return
+
+	var/datum/reagent/flamer_reagent = gun.current_mag.reagents.reagent_list[1]
+	if(flamer_reagent.volume < FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
+		to_chat(user, SPAN_WARNING("\The [gun] doesn't have enough fuel to launch a projectile!"))
+		return
+
+	gun.last_fired = world.time
+	gun.current_mag.reagents.remove_reagent(flamer_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
+
+	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), user, src))
+	var/datum/ammo/flamethrower/ammo_datum = new projectile_type
+	ammo_datum.flamer_reagent_type = flamer_reagent.type
+	P.generate_bullet(ammo_datum)
+	P.icon_state = "naptha_ball"
+	P.color = flamer_reagent.color
+	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null, FALSE)
+	var/turf/user_turf = get_turf(user)
+	playsound(user_turf, pick(fire_sounds), 50, TRUE)
+
+	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(gun.current_mag.get_ammo_percent())]</b>% fuel remaining!"))
 
 /obj/item/attachable/verticalgrip
 	name = "vertical grip"

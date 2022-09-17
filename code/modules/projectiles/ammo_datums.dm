@@ -51,6 +51,8 @@
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
 
+	var/flamer_reagent_type = /datum/reagent/napalm/ut
+
 /datum/ammo/New()
 	set_bullet_traits()
 
@@ -210,10 +212,12 @@
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/T, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
-	if(!istype(T)) return
-	if(locate(/obj/flamer_fire) in T) return
+	if(!istype(T))
+		return
+	if(locate(/obj/flamer_fire) in T)
+		return
 
-	var/datum/reagent/napalm/ut/R = new()
+	var/datum/reagent/R = new flamer_reagent_type()
 	new /obj/flamer_fire(T, cause_data, R)
 
 
@@ -2896,7 +2900,7 @@
 	name = "flame"
 	icon_state = "pulse0"
 	damage_type = BURN
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_HITS_TARGET_TURF
 
 	max_range = 6
 	damage = 35
@@ -2919,16 +2923,12 @@
 /datum/ammo/flamethrower/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
-/datum/ammo/flamethrower/tank_flamer/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
-		return
-	if(locate(/obj/flamer_fire) in T)
-		return
-	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, cause_data, R, 2)
+/datum/ammo/flamethrower/tank_flamer
+	flamer_reagent_type = /datum/reagent/napalm/blue
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
+	flamer_reagent_type = /datum/reagent/napalm/blue
 
 	accuracy = HIT_ACCURACY_TIER_8
 	accurate_range = 6
@@ -2940,12 +2940,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
-
-/datum/ammo/flamethrower/sentry_flamer/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
-		return
-	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, cause_data, R, 0)
 
 /datum/ammo/flamethrower/sentry_flamer/glob
 	max_range = 14

@@ -985,17 +985,6 @@ IN_USE						used for vending/denying
 	user.set_interaction(src)
 	tgui_interact(user)
 
-/obj/structure/machinery/cm_vending/sorted/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-	switch(action)
-		if("vend")
-			var target_vend = params["prod_index"]
-			handle_topic(usr, null, list("vend" = target_vend))
-			return FALSE
-	return
-
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	var/list/data = list()
 	data["vendor_name"] = name
@@ -1077,6 +1066,9 @@ IN_USE						used for vending/denying
 		ui.open()
 
 /obj/structure/machinery/cm_vending/sorted/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
 	if(!(in_range(src, usr) && isturf(loc) && ishuman(usr)))
 		return
 

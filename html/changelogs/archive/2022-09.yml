@@ -283,3 +283,11 @@
   - qol: Water tanks can now be wrenched and unwrenched at will.
   - bugfix: Fixed the random anchored watertanks in Almayer
   - bugfix: Fixed anchored OT custom reagent tanks in OT fuel room
+2022-09-17:
+  Stan_Albatross, Thwomper:
+  - rscadd: added the xm88 heavy rifle to req, it is a rifle that must manually chamber
+      each shot. Hitting direct hits will grant "stacks", which increase its ap value
+      and damage up until 40 ap. Sprites by thwomper.
+  - bugfix: trying to fire a weapon with an internal magazine without a chambered
+      round will no longer display a message saying how many rounds are left in the
+      magazine

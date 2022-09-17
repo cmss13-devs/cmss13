@@ -421,7 +421,7 @@
 		valid_count++
 
 	// This is the heal
-	X.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
+	xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
 	xeno.frozen = 0
 	xeno.anchored = 0

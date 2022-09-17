@@ -1033,46 +1033,42 @@ IN_USE						used for vending/denying
 		ui = new(user, src, "VendingSorted", name)
 		ui.open()
 
-/obj/structure/machinery/cm_vending/sorted/Topic(href, href_list)
-	. = ..()
+/obj/structure/machinery/cm_vending/sorted/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(!(in_range(src, usr) && isturf(loc) && ishuman(usr)))
+		return
 
-	handle_topic(usr, href, href_list)
-
-/obj/structure/machinery/cm_vending/sorted/handle_topic(mob/user, href, href_list)
-	if(in_range(src, user) && isturf(loc) && ishuman(user))
-		user.set_interaction(src)
-		if(href_list["vend"])
-
+	usr.set_interaction(src)
+	switch (action)
+		if ("vend")
 			if(stat & IN_USE)
 				return
-
-			var/mob/living/carbon/human/H = user
-
+			var/mob/living/carbon/human/H = usr
 			if(!hacked)
 
-				if(!allowed(H))
-					to_chat(H, SPAN_WARNING("Access denied."))
+				if(!allowed(usr))
+					to_chat(usr, SPAN_WARNING("Access denied."))
 					vend_fail()
 					return
 
 				var/obj/item/card/id/I = H.wear_id
 				if(!istype(I))
-					to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+					to_chat(usr, SPAN_WARNING("Access denied. No ID card detected"))
 					vend_fail()
 					return
 
-				if(I.registered_name != H.real_name)
-					to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+				if(I.registered_name != usr.real_name)
+					to_chat(usr, SPAN_WARNING("Wrong ID card owner detected."))
 					vend_fail()
 					return
 
-				if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-					to_chat(H, SPAN_WARNING("This machine isn't for you."))
+				if(LAZYLEN(vendor_role) && !vendor_role.Find(usr.job))
+					to_chat(usr, SPAN_WARNING("This machine isn't for you."))
 					vend_fail()
 					return
 
-			var/idx=text2num(href_list["vend"])
-			var/list/topic_listed_products = get_listed_products(user)
+
+			var/idx=params["prod_index"]
+			var/list/topic_listed_products = get_listed_products(usr)
 			var/list/L = topic_listed_products[idx]
 
 			var/turf/T = get_appropriate_vend_turf(H)
@@ -1088,8 +1084,8 @@ IN_USE						used for vending/denying
 
 			vend_succesfully(L, H, T)
 
-		add_fingerprint(user)
-		ui_interact(user) //updates the nanoUI window
+	add_fingerprint(usr)
+	tgui_interact(usr, ui, state)
 
 /obj/structure/machinery/cm_vending/sorted/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)

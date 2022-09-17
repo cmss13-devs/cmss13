@@ -10137,14 +10137,6 @@
 /obj/structure/machinery/computer/secure_data{
 	dir = 8
 	},
-/obj/structure/machinery/door_control{
-	id = "cic_interior";
-	name = "Interior CIC Door Control";
-	normaldoorcontrol = 1;
-	pixel_x = -10;
-	pixel_y = -14;
-	req_one_access_txt = "19"
-	},
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/door_control{
 	id = "cic_exterior";
@@ -42551,6 +42543,20 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/shipboard/brig/armory)
+"fDy" = (
+/obj/structure/platform{
+	dir = 8;
+	layer = 2.7
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_two{
+	dir = 4;
+	pixel_x = -16
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
 "fDG" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/machinery/light{
@@ -46804,7 +46810,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	id = ""cic_exterior"";
+	id = "cic_exterior";
 	name = "\improper Combat Information Center"
 	},
 /turf/open/floor/almayer{
@@ -52566,20 +52572,6 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/engineering/engine_core)
-"klb" = (
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.7
-	},
-/obj/structure/machinery/camera/autoname/almayer/dropship_two{
-	dir = 4;
-	pixel_x = -16
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "klH" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4;
@@ -106718,7 +106710,7 @@ btS
 mjN
 bwC
 bxT
-klb
+fDy
 bxT
 xUO
 bDq

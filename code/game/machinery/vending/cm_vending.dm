@@ -232,27 +232,11 @@ IN_USE						used for vending/denying
 
 	var/mob/living/carbon/human/H = user
 
-	if(!hacked)
-		if(!allowed(user))
-			to_chat(user, SPAN_WARNING("Access denied."))
-			vend_fail()
-			return
-
-		var/obj/item/card/id/I = H.wear_id
-		if(!istype(I)) //not wearing an ID
-			to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-			vend_fail()
-			return
-
-		if(I.registered_name != H.real_name)
-			to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-			vend_fail()
-			return
-
-		if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-			to_chat(H, SPAN_WARNING("This machine isn't for you."))
-			vend_fail()
-			return
+	var/list/has_access = can_access(usr)
+	if (has_access[1] == FALSE)
+		to_chat(usr, SPAN_WARNING(has_access[2]))
+		vend_fail()
+		return
 
 	user.set_interaction(src)
 	ui_interact(user)
@@ -501,27 +485,11 @@ IN_USE						used for vending/denying
 
 			var/mob/living/carbon/human/H = user
 
-			if(!hacked)
-				if(!allowed(H))
-					to_chat(H, SPAN_WARNING("Access denied."))
-					vend_fail()
-					return
-
-				var/obj/item/card/id/I = H.wear_id
-				if(!istype(I)) //not wearing an ID
-					to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-					vend_fail()
-					return
-
-				if(I.registered_name != H.real_name)
-					to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-					vend_fail()
-					return
-
-				if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-					to_chat(H, SPAN_WARNING("This machine isn't for you."))
-					vend_fail()
-					return
+			var/list/has_access = can_access(user)
+			if (has_access[1] == FALSE)
+				to_chat(usr, SPAN_WARNING(has_access[2]))
+				vend_fail()
+				return
 
 			var/idx=text2num(href_list["vend"])
 
@@ -671,28 +639,11 @@ IN_USE						used for vending/denying
 
 			var/mob/living/carbon/human/H = user
 
-			if(!hacked)
-
-				if(!allowed(H))
-					to_chat(H, SPAN_WARNING("Access denied."))
-					vend_fail()
-					return
-
-				var/obj/item/card/id/I = H.wear_id
-				if(!istype(I)) //not wearing an ID
-					to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-					vend_fail()
-					return
-
-				if(I.registered_name != H.real_name)
-					to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-					vend_fail()
-					return
-
-				if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-					to_chat(H, SPAN_WARNING("This machine isn't for you."))
-					vend_fail()
-					return
+			var/list/has_access = can_access(user)
+			if (has_access[1] == FALSE)
+				to_chat(user, SPAN_WARNING(has_access[2]))
+				vend_fail()
+				return
 
 			var/idx=text2num(href_list["vend"])
 			var/list/topic_listed_products = get_listed_products(user)
@@ -979,9 +930,9 @@ IN_USE						used for vending/denying
 		vend_fail()
 		return
 
-	var/list/has_access = can_access(usr)
+	var/list/has_access = can_access(user)
 	if (has_access[1] == FALSE)
-		to_chat(usr, SPAN_WARNING(has_access[2]))
+		to_chat(user, SPAN_WARNING(has_access[2]))
 		vend_fail()
 		return
 
@@ -1222,34 +1173,18 @@ IN_USE						used for vending/denying
 			if(stat & IN_USE)
 				return
 
-			var/mob/living/carbon/human/H = usr
-
-			if(!hacked)
-				if(!allowed(H))
-					to_chat(H, SPAN_WARNING("Access denied."))
-					vend_fail()
-					return
-
-				var/obj/item/card/id/I = H.wear_id
-				if(!istype(I)) //not wearing an ID
-					to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-					vend_fail()
-					return
-
-				if(I.registered_name != H.real_name)
-					to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-					vend_fail()
-					return
-
-				if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-					to_chat(H, SPAN_WARNING("This machine isn't for you."))
-					vend_fail()
-					return
+			var/list/has_access = can_access(usr)
+			if (has_access[1] == FALSE)
+				to_chat(usr, SPAN_WARNING(has_access[2]))
+				vend_fail()
+				return
 
 			var/idx=text2num(href_list["vend"])
 			var/list/topic_listed_products = get_listed_products(usr)
 			var/list/L = topic_listed_products[idx]
 			var/cost = L[2]
+
+			var/mob/living/carbon/human/H = usr
 
 			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
 				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))

@@ -258,6 +258,12 @@
 	if(!do_after(src, W.time_to_equip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(src, SPAN_WARNING("You stop putting on \the [W]!"))
 		return
+	if(!W.mob_can_equip(src, slot, disable_warning)) // we have to do these checks again as circumstances may have changed during the do_after
+		if(del_on_fail)
+			qdel(W)
+		else if(!disable_warning)
+			to_chat(src, SPAN_WARNING("You are unable to equip that.")) //Only print if del_on_fail is false
+		return
 	equip_to_slot(W, slot) //This proc should not ever fail.
 	if(permanent)
 		W.flags_inventory |= CANTSTRIP

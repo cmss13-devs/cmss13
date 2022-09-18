@@ -291,3 +291,6 @@
   - bugfix: trying to fire a weapon with an internal magazine without a chambered
       round will no longer display a message saying how many rounds are left in the
       magazine
+2022-09-18:
+  Joelampost:
+  - bugfix: Makes the yautja healing gun not unload if the surgery step is interrupted.

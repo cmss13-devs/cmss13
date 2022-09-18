@@ -232,10 +232,8 @@ IN_USE						used for vending/denying
 
 	var/mob/living/carbon/human/H = user
 
-	var/list/has_access = can_access(user)
-	if (has_access[1] == FALSE)
-		to_chat(user, SPAN_WARNING(has_access[2]))
-		vend_fail()
+	var/has_access = can_access_to_vend(user)
+	if (has_access == FALSE)
 		return
 
 	user.set_interaction(src)
@@ -430,22 +428,30 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/proc/vend_succesfully()
 	return
 
-/obj/structure/machinery/cm_vending/proc/can_access(mob/user)
+/obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user)
 	if(!hacked)
 		if(!allowed(user))
-			return list(FALSE, "Access denied.")
+			to_chat(user, SPAN_WARNING("Access denied."))
+			vend_fail()
+			return FALSE
 
 		var/mob/living/carbon/human/H = user
 		var/obj/item/card/id/I = H.wear_id
 		if(!istype(I))
-			return list(FALSE, "Access denied. No ID card detected")
+			to_chat(user, SPAN_WARNING("Access denied. No ID card detected"))
+			vend_fail()
+			return FALSE
 
 		if(I.registered_name != user.real_name)
-			return list(FALSE, "Wrong ID card owner detected.")
+			to_chat(user, SPAN_WARNING("Wrong ID card owner detected."))
+			vend_fail()
+			return FALSE
 
 		if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
-			return list(FALSE, "This machine isn't for you.")
-	return list(TRUE, "")
+			to_chat(user, SPAN_WARNING("This machine isn't for you."))
+			vend_fail()
+			return FALSE
+	return TRUE
 
 /obj/structure/machinery/cm_vending/proc/vend_fail()
 	stat |= IN_USE
@@ -485,10 +491,8 @@ IN_USE						used for vending/denying
 
 			var/mob/living/carbon/human/H = user
 
-			var/list/has_access = can_access(user)
-			if (has_access[1] == FALSE)
-				to_chat(usr, SPAN_WARNING(has_access[2]))
-				vend_fail()
+			var/list/has_access = can_access_to_vend(user)
+			if (has_access == FALSE)
 				return
 
 			var/idx=text2num(href_list["vend"])
@@ -639,10 +643,8 @@ IN_USE						used for vending/denying
 
 			var/mob/living/carbon/human/H = user
 
-			var/list/has_access = can_access(user)
-			if (has_access[1] == FALSE)
-				to_chat(user, SPAN_WARNING(has_access[2]))
-				vend_fail()
+			var/list/has_access = can_access_to_vend(user)
+			if (has_access == FALSE)
 				return
 
 			var/idx=text2num(href_list["vend"])
@@ -695,11 +697,11 @@ IN_USE						used for vending/denying
 
 		add_fingerprint(user)
 		ui_interact(user) //updates the nanoUI window
-		
+
 /obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
 	if(!(vending_human.marine_buy_flags & listed_products[4]))
 		return FALSE
-	
+
 	if(listed_products[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
 		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
 			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
@@ -712,7 +714,7 @@ IN_USE						used for vending/denying
 		else
 			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
 		return TRUE
-		
+
 	vending_human.marine_buy_flags &= ~listed_products[4]
 	return TRUE
 
@@ -905,7 +907,7 @@ IN_USE						used for vending/denying
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
-	var/list/has_access = can_access(user)
+	var/list/has_access = can_access_to_vend(user)
 	if (has_access[1] == FALSE)
 		return UI_CLOSE
 
@@ -930,7 +932,7 @@ IN_USE						used for vending/denying
 		vend_fail()
 		return
 
-	var/list/has_access = can_access(user)
+	var/list/has_access = can_access_to_vend(user)
 	if (has_access[1] == FALSE)
 		to_chat(user, SPAN_WARNING(has_access[2]))
 		vend_fail()
@@ -1021,19 +1023,17 @@ IN_USE						used for vending/denying
 	. = ..()
 	if(.)
 		return
-	if(!(in_range(src, usr) && isturf(loc) && ishuman(usr)))
-		return
 
 	var/mob/living/carbon/human/H = usr
 	switch (action)
 		if ("vend")
 			if(stat & IN_USE)
 				return
-			var/has_access = can_access(usr)
+			var/has_access = can_access_to_vend(usr)
 			if (has_access[1] == FALSE)
 				to_chat(usr, SPAN_WARNING(has_access[2]))
 				vend_fail()
-				return
+				return TRUE
 
 			var/idx=params["prod_index"]
 			var/list/topic_listed_products = get_listed_products(usr)
@@ -1043,12 +1043,12 @@ IN_USE						used for vending/denying
 			if(T.contents.len > 25)
 				to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
 				vend_fail()
-				return
+				return TRUE
 
 			if(L[2] <= 0)	//to avoid dropping more than one product when there's
 				to_chat(usr, SPAN_WARNING("[L[1]] is out of stock."))
 				vend_fail()
-				return		// one left and the player spam click during a lagspike.
+				return TRUE		// one left and the player spam click during a lagspike.
 
 			vend_succesfully(L, H, T)
 
@@ -1169,7 +1169,7 @@ IN_USE						used for vending/denying
 			if(stat & IN_USE)
 				return
 
-			var/list/has_access = can_access(usr)
+			var/list/has_access = can_access_to_vend(usr)
 			if (has_access[1] == FALSE)
 				to_chat(usr, SPAN_WARNING(has_access[2]))
 				vend_fail()

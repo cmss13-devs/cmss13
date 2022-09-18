@@ -63,7 +63,7 @@
 
 
 /datum/effects/stamina/human/tier4
-    pain_message = "You feel like you could drop any moment now!"
+    pain_message = "You feel extremely exhausted!"
     emote_message = list("is having trouble keeping their eyes open.")
     slowdown = STAMINA_SPEED_SLOW
 
@@ -84,7 +84,7 @@
 
 
 /datum/effects/stamina/human/tier5
-    pain_message = "You feel like you could drop any moment now!"
+    pain_message = "You cannot find the energy to move anymore!"
     emote_message = list("is having trouble standing.")
     slowdown = STAMINA_SPEED_VERYSLOW
 

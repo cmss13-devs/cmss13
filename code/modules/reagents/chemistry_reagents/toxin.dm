@@ -350,3 +350,15 @@
 	reagent_state = SOLID
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_TOXIC = 1)
+
+/datum/reagent/toxin/traquilizer
+	name = "Tranquilizer"
+	id = "tranq"
+	description = "A synthetic central nervous system depressant that is designed to quickly succumb victims into unconciousness."
+	reagent_state = LIQUID
+	color = "#008659" // rgb: 0, 0, 103
+	custom_metabolism = AMOUNT_PER_TIME(1, 20 SECONDS) //Default 0.2
+	overdose = REAGENTS_OVERDOSE/2
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_SEDATIVE = 3)

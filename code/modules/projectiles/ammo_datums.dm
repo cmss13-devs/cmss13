@@ -314,9 +314,15 @@
 	name = "light pistol bullet"
 
 /datum/ammo/bullet/pistol/tranq
-	name = "tranquilizer bullet"
+	name = "tranquilizer dart"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	stamina_damage = 30
+	stamina_damage = 15
+	var/amount = 4
+
+/datum/ammo/bullet/pistol/tranq/on_hit_mob(mob/M, obj/item/projectile/P, mob/user) //Special effects when hitting mobs.
+	M.reagents.add_reagent("tranq", amount, , , user)
+	to_chat(M,SPAN_XENOHIGHDANGER("\The [src] injects something into you...."))
+
 
 //2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor.
 //Limited by its lack of versatility and lower supply, so marines finally have an answer for flanker castes that isn't just buckshot.

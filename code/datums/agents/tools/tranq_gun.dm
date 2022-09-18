@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/pistol/tranquilizer
     name = "Tranquilizer gun"
-    desc = "Contains horse tranquilizer darts. Useful at knocking people out."
+    desc = "Contains horse tranquilizer darts. Useful at knocking people out. Each shot injects 4u of tranquilizer and should be expected to last no longer than one minute and thirty seconds. More doses must be used to incapacitate a subject for longer. Caution must be excercised as the effects as it takes a small amount of time to successfully depress them target's central nervous sysstem enough for them to be incapacitated."
     icon_state = "pk9r"
     item_state = "pk9r"
     current_mag = /obj/item/ammo_magazine/pistol/tranq

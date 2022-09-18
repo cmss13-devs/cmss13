@@ -440,24 +440,27 @@
 /datum/chem_property/neutral/sedative
 	name = PROPERTY_SEDATIVE
 	code = "SDT"
-	description = "Causes the body to release melatonin resulting in increased sleepiness."
+	description = "Depresses the nervous system, resulting in slowed brain activity and incapacitation. Overdose can inhibit breathing and cause brain damage."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/neutral/sedative/process(mob/living/M, var/potency = 1, delta_time)
-	if(M.confused < 25 && M.sleeping < 20)
+	if(M.confused < 25)
 		M.confused += potency * delta_time
+		M.apply_stamina_damage(M.confused * 2)
 	if(M.confused > 25)
-		M.AdjustSleeping(potency * delta_time)
+		M.KnockDown(potency * delta_time) // if they somehow aren't knocked out yet, this'll get em
 		M.confused -= potency * delta_time //so when they wake up they aren't still confused
 	else if(prob(12.5 * delta_time))
+		to_chat(M,SPAN_HIGHDANGER("You feel tired...."))
 		M.emote("yawn")
 
 /datum/chem_property/neutral/sedative/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	M.AdjustKnockedout(0.5 * potency * delta_time)
+	M.apply_damage(potency * delta_time, OXY)
 
 /datum/chem_property/neutral/sedative/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.apply_damage(2.5 * potency * delta_time, OXY)
+	M.apply_damage(0.5 * potency * delta_time, BRAIN)
 
 /datum/chem_property/neutral/hyperthrottling
 	name = PROPERTY_HYPERTHROTTLING

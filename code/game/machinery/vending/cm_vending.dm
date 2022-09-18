@@ -881,9 +881,22 @@ IN_USE						used for vending/denying
 
 		// icon setup
 		var/typepath = listed_products[i][3]
-		var/obj/item/I = typepath
-		var/icon_ref = initial(I.icon)
-		var/icon_state = initial(I.icon_state)
+
+		var/icon_ref = null
+		var/icon_state = null
+		var/desc = ""
+		if (istype(typepath, /obj/effect/essentials_set))
+			var/obj/effect/essentials_set/I = typepath
+			var/obj/item/target = I.spawned_gear_list[1]
+			icon_ref = initial(target.icon)
+			icon_state = initial(target.icon_state)
+			desc = initial(target.desc)
+
+		if (istype(typepath, /obj/item))
+			var/obj/item/I = typepath
+			icon_ref = initial(I.icon)
+			icon_state = initial(I.icon_state)
+			desc = initial(target.desc)
 		var/map_decor = initial(I.map_specific_decoration)
 		if (map_decor)
 			icon_ref = "icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi"
@@ -891,7 +904,8 @@ IN_USE						used for vending/denying
 		var/result = icon2html(r, world, icon_state, sourceonly=TRUE)
 
 		product_icon_list[item_name] = list(
-			"href"=result
+			"href"=result,
+			"desc"=desc
 		)
 
 //this proc, well, populates product list based on roundstart amount of players
@@ -905,8 +919,15 @@ IN_USE						used for vending/denying
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
-	var/list/has_access = can_access_to_vend(user)
-	if (has_access == FALSE)
+	if(!allowed(user))
+		return UI_CLOSE
+	var/mob/living/carbon/human/H = user
+	var/obj/item/card/id/I = H.wear_id
+	if(!istype(I))
+		return UI_CLOSE
+	if(I.registered_name != user.real_name)
+		return UI_CLOSE
+	if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
 		return UI_CLOSE
 
 /obj/structure/machinery/cm_vending/sorted/attack_hand(mob/user)
@@ -968,7 +989,7 @@ IN_USE						used for vending/denying
 			"prod_color" = myprod[4],
 			"prod_initial" = initial_amount,
 			"prod_icon" = result,
-			"prod_desc" = initial(I.desc)
+			"prod_desc" = result["desc"]
 		)
 
 		if (is_category == 1)

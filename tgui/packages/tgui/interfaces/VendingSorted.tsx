@@ -63,14 +63,26 @@ const VendableItem = (props: VenableItem, context) => {
       </Flex.Item>
 
       <Flex.Item grow={1}>
-        <span className={classes([
-          'VendingSorted__Text',
-          'VendingSorted__RegularItemText',
-          isMandatory && 'VendingSorted__MandatoryItemText',
-          isRecommended && 'VendingSorted__RecommendedItemText',
-        ])}>
-          {record.prod_name} <Icon name="circle-info" />
-        </span>
+        <Tooltip
+          position="bottom-start"
+          content={(
+            <NoticeBox
+              info
+              className="VendingSorted__Description"
+            >
+              <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
+            </NoticeBox>
+          )}
+        >
+          <span className={classes([
+            'VendingSorted__Text',
+            'VendingSorted__RegularItemText',
+            isMandatory && 'VendingSorted__MandatoryItemText',
+            isRecommended && 'VendingSorted__RecommendedItemText',
+          ])}>
+            {record.prod_name} <Icon name="circle-info" />
+          </span>
+        </Tooltip>
       </Flex.Item>
 
       <Flex.Item>
@@ -137,19 +149,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
             const isLast = (filteredCategories.length - 1) === i;
             return (
               <Flex.Item mb={1} key={record.prod_index}>
-                <Tooltip
-                  position="bottom-start"
-                  content={(
-                    <NoticeBox
-                      info
-                      className="VendingSorted__Description"
-                    >
-                      <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
-                    </NoticeBox>
-                  )}
-                >
-                  <VendableItem record={record} />
-                </Tooltip>
+                <VendableItem record={record} />
                 {!isLast && <hr className="VendingSorted__ItemSeparator" />}
               </Flex.Item>
             );
@@ -213,6 +213,5 @@ export const VendingSorted = (_, context) => {
           </Flex>
         </Box>
       </Window.Content>
-
     </Window>);
 };

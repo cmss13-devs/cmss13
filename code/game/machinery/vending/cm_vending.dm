@@ -230,8 +230,6 @@ IN_USE						used for vending/denying
 		vend_fail()
 		return
 
-	var/mob/living/carbon/human/H = user
-
 	var/has_access = can_access_to_vend(user)
 	if (has_access == FALSE)
 		return
@@ -908,7 +906,7 @@ IN_USE						used for vending/denying
 	if(inoperable())
 		return UI_CLOSE
 	var/list/has_access = can_access_to_vend(user)
-	if (has_access[1] == FALSE)
+	if (has_access == FALSE)
 		return UI_CLOSE
 
 /obj/structure/machinery/cm_vending/sorted/attack_hand(mob/user)
@@ -933,9 +931,7 @@ IN_USE						used for vending/denying
 		return
 
 	var/list/has_access = can_access_to_vend(user)
-	if (has_access[1] == FALSE)
-		to_chat(user, SPAN_WARNING(has_access[2]))
-		vend_fail()
+	if (has_access == FALSE)
 		return
 	tgui_interact(user)
 
@@ -1030,9 +1026,7 @@ IN_USE						used for vending/denying
 			if(stat & IN_USE)
 				return
 			var/has_access = can_access_to_vend(usr)
-			if (has_access[1] == FALSE)
-				to_chat(usr, SPAN_WARNING(has_access[2]))
-				vend_fail()
+			if (has_access == FALSE)
 				return TRUE
 
 			var/idx=params["prod_index"]
@@ -1170,9 +1164,7 @@ IN_USE						used for vending/denying
 				return
 
 			var/list/has_access = can_access_to_vend(usr)
-			if (has_access[1] == FALSE)
-				to_chat(usr, SPAN_WARNING(has_access[2]))
-				vend_fail()
+			if (has_access == FALSE)
 				return
 
 			var/idx=text2num(href_list["vend"])

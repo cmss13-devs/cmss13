@@ -207,6 +207,9 @@ export const VendingSorted = (_, context) => {
               <Flex.Item key={i} className={"VendingSorted__Category"}>
                 <ViewVendingCategory category={category} />
               </Flex.Item>))}
+            <Flex.Item height={15}>
+              &nbsp;
+            </Flex.Item>
           </Flex>
         </Box>
       </Window.Content>

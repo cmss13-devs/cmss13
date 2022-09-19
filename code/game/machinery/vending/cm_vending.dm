@@ -617,7 +617,6 @@ IN_USE						used for vending/denying
 		var/prod_type = L[3]
 		var/obj/our_item = new prod_type(T)
 		H.put_in_any_hand_if_possible(our_item, disable_warning = TRUE)
-		vending_stat_bump(prod_type, src.type)
 	else
 		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
 		sleep(15)
@@ -727,11 +726,11 @@ IN_USE						used for vending/denying
 
 		add_fingerprint(user)
 		ui_interact(user) //updates the nanoUI window
-		
+
 /obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
 	if(!(vending_human.marine_buy_flags & listed_products[4]))
 		return FALSE
-	
+
 	if(listed_products[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
 		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
 			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
@@ -744,7 +743,7 @@ IN_USE						used for vending/denying
 		else
 			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
 		return TRUE
-		
+
 	vending_human.marine_buy_flags &= ~listed_products[4]
 	return TRUE
 
@@ -768,7 +767,6 @@ IN_USE						used for vending/denying
 			prod_type = gloves_type
 
 		var/obj/item/O = new prod_type(loc)
-		vending_stat_bump(prod_type, src.type)
 
 		var/bitf = L[4]
 		if(bitf)
@@ -1022,7 +1020,6 @@ IN_USE						used for vending/denying
 			new prod_path(T, TRUE)
 		else
 			new prod_path(T)
-		vending_stat_bump(prod_path, src.type)
 		L[2]--		//taking 1 from amount of products in vendor
 
 	else
@@ -1187,7 +1184,6 @@ IN_USE						used for vending/denying
 			sleep(vend_delay)
 		var/prod_type = L[3]
 		new prod_type(T)
-		vending_stat_bump(prod_type, src.type)
 	else
 		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
 		sleep(15)

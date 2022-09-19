@@ -859,18 +859,18 @@
 			return FALSE
 		var/atom/barrier = path_turf.handle_barriers(xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
 		if(barrier != path_turf)
-			var/tail_strike_cooldown_multiplier = barrier.handle_tail_strike(xeno)
-			if(!tail_strike_cooldown_multiplier)
+			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(xeno)
+			if(!tail_stab_cooldown_multiplier)
 				to_chat(xeno, SPAN_WARNING("There's something blocking your strike!"))
 			else
-				apply_cooldown(cooldown_modifier = tail_strike_cooldown_multiplier)
+				apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
 				xeno_attack_delay(xeno)
 			return FALSE
 
-	var/tail_strike_cooldown_multiplier = targetted_atom.handle_tail_strike(xeno)
-	if(tail_strike_cooldown_multiplier)
+	var/tail_stab_cooldown_multiplier = targetted_atom.handle_tail_stab(xeno)
+	if(tail_stab_cooldown_multiplier)
 		xeno.animation_attack_on(targetted_atom)
-		apply_cooldown(cooldown_modifier = tail_strike_cooldown_multiplier)
+		apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
 		xeno_attack_delay(xeno)
 		return ..()
 

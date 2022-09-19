@@ -522,5 +522,5 @@ Parameters are passed from New.
 
 // returns a modifier for how much the tail stab should be cooldowned by
 // returning a 0 makes it do nothing
-/atom/proc/handle_tail_strike(var/mob/living/carbon/Xenomorph/xeno)
-	return TAILSTRIKE_COOLDOWN_NONE
+/atom/proc/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE

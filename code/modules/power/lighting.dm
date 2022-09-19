@@ -591,13 +591,13 @@
 		sleep(1)
 		qdel(src)
 
-/obj/structure/machinery/light/handle_tail_strike(var/mob/living/carbon/Xenomorph/xeno)
+/obj/structure/machinery/light/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
 	if(is_broken())
 		to_chat(xeno, SPAN_WARNING("\The [src] is already broken!"))
 		return TRUE
 	xeno.visible_message(SPAN_DANGER("[xeno] smashes \the [src] with its tail!"), SPAN_DANGER("You smash \the [src] with your tail!"), null, 5)
 	broken() //Smashola!
-	return TAILSTRIKE_COOLDOWN_VERY_LOW
+	return TAILSTAB_COOLDOWN_VERY_LOW
 
 // the light item
 // can be tube or bulb subtypes

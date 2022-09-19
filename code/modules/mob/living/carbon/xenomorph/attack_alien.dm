@@ -352,7 +352,7 @@
 		M.apply_damage(10)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/barricade/handle_tail_strike(mob/living/carbon/Xenomorph/xeno)
+/obj/structure/barricade/handle_tail_stab(mob/living/carbon/Xenomorph/xeno)
 	take_damage((xeno.melee_damage_upper * 1.2) * brute_multiplier)
 	if(barricade_hitsound)
 		playsound(src, barricade_hitsound, 25, 1)
@@ -363,7 +363,7 @@
 	if(is_wired)
 		xeno.visible_message(SPAN_DANGER("The barbed wire slices into \the [xeno]'s tail!"), SPAN_DANGER("The barbed wire slices into your tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		xeno.apply_damage(5)
-	return TAILSTRIKE_COOLDOWN_NORMAL
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/surface/rack/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)

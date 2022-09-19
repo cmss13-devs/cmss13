@@ -64,10 +64,23 @@ export const CommandTablet = (_props, context) => {
                     evacuation procedures.
                   </NoticeBox>
                 )}
+                <Flex.Item>
+                  <Button.Confirm
+                    fluid={1}
+                    color="yellow"
+                    icon="phone-volume"
+                    content={"Send Distress Beacon"}
+                    confirmColor="bad"
+                    confirmContent="Confirm?"
+                    confirmIcon="question"
+                    onClick={() => act('distress')}
+                    disabled={!canEvac} />
+                </Flex.Item>
                 {evacstatus === 0 && (
                   <Flex.Item>
                     <Button.Confirm
                       fluid={1}
+                      color="yellow"
                       icon="door-open"
                       content={"Initiate Evacuation"}
                       confirmColor="bad"

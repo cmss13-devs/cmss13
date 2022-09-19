@@ -92,7 +92,10 @@
 		return FALSE
 
 	var/mob/living/carbon/Xenomorph/X = owner
-	return X.selected_resin
+	if(X)
+		return X.selected_resin
+	else
+		return FALSE
 
 /datum/action/xeno_action/activable/secrete_resin/queen_macro //see above for reasoning
 	ability_primacy = XENO_PRIMARY_ACTION_5

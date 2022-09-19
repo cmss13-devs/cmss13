@@ -300,11 +300,14 @@
 	},
 /area/fiorina/station/chapel)
 "ahR" = (
-/obj/structure/platform_decoration{
-	dir = 1
+/obj/structure/monorail{
+	name = "launch track"
 	},
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/power_ring)
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
 "aif" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname{
 	dir = 1;
@@ -17343,6 +17346,16 @@
 	tag = "icon-darkpurplefull2"
 	},
 /area/fiorina/station/research_cells)
+"kqe" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/obj/structure/platform{
+	dir = 8;
+	layer = 2.5
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
 "kqr" = (
 /obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor/prison{
@@ -86078,7 +86091,7 @@ qHC
 fxY
 qcT
 hlK
-dOX
+lRT
 deL
 dzl
 dzl
@@ -86297,7 +86310,7 @@ bTo
 pcu
 sVv
 bQM
-hfT
+rBF
 dzl
 bVk
 vAi
@@ -86503,7 +86516,7 @@ eWh
 hlK
 rKB
 xDw
-cAW
+dhi
 fQV
 fyC
 qOk
@@ -87351,7 +87364,7 @@ dlW
 uxY
 tNu
 xDw
-cAW
+fdV
 jlH
 tWI
 llQ
@@ -87774,7 +87787,7 @@ dlW
 dlW
 pbF
 uxY
-dOX
+lRT
 xDw
 xDw
 xDw
@@ -89502,10 +89515,10 @@ xnp
 pIK
 bzO
 bzO
-ahR
 bzO
 bzO
-mxQ
+bzO
+bzO
 bzO
 bzO
 bQM
@@ -89707,12 +89720,12 @@ hbC
 hbC
 hbC
 ssD
-yls
+kqe
 eML
 eXr
 eXr
 npz
-yls
+ahR
 vrN
 dUZ
 dUZ

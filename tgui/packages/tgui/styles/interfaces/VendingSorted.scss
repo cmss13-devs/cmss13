@@ -48,14 +48,7 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__Icon {
-  width: 100%;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-  transition: 0.3s filter linear;
-  -webkit-transition: 0.3s -webkit-filter linear;
-  -moz-transition: 0.3s -moz-filter linear;
-  -ms-transition: 0.3s -ms-filter linear;
-  -o-transition: 0.3s -o-filter linear;
+  max-width: 30px;
 }
 
 .VendingSorted__Text {

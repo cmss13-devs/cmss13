@@ -64,27 +64,30 @@ const RecordName = (props: RecordNameProps) => {
         isRecommended && 'VendingSorted__RecommendedItemText',
       ])}>
         {record.prod_name} {description && <Icon name="circle-info" />}
-      </span>)
-  }
+      </span>
+    );
+  };
 
   if (!description) {
-    return display_text()
+    return display_text();
   }
 
-  return (<Tooltip
-    position="bottom-start"
-    content={(
-      <NoticeBox
-        info
-        className="VendingSorted__Description"
-      >
-        <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
-      </NoticeBox>
-    )}
-  >
-    {display_text()}
-  </Tooltip>)
-}
+  return (
+    <Tooltip
+      position="bottom-start"
+      content={(
+        <NoticeBox
+          info
+          className="VendingSorted__Description"
+        >
+          <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
+        </NoticeBox>
+      )}
+    >
+      {display_text()}
+    </Tooltip>
+  );
+};
 
 const VendableItem = (props: VenableItem, context) => {
   const { data, act } = useBackend<VendingData>(context);
@@ -102,7 +105,7 @@ const VendableItem = (props: VenableItem, context) => {
         <Box className="VendingSorted__Spacer" />
       </Flex.Item>
       <Flex.Item grow={1}>
-        <RecordName record={record}/>
+        <RecordName record={record} />
       </Flex.Item>
 
       <Flex.Item>
@@ -127,7 +130,8 @@ const VendableItem = (props: VenableItem, context) => {
           textAlign="center"
           disabled={!available} />
       </Flex.Item>
-    </Flex>);
+    </Flex>
+  );
 };
 
 type VendingCategoryProps = {

@@ -9,12 +9,18 @@ export const CommandTablet = (_props, context) => {
 
   const AlertLevel = data.alert_level;
 
+  const minimumTimeElapsed = (
+    data.worldtime > data.distresstimelock);
+
   const canAnnounce = (
     data.endtime < data.worldtime);
 
   const canEvac = (
     evacstatus === 0,
     AlertLevel >= 2);
+
+  const canDistress = (
+    canEvac && data.distresscd && minimumTimeElapsed < data.worldtime);
 
   return (
     <Window
@@ -74,7 +80,7 @@ export const CommandTablet = (_props, context) => {
                     confirmContent="Confirm?"
                     confirmIcon="question"
                     onClick={() => act('distress')}
-                    disabled={!canEvac} />
+                    disabled={!canDistress} />
                 </Flex.Item>
                 {evacstatus === 0 && (
                   <Flex.Item>

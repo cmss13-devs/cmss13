@@ -244,3 +244,71 @@
   - rscadd: Adds the XM-VESG-1 Flamer Nozzle, an attachment for the standard M240A1
       incinerator unit. Available in Req and Squad-Req as an underbarrel attachment.
   - imageadd: Resprites the M240A1 and M240-T incinerator units.
+2022-09-16:
+  Forest2001,Joe lampost, Triiodine, Stan_Albatross,Geevies:
+  - rscadd: Adds a new surgery for use only by predators to heal
+  - rscadd: Adds the medicomp
+  - rscdel: will remove all herbs from the predator ship
+  - qol: makes predator healing easier for preds themselves by guaranteeing they are
+      healed to full after completing the steps of
+  - balance: will remove the ability for preds to instantly kit to 90% HP mid fight.
+  - bugfix: Fixed the predator health bar not showing the predators current health
+      correctly
+  - soundadd: Added a loud roar for predators using the final stage of the healing
+      process which points out their location.
+  - soundadd: Adds two unique sounds for the tools in use during the surgery
+  - tweak: removes all of the brute and burn healing properties of thwei changed the
+      name of the healing crystal.
+  - mapadd: removed 80% of the herbs from the predator ship left the ones in the arena
+      and replaced the racks with more trophy stands also added two extra medicomps
+      in the pred ship medbay if for some reason someone loses the one they spawn
+      with.
+  - spriteadd: Adds four new surgical tools for predators to use during the medicomps
+      operation
+  - imageadd: add Adds a sprite for the medicomp itself
+  Jeser:
+  - bugfix: Fixed DEAFENING echo in vehicle interiors.
+  - rscadd: Added new viewport to van - windshield and fixed it having armored vehicles
+      version of viewports.
+  - rscadd: Added proper handling of explosions for vehicle hardpoint modules. They
+      will now take damage instead of having chance to be instantly deleted even from
+      smallest explosions.
+  - rscadd: Hardpoints will show warning message once their integrity reaches zero
+      due to explosion or when being uninstalled from a vehicle before being deleted.
+  - code_imp: Added grille, chairs, windows (not framed), inflatable wall and door,
+      various Trijent Dam props, trees, colony floodlights, hydro trays vehicle bumps
+      handling.
+  totalepicness:
+  - qol: Liquid tanks are now destroyable by bullets and xenos alike
+  - qol: Water tanks can now be wrenched and unwrenched at will.
+  - bugfix: Fixed the random anchored watertanks in Almayer
+  - bugfix: Fixed anchored OT custom reagent tanks in OT fuel room
+2022-09-17:
+  Stan_Albatross, Thwomper:
+  - rscadd: added the xm88 heavy rifle to req, it is a rifle that must manually chamber
+      each shot. Hitting direct hits will grant "stacks", which increase its ap value
+      and damage up until 40 ap. Sprites by thwomper.
+  - bugfix: trying to fire a weapon with an internal magazine without a chambered
+      round will no longer display a message saying how many rounds are left in the
+      magazine
+2022-09-18:
+  Joelampost:
+  - bugfix: Makes the yautja healing gun not unload if the surgery step is interrupted.
+  Triiodine:
+  - imageadd: 'Updated, resprited, or otherwise replaced the following sprites: Bay12
+      Incinerator trashcans, morgue boxes and trays, telescreens, floor igniters,
+      retro televisions, gas sensors, stationary flashbulbs, glass cases (lamarr and
+      captain''s lazer gun), Falling Falcon''s patch, USCM patch, ties, armbands,
+      signal wands, mineral coins, toyhammer, banana, manuals and books, mesh grilles,
+      T-Comms stock parts, regular stock parts, assemblies (igniter, timer, signaler,
+      etc..), telebaton, harpoon, energy swords, energy cutlass, HEFA sword, handmade
+      stunprod, butterfly knife, wired rod, stun baton, cult tome, cult sword, mercenary
+      sword, captain''s sword, riot shield, switchblade, scythe, claymore, ceremonial
+      unathi knife, LTB projectiles, missle projectiles, and sledgehammers.'
+  - imageadd: 'Added, but did not code in: Maintenance jacks and station handaxes.'
+2022-09-19:
+  mullenpaul:
+  - rscadd: TGUI interface for many cm custom vendors
+  - qol: Search bar for item search for vendors
+  - qol: Item description appears as popup in vendor UI
+  - qol: Item icons are displayed in vendor UI

@@ -176,7 +176,6 @@
 	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
 
 
-
 /obj/item/clothing/gloves/yautja/thrall
 	name = "thrall bracers"
 	desc = "A pair of strange alien bracers, adapted for human biology."
@@ -202,6 +201,7 @@
 
 	var/exploding = 0
 	var/inject_timer = 0
+	var/healing_capsule_timer = 0
 	var/disc_timer = 0
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/name_active = TRUE
@@ -209,6 +209,7 @@
 	var/caster_material = "ebony"
 
 	var/obj/item/card/id/bracer_chip/embedded_id
+
 
 	var/caster_deployed = FALSE
 	var/obj/item/weapon/gun/energy/yautja/plasma_caster/caster
@@ -740,7 +741,7 @@
 
 
 /obj/item/clothing/gloves/yautja/hunter/verb/injectors()
-	set name = "Create Self-Heal Crystal"
+	set name = "Create Stabilising Crystal"
 	set category = "Yautja.Utility"
 	set desc = "Create a focus crystal to energize your natural healing processes."
 	set src in usr
@@ -760,7 +761,7 @@
 		return FALSE
 
 	if(inject_timer)
-		to_chat(caller, SPAN_WARNING("You recently activated the healing crystal. Be patient."))
+		to_chat(caller, SPAN_WARNING("You recently activated the stabilising crystal. Be patient."))
 		return FALSE
 
 	if(!drain_power(caller, 1000))
@@ -777,8 +778,49 @@
 
 /obj/item/clothing/gloves/yautja/hunter/proc/injectors_ready()
 	if(ismob(loc))
-		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new healing crystal is ready to be created."))
+		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new stabilising crystal is ready to be created."))
 	inject_timer = FALSE
+
+/obj/item/clothing/gloves/yautja/hunter/verb/healing_capsule()
+	set name = "Create Healing Capsule"
+	set category = "Yautja.Utility"
+	set desc = "Create a healing capsule for your healing gun."
+	set src in usr
+	. = healing_capsule_internal(usr, FALSE)
+
+
+/obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_internal(var/mob/caller, var/forced = FALSE)
+	if(caller.is_mob_incapacitated())
+		return FALSE
+
+	. = check_random_function(caller, forced)
+	if(.)
+		return
+
+	if(caller.get_active_hand())
+		to_chat(caller, SPAN_WARNING("Your active hand must be empty!"))
+		return FALSE
+
+	if(healing_capsule_timer)
+		to_chat(usr, SPAN_WARNING("Your bracer is still generating a new healing capsule!"))
+		return FALSE
+
+	if(!drain_power(caller, 800))
+		return FALSE
+
+	healing_capsule_timer = TRUE
+	addtimer(CALLBACK(src, .proc/healing_capsule_ready), 4 MINUTES)
+
+	to_chat(caller, SPAN_NOTICE("You feel your bracer churn as it pops out a healing capsule."))
+	var/obj/item/tool/surgery/healing_gel/O = new(caller)
+	caller.put_in_active_hand(O)
+	playsound(src, 'sound/machines/click.ogg', 15, 1)
+	return TRUE
+
+/obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_ready()
+	if(ismob(loc))
+		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new healing capsule is ready to be created."))
+	healing_capsule_timer = FALSE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_disk()
 	set name = "Call Smart-Disc"

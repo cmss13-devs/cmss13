@@ -876,15 +876,17 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
 	populate_product_list(1.2)
+	build_icons(listed_products)
 
-	for (var/i in 1 to length(listed_products))
+/obj/structure/machinery/cm_vending/sorted/proc/build_icons(var/list/items)
+	for (var/i in 1 to length(items))
 		// initial item count setup
-		var/item_name = listed_products[i][1]
-		var/initial_count = listed_products[i][2]
+		var/item_name = items[i][1]
+		var/initial_count = items[i][2]
 		initial_product_count[item_name] = initial_count
 
 		// icon setup
-		var/typepath = listed_products[i][3]
+		var/typepath = items[i][3]
 
 		var/icon_ref = null
 		var/icon_state = null
@@ -967,9 +969,6 @@ IN_USE						used for vending/denying
 	data["theme"] = vendor_theme
 
 	var/list/ui_listed_products = get_listed_products(user)
-	if(!LAZYLEN(ui_listed_products))	//runtimed for vendors without goods in them
-		to_chat(user, SPAN_WARNING("Vendor wasn't properly initialized, tell an admin!"))
-		return
 
 	var/list/ui_categories = list()
 	for (var/i in 1 to length(ui_listed_products))
@@ -1017,9 +1016,6 @@ IN_USE						used for vending/denying
 	var/list/data = list()
 
 	var/list/ui_listed_products = get_listed_products(user)
-	if(!LAZYLEN(ui_listed_products))	//runtimed for vendors without goods in them
-		to_chat(user, SPAN_WARNING("Vendor wasn't properly initialized, tell an admin!"))
-		return
 
 	var/list/ui_categories = list()
 

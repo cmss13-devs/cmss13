@@ -200,6 +200,7 @@ export const VendingSorted = (_, context) => {
   const { data } = useBackend<VendingData>(context);
   const categories = data.displayed_categories ?? [];
   const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', "");
+  const isEmpty = categories.length === 0;
   return (
     <Window
       height={800}
@@ -207,34 +208,48 @@ export const VendingSorted = (_, context) => {
       theme={getTheme(data.theme)}
     >
       <Window.Content scrollable>
-        <Box className={classes([
-          "VendingSorted__SearchBox",
-        ])}>
-          <Flex align="center" justify="space-between" align-items="stretch" className="Section__title">
-            <Flex.Item>
-              <span className="Section__titleText">Search</span>
-            </Flex.Item>
-            <Flex.Item>
-              <Input
-                value={searchTerm}
-                onInput={(_, value) => setSearchTerm(value)}
-                width="160px"
-              />
-            </Flex.Item>
-          </Flex>
-        </Box>
+        {!isEmpty
+          && (
+            <Box className={classes([
+              "VendingSorted__SearchBox",
+            ])}>
+              <Flex align="center" justify="space-between" align-items="stretch" className="Section__title">
+                <Flex.Item>
+                  <span className="Section__titleText">Search</span>
+                </Flex.Item>
+                <Flex.Item>
+                  <Input
+                    value={searchTerm}
+                    onInput={(_, value) => setSearchTerm(value)}
+                    width="160px"
+                  />
+                </Flex.Item>
+              </Flex>
+            </Box>
+          )}
 
-        <Box className="VendingSorted__ItemContainer">
-          <Flex direction="column">
-            {categories.map((category, i) => (
-              <Flex.Item key={i} className={"VendingSorted__Category"}>
-                <ViewVendingCategory category={category} />
-              </Flex.Item>))}
-            <Flex.Item height={15}>
-              &nbsp;
-            </Flex.Item>
-          </Flex>
-        </Box>
+        {isEmpty
+          && (
+            <NoticeBox danger className="VendingSorted__ItemContainer">
+              Nothing in here seems to be for you.
+              If this is a mistake contact your local administrator.
+            </NoticeBox>
+          )}
+
+        {!isEmpty
+          && (
+            <Box className="VendingSorted__ItemContainer">
+              <Flex direction="column">
+                {categories.map((category, i) => (
+                  <Flex.Item key={i} className={"VendingSorted__Category"}>
+                    <ViewVendingCategory category={category} />
+                  </Flex.Item>))}
+                <Flex.Item height={15}>
+                &nbsp;
+                </Flex.Item>
+              </Flex>
+            </Box>
+          )}
       </Window.Content>
     </Window>);
 };

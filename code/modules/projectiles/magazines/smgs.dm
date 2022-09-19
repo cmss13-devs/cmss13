@@ -14,7 +14,7 @@
 	caliber = "10x20mm"
 	icon_state = "m39_HV"
 	max_rounds = 48
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	gun_type = /obj/item/weapon/gun/smg/m39
 	default_ammo = /datum/ammo/bullet/smg/m39
 

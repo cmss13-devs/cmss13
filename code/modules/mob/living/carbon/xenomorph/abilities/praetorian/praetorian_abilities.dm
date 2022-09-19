@@ -174,13 +174,13 @@
 
 	var/click_miss_cooldown = 15
 
-/datum/action/xeno_action/activable/prae_dodge
+/datum/action/xeno_action/onclick/prae_dodge
 	name = "Dodge"
 	action_icon_state = "prae_dodge"
 	ability_name = "dodge"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_dodge
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	plasma_cost = 200
 	xeno_cooldown = 190
 

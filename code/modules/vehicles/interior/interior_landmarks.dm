@@ -217,7 +217,6 @@
 /obj/effect/landmark/interior/spawn/telephone/on_load(var/datum/interior/I)
 	var/obj/structure/transmitter/Phone = new(loc)
 
-	Phone.name = name
 	Phone.icon = icon
 	Phone.icon_state = icon_state
 	Phone.layer = layer
@@ -252,9 +251,9 @@
 
 	qdel(src)
 
-// Landmark for spawning windows
+//This one spawns armored vehicles version of viewport
 /obj/effect/landmark/interior/spawn/interior_viewport
-	name = "vehicle viewport spawner"
+	name = "armored vehicle viewport spawner"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "viewport"
 	layer = INTERIOR_DOOR_LAYER
@@ -269,5 +268,43 @@
 	V.pixel_y = pixel_y
 	V.alpha = alpha
 	V.update_icon()
+
+	qdel(src)
+
+//Landmark for spawning windows
+/obj/effect/landmark/interior/spawn/interior_viewport/simple
+	name = "simple vehicle viewport spawner"
+	icon = 'icons/obj/vehicles/interiors/general.dmi'
+	icon_state = "viewport_simple"
+	layer = INTERIOR_DOOR_LAYER
+	color = "#009cb8"
+
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/on_load(var/datum/interior/I)
+	var/obj/structure/interior_viewport/simple/V = new(loc)
+
+	V.vehicle = I.exterior
+	V.pixel_x = pixel_x
+	V.pixel_y = pixel_y
+	V.alpha = alpha
+
+	qdel(src)
+
+//Landmark for van's windshield
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield
+	name = "windshield viewport spawner"
+	icon = 'icons/obj/vehicles/interiors/van.dmi'
+	icon_state = "windshield_viewport_top"
+	layer = INTERIOR_DOOR_LAYER
+	color = "#009cb8"
+	alpha = 80
+
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield/on_load(var/datum/interior/I)
+	var/obj/structure/interior_viewport/simple/windshield/V = new(loc)
+
+	V.vehicle = I.exterior
+	V.pixel_x = pixel_x
+	V.pixel_y = pixel_y
+	V.alpha = alpha
+	V.icon = icon
 
 	qdel(src)

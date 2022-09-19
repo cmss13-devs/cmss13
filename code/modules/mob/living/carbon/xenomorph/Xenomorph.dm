@@ -150,6 +150,7 @@
 	//Naming variables
 	var/caste_type = "Drone"
 	var/nicknumber = 0 //The number after the name. Saved right here so it transfers between castes.
+	var/full_designation = ""
 
 	//This list of inherent verbs lets us take any proc basically anywhere and add them.
 	//If they're not a xeno subtype it might crash or do weird things, like using human verb procs
@@ -225,6 +226,7 @@
 	/// The damage dealt by a xeno whenever they take damage near someone
 	var/acid_blood_damage = 25
 	var/nocrit = FALSE
+	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
 
 
 	//////////////////////////////////////////////////////////////////
@@ -435,6 +437,7 @@
 			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
 				if(istype(hide))
 					layer = XENO_HIDING_LAYER
+					hide.button.icon_state = "template_active"
 
 		for(var/obj/item/W in oldXeno.contents) //Drop stuff
 			oldXeno.drop_inv_item_on_ground(W)
@@ -540,8 +543,8 @@
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
-
 		age_xeno()
+	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 	color = in_hive.color
 
 	//Queens have weird, hardcoded naming conventions based on age levels. They also never get nicknumbers

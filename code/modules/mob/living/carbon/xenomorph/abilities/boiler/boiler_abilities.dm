@@ -44,6 +44,7 @@
 	var/cooldown_duration = 350
 
 	var/speed_buff_amount = 0.5
+	var/movespeed_buff_applied = FALSE
 
 	// List of types of actions to place on 20-second CD
 	// if you ever want to subtype this for a strain or whatever, just change this var on the subtype

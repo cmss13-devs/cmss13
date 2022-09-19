@@ -260,7 +260,7 @@
 	notes_add(target.ckey, "Human Name Banned by [user.ckey]", user.mob)
 
 	to_chat(target, SPAN_HIGHDANGER("Warning: You were banned from using human names by [user.ckey]."))
-	playsound_client(target_mob.client, sound('sound/effects/adminhelp_new.ogg'), src, 50)
+	playsound_client(target_client, sound('sound/effects/adminhelp_new.ogg'), src, 50)
 
 	var/new_name = random_name(target.gender)
 	target_client.prefs.real_name = new_name

@@ -13,7 +13,7 @@
 	var/working = FALSE
 	var/stored_metal = 0
 	var/max_metal = 500
-	var/list/products
+	var/global/list/products
 	var/print_time // time at which an organ will be printed
 	var/datum/bioprinter_recipe/printing_item // what it is printing
 
@@ -24,6 +24,7 @@
 		for(var/i in subtypesof(/datum/bioprinter_recipe))
 			var/datum/bioprinter_recipe/bp_recipe = new i
 			products += bp_recipe
+			QDEL_NULL(i)
 
 /obj/structure/machinery/bioprinter/update_icon()
 	. = ..()
@@ -39,15 +40,22 @@
 
 /obj/structure/machinery/bioprinter/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/sheet/metal))
+		if(stored_metal == max_metal)
+			to_chat(user, SPAN_WARNING("\The [src] is full!"))
+			return
 		var/obj/item/stack/sheet/metal/M = W
-		for(var/i in 1 to M.amount)
-			stored_metal += 100
-			stored_metal = sanitize_integer(stored_metal, 0, max_metal, 0)
-			M.use(1)
-			if(stored_metal == max_metal)
-				break
+		var/sheets_to_eat = (round((max_metal - stored_metal), 100))/100
+		if(!sheets_to_eat)
+			sheets_to_eat = 1
+		if(M.amount >= sheets_to_eat)
+			stored_metal += sheets_to_eat * 100
+			M.use(sheets_to_eat)
+		else
+			stored_metal += M.amount * 100
+			M.use(M.amount)
+		if(stored_metal > max_metal)
+			stored_metal = max_metal
 		to_chat(user, SPAN_NOTICE("\The [src] processes \the [W]."))
-		return
 	else
 		return..()
 

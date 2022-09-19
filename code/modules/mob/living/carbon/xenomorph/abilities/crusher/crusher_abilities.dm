@@ -239,6 +239,7 @@
 
 /datum/action/xeno_action/activable/tumble
 	name = "Tumble"
+	ability_name = "tumble"
 	action_icon_state = "tumble"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_tumble
 	action_type = XENO_ACTION_CLICK

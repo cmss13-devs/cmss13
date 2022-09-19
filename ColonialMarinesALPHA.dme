@@ -1960,6 +1960,7 @@
 #include "code\modules\surgery\headreattach.dm"
 #include "code\modules\surgery\implant.dm"
 #include "code\modules\surgery\internal_bleeding.dm"
+#include "code\modules\surgery\mcomp_tendwounds.dm"
 #include "code\modules\surgery\organs_internal.dm"
 #include "code\modules\surgery\robolimbs.dm"
 #include "code\modules\surgery\robotic_organs_internal.dm"

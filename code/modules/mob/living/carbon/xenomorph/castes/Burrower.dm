@@ -57,7 +57,7 @@
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
-		/datum/action/xeno_action/activable/tremor, //fourth macro
+		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,

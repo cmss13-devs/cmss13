@@ -154,30 +154,31 @@
 	..()
 	return
 
-/datum/action/xeno_action/onclick/crusher_shield/use_ability(atom/Tar)
-	var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/onclick/crusher_shield/use_ability(atom/Target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
 
-	if (!istype(X))
+	if (!istype(xeno))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!xeno.check_state())
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	X.visible_message(SPAN_XENOWARNING("[X] hunkers down and bolsters its defenses!"), SPAN_XENOHIGHDANGER("You hunker down and bolster your defenses!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] hunkers down and bolsters its defenses!"), SPAN_XENOHIGHDANGER("You hunker down and bolster your defenses!"))
+	button.icon_state = "template_active"
 
-	X.create_crusher_shield()
+	xeno.create_crusher_shield()
 
-	X.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_CRUSHER, /datum/xeno_shield/crusher)
-	X.overlay_shields()
+	xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_CRUSHER, /datum/xeno_shield/crusher)
+	xeno.overlay_shields()
 
-	X.explosivearmor_modifier += 1000
-	X.recalculate_armor()
+	xeno.explosivearmor_modifier += 1000
+	xeno.recalculate_armor()
 
 	addtimer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE)
 	addtimer(CALLBACK(src, .proc/remove_shield), 70, TIMER_UNIQUE)
@@ -187,31 +188,32 @@
 	return
 
 /datum/action/xeno_action/onclick/crusher_shield/proc/remove_explosion_immunity()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if (!istype(xeno))
 		return
 
-	X.explosivearmor_modifier -= 1000
-	X.recalculate_armor()
-	to_chat(X, SPAN_XENODANGER("Your immunity to explosion damage ends!"))
+	xeno.explosivearmor_modifier -= 1000
+	xeno.recalculate_armor()
+	to_chat(xeno, SPAN_XENODANGER("Your immunity to explosion damage ends!"))
 
 /datum/action/xeno_action/onclick/crusher_shield/proc/remove_shield()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if (!istype(xeno))
 		return
 
 	var/datum/xeno_shield/found
-	for (var/datum/xeno_shield/XS in X.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_CRUSHER)
-			found = XS
+	for (var/datum/xeno_shield/shield in xeno.xeno_shields)
+		if (shield.shield_source == XENO_SHIELD_SOURCE_CRUSHER)
+			found = shield
 			break
 
 	if (istype(found))
 		found.on_removal()
 		qdel(found)
-		to_chat(X, SPAN_XENOHIGHDANGER("You feel your enhanced shield end!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You feel your enhanced shield end!"))
+		button.icon_state = "template"
 
-	X.overlay_shields()
+	xeno.overlay_shields()
 
 /datum/action/xeno_action/onclick/charger_charge/use_ability(atom/Target)
 	var/mob/living/carbon/Xenomorph/Xeno = owner
@@ -227,7 +229,7 @@
 		RegisterSignal(Xeno, COMSIG_MOVABLE_ENTERED_RIVER, .proc/handle_river)
 		RegisterSignal(Xeno, COMSIG_LIVING_PRE_COLLIDE, .proc/handle_collision)
 		RegisterSignal(Xeno, COMSIG_XENO_START_CHARGING, .proc/start_charging)
-		button.icon_state = "template_on"
+		button.icon_state = "template_active"
 	else
 		stop_momentum()
 		UnregisterSignal(Xeno, list(

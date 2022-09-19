@@ -12,6 +12,7 @@
  */
 var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("barbed wire", /obj/item/stack/barbed_wire, 1, 1, 20, time = 1 SECONDS, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED), \
+	new/datum/stack_recipe("razorwire", /obj/structure/razorwire, 3, time = 1 SECONDS, one_per_turf = ONE_TYPE_PER_TURF, on_floor = TRUE, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED), \
 	new/datum/stack_recipe("metal barricade", /obj/structure/barricade/metal, 4, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS), \
 	new/datum/stack_recipe("folding metal barricade", /obj/structure/barricade/plasteel/metal, 6, time = 3 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, min_time = 1.5 SECONDS), \
 	new/datum/stack_recipe("handrail", /obj/structure/barricade/handrail, 2, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS), \
@@ -69,6 +70,12 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	sheettype = "metal"
 	stack_id = "metal"
 
+	radial_buildables = list(
+		/obj/structure/barricade/metal,
+		/obj/structure/barricade/plasteel/metal,
+		/obj/structure/razorwire
+	)
+
 /obj/item/stack/sheet/metal/small_stack
 	amount = STACK_10
 
@@ -114,6 +121,10 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	amount_sprites = TRUE
 	sheettype = "plasteel"
 	stack_id = "plasteel"
+
+	radial_buildables = list(
+		/obj/structure/barricade/plasteel
+	)
 
 /obj/item/stack/sheet/plasteel/New(var/loc, var/amount=null)
 	recipes = plasteel_recipes

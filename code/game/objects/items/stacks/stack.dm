@@ -9,6 +9,8 @@
  * Stacks
  */
 
+#define SHOW_FULL_LIST "More Recipes"
+
 /obj/item/stack
 	gender = PLURAL
 
@@ -23,12 +25,24 @@
 	maptext_x = 4
 	maptext_y = 3
 
+	var/list/radial_buildables
+	var/list/radial_options
+
 /obj/item/stack/Initialize(mapload, var/amount = null)
 	. = ..()
 	if(amount)
 		src.amount = amount
 	if(!singular_name)
 		singular_name = name
+	if(length(radial_buildables))
+		var/list/rebuilt_radial_buildables = list()
+		radial_options = list()
+		radial_options[SHOW_FULL_LIST] = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_more")
+		for(var/atom/buildable as anything in radial_buildables)
+			var/buildable_name = capitalize_first_letters(initial(buildable.name))
+			radial_options[buildable_name] = image(icon = initial(buildable.icon), icon_state = initial(buildable.icon_state))
+			rebuilt_radial_buildables[buildable_name] = buildable
+		radial_buildables = rebuilt_radial_buildables
 	update_icon()
 
 /*Check the location of the stack, and if it's in a storage item or a mob's inventory, display the number of items in the stack.
@@ -76,7 +90,34 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 /obj/item/stack/attack_self(mob/user)
 	..()
-	list_recipes(user)
+	if(length(radial_options) && HAS_RADIAL_PREF(user))
+		open_radial_menu(user)
+	else
+		list_recipes(user)
+
+/obj/item/stack/proc/open_radial_menu(var/mob/user)
+	var/option = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, .proc/in_hand_check))
+	if(!option)
+		return
+	if(user.get_active_hand() != src)
+		to_chat(user, SPAN_WARNING("\The [src] must remain in your active hand!"))
+		return
+	if(option == SHOW_FULL_LIST)
+		list_recipes(user)
+	else
+		var/selected_recipe = radial_buildables[option]
+		for(var/datum/stack_recipe/recipe as anything in recipes)
+			if(recipe.result_type == selected_recipe)
+				make_recipe(user, recipe, 1)
+				if(!QDELETED(src))
+					open_radial_menu(user)
+				return
+		to_chat(user, SPAN_DANGER("Something went wrong, we couldn't find that recipe! Contact a developer."))
+
+/obj/item/stack/proc/in_hand_check()
+	if(!ismob(loc))
+		return FALSE
+	return TRUE
 
 /obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
 	if(!recipes)
@@ -157,89 +198,94 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		multiplier = round(multiplier)
 		if(multiplier < 1)
 			return  //href exploit protection
-		if(R.skill_lvl)
-			if(ishuman(usr) && !skillcheck(usr, R.skill_req, R.skill_lvl))
-				to_chat(usr, SPAN_WARNING("You are not trained to build this..."))
-				return
-		if(amount < R.req_amount * multiplier)
-			if(R.req_amount * multiplier > 1)
-				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [R.req_amount*multiplier] [R.title]\s!"))
-			else
-				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [R.title]!"))
-			return
+		make_recipe(usr, R, multiplier)
 
-		if(check_one_per_turf(R,usr))
-			return
-
-		if(R.on_floor && istype(usr.loc, /turf/open))
-			var/turf/open/OT = usr.loc
-			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc // for M2C HMG, look at smartgun_mount.dm
-			if(!OT.allow_construction)
-				to_chat(usr, SPAN_WARNING("The [R.title] must be constructed on a proper surface!"))
-				return
-
-			if(AC)
-				to_chat(usr, SPAN_WARNING("The [R.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
-				return
-
-		if((R.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
-			to_chat(usr, SPAN_WARNING("The [R.title] must be built on snow!"))
-			return
-
-		if(R.time)
-			if(usr.action_busy)
-				return
-			var/time_mult = skillcheck(usr, SKILL_CONSTRUCTION, 2) ? 1 : 2
-			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."), \
-				SPAN_NOTICE("You start assembling \a [R.title]."))
-			if(!do_after(usr, max(R.time * time_mult, R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				return
-
-			//check again after some time has passed
-			if(amount < R.req_amount * multiplier)
-				return
-
-			if(check_one_per_turf(R,usr))
-				return
-
-		var/atom/O = new R.result_type(usr.loc, usr)
-		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [O]."),
-		SPAN_NOTICE("You assemble \a [O]."))
-		O.setDir(usr.dir)
-		if(R.max_res_amount > 1)
-			var/obj/item/stack/new_item = O
-			new_item.amount = R.res_amount * multiplier
-		amount -= R.req_amount * multiplier
-		update_icon()
-
-		if(amount <= 0)
-			var/oldsrc = src
-			src = null //dont kill proc after qdel()
-			usr.drop_inv_item_on_ground(oldsrc)
-			qdel(oldsrc)
-
-		if(istype(O,/obj/item/stack))	//floor stacking convenience
-			var/obj/item/stack/S = O
-			for(var/obj/item/stack/F in usr.loc)
-				if(S.stack_id == F.stack_id && S != F)
-					var/diff = F.max_amount - F.amount
-					if (S.amount < diff)
-						F.amount += S.amount
-						qdel(S)
-					else
-						S.amount -= diff
-						F.amount += diff
-					break
-
-		O?.add_fingerprint(usr)
-
-		//BubbleWrap - so newly formed boxes are empty
-		if(isstorage(O))
-			for (var/obj/item/I in O)
-				qdel(I)
-		//BubbleWrap END
 	if(src && usr.interactee == src) //do not reopen closed window
 		INVOKE_ASYNC(src, .proc/interact, usr)
+
+/obj/item/stack/proc/make_recipe(var/mob/user, var/datum/stack_recipe/recipe, var/multiplier = 1)
+	if(recipe.skill_lvl)
+		if(ishuman(user) && !skillcheck(user, recipe.skill_req, recipe.skill_lvl))
+			to_chat(user, SPAN_WARNING("You are not trained to build this..."))
+			return
+	if(amount < recipe.req_amount * multiplier)
+		if(recipe.req_amount * multiplier > 1)
+			to_chat(user, SPAN_WARNING("You need more [name] to build \the [recipe.req_amount*multiplier] [recipe.title]\s!"))
+		else
+			to_chat(user, SPAN_WARNING("You need more [name] to build \the [recipe.title]!"))
+		return
+
+	if(check_one_per_turf(recipe, user))
+		return
+
+	if(recipe.on_floor && istype(user.loc, /turf/open))
+		var/turf/open/OT = user.loc
+		var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in user.loc // for M2C HMG, look at smartgun_mount.dm
+		if(!OT.allow_construction)
+			to_chat(user, SPAN_WARNING("The [recipe.title] must be constructed on a proper surface!"))
+			return
+
+		if(AC)
+			to_chat(user, SPAN_WARNING("The [recipe.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
+			return
+
+	if((recipe.flags & RESULT_REQUIRES_SNOW) && !(istype(user.loc, /turf/open/snow) || istype(user.loc, /turf/open/auto_turf/snow)))
+		to_chat(user, SPAN_WARNING("The [recipe.title] must be built on snow!"))
+		return
+
+	if(recipe.time)
+		if(user.action_busy)
+			return
+		var/time_mult = skillcheck(user, SKILL_CONSTRUCTION, 2) ? 1 : 2
+		user.visible_message(SPAN_NOTICE("[user] starts assembling \a [recipe.title]."), \
+			SPAN_NOTICE("You start assembling \a [recipe.title]."))
+		if(!do_after(user, max(recipe.time * time_mult, recipe.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			return
+
+		//check again after some time has passed
+		if(amount < recipe.req_amount * multiplier)
+			return
+
+		if(check_one_per_turf(recipe, user))
+			return
+
+	var/atom/O = new recipe.result_type(user.loc, user)
+	user.visible_message(SPAN_NOTICE("[user] assembles \a [O]."),
+	SPAN_NOTICE("You assemble \a [O]."))
+	O.setDir(user.dir)
+	if(recipe.max_res_amount > 1)
+		var/obj/item/stack/new_item = O
+		new_item.amount = recipe.res_amount * multiplier
+	amount -= recipe.req_amount * multiplier
+	update_icon()
+
+	if(amount <= 0)
+		var/oldsrc = src
+		src = null //dont kill proc after qdel()
+		user.drop_inv_item_on_ground(oldsrc)
+		qdel(oldsrc)
+
+	if(istype(O,/obj/item/stack))	//floor stacking convenience
+		var/obj/item/stack/S = O
+		for(var/obj/item/stack/F in user.loc)
+			if(S.stack_id == F.stack_id && S != F)
+				var/diff = F.max_amount - F.amount
+				if (S.amount < diff)
+					F.amount += S.amount
+					qdel(S)
+				else
+					S.amount -= diff
+					F.amount += diff
+				break
+
+	O?.add_fingerprint(user)
+
+	//BubbleWrap - so newly formed boxes are empty
+	if(isstorage(O))
+		for (var/obj/item/I in O)
+			qdel(I)
+	//BubbleWrap END
+
 
 /obj/item/stack/proc/check_one_per_turf(var/datum/stack_recipe/R, var/mob/user)
 	switch(R.one_per_turf)
@@ -381,3 +427,5 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		src.title = title
 		src.recipes = recipes
 		src.req_amount = req_amount
+
+#undef SHOW_FULL_LIST

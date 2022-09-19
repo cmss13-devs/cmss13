@@ -67,7 +67,7 @@ export const CommandTablet = (_props, context) => {
                 <Flex.Item>
                   <Button.Confirm
                     fluid={1}
-                    color="yellow"
+                    color="orange"
                     icon="phone-volume"
                     content={"Send Distress Beacon"}
                     confirmColor="bad"
@@ -80,7 +80,7 @@ export const CommandTablet = (_props, context) => {
                   <Flex.Item>
                     <Button.Confirm
                       fluid={1}
-                      color="yellow"
+                      color="orange"
                       icon="door-open"
                       content={"Initiate Evacuation"}
                       confirmColor="bad"

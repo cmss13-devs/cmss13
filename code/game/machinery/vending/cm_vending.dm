@@ -915,12 +915,6 @@ IN_USE						used for vending/denying
 				r = getFlatIcon(target_obj)
 				qdel(target_obj)
 
-		if (ispath(typepath, /obj/item/ammo_box/magazine))
-			var/obj/item/ammo_box/magazine/target = new typepath()
-			var/obj/item/magazine = target.magazine_type
-			desc = "A magazine box containing: [initial(magazine.desc)]"
-			qdel(target)
-
 		var/result = icon2html(r, world, icon_state, sourceonly=TRUE)
 		product_icon_list[item_name] = list(
 			"href"=result,
@@ -1037,9 +1031,6 @@ IN_USE						used for vending/denying
 	return data
 
 /obj/structure/machinery/cm_vending/sorted/tgui_interact(mob/user, datum/tgui/ui)
-	if(!ishuman(user))
-		return
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "VendingSorted", name)

@@ -20,21 +20,12 @@
 	var/current_cooldown_start_time = 0
 	var/current_cooldown_duration = 0
 
-	// Charging
-	/// When set, an ability has to be charged up by being the active ability before it can be used
-	var/charge_time = null
-	var/charge_ready = TRUE
-	var/charge_timer_id = TIMER_ID_NULL
-
 	var/charges = NO_ACTION_CHARGES
 
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
 	if(charges != NO_ACTION_CHARGES)
 		RegisterSignal(src, COMSIG_XENO_ACTION_USED, .proc/remove_charge)
-	if(charge_time)
-		charge_ready = FALSE
-	update_button_icon()
 
 /datum/action/xeno_action/proc/remove_charge()
 	SIGNAL_HANDLER
@@ -71,6 +62,8 @@
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
+	if(!istype(X))
+		return FALSE
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
@@ -85,10 +78,7 @@
 	if(!can_use_action())
 		button.color = rgb(128,0,0,128)
 	else if(!action_cooldown_check())
-		if(cooldown_timer_id == TIMER_ID_NULL) // if this is null, we're here because we haven't charged up yet
-			button.color = rgb(200, 65, 115, 200)
-		else
-			button.color = rgb(240,180,0,200)
+		button.color = rgb(240,180,0,200)
 	else
 		button.color = rgb(255,255,255,255)
 
@@ -151,24 +141,18 @@
 			[X.client && X.client.prefs && X.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		button.icon_state = "template"
 		X.selected_ability = null
-		if(charge_time)
-			stop_charging_ability()
 	else
 		to_chat(X, "You will now use [ability_name] with \
 			[X.client && X.client.prefs && X.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		if(X.selected_ability)
 			X.selected_ability.button.icon_state = "template"
-			if(X.selected_ability.charge_time)
-				X.selected_ability.stop_charging_ability()
 			X.selected_ability = null
 		button.icon_state = "template_on"
 		X.selected_ability = src
 		if(charges != NO_ACTION_CHARGES)
 			to_chat(X, SPAN_INFO("It has [charges] uses left."))
-		if(charge_time)
-			start_charging_ability()
 
-/datum/action/xeno_action/activable/remove_from(mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/remove_from(mob/living/carbon/Xenomorph/X)
 	..()
 	if(X.selected_ability == src)
 		X.selected_ability = null
@@ -191,7 +175,7 @@
 // IF YOU WANT AGE SCALING SET IT
 // THIS PROC SHOULD NEVER BE OVERRIDDEN BY CHILDREN
 // AND SHOULD __ALWAYS__ BE CALLED IN USE_ABILITY
-/datum/action/xeno_action/proc/apply_cooldown(var/cooldown_modifier = 1)
+/datum/action/xeno_action/proc/apply_cooldown()
 	if(!owner)
 		return
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -208,7 +192,7 @@
 		*/
 		return
 
-	var/cooldown_to_apply = xeno_cooldown * cooldown_modifier
+	var/cooldown_to_apply = xeno_cooldown
 
 	if(!cooldown_to_apply)
 		return
@@ -243,7 +227,7 @@
 // Checks whether the action is on cooldown. Should not be overridden.
 // Returns TRUE if the action can be used and FALSE otherwise.
 /datum/action/xeno_action/proc/action_cooldown_check()
-	return (cooldown_timer_id == TIMER_ID_NULL) && (charge_time == null || charge_ready)
+	return (cooldown_timer_id == TIMER_ID_NULL)
 
 // What occurs when a cooldown ends NATURALLY. Ties into ability_cooldown_over, which tells the source Xeno
 // that it can do stuff again and handles any other end-of-cooldown behavior. ability_cooldown_over
@@ -326,23 +310,6 @@
 			to_chat(owner, SPAN_XENODANGER("[cooldown_message]"))
 		else
 			to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
-
-/datum/action/xeno_action/proc/start_charging_ability()
-	charge_timer_id = addtimer(CALLBACK(src, .proc/finish_charging_ability), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
-	to_chat(owner, SPAN_XENOWARNING("You start charging up your <b>[name]</b>!"))
-
-/datum/action/xeno_action/proc/finish_charging_ability()
-	charge_timer_id = TIMER_ID_NULL
-	charge_ready = TRUE
-	update_button_icon()
-
-/datum/action/xeno_action/proc/stop_charging_ability()
-	charge_ready = FALSE
-	update_button_icon()
-	if(charge_timer_id == TIMER_ID_NULL)
-		return
-	deltimer(charge_timer_id)
-	charge_timer_id = TIMER_ID_NULL
 
 // Helper proc to get an action on a target Xeno by type.
 // Used to interact with abilities from the outside

@@ -885,21 +885,25 @@ IN_USE						used for vending/denying
 		var/icon_ref = null
 		var/icon_state = null
 		var/desc = ""
-		if (istype(typepath, /obj/effect/essentials_set))
-			var/obj/effect/essentials_set/I = typepath
-			var/obj/item/target = I.spawned_gear_list[1]
-			icon_ref = initial(target.icon)
-			icon_state = initial(target.icon_state)
-			desc = initial(target.desc)
 
-		if (istype(typepath, /obj/item))
+		if (ispath(typepath, /obj/effect/essentials_set))
+			var/obj/effect/essentials_set/I = typepath
+			var/list/spawned_list = initial(I.spawned_gear_list)
+			var/len = LAZYLEN(spawned_list)
+			if(len)
+				var/obj/item/target = spawned_list[1]
+				icon_ref = initial(target.icon)
+				icon_state = initial(target.icon_state)
+				desc = initial(target.desc)
+
+		if (ispath(typepath, /obj/item))
 			var/obj/item/I = typepath
 			icon_ref = initial(I.icon)
 			icon_state = initial(I.icon_state)
-			desc = initial(target.desc)
-		var/map_decor = initial(I.map_specific_decoration)
-		if (map_decor)
-			icon_ref = "icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi"
+			desc = initial(I.desc)
+			var/map_decor = initial(I.map_specific_decoration)
+			if (map_decor)
+				icon_ref = "icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi"
 		var/icon/r = icon(icon_ref, icon_state, SOUTH, 1)
 		var/result = icon2html(r, world, icon_state, sourceonly=TRUE)
 
@@ -978,8 +982,6 @@ IN_USE						used for vending/denying
 		var/result = product_icon_list[p_name]
 		var/initial_amount = initial_vals[p_name]
 		var/is_category = p_amount < 0
-		var/typepath = myprod[3]
-		var/obj/item/I = typepath
 
 		//forming new list with index, name, amount, available or not, color and add it to display_list
 		var/display_item = list(

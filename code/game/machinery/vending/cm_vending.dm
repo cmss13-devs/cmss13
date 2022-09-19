@@ -231,7 +231,7 @@ IN_USE						used for vending/denying
 		return
 
 	var/has_access = can_access_to_vend(user)
-	if (has_access == FALSE)
+	if (!has_access)
 		return
 
 	user.set_interaction(src)
@@ -426,28 +426,32 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/proc/vend_succesfully()
 	return
 
-/obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user)
+/obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, var/display=TRUE)
 	if(!hacked)
 		if(!allowed(user))
-			to_chat(user, SPAN_WARNING("Access denied."))
-			vend_fail()
+			if(display)
+				to_chat(user, SPAN_WARNING("Access denied."))
+				vend_fail()
 			return FALSE
 
 		var/mob/living/carbon/human/H = user
 		var/obj/item/card/id/I = H.wear_id
 		if(!istype(I))
-			to_chat(user, SPAN_WARNING("Access denied. No ID card detected"))
-			vend_fail()
+			if(display)
+				to_chat(user, SPAN_WARNING("Access denied. No ID card detected"))
+				vend_fail()
 			return FALSE
 
 		if(I.registered_name != user.real_name)
-			to_chat(user, SPAN_WARNING("Wrong ID card owner detected."))
-			vend_fail()
+			if(display)
+				to_chat(user, SPAN_WARNING("Wrong ID card owner detected."))
+				vend_fail()
 			return FALSE
 
 		if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
-			to_chat(user, SPAN_WARNING("This machine isn't for you."))
-			vend_fail()
+			if(display)
+				to_chat(user, SPAN_WARNING("This machine isn't for you."))
+				vend_fail()
 			return FALSE
 	return TRUE
 
@@ -490,7 +494,7 @@ IN_USE						used for vending/denying
 			var/mob/living/carbon/human/H = user
 
 			var/list/has_access = can_access_to_vend(user)
-			if (has_access == FALSE)
+			if (!has_access)
 				return
 
 			var/idx=text2num(href_list["vend"])
@@ -642,7 +646,7 @@ IN_USE						used for vending/denying
 			var/mob/living/carbon/human/H = user
 
 			var/list/has_access = can_access_to_vend(user)
-			if (has_access == FALSE)
+			if (!has_access)
 				return
 
 			var/idx=text2num(href_list["vend"])
@@ -934,15 +938,7 @@ IN_USE						used for vending/denying
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
-	if(!allowed(user))
-		return UI_CLOSE
-	var/mob/living/carbon/human/H = user
-	var/obj/item/card/id/I = H.wear_id
-	if(!istype(I))
-		return UI_CLOSE
-	if(I.registered_name != user.real_name)
-		return UI_CLOSE
-	if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
+	if(!can_access_to_vend(user, FALSE))
 		return UI_CLOSE
 
 /obj/structure/machinery/cm_vending/sorted/attack_hand(mob/user)
@@ -967,7 +963,7 @@ IN_USE						used for vending/denying
 		return
 
 	var/list/has_access = can_access_to_vend(user)
-	if (has_access == FALSE)
+	if (!has_access)
 		return
 	tgui_interact(user)
 
@@ -1060,7 +1056,7 @@ IN_USE						used for vending/denying
 			if(stat & IN_USE)
 				return
 			var/has_access = can_access_to_vend(usr)
-			if (has_access == FALSE)
+			if (!has_access)
 				return TRUE
 
 			var/idx=params["prod_index"]
@@ -1198,7 +1194,7 @@ IN_USE						used for vending/denying
 				return
 
 			var/list/has_access = can_access_to_vend(usr)
-			if (has_access == FALSE)
+			if (!has_access)
 				return
 
 			var/idx=text2num(href_list["vend"])

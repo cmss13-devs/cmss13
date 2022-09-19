@@ -887,7 +887,6 @@ IN_USE						used for vending/denying
 		var/desc = ""
 		var/icon/r = null
 
-
 		if (ispath(typepath, /obj/effect/essentials_set))
 			var/obj/effect/essentials_set/I = new typepath()
 			var/list/spawned_list = I.spawned_gear_list
@@ -901,11 +900,10 @@ IN_USE						used for vending/denying
 				qdel(target_obj)
 		else if (ispath(typepath, /obj/item))
 			var/obj/item/I = typepath
-			icon_ref = initial(I.icon)
-			icon_state = initial(I.icon_state)
 			desc = initial(I.desc)
 			var/map_decor = initial(I.map_specific_decoration)
 			if (map_decor)
+				icon_state = initial(I.icon_state)
 				icon_ref = "icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi"
 				r = icon(icon_ref, icon_state, SOUTH, 1)
 			else
@@ -920,7 +918,6 @@ IN_USE						used for vending/denying
 			qdel(target)
 
 		var/result = icon2html(r, world, icon_state, sourceonly=TRUE)
-
 		product_icon_list[item_name] = list(
 			"href"=result,
 			"desc"=desc

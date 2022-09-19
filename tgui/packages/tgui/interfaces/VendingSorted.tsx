@@ -44,12 +44,52 @@ type VenableItem = {
   record: VendingRecord
 }
 
+type RecordNameProps = {
+  record: VendingRecord;
+}
+
+const RecordName = (props: RecordNameProps) => {
+  const { record } = props;
+  const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
+  const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
+
+  const description = record.prod_desc;
+
+  const display_text = () => {
+    return (
+      <span className={classes([
+        'VendingSorted__Text',
+        'VendingSorted__RegularItemText',
+        isMandatory && 'VendingSorted__MandatoryItemText',
+        isRecommended && 'VendingSorted__RecommendedItemText',
+      ])}>
+        {record.prod_name} {description && <Icon name="circle-info" />}
+      </span>)
+  }
+
+  if (!description) {
+    return display_text()
+  }
+
+  return (<Tooltip
+    position="bottom-start"
+    content={(
+      <NoticeBox
+        info
+        className="VendingSorted__Description"
+      >
+        <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
+      </NoticeBox>
+    )}
+  >
+    {display_text()}
+  </Tooltip>)
+}
+
 const VendableItem = (props: VenableItem, context) => {
   const { data, act } = useBackend<VendingData>(context);
   const { record } = props;
 
-  const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
-  const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
   const quantity = data.stock_listing[record.prod_index - 1];
   const available = quantity > 0;
   return (
@@ -61,28 +101,8 @@ const VendableItem = (props: VenableItem, context) => {
       <Flex.Item>
         <Box className="VendingSorted__Spacer" />
       </Flex.Item>
-
       <Flex.Item grow={1}>
-        <Tooltip
-          position="bottom-start"
-          content={(
-            <NoticeBox
-              info
-              className="VendingSorted__Description"
-            >
-              <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
-            </NoticeBox>
-          )}
-        >
-          <span className={classes([
-            'VendingSorted__Text',
-            'VendingSorted__RegularItemText',
-            isMandatory && 'VendingSorted__MandatoryItemText',
-            isRecommended && 'VendingSorted__RecommendedItemText',
-          ])}>
-            {record.prod_name} <Icon name="circle-info" />
-          </span>
-        </Tooltip>
+        <RecordName record={record}/>
       </Flex.Item>
 
       <Flex.Item>
@@ -192,7 +212,6 @@ export const VendingSorted = (_, context) => {
             </Flex.Item>
             <Flex.Item>
               <Input
-                autoFocus
                 value={searchTerm}
                 onInput={(_, value) => setSearchTerm(value)}
                 width="160px"

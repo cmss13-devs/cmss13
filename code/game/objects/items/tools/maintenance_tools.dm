@@ -246,20 +246,21 @@
 /obj/item/tool/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity)
 		return
-	if (O.reagents == "fuel")
-		if(!welding)
-			O.reagents.trans_to(src, max_fuel)
-			weld_tick = 0
-			user.visible_message(SPAN_NOTICE("[user] refills [src]."), \
-			SPAN_NOTICE("You refill [src]."))
-			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		else
-			message_staff("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
-			log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
-			to_chat(user, SPAN_DANGER("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done."))
-			var/obj/structure/reagent_dispensers/fueltank/tank = O
-			tank.explode()
-		return
+	if (istype(O, /obj/structure/reagent_dispensers/fueltank))
+		var/obj/structure/reagent_dispensers/fueltank/tank = O
+		if (tank.reagents == "fuel" || tank.chemical == "fuel")
+			if(!welding)
+				tank.reagents.trans_to(src, max_fuel)
+				weld_tick = 0
+				user.visible_message(SPAN_NOTICE("[user] refills [src]."), \
+				SPAN_NOTICE("You refill [src]."))
+				playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+			else
+				message_staff("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
+				log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
+				to_chat(user, SPAN_DANGER("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done."))
+				tank.explode()
+			return
 	if (welding)
 		remove_fuel(1)
 

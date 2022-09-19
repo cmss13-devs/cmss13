@@ -887,10 +887,9 @@ IN_USE						used for vending/denying
 		var/desc = ""
 
 		if (ispath(typepath, /obj/effect/essentials_set))
-			var/obj/effect/essentials_set/I = typepath
-			var/list/spawned_list = initial(I.spawned_gear_list)
-			var/len = LAZYLEN(spawned_list)
-			if(len)
+			var/obj/effect/essentials_set/I = new typepath()
+			var/list/spawned_list = I.spawned_gear_list
+			if(LAZYLEN(spawned_list))
 				var/obj/item/target = spawned_list[1]
 				icon_ref = initial(target.icon)
 				icon_state = initial(target.icon_state)

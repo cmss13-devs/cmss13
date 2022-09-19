@@ -503,19 +503,7 @@
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
 		if(!R) continue
-		switch(R.slot)
-			if("rail") 	dat += "It has [icon2html(R)] [R.name] mounted on the top.<br>"
-			if("muzzle") 	dat += "It has [icon2html(R)] [R.name] mounted on the front.<br>"
-			if("stock") 	dat += "It has [icon2html(R)] [R.name] for a stock.<br>"
-			if("under")
-				dat += "It has [icon2html(R)] [R.name]"
-				if(istype(R, /obj/item/attachable/attached_gun/extinguisher))
-					var/obj/item/attachable/attached_gun/extinguisher/E = R
-					dat += " ([E.internal_extinguisher.reagents.total_volume]/[E.internal_extinguisher.max_water])"
-				else if(R.flags_attach_features & ATTACH_WEAPON)
-					dat += " ([R.current_rounds]/[R.max_rounds])"
-				dat += " mounted underneath.<br>"
-			else dat += "It has [icon2html(R)] [R.name] attached.<br>"
+		dat += R.handle_attachment_description()
 
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
 		if(current_mag && current_mag.current_rounds > 0)
@@ -1110,7 +1098,8 @@ and you're good to go.
 		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.
 		if(!projectile_to_fire) //If there is nothing to fire, click.
 			click_empty(user)
-			break
+			flags_gun_features &= ~GUN_BURST_FIRING
+			return
 
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, reflex, dual_wield) //User can be passed as null.
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
@@ -1329,6 +1318,7 @@ and you're good to go.
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired) //We add any damage effects that we need.
 
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
+		SEND_SIGNAL(user, COMSIG_DIRECT_BULLET_HIT, M)
 		simulate_recoil(1, user)
 
 		if(projectile_to_fire.ammo.bonus_projectiles_amount)

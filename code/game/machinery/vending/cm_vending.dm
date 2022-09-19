@@ -885,6 +885,8 @@ IN_USE						used for vending/denying
 		var/icon_ref = null
 		var/icon_state = null
 		var/desc = ""
+		var/icon/r = null
+
 
 		if (ispath(typepath, /obj/effect/essentials_set))
 			var/obj/effect/essentials_set/I = new typepath()
@@ -894,8 +896,10 @@ IN_USE						used for vending/denying
 				icon_ref = initial(target.icon)
 				icon_state = initial(target.icon_state)
 				desc = initial(target.desc)
-
-		if (ispath(typepath, /obj/item))
+				var/target_obj = new target()
+				r = getFlatIcon(target_obj)
+				qdel(target_obj)
+		else if (ispath(typepath, /obj/item))
 			var/obj/item/I = typepath
 			icon_ref = initial(I.icon)
 			icon_state = initial(I.icon_state)
@@ -903,7 +907,18 @@ IN_USE						used for vending/denying
 			var/map_decor = initial(I.map_specific_decoration)
 			if (map_decor)
 				icon_ref = "icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi"
-		var/icon/r = icon(icon_ref, icon_state, SOUTH, 1)
+				r = icon(icon_ref, icon_state, SOUTH, 1)
+			else
+				var/target_obj = new I()
+				r = getFlatIcon(target_obj)
+				qdel(target_obj)
+
+		if (ispath(typepath, /obj/item/ammo_box/magazine))
+			var/obj/item/ammo_box/magazine/target = new typepath()
+			var/obj/item/magazine = target.magazine_type
+			desc = "A magazine box containing: [initial(magazine.desc)]"
+			qdel(target)
+
 		var/result = icon2html(r, world, icon_state, sourceonly=TRUE)
 
 		product_icon_list[item_name] = list(

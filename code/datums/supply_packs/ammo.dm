@@ -176,6 +176,16 @@
 	containername = "\improper L42A magazines crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_abr40_mag_box
+	name = "Magazine box (ABR-40, 32x mags)"
+	contains = list(
+					/obj/item/ammo_box/magazine/l42a/half
+					)
+	cost = RO_PRICE_WORTHLESS
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper ABR-40 magazines crate"
+	group = "Ammo"
+
 /datum/supply_packs/ammo_l42_mag_box_ap
 	name = "Magazine box (L42A, 16x AP mags)"
 	contains = list(
@@ -369,6 +379,23 @@
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	group = "Ammo"
+
+// blank ammunition
+
+/datum/supply_packs/ammo_mag_box/blank
+	name = "Magazine box (M41A, 10x BLANK mags)"
+	contains = list(
+					/obj/item/ammo_box/magazine/blank
+					)
+	cost = RO_PRICE_WORTHLESS
+	containername = "\improper M41A BLANK magazines crate"
+
+/datum/supply_packs/ammo_abr40_mag_box/blank
+	name = "Magazine box (ABR-40, 32x BLANK mags)"
+	contains = list(
+					/obj/item/ammo_box/magazine/l42a/half/blank
+					)
+	containername = "\improper ABR-40 BLANK magazines crate"
 
 //This crate has a little bit of everything, mostly okay stuff, but it does have some really unique picks.
 /datum/supply_packs/ammo_surplus

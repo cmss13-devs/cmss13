@@ -30,7 +30,7 @@
 	var/donator = 0
 	var/adminhelped = 0
 
-	var/obj/screen/click_catcher/void
+	var/atom/movable/screen/click_catcher/void
 
 	var/country
 
@@ -119,4 +119,4 @@
 
 	//screen_text vars
 	///lazylist of screen_texts for this client, first in this list is the one playing
-	var/list/obj/screen/text/screen_text/screen_texts
+	var/list/atom/movable/screen/text/screen_text/screen_texts

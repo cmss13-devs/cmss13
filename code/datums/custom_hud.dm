@@ -132,7 +132,7 @@
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
 
 /datum/custom_hud/dark/special_behaviour(var/datum/hud/element, var/ui_alpha = 255, var/ui_color = "#ffffff")
-	element.frame_hud = new /obj/screen()
+	element.frame_hud = new /atom/movable/screen()
 	element.frame_hud.icon = ui_frame_icon
 	element.frame_hud.icon_state = "dark"
 	element.frame_hud.screen_loc = UI_FRAME_LOC
@@ -142,7 +142,7 @@
 	element.frame_hud.color = ui_color
 	element.static_inventory += element.frame_hud
 
-	element.pulse_line = new /obj/screen()
+	element.pulse_line = new /atom/movable/screen()
 	element.pulse_line.icon = ui_frame_icon
 	element.pulse_line.icon_state = "pulse_good"
 	element.pulse_line.screen_loc = UI_FRAME_LOC

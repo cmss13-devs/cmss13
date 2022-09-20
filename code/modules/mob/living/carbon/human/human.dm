@@ -1336,7 +1336,7 @@
 		tint_level = VISION_IMPAIR_STRONG
 
 	if(tint_level)
-		overlay_fullscreen("tint", /obj/screen/fullscreen/impaired, tint_level)
+		overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, tint_level)
 		return TRUE
 	else
 		clear_fullscreen("tint", 0)

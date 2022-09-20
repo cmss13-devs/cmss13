@@ -738,7 +738,7 @@
 		return HANDLE_CLICK_UNHANDLED
 	if(operator != user)
 		return HANDLE_CLICK_UNHANDLED
-	if(istype(A,/obj/screen))
+	if(istype(A,/atom/movable/screen))
 		return HANDLE_CLICK_UNHANDLED
 	if(is_bursting)
 		return HANDLE_CLICK_UNHANDLED
@@ -1347,7 +1347,7 @@
 	if(params["shift"] || params["ctrl"] || params["alt"])
 		return
 
-	if(istype(A, /obj/screen))
+	if(istype(A, /atom/movable/screen))
 		return
 
 	if(user.get_active_hand() || user.get_inactive_hand())
@@ -1375,7 +1375,7 @@
 		return
 	var/mob/user = operator
 
-	if(istype(hovered, /obj/screen))
+	if(istype(hovered, /atom/movable/screen))
 		return
 
 	if(get_turf(hovered) == get_turf(user))

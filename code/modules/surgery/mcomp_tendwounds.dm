@@ -83,11 +83,6 @@
 /datum/surgery_step/mtend_wounds/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	playsound(target,'sound/misc/heal_gun.ogg',25)
 
-	if(!istype(tool, /obj/item/tool/surgery/healing_gun))
-		return
-	var/obj/item/tool/surgery/healing_gun/gun = tool
-	gun.loaded = FALSE
-
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] begins to treat the stabilized wounds on their body with \the [tool]."),
 		SPAN_HELPFUL("You begin to treat your stabilized wounds with \the [tool]."))
@@ -116,6 +111,11 @@
 			SPAN_HELPFUL("You finish treating [target]'s stabilized wounds with \the [tool]."),
 			SPAN_HELPFUL("[user] finished treating your stabilized wounds with \the [tool]."),
 			SPAN_NOTICE("[user] finished treating [target]'s stabilized wounds with \the [tool]."))
+
+	if(!istype(tool, /obj/item/tool/surgery/healing_gun))
+		return
+	var/obj/item/tool/surgery/healing_gun/gun = tool
+	gun.loaded = FALSE
 
 	log_interact(user, target, "[key_name(user)] Treated some of [key_name(target)]'s wounds with \the [tool].")
 

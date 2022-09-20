@@ -15,58 +15,58 @@
 	var/show_intent_icons = 0
 	var/hotkey_ui_hidden = 0	//This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
-	var/obj/screen/r_hand_hud_object
-	var/obj/screen/l_hand_hud_object
-	var/obj/screen/action_intent
-	var/obj/screen/alien_plasma_display
-	var/obj/screen/alien_armor_display
-	var/obj/screen/locate_leader
-	var/obj/screen/locate_marker
-	var/obj/screen/locate_nuke
-	var/obj/screen/pred_power_icon
+	var/atom/movable/screen/r_hand_hud_object
+	var/atom/movable/screen/l_hand_hud_object
+	var/atom/movable/screen/action_intent
+	var/atom/movable/screen/alien_plasma_display
+	var/atom/movable/screen/alien_armor_display
+	var/atom/movable/screen/locate_leader
+	var/atom/movable/screen/locate_marker
+	var/atom/movable/screen/locate_nuke
+	var/atom/movable/screen/pred_power_icon
 
-	var/obj/screen/frame_hud
-	var/obj/screen/pulse_line
+	var/atom/movable/screen/frame_hud
+	var/atom/movable/screen/pulse_line
 
-	var/obj/screen/slowed_icon
-	var/obj/screen/bleeding_icon
-	var/obj/screen/shrapnel_icon
-	var/obj/screen/tethering_icon
-	var/obj/screen/tethered_icon
+	var/atom/movable/screen/slowed_icon
+	var/atom/movable/screen/bleeding_icon
+	var/atom/movable/screen/shrapnel_icon
+	var/atom/movable/screen/tethering_icon
+	var/atom/movable/screen/tethered_icon
 
-	var/obj/screen/module_store_icon
+	var/atom/movable/screen/module_store_icon
 
-	var/obj/screen/nutrition_icon
+	var/atom/movable/screen/nutrition_icon
 
-	var/obj/screen/use_attachment
-	var/obj/screen/toggle_raillight
-	var/obj/screen/eject_mag
-	var/obj/screen/toggle_burst
-	var/obj/screen/unique_action
+	var/atom/movable/screen/use_attachment
+	var/atom/movable/screen/toggle_raillight
+	var/atom/movable/screen/eject_mag
+	var/atom/movable/screen/toggle_burst
+	var/atom/movable/screen/unique_action
 
-	var/obj/screen/zone_sel
-	var/obj/screen/pull_icon
-	var/obj/screen/throw_icon
-	var/obj/screen/oxygen_icon
-	var/obj/screen/fire_icon
-	var/obj/screen/healths
-	var/obj/screen/bodytemp_icon
+	var/atom/movable/screen/zone_sel
+	var/atom/movable/screen/pull_icon
+	var/atom/movable/screen/throw_icon
+	var/atom/movable/screen/oxygen_icon
+	var/atom/movable/screen/fire_icon
+	var/atom/movable/screen/healths
+	var/atom/movable/screen/bodytemp_icon
 
-	var/obj/screen/gun_setting_icon
-	var/obj/screen/gun_item_use_icon
-	var/obj/screen/gun_move_icon
-	var/obj/screen/gun_run_icon
+	var/atom/movable/screen/gun_setting_icon
+	var/atom/movable/screen/gun_item_use_icon
+	var/atom/movable/screen/gun_move_icon
+	var/atom/movable/screen/gun_run_icon
 
-	var/list/obj/screen/plane_master/plane_masters = list() // see "appearance_flags" in the ref, assoc list of "[plane]" = object
+	var/list/atom/movable/screen/plane_master/plane_masters = list() // see "appearance_flags" in the ref, assoc list of "[plane]" = object
 	///Assoc list of controller groups, associated with key string group name with value of the plane master controller ref
 	var/list/obj/plane_master_controller/plane_master_controllers = list()
 
 	var/list/static_inventory = list() //the screen objects which are static
 	var/list/toggleable_inventory = list() //the screen objects which can be hidden
-	var/list/obj/screen/hotkeybuttons = list() //the buttons that can be used via hotkeys
+	var/list/atom/movable/screen/hotkeybuttons = list() //the buttons that can be used via hotkeys
 	var/list/infodisplay = list() //the screen objects that display mob info (health, alien plasma, etc...)
 
-	var/obj/screen/action_button/hide_toggle/hide_actions_toggle
+	var/atom/movable/screen/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
 
 	var/list/equip_slots = list()
@@ -76,8 +76,8 @@
 	mymob = owner
 	hide_actions_toggle = new
 
-	for(var/mytype in subtypesof(/obj/screen/plane_master)- /obj/screen/plane_master/rendering_plate)
-		var/obj/screen/plane_master/instance = new mytype()
+	for(var/mytype in subtypesof(/atom/movable/screen/plane_master)- /atom/movable/screen/plane_master/rendering_plate)
+		var/atom/movable/screen/plane_master/instance = new mytype()
 		plane_masters["[instance.plane]"] = instance
 		if(owner.client)
 			instance.backdrop(mymob)
@@ -240,7 +240,7 @@
 /datum/hud/proc/plane_masters_update()
 	// Plane masters are always shown to OUR mob, never to observers
 	for(var/thing in plane_masters)
-		var/obj/screen/plane_master/PM = plane_masters[thing]
+		var/atom/movable/screen/plane_master/PM = plane_masters[thing]
 		PM.backdrop(mymob)
 		mymob.client.screen += PM
 
@@ -272,7 +272,7 @@
 
 
 /datum/hud/proc/draw_act_intent(var/datum/custom_hud/ui_datum, var/ui_alpha)
-	var/obj/screen/using = new /obj/screen/act_intent/corner()
+	var/atom/movable/screen/using = new /atom/movable/screen/act_intent/corner()
 	using.icon = ui_datum.ui_style_icon
 	if(ui_alpha)
 		using.alpha = ui_alpha
@@ -282,7 +282,7 @@
 	action_intent = using
 
 /datum/hud/proc/draw_drop(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	var/obj/screen/using = new /obj/screen/drop()
+	var/atom/movable/screen/using = new /atom/movable/screen/drop()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_drop_throw
 	if(ui_alpha)
@@ -292,7 +292,7 @@
 	static_inventory += using
 
 /datum/hud/proc/draw_throw(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	throw_icon = new /obj/screen/throw_catch()
+	throw_icon = new /atom/movable/screen/throw_catch()
 	throw_icon.icon = ui_datum.ui_style_icon
 	throw_icon.screen_loc = ui_datum.ui_drop_throw
 	if(ui_alpha)
@@ -302,14 +302,14 @@
 	hotkeybuttons += throw_icon
 
 /datum/hud/proc/draw_pull(var/datum/custom_hud/ui_datum)
-	pull_icon = new /obj/screen/pull()
+	pull_icon = new /atom/movable/screen/pull()
 	pull_icon.icon = ui_datum.ui_style_icon
 	pull_icon.screen_loc = ui_datum.ui_pull
 	pull_icon.update_icon(mymob)
 	hotkeybuttons += pull_icon
 
 /datum/hud/proc/draw_resist(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	var/obj/screen/using = new /obj/screen/resist()
+	var/atom/movable/screen/using = new /atom/movable/screen/resist()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_resist
 	if(ui_alpha)
@@ -319,7 +319,7 @@
 	hotkeybuttons += using
 
 /datum/hud/proc/draw_left_hand(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	var/obj/screen/inventory/inv_box = new /obj/screen/inventory()
+	var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = WEAR_L_HAND
 	inv_box.icon = ui_datum.ui_style_icon
 	inv_box.setDir(EAST)
@@ -337,7 +337,7 @@
 	static_inventory += inv_box
 
 /datum/hud/proc/draw_right_hand(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	var/obj/screen/inventory/inv_box = new /obj/screen/inventory()
+	var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = WEAR_R_HAND
 	inv_box.icon = ui_datum.ui_style_icon
 	inv_box.setDir(WEST)
@@ -355,7 +355,7 @@
 	static_inventory += inv_box
 
 /datum/hud/proc/draw_swaphand(var/handswap_part, var/handswap_part_loc, var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	var/obj/screen/using = new /obj/screen/inventory()
+	var/atom/movable/screen/using = new /atom/movable/screen/inventory()
 	using.name = "hand"
 	using.icon = ui_datum.ui_style_icon
 	using.icon_state = handswap_part
@@ -368,13 +368,13 @@
 	static_inventory += using
 
 /datum/hud/proc/draw_healths(var/datum/custom_hud/ui_datum, var/ui_alpha)
-	healths = new /obj/screen/healths()
+	healths = new /atom/movable/screen/healths()
 	healths.icon = ui_datum.ui_style_icon
 	healths.screen_loc = ui_datum.UI_HEALTH_LOC
 	infodisplay += healths
 
 /datum/hud/proc/draw_zone_sel(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	zone_sel = new /obj/screen/zone_sel()
+	zone_sel = new /atom/movable/screen/zone_sel()
 	zone_sel.icon = ui_datum.ui_style_icon
 	zone_sel.screen_loc = ui_datum.ui_zonesel
 	if(ui_alpha)

@@ -14,8 +14,8 @@
 
 	// Stuff needed to render the map
 	var/map_name
-	var/obj/screen/map_view/cam_screen
-	var/obj/screen/background/cam_background
+	var/atom/movable/screen/map_view/cam_screen
+	var/atom/movable/screen/background/cam_background
 
 	/// All turfs within range of the currently active camera
 	var/list/range_turfs = list()

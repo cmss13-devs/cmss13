@@ -1,6 +1,6 @@
 /datum/surgery/mcomp_wounds
 	name = "Tend Damage (Brute/Burn)"
-	possible_locs = ALL_LIMBS
+	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	var/required_trait = TRAIT_YAUTJA_TECH// Only predators can do this
@@ -45,7 +45,7 @@
 		SPAN_NOTICE("[user] begins to stabilize the wounds on [target]'s body with \the [tool]."))
 
 /datum/surgery_step/mstabilize_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	target.heal_overall_damage(50,50)
+	target.heal_overall_damage(40,40)
 
 	if(isSpeciesYautja(target))
 		target.emote("click2")
@@ -96,7 +96,7 @@
 	log_interact(user, target, "[key_name(user)] began tending wounds on [key_name(target)] with \the [tool], starting [surgery].")
 
 /datum/surgery_step/mtend_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	target.heal_overall_damage(60,60)
+	target.heal_overall_damage(65,65)
 
 	if(isSpeciesYautja(target))
 		target.emote("click")
@@ -145,7 +145,7 @@
 			SPAN_NOTICE("[user] begns to clamp the treated wounds on [target]'s body with \the [tool]."))
 
 /datum/surgery_step/cauterize/mclamp_wound/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	target.heal_overall_damage(60,60) //makes sure that all damage is healed
+	target.heal_overall_damage(65,65) //makes sure that all damage is healed
 
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their  body with \the [tool]."),

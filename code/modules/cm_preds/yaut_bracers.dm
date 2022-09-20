@@ -643,12 +643,17 @@
 	set category = "Yautja.Misc"
 	set src in usr
 
+	if(explosion_type == 1 && exploding)
+		to_chat(usr, SPAN_WARNING("Why would you want to do this?."))
+		return
+
 	if(alert("Which explosion type do you want?","Explosive Bracers", "Small", "Big") == "Big")
 		explosion_type = 0
 		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Large")
 	else
 		explosion_type = 1
 		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Small")
+		return
 
 /obj/item/clothing/gloves/yautja/hunter/verb/activate_suicide()
 	set name = "Final Countdown (!)"

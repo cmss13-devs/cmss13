@@ -1,3 +1,8 @@
+//Bracer defines
+
+#define SD_TYPE_SMALL   0
+#define SD_TYPE_BIG   1
+
 /obj/item/clothing/gloves/yautja
 	name = "ancient alien bracers"
 	desc = "A pair of strange, alien bracers."
@@ -643,8 +648,8 @@
 	set category = "Yautja.Misc"
 	set src in usr
 
-	if(explosion_type == 1 && exploding)
-		to_chat(usr, SPAN_WARNING("Why would you want to do this?."))
+	if(explosion_type == SD_TYPE_BIG && exploding)
+		to_chat(usr, SPAN_WARNING("Why would you want to do this?"))
 		return
 
 	if(alert("Which explosion type do you want?","Explosive Bracers", "Small", "Big") == "Big")

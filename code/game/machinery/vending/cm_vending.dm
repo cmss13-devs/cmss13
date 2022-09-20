@@ -877,6 +877,11 @@ IN_USE						used for vending/denying
 	. = ..()
 	populate_product_list(1.2)
 	build_icons(listed_products)
+	var/datum/asset/simple/dynamic_icons/dyn = get_asset_datum(/datum/asset/simple/dynamic_icons)
+	for (var/i in 1 to length(listed_products))
+		var/item_name = listed_products[i][1]
+		var/filename = product_icon_list[item_name]["href"]
+		dyn.update(filename)
 
 /obj/structure/machinery/cm_vending/sorted/proc/build_icons(var/list/items)
 	for (var/i in 1 to length(items))

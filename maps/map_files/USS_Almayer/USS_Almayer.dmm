@@ -2642,18 +2642,8 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "ahs" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/uscm{
-	pixel_y = 6
-	},
-/obj/item/tool/pen,
-/obj/structure/sign/safety/terminal{
-	pixel_x = -17
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/obj/structure/surface/rack,
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "aht" = (
 /obj/structure/disposalpipe/segment,
@@ -2663,22 +2653,18 @@
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "ahu" = (
-/obj/item/device/flashlight/lamp/green{
-	pixel_y = 10
+/obj/structure/closet/secure_closet{
+	icon_broken = "cabinetdetective_broken";
+	icon_closed = "cabinetdetective";
+	icon_locked = "cabinetdetective_locked";
+	icon_off = "cabinetdetective_broken";
+	icon_opened = "cabinetdetective_open";
+	icon_state = "cabinetdetective_locked";
+	name = "Blank Ammunition"
 	},
-/obj/structure/surface/table/almayer,
-/obj/item/trash/uscm_mre{
-	pixel_x = 7;
-	pixel_y = 4
-	},
-/obj/item/reagent_container/food/snacks/mre_pack/meal1{
-	pixel_x = -13;
-	pixel_y = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/obj/item/ammo_box/magazine/l42a/half/blank,
+/obj/item/ammo_box/magazine/blank,
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "ahv" = (
 /obj/structure/disposalpipe/segment{
@@ -2695,20 +2681,25 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "ahx" = (
-/obj/structure/closet,
-/obj/item/clothing/under/marine/engineer,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/structure/closet/secure_closet{
+	icon_broken = "cabinetdetective_broken";
+	icon_closed = "cabinetdetective";
+	icon_locked = "cabinetdetective_locked";
+	icon_off = "cabinetdetective_broken";
+	icon_opened = "cabinetdetective_open";
+	icon_state = "cabinetdetective_locked";
+	name = "Ceremonial Rifles"
 	},
+/obj/item/weapon/gun/rifle/l42a/abr40/drill,
+/obj/item/weapon/gun/rifle/l42a/abr40/drill,
+/obj/item/weapon/gun/rifle/l42a/abr40/drill,
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "ahy" = (
-/obj/structure/closet,
-/obj/item/clothing/under/marine,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	dir = 1
 	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_s)
 "ahz" = (
 /obj/structure/machinery/light{
@@ -4011,26 +4002,19 @@
 	},
 /area/almayer/living/starboard_garden)
 "alf" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/atmos_alert{
-	dir = 4;
-	pixel_y = 5
+/obj/structure/machinery/cm_vending/clothing/dress,
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
+"alg" = (
+/obj/item/ammo_box/magazine/blank{
+	name = "odd magazine box (M41A x 10)";
+	desc = "An old beat up ammuniton. A badly written message in white crayon reads 'BRAND NEW M41 WP ROUNDS'"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/almayer/hull/upper_hull/u_m_s)
-"alg" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/upper_hull/u_m_s)
+/area/almayer/hull/lower_hull/l_a_p)
 "ali" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -4083,15 +4067,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/aft_hallway)
 "alr" = (
-/obj/structure/machinery/light/small{
-	dir = 4;
-	tag = "icon-bulb1 (EAST)"
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 2;
+	id = "bot_uniforms";
+	name = "\improper Uniform Vendor Shutters"
 	},
-/obj/structure/largecrate/random/barrel/green,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "als" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -6316,13 +6297,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "arp" = (
-/obj/item/roller,
-/obj/item/roller,
-/obj/structure/surface/rack,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "arq" = (
 /obj/structure/bed/chair{
@@ -28500,6 +28475,9 @@
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/obj/item/ammo_magazine/rifle/l42a/half/blank{
+	pixel_y = -10
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bQZ" = (
@@ -29926,13 +29904,21 @@
 	},
 /area/almayer/shipboard/port_point_defense)
 "bWf" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/tool,
-/obj/effect/spawner/random/tool,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/structure/surface/table/woodentable,
+/obj/item/attachable/bayonet,
+/obj/item/ashtray/plastic{
+	pixel_y = 5;
+	pixel_x = -14
 	},
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_y = 5;
+	pixel_x = -13
+	},
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "bWh" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
@@ -29947,11 +29933,10 @@
 /turf/open/shuttle/escapepod,
 /area/almayer/evacuation/pod9)
 "bWj" = (
-/obj/structure/largecrate/supply,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/structure/bed/chair/wood/normal{
+	tag = "icon-wooden_chair (EAST)"
 	},
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "bWn" = (
 /obj/structure/machinery/light/small{
@@ -29982,13 +29967,18 @@
 	},
 /area/almayer/shipboard/port_point_defense)
 "bWq" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/toolbox,
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/almayer/hull/upper_hull/u_m_s)
+/area/almayer/living/starboard_garden)
 "bWr" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer{
@@ -38573,6 +38563,28 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
+"dWW" = (
+/obj/structure/closet/secure_closet{
+	icon_broken = "cabinetdetective_broken";
+	icon_closed = "cabinetdetective";
+	icon_locked = "cabinetdetective_locked";
+	icon_off = "cabinetdetective_broken";
+	icon_opened = "cabinetdetective_open";
+	icon_state = "cabinetdetective_locked";
+	name = "Uniform Patches"
+	},
+/obj/item/clothing/accessory/patch/falcon,
+/obj/item/clothing/accessory/patch,
+/obj/item/clothing/accessory/patch/falcon,
+/obj/item/clothing/accessory/patch,
+/obj/item/clothing/accessory/patch/falcon,
+/obj/item/clothing/accessory/patch,
+/obj/item/clothing/accessory/patch/falcon,
+/obj/item/clothing/accessory/patch,
+/obj/item/clothing/accessory/patch,
+/obj/item/clothing/accessory/patch/falcon,
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "dWX" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -47556,6 +47568,9 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/almayer/medical/upper_medical)
+"hVD" = (
+/turf/closed/wall/almayer,
+/area/space)
 "hVO" = (
 /obj/structure/closet/l3closet/general,
 /obj/structure/machinery/light{
@@ -50618,6 +50633,10 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/cic)
+"joj" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/upper_hull/u_m_s)
 "jox" = (
 /obj/structure/machinery/brig_cell/cell_3{
 	pixel_x = -32
@@ -51983,6 +52002,15 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/engineering/laundry)
+"keb" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/ranks/marine,
+/obj/item/clothing/accessory/ranks/marine,
+/obj/item/clothing/accessory/ranks/marine/e1{
+	pixel_y = -8
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "ken" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -63135,14 +63163,16 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "pmn" = (
-/obj/structure/sign/safety/storage{
-	pixel_x = 8;
-	pixel_y = 32
+/obj/structure/surface/table/woodentable,
+/obj/item/ammo_magazine/rifle/l42a/half/blank,
+/obj/item/ammo_magazine/rifle/blank{
+	pixel_x = -10
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/item/storage/fancy/cigar/matchbook/brown{
+	pixel_y = -5;
+	pixel_x = 13
 	},
+/turf/open/floor/wood/ship,
 /area/almayer/hull/upper_hull/u_m_s)
 "pmH" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -64052,19 +64082,14 @@
 /obj/structure/closet/secure_closet{
 	name = "\improper Execution Firearms"
 	},
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	tag = "icon-bulb1 (NORTH)"
 	},
+/obj/item/weapon/gun/rifle/l42a/abr40/drill,
+/obj/item/weapon/gun/rifle/l42a/abr40/drill,
+/obj/item/weapon/gun/rifle/l42a/abr40/drill,
+/obj/item/ammo_box/magazine/l42a/half,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "redcorner";
@@ -64391,6 +64416,14 @@
 	icon_state = "containment_wall_connect_e"
 	},
 /area/almayer/medical/containment/cell)
+"pSa" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "pSL" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -67133,6 +67166,17 @@
 	tag = "icon-emeraldcorner"
 	},
 /area/almayer/living/briefing)
+"rhC" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/clothing/gloves/marine/dress{
+	pixel_y = -7
+	},
+/obj/item/prop/helmetgarb/gunoil{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "rhO" = (
 /obj/structure/machinery/disposal{
 	density = 0;
@@ -68903,6 +68947,26 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
+"rVD" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/attachable/stock/carbine/wood{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/attachable/stock/carbine/wood{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/tool/screwdriver{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/hull/upper_hull/u_m_s)
 "rVN" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -113485,8 +113549,8 @@ aah
 acf
 acf
 aJW
-ale
-bDD
+aJW
+bWq
 nub
 bDD
 ale
@@ -113687,11 +113751,11 @@ aaa
 aaa
 aaa
 lYA
+hVD
+joj
 aar
 aar
 aar
-aar
-tiM
 aar
 tiM
 aar
@@ -113891,11 +113955,11 @@ aaa
 aaa
 lYA
 ahs
-alf
 arp
+keb
+rVD
+rhC
 aar
-aap
-aao
 aap
 aar
 kPB
@@ -114094,11 +114158,11 @@ aaa
 aaa
 lYA
 ahu
-alg
 arp
+arp
+bWj
+pmn
 aar
-aap
-aao
 aap
 aar
 kPZ
@@ -114297,12 +114361,12 @@ aaa
 aaa
 lYA
 ahx
-aap
-ahN
-aar
-awJ
-aao
+arp
+arp
+arp
 bWf
+aar
+aao
 aar
 kYK
 abO
@@ -114499,13 +114563,13 @@ aaa
 aaa
 aaa
 lYA
-ahy
-aap
-aao
 aar
-pmn
+aar
+arp
+arp
+arp
+ahy
 aao
-bWj
 aar
 lhX
 abK
@@ -114702,13 +114766,13 @@ aaa
 aaa
 aaa
 lYA
-fZF
+alf
 alr
+arp
+pSa
+dWW
+aar
 aao
-sMs
-aao
-aao
-bWq
 aar
 abO
 acl
@@ -114909,8 +114973,8 @@ aar
 aar
 aar
 aar
-aap
-aao
+aar
+aar
 aap
 aar
 abO
@@ -131706,7 +131770,7 @@ haq
 haq
 cAH
 vuR
-cAH
+alg
 vuR
 dcS
 cAH

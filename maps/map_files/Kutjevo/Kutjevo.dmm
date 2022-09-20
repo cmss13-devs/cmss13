@@ -1991,17 +1991,6 @@
 	tag = "icon-mars_cave_7"
 	},
 /area/kutjevo/exterior/lz_dunes)
-"cMa" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "kutjevo_medlock_mid";
-	name = "s"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "kutjevo_medlock_mid";
-	name = "\improper East Medical Shutters"
-	},
-/turf/open/floor/almayer/research/containment/floor2,
-/area/kutjevo/interior/complex/med)
 "cMc" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/stairs/perspective/kutjevo{
@@ -4573,13 +4562,6 @@
 	dir = 4
 	},
 /area/kutjevo/interior/complex/med/operating)
-"fSo" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "kutjevo_medlock_mid";
-	name = "s"
-	},
-/turf/open/floor/almayer/research/containment/floor2,
-/area/kutjevo/interior/complex/med)
 "fSK" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/handcard/aceofspades,
@@ -35962,7 +35944,7 @@ yjI
 yjI
 yjI
 yjI
-cMa
+pSU
 cjO
 pSU
 ttq
@@ -36131,7 +36113,7 @@ oNV
 yjI
 pSU
 snr
-fSo
+pSU
 jnx
 ttq
 jrY

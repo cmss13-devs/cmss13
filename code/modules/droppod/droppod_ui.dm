@@ -39,8 +39,8 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	var/client/holder
 	var/area/admin/droppod/loading/bay
 	var/obj/structure/droppod/container/temp_pod
-	var/obj/screen/map_view/cam_screen
-	var/obj/screen/background/cam_background
+	var/atom/movable/screen/map_view/cam_screen
+	var/atom/movable/screen/background/cam_background
 	var/map_name
 
 	var/list/ordered_area = list()
@@ -198,7 +198,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 
 	var/left_click = mods["left"]
 
-	if(!left_click || istype(target,/obj/screen))
+	if(!left_click || istype(target,/atom/movable/screen))
 		return
 
 	pre_launch()
@@ -216,7 +216,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	SIGNAL_HANDLER
 	var/left_click = mods["left"]
 
-	if(!left_click || istype(target,/obj/screen))
+	if(!left_click || istype(target,/atom/movable/screen))
 		return
 
 	custom_dropoff = TRUE

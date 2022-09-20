@@ -320,7 +320,7 @@
 	if(!istype(loc, /turf)) // In some mob/object (i.e. devoured or tank)
 		to_chat(src, SPAN_WARNING("You cannot throw anything while inside of \the [loc.name]."))
 		return
-	if(target.type == /obj/screen)
+	if(target.type == /atom/movable/screen)
 		return
 
 	var/atom/movable/thrown_thing

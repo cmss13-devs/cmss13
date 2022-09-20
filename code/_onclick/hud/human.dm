@@ -225,7 +225,7 @@
 
 /datum/hud/human/proc/draw_inventory_slots(var/gear, var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
 	for(var/gear_slot in gear)
-		var/obj/screen/inventory/inv_box = new /obj/screen/inventory()
+		var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 		inv_box.icon = ui_datum.ui_style_icon
 		inv_box.layer = HUD_LAYER
 		inv_box.color = ui_color
@@ -246,7 +246,7 @@
 			static_inventory += inv_box
 
 /datum/hud/human/proc/draw_toggle_inv(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	var/obj/screen/using = new /obj/screen/toggle_inv()
+	var/atom/movable/screen/using = new /atom/movable/screen/toggle_inv()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_inventory
 	if(ui_color)
@@ -256,7 +256,7 @@
 	static_inventory += using
 
 /datum/hud/human/proc/draw_hand_equip(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	var/obj/screen/using = new /obj/screen()
+	var/atom/movable/screen/using = new /atom/movable/screen()
 	using.name = "equip"
 	using.icon = ui_datum.ui_style_icon
 	using.icon_state = "act_equip"
@@ -270,19 +270,19 @@
 	static_inventory += using
 
 /datum/hud/human/proc/draw_oxygen(var/datum/custom_hud/ui_datum)
-	oxygen_icon = new /obj/screen/oxygen()
+	oxygen_icon = new /atom/movable/screen/oxygen()
 	oxygen_icon.icon = ui_datum.ui_style_icon
 	oxygen_icon.screen_loc = ui_datum.UI_OXYGEN_LOC
 	infodisplay += oxygen_icon
 
 /datum/hud/human/proc/draw_bodytemp(var/datum/custom_hud/ui_datum)
-	bodytemp_icon = new /obj/screen/bodytemp()
+	bodytemp_icon = new /atom/movable/screen/bodytemp()
 	bodytemp_icon.icon = ui_datum.ui_style_icon
 	bodytemp_icon.screen_loc = ui_datum.UI_TEMP_LOC
 	infodisplay += bodytemp_icon
 
 /datum/hud/human/proc/draw_nutrition(var/datum/custom_hud/ui_datum)
-	nutrition_icon = new /obj/screen()
+	nutrition_icon = new /atom/movable/screen()
 	nutrition_icon.icon = ui_datum.ui_style_icon
 	nutrition_icon.icon_state = "nutrition0"
 	nutrition_icon.name = "nutrition"
@@ -290,41 +290,41 @@
 	infodisplay += nutrition_icon
 
 /datum/hud/human/proc/draw_locator_spot(var/datum/custom_hud/ui_datum)
-	locate_leader = new /obj/screen/squad_leader_locator()
+	locate_leader = new /atom/movable/screen/squad_leader_locator()
 	locate_leader.icon = ui_datum.ui_style_icon
 	locate_leader.screen_loc = ui_datum.UI_SL_LOCATOR_LOC
 	infodisplay += locate_leader
 
 /datum/hud/human/proc/draw_gun_related(var/datum/custom_hud/ui_datum, var/ui_alpha)
-	use_attachment = new /obj/screen()
+	use_attachment = new /atom/movable/screen()
 	use_attachment.icon = ui_datum.ui_style_icon
 	use_attachment.icon_state = "gun_attach"
 	use_attachment.name = "Activate weapon attachment"
 	use_attachment.screen_loc = ui_datum.ui_gun_attachment
 	static_inventory += use_attachment
 
-	toggle_raillight = new /obj/screen()
+	toggle_raillight = new /atom/movable/screen()
 	toggle_raillight.icon = ui_datum.ui_style_icon
 	toggle_raillight.icon_state = "gun_raillight"
 	toggle_raillight.name = "Toggle Rail Flashlight"
 	toggle_raillight.screen_loc = ui_datum.ui_gun_railtoggle
 	static_inventory += toggle_raillight
 
-	eject_mag = new /obj/screen()
+	eject_mag = new /atom/movable/screen()
 	eject_mag.icon = ui_datum.ui_style_icon
 	eject_mag.icon_state = "gun_loaded"
 	eject_mag.name = "Eject magazine"
 	eject_mag.screen_loc = ui_datum.ui_gun_eject
 	static_inventory += eject_mag
 
-	toggle_burst = new /obj/screen()
+	toggle_burst = new /atom/movable/screen()
 	toggle_burst.icon = ui_datum.ui_style_icon
 	toggle_burst.icon_state = "gun_burst"
 	toggle_burst.name = "Toggle burst fire"
 	toggle_burst.screen_loc = ui_datum.ui_gun_burst
 	static_inventory += toggle_burst
 
-	unique_action = new /obj/screen()
+	unique_action = new /atom/movable/screen()
 	unique_action.icon = ui_datum.ui_style_icon
 	unique_action.icon_state = "gun_unique"
 	unique_action.name = "Use unique action"
@@ -332,52 +332,52 @@
 	static_inventory += unique_action
 
 	//Handle the gun settings buttons
-	gun_setting_icon = new /obj/screen/gun/mode()
+	gun_setting_icon = new /atom/movable/screen/gun/mode()
 	gun_setting_icon.alpha = ui_alpha
 	gun_setting_icon.screen_loc = ui_datum.ui_gun_select
 	gun_setting_icon.update_icon(mymob)
 	static_inventory += gun_setting_icon
 
-	gun_item_use_icon = new /obj/screen/gun/item()
+	gun_item_use_icon = new /atom/movable/screen/gun/item()
 	gun_item_use_icon.alpha = ui_alpha
 	gun_item_use_icon.screen_loc = ui_datum.ui_gun1
 	gun_item_use_icon.update_icon(mymob)
 	static_inventory += gun_item_use_icon
 
-	gun_move_icon = new /obj/screen/gun/move()
+	gun_move_icon = new /atom/movable/screen/gun/move()
 	gun_move_icon.alpha = ui_alpha
 	gun_move_icon.screen_loc = ui_datum.ui_gun2
 	gun_move_icon.update_icon(mymob)
 	static_inventory += gun_move_icon
 
-	gun_run_icon = new /obj/screen/gun/run()
+	gun_run_icon = new /atom/movable/screen/gun/run()
 	gun_run_icon.alpha = ui_alpha
 	gun_run_icon.screen_loc = ui_datum.ui_gun3
 	gun_run_icon.update_icon(mymob)
 	static_inventory += gun_run_icon
 
 /datum/hud/human/proc/draw_status_effects(var/datum/custom_hud/ui_datum)
-	slowed_icon = new /obj/screen()
+	slowed_icon = new /atom/movable/screen()
 	slowed_icon.icon = ui_datum.ui_style_icon
 	slowed_icon.icon_state = "status_0"
 	infodisplay += slowed_icon
 
-	bleeding_icon = new /obj/screen()
+	bleeding_icon = new /atom/movable/screen()
 	bleeding_icon.icon = ui_datum.ui_style_icon
 	bleeding_icon.icon_state = "status_0"
 	infodisplay += bleeding_icon
 
-	shrapnel_icon = new /obj/screen()
+	shrapnel_icon = new /atom/movable/screen()
 	shrapnel_icon.icon = ui_datum.ui_style_icon
 	shrapnel_icon.icon_state = "status_0"
 	infodisplay += shrapnel_icon
 
-	tethering_icon = new /obj/screen()
+	tethering_icon = new /atom/movable/screen()
 	tethering_icon.icon = ui_datum.ui_style_icon
 	tethering_icon.icon_state = "status_0"
 	infodisplay += tethering_icon
 
-	tethered_icon = new /obj/screen()
+	tethered_icon = new /atom/movable/screen()
 	tethered_icon.icon = ui_datum.ui_style_icon
 	tethered_icon.icon_state = "status_0"
 	infodisplay += tethered_icon

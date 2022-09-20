@@ -518,7 +518,7 @@
 	return
 
 /obj/item/device/binoculars/designator/proc/lasering(var/mob/living/carbon/human/user, var/atom/A, var/params)
-	if(istype(A,/obj/screen))
+	if(istype(A,/atom/movable/screen))
 		return FALSE
 	if(user.stat)
 		zoom(user)

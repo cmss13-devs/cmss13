@@ -570,7 +570,7 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
 	if(hud_used)
-		var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+		var/atom/movable/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
 		screenobj.update_icon(src)
 
 /mob/living/carbon/Xenomorph/proc/set_lighting_alpha(var/level)
@@ -582,7 +582,7 @@
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
-	var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+	var/atom/movable/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
 	screenobj.update_icon(src)
 
 /mob/living/carbon/Xenomorph/proc/get_vision_level()

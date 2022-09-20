@@ -973,6 +973,18 @@ Defined in conflicts.dm of the #defines folder.
 	zoom_offset = 7
 	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
 
+/obj/item/attachable/scope/mini/xm88
+	name = "XS-9 targeting relay"
+	desc = "An ARMAT XS-9 optical interface. Unlike a traditional scope, this rail-mounted device features no telescoping lens. Instead, the firearm's onboard targeting system relays data directly to the optic for the system operator to reference in realtime."
+	icon_state = "boomslang-scope"
+	zoom_offset = 7
+	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
+
+/obj/item/attachable/scope/mini/xm88/New()
+	..()
+	select_gamemode_skin(type)
+	attach_icon = icon_state
+
 /obj/item/attachable/scope/mini_iff
 	name = "B8 Smart-Scope"
 	icon_state = "iffbarrel"
@@ -1136,8 +1148,24 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A wooden stock designed for the R4T lever-action rifle, designed to withstand harsh environments. It increases weapon stability but really gets in the way."
 	icon_state = "r4t-stock"
 	wield_delay_mod = WIELD_DELAY_SLOW
+	hud_offset_mod = 6
 
 /obj/item/attachable/stock/r4t/New()
+	..()
+	select_gamemode_skin(type)
+	recoil_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
+
+/obj/item/attachable/stock/xm88
+	name = "\improper XM88 padded stock"
+	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88 Heavy Rifle."
+	icon_state = "boomslang-stock"
+	wield_delay_mod = WIELD_DELAY_SLOW
+	hud_offset_mod = 6
+
+/obj/item/attachable/stock/xm88/New()
 	..()
 	select_gamemode_skin(type)
 	recoil_mod = -RECOIL_AMOUNT_TIER_5

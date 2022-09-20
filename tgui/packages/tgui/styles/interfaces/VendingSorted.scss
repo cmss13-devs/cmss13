@@ -1,0 +1,110 @@
+@use '../base.scss';
+@use '../colors.scss';
+@use '../functions.scss' as *;
+
+$title-text-color: base.$color-fg !default;
+
+.VendingSorted__SearchBox {
+  position: fixed;
+  width: calc(100% - 25px);
+  margin: 0px;
+  z-index: 1;
+  background-color: base.$color-bg;
+  top: 31px;
+}
+
+.VendingSorted__ItemContainer {
+  margin-top: 30px;
+  position: absolute;
+  width: 100%;
+  padding-right: 10px;
+}
+
+.VendingSorted__CategorySection {
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
+  width: 100%
+}
+
+.VendingSorted__Category {
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
+  width: 100%
+}
+
+.VendingSorted__Input {
+  border: 1px solid white;
+  color: white;
+}
+
+.VendingSorted__Button {
+  text-align: center;
+}
+
+.VendingSorted__VendButton {
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+}
+
+.VendingSorted__Icon {
+  max-width: 30px;
+}
+
+.VendingSorted__Text {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: inherit;
+}
+
+.VendingSorted__Failure {
+  color: red;
+}
+
+.VendingSorted__RegularItemText {
+  color: white;
+}
+
+.VendingSorted__MandatoryItemText {
+  color: orange;
+}
+
+.VendingSorted__RecommendedItemText {
+  color: #56E97B;
+}
+
+.VendingSorted__Spacer {
+  width: 15px
+}
+
+.VendingSorted__ItemFlex {
+  margin-top: 5px;
+}
+
+.VendingSorted__ItemBox {
+  height: 25px;
+}
+
+
+.VendingSorted__ItemSeparator {
+  height: 1px;
+  border: none;
+  background-color: base.$color-bg;
+  position: absolute;
+  width: 100%;
+  margin-top: -0px;
+}
+
+.VendingSorted__Tooltip {
+  background-color: red;
+}
+
+.VendingSorted__Description {
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}

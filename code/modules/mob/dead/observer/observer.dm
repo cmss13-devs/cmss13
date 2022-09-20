@@ -48,7 +48,7 @@
 	set category = "Ghost.Settings"
 	ghostvision = !ghostvision
 	if(hud_used)
-		var/obj/screen/plane_master/lighting/lighting = hud_used.plane_masters["[GHOST_PLANE]"]
+		var/atom/movable/screen/plane_master/lighting/lighting = hud_used.plane_masters["[GHOST_PLANE]"]
 		if (lighting)
 			lighting.alpha = ghostvision? 255 : 0
 	to_chat(usr, SPAN_NOTICE("You [(ghostvision?"now":"no longer")] have ghost vision."))

@@ -308,10 +308,10 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	set name = "a-select-zone"
 	set hidden = 1
 
-	var/obj/screen/zone_sel/zone
+	var/atom/movable/screen/zone_sel/zone
 
 	for(var/A in usr.client.screen)
-		if(istype(A, /obj/screen/zone_sel))
+		if(istype(A, /atom/movable/screen/zone_sel))
 			zone = A
 
 	if(!zone)

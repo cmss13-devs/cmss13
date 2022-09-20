@@ -112,7 +112,8 @@
 	var/max_lifesteal = 9
 	var/lifesteal_range =  3
 	var/lifesteal_lock_duration = 20
-	var/color = "#127409"
+	var/color = "#6c6f24"
+	var/emote_cooldown = 0
 
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_self()
 	..()
@@ -149,9 +150,14 @@
 
 // This part is then outside the for loop
 		if(final_lifesteal >= max_lifesteal)
-			bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 1))
+			bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 90))
 			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name] glows as it heals even more from its injuries!."), SPAN_XENODANGER("You glow as you heal even more from your injuries!"))
-			addtimer(CALLBACK(src, .proc/lifesteal_lock), lifesteal_lock_duration/2)
+			bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
+		if(istype(bound_xeno) && world.time > emote_cooldown && bound_xeno)
+			bound_xeno.emote("roar")
+			bound_xeno.xeno_jitter(1 SECONDS)
+			emote_cooldown = world.time + 5 SECONDS
+		addtimer(CALLBACK(src, .proc/lifesteal_lock), lifesteal_lock_duration/2)
 
 	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 17, 40))
 

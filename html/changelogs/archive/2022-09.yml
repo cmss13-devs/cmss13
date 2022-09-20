@@ -313,6 +313,8 @@
   - qol: Item description appears as popup in vendor UI
   - qol: Item icons are displayed in vendor UI
 2022-09-20:
+  Morrow:
+  - rscadd: Decoration accessories can now be attached to CO armor
   Shad0vvs:
   - server: Byond version 1588 is now blacklisted as it breaks vision.
   Totalepicess, Blithering:

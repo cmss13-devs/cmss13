@@ -315,6 +315,12 @@
 2022-09-20:
   Shad0vvs:
   - server: Byond version 1588 is now blacklisted as it breaks vision.
+  Totalepicess, Blithering:
+  - rscadd: Added M41A and L42A blank ammo
+  - rscadd: Added the ABR-40 Ceremonial Rifle, found in SEA vendor, execution and
+      ceremonial room. Sprites by Blithering
+  - rscadd: Added a new ceremonial room to the Almayer, next to the memorial.
+  - rscadd: Added service jacket to SEA vendor
   stanalbatross:
   - refactor: repathed /obj/screen to /atom/movable/screen
   - bugfix: only unacidable intel items are saved from the spawn pool now, this fixes

@@ -608,7 +608,6 @@ IN_USE						used for vending/denying
 		var/prod_type = L[3]
 		var/obj/our_item = new prod_type(T)
 		H.put_in_any_hand_if_possible(our_item, disable_warning = TRUE)
-		vending_stat_bump(prod_type, src.type)
 	else
 		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
 		sleep(15)
@@ -740,7 +739,6 @@ IN_USE						used for vending/denying
 			prod_type = gloves_type
 
 		var/obj/item/O = new prod_type(loc)
-		vending_stat_bump(prod_type, src.type)
 
 		var/bitf = L[4]
 		if(bitf)
@@ -1104,7 +1102,6 @@ IN_USE						used for vending/denying
 			new prod_path(T, TRUE)
 		else
 			new prod_path(T)
-		vending_stat_bump(prod_path, src.type)
 		L[2]--		//taking 1 from amount of products in vendor
 
 	else
@@ -1251,7 +1248,6 @@ IN_USE						used for vending/denying
 			sleep(vend_delay)
 		var/prod_type = L[3]
 		new prod_type(T)
-		vending_stat_bump(prod_type, src.type)
 	else
 		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
 		sleep(15)

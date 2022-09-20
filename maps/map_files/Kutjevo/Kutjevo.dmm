@@ -3799,7 +3799,7 @@
 "ePV" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "kutjevo_medlock_east";
-	name = "\improper East Medical Shutters"
+	name = "\improper Medical South Shutters"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med)
@@ -5328,7 +5328,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 8;
 	id = "kutjevo_medlock_ne";
-	name = "\improper North East Medical Shutters"
+	name = "\improper Medical North East Shutters"
 	},
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/interior/complex/med/triage)
@@ -6197,7 +6197,7 @@
 /obj/structure/window/framed/kutjevo,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_ne";
-	name = "\improper North East Medical Shutters"
+	name = "\improper Medical North East Shutters"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/triage)
@@ -8728,7 +8728,7 @@
 "lZz" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_south2";
-	name = "\improper Medical West Shutters"
+	name = "\improper Medical South West Shutters"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
@@ -9777,7 +9777,7 @@
 "nsd" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_ne";
-	name = "\improper North East Medical Shutters"
+	name = "\improper Medical North East Shutters"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/triage)
@@ -11719,7 +11719,7 @@
 "pSU" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_mid";
-	name = "\improper East Medical Shutters"
+	name = "\improper Medical Eastern Shutters"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med)
@@ -15147,7 +15147,7 @@
 "uIg" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_west";
-	name = "\improper Medical West Shutters"
+	name = "\improper Medical South Shutters"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med)

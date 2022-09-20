@@ -312,3 +312,6 @@
   - qol: Search bar for item search for vendors
   - qol: Item description appears as popup in vendor UI
   - qol: Item icons are displayed in vendor UI
+2022-09-20:
+  stanalbatross:
+  - refactor: repathed /obj/screen to /atom/movable/screen

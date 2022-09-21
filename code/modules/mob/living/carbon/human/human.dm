@@ -716,7 +716,7 @@
 			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
-						for(var/datum/data/record/R in GLOB.data_core.medical)
+						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
 									to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
@@ -744,7 +744,7 @@
 			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
-						for(var/datum/data/record/R in GLOB.data_core.medical)
+						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
 									read = 1
@@ -770,7 +770,7 @@
 			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
-						for(var/datum/data/record/R in GLOB.data_core.medical)
+						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
 									var/t1 = strip_html(input("Add Comment:", "Med. records", null, null)  as message)
@@ -807,25 +807,6 @@
 			to_chat(usr, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
 		update_targeted()
 
-	if(href_list["scanreport"])
-		if(hasHUD(usr,"medical"))
-			if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
-				return
-			if(!has_species(src, "Human"))
-				to_chat(usr, SPAN_WARNING("This only works on humans."))
-				return
-			if(get_dist(usr, src) > 7)
-				to_chat(usr, SPAN_WARNING("[src] is too far away."))
-				return
-
-			var/me_ref = WEAKREF(src)
-			for(var/datum/data/record/R in GLOB.data_core.medical)
-				if(R.fields["ref"] == me_ref)
-					if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
-						show_browser(usr, R.fields["last_scan_result"], "Medical Scan Report", "scanresults", "size=430x600")
-					break
-
 	if(href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
 		if(istype(I))
@@ -854,8 +835,45 @@
 				flavor_texts[href_list["flavor_change"]] = msg
 				set_flavor()
 				return
+
+	if(href_list["scanreport"])
+		if(hasHUD(usr,"medical"))
+			if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
+				return
+			if(!has_species(src, "Human"))
+				to_chat(usr, SPAN_WARNING("This only works on humans."))
+				return
+			if(get_dist(usr, src) > 7)
+				to_chat(usr, SPAN_WARNING("[src] is too far away."))
+				return
+
+			var/me_ref = WEAKREF(src)
+			for(var/datum/data/record/R as anything in GLOB.data_core.medical)
+				if(R.fields["ref"] == me_ref)
+					if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
+						tgui_interact(usr)
+					break
 	..()
 	return
+
+/mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui) // I'M SORRY, SO FUCKING SORRY
+	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "HealthScan", "Last Medical Scan of [src]")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
+/mob/living/carbon/human/ui_data(mob/user)
+	var/me_ref = WEAKREF(src)
+	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
+		if(R.fields["ref"] == me_ref)
+			if(R.fields["last_tgui_scan_result"])
+				return R.fields["last_tgui_scan_result"]
+
+/mob/living/carbon/human/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
 
 ///get_eye_protection()
 ///Returns a number between -1 to 2
@@ -979,12 +997,12 @@
 
 /mob/living/carbon/human/proc/is_lung_ruptured()
 	var/datum/internal_organ/lungs/L = internal_organs_by_name["lungs"]
-	return L && L.is_bruised()
+	return L && L.organ_status >= ORGAN_BRUISED
 
 /mob/living/carbon/human/proc/rupture_lung()
 	var/datum/internal_organ/lungs/L = internal_organs_by_name["lungs"]
 
-	if(L && !L.is_bruised())
+	if(L && !L.organ_status >= ORGAN_BRUISED)
 		src.custom_pain("You feel a stabbing pain in your chest!", 1)
 		L.damage = L.min_bruised_damage
 

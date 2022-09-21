@@ -296,7 +296,7 @@
 			if(hasHUD(user,"medical"))
 				var/mob/living/carbon/human/H = stasis_mob
 				var/stasis_ref = WEAKREF(H)
-				for(var/datum/data/record/R in GLOB.data_core.medical)
+				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					if (R.fields["ref"] == stasis_ref)
 						if(!(R.fields["last_scan_time"]))
 							to_chat(user, "<span class = 'deptradio'>No scan report on record</span>\n")
@@ -326,13 +326,31 @@
 			if(ishuman(stasis_mob))
 				var/mob/living/carbon/human/H = stasis_mob
 				var/stasis_ref = WEAKREF(H)
-				for(var/datum/data/record/R in GLOB.data_core.medical)
+				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					if (R.fields["ref"] == stasis_ref)
-						if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
-							show_browser(usr, R.fields["last_scan_result"], "Last Medical Scan of [H]", "scanresults", "size=430x600")
+						if(R.fields["last_scan_time"] && R.fields["last_tgui_scan_result"])
+							tgui_interact(usr, human = H)
 						break
 
+/obj/structure/closet/bodybag/cryobag/tgui_interact(mob/user, datum/tgui/ui, var/mob/living/carbon/human/human)
+	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "HealthScan", "Last Medical Scan of [human]")
+		ui.open()
+		ui.set_autoupdate(FALSE)
 
+/obj/structure/closet/bodybag/cryobag/ui_data(mob/user)
+	if(ishuman(stasis_mob))
+		var/mob/living/carbon/human/H = stasis_mob
+		var/stasis_ref = WEAKREF(H)
+		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
+			if(R.fields["ref"] == stasis_ref)
+				if(R.fields["last_tgui_scan_result"])
+					return R.fields["last_tgui_scan_result"]
+
+/obj/structure/closet/bodybag/cryobag/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
 
 /obj/item/trash/used_stasis_bag
 	name = "used stasis bag"

@@ -60,10 +60,11 @@ const RecordName = (props: RecordNameProps) => {
       <span className={classes([
         'VendingSorted__Text',
         'VendingSorted__RegularItemText',
+        'VendingSorted__HideDesc',
         isMandatory && 'VendingSorted__MandatoryItemText',
         isRecommended && 'VendingSorted__RecommendedItemText',
       ])}>
-        {record.prod_name} {description && <Icon name="circle-info" />}
+        {record.prod_name}   {description && <Icon name="circle-info" className="VendingSorted__ShowDesc" />}
       </span>
     );
   };
@@ -152,7 +153,6 @@ const ItemDescriptionViewer = (props: DescriptionProps, context) => {
 };
 
 export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
-  const { data } = useBackend<VendingData>(context);
   const { category } = props;
   const [searchTerm, _] = useLocalState(context, 'searchTerm', "");
   const searchFilter = (x: VendingRecord) =>

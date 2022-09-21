@@ -352,6 +352,19 @@
 		M.apply_damage(10)
 	return XENO_ATTACK_ACTION
 
+//Breaking razorwire
+/obj/structure/razorwire/attack_alien(mob/living/carbon/Xenomorph/xeno)
+	xeno.animation_attack_on(src)
+	take_damage(rand(xeno.melee_damage_lower, xeno.melee_damage_upper) * brute_multiplier)
+	playsound(src, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src]!"), SPAN_DANGER("You [xeno.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.visible_message(SPAN_DANGER("\The [src] slices into [xeno]!"), SPAN_DANGER("\The [src] slices into you!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.apply_damage(10)
+	return XENO_ATTACK_ACTION
+
 /obj/structure/surface/rack/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)

@@ -333,6 +333,16 @@
 2022-09-21:
   c4xmaniac:
   - bugfix: Fixed kutjevo shutters.
+  - balance: LZ1 has been redesigned to make it harder to defend as marines and easier
+      to siege as xenos.
+  - bugfix: Fixed the old and current nightmare inserts on science annex to fit the
+      redesign of the map.
+  - rscdel: Deleted the old nightmare inserts that no longer work due Saw's yard changes
+      and the LZ1 changes I made.
+  - bugfix: Changed the descriptions of the food venders on the prison to match that
+      they're on a prison.
+  - qol: Moved the survivor spawn near park right a little so new survivor players
+      don't get gunned down immediately by a sentry.
   nauticall:
   - rscadd: Added more than 150 new sounds into the game; most were ported from A:CM
       and stock SS13.

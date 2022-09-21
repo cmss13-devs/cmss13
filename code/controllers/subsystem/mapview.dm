@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(mapview)
 		if(istype(M) && M.current_viewers.len)
 			M.update_mapview()
 
-		var/obj/structure/machinery/computer/overwatch/O = MM
+		var/obj/structure/machinery/computer/security/overwatch/O = MM
 		if(istype(O) && O.current_squad && O.current_mapviewer)
 			O.update_mapview()
 

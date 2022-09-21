@@ -9226,7 +9226,7 @@
 /area/almayer/living/pilotbunks)
 "ayy" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
+/obj/structure/machinery/computer/security/overwatch/almayer{
 	dir = 8;
 	layer = 3.2;
 	pixel_x = -17;
@@ -10575,7 +10575,7 @@
 /area/almayer/command/cic)
 "aBV" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
+/obj/structure/machinery/computer/security/overwatch/almayer{
 	dir = 8;
 	layer = 3.2;
 	pixel_x = -17;
@@ -40860,7 +40860,7 @@
 /area/space)
 "eSV" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
+/obj/structure/machinery/computer/security/overwatch/almayer{
 	dir = 8;
 	layer = 3.2;
 	pixel_x = -17;
@@ -44913,7 +44913,7 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "gHl" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
+/obj/structure/machinery/computer/security/overwatch/almayer{
 	dir = 8;
 	layer = 3.2;
 	pixel_x = -17;

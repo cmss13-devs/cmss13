@@ -2198,7 +2198,7 @@
 /area/whiskey_outpost/inside/hospital)
 "hj" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/overwatch/almayer{
+/obj/structure/machinery/computer/security/overwatch/almayer{
 	layer = 3.2;
 	pixel_y = 20
 	},
@@ -2873,7 +2873,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/machinery/computer/overwatch/almayer{
+/obj/structure/machinery/computer/security/overwatch/almayer{
 	layer = 3.2;
 	pixel_y = 20
 	},
@@ -3241,7 +3241,7 @@
 	tag = "icon-bulb1 (WEST)"
 	},
 /obj/item/folder/black_random,
-/obj/structure/machinery/computer/overwatch/almayer{
+/obj/structure/machinery/computer/security/overwatch/almayer{
 	layer = 3.2;
 	pixel_y = 20
 	},
@@ -3332,7 +3332,7 @@
 /area/whiskey_outpost/outside/lane/one_north)
 "kp" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/overwatch/almayer{
+/obj/structure/machinery/computer/security/overwatch/almayer{
 	layer = 3.2;
 	pixel_y = 20
 	},
@@ -4005,7 +4005,7 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost)
 "mH" = (
-/obj/structure/machinery/computer/overwatch/almayer{
+/obj/structure/machinery/computer/security/overwatch/almayer{
 	dir = 8;
 	layer = 3.2;
 	pixel_x = -17;

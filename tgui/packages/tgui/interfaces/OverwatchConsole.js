@@ -15,6 +15,7 @@ import {
   Box,
   Dropdown,
   ColorBox,
+  ByondUi,
 } from '../components';
 import { Window } from '../layouts';
 import { Fragment } from 'inferno';
@@ -48,26 +49,41 @@ export const OverwatchMain = (props, context) => {
     <>
       <OverwatchId />
       {squad_data ? (
-        <Stack direction="column" fontFamily="consolas">
-          <Stack.Item>
-            <Stack mb="1em">
-              <Stack.Item grow>
-                <Stack>
-                  <Stack.Item width="30%" grow>
-                    <OverwatchSelect />
-                    <OverwatchSquad />
-                  </Stack.Item>
+        <Fragment>
+          <div className="Overwatch__left">
+            <Stack direction="column" fontFamily="consolas">
+              <Stack.Item>
+                <Stack mb="1em">
                   <Stack.Item grow>
-                    <OverwatchDrop />
+                    <Stack>
+                      <Stack.Item width="30%" grow>
+                        <OverwatchSelect />
+                        <OverwatchSquad />
+                      </Stack.Item>
+                      <Stack.Item grow>
+                        <OverwatchDrop />
+                      </Stack.Item>
+                    </Stack>
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
+              <Stack.Item fill>
+                <OverwatchMonitor />
+              </Stack.Item>
             </Stack>
-          </Stack.Item>
-          <Stack.Item fill>
-            <OverwatchMonitor />
-          </Stack.Item>
-        </Stack>
+          </div>
+          <div>
+            <div className="Overwatch__right">
+              <ByondUi
+                className="CameraConsole__map"
+                params={{
+                  id: mapRef,
+                  type: 'map',
+                }} />
+            </div>
+
+          </div>
+        </Fragment>
       ) : (
         <OverwatchSelect />
       )}

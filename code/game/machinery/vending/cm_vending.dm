@@ -884,16 +884,15 @@ IN_USE						used for vending/denying
 			dyn.update(filename)
 
 /obj/structure/machinery/cm_vending/sorted/proc/build_icons(var/list/items)
-	for (var/i in 1 to length(items))
+	for (var/list/item in items)
 		// initial item count setup
-		var/item_name = items[i][1]
-		if (!item_name)
-			continue
-		var/initial_count = items[i][2]
+		var/item_name = item[1]
+		var/initial_count = item[2]
 		initial_product_count[item_name] = initial_count
-
 		// icon setup
-		var/typepath = items[i][3]
+		var/typepath = item[3]
+		if (item_name == null || item_name == "" || typepath == null)
+			continue
 
 		var/icon_ref = null
 		var/icon_state = null
@@ -923,16 +922,23 @@ IN_USE						used for vending/denying
 				var/target_obj = new I()
 				r = getFlatIcon(target_obj)
 				qdel(target_obj)
-
+		if(!(item_name in product_icon_list))
+			product_icon_list[item_name] = list(
+				"href" = "",
+				"desc" = ""
+			)
+		if(!r)
+			continue
 		var/asset_name = generate_asset_name(r)
-		var/key = "[generate_asset_name(r)].png"
-		if(asset_name && asset_name != "")
+		var/key = "[asset_name].png"
+		if(asset_name != null && asset_name != "" && r != null)
 			if(!SSassets.cache[key])
 				SSassets.transport.register_asset(key, r)
-		product_icon_list[item_name] = list(
-			"href"=SSassets.transport.get_asset_url(key),
-			"desc"=desc
-		)
+		if(asset_name != null)
+			product_icon_list[item_name] = list(
+				"href"=SSassets.transport.get_asset_url(key),
+				"desc"=desc
+			)
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)

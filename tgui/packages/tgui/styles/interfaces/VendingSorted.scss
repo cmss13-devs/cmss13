@@ -51,6 +51,14 @@ $title-text-color: base.$color-fg !default;
   line-height: 15px;
 }
 
+.VendingSorted__RecommendedVendButton {
+  background-color: #3a9b52;
+}
+
+.VendingSorted__MandatoryVendButton {
+  color: rgb(128, 83, 0);
+}
+
 .VendingSorted__Icon {
   max-width: 30px;
 }

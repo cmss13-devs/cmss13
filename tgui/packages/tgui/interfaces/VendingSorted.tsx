@@ -95,6 +95,9 @@ const VendableItem = (props: VenableItem, context) => {
 
   const quantity = data.stock_listing[record.prod_index - 1];
   const available = quantity > 0;
+  const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
+  const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
+
   return (
     <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
       <Flex.Item>
@@ -107,7 +110,12 @@ const VendableItem = (props: VenableItem, context) => {
 
       <Flex.Item justify="right">
         <Button
-          className={classes(["VendingSorted__Button", 'VendingSorted__VendButton'])}
+          className={classes([
+            "VendingSorted__Button",
+            'VendingSorted__VendButton',
+            isRecommended && 'VendingSorted__RecommendedVendButton',
+            isMandatory && 'VendingSorted__MandatoryVendButton',
+          ])}
           preserveWhitespace
           icon={available ? "circle-down" : "xmark"}
           onClick={() => act('vend', record)}
@@ -123,10 +131,6 @@ const VendableItem = (props: VenableItem, context) => {
         <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
           {quantity}
         </span>
-      </Flex.Item>
-
-      <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
       </Flex.Item>
 
       <Flex.Item grow={1}>

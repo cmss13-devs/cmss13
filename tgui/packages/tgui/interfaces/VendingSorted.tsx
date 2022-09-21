@@ -104,23 +104,7 @@ const VendableItem = (props: VenableItem, context) => {
       <Flex.Item>
         <Box className="VendingSorted__Spacer" />
       </Flex.Item>
-      <Flex.Item grow={1}>
-        <RecordName record={record} />
-      </Flex.Item>
 
-      <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
-      </Flex.Item>
-
-      <Flex.Item width={5}>
-        <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
-          {quantity}
-        </span>
-      </Flex.Item>
-
-      <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
-      </Flex.Item>
       <Flex.Item justify="right">
         <Button
           className={classes(["VendingSorted__Button", 'VendingSorted__VendButton'])}
@@ -129,6 +113,24 @@ const VendableItem = (props: VenableItem, context) => {
           onClick={() => act('vend', record)}
           textAlign="center"
           disabled={!available} />
+      </Flex.Item>
+
+      <Flex.Item>
+        <Box className="VendingSorted__Spacer" />
+      </Flex.Item>
+
+      <Flex.Item width={2}>
+        <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
+          {quantity}
+        </span>
+      </Flex.Item>
+
+      <Flex.Item>
+        <Box className="VendingSorted__Spacer" />
+      </Flex.Item>
+
+      <Flex.Item grow={1}>
+        <RecordName record={record} />
       </Flex.Item>
     </Flex>
   );

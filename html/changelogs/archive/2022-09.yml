@@ -353,3 +353,5 @@
       prying doors, and picking up/dropping items.
   - rscadd: Several tools now have pickup and drop sounds. In addition to the toolbelt
       tools, these also include binoculars and fire extinguishers.
+  - bugfix: Patches a bug where the defibrillator would turn invisible once it shifted
+      to the yellow (<50%) level of charge and below.

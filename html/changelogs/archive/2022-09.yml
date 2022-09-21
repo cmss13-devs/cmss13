@@ -330,3 +330,14 @@
       properly
   - bugfix: the spawn pool and egg morpher will no longer pile all intel items on
       top of them
+2022-09-21:
+  nauticall:
+  - rscadd: Added more than 150 new sounds into the game; most were ported from A:CM
+      and stock SS13.
+  - rscadd: New firing sounds for the M37, Mk221/Mk210, M4A3, and 88 Mod 4.
+  - rscadd: New sounds for shotgun shell loading, glass breaking, explosions, and
+      explosions greater than 300 power, e.g. OBs and max caps.
+  - rscadd: Added various new interaction noises, particularly when damaging barricades,
+      prying doors, and picking up/dropping items.
+  - rscadd: Several tools now have pickup and drop sounds. In addition to the toolbelt
+      tools, these also include binoculars and fire extinguishers.

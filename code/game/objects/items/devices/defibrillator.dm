@@ -46,11 +46,11 @@
 			if(67 to INFINITY)
 				overlays += "+full"
 			if(34 to 66)
-				icon_state += "_half"
+				overlays += "+half"
 			if(3 to 33)
-				icon_state += "_low"
+				overlays += "+low"
 			if(0 to 3)
-				icon_state += "_empty"
+				overlays += "+empty"
 	else
 		overlays += "+empty"
 

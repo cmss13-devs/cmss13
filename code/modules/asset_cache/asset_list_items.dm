@@ -136,9 +136,9 @@
 	if(islist(filename))
 		filenames = filename
 	for(var/asset in filenames)
-		if(!asset in assets)
-			assets += list(asset=asset)
-			register_single(asset)
+		if(!(asset in assets))
+			var/key = copytext(asset, 7, 0)
+			assets += list(key)
 
 /datum/asset/simple/dynamic_icons/proc/register_single(var/asset_name)
 	var/datum/asset_cache_item/ACI = SSassets.transport.register_asset(asset_name, assets[asset_name])

@@ -72,7 +72,6 @@ const RecordName = (props: RecordNameProps) => {
   if (!description) {
     return display_text();
   }
-
   return (
     <Tooltip
       position="bottom-start"
@@ -204,7 +203,7 @@ export const VendingSorted = (_, context) => {
   return (
     <Window
       height={800}
-      width={500}
+      width={400}
       theme={getTheme(data.theme)}
     >
       <Window.Content scrollable>

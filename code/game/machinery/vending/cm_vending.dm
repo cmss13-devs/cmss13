@@ -878,15 +878,17 @@ IN_USE						used for vending/denying
 	populate_product_list(1.2)
 	build_icons(listed_products)
 	var/datum/asset/simple/dynamic_icons/dyn = get_asset_datum(/datum/asset/simple/dynamic_icons)
-	for (var/i in 1 to length(listed_products))
-		var/item_name = listed_products[i][1]
-		var/filename = product_icon_list[item_name]["href"]
-		dyn.update(filename)
+	for (var/list/i in product_icon_list)
+		var/filename = i["href"]
+		if(filename)
+			dyn.update(filename)
 
 /obj/structure/machinery/cm_vending/sorted/proc/build_icons(var/list/items)
 	for (var/i in 1 to length(items))
 		// initial item count setup
 		var/item_name = items[i][1]
+		if (!item_name)
+			continue
 		var/initial_count = items[i][2]
 		initial_product_count[item_name] = initial_count
 
@@ -922,9 +924,13 @@ IN_USE						used for vending/denying
 				r = getFlatIcon(target_obj)
 				qdel(target_obj)
 
-		var/result = icon2html(r, world, icon_state, sourceonly=TRUE)
+		var/asset_name = generate_asset_name(r)
+		var/key = "[generate_asset_name(r)].png"
+		if(asset_name && asset_name != "")
+			if(!SSassets.cache[key])
+				SSassets.transport.register_asset(key, r)
 		product_icon_list[item_name] = list(
-			"href"=result,
+			"href"=SSassets.transport.get_asset_url(key),
 			"desc"=desc
 		)
 
@@ -984,7 +990,12 @@ IN_USE						used for vending/denying
 		var/prod_available = p_amount > 0		//checking if it's available
 		var/list/initial_vals = initial_product_count
 
-		var/result = product_icon_list[p_name]
+		var/result = list()
+		result["href"] = ""
+		result["desc"] = ""
+		if (p_name in product_icon_list)
+			result = product_icon_list[p_name]
+
 		var/initial_amount = initial_vals[p_name]
 		var/is_category = p_amount < 0
 

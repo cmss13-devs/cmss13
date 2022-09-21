@@ -331,6 +331,8 @@
   - bugfix: the spawn pool and egg morpher will no longer pile all intel items on
       top of them
 2022-09-21:
+  c4xmaniac:
+  - bugfix: Fixed kutjevo shutters.
   nauticall:
   - rscadd: Added more than 150 new sounds into the game; most were ported from A:CM
       and stock SS13.

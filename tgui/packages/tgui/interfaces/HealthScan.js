@@ -3,7 +3,7 @@ import { Section, ProgressBar, Box, LabeledList, NoticeBox, Stack, Icon, Divider
 import { Window } from '../layouts';
 
 export const HealthScan = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { data } = useBackend(context);
   const {
     patient,
     dead,
@@ -15,10 +15,6 @@ export const HealthScan = (props, context) => {
     clone,
 
     has_chemicals,
-    has_unknown_chemicals,
-    chemicals_lists,
-
-    limb_data_lists,
     limbs_damaged,
 
     damaged_organs,
@@ -41,8 +37,6 @@ export const HealthScan = (props, context) => {
     advice,
     species,
   } = data;
-  const chemicals = Object.values(chemicals_lists);
-  const limb_data = Object.values(limb_data_lists);
   const healthanalyser = detail_level < 1;
   const bodyscanner = detail_level >= 1;
   const ghostscan = detail_level >= 2;
@@ -161,188 +155,13 @@ export const HealthScan = (props, context) => {
           </LabeledList>
         </Section>
         {has_chemicals ? (
-          <Section title="Chemical Contents">
-            {has_unknown_chemicals ? (
-              <NoticeBox warning color="grey">
-                Unknown reagents detected.
-              </NoticeBox>
-            ) : null}
-            <Stack>
-              {
-                chemicals.map(chemical => (
-                  <Stack.Item
-                    key={chemical.name}>
-                    <Box inline>
-                      <Icon name={"flask"} ml={0.2} color={chemical.colour} />
-                      <Box inline width={"5px"} />
-                      <Box inline
-                        color={chemical.dangerous ? "red" : "white"}
-                        bold={chemical.dangerous}>
-                        {chemical.amount + "u " + chemical.name}
-                      </Box>
-                      <Box inline width={"5px"} />
-                      {chemical.od ? (
-                        <Box inline
-                          color={"red"}
-                          bold={1}>
-                          {"OD"}
-                        </Box>
-                      ) : null}
-                    </Box>
-                  </Stack.Item>
-                ))
-              }
-            </Stack>
-          </Section>
+          <ScannerChems />
         ) : null}
         {limbs_damaged ? (
-          <Section title="Limbs Damaged">
-            <LabeledList>
-              {
-                limb_data.map(limb => (
-                  <LabeledList.Item
-                    key={limb.name}
-                    label={limb.name[0].toUpperCase() + limb.name.slice(1)}>
-                    {limb.missing ? (
-                      <Box inline
-                        color={"red"}
-                        bold={1}>
-                        MISSING
-                      </Box>
-                    ) : (
-                      <>
-                        {limb.brute > 0 ? (
-                          <>
-                            <Box inline>
-                              <ProgressBar
-                                value={limb.brute}
-                                maxvalue={limb.brute}
-                                ranges={{
-                                  red: [-Infinity, Infinity],
-                                }}>Brute:{limb.brute}
-                              </ProgressBar>
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                        {limb.burn > 0 ? (
-                          <>
-                            <Box inline>
-                              <ProgressBar
-                                value={limb.burn}
-                                maxvalue={limb.burn}
-                                ranges={{
-                                  orange: [-Infinity, Infinity],
-                                }}>Burn:{limb.burn}
-                              </ProgressBar>
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                        {!limb.bandaged && limb.brute > 0 && !limb.limb_type ? (
-                          <>
-                            <Box inline color={"orange"}>
-                              [Unbandaged]
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                        {!limb.salved && limb.burn > 0 && !limb.limb_type ? (
-                          <>
-                            <Box inline color={"orange"}>
-                              [Unsalved]
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                        {limb.bleeding ? (
-                          <>
-                            <Box inline color={"red"} bold={1}>
-                              [Bleeding]
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                        {limb.internal_bleeding && bodyscanner ? (
-                          <>
-                            <Box inline color={"red"} bold={1}>
-                              [Internal Bleeding]
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                        {limb.limb_status ? (
-                          <>
-                            <Box inline color={"red"} bold={1}>
-                              [{limb.limb_status}]
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                        {limb.limb_splint ? (
-                          <>
-                            <Box inline color={"green"} bold={1}>
-                              [{limb.limb_splint}]
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                        {limb.limb_type ? (
-                          <>
-                            <Box inline color={(limb.limb_type === "Nonfunctional Cybernetic") ? "red" : "green"} bold={1}>
-                              [{limb.limb_type}]
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                        {limb.open_incision ? (
-                          <>
-                            <Box inline color={"red"} bold={1}>
-                              [Open Surgical Incision]
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                        {limb.implant && bodyscanner ? (
-                          <>
-                            <Box inline color={"white"} bold={1}>
-                              [Embedded Object]
-                            </Box>
-                            <Box inline width={"5px"} />
-                          </>
-                        ) : null}
-                      </>
-                    )}
-                  </LabeledList.Item>
-                ))
-              }
-            </LabeledList>
-          </Section>
+          <ScannerLimbs />
         ) : null}
         {damaged_organs.length && bodyscanner ? (
-          <Section title="Organ(s) Damaged">
-            <LabeledList>
-              {
-                damaged_organs.map(organ => (
-                  <LabeledList.Item
-                    key={organ.name}
-                    label={organ.name[0].toUpperCase() + organ.name.slice(1)}>
-                    <Box inline
-                      color={organ.status === "Bruised" ? "orange" : "red"}
-                      bold={1}>
-                      {organ.status + " [" + organ.damage + " damage]"}
-                    </Box>
-                    <Box inline width={"5px"} />
-                    {organ.robotic ? (
-                      <Box inline bold={1} color="blue">
-                        Robotic
-                      </Box>
-                    ) : null}
-                  </LabeledList.Item>
-                ))
-              }
-            </LabeledList>
-          </Section>
+          <ScannerOrgans />
         ) : null }
         {diseases ? (
           <Section title="Diseases">
@@ -453,5 +272,219 @@ export const HealthScan = (props, context) => {
         ) : null}
       </Window.Content>
     </Window>
+  );
+};
+
+const ScannerChems = (props, context) => {
+  const { data } = useBackend(context);
+  const {
+    has_unknown_chemicals,
+    chemicals_lists,
+  } = data;
+  const chemicals = Object.values(chemicals_lists);
+
+  return (
+    <Section title="Chemical Contents">
+      {has_unknown_chemicals ? (
+        <NoticeBox warning color="grey">
+          Unknown reagents detected.
+        </NoticeBox>
+      ) : null}
+      <Stack>
+        {
+          chemicals.map(chemical => (
+            <Stack.Item
+              key={chemical.name}>
+              <Box inline>
+                <Icon name={"flask"} ml={0.2} color={chemical.colour} />
+                <Box inline width={"5px"} />
+                <Box inline
+                  color={chemical.dangerous ? "red" : "white"}
+                  bold={chemical.dangerous}>
+                  {chemical.amount + "u " + chemical.name}
+                </Box>
+                <Box inline width={"5px"} />
+                {chemical.od ? (
+                  <Box inline
+                    color={"red"}
+                    bold={1}>
+                    {"OD"}
+                  </Box>
+                ) : null}
+              </Box>
+            </Stack.Item>
+          ))
+        }
+      </Stack>
+    </Section>
+  );
+};
+
+const ScannerLimbs = (props, context) => {
+  const { data } = useBackend(context);
+  const {
+    limb_data_lists,
+    detail_level,
+  } = data;
+  const limb_data = Object.values(limb_data_lists);
+  const bodyscanner = detail_level >= 1;
+
+  return (
+    <Section title="Limbs Damaged">
+      <LabeledList>
+        {
+          limb_data.map(limb => (
+            <LabeledList.Item
+              key={limb.name}
+              label={limb.name[0].toUpperCase() + limb.name.slice(1)}>
+              {limb.missing ? (
+                <Box inline
+                  color={"red"}
+                  bold={1}>
+                  MISSING
+                </Box>
+              ) : (
+                <>
+                  {limb.brute > 0 ? (
+                    <>
+                      <Box inline>
+                        <ProgressBar
+                          value={limb.brute}
+                          maxvalue={limb.brute}
+                          ranges={{
+                            red: [-Infinity, Infinity],
+                          }}>Brute:{limb.brute}
+                        </ProgressBar>
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.burn > 0 ? (
+                    <>
+                      <Box inline>
+                        <ProgressBar
+                          value={limb.burn}
+                          maxvalue={limb.burn}
+                          ranges={{
+                            orange: [-Infinity, Infinity],
+                          }}>Burn:{limb.burn}
+                        </ProgressBar>
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {!limb.bandaged && limb.brute > 0 && !limb.limb_type ? (
+                    <>
+                      <Box inline color={"orange"}>
+                        [Unbandaged]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {!limb.salved && limb.burn > 0 && !limb.limb_type ? (
+                    <>
+                      <Box inline color={"orange"}>
+                        [Unsalved]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.bleeding ? (
+                    <>
+                      <Box inline color={"red"} bold={1}>
+                        [Bleeding]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.internal_bleeding && bodyscanner ? (
+                    <>
+                      <Box inline color={"red"} bold={1}>
+                        [Internal Bleeding]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.limb_status ? (
+                    <>
+                      <Box inline color={"red"} bold={1}>
+                        [{limb.limb_status}]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.limb_splint ? (
+                    <>
+                      <Box inline color={"green"} bold={1}>
+                        [{limb.limb_splint}]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.limb_type ? (
+                    <>
+                      <Box inline color={(limb.limb_type === "Nonfunctional Cybernetic") ? "red" : "green"} bold={1}>
+                        [{limb.limb_type}]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.open_incision ? (
+                    <>
+                      <Box inline color={"red"} bold={1}>
+                        [Open Surgical Incision]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.implant && bodyscanner ? (
+                    <>
+                      <Box inline color={"white"} bold={1}>
+                        [Embedded Object]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                </>
+              )}
+            </LabeledList.Item>
+          ))
+        }
+      </LabeledList>
+    </Section>
+  );
+};
+
+const ScannerOrgans = (props, context) => {
+  const { data } = useBackend(context);
+  const {
+    damaged_organs,
+  } = data;
+
+
+  return (
+    <Section title="Organ(s) Damaged">
+      <LabeledList>
+        {
+          damaged_organs.map(organ => (
+            <LabeledList.Item
+              key={organ.name}
+              label={organ.name[0].toUpperCase() + organ.name.slice(1)}>
+              <Box inline
+                color={organ.status === "Bruised" ? "orange" : "red"}
+                bold={1}>
+                {organ.status + " [" + organ.damage + " damage]"}
+              </Box>
+              <Box inline width={"5px"} />
+              {organ.robotic ? (
+                <Box inline bold={1} color="blue">
+                  Robotic
+                </Box>
+              ) : null}
+            </LabeledList.Item>
+          ))
+        }
+      </LabeledList>
+    </Section>
   );
 };

@@ -81,9 +81,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 	if(data_detail_level)
 		detail_level = data_detail_level
-		data["detail_level"] = detail_level
-	else
-		data["detail_level"] = detail_level
+	data["detail_level"] = detail_level
 
 	// chems data
 	data["has_unknown_chemicals"] = FALSE
@@ -394,7 +392,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	return data
 
 /// legacy proc for to_chat messages on health analysers
-/mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1, var/alien = FALSE, var/do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.
+/mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/show_limb_damage = TRUE, var/show_browser = TRUE, var/alien = FALSE, var/do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.
 	if(do_checks)
 		if((user.getBrainLoss() >= 60) && prob(50))
 			to_chat(user, SPAN_WARNING("You try to analyze the floor's vitals!"))
@@ -434,10 +432,10 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	var/dat = ""
 	// Calculate damage amounts
 	var/fake_oxy = max(rand(1,40), src.getOxyLoss(), (300 - (src.getToxLoss() + src.getFireLoss() + src.getBruteLoss())))
-	var/OX = src.getOxyLoss() > 50 	? 	"<b>[src.getOxyLoss()]</b>" 		: src.getOxyLoss()
-	var/TX = src.getToxLoss() > 50 	? 	"<b>[src.getToxLoss()]</b>" 		: src.getToxLoss()
-	var/BU = src.getFireLoss() > 50 	? 	"<b>[src.getFireLoss()]</b>" 		: src.getFireLoss()
-	var/BR = src.getBruteLoss() > 50 	? 	"<b>[src.getBruteLoss()]</b>" 	: src.getBruteLoss()
+	var/OX = src.getOxyLoss() > 50 		? 	"<b>[src.getOxyLoss()]</b>" 		: src.getOxyLoss()
+	var/TX = src.getToxLoss() > 50 		? 	"<b>[src.getToxLoss()]</b>" 		: src.getToxLoss()
+	var/BU = src.getFireLoss() > 50 	? 	"<b>[src.getFireLoss()]</b>"	 	: src.getFireLoss()
+	var/BR = src.getBruteLoss() > 50 	? 	"<b>[src.getBruteLoss()]</b>" 		: src.getBruteLoss()
 
 	// Show overall
 	if(src.status_flags & FAKEDEATH)
@@ -452,7 +450,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	var/unrevivable = 0
 
 	// Show specific limb damage
-	if(istype(src, /mob/living/carbon/human) && mode == 1)
+	if(istype(src, /mob/living/carbon/human) && show_limb_damage)
 		var/mob/living/carbon/human/H = src
 		for(var/obj/limb/org in H.limbs)
 			var/brute_treated = TRUE
@@ -640,7 +638,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				dat += "\t<span class='scanner'> <b>Contradictions:</b></span>\n"
 				dat += advice
 
-	if(hud_mode)
+	if(show_browser)
 		dat = replacetext(dat, "\n", "<br>")
 		dat = replacetext(dat, "\t", "&emsp;")
 		dat = replacetext(dat, "class='warning'", "class='[INTERFACE_RED]'")

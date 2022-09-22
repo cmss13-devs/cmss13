@@ -1,8 +1,3 @@
-//Bracer defines
-
-#define SD_TYPE_SMALL   0
-#define SD_TYPE_BIG   1
-
 /obj/item/clothing/gloves/yautja
 	name = "ancient alien bracers"
 	desc = "A pair of strange, alien bracers."

@@ -20056,15 +20056,18 @@
 	},
 /area/shuttle/drop1/sulaco)
 "blR" = (
-/obj/structure/machinery/camera/autoname/almayer/dropship_one{
-	dir = 8;
-	pixel_x = 16
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
 	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_two,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/shuttle/drop1/sulaco)
+/area/shuttle/drop2/sulaco)
 "blS" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "69";
@@ -20971,6 +20974,10 @@
 /area/almayer/hallways/hangar)
 "bpk" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two,
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -20985,6 +20992,10 @@
 "bpn" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two{
 	dir = 8
+	},
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -21002,6 +21013,10 @@
 /area/almayer/living/offices)
 "bpp" = (
 /obj/structure/machinery/door/airlock/dropship_hatch,
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -21016,6 +21031,10 @@
 "bpr" = (
 /obj/structure/machinery/door/airlock/dropship_hatch{
 	dir = 8
+	},
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -22382,6 +22401,7 @@
 "bvi" = (
 /obj/effect/attach_point/crew_weapon/dropship2,
 /obj/effect/decal/warning_stripes,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship,
 /area/shuttle/drop2/sulaco)
 "bvj" = (
@@ -22410,6 +22430,7 @@
 "bvo" = (
 /obj/effect/decal/warning_stripes,
 /obj/effect/attach_point/crew_weapon/dropship1,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship,
 /area/shuttle/drop1/sulaco)
 "bvp" = (
@@ -30653,15 +30674,18 @@
 	},
 /area/almayer/hallways/port_hallway)
 "bYF" = (
-/obj/structure/machinery/camera/autoname/almayer/dropship_one{
-	dir = 8;
-	pixel_x = 16
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
 	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_two,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/shuttle/drop2/sulaco)
+/area/shuttle/drop1/sulaco)
 "bYI" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -47408,6 +47432,7 @@
 	},
 /area/almayer/hull/lower_hull/l_a_p)
 "hOi" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-floor8"
@@ -50219,6 +50244,7 @@
 	},
 /area/almayer/shipboard/firing_range_south)
 "jdu" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin8";
 	tag = "icon-rasputin8"
@@ -56838,6 +56864,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
 "mjN" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin4";
 	tag = "icon-rasputin4"
@@ -58094,6 +58121,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/main_office)
 "mLM" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin8";
 	tag = "icon-rasputin8"
@@ -63061,6 +63089,7 @@
 	},
 /area/almayer/living/offices/flight)
 "oYG" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin4";
 	tag = "icon-rasputin4"
@@ -82012,6 +82041,7 @@
 	},
 /area/almayer/hallways/vehiclehangar)
 "xte" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-floor8"
@@ -103249,8 +103279,8 @@ baI
 baI
 bfT
 bic
-bka
-bYF
+blR
+bpl
 blJ
 gam
 not
@@ -107715,8 +107745,8 @@ baI
 baI
 akD
 bij
-bkp
-blR
+bYF
+bpq
 blP
 rfu
 ttD

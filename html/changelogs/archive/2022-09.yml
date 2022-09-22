@@ -359,3 +359,5 @@
   Morrow:
   - bugfix: Ported fix for the entire screen being black on newer versions of byond
   - server: Removed blacklisted versions 1586 and 1588
+  stanalbatross:
+  - bugfix: fixed some runtimes

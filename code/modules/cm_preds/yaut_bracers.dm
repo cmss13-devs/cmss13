@@ -623,7 +623,7 @@
 
 	exploding = 1
 	var/turf/T = get_turf(src)
-	if(explosion_type == 0 && victim.stat == CONSCIOUS && is_ground_level(T.z))
+	if(explosion_type == SD_TYPE_SMALL && victim.stat == CONSCIOUS && is_ground_level(T.z))
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
@@ -637,7 +637,7 @@
 			victim.gib() // kills the pred
 			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self destruct", victim)
-		if(explosion_type == 0 && is_ground_level(T.z))
+		if(explosion_type == SD_TYPE_SMALL && is_ground_level(T.z))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Dramatically BIG explosion.
 		else
 			cell_explosion(T, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
@@ -653,10 +653,10 @@
 		return
 
 	if(alert("Which explosion type do you want?","Explosive Bracers", "Small", "Big") == "Big")
-		explosion_type = 0
+		explosion_type = SD_TYPE_SMALL
 		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Large")
 	else
-		explosion_type = 1
+		explosion_type = SD_TYPE_BIG
 		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Small")
 		return
 

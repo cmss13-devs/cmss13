@@ -1273,8 +1273,10 @@
 	wield_delay = WIELD_DELAY_FAST
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood/drill)
 	map_specific_decoration = FALSE
-
-
+	
+/obj/item/weapon/gun/rifle/l42a/abr40/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_7
 
 // Essentially L42 Custom, though more of a sidegrade due to 0 attachments, higher weild delay and the fact that you have to find better magazines.
 /obj/item/weapon/gun/rifle/l42a/abr40/drill

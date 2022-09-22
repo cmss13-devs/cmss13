@@ -361,3 +361,5 @@
   - server: Removed blacklisted versions 1586 and 1588
   stanalbatross:
   - bugfix: fixed some runtimes
+  - bugfix: if a clothing item takes time to equip, it will now not equip if conditions
+      are not met once its windup to equipping has finished

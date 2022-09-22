@@ -1449,25 +1449,6 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 
-/obj/item/attachable/stock/carbine/wood
-	name = "\improper ABR-40-L42 \"wooden\" stock"
-	desc = "A polished replica wood stock, heavy yet sturdy. Compatible with the L42A and ABR-40s Battle Rifles. You can bash someone good with this."
-	icon_state = "l42_fullstock"
-	attach_icon = "l42fullstock_a"
-	melee_mod = 6
-	wield_delay_mod = WIELD_DELAY_SLOW
-
-/obj/item/attachable/stock/carbine/wood/Initialize()
-	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_8
-	recoil_mod = -RECOIL_AMOUNT_TIER_3
-	scatter_mod = -SCATTER_AMOUNT_TIER_9
-
-/obj/item/attachable/stock/carbine/wood/drill
-	name = "\improper ABR-40 exotic \"wood\" stock"
-	desc = "A fully polished non detachable replica wood stock attached to select ABR-40 ceremonial rifles. You can bash someone good with this."
-	flags_attach_features = NO_FLAGS
-	wield_delay_mod = WIELD_DELAY_NORMAL // these already have bad wield delay
 
 /obj/item/attachable/stock/rifle/marksman
 	name = "\improper M41A marksman stock"

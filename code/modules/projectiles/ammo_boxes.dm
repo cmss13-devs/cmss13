@@ -92,7 +92,6 @@
 	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank")
 		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	//adding base color stripes
 
-
 //---------------------INTERACTION PROCS
 
 /obj/item/ammo_box/magazine/examine(mob/living/user)
@@ -354,18 +353,6 @@
 /obj/item/ammo_box/magazine/explosive/empty
 	empty = TRUE
 
-/obj/item/ammo_box/magazine/blank
-	name = "magazine box (BLANK M41A x 10)"
-	desc = "Upon closer examination, a label reads: 'BLANK ROUNDS - FOR TRAINING AND CEREMONIAL USE ONLY - DO NOT USE IN COMBAT SITUATIONS'"
-	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = "_training"
-	overlay_content = "_training"
-	overlay_gun_type = "_m41"
-	magazine_type = /obj/item/ammo_magazine/rifle/blank
-
-/obj/item/ammo_box/magazine/blank/empty
-	empty = TRUE
-
 //-----------------------M39 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m39
@@ -468,25 +455,6 @@
 /obj/item/ammo_box/magazine/l42a/incen/empty
 	empty = TRUE
 
-/obj/item/ammo_box/magazine/l42a/half
-	name = "magazine box (HALF-SIZE L42A x 32)"
-	num_of_magazines = 32
-	magazine_type = /obj/item/ammo_magazine/rifle/l42a/half
-
-/obj/item/ammo_box/magazine/l42a/half/empty
-	empty = TRUE
-
-/obj/item/ammo_box/magazine/l42a/half/blank
-	name = "magazine box (BLANK L42A x 32)"
-	desc = "Upon closer examination, a label reads: 'BLANK ROUNDS - FOR TRAINING AND CEREMONIAL USE ONLY - DO NOT USE IN COMBAT SITUATIONS'"
-	overlay_ammo_type = "_training"
-	overlay_content = "_training"
-	magazine_type = /obj/item/ammo_magazine/rifle/l42a/half/blank
-
-/obj/item/ammo_box/magazine/l42a/half/blank/empty
-	empty = TRUE
-
-
 //-----------------------M16 Rifle Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/M16
@@ -531,7 +499,7 @@
 /obj/item/ammo_box/magazine/lever_action/training
 	name = "45-70 blank box (45-70 x 300)"
 	icon_state = "base_4570"
-	overlay_ammo_type = "_training"
+	overlay_ammo_type = "_45_training"
 	overlay_gun_type = "_4570"
 	overlay_content = "_training"
 	magazine_type = /obj/item/ammo_magazine/handful/lever_action/training

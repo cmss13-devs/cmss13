@@ -390,7 +390,13 @@ updatehealth()
 			tracking_atom = hive.hive_location
 		else
 			var/leader_tracker = text2num(QL.track_state)
-			if(!hive || !hive.xeno_leader_list[leader_tracker])
+			if(!hive || !hive.xeno_leader_list)
+				QL.icon_state = "trackoff"
+				return
+			if(leader_tracker > hive.xeno_leader_list.len)
+				QL.icon_state = "trackoff"
+				return
+			if(!hive.xeno_leader_list[leader_tracker])
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.xeno_leader_list[leader_tracker]

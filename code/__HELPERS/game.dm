@@ -111,8 +111,6 @@
 			var/mob/M = A
 			if(M.client)
 				hear += M
-		else if(istype(A, /obj/item/device/radio))
-			hear += A
 		else if (istype(A, /obj/vehicle/multitile))
 			var/obj/vehicle/multitile/vehicle = A
 			for(var/mob/M in vehicle.get_passengers())
@@ -128,6 +126,23 @@
 			for (var/mob/M in A)
 				if (M.client)
 					hear += M
+	return hear
+
+///only gets FUNCTIONING radios
+/proc/get_radios_in_view(var/R, var/atom/source)
+	var/turf/T = get_turf(source)
+	var/list/hear = list()
+
+	if(!T)
+		return hear
+
+	var/list/range = hear(R, T)
+
+	for(var/atom/A in range)
+		if(istype(A, /obj/item/device/radio))
+			var/obj/item/device/radio/radio = A
+			if(radio.on && radio.listening)
+				hear += A
 	return hear
 
 /proc/get_mobs_in_radio_ranges(var/list/obj/item/device/radio/radios)

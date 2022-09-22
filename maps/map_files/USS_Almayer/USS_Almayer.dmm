@@ -19056,7 +19056,6 @@
 	id = "sh_dropship2";
 	name = "Dropship Lockdown";
 	normaldoorcontrol = 3;
-	pixel_x = 10;
 	pixel_y = -3;
 	req_one_access_txt = "3;22";
 	throw_range = 15
@@ -19083,6 +19082,7 @@
 /area/shuttle/drop2/sulaco)
 "bia" = (
 /obj/structure/extinguisher_cabinet/alt{
+	pixel_x = -10;
 	pixel_y = -8
 	},
 /turf/closed/shuttle/dropship2{
@@ -19125,7 +19125,6 @@
 	id = "sh_dropship1";
 	name = "Dropship Lockdown";
 	normaldoorcontrol = 3;
-	pixel_x = 10;
 	pixel_y = -3;
 	req_one_access_txt = "3;22";
 	throw_range = 15
@@ -19149,6 +19148,7 @@
 /area/shuttle/drop1/sulaco)
 "bin" = (
 /obj/structure/extinguisher_cabinet/alt{
+	pixel_x = -10;
 	pixel_y = -8
 	},
 /turf/closed/shuttle/dropship1{
@@ -20606,7 +20606,7 @@
 "bnM" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8;
-	pixel_y = -10
+	pixel_y = -14
 	},
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -20990,13 +20990,11 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bpn" = (
-/obj/structure/machinery/door/airlock/dropship_hatch/two{
-	dir = 8
-	},
 /obj/structure/stairs/perspective{
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/machinery/door/airlock/dropship_hatch/two,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -21596,6 +21594,32 @@
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8
 	},
+/obj/item/rappel_harness{
+	name = "Emergency Parachute";
+	pixel_y = 8
+	},
+/obj/item/rappel_harness{
+	name = "Emergency Parachute"
+	},
+/obj/item/rappel_harness{
+	name = "Emergency Parachute";
+	pixel_y = -6
+	},
+/obj/item/storage/pouch/medkit/full_advanced,
+/obj/item/storage/belt/gun/flaregun/full,
+/obj/item/storage/large_holster/m39/full,
+/obj/item/weapon/gun/shotgun/combat,
+/obj/item/storage/box/MRE,
+/obj/item/storage/box/MRE,
+/obj/item/storage/box/MRE,
+/obj/structure/closet/secure_closet/cmdcabinet{
+	desc = "A bulletproof cabinet containing S.E.R.E. Equipment. FOR EMERGENCY USE ONLY by USCM Air crews only";
+	name = "S.E.R.E. Cabinet";
+	pixel_x = 6;
+	pixel_y = 25;
+	req_access = null;
+	req_one_access_txt = "22"
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -21604,6 +21628,32 @@
 "bsb" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8
+	},
+/obj/item/rappel_harness{
+	name = "Emergency Parachute";
+	pixel_y = 8
+	},
+/obj/item/rappel_harness{
+	name = "Emergency Parachute"
+	},
+/obj/item/rappel_harness{
+	name = "Emergency Parachute";
+	pixel_y = -6
+	},
+/obj/item/storage/pouch/medkit/full_advanced,
+/obj/item/storage/belt/gun/flaregun/full,
+/obj/item/storage/large_holster/m39/full,
+/obj/item/weapon/gun/shotgun/combat,
+/obj/item/storage/box/MRE,
+/obj/item/storage/box/MRE,
+/obj/item/storage/box/MRE,
+/obj/structure/closet/secure_closet/cmdcabinet{
+	desc = "A bulletproof cabinet containing S.E.R.E. Equipment. FOR EMERGENCY USE ONLY by USCM Air crews only";
+	name = "S.E.R.E. Cabinet";
+	pixel_x = 6;
+	pixel_y = 25;
+	req_access = null;
+	req_one_access_txt = "22"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -40873,30 +40923,6 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/hallways/aft_hallway)
-"eQV" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8;
-	pixel_y = -10
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8;
-	pixel_y = -10
-	},
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = -8;
-	pixel_y = 20
-	},
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = 8;
-	pixel_y = 20
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop2/sulaco)
 "eRe" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 8
@@ -42572,9 +42598,10 @@
 	dir = 8;
 	layer = 2.7
 	},
-/obj/structure/machinery/camera/autoname/almayer/dropship_two{
+/obj/structure/machinery/camera/autoname/almayer/dropship_one{
 	dir = 4;
-	pixel_x = -16
+	pixel_x = -6;
+	pixel_y = -16
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -44930,9 +44957,10 @@
 	},
 /area/almayer/living/bridgebunks)
 "gCT" = (
-/obj/structure/machinery/camera/autoname/almayer/dropship_two{
+/obj/structure/machinery/camera/autoname/almayer/dropship_one{
 	dir = 4;
-	pixel_x = -16
+	pixel_x = -6;
+	pixel_y = -16
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -50981,13 +51009,13 @@
 /area/almayer/living/captain_mess)
 "jsX" = (
 /obj/structure/bed/chair/vehicle{
-	dir = 1;
 	pixel_x = 8;
-	pixel_y = 16
+	pixel_y = -14
 	},
 /obj/structure/bed/chair/vehicle{
+	dir = 1;
 	pixel_x = 8;
-	pixel_y = -10
+	pixel_y = 20
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -51704,6 +51732,20 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/engineering/upper_engineering)
+"jOg" = (
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.7
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_two{
+	pixel_x = 8;
+	pixel_y = -16
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/drop2/sulaco)
 "jOi" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -53152,30 +53194,6 @@
 	tag = "icon-redcorner (EAST)"
 	},
 /area/almayer/shipboard/brig/processing)
-"kyB" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8;
-	pixel_y = -10
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8;
-	pixel_y = -10
-	},
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = -8;
-	pixel_y = 20
-	},
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = 8;
-	pixel_y = 20
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "kyI" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -55916,13 +55934,13 @@
 /area/almayer/living/grunt_rnr)
 "lHz" = (
 /obj/structure/bed/chair/vehicle{
-	dir = 1;
 	pixel_x = 8;
-	pixel_y = 16
+	pixel_y = -14
 	},
 /obj/structure/bed/chair/vehicle{
+	dir = 1;
 	pixel_x = 8;
-	pixel_y = -10
+	pixel_y = 20
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -59476,21 +59494,21 @@
 "not" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8;
-	pixel_y = -10
+	pixel_y = -14
 	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8;
-	pixel_y = -10
+	pixel_y = -14
 	},
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
 	pixel_x = -8;
-	pixel_y = 16
+	pixel_y = 20
 	},
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
 	pixel_x = 8;
-	pixel_y = 16
+	pixel_y = 20
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -64979,11 +64997,12 @@
 	pixel_x = 10;
 	pixel_y = 7
 	},
-/obj/structure/largecrate/random/barrel/green,
 /obj/item/limb/hand/l_hand{
 	pixel_x = -5;
 	pixel_y = 14
 	},
+/obj/structure/machinery/floodlight,
+/obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -72613,21 +72632,21 @@
 "ttD" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8;
-	pixel_y = -10
+	pixel_y = -14
 	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8;
-	pixel_y = -10
+	pixel_y = -14
 	},
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
 	pixel_x = -8;
-	pixel_y = 16
+	pixel_y = 20
 	},
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
 	pixel_x = 8;
-	pixel_y = 16
+	pixel_y = 20
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -72895,13 +72914,10 @@
 	},
 /area/almayer/medical/hydroponics)
 "tyF" = (
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.7
-	},
-/obj/structure/machinery/camera/autoname/almayer/dropship_two{
+/obj/structure/machinery/door/airlock/dropship_hatch/two,
+/obj/structure/stairs/perspective{
 	dir = 4;
-	pixel_x = -16
+	icon_state = "p_stair_full"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -83476,7 +83492,7 @@
 "xUf" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8;
-	pixel_y = -10
+	pixel_y = -14
 	},
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -102065,7 +102081,7 @@ bka
 blI
 blJ
 hCZ
-eQV
+not
 hCZ
 btK
 bvh
@@ -102268,13 +102284,13 @@ bjW
 bpl
 blJ
 bpl
-eQV
+not
 bpl
 btK
 oYG
 bwr
 gHh
-tyF
+gHh
 gHh
 nwO
 bDd
@@ -103085,7 +103101,7 @@ bpl
 btK
 mLM
 nUF
-bxN
+jOg
 bxN
 bxN
 dXP
@@ -103487,7 +103503,7 @@ blL
 bny
 bpn
 ltv
-bpn
+tyF
 btL
 bvk
 bwu
@@ -106531,7 +106547,7 @@ bkp
 gCT
 blP
 yfL
-kyB
+ttD
 yfL
 btS
 bvn
@@ -106734,7 +106750,7 @@ bkl
 bpq
 blP
 bpq
-kyB
+ttD
 bpq
 btS
 mjN

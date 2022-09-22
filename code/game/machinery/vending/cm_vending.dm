@@ -875,6 +875,9 @@ IN_USE						used for vending/denying
 	. = ..()
 	populate_product_list(1.2)
 	build_icons(listed_products)
+	preload_assets()
+
+/obj/structure/machinery/cm_vending/sorted/proc/preload_assets()
 	var/datum/asset/simple/dynamic_icons/dyn = get_asset_datum(/datum/asset/simple/dynamic_icons)
 	for (var/list/i in product_icon_list)
 		var/filename = i["href"]

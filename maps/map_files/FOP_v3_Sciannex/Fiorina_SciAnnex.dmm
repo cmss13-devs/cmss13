@@ -2111,13 +2111,6 @@
 	tag = "icon-darkbrownfull2"
 	},
 /area/fiorina/station/park)
-"bcw" = (
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkyellowfull2";
-	tag = "icon-darkyellowfull2 (EAST)"
-	},
-/area/fiorina/station/telecomm/lz1_containers)
 "bcF" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/plate,
@@ -6689,16 +6682,6 @@
 	icon_state = "green"
 	},
 /area/fiorina/station/chapel)
-"dRN" = (
-/obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
-	},
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/telecomm/lz1_containers)
 "dRO" = (
 /obj/effect/acid_hole{
 	dir = 4
@@ -9946,13 +9929,6 @@
 	icon_state = "green"
 	},
 /area/fiorina/station/chapel)
-"fRH" = (
-/obj/effect/landmark/static_comms/net_one,
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/telecomm/lz1_containers)
 "fSe" = (
 /obj/structure/bed/sofa/vert/grey,
 /turf/open/floor/prison,
@@ -14434,12 +14410,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
-"iEl" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/telecomm/lz1_containers)
 "iEz" = (
 /obj/item/weapon/gun/smg/mp5,
 /obj/effect/decal/cleanable/blood,
@@ -16661,19 +16631,6 @@
 	icon_state = "yellowfull"
 	},
 /area/fiorina/station/lowsec)
-"jRZ" = (
-/obj/structure/largecrate/random/barrel/blue,
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = 2;
-	pixel_y = 20
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
-	},
-/area/fiorina/station/flight_deck)
 "jSC" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/prison{
@@ -22691,12 +22648,6 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
-"npS" = (
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/telecomm/lz1_containers)
 "npV" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/prison{
@@ -25253,13 +25204,6 @@
 "oUg" = (
 /turf/closed/wall/prison,
 /area/fiorina/station/telecomm/lz1_cargo)
-"oUn" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
-	},
-/area/fiorina/station/telecomm/lz1_containers)
 "oVn" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
@@ -29388,12 +29332,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/station/security/wardens)
-"rtT" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/telecomm/lz1_containers)
 "rue" = (
 /obj/structure/monorail{
 	dir = 10;
@@ -31973,12 +31911,6 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"tcd" = (
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/telecomm/lz1_containers)
 "tcl" = (
 /obj/structure/largecrate/random/mini/med,
 /turf/open/floor/prison{
@@ -36970,13 +36902,6 @@
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
-"wba" = (
-/obj/structure/machinery/power/apc,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/telecomm/lz1_containers)
 "wbn" = (
 /obj/structure/monorail{
 	name = "launch track"
@@ -84542,12 +84467,12 @@ qGn
 jOO
 pOd
 xbB
-mny
-jRZ
-wXf
-ycX
-wXf
-kSU
+oUg
+qvk
+tCj
+grO
+jLs
+sJl
 jOO
 wXf
 xbB
@@ -84756,9 +84681,9 @@ pOd
 xbB
 oUg
 gDz
-tCj
-eRi
-wXf
+jLs
+aWP
+wQn
 vyU
 jOO
 dpt
@@ -91590,12 +91515,12 @@ pFi
 hjW
 hjW
 xte
-lRT
-lRT
-lRT
-lRT
-lRT
-bQM
+scM
+scM
+scM
+scM
+scM
+cAW
 cAW
 cAW
 cAW
@@ -91806,8 +91731,8 @@ lnK
 jGd
 ctz
 voa
-lRT
-lRT
+scM
+scM
 cAW
 cAW
 cAW
@@ -92018,8 +91943,8 @@ jTk
 sbj
 jGj
 uqp
-qHC
-xDw
+jTk
+xdE
 cAW
 cAW
 cAW
@@ -92226,12 +92151,12 @@ hjW
 tRa
 vlT
 hjW
-qHC
-tRa
-sEi
-ltV
-hKI
-xDw
+jTk
+ydX
+bUH
+jlW
+iXL
+xdE
 bce
 bce
 cAW
@@ -92438,12 +92363,12 @@ hjW
 jyK
 uxY
 hjW
-qHC
-jyK
-dlW
-uxY
-hKI
-xDw
+jTk
+gFq
+pEw
+nes
+iXL
+xdE
 cAW
 bce
 bce
@@ -92654,8 +92579,8 @@ jTk
 sbj
 jGj
 uqp
-qHC
-xDw
+jTk
+xdE
 cAW
 cAW
 bce
@@ -92862,12 +92787,12 @@ qHC
 qHC
 qHC
 qHC
-dOX
-gDP
-hKI
+lnK
+jGd
+iXL
 voa
-lRT
-lRT
+scM
+scM
 bce
 bce
 bce

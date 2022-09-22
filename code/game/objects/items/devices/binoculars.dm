@@ -3,7 +3,8 @@
 	desc = "A military-issued pair of binoculars."
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "binoculars"
-
+	pickupsound = 'sound/handling/wirecutter_pickup.ogg'
+	dropsound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	force = 5.0
 	w_class = SIZE_SMALL
@@ -518,7 +519,7 @@
 	return
 
 /obj/item/device/binoculars/designator/proc/lasering(var/mob/living/carbon/human/user, var/atom/A, var/params)
-	if(istype(A,/obj/screen))
+	if(istype(A,/atom/movable/screen))
 		return FALSE
 	if(user.stat)
 		zoom(user)

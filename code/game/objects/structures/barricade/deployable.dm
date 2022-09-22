@@ -259,7 +259,7 @@
 
 /obj/item/stack/folding_barricade/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
-		if(!istype(over_object, /obj/screen))
+		if(!istype(over_object, /atom/movable/screen))
 			return ..()
 
 		if(loc != usr || (loc && loc.loc == usr))

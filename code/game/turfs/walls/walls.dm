@@ -210,7 +210,9 @@
 		return
 	var/location = get_step(get_turf(src), explosion_direction) // shrapnel will just collide with the wall otherwise
 	var/exp_damage = severity*EXPLOSION_DAMAGE_MULTIPLIER_WALL
-	var/mob/mob = cause_data?.resolve_mob()
+	var/mob/mob
+	if(cause_data)
+		mob = cause_data.resolve_mob()
 
 	if (damage + exp_damage > damage_cap*2)
 		if(mob)

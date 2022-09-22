@@ -51,6 +51,8 @@
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
 
+	var/flamer_reagent_type = /datum/reagent/napalm/ut
+
 /datum/ammo/New()
 	set_bullet_traits()
 
@@ -210,10 +212,12 @@
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/T, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
-	if(!istype(T)) return
-	if(locate(/obj/flamer_fire) in T) return
+	if(!istype(T))
+		return
+	if(locate(/obj/flamer_fire) in T)
+		return
 
-	var/datum/reagent/napalm/ut/R = new()
+	var/datum/reagent/R = new flamer_reagent_type()
 	new /obj/flamer_fire(T, cause_data, R)
 
 
@@ -904,6 +908,18 @@
 	. = ..()
 	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
 
+/datum/ammo/bullet/rifle/blank
+	name = "blank rifle bullet"
+	icon_state = "blank"
+	damage = 10  //Full power blanks that create big muzzleflash can fuck you up.
+	penetration = 0
+	effective_range_max = 1 // effectively PB only
+	max_range = 2
+	accuracy = HIT_ACCURACY_TIER_1
+	damage_falloff = DAMAGE_FALLOFF_BLANK*2 // insane falloff
+	shell_speed = AMMO_SPEED_TIER_5
+	handful_state = "blank_bullet"
+
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
 
@@ -1356,7 +1372,7 @@
 	accurate_range = 8 //Big low-velocity projectile; this is for blasting dangerous game at close range.
 	max_range = 14 //At this range, it's lost all its damage anyway.
 	damage = 300 //Hits like a buckshot PB.
-	penetration = 15
+	penetration = ARMOR_PENETRATION_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_1 * 3 //It has a lot of energy, but the 26mm bullet drops off fast.
 	effective_range_max	= EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
 	var/hit_messages = list()
@@ -1389,7 +1405,7 @@
 	name = "lever-action bullet"
 
 	damage = 80
-	penetration = ARMOR_PENETRATION_TIER_1
+	penetration = 0
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
 	accurate_range = 14
@@ -1429,6 +1445,28 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_6
 	handful_state = "marksman_lever_action_bullet"
+
+/datum/ammo/bullet/lever_action/xm88
+	name = ".458 SOCOM round"
+
+	damage = 80
+	penetration = 0
+	accuracy = HIT_ACCURACY_TIER_1
+	shell_speed = AMMO_SPEED_TIER_6
+	accurate_range = 14
+	handful_state = "boomslang_bullet"
+
+/datum/ammo/bullet/lever_action/xm88/pen10
+	penetration = ARMOR_PENETRATION_TIER_2
+
+/datum/ammo/bullet/lever_action/xm88/pen20
+	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/lever_action/xm88/pen30
+	penetration = ARMOR_PENETRATION_TIER_6
+
+/datum/ammo/bullet/lever_action/xm88/pen40
+	penetration = ARMOR_PENETRATION_TIER_8
 
 /*
 //======
@@ -2896,7 +2934,7 @@
 	name = "flame"
 	icon_state = "pulse0"
 	damage_type = BURN
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_HITS_TARGET_TURF
 
 	max_range = 6
 	damage = 35
@@ -2919,16 +2957,12 @@
 /datum/ammo/flamethrower/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
-/datum/ammo/flamethrower/tank_flamer/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
-		return
-	if(locate(/obj/flamer_fire) in T)
-		return
-	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, cause_data, R, 2)
+/datum/ammo/flamethrower/tank_flamer
+	flamer_reagent_type = /datum/reagent/napalm/blue
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
+	flamer_reagent_type = /datum/reagent/napalm/blue
 
 	accuracy = HIT_ACCURACY_TIER_8
 	accurate_range = 6
@@ -2940,12 +2974,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
-
-/datum/ammo/flamethrower/sentry_flamer/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
-		return
-	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, cause_data, R, 0)
 
 /datum/ammo/flamethrower/sentry_flamer/glob
 	max_range = 14

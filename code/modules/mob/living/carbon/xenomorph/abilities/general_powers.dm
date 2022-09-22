@@ -86,9 +86,10 @@
 
 	return ..()
 
-/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.lay_down()
+/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	xeno.lay_down()
+	button.icon_state = xeno.resting ? "template_active" : "template"
 
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
@@ -198,24 +199,29 @@
 			var/selected_type = text2path(params["type"])
 			if(!(selected_type in X.resin_build_order))
 				return
-
-			var/datum/resin_construction/RC = GLOB.resin_constructions_list[selected_type]
-			to_chat(X, SPAN_NOTICE("You will now build <b>[RC.construction_name]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
-			button.overlays.Cut()
-			button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, RC.construction_name)
+			update_button_icon(selected_type, to_chat=TRUE)
 			X.selected_resin = selected_type
 			. = TRUE
 		if("refresh_ui")
 			. = TRUE
 
+/datum/action/xeno_action/onclick/choose_resin/update_button_icon(var/selected_type, var/to_chat = FALSE)
+	. = ..()
+	if(!selected_type)
+		return
+	var/datum/resin_construction/resin_construction = GLOB.resin_constructions_list[selected_type]
+	if(to_chat)
+		to_chat(usr, SPAN_NOTICE("You will now build <b>[resin_construction.construction_name]\s</b> when secreting resin."))
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
 
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 	if(A.z != X.z)
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
@@ -251,7 +257,7 @@
 		to_chat(X, SPAN_XENOWARNING("You can't place resin markers on living things!"))
 		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 	var/turf/target_turf = get_turf(A)
 
 	if(target_turf.z != X.z)
@@ -479,18 +485,19 @@
 	..()
 	return
 
-/datum/action/xeno_action/onclick/xenohide/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state(1))
+/datum/action/xeno_action/onclick/xenohide/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(!xeno.check_state(1))
 		return
-	if(X.layer != XENO_HIDING_LAYER)
-		X.layer = XENO_HIDING_LAYER
-		to_chat(X, SPAN_NOTICE("You are now hiding."))
+	if(xeno.layer != XENO_HIDING_LAYER)
+		xeno.layer = XENO_HIDING_LAYER
+		to_chat(xeno, SPAN_NOTICE("You are now hiding."))
+		button.icon_state = "template_active"
 	else
-		X.layer = initial(X.layer)
-		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
-	X.update_wounds()
-
+		xeno.layer = initial(xeno.layer)
+		to_chat(xeno, SPAN_NOTICE("You have stopped hiding."))
+		button.icon_state = "template"
+	xeno.update_wounds()
 
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -550,7 +557,7 @@
 	if(!X.check_state())
 		return FALSE
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 
 	//Make sure construction is unrestricted
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)

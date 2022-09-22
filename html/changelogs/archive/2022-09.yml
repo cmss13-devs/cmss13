@@ -146,3 +146,220 @@
 2022-09-11:
   Geevies:
   - rscadd: You can now see who's playing the Queen / her hive leaders from the lobby.
+  Nanu:
+  - bugfix: Fixes the TP function so you can now choose between the Colony chapel
+      and Almayer.
+2022-09-12:
+  stanalbatross:
+  - ui: the chem dispenser now uses tgui
+  - rscadd: added visual indicators on chem dispensers of beakers being in them
+  - spellcheck: changed "tequilla" to "tequila"
+  - ui: upgraded font-awesome to v6.1.2. What does this mean? Many, many more varied
+      icons can be put in TGUI interfaces now.
+  - ui: converted the fax machine to tgui
+  - ui: added a new WY themed tgui theme
+  - soundadd: ported some tgstation computer sounds
+2022-09-13:
+  Shad0vvs:
+  - bugfix: Removed a test logging of every adminhelp.
+  The_Boondock:
+  - bugfix: due to unintended materials being used in phone lines resulting in them
+      being incredibly strong, the mistakes have been found and all current phone
+      lines are recalled and replaced with weaker one to save on cost, they will now
+      break if pulling a heavy objects.
+  morrowwolf:
+  - bugfix: Fixed non-bursted spawned corpses being grabbable.
+  stanalbatross:
+  - server: byond version 1586 is now blacklisted as it breaks vision.
+2022-09-14:
+  Drathek:
+  - bugfix: Fixed Boiler Dump Acid exploit.
+  - bugfix: Fixed onclick actions not removing their macro verb.
+  Lengord:
+  - rscadd: Passable floodlight
+  Morrow:
+  - bugfix: Fixed zero stack sandbags
+2022-09-15:
+  Drathek:
+  - rscadd: Added Screech macro hotkey for Queen Screech. YOU SHOULD RE-BIND SCREECH
+      AS QUEEN, IT IS NOT IN THE DEFAULT XENO-ACTION MACRO LIST.
+  - qol: Changed mobile Queen ability primary hotkeys to 1:Weed, 2:Change Spit, 3:Spit,
+      4:Choose Resin Structure, 5:Secrete Resin.
+  - qol: Changed ovi Queen ability primary hotkeys to 1:Heal, 2:Plasma, 3:Expand Weeds,
+      4:Choose Resin Structure, 5:Secrete Resin.
+  - qol: Set Order Construction as fifth primary ability hotkey for any caste that
+      can use it except Queen and Gardener.
+  - qol: Set Generate Egg as third primary ability hotkey for Eggsac Carrier strain.
+      (1:Weed, 3:Generate Egg, 4:Retrieve Egg, 5:Order Construction).
+  - qol: Set Change Fruit as fifth primary ability hotkey for Gardener strain. (1:Weed,
+      2:Hardy Weed, 3:Resin Surge, 4:Plant Fruit, 5:Change Fruit)
+  - qol: Shifted primary ability hotkeys for Acid Runner to 1:Acid, 2:For the Hive.
+  - qol: Added 10s cooldown to Word of the Queen ability and implemented button status
+      for the cooldown.
+  - qol: Added cooldown status for Queen's Gut ability.
+  - qol: Added cooldown status for Grow Ovipositor ability.
+  - qol: Rearranged ability buttons for Queen, base/whisperer Hivelords, Eggsac Carrier,
+      and Warden.
+  - qol: 'The following abilities now are instantly cast instead of select and then
+      MMB/Shift click: Screech (Queen), Empower (Rav), Spike Shield (Hedgehog), Spike
+      Shed (Hedgehog), Dodge (Dancer), Tremor (Burrower), Roar (Abom), and Smash (Abom).'
+  - qol: Eviscerate (Rav) is now instantly cast when used via hotkey, but not when
+      selected by mouse (this is the existing behavior for Defender Fortify).
+  - qol: 'The following abilities now use the purple button template to indicate active
+      state (like Use Pain already does): Hide, Rest, Toggle Long Range Sight, Resin
+      Walker (Hivelords), Toggle Charging (Charger), Toggle Crest Defense (Defenders),
+      Fortify (Defenders), Empower (Rav), Spike Shield (Hedgehog), Dodge (Dancer),
+      Paralyzing Slash (Sentinel), Crippling Strike (Lurker), Turn Invisible (Lurker),
+      and Defensive Shield (Crusher).'
+  - qol: Added a 0.5 second spam prevention measure when toggling the same ability
+      off to help prevent accidental de-selecting.
+  - bugfix: Fixed Corrosive Acid incorrectly being detected as XENO_PRIMARY_ACTION_5
+      due to overlap in its define with XENO_CORROSIVE_ACID (it has its own dedicated
+      macro anyways).
+  - bugfix: Fixed Word of the Queen ability button missing for pre-ovi young queen.
+  - bugfix: Fixed some abilities such as Remove Eggsac ability re-arranging after
+      second ovi.
+  - bugfix: Fixed Choose Resin Structure ability icon not updating when changing ovi
+      state or becoming a resin whisperer (it basically always reverts back to resin
+      wall on change).
+  - bugfix: Fixed Queen's Gut ability preventing new hive orders when it was on cooldown.
+  - bugfix: Fixed possibility of using plasma for hive orders when unconscious.
+  - bugfix: Fixed possibility of using plasma for Word of the Queen when canceling
+      the message.
+  - bugfix: Fixed De-evolve ability not using plasma nor actually requiring a reason.
+  - bugfix: Fixed Banish ability not using plasma nor actually requiring a reason.
+  - bugfix: Fixed Re-admit ability not using plasma.
+  - bugfix: 'Fixed statistics tracking when using De-evolve ability: It was still
+      tracking old mob and incorrectly incrementing the participant count.'
+  - bugfix: Fixed missing ability_name for Charger Tumble.
+  - bugfix: Fixed incorrect ability_name for Shaman Remember Pain.
+  - bugfix: Fixed selecting xeno actions via verb when hidden (should only apply to
+      queen).
+  - code_imp: Improved more variable readability.
+  - code_imp: Removed unused De-evolve ability code in Abilities.dm.
+  - code_imp: Added /datum/action/xeno_action/activable/proc/action_deselect to be
+      an overridable proc called when a different action is clicked on that causes
+      the current action to be deselected.
+  Geeves, Triiodine:
+  - rscadd: Adds the XM-VESG-1 Flamer Nozzle, an attachment for the standard M240A1
+      incinerator unit. Available in Req and Squad-Req as an underbarrel attachment.
+  - imageadd: Resprites the M240A1 and M240-T incinerator units.
+2022-09-16:
+  Forest2001,Joe lampost, Triiodine, Stan_Albatross,Geevies:
+  - rscadd: Adds a new surgery for use only by predators to heal
+  - rscadd: Adds the medicomp
+  - rscdel: will remove all herbs from the predator ship
+  - qol: makes predator healing easier for preds themselves by guaranteeing they are
+      healed to full after completing the steps of
+  - balance: will remove the ability for preds to instantly kit to 90% HP mid fight.
+  - bugfix: Fixed the predator health bar not showing the predators current health
+      correctly
+  - soundadd: Added a loud roar for predators using the final stage of the healing
+      process which points out their location.
+  - soundadd: Adds two unique sounds for the tools in use during the surgery
+  - tweak: removes all of the brute and burn healing properties of thwei changed the
+      name of the healing crystal.
+  - mapadd: removed 80% of the herbs from the predator ship left the ones in the arena
+      and replaced the racks with more trophy stands also added two extra medicomps
+      in the pred ship medbay if for some reason someone loses the one they spawn
+      with.
+  - spriteadd: Adds four new surgical tools for predators to use during the medicomps
+      operation
+  - imageadd: add Adds a sprite for the medicomp itself
+  Jeser:
+  - bugfix: Fixed DEAFENING echo in vehicle interiors.
+  - rscadd: Added new viewport to van - windshield and fixed it having armored vehicles
+      version of viewports.
+  - rscadd: Added proper handling of explosions for vehicle hardpoint modules. They
+      will now take damage instead of having chance to be instantly deleted even from
+      smallest explosions.
+  - rscadd: Hardpoints will show warning message once their integrity reaches zero
+      due to explosion or when being uninstalled from a vehicle before being deleted.
+  - code_imp: Added grille, chairs, windows (not framed), inflatable wall and door,
+      various Trijent Dam props, trees, colony floodlights, hydro trays vehicle bumps
+      handling.
+  totalepicness:
+  - qol: Liquid tanks are now destroyable by bullets and xenos alike
+  - qol: Water tanks can now be wrenched and unwrenched at will.
+  - bugfix: Fixed the random anchored watertanks in Almayer
+  - bugfix: Fixed anchored OT custom reagent tanks in OT fuel room
+2022-09-17:
+  Stan_Albatross, Thwomper:
+  - rscadd: added the xm88 heavy rifle to req, it is a rifle that must manually chamber
+      each shot. Hitting direct hits will grant "stacks", which increase its ap value
+      and damage up until 40 ap. Sprites by thwomper.
+  - bugfix: trying to fire a weapon with an internal magazine without a chambered
+      round will no longer display a message saying how many rounds are left in the
+      magazine
+2022-09-18:
+  Joelampost:
+  - bugfix: Makes the yautja healing gun not unload if the surgery step is interrupted.
+  Triiodine:
+  - imageadd: 'Updated, resprited, or otherwise replaced the following sprites: Bay12
+      Incinerator trashcans, morgue boxes and trays, telescreens, floor igniters,
+      retro televisions, gas sensors, stationary flashbulbs, glass cases (lamarr and
+      captain''s lazer gun), Falling Falcon''s patch, USCM patch, ties, armbands,
+      signal wands, mineral coins, toyhammer, banana, manuals and books, mesh grilles,
+      T-Comms stock parts, regular stock parts, assemblies (igniter, timer, signaler,
+      etc..), telebaton, harpoon, energy swords, energy cutlass, HEFA sword, handmade
+      stunprod, butterfly knife, wired rod, stun baton, cult tome, cult sword, mercenary
+      sword, captain''s sword, riot shield, switchblade, scythe, claymore, ceremonial
+      unathi knife, LTB projectiles, missle projectiles, and sledgehammers.'
+  - imageadd: 'Added, but did not code in: Maintenance jacks and station handaxes.'
+2022-09-19:
+  mullenpaul:
+  - rscadd: TGUI interface for many cm custom vendors
+  - qol: Search bar for item search for vendors
+  - qol: Item description appears as popup in vendor UI
+  - qol: Item icons are displayed in vendor UI
+2022-09-20:
+  Morrow:
+  - rscadd: Decoration accessories can now be attached to CO armor
+  Shad0vvs:
+  - server: Byond version 1588 is now blacklisted as it breaks vision.
+  Totalepicess, Blithering:
+  - rscadd: Added M41A and L42A blank ammo
+  - rscadd: Added the ABR-40 Ceremonial Rifle, found in SEA vendor, execution and
+      ceremonial room. Sprites by Blithering
+  - rscadd: Added a new ceremonial room to the Almayer, next to the memorial.
+  - rscadd: Added service jacket to SEA vendor
+  stanalbatross:
+  - refactor: repathed /obj/screen to /atom/movable/screen
+  - bugfix: only unacidable intel items are saved from the spawn pool now, this fixes
+      a number of issues with unacidable items such as sentries not being deleted
+      properly
+  - bugfix: the spawn pool and egg morpher will no longer pile all intel items on
+      top of them
+2022-09-21:
+  c4xmaniac:
+  - bugfix: Fixed kutjevo shutters.
+  - balance: LZ1 has been redesigned to make it harder to defend as marines and easier
+      to siege as xenos.
+  - bugfix: Fixed the old and current nightmare inserts on science annex to fit the
+      redesign of the map.
+  - rscdel: Deleted the old nightmare inserts that no longer work due Saw's yard changes
+      and the LZ1 changes I made.
+  - bugfix: Changed the descriptions of the food venders on the prison to match that
+      they're on a prison.
+  - qol: Moved the survivor spawn near park right a little so new survivor players
+      don't get gunned down immediately by a sentry.
+  nauticall:
+  - rscadd: Added more than 150 new sounds into the game; most were ported from A:CM
+      and stock SS13.
+  - rscadd: New firing sounds for the M37, Mk221/Mk210, M4A3, and 88 Mod 4.
+  - rscadd: New sounds for shotgun shell loading, glass breaking, explosions, and
+      explosions greater than 300 power, e.g. OBs and max caps.
+  - rscadd: Added various new interaction noises, particularly when damaging barricades,
+      prying doors, and picking up/dropping items.
+  - rscadd: Several tools now have pickup and drop sounds. In addition to the toolbelt
+      tools, these also include binoculars and fire extinguishers.
+  - bugfix: Patches a bug where the defibrillator would turn invisible once it shifted
+      to the yellow (<50%) level of charge and below.
+2022-09-22:
+  Morrow:
+  - bugfix: Ported fix for the entire screen being black on newer versions of byond
+  - server: Removed blacklisted versions 1586 and 1588
+  stanalbatross:
+  - bugfix: fixed some runtimes
+  - bugfix: if a clothing item takes time to equip, it will now not equip if conditions
+      are not met once its windup to equipping has finished

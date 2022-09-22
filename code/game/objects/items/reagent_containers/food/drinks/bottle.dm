@@ -39,7 +39,7 @@
 	I.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
 	B.icon = I
 
-	playsound(src, "shatter", 25, 1)
+	playsound(src, "windowshatter", 15, 1)
 	transfer_fingerprints_to(B)
 
 	qdel(src)
@@ -213,15 +213,15 @@
 	name = "\improper White Queen bottle"
 	icon_state = "w_queen"
 
-/obj/item/reagent_container/food/drinks/bottle/tequilla
-	name = "\improper Caccavo Guaranteed Quality Tequilla"
+/obj/item/reagent_container/food/drinks/bottle/tequila
+	name = "\improper Caccavo Guaranteed Quality tequila"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
-	icon_state = "tequillabottle"
+	icon_state = "tequilabottle"
 	center_of_mass = "x=16;y=3"
 
-/obj/item/reagent_container/food/drinks/bottle/tequilla/Initialize()
+/obj/item/reagent_container/food/drinks/bottle/tequila/Initialize()
 	. = ..()
-	reagents.add_reagent("tequilla", 100)
+	reagents.add_reagent("tequila", 100)
 
 /obj/item/reagent_container/food/drinks/bottle/davenport
 	name = "\improper Davenport Rye Whiskey"
@@ -245,7 +245,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Silver laced tequilla, served in space night clubs across the galaxy."
+	desc = "Silver laced tequila, served in space night clubs across the galaxy."
 	icon_state = "patronbottle"
 	center_of_mass = "x=16;y=6"
 

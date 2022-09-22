@@ -226,6 +226,7 @@
 	/// The damage dealt by a xeno whenever they take damage near someone
 	var/acid_blood_damage = 25
 	var/nocrit = FALSE
+	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
 
 
 	//////////////////////////////////////////////////////////////////
@@ -436,6 +437,7 @@
 			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
 				if(istype(hide))
 					layer = XENO_HIDING_LAYER
+					hide.button.icon_state = "template_active"
 
 		for(var/obj/item/W in oldXeno.contents) //Drop stuff
 			oldXeno.drop_inv_item_on_ground(W)
@@ -568,7 +570,7 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
 	if(hud_used)
-		var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+		var/atom/movable/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
 		screenobj.update_icon(src)
 
 /mob/living/carbon/Xenomorph/proc/set_lighting_alpha(var/level)
@@ -580,7 +582,7 @@
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
-	var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+	var/atom/movable/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
 	screenobj.update_icon(src)
 
 /mob/living/carbon/Xenomorph/proc/get_vision_level()

@@ -747,7 +747,7 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/black(H), WEAR_HANDS)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 			H.equip_to_slot_or_del(new /obj/item/storage/beer_pack(H.back), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/tequilla(H.back), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/tequila(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/cognac(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/grenadine(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/rum(H.back), WEAR_IN_BACK)

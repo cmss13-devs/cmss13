@@ -6073,6 +6073,7 @@
 	},
 /area/almayer/command/lifeboat)
 "aqL" = (
+/obj/item/clothing/head/bandana,
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "40"
 	},
@@ -19060,10 +19061,6 @@
 	req_one_access_txt = "3;22";
 	throw_range = 15
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
-	pixel_x = -15;
-	pixel_y = -6
-	},
 /turf/closed/shuttle/dropship2{
 	icon_state = "78"
 	},
@@ -19117,10 +19114,6 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bil" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
-	pixel_x = -15;
-	pixel_y = -6
-	},
 /obj/structure/machinery/door_control{
 	id = "sh_dropship1";
 	name = "Dropship Lockdown";
@@ -19543,6 +19536,10 @@
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
+	pixel_x = -15;
+	pixel_y = 25
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -19634,6 +19631,10 @@
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
+	pixel_x = -15;
+	pixel_y = -6
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -19642,6 +19643,10 @@
 "bkm" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
+	pixel_x = -15;
+	pixel_y = 25
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -21612,9 +21617,10 @@
 /obj/item/storage/box/MRE,
 /obj/item/storage/box/MRE,
 /obj/item/storage/box/MRE,
+/obj/item/bodybag/tarp,
 /obj/structure/closet/secure_closet/cmdcabinet{
 	desc = "A bulletproof cabinet containing S.E.R.E. Equipment. FOR EMERGENCY USE ONLY by USCM Air crews only";
-	name = "S.E.R.E. Cabinet";
+	name = "S.E.R.E. Cabinet (EMERGENCY)";
 	pixel_x = 6;
 	pixel_y = 25;
 	req_access = null;
@@ -21647,9 +21653,10 @@
 /obj/item/storage/box/MRE,
 /obj/item/storage/box/MRE,
 /obj/item/storage/box/MRE,
+/obj/item/bodybag/tarp,
 /obj/structure/closet/secure_closet/cmdcabinet{
 	desc = "A bulletproof cabinet containing S.E.R.E. Equipment. FOR EMERGENCY USE ONLY by USCM Air crews only";
-	name = "S.E.R.E. Cabinet";
+	name = "S.E.R.E. Cabinet (EMERGENCY)";
 	pixel_x = 6;
 	pixel_y = 25;
 	req_access = null;
@@ -47571,6 +47578,22 @@
 	tag = "null"
 	},
 /area/almayer/squads/charlie_delta_shared)
+"hQI" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	pixel_x = 20;
+	pixel_y = -10
+	},
+/obj/item/stack/cable_coil/white{
+	pixel_x = 12;
+	pixel_y = 5
+	},
+/obj/structure/prop/server_equipment/laptop/on{
+	name = "Dropship diagnostics Laptop"
+	},
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "hQU" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -57673,6 +57696,21 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/armory)
+"mBa" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
+	},
+/obj/item/stool,
+/obj/item/circuitboard{
+	pixel_x = 12;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/hangar)
 "mBb" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Hangar Lockdown";
@@ -61432,6 +61470,17 @@
 	tag = "icon-red"
 	},
 /area/almayer/shipboard/brig/general_equipment)
+"olF" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
+	},
+/obj/item/device/multitool,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/hangar)
 "olO" = (
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
@@ -61544,6 +61593,22 @@
 	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/almayer/medical/upper_medical)
+"onU" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4;
+	tag = "icon-landingstripe (EAST)"
+	},
+/obj/effect/decal/cleanable/ash,
+/obj/item/trash/cigbutt/ucigbutt{
+	layer = 3.7;
+	pixel_x = 7;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/hangar)
 "onX" = (
 /obj/structure/machinery/cryopod/evacuation,
 /obj/structure/sign/safety/cryo{
@@ -65344,6 +65409,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
+"qci" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
 "qck" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/security/wooden_tv/almayer{
@@ -77571,6 +77643,11 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/almayer/hallways/repair_bay)
+"vwU" = (
+/obj/effect/spawner/random/toolbox,
+/obj/item/clothing/gloves/marine/insulated,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
 "vwV" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -105940,9 +106017,9 @@ bfZ
 baS
 bkh
 bea
-bfZ
-baS
-bkh
+mBa
+olF
+onU
 ohE
 vWJ
 qUL
@@ -106143,8 +106220,8 @@ apn
 baI
 baI
 baI
-baI
-baI
+hQI
+vwU
 aqL
 bxR
 byZ
@@ -106952,7 +107029,7 @@ bil
 bkm
 bpq
 cEv
-bpq
+qci
 xUf
 bpq
 wZw

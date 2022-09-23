@@ -363,3 +363,19 @@
   - bugfix: fixed some runtimes
   - bugfix: if a clothing item takes time to equip, it will now not equip if conditions
       are not met once its windup to equipping has finished
+2022-09-23:
+  Stan_Albatross, Triiodine, Geeves:
+  - rscadd: Static comms is back! Two towers will spawn in random locations every
+      round, one near-ish to each LZ. They are also displayed on the tacmap. You must
+      repair and power one of them to establish comms with the ship. Survivors can
+      also do so, if they so wish. Sprites by Triiodine, landmark system by Geeves.
+  - rscadd: static comm towers will require specific comm frequencies to be added
+      to them via multitool before they can be spoken on, this means survivors cannot
+      use USCM comms before drop.
+  - rscdel: The Almayer no longer spawns with comms parts, and the comms parts crate
+      cannot be bought.
+  - bugfix: survivor radios now start turned off if they spawn in a body that will
+      become a xeno.
+  - qol: added in-editor camera and APC icons
+  - qol: added broken, wires cut, and broken with no cell apc presets for mappers
+  - bugfix: fixed a few poorly offset cams on the Almayer

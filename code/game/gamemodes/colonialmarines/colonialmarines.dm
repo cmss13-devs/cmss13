@@ -6,6 +6,7 @@
 	monkey_amount = 5
 	corpses_to_spawn = 0
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
+	static_comms_amount = 1
 	var/round_status_flags
 
 	var/research_allocation_interval = 10 MINUTES

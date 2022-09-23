@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
 	icon = 'icons/obj/structures/machinery/power.dmi'
-	icon_state = "apc0"
+	icon_state = "apc_mapicon"
 	anchored = 1
 	use_power = 0
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
@@ -782,8 +782,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return attack_hand(user)
 			if(!opened && wiresexposed && (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS)))
 				return attack_hand(user)
-			user.visible_message(SPAN_DANGER("[user] hits [src] with [W]!"), \
-			SPAN_DANGER("You hit [src] with [W]!"))
+			user.visible_message(SPAN_DANGER("[user] hits [src] with \the [W]!"), \
+			SPAN_DANGER("You hit [src] with \the [W]!"))
 
 //Attack with hand - remove cell (if cover open) or interact with the APC
 /obj/structure/machinery/power/apc/attack_hand(mob/user)
@@ -901,7 +901,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	switch(wire)
 		if(APC_WIRE_MAIN_POWER)
-			shock(usr, 50)
+			if(user)
+				shock(usr, 50)
+				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
+				SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
+				SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
 			shorted = 1
 			if(with_message)
 				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
@@ -1274,6 +1278,36 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	area.power_environ = 0
 	area.power_change()
 	. = ..()
+
+/obj/structure/machinery/power/apc/wires_cut
+	icon_state = "apcewires_mapicon"
+
+/obj/structure/machinery/power/apc/wires_cut/Initialize(mapload, ndir, building)
+	. = ..()
+	wiresexposed = TRUE
+	for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
+		cut(wire)
+	update_icon()
+	beenhit = 4
+
+/obj/structure/machinery/power/apc/fully_broken
+	icon_state = "apc2_mapicon"
+
+/obj/structure/machinery/power/apc/fully_broken/Initialize(mapload, ndir, building)
+	. = ..()
+	wiresexposed = TRUE
+	for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
+		cut(wire)
+	beenhit = 4
+	set_broken()
+
+/obj/structure/machinery/power/apc/fully_broken/no_cell
+	icon_state = "apc1_mapicon"
+
+/obj/structure/machinery/power/apc/fully_broken/no_cell/Initialize(mapload, ndir, building)
+	. = ..()
+	QDEL_NULL(cell)
+	update_icon()
 
 /obj/structure/machinery/power/apc/antag
 	cell_type = /obj/item/cell/apc/full

@@ -29,6 +29,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
 	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
+	var/static_comms_amount = 0
 	var/obj/structure/machinery/computer/shuttle_control/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
@@ -69,6 +70,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 /datum/game_mode/proc/pre_setup()
 	SHOULD_CALL_PARENT(TRUE)
 	setup_structures()
+	if(static_comms_amount)
+		spawn_static_comms()
 	if(corpses_to_spawn)
 		generate_corpses()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
@@ -247,6 +250,18 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
 		gamemode_spawn_corpse.Remove(spawner)
 
+/datum/game_mode/proc/spawn_static_comms()
+	for(var/i = 1 to static_comms_amount)
+		var/obj/effect/landmark/static_comms/SCO = pick_n_take(GLOB.comm_tower_landmarks_net_one)
+		var/obj/effect/landmark/static_comms/SCT = pick_n_take(GLOB.comm_tower_landmarks_net_two)
+		if(!SCO)
+			break
+		SCO.spawn_tower()
+		if(!SCT)
+			break
+		SCT.spawn_tower()
+	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_one)
+	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_two)
 
 //////////////////////////
 //Reports player logouts//

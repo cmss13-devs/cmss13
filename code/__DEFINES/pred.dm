@@ -8,5 +8,5 @@
 #define PRED_YAUTJA_QUARTER_CAPE "yautja quarter-cape"
 #define PRED_YAUTJA_PONCHO "yautja poncho"
 
-#define SD_TYPE_SMALL   0
-#define SD_TYPE_BIG   1
+#define SD_TYPE_BIG   0
+#define SD_TYPE_SMALL  	1

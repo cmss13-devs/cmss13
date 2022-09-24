@@ -383,3 +383,7 @@
   Drathek:
   - bugfix: Fixed runtimes caused by gibbing.
   - code_imp: Added more checks for cause_data usage.
+  Morrow:
+  - rscadd: Flare guns can now be fired into the air via unique action
+  - qol: Signal flares fired by flare guns now show their designation in the flare
+      gun's description.

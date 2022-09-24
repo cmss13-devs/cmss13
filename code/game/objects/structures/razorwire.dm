@@ -80,7 +80,7 @@
 	health = Clamp(health - damage, 0, initial(health))
 	if(!health)
 		if(!nomessage)
-			visible_message(SPAN_DANGER("[src] falls apart!"))
+			visible_message(SPAN_DANGER("\The [src] falls apart!"))
 		destroy()
 
 /obj/structure/razorwire/attackby(obj/item/W, mob/user)
@@ -157,7 +157,7 @@
 		var/location = get_turf(src)
 		handle_debris(severity, direction)
 		if(prob(50)) // no message spam pls
-			visible_message(SPAN_WARNING("[src] blows apart in the explosion, sending shards flying!"))
+			visible_message(SPAN_WARNING("\The [src] blows apart in the explosion, sending shards flying everywhere!"))
 		qdel(src)
 		create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 	else

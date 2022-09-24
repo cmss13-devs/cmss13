@@ -358,9 +358,9 @@
 	take_damage(rand(xeno.melee_damage_lower, xeno.melee_damage_upper) * brute_multiplier)
 	playsound(src, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices \the [src] apart!"), SPAN_DANGER("You slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src]!"), SPAN_DANGER("You [xeno.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] \the [src]!"), SPAN_DANGER("You [xeno.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.visible_message(SPAN_DANGER("\The [src] slices into [xeno]!"), SPAN_DANGER("\The [src] slices into you!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.apply_damage(10)
 	return XENO_ATTACK_ACTION

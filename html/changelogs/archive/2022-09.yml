@@ -379,3 +379,7 @@
   - qol: added in-editor camera and APC icons
   - qol: added broken, wires cut, and broken with no cell apc presets for mappers
   - bugfix: fixed a few poorly offset cams on the Almayer
+2022-09-24:
+  Drathek:
+  - bugfix: Fixed runtimes caused by gibbing.
+  - code_imp: Added more checks for cause_data usage.

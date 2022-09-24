@@ -40,9 +40,11 @@
 	if(severity >= 30)
 		flash_eyes()
 
+	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
+
 	if(severity > EXPLOSION_THRESHOLD_LOW && stomach_contents.len)
 		for(var/mob/M in stomach_contents)
-			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, cause_data, pierce)
+			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, last_damage_data, pierce)
 
 	var/b_loss = 0
 	var/f_loss = 0
@@ -55,8 +57,6 @@
 	var/armor_punch = armor_break_calculation(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	apply_armorbreak(armor_punch)
 
-	last_damage_data = cause_data
-
 	last_hit_time = world.time
 
 	var/shieldtotal = 0
@@ -65,8 +65,8 @@
 
 	if (damage >= (health + shieldtotal) && damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
-		gib(cause_data)
-		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, cause_data)
+		gib(last_damage_data)
+		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, last_damage_data)
 		return
 	if (damage >= 0)
 		b_loss += damage * 0.5

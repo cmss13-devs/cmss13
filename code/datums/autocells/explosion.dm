@@ -253,12 +253,24 @@
 	if(!epicenter)
 		return
 
+	if(!istype(explosion_cause_data))
+		if(explosion_cause_data)
+			stack_trace("cell_explosion called with string cause ([explosion_cause_data]) instead of datum")
+			explosion_cause_data = create_cause_data(explosion_cause_data)
+		else
+			stack_trace("cell_explosion called without cause_data.")
+			explosion_cause_data = create_cause_data("Explosion")
+
 	falloff = max(falloff, power/100)
 
 	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff], Shape: [falloff_shape] in [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", epicenter.x, epicenter.y, epicenter.z)
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
-	playsound(epicenter, "explosion", 75, 1, max(round(power,1),7))
+
+	if(power >= 300) //Make BIG BOOMS
+		playsound(epicenter, "bigboom", 80, 1, max(round(power,1),7))
+	else
+		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
 
 	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
 

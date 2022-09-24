@@ -65,7 +65,7 @@
 	. = ..(mapload)
 	path = list()
 	permutated = list()
-	weapon_cause_data = cause_data
+	weapon_cause_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 	firer = cause_data?.resolve_mob()
 
 /obj/item/projectile/Destroy()

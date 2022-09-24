@@ -105,7 +105,7 @@
 			if(is_mainship_level(z))
 				SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
 		if(make_shatter_sound)
-			playsound(src, "shatter", 50, 1)
+			playsound(src, "windowshatter", 50, 1)
 		shatter_window(create_debris)
 	else
 		if(make_hit_sound)
@@ -136,7 +136,7 @@
 
 	if(health >= -2000)
 		var/location = get_turf(src)
-		playsound(src, "shatter", 50, 1)
+		playsound(src, "windowshatter", 50, 1)
 		create_shrapnel(location, rand(1,5), explosion_direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light/glass, cause_data = cause_data)
 
 	if(M)
@@ -524,7 +524,7 @@
 
 	if(health >= -3000)
 		var/location = get_turf(src)
-		playsound(src, "shatter", 50, 1)
+		playsound(src, "windowshatter", 50, 1)
 		handle_debris(severity, explosion_direction)
 		shatter_window(0)
 		create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass, cause_data)

@@ -3014,33 +3014,38 @@
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flare(get_turf(P), P.firer)
+	drop_flare(get_turf(P), P, P.firer)
 
 /datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_flare(get_turf(P), P.firer)
+	drop_flare(get_turf(P), P, P.firer)
 
 /datum/ammo/flare/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density && isturf(P.loc))
-		drop_flare(P.loc, P.firer)
+		drop_flare(P.loc, P, P.firer)
 	else
-		drop_flare(T, P.firer)
+		drop_flare(T, P, P.firer)
 
 /datum/ammo/flare/do_at_max_range(obj/item/projectile/P, var/mob/firer)
-	drop_flare(get_turf(P), P.firer)
+	drop_flare(get_turf(P), P, P.firer)
 
-/datum/ammo/flare/proc/drop_flare(var/turf/T, var/mob/firer)
+/datum/ammo/flare/proc/drop_flare(var/turf/T, obj/item/projectile/fired_projectile, var/mob/firer)
 	var/obj/item/device/flashlight/flare/G = new flare_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
 	return G
+
 /datum/ammo/flare/signal
 	name = "signal flare"
 	icon_state = "flare_signal"
 	flare_type = /obj/item/device/flashlight/flare/signal/gun
 	handful_type = /obj/item/device/flashlight/flare/signal
 
-/datum/ammo/flare/signal/drop_flare(turf/T, mob/firer)
-	var/obj/item/device/flashlight/flare/signal/gun/G = ..()
-	G.activate_signal(firer)
+/datum/ammo/flare/signal/drop_flare(turf/T, obj/item/projectile/fired_projectile, mob/firer)
+	var/obj/item/device/flashlight/flare/signal/gun/signal_flare = ..()
+	signal_flare.activate_signal(firer)
+	if(istype(fired_projectile.shot_from, /obj/item/weapon/gun/flare))
+		var/obj/item/weapon/gun/flare/flare_gun_fired_from = fired_projectile.shot_from
+		flare_gun_fired_from.last_signal_flare_name = signal_flare.name
+
 /datum/ammo/flare/starshell
 	name = "starshell ash"
 	icon_state = "starshell_bullet"

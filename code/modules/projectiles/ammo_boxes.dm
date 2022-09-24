@@ -89,6 +89,7 @@
 		overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
 	if(overlay_ammo_type)
 		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]")	//adding base color stripes
+	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank")
 		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	//adding base color stripes
 
 //---------------------INTERACTION PROCS

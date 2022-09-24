@@ -5285,8 +5285,7 @@
 "anQ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Toilet Unit";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -5343,8 +5342,7 @@
 "anY" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Toilet Unit";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -6321,8 +6319,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Dormitories Men's Restroom";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -6364,8 +6361,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Dormitories Women's Restroom";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -6867,8 +6863,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitory Unit";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
@@ -6898,8 +6893,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitory Custodial Closet";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/dorms)
@@ -8122,8 +8116,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitory Unit";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
@@ -16241,8 +16234,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Anti-Freeze Canteen Freezer";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -16258,8 +16250,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Anti-Freeze Bar Freezer";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -18413,12 +18404,10 @@
 "aVF" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -18430,7 +18419,6 @@
 "aVG" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -18442,7 +18430,6 @@
 "aVH" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -18454,7 +18441,6 @@
 "aVI" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -18466,7 +18452,6 @@
 "aVJ" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -18478,12 +18463,10 @@
 "aVK" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -18722,12 +18705,10 @@
 "aWo" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -18745,12 +18726,10 @@
 "aWr" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -18935,7 +18914,6 @@
 "aWP" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -18951,7 +18929,6 @@
 "aWR" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -19203,7 +19180,6 @@
 "aXz" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -19215,7 +19191,6 @@
 "aXA" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -19602,7 +19577,6 @@
 "aYt" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
@@ -19676,7 +19650,6 @@
 "aYJ" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
@@ -19720,12 +19693,10 @@
 "aYQ" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
@@ -19737,12 +19708,10 @@
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -19826,7 +19795,6 @@
 "aZi" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -19849,7 +19817,6 @@
 "aZo" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -19880,7 +19847,6 @@
 "aZv" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -19888,7 +19854,6 @@
 "aZw" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -19923,7 +19888,6 @@
 "aZA" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -19931,7 +19895,6 @@
 "aZB" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20067,12 +20030,10 @@
 /area/ice_colony/exterior/surface/landing_pad_external)
 "bae" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
@@ -20083,12 +20044,10 @@
 "baf" = (
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20181,7 +20140,6 @@
 "baw" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating{
@@ -20208,21 +20166,18 @@
 /area/ice_colony/underground/hangar)
 "baz" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "baA" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "baB" = (
 /obj/structure/machinery/landinglight/ds2{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20233,7 +20188,6 @@
 /area/ice_colony/underground/hangar)
 "baC" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20244,14 +20198,12 @@
 /area/ice_colony/underground/hangar)
 "baD" = (
 /obj/structure/machinery/landinglight/ds2{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "baE" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20262,7 +20214,6 @@
 /area/ice_colony/underground/hangar)
 "baF" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20273,12 +20224,10 @@
 /area/ice_colony/underground/hangar)
 "baH" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20289,12 +20238,10 @@
 /area/ice_colony/exterior/surface/landing_pad)
 "baI" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20313,7 +20260,6 @@
 "baK" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -20330,7 +20276,6 @@
 "baM" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -20345,7 +20290,6 @@
 "baO" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -20358,7 +20302,6 @@
 "baQ" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -20386,7 +20329,6 @@
 	},
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20413,7 +20355,6 @@
 "bbb" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20428,7 +20369,6 @@
 "bbd" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20464,7 +20404,6 @@
 /area/ice_colony/exterior/surface/cliff)
 "bbl" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20474,7 +20413,6 @@
 /area/ice_colony/exterior/surface/landing_pad)
 "bbm" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20488,7 +20426,6 @@
 "bbo" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20506,7 +20443,6 @@
 "bbq" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20539,11 +20475,9 @@
 "bby" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20554,7 +20488,6 @@
 /area/ice_colony/exterior/surface/landing_pad)
 "bbz" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20564,7 +20497,6 @@
 /area/ice_colony/exterior/surface/landing_pad)
 "bbA" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20574,12 +20506,10 @@
 /area/ice_colony/exterior/surface/landing_pad)
 "bbB" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -20649,9 +20579,7 @@
 	start_charge = 0
 	},
 /turf/open/floor{
-	dir = 8;
-	icon_state = "darkyellow2";
-	tag = "icon-darkyellow2 (WEST)"
+	icon_state = "delivery"
 	},
 /area/ice_colony/surface/tcomms)
 "bbW" = (
@@ -20696,7 +20624,6 @@
 "bcc" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -20704,7 +20631,6 @@
 "bcd" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -20771,7 +20697,6 @@
 "bcx" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -20794,7 +20719,6 @@
 "bcA" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -21034,7 +20958,6 @@
 /obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -21266,7 +21189,6 @@
 "bdS" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -21277,7 +21199,6 @@
 "bdT" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -21544,7 +21465,6 @@
 "beC" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -21572,7 +21492,6 @@
 "beF" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -22033,8 +21952,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Underground Requesitions Freezer";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -22276,7 +22194,6 @@
 	},
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -22287,7 +22204,6 @@
 "bgK" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -22345,7 +22261,6 @@
 "bgS" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -22357,7 +22272,6 @@
 "bgT" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -22639,7 +22553,6 @@
 "bhF" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -22647,7 +22560,6 @@
 "bhG" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -22655,7 +22567,6 @@
 "bhH" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -22667,7 +22578,6 @@
 "bhI" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -22679,7 +22589,6 @@
 "bhJ" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor,
@@ -22687,7 +22596,6 @@
 "bhK" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -22699,7 +22607,6 @@
 "bhL" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
@@ -33547,8 +33454,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Men's Barracks";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
@@ -33557,8 +33463,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Women's Barracks";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
@@ -34544,8 +34449,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Lavatory";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -36829,8 +36733,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Reception Archives";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
@@ -37177,8 +37080,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Toilet Unit";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -37301,8 +37203,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Underground Men's Restroom";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -37679,8 +37580,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Underground Women's Restroom";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -37834,8 +37734,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Toilet Unit";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -38762,12 +38661,8 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "cbk" = (
-/turf/open/floor/plating/icefloor{
-	dir = 4;
-	icon_state = "warnplate";
-	tag = "icon-warnplate (EAST)"
-	},
-/area/ice_colony/exterior/surface/valley/south)
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/tcomms)
 "csl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -38792,13 +38687,6 @@
 	tag = "icon-darkyellow2 (EAST)"
 	},
 /area/ice_colony/surface/tcomms)
-"dmJ" = (
-/turf/open/floor/plating/icefloor{
-	dir = 1;
-	icon_state = "warnplate";
-	tag = "icon-warnplate (NORTH)"
-	},
-/area/ice_colony/exterior/surface/valley/south)
 "dxl" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -38842,6 +38730,13 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/surface/research)
+"eSd" = (
+/turf/open/floor/plating/icefloor{
+	dir = 5;
+	icon_state = "warnplate";
+	tag = "icon-warnplate (NORTHEAST)"
+	},
+/area/ice_colony/surface/tcomms)
 "eSN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -38966,6 +38861,14 @@
 /obj/item/packageWrap,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
+"iZc" = (
+/obj/structure/lz_sign/ice_sign{
+	desc = "The only good bug is a dead bug.";
+	icon_state = "fort_biceps";
+	name = "Fort Bicep: Telecommunications Array"
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/ice_colony/exterior/surface/valley/south)
 "jtr" = (
 /turf/closed/wall,
 /area/ice_colony/exterior/surface/cliff)
@@ -38997,6 +38900,13 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
+"kfW" = (
+/turf/open/floor/plating/icefloor{
+	dir = 4;
+	icon_state = "warnplate";
+	tag = "icon-warnplate (EAST)"
+	},
+/area/ice_colony/surface/tcomms)
 "kKZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -39087,9 +38997,9 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/hangar/alpha)
 "oHE" = (
-/obj/structure/prop/tower,
+/obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/exterior/surface/valley/south)
+/area/ice_colony/surface/tcomms)
 "oOd" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/clearing/pass)
@@ -39154,7 +39064,7 @@
 	icon_state = "warnplate";
 	tag = "icon-warnplate (NORTHWEST)"
 	},
-/area/ice_colony/exterior/surface/valley/south)
+/area/ice_colony/surface/tcomms)
 "rmR" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/plating/icefloor,
@@ -39381,11 +39291,11 @@
 /area/ice_colony/surface/command/control/pv1)
 "wDj" = (
 /turf/open/floor/plating/icefloor{
-	dir = 5;
+	dir = 1;
 	icon_state = "warnplate";
-	tag = "icon-warnplate (NORTHEAST)"
+	tag = "icon-warnplate (NORTH)"
 	},
-/area/ice_colony/exterior/surface/valley/south)
+/area/ice_colony/surface/tcomms)
 "wTN" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -74534,7 +74444,7 @@ ayk
 ayk
 ayk
 ayk
-dmJ
+wDj
 oHE
 acj
 aag
@@ -75098,8 +75008,8 @@ ayk
 ayk
 ayk
 ayk
-ayC
-ayQ
+eSd
+kfW
 lqY
 bbF
 bbR
@@ -76506,7 +76416,7 @@ atI
 atI
 ayk
 ayk
-ayk
+iZc
 ayk
 ayC
 ayQ

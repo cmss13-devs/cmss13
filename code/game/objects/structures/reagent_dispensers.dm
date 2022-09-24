@@ -361,7 +361,7 @@
 
 /obj/structure/reagent_dispensers/fueltank/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	if(!reinforced)
-		reagents.source_mob = flame_cause_data.weak_mob
+		reagents.source_mob = flame_cause_data?.weak_mob
 		explode()
 
 /obj/structure/reagent_dispensers/fueltank/gas

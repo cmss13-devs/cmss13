@@ -71,7 +71,6 @@
 		var/prod_path = L[3]
 		var/obj/item/IT
 		IT = new prod_path(T)
-		vending_stat_bump(prod_path, src.type)
 
 		IT.add_fingerprint(usr)
 

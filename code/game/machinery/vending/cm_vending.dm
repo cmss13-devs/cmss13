@@ -102,12 +102,11 @@ IN_USE						used for vending/denying
 		T = locate(x + vend_x_offset, y + vend_y_offset, z)
 	return T
 
-/obj/structure/machinery/cm_vending/examine(mob/living/carbon/human/user)
-	..()
+/obj/structure/machinery/cm_vending/get_examine_text(mob/living/carbon/human/user)
+	. = ..()
 
 	if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && hackable)
-		to_chat(user, SPAN_NOTICE("You believe you can hack this one to remove access requirements."))
-		return FALSE
+		. += SPAN_NOTICE("You believe you can hack this one to remove the access requirements.")
 
 /obj/structure/machinery/cm_vending/proc/hack_access(var/mob/user)
 	if(!hackable)

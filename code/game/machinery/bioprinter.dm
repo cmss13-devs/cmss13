@@ -68,6 +68,6 @@
 	else
 		return..()
 
-/obj/structure/machinery/bioprinter/examine(mob/user)
-	..()
-	to_chat(user, "It has [stored_matter] matter and [stored_metal] metal left.")
+/obj/structure/machinery/bioprinter/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [stored_matter] matter and [stored_metal] metal left."

@@ -206,7 +206,8 @@ cases. Override_icon_state should be a list.*/
 	else return
 
 
-/obj/item/examine(mob/user)
+/obj/item/get_examine_text(mob/user)
+	. = list()
 	var/size
 	switch(w_class)
 		if(SIZE_TINY)
@@ -222,11 +223,11 @@ cases. Override_icon_state should be a list.*/
 		if(SIZE_MASSIVE)
 			size = "massive"
 		else
-	to_chat(user, "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item.")
+	. += "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item."
 	if(desc)
-		to_chat(user, desc)
+		. += desc
 	if(desc_lore)
-		to_chat(user, SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>."))
+		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
 
 /obj/item/attack_hand(mob/user)
 	if (!user)

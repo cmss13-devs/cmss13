@@ -46,16 +46,16 @@
 	else
 		return 0
 
-/obj/structure/barricade/plasteel/examine(mob/user)
-	..()
+/obj/structure/barricade/plasteel/get_examine_text(mob/user)
+	. = ..()
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED)
-			to_chat(user, SPAN_INFO("The protection panel is still tighly screwed in place."))
+			. += SPAN_INFO("The protection panel is still tighly screwed in place.")
 		if(BARRICADE_BSTATE_UNSECURED)
-			to_chat(user, SPAN_INFO("The protection panel has been removed, you can see the anchor bolts."))
+			. += SPAN_INFO("The protection panel has been removed, you can see the anchor bolts.")
 		if(BARRICADE_BSTATE_MOVABLE)
-			to_chat(user, SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart."))
+			. += SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.")
 
 /obj/structure/barricade/plasteel/weld_cade(obj/item/W, mob/user)
 	busy = TRUE

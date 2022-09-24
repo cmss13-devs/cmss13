@@ -96,14 +96,14 @@
 	if(refund) cell.charge += charge_cost
 	return TRUE
 
-/obj/item/weapon/gun/energy/examine(mob/user)
+/obj/item/weapon/gun/energy/get_examine_text(mob/user)
 	. = ..()
 	if(has_charge_meter && cell)
-		to_chat(user, SPAN_NOTICE("It has [round((cell.charge / charge_cost), 1)] / [max_shots] shots left."))
+		. += SPAN_NOTICE("It has [round((cell.charge / charge_cost), 1)] / [max_shots] shots left.")
 	else if(cell)
-		to_chat(user, SPAN_NOTICE("It has [cell.percent()]% charge left."))
+		. += SPAN_NOTICE("It has [cell.percent()]% charge left.")
 	else
-		to_chat(user, SPAN_NOTICE("It has no power cell inside."))
+		. += SPAN_NOTICE("It has no power cell inside.")
 
 /obj/item/weapon/gun/energy/rxfm5_eva
 	name = "RXF-M5 eva pistol"

@@ -1809,10 +1809,10 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
 	loaded_grenades = list()
 
-/obj/item/attachable/attached_gun/grenade/examine(mob/user)
-	..()
-	if(current_rounds) 	to_chat(user, "It has [current_rounds] grenade\s left.")
-	else 				to_chat(user, "It's empty.")
+/obj/item/attachable/attached_gun/grenade/get_examine_text(mob/user)
+	. = ..()
+	if(current_rounds) 	. += "It has [current_rounds] grenade\s left."
+	else 				. += "It's empty."
 
 /obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
 	if(!ishuman(usr))
@@ -1973,10 +1973,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	attachment_firing_delay = FIRE_DELAY_TIER_4 * 5
 
-/obj/item/attachable/attached_gun/flamer/examine(mob/user)
-	..()
-	if(current_rounds > 0) to_chat(user, "It has [current_rounds] unit\s of fuel left.")
-	else to_chat(user, "It's empty.")
+/obj/item/attachable/attached_gun/flamer/get_examine_text(mob/user)
+	. = ..()
+	if(current_rounds > 0) . += "It has [current_rounds] unit\s of fuel left."
+	else . += "It's empty."
 
 /obj/item/attachable/attached_gun/flamer/reload_attachment(obj/item/ammo_magazine/flamer_tank/FT, mob/user)
 	if(istype(FT))
@@ -2082,10 +2082,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	attachment_firing_delay = FIRE_DELAY_TIER_5*3
 
-/obj/item/attachable/attached_gun/shotgun/examine(mob/user)
-	..()
-	if(current_rounds > 0) 	to_chat(user, "It has [current_rounds] shell\s left.")
-	else 					to_chat(user, "It's empty.")
+/obj/item/attachable/attached_gun/shotgun/get_examine_text(mob/user)
+	. = ..()
+	if(current_rounds > 0) 	. += "It has [current_rounds] shell\s left."
+	else 					. += "It's empty."
 
 /obj/item/attachable/attached_gun/shotgun/set_bullet_traits()
 	LAZYADD(traits_to_give_attached, list(
@@ -2122,12 +2122,12 @@ Defined in conflicts.dm of the #defines folder.
 	var/obj/item/tool/extinguisher/internal_extinguisher
 	current_rounds = 1 //This has to be done to pass the fire_attachment check.
 
-/obj/item/attachable/attached_gun/extinguisher/examine(mob/user)
-	..()
+/obj/item/attachable/attached_gun/extinguisher/get_examine_text(mob/user)
+	. = ..()
 	if(internal_extinguisher)
-		to_chat(user, SPAN_NOTICE("It has [internal_extinguisher.reagents.total_volume] unit\s of water left!"))
+		. += SPAN_NOTICE("It has [internal_extinguisher.reagents.total_volume] unit\s of water left!")
 		return
-	to_chat(user, SPAN_WARNING("It's empty."))
+	. += SPAN_WARNING("It's empty.")
 
 /obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(var/slot)
 	return "It has a [icon2html(src)] [name] ([internal_extinguisher.reagents.total_volume]/[internal_extinguisher.max_water]) mounted underneath.<br>"

@@ -79,9 +79,9 @@
 	to_chat(user, SPAN_NOTICE("You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray."))
 
 
-/obj/item/reagent_container/spray/examine(mob/user)
-	..()
-	to_chat(user, "[round(reagents.total_volume)] units left.")
+/obj/item/reagent_container/spray/get_examine_text(mob/user)
+	. = ..()
+	. += "[round(reagents.total_volume)] units left."
 
 /obj/item/reagent_container/spray/verb/empty()
 
@@ -125,10 +125,10 @@
 	. = ..()
 	reagents.add_reagent("condensedcapsaicin", 40)
 
-/obj/item/reagent_container/spray/pepper/examine(mob/user)
-	..()
+/obj/item/reagent_container/spray/pepper/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(user,src) <= 1)
-		to_chat(user, "The safety is [safety ? "on" : "off"].")
+		. += "The safety is [safety ? "on" : "off"]."
 
 /obj/item/reagent_container/spray/pepper/attack_self(mob/user)
 	..()

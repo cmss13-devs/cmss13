@@ -4,6 +4,7 @@
 	icon = 'icons/obj/structures/razorwire.dmi'
 	icon_state = "razorwire-"
 	layer = BELOW_OBJ_LAYER
+	appearance_flags = PIXEL_SCALE
 
 	var/yautja_slowdown = 0.1 SECONDS
 	var/human_slowdown = 0.5 SECONDS
@@ -140,17 +141,16 @@
 			var/mob/living/carbon/human/yautja_mob = moving_atom
 			yautja_mob.visible_message(SPAN_WARNING("\The [yautja_mob] deftly avoids \the [src]!"), SPAN_WARNING("You deftly avoid \the [src]!"), max_distance = 3)
 			yautja_mob.next_move_slowdown = yautja_mob.next_move_slowdown + yautja_slowdown
-			playsound(loc, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
 		else if(ishuman(moving_atom))
 			var/mob/living/carbon/human/human = moving_atom
 			human.visible_message(SPAN_WARNING("\The [src] cuts into \the [human]'s legs, slowing them down!"), SPAN_WARNING("\The [src] cuts at your legs, slowing you down!"), max_distance = 3)
 			human.next_move_slowdown = human.next_move_slowdown + human_slowdown
-			playsound(loc, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
 		else if(isXeno(moving_atom))
 			var/mob/living/carbon/Xenomorph/xeno = moving_atom
 			xeno.visible_message(SPAN_WARNING("\The [src] wraps around \the [xeno]'s legs, slowing it down!"), SPAN_WARNING("\The [src] wraps around your legs, slowing you down!"), max_distance = 3)
 			xeno.next_move_slowdown = xeno.next_move_slowdown + xeno_slowdown
-			playsound(loc, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
+		playsound(loc, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
+		sway_jitter(times = 1, steps = 2, strength = 2, sway = 5)
 
 /obj/structure/razorwire/ex_act(severity, direction, cause_data)
 	if(health <= 0)

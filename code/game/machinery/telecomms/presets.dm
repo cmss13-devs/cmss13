@@ -99,7 +99,7 @@
 
 /obj/structure/machinery/telecomms/relay/preset/tower/toggle_state(mob/user)
 	if(!toggled && (inoperable() || (health <= initial(health) / 2)))
-		to_chat(user, SPAN_WARNING("The [src.name] needs repairs to be turned back on!"))
+		to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to be turned back on!"))
 		return
 	..()
 
@@ -146,7 +146,7 @@
 	if(ishighersilicon(user))
 		return ..()
 	if(on)
-		to_chat(user, SPAN_WARNING("The [src.name] blinks and beeps incomprehensibly as it operates, better not touch this..."))
+		to_chat(user, SPAN_WARNING("\The [src.name] blinks and beeps incomprehensibly as it operates, better not touch this..."))
 		return
 	toggle_state(user) // just flip dat switch
 
@@ -181,6 +181,97 @@
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/colony
 	freq_listening = list(COLONY_FREQ)
 	faction_shorthand = "colony"
+
+GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
+
+/obj/structure/machinery/telecomms/relay/preset/tower/Initialize()
+	GLOB.all_static_telecomms_towers += src
+	. = ..()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/Destroy()
+	GLOB.all_static_telecomms_towers -= src
+	. = ..()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms
+	name = "TC-3T static telecommunications tower"
+	desc = "A static heavy-duty TC-3T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations. Will need to have extra communication frequencies programmed into it by multitool."
+	use_power = 0
+	idle_power_usage = 10000
+	icon = 'icons/obj/structures/machinery/comm_tower3.dmi'
+	icon_state = "static1"
+	toggled = FALSE
+	bound_height = 64
+	bound_width = 64
+	freq_listening = list(COLONY_FREQ)
+	var/toggle_cooldown = 0
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attack_hand(mob/user)
+	if(user.action_busy)
+		return
+	if(toggle_cooldown > world.time) //cooldown only to prevent spam toggling
+		to_chat(user, SPAN_WARNING("\The [src]'s processors are still cooling! Wait before trying to flip the switch again."))
+		return
+	var/current_state = on
+	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+		return
+	if(current_state != on)
+		to_chat(user, SPAN_NOTICE("\The [src] is already turned [on ? "on" : "off"]!"))
+		return
+	if(stat & NOPOWER)
+		to_chat(user, SPAN_WARNING("\The [src] makes a small plaintful beep, and nothing happens. It seems to be out of power."))
+		return FALSE
+	if(toggle_cooldown > world.time) //cooldown only to prevent spam toggling
+		to_chat(user, SPAN_WARNING("\The [src]'s processors are still cooling! Wait before trying to flip the switch again."))
+		return
+	toggle_state(user) // just flip dat switch
+	var/turf/commloc = get_turf(src)
+	var/area/commarea = get_area(src)
+	if(on) //now, if it went on it now uses power
+		use_power = 1
+		message_admins("[key_name(user)] turned \the [src] in [commarea] ON. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[commloc.loc.x];Y=[commloc.loc.y];Z=[commloc.loc.z]'>JMP</a>)")
+	else
+		use_power = 0
+		message_admins("[key_name(user)] turned \the [src] in [commarea] OFF. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[commloc.loc.x];Y=[commloc.loc.y];Z=[commloc.loc.z]'>JMP</a>)")
+	toggle_cooldown = world.time + 40
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attackby(obj/item/I, mob/user)
+	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
+		if(inoperable() || (health <= initial(health) * 0.5))
+			to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to have frequencies added to its software!"))
+			return
+		var/choice = tgui_input_list(user, "What do you wish to do?", "TC-3T comms tower", list("Wipe communication frequencies", "Add your faction's frequencies"))
+		if(choice == "Wipe frequencies")
+			freq_listening = null
+			to_chat(user, SPAN_NOTICE("You wipe the preexisting frequencies from \the [src]."))
+			return
+		else if(choice == "Add your faction's frequencies")
+			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				return
+			switch(user.faction)
+				if(FACTION_SURVIVOR)
+					freq_listening |= COLONY_FREQ
+				if(FACTION_CLF)
+					freq_listening |= list(CLF_FREQ, CCT_FREQ)
+				if(FACTION_UPP)
+					freq_listening |= list(RUS_FREQ, CCT_FREQ)
+				if(FACTION_YAUTJA)
+					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
+					return
+				else
+					freq_listening |= DEPT_FREQS
+			to_chat(user, SPAN_NOTICE("You add your faction's communication frequencies to \the [src]'s comm list."))
+			return
+	. = ..()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/power_change()
+	..()
+	if((stat & NOPOWER))
+		if(on)
+			toggle_state()
+		on = 0
+		update_icon()
+	else
+		update_icon()
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"

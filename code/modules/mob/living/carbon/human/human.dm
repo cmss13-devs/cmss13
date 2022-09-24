@@ -117,15 +117,15 @@
 
 	damage = armor_damage_reduction(GLOB.marine_explosive, damage, getarmor(null, ARMOR_BOMB))
 
-	last_damage_data = cause_data
+	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
 	if(damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
-		gib(cause_data)
-		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, cause_data)
+		gib(last_damage_data)
+		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, last_damage_data)
 		sleep(1)
-		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, cause_data)
-		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, cause_data)
+		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, last_damage_data)
+		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
 
 	if(!get_type_in_ears(/obj/item/clothing/ears/earmuffs))
@@ -156,8 +156,9 @@
 	var/update = 0
 
 	//Focus half the blast on one organ
+	var/mob/attack_source = last_damage_data?.resolve_mob()
 	var/obj/limb/take_blast = pick(limbs)
-	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = cause_data.resolve_mob())
+	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
 	pain.apply_pain(b_loss * 0.5, BRUTE)
 	pain.apply_pain(f_loss * 0.5, BURN)
 
@@ -189,7 +190,7 @@
 				limb_multiplier = 0.05
 			if("l_arm")
 				limb_multiplier = 0.05
-		update |= temp.take_damage(b_loss * limb_multiplier, f_loss * limb_multiplier, used_weapon = weapon_message, attack_source = cause_data.resolve_mob())
+		update |= temp.take_damage(b_loss * limb_multiplier, f_loss * limb_multiplier, used_weapon = weapon_message, attack_source = attack_source)
 		pain.apply_pain(b_loss * limb_multiplier, BRUTE)
 		pain.apply_pain(f_loss * limb_multiplier, BURN)
 	if(update)

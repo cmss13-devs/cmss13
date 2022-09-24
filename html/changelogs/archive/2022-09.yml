@@ -313,8 +313,16 @@
   - qol: Item description appears as popup in vendor UI
   - qol: Item icons are displayed in vendor UI
 2022-09-20:
+  Morrow:
+  - rscadd: Decoration accessories can now be attached to CO armor
   Shad0vvs:
   - server: Byond version 1588 is now blacklisted as it breaks vision.
+  Totalepicess, Blithering:
+  - rscadd: Added M41A and L42A blank ammo
+  - rscadd: Added the ABR-40 Ceremonial Rifle, found in SEA vendor, execution and
+      ceremonial room. Sprites by Blithering
+  - rscadd: Added a new ceremonial room to the Almayer, next to the memorial.
+  - rscadd: Added service jacket to SEA vendor
   stanalbatross:
   - refactor: repathed /obj/screen to /atom/movable/screen
   - bugfix: only unacidable intel items are saved from the spawn pool now, this fixes
@@ -322,3 +330,60 @@
       properly
   - bugfix: the spawn pool and egg morpher will no longer pile all intel items on
       top of them
+2022-09-21:
+  c4xmaniac:
+  - bugfix: Fixed kutjevo shutters.
+  - balance: LZ1 has been redesigned to make it harder to defend as marines and easier
+      to siege as xenos.
+  - bugfix: Fixed the old and current nightmare inserts on science annex to fit the
+      redesign of the map.
+  - rscdel: Deleted the old nightmare inserts that no longer work due Saw's yard changes
+      and the LZ1 changes I made.
+  - bugfix: Changed the descriptions of the food venders on the prison to match that
+      they're on a prison.
+  - qol: Moved the survivor spawn near park right a little so new survivor players
+      don't get gunned down immediately by a sentry.
+  nauticall:
+  - rscadd: Added more than 150 new sounds into the game; most were ported from A:CM
+      and stock SS13.
+  - rscadd: New firing sounds for the M37, Mk221/Mk210, M4A3, and 88 Mod 4.
+  - rscadd: New sounds for shotgun shell loading, glass breaking, explosions, and
+      explosions greater than 300 power, e.g. OBs and max caps.
+  - rscadd: Added various new interaction noises, particularly when damaging barricades,
+      prying doors, and picking up/dropping items.
+  - rscadd: Several tools now have pickup and drop sounds. In addition to the toolbelt
+      tools, these also include binoculars and fire extinguishers.
+  - bugfix: Patches a bug where the defibrillator would turn invisible once it shifted
+      to the yellow (<50%) level of charge and below.
+2022-09-22:
+  Morrow:
+  - bugfix: Ported fix for the entire screen being black on newer versions of byond
+  - server: Removed blacklisted versions 1586 and 1588
+  stanalbatross:
+  - bugfix: fixed some runtimes
+  - bugfix: if a clothing item takes time to equip, it will now not equip if conditions
+      are not met once its windup to equipping has finished
+2022-09-23:
+  Stan_Albatross, Triiodine, Geeves:
+  - rscadd: Static comms is back! Two towers will spawn in random locations every
+      round, one near-ish to each LZ. They are also displayed on the tacmap. You must
+      repair and power one of them to establish comms with the ship. Survivors can
+      also do so, if they so wish. Sprites by Triiodine, landmark system by Geeves.
+  - rscadd: static comm towers will require specific comm frequencies to be added
+      to them via multitool before they can be spoken on, this means survivors cannot
+      use USCM comms before drop.
+  - rscdel: The Almayer no longer spawns with comms parts, and the comms parts crate
+      cannot be bought.
+  - bugfix: survivor radios now start turned off if they spawn in a body that will
+      become a xeno.
+  - qol: added in-editor camera and APC icons
+  - qol: added broken, wires cut, and broken with no cell apc presets for mappers
+  - bugfix: fixed a few poorly offset cams on the Almayer
+2022-09-24:
+  Drathek:
+  - bugfix: Fixed runtimes caused by gibbing.
+  - code_imp: Added more checks for cause_data usage.
+  Morrow:
+  - rscadd: Flare guns can now be fired into the air via unique action
+  - qol: Signal flares fired by flare guns now show their designation in the flare
+      gun's description.

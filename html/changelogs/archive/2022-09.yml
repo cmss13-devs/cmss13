@@ -398,3 +398,4 @@
   - bugfix: when emitting pheromones, if you are using the queen eye, the radial menu
       will appear from the eye itself
   - bugfix: fixed broken static comms areas on kutjevo
+  - bugfix: tgui input real number now supports decimals

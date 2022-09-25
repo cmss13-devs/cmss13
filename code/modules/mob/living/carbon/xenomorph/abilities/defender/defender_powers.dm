@@ -243,3 +243,226 @@
 
 	UnregisterSignal(owner, COMSIG_MOB_DEATH)
 	fortify_switch(owner, FALSE)
+
+
+// Steel Tail Strain
+
+/datum/action/xeno_action/activable/tail_slam/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	if (!istype(X))
+		return
+
+	if(!isXenoOrHuman(A) || X.can_not_harm(A))
+		return
+
+	if(!X.check_state())
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+
+	var/mob/living/carbon/H = A
+	if(H.stat == DEAD)
+		return
+
+	var/distance = get_dist(X, H)
+
+	var/slow_duration = 30
+
+	var/max_distance = 1
+
+	if(distance > max_distance)
+		return
+
+	if(!X.Adjacent(H))
+		on_cooldown_end()
+		return
+
+	H.last_damage_data = create_cause_data(X.caste_type, X)
+	X.visible_message(SPAN_XENOWARNING("[X] spins, then loudly slams [H] with its tail!"), \
+	SPAN_XENOWARNING("You slam [H] with your tail!"))
+
+	if (H.knocked_down)
+		to_chat(H, SPAN_XENOWARNING("You are struck harder by [src]'s tail!"))
+		new /datum/effects/xeno_slow(H, X, null, null, get_xeno_stun_duration(H, slow_duration))
+
+	if(H.stat != DEAD && (!(H.status_flags & XENO_HOST) || !HAS_TRAIT(H, TRAIT_NESTED)) )
+		var/h_damage = 25
+		X.spin_circle()
+		X.emote("tail")
+		H.apply_armoured_damage(get_xeno_damage_slash(H, h_damage), ARMOR_MELEE, BRUTE, "chest", 10)
+		H.Daze(tail_slam)
+		shake_camera(H, 2, 1)
+
+	playsound(H, 'sound/effects/bang.ogg', 30, 1)
+	apply_cooldown()
+	..()
+	return
+
+
+/datum/action/xeno_action/activable/tail_swing/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+
+	if (!istype(X) || !X.check_state() || !action_cooldown_check())
+		return
+
+	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
+		return
+
+	if (!check_plasma_owner())
+		return
+
+	// Transient turf list
+	var/list/target_turfs = list()
+	var/list/temp_turfs = list()
+	var/list/telegraph_atom_list = list()
+
+	// Code to get a 2x3 area of turfs
+	var/turf/root = get_turf(X)
+	var/facing = Get_Compass_Dir(X, A)
+	var/turf/infront = get_step(root, facing)
+	var/turf/left = get_step(root, turn(facing, 90))
+	var/turf/right = get_step(root, turn(facing, -90))
+	var/turf/infront_left = get_step(root, turn(facing, 45))
+	var/turf/infront_right = get_step(root, turn(facing, -45))
+	temp_turfs += infront
+	if(!(!infront || infront.density) && !(!left || left.density))
+		temp_turfs += infront_left
+	if(!(!infront || infront.density) && !(!right || right.density))
+		temp_turfs += infront_right
+
+	for(var/turf/T in temp_turfs)
+		if (!istype(T))
+			continue
+
+		if (T.density)
+			continue
+
+		target_turfs += T
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/tail_swing(T, windup)
+
+		var/turf/next_turf = get_step(T, facing)
+		if (!istype(next_turf) || next_turf.density)
+			continue
+
+		target_turfs += next_turf
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/tail_swing(next_turf, windup)
+
+	if(!length(target_turfs))
+		to_chat(X, SPAN_XENOWARNING("You don't have any room to do your tail swing!"))
+		return
+
+	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		to_chat(X, SPAN_XENOWARNING("You cancel your tail swing."))
+
+		for(var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
+			telegraph_atom_list -= XT
+			qdel(XT)
+		return
+
+	if(!action_cooldown_check() || !check_and_use_plasma_owner())
+		return
+
+	apply_cooldown()
+
+	X.visible_message(SPAN_XENODANGER("[X] swings its tail forward, hitting everything in front of it!"), SPAN_XENODANGER("You swing your tail forward, hitting everything in front of you!"))
+	X.spin_circle()
+	X.emote("tail")
+
+	for (var/turf/T in target_turfs)
+		for (var/mob/living/carbon/H in T)
+			if (H.stat == DEAD)
+				continue
+
+			if(!isXenoOrHuman(H) || X.can_not_harm(H))
+				continue
+
+			if(H.mob_size >= MOB_SIZE_BIG)
+				continue
+
+			H.KnockDown(get_xeno_stun_duration(H, 1))
+
+	..()
+	return
+
+/datum/action/xeno_action/activable/tail_fling/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+		return
+
+	if (!X.check_state() || X.agility)
+		return
+
+	if (!X.Adjacent(A))
+		return
+
+	var/mob/living/carbon/H = A
+	if(H.stat == DEAD) return
+	if(HAS_TRAIT(H, TRAIT_NESTED))
+		return
+
+	if(H == X.pulling)
+		X.stop_pulling()
+
+	if(H.mob_size >= MOB_SIZE_BIG)
+		to_chat(X, SPAN_XENOWARNING("Your fling proves ineffective due to [H]'s size!"))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+
+	var/facing = get_dir(X, H)
+	var/turf/temp = X.loc
+	var/turf/T = X.loc
+
+	var/datum/launch_metadata/LM = new()
+	LM.target = T
+	LM.speed = SPEED_FAST
+	LM.thrower = X
+	LM.spin = FALSE
+	LM.pass_flags = PASS_OVER_THROW_MOB|PASS_MOB_THRU_XENO|PASS_MOB_IS_HUMAN
+
+
+	if(X.a_intent == INTENT_HARM) //If we use the ability on hurt intent, we throw them in front; otherwise we throw them behind.
+		LM.range = 2
+		for (var/x in 0 to fling_distance-1)
+			temp = get_step(T, facing)
+			if (!temp)
+				break
+			T = temp
+		X.visible_message(SPAN_XENOWARNING("\The [X] flings [H] away with its tail!"), SPAN_XENOWARNING("You fling [H] away with your tail!"))
+
+	else
+		LM.range = 4
+		facing = get_dir(H, X)
+
+		for (var/x in 0 to fling_distance-1)
+			temp = get_step(T, facing)
+			if (!temp)
+				break
+			T = temp
+		X.visible_message(SPAN_XENOWARNING("\The [X] flings [H] behind with its tail!"), SPAN_XENOWARNING("You fling [H] behind you with your tail!"))
+
+
+	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
+	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
+	shake_camera(H, 2, 1)
+
+	X.spin_circle()
+	X.emote("tail")
+	LM.target = T
+	H.launch_towards(LM)
+	H.KnockDown(get_xeno_stun_duration(H, 0.2))
+
+	apply_cooldown()
+	..()
+	return

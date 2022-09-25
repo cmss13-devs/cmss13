@@ -343,6 +343,7 @@
 // Defender strain flags
 #define DEFENDER_NORMAL 	"Normal"
 #define DEFENDER_STEELCREST "Steelcrest"
+#define DEFENDER_STEEL_TAIL "Steel Tail"
 
 // Warrior strain flags
 #define WARRIOR_NORMAL		"Normal"

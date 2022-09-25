@@ -387,3 +387,17 @@
   - rscadd: Flare guns can now be fired into the air via unique action
   - qol: Signal flares fired by flare guns now show their designation in the flare
       gun's description.
+2022-09-25:
+  Joe lampost:
+  - bugfix: stops preds form changing their SD size mid SD (this only works if someone
+      tries to change it from small to big)
+  - bugfix: reduces the amount of health gained from the first step of the medicomp
+      by 10 and gave plus 5 to the following steps
+  Morrow:
+  - bugfix: Predalien larva sprite works now
+  stanalbatross:
+  - bugfix: the queen eye can no longer be put in nests
+  - bugfix: when emitting pheromones, if you are using the queen eye, the radial menu
+      will appear from the eye itself
+  - bugfix: fixed broken static comms areas on kutjevo
+  - bugfix: tgui input real number now supports decimals

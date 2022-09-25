@@ -18,12 +18,12 @@
 		list("Multitool", 4, /obj/item/device/multitool, null, VENDOR_ITEM_REGULAR),
 		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_REGULAR),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_REGULAR),
-		list("Industrial Blowtorch", 2, /obj/item/tool/weldingtool/largetank, null, VENDOR_ITEM_RECOMMENDED),
-		list("High-Capacity Industrial Blowtorch", 4, /obj/item/tool/weldingtool/hugetank, VENDOR_ITEM_REGULAR),
+		list("Industrial Blowtorch", 2, /obj/item/tool/weldingtool/largetank, null, VENDOR_ITEM_REGULAR),
+		list("High-Capacity Industrial Blowtorch", 4, /obj/item/tool/weldingtool/hugetank, null, VENDOR_ITEM_REGULAR),
 		list("Plastic Explosive", 3, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 
 		list("FIRSTAID KITS", 0, null, null, null),
-		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
+		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),
 		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
 		list("Fire Firstaid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
 		list("Toxin Firstaid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
@@ -72,7 +72,7 @@
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-		list("Machete Scabbard (Full)", 2, /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR)
+		list("Machete Scabbard (Full)", 2, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR)
 
 	)
 

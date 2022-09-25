@@ -52,8 +52,10 @@
 		return
 	if(!identificable)
 		return
+	. = ""
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		return pill_desc
+		. += "[pill_desc]\n"
+	. += ..()
 
 /obj/item/reagent_container/pill/attack(mob/M, mob/user)
 	if(M == user)

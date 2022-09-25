@@ -271,7 +271,7 @@
 
 	var/distance = get_dist(X, H)
 
-	var/slow_duration = 30
+	var/slow_duration = 20
 
 	var/max_distance = 1
 

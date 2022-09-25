@@ -63,7 +63,6 @@ Animus
 Oracle
 Spectre
 Provectus
-Bad
 Voodoo
 Hammer
 Knight

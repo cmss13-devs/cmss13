@@ -393,6 +393,8 @@
       tries to change it from small to big)
   - bugfix: reduces the amount of health gained from the first step of the medicomp
       by 10 and gave plus 5 to the following steps
+  Morrow:
+  - bugfix: Predalien larva sprite works now
   stanalbatross:
   - bugfix: the queen eye can no longer be put in nests
   - bugfix: when emitting pheromones, if you are using the queen eye, the radial menu

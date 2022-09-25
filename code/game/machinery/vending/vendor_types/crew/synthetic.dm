@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 		list("MASK", 0, null, null, null),
 		list("Sterile mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
-	))
+	)
 
 /obj/structure/machinery/cm_vending/clothing/synth
 	name = "\improper ColMarTech Synthetic Equipment Rack"

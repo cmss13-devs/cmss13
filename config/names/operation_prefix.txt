@@ -1,6 +1,5 @@
 Agile
 Alpha
-Angry
 Azure
 Bayonet
 Bandit
@@ -49,7 +48,6 @@ Neptune
 November
 Oscar
 Over
-Overlord
 Painful
 Papa
 Quebec
@@ -61,13 +59,10 @@ Rude
 Serene
 Short
 Smart
-Sick
 Sierra
 Sigma
-Sleepy
 Spartan
 Superior
-Sweaty
 Tango
 Tequila
 Tender

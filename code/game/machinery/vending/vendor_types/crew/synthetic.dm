@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 		list("MASK", 0, null, null, null),
 		list("Sterile mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
-	)
+	))
 
 /obj/structure/machinery/cm_vending/clothing/synth
 	name = "\improper ColMarTech Synthetic Equipment Rack"
@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Backpack, Tech", 12, /obj/item/storage/backpack/marine/tech, null, VENDOR_ITEM_REGULAR),
 		list("Satchel, Standard", 12, /obj/item/storage/backpack/marine/satchel, null, VENDOR_ITEM_REGULAR),
 		list("Welderpack", 12, /obj/item/storage/backpack/marine/engineerpack, null, VENDOR_ITEM_REGULAR),
-		list("Small Radio Telephone Backpack", 12), /obj/item/storage/backpack/marine/satchel/rto/small,null, VENDOR_ITEM_REGULAR),
+		list("Small Radio Telephone Backpack", 12, /obj/item/storage/backpack/marine/satchel/rto/small,null, VENDOR_ITEM_REGULAR),
 	)
 
 //------------EXPERIMENTAL TOOLS---------------

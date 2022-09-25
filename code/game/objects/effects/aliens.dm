@@ -527,6 +527,9 @@
 	for (var/obj/structure/barricade/B in loc)
 		B.take_acid_damage(damage*(1.15 + 0.55 * empowered))
 
+	for (var/obj/structure/razorwire/R in loc)
+		R.take_acid_damage(damage*(1.15 + 0.55 * empowered))
+
 	for (var/mob/living/carbon/H in loc)
 		if (H.stat == DEAD)
 			continue

@@ -279,6 +279,9 @@
 	for(var/obj/structure/barricade/B in T)
 		B.take_acid_damage(XENO_ACID_BARRICADE_DAMAGE)
 
+	for(var/obj/structure/razorwire/R in T)
+		R.take_acid_damage(XENO_ACID_BARRICADE_DAMAGE)
+
 	for(var/obj/vehicle/multitile/R in T)
 		R.take_damage_type(15, "acid")
 

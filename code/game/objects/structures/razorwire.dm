@@ -40,15 +40,15 @@
 	..()
 	var/health_fraction = health / initial(health)
 	switch(health_fraction)
-		if(1)
+		if(0.95 to INFINITY)
 			to_chat(user, SPAN_NOTICE("\The [src] is in perfect condition."))
-		if(0.8 to 1)
+		if(0.8 to 0.95)
 			to_chat(user, SPAN_NOTICE("\The [src] is slightly damaged."))
 		if(0.5 to 0.8)
 			to_chat(user, SPAN_WARNING("\The [src] is torn up."))
 		if(0.3 to 0.5)
 			to_chat(user, SPAN_DANGER("\The [src] is fairly damaged!"))
-		if(0 to 0.3)
+		if(-INFINITY to 0.3)
 			to_chat(user, SPAN_DANGER("\The [src] is falling apart!"))
 
 /obj/structure/razorwire/update_icon()
@@ -141,16 +141,20 @@
 			var/mob/living/carbon/human/yautja_mob = moving_atom
 			yautja_mob.visible_message(SPAN_WARNING("\The [yautja_mob] deftly avoids \the [src]!"), SPAN_WARNING("You deftly avoid \the [src]!"), max_distance = 3)
 			yautja_mob.next_move_slowdown = yautja_mob.next_move_slowdown + yautja_slowdown
+			playsound(loc, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
+			sway_jitter(times = 1, steps = 2, strength = 2, sway = 5)
 		else if(ishuman(moving_atom))
 			var/mob/living/carbon/human/human = moving_atom
 			human.visible_message(SPAN_WARNING("\The [src] cuts into \the [human]'s legs, slowing them down!"), SPAN_WARNING("\The [src] cuts at your legs, slowing you down!"), max_distance = 3)
 			human.next_move_slowdown = human.next_move_slowdown + human_slowdown
+			playsound(loc, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
+			sway_jitter(times = 1, steps = 2, strength = 2, sway = 5)
 		else if(isXeno(moving_atom))
 			var/mob/living/carbon/Xenomorph/xeno = moving_atom
 			xeno.visible_message(SPAN_WARNING("\The [src] wraps around \the [xeno]'s legs, slowing it down!"), SPAN_WARNING("\The [src] wraps around your legs, slowing you down!"), max_distance = 3)
 			xeno.next_move_slowdown = xeno.next_move_slowdown + xeno_slowdown
-		playsound(loc, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
-		sway_jitter(times = 1, steps = 2, strength = 2, sway = 5)
+			playsound(loc, 'sound/effects/barbed_wire_movement.ogg', 25, TRUE)
+			sway_jitter(times = 1, steps = 2, strength = 2, sway = 5)
 
 /obj/structure/razorwire/ex_act(severity, direction, cause_data)
 	if(health <= 0)

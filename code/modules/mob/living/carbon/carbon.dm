@@ -74,10 +74,10 @@
 	if(severity >= 30)
 		flash_eyes()
 
-	last_damage_data = cause_data
+	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
 	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
-		gib(cause_data)
+		gib(last_damage_data)
 		return
 
 	apply_damage(severity, BRUTE)
@@ -320,7 +320,7 @@
 	if(!istype(loc, /turf)) // In some mob/object (i.e. devoured or tank)
 		to_chat(src, SPAN_WARNING("You cannot throw anything while inside of \the [loc.name]."))
 		return
-	if(target.type == /obj/screen)
+	if(target.type == /atom/movable/screen)
 		return
 
 	var/atom/movable/thrown_thing

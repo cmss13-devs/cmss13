@@ -865,7 +865,7 @@
 		correctly without having to rotate anything. Preloading weapon icons also makes
 		sure that we don't have to do any extra calculations.
 		*/
-		playsound(src, drawSound, 15, TRUE)
+		playsound(src, drawSound, 7, TRUE)
 		var/image/gun_underlay = image(icon, current_gun.base_gun_icon)
 		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
 		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
@@ -877,7 +877,7 @@
 		icon_state += "_g"
 		item_state = icon_state
 	else
-		playsound(src, sheatheSound, 15, TRUE)
+		playsound(src, sheatheSound, 7, TRUE)
 		underlays -= holster_slots[slot]["underlay_sprite"]
 		holster_slots[slot]["underlay_sprite"] = null
 

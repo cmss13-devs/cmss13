@@ -5,7 +5,7 @@
 	var/action_icon_state
 	var/button_icon_state
 	var/obj/target = null
-	var/obj/screen/action_button/button = null
+	var/atom/movable/screen/action_button/button = null
 	var/mob/owner
 	var/cooldown = 0 // By default an action has no cooldown
 	var/cost = 0 // By default an action has no cost -> will be utilized by skill actions/xeno actions
@@ -212,7 +212,7 @@
 				client.screen += A.button
 	else
 		for(var/datum/action/A in actions)
-			var/obj/screen/action_button/B = A.button
+			var/atom/movable/screen/action_button/B = A.button
 			if(reload_screen)
 				client.screen += B
 			if(A.hidden)

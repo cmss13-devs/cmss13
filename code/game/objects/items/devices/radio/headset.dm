@@ -107,7 +107,7 @@
 /obj/item/device/radio/headset/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
 		return ..()
-	if(!istype(over_object, /obj/screen))
+	if(!istype(over_object, /atom/movable/screen))
 		return ..()
 	if(loc != usr) //Makes sure that the headset is equipped, so that we can't drag it into our hand from miles away.
 		return ..()

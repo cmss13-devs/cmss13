@@ -425,7 +425,6 @@
 #include "code\datums\entities\player_sticky_ban.dm"
 #include "code\datums\entities\player_times.dm"
 #include "code\datums\entities\ticket.dm"
-#include "code\datums\entities\vending_stat.dm"
 #include "code\datums\entities\logs\player_times_log.dm"
 #include "code\datums\factions\clf.dm"
 #include "code\datums\factions\faction.dm"

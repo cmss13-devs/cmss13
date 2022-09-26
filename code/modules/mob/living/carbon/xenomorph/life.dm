@@ -179,7 +179,7 @@
 
 		if(regular_update)
 			if(eye_blurry)
-				overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
+				overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
 				src.eye_blurry--
 				src.eye_blurry = max(0, src.eye_blurry)
 			else
@@ -225,12 +225,12 @@
 
 	var/severity = HUD_PAIN_STATES_XENO - Ceiling(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
 	if(severity)
-		overlay_fullscreen("xeno_pain", /obj/screen/fullscreen/xeno_pain, severity)
+		overlay_fullscreen("xeno_pain", /atom/movable/screen/fullscreen/xeno_pain, severity)
 	else
 		clear_fullscreen("xeno_pain")
 
 	if(blinded)
-		overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+		overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 	else
 		clear_fullscreen("blind")
 
@@ -240,7 +240,7 @@
 		reset_view(null)
 
 	if(dazed)
-		overlay_fullscreen("dazed", /obj/screen/fullscreen/impaired, 5)
+		overlay_fullscreen("dazed", /atom/movable/screen/fullscreen/impaired, 5)
 	else
 		clear_fullscreen("dazed")
 
@@ -371,7 +371,7 @@ updatehealth()
 	if(!hud_used || !hud_used.locate_leader)
 		return
 
-	var/obj/screen/queen_locator/QL = hud_used.locate_leader
+	var/atom/movable/screen/queen_locator/QL = hud_used.locate_leader
 	if(!loc)
 		QL.icon_state = "trackoff"
 		return
@@ -390,7 +390,13 @@ updatehealth()
 			tracking_atom = hive.hive_location
 		else
 			var/leader_tracker = text2num(QL.track_state)
-			if(!hive || !hive.xeno_leader_list[leader_tracker])
+			if(!hive || !hive.xeno_leader_list)
+				QL.icon_state = "trackoff"
+				return
+			if(leader_tracker > hive.xeno_leader_list.len)
+				QL.icon_state = "trackoff"
+				return
+			if(!hive.xeno_leader_list[leader_tracker])
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.xeno_leader_list[leader_tracker]
@@ -418,7 +424,7 @@ updatehealth()
 	var/tracked_marker_turf = get_turf(tracked_marker)	 //so I made local variables to circumvent this
 	var/area/A = get_area(loc)
 	var/area/MA = get_area(tracked_marker_turf)
-	var/obj/screen/mark_locator/ML = hud_used.locate_marker
+	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.desc = client
 
 	ML.overlays.Cut()

@@ -429,7 +429,7 @@ nanoui is used to open and update nano browser uis
 /datum/nanoui/proc/open()
 	if(QDELETED(src))
 		return
-	if(!user.client)
+	if(!user || !user.client)
 		return
 	var/window_size = ""
 	if (width && height)

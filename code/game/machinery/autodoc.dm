@@ -25,7 +25,8 @@
 	idle_power_usage = 15
 	active_power_usage = 450 //Capable of doing various activities
 
-	var/stored_metal = 500 // starts with 500 metal loaded
+	var/stored_metal = 125 // starts with 125 metal loaded
+	var/max_metal = 500
 
 
 /obj/structure/machinery/autodoc/Initialize()
@@ -625,11 +626,22 @@
 	if(!ishuman(user))
 		return // no
 	if(istype(W, /obj/item/stack/sheet/metal))
+		if(stored_metal == max_metal)
+			to_chat(user, SPAN_WARNING("\The [src] is full!"))
+			return
 		var/obj/item/stack/sheet/metal/M = W
+		var/sheets_to_eat = (round((max_metal - stored_metal), 100))/100
+		if(!sheets_to_eat)
+			sheets_to_eat = 1
+		if(M.amount >= sheets_to_eat)
+			stored_metal += sheets_to_eat * 100
+			M.use(sheets_to_eat)
+		else
+			stored_metal += M.amount * 100
+			M.use(M.amount)
+		if(stored_metal > max_metal)
+			stored_metal = max_metal
 		to_chat(user, SPAN_NOTICE("\The [src] processes \the [W]."))
-		stored_metal += M.amount * 100
-		user.drop_held_item()
-		qdel(W)
 		return
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W

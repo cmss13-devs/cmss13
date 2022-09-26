@@ -16313,7 +16313,7 @@
 /area/almayer/hallways/starboard_hallway)
 "aYQ" = (
 /obj/structure/machinery/bioprinter{
-	stored_metal = 1000
+	stored_metal = 125
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
@@ -23089,7 +23089,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "byc" = (
 /obj/structure/machinery/bioprinter{
-	stored_metal = 1000
+	stored_metal = 125
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -30273,7 +30273,7 @@
 /area/almayer/command/corporateliason)
 "bXw" = (
 /obj/structure/machinery/bioprinter{
-	stored_metal = 1000
+	stored_metal = 125
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
@@ -78315,7 +78315,7 @@
 /area/almayer/living/grunt_rnr)
 "wbP" = (
 /obj/structure/machinery/bioprinter{
-	stored_metal = 1000
+	stored_metal = 125
 	},
 /turf/open/floor/almayer{
 	dir = 4;

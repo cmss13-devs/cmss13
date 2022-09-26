@@ -17569,37 +17569,9 @@
 	},
 /area/almayer/squads/alpha)
 "bdw" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "red";
-	tag = "icon-red"
-	},
-/area/almayer/living/cryo_cells)
-"bdx" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/obj/item/weapon/gun/rifle/m41a,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/weapon/gun/rifle/m41a,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/turf/open/floor/almayer{
-	dir = 8;
 	icon_state = "red";
 	tag = "icon-red"
 	},
@@ -25025,34 +24997,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
 "bFs" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/pump,
-/obj/item/ammo_magazine/shotgun/flechette,
-/obj/item/ammo_magazine/shotgun/flechette,
-/obj/item/ammo_magazine/shotgun/flechette,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/slugs,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /turf/open/floor/almayer{
 	dir = 10;
-	icon_state = "red";
-	tag = "icon-red"
-	},
-/area/almayer/living/cryo_cells)
-"bFt" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/obj/item/weapon/gun/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/turf/open/floor/almayer{
 	icon_state = "red";
 	tag = "icon-red"
 	},
@@ -25979,10 +25926,6 @@
 /obj/item/explosive/grenade/HE/training,
 /obj/item/explosive/grenade/HE/training,
 /obj/item/explosive/grenade/HE/training,
-/obj/item/ammo_box/magazine/misc/flares{
-	pixel_x = -6;
-	pixel_y = 7
-	},
 /obj/structure/machinery/door_control{
 	id = "Firing_Range_2";
 	name = "range shutters";
@@ -31238,37 +31181,27 @@
 	},
 /area/almayer/hallways/port_hallway)
 "cbZ" = (
-/obj/structure/closet{
-	name = "gun locker"
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 8;
+	pixel_y = 32
 	},
-/obj/item/weapon/gun/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
+/obj/item/storage/firstaid{
+	pixel_x = -13;
+	pixel_y = 13
+	},
+/obj/item/clipboard,
+/obj/item/paper,
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
-/area/almayer/living/cryo_cells)
+/area/almayer/hull/lower_hull/l_a_s)
 "ccb" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/pump,
-/obj/item/ammo_magazine/shotgun/flechette,
-/obj/item/ammo_magazine/shotgun/flechette,
-/obj/item/ammo_magazine/shotgun/flechette,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/slugs,
+/obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer{
-	dir = 6;
+	dir = 1;
 	icon_state = "red";
-	tag = "icon-red"
+	tag = "icon-red (NORTH)"
 	},
 /area/almayer/living/cryo_cells)
 "ccc" = (
@@ -31282,25 +31215,11 @@
 	},
 /area/almayer/living/pilotbunks)
 "ccd" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/obj/item/weapon/gun/pistol/m4a3,
-/obj/item/ammo_magazine/pistol,
-/obj/item/ammo_magazine/pistol,
-/obj/item/ammo_magazine/pistol,
-/obj/item/weapon/gun/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/weapon/gun/revolver/m44,
-/obj/item/ammo_magazine/revolver,
-/obj/item/ammo_magazine/revolver,
-/obj/item/ammo_magazine/revolver,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "red";
-	tag = "icon-red (NORTHWEST)"
+	tag = "icon-red"
 	},
 /area/almayer/living/cryo_cells)
 "cce" = (
@@ -45437,7 +45356,6 @@
 /obj/item/explosive/grenade/HE/training,
 /obj/item/explosive/grenade/HE/training,
 /obj/item/explosive/grenade/HE/training,
-/obj/item/ammo_box/magazine/misc/flares,
 /obj/structure/machinery/door_control{
 	id = "Firing_Range_1";
 	name = "range shutters";
@@ -46823,26 +46741,12 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "hJb" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/obj/item/weapon/gun/pistol/m4a3,
-/obj/item/ammo_magazine/pistol,
-/obj/item/ammo_magazine/pistol,
-/obj/item/ammo_magazine/pistol,
-/obj/item/weapon/gun/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/weapon/gun/revolver/m44,
-/obj/item/ammo_magazine/revolver,
-/obj/item/ammo_magazine/revolver,
-/obj/item/ammo_magazine/revolver,
+/obj/item/tool/pen,
 /turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
-/area/almayer/living/cryo_cells)
+/area/almayer/hull/lower_hull/l_a_s)
 "hJk" = (
 /obj/structure/stairs/perspective{
 	dir = 4;
@@ -49985,17 +49889,7 @@
 	},
 /area/almayer/medical/medical_science)
 "jew" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
+/obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer{
 	icon_state = "red";
 	tag = "icon-red"
@@ -50028,17 +49922,7 @@
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "jeQ" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/obj/item/weapon/gun/rifle/m41a,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/weapon/gun/rifle/m41a,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red";
@@ -68988,6 +68872,10 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/alpha_bravo_shared)
+"rHs" = (
+/obj/item/storage/firstaid,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "rHN" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -76671,6 +76559,18 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
+"uVD" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera";
+	tag = "icon-camera (NORTH)"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "plating_striped";
+	tag = "icon-plating_striped (WEST)"
+	},
+/area/almayer/living/cryo_cells)
 "uVF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -79017,6 +78917,12 @@
 "vTK" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_p)
+"vTS" = (
+/obj/structure/machinery/light{
+	pixel_x = 16
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/cryo_cells)
 "vUb" = (
 /obj/effect/landmark/start/marine/alpha,
 /obj/effect/landmark/late_join/alpha,
@@ -81775,6 +81681,19 @@
 	tag = "icon-silver (NORTH)"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
+"wZT" = (
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/obj/item/clipboard,
+/obj/item/paper,
+/obj/item/tool/pen,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "xad" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -130184,7 +130103,7 @@ aZi
 aLG
 bbs
 bKD
-xYP
+vTS
 bbs
 ccQ
 bCN
@@ -131807,7 +131726,7 @@ aem
 mUa
 aLG
 bdB
-bdx
+ccb
 xYP
 bGn
 mlm
@@ -131825,7 +131744,7 @@ mlm
 mlm
 rXk
 xYP
-bFt
+jew
 laU
 buH
 jGN
@@ -132028,7 +131947,7 @@ dMB
 dMB
 lJu
 xYP
-hJb
+hLI
 laU
 bJz
 cbS
@@ -132049,7 +131968,7 @@ kPJ
 fXN
 fXN
 bSJ
-vuR
+rHs
 ngs
 vuR
 cAH
@@ -132416,7 +132335,7 @@ aLG
 aYO
 aLG
 bdB
-cbZ
+ccN
 xYP
 rWL
 wLm
@@ -132596,7 +132515,7 @@ aaa
 aaa
 aaa
 wVb
-tAi
+cbZ
 eFH
 eFH
 eFH
@@ -132800,7 +132719,7 @@ aaa
 aaa
 wVb
 bbv
-hlz
+hJb
 hlz
 hlz
 hlz
@@ -132826,7 +132745,7 @@ ccd
 ccN
 rWL
 dMB
-dMB
+uVD
 dMB
 dMB
 dMB
@@ -132836,7 +132755,7 @@ fsV
 dMB
 dMB
 dMB
-dMB
+uVD
 dMB
 lJu
 huK
@@ -133667,7 +133586,7 @@ cAH
 cAH
 vuR
 cAH
-ydx
+wZT
 vTK
 aaa
 aaa

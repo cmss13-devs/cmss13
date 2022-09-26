@@ -17569,11 +17569,17 @@
 	},
 /area/almayer/squads/alpha)
 "bdw" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/rifle/m41a,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
+/obj/structure/closet{
+	name = "gun locker"
+	},
+/obj/item/weapon/gun/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/weapon/gun/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
@@ -17581,15 +17587,21 @@
 	},
 /area/almayer/living/cryo_cells)
 "bdx" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
+/obj/structure/closet{
+	name = "gun locker"
+	},
+/obj/item/weapon/gun/rifle/m41a,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/weapon/gun/rifle/m41a,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
 /turf/open/floor/almayer{
-	dir = 1;
+	dir = 8;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
+	tag = "icon-red"
 	},
 /area/almayer/living/cryo_cells)
 "bdy" = (
@@ -17620,6 +17632,10 @@
 "bdB" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "Firing_Range_2";
+	name = "range shutters"
+	},
 /turf/open/floor/plating,
 /area/almayer/living/cryo_cells)
 "bdC" = (
@@ -18097,15 +18113,10 @@
 	},
 /area/almayer/squads/alpha_bravo_shared)
 "bfo" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/rifle/m41a,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red";
-	tag = "icon-red"
+	dir = 1;
+	icon_state = "redcorner";
+	tag = "icon-redcorner (NORTH)"
 	},
 /area/almayer/living/cryo_cells)
 "bfs" = (
@@ -18717,18 +18728,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/starboard_umbilical)
-"bhi" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4;
-	tag = "icon-pipe-t (EAST)"
-	},
-/obj/structure/machinery/disposal,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "red";
-	tag = "icon-red (NORTHWEST)"
-	},
-/area/almayer/living/cryo_cells)
 "bhn" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -19640,6 +19639,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/offices)
+"blq" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	dir = 2;
+	name = "Firing Range";
+	req_access = null;
+	req_one_access_txt = "2;4;7;9;21"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/cryo_cells)
 "bls" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -20840,7 +20851,6 @@
 	},
 /area/almayer/hallways/starboard_umbilical)
 "bpV" = (
-/obj/effect/landmark/start/marine,
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
@@ -21426,11 +21436,15 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "bsG" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
+/obj/structure/machinery/disposal{
+	density = 0;
+	layer = 3.2;
+	pixel_y = 16
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4;
+	tag = "icon-pipe-t (EAST)"
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "redcorner";
@@ -24147,7 +24161,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "bCG" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "bCH" = (
@@ -24189,7 +24206,15 @@
 	},
 /area/almayer/living/cryo_cells)
 "bCO" = (
-/turf/open/floor/almayer,
+/obj/structure/machinery/light{
+	dir = 1;
+	pixel_y = 8;
+	tag = "icon-tube1 (NORTH)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/living/cryo_cells)
 "bCP" = (
 /obj/structure/bed/chair{
@@ -24538,15 +24563,10 @@
 	},
 /area/almayer/squads/req)
 "bEd" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "redcorner";
+	tag = "icon-redcorner (WEST)"
 	},
 /area/almayer/living/cryo_cells)
 "bEg" = (
@@ -25005,22 +25025,33 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
 "bFs" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/closet{
+	name = "gun locker"
+	},
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/weapon/gun/shotgun/pump,
+/obj/item/ammo_magazine/shotgun/flechette,
+/obj/item/ammo_magazine/shotgun/flechette,
+/obj/item/ammo_magazine/shotgun/flechette,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "red";
-	tag = "icon-red (NORTHWEST)"
+	tag = "icon-red"
 	},
 /area/almayer/living/cryo_cells)
 "bFt" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/structure/closet{
+	name = "gun locker"
+	},
+/obj/item/weapon/gun/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
 /turf/open/floor/almayer{
 	icon_state = "red";
 	tag = "icon-red"
@@ -25192,12 +25223,10 @@
 	},
 /area/almayer/hallways/port_hallway)
 "bGn" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
+/obj/structure/barricade/plasteel/metal,
 /turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/living/cryo_cells)
 "bGo" = (
@@ -25946,17 +25975,32 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "bJe" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+/obj/structure/surface/table/reinforced/black,
+/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/HE/training,
+/obj/item/ammo_box/magazine/misc/flares{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/structure/machinery/door_control{
+	id = "Firing_Range_2";
+	name = "range shutters";
+	pixel_x = 9;
+	pixel_y = 10
 	},
 /turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/living/cryo_cells)
 "bJf" = (
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "Firing_Range_2";
+	name = "range shutters"
+	},
 /turf/open/floor/plating,
 /area/almayer/living/cryo_cells)
 "bJg" = (
@@ -26397,10 +26441,16 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo)
 "bKD" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer{
+	density = 0;
+	pixel_y = 16
+	},
+/obj/structure/window{
+	dir = 4
+	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/living/cryo_cells)
 "bKE" = (
@@ -28533,6 +28583,7 @@
 "bSk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
+	pixel_y = 1;
 	tag = "icon-NE-out"
 	},
 /turf/open/floor/almayer{
@@ -28543,6 +28594,7 @@
 "bSl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
+	pixel_y = 1;
 	tag = "icon-N"
 	},
 /turf/open/floor/almayer{
@@ -28553,6 +28605,7 @@
 "bSm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
+	pixel_y = 1;
 	tag = "icon-NW-out"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -30876,7 +30929,7 @@
 	},
 /area/almayer/medical/containment/cell)
 "cbh" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer{
+/obj/structure/machinery/cm_vending/clothing/pilot_officer{
 	density = 0;
 	pixel_y = 16
 	},
@@ -31029,6 +31082,7 @@
 "cbG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
+	pixel_y = 1;
 	tag = "icon-N"
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -31037,6 +31091,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
+	pixel_y = 1;
 	tag = "icon-N"
 	},
 /turf/open/floor/almayer{
@@ -31183,21 +31238,37 @@
 	},
 /area/almayer/hallways/port_hallway)
 "cbZ" = (
+/obj/structure/closet{
+	name = "gun locker"
+	},
+/obj/item/weapon/gun/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "redcorner";
-	tag = "icon-redcorner (EAST)"
+	icon_state = "red";
+	tag = "icon-red"
 	},
 /area/almayer/living/cryo_cells)
 "ccb" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/structure/closet{
+	name = "gun locker"
+	},
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/weapon/gun/shotgun/pump,
+/obj/item/ammo_magazine/shotgun/flechette,
+/obj/item/ammo_magazine/shotgun/flechette,
+/obj/item/ammo_magazine/shotgun/flechette,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor/almayer{
-	dir = 1;
+	dir = 6;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
+	tag = "icon-red"
 	},
 /area/almayer/living/cryo_cells)
 "ccc" = (
@@ -31211,11 +31282,21 @@
 	},
 /area/almayer/living/pilotbunks)
 "ccd" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/shotgun/pump,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/structure/closet{
+	name = "gun locker"
+	},
+/obj/item/weapon/gun/pistol/m4a3,
+/obj/item/ammo_magazine/pistol,
+/obj/item/ammo_magazine/pistol,
+/obj/item/ammo_magazine/pistol,
+/obj/item/weapon/gun/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/weapon/gun/revolver/m44,
+/obj/item/ammo_magazine/revolver,
+/obj/item/ammo_magazine/revolver,
+/obj/item/ammo_magazine/revolver,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "red";
@@ -31486,15 +31567,10 @@
 	},
 /area/almayer/hallways/repair_bay)
 "ccN" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "redcorner";
+	tag = "icon-redcorner (EAST)"
 	},
 /area/almayer/living/cryo_cells)
 "ccO" = (
@@ -31507,16 +31583,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/port_hallway)
-"ccP" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "red";
-	tag = "icon-red"
-	},
-/area/almayer/living/cryo_cells)
 "ccQ" = (
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /obj/effect/landmark/late_join,
@@ -31687,15 +31753,14 @@
 	},
 /area/almayer/living/cryo_cells)
 "cdp" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/pistol/m4a3,
-/obj/item/ammo_magazine/pistol,
-/obj/item/ammo_magazine/pistol,
-/obj/item/ammo_magazine/pistol,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "Firing_Range_2";
+	name = "range shutters"
 	},
+/turf/open/floor/plating,
 /area/almayer/living/cryo_cells)
 "cdr" = (
 /obj/structure/machinery/light/small{
@@ -32230,15 +32295,7 @@
 	},
 /area/almayer/squads/charlie)
 "cgE" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/revolver/m44,
-/obj/item/ammo_magazine/revolver,
-/obj/item/ammo_magazine/revolver,
-/obj/item/ammo_magazine/revolver,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
-	},
+/turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "cgG" = (
 /obj/structure/surface/table/almayer,
@@ -37703,11 +37760,13 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "dNt" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "Firing_Range_1";
+	name = "range shutters"
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating,
 /area/almayer/living/cryo_cells)
 "dNx" = (
 /obj/structure/pipes/vents/pump,
@@ -40520,6 +40579,17 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/chemistry)
+"eUz" = (
+/obj/structure/machinery/disposal{
+	density = 0;
+	layer = 3.2;
+	pixel_y = 16
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/port_hallway)
 "eUA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -40930,6 +41000,11 @@
 /area/almayer/living/basketball)
 "fcF" = (
 /obj/structure/surface/rack,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera";
+	tag = "icon-camera (EAST)"
+	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_s)
 "fcG" = (
@@ -42355,8 +42430,14 @@
 	},
 /area/almayer/living/pilotbunks)
 "fJO" = (
-/obj/structure/machinery/light,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "Firing_Range_1";
+	name = "range shutters"
+	},
+/turf/open/floor/plating,
 /area/almayer/living/cryo_cells)
 "fJT" = (
 /obj/structure/surface/rack,
@@ -42470,6 +42551,7 @@
 "fLX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
+	pixel_y = 1;
 	tag = "icon-N"
 	},
 /obj/structure/sign/safety/life_support{
@@ -42685,9 +42767,12 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "fRN" = (
+/obj/structure/machinery/light{
+	pixel_y = -1
+	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/living/cryo_cells)
 "fSl" = (
@@ -43554,6 +43639,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
+"glU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/port_hallway)
 "gmj" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/almayer{
@@ -43980,6 +44072,13 @@
 	pill_type_to_fill = null;
 	pixel_y = 14
 	},
+/obj/structure/machinery/door_control{
+	id = "Delta_1";
+	name = "Door Lock";
+	normaldoorcontrol = 1;
+	pixel_x = 23;
+	specialfunctions = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
 "gwR" = (
@@ -44211,16 +44310,6 @@
 	tag = "icon-green"
 	},
 /area/almayer/living/grunt_rnr)
-"gzY" = (
-/obj/structure/closet{
-	name = "gun locker"
-	},
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "red";
-	tag = "icon-red"
-	},
-/area/almayer/living/cryo_cells)
 "gAd" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -44705,6 +44794,20 @@
 	tag = "icon-red (NORTHEAST)"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"gLZ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	id = "Delta_2";
+	name = "\improper Bathroom"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/port_emb)
 "gMa" = (
 /obj/structure/sign/safety/escapepod{
 	pixel_y = -32
@@ -45330,14 +45433,20 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/vehiclehangar)
 "hcw" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+/obj/structure/surface/table/reinforced/black,
+/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/HE/training,
+/obj/item/ammo_box/magazine/misc/flares,
+/obj/structure/machinery/door_control{
+	id = "Firing_Range_1";
+	name = "range shutters";
+	pixel_x = 9;
+	pixel_y = 10
 	},
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red";
-	tag = "icon-red (NORTH)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/living/cryo_cells)
 "hcI" = (
@@ -45658,17 +45767,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
-"hje" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/structure/machinery/disposal,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "red";
-	tag = "icon-red (NORTHWEST)"
-	},
-/area/almayer/living/cryo_cells)
 "hji" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -46071,15 +46169,9 @@
 	},
 /area/almayer/living/tankerbunks)
 "huK" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "redcorner";
+	tag = "icon-redcorner"
 	},
 /area/almayer/living/cryo_cells)
 "huX" = (
@@ -46731,10 +46823,24 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "hJb" = (
+/obj/structure/closet{
+	name = "gun locker"
+	},
+/obj/item/weapon/gun/pistol/m4a3,
+/obj/item/ammo_magazine/pistol,
+/obj/item/ammo_magazine/pistol,
+/obj/item/ammo_magazine/pistol,
+/obj/item/weapon/gun/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/weapon/gun/revolver/m44,
+/obj/item/ammo_magazine/revolver,
+/obj/item/ammo_magazine/revolver,
+/obj/item/ammo_magazine/revolver,
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "redcorner";
-	tag = "icon-redcorner (WEST)"
+	icon_state = "red";
+	tag = "icon-red"
 	},
 /area/almayer/living/cryo_cells)
 "hJk" = (
@@ -46808,14 +46914,9 @@
 	},
 /area/almayer/living/grunt_rnr)
 "hLI" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/rifle/m41a,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
 /turf/open/floor/almayer{
-	icon_state = "redcorner";
-	tag = "icon-redcorner"
+	icon_state = "red";
+	tag = "icon-red"
 	},
 /area/almayer/living/cryo_cells)
 "hMi" = (
@@ -48781,6 +48882,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
+	id = "Delta_1";
 	name = "\improper Bathroom"
 	},
 /turf/open/floor/almayer{
@@ -49883,11 +49985,17 @@
 	},
 /area/almayer/medical/medical_science)
 "jew" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/rifle/m41a,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
+/obj/structure/closet{
+	name = "gun locker"
+	},
+/obj/item/weapon/gun/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/weapon/gun/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
 /turf/open/floor/almayer{
 	icon_state = "red";
 	tag = "icon-red"
@@ -49920,15 +50028,21 @@
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "jeQ" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
-/obj/item/ammo_magazine/rifle/l42a,
+/obj/structure/closet{
+	name = "gun locker"
+	},
+/obj/item/weapon/gun/rifle/m41a,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/weapon/gun/rifle/m41a,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red";
-	tag = "icon-red"
+	tag = "icon-red (SOUTHEAST)"
 	},
 /area/almayer/living/cryo_cells)
 "jeU" = (
@@ -54059,15 +54173,13 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "laU" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "Firing_Range_1";
+	name = "range shutters"
 	},
+/turf/open/floor/plating,
 /area/almayer/living/cryo_cells)
 "laV" = (
 /obj/structure/window/framed/almayer,
@@ -54546,13 +54658,22 @@
 	},
 /area/almayer/medical/containment)
 "lmW" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera";
-	tag = "icon-camera (EAST)"
+/obj/structure/pipes/vents/pump,
+/obj/structure/mirror{
+	pixel_y = 32
+	},
+/obj/structure/sink{
+	pixel_y = 24
+	},
+/obj/structure/machinery/door_control{
+	id = "Alpha_2";
+	name = "Door Lock";
+	normaldoorcontrol = 1;
+	pixel_x = 23;
+	specialfunctions = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/hull/upper_hull/u_f_s)
+/area/almayer/living/port_emb)
 "lnm" = (
 /turf/open/floor/almayer{
 	icon_state = "orangecorner";
@@ -55076,6 +55197,13 @@
 	layer = 2.9;
 	pixel_x = -6;
 	pixel_y = 11
+	},
+/obj/structure/machinery/door_control{
+	id = "Delta_2";
+	name = "Door Lock";
+	normaldoorcontrol = 1;
+	pixel_x = 23;
+	specialfunctions = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
@@ -55765,13 +55893,12 @@
 	},
 /area/almayer/hull/upper_hull/u_m_p)
 "lJu" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/barricade/metal{
+	dir = 1
 	},
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red";
-	tag = "icon-red (NORTH)"
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/living/cryo_cells)
 "lJv" = (
@@ -59461,17 +59588,19 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
 "ntx" = (
-/obj/structure/machinery/space_heater,
-/obj/item/ashtray/glass{
-	pixel_x = 3;
-	pixel_y = 6
+/obj/structure/machinery/door/airlock/almayer/generic{
+	id = "Alpha_2";
+	name = "\improper Bathroom"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "green";
-	tag = "icon-green (WEST)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
-/area/almayer/living/grunt_rnr)
+/area/almayer/living/port_emb)
 "ntA" = (
 /obj/structure/machinery/light/small,
 /obj/effect/decal/warning_stripes{
@@ -60352,6 +60481,13 @@
 /obj/structure/sink{
 	pixel_y = 24
 	},
+/obj/structure/machinery/door_control{
+	id = "Alpha_1";
+	name = "Door Lock";
+	normaldoorcontrol = 1;
+	pixel_x = 23;
+	specialfunctions = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
 "nNV" = (
@@ -60813,6 +60949,11 @@
 /obj/structure/machinery/status_display{
 	pixel_x = 32
 	},
+/obj/structure/machinery/space_heater,
+/obj/item/ashtray/glass{
+	pixel_x = 3;
+	pixel_y = 6
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "green";
@@ -61053,17 +61194,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/toy/deck{
-	pixel_x = -9
-	},
-/obj/item/spacecash/c10{
-	pixel_x = 5;
-	pixel_y = 7
-	},
-/obj/item/spacecash/c10{
-	pixel_x = 6
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -66113,6 +66243,7 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "qxC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
+	id = "Alpha_1";
 	name = "\improper Bathroom"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -69506,9 +69637,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
 "rWL" = (
+/obj/structure/barricade/metal,
 /turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/living/cryo_cells)
 "rWT" = (
@@ -69537,10 +69669,12 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/delta)
 "rXk" = (
+/obj/structure/barricade/plasteel/metal{
+	dir = 1
+	},
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red";
-	tag = "icon-red (NORTH)"
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/living/cryo_cells)
 "rXv" = (
@@ -81789,8 +81923,16 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/bed/chair{
-	dir = 8
+/obj/structure/surface/table/almayer,
+/obj/item/spacecash/c10{
+	pixel_x = 6
+	},
+/obj/item/spacecash/c10{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/toy/deck{
+	pixel_x = -9
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
@@ -84294,7 +84436,10 @@
 	},
 /area/almayer/lifeboat_pumps/north2)
 "ydM" = (
-/obj/structure/machinery/cm_vending/clothing/vehicle_crew{
+/obj/structure/window{
+	dir = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/vehicle_crew{
 	density = 0;
 	pixel_y = 16
 	},
@@ -101714,7 +101859,7 @@ jvJ
 aex
 akC
 fcF
-lmW
+avl
 lFb
 avl
 age
@@ -117885,7 +118030,7 @@ bJt
 wbC
 lHu
 oiL
-ntx
+loY
 wXI
 nUd
 lkd
@@ -119677,7 +119822,7 @@ nNT
 fBA
 fSF
 nsY
-nNT
+lmW
 mtS
 iKa
 nsY
@@ -119881,7 +120026,7 @@ qxC
 nsY
 nsY
 nsY
-qxC
+ntx
 nsY
 nsY
 aLG
@@ -119917,7 +120062,7 @@ iFM
 nsY
 nsY
 nsY
-iFM
+gLZ
 nsY
 nsY
 hTf
@@ -130038,7 +130183,7 @@ aLG
 aZi
 aLG
 bbs
-cbh
+bKD
 xYP
 bbs
 ccQ
@@ -130444,7 +130589,7 @@ aLG
 aZi
 aLG
 bbs
-ydM
+cbh
 xYP
 bbs
 cdm
@@ -131256,25 +131401,25 @@ kEb
 aZi
 bad
 bbs
-bdB
-bdB
-bdB
-bdB
+cdp
+cdp
+cdp
+cdp
 bbs
 bJf
 bJf
 bJf
 bJf
 bbs
-bJf
-bJf
-bJf
-bJf
+dNt
+dNt
+dNt
+dNt
 bbs
-bdB
-bdB
-bdB
-bdB
+fJO
+fJO
+fJO
+fJO
 bbs
 nmD
 bHc
@@ -131461,9 +131606,9 @@ aLG
 bbs
 bdw
 bfo
-bhi
-fRN
-cdp
+rWL
+wLm
+wLm
 wLm
 wLm
 wLm
@@ -131473,9 +131618,9 @@ bSa
 wLm
 wLm
 wLm
-cdp
-fRN
-gzY
+wLm
+wLm
+lJu
 bEd
 bFs
 bbs
@@ -131665,8 +131810,8 @@ bdB
 bdx
 xYP
 bGn
-fRN
-laU
+mlm
+mlm
 mlm
 bxn
 mlm
@@ -131676,12 +131821,12 @@ mlm
 mlm
 bxn
 mlm
-laU
-fRN
+mlm
+mlm
 rXk
 xYP
 bFt
-bdB
+laU
 buH
 jGN
 bJb
@@ -131867,9 +132012,9 @@ beB
 bdB
 bsG
 xYP
-bGn
-fRN
-cgE
+rWL
+dMB
+dMB
 dMB
 dMB
 dMB
@@ -131879,12 +132024,12 @@ fsV
 dMB
 dMB
 dMB
-cgE
-fRN
-rXk
+dMB
+dMB
+lJu
 xYP
 hJb
-bdB
+laU
 bJz
 cbS
 bHW
@@ -132069,26 +132214,26 @@ bSY
 aWR
 cau
 bCG
-bCG
+cgE
 bJe
 bCO
-bbs
-dNt
+xYP
+xYP
+xYP
+xYP
 jmK
-xYP
-xYP
 xba
-xYP
-xYP
 jmK
-fJO
-bbs
-bCO
+xYP
+xYP
+xYP
+xYP
+fRN
 hcw
-bCG
-bCG
-cau
-buJ
+cgE
+hLI
+blq
+glU
 jHe
 jIV
 bJC
@@ -132274,8 +132419,8 @@ bdB
 cbZ
 xYP
 rWL
-fRN
-bKD
+wLm
+wLm
 wLm
 wLm
 wLm
@@ -132285,13 +132430,13 @@ bSa
 wLm
 wLm
 wLm
-bKD
-fRN
+wLm
+wLm
 lJu
 xYP
 hLI
-bdB
-buH
+laU
+eUz
 bHc
 bIT
 bJC
@@ -132476,9 +132621,9 @@ aLG
 bdB
 ccb
 xYP
-rWL
-fRN
-bKD
+bGn
+mlm
+mlm
 mlm
 bxn
 mlm
@@ -132488,12 +132633,12 @@ mlm
 mlm
 bxn
 mlm
-bKD
-fRN
-lJu
+mlm
+mlm
+rXk
 xYP
 jew
-bdB
+laU
 buH
 bHc
 bIT
@@ -132679,9 +132824,9 @@ aLG
 bbs
 ccd
 ccN
-ccP
-fRN
-bKD
+rWL
+dMB
+dMB
 dMB
 dMB
 dMB
@@ -132691,9 +132836,9 @@ fsV
 dMB
 dMB
 dMB
-bKD
-fRN
-hje
+dMB
+dMB
+lJu
 huK
 jeQ
 bbs
@@ -132880,25 +133025,25 @@ beB
 aYT
 beB
 bbs
-bdB
-bdB
-bdB
-bdB
+cdp
+cdp
+cdp
+cdp
 bbs
 bJf
 bJf
 bJf
 bJf
 bbs
-bJf
-bJf
-bJf
-bJf
+dNt
+dNt
+dNt
+dNt
 bbs
-bdB
-bdB
-bdB
-bdB
+fJO
+fJO
+fJO
+fJO
 bbs
 bJz
 cbS

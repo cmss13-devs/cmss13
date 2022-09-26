@@ -81,61 +81,58 @@ FORENSIC SCANNER
 	throw_range = 10
 	matter = list("metal" = 200)
 
-	var/mode = 1
-	var/hud_mode = 1
+	var/popup_window = TRUE
 	var/last_scan
+	var/mob/living/last_mob
 	var/alien = FALSE
 
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
-	last_scan = M.health_scan(user, FALSE, mode, hud_mode, alien)
+	if(!popup_window)
+		last_scan = M.health_scan(user, FALSE, TRUE, popup_window, alien)
+	else
+		M.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
+		last_scan = M.health_display.ui_static_data(user, data_detail_level = DETAIL_LEVEL_HEALTHANALYSER)
+		last_mob = M
+	to_chat(user, SPAN_NOTICE("[user] has analyzed [M]'s vitals."))
+	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
 	src.add_fingerprint(user)
 	return
 
 /obj/item/device/healthanalyzer/attack_self(mob/user)
 	..()
 
-	if (!last_scan)
+	if(!last_scan)
 		user.show_message("No previous scan found.")
 		return
 
-	switch (hud_mode)
-		if (1)
-			var/dat = last_scan
-			dat = replacetext(dat, "\n", "<br>")
-			dat = replacetext(dat, "\t", "&emsp;")
-			dat = replacetext(dat, "class='warning'", "class='[INTERFACE_RED]'")
-			dat = replacetext(dat, "class='scanner'", "class='[INTERFACE_RED]'")
-			dat = replacetext(dat, "class='scannerb'", "style='font-weight: bold;' class='[INTERFACE_RED]'")
-			dat = replacetext(dat, "class='scannerburn'", "class='[INTERFACE_ORANGE]'")
-			dat = replacetext(dat, "class='scannerburnb'", "style='font-weight: bold;' class='[INTERFACE_ORANGE]'")
-			show_browser(user, dat, name, "handscanner", "size=500x400")
-		if (0)
-			user.show_message(last_scan)
+	if(popup_window)
+		tgui_interact(user)
+	else
+		user.show_message(last_scan)
 
 	return
 
+/obj/item/device/healthanalyzer/tgui_interact(mob/user, datum/tgui/ui)
+	if(!last_scan)
+		return
 
-/obj/item/device/healthanalyzer/verb/toggle_mode()
-	set name = "Switch Verbosity"
-	set category = "Object"
-	set src in usr
-	mode = !mode
-	switch (mode)
-		if(1)
-			to_chat(usr, "The scanner now shows specific limb damage.")
-		if(0)
-			to_chat(usr, "The scanner no longer shows limb damage.")
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "HealthScan", "[last_mob.name]'s health scan")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
+
+/obj/item/device/healthanalyzer/ui_static_data(mob/user)
+	return last_scan
 
 /obj/item/device/healthanalyzer/verb/toggle_hud_mode()
-	set name = "Switch Hud"
+	set name = "Switch Hud Mode"
 	set category = "Object"
 	set src in usr
-	hud_mode = !hud_mode
-	switch (hud_mode)
-		if(1)
-			to_chat(usr, "The scanner now shows results on the hud.")
-		if(0)
-			to_chat(usr, "The scanner no longer shows results on the hud.")
+	popup_window = !popup_window
+	last_scan = null // reset the data
+	to_chat(usr, "The scanner [popup_window ? "now" : "no longer"] shows results on the hud.")
 
 /obj/item/device/healthanalyzer/alien
 	name = "\improper YMX scanner"

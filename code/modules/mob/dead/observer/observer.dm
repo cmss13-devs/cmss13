@@ -469,7 +469,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(!istype(target))
 		return
-	target.health_scan(src, do_checks = FALSE)
+	if(!target.health_display)
+		target.create_health_display()
+
+	target.health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE)
 
 /mob/dead/observer/verb/follow_local(var/mob/target)
 	set category = "Ghost.Follow"

@@ -35585,6 +35585,7 @@
 "cWr" = (
 /obj/structure/machinery/photocopier{
 	density = 0;
+	layer = 2.9;
 	pixel_x = -3;
 	pixel_y = 16
 	},

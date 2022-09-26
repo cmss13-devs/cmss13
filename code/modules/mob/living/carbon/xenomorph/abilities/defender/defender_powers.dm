@@ -398,7 +398,7 @@
 	if (!isXenoOrHuman(A) || X.can_not_harm(A))
 		return
 
-	if (!X.check_state() || X.agility)
+	if (!X.check_state())
 		return
 
 	if (!X.Adjacent(A))

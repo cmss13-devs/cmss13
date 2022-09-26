@@ -352,7 +352,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	var/occupant_ref = WEAKREF(occupant)
 	//Delete them from datacore.
-	for(var/datum/data/record/R in GLOB.data_core.medical)
+	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 		if((R.fields["ref"] == occupant_ref))
 			GLOB.data_core.medical -= R
 			qdel(R)

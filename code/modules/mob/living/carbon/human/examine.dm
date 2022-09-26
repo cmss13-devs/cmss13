@@ -461,7 +461,7 @@
 		// scan reports
 		var/datum/data/record/N = null
 		var/me_ref = WEAKREF(src)
-		for(var/datum/data/record/R in GLOB.data_core.medical)
+		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 			if (R.fields["ref"] == me_ref)
 				N = R
 				break

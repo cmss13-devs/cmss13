@@ -401,3 +401,11 @@
       will appear from the eye itself
   - bugfix: fixed broken static comms areas on kutjevo
   - bugfix: tgui input real number now supports decimals
+2022-09-26:
+  stanalbatross:
+  - ui: the limb printer now uses tgui
+  - ui: the signaller tgui now uses sliders rather than knobs
+  - rscadd: gave the limb printer some love. It now has a unique sprite when printing,
+      can eject metal, has a max metal limit of 500, and starts with 125 metal instead
+      of 1000. It can no longer accept meat (was not used for anything) and its backend
+      code is much better now.

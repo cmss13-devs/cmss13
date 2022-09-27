@@ -279,7 +279,7 @@
 	// Do I want to remove the feature from medical records computers? no
 	// and so here we are.
 	N.fields["last_scan_result"] = dat
-	N.fields["last_tgui_scan_result"] = H.health_display.ui_static_data(user, data_detail_level = DETAIL_LEVEL_BODYSCAN)
+	N.fields["last_tgui_scan_result"] = H.health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_BODYSCAN)
 	N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
 	visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [H.real_name]"))
 	playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)

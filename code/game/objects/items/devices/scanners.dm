@@ -91,7 +91,7 @@ FORENSIC SCANNER
 		last_scan = M.health_scan(user, FALSE, TRUE, popup_window, alien)
 	else
 		M.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
-		last_scan = M.health_display.ui_static_data(user, data_detail_level = DETAIL_LEVEL_HEALTHANALYSER)
+		last_scan = M.health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_HEALTHANALYSER)
 		last_mob = M
 	to_chat(user, SPAN_NOTICE("[user] has analyzed [M]'s vitals."))
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
@@ -123,7 +123,7 @@ FORENSIC SCANNER
 		ui.set_autoupdate(FALSE)
 
 
-/obj/item/device/healthanalyzer/ui_static_data(mob/user)
+/obj/item/device/healthanalyzer/ui_data(mob/user)
 	return last_scan
 
 /obj/item/device/healthanalyzer/verb/toggle_hud_mode()

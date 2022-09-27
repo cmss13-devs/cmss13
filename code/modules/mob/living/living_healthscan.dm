@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		ui.set_autoupdate(FALSE)
 
 
-/datum/health_scan/ui_static_data(mob/user, var/data_detail_level = null)
+/datum/health_scan/ui_data(mob/user, var/data_detail_level = null)
 	var/list/data = list(
 		"patient" = target_mob.name,
 		"dead" = target_mob.stat == DEAD,

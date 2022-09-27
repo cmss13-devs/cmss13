@@ -410,5 +410,7 @@
       of 1000. It can no longer accept meat (was not used for anything) and its backend
       code is much better now.
 2022-09-27:
+  Segrain:
+  - bugfix: APCs should no longer spawn in doubles.
   Shad0vvs:
   - bugfix: Fixes the health scanner not updating windows properly.

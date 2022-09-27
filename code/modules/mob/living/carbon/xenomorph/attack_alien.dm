@@ -161,7 +161,7 @@
 
 			apply_damage(f_damage, BRUTE, affecting, sharp = 1, edge = 1) //This should slicey dicey
 			if(acid_damage)
-				playsound(loc, "acid_hit", 25, 1)
+				playsound(loc, "acid_strike", 25, 1)
 				var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
 				var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, acid_damage, armor_block_acid)
 				//nice messages so people know that armor works
@@ -282,7 +282,7 @@
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
-	if(stat != DEAD || chestburst || spawned_corpse)
+	if(stat != DEAD || chestburst)
 		return TRUE
 
 	if(status_flags & XENO_HOST)
@@ -508,7 +508,7 @@
 /obj/structure/machinery/door/airlock/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/turf/cur_loc = M.loc
 	if(isElectrified())
-		if(shock(M, 70))
+		if(shock(M, 100))
 			return XENO_NO_DELAY_ACTION
 
 	if(!density)
@@ -552,10 +552,10 @@
 
 	if(!arePowerSystemsOn())
 		delay = 1 SECONDS
-		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, SOUND_FREQ_HIGH * 1.8)
+		playsound(loc, "alien_doorpry", 25, TRUE)
 	else
 		delay = 4 SECONDS
-		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
+		playsound(loc, "alien_doorpry", 25, TRUE)
 
 	M.visible_message(SPAN_WARNING("[M] digs into [src] and begins to pry it open."), \
 	SPAN_WARNING("You dig into [src] and begin to pry it open."), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -843,7 +843,7 @@
 	M.visible_message("[M] slashes away at [src]!","You slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
 	health  = max(health - rand(M.melee_damage_lower, M.melee_damage_upper), 0)
 	if(!health)
-		playsound(src, "shatter", 70, 1)
+		playsound(src, "glassbreak", 70, 1)
 		damaged = TRUE
 		if(is_lit)
 			SetLuminosity(0)

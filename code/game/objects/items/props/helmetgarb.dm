@@ -300,8 +300,8 @@
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/update_sight)
 
 	user.add_client_color_matrix("nvg", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#7aff7a")))
-	user.overlay_fullscreen("nvg", /obj/screen/fullscreen/flash/noise/nvg)
-	user.overlay_fullscreen("nvg_blur", /obj/screen/fullscreen/brute/nvg, 3)
+	user.overlay_fullscreen("nvg", /atom/movable/screen/fullscreen/flash/noise/nvg)
+	user.overlay_fullscreen("nvg_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
 	playsound(user, 'sound/handling/toggle_nv1.ogg', 25)
 	nightvision = TRUE
 	user.update_sight()

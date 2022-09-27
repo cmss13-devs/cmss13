@@ -58,3 +58,6 @@ GLOBAL_LIST_EMPTY_TYPED(objective_landmarks_close, /obj/effect/landmark/objectiv
 GLOBAL_LIST_EMPTY_TYPED(objective_landmarks_medium, /obj/effect/landmark/objective_landmark/medium)
 GLOBAL_LIST_EMPTY_TYPED(objective_landmarks_far, /obj/effect/landmark/objective_landmark/far)
 GLOBAL_LIST_EMPTY_TYPED(objective_landmarks_science, /obj/effect/landmark/objective_landmark/science)
+
+GLOBAL_LIST_EMPTY(comm_tower_landmarks_net_one)
+GLOBAL_LIST_EMPTY(comm_tower_landmarks_net_two)

@@ -28,7 +28,7 @@
 		return
 	// No clicking on atoms with the NOINTERACT flag
 	if ((A.flags_atom & NOINTERACT))
-		if (istype(A, /obj/screen/click_catcher))
+		if (istype(A, /atom/movable/screen/click_catcher))
 			var/list/mods = params2list(params)
 			var/turf/TU = params2turf(mods["screen-loc"], get_turf(client.eye), client)
 			if (TU)
@@ -67,7 +67,7 @@
 		client.buildmode.object_click(src, mods, A)
 		return
 
-	if(istype(A, /obj/effect/statclick))
+	if(istype(A, /obj/statclick))
 		A.clicked(src, mods)
 		return
 
@@ -88,12 +88,12 @@
 		return
 
 	// Throwing stuff, can't throw on inventory items nor screen objects nor items inside storages.
-	if (throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /obj/screen))
+	if (throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /atom/movable/screen))
 		throw_item(A)
 		return
 
 	// Last thing clicked is tracked for something somewhere.
-	if(!isgun(A) && !isturf(A) && !istype(A,/obj/screen))
+	if(!isgun(A) && !isturf(A) && !istype(A,/atom/movable/screen))
 		last_target_click = world.time
 
 	var/obj/item/W = get_active_hand()
@@ -274,7 +274,7 @@
 // click catcher stuff
 
 
-/obj/screen/click_catcher
+/atom/movable/screen/click_catcher
 	icon = 'icons/mob/hud/screen1.dmi'
 	icon_state = "catcher"
 	layer = 0
@@ -284,7 +284,7 @@
 	flags_atom = NOINTERACT
 
 
-/obj/screen/click_catcher/proc/UpdateGreed(view_size_x = 15, view_size_y = 15)
+/atom/movable/screen/click_catcher/proc/UpdateGreed(view_size_x = 15, view_size_y = 15)
 	var/icon/newicon = icon('icons/mob/hud/screen1.dmi', "catcher")
 	var/ox = min((33 * 32)/ world.icon_size, view_size_x)
 	var/oy = min((33 * 32)/ world.icon_size, view_size_y)

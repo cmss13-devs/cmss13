@@ -62,6 +62,8 @@
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
+	if(!istype(X))
+		return FALSE
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
@@ -133,29 +135,37 @@
 /datum/action/xeno_action/activable/action_activate()
 	if(!owner)
 		return
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(X.selected_ability == src)
-		to_chat(X, "You will no longer use [ability_name] with \
-			[X.client && X.client.prefs && X.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+	if(hidden)
+		return // There's no where we want a hidden action to be selectable right?
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.selected_ability == src)
+		if(xeno.deselect_timer > world.time)
+			return // We clicked the same ability in a very short time
+		to_chat(xeno, "You will no longer use [ability_name] with \
+			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
 		button.icon_state = "template"
-		X.selected_ability = null
+		xeno.selected_ability = null
 	else
-		to_chat(X, "You will now use [ability_name] with \
-			[X.client && X.client.prefs && X.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
-		if(X.selected_ability)
-			X.selected_ability.button.icon_state = "template"
-			X.selected_ability = null
+		to_chat(xeno, "You will now use [ability_name] with \
+			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		if(xeno.selected_ability)
+			xeno.selected_ability.action_deselect()
 		button.icon_state = "template_on"
-		X.selected_ability = src
+		xeno.selected_ability = src
+		xeno.deselect_timer = world.time + 5 // Half a second
 		if(charges != NO_ACTION_CHARGES)
-			to_chat(X, SPAN_INFO("It has [charges] uses left."))
+			to_chat(xeno, SPAN_INFO("It has [charges] uses left."))
 
-/datum/action/xeno_action/activable/remove_from(mob/living/carbon/Xenomorph/X)
+// Called when a different action is clicked on and this one is deselected.
+/datum/action/xeno_action/activable/proc/action_deselect()
+	button.icon_state = "template"
+
+/datum/action/xeno_action/remove_from(mob/living/carbon/Xenomorph/xeno)
 	..()
-	if(X.selected_ability == src)
-		X.selected_ability = null
+	if(xeno.selected_ability == src)
+		xeno.selected_ability = null
 	if(macro_path)
-		remove_verb(X, macro_path)
+		remove_verb(xeno, macro_path)
 
 
 // 'Onclick' actions - the bulk of the ability's work is done when the button is clicked. Just a thin wrapper that immediately calls into

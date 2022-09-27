@@ -647,6 +647,24 @@
 	else
 		return ..()
 
+/obj/item/storage/belt/shotgun/xm88
+	name = "\improper M300 pattern .458 SOCOM loading rig"
+	desc = "An ammunition belt designed to hold the large .458 SOCOM caliber bullets for the XM88 heavy rifle."
+	icon_state = "boomslang-belt"
+	item_state = "marinebelt"
+	w_class = SIZE_LARGE
+	storage_slots = 14
+	max_w_class = SIZE_SMALL
+	max_storage_space = 28
+	can_hold = list(/obj/item/ammo_magazine/handful)
+
+/obj/item/storage/belt/shotgun/xm88/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/lever_action/xm88))
+		var/obj/item/ammo_magazine/lever_action/xm88/B = W
+		dump_ammo_to(B, user, B.transfer_handful_amount)
+	else
+		return ..()
+
 /obj/item/storage/belt/shotgun/full/quackers
 	icon_state = "inflatable"
 	item_state = "inflatable"
@@ -847,7 +865,7 @@
 		correctly without having to rotate anything. Preloading weapon icons also makes
 		sure that we don't have to do any extra calculations.
 		*/
-		playsound(src, drawSound, 15, TRUE)
+		playsound(src, drawSound, 7, TRUE)
 		var/image/gun_underlay = image(icon, current_gun.base_gun_icon)
 		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
 		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
@@ -859,7 +877,7 @@
 		icon_state += "_g"
 		item_state = icon_state
 	else
-		playsound(src, sheatheSound, 15, TRUE)
+		playsound(src, sheatheSound, 7, TRUE)
 		underlays -= holster_slots[slot]["underlay_sprite"]
 		holster_slots[slot]["underlay_sprite"] = null
 
@@ -1173,8 +1191,8 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 
-/obj/item/storage/belt/gun/mateba/commodore
-	name = "commodore's M276 pattern Mateba holster rig"
+/obj/item/storage/belt/gun/mateba/council
+	name = "colonel's M276 pattern Mateba holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
 	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
 	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
@@ -1182,7 +1200,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	icon_state = "amateba_holster"
 	item_state = "s_marinebelt"
 
-/obj/item/storage/belt/gun/mateba/commodore/full/fill_preset_inventory()
+/obj/item/storage/belt/gun/mateba/council/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/engraved())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)

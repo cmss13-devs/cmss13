@@ -5641,13 +5641,10 @@
 	},
 /area/shuttle/drop1/sulaco)
 "apE" = (
-/obj/structure/surface/rack,
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/obj/item/circuitboard/machine/telecomms/relay/tower,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 9;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHWEST)"
 	},
 /area/almayer/hallways/hangar)
 "apF" = (
@@ -5657,17 +5654,6 @@
 	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
-"apH" = (
-/obj/structure/surface/rack,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/subspace/filter,
-/obj/item/stock_parts/subspace/filter,
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/hallways/hangar)
 "apI" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
@@ -8027,9 +8013,7 @@
 	},
 /area/almayer/living/pilotbunks)
 "avi" = (
-/obj/structure/reagent_dispensers/fueltank/custom{
-	anchored = 1
-	},
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -14621,7 +14605,7 @@
 "aRq" = (
 /obj/structure/closet/secure_closet/staff_officer/gear,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -15894,7 +15878,8 @@
 "aWu" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
-	tag = ""
+	tag = "";
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -16328,7 +16313,7 @@
 /area/almayer/hallways/starboard_hallway)
 "aYQ" = (
 /obj/structure/machinery/bioprinter{
-	stored_metal = 1000
+	stored_metal = 125
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
@@ -23104,7 +23089,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "byc" = (
 /obj/structure/machinery/bioprinter{
-	stored_metal = 1000
+	stored_metal = 125
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -30288,7 +30273,7 @@
 /area/almayer/command/corporateliason)
 "bXw" = (
 /obj/structure/machinery/bioprinter{
-	stored_metal = 1000
+	stored_metal = 125
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
@@ -41715,7 +41700,7 @@
 /obj/item/clothing/glasses/sunglasses/blindfold,
 /obj/item/clothing/mask/muzzle,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
+	dir = 8;
 	name = "ship-grade camera";
 	tag = "icon-camera (NORTH)"
 	},
@@ -41816,13 +41801,13 @@
 	},
 /area/almayer/engineering/starboard_atmos)
 "fpW" = (
-/obj/structure/machinery/constructable_frame/porta_comms,
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_x = 32
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 5;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHEAST)"
 	},
 /area/almayer/hallways/hangar)
 "fqc" = (
@@ -49180,8 +49165,6 @@
 /area/almayer/living/port_emb)
 "iKb" = (
 /obj/structure/surface/table/almayer,
-/obj/item/cell/apc/full,
-/obj/item/cell/apc/full,
 /turf/open/floor/almayer{
 	icon_state = "orange";
 	tag = "icon-orange (EAST)"
@@ -56457,9 +56440,7 @@
 	dir = 1;
 	tag = "icon-tube1 (WEST)"
 	},
-/obj/structure/reagent_dispensers/watertank{
-	anchored = 1
-	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
@@ -67741,9 +67722,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/structure/reagent_dispensers/watertank{
-	anchored = 1
-	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -73878,10 +73857,10 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "uiT" = (
-/obj/structure/closet/crate/construction,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 1;
+	icon_state = "orange";
+	tag = "icon-orange (EAST)"
 	},
 /area/almayer/hallways/hangar)
 "uiZ" = (
@@ -78336,7 +78315,7 @@
 /area/almayer/living/grunt_rnr)
 "wbP" = (
 /obj/structure/machinery/bioprinter{
-	stored_metal = 1000
+	stored_metal = 125
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -78775,7 +78754,7 @@
 /area/almayer/living/briefing)
 "wkc" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Portable Comms Storage";
+	name = "\improper Engineering Storage";
 	req_one_access_txt = "2;7;11"
 	},
 /turf/open/floor/almayer{
@@ -106733,7 +106712,7 @@ bGO
 bHB
 aYt
 cdA
-apH
+uiT
 aYt
 jyR
 bcm

@@ -31,7 +31,7 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_index]
 
 	H.first_xeno = TRUE
-	H.stat = 1
+	H.stat = UNCONSCIOUS
 	H.forceMove(get_turf(pick(GLOB.xeno_spawns)))
 
 	var/list/survivor_types = list(
@@ -41,6 +41,9 @@
 		/datum/equipment_preset/survivor/engineer
 	)
 	arm_equipment(H, pick(survivor_types), FALSE, FALSE)
+
+	for(var/obj/item/device/radio/radio in H.contents_recursive())
+		radio.listening = FALSE
 
 	H.job = title
 	H.apply_damage(50, BRUTE)

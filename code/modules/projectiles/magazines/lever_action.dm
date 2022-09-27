@@ -20,7 +20,7 @@ Similar to shotguns.dm but not exactly.
 
 /obj/item/ammo_magazine/lever_action/training
 	name = "box of 45-70 blanks"
-	desc = "A box filled with training lever action 45-70 rounds that aren't very damaging.. unless you fire them point-blank or something."
+	desc = "A box filled with training lever action 45-70 rounds that aren't very damaging... unless you fire them point-blank or something."
 	icon_state = "45-70-training-box"
 	item_state = "45-70-training-box"
 	default_ammo = /datum/ammo/bullet/lever_action/training
@@ -44,6 +44,16 @@ Similar to shotguns.dm but not exactly.
 	default_ammo = /datum/ammo/bullet/lever_action/tracker
 	handful_state = "tracking_lever_action_bullet"
 
+/obj/item/ammo_magazine/lever_action/xm88
+	name = "box of .458 SOCOM rounds"
+	desc = "A box filled with handfuls of .458 SOCOM rounds, designed for use with the XM88 heavy rifle."
+	icon_state = "458-box"
+	item_state = "458-box"
+	default_ammo = /datum/ammo/bullet/lever_action/xm88
+	caliber = ".458"
+	gun_type = /obj/item/weapon/gun/lever_action/xm88
+	handful_state = "boomslang_bullet"
+
 //-------------------------------------------------------
 
 /obj/item/ammo_magazine/internal/lever_action
@@ -51,6 +61,14 @@ Similar to shotguns.dm but not exactly.
 	desc = "An internal magazine. It is not supposed to be seen or removed."
 	default_ammo = /datum/ammo/bullet/lever_action
 	caliber = "45-70"
+	max_rounds = 9
+	chamber_closed = 0
+
+/obj/item/ammo_magazine/internal/lever_action/xm88
+	name = "\improper XM88 heavy rifle tube"
+	desc = "An internal magazine. It is not supposed to be seen or removed."
+	default_ammo = /datum/ammo/bullet/lever_action/xm88
+	caliber = ".458"
 	max_rounds = 9
 	chamber_closed = 0
 
@@ -94,3 +112,11 @@ Handfuls of lever_action rounds. For spawning directly on mobs in roundstart, ER
 	icon_state = "marksman_lever_action_bullet"
 	default_ammo = /datum/ammo/bullet/lever_action/marksman
 	handful_state = "marksman_lever_action_bullet"
+
+/obj/item/ammo_magazine/handful/lever_action/xm88
+	name = "handful of .458 SOCOM rounds (.458)"
+	desc = "A handful of .458 SOCOM rounds, chambered for the XM88 heavy rifle."
+	caliber = ".458"
+	icon_state = "marksman_lever_action_bullet"
+	default_ammo = /datum/ammo/bullet/lever_action/xm88
+	handful_state = "boomslang_bullet"

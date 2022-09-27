@@ -31,6 +31,12 @@
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
+/datum/action/xeno_action/onclick/xeno_resting/give_to(mob/living/living_mob)
+	. = ..()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.resting)
+		button.icon_state = "template_active"
+
 // Shift Spits
 /datum/action/xeno_action/onclick/shift_spits
 	name = "Toggle Spit Type"
@@ -89,7 +95,7 @@
 	return X.selected_resin
 
 /datum/action/xeno_action/activable/secrete_resin/queen_macro //see above for reasoning
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
@@ -261,25 +267,32 @@
 	var/movement_buffer = 0
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.lying && !X.buckled)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled)
 		return TRUE
 
-/datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(X.is_zoomed)
-		X.zoom_out()
-		X.visible_message(SPAN_NOTICE("[X] stops looking off into the distance."), \
+/datum/action/xeno_action/onclick/toggle_long_range/give_to(mob/living/living_mob)
+	. = ..()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.is_zoomed)
+		button.icon_state = "template_active"
+
+/datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.is_zoomed)
+		xeno.zoom_out() // will also handle icon_state
+		xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
 		SPAN_NOTICE("You stop looking off into the distance."), null, 5)
 	else
-		X.visible_message(SPAN_NOTICE("[X] starts looking off into the distance."), \
+		xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."), \
 			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
 		if (should_delay)
-			if(!do_after(X, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
-		if(X.is_zoomed) return
+			if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
+		if(xeno.is_zoomed) return
 		if(handles_movement)
-			RegisterSignal(X, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
-		X.zoom_in()
+			RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
+		xeno.zoom_in()
+		button.icon_state = "template_active"
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
 	SIGNAL_HANDLER
@@ -290,7 +303,7 @@
 	movement_buffer--
 	if(movement_buffer <= 0)
 		movement_buffer = initial(movement_buffer)
-		mover.zoom_out()
+		mover.zoom_out() // will also handle icon_state
 		UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
 
 // General use acid spray, can be subtyped to customize behavior.
@@ -345,6 +358,12 @@
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
+/datum/action/xeno_action/onclick/xenohide/give_to(mob/living/living_mob)
+	. = ..()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.layer == XENO_HIDING_LAYER)
+		button.icon_state = "template_active"
+
 /datum/action/xeno_action/onclick/place_trap
 	name = "Place resin hole (200)"
 	action_icon_state = "place_trap"
@@ -359,6 +378,10 @@
 	ability_name = "order construction"
 	macro_path = /datum/action/xeno_action/verb/place_construction
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_5
+
+/datum/action/xeno_action/activable/place_construction/queen_macro //so it doesn't screw other macros up
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /datum/action/xeno_action/activable/xeno_spit
 	name = "Xeno Spit"
@@ -371,6 +394,9 @@
 	xeno_cooldown = 60 SECONDS
 	var/sound_to_play = 0
 	var/spitting = FALSE // For windup spits, indicates if we are already spitting so we can't queue up multiple spits at the same time
+
+/datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"

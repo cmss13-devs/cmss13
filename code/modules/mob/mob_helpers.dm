@@ -308,10 +308,10 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	set name = "a-select-zone"
 	set hidden = 1
 
-	var/obj/screen/zone_sel/zone
+	var/atom/movable/screen/zone_sel/zone
 
 	for(var/A in usr.client.screen)
-		if(istype(A, /obj/screen/zone_sel))
+		if(istype(A, /atom/movable/screen/zone_sel))
 			zone = A
 
 	if(!zone)
@@ -496,3 +496,14 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/handle_blood_splatter(var/splatter_dir)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
+
+/proc/get_mobs_in_z_level_range(var/turf/starting_turf, var/range)
+	var/list/mobs_in_range = list()
+	var/z_level = starting_turf.z
+	for(var/mob/mob as anything in GLOB.mob_list)
+		if(mob.z != z_level)
+			continue
+		if(range && get_dist(starting_turf, mob) > range)
+			continue
+		mobs_in_range += mob
+	return mobs_in_range

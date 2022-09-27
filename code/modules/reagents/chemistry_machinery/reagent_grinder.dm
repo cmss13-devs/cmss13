@@ -21,7 +21,7 @@
 		/obj/item/stack/sheet/mineral/silver = list("silver" = 20),
 		/obj/item/stack/sheet/mineral/gold = list("gold" = 20),
 		/obj/item/grown/nettle/death = list("pacid" = 0),
-		/obj/item/grown/nettle = list("sacid" = 0),
+		/obj/item/grown/nettle = list("sulphuric acid" = 0),
 
 		//Blender Stuff
 		/obj/item/reagent_container/food/snacks/grown/soybeans = list("soymilk" = 0),
@@ -434,7 +434,7 @@
 		/obj/item/stack/sheet/aluminum = list("aluminum" = 60),
 		/obj/item/stack/sheet/copper = list("copper" = 60),
 		/obj/item/grown/nettle/death = list("pacid" = 0),
-		/obj/item/grown/nettle = list("sacid" = 0),
+		/obj/item/grown/nettle = list("sulphuric acid" = 0),
 
 		//Blender Stuff
 		/obj/item/reagent_container/food/snacks/grown/corn = list("cornoil" = 0)

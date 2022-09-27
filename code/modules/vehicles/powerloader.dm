@@ -250,7 +250,7 @@
 					chair_stack.update_overlays()
 					//skill reduces the chance of collapse
 					if(chair_stack.stacked_size > 8 && prob(50 / user.skills.get_skill_level(SKILL_POWERLOADER)))
-						chair_stack.stack_collapse(user)
+						chair_stack.stack_collapse()
 
 				loaded = null
 				update_icon()

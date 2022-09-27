@@ -8,6 +8,8 @@
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
 	hitsound = 'sound/weapons/smash.ogg'
+	pickupsound = 'sound/handling/wrench_pickup.ogg'
+	dropsound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 10
 	w_class = SIZE_MEDIUM

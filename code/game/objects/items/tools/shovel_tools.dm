@@ -121,6 +121,9 @@
 				if(SB.amount < 0) // check if sandbag is used by someone else
 					SB = null
 					continue
+					
+				if(dirt_amt <= 0) // check if the user has already used all the dirt
+					continue
 
 				var/dirttransfer_amount = min(SB.amount, dirt_amt)
 				dirt_amt -= dirttransfer_amount

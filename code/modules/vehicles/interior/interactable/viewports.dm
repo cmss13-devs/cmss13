@@ -20,9 +20,17 @@
 		return
 
 	M.reset_view(vehicle)
-	give_action(M, /datum/action/human_action/cancel_view)
+	give_action(M, /datum/action/human_action/vehicle_unbuckle)
 
 /obj/structure/interior_viewport/simple
 	name = "viewport"
 	desc = "Hey, I can see my base from here!"
 	icon_state = "viewport_simple"
+
+//van's frontal window viewport
+/obj/structure/interior_viewport/simple/windshield
+	name = "windshield"
+	desc = "When it was cleaned last time? There is a squashed bug in the corner."
+	icon = 'icons/obj/vehicles/interiors/van.dmi'
+	icon_state = "windshield_viewport_top"
+	alpha = 80

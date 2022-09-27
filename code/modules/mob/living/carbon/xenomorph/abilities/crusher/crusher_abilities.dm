@@ -180,7 +180,6 @@
 			Xeno.visible_message(SPAN_DANGER("[Xeno] runs [Mob] over!"),
 				SPAN_DANGER("You run [Mob] over!")
 			)
-			var/list/ram_dirs = get_perpen_dir(Xeno.dir)
 			var/ram_dir = pick(get_perpen_dir(Xeno.dir))
 			var/dist = 1
 			if(momentum == max_momentum)

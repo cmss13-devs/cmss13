@@ -29,6 +29,16 @@
 	var/max_stacks = 5
 	var/movespeed_nerf_applied = 0
 	var/activated_once = FALSE
+
+/datum/action/xeno_action/activable/spray_acid/boiler // placeholder stats
+	plasma_cost = 40
+	xeno_cooldown = 80
+
+	// Configurable options
+	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
+	spray_distance = 5 				// Distance to spray
+
+
 /datum/action/xeno_action/activable/xeno_spit/bombard
 	name = "Bombard"
 	ability_name = "Bombard"

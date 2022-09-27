@@ -301,6 +301,9 @@ const ScannerLimbs = (props, context) => {
   const limb_data = Object.values(limb_data_lists);
   const bodyscanner = detail_level >= 1;
 
+  var index = 0;
+  const row_bg_color =  "rgba(255, 255, 255, .05)";
+
   limb_data.forEach(limb => {
     limb.unbandaged = !limb.bandaged && limb.brute > 0 && !limb.limb_type;
     limb.unsalved = !limb.salved && limb.burn > 0 && !limb.limb_type;
@@ -310,14 +313,15 @@ const ScannerLimbs = (props, context) => {
     <Section title="Limbs Damaged">
       <Stack vertical fill>
         <Box width="100%" height="15px">
-          <Box inline width="80px" />
-          <Box inline width="50px" bold color="red">Brute</Box>
-          <Box inline width="50px" bold color="orange">Burn</Box>
+          <Box inline width="85px" />
+          <Box inline width="55px" bold color="red">Brute</Box>
+          <Box inline width="55px" bold color="orange">Burn</Box>
         </Box>
         {
           limb_data.map(limb => (
-            <Flex key={limb.name} width="100%" minHeight="15px">
-              <Flex.Item basis="80px" shrink="0" bold>
+            <Flex key={limb.name} width="100%" minHeight="15px" py="3px"
+              backgroundColor={index++ % 2 == 0 ? row_bg_color : ""}>
+              <Flex.Item basis="85px" shrink="0" bold pl="3px">
                 {limb.name[0].toUpperCase() + limb.name.slice(1)}
               </Flex.Item>
               {limb.missing ? (
@@ -327,18 +331,20 @@ const ScannerLimbs = (props, context) => {
               ) : (
                 <>
                   <Flex.Item basis="fit-content" shrink="0">
-                    <Box inline width="50px" 
+                    <Box inline width="50px"
                       color={limb.brute > 0 ? "red" : "white"} 
                       bold={limb.unbandaged}
                       italic={limb.unbandaged}>
                       {limb.brute}
                     </Box>
-                    <Box inline width="50px" 
+                    <Box inline width="5px" />
+                    <Box inline width="50px"
                       color={limb.burn > 0 ? "orange" : "white"} 
                       bold={limb.unsalved}
                       italic={limb.unsalved}>
                       {limb.burn}
                     </Box>
+                    <Box inline width="5px" />
                   </Flex.Item>
                   <Flex.Item shrink="1">
                     {limb.bleeding ? (

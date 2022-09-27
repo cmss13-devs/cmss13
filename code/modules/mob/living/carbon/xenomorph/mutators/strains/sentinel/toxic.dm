@@ -21,8 +21,7 @@
 	. = ..()
 	if (. == 0)
 		return
-
-		var/mob/living/carbon/Xenomorph/Sentinel/S = MS.xeno
+	var/mob/living/carbon/Xenomorph/Sentinel/S = MS.xeno
 	S.mutation_type = SENTINEL_TOXIC
 
 	mutator_update_actions(S)
@@ -44,10 +43,10 @@
 			return
 	if(toxic_toggle)
 		return
-	if(bound_xeno.Plasma < 20)
+	if(bound_xeno.plasma_stored < 20)
 		return
 	A.apply_damage(5, TOX)
-	bound_xeno.Plasma -= 20
+	bound_xeno.plasma_stored -= 20
 
 
 

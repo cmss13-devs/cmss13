@@ -205,7 +205,7 @@
 
 //This is an UNSAFE proc. Use mob_can_equip() before calling this one! Or rather use equip_to_slot_if_possible() or advanced_equip_to_slot_if_possible()
 //set redraw_mob to 0 if you don't wish the hud to be updated - if you're doing it manually in your own proc.
-/mob/living/carbon/human/equip_to_slot(obj/item/W as obj, slot)
+/mob/living/carbon/human/equip_to_slot(obj/item/W as obj, slot, disable_warning)
 	if(!slot) return
 	if(!istype(W)) return
 	if(!has_limb_for_slot(slot)) return
@@ -348,25 +348,25 @@
 			update_inv_s_store()
 		if(WEAR_IN_BACK)
 			var/obj/item/storage/S = back
-			S.attempt_item_insertion(W, FALSE, src)
+			S.attempt_item_insertion(W, disable_warning, src)
 			back.update_icon()
 		if(WEAR_IN_SHOES)
 			shoes.attackby(W,src)
 			shoes.update_icon()
 		if(WEAR_IN_SCABBARD)
 			var/obj/item/storage/S = back
-			S.attempt_item_insertion(W, FALSE, src)
+			S.attempt_item_insertion(W, disable_warning, src)
 			back.update_icon()
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/S = wear_suit
 			if(istype(S) && S.pockets.storage_slots)
-				S.pockets.attempt_item_insertion(W, FALSE, src)
+				S.pockets.attempt_item_insertion(W, disable_warning, src)
 				wear_suit.update_icon()
 
 		if(WEAR_IN_HELMET)
 			var/obj/item/clothing/head/helmet/marine/HM = src.head
 			if(istype(HM) && HM.pockets.storage_slots)
-				HM.pockets.attempt_item_insertion(W, FALSE, src)
+				HM.pockets.attempt_item_insertion(W, disable_warning, src)
 				HM.update_icon()
 
 		if(WEAR_IN_ACCESSORY)
@@ -382,19 +382,19 @@
 
 		if(WEAR_IN_BELT)
 			var/obj/item/storage/S = belt
-			S.attempt_item_insertion(W, FALSE, src)
+			S.attempt_item_insertion(W, disable_warning, src)
 			belt.update_icon()
 		if(WEAR_IN_J_STORE)
 			var/obj/item/storage/S = s_store
-			S.attempt_item_insertion(W, FALSE, src)
+			S.attempt_item_insertion(W, disable_warning, src)
 			s_store.update_icon()
 		if(WEAR_IN_L_STORE)
 			var/obj/item/storage/S = l_store
-			S.attempt_item_insertion(W, FALSE, src)
+			S.attempt_item_insertion(W, disable_warning, src)
 			l_store.update_icon()
 		if(WEAR_IN_R_STORE)
 			var/obj/item/storage/S = r_store
-			S.attempt_item_insertion(W, FALSE, src)
+			S.attempt_item_insertion(W, disable_warning, src)
 			r_store.update_icon()
 
 		else

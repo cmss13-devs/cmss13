@@ -213,7 +213,7 @@
 			else if(H.w_uniform && H.w_uniform.can_attach_accessory(medal))
 				H.w_uniform.attach_accessory(H, medal)
 			else
-				if(!H.equip_to_slot_if_possible(medal, WEAR_IN_BACK))
+				if(!H.equip_to_slot_if_possible(medal, WEAR_IN_BACK, disable_warning = TRUE))
 					if(!H.equip_to_slot_if_possible(medal, WEAR_L_HAND))
 						if(!H.equip_to_slot_if_possible(medal, WEAR_R_HAND))
 							medal.forceMove(H.loc)

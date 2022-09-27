@@ -14,6 +14,8 @@
 		/datum/action/xeno_action/activable/slowing_spit
 	)
 	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/blinding_spit,
+		/datum/action/xeno_action/onclick/sentinel_sprint,
 		/datum/action/xeno_action/onclick/toggle_toxic_slash
 	)
 
@@ -23,6 +25,7 @@
 		return
 	var/mob/living/carbon/Xenomorph/Sentinel/S = MS.xeno
 	S.mutation_type = SENTINEL_TOXIC
+	S.health_modifier += XENO_HEALTH_MOD_MED
 
 	mutator_update_actions(S)
 	MS.recalculate_actions(description, flavor_description)

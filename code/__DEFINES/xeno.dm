@@ -339,7 +339,7 @@
 #define XENO_HEALTH_MOD_MED        60
 #define XENO_HEALTH_MOD_LARGE      80
 #define XENO_HEALTH_MOD_VERYLARGE  100
-#define XENO_HEALTH_MOD_ACIDER  115
+#define XENO_HEALTH_MOD_ACIDER 	115
 
 // Armor mods. Use the above defines for some guidance
 // In general, +20 armor should be a little more than +20% effective HP, however,
@@ -398,6 +398,9 @@
 #define XENO_NEURO_TIER_3   1.5 // Threshold for sleep and daze
 #define XENO_NEURO_TIER_4   1.75
 #define XENO_NEURO_TIER_5   2
+
+// Special blinding nuero
+#define XENO_BLIND_BASE		1
 
 // Pheremone strength modifiers
 #define XENO_PHERO_MOD_VERYSMALL  0.25

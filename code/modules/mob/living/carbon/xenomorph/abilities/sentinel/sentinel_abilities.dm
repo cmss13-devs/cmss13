@@ -42,3 +42,33 @@
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_toxic_slash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
+
+// Blinding spit
+
+/datum/action/xeno_action/activable/blinding_spit
+	name = "Blinding Spit"
+	action_icon_state = "xeno_spit"
+	ability_name = "blinding spit"
+	macro_path = /datum/action/xeno_action/verb/verb_blinding_spit
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	xeno_cooldown = 3 SECONDS
+	plasma_cost = 40
+
+// Sprint
+
+/datum/action/xeno_action/onclick/sentinel_sprint
+	name = "Sprint"
+	action_icon_state = "spitter_frenzy"
+	ability_name = "sprint"
+	macro_path = /datum/action/xeno_action/verb/verb_sentinel_sprint
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	action_type = XENO_ACTION_ACTIVATE
+	plasma_cost = 50
+	xeno_cooldown = 60
+
+	// Config
+	var/duration = 40
+	var/speed_buff_amount = 1.2
+
+	var/buffs_active = FALSE

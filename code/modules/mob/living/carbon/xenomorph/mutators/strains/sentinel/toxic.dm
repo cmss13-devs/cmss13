@@ -1,7 +1,7 @@
 /datum/xeno_mutator/toxic
 	name = "STRAIN: Sentinel - Toxic"
-	description = "all of your nuerotoxin is replaced with cytotoxins"
-	flavor_description = "Ssssss I am a snek"
+	description = "All of your nuerotoxin abilities will be replaced with cytotoxins. Slowing spit, scatter spit, and nuerotxic slash get removed. They get replaced by blinding spit which temporarily induces blindness, a sprint that makes you faster for a high plasma cost, and the ability to infuse your slashes with cytotoxin. Managing the high plasma cost of your abilties will be key. You now have more health to compensate, but are still vulnerable due to the removal of stuns."
+	flavor_description = "Kill them from the inside out."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_SENTINEL)

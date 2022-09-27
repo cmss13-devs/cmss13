@@ -118,11 +118,11 @@
 		return
 	if(behavior.toxic_toggle)
 		behavior.toxic_toggle = FALSE
-		to_chat(xeno, SPAN_XENOHIGHDANGER("Your slashes will now inject cytotoxin into the victim"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Your slashes will now inject cytotoxin into the victim."))
 		return
 	if(!behavior.toxic_toggle)
 		behavior.toxic_toggle = TRUE
-		to_chat(xeno, SPAN_XENOHIGHDANGER("Your slashes will no longer inject cytotoxin into the victim"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Your slashes will no longer inject cytotoxin into the victim."))
 		return
 	..()
 	return
@@ -160,40 +160,39 @@
 	..()
 
 /datum/action/xeno_action/onclick/sentinel_sprint/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/Xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!istype(X) || !X.check_state())
+	if (!istype(xeno) || !xeno.check_state())
 		return
 
 	if (buffs_active)
-		to_chat(X, SPAN_XENOHIGHDANGER("You cannot stack frenzy!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You cannot stack frenzy!"))
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	to_chat(X, SPAN_XENOHIGHDANGER("You feel yourself move quicker!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You feel yourself move quicker!"))
 	buffs_active = TRUE
-	X.speed_modifier -= speed_buff_amount
-	X.recalculate_speed()
+	xeno.speed_modifier -= speed_buff_amount
+	xeno.recalculate_speed()
 
 	addtimer(CALLBACK(src, .proc/remove_effects), duration)
 
 	apply_cooldown()
-	..()
-	return
+	return 	..()
 
 /datum/action/xeno_action/onclick/sentinel_sprint/proc/remove_effects()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/Xenomorph/xeno = owner
 
-	if (!istype(X))
+	if (!istype(xeno))
 		return
 
-	X.speed_modifier += speed_buff_amount
-	X.recalculate_speed()
-	to_chat(X, SPAN_XENOHIGHDANGER("You feel your movement speed slow down!"))
+	xeno.speed_modifier += speed_buff_amount
+	xeno.recalculate_speed()
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You feel your movement speed slow down!"))
 	buffs_active = FALSE
 

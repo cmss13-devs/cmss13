@@ -68223,7 +68223,9 @@
 	},
 /area/almayer/squads/delta)
 "rrB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+	name = "\improper Command Cryo Storage Airlock"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

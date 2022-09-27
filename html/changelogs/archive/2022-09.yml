@@ -409,3 +409,6 @@
       can eject metal, has a max metal limit of 500, and starts with 125 metal instead
       of 1000. It can no longer accept meat (was not used for anything) and its backend
       code is much better now.
+2022-09-27:
+  Shad0vvs:
+  - bugfix: Fixes the health scanner not updating windows properly.

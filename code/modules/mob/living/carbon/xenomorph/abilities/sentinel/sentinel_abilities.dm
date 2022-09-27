@@ -32,3 +32,44 @@
 	plasma_cost = 50
 
 	var/buff_duration = 50
+
+// Toxic Sentinel abilities
+// Toxic Slash
+
+/datum/action/xeno_action/onclick/toggle_toxic_slash
+	name = "Toggle Toxic Slash"
+	action_icon_state = "lurker_inject_neuro"
+	ability_name = "toxic slash"
+	macro_path = /datum/action/xeno_action/verb/verb_toggle_toxic_slash
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+
+// Blinding spit
+
+/datum/action/xeno_action/activable/blinding_spit
+	name = "Blinding Spit"
+	action_icon_state = "xeno_spit"
+	ability_name = "blinding spit"
+	macro_path = /datum/action/xeno_action/verb/verb_blinding_spit
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	xeno_cooldown = 5 SECONDS
+	plasma_cost = 40
+
+// Sprint
+
+/datum/action/xeno_action/onclick/sentinel_sprint
+	name = "Sprint"
+	action_icon_state = "spitter_frenzy"
+	ability_name = "sprint"
+	macro_path = /datum/action/xeno_action/verb/verb_sentinel_sprint
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	action_type = XENO_ACTION_ACTIVATE
+	plasma_cost = 50
+	xeno_cooldown = 60
+
+	// Config
+	var/duration = 30
+	var/speed_buff_amount = 1
+
+	var/buffs_active = FALSE

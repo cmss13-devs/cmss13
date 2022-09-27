@@ -2445,6 +2445,32 @@
 
 	bonus_projectiles_amount = 0
 
+// Sentinel Cytotoxin
+/datum/ammo/xeno/cytotoxin
+	name = "cytotoxin spit"
+	damage_falloff = 0
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
+	spit_cost = 25
+	var/datum/callback/cytotoxin_callback
+
+	shell_speed = AMMO_SPEED_TIER_3
+	max_range = 4
+
+/datum/ammo/xeno/cytotoxin/New()
+	..()
+
+	cytotoxin_callback = CALLBACK(GLOBAL_PROC, .proc/apply_cytotoxin)
+
+/proc/apply_cytotoxin(mob/M)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.eye_blind < 4) //This is to make it so that it only applies the blindness if it is less than the ammount to be applies
+			H.eye_blind = 4
+
+/datum/ammo/xeno/cytotoxin/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
+	if(ishuman(M))
+		cytotoxin_callback.Invoke(M)
+
 /*proc/neuro_flak(turf/T, obj/item/projectile/P, datum/callback/CB, power, insta_neuro, radius)
 	if(!T) return FALSE
 	var/firer = P.firer

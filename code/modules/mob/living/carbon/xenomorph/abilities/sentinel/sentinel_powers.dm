@@ -106,3 +106,94 @@
 
 	to_chat(xeno, SPAN_XENODANGER("You have waited too long, your slash will no longer apply neurotoxin!"))
 	button.icon_state = "template"
+
+// Toxic Sentinel powers
+
+/datum/action/xeno_action/onclick/toggle_toxic_slash/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+	var/datum/behavior_delegate/sentinel_toxic/behavior = xeno.behavior_delegate
+	if(!istype(behavior))
+		return
+	if(behavior.toxic_toggle)
+		behavior.toxic_toggle = FALSE
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Your slashes will now inject cytotoxin into the victim"))
+		return
+	if(!behavior.toxic_toggle)
+		behavior.toxic_toggle = TRUE
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Your slashes will no longer inject cytotoxin into the victim"))
+		return
+	..()
+	return
+
+/datum/action/xeno_action/activable/blinding_spit/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(!xeno.check_state())
+		return
+
+	if(!action_cooldown_check())
+		to_chat(src, SPAN_WARNING("You must wait for your spit glands to refill."))
+		return
+
+	var/turf/current_turf = get_turf(xeno)
+
+	if(!current_turf)
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [target]!"), \
+	SPAN_XENOWARNING("You spit at [target]!") )
+	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
+	playsound(xeno.loc, sound_to_play, 25, 1)
+
+	xeno.ammo = GLOB.ammo_list[/datum/ammo/xeno/cytotoxin]
+	var/obj/item/projectile/projectile = new /obj/item/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
+	projectile.generate_bullet(xeno.ammo)
+	projectile.permutated += xeno
+	projectile.def_zone = xeno.get_limbzone_target()
+	projectile.fire_at(target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
+
+	apply_cooldown()
+	..()
+
+/datum/action/xeno_action/onclick/sentinel_sprint/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!istype(X) || !X.check_state())
+		return
+
+	if (buffs_active)
+		to_chat(X, SPAN_XENOHIGHDANGER("You cannot stack frenzy!"))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	to_chat(X, SPAN_XENOHIGHDANGER("You feel yourself move quicker!"))
+	buffs_active = TRUE
+	X.speed_modifier -= speed_buff_amount
+	X.recalculate_speed()
+
+	addtimer(CALLBACK(src, .proc/remove_effects), duration)
+
+	apply_cooldown()
+	..()
+	return
+
+/datum/action/xeno_action/onclick/sentinel_sprint/proc/remove_effects()
+	var/mob/living/carbon/Xenomorph/X = owner
+
+	if (!istype(X))
+		return
+
+	X.speed_modifier += speed_buff_amount
+	X.recalculate_speed()
+	to_chat(X, SPAN_XENOHIGHDANGER("You feel your movement speed slow down!"))
+	buffs_active = FALSE
+

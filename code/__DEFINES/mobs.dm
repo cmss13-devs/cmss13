@@ -320,6 +320,7 @@
 
 // Sentinel strain flags
 #define SENTINEL_NORMAL		"Normal"
+#define SENTINEL_TOXIC		"Toxic"
 
 // Spitter strain flags
 #define SPITTER_NORMAL		"Normal"

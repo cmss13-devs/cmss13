@@ -1,0 +1,56 @@
+
+/datum/xeno_mutator/toxic
+	name = "STRAIN: Sentinel - Toxic"
+	description = "all of your nuerotoxin is replaced with cytotoxins"
+	flavor_description = "Ssssss I am a snek"
+	cost = MUTATOR_COST_EXPENSIVE
+	individual_only = TRUE
+	caste_whitelist = list(XENO_CASTE_SENTINEL)
+	keystone = TRUE
+	behavior_delegate_type = /datum/behavior_delegate/sentinel_toxic
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/onclick/paralyzing_slash,
+		/datum/action/xeno_action/activable/scattered_spit,
+		/datum/action/xeno_action/activable/slowing_spit
+	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/onclick/toggle_toxic_slash
+	)
+
+/datum/xeno_mutator/toxic/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	. = ..()
+	if (. == 0)
+		return
+
+		var/mob/living/carbon/Xenomorph/Sentinel/S = MS.xeno
+	S.mutation_type = SENTINEL_TOXIC
+
+	mutator_update_actions(S)
+	MS.recalculate_actions(description, flavor_description)
+
+	apply_behavior_holder(S)
+
+	S.recalculate_everything()
+
+/datum/behavior_delegate/sentinel_toxic
+	name = "Toxic Sentinel Behavior Delegate"
+	var/toxic_toggle = FALSE
+
+/datum/behavior_delegate/sentinel_toxic/melee_attack_additional_effects_target(mob/living/carbon/A)
+	..()
+	if (ishuman(A))
+		var/mob/living/carbon/human/H = A
+		if (H.stat == DEAD)
+			return
+	if(toxic_toggle)
+		return
+	if(bound_xeno.Plasma < 20)
+		return
+	A.apply_damage(5, TOX)
+	bound_xeno.Plasma -= 20
+
+
+
+
+
+

@@ -35834,9 +35834,9 @@
 	pixel_y = 25
 	},
 /obj/item/book{
-	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the USCM. The book was harshly criticised for its bland and uncreative writing and wasn't well received by the general public or members of the UA military, however artificial soldiers typically value the information contained within.";
+	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the USCM. The book was harshly criticised for its bland and uncreative writing and wasn't well received by the general public or members of the UA military. However, artificial soldiers typically value the information contained within.";
 	icon_state = "bookSpaceLaw";
-	name = "born to kill";
+	name = "\improper Born to Kill";
 	pixel_x = -6;
 	pixel_y = 6
 	},

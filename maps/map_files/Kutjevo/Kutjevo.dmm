@@ -14097,6 +14097,16 @@
 	dir = 1
 	},
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
+"sQv" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder{
+	desc = "A small red box that contains colony data. Usually refered to the black box, although this one comes in bloody red.";
+	name = "\improper FR-112 data recorder";
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/complex/botany/east_tech)
 "sRb" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 8;
@@ -41057,7 +41067,7 @@ hws
 qwg
 vcY
 jhS
-htT
+sQv
 dkE
 tfx
 dkE

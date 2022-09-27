@@ -232,7 +232,7 @@
 
 	W.screen_loc = null
 	if(W.loc != src)
-		W.pickup(src)
+		W.pickup(src, disable_warning)
 	W.forceMove(src)
 	W.layer = ABOVE_HUD_LAYER
 	W.plane = ABOVE_HUD_PLANE

@@ -314,11 +314,11 @@ cases. Override_icon_state should be a list.*/
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
 
 // called just as an item is picked up (loc is not yet changed)
-/obj/item/proc/pickup(mob/user)
+/obj/item/proc/pickup(mob/user, silent)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
-	if((pickupsound) && src.loc.z)
+	if(pickupsound && !silent && src.loc?.z)
 		playsound(src, pickupsound, pickupvol, pickup_vary)
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.

@@ -13954,7 +13954,7 @@
 	tag = "icon-door_open"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	name = "\improper Brig Cryo Pods"
+	name = "\improper Cryogenics Bay"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -14051,8 +14051,8 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "red";
-	tag = "icon-red"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/squads/alpha)
 "aPr" = (
@@ -14304,7 +14304,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Conference Room"
+	name = "\improper Cryogenics Bay"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
@@ -14316,7 +14316,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Conference Room"
+	name = "\improper Cryogenics Bay"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
@@ -14706,17 +14706,16 @@
 	},
 /area/almayer/squads/bravo)
 "aSa" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_x = 1;
 	pixel_y = 1;
 	tag = "icon-NE-out"
 	},
+/obj/structure/window/framed/almayer,
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/squads/bravo)
 "aSb" = (
@@ -14886,8 +14885,10 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "aSE" = (
-/obj/structure/surface/table/almayer,
-/obj/item/facepaint/black,
+/obj/structure/bed/chair{
+	dir = 4;
+	tag = "icon-chair (EAST)"
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo)
 "aSH" = (
@@ -15482,10 +15483,6 @@
 	},
 /area/almayer/command/cichallway)
 "aVd" = (
-/obj/structure/bed/chair{
-	dir = 4;
-	tag = "icon-chair (EAST)"
-	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange";
@@ -20210,12 +20207,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/bravo{
-	dir = 1
-	},
 /turf/open/floor/almayer{
-	icon_state = "orange";
-	tag = "icon-orange"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/squads/bravo)
 "bnB" = (
@@ -22312,10 +22306,6 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/condiment/hotsauce/franks{
-	pixel_x = -13;
-	pixel_y = 16
-	},
 /obj/item/trash/USCMtray{
 	pixel_y = 7
 	},
@@ -26012,10 +26002,9 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie)
 "bJE" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
-	pixel_x = 7;
-	pixel_y = 7
+/obj/structure/bed/chair{
+	dir = 4;
+	tag = "icon-chair (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -26032,9 +26021,8 @@
 /area/almayer/engineering/engine_core)
 "bJH" = (
 /obj/structure/surface/table/almayer,
-/obj/item/trash/USCMtray{
-	pixel_x = -4;
-	pixel_y = 10
+/obj/item/facepaint/black{
+	pixel_x = -4
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo)
@@ -27585,14 +27573,12 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "bOQ" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
+	pixel_x = 7;
+	pixel_y = 7
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer,
 /area/almayer/squads/charlie)
 "bOR" = (
 /obj/structure/pipes/vents/pump{
@@ -28024,7 +28010,6 @@
 	},
 /area/almayer/squads/charlie)
 "bQD" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
@@ -28034,12 +28019,10 @@
 	pixel_x = 1;
 	tag = "icon-SE-out"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/charlie{
-	dir = 1
-	},
+/obj/structure/window/framed/almayer,
 /turf/open/floor/almayer{
-	icon_state = "emerald";
-	tag = "icon-emerald"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/squads/charlie)
 "bQE" = (
@@ -28161,14 +28144,13 @@
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bRf" = (
-/obj/structure/bed/chair{
-	dir = 4;
-	tag = "icon-chair (EAST)"
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
+	pixel_x = 4
 	},
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "emerald";
-	tag = "icon-emerald (WEST)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/squads/charlie)
 "bRg" = (
@@ -28180,10 +28162,6 @@
 	dir = 4
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/condiment/hotsauce/franks{
-	pixel_x = -13;
-	pixel_y = 16
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -28620,7 +28598,7 @@
 /area/almayer/squads/delta)
 "bSN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
-	name = "\improper Engineering Cryo bay"
+	name = "\improper Cryogenics Bay"
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
@@ -28790,9 +28768,8 @@
 "bTF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/squads/delta)
 "bTG" = (
@@ -29002,8 +28979,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
-	pixel_x = 4
+/obj/item/reagent_container/food/condiment/hotsauce/franks{
+	pixel_x = 2;
+	pixel_y = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
@@ -33226,8 +33204,8 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "blue";
-	tag = "icon-blue"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/squads/delta)
 "clr" = (
@@ -34455,7 +34433,7 @@
 	tag = "icon-door_open"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
-	name = "\improper Brig Cryo Pods"
+	name = "\improper Cryogenics Bay"
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/cryo)
@@ -34638,10 +34616,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/charlie{
+	dir = 1
+	},
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "emerald";
-	tag = "icon-emerald (NORTH)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/squads/charlie)
 "czJ" = (
@@ -36412,11 +36392,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/surgery)
-"dlX" = (
-/obj/structure/surface/table/almayer,
-/obj/item/facepaint/green,
-/turf/open/floor/almayer,
-/area/almayer/squads/charlie)
 "dmg" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/sign/safety/coffee{
@@ -39764,17 +39739,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
-"eEh" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	tag = "icon-intact-supply (EAST)"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/bed/chair,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/bravo)
 "eEo" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
@@ -43607,6 +43571,7 @@
 /area/almayer/shipboard/starboard_point_defense)
 "gnu" = (
 /obj/structure/surface/table/almayer,
+/obj/item/facepaint/green,
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie)
 "gnv" = (
@@ -48959,6 +48924,10 @@
 /obj/item/trash/USCMtray{
 	pixel_y = 7
 	},
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_x = 10;
+	pixel_y = 22
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo)
 "iIY" = (
@@ -49515,10 +49484,6 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/item/reagent_container/food/condiment/hotsauce/franks{
-	pixel_x = -7;
-	pixel_y = 10
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/delta)
@@ -52234,9 +52199,8 @@
 /area/almayer/squads/bravo)
 "kiV" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
-	pixel_x = 7;
-	pixel_y = 7
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco{
+	pixel_x = 11
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -55914,10 +55878,6 @@
 /area/almayer/hallways/stern_hallway)
 "lLC" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/condiment/hotsauce/franks{
-	pixel_x = -7;
-	pixel_y = 10
-	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie)
 "lLS" = (
@@ -57669,7 +57629,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/bed/chair,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
@@ -59422,9 +59381,9 @@
 	},
 /area/almayer/hallways/vehiclehangar)
 "nrw" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
-	pixel_x = 4
+/obj/structure/bed/chair{
+	dir = 4;
+	tag = "icon-chair (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -61991,9 +61950,8 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red";
-	tag = "icon-red (NORTH)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/squads/alpha)
 "ozr" = (
@@ -64761,6 +64719,7 @@
 /area/almayer/hull/lower_hull/l_a_s)
 "pQN" = (
 /obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/condiment/hotsauce/franks,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "pQP" = (
@@ -66522,7 +66481,7 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/cells)
 "qFG" = (
-/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -68224,7 +68183,7 @@
 /area/almayer/squads/delta)
 "rrB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
-	name = "\improper Command Cryo Storage Airlock"
+	name = "\improper Cryogenics Bay"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -69582,10 +69541,6 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "rUh" = (
-/obj/structure/bed/chair{
-	dir = 4;
-	tag = "icon-chair (EAST)"
-	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "emerald";
@@ -70454,10 +70409,6 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "spS" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -72432,6 +72383,10 @@
 /area/almayer/hull/lower_hull/l_f_s)
 "tig" = (
 /obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco{
+	pixel_x = 14;
+	pixel_y = 20
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha)
 "tii" = (
@@ -75270,7 +75225,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 1;
-	name = "\improper Brig Cryo Pods"
+	name = "\improper Cryogenics Bay"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -75281,6 +75236,10 @@
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
 	pixel_x = 5
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_x = -8;
+	pixel_y = 22
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo)
@@ -81486,10 +81445,6 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "wUI" = (
-/obj/structure/bed/chair{
-	dir = 4;
-	tag = "icon-chair (EAST)"
-	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -82220,7 +82175,10 @@
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "xhQ" = (
-/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/bravo{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -129255,7 +129213,7 @@ bIT
 hNw
 wos
 bMC
-bRf
+fcB
 rUh
 jLj
 wPC
@@ -129458,7 +129416,7 @@ bIT
 hNw
 sZq
 jZv
-dlX
+cgy
 nrw
 spS
 lBv
@@ -129625,7 +129583,7 @@ mdo
 mJj
 byn
 gip
-eEh
+bnt
 bJH
 iIR
 aVf
@@ -129662,8 +129620,8 @@ hNw
 sZq
 jZv
 gnu
-gnu
 bOQ
+chR
 cjg
 urN
 hNw
@@ -130474,7 +130432,7 @@ bJC
 bJC
 kGF
 chq
-chq
+bRf
 onN
 cjg
 qki

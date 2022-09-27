@@ -301,17 +301,22 @@ const ScannerLimbs = (props, context) => {
   const limb_data = Object.values(limb_data_lists);
   const bodyscanner = detail_level >= 1;
 
+  limb_data.forEach(limb => {
+    limb.unbandaged = !limb.bandaged && limb.brute > 0 && !limb.limb_type;
+    limb.unsalved = !limb.salved && limb.burn > 0 && !limb.limb_type;
+  });
+
   return (
     <Section title="Limbs Damaged">
       <Stack vertical fill>
         <Box width="100%" height="15px">
-          <Box inline width="80px"></Box>
+          <Box inline width="80px" />
           <Box inline width="50px" bold color="red">Brute</Box>
           <Box inline width="50px" bold color="orange">Burn</Box>
         </Box>
         {
           limb_data.map(limb => (
-            <Flex width="100%" minHeight="15px">
+            <Flex key={limb.name} width="100%" minHeight="15px">
               <Flex.Item basis="80px" shrink="0" bold>
                 {limb.name[0].toUpperCase() + limb.name.slice(1)}
               </Flex.Item>
@@ -324,14 +329,14 @@ const ScannerLimbs = (props, context) => {
                   <Flex.Item basis="fit-content" shrink="0">
                     <Box inline width="50px" 
                       color={limb.brute > 0 ? "red" : "white"} 
-                      bold={!limb.bandaged && limb.brute > 0 && !limb.limb_type}
-                      italic={!limb.bandaged && limb.brute > 0 && !limb.limb_type}>
+                      bold={limb.unbandaged}
+                      italic={limb.unbandaged}>
                       {limb.brute}
                     </Box>
                     <Box inline width="50px" 
                       color={limb.burn > 0 ? "orange" : "white"} 
-                      bold={!limb.salved && limb.burn > 0 && !limb.limb_type}
-                      italic={!limb.salved && limb.burn > 0 && !limb.limb_type}>
+                      bold={limb.unsalved}
+                      italic={limb.unsalved}>
                       {limb.burn}
                     </Box>
                   </Flex.Item>

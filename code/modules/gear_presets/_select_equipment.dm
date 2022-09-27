@@ -180,9 +180,9 @@
 		if(rankpath)
 			var/obj/item/clothing/accessory/ranks/R = new rankpath()
 			if(H.wear_suit && H.wear_suit.can_attach_accessory(R))
-				H.wear_suit.attach_accessory(H, R)
+				H.wear_suit.attach_accessory(H, R, TRUE)
 			else if(H.w_uniform && H.w_uniform.can_attach_accessory(R))
-				H.w_uniform.attach_accessory(H, R)
+				H.w_uniform.attach_accessory(H, R, TRUE)
 			else
 				qdel(R)
 
@@ -209,9 +209,9 @@
 			medal.recipient_rank = current_rank
 
 			if(H.wear_suit && H.wear_suit.can_attach_accessory(medal))
-				H.wear_suit.attach_accessory(H, medal)
+				H.wear_suit.attach_accessory(H, medal, TRUE)
 			else if(H.w_uniform && H.w_uniform.can_attach_accessory(medal))
-				H.w_uniform.attach_accessory(H, medal)
+				H.w_uniform.attach_accessory(H, medal, TRUE)
 			else
 				if(!H.equip_to_slot_if_possible(medal, WEAR_IN_BACK, disable_warning = TRUE))
 					if(!H.equip_to_slot_if_possible(medal, WEAR_L_HAND))

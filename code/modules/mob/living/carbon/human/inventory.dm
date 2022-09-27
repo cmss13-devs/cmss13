@@ -240,11 +240,11 @@
 	switch(slot)
 		if(WEAR_BACK)
 			back = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_back()
 		if(WEAR_FACE)
 			wear_mask = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			sec_hud_set_ID()
 			wear_mask_update(W, TRUE)
 			update_inv_wear_mask()
@@ -253,44 +253,44 @@
 			handcuff_update()
 		if(WEAR_LEGCUFFS)
 			legcuffed = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			legcuff_update()
 		if(WEAR_L_HAND)
 			l_hand = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_l_hand()
 		if(WEAR_R_HAND)
 			r_hand = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_r_hand()
 		if(WEAR_WAIST)
 			belt = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_belt()
 		if(WEAR_ID)
 			wear_id = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			sec_hud_set_ID()
 			hud_set_squad()
 			update_inv_wear_id()
 			name = get_visible_name()
 		if(WEAR_L_EAR)
 			wear_l_ear = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_ears()
 		if(WEAR_R_EAR)
 			wear_r_ear = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_ears()
 		if(WEAR_EYES)
 			glasses = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_tint()
 			update_glass_vision(W)
 			update_inv_glasses()
 		if(WEAR_HANDS)
 			gloves = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_gloves()
 		if(WEAR_HEAD)
 			head = W
@@ -304,12 +304,12 @@
 				update_inv_wear_mask()
 			if(head.flags_inv_hide & HIDEEYES)
 				update_inv_glasses()
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_tint()
 			update_inv_head()
 		if(WEAR_FEET)
 			shoes = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_shoes()
 		if(WEAR_JACKET)
 			wear_suit = W
@@ -319,20 +319,20 @@
 				update_inv_w_uniform()
 			if( wear_suit.flags_inv_hide & (HIDEALLHAIR|HIDETOPHAIR|HIDELOWHAIR) )
 				update_hair()
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_wear_suit()
 		if(WEAR_BODY)
 			w_uniform = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_suit_sensors()
 			update_inv_w_uniform()
 		if(WEAR_L_STORE)
 			l_store = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_pockets()
 		if(WEAR_R_STORE)
 			r_store = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_pockets()
 		if(WEAR_ACCESSORY)
 			var/obj/item/clothing/accessory/A = W
@@ -344,7 +344,7 @@
 			update_inv_wear_suit()
 		if(WEAR_J_STORE)
 			s_store = W
-			W.equipped(src, slot)
+			W.equipped(src, slot, disable_warning)
 			update_inv_s_store()
 		if(WEAR_IN_BACK)
 			var/obj/item/storage/S = back

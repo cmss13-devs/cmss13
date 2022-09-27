@@ -39,10 +39,10 @@
 			to_chat(H, SPAN_NOTICE("The ID lock rejects your ID"))
 	update_icon()
 
-/obj/item/storage/backpack/equipped(mob/user, slot)
+/obj/item/storage/backpack/equipped(mob/user, slot, silent)
 	if(slot == WEAR_BACK)
 		mouse_opacity = 2 //so it's easier to click when properly equipped.
-		if(use_sound)
+		if(use_sound && !silent)
 			playsound(loc, use_sound, 15, TRUE, 6)
 		if(!worn_accessible) //closes it if it's open.
 			storage_close(user)

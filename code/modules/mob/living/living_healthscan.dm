@@ -131,9 +131,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		var/unknown_implants = 0
 		for(var/obj/limb/limb in human_target_mob.limbs)
 			var/internal_bleeding_check = FALSE
-			for(var/datum/wound/wound in limb.wounds)
-				if(!istype(wound, /datum/wound/internal_bleeding))
-					continue
+			for(var/datum/effects/bleeding/internal/ib in limb.bleeding_effects_list)
 				internal_bleeding = TRUE
 				if(detail_level >= DETAIL_LEVEL_BODYSCAN)
 					internal_bleeding_check = TRUE
@@ -172,7 +170,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			//broken-ness and splints
 			var/limb_status = null
 			if(limb.status & LIMB_BROKEN)
-				if(detail_level == DETAIL_LEVEL_HEALTHANALYSER)
+				if(detail_level == DETAIL_LEVEL_HEALTHANALYSER && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 					if(limb.name in core_body_parts) // sigh... le snowflake
 						var/showmessage = FALSE
 						switch(limb.name)

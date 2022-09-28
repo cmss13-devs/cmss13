@@ -312,11 +312,14 @@ const ScannerLimbs = (props, context) => {
   return (
     <Section title="Limbs Damaged">
       <Stack vertical fill>
-        <Box width="100%" height="15px">
-          <Box inline width="85px" />
-          <Box inline width="55px" bold color="red">Brute</Box>
-          <Box inline width="55px" bold color="orange">Burn</Box>
-        </Box>
+        <Flex width="100%" height="20px">
+          <Flex.Item basis="85px" />
+          <Flex.Item basis="55px" bold color="red">Brute</Flex.Item>
+          <Flex.Item basis="55px" bold color="orange">Burn</Flex.Item>
+          <Flex.Item grow="1" shrink="1" textAlign="right" nowrap>
+            {"{ } = Untreated"}
+          </Flex.Item>
+        </Flex>
         {
           limb_data.map(limb => (
             <Flex key={limb.name} width="100%" minHeight="15px" py="3px"
@@ -332,17 +335,13 @@ const ScannerLimbs = (props, context) => {
                 <>
                   <Flex.Item basis="fit-content" shrink="0">
                     <Box inline width="50px"
-                      color={limb.brute > 0 ? "red" : "white"} 
-                      bold={limb.unbandaged}
-                      italic={limb.unbandaged}>
-                      {limb.brute}
+                      color={limb.brute > 0 ? "red" : "white"}>
+                      {limb.unbandaged ? `{${limb.brute}}` : `${limb.brute}`}
                     </Box>
                     <Box inline width="5px" />
                     <Box inline width="50px"
-                      color={limb.burn > 0 ? "orange" : "white"} 
-                      bold={limb.unsalved}
-                      italic={limb.unsalved}>
-                      {limb.burn}
+                      color={limb.burn > 0 ? "orange" : "white"}>
+                      {limb.unsalved ? `{${limb.burn}}` : `${limb.burn}`}
                     </Box>
                     <Box inline width="5px" />
                   </Flex.Item>

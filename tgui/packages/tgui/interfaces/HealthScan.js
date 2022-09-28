@@ -47,8 +47,8 @@ export const HealthScan = (props, context) => {
 
   return (
     <Window
-      width={550}
-      height={bodyscanner ? 700 : 500}
+      width={500}
+      height={bodyscanner ? 700 : 600}
       theme={theme}>
       <Window.Content scrollable>
         <Section title={"Patient: " + patient}>

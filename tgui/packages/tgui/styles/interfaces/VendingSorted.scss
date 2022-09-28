@@ -4,6 +4,14 @@
 
 $title-text-color: base.$color-fg !default;
 
+.VendingSorted__HideDesc {
+  pointer-events: none;
+}
+
+.VendingSorted__ShowDesc {
+  pointer-events: all;
+}
+
 .VendingSorted__SearchBox {
   position: fixed;
   width: calc(100% - 25px);
@@ -21,14 +29,10 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__CategorySection {
-  padding-top: 2.5px;
-  padding-bottom: 2.5px;
   width: 100%
 }
 
 .VendingSorted__Category {
-  padding-top: 2.5px;
-  padding-bottom: 2.5px;
   width: 100%
 }
 
@@ -43,8 +47,16 @@ $title-text-color: base.$color-fg !default;
 
 .VendingSorted__VendButton {
   width: 25px;
-  height: 25px;
-  line-height: 25px;
+  height: 15px;
+  line-height: 15px;
+}
+
+.VendingSorted__RecommendedVendButton {
+  background-color: #3a9b52;
+}
+
+.VendingSorted__MandatoryVendButton {
+  color: rgb(128, 83, 0);
 }
 
 .VendingSorted__Icon {
@@ -52,7 +64,7 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__Text {
-  font-size: 14px;
+  font-size: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -85,7 +97,7 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__ItemBox {
-  height: 25px;
+  height: 15px;
 }
 
 

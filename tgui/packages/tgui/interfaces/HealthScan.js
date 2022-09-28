@@ -358,7 +358,7 @@ const ScannerLimbs = (props, context) => {
                       </Box>
                     ) : null}
                     {limb.limb_status ? (
-                      <Box inline color={"lightpink"} bold={1}>
+                      <Box inline color={(limb.limb_status === "Fracture" || "Possible Fracture") ? "white" : "red"} bold={1}>
                         [{limb.limb_status}]
                       </Box>
                     ) : null}

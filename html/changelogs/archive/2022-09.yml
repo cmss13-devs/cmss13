@@ -418,3 +418,8 @@
   Segrain:
   - bugfix: Protheses printers no longer cause runtime errors by trying to exist.
   - bugfix: Spawning humans no longer spam messages and sounds for being equipped.
+  stanalbatross:
+  - bugfix: the healthscanner will now show IB properly
+  - bugfix: the healthscanner will now properly show frac info to medics
+  - qol: changed the frac message colour to white to make it stand out more
+  - bugfix: fixed some bad del runtimes on init

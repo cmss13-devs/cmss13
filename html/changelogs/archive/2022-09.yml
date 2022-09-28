@@ -417,3 +417,4 @@
 2022-09-28:
   Segrain:
   - bugfix: Protheses printers no longer cause runtime errors by trying to exist.
+  - bugfix: Spawning humans no longer spam messages and sounds for being equipped.

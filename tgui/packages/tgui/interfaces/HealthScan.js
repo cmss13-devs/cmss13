@@ -37,6 +37,7 @@ export const HealthScan = (props, context) => {
     advice,
     species,
   } = data;
+  const bloodpct = blood_amount/560
   const healthanalyser = detail_level < 1;
   const bodyscanner = detail_level >= 1;
   const ghostscan = detail_level >= 2;
@@ -108,7 +109,7 @@ export const HealthScan = (props, context) => {
               <Box inline width={"5px"} />
               <Box inline>
                 <ProgressBar>
-                  Burn: <Box inline bold color={"orange"}>{total_burn}</Box>
+                  Burn: <Box inline bold color={"#ffb833"}>{total_burn}</Box>
                 </ProgressBar>
               </Box>
               <Box inline width={"5px"} />
@@ -179,7 +180,7 @@ export const HealthScan = (props, context) => {
             {has_blood ? (
               <LabeledList.Item
                 label={"Blood Type " + blood_type}>
-                <Box color={blood_amount/560 > 0.9 ? "green" : blood_amount/560 > .7 ? "orange" : "red"}>
+                <Box color={bloodpct > 0.9 ? "green" : bloodpct > .7 ? "orange" : "red"}>
                   {Math.round(blood_amount/5.6)}%, {blood_amount}cl
                 </Box>
               </LabeledList.Item>
@@ -315,7 +316,7 @@ const ScannerLimbs = (props, context) => {
         <Flex width="100%" height="20px">
           <Flex.Item basis="85px" />
           <Flex.Item basis="55px" bold color="red">Brute</Flex.Item>
-          <Flex.Item basis="55px" bold color="orange">Burn</Flex.Item>
+          <Flex.Item basis="55px" bold color="#ffb833">Burn</Flex.Item>
           <Flex.Item grow="1" shrink="1" textAlign="right" nowrap>
             {"{ } = Untreated"}
           </Flex.Item>
@@ -340,7 +341,7 @@ const ScannerLimbs = (props, context) => {
                     </Box>
                     <Box inline width="5px" />
                     <Box inline width="50px"
-                      color={limb.burn > 0 ? "orange" : "white"}>
+                      color={limb.burn > 0 ? "#ffb833" : "white"}>
                       {limb.unsalved ? `{${limb.burn}}` : `${limb.burn}`}
                     </Box>
                     <Box inline width="5px" />

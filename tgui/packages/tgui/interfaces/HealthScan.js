@@ -37,7 +37,9 @@ export const HealthScan = (props, context) => {
     advice,
     species,
   } = data;
-  const bloodpct = blood_amount/560
+  
+  const bloodpct = blood_amount/560;
+
   const healthanalyser = detail_level < 1;
   const bodyscanner = detail_level >= 1;
   const ghostscan = detail_level >= 2;
@@ -358,7 +360,7 @@ const ScannerLimbs = (props, context) => {
                       </Box>
                     ) : null}
                     {limb.limb_status ? (
-                      <Box inline color={"lightpink"} bold={1}>
+                      <Box inline color={(limb.limb_status === "Fracture" || "Possible Fracture") ? "white" : "red"} bold={1}>
                         [{limb.limb_status}]
                       </Box>
                     ) : null}

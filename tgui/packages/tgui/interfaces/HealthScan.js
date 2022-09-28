@@ -407,7 +407,7 @@ const ScannerLimbs = (props, context) => {
                   ) : null}
                   {limb.limb_status ? (
                     <>
-                      <Box inline color={"red"} bold={1}>
+                      <Box inline color={(limb.limb_status === "Fracture" || "Possible Fracture") ? "white" : "red"} bold={1}>
                         [{limb.limb_status}]
                       </Box>
                       <Box inline width={"5px"} />

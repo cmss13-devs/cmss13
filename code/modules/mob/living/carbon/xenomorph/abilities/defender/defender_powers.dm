@@ -433,7 +433,7 @@
 
 
 	if(X.a_intent == INTENT_HARM) //If we use the ability on hurt intent, we throw them in front; otherwise we throw them behind.
-		LM.range = 2
+		LM.range = 3
 		for (var/x in 0 to fling_distance-1)
 			temp = get_step(T, facing)
 			if (!temp)
@@ -442,7 +442,7 @@
 		X.visible_message(SPAN_XENOWARNING("\The [X] flings [H] away with its tail!"), SPAN_XENOWARNING("You fling [H] away with your tail!"))
 
 	else
-		LM.range = 4
+		LM.range = 2
 		facing = get_dir(H, X)
 
 		for (var/x in 0 to fling_distance-1)

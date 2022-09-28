@@ -390,10 +390,10 @@
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldown_message = "You feel your spit glands swell with ichor. You can spit again."
+	cooldown_message = "You feel your neurotoxin glands swell with ichor. You can spit again."
 	xeno_cooldown = 60 SECONDS
-	var/sound_to_play = 0
-	var/spitting = FALSE // For windup spits, indicates if we are already spitting so we can't queue up multiple spits at the same time
+	var/spitting = FALSE
+	var/sound_to_play = "acid_spit"
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3

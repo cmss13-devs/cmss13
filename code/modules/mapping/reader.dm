@@ -313,10 +313,10 @@
 		if(!instance)
 			instance = GLOB.areas_by_type[atype]
 			if(!instance)
-			///	instance = new atype(null)
+				instance = new atype(null)
 			areaCache[atype] = instance
 		if(crds)
-			//instance.contents.Add(crds)
+			instance.contents.Add(crds)
 
 		if(GLOB.use_preloader && instance)
 			GLOB._preloader.load(instance)

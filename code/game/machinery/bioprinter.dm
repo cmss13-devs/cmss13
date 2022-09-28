@@ -24,7 +24,6 @@
 		for(var/i in subtypesof(/datum/bioprinter_recipe))
 			var/datum/bioprinter_recipe/bp_recipe = new i
 			products += bp_recipe
-			QDEL_NULL(i)
 
 /obj/structure/machinery/bioprinter/update_icon()
 	. = ..()

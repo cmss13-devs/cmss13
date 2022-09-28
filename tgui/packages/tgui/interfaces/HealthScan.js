@@ -301,8 +301,8 @@ const ScannerLimbs = (props, context) => {
   const limb_data = Object.values(limb_data_lists);
   const bodyscanner = detail_level >= 1;
 
-  var index = 0;
-  const row_bg_color =  "rgba(255, 255, 255, .05)";
+  let index = 0;
+  const row_bg_color = "rgba(255, 255, 255, .05)";
 
   limb_data.forEach(limb => {
     limb.unbandaged = !limb.bandaged && limb.brute > 0 && !limb.limb_type;
@@ -323,7 +323,7 @@ const ScannerLimbs = (props, context) => {
         {
           limb_data.map(limb => (
             <Flex key={limb.name} width="100%" minHeight="15px" py="3px"
-              backgroundColor={index++ % 2 == 0 ? row_bg_color : ""}>
+              backgroundColor={index++ % 2 === 0 ? row_bg_color : ""}>
               <Flex.Item basis="85px" shrink="0" bold pl="3px">
                 {limb.name[0].toUpperCase() + limb.name.slice(1)}
               </Flex.Item>

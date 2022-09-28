@@ -414,3 +414,6 @@
   - bugfix: APCs should no longer spawn in doubles.
   Shad0vvs:
   - bugfix: Fixes the health scanner not updating windows properly.
+2022-09-28:
+  Segrain:
+  - bugfix: Protheses printers no longer cause runtime errors by trying to exist.

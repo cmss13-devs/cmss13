@@ -24,6 +24,12 @@
 	icon_state = "flight_recorder"
 	w_class = SIZE_LARGE
 
+/obj/item/prop/almayer/flight_recorder/colony
+	name = "\improper CIR-60 colony information recorder"
+	desc = "A small red box that records colony announcements, colonist flatlines and other key readouts. Usually refered to the black box, although this one comes in bloody red."
+	icon_state = "flight_recorder"
+	w_class = SIZE_LARGE
+
 /obj/item/prop/almayer/lantern_pod
 	name = "\improper LANTERN pod"
 	desc = "A long green box mounted into a dropship to provide various optical support for its ground targeting systems."

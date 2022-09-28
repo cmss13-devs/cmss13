@@ -11953,9 +11953,7 @@
 	pixel_y = 20
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/item/prop/almayer/flight_recorder{
-	desc = "A small red box that contains colony data. Usually refered to the black box, although this one comes in bloody red.";
-	name = "\improper FR-112 data recorder";
+/obj/item/prop/almayer/flight_recorder/colony{
 	pixel_x = -6;
 	pixel_y = 10
 	},

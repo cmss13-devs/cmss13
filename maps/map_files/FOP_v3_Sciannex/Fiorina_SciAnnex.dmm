@@ -5437,6 +5437,11 @@
 	dir = 1;
 	pixel_y = 21
 	},
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "dhs" = (
@@ -39885,20 +39890,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-"xRN" = (
-/obj/structure/machinery/blackbox_recorder,
-/obj/item/prop/almayer/flight_recorder{
-	desc = "A small red box that contains colony data. Usually refered to the black box, although this one comes in bloody red.";
-	name = "\improper FR-112 data recorder";
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
-	},
-/area/fiorina/tumor/ice_lab)
 "xSd" = (
 /turf/open/floor/prison{
 	dir = 5;
@@ -64929,7 +64920,7 @@ azZ
 azZ
 azZ
 lJa
-xRN
+xjK
 lax
 nDJ
 dsT

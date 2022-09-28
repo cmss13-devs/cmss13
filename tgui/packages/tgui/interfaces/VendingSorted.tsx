@@ -60,10 +60,11 @@ const RecordName = (props: RecordNameProps) => {
       <span className={classes([
         'VendingSorted__Text',
         'VendingSorted__RegularItemText',
+        'VendingSorted__HideDesc',
         isMandatory && 'VendingSorted__MandatoryItemText',
         isRecommended && 'VendingSorted__RecommendedItemText',
       ])}>
-        {record.prod_name} {description && <Icon name="circle-info" />}
+        {record.prod_name}   {description && <Icon name="circle-info" className="VendingSorted__ShowDesc" />}
       </span>
     );
   };
@@ -71,7 +72,6 @@ const RecordName = (props: RecordNameProps) => {
   if (!description) {
     return display_text();
   }
-
   return (
     <Tooltip
       position="bottom-start"
@@ -95,6 +95,9 @@ const VendableItem = (props: VenableItem, context) => {
 
   const quantity = data.stock_listing[record.prod_index - 1];
   const available = quantity > 0;
+  const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
+  const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
+
   return (
     <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
       <Flex.Item>
@@ -104,31 +107,34 @@ const VendableItem = (props: VenableItem, context) => {
       <Flex.Item>
         <Box className="VendingSorted__Spacer" />
       </Flex.Item>
-      <Flex.Item grow={1}>
-        <RecordName record={record} />
-      </Flex.Item>
 
-      <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
-      </Flex.Item>
-
-      <Flex.Item width={5}>
-        <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
-          {quantity}
-        </span>
-      </Flex.Item>
-
-      <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
-      </Flex.Item>
       <Flex.Item justify="right">
         <Button
-          className={classes(["VendingSorted__Button", 'VendingSorted__VendButton'])}
+          className={classes([
+            "VendingSorted__Button",
+            'VendingSorted__VendButton',
+            isRecommended && 'VendingSorted__RecommendedVendButton',
+            isMandatory && 'VendingSorted__MandatoryVendButton',
+          ])}
           preserveWhitespace
           icon={available ? "circle-down" : "xmark"}
           onClick={() => act('vend', record)}
           textAlign="center"
           disabled={!available} />
+      </Flex.Item>
+
+      <Flex.Item>
+        <Box className="VendingSorted__Spacer" />
+      </Flex.Item>
+
+      <Flex.Item width={2}>
+        <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
+          {quantity}
+        </span>
+      </Flex.Item>
+
+      <Flex.Item grow={1}>
+        <RecordName record={record} />
       </Flex.Item>
     </Flex>
   );
@@ -152,7 +158,6 @@ const ItemDescriptionViewer = (props: DescriptionProps, context) => {
 };
 
 export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
-  const { data } = useBackend<VendingData>(context);
   const { category } = props;
   const [searchTerm, _] = useLocalState(context, 'searchTerm', "");
   const searchFilter = (x: VendingRecord) =>
@@ -204,7 +209,7 @@ export const VendingSorted = (_, context) => {
   return (
     <Window
       height={800}
-      width={500}
+      width={400}
       theme={getTheme(data.theme)}
     >
       <Window.Content scrollable>

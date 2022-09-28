@@ -423,6 +423,8 @@
   Segrain:
   - bugfix: Protheses printers no longer cause runtime errors by trying to exist.
   - bugfix: Spawning humans no longer spam messages and sounds for being equipped.
+  StarkSilence:
+  - qol: Simplified TGUI Health Scanner interface for readability.
   stanalbatross:
   - bugfix: the healthscanner will now show IB properly
   - bugfix: the healthscanner will now properly show frac info to medics

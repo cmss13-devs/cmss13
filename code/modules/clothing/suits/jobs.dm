@@ -253,7 +253,7 @@
 		/obj/item/tool/wrench,
 		/obj/item/clothing/mask/gas,
 
-		/obj/item/weapon/gun/,
+		/obj/item/weapon/gun,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/melee/baton,

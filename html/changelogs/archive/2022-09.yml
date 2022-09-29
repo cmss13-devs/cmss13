@@ -435,3 +435,6 @@
   - rscadd: C4 (3), Machete Scabbard (2), Machete Pouch, M-M Pouch, Small RTO Pack
       (12), RO Cap (12), SO Cap (12), RO Jacket (12), Ball-Cap (12), Hi-Cap Blowtorch
       (4), Industrial Blowtorch (2), USCM Medical Uniform
+  totalepicness:
+  - bugfix: Fixes crew compartment attachment points being able to hide objects and
+      mobs.

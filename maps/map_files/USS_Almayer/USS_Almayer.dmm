@@ -8032,17 +8032,6 @@
 /obj/item/device/flashlight/pen,
 /turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
-"avq" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (WEST)"
-	},
-/obj/structure/machinery/cm_vending/clothing/military_police,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/shipboard/brig/general_equipment)
 "avr" = (
 /obj/structure/bed/sofa/south/grey/left{
 	pixel_y = 12
@@ -24646,8 +24635,8 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 1;
+	icon_state = "cargo_arrow"
 	},
 /area/almayer/shipboard/brig/general_equipment)
 "bEw" = (
@@ -27608,13 +27597,6 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/shipboard/sea_office)
-"bOU" = (
-/obj/structure/machinery/cm_vending/clothing/military_police,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/shipboard/brig/general_equipment)
 "bOX" = (
 /turf/open/floor/almayer{
 	icon_state = "emeraldcorner";
@@ -35401,7 +35383,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/obj/structure/largecrate/supply,
+/obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -36883,6 +36865,16 @@
 	tag = "icon-silvercorner (EAST)"
 	},
 /area/almayer/command/cichallway)
+"dvs" = (
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/living/cryo_cells)
 "dvF" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security/wooden_tv/ot{
@@ -38194,17 +38186,13 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "eaf" = (
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 15;
-	pixel_y = 32
+/obj/structure/machinery/cm_vending/clothing/military_police{
+	density = 0;
+	pixel_y = 16
 	},
-/obj/structure/sign/safety/hazard{
-	pixel_y = 32
-	},
-/obj/structure/machinery/cm_vending/clothing/military_police,
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/shipboard/brig/general_equipment)
 "eai" = (
@@ -43224,10 +43212,14 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "geX" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
 /obj/structure/pipes/vents/scrubber,
+/obj/structure/sign/safety/ammunition{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
@@ -49910,9 +49902,12 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "jeK" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 1;
+	icon_state = "cargo_arrow"
 	},
 /area/almayer/shipboard/brig/general_equipment)
 "jeQ" = (
@@ -65643,6 +65638,12 @@
 /obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
+"qkn" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = -17
+	},
+/turf/open/floor/almayer,
+/area/almayer/hull/upper_hull/u_f_s)
 "qld" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -75511,9 +75512,11 @@
 	},
 /area/almayer/hull/lower_hull/l_a_s)
 "uzm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Starboard Viewing Room"
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Brig Lockdown Shutters";
+	name = "\improper Brig Lockdown Shutter"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -76912,8 +76915,8 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
 /obj/item/device/flash,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 26
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -98426,7 +98429,7 @@ pCi
 mNR
 wcn
 cQv
-bOU
+eaf
 bEv
 fLn
 rXd
@@ -98629,7 +98632,7 @@ pCi
 tCb
 aou
 cQv
-avq
+eaf
 bEv
 fLn
 avz
@@ -98832,7 +98835,7 @@ pCi
 oCL
 wcn
 cQv
-bOU
+eaf
 bEv
 qRo
 rXd
@@ -99035,7 +99038,7 @@ pCi
 wcn
 rPC
 cQv
-bOU
+eaf
 jeK
 mWe
 rXd
@@ -99848,8 +99851,8 @@ sHM
 aHY
 akC
 cVJ
-avl
-avl
+rPC
+rPC
 vxM
 sVy
 mKh
@@ -100051,7 +100054,7 @@ adu
 aHZ
 akC
 cRc
-avl
+rPC
 wcn
 vxM
 vAI
@@ -100254,7 +100257,7 @@ adu
 aHZ
 akC
 oCL
-avl
+rPC
 wcn
 vxM
 vxM
@@ -100457,7 +100460,7 @@ adu
 btv
 akC
 dDC
-avl
+rPC
 wcn
 vxM
 wVV
@@ -100660,8 +100663,8 @@ adu
 aHZ
 akC
 eKM
-avl
-avl
+ake
+rPC
 vxM
 dFC
 bRH
@@ -100863,7 +100866,7 @@ adu
 aHZ
 akC
 akC
-rPC
+tRX
 uzm
 vxM
 eyg
@@ -101066,7 +101069,7 @@ adu
 hxG
 akC
 avl
-avl
+qkn
 wcn
 vxM
 vxM
@@ -130608,7 +130611,7 @@ aLG
 aZi
 aLG
 bbs
-cbh
+dvs
 xYP
 bbs
 cdm

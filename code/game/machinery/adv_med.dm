@@ -188,6 +188,7 @@
 	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 	var/delete
 	var/temphtml
+	var/datum/tgui/last_scan_ui
 
 /obj/structure/machinery/body_scanconsole/Initialize()
 	. = ..()
@@ -279,12 +280,23 @@
 	// Do I want to remove the feature from medical records computers? no
 	// and so here we are.
 	N.fields["last_scan_result"] = dat
+
+	if (last_scan_ui)
+		var/datum/health_scan/ui_src = last_scan_ui.src_object
+		if (ui_src)
+			// Assumption: health_display can't be null because it was used
+			ui_src.target_mob.health_display.transfer(H)
+		else
+			last_scan_ui = null
+	if(!H.health_display)
+		H.create_health_display()
+
 	N.fields["last_tgui_scan_result"] = H.health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_BODYSCAN)
 	N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
 	visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [H.real_name]"))
 	playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)
 
-	H.health_display.look_at(user, DETAIL_LEVEL_BODYSCAN, bypass_checks = TRUE)
+	last_scan_ui = H.health_display.look_at(user, DETAIL_LEVEL_BODYSCAN, bypass_checks = TRUE, ui = last_scan_ui)
 
 	return
 

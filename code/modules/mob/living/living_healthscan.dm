@@ -21,8 +21,16 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	SStgui.close_uis(src)
 	return ..()
 
+/datum/health_scan/proc/transfer(var/mob/target)
+	if (target == target_mob)
+		return
+
+	target_mob.health_display = null
+	target_mob = target
+	target_mob.health_display = src
+
 /// This is the proc for interacting with, or looking at, a mob's health display. Also contains skillchecks and the like. You may NOT call tgui interact directly, and you MUST set the detail level.
-/datum/health_scan/proc/look_at(mob/user, var/detail = DETAIL_LEVEL_FULL, var/bypass_checks = FALSE, var/ignore_delay = TRUE, var/alien = FALSE, datum/tgui/ui)
+/datum/health_scan/proc/look_at(mob/user, var/detail = DETAIL_LEVEL_FULL, var/bypass_checks = FALSE, var/ignore_delay = TRUE, var/alien = FALSE, datum/tgui/ui = null)
 	if(!bypass_checks)
 		if(HAS_TRAIT(target_mob, TRAIT_FOREIGN_BIO) && !alien)
 			to_chat(user, SPAN_WARNING("ERROR: Unknown biology detected."))
@@ -42,7 +50,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			return
 
 	detail_level = detail
-	tgui_interact(user, ui)
+	return tgui_interact(user, ui)
 
 /datum/health_scan/ui_state(mob/user)
 	if(isobserver(user))
@@ -52,13 +60,14 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 /datum/health_scan/tgui_interact(mob/user, datum/tgui/ui)
 	if(!target_mob)
-		return
+		return null
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "HealthScan", "[target_mob.name]'s health scan")
+		ui = new(user, src, "HealthScan", "Health Scan")
 		ui.open()
 		ui.set_autoupdate(FALSE)
+	return ui
 
 
 /datum/health_scan/ui_data(mob/user, var/data_detail_level = null)

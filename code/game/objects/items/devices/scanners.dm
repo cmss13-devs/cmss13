@@ -83,6 +83,7 @@ FORENSIC SCANNER
 
 	var/popup_window = TRUE
 	var/last_scan
+	var/datum/tgui/last_scan_ui
 	var/mob/living/last_mob
 	var/alien = FALSE
 
@@ -90,7 +91,16 @@ FORENSIC SCANNER
 	if(!popup_window)
 		last_scan = M.health_scan(user, FALSE, TRUE, popup_window, alien)
 	else
-		M.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
+		if (last_scan_ui)
+			var/datum/health_scan/ui_src = last_scan_ui.src_object
+			if (ui_src)
+				// Assumption: health_display can't be null because it was used
+				ui_src.target_mob.health_display.transfer(M)
+			else
+				last_scan_ui = null
+		if(!M.health_display)
+			M.create_health_display()
+		last_scan_ui = M.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien, ui = last_scan_ui)
 		last_scan = M.health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_HEALTHANALYSER)
 		last_mob = M
 	to_chat(user, SPAN_NOTICE("[user] has analyzed [M]'s vitals."))
@@ -106,7 +116,14 @@ FORENSIC SCANNER
 		return
 
 	if(popup_window)
-		tgui_interact(user)
+		if (last_scan_ui)
+			var/datum/health_scan/ui_src = last_scan_ui.src_object
+			if (ui_src)
+				// Assumption: health_display can't be null because it was used
+				ui_src.target_mob.health_display.transfer(user)
+			else
+				last_scan_ui = null
+		last_scan_ui = tgui_interact(user, last_scan_ui)
 	else
 		user.show_message(last_scan)
 
@@ -114,13 +131,14 @@ FORENSIC SCANNER
 
 /obj/item/device/healthanalyzer/tgui_interact(mob/user, datum/tgui/ui)
 	if(!last_scan)
-		return
+		return null
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "HealthScan", "[last_mob.name]'s health scan")
+		ui = new(user, src, "HealthScan", "Health Scan")
 		ui.open()
 		ui.set_autoupdate(FALSE)
+	return ui
 
 
 /obj/item/device/healthanalyzer/ui_data(mob/user)

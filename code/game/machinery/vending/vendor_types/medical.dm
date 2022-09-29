@@ -14,6 +14,8 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 5
 
+	var/datum/tgui/last_scan_ui
+
 	var/healthscan = TRUE
 	var/list/chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
@@ -144,7 +146,17 @@
 			to_chat(user, SPAN_WARNING("\The [src] does not have health scanning function."))
 			return
 
-		user.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
+		if (last_scan_ui)
+			var/datum/health_scan/ui_src = last_scan_ui.src_object
+			if (ui_src)
+				// Assumption: health_display can't be null because it was used
+				ui_src.target_mob.health_display.transfer(user)
+			else
+				last_scan_ui = null
+		if(!user.health_display)
+			user.create_health_display()
+
+		last_scan_ui = user.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE, ui = last_scan_ui)
 		return
 
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)

@@ -75,7 +75,6 @@
 	var/amount_o_huggers = 0
 	if(huggers_max) //no dividing by zero, sorry
 		amount_o_huggers = round(( huggers_cur / huggers_max ) * 100)
-	var/funny_list = list(1,2,3,4)		//all this logic just so that the sprites dont arrive in the same order, for some nice dynamism :0)
 	switch(amount_o_huggers)
 		if(0)
 			hugger_image_list.Cut()

@@ -42,8 +42,13 @@
 // Any strain or caste-specific state should be stored on behavior_delegate objects
 // which use_ability invocations can modify using typechecks and typecasts where appropriate.
 /datum/action/xeno_action/proc/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/X = owner
 	if(!owner)
 		return FALSE
+	if (!X.check_state() || X.action_busy || QDELETED(X))
+		return
+	if (!action_cooldown_check())
+		return
 	track_xeno_ability_stats()
 	for(var/datum/action/action in owner.actions)
 		action.update_button_icon()

@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 	var/internal_bleeding = FALSE
 
-	if(data_detail_level)
+	if(!isnull(data_detail_level))
 		detail_level = data_detail_level
 	data["detail_level"] = detail_level
 

@@ -287,7 +287,7 @@
 	else
 		last_health_display.target_mob = H
 
-	N.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_BODYSCAN)
+	N.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, DETAIL_LEVEL_BODYSCAN)
 	N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
 	visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [H.real_name]"))
 	playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)

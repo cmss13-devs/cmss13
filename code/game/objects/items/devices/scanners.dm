@@ -98,7 +98,8 @@ FORENSIC SCANNER
 			last_health_display = new(M)
 		else
 			last_health_display.target_mob = M
-		last_scan = last_health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_HEALTHANALYSER)
+		SStgui.close_user_uis(user, src)
+		last_scan = last_health_display.ui_data(user, DETAIL_LEVEL_HEALTHANALYSER)
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
 	to_chat(user, SPAN_NOTICE("[user] has analyzed [M]'s vitals."))
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
@@ -123,9 +124,10 @@ FORENSIC SCANNER
 	if(!last_scan)
 		return null
 
+	SStgui.close_user_uis(user, last_health_display)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "HealthScan", "Health Scan")
+		ui = new(user, src, "HealthScan", "Stored Health Scan")
 		ui.open()
 		ui.set_autoupdate(FALSE)
 	return ui

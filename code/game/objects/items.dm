@@ -245,13 +245,16 @@ cases. Override_icon_state should be a list.*/
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
 /obj/item/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/card/id))
-		if(((flags_item & MOB_LOCK_ON_EQUIP)) && (user == locked_to_mob))
+	if(((flags_item & MOB_LOCK_ON_EQUIP)))
+		to_chat_spaced(world,"B")
+		if(user == locked_to_mob && istype(W,/obj/item/card/id))
+			to_chat_spaced(world,"A")
 			if (alert(user, "Would you like to disable the ID lock for \the [src]. This cannot be undone!", "Confirm", "Yes", "No") == "Yes")
 				to_chat(user, SPAN_WARNING("You unlock \the [src]."))
 				src.flags_item &= ~MOB_LOCK_ON_EQUIP
+				var/turf/userloc = get_turf(user)
+				log_admin("[locked_to_mob] has removed the ID lock on \the [src].[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[userloc.x];Y=[userloc.y];Z=[userloc.z]'>JMP</a>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];</a>)")
 				locked_to_mob = null
-				log_admin("[user] has removed the ID lock on \the [src]. Owner of the item was [locked_to_mob] (CKEY: ([user.ckey]))")
 			return
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W

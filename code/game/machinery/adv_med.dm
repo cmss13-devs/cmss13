@@ -188,7 +188,6 @@
 	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 	var/delete
 	var/temphtml
-	var/datum/tgui/last_scan_ui
 	var/datum/health_scan/last_health_display
 
 /obj/structure/machinery/body_scanconsole/Initialize()
@@ -283,10 +282,6 @@
 	// and so here we are.
 	N.fields["last_scan_result"] = dat
 
-	if (last_scan_ui)
-		var/datum/health_scan/ui_src = last_scan_ui.src_object
-		if (!ui_src)
-			last_scan_ui = null
 	if (!last_health_display)
 		last_health_display = new(H)
 	else
@@ -297,7 +292,7 @@
 	visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [H.real_name]"))
 	playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)
 
-	last_scan_ui = last_health_display.look_at(user, DETAIL_LEVEL_BODYSCAN, bypass_checks = TRUE, ui = last_scan_ui)
+	last_health_display.look_at(user, DETAIL_LEVEL_BODYSCAN, bypass_checks = TRUE)
 
 	return
 

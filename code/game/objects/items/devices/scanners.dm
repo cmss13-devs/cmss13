@@ -83,7 +83,6 @@ FORENSIC SCANNER
 
 	var/popup_window = TRUE
 	var/last_scan
-	var/datum/tgui/last_scan_ui
 	var/datum/health_scan/last_health_display
 	var/alien = FALSE
 
@@ -95,16 +94,12 @@ FORENSIC SCANNER
 	if(!popup_window)
 		last_scan = M.health_scan(user, FALSE, TRUE, popup_window, alien)
 	else
-		if (last_scan_ui)
-			var/datum/health_scan/ui_src = last_scan_ui.src_object
-			if (!ui_src)
-				last_scan_ui = null
 		if (!last_health_display)
 			last_health_display = new(M)
 		else
 			last_health_display.target_mob = M
 		last_scan = last_health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_HEALTHANALYSER)
-		last_scan_ui = last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien, ui = last_scan_ui)
+		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
 	to_chat(user, SPAN_NOTICE("[user] has analyzed [M]'s vitals."))
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
 	src.add_fingerprint(user)
@@ -118,11 +113,7 @@ FORENSIC SCANNER
 		return
 
 	if(popup_window)
-		if (last_scan_ui)
-			var/datum/health_scan/ui_src = last_scan_ui.src_object
-			if (!ui_src)
-				last_scan_ui = null
-		last_scan_ui = tgui_interact(user, last_scan_ui)
+		tgui_interact(user)
 	else
 		user.show_message(last_scan)
 

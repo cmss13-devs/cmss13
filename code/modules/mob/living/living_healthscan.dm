@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			return
 
 	detail_level = detail
-	return tgui_interact(user, ui)
+	tgui_interact(user, ui)
 
 /datum/health_scan/ui_state(mob/user)
 	if(isobserver(user))
@@ -52,15 +52,13 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 /datum/health_scan/tgui_interact(mob/user, datum/tgui/ui)
 	if(!target_mob)
-		return null
+		return
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "HealthScan", "Health Scan")
 		ui.open()
 		ui.set_autoupdate(FALSE)
-	return ui
-
 
 /datum/health_scan/ui_data(mob/user, var/data_detail_level = null)
 	var/list/data = list(

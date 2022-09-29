@@ -14,7 +14,6 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 5
 
-	var/datum/tgui/last_scan_ui
 	var/datum/health_scan/last_health_display
 
 	var/healthscan = TRUE
@@ -151,16 +150,12 @@
 			to_chat(user, SPAN_WARNING("\The [src] does not have health scanning function."))
 			return
 
-		if (last_scan_ui)
-			var/datum/health_scan/ui_src = last_scan_ui.src_object
-			if (!ui_src)
-				last_scan_ui = null
 		if (!last_health_display)
 			last_health_display = new(user)
 		else
 			last_health_display.target_mob = user
 
-		last_scan_ui = last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE, ui = last_scan_ui)
+		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
 		return
 
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)

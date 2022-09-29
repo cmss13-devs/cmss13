@@ -212,8 +212,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/unique_action(mob/user)
 	return
 
+///Returns TRUE if its functionality is successfully used, FALSE if gun's own unloading should proceed instead.
 /obj/item/attachable/proc/unload_attachment(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
-	return
+	return FALSE
 
 /obj/item/attachable/proc/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/user) //For actually shooting those guns.
 	SHOULD_CALL_PARENT(TRUE)
@@ -1877,6 +1878,7 @@ Defined in conflicts.dm of the #defines folder.
 			user.drop_inv_item_to_loc(G, src)
 
 /obj/item/attachable/attached_gun/grenade/unload_attachment(mob/user, reload_override = FALSE, drop_override = FALSE, loc_override = FALSE)
+	. = TRUE //Always uses special unloading.
 	if(!breech_open)
 		to_chat(user, SPAN_WARNING("\The [src] is closed! You must open it to take out grenades!"))
 		return

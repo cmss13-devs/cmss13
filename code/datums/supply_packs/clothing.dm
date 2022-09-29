@@ -120,7 +120,7 @@
 //HOLSTERS & WEBBING BELOW THIS LINE
 //---------------------------------------------
 
-/datum/supply_packs/webbing_brown_black
+/datum/supply_packs/_brown_black
 	name = "Brown And Black Webbing Crate (x2 each)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest,

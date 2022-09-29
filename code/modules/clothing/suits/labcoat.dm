@@ -15,6 +15,7 @@
 		/obj/item/reagent_container/glass/beaker,
 		/obj/item/reagent_container/pill,
 		/obj/item/storage/pill_bottle,
+		/obj/item/paper,
 
 		/obj/item/weapon/gun/,
 		/obj/item/storage/fancy/cigarettes,

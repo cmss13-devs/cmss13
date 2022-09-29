@@ -15,6 +15,7 @@
 	vend_delay = 5
 
 	var/datum/tgui/last_scan_ui
+	var/datum/health_scan/last_health_display
 
 	var/healthscan = TRUE
 	var/list/chem_refill = list(
@@ -52,6 +53,10 @@
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/splint
 		)
+
+/obj/structure/machinery/cm_vending/sorted/medical/Destroy()
+	QDEL_NULL(last_health_display)
+	. = ..()
 
 /obj/structure/machinery/cm_vending/sorted/medical/examine(mob/living/carbon/human/user)
 	. = ..()
@@ -148,15 +153,14 @@
 
 		if (last_scan_ui)
 			var/datum/health_scan/ui_src = last_scan_ui.src_object
-			if (ui_src)
-				// Assumption: health_display can't be null because it was used
-				ui_src.target_mob.health_display.transfer(user)
-			else
+			if (!ui_src)
 				last_scan_ui = null
-		if(!user.health_display)
-			user.create_health_display()
+		if (!last_health_display)
+			last_health_display = new(user)
+		else
+			last_health_display.target_mob = user
 
-		last_scan_ui = user.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE, ui = last_scan_ui)
+		last_scan_ui = last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE, ui = last_scan_ui)
 		return
 
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)

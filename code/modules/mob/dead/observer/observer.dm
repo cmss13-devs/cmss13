@@ -40,6 +40,7 @@
 	var/datum/orbit_menu/orbit_menu
 	var/mob/observetarget = null	//The target mob that the ghost is observing. Used as a reference in logout()
 	var/datum/tgui/last_scan_ui
+	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	alpha = 127
 
@@ -188,6 +189,7 @@
 
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)
+	QDEL_NULL(last_health_display)
 	GLOB.observer_list -= src
 	following = null
 	return ..()
@@ -473,15 +475,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if (last_scan_ui)
 		var/datum/health_scan/ui_src = last_scan_ui.src_object
-		if (ui_src)
-			// Assumption: health_display can't be null because it was used
-			ui_src.target_mob.health_display.transfer(target)
-		else
+		if (!ui_src)
 			last_scan_ui = null
-	if(!target.health_display)
-		target.create_health_display()
-
-	last_scan_ui = target.health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE, ui = last_scan_ui)
+	if (!last_health_display)
+		last_health_display = new(target)
+	else
+		last_health_display.target_mob = target
+	last_scan_ui = last_health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE, ui = last_scan_ui)
 
 /mob/dead/observer/verb/follow_local(var/mob/target)
 	set category = "Ghost.Follow"

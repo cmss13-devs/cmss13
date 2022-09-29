@@ -189,6 +189,7 @@
 	var/delete
 	var/temphtml
 	var/datum/tgui/last_scan_ui
+	var/datum/health_scan/last_health_display
 
 /obj/structure/machinery/body_scanconsole/Initialize()
 	. = ..()
@@ -207,6 +208,7 @@
 
 
 /obj/structure/machinery/body_scanconsole/Destroy()
+	QDEL_NULL(last_health_display)
 	if(connected)
 		if(connected.occupant)
 			connected.go_out()
@@ -283,20 +285,19 @@
 
 	if (last_scan_ui)
 		var/datum/health_scan/ui_src = last_scan_ui.src_object
-		if (ui_src)
-			// Assumption: health_display can't be null because it was used
-			ui_src.target_mob.health_display.transfer(H)
-		else
+		if (!ui_src)
 			last_scan_ui = null
-	if(!H.health_display)
-		H.create_health_display()
+	if (!last_health_display)
+		last_health_display = new(H)
+	else
+		last_health_display.target_mob = H
 
-	N.fields["last_tgui_scan_result"] = H.health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_BODYSCAN)
+	N.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_BODYSCAN)
 	N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
 	visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [H.real_name]"))
 	playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)
 
-	last_scan_ui = H.health_display.look_at(user, DETAIL_LEVEL_BODYSCAN, bypass_checks = TRUE, ui = last_scan_ui)
+	last_scan_ui = last_health_display.look_at(user, DETAIL_LEVEL_BODYSCAN, bypass_checks = TRUE, ui = last_scan_ui)
 
 	return
 

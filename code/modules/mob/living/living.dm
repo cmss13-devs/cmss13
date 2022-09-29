@@ -32,12 +32,6 @@
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
 	QDEL_NULL(hallucinations)
-	QDEL_NULL(health_display)
-
-/mob/living/proc/create_health_display()
-	QDEL_NULL(health_display)
-
-	health_display = new(src)
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage

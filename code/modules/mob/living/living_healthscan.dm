@@ -7,7 +7,7 @@
 
 GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
-/// var reffing this on /mob/living is called HEALTH_DISPLAY
+/// vars reffing this on /mob/dead/observer, /obj/item/device/healthanalyzer, /obj/structure/machinery/cm_vending/sorted/medical, /obj/structure/machinery/body_scanconsole are called last_health_display
 /datum/health_scan
 	var/mob/living/target_mob
 	var/detail_level = DETAIL_LEVEL_FULL
@@ -20,14 +20,6 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	target_mob = null
 	SStgui.close_uis(src)
 	return ..()
-
-/datum/health_scan/proc/transfer(var/mob/target)
-	if (target == target_mob)
-		return
-
-	target_mob.health_display = null
-	target_mob = target
-	target_mob.health_display = src
 
 /// This is the proc for interacting with, or looking at, a mob's health display. Also contains skillchecks and the like. You may NOT call tgui interact directly, and you MUST set the detail level.
 /datum/health_scan/proc/look_at(mob/user, var/detail = DETAIL_LEVEL_FULL, var/bypass_checks = FALSE, var/ignore_delay = TRUE, var/alien = FALSE, datum/tgui/ui = null)

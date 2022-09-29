@@ -84,8 +84,12 @@ FORENSIC SCANNER
 	var/popup_window = TRUE
 	var/last_scan
 	var/datum/tgui/last_scan_ui
-	var/mob/living/last_mob
+	var/datum/health_scan/last_health_display
 	var/alien = FALSE
+
+/obj/item/device/healthanalyzer/Destroy()
+	QDEL_NULL(last_health_display)
+	return ..()
 
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
 	if(!popup_window)
@@ -93,16 +97,14 @@ FORENSIC SCANNER
 	else
 		if (last_scan_ui)
 			var/datum/health_scan/ui_src = last_scan_ui.src_object
-			if (ui_src)
-				// Assumption: health_display can't be null because it was used
-				ui_src.target_mob.health_display.transfer(M)
-			else
+			if (!ui_src)
 				last_scan_ui = null
-		if(!M.health_display)
-			M.create_health_display()
-		last_scan_ui = M.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien, ui = last_scan_ui)
-		last_scan = M.health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_HEALTHANALYSER)
-		last_mob = M
+		if (!last_health_display)
+			last_health_display = new(M)
+		else
+			last_health_display.target_mob = M
+		last_scan = last_health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_HEALTHANALYSER)
+		last_scan_ui = last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien, ui = last_scan_ui)
 	to_chat(user, SPAN_NOTICE("[user] has analyzed [M]'s vitals."))
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
 	src.add_fingerprint(user)
@@ -118,10 +120,7 @@ FORENSIC SCANNER
 	if(popup_window)
 		if (last_scan_ui)
 			var/datum/health_scan/ui_src = last_scan_ui.src_object
-			if (ui_src)
-				// Assumption: health_display can't be null because it was used
-				ui_src.target_mob.health_display.transfer(user)
-			else
+			if (!ui_src)
 				last_scan_ui = null
 		last_scan_ui = tgui_interact(user, last_scan_ui)
 	else

@@ -10,8 +10,6 @@
 
 
 /mob/living/Initialize()
-	create_health_display()
-
 	. = ..()
 
 	fire_reagent = new /datum/reagent/napalm/ut()

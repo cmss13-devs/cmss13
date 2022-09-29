@@ -122,7 +122,7 @@ FORENSIC SCANNER
 
 /obj/item/device/healthanalyzer/tgui_interact(mob/user, datum/tgui/ui)
 	if(!last_scan)
-		return null
+		return
 
 	SStgui.close_user_uis(user, last_health_display)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -130,8 +130,6 @@ FORENSIC SCANNER
 		ui = new(user, src, "HealthScan", "Stored Health Scan")
 		ui.open()
 		ui.set_autoupdate(FALSE)
-	return ui
-
 
 /obj/item/device/healthanalyzer/ui_data(mob/user)
 	return last_scan

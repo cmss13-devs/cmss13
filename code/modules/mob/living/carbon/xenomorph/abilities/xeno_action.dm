@@ -49,10 +49,13 @@
 		return
 	if (!action_cooldown_check())
 		return
+	if(!istype(X))
+		return
 	track_xeno_ability_stats()
 	for(var/datum/action/action in owner.actions)
 		action.update_button_icon()
 	return TRUE
+/datum/action/xeno_action/proc/check_flags(flags)
 
 // Track statistics for this ability
 /datum/action/xeno_action/proc/track_xeno_ability_stats()

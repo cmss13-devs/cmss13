@@ -47,15 +47,11 @@
 		return FALSE
 	if (!X.check_state() || X.action_busy || QDELETED(X) || !action_cooldown_check() || !istype(X))
 		to_chat(X,SPAN_WARNING("You can't do that now USEABILITY."))
-	if (!action_cooldown_check())
-		return
-	if(!istype(X))
 		return
 	track_xeno_ability_stats()
 	for(var/datum/action/action in owner.actions)
 		action.update_button_icon()
 	return TRUE
-/datum/action/xeno_action/proc/check_flags(flags)
 
 // Track statistics for this ability
 /datum/action/xeno_action/proc/track_xeno_ability_stats()
@@ -73,6 +69,7 @@
 	if(!istype(X))
 		return FALSE
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && X.check_state() && !X.buckled && X.plasma_stored >= plasma_cost)
+		to_chat(X,SPAN_WARNING("You can't do that now CAN USE."))
 		return TRUE
 
 /datum/action/xeno_action/give_to(mob/living/L)
@@ -147,6 +144,8 @@
 		return
 	if(hidden)
 		return // There's no where we want a hidden action to be selectable right?
+	if(!can_use_action())
+		return
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if(xeno.selected_ability == src)
 		if(xeno.deselect_timer > world.time)

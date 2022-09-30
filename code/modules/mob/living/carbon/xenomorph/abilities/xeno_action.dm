@@ -132,7 +132,6 @@
 /datum/action/xeno_action/activable
 
 /datum/action/xeno_action/activable/can_use_action()
-	return TRUE
 	. = ..()
 	return
 

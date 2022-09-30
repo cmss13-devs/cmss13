@@ -441,3 +441,6 @@
 2022-09-30:
   Morrow:
   - qol: You can now use ; or :[key] for default frequencies.
+  Shad0vvs:
+  - bugfix: Allows you to click yourself with pills(and other force 0 objects) when
+      on harm intent with the do not harm self preference on.

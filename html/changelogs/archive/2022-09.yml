@@ -438,3 +438,6 @@
   totalepicness:
   - bugfix: Fixes crew compartment attachment points being able to hide objects and
       mobs.
+2022-09-30:
+  Morrow:
+  - qol: You can now use ; or :[key] for default frequencies.

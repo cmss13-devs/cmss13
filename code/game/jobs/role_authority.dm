@@ -796,6 +796,8 @@ var/global/players_preassigned = 0
 			M =	/mob/living/carbon/Xenomorph/Predalien
 		if(XENO_CASTE_HELLHOUND)
 			M =	/mob/living/carbon/Xenomorph/Hellhound
+		if(XENO_CASTE_ROYAL)
+			M = /mob/living/carbon/Xenomorph/Royal
 	return M
 
 

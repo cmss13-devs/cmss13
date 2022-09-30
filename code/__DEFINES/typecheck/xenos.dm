@@ -22,6 +22,7 @@
 #define isXenoSpitter(A) (istype(A, /mob/living/carbon/Xenomorph/Spitter))
 #define isXenoWarrior(A) (istype(A, /mob/living/carbon/Xenomorph/Warrior))
 #define isXenoBurrower(A) (istype(A, /mob/living/carbon/Xenomorph/Burrower))
+#define IsXenoRoyal(A) (istype(A, /mob/living/carbon/Xenomorph/Royal))
 
 #define isXenoBuilder(A) (isXenoDrone(A) || isXenoHivelord(A) || isXenoCarrier(A) || isXenoBurrower(A) || isXenoQueen(A))
 

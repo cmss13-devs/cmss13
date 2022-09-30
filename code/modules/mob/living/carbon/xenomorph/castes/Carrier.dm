@@ -15,8 +15,8 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 
-	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_DRONE)
+	evolves_to = list(XENO_CASTE_ROYAL)
 	eggs_max = 5
 	throwspeed = SPEED_AVERAGE
 	can_hold_facehuggers = 1

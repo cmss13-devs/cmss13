@@ -253,7 +253,7 @@
 		/obj/item/tool/wrench,
 		/obj/item/clothing/mask/gas,
 
-		/obj/item/weapon/gun/,
+		/obj/item/weapon/gun,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/melee/baton,
@@ -273,7 +273,7 @@
 		/obj/item/tool/crew_monitor,
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
-		/obj/item/device/motiondetector,
+		/obj/item/device/motiondetector
 	)
 	flags_armor_protection = BODY_FLAG_CHEST
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)

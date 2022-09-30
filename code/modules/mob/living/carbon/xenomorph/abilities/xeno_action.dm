@@ -45,8 +45,8 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!owner)
 		return FALSE
-	if (!X.check_state() || X.action_busy || QDELETED(X))
-		return
+	if (!X.check_state() || X.action_busy || QDELETED(X) || !action_cooldown_check() || !istype(X))
+		to_chat(X,SPAN_WARNING("You can't do that now USEABILITY."))
 	if (!action_cooldown_check())
 		return
 	if(!istype(X))
@@ -72,7 +72,7 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!istype(X))
 		return FALSE
-	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
+	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && X.check_state() && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
 /datum/action/xeno_action/give_to(mob/living/L)
@@ -136,6 +136,8 @@
 
 /datum/action/xeno_action/activable/can_use_action()
 	return TRUE
+	. = ..()
+	return
 
 // Called when the action is clicked on.
 // For non-activable Xeno actions, this is used to

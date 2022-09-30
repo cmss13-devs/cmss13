@@ -17,17 +17,12 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/paper,
 
-		/obj/item/weapon/gun/,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/melee/baton,
 		/obj/item/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
-		/obj/item/storage/belt/gun/m4a3,
-		/obj/item/storage/belt/gun/m44,
-		/obj/item/storage/belt/gun/mateba,
-		/obj/item/storage/belt/gun/smartpistol,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,

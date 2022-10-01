@@ -11,14 +11,14 @@
 	// Config
 
 	// These values are used to determine the
-	// Screech costs and the switching of different types of screeches
+	// Screech cost and the switching of different types of screeches
 
 	var/screech_sound_effectt = "sound/voice/xeno_royal_screech.ogg"
 	var/curr_effect_type = ROYAL_SCREECH_BUFF
 
 	var/debuff_daze = 4
 
-	var/screech_cost = 200
+	var/screech_cost = 150
 
 
 /datum/action/xeno_action/onclick/royal_switch_roar_type
@@ -26,7 +26,7 @@
 	action_icon_state = "warden_shield" // default = buff
 	macro_path = /datum/action/xeno_action/verb/verb_royal_switch_roar_type
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/onclick/royal_switch_roar_type/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -66,12 +66,11 @@
 	macro_path = /datum/action/xeno_action/verb/verb_rooting_slash
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 15 SECONDS
+	xeno_cooldown = 17 SECONDS
 	plasma_cost = 100
 
 	// Root config
 	var/root_duration = 2
-	var/root_cost = 50
 
 	// Root check
 	var/buffed = FALSE // Are we buffed
@@ -86,12 +85,26 @@
 	ability_name = "Dash"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 14 SECONDS
+	xeno_cooldown = 15 SECONDS
 	plasma_cost = 50
 
 	// Config options
-	distance = 4
+	distance = 3
 	knockdown = FALSE
-	knockdown_duration = 2.5
 	can_be_shield_blocked = FALSE
 	freeze_self = FALSE				// Should we freeze ourselves after the lunge?
+
+/datum/action/xeno_action/activable/verb_blood_throw
+	name = "Blood Throw"
+	ability_name = "Blood Throw"
+	action_icon_state = "acid_mine"
+	plasma_cost = 40
+	macro_path = /datum/action/xeno_action/verb/verb_blood_throw
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	xeno_cooldown = 21 SECONDS
+
+	var/throw_cost = 70
+
+	var/delay = 13.5
+	var/blinded = 3

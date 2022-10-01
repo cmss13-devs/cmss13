@@ -24,21 +24,21 @@
 		playsound(xeno.loc, screech_sound_effectt, 55, 0, status = 0)
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
 		xeno.create_shriekwave(color = "#07f707")
-		var/screech_duration = 200
+		var/screech_duration = 150
 		var/image/buff_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
 		var/mob/living/carbon/Xenomorph/Praetorian/P = owner
 		if (!(P.screech_status_flags & ROYAL_SCREECH_BUFFED))
 			P.armor_modifier += XENO_ARMOR_MOD_MED
-			P.damage_modifier += XENO_DAMAGE_MOD_VERYSMALL
+			P.damage_modifier += XENO_DAMAGE_MOD_SMALL
 			P.recalculate_armor()
 			P.recalculate_damage()
 			P.screech_status_flags |= ROYAL_SCREECH_BUFFED
 			to_chat(src, SPAN_XENOWARNING("Your roar empowers you to strike harder!"))
-			buff_overlay.flick_overlay(P, 200)
+			buff_overlay.flick_overlay(P, 150)
 
 			spawn (screech_duration)
 				P.armor_modifier -= XENO_ARMOR_MOD_MED
-				P.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
+				P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 				P.recalculate_armor()
 				P.recalculate_damage()
 				P.screech_status_flags &= ~ROYAL_SCREECH_BUFFED
@@ -51,16 +51,16 @@
 			var/image/bufff_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
 			if (!(XX.screech_status_flags & ROYAL_SCREECH_BUFFED))
 				XX.armor_modifier += XENO_ARMOR_MOD_MED
-				XX.damage_modifier += XENO_DAMAGE_MOD_VERYSMALL
+				XX.damage_modifier += XENO_DAMAGE_MOD_SMALL
 				XX.screech_status_flags |= ROYAL_SCREECH_BUFFED
 				XX.recalculate_armor()
 				XX.recalculate_damage()
-				bufff_overlay.flick_overlay(XX, 200)
+				bufff_overlay.flick_overlay(XX, 150)
 				to_chat(XX, SPAN_XENOWARNING("You feel empowered after heearing the roar of [src]!"))
 
 				spawn (screech_duration)
 					XX.armor_modifier -= XENO_ARMOR_MOD_MED
-					XX.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
+					XX.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 					XX.screech_status_flags &= ~ROYAL_SCREECH_BUFFED
 					XX.recalculate_armor()
 					XX.recalculate_damage()
@@ -74,7 +74,7 @@
 		xeno.create_shriekwave(color = "#FF0000")
 		var/slow_duration = 40
 
-		for(var/mob/living/carbon/human/human in view(5, xeno))
+		for(var/mob/living/carbon/human/human in view(3, xeno))
 			human.visible_message(SPAN_DANGER("[xeno]'s roar shakes your entire body, causing you to fall over in pain!"))
 			if (!(xeno.screech_status_flags & ROYAL_SCREECH_DEBUFF))
 				shake_camera(human, 2, 3)
@@ -130,8 +130,7 @@
 		var/datum/behavior_delegate/royal/BD = X.behavior_delegate
 		if (!istype(BD))
 			return
-		if (!BD.use_internal_blood_ability(root_cost))
-			return
+
 
 
 	// Flick overlay and play sound
@@ -141,7 +140,6 @@
 
 	var/root_duration = 1 SECONDS
 	var/damage = 15
-
 	X.visible_message(SPAN_XENODANGER("[X] extends with its claws and smashes [A], pinning them to the ground dealing damage!"), SPAN_XENOHIGHDANGER("You extend your claws and smash [A], pinning them to the ground and dealing damage!"))
 
 	H.frozen = TRUE
@@ -161,3 +159,61 @@
 
 /datum/action/xeno_action/activable/cleave/proc/remove_bufff()
 	buffed = FALSE
+
+/datum/action/xeno_action/activable/pounce/royal/additional_effects(mob/living/L)
+
+	var/mob/living/carbon/human/H = L
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(X.mutation_type != ROYAL_NORMAL)
+		return
+
+	var/datum/behavior_delegate/royal/BD = X.behavior_delegate
+	if (!istype(BD))
+		return
+
+	X.visible_message(SPAN_XENODANGER("The [X] dashes forward, its claws extended!"), SPAN_XENODANGER("You dash forward, extending your claws!"))
+	H.attack_alien(X, 15)
+
+
+/datum/action/xeno_action/activable/blood_throw/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+
+	if (!istype(X))
+		return
+
+	if (!X.check_state())
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	if(!check_clear_path_to_target(X, A, TRUE))
+		to_chat(X, SPAN_XENOWARNING("Something is in the way!"))
+		return
+
+	if (X.mutation_type == ROYAL_NORMAL)
+		var/datum/behavior_delegate/royal/BD = X.behavior_delegate
+		if (!istype(BD))
+			return
+		if (!BD.use_internal_blood_ability(haunting_cost))
+			return
+
+	var/turf/T = get_turf(A)
+	var/acid_bolt_message = "a barrage of blood"
+
+
+	X.visible_message(SPAN_XENODANGER("[X] fires " + acid_bolt_message + " at [A]!"), SPAN_XENODANGER("You fire " + acid_bolt_message + " at [A]!"))
+	new /obj/effect/xenomorph/blood_delay/royal_landmine(T, blinded, delay, "You are blasted with " + acid_bolt_message + "!", X, )
+
+	for (var/turf/targetTurf in orange(1, T))
+		new /obj/effect/xenomorph/blood_delay/royal_landmine(targetTurf, blinded, delay,  "You are blasted with a " + acid_bolt_message + "!", X)
+
+	apply_cooldown()
+	..()
+	return

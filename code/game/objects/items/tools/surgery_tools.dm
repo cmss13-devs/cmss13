@@ -237,6 +237,7 @@
 
 /obj/item/tool/surgery/surgical_line/Initialize(mapload, ...)
 	. = ..()
+	flags_item &= NOBLUDGEON
 	AddElement(/datum/element/suturing, TRUE, FALSE, 2.5, "suture", "suturing", "being stabbed with needles", "wounds")
 
 /*
@@ -256,6 +257,7 @@
 
 /obj/item/tool/surgery/synthgraft/Initialize(mapload, ...)
 	. = ..()
+	flags_item &= NOBLUDGEON
 	AddElement(/datum/element/suturing, FALSE, TRUE, 2.5, "graft", "grafting", "being burnt away all over again", "burns")
 
 /*

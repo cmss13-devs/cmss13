@@ -138,7 +138,7 @@
 		return
 	if(!ismob(O) && !istype(O, /obj/structure/closet/bodybag))
 		return
-	if(!istype(user) || user.is_mob_incapacitated())
+	if(!istype(user) || user.is_mob_incapacitated() || !isturf(user.loc))
 		return
 	O.forceMove(loc)
 	if(user != O)

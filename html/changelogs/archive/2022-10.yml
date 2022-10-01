@@ -1,0 +1,4 @@
+2022-10-01:
+  stanalbatross:
+  - bugfix: surgical line and synthgraft no longer have nobludgeon flags, so they
+      will work as normal

@@ -2644,11 +2644,16 @@
 	debilitate = list(19,21,0,0,11,12,0,0)
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
 	var/datum/effect_system/smoke_spread/smoke_system
-
+	spit_cost = 50
 	added_spit_delay = 6 SECONDS
 	spit_windup = 5 SECONDS
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_4
+	accuracy = HIT_ACCURACY_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_4
 	max_range = 32
+	var/smokerange = 4
+	var/lifetime_mult = 1.0
 
 /datum/ammo/xeno/boiler_gas/New()
 	..()
@@ -2682,11 +2687,9 @@
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
 /datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/T, obj/item/projectile/P)
-	var/amount = 4
-	var/lifetime_mult = 1.0
 	if(isXenoBoiler(P.firer))
 		smoke_system.cause_data = P.weapon_cause_data
-	smoke_system.set_up(amount, 0, T)
+	smoke_system.set_up(smokerange, 0, T)
 	smoke_system.lifetime = 12 * lifetime_mult
 	smoke_system.start()
 	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
@@ -2696,9 +2699,6 @@
 	name = "glob of acid gas"
 	icon_state = "acid_glob"
 	ping = "ping_x"
-
-	added_spit_delay = 6 SECONDS
-	spit_windup = 5 SECONDS
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
 	max_range = 32
 

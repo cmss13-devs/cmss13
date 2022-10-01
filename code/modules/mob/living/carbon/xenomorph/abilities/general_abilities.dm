@@ -394,6 +394,7 @@
 	xeno_cooldown = 60 SECONDS
 	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
+	var/flags
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3

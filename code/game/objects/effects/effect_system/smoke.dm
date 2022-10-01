@@ -340,7 +340,7 @@
 /obj/effect/particle_effect/smoke/xeno_weak/Crossed(mob/living/carbon/M as mob)
 	return
 
-/obj/effect/particle_effect/smoke/xeno_weak/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/xeno_weak/affect(var/mob/living/carbon/M) // This applies every tick someone is in the smoke
 	..()
 	if(isXeno(M))
 		return
@@ -354,24 +354,29 @@
 		var/mob/living/carbon/human/H = M
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
-
+	to_chat_immediate(world,"SMOKE TICK")
 	var/effect_amt = round(6 + amount*6)
-
-	M.apply_damage(9, OXY) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
-	M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
-	if(!M.eye_blind) //Eye exposure damage
-		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
 	M.eye_blurry = max(M.eye_blurry, effect_amt)
-	M.eye_blind = max(M.eye_blind, round(effect_amt/3))
+	M.apply_damage(1, OXY) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
+	M.apply_stamina_damage(17) // Massive fucking stamina damage
+	if(prob(20))
+		M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
+	if(!M.eye_blind && prob(25)) //Eye exposure damage
+		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
+		M.eye_blind = max(M.eye_blind, round(effect_amt/3))
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))
+			M.Slow(1)
 			M.emote("cough")
 		else
 			M.emote("gasp")
-		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
-	if (prob(20))
+	if(prob(5))
+		to_chat(M, SPAN_DANGER("You stumble!"))
 		M.KnockDown(1)
+		M.emote("pain")
+		M.apply_damage(3,TOX)
+	addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))

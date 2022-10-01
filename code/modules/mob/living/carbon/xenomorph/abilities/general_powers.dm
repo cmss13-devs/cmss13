@@ -684,7 +684,6 @@
 	return TRUE
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/A)
-	//sound_to_play = pick('sound/voice/alien_spitacid.ogg','sound/voice/alien_spitacid2.ogg')
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state())
 		return
@@ -715,10 +714,10 @@
 	if(X.ammo.spit_windup)
 		spitting = TRUE
 		to_chat(src, SPAN_WARNING("You begin to prepare a large spit!"))
-		if (!do_after(X, X.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE) && !spitting)
+		if (!do_after(X, X.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(X, SPAN_XENODANGER("You decide to cancel your spit."))
 			spitting = FALSE
-			return FALSE
+			return
 	X.visible_message(SPAN_XENOWARNING("[X] spits at [A]!"), \
 
 	SPAN_XENOWARNING("You spit at [A]!") )

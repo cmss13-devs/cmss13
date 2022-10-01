@@ -51,7 +51,7 @@
 		else
 			. = step(src, direction)
 
-/obj/vehicle/attackby(obj/item/W, mob/user)
+/obj/vehicle/attackby(obj/item/W, mob/living/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!locked)
 			open = !open
@@ -85,6 +85,7 @@
 			if("brute")
 				health -= W.force * brute_dam_coeff
 		playsound(src.loc, "smash.ogg", 25, 1)
+		user.animation_attack_on(src)
 		user.visible_message(SPAN_DANGER("[user] hits [src] with [W]."),SPAN_DANGER("You hit [src] with [W]."))
 		healthcheck()
 	else

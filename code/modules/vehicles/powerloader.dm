@@ -252,6 +252,11 @@
 					if(chair_stack.stacked_size > 8 && prob(50 / user.skills.get_skill_level(SKILL_POWERLOADER)))
 						chair_stack.stack_collapse()
 
+				if(istype(loaded, /obj/structure/container))
+					var/obj/item/powerloader_clamp/other_clamp = user.get_inactive_hand()
+					other_clamp.loaded = null
+					other_clamp.update_icon()
+
 				loaded = null
 				update_icon()
 				return
@@ -302,6 +307,19 @@
 			to_chat(user, SPAN_WARNING("\The [FD] is secured to the ground, you need to use a [SPAN_HELPFUL("wrench")] to loosen up the anchoring bolts before you can grab it with \the [src]."))
 			return
 		load_target_tag = "floodlight"
+
+	else if(istype(target, /obj/structure/container))
+		var/obj/structure/container/container = target
+		if(!container.packaged)
+			to_chat(user, SPAN_WARNING("\The [container] is still open! You need to package it before you can lift it."))
+			return
+		var/obj/item/powerloader_clamp/other_clamp = user.get_inactive_hand()
+		if(other_clamp.loaded)
+			to_chat(user, SPAN_WARNING("Your other clamp needs to be empty before you can lift this!"))
+			return
+		load_target_tag = "container"
+		other_clamp.loaded = target
+		other_clamp.update_icon(load_target_tag)
 
 	if(!load_target_tag)
 		return

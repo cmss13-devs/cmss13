@@ -1,0 +1,134 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"f" = (
+/obj/structure/interior_wall/van{
+	icon_state = "front_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"i" = (
+/obj/structure/interior_wall/van{
+	icon_state = "front_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"r" = (
+/obj/structure/interior_wall/van{
+	icon_state = "back_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"t" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/van/left;
+	name = "left entrance marker";
+	pixel_y = 32;
+	tag = "left"
+	},
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
+	dir = 4
+	},
+/obj/effect/vehicle_roof/van{
+	icon_state = "front_roof_2"
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
+	icon_state = "windshield_viewport_bottom"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_11"
+	},
+/area/vehicle/van)
+"v" = (
+/obj/structure/interior_wall/van{
+	icon_state = "interior_door"
+	},
+/obj/effect/vehicle_roof/van{
+	icon_state = "front_roof_1"
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield,
+/turf/open/void/vehicle,
+/area/space)
+"w" = (
+/obj/structure/interior_wall/van{
+	icon_state = "front_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"y" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/van/right;
+	name = "right entrance marker";
+	tag = "right"
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_12"
+	},
+/area/vehicle/van)
+"G" = (
+/obj/structure/interior_wall/van{
+	icon_state = "back_1"
+	},
+/turf/open/void/vehicle,
+/area/vehicle/van)
+"M" = (
+/turf/open/void/vehicle,
+/area/vehicle/van)
+"O" = (
+/turf/open/void/vehicle,
+/area/space)
+"V" = (
+/obj/structure/interior_wall/van{
+	alpha = 50;
+	icon_state = "exterior_door";
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+
+(1,1,1) = {"
+O
+O
+O
+O
+O
+"}
+(2,1,1) = {"
+O
+O
+M
+M
+O
+"}
+(3,1,1) = {"
+O
+O
+M
+M
+O
+"}
+(4,1,1) = {"
+O
+r
+G
+G
+O
+"}
+(5,1,1) = {"
+O
+v
+t
+y
+V
+"}
+(6,1,1) = {"
+O
+w
+f
+i
+O
+"}

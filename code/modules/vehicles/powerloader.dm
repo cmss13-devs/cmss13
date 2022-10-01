@@ -1,3 +1,5 @@
+#define POWERLOADER_PARTS_MAX 5
+
 /obj/vehicle/powerloader
 	name = "\improper Caterpillar P-5000 Work Loader"
 	icon = 'icons/obj/vehicles/powerloader.dmi'
@@ -16,7 +18,8 @@
 	var/base_state = "powerloader"
 	var/open_state = "powerloader_open"
 	var/overlay_state = "powerloader_overlay"
-	var/wreckage = /obj/structure/powerloader_wreckage
+	var/parts_type = /obj/item/powerloader_part
+	var/wreckage_type = /obj/structure/powerloader_wreckage
 	var/obj/item/powerloader_clamp/PC_left
 	var/obj/item/powerloader_clamp/PC_right
 
@@ -69,7 +72,7 @@
 				buckled_mob.pixel_x = 0
 
 /obj/vehicle/powerloader/explode()
-	new wreckage(loc)
+	new wreckage_type(loc)
 	playsound(loc, 'sound/effects/metal_crash.ogg', 75)
 	..()
 
@@ -94,13 +97,22 @@
 			playsound(loc, 'sound/mecha/powerloader_unbuckle.ogg', 25)
 
 /obj/vehicle/powerloader/attackby(obj/item/W, mob/user)
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(buckled_mob)
+			to_chat(user, SPAN_WARNING("You can't disassemble \the [src] while someone's inside it!"))
+			return
+		user.visible_message(SPAN_NOTICE("\The [user] disassembles \the [src]."), SPAN_NOTICE("You disassemble \the [src]."))
+		for(var/parts_num = 1 to POWERLOADER_PARTS_MAX)
+			new parts_type(loc)
+		qdel(src)
+		return
 	if(istype(W, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = W
 		if(PC.linked_powerloader == src)
 			unbuckle() //clicking the powerloader with its own clamp unbuckles the pilot.
 			playsound(loc, 'sound/mecha/powerloader_unbuckle.ogg', 25)
 			return 1
-	. = ..()
+	return ..()
 
 /obj/vehicle/powerloader/buckle_mob(mob/M, mob/user)
 	if(M != user)
@@ -146,6 +158,16 @@
 	set src in oview(1)
 
 	buckle_mob(M, usr)
+
+/obj/vehicle/powerloader/jd
+	name = "\improper John Deere 4300 Power Loader"
+	desc = "John Deere 4300 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has a signature green and yellow livery."
+	icon_state = "powerloader_open_jd"
+	base_state = "powerloader_jd"
+	open_state = "powerloader_open_jd"
+	overlay_state = "powerloader_overlay_jd"
+	parts_type = /obj/item/powerloader_part/jd
+	wreckage_type = /obj/structure/powerloader_wreckage/jd
 
 //--------------------POWERLOADER CLAMP-----------------
 
@@ -350,22 +372,90 @@
 	desc = "Remains of some unfortunate Power Loader. Completely unrepairable."
 	icon = 'icons/obj/vehicles/powerloader.dmi'
 	icon_state = "wreck"
-	density = 1
-	anchored = 0
-	opacity = 0
+	density = TRUE
+	anchored = TRUE
+	opacity = FALSE
 	pixel_x = -18
 	pixel_y = -5
+
+	var/parts_type = /obj/item/powerloader_part
+	var/parts_num = 3
+
+/obj/structure/powerloader_wreckage/Initialize()
+	. = ..()
+	parts_num = rand(2, 3)
+
+/obj/structure/powerloader_wreckage/attackby(obj/item/W, mob/user)
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		for(var/i = 1 to parts_num)
+			new parts_type(loc)
+		user.visible_message(SPAN_NOTICE("\The [user] scraps \the [src] for parts."), SPAN_NOTICE("You scrap \the [src] for parts."))
+		qdel(src)
+		return
+	return ..()
 
 /obj/structure/powerloader_wreckage/jd
 	name = "\improper John Deere 4300 Power Loader wreckage"
 	icon_state = "wreck_jd"
 
-/obj/vehicle/powerloader/jd
-	name = "\improper John Deere 4300 Power Loader"
-	desc = "John Deere 4300 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has a signature green and yellow livery."
-	icon_state = "powerloader_open_jd"
-	base_state = "powerloader_jd"
-	open_state = "powerloader_open_jd"
-	overlay_state = "powerloader_overlay_jd"
-	wreckage = /obj/structure/powerloader_wreckage/jd
+	parts_type = /obj/item/powerloader_part/jd
 
+//--------------------LOADER PARTS-----------------
+/obj/item/powerloader_part
+	name = "\improper Caterpillar P-5000 Work Loader part"
+	icon = 'icons/obj/vehicles/powerloader_parts.dmi'
+	icon_state = "loader_part"
+	w_class = SIZE_LARGE
+	var/assembly_type = /obj/structure/powerloader_assembly
+
+/obj/item/powerloader_part/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(proximity_flag && istype(target, /turf/open))
+		new assembly_type(target)
+		to_chat(user, SPAN_NOTICE("You start assembling the powerloader."))
+		qdel(src)
+
+/obj/item/powerloader_part/jd
+	name = "\improper John Deere 4300 Power Loader part"
+	icon_state = "jd_loader_part"
+	assembly_type = /obj/structure/powerloader_assembly/jd
+
+//--------------------LOADER ASSEMBLY-----------------
+/obj/structure/powerloader_assembly
+	name = "\improper Caterpillar P-5000 Work Loader assembly"
+	desc = "A powerloader in assembly."
+	icon = 'icons/obj/vehicles/powerloader.dmi'
+	icon_state = "powerloader_assembly"
+	density = TRUE
+	anchored = TRUE
+	opacity = FALSE
+	pixel_x = -18
+	pixel_y = -8
+	var/parts_type = /obj/item/powerloader_part
+	var/powerloader_type = /obj/vehicle/powerloader
+	var/parts_num = 1
+
+/obj/structure/powerloader_assembly/attackby(obj/item/W, mob/user)
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		for(var/i = 1 to parts_num)
+			new parts_type(loc)
+		user.visible_message(SPAN_NOTICE("\The [user] disassembles \the [src]."), SPAN_NOTICE("You disassemble \the [src]."))
+		qdel(src)
+		return
+	if(istypestrict(W, parts_type))
+		parts_num++
+		qdel(W)
+		if(parts_num >= 5)
+			var/obj/vehicle/powerloader/loader = new powerloader_type(loc)
+			user.visible_message(SPAN_NOTICE("\The [user] finishes assembling \the [loader]."), SPAN_NOTICE("You finish assembling \the [loader]."))
+			qdel(src)
+		return
+	return ..()
+
+/obj/structure/powerloader_assembly/jd
+	name = "\improper John Deere 4300 Power Loader assembly"
+	icon_state = "powerloader_jd_assembly"
+	parts_type = /obj/item/powerloader_part/jd
+	powerloader_type = /obj/vehicle/powerloader/jd
+
+
+#undef POWERLOADER_PARTS_MAX

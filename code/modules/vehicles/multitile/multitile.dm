@@ -68,6 +68,12 @@
 	//List of all hardpoints you can attach to this vehicle
 	var/list/hardpoints_allowed = list()
 
+	/// List of objects that are allowed to be inside our contents
+	var/list/contents_allowed = list(
+		/obj/item/ammo_magazine/hardpoint,
+		/obj/item/hardpoint
+	)
+
 	var/mob_size_required_to_hit = MOB_SIZE_XENO_SMALL
 
 	//variable for various flags
@@ -295,7 +301,7 @@
 	update_icon()
 
 /obj/vehicle/multitile/Entered(var/atom/movable/A)
-	if(istype(A, /obj) && !istype(A, /obj/item/ammo_magazine/hardpoint) && !istype(A, /obj/item/hardpoint))
+	if(istype(A, /obj) && !is_type_in_list(A, contents_allowed))
 		A.forceMove(loc)
 		return
 	return ..()

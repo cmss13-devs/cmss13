@@ -58,6 +58,7 @@
 
 	mob_size_required_to_hit = MOB_SIZE_XENO
 
+	var/has_overdrive = TRUE
 	var/overdrive_next = 0
 	var/overdrive_cooldown = 15 SECONDS
 	var/overdrive_duration = 3 SECONDS
@@ -200,7 +201,7 @@
 
 
 /obj/vehicle/multitile/van/handle_click(mob/living/user, atom/A, list/mods)
-	if(mods["shift"] && !mods["alt"])
+	if(has_overdrive && mods["shift"] && !mods["alt"])
 		if(overdrive_next > world.time)
 			to_chat(user, SPAN_WARNING("You can't activate overdrive yet! Wait [round((overdrive_next - world.time) / 10, 0.1)] seconds."))
 			return

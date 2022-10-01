@@ -2022,6 +2022,7 @@
 #include "code\modules\vehicles\apc\apc_command.dm"
 #include "code\modules\vehicles\apc\apc_medical.dm"
 #include "code\modules\vehicles\apc\interior.dm"
+#include "code\modules\vehicles\flatbed\flatbed.dm"
 #include "code\modules\vehicles\hardpoints\hardpoint.dm"
 #include "code\modules\vehicles\hardpoints\armor\armor.dm"
 #include "code\modules\vehicles\hardpoints\armor\ballistic.dm"

@@ -11,7 +11,15 @@
 		"right" = list(-1, 0)
 	)
 
+	misc_multipliers = list(
+		"move" = 0.9,
+		"accuracy" = 1,
+		"cooldown" = 1
+	)
+
 	passengers_slots = 2
+
+	has_overdrive = FALSE
 
 	var/list/flatbed_entrances = list(
 		"back_left" = list(1, 2),
@@ -22,17 +30,31 @@
 
 /obj/vehicle/multitile/van/flatbed/Initialize()
 	. = ..()
-	container_overlay = image(icon, null, "container")
+	contents_allowed += /obj/structure/container
+	container_overlay = image(icon, null, "container", layer + 0.1)
 
 /obj/vehicle/multitile/van/flatbed/Destroy()
 	if(loaded_container)
 		loaded_container.forceMove(loc)
 	return ..()
 
+/obj/vehicle/multitile/van/flatbed/load_hardpoints(var/obj/vehicle/multitile/apc/V)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+
 /obj/vehicle/multitile/van/flatbed/update_icon()
 	. = ..()
 	if(loaded_container)
 		overlays += container_overlay
+
+/obj/vehicle/multitile/van/flatbed/proc/load_container(var/obj/structure/container/container)
+	loaded_container = container
+	misc_multipliers["move"] += 0.3
+	update_icon()
+
+/obj/vehicle/multitile/van/flatbed/proc/unload_container()
+	loaded_container = null
+	misc_multipliers["move"] -= 0.3
+	update_icon()
 
 /obj/vehicle/multitile/van/flatbed/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/powerloader_clamp))
@@ -59,21 +81,19 @@
 			offhand_clamp.loaded = loaded_container
 			offhand_clamp.update_icon("container")
 			user.visible_message(SPAN_NOTICE("[user] unloads \the [loaded_container] from the back of \the [src]."), SPAN_NOTICE("You unload \the [loaded_container] from the back of \the [src]."))
-			loaded_container = null
-			update_icon()
+			unload_container()
 		else
 			if(!clamp.loaded)
 				return
 			if(!istype(clamp.loaded, /obj/structure/container))
 				to_chat(user, SPAN_WARNING("\The [src] can only haul packaged containers."))
 				return
-			loaded_container = clamp.loaded
+			load_container(clamp.loaded)
 			clamp.loaded.forceMove(src)
 			clamp.loaded = null
 			clamp.update_icon()
 			offhand_clamp.loaded = null
 			offhand_clamp.update_icon()
-			update_icon()
 			user.visible_message(SPAN_NOTICE("[user] loads \the [loaded_container] onto the back of \the [src]."), SPAN_NOTICE("You load \the [loaded_container] onto the back of \the [src]."))
 		return TRUE
 	return ..()

@@ -450,7 +450,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	if(camera)
 		camera.c_tag = mob.name + " (" + mob.job + ")"
 	if(mob.assigned_squad)
-		camera.network = "Squad_" + mob.assigned_squad
+		camera.network = list(mob.assigned_squad.network)
 	..()
 
 /obj/item/clothing/head/helmet/marine/unequipped(mob/user, slot)

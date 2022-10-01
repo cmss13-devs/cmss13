@@ -519,7 +519,7 @@
 
 	for(var/mob/living/carbon/human/squaddie in marines_list)
 		if(ishuman(squaddie) && squaddie.stat != DEAD)
-			if(squaddie.mind && !jobban_isbanned(squaddie, JOB_SQUAD_LEADER) && squaddie != current_squad.squad_leader)
+			if(squaddie.mind && !jobban_isbanned(squaddie, JOB_SQUAD_LEADER) && !(squaddie == current_squad.squad_leader))
 				squad_leader_candidates += squaddie
 		alive_squad_members++
 
@@ -555,7 +555,7 @@
 		var/mob_name
 		var/role
 		var/mob_state
-		var/fireteam
+		var/fireteam = ""
 		var/distance_to_squad_leader
 		var/direction_of_squad_leader
 		var/area_name
@@ -574,7 +574,6 @@
 			var/turf/current_turf = get_turf(current_squaddie)
 
 			mob_name = current_squaddie.real_name
-			mob_state = current_squaddie.stat
 			fireteam = current_squaddie?.assigned_fireteam
 			area_name = sanitize_area(current_area?.name)
 
@@ -594,6 +593,14 @@
 				if(HIDE_GROUND)
 					if(is_ground_level(current_turf.z))
 						filtered = TRUE
+
+			switch(current_squaddie.stat)
+				if(DEAD)
+					mob_state = "Dead"
+				if(UNCONSCIOUS)
+					mob_state = "Unconscious"
+				if(CONSCIOUS)
+					mob_state = "Conscious"
 
 			if(squad.squad_leader)
 				if(current_squaddie == squad.squad_leader)
@@ -615,7 +622,7 @@
 				if(t.fields["name"] == current_mob)
 					role = t.fields["real_rank"]
 					break
-			mob_state = DEAD
+			mob_state = "Dead"
 			mob_name = current_mob
 
 		marines_list[current_mob] = list(
@@ -692,7 +699,7 @@
 	if(get_dist(user, src) > 1)
 		return FALSE
 
-	if(operator ==! user)
+	if(operator ==! usr)
 		return FALSE
 
 	switch(action)
@@ -755,8 +762,9 @@
 				current_squad.send_squad_message("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.", displayed_icon = src)
 				if(cam && !ishighersilicon(usr))
 					usr.reset_view(null)
-				cam = null
 				network = null
+				current = null
+				update_active_camera_screen()
 			var/name_sel = params["squadpicked"]
 			to_chat(params["squadpicked"])
 			if(!name_sel)
@@ -913,6 +921,7 @@
 						if(strip_improper(I) == c_tag)
 							selected_camera = cameras[I]
 							break
+				to_chat(usr, selected_camera)
 				current = selected_camera
 				playsound(src, get_sfx("terminal_type"), 25, FALSE)
 

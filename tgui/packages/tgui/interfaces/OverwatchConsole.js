@@ -27,7 +27,7 @@ export const OverwatchConsole = (_props, context) => {
   const { act, data } = useBackend(context);
   const { operator } = data;
   const body = operator ? <OverwatchMain /> : <OverwatchEmpty />;
-  const windowWidth = operator ? 1000 : 600;
+  const windowWidth = operator ? 1400 : 600;
   const windowHeight = operator ? 700 : 300;
 
   return (
@@ -43,51 +43,110 @@ export const OverwatchConsole = (_props, context) => {
 
 export const OverwatchMain = (props, context) => {
   const { act, data } = useBackend(context);
-  const { squad_data } = data;
+  const { squad_data, mapRef } = data;
+  const [currentControlCategory] = useLocalState(
+    context,
+    'current_control_category',
+    1);
+
 
   return (
     <>
       <OverwatchId />
       {squad_data ? (
-        <Fragment>
-          <div className="Overwatch__left">
-            <Stack direction="column" fontFamily="consolas">
+        <Stack>
+          <Stack.Item width="60%">
+            <Stack direction="column" fontFamily="consolas" grow>
               <Stack.Item>
                 <Stack mb="1em">
                   <Stack.Item grow>
                     <Stack>
-                      <Stack.Item width="30%" grow>
-                        <OverwatchSelect />
-                        <OverwatchSquad />
+                      <Stack.Item>
+                        <OverwatchTab />
                       </Stack.Item>
                       <Stack.Item grow>
-                        <OverwatchDrop />
+                        <Stack>
+                          {currentControlCategory === 1 ? (
+                            <Stack.Item grow fill>
+                              <OverwatchSelect />
+                              <OverwatchSquad />
+                            </Stack.Item>
+                          ) : (
+                            <Stack.Item grow fill>
+                              <OverwatchDrop />
+                            </Stack.Item>
+                          )}
+                        </Stack>
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
-              <Stack.Item fill>
+              <Stack.Item width="100%">
                 <OverwatchMonitor />
               </Stack.Item>
             </Stack>
-          </div>
-          <div>
-            <div className="Overwatch__right">
-              <ByondUi
-                className="CameraConsole__map"
-                params={{
-                  id: mapRef,
-                  type: 'map',
-                }} />
-            </div>
-
-          </div>
-        </Fragment>
+          </Stack.Item>
+          <Stack.Item>
+            <OverwatchCamera />
+          </Stack.Item>
+        </Stack>
       ) : (
         <OverwatchSelect />
       )}
     </>
+  );
+};
+
+export const OverwatchTab = (props, context) => {
+  const { act, data } = useBackend(context);
+  const [currentControlCategory, setCategory] = useLocalState(
+    context,
+    'current_control_category',
+    1
+  );
+  return (
+    <Section title="Category">
+      <Stack.Item>
+        <Button
+          fluid
+          selected={currentControlCategory === 1}
+          textColor={currentControlCategory === 1 ? '#ffffff' : '#161613'}
+          icon="person"
+          onClick={() => setCategory(1)}
+          content="Squad Control"
+          lineHeight="8.8em"
+        />
+      </Stack.Item>
+      <Stack.Item grow>
+        <Button
+          fluid
+          selected={currentControlCategory === 2}
+          icon="burst"
+          textColor={currentControlCategory === 2 ? '#ffffff' : '#161613'}
+          onClick={() => setCategory(2)}
+          content="Ship Control"
+          lineHeight="8.8em"
+        />
+      </Stack.Item>
+    </Section>
+  );
+};
+
+
+export const OverwatchCamera = (props, context) => {
+  const { act, data } = useBackend(context);
+  return (
+    <Section title="Camera" fill height="48em" position="absolute" width="45.7em">
+      <ByondUi
+        className="CameraConsole__map"
+        params={{
+          id: data.mapRef,
+          type: 'map',
+        }}
+        mt="-1.5em"
+        width="44.5em" />
+    </Section>
   );
 };
 
@@ -99,9 +158,8 @@ export const OverwatchDrop = (props, context) => {
     1
   );
 
-  let tabIndex = 1;
   return (
-    <Section title="Drop">
+    <Section title={currentCategory === 1 ? "Supply Drop" : "Orbital Bombardment"}>
       <Stack>
         <Stack.Item grow>
           <Button
@@ -221,14 +279,12 @@ export const OverwatchSquad = (props, context) => {
   const { squad_data, marinelist } = data;
 
   const marine_list_keys = Object.keys(marinelist);
+  logger.warn(squad_data);
 
   return (
     <Section title={squad_data.squad_name}>
-      {squad_data.current_squad_leader_name ? null : (
-        <NoticeBox>No Squad Leader deployed!</NoticeBox>
-      )}
       <Stack>
-        <Stack.Item grow>
+        <Stack.Item width="60%">
           <Button
             textAlign="center"
             icon={'camera'}
@@ -243,7 +299,7 @@ export const OverwatchSquad = (props, context) => {
               act('use_cam', { cam_target: squad_data.current_squad_leader })}
           />
         </Stack.Item>
-        <Stack.Item>
+        <Stack.Item width="15%">
           <Button
             textAlign="center"
             icon={'comment'}
@@ -253,13 +309,12 @@ export const OverwatchSquad = (props, context) => {
             onClick={() => act('sl_message')}
           />
         </Stack.Item>
-        <Stack.Item>
+        <Stack.Item width="25%">
           <Dropdown
-            fluid
             options={squad_data.sl_candidates}
             displayText={
               squad_data.current_squad_leader_name
-                ? 'Ressign Squad Leader'
+                ? 'Reassign Squad Leader'
                 : 'Assign Squad Leader'
             }
             onSelected={(value) =>
@@ -268,15 +323,15 @@ export const OverwatchSquad = (props, context) => {
             noscroll
             lineHeight="1.5em"
             height="2em"
-            width="15em"
+            width="100%"
           />
         </Stack.Item>
       </Stack>
       <Divider />
       <Stack>
-        <Stack.Item grow>
+        <Stack.Item width="75%">
           <Stack>
-            <Stack.Item grow>
+            <Stack.Item width="80%">
               <Button.Input
                 fluid
                 textAlign="center"
@@ -293,10 +348,11 @@ export const OverwatchSquad = (props, context) => {
                   })}
               />
             </Stack.Item>
-            <Stack.Item>
+            <Stack.Item width="20%">
               <Button
                 icon={'bullhorn'}
                 fluid
+                textAlign="center"
                 disabled={!squad_data.primary_objective}
                 content={'Remind'}
                 onClick={() => act('check_primary')}
@@ -304,7 +360,7 @@ export const OverwatchSquad = (props, context) => {
             </Stack.Item>
           </Stack>
           <Stack>
-            <Stack.Item grow>
+            <Stack.Item width="80%">
               <Button.Input
                 textAlign="center"
                 fluid
@@ -321,10 +377,11 @@ export const OverwatchSquad = (props, context) => {
                   })}
               />
             </Stack.Item>
-            <Stack.Item>
+            <Stack.Item width="20%">
               <Button
                 icon={'bullhorn'}
                 fluid
+                textAlign="center"
                 disabled={!squad_data.secondary_objective}
                 content={'Remind'}
                 onClick={() => act('check_secondary')}
@@ -341,8 +398,8 @@ export const OverwatchSquad = (props, context) => {
               })}
           />
         </Stack.Item>
-        <Stack.Item>
-          <Stack direction="column" wrap="wrap">
+        <Stack.Item width="25%">
+          <Stack direction="column" wrap="wrap" justify="space-between" height="100%">
             <Stack.Item>
               <Dropdown
                 options={marine_list_keys}
@@ -354,8 +411,7 @@ export const OverwatchSquad = (props, context) => {
                     marine_picked: marinelist[value].ref,
                   })}
                 noscroll
-                width="14em"
-                ml="0.5em"
+                width="100%"
               />
             </Stack.Item>
             <Stack.Item>
@@ -367,10 +423,11 @@ export const OverwatchSquad = (props, context) => {
                 icon={'arrow-right'}
                 displayText="Squad Transfer"
                 nochevron
+                ml="-0.5em"
                 onSelected={(value) =>
                   act('camera_view', { marine_picked: marinelist[value].ref })}
                 noscroll
-                width="14em"
+                width="104%"
               />
             </Stack.Item>
           </Stack>
@@ -382,7 +439,6 @@ export const OverwatchSquad = (props, context) => {
         icon={'map'}
         fluid
         content={'View Tactical Map'}
-        lineHeight="1.5em"
         onClick={() => act('mapview')}
       />
     </Section>
@@ -393,32 +449,16 @@ export const OverwatchMonitor = (props, context) => {
   const { act, data } = useBackend(context);
   const { squad_data, marinelist, dead_hidden, marine_filter_enabled } = data;
 
-  const [hideStatistics, setStatistics] = useLocalState(
-    context,
-    'hide_statistics',
-    1
-  );
-
   const marine_list_array = Object.values(marinelist);
 
   return (
     <Section
       title="Squad Monitor"
-      scrollable
+      height="25em"
+      ml="-0.5em"
+      mr="0.5em"
       buttons={
         <Stack>
-          <Stack.Item>
-            <Button
-              fluid
-              height="1.8em"
-              lineHeight="1.5em"
-              icon="camera"
-              textAlign="center"
-              width="98%"
-              content="Open Camera View"
-              onClick={() => act('open_cam_view')}
-            />
-          </Stack.Item>
           <Stack.Item>
             <Button
               content={dead_hidden ? 'Show Dead Marines' : 'Hide Dead Marines'}
@@ -457,98 +497,16 @@ export const OverwatchMonitor = (props, context) => {
           </Stack.Item>
         </Stack>
       }>
-      <Divider hidden />
-      <Table fontFamily="consolas">
-        <Table.Row>
-          <Table.Cell bold>Name</Table.Cell>
-          <Table.Cell bold>Rank</Table.Cell>
-          <Table.Cell bold>Status</Table.Cell>
-          <Table.Cell bold>Area</Table.Cell>
-          <Table.Cell bold>SL Distance</Table.Cell>
-          <Table.Cell bold>Hidden</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>
-            <Divider />
-          </Table.Cell>
-          <Table.Cell>
-            <Divider />
-          </Table.Cell>
-          <Table.Cell>
-            <Divider />
-          </Table.Cell>
-          <Table.Cell>
-            <Divider />
-          </Table.Cell>
-          <Table.Cell>
-            <Divider />
-          </Table.Cell>
-          <Table.Cell>
-            <Divider />
-          </Table.Cell>
-        </Table.Row>
-        {marine_list_array.map((marine_list_array) => (
-          <Table.Row key={marine_list_array}>
-            <Table.Cell>
-              <Button
-                fluid
-                content={marine_list_array['name']}
-                onClick={() =>
-                  act('use_cam', {
-                    cam_target: marine_list_array['ref'],
-                  })}
-              />
-            </Table.Cell>
-            <Table.Cell>
-              {marine_list_array['role']
-                + marine_list_array['act_sl']
-                + marine_list_array['fteam']}
-            </Table.Cell>
-            <Table.Cell>
-              <ColorBox
-                color={
-                  marine_list_array['mob_state'] === 'Conscious'
-                    ? 'green'
-                    : 'red'
-                }
-              />
-              {' ' + marine_list_array['mob_state']}{' '}
-              {!marine_list_array['helmet'] ? ' (no helmet)' : null}
-            </Table.Cell>
-            <Table.Cell>{marine_list_array['area_name']}</Table.Cell>
-            <Table.Cell>{marine_list_array['dist']}</Table.Cell>
-            <Table.Cell>
-              <Button content="HIDE" />
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table>
-      <Divider />
-      <Stack direction="row-reverse">
-        <Stack.Item>
-          <Button
-            content="Statistics"
-            fluid
-            height="4em"
-            lineHeight="3.5em"
-            selected={!hideStatistics}
-            icon={!hideStatistics ? 'arrow-right' : 'arrow-left'}
-            textColor={!hideStatistics ? '#ffffff' : '#161613'}
-            onClick={() => setStatistics(!hideStatistics)}
-          />
-        </Stack.Item>
-        {hideStatistics ? null : (
-          <Stack.Item grow>
-            <Table>
+      <Stack direction="column" justify="space-between" height="21em">
+        <Section scrollable>
+          <Stack.Item height="16em">
+            <Table fontFamily="consolas">
               <Table.Row>
-                <Table.Cell>Squad Leader</Table.Cell>
-                <Table.Cell>RTO</Table.Cell>
-                <Table.Cell>Specialist</Table.Cell>
-                <Table.Cell>Smartgunner</Table.Cell>
-                <Table.Cell>Medic</Table.Cell>
-                <Table.Cell>Combat Technician</Table.Cell>
-                <Table.Cell>Total Alive</Table.Cell>
-                <Table.Cell>Total Deployed</Table.Cell>
+                <Table.Cell bold>Name</Table.Cell>
+                <Table.Cell bold>Rank</Table.Cell>
+                <Table.Cell bold>Status</Table.Cell>
+                <Table.Cell bold>Area</Table.Cell>
+                <Table.Cell bold>SL Distance</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
@@ -566,57 +524,124 @@ export const OverwatchMonitor = (props, context) => {
                 <Table.Cell>
                   <Divider />
                 </Table.Cell>
-                <Table.Cell>
-                  <Divider />
-                </Table.Cell>
-                <Table.Cell>
-                  <Divider />
-                </Table.Cell>
-                <Table.Cell>
-                  <Divider />
-                </Table.Cell>
               </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <ColorBox
-                    color={
-                      squad_data.current_squad_leader_name ? 'green' : 'red'
-                    }
-                  />
-                  {squad_data.current_squad_leader_name ? ' Deployed' : ' None'}
-                </Table.Cell>
-                <Table.Cell>
-                  <ColorBox color={squad_data.rto > 0 ? 'green' : 'red'} />
-                  {squad_data.rto ? ' ' + squad_data.rto : ' None'}
-                </Table.Cell>
-                <Table.Cell>
-                  <ColorBox
-                    color={squad_data.specialists > 0 ? 'green' : 'red'}
-                  />
-                  {squad_data.specialists ? ' Deployed' : ' None'}
-                </Table.Cell>
-                <Table.Cell>
-                  <ColorBox color={squad_data.smartgun > 0 ? 'green' : 'red'} />
-                  {squad_data.smartgun ? ' ' + squad_data.smartgun : ' None'}
-                </Table.Cell>
-                <Table.Cell>
-                  <ColorBox color={squad_data.medics > 0 ? 'green' : 'red'} />
-                  {squad_data.medics ? ' ' + squad_data.medics : ' None'}
-                </Table.Cell>
-                <Table.Cell>
-                  <ColorBox
-                    color={squad_data.engineers > 0 ? 'green' : 'red'}
-                  />
-                  {squad_data.engineers ? ' ' + squad_data.engineers : ' None'}
-                </Table.Cell>
-                <Table.Cell>{squad_data.alive}</Table.Cell>
-                <Table.Cell>{squad_data.total_deployed}</Table.Cell>
-              </Table.Row>
+              {marine_list_array.map((marine_list_array) => (
+                <Table.Row key={marine_list_array}>
+                  <Table.Cell>
+                    <Button
+                      fluid
+                      content={marine_list_array['name']}
+                      onClick={() =>
+                        act('use_cam', {
+                          cam_target: marine_list_array['ref'],
+                        })}
+                    />
+                  </Table.Cell>
+                  <Table.Cell>
+                    {marine_list_array['role']
+                + (marine_list_array['act_sl'] === 1 ? marine_list_array['act_sl'] : "")
+                + (marine_list_array['fteam'] ? " (" + marine_list_array['fteam'] + ")": "")}
+                  </Table.Cell>
+                  <Table.Cell>
+                    <ColorBox
+                      color={
+                        marine_list_array['mob_state'] === 'Conscious'
+                          ? 'green'
+                          : 'red'
+                      }
+                    />
+                    {' ' + marine_list_array['mob_state']}{' '}
+                    {!marine_list_array['helmet'] ? ' (no helmet)' : null}
+                  </Table.Cell>
+                  <Table.Cell>
+                    {(marine_list_array['area_name'] ? marine_list_array['area_name'] : 'N/A')}
+                  </Table.Cell>
+                  <Table.Cell>{(marine_list_array['dist'] ? marine_list_array['dist'] : 'N/A')}</Table.Cell>
+                  <Table.Cell>
+                    <Button content="HIDE" />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
             </Table>
           </Stack.Item>
-        )}
+        </Section>
+        <Stack.Item>
+          <Table>
+            <Table.Row>
+              <Table.Cell>Squad Leader</Table.Cell>
+              <Table.Cell>RTO</Table.Cell>
+              <Table.Cell>Specialist</Table.Cell>
+              <Table.Cell>Smartgunner</Table.Cell>
+              <Table.Cell>Medic</Table.Cell>
+              <Table.Cell>Combat Technician</Table.Cell>
+              <Table.Cell>Alive</Table.Cell>
+              <Table.Cell>Deployed</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>
+                <Divider />
+              </Table.Cell>
+              <Table.Cell>
+                <Divider />
+              </Table.Cell>
+              <Table.Cell>
+                <Divider />
+              </Table.Cell>
+              <Table.Cell>
+                <Divider />
+              </Table.Cell>
+              <Table.Cell>
+                <Divider />
+              </Table.Cell>
+              <Table.Cell>
+                <Divider />
+              </Table.Cell>
+              <Table.Cell>
+                <Divider />
+              </Table.Cell>
+              <Table.Cell>
+                <Divider />
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>
+                <ColorBox
+                  color={
+                    squad_data.current_squad_leader_name ? 'green' : 'red'
+                  }
+                />
+                {squad_data.current_squad_leader_name ? ' Deployed' : ' None'}
+              </Table.Cell>
+              <Table.Cell>
+                <ColorBox color={squad_data.rto > 0 ? 'green' : 'red'} />
+                {squad_data.rto ? ' ' + squad_data.rto + ' Deployed' : ' None'}
+              </Table.Cell>
+              <Table.Cell>
+                <ColorBox
+                  color={squad_data.specialists > 0 ? 'green' : 'red'}
+                />
+                {squad_data.specialists ? ' Deployed' : ' None'}
+              </Table.Cell>
+              <Table.Cell>
+                <ColorBox color={squad_data.smartgun > 0 ? 'green' : 'red'} />
+                {squad_data.smartgun ? ' ' + squad_data.smartgun + ' Deployed' : ' None'}
+              </Table.Cell>
+              <Table.Cell>
+                <ColorBox color={squad_data.medics > 0 ? 'green' : 'red'} />
+                {squad_data.medics ? ' ' + squad_data.medics + ' Deployed' : ' None'}
+              </Table.Cell>
+              <Table.Cell>
+                <ColorBox
+                  color={squad_data.engineers > 0 ? 'green' : 'red'}
+                />
+                {squad_data.engineers ? ' ' + squad_data.engineers + ' Deployed' : ' None'}
+              </Table.Cell>
+              <Table.Cell>{squad_data.alive}</Table.Cell>
+              <Table.Cell>{squad_data.total_deployed}</Table.Cell>
+            </Table.Row>
+          </Table>
+        </Stack.Item>
       </Stack>
-      <Divider hidden />
     </Section>
   );
 };
@@ -626,7 +651,6 @@ export const OverwatchSupplies = (props, context) => {
   const { x_supply, y_supply, supply_cooldown, supply_ready } = data;
 
   const [target_x, setTargetX] = useLocalState(context, 'target_x', x_supply);
-
   const [target_y, setTargetY] = useLocalState(context, 'target_y', y_supply);
 
   return (
@@ -723,7 +747,6 @@ export const OverwatchBomb = (props, context) => {
   const bombardment = round(bombardment_cooldown / 10);
 
   const [bomb_x, setTargetX] = useLocalState(context, 'bomb_x', x_bomb);
-
   const [bomb_y, setTargetY] = useLocalState(context, 'bomb_y', y_bomb);
 
   return (
@@ -797,9 +820,9 @@ export const OverwatchBomb = (props, context) => {
         confirmContent={'Fire at ' + x_bomb + ', ' + y_bomb + '?'}
       />
       <Divider />
-      {!(bombardment_cooldown === 0
+      {bombardment_cooldown === 0
       && !almayer_cannon_disabled
-      && !almayer_cannon_empty)
+      && !almayer_cannon_empty
         ? (
           <NoticeBox danger textAlign="center" >
             <Icon name="skull-crossbones" mr="1em" />

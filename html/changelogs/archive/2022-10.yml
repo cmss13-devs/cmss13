@@ -1,4 +1,7 @@
 2022-10-01:
+  Laser9:
+  - bugfix: You can no longer buckle mobs or stuff things into morgue trays, while
+      you are inside of something.
   stanalbatross:
   - bugfix: surgical line and synthgraft no longer have nobludgeon flags, so they
       will work as normal

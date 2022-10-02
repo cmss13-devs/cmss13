@@ -15877,9 +15877,9 @@
 /area/almayer/living/bridgebunks)
 "aWu" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = "";
-	dir = 1
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -21312,8 +21312,13 @@
 	},
 /area/almayer/squads/bravo)
 "brp" = (
-/obj/structure/supply_drop/bravo,
-/turf/open/floor/plating,
+/obj/structure/surface/rack,
+/obj/item/mortar_shell/he,
+/obj/item/mortar_shell/he,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
 /area/almayer/squads/req)
 "brr" = (
 /obj/structure/machinery/cm_vending/clothing/medic/bravo,
@@ -22153,8 +22158,13 @@
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
 "buz" = (
-/obj/structure/supply_drop/charlie,
-/turf/open/floor/plating,
+/obj/structure/surface/rack,
+/obj/item/mortar_shell/incendiary,
+/obj/item/mortar_shell/incendiary,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
 /area/almayer/squads/req)
 "buB" = (
 /obj/structure/disposalpipe/segment{
@@ -24884,11 +24894,16 @@
 	},
 /area/almayer/squads/req)
 "bEi" = (
-/obj/structure/supply_drop/alpha,
+/obj/structure/surface/rack,
+/obj/item/mortar_shell/frag,
+/obj/item/mortar_shell/frag,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
 /area/almayer/squads/req)
 "bEj" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -24911,15 +24926,25 @@
 	},
 /area/almayer/squads/req)
 "bEl" = (
-/obj/structure/machinery/computer/supply_drop_console/limited,
-/turf/closed/wall/almayer,
+/obj/item/mortar_kit,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
 /area/almayer/squads/req)
 "bEm" = (
-/obj/structure/supply_drop/delta,
+/obj/structure/surface/rack,
+/obj/item/mortar_shell/flare,
+/obj/item/mortar_shell/flare,
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
 /area/almayer/squads/req)
 "bEn" = (
 /obj/structure/stairs/perspective{
@@ -36895,12 +36920,13 @@
 /turf/open/floor/almayer,
 /area/almayer/living/synthcloset)
 "dmE" = (
-/obj/structure/surface/rack,
-/obj/item/mortar_shell/incendiary,
-/obj/item/mortar_shell/incendiary,
+/obj/vehicle/multitile/van/flatbed{
+	dir = 1
+	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/squads/req)
 "dmJ" = (
@@ -46649,12 +46675,10 @@
 	},
 /area/almayer/living/grunt_rnr)
 "hAc" = (
-/obj/structure/surface/rack,
-/obj/item/mortar_shell/flare,
-/obj/item/mortar_shell/flare,
+/obj/structure/largecrate/supply/powerloader,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	icon_state = "green";
+	tag = "icon-green"
 	},
 /area/almayer/squads/req)
 "hAz" = (
@@ -46699,14 +46723,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
-"hBz" = (
-/obj/item/mortar_kit,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/almayer/squads/req)
 "hBC" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/sign/safety/stairs{
@@ -58621,15 +58637,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
-"ngw" = (
-/obj/structure/surface/rack,
-/obj/item/mortar_shell/frag,
-/obj/item/mortar_shell/frag,
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/squads/req)
 "ngA" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
@@ -79184,10 +79191,6 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/engineering/lower_engineering)
-"wup" = (
-/obj/structure/supply_drop/echo,
-/turf/open/floor/almayer,
-/area/almayer/squads/req)
 "wuH" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
@@ -82207,12 +82210,11 @@
 	},
 /area/almayer/hull/upper_hull/u_m_p)
 "xId" = (
-/obj/structure/surface/rack,
-/obj/item/mortar_shell/he,
-/obj/item/mortar_shell/he,
+/obj/structure/container,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/squads/req)
 "xIi" = (
@@ -124150,7 +124152,7 @@ bdl
 bDX
 bCA
 bCA
-mrM
+hAc
 mCo
 bEc
 bKA
@@ -125366,7 +125368,7 @@ pUO
 jJs
 mCo
 bEh
-bNQ
+bmD
 bNQ
 bNQ
 pjG
@@ -125571,7 +125573,7 @@ bdl
 bEi
 bZr
 bmD
-ngw
+bmD
 pjG
 boz
 bpR
@@ -125975,9 +125977,9 @@ pUO
 jJs
 bdl
 bEl
-wup
+bZr
 bmD
-hBz
+bmD
 pjG
 boA
 bpR
@@ -126383,7 +126385,7 @@ bdl
 bEm
 bZr
 bmD
-hAc
+bmD
 pjG
 boz
 bpR
@@ -126584,7 +126586,7 @@ bzW
 bxx
 bdl
 bpT
-bNN
+bmD
 bNN
 bNN
 bmB

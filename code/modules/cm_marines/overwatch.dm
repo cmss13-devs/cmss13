@@ -328,23 +328,26 @@
 	if(!current_squad)
 		dat += "No squad selected!"
 	else
-		dat += "<B>Current Supply Drop Status:</B> "
-		var/cooldown_left = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
-		if(cooldown_left > 0)
-			dat += "Launch tubes resetting ([round(cooldown_left/10)] seconds)<br>"
+		if(current_squad.drop_pad)
+			dat += "<B>Current Supply Drop Status:</B> "
+			var/cooldown_left = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
+			if(cooldown_left > 0)
+				dat += "Launch tubes resetting ([round(cooldown_left/10)] seconds)<br>"
+			else
+				dat += SET_CLASS("Ready!", INTERFACE_GREEN)
+				dat += "<br>"
+			dat += "<B>Launch Pad Status:</b> "
+			var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc
+			if(C)
+				dat += SET_CLASS("Supply crate loaded", INTERFACE_GREEN)
+				dat += "<BR>"
+			else
+				dat += "Empty<BR>"
+			dat += "<B>Longitude:</B> [x_supply] <A href='?src=\ref[src];operation=supply_x'>Change</a><BR>"
+			dat += "<B>Latitude:</B> [y_supply] <A href='?src=\ref[src];operation=supply_y'>Change</a><BR><BR>"
+			dat += "<A class='green' href='?src=\ref[src];operation=dropsupply'>LAUNCH!</a>"
 		else
-			dat += SET_CLASS("Ready!", INTERFACE_GREEN)
-			dat += "<br>"
-		dat += "<B>Launch Pad Status:</b> "
-		var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc
-		if(C)
-			dat += SET_CLASS("Supply crate loaded", INTERFACE_GREEN)
-			dat += "<BR>"
-		else
-			dat += "Empty<BR>"
-		dat += "<B>Longitude:</B> [x_supply] <A href='?src=\ref[src];operation=supply_x'>Change</a><BR>"
-		dat += "<B>Latitude:</B> [y_supply] <A href='?src=\ref[src];operation=supply_y'>Change</a><BR><BR>"
-		dat += "<A class='green' href='?src=\ref[src];operation=dropsupply'>LAUNCH!</a>"
+			dat += "No supply drop pad detected!"
 	dat += "<br><hr>"
 	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
 	dat += "<A href='?src=\ref[src];operation=back'>Back</a></body>"
@@ -951,6 +954,10 @@
 
 	if(busy)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
+		return
+
+	if(!current_squad.drop_pad)
+		to_chat(usr, SPAN_WARNING("No supply drop pad detected!"))
 		return
 
 	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.

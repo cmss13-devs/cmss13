@@ -1,5 +1,7 @@
 /obj/item/clothing
 	name = "clothing"
+	pickupvol = 40
+	dropvol = 40
 	var/eye_protection = 0 //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
 	var/armor_melee = 0
 	var/armor_bullet = 0
@@ -364,9 +366,9 @@
 				desc = initial(desc) + "\nIt is storing \a [stored_item]."
 				break
 
-/obj/item/clothing/equipped(mob/user, slot)
+/obj/item/clothing/equipped(mob/user, slot, silent)
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && slot != WEAR_L_STORE && slot != WEAR_R_STORE  && slot != WEAR_J_STORE) //is it going to an actual clothing slot rather than a pocket, hand, or backpack?
-		if(LAZYLEN(equip_sounds))
+		if(!silent && LAZYLEN(equip_sounds))
 			playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 		if(clothing_traits_active)
 			for(var/trait in clothing_traits)

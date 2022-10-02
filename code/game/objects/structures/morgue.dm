@@ -3,7 +3,7 @@
  */
 /obj/structure/morgue
 	name = "morgue"
-	desc = "Used to keep bodies in untill someone fetches them."
+	desc = "Used to keep bodies in until someone fetches them."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morgue1"
 	dir = EAST
@@ -115,13 +115,16 @@
 	desc = "Apply corpse before closing."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morguet"
+	var/icon_tray = ""
 	density = 1
 	layer = OBJ_LAYER
 	var/obj/structure/morgue/linked_morgue = null
 	anchored = 1
 	throwpass = 1
+	var/bloody = FALSE
 
 /obj/structure/morgue_tray/New(loc, obj/structure/morgue/morgue_source)
+	icon_tray = initial(icon_state)
 	if(morgue_source)
 		linked_morgue = morgue_source
 	..()
@@ -135,13 +138,26 @@
 		return
 	if(!ismob(O) && !istype(O, /obj/structure/closet/bodybag))
 		return
-	if(!istype(user) || user.is_mob_incapacitated())
+	if(!istype(user) || user.is_mob_incapacitated() || !isturf(user.loc))
 		return
 	O.forceMove(loc)
 	if(user != O)
 		for(var/mob/B in viewers(user, 3))
 			B.show_message(SPAN_DANGER("[user] stuffs [O] into [src]!"), 1)
+			if(B.stat==DEAD)
+				bloody = TRUE
+				update_icon()
 
+/obj/structure/morgue_tray/update_icon()
+	if(bloody)
+		icon_state = icon_tray + "_b"
+	else
+		icon_state = icon_tray
+
+/obj/structure/morgue_tray/clean_blood()
+	bloody = FALSE
+	update_icon()
+	. = ..()
 
 
 /*

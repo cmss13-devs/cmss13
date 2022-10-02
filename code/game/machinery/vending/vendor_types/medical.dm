@@ -71,7 +71,6 @@
 		var/prod_path = L[3]
 		var/obj/item/IT
 		IT = new prod_path(T)
-		vending_stat_bump(prod_path, src.type)
 
 		IT.add_fingerprint(usr)
 
@@ -142,10 +141,10 @@
 			return
 
 		if(!healthscan)
-			to_chat(user, SPAN_WARNING("The [src] does not have health scanning function."))
+			to_chat(user, SPAN_WARNING("\The [src] does not have health scanning function."))
 			return
 
-		user.health_scan(user, TRUE)
+		user.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
 		return
 
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)

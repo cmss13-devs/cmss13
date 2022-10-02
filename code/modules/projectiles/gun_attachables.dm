@@ -122,7 +122,6 @@ Defined in conflicts.dm of the #defines folder.
 	if(G.attachments[slot])
 		var/obj/item/attachable/A = G.attachments[slot]
 		A.Detach(G)
-		vending_stat_bump(A.type, G.type, -1) // reduce so there can't be a gain in stats if you attach/detach same thing many times. Also helps with underbarrel GL
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/M = src.loc
@@ -131,7 +130,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	G.attachments[slot] = src
 	G.recalculate_attachment_bonuses()
-	vending_stat_bump(type, G.type)
 
 	if(G.burst_amount <= 1)
 		G.flags_gun_features &= ~GUN_BURST_ON //Remove burst if they can no longer use it.
@@ -214,8 +212,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/unique_action(mob/user)
 	return
 
+///Returns TRUE if its functionality is successfully used, FALSE if gun's own unloading should proceed instead.
 /obj/item/attachable/proc/unload_attachment(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
-	return
+	return FALSE
 
 /obj/item/attachable/proc/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/user) //For actually shooting those guns.
 	SHOULD_CALL_PARENT(TRUE)
@@ -973,6 +972,18 @@ Defined in conflicts.dm of the #defines folder.
 	zoom_offset = 7
 	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
 
+/obj/item/attachable/scope/mini/xm88
+	name = "XS-9 targeting relay"
+	desc = "An ARMAT XS-9 optical interface. Unlike a traditional scope, this rail-mounted device features no telescoping lens. Instead, the firearm's onboard targeting system relays data directly to the optic for the system operator to reference in realtime."
+	icon_state = "boomslang-scope"
+	zoom_offset = 7
+	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
+
+/obj/item/attachable/scope/mini/xm88/New()
+	..()
+	select_gamemode_skin(type)
+	attach_icon = icon_state
+
 /obj/item/attachable/scope/mini_iff
 	name = "B8 Smart-Scope"
 	icon_state = "iffbarrel"
@@ -1136,8 +1147,24 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A wooden stock designed for the R4T lever-action rifle, designed to withstand harsh environments. It increases weapon stability but really gets in the way."
 	icon_state = "r4t-stock"
 	wield_delay_mod = WIELD_DELAY_SLOW
+	hud_offset_mod = 6
 
 /obj/item/attachable/stock/r4t/New()
+	..()
+	select_gamemode_skin(type)
+	recoil_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
+
+/obj/item/attachable/stock/xm88
+	name = "\improper XM88 padded stock"
+	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88 Heavy Rifle."
+	icon_state = "boomslang-stock"
+	wield_delay_mod = WIELD_DELAY_SLOW
+	hud_offset_mod = 6
+
+/obj/item/attachable/stock/xm88/New()
 	..()
 	select_gamemode_skin(type)
 	recoil_mod = -RECOIL_AMOUNT_TIER_5
@@ -1851,6 +1878,7 @@ Defined in conflicts.dm of the #defines folder.
 			user.drop_inv_item_to_loc(G, src)
 
 /obj/item/attachable/attached_gun/grenade/unload_attachment(mob/user, reload_override = FALSE, drop_override = FALSE, loc_override = FALSE)
+	. = TRUE //Always uses special unloading.
 	if(!breech_open)
 		to_chat(user, SPAN_WARNING("\The [src] is closed! You must open it to take out grenades!"))
 		return

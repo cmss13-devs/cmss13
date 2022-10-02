@@ -38,6 +38,7 @@
 		list("VP78 Pistol", round(scale * 4), /obj/item/storage/box/guncase/vp78, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smart Pistol", round(scale * 3), /obj/item/storage/box/guncase/smartpistol, VENDOR_ITEM_REGULAR),
 		list("MOU-53 Shotgun", round(scale * 2), /obj/item/storage/box/guncase/mou53, VENDOR_ITEM_REGULAR),
+		list("XM88 Heavy Rifle", round(scale * 3), /obj/item/storage/box/guncase/xm88, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Heavy Pulse Rifle", round(scale * 2), /obj/item/storage/box/guncase/lmg, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK1", round(scale * 3), /obj/item/storage/box/guncase/m41aMK1, VENDOR_ITEM_REGULAR),
 		list("M56D Heavy Machine Gun", round(scale * 2), /obj/item/storage/box/guncase/m56d, VENDOR_ITEM_REGULAR),
@@ -241,6 +242,7 @@
 		list("Shotgun Scabbard", round(scale * 5), /obj/item/storage/large_holster/m37, VENDOR_ITEM_REGULAR),
 		list("USCM Technician Welderpack", round(scale * 2), /obj/item/storage/backpack/marine/engineerpack, VENDOR_ITEM_REGULAR),
 		list("Technician Welder-Satchel", round(scale * 3), /obj/item/storage/backpack/marine/engineerpack/satchel, VENDOR_ITEM_REGULAR),
+		list("Small Radio Telephone Backpack", round(scale * 2), /obj/item/storage/backpack/marine/satchel/rto/small, VENDOR_ITEM_REGULAR),
 
 		list("BELTS", -1, null, null),
 		list("G8-A General Utility Pouch", round(scale * 2), /obj/item/storage/backpack/general_belt, VENDOR_ITEM_REGULAR),
@@ -344,6 +346,7 @@
 		list("Rifle Ammunition Box (10x24mm AP)", round(scale * 0.75), /obj/item/ammo_box/rounds/ap, VENDOR_ITEM_REGULAR),
 		list("SMG Ammunition Box (10x20mm HV)", round(scale * 0.9), /obj/item/ammo_box/rounds/smg, VENDOR_ITEM_REGULAR),
 		list("SMG Ammunition Box (10x20mm AP)", round(scale * 0.75), /obj/item/ammo_box/rounds/smg/ap, VENDOR_ITEM_REGULAR),
+		list(".458 Bullets Box", round(scale * 0.5), /obj/item/ammo_box/magazine/lever_action/xm88, VENDOR_ITEM_REGULAR),
 
 		list("MAGAZINE BOXES", -1, null, null),
 		list("Magazine Box (88 Mod 4 AP x 16)", round(scale * 0.7), /obj/item/ammo_box/magazine/mod88, VENDOR_ITEM_REGULAR),

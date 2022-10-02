@@ -221,7 +221,7 @@
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 	if(A.z != X.z)
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
@@ -257,7 +257,7 @@
 		to_chat(X, SPAN_XENOWARNING("You can't place resin markers on living things!"))
 		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 	var/turf/target_turf = get_turf(A)
 
 	if(target_turf.z != X.z)
@@ -335,7 +335,7 @@
 					return
 			else
 				var/static/list/phero_selections = list("Help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "Frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "Warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "Recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
-				pheromone = lowertext(show_radial_menu(src, src, phero_selections))
+				pheromone = lowertext(show_radial_menu(src, src.client?.eye, phero_selections))
 				if(pheromone == "help")
 					to_chat(src, SPAN_XENONOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy (Red)</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding (Green)</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery (Blue)</B> - Increased plasma and health regeneration.<br>"))
 					return
@@ -557,7 +557,7 @@
 	if(!X.check_state())
 		return FALSE
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 
 	//Make sure construction is unrestricted
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)

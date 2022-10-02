@@ -25,10 +25,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 /datum/preferences
 	var/client/owner
-	var/obj/screen/preview/preview_front
+	var/atom/movable/screen/preview/preview_front
 	var/mob/living/carbon/human/dummy/preview_dummy
-	var/obj/screen/rotate/alt/rotate_left
-	var/obj/screen/rotate/rotate_right
+	var/atom/movable/screen/rotate/alt/rotate_left
+	var/atom/movable/screen/rotate/rotate_right
 
 	//doohickeys for savefiles
 	var/path

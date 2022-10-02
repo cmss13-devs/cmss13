@@ -19,6 +19,8 @@
 	var/list/spray_sizes = list(1,3)
 	var/safety = FALSE
 	volume = 250
+	var/last_use = 1
+	var/use_delay = 0.5 SECONDS
 
 
 /obj/item/reagent_container/spray/Initialize()
@@ -28,7 +30,7 @@
 /obj/item/reagent_container/spray/afterattack(atom/A, mob/user, proximity)
 	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something
 	if(isstorage(A) || istype(A, /obj/structure/surface/table) || istype(A, /obj/structure/surface/rack) || istype(A, /obj/structure/closet) \
-	|| istype(A, /obj/item/reagent_container) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart) || istype(A, /obj/structure/ladder) || istype(A, /obj/screen))
+	|| istype(A, /obj/item/reagent_container) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart) || istype(A, /obj/structure/ladder) || istype(A, /atom/movable/screen))
 		return
 
 	if(istype(A, /obj/structure/reagent_dispensers) && get_dist(src,A) <= 1) //this block copypasted from reagent_containers/glass, for lack of a better solution
@@ -49,6 +51,9 @@
 		to_chat(user, SPAN_NOTICE("You fill \the [src] with [trans] units of the contents of \the [A]."))
 		return
 
+	if(world.time < last_use + use_delay)
+		return
+
 	if(reagents.total_volume < amount_per_transfer_from_this)
 		to_chat(user, SPAN_NOTICE("\The [src] is empty!"))
 		return
@@ -57,6 +62,7 @@
 		to_chat(user, SPAN_WARNING("The safety is on!"))
 		return
 
+	last_use = world.time
 	Spray_at(A, user)
 
 	playsound(src.loc, 'sound/effects/spray2.ogg', 25, 1, 3)
@@ -119,6 +125,7 @@
 	possible_transfer_amounts = null
 	volume = 40
 	safety = TRUE
+	use_delay = 0.25 SECONDS
 
 
 /obj/item/reagent_container/spray/pepper/Initialize()
@@ -145,6 +152,7 @@
 	amount_per_transfer_from_this = 1
 	possible_transfer_amounts = null
 	volume = 10
+	use_delay = 0.25 SECONDS
 
 /obj/item/reagent_container/spray/waterflower/Initialize()
 	. = ..()

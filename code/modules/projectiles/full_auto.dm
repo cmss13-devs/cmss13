@@ -9,7 +9,7 @@
 		return
 
 	// No shooting the 4th wall
-	if(istype(A, /obj/screen))
+	if(istype(A, /atom/movable/screen))
 		return
 
 	// No FA on attachables
@@ -56,7 +56,7 @@
 		return
 	var/mob/user = loc
 
-	if(istype(hovered, /obj/screen))
+	if(istype(hovered, /atom/movable/screen))
 		return
 
 	if(get_turf(hovered) == get_turf(user))

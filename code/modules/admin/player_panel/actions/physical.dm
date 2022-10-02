@@ -102,7 +102,7 @@
 
 	//Delete them from datacore.
 	var/target_ref = WEAKREF(target)
-	for(var/datum/data/record/R in GLOB.data_core.medical)
+	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 		if((R.fields["ref"] == target_ref))
 			GLOB.data_core.medical -= R
 			qdel(R)

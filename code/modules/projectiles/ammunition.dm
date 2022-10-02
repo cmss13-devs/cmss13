@@ -313,3 +313,14 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_casing/shell
 	name = "spent shell"
 	icon_state = "shell_"
+
+/obj/item/ammo_box/magazine/lever_action/xm88
+	name = "\improper .458 bullets box (.458 x 300)"
+	icon_state = "base_458"
+	overlay_ammo_type = "_blank"
+	overlay_gun_type = "_458"
+	overlay_content = "_458"
+	magazine_type = /obj/item/ammo_magazine/handful/lever_action/xm88
+
+/obj/item/ammo_box/magazine/lever_action/xm88/empty
+	empty = TRUE

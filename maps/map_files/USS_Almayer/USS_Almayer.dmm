@@ -25578,7 +25578,6 @@
 	},
 /area/almayer/squads/req)
 "bGz" = (
-/obj/structure/bed/stool,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "green";
@@ -31032,10 +31031,17 @@
 	},
 /area/almayer/squads/req)
 "can" = (
-/obj/structure/machinery/conveyor{
-	id = "req_belt"
+/obj/structure/machinery/door_control{
+	id = "reqbaygarage";
+	name = "Requisitions Bay Shutter Control";
+	pixel_x = 24;
+	pixel_y = 6
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
 /area/almayer/squads/req)
 "cap" = (
 /turf/closed/shuttle/escapepod{
@@ -47141,14 +47147,6 @@
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
-"hMs" = (
-/obj/structure/bed/stool,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "green";
-	tag = "icon-green (WEST)"
-	},
-/area/almayer/squads/req)
 "hMI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/binoculars,
@@ -47794,16 +47792,6 @@
 	tag = "icon-red (NORTHEAST)"
 	},
 /area/almayer/command/lifeboat)
-"ibc" = (
-/obj/structure/machinery/conveyor_switch{
-	id = "req_belt"
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
-	},
-/area/almayer/squads/req)
 "icp" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -52588,16 +52576,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering)
-"krN" = (
-/obj/structure/machinery/conveyor{
-	id = "req_belt"
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/almayer/squads/req)
 "krS" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -62064,12 +62042,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_p)
 "oLg" = (
-/obj/structure/plasticflaps,
-/obj/structure/machinery/conveyor{
-	id = "req_belt"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
+/obj/structure/machinery/door/poddoor/almayer/blended{
+	id = "reqbaygarage";
+	name = "Requisitions Bay"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -63046,14 +63021,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
-"pky" = (
-/obj/structure/largecrate/random/secure,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green";
-	tag = "icon-green (EAST)"
-	},
-/area/almayer/squads/req)
 "pkz" = (
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -73954,14 +73921,6 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/shipboard/brig/evidence_storage)
-"uly" = (
-/obj/structure/bed/stool,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
-	},
-/area/almayer/squads/req)
 "umh" = (
 /obj/structure/platform_decoration{
 	dir = 8;
@@ -75872,7 +75831,6 @@
 	},
 /area/almayer/squads/bravo)
 "vbR" = (
-/obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "green";
@@ -125376,7 +125334,7 @@ bxf
 bZr
 bKA
 cXR
-bCB
+can
 cal
 mCo
 pJJ
@@ -125782,9 +125740,9 @@ bxg
 bZr
 bNQ
 bNQ
-mCo
+oLg
 bGz
-hMs
+bGy
 cbw
 bHc
 bHY
@@ -125983,10 +125941,10 @@ bpR
 bpR
 bxh
 bZr
-krN
-krN
+bmD
+bmD
 oLg
-can
+bdj
 bdj
 buH
 bHc
@@ -126186,11 +126144,11 @@ bpR
 bpR
 bxg
 bZr
-ibc
-uly
-mCo
+bNN
+bNN
+oLg
 vbR
-pky
+bCB
 cbv
 cbS
 bHW

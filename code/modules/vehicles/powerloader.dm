@@ -6,13 +6,14 @@
 	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
 	icon_state = "powerloader_open"
 	layer = POWERLOADER_LAYER //so the top appears above windows and wall mounts
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
+	unacidable = TRUE
 	luminosity = 5
 	move_delay = 8
 	buckling_y = 9
-	health = 200
-	maxhealth = 200
+	health = 300
+	maxhealth = 300
 	pixel_x = -16
 	pixel_y = -2
 	var/base_state = "powerloader"
@@ -35,14 +36,11 @@
 	PC_right.linked_powerloader = src
 	PC_right.is_right = TRUE
 	PC_right.icon_state = "loader_clamp_right"
-
-	. = ..()
+	return ..()
 
 /obj/vehicle/powerloader/Destroy()
-	qdel(PC_left)
-	PC_left = null
-	qdel(PC_right)
-	PC_right = null
+	QDEL_NULL(PC_left)
+	QDEL_NULL(PC_right)
 	return ..()
 
 /obj/vehicle/powerloader/relaymove(mob/user, direction)
@@ -98,6 +96,8 @@
 
 /obj/vehicle/powerloader/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(user.action_busy)
+			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea how to disassemble \the [src]."))
 			return
@@ -105,7 +105,8 @@
 			to_chat(user, SPAN_WARNING("You can't disassemble \the [src] while someone's inside it!"))
 			return
 		user.visible_message(SPAN_NOTICE("\The [user] starts disassembling \the [src]..."), SPAN_NOTICE("You start disassembling \the [src]..."))
-		if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL))
+		playsound(loc, 'sound/items/Ratchet.ogg', 25, TRUE)
+		if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_BUILD))
 			for(var/parts_num = 1 to POWERLOADER_PARTS_MAX)
 				new parts_type(loc)
 			qdel(src)
@@ -378,6 +379,7 @@
 	icon_state = "wreck"
 	density = TRUE
 	anchored = TRUE
+	unacidable = TRUE
 	opacity = FALSE
 	pixel_x = -18
 	pixel_y = -5
@@ -389,15 +391,30 @@
 	. = ..()
 	parts_num = rand(2, 3)
 
+/obj/structure/powerloader_wreckage/proc/break_into_parts(var/num_of_parts)
+	var/part_num_to_spawn = num_of_parts || parts_num
+	for(var/i = 1 to part_num_to_spawn)
+		new parts_type(loc)
+	qdel(src)
+
 /obj/structure/powerloader_wreckage/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(user.action_busy)
+			return
 		user.visible_message(SPAN_NOTICE("\The [user] starts scrapping \the [src] for parts..."), SPAN_NOTICE("You start scrapping \the [src] for parts..."))
-		if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL))
-			for(var/i = 1 to parts_num)
-				new parts_type(loc)
-			qdel(src)
+		playsound(loc, 'sound/items/Ratchet.ogg', 25, TRUE)
+		if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_BUILD) && !QDELETED(src))
+			break_into_parts()
 		return
 	return ..()
+
+/obj/structure/powerloader_wreckage/attack_alien(mob/living/carbon/Xenomorph/xeno)
+	if(unslashable)
+		return ..()
+	xeno.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, TRUE)
+	xeno.visible_message(SPAN_DANGER("\The [xeno] slices \the [src] apart!"), SPAN_DANGER("You slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	break_into_parts(parts_num - 1)
 
 /obj/structure/powerloader_wreckage/jd
 	name = "\improper John Deere 4300 Power Loader wreckage"
@@ -410,6 +427,7 @@
 	name = "\improper Caterpillar P-5000 Work Loader part"
 	icon = 'icons/obj/vehicles/powerloader_parts.dmi'
 	icon_state = "loader_part"
+	unacidable = TRUE
 	w_class = SIZE_LARGE
 	var/assembly_type = /obj/structure/powerloader_assembly
 
@@ -432,6 +450,7 @@
 	icon_state = "powerloader_assembly"
 	density = TRUE
 	anchored = TRUE
+	unacidable = TRUE
 	opacity = FALSE
 	pixel_x = -18
 	pixel_y = -8
@@ -439,15 +458,23 @@
 	var/powerloader_type = /obj/vehicle/powerloader
 	var/parts_num = 1
 
+/obj/structure/powerloader_assembly/proc/break_into_parts(var/num_of_parts)
+	var/part_num_to_spawn = num_of_parts || parts_num
+	for(var/i = 1 to part_num_to_spawn)
+		new parts_type(loc)
+	qdel(src)
+
 /obj/structure/powerloader_assembly/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(user.action_busy)
+			return
 		user.visible_message(SPAN_NOTICE("\The [user] starts disassembling \the [src]..."), SPAN_NOTICE("You start disassembling \the [src]..."), max_distance = 3)
-		if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL))
-			for(var/i = 1 to parts_num)
-				new parts_type(loc)
-			qdel(src)
+		playsound(loc, 'sound/items/Ratchet.ogg', 25, TRUE)
+		if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_BUILD) && !QDELETED(src))
+			break_into_parts()
 		return
 	if(istypestrict(W, parts_type))
+		playsound(loc, 'sound/items/Deconstruct.ogg', 25, TRUE)
 		parts_num++
 		qdel(W)
 		if(parts_num >= 5)
@@ -456,6 +483,14 @@
 			qdel(src)
 		return
 	return ..()
+
+/obj/structure/powerloader_assembly/attack_alien(mob/living/carbon/Xenomorph/xeno)
+	if(unslashable)
+		return ..()
+	xeno.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, TRUE)
+	xeno.visible_message(SPAN_DANGER("\The [xeno] slices \the [src] apart!"), SPAN_DANGER("You slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	break_into_parts(parts_num - 1)
 
 /obj/structure/powerloader_assembly/jd
 	name = "\improper John Deere 4300 Power Loader assembly"

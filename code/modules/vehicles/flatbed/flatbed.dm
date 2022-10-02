@@ -12,7 +12,7 @@
 	)
 
 	misc_multipliers = list(
-		"move" = 0.9,
+		"move" = 0.8,
 		"accuracy" = 1,
 		"cooldown" = 1
 	)
@@ -47,12 +47,12 @@
 
 /obj/vehicle/multitile/van/flatbed/proc/load_container(var/obj/structure/container/container)
 	loaded_container = container
-	misc_multipliers["move"] += 0.3
+	misc_multipliers["move"] += 0.2
 	update_icon()
 
 /obj/vehicle/multitile/van/flatbed/proc/unload_container()
 	loaded_container = null
-	misc_multipliers["move"] -= 0.3
+	misc_multipliers["move"] -= 0.2
 	update_icon()
 
 /obj/vehicle/multitile/van/flatbed/attackby(obj/item/O, mob/user)

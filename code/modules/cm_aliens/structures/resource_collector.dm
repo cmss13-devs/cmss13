@@ -38,7 +38,7 @@
 	. = ..()
 
 
-// /obj/effect/alien/resin/collector/examine(mob/user)
+// /obj/effect/alien/resin/collector/get_examine_text(mob/user)
 // 	..()
 // 	if(isXeno(user) || isobserver(user))
 // 		to_chat(user, "It has [connected_node.amount_left] resources left.")

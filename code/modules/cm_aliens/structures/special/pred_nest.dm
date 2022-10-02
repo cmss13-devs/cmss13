@@ -13,11 +13,10 @@
 
 	block_range = 2
 
-/obj/effect/alien/resin/special/nest/examine(mob/user)
-	..()
+/obj/effect/alien/resin/special/nest/get_examine_text(mob/user)
+	. = ..()
 	if((isXeno(user) || isobserver(user)) && linked_hive)
-		var/message = "Used to secure formidable hosts."
-		to_chat(user, message)
+		. += "Used to secure formidable hosts."
 
 /obj/effect/alien/resin/special/nest/Initialize(mapload, datum/hive_status/hive_ref)
 	. = ..()

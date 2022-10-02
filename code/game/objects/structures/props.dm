@@ -894,9 +894,9 @@
 			else
 				inscription = message
 
-/obj/structure/prop/wooden_cross/examine(mob/user)
-	..()
-	to_chat(user, "\"[inscription]\"")
+/obj/structure/prop/wooden_cross/get_examine_text(mob/user)
+	. = ..()
+	. += "There's something carved into it. It reads: \"[inscription]\""
 
 /obj/structure/prop/wooden_cross/attack_hand(mob/user)
 	if(helmet)

@@ -54,15 +54,15 @@
 	else
 		overlays += "+empty"
 
-/obj/item/device/defibrillator/examine(mob/user)
-	..()
+/obj/item/device/defibrillator/get_examine_text(mob/user)
+	. = ..()
 	var/maxuses = 0
 	var/currentuses = 0
 	maxuses = round(dcell.maxcharge / charge_cost)
 	currentuses = round(dcell.charge / charge_cost)
-	to_chat(user, SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery."))
+	. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
 	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit)
-		to_chat(user, SPAN_NOTICE("This defibrillator will ignore worn armor."))
+		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
 
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
 	..()

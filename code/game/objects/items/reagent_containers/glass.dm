@@ -50,11 +50,12 @@
 	. = ..()
 	base_name = name
 
-/obj/item/reagent_container/glass/examine(mob/user)
-	..()
-	if(get_dist(user, src) > 2 && user != loc) return
+/obj/item/reagent_container/glass/get_examine_text(mob/user)
+	. = ..()
+	if(get_dist(user, src) > 2 && user != loc)
+		return
 	if(!is_open_container())
-		to_chat(user, SPAN_INFO("An airtight lid seals it completely."))
+		. += SPAN_INFO("An airtight lid seals it completely.")
 
 /obj/item/reagent_container/glass/attack_self()
 	..()
@@ -655,6 +656,7 @@
 			AM.clean_blood()
 
 
-/obj/item/reagent_container/glass/rag/examine(mob/user)
-	to_chat(user, "That's \a [src].")
-	to_chat(usr, desc)
+/obj/item/reagent_container/glass/rag/get_examine_text(mob/user)
+	. = ..()
+	. += "That's \a [src]."
+	. += desc

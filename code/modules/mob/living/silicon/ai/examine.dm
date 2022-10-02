@@ -1,7 +1,6 @@
-/mob/living/silicon/ai/examine(mob/user)
+/mob/living/silicon/ai/get_examine_text(mob/user)
 	if( (user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat) && !istype(user,/mob/dead/observer) )
-		to_chat(user, SPAN_NOTICE("Something is there but you can't see it."))
-		return
+		return list(SPAN_NOTICE("Something is there but you can't see it."))
 
 	var/msg = "<span class='info'>*---------*\nThis is [icon2html(src)] <EM>[src]</EM>!\n"
 	if (src.stat == DEAD)
@@ -24,4 +23,4 @@
 		msg += "</span>"
 	msg += "*---------*</span>"
 
-	to_chat(user, msg)
+	. += msg

@@ -31,10 +31,10 @@
 	GLOB.simulator_cameras -= src
 	return ..()
 
-/obj/structure/machinery/computer/demo_sim/examine(mob/user)
-	..()
+/obj/structure/machinery/computer/demo_sim/get_examine_text(mob/user)
+	. = ..()
 	if(cooling)
-		to_chat(user, "Processors are currently cooling.")
+		. += SPAN_WARNING("The processors are currently cooling.")
 
 /obj/structure/machinery/computer/demo_sim/attackby(obj/item/B, mob/living/user)
 	if(inoperable())

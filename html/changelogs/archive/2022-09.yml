@@ -430,3 +430,17 @@
   - bugfix: the healthscanner will now properly show frac info to medics
   - qol: changed the frac message colour to white to make it stand out more
   - bugfix: fixed some bad del runtimes on init
+2022-09-29:
+  Mistfrag:
+  - rscadd: C4 (3), Machete Scabbard (2), Machete Pouch, M-M Pouch, Small RTO Pack
+      (12), RO Cap (12), SO Cap (12), RO Jacket (12), Ball-Cap (12), Hi-Cap Blowtorch
+      (4), Industrial Blowtorch (2), USCM Medical Uniform
+  totalepicness:
+  - bugfix: Fixes crew compartment attachment points being able to hide objects and
+      mobs.
+2022-09-30:
+  Morrow:
+  - qol: You can now use ; or :[key] for default frequencies.
+  Shad0vvs:
+  - bugfix: Allows you to click yourself with pills(and other force 0 objects) when
+      on harm intent with the do not harm self preference on.

@@ -231,10 +231,10 @@
 	F.display_color = folder_color
 	name = "[initial(name)] ([label])"
 
-/obj/item/document_objective/folder/examine(mob/living/user)
-	..()
+/obj/item/document_objective/folder/get_examine_text(mob/living/user)
+	. = ..()
 	if(get_dist(user, src) < 2 && ishuman(user))
-		to_chat(user, SPAN_INFO("\The [src] is labelled [label]."))
+		. += SPAN_INFO("\The [src] is labelled [label].")
 
 /obj/item/document_objective/technical_manual
 	name = "Technical Manual"

@@ -12,7 +12,7 @@
 	flags_equip_slot = SLOT_EAR
 	flags_item = ITEM_PREDATOR
 
-/obj/item/falcon_drone/get_examine_location(var/mob/living/carbon/human/wearer, var/slot, var/t_he = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
+/obj/item/falcon_drone/get_examine_location(var/mob/living/carbon/human/wearer, var/mob/examiner, var/slot, var/t_he = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
 	switch(slot)
 		if(WEAR_L_EAR)
 			return "on [t_his] shoulder"

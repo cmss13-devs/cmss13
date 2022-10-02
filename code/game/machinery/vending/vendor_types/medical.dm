@@ -57,11 +57,10 @@
 	QDEL_NULL(last_health_display)
 	. = ..()
 
-/obj/structure/machinery/cm_vending/sorted/medical/examine(mob/living/carbon/human/user)
+/obj/structure/machinery/cm_vending/sorted/medical/get_examine_text(mob/living/carbon/human/user)
 	. = ..()
-
 	if(healthscan)
-		to_chat(user, SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target infront of the scanner to scan."))
+		. += SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target in front of the scanner to scan.")
 
 /obj/structure/machinery/cm_vending/sorted/medical/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)

@@ -140,15 +140,15 @@
 		var/mob/living/carbon/Xenomorph/Carrier/C = user
 		C.store_hugger(src)
 
-/obj/item/clothing/mask/facehugger/examine(mob/user)
-	..()
+/obj/item/clothing/mask/facehugger/get_examine_text(mob/user)
+	. = ..()
 	switch(stat)
 		if(DEAD, UNCONSCIOUS)
-			to_chat(user, SPAN_DANGER("[src] is not moving."))
+			. += SPAN_DANGER("[src] is not moving.")
 		if(CONSCIOUS)
-			to_chat(user, SPAN_DANGER("[src] seems to be active."))
+			. += SPAN_DANGER("[src] seems to be active.")
 	if(sterile)
-		to_chat(user, SPAN_DANGER("It looks like the proboscis has been removed."))
+		. += SPAN_DANGER("It looks like the proboscis has been removed.")
 
 /obj/item/clothing/mask/facehugger/attackby(obj/item/W, mob/user)
 	if(W.flags_item & NOBLUDGEON)

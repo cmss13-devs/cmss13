@@ -20,12 +20,12 @@
 	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
 	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
 
-/obj/item/clothing/get_examine_line()
+/obj/item/clothing/get_examine_line(mob/user)
 	. = ..()
 	var/list/ties = list()
 	for(var/obj/item/clothing/accessory/accessory in accessories)
 		if(accessory.high_visibility)
-			ties += "\a [accessory.get_examine_line()]"
+			ties += "\a [accessory.get_examine_line(user)]"
 	if(ties.len)
 		.+= " with [english_list(ties)] attached"
 	if(LAZYLEN(accessories) > ties.len)

@@ -179,11 +179,16 @@ directive is properly returned.
 	return found
 
 /atom/proc/examine(mob/user)
-	to_chat(user, "[icon2html(src, user)] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
+	var/list/examine_strings = get_examine_text(user)
+	to_chat(user, examine_block(examine_strings.Join("\n")))
+
+/atom/proc/get_examine_text(mob/user)
+	. = list()
+	. += "[icon2html(src, user)] That's \a [src]." //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	if(desc)
-		to_chat(user, desc)
+		. += desc
 	if(desc_lore)
-		to_chat(user, SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>."))
+		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.

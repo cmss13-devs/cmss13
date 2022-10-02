@@ -113,9 +113,9 @@
 /obj/structure/resource_node/get_projectile_hit_boolean()
 	return TRUE
 
-/obj/structure/resource_node/examine(mob/user)
+/obj/structure/resource_node/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_BLUE("Health: [health]/[max_health]"))
+	. += SPAN_BLUE("Health: [health]/[max_health]")
 
 
 /obj/structure/resource_node/attackby(obj/item/W, mob/user)

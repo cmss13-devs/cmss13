@@ -741,12 +741,13 @@
 		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 25, GLOB.damage_boost_breaching)
 	))
 
-/obj/item/weapon/gun/launcher/spike/examine(mob/user)
+/obj/item/weapon/gun/launcher/spike/get_examine_text(mob/user)
 	if(isYautja(user))
-		..()
-		to_chat(user, SPAN_NOTICE("It currently has <b>[spikes]/[max_spikes]</b> spikes."))
+		. = ..()
+		. += SPAN_NOTICE("It currently has <b>[spikes]/[max_spikes]</b> spikes.")
 	else
-		to_chat(user, SPAN_NOTICE("Looks like some kind of...mechanical donut."))
+		. = list()
+		. += SPAN_NOTICE("Looks like some kind of...mechanical donut.")
 
 /obj/item/weapon/gun/launcher/spike/update_icon()
 	..()
@@ -836,12 +837,13 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 
-/obj/item/weapon/gun/energy/yautja/plasmarifle/examine(mob/user)
+/obj/item/weapon/gun/energy/yautja/plasmarifle/get_examine_text(mob/user)
 	if(isYautja(user))
-		..()
-		to_chat(user, SPAN_NOTICE("It currently has <b>[charge_time]/100</b> charge."))
+		. = ..()
+		. += SPAN_NOTICE("It currently has <b>[charge_time]/100</b> charge.")
 	else
-		to_chat(user, SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange."))
+		. = list()
+		. += SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange.")
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/update_icon()
 	if(last_regen < charge_time + 20 || last_regen > charge_time || charge_time > 95)
@@ -929,12 +931,13 @@
 
 
 
-/obj/item/weapon/gun/energy/yautja/plasmapistol/examine(mob/user)
+/obj/item/weapon/gun/energy/yautja/plasmapistol/get_examine_text(mob/user)
 	if(isYautja(user))
-		..()
-		to_chat(user, SPAN_NOTICE("It currently has <b>[charge_time]/40</b> charge."))
+		. = ..()
+		. += SPAN_NOTICE("It currently has <b>[charge_time]/40</b> charge.")
 	else
-		to_chat(user, SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange."))
+		. = list()
+		. += SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange.")
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/able_to_fire(mob/user)
@@ -1089,13 +1092,13 @@
 			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/examine(mob/user)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/get_examine_text(mob/user)
 	. = ..()
 	var/msg = "It is set to fire [strength]."
 	if(mode == "lethal")
-		to_chat(user, SPAN_RED(msg))
+		. += SPAN_RED(msg)
 	else
-		to_chat(user, SPAN_ORANGE(msg))
+		. += SPAN_ORANGE(msg)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)

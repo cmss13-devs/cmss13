@@ -8,6 +8,51 @@
 
 /*****************************************************************************************************/
 
+/datum/equipment_preset/uscm_event/colonel
+	name = "USCM O-6 - Colonel (High Command)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/general
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
+	assignment = JOB_COLONEL
+	rank = JOB_COLONEL
+	paygrade = "MO6"
+	role_comm_title = "COL"
+	minimum_age = 40
+	skills = /datum/skills/general
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE) //Know your enemy.
+
+	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
+	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
+	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
+
+	service_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black)
+	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black)
+
+	dress_under = list(/obj/item/clothing/under/marine/dress, /obj/item/clothing/under/marine/officer/formal/servicedress)
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain/white, /obj/item/clothing/head/marine/peaked/captain/black)
+	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit)
+
+/datum/equipment_preset/uscm_event/colonel/New()
+	. = ..()
+	access = get_all_accesses() + get_all_centcom_access()
+
+/datum/equipment_preset/uscm_event/colonel/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_JACKET)
+
 /datum/equipment_preset/uscm_event/general
 	name = "USCM O-7 - Brigadier General (High Command)"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -146,43 +191,12 @@
 	. = ..()
 	access = get_all_marine_access()
 
-/datum/equipment_preset/uscm_event/provost/officer
-	name = "Provost Officer (PvE7)"
-
-	assignment = JOB_PROVOST_OFFICER
-	rank = "Provost Officer"
-	paygrade = "PvE7"
-	role_comm_title = "PvO"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/uscm_event/provost/officer/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/satchel/sec
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/security
-
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/provost(H), WEAR_JACKET)
-	if(H.disabilities & NEARSIGHTED)
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/provost(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_J_STORE)
-
 /datum/equipment_preset/uscm_event/provost/enforcer
-	name = "Provost Enforcer (PvE8)"
+	name = "Provost Enforcer (ME5)"
 
 	assignment = JOB_PROVOST_ENFORCER
 	rank = "Provost Enforcer"
-	paygrade = "PvE8"
+	paygrade = "ME5"
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -219,12 +233,12 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(H), WEAR_J_STORE)
 
 /datum/equipment_preset/uscm_event/provost/tml
-	name = "Provost Team Leader (PvE9)"
+	name = "Provost Team Leader (ME6)"
 	skills = /datum/skills/CMP
 
 	assignment = JOB_PROVOST_TML
 	rank = "Provost Team Leader"
-	paygrade = "PvE9"
+	paygrade = "ME6"
 	role_comm_title = "PvTML"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -263,12 +277,12 @@
 
 
 /datum/equipment_preset/uscm_event/provost/advisor
-	name = "Provost Advisor (PvE9)"
+	name = "Provost Advisor (ME6)"
 	skills = /datum/skills/CMP
 
 	assignment = JOB_PROVOST_ADVISOR
 	rank = "Provost Advisor"
-	paygrade = "PvE9"
+	paygrade = "ME6"
 	role_comm_title = "PvA"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -332,13 +346,13 @@
 
 
 /datum/equipment_preset/uscm_event/provost/marshal
-	name = "Provost Marshal (PvO8)"
+	name = "Provost Marshal (MO6)"
 	minimum_age = 45
 	skills = /datum/skills/general
 
 	assignment = JOB_PROVOST_MARSHAL
 	rank = "Provost Marshal"
-	paygrade = "PvO8"
+	paygrade = "MO6"
 	role_comm_title = "PvM"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -365,13 +379,13 @@
 
 
 /datum/equipment_preset/uscm_event/provost/marshal/sector
-	name = "Provost Sector Marshal (PvO9)"
+	name = "Provost Sector Marshal (MO7)"
 	minimum_age = 50
 	skills = /datum/skills/general
 
 	assignment = JOB_PROVOST_SMARSHAL
 	rank = "Provost Sector Marshal"
-	paygrade = "PvO9"
+	paygrade = "MO7"
 	role_comm_title = "PvSM"
 
 /datum/equipment_preset/uscm_event/provost/marshal/sector/load_gear(mob/living/carbon/human/H)
@@ -426,3 +440,90 @@
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost/marshal/chief(H.back), WEAR_IN_BACK)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_event/uaac/tis
+	name = "UAAC-TIS"
+
+	idtype = /obj/item/card/id/provost
+	access = list(
+		ACCESS_MARINE_BRIG,
+		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_LOGISTICS,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+		ACCESS_MARINE_ENGINEERING,
+		ACCESS_MARINE_MAINT,
+		ACCESS_MARINE_OT,
+		ACCESS_WY_CORPORATE
+	)
+	skills = /datum/skills/provost
+
+/datum/equipment_preset/uscm_event/uaac/tis/New()
+	. = ..()
+	access = get_all_marine_access()
+
+/datum/equipment_preset/uscm_event/uaac/tis/io
+	name = "UAAC-TIS Intelligence Officer (NO2)"
+	minimum_age = 25
+	skills = /datum/skills/intel
+
+	assignment = JOB_TIS_IO
+	rank = "UAAC-TIS Intelligence Officer"
+	paygrade = "NO2"
+	role_comm_title = "TIS-IO"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+/datum/equipment_preset/uscm_event/uaac/tis/io/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/satchel/sec
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/security
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/uaac/tis/io(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(H), WEAR_WAIST)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
+
+/datum/equipment_preset/uscm_event/uaac/tis/sa
+	name = "UAAC-TIS Special Agent (NO5)"
+	minimum_age = 30
+	skills = /datum/skills/general
+
+	assignment = JOB_TIS_SA
+	rank = "UAAC-TIS Special Agent"
+	paygrade = "NO5"
+	role_comm_title = "TIS-SA"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+/datum/equipment_preset/uscm_event/uaac/tis/sa/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/satchel/sec
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/security
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/uaac/tis(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general/impact(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/uaac/tis/sa(H), WEAR_JACKET)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/tis(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(H), WEAR_R_STORE)

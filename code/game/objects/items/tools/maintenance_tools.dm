@@ -196,9 +196,9 @@
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/tool/weldingtool/examine(mob/user)
-	..()
-	to_chat(user, "It contains [get_fuel()]/[max_fuel] units of fuel!")
+/obj/item/tool/weldingtool/get_examine_text(mob/user)
+	. = ..()
+	. += "It contains [get_fuel()]/[max_fuel] units of fuel!"
 
 
 
@@ -547,13 +547,14 @@
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
 		to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
 		return
-/obj/item/tool/weldpack/examine(mob/user)
-	..()
-	to_chat(user, "[reagents.total_volume] units of welding fuel left!")
+
+/obj/item/tool/weldpack/get_examine_text(mob/user)
+	. = ..()
+	. += "[reagents.total_volume] units of welding fuel left!"
 	if(original_health > health)
-		to_chat(user, "\The [src] appears to have been damaged, as the self sealing liner has been exposed.")
+		. += "\The [src] appears to have been damaged, as the self sealing liner has been exposed."
 	else
-		to_chat(user, "No punctures are seen on \the [src] upon closer inspection.")
+		. += "No punctures are seen on \the [src] upon closer inspection."
 
 /obj/item/tool/weldpack/bullet_act(var/obj/item/projectile/P)
 	var/damage = P.damage

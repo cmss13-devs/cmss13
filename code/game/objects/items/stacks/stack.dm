@@ -70,9 +70,9 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		close_browser(src, "stack")
 	return ..()
 
-/obj/item/stack/examine(mob/user)
-	..()
-	to_chat(user, "There are [amount] [singular_name]\s in the stack.")
+/obj/item/stack/get_examine_text(mob/user)
+	. = ..()
+	. += "There are [amount] [singular_name]\s in the stack."
 
 /obj/item/stack/attack_self(mob/user)
 	..()

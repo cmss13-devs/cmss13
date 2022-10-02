@@ -137,15 +137,15 @@ Class Procs:
 /obj/structure/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL
 
-/obj/structure/machinery/examine(mob/user)
-	..()
+/obj/structure/machinery/get_examine_text(mob/user)
+	. = ..()
 	if(!stat)
 		return
 
-	to_chat(user, "It does not appear to be working.")
+	. += "It does not appear to be working."
 	var/msg = get_repair_move_text(FALSE)
 	if(msg && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-		to_chat(user, SPAN_WARNING("[msg]"))
+		. += SPAN_WARNING("[msg]")
 
 /obj/structure/machinery/emp_act(severity)
 	if(use_power && stat == 0)

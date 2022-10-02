@@ -705,9 +705,16 @@
 	if(!current_turf)
 		return
 
+	if (!check_plasma_owner())
+		return
+
 	if(X.ammo.spit_windup)
 		spitting = TRUE
-		to_chat(src, SPAN_WARNING("You begin to prepare a large spit!"))
+		if(X.ammo.pre_spit_warn)
+			playsound(X.loc,"alien_drool", 55, 1)
+		to_chat(X, SPAN_WARNING("You begin to prepare a large spit!"))
+		X.visible_message(SPAN_WARNING("[X] prepares to spit a massive glob!"),\
+		SPAN_WARNING("You begin to spit [X.ammo.name]!"))
 		if (!do_after(X, X.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(X, SPAN_XENODANGER("You decide to cancel your spit."))
 			spitting = FALSE
@@ -720,7 +727,7 @@
 	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay
 	X.visible_message(SPAN_XENOWARNING("[X] spits at [A]!"), \
 
-	SPAN_XENOWARNING("You spit at [A]!") )
+	SPAN_XENOWARNING("You spit a [X.ammo.name] at [A]!") )
 	playsound(X.loc, sound_to_play, 25, 1)
 
 	var/obj/item/projectile/P = new /obj/item/projectile(current_turf, create_cause_data(initial(X.caste_type), X))

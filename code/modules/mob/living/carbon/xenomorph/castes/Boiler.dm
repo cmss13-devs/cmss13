@@ -17,7 +17,7 @@
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_SPITTER)
-	spit_delay = 35
+	spit_delay = 30 SECONDS
 	caste_desc = "Gross!"
 	acid_level = 3
 	caste_luminosity = 2
@@ -61,7 +61,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
 		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
-		/datum/action/xeno_action/onclick/shift_spits, //2nd macro
+		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
 		/datum/action/xeno_action/activable/spray_acid/boiler,
 		/datum/action/xeno_action/onclick/dump_acid, //3rd macro
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler //4th macro
@@ -74,8 +74,8 @@
 	smoke.attach(src)
 	smoke.cause_data = create_cause_data(initial(caste_type), src)
 	see_in_dark = 20
-	ammo = GLOB.ammo_list[/datum/ammo/xeno/boiler_gas]
-	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/acid)
+	ammo = GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid]
+	spit_types = list(/datum/ammo/xeno/boiler_gas/acid,/datum/ammo/xeno/boiler_gas)
 
 	update_icon_source()
 

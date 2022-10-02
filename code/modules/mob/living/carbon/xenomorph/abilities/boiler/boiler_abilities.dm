@@ -32,20 +32,26 @@
 	var/movespeed_nerf_applied = 0
 	var/activated_once = FALSE
 
+/datum/action/xeno_action/onclick/shift_spits/boiler
+	name = "Toggle Gas Type"
+	action_icon_state = "shift_spit_acid_glob"
+	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+
 /datum/action/xeno_action/activable/spray_acid/boiler // placeholder stats
 	plasma_cost = 40
 	xeno_cooldown = 8 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
-	spray_distance = 5 				// Distance to spray
+	spray_distance = 6 				// Distance to spray
 
 
 /datum/action/xeno_action/activable/xeno_spit/bombard
 	name = "Bombard"
 	ability_name = "Bombard"
 	action_icon_state = "bombard"
-	xeno_cooldown = 25 SECONDS // actually not fucking used for some reason lol
 	cooldown_message = "Your belly fills with another gas glob. You are are ready to bombard again."
 	sound_to_play = 'sound/effects/blobattack.ogg'
 

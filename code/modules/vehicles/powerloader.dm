@@ -98,13 +98,17 @@
 
 /obj/vehicle/powerloader/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+			to_chat(user, SPAN_WARNING("You have no idea how to disassemble \the [src]."))
+			return
 		if(buckled_mob)
 			to_chat(user, SPAN_WARNING("You can't disassemble \the [src] while someone's inside it!"))
 			return
-		user.visible_message(SPAN_NOTICE("\The [user] disassembles \the [src]."), SPAN_NOTICE("You disassemble \the [src]."))
-		for(var/parts_num = 1 to POWERLOADER_PARTS_MAX)
-			new parts_type(loc)
-		qdel(src)
+		user.visible_message(SPAN_NOTICE("\The [user] starts disassembling \the [src]..."), SPAN_NOTICE("You start disassembling \the [src]..."))
+		if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL))
+			for(var/parts_num = 1 to POWERLOADER_PARTS_MAX)
+				new parts_type(loc)
+			qdel(src)
 		return
 	if(istype(W, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = W
@@ -387,10 +391,11 @@
 
 /obj/structure/powerloader_wreckage/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		for(var/i = 1 to parts_num)
-			new parts_type(loc)
-		user.visible_message(SPAN_NOTICE("\The [user] scraps \the [src] for parts."), SPAN_NOTICE("You scrap \the [src] for parts."))
-		qdel(src)
+		user.visible_message(SPAN_NOTICE("\The [user] starts scrapping \the [src] for parts..."), SPAN_NOTICE("You start scrapping \the [src] for parts..."))
+		if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL))
+			for(var/i = 1 to parts_num)
+				new parts_type(loc)
+			qdel(src)
 		return
 	return ..()
 
@@ -436,10 +441,11 @@
 
 /obj/structure/powerloader_assembly/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		for(var/i = 1 to parts_num)
-			new parts_type(loc)
-		user.visible_message(SPAN_NOTICE("\The [user] disassembles \the [src]."), SPAN_NOTICE("You disassemble \the [src]."))
-		qdel(src)
+		user.visible_message(SPAN_NOTICE("\The [user] starts disassembling \the [src]..."), SPAN_NOTICE("You start disassembling \the [src]..."), max_distance = 3)
+		if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL))
+			for(var/i = 1 to parts_num)
+				new parts_type(loc)
+			qdel(src)
 		return
 	if(istypestrict(W, parts_type))
 		parts_num++

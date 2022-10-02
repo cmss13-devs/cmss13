@@ -8,7 +8,9 @@
 	anchored = TRUE
 
 	var/packaged = FALSE
-	var/list/dir_to_crate = list()
+
+	var/list/held_loads = list()
+	var/list/dir_to_load = list()
 
 /obj/structure/container/Initialize()
 	bound_width = 2 * world.icon_size
@@ -21,8 +23,9 @@
 	return ..()
 
 /obj/structure/container/attack_hand(mob/user)
-	to_chat(user, SPAN_NOTICE("You start [packaged ? "unpacking" : "packing"] \the [src]."))
-	toggle_packaged()
+	user.visible_message(SPAN_NOTICE("\The [user] starts [packaged ? "unpacking" : "packing"] \the [src]."), SPAN_NOTICE("You start [packaged ? "unpacking" : "packing"] \the [src]."), max_distance = 3)
+	if(do_after(user, 5 SECONDS, INTERRUPT_ALL))
+		toggle_packaged()
 
 /obj/structure/container/proc/toggle_packaged()
 	if(packaged)
@@ -33,18 +36,27 @@
 
 /obj/structure/container/proc/package()
 	for(var/turf/corner in locs)
-		for(var/obj/structure/closet/crate/crate in corner)
-			if(crate.opened)
+		for(var/atom/movable/load in corner)
+			var/is_packageable = FALSE
+			if(istype(load, /obj/structure/closet/crate))
+				var/obj/structure/closet/crate/crate = load
+				if(!crate.opened)
+					is_packageable = TRUE
+			if(istype(load, /obj/structure/largecrate))
+				is_packageable = TRUE
+			if(!is_packageable)
 				continue
-			var/crate_dir = get_dir(loc, crate.loc)
-			dir_to_crate[WEAKREF(crate)] = crate_dir
-			crate.forceMove(src)
+			var/load_dir = get_dir(loc, load.loc)
+			dir_to_load[WEAKREF(load)] = load_dir
+			load.forceMove(src)
+			held_loads += load
 	icon_state = "[initial(icon_state)]_packaged"
 
 /obj/structure/container/proc/unpackage()
-	for(var/obj/structure/closet/crate/crate in src)
-		var/crate_dir = dir_to_crate[WEAKREF(crate)]
-		var/turf/settle_turf = get_step(src, crate_dir)
-		crate.forceMove(settle_turf)
-	dir_to_crate = list()
+	for(var/atom/movable/load in held_loads)
+		var/load_dir = dir_to_load[WEAKREF(load)]
+		var/turf/settle_turf = get_step(src, load_dir)
+		load.forceMove(settle_turf)
+	dir_to_load = list()
+	held_loads = list()
 	icon_state = initial(icon_state)

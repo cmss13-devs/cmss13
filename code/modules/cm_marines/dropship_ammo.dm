@@ -58,14 +58,13 @@
 		. = ..()
 
 
-/obj/structure/ship_ammo/examine(mob/user)
-	..()
-	to_chat(user, "Moving this will require some sort of lifter.")
+/obj/structure/ship_ammo/get_examine_text(mob/user)
+	. = ..()
+	. += "Moving this will require some sort of lifter."
 
 //what to show to the user that examines the weapon we're loaded on.
 /obj/structure/ship_ammo/proc/show_loaded_desc(mob/user)
-	to_chat(user, "It's loaded with \a [src].")
-	return
+	return "It's loaded with \a [src]."
 
 /obj/structure/ship_ammo/proc/detonate_on(turf/impact)
 	return
@@ -130,15 +129,15 @@
 	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
 
-/obj/structure/ship_ammo/heavygun/examine(mob/user)
-	..()
-	to_chat(user, "It has [ammo_count] round\s.")
+/obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [ammo_count] round\s."
 
 /obj/structure/ship_ammo/heavygun/show_loaded_desc(mob/user)
 	if(ammo_count)
-		to_chat(user, "It's loaded with \a [src] containing [ammo_count] round\s.")
+		return "It's loaded with \a [src] containing [ammo_count] round\s."
 	else
-		to_chat(user, "It's loaded with an empty [name].")
+		return "It's loaded with an empty [name]."
 
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact)
 	set waitfor = 0
@@ -205,16 +204,16 @@
 	fire_mission_delay = 4 //very good but long cooldown
 
 
-/obj/structure/ship_ammo/laser_battery/examine(mob/user)
-	..()
-	to_chat(user, "It's at [round(100*ammo_count/max_ammo_count)]% charge.")
+/obj/structure/ship_ammo/laser_battery/get_examine_text(mob/user)
+	. = ..()
+	. += "It's at [round(100*ammo_count/max_ammo_count)]% charge."
 
 
 /obj/structure/ship_ammo/laser_battery/show_loaded_desc(mob/user)
 	if(ammo_count)
-		to_chat(user, "It's loaded with \a [src] at [round(100*ammo_count/max_ammo_count)]% charge.")
+		return "It's loaded with \a [src] at [round(100*ammo_count/max_ammo_count)]% charge."
 	else
-		to_chat(user, "It's loaded with an empty [name].")
+		return "It's loaded with an empty [name]."
 
 
 /obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact)
@@ -369,11 +368,11 @@
 
 /obj/structure/ship_ammo/minirocket/show_loaded_desc(mob/user)
 	if(ammo_count)
-		to_chat(user, "It's loaded with \a [src] containing [ammo_count] minirocket\s.")
+		return "It's loaded with \a [src] containing [ammo_count] minirocket\s."
 
-/obj/structure/ship_ammo/minirocket/examine(mob/user)
-	..()
-	to_chat(user, "It has [ammo_count] minirocket\s.")
+/obj/structure/ship_ammo/minirocket/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [ammo_count] minirocket\s."
 
 
 /obj/structure/ship_ammo/minirocket/incendiary

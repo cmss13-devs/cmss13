@@ -30,39 +30,39 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 
-/obj/structure/girder/examine(mob/user)
-	..()
+/obj/structure/girder/get_examine_text(mob/user)
+	. = ..()
 	if (health <= 0)
-		to_chat(user, "It's broken, but can be mended by welding it.")
+		. += "It's broken, but can be mended by welding it."
 		return
 
 	switch(state)
 		if(STATE_STANDARD)
 			if(step_state == STATE_STANDARD)
-				to_chat(user, SPAN_NOTICE("It looks ready for a [SPAN_HELPFUL("screwdriver")] to dismantle, [SPAN_HELPFUL("metal")] to create a wall or [SPAN_HELPFUL("plasteel")] to create a reinforced wall."))
+				. += SPAN_NOTICE("It looks ready for a [SPAN_HELPFUL("screwdriver")] to dismantle, [SPAN_HELPFUL("metal")] to create a wall or [SPAN_HELPFUL("plasteel")] to create a reinforced wall.")
 				return
 		if(STATE_DISMANTLING)
 			if(step_state == STATE_SCREWDRIVER)
-				to_chat(user, SPAN_NOTICE("Support struts are unsecured. [SPAN_HELPFUL("Wirecutters")] to remove."))
+				. += SPAN_NOTICE("Support struts are unsecured. [SPAN_HELPFUL("Wirecutters")] to remove.")
 			else if(step_state == STATE_WIRECUTTER)
-				to_chat(user, SPAN_NOTICE("Support struts are removed. [SPAN_HELPFUL("Crowbar")] to dislodge, [SPAN_HELPFUL("wrench")] to dismantle."))
+				. += SPAN_NOTICE("Support struts are removed. [SPAN_HELPFUL("Crowbar")] to dislodge, [SPAN_HELPFUL("wrench")] to dismantle.")
 			return
 		if(STATE_WALL)
 			if(step_state == STATE_METAL)
-				to_chat(user, SPAN_NOTICE("Metal added. [SPAN_HELPFUL("Screwdrivers")] to attach."))
+				. += SPAN_NOTICE("Metal added. [SPAN_HELPFUL("Screwdrivers")] to attach.")
 			else if(step_state == STATE_SCREWDRIVER)
-				to_chat(user, SPAN_NOTICE("Metal attached. [SPAN_HELPFUL("Weld")] to finish."))
+				. += SPAN_NOTICE("Metal attached. [SPAN_HELPFUL("Weld")] to finish.")
 			return
 		if(STATE_REINFORCED_WALL)
 			if(step_state == STATE_PLASTEEL)
-				to_chat(user, SPAN_NOTICE("Plasteel added. Add [SPAN_HELPFUL("metal rods")] to stengthen."))
+				. += SPAN_NOTICE("Plasteel added. Add [SPAN_HELPFUL("metal rods")] to stengthen.")
 			else if(step_state == STATE_RODS)
-				to_chat(user, SPAN_NOTICE("Metal rods added. [SPAN_HELPFUL("Screwdrivers")] to attach."))
+				. += SPAN_NOTICE("Metal rods added. [SPAN_HELPFUL("Screwdrivers")] to attach.")
 			else if(step_state == STATE_SCREWDRIVER)
-				to_chat(user, SPAN_NOTICE("Plasteel attached. [SPAN_HELPFUL("Weld")] to finish."))
+				. += SPAN_NOTICE("Plasteel attached. [SPAN_HELPFUL("Weld")] to finish.")
 			return
 		if(STATE_DISPLACED)
-			to_chat(user, SPAN_NOTICE("It looks dislodged. [SPAN_HELPFUL("Crowbar")] to secure it."))
+			. += SPAN_NOTICE("It looks dislodged. [SPAN_HELPFUL("Crowbar")] to secure it.")
 
 /obj/structure/girder/update_icon()
 	. = ..()

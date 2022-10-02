@@ -498,17 +498,17 @@
 	linked_human = H
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
 
-/obj/item/weapon/gun/rifle/m46c/examine()
-	..()
+/obj/item/weapon/gun/rifle/m46c/get_examine_text(mob/user)
+	. = ..()
 	if(linked_human)
 		if(is_locked)
-			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human]."))
+			. += SPAN_NOTICE("It is registered to [linked_human].")
 		else
-			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked."))
+			. += SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked.")
 	else
-		to_chat(usr, SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner."))
+		. += SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner.")
 	if(!iff_enabled)
-		to_chat(usr, SPAN_WARNING("Its IFF restrictions are disabled."))
+		. += SPAN_WARNING("Its IFF restrictions are disabled.")
 
 /obj/item/weapon/gun/rifle/m46c/proc/remove_idlock()
 	SIGNAL_HANDLER

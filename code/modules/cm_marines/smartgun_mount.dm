@@ -67,12 +67,12 @@
 
 	update_icon()
 
-/obj/item/device/m56d_gun/examine(mob/user as mob) //Let us see how much ammo we got in this thing.
-	..()
+/obj/item/device/m56d_gun/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
+	. = ..()
 	if(rounds)
-		to_chat(usr, "It has [rounds] out of 700 rounds.")
+		. += "It has [rounds] out of 700 rounds."
 	else
-		to_chat(usr, "It seems to be lacking a ammo drum.")
+		. += "It seems to be lacking a ammo drum."
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
 	var/icon_name = "M56D_gun"
@@ -266,14 +266,14 @@
 		icon_name += "_mount"
 	icon_state = icon_name
 
-/obj/structure/machinery/m56d_post/examine(mob/user)
-	..()
+/obj/structure/machinery/m56d_post/get_examine_text(mob/user)
+	. = ..()
 	if(!anchored)
-		to_chat(user, "It must be <B>screwed</b> to the floor.")
+		. += "It must be <B>screwed</b> to the floor."
 	else if(!gun_mounted)
-		to_chat(user, "The <b>M56D heavy machine gun</b> is not yet mounted.")
+		. += "The <b>M56D heavy machine gun</b> is not yet mounted."
 	else
-		to_chat(user, "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job.")
+		. += "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job."
 
 /obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M))
@@ -485,18 +485,18 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/structure/machinery/m56d_hmg/examine(mob/user) //Let us see how much ammo we got in this thing.
-	..()
+/obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
+	. = ..()
 	if(ishuman(user))
 		if(rounds)
-			to_chat(user, SPAN_NOTICE("It has [rounds] round\s out of [rounds_max]."))
+			. += SPAN_NOTICE("It has [rounds] round\s out of [rounds_max].")
 		else
-			to_chat(user, SPAN_WARNING("It seems to be lacking ammo."))
+			. += SPAN_WARNING("It seems to be lacking ammo.")
 		switch(damage_state)
-			if(M56D_DMG_NONE) to_chat(user, SPAN_INFO("It looks like it's in good shape."))
-			if(M56D_DMG_SLIGHT) to_chat(user, SPAN_WARNING("It has sustained some damage, but still fires very steadily."))
-			if(M56D_DMG_MODERATE) to_chat(user, SPAN_WARNING("It's damaged, but holding, rattling with each shot fired."))
-			if(M56D_DMG_HEAVY) to_chat(user, SPAN_WARNING("It's falling apart, barely able to handle the force of its own shots."))
+			if(M56D_DMG_NONE) . += SPAN_INFO("It looks like it's in good shape.")
+			if(M56D_DMG_SLIGHT) . += SPAN_WARNING("It has sustained some damage, but still fires very steadily.")
+			if(M56D_DMG_MODERATE) . += SPAN_WARNING("It's damaged, but holding, rattling with each shot fired.")
+			if(M56D_DMG_HEAVY) . += SPAN_WARNING("It's falling apart, barely able to handle the force of its own shots.")
 
 /obj/structure/machinery/m56d_hmg/update_icon() //Lets generate the icon based on how much ammo it has.
 	if(!rounds)

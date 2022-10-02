@@ -80,11 +80,11 @@
 	QDEL_NULL_LIST(ingredients)
 	. = ..()
 
-/obj/item/reagent_container/food/snacks/csandwich/examine(mob/user)
-	..()
+/obj/item/reagent_container/food/snacks/csandwich/get_examine_text(mob/user)
+	. = ..()
 	if(contents && contents.len)
 		var/obj/item/O = pick(contents)
-		to_chat(user, SPAN_NOTICE(" You think you can see [O.name] in there."))
+		. += SPAN_NOTICE("You think you can see [O.name] in there.")
 
 /obj/item/reagent_container/food/snacks/csandwich/attack(mob/M as mob, mob/user as mob)
 

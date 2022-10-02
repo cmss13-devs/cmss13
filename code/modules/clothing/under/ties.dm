@@ -229,14 +229,14 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/accessory/medal/examine(mob/user)
-	..()
+/obj/item/clothing/accessory/medal/get_examine_text(mob/user)
+	. = ..()
 
 	var/citation_to_read = ""
 	if(medal_citation)
 		citation_to_read = "The citation reads \'[medal_citation]\'."
 
-	to_chat(user, "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]")
+	. += "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]"
 
 /obj/item/clothing/accessory/medal/bronze
 	name = "bronze medal"

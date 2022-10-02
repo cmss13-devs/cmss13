@@ -39,11 +39,11 @@
 		I.pixel_y = template.pixel_y
 		overlays += I
 
-/obj/effect/alien/resin/construction/examine(mob/user)
-	..()
+/obj/effect/alien/resin/construction/get_examine_text(mob/user)
+	. = ..()
 	if((isXeno(user) || isobserver(user)) && linked_hive)
 		var/message = "A [template.name] construction is designated here. It requires [template.crystals_required - template.crystals_stored] more [MATERIAL_CRYSTAL]."
-		to_chat(user, message)
+		. += message
 
 /obj/effect/alien/resin/construction/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!linked_hive || (linked_hive && (M.hivenumber != linked_hive.hivenumber)) || (M.a_intent == INTENT_HARM && M.can_destroy_special()))

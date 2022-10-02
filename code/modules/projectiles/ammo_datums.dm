@@ -2330,9 +2330,11 @@
 	flags_ammo_behavior = AMMO_XENO_ACID
 	var/added_spit_delay = 0 //used to make cooldown of the different spits vary.
 	var/spit_cost
-	var/spit_windup = FALSE
+	var/spit_windup = FALSE  // Should there be a windup for this spit?
+	var/pre_spit_warn = FALSE // Should there be an additional warning while winding up? (do not put to true if there is not a windup)
 	accuracy = HIT_ACCURACY_TIER_8*2
 	max_range = 12
+
 
 /datum/ammo/xeno/toxin
 	name = "neurotoxic spit"
@@ -2644,14 +2646,14 @@
 	debilitate = list(19,21,0,0,11,12,0,0)
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
 	var/datum/effect_system/smoke_spread/smoke_system
-	spit_cost = 50
-	added_spit_delay = 6 SECONDS
+	spit_cost = 200
+	pre_spit_warn = TRUE
 	spit_windup = 5 SECONDS
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_4
 	accuracy = HIT_ACCURACY_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_4
-	max_range = 32
+	max_range = 16
 	var/smokerange = 4
 	var/lifetime_mult = 1.0
 

@@ -3,6 +3,8 @@
 	delay = 20
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	movement_buffer = 7
+	handles_movement = TRUE
+	movement_buffer = 0
 
 /datum/action/xeno_action/activable/acid_lance
 	name = "Acid Lance"
@@ -32,8 +34,8 @@
 
 /datum/action/xeno_action/activable/spray_acid/boiler // placeholder stats
 	plasma_cost = 40
-	xeno_cooldown = 80
-
+	xeno_cooldown = 8 SECONDS
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
 	spray_distance = 5 				// Distance to spray
@@ -43,9 +45,8 @@
 	name = "Bombard"
 	ability_name = "Bombard"
 	action_icon_state = "bombard"
-	plasma_cost = 100 // TENTATIVE
-	xeno_cooldown = 10 // TENTATIVE
-	cooldown_message = "Your belly fills with another gas glob. You can bombard again."
+	xeno_cooldown = 25 SECONDS // actually not fucking used for some reason lol
+	cooldown_message = "Your belly fills with another gas glob. You are are ready to bombard again."
 	sound_to_play = 'sound/effects/blobattack.ogg'
 
 /datum/action/xeno_action/onclick/dump_acid
@@ -55,7 +56,7 @@
 	plasma_cost = 10
 	macro_path = /datum/action/xeno_action/verb/verb_dump_acid
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_4
 	xeno_cooldown = 340
 
 	var/buffs_duration = 60

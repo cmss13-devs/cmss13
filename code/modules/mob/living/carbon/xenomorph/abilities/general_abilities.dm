@@ -46,6 +46,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
+
 /datum/action/xeno_action/onclick/shift_spits/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
@@ -264,7 +265,7 @@
 	var/should_delay = FALSE
 	var/delay = 20
 	var/handles_movement = TRUE
-	var/movement_buffer = 0
+	var/movement_buffer = 0  // how much you can move before zoom breaks
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
 	var/mob/living/carbon/Xenomorph/xeno = owner
@@ -394,7 +395,6 @@
 	xeno_cooldown = 60 SECONDS
 	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
-	var/flags
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3

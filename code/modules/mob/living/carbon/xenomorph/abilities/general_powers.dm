@@ -705,12 +705,6 @@
 	if(!current_turf)
 		return
 
-	plasma_cost = X.ammo.spit_cost
-
-	if(!check_and_use_plasma_owner())
-		return
-
-	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay
 	if(X.ammo.spit_windup)
 		spitting = TRUE
 		to_chat(src, SPAN_WARNING("You begin to prepare a large spit!"))
@@ -718,6 +712,12 @@
 			to_chat(X, SPAN_XENODANGER("You decide to cancel your spit."))
 			spitting = FALSE
 			return
+	plasma_cost = X.ammo.spit_cost
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay
 	X.visible_message(SPAN_XENOWARNING("[X] spits at [A]!"), \
 
 	SPAN_XENOWARNING("You spit at [A]!") )

@@ -22,6 +22,7 @@
 	acid_level = 3
 	caste_luminosity = 2
 	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/acid)
+	fire_immunity = FIRE_VULNERABILITY
 
 	tackle_min = 2
 	tackle_max = 6
@@ -45,9 +46,9 @@
 	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/acid)
 	drag_delay = 6 //pulling a big dead xeno is hard
 	mutation_type = BOILER_NORMAL
-
-	tileoffset = 0
-	viewsize = 16
+	spit_delay  = 25 SECONDS
+	tileoffset = 4
+	viewsize = 6
 
 	icon_xeno = 'icons/mob/hostiles/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/boiler.dmi'
@@ -61,9 +62,10 @@
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
 		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
 		/datum/action/xeno_action/onclick/shift_spits, //2nd macro
+		/datum/action/xeno_action/activable/spray_acid/boiler,
 		/datum/action/xeno_action/onclick/dump_acid, //3rd macro
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
-		/datum/action/xeno_action/activable/spray_acid/boiler
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler //4th macro
+
 	)
 
 /mob/living/carbon/Xenomorph/Boiler/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)

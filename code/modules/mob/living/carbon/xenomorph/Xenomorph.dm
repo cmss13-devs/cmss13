@@ -220,8 +220,8 @@
 	var/list/spit_types
 	var/spit_windup = 0
 	var/spit_delay = 0
-	var/tileoffset = 0 // Zooming-out related vars
-	var/viewsize = 0
+	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
+	var/viewsize = 0	//What size your view will be changed to when you zoom?
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 	var/lock_evolve = FALSE //Prevents evolve/devolve (used when banished)
 	var/list/tackle_counter

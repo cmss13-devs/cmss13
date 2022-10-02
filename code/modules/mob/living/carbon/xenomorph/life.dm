@@ -67,6 +67,9 @@
 		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
 		apply_damage(dmg, BURN)
 		INVOKE_ASYNC(src, /mob.proc/emote, pick("roar", "needhelp"))
+	if(FIRE_VULNERABILITY)
+		var/dmg = PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks) * FIRE_VULNERABILITY_MULTIPLIER
+		apply_damage(dmg, BURN)
 
 #undef PASSIVE_BURN_DAM_CALC
 

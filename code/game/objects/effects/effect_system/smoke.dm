@@ -375,7 +375,7 @@
 		to_chat(M, SPAN_DANGER("You stumble!"))
 		M.KnockDown(1)
 		M.emote("pain")
-		M.apply_damage(3,TOX)
+		M.apply_damage(3,TOX) // Blood toxicity
 	addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 
 	//Topical damage (neurotoxin on exposed skin)

@@ -33,13 +33,12 @@
 	contents_allowed += /obj/structure/container
 	container_overlay = image(icon, null, "container", layer + 0.1)
 
+	add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+
 /obj/vehicle/multitile/van/flatbed/Destroy()
 	if(loaded_container)
 		loaded_container.forceMove(loc)
 	return ..()
-
-/obj/vehicle/multitile/van/flatbed/load_hardpoints(var/obj/vehicle/multitile/apc/V)
-	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
 
 /obj/vehicle/multitile/van/flatbed/update_icon()
 	. = ..()

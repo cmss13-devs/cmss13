@@ -55219,15 +55219,6 @@
 	tag = "icon-red (EAST)"
 	},
 /area/almayer/hallways/aft_hallway)
-"lBF" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "green";
-	tag = "icon-green (WEST)"
-	},
-/area/almayer/squads/req)
 "lBR" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -80800,12 +80791,15 @@
 /turf/open/floor/plating,
 /area/almayer/living/cafeteria_officer)
 "xfw" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/fancy/cigarettes/lucky_strikes,
+/obj/structure/closet/secure_closet/cargotech{
+	name = "Logistics Locker"
+	},
+/obj/item/weapon/gun/smg/m39,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/head/cmcap/req,
 /turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "green";
-	tag = "icon-green (NORTHWEST)"
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/squads/req)
 "xfT" = (
@@ -124962,7 +124956,7 @@ bzV
 beB
 mCo
 xfw
-lBF
+xfw
 bKA
 sbM
 pWA

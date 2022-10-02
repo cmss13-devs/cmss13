@@ -287,6 +287,7 @@
 				loaded = null
 				update_icon()
 				return
+		return
 
 	if(isturf(target))
 		return

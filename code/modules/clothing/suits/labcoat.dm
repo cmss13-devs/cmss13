@@ -129,7 +129,7 @@
 
 /obj/item/clothing/suit/storage/labcoat/researcher
 	name = "researcher's labcoat"
-	desc = "A high quality labcoat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
+	desc = "A high-quality labcoat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
 	icon_state = "sciencecoat"
 	item_state = "sciencecoat"
 

@@ -43,7 +43,7 @@
 //Cultist
 /obj/item/clothing/suit/cultist_hoodie
 	name = "black robe"
-	desc = "Looks eery and weird, almost as if it belongs to a cult."
+	desc = "Looks eerie and weird, almost as if it belongs to a cult."
 	icon_state = "chaplain_hoodie"
 	item_state = "chaplain_hoodie"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
@@ -92,7 +92,7 @@
 //Chef
 /obj/item/clothing/suit/chef
 	name = "Chef's apron"
-	desc = "An apron used by a high class chef."
+	desc = "An apron used by a high-class chef."
 	icon_state = "chef"
 	item_state = "chef"
 	gas_transfer_coefficient = 0.90

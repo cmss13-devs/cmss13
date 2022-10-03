@@ -331,7 +331,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						))
 				if(human_target_mob.getBruteLoss(organic_only = TRUE) > 30 && (chemicals_lists["bicaridine"] < 3 || chemicals_lists["meralyne"] < 3))
 					advice += list(list(
-						"advice" = "Administer a single dose of bicardine.",
+						"advice" = "Administer a single dose of bicaridine.",
 						"icon" = "syringe",
 						"colour" = "red"
 						))

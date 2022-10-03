@@ -481,7 +481,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	name = "Telecommunications Mainframe"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "comm_server"
-	desc = "A compact machine used for portable subspace telecommuniations processing."
+	desc = "A compact machine used for portable subspace telecommunications processing."
 	density = 1
 	anchored = 1
 	use_power = 0

@@ -89,7 +89,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "\improper Airtight plastic flaps"
-	desc = "Heavy duty, airtight, plastic flaps."
+	desc = "Heavy-duty, airtight, plastic flaps."
 
 
 /obj/structure/machinery/computer/supplycomp
@@ -118,7 +118,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supply_drop_console
 	name = "Supply Drop Console"
-	desc = "An old fashioned computer hooked into the nearby Supply Drop system."
+	desc = "An old-fashioned computer hooked into the nearby Supply Drop system."
 	icon_state = "security_cam"
 	circuit = /obj/item/circuitboard/computer/supply_drop_console
 	req_access = list(ACCESS_MARINE_CARGO)

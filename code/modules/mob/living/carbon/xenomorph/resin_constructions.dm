@@ -288,7 +288,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 /datum/resin_construction/resin_obj/shield_dispenser
 	name = "Shield Pillar"
-	desc = "A tall, strange pillar that gives shield to the interacter. Has a hefty cooldown."
+	desc = "A tall, strange pillar that gives shield to the interactor. Has a hefty cooldown."
 	construction_name = "shield pillar"
 	cost = XENO_RESIN_SHIELD_PILLAR_COST
 	max_per_xeno = 1

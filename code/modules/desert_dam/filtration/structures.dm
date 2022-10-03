@@ -141,8 +141,8 @@
 	bound_height = 96
 
 /obj/structure/filtration/flacculation_arm
-	name = "flacculation arm"
-	desc = "A long metal filtering rod on an axel, made to spin for flacculation."
+	name = "flocculation arm"
+	desc = "A long metal filtering rod on an axel, made to spin for flocculation."
 	density = 1
 	icon = 'icons/obj/structures/props/flacculation_arm.dmi'
 	icon_state = "flacculation_arm"

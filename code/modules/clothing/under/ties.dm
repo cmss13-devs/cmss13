@@ -280,7 +280,7 @@
 
 /obj/item/clothing/accessory/medal/gold/heroism
 	name = MARINE_HEROISM_MEDAL
-	desc = "An extremely rare golden medal awarded only by the USCM. To recieve such a medal is the highest honor and as such, very few exist."
+	desc = "An extremely rare golden medal awarded only by the USCM. To receive such a medal is the highest honor and as such, very few exist."
 
 /obj/item/clothing/accessory/medal/platinum
 	name = "platinum medal"
@@ -345,13 +345,13 @@
 //patches
 /obj/item/clothing/accessory/patch
 	name = "\improper USCM patch"
-	desc = "A fire resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_ROLLED|UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "\improper Falling Falcons patch"
-	desc = "A fire resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
 
 //Ties that can store stuff

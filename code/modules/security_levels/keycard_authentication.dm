@@ -175,7 +175,7 @@ var/global/maint_all_access = 1
 	name = "CORSAT automated biohazard override"
 	card_type = /obj/item/card/data/corsat
 	announce_title = "CORSAT Security Authority automated announcement"
-	window_desc = "This device is used to override the CORSAT automated lockdown. It requires both of the authentication disks, which can be found in the offices of various heads of deparments around the station."
+	window_desc = "This device is used to override the CORSAT automated lockdown. It requires both of the authentication disks, which can be found in the offices of various heads of departments around the station."
 	desc = "This device is used override the CORSAT automatic biohazard lockdown."
 
 /obj/structure/machinery/keycard_auth/lockdown/prison

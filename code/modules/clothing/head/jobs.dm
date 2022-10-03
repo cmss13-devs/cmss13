@@ -64,7 +64,7 @@
 //Mime
 /obj/item/clothing/head/beret
 	name = "beret"
-	desc = "A beret, an artists favorite headwear."
+	desc = "A beret, an artist's favorite headwear."
 	icon_state = "beret"
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
@@ -76,15 +76,15 @@
 	icon_state = "beret_badge"
 /obj/item/clothing/head/beret/sec/alt
 	name = "officer beret"
-	desc = "A navy blue beret with an officer's rank emblem. For officers that are more inclined towards style than safety."
+	desc = "A navy-blue beret with an officer's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "officerberet"
 /obj/item/clothing/head/beret/sec/hos
 	name = "officer beret"
-	desc = "A navy blue beret with a captain's rank emblem. For officers that are more inclined towards style than safety."
+	desc = "A navy-blue beret with a captain's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "hosberet"
 /obj/item/clothing/head/beret/sec/warden
 	name = "warden beret"
-	desc = "A navy blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety."
+	desc = "A navy-blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "wardenberet"
 /obj/item/clothing/head/beret/eng
 	name = "engineering beret"

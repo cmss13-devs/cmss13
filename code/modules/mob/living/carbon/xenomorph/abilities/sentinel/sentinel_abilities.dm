@@ -39,7 +39,7 @@
 /datum/action/xeno_action/onclick/toggle_toxic_slash
 	name = "Toggle Toxic Slash"
 	action_icon_state = "lurker_inject_neuro"
-	ability_name = "toxic slash"
+	ability_name = "toggle toxic slash"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_toxic_slash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -65,7 +65,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_sentinel_sprint
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_ACTIVATE
-	plasma_cost = 50
+	plasma_cost = 40
 	xeno_cooldown = 60
 
 	// Config

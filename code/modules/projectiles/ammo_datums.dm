@@ -2451,25 +2451,35 @@
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
 	spit_cost = 25
+	var/effect_power = XENO_NEURO_TIER_4
 	var/datum/callback/cytotoxin_callback
 
 	shell_speed = AMMO_SPEED_TIER_3
-	max_range = 4
+	max_range = 5
 
 /datum/ammo/xeno/cytotoxin/New()
 	..()
 
 	cytotoxin_callback = CALLBACK(GLOBAL_PROC, .proc/apply_cytotoxin)
 
-/proc/apply_cytotoxin(mob/M)
+/proc/apply_cytotoxin(mob/M, power, is_hugged)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.eye_blind < 4) //This is to make it so that it only applies the blindness if it is less than the ammount to be applies
+		if(H.eye_blind < 4) //This is to make it so that it only applies the blindness if it is less than the ammount to be applied
 			H.eye_blind = 4
+		if(is_hugged) //This gives it the same power to knockdown hosts as regular sentinel
+			if(H.knocked_down < 3)
+				H.AdjustKnockeddown(1 * power)
+			return
+
+
 
 /datum/ammo/xeno/cytotoxin/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
 	if(ishuman(M))
-		cytotoxin_callback.Invoke(M)
+		var/mob/living/carbon/human/H = M
+		if(H.status_flags & XENO_HOST)
+			cytotoxin_callback.Invoke(H, effect_power, TRUE)
+	cytotoxin_callback.Invoke(M, effect_power, FALSE)
 
 /*proc/neuro_flak(turf/T, obj/item/projectile/P, datum/callback/CB, power, insta_neuro, radius)
 	if(!T) return FALSE

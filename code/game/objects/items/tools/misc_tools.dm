@@ -129,10 +129,10 @@
     Instead of updating labels_left to user every label used,
     Have the user examine it to show them.
 */
-/obj/item/tool/hand_labeler/examine(mob/user)
+/obj/item/tool/hand_labeler/get_examine_text(mob/user)
     . = ..()
-    to_chat(user, SPAN_NOTICE("It has [labels_left] out of [initial(labels_left)] labels left."))
-    to_chat(user, SPAN_HELPFUL("Use paper to refill it."))
+    . += SPAN_NOTICE("It has [labels_left] out of [initial(labels_left)] labels left.")
+    . += SPAN_HELPFUL("Use paper to refill it.")
 
 
 /*

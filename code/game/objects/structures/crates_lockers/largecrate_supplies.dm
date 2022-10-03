@@ -326,10 +326,10 @@
 	var/dir_needed = EAST //If set to anything but 0, will check that space before spawning in.
 	var/unmovable = 1 //If set to 1, then on examine, the user will see a warning that states the contents cannot be moved after opened.
 
-/obj/structure/largecrate/machine/examine(mob/user)
-	..()
+/obj/structure/largecrate/machine/get_examine_text(mob/user)
+	. = ..()
 	if(unmovable)
-		to_chat(user, SPAN_DANGER("!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!"))
+		. += SPAN_DANGER("!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!")
 
 /obj/structure/largecrate/machine/unpack(var/forced)
 	if(parts_type)

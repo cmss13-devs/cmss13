@@ -91,10 +91,10 @@
 	. = ..()
 
 
-/obj/item/clothing/examine(var/mob/user)
-	. = ..(user)
+/obj/item/clothing/get_examine_text(var/mob/user)
+	. = ..()
 	for(var/obj/item/clothing/accessory/A in accessories)
-		to_chat(user, "[icon2html(A, user)] \A [A] is attached to it[A.additional_examine_text()]") //The spacing of the examine text proc is deliberate. By default it returns ".".
+		. += "[icon2html(A, user)] \A [A] is attached to it[A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
 
 /**
  *  Attach accessory A to src

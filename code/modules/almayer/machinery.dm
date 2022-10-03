@@ -387,8 +387,8 @@
 	else
 		. = ..()
 
-/obj/structure/prop/almayer/ship_memorial/examine(mob/user)
-	..()
+/obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
+	. = ..()
 	if((isobserver(user) || ishuman(user)) && fallen_list)
 		var/faltext = ""
 		for(var/i = 1 to fallen_list.len)
@@ -396,7 +396,7 @@
 				faltext += "[fallen_list[i]], "
 			else
 				faltext += fallen_list[i]
-		to_chat(user, SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>."))
+		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
 
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"

@@ -60830,7 +60830,7 @@
 /obj/structure/machinery/light,
 /obj/structure/machinery/iv_drip,
 /obj/structure/machinery/door_control{
-	id = "containmentlockdown_S";
+	id = "containmentlockdown_N";
 	name = "Containment Lockdown";
 	pixel_y = -20;
 	req_one_access_txt = "19;28"
@@ -74091,7 +74091,6 @@
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "uqd" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
 /obj/structure/sign/safety/ref_bio_storage{
 	pixel_x = -17;
 	pixel_y = 7
@@ -74100,6 +74099,7 @@
 	pixel_x = -17;
 	pixel_y = -7
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";

@@ -33,10 +33,11 @@
 	QDEL_NULL_LIST(tripwires)
 	return ..()
 
-/obj/effect/alien/resin/boilertrap/examine(mob/user)
+/obj/effect/alien/resin/boilertrap/get_examine_text(mob/user)
 	if(!isXeno(user))
 		return ..()
-	to_chat(user, SPAN_XENOWARNING("A trap designed for a catching tallhosts and holding them still."))
+	. = ..()
+	. += SPAN_XENOWARNING("A trap designed for a catching tallhosts and holding them still.")
 
 /obj/effect/alien/resin/boilertrap/fire_act()
 	. = ..()

@@ -252,7 +252,7 @@
 // Checks whether the action is on cooldown. Should not be overridden.
 // Returns TRUE if the action can be used and FALSE otherwise.
 /datum/action/xeno_action/proc/action_cooldown_check()
-	return (cooldown_timer_id == TIMER_ID_NULL) && (charge_time == null || charge_ready)
+	return (cooldown_timer_id == TIMER_ID_NULL) && (!charge_time || charge_ready)
 
 // What occurs when a cooldown ends NATURALLY. Ties into ability_cooldown_over, which tells the source Xeno
 // that it can do stuff again and handles any other end-of-cooldown behavior. ability_cooldown_over

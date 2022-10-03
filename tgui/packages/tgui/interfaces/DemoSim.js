@@ -18,18 +18,16 @@ export const DemoSim = (_props, context) => {
         <Section title="Configuration status">
           {!!data.configuration && (
             <NoticeBox info>
-              {data.configuration} loaded!
+              Configuration : detonating a {data.configuration}!
             </NoticeBox>
           ) || (
             <NoticeBox danger>
-              No warhead loaded!
+              No explosive configuration loaded!
             </NoticeBox>
           )}
           <NoticeBox info>
-            Currently spawning {data.dummy_mode}
+            Target dummy type : {data.dummy_mode}
           </NoticeBox>
-        </Section>
-        <Section title="Processors status">
           {timeLeft > 0 && (
             <ProgressBar
               width="100%"
@@ -41,16 +39,18 @@ export const DemoSim = (_props, context) => {
               }}>
               <Box textAlign="center">
                 {Math.ceil(timeLeft / 10)} seconds
-                until the cannon can be chambered!
+                until the console`s processors finish cooling!
               </Box>
             </ProgressBar>
           )}
+        </Section>
+        <Section title="Processors status">
           {!data.looking && (
             <Button
               fontSize="20px"
               textAlign="center"
               fluid={1}
-              icon="sign-in-alt"
+              icon="eye"
               color="good"
               content="watch"
               onClick={() => act('start_watching')}
@@ -60,7 +60,7 @@ export const DemoSim = (_props, context) => {
               fontSize="20px"
               textAlign="center"
               fluid={1}
-              icon="sign-in-alt"
+              icon="eye-slash"
               color="good"
               content="look away"
               onClick={() => act('stop_watching')}
@@ -80,7 +80,7 @@ export const DemoSim = (_props, context) => {
             fontSize="20px"
             textAlign="center"
             fluid={1}
-            icon="sign-in-alt"
+            icon="repeat"
             color="good"
             content="switch mode"
             onClick={() => act('switchmode')}
@@ -90,7 +90,7 @@ export const DemoSim = (_props, context) => {
             textAlign="center"
             disabled={!canDetonate}
             fluid={1}
-            icon="sign-in-alt"
+            icon="bomb"
             color="good"
             content="Detonate explosive"
             confirmContent="Confirm?"

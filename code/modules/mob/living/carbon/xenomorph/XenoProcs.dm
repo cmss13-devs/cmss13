@@ -68,11 +68,9 @@
 
 	var/evolve_progress
 
-	if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
-		evolve_progress = "[round(amount_grown)]/[max_grown]"
-	else if(caste && caste.evolution_allowed)
+	if(caste && caste.evolution_allowed)
 		evolve_progress = "[round(evolution_stored)]/[evolution_threshold]"
-		if(hive && !hive.allow_no_queen_actions)
+		if(hive && !hive.allow_no_queen_actions && !caste?.evolve_without_queen)
 			if(!hive.living_xeno_queen)
 				evolve_progress += " (NO QUEEN)"
 			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
@@ -313,7 +311,8 @@
 		step_to(src, M)
 
 	if (pounceAction.freeze_self)
-		playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
+		if(pounceAction.freeze_play_sound)
+			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		canmove = FALSE
 		frozen = TRUE
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, .proc/unfreeze), pounceAction.freeze_time, TIMER_STOPPABLE)

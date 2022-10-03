@@ -46,6 +46,7 @@
 	if(!istype(C))
 		return FALSE
 	C.mutation_type = CARRIER_SHAMAN
+	C.shaman_interactive = FALSE
 	C.ignores_pheromones = TRUE
 	apply_behavior_holder(C)
 	mutator_update_actions(C)
@@ -152,7 +153,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue
@@ -252,7 +253,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue
@@ -368,7 +369,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue
@@ -460,7 +461,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(7, src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue

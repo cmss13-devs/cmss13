@@ -91,7 +91,7 @@
 
 	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob)
-		cause_mob.life_kills_total++
+		cause_mob.life_kills_total += life_value
 
 	if(getBruteLoss())
 		new_death.total_brute = round(getBruteLoss())

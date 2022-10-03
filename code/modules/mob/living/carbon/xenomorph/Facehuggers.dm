@@ -238,14 +238,15 @@
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M)
+/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M, var/silent = FALSE, var/knockout_mod = 1)
 	if(attached || !can_hug(M, hivenumber))
 		return
 
 	// This is always going to be valid because of the can_hug check above
 	var/mob/living/carbon/human/H = M
 	attached = TRUE
-	H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
+	if(!silent)
+		H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
 
 	if(isXeno(loc)) //Being carried? Drop it
 		var/mob/living/carbon/Xenomorph/X = loc
@@ -267,7 +268,7 @@
 		playsound(loc, H.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
 	if(!sterile)
 		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
-			H.KnockOut(MIN_IMPREGNATION_TIME * 0.5, TRUE) //THIS MIGHT NEED TWEAKS
+			H.KnockOut(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, TRUE) //THIS MIGHT NEED TWEAKS
 
 	addtimer(CALLBACK(src, .proc/impregnate, H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 

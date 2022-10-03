@@ -42,6 +42,7 @@
 	mob_size = MOB_SIZE_BIG
 	tier = 1
 	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
+	show_age_prefix = FALSE
 	small_explosives_stun = FALSE
 
 	base_actions = list(

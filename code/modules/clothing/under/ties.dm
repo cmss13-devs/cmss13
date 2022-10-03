@@ -354,6 +354,18 @@
 	desc = "A fire resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
 
+/obj/item/clothing/accessory/poncho
+	name = "USCM Poncho"
+	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."
+	icon_state = "poncho"
+	slot = ACCESSORY_SLOT_PONCHO
+
+/obj/item/clothing/accessory/poncho/Initialize()
+	. = ..()
+	select_gamemode_skin(type)
+	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
+	update_icon()
+
 //Ties that can store stuff
 
 /obj/item/storage/internal/accessory

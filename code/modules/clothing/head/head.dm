@@ -274,6 +274,29 @@
 
 	update_clothing_icon()
 
+/obj/item/clothing/head/hood/verb/drophood()
+	set name = "Raise/Drop Hood"
+	set category = "Object"
+	set src in usr
+	if(!isliving(usr))
+		return
+	if(usr.is_mob_incapacitated())
+		return
+	if(!(flags_marine_hood & HOOD_CAN_MOVE))
+		to_chat(usr, SPAN_WARNING("[src] can't be moved!"))
+		return
+
+	flags_marine_hood ^= HOOD_DROPPED
+
+	if(flags_marine_hood & HOOD_DROPPED)
+		to_chat(usr, dropping_message["dropped"])
+		icon_state = base_cap_icon + "_d"
+	else
+		to_chat(usr, dropping_message["raised"])
+		icon_state = base_cap_icon
+
+	update_clothing_icon()
+
 /obj/item/clothing/head/cmcap/boonie
 	name = "\improper USCM boonie hat"
 	desc = "A floppy bush hat. Protects only from the sun and rain, but very comfortable."
@@ -283,14 +306,28 @@
 		"unflipped" = "You hook the hat's chinstrap under your chin. Peace of mind is worth a little embarassment."
 		)
 
-/obj/item/clothing/head/cmcap/hood
+/obj/item/clothing/head/hood/
 	name = "\improper USCM hood"
-	desc = "A hood issued to USCM marines. Often worn by scouts and snipers navigating harsh conditions. Protects you from the rain, if nothing else"
+	desc = "A hood issued to USCM marines. Often worn by scouts and snipers navigating harsh conditions. Protects you from the weather, if nothing else"
 	icon_state = "hood"
-	flipping_message = list(
-		"flipped" = "You flip the hood down, revealing your face.",
-		"unflipped" = "You flip the hood up, concealing your face."
+	var/list/dropping_message = list(
+		"dropped" = "You drop the hood down, revealing your face.",
+		"raised" = "You raise the hood up, concealing your face."
 		)
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	var/helmet_overlays[]
+	var/pulled_hood = FALSE
+	var/base_cap_icon
+	var/flags_marine_hood = HAT_GARB_OVERLAY|HOOD_CAN_MOVE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+/obj/item/clothing/head/hood/Initialize(mapload, ...)
+	. = ..()
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(type)
+	base_cap_icon = icon_state
+	helmet_overlays = list("item") //To make things simple.
 
 /obj/item/clothing/head/cmcap/boonie/tan
 	icon_state = "booniehattan"

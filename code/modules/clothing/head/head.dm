@@ -289,10 +289,10 @@
 	flags_marine_hood ^= HOOD_DROPPED
 
 	if(flags_marine_hood & HOOD_DROPPED)
-		to_chat(usr, dropping_message["dropped"])
+		to_chat(usr, dropped)
 		icon_state = base_cap_icon + "_d"
 	else
-		to_chat(usr, dropping_message["raised"])
+		to_chat(usr, raised)
 		icon_state = base_cap_icon
 	update_clothing_icon()
 	update_icon()
@@ -310,10 +310,8 @@
 	name = "\improper USCM hood"
 	desc = "A hood issued to USCM marines. Often worn by scouts and snipers navigating harsh conditions. Protects you from the weather, if nothing else"
 	icon_state = "hood"
-	var/list/dropping_message = list(
-		"dropped" = "You drop the hood down, revealing your face.",
-		"raised" = "You raise the hood up, concealing your face."
-		)
+	var/dropped = "You drop the hood down, revealing your face.",
+	var/raised = "You raise the hood up, concealing your face."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	var/helmet_overlays[]
 	var/pulled_hood = FALSE

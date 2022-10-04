@@ -73,8 +73,7 @@
 		user.drop_held_item(B)
 		B.forceMove(src)
 		configuration = B
-		to_chat(user, "You configure \the [src] to simulate [B].")
-		start_watching(user)
+		to_chat(user, SPAN_NOTICE("You configure \the [src] to simulate [B]."))
 	else
 		to_chat(user, "\The [src] is not compatible with [B].")
 
@@ -150,7 +149,7 @@
 /obj/structure/machinery/computer/demo_sim/ui_close(mob/user)
 	. = ..()
 	if(looking_at_simulation)
-		stop_watching(usr)
+		stop_watching(user)
 
 // TGUI SHIT END \\
 

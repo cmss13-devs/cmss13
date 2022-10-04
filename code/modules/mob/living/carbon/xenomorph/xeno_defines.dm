@@ -1141,6 +1141,7 @@
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 	xeno_colors = FALSE
+	var/bioscan_time = 0
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"

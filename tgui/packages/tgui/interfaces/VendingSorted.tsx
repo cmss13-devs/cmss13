@@ -101,11 +101,7 @@ const VendableItem = (props: VenableItem, context) => {
   return (
     <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
       <Flex.Item>
-        <img className="VendingSorted__Icon" src={record.prod_icon.href} />
-      </Flex.Item>
-
-      <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
+        <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
       </Flex.Item>
 
       <Flex.Item justify="right">
@@ -177,7 +173,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
           {
             const isLast = (filteredCategories.length - 1) === i;
             return (
-              <Flex.Item mb={1} key={record.prod_index}>
+              <Flex.Item mb={1.2} key={record.prod_index}>
                 <VendableItem record={record} />
                 {!isLast && <hr className="VendingSorted__ItemSeparator" />}
               </Flex.Item>

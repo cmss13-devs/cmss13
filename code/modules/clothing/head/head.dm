@@ -283,6 +283,15 @@
 		"unflipped" = "You hook the hat's chinstrap under your chin. Peace of mind is worth a little embarassment."
 		)
 
+/obj/item/clothing/head/cmcap/hood
+	name = "\improper USCM hood"
+	desc = "A hood issued to USCM marines. Often worn by scouts and snipers navigating harsh conditions. Protects you from the rain, if nothing else"
+	icon_state = "hood"
+	flipping_message = list(
+		"flipped" = "You flip the hood down, revealing your face.",
+		"unflipped" = "You flip the hood up, concealing your face."
+		)
+
 /obj/item/clothing/head/cmcap/boonie/tan
 	icon_state = "booniehattan"
 	flags_atom = FPRINT|NO_SNOW_TYPE

@@ -548,14 +548,14 @@
 	icon_state = "boiler_bombard"
 	mouse_opacity = 0
 
-	var/blinded = 3
+	var/blinded = 2
 	var/message = null
 	var/mob/living/carbon/Xenomorph/linked_xeno = null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/empowered = FALSE
-	var/effect_amt = 3
+	var/effect_amt = 2
 
-/obj/effect/xenomorph/blood_delay/New(loc, blinded = 3, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
+/obj/effect/xenomorph/blood_delay/New(loc, blinded = 2, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
 	..(loc)
 
 	addtimer(CALLBACK(src, .proc/die), delay)

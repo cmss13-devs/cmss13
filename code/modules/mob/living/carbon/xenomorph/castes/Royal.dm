@@ -49,6 +49,7 @@
 		/datum/action/xeno_action/activable/roar,
 		/datum/action/xeno_action/activable/rooting_slash,
 		/datum/action/xeno_action/activable/pounce/royal,
+		/datum/action/xeno_action/activable/blood_throw,
 		/datum/action/xeno_action/onclick/royal_switch_roar_type,
 		/datum/action/xeno_action/onclick/plant_weeds
 	)
@@ -65,7 +66,7 @@
 /datum/behavior_delegate/royal
 	name = "Royal Behavior Delegate"
 	// Config
-	var/internal_blood_level_max = 250
+	var/internal_blood_level_max = 150
 	var/internal_blood_per_attack = 10
 
 	// State
@@ -98,10 +99,6 @@
 	..()
 
 	add_internal_blood_level(internal_blood_per_attack)
-
-/datum/behavior_delegate/royal/ranged_attack_additional_effects_target(var/atom/A)
-	if(ismob(A))
-		add_internal_blood_level(internal_blood_per_attack)
 
 /datum/behavior_delegate/royal/proc/add_internal_blood_level(amount)
 	if (amount > 0)

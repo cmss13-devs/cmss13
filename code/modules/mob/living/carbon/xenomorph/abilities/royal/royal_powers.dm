@@ -201,7 +201,7 @@
 		var/datum/behavior_delegate/royal/BD = X.behavior_delegate
 		if (!istype(BD))
 			return
-		if (!BD.use_internal_blood_ability(haunting_cost))
+		if (!BD.use_internal_blood_ability(throw_cost))
 			return
 
 	var/turf/T = get_turf(A)

@@ -94,7 +94,7 @@
 	can_be_shield_blocked = FALSE
 	freeze_self = FALSE				// Should we freeze ourselves after the lunge?
 
-/datum/action/xeno_action/activable/verb_blood_throw
+/datum/action/xeno_action/activable/blood_throw
 	name = "Blood Throw"
 	ability_name = "Blood Throw"
 	action_icon_state = "acid_mine"
@@ -106,5 +106,5 @@
 
 	var/throw_cost = 70
 
-	var/delay = 13.5
-	var/blinded = 3
+	var/delay = 14.5
+	var/blinded = 2

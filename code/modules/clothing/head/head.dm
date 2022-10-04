@@ -310,7 +310,7 @@
 	name = "\improper USCM hood"
 	desc = "A hood issued to USCM marines. Often worn by scouts and snipers navigating harsh conditions. Protects you from the weather, if nothing else"
 	icon_state = "hood"
-	var/dropped = "You drop the hood down, revealing your face.",
+	var/dropped = "You drop the hood down, revealing your face."
 	var/raised = "You raise the hood up, concealing your face."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	var/helmet_overlays[]

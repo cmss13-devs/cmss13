@@ -128,9 +128,6 @@
 	if(flags_item & ITEM_PREDATOR)
 		AddElement(/datum/element/yautja_tracked_item)
 
-	if(!force) 
-		flags_item |= NOBLUDGEON
-
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.

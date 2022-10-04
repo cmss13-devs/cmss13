@@ -645,16 +645,24 @@ CULT
 	var/list/nums = SSticker.mode.count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
 	var/marines = nums[1]
 	var/xenos = nums[2]
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
+	var/datum/hive_status/mutated/weave/hive = GLOB.hive_datum[XENO_HIVE_WEAVE]
+	if(!istype(hive))
+		to_chat(owner, SPAN_WARNING("Error: Weave Hive not found. Ping forest2001."))
+		return
 	xenos = xenos - (hive.totalXenos.len)
 
 
 	owner.visible_message(SPAN_DANGER("[owner] gets onto their knees, their eyes glazed, and begins muttering incomprehensible nonsense."), \
 	SPAN_XENOWARNING("You get onto your knees and your eyes glaze over as you stare into The Weave."))
 
+	if(hive.bioscan_time > world.time)
+		to_chat(owner, SPAN_XENOWARNING("The Weave is too disturbed to be read at this time."))
+		return
+
 	if(!do_after(owner, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(owner, SPAN_XENOWARNING("You decide not to read The Weave."))
-		enter_cooldown(15 SECONDS)
+		enter_cooldown(15 MINUTES)
+		hive.bioscan_time = world.time + 15 MINUTES
 		return
 	enter_cooldown()
 	to_chat(owner, SPAN_XENONOTICE("The Weave reveals there are [marines] humans alive and [xenos] other living biosigns."))

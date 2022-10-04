@@ -281,7 +281,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("USCM Poncho", 10, /obj/item/clothing/accessory/poncho, VENDOR_ITEM_REGULAR),
 		list("Firearm Lubricant", 20, /obj/item/prop/helmetgarb/gunoil, VENDOR_ITEM_REGULAR),
 		list("USCM Flair", 20, /obj/item/prop/helmetgarb/flair_uscm, VENDOR_ITEM_REGULAR),
-		list("USCM Hood", 10, /obj/item/clothing/head/hood/, VENDOR_ITEM_REGULAR)
+		list("USCM Hood", 10, /obj/item/clothing/head/hood, VENDOR_ITEM_REGULAR)
 		)
 
 //--------------SQUAD SPECIFIC VERSIONS--------------

@@ -283,7 +283,7 @@
 	if(usr.is_mob_incapacitated())
 		return
 	if(!(flags_marine_hood & HOOD_CAN_MOVE))
-		to_chat(usr, SPAN_WARNING("[src] can't be moved!"))
+		to_chat(usr, SPAN_WARNING("The [src] can't be moved!"))
 		return
 
 	flags_marine_hood ^= HOOD_DROPPED
@@ -294,8 +294,8 @@
 	else
 		to_chat(usr, dropping_message["raised"])
 		icon_state = base_cap_icon
-
 	update_clothing_icon()
+	update_icon()
 
 /obj/item/clothing/head/cmcap/boonie
 	name = "\improper USCM boonie hat"
@@ -306,7 +306,7 @@
 		"unflipped" = "You hook the hat's chinstrap under your chin. Peace of mind is worth a little embarassment."
 		)
 
-/obj/item/clothing/head/hood/
+/obj/item/clothing/head/hood
 	name = "\improper USCM hood"
 	desc = "A hood issued to USCM marines. Often worn by scouts and snipers navigating harsh conditions. Protects you from the weather, if nothing else"
 	icon_state = "hood"

@@ -19,9 +19,9 @@
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/source_type = /obj/item/stack/folding_barricade	//had to add this here, cause mapped in porta cades were unfoldable.
 
-/obj/structure/barricade/deployable/examine(mob/user)
-	..()
-	to_chat(user, SPAN_INFO("Drag its sprite onto yourself to undeploy."))
+/obj/structure/barricade/deployable/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_INFO("Drag its sprite onto yourself to undeploy.")
 
 /obj/structure/barricade/deployable/attackby(obj/item/W, mob/user)
 
@@ -259,7 +259,7 @@
 
 /obj/item/stack/folding_barricade/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
-		if(!istype(over_object, /obj/screen))
+		if(!istype(over_object, /atom/movable/screen))
 			return ..()
 
 		if(loc != usr || (loc && loc.loc == usr))
@@ -274,10 +274,10 @@
 					if(usr.drop_inv_item_on_ground(src))
 						usr.put_in_l_hand(src)
 
-/obj/item/stack/folding_barricade/examine(mob/user)
+/obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
 	if(health < maxhealth)
-		to_chat(user, "Appears to be damaged.")
+		. += SPAN_WARNING("It appears to be damaged.")
 
 /obj/item/stack/folding_barricade/three
 	amount = 3

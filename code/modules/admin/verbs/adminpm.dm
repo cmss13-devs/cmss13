@@ -171,11 +171,13 @@
 	if (src.handle_spam_prevention(msg,MUTE_ADMINHELP))
 		return
 
-	//clean the message if it's not sent by a high-rank admin
-	if(!check_rights(R_SERVER|R_DEBUG,0)||external)//no sending html to the poor bots
+	if(external) //no sending html to the poor bots - but preserve any html tags with encoded entities
 		msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
-		if(!msg)
-			return
+	else //clean the message
+		msg = strip_html(copytext_char(msg, 1, MAX_MESSAGE_LEN))
+
+	if(!msg)
+		return
 
 	var/rawmsg = msg
 

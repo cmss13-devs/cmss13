@@ -23,7 +23,7 @@
 
 	else
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
+			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
 			return 0
 
 	switch(construct_op)
@@ -104,7 +104,7 @@
 	// You need a multitool to use this, or be silicon
 	if(!ishighersilicon(user))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
+			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
 			return
 		// istype returns false if the value is null
 		var/obj/item/held_item = user.get_active_hand()

@@ -189,9 +189,9 @@
 	new /obj/item/tool/surgery/surgical_line(container)
 	new /obj/item/stack/nanopaste(container)
 
-/obj/structure/vehicle_locker/med/examine(mob/user)
-	..()
-	to_chat(user, has_tray ? SPAN_HELPFUL("Right-click to remove the surgical tray from the locker.") : SPAN_WARNING("The surgical tray has been removed."))
+/obj/structure/vehicle_locker/med/get_examine_text(mob/user)
+	. = ..()
+	. += has_tray ? SPAN_HELPFUL("Right-click to remove the surgical tray from the locker.") : SPAN_WARNING("The surgical tray has been removed.")
 
 /obj/structure/vehicle_locker/med/attackby(var/obj/item/W, var/mob/living/carbon/human/user)
 	if(!Adjacent(user))

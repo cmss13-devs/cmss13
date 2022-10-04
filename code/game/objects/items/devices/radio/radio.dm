@@ -394,16 +394,21 @@
 /obj/item/device/radio/proc/send_hear(freq, level)
 	var/range = receive_range(freq, level)
 	if(range > -1)
-		return get_mobs_in_view(canhear_range, src)
+		var/list/hearers
+		var/list/mobs = get_mobs_in_view(canhear_range, src)
+		var/list/radios = get_radios_in_view(canhear_range, src)
+		hearers += mobs
+		hearers += radios
+		return hearers
 
 
-/obj/item/device/radio/examine(mob/user)
-	..()
+/obj/item/device/radio/get_examine_text(mob/user)
+	. = ..()
 	if ((in_range(src, user) || loc == user))
 		if (b_stat)
-			to_chat(user, SPAN_NOTICE(" [src] can be attached and modified!"))
+			. += SPAN_NOTICE("[src] can be attached and modified!")
 		else
-			to_chat(user, SPAN_NOTICE(" [src] can not be modified or attached!"))
+			. += SPAN_NOTICE("[src] can not be modified or attached!")
 
 
 /obj/item/device/radio/attackby(obj/item/W as obj, mob/user as mob)

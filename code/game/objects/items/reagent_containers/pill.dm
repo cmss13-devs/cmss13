@@ -40,19 +40,22 @@
 	if(!icon_state)
 		icon_state = GLOB.pill_icon_mappings[pill_icon_class]
 
-/obj/item/reagent_container/pill/examine(mob/user)
-	..()
+/obj/item/reagent_container/pill/get_examine_text(mob/user)
+	. = ..()
 	if(pill_desc)
-		display_contents(user)
+		var/pill_info = display_contents(user)
+		if(pill_info)
+			. += pill_info
 
 /obj/item/reagent_container/pill/display_contents(mob/user)
 	if(isXeno(user))
 		return
 	if(!identificable)
 		return
+	. = ""
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		to_chat(user, pill_desc)
-	..()
+		. += "[pill_desc]\n"
+	. += ..()
 
 /obj/item/reagent_container/pill/attack(mob/M, mob/user)
 	if(M == user)

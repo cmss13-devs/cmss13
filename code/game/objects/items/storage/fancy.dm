@@ -20,23 +20,23 @@
 	name = "donut box"
 	var/icon_type = "donut"
 
-	update_icon()
-		icon_state = "[icon_type]box[contents.len]"
+/obj/item/storage/fancy/update_icon()
+	icon_state = "[icon_type]box[contents.len]"
 
-	remove_from_storage(obj/item/W, atom/new_location)
-		. = ..()
-		if(.)
-			update_icon()
+/obj/item/storage/fancy/remove_from_storage(obj/item/W, atom/new_location)
+	. = ..()
+	if(.)
+		update_icon()
 
 
-	examine(mob/user)
-		..()
-		if(contents.len <= 0)
-			to_chat(user, "There are no [src.icon_type]s left in the box.")
-		else if(contents.len == 1)
-			to_chat(user, "There is one [src.icon_type] left in the box.")
-		else
-			to_chat(user, "There are [src.contents.len] [src.icon_type]s in the box.")
+/obj/item/storage/fancy/get_examine_text(mob/user)
+	..()
+	if(contents.len <= 0)
+		. += "There are no [src.icon_type]s left in the box."
+	else if(contents.len == 1)
+		. += "There is one [src.icon_type] left in the box."
+	else
+		. += "There are [src.contents.len] [src.icon_type]s in the box."
 
 
 /*

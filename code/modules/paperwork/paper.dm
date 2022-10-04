@@ -9,6 +9,8 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
+	pickupsound = 'sound/handling/paper_pickup.ogg'
+	dropsound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_speed = SPEED_FAST
@@ -61,7 +63,7 @@
 		return
 	icon_state = "paper"
 
-/obj/item/paper/examine(mob/user)
+/obj/item/paper/get_examine_text(mob/user)
 //	..()	//We don't want them to see the dumb "this is a paper" thing every time.
 // I didn't like the idea that people can read tiny pieces of paper from across the room.
 // Now you need to be next to the paper in order to read it.
@@ -73,8 +75,7 @@
 		else
 			read_paper(user)
 	else
-		to_chat(user, SPAN_NOTICE("It is too far away."))
-	return
+		return list(SPAN_NOTICE("It is too far away."))
 
 /obj/item/paper/proc/read_paper(mob/user)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)

@@ -49,12 +49,12 @@
 	else
 		maptext = ""
 
-/obj/item/reagent_container/hypospray/autoinjector/examine(mob/user)
-	..()
+/obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
+	. = ..()
 	if(uses_left)
-		to_chat(user, SPAN_NOTICE("It is currently loaded with [uses_left]."))
+		. += SPAN_NOTICE("It is currently loaded with [uses_left].")
 	else
-		to_chat(user, SPAN_NOTICE("It is empty."))
+		. += SPAN_NOTICE("It is empty.")
 
 /obj/item/reagent_container/hypospray/autoinjector/equipped()
 	..()
@@ -231,7 +231,7 @@
 	uses_left = 1
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/attack(mob/M as mob, mob/user as mob)
-	if(isYautja(user))
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		..()
 	else
 		to_chat(user, SPAN_DANGER("You have no idea where to inject [src]."))
@@ -258,14 +258,14 @@
 /obj/item/reagent_container/hypospray/autoinjector/skillless/attackby()
 	return
 
-/obj/item/reagent_container/hypospray/autoinjector/skillless/examine(mob/user)
-	..()
+/obj/item/reagent_container/hypospray/autoinjector/skillless/get_examine_text(mob/user)
+	. = ..()
 	if(reagents && reagents.reagent_list.len)
-		to_chat(user, SPAN_NOTICE("It is currently loaded."))
+		. += SPAN_NOTICE("It is currently loaded.")
 	else if(!uses_left)
-		to_chat(user, SPAN_NOTICE("It is spent."))
+		. += SPAN_NOTICE("It is spent.")
 	else
-		to_chat(user, SPAN_NOTICE("It is empty."))
+		. += SPAN_NOTICE("It is empty.")
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
 	name = "pain-stop autoinjector"
@@ -283,9 +283,9 @@
 	uses_left = 0
 	display_maptext = TRUE
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/examine(mob/user)
-	..()
-	to_chat(user, SPAN_NOTICE("It transfers [amount_per_transfer_from_this]u per injection and has a maximum of [volume/amount_per_transfer_from_this] injections."))
+/obj/item/reagent_container/hypospray/autoinjector/empty/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("It transfers [amount_per_transfer_from_this]u per injection and has a maximum of [volume/amount_per_transfer_from_this] injections.")
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/update_icon()
 	overlays.Cut()

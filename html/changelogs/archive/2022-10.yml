@@ -1,0 +1,20 @@
+2022-10-01:
+  Benbot16:
+  - rscadd: Some chemical properties now have effects when applied to mobs via touch.
+      Some of these also effect xenos.
+  - balance: tweaks the cost of some properties
+  - bugfix: Passive research credit gain now works in Extended
+  Laser9:
+  - bugfix: You can no longer buckle mobs or stuff things into morgue trays, while
+      you are inside of something.
+  stanalbatross:
+  - bugfix: surgical line and synthgraft no longer have nobludgeon flags, so they
+      will work as normal
+2022-10-02:
+  Geevies:
+  - qol: Things you examine are now contained in a block, making it easier to see.
+      Same applies to checking yourself for injuries.
+2022-10-03:
+  Morrow, Triiodine:
+  - rscadd: USCM Ponchos are now available in squad prep surplus vendors and can be
+      attached to standard armor variants.

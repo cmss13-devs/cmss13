@@ -226,6 +226,7 @@
 	old.owner = null
 
 	if(old.health <= 0 && !old.gc_destroyed) // Make sure it's not already being deleted.
+		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
 		qdel(old)
 
 	update_icon()

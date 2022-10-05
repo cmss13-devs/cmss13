@@ -33,3 +33,5 @@
       in any vendor.
   - imageadd: New sprites
   - code_imp: See above
+  Segrain:
+  - bugfix: Direct hits with explosive ammunition actually work as intended now.

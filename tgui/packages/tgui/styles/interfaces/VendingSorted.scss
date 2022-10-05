@@ -47,8 +47,8 @@ $title-text-color: base.$color-fg !default;
 
 .VendingSorted__VendButton {
   width: 25px;
-  height: 15px;
-  line-height: 15px;
+  height: 18px;
+  line-height: 18px;
 }
 
 .VendingSorted__RecommendedVendButton {
@@ -60,11 +60,12 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__Icon {
-  max-width: 30px;
+  min-width: 32px;
+  max-width: 32px;
 }
 
 .VendingSorted__Text {
-  font-size: 10px;
+  font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -97,7 +98,7 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__ItemBox {
-  height: 15px;
+  height: 18px;
 }
 
 

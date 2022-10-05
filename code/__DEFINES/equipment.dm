@@ -142,7 +142,7 @@
 //===========================================================================================
 
 //===========================================================================================
-//Marine capss only, use for flags_marine_hat.
+//Marine caps only, use for flags_marine_hat.
 #define HAT_GARB_OVERLAY (1<<0)
 #define HAT_CAN_FLIP (1<<1)
 #define HAT_FLIPPED (1<<2)

@@ -283,16 +283,16 @@
 	if(usr.is_mob_incapacitated())
 		return
 	if(!(flags_marine_hood & HOOD_CAN_MOVE))
-		to_chat(usr, SPAN_WARNING("The [src] can't be moved!"))
+		to_chat(usr, SPAN_WARNING("\The [src] can't be moved!"))
 		return
 
 	flags_marine_hood ^= HOOD_DROPPED
 
 	if(flags_marine_hood & HOOD_DROPPED)
-		to_chat(usr, dropped)
+		to_chat(usr, dropped_message)
 		icon_state = base_cap_icon + "_d"
 	else
-		to_chat(usr, raised)
+		to_chat(usr, raised_message)
 		icon_state = base_cap_icon
 	update_clothing_icon()
 	update_icon()
@@ -308,11 +308,11 @@
 
 /obj/item/clothing/head/hood
 	name = "\improper USCM hood"
-	desc = "A hood issued to USCM marines. Often worn by scouts and snipers navigating harsh conditions. Protects you from the weather, if nothing else"
+	desc = "A hood issued to USCM marines. Often worn by scouts and snipers navigating harsh conditions. Protects you from the weather, if nothing else."
 	icon_state = "hood"
-	var/dropped = "You drop the hood down, revealing your face."
-	var/raised = "You raise the hood up, concealing your face."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	var/dropped_message = "You drop the hood down, revealing your face."
+	var/raised_message = "You raise the hood up, concealing your face."
 	var/helmet_overlays[]
 	var/pulled_hood = FALSE
 	var/base_cap_icon

@@ -35,3 +35,6 @@
   - code_imp: See above
   Segrain:
   - bugfix: Direct hits with explosive ammunition actually work as intended now.
+  Usnpeepoo:
+  - rscadd: Xenos with more than 300 hours of playtime (as xeno) can now use a double
+      letter postfix.

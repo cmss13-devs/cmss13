@@ -21,3 +21,15 @@
 2022-10-04:
   Shad0vvs:
   - bugfix: Fixed pills on harm intent in a better way.
+2022-10-05:
+  4hands44:
+  - qol: Replaces some instances of "Captain" In CO Attire names/descriptions
+  - rscadd: Black Greatcoats for Officers to the Dress Vendor (All department heads,
+      CO+, CIC Staff.)
+  - rscadd: Blue ver. of above for CO+ and admins only.
+  - rscadd: New ww2 style tanker jacket to compete with the CO Bomber jacket. VC and
+      IOs spawn with them out of Cryo. Features slightly higher blast resistance to
+      represent protection from spalling and other vehicular hazards. Does not appear
+      in any vendor.
+  - imageadd: New sprites
+  - code_imp: See above

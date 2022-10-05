@@ -40,3 +40,5 @@
       letter postfix.
   stanalbatross:
   - code_imp: nurse now has a one hour human roles timelock
+  - bugfix: fixes the CL having an errant space before their name when not having
+      a division

@@ -47,6 +47,8 @@
   - balance: The HPR now has the same firedelay as a smartgun, and has one more bullet
       in its burst fire.
   - soundadd: Increased the bass and lowered the treble of the HPR shoot sound.
+  Morrow:
+  - rscdel: Removes USCM ponchos from vendors.
   SpartanBobby:
   - rscadd: Squads now have their own cryo bay and canteen firing ranges moved to
       old cryo bay

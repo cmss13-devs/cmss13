@@ -43,6 +43,14 @@
   - bugfix: fixes the CL having an errant space before their name when not having
       a division
 2022-10-06:
+  Drathek:
+  - qol: Health scanners now re-use their interface when scanning again.
+  - qol: Opening the archived scan for a health scanner now has a window named "Stored
+      Health Scan" and closes the "Health Scan" window (and vice versa).
+  - bugfix: Fixed health scanners sometimes incorrectly considering a mob to be permadead
+      when they are alive.
+  - code_imp: Mobs no longer have a health display datum and instead each scanner
+      does.
   Geeves:
   - balance: The HPR now has the same firedelay as a smartgun, and has one more bullet
       in its burst fire.

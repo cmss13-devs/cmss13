@@ -14,6 +14,8 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 5
 
+	var/datum/health_scan/last_health_display
+
 	var/healthscan = TRUE
 	var/list/chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
@@ -50,6 +52,10 @@
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/splint
 		)
+
+/obj/structure/machinery/cm_vending/sorted/medical/Destroy()
+	QDEL_NULL(last_health_display)
+	. = ..()
 
 /obj/structure/machinery/cm_vending/sorted/medical/get_examine_text(mob/living/carbon/human/user)
 	. = ..()
@@ -143,7 +149,12 @@
 			to_chat(user, SPAN_WARNING("\The [src] does not have health scanning function."))
 			return
 
-		user.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
+		if (!last_health_display)
+			last_health_display = new(user)
+		else
+			last_health_display.target_mob = user
+
+		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
 		return
 
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)

@@ -11947,12 +11947,16 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aJo" = (
-/obj/structure/filingcabinet,
+/obj/structure/machinery/blackbox_recorder,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -22462,8 +22466,8 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	start_charge = 0;
-	pixel_x = -29
+	pixel_x = -29;
+	start_charge = 0
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
@@ -39912,8 +39916,8 @@
 "rXQ" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	start_charge = 0;
-	pixel_x = 29
+	pixel_x = 29;
+	start_charge = 0
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
@@ -41877,8 +41881,8 @@
 /area/strata/ag/interior/tcomms)
 "vlH" = (
 /obj/structure/machinery/weather_siren{
-	pixel_y = -8;
-	pixel_x = 10
+	pixel_x = 10;
+	pixel_y = -8
 	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/exterior)

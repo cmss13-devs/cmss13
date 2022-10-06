@@ -180,9 +180,9 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
-
-/obj/item/weapon/melee/yautja/sword/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	..()
+	
+/obj/item/weapon/melee/yautja/sword/attack(mob/target, mob/living/user)
+	. = ..()
 	if((human_adapted || isYautja(user)) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30

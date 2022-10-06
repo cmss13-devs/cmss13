@@ -181,6 +181,12 @@
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
 
+/obj/item/weapon/melee/yautja/sword/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
+	..()
+	if((human_adapted || isYautja(user)) && isXeno(target))
+		var/mob/living/carbon/Xenomorph/X = target
+		X.interference = 30
+
 /obj/item/weapon/melee/yautja/scythe
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes.."

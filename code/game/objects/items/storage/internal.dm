@@ -166,3 +166,29 @@
 /obj/item/storage/internal/Destroy()
 	. = ..()
 	master_object = null
+
+
+// Marine Helmet Storage
+/obj/item/storage/internal/helmet
+	var/list/garb_items
+	var/slots_reserved_for_garb
+
+/obj/item/storage/internal/helmet/can_be_inserted(obj/item/W, stop_messages) //We don't need to stop messages, but it can be left in.
+	. = ..()
+	if(!.)
+		return
+
+	if(!isgarb(W) && length(contents) - length(garb_items) >= storage_slots - slots_reserved_for_garb)
+		if(!stop_messages)
+			to_chat(usr, SPAN_WARNING("This slot is reserved for helmet accessories!"))
+		return FALSE
+
+/obj/item/storage/internal/helmet/_item_insertion(obj/item/W, prevent_warning = 0)
+	if(isgarb(W))
+		LAZYADD(garb_items, W)
+	return ..()
+
+/obj/item/storage/internal/helmet/_item_removal(obj/item/W, atom/new_location)
+	if(isgarb(W))
+		LAZYREMOVE(garb_items, W)
+	return ..()

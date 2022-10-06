@@ -514,6 +514,8 @@
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
 
+	flags_obj = OBJ_NO_HELMET_BAND
+
 /obj/item/prop/helmetgarb/face_plate/attack_self(mob/user)
 	..()
 	toggle_open(user)

@@ -8,6 +8,7 @@
 #define ispowerclamp(O) (istype(O, /obj/item/powerloader_clamp))
 #define isstorage(O) 	(istype(O, /obj/item/storage))
 #define isclothing(O)	(istype(O, /obj/item/clothing))
+#define isgarb(O)		(istype(O, /obj/item/prop/helmetgarb))
 //Make sure it defenses!
 #define isdefenses(O) (istype(O, /obj/structure/machinery/defenses))
 

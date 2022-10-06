@@ -43,6 +43,10 @@
   - bugfix: fixes the CL having an errant space before their name when not having
       a division
 2022-10-06:
+  Geeves:
+  - balance: The HPR now has the same firedelay as a smartgun, and has one more bullet
+      in its burst fire.
+  - soundadd: Increased the bass and lowered the treble of the HPR shoot sound.
   SpartanBobby:
   - rscadd: Squads now have their own cryo bay and canteen firing ranges moved to
       old cryo bay

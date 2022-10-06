@@ -504,3 +504,63 @@
 	name = "10x99mm XM42B casing pipe"
 	desc = "The XM42B was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by ARMAT systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
 	icon_state = "bullet_pipe"
+
+/obj/item/prop/helmetgarb/face_plate
+	name = "\improper M7 integrated faceplate"
+	desc = "This integrated faceplate is attached to two attachment points located within all variations of the M10 pattern helmet. Funding was pulled when field research showed that these offered little to no physical protection, in fact, in some cases, the faceplate became shrapnel when a shockwave sheared it off the attachment points and blew it into the wearer's skull."
+	icon_state = "face_plate"
+
+	var/open = TRUE
+	var/datum/action/item_action/activation
+	var/obj/item/attached_item
+
+/obj/item/prop/helmetgarb/face_plate/attack_self(mob/user)
+	..()
+	toggle_open(user)
+
+/obj/item/prop/helmetgarb/face_plate/proc/toggle_open(var/mob/user)
+	open = !open
+	if(open)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]_closed"
+	to_chat(user, SPAN_NOTICE("You slide \the [src] [open ? "open" : "closed"]."))
+	if(attached_item)
+		attached_item.update_icon()
+
+/obj/item/prop/helmetgarb/face_plate/on_enter_storage(obj/item/storage/internal/S)
+	..()
+
+	if(!istype(S))
+		return
+
+	remove_attached_item()
+
+	attached_item = S.master_object
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
+	activation = new /datum/action/item_action/toggle(src, S.master_object)
+
+	if(ismob(S.master_object.loc))
+		activation.give_to(S.master_object.loc)
+
+/obj/item/prop/helmetgarb/face_plate/on_exit_storage(obj/item/storage/S)
+	remove_attached_item()
+	return ..()
+
+/obj/item/prop/helmetgarb/face_plate/proc/remove_attached_item()
+	SIGNAL_HANDLER
+	if(!attached_item)
+		return
+
+	UnregisterSignal(attached_item, COMSIG_PARENT_QDELETING)
+	qdel(activation)
+	attached_item = null
+
+/obj/item/prop/helmetgarb/face_plate/ui_action_click(var/mob/owner, var/obj/item/holder)
+	toggle_open(owner)
+	activation.update_button_icon()
+
+/obj/item/prop/helmetgarb/face_plate/riot
+	name = "\improper Z9 integrated riotplate"
+	desc = "An improved variant of the M7 integrated faceplate, these were originally produced by a group of marines stationed on LV-920, a snow planet. Conditions were terrible, so to raise morale, the marines hatched a prank. They would spray-paint a faceplate black and meticulously repaint the logos and warning text around the inner seams, not that anyone reads those anyway. Any MP brave or foolish enough to don the brand new faceplate would have the entirety of their cheeks and chin painted black because of residual paint, much to the delight of the bored marines. Unfortunately, due to the roaring success and spread across the Marine Corps, production of genuine models began, diluting the pool of fake plates with real ones. You're pretty sure this is a real one. Pretty sure."
+	icon_state = "riot_plate"

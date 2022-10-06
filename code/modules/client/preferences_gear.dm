@@ -470,6 +470,12 @@ var/global/list/gear_datums = list()
 	cost = 2
 	slot = WEAR_IN_BACK
 
+/datum/gear/face_plate
+	display_name = "M7 integrated faceplate"
+	path = /obj/item/prop/helmetgarb/face_plate
+	cost = 2
+	slot = WEAR_IN_BACK
+
 /datum/gear/trimmed_wire
 	display_name = "Trimmed Barbed Wire"
 	path = /obj/item/prop/helmetgarb/trimmed_wire

@@ -26,9 +26,9 @@
 	var/action_name = "Toggle Roar Type"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_blood_throw()
+/datum/action/xeno_action/verb/verb_acid_throw()
 	set category = "Alien"
-	set name = "Blood Throw"
+	set name = "Acid Throw"
 	set hidden = 1
-	var/action_name = "Blood Throw"
+	var/action_name = "Acid Throw"
 	handle_xeno_macro(src, action_name)

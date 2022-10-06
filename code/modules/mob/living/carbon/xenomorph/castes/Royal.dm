@@ -49,7 +49,7 @@
 		/datum/action/xeno_action/activable/roar,
 		/datum/action/xeno_action/activable/rooting_slash,
 		/datum/action/xeno_action/activable/pounce/royal,
-		/datum/action/xeno_action/activable/blood_throw,
+		/datum/action/xeno_action/activable/acid_throw,
 		/datum/action/xeno_action/onclick/royal_switch_roar_type,
 		/datum/action/xeno_action/onclick/plant_weeds
 	)
@@ -66,18 +66,18 @@
 /datum/behavior_delegate/royal
 	name = "Royal Behavior Delegate"
 	// Config
-	var/internal_blood_level_max = 150
-	var/internal_blood_per_attack = 10
+	var/internal_acid_level_max = 150
+	var/internal_acid_per_attack = 10
 
 	// State
-	var/internal_blood_level = 0
+	var/internal_acid_level = 0
 
 /datum/behavior_delegate/royal/append_to_stat()
 	. = list()
-	. += "Blood Reserves: [internal_blood_level]/[internal_blood_level_max]"
+	. += "Acid Reserves: [internal_acid_level]/[internal_acid_level_max]"
 
 /datum/behavior_delegate/royal/on_life()
-	internal_blood_level = min(internal_blood_level_max, internal_blood_level)
+	internal_acid_level = min(internal_acid_level_max, internal_acid_level)
 
 	var/mob/living/carbon/Xenomorph/Royal/X = bound_xeno
 	var/image/holder = X.hud_list[PLASMA_HUD]
@@ -86,7 +86,7 @@
 	if(X.stat == DEAD)
 		return
 
-	var/percentage_energy = round((internal_blood_level / internal_blood_level_max) * 100, 10)
+	var/percentage_energy = round((internal_acid_level / internal_acid_level_max) * 100, 10)
 	if(percentage_energy)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_energy]")
 
@@ -98,22 +98,22 @@
 /datum/behavior_delegate/royal/melee_attack_additional_effects_self()
 	..()
 
-	add_internal_blood_level(internal_blood_per_attack)
+	add_internal_acid_level(internal_acid_per_attack)
 
-/datum/behavior_delegate/royal/proc/add_internal_blood_level(amount)
+/datum/behavior_delegate/royal/proc/add_internal_acid_level(amount)
 	if (amount > 0)
-		if (internal_blood_level >= internal_blood_level_max)
+		if (internal_acid_level >= internal_acid_level_max)
 			return
-		to_chat(bound_xeno, SPAN_XENODANGER("You feel your resources of blood increase!"))
-	internal_blood_level = Clamp(internal_blood_level + amount, 0, internal_blood_level_max)
+		to_chat(bound_xeno, SPAN_XENODANGER("You feel your resources of acid increase!"))
+	internal_acid_level = Clamp(internal_acid_level + amount, 0, internal_acid_level_max)
 
-/datum/behavior_delegate/royal/proc/remove_internal_blood_level(amount)
-	add_internal_blood_level(-1*amount)
+/datum/behavior_delegate/royal/proc/remove_internal_acid_level(amount)
+	add_internal_acid_level(-1*amount)
 
-/datum/behavior_delegate/royal/proc/use_internal_blood_ability(cost)
-	if (cost > internal_blood_level)
-		to_chat(bound_xeno, SPAN_XENODANGER("Your blood reserves are insufficient! You need at least [cost] to do that!"))
+/datum/behavior_delegate/royal/proc/use_internal_acid_ability(cost)
+	if (cost > internal_acid_level)
+		to_chat(bound_xeno, SPAN_XENODANGER("Your acid reserves are insufficient! You need at least [cost] to do that!"))
 		return FALSE
 	else
-		remove_internal_blood_level(cost)
+		remove_internal_acid_level(cost)
 		return TRUE

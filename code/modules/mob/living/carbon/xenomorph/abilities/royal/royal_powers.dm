@@ -15,7 +15,7 @@
 		var/datum/behavior_delegate/royal/BD = xeno.behavior_delegate
 		if (!istype(BD))
 			return
-		if (!BD.use_internal_blood_ability(screech_cost))
+		if (!BD.use_internal_acid_ability(screech_cost))
 			return
 
 	if (curr_effect_type == ROYAL_SCREECH_BUFF)
@@ -27,12 +27,12 @@
 		var/screech_duration = 150
 		var/image/buff_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
 		var/mob/living/carbon/Xenomorph/Praetorian/P = owner
-		if (!(P.screech_status_flags & ROYAL_SCREECH_BUFFED))
+		if (!(P.screech_status_flags & ROYAL_ROAR_ENHANCED))
 			P.armor_modifier += XENO_ARMOR_MOD_MED
 			P.damage_modifier += XENO_DAMAGE_MOD_SMALL
 			P.recalculate_armor()
 			P.recalculate_damage()
-			P.screech_status_flags |= ROYAL_SCREECH_BUFFED
+			P.screech_status_flags |= ROYAL_ROAR_ENHANCED
 			to_chat(src, SPAN_XENOWARNING("Your roar empowers you to strike harder!"))
 			buff_overlay.flick_overlay(P, 150)
 
@@ -41,7 +41,7 @@
 				P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 				P.recalculate_armor()
 				P.recalculate_damage()
-				P.screech_status_flags &= ~ROYAL_SCREECH_BUFFED
+				P.screech_status_flags &= ~ROYAL_ROAR_ENHANCED
 				to_chat(src, SPAN_XENOWARNING("You feel the power of your roar wane."))
 
 		else
@@ -49,10 +49,10 @@
 
 		for(var/mob/living/carbon/Xenomorph/XX in view(6, xeno))
 			var/image/bufff_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
-			if (!(XX.screech_status_flags & ROYAL_SCREECH_BUFFED))
+			if (!(XX.screech_status_flags & ROYAL_ROAR_ENHANCED))
 				XX.armor_modifier += XENO_ARMOR_MOD_MED
 				XX.damage_modifier += XENO_DAMAGE_MOD_SMALL
-				XX.screech_status_flags |= ROYAL_SCREECH_BUFFED
+				XX.screech_status_flags |= ROYAL_ROAR_ENHANCED
 				XX.recalculate_armor()
 				XX.recalculate_damage()
 				bufff_overlay.flick_overlay(XX, 150)
@@ -61,7 +61,7 @@
 				spawn (screech_duration)
 					XX.armor_modifier -= XENO_ARMOR_MOD_MED
 					XX.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-					XX.screech_status_flags &= ~ROYAL_SCREECH_BUFFED
+					XX.screech_status_flags &= ~ROYAL_ROAR_ENHANCED
 					XX.recalculate_armor()
 					XX.recalculate_damage()
 					to_chat(XX, SPAN_XENOWARNING("You feel the effects of [src] wane!"))
@@ -157,7 +157,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/cleave/proc/remove_bufff()
+/datum/action/xeno_action/activable/cleave/proc/remove_root()
 	buffed = FALSE
 
 /datum/action/xeno_action/activable/pounce/royal/additional_effects(mob/living/L)
@@ -175,7 +175,7 @@
 	H.attack_alien(X, 15)
 
 
-/datum/action/xeno_action/activable/blood_throw/use_ability(atom/A)
+/datum/action/xeno_action/activable/acid_throw/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if (!istype(X))
@@ -201,18 +201,18 @@
 		var/datum/behavior_delegate/royal/BD = X.behavior_delegate
 		if (!istype(BD))
 			return
-		if (!BD.use_internal_blood_ability(throw_cost))
+		if (!BD.use_internal_acid_ability(throw_cost))
 			return
 
 	var/turf/T = get_turf(A)
-	var/acid_bolt_message = "a barrage of blood"
+	var/acid_bolt_message = "a barrage of acid"
 
 
 	X.visible_message(SPAN_XENODANGER("[X] fires " + acid_bolt_message + " at [A]!"), SPAN_XENODANGER("You fire " + acid_bolt_message + " at [A]!"))
-	new /obj/effect/xenomorph/blood_delay/royal_landmine(T, blinded, delay, "You are blasted with " + acid_bolt_message + "!", X, )
+	new /obj/effect/xenomorph/acid_delay/royal_landmine(T, blinded, delay, "You are blasted with " + acid_bolt_message + "!", X, )
 
 	for (var/turf/targetTurf in orange(1, T))
-		new /obj/effect/xenomorph/blood_delay/royal_landmine(targetTurf, blinded, delay,  "You are blasted with a " + acid_bolt_message + "!", X)
+		new /obj/effect/xenomorph/acid_delay/royal_landmine(targetTurf, blinded, delay,  "You are blasted with a " + acid_bolt_message + "!", X)
 
 	apply_cooldown()
 	..()

@@ -542,7 +542,7 @@
 
 	return ..()
 
-/obj/effect/xenomorph/blood_delay
+/obj/effect/xenomorph/acid_delay
 	name = "???"
 	desc = ""
 	icon_state = "boiler_bombard"
@@ -555,7 +555,7 @@
 	var/empowered = FALSE
 	var/effect_amt = 2
 
-/obj/effect/xenomorph/blood_delay/New(loc, blinded = 2, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
+/obj/effect/xenomorph/acid_delay/New(loc, blinded = 2, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
 	..(loc)
 
 	addtimer(CALLBACK(src, .proc/die), delay)
@@ -565,7 +565,7 @@
 	if(src.linked_xeno)
 		hivenumber = src.linked_xeno.hivenumber
 
-/obj/effect/xenomorph/blood_delay/proc/deal_damage()
+/obj/effect/xenomorph/acid_delay/proc/deal_damage()
 	for (var/mob/living/carbon/H in loc)
 		if (H.stat == DEAD)
 			continue
@@ -583,13 +583,13 @@
 
 		. = TRUE
 
-/obj/effect/xenomorph/blood_delay/proc/die()
+/obj/effect/xenomorph/acid_delay/proc/die()
 	deal_damage()
 	qdel(src)
 
-/obj/effect/xenomorph/blood_delay/royal_landmine
+/obj/effect/xenomorph/acid_delay/royal_landmine
 
-/obj/effect/xenomorph/blood_delay/royal_landmine/deal_damage()
+/obj/effect/xenomorph/acid_delay/royal_landmine/deal_damage()
 
 	for (var/mob/living/carbon/H in loc)
 		if (H.stat == DEAD)

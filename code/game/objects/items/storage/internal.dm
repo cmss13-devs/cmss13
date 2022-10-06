@@ -185,10 +185,14 @@
 
 /obj/item/storage/internal/helmet/_item_insertion(obj/item/W, prevent_warning = 0)
 	if(isgarb(W))
-		LAZYADD(garb_items, W)
+		var/obj/item/prop/helmetgarb/garb = W
+		if(garb.garbage) // we're checking if the garb is garbage because non-cosmetic garbs have it to set false, kinda funny if u think about it
+			LAZYADD(garb_items, W)
 	return ..()
 
 /obj/item/storage/internal/helmet/_item_removal(obj/item/W, atom/new_location)
 	if(isgarb(W))
-		LAZYREMOVE(garb_items, W)
+		var/obj/item/prop/helmetgarb/garb = W
+		if(garb.garbage)
+			LAZYREMOVE(garb_items, W)
 	return ..()

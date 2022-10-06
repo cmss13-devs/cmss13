@@ -42,3 +42,13 @@
   - code_imp: nurse now has a one hour human roles timelock
   - bugfix: fixes the CL having an errant space before their name when not having
       a division
+2022-10-06:
+  SpartanBobby:
+  - rscadd: Squads now have their own cryo bay and canteen firing ranges moved to
+      old cryo bay
+  - rscadd: Every member of the Almayer should now wake up in a cryopod placed as
+      close as I possibly could to their old spawns (within reason)
+  - rscadd: Roundstart marines now spawn INSIDE their cryopod you should be able to
+      simply move to exit your pod
+  - rscadd: Dress Uniform vendors are now surrounded by unbreakable walls at the request
+      of the dev team

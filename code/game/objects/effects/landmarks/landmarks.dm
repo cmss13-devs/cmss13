@@ -205,15 +205,23 @@
 	icon_state = "x"
 	anchored = TRUE
 	var/job
+	var/squad
 
 /obj/effect/landmark/start/Initialize(mapload, ...)
 	. = ..()
 	if(job)
-		LAZYADD(GLOB.spawns_by_job[job], src)
+		if(squad)
+			LAZYINITLIST(GLOB.spawns_by_squad_and_job[squad])
+			LAZYADD(GLOB.spawns_by_squad_and_job[squad][job], src)
+		else
+			LAZYADD(GLOB.spawns_by_job[job], src)
 
 /obj/effect/landmark/start/Destroy()
 	if(job)
-		LAZYREMOVE(GLOB.spawns_by_job[job], src)
+		if(squad)
+			LAZYREMOVE(GLOB.spawns_by_squad_and_job[squad][job], src)
+		else
+			LAZYREMOVE(GLOB.spawns_by_job[job], src)
 	return ..()
 
 /obj/effect/landmark/start/AISloc
@@ -330,13 +338,37 @@
 /obj/effect/landmark/late_join
 	name = "late join"
 	icon_state = "x2"
+	var/squad
+
+/obj/effect/landmark/late_join/alpha
+	name = "alpha late join"
+	squad = SQUAD_MARINE_1
+
+/obj/effect/landmark/late_join/bravo
+	name = "bravo late join"
+	squad = SQUAD_MARINE_2
+
+/obj/effect/landmark/late_join/charlie
+	name = "charlie late join"
+	squad = SQUAD_MARINE_3
+
+/obj/effect/landmark/late_join/delta
+	name = "delta late join"
+	squad = SQUAD_MARINE_4
+
 
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
-	GLOB.latejoin += src
+	if(squad)
+		LAZYADD(GLOB.latejoin_by_squad[squad], src)
+	else
+		GLOB.latejoin += src
 
 /obj/effect/landmark/late_join/Destroy()
-	GLOB.latejoin -= src
+	if(squad)
+		LAZYREMOVE(GLOB.latejoin_by_squad[squad], src)
+	else
+		GLOB.latejoin -= src
 	return ..()
 
 //****************************************** STATIC COMMS ************************************************//

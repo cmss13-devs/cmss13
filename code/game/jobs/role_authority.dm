@@ -494,14 +494,6 @@ var/global/players_preassigned = 0
 /datum/authority/branch/role/proc/equip_role(mob/living/M, datum/job/J, turf/late_join)
 	if(!istype(M) || !istype(J))
 		return
-	//If they didn't join late, we want to move them to the start position for their role.
-	if(late_join)
-		M.forceMove(late_join) //If they late joined, we passed on the location from the parent proc.
-	else //If they didn't, we need to find a suitable spawn location for them.
-		if(!length(GLOB.spawns_by_job[J.type]))
-			log_debug("Failed to find a spawn for [J.type]")
-			return FALSE
-		M.forceMove(get_turf(pick(GLOB.spawns_by_job[J.type])))
 
 	. = TRUE
 
@@ -550,6 +542,39 @@ var/global/players_preassigned = 0
 	if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(H.job)))	//activates self setting proc for marine headsets for WO
 		var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 		WO.self_set_headset(H)
+
+	var/assigned_squad
+	if(ishuman(H))
+		var/mob/living/carbon/human/human = H
+		if(human.assigned_squad)
+			assigned_squad = human.assigned_squad.name
+
+	if(isturf(late_join))
+		H.forceMove(late_join)
+	else if(late_join)
+		var/turf/late_join_turf
+		if(GLOB.latejoin_by_squad[assigned_squad])
+			late_join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else
+			late_join_turf = get_turf(pick(GLOB.latejoin))
+		H.forceMove(late_join_turf)
+	else
+		var/turf/join_turf
+		if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][J.type])
+			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][J.type]))
+		else if(GLOB.spawns_by_job[J.type])
+			join_turf = get_turf(pick(GLOB.spawns_by_job[J.type]))
+		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
+			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else
+			join_turf = get_turf(pick(GLOB.latejoin))
+		H.forceMove(join_turf)
+
+	for(var/cardinal in GLOB.cardinals)
+		var/obj/structure/machinery/cryopod/pod = locate() in get_step(H, cardinal)
+		if(pod)
+			pod.go_in_cryopod(H, silent = TRUE)
+			break
 
 	H.sec_hud_set_ID()
 	H.hud_set_squad()

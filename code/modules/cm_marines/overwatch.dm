@@ -2,7 +2,7 @@
 #define HIDE_GROUND 1
 #define HIDE_NONE 0
 
-/obj/structure/machinery/computer/security/overwatch
+/obj/structure/machinery/computer/overwatch
 	name = "Overwatch Console"
 	desc = "State of the art machinery for giving orders to a squad."
 	icon_state = "dummy"
@@ -24,25 +24,25 @@
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
 
-/obj/structure/machinery/computer/security/overwatch/Initialize()
+/obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
 	SSmapview.map_machines += src
 
-/obj/structure/machinery/computer/security/overwatch/Destroy()
+/obj/structure/machinery/computer/overwatch/Destroy()
 	SSmapview.map_machines -= src
 	return ..()
 
-/obj/structure/machinery/computer/security/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/structure/machinery/computer/security/overwatch/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/overwatch/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
 	return FALSE
 
-/obj/structure/machinery/computer/security/overwatch/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/overwatch/attack_remote(var/mob/user as mob)
 	if(!ismaintdrone(user))
 		return attack_hand(user)
 
-/obj/structure/machinery/computer/security/overwatch/attack_hand(mob/user)
+/obj/structure/machinery/computer/overwatch/attack_hand(mob/user)
 	if(..())  //Checks for power outages
 		return
 
@@ -54,7 +54,7 @@
 	tgui_interact(user)
 	return
 
-/obj/structure/machinery/computer/security/overwatch/proc/update_mapview(var/close = 0)
+/obj/structure/machinery/computer/overwatch/proc/update_mapview(var/close = 0)
 	if(close || !current_squad || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
@@ -64,27 +64,27 @@
 		current_mapviewer << browse_rsc(O, "marine_minimap.png")
 		show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 
-/obj/structure/machinery/computer/security/overwatch/check_eye(mob/user)
+/obj/structure/machinery/computer/overwatch/check_eye(mob/user)
 	if(user.is_mob_incapacitated(TRUE) || get_dist(user, src) > 1 || user.blinded) //user can't see - not sure why canmove is here.
 		user.unset_interaction()
 	else if(!cam || !cam.can_use()) //camera doesn't work, is no longer selected or is gone
 		user.unset_interaction()
 
-/obj/structure/machinery/computer/security/overwatch/on_unset_interaction(mob/user)
+/obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
 	if(!isRemoteControlling(user))
 		cam = null
 		user.reset_view(null)
 
 //returns the helmet camera the human is wearing
-/obj/structure/machinery/computer/security/overwatch/proc/get_camera_from_target(mob/living/carbon/human/H)
+/obj/structure/machinery/computer/overwatch/proc/get_camera_from_target(mob/living/carbon/human/H)
 	if(current_squad)
 		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
 
 //Sends a string to our currently selected squad.
-/obj/structure/machinery/computer/security/overwatch/proc/send_to_squad(var/text = "", var/plus_name = 0, var/only_leader = 0)
+/obj/structure/machinery/computer/overwatch/proc/send_to_squad(var/text = "", var/plus_name = 0, var/only_leader = 0)
 	if(text == "" || !current_squad || !operator)
 		return //Logic
 
@@ -109,7 +109,7 @@
 				to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]")
 
 //Sends a maptext alert to our currently selected squad. Does not make sound.
-/obj/structure/machinery/computer/security/overwatch/proc/send_maptext_to_squad(var/text = "", var/title_text = "", var/only_leader = 0)
+/obj/structure/machinery/computer/overwatch/proc/send_maptext_to_squad(var/text = "", var/title_text = "", var/only_leader = 0)
 	if(text == "")
 		return
 
@@ -127,7 +127,7 @@
 
 
 // Alerts all groundside marines about the incoming OB
-/obj/structure/machinery/computer/security/overwatch/proc/alert_ob(var/turf/target)
+/obj/structure/machinery/computer/overwatch/proc/alert_ob(var/turf/target)
 	var/area/ob_area = get_area(target)
 	if(!ob_area)
 		return
@@ -145,7 +145,7 @@
 			to_chat(M, SPAN_HIGHDANGER("Orbital bombardment launch command detected!"))
 			to_chat(M, SPAN_DANGER("Launch command informs [ob_type] warhead. Estimated impact area: [ob_area.name]"))
 
-/obj/structure/machinery/computer/security/overwatch/proc/change_lead(var/picked)
+/obj/structure/machinery/computer/overwatch/proc/change_lead(var/picked)
 	var/new_lead = locate(picked)
 	var/mob/living/carbon/human/H = new_lead
 	if(current_squad.squad_leader)
@@ -191,7 +191,7 @@
 	H.update_inv_head() //updating marine helmet leader overlays
 	H.update_inv_wear_suit()
 
-/obj/structure/machinery/computer/security/overwatch/proc/mark_insubordination(picked)
+/obj/structure/machinery/computer/overwatch/proc/mark_insubordination(picked)
 	if(!usr || usr != operator)
 		return
 	if(!current_squad)
@@ -225,7 +225,7 @@
 						wanted_marine.sec_hud_set_security_status()
 					return
 
-/obj/structure/machinery/computer/security/overwatch/proc/transfer_squad(picked)
+/obj/structure/machinery/computer/overwatch/proc/transfer_squad(picked)
 	if(!usr || usr != operator)
 		return
 	var/datum/squad/S = current_squad
@@ -296,7 +296,7 @@
 	else
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] transfer from squad '[old_squad]' to squad '[new_squad]' unsuccessful.")]")
 
-/obj/structure/machinery/computer/security/overwatch/proc/handle_bombard(mob/user)
+/obj/structure/machinery/computer/overwatch/proc/handle_bombard(mob/user)
 	if(!user)
 		return
 
@@ -341,11 +341,11 @@
 	busy = TRUE
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.")]")
 	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
-	addtimer(CALLBACK(src, /obj/structure/machinery/computer/security/overwatch.proc/alert_ob, T), 2 SECONDS)
-	addtimer(CALLBACK(src, /obj/structure/machinery/computer/security/overwatch.proc/begin_fire), 6 SECONDS)
-	addtimer(CALLBACK(src, /obj/structure/machinery/computer/security/overwatch.proc/fire_bombard, user, A, T), 6 SECONDS + 6)
+	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/alert_ob, T), 2 SECONDS)
+	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/begin_fire), 6 SECONDS)
+	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/fire_bombard, user, A, T), 6 SECONDS + 6)
 
-/obj/structure/machinery/computer/security/overwatch/proc/begin_fire()
+/obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/H in GLOB.alive_mob_list)
 		if(is_mainship_level(H.z) && !H.stat) //USS Almayer decks.
 			to_chat(H, SPAN_WARNING("The deck of the [MAIN_SHIP_NAME] shudders as the orbital cannons open fire on the colony."))
@@ -354,7 +354,7 @@
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
 	send_to_squad("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
 
-/obj/structure/machinery/computer/security/overwatch/proc/fire_bombard(mob/user, area/A, turf/T)
+/obj/structure/machinery/computer/overwatch/proc/fire_bombard(mob/user, area/A, turf/T)
 	if(!A || !T)
 		return
 
@@ -369,7 +369,7 @@
 		almayer_orbital_cannon.fire_ob_cannon(target, user)
 		user.count_niche_stat(STATISTICS_NICHE_OB)
 
-/obj/structure/machinery/computer/security/overwatch/proc/handle_supplydrop()
+/obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
 	if(usr != operator)
 		return
 
@@ -411,9 +411,9 @@
 	C.anchored = TRUE //To avoid accidental pushes
 	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
 	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
-	addtimer(CALLBACK(src, /obj/structure/machinery/computer/security/overwatch.proc/finish_supplydrop, C, S, T), 10 SECONDS)
+	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/finish_supplydrop, C, S, T), 10 SECONDS)
 
-/obj/structure/machinery/computer/security/overwatch/proc/finish_supplydrop(obj/structure/closet/crate/C, datum/squad/S, turf/T)
+/obj/structure/machinery/computer/overwatch/proc/finish_supplydrop(obj/structure/closet/crate/C, datum/squad/S, turf/T)
 	if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
 		if(C) C.anchored = FALSE
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
@@ -433,20 +433,20 @@
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
 	busy = FALSE
 
-/obj/structure/machinery/computer/security/overwatch/almayer
+/obj/structure/machinery/computer/overwatch/almayer
 	density = 0
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"
 
-/obj/structure/machinery/computer/security/overwatch/clf
+/obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
-/obj/structure/machinery/computer/security/overwatch/upp
+/obj/structure/machinery/computer/overwatch/upp
 	faction = FACTION_UPP
-/obj/structure/machinery/computer/security/overwatch/pmc
+/obj/structure/machinery/computer/overwatch/pmc
 	faction = FACTION_PMC
-/obj/structure/machinery/computer/security/overwatch/twe
+/obj/structure/machinery/computer/overwatch/twe
 	faction = FACTION_RESS
-/obj/structure/machinery/computer/security/overwatch/freelance
+/obj/structure/machinery/computer/overwatch/freelance
 	faction = FACTION_FREELANCER
 
 /obj/structure/supply_drop
@@ -489,29 +489,14 @@
 	icon_state = "echodrop"
 	squad = SQUAD_MARINE_5
 
-/obj/structure/machinery/computer/security/overwatch/tgui_interact(mob/user, datum/tgui/ui)
+/obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 
-	update_active_camera_screen()
-
 	if(!ui)
-		var/user_ref = WEAKREF(user)
-		var/is_living = isliving(user)
-		// Ghosts shouldn't count towards concurrent users, which produces
-		// an audible terminal_on click.
-		if(is_living)
-			concurrent_users += user_ref
-		// Turn on the console
-		if(length(concurrent_users) == 1 && is_living)
-			use_power(active_power_usage)
-		// Register map objects
-		user.client.register_map_obj(cam_screen)
-		user.client.register_map_obj(cam_background)
-		// Open UI
 		ui = new(user, src, "OverwatchConsole", "[src.name]")
 		ui.open()
 
-/obj/structure/machinery/computer/security/overwatch/proc/get_squad_data(var/datum/squad/squad)
+/obj/structure/machinery/computer/overwatch/proc/get_squad_data(var/datum/squad/squad)
 
 	var/list/marines_list = squad.marines_list
 	var/list/squad_leader_candidates = list()
@@ -542,7 +527,7 @@
 
 	return(squad_data)
 
-/obj/structure/machinery/computer/security/overwatch/proc/get_marine_data(var/datum/squad/squad)
+/obj/structure/machinery/computer/overwatch/proc/get_marine_data(var/datum/squad/squad)
 
 	var/squad_leader_zlevel
 	if(squad.squad_leader)
@@ -642,15 +627,15 @@
 
 	return(marines_list)
 
-/obj/structure/machinery/computer/security/overwatch/ui_status(mob/user, datum/ui_state/state)
+/obj/structure/machinery/computer/overwatch/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(inoperable())
 		return UI_CLOSE
 
-/obj/structure/machinery/computer/security/overwatch/ui_state(mob/user)
+/obj/structure/machinery/computer/overwatch/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
-/obj/structure/machinery/computer/security/overwatch/ui_data(mob/user)
+/obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
 
 	data["z_hidden"] = z_hidden
@@ -690,7 +675,7 @@
 
 	return data
 
-/obj/structure/machinery/computer/security/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/structure/machinery/computer/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -706,11 +691,9 @@
 		if("mapview")
 			if(current_mapviewer)
 				update_mapview(1)
-				. = TRUE
-				return
+				return TRUE
 			current_mapviewer = usr
 			update_mapview()
-			. = TRUE
 			return TRUE
 		if("change_operator")
 			if(operator != usr)
@@ -762,9 +745,6 @@
 				current_squad.send_squad_message("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.", displayed_icon = src)
 				if(cam && !ishighersilicon(usr))
 					usr.reset_view(null)
-				network = null
-				current = null
-				update_active_camera_screen()
 			var/name_sel = params["squadpicked"]
 			to_chat(params["squadpicked"])
 			if(!name_sel)
@@ -776,7 +756,6 @@
 				//Link everything together, squad, console, and officer
 				if(selected.assume_overwatch(usr))
 					current_squad = selected
-					network = current_squad.network
 					current_squad.send_squad_message("Attention - Your squad has been selected for Overwatch. Check your Status pane for objectives.", displayed_icon = src)
 					current_squad.send_squad_message("Your Overwatch officer is: [operator.name].", displayed_icon = src)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
@@ -850,6 +829,7 @@
 				to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Dead marines are now shown again.")]")
 			return TRUE
 		if("choose_z")
+			to_chat(usr, params["area_picked"])
 			switch(params["area_picked"])
 				if("Ship")
 					z_hidden = HIDE_ALMAYER
@@ -909,43 +889,20 @@
 			if(current_squad)
 				var/mob/cam_target = locate(params["cam_target"])
 				var/obj/structure/machinery/camera/new_cam = get_camera_from_target(cam_target)
-
-				var/c_tag = new_cam.c_tag
-				var/list/cameras = get_available_cameras()
-				var/obj/structure/machinery/camera/selected_camera
-				selected_camera = cameras[c_tag]
-				// Unicode breaks c_tags
-				// Currently the only issues with character names comes from the improper or proper tags and so we strip and recheck if not found.
-				if(!selected_camera)
-					for(var/I in cameras)
-						if(strip_improper(I) == c_tag)
-							selected_camera = cameras[I]
-							break
-				to_chat(usr, selected_camera)
-				current = selected_camera
-				playsound(src, get_sfx("terminal_type"), 25, FALSE)
-
-				if(!selected_camera)
-					return TRUE
-
-				update_active_camera_screen()
-
-				return TRUE
+				if(!new_cam || !new_cam.can_use())
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
+				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
+					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
+					cam = null
+					usr.reset_view(null)
+				else if(usr.client.view != world_view_size)
+					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
+				else
+					cam = new_cam
+					usr.reset_view(cam)
+			return TRUE
 
 	add_fingerprint(usr)
-
-/obj/structure/machinery/computer/security/ui_static_data()
-	var/list/data = list()
-	data["mapRef"] = map_name
-	var/list/cameras = get_available_cameras()
-	data["cameras"] = list()
-	for(var/i in cameras)
-		var/obj/structure/machinery/camera/C = cameras[i]
-		data["cameras"] += list(list(
-			name = C.c_tag,
-		))
-
-	return data
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

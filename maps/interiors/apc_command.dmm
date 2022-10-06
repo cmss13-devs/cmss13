@@ -114,7 +114,7 @@
 	layer = 2.82;
 	pixel_y = -10
 	},
-/obj/structure/machinery/computer/security/overwatch/almayer{
+/obj/structure/machinery/computer/overwatch/almayer{
 	dir = 8;
 	indestructible = 1;
 	layer = 2.81;

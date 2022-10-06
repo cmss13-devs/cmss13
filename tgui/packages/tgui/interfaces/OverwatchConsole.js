@@ -27,7 +27,7 @@ export const OverwatchConsole = (_props, context) => {
   const { act, data } = useBackend(context);
   const { operator } = data;
   const body = operator ? <OverwatchMain /> : <OverwatchEmpty />;
-  const windowWidth = operator ? 1400 : 600;
+  const windowWidth = operator ? 1000 : 600;
   const windowHeight = operator ? 700 : 300;
 
   return (
@@ -54,41 +54,34 @@ export const OverwatchMain = (props, context) => {
     <>
       <OverwatchId />
       {squad_data ? (
-        <Stack>
-          <Stack.Item width="60%">
-            <Stack direction="column" fontFamily="consolas" grow>
-              <Stack.Item>
-                <Stack mb="1em">
+        <Stack direction="column" fontFamily="consolas" grow>
+          <Stack.Item>
+            <Stack mb="1em">
+              <Stack.Item grow>
+                <Stack>
+                  <Stack.Item>
+                    <OverwatchTab />
+                  </Stack.Item>
                   <Stack.Item grow>
                     <Stack>
-                      <Stack.Item>
-                        <OverwatchTab />
-                      </Stack.Item>
-                      <Stack.Item grow>
-                        <Stack>
-                          {currentControlCategory === 1 ? (
-                            <Stack.Item grow fill>
-                              <OverwatchSelect />
-                              <OverwatchSquad />
-                            </Stack.Item>
-                          ) : (
-                            <Stack.Item grow fill>
-                              <OverwatchDrop />
-                            </Stack.Item>
-                          )}
-                        </Stack>
-                      </Stack.Item>
+                      {currentControlCategory === 1 ? (
+                        <Stack.Item grow fill>
+                          <OverwatchSelect />
+                          <OverwatchSquad />
+                        </Stack.Item>
+                      ) : (
+                        <Stack.Item grow fill>
+                          <OverwatchDrop />
+                        </Stack.Item>
+                      )}
                     </Stack>
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
-              <Stack.Item width="100%">
-                <OverwatchMonitor />
-              </Stack.Item>
             </Stack>
           </Stack.Item>
-          <Stack.Item>
-            <OverwatchCamera />
+          <Stack.Item width="100%">
+            <OverwatchMonitor />
           </Stack.Item>
         </Stack>
       ) : (
@@ -279,7 +272,6 @@ export const OverwatchSquad = (props, context) => {
   const { squad_data, marinelist } = data;
 
   const marine_list_keys = Object.keys(marinelist);
-  logger.warn(squad_data);
 
   return (
     <Section title={squad_data.squad_name}>
@@ -824,14 +816,14 @@ export const OverwatchBomb = (props, context) => {
       && !almayer_cannon_disabled
       && !almayer_cannon_empty
         ? (
+          <NoticeBox warning textAlign="center">
+            Chamber is not loaded!
+          </NoticeBox>
+        ) : (
           <NoticeBox danger textAlign="center" >
             <Icon name="skull-crossbones" mr="1em" />
             Ready to fire!
             <Icon name="skull-crossbones" ml="1em" />
-          </NoticeBox>
-        ) : (
-          <NoticeBox warning textAlign="center">
-            Chamber is not loaded!
           </NoticeBox>
         )}
     </>

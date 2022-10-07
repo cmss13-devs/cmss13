@@ -1,7 +1,7 @@
 //------------GEAR VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
-		list("CAPTAIN'S PRIMARY (CHOOSE 1)", 0, null, null, null),
+		list("COMMANDER'S PRIMARY (CHOOSE 1)", 0, null, null, null),
 		list("M46C pulse rifle", 0, /obj/item/weapon/gun/rifle/m46c, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 		list("M56C Smartgun", 0, /obj/item/storage/box/m56c_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 		list("Spare Mateba", 0, /obj/item/storage/belt/gun/mateba/cmateba/full, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
-		list("Bags (TAKE One)", 0, null, null, null),
+		list("BAGS (TAKE One)", 0, null, null, null),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel/lockable, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Expedition Pack", 0, /obj/item/storage/backpack/marine/satchel/intel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Military police Satchel", 0, /obj/item/storage/backpack/satchel/sec, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
@@ -124,3 +124,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 /obj/structure/machinery/cm_vending/clothing/commanding_officer/Initialize(mapload, ...)
 	. = ..()
 	listed_products = GLOB.cm_vending_clothing_commanding_officer
+
+

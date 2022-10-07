@@ -43,9 +43,14 @@ export const STUI = (props, context) => {
           </Flex.Item>
           <Flex.Item mt={1} grow={1} basis={0}>
             <Section fill scrollable >
-              {logs.map(log => (
-                <Box key={log}>{log}</Box>
-              ))}
+              {logs.map(log => {
+                if (!log.toLowerCase().match(searchTerm)) {
+                  return;
+                }
+                return (
+                  <Box key={log}>{log}</Box>
+                );
+              })}
               {logs.length > 1 && (
                 <Box align="center">--- End of Logs --</Box>
               )}

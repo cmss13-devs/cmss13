@@ -78,35 +78,36 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 		.["tabs"] += STUI_TEXT_TGUI
 
 /datum/STUI/ui_data(mob/user)
+	var/stui_length = CONFIG_GET(number/STUI_length)
 	. = list()
 	.["logs"] = list()
 	if(user.client.admin_holder.rights & R_MOD)
-		if(attack.len > config.STUI_length+1)
-			attack.Cut(,attack.len-config.STUI_length)
+		if(attack.len > stui_length+1)
+			attack.Cut(,attack.len-stui_length)
 		.["logs"][STUI_TEXT_ATTACK] = attack
-		if(ooc.len > config.STUI_length+1)
-			ooc.Cut(,ooc.len-config.STUI_length)
+		if(ooc.len > stui_length+1)
+			ooc.Cut(,ooc.len-stui_length)
 		.["logs"][STUI_TEXT_OOC] = ooc
 	if(user.client.admin_holder.rights & R_ADMIN)
-		if(admin.len > config.STUI_length+1)
-			admin.Cut(,admin.len-config.STUI_length)
+		if(admin.len > stui_length+1)
+			admin.Cut(,admin.len-stui_length)
 		.["logs"][STUI_TEXT_ADMIN] = admin
-		if(staff.len > config.STUI_length+1)
-			staff.Cut(,staff.len-config.STUI_length)
+		if(staff.len > stui_length+1)
+			staff.Cut(,staff.len-stui_length)
 		.["logs"][STUI_TEXT_STAFF] = staff
 	if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
-		if(game.len > config.STUI_length+1)
-			game.Cut(,game.len-config.STUI_length)
+		if(game.len > stui_length+1)
+			game.Cut(,game.len-stui_length)
 		.["logs"][STUI_TEXT_GAME] = game
 	if(user.client.admin_holder.rights & R_DEBUG)
-		if(debug.len > config.STUI_length+1)
-			debug.Cut(,debug.len-config.STUI_length)
+		if(debug.len > stui_length+1)
+			debug.Cut(,debug.len-stui_length)
 		.["logs"][STUI_TEXT_DEBUG] = debug
-		if(runtime.len > config.STUI_length+1)
-			runtime.Cut(,runtime.len-config.STUI_length)
+		if(runtime.len > stui_length+1)
+			runtime.Cut(,runtime.len-stui_length)
 		.["logs"][STUI_TEXT_RUNTIME] = runtime
-		if(tgui.len > config.STUI_length+1)
-			tgui.Cut(,tgui.len-config.STUI_length)
+		if(tgui.len > stui_length+1)
+			tgui.Cut(,tgui.len-stui_length)
 		.["logs"][STUI_TEXT_TGUI] = tgui
 
 /client/proc/open_STUI()

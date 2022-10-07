@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Box, Flex } from '../components';
+import { Tabs, Section, Box, Flex, Input } from '../components';
 import { Window } from '../layouts';
 
 export const STUI = (props, context) => {
@@ -11,16 +11,35 @@ export const STUI = (props, context) => {
   ] = useLocalState(context, 'progress', tabs[0]);
   const logs = data.logs[selectedTab].length ? data.logs[selectedTab] : ["No logs"];
 
+  const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', "");
+
   return (
     <Window
-      width={700}
-      height={500}>
+      width={900}
+      height={700}>
       <Window.Content>
         <Flex height="100%" direction="column" >
           <Flex.Item>
             <Section fitted >
               <STUItabs />
             </Section>
+          </Flex.Item>
+          <Flex.Item>
+            <Box width="10px" />
+            <Box>
+              <Flex align="center" justify="space-between" align-items="stretch">
+                <Flex.Item>
+                  Search:
+                </Flex.Item>
+                <Flex.Item>
+                  <Input
+                    value={searchTerm}
+                    onInput={(_, value) => setSearchTerm(value)}
+                    width="840px"
+                  />
+                </Flex.Item>
+              </Flex>
+            </Box>
           </Flex.Item>
           <Flex.Item mt={1} grow={1} basis={0}>
             <Section fill scrollable >

@@ -101,6 +101,8 @@
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
 
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
+
 /datum/equipment_preset/wo/xo/New()
 	. = ..()
 	access = get_all_marine_access()
@@ -127,7 +129,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 
-	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/cmp

@@ -87,7 +87,7 @@
 				marine_rk = "dcc"
 			if(JOB_CREWMAN)
 				marine_rk = "tc"
-			if(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER)
+			if(JOB_PROVOST_ENFORCER)
 				marine_rk = "pvo"
 			if(JOB_PROVOST_TML)
 				marine_rk = "pvtml"

@@ -89,6 +89,11 @@
 	hud_list = new
 	for(var/hud in hud_possible)
 		var/image/I = image('icons/mob/hud/hud.dmi', src, "")
+		switch(hud)
+			if(ID_HUD,WANTED_HUD)
+				I = image('icons/mob/hud/sec_hud.dmi', src, "")
+			if(HUNTER_CLAN,HUNTER_HUD)
+				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 

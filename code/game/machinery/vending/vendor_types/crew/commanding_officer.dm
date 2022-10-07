@@ -47,6 +47,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 
 		list("BARREL ATTACHMENTS", 0, null, null, null),
 		list("Barrel Charger", 25, /obj/item/attachable/heavy_barrel, null, VENDOR_ITEM_RECOMMENDED),
+		list("Spare Mateba Customization kit", 25, /obj/item/storage/mateba_case/captain, null, VENDOR_ITEM_RECOMMENDED),
 		list("Suppressor", 15, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
 		list("Extended Barrel", 15, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 15, /obj/item/attachable/compensator, null, VENDOR_ITEM_REGULAR),

@@ -323,7 +323,7 @@
 ///CO pouch. This pouch can hold only 1 of each type of item: 1 sidearm, 1 pair of binoculars, 1 CO tablet
 /obj/item/storage/pouch/pistol/command
 	name = "command pouch"
-	desc = "A specialized, sturdy pouch issued to Captains. Can hold their sidearm, the command tablet and a set of binoculars."
+	desc = "A specialized, sturdy pouch issued to Commanders. Can hold their sidearm, the command tablet and a set of binoculars."
 	storage_slots = 3
 	icon_state = "command_pouch"
 	can_hold = list(
@@ -1274,7 +1274,7 @@
 		icon_state = "[initial(icon_state)]_full"
 	else
 		icon_state = initial(icon_state)
-		
+
 /obj/item/storage/pouch/machete/_item_insertion(obj/item/W, prevent_warning = 0)
 	..()
 	playsound(src, sheathe_sound, vol = 15, vary = TRUE)

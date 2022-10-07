@@ -36112,11 +36112,7 @@
 	},
 /area/almayer/living/briefing)
 "dhU" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 2;
-	id = "bot_uniforms";
-	name = "\improper Uniform Vendor Shutters"
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -61525,11 +61521,7 @@
 	},
 /area/almayer/squads/delta)
 "oqA" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 2;
-	id = "bot_uniforms";
-	name = "\improper Uniform Vendor Shutters"
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "cargo_arrow"
@@ -78015,10 +78007,8 @@
 	},
 /area/almayer/hallways/repair_bay)
 "vwV" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "bot_uniforms";
-	name = "\improper Uniform Vendor Shutters"
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";

@@ -76462,13 +76462,14 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "uRJ" = (
-/obj/structure/bedsheetbin,
+/obj/structure/bed{
+	alpha = 1;
+	invisibility = 1
+	},
 /mob/living/simple_animal/cat/Jones{
 	dir = 8
 	},
-/obj/structure/bed{
-	invisibility = 1
-	},
+/obj/structure/bedsheetbin,
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "uRM" = (

@@ -149,6 +149,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_LEADER					"PMC Leader"
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR				"PMC Site Director"
+#define JOB_PMC_SYNTH                   "PMC Support Synthetic"
 
 //-------- UPP --------//
 #define JOB_UPP							"UPP Private"

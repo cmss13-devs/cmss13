@@ -357,5 +357,5 @@
 	description = "An acid of unknown composition, this sample doesn't seem to be as dangerous those found within Xenomorph bloodstreams."
 	color = "#669900"
 	reagent_state = LIQUID
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1)

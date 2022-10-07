@@ -70,3 +70,12 @@
   - rscadd: Adds a colony blackbox to every map on rotation serves no gameplay purpose
   stanalbatross:
   - rscadd: ported item pickup and drop animations from tg
+2022-10-07:
+  Geeves:
+  - rscadd: All xenos have a new generic ability, the Tail Stab, with a two tile range
+      dealing 1.2 times the caste's maximum melee damage, making it more useful on
+      the bigger xenos. It takes one second of being the selected ability before it
+      can be used.
+  - balance: Boilers have an advanced version of the tail stab, called the Toxic Tail
+      Stab, where it injects the target with diluted molecular acid, causing burns
+      and toxin damage.

@@ -508,7 +508,7 @@
 
 /obj/item/prop/helmetgarb/face_plate
 	name = "\improper M7 integrated faceplate"
-	desc = "This integrated faceplate is attached to two attachment points located within all variations of the M10 pattern helmet. Funding was pulled when field research showed that these offered little to no physical protection, in fact, in some cases, the faceplate became shrapnel when a shockwave sheared it off the attachment points and blew it into the wearer's skull."
+	desc = "This integrated faceplate can be attached to two attachment points located within all variations of the M10 pattern helmet. Funding was pulled when field research showed that these offered little to no physical protection. In some cases, the faceplate could become shrapnel when a shockwave sheared it off the attachment points, blowing it into the wearer's skull."
 	icon_state = "face_plate"
 	var/base_icon
 
@@ -572,6 +572,6 @@
 
 /obj/item/prop/helmetgarb/face_plate/riot
 	name = "\improper Z9 integrated riotplate"
-	desc = "An improved variant of the M7 integrated faceplate, these were originally produced by a group of marines stationed on LV-920, a snow planet. Conditions were terrible, so to raise morale, the marines hatched a prank. They would spray-paint a faceplate black and meticulously repaint the logos and warning text around the inner seams, not that anyone reads those anyway. Any MP brave or foolish enough to don the brand new faceplate would have the entirety of their cheeks and chin painted black because of residual paint, much to the delight of the bored marines. Unfortunately, due to the roaring success and spread across the Marine Corps, production of genuine models began, diluting the pool of fake plates with real ones. You're pretty sure this is a real one. Pretty sure."
+	desc = "An improved variant of the M7 integrated faceplate, these were originally produced by a group of marines stationed on LV-920, a snow planet. Conditions were terrible, so to raise morale, the marines hatched a prank. They would spray-paint a faceplate black and meticulously repaint the logos and warning text around the inner seams, not that anyone reads those anyway. Any MP brave or foolish enough to don the brand new faceplate would have the entirety of their cheeks and chin painted black because of residual paint, much to the delight of the bored marines. Unfortunately, due to the prank's roaring success and its spread across the Marine Corps, production of genuine models began, diluting the pool of fake plates with real ones. You're pretty sure this is a real one. Pretty sure."
 	icon_state = "riot_plate"
 	flags_atom = FPRINT|NO_SNOW_TYPE

@@ -589,12 +589,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 200 SECONDS
 	var/ash = FALSE
 
-/obj/item/clothing/mask/cigarette/pipe/examine()
-	..()
+/obj/item/clothing/mask/cigarette/pipe/get_examine_text(mob/user)
+	. = ..()
 	if(ash)
-		to_chat(usr, "It is full of ash.")
+		. += "It is full of ash."
 	else if(smoketime <= 0)
-		to_chat(usr, "It is empty.")
+		. += "It is empty."
 
 /obj/item/clothing/mask/cigarette/pipe/go_out()
 	..()

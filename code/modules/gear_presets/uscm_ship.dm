@@ -127,6 +127,7 @@
 	skills = /datum/skills/CE
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/ce)
+	dress_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey)
 
 /datum/equipment_preset/uscm_ship/chief_engineer/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -239,6 +240,7 @@
 	skills = /datum/skills/RO
 
 	utility_under = list(/obj/item/clothing/under/rank/ro_suit)
+	dress_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey)
 
 /datum/equipment_preset/uscm_ship/ro/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -310,7 +312,7 @@
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain/white, /obj/item/clothing/head/marine/peaked/captain/black)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit, /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey, /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat)
 
 /datum/equipment_preset/uscm_ship/commander/New()
 	. = ..()
@@ -393,7 +395,7 @@
 	minimum_age = 35
 	skills = /datum/skills/XO
 
-	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full, /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey)
 
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
@@ -443,6 +445,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
 
+	dress_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey)
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/sea
@@ -459,7 +462,7 @@
 	skills = /datum/skills/SEA
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
-
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full, /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey)
 
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
@@ -618,7 +621,7 @@
 	service_hat = list(/obj/item/clothing/head/beret/cm)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
 
-	dress_extra = list(/obj/item/clothing/head/beret/marine/commander/dress, /obj/item/storage/large_holster/ceremonial_sword/full)
+	dress_extra = list(/obj/item/clothing/head/beret/marine/commander/dress,/obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey, /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat, /obj/item/storage/large_holster/ceremonial_sword/full)
 	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 

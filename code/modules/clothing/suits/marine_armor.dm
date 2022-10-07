@@ -108,7 +108,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
 
 	var/brightness_on = 6 //Average attachable pocket light
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
@@ -454,7 +454,17 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 3
 	specialty = "M3 pattern captain"
 	item_state_slots = list(WEAR_JACKET = "co_officer")
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
+
+
+/obj/item/clothing/suit/storage/marine/MP/CO/jacket
+	name = "\improper M3 pattern captain armored coat"
+	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge. This one has a coat over it for added warmth."
+	icon_state = "bridge_coat_armored"
+	item_state = "bridge_coat_armored"
+	item_state_slots = list(WEAR_JACKET = "bridge_coat_armored")
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK)
+
 
 /obj/item/clothing/suit/storage/marine/smartgunner
 	name = "M56 combat harness"

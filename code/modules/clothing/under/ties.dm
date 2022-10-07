@@ -229,14 +229,14 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/accessory/medal/examine(mob/user)
-	..()
+/obj/item/clothing/accessory/medal/get_examine_text(mob/user)
+	. = ..()
 
 	var/citation_to_read = ""
 	if(medal_citation)
 		citation_to_read = "The citation reads \'[medal_citation]\'."
 
-	to_chat(user, "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]")
+	. += "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]"
 
 /obj/item/clothing/accessory/medal/bronze
 	name = "bronze medal"
@@ -353,6 +353,18 @@
 	name = "\improper Falling Falcons patch"
 	desc = "A fire resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
+
+/obj/item/clothing/accessory/poncho
+	name = "USCM Poncho"
+	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."
+	icon_state = "poncho"
+	slot = ACCESSORY_SLOT_PONCHO
+
+/obj/item/clothing/accessory/poncho/Initialize()
+	. = ..()
+	select_gamemode_skin(type)
+	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
+	update_icon()
 
 //Ties that can store stuff
 

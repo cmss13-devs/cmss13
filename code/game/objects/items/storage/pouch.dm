@@ -35,9 +35,9 @@
 		overlays += "+[icon_state]_full"
 
 
-/obj/item/storage/pouch/examine(mob/user)
-	..()
-	to_chat(user, "Can be worn by attaching it to a pocket.")
+/obj/item/storage/pouch/get_examine_text(mob/user)
+	. = ..()
+	. += "Can be worn by attaching it to a pocket."
 
 
 /obj/item/storage/pouch/equipped(mob/user, slot)
@@ -916,9 +916,11 @@
 	to_chat(user, SPAN_NOTICE("You refill the [src]."))
 	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/examine(mob/user)
-	..()
-	display_contents(user)
+/obj/item/storage/pouch/pressurized_reagent_canister/get_examine_text(mob/user)
+	. = ..()
+	var/display_info = display_contents(user)
+	if(display_info)
+		. += display_info
 
 /obj/item/storage/pouch/pressurized_reagent_canister/update_icon()
 	overlays.Cut()
@@ -935,12 +937,11 @@
 	if(isXeno(user))
 		return
 	if(!inner)
-		to_chat(user, "This [src] has no container inside!")
-		return
+		return "This [src] has no container inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		to_chat(user, "This [src] contains: [get_reagent_list_text()]")
+		return "This [src] contains: [get_reagent_list_text()]"
 	else
-		to_chat(user, "You don't know what's in it.")
+		return "You don't know what's in it."
 
 //returns a text listing the reagents (and their volume) in the atom. Used by Attack logs for reagents in pills
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/get_reagent_list_text()
@@ -1160,10 +1161,10 @@
 	var/sling_range = 1
 	var/obj/item/slung
 
-/obj/item/storage/pouch/sling/examine(mob/user)
-	..()
+/obj/item/storage/pouch/sling/get_examine_text(mob/user)
+	. = ..()
 	if(slung && slung.loc != src)
-		to_chat(user, "\the [slung] is attached to the sling.")
+		. += "\The [slung] is attached to the sling."
 
 /obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, stop_messages = FALSE)
 	if(slung)

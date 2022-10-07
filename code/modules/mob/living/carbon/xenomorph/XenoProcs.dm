@@ -270,7 +270,7 @@
 		return
 
 	var/mob/living/carbon/M = L
-	if(M.stat || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L))
+	if(M.stat || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
 		throwing = FALSE
 		return
 

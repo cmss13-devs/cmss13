@@ -79,3 +79,6 @@
   - balance: Boilers have an advanced version of the tail stab, called the Toxic Tail
       Stab, where it injects the target with diluted molecular acid, causing burns
       and toxin damage.
+  carlarctg:
+  - refactor: Refactored marine armor file
+  - bugfix: Ghillie suits can now clip on ponchos

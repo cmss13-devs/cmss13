@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("M41A Incendiary Magazine", 65, /obj/item/ammo_magazine/rifle/incendiary, null, VENDOR_ITEM_REGULAR),
 		list("M41A Rubber Shot Magazine", 10, /obj/item/ammo_magazine/rifle/rubber, null, VENDOR_ITEM_REGULAR),
 		list("M42A Incendiary Magazine", 45, /obj/item/ammo_magazine/sniper/incendiary, null, VENDOR_ITEM_REGULAR),
-		list("M42A Flak Magazine", 30, /obj/item/ammo_magazine/sniper/flak, null, VENDOR_ITEM_REGULAR),
+		list("M42A Flak Magazine", 45, /obj/item/ammo_magazine/sniper/flak, null, VENDOR_ITEM_REGULAR),
 		list("Beanbag Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag, null, VENDOR_ITEM_REGULAR),
 
 		list("RAIL ATTACHMENTS", 0, null, null, null),

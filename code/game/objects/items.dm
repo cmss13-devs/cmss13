@@ -79,6 +79,7 @@
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
 	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
 	var/zoom_initial_mob_dir = null // the initial dir the mob faces when it zooms in
+	var/zoom_vision_post_update = FALSE
 
 	var/list/obj/item/uniform_restricted //Need to wear this uniform to equip this
 
@@ -789,6 +790,10 @@ cases. Override_icon_state should be a list.*/
 		COMSIG_ITEM_UNWIELD,
 	))
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
+	if(zoom_vision_post_update)
+		UnregisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT)
+		user.update_sight()
+
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
 		user.client.change_view(world_view_size, src)
@@ -818,6 +823,9 @@ cases. Override_icon_state should be a list.*/
 			COMSIG_ITEM_UNWIELD,
 		), .proc/unzoom_dropped_callback)
 		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/zoom_handle_mob_move_or_look)
+		if(zoom_vision_post_update)
+			RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/handle_zoom_vision)
+			user.update_sight()
 
 		zoom_initial_mob_dir = user.dir
 
@@ -847,6 +855,8 @@ cases. Override_icon_state should be a list.*/
 	else
 		user.set_interaction(src)
 
+/obj/item/proc/handle_zoom_vision()
+	SIGNAL_HANDLER
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)
 	var/mob_state

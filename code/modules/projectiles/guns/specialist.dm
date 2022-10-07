@@ -232,6 +232,7 @@
 	icon_state = "m42ac"
 	item_state = "m42ac"
 	map_specific_decoration = FALSE
+	zoom_vision_post_update = TRUE
 
 /obj/item/weapon/gun/rifle/sniper/M42A/co/skill_check(var/mob/living/user)
 	if(user.job == GET_DEFAULT_ROLE(JOB_CO))
@@ -240,6 +241,10 @@
 
 /obj/item/weapon/gun/rifle/sniper/M42A/co/set_bullet_traits()
 	return
+
+/obj/item/weapon/gun/rifle/sniper/M42A/co/handle_zoom_vision(var/mob/living/carbon/human/H)
+	H.see_in_dark = 12
+	H.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 /obj/item/weapon/gun/rifle/sniper/XM42B
 	name = "\improper XM42B experimental anti-materiel rifle"

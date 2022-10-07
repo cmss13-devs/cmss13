@@ -60,10 +60,10 @@
 				animation_attack_on(target)
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 10, 1) //Quiet to limit spam/nuisance.
 				if(firepatted)
-					visible_message(SPAN_DANGER("[src] pats at the fire!"), \
+					src.visible_message(SPAN_DANGER("[src] pats at the fire!"), \
 					SPAN_DANGER("You pat the fire!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				else
-					visible_message(SPAN_DANGER("[src] swipes at [target]!"), \
+					src.visible_message(SPAN_DANGER("[src] swipes at [target]!"), \
 					SPAN_DANGER("You swipe at [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return TRUE
 

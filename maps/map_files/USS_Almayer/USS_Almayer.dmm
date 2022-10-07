@@ -12872,8 +12872,13 @@
 /area/almayer/hull/upper_hull/u_m_p)
 "aKE" = (
 /obj/structure/machinery/light,
-/obj/item/clothing/suit/storage/jacket/marine/service/tanker,
-/obj/item/clothing/head/helmet/marine/tanker,
+/obj/item/clothing/suit/storage/jacket/marine/service/tanker{
+	pixel_x = 3
+	},
+/obj/item/clothing/head/helmet/marine/tanker{
+	pixel_x = 3;
+	pixel_y = 10
+	},
 /obj/structure/coatrack,
 /turf/open/floor/almayer,
 /area/almayer/living/numbertwobunks)
@@ -24146,6 +24151,10 @@
 /area/almayer/living/cryo_cells)
 "bCO" = (
 /obj/structure/coatrack,
+/obj/item/clothing/head/bowlerhat{
+	pixel_x = 3;
+	pixel_y = 10
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "bCP" = (
@@ -76456,6 +76465,9 @@
 /obj/structure/bedsheetbin,
 /mob/living/simple_animal/cat/Jones{
 	dir = 8
+	},
+/obj/structure/bed{
+	invisibility = 1
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)

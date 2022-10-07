@@ -267,3 +267,12 @@
 	reagent_state = SOLID
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_TOXIC = 1)
+
+/datum/reagent/toxin/molecular_acid
+	name = "Diluted Molecular Acid"
+	id = "molecularacid"
+	description = "An acid of unknown composition, this sample doesn't seem to be as dangerous those found within Xenomorph bloodstreams."
+	color = "#669900"
+	reagent_state = LIQUID
+	chemclass = CHEM_CLASS_NONE
+	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1)

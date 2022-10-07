@@ -529,3 +529,8 @@ Parameters are passed from New.
 	for(var/atom/atom_orbiter as anything in orbiters?.orbiters)
 		output += atom_orbiter.get_all_orbiters(processed, source = FALSE)
 	return output
+
+// returns a modifier for how much the tail stab should be cooldowned by
+// returning a 0 makes it do nothing
+/atom/proc/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE

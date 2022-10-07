@@ -39,25 +39,29 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /proc/initialize_marine_armor()
 	var/i
 	for(i=1, i<(length(squad_colors) + 1), i++)
+		var/squad_color = squad_colors[i]
+		var/armor_color = rgb(hex2num(copytext(squad_color, 2, 4)), hex2num(copytext(squad_color, 4, 6)), hex2num(copytext(squad_color, 6, 8)), 125)
+
 		var/image/armor
 		var/image/helmet
 		var/image/glove
+
 		armor = image('icons/mob/humans/onmob/suit_1.dmi',icon_state = "std-armor")
-		armor.color = squad_colors[i]
+		armor.color = armor_color
 		armormarkings += armor
 		armor = image('icons/mob/humans/onmob/suit_1.dmi',icon_state = "sql-armor")
-		armor.color = squad_colors[i]
+		armor.color = armor_color
 		armormarkings_sql += armor
 
 		helmet = image('icons/mob/humans/onmob/head_1.dmi',icon_state = "std-helmet")
-		helmet.color = squad_colors[i]
+		helmet.color = armor_color
 		helmetmarkings += helmet
 		helmet = image('icons/mob/humans/onmob/head_1.dmi',icon_state = "sql-helmet")
-		helmet.color = squad_colors[i]
+		helmet.color = armor_color
 		helmetmarkings_sql += helmet
 
 		glove = image('icons/mob/humans/onmob/hands_garb.dmi',icon_state = "std-gloves")
-		glove.color = squad_colors[i]
+		glove.color = armor_color
 		glovemarkings += glove
 
 

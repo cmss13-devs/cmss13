@@ -4,6 +4,10 @@
 
 	reset_view()
 
+	//used to handle special vehicles modules
+	if(interactee && isVehicleMultitile(interactee) && !buckled)
+		unset_interaction()
+
 	if(next_move > world.time)
 		return
 

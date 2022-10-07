@@ -583,16 +583,13 @@ CULT
 	var/mob/living/carbon/human/H = owner
 	if(H.buckled)
 		if(istype(H.buckled, /obj/structure/bed/chair/comfy/vehicle))
-			H.buckled.unbuckle()
+			H.buckled.manual_unbuckle(H)
 		else if(!isVehicleMultitile(H.interactee))
 			remove_from(H)
 	else if(!isVehicleMultitile(H.interactee))
 		remove_from(H)
 
 	H.unset_interaction()
-	H.client.change_view(world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
-	H.reset_view()
+
 	remove_from(H)
 

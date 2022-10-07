@@ -7,10 +7,15 @@
 /area/space)
 "b" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/recharger{
-	pixel_x = -5
+/obj/structure/machinery/computer/crew/vehicle{
+	dir = 4;
+	pixel_x = -3;
+	pixel_y = 7
 	},
-/obj/item/device/defibrillator,
+/obj/structure/machinery/recharger/vehicle{
+	pixel_x = -3;
+	pixel_y = -3
+	},
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_11"
 	},
@@ -18,7 +23,7 @@
 "c" = (
 /obj/effect/decal/medical_decals/permanent{
 	icon_state = "docdecal2";
-	pixel_x = -5;
+	pixel_x = -12;
 	pixel_y = 16
 	},
 /obj/effect/decal/medical_decals/permanent{
@@ -32,11 +37,8 @@
 /obj/effect/decal/medical_decals/permanent{
 	icon_state = "triagedecalbottom"
 	},
-/obj/effect/decal/medical_decals/permanent{
-	icon_state = "triagedecaltopright"
-	},
 /turf/open/shuttle/vehicle{
-	icon_state = "dark_sterile_green_14"
+	icon_state = "dark_sterile_green_5"
 	},
 /area/vehicle/apc/med)
 "e" = (
@@ -172,12 +174,9 @@
 /turf/open/void/vehicle,
 /area/space)
 "w" = (
-/obj/effect/decal/medical_decals/permanent{
-	dir = 4;
-	icon_state = "triagedecaldir"
-	},
+/obj/effect/landmark/interior/spawn/medevac,
 /turf/open/shuttle/vehicle{
-	icon_state = "dark_sterile_green_8"
+	icon_state = "dark_sterile"
 	},
 /area/vehicle/apc/med)
 "x" = (
@@ -188,11 +187,6 @@
 /turf/open/void/vehicle,
 /area/space)
 "y" = (
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	dir = 8;
-	pixel_x = 5;
-	pixel_y = 8
-	},
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
 	dir = 1;
@@ -201,8 +195,13 @@
 	pixel_y = 32;
 	tag = "left"
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport/med{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 8
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_11"
+	icon_state = "floor_1"
 	},
 /area/vehicle/apc/med)
 "z" = (
@@ -229,7 +228,7 @@
 	anchored = 1
 	},
 /obj/structure/bed/roller,
-/obj/effect/landmark/interior/spawn/interior_viewport{
+/obj/effect/landmark/interior/spawn/interior_viewport/med{
 	pixel_x = -6;
 	pixel_y = 23
 	},
@@ -247,7 +246,7 @@
 "D" = (
 /obj/effect/decal/medical_decals/permanent{
 	icon_state = "docdecal1";
-	pixel_x = -5;
+	pixel_x = -12;
 	pixel_y = 16
 	},
 /turf/open/shuttle/vehicle{
@@ -309,18 +308,18 @@
 	name = "Right APC door";
 	tag = "right"
 	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
+/obj/effect/landmark/interior/spawn/interior_viewport/med{
 	dir = 8;
 	pixel_x = 5;
 	pixel_y = 1
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_12"
+	icon_state = "floor_1"
 	},
 /area/vehicle/apc/med)
 "L" = (
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_14"
+	icon_state = "floor_1"
 	},
 /area/vehicle/apc/med)
 "M" = (
@@ -344,16 +343,13 @@
 	icon_state = "triagedecaltop";
 	pixel_y = -2
 	},
-/obj/effect/decal/medical_decals/permanent{
-	icon_state = "triagedecalbottomright"
-	},
 /obj/effect/landmark/interior/spawn/interior_camera{
 	dir = 10;
 	pixel_x = -14;
 	pixel_y = 38
 	},
 /turf/open/shuttle/vehicle{
-	icon_state = "dark_sterile_green_13"
+	icon_state = "dark_sterile_green_7"
 	},
 /area/vehicle/apc/med)
 "P" = (
@@ -363,8 +359,15 @@
 /turf/open/void/vehicle,
 /area/space)
 "Q" = (
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalbottomright"
+	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecaltop";
+	pixel_y = -2
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_6"
+	icon_state = "dark_sterile_green_13"
 	},
 /area/vehicle/apc/med)
 "R" = (
@@ -380,8 +383,12 @@
 /turf/open/void/vehicle,
 /area/space)
 "T" = (
+/obj/effect/decal/medical_decals/permanent{
+	dir = 4;
+	icon_state = "triagedecaldir"
+	},
 /turf/open/shuttle/vehicle{
-	icon_state = "floor_1_3_3"
+	icon_state = "dark_sterile_green_8"
 	},
 /area/vehicle/apc/med)
 "U" = (
@@ -421,6 +428,17 @@
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
+	},
+/area/vehicle/apc/med)
+"X" = (
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalbottom"
+	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecaltopright"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "dark_sterile_green_14"
 	},
 /area/vehicle/apc/med)
 "Y" = (
@@ -478,7 +496,7 @@ P
 y
 Q
 T
-Q
+X
 K
 G
 "}

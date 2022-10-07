@@ -271,6 +271,26 @@
 
 	qdel(src)
 
+//This one spawns armored vehicles medical version of viewport that provides user with medhud
+/obj/effect/landmark/interior/spawn/interior_viewport/med
+	name = "armored vehicle MED viewport spawner"
+	icon = 'icons/obj/vehicles/interiors/general.dmi'
+	icon_state = "viewport_med"
+	layer = INTERIOR_DOOR_LAYER
+	color = "#00b872"
+
+/obj/effect/landmark/interior/spawn/interior_viewport/med/on_load(var/datum/interior/I)
+	var/obj/structure/interior_viewport/med/V = new(loc)
+
+	V.dir = dir
+	V.vehicle = I.exterior
+	V.pixel_x = pixel_x
+	V.pixel_y = pixel_y
+	V.alpha = alpha
+	V.update_icon()
+
+	qdel(src)
+
 //Landmark for spawning windows
 /obj/effect/landmark/interior/spawn/interior_viewport/simple
 	name = "simple vehicle viewport spawner"
@@ -306,5 +326,24 @@
 	V.pixel_y = pixel_y
 	V.alpha = alpha
 	V.icon = icon
+
+	qdel(src)
+
+//This one spawns armored vehicles version of medevac stretcher
+/obj/effect/landmark/interior/spawn/medevac
+	name = "medevac stretcher spawner"
+	icon = 'icons/obj/vehicles/interiors/apc.dmi'
+	icon_state = "stretcher_down"
+	color = "#af34ce"
+
+/obj/effect/landmark/interior/spawn/medevac/on_load(var/datum/interior/I)
+	var/obj/structure/bed/medevac_stretcher/vehicle/V = new(loc)
+
+	V.dir = dir
+	V.vehicle = I.exterior
+	V.pixel_x = pixel_x
+	V.pixel_y = pixel_y
+	V.alpha = alpha
+	V.update_icon()
 
 	qdel(src)

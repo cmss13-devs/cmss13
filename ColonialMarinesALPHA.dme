@@ -2078,6 +2078,7 @@
 #include "code\modules\vehicles\interior\interior_manager.dm"
 #include "code\modules\vehicles\interior\interactable\doors.dm"
 #include "code\modules\vehicles\interior\interactable\seats.dm"
+#include "code\modules\vehicles\interior\interactable\unique_interior_machinery.dm"
 #include "code\modules\vehicles\interior\interactable\vehicle_locker.dm"
 #include "code\modules\vehicles\interior\interactable\vendors.dm"
 #include "code\modules\vehicles\interior\interactable\viewports.dm"

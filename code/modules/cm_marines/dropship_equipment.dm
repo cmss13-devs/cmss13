@@ -855,7 +855,11 @@
 		return
 
 	if(!is_ground_level(selected_stretcher.z)) //in case the stretcher was on a groundside dropship that flew away during our input()
-		return
+		if(!istype(selected_stretcher, /obj/structure/bed/medevac_stretcher/vehicle))
+			return
+		var/obj/structure/bed/medevac_stretcher/vehicle/v_stretcher = selected_stretcher
+		if(!v_stretcher.vehicle || v_stretcher.vehicle.health < (initial(v_stretcher.vehicle.health) * 0.5) || !is_ground_level(v_stretcher.vehicle.z) || v_stretcher.vehicle.next_move > world.time)
+			return
 
 	if(!selected_stretcher.buckled_mob && !selected_stretcher.buckled_bodybag)
 		to_chat(user, SPAN_WARNING("This medevac stretcher is empty."))
@@ -897,9 +901,6 @@
 	linked_stretcher.linked_medevac = src
 	linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship overhead."))
 
-
-
-
 //on arrival we break any link
 /obj/structure/dropship_equipment/medevac_system/on_arrival()
 	if(linked_stretcher)
@@ -931,11 +932,12 @@
 		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
 		return
 
-	if(!is_ground_level(linked_stretcher.z))
-		linked_stretcher.linked_medevac = null
-		linked_stretcher = null
-		to_chat(user, SPAN_WARNING(" There seems to be no medevac stretcher connected to [src]."))
-		return
+	if(!is_ground_level(linked_stretcher.z)) //in case the stretcher was on a groundside dropship that flew away during our input()
+		if(!istype(linked_stretcher, /obj/structure/bed/medevac_stretcher/vehicle))
+			return
+		var/obj/structure/bed/medevac_stretcher/vehicle/v_stretcher = linked_stretcher
+		if(!v_stretcher.vehicle || v_stretcher.vehicle.health < (initial(v_stretcher.vehicle.health) * 0.5) || !is_ground_level(v_stretcher.vehicle.z) || v_stretcher.vehicle.next_move > world.time)
+			return
 
 	if(world.time < medevac_cooldown)
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
@@ -956,8 +958,16 @@
 
 	busy_winch = FALSE
 	var/fail
-	if(!linked_stretcher || linked_stretcher != old_stretcher || !is_ground_level(linked_stretcher.z))
+	if(!linked_stretcher || linked_stretcher != old_stretcher)
 		fail = TRUE
+
+	if(!is_ground_level(linked_stretcher.z)) //in case the stretcher was on a groundside dropship that flew away during our input()
+		if(istype(linked_stretcher, /obj/structure/bed/medevac_stretcher/vehicle))
+			var/obj/structure/bed/medevac_stretcher/vehicle/v_stretcher = linked_stretcher
+			if(!v_stretcher.vehicle || v_stretcher.vehicle.health < (initial(v_stretcher.vehicle.health) * 0.5) || !is_ground_level(v_stretcher.vehicle.z) || v_stretcher.vehicle.next_move > world.time)
+				fail = TRUE
+		else
+			fail = TRUE
 
 	else if(!ship_base) //uninstalled midway
 		fail = TRUE
@@ -980,7 +990,8 @@
 
 	if(lifted_object)
 		var/turf/T = get_turf(lifted_object)
-		T.ceiling_debris_check(2)
+		if(is_ground_level(lifted_object.z))
+			T.ceiling_debris_check(2)
 		lifted_object.forceMove(loc)
 	else
 		to_chat(user, SPAN_WARNING("The winch finishes lifting the medevac stretcher but it's empty!"))
@@ -991,8 +1002,11 @@
 	flick("winched_stretcher", linked_stretcher)
 	linked_stretcher.visible_message(SPAN_NOTICE("A winch hook falls from the sky and starts lifting [linked_stretcher] up."))
 
-	medevac_cooldown = world.time + 600
+	medevac_cooldown = world.time + DROPSHIP_MEDEVAC_COOLDOWN
+	linked_stretcher.stretcher_activated = FALSE
 	linked_stretcher.linked_medevac = null
+	activated_medevac_stretchers -= linked_stretcher
+	linked_stretcher.update_icon()
 	linked_stretcher = null
 
 // Fulton extraction system
@@ -1111,7 +1125,7 @@
 		to_chat(user, SPAN_WARNING("The winch finishes lifting the medevac stretcher but it's empty!"))
 		return
 
-	fulton_cooldown = world.time + 50
+	fulton_cooldown = world.time + DROPSHIP_FULTON_COOLDOWN
 
 // Rappel deployment system
 /obj/structure/dropship_equipment/rappel_system

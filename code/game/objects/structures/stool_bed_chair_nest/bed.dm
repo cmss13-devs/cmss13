@@ -301,6 +301,7 @@ var/global/list/activated_medevac_stretchers = list()
 	icon_state = "stretcher_down"
 	buckling_y = -1
 	foldabletype = /obj/item/roller/medevac
+	buildstacktype = null	//disables deconstructing with a wrench
 	base_bed_icon = "stretcher"
 	accepts_bodybag = TRUE
 	var/stretcher_activated

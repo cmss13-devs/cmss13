@@ -13,6 +13,8 @@
 	var/aimed_shot_cooldown
 	var/aimed_shot_cooldown_delay = 2.5 SECONDS
 
+	var/needs_skill = TRUE
+
 /obj/item/weapon/gun/rifle/sniper/Initialize(mapload, spawn_empty)
 	if(has_aimed_shot)
 		LAZYADD(actions_types, /datum/action/item_action/specialist/aimed_shot)
@@ -20,10 +22,14 @@
 
 /obj/item/weapon/gun/rifle/sniper/able_to_fire(mob/living/user)
 	. = ..()
-	if(. && istype(user)) //Let's check all that other stuff first.
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
-			return 0
+	if(. && istype(user) && !skill_check(user)) //Let's check all that other stuff first.
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+		return FALSE
+
+/obj/item/weapon/gun/rifle/sniper/proc/skill_check(var/mob/living/user)
+	if(needs_skill && !skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
+		return FALSE
+	return TRUE
 
 // Aimed shot ability
 /datum/action/item_action/specialist/aimed_shot
@@ -219,6 +225,21 @@
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
+
+/obj/item/weapon/gun/rifle/sniper/M42A/co
+	name = "\improper M42AC scoped rifle"
+	desc = "A heavy sniper rifle manufactured by Armat Systems. It has a scope system and fires armor penetrating rounds out of a 15-round magazine. This one comes in Regal Blue, indicating it belongs to a commanding officer. An inscription reads: 'Out of Sight, Into Mind'"
+	icon_state = "m42ac"
+	item_state = "m42ac"
+	map_specific_decoration = FALSE
+
+/obj/item/weapon/gun/rifle/sniper/M42A/co/skill_check(var/mob/living/user)
+	if(user.job == GET_DEFAULT_ROLE(JOB_CO))
+		return TRUE
+	return ..()
+
+/obj/item/weapon/gun/rifle/sniper/M42A/co/set_bullet_traits()
+	return
 
 /obj/item/weapon/gun/rifle/sniper/XM42B
 	name = "\improper XM42B experimental anti-materiel rifle"

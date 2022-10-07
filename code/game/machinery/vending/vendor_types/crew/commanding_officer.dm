@@ -4,13 +4,14 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("CAPTAIN'S PRIMARY (CHOOSE 1)", 0, null, null, null),
 		list("M46C pulse rifle", 0, /obj/item/weapon/gun/rifle/m46c, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 		list("M56C Smartgun", 0, /obj/item/storage/box/m56c_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("M42AC Scoped Rifle", 0, /obj/item/weapon/gun/rifle/sniper/M42A/co, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("M41A MK1 Magazine", 30, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_RECOMMENDED),
 		list("M41A MK1 AP Magazine", 40, /obj/item/ammo_magazine/rifle/m41aMK1/ap, null, VENDOR_ITEM_RECOMMENDED),
 		list("M41A Extended Magazine", 20, /obj/item/ammo_magazine/rifle/extended, null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine", 20, /obj/item/ammo_magazine/rifle/ap, null, VENDOR_ITEM_REGULAR),
-		list("M56B Smartgun Drum", 20, /obj/item/ammo_magazine/smartgun, null, VENDOR_ITEM_REGULAR),
+		list("M42A Marksman Magazine", 20, /obj/item/ammo_magazine/sniper, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("High Impact Mateba Speedloader (.454)", 20, /obj/item/ammo_magazine/revolver/mateba/highimpact, null, VENDOR_ITEM_REGULAR),
@@ -26,6 +27,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("SPECIAL AMMUNITION", 0, null, null, null),
 		list("M41A Incendiary Magazine", 65, /obj/item/ammo_magazine/rifle/incendiary, null, VENDOR_ITEM_REGULAR),
 		list("M41A Rubber Shot Magazine", 10, /obj/item/ammo_magazine/rifle/rubber, null, VENDOR_ITEM_REGULAR),
+		list("M42A Incendiary Magazine", 45, /obj/item/ammo_magazine/sniper/incendiary, null, VENDOR_ITEM_REGULAR),
+		list("M42A Flak Magazine", 30, /obj/item/ammo_magazine/sniper/flak, null, VENDOR_ITEM_REGULAR),
 		list("Beanbag Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag, null, VENDOR_ITEM_REGULAR),
 
 		list("RAIL ATTACHMENTS", 0, null, null, null),
@@ -37,6 +40,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("Laser Sight", 15, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
 		list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", 15, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
+		list("Bipod", 15, /obj/item/attachable/bipod, null, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Shotgun", 15, /obj/item/attachable/attached_gun/shotgun, null, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Extinguisher", 15, /obj/item/attachable/attached_gun/extinguisher, null, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Flamethrower", 15, /obj/item/attachable/attached_gun/flamer, null, VENDOR_ITEM_REGULAR),

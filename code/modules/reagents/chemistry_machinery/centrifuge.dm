@@ -152,47 +152,7 @@
 		if("attempt_connection")
 			connect_turing()
 			. = TRUE
-/*
-/obj/structure/machinery/centrifuge/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
-	var/list/data = list(
-		"mode" = centrifuge_mode,
-		"input_source" = input_source,
-		"label" = autolabel
-	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "centrifuge.tmpl", "Centrifuge Settings", 480, 200)
-		ui.set_initial_data(data)
-		ui.open()
-
-/obj/structure/machinery/centrifuge/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(inoperable() || !ishuman(usr))
-		return
-	var/mob/living/carbon/human/user = usr
-	if(user.stat || user.is_mob_restrained() || !in_range(src, user))
-		return
-
-	if(href_list["togglemode"])
-		centrifuge_mode = !centrifuge_mode
-	if(href_list["togglesource"])
-		if(input_source == INPUT_CONTAINER)
-			input_source = INPUT_TURING
-			if(!connected_turing)
-				connect_turing()
-		else if(input_source == INPUT_TURING)
-			input_source = INPUT_CONTAINER
-	if(href_list["setlabel"])
-		autolabel = reject_bad_text(input(user,"Label:","Enter label!", null) as text|null)
-
-	nanomanager.update_uis(src) // update all UIs attached to src
-	add_fingerprint(user)
-	attack_hand(usr)
-	return TRUE
-*/
 /obj/structure/machinery/centrifuge/process()
 	if(turing_ready() && (connected_turing.reagents.total_volume == 0 || connected_turing.status > 1))
 		if(connected_turing.reagents.total_volume == 0)

@@ -39,7 +39,7 @@
 			src.density = 0
 			src.destroyed = 1
 			new /obj/item/shard( src.loc )
-			playsound(src, "shatter", 25, 1)
+			playsound(src, "windowshatter", 25, 1)
 			update_icon()
 	else
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)

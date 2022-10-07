@@ -28,15 +28,15 @@
 	if (fixture_type == "bulb")
 		icon_state = "bulb-construct-stage1"
 
-/obj/structure/machinery/light_construct/examine(mob/user)
-	..()
+/obj/structure/machinery/light_construct/get_examine_text(mob/user)
+	. = ..()
 	switch(stage)
 		if(1)
-			to_chat(user, "It's an empty frame.")
+			. += "It's an empty frame."
 		if(2)
-			to_chat(user, "It's wired.")
+			. += "It's wired."
 		if(3)
-			to_chat(user, "The casing is closed.")
+			. += "The casing is closed."
 
 
 /obj/structure/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
@@ -303,7 +303,7 @@
 	update()
 
 // examine verb
-/obj/structure/machinery/light/examine(mob/user)
+/obj/structure/machinery/light/get_examine_text(mob/user)
 	..()
 	switch(status)
 		if(LIGHT_OK)
@@ -697,7 +697,7 @@
 		status = LIGHT_BROKEN
 		force = 5
 		sharp = IS_SHARP_ITEM_SIMPLE
-		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+		playsound(src.loc, "glassbreak", 25, 1)
 		update()
 
 /obj/structure/machinery/landinglight

@@ -215,28 +215,28 @@
 			to_chat(user, SPAN_WARNING("You were interrupted."))
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/examine(mob/user)
+/obj/item/prop/helmetgarb/helmet_nvg/get_examine_text(mob/user)
 	. = ..()
 
 	if(shape == NVG_SHAPE_BROKEN)
-		to_chat(user, "They appear to be broken. Maybe someone competent can fix them.")
+		. += "They appear to be broken. Maybe someone competent can fix them."
 	else
 
 		if(shape == NVG_SHAPE_PATCHED)
-			to_chat(user, "They are covered in scratches and have traces of a recent repair.")
+			. += "They are covered in scratches and have traces of a recent repair."
 
 		var/nvg_health_procent = nvg_health / nvg_maxhealth * 100
 		if(nvg_health_procent > 70)
-			to_chat(user, "They appear to be in good shape.")
+			. += "They appear to be in good shape."
 		else if(nvg_health_procent > 50)
-			to_chat(user, "They are visibly damaged.")
+			. += "They are visibly damaged."
 		else if(nvg_health_procent > 30)
-			to_chat(user, "It's unlikely they can sustain more damage.")
+			. += "It's unlikely they can sustain more damage."
 		else if(nvg_health_procent >= 0)
-			to_chat(user, "They are falling apart.")
+			. += "They are falling apart."
 
 	if (get_dist(user, src) <= 1 && (shape == NVG_SHAPE_FINE || shape == NVG_SHAPE_PATCHED))
-		to_chat(user, "A small gauge in the corner reads: Power: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
+		. += "A small gauge in the corner reads: Power: [round(100.0*nvg_charge/nvg_maxcharge) ]%."
 
 /obj/item/prop/helmetgarb/helmet_nvg/on_exit_storage(obj/item/storage/S)
 	remove_attached_item()
@@ -300,8 +300,8 @@
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/update_sight)
 
 	user.add_client_color_matrix("nvg", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#7aff7a")))
-	user.overlay_fullscreen("nvg", /obj/screen/fullscreen/flash/noise/nvg)
-	user.overlay_fullscreen("nvg_blur", /obj/screen/fullscreen/brute/nvg, 3)
+	user.overlay_fullscreen("nvg", /atom/movable/screen/fullscreen/flash/noise/nvg)
+	user.overlay_fullscreen("nvg_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
 	playsound(user, 'sound/handling/toggle_nv1.ogg', 25)
 	nightvision = TRUE
 	user.update_sight()

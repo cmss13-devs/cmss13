@@ -37,10 +37,10 @@
 
 	. = ..()
 
-/obj/effect/alien/resin/special/eggmorph/examine(mob/user)
-	..()
+/obj/effect/alien/resin/special/eggmorph/get_examine_text(mob/user)
+	. = ..()
 	if(isXeno(user) || isobserver(user))
-		to_chat(user, "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow.")
+		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow."
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/grab))
@@ -89,11 +89,11 @@
 				to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
 				return
 			if(user)
-				visible_message(SPAN_XENOWARNING("[user] slides [F] back into [src]."), \
-					SPAN_XENONOTICE("You place the child back into [src]."))
+				visible_message(SPAN_XENOWARNING("[user] slides [F] back into \the [src]."), \
+					SPAN_XENONOTICE("You place the child back into \the [src]."))
 				user.temp_drop_inv_item(F)
 			else
-				visible_message(SPAN_XENOWARNING("[F] crawls back into [src]!"))
+				visible_message(SPAN_XENOWARNING("[F] crawls back into \the [src]!"))
 			stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 			qdel(F)
 		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
@@ -125,11 +125,11 @@
 			visible_message(SPAN_DANGER("\The [src] groans as its contents are reduced to nothing!"))
 			vis_contents.Cut()
 
-			for(var/atom/movable/A in captured_mob.contents_recursive()) // Get rid of any unacidable objects so we don't delete them
-				if(isobj(A))
-					var/obj/O = A
-					if(O.unacidable)
-						O.forceMove(get_turf(loc))
+			for(var/atom/movable/A in captured_mob.contents_recursive()) // Get rid of any intel objects so we don't delete them
+				if(isitem(A))
+					var/obj/item/item = A
+					if(item.is_objective && item.unacidable)
+						item.forceMove(get_step(loc, pick(alldirs)))
 
 			QDEL_NULL(captured_mob)
 			update_icon()

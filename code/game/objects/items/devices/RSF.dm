@@ -16,9 +16,9 @@ RSF
 	var/mode = 1
 	w_class = SIZE_MEDIUM
 
-/obj/item/device/rsf/examine(mob/user)
-	..()
-	to_chat(user, "It currently holds [stored_matter]/30 fabrication-units.")
+/obj/item/device/rsf/get_examine_text(mob/user)
+	. = ..()
+	. += "It currently holds [stored_matter]/30 fabrication-units."
 
 /obj/item/device/rsf/attackby(obj/item/W, mob/user)
 	..()

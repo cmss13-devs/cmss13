@@ -35,7 +35,7 @@
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain/white, /obj/item/clothing/head/marine/peaked/captain/black)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit, /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey)
 
 /datum/equipment_preset/wo/commander/New()
 	. = ..()
@@ -127,7 +127,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 
-
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full, /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey)
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/cmp

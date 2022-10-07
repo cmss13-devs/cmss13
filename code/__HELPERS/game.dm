@@ -111,8 +111,6 @@
 			var/mob/M = A
 			if(M.client)
 				hear += M
-		else if(istype(A, /obj/item/device/radio))
-			hear += A
 		else if (istype(A, /obj/vehicle/multitile))
 			var/obj/vehicle/multitile/vehicle = A
 			for(var/mob/M in vehicle.get_passengers())
@@ -128,6 +126,23 @@
 			for (var/mob/M in A)
 				if (M.client)
 					hear += M
+	return hear
+
+///only gets FUNCTIONING radios
+/proc/get_radios_in_view(var/R, var/atom/source)
+	var/turf/T = get_turf(source)
+	var/list/hear = list()
+
+	if(!T)
+		return hear
+
+	var/list/range = hear(R, T)
+
+	for(var/atom/A in range)
+		if(istype(A, /obj/item/device/radio))
+			var/obj/item/device/radio/radio = A
+			if(radio.on && radio.listening)
+				hear += A
 	return hear
 
 /proc/get_mobs_in_radio_ranges(var/list/obj/item/device/radio/radios)
@@ -304,5 +319,16 @@ proc/isInSight(var/atom/A, var/atom/B)
 			window_flash(C)
 
 /// Removes an image from a client's `.images`. Useful as a callback.
-/proc/remove_image_from_client(image/image, client/remove_from)
-	remove_from?.images -= image
+/proc/remove_image_from_client(image/image_to_remove, client/remove_from)
+	remove_from?.images -= image_to_remove
+
+///Like remove_image_from_client, but will remove the image from a list of clients
+/proc/remove_images_from_clients(image/image_to_remove, list/show_to)
+	for(var/client/remove_from in show_to)
+		remove_from.images -= image_to_remove
+
+///Add an image to a list of clients and calls a proc to remove it after a duration
+/proc/flick_overlay_to_clients(image/image_to_show, list/show_to, duration)
+	for(var/client/add_to in show_to)
+		add_to.images += image_to_show
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_images_from_clients, image_to_show, show_to), duration, TIMER_CLIENT_TIME)

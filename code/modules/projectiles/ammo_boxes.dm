@@ -89,35 +89,36 @@
 		overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
 	if(overlay_ammo_type)
 		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]")	//adding base color stripes
+	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank")
 		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	//adding base color stripes
 
 //---------------------INTERACTION PROCS
 
-/obj/item/ammo_box/magazine/examine(mob/living/user)
-	..()
-	to_chat(user, SPAN_INFO("[SPAN_HELPFUL("Activate")] box in hand or [SPAN_HELPFUL("click")] with it on the ground to deploy it. Activating it while empty will fold it into cardboard sheet."))
+/obj/item/ammo_box/magazine/get_examine_text(mob/living/user)
+	. = ..()
+	. += SPAN_INFO("[SPAN_HELPFUL("Activate")] box in hand or [SPAN_HELPFUL("click")] with it on the ground to deploy it. Activating it while empty will fold it into cardboard sheet.")
 	if(src.loc != user)		//feeling box weight in a distance is unnatural and bad
 		return
 	if(!handfuls)
 		if(contents.len < (num_of_magazines/3))
-			to_chat(user, SPAN_INFO("It feels almost empty."))
+			. += SPAN_INFO("It feels almost empty.")
 			return
 		if(contents.len < ((num_of_magazines*2)/3))
-			to_chat(user, SPAN_INFO("It feels about half full."))
+			. += SPAN_INFO("It feels about half full.")
 			return
-		to_chat(user, SPAN_INFO("It feels almost full."))
+		. += SPAN_INFO("It feels almost full.")
 	else
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 		if(AM)
 			if(AM.current_rounds < (AM.max_rounds/3))
-				to_chat(user, SPAN_INFO("It feels almost empty."))
+				. += SPAN_INFO("It feels almost empty.")
 				return
 			if(AM.current_rounds < ((AM.max_rounds*2)/3))
-				to_chat(user, SPAN_INFO("It feels about half full."))
+				. += SPAN_INFO("It feels about half full.")
 				return
-			to_chat(user, SPAN_INFO("It feels almost full."))
+			. += SPAN_INFO("It feels almost full.")
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		. += SPAN_DANGER("It's on fire and might explode!")
 
 /obj/item/ammo_box/magazine/attack_self(mob/living/user)
 	..()
@@ -769,7 +770,7 @@
 		item_box = null
 		qdel(src)
 
-/obj/structure/magazine_box/examine(mob/user)
+/obj/structure/magazine_box/get_examine_text(mob/user)
 	..()
 	if(get_dist(src,user) > 2 && !isobserver(user))
 		return
@@ -934,7 +935,7 @@
 
 //---------------------INTERACTION PROCS
 
-/obj/item/ammo_box/rounds/examine(mob/user)
+/obj/item/ammo_box/rounds/get_examine_text(mob/user)
 	..()
 	to_chat(user, SPAN_INFO("To refill a magazine click on the box with it in your hand. Being on [SPAN_HELPFUL("HARM")] intent will fill box from the magazine."))
 	if(bullet_amount)

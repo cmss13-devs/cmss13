@@ -83,6 +83,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_STOWAWAY					"Stowaway"
 
+#define JOB_COLONEL						"USCM Colonel"
 #define JOB_GENERAL						"USCM General"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
@@ -221,6 +222,12 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PROVOST_CMARSHAL			"Provost Chief Marshal"
 
 #define PROVOST_JOB_LIST				list(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
+
+//-------- UAAC --------//
+#define JOB_TIS_IO						"UAAC-TIS Intelligence Officer"
+#define JOB_TIS_SA						"UAAC-TIS Special Agent"
+
+#define TIS_JOB_LIST					list(JOB_TIS_SA, JOB_TIS_IO)
 
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"

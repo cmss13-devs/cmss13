@@ -3,7 +3,8 @@
 	desc = "A military-issued pair of binoculars."
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "binoculars"
-
+	pickupsound = 'sound/handling/wirecutter_pickup.ogg'
+	dropsound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	force = 5.0
 	w_class = SIZE_SMALL
@@ -64,9 +65,9 @@
 /obj/item/device/binoculars/range/update_icon()
 	overlays += "laser_range"
 
-/obj/item/device/binoculars/range/examine()
-	..()
-	to_chat(usr, SPAN_NOTICE(FONT_SIZE_LARGE("The rangefinder reads: LONGITUDE [last_x], LATITUDE [last_y].")))
+/obj/item/device/binoculars/range/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE(FONT_SIZE_LARGE("The rangefinder reads: LONGITUDE [last_x], LATITUDE [last_y]."))
 
 /obj/item/device/binoculars/range/verb/toggle_rangefinder_popup()
 	set name = "Toggle Rangefinder Display"
@@ -206,10 +207,10 @@
 	else
 		overlays += "laser_cas"
 
-/obj/item/device/binoculars/range/designator/examine()
-	..()
-	to_chat(usr, SPAN_NOTICE("Tracking ID for CAS: [tracking_id]."))
-	to_chat(usr, SPAN_NOTICE("[src] is currently set to [mode ? "range finder" : "CAS marking"] mode."))
+/obj/item/device/binoculars/range/designator/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Tracking ID for CAS: [tracking_id].")
+	. += SPAN_NOTICE("[src] is currently set to [mode ? "range finder" : "CAS marking"] mode.")
 
 /obj/item/device/binoculars/range/designator/clicked(mob/user, list/mods)
 	if(!ishuman(usr))
@@ -518,7 +519,7 @@
 	return
 
 /obj/item/device/binoculars/designator/proc/lasering(var/mob/living/carbon/human/user, var/atom/A, var/params)
-	if(istype(A,/obj/screen))
+	if(istype(A,/atom/movable/screen))
 		return FALSE
 	if(user.stat)
 		zoom(user)

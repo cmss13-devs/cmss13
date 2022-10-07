@@ -65,9 +65,11 @@
 			overlays += I
 
 
-/turf/open/examine(mob/user)
-	..()
-	ceiling_desc(user)
+/turf/open/get_examine_text(mob/user)
+	. = ..()
+	var/ceiling_info = ceiling_desc(user)
+	if(ceiling_info)
+		. += ceiling_info
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void

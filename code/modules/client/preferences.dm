@@ -25,10 +25,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 /datum/preferences
 	var/client/owner
-	var/obj/screen/preview/preview_front
+	var/atom/movable/screen/preview/preview_front
 	var/mob/living/carbon/human/dummy/preview_dummy
-	var/obj/screen/rotate/alt/rotate_left
-	var/obj/screen/rotate/rotate_right
+	var/atom/movable/screen/rotate/alt/rotate_left
+	var/atom/movable/screen/rotate/rotate_right
 
 	//doohickeys for savefiles
 	var/path
@@ -1248,7 +1248,13 @@ var/const/MAX_SAVE_SLOTS = 10
 							switch(ascii_char)
 								// A  .. Z
 								if(65 to 90)			//Uppercase Letters will work on first char
-									if(!first_char)
+
+									if(length(xeno_prefix)!=2)
+										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
+										return
+
+									if(!first_char && playtime < 300 HOURS)
+										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [time_left_until(300 HOURS, playtime, 1 HOURS)] more hours to unlock double letter xeno postfix.")))
 										all_ok = FALSE
 								// 0  .. 9
 								if(48 to 57)			//Numbers will work if not the first char

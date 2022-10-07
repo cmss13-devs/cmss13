@@ -36,6 +36,7 @@
 	var/locate_setting = TRACKER_SL
 	var/misc_tracking = FALSE
 	var/hud_type = MOB_HUD_FACTION_USCM
+	var/default_freq
 
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
@@ -51,6 +52,11 @@
 		headset_hud_on = TRUE
 		verbs += /obj/item/device/radio/headset/proc/toggle_squadhud
 		verbs += /obj/item/device/radio/headset/proc/switch_tracker_target
+
+	if(frequency)
+		for(var/cycled_channel in radiochannels)
+			if(radiochannels[cycled_channel] == frequency)
+				default_freq = cycled_channel
 
 /obj/item/device/radio/headset/proc/set_volume_setting()
 	set name = "Set Headset Volume"
@@ -80,6 +86,9 @@
 			hivemind.broadcast(M, message)
 		return null
 
+	if(default_freq && channel == default_freq)
+		return radio_connection
+
 	return ..()
 
 /obj/item/device/radio/headset/attack_self(mob/user as mob)
@@ -107,7 +116,7 @@
 /obj/item/device/radio/headset/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
 		return ..()
-	if(!istype(over_object, /obj/screen))
+	if(!istype(over_object, /atom/movable/screen))
 		return ..()
 	if(loc != usr) //Makes sure that the headset is equipped, so that we can't drag it into our hand from miles away.
 		return ..()
@@ -200,6 +209,13 @@
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 	SStgui.update_uis(src)
+
+/obj/item/device/radio/headset/set_frequency(new_frequency)
+	..()
+	if(frequency)
+		for(var/cycled_channel in radiochannels)
+			if(radiochannels[cycled_channel] == frequency)
+				default_freq = cycled_channel
 
 /obj/item/device/radio/headset/equipped(mob/living/carbon/human/user, slot)
 	. = ..()

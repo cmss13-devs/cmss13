@@ -243,7 +243,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		sleep(100)
 		/*Hardcoded for now, since this was never really used for anything else.
 		Would ideally use a better system for showing cutscenes.*/
-		var/obj/screen/cinematic/explosion/C = new
+		var/atom/movable/screen/cinematic/explosion/C = new
 
 		if(play_anim)
 			for(M in L1 + L2)

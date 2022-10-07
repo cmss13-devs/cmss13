@@ -181,7 +181,7 @@
 	desc = "A uniform worn by vehicle crewmen of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "marine_tanker"
 	worn_state = "marine_tanker"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/tanker)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/tanker, /obj/item/clothing/suit/storage/jacket/marine/service/tanker)
 	specialty = "vehicle crewman"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	item_state_slots = list(WEAR_BODY = "marine_tanker")
@@ -383,6 +383,33 @@
 /obj/item/clothing/under/marine/mp/provost/marshal/chief
 	name = "\improper Provost Chief Marshal Uniform"
 	desc = "The crisp uniform of the Provost Chief Marshal."
+
+//==================//UNITED AMERICAS ALLIED COMMAND\\===================\\
+//=======================================================================\\
+
+/obj/item/clothing/under/uaac/tis
+	name = "\improper UAAC-TIS Special Agent Uniform"
+	desc = "A modified USCM Provost uniform, with its original insigna replaced by those of the UAAC-TIS Intelligence Service. TIS Special Agents are often recruited from the upper echelons of law enforcement agencies in various UA armed forces. These recruits often take all their gear, uniform included with them and later modify them to include TIS and UAAC insignia."
+	flags_jumpsuit = FALSE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	siemens_coefficient = 0.9
+	icon_state = "tis"
+	worn_state = "tis"
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/under/uaac/tis/io
+	name = "\improper UAAC-TIS Intelligence Officer uniform"
+	desc = "Originally a USCM officer uniform, all insignia have been carefully removed and replaced by a simple TIS pin worn over the right breast. Like their Special Agent counterpats, TIS Intel Officers are typically transplants from UA aligned armed forces, often initially recruited on a temporariy basis then transferred permanently. As such, officers are often forced to adapt their original uniforms."
+	icon_state = "BO_jumpsuit"
+	worn_state = "BO_jumpsuit"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\

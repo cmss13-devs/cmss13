@@ -938,6 +938,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_STOWAWAY = 999,
 
 				// 200-229: Centcom
+				JOB_COLONEL = 200,
 				JOB_GENERAL = 200,
 				JOB_MARSOC_CMD = 210,
 				JOB_MARSOC_SL = 210,

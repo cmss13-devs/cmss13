@@ -160,9 +160,9 @@
 	return
 
 
-/obj/item/wrapping_paper/examine(mob/user)
-	..()
-	to_chat(user, "There is about [amount] square units of paper left!")
+/obj/item/wrapping_paper/get_examine_text(mob/user)
+	. = ..()
+	. += "There is about [amount] square units of paper left!"
 
 
 /obj/item/wrapping_paper/attack(mob/target as mob, mob/user as mob)

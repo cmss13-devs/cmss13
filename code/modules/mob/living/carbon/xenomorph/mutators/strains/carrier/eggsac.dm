@@ -6,10 +6,12 @@
 	caste_whitelist = list(XENO_CASTE_CARRIER)
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/throw_hugger,
-		/datum/action/xeno_action/onclick/place_trap
+		/datum/action/xeno_action/onclick/place_trap,
+		/datum/action/xeno_action/activable/retrieve_egg // readding it so it gets at the end of the ability list
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/generate_egg
+		/datum/action/xeno_action/activable/generate_egg,
+		/datum/action/xeno_action/activable/retrieve_egg // readding it so it gets at the end of the ability list
 	)
 	keystone = TRUE
 
@@ -41,6 +43,7 @@
 	cooldown_message = "You are ready to form another egg."
 	action_type = XENO_ACTION_ACTIVATE
 	plasma_cost = XENO_PLASMA_TIER_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/generate_egg/can_use_action()
 	if(!owner)

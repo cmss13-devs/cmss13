@@ -246,9 +246,7 @@
 	. = ..()
 
 /obj/structure/machinery/light/proc/is_broken()
-	if(status == LIGHT_BROKEN)
-		return 1
-	return 0
+	return status == LIGHT_BROKEN
 
 /obj/structure/machinery/light/update_icon()
 
@@ -592,6 +590,14 @@
 		explosion(T, 0, 0, 2, 2)
 		sleep(1)
 		qdel(src)
+
+/obj/structure/machinery/light/handle_tail_stab(var/mob/living/carbon/Xenomorph/stabbing_xeno)
+	if(is_broken())
+		to_chat(stabbing_xeno, SPAN_WARNING("\The [src] is already broken!"))
+		return
+	stabbing_xeno.visible_message(SPAN_DANGER("\The [stabbing_xeno] smashes \the [src] with its tail!"), SPAN_DANGER("You smash \the [src] with your tail!"), null, 5)
+	broken() //Smashola!
+	return TAILSTAB_COOLDOWN_VERY_LOW
 
 // the light item
 // can be tube or bulb subtypes

@@ -162,3 +162,18 @@
 	var/mob/living/carbon/Xenomorph/xeno = user.mob
 	xeno.xeno_screech_action()
 	return TRUE
+
+/datum/keybinding/xenomorph/tail_stab
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "tail_stab"
+	full_name = "Tail Stab"
+	keybind_signal = COMSIG_KB_TAIL_STAB
+
+/datum/keybinding/xenomorph/tail_stab/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	xeno.xeno_tail_stab_action()
+	return TRUE

@@ -3283,9 +3283,10 @@
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/upper_medical)
 "ajm" = (
+/obj/item/storage/box/kit/honorguard,
+/obj/item/storage/box/kit/honorguard,
+/obj/item/storage/box/kit/mini_jtac,
 /obj/structure/closet/secure_closet/securecom,
-/obj/item/storage/box/kit/honorguard,
-/obj/item/storage/box/kit/honorguard,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -12871,6 +12872,9 @@
 /area/almayer/hull/upper_hull/u_m_p)
 "aKE" = (
 /obj/structure/machinery/light,
+/obj/item/clothing/suit/storage/jacket/marine/service/tanker,
+/obj/item/clothing/head/helmet/marine/tanker,
+/obj/structure/coatrack,
 /turf/open/floor/almayer,
 /area/almayer/living/numbertwobunks)
 "aKF" = (
@@ -24141,15 +24145,7 @@
 	},
 /area/almayer/living/cryo_cells)
 "bCO" = (
-/obj/item/tool/kitchen/tray{
-	layer = 2.9
-	},
-/obj/item/reagent_container/food/snacks/carpmeat{
-	layer = 3.3
-	},
-/obj/item/reagent_container/food/snacks/carpmeat{
-	layer = 3.3
-	},
+/obj/structure/coatrack,
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "bCP" = (
@@ -25767,10 +25763,10 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/navigation)
 "bIz" = (
-/mob/living/simple_animal/cat/Jones{
-	dir = 8
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = 25
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "bIA" = (
 /obj/structure/sink{
@@ -44269,6 +44265,18 @@
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/almayer/medical/containment)
+"gAW" = (
+/obj/item/reagent_container/food/snacks/carpmeat{
+	layer = 3.3
+	},
+/obj/item/tool/kitchen/tray{
+	layer = 2.9
+	},
+/obj/item/reagent_container/food/snacks/carpmeat{
+	layer = 3.3
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/living/commandbunks)
 "gBc" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -76444,6 +76452,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
+"uRJ" = (
+/obj/structure/bedsheetbin,
+/mob/living/simple_animal/cat/Jones{
+	dir = 8
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/living/commandbunks)
 "uRM" = (
 /obj/structure/bed{
 	can_buckle = 0
@@ -103707,8 +103722,8 @@ agj
 agj
 aew
 bCO
-hvH
-hvH
+gAW
+uRJ
 hvH
 kcN
 cod
@@ -103909,7 +103924,7 @@ avl
 agj
 yeo
 agc
-bIz
+agc
 agc
 hvH
 lQq
@@ -104517,7 +104532,7 @@ hCo
 lIh
 agj
 kFk
-hvH
+bIz
 hvH
 hvH
 ahZ

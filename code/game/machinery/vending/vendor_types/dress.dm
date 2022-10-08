@@ -79,7 +79,7 @@
 				)
 	return display_list
 
-/obj/structure/machinery/cm_vending/clothing/ui_data(mob/user)
+/obj/structure/machinery/cm_vending/clothing/dress/ui_data(mob/user)
 
 	var/mob/living/carbon/human/H = user
 	var/obj/item/card/id/I = H.wear_id
@@ -90,8 +90,6 @@
 	var/list/data = list()
 	var/list/ui_listed_products = get_listed_products(user)
 	var/list/stock_values = list()
-
-	var/buy_flags = NO_FLAGS
 	for (var/i in 1 to length(ui_listed_products))
 		var/prod_available = TRUE
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products

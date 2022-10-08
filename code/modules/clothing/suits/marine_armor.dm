@@ -443,7 +443,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.
 /obj/item/clothing/suit/storage/marine/MP/CO
-	name = "\improper M3 pattern captain armor"
+	name = "\improper M3 pattern commanding officer armor"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge."
 	icon_state = "co_officer"
 	item_state = "co_officer"
@@ -458,7 +458,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 
 /obj/item/clothing/suit/storage/marine/MP/CO/jacket
-	name = "\improper M3 pattern captain armored coat"
+	name = "\improper M3 pattern commanding officer armored coat"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge. This one has a coat over it for added warmth."
 	icon_state = "bridge_coat_armored"
 	item_state = "bridge_coat_armored"

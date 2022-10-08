@@ -107,13 +107,12 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/service/tanker
 	name = "Tanker Jacket"
-	desc = "A sturdy jacket issued to USCM Vehicle crewmen"
+	desc = "A sturdy jacket based on a WW2 design, and issued to USCM Vehicle crewmen. Its Faux leather construction is rather stain repelent in the greasy interior of heavy machinery or cramped Maintnence tunnels"
 	has_buttons = TRUE
 	flags_atom = NO_SNOW_TYPE
 	icon_state = "jacket_tanker"
 	initial_icon_state = "jacket_tanker"
 	storage_slots = 2
-	armor_bomb = CLOTHING_ARMOR_HIGH
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/jacket/marine/chef
@@ -152,24 +151,24 @@
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
-	name = "Major's bomber jacket"
+	name = "Commanding Officer's bomber jacket"
 	desc = "A bomber jacket resembling those worn by airmen of old. A classic, stylish choice for those in the higher ranks."
 	has_buttons = TRUE
 	icon_state = "co_bomber"
 	initial_icon_state = "co_bomber"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/white
-	name = "Major's white dress jacket"
+	name = "Commanding Officer's white dress jacket"
 	desc = "A white dress tunic for hot-weather parades. Bright, unstained, and immaculate with gold accents."
 	icon_state = "co_formal_white"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black
-	name = "Major's gray dress jacket"
+	name = "Commanding Officer's gray dress jacket"
 	desc = "A gray dress tunic for those occasions that mandate darker, more subdued colors. Combines sleek and subdued with gold accents."
 	icon_state = "co_formal_black"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit
-	name = "Major's dress blue coat"
+	name = "Commanding Officer's dress blue coat"
 	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
 	icon_state = "co_suit"
 
@@ -194,8 +193,8 @@
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a Director. Has quite a few pockets."
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat
-	name = "Bridge Coat"
-	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is a Dressy Blue for a Commanding officer"
+	name = "Commanding Officer's Bridge Coat"
+	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical Navy design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is a Dressy Blue for a Commanding officer."
 	item_state = "bridge_coat"
 	icon_state = "bridge_coat"
 	storage_slots = 4
@@ -203,7 +202,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey
 	name = "Bridge Coat"
-	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is Black."
+	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical Navy design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is Navy Blue."
 	item_state = "bridge_coat_grey"
 	icon_state = "bridge_coat_grey"
 	storage_slots = 4

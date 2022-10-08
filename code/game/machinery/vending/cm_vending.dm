@@ -106,14 +106,12 @@ IN_USE						used for vending/denying
 		if(filename)
 			dyn.update(filename)
 
-/obj/structure/machinery/cm_vending/proc/build_icons(var/list/items)
+/obj/structure/machinery/cm_vending/proc/build_icons(var/list/items, var/name_index=1, var/type_index=3)
 	for (var/list/item in items)
 		// initial item count setup
-		var/item_name = item[1]
-		var/initial_count = item[2]
-		initial_product_count[item_name] = initial_count
+		var/item_name = item[name_index]
 		// icon setup
-		var/typepath = item[3]
+		var/typepath = item[type_index]
 		if (item_name == null || item_name == "" || typepath == null)
 			continue
 
@@ -534,6 +532,13 @@ IN_USE						used for vending/denying
 	update_icon()
 	return
 
+//-----------TGUI PROCS------------------------
+/obj/structure/machinery/cm_vending/ui_static_data(mob/user)
+	var/list/data = list()
+	data["vendor_name"] = name
+	data["theme"] = vendor_theme
+	return data
+
 //------------GEAR VENDORS---------------
 //for special role-related gear
 
@@ -695,6 +700,11 @@ IN_USE						used for vending/denying
 	vendor_theme = VENDOR_THEME_USCM
 	show_points = FALSE
 
+/obj/structure/machinery/cm_vending/clothing/Initialize()
+	. = ..()
+	build_icons(get_listed_products(), 1, 3)
+	preload_assets()
+
 /obj/structure/machinery/cm_vending/clothing/Topic(href, href_list)
 	. = ..()
 	if(.)
@@ -834,6 +844,138 @@ IN_USE						used for vending/denying
 	stat &= ~IN_USE
 	update_icon()
 	return
+
+/obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
+	var/list/data = ..(user)
+	// list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+	var/list/ui_listed_products = get_listed_products(user)
+
+	var/list/ui_categories = list()
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+
+		var/p_name = myprod[1]					//taking it's name
+		var/p_cost = myprod[2]
+		var/item_ref = myprod[3]
+		var/priority = myprod[5]
+
+		var/result = list()
+		result["href"] = ""
+		result["desc"] = ""
+		if (p_name in product_icon_list)
+			result = product_icon_list[p_name]
+
+		var/is_category = item_ref == null
+
+		//forming new list with index, name, amount, available or not, color and add it to display_list
+		var/display_item = list(
+			"prod_index" = i,
+			"prod_name" = p_name,
+			"prod_available" = TRUE,
+			"prod_color" = priority,
+			"prod_initial" = 0,
+			"prod_icon" = result,
+			"prod_desc" = result["desc"],
+			"prod_cost" = p_cost
+		)
+
+		if (is_category == 1)
+			ui_categories += list(list(
+				"name" = p_name,
+				"items" = list()
+			))
+			continue
+
+		if (!LAZYLEN(ui_categories))
+			ui_categories += list(list(
+				"name" = "",
+				"items" = list()
+			))
+		var/last_index = LAZYLEN(ui_categories)
+		var/last_category = ui_categories[last_index]
+		last_category["items"] += list(display_item)
+	data["displayed_categories"] = ui_categories
+	return data
+
+/obj/structure/machinery/cm_vending/clothing/ui_data(mob/user)
+	var/list/data = list()
+
+	var/list/ui_listed_products = get_listed_products(user)
+	// list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+
+	var/list/stock_values = list()
+
+	var/mob/living/carbon/human/H = user
+	var/buy_flags = NO_FLAGS
+	if(use_snowflake_points)
+		available_points_to_display = H.marine_snowflake_points
+	else if(use_points)
+		available_points_to_display = H.marine_points
+	buy_flags = H.marine_buy_flags
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/prod_available = FALSE
+		var/p_cost = myprod[2]
+		var/avail_flag = myprod[4]
+		if(available_points_to_display >= p_cost && (!avail_flag || buy_flags & avail_flag))
+			prod_available = TRUE
+		stock_values += list(prod_available)
+
+
+	data["stock_listing"] = stock_values
+	data["show_points"] = FALSE
+	data["current_m_points"] = available_points_to_display
+	return data
+
+/obj/structure/machinery/cm_vending/clothing/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "VendingSorted", name)
+		ui.open()
+
+/obj/structure/machinery/cm_vending/clothing/attack_hand(mob/user)
+	if(stat & TIPPED_OVER)
+		if(user.action_busy)
+			return
+		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
+		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			flip_back()
+		return
+
+	if(inoperable())
+		return
+
+	if(user.client && user.client.remote_control)
+		tgui_interact(user)
+		return
+
+	if(!ishuman(user))
+		vend_fail()
+		return
+
+	var/has_access = can_access_to_vend(user)
+	if (!has_access)
+		return
+
+	user.set_interaction(src)
+	tgui_interact(user)
+
 
 //------------SORTED VENDORS---------------
 //22.06.2019 Modified ex-"marine_selector" system that doesn't use points by Jeser. In theory, should replace all vendors.
@@ -983,9 +1125,7 @@ IN_USE						used for vending/denying
 	tgui_interact(user)
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
-	var/list/data = list()
-	data["vendor_name"] = name
-	data["theme"] = vendor_theme
+	var/list/data = ..(user)
 
 	var/list/ui_listed_products = get_listed_products(user)
 
@@ -1016,7 +1156,7 @@ IN_USE						used for vending/denying
 			"prod_initial" = initial_amount,
 			"prod_icon" = result,
 			"prod_desc" = result["desc"],
-			"has_cost" = FALSE
+			"prod_cost" = 0
 		)
 
 		if (is_category == 1)

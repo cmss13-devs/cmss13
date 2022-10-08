@@ -85,6 +85,9 @@
 2022-10-08:
   CLF Guerrilla:
   - bugfix: Added terminals to the SMES on Kutjevo
+  Geevies:
+  - rscdel: The bridge coats for CIC is no longer accessible without admins spawning
+      it in. Tanker jackets no longer have blast armor.
   Unknownity:
   - bugfix: Fixed burrowers being able to burrow and tunnel to the Solaris Ridge secret
       room.

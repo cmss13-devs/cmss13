@@ -163,12 +163,12 @@
 	icon_state = "co_formal_white"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black
-	name = "Commanding Officer's gray dress jacket"
+	name = "commanding Officer's gray dress jacket"
 	desc = "A gray dress tunic for those occasions that mandate darker, more subdued colors. Combines sleek and subdued with gold accents."
 	icon_state = "co_formal_black"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit
-	name = "Commanding Officer's dress blue coat"
+	name = "commanding officer's dress blue coat"
 	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
 	icon_state = "co_suit"
 
@@ -193,7 +193,7 @@
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a Director. Has quite a few pockets."
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat
-	name = "Commanding Officer's Bridge Coat"
+	name = "commanding officer's Bridge Coat"
 	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical Navy design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is a Dressy Blue for a Commanding officer."
 	item_state = "bridge_coat"
 	icon_state = "bridge_coat"
@@ -201,7 +201,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey
-	name = "Bridge Coat"
+	name = "bridge Coat"
 	desc = "A heavy synthetic woolen coat issued to USCM Officers. Based on a classical Navy design this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world. This one is Navy Blue."
 	item_state = "bridge_coat_grey"
 	icon_state = "bridge_coat_grey"

@@ -868,6 +868,8 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/do_pickup_animation(atom/target)
 	if(!istype(loc, /turf))
 		return
+	if(target.loc == src.loc)
+		return
 	var/image/pickup_animation = image(icon = src, loc = loc, layer = layer + 0.1)
 	pickup_animation.plane = GAME_PLANE
 	pickup_animation.transform.Scale(0.75)

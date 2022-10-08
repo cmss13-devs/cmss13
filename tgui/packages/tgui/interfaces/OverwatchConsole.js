@@ -15,10 +15,8 @@ import {
   Box,
   Dropdown,
   ColorBox,
-  ByondUi,
 } from '../components';
 import { Window } from '../layouts';
-import { Fragment } from 'inferno';
 
 import { createLogger } from '../logging';
 const logger = createLogger('Overwatch');
@@ -47,8 +45,8 @@ export const OverwatchMain = (props, context) => {
   const [currentControlCategory] = useLocalState(
     context,
     'current_control_category',
-    1);
-
+    1
+  );
 
   return (
     <>
@@ -80,7 +78,7 @@ export const OverwatchMain = (props, context) => {
               </Stack.Item>
             </Stack>
           </Stack.Item>
-          <Stack.Item width="100%">
+          <Stack.Item>
             <OverwatchMonitor />
           </Stack.Item>
         </Stack>
@@ -126,23 +124,6 @@ export const OverwatchTab = (props, context) => {
   );
 };
 
-
-export const OverwatchCamera = (props, context) => {
-  const { act, data } = useBackend(context);
-  return (
-    <Section title="Camera" fill height="48em" position="absolute" width="45.7em">
-      <ByondUi
-        className="CameraConsole__map"
-        params={{
-          id: data.mapRef,
-          type: 'map',
-        }}
-        mt="-1.5em"
-        width="44.5em" />
-    </Section>
-  );
-};
-
 export const OverwatchDrop = (props, context) => {
   const { act, data } = useBackend(context);
   const [currentCategory, setCategory] = useLocalState(
@@ -152,7 +133,8 @@ export const OverwatchDrop = (props, context) => {
   );
 
   return (
-    <Section title={currentCategory === 1 ? "Supply Drop" : "Orbital Bombardment"}>
+    <Section
+      title={currentCategory === 1 ? 'Supply Drop' : 'Orbital Bombardment'}>
       <Stack>
         <Stack.Item grow>
           <Button
@@ -269,9 +251,9 @@ export const OverwatchSelect = (props, context) => {
 
 export const OverwatchSquad = (props, context) => {
   const { act, data } = useBackend(context);
-  const { squad_data, marinelist } = data;
+  const { squad_data, marine_list } = data;
 
-  const marine_list_keys = Object.keys(marinelist);
+  const marine_list_keys = Object.keys(marine_list);
 
   return (
     <Section title={squad_data.squad_name}>
@@ -310,7 +292,7 @@ export const OverwatchSquad = (props, context) => {
                 : 'Assign Squad Leader'
             }
             onSelected={(value) =>
-              act('change_lead', { marine_picked: marinelist[value].ref })}
+              act('change_lead', { marine_picked: marine_list[value].ref })}
             selected="Select"
             noscroll
             lineHeight="1.5em"
@@ -391,7 +373,11 @@ export const OverwatchSquad = (props, context) => {
           />
         </Stack.Item>
         <Stack.Item width="25%">
-          <Stack direction="column" wrap="wrap" justify="space-between" height="100%">
+          <Stack
+            direction="column"
+            wrap="wrap"
+            justify="space-between"
+            height="100%">
             <Stack.Item>
               <Dropdown
                 options={marine_list_keys}
@@ -400,7 +386,7 @@ export const OverwatchSquad = (props, context) => {
                 nochevron
                 onSelected={(value) =>
                   act('insubordination', {
-                    marine_picked: marinelist[value].ref,
+                    marine_picked: marine_list[value].ref,
                   })}
                 noscroll
                 width="100%"
@@ -417,7 +403,7 @@ export const OverwatchSquad = (props, context) => {
                 nochevron
                 ml="-0.5em"
                 onSelected={(value) =>
-                  act('camera_view', { marine_picked: marinelist[value].ref })}
+                  act('camera_view', { marine_picked: marine_list[value].ref })}
                 noscroll
                 width="104%"
               />
@@ -439,9 +425,10 @@ export const OverwatchSquad = (props, context) => {
 
 export const OverwatchMonitor = (props, context) => {
   const { act, data } = useBackend(context);
-  const { squad_data, marinelist, dead_hidden, marine_filter_enabled } = data;
+  const { squad_data, marine_list, dead_hidden, marine_filter_enabled } = data;
 
-  const marine_list_array = Object.values(marinelist);
+  const marine_data = Object.values(marine_list);
+  logger.warn(marine_data);
 
   return (
     <Section
@@ -479,7 +466,7 @@ export const OverwatchMonitor = (props, context) => {
             <Dropdown
               options={['Ship', 'Ground', 'None']}
               displayText="Hide Area"
-              onSelected={(value) => act('z_hidden', { area_picked: value })}
+              onSelected={(value) => act('choose_z', { area_picked: value })}
               selected="Select"
               noscroll
               width="8em"
@@ -499,6 +486,7 @@ export const OverwatchMonitor = (props, context) => {
                 <Table.Cell bold>Status</Table.Cell>
                 <Table.Cell bold>Area</Table.Cell>
                 <Table.Cell bold>SL Distance</Table.Cell>
+                <Table.Cell bold>Filter</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
@@ -516,41 +504,58 @@ export const OverwatchMonitor = (props, context) => {
                 <Table.Cell>
                   <Divider />
                 </Table.Cell>
+                <Table.Cell>
+                  <Divider />
+                </Table.Cell>
               </Table.Row>
-              {marine_list_array.map((marine_list_array) => (
-                <Table.Row key={marine_list_array}>
+              {marine_data.map((marine_data) => (
+                <Table.Row key={marine_data}>
                   <Table.Cell>
                     <Button
                       fluid
-                      content={marine_list_array['name']}
+                      content={marine_data['name']}
                       onClick={() =>
                         act('use_cam', {
-                          cam_target: marine_list_array['ref'],
+                          cam_target: marine_data['ref'],
                         })}
                     />
                   </Table.Cell>
                   <Table.Cell>
-                    {marine_list_array['role']
-                + (marine_list_array['act_sl'] === 1 ? marine_list_array['act_sl'] : "")
-                + (marine_list_array['fteam'] ? " (" + marine_list_array['fteam'] + ")": "")}
+                    {marine_data['role']
+                      + (marine_data['act_sl'] === true
+                        ? marine_data['act_sl']
+                        : '')
+                      + (marine_data['fteam']
+                        ? ' (' + marine_data['fteam'] + ')'
+                        : '')}
                   </Table.Cell>
                   <Table.Cell>
                     <ColorBox
                       color={
-                        marine_list_array['mob_state'] === 'Conscious'
+                        marine_data['mob_state'] === 'Conscious'
                           ? 'green'
                           : 'red'
                       }
                     />
-                    {' ' + marine_list_array['mob_state']}{' '}
-                    {!marine_list_array['helmet'] ? ' (no helmet)' : null}
+                    {' ' + marine_data['mob_state']}{' '}
+                    {!marine_data['helmet'] ? ' (no helmet)' : null}
                   </Table.Cell>
                   <Table.Cell>
-                    {(marine_list_array['area_name'] ? marine_list_array['area_name'] : 'N/A')}
+                    {marine_data['area_name']
+                      ? marine_data['area_name']
+                      : 'N/A'}
                   </Table.Cell>
-                  <Table.Cell>{(marine_list_array['dist'] ? marine_list_array['dist'] : 'N/A')}</Table.Cell>
                   <Table.Cell>
-                    <Button content="HIDE" />
+                    {marine_data['dist']
+                      ? marine_data['dist']
+                      : 'N/A'}
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Button
+                      content={marine_data['filtered'] ? 'Ugh' : 'Shoot Me'}
+                      onClick={() =>
+                        act('filter_marine', {
+                          squaddie: marine_data.ref })} />
                   </Table.Cell>
                 </Table.Row>
               ))}
@@ -598,9 +603,7 @@ export const OverwatchMonitor = (props, context) => {
             <Table.Row>
               <Table.Cell>
                 <ColorBox
-                  color={
-                    squad_data.current_squad_leader_name ? 'green' : 'red'
-                  }
+                  color={squad_data.current_squad_leader_name ? 'green' : 'red'}
                 />
                 {squad_data.current_squad_leader_name ? ' Deployed' : ' None'}
               </Table.Cell>
@@ -616,17 +619,21 @@ export const OverwatchMonitor = (props, context) => {
               </Table.Cell>
               <Table.Cell>
                 <ColorBox color={squad_data.smartgun > 0 ? 'green' : 'red'} />
-                {squad_data.smartgun ? ' ' + squad_data.smartgun + ' Deployed' : ' None'}
+                {squad_data.smartgun
+                  ? ' ' + squad_data.smartgun + ' Deployed'
+                  : ' None'}
               </Table.Cell>
               <Table.Cell>
                 <ColorBox color={squad_data.medics > 0 ? 'green' : 'red'} />
-                {squad_data.medics ? ' ' + squad_data.medics + ' Deployed' : ' None'}
+                {squad_data.medics
+                  ? ' ' + squad_data.medics + ' Deployed'
+                  : ' None'}
               </Table.Cell>
               <Table.Cell>
-                <ColorBox
-                  color={squad_data.engineers > 0 ? 'green' : 'red'}
-                />
-                {squad_data.engineers ? ' ' + squad_data.engineers + ' Deployed' : ' None'}
+                <ColorBox color={squad_data.engineers > 0 ? 'green' : 'red'} />
+                {squad_data.engineers
+                  ? ' ' + squad_data.engineers + ' Deployed'
+                  : ' None'}
               </Table.Cell>
               <Table.Cell>{squad_data.alive}</Table.Cell>
               <Table.Cell>{squad_data.total_deployed}</Table.Cell>
@@ -709,6 +716,7 @@ export const OverwatchSupplies = (props, context) => {
         content="Drop Supply"
         lineHeight="3.5em"
         textAlign="center"
+        disabled={!supply_ready}
         confirmContent={'Fire at ' + x_supply + ', ' + y_supply + '?'}
         onClick={() =>
           act('set_supply', {
@@ -718,9 +726,13 @@ export const OverwatchSupplies = (props, context) => {
       />
       <Divider />
       {supply_ready ? (
-        <NoticeBox success textAlign="center">Ready to drop!</NoticeBox>
+        <NoticeBox success textAlign="center">
+          Ready to drop!
+        </NoticeBox>
       ) : (
-        <NoticeBox warning textAlign="center">Drop pad is empty!</NoticeBox>
+        <NoticeBox warning textAlign="center">
+          Drop pad is empty!
+        </NoticeBox>
       )}
     </>
   );
@@ -740,6 +752,10 @@ export const OverwatchBomb = (props, context) => {
 
   const [bomb_x, setTargetX] = useLocalState(context, 'bomb_x', x_bomb);
   const [bomb_y, setTargetY] = useLocalState(context, 'bomb_y', y_bomb);
+
+  const bombardment_enabled = bombardment_cooldown === 0
+  && !almayer_cannon_disabled
+  && !almayer_cannon_empty;
 
   return (
     <>
@@ -804,10 +820,10 @@ export const OverwatchBomb = (props, context) => {
         textAlign="center"
         content="Bombardment"
         lineHeight="3.5em"
-        textColor="#ffffff"
+        textColor={bombardment_enabled ? ("#0000000") : ("#ffffff")}
         color="red"
         icon="burst"
-        disabled={bombardment !== 0}
+        disabled={bombardment_enabled}
         onClick={() => act('dropbomb')}
         confirmContent={'Fire at ' + x_bomb + ', ' + y_bomb + '?'}
       />
@@ -817,10 +833,10 @@ export const OverwatchBomb = (props, context) => {
       && !almayer_cannon_empty
         ? (
           <NoticeBox warning textAlign="center">
-            Chamber is not loaded!
+            Chamber is not ready!
           </NoticeBox>
         ) : (
-          <NoticeBox danger textAlign="center" >
+          <NoticeBox danger textAlign="center">
             <Icon name="skull-crossbones" mr="1em" />
             Ready to fire!
             <Icon name="skull-crossbones" ml="1em" />

@@ -12875,10 +12875,6 @@
 /obj/item/clothing/suit/storage/jacket/marine/service/tanker{
 	pixel_x = 3
 	},
-/obj/item/clothing/head/helmet/marine/tanker{
-	pixel_x = 3;
-	pixel_y = 10
-	},
 /obj/structure/coatrack,
 /turf/open/floor/almayer,
 /area/almayer/living/numbertwobunks)

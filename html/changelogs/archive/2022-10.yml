@@ -83,6 +83,8 @@
   - refactor: Refactored marine armor file
   - bugfix: Ghillie suits can now clip on ponchos
 2022-10-08:
+  CLF Guerrilla:
+  - bugfix: Added terminals to the SMES on Kutjevo
   Unknownity:
   - bugfix: Fixed burrowers being able to burrow and tunnel to the Solaris Ridge secret
       room.

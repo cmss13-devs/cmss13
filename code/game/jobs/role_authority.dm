@@ -527,7 +527,9 @@ var/global/players_preassigned = 0
 	if(whitelist_status)
 		job_whitelist = "[J.title][whitelist_status]"
 
-	if(J.gear_preset_whitelist[job_whitelist])
+	if(J.handle_equipment)
+		J.setup_equipment(H)
+	else if(J.gear_preset_whitelist[job_whitelist])
 		arm_equipment(H, J.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
 		J.announce_entry_message(H, A, whitelist_status) //Tell them their spawn info.
 		J.generate_entry_conditions(H, whitelist_status) //Do any other thing that relates to their spawn.
@@ -549,26 +551,29 @@ var/global/players_preassigned = 0
 		if(human.assigned_squad)
 			assigned_squad = human.assigned_squad.name
 
-	if(isturf(late_join))
-		H.forceMove(late_join)
-	else if(late_join)
-		var/turf/late_join_turf
-		if(GLOB.latejoin_by_squad[assigned_squad])
-			late_join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
-		else
-			late_join_turf = get_turf(pick(GLOB.latejoin))
-		H.forceMove(late_join_turf)
+	if(J.handle_spawn)
+		J.setup_spawn(H)
 	else
-		var/turf/join_turf
-		if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][J.type])
-			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][J.type]))
-		else if(GLOB.spawns_by_job[J.type])
-			join_turf = get_turf(pick(GLOB.spawns_by_job[J.type]))
-		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
-			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		if(isturf(late_join))
+			H.forceMove(late_join)
+		else if(late_join)
+			var/turf/late_join_turf
+			if(GLOB.latejoin_by_squad[assigned_squad])
+				late_join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+			else
+				late_join_turf = get_turf(pick(GLOB.latejoin))
+			H.forceMove(late_join_turf)
 		else
-			join_turf = get_turf(pick(GLOB.latejoin))
-		H.forceMove(join_turf)
+			var/turf/join_turf
+			if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][J.type])
+				join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][J.type]))
+			else if(GLOB.spawns_by_job[J.type])
+				join_turf = get_turf(pick(GLOB.spawns_by_job[J.type]))
+			else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
+				join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+			else
+				join_turf = get_turf(pick(GLOB.latejoin))
+			H.forceMove(join_turf)
 
 	for(var/cardinal in GLOB.cardinals)
 		var/obj/structure/machinery/cryopod/pod = locate() in get_step(H, cardinal)

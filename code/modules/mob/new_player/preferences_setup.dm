@@ -300,6 +300,8 @@ datum/preferences/proc/randomize_skin_color()
 				var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
 				return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"]
 			return /datum/equipment_preset/yautja/blooded
+		if(JOB_PRISONER)
+			return pick(typesof(/datum/equipment_preset/uscm_ship/prisoner))
 
 	return /datum/equipment_preset/uscm/private_equipped
 

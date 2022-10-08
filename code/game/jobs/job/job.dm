@@ -33,6 +33,10 @@
 
 	/// When set to true, SSticker won't call spawn_in_player, instead calling the job's spawn_and_equip proc
 	var/handle_spawn_and_equip = FALSE
+	/// When set to true, role_authority.dm will call setup_equipment instead of handling that itself
+	var/handle_equipment = FALSE
+	/// When set to true, role_authority.dm will call setup_spawn instead of handling that itself
+	var/handle_spawn = FALSE
 
 /datum/job/New()
 	. = ..()
@@ -45,6 +49,12 @@
 		return FALSE
 
 	return WHITELIST_NORMAL
+
+/datum/job/proc/setup_equipment(mob/living/M)
+	return
+
+/datum/job/proc/setup_spawn(mob/living/M)
+	return
 
 /datum/timelock
 	var/name

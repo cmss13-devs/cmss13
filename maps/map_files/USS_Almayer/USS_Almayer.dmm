@@ -53448,7 +53448,7 @@
 	pixel_x = -17
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/cells)
+/area/almayer/shipboard/brig/processing)
 "kMU" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = -17
@@ -53860,7 +53860,7 @@
 	pixel_x = -17
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/cells)
+/area/almayer/shipboard/brig/processing)
 "kWk" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
@@ -54797,7 +54797,7 @@
 	pixel_x = 31
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/cells)
+/area/almayer/shipboard/brig/processing)
 "lrW" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/adv,
@@ -80017,7 +80017,7 @@
 	pixel_x = 32
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/cells)
+/area/almayer/shipboard/brig/processing)
 "wmQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;

@@ -669,3 +669,99 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/prisoner
+	name = "USCM Prisoner (PFC)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	var/preset_type = /datum/equipment_preset/uscm/pfc
+	var/datum/equipment_preset/preset
+
+	var/entry_message = {"You were arrested for %ARRESTREASON%. As such, you're being held inside the brig until after the current operation finishes."}
+	var/list/arrest_reasons = list(
+		"extreme hooliganism",
+		"pantsing the CO",
+		"converting the APC's catalytic converter into a bong",
+		"overthrowing the RO",
+		"beating on a CLF PoW during an interrogation",
+		"flirting with a member of the CIC",
+		"getting into a serious fight over the last fresh cheeseburger",
+		"lighting up a joint during drug test day",
+		"nut tapping an MP"
+	)
+
+/datum/equipment_preset/uscm_ship/prisoner/New()
+	. = ..()
+
+	preset = new preset_type
+
+	uses_special_name = preset.uses_special_name
+	languages = preset.languages
+	skills = preset.skills
+	assignment = preset.assignment
+	rank = preset.rank
+	paygrade = preset.paygrade
+	role_comm_title = preset.role_comm_title
+	minimum_age = preset.minimum_age
+	faction = preset.faction
+	faction_group = preset.faction_group
+
+/datum/equipment_preset/uscm_ship/prisoner/load_preset(mob/living/carbon/human/human, randomise, count_participant, client/mob_client, show_job_gear)
+	. = ..()
+	handle_spawn_message(human)
+
+/datum/equipment_preset/uscm_ship/prisoner/load_race(mob/living/carbon/human/human, var/client/mob_client)
+	return preset.load_race(human, mob_client)
+
+/datum/equipment_preset/uscm_ship/prisoner/load_name(mob/living/carbon/human/human, var/randomise, var/client/mob_client)
+	return preset.load_name(human, randomise, mob_client)
+
+/datum/equipment_preset/uscm_ship/prisoner/load_gear(mob/living/carbon/human/human)
+	human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer(human), WEAR_L_EAR)
+	human.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(human), WEAR_BODY)
+	human.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(human), WEAR_FEET)
+
+/datum/equipment_preset/uscm_ship/prisoner/load_vanity(mob/living/carbon/human/human, var/client/mob_client)
+	if(human.disabilities & NEARSIGHTED)
+		var/obj/item/clothing/glasses/regular/P = new /obj/item/clothing/glasses/regular()
+		if(!human.equip_to_slot_if_possible(P, WEAR_EYES))
+			if(istype(human.glasses, /obj/item/clothing/glasses))
+				var/obj/item/clothing/glasses/EYES = human.glasses
+				if(EYES.prescription) //if they already have prescription glasses they don't need new ones
+					return
+			if(!human.equip_to_slot_if_possible(P, WEAR_IN_BACK))
+				if(!human.equip_to_slot_if_possible(P, WEAR_L_HAND))
+					if(!human.equip_to_slot_if_possible(P, WEAR_R_HAND))
+						P.forceMove(human.loc)
+
+/datum/equipment_preset/uscm_ship/prisoner/proc/handle_spawn_message(mob/living/carbon/human/human)
+	var/list/entry_display = list()
+	entry_display += SPAN_ROLE_BODY("|______________________|")
+	entry_display += SPAN_ROLE_HEADER("You are \a [assignment]")
+	entry_display += SPAN_ROLE_BODY("[replacetext(entry_message, "%ARRESTREASON%", pick(arrest_reasons))]")
+	entry_display += SPAN_ROLE_BODY("|______________________|")
+	to_chat(human, entry_display.Join("\n"))
+
+/datum/equipment_preset/uscm_ship/prisoner/clf
+	name = "USCM Prisoner (CLF Soldier)"
+	preset_type = /datum/equipment_preset/clf/soldier
+
+	entry_message = {"You were taken prisoner during an engagement with the USCM in Operation Tachyon Tackle. You were %ARRESTREASON%. You are being held prisoner until the Almayer can offload you at a USCM dock."}
+	arrest_reasons = list(
+		"defending a line when you got shot and rushed down. You managed to stabilize the wound, but were surrounded the next moment you looked up",
+		"asleep when the battle broke out, forgot your rifle, and were forced to hold one of the sandbag defense lines in your skivvies. Debris from an explosion knocked you out and you awoke in cuffs",
+		"firing your weapon at the advancing APC when you saw your buddies get gunned down and run over. Your nerves shattered and you raised your gun in surrender",
+		"throwing an IED at an approaching USCM squad, but it detonated in the air right in front of you, knocking you out instantly. When you came to, you were surrounded by a group of marines pointing their guns at you"
+	)
+
+/datum/equipment_preset/uscm_ship/prisoner/clf/leader
+	name = "USCM Prisoner (CLF Leader)"
+	preset_type = /datum/equipment_preset/clf/leader
+
+	arrest_reasons = list(
+		"ordering a squad of men to charge forward and hold the line, when a grenade landed just behind you, blowing your squad away. You were knocked unconscious, and when you came to, you were cuffed in the back of an APC",
+		"loading a wounded CLF guerilla onto your shoulders when a bullet hit you in the torso, dropping you to the floor. The guerilla took the next burst. Thankfully, you were hidden beneath the body until one of the marines passing over you noticed you and took you prisoner",
+		"ordering your engineers to set up defensive lines when a faulty crate of IEDs started cooking off a dozen metres from your position. You were far enough away to survive, but a chunk of debris hit you on the helmet and knocked you out cold. When you came to, a USCM marine had their gun to your head",
+		"firing a HMG at a dropship, before it unleashed a couple mini-rockets at your location. You dove into cover, but it only barely managed to keep you alive from the explosion. You were too wounded to move, and were captured when marines advanced past your position"
+	)

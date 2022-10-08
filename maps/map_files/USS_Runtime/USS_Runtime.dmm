@@ -26,6 +26,11 @@
 	icon_state = "plating"
 	},
 /area/event)
+"f" = (
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/almayer/shipboard/brig/cells)
 "g" = (
 /turf/open/floor/almayer{
 	icon_state = "plating"
@@ -274,10 +279,10 @@ e
 V
 g
 g
-g
-g
-g
-g
+f
+f
+f
+f
 g
 g
 g
@@ -292,10 +297,10 @@ L
 g
 g
 g
-g
-g
-g
-g
+f
+f
+f
+f
 g
 g
 g
@@ -310,10 +315,10 @@ Q
 g
 g
 g
-g
-g
-g
-g
+f
+f
+f
+f
 g
 g
 g
@@ -328,10 +333,10 @@ I
 g
 g
 g
-g
-g
-g
-g
+f
+f
+f
+f
 g
 g
 g
@@ -346,10 +351,10 @@ b
 g
 g
 g
-g
-g
-g
-g
+f
+f
+f
+f
 g
 g
 g
@@ -364,10 +369,10 @@ u
 g
 g
 g
-g
-g
-g
-g
+f
+f
+f
+f
 g
 g
 g
@@ -382,10 +387,10 @@ g
 g
 g
 g
-g
-g
-g
-g
+f
+f
+f
+f
 g
 g
 g
@@ -400,10 +405,10 @@ g
 g
 g
 g
-g
-g
-g
-g
+f
+f
+f
+f
 g
 g
 g

@@ -26,6 +26,7 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 
 #define JOB_COLONIST					"Colonist"
 #define JOB_PASSENGER					"Passenger"
+#define JOB_PRISONER					"Prisoner"
 #define JOB_SURVIVOR					"Survivor"
 #define JOB_SYNTH_SURVIVOR				"Synth Survivor"
 

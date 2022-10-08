@@ -233,8 +233,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dropship_crew_chief, list(
 /obj/structure/machinery/cm_vending/clothing/pilot_officer/get_listed_products(mob/user)
 	if(user == null)
 		var/list/combined = list()
-		list += GLOB.cm_vending_clothing_dropship_crew_chief
-		list += GLOB.cm_vending_clothing_pilot_officer
+		combined += GLOB.cm_vending_clothing_dropship_crew_chief
+		combined += GLOB.cm_vending_clothing_pilot_officer
 		return combined
 	if(user.job == JOB_DROPSHIP_CREW_CHIEF)
 		return GLOB.cm_vending_clothing_dropship_crew_chief

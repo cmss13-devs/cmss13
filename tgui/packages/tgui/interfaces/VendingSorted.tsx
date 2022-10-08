@@ -175,21 +175,6 @@ const VendableClothingItem = (props: VenableItem, context) => {
       <Flex.Item grow={1}>
         <RecordName record={record} />
       </Flex.Item>
-
-      <Flex.Item justify="right">
-        <Button
-          className={classes([
-            "VendingSorted__Button",
-            'VendingSorted__VendButton',
-            isRecommended && 'VendingSorted__RecommendedVendButton',
-            isMandatory && 'VendingSorted__MandatoryVendButton',
-          ])}
-          preserveWhitespace
-          icon={available ? "circle-down" : "xmark"}
-          onClick={() => act('vend', record)}
-          textAlign="center"
-          disabled={!available} />
-      </Flex.Item>
     </Flex>
   );
 };

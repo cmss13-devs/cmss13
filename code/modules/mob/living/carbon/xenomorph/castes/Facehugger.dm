@@ -137,10 +137,11 @@
 
 /mob/living/carbon/Xenomorph/Facehugger/proc/handle_hug(var/mob/living/carbon/human/human)
 	var/obj/item/clothing/mask/facehugger/hugger = new /obj/item/clothing/mask/facehugger(loc, hivenumber)
-	hugger.attach(human, TRUE, 0.5)
+	var/did_hug = hugger.attach(human, TRUE, 0.5)
 	if(client)
 		client?.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
 	qdel(src)
+	return did_hug
 
 /mob/living/carbon/Xenomorph/Facehugger/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)

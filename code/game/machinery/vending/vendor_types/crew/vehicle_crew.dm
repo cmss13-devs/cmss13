@@ -410,9 +410,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	vendor_role = list(JOB_CREWMAN)
 
-/obj/structure/machinery/cm_vending/clothing/vehicle_crew/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_clothing_vehicle_crew
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew/get_listed_products(mob/user)
+	return GLOB.cm_vending_clothing_vehicle_crew
 
 //------------ESSENTIAL SETS---------------
 

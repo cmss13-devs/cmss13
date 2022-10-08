@@ -536,6 +536,7 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/ui_static_data(mob/user)
 	var/list/data = list()
 	data["vendor_name"] = name
+	data["vendor_type"] = "base"
 	data["theme"] = vendor_theme
 	return data
 
@@ -847,6 +848,7 @@ IN_USE						used for vending/denying
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
 	var/list/data = ..(user)
+	data["vendor_type"] = "clothing"
 	// list format
 	//	(
 	// 		name: str
@@ -941,6 +943,72 @@ IN_USE						used for vending/denying
 	data["show_points"] = FALSE
 	data["current_m_points"] = available_points_to_display
 	return data
+
+/obj/structure/machinery/cm_vending/clothing/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/H = usr
+	switch (action)
+		if ("vend")
+			if(stat & IN_USE)
+				return
+			var/has_access = can_access_to_vend(usr)
+			if (!has_access)
+				return TRUE
+
+			var/idx=params["prod_index"]
+
+			var/list/topic_listed_products = get_listed_products(usr)
+			var/list/L = topic_listed_products[idx]
+			var/cost = L[2]
+
+			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
+				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
+				vend_fail()
+				return
+			var/turf/T = get_appropriate_vend_turf(H)
+			if(T.contents.len > 25)
+				to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
+				vend_fail()
+				return TRUE
+			var/bitf = L[4]
+			if(bitf)
+				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SYNTH))
+					if(H.job != JOB_SYNTH)
+						to_chat(H, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
+						vend_fail()
+						return
+
+			if(use_points)
+				if(use_snowflake_points)
+					if(H.marine_snowflake_points < cost)
+						to_chat(H, SPAN_WARNING("Not enough points."))
+						vend_fail()
+						return
+					else
+						H.marine_snowflake_points -= cost
+				else
+					if(H.marine_points < cost)
+						to_chat(H, SPAN_WARNING("Not enough points."))
+						vend_fail()
+						return
+					else
+						H.marine_points -= cost
+
+			if(L[4])
+				if(!handle_vend(L, H))
+					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
+					vend_fail()
+					return
+
+			vend_succesfully(L, H, T)
+		if("cancel")
+			SStgui.close_uis(src)
+			return TRUE
+
+	add_fingerprint(usr)
 
 /obj/structure/machinery/cm_vending/clothing/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -1126,6 +1194,7 @@ IN_USE						used for vending/denying
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	var/list/data = ..(user)
+	data["vendor_type"] = "sorted"
 
 	var/list/ui_listed_products = get_listed_products(user)
 
@@ -1227,6 +1296,9 @@ IN_USE						used for vending/denying
 				return TRUE		// one left and the player spam click during a lagspike.
 
 			vend_succesfully(L, H, T)
+		if ("cancel")
+			SStgui.close_uis(src)
+			return TRUE
 
 	add_fingerprint(usr)
 

@@ -1,3 +1,4 @@
+import { KEY_ESCAPE } from 'common/keycodes';
 import { useBackend, useLocalState } from '../backend';
 import { Button, Section, Flex, Box, Tooltip, Input, NoticeBox, Icon } from '../components';
 import { Window } from '../layouts';
@@ -35,6 +36,7 @@ type VendingCategory = {
 
 type VendingData = {
   vendor_name: string;
+  vendor_type: string;
   theme: string;
   displayed_categories: VendingCategory[];
   stock_listing: Array<number>;
@@ -136,6 +138,62 @@ const VendableItem = (props: VenableItem, context) => {
   );
 };
 
+const VendableClothingItem = (props: VenableItem, context) => {
+  const { data, act } = useBackend<VendingData>(context);
+  const { record } = props;
+
+  const quantity = data.stock_listing[record.prod_index - 1];
+  const available = quantity > 0;
+  const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
+  const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
+
+  return (
+    <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
+      <Flex.Item>
+        <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
+      </Flex.Item>
+
+      <Flex.Item justify="right">
+        <Button
+          className={classes([
+            "VendingSorted__Button",
+            'VendingSorted__VendButton',
+            isRecommended && 'VendingSorted__RecommendedVendButton',
+            isMandatory && 'VendingSorted__MandatoryVendButton',
+          ])}
+          preserveWhitespace
+          icon={available ? "circle-down" : "xmark"}
+          onClick={() => act('vend', record)}
+          textAlign="center"
+          disabled={!available} />
+      </Flex.Item>
+
+      <Flex.Item>
+        <Box className="VendingSorted__Spacer" />
+      </Flex.Item>
+
+      <Flex.Item grow={1}>
+        <RecordName record={record} />
+      </Flex.Item>
+
+      <Flex.Item justify="right">
+        <Button
+          className={classes([
+            "VendingSorted__Button",
+            'VendingSorted__VendButton',
+            isRecommended && 'VendingSorted__RecommendedVendButton',
+            isMandatory && 'VendingSorted__MandatoryVendButton',
+          ])}
+          preserveWhitespace
+          icon={available ? "circle-down" : "xmark"}
+          onClick={() => act('vend', record)}
+          textAlign="center"
+          disabled={!available} />
+      </Flex.Item>
+    </Flex>
+  );
+};
+
 type VendingCategoryProps = {
   category: VendingCategory;
 }
@@ -154,6 +212,8 @@ const ItemDescriptionViewer = (props: DescriptionProps, context) => {
 };
 
 export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
+  const { data } = useBackend<VendingData>(context);
+  const { vendor_type } = data;
   const { category } = props;
   const [searchTerm, _] = useLocalState(context, 'searchTerm', "");
   const searchFilter = (x: VendingRecord) =>
@@ -168,13 +228,14 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
     <Section title={category.name ?? ""} className="VendingSorted__CategorySection">
       <Flex direction="column" className="VendingSorted__ItemFlex">
         {filteredCategories
-          .sort((a, b) => a.prod_name.localeCompare(b.prod_name))
+          .sort(data.vendor_type === "clothing" ? undefined : (a, b) => a.prod_name.localeCompare(b.prod_name))
           .map((record, i) =>
           {
             const isLast = (filteredCategories.length - 1) === i;
             return (
               <Flex.Item mb={1.2} key={record.prod_index}>
-                <VendableItem record={record} />
+                {vendor_type === "sorted" && <VendableItem record={record} />}
+                {vendor_type === "clothing" && <VendableClothingItem record={record} />}
                 {!isLast && <hr className="VendingSorted__ItemSeparator" />}
               </Flex.Item>
             );
@@ -198,7 +259,7 @@ const getTheme = (value: string | number): string => {
 };
 
 export const VendingSorted = (_, context) => {
-  const { data } = useBackend<VendingData>(context);
+  const { data, act } = useBackend<VendingData>(context);
   const categories = data.displayed_categories ?? [];
   const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', "");
   const isEmpty = categories.length === 0;
@@ -208,7 +269,13 @@ export const VendingSorted = (_, context) => {
       width={400}
       theme={getTheme(data.theme)}
     >
-      <Window.Content scrollable>
+      <Window.Content scrollable
+      onKeyDown={(event) => {
+        const keyCode = window.event ? event.which : event.keyCode;
+        if (keyCode === KEY_ESCAPE) {
+          act('cancel');
+        }
+      }}>
         {!isEmpty
           && (
             <Box className={classes([

@@ -20,7 +20,7 @@
 	var/busy = FALSE //The overwatch computer is busy launching an OB/SB, lock controls
 	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
 	var/z_hidden = 0 //which z level is ignored when showing marines.
-	var/marine_filter = list() // individual marine hiding control - list of string references
+	var/list/marine_filter = list() // individual marine hiding control - list of string references
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
 
@@ -532,9 +532,8 @@
 
 	for(var/mob/living/carbon/human/current_squaddie in marines_list)
 
-		var/area/current_area = get_area(current_squaddie)
-
 		var/marine_status
+		var/filtered
 		switch(current_squaddie.stat)
 			if(CONSCIOUS)
 				marine_status = "Conscious"
@@ -542,7 +541,23 @@
 				marine_status = "Unconscious"
 			if(DEAD)
 				marine_status = "Dead"
+				if(dead_hidden)
+					filtered = TRUE
 
+		var/turf/current_turf = get_turf(current_squaddie)
+		switch(z_hidden)
+			if(HIDE_ALMAYER)
+				if(is_mainship_level(current_turf.z))
+					filtered = TRUE
+			if(HIDE_GROUND)
+				if(is_ground_level(current_turf.z))
+					filtered = TRUE
+
+		if(marine_filter_enabled)
+			if(locate(current_squaddie) in marine_filter)
+				filtered = TRUE
+
+		var/area/current_area = get_area(current_squaddie)
 		marines_list[current_squaddie] = list(
 			"ref" = ref(current_squaddie),
 			"name" = current_squaddie.real_name,
@@ -554,7 +569,7 @@
 			"dir" = squad.squad_leader ? current_squaddie != squad.squad_leader ? dir2text_short(get_dir(current_squad.squad_leader, current_squaddie)) : null : null,
 			"area_name" = sanitize_area(current_area?.name),
 			"helmet" = istype(current_squaddie.head, /obj/item/clothing/head/helmet/marine),
-			"filtered" = locate(current_squaddie) in marine_filter,
+			"filtered" = filtered,
 			"SSD" = !current_squaddie.key || !current_squaddie.client && current_squaddie.stat != DEAD
 			)
 

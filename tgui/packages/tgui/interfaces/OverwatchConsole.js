@@ -425,9 +425,16 @@ export const OverwatchSquad = (props, context) => {
 
 export const OverwatchMonitor = (props, context) => {
   const { act, data } = useBackend(context);
-  const { squad_data, marine_list, dead_hidden, marine_filter_enabled } = data;
+  const {
+    squad_data,
+    marine_list,
+    dead_hidden,
+    marine_filter_enabled,
+    z_hidden,
+  } = data;
 
   const marine_data = Object.values(marine_list);
+  logger.warn(data);
 
   return (
     <Section
@@ -464,11 +471,10 @@ export const OverwatchMonitor = (props, context) => {
           <Stack.Item>
             <Dropdown
               options={['Ship', 'Ground', 'None']}
-              displayText="Hide Area"
+              displayText={z_hidden ? "Hidden Area: " + (z_hidden === 2 ? "Almayer" : "Colony") : "Hide Area"}
               onSelected={(value) => act('choose_z', { area_picked: value })}
-              selected="Select"
               noscroll
-              width="8em"
+              width={z_hidden ? "14em" : "8em"}
               height="1.8em"
               lineHeight="1.5em"
             />
@@ -551,7 +557,7 @@ export const OverwatchMonitor = (props, context) => {
                   </Table.Cell>
                   <Table.Cell>
                     <Button
-                      content={marine_data['filtered'] ? 'Ugh' : 'Shoot Me'}
+                      content={marine_data['filtered'] ? 'HIDE' : 'SHOW'}
                       onClick={() =>
                         act('filter_marine', {
                           squaddie: marine_data.ref })} />

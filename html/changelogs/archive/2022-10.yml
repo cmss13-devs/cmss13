@@ -91,3 +91,5 @@
   Unknownity:
   - bugfix: Fixed burrowers being able to burrow and tunnel to the Solaris Ridge secret
       room.
+  stanalbatross:
+  - bugfix: fixed two runtimes

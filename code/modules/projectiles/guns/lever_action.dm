@@ -439,13 +439,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 		var/obj/item/projectile/P = in_chamber
 		switch(floating_penetration)
 			if(FLOATING_PENETRATION_TIER_1)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen10]
-			if(FLOATING_PENETRATION_TIER_2)
 				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
-			if(FLOATING_PENETRATION_TIER_3)
+			if(FLOATING_PENETRATION_TIER_2)
 				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen30]
-			if(FLOATING_PENETRATION_TIER_4)
+			if(FLOATING_PENETRATION_TIER_3)
 				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen40]
+			if(FLOATING_PENETRATION_TIER_4)
+				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen50]
 	return ..()
 
 /obj/item/weapon/gun/lever_action/xm88/unload(mob/user)

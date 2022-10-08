@@ -376,7 +376,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	pockets.bypass_w_limit = GLOB.allowed_helmet_items
 	pockets.max_storage_space = 3
 
-	camera = new /obj/structure/machinery/camera/overwatch(src)
+	camera = new /obj/structure/machinery/camera/(src)
+	camera.network = list(CAMERA_NET_OVERWATCH)
 
 	..()
 
@@ -448,9 +449,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/equipped(var/mob/living/carbon/human/mob, slot)
 	if(camera)
-		camera.c_tag = mob.name + " (" + mob.job + ")"
-	if(mob.assigned_squad)
-		camera.network = list(mob.assigned_squad.network)
+		camera.c_tag = mob.name
 	..()
 
 /obj/item/clothing/head/helmet/marine/unequipped(mob/user, slot)

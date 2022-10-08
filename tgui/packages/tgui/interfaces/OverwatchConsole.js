@@ -428,7 +428,6 @@ export const OverwatchMonitor = (props, context) => {
   const { squad_data, marine_list, dead_hidden, marine_filter_enabled } = data;
 
   const marine_data = Object.values(marine_list);
-  logger.warn(marine_data);
 
   return (
     <Section

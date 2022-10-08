@@ -532,16 +532,27 @@
 
 	for(var/mob/living/carbon/human/current_squaddie in marines_list)
 
+		var/area/current_area = get_area(current_squaddie)
+
+		var/marine_status
+		switch(current_squaddie.stat)
+			if(CONSCIOUS)
+				marine_status = "Conscious"
+			if(UNCONSCIOUS)
+				marine_status = "Unconscious"
+			if(DEAD)
+				marine_status = "Dead"
+
 		marines_list[current_squaddie] = list(
 			"ref" = ref(current_squaddie),
 			"name" = current_squaddie.real_name,
-			"mob_state" = current_squaddie.stat,
+			"mob_state" = marine_status,
 			"role" = current_squaddie.job ? current_squaddie.job : current_squaddie?.wear_id.rank,
-			"act_sl" = current_squaddie.job != JOB_SQUAD_LEADER && squad.squad_leader = current_squaddie,
+			"act_sl" = current_squaddie.job != JOB_SQUAD_LEADER && squad.squad_leader == current_squaddie,
 			"fteam" = current_squaddie?.assigned_fireteam,
 			"dist" = squad.squad_leader ? current_squaddie != squad.squad_leader ? get_dist(current_squaddie, current_squad.squad_leader) : null : null,
 			"dir" = squad.squad_leader ? current_squaddie != squad.squad_leader ? dir2text_short(get_dir(current_squad.squad_leader, current_squaddie)) : null : null,
-			"area_name" = sanitize_area(get_area(current_squaddie)?.name),
+			"area_name" = sanitize_area(current_area?.name),
 			"helmet" = istype(current_squaddie.head, /obj/item/clothing/head/helmet/marine),
 			"filtered" = locate(current_squaddie) in marine_filter,
 			"SSD" = !current_squaddie.key || !current_squaddie.client && current_squaddie.stat != DEAD

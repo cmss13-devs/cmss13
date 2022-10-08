@@ -25,7 +25,7 @@
 		air_info = get_breath_from_internal()
 
 		//No breath from internal atmosphere so get breath from location
-		if(!air_info)			
+		if(!air_info)
 			var/turf/T = get_turf(loc)
 			air_info = T.return_air()
 
@@ -72,9 +72,7 @@
 
 	if(!air_info)
 		apply_damage(HUMAN_MAX_OXYLOSS, OXY)
-		
 		oxygen_alert = max(oxygen_alert, 1)
-
 		return 0
 
 	switch(air_info[1])
@@ -89,5 +87,18 @@
 				else if(SA_pp > 1)	// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 					if(prob(20))
 						spawn(0) emote(pick("giggle", "laugh"))
-	apply_damage(-2, OXY)
-	return 1
+
+	if(air_info[3])
+		apply_damage(-2, OXY)
+	else
+		if(!internal && !(head && HAS_FLAG(head.flags_inventory, NOPRESSUREDMAGE)))
+			oxygen_alert = max(oxygen_alert, 1)
+			apply_damage(HUMAN_MAX_OXYLOSS, OXY)
+			if(prob(15))
+				to_chat(src, SPAN_DANGER("You choke as you gasp for breath in the vacuum!"))
+		if(!(wear_suit && HAS_FLAG(wear_suit.flags_inventory, NOPRESSUREDMAGE)))
+			oxygen_alert = max(oxygen_alert, 1)
+			apply_damage(5)
+			if(prob(15))
+				to_chat(src, SPAN_DANGER("You feel your body bulge from the lack of pressure!"))
+	return TRUE

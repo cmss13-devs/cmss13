@@ -169,7 +169,7 @@
 		return
 
 	if (buffs_active)
-		to_chat(xeno, SPAN_XENOHIGHDANGER("You cannot stack frenzy!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You cannot stack Sprint!"))
 		return
 
 	if (!check_and_use_plasma_owner())

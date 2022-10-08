@@ -8187,10 +8187,6 @@
 	dir = 10
 	},
 /area/kutjevo/interior/colony_South/power2)
-"kYs" = (
-/obj/structure/window/framed/kutjevo/reinforced/hull,
-/turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/complex/med)
 "kZm" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/gm/river/desert/shallow,
@@ -17473,9 +17469,7 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/kutjevo/exterior/runoff_bridge)
 "xrF" = (
-/obj/item/stool{
-	pixel_y = 8
-	},
+/obj/structure/bed/stool,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "xrT" = (
@@ -34014,7 +34008,7 @@ jzl
 jzl
 esO
 jzl
-kYs
+lcs
 jzl
 jzl
 eMC

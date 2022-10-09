@@ -1,2 +1,2 @@
-# File here for legacy purposes only, server no use in CM
+# File here for legacy purposes only, serves no use in CM
 some~user - Species

@@ -103,21 +103,23 @@ interface VendButtonProps {
 }
 
 const VendButton = (props: VendButtonProps, _) => {
-  return <Button
-    className={classes([
-      "VendingSorted__Button",
-      'VendingSorted__VendButton',
-      props.isRecommended && 'VendingSorted__RecommendedVendButton',
-      props.isMandatory && 'VendingSorted__MandatoryVendButton',
-    ])}
-    preserveWhitespace
-    icon={props.text ? undefined : (props.available ? "circle-down" : "xmark")}
-    onClick={props.onClick}
-    textAlign="center"
-    disabled={!props.available}>
+  return (
+    <Button
+      className={classes([
+        "VendingSorted__Button",
+        'VendingSorted__VendButton',
+        props.isRecommended && 'VendingSorted__RecommendedVendButton',
+        props.isMandatory && 'VendingSorted__MandatoryVendButton',
+      ])}
+      preserveWhitespace
+      icon={props.text ? undefined : (props.available ? "circle-down" : "xmark")}
+      onClick={props.onClick}
+      textAlign="center"
+      disabled={!props.available}>
       {props.text}
-  </Button>
-}
+    </Button>
+  );
+};
 
 const VendableItem = (props: VenableItem, context) => {
   const { data, act } = useBackend<VendingData>(context);
@@ -186,12 +188,12 @@ const VendableClothingItem = (props: VenableItem, context) => {
 
       <Flex.Item justify="right">
         <VendButton
-            isRecommended={isRecommended}
-            isMandatory={isMandatory}
-            available={available}
-            text={cost === 0 ? undefined : `${cost}P`}
-            onClick={() => act('vend', record)}
-          />
+          isRecommended={isRecommended}
+          isMandatory={isMandatory}
+          available={available}
+          text={cost === 0 ? undefined : `${cost}P`}
+          onClick={() => act('vend', record)}
+        />
       </Flex.Item>
 
       <Flex.Item>
@@ -284,12 +286,12 @@ export const VendingSorted = (_, context) => {
       theme={getTheme(data.theme)}
     >
       <Window.Content scrollable
-      onKeyDown={(event) => {
-        const keyCode = window.event ? event.which : event.keyCode;
-        if (keyCode === KEY_ESCAPE) {
-          act('cancel');
-        }
-      }}>
+        onKeyDown={(event: any) => {
+          const keyCode = window.event ? event.which : event.keyCode;
+          if (keyCode === KEY_ESCAPE) {
+            act('cancel');
+          }
+        }}>
         {!isEmpty && !show_points
           && (
             <Box className={classes([

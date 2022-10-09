@@ -13,28 +13,28 @@ const VENDOR_ITEM_REGULAR = 1;
 const VENDOR_ITEM_MANDATORY = 2;
 const VENDOR_ITEM_RECOMMENDED = 3;
 
-type IconRecord = {
+interface IconRecord {
   icon_sheet: string;
   icon_state: string;
   href: string;
 }
 
-type VendingRecord = {
-  prod_index: number,
-  prod_name: string,
-  prod_available: number,
-  prod_initial: number,
+interface VendingRecord {
+  prod_index: number;
+  prod_name: string;
+  prod_available: number;
+  prod_initial: number;
   prod_color?: number;
   prod_icon: IconRecord;
   prod_desc?: string;
 }
 
-type VendingCategory = {
+interface VendingCategory {
   name: string;
   items: VendingRecord[];
 }
 
-type VendingData = {
+interface VendingData {
   vendor_name: string;
   vendor_type: string;
   theme: string;
@@ -42,11 +42,11 @@ type VendingData = {
   stock_listing: Array<number>;
 }
 
-type VenableItem = {
-  record: VendingRecord
+interface VenableItem {
+  record: VendingRecord;
 }
 
-type RecordNameProps = {
+interface RecordNameProps {
   record: VendingRecord;
 }
 
@@ -66,7 +66,7 @@ const RecordName = (props: RecordNameProps) => {
         isMandatory && 'VendingSorted__MandatoryItemText',
         isRecommended && 'VendingSorted__RecommendedItemText',
       ])}>
-        {record.prod_name}   {description && <Icon name="circle-info" className="VendingSorted__ShowDesc" />}
+        {record.prod_name}   {description && <Icon name="circle-info" className={classes(["VendingSorted__ShowDesc", "VendingSorted__RegularItemText"])} />}
       </span>
     );
   };
@@ -91,6 +91,28 @@ const RecordName = (props: RecordNameProps) => {
   );
 };
 
+interface VendButtonProps {
+  isRecommended: boolean;
+  isMandatory: boolean;
+  available: boolean;
+  onClick: () => any;
+}
+
+const VendButton = (props: VendButtonProps, _) => {
+  return <Button
+    className={classes([
+      "VendingSorted__Button",
+      'VendingSorted__VendButton',
+      props.isRecommended && 'VendingSorted__RecommendedVendButton',
+      props.isMandatory && 'VendingSorted__MandatoryVendButton',
+    ])}
+    preserveWhitespace
+    icon={props.available ? "circle-down" : "xmark"}
+    onClick={props.onClick}
+    textAlign="center"
+    disabled={!props.available} />
+}
+
 const VendableItem = (props: VenableItem, context) => {
   const { data, act } = useBackend<VendingData>(context);
   const { record } = props;
@@ -107,18 +129,12 @@ const VendableItem = (props: VenableItem, context) => {
       </Flex.Item>
 
       <Flex.Item justify="right">
-        <Button
-          className={classes([
-            "VendingSorted__Button",
-            'VendingSorted__VendButton',
-            isRecommended && 'VendingSorted__RecommendedVendButton',
-            isMandatory && 'VendingSorted__MandatoryVendButton',
-          ])}
-          preserveWhitespace
-          icon={available ? "circle-down" : "xmark"}
+        <VendButton
+          isRecommended={isRecommended}
+          isMandatory={isMandatory}
+          available={available}
           onClick={() => act('vend', record)}
-          textAlign="center"
-          disabled={!available} />
+        />
       </Flex.Item>
 
       <Flex.Item>
@@ -154,18 +170,12 @@ const VendableClothingItem = (props: VenableItem, context) => {
       </Flex.Item>
 
       <Flex.Item justify="right">
-        <Button
-          className={classes([
-            "VendingSorted__Button",
-            'VendingSorted__VendButton',
-            isRecommended && 'VendingSorted__RecommendedVendButton',
-            isMandatory && 'VendingSorted__MandatoryVendButton',
-          ])}
-          preserveWhitespace
-          icon={available ? "circle-down" : "xmark"}
-          onClick={() => act('vend', record)}
-          textAlign="center"
-          disabled={!available} />
+        <VendButton
+            isRecommended={isRecommended}
+            isMandatory={isMandatory}
+            available={available}
+            onClick={() => act('vend', record)}
+          />
       </Flex.Item>
 
       <Flex.Item>
@@ -179,16 +189,16 @@ const VendableClothingItem = (props: VenableItem, context) => {
   );
 };
 
-type VendingCategoryProps = {
+interface VendingCategoryProps {
   category: VendingCategory;
 }
 
-type DescriptionProps = {
+interface DescriptionProps {
   desc: string;
   name: string;
 }
 
-const ItemDescriptionViewer = (props: DescriptionProps, context) => {
+const ItemDescriptionViewer = (props: DescriptionProps, _) => {
   return (
     <Section title={props.name}>
       <span>{props.desc}</span>

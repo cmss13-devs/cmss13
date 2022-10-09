@@ -431,7 +431,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR)
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship

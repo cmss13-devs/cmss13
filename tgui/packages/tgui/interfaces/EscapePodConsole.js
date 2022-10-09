@@ -8,11 +8,13 @@ export const EscapePodConsole = (_props, context) => {
   let statusMessage = "ERROR";
   let buttonColor = "bad";
   let delayed = 0;
+  let operable = 0;
 
   switch (data.docking_status) {
     case 4:
       statusMessage = "SYSTEMS OK";
       buttonColor = "good";
+      operable = 1;
       break;
     case 5:
       statusMessage = "SYSTEMS DOWN";
@@ -20,11 +22,13 @@ export const EscapePodConsole = (_props, context) => {
     case 6:
       statusMessage = "STANDING BY";
       buttonColor = "neutral";
+      operable = 1;
       break;
     case 7:
       statusMessage = "DELAYED";
       buttonColor = "yellow";
       delayed = 1;
+      operable = 1;
       break;
     case 8:
       statusMessage = "LAUNCHING";
@@ -79,7 +83,7 @@ export const EscapePodConsole = (_props, context) => {
                 color="red"
                 fluid
                 icon={data.door_state ? "lock-open" : "lock"}
-                disabled={!data.can_lock}
+                disabled={!operable}
                 onClick={() => act('lock_door')}
               />
               <Box width="2px" />
@@ -90,7 +94,7 @@ export const EscapePodConsole = (_props, context) => {
                 icon="plane-departure"
                 color="red"
                 fluid
-                disabled={!data.can_force}
+                disabled={!operable || delayed}
                 onClick={() => act('force_launch')}
               />
               <Box width="2px" />

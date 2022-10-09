@@ -244,8 +244,6 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	data["docking_status"] = evacuation_program.dock_state
 	data["door_state"] = P.D.density
 	data["door_lock"] = P.D.locked
-	data["can_lock"] = evacuation_program.dock_state == (STATE_READY || STATE_DELAYED) ? TRUE : FALSE //FALSE
-	data["can_force"] = evacuation_program.dock_state == (STATE_READY || STATE_DELAYED) ? TRUE : FALSE
 	data["can_delay"] = launch_status[2]
 
 	return data

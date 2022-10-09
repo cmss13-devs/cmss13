@@ -101,7 +101,7 @@
 
 		//re-open STUI
 	if(new_STUI)
-		GLOB.STUI.ui_interact(mob)
+		GLOB.STUI.tgui_interact(mob)
 
 /client/proc/invismin()
 	set name = "Invismin"

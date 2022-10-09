@@ -128,6 +128,10 @@ const VendableItem = (props: VenableItem, context) => {
         <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
       </Flex.Item>
 
+      <Flex.Item>
+        <Box className="VendingSorted__Spacer" />
+      </Flex.Item>
+
       <Flex.Item justify="right">
         <VendButton
           isRecommended={isRecommended}
@@ -167,6 +171,10 @@ const VendableClothingItem = (props: VenableItem, context) => {
     <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
       <Flex.Item>
         <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
+      </Flex.Item>
+
+      <Flex.Item>
+        <Box className="VendingSorted__Spacer" />
       </Flex.Item>
 
       <Flex.Item justify="right">

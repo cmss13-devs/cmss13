@@ -7,7 +7,11 @@
 
 /atom/proc/set_name_label(var/new_label)
 	name_label = new_label
-	name = initial(name)
+	if (istype(src, /obj/item/reagent_container/food/snacks))
+		var/obj/item/reagent_container/food/snacks/snack = src
+		name = snack.made_from_player + initial(name)
+	else
+		name = initial(name)
 	if(name_label)
 		name += " ([name_label])"
 

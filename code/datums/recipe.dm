@@ -94,6 +94,9 @@
 			O.reagents.trans_to(result_obj, O.reagents.total_volume)
 		if(!name_finalized && O.made_from_player)
 			result_obj.name = O.made_from_player + result_obj.name
+			if (istype(result_obj, /obj/item/reagent_container/food/snacks))
+				var/obj/item/reagent_container/food/snacks/snack = result_obj
+				snack.made_from_player = O.made_from_player
 			name_finalized = TRUE
 	container.contents = null
 	container.reagents.clear_reagents()

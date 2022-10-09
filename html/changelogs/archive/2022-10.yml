@@ -99,3 +99,4 @@
   - rscadd: the ot demo sim console can now switch dummy type between a variety of
       human and xeno targets
   - qol: the ot demo sim console now has a 1 minute cooldown, instead of 2 minutes
+  - ui: the centrifuge now uses tgui

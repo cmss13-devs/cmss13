@@ -569,6 +569,8 @@ var/const/MAX_SAVE_SLOTS = 10
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ALTERNATING_DUAL_WIELD]'><b>[toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_SWAP_HANDS]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Item Animations: \
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ITEM_ANIMATIONS]'><b>[toggle_prefs & TOGGLE_ITEM_ANIMATIONS ? "On" : "Off"]</b></a><br>"
 			dat += "</div>"
 		if(MENU_ERT)
 			dat += "<div id='column1'>"

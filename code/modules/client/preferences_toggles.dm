@@ -353,6 +353,11 @@
 	to_chat(src, SPAN_BOLDNOTICE("Middle Click [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
 	prefs.save_preferences()
 
+/client/proc/toggle_item_animations() //Toggles tg-style item animations on and off, default on.
+	prefs.toggle_prefs ^= TOGGLE_ITEM_ANIMATIONS
+	to_chat(src, SPAN_BOLDNOTICE("You [(prefs.toggle_prefs & TOGGLE_ITEM_ANIMATIONS) ? "will no longer" : "will"] see item animations."))
+	prefs.save_preferences()
+
 //------------ GHOST PREFERENCES ---------------------------------
 
 /client/proc/show_ghost_preferences() // Shows ghost-related preferences.

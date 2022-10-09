@@ -890,7 +890,7 @@ cases. Override_icon_state should be a list.*/
 		to_y += 10
 		pickup_animation.pixel_x += 6 * (prob(50) ? 1 : -1) //6 to the right or left, helps break up the straight upward move
 
-	flick_overlay_to_clients(pickup_animation, GLOB.clients, 4)
+	flick_overlay_to_clients(pickup_animation, GLOB.clients, 4, TRUE, TOGGLE_ITEM_ANIMATIONS)
 	//flick_overlay(viewers(7, src), pickup_animation, 4)
 	var/matrix/animation_matrix = new(pickup_animation.transform)
 	animation_matrix.Turn(pick(-30, 30))
@@ -973,7 +973,7 @@ cases. Override_icon_state should be a list.*/
 	if(!attack_image)
 		return
 
-	flick_overlay_to_clients(attack_image, GLOB.clients, 10)
+	flick_overlay_to_clients(attack_image, GLOB.clients, 10, TRUE, TOGGLE_ITEM_ANIMATIONS)
 	var/matrix/copy_transform = new(transform)
 	// And animate the attack!
 	animate(attack_image, alpha = 175, transform = copy_transform.Scale(0.75), pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)

@@ -8,7 +8,7 @@
 # You may add any of the possible roles below, using different names as indicated.
 # Adding two or more of the same role will not matter.
 # Council and Legacy roles give the general WL too. LegacyRank is not above Leader (Senator)
-# Elder rank means Clan leader for  Yauja
+# Elder means Clan Leader for Yautja
 # SEA flag is unnecessary as it is given though the various staff/mentor ranks
 
 ######################################################

@@ -248,8 +248,8 @@
 	addtimer(CALLBACK(src, .proc/apprehend_off), buff_duration, TIMER_UNIQUE)
 
 	apply_cooldown()
-	..()
-	return
+
+	return ..()
 
 /datum/action/xeno_action/onclick/apprehend/proc/apprehend_off()
 	var/mob/living/carbon/Xenomorph/X = owner

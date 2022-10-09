@@ -4,9 +4,25 @@
 /obj/docking_port/mobile/lifeboat
 	name = "lifeboat"
 	area_type = /area/shuttle/lifeboat
-	ignitionTime = 10 SECONDS
+	ignitionTime = 15 SECONDS
 	width = 27
 	height = 7
+	var/available = TRUE // can be used for evac? false if queenlocked or if in transit already
+	var/status = LIFEBOAT_INACTIVE // -1 queen locked, 0 locked til evac, 1 working
+	var/list/doors = list()
+	var/static/survivors = 0
+
+/obj/docking_port/mobile/lifeboat/proc/check_for_survivors()
+	for(var/mob/living/carbon/human/M as anything in GLOB.alive_human_list) //check for lifeboats survivors
+		var/area/A = get_area(M)
+		if(!M)
+			continue
+		if(M.stat != DEAD && (A in shuttle_areas))
+			var/turf/T = get_turf(M)
+			if(!T || is_mainship_level(T.z))
+				continue
+			survivors++
+			to_chat(M, "<br><br>[SPAN_CENTERBOLD("<big>You have successfully left the [MAIN_SHIP_NAME]. You may now ghost and observe the rest of the round.</big>")]<br>")
 
 /// Port Aft Lifeboat (bottom-right, doors on its left side)
 /obj/docking_port/mobile/lifeboat/port
@@ -22,6 +38,24 @@
 	preferred_direction = EAST
 	port_direction = EAST
 
+/obj/docking_port/mobile/lifeboat/proc/try_launch()
+	// if(!check_passengers())
+	// 	available = FALSE
+	// 	status = LIFEBOAT_LOCKED
+	// 	ai_announcement("ATTENTION: Lifeboat [id] critical failure, unable to launch.")
+	// 	sleep(40)
+	// 	explosion(return_center_turf(), -1, -1, 3, 4, , , , create_cause_data("escape lifeboat malfunction"))
+	// 	return FALSE
+	if (!available)
+		return FALSE
+	send_to_infinite_transit()
+
+/obj/docking_port/mobile/lifeboat/proc/send_to_infinite_transit()
+	available = FALSE
+	destination = null
+	set_mode(SHUTTLE_IGNITING)
+	on_ignition()
+	setTimer(ignitionTime)
 
 // === STATIONARIES
 
@@ -30,6 +64,44 @@
 	name   = "Lifeboat docking port"
 	width  = 27
 	height = 7
+
+/obj/docking_port/stationary/lifeboat_dock/on_dock_ignition(departing_shuttle)
+	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/D as anything in GLOB.lifeboat_doors)
+		if(D.linked_dock == id)
+			INVOKE_ASYNC(D,/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock)
+			addtimer(CALLBACK(D,/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor.proc/bolt_explosion), 75)
+
+	var/obj/docking_port/mobile/lifeboat/docked_shuttle = departing_shuttle
+	if(istype(docked_shuttle))
+		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/D in docked_shuttle.doors)
+			INVOKE_ASYNC(D,/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock)
+
+/obj/docking_port/stationary/lifeboat_dock/on_departure(obj/docking_port/mobile/departing_shuttle)
+	. = ..()
+	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/adoor as anything in GLOB.lifeboat_doors)
+		if(adoor.linked_dock == id)
+			adoor.vacate_premises()
+
+/obj/docking_port/stationary/lifeboat_dock/proc/open_dock()
+	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/D as anything in GLOB.lifeboat_doors)
+		if(D.linked_dock == id)
+			INVOKE_ASYNC(D,/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/unlock_and_open)
+
+	var/obj/docking_port/mobile/lifeboat/docked_shuttle = get_docked()
+	if(docked_shuttle)
+		for(var/obj/structure/machinery/door/airlock/multi_tile/D in docked_shuttle.doors)
+			INVOKE_ASYNC(D,/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/unlock_and_open)
+
+/obj/docking_port/stationary/lifeboat_dock/proc/close_dock()
+	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/D as anything in GLOB.lifeboat_doors)
+		if(D.linked_dock == id)
+			INVOKE_ASYNC(D,/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock)
+
+	var/obj/docking_port/mobile/lifeboat/docked_shuttle = get_docked()
+	if(docked_shuttle)
+		for(var/obj/structure/machinery/door/airlock/multi_tile/D in docked_shuttle.doors)
+			INVOKE_ASYNC(D,/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock)
+
 
 /// Port Aft Lifeboat default dock
 /obj/docking_port/stationary/lifeboat_dock/port
@@ -44,6 +116,15 @@
 	dir = NORTH
 	id = "almayer-lifeboat2"
 	roundstart_template = /datum/map_template/shuttle/lifeboat_starboard
+
+/obj/docking_port/stationary/lifeboat_dock/Initialize(mapload)
+	. = ..()
+	GLOB.lifeboat_almayer_docks += src
+
+/obj/docking_port/stationary/lifeboat_dock/Destroy(force)
+	if (force)
+		GLOB.lifeboat_almayer_docks -= src
+	. = ..()
 
 
 /// Admin lifeboat dock temporary dest because someone mapped them in for some reason (use transit instead)

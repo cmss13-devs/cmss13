@@ -1,4 +1,4 @@
-#define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/11
+#define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/9
 
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR
@@ -12,7 +12,7 @@
 	var/story_text
 
 /datum/job/civilian/survivor/set_spawn_positions(var/count)
-	spawn_positions = Clamp((round(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
+	spawn_positions = Clamp((round(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 3, 10)
 	total_positions = spawn_positions
 
 /datum/job/civilian/survivor/equip_job(mob/living/M)
@@ -33,7 +33,7 @@
 	if(is_synth && picked_spawner.synth_equipment)
 		arm_equipment(H, picked_spawner.synth_equipment, FALSE, TRUE)
 		has_equipment = TRUE
-	else if(!is_synth && picked_spawner.equipment)
+	else if(picked_spawner.equipment)
 		arm_equipment(H, picked_spawner.equipment, FALSE, TRUE)
 		has_equipment = TRUE
 	if(!has_equipment)

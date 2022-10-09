@@ -4,9 +4,9 @@
 	var/synth_equipment = null
 	var/list/intro_text = list()
 	var/story_text = ""
-	var/roundstart_damage_min = 0
-	var/roundstart_damage_max = 0
-	var/roundstart_damage_times = 1
+	var/roundstart_damage_min = 3
+	var/roundstart_damage_max = 10
+	var/roundstart_damage_times = 2
 
 /obj/effect/landmark/survivor_spawner/Initialize(mapload, ...)
 	. = ..()

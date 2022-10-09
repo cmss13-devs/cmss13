@@ -159,11 +159,11 @@
 //endurance skill - Leaving surv for ease of change
 #define SKILL_ENDURANCE_NONE 0
 #define SKILL_ENDURANCE_WEAK 1
+#define SKILL_ENDURANCE_SURVIVOR 2
 #define SKILL_ENDURANCE_TRAINED 2
 #define SKILL_ENDURANCE_MASTER 3
 #define SKILL_ENDURANCE_EXPERT 4
-#define SKILL_ENDURANCE_SURVIVOR 2
-#define SKILL_ENDURANCE_MAX 5
+#define SKILL_ENDURANCE_MAX 4
 
 //domestic skill, how well you work cleaning equipment and cooking stuff
 #define SKILL_DOMESTIC_NONE 0

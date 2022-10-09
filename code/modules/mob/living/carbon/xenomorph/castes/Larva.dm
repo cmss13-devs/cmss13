@@ -114,8 +114,6 @@
 
 	name = "\improper [name_prefix][progress]Larva ([nicknumber])"
 
-	if(istype(src,/mob/living/carbon/Xenomorph/Larva/predalien)) state = "Predalien " //Sort of a hack.
-
 	//Update linked data so they show up properly
 	change_real_name(src, name)
 

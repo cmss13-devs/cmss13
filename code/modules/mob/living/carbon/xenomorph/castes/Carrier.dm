@@ -37,6 +37,8 @@
 	hugger_delay = 20
 	egg_cooldown = 250
 
+	minimum_evolve_time = 5 MINUTES
+
 /mob/living/carbon/Xenomorph/Carrier
 	caste_type = XENO_CASTE_CARRIER
 	name = XENO_CASTE_CARRIER

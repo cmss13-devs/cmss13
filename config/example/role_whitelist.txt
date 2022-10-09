@@ -27,7 +27,7 @@
 # +Synthetic
 # +SyntheticCouncil
 # +SyntheticLeader
-# MENTOR FLAGS (this is just the SEA half not the mhelps half)
+# MENTOR FLAGS (for access to the SEA role, not MHelps, MentorSay, etc)
 # +Advisor
 # GIVES WHITELISTS UP RANK
 # AllGeneral

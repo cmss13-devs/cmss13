@@ -93,3 +93,9 @@
       room.
   stanalbatross:
   - bugfix: fixed two runtimes
+2022-10-09:
+  stanalbatross:
+  - ui: the ot demo sim console now uses tgui
+  - rscadd: the ot demo sim console can now switch dummy type between a variety of
+      human and xeno targets
+  - qol: the ot demo sim console now has a 1 minute cooldown, instead of 2 minutes

@@ -774,6 +774,16 @@ IN_USE						used for vending/denying
 	update_icon()
 	return
 
+/obj/structure/machinery/cm_vending/clothing/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
+/obj/structure/machinery/cm_vending/clothing/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+	if(!can_access_to_vend(user, FALSE))
+		return UI_CLOSE
+
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
 	var/list/data = ..(user)
 	data["vendor_type"] = "clothing"

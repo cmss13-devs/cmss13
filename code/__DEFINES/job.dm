@@ -149,6 +149,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_LEADER					"PMC Leader"
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR				"PMC Site Director"
+<<<<<<< refs/remotes/origin/master
 #define JOB_PMC_SYNTH                   "PMC Support Synthetic"
 
 //---- Contractors ----//
@@ -166,6 +167,9 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_CONTRACTOR_COVMG				"VAISO Automatic Rifleman"
 #define JOB_CONTRACTOR_COVTL            	"VAISO Team Leader"
 #define JOB_CONTRACTOR_COVSYN				"VAISO Support Synthetic"
+=======
+#define JOB_PMC_SYNTH					"PMC Support Synthetic"
+>>>>>>> Roundstart Gameplay Tweak
 
 //-------- UPP --------//
 #define JOB_UPP							"UPP Private"

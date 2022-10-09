@@ -17,6 +17,11 @@
 	if(!castepick) //Changed my mind
 		return
 
+	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
+	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
+		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([round((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
+		return
+
 	if(!evolve_checks())
 		return
 
@@ -101,6 +106,9 @@
 	else if(!can_evolve(castepick, potential_queens))
 		return
 
+	// subtract the threshold, keep the stored amount
+	evolution_stored -= evolution_threshold
+
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/Xenomorph/new_xeno = new M(get_turf(src), src)
 
@@ -144,7 +152,7 @@
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
-		
+
 	src.transfer_observers_to(new_xeno)
 
 	qdel(src)
@@ -316,9 +324,9 @@
 	if(round_statistics && !new_xeno.statistic_exempt)
 		round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
-	
+
 	src.transfer_observers_to(new_xeno)
-	
+
 	qdel(src)
 
 /mob/living/carbon/Xenomorph/proc/can_evolve(castepick, potential_queens)

@@ -28,6 +28,8 @@ Verbs related to getting fucking jacked, bro
 
 
 /mob/living/carbon/human/proc/execute_pushups(var/on_knees = FALSE)
+	if(!can_do_pushup())
+		return
 	var/target_y = -5
 	var/pushups_in_a_row
 	var/staminaloss

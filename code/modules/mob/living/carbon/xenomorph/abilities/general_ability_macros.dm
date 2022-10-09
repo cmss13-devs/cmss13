@@ -200,7 +200,7 @@
 	set name = "Toggle Nightvision"
 	set hidden = 1
 	var/mob/living/carbon/C = src
-	for(var/obj/screen/xenonightvision/B in C.client.screen)
+	for(var/atom/movable/screen/xenonightvision/B in C.client.screen)
 		B.clicked(src)
 
 /datum/action/xeno_action/verb/place_construction()
@@ -208,4 +208,11 @@
 	set name = "Order Construction"
 	set hidden = 1
 	var/action_name = "Order Construction (400)"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/verb_tail_stab()
+	set category = "Alien"
+	set name = "Tail Stab"
+	set hidden = 1
+	var/action_name = "Tail Stab"
 	handle_xeno_macro(src, action_name)

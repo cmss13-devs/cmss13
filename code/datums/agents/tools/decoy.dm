@@ -13,7 +13,7 @@
 
 /obj/item/explosive/grenade/decoy/prime(force)
     playsound(get_turf(loc), 'sound/effects/explosionfar.ogg', 100, 1, decoy_strength)
-    playsound(get_turf(loc), "explosion", 75, 1, max(decoy_strength, 7))
+    playsound(get_turf(loc), "explosion", 90, 1, max(decoy_strength, 7))
 
     uses--
 

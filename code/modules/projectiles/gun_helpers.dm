@@ -125,8 +125,8 @@ DEFINES in setup.dm, referenced here.
 
 	if(in_hand == src && (flags_item & TWOHANDED))
 		if(active_attachable)
-			active_attachable.unload_attachment(user)
-			return
+			if(active_attachable.unload_attachment(user))
+				return
 		unload(user)//It has to be held if it's a two hander.
 		return
 	else
@@ -445,11 +445,17 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(A.attach_icon)
 			item_icon = A.attach_icon
 		I = image(A.icon,src, item_icon)
-		I.pixel_x = attachable_offset["[slot]_x"] - A.pixel_shift_x
-		I.pixel_y = attachable_offset["[slot]_y"] - A.pixel_shift_y
+		I.pixel_x = attachable_offset["[slot]_x"] - A.pixel_shift_x + x_offset_by_attachment_type(A.type)
+		I.pixel_y = attachable_offset["[slot]_y"] - A.pixel_shift_y + y_offset_by_attachment_type(A.type)
 		attachable_overlays[slot] = I
 		overlays += I
 	else attachable_overlays[slot] = null
+
+/obj/item/weapon/gun/proc/x_offset_by_attachment_type(var/attachment_type)
+	return 0
+
+/obj/item/weapon/gun/proc/y_offset_by_attachment_type(var/attachment_type)
+	return 0
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
 	var/image/I = attachable_overlays["mag"]
@@ -740,8 +746,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
 			drop_to_ground = FALSE
 			unwield(user)
-		G.active_attachable.unload_attachment(usr, FALSE, drop_to_ground)
-		return
+		if(G.active_attachable.unload_attachment(usr, FALSE, drop_to_ground))
+			return
 
 	//unloading a regular gun
 	var/drop_to_ground = TRUE

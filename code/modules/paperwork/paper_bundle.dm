@@ -77,12 +77,12 @@
 			else
 				to_chat(user, SPAN_DANGER("You must hold \the [P] steady to burn \the [src]."))
 
-/obj/item/paper_bundle/examine(mob/user)
-	to_chat(usr, desc)
+/obj/item/paper_bundle/get_examine_text(mob/user)
+	. = list(desc)
 	if(in_range(user, src) || isobserver(user))
 		src.attack_self(user)
 	else
-		to_chat(user, SPAN_NOTICE("It is too far away."))
+		. += SPAN_NOTICE("It is too far away.")
 
 /obj/item/paper_bundle/attack_self(mob/user)
 	..()

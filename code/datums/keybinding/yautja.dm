@@ -303,7 +303,7 @@
 	hotkey_keys = list()
 	classic_keys = list()
 	name = "injectors"
-	full_name = "Create self-heal crystal"
+	full_name = "Create Stabilising Crystal"
 	keybind_signal = COMSIG_KB_YAUTJA_INJECTORS
 
 /datum/keybinding/yautja/bracer_hunter/injectors/down(client/user)
@@ -320,6 +320,28 @@
 	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
 	if(istype(held))
 		held.injectors()
+		return TRUE
+/datum/keybinding/yautja/bracer_hunter/healing_capsule
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "capsule"
+	full_name = "Create Healing Capsule"
+	keybind_signal = COMSIG_KB_YAUTJA_CAPSULE
+
+/datum/keybinding/yautja/bracer_hunter/healing_capsule/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user.mob
+
+	var/obj/item/clothing/gloves/yautja/hunter/gloves = H.gloves
+	if(istype(gloves))
+		gloves.healing_capsule()
+		return TRUE
+
+	var/obj/item/clothing/gloves/yautja/hunter/held = H.get_held_item()
+	if(istype(held))
+		held.healing_capsule()
 		return TRUE
 
 /datum/keybinding/yautja/bracer_hunter/call_disk

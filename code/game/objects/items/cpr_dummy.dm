@@ -7,10 +7,10 @@
 	var/failed_cprs = 0
 	var/cpr_cooldown = 0
 
-/obj/item/cpr_dummy/examine(mob/user)
+/obj/item/cpr_dummy/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, "Successful CPRs: [SPAN_GREEN(successful_cprs)].")
-	to_chat(user, "Failed CPRs: [SPAN_RED(failed_cprs)].")
+	. += "Successful CPRs: [SPAN_GREEN(successful_cprs)]."
+	. += "Failed CPRs: [SPAN_RED(failed_cprs)]."
 
 /obj/item/cpr_dummy/update_icon()
 	if(anchored)

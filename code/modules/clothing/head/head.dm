@@ -394,6 +394,10 @@
 	icon_state = "coblackberet"
 	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package."
 
+/obj/item/clothing/head/helmet/beret/marine/mp/tis
+	name = "\improper UAAC-TIS Special Agent Beret"
+	icon_state = "berettis"
+	desc = "A Kevlar reinforced beret with the UAAC-TIS insignia emblazoned on it. A mark of a TIS Special Agent, these berets are one of the only pieces of equipment that the TIS actually manufactures for itself and earning one is one of the rare signs of achievement the Three Eyes allows."
 
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine captain beret"
@@ -413,23 +417,23 @@
 	)
 
 /obj/item/clothing/head/beret/marine/commander/dress
-	name = "marine captain white beret"
+	name = "marine major white beret"
 	icon_state = "codressberet"
-	desc = "An armored white beret with the captain insignia emblazoned on it. Its dazzling white color commands power and exudes class."
+	desc = "An armored white beret with the Major insignia emblazoned on it. Its dazzling white color commands power and exudes class."
 
 /obj/item/clothing/head/beret/marine/commander/black
-	name = "marine captain black beret"
+	name = "marine major black beret"
 	icon_state = "coblackberet"
-	desc = "An armored black beret with the captain insignia emblazoned on it. Its sleek black color commands power and exudes class."
+	desc = "An armored black beret with the Major insignia emblazoned on it. Its sleek black color commands power and exudes class."
 
-/obj/item/clothing/head/beret/marine/commander/cdre
-	name = "marine commodore beret"
-	desc = "An armored blue beret with the commodore's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Commodore."
+/obj/item/clothing/head/beret/marine/commander/council
+	name = "marine colonel beret"
+	desc = "An armored blue beret with the Lieutenant Colonel's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Colonel."
 	icon_state = "cdreberet"
 
-/obj/item/clothing/head/beret/marine/commander/cdrechief
-	name = "marine commodore-in-chief beret"
-	desc = "A dark blue, custom-tailored armored beret signifying the Chief of all Commodores. Definitely not an alias for an General."
+/obj/item/clothing/head/beret/marine/commander/councilchief
+	name = "marine colonel beret"
+	desc = "A dark blue, custom-tailored armored beret signifying The Colonel. Definitely not an alias for a General."
 	icon_state = "cdrechiefberet"
 
 /obj/item/clothing/head/marine/peaked

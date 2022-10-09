@@ -47,7 +47,7 @@
 			list("Ale", 6, /obj/item/reagent_container/food/drinks/cans/ale, VENDOR_ITEM_REGULAR),
 			list("Beer", 6, /obj/item/reagent_container/food/drinks/cans/beer, VENDOR_ITEM_REGULAR),
 			list("Briar Rose Grenadine Syrup", 5, /obj/item/reagent_container/food/drinks/bottle/grenadine, VENDOR_ITEM_REGULAR),
-			list("Caccavo Guaranteed Quality Tequilla", 5, /obj/item/reagent_container/food/drinks/bottle/tequilla, VENDOR_ITEM_REGULAR),
+			list("Caccavo Guaranteed Quality tequila", 5, /obj/item/reagent_container/food/drinks/bottle/tequila, VENDOR_ITEM_REGULAR),
 			list("Captain Pete's Cuban Spiced Rum", 5, /obj/item/reagent_container/food/drinks/bottle/rum, VENDOR_ITEM_REGULAR),
 			list("Chateau De Baton Premium Cognac", 5, /obj/item/reagent_container/food/drinks/bottle/cognac, VENDOR_ITEM_REGULAR),
 			list("Davenport Rye Whiskey", 3, /obj/item/reagent_container/food/drinks/bottle/davenport, VENDOR_ITEM_REGULAR),

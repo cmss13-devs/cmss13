@@ -154,6 +154,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_JACKET)
 
 /datum/equipment_preset/uscm/tank/load_status()
 	return
@@ -176,7 +177,7 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/weldpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tanker(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech/tanker(H), WEAR_HEAD)
 
 	spawn_weapon(/obj/item/weapon/gun/smg/m39, /obj/item/ammo_magazine/smg/m39/extended, H, 0, 3)
 
@@ -213,6 +214,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_JACKET)
 
 /datum/equipment_preset/uscm/intel/load_status()
 	return //No cryo munchies
@@ -234,8 +236,8 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/intel(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/intel(src), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto/intel(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/rto/intel(src), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(src), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/intel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)

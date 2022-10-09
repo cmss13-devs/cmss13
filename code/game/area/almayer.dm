@@ -513,7 +513,7 @@
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/living/chapel
-	name = "\improper Chapel"
+	name = "\improper Almayer Chapel"
 	icon_state = "officerrnr"
 	fake_zlevel = 1 // upperdeck
 

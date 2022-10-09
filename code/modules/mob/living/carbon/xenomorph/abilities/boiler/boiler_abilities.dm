@@ -44,6 +44,7 @@
 	var/cooldown_duration = 350
 
 	var/speed_buff_amount = 0.5
+	var/movespeed_buff_applied = FALSE
 
 	// List of types of actions to place on 20-second CD
 	// if you ever want to subtype this for a strain or whatever, just change this var on the subtype
@@ -98,3 +99,6 @@
 	handles_movement = FALSE
 	should_delay = FALSE
 	ability_primacy = XENO_PRIMARY_ACTION_4
+
+/datum/action/xeno_action/activable/tail_stab/boiler
+	name = "Toxic Tail Stab"

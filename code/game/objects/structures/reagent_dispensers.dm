@@ -1,4 +1,3 @@
-
 /obj/structure/reagent_dispensers
 	name = "dispenser"
 	desc = "..."
@@ -6,8 +5,10 @@
 	icon_state = "watertank"
 	density = 1
 	anchored = 0
+	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
-
+	wrenchable = TRUE
+	unslashable = FALSE
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100,200,300)
 	var/chemical = ""
@@ -29,15 +30,20 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
-/obj/structure/reagent_dispensers/examine(mob/user)
-	..()
+/obj/structure/reagent_dispensers/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(user, src) > 2 && user != loc) return
-	to_chat(user, SPAN_NOTICE(" It contains:"))
+	. += SPAN_NOTICE("It contains:")
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
-			to_chat(user, SPAN_NOTICE(" [R.volume] units of [R.name]"))
+			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
 	else
-		to_chat(user, SPAN_NOTICE(" Nothing."))
+		. += SPAN_NOTICE(" Nothing.")
+
+/obj/structure/reagent_dispensers/Destroy()
+	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
+	visible_message(SPAN_NOTICE("\The [src] falls apart as its contents spill everywhere!"))
+	. = ..()
 
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -53,6 +59,31 @@
 	var/N = tgui_input_list(usr, "Amount per transfer from this:","[src]", possible_transfer_amounts)
 	if(N)
 		amount_per_transfer_from_this = N
+
+/obj/structure/reagent_dispensers/proc/healthcheck()
+	if(health <= 0)
+		qdel(src)
+
+/obj/structure/reagent_dispensers/bullet_act(var/obj/item/projectile/Proj)
+	health -= Proj.damage
+	if(Proj.firer)
+		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+		log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	healthcheck()
+	return TRUE
+
+/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/user)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	user.animation_attack_on(src)
+	health -= (rand(user.melee_damage_lower, user.melee_damage_upper))
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	user.visible_message(SPAN_DANGER("[user] slashes \the [src]!"), \
+	SPAN_DANGER("You slash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	healthcheck()
+	return XENO_ATTACK_ACTION
+
 
 /obj/structure/reagent_dispensers/verb/set_transfer_direction() //set amount_per_transfer_from_this
 	set name = "Set transfer direction"
@@ -124,7 +155,7 @@
 	desc = "A sulfuric acid tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "sacidtank"
-	chemical = "sacid"
+	chemical = "sulphuric acid"
 
 /obj/structure/reagent_dispensers/pacidtank
 	name = "polytrinic acid tank"
@@ -153,15 +184,16 @@
 	var/reinforced = FALSE
 	var/datum/weakref/source_mob
 
-/obj/structure/reagent_dispensers/fueltank/examine(mob/user)
-	..()
-	if(user != loc) return
+/obj/structure/reagent_dispensers/fueltank/get_examine_text(mob/user)
+	. = ..()
+	if(user != loc)
+		return
 	if(modded)
-		to_chat(user, SPAN_DANGER("Fuel faucet is wrenched open, leaking the fuel!"))
+		. += SPAN_DANGER("The fuel faucet is wrenched open, leaking the fuel!")
 	if(rig)
-		to_chat(user, SPAN_NOTICE("There is some kind of device rigged to the tank."))
+		. += SPAN_NOTICE("There is some kind of device rigged to the tank.")
 	if(reinforced)
-		to_chat(user, SPAN_NOTICE("It seems to be reinforced with metal shielding."))
+		. += SPAN_NOTICE("It seems to be reinforced with metal shielding.")
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand()
 	if(rig)
@@ -330,7 +362,7 @@
 
 /obj/structure/reagent_dispensers/fueltank/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	if(!reinforced)
-		reagents.source_mob = flame_cause_data.weak_mob
+		reagents.source_mob = flame_cause_data?.weak_mob
 		explode()
 
 /obj/structure/reagent_dispensers/fueltank/gas

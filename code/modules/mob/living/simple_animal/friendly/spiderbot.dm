@@ -255,7 +255,7 @@
 	to_chat(src, SPAN_DANGER("There is nothing of interest to take."))
 	return 0
 
-/mob/living/simple_animal/spiderbot/examine(mob/user)
-	..()
+/mob/living/simple_animal/spiderbot/get_examine_text(mob/user)
+	. = ..()
 	if(held_item)
-		to_chat(user, "It is carrying \a [held_item] [icon2html(held_item, user)].")
+		. += "It is carrying \a [held_item] [icon2html(held_item, user)]."

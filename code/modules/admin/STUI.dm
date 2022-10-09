@@ -14,6 +14,15 @@
 			** setup a way of opening a single log
 */
 
+#define STUI_TEXT_ATTACK "Attack"
+#define STUI_TEXT_ADMIN "Admin Logs"
+#define STUI_TEXT_STAFF "Staff Chat"
+#define STUI_TEXT_OOC "OOC"
+#define STUI_TEXT_GAME "Game"
+#define STUI_TEXT_DEBUG "Debug"
+#define STUI_TEXT_RUNTIME "Runtime"
+#define STUI_TEXT_TGUI "TGUI"
+
 // STUI
 GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 
@@ -34,89 +43,76 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 		usr.STUI_log = text2num(href_list["command"])
 		processing |= usr.STUI_log		//forces the UI to update
 
-/datum/STUI/proc/ui_interact(mob/user, ui_key = "STUI", var/datum/nanoui/ui = null, var/force_open = 1,var/force_start = 0)
-	if(!(user.STUI_log & processing) && !force_start)
-		return
+/datum/STUI/ui_status(mob/user, datum/ui_state/state)
+	return UI_INTERACTIVE
 
-	var/data[0]
-
-	data["current_log"] = user.STUI_log
-	switch(user.STUI_log)
-		if(STUI_LOG_ATTACK)
-			if(user.client.admin_holder.rights & R_MOD)
-				data["colour"] = "bad"
-				if(attack.len > CONFIG_GET(number/STUI_length)+1)
-					attack.Cut(,attack.len-CONFIG_GET(number/STUI_length))
-				data["log"] = jointext(attack, "\n")
-			else
-				data["log"] = "You do not have the right permissions to view this."
-		if(STUI_LOG_ADMIN)
-			if(user.client.admin_holder.rights & R_ADMIN)
-				data["colour"] = "blue"
-				if(admin.len > CONFIG_GET(number/STUI_length)+1)
-					admin.Cut(,admin.len-CONFIG_GET(number/STUI_length))
-				data["log"] = jointext(admin, "\n")
-			else
-				data["log"] = "You do not have the right permissions to view this."
-		if(STUI_LOG_STAFF_CHAT)
-			if(user.client.admin_holder.rights & R_ADMIN)
-				data["colour"] = "average"
-				if(staff.len > CONFIG_GET(number/STUI_length)+1)
-					staff.Cut(,staff.len-CONFIG_GET(number/STUI_length))
-				data["log"] = jointext(staff, "\n")
-			else
-				data["log"] = "You do not have the right permissions to view this."
-		if(STUI_LOG_OOC_CHAT)
-			if(user.client.admin_holder.rights & R_MOD)
-				data["colour"] = "average"
-				if(ooc.len > CONFIG_GET(number/STUI_length)+1)
-					ooc.Cut(,ooc.len-CONFIG_GET(number/STUI_length))
-				data["log"] = jointext(ooc, "\n")
-			else
-				data["log"] = "You do not have the right permissions to view this."
-		if(STUI_LOG_GAME_CHAT)
-			if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
-				data["colour"] = "white"
-				if(game.len > CONFIG_GET(number/STUI_length)+1)
-					game.Cut(,game.len-CONFIG_GET(number/STUI_length))
-				data["log"] = jointext(game, "\n")
-			else
-				data["log"] = "You do not have the right permissions to view this."
-		if(STUI_LOG_DEBUG)
-			if(user.client.admin_holder.rights & R_DEBUG)
-				data["colour"] = "average"
-				if(debug.len > CONFIG_GET(number/STUI_length)+1)
-					debug.Cut(,debug.len-CONFIG_GET(number/STUI_length))
-				data["log"] = jointext(debug, "\n")
-			else
-				data["log"] = "You do not have the right permissions to view this."
-		if(STUI_LOG_RUNTIME)
-			if(user.client.admin_holder.rights & R_DEBUG)
-				data["colour"] = "average"
-				if(runtime.len > CONFIG_GET(number/STUI_length)+1)
-					runtime.Cut(,runtime.len-CONFIG_GET(number/STUI_length))
-				data["log"] = jointext(runtime, "\n")
-			else
-				data["log"] = "You do not have the right permissions to view this."
-		if(STUI_LOG_TGUI)
-			if(user.client.admin_holder.rights & R_DEBUG)
-				data["colour"] = "average"
-				if(tgui.len > CONFIG_GET(number/STUI_length)+1)
-					tgui.Cut(,tgui.len-CONFIG_GET(number/STUI_length))
-				data["log"] = jointext(tgui, "\n")
-			else
-				data["log"] = "You do not have the right permissions to view this."
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if(!ui)
-		ui = new(user, src, ui_key, "STUI.tmpl", "STUI", 700, 500, null, -1)
-		ui.set_initial_data(data)
+/datum/STUI/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "STUI", "STUI")
+		ui.set_autoupdate(FALSE)
 		ui.open()
-		ui.set_auto_update(1)
+
+/datum/STUI/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	switch(action)
+		if("update")
+			return TRUE
+	return FALSE
+
+/datum/STUI/ui_static_data(mob/user)
+	. = list()
+	.["tabs"] = list()
+	if(user.client.admin_holder.rights & R_MOD)
+		.["tabs"] += STUI_TEXT_ATTACK
+	if(user.client.admin_holder.rights & R_ADMIN)
+		.["tabs"] += STUI_TEXT_ADMIN
+		.["tabs"] += STUI_TEXT_STAFF
+	if(user.client.admin_holder.rights & R_MOD)
+		.["tabs"] += STUI_TEXT_OOC
+	if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
+		.["tabs"] += STUI_TEXT_GAME
+	if(user.client.admin_holder.rights & R_DEBUG)
+		.["tabs"] += STUI_TEXT_DEBUG
+		.["tabs"] += STUI_TEXT_RUNTIME
+		.["tabs"] += STUI_TEXT_TGUI
+
+/datum/STUI/ui_data(mob/user)
+	var/stui_length = CONFIG_GET(number/STUI_length)
+	. = list()
+	.["logs"] = list()
+	if(user.client.admin_holder.rights & R_MOD)
+		if(attack.len > stui_length+1)
+			attack.Cut(,attack.len-stui_length)
+		.["logs"][STUI_TEXT_ATTACK] = attack
+		if(ooc.len > stui_length+1)
+			ooc.Cut(,ooc.len-stui_length)
+		.["logs"][STUI_TEXT_OOC] = ooc
+	if(user.client.admin_holder.rights & R_ADMIN)
+		if(admin.len > stui_length+1)
+			admin.Cut(,admin.len-stui_length)
+		.["logs"][STUI_TEXT_ADMIN] = admin
+		if(staff.len > stui_length+1)
+			staff.Cut(,staff.len-stui_length)
+		.["logs"][STUI_TEXT_STAFF] = staff
+	if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
+		if(game.len > stui_length+1)
+			game.Cut(,game.len-stui_length)
+		.["logs"][STUI_TEXT_GAME] = game
+	if(user.client.admin_holder.rights & R_DEBUG)
+		if(debug.len > stui_length+1)
+			debug.Cut(,debug.len-stui_length)
+		.["logs"][STUI_TEXT_DEBUG] = debug
+		if(runtime.len > stui_length+1)
+			runtime.Cut(,runtime.len-stui_length)
+		.["logs"][STUI_TEXT_RUNTIME] = runtime
+		if(tgui.len > stui_length+1)
+			tgui.Cut(,tgui.len-stui_length)
+		.["logs"][STUI_TEXT_TGUI] = tgui
 
 /client/proc/open_STUI()
-	set name = "Open STUI"
+	set name = "S: Open STUI"
 	set category = "Admin"
 
-	GLOB.STUI.ui_interact(usr, force_start=1)
+	GLOB.STUI.tgui_interact(usr)
+

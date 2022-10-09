@@ -17,11 +17,10 @@
 	var/dropped = 1
 	var/obj/structure/machinery/defenses/TR
 
-/obj/item/defenses/handheld/examine(mob/user)
+/obj/item/defenses/handheld/get_examine_text(mob/user)
 	. = ..()
-
-	to_chat(user, SPAN_INFO("It is ready for deployment."))
-	to_chat(user, SPAN_INFO("It has [SPAN_HELPFUL("[TR.health]/[TR.health_max]")] health."))
+	. += SPAN_INFO("It is ready for deployment.")
+	. += SPAN_INFO("It has [SPAN_HELPFUL("[TR.health]/[TR.health_max]")] health.")
 
 /obj/item/defenses/handheld/Initialize()
 	. = ..()

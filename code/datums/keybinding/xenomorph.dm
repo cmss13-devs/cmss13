@@ -129,8 +129,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/X = user.mob
-	X.m_corrosive_acid()
+	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	xeno.m_corrosive_acid()
 	return TRUE
 
 /datum/keybinding/xenomorph/tech_secrete_resin
@@ -144,6 +144,36 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/X = user.mob
-	X.tech_secrete_resin()
+	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	xeno.tech_secrete_resin()
+	return TRUE
+
+/datum/keybinding/xenomorph/screech
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "screech"
+	full_name = "Screech"
+	keybind_signal = COMSIG_KB_XENO_SCREECH
+
+/datum/keybinding/xenomorph/screech/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	xeno.xeno_screech_action()
+	return TRUE
+
+/datum/keybinding/xenomorph/tail_stab
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "tail_stab"
+	full_name = "Tail Stab"
+	keybind_signal = COMSIG_KB_TAIL_STAB
+
+/datum/keybinding/xenomorph/tail_stab/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	xeno.xeno_tail_stab_action()
 	return TRUE

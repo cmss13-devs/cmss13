@@ -60,7 +60,7 @@
 		icon_state = "defense_base_off"
 
 
-/obj/structure/machinery/defenses/examine(mob/user)
+/obj/structure/machinery/defenses/get_examine_text(mob/user)
 	. = ..()
 
 	var/message = ""
@@ -73,7 +73,7 @@
 	message += "\n"
 	if(display_additional_stats)
 		message += SPAN_INFO("Its display reads - Kills: [kills] | Shots: [shots].")
-	to_chat(user, message)
+	. += message
 
 /obj/structure/machinery/defenses/proc/power_on()
 	if(stat == DEFENSE_DAMAGED)
@@ -159,6 +159,10 @@
 		user.visible_message(SPAN_NOTICE("[user] begins disassembling \the [src]."), SPAN_NOTICE("You begin disassembling \the [src]."))
 
 		if(!do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			return
+
+		if(health < health_max * 0.25) //repeat check
+			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))

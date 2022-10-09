@@ -44,12 +44,12 @@
 			scribble = txt
 	..()
 
-/obj/item/photo/examine(mob/user)
+/obj/item/photo/get_examine_text(mob/user)
 	if(in_range(user, src))
 		show(user)
-		to_chat(user, desc)
+		return list(desc)
 	else
-		to_chat(user, SPAN_NOTICE("It is too far away."))
+		return  list(SPAN_NOTICE("It is too far away."))
 
 /obj/item/photo/proc/show(mob/living/user)
 	if(!isicon(img)) return // this should stop a runtime error
@@ -90,7 +90,7 @@
 
 	if((istype(usr, /mob/living/carbon/human)))
 		var/mob/M = usr
-		if(!( istype(over_object, /obj/screen) ))
+		if(!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 		playsound(loc, "rustle", 15, 1, 6)
 		if((!( M.is_mob_restrained() ) && !( M.stat ) && M.back == src))
@@ -239,7 +239,7 @@
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
 	if(!on || !pictures_left || ismob(target.loc) || isstorage(target.loc)) return
-	if(user.contains(target) || istype(target, /obj/screen)) return
+	if(user.contains(target) || istype(target, /atom/movable/screen)) return
 	captureimage(target, user, flag)
 
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)

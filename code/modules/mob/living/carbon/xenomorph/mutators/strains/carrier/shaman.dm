@@ -409,7 +409,7 @@
 /datum/action/xeno_action/activable/sacrifice_egg/radius_remember
 	name = "Remember Pain (300)"
 	action_icon_state = "xeno_readmit"
-	ability_name = "adrenal pheromones"
+	ability_name = "remember pain"
 	macro_path = /datum/action/xeno_action/verb/radius_remember
 	action_type = XENO_ACTION_ACTIVATE
 	var/pheromone_strength_per_xeno = 0.5

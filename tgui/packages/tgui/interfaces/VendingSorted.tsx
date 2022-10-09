@@ -27,6 +27,7 @@ interface VendingRecord {
   prod_color?: number;
   prod_icon: IconRecord;
   prod_desc?: string;
+  prod_cost: number;
 }
 
 interface VendingCategory {
@@ -40,6 +41,8 @@ interface VendingData {
   theme: string;
   displayed_categories: VendingCategory[];
   stock_listing: Array<number>;
+  show_points?: boolean;
+  current_m_points?: number;
 }
 
 interface VenableItem {
@@ -92,6 +95,7 @@ const RecordName = (props: RecordNameProps) => {
 };
 
 interface VendButtonProps {
+  text?: string | number;
   isRecommended: boolean;
   isMandatory: boolean;
   available: boolean;
@@ -107,10 +111,12 @@ const VendButton = (props: VendButtonProps, _) => {
       props.isMandatory && 'VendingSorted__MandatoryVendButton',
     ])}
     preserveWhitespace
-    icon={props.available ? "circle-down" : "xmark"}
+    icon={props.text ? undefined : (props.available ? "circle-down" : "xmark")}
     onClick={props.onClick}
     textAlign="center"
-    disabled={!props.available} />
+    disabled={!props.available}>
+      {props.text}
+  </Button>
 }
 
 const VendableItem = (props: VenableItem, context) => {
@@ -166,6 +172,7 @@ const VendableClothingItem = (props: VenableItem, context) => {
   const available = quantity > 0;
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
+  const cost = record.prod_cost;
 
   return (
     <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
@@ -182,6 +189,7 @@ const VendableClothingItem = (props: VenableItem, context) => {
             isRecommended={isRecommended}
             isMandatory={isMandatory}
             available={available}
+            text={cost === 0 ? undefined : `${cost}P`}
             onClick={() => act('vend', record)}
           />
       </Flex.Item>
@@ -189,6 +197,7 @@ const VendableClothingItem = (props: VenableItem, context) => {
       <Flex.Item>
         <Box className="VendingSorted__Spacer" />
       </Flex.Item>
+
 
       <Flex.Item grow={1}>
         <RecordName record={record} />
@@ -266,6 +275,8 @@ export const VendingSorted = (_, context) => {
   const categories = data.displayed_categories ?? [];
   const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', "");
   const isEmpty = categories.length === 0;
+  const show_points = data.show_points ?? false;
+  const points = data.current_m_points ?? 0;
   return (
     <Window
       height={800}
@@ -279,7 +290,7 @@ export const VendingSorted = (_, context) => {
           act('cancel');
         }
       }}>
-        {!isEmpty
+        {!isEmpty && !show_points
           && (
             <Box className={classes([
               "VendingSorted__SearchBox",
@@ -298,6 +309,21 @@ export const VendingSorted = (_, context) => {
               </Flex>
             </Box>
           )}
+
+        {!isEmpty && show_points && (
+          <Box className={classes([
+            "VendingSorted__SearchBox",
+          ])}>
+            <Flex align="center" justify="space-between" align-items="stretch" className="Section__title">
+              <Flex.Item>
+                <span className="Section__titleText">Points Remaining</span>
+              </Flex.Item>
+              <Flex.Item>
+                <span>{points}</span>
+              </Flex.Item>
+            </Flex>
+          </Box>
+        )}
 
         {isEmpty
           && (

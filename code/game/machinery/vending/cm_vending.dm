@@ -788,6 +788,7 @@ IN_USE						used for vending/denying
 	var/list/ui_listed_products = get_listed_products(user)
 
 	var/list/ui_categories = list()
+	var/show_points = FALSE
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
 
@@ -816,6 +817,8 @@ IN_USE						used for vending/denying
 			"prod_cost" = p_cost
 		)
 
+		show_points = show_points ? show_points : p_cost > 0
+
 		if (is_category == 1)
 			ui_categories += list(list(
 				"name" = p_name,
@@ -832,6 +835,7 @@ IN_USE						used for vending/denying
 		var/last_category = ui_categories[last_index]
 		last_category["items"] += list(display_item)
 	data["displayed_categories"] = ui_categories
+	data["show_points"] = show_points
 	return data
 
 /obj/structure/machinery/cm_vending/clothing/ui_data(mob/user)
@@ -868,7 +872,6 @@ IN_USE						used for vending/denying
 
 
 	data["stock_listing"] = stock_values
-	data["show_points"] = FALSE
 	data["current_m_points"] = available_points_to_display
 	return data
 

@@ -16,7 +16,6 @@
 	var/y_supply = 0
 	var/x_bomb = 0
 	var/y_bomb = 0
-	var/living_marines_sorting = FALSE
 	var/busy = FALSE //The overwatch computer is busy launching an OB/SB, lock controls
 	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
 	var/z_hidden = 0 //which z level is ignored when showing marines.
@@ -532,6 +531,7 @@
 
 	for(var/mob/living/carbon/human/current_squaddie in marines_list)
 
+		var/manually_filtered
 		var/marine_status
 		var/filtered
 		switch(current_squaddie.stat)
@@ -553,8 +553,9 @@
 				if(is_ground_level(current_turf.z))
 					filtered = TRUE
 
-		if(marine_filter_enabled)
-			if(locate(current_squaddie) in marine_filter)
+		if("\ref[current_squaddie]" in marine_filter)
+			manually_filtered = TRUE
+			if(marine_filter_enabled)
 				filtered = TRUE
 
 		var/area/current_area = get_area(current_squaddie)
@@ -570,6 +571,7 @@
 			"area_name" = sanitize_area(current_area?.name),
 			"helmet" = istype(current_squaddie.head, /obj/item/clothing/head/helmet/marine),
 			"filtered" = filtered,
+			"manually_filtered" = manually_filtered,
 			"SSD" = !current_squaddie.key || !current_squaddie.client && current_squaddie.stat != DEAD
 			)
 
@@ -591,13 +593,10 @@
 	data["y_supply"] = y_supply
 	data["x_bomb"] = x_bomb
 	data["y_bomb"] = y_bomb
-	data["living_marines_sorting"] = living_marines_sorting
-	data["busy"] = busy
 	data["dead_hidden"] = dead_hidden
 	data["marine_filter"] = marine_filter
 	data["marine_filter_enabled"] = marine_filter_enabled
-	data["operator"] = operator
-	data["operator_name"] = operator?.name
+	data["operator"] = operator?.name
 	data["bombardment_cooldown"] = COOLDOWN_TIMELEFT(almayer_orbital_cannon, ob_firing_cooldown)
 	data["user"] = usr
 
@@ -607,10 +606,8 @@
 			squad_list += S.name
 	data["squad_list"] = squad_list
 
-	if(almayer_orbital_cannon.chambered_tray)
-		data["almayer_cannon_chambered"] = TRUE
-	if(almayer_orbital_cannon.is_disabled)
-		data["almayer_cannon_disabled"] = TRUE
+	data["almayer_cannon_chambered"] = almayer_orbital_cannon.chambered_tray ? TRUE : FALSE
+	data["almayer_cannon_disabled"] = almayer_orbital_cannon.is_disabled ? TRUE : FALSE
 
 	if(current_squad)
 		data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
@@ -674,21 +671,6 @@
 			if(cam && !ishighersilicon(usr))
 				usr.reset_view(null)
 			cam = null
-			return TRUE
-
-		if("logout_squad")
-			if(operator != usr)
-				return FALSE
-			if(current_squad.release_overwatch())
-				if(ishighersilicon(usr))
-					current_squad.send_squad_message("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.", displayed_icon = src)
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system control override disengaged.")]")
-				else
-					var/mob/living/carbon/human/H = operator
-					var/obj/item/card/id/ID = H.get_idcard()
-					current_squad.send_squad_message("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.", displayed_icon = src)
-					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
-				current_squad = null
 			return TRUE
 
 		if("pick_squad")
@@ -781,16 +763,6 @@
 			x_bomb = params["target_x"]
 			y_bomb = params["target_y"]
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Latitude is now [y_bomb], longitude is now [x_bomb].")]")
-			return TRUE
-
-		if("change_sort")
-			if(operator != usr)
-				return FALSE
-			living_marines_sorting = !living_marines_sorting
-			if(living_marines_sorting)
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Marines are now sorted by health status.")]")
-			else
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Marines are now sorted by rank.")]")
 			return TRUE
 
 		if("hide_dead")

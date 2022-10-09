@@ -41,7 +41,7 @@ export const OverwatchConsole = (_props, context) => {
 
 export const OverwatchMain = (props, context) => {
   const { act, data } = useBackend(context);
-  const { squad_data, mapRef } = data;
+  const { squad_data } = data;
   const [currentControlCategory] = useLocalState(
     context,
     'current_control_category',
@@ -184,7 +184,7 @@ export const OverwatchEmpty = (props, context) => {
 
 export const OverwatchId = (props, context) => {
   const { act, data } = useBackend(context);
-  const { operator, operator_name, authenticated } = data;
+  const { operator, authenticated } = data;
   return (
     <Section title="Authentication">
       <Stack>
@@ -193,7 +193,7 @@ export const OverwatchId = (props, context) => {
             icon="user"
             fluid
             content={
-              operator ? 'Operator: ' + operator_name : 'Unauthenticated'
+              operator ? 'Operator: ' + operator : 'Unauthenticated'
             }
             onClick={() => act('change_operator')}
           />
@@ -239,8 +239,6 @@ export const OverwatchSelect = (props, context) => {
             content={
               squad_data ? 'Squad: ' + squad_data.squad_name : 'Squad: None'
             }
-            disabled={!squad_data}
-            onClick={() => act('logout_squad')}
             lineHeight="2em"
           />
         </Stack.Item>
@@ -471,10 +469,14 @@ export const OverwatchMonitor = (props, context) => {
           <Stack.Item>
             <Dropdown
               options={['Ship', 'Ground', 'None']}
-              displayText={z_hidden ? "Hidden Area: " + (z_hidden === 2 ? "Almayer" : "Colony") : "Hide Area"}
+              displayText={
+                z_hidden
+                  ? 'Hidden Area: ' + (z_hidden === 2 ? 'Almayer' : 'Colony')
+                  : 'Hide Area'
+              }
               onSelected={(value) => act('choose_z', { area_picked: value })}
               noscroll
-              width={z_hidden ? "14em" : "8em"}
+              width={z_hidden ? '14em' : '8em'}
               height="1.8em"
               lineHeight="1.5em"
             />
@@ -513,57 +515,66 @@ export const OverwatchMonitor = (props, context) => {
                   <Divider />
                 </Table.Cell>
               </Table.Row>
-              {marine_data.map((marine_data) => (
-                <Table.Row key={marine_data}>
-                  <Table.Cell>
-                    <Button
-                      fluid
-                      content={marine_data['name']}
-                      onClick={() =>
-                        act('use_cam', {
-                          cam_target: marine_data['ref'],
-                        })}
-                    />
-                  </Table.Cell>
-                  <Table.Cell>
-                    {marine_data['role']
-                      + (marine_data['act_sl'] === true
-                        ? marine_data['act_sl']
-                        : '')
-                      + (marine_data['fteam']
-                        ? ' (' + marine_data['fteam'] + ')'
-                        : '')}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ColorBox
-                      color={
-                        marine_data['mob_state'] === 'Conscious'
-                          ? 'green'
-                          : 'red'
-                      }
-                    />
-                    {' ' + marine_data['mob_state']}{' '}
-                    {!marine_data['helmet'] ? ' (no helmet)' : null}
-                  </Table.Cell>
-                  <Table.Cell>
-                    {marine_data['area_name']
-                      ? marine_data['area_name']
-                      : 'N/A'}
-                  </Table.Cell>
-                  <Table.Cell>
-                    {marine_data['dist']
-                      ? marine_data['dist']
-                      : 'N/A'}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <Button
-                      content={marine_data['filtered'] ? 'HIDE' : 'SHOW'}
-                      onClick={() =>
-                        act('filter_marine', {
-                          squaddie: marine_data.ref })} />
-                  </Table.Cell>
-                </Table.Row>
-              ))}
+              {marine_data
+                .filter((marine) => !marine.filtered)
+                .map((marine_data) => (
+                  <Table.Row key={marine_data}>
+                    <Table.Cell>
+                      <Button
+                        fluid
+                        content={marine_data['name']}
+                        onClick={() =>
+                          act('use_cam', {
+                            cam_target: marine_data['ref'],
+                          })}
+                      />
+                    </Table.Cell>
+                    <Table.Cell>
+                      {marine_data['role']
+                        + (marine_data['act_sl'] === true
+                          ? marine_data['act_sl']
+                          : '')
+                        + (marine_data['fteam']
+                          ? ' (' + marine_data['fteam'] + ')'
+                          : '')}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <ColorBox
+                        color={
+                          marine_data['mob_state'] === 'Conscious'
+                            ? 'green'
+                            : 'red'
+                        }
+                      />
+                      {' ' + marine_data['mob_state']}{' '}
+                      {!marine_data['helmet'] ? ' (no helmet)' : null}
+                      {marine_data.SSD ? ' (SSD)' : null}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {marine_data['area_name']
+                        ? marine_data['area_name']
+                        : 'N/A'}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {marine_data['dist'] ? marine_data['dist'] : 'N/A'}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        content={
+                          marine_data.manually_filtered ? 'SHOW' : 'HIDE'
+                        }
+                        selected={marine_data.manually_filtered}
+                        textColor={
+                          !marine_data.manually_filtered ? '#161613' : '#fffff'
+                        }
+                        onClick={() =>
+                          act('filter_marine', {
+                            squaddie: marine_data.ref,
+                          })}
+                      />
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
             </Table>
           </Stack.Item>
         </Section>
@@ -654,6 +665,8 @@ export const OverwatchSupplies = (props, context) => {
   const { act, data } = useBackend(context);
   const { x_supply, y_supply, supply_cooldown, supply_ready } = data;
 
+  const cooldown = round(supply_cooldown / 10);
+
   const [target_x, setTargetX] = useLocalState(context, 'target_x', x_supply);
   const [target_y, setTargetY] = useLocalState(context, 'target_y', y_supply);
 
@@ -667,8 +680,8 @@ export const OverwatchSupplies = (props, context) => {
         }}
         minValue={0}
         maxValue={500}
-        value={supply_cooldown}>
-        {supply_cooldown + ' seconds'}
+        value={cooldown}>
+        {cooldown + ' seconds'}
       </ProgressBar>
       <Divider />
       <Stack>
@@ -723,11 +736,7 @@ export const OverwatchSupplies = (props, context) => {
         textAlign="center"
         disabled={!supply_ready}
         confirmContent={'Fire at ' + x_supply + ', ' + y_supply + '?'}
-        onClick={() =>
-          act('set_supply', {
-            target_x: target_x,
-            target_y: target_y,
-          })}
+        onClick={() => act('dropsupply')}
       />
       <Divider />
       {supply_ready ? (
@@ -749,7 +758,7 @@ export const OverwatchBomb = (props, context) => {
     x_bomb,
     y_bomb,
     bombardment_cooldown,
-    almayer_cannon_empty,
+    almayer_cannon_chambered,
     almayer_cannon_disabled,
   } = data;
 
@@ -758,9 +767,10 @@ export const OverwatchBomb = (props, context) => {
   const [bomb_x, setTargetX] = useLocalState(context, 'bomb_x', x_bomb);
   const [bomb_y, setTargetY] = useLocalState(context, 'bomb_y', y_bomb);
 
-  const bombardment_enabled = bombardment_cooldown === 0
-  && !almayer_cannon_disabled
-  && !almayer_cannon_empty;
+  const bombardment_enabled
+    = bombardment_cooldown === 0
+    && !almayer_cannon_disabled
+    && almayer_cannon_chambered;
 
   return (
     <>
@@ -825,28 +835,25 @@ export const OverwatchBomb = (props, context) => {
         textAlign="center"
         content="Bombardment"
         lineHeight="3.5em"
-        textColor={bombardment_enabled ? ("#0000000") : ("#ffffff")}
+        textColor={!bombardment_enabled ? '#0000000' : '#ffffff'}
         color="red"
         icon="burst"
-        disabled={bombardment_enabled}
+        disabled={!bombardment_enabled}
         onClick={() => act('dropbomb')}
         confirmContent={'Fire at ' + x_bomb + ', ' + y_bomb + '?'}
       />
       <Divider />
-      {bombardment_cooldown === 0
-      && !almayer_cannon_disabled
-      && !almayer_cannon_empty
-        ? (
-          <NoticeBox warning textAlign="center">
-            Chamber is not ready!
-          </NoticeBox>
-        ) : (
-          <NoticeBox danger textAlign="center">
-            <Icon name="skull-crossbones" mr="1em" />
-            Ready to fire!
-            <Icon name="skull-crossbones" ml="1em" />
-          </NoticeBox>
-        )}
+      {!bombardment_enabled ? (
+        <NoticeBox warning textAlign="center">
+          Chamber is not ready!
+        </NoticeBox>
+      ) : (
+        <NoticeBox danger textAlign="center">
+          <Icon name="skull-crossbones" mr="1em" />
+          Ready to fire!
+          <Icon name="skull-crossbones" ml="1em" />
+        </NoticeBox>
+      )}
     </>
   );
 };

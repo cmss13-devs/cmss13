@@ -16398,6 +16398,12 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_central)
+"vOh" = (
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/power_pt2_electric_boogaloo)
 "vOt" = (
 /obj/structure/platform/kutjevo{
 	dir = 8
@@ -17371,6 +17377,9 @@
 /area/kutjevo/interior/colony_South)
 "xlD" = (
 /obj/structure/machinery/light,
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "xms" = (
@@ -37877,7 +37886,7 @@ kHm
 kHm
 kHm
 kHm
-kHm
+vOh
 xlD
 oQc
 oQc

@@ -205,7 +205,6 @@
 	skills = /datum/skills/intel
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
-	dress_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey)
 
 /datum/equipment_preset/uscm/intel/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel

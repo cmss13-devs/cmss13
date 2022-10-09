@@ -82,3 +82,27 @@
   carlarctg:
   - refactor: Refactored marine armor file
   - bugfix: Ghillie suits can now clip on ponchos
+2022-10-08:
+  CLF Guerrilla:
+  - bugfix: Added terminals to the SMES on Kutjevo
+  Geevies:
+  - rscdel: The bridge coats for CIC is no longer accessible without admins spawning
+      it in. Tanker jackets no longer have blast armor.
+  Unknownity:
+  - bugfix: Fixed burrowers being able to burrow and tunnel to the Solaris Ridge secret
+      room.
+  stanalbatross:
+  - bugfix: fixed two runtimes
+2022-10-09:
+  Stanalbatross, spookydonut:
+  - admin: converted STUI to TGUI. You can also now search for terms and change font
+      size in it as well.
+  c4xmaniac:
+  - bugfix: Fixed the missing area_noop on one of the science annex nightmare inserts
+      causing hypothermia.
+  stanalbatross:
+  - ui: the ot demo sim console now uses tgui
+  - rscadd: the ot demo sim console can now switch dummy type between a variety of
+      human and xeno targets
+  - qol: the ot demo sim console now has a 1 minute cooldown, instead of 2 minutes
+  - ui: the centrifuge now uses tgui

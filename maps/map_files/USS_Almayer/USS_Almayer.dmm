@@ -62572,7 +62572,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
 	id_tag = "Boat2-D1";
 	linked_dock = "almayer-lifeboat2";
-	throw_dir = 1
+	throw_dir = 1;
 	locked = 1
 	},
 /turf/open/floor/almayer{

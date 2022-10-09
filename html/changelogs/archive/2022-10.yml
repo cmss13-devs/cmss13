@@ -94,6 +94,9 @@
   stanalbatross:
   - bugfix: fixed two runtimes
 2022-10-09:
+  Stanalbatross, spookydonut:
+  - admin: converted STUI to TGUI. You can also now search for terms and change font
+      size in it as well.
   stanalbatross:
   - ui: the ot demo sim console now uses tgui
   - rscadd: the ot demo sim console can now switch dummy type between a variety of

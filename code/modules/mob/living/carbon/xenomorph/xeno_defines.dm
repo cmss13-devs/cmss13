@@ -23,6 +23,7 @@
 
 	var/evolution_allowed = 1 //Are they allowed to evolve (and have their evolution progress group)
 	var/evolution_threshold = 0 //Threshold to next evolution
+	var/evolve_without_queen = FALSE // whether they can get evo points without needing an ovi queen
 
 	var/list/evolves_to = list() //This is where you add castes to evolve into. "Seperated", "by", "commas"
 	var/list/deevolves_to = list()  // what caste or castes to de-evolve to.
@@ -106,6 +107,10 @@
 	var/list/resin_build_order
 	var/minimum_xeno_playtime = 0
 
+	// cannot evolve to this caste until the round has been going on for this amount of time
+	// IMPORTANT: this is ROUND_TIME, not world.time
+	var/minimum_evolve_time = 1 MINUTES
+
 
 /datum/caste_datum/can_vv_modify()
 	return FALSE
@@ -117,6 +122,8 @@
 	evolution_threshold = 0
 	if(evolution_allowed)
 		switch(tier)
+			if(0)
+				evolution_threshold = 60
 			if(1)
 				evolution_threshold = 200
 			if(2)

@@ -6464,6 +6464,17 @@
 /obj/item/tool/pickaxe,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany/east_tech)
+"iGF" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics{
+	draw_warnings = 0;
+	icon_state = "hydrotray4";
+	},
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2";
+	pixel_y = 14
+	},
+/turf/open/floor/kutjevo/colors/green,
+/area/kutjevo/interior/complex/botany)
 "iGS" = (
 /obj/structure/platform/kutjevo/rock{
 	dir = 8

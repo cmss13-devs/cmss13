@@ -107,6 +107,9 @@
   - qol: the ot demo sim console now has a 1 minute cooldown, instead of 2 minutes
   - ui: the centrifuge now uses tgui
 2022-10-10:
+  Joe Lampost:
+  - rscadd: buffs the sword sharpness
+  - rscdel: Removed clan sword parry
   stanalbatross:
   - bugfix: pickup animations now inherit the alpha level of the person picking them
       up

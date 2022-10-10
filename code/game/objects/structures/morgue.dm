@@ -14,12 +14,17 @@
 	var/morgue_open = 0
 	anchored = 1
 	throwpass = 1
+	var/buildstacktype = /obj/item/stack/sheet/metal
+	var/buildstackamount = 2
 
 /obj/structure/morgue/Initialize()
 	. = ..()
 	connected = new tray_path(src)
 
 /obj/structure/morgue/Destroy()
+	new buildstacktype(loc, buildstackamount)
+	for(var/atom/movable/A in src)
+		A.forceMove(loc)
 	. = ..()
 	QDEL_NULL(connected)
 

@@ -621,6 +621,10 @@
 
 	return data
 
+/obj/structure/machinery/computer/demo_sim/ui_close(mob/user)
+ 	. = ..()
+ 	user.reset_view(null)
+
 /obj/structure/machinery/computer/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)

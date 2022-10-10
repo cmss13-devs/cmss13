@@ -32,7 +32,6 @@ export const OverwatchConsole = (_props, context) => {
     <Window
       width={windowWidth}
       height={windowHeight}
-      scrollable
       theme="weyland">
       <Window.Content>{body}</Window.Content>
     </Window>
@@ -217,29 +216,18 @@ export const OverwatchSelect = (props, context) => {
   const { act, data } = useBackend(context);
   const { squad_data, squad_list } = data;
   return (
-    <Section
-      title="Squad Selection"
-      buttons={
-        <Dropdown
-          options={squad_list}
-          onSelected={(value) => act('pick_squad', { squadpicked: value })}
-          selected="Select"
-          noscroll
-          displayText="Select..."
-          lineHeight="1.5em"
-          height="1.8em"
-        />
-      }>
+    <Section title="Squad Selection">
       <Stack>
         <Stack.Item grow>
-          <Button
-            textAlign="center"
-            icon={'user'}
-            fluid
-            content={
-              squad_data ? 'Squad: ' + squad_data.squad_name : 'Squad: None'
-            }
-            lineHeight="2em"
+          <Dropdown
+            options={squad_list}
+            onSelected={(value) => act('pick_squad', { squadpicked: value })}
+            selected="Select"
+            noscroll
+            displayText={squad_data ? "Squad: " + squad_data.squad_name : "Select Squad"}
+            lineHeight="1.5em"
+            height="1.8em"
+            width="100%"
           />
         </Stack.Item>
       </Stack>
@@ -272,13 +260,14 @@ export const OverwatchSquad = (props, context) => {
           />
         </Stack.Item>
         <Stack.Item width="15%">
-          <Button
-            textAlign="center"
-            icon={'comment'}
+          <Button.Input
             fluid
+            textAlign="center"
             content={'Message'}
-            disabled={!squad_data.current_squad_leader_name}
-            onClick={() => act('sl_message')}
+            onCommit={(e, value) =>
+              act('message', {
+                message: value,
+              })}
           />
         </Stack.Item>
         <Stack.Item width="25%">
@@ -364,7 +353,7 @@ export const OverwatchSquad = (props, context) => {
             fluid
             textAlign="center"
             content={'Send Message to Squad'}
-            onClick={() =>
+            onCommit={(e, value) =>
               act('message', {
                 message: value,
               })}
@@ -401,7 +390,7 @@ export const OverwatchSquad = (props, context) => {
                 nochevron
                 ml="-0.5em"
                 onSelected={(value) =>
-                  act('camera_view', { marine_picked: marine_list[value].ref })}
+                  act('squad_transfer', { marine_picked: marine_list[value].ref })}
                 noscroll
                 width="104%"
               />
@@ -440,6 +429,7 @@ export const OverwatchMonitor = (props, context) => {
       height="25em"
       ml="-0.5em"
       mr="0.5em"
+      fill
       buttons={
         <Stack>
           <Stack.Item>
@@ -523,6 +513,7 @@ export const OverwatchMonitor = (props, context) => {
                       <Button
                         fluid
                         content={marine_data['name']}
+                        disabled={!marine_data['helmet']}
                         onClick={() =>
                           act('use_cam', {
                             cam_target: marine_data['ref'],
@@ -682,7 +673,7 @@ export const OverwatchSupplies = (props, context) => {
         minValue={0}
         maxValue={500}
         value={cooldown}>
-        {cooldown + ' seconds'}
+        {cooldown > 0 ? cooldown + ' second cooldown' : "Ready to Fire"}
       </ProgressBar>
       <Divider />
       <Stack>
@@ -784,7 +775,7 @@ export const OverwatchBomb = (props, context) => {
         minValue="0"
         maxValue="500"
         value={bombardment}>
-        {bombardment + ' seconds'}
+        {bombardment > 0 ? bombardment + ' second cooldown' : "Ready to Fire"}
       </ProgressBar>
       <Divider />
       <Stack>

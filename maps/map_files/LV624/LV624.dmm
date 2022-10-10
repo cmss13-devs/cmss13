@@ -11198,6 +11198,10 @@
 /area/lv624/lazarus/comms)
 "aTj" = (
 /obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "brown"

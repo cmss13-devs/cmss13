@@ -52,6 +52,7 @@
 #define XENO_TECH_SECRETE_RESIN 5 //Macro for T1 build distrib secreting macro
 #define XENO_CORROSIVE_ACID 6 //Macro for covering things in acid, universal ability
 #define XENO_SCREECH 7 //Macro for queen screech
+#define XENO_TAIL_STAB 8 //macro for tail stabs
 
 #define NO_ACTION_CHARGES -1	// This ability does not have a limit to how many times it can be used
 
@@ -653,3 +654,10 @@
 #define NOT_WEEDABLE 0
 #define SEMI_WEEDABLE 1
 #define FULLY_WEEDABLE 2
+
+#define TAILSTAB_COOLDOWN_NONE 0
+#define TAILSTAB_COOLDOWN_VERY_LOW 0.1
+#define TAILSTAB_COOLDOWN_LOW 0.5
+#define TAILSTAB_COOLDOWN_NORMAL 1
+#define TAILSTAB_COOLDOWN_HIGH 1.5
+#define TAILSTAB_COOLDOWN_VERY_HIGH 2

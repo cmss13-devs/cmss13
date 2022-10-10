@@ -317,3 +317,9 @@
 	scatter = SCATTER_AMOUNT_TIER_1
 	bonus_projectiles_amount = 0
 	max_range = 4
+
+/datum/action/xeno_action/activable/tail_stab/boiler/use_ability(atom/A)
+	var/target = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		carbon_target.reagents.add_reagent("molecularacid", 10)

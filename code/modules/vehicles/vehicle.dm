@@ -285,7 +285,7 @@
 	indestructible = TRUE
 
 /obj/vehicle/souto/super/explode()
-	for(var/mob/M in viewers(7, src))
+	for(var/mob/M as anything in viewers(7, src))
 		M.show_message("Somehow, [src] still looks as bright and shiny as a new can of Souto Classic.")
 	health = initial(health) //Souto Man never dies, and neither does his bike.
 

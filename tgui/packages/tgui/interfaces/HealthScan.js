@@ -143,7 +143,7 @@ export const HealthScan = (props, context) => {
         {has_chemicals ? (
           <ScannerChems />
         ) : null}
-        {damaged_organs.length && bodyscanner ? (
+        {damaged_organs?.length && bodyscanner ? (
           <ScannerOrgans />
         ) : null }
         {diseases ? (

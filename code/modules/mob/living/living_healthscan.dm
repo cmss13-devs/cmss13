@@ -7,7 +7,7 @@
 
 GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
-/// var reffing this on /mob/living is called HEALTH_DISPLAY
+/// vars reffing this on /mob/dead/observer, /obj/item/device/healthanalyzer, /obj/structure/machinery/cm_vending/sorted/medical, /obj/structure/machinery/body_scanconsole are called last_health_display
 /datum/health_scan
 	var/mob/living/target_mob
 	var/detail_level = DETAIL_LEVEL_FULL
@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	return ..()
 
 /// This is the proc for interacting with, or looking at, a mob's health display. Also contains skillchecks and the like. You may NOT call tgui interact directly, and you MUST set the detail level.
-/datum/health_scan/proc/look_at(mob/user, var/detail = DETAIL_LEVEL_FULL, var/bypass_checks = FALSE, var/ignore_delay = TRUE, var/alien = FALSE, datum/tgui/ui)
+/datum/health_scan/proc/look_at(mob/user, var/detail = DETAIL_LEVEL_FULL, var/bypass_checks = FALSE, var/ignore_delay = TRUE, var/alien = FALSE, datum/tgui/ui = null)
 	if(!bypass_checks)
 		if(HAS_TRAIT(target_mob, TRAIT_FOREIGN_BIO) && !alien)
 			to_chat(user, SPAN_WARNING("ERROR: Unknown biology detected."))
@@ -56,10 +56,9 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "HealthScan", "[target_mob.name]'s health scan")
+		ui = new(user, src, "HealthScan", "Health Scan")
 		ui.open()
 		ui.set_autoupdate(FALSE)
-
 
 /datum/health_scan/ui_data(mob/user, var/data_detail_level = null)
 	var/list/data = list(
@@ -79,7 +78,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 	var/internal_bleeding = FALSE
 
-	if(data_detail_level)
+	if(!isnull(data_detail_level))
 		detail_level = data_detail_level
 	data["detail_level"] = detail_level
 
@@ -114,12 +113,13 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 		// permadeadness
 		var/permadead = FALSE
-		if(!human_target_mob.is_revivable())
-			permadead = TRUE
-		else if(!human_target_mob.check_tod() && !isSynth(human_target_mob))
-			permadead = TRUE
-		if(isSynth(target_mob))
-			permadead = FALSE
+		if(human_target_mob.is_dead())
+			if(!human_target_mob.is_revivable())
+				permadead = TRUE
+			else if(!human_target_mob.check_tod() && !isSynth(human_target_mob))
+				permadead = TRUE
+			if(isSynth(target_mob))
+				permadead = FALSE
 
 		data["permadead"] = permadead
 
@@ -246,8 +246,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		data["damaged_organs"] = damaged_organs
 
 		//advice!
+		var/list/advice = list()
 		if(!permadead)
-			var/list/advice = list()
 			if(human_target_mob.getBruteLoss(robotic_only = TRUE) > 20)
 				advice += list(list(
 					"advice" = "Use a blowtorch or nanopaste to repair the damaged areas.",
@@ -360,8 +360,10 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"colour" = "red"
 						))
 
-			if(advice.len)
-				data["advice"] = advice
+		if(advice.len)
+			data["advice"] = advice
+		else
+			data["advice"] = null // interstingly even if we don't set data at all, re-using UI that had this data still has it
 
 		//diseases
 		var/list/diseases = list()
@@ -378,6 +380,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				diseases += list(current_disease)
 		if(diseases.len)
 			data["diseases"] = diseases
+		else
+			data["diseases"] = null // interstingly even if we don't set data at all, re-using UI that had this data still has it
 
 	if(target_mob.getBrainLoss() >= 100 || !target_mob.has_brain())
 		data["ssd"] = "Subject is brain-dead."

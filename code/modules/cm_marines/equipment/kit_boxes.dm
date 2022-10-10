@@ -524,7 +524,6 @@
 /obj/item/storage/box/kit/matebadual
 	name = "\improper Commanding Officer's Custom Pistol Kit"
 	pro_case_overlay = "pursuit"
-	storage_slots = 14
 
 /obj/item/storage/box/kit/matebadual/fill_preset_inventory()
 	new /obj/item/storage/belt/gun/mateba/cmateba/full(src)
@@ -546,7 +545,6 @@
 /obj/item/storage/box/kit/deagledual
 	name = "\improper Commanding Officer's Custom Pistol Kit"
 	pro_case_overlay = "pursuit"
-	storage_slots = 14
 
 /obj/item/storage/box/kit/obj/item/storage/box/kit/deagledual/fill_preset_inventory()
 	new /obj/item/storage/belt/gun/m4a3/heavy/co(src)

@@ -520,3 +520,31 @@
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)
+
+/obj/item/storage/box/kit/matebadual
+	name = "\improper Commanding Officer's Custom Pistol Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/matebadual/fill_preset_inventory()
+	new /obj/item/storage/belt/gun/mateba/cmateba/full(src)
+	new /obj/item/storage/belt/gun/co/dual(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+
+/obj/item/storage/box/kit/deagledual
+	name = "\improper Commanding Officer's Custom Pistol Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/matebadual/fill_preset_inventory()
+	new /obj/item/storage/belt/gun/m4a3/heavy/co(src)
+	new /obj/item/storage/belt/gun/co/dual(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)

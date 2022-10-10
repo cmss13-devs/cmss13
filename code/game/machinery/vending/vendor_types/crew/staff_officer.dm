@@ -6,6 +6,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer, list(
 		list("Service Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
+		list("STAFF OFFICER ESSENTIALS Kit (Take ALL)", 0,null, null, null),
+		list("Staff Officer essentials Kit", 0, /obj/effect/essentials_set/staff_officer, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 		list("M4A3 Custom Pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
@@ -52,3 +55,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer, list(
 /obj/structure/machinery/cm_vending/clothing/staff_officer/Initialize(mapload, ...)
 	. = ..()
 	listed_products = GLOB.cm_vending_clothing_staff_officer
+
+/obj/effect/essentials_set/staff_officer
+	spawned_gear_list = list(
+		/obj/item/device/binoculars/range,
+		/obj/item/map/current_map,
+		/obj/item/device/whistle,
+		/obj/item/device/flash,
+	)

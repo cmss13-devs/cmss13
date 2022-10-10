@@ -256,6 +256,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Service Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
+		list("EXECUTIVE OFFICER ESSENTIALS KIT (Take ALL)", 0,null, null, null),
+		list("Executive Officer Essentials Kit", 0, /obj/effect/essentials_set/exec_officer, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+
 		list("PERSONAL WEAPON (CHOOSE 1)", 0, null, null, null),
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 		list("M4A3 Custom Pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
@@ -292,3 +295,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
+
+/obj/effect/essentials_set/exec_officer
+	spawned_gear_list = list(
+		/obj/item/device/binoculars/range/designator,
+		/obj/item/map/current_map,
+		/obj/item/device/whistle,
+		/obj/item/device/flash,
+	)

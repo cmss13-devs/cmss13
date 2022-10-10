@@ -280,6 +280,7 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, admin_verbs_mod)
 	if(CLIENT_HAS_RIGHTS(src, R_ADMIN))
 		add_verb(src, admin_verbs_admin)
+		add_verb(src, admin_verbs_fun)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		add_verb(src, /client/proc/cmd_mentor_say)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))

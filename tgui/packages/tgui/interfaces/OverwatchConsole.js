@@ -24,7 +24,6 @@ const logger = createLogger('Overwatch');
 export const OverwatchConsole = (_props, context) => {
   const { act, data } = useBackend(context);
   const { operator } = data;
-  const body = operator ? <OverwatchMain /> : <OverwatchEmpty />;
   const windowWidth = operator ? 1000 : 600;
   const windowHeight = operator ? 700 : 300;
 
@@ -33,7 +32,10 @@ export const OverwatchConsole = (_props, context) => {
       width={windowWidth}
       height={windowHeight}
       theme="weyland">
-      <Window.Content>{body}</Window.Content>
+      <Window.Content>
+        {operator && <OverwatchMain />}
+        {!operator && <OverwatchEmpty />}
+      </Window.Content>
     </Window>
   );
 };
@@ -51,7 +53,7 @@ export const OverwatchMain = (props, context) => {
     <>
       <OverwatchId />
       {squad_data ? (
-        <Stack direction="column" fontFamily="consolas" grow>
+        <Stack direction="column" grow>
           <Stack.Item>
             <Stack mb="1em">
               <Stack.Item grow>
@@ -60,18 +62,13 @@ export const OverwatchMain = (props, context) => {
                     <OverwatchTab />
                   </Stack.Item>
                   <Stack.Item grow>
-                    <Stack>
-                      {currentControlCategory === 1 ? (
-                        <Stack.Item grow fill>
-                          <OverwatchSelect />
-                          <OverwatchSquad />
-                        </Stack.Item>
-                      ) : (
-                        <Stack.Item grow fill>
-                          <OverwatchDrop />
-                        </Stack.Item>
-                      )}
-                    </Stack>
+                    {currentControlCategory === 1
+                    && (
+                      <>
+                        <OverwatchSelect />
+                        <OverwatchSquad />
+                      </>)}
+                    {currentControlCategory === 2 && <OverwatchDrop />}
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
@@ -476,34 +473,14 @@ export const OverwatchMonitor = (props, context) => {
       <Stack direction="column" justify="space-between" height="21em">
         <Section scrollable>
           <Stack.Item height="16em">
-            <Table fontFamily="consolas">
-              <Table.Row>
+            <Table>
+              <Table.Row style={{ "border-bottom": "1px solid #2F3037" }}>
                 <Table.Cell bold>Name</Table.Cell>
                 <Table.Cell bold>Rank</Table.Cell>
                 <Table.Cell bold>Status</Table.Cell>
                 <Table.Cell bold>Area</Table.Cell>
                 <Table.Cell bold>SL Distance</Table.Cell>
                 <Table.Cell bold>Filter</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Divider />
-                </Table.Cell>
-                <Table.Cell>
-                  <Divider />
-                </Table.Cell>
-                <Table.Cell>
-                  <Divider />
-                </Table.Cell>
-                <Table.Cell>
-                  <Divider />
-                </Table.Cell>
-                <Table.Cell>
-                  <Divider />
-                </Table.Cell>
-                <Table.Cell>
-                  <Divider />
-                </Table.Cell>
               </Table.Row>
               {marine_data
                 .filter((marine) => !marine.filtered)
@@ -572,7 +549,7 @@ export const OverwatchMonitor = (props, context) => {
         </Section>
         <Stack.Item>
           <Table>
-            <Table.Row>
+            <Table.Row style={{ "border-bottom": "1px solid #2F3037" }}>
               <Table.Cell>Squad Leader</Table.Cell>
               <Table.Cell>RTO</Table.Cell>
               <Table.Cell>Specialist</Table.Cell>
@@ -581,32 +558,6 @@ export const OverwatchMonitor = (props, context) => {
               <Table.Cell>Combat Technician</Table.Cell>
               <Table.Cell>Alive</Table.Cell>
               <Table.Cell>Deployed</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>
-                <Divider />
-              </Table.Cell>
-              <Table.Cell>
-                <Divider />
-              </Table.Cell>
-              <Table.Cell>
-                <Divider />
-              </Table.Cell>
-              <Table.Cell>
-                <Divider />
-              </Table.Cell>
-              <Table.Cell>
-                <Divider />
-              </Table.Cell>
-              <Table.Cell>
-                <Divider />
-              </Table.Cell>
-              <Table.Cell>
-                <Divider />
-              </Table.Cell>
-              <Table.Cell>
-                <Divider />
-              </Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell>

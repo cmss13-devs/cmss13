@@ -21,6 +21,8 @@
 		return GLOB.cm_vending_clothing_req_officer
 	else if(user.job == JOB_CMO)
 		return GLOB.cm_vending_clothing_cmo
+	else if(user.job == JOB_CHIEF_POLICE)
+		return GLOB.cm_vending_clothing_military_police_chief
 	return ..()
 
 

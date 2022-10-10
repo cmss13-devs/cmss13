@@ -607,8 +607,9 @@
 			squad_list += S.name
 	data["squad_list"] = squad_list
 
-	data["almayer_cannon_chambered"] = almayer_orbital_cannon.chambered_tray ? TRUE : FALSE
-	data["almayer_cannon_disabled"] = almayer_orbital_cannon.is_disabled ? TRUE : FALSE
+	if(almayer_orbital_cannon)
+		data["almayer_cannon_chambered"] = almayer_orbital_cannon.chambered_tray ? TRUE : FALSE
+		data["almayer_cannon_disabled"] = almayer_orbital_cannon.is_disabled ? TRUE : FALSE
 
 	if(current_squad)
 		data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)

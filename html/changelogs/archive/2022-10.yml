@@ -106,3 +106,11 @@
       human and xeno targets
   - qol: the ot demo sim console now has a 1 minute cooldown, instead of 2 minutes
   - ui: the centrifuge now uses tgui
+2022-10-10:
+  stanalbatross:
+  - bugfix: pickup animations now inherit the alpha level of the person picking them
+      up
+  - bugfix: pickup animations can no longer be seen through walls
+  - bugfix: fixed a rogue submodule in the git
+  - code_imp: changed all instances of var/mob/m in viewers to as anything in viewers,
+      because viewers only gets mobs.

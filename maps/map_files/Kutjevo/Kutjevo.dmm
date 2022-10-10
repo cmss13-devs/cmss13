@@ -71,10 +71,7 @@
 	},
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
+	icon_state = "hydrotray4"
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
@@ -2087,10 +2084,7 @@
 "cNW" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
+	icon_state = "hydrotray4"
 	},
 /obj/structure/flora/bush/snow{
 	icon_state = "snowbush_4";
@@ -4726,10 +4720,7 @@
 "fYl" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
+	icon_state = "hydrotray4"
 	},
 /obj/structure/flora/bush/ausbushes/var3/stalkybush{
 	pixel_y = 14
@@ -6473,20 +6464,6 @@
 /obj/item/tool/pickaxe,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany/east_tech)
-"iGF" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics{
-	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
-	},
-/obj/structure/flora/bush/desert{
-	icon_state = "tree_2";
-	pixel_y = 14
-	},
-/turf/open/floor/kutjevo/colors/green,
-/area/kutjevo/interior/complex/botany)
 "iGS" = (
 /obj/structure/platform/kutjevo/rock{
 	dir = 8
@@ -8275,10 +8252,7 @@
 "ldt" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
+	icon_state = "hydrotray4"
 	},
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_y = 14
@@ -9282,15 +9256,12 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
 "mza" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics{
-	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
-	},
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
 	pixel_y = 15
+	},
+/obj/structure/machinery/portable_atmospherics/hydroponics{
+	draw_warnings = 0;
+	icon_state = "hydrotray4"
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
@@ -9799,15 +9770,12 @@
 	},
 /area/kutjevo/interior/complex/med/triage)
 "nfN" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics{
-	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
-	},
 /obj/structure/flora/bush/ausbushes/var3/fernybush{
 	pixel_y = 14
+	},
+/obj/structure/machinery/portable_atmospherics/hydroponics{
+	draw_warnings = 0;
+	icon_state = "hydrotray4"
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
@@ -10565,15 +10533,12 @@
 /turf/open/floor/kutjevo/tan/alt_inner_edge,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "obN" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics{
-	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
-	},
 /obj/structure/flora/bush/ausbushes/pointybush{
 	pixel_y = 14
+	},
+/obj/structure/machinery/portable_atmospherics/hydroponics{
+	draw_warnings = 0;
+	icon_state = "hydrotray4"
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
@@ -13067,15 +13032,12 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "rzu" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics{
-	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
-	},
 /obj/structure/flora/bush/snow{
 	pixel_y = 10
+	},
+/obj/structure/machinery/portable_atmospherics/hydroponics{
+	draw_warnings = 0;
+	icon_state = "hydrotray4"
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
@@ -13969,15 +13931,12 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "sIH" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics{
-	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
-	},
 /obj/structure/flora/bush/ausbushes/ausbush{
 	pixel_y = 12
+	},
+/obj/structure/machinery/portable_atmospherics/hydroponics{
+	draw_warnings = 0;
+	icon_state = "hydrotray4"
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
@@ -14240,10 +14199,7 @@
 	},
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
+	icon_state = "hydrotray4"
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
@@ -16941,10 +16897,7 @@
 "wBv" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
-	health = null;
-	icon_state = "hydrotray4";
-	indestructible = 1;
-	unacidable = 1
+	icon_state = "hydrotray4"
 	},
 /obj/structure/flora/bush/ausbushes/palebush{
 	pixel_y = 10
@@ -33709,7 +33662,7 @@ qgW
 vDS
 qgW
 kDS
-iGF
+adR
 kDS
 obN
 kDS

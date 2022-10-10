@@ -214,7 +214,7 @@
 
 	invisibility = 100
 	var/list/client/displayed_for = list()
-	for(var/mob/M in viewers(user))
+	for(var/mob/M as anything in viewers(user))
 		var/client/C = M.client
 		if(C)
 			C.images += trick

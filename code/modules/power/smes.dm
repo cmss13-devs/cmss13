@@ -361,7 +361,7 @@
 /obj/structure/machinery/power/smes/proc/ion_act()
 	if(is_ground_level(z))
 		if(prob(1)) //explosion
-			for(var/mob/M in viewers(src))
+			for(var/mob/M as anything in viewers(src))
 				M.show_message(SPAN_DANGER("\The [src.name] is making strange noises!"), 3, SPAN_DANGER("You hear sizzling electronics."), 2)
 			sleep(10*pick(4,5,6,7,10,14))
 			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()

@@ -557,6 +557,7 @@ export const OverwatchMonitor = (props, context) => {
                     </Table.Cell>
                     <Table.Cell>
                       {marine_data['dist'] ? marine_data['dist'] : 'N/A'}
+                      {marine_data['dir'] ? " (" + marine_data['dir'] + ")" : " (N/A)"}
                     </Table.Cell>
                     <Table.Cell>
                       <Button

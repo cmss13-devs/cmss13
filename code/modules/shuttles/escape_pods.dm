@@ -219,7 +219,9 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 // TGUI stufferinos \\
 
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_interact(mob/user, ui_key, datum/nanoui/ui, force_open)
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/attack_hand(mob/user)
+	if(..())
+		return
 	tgui_interact(user)
 
 /obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/tgui_interact(mob/user, datum/tgui/ui)

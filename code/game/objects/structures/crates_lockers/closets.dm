@@ -229,7 +229,7 @@
 			if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 			new /obj/item/stack/sheet/metal(src.loc)
-			for(var/mob/M in viewers(src))
+			for(var/mob/M as anything in viewers(src))
 				M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), 3, "You hear welding.", 2)
 			qdel(src)
 			return
@@ -255,7 +255,7 @@
 			return
 		welded = !welded
 		update_icon()
-		for(var/mob/M in viewers(src))
+		for(var/mob/M as anything in viewers(src))
 			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), 3, "You hear welding.", 2)
 	else
 		if(isXeno(user))

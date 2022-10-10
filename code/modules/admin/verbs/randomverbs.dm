@@ -12,7 +12,7 @@
 			return
 		if(!CONFIG_GET(flag/mentor_tools))
 			to_chat(src, "Mentors do not have permission to use this.")
-	
+
 	var/age = alert(src, "Age check", "Show accounts up to how many days old ?", "7", "30" , "All")
 
 	if(age == "All")
@@ -105,7 +105,7 @@
 		to_chat(usr, SPAN_WARNING("You need to be a ghost in order to use this."))
 
 // bite me
-var/global/explosive_antigrief_on = TRUE
+var/global/explosive_antigrief_on = FALSE
 /client/proc/toggle_explosive_antigrief()
 	set name = "Toggle Explosive Antigrief"
 	set category = "Admin.Game"

@@ -99,3 +99,6 @@
 	handles_movement = FALSE
 	should_delay = FALSE
 	ability_primacy = XENO_PRIMARY_ACTION_4
+
+/datum/action/xeno_action/activable/tail_stab/boiler
+	name = "Toxic Tail Stab"

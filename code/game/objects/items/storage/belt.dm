@@ -1096,7 +1096,7 @@
 
 /obj/item/storage/belt/gun/co/dual
 	name = "M276 custom dual pistol holster rig"
-	desc = "You'll look like an action hero in the next propaganda shoot with this on."
+	desc = "Command thinks you look like an idiot with it on, you think you look cool with this on. Either way the nice lady at the bar said you looked like a sexy action hero in the propaganda shoot with it."
 	icon_state = "gunslinger_holster"
 	storage_slots = 12
 	can_hold = list(

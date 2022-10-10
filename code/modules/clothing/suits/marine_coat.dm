@@ -106,7 +106,7 @@
 	initial_icon_state = "coat_cmp"
 
 /obj/item/clothing/suit/storage/jacket/marine/service/tanker
-	name = "Tanker Jacket"
+	name = "tank crewman jacket"
 	desc = "A sturdy jacket based on a WW2 design, and issued to USCM Vehicle crewmen. Its Faux leather construction is rather stain repelent in the greasy interior of heavy machinery or cramped Maintnence tunnels"
 	has_buttons = TRUE
 	flags_atom = NO_SNOW_TYPE
@@ -151,14 +151,14 @@
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
-	name = "Commanding Officer's bomber jacket"
+	name = "commanding Officer's bomber jacket"
 	desc = "A bomber jacket resembling those worn by airmen of old. A classic, stylish choice for those in the higher ranks."
 	has_buttons = TRUE
 	icon_state = "co_bomber"
 	initial_icon_state = "co_bomber"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/white
-	name = "Commanding Officer's white dress jacket"
+	name = "commanding Officer's white dress jacket"
 	desc = "A white dress tunic for hot-weather parades. Bright, unstained, and immaculate with gold accents."
 	icon_state = "co_formal_white"
 

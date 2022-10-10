@@ -157,16 +157,16 @@
 	mode = !mode
 	to_chat(usr, "The IV drip is now [mode ? "injecting" : "taking blood"].")
 
-/obj/structure/machinery/iv_drip/examine(mob/user)
-	..()
-	to_chat(user, "The IV drip is [mode ? "injecting" : "taking blood"].")
+/obj/structure/machinery/iv_drip/get_examine_text(mob/user)
+	. = ..()
+	. += "The IV drip is [mode ? "injecting" : "taking blood"]."
 
 	if(beaker)
 		if(beaker.reagents && beaker.reagents.reagent_list.len)
-			to_chat(user, SPAN_NOTICE(" Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid."))
+			. += SPAN_NOTICE(" Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.")
 		else
-			to_chat(user, SPAN_NOTICE(" Attached is an empty [beaker]."))
+			. += SPAN_NOTICE(" Attached is an empty [beaker].")
 	else
-		to_chat(user, SPAN_NOTICE(" No chemicals are attached."))
+		. += SPAN_NOTICE(" No chemicals are attached.")
 
-	to_chat(user, SPAN_NOTICE(" [attached ? attached : "No one"] is attached."))
+	. += SPAN_NOTICE(" [attached ? attached : "No one"] is attached.")

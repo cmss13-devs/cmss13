@@ -1195,7 +1195,7 @@
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves)
+/area/space)
 "adb" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
@@ -13160,8 +13160,8 @@
 /area/bigredv2/outside/library)
 "aHP" = (
 /obj/structure/prop/almayer/computers/mapping_computer{
-	name = "\improper Teleporter Targeting Computer";
-	desc = "A strange-looking collection of coordinate inputs, relay shunts, and wiring. Designed to operate an experimental teleporter."
+	desc = "A strange-looking collection of coordinate inputs, relay shunts, and wiring. Designed to operate an experimental teleporter.";
+	name = "\improper Teleporter Targeting Computer"
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/caves/lambda/research)
@@ -18725,7 +18725,7 @@
 	icon_state = "mars_dirt_9";
 	tag = "icon-mars_dirt_9"
 	},
-/area/bigredv2/caves)
+/area/space)
 "aVd" = (
 /obj/structure/surface/table,
 /obj/item/toy/dice,
@@ -19030,7 +19030,7 @@
 "aVQ" = (
 /obj/structure/platform_decoration/kutjevo/rock,
 /turf/open/mars,
-/area/bigredv2/caves)
+/area/space)
 "aVR" = (
 /obj/structure/platform_decoration/kutjevo/rock{
 	dir = 1
@@ -19039,7 +19039,7 @@
 	icon_state = "mars_dirt_12";
 	tag = "icon-mars_dirt_12"
 	},
-/area/bigredv2/caves)
+/area/space)
 "aVS" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1;
@@ -24544,9 +24544,9 @@
 /area/bigredv2/outside/engineering)
 "bnA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
+	dir = 1;
 	name = "\improper Atmospherics Condenser";
-	req_one_access = null;
-	dir = 1
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -29706,7 +29706,7 @@
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves)
+/area/space)
 "cnm" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -31811,7 +31811,7 @@
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
-/area/bigredv2/caves)
+/area/space)
 "gtX" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves_se)
@@ -32992,7 +32992,7 @@
 	dir = 8
 	},
 /turf/open/mars,
-/area/bigredv2/caves)
+/area/space)
 "iVi" = (
 /obj/structure/fence,
 /turf/open/mars,
@@ -33027,8 +33027,8 @@
 /obj/structure/closet/secure_closet,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
-	icon_state = "redfull";
-	dir = 9
+	dir = 9;
+	icon_state = "redfull"
 	},
 /area/bigredv2/caves/eta/research)
 "iYR" = (
@@ -34797,8 +34797,8 @@
 /area/bigredv2/caves/mining)
 "mji" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
-	req_one_access = null;
-	name = "\improper Engineering Workshop"
+	name = "\improper Engineering Workshop";
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
@@ -34868,6 +34868,10 @@
 /area/bigredv2/caves/mining)
 "mrH" = (
 /obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -35122,9 +35126,9 @@
 /area/bigredv2/caves/eta/xenobiology)
 "mWg" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+	dir = 2;
 	name = "\improper Operations";
-	req_access = null;
-	dir = 2
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -35288,7 +35292,7 @@
 	},
 /obj/structure/platform_decoration/kutjevo/rock,
 /turf/open/mars,
-/area/bigredv2/caves)
+/area/space)
 "nny" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_7";
@@ -36863,6 +36867,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"qjO" = (
+/obj/structure/prop/almayer/computers/mapping_computer{
+	desc = "A strange-looking collection of coordinate inputs, relay shunts, and wiring. Designed to operate an experimental teleporter.";
+	name = "\improper Teleporter Targeting Computer"
+	},
+/turf/open/floor/greengrid,
+/area/space)
 "qkw" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Access door";
@@ -37220,7 +37231,7 @@
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
-/area/bigredv2/caves)
+/area/space)
 "qVi" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
@@ -37347,7 +37358,7 @@
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves)
+/area/space)
 "rgp" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
@@ -37917,7 +37928,7 @@
 	icon_state = "mars_dirt_12";
 	tag = "icon-mars_dirt_12"
 	},
-/area/bigredv2/caves)
+/area/space)
 "sbA" = (
 /obj/item/frame/rack,
 /obj/effect/spawner/random/toolbox,
@@ -38178,9 +38189,9 @@
 /area/bigredv2/oob)
 "suV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
-	req_one_access = null;
+	dir = 1;
 	name = "\improper Engineering Workshop";
-	dir = 1
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
@@ -38785,8 +38796,8 @@
 /area/bigredv2/outside/lz2_south_cas)
 "twS" = (
 /turf/open/floor{
-	icon_state = "asteroidwarning";
 	dir = 1;
+	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/outside/telecomm/lz2_cave)
@@ -40153,7 +40164,7 @@
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
-/area/bigredv2/caves)
+/area/space)
 "weO" = (
 /obj/structure/closet/secure_closet/medical_wall,
 /turf/open/floor/plating{
@@ -40831,7 +40842,7 @@
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves)
+/area/space)
 "xpb" = (
 /turf/open/floor{
 	dir = 5;
@@ -42353,7 +42364,7 @@ aab
 aao
 cnk
 ada
-aHP
+qjO
 gsW
 aao
 aao

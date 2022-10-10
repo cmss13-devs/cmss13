@@ -6,7 +6,7 @@
 	icon_state = "equip_base"
 	unacidable = TRUE
 	anchored = TRUE
-
+	layer = ABOVE_TURF_LAYER
 	/// The currently installed equipment, if any
 	var/obj/structure/dropship_equipment/installed_equipment
 	/// What kind of equipment this base accepts

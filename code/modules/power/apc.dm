@@ -366,27 +366,27 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	addtimer(CALLBACK(src, .proc/update), 5)
 
-/obj/structure/machinery/power/apc/examine(mob/user)
-	to_chat(user, desc)
+/obj/structure/machinery/power/apc/get_examine_text(mob/user)
+	. = list(desc)
 
 	if(stat & BROKEN)
-		to_chat(user, SPAN_INFO("It appears to be completely broken. It's hard to see what else is wrong with it."))
+		. += SPAN_INFO("It appears to be completely broken. It's hard to see what else is wrong with it.")
 		return
 	if(opened)
 		if(has_electronics && terminal)
-			to_chat(user, SPAN_INFO("The cover is [opened == APC_COVER_REMOVED ? "removed":"open"] and the power cell is [cell ? "installed":"missing"]."))
+			. += SPAN_INFO("The cover is [opened == APC_COVER_REMOVED ? "removed":"open"] and the power cell is [cell ? "installed":"missing"].")
 		else if (!has_electronics && terminal)
-			to_chat(user, SPAN_INFO("There are some wires but no any electronics."))
+			. += SPAN_INFO("There are some wires but no any electronics.")
 		else if (has_electronics && !terminal)
-			to_chat(user, SPAN_INFO("Electronics installed but not wired."))
+			. += SPAN_INFO("Electronics installed but not wired.")
 		else
-			to_chat(user, SPAN_INFO("There is no electronics nor connected wires."))
+			. += SPAN_INFO("There is no electronics nor connected wires.")
 
 	else
 		if(stat & MAINT)
-			to_chat(user, SPAN_INFO("The cover is closed. Something is wrong with it, it doesn't work."))
+			. += SPAN_INFO("The cover is closed. Something is wrong with it, it doesn't work.")
 		else
-			to_chat(user, SPAN_INFO("The cover is closed."))
+			. += SPAN_INFO("The cover is closed.")
 
 //Update the APC icon to show the three base states
 //Also add overlays for indicator lights
@@ -986,7 +986,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/mob/living/carbon/human/H = user
 	if(istype(H))
 		if(H.getBrainLoss() >= 60)
-			for(var/mob/M in viewers(src, null))
+			for(var/mob/M as anything in viewers(src, null))
 				H.visible_message(SPAN_WARNING("[H] stares cluelessly at [src] and drools."),
 				SPAN_WARNING("You stare cluelessly at [src] and drool."))
 			return 0

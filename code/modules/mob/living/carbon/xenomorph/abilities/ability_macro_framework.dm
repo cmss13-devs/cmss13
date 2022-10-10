@@ -178,3 +178,19 @@
 		if(xeno_action.ability_primacy == XENO_SCREECH)
 			handle_xeno_macro_datum(src, xeno_action)
 			break
+
+/mob/living/carbon/Xenomorph/verb/xeno_tail_stab_action()
+	set category = "Alien"
+	set name = "Tail Stab"
+	set hidden = TRUE
+	var/mob/living/carbon/Xenomorph/xeno = src
+	if (!istype(xeno))
+		return
+	for(var/datum/action/xeno_action/xeno_action in xeno.actions)
+		if(!istype(xeno_action))
+			continue
+		if(xeno_action.hidden)
+			continue
+		if(xeno_action.ability_primacy == XENO_TAIL_STAB)
+			handle_xeno_macro_datum(src, xeno_action)
+			break

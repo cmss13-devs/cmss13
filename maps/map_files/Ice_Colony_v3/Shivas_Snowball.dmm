@@ -2144,9 +2144,9 @@
 /area/shiva/interior/colony/central)
 "ajw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
+	name = "\improper Colony Power Substation";
 	req_access = null;
-	req_one_access = null;
-	name = "\improper Colony Power Substation"
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -10468,9 +10468,9 @@
 	pixel_y = 24
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
+	name = "\improper Colony Power Substation";
 	req_access = null;
-	req_one_access = null;
-	name = "\improper Colony Power Substation"
+	req_one_access = null
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
@@ -10929,6 +10929,16 @@
 "flN" = (
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/research_hab)
+"flV" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva{
+	icon_state = "bluefull"
+	},
+/area/shiva/interior/colony/s_admin)
 "fmi" = (
 /obj/structure/bed,
 /obj/effect/landmark/objective_landmark/science,
@@ -16646,8 +16656,8 @@
 "lnk" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	start_charge = 10;
-	name = "telecomms relay power controller"
+	name = "telecomms relay power controller";
+	start_charge = 10
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -16773,8 +16783,8 @@
 "lro" = (
 /obj/structure/machinery/power/apc{
 	dir = 8;
-	start_charge = 0;
-	name = "telecomms relay power controller"
+	name = "telecomms relay power controller";
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -44717,7 +44727,7 @@ san
 hyu
 kzr
 swF
-hyu
+flV
 nOd
 qNn
 qNn

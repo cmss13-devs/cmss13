@@ -52,8 +52,8 @@
 				P = new /obj/item/paper/wy
 			else if (response == "USCM Document")
 				P = new /obj/item/paper/uscm
-			
-			
+
+
 
 		P.forceMove(user.loc)
 		user.put_in_hands(P)
@@ -75,11 +75,11 @@
 		amount++
 
 
-/obj/item/paper_bin/examine(mob/user)
+/obj/item/paper_bin/get_examine_text(mob/user)
 	if(amount)
-		to_chat(user, SPAN_NOTICE("There ") + (amount > 1 ? "are [amount] papers" : "is one paper") + " in the bin.")
+		return list(SPAN_NOTICE("There ") + (amount > 1 ? "are [amount] papers" : "is one paper") + " in the bin.")
 	else
-		to_chat(user, SPAN_NOTICE("There are no papers in the bin."))
+		return list(SPAN_NOTICE("There are no papers in the bin."))
 
 
 /obj/item/paper_bin/update_icon()

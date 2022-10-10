@@ -241,11 +241,8 @@
 	spawning = TRUE
 	close_spawn_windows()
 
-	var/turf/T
-	T = get_turf(pick(GLOB.latejoin))
-
 	var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
-	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], T)
+	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], late_join = TRUE)
 	EquipCustomItems(character)
 
 	if(security_level > SEC_LEVEL_BLUE || EvacuationAuthority.evac_status)

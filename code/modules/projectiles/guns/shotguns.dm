@@ -27,11 +27,11 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(current_mag)
 		replace_tube(current_mag.current_rounds) //Populate the chamber.
 
-/obj/item/weapon/gun/shotgun/examine(mob/user)
+/obj/item/weapon/gun/shotgun/get_examine_text(mob/user)
 	. = ..()
 	if(flags_gun_features & GUN_AMMO_COUNTER && user)
 		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(user, "It has [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] rounds remaining.")
+		. += "It has [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] rounds remaining."
 
 /obj/item/weapon/gun/shotgun/set_gun_config_values()
 	..()
@@ -208,9 +208,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
-/obj/item/weapon/gun/shotgun/merc/examine(mob/user)
-	..()
-	if(in_chamber) to_chat(user, "It has a chambered round.")
+/obj/item/weapon/gun/shotgun/merc/get_examine_text(mob/user)
+	. = ..()
+	if(in_chamber) . += "It has a chambered round."
 
 //-------------------------------------------------------
 //TACTICAL SHOTGUN
@@ -267,9 +267,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
-/obj/item/weapon/gun/shotgun/combat/examine(mob/user)
-	..()
-	if(in_chamber) to_chat(user, "It has a chambered round.")
+/obj/item/weapon/gun/shotgun/combat/get_examine_text(mob/user)
+	. = ..()
+	if(in_chamber) . += "It has a chambered round."
 
 
 /obj/item/weapon/gun/shotgun/combat/riot
@@ -483,12 +483,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/shotgun/double/examine(mob/user)
-	..()
+/obj/item/weapon/gun/shotgun/double/get_examine_text(mob/user)
+	. = ..()
 	if(!current_mag)
 		return
-	if(current_mag.chamber_closed) to_chat(user, "It's closed.")
-	else to_chat(user, "It's open with [current_mag.current_rounds] shell\s loaded.")
+	if(current_mag.chamber_closed) . += "It's closed."
+	else . += "It's open with [current_mag.current_rounds] shell\s loaded."
 
 /obj/item/weapon/gun/shotgun/double/unique_action(mob/user)
 	if(flags_item & WIELDED)

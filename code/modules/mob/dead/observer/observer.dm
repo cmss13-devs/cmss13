@@ -39,6 +39,7 @@
 	var/atom/movable/following = null
 	var/datum/orbit_menu/orbit_menu
 	var/mob/observetarget = null	//The target mob that the ghost is observing. Used as a reference in logout()
+	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	alpha = 127
 
@@ -187,6 +188,7 @@
 
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)
+	QDEL_NULL(last_health_display)
 	GLOB.observer_list -= src
 	following = null
 	return ..()
@@ -393,8 +395,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/obj/effect/step_trigger/S in new_turf)	//<-- this is dumb
 		S.Crossed(src)
 
-/mob/dead/observer/examine(mob/user)
-	to_chat(user, desc)
+/mob/dead/observer/get_examine_text(mob/user)
+	return list(desc)
 
 /mob/dead/observer/can_use_hands()
 	return 0
@@ -469,7 +471,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(!istype(target))
 		return
-	target.health_scan(src, do_checks = FALSE)
+
+	if (!last_health_display)
+		last_health_display = new(target)
+	else
+		last_health_display.target_mob = target
+	last_health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE)
 
 /mob/dead/observer/verb/follow_local(var/mob/target)
 	set category = "Ghost.Follow"

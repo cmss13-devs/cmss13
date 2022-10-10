@@ -63,7 +63,7 @@
 		if (heat < 0)
 			heat = 0
 		else
-			for(var/mob/M in viewers(1, src))
+			for(var/mob/M as anything in viewers(1, src))
 				if (M.client && M.machine == src)
 					src.updateUsrDialog()
 

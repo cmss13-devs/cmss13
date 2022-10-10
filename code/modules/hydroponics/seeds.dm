@@ -33,10 +33,10 @@
 	src.name = "packet of [seed.seed_name] [seed.seed_noun]"
 	src.desc = "It has a picture of [seed.display_name] on the front."
 
-/obj/item/seeds/examine(mob/user)
-	..()
+/obj/item/seeds/get_examine_text(mob/user)
+	. = ..()
 	if(seed && !seed.roundstart)
-		to_chat(user, "It's tagged as variety #[seed.uid].")
+		. += "It's tagged as variety #[seed.uid]."
 
 /obj/item/seeds/cutting
 	name = "cuttings"

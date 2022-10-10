@@ -36,6 +36,7 @@
 	var/locate_setting = TRACKER_SL
 	var/misc_tracking = FALSE
 	var/hud_type = MOB_HUD_FACTION_USCM
+	var/default_freq
 
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
@@ -51,6 +52,11 @@
 		headset_hud_on = TRUE
 		verbs += /obj/item/device/radio/headset/proc/toggle_squadhud
 		verbs += /obj/item/device/radio/headset/proc/switch_tracker_target
+
+	if(frequency)
+		for(var/cycled_channel in radiochannels)
+			if(radiochannels[cycled_channel] == frequency)
+				default_freq = cycled_channel
 
 /obj/item/device/radio/headset/proc/set_volume_setting()
 	set name = "Set Headset Volume"
@@ -79,6 +85,9 @@
 			var/datum/language/hivemind = GLOB.all_languages[LANGUAGE_HIVEMIND]
 			hivemind.broadcast(M, message)
 		return null
+
+	if(default_freq && channel == default_freq)
+		return radio_connection
 
 	return ..()
 
@@ -200,6 +209,13 @@
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 	SStgui.update_uis(src)
+
+/obj/item/device/radio/headset/set_frequency(new_frequency)
+	..()
+	if(frequency)
+		for(var/cycled_channel in radiochannels)
+			if(radiochannels[cycled_channel] == frequency)
+				default_freq = cycled_channel
 
 /obj/item/device/radio/headset/equipped(mob/living/carbon/human/user, slot)
 	. = ..()

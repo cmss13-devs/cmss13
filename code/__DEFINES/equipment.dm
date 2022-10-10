@@ -335,6 +335,7 @@
 #define ACCESSORY_SLOT_RANK     "Rank"
 #define ACCESSORY_SLOT_DECOR    "Decor"
 #define ACCESSORY_SLOT_MEDAL    "Medal"
+#define ACCESSORY_SLOT_PONCHO	"Ponchos"
 #define ACCESSORY_SLOT_ARMOR_C  "Chest armor"			//Used for uniform armour inserts.
 #define ACCESSORY_SLOT_ARMOR_A  "Arm armor"
 #define ACCESSORY_SLOT_ARMOR_L  "Leg armor"

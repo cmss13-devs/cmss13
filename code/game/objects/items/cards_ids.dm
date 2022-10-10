@@ -347,10 +347,10 @@
 	var/dogtag_taken = FALSE
 
 
-/obj/item/card/id/dogtag/examine(mob/user)
-	..()
+/obj/item/card/id/dogtag/get_examine_text(mob/user)
+	. = ..()
 	if(ishuman(user))
-		to_chat(user, SPAN_NOTICE("It reads \"[registered_name] - [assignment] - [blood_type]\""))
+		. += SPAN_NOTICE("It reads \"[registered_name] - [assignment] - [blood_type]\"")
 
 
 /obj/item/dogtag
@@ -384,15 +384,15 @@
 	else
 		. = ..()
 
-/obj/item/dogtag/examine(mob/user)
-	..()
+/obj/item/dogtag/get_examine_text(mob/user)
+	. = ..()
 	if(ishuman(user) && fallen_names && fallen_names.len)
 		var/msg = "There [fallen_names.len>1 ? \
 			"are [fallen_names.len] tags.<br>They read":\
 			"is one ID tag.<br>It reads"]:"
 		for (var/i=1 to fallen_names.len)
 			msg += "<br>[i]. \"[fallen_names[i]] - [fallen_assgns[i]] - [fallen_blood_types[i]]\""
-		to_chat(user, SPAN_NOTICE("[msg]"))
+		. += SPAN_NOTICE("[msg]")
 
 // Used to authenticate to CORSAT machines. Doesn't do anything except have its type variable
 /obj/item/card/data/corsat

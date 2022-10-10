@@ -6,6 +6,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	var/clearance_x_access = FALSE
 	var/reached_x_access = FALSE
 	var/has_new_properties = FALSE
+	var/research_allocation_amount = 5
 	var/list/research_documents = list()
 	var/list/research_publications = list()
 	var/list/research_property_data = list() //starter properties are stored here
@@ -16,6 +17,9 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 
 /datum/chemical_data/proc/update_credits(var/change)
 	rsc_credits = max(0, rsc_credits + change)
+
+/datum/chemical_data/proc/update_income(var/change)
+	research_allocation_amount = max(0, research_allocation_amount + change)
 
 /datum/chemical_data/proc/save_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
 	if(!research_documents["[document_type]"])

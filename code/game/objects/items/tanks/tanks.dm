@@ -25,8 +25,8 @@
 	var/manipulated_by = null		//Used by _onclick/hud/screen_objects.dm internals to determine if someone has messed with our tank or not.
 						//If they have and we haven't scanned it with the PDA or gas analyzer then we might just breath whatever they put in it.
 
-/obj/item/tank/examine(mob/user)
-	..()
+/obj/item/tank/get_examine_text(mob/user)
+	. = ..()
 	if (in_range(src, user))
 		var/celsius_temperature = temperature-T0C
 		var/descriptive
@@ -44,7 +44,7 @@
 			else
 				descriptive = "furiously hot"
 
-		to_chat(user, SPAN_NOTICE(" \The [icon2html(src, user)][src] feels [descriptive]"))
+		. += SPAN_NOTICE("\The [icon2html(src, user)][src] feels [descriptive]")
 
 
 /obj/item/tank/attackby(obj/item/W as obj, mob/user as mob)

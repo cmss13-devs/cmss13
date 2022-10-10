@@ -854,12 +854,8 @@
 	if(!selected_stretcher.stretcher_activated)//stretcher beacon was deactivated midway
 		return
 
-	if(!is_ground_level(selected_stretcher.z)) //in case the stretcher was on a groundside dropship that flew away during our input()
-		if(!istype(selected_stretcher, /obj/structure/bed/medevac_stretcher/vehicle))
-			return
-		var/obj/structure/bed/medevac_stretcher/vehicle/v_stretcher = selected_stretcher
-		if(!v_stretcher.vehicle || v_stretcher.vehicle.health < (initial(v_stretcher.vehicle.health) * 0.5) || !is_ground_level(v_stretcher.vehicle.z) || v_stretcher.vehicle.next_move > world.time)
-			return
+	if(!selected_stretcher.is_zlevel_allowed()) //in case the stretcher was on a groundside dropship that flew away during our input()
+		return
 
 	if(!selected_stretcher.buckled_mob && !selected_stretcher.buckled_bodybag)
 		to_chat(user, SPAN_WARNING("This medevac stretcher is empty."))
@@ -907,7 +903,6 @@
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
 
-
 /obj/structure/dropship_equipment/medevac_system/attack_hand(mob/user)
 	if(!ishuman(user))
 		return
@@ -932,12 +927,8 @@
 		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
 		return
 
-	if(!is_ground_level(linked_stretcher.z)) //in case the stretcher was on a groundside dropship that flew away during our input()
-		if(!istype(linked_stretcher, /obj/structure/bed/medevac_stretcher/vehicle))
-			return
-		var/obj/structure/bed/medevac_stretcher/vehicle/v_stretcher = linked_stretcher
-		if(!v_stretcher.vehicle || v_stretcher.vehicle.health < (initial(v_stretcher.vehicle.health) * 0.5) || !is_ground_level(v_stretcher.vehicle.z) || v_stretcher.vehicle.next_move > world.time)
-			return
+	if(!linked_stretcher.is_zlevel_allowed()) //in case the stretcher was on a groundside dropship that flew away during our input()
+		return
 
 	if(world.time < medevac_cooldown)
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
@@ -961,13 +952,8 @@
 	if(!linked_stretcher || linked_stretcher != old_stretcher)
 		fail = TRUE
 
-	if(!is_ground_level(linked_stretcher.z)) //in case the stretcher was on a groundside dropship that flew away during our input()
-		if(istype(linked_stretcher, /obj/structure/bed/medevac_stretcher/vehicle))
-			var/obj/structure/bed/medevac_stretcher/vehicle/v_stretcher = linked_stretcher
-			if(!v_stretcher.vehicle || v_stretcher.vehicle.health < (initial(v_stretcher.vehicle.health) * 0.5) || !is_ground_level(v_stretcher.vehicle.z) || v_stretcher.vehicle.next_move > world.time)
-				fail = TRUE
-		else
-			fail = TRUE
+	if(!linked_stretcher.is_zlevel_allowed()) //in case the stretcher was on a groundside dropship that flew away during our input()
+		fail = TRUE
 
 	else if(!ship_base) //uninstalled midway
 		fail = TRUE

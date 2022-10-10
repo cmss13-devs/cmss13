@@ -341,11 +341,11 @@ var/global/list/activated_medevac_stretchers = list()
 		return
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_WARNING("You don't know how to use [src]."))
+		to_chat(user, SPAN_WARNING("You don't know how to use \the [src]."))
 		return
 
 	if(user == buckled_mob)
-		to_chat(user, SPAN_WARNING("You can't reach the beacon activation button while buckled to [src]."))
+		to_chat(user, SPAN_WARNING("You can't reach the beacon activation button while buckled to \the [src]."))
 		return
 
 	if(stretcher_activated)
@@ -354,12 +354,12 @@ var/global/list/activated_medevac_stretchers = list()
 		if(linked_medevac)
 			linked_medevac.linked_stretcher = null
 			linked_medevac = null
-		to_chat(user, SPAN_NOTICE("You deactivate [src]'s beacon."))
+		to_chat(user, SPAN_NOTICE("You deactivate \the [src]'s beacon."))
 		update_icon()
 
 	else
 		if(!is_ground_level(z))
-			to_chat(user, SPAN_WARNING("You can't activate [src]'s beacon here."))
+			to_chat(user, SPAN_WARNING("You can't activate \the [src]'s beacon here."))
 			return
 
 		var/area/AR = get_area(src)
@@ -370,10 +370,15 @@ var/global/list/activated_medevac_stretchers = list()
 		if(buckled_mob || buckled_bodybag)
 			stretcher_activated = TRUE
 			activated_medevac_stretchers += src
-			to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
+			to_chat(user, SPAN_NOTICE("You activate \the [src]'s beacon."))
 			update_icon()
 		else
-			to_chat(user, SPAN_WARNING("You need to attach something to [src] before you can activate its beacon yet."))
+			to_chat(user, SPAN_WARNING("You need to attach something to \the [src] before you can activate its beacon yet."))
+
+/obj/structure/bed/medevac_stretcher/proc/is_zlevel_allowed()
+	if(is_ground_level(z))
+		return TRUE
+	return FALSE
 
 /obj/item/roller/medevac
 	name = "medevac stretcher"

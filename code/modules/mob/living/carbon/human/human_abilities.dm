@@ -590,6 +590,8 @@ CULT
 		remove_from(H)
 
 	H.unset_interaction()
+	H.reset_view()
+	H.client.change_view(world_view_size, H.interactee)
 
 	remove_from(H)
 

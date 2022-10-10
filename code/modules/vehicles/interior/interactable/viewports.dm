@@ -18,16 +18,61 @@
 	return
 
 /obj/structure/interior_viewport/attack_hand(var/mob/M)
-	if(!vehicle)
+	if(!vehicle || !ishuman(M))
 		return
 
+	start_use_for(M)
+
+/obj/structure/interior_viewport/proc/start_use_for(var/mob/living/carbon/human/M)
+	M.set_interaction(vehicle)
 	M.reset_view(vehicle)
-	M.client.change_view(viewport_view_buff, src)
+	M.client.change_view(viewport_view_buff, vehicle)
+	to_chat(M, SPAN_NOTICE("You look into \the [src]'s screen, viewing the vehicle surroundings."))
+
 	give_action(M, /datum/action/human_action/vehicle_unbuckle)
+
+	RegisterSignal(M, COMSIG_MOVABLE_MOVED, .proc/stop_use_for)
+
+//handles deactivating viewport features for user
+/obj/structure/interior_viewport/proc/stop_use_for(var/mob/living/carbon/human/M)
+
+	M.unset_interaction()
+	M.reset_view()
+	M.client.change_view(world_view_size, vehicle)
+	to_chat(M, SPAN_NOTICE("You pull away from \the [src]'s screen."))
+
+	remove_action(M, /datum/action/human_action/vehicle_unbuckle)
+
+	UnregisterSignal(M, COMSIG_MOVABLE_MOVED)
+
+//allows xenos to use viewports
+/obj/structure/interior_viewport/attack_alien(var/mob/M)
+	if(!vehicle || !isXeno(M))
+		return XENO_NO_DELAY_ACTION
+
+	start_use_for_xeno(M)
+	return XENO_NONCOMBAT_ACTION
+
+/obj/structure/interior_viewport/proc/start_use_for_xeno(var/mob/living/carbon/Xenomorph/X)
+	X.set_interaction(vehicle)
+	X.reset_view(vehicle)
+	X.client.change_view(viewport_view_buff, vehicle)
+	to_chat(X, SPAN_XENONOTICE("You peer into the device's screen, observing vehicle's surroundings."))
+
+	RegisterSignal(X, COMSIG_MOVABLE_MOVED, .proc/stop_use_for_xeno)
+
+/obj/structure/interior_viewport/proc/stop_use_for_xeno(var/mob/living/carbon/Xenomorph/X)
+
+	X.unset_interaction()
+	X.reset_view()
+	X.client.change_view(world_view_size, vehicle)
+	to_chat(X, SPAN_XENONOTICE("You pull away from the screen."))
+
+	UnregisterSignal(X, COMSIG_MOVABLE_MOVED)
 
 //Special version for MED APC that grants user medhud
 /obj/structure/interior_viewport/med
-	name = "External Medi-Cameras Terminal"
+	name = "\improper External Medi-Cameras Terminal"
 	desc = "A small terminal connected to the external cameras of a vehicle, allowing a 360 degree visual survey of vehicle surroundings as well as providing medical HUD to the user."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "viewport_med"
@@ -58,16 +103,19 @@
 
 
 //handles activating viewport features for user
-/obj/structure/interior_viewport/med/proc/start_use_for(var/mob/living/carbon/human/M)
+/obj/structure/interior_viewport/med/start_use_for(var/mob/living/carbon/human/M)
 	M.set_interaction(vehicle)
 	handle_eyewear(M)
 
-	to_chat(M, SPAN_NOTICE("You look into \the [src]'s screen, viewing the vehicle surroundings with overlayed medical HUD."))
+	to_chat(M, SPAN_NOTICE("You look into \the [src]'s screen, viewing the vehicle surroundings with an overlaid medical HUD."))
 	enable_hud_for(M)
+
+	RegisterSignal(M, COMSIG_MOVABLE_MOVED, .proc/stop_use_for)
+
 	START_PROCESSING(SSobj, src)
 
 //handles deactivating viewport features for user
-/obj/structure/interior_viewport/med/proc/stop_use_for(var/mob/living/carbon/human/M)
+/obj/structure/interior_viewport/med/stop_use_for(var/mob/living/carbon/human/M)
 	to_chat(M, SPAN_NOTICE("You pull away from \the [src]'s screen."))
 	disable_hud_for(M)
 	if(!length(users))
@@ -75,12 +123,14 @@
 	M.unset_interaction()
 	handle_eyewear(M)
 
+	UnregisterSignal(M, COMSIG_MOVABLE_MOVED)
+
 //handles enabling view and HUD changes
 /obj/structure/interior_viewport/med/proc/enable_hud_for(var/mob/living/carbon/human/M)
 	if(!(M in users))
 		users.Add(M)
 	M.reset_view(vehicle)
-	M.client.change_view(viewport_view_buff, src)
+	M.client.change_view(viewport_view_buff, vehicle)
 
 	var/datum/mob_hud/hud = huds[MOB_HUD_MEDICAL_ADVANCED]	//the hud we will be adding to user
 	hud.add_hud_to(M)
@@ -88,7 +138,7 @@
 //handles disabling view and HUD changes
 /obj/structure/interior_viewport/med/proc/disable_hud_for(var/mob/living/carbon/human/M)
 	users.Remove(M)
-	M.client.change_view(world_view_size, src)
+	M.client.change_view(world_view_size, vehicle)
 	M.client.pixel_x = 0
 	M.client.pixel_y = 0
 	M.reset_view()
@@ -105,7 +155,7 @@
 		process_cooldown = initial(process_cooldown)
 
 	for(var/mob/living/carbon/human/M in users)
-		if(M.interactee != vehicle || get_dist(M, src) > 1)
+		if(M.interactee != vehicle)
 			stop_use_for(M)
 		handle_eyewear(M)
 

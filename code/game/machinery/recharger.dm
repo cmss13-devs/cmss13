@@ -4,7 +4,8 @@
 	name = "recharger"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "recharger"
-	anchored = 1
+	anchored = TRUE
+	wrenchable = TRUE
 	use_power = 1
 	idle_power_usage = 4
 	active_power_usage = 15000	//15 kW
@@ -46,6 +47,9 @@
 			start_processing()
 			update_icon()
 	else if(HAS_TRAIT(G, TRAIT_TOOL_WRENCH))
+		if(!wrenchable)
+			to_chat(user, SPAN_WARNING("It doesn't seem that \the [src] can be unwrenched."))
+			return
 		if(charging)
 			to_chat(user, SPAN_DANGER("Remove \the [charging] first!"))
 			return

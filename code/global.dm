@@ -7,7 +7,6 @@
 #define R_BUILDMODE		(1<<0)
 #define R_ADMIN			(1<<1)
 #define R_BAN			(1<<2)
-#define R_FUN			(1<<3)
 #define R_SERVER		(1<<4)
 #define R_DEBUG			(1<<5)
 #define R_POSSESS		(1<<6)

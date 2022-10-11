@@ -39,10 +39,10 @@
 			to_chat(H, SPAN_NOTICE("The ID lock rejects your ID"))
 	update_icon()
 
-/obj/item/storage/backpack/equipped(mob/user, slot)
+/obj/item/storage/backpack/equipped(mob/user, slot, silent)
 	if(slot == WEAR_BACK)
 		mouse_opacity = 2 //so it's easier to click when properly equipped.
-		if(use_sound)
+		if(use_sound && !silent)
 			playsound(loc, use_sound, 15, TRUE, 6)
 		if(!worn_accessible) //closes it if it's open.
 			storage_close(user)
@@ -123,12 +123,12 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	else
 		overlays += "+[icon_state]_full"
 
-/obj/item/storage/backpack/examine(mob/user)
-	..()
+/obj/item/storage/backpack/get_examine_text(mob/user)
+	. = ..()
 	if(is_id_lockable)
-		to_chat(user, "Features an ID lock. Swipe your ID card to lock or unlock it.")
+		. += "Features an ID lock. Swipe your ID card to lock or unlock it."
 		if(lock_overridable)
-			to_chat(user, "This lock can be overridden with command-level access.")
+			. += "This lock can be overridden with command-level access."
 
 /*
  * Backpack Types
@@ -770,9 +770,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return
 	..()
 
-/obj/item/storage/backpack/marine/engineerpack/examine(mob/user)
-	..()
-	to_chat(user, "[reagents.total_volume] units of fuel left!")
+/obj/item/storage/backpack/marine/engineerpack/get_examine_text(mob/user)
+	. = ..()
+	. += "[reagents.total_volume] units of fuel left!"
 
 /obj/item/storage/backpack/marine/engineerpack/satchel
 	name = "\improper USCM technician welder-satchel"

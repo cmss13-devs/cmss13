@@ -277,25 +277,22 @@
 	icon_state = "webbing"
 	item_state = "webbing"
 	allowed = list(
-		/obj/item/device/analyzer,
-		/obj/item/device/multitool,
-		/obj/item/device/pipe_painter,
-		/obj/item/device/t_scanner,
-		/obj/item/tool/screwdriver,
-		/obj/item/tool/weldingtool,
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/wrench,
-		/obj/item/clothing/mask/gas,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
-		/obj/item/tool/pen,
-		/obj/item/device/binoculars,
 		/obj/item/tool/crew_monitor,
-		/obj/item/reagent_container/hypospray,
+		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/device/motiondetector,
 	)
 
 //Blue suit jacket toggle
@@ -432,25 +429,23 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	allowed = list (
-		/obj/item/device/analyzer,
-		/obj/item/device/multitool,
-		/obj/item/device/pipe_painter,
-		/obj/item/device/t_scanner,
-		/obj/item/tool/screwdriver,
-		/obj/item/tool/weldingtool,
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/wrench,
-		/obj/item/clothing/mask/gas,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
-		/obj/item/tool/pen,
-		/obj/item/device/binoculars,
 		/obj/item/tool/crew_monitor,
-		/obj/item/reagent_container/hypospray,
+		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/device/motiondetector,
 	)
 	min_cold_protection_temperature = T0C
 	siemens_coefficient = 0.7

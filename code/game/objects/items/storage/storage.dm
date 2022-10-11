@@ -469,7 +469,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		add_fingerprint(user)
 		if(!prevent_warning)
 			var/visidist = W.w_class >= 3 ? 3 : 1
-			user.visible_message(SPAN_NOTICE("[usr] puts [W] into [src]."),\
+			user.visible_message(SPAN_NOTICE("[user] puts [W] into [src]."),\
 								SPAN_NOTICE("You put \the [W] into [src]."),\
 								null, visidist)
 	orient2hud()

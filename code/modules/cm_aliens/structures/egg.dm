@@ -33,10 +33,10 @@
 /obj/effect/alien/egg/ex_act(severity)
 	Burst(TRUE)//any explosion destroys the egg.
 
-/obj/effect/alien/egg/examine(mob/user)
+/obj/effect/alien/egg/get_examine_text(mob/user)
 	. = ..()
 	if(isXeno(user) && status == EGG_GROWN)
-		to_chat(user, "Ctrl + Click egg to retrieve child into your empty hand if you can carry it.")
+		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
 
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.hivenumber != hivenumber)

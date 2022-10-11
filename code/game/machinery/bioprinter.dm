@@ -24,7 +24,6 @@
 		for(var/i in subtypesof(/datum/bioprinter_recipe))
 			var/datum/bioprinter_recipe/bp_recipe = new i
 			products += bp_recipe
-			QDEL_NULL(i)
 
 /obj/structure/machinery/bioprinter/update_icon()
 	. = ..()
@@ -59,9 +58,9 @@
 	else
 		return..()
 
-/obj/structure/machinery/bioprinter/examine(mob/user)
-	..()
-	to_chat(user, "It has [stored_metal] metal left.")
+/obj/structure/machinery/bioprinter/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [stored_metal] metal left."
 
 /obj/structure/machinery/bioprinter/ui_static_data(mob/user)
 	var/list/data = list()

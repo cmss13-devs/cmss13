@@ -701,8 +701,7 @@
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
 	..()
-	if(T.density)
-		cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/revolver/webley //Mateba round without the knockdown.
 	name = ".455 Webley bullet"

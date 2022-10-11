@@ -14097,6 +14097,14 @@
 	dir = 1
 	},
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
+"sQv" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/complex/botany/east_tech)
 "sRb" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 8;
@@ -16390,6 +16398,12 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_central)
+"vOh" = (
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/power_pt2_electric_boogaloo)
 "vOt" = (
 /obj/structure/platform/kutjevo{
 	dir = 8
@@ -17363,6 +17377,9 @@
 /area/kutjevo/interior/colony_South)
 "xlD" = (
 /obj/structure/machinery/light,
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "xms" = (
@@ -37869,7 +37886,7 @@ kHm
 kHm
 kHm
 kHm
-kHm
+vOh
 xlD
 oQc
 oQc
@@ -41057,7 +41074,7 @@ hws
 qwg
 vcY
 jhS
-htT
+sQv
 dkE
 tfx
 dkE

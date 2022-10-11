@@ -1,0 +1,135 @@
+2022-10-01:
+  Benbot16:
+  - rscadd: Some chemical properties now have effects when applied to mobs via touch.
+      Some of these also effect xenos.
+  - balance: tweaks the cost of some properties
+  - bugfix: Passive research credit gain now works in Extended
+  Laser9:
+  - bugfix: You can no longer buckle mobs or stuff things into morgue trays, while
+      you are inside of something.
+  stanalbatross:
+  - bugfix: surgical line and synthgraft no longer have nobludgeon flags, so they
+      will work as normal
+2022-10-02:
+  Geevies:
+  - qol: Things you examine are now contained in a block, making it easier to see.
+      Same applies to checking yourself for injuries.
+2022-10-03:
+  Morrow, Triiodine:
+  - rscadd: USCM Ponchos are now available in squad prep surplus vendors and can be
+      attached to standard armor variants.
+2022-10-04:
+  Shad0vvs:
+  - bugfix: Fixed pills on harm intent in a better way.
+2022-10-05:
+  4hands44:
+  - qol: Replaces some instances of "Captain" In CO Attire names/descriptions
+  - rscadd: Black Greatcoats for Officers to the Dress Vendor (All department heads,
+      CO+, CIC Staff.)
+  - rscadd: Blue ver. of above for CO+ and admins only.
+  - rscadd: New ww2 style tanker jacket to compete with the CO Bomber jacket. VC and
+      IOs spawn with them out of Cryo. Features slightly higher blast resistance to
+      represent protection from spalling and other vehicular hazards. Does not appear
+      in any vendor.
+  - imageadd: New sprites
+  - code_imp: See above
+  Segrain:
+  - bugfix: Direct hits with explosive ammunition actually work as intended now.
+  Usnpeepoo:
+  - rscadd: Xenos with more than 300 hours of playtime (as xeno) can now use a double
+      letter postfix.
+  stanalbatross:
+  - code_imp: nurse now has a one hour human roles timelock
+  - bugfix: fixes the CL having an errant space before their name when not having
+      a division
+2022-10-06:
+  Drathek:
+  - qol: Health scanners now re-use their interface when scanning again.
+  - qol: Opening the archived scan for a health scanner now has a window named "Stored
+      Health Scan" and closes the "Health Scan" window (and vice versa).
+  - bugfix: Fixed health scanners sometimes incorrectly considering a mob to be permadead
+      when they are alive.
+  - code_imp: Mobs no longer have a health display datum and instead each scanner
+      does.
+  Geeves:
+  - balance: The HPR now has the same firedelay as a smartgun, and has one more bullet
+      in its burst fire.
+  - soundadd: Increased the bass and lowered the treble of the HPR shoot sound.
+  Morrow:
+  - rscdel: Removes USCM ponchos from vendors.
+  SpartanBobby:
+  - rscadd: Squads now have their own cryo bay and canteen firing ranges moved to
+      old cryo bay
+  - rscadd: Every member of the Almayer should now wake up in a cryopod placed as
+      close as I possibly could to their old spawns (within reason)
+  - rscadd: Roundstart marines now spawn INSIDE their cryopod you should be able to
+      simply move to exit your pod
+  - rscadd: Dress Uniform vendors are now surrounded by unbreakable walls at the request
+      of the dev team
+  Spartanbobby:
+  - rscadd: Adds a colony blackbox to every map on rotation serves no gameplay purpose
+  stanalbatross:
+  - rscadd: ported item pickup and drop animations from tg
+2022-10-07:
+  Geeves:
+  - rscadd: All xenos have a new generic ability, the Tail Stab, with a two tile range
+      dealing 1.2 times the caste's maximum melee damage, making it more useful on
+      the bigger xenos. It takes one second of being the selected ability before it
+      can be used.
+  - balance: Boilers have an advanced version of the tail stab, called the Toxic Tail
+      Stab, where it injects the target with diluted molecular acid, causing burns
+      and toxin damage.
+  carlarctg:
+  - refactor: Refactored marine armor file
+  - bugfix: Ghillie suits can now clip on ponchos
+2022-10-08:
+  CLF Guerrilla:
+  - bugfix: Added terminals to the SMES on Kutjevo
+  Geevies:
+  - rscdel: The bridge coats for CIC is no longer accessible without admins spawning
+      it in. Tanker jackets no longer have blast armor.
+  Unknownity:
+  - bugfix: Fixed burrowers being able to burrow and tunnel to the Solaris Ridge secret
+      room.
+  stanalbatross:
+  - bugfix: fixed two runtimes
+2022-10-09:
+  Stanalbatross, spookydonut:
+  - admin: converted STUI to TGUI. You can also now search for terms and change font
+      size in it as well.
+  c4xmaniac:
+  - bugfix: Fixed the missing area_noop on one of the science annex nightmare inserts
+      causing hypothermia.
+  stanalbatross:
+  - ui: the ot demo sim console now uses tgui
+  - rscadd: the ot demo sim console can now switch dummy type between a variety of
+      human and xeno targets
+  - qol: the ot demo sim console now has a 1 minute cooldown, instead of 2 minutes
+  - ui: the centrifuge now uses tgui
+2022-10-10:
+  Joe Lampost:
+  - rscadd: buffs the sword sharpness
+  - rscdel: Removed clan sword parry
+  stanalbatross:
+  - bugfix: pickup animations now inherit the alpha level of the person picking them
+      up
+  - bugfix: pickup animations can no longer be seen through walls
+  - bugfix: fixed a rogue submodule in the git
+  - code_imp: changed all instances of var/mob/m in viewers to as anything in viewers,
+      because viewers only gets mobs.
+2022-10-11:
+  Laser9:
+  - bugfix: Processing cats with the gibber now properly names the resulting meat.
+  Mistfrag:
+  - balance: Non-combatant jackets like the labcoat and hazard vest now have access
+      to the same storage options as the service jacket minus guns + department unique
+      options like tools or medical items.
+  Segrain:
+  - bugfix: Trapper's acid shotgun is now boosted by traps as intended.
+  Silencer_pl:
+  - admin: Removed the redundant legacy +FUN fun admin permission and scrubbed all
+      references to it.
+  - admin: Senior Moderators now have access to the Distress Beacon and Toggle Remote
+      Control verbs.
+  stanalbatross:
+  - ui: converted the escape pod control console from nanoui to TGUI

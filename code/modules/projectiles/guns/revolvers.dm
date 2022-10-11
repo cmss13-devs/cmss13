@@ -42,11 +42,11 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 	movement_onehanded_acc_penalty_mult = 3
 
-/obj/item/weapon/gun/revolver/examine(mob/user)
-	..()
+/obj/item/weapon/gun/revolver/get_examine_text(mob/user)
+	. = ..()
 	if(current_mag)
 		var/message = "[current_mag.chamber_closed? "It's closed.": "It's open with [current_mag.current_rounds] round\s loaded."]"
-		to_chat(user, message)
+		. += message
 
 /obj/item/weapon/gun/revolver/display_ammo(mob/user) // revolvers don't *really* have a chamber, at least in a way that matters for ammo displaying
 	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
@@ -214,7 +214,7 @@
 
 	invisibility = 100
 	var/list/client/displayed_for = list()
-	for(var/mob/M in viewers(user))
+	for(var/mob/M as anything in viewers(user))
 		var/client/C = M.client
 		if(C)
 			C.images += trick

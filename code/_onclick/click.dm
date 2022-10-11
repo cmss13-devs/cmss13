@@ -104,7 +104,7 @@
 		return
 
 	//Self-harm preference. isXeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if (A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src) && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
+	if (A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src) && W.force && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
 		if (world.time % 3)
 			to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
 		return

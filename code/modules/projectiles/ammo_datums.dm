@@ -2693,7 +2693,7 @@
 	name = "bone chips"
 	icon_state = "shrapnel_light"
 	ping = null
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_XENO_BONE
+	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
 	damage_type = BRUTE
 	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
 

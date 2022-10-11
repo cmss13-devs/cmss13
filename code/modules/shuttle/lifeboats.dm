@@ -4,7 +4,7 @@
 /obj/docking_port/mobile/lifeboat
 	name = "lifeboat"
 	area_type = /area/shuttle/lifeboat
-	ignitionTime = 15 SECONDS
+	ignitionTime = 12 SECONDS
 	width = 27
 	height = 7
 	var/available = TRUE // can be used for evac? false if queenlocked or if in transit already
@@ -37,18 +37,6 @@
 	id = "lifeboat2"
 	preferred_direction = EAST
 	port_direction = EAST
-
-/obj/docking_port/mobile/lifeboat/proc/try_launch()
-	// if(!check_passengers())
-	// 	available = FALSE
-	// 	status = LIFEBOAT_LOCKED
-	// 	ai_announcement("ATTENTION: Lifeboat [id] critical failure, unable to launch.")
-	// 	sleep(40)
-	// 	explosion(return_center_turf(), -1, -1, 3, 4, , , , create_cause_data("escape lifeboat malfunction"))
-	// 	return FALSE
-	if (!available)
-		return FALSE
-	send_to_infinite_transit()
 
 /obj/docking_port/mobile/lifeboat/proc/send_to_infinite_transit()
 	available = FALSE

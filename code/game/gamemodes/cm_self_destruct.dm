@@ -182,7 +182,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	for(var/obj/docking_port/stationary/lifeboat_dock/LD in GLOB.lifeboat_almayer_docks)
 		var/obj/docking_port/mobile/lifeboat/L = LD.get_docked()
 		if(L && L.available)
-			L.try_launch()
+			L.send_to_infinite_transit()
 
 //=========================================================================================
 //=========================================================================================

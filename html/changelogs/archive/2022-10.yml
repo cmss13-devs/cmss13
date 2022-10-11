@@ -120,6 +120,10 @@
 2022-10-11:
   Laser9:
   - bugfix: Processing cats with the gibber now properly names the resulting meat.
+  Mistfrag:
+  - balance: Non-combatant jackets like the labcoat and hazard vest now have access
+      to the same storage options as the service jacket minus guns + department unique
+      options like tools or medical items.
   Silencer_pl:
   - admin: Removed the redundant legacy +FUN fun admin permission and scrubbed all
       references to it.

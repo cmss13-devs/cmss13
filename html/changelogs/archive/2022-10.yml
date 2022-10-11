@@ -117,3 +117,9 @@
   - bugfix: fixed a rogue submodule in the git
   - code_imp: changed all instances of var/mob/m in viewers to as anything in viewers,
       because viewers only gets mobs.
+2022-10-11:
+  Silencer_pl:
+  - admin: Removed the redundant legacy +FUN fun admin permission and scrubbed all
+      references to it.
+  - admin: Senior Moderators now have access to the Distress Beacon and Toggle Remote
+      Control verbs.

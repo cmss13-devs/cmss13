@@ -30,6 +30,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("M41A Incendiary Magazine", 65, /obj/item/ammo_magazine/rifle/incendiary, null, VENDOR_ITEM_REGULAR),
 		list("M41A Rubber Shot Magazine", 10, /obj/item/ammo_magazine/rifle/rubber, null, VENDOR_ITEM_REGULAR),
 		list("Beanbag Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag, null, VENDOR_ITEM_REGULAR),
+		list("Powercell", 10, /obj/item/cell/high, null, VENDOR_ITEM_REGULAR),
 
 		list("RAIL ATTACHMENTS", 0, null, null, null),
 		list("M2 Night Vision Goggles", 25, /obj/item/prop/helmetgarb/helmet_nvg, null, VENDOR_ITEM_RECOMMENDED),
@@ -139,4 +140,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		/obj/item/map/current_map,
 		/obj/item/device/whistle,
 		/obj/item/weapon/gun/energy/taser,
+		/obj/item/device/megaphone
 	)

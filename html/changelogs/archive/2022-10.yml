@@ -131,3 +131,5 @@
       references to it.
   - admin: Senior Moderators now have access to the Distress Beacon and Toggle Remote
       Control verbs.
+  stanalbatross:
+  - ui: converted the escape pod control console from nanoui to TGUI

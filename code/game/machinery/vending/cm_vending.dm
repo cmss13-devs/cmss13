@@ -112,7 +112,7 @@ IN_USE						used for vending/denying
 		var/item_name = item[name_index]
 		// icon setup
 		var/typepath = item[type_index]
-		if (item_name == null || item_name == "" || typepath == null)
+		if (!item_name || item_name == "" || !typepath)
 			continue
 
 		var/icon_ref = null
@@ -152,15 +152,13 @@ IN_USE						used for vending/denying
 			continue
 		var/asset_name = generate_asset_name(r)
 		var/key = "[asset_name].png"
-		if(asset_name != null && asset_name != "" && r != null)
+		if(asset_name != null)
 			if(!SSassets.cache[key])
 				SSassets.transport.register_asset(key, r)
-		if(asset_name != null)
 			product_icon_list[item_name] = list(
 				"href"=SSassets.transport.get_asset_url(key),
 				"desc"=desc
 			)
-
 
 //get which turf the vendor will dispense its products on.
 /obj/structure/machinery/cm_vending/proc/get_appropriate_vend_turf()
@@ -281,7 +279,7 @@ IN_USE						used for vending/denying
 			return
 		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
 			flip_back()
 		return
 
@@ -963,7 +961,7 @@ IN_USE						used for vending/denying
 			return
 		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
 			flip_back()
 		return
 
@@ -1113,7 +1111,7 @@ IN_USE						used for vending/denying
 			return
 		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
 			flip_back()
 		return
 

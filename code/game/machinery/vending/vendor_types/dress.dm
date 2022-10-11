@@ -31,16 +31,18 @@
 				)
 	return display_list
 
-/obj/structure/machinery/cm_vending/clothing/dress/get_listed_products(mob/user)
+/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(var/datum/equipment_preset/presets)
 	var/list/display_list = list()
+	for(var/preset in presets)
+		var/datum/equipment_preset/pre = new preset()
+		var/list/uniforms = pre.uniform_sets
+		display_list += get_listed_products_for_role(uniforms)
+		qdel(pre)
+	return display_list
+
+/obj/structure/machinery/cm_vending/clothing/dress/get_listed_products(mob/user)
 	if (user == null)
-		var/list/presets = typesof(/datum/equipment_preset)
-		for(var/preset in presets)
-			var/datum/equipment_preset/pre = new preset()
-			var/list/uniforms = pre.uniform_sets
-			display_list += get_listed_products_for_role(uniforms)
-			qdel(pre)
-		return display_list
+		return get_products_preset(typesof(/datum/equipment_preset))
 
 	if(!ishuman(user))
 		return
@@ -48,6 +50,7 @@
 	var/obj/item/card/id/I = H.wear_id
 	var/list/role_specific_uniforms
 	var/list/vended_items
+	var/list/display_list = list()
 	if(istype(I))
 		role_specific_uniforms = I.uniform_sets
 		vended_items = I.vended_items

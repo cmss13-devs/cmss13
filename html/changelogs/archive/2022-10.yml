@@ -124,6 +124,8 @@
   - balance: Non-combatant jackets like the labcoat and hazard vest now have access
       to the same storage options as the service jacket minus guns + department unique
       options like tools or medical items.
+  Segrain:
+  - bugfix: Trapper's acid shotgun is now boosted by traps as intended.
   Silencer_pl:
   - admin: Removed the redundant legacy +FUN fun admin permission and scrubbed all
       references to it.

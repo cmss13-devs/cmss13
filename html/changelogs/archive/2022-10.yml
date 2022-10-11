@@ -118,6 +118,8 @@
   - code_imp: changed all instances of var/mob/m in viewers to as anything in viewers,
       because viewers only gets mobs.
 2022-10-11:
+  Laser9:
+  - bugfix: Processing cats with the gibber now properly names the resulting meat.
   Silencer_pl:
   - admin: Removed the redundant legacy +FUN fun admin permission and scrubbed all
       references to it.

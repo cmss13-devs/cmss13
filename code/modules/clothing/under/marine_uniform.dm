@@ -220,14 +220,8 @@
 /obj/item/clothing/under/marine/officer/ce
 	name = "chief engineer uniform"
 	desc = "A uniform for a military engineer. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	icon_state = "EC_jumpsuit"
 	worn_state = "EC_jumpsuit"
 	specialty = "chief engineer"
@@ -237,14 +231,8 @@
 /obj/item/clothing/under/marine/officer/engi
 	name = "engineer uniform"
 	desc = "A uniform for a military engineer. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	icon_state = "mt_jumpsuit"
 	worn_state = "mt_jumpsuit"
 	specialty = "engineer"
@@ -263,14 +251,8 @@
 /obj/item/clothing/under/marine/officer/researcher
 	name = "researcher clothes"
 	desc = "A simple set of civilian clothes worn by researchers."
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	icon_state = "research_jumpsuit"
 	worn_state = "research_jumpsuit"
 	specialty = "researcher"
@@ -304,11 +286,6 @@
 	name = "marine dress uniform"
 	desc = "A dress uniform typically worn marines of the USCM. The Sergeant Major would kill you if you got this dirty."
 	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
@@ -339,14 +316,6 @@
 	)
 
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/marine/mp/provost/enforcer
 	name = "\improper Provost Enforcer Uniform"
@@ -437,14 +406,6 @@
 	icon_state = "pmc_jumpsuit"
 	worn_state = "pmc_jumpsuit"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/PMC,
 							/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC,
@@ -462,14 +423,6 @@
 	desc = "An armored uniform worn by Weyland-Yutani elite commandos. It is well protected while remaining light and comfortable."
 	icon_state = "commando_jumpsuit"
 	worn_state = "commando_jumpsuit"
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 //=========================//UPP\\================================\\
 
@@ -591,14 +544,6 @@
 	icon_state = "mercenary_heavy_uniform"
 	worn_state = "mercenary_heavy_uniform"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/mercenary)
 
 /obj/item/clothing/under/marine/veteran/mercenary/miner

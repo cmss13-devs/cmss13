@@ -31,7 +31,7 @@
 				)
 	return display_list
 
-/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(var/datum/equipment_preset/presets)
+/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(var/list/presets)
 	var/list/display_list = list()
 	for(var/preset in presets)
 		var/datum/equipment_preset/pre = new preset()

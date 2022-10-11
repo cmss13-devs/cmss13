@@ -15,6 +15,7 @@ import {
   Box,
   Dropdown,
   ColorBox,
+  Dimmer,
 } from '../components';
 import { Window } from '../layouts';
 
@@ -23,15 +24,22 @@ const logger = createLogger('Overwatch');
 
 export const OverwatchConsole = (_props, context) => {
   const { act, data } = useBackend(context);
-  const { operator } = data;
-  const windowWidth = operator ? 1000 : 600;
-  const windowHeight = operator ? 700 : 300;
+  const { operator, squad_data } = data;
+  logger.warn(data);
+
+  const [currentControlCategory, setCategory] = useLocalState(
+    context,
+    'current_control_category',
+    1
+  );
+
+  let categoryAmount = 300;
+
+  const windowWidth = 1000;
+  const windowHeight = 480;
 
   return (
-    <Window
-      width={windowWidth}
-      height={windowHeight}
-      theme="weyland">
+    <Window width={windowWidth} height={windowHeight}>
       <Window.Content>
         {operator && <OverwatchMain />}
         {!operator && <OverwatchEmpty />}
@@ -52,34 +60,14 @@ export const OverwatchMain = (props, context) => {
   return (
     <>
       <OverwatchId />
-      {squad_data ? (
-        <Stack direction="column" grow>
-          <Stack.Item>
-            <Stack mb="1em">
-              <Stack.Item grow>
-                <Stack>
-                  <Stack.Item>
-                    <OverwatchTab />
-                  </Stack.Item>
-                  <Stack.Item grow>
-                    {currentControlCategory === 1
-                    && (
-                      <>
-                        <OverwatchSelect />
-                        <OverwatchSquad />
-                      </>)}
-                    {currentControlCategory === 2 && <OverwatchDrop />}
-                  </Stack.Item>
-                </Stack>
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-          <Stack.Item>
-            <OverwatchMonitor />
-          </Stack.Item>
-        </Stack>
-      ) : (
-        <OverwatchSelect />
+      {squad_data?.squad_name && (
+        <>
+          <OverwatchTab />
+          {currentControlCategory === 1 && <OverwatchSquad />}
+          {currentControlCategory === 2 && <OverwatchSupplies />}
+          {currentControlCategory === 3 && <OverwatchBomb />}
+          {currentControlCategory === 4 && <OverwatchMonitor />}
+        </>
       )}
     </>
   );
@@ -94,69 +82,44 @@ export const OverwatchTab = (props, context) => {
   );
   return (
     <Section title="Category">
-      <Stack.Item>
-        <Button
-          fluid
-          selected={currentControlCategory === 1}
-          textColor={currentControlCategory === 1 ? '#ffffff' : '#161613'}
-          icon="person"
-          onClick={() => setCategory(1)}
-          content="Squad Control"
-          lineHeight="8.8em"
-        />
-      </Stack.Item>
-      <Stack.Item grow>
-        <Button
-          fluid
-          selected={currentControlCategory === 2}
-          icon="burst"
-          textColor={currentControlCategory === 2 ? '#ffffff' : '#161613'}
-          onClick={() => setCategory(2)}
-          content="Ship Control"
-          lineHeight="8.8em"
-        />
-      </Stack.Item>
-    </Section>
-  );
-};
-
-export const OverwatchDrop = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [currentCategory, setCategory] = useLocalState(
-    context,
-    'current_category',
-    1
-  );
-
-  return (
-    <Section
-      title={currentCategory === 1 ? 'Supply Drop' : 'Orbital Bombardment'}>
       <Stack>
         <Stack.Item grow>
           <Button
             fluid
-            selected={currentCategory === 1}
-            textColor={currentCategory === 1 ? '#ffffff' : '#161613'}
-            icon="box-open"
+            selected={currentControlCategory === 1}
+            icon="person"
             onClick={() => setCategory(1)}
+            content="Squad Control"
+          />
+        </Stack.Item>
+        <Stack.Item grow>
+          <Button
+            fluid
+            selected={currentControlCategory === 2}
+            icon="box"
+            onClick={() => setCategory(2)}
             content="Supply Drop"
           />
         </Stack.Item>
         <Stack.Item grow>
           <Button
             fluid
-            selected={currentCategory === 2}
+            selected={currentControlCategory === 3}
             icon="burst"
-            textColor={currentCategory === 2 ? '#ffffff' : '#161613'}
-            onClick={() => setCategory(2)}
+            onClick={() => setCategory(3)}
             content="Orbital Bombardment"
           />
         </Stack.Item>
+        <Stack.Item grow>
+          <Button
+            fluid
+            selected={currentControlCategory === 4}
+            icon="camera"
+            onClick={() => setCategory(4)}
+            content="Squad Monitor"
+          />
+        </Stack.Item>
       </Stack>
-      <Divider />
-      <Box>
-        {currentCategory === 1 ? <OverwatchSupplies /> : <OverwatchBomb />}
-      </Box>
     </Section>
   );
 };
@@ -180,7 +143,7 @@ export const OverwatchEmpty = (props, context) => {
 
 export const OverwatchId = (props, context) => {
   const { act, data } = useBackend(context);
-  const { operator, authenticated } = data;
+  const { operator, authenticated, squad_list, squad_data, user } = data;
   return (
     <Section title="Authentication">
       <Stack>
@@ -188,10 +151,23 @@ export const OverwatchId = (props, context) => {
           <Button
             icon="user"
             fluid
-            content={
-              operator ? 'Operator: ' + operator : 'Unauthenticated'
-            }
+            content={operator ? 'Operator: ' + operator : 'Unauthenticated'}
             onClick={() => act('change_operator')}
+          />
+        </Stack.Item>
+        <Stack.Item>
+          <Dropdown
+            options={squad_list}
+            disabled={!operator || operator !== user}
+            onSelected={(value) => act('pick_squad', { squadpicked: value })}
+            style={{ 'background-color': squad_data?.color }}
+            noscroll
+            displayText={
+              squad_data ? 'Squad: ' + squad_data.squad_name : 'Select Squad'
+            }
+            lineHeight="1.5em"
+            width="10em"
+            height="1.6em"
           />
         </Stack.Item>
         <Stack.Item>
@@ -209,37 +185,15 @@ export const OverwatchId = (props, context) => {
   );
 };
 
-export const OverwatchSelect = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { squad_data, squad_list } = data;
-  return (
-    <Section title="Squad Selection">
-      <Stack>
-        <Stack.Item grow>
-          <Dropdown
-            options={squad_list}
-            onSelected={(value) => act('pick_squad', { squadpicked: value })}
-            selected="Select"
-            noscroll
-            displayText={squad_data ? "Squad: " + squad_data.squad_name : "Select Squad"}
-            lineHeight="1.5em"
-            height="1.8em"
-            width="100%"
-          />
-        </Stack.Item>
-      </Stack>
-    </Section>
-  );
-};
-
 export const OverwatchSquad = (props, context) => {
   const { act, data } = useBackend(context);
-  const { squad_data, marine_list } = data;
+  const { squad_data, marine_list, squad_list } = data;
 
   const marine_list_keys = Object.keys(marine_list);
 
   return (
-    <Section title={squad_data.squad_name}>
+    <Section title="Squad Control">
+      <OverwatchAuthenticated />
       <Stack>
         <Stack.Item width="60%">
           <Button
@@ -280,7 +234,7 @@ export const OverwatchSquad = (props, context) => {
             selected="Select"
             noscroll
             lineHeight="1.5em"
-            height="2em"
+            height="1.6em"
             width="100%"
           />
         </Stack.Item>
@@ -368,12 +322,12 @@ export const OverwatchSquad = (props, context) => {
                 icon={'square-xmark'}
                 displayText="Mark Insubordination"
                 nochevron
+                width="100%"
                 onSelected={(value) =>
                   act('insubordination', {
                     marine_picked: marine_list[value].ref,
                   })}
                 noscroll
-                width="100%"
               />
             </Stack.Item>
             <Stack.Item>
@@ -385,11 +339,13 @@ export const OverwatchSquad = (props, context) => {
                 icon={'arrow-right'}
                 displayText="Squad Transfer"
                 nochevron
+                width="103%"
                 ml="-0.5em"
                 onSelected={(value) =>
-                  act('squad_transfer', { marine_picked: marine_list[value].ref })}
+                  act('squad_transfer', {
+                    marine_picked: marine_list[value].ref,
+                  })}
                 noscroll
-                width="104%"
               />
             </Stack.Item>
           </Stack>
@@ -415,206 +371,210 @@ export const OverwatchMonitor = (props, context) => {
     dead_hidden,
     marine_filter_enabled,
     z_hidden,
+    operator,
+    user,
   } = data;
 
   const marine_data = Object.values(marine_list);
-  logger.warn(data);
 
   return (
-    <Section
-      title="Squad Monitor"
-      height="25em"
-      ml="-0.5em"
-      mr="0.5em"
-      fill
-      buttons={
-        <Stack>
-          <Stack.Item>
-            <Button
-              content={dead_hidden ? 'Show Dead Marines' : 'Hide Dead Marines'}
-              textColor={dead_hidden ? '#ffffff' : '#161613'}
-              selected={dead_hidden}
-              onClick={() => act('hide_dead')}
-              height="1.8em"
-              lineHeight="1.5em"
-            />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              selected={!marine_filter_enabled}
-              textColor={!marine_filter_enabled ? '#ffffff' : '#161613'}
-              content={
-                marine_filter_enabled
-                  ? 'Show Filtered Marines'
-                  : 'Hide Filtered Marines'
-              }
-              onClick={() => act('toggle_marine_filter')}
-              height="1.8em"
-              lineHeight="1.5em"
-            />
-          </Stack.Item>
-          <Stack.Item>
-            <Dropdown
-              options={['Ship', 'Ground', 'None']}
-              displayText={
-                z_hidden
-                  ? 'Hidden Area: ' + (z_hidden === 2 ? 'Almayer' : 'Colony')
-                  : 'Hide Area'
-              }
-              onSelected={(value) => act('choose_z', { area_picked: value })}
-              noscroll
-              width={z_hidden ? '14em' : '8em'}
-              height="1.8em"
-              lineHeight="1.5em"
-            />
-          </Stack.Item>
+    <>
+      <Section
+        title="Squad Monitor"
+        fill
+        height="55%"
+        scrollable
+        buttons={
+          <Stack>
+            <Stack.Item>
+              <Button
+                content={
+                  dead_hidden ? 'Show Dead Marines' : 'Hide Dead Marines'
+                }
+                disabled={operator !== user}
+                selected={dead_hidden}
+                onClick={() => act('hide_dead')}
+                height="1.8em"
+                lineHeight="1.5em"
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                selected={!marine_filter_enabled}
+                disabled={operator !== user}
+                content={
+                  marine_filter_enabled
+                    ? 'Show Filtered Marines'
+                    : 'Hide Filtered Marines'
+                }
+                onClick={() => act('toggle_marine_filter')}
+                height="1.8em"
+                lineHeight="1.5em"
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Dropdown
+                options={['Ship', 'Ground', 'None']}
+                disabled={operator !== user}
+                displayText={
+                  z_hidden
+                    ? 'Hidden Area: ' + (z_hidden === 2 ? 'Almayer' : 'Colony')
+                    : 'Hide Area'
+                }
+                onSelected={(value) => act('choose_z', { area_picked: value })}
+                noscroll
+                width={z_hidden ? '14em' : '8em'}
+                height="1.8em"
+                lineHeight="1.5em"
+              />
+            </Stack.Item>
+          </Stack>
+        }>
+        <Stack direction="column">
+          <Section>
+            <Stack.Item>
+              <Table>
+                <Table.Row style={{ 'border-bottom': '1px solid #2F3037' }}>
+                  <Table.Cell />
+                  <Table.Cell bold>Name</Table.Cell>
+                  <Table.Cell bold>Rank</Table.Cell>
+                  <Table.Cell bold>Status</Table.Cell>
+                  <Table.Cell bold>Area</Table.Cell>
+                  <Table.Cell bold>SL Distance</Table.Cell>
+                </Table.Row>
+                {marine_data
+                  .filter((marine) => !marine?.filtered)
+                  .map((marine_data) => (
+                    <Table.Row key={marine_data}>
+                      <Table.Cell textAlign="center">
+                        <Button
+                          icon={'eye'}
+                          selected={marine_data.manually_filtered}
+                          onClick={() =>
+                            act('filter_marine', {
+                              squaddie: marine_data.ref,
+                            })}
+                        />
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Button
+                          content={marine_data.name}
+                          disabled={!marine_data['helmet']}
+                          fluid
+                          onClick={() =>
+                            act('use_cam', {
+                              cam_target: marine_data['ref'],
+                            })}
+                        />
+                      </Table.Cell>
+                      <Table.Cell>
+                        {marine_data['role']
+                          + (marine_data['act_sl'] === true
+                            ? marine_data['act_sl']
+                            : '')
+                          + (marine_data['fteam']
+                            ? ' (' + marine_data['fteam'] + ')'
+                            : '')}
+                      </Table.Cell>
+                      <Table.Cell>
+                        <ColorBox
+                          color={
+                            marine_data['mob_state'] === 'Conscious'
+                              ? 'green'
+                              : marine_data['mob_state'] === 'Unconscious'
+                                ? 'yellow'
+                                : 'red'
+                          }
+                        />
+                        {' ' + marine_data['mob_state']}{' '}
+                        {!marine_data['helmet'] ? ' (no helmet)' : null}
+                        {marine_data.SSD ? ' (SSD)' : null}
+                      </Table.Cell>
+                      <Table.Cell>
+                        {marine_data['area_name']
+                          ? marine_data['area_name']
+                          : 'N/A'}
+                      </Table.Cell>
+                      <Table.Cell>
+                        {marine_data['dist'] ? marine_data['dist'] : 'N/A'}
+                        {marine_data['dir']
+                          ? ' (' + marine_data['dir'] + ')'
+                          : ' (N/A)'}
+                      </Table.Cell>
+                    </Table.Row>
+                  ))}
+              </Table>
+            </Stack.Item>
+          </Section>
         </Stack>
-      }>
-      <Stack direction="column" justify="space-between" height="21em">
-        <Section scrollable>
-          <Stack.Item height="16em">
-            <Table>
-              <Table.Row style={{ "border-bottom": "1px solid #2F3037" }}>
-                <Table.Cell bold>Name</Table.Cell>
-                <Table.Cell bold>Rank</Table.Cell>
-                <Table.Cell bold>Status</Table.Cell>
-                <Table.Cell bold>Area</Table.Cell>
-                <Table.Cell bold>SL Distance</Table.Cell>
-                <Table.Cell bold>Filter</Table.Cell>
-              </Table.Row>
-              {marine_data
-                .filter((marine) => !marine.filtered)
-                .map((marine_data) => (
-                  <Table.Row key={marine_data}>
-                    <Table.Cell>
-                      <Button
-                        fluid
-                        content={marine_data['name']}
-                        disabled={!marine_data['helmet']}
-                        onClick={() =>
-                          act('use_cam', {
-                            cam_target: marine_data['ref'],
-                          })}
-                      />
-                    </Table.Cell>
-                    <Table.Cell>
-                      {marine_data['role']
-                        + (marine_data['act_sl'] === true
-                          ? marine_data['act_sl']
-                          : '')
-                        + (marine_data['fteam']
-                          ? ' (' + marine_data['fteam'] + ')'
-                          : '')}
-                    </Table.Cell>
-                    <Table.Cell>
-                      <ColorBox
-                        color={
-                          marine_data['mob_state'] === 'Conscious'
-                            ? 'green'
-                            : 'red'
-                        }
-                      />
-                      {' ' + marine_data['mob_state']}{' '}
-                      {!marine_data['helmet'] ? ' (no helmet)' : null}
-                      {marine_data.SSD ? ' (SSD)' : null}
-                    </Table.Cell>
-                    <Table.Cell>
-                      {marine_data['area_name']
-                        ? marine_data['area_name']
-                        : 'N/A'}
-                    </Table.Cell>
-                    <Table.Cell>
-                      {marine_data['dist'] ? marine_data['dist'] : 'N/A'}
-                      {marine_data['dir'] ? " (" + marine_data['dir'] + ")" : " (N/A)"}
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Button
-                        content={
-                          marine_data.manually_filtered ? 'SHOW' : 'HIDE'
-                        }
-                        selected={marine_data.manually_filtered}
-                        textColor={
-                          !marine_data.manually_filtered ? '#161613' : '#fffff'
-                        }
-                        onClick={() =>
-                          act('filter_marine', {
-                            squaddie: marine_data.ref,
-                          })}
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                ))}
-            </Table>
-          </Stack.Item>
-        </Section>
-        <Stack.Item>
-          <Table>
-            <Table.Row style={{ "border-bottom": "1px solid #2F3037" }}>
-              <Table.Cell>Squad Leader</Table.Cell>
-              <Table.Cell>RTO</Table.Cell>
-              <Table.Cell>Specialist</Table.Cell>
-              <Table.Cell>Smartgunner</Table.Cell>
-              <Table.Cell>Medic</Table.Cell>
-              <Table.Cell>Combat Technician</Table.Cell>
-              <Table.Cell>Alive</Table.Cell>
-              <Table.Cell>Deployed</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>
-                <ColorBox
-                  color={squad_data.current_squad_leader_name ? 'green' : 'red'}
-                />
-                {squad_data.current_squad_leader_name ? ' Deployed' : ' None'}
-              </Table.Cell>
-              <Table.Cell>
-                <ColorBox color={squad_data.rto > 0 ? 'green' : 'red'} />
-                {squad_data.rto ? ' ' + squad_data.rto + ' Deployed' : ' None'}
-              </Table.Cell>
-              <Table.Cell>
-                <ColorBox
-                  color={squad_data.specialists > 0 ? 'green' : 'red'}
-                />
-                {squad_data.specialists ? ' Deployed' : ' None'}
-              </Table.Cell>
-              <Table.Cell>
-                <ColorBox color={squad_data.smartgun > 0 ? 'green' : 'red'} />
-                {squad_data.smartgun
-                  ? ' ' + squad_data.smartgun + ' Deployed'
-                  : ' None'}
-              </Table.Cell>
-              <Table.Cell>
-                <ColorBox color={squad_data.medics > 0 ? 'green' : 'red'} />
-                {squad_data.medics
-                  ? ' ' + squad_data.medics + ' Deployed'
-                  : ' None'}
-              </Table.Cell>
-              <Table.Cell>
-                <ColorBox color={squad_data.engineers > 0 ? 'green' : 'red'} />
-                {squad_data.engineers
-                  ? ' ' + squad_data.engineers + ' Deployed'
-                  : ' None'}
-              </Table.Cell>
-              <Table.Cell>{squad_data.alive}</Table.Cell>
-              <Table.Cell>{squad_data.total_deployed}</Table.Cell>
-            </Table.Row>
-          </Table>
-        </Stack.Item>
-      </Stack>
-    </Section>
+      </Section>
+      <Section>
+        <Table>
+          <Table.Row style={{ 'border-bottom': '1px solid #2F3037' }}>
+            <Table.Cell>Squad Leader</Table.Cell>
+            <Table.Cell>RTO</Table.Cell>
+            <Table.Cell>Specialist</Table.Cell>
+            <Table.Cell>Smartgunner</Table.Cell>
+            <Table.Cell>Medic</Table.Cell>
+            <Table.Cell>Combat Technician</Table.Cell>
+            <Table.Cell>Alive</Table.Cell>
+            <Table.Cell>Deployed</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <ColorBox
+                color={squad_data.current_squad_leader_name ? 'green' : 'red'}
+              />
+              {squad_data.current_squad_leader_name ? ' Deployed' : ' None'}
+            </Table.Cell>
+            <Table.Cell>
+              <ColorBox color={squad_data.rto > 0 ? 'green' : 'red'} />
+              {squad_data.rto ? ' ' + squad_data.rto + ' Deployed' : ' None'}
+            </Table.Cell>
+            <Table.Cell>
+              <ColorBox color={squad_data.specialists > 0 ? 'green' : 'red'} />
+              {squad_data.specialists ? ' Deployed' : ' None'}
+            </Table.Cell>
+            <Table.Cell>
+              <ColorBox color={squad_data.smartgun > 0 ? 'green' : 'red'} />
+              {squad_data.smartgun
+                ? ' ' + squad_data.smartgun + ' Deployed'
+                : ' None'}
+            </Table.Cell>
+            <Table.Cell>
+              <ColorBox color={squad_data.medics > 0 ? 'green' : 'red'} />
+              {squad_data.medics
+                ? ' ' + squad_data.medics + ' Deployed'
+                : ' None'}
+            </Table.Cell>
+            <Table.Cell>
+              <ColorBox color={squad_data.engineers > 0 ? 'green' : 'red'} />
+              {squad_data.engineers
+                ? ' ' + squad_data.engineers + ' Deployed'
+                : ' None'}
+            </Table.Cell>
+            <Table.Cell>{squad_data.alive}</Table.Cell>
+            <Table.Cell>{squad_data.total_deployed}</Table.Cell>
+          </Table.Row>
+        </Table>
+      </Section>
+    </>
   );
 };
 
 export const OverwatchSupplies = (props, context) => {
   const { act, data } = useBackend(context);
-  const { x_supply, y_supply, supply_cooldown, supply_ready } = data;
+  const { x_supply, y_supply, supply_cooldown, supply_ready, world_time }
+    = data;
 
-  const cooldown = round(supply_cooldown / 10);
+  const cooldown = round(supply_cooldown - world_time / 10);
 
   const [target_x, setTargetX] = useLocalState(context, 'target_x', x_supply);
   const [target_y, setTargetY] = useLocalState(context, 'target_y', y_supply);
 
   return (
-    <>
+    <Section title="Supply Drop">
+      <OverwatchAuthenticated />
       <ProgressBar
         ranges={{
           good: [-Infinity, 200],
@@ -624,7 +584,7 @@ export const OverwatchSupplies = (props, context) => {
         minValue={0}
         maxValue={500}
         value={cooldown}>
-        {cooldown > 0 ? cooldown + ' second cooldown' : "Ready to Fire"}
+        {cooldown > 0 ? cooldown + ' second cooldown' : 'Ready to Fire'}
       </ProgressBar>
       <Divider />
       <Stack>
@@ -691,7 +651,25 @@ export const OverwatchSupplies = (props, context) => {
           Drop pad is empty!
         </NoticeBox>
       )}
-    </>
+    </Section>
+  );
+};
+
+export const OverwatchAuthenticated = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { operator, user } = data;
+
+  return (
+    <Box>
+      {operator !== user && (
+        <Dimmer>
+          <Box textAlign="center">
+            <Icon name="times-circle" mb="0.5rem" size="5" colour="red" />
+            <Box>Scan does not match Operator</Box>
+          </Box>
+        </Dimmer>
+      )}
+    </Box>
   );
 };
 
@@ -703,9 +681,10 @@ export const OverwatchBomb = (props, context) => {
     bombardment_cooldown,
     almayer_cannon_chambered,
     almayer_cannon_disabled,
+    world_time,
   } = data;
 
-  const bombardment = round(bombardment_cooldown / 10);
+  const bombardment = round((bombardment_cooldown - world_time) / 10);
 
   const [bomb_x, setTargetX] = useLocalState(context, 'bomb_x', x_bomb);
   const [bomb_y, setTargetY] = useLocalState(context, 'bomb_y', y_bomb);
@@ -716,7 +695,8 @@ export const OverwatchBomb = (props, context) => {
     && almayer_cannon_chambered;
 
   return (
-    <>
+    <Section title="Orbital Bombardment">
+      <OverwatchAuthenticated />
       <ProgressBar
         ranges={{
           good: [-Infinity, 200],
@@ -726,7 +706,7 @@ export const OverwatchBomb = (props, context) => {
         minValue="0"
         maxValue="500"
         value={bombardment}>
-        {bombardment > 0 ? bombardment + ' second cooldown' : "Ready to Fire"}
+        {bombardment > 0 ? bombardment + ' second cooldown' : 'Ready to Fire'}
       </ProgressBar>
       <Divider />
       <Stack>
@@ -778,7 +758,6 @@ export const OverwatchBomb = (props, context) => {
         textAlign="center"
         content="Bombardment"
         lineHeight="3.5em"
-        textColor={!bombardment_enabled ? '#0000000' : '#ffffff'}
         color="red"
         icon="burst"
         disabled={!bombardment_enabled}
@@ -797,6 +776,6 @@ export const OverwatchBomb = (props, context) => {
           <Icon name="skull-crossbones" ml="1em" />
         </NoticeBox>
       )}
-    </>
+    </Section>
   );
 };

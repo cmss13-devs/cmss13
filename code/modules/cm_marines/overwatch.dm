@@ -370,9 +370,6 @@
 		user.count_niche_stat(STATISTICS_NICHE_OB)
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
-	if(usr != operator)
-		return
-
 	if(busy)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
@@ -511,6 +508,7 @@
 	var/list/squad_data = list(
 	"current_squad" = squad,
 	"squad_name" = squad.name,
+	"color" = squad_colors[squad?.color],
 	"current_squad_leader" = ref(squad.squad_leader),
 	"current_squad_leader_name" = squad.squad_leader?.name,
 	"primary_objective" = squad.primary_objective,
@@ -525,7 +523,7 @@
 	"alive" = alive_squad_members,
 	)
 
-	return(squad_data)
+	return squad_data
 
 /obj/structure/machinery/computer/overwatch/proc/get_marine_data(datum/squad/squad)
 	var/list/marines_list = squad.marines_list
@@ -534,7 +532,7 @@
 
 		var/manually_filtered
 		var/marine_status
-		var/filtered
+		var/filtered = FALSE
 		switch(current_squaddie.stat)
 			if(CONSCIOUS)
 				marine_status = "Conscious"
@@ -548,10 +546,10 @@
 		var/turf/current_turf = get_turf(current_squaddie)
 		switch(z_hidden)
 			if(HIDE_ALMAYER)
-				if(is_mainship_level(current_turf.z))
+				if(is_mainship_level(current_turf?.z))
 					filtered = TRUE
 			if(HIDE_GROUND)
-				if(is_ground_level(current_turf.z))
+				if(is_ground_level(current_turf?.z))
 					filtered = TRUE
 
 		if("\ref[current_squaddie]" in marine_filter)
@@ -576,7 +574,7 @@
 			"SSD" = !current_squaddie.key || !current_squaddie.client && current_squaddie.stat != DEAD
 			)
 
-	return(marines_list)
+	return marines_list
 
 /obj/structure/machinery/computer/overwatch/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -584,7 +582,7 @@
 		return UI_CLOSE
 
 /obj/structure/machinery/computer/overwatch/ui_state(mob/user)
-	return GLOB.not_incapacitated_and_adjacent_state
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
@@ -598,8 +596,8 @@
 	data["marine_filter"] = marine_filter
 	data["marine_filter_enabled"] = marine_filter_enabled
 	data["operator"] = operator?.name
-	data["bombardment_cooldown"] = COOLDOWN_TIMELEFT(almayer_orbital_cannon, ob_firing_cooldown)
-	data["user"] = usr
+	data["world_time"] = world.time
+	data["user"] = user
 
 	var/list/squad_list = list()
 	for(var/datum/squad/S in RoleAuthority.squads)
@@ -607,15 +605,15 @@
 			squad_list += S.name
 	data["squad_list"] = squad_list
 
-	if(almayer_orbital_cannon)
-		data["almayer_cannon_chambered"] = almayer_orbital_cannon.chambered_tray ? TRUE : FALSE
-		data["almayer_cannon_disabled"] = almayer_orbital_cannon.is_disabled ? TRUE : FALSE
+	data["almayer_cannon_chambered"] = almayer_orbital_cannon?.chambered_tray
+	data["almayer_cannon_disabled"] = almayer_orbital_cannon?.is_disabled
+	data["bombardment_cooldown"] = almayer_orbital_cannon?.ob_firing_cooldown
+
+	data["supply_cooldown"] = current_squad?.next_supplydrop
+	data["marine_list"] = current_squad ? get_marine_data(current_squad) : FALSE
+	data["squad_data"] = current_squad ? get_squad_data(current_squad) : FALSE
 
 	if(current_squad)
-		data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
-		data["marine_list"] = get_marine_data(current_squad)
-		data["squad_data"] = get_squad_data(current_squad)
-
 		var/obj/structure/closet/crate/drop_closet = locate() in current_squad.drop_pad.loc
 		if(drop_closet)
 			data["supply_ready"] = TRUE
@@ -646,24 +644,23 @@
 			return TRUE
 
 		if("change_operator")
-			if(operator != usr)
-				if(operator && ishighersilicon(operator))
-					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("AI override in progress. Access denied.")]")
-					return
-				if(!current_squad || current_squad.assume_overwatch(usr))
-					operator = usr
-				if(ishighersilicon(usr))
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system AI override protocol successful.")]")
-					current_squad?.send_squad_message("Attention. [operator.name] has engaged overwatch system control override.", displayed_icon = src)
-				else
-					var/mob/living/carbon/human/H = operator
-					var/obj/item/card/id/ID = H.get_idcard()
-					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
-					current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
+			if(operator && ishighersilicon(operator))
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("AI override in progress. Access denied.")]")
+				return
+			if(!current_squad || current_squad.assume_overwatch(usr))
+				operator = usr
+			if(ishighersilicon(usr))
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system AI override protocol successful.")]")
+				current_squad?.send_squad_message("Attention. [operator.name] has engaged overwatch system control override.", displayed_icon = src)
+			else
+				var/mob/living/carbon/human/H = operator
+				var/obj/item/card/id/ID = H.get_idcard()
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
+				current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
 			return TRUE
 
 		if("logout")
-			if(current_squad.release_overwatch())
+			if(current_squad?.release_overwatch())
 				if(ishighersilicon(usr))
 					current_squad.send_squad_message("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.", displayed_icon = src)
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system control override disengaged.")]")
@@ -672,16 +669,14 @@
 					var/obj/item/card/id/ID = H.get_idcard()
 					current_squad.send_squad_message("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.", displayed_icon = src)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
+				current_squad = null
 			operator = null
-			current_squad = null
 			if(cam && !ishighersilicon(usr))
 				usr.reset_view(null)
 			cam = null
 			return TRUE
 
 		if("pick_squad")
-			if(operator != usr)
-				return FALSE
 			if(current_squad?.release_overwatch())
 				var/mob/living/carbon/human/H = operator
 				var/obj/item/card/id/ID = H.get_idcard()
@@ -698,8 +693,6 @@
 			return TRUE
 
 		if("message")
-			if(operator != usr)
-				return FALSE
 			var/input = sanitize_control_chars(sanitize(params["message"]))
 			send_to_squad(input, 1) //message, adds username
 			send_maptext_to_squad(input, "Squad Message:")
@@ -708,8 +701,6 @@
 			return TRUE
 
 		if("sl_message")
-			if(operator != usr)
-				return FALSE
 			var/input = sanitize_control_chars(sanitize(params["message"]))
 			send_to_squad(input, 1, 1) //message, adds username, only to leader
 			send_maptext_to_squad(input, "Squad Leader Message:", 1)
@@ -718,24 +709,18 @@
 			return TRUE
 
 		if("check_primary")
-			if(operator != usr)
-				return FALSE
 			visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Reminding primary objectives of squad '[current_squad]'.")]")
 			to_chat(usr, "[icon2html(src, usr)] <b>Primary Objective:</b> [current_squad.primary_objective]")
 			log_overwatch("[key_name(usr)] sent '[current_squad.primary_objective]' to squad [current_squad].")
 			return TRUE
 
 		if("check_secondary")
-			if(operator != usr)
-				return FALSE
 			visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Reminding secondary objectives of squad '[current_squad]'.")]")
 			to_chat(usr, "[icon2html(src, usr)] <b>Secondary Objective:</b> [current_squad.secondary_objective]")
 			log_overwatch("[key_name(usr)] sent '[current_squad.primary_objective]' to squad [current_squad].")
 			return TRUE
 
 		if("set_primary")
-			if(operator != usr)
-				return FALSE
 			var/input = sanitize_control_chars(sanitize(params["objective"]))
 			current_squad.primary_objective = "[input] ([worldtime2text()])"
 			send_to_squad("Your primary objective has been changed to '[input]'. See Status pane for details.")
@@ -745,8 +730,6 @@
 			return TRUE
 
 		if("set_secondary")
-			if(operator != usr)
-				return FALSE
 			var/input = sanitize_control_chars(sanitize(params["objective"]))
 			current_squad.secondary_objective = input + " ([worldtime2text()])"
 			send_to_squad("Your secondary objective has been changed to '[input]'. See Status pane for details.")
@@ -756,24 +739,18 @@
 			return TRUE
 
 		if("set_supply")
-			if(operator != usr)
-				return FALSE
 			x_supply = params["target_x"]
 			y_supply = params["target_y"]
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Latitude is now [y_supply], longitude is now [x_supply].")]")
 			return TRUE
 
 		if("set_bomb")
-			if(operator != usr)
-				return FALSE
 			x_bomb = params["target_x"]
 			y_bomb = params["target_y"]
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Latitude is now [y_bomb], longitude is now [x_bomb].")]")
 			return TRUE
 
 		if("hide_dead")
-			if(operator != usr)
-				return FALSE
 			dead_hidden = !dead_hidden
 			if(dead_hidden)
 				to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Dead marines are now not shown.")]")
@@ -782,8 +759,6 @@
 			return TRUE
 
 		if("choose_z")
-			if(operator != usr)
-				return FALSE
 			switch(params["area_picked"])
 				if("Ship")
 					z_hidden = HIDE_ALMAYER
@@ -797,8 +772,6 @@
 			return TRUE
 
 		if("toggle_marine_filter")
-			if(operator != usr)
-				return FALSE
 			if(marine_filter_enabled)
 				marine_filter_enabled = FALSE
 				to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("All marines will now be shown regardless of filter.")]")
@@ -808,8 +781,6 @@
 			return TRUE
 
 		if("filter_marine")
-			if(operator != usr)
-				return FALSE
 			if(current_squad)
 				var/squaddie = params["squaddie"]
 				if(!(squaddie in marine_filter))
@@ -821,32 +792,22 @@
 			return TRUE
 
 		if("change_lead")
-			if(operator != usr)
-				return FALSE
 			change_lead(params["marine_picked"])
 			return TRUE
 
 		if("insubordination")
-			if(operator != usr)
-				return FALSE
 			mark_insubordination(params["marine_picked"])
 			return TRUE
 
 		if("squad_transfer")
-			if(operator != usr)
-				return FALSE
 			transfer_squad(params["marine_picked"])
 			return TRUE
 
 		if("dropsupply")
-			if(operator != usr)
-				return FALSE
 			handle_supplydrop()
 			return TRUE
 
 		if("dropbomb")
-			if(operator != usr)
-				return FALSE
 			handle_bombard(usr)
 			return TRUE
 

@@ -12,10 +12,10 @@
 	var/morgue_type = "morgue"
 	var/tray_path = /obj/structure/morgue_tray
 	var/morgue_open = 0
-	anchored = 1
-	throwpass = 1
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 2
+	anchored = 1
+	throwpass = 1
 
 /obj/structure/morgue/Initialize()
 	. = ..()
@@ -23,8 +23,8 @@
 
 /obj/structure/morgue/Destroy()
 	new buildstacktype(loc, buildstackamount)
-	for(var/atom/movable/A in src)
-		A.forceMove(loc)
+	for(var/atom/movable/object in contents)
+		object.forceMove(loc)
 	. = ..()
 	QDEL_NULL(connected)
 

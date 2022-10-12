@@ -1,4 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
+import { createSearch } from 'common/string';
 import { round } from 'common/math';
 import {
   Button,
@@ -16,24 +17,17 @@ import {
   Dropdown,
   ColorBox,
   Dimmer,
+  Input,
 } from '../components';
 import { Window } from '../layouts';
 
-import { createLogger } from '../logging';
-const logger = createLogger('Overwatch');
+export const searchFor = (searchText) => {
+  return createSearch(searchText, (thing) => thing.name);
+};
 
 export const OverwatchConsole = (_props, context) => {
   const { act, data } = useBackend(context);
-  const { operator, squad_data } = data;
-  logger.warn(data);
-
-  const [currentControlCategory, setCategory] = useLocalState(
-    context,
-    'current_control_category',
-    1
-  );
-
-  let categoryAmount = 300;
+  const { operator } = data;
 
   const windowWidth = 1000;
   const windowHeight = 480;
@@ -74,7 +68,6 @@ export const OverwatchMain = (props, context) => {
 };
 
 export const OverwatchTab = (props, context) => {
-  const { act, data } = useBackend(context);
   const [currentControlCategory, setCategory] = useLocalState(
     context,
     'current_control_category',
@@ -125,7 +118,6 @@ export const OverwatchTab = (props, context) => {
 };
 
 export const OverwatchEmpty = (props, context) => {
-  const { act, data } = useBackend(context);
   return (
     <Section flexGrow="1" fill>
       <OverwatchId />
@@ -187,7 +179,7 @@ export const OverwatchId = (props, context) => {
 
 export const OverwatchSquad = (props, context) => {
   const { act, data } = useBackend(context);
-  const { squad_data, marine_list, squad_list } = data;
+  const { squad_data, marine_list } = data;
 
   const marine_list_keys = Object.keys(marine_list);
 
@@ -376,6 +368,7 @@ export const OverwatchMonitor = (props, context) => {
   } = data;
 
   const marine_data = Object.values(marine_list);
+  const [searchText, setSearchText] = useLocalState(context, "searchText", "");
 
   return (
     <>
@@ -387,6 +380,17 @@ export const OverwatchMonitor = (props, context) => {
         buttons={
           <Stack>
             <Stack.Item>
+              <Input
+                placeholder="Search for Marine"
+                fluid
+                width="10em"
+                value={searchText}
+                onInput={(_, value) => setSearchText(value)}
+                height="1.6em"
+                lineHeight="1.6em"
+              />
+            </Stack.Item>
+            <Stack.Item>
               <Button
                 content={
                   dead_hidden ? 'Show Dead Marines' : 'Hide Dead Marines'
@@ -394,8 +398,8 @@ export const OverwatchMonitor = (props, context) => {
                 disabled={operator !== user}
                 selected={dead_hidden}
                 onClick={() => act('hide_dead')}
-                height="1.8em"
-                lineHeight="1.5em"
+                height="1.6em"
+                lineHeight="1.6em"
               />
             </Stack.Item>
             <Stack.Item>
@@ -408,8 +412,8 @@ export const OverwatchMonitor = (props, context) => {
                     : 'Hide Filtered Marines'
                 }
                 onClick={() => act('toggle_marine_filter')}
-                height="1.8em"
-                lineHeight="1.5em"
+                height="1.6em"
+                lineHeight="1.6em"
               />
             </Stack.Item>
             <Stack.Item>
@@ -424,8 +428,8 @@ export const OverwatchMonitor = (props, context) => {
                 onSelected={(value) => act('choose_z', { area_picked: value })}
                 noscroll
                 width={z_hidden ? '14em' : '8em'}
-                height="1.8em"
-                lineHeight="1.5em"
+                height="1.6em"
+                lineHeight="1.6em"
               />
             </Stack.Item>
           </Stack>
@@ -444,6 +448,7 @@ export const OverwatchMonitor = (props, context) => {
                 </Table.Row>
                 {marine_data
                   .filter((marine) => !marine?.filtered)
+                  .filter(searchFor(searchText))
                   .map((marine_data) => (
                     <Table.Row key={marine_data}>
                       <Table.Cell textAlign="center">

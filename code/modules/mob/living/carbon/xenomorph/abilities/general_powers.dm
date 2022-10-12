@@ -857,7 +857,7 @@
 		if(path_turf.density)
 			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))
 			return FALSE
-		for(var/obj/path_contents as obj in path_turf.contents)
+		for(var/obj/path_contents in path_turf.contents)
 			if(path_contents.density && !path_contents.throwpass)
 				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))
 				return FALSE

@@ -259,7 +259,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_item_animations'>Toggle Item Animations</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_item_animations'>Toggle Item Animations</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_same_tile_item_animations'>Toggle Same Tile Item Animations</a><br>"
 	)
 
 	var/dat = ""
@@ -358,6 +359,11 @@
 /client/proc/toggle_item_animations() //Toggles tg-style item animations on and off, default on.
 	prefs.toggle_prefs ^= TOGGLE_ITEM_ANIMATIONS
 	to_chat(src, SPAN_BOLDNOTICE("You [(prefs.toggle_prefs & TOGGLE_ITEM_ANIMATIONS) ? "will" : "will no longer"] see item animations."))
+	prefs.save_preferences()
+
+/client/proc/toggle_same_tile_item_animations() //Toggles being able to see animations that occur on the same tile.
+	prefs.toggle_prefs ^= TOGGLE_SAME_TILE_ITEM_ANIMATIONS
+	to_chat(src, SPAN_BOLDNOTICE("You [(prefs.toggle_prefs & TOGGLE_SAME_TILE_ITEM_ANIMATIONS) ? "will" : "will no longer"] see item animations that occur on the same tile."))
 	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------

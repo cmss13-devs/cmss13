@@ -308,8 +308,8 @@
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
 
 /datum/admins/proc/admin_force_selfdestruct()
-	set name = "Self Destruct"
-	set desc = "Trigger self destruct countdown. This should not be done if the self destruct has already been called."
+	set name = "Self-Destruct"
+	set desc = "Trigger self-destruct countdown. This should not be done if the self-destruct has already been called."
 	set category = "Admin.Events"
 
 	if(!SSticker.mode || !check_rights(R_ADMIN) || get_security_level() == "delta")
@@ -320,7 +320,7 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	message_staff("[key_name_admin(usr)] admin-started self destruct system.")
+	message_staff("[key_name_admin(usr)] admin-started self-destruct system.")
 
 /client/proc/view_faxes()
 	set name = "View Faxes"
@@ -517,7 +517,7 @@
 
 /client/proc/cmd_admin_xeno_report()
 	set name = "Report: Queen Mother"
-	set desc = "Basically a command announcement, but only for selected Xenos Hive"
+	set desc = "Basically a command announcement, but only for selected Xeno's Hive"
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))

@@ -260,7 +260,7 @@
 	owner.flags_atom &= ~DIRLOCK
 
 /datum/action/xeno_action/onclick/toggle_long_range
-	name = "Toggle Long Range Sight"
+	name = "Toggle Long-Range Sight"
 	action_icon_state = "toggle_long_range"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_long_range
 	action_type = XENO_ACTION_ACTIVATE

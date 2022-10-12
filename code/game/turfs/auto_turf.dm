@@ -119,7 +119,7 @@
 	icon_state = "varadero_1"
 	bleed_layer = 1
 
-//Ice Colony perma frost
+//Ice Colony permafrost
 /turf/open/auto_turf/ice
 	name = "auto-ice"
 	icon = 'icons/turf/floors/auto_ice.dmi'

@@ -1,6 +1,6 @@
 /obj/structure/interior_viewport
 	name = "External Cameras Terminal"
-	desc = "A small terminal connected to the external cameras of a vehicle, allowing a 360 degree visual survey of vehicle surroundings."
+	desc = "A small terminal connected to the external cameras of a vehicle, allowing a 360-degree visual survey of vehicle surroundings."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "viewport"
 	layer = INTERIOR_DOOR_LAYER

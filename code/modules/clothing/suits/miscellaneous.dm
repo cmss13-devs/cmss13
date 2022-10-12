@@ -379,31 +379,31 @@
 
 /obj/item/clothing/under/swimsuit/black
 	name = "black swimsuit"
-	desc = "An oldfashioned black swimsuit."
+	desc = "An old-fashioned black swimsuit."
 	icon_state = "swim_black"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/blue
 	name = "blue swimsuit"
-	desc = "An oldfashioned blue swimsuit."
+	desc = "An old-fashioned blue swimsuit."
 	icon_state = "swim_blue"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/purple
 	name = "purple swimsuit"
-	desc = "An oldfashioned purple swimsuit."
+	desc = "An old-fashioned purple swimsuit."
 	icon_state = "swim_purp"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/green
 	name = "green swimsuit"
-	desc = "An oldfashioned green swimsuit."
+	desc = "An old-fashioned green swimsuit."
 	icon_state = "swim_green"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/red
 	name = "red swimsuit"
-	desc = "An oldfashioned red swimsuit."
+	desc = "An old-fashioned red swimsuit."
 	icon_state = "swim_red"
 	siemens_coefficient = 1
 

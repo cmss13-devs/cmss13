@@ -484,7 +484,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/mateba
 	name = "standard mateba barrel"
 	icon_state = "mateba_medium"
-	desc = "A standard mateba barrel. Offers a balance between accuracy and firerate."
+	desc = "A standard mateba barrel. Offers a balance between accuracy and fire rate."
 	slot = "special"
 	flags_attach_features = NO_FLAGS
 
@@ -506,7 +506,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/mateba/long
 	name = "marksman mateba barrel"
 	icon_state = "mateba_long"
-	desc = "A marksman mateba barrel. Offers a greater accuracy at the cost of firerate."
+	desc = "A marksman mateba barrel. Offers a greater accuracy at the cost of fire rate."
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = -1
 
@@ -526,7 +526,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/mateba/short
 	name = "snubnose mateba barrel"
 	icon_state = "mateba_short"
-	desc = "A snubnosed mateba barrel. Offers a fast firerate at the cost of accuracy."
+	desc = "A snubnosed mateba barrel. Offers a fast fire rate at the cost of accuracy."
 	hud_offset_mod = 2
 
 /obj/item/attachable/mateba/short/New()
@@ -546,7 +546,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/reddot
 	name = "S5 red-dot sight"
-	desc = "An ARMAT S5 red-dot sight. A zero magnification optic that offers faster, and more accurate target aquisition."
+	desc = "An ARMAT S5 red-dot sight. A zero-magnification optic that offers faster, and more accurate target acquisition."
 	icon_state = "reddot"
 	attach_icon = "reddot_a"
 	slot = "rail"
@@ -559,7 +559,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/reflex
 	name = "S6 reflex sight"
-	desc = "An ARMAT S6 reflex sight. A zero magnification alternative to iron sights with a more open optic window when compared to the S5 red-dot. Helps to reduce scatter during automated fire."
+	desc = "An ARMAT S6 reflex sight. A zero-magnification alternative to iron sights with a more open optic window when compared to the S5 red-dot. Helps to reduce scatter during automated fire."
 	icon_state = "reflex"
 	attach_icon = "reflex_a"
 	slot = "rail"
@@ -683,7 +683,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
-		to_chat(user, SPAN_NOTICE("You strip the the rail flashlight of its mount, converting it to a normal flashlight."))
+		to_chat(user, SPAN_NOTICE("You strip the rail flashlight of its mount, converting it to a normal flashlight."))
 		if(isstorage(loc))
 			var/obj/item/storage/S = loc
 			S.remove_from_storage(src)
@@ -1402,7 +1402,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/mod88
 	name = "\improper Mod 88 burst stock"
-	desc = "Increases the firerate and burst amount on the Mod 88. Some versions act as a holster for the weapon when un-attached. This is a test item and should not be used in normal gameplay (yet)."
+	desc = "Increases the fire rate and burst amount on the Mod 88. Some versions act as a holster for the weapon when un-attached. This is a test item and should not be used in normal gameplay (yet)."
 	icon_state = "mod88_stock"
 	attach_icon = "mod88_stock_a"
 	wield_delay_mod = WIELD_DELAY_FAST

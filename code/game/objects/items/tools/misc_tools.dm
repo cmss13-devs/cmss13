@@ -204,7 +204,7 @@
 	clicky = TRUE
 
 /obj/item/tool/pen/invisible
-	desc = "It's an invisble pen marker."
+	desc = "It's an invisible pen marker."
 	pen_colour = "white"
 
 

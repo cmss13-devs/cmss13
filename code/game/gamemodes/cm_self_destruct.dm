@@ -1,6 +1,6 @@
 /*
 TODO
-Look into animation screen not showing on self destruct and other weirdness
+Look into animation screen not showing on self-destruct and other weirdness
 Intergrate distress into this controller.
 Finish nanoui conversion for comm console.
 Make sure people who get nuked and wake up from SSD don't live.
@@ -32,12 +32,12 @@ otherwise the launch will fail and the shuttle will become inoperable.
 Any launched shuttles are taken out of the game. If the evacuation is canceled, any persons inside of the cryo tubes will be ejected.
 They may temporarily open the door to exit if they are stuck inside after evac is canceled.
 
-When the self destruct is enabled, the console comes online. This usually happens during an evacuation. Once the console is
+When the self-destruct is enabled, the console comes online. This usually happens during an evacuation. Once the console is
 interacted with, it fires up the self-destruct sequence. Several rods rise and must be interacted with in order to arm the system.
-Once that happens, the console must be interacted with again to trigger the self destruct. The self destruct may also be
+Once that happens, the console must be interacted with again to trigger the self-destruct. The self-destruct may also be
 canceled from the console.
 
-The self destruct may also happen if a nuke is detonated on the ship's zlevel; if it is detonated elsewhere, the ship will not blow up.
+The self-destruct may also happen if a nuke is detonated on the ship's zlevel; if it is detonated elsewhere, the ship will not blow up.
 Regardless of where it's detonated, or how, a successful detonation will end the round or automatically restart the game.
 
 All of the necessary difines are stored under mode.dm in defines.
@@ -69,14 +69,14 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		dest_rods = new
 		for(var/obj/structure/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
 		if(!dest_rods.len)
-			log_debug("ERROR CODE SD2: could not find any self destruct rods")
-			to_world(SPAN_DEBUG("ERROR CODE SD2: could not find any self destruct rods"))
+			log_debug("ERROR CODE SD2: could not find any self-destruct rods")
+			to_world(SPAN_DEBUG("ERROR CODE SD2: could not find any self-destruct rods"))
 			QDEL_NULL(dest_master)
 			return FALSE
 		dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len
 		dest_master.desc = "The main operating panel for a self-destruct system. It requires very little user input, but the final safety mechanism is manually unlocked.\nAfter the initial start-up sequence, [dest_rods.len] control rods must be armed, followed by manually flipping the detonation switch."
 
-/datum/authority/branch/evacuation/proc/get_affected_zlevels() //This proc returns the ship's z level list (or whatever specified), when an evac/self destruct happens.
+/datum/authority/branch/evacuation/proc/get_affected_zlevels() //This proc returns the ship's z level list (or whatever specified), when an evac/self-destruct happens.
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && evac_status == EVACUATION_STATUS_COMPLETE) //Nuke is not in progress and evacuation finished, end the round on ship and low orbit (dropships in transit) only.
 		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))
 	else
@@ -94,7 +94,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(force || (evac_status == EVACUATION_STATUS_STANDING_BY && !(flags_scuttle & FLAGS_EVACUATION_DENY)))
 		evac_time = world.time
 		evac_status = EVACUATION_STATUS_INITIATING
-		ai_announcement("Attention. Emergency. All personel must evacuate immediately. You have [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] minute\s until departure.", 'sound/AI/evacuate.ogg')
+		ai_announcement("Attention. Emergency. All personnel must evacuate immediately. You have [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] minute\s until departure.", 'sound/AI/evacuate.ogg')
 		xeno_message_all("A wave of adrenaline ripples through the hive. The fleshy creatures are trying to escape!")
 		var/datum/shuttle/ferry/marine/evacuation_pod/P
 		for(var/obj/structure/machinery/status_display/SD in machines)
@@ -210,7 +210,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		for(i in EvacuationAuthority.dest_rods)
 			I = i
 			I.in_progress = 1
-		ai_announcement("DANGER. DANGER. Self destruct system activated. DANGER. DANGER. Self destruct in progress. DANGER. DANGER.")
+		ai_announcement("DANGER. DANGER. Self-destruct system activated. DANGER. DANGER. Self-destruct in progress. DANGER. DANGER.")
 		trigger_self_destruct(,,override)
 		return TRUE
 
@@ -335,7 +335,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	active_state = active_state > SELF_DESTRUCT_MACHINE_INACTIVE ? SELF_DESTRUCT_MACHINE_INACTIVE : SELF_DESTRUCT_MACHINE_ACTIVE
 
 /obj/structure/machinery/self_destruct/console
-	name = "self destruct control panel"
+	name = "self-destruct control panel"
 	icon_state = "console"
 
 /obj/structure/machinery/self_destruct/console/Destroy()
@@ -391,7 +391,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			ui.open()
 
 /obj/structure/machinery/self_destruct/rod
-	name = "self destruct control rod"
+	name = "self-destruct control rod"
 	desc = "It is part of a complicated self-destruct sequence, but relatively simple to operate. Twist to arm or disarm."
 	icon_state = "rod"
 	layer = BELOW_OBJ_LAYER

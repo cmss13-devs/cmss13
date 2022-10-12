@@ -135,7 +135,7 @@
 // This is gellie fuel. Green Flames.
 /obj/item/ammo_magazine/flamer_tank/gellied
 	name = "incinerator tank (B-Gel)"
-	desc = "A fuel tank full of specialized Ultra Thick Napthal Fuel type B-Gel. Unlike its liquid contemporaries, this gellied variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to break them down. Handle with exceptional care."
+	desc = "A fuel tank full of specialized Ultra Thick Napthal Fuel type B-Gel. Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to break them down. Handle with exceptional care."
 	caliber = "Napalm Gel"
 	flamer_chem = "napalmgel"
 	max_rounds = 200
@@ -145,7 +145,7 @@
 
 /obj/item/ammo_magazine/flamer_tank/EX
 	name = "incinerator tank (EX)"
-	desc = "A fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustable liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
+	desc = "A fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
 	caliber = "Napalm EX"
 	flamer_chem = "napalmex"
 
@@ -210,7 +210,7 @@
 // This is the blue flamer fuel for the pyro.
 /obj/item/ammo_magazine/flamer_tank/large/X
 	name = "large incinerator tank (X)"
-	desc = "A large fuel tank of Ultra Thick Napthal Fuel type X, a sticky combustable liquid chemical that burns extremely hot, for use in the M240-T incinerator unit. Handle with care."
+	desc = "A large fuel tank of Ultra Thick Napthal Fuel type X, a sticky combustible liquid chemical that burns extremely hot, for use in the M240-T incinerator unit. Handle with care."
 	caliber = "Napalm X"
 	flamer_chem = "napalmx"
 
@@ -218,7 +218,7 @@
 
 /obj/item/ammo_magazine/flamer_tank/large/EX
 	name = "large incinerator tank (EX)"
-	desc = "A large fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustable liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
+	desc = "A large fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
 	caliber = "Napalm EX"
 	flamer_chem = "napalmex"
 

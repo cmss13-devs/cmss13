@@ -125,7 +125,7 @@
 			message_admins("[key_name_admin(usr)] toggled the [new_permission] permission of [adm_ckey]")
 
 //======================================================
-//Everything that has to do with evac and self destruct.
+//Everything that has to do with evac and self-destruct.
 //The rest of this is awful.
 //======================================================
 	if(href_list["evac_authority"])
@@ -1733,30 +1733,30 @@
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
 		destroy_cancel = FALSE
-		message_staff("[key_name_admin(usr)] has opted to GRANT the self destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
+		message_staff("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
 			if(distress_cancel)
 				return
 			var/mob/ref_person = locate(href_list["destroyship"])
 			set_security_level(SEC_LEVEL_DELTA)
-			log_game("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]")
-			message_staff("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]", 1)
+			log_game("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]")
+			message_staff("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
-	if(href_list["sddeny"]) // CentComm-deny. The self destruct is denied, without any further conditions
+	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
-		marine_announcement("The self destruct request has not received a response, ARES is now recalculating statistics.", "Self Destruct System")
-		log_game("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]")
-		message_staff("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]", 1)
+		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System")
+		log_game("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]")
+		message_staff("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
 	if(href_list["sdcancel"])
 		if(destroy_cancel)
-			to_chat(usr, "The self destruct was already canceled.")
+			to_chat(usr, "The self-destruct was already canceled.")
 			return
 		if(get_security_level() == "delta")
-			to_chat(usr, "Too late! The self destruct was started.")
+			to_chat(usr, "Too late! The self-destruct was started.")
 			return
-		log_game("[key_name_admin(usr)] has canceled the self destruct.")
-		message_staff("[key_name_admin(usr)] has canceled the self destruct.")
+		log_game("[key_name_admin(usr)] has canceled the self-destruct.")
+		message_staff("[key_name_admin(usr)] has canceled the self-destruct.")
 		destroy_cancel = 1
 		return
 

@@ -372,9 +372,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		occupant.ghostize(0)
 
 	//Make an announcement and log the person entering storage.
-	GLOB.frozen_crew += "[occupant.real_name]"
+	GLOB.frozen_crew += "[occupant.real_name] ([occupant.job])"
+
 	if(!isYautja(occupant))
-		ai_silent_announcement("[occupant.real_name] has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.")
+		ai_silent_announcement("[occupant.real_name], [occupant.job], has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.")
 	visible_message(SPAN_NOTICE("[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage."))
 
 	//Delete the mob.

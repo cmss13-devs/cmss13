@@ -133,3 +133,6 @@
       Control verbs.
   stanalbatross:
   - ui: converted the escape pod control console from nanoui to TGUI
+2022-10-12:
+  Geevies:
+  - rscadd: Made armor color sprites more muted.

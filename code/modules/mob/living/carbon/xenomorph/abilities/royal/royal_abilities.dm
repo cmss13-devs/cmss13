@@ -23,7 +23,7 @@
 
 /datum/action/xeno_action/onclick/royal_switch_roar_type
 	name = "Toggle Roar Type"
-	action_icon_state = "warden_shield" // default = buff
+	action_icon_state = "roar_motivate" // default = buff
 	macro_path = /datum/action/xeno_action/verb/verb_royal_switch_roar_type
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
@@ -46,12 +46,12 @@
 		return
 
 	if (WH.curr_effect_type == ROYAL_SCREECH_BUFF)
-		action_icon_result = "warden_rejuvenate"
+		action_icon_result = "roar_intimidate"
 		WH.curr_effect_type = ROYAL_SCREECH_DEBUFF
 		to_chat(X, SPAN_XENOWARNING("You will now debuff enemies, knocking them down, slowing, and reducing their vision!"))
 
 	else
-		action_icon_result = "warden_shield"
+		action_icon_result = "roar_motivate"
 		WH.curr_effect_type = ROYAL_SCREECH_BUFF
 		to_chat(X, SPAN_XENOWARNING("You will now give your allies increased armor and damage with your roar!"))
 
@@ -61,7 +61,7 @@
 
 /datum/action/xeno_action/activable/rooting_slash
 	name = "Rooting Slash"
-	action_icon_state = "prae_cleave_action"
+	action_icon_state = "rooting_slash"
 	ability_name = "rooting slash"
 	macro_path = /datum/action/xeno_action/verb/verb_rooting_slash
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -81,7 +81,7 @@
 /datum/action/xeno_action/activable/pounce/royal
 	macro_path = /datum/action/xeno_action/verb/verb_pounce_royal
 	name = "Dash"
-	action_icon_state = "charge"
+	action_icon_state = "slash_dash"
 	ability_name = "Dash"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -97,7 +97,7 @@
 /datum/action/xeno_action/activable/acid_throw
 	name = "Acid Throw"
 	ability_name = "Acid Throw"
-	action_icon_state = "acid_mine"
+	action_icon_state = "blinding_acid"
 	plasma_cost = 40
 	macro_path = /datum/action/xeno_action/verb/verb_acid_throw
 	action_type = XENO_ACTION_CLICK

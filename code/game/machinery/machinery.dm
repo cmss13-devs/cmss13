@@ -223,12 +223,12 @@ Class Procs:
 
 /obj/structure/machinery/attack_hand(mob/user as mob)
 	if(inoperable(MAINT))
-		return 1
+		return TRUE
 	if(user.lying || user.stat)
-		return 1
+		return TRUE
 	if(!(istype(user, /mob/living/carbon/human) || isRemoteControlling(user) || istype(user, /mob/living/carbon/Xenomorph)))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
-		return 1
+		return TRUE
 /*
 	//distance checks are made by atom/proc/clicked()
 	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !isRemoteControlling(user))
@@ -238,14 +238,14 @@ Class Procs:
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= 60)
 			visible_message(SPAN_DANGER("[H] stares cluelessly at [src] and drools."))
-			return 1
+			return TRUE
 		else if(prob(H.getBrainLoss()))
 			to_chat(user, SPAN_DANGER("You momentarily forget how to use [src]."))
-			return 1
+			return TRUE
 
 	src.add_fingerprint(user)
 
-	return 0
+	return FALSE
 
 /obj/structure/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return

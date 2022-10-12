@@ -1569,7 +1569,7 @@
 	..()
 
 /obj/item/reagent_container/food/snacks/monkeycube/proc/Expand()
-	for(var/mob/M in viewers(src,7))
+	for(var/mob/M as anything in viewers(src,7))
 		to_chat(M, SPAN_WARNING("\The [src] expands!"))
 	var/turf/T = get_turf(src)
 	if(T)

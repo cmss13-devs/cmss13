@@ -986,7 +986,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/mob/living/carbon/human/H = user
 	if(istype(H))
 		if(H.getBrainLoss() >= 60)
-			for(var/mob/M in viewers(src, null))
+			for(var/mob/M as anything in viewers(src, null))
 				H.visible_message(SPAN_WARNING("[H] stares cluelessly at [src] and drools."),
 				SPAN_WARNING("You stare cluelessly at [src] and drool."))
 			return 0

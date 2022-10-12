@@ -131,6 +131,12 @@
 	else
 		. += SPAN_NOTICE("\The [src] was bitten multiple times!")
 
+/obj/item/reagent_container/food/snacks/set_name_label(var/new_label)
+	name_label = new_label
+	name = made_from_player + initial(name)
+	if(name_label)
+		name += " ([name_label])"
+
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
 		..() // -> item/attackby()

@@ -157,8 +157,10 @@
 
 	var/dat = ""
 	var/list/mappings
-	LAZYSET(mappings, "<B style='color:purple'>Management</B>", R_EVERYTHING)
-	LAZYSET(mappings, "<B style='color:blue'>Developers</B>", G_DEVELOPER)
+	if(CONFIG_GET(flag/show_manager))
+		LAZYSET(mappings, "<B style='color:purple'>Management</B>", R_HOST)
+	if(CONFIG_GET(flag/show_devs))
+		LAZYSET(mappings, "<B style='color:blue'>Developers</B>", G_DEVELOPER)
 	LAZYSET(mappings, "<B style='color:red'>Admins</B>", R_ADMIN)
 	if(CONFIG_GET(flag/show_mods))
 		LAZYSET(mappings, "<B style='color:orange'>Moderators</B>", R_MOD)

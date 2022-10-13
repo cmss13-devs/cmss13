@@ -20,8 +20,6 @@ import {
   Input,
 } from '../components';
 import { Window } from '../layouts';
-import { createLogger } from '../logging';
-const logger = createLogger('overwatch');
 
 export const searchFor = (searchText) => {
   return createSearch(searchText, (thing) => thing.name);
@@ -452,7 +450,6 @@ export const OverwatchMonitor = (props, context) => {
                 </Table.Row>
                 {marine_data?.filter((marine) => !marine?.filtered)
                   .filter(searchFor(searchText))
-                  .sort((marine) => marine.role.localeCompare())
                   .map((marine_data) => (
                     <Table.Row key={marine_data}>
                       <Table.Cell textAlign="center">

@@ -252,6 +252,9 @@
 /mob/living/carbon/Xenomorph/Praetorian/get_blood_id()
 	return "xenobloodroyal"
 
+/mob/living/carbon/Xenomorph/Vicar/get_blood_id()
+	return "xenobloodroyal"
+
 /mob/living/carbon/human/get_blood_id()
 	if((NO_BLOOD in species.flags))
 		return

@@ -205,15 +205,23 @@
 	icon_state = "x"
 	anchored = TRUE
 	var/job
+	var/squad
 
 /obj/effect/landmark/start/Initialize(mapload, ...)
 	. = ..()
 	if(job)
-		LAZYADD(GLOB.spawns_by_job[job], src)
+		if(squad)
+			LAZYINITLIST(GLOB.spawns_by_squad_and_job[squad])
+			LAZYADD(GLOB.spawns_by_squad_and_job[squad][job], src)
+		else
+			LAZYADD(GLOB.spawns_by_job[job], src)
 
 /obj/effect/landmark/start/Destroy()
 	if(job)
-		LAZYREMOVE(GLOB.spawns_by_job[job], src)
+		if(squad)
+			LAZYREMOVE(GLOB.spawns_by_squad_and_job[squad][job], src)
+		else
+			LAZYREMOVE(GLOB.spawns_by_job[job], src)
 	return ..()
 
 /obj/effect/landmark/start/AISloc
@@ -330,11 +338,70 @@
 /obj/effect/landmark/late_join
 	name = "late join"
 	icon_state = "x2"
+	var/squad
+
+/obj/effect/landmark/late_join/alpha
+	name = "alpha late join"
+	squad = SQUAD_MARINE_1
+
+/obj/effect/landmark/late_join/bravo
+	name = "bravo late join"
+	squad = SQUAD_MARINE_2
+
+/obj/effect/landmark/late_join/charlie
+	name = "charlie late join"
+	squad = SQUAD_MARINE_3
+
+/obj/effect/landmark/late_join/delta
+	name = "delta late join"
+	squad = SQUAD_MARINE_4
+
 
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
-	GLOB.latejoin += src
+	if(squad)
+		LAZYADD(GLOB.latejoin_by_squad[squad], src)
+	else
+		GLOB.latejoin += src
 
 /obj/effect/landmark/late_join/Destroy()
-	GLOB.latejoin -= src
+	if(squad)
+		LAZYREMOVE(GLOB.latejoin_by_squad[squad], src)
+	else
+		GLOB.latejoin -= src
+	return ..()
+
+//****************************************** STATIC COMMS ************************************************//
+/obj/effect/landmark/static_comms
+	name = "static comms"
+	icon = 'icons/obj/structures/machinery/comm_tower3.dmi'
+	icon_state = "comms_landmark"
+	var/broken_on_spawn = FALSE
+
+/obj/effect/landmark/static_comms/proc/spawn_tower()
+	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/commstower = new /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms(loc)
+	if(broken_on_spawn)
+		commstower.update_health(damage = health) //fuck it up
+	qdel(src)
+
+/obj/effect/landmark/static_comms/net_one
+	icon_state = "comms_landmark_1"
+
+/obj/effect/landmark/static_comms/net_one/Initialize(mapload, ...)
+	. = ..()
+	GLOB.comm_tower_landmarks_net_one += src
+
+/obj/effect/landmark/static_comms/net_one/Destroy()
+	GLOB.comm_tower_landmarks_net_one -= src
+	return ..()
+
+/obj/effect/landmark/static_comms/net_two
+	icon_state = "comms_landmark_2"
+
+/obj/effect/landmark/static_comms/net_two/Initialize(mapload, ...)
+	. = ..()
+	GLOB.comm_tower_landmarks_net_two += src
+
+/obj/effect/landmark/static_comms/net_two/Destroy()
+	GLOB.comm_tower_landmarks_net_two -= src
 	return ..()

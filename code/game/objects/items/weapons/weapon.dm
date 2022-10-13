@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	hitsound = "swing_hit"
 
-/obj/item/weapon/melee/examine(mob/user)
+/obj/item/weapon/melee/get_examine_text(mob/user)
 	. = ..()
 	var/strong_text = "weak"
 	switch(force)
@@ -16,4 +16,4 @@
 			strong_text = "very strong"
 		if(MELEE_FORCE_VERY_STRONG to INFINITY)
 			strong_text = "inhumanely strong"
-	to_chat(user, SPAN_INFO("This weapon looks [strong_text]."))
+	. += SPAN_INFO("This weapon looks [strong_text].")

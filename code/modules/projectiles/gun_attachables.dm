@@ -122,7 +122,6 @@ Defined in conflicts.dm of the #defines folder.
 	if(G.attachments[slot])
 		var/obj/item/attachable/A = G.attachments[slot]
 		A.Detach(G)
-		vending_stat_bump(A.type, G.type, -1) // reduce so there can't be a gain in stats if you attach/detach same thing many times. Also helps with underbarrel GL
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/M = src.loc
@@ -131,7 +130,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	G.attachments[slot] = src
 	G.recalculate_attachment_bonuses()
-	vending_stat_bump(type, G.type)
 
 	if(G.burst_amount <= 1)
 		G.flags_gun_features &= ~GUN_BURST_ON //Remove burst if they can no longer use it.
@@ -214,8 +212,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/unique_action(mob/user)
 	return
 
+///Returns TRUE if its functionality is successfully used, FALSE if gun's own unloading should proceed instead.
 /obj/item/attachable/proc/unload_attachment(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
-	return
+	return FALSE
 
 /obj/item/attachable/proc/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/user) //For actually shooting those guns.
 	SHOULD_CALL_PARENT(TRUE)
@@ -485,7 +484,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/mateba
 	name = "standard mateba barrel"
 	icon_state = "mateba_medium"
-	desc = "A standard mateba barrel. Offers a balance between accuracy and firerate."
+	desc = "A standard mateba barrel. Offers a balance between accuracy and fire rate."
 	slot = "special"
 	flags_attach_features = NO_FLAGS
 
@@ -507,7 +506,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/mateba/long
 	name = "marksman mateba barrel"
 	icon_state = "mateba_long"
-	desc = "A marksman mateba barrel. Offers a greater accuracy at the cost of firerate."
+	desc = "A marksman mateba barrel. Offers a greater accuracy at the cost of fire rate."
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = -1
 
@@ -527,7 +526,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/mateba/short
 	name = "snubnose mateba barrel"
 	icon_state = "mateba_short"
-	desc = "A snubnosed mateba barrel. Offers a fast firerate at the cost of accuracy."
+	desc = "A snubnosed mateba barrel. Offers a fast fire rate at the cost of accuracy."
 	hud_offset_mod = 2
 
 /obj/item/attachable/mateba/short/New()
@@ -547,7 +546,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/reddot
 	name = "S5 red-dot sight"
-	desc = "An ARMAT S5 red-dot sight. A zero magnification optic that offers faster, and more accurate target aquisition."
+	desc = "An ARMAT S5 red-dot sight. A zero-magnification optic that offers faster, and more accurate target acquisition."
 	icon_state = "reddot"
 	attach_icon = "reddot_a"
 	slot = "rail"
@@ -560,7 +559,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/reflex
 	name = "S6 reflex sight"
-	desc = "An ARMAT S6 reflex sight. A zero magnification alternative to iron sights with a more open optic window when compared to the S5 red-dot. Helps to reduce scatter during automated fire."
+	desc = "An ARMAT S6 reflex sight. A zero-magnification alternative to iron sights with a more open optic window when compared to the S5 red-dot. Helps to reduce scatter during automated fire."
 	icon_state = "reflex"
 	attach_icon = "reflex_a"
 	slot = "rail"
@@ -684,7 +683,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
-		to_chat(user, SPAN_NOTICE("You strip the the rail flashlight of its mount, converting it to a normal flashlight."))
+		to_chat(user, SPAN_NOTICE("You strip the rail flashlight of its mount, converting it to a normal flashlight."))
 		if(isstorage(loc))
 			var/obj/item/storage/S = loc
 			S.remove_from_storage(src)
@@ -973,6 +972,18 @@ Defined in conflicts.dm of the #defines folder.
 	zoom_offset = 7
 	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
 
+/obj/item/attachable/scope/mini/xm88
+	name = "XS-9 targeting relay"
+	desc = "An ARMAT XS-9 optical interface. Unlike a traditional scope, this rail-mounted device features no telescoping lens. Instead, the firearm's onboard targeting system relays data directly to the optic for the system operator to reference in realtime."
+	icon_state = "boomslang-scope"
+	zoom_offset = 7
+	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
+
+/obj/item/attachable/scope/mini/xm88/New()
+	..()
+	select_gamemode_skin(type)
+	attach_icon = icon_state
+
 /obj/item/attachable/scope/mini_iff
 	name = "B8 Smart-Scope"
 	icon_state = "iffbarrel"
@@ -1136,8 +1147,24 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A wooden stock designed for the R4T lever-action rifle, designed to withstand harsh environments. It increases weapon stability but really gets in the way."
 	icon_state = "r4t-stock"
 	wield_delay_mod = WIELD_DELAY_SLOW
+	hud_offset_mod = 6
 
 /obj/item/attachable/stock/r4t/New()
+	..()
+	select_gamemode_skin(type)
+	recoil_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
+
+/obj/item/attachable/stock/xm88
+	name = "\improper XM88 padded stock"
+	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88 Heavy Rifle."
+	icon_state = "boomslang-stock"
+	wield_delay_mod = WIELD_DELAY_SLOW
+	hud_offset_mod = 6
+
+/obj/item/attachable/stock/xm88/New()
 	..()
 	select_gamemode_skin(type)
 	recoil_mod = -RECOIL_AMOUNT_TIER_5
@@ -1375,7 +1402,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/mod88
 	name = "\improper Mod 88 burst stock"
-	desc = "Increases the firerate and burst amount on the Mod 88. Some versions act as a holster for the weapon when un-attached. This is a test item and should not be used in normal gameplay (yet)."
+	desc = "Increases the fire rate and burst amount on the Mod 88. Some versions act as a holster for the weapon when un-attached. This is a test item and should not be used in normal gameplay (yet)."
 	icon_state = "mod88_stock"
 	attach_icon = "mod88_stock_a"
 	wield_delay_mod = WIELD_DELAY_FAST
@@ -1802,10 +1829,10 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
 	loaded_grenades = list()
 
-/obj/item/attachable/attached_gun/grenade/examine(mob/user)
-	..()
-	if(current_rounds) 	to_chat(user, "It has [current_rounds] grenade\s left.")
-	else 				to_chat(user, "It's empty.")
+/obj/item/attachable/attached_gun/grenade/get_examine_text(mob/user)
+	. = ..()
+	if(current_rounds) 	. += "It has [current_rounds] grenade\s left."
+	else 				. += "It's empty."
 
 /obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
 	if(!ishuman(usr))
@@ -1870,6 +1897,7 @@ Defined in conflicts.dm of the #defines folder.
 			user.drop_inv_item_to_loc(G, src)
 
 /obj/item/attachable/attached_gun/grenade/unload_attachment(mob/user, reload_override = FALSE, drop_override = FALSE, loc_override = FALSE)
+	. = TRUE //Always uses special unloading.
 	if(!breech_open)
 		to_chat(user, SPAN_WARNING("\The [src] is closed! You must open it to take out grenades!"))
 		return
@@ -1966,10 +1994,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	attachment_firing_delay = FIRE_DELAY_TIER_4 * 5
 
-/obj/item/attachable/attached_gun/flamer/examine(mob/user)
-	..()
-	if(current_rounds > 0) to_chat(user, "It has [current_rounds] unit\s of fuel left.")
-	else to_chat(user, "It's empty.")
+/obj/item/attachable/attached_gun/flamer/get_examine_text(mob/user)
+	. = ..()
+	if(current_rounds > 0) . += "It has [current_rounds] unit\s of fuel left."
+	else . += "It's empty."
 
 /obj/item/attachable/attached_gun/flamer/reload_attachment(obj/item/ammo_magazine/flamer_tank/FT, mob/user)
 	if(istype(FT))
@@ -2075,10 +2103,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	attachment_firing_delay = FIRE_DELAY_TIER_5*3
 
-/obj/item/attachable/attached_gun/shotgun/examine(mob/user)
-	..()
-	if(current_rounds > 0) 	to_chat(user, "It has [current_rounds] shell\s left.")
-	else 					to_chat(user, "It's empty.")
+/obj/item/attachable/attached_gun/shotgun/get_examine_text(mob/user)
+	. = ..()
+	if(current_rounds > 0) 	. += "It has [current_rounds] shell\s left."
+	else 					. += "It's empty."
 
 /obj/item/attachable/attached_gun/shotgun/set_bullet_traits()
 	LAZYADD(traits_to_give_attached, list(
@@ -2115,12 +2143,12 @@ Defined in conflicts.dm of the #defines folder.
 	var/obj/item/tool/extinguisher/internal_extinguisher
 	current_rounds = 1 //This has to be done to pass the fire_attachment check.
 
-/obj/item/attachable/attached_gun/extinguisher/examine(mob/user)
-	..()
+/obj/item/attachable/attached_gun/extinguisher/get_examine_text(mob/user)
+	. = ..()
 	if(internal_extinguisher)
-		to_chat(user, SPAN_NOTICE("It has [internal_extinguisher.reagents.total_volume] unit\s of water left!"))
+		. += SPAN_NOTICE("It has [internal_extinguisher.reagents.total_volume] unit\s of water left!")
 		return
-	to_chat(user, SPAN_WARNING("It's empty."))
+	. += SPAN_WARNING("It's empty.")
 
 /obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(var/slot)
 	return "It has a [icon2html(src)] [name] ([internal_extinguisher.reagents.total_volume]/[internal_extinguisher.max_water]) mounted underneath.<br>"

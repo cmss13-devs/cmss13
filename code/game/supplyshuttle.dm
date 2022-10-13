@@ -89,7 +89,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "\improper Airtight plastic flaps"
-	desc = "Heavy duty, airtight, plastic flaps."
+	desc = "Heavy-duty, airtight, plastic flaps."
 
 
 /obj/structure/machinery/computer/supplycomp
@@ -118,7 +118,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supply_drop_console
 	name = "Supply Drop Console"
-	desc = "An old fashioned computer hooked into the nearby Supply Drop system."
+	desc = "An old-fashioned computer hooked into the nearby Supply Drop system."
 	icon_state = "security_cam"
 	circuit = /obj/item/circuitboard/computer/supply_drop_console
 	req_access = list(ACCESS_MARINE_CARGO)
@@ -1175,13 +1175,13 @@ var/datum/controller/supply/supply_controller = new()
 		if(!VO) return
 		if(VO.has_vehicle_lock()) return
 
+		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
 
 		VO.on_created(ordered_vehicle)
 
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
-		spent = TRUE
 
 	add_fingerprint(usr)
 	updateUsrDialog()

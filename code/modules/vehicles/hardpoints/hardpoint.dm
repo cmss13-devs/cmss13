@@ -117,6 +117,15 @@
 
 	return ..()
 
+/obj/item/hardpoint/ex_act(severity)
+	if(owner || indestructible)
+		return
+
+	health = max(0, health - severity / 2)
+	if(health <= 0)
+		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
+		qdel(src)
+
 /// Populate traits_to_give in this proc
 /obj/item/hardpoint/proc/set_bullet_traits()
 	return
@@ -324,13 +333,14 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	return
 
 //examining a hardpoint
-/obj/item/hardpoint/examine(mob/user, var/integrity_only = FALSE)
+/obj/item/hardpoint/get_examine_text(mob/user, var/integrity_only = FALSE)
 	if(!integrity_only)
-		..()
+		return ..()
+	. = ..()
 	if(health <= 0)
-		to_chat(user, "It's busted!")
+		. += "It's busted!"
 	else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)))
-		to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
+		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader
 /obj/item/hardpoint/proc/reload(var/mob/user)

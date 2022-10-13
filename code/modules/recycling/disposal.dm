@@ -942,7 +942,7 @@
 		return null
 	return P
 
-// *** special cased almayer stuff because its all one z level ***
+// *** special cased almayer stuff because it's all one z level ***
 
 /obj/structure/disposalpipe/up/almayer
 	var/id

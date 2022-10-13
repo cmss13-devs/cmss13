@@ -16,12 +16,12 @@
 	else
 		return temp_access
 
-/obj/item/card/id/guest/examine(mob/user)
-	..()
+/obj/item/card/id/guest/get_examine_text(mob/user)
+	. = ..()
 	if (world.time < expiration_time)
-		to_chat(user, SPAN_NOTICE("This pass expires at [worldtime2text(expiration_time)]."))
+		. += SPAN_NOTICE("This pass expires at [worldtime2text(expiration_time)].")
 	else
-		to_chat(user, SPAN_WARNING("It expired at [worldtime2text(expiration_time)]."))
+		. += SPAN_WARNING("It expired at [worldtime2text(expiration_time)].")
 
 /obj/item/card/id/guest/read()
 	if (world.time > expiration_time)

@@ -238,7 +238,7 @@
 	anchored = TRUE
 	var/mob/living/carbon/human/occupant = null
 	var/available_chemicals = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine")
-	var/emergency_chems = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine", "oxycodone", "bicardine", "kelotane")
+	var/emergency_chems = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine", "oxycodone", "bicaridine", "kelotane")
 	var/amounts = list(5, 10)
 	var/filtering = FALSE
 	var/obj/structure/machinery/sleep_console/connected

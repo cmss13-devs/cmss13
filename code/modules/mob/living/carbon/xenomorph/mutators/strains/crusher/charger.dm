@@ -577,7 +577,7 @@ bell immunity [d]
 	CCA.stop_momentum()
 
 // Legacy Tank dispenser
-// Todo: Give this and other shitty fucking indestructable legacy items proper destruction mechanics. This includes being vunerable to bullets,explosions, etc and not just the charger.
+// Todo: Give this and other shitty fucking indestructible legacy items proper destruction mechanics. This includes being vunerable to bullets,explosions, etc and not just the charger.
 // For now this is fine since priority is charger, and I'm not willing to spend all day looking for bumfuck legacy item #382321 thats used a total of three times in the entireity of CM and adding health and everything to it.
 
 /obj/structure/dispenser/handle_charge_collision(mob/living/carbon/Xenomorph/X, datum/action/xeno_action/onclick/charger_charge/CCA)

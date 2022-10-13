@@ -143,11 +143,13 @@
 	. = ..()
 	update_neighbours(oldloc)
 
-/obj/effect/alien/weeds/examine(mob/user)
-	..()
+/obj/effect/alien/weeds/get_examine_text(mob/user)
+	. = ..()
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/open))
-		T.ceiling_desc(user)
+		var/ceiling_info = T.ceiling_desc(user)
+		if(ceiling_info)
+			. += ceiling_info
 
 
 /obj/effect/alien/weeds/Crossed(atom/movable/AM)

@@ -192,7 +192,7 @@
 
 /obj/item/storage/syringe_case
 	name = "syringe case"
-	desc = "It's an medical case for storing syringes and bottles."
+	desc = "It's a medical case for storing syringes and bottles."
 	icon_state = "syringe_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -289,24 +289,24 @@
 	else
 		maptext = ""
 
-/obj/item/storage/pill_bottle/examine(mob/user)
-	..()
+/obj/item/storage/pill_bottle/get_examine_text(mob/user)
+	. = ..()
 	var/pills_amount = contents.len
 	if(pills_amount)
 		var/percentage_filled = round(pills_amount/max_storage_space * 100)
 		switch(percentage_filled)
 			if(80 to 101)
-				to_chat(user, SPAN_INFO("The [name] seems fairly full."))
+				. += SPAN_INFO("The [name] seems fairly full.")
 			if(60 to 79)
-				to_chat(user, SPAN_INFO("The [name] feels more than half full."))
+				. += SPAN_INFO("The [name] feels more than half full.")
 			if(40 to 59)
-				to_chat(user, SPAN_INFO("The [name] seems to be around half full."))
+				. += SPAN_INFO("The [name] seems to be around half full.")
 			if(20 to 39)
-				to_chat(user, SPAN_INFO("The [name] feels less than half full."))
+				. += SPAN_INFO("The [name] feels less than half full.")
 			if(0 to 19)
-				to_chat(user, SPAN_INFO("The [name] feels like it's nearly empty!"))
+				. += SPAN_INFO("The [name] feels like it's nearly empty!")
 	else
-		to_chat(user, SPAN_INFO("The [name] is empty."))
+		. += SPAN_INFO("The [name] is empty.")
 
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
@@ -656,10 +656,10 @@ obj/item/storage/pill_bottle/packet
 	desc = "This packet contains Tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 
-/obj/item/storage/pill_bottle/packet/bicardine
-    name = "Bicardine pill packet"
+/obj/item/storage/pill_bottle/packet/bicaridine
+    name = "Bicaridine pill packet"
     icon_state = "bicardine_packet"
-    desc = "This packet contains Bicardine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+    desc = "This packet contains Bicaridine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
     pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 
 /obj/item/storage/pill_bottle/packet/kelotane

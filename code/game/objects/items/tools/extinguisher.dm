@@ -8,6 +8,8 @@
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
 	hitsound = 'sound/weapons/smash.ogg'
+	pickupsound = 'sound/handling/wrench_pickup.ogg'
+	dropsound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 10
 	w_class = SIZE_MEDIUM
@@ -55,9 +57,9 @@
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
 
-/obj/item/tool/extinguisher/examine(mob/user)
-	..()
-	to_chat(user, "It contains [reagents.total_volume] units of water left!")
+/obj/item/tool/extinguisher/get_examine_text(mob/user)
+	. = ..()
+	. += "It contains [reagents.total_volume] units of water left!"
 
 /obj/item/tool/extinguisher/attack_self(mob/user)
 	..()

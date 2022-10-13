@@ -701,8 +701,7 @@
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
 	..()
-	if(T.density)
-		cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/revolver/webley //Mateba round without the knockdown.
 	name = ".455 Webley bullet"
@@ -1372,7 +1371,7 @@
 	accurate_range = 8 //Big low-velocity projectile; this is for blasting dangerous game at close range.
 	max_range = 14 //At this range, it's lost all its damage anyway.
 	damage = 300 //Hits like a buckshot PB.
-	penetration = 15
+	penetration = ARMOR_PENETRATION_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_1 * 3 //It has a lot of energy, but the 26mm bullet drops off fast.
 	effective_range_max	= EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
 	var/hit_messages = list()
@@ -1405,7 +1404,7 @@
 	name = "lever-action bullet"
 
 	damage = 80
-	penetration = ARMOR_PENETRATION_TIER_1
+	penetration = 0
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
 	accurate_range = 14
@@ -1445,6 +1444,28 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_6
 	handful_state = "marksman_lever_action_bullet"
+
+/datum/ammo/bullet/lever_action/xm88
+	name = ".458 SOCOM round"
+
+	damage = 80
+	penetration = 0
+	accuracy = HIT_ACCURACY_TIER_1
+	shell_speed = AMMO_SPEED_TIER_6
+	accurate_range = 14
+	handful_state = "boomslang_bullet"
+
+/datum/ammo/bullet/lever_action/xm88/pen10
+	penetration = ARMOR_PENETRATION_TIER_2
+
+/datum/ammo/bullet/lever_action/xm88/pen20
+	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/lever_action/xm88/pen30
+	penetration = ARMOR_PENETRATION_TIER_6
+
+/datum/ammo/bullet/lever_action/xm88/pen40
+	penetration = ARMOR_PENETRATION_TIER_8
 
 /*
 //======
@@ -3004,33 +3025,38 @@
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flare(get_turf(P), P.firer)
+	drop_flare(get_turf(P), P, P.firer)
 
 /datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_flare(get_turf(P), P.firer)
+	drop_flare(get_turf(P), P, P.firer)
 
 /datum/ammo/flare/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density && isturf(P.loc))
-		drop_flare(P.loc, P.firer)
+		drop_flare(P.loc, P, P.firer)
 	else
-		drop_flare(T, P.firer)
+		drop_flare(T, P, P.firer)
 
 /datum/ammo/flare/do_at_max_range(obj/item/projectile/P, var/mob/firer)
-	drop_flare(get_turf(P), P.firer)
+	drop_flare(get_turf(P), P, P.firer)
 
-/datum/ammo/flare/proc/drop_flare(var/turf/T, var/mob/firer)
+/datum/ammo/flare/proc/drop_flare(var/turf/T, obj/item/projectile/fired_projectile, var/mob/firer)
 	var/obj/item/device/flashlight/flare/G = new flare_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
 	return G
+
 /datum/ammo/flare/signal
 	name = "signal flare"
 	icon_state = "flare_signal"
 	flare_type = /obj/item/device/flashlight/flare/signal/gun
 	handful_type = /obj/item/device/flashlight/flare/signal
 
-/datum/ammo/flare/signal/drop_flare(turf/T, mob/firer)
-	var/obj/item/device/flashlight/flare/signal/gun/G = ..()
-	G.activate_signal(firer)
+/datum/ammo/flare/signal/drop_flare(turf/T, obj/item/projectile/fired_projectile, mob/firer)
+	var/obj/item/device/flashlight/flare/signal/gun/signal_flare = ..()
+	signal_flare.activate_signal(firer)
+	if(istype(fired_projectile.shot_from, /obj/item/weapon/gun/flare))
+		var/obj/item/weapon/gun/flare/flare_gun_fired_from = fired_projectile.shot_from
+		flare_gun_fired_from.last_signal_flare_name = signal_flare.name
+
 /datum/ammo/flare/starshell
 	name = "starshell ash"
 	icon_state = "starshell_bullet"

@@ -413,7 +413,7 @@ body
 		href_list["datumrefresh"] = href_list["mob_player_panel"]
 
 	else if(href_list["give_disease"])
-		if(!check_rights(R_ADMIN|R_FUN))
+		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["give_disease"])
@@ -425,7 +425,7 @@ body
 		href_list["datumrefresh"] = href_list["give_disease"]
 
 	else if(href_list["build_mode"])
-		if(!check_rights(R_ADMIN|R_FUN))
+		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["build_mode"])
@@ -531,7 +531,7 @@ body
 		A.enable_pixel_scaling()
 
 	else if(href_list["explode"])
-		if(!check_rights(R_DEBUG|R_FUN))
+		if(!check_rights(R_DEBUG))
 			return
 
 		var/atom/A = locate(href_list["explode"])
@@ -544,7 +544,7 @@ body
 		href_list["datumrefresh"] = href_list["explode"]
 
 	else if(href_list["emp"])
-		if(!check_rights(R_DEBUG|R_FUN))
+		if(!check_rights(R_DEBUG))
 			return
 
 		var/atom/A = locate(href_list["emp"])
@@ -992,7 +992,7 @@ body
 		M.regenerate_icons()
 
 	else if(href_list["adjustDamage"] && href_list["mobToDamage"])
-		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN))
+		if(!check_rights(R_DEBUG|R_ADMIN))
 			return
 
 		var/mob/living/L = locate(href_list["mobToDamage"])
@@ -1059,7 +1059,7 @@ body
 		message_staff("TRAIT: [key_name(usr)] removed trait '[trait_old]' from [key_name(C)]")
 
 	else if(href_list["setmatrix"])
-		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN|R_VAREDIT))
+		if(!check_rights(R_DEBUG|R_ADMIN|R_VAREDIT))
 			return
 
 		var/atom/A = locate(href_list["setmatrix"])

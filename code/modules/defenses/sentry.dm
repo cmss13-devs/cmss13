@@ -105,12 +105,12 @@
 
 	return TRUE
 
-/obj/structure/machinery/defenses/sentry/examine(mob/user)
+/obj/structure/machinery/defenses/sentry/get_examine_text(mob/user)
 	. = ..()
 	if(ammo)
-		to_chat(user, SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded."))
+		. += SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded.")
 	else
-		to_chat(user, SPAN_NOTICE("[src] is empty and needs to be refilled with ammo."))
+		. += SPAN_NOTICE("[src] is empty and needs to be refilled with ammo.")
 
 /obj/structure/machinery/defenses/sentry/power_on_action()
 	target = null
@@ -392,9 +392,9 @@
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 
-/obj/structure/machinery/defenses/sentry/premade/examine(mob/user)
+/obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it."))
+	. += SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it.")
 
 /obj/structure/machinery/defenses/sentry/premade/attackby(var/obj/item/O, var/mob/user)
 	return
@@ -417,7 +417,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 //the turret inside a static sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/deployable
 	name = "UA-633 Static Gauss Turret"
-	desc = "An fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
+	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
 	fire_delay = 1

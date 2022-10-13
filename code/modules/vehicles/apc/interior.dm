@@ -48,21 +48,21 @@
 
 	var/obj/structure/bed/chair/comfy/vehicle/support_gunner/SG_seat
 
-/obj/structure/prop/vehicle/firing_port_weapon/examine(var/mob/living/carbon/human/H)
+/obj/structure/prop/vehicle/firing_port_weapon/get_examine_text(mob/user)
 	. = ..()
-	if(!istype(H))
+	if(!ishuman(user))
 		return
 	if(!SG_seat)
 		SG_seat = locate() in get_turf(src)
 		if(!SG_seat)
-			to_chat(H, SPAN_WARNING("ERROR HAS OCCURED! NO SEAT FOUND, TELL A DEV!"))
+			. += SPAN_WARNING("ERROR HAS OCCURED! NO SEAT FOUND, TELL A DEV!")
 			return
 	for(var/obj/item/hardpoint/special/firing_port_weapon/FPW in SG_seat.vehicle.hardpoints)
 		if(FPW.allowed_seat == SG_seat.seat)
 			if(FPW.ammo)
-				to_chat(H, SPAN_NOTICE("The [FPW.name]'s ammo count is: [SPAN_HELPFUL(FPW.ammo.current_rounds)]/[SPAN_WARNING(FPW.ammo.max_rounds)]."))
+				. += SPAN_NOTICE("The [FPW.name]'s ammo count is: [SPAN_HELPFUL(FPW.ammo.current_rounds)]/[SPAN_WARNING(FPW.ammo.max_rounds)].")
 				break
-	to_chat(H, SPAN_HELPFUL("Clicking on the [name] while being adjacent to support gunner seat will buckle you in and give you the control of the M56 FPW."))
+	. += SPAN_HELPFUL("Clicking on the [name] while being adjacent to support gunner seat will buckle you in and give you the control of the M56 FPW.")
 
 /obj/structure/prop/vehicle/firing_port_weapon/attack_hand(var/mob/living/carbon/human/H)
 	if(!istype(H))

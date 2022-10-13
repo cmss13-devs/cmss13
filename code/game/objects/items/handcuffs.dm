@@ -173,7 +173,7 @@
 
 /obj/item/restraints
 	name = "xeno restraints"
-	desc = "Use this to hold xenomorphic creatures saftely."
+	desc = "Use this to hold xenomorphic creatures safely."
 	gender = PLURAL
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "handcuff"

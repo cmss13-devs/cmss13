@@ -161,7 +161,7 @@
 
 			apply_damage(f_damage, BRUTE, affecting, sharp = 1, edge = 1) //This should slicey dicey
 			if(acid_damage)
-				playsound(loc, "acid_hit", 25, 1)
+				playsound(loc, "acid_strike", 25, 1)
 				var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
 				var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, acid_damage, armor_block_acid)
 				//nice messages so people know that armor works
@@ -352,6 +352,19 @@
 		M.apply_damage(10)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/barricade/handle_tail_stab(mob/living/carbon/Xenomorph/xeno)
+	take_damage((xeno.melee_damage_upper * 1.2) * brute_multiplier)
+	if(barricade_hitsound)
+		playsound(src, barricade_hitsound, 25, 1)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] stabs \the [src] apart!"), SPAN_DANGER("You stab \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] stabs \the [src] with its razor sharp tail!"), SPAN_DANGER("You stab \the [src] with your razor sharp tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	if(is_wired)
+		xeno.visible_message(SPAN_DANGER("The barbed wire slices into \the [xeno]'s tail!"), SPAN_DANGER("The barbed wire slices into your tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		xeno.apply_damage(5)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/surface/rack/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -398,7 +411,7 @@
 
 //Smashing lights
 /obj/structure/machinery/light/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(status == 2) //Ignore if broken. Note that we can't use defines here
+	if(is_broken()) //Ignore if broken. Note that we can't use defines here
 		return FALSE
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] smashes [src]!"), \
@@ -552,10 +565,10 @@
 
 	if(!arePowerSystemsOn())
 		delay = 1 SECONDS
-		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, SOUND_FREQ_HIGH * 1.8)
+		playsound(loc, "alien_doorpry", 25, TRUE)
 	else
 		delay = 4 SECONDS
-		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
+		playsound(loc, "alien_doorpry", 25, TRUE)
 
 	M.visible_message(SPAN_WARNING("[M] digs into [src] and begins to pry it open."), \
 	SPAN_WARNING("You dig into [src] and begin to pry it open."), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -843,7 +856,7 @@
 	M.visible_message("[M] slashes away at [src]!","You slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
 	health  = max(health - rand(M.melee_damage_lower, M.melee_damage_upper), 0)
 	if(!health)
-		playsound(src, "shatter", 70, 1)
+		playsound(src, "glassbreak", 70, 1)
 		damaged = TRUE
 		if(is_lit)
 			SetLuminosity(0)

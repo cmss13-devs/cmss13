@@ -39,12 +39,12 @@
 
 	to_chat(brainmob, SPAN_NOTICE(" You feel slightly disoriented. That's normal when you're just a brain."))
 
-/obj/item/organ/brain/examine(mob/user)
-	..()
-	if(brainmob && brainmob.client)//if thar be a brain inside... the brain.
-		to_chat(user, "You can feel the small spark of life still left in this one.")
+/obj/item/organ/brain/get_examine_text(mob/user)
+	. = ..()
+	if(brainmob?.client)//if thar be a brain inside... the brain.
+		. += "You can feel the small spark of life still left in this one."
 	else
-		to_chat(user, "This one seems particularly lifeless. Perhaps it will regain some of its luster later..")
+		. += "This one seems particularly lifeless. Perhaps it will regain some of its luster later.."
 
 /obj/item/organ/brain/removed(var/mob/living/target,var/mob/living/user)
 

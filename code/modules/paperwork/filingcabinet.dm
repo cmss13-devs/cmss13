@@ -138,7 +138,7 @@
 	if(virgin)
 		for(var/datum/data/record/G in GLOB.data_core.general)
 			var/datum/data/record/M
-			for(var/datum/data/record/R in GLOB.data_core.medical)
+			for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 				if((R.fields["name"] == G.fields["name"] || R.fields["id"] == G.fields["id"]))
 					M = R
 					break

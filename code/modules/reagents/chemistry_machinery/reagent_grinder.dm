@@ -419,7 +419,7 @@
 
 /obj/structure/machinery/reagentgrinder/industrial
 	name = "Industrial Grinder"
-	desc = "a heavy duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
+	desc = "a heavy-duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
 	icon_state = "industry1"
 	limit = 30
 	blend_items = list (
@@ -435,6 +435,9 @@
 		/obj/item/stack/sheet/copper = list("copper" = 60),
 		/obj/item/grown/nettle/death = list("pacid" = 0),
 		/obj/item/grown/nettle = list("sulphuric acid" = 0),
+
+		//Special Stuff
+		/obj/item/reagent_container/hypospray/autoinjector/yautja = list("thwei" = 30),
 
 		//Blender Stuff
 		/obj/item/reagent_container/food/snacks/grown/corn = list("cornoil" = 0)

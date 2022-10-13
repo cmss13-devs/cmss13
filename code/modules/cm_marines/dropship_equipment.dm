@@ -168,10 +168,10 @@
 		deployed_turret = new(src)
 		deployed_turret.deployment_system = src
 
-/obj/structure/dropship_equipment/sentry_holder/examine(mob/user)
-	..()
+/obj/structure/dropship_equipment/sentry_holder/get_examine_text(mob/user)
+	. = ..()
 	if(!deployed_turret)
-		to_chat(user, "Its turret is missing.")
+		. += "Its turret is missing."
 
 /obj/structure/dropship_equipment/sentry_holder/on_launch()
 	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically undeployed
@@ -286,10 +286,10 @@
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
 
-/obj/structure/dropship_equipment/mg_holder/examine(mob/user)
-	..()
+/obj/structure/dropship_equipment/mg_holder/get_examine_text(mob/user)
+	. = ..()
 	if(!deployed_mg)
-		to_chat(user, "Its machine gun is missing.")
+		. += "Its machine gun is missing."
 
 /obj/structure/dropship_equipment/mg_holder/on_launch()
 	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external mgs are automatically undeployed
@@ -433,7 +433,7 @@
 /obj/structure/dropship_equipment/electronics/spotlights
 	name = "spotlight"
 	icon_state = "spotlights"
-	desc = "A set of highpowered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
+	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	is_interactable = TRUE
 	point_cost = 300
 	var/spotlights_cooldown
@@ -589,12 +589,14 @@
 		else
 			linked_console.selected_equipment = src
 
-/obj/structure/dropship_equipment/weapon/examine(mob/user)
-	..()
+/obj/structure/dropship_equipment/weapon/get_examine_text(mob/user)
+	. = ..()
 	if(ammo_equipped)
-		ammo_equipped.show_loaded_desc(user)
+		var/ammo_info = ammo_equipped.show_loaded_desc(user)
+		if(ammo_info)
+			. += ammo_info
 	else
-		to_chat(user, "It's empty.")
+		. += "It's empty."
 
 
 
@@ -671,7 +673,7 @@
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
-	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its inital production run."
+	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run."
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	point_cost = 400

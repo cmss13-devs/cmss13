@@ -141,6 +141,9 @@
   Youbar:
   - qol: Cryosleep announcements now include job title
 2022-10-13:
+  4hands44:
+  - bugfix: replaced unbreakable window
+  - bugfix: Changed stools to /bed Ver.
   carlarctg:
   - qol: Trying to shoot an underslung grenade launcher and failing for some reason
       (like forgetting to pump it) will now generate a loud 'click' noise.

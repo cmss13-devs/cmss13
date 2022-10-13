@@ -19,8 +19,8 @@
 /datum/config_entry/string/alien_praetorian
 	config_entry_value = "icons/mob/hostiles/praetorian.dmi"
 
-/datum/config_entry/string/alien_royal
-	config_entry_value = "icons/mob/hostiles/royal.dmi"
+/datum/config_entry/string/alien_vicar
+	config_entry_value = "icons/mob/hostiles/vicar.dmi"
 
 /datum/config_entry/string/alien_predalien
 	config_entry_value = "icons/mob/hostiles/predalien.dmi"

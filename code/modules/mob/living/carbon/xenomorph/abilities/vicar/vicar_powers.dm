@@ -11,14 +11,14 @@
 	if(!xeno.check_state())
 		return
 
-	if (xeno.mutation_type == ROYAL_NORMAL)
-		var/datum/behavior_delegate/royal/BD = xeno.behavior_delegate
+	if (xeno.mutation_type == VICAR_NORMAL)
+		var/datum/behavior_delegate/vicar/BD = xeno.behavior_delegate
 		if (!istype(BD))
 			return
 		if (!BD.use_internal_acid_ability(screech_cost))
 			return
 
-	if (curr_effect_type == ROYAL_SCREECH_BUFF)
+	if (curr_effect_type == VICAR_SCREECH_BUFF)
 
 
 		playsound(xeno.loc, screech_sound_effectt, 55, 0, status = 0)
@@ -27,12 +27,12 @@
 		var/screech_duration = 150
 		var/image/buff_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
 		var/mob/living/carbon/Xenomorph/Praetorian/P = owner
-		if (!(P.screech_status_flags & ROYAL_ROAR_ENHANCED))
+		if (!(P.screech_status_flags & VICAR_ROAR_ENHANCED))
 			P.armor_modifier += XENO_ARMOR_MOD_MED
 			P.damage_modifier += XENO_DAMAGE_MOD_SMALL
 			P.recalculate_armor()
 			P.recalculate_damage()
-			P.screech_status_flags |= ROYAL_ROAR_ENHANCED
+			P.screech_status_flags |= VICAR_ROAR_ENHANCED
 			to_chat(src, SPAN_XENOWARNING("Your roar empowers you to strike harder!"))
 			buff_overlay.flick_overlay(P, 150)
 
@@ -41,7 +41,7 @@
 				P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 				P.recalculate_armor()
 				P.recalculate_damage()
-				P.screech_status_flags &= ~ROYAL_ROAR_ENHANCED
+				P.screech_status_flags &= ~VICAR_ROAR_ENHANCED
 				to_chat(src, SPAN_XENOWARNING("You feel the power of your roar wane."))
 
 		else
@@ -49,10 +49,10 @@
 
 		for(var/mob/living/carbon/Xenomorph/XX in view(6, xeno))
 			var/image/bufff_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
-			if (!(XX.screech_status_flags & ROYAL_ROAR_ENHANCED))
+			if (!(XX.screech_status_flags & VICAR_ROAR_ENHANCED))
 				XX.armor_modifier += XENO_ARMOR_MOD_MED
 				XX.damage_modifier += XENO_DAMAGE_MOD_SMALL
-				XX.screech_status_flags |= ROYAL_ROAR_ENHANCED
+				XX.screech_status_flags |= VICAR_ROAR_ENHANCED
 				XX.recalculate_armor()
 				XX.recalculate_damage()
 				bufff_overlay.flick_overlay(XX, 150)
@@ -61,14 +61,14 @@
 				spawn (screech_duration)
 					XX.armor_modifier -= XENO_ARMOR_MOD_MED
 					XX.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-					XX.screech_status_flags &= ~ROYAL_ROAR_ENHANCED
+					XX.screech_status_flags &= ~VICAR_ROAR_ENHANCED
 					XX.recalculate_armor()
 					XX.recalculate_damage()
 					to_chat(XX, SPAN_XENOWARNING("You feel the effects of [src] wane!"))
 			else
 				to_chat(XX, SPAN_XENOWARNING("You can only be empowered by one roar at once!"))
 
-	else if (curr_effect_type == ROYAL_SCREECH_DEBUFF)
+	else if (curr_effect_type == VICAR_SCREECH_DEBUFF)
 		playsound(xeno.loc, screech_sound_effectt, 55, 0, status = 0)
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
 		xeno.create_shriekwave(color = "#FF0000")
@@ -76,7 +76,7 @@
 
 		for(var/mob/living/carbon/human/human in view(3, xeno))
 			human.visible_message(SPAN_DANGER("[xeno]'s roar shakes your entire body, causing you to fall over in pain!"))
-			if (!(xeno.screech_status_flags & ROYAL_SCREECH_DEBUFF))
+			if (!(xeno.screech_status_flags & VICAR_SCREECH_DEBUFF))
 				shake_camera(human, 2, 3)
 				human.Daze(debuff_daze)
 				human.KnockDown(get_xeno_stun_duration(human, 0.5))
@@ -126,8 +126,8 @@
 		to_chat(X, SPAN_XENODANGER("[H] is dead, why would you want to touch it?"))
 		return
 
-	if (X.mutation_type == ROYAL_NORMAL)
-		var/datum/behavior_delegate/royal/BD = X.behavior_delegate
+	if (X.mutation_type == VICAR_NORMAL)
+		var/datum/behavior_delegate/vicar/BD = X.behavior_delegate
 		if (!istype(BD))
 			return
 
@@ -160,14 +160,14 @@
 /datum/action/xeno_action/activable/cleave/proc/remove_root()
 	buffed = FALSE
 
-/datum/action/xeno_action/activable/pounce/royal/additional_effects(mob/living/L)
+/datum/action/xeno_action/activable/pounce/vicar/additional_effects(mob/living/L)
 
 	var/mob/living/carbon/human/H = L
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X.mutation_type != ROYAL_NORMAL)
+	if(X.mutation_type != VICAR_NORMAL)
 		return
 
-	var/datum/behavior_delegate/royal/BD = X.behavior_delegate
+	var/datum/behavior_delegate/vicar/BD = X.behavior_delegate
 	if (!istype(BD))
 		return
 
@@ -197,8 +197,8 @@
 		to_chat(X, SPAN_XENOWARNING("Something is in the way!"))
 		return
 
-	if (X.mutation_type == ROYAL_NORMAL)
-		var/datum/behavior_delegate/royal/BD = X.behavior_delegate
+	if (X.mutation_type == VICAR_NORMAL)
+		var/datum/behavior_delegate/vicar/BD = X.behavior_delegate
 		if (!istype(BD))
 			return
 		if (!BD.use_internal_acid_ability(throw_cost))
@@ -209,10 +209,10 @@
 
 
 	X.visible_message(SPAN_XENODANGER("[X] fires " + acid_bolt_message + " at [A]!"), SPAN_XENODANGER("You fire " + acid_bolt_message + " at [A]!"))
-	new /obj/effect/xenomorph/acid_delay/royal_landmine(T, blinded, delay, "You are blasted with " + acid_bolt_message + "!", X, )
+	new /obj/effect/xenomorph/acid_delay/vicar_landmine(T, blinded, delay, "You are blasted with " + acid_bolt_message + "!", X, )
 
 	for (var/turf/targetTurf in orange(1, T))
-		new /obj/effect/xenomorph/acid_delay/royal_landmine(targetTurf, blinded, delay,  "You are blasted with a " + acid_bolt_message + "!", X)
+		new /obj/effect/xenomorph/acid_delay/vicar_landmine(targetTurf, blinded, delay,  "You are blasted with a " + acid_bolt_message + "!", X)
 
 	apply_cooldown()
 	..()

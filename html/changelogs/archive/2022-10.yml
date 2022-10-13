@@ -147,3 +147,5 @@
   carlarctg:
   - qol: Trying to shoot an underslung grenade launcher and failing for some reason
       (like forgetting to pump it) will now generate a loud 'click' noise.
+  ihatethisengine:
+  - bugfix: Observers now can see evacuation timer

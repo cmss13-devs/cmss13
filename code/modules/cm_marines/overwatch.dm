@@ -530,8 +530,8 @@
 
 	for(var/mob/living/carbon/human/current_squaddie in marines_list)
 
-		var/manually_filtered
-		var/marine_status
+		var/manually_filtered = FALSE
+		var/marine_status = "Unknown"
 		var/filtered = FALSE
 		switch(current_squaddie.stat)
 			if(CONSCIOUS)

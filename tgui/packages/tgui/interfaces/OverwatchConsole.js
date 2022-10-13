@@ -454,7 +454,7 @@ export const OverwatchMonitor = (props, context) => {
                       <Table.Cell textAlign="center">
                         <Button
                           icon={'eye'}
-                          selected={marine_data.manually_filtered}
+                          selected={marine_data?.manually_filtered}
                           onClick={() =>
                             act('filter_marine', {
                               squaddie: marine_data.ref,

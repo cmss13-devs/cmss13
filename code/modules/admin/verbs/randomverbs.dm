@@ -12,7 +12,7 @@
 			return
 		if(!CONFIG_GET(flag/mentor_tools))
 			to_chat(src, "Mentors do not have permission to use this.")
-	
+
 	var/age = alert(src, "Age check", "Show accounts up to how many days old ?", "7", "30" , "All")
 
 	if(age == "All")
@@ -110,5 +110,16 @@ var/global/explosive_antigrief_on = TRUE
 	set name = "Toggle Explosive Antigrief"
 	set category = "Admin.Game"
 
-	explosive_antigrief_on = !explosive_antigrief_on
-	message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has [explosive_antigrief_on ? "enabled" : "disabled"] explosive antigrief"))
+	switch(CONFIG_GET(number/explosive_antigrief))
+		if(ANTIGRIEF_NEW_PLAYERS)
+			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_DISABLED)
+			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has disabled explosive antigrief."))
+		if(ANTIGRIEF_DISABLED)
+			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has fully enabled explosive antigrief for all players."))
+			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_ENABLED)
+		if(ANTIGRIEF_ENABLED)
+			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has enabled explosive antigrief for new players (less than 10 total human hours)."))
+			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_NEW_PLAYERS)
+		else
+			message_staff(FONT_SIZE_LARGE("Error! [key_name_admin(usr)] attempted to toggle explosive antigrief but the preexisting value was [CONFIG_GET(number/explosive_antigrief)]. Setting it to disabled."))
+			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_DISABLED)

@@ -54,3 +54,7 @@ var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
 #define AHELP_RESOLVED 3
+
+#define ANTIGRIEF_DISABLED			0
+#define ANTIGRIEF_NEW_PLAYERS		1 // Only new players (less than 10 hours) can't prime grenades on the Almayer.
+#define ANTIGRIEF_ENABLED 			2

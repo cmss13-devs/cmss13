@@ -17,7 +17,6 @@
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
 	var/add_pmcs = TRUE
-	var/cooldown_request = 0
 
 	var/tacmap_type = TACMAP_DEFAULT
 	var/tacmap_base_type = TACMAP_BASE_OCCLUDED
@@ -154,17 +153,8 @@
 			. = TRUE
 
 		if("distress")
-			//Comment block to test
-			if(world.time < DISTRESS_TIME_LOCK)
-				to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
-				return FALSE
-
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
-
-			if(SSticker.mode.force_end_at == 0)
-				to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
-				return FALSE
 
 			if(security_level == SEC_LEVEL_DELTA)
 				to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))

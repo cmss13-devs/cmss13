@@ -15,12 +15,25 @@ export const CommandTablet = (_props, context) => {
   const canAnnounce = (
     data.endtime < data.worldtime);
 
+  const roundends = data.roundends;
+
   const canEvac = (
     evacstatus === 0,
     AlertLevel >= 2);
 
   const canDistress = (
     AlertLevel === 2 && !data.distresscd && minimumTimeElapsed);
+
+  let distress_reason;
+  if (AlertLevel === 3) {
+    distress_reason = "Self-destruct in progress. Beacon disabled.";
+  } else if (AlertLevel !== 2) {
+    distress_reason = "Ship is not under an active emergency.";
+  } else if (!minimumTimeElapsed) {
+    distress_reason = "It's too early to launch a distress beacon.";
+  } else if (data.distresscd) {
+    distress_reason = "Beacon is currently on cooldown.";
+  }
 
   return (
     <Window
@@ -31,7 +44,7 @@ export const CommandTablet = (_props, context) => {
           <Flex height="100%" direction="column">
             <Flex.Item>
               {!canAnnounce && (
-                <Button color="bad" warning={1} fluid={1} icon="bullhorn">
+                <Button color="bad" warning={1} fluid={1} icon="ban">
                   Announcement on cooldown
                   : {Math.ceil((data.endtime - data.worldtime)/10)} secs
                 </Button>
@@ -71,16 +84,27 @@ export const CommandTablet = (_props, context) => {
                   </NoticeBox>
                 )}
                 <Flex.Item>
-                  <Button.Confirm
-                    fluid={1}
-                    color="orange"
-                    icon="phone-volume"
-                    content={"Send Distress Beacon"}
-                    confirmColor="bad"
-                    confirmContent="Confirm?"
-                    confirmIcon="question"
-                    onClick={() => act('distress')}
-                    disabled={!canDistress} />
+                  {!canDistress && (
+                    <Button
+                      disabled={1}
+                      content={"Distress Beacon disabled"}
+                      tooltip={distress_reason}
+                      fluid={1}
+                      icon="ban"
+                    />
+                  )}
+                  {canDistress && (
+                    <Button.Confirm
+                      fluid={1}
+                      color="orange"
+                      icon="phone-volume"
+                      content={"Send Distress Beacon"}
+                      confirmColor="bad"
+                      confirmContent="Confirm?"
+                      confirmIcon="question"
+                      onClick={() => act('distress')}
+                    />
+                  )}
                 </Flex.Item>
                 {evacstatus === 0 && (
                   <Flex.Item>

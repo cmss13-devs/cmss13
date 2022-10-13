@@ -298,9 +298,8 @@
 /area/shuttle/lifeboat)
 "Lk" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network{
-	dir = 8;
-	network = list("almayer","vehicle")
+/obj/structure/machinery/computer/security/almayer/vehicle{
+	dir = 8
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)

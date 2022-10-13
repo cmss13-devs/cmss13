@@ -20,7 +20,7 @@ export const CommandTablet = (_props, context) => {
     AlertLevel >= 2);
 
   const canDistress = (
-    AlertLevel >= 2 && !data.distresscd && minimumTimeElapsed);
+    AlertLevel === 2 && !data.distresscd && minimumTimeElapsed);
 
   return (
     <Window

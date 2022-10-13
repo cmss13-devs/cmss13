@@ -20,6 +20,8 @@ import {
   Input,
 } from '../components';
 import { Window } from '../layouts';
+import { createLogger } from '../logging';
+const logger = createLogger('overwatch');
 
 export const searchFor = (searchText) => {
   return createSearch(searchText, (thing) => thing.name);
@@ -29,7 +31,7 @@ export const OverwatchConsole = (_props, context) => {
   const { act, data } = useBackend(context);
   const { operator } = data;
 
-  const windowWidth = 1000;
+  const windowWidth = 800;
   const windowHeight = 480;
 
   return (
@@ -369,6 +371,8 @@ export const OverwatchMonitor = (props, context) => {
 
   const marine_data = Object.values(marine_list);
   const [searchText, setSearchText] = useLocalState(context, "searchText", "");
+  let sorted = marine_data.sort(marine => marine.role);
+  logger.warn(sorted);
 
   return (
     <>
@@ -448,6 +452,7 @@ export const OverwatchMonitor = (props, context) => {
                 </Table.Row>
                 {marine_data?.filter((marine) => !marine?.filtered)
                   .filter(searchFor(searchText))
+                  .sort((marine) => marine.role.localeCompare())
                   .map((marine_data) => (
                     <Table.Row key={marine_data}>
                       <Table.Cell textAlign="center">
@@ -683,7 +688,7 @@ export const OverwatchBomb = (props, context) => {
     x_bomb,
     y_bomb,
     bombardment_cooldown,
-    almayer_cannon_chambered,
+    almayer_cannon_ready,
     almayer_cannon_disabled,
     world_time,
   } = data;
@@ -692,11 +697,12 @@ export const OverwatchBomb = (props, context) => {
 
   const [bomb_x, setTargetX] = useLocalState(context, 'bomb_x', x_bomb);
   const [bomb_y, setTargetY] = useLocalState(context, 'bomb_y', y_bomb);
+  logger.warn(bombardment);
 
   const bombardment_enabled
-    = bombardment_cooldown === 0
+    = bombardment <= 0
     && !almayer_cannon_disabled
-    && almayer_cannon_chambered;
+    && almayer_cannon_ready;
 
   return (
     <Section title="Orbital Bombardment">

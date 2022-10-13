@@ -604,7 +604,7 @@
 			squad_list += S.name
 	data["squad_list"] = squad_list
 
-	data["almayer_cannon_chambered"] = almayer_orbital_cannon?.chambered_tray
+	data["almayer_cannon_ready"] = almayer_orbital_cannon?.loaded_tray
 	data["almayer_cannon_disabled"] = almayer_orbital_cannon?.is_disabled
 	data["bombardment_cooldown"] = almayer_orbital_cannon?.ob_firing_cooldown
 
@@ -612,10 +612,8 @@
 	data["marine_list"] = current_squad ? get_marine_data(current_squad) : FALSE
 	data["squad_data"] = current_squad ? get_squad_data(current_squad) : FALSE
 
-	if(current_squad)
-		var/obj/structure/closet/crate/drop_closet = locate() in current_squad.drop_pad.loc
-		if(drop_closet)
-			data["supply_ready"] = TRUE
+	var/obj/structure/closet/crate/drop_closet = locate() in current_squad?.drop_pad.loc
+	data["supply_ready"] = drop_closet ? TRUE : FALSE
 
 	return data
 

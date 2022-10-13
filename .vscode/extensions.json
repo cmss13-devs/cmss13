@@ -3,6 +3,7 @@
         "gbasood.byond-dm-language-support",
         "platymuus.dm-langclient",
         "EditorConfig.EditorConfig",
+        "anturk.dmi-editor",
         "dbaeumer.vscode-eslint"
     ]
 }

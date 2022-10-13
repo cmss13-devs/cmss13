@@ -140,3 +140,7 @@
   - spellcheck: A lot of spelling and grammar mistakes have been fixed.
   Youbar:
   - qol: Cryosleep announcements now include job title
+2022-10-13:
+  carlarctg:
+  - qol: Trying to shoot an underslung grenade launcher and failing for some reason
+      (like forgetting to pump it) will now generate a loud 'click' noise.

@@ -23,10 +23,14 @@
 
 	var/list/potential_spawners = list()
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns)
+		if(spawner.check_can_spawn(H))
 			potential_spawners += spawner
 	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
 	H.forceMove(get_turf(picked_spawner))
 
+	if(picked_spawner.equipment)
+		arm_equipment(H, picked_spawner.equipment, FALSE, TRUE)
+	else
 		survivor_old_equipment(H)
 
 	if(picked_spawner.roundstart_damage_max > 0)

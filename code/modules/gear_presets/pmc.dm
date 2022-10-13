@@ -644,5 +644,3 @@
 	name = "Weyland-Yutani PMC (Site Director) | HvH"
 	human_versus_human = TRUE
 	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
-
-//*****************************************************************************************************/

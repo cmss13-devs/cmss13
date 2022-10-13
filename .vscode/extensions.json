@@ -4,6 +4,7 @@
         "platymuus.dm-langclient",
         "EditorConfig.EditorConfig",
         "anturk.dmi-editor",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
     ]
 }

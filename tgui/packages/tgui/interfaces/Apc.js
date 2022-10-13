@@ -1,5 +1,12 @@
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
+import {
+  Box,
+  Button,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 
@@ -34,10 +41,10 @@ const powerStatusMap = {
 const ApcContent = (props, context) => {
   const { act, data } = useBackend(context);
   const locked = data.locked && !data.siliconUser;
-  const externalPowerStatus
-    = powerStatusMap[data.externalPower] || powerStatusMap[0];
-  const chargingStatus
-    = powerStatusMap[data.chargingStatus] || powerStatusMap[0];
+  const externalPowerStatus =
+    powerStatusMap[data.externalPower] || powerStatusMap[0];
+  const chargingStatus =
+    powerStatusMap[data.chargingStatus] || powerStatusMap[0];
   const channelArray = data.powerChannels || [];
   const adjustedCellChange = data.powerCellStatus / 100;
   if (data.failTime > 0) {
@@ -114,8 +121,8 @@ const ApcContent = (props, context) => {
                       icon="sync"
                       content="Auto"
                       selected={
-                        !locked
-                        && (channel.status === 1 || channel.status === 3)
+                        !locked &&
+                        (channel.status === 1 || channel.status === 3)
                       }
                       disabled={locked}
                       onClick={() => act('channel', topicParams.auto)}
@@ -163,7 +170,8 @@ const ApcContent = (props, context) => {
                 content="Overload"
                 onClick={() => act('overload')}
               />
-            </>)
+            </>
+          )
         }>
         <LabeledList>
           <LabeledList.Item

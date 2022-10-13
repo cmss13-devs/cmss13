@@ -120,7 +120,7 @@
 		return
 
 	Xeno.visible_message(SPAN_DANGER("[Xeno] slashes frantically the area in front of him!"), \
-		SPAN_XENOWARNING("You unleash a barrage of slashes!"))
+	SPAN_XENOWARNING("You unleash a barrage of slashes!"))
 	apply_cooldown()
 
 	// Transient turf list
@@ -196,8 +196,8 @@
 			to_chat(Xeno, SPAN_XENONOTICE("You cannot execute [Target] from that far away."))
 			return
 		Xeno.visible_message(SPAN_DANGER("[Xeno] Prepares for devastating attack on [Target]."), \
-			SPAN_XENOWARNING("You carefully aim your tail towards [Target] vital organs."), null, 5)
-		if(!do_after(Xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		SPAN_XENOWARNING("You carefully aim your tail towards [Target] vital organs."), null, 5)
+		if(!do_after(Xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 		if(Target.stat == DEAD)
 			return

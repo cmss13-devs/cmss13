@@ -38,20 +38,16 @@
 				var/obj/structure/ship_ammo/SA = PC.loaded
 				SA.transfer_ammo(src, user)
 				return FALSE
-			else
-				to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
-				return FALSE
 		else
 			if(ammo_count < 1)
 				to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
 				qdel(src)
 				return FALSE
 
-			to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
 			if(ammo_name == "rocket")
-				PC.grab_object(src, "ds_rocket", 'sound/machines/hydraulics_1.ogg')
+				PC.grab_object(user, src, "ds_rocket", 'sound/machines/hydraulics_1.ogg')
 			else
-				PC.grab_object(src, "ds_ammo", 'sound/machines/hydraulics_1.ogg')
+				PC.grab_object(user, src, "ds_ammo", 'sound/machines/hydraulics_1.ogg')
 			update_icon()
 			return FALSE
 	else

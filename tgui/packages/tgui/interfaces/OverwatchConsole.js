@@ -446,24 +446,23 @@ export const OverwatchMonitor = (props, context) => {
                   <Table.Cell bold>Area</Table.Cell>
                   <Table.Cell bold>SL Distance</Table.Cell>
                 </Table.Row>
-                {marine_data
-                  .filter((marine) => !marine?.filtered)
+                {marine_data?.filter((marine) => !marine?.filtered)
                   .filter(searchFor(searchText))
                   .map((marine_data) => (
                     <Table.Row key={marine_data}>
                       <Table.Cell textAlign="center">
                         <Button
                           icon={'eye'}
-                          selected={marine_data?.manually_filtered}
+                          selected={marine_data?.['manually_filtered']}
                           onClick={() =>
                             act('filter_marine', {
-                              squaddie: marine_data.ref,
+                              squaddie: marine_data['ref'],
                             })}
                         />
                       </Table.Cell>
                       <Table.Cell>
                         <Button
-                          content={marine_data.name}
+                          content={marine_data['name']}
                           disabled={!marine_data['helmet']}
                           fluid
                           onClick={() =>

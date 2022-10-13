@@ -251,13 +251,13 @@
 	return
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/proc/close_and_lock()
-	unlock()
-	close()
+	unlock(TRUE)
+	close(TRUE)
 	lock(TRUE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/proc/unlock_and_open()
-	unlock()
-	open()
+	unlock(TRUE)
+	open(TRUE)
 	lock(TRUE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/close()

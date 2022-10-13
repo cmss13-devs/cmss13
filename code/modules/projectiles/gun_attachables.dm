@@ -1455,7 +1455,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A polished replica wood stock, heavy yet sturdy. Compatible with the L42A and ABR-40s Battle Rifles. You can bash someone good with this."
 	icon_state = "l42_fullstock"
 	attach_icon = "l42fullstock_a"
-	melee_mod = 6
+	melee_mod = 15
 	wield_delay_mod = WIELD_DELAY_SLOW
 
 /obj/item/attachable/stock/carbine/wood/Initialize()
@@ -1468,7 +1468,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper ABR-40 exotic \"wood\" stock"
 	desc = "A fully polished non detachable replica wood stock attached to select ABR-40 ceremonial rifles. You can bash someone good with this."
 	flags_attach_features = NO_FLAGS
-	wield_delay_mod = WIELD_DELAY_NORMAL // these already have bad wield delay
+	wield_delay_mod = WIELD_DELAY_NORMAL // these already have bad wield delay so its normal
 
 /obj/item/attachable/stock/rifle/marksman
 	name = "\improper M41A marksman stock"

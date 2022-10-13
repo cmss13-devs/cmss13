@@ -1276,7 +1276,7 @@
 
 /obj/item/weapon/gun/rifle/l42a/abr40/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
+	fire_delay = FIRE_DELAY_TIER_7 // SLOWER firing civvie gun
 
 
 // Essentially L42 Custom, though more of a sidegrade due to 0 attachments, higher weild delay and the fact that you have to find better magazines.
@@ -1288,10 +1288,11 @@
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/bayonet/c02
 						)
+	wield_delay = WIELD_DELAY_NORMAL
 
 /obj/item/weapon/gun/rifle/l42a/abr40/drill/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9 // Polished parts
+	fire_delay = FIRE_DELAY_TIER_8 // SAME as l42a, (see above)
 
 
 

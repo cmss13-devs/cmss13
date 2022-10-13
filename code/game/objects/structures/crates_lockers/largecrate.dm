@@ -139,7 +139,7 @@
 	name = "wooden crate"
 
 /obj/structure/largecrate/random/mini/small_case
-	desc = "A small hard shell case. What could be inside?"
+	desc = "A small hard-shell case. What could be inside?"
 	icon_state = "mini_case"
 	name = "small case"
 

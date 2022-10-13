@@ -251,7 +251,7 @@
 
 /obj/structure/sign/safety/food_storage
 	name = "organic storage (foodstuffs) semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of unrefridgerated food storage."
+	desc = "Semiotic Standard denoting the nearby presence of unrefrigerated food storage."
 	icon_state = "foodstorage"
 
 /obj/structure/sign/safety/galley
@@ -400,13 +400,13 @@
 	icon_state = "reduction"
 
 /obj/structure/sign/safety/ref_bio_storage
-	name = "refridgerated biological storage semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of refridgerated biological storage."
+	name = "refrigerated biological storage semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of refrigerated biological storage."
 	icon_state = "refbiostorage"
 
 /obj/structure/sign/safety/ref_chem_storage
-	name = "refridgerated chemical storage semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of refridgerated chemical storage."
+	name = "refrigerated chemical storage semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of refrigerated chemical storage."
 	icon_state = "refchemstorage"
 
 /obj/structure/sign/safety/restrictedarea
@@ -415,13 +415,13 @@
 	icon_state = "restrictedarea"
 
 /obj/structure/sign/safety/fridge
-	name = "refridgerated storage (organic foodstuffs) semiotic"
+	name = "refrigerated storage (organic foodstuffs) semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a fridge."
 	icon_state = "fridge"
 
 /obj/structure/sign/safety/refridgeration
-	name = "refridgeration semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of non-food refridgeration."
+	name = "refrigeration semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of non-food refrigeration."
 	icon_state = "refridgeration"
 
 /obj/structure/sign/safety/rewire

@@ -1036,7 +1036,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 /obj/item/weapon/gun/launcher/rocket/m57a4
 	name = "\improper M57-A4 'Lightning Bolt' quad thermobaric launcher"
-	desc = "The M57-A4 'Lightning Bolt' is posssibly the most destructive man-portable weapon ever made. It is a 4-barreled missile launcher capable of burst-firing 4 thermobaric missiles. Enough said."
+	desc = "The M57-A4 'Lightning Bolt' is possibly the most destructive man-portable weapon ever made. It is a 4-barreled missile launcher capable of burst-firing 4 thermobaric missiles. Enough said."
 	icon_state = "m57a4"
 	item_state = "m57a4"
 

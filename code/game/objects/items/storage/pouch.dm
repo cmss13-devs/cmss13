@@ -231,7 +231,7 @@
 	new /obj/item/stack/medical/bruise_pack(src)
 
 /obj/item/storage/pouch/firstaid/full/pills/fill_preset_inventory()
-	new /obj/item/storage/pill_bottle/packet/bicardine(src)
+	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
@@ -1032,7 +1032,7 @@
 
 /obj/item/storage/pouch/electronics
 	name = "electronics pouch"
-	desc = "It is designed to hold most electronics, power cells and circuitboards."
+	desc = "It is designed to hold most electronics, power cells and circuit boards."
 	icon_state = "electronics"
 	storage_slots = 6
 	can_hold = list(

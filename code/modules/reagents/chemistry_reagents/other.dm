@@ -692,7 +692,7 @@
 /datum/reagent/napalm/ut
 	name = "UT-Napthal Fuel"
 	id = "utnapthal"
-	description = "Known as Ultra Thick Napthal Fuel, a sticky combustable liquid chemical, typically used with flamethrowers."
+	description = "Known as Ultra Thick Napthal Fuel, a sticky combustible liquid chemical, typically used with flamethrowers."
 	burncolor = "#EE6515"
 	properties = list()
 
@@ -708,7 +708,7 @@
 /datum/reagent/napalm/gel
 	name = "Napalm B-Gel"
 	id = "napalmgel"
-	description = "Unlike its liquid contemporaries, this gellied variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to ignite them."
+	description = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to ignite them."
 	flameshape = FLAMESHAPE_LINE
 	color = "#00ff00"
 	burncolor = "#00ff00"
@@ -728,7 +728,7 @@
 /datum/reagent/napalm/blue
 	name = "Napalm X"
 	id = "napalmx"
-	description = "A sticky combustable liquid chemical that burns extremely hot."
+	description = "A sticky combustible liquid chemical that burns extremely hot."
 	color = "#00b8ff"
 	burncolor = "#00b8ff"
 	burn_sprite = "blue"
@@ -765,7 +765,7 @@
 /datum/reagent/napalm/penetrating
 	name = "Napalm EX"
 	id = "napalmex"
-	description = "A sticky combustable liquid chemical that penetrates the best fire retardants."
+	description = "A sticky combustible liquid chemical that penetrates the best fire retardants."
 	color = "#800080"
 	burncolor = "#800080"
 	burn_sprite = "dynamic"

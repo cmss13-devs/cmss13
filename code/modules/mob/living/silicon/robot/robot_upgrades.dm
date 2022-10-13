@@ -40,8 +40,8 @@
 
 
 /obj/item/robot/upgrade/flashproof
-	name = "Borg Flash-Supression"
-	desc = "A highly advanced, complicated system for supressing incoming flashes directed at the borg's optical processing system."
+	name = "Borg Flash-Suppression"
+	desc = "A highly advanced, complicated system for suppressing incoming flashes directed at the borg's optical processing system."
 	icon_state = "cyborg_upgrade4"
 	require_module = 1
 
@@ -77,7 +77,7 @@
 
 /obj/item/robot/upgrade/vtec
 	name = "Borg VTEC Module"
-	desc = "Used to kick in a borgs VTEC systems, increasing their speed."
+	desc = "Used to kick in a borg's VTEC systems, increasing their speed."
 	icon_state = "cyborg_upgrade2"
 	require_module = 1
 

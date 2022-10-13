@@ -417,7 +417,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 //the turret inside a static sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/deployable
 	name = "UA-633 Static Gauss Turret"
-	desc = "An fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
+	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
 	fire_delay = 1

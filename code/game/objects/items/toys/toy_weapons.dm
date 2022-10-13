@@ -64,7 +64,7 @@
 
 /obj/item/toy/gun_ammo
 	name = "ammo-caps"
-	desc = "There are 7 caps left! Make sure to recyle the box in an autolathe when it gets empty."
+	desc = "There are 7 caps left! Make sure to recycle the box in an autolathe when it gets empty."
 	icon_state = "cap_ammo"
 	w_class = SIZE_TINY
 

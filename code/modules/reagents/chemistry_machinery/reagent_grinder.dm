@@ -419,7 +419,7 @@
 
 /obj/structure/machinery/reagentgrinder/industrial
 	name = "Industrial Grinder"
-	desc = "a heavy duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
+	desc = "a heavy-duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
 	icon_state = "industry1"
 	limit = 30
 	blend_items = list (

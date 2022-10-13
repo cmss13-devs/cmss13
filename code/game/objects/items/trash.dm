@@ -29,7 +29,7 @@
 /obj/item/trash/buritto
 	name = "Burrito wrapper"
 	icon_state = "burrito"
-	desc = "A foul smelling plastic film that once held a microwave burrito. Packaged by the Weyland-Yutani Corporation."
+	desc = "A foul-smelling plastic film that once held a microwave burrito. Packaged by the Weyland-Yutani Corporation."
 
 /obj/item/trash/candy
 	name = "Candy"

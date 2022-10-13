@@ -609,7 +609,7 @@
 
 /datum/reagent/drink/cold/rewriter
 	name = "Rewriter"
-	description = "The secret of the sanctuary of the Libarian..."
+	description = "The secret of the sanctuary of the Librarian..."
 	id = "rewriter"
 	color = "#485000" // rgb:72, 080, 0
 

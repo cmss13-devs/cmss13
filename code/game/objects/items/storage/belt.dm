@@ -1451,7 +1451,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 
 /obj/item/storage/belt/gun/smartgunner/clf
 	name = "\improper M802 pattern 'Freedom' smartgunner sidearm rig"
-	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver. This one has the CLF logo carved over the manufactoring stamp."
+	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver. This one has the CLF logo carved over the manufacturing stamp."
 	can_hold = list(
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
@@ -1515,7 +1515,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 
 /obj/item/storage/belt/souto
 	name = "\improper Souto belt"
-	desc = "Souto Man's trusty utility belt with break away Souto cans. They cannot be put back."
+	desc = "Souto Man's trusty utility belt with breakaway Souto cans. They cannot be put back."
 	icon_state = "souto_man"
 	item_state = "souto_man"
 	item_state_slots = list(

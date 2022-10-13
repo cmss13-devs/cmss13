@@ -231,7 +231,7 @@
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 	return
 
-/turf/open/gm/ex_act(severity) //Should make it indestructable
+/turf/open/gm/ex_act(severity) //Should make it indestructible
 	return
 
 /turf/open/gm/fire_act(exposed_temperature, exposed_volume)
@@ -429,7 +429,7 @@
 
 /turf/open/nostromowater
 	name = "ocean"
-	desc = "Its a long way down to the ocean from here."
+	desc = "It's a long way down to the ocean from here."
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "seadeep"
 	can_bloody = FALSE
@@ -669,7 +669,7 @@
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "plating"
 
-/turf/open/shuttle/brig // Added this floor tile so that I have a seperate turf to check in the shuttle -- Polymorph
+/turf/open/shuttle/brig // Added this floor tile so that I have a separate turf to check in the shuttle -- Polymorph
 	name = "Brig floor"        // Also added it into the 2x3 brig area of the shuttle.
 	icon_state = "floor4"
 

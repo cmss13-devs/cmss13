@@ -172,7 +172,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/general
 	name = "general's jacket"
-	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, an General. Has quite a few pockets."
+	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a General. Has quite a few pockets."
 	icon = 'icons/obj/items/clothing/suits.dmi'
 	icon_state = "general_jacket"
 	item_icons = list(

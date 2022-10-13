@@ -272,7 +272,7 @@
 	icon_state = "garden"
 
 /area/bigred/uground/lambda_labs/fridge
-	name = "\improper Lambda Labs Refridgeration"
+	name = "\improper Lambda Labs Refrigeration"
 	icon_state = "kitchen"
 
 /area/bigred/uground/lambda_labs/maintenance

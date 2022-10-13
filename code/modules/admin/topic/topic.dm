@@ -125,7 +125,7 @@
 			message_admins("[key_name_admin(usr)] toggled the [new_permission] permission of [adm_ckey]")
 
 //======================================================
-//Everything that has to do with evac and self destruct.
+//Everything that has to do with evac and self-destruct.
 //The rest of this is awful.
 //======================================================
 	if(href_list["evac_authority"])
@@ -734,7 +734,7 @@
 		H.corgize()
 
 	else if(href_list["forcespeech"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
@@ -848,7 +848,7 @@
 		H.faction = hive.internal_faction
 
 	else if(href_list["forceemote"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		var/mob/M = locate(href_list["forceemote"])
 		if(!ismob(M))
@@ -884,7 +884,7 @@
 		qdel(M)
 
 	else if(href_list["tdome1"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -908,7 +908,7 @@
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
 	else if(href_list["tdome2"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -932,7 +932,7 @@
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
 	else if(href_list["tdomeadmin"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -953,7 +953,7 @@
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
 	else if(href_list["tdomeobserve"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -1627,7 +1627,7 @@
 		create_xenos_list(href_list)
 
 	else if(href_list["events"])
-		if(!check_rights(R_FUN))
+		if(!check_rights(R_ADMIN))
 			return
 
 		topic_events(href_list["events"])
@@ -1733,30 +1733,30 @@
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
 		destroy_cancel = FALSE
-		message_staff("[key_name_admin(usr)] has opted to GRANT the self destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
+		message_staff("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
 			if(distress_cancel)
 				return
 			var/mob/ref_person = locate(href_list["destroyship"])
 			set_security_level(SEC_LEVEL_DELTA)
-			log_game("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]")
-			message_staff("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]", 1)
+			log_game("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]")
+			message_staff("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
-	if(href_list["sddeny"]) // CentComm-deny. The self destruct is denied, without any further conditions
+	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
-		marine_announcement("The self destruct request has not received a response, ARES is now recalculating statistics.", "Self Destruct System")
-		log_game("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]")
-		message_staff("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]", 1)
+		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System")
+		log_game("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]")
+		message_staff("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
 	if(href_list["sdcancel"])
 		if(destroy_cancel)
-			to_chat(usr, "The self destruct was already canceled.")
+			to_chat(usr, "The self-destruct was already canceled.")
 			return
 		if(get_security_level() == "delta")
-			to_chat(usr, "Too late! The self destruct was started.")
+			to_chat(usr, "Too late! The self-destruct was started.")
 			return
-		log_game("[key_name_admin(usr)] has canceled the self destruct.")
-		message_staff("[key_name_admin(usr)] has canceled the self destruct.")
+		log_game("[key_name_admin(usr)] has canceled the self-destruct.")
+		message_staff("[key_name_admin(usr)] has canceled the self-destruct.")
 		destroy_cancel = 1
 		return
 

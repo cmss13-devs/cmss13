@@ -37,7 +37,7 @@
 	if(length(A.name) + length(label) > 64)
 		to_chat(user, SPAN_NOTICE("Label too big."))
 		return
-	if(isliving(A))
+	if(isliving(A) || istype(A, /obj/item/holder))
 		to_chat(user, SPAN_NOTICE("You can't label living beings."))
 		return
 	if((istype(A, /obj/item/reagent_container/glass)) && (!(istype(A, /obj/item/reagent_container/glass/minitank))))
@@ -204,7 +204,7 @@
 	clicky = TRUE
 
 /obj/item/tool/pen/invisible
-	desc = "It's an invisble pen marker."
+	desc = "It's an invisible pen marker."
 	pen_colour = "white"
 
 

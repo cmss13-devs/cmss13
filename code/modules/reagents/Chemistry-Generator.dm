@@ -5,7 +5,7 @@
 		chemclass 						Determines how often a chemical will show up in the generation process
 			CHEM_CLASS_NONE             0 Default. Chemicals not used in the generator
 			CHEM_CLASS_BASIC            1 Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
-			CHEM_CLASS_COMMON           2 Chemicals that can be vended directly or have a very simple recipe (bicardine, ammonia, table salt)
+			CHEM_CLASS_COMMON           2 Chemicals that can be vended directly or have a very simple recipe (bicaridine, ammonia, table salt)
 			CHEM_CLASS_UNCOMMON         3 Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 			CHEM_CLASS_RARE             4 Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
 			CHEM_CLASS_SPECIAL          5 Chemicals without a recipe and can't be obtained on the Almayer, or requires special components

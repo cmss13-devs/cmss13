@@ -63,7 +63,7 @@
 //Reagent generation classifications
 #define CHEM_CLASS_NONE             0 //Default. Chemicals not used in the chem generator
 #define CHEM_CLASS_BASIC            1 //Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
-#define CHEM_CLASS_COMMON           2 //Chemicals which recipe is commonly known and made (bicardine, alkysine, salt)
+#define CHEM_CLASS_COMMON           2 //Chemicals which recipe is commonly known and made (bicaridine, alkysine, salt)
 #define CHEM_CLASS_UNCOMMON         3 //Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 #define CHEM_CLASS_RARE             4 //Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
 #define CHEM_CLASS_SPECIAL          5 //Chemicals without a recipe and can't be obtained on the Almayer, or requires special components

@@ -117,3 +117,26 @@
   - bugfix: fixed a rogue submodule in the git
   - code_imp: changed all instances of var/mob/m in viewers to as anything in viewers,
       because viewers only gets mobs.
+2022-10-11:
+  Laser9:
+  - bugfix: Processing cats with the gibber now properly names the resulting meat.
+  Mistfrag:
+  - balance: Non-combatant jackets like the labcoat and hazard vest now have access
+      to the same storage options as the service jacket minus guns + department unique
+      options like tools or medical items.
+  Segrain:
+  - bugfix: Trapper's acid shotgun is now boosted by traps as intended.
+  Silencer_pl:
+  - admin: Removed the redundant legacy +FUN fun admin permission and scrubbed all
+      references to it.
+  - admin: Senior Moderators now have access to the Distress Beacon and Toggle Remote
+      Control verbs.
+  stanalbatross:
+  - ui: converted the escape pod control console from nanoui to TGUI
+2022-10-12:
+  Geevies:
+  - rscadd: Made armor color sprites more muted.
+  Laser9:
+  - spellcheck: A lot of spelling and grammar mistakes have been fixed.
+  Youbar:
+  - qol: Cryosleep announcements now include job title

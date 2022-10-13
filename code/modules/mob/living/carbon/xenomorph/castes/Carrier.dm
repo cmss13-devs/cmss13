@@ -16,7 +16,7 @@
 	speed = XENO_SPEED_TIER_4
 
 	deevolves_to = list(XENO_CASTE_DRONE)
-	evolves_to = list(XENO_CASTE_ROYAL)
+	evolves_to = list(XENO_CASTE_VICAR)
 	eggs_max = 5
 	throwspeed = SPEED_AVERAGE
 	can_hold_facehuggers = 1

@@ -1,5 +1,5 @@
-/datum/caste_datum/royal
-	caste_type = XENO_CASTE_ROYAL
+/datum/caste_datum/vicar
+	caste_type = XENO_CASTE_VICAR
 	caste_desc = "A loud, booming caste that wroughts destruction, or brings support with its roar."
 	tier = 3
 
@@ -27,15 +27,15 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	behavior_delegate_type = /datum/behavior_delegate/royal
+	behavior_delegate_type = /datum/behavior_delegate/vicar
 
-/mob/living/carbon/Xenomorph/Royal
-	caste_type = XENO_CASTE_ROYAL
-	name = XENO_CASTE_ROYAL
+/mob/living/carbon/Xenomorph/Vicar
+	caste_type = XENO_CASTE_VICAR
+	name = XENO_CASTE_VICAR
 	desc = "A bulking monstrosity, it's neck appears to be larger than most."
-	icon = 'icons/mob/hostiles/royal.dmi'
+	icon = 'icons/mob/hostiles/vicar.dmi'
 	icon_size = 64
-	icon_state = "Royal Walking"
+	icon_state = "Vicar Walking"
 	plasma_types = list(PLASMA_PHEROMONE, PLASMA_NEUROTOXIN)
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
@@ -48,23 +48,23 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/roar,
 		/datum/action/xeno_action/activable/rooting_slash,
-		/datum/action/xeno_action/activable/pounce/royal,
+		/datum/action/xeno_action/activable/pounce/vicar,
 		/datum/action/xeno_action/activable/acid_throw,
-		/datum/action/xeno_action/onclick/royal_switch_roar_type,
+		/datum/action/xeno_action/onclick/vicar_switch_roar_type,
 		/datum/action/xeno_action/onclick/plant_weeds
 	)
-	mutation_type = ROYAL_NORMAL
+	mutation_type = VICAR_NORMAL
 
-	icon_xeno = 'icons/mob/hostiles/royal.dmi'
-	icon_xenonid = 'icons/mob/xenonids/royal.dmi'
+	icon_xeno = 'icons/mob/hostiles/vicar.dmi'
+	icon_xenonid = 'icons/mob/xenonids/vicar.dmi'
 
-/mob/living/carbon/Xenomorph/Royal/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_royal))
+/mob/living/carbon/Xenomorph/Vicar/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_vicar))
 	. = ..()
 
 
-/datum/behavior_delegate/royal
-	name = "Royal Behavior Delegate"
+/datum/behavior_delegate/vicar
+	name = "Vicar Behavior Delegate"
 	// Config
 	var/internal_acid_level_max = 150
 	var/internal_acid_per_attack = 10
@@ -72,14 +72,14 @@
 	// State
 	var/internal_acid_level = 0
 
-/datum/behavior_delegate/royal/append_to_stat()
+/datum/behavior_delegate/vicar/append_to_stat()
 	. = list()
 	. += "Acid Reserves: [internal_acid_level]/[internal_acid_level_max]"
 
-/datum/behavior_delegate/royal/on_life()
+/datum/behavior_delegate/vicar/on_life()
 	internal_acid_level = min(internal_acid_level_max, internal_acid_level)
 
-	var/mob/living/carbon/Xenomorph/Royal/X = bound_xeno
+	var/mob/living/carbon/Xenomorph/Vicar/X = bound_xeno
 	var/image/holder = X.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
 
@@ -90,27 +90,27 @@
 	if(percentage_energy)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_energy]")
 
-/datum/behavior_delegate/royal/handle_death(mob/M)
-	var/mob/living/carbon/Xenomorph/Royal/X = bound_xeno
+/datum/behavior_delegate/vicar/handle_death(mob/M)
+	var/mob/living/carbon/Xenomorph/Vicar/X = bound_xeno
 	var/image/holder = X.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
 
-/datum/behavior_delegate/royal/melee_attack_additional_effects_self()
+/datum/behavior_delegate/vicar/melee_attack_additional_effects_self()
 	..()
 
 	add_internal_acid_level(internal_acid_per_attack)
 
-/datum/behavior_delegate/royal/proc/add_internal_acid_level(amount)
+/datum/behavior_delegate/vicar/proc/add_internal_acid_level(amount)
 	if (amount > 0)
 		if (internal_acid_level >= internal_acid_level_max)
 			return
 		to_chat(bound_xeno, SPAN_XENODANGER("You feel your resources of acid increase!"))
 	internal_acid_level = Clamp(internal_acid_level + amount, 0, internal_acid_level_max)
 
-/datum/behavior_delegate/royal/proc/remove_internal_acid_level(amount)
+/datum/behavior_delegate/vicar/proc/remove_internal_acid_level(amount)
 	add_internal_acid_level(-1*amount)
 
-/datum/behavior_delegate/royal/proc/use_internal_acid_ability(cost)
+/datum/behavior_delegate/vicar/proc/use_internal_acid_ability(cost)
 	if (cost > internal_acid_level)
 		to_chat(bound_xeno, SPAN_XENODANGER("Your acid reserves are insufficient! You need at least [cost] to do that!"))
 		return FALSE

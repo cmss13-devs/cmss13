@@ -14,26 +14,26 @@
 	// Screech cost and the switching of different types of screeches
 
 	var/screech_sound_effectt = "sound/voice/xeno_praetorian_screech.ogg"
-	var/curr_effect_type = ROYAL_SCREECH_BUFF
+	var/curr_effect_type = VICAR_SCREECH_BUFF
 
 	var/debuff_daze = 4
 
 	var/screech_cost = 150
 
 
-/datum/action/xeno_action/onclick/royal_switch_roar_type
+/datum/action/xeno_action/onclick/vicar_switch_roar_type
 	name = "Toggle Roar Type"
 	action_icon_state = "roar_motivate" // default = buff
-	macro_path = /datum/action/xeno_action/verb/verb_royal_switch_roar_type
+	macro_path = /datum/action/xeno_action/verb/verb_vicar_switch_roar_type
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
-/datum/action/xeno_action/onclick/royal_switch_roar_type/can_use_action()
+/datum/action/xeno_action/onclick/vicar_switch_roar_type/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
-/datum/action/xeno_action/onclick/royal_switch_roar_type/use_ability(atom/A)
+/datum/action/xeno_action/onclick/vicar_switch_roar_type/use_ability(atom/A)
 
 	var/mob/living/carbon/Xenomorph/X = owner
 	var/action_icon_result
@@ -45,14 +45,14 @@
 	if (!istype(WH))
 		return
 
-	if (WH.curr_effect_type == ROYAL_SCREECH_BUFF)
+	if (WH.curr_effect_type == VICAR_SCREECH_BUFF)
 		action_icon_result = "roar_intimidate"
-		WH.curr_effect_type = ROYAL_SCREECH_DEBUFF
+		WH.curr_effect_type = VICAR_SCREECH_DEBUFF
 		to_chat(X, SPAN_XENOWARNING("You will now debuff enemies, knocking them down, slowing, and reducing their vision!"))
 
 	else
 		action_icon_result = "roar_motivate"
-		WH.curr_effect_type = ROYAL_SCREECH_BUFF
+		WH.curr_effect_type = VICAR_SCREECH_BUFF
 		to_chat(X, SPAN_XENOWARNING("You will now give your allies increased armor and damage with your roar!"))
 
 	button.overlays.Cut()
@@ -78,8 +78,8 @@
 	// Range
 	var/range = 2
 
-/datum/action/xeno_action/activable/pounce/royal
-	macro_path = /datum/action/xeno_action/verb/verb_pounce_royal
+/datum/action/xeno_action/activable/pounce/vicar
+	macro_path = /datum/action/xeno_action/verb/verb_pounce_vicar
 	name = "Dash"
 	action_icon_state = "slash_dash"
 	ability_name = "Dash"

@@ -294,8 +294,8 @@
 			xeno_type = /mob/living/carbon/Xenomorph/Burrower
 		if(XENO_CASTE_CARRIER)
 			xeno_type = /mob/living/carbon/Xenomorph/Carrier
-		if(XENO_CASTE_ROYAL)
-			xeno_type = /mob/living/carbon/Xenomorph/Royal
+		if(XENO_CASTE_VICAR)
+			xeno_type = /mob/living/carbon/Xenomorph/Vicar
 
 	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 

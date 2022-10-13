@@ -1,8 +1,8 @@
 /datum/action/xeno_action/verb/verb_roar()
 	set category = "Alien"
-	set name = "Royal Roar"
+	set name = "Vicar Roar"
 	set hidden = 1
-	var/action_name = "Royal Roar"
+	var/action_name = "Vicar Roar"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_rooting_slash()
@@ -12,16 +12,16 @@
 	var/action_name = "Rooting SLash"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_pounce_royal()
+/datum/action/xeno_action/verb/verb_pounce_vicar()
 	set category = "Alien"
 	set name = "Dash"
 	set hidden = 1
 	var/action_name = "dash"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_royal_switch_roar_type()
+/datum/action/xeno_action/verb/verb_vicar_switch_roar_type()
 	set category = "Alien"
-	set name = "Royal Switch Roar Types"
+	set name = "Vicar Switch Roar Types"
 	set hidden = 1
 	var/action_name = "Toggle Roar Type"
 	handle_xeno_macro(src, action_name)

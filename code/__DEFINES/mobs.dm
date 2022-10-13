@@ -363,8 +363,8 @@
 #define PRAETORIAN_OPPRESSOR  "Oppressor"
 
 
-// Royal strain flags
-#define ROYAL_NORMAL "Normal"
+// Vicar strain flags
+#define VICAR_NORMAL "Normal"
 
 // Hellhound strain flags
 #define HELLHOUND_NORMAL	"Normal"

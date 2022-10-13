@@ -1443,10 +1443,6 @@
 	accurate_range = 14
 	handful_state = "boomslang_bullet"
 
-/// unused
-/datum/ammo/bullet/lever_action/xm88/pen10
-	penetration = ARMOR_PENETRATION_TIER_2
-
 /datum/ammo/bullet/lever_action/xm88/pen20
 	penetration = ARMOR_PENETRATION_TIER_4
 

@@ -339,7 +339,7 @@
 
 // Lurker strain flags
 #define LURKER_NORMAL		"Normal"
-
+#define LURKER_VAMPIRE      "Vampire"
 // Ravager strain flags
 #define RAVAGER_NORMAL 		"Normal"
 #define RAVAGER_HEDGEHOG 	"Hedgehog"

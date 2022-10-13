@@ -14,7 +14,7 @@
 	icon = 'icons/obj/items/food.dmi'
 	icon_state = "donutbox"
 	name = "\improper Yum! donuts"
-	desc = "A box of mouth watering \"<i>Yum!</i>\" brand donuts."
+	desc = "A box of mouth-watering \"<i>Yum!</i>\" brand donuts."
 	storage_slots = 6
 	var/startswith = 6
 	var/open = 0

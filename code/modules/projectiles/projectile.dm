@@ -178,7 +178,7 @@
 		var/mob/M = firer
 		M.track_shot(weapon_cause_data.cause_name)
 
-	//If we have the the right kind of ammo, we can fire several projectiles at once.
+	//If we have the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		ammo.fire_bonus_projectiles(src)
 

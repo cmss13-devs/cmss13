@@ -196,7 +196,7 @@
 
 // Adds a cooldown to this
 // According to the cooldown variables set on this and
-// the the age of the host Xenomorph, where applicable
+// the age of the host Xenomorph, where applicable
 // IF YOU WANT AGE SCALING SET IT
 // THIS PROC SHOULD NEVER BE OVERRIDDEN BY CHILDREN
 // AND SHOULD __ALWAYS__ BE CALLED IN USE_ABILITY

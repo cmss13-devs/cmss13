@@ -53,7 +53,7 @@
 				H.updatehealth()
 			else
 				src.take_limb_damage(d)
-			for(var/mob/M in viewers(user, null))
+			for(var/mob/M as anything in viewers(user, null))
 				if(M.client)
 					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), 2)
 			user.track_hit(initial(I.name))

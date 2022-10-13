@@ -335,7 +335,7 @@ SUBSYSTEM_DEF(objectives)
 // 		document_score["awarded_points"] = tp_equiv
 
 /datum/controller/subsystem/objectives/proc/setup_tree()
-	//Sets up the objective interdependance tree
+	//Sets up the objective interdependence tree
 	//Every objective that is not a dead end enables an objective of a higher tier
 	//Every objective that needs prerequisites gets them from objectives of lower tier
 	//If an objective doesn't need prerequisites, it can't be picked by lower tiers

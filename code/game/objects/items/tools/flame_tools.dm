@@ -451,7 +451,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 ////////////
 /obj/item/clothing/mask/cigarette/weed
 	name = "weed joint"
-	desc = "A rolled up package of ambrosia vulgaris, aka space weed, in some smooth paper; you sure this is legal dude?"
+	desc = "A rolled-up package of ambrosia vulgaris, aka space weed, in some smooth paper; you sure this is legal dude?"
 	chem_volume = 39
 	smoketime = 20 MINUTES
 
@@ -704,7 +704,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/tool/lighter/zippo/gold
 	name = "golden Zippo lighter"
-	desc = "A gold-anodized Zippo lighter. Osentatious, but it certainly stands out."
+	desc = "A gold-anodized Zippo lighter. Ostentatious, but it certainly stands out."
 	icon_state = "goldzippo"
 	item_state = "goldzippo"
 	icon_on = "goldzippoon"

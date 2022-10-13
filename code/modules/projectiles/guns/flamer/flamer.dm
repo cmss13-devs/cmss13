@@ -233,7 +233,7 @@
 
 /obj/item/weapon/gun/flamer/deathsquad //w-y deathsquad waist flamer
 	name = "\improper M240A3 incinerator unit"
-	desc = "A next-generation incinerator unit, the M240A3 is much lighter and dextreous than its predecessors thanks to the ceramic alloy construction. It can be slinged over a belt and usually comes equipped with X-type fuel."
+	desc = "A next-generation incinerator unit, the M240A3 is much lighter and dextrous than its predecessors thanks to the ceramic alloy construction. It can be slinged over a belt and usually comes equipped with X-type fuel."
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
 	flags_equip_slot = SLOT_BACK | SLOT_WAIST
 	current_mag = /obj/item/ammo_magazine/flamer_tank/EX

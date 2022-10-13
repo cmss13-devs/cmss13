@@ -52,7 +52,7 @@
 /obj/effect/alien/resin/boilertrap/proc/trigger_trap(mob/M)
 	if(!istype(M) || !istype(bound_xeno))
 		return
-	var/datum/effects/boiler_trap/F = new(M, bound_xeno)
+	var/datum/effects/boiler_trap/F = new(M, bound_xeno, name)
 	QDEL_IN(F, root_duration)
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel one of your traps capture a tallhost!"))
 	to_chat(M, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))

@@ -270,7 +270,7 @@ SUBSYSTEM_DEF(objectives)
 		O.post_round_start()
 
 /datum/controller/subsystem/objectives/proc/connect_objectives()
-	// Sets up the objective interdependance tree
+	// Sets up the objective interdependence tree
 	// Every objective (which isn't a dead end) gets one guaranteed objective it unlocks.
 	// Every objective gets x random objectives that unlock it based on variable 'number_of_clues_to_generate'
 

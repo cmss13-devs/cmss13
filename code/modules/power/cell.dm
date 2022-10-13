@@ -4,7 +4,7 @@
 
 /obj/item/cell
 	name = "power cell"
-	desc = "A rechargable electrochemical power cell."
+	desc = "A rechargeable electrochemical power cell."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "cell"
 	item_state = "cell"
@@ -115,8 +115,8 @@
 			return 0
 
 /obj/item/cell/crap
-	name = "\improper W-Y rechargable mini-battery"
-	desc = "Cheap, throwaway batteries provided by the Weyland-Yutani Corporation. The 'rechargeable' feature was added to be more marketable to independant colonists hell-bent on 'using it till it disintegrates', a common sentiment on the frontier."
+	name = "\improper W-Y rechargeable mini-battery"
+	desc = "Cheap, throwaway batteries provided by the Weyland-Yutani Corporation. The 'rechargeable' feature was added to be more marketable to independent colonists hell-bent on 'using it till it disintegrates', a common sentiment on the frontier."
 	icon_state = "mini-cell"
 
 	maxcharge = 500
@@ -127,7 +127,7 @@
 	charge = 0
 
 /obj/item/cell/secborg
-	name = "security borg rechargable D battery"
+	name = "security borg rechargeable D battery"
 
 	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
 	matter = list("metal" = 700, "glass" = 40)
@@ -188,7 +188,7 @@
 
 /obj/item/cell/potato
 	name = "potato battery"
-	desc = "A rechargable starch based power cell."
+	desc = "A rechargeable starch-based power cell."
 
 	icon = 'icons/obj/structures/machinery/power.dmi' //'icons/obj/items/harvest.dmi'
 	icon_state = "potato_cell" //"potato_battery"

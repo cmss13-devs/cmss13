@@ -116,7 +116,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/thirteenloko
 	name = "\improper Thirteen Loko"
-	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkeness, or even death. Please Drink Responsibly."
+	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
 	icon_state = "thirteen_loko"
 	center_of_mass = "x=16;y=8"
 
@@ -126,7 +126,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/dr_gibb
 	name = "\improper Dr. Gibb"
-	desc = "A delicious mixture of 42 different flavors of chemicals that you can't pronoounce."
+	desc = "A delicious mixture of 42 different flavors of chemicals that you can't pronounce."
 	icon_state = "dr_gibb"
 	center_of_mass = "x=16;y=10"
 
@@ -342,7 +342,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/lime
 	name = "\improper Diet Lime Souto"
-	desc = "Ten kinds of acid, two cups of fake sugar, almost a full tank of carbon dioxide, and about 210 kPs all crammed into an aluminum can. What's not to love? Canned in Havana."
+	desc = "Ten kinds of acid, two cups of fake sugar, almost a full tank of carbon dioxide, and about 210 kPa all crammed into an aluminum can. What's not to love? Canned in Havana."
 	icon_state = "souto_diet_lime"
 	item_state = "souto_diet_lime"
 

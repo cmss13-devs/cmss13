@@ -44,7 +44,7 @@
 		/obj/item/stock_parts/capacitor,
 	)
 
-	// One high capacity cell, two regular cells. Lots of room for engineer upgrades
+	// One high-capacity cell, two regular cells. Lots of room for engineer upgrades
 	// Also five basic capacitors. Again, upgradeable.
 
 /obj/structure/machinery/power/smes/batteryrack/New()

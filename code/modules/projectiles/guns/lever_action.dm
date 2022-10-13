@@ -10,7 +10,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action
 	name = "lever-action rifle"
-	desc = "Welcome to the Wild West!\nThis gun is levered via Unique-Action, but it has a bonus feature: Hitting a target directly will grant you a firerate and damage buff for your next shot during a short interval. Combo precision hits for massive damage."
+	desc = "Welcome to the Wild West!\nThis gun is levered via Unique-Action, but it has a bonus feature: Hitting a target directly will grant you a fire rate and damage buff for your next shot during a short interval. Combo precision hits for massive damage."
 	icon_state = "r4t-placeholder" //placeholder for a 'base' leveraction
 	item_state = "r4t-placeholder"
 	w_class = SIZE_LARGE

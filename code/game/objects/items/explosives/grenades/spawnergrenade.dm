@@ -1,5 +1,5 @@
 /obj/item/explosive/grenade/spawnergrenade
-	desc = "It is set to detonate in 5 seconds. It will unleash unleash an unspecified anomaly into the vicinity."
+	desc = "It is set to detonate in 5 seconds. It will unleash an unspecified anomaly into the vicinity."
 	name = "delivery grenade"
 	icon_state = "delivery"
 	item_state = "flashbang"

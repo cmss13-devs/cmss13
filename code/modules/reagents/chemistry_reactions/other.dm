@@ -348,12 +348,12 @@
 	on_reaction(var/datum/reagents/holder, var/created_volume)
 
 		var/location = get_turf(holder.my_atom)
-		for(var/mob/M in viewers(5, location))
+		for(var/mob/M as anything in viewers(5, location))
 			to_chat(M, SPAN_WARNING("The solution violently bubbles!"))
 
 		location = get_turf(holder.my_atom)
 
-		for(var/mob/M in viewers(5, location))
+		for(var/mob/M as anything in viewers(5, location))
 			to_chat(M, SPAN_WARNING("The solution spews out foam!"))
 		//for(var/datum/reagent/R in holder.reagent_list)
 
@@ -374,7 +374,7 @@
 
 		var/location = get_turf(holder.my_atom)
 
-		for(var/mob/M in viewers(5, location))
+		for(var/mob/M as anything in viewers(5, location))
 			to_chat(M, SPAN_WARNING("The solution spews out a metallic shiny foam!"))
 
 		var/datum/effect_system/foam_spread/s = new()
@@ -393,7 +393,7 @@
 
 		var/location = get_turf(holder.my_atom)
 
-		for(var/mob/M in viewers(5, location))
+		for(var/mob/M as anything in viewers(5, location))
 			to_chat(M, SPAN_WARNING("The solution spews out a metallic dull foam!"))
 
 		var/datum/effect_system/foam_spread/s = new()

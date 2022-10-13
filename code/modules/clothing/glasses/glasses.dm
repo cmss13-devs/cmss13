@@ -190,7 +190,7 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/threedglasses
-	desc = "A long time ago, people used these glasses to makes images from screens threedimensional."
+	desc = "A long time ago, people used these glasses to makes images from screens three-dimensional."
 	name = "3D glasses"
 	icon_state = "3d"
 	item_state = "3d"

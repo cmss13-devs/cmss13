@@ -3,7 +3,7 @@
  */
 /obj/effect/alien
 	name = "alien thing"
-	desc = "theres something alien about this"
+	desc = "There's something alien about this."
 	icon = 'icons/mob/hostiles/Effects.dmi'
 	unacidable = TRUE
 	health = 1

@@ -877,11 +877,10 @@
 	if(M.a_intent == INTENT_HELP || !bleed_layer)
 		return XENO_NO_DELAY_ACTION
 
-	M.visible_message(SPAN_NOTICE("[M] starts clearing out \the [src]."), SPAN_NOTICE("You start \the clearing out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	M.visible_message(SPAN_NOTICE("[M] starts clearing out \the [src]..."), SPAN_NOTICE("You start \the clearing out [src]..."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 
 	while(bleed_layer > 0)
-
 		xeno_attack_delay(M)
 		if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			return XENO_NO_DELAY_ACTION
@@ -889,9 +888,6 @@
 		if(!bleed_layer)
 			to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
 			return XENO_NO_DELAY_ACTION
-
-		M.visible_message(SPAN_NOTICE("[M] clears out \the [src]."), \
-		SPAN_NOTICE("You clear out \the [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 		bleed_layer--
 		update_icon(1, 0)

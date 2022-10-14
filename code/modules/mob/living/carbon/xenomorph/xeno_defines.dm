@@ -1011,10 +1011,10 @@
 	desc = "Defend the hive here!"
 	icon_state = "defend"
 
-/datum/xeno_mark_define/flank
-	name = "Flank"
-	desc = "Flank the enemy here!"
-	icon_state = "flank"
+/datum/xeno_mark_define/ambush
+	name = "Ambush"
+	desc = "Ambush the enemy here!"
+	icon_state = "ambush"
 
 /datum/xeno_mark_define/weeds
 	name = "Need Weeds"
@@ -1036,32 +1036,22 @@
 	desc = "Group up here!"
 	icon_state = "rally"
 
-/datum/xeno_mark_define/help
-	name = "Help"
-	desc = "Need help here!"
-	icon_state = "help"
+/datum/xeno_mark_define/aide
+	name = "Aide"
+	desc = "Aide here!"
+	icon_state = "aide"
 
-/datum/xeno_mark_define/missing
-	name = "Missing Enemy"
-	desc = "The enemy is missing!"
-	icon_state = "enemy_missing"
+/datum/xeno_mark_define/hosts
+	name = "Hosts"
+	desc = "Hosts here!"
+	icon_state = "hosts"
 
 /datum/xeno_mark_define/danger
 	name = "Danger Warning"
 	desc = "Caution, danger here!"
 	icon_state = "danger"
 
-/datum/xeno_mark_define/fire
-	name = "Fire Warning"
-	desc = "Caution, fire here!"
-	icon_state = "warn_fire"
-
-/datum/xeno_mark_define/explosive
-	name = "Explosives Warning"
-	desc = "Caution, explosives here!"
-	icon_state = "warn_explosive"
-
-/datum/xeno_mark_define/structure
-	name = "Structures Warning"
-	desc = "Caution, structures here!"
-	icon_state = "warn_structure"
+/datum/xeno_mark_define/fortify
+	name = "Fortify"
+	desc = "Fortify this area!"
+	icon_state = "fortify"

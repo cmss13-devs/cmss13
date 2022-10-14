@@ -9,10 +9,10 @@
 /obj/item/device/assembly/mousetrap/attackby()
 	return
 
-/obj/item/device/assembly/mousetrap/get_examine_text(mob/user)
-	. = ..()
+/obj/item/device/assembly/mousetrap/examine(mob/user)
+	..()
 	if(armed)
-		. += "It looks like it's armed."
+		to_chat(user, "It looks like it's armed.")
 
 /obj/item/device/assembly/mousetrap/update_icon()
 	if(armed)

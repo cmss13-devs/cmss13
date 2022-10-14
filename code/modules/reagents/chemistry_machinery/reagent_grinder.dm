@@ -436,9 +436,6 @@
 		/obj/item/grown/nettle/death = list("pacid" = 0),
 		/obj/item/grown/nettle = list("sulphuric acid" = 0),
 
-		//Special Stuff
-		/obj/item/reagent_container/hypospray/autoinjector/yautja = list("thwei" = 30),
-
 		//Blender Stuff
 		/obj/item/reagent_container/food/snacks/grown/corn = list("cornoil" = 0)
 	)

@@ -27,9 +27,9 @@
 		A.update_button_icon()
 
 
-/obj/item/clothing/shoes/magboots/get_examine_text(mob/user)
-	. = ..()
+/obj/item/clothing/shoes/magboots/examine(mob/user)
+	..()
 	var/state = "disabled"
 	if(flags_inventory&NOSLIPPING)
 		state = "enabled"
-	. += "Its mag-pulse traction system appears to be [state]."
+	to_chat(user, "Its mag-pulse traction system appears to be [state].")

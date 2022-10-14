@@ -53,7 +53,7 @@
 				H.updatehealth()
 			else
 				src.take_limb_damage(d)
-			for(var/mob/M as anything in viewers(user, null))
+			for(var/mob/M in viewers(user, null))
 				if(M.client)
 					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), 2)
 			user.track_hit(initial(I.name))
@@ -492,22 +492,22 @@
 	else
 		buckled.manual_unbuckle(src)
 
-/mob/living/carbon/get_examine_text(mob/user)
+/mob/living/carbon/examine(mob/user)
 	. = ..()
 	if(isYautja(user))
-		. += SPAN_BLUE("[src] is worth [max(life_kills_total, 1)] honor.")
+		to_chat(user, SPAN_BLUE("[src] is worth [max(life_kills_total, 1)] honor."))
 		if(src.hunter_data.hunted)
-			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")
+			to_chat(user, SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name]."))
 
 		if(src.hunter_data.dishonored)
-			. += SPAN_RED("[src] was marked as dishonorable for '[src.hunter_data.dishonored_reason]'.")
+			to_chat(user, SPAN_RED("[src] was marked as dishonorable for '[src.hunter_data.dishonored_reason]'."))
 		else if(src.hunter_data.honored)
-			. += SPAN_GREEN("[src] was honored for '[src.hunter_data.honored_reason]'.")
+			to_chat(user, SPAN_GREEN("[src] was honored for '[src.hunter_data.honored_reason]'."))
 
 		if(src.hunter_data.thralled)
-			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
+			to_chat(user, SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'."))
 		else if(src.hunter_data.gear)
-			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
+			to_chat(user, SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set]."))
 
 /mob/living/carbon/get_vv_options()
 	. = ..()

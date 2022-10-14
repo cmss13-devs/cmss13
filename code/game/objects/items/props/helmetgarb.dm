@@ -215,28 +215,28 @@
 			to_chat(user, SPAN_WARNING("You were interrupted."))
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/get_examine_text(mob/user)
+/obj/item/prop/helmetgarb/helmet_nvg/examine(mob/user)
 	. = ..()
 
 	if(shape == NVG_SHAPE_BROKEN)
-		. += "They appear to be broken. Maybe someone competent can fix them."
+		to_chat(user, "They appear to be broken. Maybe someone competent can fix them.")
 	else
 
 		if(shape == NVG_SHAPE_PATCHED)
-			. += "They are covered in scratches and have traces of a recent repair."
+			to_chat(user, "They are covered in scratches and have traces of a recent repair.")
 
 		var/nvg_health_procent = nvg_health / nvg_maxhealth * 100
 		if(nvg_health_procent > 70)
-			. += "They appear to be in good shape."
+			to_chat(user, "They appear to be in good shape.")
 		else if(nvg_health_procent > 50)
-			. += "They are visibly damaged."
+			to_chat(user, "They are visibly damaged.")
 		else if(nvg_health_procent > 30)
-			. += "It's unlikely they can sustain more damage."
+			to_chat(user, "It's unlikely they can sustain more damage.")
 		else if(nvg_health_procent >= 0)
-			. += "They are falling apart."
+			to_chat(user, "They are falling apart.")
 
 	if (get_dist(user, src) <= 1 && (shape == NVG_SHAPE_FINE || shape == NVG_SHAPE_PATCHED))
-		. += "A small gauge in the corner reads: Power: [round(100.0*nvg_charge/nvg_maxcharge) ]%."
+		to_chat(user, "A small gauge in the corner reads: Power: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
 
 /obj/item/prop/helmetgarb/helmet_nvg/on_exit_storage(obj/item/storage/S)
 	remove_attached_item()

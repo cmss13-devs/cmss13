@@ -61,12 +61,12 @@
 	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
 	update_icon()
 
-/obj/item/weapon/gun/flamer/get_examine_text(mob/user)
-	. = ..()
+/obj/item/weapon/gun/flamer/examine(mob/user)
+	..()
 	if(current_mag)
-		. += "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!"
+		to_chat(user, "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!")
 	else
-		. += "There's no tank in [src]!"
+		to_chat(user, "There's no tank in [src]!")
 
 /obj/item/weapon/gun/flamer/update_icon()
 	..()

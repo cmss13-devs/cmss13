@@ -29,10 +29,11 @@
 		linked_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	linked_hive.spawn_pool = src
 
-/obj/effect/alien/resin/special/pool/get_examine_text(mob/user)
-	. = ..()
+/obj/effect/alien/resin/special/pool/examine(mob/user)
+	..()
 	if(isXeno(user) || isobserver(user))
-		. += "It has [linked_hive.stored_larva] more larvae to grow."
+		var/message = "It has [linked_hive.stored_larva] more larvae to grow."
+		to_chat(user, message)
 
 /obj/effect/alien/resin/special/pool/attackby(obj/item/I, mob/user)
 	if(!istype(I, /obj/item/grab) || !isXeno(user))

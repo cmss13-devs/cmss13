@@ -1749,10 +1749,10 @@
 	},
 /obj/structure/bed/chair/wheelchair{
 	desc = "Great scott, it can move on its own!";
-	dir = 4;
 	icon_state = "officechair_white";
 	name = "Dr. O's fantastic self rolling wheelie chair";
-	pixel_x = 7
+	pixel_x = 7;
+	dir = 4
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -2400,8 +2400,8 @@
 /area/fiorina/tumor/civres)
 "blG" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 2;
-	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
+	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi';
+	dir = 2
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
@@ -3287,8 +3287,8 @@
 	},
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_1";
-	layer = 3;
-	opacity = 0
+	opacity = 0;
+	layer = 3
 	},
 /area/fiorina/oob)
 "bOK" = (
@@ -3379,8 +3379,8 @@
 /area/fiorina/tumor/ship)
 "bRc" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food{
-	desc = "Prison meal vendor, containing preprepared meals fit for the dregs of society.";
-	name = "\improper Fiorina Purple Block Canteen Vendor"
+	name = "\improper Fiorina Purple Block Canteen Vendor";
+	desc = "Prison meal vendor, containing preprepared meals fit for the dregs of society."
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
@@ -5046,8 +5046,8 @@
 "cWM" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/blood/empty{
-	pixel_x = -7;
-	pixel_y = 4
+	pixel_y = 4;
+	pixel_x = -7
 	},
 /obj/item/reagent_container/blood/BMinus{
 	pixel_x = 7;
@@ -5436,11 +5436,6 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
-	},
-/obj/structure/machinery/blackbox_recorder,
-/obj/item/prop/almayer/flight_recorder/colony{
-	pixel_x = -6;
-	pixel_y = 10
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
@@ -7137,8 +7132,8 @@
 /area/fiorina/tumor/ice_lab)
 "ehg" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food{
-	desc = "Prison meal vendor, containing preprepared meals fit for the dregs of society.";
-	name = "\improper Fiorina Engineering Canteen Vendor"
+	name = "\improper Fiorina Engineering Canteen Vendor";
+	desc = "Prison meal vendor, containing preprepared meals fit for the dregs of society."
 	},
 /turf/open/floor/prison{
 	icon_state = "bluefull"
@@ -17369,8 +17364,8 @@
 /area/fiorina/station/park)
 "kmL" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
-	dir = 1;
-	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
+	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi';
+	dir = 1
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
@@ -17871,8 +17866,8 @@
 /area/shuttle/drop2/prison_v3)
 "kAt" = (
 /obj/effect/spawner/random/gun/shotgun/highchance{
-	mags_max = 0;
-	mags_min = 0
+	mags_min = 0;
+	mags_max = 0
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
@@ -20085,8 +20080,8 @@
 /area/fiorina/lz/near_lzI)
 "lSj" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
-	dir = 2;
-	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
+	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi';
+	dir = 2
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
@@ -28577,8 +28572,8 @@
 /area/fiorina/lz/near_lzI)
 "qVe" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food{
-	desc = "Prison meal vendor, containing preprepared meals fit for the dregs of society.";
-	name = "\improper Fiorina Green Block Canteen Vendor"
+	name = "\improper Fiorina Green Block Canteen Vendor";
+	desc = "Prison meal vendor, containing preprepared meals fit for the dregs of society."
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -29010,8 +29005,8 @@
 "rjM" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/book/manual/surgery{
-	name = "Lung Transplants for Dummies";
-	pixel_y = 4
+	pixel_y = 4;
+	name = "Lung Transplants for Dummies"
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -64920,7 +64915,7 @@ azZ
 azZ
 azZ
 lJa
-xjK
+pBn
 lax
 nDJ
 dsT

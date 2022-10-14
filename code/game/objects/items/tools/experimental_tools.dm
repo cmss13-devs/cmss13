@@ -219,9 +219,9 @@
 		if(32 to 1)
 			overlays += "cpr_batt_lo"
 
-/obj/item/clothing/suit/auto_cpr/get_examine_text(mob/user)
+/obj/item/clothing/suit/auto_cpr/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("It has [round(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining.")
+	to_chat(user, SPAN_NOTICE("It has [round(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining."))
 
 
 
@@ -349,11 +349,11 @@
 			else
 				overlays += "dialysis_battery_0"
 
-/obj/item/tool/portadialysis/get_examine_text(mob/user)
-	. = ..()
+/obj/item/tool/portadialysis/examine(mob/user)
+	..()
 	var/currentpercent = 0
 	currentpercent = round(pdcell.charge * 100 / pdcell.maxcharge)
-	. += SPAN_INFO("It has [currentpercent]% charge left in its internal battery.")
+	to_chat(user, SPAN_INFO("It has [currentpercent]% charge left in its internal battery."))
 
 /obj/item/tool/portadialysis/proc/painful_detach()
 	if(!attached)	//sanity

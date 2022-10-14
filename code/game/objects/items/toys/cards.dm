@@ -31,9 +31,9 @@
 	. = ..()
 	populate_deck()
 
-/obj/item/toy/deck/get_examine_text(mob/user)
+/obj/item/toy/deck/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("There are <b>[length(cards)]</b> cards remaining in the deck.")
+	to_chat(user, SPAN_NOTICE("There are <b>[length(cards)]</b> cards remaining in the deck."))
 
 /obj/item/toy/deck/proc/populate_deck()
 	var/card_id = 1
@@ -268,7 +268,7 @@
 	var/pile_state = FALSE
 	var/list/datum/playing_card/cards = list()
 
-/obj/item/toy/handcard/get_examine_line(mob/user)
+/obj/item/toy/handcard/get_examine_line()
 	. = ..()
 	if(!concealed)
 		. += " ([length(cards)] card\s)"
@@ -394,18 +394,18 @@
 		return
 	usr.put_in_hands(src)
 
-/obj/item/toy/handcard/get_examine_text(mob/user)
-	. = ..()
+/obj/item/toy/handcard/examine(mob/user)
+	..()
 	if(length(cards))
-		. += SPAN_NOTICE("It has <b>[length(cards)]</b> cards.")
+		to_chat(user, SPAN_NOTICE("It has <b>[length(cards)]</b> cards."))
 		if(pile_state)
 			if(!concealed)
-				. += SPAN_NOTICE("The top card is <b>[cards[length(cards)].name]</b>.")
+				to_chat(user, SPAN_NOTICE("The top card is <b>[cards[length(cards)].name]</b>."))
 		else if(loc == user)
 			var/card_names = list()
 			for(var/datum/playing_card/P as anything in cards)
 				card_names += P.name
-			. += SPAN_NOTICE("The cards are: [english_list(card_names)]")
+			to_chat(user, SPAN_NOTICE("The cards are: [english_list(card_names)]"))
 
 
 /obj/item/toy/handcard/update_icon(var/direction = 0)

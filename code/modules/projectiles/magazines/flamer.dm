@@ -123,14 +123,14 @@
 
 	return 100 * (reagents.total_volume / max_rounds)
 
-/obj/item/ammo_magazine/flamer_tank/get_examine_text(mob/user)
-	. = ..()
-	. += SPAN_NOTICE("It contains:")
+/obj/item/ammo_magazine/flamer_tank/examine(mob/user)
+	..()
+	to_chat(user, SPAN_NOTICE("It contains:"))
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
-			. += SPAN_NOTICE(" [R.volume] units of [R.name].")
+			to_chat(user, SPAN_NOTICE(" [R.volume] units of [R.name]."))
 	else
-		. += SPAN_NOTICE("Nothing.")
+		to_chat(user, SPAN_NOTICE("Nothing."))
 
 // This is gellie fuel. Green Flames.
 /obj/item/ammo_magazine/flamer_tank/gellied
@@ -176,9 +176,9 @@
 		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t"))
 		fuel_pressure = set_pressure
 
-/obj/item/ammo_magazine/flamer_tank/custom/get_examine_text(mob/user)
-	. = ..()
-	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t")
+/obj/item/ammo_magazine/flamer_tank/custom/examine(mob/user)
+	..()
+	to_chat(user, SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t"))
 
 // Pyro regular flamer tank just bigger than the base flamer tank.
 /obj/item/ammo_magazine/flamer_tank/large

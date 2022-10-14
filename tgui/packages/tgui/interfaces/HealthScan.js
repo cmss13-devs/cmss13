@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, ProgressBar, Box, LabeledList, NoticeBox, Stack, Icon, Divider, Flex } from '../components';
+import { Section, ProgressBar, Box, LabeledList, NoticeBox, Stack, Icon, Divider } from '../components';
 import { Window } from '../layouts';
 
 export const HealthScan = (props, context) => {
@@ -37,9 +37,6 @@ export const HealthScan = (props, context) => {
     advice,
     species,
   } = data;
-  
-  const bloodpct = blood_amount/560;
-
   const healthanalyser = detail_level < 1;
   const bodyscanner = detail_level >= 1;
   const ghostscan = detail_level >= 2;
@@ -50,8 +47,8 @@ export const HealthScan = (props, context) => {
 
   return (
     <Window
-      width={500}
-      height={bodyscanner ? 700 : 600}
+      width={550}
+      height={bodyscanner ? 700 : 500}
       theme={theme}>
       <Window.Content scrollable>
         <Section title={"Patient: " + patient}>
@@ -104,46 +101,66 @@ export const HealthScan = (props, context) => {
             <LabeledList.Item
               label="Damage">
               <Box inline>
-                <ProgressBar>
-                  Brute: <Box inline bold color={"red"}>{total_brute}</Box>
+                <ProgressBar
+                  value={total_brute}
+                  maxvalue={total_brute}
+                  ranges={{
+                    red: [-Infinity, Infinity],
+                  }}>Brute:{total_brute}
                 </ProgressBar>
               </Box>
               <Box inline width={"5px"} />
               <Box inline>
-                <ProgressBar>
-                  Burn: <Box inline bold color={"#ffb833"}>{total_burn}</Box>
+                <ProgressBar
+                  value={total_burn}
+                  maxvalue={total_burn}
+                  ranges={{
+                    orange: [-Infinity, Infinity],
+                  }}>Burns:{total_burn}
                 </ProgressBar>
               </Box>
               <Box inline width={"5px"} />
               <Box inline>
-                <ProgressBar>
-                  Toxin: <Box inline bold color={"green"}>{toxin}</Box>
+                <ProgressBar
+                  value={toxin}
+                  maxvalue={toxin}
+                  ranges={{
+                    green: [-Infinity, Infinity],
+                  }}>Toxin:{toxin}
                 </ProgressBar>
               </Box>
               <Box inline width={"5px"} />
               <Box inline>
-                <ProgressBar>
-                  Oxygen: <Box inline bold color={"blue"}>{oxy}</Box>
+                <ProgressBar
+                  value={oxy}
+                  maxvalue={oxy}
+                  ranges={{
+                    blue: [-Infinity, Infinity],
+                  }}>Oxygen:{oxy}
                 </ProgressBar>
               </Box>
               <Box inline width={"5px"} />
               {!!clone && (
                 <Box inline>
-                  <ProgressBar>
-                    Clone: <Box inline color={"teal"}>{clone}</Box>
+                  <ProgressBar
+                    value={clone}
+                    maxvalue={clone}
+                    ranges={{
+                      teal: [-Infinity, Infinity],
+                    }}>Clone:{clone}
                   </ProgressBar>
                 </Box>
               )}
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        {limbs_damaged ? (
-          <ScannerLimbs />
-        ) : null}
         {has_chemicals ? (
           <ScannerChems />
         ) : null}
-        {damaged_organs?.length && bodyscanner ? (
+        {limbs_damaged ? (
+          <ScannerLimbs />
+        ) : null}
+        {damaged_organs.length && bodyscanner ? (
           <ScannerOrgans />
         ) : null }
         {diseases ? (
@@ -181,10 +198,18 @@ export const HealthScan = (props, context) => {
           <LabeledList>
             {has_blood ? (
               <LabeledList.Item
-                label={"Blood Type " + blood_type}>
-                <Box color={bloodpct > 0.9 ? "green" : bloodpct > .7 ? "orange" : "red"}>
-                  {Math.round(blood_amount/5.6)}%, {blood_amount}cl
-                </Box>
+                label={"Blood Type: " + blood_type}>
+                <ProgressBar
+                  value={blood_amount/560}
+                  ranges={{
+                    good: [0.9, Infinity],
+                    average: [0.7, 0.9],
+                    bad: [-Infinity, 0.7],
+                  }}>
+                  <Box>
+                    {Math.round(blood_amount/5.6)}%, {blood_amount}cl
+                  </Box>
+                </ProgressBar>
               </LabeledList.Item>
             ) : null}
             <LabeledList.Item
@@ -265,7 +290,7 @@ const ScannerChems = (props, context) => {
           Unknown reagents detected.
         </NoticeBox>
       ) : null}
-      <Stack vertical>
+      <Stack>
         {
           chemicals.map(chemical => (
             <Stack.Item
@@ -304,93 +329,128 @@ const ScannerLimbs = (props, context) => {
   const limb_data = Object.values(limb_data_lists);
   const bodyscanner = detail_level >= 1;
 
-  let index = 0;
-  const row_bg_color = "rgba(255, 255, 255, .05)";
-
-  limb_data.forEach(limb => {
-    limb.unbandaged = !limb.bandaged && limb.brute > 0 && !limb.limb_type;
-    limb.unsalved = !limb.salved && limb.burn > 0 && !limb.limb_type;
-  });
-
   return (
     <Section title="Limbs Damaged">
-      <Stack vertical fill>
-        <Flex width="100%" height="20px">
-          <Flex.Item basis="85px" />
-          <Flex.Item basis="55px" bold color="red">Brute</Flex.Item>
-          <Flex.Item basis="55px" bold color="#ffb833">Burn</Flex.Item>
-          <Flex.Item grow="1" shrink="1" textAlign="right" nowrap>
-            {"{ } = Untreated"}
-          </Flex.Item>
-        </Flex>
+      <LabeledList>
         {
           limb_data.map(limb => (
-            <Flex key={limb.name} width="100%" minHeight="15px" py="3px"
-              backgroundColor={index++ % 2 === 0 ? row_bg_color : ""}>
-              <Flex.Item basis="85px" shrink="0" bold pl="3px">
-                {limb.name[0].toUpperCase() + limb.name.slice(1)}
-              </Flex.Item>
+            <LabeledList.Item
+              key={limb.name}
+              label={limb.name[0].toUpperCase() + limb.name.slice(1)}>
               {limb.missing ? (
-                <Flex.Item color={"red"} bold={1}>
+                <Box inline
+                  color={"red"}
+                  bold={1}>
                   MISSING
-                </Flex.Item>
+                </Box>
               ) : (
                 <>
-                  <Flex.Item basis="fit-content" shrink="0">
-                    <Box inline width="50px"
-                      color={limb.brute > 0 ? "red" : "white"}>
-                      {limb.unbandaged ? `{${limb.brute}}` : `${limb.brute}`}
-                    </Box>
-                    <Box inline width="5px" />
-                    <Box inline width="50px"
-                      color={limb.burn > 0 ? "#ffb833" : "white"}>
-                      {limb.unsalved ? `{${limb.burn}}` : `${limb.burn}`}
-                    </Box>
-                    <Box inline width="5px" />
-                  </Flex.Item>
-                  <Flex.Item shrink="1">
-                    {limb.bleeding ? (
+                  {limb.brute > 0 ? (
+                    <>
+                      <Box inline>
+                        <ProgressBar
+                          value={limb.brute}
+                          maxvalue={limb.brute}
+                          ranges={{
+                            red: [-Infinity, Infinity],
+                          }}>Brute:{limb.brute}
+                        </ProgressBar>
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.burn > 0 ? (
+                    <>
+                      <Box inline>
+                        <ProgressBar
+                          value={limb.burn}
+                          maxvalue={limb.burn}
+                          ranges={{
+                            orange: [-Infinity, Infinity],
+                          }}>Burn:{limb.burn}
+                        </ProgressBar>
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {!limb.bandaged && limb.brute > 0 && !limb.limb_type ? (
+                    <>
+                      <Box inline color={"orange"}>
+                        [Unbandaged]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {!limb.salved && limb.burn > 0 && !limb.limb_type ? (
+                    <>
+                      <Box inline color={"orange"}>
+                        [Unsalved]
+                      </Box>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.bleeding ? (
+                    <>
                       <Box inline color={"red"} bold={1}>
                         [Bleeding]
                       </Box>
-                    ) : null}
-                    {limb.internal_bleeding && bodyscanner ? (
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.internal_bleeding && bodyscanner ? (
+                    <>
                       <Box inline color={"red"} bold={1}>
                         [Internal Bleeding]
                       </Box>
-                    ) : null}
-                    {limb.limb_status ? (
-                      <Box inline color={(limb.limb_status === "Fracture" || "Possible Fracture") ? "white" : "red"} bold={1}>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.limb_status ? (
+                    <>
+                      <Box inline color={"red"} bold={1}>
                         [{limb.limb_status}]
                       </Box>
-                    ) : null}
-                    {limb.limb_splint ? (
-                      <Box inline color={"lime"} bold={1}>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.limb_splint ? (
+                    <>
+                      <Box inline color={"green"} bold={1}>
                         [{limb.limb_splint}]
                       </Box>
-                    ) : null}
-                    {limb.limb_type ? (
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.limb_type ? (
+                    <>
                       <Box inline color={(limb.limb_type === "Nonfunctional Cybernetic") ? "red" : "green"} bold={1}>
                         [{limb.limb_type}]
                       </Box>
-                    ) : null}
-                    {limb.open_incision ? (
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.open_incision ? (
+                    <>
                       <Box inline color={"red"} bold={1}>
                         [Open Surgical Incision]
                       </Box>
-                    ) : null}
-                    {limb.implant && bodyscanner ? (
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
+                  {limb.implant && bodyscanner ? (
+                    <>
                       <Box inline color={"white"} bold={1}>
                         [Embedded Object]
                       </Box>
-                    ) : null}
-                  </Flex.Item>
+                      <Box inline width={"5px"} />
+                    </>
+                  ) : null}
                 </>
               )}
-            </Flex>
+            </LabeledList.Item>
           ))
         }
-      </Stack>
+      </LabeledList>
     </Section>
   );
 };

@@ -333,14 +333,13 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	return
 
 //examining a hardpoint
-/obj/item/hardpoint/get_examine_text(mob/user, var/integrity_only = FALSE)
+/obj/item/hardpoint/examine(mob/user, var/integrity_only = FALSE)
 	if(!integrity_only)
-		return ..()
-	. = ..()
+		..()
 	if(health <= 0)
-		. += "It's busted!"
+		to_chat(user, "It's busted!")
 	else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)))
-		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
+		to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader
 /obj/item/hardpoint/proc/reload(var/mob/user)

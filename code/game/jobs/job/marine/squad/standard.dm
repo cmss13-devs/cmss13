@@ -8,9 +8,6 @@
 	gear_preset = /datum/equipment_preset/uscm/pfc
 	entry_message_body = "You are a rank-and-file Marine of the USCM, and that is your strength. What you lack alone, you gain standing shoulder to shoulder with the men and women of the corps. Ooh-rah!"
 
-/datum/job/marine/standard/set_spawn_positions(var/count)
-	spawn_positions = max((round(count * STANDARD_MARINE_TO_TOTAL_SPAWN_RATIO)), 8)
-
 /datum/job/marine/standard/whiskey
 	title = JOB_WO_SQUAD_MARINE
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
@@ -21,18 +18,5 @@
 	icon_state = "marine_spawn"
 	job = /datum/job/marine/standard
 
-/obj/effect/landmark/start/marine/alpha
-	icon_state = "marine_spawn_alpha"
-	squad = SQUAD_MARINE_1
-
-/obj/effect/landmark/start/marine/bravo
-	icon_state = "marine_spawn_bravo"
-	squad = SQUAD_MARINE_2
-
-/obj/effect/landmark/start/marine/charlie
-	icon_state = "marine_spawn_charlie"
-	squad = SQUAD_MARINE_3
-
-/obj/effect/landmark/start/marine/delta
-	icon_state = "marine_spawn_delta"
-	squad = SQUAD_MARINE_4
+/datum/job/marine/standard/set_spawn_positions(var/count)
+	spawn_positions =  max((round(count * STANDARD_MARINE_TO_TOTAL_SPAWN_RATIO)), 8)

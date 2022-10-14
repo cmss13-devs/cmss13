@@ -297,7 +297,7 @@
 			return
 	qdel(src)
 
-/obj/effect/alien/resin/marker/get_examine_text(mob/user)
+/obj/effect/alien/resin/marker/examine(mob/user)
 	. = ..()
 	var/mob/living/carbon/Xenomorph/xeno_createdby
 	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
@@ -305,7 +305,7 @@
 		if(X.nicknumber == createdby)
 			xeno_createdby = X
 	if(isXeno(user) || isobserver(user))
-		. += "[mark_meaning.desc], ordered by [xeno_createdby.name]"
+		to_chat(user, "[mark_meaning.desc], ordered by [xeno_createdby.name]")
 
 /obj/effect/alien/resin/marker/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.hive_pos == 1 || M.nicknumber == createdby)

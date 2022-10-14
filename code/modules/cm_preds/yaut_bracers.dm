@@ -161,9 +161,9 @@
 
 	return FALSE
 
-/obj/item/clothing/gloves/yautja/get_examine_text(mob/user)
-	. = ..()
-	. += SPAN_NOTICE("They currently have <b>[charge]/[charge_max]</b> charge.")
+/obj/item/clothing/gloves/yautja/examine(mob/user)
+	..()
+	to_chat(user, SPAN_NOTICE("They currently have <b>[charge]/[charge_max]</b> charge."))
 
 
 // Toggle the notification sound

@@ -1175,13 +1175,13 @@ var/datum/controller/supply/supply_controller = new()
 		if(!VO) return
 		if(VO.has_vehicle_lock()) return
 
-		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
 
 		VO.on_created(ordered_vehicle)
 
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
+		spent = TRUE
 
 	add_fingerprint(usr)
 	updateUsrDialog()

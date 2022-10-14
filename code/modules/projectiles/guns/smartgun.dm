@@ -93,14 +93,14 @@
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 	))
 
-/obj/item/weapon/gun/smartgun/get_examine_text(mob/user)
-	. = ..()
+/obj/item/weapon/gun/smartgun/examine(mob/user)
+	..()
 	var/rounds = 0
 	if(current_mag && current_mag.current_rounds)
 		rounds = current_mag.current_rounds
 	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
-	. += message
-	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
+	to_chat(user, message)
+	to_chat(user, "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"].")
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
 	if(mods["alt"])
@@ -586,7 +586,7 @@
 	linked_human = H
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
 
-/obj/item/weapon/gun/smartgun/co/get_examine_text()
+/obj/item/weapon/gun/smartgun/co/examine()
 	..()
 	if(linked_human)
 		if(is_locked)

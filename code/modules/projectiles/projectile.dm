@@ -330,12 +330,15 @@
 	if(firer && T == firer.loc && !is_shrapnel)
 		return FALSE
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
-
-	var/hit_turf = FALSE
 	// Explosive ammo always explodes on the turf of the clicked target
 	// So does ammo that's flagged to always hit the target
 	if(((ammo_flags & AMMO_EXPLOSIVE) || (ammo_flags & AMMO_HITS_TARGET_TURF)) && T == target_turf)
-		hit_turf = TRUE
+		ammo.on_hit_turf(T,src)
+
+		if(T && T.loc)
+			T.bullet_act(src)
+
+		return TRUE
 
 	if(ammo_flags & AMMO_SCANS_NEARBY && proj_dir)
 		//this thing scans depending on dir
@@ -380,7 +383,7 @@
 			return TRUE
 
 	// Empty turf, keep moving
-	if(!T.contents.len && !hit_turf)
+	if(!T.contents.len)
 		return FALSE
 
 	for(var/atom/movable/clone/C in T) //Handle clones if there are any
@@ -399,14 +402,6 @@
 	for(var/mob/living/L in T)
 		if(handle_mob(L))
 			return TRUE
-
-	if(hit_turf)
-		ammo.on_hit_turf(T, src)
-
-		if(T && T.loc)
-			T.bullet_act(src)
-
-		return TRUE
 
 /obj/item/projectile/proc/handle_object(obj/O)
 	// If we've already handled this atom, don't do it again

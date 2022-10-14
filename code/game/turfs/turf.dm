@@ -482,34 +482,37 @@
 	if(LAZYLEN(linked_pylons))
 		switch(get_pylon_protection_level())
 			if(TURF_PROTECTION_MORTAR)
-				return "The ceiling above is made of light resin. Doesn't look like it's going to stop much."
+				to_chat(user, "The ceiling above is made of light resin. Doesn't look like it's going to stop much.")
+				return
 			if(TURF_PROTECTION_CAS)
-				return "The ceiling above is made of resin. Seems about as strong as a cavern roof."
+				to_chat(user, "The ceiling above is made of resin. Seems about as strong as a cavern roof.")
+				return
 			if(TURF_PROTECTION_OB)
-				return "The ceiling above is made of thick resin. Nothing is getting through that."
+				to_chat(user, "The ceiling above is made of thick resin. Nothing is getting through that.")
+				return
 
 	var/area/A = get_area(src)
 	switch(A.ceiling)
 		if(CEILING_GLASS)
-			return "The ceiling above is glass. That's not going stop anything."
+			to_chat(user, "The ceiling above is glass. That's not going stop anything.")
 		if(CEILING_METAL)
-			return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
+			to_chat(user, "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything.")
 		if(CEILING_UNDERGROUND_ALLOW_CAS)
-			return "It is underground. A thin cavern roof lies above. Doesn't look like it's going to stop much."
+			to_chat(user, "It is underground. A thin cavern roof lies above. Doesn't look like it's going to stop much.")
 		if(CEILING_UNDERGROUND_BLOCK_CAS)
-			return "It is underground. The cavern roof lies above. Can probably stop most ordnance."
+			to_chat(user, "It is underground. The cavern roof lies above. Can probably stop most ordnance.")
 		if(CEILING_UNDERGROUND_METAL_ALLOW_CAS)
-			return "It is underground. The ceiling above is made of thin metal. Doesn't look like it's going to stop much."
+			to_chat(user, "It is underground. The ceiling above is made of thin metal. Doesn't look like it's going to stop much.")
 		if(CEILING_UNDERGROUND_METAL_BLOCK_CAS)
-			return "It is underground. The ceiling above is made of metal.  Can probably stop most ordnance."
+			to_chat(user, "It is underground. The ceiling above is made of metal.  Can probably stop most ordnance.")
 		if(CEILING_DEEP_UNDERGROUND)
-			return "It is deep underground. The cavern roof lies above. Nothing is getting through that."
+			to_chat(user, "It is deep underground. The cavern roof lies above. Nothing is getting through that.")
 		if(CEILING_DEEP_UNDERGROUND_METAL)
-			return "It is deep underground. The ceiling above is made of thick metal. Nothing is getting through that."
+			to_chat(user, "It is deep underground. The ceiling above is made of thick metal. Nothing is getting through that.")
 		if(CEILING_REINFORCED_METAL)
-			return "The ceiling above is heavy reinforced metal. Nothing is getting through that."
+			to_chat(user, "The ceiling above is heavy reinforced metal. Nothing is getting through that.")
 		else
-			return "It is in the open."
+			to_chat(user, "It is in the open.")
 
 /turf/proc/wet_floor()
 	return

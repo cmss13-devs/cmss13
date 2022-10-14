@@ -14,11 +14,9 @@
 	var/transparent = FALSE //can we see what's in it?
 	var/reagent_desc_override = FALSE //does it have a special examining mechanic that should override the normal /reagent_containers examine proc?
 
-/obj/item/reagent_container/get_examine_text(mob/user)
+/obj/item/reagent_container/examine(mob/user)
 	. = ..()
-	var/reagent_info = show_reagent_info(user)
-	if(reagent_info)
-		. += reagent_info
+	show_reagent_info(user)
 
 /obj/item/reagent_container/proc/show_reagent_info(mob/user)
 	if(isXeno(user) || reagent_desc_override)
@@ -28,19 +26,22 @@
 		reagent_desc += "It contains : "
 		if(!user.can_see_reagents())
 			if(get_dist(user, src) > 2 && user != loc) //we have a distance check with this
-				return SPAN_WARNING("It's too far away for you to see what's in it!")
+				to_chat(user, SPAN_WARNING("It's too far away for you to see what's in it!"))
+				return
 			if(!length(reagents.reagent_list))
 				reagent_desc += "nothing."
 			else
 				reagent_desc += "[reagents.total_volume] units of liquid."
-			return SPAN_INFO("[reagent_desc]")
+			to_chat(user, SPAN_INFO("[reagent_desc]"))
+			return
 		else //when wearing science goggles, you can see what's in something from any range
 			if(!length(reagents.reagent_list))
 				reagent_desc += "nothing."
 			else
 				for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
 					reagent_desc += "[round(current_reagent.volume, 0.01)] units of [current_reagent.name].<br>"
-			return SPAN_INFO("[reagent_desc]")
+			to_chat(user, SPAN_INFO("[reagent_desc]"))
+			return
 
 /obj/item/reagent_container/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -75,9 +76,9 @@
 	if(isXeno(user))
 		return
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		return "[src] contains: [get_reagent_list_text()]."//this the pill
+		to_chat(user, "[src] contains: [get_reagent_list_text()].")//this the pill
 	else
-		return "You don't know what's in it."
+		to_chat(user, "You don't know what's in it.")
 
 //returns a text listing the reagents (and their volume) in the atom. Used by Attack logs for reagents in pills
 /obj/item/reagent_container/proc/get_reagent_list_text()

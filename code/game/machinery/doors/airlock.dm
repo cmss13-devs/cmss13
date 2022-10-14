@@ -85,17 +85,17 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /// DAMAGE CODE
 
-/obj/structure/machinery/door/airlock/get_examine_text(mob/user)
+/obj/structure/machinery/door/airlock/examine(mob/user)
 	. = ..()
 	var/dam = damage / damage_cap
 	if(dam > 0.6)
-		. += SPAN_DANGER("It looks heavily damaged.")
+		to_chat(user, SPAN_DANGER("It looks heavily damaged."))
 	else if(dam > 0.3)
-		. += SPAN_WARNING("It looks moderately damaged.")
+		to_chat(user, SPAN_WARNING("It looks moderately damaged."))
 	else if(dam > 0)
-		. += SPAN_WARNING("It looks slightly damaged.")
+		to_chat(user, SPAN_WARNING("It looks slightly damaged."))
 	if(masterkey_resist)
-		. += SPAN_INFO("It has been reinforced against breaching attempts.")
+		to_chat(user, SPAN_INFO("It has been reinforced against breaching attempts."))
 
 /obj/structure/machinery/door/airlock/proc/take_damage(var/dam, var/mob/M)
 	if(!dam || unacidable)

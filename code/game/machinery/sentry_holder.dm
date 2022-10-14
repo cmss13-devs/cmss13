@@ -26,10 +26,10 @@
 		ox = pixel_x
 		oy = pixel_y
 
-/obj/structure/machinery/sentry_holder/get_examine_text(mob/user)
+/obj/structure/machinery/sentry_holder/examine(mob/user)
 	..()
 	if(!deployed_turret)
-		. += "It's offline."
+		to_chat(user, "Its offline.")
 
 /obj/structure/machinery/sentry_holder/attack_hand(mob/user)
 	if(deployed_turret)

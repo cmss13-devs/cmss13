@@ -157,23 +157,23 @@
 	else
 		icon_state = "suitcooler0"
 
-/obj/item/device/suit_cooling_unit/get_examine_text(mob/user)
-	. = ..()
+/obj/item/device/suit_cooling_unit/examine(mob/user)
+	..()
 	if (on)
 		if (attached_to_suit(src.loc))
-			. += "It's switched on and running."
+			to_chat(user, "It's switched on and running.")
 		else
-			. += "It's switched on, but not attached to anything."
+			to_chat(user, "It's switched on, but not attached to anything.")
 	else
-		. += "It is switched off."
+		to_chat(user, "It is switched off.")
 
 	if (cover_open)
 		if(cell)
-			. += "The panel is open, exposing the [cell]."
+			to_chat(user, "The panel is open, exposing the [cell].")
 		else
-			. += "The panel is open."
+			to_chat(user, "The panel is open.")
 
 	if (cell)
-		. += "The charge meter reads [round(cell.percent())]%."
+		to_chat(user, "The charge meter reads [round(cell.percent())]%.")
 	else
-		. += "It doesn't have a power cell installed."
+		to_chat(user, "It doesn't have a power cell installed.")

@@ -164,7 +164,7 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	desc = "A Weyland-Yutani backed cash card that holds an amount of money."
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
-/obj/item/spacecash/ewallet/get_examine_text(mob/user)
-	. = ..()
+/obj/item/spacecash/ewallet/examine(mob/user)
+	..()
 	if(user == loc)
-		. += SPAN_NOTICE("Charge card's owner: [owner_name]. Dollars remaining: [worth].")
+		to_chat(user, SPAN_NOTICE("Charge card's owner: [owner_name]. Dollars remaining: [worth]."))

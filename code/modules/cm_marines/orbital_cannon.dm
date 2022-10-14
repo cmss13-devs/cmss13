@@ -344,9 +344,9 @@ var/list/ob_type_fuel_requirements
 	else
 		. = ..()
 
-/obj/structure/ob_ammo/get_examine_text(mob/user)
-	. = ..()
-	. += "Moving this will require some sort of lifter."
+/obj/structure/ob_ammo/examine(mob/user)
+	..()
+	to_chat(user, "Moving this will require some sort of lifter.")
 
 /obj/structure/ob_ammo/warhead
 	name = "theoretical orbital ammo"

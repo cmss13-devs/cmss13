@@ -24,12 +24,6 @@
 	icon_state = "flight_recorder"
 	w_class = SIZE_LARGE
 
-/obj/item/prop/almayer/flight_recorder/colony
-	name = "\improper CIR-60 colony information recorder"
-	desc = "A small red box that records colony announcements, colonist flatlines and other key readouts. Usually refered to the black box, although this one comes in bloody red."
-	icon_state = "flight_recorder"
-	w_class = SIZE_LARGE
-
 /obj/item/prop/almayer/lantern_pod
 	name = "\improper LANTERN pod"
 	desc = "A long green box mounted into a dropship to provide various optical support for its ground targeting systems."
@@ -393,8 +387,8 @@
 	else
 		. = ..()
 
-/obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/prop/almayer/ship_memorial/examine(mob/user)
+	..()
 	if((isobserver(user) || ishuman(user)) && fallen_list)
 		var/faltext = ""
 		for(var/i = 1 to fallen_list.len)
@@ -402,7 +396,7 @@
 				faltext += "[fallen_list[i]], "
 			else
 				faltext += fallen_list[i]
-		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
+		to_chat(user, SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>."))
 
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"

@@ -185,12 +185,6 @@
 	if(bruteloss == 0 && fireloss == 0)
 		return
 
-	var/list/L = list("healing" = value)
-	SEND_SIGNAL(src, COMSIG_XENO_ON_HEAL, L)
-	value = L["healing"]
-	if(value < 0)
-		value = 0
-
 	if(bruteloss < value)
 		value -= bruteloss
 		bruteloss = 0
@@ -270,7 +264,7 @@
 		return
 
 	var/mob/living/carbon/M = L
-	if(M.stat || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
+	if(M.stat || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L))
 		throwing = FALSE
 		return
 

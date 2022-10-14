@@ -54,15 +54,15 @@
 	else
 		icon_state = "fortune_cookie"
 
-/obj/item/reagent_container/food/snacks/fortunecookie/get_examine_text(mob/user)
+/obj/item/reagent_container/food/snacks/fortunecookie/examine(mob/user)
 	. = ..()
 	if(cookie_broken)
-		. += SPAN_WARNING("It's cracked open!")
+		to_chat(user,SPAN_WARNING("It's cracked open!"))
 	else
 		if(cookiefortune)
-			. += SPAN_NOTICE("It has a fortune inside it already.")
+			to_chat(user,SPAN_NOTICE("It has a fortune inside it already."))
 		else
-			. += SPAN_NOTICE("It's empty.")
+			to_chat(user,SPAN_NOTICE("It's empty."))
 
 /obj/item/reagent_container/food/snacks/fortunecookie/Initialize()
 	. = ..()

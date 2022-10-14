@@ -1019,12 +1019,12 @@ table tr:first-child th:first-child { border: none;}
 	..()
 	update_icon()
 
-/obj/structure/machinery/alarm/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/machinery/alarm/examine(mob/user)
+	..()
 	if (buildstage < 2)
-		. += "It is not wired."
+		to_chat(user, "It is not wired.")
 	if (buildstage < 1)
-		. += "The circuit is missing."
+		to_chat(user, "The circuit is missing.")
 
 
 

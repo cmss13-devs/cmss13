@@ -151,14 +151,14 @@
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
 	. = ..()
 
-/obj/item/reagent_container/hypospray/get_examine_text(mob/user)
-	. = ..()
+/obj/item/reagent_container/hypospray/examine(mob/user)
+	..()
 	if(magfed)
 		if(mag)
-			. += SPAN_INFO("It is loaded with \a [mag], containing [reagents.total_volume] units.")
+			to_chat(user, SPAN_INFO("It is loaded with \a [mag], containing [reagents.total_volume] units."))
 		else
-			. += SPAN_INFO("It is unloaded.")
-		. += SPAN_INFO("It is set to administer [amount_per_transfer_from_this] units per dose.")
+			to_chat(user, SPAN_INFO("It is unloaded."))
+		to_chat(user, SPAN_INFO("It is set to administer [amount_per_transfer_from_this] units per dose."))
 
 /obj/item/reagent_container/hypospray/attack(mob/living/M, mob/living/user)
 	if(magfed && !mag)

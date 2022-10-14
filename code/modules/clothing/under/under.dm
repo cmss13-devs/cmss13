@@ -110,18 +110,18 @@
 				add_fingerprint(usr)
 
 
-/obj/item/clothing/under/get_examine_text(mob/user)
-	. = ..()
+/obj/item/clothing/under/examine(mob/user)
+	..()
 	if(has_sensor)
 		switch(sensor_mode)
 			if(SENSOR_MODE_OFF)
-				. += "Its sensors appear to be disabled."
+				to_chat(user, "Its sensors appear to be disabled.")
 			if(SENSOR_MODE_BINARY)
-				. += "Its binary life sensors appear to be enabled."
+				to_chat(user, "Its binary life sensors appear to be enabled.")
 			if(SENSOR_MODE_DAMAGE)
-				. += "Its vital tracker appears to be enabled."
+				to_chat(user, "Its vital tracker appears to be enabled.")
 			if(SENSOR_MODE_LOCATION)
-				. += "Its vital tracker and tracking beacon appear to be enabled."
+				to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
 
 /obj/item/clothing/under/proc/set_sensors(mob/user)
 	if (istype(user, /mob/dead/)) return

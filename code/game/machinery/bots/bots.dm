@@ -38,13 +38,13 @@
 	SetLuminosity(0)
 	. = ..()
 
-/obj/structure/machinery/bot/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/machinery/bot/examine(mob/user)
+	..()
 	if(health < maxhealth)
 		if(health > maxhealth/3)
-			. += SPAN_WARNING("[src]'s parts look loose.")
+			to_chat(user, SPAN_WARNING("[src]'s parts look loose."))
 		else
-			. += SPAN_DANGER("[src]'s parts look very loose!")
+			to_chat(user, SPAN_DANGER("[src]'s parts look very loose!"))
 
 /obj/structure/machinery/bot/attack_animal(var/mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0)	return

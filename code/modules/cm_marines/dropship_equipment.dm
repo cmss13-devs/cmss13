@@ -168,10 +168,10 @@
 		deployed_turret = new(src)
 		deployed_turret.deployment_system = src
 
-/obj/structure/dropship_equipment/sentry_holder/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/dropship_equipment/sentry_holder/examine(mob/user)
+	..()
 	if(!deployed_turret)
-		. += "Its turret is missing."
+		to_chat(user, "Its turret is missing.")
 
 /obj/structure/dropship_equipment/sentry_holder/on_launch()
 	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically undeployed
@@ -286,10 +286,10 @@
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
 
-/obj/structure/dropship_equipment/mg_holder/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/dropship_equipment/mg_holder/examine(mob/user)
+	..()
 	if(!deployed_mg)
-		. += "Its machine gun is missing."
+		to_chat(user, "Its machine gun is missing.")
 
 /obj/structure/dropship_equipment/mg_holder/on_launch()
 	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external mgs are automatically undeployed
@@ -589,14 +589,12 @@
 		else
 			linked_console.selected_equipment = src
 
-/obj/structure/dropship_equipment/weapon/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/dropship_equipment/weapon/examine(mob/user)
+	..()
 	if(ammo_equipped)
-		var/ammo_info = ammo_equipped.show_loaded_desc(user)
-		if(ammo_info)
-			. += ammo_info
+		ammo_equipped.show_loaded_desc(user)
 	else
-		. += "It's empty."
+		to_chat(user, "It's empty.")
 
 
 

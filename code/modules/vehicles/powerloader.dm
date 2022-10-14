@@ -75,12 +75,12 @@
 
 //--------------------INTERACTION PROCS-----------------
 
-/obj/vehicle/powerloader/get_examine_text(mob/user)
+/obj/vehicle/powerloader/examine(mob/user)
 	. = ..()
 	if(PC_left)
-		. += PC_left.get_examine_text(user, TRUE)
+		PC_left.examine(user, TRUE)
 	if(PC_right)
-		. += PC_right.get_examine_text(user, TRUE)
+		PC_right.examine(user, TRUE)
 
 /obj/vehicle/powerloader/attack_hand(mob/user)
 	if(buckled_mob && user != buckled_mob)
@@ -188,13 +188,14 @@
 
 //--------------------INTERACTION PROCS-----------------
 
-/obj/item/powerloader_clamp/get_examine_text(mob/user, var/compact_info = FALSE)
-	if(compact_info && loaded)
-		return list(SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] in the [icon2html(src, user)] [src.name]."))
+/obj/item/powerloader_clamp/examine(mob/user, var/compact_info = FALSE)
+	if(compact_info)
+		if(loaded)
+			to_chat(user, SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] in the [icon2html(src, user)] [src.name]."))
 	else
 		. = ..()
 		if(loaded)
-			. += SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] in the [icon2html(src, user)] [src.name].")
+			to_chat(user, SPAN_NOTICE("There is a [icon2html(loaded, user)] [SPAN_HELPFUL(loaded.name)] in the [icon2html(src, user)] [src.name]."))
 
 /obj/item/powerloader_clamp/attack(mob/living/M, mob/living/user)
 	if(M == linked_powerloader.buckled_mob)

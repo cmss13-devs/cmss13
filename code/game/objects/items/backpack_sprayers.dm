@@ -113,12 +113,12 @@
 	..()
 	remove_noz()
 
-/obj/item/reagent_container/glass/watertank/get_examine_text(mob/user)
-	. = ..()
+/obj/item/reagent_container/glass/watertank/examine(mob/user)
+	..()
 	if(!noz || QDELETED(noz) || (noz in src))
-		. += SPAN_NOTICE("Its nozzle is attached.")
+		to_chat(user, SPAN_NOTICE("Its nozzle is attached."))
 	else
-		. += SPAN_NOTICE("Its nozzle is detached.")
+		to_chat(user, SPAN_NOTICE("Its nozzle is detached."))
 
 // This mister item is intended as an extension of the watertank and always attached to it.
 // Therefore, it's designed to be "locked" to the player's hands or extended back onto
@@ -146,12 +146,12 @@
 	if(!istype(W))
 		return INITIALIZE_HINT_QDEL
 
-/obj/item/reagent_container/spray/mister/get_examine_text(mob/user)
-	. = ..()
+/obj/item/reagent_container/spray/mister/examine(mob/user)
+	..()
 	var/obj/item/reagent_container/glass/watertank/W = user.back
 	if(!istype(W))
 		return
-	. += "It is linked to \the [W]."
+	to_chat(user, "It is linked to \the [W].")
 
 /obj/item/reagent_container/spray/mister/afterattack(atom/A, mob/user, proximity)
 	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something
@@ -223,17 +223,17 @@
 		return
 	..()
 
-/obj/item/reagent_container/glass/watertank/atmos/get_examine_text(mob/user)
+/obj/item/reagent_container/glass/watertank/atmos/examine(mob/user)
 	. = ..()
 	switch(nozzle_mode)
 		if(EXTINGUISHER)
-			. += SPAN_NOTICE("It is set to [SPAN_HELPFUL("extinguisher")] mode.")
+			to_chat(user, SPAN_NOTICE("It is set to [SPAN_HELPFUL("extinguisher")] mode."))
 			return
 		if(METAL_FOAM)
-			. += SPAN_NOTICE("It is set to [SPAN_HELPFUL("metal foamer")] mode.")
+			to_chat(user, SPAN_NOTICE("It is set to [SPAN_HELPFUL("metal foamer")] mode."))
 			return
 		if(METAL_LAUNCHER)
-			. += SPAN_NOTICE("It is set to [SPAN_HELPFUL("metal foam launcher")] mode.")
+			to_chat(user, SPAN_NOTICE("It is set to [SPAN_HELPFUL("metal foam launcher")] mode."))
 			return
 
 /obj/item/reagent_container/spray/mister/atmos
@@ -265,15 +265,15 @@
 	internal_extinguisher.create_reagents(internal_extinguisher.max_water)
 	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
 
-/obj/item/reagent_container/spray/mister/atmos/get_examine_text(mob/user)
+/obj/item/reagent_container/spray/mister/atmos/examine(mob/user)
 	. = ..()
 	switch(nozzle_mode)
 		if(EXTINGUISHER)
-			. += SPAN_NOTICE("It is set to [SPAN_HELPFUL("extinguisher")] mode.")
+			to_chat(user, SPAN_NOTICE("It is set to [SPAN_HELPFUL("extinguisher")] mode."))
 		if(METAL_FOAM)
-			. += SPAN_NOTICE("It is set to [SPAN_HELPFUL("metal foamer")] mode.")
+			to_chat(user, SPAN_NOTICE("It is set to [SPAN_HELPFUL("metal foamer")] mode."))
 		if(METAL_LAUNCHER)
-			. += SPAN_NOTICE("It is set to [SPAN_HELPFUL("metal foam launcher")] mode.")
+			to_chat(user, SPAN_NOTICE("It is set to [SPAN_HELPFUL("metal foam launcher")] mode."))
 
 /obj/item/reagent_container/spray/mister/atmos/update_icon()
 	. = ..()

@@ -78,10 +78,6 @@
 
 ///from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
-
-/// generally called before temporary non-parallel animate()s on the atom (animation_duration)
-#define COMSIG_ATOM_TEMPORARY_ANIMATION_START "atom_temp_animate_start"
-
 //from base of atom/movable/onTransitZ(): (old_z, new_z)
 #define COMSIG_MOVABLE_Z_CHANGED "movable_ztransit"
 
@@ -246,11 +242,6 @@
 
 /// from /mob/living/carbon/Xenomorph/bullet_act(): (list/damagedata)
 #define COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE "xeno_pre_calculate_armoured_damage_projectile"
-
-// from /mob/living/carbon/Xenomorph/proc/gain_health()
-#define COMSIG_XENO_ON_HEAL "xeno_on_heal"
-#define COMSIG_XENO_ON_HEAL_WOUNDS "xeno_on_heal_wounds"
-
 /// from /mob/living/carbon/Xenomorph/apply_armoured_damage(): (list/damagedata)
 #define COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE "xeno_pre_apply_armoured_damage"
 

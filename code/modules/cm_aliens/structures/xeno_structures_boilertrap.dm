@@ -33,11 +33,10 @@
 	QDEL_NULL_LIST(tripwires)
 	return ..()
 
-/obj/effect/alien/resin/boilertrap/get_examine_text(mob/user)
+/obj/effect/alien/resin/boilertrap/examine(mob/user)
 	if(!isXeno(user))
 		return ..()
-	. = ..()
-	. += SPAN_XENOWARNING("A trap designed for a catching tallhosts and holding them still.")
+	to_chat(user, SPAN_XENOWARNING("A trap designed for a catching tallhosts and holding them still."))
 
 /obj/effect/alien/resin/boilertrap/fire_act()
 	. = ..()
@@ -52,7 +51,7 @@
 /obj/effect/alien/resin/boilertrap/proc/trigger_trap(mob/M)
 	if(!istype(M) || !istype(bound_xeno))
 		return
-	var/datum/effects/boiler_trap/F = new(M, bound_xeno, name)
+	var/datum/effects/boiler_trap/F = new(M, bound_xeno)
 	QDEL_IN(F, root_duration)
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel one of your traps capture a tallhost!"))
 	to_chat(M, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))

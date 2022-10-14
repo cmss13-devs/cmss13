@@ -92,13 +92,13 @@
 	STOP_PROCESSING(SSobj, src)
 	return
 
-/obj/item/device/assembly/get_examine_text(mob/user)
-	. = ..()
+/obj/item/device/assembly/examine(mob/user)
+	..()
 	if((in_range(src, user) || loc == usr))
 		if(secured)
-			. += "[src] is ready!"
+			to_chat(user, "[src] is ready!")
 		else
-			. += "[src] can be attached!"
+			to_chat(user, "[src] can be attached!")
 
 /obj/item/device/assembly/attack_self(mob/user)
 	..()

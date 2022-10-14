@@ -137,15 +137,15 @@ Class Procs:
 /obj/structure/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL
 
-/obj/structure/machinery/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/machinery/examine(mob/user)
+	..()
 	if(!stat)
 		return
 
-	. += "It does not appear to be working."
+	to_chat(user, "It does not appear to be working.")
 	var/msg = get_repair_move_text(FALSE)
 	if(msg && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-		. += SPAN_WARNING("[msg]")
+		to_chat(user, SPAN_WARNING("[msg]"))
 
 /obj/structure/machinery/emp_act(severity)
 	if(use_power && stat == 0)
@@ -223,12 +223,12 @@ Class Procs:
 
 /obj/structure/machinery/attack_hand(mob/user as mob)
 	if(inoperable(MAINT))
-		return TRUE
+		return 1
 	if(user.lying || user.stat)
-		return TRUE
+		return 1
 	if(!(istype(user, /mob/living/carbon/human) || isRemoteControlling(user) || istype(user, /mob/living/carbon/Xenomorph)))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
-		return TRUE
+		return 1
 /*
 	//distance checks are made by atom/proc/clicked()
 	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !isRemoteControlling(user))
@@ -238,14 +238,14 @@ Class Procs:
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= 60)
 			visible_message(SPAN_DANGER("[H] stares cluelessly at [src] and drools."))
-			return TRUE
+			return 1
 		else if(prob(H.getBrainLoss()))
 			to_chat(user, SPAN_DANGER("You momentarily forget how to use [src]."))
-			return TRUE
+			return 1
 
 	src.add_fingerprint(user)
 
-	return FALSE
+	return 0
 
 /obj/structure/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return

@@ -173,10 +173,11 @@
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/vend_fail()
 	return
 
-/obj/structure/machinery/cm_vending/sorted/vehicle_supply/get_examine_text(mob/living/carbon/human/user)
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/examine(mob/living/carbon/human/user)
 	. = ..()
 	if(ishuman(user))
-		. += SPAN_INFO("[SPAN_HELPFUL("CTRL + Click")] \the [src] to start re-stocking it with supplies near vendor.")
+		to_chat(user, SPAN_INFO("[SPAN_HELPFUL("CTRL + Click")] \the [src] to start re-stocking it with supplies near vendor."))
+		return FALSE
 
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/clicked(var/mob/user, var/list/mods)
 	if(mods["ctrl"])

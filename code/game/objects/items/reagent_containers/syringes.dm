@@ -25,11 +25,9 @@
 /obj/item/reagent_container/syringe/on_reagent_change()
 	update_icon()
 
-/obj/item/reagent_container/syringe/get_examine_text(mob/user)
+/obj/item/reagent_container/syringe/examine(mob/user)
 	. = ..()
-	var/pill_info = display_contents(user)
-	if(pill_info)
-		. += pill_info
+	display_contents(user)
 
 
 /obj/item/reagent_container/syringe/pickup(mob/user)

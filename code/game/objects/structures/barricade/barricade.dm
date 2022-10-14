@@ -49,20 +49,20 @@
 	flags_can_pass_front_temp = PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp = PASS_OVER_THROW_MOB
 
-/obj/structure/barricade/get_examine_text(mob/user)
-	. = ..()
-	. += SPAN_INFO("It is recommended to stand flush to a barricade or more than four tiles away for maximum efficiency.")
+/obj/structure/barricade/examine(mob/user)
+	..()
+	to_chat(user, SPAN_INFO("It is recommended to stand flush to a barricade or more than four tiles away for maximum efficiency."))
 	if(is_wired)
-		. += SPAN_INFO("There is a length of wire strewn across the top of this barricade.")
+		to_chat(user, SPAN_INFO("There is a length of wire strewn across the top of this barricade."))
 	switch(damage_state)
 		if(BARRICADE_DMG_NONE)
-			. += SPAN_INFO("It appears to be in good shape.")
+			to_chat(user, SPAN_INFO("It appears to be in good shape."))
 		if(BARRICADE_DMG_SLIGHT)
-			. += SPAN_WARNING("It's slightly damaged, but still very functional.")
+			to_chat(user, SPAN_WARNING("It's slightly damaged, but still very functional."))
 		if(BARRICADE_DMG_MODERATE)
-			. += SPAN_WARNING("It's quite beat up, but it's holding together.")
+			to_chat(user, SPAN_WARNING("It's quite beat up, but it's holding together."))
 		if(BARRICADE_DMG_HEAVY)
-			. += SPAN_WARNING("It's crumbling apart, just a few more blows will tear it apart.")
+			to_chat(user, SPAN_WARNING("It's crumbling apart, just a few more blows will tear it apart."))
 
 /obj/structure/barricade/update_icon()
 	overlays.Cut()

@@ -50,13 +50,13 @@
 /obj/proc/set_pixel_location()
 	return
 
-/obj/item/proc/get_examine_line(mob/user)
+/obj/item/proc/get_examine_line()
 	if(blood_color)
-		. = SPAN_WARNING("[icon2html(src, user)] [gender==PLURAL?"some":"a"] <font color='[blood_color]'>stained</font> [src]")
+		. = SPAN_WARNING("[icon2html(src)] [gender==PLURAL?"some":"a"] <font color='[blood_color]'>stained</font> [src]")
 	else
-		. = "[icon2html(src, user)] \a [src]"
+		. = "[icon2html(src)] \a [src]"
 
-/obj/item/proc/get_examine_location(var/mob/living/carbon/human/wearer, var/mob/examiner, var/slot, var/t_He = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
+/obj/item/proc/get_examine_location(var/mob/living/carbon/human/wearer, var/slot, var/t_He = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
 	switch(slot)
 		if(WEAR_HEAD)
 			return "on [t_his] head"
@@ -69,13 +69,13 @@
 		if(WEAR_FACE)
 			return "on [t_his] face"
 		if(WEAR_BODY)
-			return "wearing [get_examine_line(examiner)]"
+			return "wearing [get_examine_line()]"
 		if(WEAR_JACKET)
-			return "wearing [get_examine_line(examiner)]"
+			return "wearing [get_examine_line()]"
 		if(WEAR_WAIST)
 			return "about [t_his] waist"
 		if(WEAR_ID)
-			return "wearing [get_examine_line(examiner)]"
+			return "wearing [get_examine_line()]"
 		if(WEAR_BACK)
 			return "on [t_his] back"
 		if(WEAR_J_STORE)
@@ -210,7 +210,7 @@
 
 //trying to buckle a mob
 /obj/proc/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
+	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled)
 		return
 
 	if (isXeno(user))

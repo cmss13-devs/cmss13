@@ -14,8 +14,6 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 5
 
-	var/datum/health_scan/last_health_display
-
 	var/healthscan = TRUE
 	var/list/chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
@@ -53,14 +51,11 @@
 		/obj/item/stack/medical/splint
 		)
 
-/obj/structure/machinery/cm_vending/sorted/medical/Destroy()
-	QDEL_NULL(last_health_display)
+/obj/structure/machinery/cm_vending/sorted/medical/examine(mob/living/carbon/human/user)
 	. = ..()
 
-/obj/structure/machinery/cm_vending/sorted/medical/get_examine_text(mob/living/carbon/human/user)
-	. = ..()
 	if(healthscan)
-		. += SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target in front of the scanner to scan.")
+		to_chat(user, SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target infront of the scanner to scan."))
 
 /obj/structure/machinery/cm_vending/sorted/medical/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
@@ -149,12 +144,7 @@
 			to_chat(user, SPAN_WARNING("\The [src] does not have health scanning function."))
 			return
 
-		if (!last_health_display)
-			last_health_display = new(user)
-		else
-			last_health_display.target_mob = user
-
-		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
+		user.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
 		return
 
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)

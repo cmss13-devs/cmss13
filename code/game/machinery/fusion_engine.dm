@@ -230,40 +230,40 @@
 	else
 		return ..()
 
-/obj/structure/machinery/power/fusion_engine/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/machinery/power/fusion_engine/examine(mob/user)
+	..()
 	if(ishuman(user))
 		if(buildstate)
-			. += SPAN_INFO("It's broken.")
+			to_chat(user, SPAN_INFO("It's broken."))
 			switch(buildstate)
 				if(1)
-					. += SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it.")
+					to_chat(user, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
 				if(2)
-					. += SPAN_INFO("Use a wirecutters, then wrench to repair it.")
+					to_chat(user, SPAN_INFO("Use a wirecutters, then wrench to repair it."))
 				if(3)
-					. += SPAN_INFO("Use a wrench to repair it.")
+					to_chat(user, SPAN_INFO("Use a wrench to repair it."))
 			return FALSE
 
 		if(!is_on)
-			. += SPAN_INFO("It looks offline.")
+			to_chat(user, SPAN_INFO("It looks offline."))
 		else
-			. += SPAN_INFO("The power gauge reads: [power_gen_percent]%")
+			to_chat(user, SPAN_INFO("The power gauge reads: [power_gen_percent]%"))
 		if(fusion_cell)
-			. += SPAN_INFO("You can see a fuel cell in the receptacle.")
+			to_chat(user, SPAN_INFO("You can see a fuel cell in the receptacle."))
 			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				switch(fusion_cell.get_fuel_percent())
 					if(0 to 10)
-						. += SPAN_DANGER("The fuel cell is critically low.")
+						to_chat(user, SPAN_DANGER("The fuel cell is critically low."))
 					if(10 to 25)
-						. += SPAN_WARNING("The fuel cell is running low.")
+						to_chat(user, SPAN_WARNING("The fuel cell is running low."))
 					if(25 to 50)
-						. += SPAN_INFO("The fuel cell is a little under halfway.")
+						to_chat(user, SPAN_INFO("The fuel cell is a little under halfway."))
 					if(50 to 75)
-						. += SPAN_INFO("The fuel cell is a little above halfway.")
+						to_chat(user, SPAN_INFO("The fuel cell is a little above halfway."))
 					if(75 to INFINITY)
-						. += SPAN_INFO("The fuel cell is nearly full.")
+						to_chat(user, SPAN_INFO("The fuel cell is nearly full."))
 		else
-			. += SPAN_INFO("There is no fuel cell in the receptacle.")
+			to_chat(user, SPAN_INFO("There is no fuel cell in the receptacle."))
 
 /obj/structure/machinery/power/fusion_engine/update_icon()
 	switch(buildstate)
@@ -340,10 +340,10 @@
 		else
 			icon_state = "cell-full"
 
-/obj/item/fuelCell/get_examine_text(mob/user)
-	.  = ..()
+/obj/item/fuelCell/examine(mob/user)
+	..()
 	if(ishuman(user))
-		. += "The fuel indicator reads: [get_fuel_percent()]%"
+		to_chat(user, "The fuel indicator reads: [get_fuel_percent()]%")
 
 /obj/item/fuelCell/proc/get_fuel_percent()
 	return round(100*fuel_amount/max_fuel_amount)

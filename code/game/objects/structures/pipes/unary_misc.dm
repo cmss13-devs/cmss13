@@ -25,10 +25,10 @@
 
 	..()
 
-/obj/structure/pipes/unary/freezer/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/pipes/unary/freezer/examine(mob/user)
+	..()
 	if(opened)
-		. += "The maintenance hatch is open."
+		to_chat(user, "The maintenance hatch is open.")
 
 
 /obj/structure/pipes/unary/heat_exchanger
@@ -73,10 +73,10 @@
 
 	..()
 
-/obj/structure/pipes/unary/heater/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/pipes/unary/heater/examine(mob/user)
+	..()
 	if(opened)
-		. += "The maintenance hatch is open."
+		to_chat(user, "The maintenance hatch is open.")
 
 
 /obj/structure/pipes/unary/outlet_injector

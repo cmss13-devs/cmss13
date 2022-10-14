@@ -594,49 +594,52 @@
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)
 			return XENO_VISION_LEVEL_NO_NVG
 
-/mob/living/carbon/Xenomorph/get_examine_text(mob/user)
-	. = ..()
+/mob/living/carbon/Xenomorph/examine(mob/user)
+	..()
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
-		return list(desc)
+		to_chat(user, desc)
+		return
 
 	if(isXeno(user) && caste && caste.caste_desc)
-		. += caste.caste_desc
+		to_chat(user, caste.caste_desc)
 
 	if(l_hand)
-		. += "It's holding[l_hand.get_examine_line(user)] in its left hand."
+		to_chat(user, "It's holding[l_hand.get_examine_line()] in its left hand.")
 
 	if(r_hand)
-		. += "It's holding[r_hand.get_examine_line(user)] in its right hand."
+		to_chat(user, "It's holding[r_hand.get_examine_line()] in its right hand.")
 
 	if(stat == DEAD)
-		. += "It is DEAD. Kicked the bucket. Off to that great hive in the sky."
+		to_chat(user, "It is DEAD. Kicked the bucket. Off to that great hive in the sky.")
 	else if(stat == UNCONSCIOUS)
-		. += "It quivers a bit, but barely moves."
+		to_chat(user, "It quivers a bit, but barely moves.")
 	else
 		var/percent = (health / maxHealth * 100)
 		switch(percent)
 			if(95 to 101)
-				. += "It looks quite healthy."
+				to_chat(user, "It looks quite healthy.")
 			if(75 to 94)
-				. += "It looks slightly injured."
+				to_chat(user, "It looks slightly injured.")
 			if(50 to 74)
-				. += "It looks injured."
+				to_chat(user, "It looks injured.")
 			if(25 to 49)
-				. += "It bleeds with sizzling wounds."
+				to_chat(user, "It bleeds with sizzling wounds.")
 			if(1 to 24)
-				. += "It is heavily injured and limping badly."
+				to_chat(user, "It is heavily injured and limping badly.")
 
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/xeno = user
 		if(hivenumber != xeno.hivenumber)
-			. += "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive."
+			to_chat(user, "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive.")
 
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
-			. += "It has specialized into a [mutation_type]."
+			to_chat(user, "It has specialized into a [mutation_type].")
 
 	if(iff_tag)
-		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
+		to_chat(user, SPAN_NOTICE("It has an IFF tag sticking out of its carapace."))
+
+	return
 
 /mob/living/carbon/Xenomorph/Destroy()
 	GLOB.living_xeno_list -= src

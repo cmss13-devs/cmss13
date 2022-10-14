@@ -204,9 +204,9 @@
 	implant_type = /obj/item/device/internal_implant/agility
 	implant_string = "your heartrate increasing significantly and your pupils dilating."
 
-/obj/item/device/implanter/agility/get_examine_text(user)
-	. = ..()
-	. += SPAN_NOTICE("To fireman carry someone, aggresive-grab them and drag their sprite to yours.")
+/obj/item/device/implanter/agility/examine(user)
+	..()
+	to_chat(user, SPAN_NOTICE("To fireman carry someone, aggresive-grab them and drag their sprite to yours."))
 
 /obj/item/device/internal_implant/agility
 	var/move_delay_mult  = 0.94

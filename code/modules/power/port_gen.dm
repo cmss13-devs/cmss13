@@ -32,7 +32,7 @@ tank [un]loading stuff
 /obj/structure/machinery/power/port_gen/attack_hand(mob/user)
 turn on/off
 
-/obj/structure/machinery/power/port_gen/get_examine_text(mob/user)
+/obj/structure/machinery/power/port_gen/examine(mob/user)
 display round(lastgen) and phorontank amount
 
 */
@@ -95,12 +95,12 @@ display round(lastgen) and phorontank amount
 	if(!anchored)
 		return
 
-/obj/structure/machinery/power/port_gen/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/machinery/power/port_gen/examine(mob/user)
+	..()
 	if(active)
-		. += SPAN_NOTICE("The generator is on.")
+		to_chat(user, SPAN_NOTICE(" The generator is on."))
 	else
-		. += SPAN_NOTICE("The generator is off.")
+		to_chat(user, SPAN_NOTICE(" The generator is off."))
 
 //A power generator that runs on solid plasma sheets.
 /obj/structure/machinery/power/port_gen/pacman
@@ -147,10 +147,10 @@ display round(lastgen) and phorontank amount
 	reliability = min(round(temp_reliability / 4), 100)
 	power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
 
-/obj/structure/machinery/power/port_gen/pacman/get_examine_text(mob/user)
-	. = ..()
-	. += SPAN_NOTICE(" The generator has [sheets] units of [sheet_name] fuel left, producing [power_gen] per cycle.")
-	if(crit_fail) . += SPAN_DANGER("The generator seems to have broken down.")
+/obj/structure/machinery/power/port_gen/pacman/examine(mob/user)
+	..()
+	to_chat(user, SPAN_NOTICE(" The generator has [sheets] units of [sheet_name] fuel left, producing [power_gen] per cycle."))
+	if(crit_fail) to_chat(user, SPAN_DANGER("The generator seems to have broken down."))
 
 /obj/structure/machinery/power/port_gen/pacman/HasFuel()
 	if(sheets >= 1 / (time_per_sheet / power_output) - sheet_left)

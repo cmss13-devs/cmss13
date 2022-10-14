@@ -50,14 +50,13 @@
 	else
 		w_class = SIZE_SMALL
 
-/obj/item/stack/cable_coil/get_examine_text(mob/user)
-	. = list()
+/obj/item/stack/cable_coil/examine(mob/user)
 	if(amount == 1)
-		. += "A short piece of power cable."
+		to_chat(user, "A short piece of power cable.")
 	else if(amount == 2)
-		. += "A piece of power cable."
+		to_chat(user, "A piece of power cable.")
 	else
-		. += "A coil of power cable. There are [amount] lengths of cable in the coil."
+		to_chat(user, "A coil of power cable. There are [amount] lengths of cable in the coil.")
 
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"

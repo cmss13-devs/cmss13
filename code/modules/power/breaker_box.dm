@@ -26,12 +26,12 @@
 	. = ..()
 	set_state(1)
 
-/obj/structure/machinery/power/breakerbox/get_examine_text(mob/user)
-	. = list("Large machine with heavy duty switching circuits used for advanced grid control")
+/obj/structure/machinery/power/breakerbox/examine(mob/user)
+	to_chat(user, "Large machine with heavy duty switching circuits used for advanced grid control")
 	if(on)
-		. += SPAN_XENOWARNING("It seems to be online.")
+		to_chat(user, SPAN_XENOWARNING(" It seems to be online."))
 	else
-		. += SPAN_DANGER("It seems to be offline")
+		to_chat(user, SPAN_DANGER("It seems to be offline"))
 
 /obj/structure/machinery/power/breakerbox/attack_remote(mob/user)
 	if(busy)

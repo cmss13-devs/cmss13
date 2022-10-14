@@ -30,15 +30,15 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
-/obj/structure/reagent_dispensers/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/reagent_dispensers/examine(mob/user)
+	..()
 	if(get_dist(user, src) > 2 && user != loc) return
-	. += SPAN_NOTICE("It contains:")
+	to_chat(user, SPAN_NOTICE(" It contains:"))
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
-			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
+			to_chat(user, SPAN_NOTICE(" [R.volume] units of [R.name]"))
 	else
-		. += SPAN_NOTICE(" Nothing.")
+		to_chat(user, SPAN_NOTICE(" Nothing."))
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
@@ -184,16 +184,15 @@
 	var/reinforced = FALSE
 	var/datum/weakref/source_mob
 
-/obj/structure/reagent_dispensers/fueltank/get_examine_text(mob/user)
-	. = ..()
-	if(user != loc)
-		return
+/obj/structure/reagent_dispensers/fueltank/examine(mob/user)
+	..()
+	if(user != loc) return
 	if(modded)
-		. += SPAN_DANGER("The fuel faucet is wrenched open, leaking the fuel!")
+		to_chat(user, SPAN_DANGER("Fuel faucet is wrenched open, leaking the fuel!"))
 	if(rig)
-		. += SPAN_NOTICE("There is some kind of device rigged to the tank.")
+		to_chat(user, SPAN_NOTICE("There is some kind of device rigged to the tank."))
 	if(reinforced)
-		. += SPAN_NOTICE("It seems to be reinforced with metal shielding.")
+		to_chat(user, SPAN_NOTICE("It seems to be reinforced with metal shielding."))
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand()
 	if(rig)

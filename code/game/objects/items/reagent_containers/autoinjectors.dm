@@ -49,12 +49,12 @@
 	else
 		maptext = ""
 
-/obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
-	. = ..()
+/obj/item/reagent_container/hypospray/autoinjector/examine(mob/user)
+	..()
 	if(uses_left)
-		. += SPAN_NOTICE("It is currently loaded with [uses_left].")
+		to_chat(user, SPAN_NOTICE("It is currently loaded with [uses_left]."))
 	else
-		. += SPAN_NOTICE("It is empty.")
+		to_chat(user, SPAN_NOTICE("It is empty."))
 
 /obj/item/reagent_container/hypospray/autoinjector/equipped()
 	..()
@@ -258,14 +258,14 @@
 /obj/item/reagent_container/hypospray/autoinjector/skillless/attackby()
 	return
 
-/obj/item/reagent_container/hypospray/autoinjector/skillless/get_examine_text(mob/user)
-	. = ..()
+/obj/item/reagent_container/hypospray/autoinjector/skillless/examine(mob/user)
+	..()
 	if(reagents && reagents.reagent_list.len)
-		. += SPAN_NOTICE("It is currently loaded.")
+		to_chat(user, SPAN_NOTICE("It is currently loaded."))
 	else if(!uses_left)
-		. += SPAN_NOTICE("It is spent.")
+		to_chat(user, SPAN_NOTICE("It is spent."))
 	else
-		. += SPAN_NOTICE("It is empty.")
+		to_chat(user, SPAN_NOTICE("It is empty."))
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
 	name = "pain-stop autoinjector"
@@ -283,9 +283,9 @@
 	uses_left = 0
 	display_maptext = TRUE
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/get_examine_text(mob/user)
-	. = ..()
-	. += SPAN_NOTICE("It transfers [amount_per_transfer_from_this]u per injection and has a maximum of [volume/amount_per_transfer_from_this] injections.")
+/obj/item/reagent_container/hypospray/autoinjector/empty/examine(mob/user)
+	..()
+	to_chat(user, SPAN_NOTICE("It transfers [amount_per_transfer_from_this]u per injection and has a maximum of [volume/amount_per_transfer_from_this] injections."))
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/update_icon()
 	overlays.Cut()

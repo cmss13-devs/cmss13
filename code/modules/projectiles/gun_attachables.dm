@@ -212,9 +212,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/unique_action(mob/user)
 	return
 
-///Returns TRUE if its functionality is successfully used, FALSE if gun's own unloading should proceed instead.
 /obj/item/attachable/proc/unload_attachment(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
-	return FALSE
+	return
 
 /obj/item/attachable/proc/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/user) //For actually shooting those guns.
 	SHOULD_CALL_PARENT(TRUE)
@@ -1810,10 +1809,10 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
 	loaded_grenades = list()
 
-/obj/item/attachable/attached_gun/grenade/get_examine_text(mob/user)
-	. = ..()
-	if(current_rounds) 	. += "It has [current_rounds] grenade\s left."
-	else 				. += "It's empty."
+/obj/item/attachable/attached_gun/grenade/examine(mob/user)
+	..()
+	if(current_rounds) 	to_chat(user, "It has [current_rounds] grenade\s left.")
+	else 				to_chat(user, "It's empty.")
 
 /obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
 	if(!ishuman(usr))
@@ -1878,7 +1877,6 @@ Defined in conflicts.dm of the #defines folder.
 			user.drop_inv_item_to_loc(G, src)
 
 /obj/item/attachable/attached_gun/grenade/unload_attachment(mob/user, reload_override = FALSE, drop_override = FALSE, loc_override = FALSE)
-	. = TRUE //Always uses special unloading.
 	if(!breech_open)
 		to_chat(user, SPAN_WARNING("\The [src] is closed! You must open it to take out grenades!"))
 		return
@@ -1975,10 +1973,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	attachment_firing_delay = FIRE_DELAY_TIER_4 * 5
 
-/obj/item/attachable/attached_gun/flamer/get_examine_text(mob/user)
-	. = ..()
-	if(current_rounds > 0) . += "It has [current_rounds] unit\s of fuel left."
-	else . += "It's empty."
+/obj/item/attachable/attached_gun/flamer/examine(mob/user)
+	..()
+	if(current_rounds > 0) to_chat(user, "It has [current_rounds] unit\s of fuel left.")
+	else to_chat(user, "It's empty.")
 
 /obj/item/attachable/attached_gun/flamer/reload_attachment(obj/item/ammo_magazine/flamer_tank/FT, mob/user)
 	if(istype(FT))
@@ -2084,10 +2082,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	attachment_firing_delay = FIRE_DELAY_TIER_5*3
 
-/obj/item/attachable/attached_gun/shotgun/get_examine_text(mob/user)
-	. = ..()
-	if(current_rounds > 0) 	. += "It has [current_rounds] shell\s left."
-	else 					. += "It's empty."
+/obj/item/attachable/attached_gun/shotgun/examine(mob/user)
+	..()
+	if(current_rounds > 0) 	to_chat(user, "It has [current_rounds] shell\s left.")
+	else 					to_chat(user, "It's empty.")
 
 /obj/item/attachable/attached_gun/shotgun/set_bullet_traits()
 	LAZYADD(traits_to_give_attached, list(
@@ -2124,12 +2122,12 @@ Defined in conflicts.dm of the #defines folder.
 	var/obj/item/tool/extinguisher/internal_extinguisher
 	current_rounds = 1 //This has to be done to pass the fire_attachment check.
 
-/obj/item/attachable/attached_gun/extinguisher/get_examine_text(mob/user)
-	. = ..()
+/obj/item/attachable/attached_gun/extinguisher/examine(mob/user)
+	..()
 	if(internal_extinguisher)
-		. += SPAN_NOTICE("It has [internal_extinguisher.reagents.total_volume] unit\s of water left!")
+		to_chat(user, SPAN_NOTICE("It has [internal_extinguisher.reagents.total_volume] unit\s of water left!"))
 		return
-	. += SPAN_WARNING("It's empty.")
+	to_chat(user, SPAN_WARNING("It's empty."))
 
 /obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(var/slot)
 	return "It has a [icon2html(src)] [name] ([internal_extinguisher.reagents.total_volume]/[internal_extinguisher.max_water]) mounted underneath.<br>"

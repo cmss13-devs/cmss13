@@ -81,7 +81,7 @@
 		if(I.flags_item & WIELDED)
 			return ..()
 		if(locate(/mob/living) in loc)
-			to_chat(user, SPAN_NOTICE("There's someone in the way!"))
+			to_chat(user, SPAN_NOTICE("There's someone is in the way!"))
 			return FALSE
 		user.drop_inv_item_to_loc(I, src)
 		stacked_size++

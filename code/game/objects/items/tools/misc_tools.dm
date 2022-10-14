@@ -37,7 +37,7 @@
 	if(length(A.name) + length(label) > 64)
 		to_chat(user, SPAN_NOTICE("Label too big."))
 		return
-	if(isliving(A) || istype(A, /obj/item/holder))
+	if(isliving(A))
 		to_chat(user, SPAN_NOTICE("You can't label living beings."))
 		return
 	if((istype(A, /obj/item/reagent_container/glass)) && (!(istype(A, /obj/item/reagent_container/glass/minitank))))
@@ -129,10 +129,10 @@
     Instead of updating labels_left to user every label used,
     Have the user examine it to show them.
 */
-/obj/item/tool/hand_labeler/get_examine_text(mob/user)
+/obj/item/tool/hand_labeler/examine(mob/user)
     . = ..()
-    . += SPAN_NOTICE("It has [labels_left] out of [initial(labels_left)] labels left.")
-    . += SPAN_HELPFUL("Use paper to refill it.")
+    to_chat(user, SPAN_NOTICE("It has [labels_left] out of [initial(labels_left)] labels left."))
+    to_chat(user, SPAN_HELPFUL("Use paper to refill it."))
 
 
 /*

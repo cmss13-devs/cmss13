@@ -734,7 +734,7 @@
 		H.corgize()
 
 	else if(href_list["forcespeech"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_FUN))	return
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
@@ -848,7 +848,7 @@
 		H.faction = hive.internal_faction
 
 	else if(href_list["forceemote"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_FUN))	return
 
 		var/mob/M = locate(href_list["forceemote"])
 		if(!ismob(M))
@@ -884,7 +884,7 @@
 		qdel(M)
 
 	else if(href_list["tdome1"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_FUN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -908,7 +908,7 @@
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
 	else if(href_list["tdome2"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_FUN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -932,7 +932,7 @@
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
 	else if(href_list["tdomeadmin"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_FUN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -953,7 +953,7 @@
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
 	else if(href_list["tdomeobserve"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_FUN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -1627,7 +1627,7 @@
 		create_xenos_list(href_list)
 
 	else if(href_list["events"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_FUN))
 			return
 
 		topic_events(href_list["events"])

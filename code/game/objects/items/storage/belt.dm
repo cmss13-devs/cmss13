@@ -177,9 +177,9 @@
 	new	/obj/item/tool/surgery/surgical_line(src)
 	new	/obj/item/tool/surgery/synthgraft(src)
 
-/obj/item/storage/belt/medical/get_examine_text()
-	. = ..()
-	. += SPAN_NOTICE("The belt is currently set to [mode ? "take pills directly from bottles": "NOT take pills directly from bottles"].")
+/obj/item/storage/belt/medical/examine()
+	..()
+	to_chat(usr, SPAN_NOTICE("The belt is currently set to [mode ? "take pills directly from bottles": "NOT take pills directly from bottles"]."))
 
 /obj/item/storage/belt/medical/lifesaver
 	name = "\improper M276 pattern lifesaver bag"

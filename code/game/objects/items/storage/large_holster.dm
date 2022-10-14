@@ -322,17 +322,17 @@
 		active_fuel = new_fuel
 
 
-/obj/item/storage/large_holster/fuelpack/get_examine_text(mob/user)
-	. = ..()
+/obj/item/storage/large_holster/fuelpack/examine(mob/user)
+	..()
 	if(contents.len)
-		. += "It is storing \a M240-T incinerator unit."
+		to_chat(user, "It is storing \a M240-T incinerator unit.")
 	if (get_dist(user, src) <= 1)
 		if(fuel)
-			. += "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel."
+			to_chat(user, "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel.")
 		if(fuelB)
-			. += "The [fuelB.caliber] currently contains: [round(fuelB.get_ammo_percent())]% fuel."
+			to_chat(user, "The [fuelB.caliber] currently contains: [round(fuelB.get_ammo_percent())]% fuel.")
 		if(fuelX)
-			. += "The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel."
+			to_chat(user, "The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel.")
 
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1

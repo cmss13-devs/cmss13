@@ -22,12 +22,12 @@
 	mybucket = new(src)
 	update_icon()
 
-/obj/structure/janitorialcart/get_examine_text(mob/user)
-	. = ..()
+/obj/structure/janitorialcart/examine(mob/user)
+	..()
 	if(mybucket)
-		. += "Its bucket contains [mybucket.reagents.total_volume] unit\s of liquid."
+		to_chat(user, "Its bucket contains [mybucket.reagents.total_volume] unit\s of liquid.")
 	else
-		. += "It has no bucket."
+		to_chat(user, "It has no bucket.")
 
 
 /obj/structure/janitorialcart/attackby(obj/item/I, mob/user)

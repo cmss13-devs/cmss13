@@ -590,12 +590,12 @@
 			if(2)
 				true_desc += SPAN_BLUE("\nThis fine trophy was taken by [user.real_name] after a successful hunt.")
 
-/obj/item/scalp/get_examine_text(mob/user)
-	. = ..()
+/obj/item/scalp/examine(mob/user)
+	..()
 	if(isYautja(user) || isobserver(user))
-		. += true_desc
+		to_chat(user, true_desc)
 	else
-		. += SPAN_WARNING("Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
+		to_chat(user, SPAN_WARNING("Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ."))
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound
 	name = "hellhound caller"

@@ -275,7 +275,6 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction/queen_macro, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
@@ -307,7 +306,6 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction/queen_macro, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
@@ -548,7 +546,7 @@
 		return FALSE
 	if(!check_plasma(50))
 		return FALSE
-
+	
 	// Get a reference to the ability to utilize cooldowns
 	var/datum/action/xeno_action/onclick/queen_word/word_ability
 	for(var/datum/action/xeno_action/action in actions)
@@ -557,7 +555,7 @@
 			if(!word_ability.action_cooldown_check())
 				return FALSE
 			break
-
+	
 	var/input = stripped_multiline_input(src, "This message will be broadcast throughout the hive.", "Word of the Queen", "")
 	if(!input)
 		return FALSE

@@ -12,9 +12,9 @@
 	. = ..()
 	convert_map = get_convert_map()
 
-/obj/item/ammo_kit/get_examine_text(mob/user)
+/obj/item/ammo_kit/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("It has [uses] uses remaining.")
+	to_chat(user, SPAN_NOTICE("It has [uses] uses remaining."))
 
 /obj/item/ammo_kit/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
 	if(!(target.type in convert_map))

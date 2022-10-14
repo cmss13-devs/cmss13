@@ -38,11 +38,11 @@
 
 
 
-/obj/item/tool/shovel/get_examine_text(mob/user)
-	. = ..()
+/obj/item/tool/shovel/examine(mob/user)
+	..()
 	if(dirt_amt)
 		var/dirt_name = dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"
-		. += "It holds [dirt_amt] layer\s of [dirt_name]."
+		to_chat(user, "It holds [dirt_amt] layer\s of [dirt_name].")
 
 /obj/item/tool/shovel/attack_self(mob/user)
 	..()
@@ -121,7 +121,7 @@
 				if(SB.amount < 0) // check if sandbag is used by someone else
 					SB = null
 					continue
-
+					
 				if(dirt_amt <= 0) // check if the user has already used all the dirt
 					continue
 

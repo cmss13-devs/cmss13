@@ -1,0 +1,74 @@
+<style>
+    body {
+        background-color: "#272727";
+        min-height: 100vh;
+        color: "#FFFFFF";
+    }
+
+	.container {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: space-between;
+	}
+
+    p {
+        margin: 3px;
+    }
+
+	h3 {
+		color: white;
+	}
+
+	ul {
+		list-style-type: none;
+	}
+    
+    .border {
+        border-style: solid;
+        border-color: white;
+		border-width: thin;
+    }
+    
+    .menu {
+        flex-grow: 2;
+		display: flex;
+		flex-wrap: wrap;
+		align-content: space-between;
+    }
+
+</style>
+{{:helper.basicBackground()}}
+<div class="container">
+	<div class="menu">
+		<div>
+			<br> 
+			{{if data.mode == 0 }}
+				MODE: SPLIT
+			{{else}}
+				{{if data.mode == 1}}
+					MODE: DISTRIBUTE
+				{{/if}}
+			{{/if}}
+			<br>
+			{{if data.input_source == 1 }}
+				INPUT: CONTAINER
+			{{else}}
+				{{if data.input_source == 2}}
+					INPUT: TURING
+				{{/if}}
+			{{/if}}
+			<br>
+			{{if data.label}}
+				AUTOLABEL: "{{:data.label}}"
+			{{else}}
+				AUTOLABEL: N/A
+			{{/if}}
+			<br>
+			<br>
+			{{:helper.link("TOGGLE MODE", 'gear', {'togglemode' : 1})}}
+			{{:helper.link("TOGGLE INPUT", 'gear', {'togglesource' : 1})}}
+			{{:helper.link("SET AUTOLABEL", 'gear', {'setlabel' : 1})}}
+		</div>
+	</div>
+</div>

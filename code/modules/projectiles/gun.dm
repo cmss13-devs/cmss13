@@ -497,8 +497,8 @@
 	update_mag_overlay()
 	update_attachables()
 
-/obj/item/weapon/gun/get_examine_text(mob/user)
-	. = ..()
+/obj/item/weapon/gun/examine(mob/user)
+	..()
 	var/dat = ""
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		dat += "The safety's on!<br>"
@@ -516,10 +516,10 @@
 			else 								dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
 		else 									dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
-		dat += "<a href='?src=\ref[src];list_stats=1'>\[See combat statistics]</a>"
+		dat += "[icon2html(src)] <a href='?src=\ref[src];list_stats=1'>\[See combat statistics]</a><br>"
 
 	if(dat)
-		. += dat
+		to_chat(user, dat)
 
 /obj/item/weapon/gun/Topic(href, href_list)
 	. = ..()

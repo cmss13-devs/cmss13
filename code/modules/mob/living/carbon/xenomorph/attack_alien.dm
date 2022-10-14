@@ -727,14 +727,14 @@
 		to_chat(alien, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
+	var destroyloc = loc
 	alien.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(rand(alien.melee_damage_lower, alien.melee_damage_upper))
 	if(health <= 0)
 		alien.visible_message(SPAN_DANGER("[alien] slices \the [src] apart!"), \
 		SPAN_DANGER("You slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		if(!unacidable)
-			qdel(src)
+		new /obj/item/stack/sheet/metal(destroyloc, 2)
 	else
 		alien.visible_message(SPAN_DANGER("[alien] [alien.slashes_verb] \the [src]!"), \
 		SPAN_DANGER("You [alien.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)

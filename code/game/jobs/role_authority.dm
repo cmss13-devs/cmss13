@@ -844,10 +844,10 @@ var/global/players_preassigned = 0
 /datum/authority/branch/role/proc/check_squad_capacity(var/mob/living/carbon/human/transfer_marine, var/datum/squad/new_squad)
 	switch(transfer_marine.job)
 		if(JOB_SQUAD_LEADER)
-			if(new_squad.num_leaders == new_squad.max_leaders)
+			if(new_squad.num_leaders >= new_squad.max_leaders)
 				return TRUE
 		if(JOB_SQUAD_SPECIALIST)
-			if(new_squad.num_specialists == new_squad.max_specialists)
+			if(new_squad.num_specialists >= new_squad.max_specialists)
 				return TRUE
 		if(JOB_SQUAD_ENGI)
 			if(new_squad.num_engineers >= new_squad.max_engineers)
@@ -856,8 +856,9 @@ var/global/players_preassigned = 0
 			if(new_squad.num_medics >= new_squad.max_medics)
 				return TRUE
 		if(JOB_SQUAD_SMARTGUN)
-			if(new_squad.num_smartgun == new_squad.max_smartgun)
+			if(new_squad.num_smartgun >= new_squad.max_smartgun)
 				return TRUE
 		if(JOB_SQUAD_RTO)
 			if(new_squad.num_rto >= new_squad.max_rto)
 				return TRUE
+	return FALSE

@@ -160,7 +160,7 @@
 			emote_cooldown = world.time + 5 SECONDS
 		addtimer(CALLBACK(src, .proc/lifesteal_lock), lifesteal_lock_duration/2)
 
-	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 17, 40))
+	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 20, 40))
 
 /datum/behavior_delegate/warrior_base/proc/lifesteal_lock()
 	bound_xeno.remove_filter("empower_rage")

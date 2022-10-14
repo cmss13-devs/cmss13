@@ -6,8 +6,8 @@
 //Used to swap which module a position is using
 //e.g. swapping primary gunner from the minigun to the smoke launcher
 /obj/vehicle/multitile/proc/switch_hardpoint()
-	set name = "Change Active Hardpoint"
-	set category = "Vehicle"
+	set name = "Select Module"
+	set category = "Vehicle.Modules"
 
 	var/mob/M = usr
 	if(!M || !istype(M))
@@ -38,8 +38,8 @@
 
 //cycles through hardpoints in a activatable hardpoints list without asking anything
 /obj/vehicle/multitile/proc/cycle_hardpoint()
-	set name = "Cycle Active Hardpoint"
-	set category = "Vehicle"
+	set name = "Cycle Modules"
+	set category = "Vehicle.Modules"
 
 	var/mob/M = usr
 	if(!M || !istype(M))
@@ -75,7 +75,7 @@
 // Used to lock/unlock the vehicle doors to anyone without proper access
 /obj/vehicle/multitile/proc/toggle_door_lock()
 	set name = "Toggle Door Locks"
-	set category = "Vehicle"
+	set category = "Vehicle.General"
 
 	var/mob/M = usr
 	if(!M || !istype(M))
@@ -98,7 +98,7 @@
 /obj/vehicle/multitile/proc/toggle_shift_click()
 	set name = "Toggle Middle/Shift Clicking"
 	set desc = "Toggles between using Middle Mouse Button click and Shift + Click to fire not currently selected weapon if possible."
-	set category = "Vehicle"
+	set category = "Vehicle.General"
 
 	var/obj/vehicle/multitile/V = usr.interactee
 	if(!istype(V))
@@ -117,7 +117,7 @@
 /obj/vehicle/multitile/proc/get_status_info()
 	set name = "Get Status Info"
 	set desc = "Displays all available information about your vehicle in a small window."
-	set category = "Vehicle"
+	set category = "Vehicle.General"
 
 	var/mob/user = usr
 	if(!istype(user))
@@ -182,7 +182,7 @@
 /obj/vehicle/multitile/proc/open_controls_guide()
 	set name = "Vehicle Controls Guide"
 	set desc = "MANDATORY FOR FIRST PLAY AS VEHICLE CREWMAN OR AFTER UPDATES."
-	set category = "Vehicle"
+	set category = "Vehicle.General"
 
 	var/mob/user = usr
 	if(!istype(user))
@@ -223,7 +223,7 @@
 /obj/vehicle/multitile/proc/toggle_gyrostabilizer()
 	set name = "Toggle Turret Gyrostabilizer"
 	set desc = "Toggles Turret Gyrostabilizer allowing it independent movement regardless of hull direction."
-	set category = "Vehicle"
+	set category = "Vehicle.General"
 
 	var/mob/M = usr
 	if(!M || !istype(M))
@@ -245,7 +245,7 @@
 /obj/vehicle/multitile/proc/name_vehicle()
 	set name = "Name Vehicle"
 	set desc = "Allows you to add a custom name to your vehicle. Single use. 26 characters maximum."
-	set category = "Vehicle"
+	set category = "Vehicle.General"
 
 	var/mob/user = usr
 	if(!istype(user))
@@ -297,7 +297,7 @@
 /obj/vehicle/multitile/proc/activate_horn()
 	set name = "Activate Horn"
 	set desc = "Activates vehicle signal. Beep-beep."
-	set category = "Vehicle"
+	set category = "Vehicle.General"
 
 	var/mob/user = usr
 	if(!istype(user))
@@ -327,12 +327,91 @@
 	if(honk_sound)
 		playsound(loc, honk_sound, 75, TRUE, 15)	//heard within ~15 tiles
 
+//Finally, a broadcaster!
+/obj/vehicle/multitile/proc/use_broadcaster()
+	set name = "Use Broadcaster"
+	set desc = "Allows to send a loud message to the exterior via hull broadcaster."
+	set category = "Vehicle.General"
+
+	var/mob/living/user = usr
+	if(!istype(user))
+		return
+
+	var/obj/vehicle/multitile/V = user.interactee
+	if(!istype(V))
+		return
+
+	var/seat
+	for(var/vehicle_seat in V.seats)
+		if(V.seats[vehicle_seat] == user)
+			seat = vehicle_seat
+			break
+	if(!seat)
+		return
+
+	if(user.client)
+		if(user.client.prefs.muted & MUTE_IC)
+			to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
+			return
+	if(user.silent)
+		return
+
+	if(V.health < initial(V.health) * 0.5)
+		to_chat(user, SPAN_WARNING("\The [V]'s hull is too damaged to operate!"))
+
+	if(!V.broadcaster_available)
+		to_chat(user, SPAN_DANGER("Broadcaster was recently used. Wait a bit!"))
+		return
+
+	var/message = strip_html(input(user, "Enter a message to broadcast", "Vehicle broadcaster", null)  as text)
+	if(!message)
+		return
+
+	if(!V.broadcaster_available)
+		to_chat(user, SPAN_DANGER("Broadcaster was recently used. Wait a bit!"))
+		return
+
+	if(V.health < initial(V.health) * 0.5)
+		to_chat(user, SPAN_WARNING("\The [V]'s hull is too damaged to operate!"))
+
+	if(user.interactee != V)
+		return
+
+	//we simulate actually speaking into microphone, so those in interior can also hear it.
+	user.say(message)
+
+	//then we capitalize and proceed with bradcasting part
+	message = capitalize(message)
+
+	log_admin("[key_name(user)] used \a [V]'s broadcaster to say: >[message]<")
+
+	//remove before finishing, this is for testing
+	for(var/i=1,i<5,i++)
+		sleep (1 SECONDS)
+
+	if(user.stat == CONSCIOUS)
+		var/list/mob/living/carbon/human/recipients = viewers(8, V) // slow but we need it
+		for(var/mob/living/carbon/human/O in recipients)
+			if(O.species && O.species.name == "Yautja") //NOPE
+				O.show_message("\The [V] broadcasts something, but you can't understand it.")
+				continue
+			O.show_message("\The <B>[V]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]",2) // 2 stands for hearable message
+
+		for(seat in V.seats)
+			if(ishuman(V.seats[seat]))
+				recipients += V.seats[seat]
+
+		user.langchat_vehicle_broadcast(message, recipients, user.get_default_language(), V)
+
+		V.broadcaster_available = FALSE
+		addtimer(VARSET_CALLBACK(V, broadcaster_available, TRUE), 5 SECONDS)
+
 //Support gunner verbs
 
 /obj/vehicle/multitile/proc/reload_firing_port_weapon()
 	set name = "Reload Firing Port Weapon"
 	set desc = "Initiates firing port weapon automated reload process."
-	set category = "Vehicle"
+	set category = "Vehicle.Modules"
 
 	var/mob/user = usr
 	if(!user || !istype(user))
@@ -361,3 +440,4 @@
 			return
 
 	to_chat(user, SPAN_WARNING("Warning. No FPW for [seat] found, tell a dev!"))
+

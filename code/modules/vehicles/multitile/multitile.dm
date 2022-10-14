@@ -30,6 +30,9 @@
 	var/honk_sound = 'sound/vehicles/honk_4_light.ogg'
 	var/next_honk = 0	//to prevent spamming
 
+	//broadcaster
+	var/broadcaster_available = TRUE
+
 	// List of verbs to give when a mob is seated in each seat type
 	var/list/seat_verbs
 

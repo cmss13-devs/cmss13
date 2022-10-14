@@ -105,6 +105,7 @@
 		/obj/vehicle/multitile/proc/get_status_info,
 		/obj/vehicle/multitile/proc/open_controls_guide,
 		/obj/vehicle/multitile/proc/name_vehicle,
+		/obj/vehicle/multitile/proc/use_broadcaster,
 	))
 	if(seat == VEHICLE_DRIVER)
 		add_verb(M.client, list(
@@ -127,6 +128,7 @@
 		/obj/vehicle/multitile/proc/open_controls_guide,
 		/obj/vehicle/multitile/proc/name_vehicle,
 		/obj/vehicle/multitile/proc/switch_hardpoint,
+		/obj/vehicle/multitile/proc/use_broadcaster,
 	))
 	if(seat == VEHICLE_DRIVER)
 		remove_verb(M.client, list(

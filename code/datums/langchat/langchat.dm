@@ -151,6 +151,48 @@
 	else
 		addtimer(CALLBACK(src, /atom.proc/langchat_drop_image, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
+//used for broadcasting from a vehicle
+/mob/proc/langchat_vehicle_broadcast(message, var/list/listeners, language, var/obj/vehicle/multitile/V)
+
+	//uncomment before finishing
+	//if(!V || interactee != V)
+	//	return
+
+	langchat_drop_image()
+	langchat_make_image()
+
+	var/text_left = null
+	var/text_to_display = message
+
+	if(length(message) > LANGCHAT_LONGEST_TEXT)
+		text_to_display = copytext_char(message, 1, LANGCHAT_LONGEST_TEXT - 5) + "..."
+		text_left = "..." + copytext_char(message, LANGCHAT_LONGEST_TEXT - 5)
+	var/timer = 6 SECONDS
+	if(text_left)
+		timer = 4 SECONDS
+	text_to_display = "<span class='center [langchat_styles] langchat_announce langchat'>[text_to_display]</span>"
+
+	langchat_image.maptext = text_to_display
+	langchat_image.maptext_width = LANGCHAT_WIDTH * 2
+
+	langchat_listeners = listeners
+	for(var/mob/M in langchat_listeners)
+		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
+			M.client.images += langchat_image
+
+	//uncomment before finishing
+	//if(!isVehicleMultitile(interactee))
+	//	return
+
+	langchat_image.loc = interactee
+	langchat_image.maptext_y += 32
+
+	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
+	if(text_left)
+		addtimer(CALLBACK(src, /mob.proc/langchat_long_speech, text_left, listeners, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	else
+		addtimer(CALLBACK(src, /mob.proc/langchat_drop_image, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+
 /** Displays image to a single listener after it was built above eg. for chaining different game logic than speech code
 This does just that, doesn't check deafness or language! Do what you will in that regard **/
 /atom/proc/langchat_display_image(var/mob/M)

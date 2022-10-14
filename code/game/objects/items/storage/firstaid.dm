@@ -192,7 +192,7 @@
 
 /obj/item/storage/syringe_case
 	name = "syringe case"
-	desc = "It's an medical case for storing syringes and bottles."
+	desc = "It's a medical case for storing syringes and bottles."
 	icon_state = "syringe_case"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -656,10 +656,10 @@ obj/item/storage/pill_bottle/packet
 	desc = "This packet contains Tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 
-/obj/item/storage/pill_bottle/packet/bicardine
-    name = "Bicardine pill packet"
+/obj/item/storage/pill_bottle/packet/bicaridine
+    name = "Bicaridine pill packet"
     icon_state = "bicardine_packet"
-    desc = "This packet contains Bicardine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+    desc = "This packet contains Bicaridine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
     pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 
 /obj/item/storage/pill_bottle/packet/kelotane

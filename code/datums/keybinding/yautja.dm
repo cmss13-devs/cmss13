@@ -280,7 +280,7 @@
 	hotkey_keys = list()
 	classic_keys = list()
 	name = "activate_suicide"
-	full_name = "Self destruct"
+	full_name = "Self-destruct"
 	keybind_signal = COMSIG_KB_YAUTJA_ACTIVATE_SUICIDE
 
 /datum/keybinding/yautja/bracer_hunter/activate_suicide/down(client/user)

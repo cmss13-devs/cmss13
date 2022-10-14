@@ -869,6 +869,10 @@ cases. Override_icon_state should be a list.*/
 	if(!istype(loc, /turf))
 		return
 	var/image/pickup_animation = image(icon = src, loc = loc, layer = layer + 0.1)
+	var/animation_alpha = 175
+	if(target.alpha < 175)
+		animation_alpha = target.alpha
+	pickup_animation.alpha = animation_alpha
 	pickup_animation.plane = GAME_PLANE
 	pickup_animation.transform.Scale(0.75)
 	pickup_animation.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
@@ -890,13 +894,17 @@ cases. Override_icon_state should be a list.*/
 		to_y += 10
 		pickup_animation.pixel_x += 6 * (prob(50) ? 1 : -1) //6 to the right or left, helps break up the straight upward move
 
-	flick_overlay_to_clients(pickup_animation, GLOB.clients, 4)
-	//flick_overlay(viewers(7, src), pickup_animation, 4)
+	var/list/viewers_clients = list()
+	for(var/mob/M as anything in viewers(7, src))
+		if(M.client)
+			viewers_clients += M.client
+
+	flick_overlay_to_clients(pickup_animation, viewers_clients, 4)
 	var/matrix/animation_matrix = new(pickup_animation.transform)
 	animation_matrix.Turn(pick(-30, 30))
 	animation_matrix.Scale(0.65)
 
-	animate(pickup_animation, alpha = 175, pixel_x = to_x, pixel_y = to_y, time = 3, transform = animation_matrix, easing = CUBIC_EASING)
+	animate(pickup_animation, alpha = animation_alpha, pixel_x = to_x, pixel_y = to_y, time = 3, transform = animation_matrix, easing = CUBIC_EASING)
 	animate(alpha = 0, transform = matrix().Scale(0.7), time = 1)
 
 /obj/item/proc/do_drop_animation(atom/moving_from)

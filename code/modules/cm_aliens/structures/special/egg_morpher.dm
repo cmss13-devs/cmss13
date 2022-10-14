@@ -66,7 +66,7 @@
 				return
 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
 				return
-			visible_message(SPAN_DANGER("\The [src] churns as it begins digest \the [M], spitting out foul smelling fumes!"))
+			visible_message(SPAN_DANGER("\The [src] churns as it begins digest \the [M], spitting out foul-smelling fumes!"))
 			playsound(src, "alien_drool", 25)
 			if(captured_mob)
 				//Get rid of what we have there, we're overwriting it

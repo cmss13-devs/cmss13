@@ -280,6 +280,7 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, admin_verbs_mod)
 	if(CLIENT_HAS_RIGHTS(src, R_ADMIN))
 		add_verb(src, admin_verbs_admin)
+		add_verb(src, admin_verbs_fun)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		add_verb(src, /client/proc/cmd_mentor_say)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
@@ -287,8 +288,6 @@ var/list/roundstart_mod_verbs = list(
 	if(CLIENT_HAS_RIGHTS(src, R_BAN))
 		add_verb(src, admin_verbs_ban)
 		add_verb(src, admin_verbs_teleport) // ???
-	if(CLIENT_HAS_RIGHTS(src, R_FUN))
-		add_verb(src, admin_verbs_fun)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
 		add_verb(src, admin_verbs_server)
 	if(CLIENT_HAS_RIGHTS(src, R_DEBUG))
@@ -435,7 +434,7 @@ var/list/roundstart_mod_verbs = list(
 	set name = "Edit Appearance"
 	set category = null
 
-	if(!check_rights(R_FUN))	return
+	if(!check_rights(R_ADMIN))	return
 
 	if(!istype(M, /mob/living/carbon/human))
 		to_chat(usr, SPAN_DANGER("You can only do this to humans!"))

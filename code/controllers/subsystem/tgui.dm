@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(tgui)
 /**
  * public
  *
- * Get a open UI given a user and src_object.
+ * Get an open UI given a user and src_object.
  *
  * required user mob The mob who opened/is using the UI.
  * required src_object datum The object/datum which owns the UI.

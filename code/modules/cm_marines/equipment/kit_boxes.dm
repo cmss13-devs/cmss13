@@ -142,7 +142,7 @@
 //maybe put in req for later use?
 /obj/item/storage/box/spec/B18
 	name = "\improper B18 heavy armor case"
-	desc = "A large case containing the experimental B18 armor platform. Handle with care, it's more expensive than all of Delta combined.\nDrag this sprite onto yourself to open it up!NOTE: You cannot put items back inside this case."
+	desc = "A large case containing the experimental B18 armor platform. Handle with care, it's more expensive than all of Delta combined.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "b18"
 
 /obj/item/storage/box/spec/B18/fill_preset_inventory()
@@ -503,7 +503,7 @@
 	new /obj/item/device/radio/headset/almayer/marine/mp_honor(src)
 	new /obj/item/storage/pill_bottle/packet/oxycodone(src)
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
-	new /obj/item/storage/pill_bottle/packet/bicardine(src)
+	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
 	new /obj/item/weapon/gun/shotgun/combat/guard(src)
 	new /obj/item/storage/pouch/general/large(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)

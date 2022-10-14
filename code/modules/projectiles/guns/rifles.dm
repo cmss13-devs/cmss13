@@ -910,7 +910,7 @@
 
 /obj/item/weapon/gun/rifle/lmg
 	name = "\improper M41AE2 heavy pulse rifle"
-	desc = "A large squad support weapon capable of laying down sustained supressing fire from a mounted position. While unstable and less accurate, it can be lugged and shot with two hands. Like it's smaller brothers, the M41A MK2 and L42 MK1, the M41AE2 is chambered in 10mm."
+	desc = "A large squad support weapon capable of laying down sustained suppressing fire from a mounted position. While unstable and less accurate, it can be lugged and shot with two hands. Like it's smaller brothers, the M41A MK2 and L42 MK1, the M41AE2 is chambered in 10mm."
 	icon_state = "m41ae2"
 	item_state = "m41ae2"
 
@@ -1146,7 +1146,7 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando
 	name = "\improper Type 71 'Commando' pulse carbine"
-	desc = "A much rarer variant of the Type 71, this version contains an integrated supressor, integrated scope, and extensive fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen outside of commando units."
+	desc = "A much rarer variant of the Type 71, this version contains an integrated suppressor, integrated scope, and extensive fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen outside of commando units."
 	icon_state = "type73"
 	item_state = "type73"
 	wield_delay = 0 //Ends up being .5 seconds due to scope
@@ -1164,7 +1164,7 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/handle_starting_attachment()//Making the gun have an invisible silencer since it's supposed to have one.
 	..()
-	//supressor
+	//suppressor
 	var/obj/item/attachable/suppressor/S = new(src)
 	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE

@@ -154,7 +154,7 @@
 	flags_atom = FPRINT|CONDUCT|OPENCONTAINER
 
 /obj/item/reagent_container/food/drinks/golden_cup/tournament_26_06_2011
-	desc = "A golden cup. It will be presented to a winner of tournament 26 june and name of the winner will be graved on it."
+	desc = "A golden cup. It will be presented to a winner of tournament 26 June and name of the winner will be graved on it."
 
 
 ///////////////////////////////////////////////Drinks
@@ -244,7 +244,7 @@
 
 /obj/item/reagent_container/food/drinks/dry_ramen
 	name = "cup ramen"
-	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
+	desc = "Just add 10ml water, self-heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 	center_of_mass = "x=16;y=11"
 

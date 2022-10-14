@@ -41,7 +41,7 @@
 /datum/player_action/make_cultist
 	action_tag = "make_cultist"
 	name = "Make Cultist"
-	permissions_required = R_FUN
+	permissions_required = R_ADMIN
 
 /datum/player_action/make_cultist/act(var/client/user, var/mob/target, var/list/params)
 	if(!params["hivenumber"])

@@ -68,7 +68,7 @@
 /datum/game_mode/xenovs/proc/update_controllers()
 	//Update controllers while we're on this mode
 	if(SSitem_cleanup)
-		//Cleaning stuff more aggresively
+		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
 		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
 		SSitem_cleanup.wait = 1 MINUTES

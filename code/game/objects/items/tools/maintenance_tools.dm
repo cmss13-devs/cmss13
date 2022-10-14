@@ -36,7 +36,7 @@
  */
 /obj/item/tool/screwdriver
 	name = "screwdriver"
-	desc = "You can be totally screwwy with this."
+	desc = "You can be totally screwy with this."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "screwdriver"
 	pickupsound = 'sound/handling/multitool_pickup.ogg'
@@ -448,7 +448,7 @@
 
 /obj/item/tool/weldingtool/simple
 	name = "\improper ME3 hand welder"
-	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full sized technician's blowtorch."
+	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
 	max_fuel = 5
 	color = "#cc0000"
 	has_welding_screen = TRUE

@@ -20,7 +20,7 @@
 
 /datum/admins/proc/force_predator_round()
 	set name = "Toggle Predator Round"
-	set desc = "Force toggle a predator round for the round type. Only works on maps that support Predator spawns."
+	set desc = "Force-toggle a predator round for the round type. Only works on maps that support Predator spawns."
 	set category = "Server.Round"
 
 	if(!SSticker || SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
@@ -28,7 +28,7 @@
 		return
 
 	var/datum/game_mode/predator_round = SSticker.mode
-	if(alert("Are you sure you want to force toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") == "No")
+	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") == "No")
 		return
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))

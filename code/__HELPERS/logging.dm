@@ -36,6 +36,13 @@
 	GLOB.STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
+/proc/log_slur(var/mob/origin, var/word, var/message)
+	admin_log.Add("[key_name(origin)] had a message flagged for banned word '[word]'. Message reads: '[message]'")
+	if (CONFIG_GET(flag/log_slurs))
+		diary << html_decode("\[[time_stamp()]]SLUR: [key_name(origin)] had a message flagged for banned word '[word]'. Message reads: '[message]'[log_end]")
+	GLOB.STUI.admin.Add("\[[time_stamp()]]SLUR: [key_name(origin)] had a message flagged for banned word '[word]'. Message reads: '[message]'")
+	GLOB.STUI.processing |= STUI_LOG_ADMIN
+
 /proc/log_asset(text)
 	asset_log.Add(text)
 	if (CONFIG_GET(flag/log_asset))

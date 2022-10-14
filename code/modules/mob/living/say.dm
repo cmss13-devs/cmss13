@@ -99,6 +99,13 @@ var/list/department_radio_keys = list(
 
 	message = process_chat_markup(message, list("~", "_"))
 
+	var/list/TriggerWords = file2list("config/banned_words.txt")
+	if(CONFIG_GET(flag/log_slurs))//Won't act unless config tells it to check for slurs.
+		for(var/Trigger in TriggerWords)
+			if(findtext(message,Trigger))
+				log_slur(src, Trigger, message)
+				return FALSE //Blocks message being sent.
+
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
 		if(!dst && src.clone) //Will speak in src's location and the clone's
 			T = locate(src.loc.x + src.clone.proj_x, src.loc.y + src.clone.proj_y, src.loc.z)

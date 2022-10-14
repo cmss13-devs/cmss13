@@ -76,6 +76,9 @@ Administrative related.
 /datum/config_entry/flag/log_adminwarn
 	protection = CONFIG_ENTRY_LOCKED
 
+/datum/config_entry/flag/log_slurs
+	protection = CONFIG_ENTRY_LOCKED
+
 /datum/config_entry/flag/log_hrefs
 	protection = CONFIG_ENTRY_LOCKED
 

@@ -150,5 +150,7 @@
   ihatethisengine:
   - bugfix: Observers now can see evacuation timer
 2022-10-14:
+  Carlarc_Kugamo:
+  - rscadd: Added a new resin marker for needing weeds in an area.
   Kugamo:
   - imageadd: Carriers' sprites now reflect how many huggers they are currently carrying.

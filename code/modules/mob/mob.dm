@@ -133,7 +133,7 @@
 	var/view_dist = 7
 	var/flags = message_flags
 	if(max_distance) view_dist = max_distance
-	for(var/mob/M in viewers(view_dist, src))
+	for(var/mob/M as anything in viewers(view_dist, src))
 		var/msg = message
 		if(self_message && M==src)
 			msg = self_message
@@ -172,7 +172,7 @@
 /atom/proc/visible_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
-	for(var/mob/M in viewers(view_dist, src))
+	for(var/mob/M as anything in viewers(view_dist, src))
 		M.show_message(message, 1, blind_message, 2, message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
@@ -523,7 +523,7 @@
 
 
 /mob/proc/show_viewers(message)
-	for(var/mob/M in viewers())
+	for(var/mob/M as anything in viewers())
 		if(!M.stat)
 			to_chat(src, message)
 
@@ -1059,7 +1059,7 @@ mob/proc/yank_out_object()
 
 	if(A)
 		if(ismovableatom(A))
-			//Set the the thing unless it's us
+			//Set the thing unless it's us
 			if(A != src)
 				client.perspective = EYE_PERSPECTIVE
 				client.eye = A

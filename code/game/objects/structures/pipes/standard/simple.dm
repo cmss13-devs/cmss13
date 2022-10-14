@@ -2,7 +2,7 @@
 	icon = 'icons/obj/pipes/pipes.dmi'
 	icon_state = ""
 	name = "pipe"
-	desc = "A one meter section of regular pipe"
+	desc = "A one-meter section of regular pipe"
 	dir = SOUTH
 	valid_directions = list(SOUTH, NORTH)
 
@@ -56,14 +56,14 @@
 
 /obj/structure/pipes/standard/simple/visible/scrubbers
 	name = "Scrubbers pipe"
-	desc = "A one meter section of scrubbers pipe"
+	desc = "A one-meter section of scrubbers pipe"
 	icon_state = "intact-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/simple/visible/supply
 	name = "Air supply pipe"
-	desc = "A one meter section of supply pipe"
+	desc = "A one-meter section of supply pipe"
 	icon_state = "intact-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
@@ -92,14 +92,14 @@
 
 /obj/structure/pipes/standard/simple/hidden/scrubbers
 	name = "Scrubbers pipe"
-	desc = "A one meter section of scrubbers pipe"
+	desc = "A one-meter section of scrubbers pipe"
 	icon_state = "intact-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/simple/hidden/supply
 	name = "Air supply pipe"
-	desc = "A one meter section of supply pipe"
+	desc = "A one-meter section of supply pipe"
 	icon_state = "intact-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE

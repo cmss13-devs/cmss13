@@ -23,7 +23,7 @@
 	//code. Very ugly. I dont care. Moving this stuff here so its easy
 	//to find it.
 
-	//TODO: seperate this out
+	//TODO: separate this out
 	//update the current life tick, can be used to e.g. only do something every 4 ticks
 	life_tick++
 

@@ -423,7 +423,7 @@
 /datum/species/proc/build_hud(var/mob/living/carbon/human/H)
 	return
 
-// Grabs the window recieved when you click-drag someone onto you.
+// Grabs the window received when you click-drag someone onto you.
 /datum/species/proc/get_inventory_dialogue(var/mob/living/carbon/human/H)
 	return
 

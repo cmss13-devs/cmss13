@@ -131,21 +131,21 @@
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
-	desc = "A watertank"
+	desc = "A water tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
 	chemical = "water"
 
 /obj/structure/reagent_dispensers/ammoniatank
 	name = "ammoniatank"
-	desc = "An ammoniatank"
+	desc = "An ammonia tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
 
 /obj/structure/reagent_dispensers/oxygentank
 	name = "oxygentank"
-	desc = "An oxygentank"
+	desc = "An oxygen tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "oxygentank"
 	chemical = "oxygen"
@@ -159,7 +159,7 @@
 
 /obj/structure/reagent_dispensers/pacidtank
 	name = "polytrinic acid tank"
-	desc = "A polytrinic acidtank"
+	desc = "A polytrinic acid tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "pacidtank"
 	chemical = "pacid"
@@ -173,7 +173,7 @@
 
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
-	desc = "A fueltank"
+	desc = "A fuel tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
@@ -367,7 +367,7 @@
 
 /obj/structure/reagent_dispensers/fueltank/gas
 	name = "gastank"
-	desc = "A gastank"
+	desc = "A gas tank"
 
 /obj/structure/reagent_dispensers/fueltank/gas/leak_fuel(amount)
 	if(reagents.total_volume == 0)
@@ -378,13 +378,13 @@
 
 /obj/structure/reagent_dispensers/fueltank/gas/methane
 	name = "methanetank"
-	desc = "A methanetank"
+	desc = "A methane tank"
 	icon_state = "methanetank"
 	chemical = "methane"
 
 /obj/structure/reagent_dispensers/fueltank/gas/hydrogen
 	name = "hydrogentank"
-	desc = "A hydrogentank"
+	desc = "A hydrogen tank"
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
 

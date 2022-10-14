@@ -56,7 +56,7 @@
 		if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
 			BB.open()
 
-		///The medical machines below are listed seperately to allow easier changes to each process
+		///The medical machines below are listed separately to allow easier changes to each process
 
 	//getting out of hypersleep
 	if(loc && (istype(loc, /obj/structure/machinery/cryopod)))

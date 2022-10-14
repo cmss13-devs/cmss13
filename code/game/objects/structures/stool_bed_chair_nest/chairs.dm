@@ -21,7 +21,7 @@
 		PF.flags_can_pass_all = PASS_AROUND|PASS_UNDER
 	flags_can_pass_all_temp = PASS_OVER
 
-/obj/structure/bed/chair/handle_rotation() //Making this into a seperate proc so office chairs can call it on Move()
+/obj/structure/bed/chair/handle_rotation() //Making this into a separate proc so office chairs can call it on Move()
 	if(src.dir == NORTH)
 		src.layer = FLY_LAYER
 	else

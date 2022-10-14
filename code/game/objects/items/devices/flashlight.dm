@@ -194,7 +194,7 @@
 //Generic Candelabra
 /obj/item/device/flashlight/lamp/candelabra
 	name = "candelabra"
-	desc = "A firehazard that can be used to thwack things with impunity."
+	desc = "A fire hazard that can be used to thwack things with impunity."
 	icon_state = "candelabra"
 	force = 15
 

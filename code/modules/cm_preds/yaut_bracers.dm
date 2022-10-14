@@ -631,7 +631,7 @@
 		if(victim)
 			victim.gib() // kills the pred
 			qdel(victim)
-		var/datum/cause_data/cause_data = create_cause_data("yautja self destruct", victim)
+		var/datum/cause_data/cause_data = create_cause_data("yautja self-destruct", victim)
 		if(explosion_type == SD_TYPE_BIG && is_ground_level(T.z))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Dramatically BIG explosion.
 		else
@@ -649,10 +649,10 @@
 
 	if(alert("Which explosion type do you want?","Explosive Bracers", "Small", "Big") == "Big")
 		explosion_type = SD_TYPE_BIG
-		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Large")
+		log_attack("[key_name_admin(usr)] has changed their Self-Destruct to Large")
 	else
 		explosion_type = SD_TYPE_SMALL
-		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Small")
+		log_attack("[key_name_admin(usr)] has changed their Self-Destruct to Small")
 		return
 
 /obj/item/clothing/gloves/yautja/hunter/verb/activate_suicide()
@@ -718,7 +718,7 @@
 				return
 			exploding = FALSE
 			to_chat(M, SPAN_NOTICE("Your bracers stop beeping."))
-			message_staff("[M] ([M.key]) has deactivated their Self Destruct.")
+			message_staff("[M] ([M.key]) has deactivated their Self-Destruct.")
 		return
 	if(istype(M.wear_mask,/obj/item/clothing/mask/facehugger) || (M.status_flags & XENO_HOST))
 		to_chat(M, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))

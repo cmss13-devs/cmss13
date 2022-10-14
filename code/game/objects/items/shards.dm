@@ -64,7 +64,7 @@
 
 /obj/item/shard/phoron
 	name = "phoron shard"
-	desc = "A shard of phoron glass. Considerably tougher then normal glass shards. Apparently not tough enough to be a window."
+	desc = "A shard of phoron glass. Considerably tougher than normal glass shards. Apparently not tough enough to be a window."
 	force = 8
 	throwforce = 15
 	icon_state = "phoron"

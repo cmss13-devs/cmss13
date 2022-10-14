@@ -1,6 +1,6 @@
 /obj/item/explosive/grenade
 	name = "grenade"
-	desc = "A hand held grenade, with an adjustable timer."
+	desc = "A hand-held grenade, with an adjustable timer."
 	w_class = SIZE_SMALL
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "grenade"

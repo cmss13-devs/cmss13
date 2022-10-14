@@ -214,7 +214,7 @@
 
 	invisibility = 100
 	var/list/client/displayed_for = list()
-	for(var/mob/M in viewers(user))
+	for(var/mob/M as anything in viewers(user))
 		var/client/C = M.client
 		if(C)
 			C.images += trick
@@ -379,7 +379,7 @@
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049
 	name = "\improper M2049 Blaster"
-	desc = "In service since 2049, the LAPD 2049 .44 special has been used to retire more replicants than there are colonists in the American Corridor. The top mounted picatinny rail allows this revised version to mount a wide variety of optics for the aspiring detective. Although replicants aren't permitted past the the outer core systems, this piece occasionally finds its way to the rim in the hand of defects, collectors, and thieves."
+	desc = "In service since 2049, the LAPD 2049 .44 special has been used to retire more replicants than there are colonists in the American Corridor. The top mounted picatinny rail allows this revised version to mount a wide variety of optics for the aspiring detective. Although replicants aren't permitted past the outer core systems, this piece occasionally finds its way to the rim in the hand of defects, collectors, and thieves."
 	icon_state = "lapd_2049"
 
 	attachable_allowed = list(
@@ -595,7 +595,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/general
 	name = "\improper engraved Mateba autorevolver custom"
-	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Mateba revolver's pretentious design rivals only the power of its wielder. Fit for a king. Or an general."
+	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Mateba revolver's pretentious design rivals only the power of its wielder. Fit for a king. Or a general."
 	icon_state = "amateba"
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact

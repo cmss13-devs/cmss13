@@ -333,7 +333,7 @@
 
 /obj/item/reagent_container/food/snacks/wy_chips/pepper
 	name = "Weyland-Yutani Pepper Chips"
-	desc = "Premium high quality chips, now with 0% trans fat and added black pepper."
+	desc = "Premium high-quality chips, now with 0% trans fat and added black pepper."
 	icon_state = "wy_chips_pepper"
 	item_state = "wy_chips_pepper"
 	trash = /obj/item/trash/wy_chips_pepper
@@ -561,7 +561,7 @@
 
 /obj/item/reagent_container/food/snacks/boiledegg
 	name = "Boiled egg"
-	desc = "A hard boiled egg."
+	desc = "A hard-boiled egg."
 	icon_state = "egg"
 	filling_color = "#FFFFFF"
 
@@ -1569,7 +1569,7 @@
 	..()
 
 /obj/item/reagent_container/food/snacks/monkeycube/proc/Expand()
-	for(var/mob/M in viewers(src,7))
+	for(var/mob/M as anything in viewers(src,7))
 		to_chat(M, SPAN_WARNING("\The [src] expands!"))
 	var/turf/T = get_turf(src)
 	if(T)
@@ -1899,7 +1899,7 @@
 
 /obj/item/reagent_container/food/snacks/spesslaw
 	name = "Spesslaw"
-	desc = "A lawyers favourite"
+	desc = "A lawyer's favourite"
 	icon_state = "spesslaw"
 	filling_color = "#DE4545"
 
@@ -2248,7 +2248,7 @@
 
 /obj/item/reagent_container/food/snacks/carrotcakeslice
 	name = "Carrot Cake slice"
-	desc = "Carrotty slice of Carrot Cake, carrots are good for your eyes! Also not a lie."
+	desc = "Carroty slice of Carrot Cake, carrots are good for your eyes! Also not a lie."
 	icon_state = "carrotcake_slice"
 	trash = /obj/item/trash/plate
 	filling_color = "#FFD675"
@@ -2413,7 +2413,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel
 	name = "Cheese wheel"
-	desc = "A big wheel of delcious Cheddar."
+	desc = "A big wheel of delicious Cheddar."
 	icon_state = "cheesewheel"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge
 	slices_num = 5

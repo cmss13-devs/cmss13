@@ -1,5 +1,5 @@
 //=================================================
-//Self destruct, nuke, and evacuation.
+//Self-destruct, nuke, and evacuation.
 #define EVACUATION_TIME_LOCK 			1 HOURS
 #define DISTRESS_TIME_LOCK 				6 MINUTES
 #define SHUTTLE_TIME_LOCK 				15 MINUTES

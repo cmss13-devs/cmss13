@@ -85,10 +85,10 @@
 
 	detector_mode = !detector_mode
 	if(detector_mode)
-		to_chat(user, SPAN_NOTICE("You switch [src] to short range mode."))
+		to_chat(user, SPAN_NOTICE("You switch [src] to short-range mode."))
 		detector_range = 7
 	else
-		to_chat(user, SPAN_NOTICE("You switch [src] to long range mode."))
+		to_chat(user, SPAN_NOTICE("You switch [src] to long-range mode."))
 		detector_range = 14
 	update_icon()
 	playsound(usr,'sound/machines/click.ogg', 15, TRUE)

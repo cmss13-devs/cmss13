@@ -207,7 +207,6 @@
 	if(rights & R_BUILDMODE)	. += "[seperator]+BUILDMODE"
 	if(rights & R_ADMIN)		. += "[seperator]+ADMIN"
 	if(rights & R_BAN)			. += "[seperator]+BAN"
-	if(rights & R_FUN)			. += "[seperator]+FUN"
 	if(rights & R_SERVER)		. += "[seperator]+SERVER"
 	if(rights & R_DEBUG)		. += "[seperator]+DEBUG"
 	if(rights & R_POSSESS)		. += "[seperator]+POSSESS"

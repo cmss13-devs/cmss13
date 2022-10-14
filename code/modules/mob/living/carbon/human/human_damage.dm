@@ -474,7 +474,7 @@ This function restores all limbs.
 	return TRUE
 
 // Heal or damage internal organs
-// Organ has to be either a internal organ by string or a limb with internal organs in.
+// Organ has to be either an internal organ by string or a limb with internal organs in.
 /mob/living/carbon/human/apply_internal_damage(var/damage = 0, var/organ)
 	if(!damage)
 		return

@@ -221,6 +221,18 @@
 	prefs.save_preferences()
 	toggle_fullscreen(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
 
+/client/verb/toggle_ambient_occlusion()
+	set name = "Toggle Ambient Occlusion"
+	set category = "Preferences"
+	set desc = "Toggles whether the game will have ambient occlusion on."
+
+	prefs.toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION
+	prefs.save_preferences()
+	var/atom/movable/screen/plane_master/game_world/plane_master = locate() in src.screen
+	if (!plane_master)
+		return
+	plane_master.backdrop(src.mob)
+
 /client/verb/toggle_member_publicity()
 	set name = "Toggle Membership Publicity"
 	set category = "Preferences"

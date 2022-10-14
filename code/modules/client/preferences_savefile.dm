@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	17
+#define SAVEFILE_VERSION_MAX	18
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -61,6 +61,12 @@
 			if(language_traits.len > 1)
 				language_traits = null
 		S["traits"] << language_traits
+
+	if(savefile_version < 18) // adds ambient occlusion by default
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
+		S["toggle_prefs"] << pref_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -154,7 +160,6 @@
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
-	S["ambientocclusion"] >> ambientocclusion
 	S["lang_chat_disabled"]	>> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
 	S["hear_vox"] >> hear_vox
@@ -214,7 +219,6 @@
 	key_bindings 		= sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys  			= sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
-	ambientocclusion	= sanitize_integer(ambientocclusion, 0, 1, initial(ambientocclusion))
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -310,7 +314,6 @@
 
 	S["hear_vox"] << hear_vox
 
-	S["ambientocclusion"] << ambientocclusion
 	S["hide_statusbar"] << hide_statusbar
 	S["no_radials_preference"] << no_radials_preference
 	S["no_radial_labels_preference"] << no_radial_labels_preference

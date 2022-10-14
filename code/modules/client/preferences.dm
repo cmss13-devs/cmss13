@@ -48,7 +48,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
 	var/ooccolor
 	var/be_special = 0				// Special role selection
-	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC // flags in #define/mode.dm
+	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
@@ -178,8 +178,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/stylesheet = "Modern"
 
 	var/lang_chat_disabled = FALSE
-
-	var/ambientocclusion = TRUE
 
 	var/show_permission_errors = TRUE
 
@@ -536,7 +534,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
-			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[ambientocclusion ? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
@@ -1604,7 +1602,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					toggles_ert ^= flag
 
 				if("ambientocclusion")
-					ambientocclusion = !ambientocclusion
+					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION
 					var/atom/movable/screen/plane_master/game_world/plane_master = locate() in user?.client.screen
 					if (!plane_master)
 						return

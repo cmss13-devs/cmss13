@@ -118,17 +118,18 @@
 /obj/item/reagent_container/food/snacks/afterattack(obj/target, mob/user, proximity)
 	return ..()
 
-/obj/item/reagent_container/food/snacks/examine(mob/user)
-	..()
-	if (!(user in range(0)) && user != loc) return
-	if (bitecount==0)
+/obj/item/reagent_container/food/snacks/get_examine_text(mob/user)
+	. = ..()
+	if (!(user in range(0)) && user != loc)
+		return
+	if (!bitecount)
 		return
 	else if (bitecount==1)
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten by someone!"))
+		. += SPAN_NOTICE("\The [src] was bitten by someone!")
 	else if (bitecount<=3)
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten [bitecount] times!"))
+		. += SPAN_NOTICE("\The [src] was bitten [bitecount] times!")
 	else
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten multiple times!"))
+		. += SPAN_NOTICE("\The [src] was bitten multiple times!")
 
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
@@ -1568,7 +1569,7 @@
 	..()
 
 /obj/item/reagent_container/food/snacks/monkeycube/proc/Expand()
-	for(var/mob/M in viewers(src,7))
+	for(var/mob/M as anything in viewers(src,7))
 		to_chat(M, SPAN_WARNING("\The [src] expands!"))
 	var/turf/T = get_turf(src)
 	if(T)

@@ -17,6 +17,7 @@
 		if(LAZYLEN(equipment))
 			build_icons(equipment)
 
+	preload_assets()
 	listed_products = list()
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/populate_product_list(var/scale)

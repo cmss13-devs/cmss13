@@ -460,7 +460,6 @@
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
 
-
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
 	access = get_all_marine_access() - ACCESS_MARINE_CAPTAIN

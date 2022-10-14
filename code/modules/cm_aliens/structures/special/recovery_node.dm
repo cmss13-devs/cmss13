@@ -9,11 +9,10 @@
 	var/heal_cooldown = 5 SECONDS
 	var/last_healed
 
-/obj/effect/alien/resin/special/recovery/examine(mob/user)
-	..()
+/obj/effect/alien/resin/special/recovery/get_examine_text(mob/user)
+	. = ..()
 	if((isXeno(user) || isobserver(user)) && linked_hive)
-		var/message = "Recovers the health of adjacent Xenomorphs."
-		to_chat(user, message)
+		. += "Recovers the health of adjacent Xenomorphs."
 
 /obj/effect/alien/resin/special/recovery/process()
 	if(last_healed && world.time < last_healed + heal_cooldown)

@@ -49,9 +49,9 @@
 	. = ..()
 	update_icon()
 
-/obj/item/storage/backpack/marine/smartpack/examine(mob/user)
-	..()
-	to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
+/obj/item/storage/backpack/marine/smartpack/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]")
 
 /obj/item/storage/backpack/marine/smartpack/update_icon(mob/user)
 	overlays.Cut()

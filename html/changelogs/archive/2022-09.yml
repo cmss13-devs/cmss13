@@ -410,5 +410,37 @@
       of 1000. It can no longer accept meat (was not used for anything) and its backend
       code is much better now.
 2022-09-27:
+  Segrain:
+  - bugfix: APCs should no longer spawn in doubles.
   Shad0vvs:
   - bugfix: Fixes the health scanner not updating windows properly.
+2022-09-28:
+  Mistfrag:
+  - rscadd: Added new operation-prefix, postfixes and two new titles in order to add
+      some more variety.
+  - rscdel: Deleted campaign operation title since that's outside our usual round's
+      scope, deleted some LRP prefixes like 69-420, and some lrp postfixes like unga-bald.
+  Segrain:
+  - bugfix: Protheses printers no longer cause runtime errors by trying to exist.
+  - bugfix: Spawning humans no longer spam messages and sounds for being equipped.
+  StarkSilence:
+  - qol: Simplified TGUI Health Scanner interface for readability.
+  stanalbatross:
+  - bugfix: the healthscanner will now show IB properly
+  - bugfix: the healthscanner will now properly show frac info to medics
+  - qol: changed the frac message colour to white to make it stand out more
+  - bugfix: fixed some bad del runtimes on init
+2022-09-29:
+  Mistfrag:
+  - rscadd: C4 (3), Machete Scabbard (2), Machete Pouch, M-M Pouch, Small RTO Pack
+      (12), RO Cap (12), SO Cap (12), RO Jacket (12), Ball-Cap (12), Hi-Cap Blowtorch
+      (4), Industrial Blowtorch (2), USCM Medical Uniform
+  totalepicness:
+  - bugfix: Fixes crew compartment attachment points being able to hide objects and
+      mobs.
+2022-09-30:
+  Morrow:
+  - qol: You can now use ; or :[key] for default frequencies.
+  Shad0vvs:
+  - bugfix: Allows you to click yourself with pills(and other force 0 objects) when
+      on harm intent with the do not harm self preference on.

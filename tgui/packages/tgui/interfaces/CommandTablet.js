@@ -15,6 +15,9 @@ export const CommandTablet = (_props, context) => {
   const canAnnounce = (
     data.endtime < data.worldtime);
 
+  const distressCooldown = (
+    data.worldtime < data.distresstime);
+
   const roundends = data.roundends;
 
   const canEvac = (
@@ -22,17 +25,17 @@ export const CommandTablet = (_props, context) => {
     AlertLevel >= 2);
 
   const canDistress = (
-    AlertLevel === 2 && !data.distresscd && minimumTimeElapsed);
+    AlertLevel === 2 && !distressCooldown && minimumTimeElapsed);
 
   let distress_reason;
   if (AlertLevel === 3) {
     distress_reason = "Self-destruct in progress. Beacon disabled.";
   } else if (AlertLevel !== 2) {
     distress_reason = "Ship is not under an active emergency.";
+  } else if (distressCooldown) {
+    distress_reason = "Beacon is currently on cooldown.";
   } else if (!minimumTimeElapsed) {
     distress_reason = "It's too early to launch a distress beacon.";
-  } else if (data.distresscd) {
-    distress_reason = "Beacon is currently on cooldown.";
   }
 
   return (

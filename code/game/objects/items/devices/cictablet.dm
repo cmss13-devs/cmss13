@@ -59,7 +59,7 @@
 	data["alert_level"] = security_level
 	data["evac_status"] = EvacuationAuthority.evac_status
 	data["endtime"] = announcement_cooldown
-	data["distresscd"] = distress_cooldown
+	data["distresstime"] = distress_cooldown
 	data["distresstimelock"] = DISTRESS_TIME_LOCK
 	data["worldtime"] = world.time
 

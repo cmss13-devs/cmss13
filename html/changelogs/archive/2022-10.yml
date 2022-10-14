@@ -149,3 +149,6 @@
       (like forgetting to pump it) will now generate a loud 'click' noise.
   ihatethisengine:
   - bugfix: Observers now can see evacuation timer
+2022-10-14:
+  Kugamo:
+  - imageadd: Carriers' sprites now reflect how many huggers they are currently carrying.

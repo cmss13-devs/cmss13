@@ -137,6 +137,9 @@
 	if(name_label)
 		name += " ([name_label])"
 
+/obj/item/reagent_container/food/snacks/set_origin_name_prefix(var/name_prefix)
+	made_from_player = name_prefix
+
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
 		..() // -> item/attackby()

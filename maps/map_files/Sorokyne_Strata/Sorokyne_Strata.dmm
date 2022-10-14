@@ -48,7 +48,7 @@
 /area/strata/ag/interior/paths/cabin_area/central)
 "aal" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aam" = (
@@ -118,7 +118,7 @@
 "aax" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aay" = (
@@ -437,7 +437,7 @@
 /area/strata/ag/exterior)
 "abB" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -1022,7 +1022,7 @@
 "acW" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "acX" = (
@@ -1570,7 +1570,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "aev" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aex" = (
@@ -4675,7 +4675,6 @@
 "ans" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/reagent_container/food/snacks/carpmeat,
-/obj/effect/landmark/costume/commie,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -4748,9 +4747,8 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "anB" = (
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/item/reagent_container/food/snacks/carpmeat,
-/obj/effect/landmark/costume/commie,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -5874,7 +5872,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "arb" = (
-/obj/structure/closet/secure_closet/security_empty,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/item/storage/belt/security,
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -7627,7 +7625,7 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "avY" = (
-/obj/structure/closet/secure_closet/security_empty,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -8154,7 +8152,7 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "axu" = (
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -12548,7 +12546,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aLc" = (
-/obj/structure/closet/secure_closet/security_empty,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/structure/window/reinforced/tinted,
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -18211,7 +18209,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/river)
 "bdU" = (
-/obj/structure/closet/secure_closet/security_empty,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/item/book/manual/security_space_law,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -25007,7 +25005,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "bFA" = (
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -29791,7 +29789,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "cpi" = (
-/obj/structure/closet/secure_closet/security_empty,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
 /obj/structure/machinery/light/small{
@@ -34043,7 +34041,7 @@
 "ioz" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -36202,7 +36200,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "lPk" = (
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -36378,7 +36376,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "mdK" = (
-/obj/structure/closet/secure_closet/security_empty,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/item/storage/belt/security,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
@@ -39519,7 +39517,7 @@
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "rkb" = (
 /obj/item/clothing/glasses/thermal/syndi,
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 8;
@@ -42334,7 +42332,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "vPY" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
 "vQo" = (

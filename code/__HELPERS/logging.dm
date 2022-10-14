@@ -36,6 +36,13 @@
 	GLOB.STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
+/proc/check_slur(var/text, var/mob/source, var/method = "Speech")
+	var/list/TriggerWords = file2list("config/banned_words.txt")
+	for(var/Trigger in TriggerWords)
+		if(findtext(text,Trigger))
+			log_slur(source, Trigger, text)
+			return TRUE //Blocks message being sent.
+
 /proc/log_slur(var/mob/origin, var/word, var/message)
 	admin_log.Add("[key_name(origin)] had a message flagged for banned word '[word]'. Message reads: '[message]'")
 	if (CONFIG_GET(flag/log_slurs))

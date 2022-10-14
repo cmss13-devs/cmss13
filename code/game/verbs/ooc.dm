@@ -46,12 +46,8 @@
 			message_staff("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
-	var/list/TriggerWords = file2list("config/banned_words.txt")
-	if(CONFIG_GET(flag/log_slurs))//Won't act unless config tells it to check for slurs.
-		for(var/Trigger in TriggerWords)//Not sure if better to use Global Lists yet.
-			if(findtext(msg,Trigger))
-				log_slur(src, Trigger, msg)
-				return FALSE //Blocks message being sent.
+	if(check_slur(msg, usr, "OOC"))
+		return FALSE
 
 	log_ooc("[mob.name]/[key] : [msg]")
 	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
@@ -119,12 +115,8 @@
 		usr.chatWarn++
 		return
 
-	var/list/TriggerWords = file2list("config/banned_words.txt")
-	if(CONFIG_GET(flag/log_slurs))//Won't act unless config tells it to check for slurs.
-		for(var/Trigger in TriggerWords)//Not sure if better to use Global Lists yet.
-			if(findtext(msg,Trigger))
-				log_slur(src, Trigger, msg)
-				return FALSE //Blocks message being sent.
+	if(check_slur(msg, usr, "LOOC"))
+		return FALSE
 
 	if(!mob)	return
 	if(IsGuestKey(key))

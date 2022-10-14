@@ -154,6 +154,7 @@
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
+	S["ambientocclusion"] >> ambientocclusion
 	S["lang_chat_disabled"]	>> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
 	S["hear_vox"] >> hear_vox
@@ -213,6 +214,7 @@
 	key_bindings 		= sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys  			= sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
+	ambientocclusion	= sanitize_integer(ambientocclusion, 0, 1, initial(ambientocclusion))
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -308,6 +310,7 @@
 
 	S["hear_vox"] << hear_vox
 
+	S["ambientocclusion"] << ambientocclusion
 	S["hide_statusbar"] << hide_statusbar
 	S["no_radials_preference"] << no_radials_preference
 	S["no_radial_labels_preference"] << no_radial_labels_preference

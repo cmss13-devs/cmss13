@@ -179,6 +179,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/lang_chat_disabled = FALSE
 
+	var/ambientocclusion = TRUE
+
 	var/show_permission_errors = TRUE
 
 	var/key_buf // A buffer for setting macro keybinds
@@ -530,6 +532,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Ghost Hivemind:</b> <a href='?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
 			dat += "<b>Abovehead Chat:</b> <a href='?_src_=prefs;preference=lang_chat_disabled'><b>[lang_chat_disabled ? "Hide" : "Show"]</b></a><br>"
 			dat += "<b>Abovehead Emotes:</b> <a href='?_src_=prefs;preference=langchat_emotes'><b>[(toggles_langchat & LANGCHAT_SEE_EMOTES) ? "Show" : "Hide"]</b></a><br>"
+			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[ambientocclusion ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "</div>"
 
 			dat += "<div id='column2'>"
@@ -1599,6 +1602,13 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("toggles_ert")
 					var/flag = text2num(href_list["flag"])
 					toggles_ert ^= flag
+
+				if("ambientocclusion")
+					ambientocclusion = !ambientocclusion
+					var/atom/movable/screen/plane_master/game_world/plane_master = locate() in user?.client.screen
+					if (!plane_master)
+						return
+					plane_master.backdrop(user?.client.mob)
 
 				if("save")
 					if(save_cooldown > world.time)

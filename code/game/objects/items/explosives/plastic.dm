@@ -167,7 +167,7 @@
 	update_icon()
 
 /obj/item/explosive/plastic/proc/can_place(var/mob/user, var/atom/target)
-	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
+	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || isanimal(target))
 		return FALSE
 
 	if(istype(target, /obj/structure/closet))

@@ -37,6 +37,8 @@
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/check_slur(var/text, var/mob/source, var/method = "Speech")
+	if(!CONFIG_GET(flag/log_slurs))
+		return FALSE
 	var/list/TriggerWords = file2list("config/banned_words.txt")
 	for(var/Trigger in TriggerWords)
 		if(findtext(text,Trigger))

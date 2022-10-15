@@ -19,22 +19,9 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome)
-"ae" = (
-/obj/docking_port/stationary/vehicle_elevator/adminlevel,
-/turf/open/space/basic,
-/area/space)
 "ag" = (
-/obj/structure/window/framed/almayer/hull,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "tdome_observer";
-	name = "\improper Observer Shutters"
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/tdome)
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/almayer/evacuation/stranded/pod1)
 "aj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/effect/spider/stickyweb,
@@ -45,8 +32,16 @@
 	},
 /area/adminlevel/ert_station)
 "ak" = (
-/turf/closed/wall/almayer/outer,
-/area/tdome/tdome1)
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-W"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/tdome)
 "an" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
@@ -65,17 +60,7 @@
 /turf/open/space/basic,
 /area/space)
 "az" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/tdome)
-"aA" = (
+/obj/effect/landmark/thunderdome/two,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	tag = "icon-W"
@@ -85,18 +70,13 @@
 	icon_state = "plating";
 	tag = "icon-blue (NORTHEAST)"
 	},
-/area/tdome)
+/area/tdome/tdome2)
+"aA" = (
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/almayer/evacuation/stranded/pod2)
 "aB" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 4;
-	id = "tdome_t2";
-	name = "\improper Team 2 Shutters"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
-	},
-/area/tdome)
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/almayer/evacuation/stranded/pod3)
 "aC" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -111,12 +91,8 @@
 /turf/open/space,
 /area/space)
 "aE" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y0";
-	tag = "icon-sterile_green_corner (NORTH)"
-	},
-/area/tdome)
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/almayer/evacuation/stranded/pod4)
 "aG" = (
 /turf/open/space/transit/north/shuttlespace_ns10,
 /area/space)
@@ -360,16 +336,16 @@
 /area/space)
 "bU" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod1)
+/area/almayer/evacuation/stranded/pod5)
 "bV" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod2)
+/area/almayer/evacuation/stranded/pod6)
 "bW" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod5)
+/area/almayer/evacuation/stranded/pod9)
 "bX" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod6)
+/area/almayer/evacuation/stranded/pod10)
 "bY" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -382,34 +358,34 @@
 	teleport_z_offset = 1
 	},
 /obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "1"
+	name = "2"
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
 "bZ" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod12)
+/area/almayer/evacuation/stranded/pod16)
 "ca" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod13)
+/area/almayer/evacuation/stranded/pod17)
 "cb" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod14)
+/area/almayer/evacuation/stranded/pod18)
 "cc" = (
 /turf/open/space,
 /area/shuttle/distress/transit_pmc)
 "ch" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod3)
+/area/almayer/evacuation/stranded/pod7)
 "ci" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod4)
+/area/almayer/evacuation/stranded/pod8)
 "cj" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod7)
+/area/almayer/evacuation/stranded/pod11)
 "ck" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod8)
+/area/almayer/evacuation/stranded/pod12)
 "co" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -431,28 +407,6 @@
 	},
 /area/shuttle/distress/start_small)
 "cz" = (
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod15)
-"cA" = (
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod16)
-"cB" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "2"
-	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
-"cC" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "escapeshuttle_leave";
@@ -468,6 +422,54 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
+"cA" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "1"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
+"cB" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "6"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
+"cC" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "4"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "cD" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood{
 	req_access = null
@@ -480,6 +482,13 @@
 "cJ" = (
 /turf/open/space/transit/east/shuttlespace_ew7,
 /area/space)
+"cK" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "w-y1";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/tdome)
 "cU" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -495,13 +504,13 @@
 /area/space)
 "dg" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod9)
+/area/almayer/evacuation/stranded/pod13)
 "dh" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod10)
+/area/almayer/evacuation/stranded/pod14)
 "di" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod11)
+/area/almayer/evacuation/stranded/pod15)
 "dr" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -513,20 +522,22 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
-"ds" = (
-/turf/closed/wall/almayer/outer{
-	name = "reinforced hull"
-	},
-/area/centcom/living)
 "dw" = (
-/turf/open/floor/almayer{
-	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
 	},
-/area/supply/dock)
-"dy" = (
-/turf/open/floor/wood,
-/area/centcom/living)
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "5"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "dz" = (
 /obj/structure/machinery/door/poddoor/shutters/transit{
 	id = "n_umbilical"
@@ -545,7 +556,7 @@
 	teleport_z_offset = 1
 	},
 /obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "4"
+	name = "8"
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
@@ -561,7 +572,7 @@
 	teleport_z_offset = 1
 	},
 /obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "5"
+	name = "7"
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
@@ -580,7 +591,7 @@
 	teleport_z_offset = 1
 	},
 /obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "6"
+	name = "10"
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
@@ -607,8 +618,21 @@
 /turf/open/space/transit/east/shuttlespace_ew7,
 /area/space)
 "ej" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/supply/dock)
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "9"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "eu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -620,49 +644,74 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_small)
-"ev" = (
-/turf/open/floor/carpet{
-	dir = 9;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHWEST)"
-	},
-/area/centcom/living)
 "ew" = (
-/obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor/wood,
-/area/centcom/living)
-"ex" = (
-/obj/structure/bed/chair/wood/wings{
-	dir = 1;
-	tag = "icon-wooden_chair_wings (NORTH)"
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
 	},
-/turf/open/floor/wood,
-/area/centcom/living)
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "11"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "ey" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
 	},
-/turf/open/floor/carpet,
-/area/centcom/living)
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "12"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "eA" = (
 /obj/structure/sign/poster/pinup,
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
 "eE" = (
-/turf/open/floor/carpet{
-	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
 	},
-/area/centcom/living)
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "14"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "eF" = (
-/turf/open/floor/carpet{
-	dir = 5;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTHEAST)"
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
 	},
-/area/centcom/living)
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "15"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "eG" = (
 /obj/structure/window/framed/colony/reinforced/hull,
 /turf/open/floor/almayer{
@@ -682,37 +731,41 @@
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
 "eU" = (
-/turf/open/floor/carpet{
-	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
 	},
-/area/centcom/living)
-"eW" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "17"
 	},
-/turf/open/floor/carpet{
-	dir = 8;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (WEST)"
-	},
-/area/centcom/living)
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "eX" = (
 /obj/effect/landmark/sim_target,
 /turf/open/floor/engine,
 /area/adminlevel/simulation)
-"eY" = (
-/turf/open/floor/carpet,
-/area/centcom/living)
 "eZ" = (
-/turf/open/floor/carpet{
-	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
 	},
-/area/centcom/living)
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "18"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "fj" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "0,6"
@@ -723,18 +776,6 @@
 	name = "reinforced hull"
 	},
 /area/centcom/control)
-"fu" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/head/collectable/tophat{
-	desc = "A top hat, placed here as a special thanks to someone often overlooked and forgotten. But who the community owes a thank you anyways.";
-	name = "Penguin"
-	},
-/turf/open/floor/wood,
-/area/centcom/living)
-"fv" = (
-/obj/structure/prop/almayer/ship_memorial/centcomm,
-/turf/open/floor/carpet,
-/area/centcom/living)
 "fw" = (
 /obj/structure/machinery/door/poddoor/shutters/transit{
 	id = "n_umbilical"
@@ -743,49 +784,46 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "fx" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/reagent_container/food/snacks/muffin{
-	desc = "Another special homage to someone never thanked enough.";
-	name = "Sgt. Man"
-	},
-/turf/open/floor/wood,
-/area/centcom/living)
+/turf/closed/wall/almayer/outer,
+/area/tdome/tdome1)
 "fy" = (
-/obj/structure/prop/almayer/ship_memorial/centcomm/admin,
-/turf/open/floor/carpet,
-/area/centcom/living)
+/turf/closed/wall/almayer/outer,
+/area/tdome/tdomeobserve)
 "fz" = (
-/obj/structure/machinery/telecomms/receiver/preset_cent,
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/turf/closed/wall/almayer/outer{
+	name = "reinforced hull"
 	},
-/area/centcom/control)
+/area/centcom/living)
 "fA" = (
-/obj/structure/machinery/telecomms/bus/preset_cent,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/centcom/control)
+/turf/open/floor/plating,
+/area/admin/droppod/holding)
 "fB" = (
-/obj/structure/machinery/telecomms/processor/preset_cent,
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_20";
+	tag = "icon-plant-10"
 	},
-/area/centcom/control)
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/tdome/tdomeobserve)
 "fC" = (
-/obj/structure/machinery/telecomms/server/presets/centcomm,
+/obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
-/area/centcom/control)
+/area/tdome/tdomeobserve)
 "fD" = (
-/obj/structure/machinery/account_database{
-	name = "CentComm Accounts database"
-	},
+/obj/structure/machinery/vending/cigarette/free,
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
-/area/centcom/control)
+/area/tdome/tdomeobserve)
 "fH" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /obj/effect/decal/warning_stripes{
@@ -799,59 +837,60 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_small)
 "fL" = (
-/turf/open/floor/carpet{
-	dir = 10;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHWEST)"
+/obj/effect/landmark/thunderdome/one,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
-/area/centcom/living)
+/area/tdome/tdome1)
 "fM" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
-/turf/open/floor/carpet{
-	dir = 4;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (EAST)"
-	},
-/area/centcom/living)
-"fN" = (
-/obj/effect/step_trigger/message/memorial,
-/turf/open/floor/carpet{
-	dir = 1;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (NORTH)"
-	},
-/area/centcom/living)
+/area/tdome/tdomeobserve)
 "fO" = (
-/obj/effect/step_trigger/message/memorial,
-/turf/open/floor/carpet{
-	icon_state = "carpetside"
+/turf/open/floor/almayer{
+	icon_state = "bluefull";
+	tag = "icon-bluefull"
 	},
-/area/centcom/living)
+/area/tdome/tdome1)
 "fP" = (
-/turf/open/floor/carpet{
-	icon_state = "carpetside"
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
-/area/centcom/living)
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/tdome/tdomeobserve)
 "fQ" = (
-/obj/structure/machinery/telecomms/relay/preset/centcom,
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/area/centcom/control)
+/turf/closed/wall/almayer/outer,
+/area/tdome/tdomeobserve)
 "fR" = (
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/obj/structure/disposaloutlet{
+	dir = 4
 	},
-/area/centcom/control)
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/space,
+/area/space)
 "fW" = (
-/turf/open/floor/carpet{
-	dir = 6;
-	icon_state = "carpetside";
-	tag = "icon-carpetside (SOUTHEAST)"
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/clothing/head/collectable/tophat{
+	desc = "A top hat, placed here as a special thanks to someone often overlooked and forgotten. But who the community owes a thank you anyways.";
+	name = "Penguin"
 	},
+/turf/open/floor/wood,
 /area/centcom/living)
 "gb" = (
 /obj/structure/machinery/autolathe/full,
@@ -861,169 +900,49 @@
 	},
 /area/adminlevel/ert_station)
 "gd" = (
-/obj/structure/machinery/telecomms/allinone/interceptor,
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/snacks/muffin{
+	desc = "Another special homage to someone never thanked enough.";
+	name = "Sgt. Man"
 	},
-/area/centcom/control)
+/turf/open/floor/wood,
+/area/centcom/living)
 "ge" = (
-/obj/structure/machinery/telecomms/broadcaster/preset_cent,
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/turf/open/floor/carpet{
+	dir = 9;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (NORTHWEST)"
 	},
-/area/centcom/control)
+/area/centcom/living)
 "gf" = (
-/obj/structure/machinery/telecomms/hub/preset_cent,
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/turf/open/floor/carpet{
+	dir = 1;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (NORTH)"
 	},
-/area/centcom/control)
+/area/centcom/living)
 "gg" = (
-/obj/structure/machinery/computer/rdservercontrol{
-	name = "Master R&amp;D Server Controller"
+/turf/open/floor/carpet{
+	dir = 5;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (NORTHEAST)"
 	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/centcom/control)
+/area/centcom/living)
 "gh" = (
-/obj/structure/machinery/r_n_d/server/centcom,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/centcom/control)
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood,
+/area/centcom/living)
 "gm" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "8"
-	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
+/turf/open/floor/plating/plating_catwalk,
+/area/supply/dock)
 "gn" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "7"
-	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
+/area/tdome/tdomeobserve)
 "go" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "9"
-	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
-"gp" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "11"
-	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
-"gq" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "12"
-	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
-"gs" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "10"
-	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
-"gu" = (
-/turf/open/floor/plating,
-/area/admin/droppod/holding)
-"gv" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "14"
-	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
-"gw" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "15"
-	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
-"gx" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "escapeshuttle_leave";
@@ -1039,7 +958,14 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
-"gy" = (
+"gp" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 1;
+	tag = "icon-wooden_chair_wings (NORTH)"
+	},
+/turf/open/floor/wood,
+/area/centcom/living)
+"gq" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "escapeshuttle_leave";
@@ -1055,6 +981,40 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
+"gs" = (
+/turf/open/floor/carpet{
+	dir = 8;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (WEST)"
+	},
+/area/centcom/living)
+"gu" = (
+/turf/open/floor/wood,
+/area/centcom/living)
+"gv" = (
+/turf/open/floor/carpet,
+/area/centcom/living)
+"gw" = (
+/turf/open/floor/carpet{
+	dir = 4;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (EAST)"
+	},
+/area/centcom/living)
+"gx" = (
+/turf/open/floor/almayer{
+	icon_state = "test_floor5";
+	tag = "icon-test_floor5"
+	},
+/area/supply/dock)
+"gy" = (
+/obj/effect/step_trigger/message/memorial,
+/turf/open/floor/carpet{
+	dir = 1;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (NORTH)"
+	},
+/area/centcom/living)
 "gA" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer{
@@ -1529,8 +1489,9 @@
 /turf/open/floor/plating,
 /area/shuttle/distress/start_big)
 "ja" = (
-/turf/open/floor/plating,
-/area/admin/droppod/loading)
+/obj/docking_port/stationary/vehicle_elevator/adminlevel,
+/turf/open/space/basic,
+/area/space)
 "jc" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy12"
@@ -3187,6 +3148,12 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
+"nZ" = (
+/obj/structure/machinery/chem_storage/misc,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/centcom/control)
 "oa" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/emails{
@@ -3412,6 +3379,12 @@
 	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"rx" = (
+/obj/structure/machinery/r_n_d/server/centcom,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/centcom/control)
 "rF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -3465,9 +3438,14 @@
 	},
 /area/adminlevel/ert_station)
 "tx" = (
-/obj/structure/machinery/hologram/holopad,
-/turf/open/floor/carpet,
-/area/centcom/living)
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigar,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/tdome/tdomeobserve)
 "tP" = (
 /obj/structure/machinery/computer/security/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
@@ -3641,12 +3619,16 @@
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
 "wj" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y2";
-	tag = "icon-sterile_green_corner (NORTH)"
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
-/area/tdome)
+/turf/open/floor/carpet{
+	dir = 8;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (WEST)"
+	},
+/area/centcom/living)
 "wp" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -3669,13 +3651,9 @@
 	},
 /area/adminlevel/ert_station)
 "wv" = (
-/obj/structure/machinery/vending/snack,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/tdome/tdomeobserve)
+/obj/structure/prop/almayer/ship_memorial/centcomm,
+/turf/open/floor/carpet,
+/area/centcom/living)
 "wA" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/emails{
@@ -3896,6 +3874,11 @@
 "AS" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdome2)
+"Bh" = (
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/tdome)
 "Bw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -3905,17 +3888,12 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "BD" = (
-/obj/effect/landmark/thunderdome/two,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-W"
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/tdome/tdome2)
+/turf/open/floor/carpet,
+/area/centcom/living)
 "BN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -3932,16 +3910,9 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "BU" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_20";
-	tag = "icon-plant-10"
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/tdome/tdomeobserve)
+/obj/structure/machinery/hologram/holopad,
+/turf/open/floor/carpet,
+/area/centcom/living)
 "BV" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /turf/open/floor/prison{
@@ -4032,11 +4003,9 @@
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
 "Dq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall/almayer/outer,
-/area/tdome/tdomeobserve)
+/obj/structure/prop/almayer/ship_memorial/centcomm/admin,
+/turf/open/floor/carpet,
+/area/centcom/living)
 "Ds" = (
 /obj/structure/sign/safety/galley{
 	pixel_x = -17
@@ -4078,18 +4047,39 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "DV" = (
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
-/area/tdome)
+/turf/open/floor/carpet{
+	dir = 4;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (EAST)"
+	},
+/area/centcom/living)
 "Ee" = (
-/obj/effect/landmark/thunderdome/one,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door_control{
+	id = "tdome_t1";
+	name = "Team 1 Shutters (Left)";
+	pixel_y = -3
+	},
+/obj/structure/machinery/door_control{
+	id = "tdome_t2";
+	name = "Team 2 Shutters (Right)";
+	pixel_y = 3
+	},
+/obj/structure/machinery/door_control{
+	id = "tdome_observer";
+	name = "Observer Shutters";
+	pixel_y = 9
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
 	tag = "icon-blue (NORTHEAST)"
 	},
-/area/tdome/tdome1)
+/area/tdome/tdomeobserve)
 "Ef" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -4182,12 +4172,9 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "Fw" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/fancy/cigar,
+/obj/structure/bed/chair/comfy/black,
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "tcomms"
 	},
 /area/tdome/tdomeobserve)
 "FB" = (
@@ -4343,8 +4330,12 @@
 	},
 /area/shuttle/distress/start_small)
 "HB" = (
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod18)
+/turf/open/floor/carpet{
+	dir = 10;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (SOUTHWEST)"
+	},
+/area/centcom/living)
 "HL" = (
 /obj/structure/sign/catclock{
 	pixel_x = 32
@@ -4412,6 +4403,13 @@
 	tag = "icon-red"
 	},
 /area/adminlevel/ert_station)
+"Iv" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "w-y2";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/tdome)
 "ID" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
@@ -4466,6 +4464,12 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"JR" = (
+/obj/structure/machinery/telecomms/broadcaster/preset_cent,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/centcom/control)
 "JT" = (
 /obj/structure/sink{
 	dir = 8;
@@ -4636,16 +4640,17 @@
 	},
 /area/shuttle/distress/start_pmc)
 "LO" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 4
+/obj/effect/step_trigger/message/memorial,
+/turf/open/floor/carpet{
+	icon_state = "carpetside"
 	},
+/area/centcom/living)
+"LQ" = (
+/obj/structure/machinery/telecomms/allinone/interceptor,
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "mono"
 	},
-/area/tdome/tdomeobserve)
+/area/centcom/control)
 "LR" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
@@ -4760,13 +4765,10 @@
 /turf/closed/wall,
 /area/adminlevel/ert_station)
 "NU" = (
-/obj/structure/machinery/vending/cola,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+/turf/open/floor/carpet{
+	icon_state = "carpetside"
 	},
-/area/tdome/tdomeobserve)
+/area/centcom/living)
 "NZ" = (
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
@@ -4780,14 +4782,12 @@
 	},
 /area/adminlevel/ert_station)
 "On" = (
-/obj/structure/disposaloutlet{
-	dir = 4
+/turf/open/floor/carpet{
+	dir = 6;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (SOUTHEAST)"
 	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/open/space,
-/area/space)
+/area/centcom/living)
 "Ou" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -4825,17 +4825,8 @@
 	},
 /area/adminlevel/ert_station)
 "OK" = (
-/obj/effect/landmark/thunderdome/one,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/tdome/tdome1)
+/turf/open/floor/plating,
+/area/admin/droppod/loading)
 "OR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -4848,8 +4839,17 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_small)
 "OT" = (
-/turf/closed/wall/almayer/outer,
-/area/tdome/tdomeobserve)
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "tdome_observer";
+	name = "\improper Observer Shutters"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/tdome)
 "Po" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
@@ -4881,12 +4881,11 @@
 	},
 /area/tdome/tdome2)
 "PJ" = (
+/obj/structure/machinery/telecomms/receiver/preset_cent,
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y1";
-	tag = "icon-sterile_green_corner (NORTH)"
+	icon_state = "mono"
 	},
-/area/tdome)
+/area/centcom/control)
 "PK" = (
 /turf/open/space/transit/east/shuttlespace_ew15,
 /area/space)
@@ -4947,11 +4946,18 @@
 	},
 /area/adminlevel/ert_station)
 "QA" = (
-/obj/structure/machinery/chem_storage/misc,
+/obj/structure/machinery/telecomms/bus/preset_cent,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
 /area/centcom/control)
+"QB" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "w-y0";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/tdome)
 "QJ" = (
 /turf/open/floor/almayer{
 	icon_state = "silver";
@@ -4959,11 +4965,11 @@
 	},
 /area/adminlevel/ert_station)
 "QL" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/machinery/telecomms/processor/preset_cent,
 /turf/open/floor/almayer{
-	icon_state = "tcomms"
+	icon_state = "mono"
 	},
-/area/tdome/tdomeobserve)
+/area/centcom/control)
 "Rj" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/almayer{
@@ -5001,6 +5007,14 @@
 	tag = "icon-red"
 	},
 /area/adminlevel/ert_station)
+"RU" = (
+/obj/structure/machinery/computer/rdservercontrol{
+	name = "Master R&amp;D Server Controller"
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/centcom/control)
 "RV" = (
 /obj/structure/closet{
 	name = "boxing attire"
@@ -5015,32 +5029,19 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "Sb" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 4;
-	id = "tdome_t1";
-	name = "\improper Team 1 Shutters"
+/obj/structure/machinery/telecomms/server/presets/centcomm,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/centcom/control)
+"Sk" = (
+/obj/structure/machinery/account_database{
+	name = "CentComm Accounts database"
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+	icon_state = "mono"
 	},
-/area/tdome)
-"Sk" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "17"
-	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
+/area/centcom/control)
 "Sl" = (
 /obj/structure/machinery/cm_vending/clothing/antag{
 	name = "\improper Response Team Automated Equipment Rack"
@@ -5106,28 +5107,11 @@
 	},
 /area/adminlevel/ert_station)
 "Tm" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_control{
-	id = "tdome_t1";
-	name = "Team 1 Shutters (Left)";
-	pixel_y = -3
-	},
-/obj/structure/machinery/door_control{
-	id = "tdome_t2";
-	name = "Team 2 Shutters (Right)";
-	pixel_y = 3
-	},
-/obj/structure/machinery/door_control{
-	id = "tdome_observer";
-	name = "Observer Shutters";
-	pixel_y = 9
-	},
+/obj/structure/machinery/chem_storage,
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "mono"
 	},
-/area/tdome/tdomeobserve)
+/area/centcom/control)
 "TA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -5143,8 +5127,10 @@
 	},
 /area/adminlevel/ert_station)
 "TF" = (
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/almayer/evacuation/stranded/pod17)
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/centcom/control)
 "TH" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -5284,21 +5270,16 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Vp" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = "tdome_t1";
+	name = "\improper Team 1 Shutters"
 	},
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
-	name = "18"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
 	},
-/turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
+/area/tdome)
 "Vu" = (
 /obj/structure/machinery/shower,
 /obj/item/tool/soap/syndie,
@@ -5312,13 +5293,16 @@
 /turf/closed/wall,
 /area/adminlevel/ert_station)
 "VD" = (
-/obj/structure/machinery/vending/cigarette/free,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
 	tag = "icon-blue (NORTHEAST)"
 	},
-/area/tdome/tdomeobserve)
+/area/tdome)
 "VI" = (
 /turf/open/floor/almayer{
 	icon_state = "silvercorner";
@@ -5367,11 +5351,16 @@
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
 "WH" = (
-/obj/structure/machinery/chem_storage,
-/turf/open/floor/almayer{
-	icon_state = "mono"
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = "tdome_t2";
+	name = "\improper Team 2 Shutters"
 	},
-/area/centcom/control)
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/tdome)
 "WK" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -5508,12 +5497,17 @@
 	},
 /area/adminlevel/ert_station)
 "YP" = (
+/obj/effect/landmark/thunderdome/one,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
 	tag = "icon-blue (NORTHEAST)"
 	},
-/area/tdome/tdomeobserve)
+/area/tdome/tdome1)
 "YU" = (
 /turf/closed/wall,
 /area/adminlevel/ert_station)
@@ -5527,11 +5521,11 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "Zd" = (
+/obj/structure/machinery/telecomms/relay/preset/centcom,
 /turf/open/floor/almayer{
-	icon_state = "bluefull";
-	tag = "icon-bluefull"
+	icon_state = "mono"
 	},
-/area/tdome/tdome1)
+/area/centcom/control)
 "Zh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/surgical_tray,
@@ -5563,6 +5557,12 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Zs" = (
+/obj/structure/machinery/telecomms/hub/preset_cent,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/centcom/control)
 "Zv" = (
 /obj/structure/machinery/autodoc_console,
 /turf/open/floor/almayer{
@@ -5602,6 +5602,16 @@
 /area/adminlevel/ert_station)
 
 (1,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -5754,7 +5764,8 @@ hp
 kx
 "}
 (2,1,1) = {"
-aa
+as
+as
 aX
 aX
 aX
@@ -5800,6 +5811,9 @@ aX
 aX
 aX
 aa
+as
+as
+as
 aa
 aa
 aa
@@ -5809,6 +5823,12 @@ aa
 aa
 aa
 aa
+aC
+aC
+aC
+aC
+aC
+aC
 aC
 aC
 aC
@@ -5906,7 +5926,8 @@ hp
 hp
 "}
 (3,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -5952,6 +5973,9 @@ bz
 bz
 aX
 aa
+as
+as
+as
 aa
 aa
 aa
@@ -5964,6 +5988,12 @@ aC
 aC
 aa
 aa
+aa
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -6058,7 +6088,8 @@ hp
 hp
 "}
 (4,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -6076,9 +6107,18 @@ aX
 aX
 aX
 aX
-dD
+dw
 bz
 bz
+aX
+aX
+aX
+aX
+aX
+ej
+bz
+bz
+aX
 aX
 aX
 aX
@@ -6086,24 +6126,18 @@ aX
 aX
 go
 bz
-bz
 aX
 aX
 aX
 aX
 aX
-aX
-gx
-bz
-aX
-aX
-aX
-aX
-aX
-Sk
+eU
 bz
 aX
 aa
+as
+as
+as
 aa
 aa
 aa
@@ -6115,6 +6149,12 @@ aa
 aC
 aa
 aa
+AS
+AS
+AS
+AS
+AS
+AS
 AS
 AS
 AS
@@ -6210,52 +6250,56 @@ hp
 hp
 "}
 (5,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aX
+aX
+aX
+aX
+aX
+cA
+bz
+bz
+aX
+bU
+bU
+bU
+bU
+aX
+bz
+bz
+aX
+bW
+bW
+bW
+bW
+aX
+bz
+bz
+aX
+dg
+dg
+dg
+dg
+dg
+aX
+bz
+aX
+ca
+ca
+ca
+ca
+aX
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-aX
-aX
-aX
-aX
-aX
-bY
-bz
-bz
-aX
-bW
-bW
-bW
-bW
-aX
-bz
-bz
-aX
-dg
-dg
-dg
-dg
-aX
-bz
-bz
-aX
-ca
-ca
-ca
-ca
-ca
-aX
-bz
-aX
-TF
-TF
-TF
-TF
-aX
-bz
-aX
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -6268,6 +6312,12 @@ aC
 aa
 AS
 AS
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
 Kq
 Kq
 Kq
@@ -6362,52 +6412,56 @@ hp
 hp
 "}
 (6,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+ag
+ag
+ag
+ag
+ag
+aX
+bz
+bz
+aX
+bU
+bU
+bU
+bU
+aX
+bz
+bz
+aX
+bW
+bW
+bW
+bW
+aX
+bz
+bz
+aX
+dg
+dg
+dg
+dg
+dg
+aX
+bz
+aX
+ca
+ca
+ca
+ca
+aX
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-bU
-bU
-bU
-bU
-bU
-aX
-bz
-bz
-aX
-bW
-bW
-bW
-bW
-aX
-bz
-bz
-aX
-dg
-dg
-dg
-dg
-aX
-bz
-bz
-aX
-ca
-ca
-ca
-ca
-ca
-aX
-bz
-aX
-TF
-TF
-TF
-TF
-aX
-bz
-aX
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -6420,6 +6474,12 @@ aC
 aa
 AS
 Kq
+PF
+PF
+PF
+PF
+PF
+PF
 PF
 PF
 PF
@@ -6514,52 +6574,56 @@ hp
 hp
 "}
 (7,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+ag
+ag
+ag
+ag
+ag
+aX
+bz
+bz
+aX
+bU
+bU
+bU
+bU
+aX
+bz
+bz
+aX
+bW
+bW
+bW
+bW
+aX
+bz
+bz
+aX
+dg
+dg
+dg
+dg
+dg
+aX
+bz
+aX
+ca
+ca
+ca
+ca
+aX
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-bU
-bU
-bU
-bU
-bU
-aX
-bz
-bz
-aX
-bW
-bW
-bW
-bW
-aX
-bz
-bz
-aX
-dg
-dg
-dg
-dg
-aX
-bz
-bz
-aX
-ca
-ca
-ca
-ca
-ca
-aX
-bz
-aX
-TF
-TF
-TF
-TF
-aX
-bz
-aX
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -6572,6 +6636,12 @@ aC
 aa
 AS
 Kq
+PF
+PF
+PF
+PF
+PF
+PF
 PF
 PF
 PF
@@ -6666,52 +6736,56 @@ hp
 hp
 "}
 (8,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+ag
+ag
+ag
+ag
+ag
+aX
+bz
+bz
+aX
+bU
+bU
+bU
+bU
+aX
+bz
+bz
+aX
+bW
+bW
+bW
+bW
+aX
+bz
+bz
+aX
+dg
+dg
+dg
+dg
+dg
+aX
+bz
+aX
+ca
+ca
+ca
+ca
+aX
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-bU
-bU
-bU
-bU
-bU
-aX
-bz
-bz
-aX
-bW
-bW
-bW
-bW
-aX
-bz
-bz
-aX
-dg
-dg
-dg
-dg
-aX
-bz
-bz
-aX
-ca
-ca
-ca
-ca
-ca
-aX
-bz
-aX
-TF
-TF
-TF
-TF
-aX
-bz
-aX
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -6724,6 +6798,12 @@ aC
 aa
 AS
 Kq
+PF
+PF
+PF
+PF
+PF
+PF
 PF
 PF
 PF
@@ -6818,52 +6898,56 @@ hp
 hp
 "}
 (9,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+ag
+ag
+ag
+ag
+ag
+aX
+bz
+bz
+aX
+bU
+bU
+bU
+bU
+aX
+bz
+bz
+aX
+bW
+bW
+bW
+bW
+aX
+bz
+bz
+aX
+aX
+aX
+aX
+aX
+aX
+aX
+bz
+aX
+ca
+ca
+ca
+ca
+aX
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-bU
-bU
-bU
-bU
-bU
-aX
-bz
-bz
-aX
-bW
-bW
-bW
-bW
-aX
-bz
-bz
-aX
-dg
-dg
-dg
-dg
-aX
-bz
-bz
-aX
-aX
-aX
-aX
-aX
-aX
-aX
-bz
-aX
-TF
-TF
-TF
-TF
-aX
-bz
-aX
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -6876,6 +6960,12 @@ aC
 aa
 AS
 Kq
+PF
+PF
+PF
+PF
+PF
+PF
 PF
 PF
 PF
@@ -6970,7 +7060,8 @@ hp
 hp
 "}
 (10,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -7016,6 +7107,9 @@ aX
 bz
 aX
 aa
+as
+as
+as
 aa
 aa
 aa
@@ -7028,11 +7122,17 @@ aa
 aa
 AS
 Kq
-BD
-BD
-BD
-BD
-BD
+PF
+PF
+PF
+PF
+PF
+PF
+PF
+PF
+PF
+PF
+PF
 Kq
 AS
 aa
@@ -7122,7 +7222,8 @@ hp
 hp
 "}
 (11,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -7168,29 +7269,38 @@ bz
 bz
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aC
+as
+as
+AS
+Kq
+PF
+PF
+PF
+PF
+PF
+PF
+PF
+PF
+PF
+PF
+PF
+Kq
+AS
+as
+as
 aC
-aa
-ab
-ab
-ab
-Sb
-Sb
-Sb
-Sb
-Sb
-ab
-ab
-ab
-aa
-aC
-aC
+as
 aa
 aa
 aa
@@ -7274,7 +7384,8 @@ hp
 hp
 "}
 (12,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -7320,29 +7431,38 @@ bz
 bz
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aC
-aa
-aa
-ab
-ad
-ad
+as
+as
+AS
+Kq
 az
 az
 az
 az
 az
-ad
-ad
-ab
-aa
-aa
+az
+az
+az
+az
+az
+az
+Kq
+AS
+as
+as
 aC
+as
 aa
 aa
 aa
@@ -7426,8 +7546,18 @@ hp
 hp
 "}
 (13,1,1) = {"
-aa
+as
+as
 aX
+bz
+bz
+aX
+aX
+aX
+aX
+aX
+bY
+bz
 bz
 bz
 aX
@@ -7438,7 +7568,7 @@ aX
 cB
 bz
 bz
-bz
+aX
 aX
 aX
 aX
@@ -7446,21 +7576,12 @@ aX
 aX
 dH
 bz
-bz
 aX
 aX
 aX
 aX
 aX
-aX
-gs
-bz
-aX
-aX
-aX
-aX
-aX
-gv
+eE
 bz
 bz
 aX
@@ -7468,10 +7589,13 @@ aX
 aX
 aX
 aX
-Vp
+eZ
 bz
 aX
 aa
+as
+as
+as
 aa
 aa
 aa
@@ -7479,21 +7603,27 @@ aa
 aa
 aa
 aC
+aC
 aa
 ab
 ab
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+ab
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+ab
 ab
 ab
 aa
+aC
 aC
 aa
 aa
@@ -7578,52 +7708,56 @@ hp
 hp
 "}
 (14,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aA
+aA
+aA
+aA
+aX
+bz
+bz
+bz
+aX
+bV
+bV
+bV
+bV
+aX
+bz
+bz
+aX
+bX
+bX
+bX
+bX
+bX
+aX
+bz
+aX
+dh
+dh
+dh
+dh
+aX
+bz
+bz
+aX
+cb
+cb
+cb
+cb
+aX
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-bV
-bV
-bV
-bV
-aX
-bz
-bz
-bz
-aX
-bX
-bX
-bX
-bX
-aX
-bz
-bz
-aX
-dh
-dh
-dh
-dh
-dh
-aX
-bz
-aX
-cb
-cb
-cb
-cb
-aX
-bz
-bz
-aX
-HB
-HB
-HB
-HB
-aX
-bz
-aX
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -7632,19 +7766,25 @@ aa
 aa
 aC
 aa
+aa
 ab
 ad
 ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+VD
+VD
+VD
+VD
+VD
+VD
+VD
+VD
+VD
+VD
+VD
 ad
 ad
 ab
+aa
 aa
 aC
 aa
@@ -7730,52 +7870,56 @@ hp
 hp
 "}
 (15,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aA
+aA
+aA
+aA
+aX
+bz
+bz
+bz
+aX
+bV
+bV
+bV
+bV
+aX
+bz
+bz
+aX
+bX
+bX
+bX
+bX
+bX
+aX
+bz
+aX
+dh
+dh
+dh
+dh
+aX
+bz
+bz
+aX
+cb
+cb
+cb
+cb
+aX
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-bV
-bV
-bV
-bV
-aX
-bz
-bz
-bz
-aX
-bX
-bX
-bX
-bX
-aX
-bz
-bz
-aX
-dh
-dh
-dh
-dh
-dh
-aX
-bz
-aX
-cb
-cb
-cb
-cb
-aX
-bz
-bz
-aX
-HB
-HB
-HB
-HB
-aX
-bz
-aX
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -7784,6 +7928,7 @@ aa
 aa
 aC
 aa
+ab
 ab
 ad
 ad
@@ -7796,6 +7941,11 @@ ad
 ad
 ad
 ad
+ad
+ad
+ad
+ad
+ab
 ab
 aa
 aC
@@ -7882,61 +8032,71 @@ hp
 hp
 "}
 (16,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aA
+aA
+aA
+aA
+aX
+bz
+bz
+bz
+aX
+bV
+bV
+bV
+bV
+aX
+bz
+bz
+aX
+bX
+bX
+bX
+bX
+bX
+aX
+bz
+aX
+dh
+dh
+dh
+dh
+aX
+bz
+bz
+aX
+cb
+cb
+cb
+cb
+aX
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-bV
-bV
-bV
-bV
-aX
-bz
-bz
-bz
-aX
-bX
-bX
-bX
-bX
-aX
-bz
-bz
-aX
-dh
-dh
-dh
-dh
-dh
-aX
-bz
-aX
-cb
-cb
-cb
-cb
-aX
-bz
-bz
-aX
-HB
-HB
-HB
-HB
-aX
-bz
-aX
+as
+as
+as
 aa
-aC
-aC
-aC
-aC
-aC
-aC
+aa
+aa
+aa
+aa
+aa
 aC
 aa
 ab
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 ad
 ad
@@ -8034,61 +8194,71 @@ hp
 hp
 "}
 (17,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aA
+aA
+aA
+aA
+aX
+bz
+bz
+bz
+aX
+bV
+bV
+bV
+bV
+aX
+bz
+bz
+aX
+bX
+bX
+bX
+bX
+bX
+aX
+bz
+aX
+dh
+dh
+dh
+dh
+aX
+bz
+bz
+aX
+cb
+cb
+cb
+cb
+aX
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-bV
-bV
-bV
-bV
-aX
-bz
-bz
-bz
-aX
-bX
-bX
-bX
-bX
-aX
-bz
-bz
-aX
-dh
-dh
-dh
-dh
-dh
-aX
-bz
-aX
-cb
-cb
-cb
-cb
-aX
-bz
-bz
-aX
-HB
-HB
-HB
-HB
-aX
-bz
-aX
+as
+as
+as
+aa
+aa
+aa
+aa
+aa
 aa
 aC
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 ab
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 ad
 ad
@@ -8186,61 +8356,71 @@ hp
 hp
 "}
 (18,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aA
+aA
+aA
+aA
+aX
+bz
+bz
+bz
+aX
+bV
+bV
+bV
+bV
+aX
+bz
+bz
+aX
+aX
+aX
+aX
+aX
+aX
+aX
+bz
+aX
+dh
+dh
+dh
+dh
+aX
+bz
+bz
+aX
+cb
+cb
+cb
+cb
+aX
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-bV
-bV
-bV
-bV
-aX
-bz
-bz
-bz
-aX
-bX
-bX
-bX
-bX
-aX
-bz
-bz
-aX
-aX
-aX
-aX
-aX
-aX
-aX
-bz
-aX
-cb
-cb
-cb
-cb
-aX
-bz
-bz
-aX
-HB
-HB
-HB
-HB
-aX
-bz
-aX
-aa
+as
+as
+as
+aC
+aC
+aC
+aC
+aC
+aC
 aC
 aa
-OT
-OT
-OT
-OT
-OT
-OT
 ab
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 ad
 ad
@@ -8338,7 +8518,8 @@ hp
 hp
 "}
 (19,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -8384,21 +8565,30 @@ aX
 bz
 aX
 aa
+as
+as
+as
 aC
 aa
-OT
-BU
-YP
-YP
-qz
-Tm
-ag
+aa
+aa
+aa
+aa
+aa
+aa
+ab
 ad
 ad
 ad
 ad
 ad
-DV
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 ad
 ad
@@ -8490,7 +8680,8 @@ hp
 hp
 "}
 (20,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -8536,28 +8727,37 @@ bz
 bz
 aX
 aa
+as
+as
+as
 aC
-aa
-OT
-NU
-YP
-YP
-YP
-QL
-ag
+as
+as
+as
+as
+as
+as
+as
+ab
 ad
 ad
 ad
 ad
-DV
-aE
-DV
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 ad
 ad
 ad
 ab
-aa
+as
 aC
 aa
 aa
@@ -8642,7 +8842,8 @@ hp
 hp
 "}
 (21,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -8688,28 +8889,37 @@ bz
 bz
 aX
 aa
+as
+as
+as
 aC
-aa
-OT
-VD
-YP
-YP
-YP
-QL
-ag
+as
+as
+as
+as
+as
+as
+as
+ab
 ad
 ad
 ad
 ad
-DV
-PJ
-DV
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 ad
 ad
 ad
 ab
-aa
+as
 aC
 aa
 aa
@@ -8794,74 +9004,84 @@ hp
 hp
 "}
 (22,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aX
+aX
+aX
+aX
+cz
+bz
+bz
+bz
+aX
+aX
+aX
+aX
+aX
+aX
+dD
+bz
+aX
+aX
+aX
+aX
+aX
+ew
+bz
+bz
+aX
+aX
+aX
+aX
+aX
+eF
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-aX
-aX
-aX
-aX
-cC
-bz
-bz
-bz
-aX
-aX
-aX
-aX
-aX
-aX
-gn
-bz
-aX
-aX
-aX
-aX
-aX
-gp
-bz
-bz
-aX
-aX
-aX
-aX
-aX
-gw
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-aX
-aa
+as
+as
+as
 aC
-aa
-OT
-wv
-YP
-YP
-YP
-QL
-ag
+as
+as
+as
+as
+as
+as
+as
+ab
 ad
 ad
 ad
 ad
-DV
-wj
-DV
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 ad
 ad
 ad
 ab
-aa
+as
 aC
 aa
 aa
@@ -8946,67 +9166,77 @@ hp
 hp
 "}
 (23,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aB
+aB
+aB
+aB
+aX
+bz
+bz
+bz
+aX
+ch
+ch
+ch
+ch
+ch
+aX
+bz
+aX
+cj
+cj
+cj
+cj
+aX
+bz
+bz
+aX
+di
+di
+di
+di
+aX
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-ch
-ch
-ch
-ch
-aX
-bz
-bz
-bz
-aX
-cj
-cj
-cj
-cj
-cj
-aX
-bz
-aX
-di
-di
-di
-di
-aX
-bz
-bz
-aX
-cz
-cz
-cz
-cz
-aX
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-aX
-aa
+as
+as
+as
 aC
 aa
-OT
-LO
-YP
-YP
-Fw
-Tm
-ag
+fy
+fy
+fy
+fy
+fy
+fy
+ab
 ad
 ad
 ad
 ad
 ad
-DV
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 ad
 ad
@@ -9098,64 +9328,74 @@ hp
 hp
 "}
 (24,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aB
+aB
+aB
+aB
+aX
+bz
+bz
+bz
+aX
+ch
+ch
+ch
+ch
+ch
+aX
+bz
+aX
+cj
+cj
+cj
+cj
+aX
+bz
+bz
+aX
+di
+di
+di
+di
+aX
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-ch
-ch
-ch
-ch
-aX
-bz
-bz
-bz
-aX
-cj
-cj
-cj
-cj
-cj
-aX
-bz
-aX
-di
-di
-di
-di
-aX
-bz
-bz
-aX
-cz
-cz
-cz
-cz
-aX
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-aX
-aa
+as
+as
+as
 aC
 aa
+fy
+fB
+gn
+gn
+qz
+Ee
 OT
-Dq
-OT
-OT
-OT
-OT
-ab
 ad
 ad
 ad
+ad
+ad
+ad
+ad
+ad
+Bh
 ad
 ad
 ad
@@ -9250,65 +9490,75 @@ hp
 hp
 "}
 (25,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aB
+aB
+aB
+aB
+aX
+bz
+bz
+bz
+aX
+ch
+ch
+ch
+ch
+ch
+aX
+bz
+aX
+cj
+cj
+cj
+cj
+aX
+bz
+bz
+aX
+di
+di
+di
+di
+aX
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-ch
-ch
-ch
-ch
-aX
-bz
-bz
-bz
-aX
-cj
-cj
-cj
-cj
-cj
-aX
-bz
-aX
-di
-di
-di
-di
-aX
-bz
-bz
-aX
-cz
-cz
-cz
-cz
-aX
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-aX
-aa
+as
+as
+as
 aC
 aa
-aa
-On
-aa
-aa
-aa
-aa
-ab
+fy
+fC
+gn
+gn
+gn
+Fw
+OT
 ad
 ad
 ad
 ad
+ad
+ad
+ad
+Bh
+QB
+Bh
 ad
 ad
 ad
@@ -9402,65 +9652,75 @@ hp
 hp
 "}
 (26,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aB
+aB
+aB
+aB
+aX
+bz
+bz
+bz
+aX
+ch
+ch
+ch
+ch
+ch
+aX
+bz
+aX
+cj
+cj
+cj
+cj
+aX
+bz
+bz
+aX
+di
+di
+di
+di
+aX
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-ch
-ch
-ch
-ch
-aX
-bz
-bz
-bz
-aX
-cj
-cj
-cj
-cj
-cj
-aX
-bz
-aX
-di
-di
-di
-di
-aX
-bz
-bz
-aX
-cz
-cz
-cz
-cz
-aX
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-aX
-aa
+as
+as
+as
 aC
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-ab
+fy
+fD
+gn
+gn
+gn
+Fw
+OT
 ad
 ad
 ad
 ad
+ad
+ad
+ad
+Bh
+cK
+Bh
 ad
 ad
 ad
@@ -9554,65 +9814,75 @@ hp
 hp
 "}
 (27,1,1) = {"
+as
+as
+aX
+bz
+bz
+aX
+aB
+aB
+aB
+aB
+aX
+bz
+bz
+bz
+aX
+aX
+aX
+aX
+aX
+aX
+aX
+bz
+aX
+cj
+cj
+cj
+cj
+aX
+bz
+bz
+aX
+di
+di
+di
+di
+aX
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+aX
 aa
-aX
-bz
-bz
-aX
-ch
-ch
-ch
-ch
-aX
-bz
-bz
-bz
-aX
-aX
-aX
-aX
-aX
-aX
-aX
-bz
-aX
-di
-di
-di
-di
-aX
-bz
-bz
-aX
-cz
-cz
-cz
-cz
-aX
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-aX
-aa
-aC
-aC
-aC
-aC
-aC
-aC
+as
+as
+as
 aC
 aa
-ab
+fy
+fM
+gn
+gn
+gn
+Fw
+OT
 ad
 ad
 ad
 ad
+ad
+ad
+ad
+Bh
+Iv
+Bh
 ad
 ad
 ad
@@ -9706,7 +9976,8 @@ hp
 hp
 "}
 (28,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -9752,18 +10023,27 @@ bz
 bz
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
 aC
 aa
-ab
+fy
+fP
+gn
+gn
+tx
+Ee
+OT
 ad
 ad
 ad
+ad
+ad
+ad
+ad
+ad
+Bh
 ad
 ad
 ad
@@ -9858,7 +10138,8 @@ hp
 hp
 "}
 (29,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -9904,16 +10185,18 @@ bz
 bz
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
 aC
 aa
+fy
+fQ
+fy
+fy
+fy
+fy
 ab
-ab
 ad
 ad
 ad
@@ -9923,7 +10206,14 @@ ad
 ad
 ad
 ad
-ab
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 ab
 aa
 aC
@@ -10010,7 +10300,8 @@ hp
 hp
 "}
 (30,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -10056,28 +10347,37 @@ bz
 bz
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
 aC
-aa
-aa
+as
+as
+fR
+as
+as
+as
+as
 ab
 ad
 ad
-aA
-aA
-aA
-aA
-aA
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 ad
 ab
-aa
-aa
+as
 aC
 aa
 aC
@@ -10162,11 +10462,20 @@ hp
 hp
 "}
 (31,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
 aX
+aX
+aX
+aX
+aX
+aX
+cC
+bz
+bz
 aX
 aX
 aX
@@ -10180,9 +10489,10 @@ aX
 aX
 aX
 aX
-gm
+ey
 bz
 bz
+aX
 aX
 aX
 aX
@@ -10191,15 +10501,6 @@ aX
 gq
 bz
 bz
-aX
-aX
-aX
-aX
-aX
-aX
-gy
-bz
-bz
 bz
 bz
 bz
@@ -10208,28 +10509,37 @@ bz
 bz
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
 aC
-aC
-aa
+as
+as
+as
+as
+as
+as
+as
 ab
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 ab
-ab
-aB
-aB
-aB
-aB
-aB
-ab
-ab
-ab
-aa
-aC
+as
 aC
 aa
 aC
@@ -10314,12 +10624,21 @@ hp
 hp
 "}
 (32,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
 aX
-ci
+aE
+aE
+aE
+aE
+aE
+aX
+bz
+bz
+aX
 ci
 ci
 ci
@@ -10340,15 +10659,7 @@ bZ
 bZ
 bZ
 bZ
-aX
-bz
-bz
-aX
-cA
-cA
-cA
-cA
-cA
+bZ
 aX
 bz
 bz
@@ -10360,29 +10671,38 @@ bz
 bz
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
 aC
-aa
-aa
-ak
-Zd
-OK
-OK
-OK
-OK
-OK
-Zd
-ak
-aa
-aa
+as
+as
+as
+as
+as
+as
+as
+ab
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ab
+as
 aC
-aa
 aa
 aC
 aa
@@ -10466,12 +10786,21 @@ hp
 hp
 "}
 (33,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
 aX
-ci
+aE
+aE
+aE
+aE
+aE
+aX
+bz
+bz
+aX
 ci
 ci
 ci
@@ -10492,15 +10821,7 @@ bZ
 bZ
 bZ
 bZ
-aX
-bz
-bz
-aX
-cA
-cA
-cA
-cA
-cA
+bZ
 aX
 bz
 bz
@@ -10512,29 +10833,38 @@ bz
 bz
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aC
+as
+as
+as
 aC
 aa
-ak
-Zd
-Ee
-Ee
-Ee
-Ee
-Ee
-Zd
-ak
+aa
+as
+aa
+aa
+aa
+aa
+ab
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ab
 aa
 aC
-aC
-aa
 aa
 aC
 aa
@@ -10618,12 +10948,21 @@ hp
 hp
 "}
 (34,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
 aX
-ci
+aE
+aE
+aE
+aE
+aE
+aX
+bz
+bz
+aX
 ci
 ci
 ci
@@ -10644,15 +10983,7 @@ bZ
 bZ
 bZ
 bZ
-aX
-bz
-bz
-aX
-cA
-cA
-cA
-cA
-cA
+bZ
 aX
 bz
 bz
@@ -10664,29 +10995,38 @@ bz
 bz
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aC
-aa
-ak
-Zd
-Ee
-Ee
-Ee
-Ee
-Ee
-Zd
-ak
-aa
+as
+as
+as
 aC
 aa
 aa
+aa
+aa
+aa
+aa
+aa
+ab
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ab
+aa
+aC
 aa
 aC
 aa
@@ -10770,12 +11110,21 @@ aa
 aa
 "}
 (35,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
 aX
-ci
+aE
+aE
+aE
+aE
+aE
+aX
+bz
+bz
+aX
 ci
 ci
 ci
@@ -10796,15 +11145,7 @@ bZ
 bZ
 bZ
 bZ
-aX
-bz
-bz
-aX
-cA
-cA
-cA
-cA
-cA
+bZ
 aX
 bz
 bz
@@ -10816,29 +11157,38 @@ bz
 bz
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+aC
+aC
+aC
+aC
+aC
+aC
 aC
 aa
-ak
-Zd
-Ee
-Ee
-Ee
-Ee
-Ee
-Zd
-ak
+ab
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ab
 aa
 aC
-aa
-aa
 aa
 aC
 aa
@@ -10922,7 +11272,8 @@ aa
 aa
 "}
 (36,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -10932,6 +11283,14 @@ aX
 aX
 aX
 aX
+aX
+bz
+bz
+aX
+ci
+ci
+ci
+ci
 aX
 bz
 bz
@@ -10944,14 +11303,6 @@ aX
 bz
 bz
 aX
-bZ
-bZ
-bZ
-bZ
-aX
-bz
-bz
-aX
 aX
 aX
 aX
@@ -10968,8 +11319,9 @@ bz
 bz
 aX
 aa
-aa
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -10978,19 +11330,27 @@ aa
 aa
 aC
 aa
-ak
-Zd
-Ee
-Ee
-Ee
-Ee
-Ee
-Zd
-ak
+ab
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ab
 aa
 aC
-aa
-aa
 aa
 aC
 aa
@@ -11074,7 +11434,8 @@ aa
 aa
 "}
 (37,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -11120,8 +11481,9 @@ bz
 bz
 aX
 aa
-aa
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -11130,19 +11492,27 @@ aa
 aa
 aC
 aa
-ak
-ak
-Zd
-Zd
-Zd
-Zd
-Zd
-ak
-ak
+ab
+ab
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ab
+ab
 aa
 aC
-aa
-aa
 aa
 aC
 aa
@@ -11226,7 +11596,8 @@ aa
 aa
 "}
 (38,1,1) = {"
-aa
+as
+as
 aX
 bz
 bz
@@ -11272,8 +11643,9 @@ bz
 bz
 aX
 aa
-aa
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -11283,6 +11655,9 @@ aa
 aC
 aa
 aa
+ab
+ad
+ad
 ak
 ak
 ak
@@ -11290,11 +11665,16 @@ ak
 ak
 ak
 ak
+ak
+ak
+ak
+ak
+ad
+ad
+ab
 aa
 aa
 aC
-aa
-aa
 aa
 aC
 aa
@@ -11378,7 +11758,8 @@ aa
 aa
 "}
 (39,1,1) = {"
-aa
+as
+as
 aX
 aX
 aX
@@ -11424,19 +11805,9 @@ aX
 aX
 aX
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aC
-aC
-aa
-aa
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -11446,7 +11817,26 @@ aa
 aC
 aC
 aa
+ab
+ab
+ab
+WH
+WH
+WH
+WH
+WH
+WH
+WH
+WH
+WH
+WH
+WH
+ab
+ab
+ab
 aa
+aC
+aC
 aa
 aC
 aa
@@ -11530,6 +11920,8 @@ aa
 aa
 "}
 (40,1,1) = {"
+as
+as
 aa
 aa
 aa
@@ -11575,9 +11967,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+as
+as
+as
 aa
 aa
 aa
@@ -11586,19 +11978,27 @@ aa
 aa
 aa
 aC
+as
+as
+fx
+fO
+YP
+YP
+YP
+YP
+YP
+YP
+YP
+YP
+YP
+YP
+YP
+fO
+fx
+as
+as
 aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aa
-aa
-aa
+as
 aa
 aC
 aa
@@ -11682,7 +12082,8 @@ aa
 aa
 "}
 (41,1,1) = {"
-aa
+as
+as
 bS
 aY
 aU
@@ -11728,6 +12129,9 @@ as
 as
 as
 aa
+as
+as
+as
 aa
 aa
 aa
@@ -11735,22 +12139,28 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+as
+as
+fx
+fO
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fO
+fx
+as
+as
+aC
+as
 aa
 aC
 aa
@@ -11834,7 +12244,8 @@ aa
 aa
 "}
 (42,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -11881,27 +12292,36 @@ aX
 be
 bh
 bj
+as
+as
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
 aa
+aa
+fx
+fO
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fO
+fx
+aa
+aa
+aC
 aa
 aa
 aC
@@ -11986,7 +12406,8 @@ aa
 aa
 "}
 (43,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -12033,18 +12454,8 @@ aO
 aQ
 aP
 aY
-aa
-aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
 aa
 aa
 aa
@@ -12053,7 +12464,26 @@ aa
 aa
 aa
 aC
+aC
 aa
+fx
+fO
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fO
+fx
+aa
+aC
+aC
 aa
 aa
 aC
@@ -12138,7 +12568,8 @@ aa
 aa
 "}
 (44,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -12185,24 +12616,33 @@ bz
 bM
 bO
 bj
+as
+as
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aC
 aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
+fx
+fO
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fO
+fx
 aa
 aC
 aa
@@ -12290,7 +12730,8 @@ aa
 aa
 "}
 (45,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -12337,24 +12778,33 @@ aO
 aQ
 aP
 aY
+as
+as
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aC
 aa
-ds
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-ds
+fx
+fO
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fO
+fx
 aa
 aC
 aa
@@ -12442,7 +12892,8 @@ aa
 aa
 "}
 (46,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -12489,24 +12940,33 @@ bz
 bM
 bO
 bj
+as
+as
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aC
 aa
-ds
-dy
-dy
-ev
-eW
+fx
+fO
 fL
-dy
-ex
-dy
-ex
-dy
-ex
-dy
-dy
-ds
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fL
+fO
+fx
 aa
 aC
 aa
@@ -12594,7 +13054,8 @@ aa
 aa
 "}
 (47,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -12641,24 +13102,33 @@ aO
 aQ
 aP
 aY
+as
+as
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aC
 aa
-ds
-fu
-ex
-fN
-fv
+fx
+fx
 fO
-dy
-ex
-dy
-ex
-dy
-ex
-dy
-dy
-ds
+fO
+fO
+fO
+fO
+fO
+fO
+fO
+fO
+fO
+fO
+fx
+fx
 aa
 aC
 aa
@@ -12746,7 +13216,8 @@ aa
 aa
 "}
 (48,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -12793,24 +13264,33 @@ aC
 bM
 bO
 bj
+as
+as
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aC
 aa
-ds
+aa
 fx
-ex
-fN
-eY
-fO
-dy
-ex
-dy
-ex
-dy
-ex
-dy
-dy
-ds
+fx
+fx
+fx
+fx
+fx
+fx
+fx
+fx
+fx
+fx
+fx
+fx
+aa
 aa
 aC
 aa
@@ -12898,7 +13378,8 @@ aa
 aa
 "}
 (49,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -12945,25 +13426,34 @@ aC
 aQ
 aP
 aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
+aC
 aa
-ds
-dy
-dy
-eE
-ey
-fP
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-ds
 aa
+aa
+as
+as
+as
+as
+as
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aC
 aC
 aa
 aa
@@ -13050,7 +13540,8 @@ aa
 aa
 "}
 (50,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -13097,26 +13588,35 @@ aC
 bM
 bO
 bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
 aa
 aC
-aa
-ds
-ev
-eU
-eY
-eY
-eY
-eU
-eU
-eU
-eU
-eU
-eU
-eU
-fL
-ds
-aa
 aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aa
 aa
 aa
 aa
@@ -13202,7 +13702,8 @@ aa
 aa
 "}
 (51,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -13249,26 +13750,35 @@ aC
 aQ
 aP
 aY
-aa
-aC
-aa
-ds
-eE
-eY
-eY
-tx
-eY
-eY
-eY
-eY
-eY
-eY
-eY
-eY
-fP
-ds
-aa
-aC
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -13354,7 +13864,8 @@ aa
 aa
 "}
 (52,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -13401,26 +13912,35 @@ aC
 aC
 bO
 bj
-aa
-aC
-aa
-ds
-eF
-eZ
-eY
-eY
-eY
-eZ
-eZ
-eZ
-eZ
-eZ
-eZ
-eZ
-fW
-ds
-aa
-aC
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -13506,7 +14026,8 @@ aa
 aa
 "}
 (53,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -13553,26 +14074,35 @@ eJ
 aC
 aP
 aY
-aa
-aC
-aa
-ds
-dy
-dy
-eE
-ey
-fP
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-ds
-aa
-aC
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -13658,7 +14188,8 @@ aa
 aa
 "}
 (54,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -13705,26 +14236,35 @@ eJ
 aC
 bO
 bj
-aa
-aC
-aa
-ds
-ew
-ex
-fN
-fy
-fO
-dy
-ex
-dy
-ex
-dy
-ex
-dy
-dy
-ds
-aa
-aC
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -13810,7 +14350,8 @@ aa
 aa
 "}
 (55,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -13857,26 +14398,35 @@ eJ
 aC
 aP
 aY
-aa
-aC
-aa
-ds
-ew
-ex
-fN
-eY
-fO
-dy
-ex
-dy
-ex
-dy
-ex
-dy
-dy
-ds
-aa
-aC
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -13962,7 +14512,8 @@ aa
 aa
 "}
 (56,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -14009,26 +14560,35 @@ eJ
 aC
 bO
 bj
-aa
-aC
-aa
-ds
-dy
-dy
-eF
-fM
-fW
-dy
-ex
-dy
-ex
-dy
-ex
-dy
-dy
-ds
-aa
-aC
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -14114,7 +14674,8 @@ aa
 aa
 "}
 (57,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -14161,26 +14722,35 @@ eJ
 aC
 aP
 aY
-aa
-aC
-aa
-ds
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-ds
-aa
-aC
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -14266,7 +14836,8 @@ aa
 aa
 "}
 (58,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -14313,26 +14884,35 @@ eJ
 aC
 bO
 bj
-aa
-aC
-aa
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-ds
-aa
-aC
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -14418,7 +14998,8 @@ aa
 aa
 "}
 (59,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -14465,26 +15046,35 @@ aC
 aC
 aP
 aY
-aa
-aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aC
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -14570,7 +15160,8 @@ aa
 aa
 "}
 (60,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -14617,26 +15208,35 @@ aC
 bM
 bO
 bj
-aa
-aC
-aa
-fn
-fn
-fn
-fn
-fn
-fn
-fn
-aa
-fn
-fn
-fn
-fn
-fn
-ds
-aa
-aC
-aC
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -14722,7 +15322,8 @@ aa
 aa
 "}
 (61,1,1) = {"
-aa
+as
+as
 Ou
 bT
 aT
@@ -14769,26 +15370,35 @@ aC
 aQ
 aP
 aY
-aa
-aC
-aa
-fn
-ej
-ej
-ej
-ej
-ej
-fn
-aa
-fn
-fz
-fQ
-fR
-gd
-ds
-aa
-aC
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -14874,7 +15484,8 @@ aa
 aa
 "}
 (62,1,1) = {"
-aa
+as
+as
 aa
 aa
 aa
@@ -14921,26 +15532,35 @@ aC
 bM
 bO
 bj
-aa
-aC
-aa
-fn
-ej
-dw
-ej
-dw
-ej
-fn
-aa
-fn
-fA
-fR
-fR
-ge
-ds
-aa
-aC
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -15026,7 +15646,8 @@ aa
 aa
 "}
 (63,1,1) = {"
-aa
+as
+as
 bS
 aY
 aU
@@ -15073,26 +15694,35 @@ aC
 aQ
 aP
 aY
-aa
-aC
-aa
-fn
-ej
-ej
-ej
-ej
-ej
-fn
-aa
-fn
-fB
-fR
-fR
-gf
-ds
-aa
-aC
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -15178,7 +15808,8 @@ aa
 aa
 "}
 (64,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -15225,26 +15856,35 @@ aC
 bM
 bO
 bj
+as
 aa
 aC
-aa
-fn
-ej
-dw
-ej
-dw
-ej
-fn
-aa
-fn
-fC
-fR
-fR
-gg
-ds
-aa
 aC
-aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -15330,7 +15970,8 @@ aa
 aa
 "}
 (65,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -15377,24 +16018,33 @@ aO
 aQ
 aP
 aY
+as
 aa
 aC
 aa
-fn
-ej
-ej
-ej
-ej
-ej
-fn
 aa
-fn
-fD
-fR
-fR
-gh
-ds
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aC
+as
+as
+as
+as
+as
+as
 oQ
 oQ
 oQ
@@ -15482,7 +16132,8 @@ aa
 aa
 "}
 (66,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -15529,24 +16180,33 @@ bz
 bM
 bO
 bj
+as
 aa
 aC
 aa
-fn
-fn
-fn
-fn
-fn
-fn
-fn
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
 aa
-fn
-WH
-fR
-fR
-QA
-fn
-aa
+aC
+as
+as
+as
+as
+as
+as
 TH
 GM
 GM
@@ -15634,7 +16294,8 @@ aa
 aa
 "}
 (67,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -15681,24 +16342,33 @@ aO
 aQ
 aP
 aY
+as
 aa
 aC
 aa
+fz
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+fz
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-fn
-fR
-fR
-fR
-fR
-fn
-aa
+aC
+as
+as
+as
+as
+as
+as
 xw
 FI
 FI
@@ -15786,7 +16456,8 @@ aa
 aa
 "}
 (68,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -15833,24 +16504,33 @@ bz
 bM
 bO
 bj
+as
 aa
 aC
 aa
-fn
-fn
-fn
-fn
-fn
-fn
-fn
+fz
+gu
+gu
+ge
+wj
+HB
+gu
+gp
+gu
+gp
+gu
+gp
+gu
+gu
+fz
 aa
-ds
-ds
-ds
-fn
-fn
-ds
-aa
+aC
+as
+as
+as
+as
+as
+as
 cU
 nB
 nB
@@ -15938,7 +16618,8 @@ aa
 aa
 "}
 (69,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -15985,24 +16666,33 @@ aO
 aQ
 aP
 aY
+as
 aa
 aC
 aa
-fn
+fz
+fW
+gp
+gy
+wv
+LO
+gu
+gp
+gu
+gp
+gu
+gp
+gu
+gu
+fz
+aa
+aC
 as
 as
 as
 as
 as
-fn
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
 sy
 Uz
 Uz
@@ -16090,7 +16780,8 @@ aa
 aa
 "}
 (70,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -16137,24 +16828,33 @@ bz
 bM
 bO
 bj
+as
 aa
 aC
 aa
-fn
-as
-as
-as
-as
-as
-fn
+fz
+gd
+gp
+gy
+gv
+LO
+gu
+gp
+gu
+gp
+gu
+gp
+gu
+gu
+fz
 aa
 aC
-aC
-aC
-aC
-aC
-aC
-aC
+as
+as
+as
+as
+as
+as
 VQ
 TS
 TS
@@ -16242,7 +16942,8 @@ aa
 aa
 "}
 (71,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -16289,24 +16990,33 @@ aO
 aQ
 aP
 aY
+as
 aa
 aC
 aa
-fn
-as
-as
-ae
-as
-as
-fn
+fz
+gu
+gu
+gf
+BD
+NU
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+fz
 aa
 aC
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
+as
 dR
 cJ
 cJ
@@ -16394,7 +17104,8 @@ aa
 aa
 "}
 (72,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -16441,24 +17152,33 @@ bz
 bM
 bO
 bj
+as
 aa
 aC
 aa
-fn
-as
-as
-as
-as
-as
-fn
+fz
+ge
+gs
+gv
+gv
+gv
+gs
+gs
+gs
+gs
+gs
+gs
+gs
+HB
+fz
 aa
 aC
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
+as
 ql
 ne
 ne
@@ -16546,7 +17266,8 @@ aa
 aa
 "}
 (73,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -16593,24 +17314,33 @@ aO
 aQ
 aP
 aY
+as
 aa
 aC
 aa
-fn
-as
-as
-as
-as
-as
-fn
+fz
+gf
+gv
+gv
+BU
+gv
+gv
+gv
+gv
+gv
+gv
+gv
+gv
+NU
+fz
 aa
 aC
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
+as
 Ef
 GE
 GE
@@ -16698,7 +17428,8 @@ aa
 aa
 "}
 (74,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -16745,24 +17476,33 @@ bz
 bM
 bO
 bj
+as
 aa
 aC
 aa
-fn
-fn
-fn
-fn
-fn
-fn
-fn
+fz
+gg
+gw
+gv
+gv
+gv
+gw
+gw
+gw
+gw
+gw
+gw
+gw
+On
+fz
 aa
 aC
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
+as
 GD
 ii
 ii
@@ -16850,7 +17590,8 @@ aa
 aa
 "}
 (75,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -16897,24 +17638,33 @@ aO
 aQ
 aP
 aY
+as
 aa
 aC
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fz
+gu
+gu
+gf
+BD
+NU
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+fz
 aa
 aC
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
+as
 xJ
 Db
 Db
@@ -17002,7 +17752,8 @@ aa
 aa
 "}
 (76,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -17049,24 +17800,33 @@ aX
 be
 bh
 bj
+as
+aa
 aC
+aa
+fz
+gh
+gp
+gy
+Dq
+LO
+gu
+gp
+gu
+gp
+gu
+gp
+gu
+gu
+fz
+aa
 aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-TT
+as
+as
+as
+as
+as
+as
 Gm
 xX
 xX
@@ -17154,7 +17914,8 @@ aa
 aa
 "}
 (77,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -17200,24 +17961,33 @@ aa
 aa
 aa
 aa
+as
+as
 aa
 aC
 aa
+fz
+gh
+gp
+gy
+gv
+LO
+gu
+gp
+gu
+gp
+gu
+gp
+gu
+gu
+fz
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+as
+as
+as
+as
+as
 as
 uJ
 Ji
@@ -17306,7 +18076,8 @@ aa
 aa
 "}
 (78,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -17353,23 +18124,32 @@ as
 as
 as
 as
-TT
 as
-fn
-fn
-fn
-fn
-fn
-fn
-fn
+aa
+aC
+aa
+fz
+gu
+gu
+gg
+DV
+On
+gu
+gp
+gu
+gp
+gu
+gp
+gu
+gu
+fz
+aa
+aC
 as
-fn
-fn
-fn
-fn
-fn
-fn
-fn
+as
+as
+as
+as
 as
 UW
 Gw
@@ -17458,7 +18238,8 @@ aa
 aa
 "}
 (79,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -17505,23 +18286,32 @@ as
 as
 as
 as
-TT
 as
-fn
+aa
+aC
+aa
+fz
 gu
 gu
 gu
 gu
 gu
-fn
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+gu
+fz
+aa
+aC
 as
-fn
-ja
-ja
-ja
-ja
-ja
-fn
+as
+as
+as
+as
 as
 vH
 PK
@@ -17610,7 +18400,8 @@ aa
 aa
 "}
 (80,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -17657,23 +18448,32 @@ as
 as
 as
 as
-TT
 as
-fn
-gu
-gu
-gu
-gu
-gu
-fn
+aa
+aC
+aa
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+fz
+aa
+aC
 as
-fn
-ja
-ja
-ja
-ja
-ja
-fn
+as
+as
+as
+as
 as
 oQ
 AH
@@ -17762,7 +18562,8 @@ aa
 aa
 "}
 (81,1,1) = {"
-aa
+as
+as
 Ou
 aO
 aQ
@@ -17809,23 +18610,32 @@ as
 as
 as
 as
-TT
 as
-fn
-gu
-gu
-gu
-gu
-gu
-fn
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aC
 as
-fn
-ja
-ja
-ja
-ja
-ja
-fn
+as
+as
+as
+as
 as
 TH
 GM
@@ -17914,7 +18724,8 @@ aa
 aa
 "}
 (82,1,1) = {"
-aa
+as
+as
 bS
 aN
 aP
@@ -17961,23 +18772,32 @@ as
 as
 as
 as
-TT
 as
+aa
+aC
+aa
 fn
-gu
-gu
-gu
-gu
-gu
 fn
+fn
+fn
+fn
+fn
+fn
+aa
+fn
+fn
+fn
+fn
+fn
+fz
+aa
+aC
+aC
 as
-fn
-ja
-ja
-ja
-ja
-ja
-fn
+as
+as
+as
+as
 as
 xw
 FI
@@ -18066,7 +18886,8 @@ aa
 aa
 "}
 (83,1,1) = {"
-aa
+as
+as
 Ou
 bT
 aT
@@ -18113,23 +18934,32 @@ as
 as
 as
 as
-TT
 as
+aa
+aC
+aa
 fn
-gu
-gu
-gu
-gu
-gu
+gm
+gm
+gm
+gm
+gm
 fn
+aa
+fn
+PJ
+Zd
+TF
+LQ
+fz
+aa
+aC
+aa
 as
-fn
-ja
-ja
-ja
-ja
-ja
-fn
+as
+as
+as
+as
 as
 cU
 nB
@@ -18218,6 +19048,8 @@ aa
 aa
 "}
 (84,1,1) = {"
+as
+as
 aa
 aa
 aa
@@ -18239,49 +19071,57 @@ aa
 aa
 aa
 aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-TT
-as
+aC
+aa
 fn
+gm
+gx
+gm
+gx
+gm
 fn
+aa
 fn
-fn
-fn
-fn
-fn
+QA
+TF
+TF
+JR
+fz
+aa
+aC
+aa
 as
-fn
-fn
-fn
-fn
-fn
-fn
-fn
+as
+as
+as
+as
 as
 sy
 Uz
@@ -18370,17 +19210,6 @@ aa
 aa
 "}
 (85,1,1) = {"
-aa
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
 as
 as
 as
@@ -18412,13 +19241,7 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-TT
-as
+aa
 as
 as
 as
@@ -18429,6 +19252,33 @@ as
 as
 as
 as
+as
+as
+as
+as
+as
+as
+as
+aa
+aC
+aa
+fn
+gm
+gm
+gm
+gm
+gm
+fn
+aa
+fn
+QL
+TF
+TF
+Zs
+fz
+aa
+aC
+aa
 as
 as
 as
@@ -18569,24 +19419,34 @@ as
 as
 as
 as
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
+as
+as
+aa
+aC
+aa
+fn
+gm
+gx
+gm
+gx
+gm
+fn
+aa
+fn
+Sb
+TF
+TF
+RU
+fz
+aa
+aC
+aa
+as
+as
+as
+as
+as
+as
 dR
 cJ
 cJ
@@ -18723,15 +19583,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aa
+aC
+aa
+fn
+gm
+gm
+gm
+gm
+gm
+fn
+aa
+fn
+Sk
+TF
+TF
+rx
+fz
+aa
+TT
 as
 as
 as
@@ -18875,15 +19745,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aa
+aC
+aa
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+aa
+fn
+Tm
+TF
+TF
+nZ
+fn
+aa
+TT
 as
 as
 as
@@ -19027,15 +19907,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+fn
+TF
+TF
+TF
+TF
+fn
+aa
+TT
 as
 as
 as
@@ -19179,15 +20069,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aa
+aC
+aa
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+aa
+fz
+fz
+fz
+fn
+fn
+fz
+aa
+TT
 as
 as
 as
@@ -19331,15 +20231,25 @@ as
 as
 as
 as
+aa
+aC
+aa
+fn
 as
 as
 as
 as
 as
-as
-as
-as
-as
+fn
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+TT
 as
 as
 as
@@ -19483,15 +20393,25 @@ as
 as
 as
 as
+aa
+aC
+aa
+fn
 as
 as
 as
 as
 as
-as
-as
-as
-as
+fn
+aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+TT
 as
 as
 as
@@ -19635,15 +20555,25 @@ as
 as
 as
 as
+aa
+aC
+aa
+fn
 as
 as
+ja
 as
 as
-as
-as
-as
-as
-as
+fn
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+TT
 as
 as
 as
@@ -19787,15 +20717,25 @@ as
 as
 as
 as
+aa
+aC
+aa
+fn
 as
 as
 as
 as
 as
-as
-as
-as
-as
+fn
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+TT
 as
 as
 as
@@ -19939,15 +20879,25 @@ as
 as
 as
 as
+aa
+aC
+aa
+fn
 as
 as
 as
 as
 as
-as
-as
-as
-as
+fn
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+TT
 as
 as
 as
@@ -20091,15 +21041,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aa
+aC
+aa
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+TT
 as
 as
 as
@@ -20243,15 +21203,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+TT
 as
 as
 as
@@ -20395,15 +21365,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+TT
+TT
 as
 as
 as
@@ -20546,16 +21526,26 @@ as
 as
 as
 as
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TT
 as
 as
 as
@@ -20699,15 +21689,25 @@ as
 as
 as
 as
+TT
 as
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 as
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 as
-as
-as
-as
-as
-as
-as
+TT
 as
 as
 as
@@ -20748,6 +21748,1626 @@ VQ
 VQ
 VQ
 ok
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(101,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+TT
+as
+fn
+fA
+fA
+fA
+fA
+fA
+fn
+as
+fn
+OK
+OK
+OK
+OK
+OK
+fn
+as
+TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(102,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+TT
+as
+fn
+fA
+fA
+fA
+fA
+fA
+fn
+as
+fn
+OK
+OK
+OK
+OK
+OK
+fn
+as
+TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(103,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+TT
+as
+fn
+fA
+fA
+fA
+fA
+fA
+fn
+as
+fn
+OK
+OK
+OK
+OK
+OK
+fn
+as
+TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(104,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+TT
+as
+fn
+fA
+fA
+fA
+fA
+fA
+fn
+as
+fn
+OK
+OK
+OK
+OK
+OK
+fn
+as
+TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(105,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+TT
+as
+fn
+fA
+fA
+fA
+fA
+fA
+fn
+as
+fn
+OK
+OK
+OK
+OK
+OK
+fn
+as
+TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(106,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+TT
+as
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+as
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+as
+TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(107,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(108,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(109,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(110,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as

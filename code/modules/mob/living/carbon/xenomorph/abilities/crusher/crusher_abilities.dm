@@ -169,6 +169,22 @@
 	if(momentum > 0)
 		Xeno.use_plasma(plasma_per_step) // take plasma when you have momentum
 
+		var/turf/turf_ahead = get_step(get_turf(Xeno.loc), dir)
+
+		if(istype(turf_ahead, /turf/open/snow))
+			var/turf/open/snow/ST = turf_ahead
+			if(ST && ST.bleed_layer)
+				if(ST.bleed_layer > 2)
+					ST.bleed_layer -= 2
+				else
+					ST.bleed_layer = 0
+
+		else if(istype(turf_ahead, /turf/open/auto_turf/snow))
+			var/turf/open/auto_turf/snow/S = turf_ahead
+			if(S && S.bleed_layer)
+				var/new_layer = S.bleed_layer - 2
+				S.changing_layer(new_layer)
+
 	noise_timer = noise_timer ? --noise_timer : 3
 	if(noise_timer == 3)
 		playsound(Xeno, 'sound/effects/alien_footstep_charge1.ogg', 50)

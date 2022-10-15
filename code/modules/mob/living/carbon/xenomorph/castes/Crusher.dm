@@ -60,6 +60,90 @@
 
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
 
+// The charger gets its own special launch_towards that scans for snow turf
+// I'm sure there's a cleaner alternative but it's beyond my knowledge
+/mob/living/carbon/Xenomorph/Crusher/launch_towards(var/datum/launch_metadata/LM)
+	if (!istype(LM))
+		CRASH("invalid launch_metadata passed to launch_towards")
+	if (!LM.target || !src)
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, LM.thrower) & COMPONENT_CANCEL_THROW)
+		return
+
+	// If we already have launch_metadata (from a previous throw), reset it and qdel the old launch_metadata datum
+	if (istype(launch_metadata))
+		qdel(launch_metadata)
+	launch_metadata = LM
+
+	if (LM.spin)
+		animation_spin(5, 1 + min(1, LM.range/20))
+
+	var/old_speed = cur_speed
+	cur_speed = Clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
+	var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
+	var/pass_flags = LM.pass_flags
+
+	throwing = TRUE
+
+	add_temp_pass_flags(pass_flags)
+
+	var/turf/start_turf = get_step_towards(src, LM.target)
+	var/list/turf/path = getline2(start_turf, LM.target)
+	var/last_loc = loc
+
+	var/early_exit = FALSE
+	LM.dist = 0
+	for (var/turf/T in path)
+		if (!src || !throwing || loc != last_loc || !isturf(src.loc))
+			break
+		if (!LM || QDELETED(LM))
+			early_exit = TRUE
+			break
+		if (LM.dist >= LM.range)
+			break
+		if (!Move(T)) // If this returns FALSE, then a collision happened
+			break
+		if(istype(T, /turf/open/snow))
+			var/turf/open/snow/ST = T
+			if(ST && ST.bleed_layer)
+				ST.bleed_layer = 0
+				ST.update_icon(1, ST.bleed_layer)
+		else if(istype(T, /turf/open/auto_turf/snow))
+			var/turf/open/auto_turf/snow/S = T
+			if(S && S.bleed_layer)
+				var/new_layer = 0
+				S.changing_layer(new_layer)
+		last_loc = loc
+		if (++LM.dist >= LM.range)
+			break
+		sleep(delay)
+
+	//done throwing, either because it hit something or it finished moving
+	if ((isobj(src) || ismob(src)) && throwing && !early_exit)
+		var/turf/T = get_turf(src)
+		if(!istype(T))
+			return
+		var/atom/hit_atom = ismob(LM.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
+		if(!hit_atom)
+			for(var/atom/A in T)
+				if(A == LM.target)
+					hit_atom = A
+					break
+		launch_impact(hit_atom)
+	if (loc)
+		throwing = FALSE
+		rebounding = FALSE
+		cur_speed = old_speed
+		remove_temp_pass_flags(pass_flags)
+		if(length(LM.end_throw_callbacks))
+			for(var/datum/callback/CB as anything in LM.end_throw_callbacks)
+				if(istype(CB, /datum/callback/dynamic))
+					CB.Invoke(src)
+				else
+					CB.Invoke()
+
+
 /mob/living/carbon/Xenomorph/Crusher/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_crusher))
 	. = ..()

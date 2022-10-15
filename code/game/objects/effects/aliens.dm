@@ -103,6 +103,23 @@
 				W.acid_spray_act()
 				continue
 
+		// Melt all layers of snow
+		if (istype(get_turf(atm), /turf/open/snow))
+			var/turf/open/snow/ST = get_turf(atm)
+
+			if(ST && ST.bleed_layer)
+				if(ST.bleed_layer > 2)
+					ST.bleed_layer -= 2
+				else
+					ST.bleed_layer = 0
+
+		else if (istype(get_turf(atm), /turf/open/auto_turf/snow))
+			var/turf/open/auto_turf/snow/S = get_turf(atm)
+
+			if(S && S.bleed_layer)
+				var/new_layer = S.bleed_layer - 2
+				S.changing_layer(new_layer)
+
 		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm

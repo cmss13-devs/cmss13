@@ -1,0 +1,260 @@
+@use '../base.scss' with (
+  $color-bg: #000000,
+  $color-bg-grad-spread: 0%,
+  $border-radius: 0,
+);
+
+$lightcolor: #FFFF00;
+
+@use '../colors.scss' with (
+  $primary: $lightcolor,
+  $fg-map-keys: (),
+  $bg-map-keys: (),
+);
+
+@use 'sass:color';
+@use 'sass:meta';
+
+//$flicker-color-start:rgba(0,30,255,0.5);
+//$flicker-color-end:rgba(255,0,80,0.3);
+$flicker-color-start:rgba(230,230,230,0.5);
+$flicker-color-end:rgba(230,230,230,0.3);
+
+.theme-crt {
+  @include meta.load-css('../layouts/Window.scss');
+  @include meta.load-css('../layouts/Layout.scss');
+  @include meta.load-css('../components/Section.scss', $with: (
+    'title-text-color': $lightcolor
+  ));
+  @include meta.load-css('../components/Button.scss', $with: (
+    'color-default': #000000,
+    'color-disabled': #000000,
+    'color-selected': #465899,
+    'color-caution': #be6209,
+    'color-danger': #9a9d00,
+    'border-radius': 1
+  ));
+
+  @include meta.load-css('../components/Tabs.scss', $with: (
+    'tab-color': #000000,
+    'tab-color-selected': #000000
+  ));
+
+  .Layout__content {
+    background-image: none;
+  }
+
+  span {
+    color: $lightcolor;
+    font-size: base.em(14px);
+  }
+
+  .DoButton {
+    border: 1px solid $lightcolor;
+    color: $lightcolor;
+  }
+
+  .HiddenButton {
+    visibility: hidden;
+  }
+
+  .sep {
+    color: $lightcolor;
+    border: 1px solid $lightcolor;
+  }
+
+  .Tab__text {
+    font-size: base.em(18px);
+    color: $lightcolor;
+  }
+
+  .Tab__left {
+    color: $lightcolor;
+  }
+
+  .Tabs--horizontal {
+    .Tab {
+      border-bottom: 1px solid $lightcolor;
+      text-align: center;
+    }
+
+    .Tab--selected {
+      border-top: 1px solid $lightcolor;
+      border-left: 1px solid $lightcolor;
+      border-right: 1px solid $lightcolor;
+      border-bottom: none;
+    }
+  }
+
+  .container {
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: $lightcolor;
+  }
+
+  Section {
+    background-color: none;
+
+  }
+
+  @keyframes flicker {
+    0% {
+      opacity: 0.27861;
+    }
+    5% {
+      opacity: 0.34769;
+    }
+    10% {
+      opacity: 0.23604;
+    }
+    15% {
+      opacity: 0.90626;
+    }
+    20% {
+      opacity: 0.18128;
+    }
+    25% {
+      opacity: 0.83891;
+    }
+    30% {
+      opacity: 0.65583;
+    }
+    35% {
+      opacity: 0.67807;
+    }
+    40% {
+      opacity: 0.26559;
+    }
+    45% {
+      opacity: 0.84693;
+    }
+    50% {
+      opacity: 0.96019;
+    }
+    55% {
+      opacity: 0.08594;
+    }
+    60% {
+      opacity: 0.20313;
+    }
+    65% {
+      opacity: 0.71988;
+    }
+    70% {
+      opacity: 0.53455;
+    }
+    75% {
+      opacity: 0.37288;
+    }
+    80% {
+      opacity: 0.71428;
+    }
+    85% {
+      opacity: 0.70419;
+    }
+    90% {
+      opacity: 0.7003;
+    }
+    95% {
+      opacity: 0.36108;
+    }
+    100% {
+      opacity: 0.24387;
+    }
+  }
+  @keyframes textShadow {
+    0% {
+      text-shadow: 0.4389924193300864px 0 1px $flicker-color-start, -0.4389924193300864px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    5% {
+      text-shadow: 2.7928974010788217px 0 1px $flicker-color-start, -2.7928974010788217px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    10% {
+      text-shadow: 0.02956275843481219px 0 1px $flicker-color-start, -0.02956275843481219px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    15% {
+      text-shadow: 0.40218538552878136px 0 1px $flicker-color-start, -0.40218538552878136px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    20% {
+      text-shadow: 3.4794037899852017px 0 1px $flicker-color-start, -3.4794037899852017px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    25% {
+      text-shadow: 1.6125630401149584px 0 1px $flicker-color-start, -1.6125630401149584px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    30% {
+      text-shadow: 0.7015590085143956px 0 1px $flicker-color-start, -0.7015590085143956px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    35% {
+      text-shadow: 3.896914047650351px 0 1px $flicker-color-start, -3.896914047650351px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    40% {
+      text-shadow: 3.870905614848819px 0 1px $flicker-color-start, -3.870905614848819px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    45% {
+      text-shadow: 2.231056963361899px 0 1px $flicker-color-start, -2.231056963361899px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    50% {
+      text-shadow: 0.08084290417898504px 0 1px $flicker-color-start, -0.08084290417898504px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    55% {
+      text-shadow: 2.3758461067427543px 0 1px $flicker-color-start, -2.3758461067427543px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    60% {
+      text-shadow: 2.202193051050636px 0 1px $flicker-color-start, -2.202193051050636px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    65% {
+      text-shadow: 2.8638780614874975px 0 1px $flicker-color-start, -2.8638780614874975px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    70% {
+      text-shadow: 0.48874025155497314px 0 1px $flicker-color-start, -0.48874025155497314px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    75% {
+      text-shadow: 1.8948491305757957px 0 1px $flicker-color-start, -1.8948491305757957px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    80% {
+      text-shadow: 0.0833037308038857px 0 1px $flicker-color-start, -0.0833037308038857px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    85% {
+      text-shadow: 0.09769827255241735px 0 1px $flicker-color-start, -0.09769827255241735px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    90% {
+      text-shadow: 3.443339761481782px 0 1px $flicker-color-start, -3.443339761481782px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    95% {
+      text-shadow: 2.1841838852799786px 0 1px $flicker-color-start, -2.1841838852799786px 0 1px $flicker-color-end, 0 0 3px;
+    }
+    100% {
+      text-shadow: 2.6208764473832513px 0 1px $flicker-color-start, -2.6208764473832513px 0 1px $flicker-color-end, 0 0 3px;
+    }
+  }
+  .crt::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+  }
+  .crt::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+  }
+  .crt {
+    animation: textShadow 1.6s infinite;
+  }
+}

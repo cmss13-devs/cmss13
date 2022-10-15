@@ -77,14 +77,6 @@
 	if(!ishuman(user))
 		return
 
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		if (!anchored)
-			anchored = 1
-			to_chat(user, "You anchor the [src] in place.")
-		else
-			anchored = 0
-			to_chat(user, "You remove the bolts from the [src].")
-
 	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if (!open)
 			if(unlocked)

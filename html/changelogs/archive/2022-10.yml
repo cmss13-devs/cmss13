@@ -154,3 +154,11 @@
   - rscadd: Added a new resin marker for needing weeds in an area.
   Kugamo:
   - imageadd: Carriers' sprites now reflect how many huggers they are currently carrying.
+2022-10-15:
+  Geeves:
+  - bugfix: The Reserves squad is now called Foxtrot. Their brown color has been brightened
+      a bit, the radio color as well. They also no longer break the crew manifest.
+  - rscadd: You can now call the reserves in-game via the tech tree, it's a Tier 3
+      tech that costs 10 points, but increases by 5 each time it's called. The squad
+      contains a squad leader, medics, engineers, and privates.
+  - balance: The tech points required to go up a tier has been reduced to 5 from 15.

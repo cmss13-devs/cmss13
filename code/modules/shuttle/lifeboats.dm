@@ -4,7 +4,7 @@
 /obj/docking_port/mobile/lifeboat
 	name = "lifeboat"
 	area_type = /area/shuttle/lifeboat
-	ignitionTime = 12 SECONDS
+	ignitionTime = 10 SECONDS
 	width = 27
 	height = 7
 	var/available = TRUE // can be used for evac? false if queenlocked or if in transit already

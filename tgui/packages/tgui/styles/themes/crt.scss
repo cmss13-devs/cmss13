@@ -1,10 +1,15 @@
+
+$darkcolor: #110000;
+$lightcolor: #FFBF00;
+$font-family: monospace;
+
+
+
 @use '../base.scss' with (
-  $color-bg: #000000,
+  $color-bg: $darkcolor,
   $color-bg-grad-spread: 0%,
   $border-radius: 0,
 );
-
-$lightcolor: #FFFF00;
 
 @use '../colors.scss' with (
   $primary: $lightcolor,
@@ -12,27 +17,34 @@ $lightcolor: #FFFF00;
   $bg-map-keys: (),
 );
 
+$small-text: base.em(14px);
+$large-text: base.em(18px);
+
 @use 'sass:color';
 @use 'sass:meta';
 
 //$flicker-color-start:rgba(0,30,255,0.5);
 //$flicker-color-end:rgba(255,0,80,0.3);
-$flicker-color-start:rgba(230,230,230,0.5);
-$flicker-color-end:rgba(230,230,230,0.3);
+//$flicker-color-start:rgba(230,230,230,0.5);
+//$flicker-color-end:rgba(230,230,230,0.3);
+
+$flicker-color-start:lighten($lightcolor, 0.2);
+$flicker-color-end:darken($lightcolor, 0.2);
 
 .theme-crt {
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/Layout.scss');
+  @include meta.load-css('../layouts/TitleBar.scss', $with: (
+    'background-color': $darkcolor,
+    'text-color': $lightcolor
+  ));
+  @include meta.load-css('../layouts/Layout.scss', $with: (
+    'scrollbar-color-multiplier': 0.5
+  ));
   @include meta.load-css('../components/Section.scss', $with: (
     'title-text-color': $lightcolor
   ));
   @include meta.load-css('../components/Button.scss', $with: (
-    'color-default': #000000,
-    'color-disabled': #000000,
-    'color-selected': #465899,
-    'color-caution': #be6209,
-    'color-danger': #9a9d00,
-    'border-radius': 1
+    'color-disabled': $darkcolor,
   ));
 
   @include meta.load-css('../components/Tabs.scss', $with: (
@@ -44,14 +56,86 @@ $flicker-color-end:rgba(230,230,230,0.3);
     background-image: none;
   }
 
+  .Layout__content--scrollable {
+    scrollbar-track-color: $darkcolor;
+    scrollbar-shadow-color: $lightcolor;
+    scrollbar-face-color: $darkcolor;
+    scrollbar-arrow-color: $lightcolor;
+    scrollbar-gutter: $lightcolor;
+  }
+
+  .TabbedPage {
+    border-left: 2px solid $lightcolor;
+    border-right: 2px solid $lightcolor;
+    border-bottom: 2px solid $lightcolor;
+    margin-left: -3px;
+    margin-right: -3px;
+    margin-top: -12px;
+  }
+
+  .TabbedContent {
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
   span {
     color: $lightcolor;
-    font-size: base.em(14px);
+    font-family: $font-family;
+    font-size: $small-text;
+    font-weight: bold;
+  }
+
+  .purchase-reports {
+    margin-left: 20px;
+  }
+
+  .purchase-flex {
+    flex: 1 1 auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
   }
 
   .DoButton {
+    background-color: $lightcolor;
+    color: $darkcolor;
+    font-family: $font-family;
+    font-size: $small-text;
+    font-weight: bold;
     border: 1px solid $lightcolor;
+    &:hover,
+    &:focus,
+    &:visited,
+    &:target {
+      background-color: $lightcolor;
+      color: $darkcolor;
+    }
+  }
+
+  @keyframes confirmFlicker {
+    0% {
+      background-color: $lightcolor;
+      color: $darkcolor;
+    }
+    100% {
+      background-color: $darkcolor;
+      color: $lightcolor;
+
+    }
+  }
+
+  .DoButton.ConfirmButton {
+    animation: confirmFlicker 5s infinite;
+    &:hover {
+      animation:none;
+    }
+  }
+
+  .Button--disabled {
     color: $lightcolor;
+    border: 1px solid $lightcolor;
   }
 
   .HiddenButton {
@@ -64,7 +148,8 @@ $flicker-color-end:rgba(230,230,230,0.3);
   }
 
   .Tab__text {
-    font-size: base.em(18px);
+    font-size: $large-text;
+    font-family: $font-family;
     color: $lightcolor;
   }
 
@@ -74,27 +159,88 @@ $flicker-color-end:rgba(230,230,230,0.3);
 
   .Tabs--horizontal {
     .Tab {
-      border-bottom: 1px solid $lightcolor;
+      border-bottom: 2px solid $lightcolor;
       text-align: center;
+      background-color: $darkcolor;
+      font-weight: bold;
+
+      &:hover {
+        outline: 2px solid $lightcolor;
+        outline-style: groove;
+      }
     }
 
     .Tab--selected {
-      border-top: 1px solid $lightcolor;
-      border-left: 1px solid $lightcolor;
-      border-right: 1px solid $lightcolor;
+      border: 2px solid $lightcolor;
       border-bottom: none;
+      background-color: $lightcolor;
+      .Tab__left,
+      .Tab__text {
+        color: $darkcolor;
+      }
+      &:hover {
+        outline: none;
+      }
     }
+  }
+
+  .table_header {
+    font-size: $large-text;
+  }
+
+  td {
+    border: 1px solid $lightcolor;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    justify-content: center;
+
+    .chemical-td {
+      width: 60%;
+    }
+
+    .action-td {
+      border: 1px solid $lightcolor;
+    }
+  }
+
+  .compound_label {
+    margin-left: 12px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    display: inline-block;
+    line-height: 24px;
+    display: flex;
+  }
+
+  .compound_actions{
+    margin-bottom: 4px;
+    margin-top: 3px;
+  }
+
+  .chem_table {
+    border: 1px solid $lightcolor;
   }
 
   .container {
     outline-style: solid;
     outline-width: 1px;
     outline-color: $lightcolor;
+
+    .Section__title {
+      height: 20px;
+      margin-bottom: 12px;
+
+    }
+
+    .Section__titleText {
+      font-weight: bold;
+      font-size: $large-text;
+    }
   }
 
-  Section {
+  .Section {
     background-color: none;
-
+    box-sizing: content-box;
   }
 
   @keyframes flicker {
@@ -167,20 +313,31 @@ $flicker-color-end:rgba(230,230,230,0.3);
       text-shadow: 0.4389924193300864px 0 1px $flicker-color-start, -0.4389924193300864px 0 1px $flicker-color-end, 0 0 3px;
     }
     5% {
-      text-shadow: 2.7928974010788217px 0 1px $flicker-color-start, -2.7928974010788217px 0 1px $flicker-color-end, 0 0 3px;
+      text-shadow: 0.7928974010788217px 0 1px $flicker-color-start, -0.7928974010788217px 0 1px $flicker-color-end, 0 0 3px;
     }
+    10% {
+      text-shadow: 0.02956275843481219px 0 1px $lightcolor, -0.02956275843481219px 0 1px $lightcolor, 0 0 3px;
+    }
+    20% {
+      text-shadow: none
+    }
+    /*
     10% {
       text-shadow: 0.02956275843481219px 0 1px $flicker-color-start, -0.02956275843481219px 0 1px $flicker-color-end, 0 0 3px;
     }
     15% {
       text-shadow: 0.40218538552878136px 0 1px $flicker-color-start, -0.40218538552878136px 0 1px $flicker-color-end, 0 0 3px;
-    }
+    }*/
+
+    /*
     20% {
       text-shadow: 3.4794037899852017px 0 1px $flicker-color-start, -3.4794037899852017px 0 1px $flicker-color-end, 0 0 3px;
     }
     25% {
       text-shadow: 1.6125630401149584px 0 1px $flicker-color-start, -1.6125630401149584px 0 1px $flicker-color-end, 0 0 3px;
-    }
+    }*/
+
+    /*
     30% {
       text-shadow: 0.7015590085143956px 0 1px $flicker-color-start, -0.7015590085143956px 0 1px $flicker-color-end, 0 0 3px;
     }
@@ -193,6 +350,9 @@ $flicker-color-end:rgba(230,230,230,0.3);
     45% {
       text-shadow: 2.231056963361899px 0 1px $flicker-color-start, -2.231056963361899px 0 1px $flicker-color-end, 0 0 3px;
     }
+    */
+
+    /*
     50% {
       text-shadow: 0.08084290417898504px 0 1px $flicker-color-start, -0.08084290417898504px 0 1px $flicker-color-end, 0 0 3px;
     }
@@ -225,7 +385,11 @@ $flicker-color-end:rgba(230,230,230,0.3);
     }
     100% {
       text-shadow: 2.6208764473832513px 0 1px $flicker-color-start, -2.6208764473832513px 0 1px $flicker-color-end, 0 0 3px;
+    }*/
+    100% {
+      text-shadow: none
     }
+
   }
   .crt::after {
     content: " ";
@@ -239,7 +403,9 @@ $flicker-color-end:rgba(230,230,230,0.3);
     opacity: 0;
     z-index: 2;
     pointer-events: none;
-    animation: flicker 0.15s infinite;
+    // animation: flicker 0.15s infinite;
+    animation-name: flicker;
+    animation-duration: 1s;
   }
   .crt::before {
     content: " ";
@@ -255,6 +421,6 @@ $flicker-color-end:rgba(230,230,230,0.3);
     pointer-events: none;
   }
   .crt {
-    animation: textShadow 1.6s infinite;
+    animation: textShadow 5s infinite;
   }
 }

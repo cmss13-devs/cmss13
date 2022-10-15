@@ -154,9 +154,8 @@
 //used for broadcasting from a vehicle
 /mob/proc/langchat_vehicle_broadcast(message, var/list/listeners, language, var/obj/vehicle/multitile/V)
 
-	//uncomment before finishing
-	//if(!V || interactee != V)
-	//	return
+	if(!V || interactee != V)
+		return
 
 	langchat_drop_image()
 	langchat_make_image()
@@ -179,10 +178,6 @@
 	for(var/mob/M in langchat_listeners)
 		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
 			M.client.images += langchat_image
-
-	//uncomment before finishing
-	//if(!isVehicleMultitile(interactee))
-	//	return
 
 	langchat_image.loc = interactee
 	langchat_image.maptext_y += 32

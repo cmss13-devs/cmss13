@@ -385,10 +385,6 @@
 
 	log_admin("[key_name(user)] used \a [V]'s broadcaster to say: >[message]<")
 
-	//remove before finishing, this is for testing
-	for(var/i=1,i<5,i++)
-		sleep (1 SECONDS)
-
 	if(user.stat == CONSCIOUS)
 		var/list/mob/living/carbon/human/recipients = viewers(8, V) // slow but we need it
 		for(var/mob/living/carbon/human/O in recipients)

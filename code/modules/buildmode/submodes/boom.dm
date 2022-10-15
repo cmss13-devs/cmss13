@@ -27,7 +27,7 @@
 		if(explosions[explosion_level] == null || explosions[explosion_level] < 0)
 			explosions[explosion_level] = 0
 
-/datum/buildmode_mode/boom/handle_click(client/c, params, obj/object)
+/datum/buildmode_mode/boom/when_clicked(client/c, params, obj/object)
 	var/list/modifiers = params2list(params)
 
 	var/value_valid = FALSE

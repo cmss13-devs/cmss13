@@ -12,7 +12,7 @@
 	to_chat(c, SPAN_NOTICE("Right Mouse Button on obj/mob = Select target to copy"))
 	to_chat(c, SPAN_NOTICE("***********************************************************"))
 
-/datum/buildmode_mode/copy/handle_click(client/c, params, obj/object)
+/datum/buildmode_mode/copy/when_clicked(client/c, params, obj/object)
 	var/list/modifiers = params2list(params)
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))

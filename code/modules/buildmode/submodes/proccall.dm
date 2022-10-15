@@ -23,7 +23,7 @@
 	if(!proc_args)
 		return
 
-/datum/buildmode_mode/proccall/handle_click(client/target_client, params, datum/object as null|area|mob|obj|turf)
+/datum/buildmode_mode/proccall/when_clicked(client/target_client, params, datum/object as null|area|mob|obj|turf)
 	if(!proc_name || !proc_args)
 		tgui_alert(target_client, "Undefined ProcCall or arguments.")
 		return

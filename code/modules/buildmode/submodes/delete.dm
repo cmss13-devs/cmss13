@@ -7,7 +7,7 @@
 		Right Mouse Button on anything to delete everything of the type. Probably don\'t do this unless you know what you are doing.\n\
 		***********************************************************</span>")
 
-/datum/buildmode_mode/delete/handle_click(client/c, params, object)
+/datum/buildmode_mode/delete/when_clicked(client/c, params, object)
 	var/list/modifiers = params2list(params)
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))

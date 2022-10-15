@@ -74,7 +74,7 @@
 	cornerA = null
 	cornerB = null
 
-/datum/buildmode_mode/proc/handle_click(client/c, params, object)
+/datum/buildmode_mode/proc/when_clicked(client/c, params, object)
 	var/list/modifiers = params2list(params)
 	if(use_corner_selection)
 		if(LAZYACCESS(modifiers, "left"))

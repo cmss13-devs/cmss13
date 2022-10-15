@@ -27,7 +27,7 @@
 	update_icon()
 	return 1
 
-/atom/movable/screen/buildmode/mode/update_icon_state()
+/atom/movable/screen/buildmode/mode/update_icon()
 	icon_state = bd.mode.get_button_iconstate()
 
 /atom/movable/screen/buildmode/help
@@ -44,7 +44,7 @@
 	screen_loc = "NORTH,WEST+2"
 	name = "Change Dir"
 
-/atom/movable/screen/buildmode/bdir/update_icon_state()
+/atom/movable/screen/buildmode/bdir/update_icon()
 	dir = bd.build_dir
 
 /atom/movable/screen/buildmode/bdir/Click()

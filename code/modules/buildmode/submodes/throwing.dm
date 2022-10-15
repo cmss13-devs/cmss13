@@ -13,7 +13,7 @@
 	to_chat(c, SPAN_NOTICE("Right Mouse Button on turf/obj/mob     = Throw"))
 	to_chat(c, SPAN_NOTICE("***********************************************************"))
 
-/datum/buildmode_mode/throwing/handle_click(client/c, params, obj/object)
+/datum/buildmode_mode/throwing/when_clicked(client/c, params, obj/object)
 	var/list/modifiers = params2list(params)
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))

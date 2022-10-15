@@ -12,7 +12,7 @@
 	to_chat(c, SPAN_NOTICE("change the direction of built objects."))
 	to_chat(c, SPAN_NOTICE("***********************************************************"))
 
-/datum/buildmode_mode/basic/handle_click(client/c, params, obj/object)
+/datum/buildmode_mode/basic/when_clicked(client/c, params, obj/object)
 	var/list/modifiers = params2list(params)
 
 	var/left_click = LAZYACCESS(modifiers, LEFT_CLICK)
@@ -45,7 +45,8 @@
 		new/obj/structure/machinery/door/airlock(get_turf(object))
 	else if(istype(object,/turf) && ctrl_click && left_click)
 		var/obj/structure/window/reinforced/window
-		if(BM.build_dir in GLOB.diagonals)
+		var/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
+		if(BM.build_dir in diagonals)
 			window = new /obj/structure/window/framed(get_turf(object))
 		else
 			window = new /obj/structure/window/reinforced(get_turf(object))

@@ -27,7 +27,7 @@
 			return
 	deselect_region()
 
-/datum/buildmode_mode/fill/handle_click(client/c, params, obj/object)
+/datum/buildmode_mode/fill/when_clicked(client/c, params, obj/object)
 	if(isnull(objholder))
 		to_chat(c, "<span class='warning'>Select an object type first.</span>")
 		deselect_region()

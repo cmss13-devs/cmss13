@@ -20,7 +20,7 @@
 /datum/buildmode_mode/outfit/change_settings(client/c)
 	dressuptime = tgui_input_list(c?.mob, "Pick a Preset", "Equipment", GLOB.gear_path_presets_list)
 
-/datum/buildmode_mode/outfit/handle_click(client/c, params, object)
+/datum/buildmode_mode/outfit/when_clicked(client/c, params, object)
 	var/list/modifiers = params2list(params)
 
 	if(!ishuman(object))

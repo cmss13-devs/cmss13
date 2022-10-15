@@ -52,8 +52,6 @@
 	if (mods["drag"])
 		return
 
-
-
 	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
@@ -64,7 +62,7 @@
 		A.clicked(src, mods)
 		return
 
-	if(client.buildmode)
+	if(client.click_intercept)
 		if(istype(A, /atom/movable/screen/buildmode))
 			A.clicked(src, mods)
 			return

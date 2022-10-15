@@ -29,6 +29,11 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
+	ranged_attack_abilities = list(
+		/datum/action/xeno_action/activable/xeno_spit,
+		/datum/action/xeno_action/activable/spray_acid
+	)
+
 /mob/living/carbon/Xenomorph/Spitter
 	caste_type = XENO_CASTE_SPITTER
 	name = XENO_CASTE_SPITTER

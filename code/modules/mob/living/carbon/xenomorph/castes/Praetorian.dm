@@ -28,6 +28,12 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
+	ranged_attack_abilities = list(
+		/datum/action/xeno_action/activable/xeno_spit,
+		/datum/action/xeno_action/activable/prae_acid_ball,
+		/datum/action/xeno_action/activable/spray_acid
+	)
+
 /mob/living/carbon/Xenomorph/Praetorian
 	caste_type = XENO_CASTE_PRAETORIAN
 	name = XENO_CASTE_PRAETORIAN

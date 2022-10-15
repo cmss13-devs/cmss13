@@ -327,6 +327,7 @@
 
 // Spitter strain flags
 #define SPITTER_NORMAL		"Normal"
+#define SPITTER_REPEATER	"Repeater"
 
 // Boiler strain flags
 #define BOILER_NORMAL		"Normal"

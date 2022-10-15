@@ -256,6 +256,7 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_xeno_ranged_click'>Toggle Ranged Click Ability Activation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>"
 	)
@@ -330,6 +331,15 @@
 		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with middle clicking."))
 	else
 		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with shift clicking."))
+	prefs.save_preferences()
+
+/// Toggle whether a regular rangedattack click will fire the selected xeno ranged attack ability
+/client/proc/toggle_xeno_ranged_click()
+	prefs.toggle_prefs ^= TOGGLE_XENO_RANGED_ATTACK_CLICK
+	if (HAS_FLAG(prefs.toggle_prefs, TOGGLE_XENO_RANGED_ATTACK_CLICK))
+		to_chat(src, SPAN_NOTICE("If you have a ranged attack ability selected you will now use it when doing ranged clicks."))
+	else
+		to_chat(src, SPAN_NOTICE("Your ranged clicks will now act normally."))
 	prefs.save_preferences()
 
 /client/proc/toggle_clickdrag_override() //Toggle whether mousedown clicks immediately when on disarm or harm intent to prevent click-dragging from 'eating' attacks.

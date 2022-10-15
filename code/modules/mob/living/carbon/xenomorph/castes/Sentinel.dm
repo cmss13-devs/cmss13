@@ -26,6 +26,11 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
 
+	ranged_attack_abilities = list(
+		/datum/action/xeno_action/activable/slowing_spit,
+		/datum/action/xeno_action/activable/scattered_spit
+	)
+
 /mob/living/carbon/Xenomorph/Sentinel
 	caste_type = XENO_CASTE_SENTINEL
 	name = XENO_CASTE_SENTINEL

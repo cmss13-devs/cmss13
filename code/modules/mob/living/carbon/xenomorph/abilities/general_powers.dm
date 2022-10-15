@@ -706,7 +706,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay
+	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay + X.spit_delay_modifier
 
 	X.visible_message(SPAN_XENOWARNING("[X] spits at [A]!"), \
 	SPAN_XENOWARNING("You spit at [A]!") )

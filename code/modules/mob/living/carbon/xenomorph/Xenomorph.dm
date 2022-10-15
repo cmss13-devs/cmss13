@@ -194,6 +194,7 @@
 	var/evasion_modifier = 0
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
+	var/spit_delay_modifier = 0
 
 	var/list/modifier_sources
 

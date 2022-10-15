@@ -106,6 +106,7 @@
 	var/list/resin_build_order
 	var/minimum_xeno_playtime = 0
 
+	var/list/ranged_attack_abilities
 
 /datum/caste_datum/can_vv_modify()
 	return FALSE
@@ -161,6 +162,12 @@
 
 /datum/caste_datum/proc/get_caste_requirement(var/client/client)
 	return minimum_xeno_playtime - client.get_total_xeno_playtime()
+
+/datum/caste_datum/proc/handle_ranged_attack(var/mob/living/carbon/Xenomorph/xeno, var/atom/target, var/list/mods)
+	if(ranged_attack_abilities && is_type_in_list(xeno.selected_ability, ranged_attack_abilities))
+		xeno.selected_ability.use_ability_wrapper(target, mods)
+		return TRUE
+	return null
 
 /datum/hive_status
 	var/name = "Normal Hive"

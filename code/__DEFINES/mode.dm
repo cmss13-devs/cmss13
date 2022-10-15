@@ -86,6 +86,8 @@
 #define TOGGLE_MEMBER_PUBLIC				(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
 #define TOGGLE_OOC_FLAG						(1<<12) // determines if your country flag appears by your name in ooc chat
 #define TOGGLE_MIDDLE_MOUSE_SWAP_HANDS		(1<<13) //Toggle whether middle click swaps your hands
+/// Toggle whether a regular rangedattack click will fire the selected xeno ranged attack ability
+#define TOGGLE_XENO_RANGED_ATTACK_CLICK		(1<<14)
 //=================================================
 
 var/list/be_special_flags = list(

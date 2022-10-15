@@ -45,6 +45,10 @@
 
 	minimum_xeno_playtime = 9 HOURS
 
+	ranged_attack_abilities = list(
+		/datum/action/xeno_action/activable/xeno_spit
+	)
+
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
 		var/datum/hive_status/hive

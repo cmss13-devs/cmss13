@@ -39,7 +39,6 @@
 	if (world.time < next_click)
 		return
 
-
 	next_click = world.time + 1 //Maximum code-permitted clickrate 10.26/s, practical maximum manual rate: 8.5, autoclicker maximum: between 7.2/s and 8.5/s.
 	var/list/mods = params2list(params)
 
@@ -53,8 +52,7 @@
 	if (mods["drag"])
 		return
 
-	if(check_click_intercept(params,A))
-		return
+
 
 	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
@@ -64,6 +62,14 @@
 
 	if(istype(A, /obj/statclick))
 		A.clicked(src, mods)
+		return
+
+	if(client.buildmode)
+		if(istype(A, /atom/movable/screen/buildmode))
+			A.clicked(src, mods)
+			return
+
+	if(check_click_intercept(params,A))
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)

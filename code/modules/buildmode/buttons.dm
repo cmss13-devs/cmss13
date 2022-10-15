@@ -17,8 +17,7 @@
 	icon_state = "buildmode_basic"
 	screen_loc = "NORTH,WEST"
 
-/atom/movable/screen/buildmode/mode/Click(location, control, params)
-	var/list/modifiers = params2list(params)
+/atom/movable/screen/buildmode/mode/clicked(location, var/list/modifiers)
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		bd.toggle_modeswitch()
 	else if(LAZYACCESS(modifiers, RIGHT_CLICK))
@@ -35,7 +34,7 @@
 	screen_loc = "NORTH,WEST+1"
 	name = "Buildmode Help"
 
-/atom/movable/screen/buildmode/help/Click(location, control, params)
+/atom/movable/screen/buildmode/help/clicked()
 	bd.mode.show_help(usr.client)
 	return 1
 
@@ -47,7 +46,7 @@
 /atom/movable/screen/buildmode/bdir/update_icon()
 	dir = bd.build_dir
 
-/atom/movable/screen/buildmode/bdir/Click()
+/atom/movable/screen/buildmode/bdir/clicked()
 	bd.toggle_dirswitch()
 	update_icon()
 	return 1
@@ -62,7 +61,7 @@
 	name = initial(modetype.key)
 	return ..(bld)
 
-/atom/movable/screen/buildmode/modeswitch/Click()
+/atom/movable/screen/buildmode/modeswitch/clicked()
 	bd.change_mode(modetype)
 	return 1
 
@@ -75,7 +74,7 @@
 	name = dir2text(dir)
 	return ..(bld)
 
-/atom/movable/screen/buildmode/dirswitch/Click()
+/atom/movable/screen/buildmode/dirswitch/clicked()
 	bd.change_dir(dir)
 	return 1
 
@@ -84,6 +83,6 @@
 	screen_loc = "NORTH,WEST+3"
 	name = "Quit Buildmode"
 
-/atom/movable/screen/buildmode/quit/Click()
+/atom/movable/screen/buildmode/quit/clicked()
 	bd.quit()
 	return 1

@@ -95,7 +95,8 @@
 		"published_documents" = chemical_data.research_publications,
 		"main_terminal" = main_terminal,
 		"terminal_view" = TRUE,
-		"clearance_x_access" = chemical_data.clearance_x_access
+		"clearance_x_access" = chemical_data.clearance_x_access,
+		"photocopier_error" = photocopier == null
 	)
 	return data
 
@@ -176,12 +177,10 @@
 				to_chat(user, SPAN_WARNING("ERROR: no linked printer found."))
 				return
 			var/purchase_tier = text2num(params["purchase_document"])
-			if(purchase_tier < 0 || purchase_tier > 5)
+			if(purchase_tier <= 0 || purchase_tier > 5)
 				return
 			var/purchase_cost = base_purchase_cost + purchase_tier * 2
 			if(purchase_cost <= chemical_data.rsc_credits)
-				if(alert(usr,"Are you sure you wish to purchase a new level [purchase_tier] chemical report for [purchase_cost] credits?","Warning","Yes","No") != "Yes")
-					return
 				chemical_data.update_credits(purchase_cost * -1)
 				var/obj/item/paper/research_notes/unique/N
 				switch(purchase_tier)

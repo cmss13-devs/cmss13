@@ -30,6 +30,8 @@
 	var/donator = 0
 	var/adminhelped = 0
 
+	var/datum/click_intercept = null
+
 	var/atom/movable/screen/click_catcher/void
 
 	var/country

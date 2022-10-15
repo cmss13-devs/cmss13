@@ -19,17 +19,6 @@
 
 	src.master = master
 
-/datum/buildmode/proc/change_dir() // Deprecated
-	switch(dir)
-		if(NORTH)
-			dir = EAST
-		if(EAST)
-			dir = SOUTH
-		if(SOUTH)
-			dir = WEST
-		if(WEST)
-			dir = NORTH
-
 /datum/buildmode/proc/send_help(usr)
 	return
 

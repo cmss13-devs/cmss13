@@ -53,18 +53,13 @@
 	if (mods["drag"])
 		return
 
+	if(check_click_intercept(params,A))
+		return
+
 	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
-		return
-
-	if (client.buildmode)
-		if (istype(A, /obj/effect/bmode) || istype(A, /obj/effect/buildholder))
-			A.clicked(src, mods)
-			return
-
-		client.buildmode.object_click(src, mods, A)
 		return
 
 	if(istype(A, /obj/statclick))
@@ -149,6 +144,18 @@
 			next_move += 4
 		UnarmedAttack(A, 1, mods)
 
+/mob/proc/check_click_intercept(params,A)
+	//Client level intercept
+	if(client?.click_intercept)
+		if(call(client.click_intercept, "InterceptClickOn")(src, params, A))
+			return TRUE
+
+	//Mob level intercept
+	if(click_intercept)
+		if(call(click_intercept, "InterceptClickOn")(src, params, A))
+			return TRUE
+
+	return FALSE
 
 /*	OLD DESCRIPTION
 	Standard mob ClickOn()

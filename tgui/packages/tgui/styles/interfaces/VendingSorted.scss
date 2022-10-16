@@ -8,9 +8,6 @@ $button-bg-opacity: 0.1;
 $recommended-color: #3a9b52;
 $mandatory-color: rgb(128, 83, 0);
 
-.VendingSorted__ItemFlex {
-  pointer-events: none;
-}
 
 .VendingSorted__HideDesc {
   pointer-events: none;
@@ -89,7 +86,6 @@ $mandatory-color: rgb(128, 83, 0);
   height: 18px;
   line-height: 18px;
   text-align: center;
-  pointer-events: auto;
 
   .Button__content {
     align-self: flex-start;

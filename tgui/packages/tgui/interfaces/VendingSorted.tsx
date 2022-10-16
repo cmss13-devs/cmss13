@@ -4,7 +4,6 @@ import { Button, Section, Flex, Box, Tooltip, Input, NoticeBox, Icon } from '../
 import { Window } from '../layouts';
 import { classes } from 'common/react';
 import { BoxProps } from '../components/Box';
-import { logger } from '../logging';
 
 const THEME_COMP = 0;
 const THEME_USCM = 1;
@@ -104,9 +103,10 @@ const SuperVendButton = (props: VendButtonProps, _) => {
       ])}
       preserveWhitespace
       icon={props.text ? undefined : (props.available ? "circle-down" : "xmark")}
-      onClick={event => {
-        event.preventDefault();
+      onMouseDown={(e) => {
+        e.preventDefault();
         props.onClick();
+
       }}
       textAlign="center"
       disabled={!props.available}>
@@ -164,7 +164,7 @@ const VendableItem2 = (props: VenableItem, context) => {
 
         <Flex.Item>
           <DescriptionTooltip record={record}>
-            <Icon name="circle-info" className={classes(["VendingSorted__ShowDesc", "VendingSorted__RegularItemText"])} />
+            <Icon name="circle-info" className={classes(["VendingSorted__RegularItemText"])} />
           </DescriptionTooltip>
         </Flex.Item>
       </Flex>
@@ -182,11 +182,6 @@ const VendableClothingItem = (props: VenableItem, context) => {
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
   const cost = record.prod_cost;
   const description = record.prod_desc;
-
-  const handlePointerEvent = (e) => {
-    // Do something
-    logger.info("pointer");
-  };
 
   return (
     <div>
@@ -218,16 +213,14 @@ const VendableClothingItem = (props: VenableItem, context) => {
             </>)}
 
         <Flex.Item grow={1}>
-          <div onPointerOver={handlePointerEvent} className="VendingSorted__ShowDesc">
-            <SuperVendButton
-              isRecommended={isRecommended}
-              isMandatory={isMandatory}
-              available={available}
-              onClick={() => act('vend', record)}
-            >
-              {record.prod_name}
-            </SuperVendButton>
-          </div>
+          <SuperVendButton
+            isRecommended={isRecommended}
+            isMandatory={isMandatory}
+            available={available}
+            onClick={() => act('vend', record)}
+          >
+            {record.prod_name}
+          </SuperVendButton>
         </Flex.Item>
 
         <Flex.Item>

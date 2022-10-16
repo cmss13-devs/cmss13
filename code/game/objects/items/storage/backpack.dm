@@ -360,6 +360,8 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	icon_state = "marinepack"
 	item_state = "marinepack"
 	has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
+	xeno_icon_state = "marinepack"
+	xeno_types = list(/mob/living/carbon/Xenomorph/Praetorian)
 
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM corpsman backpack"

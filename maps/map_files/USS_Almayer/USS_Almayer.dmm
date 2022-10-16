@@ -41240,6 +41240,7 @@
 	invisibility = 101;
 	tag = "icon-tube1 (EAST)"
 	},
+/obj/structure/machinery/prop/almayer/CICmap,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
@@ -50426,10 +50427,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/cic)
-"joa" = (
-/obj/structure/machinery/prop/almayer/CICmap,
-/turf/open/floor/almayer,
-/area/almayer/living/briefing)
 "jox" = (
 /obj/structure/machinery/brig_cell/cell_3{
 	pixel_x = -32
@@ -121692,7 +121689,7 @@ beH
 beH
 beH
 beH
-joa
+beH
 beH
 beH
 beH

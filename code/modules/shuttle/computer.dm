@@ -88,7 +88,7 @@
 	if(L.status == LIFEBOAT_LOCKED)
 		to_chat(user, SPAN_WARNING("\The [src] flickers with error messages."))
 	else if(L.status == LIFEBOAT_INACTIVE)
-		to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting for evacuation order\"."))
+		to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting evacuation order\"."))
 	else if(L.status == LIFEBOAT_ACTIVE)
 		switch(L.mode)
 			if(SHUTTLE_IDLE)

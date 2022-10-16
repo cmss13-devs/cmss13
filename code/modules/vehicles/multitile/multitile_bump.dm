@@ -328,13 +328,13 @@
 
 /obj/structure/machinery/door/poddoor/almayer/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!unacidable)
-		if(bumpable)
+		if(vehicle_resistant)
+			visible_message(SPAN_DANGER("\The [V] can't destroy [src]!"))
+			playsound(V, 'sound/effects/metal_crash.ogg', 35)
+		else
 			visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
 			playsound(V, 'sound/effects/metal_crash.ogg', 35)
 			Destroy()
-		else
-			visible_message(SPAN_DANGER("\The [V] can't destroy [src]!"))
-			playsound(V, 'sound/effects/metal_crash.ogg', 35)
 	return FALSE
 
 /obj/structure/machinery/cm_vending/handle_vehicle_bump(var/obj/vehicle/multitile/V)

@@ -274,7 +274,7 @@
 /obj/structure/machinery/door/poddoor/almayer
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	openspeed = 4 //shorter open animation.
-	var/bumpable = TRUE
+	var/vehicle_resistant = FALSE
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock)
@@ -304,4 +304,4 @@
 /obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor
 	density = TRUE
 	opacity = TRUE
-	bumpable = FALSE
+	vehicle_resistant = TRUE

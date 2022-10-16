@@ -178,6 +178,7 @@
       other items.
   - code_imp: The Squad Transfer Computer and the Overwatch computer are now consistent
       in transfer requirements.
+  - rscadd: Ambient occlusion is now a(n enabled by default) preference.
   nauticall:
   - balance: The command tablet can now remotely call a Distress Beacon.
   - balance: All 4 Staff Officers can now spawn at round start. 5th SO slot had to

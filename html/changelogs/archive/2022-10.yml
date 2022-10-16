@@ -163,6 +163,11 @@
       contains a squad leader, medics, engineers, and privates.
   - balance: The tech points required to go up a tier has been reduced to 5 from 15.
 2022-10-16:
+  Geeves, 50RemAndCounting, Stan_Albatross:
+  - balance: Type-B fire/greenfire now no longer affects fire-immune xenomorphs. Greenfire
+      slowdown effect has been reduced.
+  - refactor: refactored flamer fire handling code.
+  - balance: floor acid is now twice as effective at extinguishing greenfire
   harryob:
   - bugfix: The powerloader can no longer delete crates, water tanks, and various
       other items.

@@ -385,14 +385,14 @@
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/blk
-	name = "marine ballistic goggles"
+	name = "black marine ballistic goggles"
 	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
 	icon_state = "mgogglesblk"
 	active_icon_state = "mgogglesblk_down"
 	inactive_icon_state = "mgogglesblk"
 
 /obj/item/clothing/glasses/mgoggles/org
-	name = "marine ballistic goggles"
+	name = "orange marine ballistic goggles"
 	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
 	icon_state = "mgogglesorg"
 	active_icon_state = "mgogglesorg_down"

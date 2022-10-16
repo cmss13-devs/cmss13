@@ -285,9 +285,6 @@
 
 /// External airlock that is part of the lifeboat dock
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor
-	safe = FALSE
-	name = "bulkhead blast door"
-	icon = 'icons/obj/structures/doors/almayerblastdoor.dmi'
 	name = "bulkhead blast door"
 	desc = "A heavyset bulkhead door. Built to withstand explosions, gunshots, and extreme pressure. Chances are you're not getting through this."
 	icon = 'icons/obj/structures/doors/almayerblastdoor.dmi'

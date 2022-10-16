@@ -200,7 +200,7 @@ var/global/list/gear_datums = list()
 
 /datum/gear/cmgogglesorg
 	display_name = "Ballistic Goggles (Orange)"
-	path = /obj/item/clothing/glasses/mgoggles/orng
+	path = /obj/item/clothing/glasses/mgoggles/org
 	cost = 2
 	slot = WEAR_EYES
 

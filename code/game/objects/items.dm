@@ -149,18 +149,17 @@
 /obj/item/ex_act(severity, explosion_direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
+			explosion_throw(severity, explosion_direction)
 			if(prob(5))
 				if(!indestructible)
 					qdel(src)
-			else
-				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			explosion_throw(severity, explosion_direction)
 			if(prob(50))
 				if(!indestructible)
 					qdel(src)
-			else
-				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			explosion_throw(severity, explosion_direction)
 			if(!indestructible)
 				qdel(src)
 

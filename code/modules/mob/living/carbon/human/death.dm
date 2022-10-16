@@ -5,6 +5,8 @@
 			continue
 		if(istype(E, /obj/limb/groin) && is_a_synth)
 			continue
+		if(istype(E, /obj/limb/head))
+			E.droplimb(0, 0, cause)
 		// Only make the limb drop if it's not too damaged
 		if(prob(100 - E.get_damage()))
 			// Override the current limb status

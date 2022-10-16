@@ -549,6 +549,10 @@
 		<BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=sleepall'>Sleep All In View</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=wakeall'>Wake All In View</A><BR>
+
+		<A href='?src=\ref[src];[HrefToken()];inviews=directnarrateall'>Direct Narrate In View</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
 		<BR>
 		"}
 

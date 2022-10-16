@@ -193,6 +193,31 @@
 		else
 			return
 
+/client/proc/cmd_admin_object_narrate(var/obj/selected)
+	set name = "Object Narrate"
+	set category = null
+
+	if(!check_rights(R_MOD))
+		return
+
+	var/type = tgui_input_list(usr, "What type of narration?", "Narration", list("Say", "Me", "Direct"))
+	if(!type) return
+	var/message = input(src, "What should it say?", "Narrating as [selected.name]")
+	if(!message) return
+
+	var/list/heard = get_mobs_in_view(world_view_size, selected)
+
+	switch(type)
+		if("Say")
+			selected.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE)
+			selected.visible_message("<b>[selected]</b> says, \"[message]\"")
+		if("Me")
+			selected.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+			selected.visible_message("<b>[selected]</b> [message]")
+		if("Direct")
+			selected.visible_message("[message]")
+
+
 /client/proc/cmd_admin_direct_narrate(var/mob/M)
 	set name = "Narrate"
 	set category = null

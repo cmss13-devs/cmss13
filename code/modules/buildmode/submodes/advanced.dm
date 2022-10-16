@@ -30,7 +30,7 @@
 	if(left_click && alt_click)
 		if (istype(object, /turf) || istype(object, /obj) || istype(object, /mob))
 			objholder = object.type
-			to_chat(c, SPAN_NOTICE("[initial(object.name)] ([object.type]) selected.")
+			to_chat(c, SPAN_NOTICE("[initial(object.name)] ([object.type]) selected."))
 		else
 			to_chat(c, SPAN_NOTICE("[initial(object.name)] is not a turf, object, or mob! Please select again."))
 	else if(left_click)
@@ -43,7 +43,7 @@
 			A.setDir(BM.build_dir)
 			log_admin("Build Mode: [key_name(c)] modified [A]'s [COORD(A)] dir to [BM.build_dir]")
 		else
-			to_chat(c, SPAN_WARNING"Select object type first.")
+			to_chat(c, SPAN_WARNING("Select object type first."))
 	else if(right_click)
 		if(isobj(object))
 			log_admin("Build Mode: [key_name(c)] deleted [object] at [AREACOORD(object)]")

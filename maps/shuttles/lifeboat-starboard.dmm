@@ -237,7 +237,7 @@
 "Ep" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
 	id = "Boat2-D1";
-	throw_dir = 1
+	throw_dir = 2
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)

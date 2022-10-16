@@ -163,6 +163,11 @@
       contains a squad leader, medics, engineers, and privates.
   - balance: The tech points required to go up a tier has been reduced to 5 from 15.
 2022-10-16:
+  Aceroy:
+  - bugfix: Fixed the issue of plastic explosives cause_data being deleted in the
+      process of exploding
+  - rscadd: Added a new poddoor type that is immune to APC but still can be destroyed
+      by explosives and acid.
   Geeves, 50RemAndCounting, Stan_Albatross:
   - balance: Type-B fire/greenfire now no longer affects fire-immune xenomorphs. Greenfire
       slowdown effect has been reduced.

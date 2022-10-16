@@ -35,11 +35,3 @@
 
 //Pixel coordinates in screen_loc format ("[tile_x]:[pixel_x],[tile_y]:[pixel_y]")
 #define SCREEN_LOC "screen-loc"
-
-//https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
-/// Objects will ignore being clicked on regardless of their transparency (used in parallax, lighting effects, holograms, lasers, etc.)
-#define MOUSE_OPACITY_TRANSPARENT 0
-/// Objects will be clicked on if it is the topmost object and the pixel isn't transparent at the position of the mouse (default behavior for 99.99% of game objects)
-#define MOUSE_OPACITY_ICON 1
-/// Objects will be always be clicked on regardless of pixel transparency or other objects at that location (used in space vines, megafauna, storage containers)
-#define MOUSE_OPACITY_OPAQUE 2

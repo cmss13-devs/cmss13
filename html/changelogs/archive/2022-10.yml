@@ -163,6 +163,9 @@
       contains a squad leader, medics, engineers, and privates.
   - balance: The tech points required to go up a tier has been reduced to 5 from 15.
 2022-10-16:
+  harryob:
+  - bugfix: The powerloader can no longer delete crates, water tanks, and various
+      other items.
   totalepicness:
   - balance: Reworked charger's RAM, it is now renamed to "headbutt" and slows down
       instead of stuns.

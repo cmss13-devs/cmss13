@@ -619,6 +619,59 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
 		SPAN_NOTICE("You empty \the [src]."))
 
+/obj/item/storage/verb/shake_verb()
+	set name = "Shake"
+	set category = "Object"
+	set src in usr
+	var/mob/M = usr
+	shake(M, get_turf(M))
+
+/obj/item/storage/proc/shake(var/mob/user, var/turf/T)
+	if(!(storage_flags & STORAGE_ALLOW_EMPTY))
+		return
+
+	if(user.l_hand != src && user.r_hand != src && user.back != src)
+		return
+
+	if(user.is_mob_incapacitated())
+		return
+
+	if (!isturf(T) || get_dist(src, T) > 1)
+		T = get_turf(src)
+
+	if (use_sound)
+		playsound(loc, use_sound, 25, TRUE, 3)
+
+	if(!length(contents))
+		if(prob(25) && isXeno(user))
+			user.drop_inv_item_to_loc(src, T)
+			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] off."),
+				SPAN_NOTICE("You shake \the [src] off."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+				SPAN_NOTICE("You shake \the [src] but nothing falls out. It feels empty."))
+		return
+
+	if(!allowed(user))
+		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+			SPAN_NOTICE("You shake \the [src] but nothing falls out. Access denied."))
+		return
+
+	if(!prob(75))
+		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+			SPAN_NOTICE("You shake \the [src] but nothing falls out."))
+		return
+
+	storage_close(user)
+	var/obj/item/I
+	if(storage_flags & STORAGE_USING_FIFO_DRAWING)
+		I = contents[1]
+	else
+		I = contents[contents.len]
+	remove_from_storage(I, T)
+	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [I] falls out."),
+		SPAN_NOTICE("You shake \the [src] and \a [I] falls out."))
+
 /obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, var/amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
 	if(user.action_busy)
 		return
@@ -684,6 +737,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if (!(storage_flags & STORAGE_ALLOW_EMPTY))
 		verbs -= /obj/item/storage/verb/empty_verb
 		verbs -= /obj/item/storage/verb/toggle_click_empty
+		verbs -= /obj/item/storage/verb/shake_verb
 
 	boxes = new
 	boxes.name = "storage"

@@ -618,6 +618,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		remove_from_storage(I, T)
 	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
 		SPAN_NOTICE("You empty \the [src]."))
+	if (use_sound)
+		playsound(loc, use_sound, 25, TRUE, 3)
 
 /obj/item/storage/verb/shake_verb()
 	set name = "Shake"

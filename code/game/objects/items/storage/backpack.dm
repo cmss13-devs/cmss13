@@ -90,6 +90,12 @@
 			storage_close(user)
 	..()
 
+/obj/item/storage/unequipped(mob/user, slot, silent)
+	if(slot == WEAR_BACK)
+		if(use_sound && !silent)
+			playsound(loc, use_sound, 15, TRUE, 6)
+	..()
+
 /obj/item/storage/backpack/dropped(mob/user)
 	mouse_opacity = initial(mouse_opacity)
 	..()

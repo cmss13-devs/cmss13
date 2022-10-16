@@ -3,6 +3,8 @@ import { useBackend, useLocalState } from '../backend';
 import { Button, Section, Flex, Box, Tooltip, Input, NoticeBox, Icon } from '../components';
 import { Window } from '../layouts';
 import { classes } from 'common/react';
+import { BoxProps } from '../components/Box';
+import { logger } from '../logging';
 
 const THEME_COMP = 0;
 const THEME_USCM = 1;
@@ -49,79 +51,71 @@ interface VenableItem {
   record: VendingRecord;
 }
 
-interface RecordNameProps {
+interface RecordNameProps extends BoxProps{
   record: VendingRecord;
 }
 
-const RecordName = (props: RecordNameProps) => {
+const DescriptionTooltip = (props: RecordNameProps, context) => {
   const { record } = props;
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
 
-  const description = record.prod_desc;
-
-  const display_text = () => {
-    return (
-      <span className={classes([
-        'VendingSorted__Text',
-        'VendingSorted__RegularItemText',
-        'VendingSorted__HideDesc',
-        isMandatory && 'VendingSorted__MandatoryItemText',
-        isRecommended && 'VendingSorted__RecommendedItemText',
-      ])}>
-        {record.prod_name}   {description && <Icon name="circle-info" className={classes(["VendingSorted__ShowDesc", "VendingSorted__RegularItemText"])} />}
-      </span>
-    );
-  };
-
-  if (!description) {
-    return display_text();
-  }
   return (
     <Tooltip
       position="bottom-start"
+      className={classes(["VendingSorted__Tooltip", props.className])}
       content={(
         <NoticeBox
           info
-          className="VendingSorted__Description"
+          className={classes([
+            "VendingSorted__Description",
+            isRecommended && "VendingSorted_RecommendedDescription",
+            isMandatory && "VendingSorted_MandatoryDescription",
+          ])}
         >
-          <ItemDescriptionViewer desc={record.prod_desc ?? ""} name={record.prod_name} />
+          <ItemDescriptionViewer
+            desc={record.prod_desc ?? ""}
+            name={record.prod_name}
+            isRecommended={isRecommended}
+            isMandatory={isMandatory} />
         </NoticeBox>
       )}
     >
-      {display_text()}
-    </Tooltip>
-  );
+      {props.children}
+    </Tooltip>);
 };
 
-interface VendButtonProps {
-  text?: string | number;
+interface VendButtonProps extends BoxProps{
   isRecommended: boolean;
   isMandatory: boolean;
   available: boolean;
   onClick: () => any;
 }
 
-const VendButton = (props: VendButtonProps, _) => {
+const SuperVendButton = (props: VendButtonProps, _) => {
   return (
     <Button
       className={classes([
-        "VendingSorted__Button",
-        'VendingSorted__VendButton',
+        "VendingSorted__VendButton",
+        'VendingSorted__SuperVendButton',
         props.isRecommended && 'VendingSorted__RecommendedVendButton',
         props.isMandatory && 'VendingSorted__MandatoryVendButton',
+        props.className,
       ])}
       preserveWhitespace
       icon={props.text ? undefined : (props.available ? "circle-down" : "xmark")}
-      onClick={props.onClick}
+      onClick={event => {
+        event.preventDefault();
+        props.onClick();
+      }}
       textAlign="center"
       disabled={!props.available}>
-      {props.text}
+      {props.children}
     </Button>
   );
 };
 
-const VendableItem = (props: VenableItem, context) => {
+const VendableItem2 = (props: VenableItem, context) => {
   const { data, act } = useBackend<VendingData>(context);
   const { record } = props;
 
@@ -130,39 +124,51 @@ const VendableItem = (props: VenableItem, context) => {
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
 
+  const description = record.prod_desc;
+
   return (
-    <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
-      <Flex.Item>
-        <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
-      </Flex.Item>
+    <div>
+      <Flex
+        align="center"
+        justify="space-between"
+        align-items="stretch"
+      >
+        <Flex.Item>
+          <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
+        </Flex.Item>
 
-      <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
-      </Flex.Item>
+        <Flex.Item>
+          <Box className="VendingSorted__Spacer" />
+        </Flex.Item>
 
-      <Flex.Item justify="right">
-        <VendButton
-          isRecommended={isRecommended}
-          isMandatory={isMandatory}
-          available={available}
-          onClick={() => act('vend', record)}
-        />
-      </Flex.Item>
+        <Flex.Item width={2}>
+          <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
+            {quantity}
+          </span>
+        </Flex.Item>
 
-      <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
-      </Flex.Item>
+        <Flex.Item grow={1}>
+          <SuperVendButton
+            isRecommended={isRecommended}
+            isMandatory={isMandatory}
+            available={available}
+            onClick={() => act('vend', record)}
+          >
+            {record.prod_name}
+          </SuperVendButton>
+        </Flex.Item>
 
-      <Flex.Item width={2}>
-        <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
-          {quantity}
-        </span>
-      </Flex.Item>
+        <Flex.Item>
+          <Box className="VendingSorted__Spacer" />
+        </Flex.Item>
 
-      <Flex.Item grow={1}>
-        <RecordName record={record} />
-      </Flex.Item>
-    </Flex>
+        <Flex.Item>
+          <DescriptionTooltip record={record}>
+            <Icon name="circle-info" className={classes(["VendingSorted__ShowDesc", "VendingSorted__RegularItemText"])} />
+          </DescriptionTooltip>
+        </Flex.Item>
+      </Flex>
+    </div>
   );
 };
 
@@ -175,36 +181,71 @@ const VendableClothingItem = (props: VenableItem, context) => {
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
   const cost = record.prod_cost;
+  const description = record.prod_desc;
+
+  const handlePointerEvent = (e) => {
+    // Do something
+    logger.info("pointer");
+  };
 
   return (
-    <Flex align="center" justify="space-between" align-items="stretch" className="VendingSorted__ItemBox">
-      <Flex.Item>
-        <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
-      </Flex.Item>
+    <div>
+      <Flex
+        align="center"
+        justify="space-between"
+        align-items="center"
+      >
+        <Flex.Item>
+          <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
+        </Flex.Item>
 
-      <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
-      </Flex.Item>
+        <Flex.Item>
+          <Box className="VendingSorted__Spacer" />
+        </Flex.Item>
 
-      <Flex.Item justify="right">
-        <VendButton
-          isRecommended={isRecommended}
-          isMandatory={isMandatory}
-          available={available}
-          text={cost === 0 ? undefined : `${cost}P`}
-          onClick={() => act('vend', record)}
-        />
-      </Flex.Item>
+        {cost !== 0
+          && (
+            <>
+              <Flex.Item>
+                <span className="VendingSorted__Text">
+                  {cost === 0 ? undefined : `${cost}P`}
+                </span>
+              </Flex.Item>
 
-      <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
-      </Flex.Item>
+              <Flex.Item>
+                <Box className="VendingSorted__Spacer" />
+              </Flex.Item>
+            </>)}
 
+        <Flex.Item grow={1}>
+          <div onPointerOver={handlePointerEvent} className="VendingSorted__ShowDesc">
+            <SuperVendButton
+              isRecommended={isRecommended}
+              isMandatory={isMandatory}
+              available={available}
+              onClick={() => act('vend', record)}
+            >
+              {record.prod_name}
+            </SuperVendButton>
+          </div>
+        </Flex.Item>
 
-      <Flex.Item grow={1}>
-        <RecordName record={record} />
-      </Flex.Item>
-    </Flex>
+        <Flex.Item>
+          <Box className="VendingSorted__Spacer" />
+        </Flex.Item>
+
+        <Flex.Item>
+          <DescriptionTooltip record={record}>
+            <Icon name="circle-info" className={classes(["VendingSorted__ShowDesc", "VendingSorted__RegularItemText"])} />
+          </DescriptionTooltip>
+        </Flex.Item>
+
+        <Flex.Item>
+          <Box className="VendingSorted__Spacer" />
+        </Flex.Item>
+      </Flex>
+    </div>
+
   );
 };
 
@@ -215,12 +256,25 @@ interface VendingCategoryProps {
 interface DescriptionProps {
   desc: string;
   name: string;
+  isMandatory: boolean;
+  isRecommended: boolean;
 }
 
 const ItemDescriptionViewer = (props: DescriptionProps, _) => {
+  const { name, desc, isMandatory, isRecommended } = props;
+  const generateTitle = () => {
+    if (isMandatory) {
+      return `Mandatory: ${name}`;
+    }
+    if (isRecommended) {
+      return `Recommended: ${name}`;
+    }
+    return name;
+  };
+
   return (
-    <Section title={props.name}>
-      <span>{props.desc}</span>
+    <Section title={generateTitle()}>
+      <span>{desc}</span>
     </Section>
   );
 };
@@ -240,17 +294,16 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
 
   return (
     <Section title={category.name ?? ""} className="VendingSorted__CategorySection">
-      <Flex direction="column" className="VendingSorted__ItemFlex">
+      <Flex direction="column">
         {filteredCategories
           .sort(data.vendor_type === "clothing" ? undefined : (a, b) => a.prod_name.localeCompare(b.prod_name))
           .map((record, i) =>
           {
             const isLast = (filteredCategories.length - 1) === i;
             return (
-              <Flex.Item mb={1.2} key={record.prod_index}>
-                {vendor_type === "sorted" && <VendableItem record={record} />}
+              <Flex.Item key={record.prod_index} className={i % 2 ? "VendingFlexAlt" : undefined}>
+                {vendor_type === "sorted" && <VendableItem2 record={record} />}
                 {vendor_type === "clothing" && <VendableClothingItem record={record} />}
-                {!isLast && <hr className="VendingSorted__ItemSeparator" />}
               </Flex.Item>
             );
           })}
@@ -338,9 +391,9 @@ export const VendingSorted = (_, context) => {
         {!isEmpty
           && (
             <Box className="VendingSorted__ItemContainer">
-              <Flex direction="column">
+              <Flex direction="column" fill>
                 {categories.map((category, i) => (
-                  <Flex.Item key={i} className={"VendingSorted__Category"}>
+                  <Flex.Item key={i} className="VendingSorted__Category">
                     <ViewVendingCategory category={category} />
                   </Flex.Item>))}
                 <Flex.Item height={15}>

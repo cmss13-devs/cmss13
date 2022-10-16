@@ -773,7 +773,7 @@ IN_USE						used for vending/denying
 	return
 
 /obj/structure/machinery/cm_vending/clothing/ui_state(mob/user)
-	return GLOB.not_incapacitated_and_adjacent_state
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/clothing/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -1096,7 +1096,7 @@ IN_USE						used for vending/denying
 	return
 
 /obj/structure/machinery/cm_vending/sorted/ui_state(mob/user)
-	return GLOB.not_incapacitated_and_adjacent_state
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -1240,6 +1240,7 @@ IN_USE						used for vending/denying
 			return TRUE
 
 	add_fingerprint(usr)
+	return TRUE
 
 /obj/structure/machinery/cm_vending/sorted/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)

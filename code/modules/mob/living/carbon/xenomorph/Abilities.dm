@@ -6,8 +6,13 @@
 	action_type = XENO_ACTION_ACTIVATE //doesn't really need a macro
 
 /datum/action/xeno_action/onclick/build_tunnel/can_use_action()
+	if(!owner)
+		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X.tunnel_delay) return FALSE
+	if(!istype(X))
+		return FALSE
+	if(X.tunnel_delay)
+		return FALSE
 	return ..()
 
 /datum/action/xeno_action/onclick/build_tunnel/use_ability(atom/A)

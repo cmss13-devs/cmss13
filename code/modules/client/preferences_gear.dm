@@ -521,13 +521,13 @@ var/global/list/gear_datums = list()
 /datum/gear/weyland_booze
 	display_name = "Weyland-Yutani Lite"
 	path = /obj/item/reagent_container/food/drinks/cans/beer
-	cost = 1
+	cost = 2
 	slot = WEAR_IN_BACK
 
 /datum/gear/weyland_IPA
 	display_name = "Weyland-Yutani IPA"
 	path = /obj/item/reagent_container/food/drinks/cans/beer
-	cost = 1
+	cost = 2
 	slot = WEAR_IN_BACK
 
 /datum/gear/pdt_kit

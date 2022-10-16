@@ -96,7 +96,7 @@
 			if(SHUTTLE_IGNITING)
 				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Engines firing\"."))
 			if(SHUTTLE_CALL)
-				to_chat(user, SPAN_NOTICE("\The [src] shows some various flight information. Autopilot is working and carrying you away, that is what matters."))
+				to_chat(user, SPAN_NOTICE("\The [src] has flight information scrolling across the screen. The autopilot is working correctly."))
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.caste && M.caste.is_intelligent)

@@ -4,6 +4,7 @@ import { Window } from '../layouts';
 import { logger } from '../logging';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { classes } from '../../common/react';
+import { BoxProps } from '../components/Box';
 
 
 interface TerminalProps {
@@ -33,9 +34,9 @@ const PurchaseDocs = (_, context) => {
       </Stack.Item>
       <hr className="sep" />
       <Stack.Item>
-        <Flex wrap justify="space-between">
+        <Flex justify="space-between" fill className="purchase-flex">
           {all_levels.map(x => (
-            <Flex.Item key={x} className="purchase-flex" wrap xs={6} md={6} lg={6}>
+            <Flex.Item key={x}>
               <Button
                 className={classes(["DoButton", !available_levels.includes(x) && "HiddenButton"])}
                 disabled={!available_levels.includes(x)}
@@ -50,6 +51,7 @@ const PurchaseDocs = (_, context) => {
         {purchaseSelection !== '0'
           && (
             <ConfirmationDialogue
+              className="Confirm-Dialogue"
               onConfirm={() => {
                 act("purchase_document", { purchase_document: purchaseSelection });
                 setPurchaseSelection('0');
@@ -60,22 +62,21 @@ const PurchaseDocs = (_, context) => {
                 Are you sure you want to purchase a
                 level <u>{purchaseSelection}</u> document?
                 <br />
-                It will cost <u>{4}</u> credits.
+                It will cost <u>{costs[purchaseSelection]}</u> credits.
               </span>
             </ConfirmationDialogue>)}
       </Stack.Item>
     </Stack>);
 };
 
-interface ConfirmationProps {
-  children?: Element;
+interface ConfirmationProps extends BoxProps {
   onConfirm: () => any;
   onCancel: () => any;
 }
 
 const ConfirmationDialogue = (props: ConfirmationProps, context) => {
   return (
-    <Stack vertical>
+    <Stack vertical className={props.className}>
       <Stack.Item>
         {props.children}
       </Stack.Item>
@@ -114,7 +115,7 @@ const CompoundTable = (_, context) => {
   });
 
   return (
-    <Section>
+    <div className="chem-table-wrapper">
       <Table className="chem_table">
         <TableRow>
           <TableCell textAlign="center">
@@ -164,7 +165,7 @@ const CompoundTable = (_, context) => {
           )
         )}
       </Table>
-    </Section>);
+    </div>);
 };
 
 const ResearchManager = (_, context) => {
@@ -189,7 +190,7 @@ const ResearchManager = (_, context) => {
 const ResearchOverview = (_, context) => {
   const [selectedTab, setSelectedTab] = useLocalState(context, 'research_tab', 1);
   return (
-    <>
+    <div className="TabWrapper">
       <Tabs fluid fill >
         <Tabs.Tab
           selected={selectedTab === 1}
@@ -215,7 +216,7 @@ const ResearchOverview = (_, context) => {
           {selectedTab === 2 && <CompoundTable />}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -261,9 +262,9 @@ export const ResearchTerminal = (_, context) => {
   const showSharpen = false;
   return (
     <Window
+      width={480}
+      height={320}
       theme="crt"
-      height={480}
-      width={600}
     >
       <Window.Content scrollable className={classes([!sharpen && 'crt'])}>
         <Section

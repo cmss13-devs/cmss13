@@ -173,6 +173,11 @@
       other items.
   - code_imp: The Squad Transfer Computer and the Overwatch computer are now consistent
       in transfer requirements.
+  nauticall:
+  - balance: The command tablet can now remotely call a Distress Beacon.
+  - balance: All 4 Staff Officers can now spawn at round start. 5th SO slot had to
+      be removed with this, unfortunately.
+  - balance: Executive Officers now start with a laser designator.
   stanalbatross:
   - balance: reduced the XM88 stock slowdown a bit
   - balance: gave XM88 10 ap ammo by default

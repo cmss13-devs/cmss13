@@ -1016,6 +1016,11 @@
 	desc = "Flank the enemy here!"
 	icon_state = "flank"
 
+/datum/xeno_mark_define/weeds
+	name = "Need Weeds"
+	desc = "Need weeds here!"
+	icon_state = "weed"
+
 /datum/xeno_mark_define/hold
 	name = "Hold"
 	desc = "Hold this area!"

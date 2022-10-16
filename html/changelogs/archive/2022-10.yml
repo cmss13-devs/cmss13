@@ -150,5 +150,49 @@
   ihatethisengine:
   - bugfix: Observers now can see evacuation timer
 2022-10-14:
+  Carlarc_Kugamo:
+  - rscadd: Added a new resin marker for needing weeds in an area.
   Kugamo:
   - imageadd: Carriers' sprites now reflect how many huggers they are currently carrying.
+2022-10-15:
+  Geeves:
+  - bugfix: The Reserves squad is now called Foxtrot. Their brown color has been brightened
+      a bit, the radio color as well. They also no longer break the crew manifest.
+  - rscadd: You can now call the reserves in-game via the tech tree, it's a Tier 3
+      tech that costs 10 points, but increases by 5 each time it's called. The squad
+      contains a squad leader, medics, engineers, and privates.
+  - balance: The tech points required to go up a tier has been reduced to 5 from 15.
+2022-10-16:
+  Aceroy:
+  - bugfix: Fixed the issue of plastic explosives cause_data being deleted in the
+      process of exploding
+  - rscadd: Added a new poddoor type that is immune to APC but still can be destroyed
+      by explosives and acid.
+  Geeves, 50RemAndCounting, Stan_Albatross:
+  - balance: Type-B fire/greenfire now no longer affects fire-immune xenomorphs. Greenfire
+      slowdown effect has been reduced.
+  - refactor: refactored flamer fire handling code.
+  - balance: floor acid is now twice as effective at extinguishing greenfire
+  harryob:
+  - bugfix: The powerloader can no longer delete crates, water tanks, and various
+      other items.
+  - code_imp: The Squad Transfer Computer and the Overwatch computer are now consistent
+      in transfer requirements.
+  - rscadd: Ambient occlusion is now a(n enabled by default) preference.
+  nauticall:
+  - balance: The command tablet can now remotely call a Distress Beacon.
+  - balance: All 4 Staff Officers can now spawn at round start. 5th SO slot had to
+      be removed with this, unfortunately.
+  - balance: Executive Officers now start with a laser designator.
+  stanalbatross:
+  - balance: reduced the XM88 stock slowdown a bit
+  - balance: gave XM88 10 ap ammo by default
+  - balance: shifted the XM88 stack ap tiers up by 10 each to compensate for this
+  totalepicness:
+  - balance: Reworked charger's RAM, it is now renamed to "headbutt" and slows down
+      instead of stuns.
+  - balance: Nerfed chargers slash damage and stomp damage 40 > 30.
+  - bugfix: Fixed chargers duplicating machineguns.
+  - bugfix: Fixed ram ignoring armor.
+  - bugfix: Fixed charger stomp screenshake not working
+  - bugfix: Charger will now stop charging to Queens,Leaders, and Boilers.

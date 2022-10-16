@@ -96,6 +96,7 @@
 /obj/item/ammo_magazine/pistol/mod88/rubber
 	name = "\improper 88M4 rubber magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/rubber
+	icon_state = "88m4_mag_rubber"
 
 
 //-------------------------------------------------------

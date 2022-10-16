@@ -16,8 +16,8 @@
 	icon_state = "scratch"
 
 /obj/item/clothing/under/sl_suit
-	desc = "It's a very amish looking suit."
-	name = "amish suit"
+	desc = "It's a very Amish-looking suit."
+	name = "Amish suit"
 	icon_state = "sl_suit"
 
 /obj/item/clothing/under/waiter

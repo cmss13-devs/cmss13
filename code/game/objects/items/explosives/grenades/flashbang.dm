@@ -202,7 +202,7 @@
 //Makes it perfect support tool, but not an insta win.
 /obj/item/explosive/grenade/flashbang/noskill
 	name = "M40 stun grenade"
-	desc = "A less-lethal explosive device used to temporarily disorient an enemy by producing a flash of light and an intensely loud \"bang\", which cause temporary blindness and deafness. More commonly referred to as a \"flashbang\". Still dangerous if explodes near."
+	desc = "A less-lethal explosive device used to temporarily disorient an enemy by producing a flash of light and an intensely loud \"bang\", which cause temporary blindness and deafness. More commonly referred to as a \"flashbang\". Still dangerous if it explodes nearby."
 
 	icon_state = "flashbang_noskill"
 	item_state = "grenade_flashbang_noskill"

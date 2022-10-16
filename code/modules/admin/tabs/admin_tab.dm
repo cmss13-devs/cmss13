@@ -101,7 +101,7 @@
 
 		//re-open STUI
 	if(new_STUI)
-		GLOB.STUI.ui_interact(mob)
+		GLOB.STUI.tgui_interact(mob)
 
 /client/proc/invismin()
 	set name = "Invismin"
@@ -542,7 +542,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_NO_SNIPER_SENTRY
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY) ? "disallowed engineers from picking" : "allowed engineers to pick"] long range sentry upgrades.")
+	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY) ? "disallowed engineers from picking" : "allowed engineers to pick"] long-range sentry upgrades.")
 
 /client/proc/toggle_attack_dead()
 	set name = "Toggle Attack Dead"

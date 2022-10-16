@@ -352,6 +352,19 @@
 		M.apply_damage(10)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/barricade/handle_tail_stab(mob/living/carbon/Xenomorph/xeno)
+	take_damage((xeno.melee_damage_upper * 1.2) * brute_multiplier)
+	if(barricade_hitsound)
+		playsound(src, barricade_hitsound, 25, 1)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] stabs \the [src] apart!"), SPAN_DANGER("You stab \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] stabs \the [src] with its razor sharp tail!"), SPAN_DANGER("You stab \the [src] with your razor sharp tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	if(is_wired)
+		xeno.visible_message(SPAN_DANGER("The barbed wire slices into \the [xeno]'s tail!"), SPAN_DANGER("The barbed wire slices into your tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		xeno.apply_damage(5)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/surface/rack/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -398,7 +411,7 @@
 
 //Smashing lights
 /obj/structure/machinery/light/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(status == 2) //Ignore if broken. Note that we can't use defines here
+	if(is_broken()) //Ignore if broken. Note that we can't use defines here
 		return FALSE
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] smashes [src]!"), \

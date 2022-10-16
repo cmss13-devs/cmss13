@@ -52,10 +52,13 @@
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
 
+	var/list/hugger_image_list = list()
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/plant_weeds, //1st macro
@@ -66,6 +69,49 @@
 	mutation_type = CARRIER_NORMAL
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
+
+/mob/living/carbon/Xenomorph/Carrier/update_icons()
+	. = ..()
+
+	overlays.Cut()
+	var/amount_o_huggers = 0
+	if(huggers_max) //no dividing by zero, sorry
+		amount_o_huggers = round(( huggers_cur / huggers_max ) * 100)
+	switch(amount_o_huggers)
+		if(0)
+			hugger_image_list.Cut()
+			return
+		if(1 to 25)
+			update_icon_maths(1)
+		if(26 to 50)
+			update_icon_maths(2)
+		if(51 to 75)
+			update_icon_maths(3)
+		if(76 to 100)
+			update_icon_maths(4)
+	for(var/i in hugger_image_list)
+		if(stat == DEAD)
+			overlays += image(icon, "clinger_[i] Knocked Down")
+		else if(lying)
+			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+				overlays += image(icon, "clinger_[i] Sleeping")
+			else
+				overlays += image(icon, "clinger_[i] Knocked Down")
+		else
+			overlays += image(icon, "clinger_[i]")
+
+/mob/living/carbon/Xenomorph/Carrier/proc/update_icon_maths(number)
+	var/funny_list = list(1,2,3,4)
+	if(length(hugger_image_list) != number)
+		if(length(hugger_image_list) > number)
+			while(length(hugger_image_list) != number)
+				hugger_image_list -= hugger_image_list[length(hugger_image_list)]
+		else
+			while(length(hugger_image_list) != number)
+				for(var/i in hugger_image_list)
+					funny_list -= i
+				hugger_image_list += funny_list[rand(1,length(funny_list))]
+
 
 /mob/living/carbon/Xenomorph/Carrier/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_carrier))
@@ -97,6 +143,7 @@
 		if(F.stat != DEAD && !F.sterile)
 			huggers_cur++
 			to_chat(src, SPAN_NOTICE("You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+			update_icons()
 			qdel(F)
 		else
 			to_chat(src, SPAN_WARNING("This [F.name] looks too unhealthy."))
@@ -140,6 +187,7 @@
 		huggers_cur--
 		put_in_active_hand(F)
 		to_chat(src, SPAN_XENONOTICE("You grab one of the facehugger in your storage. Now sheltering: [huggers_cur] / [huggers_max]."))
+		update_icons()
 		return
 
 	if(!istype(F)) //something else in our hand

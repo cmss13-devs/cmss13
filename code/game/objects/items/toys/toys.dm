@@ -230,9 +230,9 @@
 
 		return
 
-/obj/item/toy/waterflower/examine(mob/user)
-	..()
-	to_chat(user, "[reagents.total_volume] units of water left!")
+/obj/item/toy/waterflower/get_examine_text(mob/user)
+	. = ..()
+	. += "[reagents.total_volume] units of water left!"
 
 
 

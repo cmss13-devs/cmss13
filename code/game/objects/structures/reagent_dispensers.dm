@@ -30,15 +30,15 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
-/obj/structure/reagent_dispensers/examine(mob/user)
-	..()
+/obj/structure/reagent_dispensers/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(user, src) > 2 && user != loc) return
-	to_chat(user, SPAN_NOTICE(" It contains:"))
+	. += SPAN_NOTICE("It contains:")
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
-			to_chat(user, SPAN_NOTICE(" [R.volume] units of [R.name]"))
+			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
 	else
-		to_chat(user, SPAN_NOTICE(" Nothing."))
+		. += SPAN_NOTICE(" Nothing.")
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
@@ -131,21 +131,21 @@
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
-	desc = "A watertank"
+	desc = "A water tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
 	chemical = "water"
 
 /obj/structure/reagent_dispensers/ammoniatank
 	name = "ammoniatank"
-	desc = "An ammoniatank"
+	desc = "An ammonia tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
 
 /obj/structure/reagent_dispensers/oxygentank
 	name = "oxygentank"
-	desc = "An oxygentank"
+	desc = "An oxygen tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "oxygentank"
 	chemical = "oxygen"
@@ -159,7 +159,7 @@
 
 /obj/structure/reagent_dispensers/pacidtank
 	name = "polytrinic acid tank"
-	desc = "A polytrinic acidtank"
+	desc = "A polytrinic acid tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "pacidtank"
 	chemical = "pacid"
@@ -173,7 +173,7 @@
 
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
-	desc = "A fueltank"
+	desc = "A fuel tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
@@ -184,15 +184,16 @@
 	var/reinforced = FALSE
 	var/datum/weakref/source_mob
 
-/obj/structure/reagent_dispensers/fueltank/examine(mob/user)
-	..()
-	if(user != loc) return
+/obj/structure/reagent_dispensers/fueltank/get_examine_text(mob/user)
+	. = ..()
+	if(user != loc)
+		return
 	if(modded)
-		to_chat(user, SPAN_DANGER("Fuel faucet is wrenched open, leaking the fuel!"))
+		. += SPAN_DANGER("The fuel faucet is wrenched open, leaking the fuel!")
 	if(rig)
-		to_chat(user, SPAN_NOTICE("There is some kind of device rigged to the tank."))
+		. += SPAN_NOTICE("There is some kind of device rigged to the tank.")
 	if(reinforced)
-		to_chat(user, SPAN_NOTICE("It seems to be reinforced with metal shielding."))
+		. += SPAN_NOTICE("It seems to be reinforced with metal shielding.")
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand()
 	if(rig)
@@ -366,7 +367,7 @@
 
 /obj/structure/reagent_dispensers/fueltank/gas
 	name = "gastank"
-	desc = "A gastank"
+	desc = "A gas tank"
 
 /obj/structure/reagent_dispensers/fueltank/gas/leak_fuel(amount)
 	if(reagents.total_volume == 0)
@@ -377,13 +378,13 @@
 
 /obj/structure/reagent_dispensers/fueltank/gas/methane
 	name = "methanetank"
-	desc = "A methanetank"
+	desc = "A methane tank"
 	icon_state = "methanetank"
 	chemical = "methane"
 
 /obj/structure/reagent_dispensers/fueltank/gas/hydrogen
 	name = "hydrogentank"
-	desc = "A hydrogentank"
+	desc = "A hydrogen tank"
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
 

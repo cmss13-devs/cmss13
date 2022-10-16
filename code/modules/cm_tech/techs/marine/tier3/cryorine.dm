@@ -1,6 +1,6 @@
 
 /datum/tech/repeatable/cryomarine
-	name = "Wake up additional troops"
+	name = "Wake Up Additional Troops"
 	desc = "Wakes up additional troops to fight against any threats."
 	icon_state = "cryotroops"
 
@@ -8,9 +8,9 @@
 	announce_message = "Additional troops are being taken out of cryo."
 
 	required_points = 10
-	increase_per_purchase = 10
+	increase_per_purchase = 5
 
-	tech_flags =  TECH_FLAG_DISABLED
+	flags = TREE_FLAG_MARINE
 	tier = /datum/tier/three
 
 /datum/tech/repeatable/cryomarine/can_unlock(mob/M)

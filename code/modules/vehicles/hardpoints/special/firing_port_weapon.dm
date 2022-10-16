@@ -85,8 +85,8 @@
 
 	return TRUE
 
-/obj/item/hardpoint/special/firing_port_weapon/examine(mob/user, var/integrity_only = FALSE)
-	return
+/obj/item/hardpoint/special/firing_port_weapon/get_examine_text(mob/user, var/integrity_only = FALSE)
+	return list()
 
 /obj/item/hardpoint/special/firing_port_weapon/reload(var/mob/user)
 	if(!ammo)

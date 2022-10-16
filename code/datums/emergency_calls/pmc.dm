@@ -86,7 +86,7 @@
 
 /datum/emergency_call/pmc/chem_retrieval/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Royce. Our squad is boarding to to retrieve all samples of the chemical [objective_info] from your research department. You should already have received a significant sum of money for your department's discovery. In return we ask that you cooperate and provide everything related to [objective_info] to our retrieval team. If you do not cooperate, the team is authorized to use lethal force and terminate the research department."
+	dispatch_message = "[MAIN_SHIP_NAME], this is USCSS Royce. Our squad is boarding to retrieve all samples of a chemical recently scanned from your research department. You should already have received a significant sum of money for your department's discovery. In return we ask that you cooperate and provide everything related to the chemical to our retrieval team. If you do not cooperate, the team is authorized to use lethal force and terminate the research department."
 	objectives = "Secure all documents, samples and chemicals containing the property DNA_Disintegrating from [MAIN_SHIP_NAME] research department."
 
 /datum/emergency_call/pmc/chem_retrieval/proc/check_objective_info()

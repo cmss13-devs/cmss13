@@ -139,9 +139,9 @@
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 
-/obj/item/clothing/glasses/science/examine(mob/user)
+/obj/item/clothing/glasses/science/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_INFO("While wearing them, you can examine items to see their reagent contents."))
+	. += SPAN_INFO("While wearing them, you can examine items to see their reagent contents.")
 
 /obj/item/clothing/glasses/kutjevo
 	name = "kutjevo goggles"
@@ -190,7 +190,7 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/threedglasses
-	desc = "A long time ago, people used these glasses to makes images from screens threedimensional."
+	desc = "A long time ago, people used these glasses to makes images from screens three-dimensional."
 	name = "3D glasses"
 	icon_state = "3d"
 	item_state = "3d"

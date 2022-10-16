@@ -93,14 +93,14 @@
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 	))
 
-/obj/item/weapon/gun/smartgun/examine(mob/user)
-	..()
+/obj/item/weapon/gun/smartgun/get_examine_text(mob/user)
+	. = ..()
 	var/rounds = 0
 	if(current_mag && current_mag.current_rounds)
 		rounds = current_mag.current_rounds
 	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
-	to_chat(user, message)
-	to_chat(user, "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"].")
+	. += message
+	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
 	if(mods["alt"])
@@ -586,7 +586,7 @@
 	linked_human = H
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
 
-/obj/item/weapon/gun/smartgun/co/examine()
+/obj/item/weapon/gun/smartgun/co/get_examine_text()
 	..()
 	if(linked_human)
 		if(is_locked)
@@ -639,7 +639,7 @@
 
 /obj/item/weapon/gun/smartgun/clf
 	name = "\improper M56B 'Freedom' smartgun"
-	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun. This one has the CLF logo carved over the manufactoring stamp.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun. This one has the CLF logo carved over the manufacturing stamp.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
 
 /obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
 	. = ..()

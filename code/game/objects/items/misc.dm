@@ -17,7 +17,7 @@
 
 /obj/item/cane
 	name = "cane"
-	desc = "A cane used by a true gentlemen. Or a clown."
+	desc = "A cane used by a true gentleman. Or a clown."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "cane"
 	item_state = "stick"
@@ -183,9 +183,10 @@
 		icon_state = "evidenceobj"
 	return
 
-/obj/item/evidencebag/examine(mob/user)
-	..()
-	if (stored_item) stored_item.examine(user)
+/obj/item/evidencebag/get_examine_text(mob/user)
+	. = ..()
+	if(stored_item)
+		. += stored_item.get_examine_text(user)
 
 /obj/item/storage/box/evidence
 	name = "evidence bag box"

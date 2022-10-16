@@ -1,0 +1,198 @@
+2022-10-01:
+  Benbot16:
+  - rscadd: Some chemical properties now have effects when applied to mobs via touch.
+      Some of these also effect xenos.
+  - balance: tweaks the cost of some properties
+  - bugfix: Passive research credit gain now works in Extended
+  Laser9:
+  - bugfix: You can no longer buckle mobs or stuff things into morgue trays, while
+      you are inside of something.
+  stanalbatross:
+  - bugfix: surgical line and synthgraft no longer have nobludgeon flags, so they
+      will work as normal
+2022-10-02:
+  Geevies:
+  - qol: Things you examine are now contained in a block, making it easier to see.
+      Same applies to checking yourself for injuries.
+2022-10-03:
+  Morrow, Triiodine:
+  - rscadd: USCM Ponchos are now available in squad prep surplus vendors and can be
+      attached to standard armor variants.
+2022-10-04:
+  Shad0vvs:
+  - bugfix: Fixed pills on harm intent in a better way.
+2022-10-05:
+  4hands44:
+  - qol: Replaces some instances of "Captain" In CO Attire names/descriptions
+  - rscadd: Black Greatcoats for Officers to the Dress Vendor (All department heads,
+      CO+, CIC Staff.)
+  - rscadd: Blue ver. of above for CO+ and admins only.
+  - rscadd: New ww2 style tanker jacket to compete with the CO Bomber jacket. VC and
+      IOs spawn with them out of Cryo. Features slightly higher blast resistance to
+      represent protection from spalling and other vehicular hazards. Does not appear
+      in any vendor.
+  - imageadd: New sprites
+  - code_imp: See above
+  Segrain:
+  - bugfix: Direct hits with explosive ammunition actually work as intended now.
+  Usnpeepoo:
+  - rscadd: Xenos with more than 300 hours of playtime (as xeno) can now use a double
+      letter postfix.
+  stanalbatross:
+  - code_imp: nurse now has a one hour human roles timelock
+  - bugfix: fixes the CL having an errant space before their name when not having
+      a division
+2022-10-06:
+  Drathek:
+  - qol: Health scanners now re-use their interface when scanning again.
+  - qol: Opening the archived scan for a health scanner now has a window named "Stored
+      Health Scan" and closes the "Health Scan" window (and vice versa).
+  - bugfix: Fixed health scanners sometimes incorrectly considering a mob to be permadead
+      when they are alive.
+  - code_imp: Mobs no longer have a health display datum and instead each scanner
+      does.
+  Geeves:
+  - balance: The HPR now has the same firedelay as a smartgun, and has one more bullet
+      in its burst fire.
+  - soundadd: Increased the bass and lowered the treble of the HPR shoot sound.
+  Morrow:
+  - rscdel: Removes USCM ponchos from vendors.
+  SpartanBobby:
+  - rscadd: Squads now have their own cryo bay and canteen firing ranges moved to
+      old cryo bay
+  - rscadd: Every member of the Almayer should now wake up in a cryopod placed as
+      close as I possibly could to their old spawns (within reason)
+  - rscadd: Roundstart marines now spawn INSIDE their cryopod you should be able to
+      simply move to exit your pod
+  - rscadd: Dress Uniform vendors are now surrounded by unbreakable walls at the request
+      of the dev team
+  Spartanbobby:
+  - rscadd: Adds a colony blackbox to every map on rotation serves no gameplay purpose
+  stanalbatross:
+  - rscadd: ported item pickup and drop animations from tg
+2022-10-07:
+  Geeves:
+  - rscadd: All xenos have a new generic ability, the Tail Stab, with a two tile range
+      dealing 1.2 times the caste's maximum melee damage, making it more useful on
+      the bigger xenos. It takes one second of being the selected ability before it
+      can be used.
+  - balance: Boilers have an advanced version of the tail stab, called the Toxic Tail
+      Stab, where it injects the target with diluted molecular acid, causing burns
+      and toxin damage.
+  carlarctg:
+  - refactor: Refactored marine armor file
+  - bugfix: Ghillie suits can now clip on ponchos
+2022-10-08:
+  CLF Guerrilla:
+  - bugfix: Added terminals to the SMES on Kutjevo
+  Geevies:
+  - rscdel: The bridge coats for CIC is no longer accessible without admins spawning
+      it in. Tanker jackets no longer have blast armor.
+  Unknownity:
+  - bugfix: Fixed burrowers being able to burrow and tunnel to the Solaris Ridge secret
+      room.
+  stanalbatross:
+  - bugfix: fixed two runtimes
+2022-10-09:
+  Stanalbatross, spookydonut:
+  - admin: converted STUI to TGUI. You can also now search for terms and change font
+      size in it as well.
+  c4xmaniac:
+  - bugfix: Fixed the missing area_noop on one of the science annex nightmare inserts
+      causing hypothermia.
+  stanalbatross:
+  - ui: the ot demo sim console now uses tgui
+  - rscadd: the ot demo sim console can now switch dummy type between a variety of
+      human and xeno targets
+  - qol: the ot demo sim console now has a 1 minute cooldown, instead of 2 minutes
+  - ui: the centrifuge now uses tgui
+2022-10-10:
+  Joe Lampost:
+  - rscadd: buffs the sword sharpness
+  - rscdel: Removed clan sword parry
+  stanalbatross:
+  - bugfix: pickup animations now inherit the alpha level of the person picking them
+      up
+  - bugfix: pickup animations can no longer be seen through walls
+  - bugfix: fixed a rogue submodule in the git
+  - code_imp: changed all instances of var/mob/m in viewers to as anything in viewers,
+      because viewers only gets mobs.
+2022-10-11:
+  Laser9:
+  - bugfix: Processing cats with the gibber now properly names the resulting meat.
+  Mistfrag:
+  - balance: Non-combatant jackets like the labcoat and hazard vest now have access
+      to the same storage options as the service jacket minus guns + department unique
+      options like tools or medical items.
+  Segrain:
+  - bugfix: Trapper's acid shotgun is now boosted by traps as intended.
+  Silencer_pl:
+  - admin: Removed the redundant legacy +FUN fun admin permission and scrubbed all
+      references to it.
+  - admin: Senior Moderators now have access to the Distress Beacon and Toggle Remote
+      Control verbs.
+  stanalbatross:
+  - ui: converted the escape pod control console from nanoui to TGUI
+2022-10-12:
+  Geevies:
+  - rscadd: Made armor color sprites more muted.
+  Laser9:
+  - spellcheck: A lot of spelling and grammar mistakes have been fixed.
+  Youbar:
+  - qol: Cryosleep announcements now include job title
+2022-10-13:
+  4hands44:
+  - bugfix: replaced unbreakable window
+  - bugfix: Changed stools to /bed Ver.
+  carlarctg:
+  - qol: Trying to shoot an underslung grenade launcher and failing for some reason
+      (like forgetting to pump it) will now generate a loud 'click' noise.
+  ihatethisengine:
+  - bugfix: Observers now can see evacuation timer
+2022-10-14:
+  Carlarc_Kugamo:
+  - rscadd: Added a new resin marker for needing weeds in an area.
+  Kugamo:
+  - imageadd: Carriers' sprites now reflect how many huggers they are currently carrying.
+2022-10-15:
+  Geeves:
+  - bugfix: The Reserves squad is now called Foxtrot. Their brown color has been brightened
+      a bit, the radio color as well. They also no longer break the crew manifest.
+  - rscadd: You can now call the reserves in-game via the tech tree, it's a Tier 3
+      tech that costs 10 points, but increases by 5 each time it's called. The squad
+      contains a squad leader, medics, engineers, and privates.
+  - balance: The tech points required to go up a tier has been reduced to 5 from 15.
+2022-10-16:
+  Aceroy:
+  - bugfix: Fixed the issue of plastic explosives cause_data being deleted in the
+      process of exploding
+  - rscadd: Added a new poddoor type that is immune to APC but still can be destroyed
+      by explosives and acid.
+  Geeves, 50RemAndCounting, Stan_Albatross:
+  - balance: Type-B fire/greenfire now no longer affects fire-immune xenomorphs. Greenfire
+      slowdown effect has been reduced.
+  - refactor: refactored flamer fire handling code.
+  - balance: floor acid is now twice as effective at extinguishing greenfire
+  harryob:
+  - bugfix: The powerloader can no longer delete crates, water tanks, and various
+      other items.
+  - code_imp: The Squad Transfer Computer and the Overwatch computer are now consistent
+      in transfer requirements.
+  - rscadd: Ambient occlusion is now a(n enabled by default) preference.
+  nauticall:
+  - balance: The command tablet can now remotely call a Distress Beacon.
+  - balance: All 4 Staff Officers can now spawn at round start. 5th SO slot had to
+      be removed with this, unfortunately.
+  - balance: Executive Officers now start with a laser designator.
+  stanalbatross:
+  - balance: reduced the XM88 stock slowdown a bit
+  - balance: gave XM88 10 ap ammo by default
+  - balance: shifted the XM88 stack ap tiers up by 10 each to compensate for this
+  totalepicness:
+  - balance: Reworked charger's RAM, it is now renamed to "headbutt" and slows down
+      instead of stuns.
+  - balance: Nerfed chargers slash damage and stomp damage 40 > 30.
+  - bugfix: Fixed chargers duplicating machineguns.
+  - bugfix: Fixed ram ignoring armor.
+  - bugfix: Fixed charger stomp screenshake not working
+  - bugfix: Charger will now stop charging to Queens,Leaders, and Boilers.

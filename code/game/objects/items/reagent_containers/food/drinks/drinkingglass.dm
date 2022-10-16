@@ -164,7 +164,7 @@
 				if("whiterussian")
 					icon_state = "whiterussianglass"
 					name = "White Russian"
-					desc = "A very nice looking drink. But that's just, like, your opinion, man."
+					desc = "A very nice-looking drink. But that's just, like, your opinion, man."
 					center_of_mass = "x=16;y=9"
 				if("screwdrivercocktail")
 					icon_state = "screwdriverglass"
@@ -213,7 +213,7 @@
 				if("manlydorf")
 					icon_state = "manlydorfglass"
 					name = "The Manly Dorf"
-					desc = "A manly concotion made from Ale and Beer. Intended for true men only."
+					desc = "A manly concoction made from Ale and Beer. Intended for true men only."
 					center_of_mass = "x=16;y=10"
 				if("irishcream")
 					icon_state = "irishcreamglass"
@@ -228,7 +228,7 @@
 				if("b52")
 					icon_state = "b52glass"
 					name = "B-52"
-					desc = "Kahlua, Irish Cream, and congac. You will get bombed."
+					desc = "Kahlua, Irish Cream, and cognac. You will get bombed."
 					center_of_mass = "x=16;y=10"
 				if("atomicbomb")
 					icon_state = "atomicbombglass"
@@ -258,7 +258,7 @@
 				if("vodkatonic")
 					icon_state = "vodkatonicglass"
 					name = "Vodka and Tonic"
-					desc = "For when a gin and tonic isn't russian enough."
+					desc = "For when a gin and tonic isn't Russian enough."
 					center_of_mass = "x=16;y=7"
 				if("manhattan")
 					icon_state = "manhattanglass"
@@ -268,7 +268,7 @@
 				if("manhattan_proj")
 					icon_state = "proj_manhattanglass"
 					name = "Manhattan Project"
-					desc = "A scienitst drink of choice, for thinking how to blow up the station."
+					desc = "A scientist drink of choice, for thinking how to blow up the station."
 					center_of_mass = "x=17;y=8"
 				if("ginfizz")
 					icon_state = "ginfizzglass"
@@ -433,7 +433,7 @@
 				if("soy_latte")
 					icon_state = "soy_latte"
 					name = "Soy Latte"
-					desc = "A nice and refrshing beverage while you are reading."
+					desc = "A nice and refreshing beverage while you are reading."
 					center_of_mass = "x=15;y=9"
 				if("cafe_latte")
 					icon_state = "cafe_latte"
@@ -488,7 +488,7 @@
 				if("irishcarbomb")
 					icon_state = "irishcarbomb"
 					name = "Irish Car Bomb"
-					desc = "An irish car bomb."
+					desc = "An Irish car bomb."
 					center_of_mass = "x=16;y=8"
 				if("syndicatebomb")
 					icon_state = "syndicatebomb"
@@ -573,7 +573,7 @@
 				if("rewriter")
 					icon_state = "rewriter"
 					name = "Rewriter"
-					desc = "The secret of the sanctuary of the Libarian..."
+					desc = "The secret of the sanctuary of the Librarian..."
 					center_of_mass = "x=16;y=9"
 				if("suidream")
 					icon_state = "sdreamglass"

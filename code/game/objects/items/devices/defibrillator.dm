@@ -54,15 +54,15 @@
 	else
 		overlays += "+empty"
 
-/obj/item/device/defibrillator/examine(mob/user)
-	..()
+/obj/item/device/defibrillator/get_examine_text(mob/user)
+	. = ..()
 	var/maxuses = 0
 	var/currentuses = 0
 	maxuses = round(dcell.maxcharge / charge_cost)
 	currentuses = round(dcell.charge / charge_cost)
-	to_chat(user, SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery."))
+	. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
 	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit)
-		to_chat(user, SPAN_NOTICE("This defibrillator will ignore worn armor."))
+		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
 
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
 	..()
@@ -106,7 +106,7 @@
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 	var/obj/limb/head = get_limb("head")
 
-	if(chestburst || !head || head.status & LIMB_DESTROYED || !heart || heart.is_broken() || !has_brain() || status_flags & PERMANENTLY_DEAD)
+	if(chestburst || !head || head.status & LIMB_DESTROYED || !heart || heart.organ_status >= ORGAN_BROKEN || !has_brain() || status_flags & PERMANENTLY_DEAD)
 		return FALSE
 	return TRUE
 
@@ -191,7 +191,7 @@
 
 	if(!H.is_revivable())
 		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
-		if(heart && heart.is_broken())
+		if(heart && heart.organ_status >= ORGAN_BROKEN)
 			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
 			return
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))

@@ -97,7 +97,7 @@
 
 /mob/living/carbon/Xenomorph/verb/middle_mouse_toggle()
 	set name = "Toggle Middle/Shift Clicking"
-	set desc = "Toggles between using middle mouse click and shift click for selected abilitiy use."
+	set desc = "Toggles between using middle mouse click and shift click for selected ability use."
 	set category = "Alien"
 
 	if (!client || !client.prefs)

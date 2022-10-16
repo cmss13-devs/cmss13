@@ -37,10 +37,10 @@
 
 	. = ..()
 
-/obj/effect/alien/resin/special/eggmorph/examine(mob/user)
-	..()
+/obj/effect/alien/resin/special/eggmorph/get_examine_text(mob/user)
+	. = ..()
 	if(isXeno(user) || isobserver(user))
-		to_chat(user, "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow.")
+		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow."
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/grab))
@@ -66,7 +66,7 @@
 				return
 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
 				return
-			visible_message(SPAN_DANGER("\The [src] churns as it begins digest \the [M], spitting out foul smelling fumes!"))
+			visible_message(SPAN_DANGER("\The [src] churns as it begins digest \the [M], spitting out foul-smelling fumes!"))
 			playsound(src, "alien_drool", 25)
 			if(captured_mob)
 				//Get rid of what we have there, we're overwriting it

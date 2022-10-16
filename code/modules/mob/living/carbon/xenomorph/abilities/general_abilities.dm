@@ -92,7 +92,10 @@
 		return FALSE
 
 	var/mob/living/carbon/Xenomorph/X = owner
-	return X.selected_resin
+	if(X)
+		return X.selected_resin
+	else
+		return FALSE
 
 /datum/action/xeno_action/activable/secrete_resin/queen_macro //see above for reasoning
 	ability_primacy = XENO_PRIMARY_ACTION_5
@@ -257,7 +260,7 @@
 	owner.flags_atom &= ~DIRLOCK
 
 /datum/action/xeno_action/onclick/toggle_long_range
-	name = "Toggle Long Range Sight"
+	name = "Toggle Long-Range Sight"
 	action_icon_state = "toggle_long_range"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_long_range
 	action_type = XENO_ACTION_ACTIVATE
@@ -412,3 +415,13 @@
 	var/activation_delay = 1.5 SECONDS
 	var/range = 15
 	var/interrupt_flags = INTERRUPT_ALL|BEHAVIOR_IMMOBILE
+
+/datum/action/xeno_action/activable/tail_stab
+	name = "Tail Stab"
+	action_icon_state = "tail_attack"
+	ability_name = "tail stab"
+	macro_path = /datum/action/xeno_action/verb/verb_tail_stab
+	action_type = XENO_ACTION_CLICK
+	charge_time = 1 SECONDS
+	xeno_cooldown = 10 SECONDS
+	ability_primacy = XENO_TAIL_STAB

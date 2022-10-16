@@ -92,7 +92,7 @@
 	else if(L.status == LIFEBOAT_ACTIVE)
 		switch(L.mode)
 			if(SHUTTLE_IDLE)
-				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting for confirmation of the evacuation order\"."))
+				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
 			if(SHUTTLE_IGNITING)
 				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Engines firing\"."))
 			if(SHUTTLE_CALL)

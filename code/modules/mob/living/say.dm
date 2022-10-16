@@ -99,7 +99,7 @@ var/list/department_radio_keys = list(
 
 	message = process_chat_markup(message, list("~", "_"))
 
-	if(check_slur(message, usr, "Say"))
+	if(check_slur(src, message, "Say"))
 		return FALSE
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone

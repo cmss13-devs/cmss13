@@ -36,18 +36,20 @@
 	GLOB.STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
-/proc/check_slur(var/text, var/mob/source, var/method = "Speech")
-	if(!CONFIG_GET(flag/log_slurs))
+
+GLOBAL_LIST_INIT(SlurWords, file2list("config/slur_words.txt"))
+/proc/check_slur(var/mob/source, var/text, var/method = "Speech")
+	if(!CONFIG_GET(flag/block_slurs))
 		return FALSE
-	var/list/TriggerWords = file2list("config/banned_words.txt")
-	for(var/Trigger in TriggerWords)
+	for(var/Trigger in GLOB.SlurWords)
 		if(findtext(text,Trigger))
 			log_slur(source, Trigger, text)
+			to_chat(source, SPAN_WARNING("Your message, '[text]' has been blocked due to containing the word '[Trigger]'."))
 			return TRUE //Blocks message being sent.
 
 /proc/log_slur(var/mob/origin, var/word, var/message)
 	admin_log.Add("[key_name(origin)] had a message flagged for banned word '[word]'. Message reads: '[message]'")
-	if (CONFIG_GET(flag/log_slurs))
+	if (CONFIG_GET(flag/block_slurs))
 		diary << html_decode("\[[time_stamp()]]SLUR: [key_name(origin)] had a message flagged for banned word '[word]'. Message reads: '[message]'[log_end]")
 	GLOB.STUI.admin.Add("\[[time_stamp()]]SLUR: [key_name(origin)] had a message flagged for banned word '[word]'. Message reads: '[message]'")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN

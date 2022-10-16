@@ -46,7 +46,7 @@
 			message_staff("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
-	if(check_slur(msg, usr, "OOC"))
+	if(check_slur(src, msg, "OOC"))
 		return FALSE
 
 	log_ooc("[mob.name]/[key] : [msg]")
@@ -115,7 +115,7 @@
 		usr.chatWarn++
 		return
 
-	if(check_slur(msg, usr, "LOOC"))
+	if(check_slur(src, msg, "LOOC"))
 		return FALSE
 
 	if(!mob)	return

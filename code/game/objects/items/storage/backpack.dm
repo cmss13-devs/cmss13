@@ -16,6 +16,8 @@
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE
 	var/lock_overridable = TRUE
+	var/xeno_icon_state = null
+	var/list/xeno_types = null
 
 /obj/item/storage/backpack/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/card/id/) && is_id_lockable && ishuman(user))
@@ -26,6 +28,46 @@
 
 	if (..() && use_sound)
 		playsound(loc, use_sound, 15, TRUE, 6)
+
+/obj/item/storage/backpack/attack(mob/living/M, mob/living/user)
+	if(!xeno_icon_state)
+		return ..()
+	if(!isXeno(M))
+		return ..()
+	if(M.back)
+		return ..()
+	if(user.a_intent != INTENT_HELP)
+		return ..()
+	if(!xeno_types || !is_type_in_list(M, xeno_types))
+		return ..()
+	
+	user.visible_message(SPAN_NOTICE("\The [user] starts strapping \the [src] onto [M]."), \
+	SPAN_NOTICE("You start strapping \the [src] onto [M]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
+	if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		return FALSE
+
+	if(src != user.get_active_hand())
+		return FALSE
+	if(!user.Adjacent(M))
+		return FALSE
+	user.drop_inv_item_on_ground(src)
+	if(!src || QDELETED(src)) //Might be self-deleted?
+		return FALSE
+	M.put_in_back(src)
+	return FALSE
+
+/obj/item/storage/backpack/get_mob_overlay(mob/user_mob, slot, state_modifier = "")
+	if(slot != WEAR_BACK)
+		return ..()
+
+	if(xeno_icon_state)
+		var/mob_icon = default_xeno_onmob_icons[user_mob.type]
+		if(!mob_icon)
+			return ..()
+		return overlay_image(mob_icon, xeno_icon_state + state_modifier, color, RESET_COLOR)
+
+	return ..()
 
 /obj/item/storage/backpack/proc/toggle_lock(obj/item/card/id/card, mob/living/carbon/human/H)
 	if(QDELETED(locking_id))
@@ -318,6 +360,8 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	desc = "A standard-issue backpack worn by USCM medics."
 	icon_state = "marinepack_medic"
 	item_state = "marinepack_medic"
+	xeno_icon_state = "medicpack"
+	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian)
 
 /obj/item/storage/backpack/marine/tech
 	name = "\improper USCM technician backpack"

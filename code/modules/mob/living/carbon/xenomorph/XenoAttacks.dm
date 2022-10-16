@@ -27,6 +27,20 @@
 	switch(M.a_intent)
 
 		if(INTENT_HELP)
+			if(back && Adjacent(M))
+				back.add_fingerprint(M)
+				var/obj/item/storage/backpack = back
+				if(backpack && !M.action_busy)
+					M.visible_message(SPAN_NOTICE("\The [M] starts opening \the [backpack] on [src]"), \
+					SPAN_NOTICE("You begin to open \the [backpack] on [src], so you can check its contents."), null, 5, CHAT_TYPE_FLUFF_ACTION)
+					if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC)) //Timed opening.
+						to_chat(M, SPAN_WARNING("You were interrupted!"))
+						return FALSE
+					if(!Adjacent(M))
+						to_chat(M, SPAN_WARNING("You were interrupted!"))
+						return FALSE
+					backpack.open(M)
+					return
 			if(stat == DEAD)
 				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."), \
 				SPAN_WARNING("You poke \the [src], but nothing happens."), null, 5, CHAT_TYPE_FLUFF_ACTION)

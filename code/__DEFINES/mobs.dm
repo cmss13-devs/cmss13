@@ -386,6 +386,11 @@ var/list/default_onmob_icons = list(
 		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/ties.dmi'
 		)
 
+var/list/default_xeno_onmob_icons = list(
+		/mob/living/carbon/Xenomorph/Runner = 'icons/mob/hostiles/onmob/runner.dmi',
+		/mob/living/carbon/Xenomorph/Praetorian = 'icons/mob/hostiles/onmob/praetorian.dmi'
+		)
+
 // species names
 #define SPECIES_HUMAN "Human"
 #define SPECIES_YAUTJA "Yautja"

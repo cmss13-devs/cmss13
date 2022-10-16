@@ -2,15 +2,17 @@
 //Abby
 
 //Xeno Overlays Indexes//////////
-#define X_HEAD_LAYER			8
-#define X_SUIT_LAYER			7
-#define X_L_HAND_LAYER			6
-#define X_R_HAND_LAYER			5
+#define X_BACK_LAYER			10
+#define X_HEAD_LAYER			9
+#define X_SUIT_LAYER			8
+#define X_L_HAND_LAYER			7
+#define X_R_HAND_LAYER			6
+#define X_BACK_FRONT_LAYER		5
 #define X_RESOURCE_LAYER		4
 #define X_TARGETED_LAYER		3
 #define X_LEGCUFF_LAYER			2
 #define X_FIRE_LAYER			1
-#define X_TOTAL_LAYERS			8
+#define X_TOTAL_LAYERS			10
 /////////////////////////////////
 
 
@@ -45,8 +47,10 @@
 	if(!caste)
 		return
 
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	//These also depend on the xeno's stance, so we must update them
+	update_fire()
 	update_wounds()
+	update_inv_back()
 
 	if(behavior_delegate?.on_update_icons())
 		return
@@ -65,9 +69,9 @@
 	..()
 	update_inv_r_hand()
 	update_inv_l_hand()
+	update_inv_back()
 	update_inv_resource()
 	update_icons()
-
 
 /mob/living/carbon/Xenomorph/update_inv_pockets()
 	var/datum/custom_hud/alien/ui_datum = GLOB.custom_huds_list[HUD_ALIEN]
@@ -105,6 +109,28 @@
 			t_state = l_hand.icon_state
 		overlays_standing[X_L_HAND_LAYER] = l_hand.get_mob_overlay(src, WEAR_L_HAND)
 		apply_overlay(X_L_HAND_LAYER)
+
+/mob/living/carbon/Xenomorph/update_inv_back()
+	remove_overlay(X_BACK_LAYER)
+	if(!back)
+		return
+
+	var/state_modifier = ""
+	if(stat == DEAD)
+		state_modifier = " Dead"
+	else if(lying)
+		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+			state_modifier = " Sleeping"
+		else
+			state_modifier= " Knocked Down"
+
+	var/image/I = back.get_mob_overlay(src, WEAR_BACK, state_modifier)
+	I.layer = -X_BACK_LAYER
+
+	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
+		I.layer = -X_BACK_FRONT_LAYER
+	overlays_standing[X_BACK_LAYER] = I
+	apply_overlay(X_BACK_LAYER)
 
 /mob/living/carbon/Xenomorph/proc/update_inv_resource()
 	remove_overlay(X_RESOURCE_LAYER)
@@ -257,6 +283,8 @@
 	dir = newdir
 
 //Xeno Overlays Indexes//////////
+#undef X_BACK_LAYER
+#undef X_BACK_FRONT_LAYER
 #undef X_HEAD_LAYER
 #undef X_SUIT_LAYER
 #undef X_L_HAND_LAYER

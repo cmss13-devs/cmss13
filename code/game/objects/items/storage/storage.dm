@@ -523,6 +523,16 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	return attempt_item_insertion(W, FALSE, user)
 
+/obj/item/storage/equipped(mob/user, slot, silent)
+	if ((storage_flags & STORAGE_ALLOW_EMPTY))
+		if(!isXeno(user))
+			verbs |= /obj/item/storage/verb/empty_verb
+			verbs |= /obj/item/storage/verb/toggle_click_empty
+		else
+			verbs -= /obj/item/storage/verb/empty_verb
+			verbs -= /obj/item/storage/verb/toggle_click_empty
+	..()
+
 /obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, prevent_warning = FALSE, mob/user as mob)
 	if(!can_be_inserted(W))
 		return

@@ -124,12 +124,12 @@
 		else
 			state_modifier= " Knocked Down"
 
-	var/image/I = back.get_mob_overlay(src, WEAR_BACK, state_modifier)
-	I.layer = -X_BACK_LAYER
+	var/image/img = back.get_mob_overlay(src, WEAR_BACK, state_modifier)
+	img.layer = -X_BACK_LAYER
 
 	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
-		I.layer = -X_BACK_FRONT_LAYER
-	overlays_standing[X_BACK_LAYER] = I
+		img.layer = -X_BACK_FRONT_LAYER
+	overlays_standing[X_BACK_LAYER] = img
 	apply_overlay(X_BACK_LAYER)
 
 /mob/living/carbon/Xenomorph/proc/update_inv_resource()

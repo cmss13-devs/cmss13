@@ -625,10 +625,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	set name = "Shake"
 	set category = "Object"
 	set src in usr
-	var/mob/M = usr
-	shake(M, get_turf(M))
+	var/mob/user_mob = usr
+	shake(user_mob, get_turf(user_mob))
 
-/obj/item/storage/proc/shake(var/mob/user, var/turf/T)
+/obj/item/storage/proc/shake(var/mob/user, var/turf/tile)
 	if(!(storage_flags & STORAGE_ALLOW_EMPTY))
 		return
 
@@ -638,15 +638,15 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(user.is_mob_incapacitated())
 		return
 
-	if (!isturf(T) || get_dist(src, T) > 1)
-		T = get_turf(src)
+	if (!isturf(tile) || get_dist(src, tile) > 1)
+		tile = get_turf(src)
 
 	if (use_sound)
 		playsound(loc, use_sound, 25, TRUE, 3)
 
 	if(!length(contents))
 		if(prob(25) && isXeno(user))
-			user.drop_inv_item_to_loc(src, T)
+			user.drop_inv_item_to_loc(src, tile)
 			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] off."),
 				SPAN_NOTICE("You shake \the [src] off."))
 		else
@@ -665,14 +665,14 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		return
 
 	storage_close(user)
-	var/obj/item/I
+	var/obj/item/item_obj
 	if(storage_flags & STORAGE_USING_FIFO_DRAWING)
-		I = contents[1]
+		item_obj = contents[1]
 	else
-		I = contents[contents.len]
-	remove_from_storage(I, T)
-	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [I] falls out."),
-		SPAN_NOTICE("You shake \the [src] and \a [I] falls out."))
+		item_obj = contents[contents.len]
+	remove_from_storage(item_obj, tile)
+	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [item_obj] falls out."),
+		SPAN_NOTICE("You shake \the [src] and \a [item_obj] falls out."))
 
 /obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, var/amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
 	if(user.action_busy)

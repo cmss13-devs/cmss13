@@ -29,32 +29,32 @@
 	if (..() && use_sound)
 		playsound(loc, use_sound, 15, TRUE, 6)
 
-/obj/item/storage/backpack/attack(mob/living/M, mob/living/user)
+/obj/item/storage/backpack/attack(mob/living/target_mob, mob/living/user)
 	if(!xeno_icon_state)
 		return ..()
-	if(!isXeno(M))
+	if(!isXeno(target_mob))
 		return ..()
-	if(M.back)
+	if(target_mob.back)
 		return ..()
 	if(user.a_intent != INTENT_HELP)
 		return ..()
-	if(!xeno_types || !is_type_in_list(M, xeno_types))
+	if(!xeno_types || !(target_mob.type in xeno_types))
 		return ..()
 	
-	user.visible_message(SPAN_NOTICE("\The [user] starts strapping \the [src] onto [M]."), \
-	SPAN_NOTICE("You start strapping \the [src] onto [M]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
-	if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+	user.visible_message(SPAN_NOTICE("\The [user] starts strapping \the [src] onto [target_mob]."), \
+	SPAN_NOTICE("You start strapping \the [src] onto [target_mob]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
+	if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return FALSE
 
 	if(src != user.get_active_hand())
 		return FALSE
-	if(!user.Adjacent(M))
+	if(!user.Adjacent(target_mob))
 		return FALSE
 	user.drop_inv_item_on_ground(src)
 	if(!src || QDELETED(src)) //Might be self-deleted?
 		return FALSE
-	M.put_in_back(src)
+	target_mob.put_in_back(src)
 	return FALSE
 
 /obj/item/storage/backpack/get_mob_overlay(mob/user_mob, slot, state_modifier = "")

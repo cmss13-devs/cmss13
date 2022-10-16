@@ -1634,11 +1634,11 @@ var/list/WALLITEMS = list(
 // * The dropship crash hasn't happened yet
 // * An admin hasn't disabled explosive antigrief
 // Certain areas may be exempt from this check. Look up explosive_antigrief_exempt_areas
-/proc/explosive_antigrief_check(var/obj/item/explosive/E, var/mob/user)
-	var/turf/T = get_turf(E)
-	if(!(T.loc.type in GLOB.explosive_antigrief_exempt_areas))
+/proc/explosive_antigrief_check(var/obj/item/explosive/Explosive, var/mob/user)
+	var/turf/Turf = get_turf(Explosive)
+	if(!(Turf.loc.type in GLOB.explosive_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if((T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured)
+		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured)
 			switch(CONFIG_GET(number/explosive_antigrief))
 				if(ANTIGRIEF_DISABLED)
 					return FALSE

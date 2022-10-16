@@ -144,10 +144,10 @@
 
 /proc/togglebuildmode(mob/M as mob in GLOB.player_list)
 	set name = "Toggle Build Mode"
-	set category = "Event"
+	set category = "Admin.Events"
 
 	if(M.client)
-		if(istype(M.client.click_intercept,/datum/buildmode))
+		if(istype(M.client.click_intercept, /datum/buildmode))
 			var/datum/buildmode/B = M.client.click_intercept
 			B.quit()
 			log_admin("[key_name(usr)] has left build mode.")

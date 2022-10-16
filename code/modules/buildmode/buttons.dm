@@ -83,6 +83,7 @@
 	screen_loc = "NORTH,WEST+3"
 	name = "Quit Buildmode"
 
-/atom/movable/screen/buildmode/quit/clicked()
+/atom/movable/screen/buildmode/quit/clicked(client/c)
+	log_admin("[key_name(c)] has left build mode.")
 	bd.quit()
 	return 1

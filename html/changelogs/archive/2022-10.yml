@@ -166,6 +166,8 @@
   harryob:
   - bugfix: The powerloader can no longer delete crates, water tanks, and various
       other items.
+  - code_imp: The Squad Transfer Computer and the Overwatch computer are now consistent
+      in transfer requirements.
   stanalbatross:
   - balance: reduced the XM88 stock slowdown a bit
   - balance: gave XM88 10 ap ammo by default

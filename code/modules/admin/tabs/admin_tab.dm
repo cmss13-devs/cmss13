@@ -265,7 +265,7 @@
 	set category = "Admin.InView"
 	set hidden = 1
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_MOD))
 		return
 
 	var/message = input("Message:", text("Enter the text you wish to appear to your target:")) as text
@@ -281,7 +281,7 @@
 	set category = "Admin.InView"
 	set hidden = 1
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_MOD))
 		return
 
 	var/list/subtle_message_options = list("Voice in head", "Weyland-Yutani", "USCM High Command", "Faction-specific")

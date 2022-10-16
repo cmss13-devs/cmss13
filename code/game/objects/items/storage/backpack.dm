@@ -32,14 +32,22 @@
 /obj/item/storage/backpack/attack(mob/living/target_mob, mob/living/user)
 	if(!xeno_icon_state)
 		return ..()
-	if(!isXeno(target_mob))
-		return ..()
 	if(target_mob.back)
 		return ..()
 	if(user.a_intent != INTENT_HELP)
 		return ..()
 	if(!xeno_types || !(target_mob.type in xeno_types))
 		return ..()
+	if(!isXeno(target_mob))
+		return ..()
+	if(target_mob.stat != DEAD) // If the Xeno is alive, fight back
+		var/mob/living/carbon/Xenomorph/xeno = target_mob
+		var/mob/living/carbon/carbon_user = user
+		if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
+			user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
+			playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
+			user.visible_message(SPAN_WARNING("\The [user] tried to strap \the [src] onto [target_mob] but instead gets a tail swipe to the head!"))
+			return FALSE
 	
 	user.visible_message(SPAN_NOTICE("\The [user] starts strapping \the [src] onto [target_mob]."), \
 	SPAN_NOTICE("You start strapping \the [src] onto [target_mob]."), null, 5, CHAT_TYPE_FLUFF_ACTION)

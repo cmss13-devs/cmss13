@@ -93,9 +93,16 @@
 		return . = ..()
 
 	if(isXeno(dropping))
-		var/mob/xeno = dropping
+		var/mob/living/carbon/Xenomorph/xeno = dropping
 		if(xeno.back)
 			var/obj/item/back_item = xeno.back
+			if(xeno.stat != DEAD) // If the Xeno is alive, fight back
+				var/mob/living/carbon/carbon_user = user
+				if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
+					user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
+					playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
+					user.visible_message(SPAN_WARNING("\The [user] tried to unstrap \the [back_item] from [xeno] but instead gets a tail swipe to the head!"))
+					return
 			if(user.get_active_hand())
 				to_chat(user, SPAN_WARNING("You can't unstrap \the [back_item] from [xeno] with your hands full."))
 				return

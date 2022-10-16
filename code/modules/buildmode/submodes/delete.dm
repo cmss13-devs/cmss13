@@ -1,7 +1,7 @@
 /datum/buildmode_mode/delete
 	key = "delete"
 	help = "Left Mouse Button on anything to delete it. If you break it, you buy it.\n\
-		Right Mouse Button on anything to delete everything of the type. Probably don\'t do this unless you know what you are doing."
+	Right Mouse Button on anything to delete everything of the type. Probably don\'t do this unless you know what you are doing."
 
 /datum/buildmode_mode/delete/when_clicked(client/c, params, object)
 	var/list/modifiers = params2list(params)

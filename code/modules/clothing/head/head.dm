@@ -323,7 +323,7 @@
 
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical Officer's Peaked Cap"
-	desc = "A peaked cap given to high ranking civilian medical officers. Looks just a touch silly."
+	desc = "A peaked cap given to high-ranking civilian medical officers. Looks just a touch silly."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "cmohat"
 	item_icons = list(
@@ -367,7 +367,7 @@
 /obj/item/clothing/head/helmet/beret/marine/mp/warden
 	name = "\improper USCM MP warden peaked cap"
 	icon_state = "warden"
-	desc = "A Kevlar reinforced peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, and is typicaly used by Wardens on USCM ships."
+	desc = "A Kevlar reinforced peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, and is typically used by Wardens on USCM ships."
 
 /obj/item/clothing/head/helmet/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
@@ -634,7 +634,7 @@ D
 
 /obj/item/clothing/head/durag
 	name = "durag"
-	desc = "An improvised head wrap made out of a standard issue neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
+	desc = "An improvised head wrap made out of a standard issue neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
 	icon_state = "durag"
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	flags_inv_hide = HIDETOPHAIR
@@ -644,7 +644,7 @@ D
 
 /obj/item/clothing/head/durag/black
 	icon_state = "duragblack"
-	desc = "An improvised head wrap made out of a black neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
+	desc = "An improvised head wrap made out of a black neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	flags_atom = NO_SNOW_TYPE
 

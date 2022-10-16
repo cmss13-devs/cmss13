@@ -133,3 +133,32 @@
       Control verbs.
   stanalbatross:
   - ui: converted the escape pod control console from nanoui to TGUI
+2022-10-12:
+  Geevies:
+  - rscadd: Made armor color sprites more muted.
+  Laser9:
+  - spellcheck: A lot of spelling and grammar mistakes have been fixed.
+  Youbar:
+  - qol: Cryosleep announcements now include job title
+2022-10-13:
+  4hands44:
+  - bugfix: replaced unbreakable window
+  - bugfix: Changed stools to /bed Ver.
+  carlarctg:
+  - qol: Trying to shoot an underslung grenade launcher and failing for some reason
+      (like forgetting to pump it) will now generate a loud 'click' noise.
+  ihatethisengine:
+  - bugfix: Observers now can see evacuation timer
+2022-10-14:
+  Carlarc_Kugamo:
+  - rscadd: Added a new resin marker for needing weeds in an area.
+  Kugamo:
+  - imageadd: Carriers' sprites now reflect how many huggers they are currently carrying.
+2022-10-15:
+  Geeves:
+  - bugfix: The Reserves squad is now called Foxtrot. Their brown color has been brightened
+      a bit, the radio color as well. They also no longer break the crew manifest.
+  - rscadd: You can now call the reserves in-game via the tech tree, it's a Tier 3
+      tech that costs 10 points, but increases by 5 each time it's called. The squad
+      contains a squad leader, medics, engineers, and privates.
+  - balance: The tech points required to go up a tier has been reduced to 5 from 15.

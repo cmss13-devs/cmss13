@@ -238,7 +238,7 @@
 
 /obj/item/reagent_container/spray/mister/atmos
 	name = "multipurpose nozzle"
-	desc = "A heavy duty foam-spraying nozzle attached to a firefighter's backpack tank."
+	desc = "A heavy-duty foam-spraying nozzle attached to a firefighter's backpack tank."
 	icon_state = "fnozzle"
 	item_state = "fnozzle"
 	w_class = SIZE_LARGE

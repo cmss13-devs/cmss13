@@ -30,7 +30,7 @@
 
 /obj/item/facepaint/sniper
 	name = "fullbody paint"
-	desc = "Paint, for your face. This facepaint is meant to help you blend in with the foilage, but studies on this are at best inconclusive. Wipe it off your face with some paper if you need to."
+	desc = "Paint, for your face. This facepaint is meant to help you blend in with the foliage, but studies on this are at best inconclusive. Wipe it off your face with some paper if you need to."
 	paint_type = "full_camo"
 	icon_state = "full_camo"
 

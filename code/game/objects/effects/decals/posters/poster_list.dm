@@ -126,7 +126,7 @@ Template
 /datum/poster/poster_24
 	icon_state="poster24"
 	name = "art?"
-	desc = "This poster depicts some curved lines that some pretentious art snob valued at over $12,000,000. Too bad this is just a low resolution print."
+	desc = "This poster depicts some curved lines that some pretentious art snob valued at over $12,000,000. Too bad this is just a low-resolution print."
 
 /datum/poster/poster_25
 	icon_state="poster25"
@@ -186,7 +186,7 @@ Template
 /datum/poster/poster_36
 	icon_state="poster36"
 	name = "TAB"
-	desc = "This poster depicts the logo for TAB. TAB is a low calorie soft drink that never really made it off of Earth. It's odd to see a poster advertising it way out here. Maybe someone just likes the logo."
+	desc = "This poster depicts the logo for TAB. TAB is a low-calorie soft drink that never really made it off of Earth. It's odd to see a poster advertising it way out here. Maybe someone just likes the logo."
 
 /datum/poster/poster_37
 	icon_state="poster37"
@@ -207,7 +207,7 @@ Template
 /datum/poster/poster_40
 	icon_state="poster40"
 	name = "Vote 'NO' to Proposition 339 and Vote 'NO!' to the Colonial Protection Act"
-	desc = "This poster demands that you vote 'NO!' to that new piece of legislation that would give the military carte-blance permission to stick its nose in corporate affairs. Many view the bill as government overreach, but many others view it as the lesser of two evils compared to letting the megacorps do whatever they want. Because space is friggin' huge, it's going to take a while to gather all of the votes and even if it's passed, it likely won't go into effect until 2186 at the earliest."
+	desc = "This poster demands that you vote 'NO!' to that new piece of legislation that would give the military carte blanche permission to stick its nose in corporate affairs. Many view the bill as government overreach, but many others view it as the lesser of two evils compared to letting the megacorps do whatever they want. Because space is friggin' huge, it's going to take a while to gather all of the votes and even if it's passed, it likely won't go into effect until 2186 at the earliest."
 
 /datum/poster/poster_41
 	icon_state="poster41"

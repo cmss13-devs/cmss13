@@ -6,7 +6,7 @@
 
 /obj/item/weapon/gun/energy //whoever delegated all behavior to the taser instead of a parent object needs to dig themselves a hole to die in. Fuck you old dev.
 	name = "energy pistol"
-	desc = "It shoots lasers by drawing power from an internal cell battery. Can be recharged at most convetion stations."
+	desc = "It shoots lasers by drawing power from an internal cell battery. Can be recharged at most convection stations."
 
 	icon_state = "stunrevolver"
 	item_state = "m44"//temp

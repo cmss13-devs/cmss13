@@ -128,7 +128,7 @@ obj/structure/platform_decoration
 
 /obj/structure/platform_decoration/kutjevo
 	name = "raised metal corner"
-	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
 	icon_state = "kutjevo_platform_deco"
 
 
@@ -146,7 +146,7 @@ obj/structure/platform_decoration
 
 /obj/structure/platform_decoration/kutjevo/smooth
 	name = "raised metal corner"
-	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
 	icon_state = "kutjevo_platform_sm_deco"
 
 /obj/structure/platform/kutjevo/rock
@@ -156,7 +156,7 @@ obj/structure/platform_decoration
 
 /obj/structure/platform_decoration/kutjevo/rock
 	name = "raised rock corner"
-	desc = "A collection of stones and rocks that cap the edge of some conveniently 1 meter long lengths of perfectly climbable chest high walls."
+	desc = "A collection of stones and rocks that cap the edge of some conveniently 1-meter-long lengths of perfectly climbable chest high walls."
 	icon_state = "kutjevo_rock_deco"
 
 

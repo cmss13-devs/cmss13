@@ -25,7 +25,7 @@
 
 // VV HREF KEYS
 #define VV_HK_TARGET "target"
-#define VV_HK_VARNAME "targetvar"		//name or index of var for 1 variable targetting hrefs.
+#define VV_HK_VARNAME "targetvar"		//name or index of var for 1 variable targeting hrefs.
 
 // /datum
 #define VV_HK_DELETE "delete"

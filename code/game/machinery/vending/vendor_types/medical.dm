@@ -301,7 +301,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood
 	name = "\improper MM Blood Dispenser"
-	desc = "Marine Med brand Blood Pack Dispensery"
+	desc = "Marine Med brand Blood Pack Dispensary"
 	icon_state = "blood"
 	wrenchable = TRUE
 	hackable = TRUE

@@ -920,20 +920,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	. += ""
 	. += "Game Mode: [GLOB.master_mode]"
 
-	if(SSticker.HasRoundStarted())
-		return
+	if(!SSticker.HasRoundStarted())
+		var/time_remaining = SSticker.GetTimeLeft()
+		if(time_remaining > 0)
+			. += "Time To Start: [round(time_remaining)]s"
+		else if(time_remaining == -10)
+			. += "Time To Start: DELAYED"
+		else
+			. += "Time To Start: SOON"
 
-	var/time_remaining = SSticker.GetTimeLeft()
-	if(time_remaining > 0)
-		. += "Time To Start: [round(time_remaining)]s"
-	else if(time_remaining == -10)
-		. += "Time To Start: DELAYED"
-	else
-		. += "Time To Start: SOON"
-
-	. += "Players: [SSticker.totalPlayers]"
-	if(client.admin_holder)
-		. += "Players Ready: [SSticker.totalPlayersReady]"
+		. += "Players: [SSticker.totalPlayers]"
+		if(client.admin_holder)
+			. += "Players Ready: [SSticker.totalPlayersReady]"
 
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()

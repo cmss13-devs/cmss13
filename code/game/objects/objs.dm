@@ -368,7 +368,11 @@
 /obj/proc/extinguish()
 	return
 
-//returns time or -1 if unmeltable
+/obj/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+	. = ..()
+	flamer_fire_act(damage, fire.weapon_cause_data)
+
+///returns time or -1 if unmeltable
 /obj/proc/get_applying_acid_time()
 	if(unacidable)
 		return -1

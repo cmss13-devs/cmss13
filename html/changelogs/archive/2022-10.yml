@@ -166,6 +166,10 @@
   harryob:
   - bugfix: The powerloader can no longer delete crates, water tanks, and various
       other items.
+  stanalbatross:
+  - balance: reduced the XM88 stock slowdown a bit
+  - balance: gave XM88 10 ap ammo by default
+  - balance: shifted the XM88 stack ap tiers up by 10 each to compensate for this
   totalepicness:
   - balance: Reworked charger's RAM, it is now renamed to "headbutt" and slows down
       instead of stuns.

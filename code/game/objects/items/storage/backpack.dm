@@ -376,6 +376,8 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	desc = "A standard-issue backpack worn by USCM technicians."
 	icon_state = "marinepack_techi"
 	item_state = "marinepack_techi"
+	xeno_icon_state = "marinepack"
+	xeno_types = list(/mob/living/carbon/Xenomorph/Praetorian)
 
 /obj/item/storage/backpack/marine/satchel/intel
 	name = "\improper USCM lightweight expedition pack"
@@ -398,7 +400,6 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 21 //backpack size
-
 
 /obj/item/storage/backpack/marine/satchel/medic
 	name = "\improper USCM corpsman satchel"

@@ -219,8 +219,6 @@
 	log_admin("[key_name(src)] sent an Object Narrate with message [message].")
 	message_staff("[key_name(src)] sent an Object Narrate with message [message].")
 
-
-
 /client/proc/cmd_admin_direct_narrate(var/mob/M)
 	set name = "Narrate"
 	set category = null

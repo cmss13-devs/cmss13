@@ -123,6 +123,25 @@
 			V.handle_acidic_environment(src)
 			continue
 
+	// Melt two layers of snow
+	// Placed after for loop to prevent interference with INITIALIZE_HINT_QDEL
+	if (istype(loc, /turf/open/snow))
+		var/turf/open/snow/ST = loc
+
+		if(ST && ST.bleed_layer)
+			if(ST.bleed_layer > 2)
+				ST.bleed_layer -= 2
+			else
+				ST.bleed_layer = 0
+			ST.update_icon(1, 0)
+
+	if (istype(loc, /turf/open/auto_turf/snow))
+		var/turf/open/auto_turf/snow/S = loc
+
+		if(S && S.bleed_layer)
+			var/new_layer = S.bleed_layer - 2
+			S.changing_layer(new_layer)
+
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, .proc/die), time_to_live)
 	animate(src, time_to_live, alpha = 128)

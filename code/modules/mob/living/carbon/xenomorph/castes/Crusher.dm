@@ -108,7 +108,7 @@
 			var/turf/open/snow/ST = T
 			if(ST && ST.bleed_layer)
 				ST.bleed_layer = 0
-				ST.update_icon(1, ST.bleed_layer)
+				ST.update_icon(1, 0)
 		else if(istype(T, /turf/open/auto_turf/snow))
 			var/turf/open/auto_turf/snow/S = T
 			if(S && S.bleed_layer)

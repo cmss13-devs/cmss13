@@ -178,6 +178,7 @@
 					ST.bleed_layer -= 2
 				else
 					ST.bleed_layer = 0
+				ST.update_icon(1, 0)
 
 		else if(istype(turf_ahead, /turf/open/auto_turf/snow))
 			var/turf/open/auto_turf/snow/S = turf_ahead

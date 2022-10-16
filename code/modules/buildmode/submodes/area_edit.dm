@@ -1,5 +1,9 @@
 /datum/buildmode_mode/area_edit
 	key = "areaedit"
+	help = "Left Mouse Button on obj/turf/mob = Select corner\n\
+	Left Mouse Button + Alt on turf/obj/mob = Paint area/span>\n\
+	Right Mouse Button on obj/turf/mob = Select area to paint\n\
+	Right Mouse Button on buildmode button = Create new area"
 	use_corner_selection = TRUE
 	var/area/storedarea
 	var/image/areaimage
@@ -20,14 +24,6 @@
 	QDEL_NULL(areaimage)
 	storedarea = null
 	return ..()
-
-/datum/buildmode_mode/area_edit/show_help(client/c)
-	to_chat(c, SPAN_NOTICE("***********************************************************"))
-	to_chat(c, SPAN_NOTICE("Left Mouse Button on obj/turf/mob = Select corner"))
-	to_chat(c, "<span class='notice'>Left Mouse Button + Alt on turf/obj/mob = Paint area/span>")
-	to_chat(c, SPAN_NOTICE("Right Mouse Button on obj/turf/mob = Select area to paint"))
-	to_chat(c, SPAN_NOTICE("Right Mouse Button on buildmode button = Create new area"))
-	to_chat(c, SPAN_NOTICE("***********************************************************"))
 
 /datum/buildmode_mode/area_edit/change_settings(client/c)
 	var/target_path = input(c, "Enter typepath:", "Typepath", "/area")

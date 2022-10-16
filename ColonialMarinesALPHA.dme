@@ -1265,7 +1265,6 @@
 #include "code\modules\buildmode\submodes\delete.dm"
 #include "code\modules\buildmode\submodes\fill.dm"
 #include "code\modules\buildmode\submodes\outfit.dm"
-#include "code\modules\buildmode\submodes\proccall.dm"
 #include "code\modules\buildmode\submodes\throwing.dm"
 #include "code\modules\buildmode\submodes\variable_edit.dm"
 #include "code\modules\character_traits\character_trait.dm"

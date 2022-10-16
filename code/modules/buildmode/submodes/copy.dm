@@ -1,16 +1,12 @@
 /datum/buildmode_mode/copy
 	key = "copy"
+	key = "Left Mouse Button on obj/turf/mob = Spawn a Copy of selected target\n\
+    Right Mouse Button on obj/mob = Select target to copy"
 	var/atom/movable/stored = null
 
 /datum/buildmode_mode/copy/Destroy()
 	stored = null
 	return ..()
-
-/datum/buildmode_mode/copy/show_help(client/c)
-	to_chat(c, SPAN_NOTICE("***********************************************************"))
-	to_chat(c, SPAN_NOTICE("Left Mouse Button on obj/turf/mob   = Spawn a Copy of selected target"))
-	to_chat(c, SPAN_NOTICE("Right Mouse Button on obj/mob = Select target to copy"))
-	to_chat(c, SPAN_NOTICE("***********************************************************"))
 
 /datum/buildmode_mode/copy/when_clicked(client/c, params, obj/object)
 	var/list/modifiers = params2list(params)

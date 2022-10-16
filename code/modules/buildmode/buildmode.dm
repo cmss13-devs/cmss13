@@ -53,7 +53,7 @@
 
 /datum/buildmode/proc/post_login()
 	// since these will get wiped upon login
-	holder.screen += buttons
+	holder?.screen += buttons
 	// re-open the according switch mode
 	switch(switch_state)
 		if(BM_SWITCHSTATE_MODE)

@@ -1,5 +1,8 @@
 /datum/buildmode_mode/varedit
 	key = "edit"
+	help = "Right Mouse Button on buildmode button = Select var(type) & value\n\
+	Left Mouse Button on turf/obj/mob = Set var(type) & value\n\
+	Right Mouse Button on turf/obj/mob = Reset var's value"
 	// Varedit mode
 	var/selected_key = null
 	var/selected_value = null
@@ -8,13 +11,6 @@
 	selected_key = null
 	selected_value = null
 	return ..()
-
-/datum/buildmode_mode/varedit/show_help(client/c)
-	to_chat(c, SPAN_NOTICE("***********************************************************"))
-	to_chat(c, SPAN_NOTICE("Right Mouse Button on buildmode button = Select var(type) & value"))
-	to_chat(c, SPAN_NOTICE("Left Mouse Button on turf/obj/mob      = Set var(type) & value"))
-	to_chat(c, SPAN_NOTICE("Right Mouse Button on turf/obj/mob     = Reset var's value"))
-	to_chat(c, SPAN_NOTICE("***********************************************************"))
 
 /datum/buildmode_mode/varedit/Reset()
 	. = ..()

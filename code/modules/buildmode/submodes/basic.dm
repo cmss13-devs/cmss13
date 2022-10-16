@@ -1,16 +1,11 @@
 /datum/buildmode_mode/basic
 	key = "basic"
-
-/datum/buildmode_mode/basic/show_help(client/c)
-	to_chat(c, SPAN_NOTICE("***********************************************************"))
-	to_chat(c, SPAN_NOTICE("Left Mouse Button        = Construct / Upgrade"))
-	to_chat(c, SPAN_NOTICE("Right Mouse Button       = Deconstruct / Delete / Downgrade"))
-	to_chat(c, SPAN_NOTICE("Left Mouse Button + ctrl = R-Window"))
-	to_chat(c, SPAN_NOTICE("Left Mouse Button + alt  = Airlock"))
-	to_chat(c, "")
-	to_chat(c, SPAN_NOTICE("Use the button in the upper left corner to"))
-	to_chat(c, SPAN_NOTICE("change the direction of built objects."))
-	to_chat(c, SPAN_NOTICE("***********************************************************"))
+	help = "Left Mouse Button  = Construct / Upgrade\n\
+	Right Mouse Button  = Deconstruct / Delete / Downgrade\n\
+	Left Mouse Button + ctrl = R-Window\n\
+	Left Mouse Button + alt = Airlock\n\
+	Use the button in the upper left corner to\n\
+	change the direction of built objects"
 
 /datum/buildmode_mode/basic/when_clicked(client/c, params, obj/object)
 	var/list/modifiers = params2list(params)
@@ -22,7 +17,7 @@
 
 	if(istype(object,/turf) && left_click && !alt_click && !ctrl_click)
 		var/turf/clicked_turf = object
-		if(istype(object, /turf/open/floor/plating))
+		if(istype(object, /turf/open/floor/plating/almayer))
 			clicked_turf.PlaceOnTop(/turf/open/floor/plating/almayer)
 		else if(istype(object, /turf/open/floor))
 			clicked_turf.PlaceOnTop(/turf/closed/wall)
@@ -42,7 +37,7 @@
 		return
 	else if(istype(object,/turf) && alt_click && left_click)
 		log_admin("Build Mode: [key_name(c)] built an airlock at [AREACOORD(object)]")
-		new/obj/structure/machinery/door/airlock(get_turf(object))
+		new/obj/structure/machinery/door/airlock/almayer(get_turf(object))
 	else if(istype(object,/turf) && ctrl_click && left_click)
 		var/obj/structure/window/reinforced/window
 		var/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)

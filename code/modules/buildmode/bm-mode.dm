@@ -5,6 +5,7 @@
 
 /datum/buildmode_mode
 	var/key = "oops"
+	var/help = "Someone forgot to set help text!"
 
 	var/datum/buildmode/BM
 
@@ -36,7 +37,10 @@
 	return "buildmode_[key]"
 
 /datum/buildmode_mode/proc/show_help(client/c)
-	CRASH("No help defined, yell at a coder")
+	to_chat(c, SPAN_NOTICE("\
+	***********************************************************\n\
+	[help]\n\
+	***********************************************************"))
 
 /datum/buildmode_mode/proc/change_settings(client/c)
 	to_chat(c, SPAN_WARNING("There is no configuration available for this mode"))

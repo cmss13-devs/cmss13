@@ -981,7 +981,7 @@
 	item_state = "m56de"
 	max_rounds = 125
 	default_ammo = /datum/ammo/bullet/machinegun/auto
-	gun_type = null
+	gun_type = /obj/item/weapon/gun/m2c_portable
 
 //STORAGE BOX FOR THE MACHINEGUN
 /obj/item/storage/box/m56d/m2c

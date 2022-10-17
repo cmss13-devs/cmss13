@@ -112,3 +112,33 @@
 /obj/effect/syringe_gun_dummy/Initialize()
 		create_reagents(15)
 		..()
+
+// event only m2c, doesnt need to be placed to fire, runs off standard m2c box mags
+/obj/item/weapon/gun/m2c_portable
+	name = "\improper M2C portable"
+	desc = "An engineering innovation, kitted out with the best recoil supression since the smartgun, it's probably worth more than you ever will."
+	icon = 'icons/turf/whiskeyoutpost.dmi' // placeholder
+	icon_state = "M56DE_gun_mount"
+	item_state = "m60" // placeholder
+	reload_sound = 'sound/items/m56dauto_load.ogg'
+	fire_sound = 'sound/weapons/gun_m56d_auto.ogg'
+	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
+	current_mag = /obj/item/ammo_magazine/m2c
+	w_class = SIZE_LARGE
+	force = 20
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK
+	gun_category = GUN_CATEGORY_HEAVY
+
+/obj/item/weapon/gun/m2c_portable/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_10
+	burst_amount = 5
+	burst_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_10
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_10
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	empty_sound = 'sound/weapons/hmg_eject_mag.ogg'
+

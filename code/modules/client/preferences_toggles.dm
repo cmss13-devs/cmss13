@@ -259,8 +259,7 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_item_animations'>Toggle Item Animations</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_same_tile_item_animations'>Toggle Same Tile Item Animations</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>"
 	)
 
 	var/dat = ""
@@ -356,15 +355,25 @@
 	to_chat(src, SPAN_BOLDNOTICE("Middle Click [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
 	prefs.save_preferences()
 
-/client/proc/toggle_item_animations() //Toggles tg-style item animations on and off, default on.
-	prefs.toggle_prefs ^= TOGGLE_ITEM_ANIMATIONS
-	to_chat(src, SPAN_BOLDNOTICE("You [(prefs.toggle_prefs & TOGGLE_ITEM_ANIMATIONS) ? "will" : "will no longer"] see item animations."))
-	prefs.save_preferences()
+/client/proc/switch_item_animations() //Switches tg-style item animations on, not-on-same-tile, and off
+	if(!(prefs.toggle_prefs & TOGGLE_ITEM_ANIMATIONS || prefs.toggle_prefs & TOGGLE_SAME_TILE_ITEM_ANIMATIONS))
+		prefs.toggle_prefs += TOGGLE_ITEM_ANIMATIONS
+		to_chat(src, SPAN_BOLDNOTICE("You will see item animations."))
+		prefs.save_preferences()
+		return "On"
 
-/client/proc/toggle_same_tile_item_animations() //Toggles being able to see animations that occur on the same tile.
-	prefs.toggle_prefs ^= TOGGLE_SAME_TILE_ITEM_ANIMATIONS
-	to_chat(src, SPAN_BOLDNOTICE("You [(prefs.toggle_prefs & TOGGLE_SAME_TILE_ITEM_ANIMATIONS) ? "will" : "will no longer"] see item animations that occur on the same tile."))
-	prefs.save_preferences()
+	if(prefs.toggle_prefs & TOGGLE_ITEM_ANIMATIONS)
+		prefs.toggle_prefs -= TOGGLE_ITEM_ANIMATIONS
+		prefs.toggle_prefs += TOGGLE_SAME_TILE_ITEM_ANIMATIONS
+		to_chat(src, SPAN_BOLDNOTICE("You will see item animations, except for those that occur on their own tile."))
+		prefs.save_preferences()
+		return "Not Same Tile"
+
+	if(prefs.toggle_prefs & TOGGLE_SAME_TILE_ITEM_ANIMATIONS)
+		prefs.toggle_prefs -= TOGGLE_SAME_TILE_ITEM_ANIMATIONS
+		to_chat(src, SPAN_BOLDNOTICE("You will no longer see item animations."))
+		prefs.save_preferences()
+		return "Off"
 
 //------------ GHOST PREFERENCES ---------------------------------
 

@@ -331,7 +331,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 /proc/flick_overlay_to_clients(image/image_to_show, list/show_to, duration, toggle_with_config = FALSE, config_type)
 	for(var/client/add_to in show_to)
 		//Lets clients disable the overlay with a config option if allowed
-		if(toggle_with_config == TRUE && !(add_to && add_to.prefs && add_to.prefs.toggle_prefs & config_type))
+		if(toggle_with_config == TRUE && !(add_to && add_to.prefs && CHECK_BITFIELD(add_to.prefs.toggle_prefs, config_type)))
 			continue
 		add_to.images += image_to_show
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_images_from_clients, image_to_show, show_to), duration, TIMER_CLIENT_TIME)

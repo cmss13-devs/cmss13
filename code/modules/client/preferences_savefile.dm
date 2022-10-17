@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	17
+#define SAVEFILE_VERSION_MAX	18
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -61,6 +61,12 @@
 			if(language_traits.len > 1)
 				language_traits = null
 		S["traits"] << language_traits
+
+	if(savefile_version < 18) //toggle item animations on by default
+		var/pref_item_animations
+		S["toggle_prefs"] >> pref_item_animations
+		pref_item_animations |= TOGGLE_ITEM_ANIMATIONS|TOGGLE_SAME_TILE_ITEM_ANIMATIONS
+		S["toggle_prefs"] << pref_item_animations
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

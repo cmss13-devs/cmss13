@@ -207,7 +207,7 @@
 	var/type = tgui_input_list(usr,
 				"What type of narration?",
 				"Narration",
-				list("Say", "Me", "Direct"))
+				list(NARRATION_METHOD_SAY, NARRATION_METHOD_ME, NARRATION_METHOD_DIRECT))
 	if(!type) return
 	var/message = input(usr,
 				"What should it say?",

@@ -74,11 +74,10 @@
 		if (H.stat == DEAD)
 			return
 
-	for (var/atom/dotA in dot_cooldown_atoms)
-		if (dotA == A)
-			return
+	if(WEAKREF (A) in dot_cooldown_atoms)
+		return
 
-	dot_cooldown_atoms += A
+	dot_cooldown_atoms += WEAKREF (A)
 	addtimer(CALLBACK(src, .proc/dot_cooldown_up, A), dot_cooldown_duration)
 
 	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_type))

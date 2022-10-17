@@ -142,9 +142,9 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			sleep(300) //Sleep 30 more seconds to make sure everyone had a chance to leave.
 			var/lifesigns = 0
 			lifesigns += P.passengers
-			var/obj/docking_port/mobile/lifeboat/L1 = SSshuttle.getShuttle("lifeboat1")
-			L1.check_for_survivors()
-			lifesigns += L1.survivors
+			var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle("lifeboat1")
+			lifeboat.check_for_survivors()
+			lifesigns += lifeboat.survivors
 			ai_announcement("ATTENTION: Evacuation complete. Outbound lifesigns detected: [lifesigns ? lifesigns  : "none"].", 'sound/AI/evacuation_complete.ogg')
 			evac_status = EVACUATION_STATUS_COMPLETE
 		return TRUE
@@ -165,24 +165,24 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 // LIFEBOATS CORNER
 /datum/authority/branch/evacuation/proc/activate_lifeboats()
-	for(var/obj/docking_port/stationary/lifeboat_dock/LD in GLOB.lifeboat_almayer_docks)
-		var/obj/docking_port/mobile/lifeboat/L = LD.get_docked()
-		if(L && L.available)
-			L.status = LIFEBOAT_ACTIVE
-			LD.open_dock()
+	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
+		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		if(lifeboat && lifeboat.available)
+			lifeboat.status = LIFEBOAT_ACTIVE
+			lifeboat_dock.open_dock()
 
 
 /datum/authority/branch/evacuation/proc/deactivate_lifeboats()
-	for(var/obj/docking_port/stationary/lifeboat_dock/LD in GLOB.lifeboat_almayer_docks)
-		var/obj/docking_port/mobile/lifeboat/L = LD.get_docked()
-		if(L && L.available)
-			L.status = LIFEBOAT_INACTIVE
+	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
+		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		if(lifeboat && lifeboat.available)
+			lifeboat.status = LIFEBOAT_INACTIVE
 
 /datum/authority/branch/evacuation/proc/launch_lifeboats()
-	for(var/obj/docking_port/stationary/lifeboat_dock/LD in GLOB.lifeboat_almayer_docks)
-		var/obj/docking_port/mobile/lifeboat/L = LD.get_docked()
-		if(L && L.available)
-			L.send_to_infinite_transit()
+	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
+		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		if(lifeboat && lifeboat.available)
+			lifeboat.send_to_infinite_transit()
 
 //=========================================================================================
 //=========================================================================================

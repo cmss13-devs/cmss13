@@ -84,13 +84,13 @@
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
-	var/obj/docking_port/mobile/lifeboat/L = SSshuttle.getShuttle(shuttleId)
-	if(L.status == LIFEBOAT_LOCKED)
+	var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+	if(lifeboat.status == LIFEBOAT_LOCKED)
 		to_chat(user, SPAN_WARNING("\The [src] flickers with error messages."))
-	else if(L.status == LIFEBOAT_INACTIVE)
+	else if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting evacuation order\"."))
-	else if(L.status == LIFEBOAT_ACTIVE)
-		switch(L.mode)
+	else if(lifeboat.status == LIFEBOAT_ACTIVE)
+		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)
 				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
 			if(SHUTTLE_IGNITING)
@@ -98,20 +98,20 @@
 			if(SHUTTLE_CALL)
 				to_chat(user, SPAN_NOTICE("\The [src] has flight information scrolling across the screen. The autopilot is working correctly."))
 
-/obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.caste && M.caste.is_intelligent)
-		var/obj/docking_port/mobile/lifeboat/L = SSshuttle.getShuttle(shuttleId)
-		if(L.status == LIFEBOAT_LOCKED)
-			to_chat(M, SPAN_WARNING("We already wrested away control of this metal bird."))
+/obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/Xenomorph/xeno)
+	if(xeno.caste && xeno.caste.is_intelligent)
+		var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+		if(lifeboat.status == LIFEBOAT_LOCKED)
+			to_chat(xeno, SPAN_WARNING("We already wrested away control of this metal bird."))
 			return XENO_NO_DELAY_ACTION
 
-		xeno_attack_delay(M)
+		xeno_attack_delay(xeno)
 		if(do_after(usr, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(L.status != LIFEBOAT_LOCKED)
-				L.status = LIFEBOAT_LOCKED
-				L.available = FALSE
-				L.set_mode(SHUTTLE_IDLE)
-				xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, M.hivenumber)
+			if(lifeboat.status != LIFEBOAT_LOCKED)
+				lifeboat.status = LIFEBOAT_LOCKED
+				lifeboat.available = FALSE
+				lifeboat.set_mode(SHUTTLE_IDLE)
+				xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()

@@ -264,24 +264,24 @@
 	. = ..()
 	for(var/turf/self_turf as anything in locs)
 		var/turf/projected = get_ranged_target_turf(self_turf, throw_dir, 1)
-		for(var/atom/movable/AM in self_turf)
-			if(ismob(AM) && !isobserver(AM))
-				var/mob/M = AM
-				M.KnockDown(5)
-				to_chat(M, SPAN_HIGHDANGER("\The [src] shoves you out!"))
-			else if(isobj(AM))
-				var/obj/O = AM
-				if(O.anchored)
+		for(var/atom/movable/atom_movable in self_turf)
+			if(ismob(atom_movable) && !isobserver(atom_movable))
+				var/mob/mob = atom_movable
+				mob.KnockDown(5)
+				to_chat(mob, SPAN_HIGHDANGER("\The [src] shoves you out!"))
+			else if(isobj(atom_movable))
+				var/obj/object = atom_movable
+				if(object.anchored)
 					continue
 			else
 				continue
-			INVOKE_ASYNC(AM, /atom/movable.proc/throw_atom, projected, 1, SPEED_FAST, null, FALSE)
+			INVOKE_ASYNC(atom_movable, /atom/movable.proc/throw_atom, projected, 1, SPEED_FAST, null, FALSE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override)
 	. = ..()
 	if(istype(port, /obj/docking_port/mobile/lifeboat))
-		var/obj/docking_port/mobile/lifeboat/L = port
-		L.doors += src
+		var/obj/docking_port/mobile/lifeboat/lifeboat = port
+		lifeboat.doors += src
 
 /// External airlock that is part of the lifeboat dock
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor
@@ -304,22 +304,22 @@
 	for(var/turf/self_turf as anything in locs)
 		var/turf/near_turf = get_step(self_turf, throw_dir)
 		var/turf/projected = get_ranged_target_turf(near_turf, throw_dir, 50)
-		for(var/atom/movable/AM in near_turf)
-			if(ismob(AM) && !isobserver(AM))
-				var/mob/M = AM
-				M.Stun(10)
-				to_chat(M, SPAN_HIGHDANGER("You get sucked into space!"))
-			else if(isobj(AM))
-				var/obj/O = AM
-				if(O.anchored)
+		for(var/atom/movable/atom_movable in near_turf)
+			if(ismob(atom_movable) && !isobserver(atom_movable))
+				var/mob/mob = atom_movable
+				mob.Stun(10)
+				to_chat(mob, SPAN_HIGHDANGER("You get sucked into space!"))
+			else if(isobj(atom_movable))
+				var/obj/object = atom_movable
+				if(object.anchored)
 					continue
 			else
 				continue
-			INVOKE_ASYNC(AM, /atom/movable.proc/throw_atom, projected, 50, SPEED_FAST, null, TRUE)
+			INVOKE_ASYNC(atom_movable, /atom/movable.proc/throw_atom, projected, 50, SPEED_FAST, null, TRUE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/proc/bolt_explosion()
-	var/turf/T = get_step(src, throw_dir|dir)
-	cell_explosion(T, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("lifeboat explosive bolt"))
+	var/turf/turf = get_step(src, throw_dir|dir)
+	cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("lifeboat explosive bolt"))
 
 // Elevator door
 /obj/structure/machinery/door/airlock/multi_tile/elevator

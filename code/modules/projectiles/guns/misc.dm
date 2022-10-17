@@ -115,7 +115,7 @@
 
 // event only m2c, doesnt need to be placed to fire, runs off standard m2c box mags
 /obj/item/weapon/gun/m2c_portable
-	name = "\improper M2C portable"
+	name = "\improper M2C/P mobile machinegun"
 	desc = "An engineering innovation, kitted out with the best recoil supression since the smartgun, it's probably worth more than you ever will."
 	icon = 'icons/turf/whiskeyoutpost.dmi' // placeholder
 	icon_state = "M56DE_gun_mount"

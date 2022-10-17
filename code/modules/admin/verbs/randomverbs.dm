@@ -111,18 +111,26 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		return
 
-	var/antigrief_choice = tgui_input_list(usr, "Select the preferred antigrief type:", "Select", list("Enabled", "Enabled for new players", "Disabled", "Cancel"))
-	if(!antigrief_choice || antigrief_choice == "Cancel")
+#define ANTIGRIEF_OPTION_ENABLED "Enabled"
+#define ANTIGRIEF_OPTION_NEW_PLAYERS "Enabled for New Players"
+#define ANTIGRIEF_OPTION_DISABLED "Disabled"
+
+	var/antigrief_choice = tgui_input_list(usr, "Select the preferred antigrief type:", "Select", list(ANTIGRIEF_OPTION_ENABLED, ANTIGRIEF_OPTION_NEW_PLAYERS, ANTIGRIEF_OPTION_DISABLED))
+	if(!antigrief_choice)
 		return
 
 	switch(antigrief_choice)
-		if("Disabled")
+		if(ANTIGRIEF_OPTION_DISABLED)
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_DISABLED)
 			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has disabled explosive antigrief."))
-		if("Enabled")
+		if(ANTIGRIEF_OPTION_ENABLED)
 			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has fully enabled explosive antigrief for all players."))
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_ENABLED)
-		if("Enabled for new players")
+		if(ANTIGRIEF_OPTION_NEW_PLAYERS)
+		
+#undef ANTIGRIEF_OPTION_ENABLED
+#undef ANTIGRIEF_OPTION_NEW_PLAYERS
+#undef ANTIGRIEF_OPTION_DISABLED
 			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has enabled explosive antigrief for new players (less than 10 total human hours)."))
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_NEW_PLAYERS)
 		else

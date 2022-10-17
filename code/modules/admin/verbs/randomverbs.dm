@@ -1,3 +1,8 @@
+
+#define ANTIGRIEF_OPTION_ENABLED "Enabled"
+#define ANTIGRIEF_OPTION_NEW_PLAYERS "Enabled for New Players"
+#define ANTIGRIEF_OPTION_DISABLED "Disabled"
+
 /client/proc/cmd_mentor_check_new_players()	//Allows mentors / admins to determine who the newer players are.
 	set category = "Admin"
 	set name = "Check new Players"
@@ -111,9 +116,6 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		return
 
-#define ANTIGRIEF_OPTION_ENABLED "Enabled"
-#define ANTIGRIEF_OPTION_NEW_PLAYERS "Enabled for New Players"
-#define ANTIGRIEF_OPTION_DISABLED "Disabled"
 
 	var/antigrief_choice = tgui_input_list(usr, "Select the preferred antigrief type:", "Select", list(ANTIGRIEF_OPTION_ENABLED, ANTIGRIEF_OPTION_NEW_PLAYERS, ANTIGRIEF_OPTION_DISABLED))
 	if(!antigrief_choice)
@@ -127,10 +129,6 @@
 			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has fully enabled explosive antigrief for all players."))
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_ENABLED)
 		if(ANTIGRIEF_OPTION_NEW_PLAYERS)
-		
-#undef ANTIGRIEF_OPTION_ENABLED
-#undef ANTIGRIEF_OPTION_NEW_PLAYERS
-#undef ANTIGRIEF_OPTION_DISABLED
 			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has enabled explosive antigrief for new players (less than 10 total human hours)."))
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_NEW_PLAYERS)
 		else
@@ -153,3 +151,7 @@
 			to_chat(src, SPAN_BOLDNOTICE("Explosive antigrief is currently enabled for new players."))
 		else
 			to_chat(src, SPAN_BOLDNOTICE("Explosive antigrief has an unknown value... you should probably fix that."))
+
+#undef ANTIGRIEF_OPTION_ENABLED
+#undef ANTIGRIEF_OPTION_NEW_PLAYERS
+#undef ANTIGRIEF_OPTION_DISABLED

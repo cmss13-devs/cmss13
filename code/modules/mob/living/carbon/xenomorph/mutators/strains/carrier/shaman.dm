@@ -52,6 +52,8 @@
 	MS.recalculate_actions(description, flavor_description)
 	C.phero_modifier = -C.caste.aura_strength
 	C.recalculate_pheromones()
+	if(C.huggers_cur > 0)
+		playsound(C.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 	C.huggers_cur = 0
 	C.huggers_max = 0
 	return TRUE

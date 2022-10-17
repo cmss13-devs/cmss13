@@ -8,7 +8,7 @@
 #define SQUAD_MARINE_3					"Charlie"
 #define SQUAD_MARINE_4					"Delta"
 #define SQUAD_MARINE_5					"Echo"
-#define SQUAD_MARINE_CRYO				"Reserves"
+#define SQUAD_MARINE_CRYO				"Foxtrot"
 #define SQUAD_MARSOC					"MARSOC"
 
 // Job name defines

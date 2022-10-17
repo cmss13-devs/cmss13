@@ -39,7 +39,7 @@
 #define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level)))
 #define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level, TRUE)))
 
-// Ensure the frequency is within bounds of what it should be sending/recieving at
+// Ensure the frequency is within bounds of what it should be sending/receiving at
 // Sets f within bounds via `Clamp(round(f), 1441, 1489)`
 // If f is even, adds 1 to its value to make it odd
 #define sanitize_frequency(f) 	((Clamp(round(f), 1441, 1489) % 2) == 0 ? \

@@ -117,7 +117,7 @@
 		var/choice = tgui_input_list(usr, "Select a destination.", MS.destinations)
 		if(!choice) return
 
-		to_chat(usr, SPAN_NOTICE(" [shuttle_tag] main computer recieved message."))
+		to_chat(usr, SPAN_NOTICE(" [shuttle_tag] main computer received message."))
 
 		if(MS.at_origin)
 			MS.announce_arrival()

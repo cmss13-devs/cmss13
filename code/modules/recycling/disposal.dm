@@ -603,6 +603,7 @@
 	var/dpdir = 0		//Bitmask of pipe directions
 	dir = 0				//dir will contain dominant direction for junction pipes
 	health = 10 	//Health points 0-10
+	plane = FLOOR_PLANE
 	layer = DISPOSAL_PIPE_LAYER //Slightly lower than wires and other pipes
 	var/base_icon_state	//Initial icon state on map
 
@@ -942,7 +943,7 @@
 		return null
 	return P
 
-// *** special cased almayer stuff because its all one z level ***
+// *** special cased almayer stuff because it's all one z level ***
 
 /obj/structure/disposalpipe/up/almayer
 	var/id

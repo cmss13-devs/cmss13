@@ -1,4 +1,4 @@
-//Experimental engine for the Almayer.  Should be fancier.  I expect I'll eventually make it totally seperate from the Geothermal as I don't like the procs... - Apop
+//Experimental engine for the Almayer.  Should be fancier.  I expect I'll eventually make it totally separate from the Geothermal as I don't like the procs... - Apop
 
 
 #define FUSION_ENGINE_MAX_POWER_GEN	50000 //Full capacity
@@ -323,7 +323,7 @@
 	name = "\improper WL-6 universal fuel cell"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "cell-full"
-	desc = "A rechargable fuel cell designed to work as a power source for the Cheyenne-Class transport or for Westingland S-52 Reactors."
+	desc = "A rechargeable fuel cell designed to work as a power source for the Cheyenne-Class transport or for Westingland S-52 Reactors."
 	var/fuel_amount = 100.0
 	var/max_fuel_amount = 100.0
 

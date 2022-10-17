@@ -97,7 +97,7 @@
 
 /obj/item/clothing/head/helmet/warden
 	name = "warden's hat"
-	desc = "It's a special helmet issued to the Warden of a securiy force. Protects the head from impacts."
+	desc = "It's a special helmet issued to the Warden of a security force. Protects the head from impacts."
 	icon_state = "policehelm"
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = NO_FLAGS
@@ -640,7 +640,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/pilot
 	name = "\improper M30 tactical helmet"
-	desc = "The M30 tactical helmet has an left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety."
+	desc = "The M30 tactical helmet has a left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety."
 	icon_state = "helmetp"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
@@ -652,7 +652,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/pilottex
 	name = "\improper Tex's M30 tactical helmet"
-	desc = "The M30 tactical helmet has an left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
+	desc = "The M30 tactical helmet has a left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
 	icon_state = "helmetp_tex"
 	item_state = "helmetp_tex"
 	flags_atom = NO_SNOW_TYPE
@@ -700,7 +700,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Cap"
-	desc = "The expensive headwear of a Provost Marshal. Contains shards of kevlar to keep it's valuable contents safe."
+	desc = "The expensive headwear of a Provost Marshal. Contains shards of kevlar to keep its valuable contents safe."
 	icon_state = "pvmarshalhat"
 	item_state = "pvmarshalhat"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
@@ -913,7 +913,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/uppcap/peaked
 	name = "\improper UL3 UPP peaked cap"
-	desc = "UPP headgear issued to Kapitans and above. It is made of high quality materials, and has the officers rank in gold placed upon the front of the cap."
+	desc = "UPP headgear issued to Kapitans and above. It is made of high-quality materials, and has the officers rank in gold placed upon the front of the cap."
 	icon_state = "upp_peaked"
 
 /obj/item/clothing/head/uppcap/ushanka

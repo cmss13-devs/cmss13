@@ -552,6 +552,9 @@
 				var/datum/squad/selected = get_squad_by_name(params["name"])
 				if(!selected)
 					return
+				if(RoleAuthority.check_squad_capacity(person_to_modify, selected))
+					visible_message("<span class='bold'>[src]</span> states, \"CAPACITY ERROR: [selected] can't have another [person_to_modify.job].\"")
+					return TRUE
 				if(transfer_marine_to_squad(person_to_modify, selected, person_to_modify.assigned_squad, ID_to_modify))
 					visible_message("<span class='bold'>[src]</span> states, \"DATABASE LOG: [person_to_modify] was assigned to [selected] Squad.\"")
 					return TRUE

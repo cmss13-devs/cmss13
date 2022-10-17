@@ -21,7 +21,7 @@
 		PF.flags_can_pass_all = PASS_AROUND|PASS_UNDER
 	flags_can_pass_all_temp = PASS_OVER
 
-/obj/structure/bed/chair/handle_rotation() //Making this into a seperate proc so office chairs can call it on Move()
+/obj/structure/bed/chair/handle_rotation() //Making this into a separate proc so office chairs can call it on Move()
 	if(src.dir == NORTH)
 		src.layer = FLY_LAYER
 	else
@@ -108,9 +108,6 @@
 		if(!PC.linked_powerloader)
 			qdel(PC)
 			return TRUE
-		if(PC.loaded)
-			to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
-			return TRUE
 		if(!stacked_size)
 			to_chat(user, SPAN_WARNING("\The [PC] can only grab stacks of chairs."))
 			return TRUE
@@ -119,8 +116,7 @@
 			stack_collapse()
 			return TRUE
 
-		to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
-		PC.grab_object(src, "chairs", 'sound/machines/hydraulics_2.ogg')
+		PC.grab_object(user, src, "chairs", 'sound/machines/hydraulics_2.ogg')
 		update_icon()
 		return TRUE
 

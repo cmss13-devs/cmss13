@@ -1,8 +1,8 @@
 //toggles
 /client/proc/toggle_hear_radio()
-	set name = "Show/Hide RadioChatter"
+	set name = "Show/Hide Radio Chatter"
 	set category = "Preferences.Chat"
-	set desc = "Toggle seeing radiochatter from radios and speakers"
+	set desc = "Toggle seeing radio chatter from radios and speakers"
 	if(!admin_holder) return
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
@@ -11,7 +11,7 @@
 /client/proc/toggleadminhelpsound()
 	set name = "Hear/Silence Adminhelps"
 	set category = "Preferences.Sound"
-	set desc = "Toggle hearing a notification when admin PMs are recieved"
+	set desc = "Toggle hearing a notification when admin PMs are received"
 	if(!admin_holder)	return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
@@ -220,6 +220,18 @@
 	prefs.toggle_prefs ^= TOGGLE_FULLSCREEN
 	prefs.save_preferences()
 	toggle_fullscreen(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+
+/client/verb/toggle_ambient_occlusion()
+	set name = "Toggle Ambient Occlusion"
+	set category = "Preferences"
+	set desc = "Toggles whether the game will have ambient occlusion on."
+
+	prefs.toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION
+	prefs.save_preferences()
+	var/atom/movable/screen/plane_master/game_world/plane_master = locate() in src.screen
+	if (!plane_master)
+		return
+	plane_master.backdrop(src.mob)
 
 /client/verb/toggle_member_publicity()
 	set name = "Toggle Membership Publicity"

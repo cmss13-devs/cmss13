@@ -127,7 +127,7 @@
 	container.hear_talk(M, msg)
 	..()
 
-//Cosmetically opens/closes the the locker when its storage window is accessed or closed. Only makes sound when not already open/closed.
+//Cosmetically opens/closes the locker when its storage window is accessed or closed. Only makes sound when not already open/closed.
 /obj/structure/vehicle_locker/on_pocket_open(first_open)
 	if(first_open)
 		icon_state = "locker_open"

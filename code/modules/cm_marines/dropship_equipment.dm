@@ -44,9 +44,6 @@
 			if(uses_ammo)
 				load_ammo(PC, user)	//it handles on it's own whether the ammo fits
 				return
-			else
-				to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
-				return TRUE
 
 		else
 			if(uses_ammo && ammo_equipped)
@@ -92,10 +89,9 @@
 		qdel(ammo_equipped)
 	else
 		if(ammo_equipped.ammo_name == "rocket")
-			PC.grab_object(ammo_equipped, "ds_rocket")
+			PC.grab_object(user, ammo_equipped, "ds_rocket")
 		else
-			PC.grab_object(ammo_equipped, "ds_ammo")
-		to_chat(user, SPAN_NOTICE("You remove [ammo_equipped] from \the [src] and grab it with \the [PC]."))
+			PC.grab_object(user, ammo_equipped, "ds_ammo")
 	ammo_equipped = null
 	update_icon()
 
@@ -112,8 +108,7 @@
 		return
 	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
 		return
-	PC.grab_object(src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
-	to_chat(user, SPAN_NOTICE("You've [ship_base ? "uninstalled" : "grabbed"] [PC.loaded] with [PC]."))
+	PC.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	if(ship_base)
 		ship_base.installed_equipment = null
 		ship_base = null
@@ -433,7 +428,7 @@
 /obj/structure/dropship_equipment/electronics/spotlights
 	name = "spotlight"
 	icon_state = "spotlights"
-	desc = "A set of highpowered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
+	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	is_interactable = TRUE
 	point_cost = 300
 	var/spotlights_cooldown
@@ -673,7 +668,7 @@
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
-	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its inital production run."
+	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run."
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	point_cost = 400

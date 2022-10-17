@@ -93,6 +93,7 @@
 #define SLOWDOWN_ADS_VERSATILE			0.50
 #define SLOWDOWN_ADS_SHOTGUN			0.75
 #define SLOWDOWN_ADS_RIFLE				1
+#define SLOWDOWN_AMT_GREENFIRE			1.5
 #define SLOWDOWN_ADS_SCOPE				1.20
 #define SLOWDOWN_ADS_LMG				1.75
 #define SLOWDOWN_ADS_INCINERATOR		1.75
@@ -118,7 +119,7 @@
 #define EXPLOSION_THRESHOLD_HIGH	300
 
 #define EXPLOSION_THRESHOLD_GIB		200 //how much it takes to gib a mob
-#define EXPLOSION_PRONE_MULTIPLIER	0.5 //prone mobs recieve less damage from explosions
+#define EXPLOSION_PRONE_MULTIPLIER	0.5 //prone mobs receive less damage from explosions
 
 //Explosion damage multipliers for different objects
 #define EXPLOSION_DAMAGE_MULTIPLIER_DOOR     	15

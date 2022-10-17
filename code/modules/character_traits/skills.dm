@@ -67,7 +67,7 @@
 
 /datum/character_trait/skills/miniengie/antag
 	trait_name = "Field Technician Training"
-	trait_desc = "Boosts the construction and engineering skills to 2. Crewmember received full training in creating fortifications and maintaining variousmachinery."
+	trait_desc = "Boosts the construction and engineering skills to 2. Crewmember received full training in creating fortifications and maintaining various machinery."
 	skill_cap = 2
 	skill_increment = 2
 

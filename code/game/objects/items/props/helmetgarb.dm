@@ -10,7 +10,7 @@
 
 /obj/item/prop/helmetgarb/gunoil
 	name = "gun oil"
-	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self cleaning firearm."
+	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self-cleaning firearm."
 	icon_state = "gunoil"
 
 /obj/item/prop/helmetgarb/netting
@@ -40,7 +40,7 @@
 
 /obj/item/prop/helmetgarb/raincover
 	name = "raincover"
-	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least its something."
+	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
 	icon_state = "raincover"
 
 /obj/item/prop/helmetgarb/rabbitsfoot
@@ -55,7 +55,7 @@
 
 /obj/item/prop/helmetgarb/lucky_feather
 	name = "\improper Red Lucky Feather"
-	desc = "It is a riotous red color, made of really crummy plastic and synthetic threading, you know, the same sort of material every every Corporate Liaison's spine is made of."
+	desc = "It is a riotous red color, made of really crummy plastic and synthetic threading, you know, the same sort of material every Corporate Liaison's spine is made of."
 	icon_state = "lucky_feather"
 	color = "red"
 
@@ -66,7 +66,7 @@
 
 /obj/item/prop/helmetgarb/lucky_feather/purple
 	name = "\improper Purple Lucky Feather"
-	desc = "It is a plucky purple color. Legend has it a station AI known as Shakespeare simulated 1000 monkeys typing gibberish in order to replicate the actual works of shakespeare. Art critics are on the fence if this is the first instance of true artificial abstract art."
+	desc = "It is a plucky purple color. Legend has it a station AI known as Shakespeare simulated 1000 monkeys typing gibberish in order to replicate the actual works of Shakespeare. Art critics are on the fence if this is the first instance of true artificial abstract art."
 	color = "purple"
 
 /obj/item/prop/helmetgarb/lucky_feather/yellow
@@ -451,7 +451,7 @@
 
 /obj/item/prop/helmetgarb/helmet_nvg/marsoc //for MARSOC
 	name = "\improper Tactical M3 night vision goggles"
-	desc = "With an integrated self recharging battery, nothing can stop you. Put them on your helmet and press the button and it's go-time."
+	desc = "With an integrated self-recharging battery, nothing can stop you. Put them on your helmet and press the button and it's go-time."
 	infinite_charge = TRUE
 
 #undef NVG_SHAPE_COSMETIC

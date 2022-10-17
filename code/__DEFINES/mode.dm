@@ -91,6 +91,8 @@
 #define TOGGLE_OOC_FLAG						(1<<12) // determines if your country flag appears by your name in ooc chat
 #define TOGGLE_MIDDLE_MOUSE_SWAP_HANDS		(1<<13) //Toggle whether middle click swaps your hands
 #define TOGGLE_AMBIENT_OCCLUSION            (1<<14) // toggles if ambient occlusion is turned on or off
+#define TOGGLE_ITEM_ANIMATIONS				(1<<14) //Toggles tg-style item animations on and off, default on.
+#define TOGGLE_SAME_TILE_ITEM_ANIMATIONS	(1<<15) //Toggles being able to see animations that occur on the same tile.
 //=================================================
 
 var/list/be_special_flags = list(

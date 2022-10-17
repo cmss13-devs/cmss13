@@ -49,6 +49,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/ooccolor
 	var/be_special = 0				// Special role selection
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION // flags in #define/mode.dm
+	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_ITEM_ANIMATIONS|TOGGLE_SAME_TILE_ITEM_ANIMATIONS // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
@@ -573,8 +574,12 @@ var/const/MAX_SAVE_SLOTS = 10
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ALTERNATING_DUAL_WIELD]'><b>[toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_SWAP_HANDS]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS ? "On" : "Off"]</b></a><br>"
-			dat += "</div>"
-		if(MENU_ERT)
+			dat += "<b>Toggle Item Animations: \
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ITEM_ANIMATIONS]'><b>[toggle_prefs & TOGGLE_ITEM_ANIMATIONS ? "On" : "Off"]</b></a><br>"
+
+			dat += "<b>Toggle Item Animations: \
+					</b> <a href='?_src_=prefs;preference=switch_prefs;flag1=[TOGGLE_ITEM_ANIMATIONS]flag2=[TOGGLE_SAME_TILE_ITEM_ANIMATIONS]'><b>[toggle_prefs & TOGGLE_ITEM_ANIMATIONS ? "On" : toggle_prefs & TOGGLE_SAME_TILE_ITEM_ANIMATIONS ? "Not Same Tile" : "Off"]</b></a><br>"
+		if(MENU_ERT) //wart
 			dat += "<div id='column1'>"
 			dat += "<h2><b><u>ERT Settings:</u></b></h2>"
 			dat += "<b>Spawn as Leader:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_LEADER]'><b>[toggles_ert & PLAY_LEADER ? "Yes" : "No"]</b></a><br>"
@@ -1602,6 +1607,16 @@ var/const/MAX_SAVE_SLOTS = 10
 					toggle_prefs ^= flag
 					if (toggle_prefs & flag && toggle_prefs & flag_undo)
 						toggle_prefs ^= flag_undo
+
+				if("switch_prefs") //wart
+					var/list/pref_list = list(text2num(href_list["flag1"]), text2num(href_list["flag2"]), text2num(href_list["flag3"]))
+					var/pref_new = tgui_input_list(user, "Select the preference tier you need", "Select preference tier", pref_list)
+					for(var/flag in pref_list)
+						//remove all flags in list
+						if(CHECK_BITFIELD(toggle_prefs, flag))
+							DISABLE_BITFIELD(toggle_prefs, flag)
+					//add the new flag
+					ENABLE_BITFIELD(toggle_prefs, pref_new)
 
 				if("toggles_ert")
 					var/flag = text2num(href_list["flag"])

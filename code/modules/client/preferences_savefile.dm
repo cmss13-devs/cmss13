@@ -65,9 +65,9 @@
 	if(savefile_version < 18) // adds ambient occlusion by default
 		var/pref_toggles
 		S["toggle_prefs"] >> pref_toggles
+		pref_item_animations |= TOGGLE_ITEM_ANIMATIONS|TOGGLE_SAME_TILE_ITEM_ANIMATIONS
 		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
 		S["toggle_prefs"] << pref_toggles
-
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 

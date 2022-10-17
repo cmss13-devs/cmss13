@@ -299,8 +299,8 @@
 		return 0
 
 /mob/living/forceMove(atom/destination)
-	stop_pulling()
-	if(pulledby)
+	if(pulling && !destination.Adjacent(pulling))
+	if(pulledby && !destination.Adjacent(pulledby))
 		pulledby.stop_pulling()
 	if(buckled && destination != buckled.loc)
 		buckled.unbuckle()

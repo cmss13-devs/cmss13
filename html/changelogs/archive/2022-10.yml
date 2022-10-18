@@ -197,5 +197,7 @@
   - bugfix: Fixed charger stomp screenshake not working
   - bugfix: Charger will now stop charging to Queens,Leaders, and Boilers.
 2022-10-18:
+  carlarctg:
+  - qol: Added beer and IPA cans to gear loadouts. (You can carry up to seven!)
   harryob:
   - bugfix: fixes some particularly ugly decals

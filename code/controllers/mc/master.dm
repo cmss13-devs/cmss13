@@ -230,6 +230,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		old_runlevel = "NULL"
 
 	testing("MC: Runlevel changed from [old_runlevel] to [new_runlevel]")
+	log_debug("MC: Runlevel changed from [old_runlevel] to [new_runlevel]")
 	current_runlevel = log(2, new_runlevel) + 1
 	if(current_runlevel < 1)
 		CRASH("Attempted to set invalid runlevel: [new_runlevel]")

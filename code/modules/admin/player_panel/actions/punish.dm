@@ -175,12 +175,12 @@
 		to_chat(user, SPAN_DANGER("Warning: Mob ckey for [target_mob.name] not found."))
 		return
 
-	if(alert(user, "Are you sure you want to reset name for [target_mob.ckey]?", , "Yes", "No") == "No")
+	if(alert(user, "Are you sure you want to reset name for [target_mob.ckey]?", "Confirmation", "Yes", "No") == "No")
 		return
 
 	var/new_name
 
-	if(alert(user, "Do you want to manually set the name for [target_mob.ckey]?", , "Yes", "No") == "No")
+	if(alert(user, "Do you want to manually set the name for [target_mob.ckey]?", "Confirmation", "Yes", "No") == "No")
 		new_name = random_name(target_mob.gender)
 	else
 		var/raw_name = input(user, "Choose the new name:", "Name Input")  as text|null
@@ -201,7 +201,7 @@
 	target_mob.change_real_name(target_mob, new_name)
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/target_human = target_mob
-		if(target_human.wear_id)
+		if(target_human.wear_id && target_human.wear_id.registered_ref == WEAKREF(target_human))
 			target_human.wear_id.name = "[target_human.real_name]'s ID Card"
 			target_human.wear_id.registered_name = "[target_human.real_name]"
 			if(target_human.wear_id.assignment)
@@ -212,7 +212,8 @@
 
 	message_staff("[user.ckey] has reset [target_mob.ckey]'s name.")
 
-	to_chat(target_mob, SPAN_HIGHDANGER("Warning: Your name has been reset by [user.ckey]."))
+	to_chat(target_mob, FONT_SIZE_HUGE(SPAN_ADMINHELP("Warning: Your name has been reset by [user.ckey].")))
+
 	playsound_client(target_mob.client, sound('sound/effects/adminhelp_new.ogg'), src, 50)
 
 /datum/player_action/ban_human_name
@@ -229,7 +230,7 @@
 	var/client/target_client = target.client
 
 	if(target_client.human_name_ban)
-		if(alert(user, "Are you sure you want to UNBAN [target.ckey] and let them use human names?", ,"Yes", "No") == "No")
+		if(alert(user, "Are you sure you want to UNBAN [target.ckey] and let them use human names?", "Confirmation", "Yes", "No") == "No")
 			return
 
 		if(!target.client || !target.ckey)
@@ -244,11 +245,11 @@
 
 		notes_add(target.ckey, "Human Name Unbanned by [user.ckey]", user.mob)
 
-		to_chat(target, SPAN_HIGHDANGER("Warning: You can use human names again."))
+		to_chat(target, FONT_SIZE_HUGE(SPAN_ADMINHELP("Warning: You can use human names again.")))
 		return
 
 
-	if(alert("Are you sure you want to BAN [target.ckey] from ever using any human names?", , "Yes", "No") == "No")
+	if(alert("Are you sure you want to BAN [target.ckey] from ever using any human names?", "Confirmation", "Yes", "No") == "No")
 		return
 
 	if(!target.client || !target.ckey)
@@ -259,7 +260,7 @@
 
 	notes_add(target.ckey, "Human Name Banned by [user.ckey]", user.mob)
 
-	to_chat(target, SPAN_HIGHDANGER("Warning: You were banned from using human names by [user.ckey]."))
+	to_chat(target, FONT_SIZE_HUGE(SPAN_ADMINHELP("Warning: You were banned from using human names by [user.ckey].")))
 	playsound_client(target_client, sound('sound/effects/adminhelp_new.ogg'), src, 50)
 
 	var/new_name = random_name(target.gender)

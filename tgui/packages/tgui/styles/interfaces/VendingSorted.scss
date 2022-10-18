@@ -77,7 +77,7 @@ $mandatory-color: rgb(128, 83, 0);
 }
 
 .theme-weyland {
-  .VendingSorted__SuperVendButton {
+  .VendingSorted__VendButton {
     background-color: rgba(#ffffff, $button-bg-opacity);
     transition: none;
     .Button__content {
@@ -88,7 +88,7 @@ $mandatory-color: rgb(128, 83, 0);
   }
 }
 
-.VendingSorted__SuperVendButton {
+.VendingSorted__VendButton {
   width: 100%;
   display:block;
   font-size: base.em(14px);

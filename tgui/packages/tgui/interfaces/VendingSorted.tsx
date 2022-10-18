@@ -91,11 +91,11 @@ interface VendButtonProps extends BoxProps{
   onClick: () => any;
 }
 
-const SuperVendButton = (props: VendButtonProps, _) => {
+const VendButton = (props: VendButtonProps, _) => {
   return (
     <Button
       className={classes([
-        'VendingSorted__SuperVendButton',
+        'VendingSorted__VendButton',
         props.isRecommended && 'VendingSorted__RecommendedVendButton',
         props.isMandatory && 'VendingSorted__MandatoryVendButton',
         props.className,
@@ -130,7 +130,6 @@ const VendableItem2 = (props: VenableItem, context) => {
       align="center"
       justify="space-between"
       align-items="center"
-      className="Debug"
     >
       <Flex.Item>
         <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
@@ -140,28 +139,28 @@ const VendableItem2 = (props: VenableItem, context) => {
         <Box className="VendingSorted__Spacer" />
       </Flex.Item>
 
-      <Flex.Item width={2} className="Debug">
+      <Flex.Item width={2}>
         <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
           {quantity}
         </span>
       </Flex.Item>
 
       <Flex.Item grow={1}>
-        <SuperVendButton
+        <VendButton
           isRecommended={isRecommended}
           isMandatory={isMandatory}
           available={available}
           onClick={() => act('vend', record)}
         >
           {record.prod_name}
-        </SuperVendButton>
+        </VendButton>
       </Flex.Item>
 
       <Flex.Item>
         <Box className="VendingSorted__Spacer" />
       </Flex.Item>
 
-      <Flex.Item className="Debug">
+      <Flex.Item>
         <DescriptionTooltip record={record}>
           <Icon name="circle-info" className={classes(["VendingSorted__RegularItemText"])} />
         </DescriptionTooltip>
@@ -179,7 +178,6 @@ const VendableClothingItem = (props: VenableItem, context) => {
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
   const cost = record.prod_cost;
-  const description = record.prod_desc;
 
   return (
     <Flex
@@ -210,14 +208,14 @@ const VendableClothingItem = (props: VenableItem, context) => {
           </>)}
 
       <Flex.Item grow={1}>
-        <SuperVendButton
+        <VendButton
           isRecommended={isRecommended}
           isMandatory={isMandatory}
           available={available}
           onClick={() => act('vend', record)}
         >
           {record.prod_name}
-        </SuperVendButton>
+        </VendButton>
       </Flex.Item>
 
       <Flex.Item>

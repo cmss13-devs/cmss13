@@ -199,5 +199,6 @@
 2022-10-18:
   carlarctg:
   - qol: Added beer and IPA cans to gear loadouts. (You can carry up to seven!)
+  - rscadd: Defender now has a tail slam! Same thing as tail stab, but blunt.
   harryob:
   - bugfix: fixes some particularly ugly decals

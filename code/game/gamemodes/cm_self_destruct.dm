@@ -142,9 +142,12 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			sleep(300) //Sleep 30 more seconds to make sure everyone had a chance to leave.
 			var/lifesigns = 0
 			lifesigns += P.passengers
-			var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle("lifeboat1")
-			lifeboat.check_for_survivors()
-			lifesigns += lifeboat.survivors
+			var/obj/docking_port/mobile/lifeboat/lifeboat1 = SSshuttle.getShuttle("lifeboat1")
+			lifeboat1.check_for_survivors()
+			lifesigns += lifeboat1.survivors
+			var/obj/docking_port/mobile/lifeboat/lifeboat2 = SSshuttle.getShuttle("lifeboat2")
+			lifeboat2.check_for_survivors()
+			lifesigns += lifeboat2.survivors
 			ai_announcement("ATTENTION: Evacuation complete. Outbound lifesigns detected: [lifesigns ? lifesigns  : "none"].", 'sound/AI/evacuation_complete.ogg')
 			evac_status = EVACUATION_STATUS_COMPLETE
 		return TRUE

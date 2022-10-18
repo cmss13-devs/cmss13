@@ -10,7 +10,7 @@
 	var/available = TRUE // can be used for evac? false if queenlocked or if in transit already
 	var/status = LIFEBOAT_INACTIVE // -1 queen locked, 0 locked til evac, 1 working
 	var/list/doors = list()
-	var/static/survivors = 0
+	var/survivors = 0
 
 /obj/docking_port/mobile/lifeboat/proc/check_for_survivors()
 	for(var/mob/living/carbon/human/survived_human as anything in GLOB.alive_human_list) //check for lifeboats survivors
@@ -54,9 +54,9 @@
 	height = 7
 
 /obj/docking_port/stationary/lifeboat_dock/on_dock_ignition(departing_shuttle)
-	var/obj/docking_port/mobile/lifeboat/docked_shuttle = departing_shuttle
-	if(istype(docked_shuttle))
-		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/door in docked_shuttle.doors)
+	var/obj/docking_port/mobile/lifeboat/lifeboat = departing_shuttle
+	if(istype(lifeboat))
+		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/door in lifeboat.doors)
 			INVOKE_ASYNC(door, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock)
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/blastdoor as anything in GLOB.lifeboat_doors)

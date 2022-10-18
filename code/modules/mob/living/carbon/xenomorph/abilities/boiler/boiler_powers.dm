@@ -155,6 +155,10 @@
 	remove_speed_buff()
 	..()
 
+/datum/action/xeno_action/onclick/shift_spits/boiler/use_ability(atom/A)
+	..()
+	apply_cooldown()
+
 /////////////////////////////// Trapper boiler powers
 
 /datum/action/xeno_action/activable/boiler_trap/use_ability(atom/A)

@@ -42,7 +42,7 @@
 	name = "Toggle Spit Type"
 	action_icon_state = "shift_spit_neurotoxin"
 	plasma_cost = 0
-	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
+	macro_path = /datum/action/xeno_action/verb/verb_toggle_gas_type
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 

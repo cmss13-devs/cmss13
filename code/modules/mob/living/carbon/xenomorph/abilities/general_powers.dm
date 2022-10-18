@@ -94,7 +94,7 @@
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state(1))
+	if(!X.check_state())
 		return
 	for(var/i in 1 to X.caste.spit_types.len)
 		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])

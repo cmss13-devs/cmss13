@@ -288,17 +288,16 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
-	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	desc = "A standard Colonial Marines M2 Pattern armor. Protects the chest and limbs from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	icon_state = "mp"
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	storage_slots = 2
+	storage_slots = 1 // has ONE small pouch :)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	flags_atom = NO_SNOW_TYPE
 	allowed = list(/obj/item/weapon/gun,
@@ -338,10 +337,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/MP/warden
 	icon_state = "warden"
 	name = "\improper M2 pattern warden MP armor"
-	desc = "A well-crafted suit of M2 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	desc = "A specialty variant of M2 Pattern Armor typically distributed to Wardens. Provides with extra protection against projectiles."
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
 	specialty = "M2 pattern warden MP"
 	item_state_slots = list(WEAR_JACKET = "warden")
@@ -362,9 +359,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/MP/WO
 	icon_state = "warrant_officer"
 	name = "\improper M2 pattern chief MP armor"
-	desc = "A well-crafted suit of M2 Pattern Armor typically distributed to Chief MPs. Useful for letting your men know who is in charge."
+	desc = "A well-crafted suit of M2 Pattern Armor typically distributed to Chief MPs. Provided with a shiny ceramic plate useful for letting your men know who is in charge."
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	specialty = "M2 pattern chief MP"
 	item_state_slots = list(WEAR_JACKET = "warrant_officer")
 
@@ -488,13 +485,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	icon_state = "L1"
 	armor_variation = 6
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	storage_slots = 2
 
 /obj/item/clothing/suit/storage/marine/light/vest
@@ -508,7 +504,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_LOW
-	armor_rad = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 1
 	time_to_unequip = 0.5 SECONDS
@@ -552,12 +548,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	icon_state = "H1"
 	armor_variation = 6
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_armor_protection = BODY_FLAG_ALL_BUT_HEAD
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
 

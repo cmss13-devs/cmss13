@@ -53,6 +53,17 @@
 	tgui_interact(user)
 	return
 
+/obj/structure/machinery/computer/overwatch/proc/update_mapview(var/close = 0)
+	if(close || !current_squad || !current_mapviewer || !Adjacent(current_mapviewer))
+		close_browser(current_mapviewer, "marineminimap")
+		current_mapviewer = null
+		return
+	var/icon/O = overlay_tacmap(TACMAP_DEFAULT)
+	if(O)
+		current_mapviewer << browse_rsc(O, "marine_minimap.png")
+		show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+
+
 //returns the helmet camera the human is wearing
 /obj/structure/machinery/computer/overwatch/proc/get_camera_from_target(mob/living/carbon/human/H)
 	if(current_squad)

@@ -420,8 +420,9 @@
 	name = "Tail Stab"
 	action_icon_state = "tail_attack"
 	ability_name = "tail stab"
-	macro_path = /datum/action/xeno_action/verb/verb_tail_stab
 	action_type = XENO_ACTION_CLICK
 	charge_time = 1 SECONDS
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
+	 /// Used for defender's tail 'stab'.
+	var/blunt_stab = FALSE

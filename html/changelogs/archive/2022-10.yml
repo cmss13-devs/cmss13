@@ -196,3 +196,17 @@
   - bugfix: Fixed ram ignoring armor.
   - bugfix: Fixed charger stomp screenshake not working
   - bugfix: Charger will now stop charging to Queens,Leaders, and Boilers.
+2022-10-18:
+  Segrain:
+  - bugfix: Tailstab keybind now actually works for boilers too.
+  Youbar:
+  - qol: Xenos can now clear several layers of snow with one click
+  carlarctg:
+  - qol: Added beer and IPA cans to gear loadouts. (You can carry up to seven!)
+  - rscadd: Defender now has a tail slam! Same thing as tail stab, but blunt.
+  harryob:
+  - bugfix: fixes some particularly ugly decals
+  - admin: you can now narrate as objects (sorry for the bloated right click menu)
+  kugamo:
+  - refactor: Refactored the resin marks, removing redundant ones, clarifying the
+      meaning of some, and adding one.

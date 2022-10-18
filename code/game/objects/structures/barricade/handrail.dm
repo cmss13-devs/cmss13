@@ -133,7 +133,7 @@
 				user.visible_message(SPAN_NOTICE("[user] takes apart [src]."),
 				SPAN_NOTICE("You take apart [src]."))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				destroy(TRUE)
+				deconstruct(TRUE)
 				return
 
 		if(BARRICADE_BSTATE_FORTIFIED)

@@ -18,12 +18,19 @@
 	return
 
 /obj/structure/largecrate/proc/unpack()
-	if(parts_type)
-		new parts_type(loc, 2)
 	for(var/obj/O in contents)
 		O.forceMove(loc)
 	playsound(src, unpacking_sound, 35)
-	qdel(src)
+	deconstruct(TRUE)
+
+/obj/structure/largecrate/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		if(parts_type)
+			new parts_type(loc, 2)
+	else
+		new /obj/item/stack/sheet/wood(loc)
+	. = ..()
+
 
 /obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))

@@ -345,7 +345,7 @@
 			G.dismantle()
 		else if(istype(acid_t, /obj/structure/window/framed))
 			var/obj/structure/window/framed/WF = acid_t
-			WF.drop_window_frame()
+			WF.deconstruct(disassembled = FALSE)
 		else if(istype(acid_t,/obj/item/explosive/plastic))
 			qdel(acid_t)
 

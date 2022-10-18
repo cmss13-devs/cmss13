@@ -144,7 +144,7 @@
 		if(!A.anchored)
 			A.forceMove(src)
 
-/obj/structure/droppod/container/destroy(deconstruct)
+/obj/structure/droppod/container/deconstruct()
 	for(var/i in contents)
 		var/atom/movable/A = i
 		A.forceMove(loc)

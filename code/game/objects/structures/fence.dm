@@ -121,11 +121,10 @@
 		SPAN_NOTICE("You start cutting away the remains of [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			new /obj/item/stack/rods(loc, 10)
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [W]."),
 			SPAN_NOTICE("You cut away the remains of [src] with [W]."))
-			qdel(src)
+			deconstruct()
 			return
 
 	if(cut) //Cut/brokn grilles can't be messed with further than this
@@ -177,6 +176,11 @@
 				health -= W.force * 0.1
 		healthcheck(1, 1, user, W)
 		..()
+
+/obj/structure/fence/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/rods(loc, 10)
+	. = ..()
 
 /obj/structure/fence/proc/cut_grille()
 	health = 0

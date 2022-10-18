@@ -54,8 +54,8 @@
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER|PASS_CRUSHER_CHARGE
 	flags_can_pass_all_temp = PASS_UNDER
 
-/obj/structure/surface/table/destroy(deconstruct)
-	if(deconstruct)
+/obj/structure/surface/table/deconstruct(disassembled = TRUE)
+	if(disassembled)
 		if(parts)
 			new parts(loc)
 	else
@@ -63,7 +63,7 @@
 			if(prob(50))
 				new /obj/item/stack/rods(loc)
 		new sheet_type(src)
-	qdel(src)
+	. = ..()
 
 /obj/structure/surface/table/proc/update_adjacent(location)
 	if(!location) location = src //location arg is used to correctly update neighbour tables when deleting a table.
@@ -78,7 +78,7 @@
 		var/mob/living/carbon/Xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
-			destroy()
+			deconstruct()
 
 /obj/structure/surface/table/Destroy()
 	var/tableloc = loc
@@ -289,7 +289,7 @@
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 			SPAN_NOTICE("You disassemble [src]."))
-			destroy(1)
+			deconstruct(1)
 		return
 
 	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
@@ -300,7 +300,7 @@
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
 			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
 				SPAN_DANGER("You slice [src] apart!"))
-			destroy()
+			deconstruct()
 		else
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
@@ -619,7 +619,7 @@
 
 /obj/structure/surface/rack/attackby(obj/item/W, mob/user, click_data)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		destroy(1)
+		deconstruct(1)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return
 	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
@@ -632,18 +632,18 @@
 		var/mob/living/carbon/Xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
-			destroy()
+			deconstruct()
 
-/obj/structure/surface/rack/destroy(deconstruct)
-	if(deconstruct)
+/obj/structure/surface/rack/deconstruct(disassembled = TRUE)
+	if(disassembled)
 		if(parts)
 			new parts(loc)
 	else
 		new /obj/item/stack/sheet/metal(loc)
 	density = 0
-	qdel(src)
+	. = ..()
 
 /obj/structure/surface/rack/ex_act(severity, direction)
 	. = ..()
 	if(.)
-		destroy(FALSE)
+		deconstruct(FALSE)

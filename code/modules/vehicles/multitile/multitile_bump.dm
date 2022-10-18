@@ -125,7 +125,7 @@
 	detach_all()
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
-	destroy()
+	deconstruct()
 	return TRUE
 
 /obj/structure/reagent_dispensers/handle_vehicle_bump(var/obj/vehicle/multitile/V)

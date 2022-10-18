@@ -40,6 +40,10 @@
 	remove_from_garbage(src)
 	GLOB.object_list -= src
 
+// object is being physically reduced into parts
+/obj/proc/deconstruct(disassembled = TRUE)
+	density = 0
+	qdel(src)
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
 

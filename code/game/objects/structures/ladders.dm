@@ -268,7 +268,7 @@
 	GLOB.hijack_bustable_windows -= src
 	return ..()
 
-/obj/structure/ladder/fragile_almayer/proc/break_and_replace()
+/obj/structure/ladder/fragile_almayer/deconstruct()
 	new /obj/structure/prop/broken_ladder(loc)
 	qdel(src)
 

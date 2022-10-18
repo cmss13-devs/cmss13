@@ -215,10 +215,14 @@
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return TRUE
 		to_chat(user, SPAN_NOTICE("You wrenched it apart!"))
-		new /obj/item/stack/sheet/metal(loc, 2)
-		qdel(src)
+
 		return TRUE
 	return FALSE
+
+/obj/structure/girder/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/sheet/metal(loc, 2)
+	. = ..()
 
 /obj/structure/girder/proc/do_wall(var/obj/item/W, var/mob/user)
 	if(!(state == STATE_WALL))

@@ -32,17 +32,16 @@
 	debris = null
 	. = ..()
 
-/obj/structure/proc/destroy(deconstruct)
+/obj/structure/deconstruct(disassembled = TRUE)
 	if(parts)
 		new parts(loc)
-	density = 0
-	qdel(src)
+	. = ..()
 
 /obj/structure/attack_animal(mob/living/user)
 	if(breakable)
 		if(user.wall_smash)
 			visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
-			destroy()
+			deconstruct()
 
 /obj/structure/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))

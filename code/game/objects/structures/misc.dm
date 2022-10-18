@@ -21,15 +21,18 @@
 
 /obj/structure/showcase/proc/explode()
 	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
-	var/turf/Tsec = get_turf(src)
+	deconstruct(FALSE)
 
-	new /obj/item/stack/sheet/metal(Tsec)
-	new /obj/item/stack/rods(Tsec)
-	new /obj/item/stack/rods(Tsec)
+/obj/structure/showcase/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		var/turf/Tsec = get_turf(src)
 
-	new /obj/effect/spawner/gibspawner/robot(Tsec)
+		new /obj/item/stack/sheet/metal(Tsec)
+		new /obj/item/stack/rods(Tsec)
+		new /obj/item/stack/rods(Tsec)
 
-	qdel(src)
+		new /obj/effect/spawner/gibspawner/robot(Tsec)
+	. = ..()
 
 /obj/structure/showcase/proc/healthcheck()
 	if(health <= 0)

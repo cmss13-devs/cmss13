@@ -373,7 +373,7 @@ export const OverwatchMonitor = (props, context) => {
   return (
     <>
       <Section
-        title="Squad Monitor"
+        title="Monitor"
         fill
         height="55%"
         scrollable
@@ -396,17 +396,6 @@ export const OverwatchMonitor = (props, context) => {
                 onSelected={(value) => setSelectedJob(value)}
                 noscroll
                 width="8em"
-                height="1.6em"
-                lineHeight="1.6em"
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <Input
-                placeholder="Search for Marine"
-                fluid
-                width="10em"
-                value={searchText}
-                onInput={(_, value) => setSearchText(value)}
                 height="1.6em"
                 lineHeight="1.6em"
               />
@@ -449,6 +438,17 @@ export const OverwatchMonitor = (props, context) => {
                 onSelected={(value) => act('choose_z', { area_picked: value })}
                 noscroll
                 width={z_hidden ? '14em' : '8em'}
+                height="1.6em"
+                lineHeight="1.6em"
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Input
+                placeholder="Search for Marine"
+                fluid
+                width="10em"
+                value={searchText}
+                onInput={(_, value) => setSearchText(value)}
                 height="1.6em"
                 lineHeight="1.6em"
               />

@@ -296,7 +296,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
                 key={record.prod_index}
                 className={classes([
                   "VendingItem",
-                  i % 2 ? "VendingFlexAlt" : undefined
+                  i % 2 ? "VendingFlexAlt" : undefined,
                 ])}
               >
                 {vendor_type === "sorted" && <VendableItem2 record={record} />}

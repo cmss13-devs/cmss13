@@ -199,6 +199,8 @@
 2022-10-18:
   Segrain:
   - bugfix: Tailstab keybind now actually works for boilers too.
+  Youbar:
+  - qol: Xenos can now clear several layers of snow with one click
   carlarctg:
   - qol: Added beer and IPA cans to gear loadouts. (You can carry up to seven!)
   - rscadd: Defender now has a tail slam! Same thing as tail stab, but blunt.

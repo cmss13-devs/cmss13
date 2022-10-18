@@ -39,7 +39,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
-/datum/action/xeno_action/activable/spray_acid/boiler // placeholder stats
+/datum/action/xeno_action/activable/spray_acid/boiler
 	plasma_cost = 40
 	xeno_cooldown = 8 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_3

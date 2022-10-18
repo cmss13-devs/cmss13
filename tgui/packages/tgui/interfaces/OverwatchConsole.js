@@ -1,3 +1,4 @@
+import { sortBy, uniqBy } from 'common/collections';
 import { useBackend, useLocalState } from '../backend';
 import { createSearch } from 'common/string';
 import { round } from 'common/math';
@@ -343,14 +344,6 @@ export const OverwatchSquad = (props, context) => {
           </Stack>
         </Stack.Item>
       </Stack>
-      <Divider hidden />
-      <Button
-        textAlign="center"
-        icon={'map'}
-        fluid
-        content={'View Tactical Map'}
-        onClick={() => act('mapview')}
-      />
     </Section>
   );
 };
@@ -367,10 +360,15 @@ export const OverwatchMonitor = (props, context) => {
     user,
   } = data;
 
-  const marine_data = Object.values(marine_list);
+  const marine_data = sortBy(
+    marine => marine.role
+  )(Object.values(marine_list) ?? []);
+  const unique_jobs = uniqBy(
+    marine => marine.role
+  )(Object.values(marine_list) ?? []);
+
   const [searchText, setSearchText] = useLocalState(context, "searchText", "");
-  let sorted = marine_data.sort(marine => marine.role);
-  logger.warn(sorted);
+  const [selectedJob, setSelectedJob] = useLocalState(context, "selectedJob", "");
 
   return (
     <>
@@ -381,6 +379,27 @@ export const OverwatchMonitor = (props, context) => {
         scrollable
         buttons={
           <Stack>
+            {selectedJob && (
+              <Stack.Item>
+                <Button
+                  icon="xmark"
+                  onClick={() => setSelectedJob(null)}
+                  selected
+                />
+              </Stack.Item>
+            )}
+            <Stack.Item>
+              <Dropdown
+                options={unique_jobs.map(marine => marine.role)}
+                disabled={operator !== user}
+                displayText={"Select Role"}
+                onSelected={(value) => setSelectedJob(value)}
+                noscroll
+                width="8em"
+                height="1.6em"
+                lineHeight="1.6em"
+              />
+            </Stack.Item>
             <Stack.Item>
               <Input
                 placeholder="Search for Marine"
@@ -450,6 +469,9 @@ export const OverwatchMonitor = (props, context) => {
                 </Table.Row>
                 {marine_data?.filter((marine) => !marine?.filtered)
                   .filter(searchFor(searchText))
+                  .filter((marine) => marine?.role === selectedJob
+                  || selectedJob === null
+                  || !selectedJob)
                   .map((marine_data) => (
                     <Table.Row key={marine_data}>
                       <Table.Cell textAlign="center">
@@ -694,7 +716,6 @@ export const OverwatchBomb = (props, context) => {
 
   const [bomb_x, setTargetX] = useLocalState(context, 'bomb_x', x_bomb);
   const [bomb_y, setTargetY] = useLocalState(context, 'bomb_y', y_bomb);
-  logger.warn(bombardment);
 
   const bombardment_enabled
     = bombardment <= 0

@@ -128,10 +128,10 @@
 	unacidable = TRUE
 	unslashable = TRUE
 
-	ex_act(severity)
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/ex_act(severity)
 		return
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/C as obj, mob/user as mob)
-	if(HAS_TRAIT(C, TRAIT_TOOL_CROWBAR))
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/attacking_item, mob/user)
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 		return
 	..()

@@ -206,3 +206,6 @@
   - rscadd: Defender now has a tail slam! Same thing as tail stab, but blunt.
   harryob:
   - bugfix: fixes some particularly ugly decals
+  kugamo:
+  - refactor: Refactored the resin marks, removing redundant ones, clarifying the
+      meaning of some, and adding one.

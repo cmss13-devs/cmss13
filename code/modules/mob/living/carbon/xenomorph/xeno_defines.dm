@@ -996,72 +996,65 @@
 	return ..()
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
+//Defines at the bottom of this list here will show up at the top in the mark menu
 /datum/xeno_mark_define
 	var/name = "xeno_declare"
 	var/icon_state = "empty"
 	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
 
-/datum/xeno_mark_define/attack
-	name = "Attack"
-	desc = "Attack the enemy here!"
-	icon_state = "attack"
-
-/datum/xeno_mark_define/defend
-	name = "Defend"
-	desc = "Defend the hive here!"
-	icon_state = "defend"
-
-/datum/xeno_mark_define/flank
-	name = "Flank"
-	desc = "Flank the enemy here!"
-	icon_state = "flank"
+/datum/xeno_mark_define/fortify
+	name = "Fortify"
+	desc = "Fortify this area!"
+	icon_state = "fortify"
 
 /datum/xeno_mark_define/weeds
 	name = "Need Weeds"
 	desc = "Need weeds here!"
 	icon_state = "weed"
 
-/datum/xeno_mark_define/hold
-	name = "Hold"
-	desc = "Hold this area!"
-	icon_state = "hold"
-
 /datum/xeno_mark_define/nest
 	name = "Nest"
 	desc = "Nest enemies here!"
 	icon_state = "nest"
 
-/datum/xeno_mark_define/rally
-	name = "Rally"
-	desc = "Group up here!"
-	icon_state = "rally"
+/datum/xeno_mark_define/hosts
+	name = "Hosts"
+	desc = "Hosts here!"
+	icon_state = "hosts"
 
-/datum/xeno_mark_define/help
-	name = "Help"
-	desc = "Need help here!"
-	icon_state = "help"
+/datum/xeno_mark_define/aide
+	name = "Aide"
+	desc = "Aide here!"
+	icon_state = "aide"
 
-/datum/xeno_mark_define/missing
-	name = "Missing Enemy"
-	desc = "The enemy is missing!"
-	icon_state = "enemy_missing"
+/datum/xeno_mark_define/defend
+	name = "Defend"
+	desc = "Defend the hive here!"
+	icon_state = "defend"
 
 /datum/xeno_mark_define/danger
 	name = "Danger Warning"
 	desc = "Caution, danger here!"
 	icon_state = "danger"
 
-/datum/xeno_mark_define/fire
-	name = "Fire Warning"
-	desc = "Caution, fire here!"
-	icon_state = "warn_fire"
+/datum/xeno_mark_define/rally
+	name = "Rally"
+	desc = "Group up here!"
+	icon_state = "rally"
 
-/datum/xeno_mark_define/explosive
-	name = "Explosives Warning"
-	desc = "Caution, explosives here!"
-	icon_state = "warn_explosive"
+/datum/xeno_mark_define/hold
+	name = "Hold"
+	desc = "Hold this area!"
+	icon_state = "hold"
 
-/datum/xeno_mark_define/structure
-	name = "Structures Warning"
-	desc = "Caution, structures here!"
-	icon_state = "warn_structure"
+/datum/xeno_mark_define/ambush
+	name = "Ambush"
+	desc = "Ambush the enemy here!"
+	icon_state = "ambush"
+/datum/xeno_mark_define/attack
+	name = "Attack"
+	desc = "Attack the enemy here!"
+	icon_state = "attack"
+
+
+

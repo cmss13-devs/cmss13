@@ -206,6 +206,7 @@
   - rscadd: Defender now has a tail slam! Same thing as tail stab, but blunt.
   harryob:
   - bugfix: fixes some particularly ugly decals
+  - admin: you can now narrate as objects (sorry for the bloated right click menu)
   kugamo:
   - refactor: Refactored the resin marks, removing redundant ones, clarifying the
       meaning of some, and adding one.

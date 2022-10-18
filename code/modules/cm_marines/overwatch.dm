@@ -499,7 +499,7 @@
 	"alive" = alive_squad_members,
 	)
 
-	return squad_data
+	return(squad_data)
 
 /obj/structure/machinery/computer/overwatch/proc/get_marine_data(datum/squad/squad)
 	var/list/marines_list = squad.marines_list
@@ -550,7 +550,7 @@
 			"SSD" = !current_squaddie.key || !current_squaddie.client && current_squaddie.stat != DEAD
 			)
 
-	return marines_list
+	return(marines_list)
 
 /obj/structure/machinery/computer/overwatch/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -592,7 +592,7 @@
 	var/obj/structure/closet/crate/drop_closet = locate() in current_squad?.drop_pad.loc
 	data["supply_ready"] = drop_closet ? TRUE : FALSE
 
-	return data
+	return(data)
 
 /obj/structure/machinery/computer/overwatch/ui_close(mob/user)
 	. = ..()

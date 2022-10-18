@@ -16,7 +16,7 @@
 	use_power = 1
 	idle_power_usage = 5
 	active_power_usage = 100
-	var/obj/effect/overlay/hologram//The projection itself. If there is one, the instrument is on, off otherwise.
+	var/obj/effect/overlay/hologram //The projection itself. If there is one, the instrument is on, off otherwise.
 
 /obj/structure/machinery/hologram/ex_act(severity)
 	switch(severity)

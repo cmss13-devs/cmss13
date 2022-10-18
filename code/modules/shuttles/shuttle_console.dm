@@ -501,7 +501,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	return 0
 
 /obj/structure/machinery/computer/shuttle_control/ex_act(severity)
-	if(unacidable) return //unacidable shuttle consoles are also immune to explosions.
+	if(unacidable)
+		return //unacidable shuttle consoles are also immune to explosions.
 	..()
 
 

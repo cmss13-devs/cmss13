@@ -20,7 +20,7 @@
 	throwpass = 1	//You can throw objects over this, despite it's density.")
 	climbable = 1
 	breakable = 1
-	parts = /obj/item/frame/table
+	var/parts = /obj/item/frame/table
 	debris = list(/obj/item/frame/table)
 
 	var/sheet_type = /obj/item/stack/sheet/metal
@@ -289,7 +289,7 @@
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 			SPAN_NOTICE("You disassemble [src]."))
-			deconstruct(1)
+			deconstruct(TRUE)
 		return
 
 	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
@@ -593,7 +593,7 @@
 	breakable = 1
 	climbable = 1
 	health = 100
-	parts = /obj/item/frame/rack
+	var/parts = /obj/item/frame/rack
 	debris = list(/obj/item/frame/rack)
 
 /obj/structure/surface/rack/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -619,7 +619,7 @@
 
 /obj/structure/surface/rack/attackby(obj/item/W, mob/user, click_data)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		deconstruct(1)
+		deconstruct(TRUE)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return
 	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))

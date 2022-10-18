@@ -36,7 +36,7 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		unpack()
 		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), \
-							 SPAN_NOTICE("You pry open \the [src]."))
+							SPAN_NOTICE("You pry open \the [src]."))
 	else
 		return attack_hand(user)
 

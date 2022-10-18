@@ -160,12 +160,12 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			src.isbroken=1
 			if(prob(50))
-				qdel(src)
+				deconstruct(FALSE)
 			else
 				src.update_icon() //can't place it above the return and outside the if-else. or we might get runtimes of null.update_icon() if(prob(50)) goes in.
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 	return
 

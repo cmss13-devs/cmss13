@@ -304,7 +304,7 @@
 /obj/structure/window/proc/shatter_window(create_debris)
 	if(create_debris)
 		handle_debris()
-	qdel(src)
+	deconstruct(FALSE)
 
 /obj/structure/window/clicked(mob/user, list/mods)
 	if(mods["alt"])

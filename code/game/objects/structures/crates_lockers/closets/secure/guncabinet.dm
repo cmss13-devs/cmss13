@@ -62,10 +62,8 @@
 
 /obj/structure/closet/secure_closet/guncabinet/ex_act(severity)
 	if(severity > EXPLOSION_THRESHOLD_MEDIUM)
-		for(var/atom/movable/A in contents)//pulls everything out of the locker and hits it with an explosion
-			A.forceMove(loc)
-			A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
-		qdel(src)
+		contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
+		deconstruct(FALSE)
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory
 //	req_access = list(ACCESS_MARINE_BRIG)

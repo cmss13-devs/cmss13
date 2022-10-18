@@ -47,18 +47,15 @@
 			if (prob(50))
 				for(var/obj/item/book/b in contents)
 					b.forceMove((get_turf(src)))
-				qdel(src)
+				deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			for(var/obj/item/book/b in contents)
-				if (prob(50)) b.forceMove((get_turf(src)))
-				else qdel(b)
-			qdel(src)
+			contents_explosion(severity)
+			deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			for(var/obj/item/book/b in contents)
-				qdel(b)
-			qdel(src)
+			contents_explosion(severity)
+			deconstruct(FALSE)
 			return
 		else
 	return

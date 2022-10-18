@@ -31,12 +31,12 @@
 		user.put_in_active_hand(gift)
 		gift.add_fingerprint(user)
 	else
-		to_chat(user, SPAN_NOTICE(" The gift was empty!"))
-	qdel(src)
+		to_chat(user, SPAN_NOTICE("The gift was empty!"))
+	deconstruct(TRUE)
 	return
 
 /obj/item/a_gift/ex_act()
-	qdel(src)
+	deconstruct(FALSE)
 	return
 
 /obj/effect/spresent/relaymove(mob/user)

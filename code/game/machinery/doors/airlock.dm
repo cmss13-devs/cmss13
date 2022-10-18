@@ -116,16 +116,12 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 // no, i don't know why this provides stuff if you shoot it apart vs disassembling
 /obj/structure/machinery/door/airlock/deconstruct(disassembled = TRUE)
-	if(!src)
-		return
-
 	if(!disassembled)
-		var/turf/T = get_turf(src)
 		if(width == 1)
-			new /obj/item/stack/rods(T)
-			new /obj/item/stack/cable_coil/cut(T)
-			new /obj/effect/spawner/gibspawner/robot(T)
-			new /obj/effect/decal/cleanable/blood/oil(T)
+			new /obj/item/stack/rods(loc)
+			new /obj/item/stack/cable_coil/cut(loc)
+			new /obj/effect/spawner/gibspawner/robot(loc)
+			new /obj/effect/decal/cleanable/blood/oil(loc)
 		else // big airlock, big debris
 			for(var/turf/DT in locs) // locs = covered by airlock bounding box
 				new /obj/item/stack/rods(DT)

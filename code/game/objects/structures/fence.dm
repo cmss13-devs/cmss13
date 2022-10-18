@@ -49,10 +49,8 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			health -= severity/2
 			healthcheck(0, 1)
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			qdel(src)
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src) //Nope
+		if(EXPLOSION_THRESHOLD_LOW to INFINITY)
+			deconstruct(TRUE)
 
 /obj/structure/fence/hitby(atom/movable/AM)
 	..()

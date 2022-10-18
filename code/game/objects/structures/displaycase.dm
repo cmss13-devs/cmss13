@@ -21,11 +21,14 @@
 				src.health -= 15
 				src.healthcheck()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			new /obj/item/shard( src.loc )
-			if (occupied)
-				occupied = 0
-			qdel(src)
+			deconstruct(FALSE)
 
+/obj/structure/displaycase/deconstruct(disassemble = TRUE)
+	if(!disassemble)
+		new /obj/item/shard(src.loc)
+	if (occupied)
+		occupied = 0
+	. = ..()
 
 /obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.ammo.damage

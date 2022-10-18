@@ -107,7 +107,7 @@
 			if(prob(50))
 				INVOKE_ASYNC(src, .proc/malfunction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 
 /obj/structure/machinery/vending/proc/select_gamemode_equipment(gamemode)
 	return

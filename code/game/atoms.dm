@@ -200,8 +200,13 @@ directive is properly returned.
 /atom/proc/relaymove()
 	return
 
-/atom/proc/ex_act()
-	return
+/atom/proc/contents_explosion(severity)
+	for(var/atom/A in contents)
+		A.ex_act(severity)
+		CHECK_TICK
+
+/atom/proc/ex_act(severity)
+	contents_explosion(severity)
 
 /atom/proc/fire_act()
 	return

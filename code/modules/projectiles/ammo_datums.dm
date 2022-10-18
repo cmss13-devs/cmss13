@@ -2335,7 +2335,6 @@
 	accuracy = HIT_ACCURACY_TIER_8*2
 	max_range = 12
 
-
 /datum/ammo/xeno/toxin
 	name = "neurotoxic spit"
 	damage_falloff = 0

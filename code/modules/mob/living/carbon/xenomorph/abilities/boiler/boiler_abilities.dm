@@ -74,11 +74,9 @@
 	// List of types of actions to place on 20-second CD
 	// if you ever want to subtype this for a strain or whatever, just change this var on the subtype
 	var/action_types_to_cd = list(
-		/datum/action/xeno_action/activable/corrosive_acid/strong,
-		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
-		/datum/action/xeno_action/onclick/shift_spits, //2nd macro
-		/datum/action/xeno_action/onclick/dump_acid, //3rd macro
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
+		/datum/action/xeno_action/activable/xeno_spit/bombard,
+		/datum/action/xeno_action/onclick/dump_acid,
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
 		/datum/action/xeno_action/activable/spray_acid/boiler)
 
 //////////////////////////// Trapper boiler abilities

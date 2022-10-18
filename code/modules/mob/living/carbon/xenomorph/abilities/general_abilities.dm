@@ -46,7 +46,6 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
-
 /datum/action/xeno_action/onclick/shift_spits/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())

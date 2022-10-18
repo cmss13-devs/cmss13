@@ -196,3 +196,6 @@
   - bugfix: Fixed ram ignoring armor.
   - bugfix: Fixed charger stomp screenshake not working
   - bugfix: Charger will now stop charging to Queens,Leaders, and Boilers.
+2022-10-18:
+  harryob:
+  - bugfix: fixes some particularly ugly decals

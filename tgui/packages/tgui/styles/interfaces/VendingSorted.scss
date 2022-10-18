@@ -4,18 +4,9 @@
 
 $title-text-color: base.$color-fg !default;
 
-$button-bg-opacity: 0.1;
+$button-bg-opacity: 0.25;
 $recommended-color: #3a9b52;
 $mandatory-color: rgb(128, 83, 0);
-
-
-.VendingSorted__HideDesc {
-  pointer-events: none;
-}
-
-.VendingSorted__ShowDesc {
-  pointer-events: all;
-}
 
 .VendingSorted__Description {
   position: absolute;
@@ -31,7 +22,6 @@ $mandatory-color: rgb(128, 83, 0);
   display: inline-block;
   width: 79vw;
   height: 36%;
-  border: 1px solid red;
   margin-top: -36px;
   vertical-align: middle;
 }
@@ -50,7 +40,7 @@ $mandatory-color: rgb(128, 83, 0);
 }
 
 .VendingSorted__Tooltip {
-  width: 100%
+  width: 100%;
 }
 
 .VendingSorted__SearchBox {
@@ -70,7 +60,11 @@ $mandatory-color: rgb(128, 83, 0);
 }
 
 .VendingSorted__CategorySection {
-  width: 100%
+  width: 100%;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .VendingSorted__Category {
@@ -82,35 +76,37 @@ $mandatory-color: rgb(128, 83, 0);
   color: white;
 }
 
-.VendingSorted__VendButton {
-  height: 18px;
-  line-height: 18px;
-  text-align: center;
-
-  .Button__content {
-    align-self: flex-start;
-    text-align: left;
+.theme-weyland {
+  .VendingSorted__SuperVendButton {
+    background-color: rgba(#ffffff, $button-bg-opacity);
+    transition: none;
+    .Button__content {
+      color: #ffffff;
+      mix-blend-mode: difference;
+      text-shadow: 2px 2px #444444;
+    }
   }
 }
 
 .VendingSorted__SuperVendButton {
   width: 100%;
-  height: 24px;
-  text-align: left;
   display:block;
-  font-size: 14px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: base.em(14px);
+  font-weight: bold;
   background-color: rgba(colors.$primary, $button-bg-opacity);
-  border: 1px solid colors.$primary;
-  pointer-events: auto;
+  border: 2px solid colors.$primary;
   display: block;
-
   &:hover,
   &:focus {
     transition: colors.$primary 0ms, background-color 0ms;
     background-color: colors.$primary;
+  }
+
+  .Button__content {
+    align-self: flex-start;
+    text-align: left;
+    margin-top: -2px;
+    margin-bottom: -1px;
   }
 }
 
@@ -138,12 +134,19 @@ $mandatory-color: rgb(128, 83, 0);
 }
 
 .VendingFlexAlt {
-  background-color: #000000;
+  background-color: rgba(#000000, 0.6);
+}
+
+.VendingItem {
+  margin: 0;
 }
 
 .VendingSorted__Icon {
   min-width: 32px;
   max-width: 32px;
+  max-height: 32px;
+  margin-top: -6px;
+  margin-bottom: -6px;
 }
 
 .VendingSorted__Text {
@@ -172,7 +175,7 @@ $mandatory-color: rgb(128, 83, 0);
 }
 
 .VendingSorted__Spacer {
-  width: 15px
+  width: 15px;
 }
 
 

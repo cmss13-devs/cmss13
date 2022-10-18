@@ -17,6 +17,7 @@
 	evolution_allowed = FALSE
 	caste_desc = "A builder of really big hives."
 	deevolves_to = list(XENO_CASTE_DRONE)
+	evolves_to = list(XENO_CASTE_GUARDIAN)
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 2

@@ -144,7 +144,7 @@
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
-		
+
 	src.transfer_observers_to(new_xeno)
 
 	qdel(src)
@@ -292,6 +292,8 @@
 			xeno_type = /mob/living/carbon/Xenomorph/Defender
 		if(XENO_CASTE_BURROWER)
 			xeno_type = /mob/living/carbon/Xenomorph/Burrower
+		if(XENO_CASTE_GUARDIAN)
+			xeno_type = /mob/living/carbon/Xenomorph/Guardian
 
 	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 
@@ -321,9 +323,9 @@
 	if(round_statistics && !new_xeno.statistic_exempt)
 		round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
-	
+
 	src.transfer_observers_to(new_xeno)
-	
+
 	qdel(src)
 
 /mob/living/carbon/Xenomorph/proc/can_evolve(castepick, potential_queens)

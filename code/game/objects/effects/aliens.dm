@@ -541,3 +541,61 @@
 	trap.reduce_cooldown(total_hits*4 SECONDS)
 
 	return ..()
+
+/obj/effect/xenomorph/acid_delay
+	name = "???"
+	desc = ""
+	icon_state = "boiler_bombard"
+	mouse_opacity = 0
+
+	var/blinded = 2
+	var/message = null
+	var/mob/living/carbon/Xenomorph/linked_xeno = null
+	var/hivenumber = XENO_HIVE_NORMAL
+	var/empowered = FALSE
+	var/effect_amt = 2
+
+/obj/effect/xenomorph/acid_delay/New(loc, blinded = 2, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
+	..(loc)
+
+	addtimer(CALLBACK(src, .proc/die), delay)
+	src.blinded = blinded
+	src.message = message
+	src.linked_xeno = linked_xeno
+	if(src.linked_xeno)
+		hivenumber = src.linked_xeno.hivenumber
+
+/obj/effect/xenomorph/acid_delay/proc/deal_damage()
+	for (var/mob/living/carbon/H in loc)
+		if (H.stat == DEAD)
+			continue
+
+		if(H.ally_of_hivenumber(hivenumber))
+			continue
+
+		animation_flash_color(H)
+
+		H.eye_blurry = max(H.eye_blurry, effect_amt)
+		H.eye_blind = max(H.eye_blind, effect_amt)
+
+		if (message)
+			to_chat(H, SPAN_XENODANGER(message))
+
+		. = TRUE
+
+/obj/effect/xenomorph/acid_delay/proc/die()
+	deal_damage()
+	qdel(src)
+
+/obj/effect/xenomorph/acid_delay/guardian_landmine
+
+/obj/effect/xenomorph/acid_delay/guardian_landmine/deal_damage()
+
+	for (var/mob/living/carbon/H in loc)
+		if (H.stat == DEAD)
+			continue
+
+		if(H.ally_of_hivenumber(hivenumber))
+			continue
+
+	return ..()

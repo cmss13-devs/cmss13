@@ -73,6 +73,10 @@
 		to_chat(src, SPAN_WARNING("You have to be next to your target."))
 		return
 
+	if(isSynth(T))
+		to_chat(src, SPAN_WARNING("You would break your tools if you did this."))
+		return
+
 	if(isXenoLarva(T))
 		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
 		return

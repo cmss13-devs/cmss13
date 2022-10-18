@@ -90,7 +90,7 @@ var/list/admin_verbs_sounds = list(
 	/client/proc/stop_sound,
 	/client/proc/cmd_admin_vox_panel
 )
-var/list/admin_verbs_mievent = list(
+var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_change_custom_event,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
@@ -112,7 +112,7 @@ var/list/admin_verbs_mievent = list(
 	/client/proc/toggle_lz_protection, //Mortar hitting LZ
 	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
 )
-var/list/admin_verbs_mjevent = list(
+var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/cmd_admin_dress_all,
 	/client/proc/free_all_mobs_in_view,
@@ -346,10 +346,10 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, admin_verbs_ban)
 		add_verb(src, admin_verbs_teleport)
 	if(CLIENT_HAS_RIGHTS(src, R_EVENT))
-		add_verb(src, admin_verbs_mievent)
+		add_verb(src, admin_verbs_minor_event)
 	if(CLIENT_HAS_RIGHTS(src, R_ADMIN))
 		add_verb(src, admin_verbs_admin)
-		add_verb(src, admin_verbs_mjevent)
+		add_verb(src, admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		add_verb(src, /client/proc/cmd_mentor_say)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
@@ -383,8 +383,8 @@ var/list/roundstart_mod_verbs = list(
 		/client/proc/togglebuildmodeself,
 		admin_verbs_admin,
 		admin_verbs_ban,
-		admin_verbs_mievent,
-		admin_verbs_mjevent,
+		admin_verbs_minor_event,
+		admin_verbs_major_event,
 		admin_verbs_server,
 		admin_verbs_debug,
 		admin_verbs_debug_advanced,

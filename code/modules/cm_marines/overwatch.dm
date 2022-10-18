@@ -609,14 +609,6 @@
 
 	switch(action)
 
-		if("mapview")
-			if(current_mapviewer)
-				update_mapview(1)
-				return TRUE
-			current_mapviewer = usr
-			update_mapview()
-			return TRUE
-
 		if("change_operator")
 			if(operator && ishighersilicon(operator))
 				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("AI override in progress. Access denied.")]")

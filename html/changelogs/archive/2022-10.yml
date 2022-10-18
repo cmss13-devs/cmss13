@@ -197,6 +197,8 @@
   - bugfix: Fixed charger stomp screenshake not working
   - bugfix: Charger will now stop charging to Queens,Leaders, and Boilers.
 2022-10-18:
+  Segrain:
+  - bugfix: Tailstab keybind now actually works for boilers too.
   carlarctg:
   - qol: Added beer and IPA cans to gear loadouts. (You can carry up to seven!)
   - rscadd: Defender now has a tail slam! Same thing as tail stab, but blunt.

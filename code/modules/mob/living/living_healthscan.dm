@@ -372,8 +372,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"colour" = "purple"
 						))
-					if(!chemical_lists["inaprovaline"])
-						if(chemicals_lists["inaprovaline"]["amount"] < "don't know what to put here")
+					if(!chemicals_lists["inaprovaline"])
+						if(chemicals_lists["inaprovaline"]["amount"] < 30)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -388,8 +388,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"colour" = "white"
 						))
-					if(!checmicals_lists["tramadol"])
-						if(chemicals_lists["tramadol"]["amount"] < 30)
+					if(!chemicals_lists["tramadol"])
+						if(chemicals_lists["tramadol"]["amount"] < 15)
 							advice += temp_advice
 					else
 						advice += temp_advice

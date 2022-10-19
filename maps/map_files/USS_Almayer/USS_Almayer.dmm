@@ -60885,6 +60885,9 @@
 	pixel_x = 8;
 	pixel_y = 7
 	},
+/obj/item/clothing/head/soft/ferret{
+	pixel_x = -7
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

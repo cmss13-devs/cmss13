@@ -15673,6 +15673,9 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
+/obj/item/clothing/head/soft/ferret{
+	pixel_y = 7
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -34913,6 +34916,16 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/civres)
+"uSY" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/vehicle/powerloader/ft,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/power_ring)
 "uTi" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -82213,7 +82226,7 @@ puE
 kmB
 sOp
 mxQ
-uLr
+uSY
 tUs
 jYd
 cNn

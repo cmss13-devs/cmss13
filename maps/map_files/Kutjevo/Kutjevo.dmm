@@ -1224,6 +1224,9 @@
 /area/kutjevo/interior/complex/botany)
 "bHo" = (
 /obj/structure/bed/sofa/south/grey/right,
+/obj/item/clothing/head/soft/ferret{
+	pixel_y = -9
+	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "bHA" = (

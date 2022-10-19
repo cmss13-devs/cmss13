@@ -211,6 +211,9 @@
   - refactor: Refactored the resin marks, removing redundant ones, clarifying the
       meaning of some, and adding one.
 2022-10-19:
+  BlackCrystalic, Ghostsheet, ihatethisengine, Firartix, nauticall:
+  - expansion: Lifeboats have been given functionality and can now be used without
+      staff intervention.
   Monkeysfist:
   - rscadd: Added a hidden Ferret trucker cap to each map
   - imageadd: Added Ferret loaders

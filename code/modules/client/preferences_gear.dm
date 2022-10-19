@@ -192,15 +192,15 @@ var/global/list/gear_datums = list()
 	cost = 2
 	slot = WEAR_EYES
 
-/datum/gear/cmgogglesblk
+/datum/gear/cmgogglesblack
 	display_name = "Ballistic Goggles (Black)"
-	path = /obj/item/clothing/glasses/mgoggles/blk
+	path = /obj/item/clothing/glasses/mgoggles/black
 	cost = 2
 	slot = WEAR_EYES
 
-/datum/gear/cmgogglesorg
+/datum/gear/cmgogglesorange
 	display_name = "Ballistic Goggles (Orange)"
-	path = /obj/item/clothing/glasses/mgoggles/org
+	path = /obj/item/clothing/glasses/mgoggles/orange
 	cost = 2
 	slot = WEAR_EYES
 

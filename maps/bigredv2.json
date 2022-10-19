@@ -2,6 +2,7 @@
     "map_name": "Solaris Ridge",
     "map_path": "map_files/BigRed",
     "map_file": "BigRed.dmm",
+    "weather_holder": "/datum/weather_ss_map_holder/big_red",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/solaris",
         "/datum/equipment_preset/survivor/doctor/solaris",

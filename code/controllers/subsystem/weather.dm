@@ -141,7 +141,7 @@ SUBSYSTEM_DEF(weather)
 			for(var/area/subarea as anything in area.related)
 				subarea.overlays += curr_master_turf_overlay
 
-	update_mobs()
+	update_mobs_weather()
 	controller_state_lock = FALSE
 
 // Adjust our state to indicate that the weather event that WAS running is over
@@ -174,14 +174,15 @@ SUBSYSTEM_DEF(weather)
 		weather_event_instance = null
 
 	is_weather_event = FALSE
-	update_mobs()
+	update_mobs_weather()
 	controller_state_lock = FALSE
 	last_event_end_time = world.time
 
-/datum/controller/subsystem/weather/proc/update_mobs()
-	// Update weather for living mobs
-	for(var/mob/living/L as anything in GLOB.living_mob_list)
-		L.update_weather()
+/datum/controller/subsystem/weather/proc/update_mobs_weather()
+	for(var/mob/mob as anything in GLOB.living_mob_list)
+		mob?.client?.soundOutput?.update_ambience(null, null, TRUE)
+		if(!is_weather_event)
+			mob.clear_fullscreen("weather")
 
 /obj/effect/weather_vfx_holder
 	name = "weather vfx holder"

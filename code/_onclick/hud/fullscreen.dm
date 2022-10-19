@@ -169,14 +169,14 @@
 	show_when_dead = TRUE
 
 
-/atom/movable/screen/fullscreen/weather/snow
-	icon_state = "test state"
+/atom/movable/screen/fullscreen/weather/low
+	icon_state = "impairedoverlay1"
 
-/atom/movable/screen/fullscreen/weather/snowstorm
-	icon_state = "impairedoverlay1" // Populate this
+/atom/movable/screen/fullscreen/weather/medium
+	icon_state = "impairedoverlay2"
 
-/atom/movable/screen/fullscreen/weather/blizzard
-	icon_state = "impairedoverlay2" // Populate this
+/atom/movable/screen/fullscreen/weather/high
+	icon_state = "impairedoverlay3"
 
 /atom/movable/screen/fullscreen/lighting_backdrop
 	icon = 'icons/mob/hud/screen1.dmi'

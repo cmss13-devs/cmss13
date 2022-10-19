@@ -8,6 +8,8 @@
 	..()
 
 	handle_fire() //Check if we're on fire
+	if(SSweather.is_weather_event)
+		handle_weather(delta_time)
 
 /mob/living/carbon/Destroy()
 	QDEL_NULL_LIST(internal_organs)

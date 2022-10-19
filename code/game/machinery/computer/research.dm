@@ -85,18 +85,24 @@
 		return
 	tgui_interact(user)
 
+/obj/structure/machinery/computer/research/ui_static_data(mob/user)
+	var/list/data = list(
+		"base_purchase_cost" = base_purchase_cost,
+		"main_terminal" = main_terminal,
+		"terminal_view" = TRUE,
+	)
+	return data
+
 /obj/structure/machinery/computer/research/ui_data(mob/user)
 	var/list/data = list(
 		"rsc_credits" = chemical_data.rsc_credits,
 		"clearance_level" = chemical_data.clearance_level,
 		"broker_cost" = max(RESEARCH_LEVEL_INCREASE_MULTIPLIER*(chemical_data.clearance_level + 1), 1),
-		"base_purchase_cost" = base_purchase_cost,
 		"research_documents" = chemical_data.research_documents,
 		"published_documents" = chemical_data.research_publications,
-		"main_terminal" = main_terminal,
-		"terminal_view" = TRUE,
 		"clearance_x_access" = chemical_data.clearance_x_access,
-		"photocopier_error" = photocopier == null
+		"photocopier_error" = !photocopier,
+		"printer_toner" = photocopier?.toner
 	)
 	return data
 
@@ -125,7 +131,6 @@
 			return
 		if ("print")
 			if(!photocopier)
-				to_chat(user, SPAN_WARNING("ERROR: no linked printer found."))
 				return
 			if(photocopier.toner)
 				var/print_type = params["print_type"]
@@ -138,13 +143,8 @@
 					printing.info = report.info
 					printing.data = report.data
 					printing.completed = report.completed
-			else
-				to_chat(usr, SPAN_WARNING("Printer toner is empty."))
 		if("broker_clearance")
 			if(!photocopier)
-				to_chat(user, SPAN_WARNING("ERROR: no linked printer found."))
-				return
-			if(alert(usr,"The CL can swipe their ID card on the console to increase clearance for free, given enough DEFCON. Are you sure you want to spend research credits to increase the clearance immediately?","Warning","Yes","No") != "Yes")
 				return
 			if(chemical_data.clearance_level < 5)
 				var/cost = max(RESEARCH_LEVEL_INCREASE_MULTIPLIER*(chemical_data.clearance_level + 1), 1)
@@ -168,13 +168,8 @@
 							if(5)
 								new /obj/item/paper/research_notes/unique/tier_five/(photocopier.loc)
 								max_clearance = 5
-				else
-					to_chat(usr, SPAN_WARNING("Insufficient funds."))
-			else
-				to_chat(usr, SPAN_WARNING("Higher authorization is required to increase the clearance level further."))
 		if("purchase_document")
 			if(!photocopier)
-				to_chat(user, SPAN_WARNING("ERROR: no linked printer found."))
 				return
 			var/purchase_tier = text2num(params["purchase_document"])
 			if(purchase_tier <= 0 || purchase_tier > 5)
@@ -195,8 +190,6 @@
 					else
 						N = new /obj/item/paper/research_notes/unique/tier_five/(photocopier.loc)
 				visible_message(SPAN_NOTICE("Research report for [N.data.name] has been purchased."))
-			else
-				to_chat(usr, SPAN_WARNING("Insufficient funds."))
 		if("publish_document")
 			var/print_type = params["print_type"]
 			var/print_title = params["print_title"]
@@ -205,12 +198,10 @@
 				to_chat(usr, SPAN_WARNING("Report data corrupted. Unable to transmit."))
 				return
 			chemical_data.publish_document(report, print_type, print_title)
-			to_chat(usr, SPAN_NOTICE("Published [report.name]."))
 		if("unpublish_document")
 			var/print_title = params["print_title"]
 			var/print_type = params["print_type"]
-			if(chemical_data.unpublish_document(print_type, print_title))
-				to_chat(usr, SPAN_NOTICE("Removed the publication for [print_title]."))
+			chemical_data.unpublish_document(print_type, print_title)
 		if("request_clearance_x_access")
 			var/purchase_cost = 5
 			if(alert(usr,"Are you sure you wish request clearance level X access for [purchase_cost] credits?","Warning","Yes","No") != "Yes")
@@ -220,7 +211,5 @@
 				chemical_data.reached_x_access = TRUE
 				chemical_data.update_credits(purchase_cost * -1)
 				visible_message(SPAN_NOTICE("Clearance Level X Acquired."))
-			else
-				to_chat(usr, SPAN_WARNING("Insufficient funds."))
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)
 

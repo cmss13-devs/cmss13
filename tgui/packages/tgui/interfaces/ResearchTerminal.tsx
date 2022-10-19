@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Stack, Section, Flex, Tabs, Box } from '../components';
+import { Button, Stack, Section, Flex, Tabs, Box, Icon } from '../components';
 import { Window } from '../layouts';
 import { logger } from '../logging';
 import { Table, TableCell, TableRow } from '../components/Table';
@@ -17,6 +17,8 @@ interface TerminalProps {
   "main_terminal": number;
   "terminal_view": number;
   "clearance_x_access": number;
+  "photocopier_error": number;
+  "printer_toner": number;
 }
 
 const PurchaseDocs = (_, context) => {
@@ -27,6 +29,7 @@ const PurchaseDocs = (_, context) => {
   const costs = { "1": 7, "2": 9, "3": 11, "4": 13, "5": 15 };
   const available_levels = Array.from(Array(clearance_level).keys())
     .map(x => (x + 1).toString());
+
   return (
     <Stack vertical>
       <Stack.Item>
@@ -35,16 +38,21 @@ const PurchaseDocs = (_, context) => {
       <hr className="sep" />
       <Stack.Item>
         <Flex justify="space-between" fill className="purchase-flex">
-          {all_levels.map(x => (
-            <Flex.Item key={x}>
-              <Button
-                className={classes(["DoButton", !available_levels.includes(x) && "HiddenButton"])}
-                disabled={!available_levels.includes(x)}
-                onClick={() => setPurchaseSelection(x)}
-              >
-                Level {x} {costs[x]}CR
-              </Button>
-            </Flex.Item>))}
+          {all_levels.map(x => {
+            const isDisabled = (!available_levels.includes(x)) || costs[x] > data.rsc_credits;
+            return (
+              <Flex.Item key={x}>
+                <Button
+                  className={classes([
+                    "DoButton",
+                    !available_levels.includes(x) && "HiddenButton",
+                    isDisabled && "DoButton-disabled",])}
+                  disabled={isDisabled}
+                  onClick={() => setPurchaseSelection(x)}
+                >
+                  Level {x} {costs[x]}CR
+                </Button>
+              </Flex.Item>)})}
         </Flex>
         <hr className="sep" />
 
@@ -141,7 +149,12 @@ const CompoundTable = (_, context) => {
                     </Button>
                   </Flex.Item>
                   <Flex.Item>
-                    <Button className="DoButton" icon="print" onClick={() => act("print", { "print_type": 'XRF Scans', "print_title": x.id })}>
+                    <Button
+                      className={classes(["DoButton", data.photocopier_error && "DoButton-disabled"])}
+                      disabled={data.photocopier_error}
+                      icon="print"
+                      onClick={() => act("print", { "print_type": 'XRF Scans', "print_title": x.id })}
+                    >
                       Print
                     </Button>
                   </Flex.Item>
@@ -168,6 +181,74 @@ const CompoundTable = (_, context) => {
     </div>);
 };
 
+const PhotocopierMissing = () => {
+  return <span>
+    ERROR: no linked printer found.
+  </span>
+}
+
+const TonerEmpty = () => {
+  return <span>
+    ERROR: Printer toner is empty.
+  </span>
+}
+
+const ImproveClearanceConfirmation = (props, context) => {
+  const { data, act } = useBackend<TerminalProps>(context);
+  const [isConfirm, setConfirm] = useLocalState<string|undefined>(context, 'purchase_confirmation', undefined);
+  if (isConfirm === undefined || isConfirm !== "broker_clearance") {
+    return null;
+  }
+  return (
+    <>
+      <Stack vertical>
+        <Stack.Item>
+          <ConfirmationDialogue
+            className="Confirm-Dialogue"
+            onConfirm={() => {
+              act("broker_clearance");
+              setConfirm(undefined);
+            }}
+            onCancel={() => setConfirm(undefined)}
+          >
+            <span className="Tab__text">
+              The CL can swipe their ID card on the console to increase clearance for
+              free, given enough DEFCON. Are you sure you want to spend <u>{data.broker_cost}</u> research
+              credits to increase the clearance immediately?
+            </span>
+          </ConfirmationDialogue>
+        </Stack.Item>
+      </Stack>
+    </>)
+}
+
+const XClearanceConfirmation = (props, context) => {
+  const { data, act } = useBackend<TerminalProps>(context);
+  const [isConfirm, setConfirm] = useLocalState<string|undefined>(context, 'purchase_confirmation', undefined);
+  if (isConfirm === undefined || isConfirm !== 'request_clearance_x_access') {
+    return null;
+  }
+  return (
+    <>
+      <Stack vertical>
+        <Stack.Item>
+          <ConfirmationDialogue
+            className="Confirm-Dialogue"
+            onConfirm={() => {
+              act("request_clearance_x_access");
+              setConfirm(undefined);
+            }}
+            onCancel={() => setConfirm(undefined)}
+          >
+            <span className="Tab__text">
+              Are you sure you wish request clearance level <u>X</u> access for <u>5</u> credits?
+            </span>
+          </ConfirmationDialogue>
+        </Stack.Item>
+      </Stack>
+    </>)
+}
+
 const ResearchManager = (_, context) => {
   const { data } = useBackend<TerminalProps>(context);
   const clearance_level = data.clearance_level;
@@ -183,9 +264,19 @@ const ResearchManager = (_, context) => {
       </Stack>
       <hr className="sep" />
       <PurchaseDocs />
+      <ImproveClearanceConfirmation />
+      <XClearanceConfirmation />
     </Box>
   );
 };
+
+const ErrorStack = (_, context) => {
+  const { data } = useBackend<TerminalProps>(context);
+  return <Stack>
+    {data.photocopier_error === 1 && <PhotocopierMissing />}
+    {data.printer_toner === 0 && <TonerEmpty />}
+  </Stack>
+}
 
 const ResearchOverview = (_, context) => {
   const [selectedTab, setSelectedTab] = useLocalState(context, 'research_tab', 1);
@@ -212,6 +303,7 @@ const ResearchOverview = (_, context) => {
       <div className="TabbedPage">
         <div className="TabbedContent">
           <br />
+          <ErrorStack />
           {selectedTab === 1 && <ResearchManager />}
           {selectedTab === 2 && <CompoundTable />}
         </div>
@@ -223,25 +315,34 @@ const ResearchOverview = (_, context) => {
 const ClearanceImproveButton = (_, context) => {
   const { data, act } = useBackend<TerminalProps>(context);
   const [selectedTab, setSelectedTab] = useLocalState(context, 'research_tab', 1);
+  const [confirm, setConfirm] = useLocalState<string|undefined>(context, 'purchase_confirmation', undefined);
   const clearance_level = data.clearance_level;
   const x_access = data.clearance_x_access;
+  const isDisabled = data.rsc_credits < data.broker_cost;
   return (
     <>
       {clearance_level < 5
         && (
           <Button
-            className="DoButton"
-            disabled={data.rsc_credits < data.broker_cost}
-            onClick={() => act("broker_clearance")}
+            className={classes(["DoButton", isDisabled && "DoButton-disabled"])}
+            disabled={isDisabled}
+            onClick={() => {
+              setSelectedTab(1);
+              setConfirm("broker_clearance");
+            }}
           >
-            Improve ({data.broker_cost})
+            Improve {data.broker_cost}
           </Button>)}
       {(clearance_level === 5 && x_access === 0)
           && (
             <Flex.Item>
               <Button
-                className="DoButton"
-                onClick={() => act("request_clearance_x_access")}
+                className={classes(["DoButton",
+                data.rsc_credits < 5 && "DoButton-disabled"])}
+                onClick={() => {
+                  setSelectedTab(1);
+                  setConfirm("request_clearance_x_access")
+                }}
               >
                 Request X (5)
               </Button>
@@ -249,7 +350,12 @@ const ClearanceImproveButton = (_, context) => {
       {x_access !== 0
         && (
           <Flex.Item>
-            <span>Maximum clearance reached</span>
+            <Button
+              disabled={true}
+              className={classes(["DoButton", isDisabled && "DoButton-disabled"])}
+            >
+              Maximum clearance reached
+            </Button>
           </Flex.Item>)}
     </>
   );

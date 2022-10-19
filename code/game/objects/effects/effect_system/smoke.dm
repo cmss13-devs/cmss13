@@ -357,7 +357,7 @@
 	var/effect_amt = round(6 + amount*6)
 	M.eye_blurry = max(M.eye_blurry, effect_amt)
 	M.apply_damage(1, OXY) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
-	M.apply_stamina_damage(17) // Slows them down until they eventually get stunned
+	M.apply_stamina_damage(17) // Slowdown progressively gets worse until they eventually get stunned
 	if(prob(20))
 		M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind && prob(25)) //Eye exposure damage
@@ -370,12 +370,12 @@
 			M.emote("cough")
 		else
 			M.emote("gasp")
+		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 	if(prob(5))
 		to_chat(M, SPAN_DANGER("You stumble!"))
 		M.KnockDown(1)
 		M.emote("pain")
 		M.apply_damage(3,TOX) // Blood toxicity
-	addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))

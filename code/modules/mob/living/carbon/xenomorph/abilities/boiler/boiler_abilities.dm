@@ -2,9 +2,6 @@
 	should_delay = TRUE
 	delay = 20
 	ability_primacy = XENO_PRIMARY_ACTION_4
-	movement_buffer = 7
-	handles_movement = TRUE
-	movement_buffer = 0
 
 /datum/action/xeno_action/activable/acid_lance
 	name = "Acid Lance"

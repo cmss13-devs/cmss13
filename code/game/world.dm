@@ -123,6 +123,8 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.revdata.load_tgs_info()
 
 /world/Topic(T, addr, master, key)
+	TGS_TOPIC
+
 	if (T == "ping")
 		var/x = 1
 		for (var/client/C)
@@ -211,6 +213,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		shutdown()
 		return
 
+	TgsReboot()
 	..(reason)
 
 /world/proc/send_reboot_sound()

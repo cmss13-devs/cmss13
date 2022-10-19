@@ -15,6 +15,7 @@
 	var/dispensing = TRUE
 
 /obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
 	return
 
 /obj/structure/reagent_dispensers/Initialize(mapload, reagent_amount = 1000)

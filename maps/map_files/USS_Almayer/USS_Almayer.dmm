@@ -6562,8 +6562,10 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
 "asb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor{
-	id_tag = "Boat1-D2";
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
+	id_tag = "Boat2-D2";
+	linked_dock = "almayer-lifeboat2";
+	throw_dir = 1;
 	locked = 1
 	},
 /turf/open/floor/almayer{
@@ -14054,8 +14056,10 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/command/lifeboat)
 "aPx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor{
-	id_tag = "Boat2-D2";
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
+	id_tag = "Boat1-D2";
+	linked_dock = "almayer-lifeboat1";
+	throw_dir = 2;
 	locked = 1
 	},
 /turf/open/floor/almayer{
@@ -62568,8 +62572,10 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "oMT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor{
-	id_tag = "Boat1-D1";
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
+	id_tag = "Boat2-D1";
+	linked_dock = "almayer-lifeboat2";
+	throw_dir = 1;
 	locked = 1
 	},
 /turf/open/floor/almayer{
@@ -70181,8 +70187,10 @@
 	},
 /area/almayer/engineering/ce_room)
 "sjr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor{
-	id_tag = "Boat2-D1";
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
+	id_tag = "Boat1-D1";
+	linked_dock = "almayer-lifeboat1";
+	throw_dir = 2;
 	locked = 1
 	},
 /turf/open/floor/almayer{

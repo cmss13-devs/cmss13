@@ -2,6 +2,7 @@
 $darkcolor: #110000;
 $lightcolor: #FFBF00;
 $font-family: monospace;
+$background-radial-opacity: 0.2;
 
 
 
@@ -24,6 +25,7 @@ $small-text: 2vw;
 $large-text: 3vw;
 
 @use 'sass:color';
+@use "sass:math";
 @use 'sass:meta';
 
 //$flicker-color-start:rgba(0,30,255,0.5);
@@ -47,7 +49,7 @@ $flicker-color-end:darken($lightcolor, 0.2);
     'title-text-color': $lightcolor
   ));
   @include meta.load-css('../components/Button.scss', $with: (
-    'color-disabled': $darkcolor,
+    'color-disabled': darken($lightcolor, 30)
   ));
 
   @include meta.load-css('../components/Tabs.scss', $with: (
@@ -118,9 +120,24 @@ $flicker-color-end:darken($lightcolor, 0.2);
       background-color: $lightcolor;
       color: $darkcolor;
     }
-    &:disabled {
-      color:$lightcolor;
+  }
+
+  .DoButton-disabled {
+    color: $lightcolor;
+    border: 1px solid $lightcolor;
+    background-color: red;
+    &:hover,
+    &:focus,
+    &:visited,
+    &:target {
+      color: $lightcolor;
+      background-color: none;
     }
+  }
+
+  .Button--disabled {
+    background-color: none;
+    color: $lightcolor;
   }
 
   @keyframes confirmFlicker {
@@ -128,10 +145,13 @@ $flicker-color-end:darken($lightcolor, 0.2);
       background-color: $lightcolor;
       color: $darkcolor;
     }
-    100% {
+    50% {
       background-color: $darkcolor;
       color: $lightcolor;
-
+    }
+    100% {
+      background-color: $lightcolor;
+      color: $darkcolor;
     }
   }
 
@@ -140,11 +160,6 @@ $flicker-color-end:darken($lightcolor, 0.2);
     &:hover {
       animation:none;
     }
-  }
-
-  .Button--disabled {
-    color: $lightcolor;
-    border: 1px solid $lightcolor;
   }
 
   .Confirm-Dialogue {
@@ -241,6 +256,8 @@ $flicker-color-end:darken($lightcolor, 0.2);
 
   .container {
     border: 2px solid $lightcolor;
+    background-color: transparent;
+    box-sizing: content-box;
 
     .Section__title {
       height: $large-text;
@@ -251,11 +268,6 @@ $flicker-color-end:darken($lightcolor, 0.2);
       font-weight: bold;
       font-size: $large-text;
     }
-  }
-
-  .Section {
-    background-color: none;
-    box-sizing: content-box;
   }
 
   @keyframes flicker {
@@ -436,6 +448,8 @@ $flicker-color-end:darken($lightcolor, 0.2);
     pointer-events: none;
   }
   .crt {
-    animation: textShadow 5s infinite;
+    background: radial-gradient(
+      rgba($lightcolor, $background-radial-opacity),
+      rgba($lightcolor, math.div($background-radial-opacity, 5)));
   }
 }

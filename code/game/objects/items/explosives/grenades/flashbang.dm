@@ -105,24 +105,21 @@
 			M.Stun(10)
 			M.KnockDown(3)
 			M.SetEarDeafness(max(M.ear_deaf,15))
-			if(!no_damage)
-				if((prob(14) || (M == src.loc && prob(70))))
-					M.ear_damage += rand(1, 10)
-				else
-					M.ear_damage += rand(0, 5)
+
+
 
 	else if(get_dist(M, T) <= 5)
 		if(!trained_human)
 			M.Stun(8)
 			M.SetEarDeafness(max(M.ear_deaf,10))
-			if(!no_damage)
-				M.ear_damage += rand(0, 3)
+
+
 
 	else if(!trained_human)
 		M.Stun(4)
 		M.SetEarDeafness(max(M.ear_deaf,5))
-		if(!no_damage)
-			M.ear_damage += rand(0, 1)
+
+
 
 //This really should be in mob not every check
 	if(ishuman(M))

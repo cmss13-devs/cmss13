@@ -224,6 +224,10 @@
       in their vendors.
   - balance: Revival Mix pressurized pouches now come with tricordrazine instead of
       peridaxon; the contents are now evenly split between the three reagents.
+  Nanotrasen-Spy:
+  - imageadd: added proper goggles down item sprites
+  - imageadd: added black and amber tinted ballistic goggles to marine preferences
+      gear
   Segrain:
   - bugfix: Weeds are once again properly layered over the floor (meaning, for example,
       that vents and pipes are visible over them where appropriate).

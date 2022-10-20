@@ -20,6 +20,7 @@ map bigredv2
 endmap
 
 map prison_station_fop
+	disabled
 endmap
 
 map fiorina_sciannex
@@ -29,6 +30,7 @@ endmap
 map corsat
 	minplayers 100
 	voteweight 0
+	disabled
 endmap
 
 map desert_dam

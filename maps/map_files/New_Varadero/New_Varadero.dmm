@@ -440,6 +440,12 @@
 	dir = 1
 	},
 /area/varadero/exterior/pontoon_beach)
+"aws" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance)
 "axX" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
 	id = "undergroundhangarwest";
@@ -1028,6 +1034,15 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
+"aZW" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "baa" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -1348,6 +1363,12 @@
 	icon_state = "darkredfull2"
 	},
 /area/varadero/exterior/lz1_console)
+"bpI" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers{
+	icon_state = "ywflowers_4"
+	},
+/turf/open/gm/grass/weedable,
+/area/varadero/interior_protected/caves/central)
 "bpT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1662,7 +1683,7 @@
 	pixel_x = 7;
 	pixel_y = -6
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -1679,11 +1700,12 @@
 	},
 /area/varadero/interior/hall_SE)
 "bGC" = (
-/obj/structure/prop/fishing/line{
-	dir = 8
+/obj/structure/sign/safety/restrictedarea,
+/obj/structure/sign/safety/airlock{
+	pixel_x = 15
 	},
-/turf/open/gm/river,
-/area/varadero/exterior/pontoon_beach)
+/turf/closed/wall,
+/area/varadero/exterior/lz1_console)
 "bGR" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -1796,6 +1818,20 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
+"bLq" = (
+/obj/structure/surface/table,
+/obj/item/ashtray/plastic,
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt/ucigbutt,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/east)
 "bLy" = (
 /turf/open/floor/shiva{
 	icon_state = "green"
@@ -1999,6 +2035,12 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
+"bRZ" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers{
+	icon_state = "brflowers_3"
+	},
+/turf/open/gm/grass/weedable,
+/area/varadero/interior_protected/caves/central)
 "bSO" = (
 /obj/item/stack/rods,
 /obj/item/shard{
@@ -2216,7 +2258,6 @@
 	},
 /area/varadero/interior/laundry)
 "cfq" = (
-/obj/structure/prop/fishing/pole_interactive,
 /obj/item/stool{
 	layer = 2.5;
 	pixel_x = -3;
@@ -2307,14 +2348,6 @@
 	},
 /area/varadero/interior/hall_SE)
 "cjf" = (
-/obj/structure/prop/fishing/pole_interactive{
-	desc = "Garry says this is his lucky fishing spot.";
-	dir = 4;
-	name = "Garry's lucky fishing pole";
-	rare_weight = 8;
-	ultra_rare_weight = 2;
-	uncommon_weight = 50
-	},
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 8;
 	pixel_y = -6
@@ -2455,6 +2488,16 @@
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/r_wall,
 /area/varadero/interior/electrical)
+"cqO" = (
+/obj/structure/bed/chair{
+	icon_state = "chair_alt";
+	pixel_x = 3;
+	pixel_y = 17
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "crq" = (
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/sand_white/layer1,
@@ -2651,6 +2694,12 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/electrical)
+"cAy" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior/security)
 "cAX" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva{
@@ -2898,6 +2947,19 @@
 /obj/item/weapon/gun/rifle/m41a,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
+"cKh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	icon_state = "chair_alt";
+	pixel_x = 3;
+	pixel_y = 17
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "cKZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
@@ -3295,6 +3357,18 @@
 	dir = 1
 	},
 /area/ice_colony/underground/crew/morgue)
+"dcR" = (
+/obj/item/paper_bin{
+	pixel_y = 6
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 7
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva{
+	icon_state = "redfull"
+	},
+/area/varadero/interior/security)
 "ddc" = (
 /obj/item/stack/cable_coil/cut{
 	pixel_x = 1;
@@ -4046,6 +4120,12 @@
 	icon_state = "redfull"
 	},
 /area/varadero/interior/medical)
+"dVL" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/medical)
 "dWl" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/shiva{
@@ -4573,6 +4653,11 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
+"ewe" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/east)
 "ewn" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
@@ -4639,8 +4724,22 @@
 	},
 /area/varadero/interior/hall_SE)
 "ezx" = (
-/obj/structure/prop/fishing/pole_interactive{
-	dir = 8
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent4";
+	pixel_y = 25
+	},
+/obj/structure/sign/safety/waterhazard,
+/obj/structure/sign/safety/water{
+	pixel_x = 15
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -4859,7 +4958,7 @@
 	pixel_x = -7;
 	pixel_y = 6
 	},
-/obj/item/storage/pill_bottle/packet/bicardine{
+/obj/item/storage/pill_bottle/packet/bicaridine{
 	pixel_x = 6;
 	pixel_y = -2
 	},
@@ -5168,6 +5267,12 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/cargo)
+"eZx" = (
+/obj/structure/noticeboard{
+	desc_lore = "Glup Shitto lives!"
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/security)
 "fao" = (
 /obj/structure/reagent_dispensers/water_cooler{
 	density = 0;
@@ -6253,9 +6358,6 @@
 	},
 /area/varadero/exterior/lz1_near)
 "fXR" = (
-/obj/structure/prop/fishing/line{
-	dir = 8
-	},
 /turf/open/gm/river,
 /area/varadero/interior/maintenance/research)
 "fYb" = (
@@ -6612,9 +6714,6 @@
 	},
 /area/varadero/interior/hall_SE)
 "gnC" = (
-/obj/structure/prop/fishing/pole_interactive{
-	dir = 4
-	},
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = -9;
 	pixel_y = 7
@@ -6737,6 +6836,13 @@
 	icon_state = "purple"
 	},
 /area/varadero/interior/research)
+"guq" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/toolbox/mechanical/green,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "guE" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/shiva{
@@ -7680,6 +7786,12 @@
 "huF" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
+"huQ" = (
+/obj/structure/closet/crate/trashcart,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "hvh" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -7695,6 +7807,12 @@
 "hvj" = (
 /turf/open/floor/plating,
 /area/varadero/interior/disposals)
+"hvQ" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/library)
 "hwa" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/icefloor{
@@ -8258,9 +8376,16 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/item/handcuffs{
+	pixel_x = 2;
+	pixel_y = 16
+	},
+/obj/item/book/manual/marine_law{
+	pixel_x = 8
+	},
 /obj/item/reagent_container/food/drinks/bottle/vodka{
-	pixel_x = 4;
-	pixel_y = 6
+	pixel_x = -5;
+	pixel_y = 1
 	},
 /turf/open/floor/shiva{
 	icon_state = "redfull"
@@ -9055,6 +9180,12 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
+"iGq" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers{
+	icon_state = "ywflowers_2"
+	},
+/turf/open/gm/grass/weedable,
+/area/varadero/interior_protected/caves/central)
 "iGu" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -9227,17 +9358,11 @@
 /turf/open/gm/dirt,
 /area/varadero/interior/oob)
 "iLR" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/prop/fishing/pole_interactive{
-	dir = 1
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
 	},
-/obj/structure/prop/fishing/line{
-	dir = 1;
-	layer = 2.5;
-	pixel_y = 1
-	},
-/turf/open/gm/river,
-/area/varadero/exterior/pontoon_beach)
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/cargo)
 "iMi" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/fancy/cigarettes/arcturian_ace{
@@ -10386,14 +10511,12 @@
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "jSP" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15
 	},
-/obj/structure/prop/fishing/line{
-	dir = 8
-	},
-/turf/open/gm/river,
-/area/varadero/exterior/pontoon_beach)
+/obj/structure/sign/safety/hvac_old,
+/turf/closed/wall/r_wall,
+/area/varadero/interior/cargo)
 "jSX" = (
 /turf/open/gm/coast{
 	icon_state = "beachcorner"
@@ -10426,6 +10549,21 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/hall_SE)
+"jUx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	buckling_y = 18;
+	dir = 8;
+	icon_state = "chair_alt";
+	pixel_x = -5;
+	pixel_y = 12
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "jUA" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stock_parts/matter_bin/adv{
@@ -10824,6 +10962,12 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/security)
+"kpv" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/hall_SE)
 "kpF" = (
 /obj/structure/filingcabinet{
 	pixel_x = -8;
@@ -11700,6 +11844,10 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
+"lgk" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/turf/open/gm/grass/weedable,
+/area/varadero/interior_protected/caves/central)
 "lhb" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/platform_decoration/kutjevo,
@@ -11979,7 +12127,7 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -12574,7 +12722,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -12584,7 +12732,7 @@
 	dir = 10;
 	icon_state = "bshell_"
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/varadero/interior/security)
 "map" = (
@@ -13572,6 +13720,29 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/medical)
+"mPe" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8;
+	pixel_x = 12;
+	pixel_y = 25
+	},
+/obj/structure/bed/chair/comfy{
+	pixel_x = -7;
+	pixel_y = 18
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 12
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "mPf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -13580,9 +13751,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/records)
+"mPB" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/east)
 "mPI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -14016,6 +14191,19 @@
 	icon_state = "greencorners"
 	},
 /area/varadero/interior/hall_SE)
+"nlw" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	icon_state = "chair_alt";
+	pixel_x = -6;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "nma" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/largecrate/random/mini/small_case/c{
@@ -14497,18 +14685,11 @@
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "nNW" = (
-/obj/item/book/manual/marine_law{
+/obj/structure/sign/safety/airlock{
 	pixel_x = 8
 	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/handcuffs{
-	pixel_x = 2;
-	pixel_y = 16
-	},
-/turf/open/floor/shiva{
-	icon_state = "redfull"
-	},
-/area/varadero/interior/security)
+/turf/closed/wall/r_wall,
+/area/varadero/interior/cargo)
 "nOg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/secure{
@@ -14655,6 +14836,20 @@
 	icon_state = "snow_mat"
 	},
 /area/varadero/interior/medical)
+"nRY" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt";
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/cherry{
+	pixel_x = -10;
+	pixel_y = -9
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "nSi" = (
 /obj/structure/largecrate/random/case,
 /turf/open/auto_turf/sand_white/layer1,
@@ -14834,7 +15029,7 @@
 	},
 /area/varadero/interior/cargo)
 "nZd" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -15658,20 +15853,15 @@
 	},
 /area/varadero/exterior/lz1_near)
 "oLM" = (
-/obj/item/paper_bin{
-	pixel_y = 6
+/obj/structure/sign/safety/reception,
+/obj/structure/sign/safety/one{
+	pixel_x = 15
 	},
-/obj/item/tool/pen/blue{
-	pixel_x = 7
-	},
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/shiva{
-	icon_state = "redfull"
-	},
-/area/varadero/interior/security)
+/turf/closed/wall,
+/area/varadero/exterior/lz1_console)
 "oMa" = (
 /obj/structure/surface/table,
-/obj/item/storage/pill_bottle/packet/bicardine,
+/obj/item/storage/pill_bottle/packet/bicaridine,
 /obj/item/tool/kitchen/utensil/pknife{
 	pixel_x = 9;
 	pixel_y = 2
@@ -16912,9 +17102,6 @@
 	},
 /area/varadero/interior/research)
 "pVz" = (
-/obj/structure/prop/fishing/pole_interactive{
-	dir = 4
-	},
 /obj/item/stack/tile/plasteel{
 	layer = 2.89;
 	pixel_x = 17;
@@ -17109,7 +17296,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "qgm" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "qgy" = (
@@ -17132,7 +17319,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -17187,7 +17374,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -17279,6 +17466,12 @@
 	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/varadero/exterior/lz1_near)
+"qoH" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers{
+	icon_state = "ywflowers_3"
+	},
+/turf/open/gm/grass/weedable,
+/area/varadero/interior_protected/caves/central)
 "qoS" = (
 /turf/open/floor/shiva{
 	dir = 4;
@@ -18034,9 +18227,6 @@
 	},
 /area/varadero/interior/maintenance/research)
 "qVD" = (
-/obj/structure/prop/fishing/pole_interactive{
-	dir = 4
-	},
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 8;
 	pixel_y = -6
@@ -18049,7 +18239,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
 "qVS" = (
@@ -18666,6 +18856,16 @@
 	icon_state = "wred"
 	},
 /area/varadero/interior/medical)
+"rxy" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastright{
+	dir = 1;
+	pixel_y = 17
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior/security)
 "ryD" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security)
@@ -18683,6 +18883,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/administration)
+"rzk" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/security)
 "rzM" = (
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -19609,14 +19813,11 @@
 	},
 /area/varadero/interior/oob)
 "srL" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
 	},
-/obj/structure/prop/fishing/line{
-	dir = 4
-	},
-/turf/open/gm/river,
-/area/varadero/exterior/pontoon_beach)
+/turf/closed/wall/r_wall,
+/area/varadero/interior/hall_NW)
 "srW" = (
 /turf/closed/shuttle/elevator{
 	dir = 4;
@@ -19745,7 +19946,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
-/obj/item/storage/large_holster/macheteB/full,
+/obj/item/storage/pouch/machete/full,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "sxR" = (
@@ -20507,6 +20708,23 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/electrical)
+"tmU" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "tng" = (
 /obj/item/stool{
 	layer = 2.5;
@@ -20566,6 +20784,12 @@
 	icon_state = "red"
 	},
 /area/ice_colony/underground/crew/morgue)
+"tpG" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers{
+	icon_state = "brflowers_2"
+	},
+/turf/open/gm/grass/weedable,
+/area/varadero/interior_protected/caves/central)
 "tpL" = (
 /turf/open/floor/shiva{
 	dir = 1;
@@ -20820,13 +21044,11 @@
 	},
 /area/varadero/interior/cargo)
 "tEH" = (
-/obj/structure/prop/fishing/pole_interactive{
-	dir = 4
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
 	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/exterior/lz1_near)
+/turf/closed/wall/r_wall,
+/area/varadero/interior/chapel)
 "tEJ" = (
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -21436,6 +21658,13 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/administration)
+"uhB" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush{
+	pixel_x = -4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/east)
 "uhD" = (
 /obj/structure/machinery/light,
 /turf/open/floor/shiva{
@@ -21498,9 +21727,6 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/obj/structure/prop/fishing/line{
-	dir = 1
-	},
 /turf/open/gm/river,
 /area/varadero/exterior/pontoon_beach)
 "ujp" = (
@@ -21551,6 +21777,12 @@
 "ulv" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
+"ulU" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "umA" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -21640,6 +21872,15 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/hall_SE)
+"upW" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "uqw" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/blood/OMinus,
@@ -21836,7 +22077,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -22468,7 +22709,7 @@
 /area/varadero/interior/electrical)
 "uZp" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/varadero/exterior/lz1_console)
 "vao" = (
@@ -23238,6 +23479,23 @@
 "vHs" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/records)
+"vHH" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "vKa" = (
 /obj/structure/flora/bush/desert{
 	pixel_x = 15;
@@ -23768,6 +24026,21 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/bunks)
+"wfP" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "wfT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -24003,13 +24276,11 @@
 	},
 /area/varadero/interior/medical)
 "woP" = (
-/obj/structure/prop/fishing/pole_interactive{
-	dir = 4
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
 	},
-/turf/open/gm/coast{
-	dir = 4
-	},
-/area/varadero/exterior/pontoon_beach)
+/turf/closed/wall/r_wall,
+/area/ice_colony/underground/crew/morgue)
 "wph" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/shiva,
@@ -25039,6 +25310,10 @@
 	icon_state = "white"
 	},
 /area/varadero/interior/security)
+"xqO" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/grass/weedable,
+/area/varadero/interior_protected/caves/central)
 "xqP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -32024,7 +32299,7 @@ sGY
 sGY
 sGY
 uQK
-ykc
+nNW
 mIL
 uwu
 uwu
@@ -32214,7 +32489,7 @@ sGY
 sGY
 sGY
 uQK
-ykc
+nNW
 pkG
 qMY
 mCZ
@@ -32372,7 +32647,7 @@ tQT
 tQT
 ssh
 lMB
-uQi
+iLR
 vjv
 wvK
 wvK
@@ -32558,7 +32833,7 @@ uQi
 ykc
 ykc
 ykc
-ykc
+nNW
 cNZ
 ykc
 ykc
@@ -33309,7 +33584,7 @@ sdz
 sdz
 sdz
 wmL
-sdz
+srL
 sdz
 sdz
 sdz
@@ -33844,7 +34119,7 @@ uXZ
 uXZ
 uXZ
 uXZ
-ykc
+nNW
 bzn
 ePb
 oJB
@@ -34203,7 +34478,7 @@ oJB
 wDG
 wDG
 afR
-ykc
+nNW
 uDQ
 uDQ
 uDQ
@@ -34396,8 +34671,8 @@ wty
 wty
 cWU
 sPm
-ykc
-sdz
+nNW
+srL
 fYA
 fYA
 dQe
@@ -34585,7 +34860,7 @@ bLB
 vnm
 jLr
 sqb
-vnm
+tEH
 bLB
 bLB
 vnm
@@ -34740,7 +35015,7 @@ huF
 rpu
 ykc
 ykc
-ykc
+jSP
 lDN
 sGY
 sGY
@@ -34968,7 +35243,7 @@ maN
 maN
 maN
 aTh
-shb
+dVL
 vhb
 kFT
 shb
@@ -35291,7 +35566,7 @@ wcl
 enU
 enU
 uQK
-ykc
+nNW
 hyr
 ohM
 bgE
@@ -35881,7 +36156,7 @@ wnK
 nxW
 nRW
 fYQ
-shb
+dVL
 fJR
 nRT
 trv
@@ -36407,7 +36682,7 @@ epQ
 epQ
 epQ
 uvw
-epQ
+woP
 epQ
 ntw
 kuX
@@ -36605,7 +36880,7 @@ nxW
 nxW
 tRs
 nxW
-shb
+dVL
 shb
 cTr
 tjF
@@ -37262,7 +37537,7 @@ rGe
 rGe
 bOZ
 pzY
-ahg
+bGC
 qzq
 ahg
 pzY
@@ -37318,7 +37593,7 @@ lPq
 oUp
 cTg
 nVy
-epQ
+woP
 xWY
 kuX
 bih
@@ -37327,7 +37602,7 @@ shb
 shb
 shb
 shb
-shb
+dVL
 pvk
 shb
 shb
@@ -37764,7 +38039,7 @@ hoC
 mCF
 aOg
 aOg
-aOg
+lgk
 aOg
 mCF
 mCF
@@ -38117,7 +38392,7 @@ etv
 ksX
 mCF
 aOg
-aOg
+bRZ
 aOg
 aOg
 mCF
@@ -38130,7 +38405,7 @@ mCF
 mCF
 aOg
 aOg
-aOg
+bRZ
 mCF
 mCF
 pGs
@@ -38233,7 +38508,7 @@ kGM
 eiC
 xKz
 kGM
-shb
+dVL
 shb
 uTZ
 bVu
@@ -38716,7 +38991,7 @@ ijy
 ijy
 ijy
 ijy
-iLR
+xBb
 tpV
 asx
 cfq
@@ -38727,7 +39002,7 @@ sOe
 sOe
 lje
 wMw
-fZB
+ezx
 uhJ
 inj
 fZB
@@ -38968,7 +39243,7 @@ gjw
 gjw
 jZO
 qUQ
-shb
+dVL
 tyT
 peA
 bzq
@@ -39083,7 +39358,7 @@ ijy
 xBb
 gnC
 asx
-tEH
+asx
 saj
 ijy
 ijy
@@ -39226,7 +39501,7 @@ cto
 ksX
 mCF
 aOg
-aOg
+lgk
 hoC
 pGs
 pGs
@@ -39263,9 +39538,9 @@ ijy
 ijy
 ijy
 fvR
-jSP
 sOe
-jSP
+sOe
+sOe
 tql
 ijy
 ijy
@@ -39448,9 +39723,9 @@ ijy
 ijy
 ijy
 kcj
-srL
 nvF
-srL
+nvF
+nvF
 nvF
 nvF
 xdy
@@ -39630,9 +39905,9 @@ ijy
 ijy
 ijy
 xBb
-ezx
 asx
-ezx
+asx
+asx
 cDm
 asx
 asx
@@ -39693,11 +39968,11 @@ shG
 shb
 shb
 shb
-shb
+dVL
 jGk
 shb
 shb
-shb
+dVL
 jGk
 shb
 shb
@@ -39849,7 +40124,7 @@ wMw
 wMw
 wMw
 mcr
-ahg
+oLM
 qzq
 ahg
 ydy
@@ -39872,7 +40147,7 @@ ini
 lss
 rHv
 gtr
-clX
+aws
 lUe
 qqA
 qqA
@@ -40177,7 +40452,7 @@ ijy
 ijy
 fvR
 sOe
-jSP
+sOe
 alE
 asx
 asx
@@ -40237,7 +40512,7 @@ mos
 rHv
 eXT
 sdz
-sdz
+srL
 hFE
 sdz
 sdz
@@ -40318,7 +40593,7 @@ cto
 ksX
 hoC
 mCF
-aOg
+lgk
 mCF
 aOg
 pGs
@@ -40487,7 +40762,7 @@ aOg
 aOg
 mCF
 aOg
-aOg
+lgk
 mCF
 aOg
 aOg
@@ -40502,7 +40777,7 @@ cty
 mCF
 mCF
 mCF
-aOg
+lgk
 pGs
 pGs
 pGs
@@ -40608,7 +40883,7 @@ sdz
 yil
 yil
 yil
-clX
+aws
 ojG
 aQc
 clX
@@ -40849,7 +41124,7 @@ hoC
 mCF
 mCF
 aOg
-aOg
+lgk
 aOg
 aOg
 aOg
@@ -41095,7 +41370,7 @@ ubn
 ijy
 oML
 idF
-woP
+hKK
 fLY
 ijy
 ijy
@@ -41277,7 +41552,7 @@ tql
 ijy
 ijy
 ijy
-bGC
+ijy
 ijy
 ijy
 ijy
@@ -41504,7 +41779,7 @@ qaY
 sXb
 sXb
 sXb
-sXb
+hvQ
 sCo
 rMN
 hca
@@ -41592,7 +41867,7 @@ cto
 xxk
 xxk
 iDn
-aOg
+qoH
 mCF
 mCF
 mCF
@@ -41956,7 +42231,7 @@ cto
 cto
 cto
 ksX
-aOg
+bRZ
 aOg
 mCF
 mCF
@@ -43032,7 +43307,7 @@ xxk
 mCF
 meS
 aOg
-aOg
+tpG
 aOg
 aOg
 mCF
@@ -43599,7 +43874,7 @@ cty
 cty
 mCF
 mCF
-aOg
+bRZ
 aOg
 mCF
 pGs
@@ -43870,7 +44145,7 @@ hyr
 hyr
 rPT
 iwQ
-nTG
+kpv
 fkj
 aLn
 pEE
@@ -43962,7 +44237,7 @@ hoC
 mCF
 mCF
 aOg
-aOg
+iGq
 aOg
 aOg
 mCF
@@ -44312,7 +44587,7 @@ cty
 hoC
 mCF
 aOg
-aOg
+tpG
 aOg
 mCF
 hoC
@@ -44586,7 +44861,7 @@ scL
 xhb
 wTQ
 asJ
-jSP
+sOe
 sOe
 pGs
 huF
@@ -45049,7 +45324,7 @@ cto
 cto
 ksX
 aOg
-aOg
+bRZ
 aOg
 mCF
 mCF
@@ -45061,7 +45336,7 @@ mCF
 mCF
 mCF
 aOg
-aOg
+tpG
 aOg
 mCF
 hoC
@@ -45414,7 +45689,7 @@ cto
 ksX
 mCF
 aOg
-aOg
+xqO
 mCF
 hoC
 cty
@@ -45424,7 +45699,7 @@ hoC
 mCF
 mCF
 aOg
-aOg
+lgk
 aOg
 kvQ
 aOg
@@ -45609,7 +45884,7 @@ aOg
 aOg
 aOg
 aOg
-aOg
+bRZ
 mCF
 pGs
 pGs
@@ -46428,7 +46703,7 @@ eyt
 eyt
 eyt
 cgA
-kbQ
+mPB
 kbQ
 kbQ
 kbQ
@@ -47063,7 +47338,7 @@ mCF
 mCF
 jdm
 mCF
-aOg
+bpI
 aOg
 mCF
 mCF
@@ -48644,7 +48919,7 @@ xJZ
 mHh
 wVf
 rqn
-xOo
+dcR
 pJn
 tUd
 wVf
@@ -49002,12 +49277,12 @@ eyt
 eyt
 eyt
 eyt
-eyt
-eyt
-eyt
-eyt
 wVf
-oLM
+xOo
+xOo
+xOo
+rxy
+xOo
 xOo
 jVK
 mnc
@@ -49184,12 +49459,12 @@ eyt
 eyt
 eyt
 eyt
-eyt
-eyt
-eyt
-eyt
 wVf
-nNW
+wVf
+wVf
+wVf
+cAy
+xOo
 ufH
 nmQ
 vAg
@@ -49369,7 +49644,7 @@ eyt
 eyt
 eyt
 jqw
-eyt
+wVf
 wVf
 hay
 hZD
@@ -49550,7 +49825,7 @@ jqw
 jqw
 kbQ
 kbQ
-kbQ
+mPB
 jqw
 wVf
 wVf
@@ -49891,32 +50166,32 @@ wOO
 wOO
 wOO
 wOO
+wqb
+wqb
+xJZ
+viK
+xJZ
+wqb
+kbQ
+kbQ
+uhB
+eyt
 eyt
 eyt
 wqb
 viK
 xJZ
 wqb
-kbQ
-kbQ
-jqw
 eyt
 eyt
 eyt
-wqb
-viK
-xJZ
-wqb
-eyt
-eyt
-eyt
+mPB
 kbQ
 kbQ
 kbQ
 kbQ
 kbQ
-kbQ
-kbQ
+mPB
 kbQ
 kbQ
 eyt
@@ -50064,7 +50339,8 @@ oET
 oET
 wqb
 viK
-vpF
+uEc
+wqb
 wqb
 eyt
 eyt
@@ -50072,10 +50348,9 @@ eyt
 eyt
 eyt
 eyt
-eyt
-eyt
-eyt
 wqb
+xJZ
+xJZ
 viK
 xJZ
 wqb
@@ -50093,7 +50368,7 @@ eyt
 eyt
 eyt
 eyt
-kbQ
+mPB
 kbQ
 kbQ
 kbQ
@@ -50244,9 +50519,10 @@ gZP
 gZP
 taO
 oET
-wqb
+vHH
 viK
-wXu
+xJZ
+wfP
 wqb
 eyt
 eyt
@@ -50254,10 +50530,9 @@ eyt
 eyt
 eyt
 eyt
-eyt
-eyt
-eyt
 wqb
+xJZ
+xJZ
 viK
 xJZ
 wqb
@@ -50282,7 +50557,7 @@ kbQ
 kbQ
 kbQ
 kbQ
-kbQ
+mPB
 jqw
 eyt
 wVf
@@ -50426,9 +50701,10 @@ fLS
 fLS
 iLN
 oET
-wqb
+tmU
 viK
 xJZ
+wfP
 wqb
 eyt
 eyt
@@ -50436,10 +50712,9 @@ eyt
 eyt
 eyt
 eyt
-eyt
-eyt
-eyt
 wqb
+xJZ
+xJZ
 viK
 xJZ
 wqb
@@ -50612,9 +50887,7 @@ wqb
 viK
 xJZ
 wqb
-eyt
-eyt
-eyt
+wqb
 eyt
 eyt
 eyt
@@ -50622,6 +50895,8 @@ eyt
 eyt
 eyt
 wqb
+wqb
+xJZ
 viK
 sKu
 wqb
@@ -50644,12 +50919,12 @@ lkK
 kbQ
 kbQ
 kbQ
-kbQ
+mPB
 eyt
 jqw
 eyt
 eyt
-jqw
+ewe
 snq
 aUD
 snq
@@ -50791,7 +51066,7 @@ hmu
 iLN
 oET
 wqb
-viK
+jUx
 xJZ
 wqb
 eyt
@@ -50802,12 +51077,12 @@ eyt
 eyt
 eyt
 eyt
-eyt
+wqb
 wqb
 viK
 gDh
 wqb
-kbQ
+mPB
 jqw
 eyt
 eyt
@@ -50818,7 +51093,7 @@ viK
 xJZ
 wqb
 kbQ
-kbQ
+mPB
 kbQ
 lkK
 lkK
@@ -50830,13 +51105,13 @@ jqw
 eyt
 eyt
 eyt
-jqw
+ewe
 kbQ
 nMJ
 mxG
 kbQ
-kbQ
-jqw
+bLq
+ewe
 eyt
 eyt
 eyt
@@ -50973,15 +51248,15 @@ fOA
 iLN
 oET
 wqb
-viK
+cKh
 xJZ
 wqb
 eyt
 eyt
-eyt
-eyt
-eyt
-eyt
+wqb
+wqb
+wqb
+wqb
 eyt
 eyt
 eyt
@@ -50989,8 +51264,8 @@ wqb
 viK
 gDh
 wqb
-kbQ
-kbQ
+mPB
+mPB
 jqw
 eyt
 eyt
@@ -50999,7 +51274,7 @@ wqb
 viK
 xJZ
 ryD
-kbQ
+mPB
 kbQ
 jqw
 nkJ
@@ -51013,7 +51288,7 @@ eyt
 eyt
 eyt
 jqw
-kbQ
+mPB
 kbQ
 kbQ
 nMJ
@@ -51155,24 +51430,24 @@ fOA
 iLN
 oET
 wqb
-viK
+nlw
 xJZ
 wqb
 eyt
-eyt
-eyt
-eyt
-eyt
-eyt
-eyt
+wqb
+eZx
+nRY
+gDh
+wqb
+wqb
 eyt
 eyt
 wqb
 viK
 klf
 wqb
-kbQ
-kbQ
+mPB
+mPB
 jqw
 eyt
 wqb
@@ -51336,16 +51611,16 @@ lVM
 fOA
 iLN
 faV
-xJZ
+upW
 viK
 xJZ
 wqb
 wqb
 wqb
-wqb
-wqb
-wqb
-wqb
+cqO
+xJZ
+xJZ
+wXu
 wqb
 wqb
 wqb
@@ -51371,7 +51646,7 @@ xJZ
 fNn
 fNn
 ryD
-ryD
+rzk
 xJZ
 xJZ
 xJZ
@@ -51518,7 +51793,7 @@ lVM
 xgH
 dki
 faV
-xJZ
+guq
 lab
 lVc
 lVc
@@ -51700,7 +51975,7 @@ lVM
 lVM
 nfD
 faV
-xJZ
+aZW
 xJZ
 xJZ
 xJZ
@@ -51892,10 +52167,10 @@ oET
 oET
 oET
 oET
-oET
-oET
-oET
-oET
+ulU
+xJZ
+xJZ
+ulU
 wqb
 tWA
 tWA
@@ -51915,7 +52190,7 @@ lkK
 lkK
 lkK
 kbQ
-kbQ
+mPB
 kbQ
 kbQ
 tVj
@@ -52073,15 +52348,15 @@ xWD
 txs
 beU
 gZP
-pGs
-pGs
-pGs
-pGs
-pGs
-nkJ
+oET
+oET
+mPe
+huQ
+oET
+oET
 kbQ
 kbQ
-kbQ
+mPB
 kbQ
 kbQ
 lkK
@@ -52106,7 +52381,7 @@ kbQ
 kbQ
 kbQ
 kbQ
-kbQ
+mPB
 lkK
 lkK
 lkK
@@ -52256,10 +52531,10 @@ jVw
 xgH
 hmu
 fLS
-pGs
-pGs
-pGs
-pGs
+oET
+oET
+oET
+oET
 nkJ
 kbQ
 kbQ
@@ -52294,7 +52569,7 @@ kbQ
 kbQ
 kbQ
 kbQ
-kbQ
+mPB
 jqw
 kbQ
 kbQ
@@ -52458,7 +52733,7 @@ kbQ
 kbQ
 kbQ
 lkK
-kbQ
+mPB
 kbQ
 kbQ
 kbQ
@@ -52814,17 +53089,17 @@ pGs
 pGs
 nkJ
 pRU
-kbQ
+mPB
 lkK
 lkK
 lkK
 kbQ
+mPB
+kbQ
+jqw
 kbQ
 kbQ
 jqw
-kbQ
-kbQ
-jqw
 jqw
 eyt
 eyt
@@ -52836,6 +53111,7 @@ eyt
 jqw
 kbQ
 kbQ
+mPB
 kbQ
 kbQ
 kbQ
@@ -52843,8 +53119,7 @@ kbQ
 kbQ
 kbQ
 kbQ
-kbQ
-kbQ
+mPB
 kbQ
 kbQ
 kbQ
@@ -53205,7 +53480,7 @@ kbQ
 kbQ
 kbQ
 kbQ
-kbQ
+mPB
 kbQ
 kbQ
 kbQ

@@ -130,7 +130,8 @@
 	desc = "Like an octopus, but a whole lot meaner, dumber, and smaller. So basically a marine Marine."
 	icon_state = "quadtopus"
 	bitesize = 2
-
+//--------------------//
+// SHELLED CRITTERS, you have to pry them open with a SHARP object to get the guts out. Maybe should be bool hasshell = TRUE and overrite gutting proc?
 /obj/item/reagent_container/food/snacks/fishable/shell
 	name = "generic shell"
 	desc = "A sea critter contained inside of a shell."

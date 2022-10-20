@@ -51,6 +51,7 @@
 	src.bitesize = 6
 
 //fishable atoms meat
+// todo: rewrite this into a procgen'ed item when gutting fish? May be incompatible with recipe code if done that way and not hardcoded.
 /obj/item/reagent_container/food/snacks/meat/fish
 	name = "fish meat"
 	desc = "Meat from a fish."

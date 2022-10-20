@@ -301,7 +301,6 @@ var/global/list/activated_medevac_stretchers = list()
 	icon_state = "stretcher_down"
 	buckling_y = -1
 	foldabletype = /obj/item/roller/medevac
-	buildstacktype = null	//disables deconstructing with a wrench
 	base_bed_icon = "stretcher"
 	accepts_bodybag = TRUE
 	var/stretcher_activated
@@ -326,6 +325,12 @@ var/global/list/activated_medevac_stretchers = list()
 
 	if(buckled_mob || buckled_bodybag)
 		overlays += image("icon_state"="stretcher_box","layer"=LYING_LIVING_MOB_LAYER + 0.1)
+
+/obj/structure/bed/medevac_stretcher/attackby(obj/item/W, mob/user)
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		return
+
+	. = ..()
 
 
 /obj/structure/bed/medevac_stretcher/verb/activate_medevac_beacon()

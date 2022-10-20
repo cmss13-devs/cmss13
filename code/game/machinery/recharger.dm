@@ -48,7 +48,7 @@
 			update_icon()
 	else if(HAS_TRAIT(G, TRAIT_TOOL_WRENCH))
 		if(!wrenchable)
-			to_chat(user, SPAN_WARNING("It doesn't seem that \the [src] can be unwrenched."))
+			to_chat(user, SPAN_WARNING("It seems that \the [src] can't be unwrenched!"))
 			return
 		if(charging)
 			to_chat(user, SPAN_DANGER("Remove \the [charging] first!"))

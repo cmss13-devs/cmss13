@@ -101,7 +101,6 @@
 				to_chat(M, SPAN_WARNING("You switch your [eyewear] back on."))
 				eyewear.attack_self(M)
 
-
 //handles activating viewport features for user
 /obj/structure/interior_viewport/med/start_use_for(var/mob/living/carbon/human/M)
 	M.set_interaction(vehicle)

@@ -10,7 +10,7 @@
 	temperature = TROPICAL_TEMP
 	lighting_use_dynamic = TRUE
 
-/area/shiva/Initialize()
+/area/varadero/Initialize()
 	. = ..()
 	if(SSticker.current_state > GAME_STATE_SETTING_UP)
 		add_thunder()

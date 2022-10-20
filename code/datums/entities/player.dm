@@ -422,7 +422,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	set waitfor=0
 	WAIT_DB_READY
 	load_player_data_info(get_player_from_key(ckey))
-	add_to_access_log(src.key, address, computer_id, byond_version, byond_build)
+	add_to_access_log(src, address, computer_id, byond_version, byond_build)
 
 /client/proc/load_player_data_info(var/datum/entity/player/player)
 	if(ckey != player.ckey)

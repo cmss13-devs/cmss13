@@ -209,6 +209,9 @@
 		to_chat(user, SPAN_WARNING("\The [src] cannot support more huggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
 		return
 
+	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") == "No")
+		return
+
 	var/mob/living/carbon/Xenomorph/Facehugger/hugger = new /mob/living/carbon/Xenomorph/Facehugger(loc, null, linked_hive.hivenumber)
 	user.mind.transfer_to(hugger, TRUE)
 	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [src]!"), SPAN_XENODANGER("You emerge out of \the [src] and awaken from your slumber. For the Hive!"))

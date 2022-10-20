@@ -224,3 +224,6 @@
       in their vendors.
   - balance: Revival Mix pressurized pouches now come with tricordrazine instead of
       peridaxon; the contents are now evenly split between the three reagents.
+  Segrain:
+  - bugfix: Weeds are once again properly layered over the floor (meaning, for example,
+      that vents and pipes are visible over them where appropriate).

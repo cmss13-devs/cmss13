@@ -466,6 +466,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 						message_staff("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
+/client/proc/add_to_access_log(ckey, address, cid, byond_version, byond_build)
+	var/datum/entity/connection/connect = DB_ENTITY(/datum/entity/connection)
+	connect.ckey = ckey
+	connect.ip = address
+	connect.cid = cid
+	connect.byond_version = "[byond_version].[byond_build]"
+	connect.save()
+	connect.detach()
 
 //checks if a client is afk
 //3000 frames = 5 minutes

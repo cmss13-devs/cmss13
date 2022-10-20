@@ -74,8 +74,8 @@
 		return
 	var/mob/living/carbon/C = M
 	if(!C.wear_mask) // If not wearing a mask
+		C.apply_damage(potency, TOX)  // applies potency toxin damage
 		return
-	C.apply_damage(potency, TOX) // applies potency toxin damage
 
 /datum/chem_property/negative/corrosive
 	name = PROPERTY_CORROSIVE

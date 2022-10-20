@@ -89,7 +89,7 @@
 			if(C && (C.flags_armor_protection & BODY_FLAG_EYES))
 				total_eye_protection += C.armor_energy
 
-		if(total_eye_protection >= strength)
+		if(total_eye_protection >= strength || HAS_TRAIT(M, TRAIT_EAR_PROTECTION))
 			to_chat(M, SPAN_HELPFUL("Your gear protects you from \the [src]."))
 			return
 
@@ -243,7 +243,7 @@
 
 	//flashbang effect depends on eye protection only, so we will process this case first
 	//A bit dumb, but headsets don't have ear protection and even earmuffs are a fluff now
-	if(H.get_eye_protection() > 0)
+	if(H.get_eye_protection() > 0 || HAS_TRAIT(M, TRAIT_EAR_PROTECTION))
 		to_chat(H, SPAN_HELPFUL("Your gear protects your eyes from \the [src]."))
 		if((get_dist(H, T) <= 1 || src.loc == H.loc || src.loc == H))
 			H.apply_damage(5, BRUTE)

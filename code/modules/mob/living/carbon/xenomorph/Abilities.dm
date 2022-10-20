@@ -146,11 +146,11 @@
 			to_chat(mob, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
 			mob.AdjustStunned(4)
 			mob.KnockDown(4)
-			if(!mob.ear_deaf)
+			if(!mob.ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 				mob.AdjustEarDeafness(5) //Deafens them temporarily
 		else if(dist >= 5 && dist < 7)
 			mob.AdjustStunned(3)
-			if(!mob.ear_deaf)
+			if(!mob.ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 				mob.AdjustEarDeafness(2)
 			to_chat(mob, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
 
@@ -330,7 +330,7 @@
 /datum/action/xeno_action/onclick/queen_word/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
 	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
-	xeno.hive_message() 
+	xeno.hive_message()
 
 /datum/action/xeno_action/onclick/queen_tacmap
 	name = "View Xeno Tacmap"

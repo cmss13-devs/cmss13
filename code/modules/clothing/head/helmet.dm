@@ -625,6 +625,18 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M35 pyrotechnician"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
+/obj/item/clothing/head/helmet/marine/M3T
+	name = "\improper M3-T bombardier helmet"
+	icon_state = "sadar_helmet"
+	desc = "A custom-built helmet for explosive weaponry users. Comes with inbuilt ear blast protection, firing a rocket launcher without this is not recommended."
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	specialty = "M3-T bombardier"
+	flags_inventory = BLOCKSHARPOBJ
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	unacidable = TRUE
+
 /obj/item/clothing/head/helmet/marine/pilot
 	name = "\improper M30 tactical helmet"
 	desc = "The M30 tactical helmet has a left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety."

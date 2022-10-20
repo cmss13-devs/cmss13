@@ -197,7 +197,12 @@
 /area/varadero/interior_protected/caves
 	name = "New Varadero - Research Caves"
 	icon_state = "tunnels4"
-	requires_power = FALSE
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
+	luminosity = 0
+	lighting_use_dynamic = 1
+
 
 /area/varadero/interior_protected/caves/east
 	name = "New Varadero - Beach Caves"

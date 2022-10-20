@@ -245,7 +245,7 @@
 /datum/admins/proc/alertall()
 	set name = "Alert All"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_rights(R_MOD))
 		return
@@ -255,23 +255,25 @@
 	var/color = input(src, "Input your message color:", "Color Selector") as color|null
 	if(!color) return
 
-	for(var/mob/living/M in view(usr.client))
-		show_blurb(M, 15, message, null, "center", "center", color, null, null, 1)
+	for(var/mob/living/mob in view(usr.client))
+		show_blurb(mob, 15, message, null, "center", "center", color, null, null, 1)
 	log_admin("[key_name(src)] sent an In View admin alert with custom message [message].")
 	message_staff("[key_name(src)] sent an In View admin alert with custom message [message].")
 
 /datum/admins/proc/directnarrateall()
 	set name = "Direct Narrate All"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_rights(R_MOD))
 		return
 
-	var/message = input("Message:", text("Enter the text you wish to appear to your target:")) as text
+	var/message = input("Message:", text("Enter the text you wish to appear to your target:")) as text|null
+	if(!message)
+		return
 
-	for(var/mob/living/M in view(usr.client))
-		to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE(message))
+	for(var/mob/living/mob in view(usr.client))
+		to_chat(mob, SPAN_ANNOUNCEMENT_HEADER_BLUE(message))
 	log_admin("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
 	message_staff("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
 
@@ -279,7 +281,7 @@
 /datum/admins/proc/subtlemessageall()
 	set name = "Subtle Message All"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_rights(R_MOD))
 		return
@@ -290,7 +292,9 @@
 	if(message_option == "Faction-specific")
 		message_option = input("Choose which faction", "")
 
-	var/input = input("Contents of the message", text("Subtle PM to In View")) as text
+	var/input = input("Contents of the message", text("Subtle PM to In View")) as text|null
+	if(!input)
+		return
 
 	var/message
 	switch(message_option)
@@ -299,12 +303,12 @@
 		else
 			message = SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
 
-	for(var/mob/living/carbon/human/M in view(usr.client))
+	for(var/mob/living/carbon/human/mob in view(usr.client))
 		if(message_option == "Voice in head")
-			to_chat(M, message)
+			to_chat(mob, message)
 		else
-			if(M.get_type_in_ears(/obj/item/device/radio/headset))
-				to_chat(M, message)
+			if(mob.get_type_in_ears(/obj/item/device/radio/headset))
+				to_chat(mob, message)
 	message_staff("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\".")
 
 /client/proc/get_admin_say()

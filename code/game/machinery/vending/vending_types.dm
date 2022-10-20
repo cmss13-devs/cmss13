@@ -200,11 +200,8 @@
 					/obj/item/reagent_container/food/snacks/donut/normal = 12,
 					/obj/item/storage/box/evidence = 6,
 					/obj/item/clothing/head/helmet/marine/ship_marine = 6,
-					/obj/item/clothing/head/helmet/beret/marine/mp/mppeaked = 6,
-					/obj/item/clothing/head/helmet/beret/marine/mp/mpcap = 6,
 					/obj/item/clothing/under/marine/ship_marine = 2,
 					/obj/item/storage/belt/security/ship_marine = 6,
-					/obj/item/clothing/head/helmet/beret/marine/mp = 6,
 					/obj/item/clothing/glasses/sunglasses/sechud = 3,
 					/obj/item/device/radio/headset = 6)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)

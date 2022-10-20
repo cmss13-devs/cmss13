@@ -335,7 +335,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/weapon/melee/claymore/mercsword/ceremonial,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman)
-	uniform_restricted = list(/obj/item/clothing/under/marine/ship_marine)
+	uniform_restricted = list(/obj/item/clothing/under/marine/ship_marine, /obj/item/clothing/under/marine/officer/master_at_arms)
 	specialty = "M2 pattern SM"
 	item_state_slots = list(WEAR_JACKET = "sm")
 
@@ -344,6 +344,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	icon_state = "sm_2"
 	specialty = "M2 pattern padless SM"
 	item_state_slots = list(WEAR_JACKET = "sm_2")
+
+/obj/item/clothing/suit/storage/marine/ship_marine/mat
+	name = "\improper M2 pattern master-at-arms armor"
+	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	specialty = "M2 pattern padless master-at-arms"
 
 /obj/item/clothing/suit/storage/marine/ship_marine/general
 	icon_state = "general"

@@ -27,7 +27,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_master_at_arms, list(
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("CMP Uniform", 0, /obj/item/clothing/under/marine/officer/master_at_arms, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Master-at-Arms Uniform", 0, /obj/item/clothing/under/marine/officer/master_at_arms, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/master_at_arms, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel/sec, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Gear Belt", 0, /obj/item/storage/belt/security/ship_marine/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
@@ -58,10 +58,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_master_at_arms, list(
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-
-		list("HAT (CHOOSE 1)", 0, null, null, null),
-		list("CMP Beret", 0, /obj/item/clothing/head/helmet/beret/marine/mp/cmp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR)
 	))
 
 

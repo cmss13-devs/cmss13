@@ -32,7 +32,7 @@
 	},
 /area/event)
 "h" = (
-/obj/effect/landmark/start/police,
+/obj/effect/landmark/start/ship_marine,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
@@ -51,12 +51,6 @@
 /area/event)
 "n" = (
 /obj/effect/landmark/start/professor,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"q" = (
-/obj/effect/landmark/start/warden,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
@@ -217,7 +211,7 @@ a
 s
 k
 z
-q
+g
 g
 g
 g

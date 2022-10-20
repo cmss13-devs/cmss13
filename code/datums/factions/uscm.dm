@@ -99,12 +99,11 @@
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
-			// TO-DO: make icons for these
 			if(JOB_SHIP_MASTER_AT_ARMS)
-				marine_rk = "cmp"
+				marine_rk = "maa"
 				border_rk = "command"
 			if(JOB_SHIP_MARINE)
-				marine_rk = "mp"
+				marine_rk = "sm"
 			if(JOB_CHIEF_REQUISITION)
 				marine_rk = "ro"
 			if(JOB_CARGO_TECH)

@@ -8081,7 +8081,7 @@
 	dir = 1;
 	tag = "icon-tube1 (WEST)"
 	},
-/obj/structure/machinery/cm_vending/clothing/military_police,
+/obj/structure/machinery/cm_vending/clothing/ship_marine,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -27583,7 +27583,7 @@
 	},
 /area/almayer/squads/req)
 "bND" = (
-/obj/effect/landmark/start/police,
+/obj/effect/landmark/start/ship_marine,
 /obj/structure/bed/chair,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/perma)
@@ -27968,7 +27968,7 @@
 	},
 /area/almayer/shipboard/sea_office)
 "bOU" = (
-/obj/structure/machinery/cm_vending/clothing/military_police,
+/obj/structure/machinery/cm_vending/clothing/ship_marine,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -38535,7 +38535,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "CMP Office Shutters";
-	name = "CMP Office Shutters";
+	name = "Master-at-Arms Office Shutters";
 	pixel_y = 32;
 	req_access_txt = "1"
 	},
@@ -38698,7 +38698,7 @@
 /obj/structure/sign/safety/hazard{
 	pixel_y = 32
 	},
-/obj/structure/machinery/cm_vending/clothing/military_police,
+/obj/structure/machinery/cm_vending/clothing/ship_marine,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -39057,7 +39057,7 @@
 	pixel_y = 3;
 	tag = "icon-chair (WEST)"
 	},
-/obj/effect/landmark/start/police,
+/obj/effect/landmark/start/ship_marine,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -40827,7 +40827,6 @@
 /obj/structure/bed/chair/comfy/orange{
 	dir = 4
 	},
-/obj/effect/landmark/start/warden,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/main_office)
 "eSo" = (
@@ -45769,7 +45768,7 @@
 /area/almayer/engineering/engine_core)
 "heQ" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/start/police,
+/obj/effect/landmark/start/ship_marine,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26
 	},
@@ -46594,7 +46593,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "hzx" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Chief MP's Office"
+	name = "\improper Master-at-Arms' Office"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -47039,9 +47038,9 @@
 /obj/structure/machinery/recharger,
 /obj/structure/transmitter{
 	dir = 4;
-	name = "Brig Warden's Office Telephone";
+	name = "Yard Office Telephone";
 	phone_category = "Offices";
-	phone_id = "Brig Warden's Office";
+	phone_id = "Yard Office";
 	pixel_x = -16
 	},
 /turf/open/floor/almayer{
@@ -48719,7 +48718,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	dir = 1;
-	name = "\improper Warden Office"
+	name = "\improper Yard Office"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -50127,9 +50126,9 @@
 /obj/effect/landmark/map_item,
 /obj/item/folder/red,
 /obj/structure/transmitter/rotary{
-	name = "Brig CMP's Office Telephone";
+	name = "Master-at-Arms' Office Telephone";
 	phone_category = "Offices";
-	phone_id = "Brig CMP's Office";
+	phone_id = "Master-at-Arms' Office";
 	pixel_x = 15
 	},
 /turf/open/floor/almayer,
@@ -50745,7 +50744,6 @@
 /area/almayer/hallways/starboard_hallway)
 "jud" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/start/cadet_police,
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
@@ -57460,7 +57458,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "mGn" = (
-/obj/structure/machinery/cm_vending/clothing/military_police_warden,
+/obj/structure/machinery/cm_vending/clothing/ship_marine,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -61692,7 +61690,7 @@
 /area/almayer/lifeboat_pumps/north1)
 "oBg" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/start/police,
+/obj/effect/landmark/start/ship_marine,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
@@ -62858,7 +62856,7 @@
 "pdG" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
-	name = "\improper Chief MP's Bedroom"
+	name = "\improper Master-at-Arms' Bedroom"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -63583,7 +63581,7 @@
 	dir = 1;
 	tag = "icon-chair (NORTH)"
 	},
-/obj/effect/landmark/start/police,
+/obj/effect/landmark/start/ship_marine,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
@@ -69068,7 +69066,7 @@
 	},
 /area/almayer/shipboard/starboard_point_defense)
 "rZR" = (
-/obj/effect/landmark/start/police,
+/obj/effect/landmark/start/ship_marine,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
@@ -71728,15 +71726,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/alpha_bravo_shared)
-"tkV" = (
-/obj/structure/bed/chair,
-/obj/effect/landmark/start/cadet_police,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "redcorner";
-	tag = "icon-redcorner (NORTH)"
-	},
-/area/almayer/shipboard/brig/processing)
 "tly" = (
 /obj/structure/platform{
 	dir = 8
@@ -73146,7 +73135,6 @@
 /area/almayer/command/computerlab)
 "tRA" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/start/cadet_police,
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},
@@ -97280,7 +97268,7 @@ iQg
 bRm
 ecq
 tsX
-tkV
+wVV
 pyj
 pyj
 luC

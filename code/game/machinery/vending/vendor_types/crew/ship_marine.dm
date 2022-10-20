@@ -29,10 +29,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_ship_marine, list(
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-
-		list("HAT (CHOOSE 1)", 0, null, null, null),
-		list("MP Beret", 0, /obj/item/clothing/head/helmet/beret/marine/mp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR)
 
 	))
 

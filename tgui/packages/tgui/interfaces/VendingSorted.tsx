@@ -18,6 +18,7 @@ interface IconRecord {
   icon_sheet: string;
   icon_state: string;
   href: string;
+  base64: string;
 }
 
 interface VendingRecord {
@@ -132,7 +133,10 @@ const VendableItem2 = (props: VenableItem, context) => {
       align-items="center"
     >
       <Flex.Item>
-        <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
+        <img
+          className="VendingSorted__Icon"
+          alt={record.prod_name}
+          src={`data:image/jpeg;base64,${record.prod_icon.base64}`} />
       </Flex.Item>
 
       <Flex.Item>
@@ -186,7 +190,10 @@ const VendableClothingItem = (props: VenableItem, context) => {
       align-items="center"
     >
       <Flex.Item>
-        <img className="VendingSorted__Icon" alt={record.prod_name} src={record.prod_icon.href} />
+        <img
+          className="VendingSorted__Icon"
+          alt={record.prod_name}
+          src={`data:image/jpeg;base64,${record.prod_icon.base64}`} />
       </Flex.Item>
 
       <Flex.Item>

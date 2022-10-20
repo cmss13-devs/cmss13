@@ -146,10 +146,14 @@ IN_USE						used for vending/denying
 		if(!(item_name in product_icon_list))
 			product_icon_list[item_name] = list(
 				"href" = "",
-				"desc" = ""
+				"desc" = desc,
+				"base64" = "",
 			)
 		if(!r)
 			continue
+
+		product_icon_list[item_name]["base64"] = icon2base64(r)
+		/*
 		var/asset_name = generate_asset_name(r)
 		var/key = "[asset_name].png"
 		if(asset_name != null)
@@ -159,6 +163,7 @@ IN_USE						used for vending/denying
 				"href"=SSassets.transport.get_asset_url(key),
 				"desc"=desc
 			)
+		*/
 
 //get which turf the vendor will dispense its products on.
 /obj/structure/machinery/cm_vending/proc/get_appropriate_vend_turf()
@@ -702,7 +707,7 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/clothing/Initialize()
 	. = ..()
 	build_icons(get_listed_products(), 1, 3)
-	preload_assets()
+	//preload_assets()
 
 /obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
 	if(!(vending_human.marine_buy_flags & listed_products[4]))
@@ -1089,7 +1094,7 @@ IN_USE						used for vending/denying
 	. = ..()
 	populate_product_list(1.2)
 	build_icons(listed_products)
-	preload_assets()
+	//preload_assets()
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)

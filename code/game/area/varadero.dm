@@ -26,6 +26,7 @@
 	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
 
+
 /area/shuttle/drop2/varadero
 	name = "New Varadero - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
@@ -46,6 +47,18 @@
 /area/varadero/interior_protected
 	name = "New Varadero - Interior"
 	ceiling = CEILING_DEEP_UNDERGROUND
+
+/area/varadero/interior_protected/comms1
+	name = "New Varadero Cargo Generator"
+
+/area/varadero/interior_protected/comms2
+	name = "New Varadero Communications Project Site"
+
+/area/varadero/interior_protected/comms3
+	name = "New Varadero Fishing Hole"
+
+/area/varadero/exterior/comms4
+	name = "New Varadero Walkway Extension"
 
 /area/varadero/interior/oob
 	name = "New Varadero - Out Of Bounds"

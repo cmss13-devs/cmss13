@@ -227,3 +227,11 @@
   Segrain:
   - bugfix: Weeds are once again properly layered over the floor (meaning, for example,
       that vents and pipes are visible over them where appropriate).
+  Usnpeepoo, Nivrak:
+  - balance: Removed shielding slash from warrior. Warrior slashes now heal for (7
+      + 1 per enemy within 3 tiles, up to 2)% of missing health with a minimum of
+      20 and a maximum of 40. There is now a visual, and chat cue for when a warrior
+      gains extra health per marine.
+  - balance: Warriors health is reverted back to 500, up from 450.
+  - balance: Warriors slash now reduces cooldowns from all abilities by 0.30 seconds
+      worth.

@@ -239,3 +239,5 @@
   - balance: Warriors health is reverted back to 500, up from 450.
   - balance: Warriors slash now reduces cooldowns from all abilities by 0.30 seconds
       worth.
+  kugamo:
+  - bugfix: Fixed visual bug where Carriers on fire wouldnt display as such.

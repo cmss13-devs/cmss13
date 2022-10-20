@@ -114,8 +114,8 @@
 	guttable = TRUE
 	min_length = 1
 	max_length = 5
-	base_gut_meat = /obj/item/reagent_container/food/snack/meat/fish/squid/sock
-	guttable_atoms = list(/obj/item/reagent_container/food/snack/meat/fish/squid/sock)
+	base_gut_meat = /obj/item/reagent_container/food/snack/meat/fish/squid/alt
+	guttable_atoms = list(/obj/item/reagent_container/food/snack/meat/fish/squid/alt)
 
 //----------------//
 //WORMS

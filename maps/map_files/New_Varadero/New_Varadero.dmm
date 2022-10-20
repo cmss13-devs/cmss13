@@ -6,6 +6,7 @@
 	pixel_y = -4
 	},
 /obj/item/folder/black_random,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -50,6 +51,7 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "blue"
@@ -59,6 +61,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/beakers,
 /obj/item/reagent_container/glass/beaker/bluespace,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -171,6 +174,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -222,6 +226,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "alE" = (
@@ -235,6 +240,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -248,6 +254,13 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/caves)
+"alN" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva{
+	dir = 10;
+	icon_state = "purple"
+	},
+/area/varadero/interior/research)
 "amu" = (
 /turf/closed/wall/r_wall,
 /area/varadero/exterior/lz1_near)
@@ -709,6 +722,7 @@
 	pixel_x = -3;
 	pixel_y = 6
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "aHy" = (
@@ -1102,6 +1116,7 @@
 	health = 80
 	},
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -1126,11 +1141,13 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "beE" = (
 /obj/item/device/taperecorder,
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -1140,6 +1157,7 @@
 	dir = 4
 	},
 /obj/structure/filingcabinet/security,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "red"
@@ -1240,6 +1258,7 @@
 "bio" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/spawner/random/powercell,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/varadero/interior/chapel)
 "biz" = (
@@ -1272,6 +1291,7 @@
 /obj/item/trash/cigbutt{
 	pixel_y = 8
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -1306,6 +1326,7 @@
 /area/varadero/interior/administration)
 "bjP" = (
 /obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -1356,6 +1377,7 @@
 	health = 80
 	},
 /obj/item/tool/surgery/hemostat/predatorhemostat,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -1418,6 +1440,8 @@
 	pixel_x = -15;
 	pixel_y = 2
 	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -1554,6 +1578,7 @@
 	pixel_y = 7
 	},
 /obj/effect/spawner/random/powercell,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -1580,6 +1605,7 @@
 	pixel_x = 8;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -2110,6 +2136,7 @@
 	pixel_x = -3;
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -2224,6 +2251,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -2366,6 +2394,7 @@
 	pixel_x = 7
 	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -2397,6 +2426,7 @@
 	layer = 3.1
 	},
 /obj/structure/closet/secure_closet/scientist,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purple"
@@ -2515,6 +2545,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purple"
@@ -2637,6 +2668,7 @@
 /area/varadero/interior/security)
 "cvW" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "green"
@@ -2687,6 +2719,7 @@
 "cwQ" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/bible/booze,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "czg" = (
@@ -2759,6 +2792,7 @@
 	dir = 8;
 	tag = "icon-bulb1 (WEST)"
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -3026,6 +3060,7 @@
 "cNh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -3038,10 +3073,12 @@
 	pixel_y = 9
 	},
 /obj/effect/spawner/random/powercell,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/varadero/exterior/lz1_console)
 "cNk" = (
 /obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "cNu" = (
@@ -3070,6 +3107,7 @@
 	pixel_x = 9;
 	pixel_y = 12
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
 /area/varadero/interior/administration)
 "cNC" = (
@@ -3120,6 +3158,7 @@
 /obj/structure/bed/sofa/pews/flipped{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "cOK" = (
@@ -3207,6 +3246,7 @@
 	pixel_x = -4;
 	pixel_y = -2
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -3277,6 +3317,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/hall_NW)
+"cVV" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "cWU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -3374,6 +3421,7 @@
 	pixel_x = 8;
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -3409,6 +3457,7 @@
 	pixel_y = 9
 	},
 /obj/item/tool/pen/blue,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -3482,6 +3531,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/plastic,
 /obj/item/trash/cigbutt,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "djP" = (
@@ -3544,10 +3594,12 @@
 /obj/structure/machinery/shower{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/plastic/alt,
 /area/varadero/interior/laundry)
 "dnU" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -3603,6 +3655,7 @@
 "dpO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/evidencebag,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "red"
@@ -3620,6 +3673,7 @@
 /area/varadero/interior/cargo)
 "dqy" = (
 /obj/structure/machinery/light/small,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/varadero/interior/disposals)
 "drn" = (
@@ -3636,6 +3690,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -3684,6 +3739,7 @@
 	pixel_x = 8;
 	pixel_y = 11
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "duw" = (
@@ -3745,6 +3801,7 @@
 	pixel_x = 3;
 	pixel_y = 2
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -3857,6 +3914,7 @@
 /area/varadero/interior_protected/caves/digsite)
 "dID" = (
 /obj/structure/closet/wardrobe/engineering_yellow,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -3872,6 +3930,7 @@
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/shotgun,
 /obj/item/ammo_box/magazine/shotgun/buckshot,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "blue"
@@ -3921,6 +3980,7 @@
 	},
 /obj/structure/surface/rack,
 /obj/item/tool/surgery/bonegel/predatorbonegel,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -3943,6 +4003,7 @@
 	pixel_x = 9;
 	pixel_y = 25
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "dNJ" = (
@@ -3978,6 +4039,7 @@
 /obj/item/facepaint/lipstick/jade{
 	pixel_x = 5
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -4017,6 +4079,14 @@
 	icon_state = "desert2"
 	},
 /area/varadero/exterior/pontoon_beach)
+"dPB" = (
+/obj/structure/surface/table,
+/obj/item/tool/kitchen/utensil/fork,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior/mess)
 "dPR" = (
 /obj/item/reagent_container/glass/bucket,
 /turf/open/gm/dirt,
@@ -4044,6 +4114,7 @@
 /area/varadero/interior/research)
 "dQq" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -4076,6 +4147,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	flipped = 1
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -4176,6 +4248,7 @@
 /obj/item/storage/pill_bottle/inaprovaline/skillless{
 	pixel_x = -5
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "dYn" = (
@@ -4193,6 +4266,7 @@
 	pixel_y = 7
 	},
 /obj/effect/spawner/random/bomb_supply,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -4252,6 +4326,13 @@
 /obj/item/packageWrap,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
+"ebm" = (
+/obj/structure/closet/crate/ammo/alt,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior/cargo)
 "ebr" = (
 /turf/closed/wall/rock/brown,
 /area/varadero/interior_protected/caves)
@@ -4483,6 +4564,7 @@
 "epU" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/evidencebag,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -4532,6 +4614,7 @@
 	pixel_x = -13;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/varadero/interior/chapel)
 "erE" = (
@@ -4556,6 +4639,7 @@
 "esz" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pouch/shotgun,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "red"
@@ -4597,10 +4681,12 @@
 	pixel_x = 8;
 	pixel_y = 11
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "eul" = (
 /obj/structure/closet/wardrobe/chaplain_black,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/varadero/interior/chapel)
 "euH" = (
@@ -4666,6 +4752,7 @@
 "exH" = (
 /obj/item/device/defibrillator,
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "wred"
@@ -4999,6 +5086,7 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -5057,6 +5145,10 @@
 	icon_state = "green"
 	},
 /area/varadero/interior/hall_NW)
+"ePD" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "eQz" = (
 /obj/structure/filingcabinet/filingcabinet,
 /obj/item/paper/research_notes,
@@ -5206,6 +5298,7 @@
 /area/varadero/exterior/lz1_near)
 "eWC" = (
 /obj/structure/closet/secure_closet/engineering_personal,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "yellow"
@@ -5395,6 +5488,7 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -5412,6 +5506,7 @@
 "feV" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/attachment,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "blue"
@@ -5460,6 +5555,7 @@
 /obj/structure/closet/secure_closet/medical1{
 	req_access_txt = "100"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "wred"
 	},
@@ -5517,6 +5613,14 @@
 	icon_state = "redfull"
 	},
 /area/varadero/interior/medical)
+"fiQ" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/varadero/interior/electrical)
 "fjx" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -5709,6 +5813,7 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -5878,6 +5983,7 @@
 "fCE" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pouch/sling,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -6102,6 +6208,7 @@
 /obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/item/storage/box/syringes,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "wred"
@@ -6221,6 +6328,7 @@
 /area/varadero/exterior/pontoon_beach)
 "fQr" = (
 /obj/structure/closet/emcloset,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "green"
 	},
@@ -6236,6 +6344,7 @@
 /area/varadero/interior/mess)
 "fQU" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "red"
 	},
@@ -6263,6 +6372,7 @@
 /obj/item/paper/janitor{
 	pixel_y = 8
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
 "fUF" = (
@@ -6304,6 +6414,7 @@
 /area/varadero/interior_protected/vessel)
 "fWi" = (
 /obj/structure/closet/crate/trashcart,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -6411,6 +6522,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
 /obj/item/paper/research_notes,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "blue"
 	},
@@ -6563,6 +6675,7 @@
 /area/varadero/interior/records)
 "gdN" = (
 /obj/structure/surface/table/woodentable,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -6705,6 +6818,7 @@
 	pixel_x = -3;
 	pixel_y = 10
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "gkx" = (
@@ -6786,6 +6900,7 @@
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = -30
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -6797,6 +6912,7 @@
 /obj/structure/closet/crate/trashcart{
 	pixel_y = 8
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -6845,6 +6961,16 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/administration)
+"gsI" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "gsP" = (
 /turf/open/space/basic,
 /area/space)
@@ -6861,6 +6987,7 @@
 /obj/item/tool/pickaxe{
 	pixel_y = -4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
 "gtj" = (
@@ -7022,6 +7149,7 @@
 /obj/item/weapon/melee/wirerod{
 	pixel_x = 8
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "blue"
 	},
@@ -7112,6 +7240,7 @@
 	dir = 8;
 	health = 80
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -7248,6 +7377,7 @@
 	pixel_x = -8;
 	pixel_y = 11
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "gMf" = (
@@ -7387,6 +7517,7 @@
 "gUb" = (
 /obj/structure/surface/table,
 /obj/item/bodybag,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "red"
@@ -7451,6 +7582,7 @@
 /area/varadero/interior/electrical)
 "gYY" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "yellow"
@@ -7492,6 +7624,7 @@
 	pixel_x = -2;
 	pixel_y = 18
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -7577,6 +7710,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -7628,6 +7762,7 @@
 "hkc" = (
 /obj/structure/surface/table,
 /obj/item/device/binoculars,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -7635,6 +7770,7 @@
 "hkZ" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/folder/red,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "hla" = (
@@ -7689,6 +7825,7 @@
 	pixel_x = -6;
 	pixel_y = 7
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -7726,6 +7863,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -7754,6 +7892,13 @@
 "hqL" = (
 /turf/open/floor/carpet,
 /area/varadero/exterior/lz1_console)
+"hrv" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "purple"
+	},
+/area/varadero/interior/research)
 "hrG" = (
 /turf/open/floor/shiva{
 	dir = 6;
@@ -7823,6 +7968,7 @@
 /area/varadero/interior/research)
 "huy" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -7858,6 +8004,7 @@
 	},
 /area/varadero/interior/medical)
 "hvj" = (
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/varadero/interior/disposals)
 "hwa" = (
@@ -7956,6 +8103,7 @@
 "hyQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -8032,6 +8180,7 @@
 /area/varadero/interior/medical)
 "hEE" = (
 /obj/structure/closet/toolcloset,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -8047,6 +8196,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "purple"
 	},
@@ -8076,6 +8226,7 @@
 	pixel_x = -7;
 	pixel_y = 7
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/varadero/exterior/lz1_console)
 "hGz" = (
@@ -8116,6 +8267,7 @@
 /obj/item/storage/photo_album{
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "hJO" = (
@@ -8245,6 +8397,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "yellow"
@@ -8293,6 +8446,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -8364,6 +8518,7 @@
 /area/varadero/interior/cargo)
 "hUY" = (
 /obj/structure/closet/wardrobe/engineering_yellow,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "yellow"
 	},
@@ -8424,6 +8579,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	icon_state = "green"
 	},
@@ -8454,6 +8610,7 @@
 	pixel_x = -5;
 	pixel_y = 1
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -8495,6 +8652,7 @@
 "ibo" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/boiledspagetti,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -8643,6 +8801,13 @@
 	icon_state = "snow_mat"
 	},
 /area/varadero/interior/security)
+"ifb" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva{
+	dir = 9;
+	icon_state = "purple"
+	},
+/area/varadero/interior/research)
 "ifw" = (
 /turf/open/floor/plating,
 /area/varadero/interior/security)
@@ -8651,6 +8816,7 @@
 	pixel_y = 3
 	},
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 5;
 	icon_state = "purple"
@@ -8671,6 +8837,7 @@
 	pixel_x = 4;
 	pixel_y = 14
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -8794,6 +8961,7 @@
 	pixel_x = 14;
 	pixel_y = 11
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "iop" = (
@@ -8856,6 +9024,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -8923,6 +9092,7 @@
 	pixel_x = 7;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -8970,6 +9140,10 @@
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/research)
+"ivy" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/shuttle/elevator,
+/area/varadero/interior/records)
 "ivD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -9003,6 +9177,7 @@
 /area/varadero/interior/security)
 "iwc" = (
 /obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -9035,6 +9210,7 @@
 /obj/item/storage/pill_bottle/kelotane/skillless{
 	pixel_x = -5
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "iwy" = (
@@ -9122,6 +9298,17 @@
 	dir = 1
 	},
 /area/varadero/interior/research)
+"izv" = (
+/obj/structure/toilet{
+	dir = 1;
+	tag = "icon-toilet00 (NORTH)"
+	},
+/obj/structure/machinery/light/small,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/varadero/interior/toilets)
 "izB" = (
 /obj/item/stool{
 	pixel_x = 7;
@@ -9174,6 +9361,7 @@
 /area/varadero/interior/research)
 "iAx" = (
 /obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "yellow"
@@ -9209,6 +9397,7 @@
 /area/varadero/interior/maintenance/south)
 "iDS" = (
 /obj/structure/closet/secure_closet/security,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -9230,6 +9419,7 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -9294,6 +9484,10 @@
 	icon_state = "white"
 	},
 /area/varadero/interior/toilets)
+"iIp" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/shuttle/elevator/grating,
+/area/varadero/interior/records)
 "iIr" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -9304,6 +9498,7 @@
 /area/varadero/interior_protected/comms2)
 "iIt" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "iIC" = (
@@ -9358,6 +9553,7 @@
 	dir = 8;
 	layer = 2.991
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -9527,6 +9723,7 @@
 	pixel_x = 6;
 	pixel_y = 8
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "iPI" = (
@@ -9571,6 +9768,7 @@
 	pixel_x = -8;
 	pixel_y = 11
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -9636,6 +9834,7 @@
 	pixel_x = 10;
 	pixel_y = 2
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "red"
@@ -9690,6 +9889,7 @@
 /obj/item/storage/pill_bottle/bicaridine/skillless{
 	pixel_x = 6
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "iUj" = (
@@ -9787,6 +9987,7 @@
 /area/varadero/interior/medical)
 "jai" = (
 /obj/structure/filingcabinet/security,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "red"
@@ -10051,6 +10252,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -10114,6 +10316,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "red"
@@ -10165,6 +10368,14 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/records)
+"jvY" = (
+/obj/structure/surface/table,
+/obj/item/trash/plate,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/varadero/interior/mess)
 "jwf" = (
 /obj/structure/platform_decoration/kutjevo,
 /obj/item/tool/warning_cone,
@@ -10230,6 +10441,7 @@
 /obj/item/storage/wallet/random{
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -10322,6 +10534,7 @@
 	icon_state = "book-3";
 	name = "book case"
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -10393,6 +10606,7 @@
 	layer = 2.991
 	},
 /obj/structure/closet/radiation,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "purple"
 	},
@@ -10407,6 +10621,7 @@
 	pixel_x = -5;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "jJT" = (
@@ -10468,6 +10683,7 @@
 /area/varadero/interior/medical)
 "jMU" = (
 /obj/structure/closet/secure_closet/security,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "red"
@@ -10535,6 +10751,7 @@
 /obj/item/tool/pickaxe/drill{
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -10564,6 +10781,7 @@
 	pixel_y = -1
 	},
 /obj/item/tool/pen/blue,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "jQG" = (
@@ -10622,11 +10840,13 @@
 /obj/structure/surface/table/woodentable{
 	flipped = 1
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "jSP" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe/jackhammer,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -10671,6 +10891,7 @@
 	pixel_x = -5;
 	pixel_y = 11
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -10762,6 +10983,7 @@
 	pixel_x = -5;
 	pixel_y = 9
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "blue"
@@ -10867,6 +11089,10 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
+"kei" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/gm/grass/weedable,
+/area/varadero/interior_protected/caves/central)
 "keo" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Sports Center";
@@ -11076,6 +11302,7 @@
 	pixel_x = 8;
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "kqQ" = (
@@ -11214,6 +11441,7 @@
 /area/varadero/interior_protected/caves/central)
 "kwa" = (
 /obj/structure/closet/secure_closet/freezer/meat,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "green"
@@ -11361,6 +11589,7 @@
 /obj/item/device/reagent_scanner{
 	pixel_x = -7
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -11379,6 +11608,7 @@
 /obj/item/ashtray/bronze{
 	icon_state = "ashtray_half_br"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "kCT" = (
@@ -11429,6 +11659,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/medical)
+"kDT" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva{
+	icon_state = "purple"
+	},
+/area/varadero/interior/research)
 "kEg" = (
 /obj/structure/machinery/door_control{
 	id = "colony_sec_armory";
@@ -11523,6 +11759,7 @@
 	dir = 8;
 	tag = "icon-tube1 (WEST)"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "kIJ" = (
@@ -11870,6 +12107,7 @@
 /area/varadero/exterior/comms4)
 "lbi" = (
 /obj/structure/closet/secure_closet/cargotech,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -12077,6 +12315,7 @@
 /obj/structure/closet/secure_closet/medical3{
 	req_access_txt = "100"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "wred"
 	},
@@ -12112,6 +12351,7 @@
 	pixel_x = 6;
 	pixel_y = 2
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 5;
 	icon_state = "blue"
@@ -12228,6 +12468,7 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -12269,6 +12510,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating{
 	dir = 5;
 	icon_state = "warnplate"
@@ -12359,6 +12601,7 @@
 /area/varadero/interior/medical)
 "lBS" = (
 /obj/structure/closet/emcloset,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "greenfull"
@@ -12478,6 +12721,7 @@
 /area/varadero/interior_protected/vessel)
 "lHE" = (
 /obj/structure/closet/secure_closet/engineering_personal,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -12563,6 +12807,7 @@
 	desc = "The beaker stares at you lecherously. Its contents... irresistible.";
 	pixel_y = 7
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -12613,6 +12858,7 @@
 /area/varadero/interior_protected/comms1)
 "lMP" = (
 /obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "yellow"
@@ -12633,6 +12879,7 @@
 /obj/structure/prop/server_equipment/laptop/closed{
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "lNX" = (
@@ -12688,6 +12935,7 @@
 /area/varadero/interior/hall_SE)
 "lQO" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "green"
@@ -12849,6 +13097,7 @@
 /area/varadero/exterior/lz1_near)
 "lYA" = (
 /obj/structure/closet/secure_closet/medical2,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -12971,6 +13220,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 5;
 	icon_state = "red"
@@ -13019,6 +13269,7 @@
 	pixel_x = -6;
 	pixel_y = 2
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
 /area/varadero/interior/administration)
 "mey" = (
@@ -13141,6 +13392,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "purple"
@@ -13197,6 +13449,7 @@
 	dir = 1
 	},
 /obj/structure/largecrate/random,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -13414,6 +13667,7 @@
 	dir = 8;
 	tag = "icon-pipe-t (WEST)"
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "yellow"
@@ -13634,6 +13888,7 @@
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "yellow"
@@ -13700,6 +13955,7 @@
 	icon_state = "book-5";
 	name = "book case"
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -13841,6 +14097,7 @@
 /area/varadero/interior_protected/caves/digsite)
 "mNj" = (
 /obj/structure/filingcabinet/security,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -13969,6 +14226,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "mUP" = (
@@ -14024,6 +14282,7 @@
 /area/varadero/exterior/comms4)
 "mWi" = (
 /obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -14031,6 +14290,7 @@
 "mXc" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/bottle/holywater,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "mXo" = (
@@ -14300,6 +14560,7 @@
 /area/varadero/interior/hall_NW)
 "niF" = (
 /obj/structure/closet/secure_closet/personal/patient,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -14353,6 +14614,7 @@
 	pixel_y = 11
 	},
 /obj/structure/barricade/handrail/wire,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -14424,6 +14686,7 @@
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/bottle/holywater,
 /obj/structure/machinery/light,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "red"
@@ -14457,6 +14720,12 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
+"nqx" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/south)
 "nqN" = (
 /obj/item/stool{
 	icon_state = "stool_alt"
@@ -14532,6 +14801,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	flipped = 1
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -14542,6 +14812,7 @@
 	dir = 8;
 	icon_state = "chair_alt"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -14573,6 +14844,7 @@
 	dir = 8
 	},
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -14623,6 +14895,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -14799,6 +15072,7 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -14926,6 +15200,7 @@
 "nPI" = (
 /obj/structure/surface/table,
 /obj/item/tool/kitchen/utensil/spoon,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -15103,6 +15378,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
@@ -15132,6 +15408,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -15282,6 +15559,7 @@
 "odZ" = (
 /obj/structure/closet/toolcloset,
 /obj/structure/barricade/handrail/wire,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellow"
@@ -15367,6 +15645,7 @@
 	name = "Checkpoint Lockdown";
 	pixel_y = 36
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "red"
@@ -15437,6 +15716,7 @@
 "okI" = (
 /obj/structure/surface/rack,
 /obj/item/implantpad,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -15506,6 +15786,7 @@
 	projectile_coverage = 0;
 	unacidable = 1
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -15546,11 +15827,13 @@
 /obj/item/clothing/shoes/black{
 	layer = 3.1
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "opY" = (
 /obj/structure/machinery/light,
 /obj/structure/closet/crate/hydroponics/prespawned,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "blue"
 	},
@@ -15600,6 +15883,7 @@
 /obj/structure/machinery/shower{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior/laundry)
 "otL" = (
@@ -15723,6 +16007,7 @@
 	name = "Checkpoint Lockdown";
 	pixel_y = 7
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/varadero/interior/security)
 "ozz" = (
@@ -15771,6 +16056,7 @@
 	dir = 8
 	},
 /obj/item/tool/soap/syndie,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/plastic/alt,
 /area/varadero/interior/laundry)
 "oBP" = (
@@ -15806,6 +16092,7 @@
 /area/varadero/interior/hall_SE)
 "oCy" = (
 /obj/structure/closet/secure_closet/security,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "red"
@@ -15820,6 +16107,7 @@
 	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -15948,6 +16236,18 @@
 	icon_state = "yellowfull"
 	},
 /area/varadero/interior/electrical)
+"oIX" = (
+/obj/structure/filingcabinet,
+/obj/structure/machinery/light/small{
+	dir = 8;
+	tag = "icon-bulb1 (WEST)"
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/varadero/interior/security)
 "oJv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -16115,6 +16415,7 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/taperecorder,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "blue"
@@ -16227,6 +16528,7 @@
 /area/varadero/interior_protected/caves/digsite)
 "oXE" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -16424,6 +16726,7 @@
 /area/varadero/interior/cargo)
 "phd" = (
 /obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "red"
@@ -16473,6 +16776,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -16511,6 +16815,7 @@
 "plc" = (
 /obj/structure/surface/rack,
 /obj/item/clipboard,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "purple"
@@ -16644,6 +16949,7 @@
 /area/varadero/interior/court)
 "pqH" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "blue"
@@ -16699,6 +17005,7 @@
 "pth" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe/plasmacutter,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
 "pti" = (
@@ -16804,6 +17111,7 @@
 	pixel_x = 6;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -16876,6 +17184,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/buckshot,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -16885,6 +17194,7 @@
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -16904,6 +17214,7 @@
 "pCz" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/toolbox/mechanical/green,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -16934,6 +17245,17 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/hall_NW)
+"pDH" = (
+/obj/structure/toilet,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	tag = "icon-bulb1 (NORTH)"
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/varadero/interior/toilets)
 "pEE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -16982,13 +17304,6 @@
 	color = "#dae3e2"
 	},
 /area/varadero/interior/oob)
-"pHY" = (
-/obj/item/fishing_pole,
-/turf/open/floor/strata{
-	color = "#5e5d5d";
-	icon_state = "multi_tiles"
-	},
-/area/varadero/interior_protected/vessel)
 "pIz" = (
 /obj/structure/surface/table,
 /obj/item/trash/plate{
@@ -17075,6 +17390,7 @@
 /area/varadero/interior/electrical)
 "pJZ" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "blue"
@@ -17160,6 +17476,7 @@
 /obj/structure/machinery/door/window/northright{
 	name = "Disposals Chute"
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
@@ -17178,6 +17495,7 @@
 	pixel_x = -2;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "snow_mat"
@@ -17286,6 +17604,7 @@
 /obj/item/broken_device{
 	desc = "A timeless piece of technology from another era, of spacemen who once plunged into the 12th Bay and beyond."
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "purple"
@@ -17495,6 +17814,7 @@
 "qgP" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -17570,6 +17890,7 @@
 	pixel_x = -4;
 	pixel_y = 13
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -17724,6 +18045,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "red"
@@ -17731,6 +18053,7 @@
 /area/varadero/interior/security)
 "qsk" = (
 /obj/structure/closet/secure_closet/security,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 5;
 	icon_state = "red"
@@ -17905,6 +18228,7 @@
 /area/varadero/interior/security)
 "qAU" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -17923,6 +18247,7 @@
 	pixel_y = 20
 	},
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -18003,6 +18328,7 @@
 /area/varadero/interior/hall_SE)
 "qDs" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "red"
@@ -18025,6 +18351,7 @@
 /area/varadero/interior/medical)
 "qDw" = (
 /obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "red"
@@ -18039,6 +18366,7 @@
 	pixel_x = 1;
 	pixel_y = 2
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "qEn" = (
@@ -18142,6 +18470,7 @@
 /area/varadero/interior/hall_NW)
 "qKq" = (
 /obj/structure/closet/secure_closet/RD,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "qLa" = (
@@ -18149,6 +18478,7 @@
 	dir = 4;
 	icon_state = "chair_alt"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -18225,6 +18555,7 @@
 	pixel_x = 4;
 	pixel_y = -1
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -18240,6 +18571,7 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -18271,6 +18603,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "qOS" = (
@@ -18349,6 +18682,7 @@
 	dir = 4
 	},
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -18455,6 +18789,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "red"
@@ -18737,6 +19072,7 @@
 	pixel_x = 8;
 	pixel_y = 11
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -18758,12 +19094,14 @@
 	pixel_x = 1;
 	pixel_y = -2
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/research)
 "rmL" = (
 /obj/structure/closet/secure_closet/security,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 5;
 	icon_state = "red"
@@ -18885,6 +19223,7 @@
 	dir = 8;
 	tag = "icon-twindow (WEST)"
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "rrr" = (
@@ -18999,6 +19338,7 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purplefull"
@@ -19015,6 +19355,7 @@
 	pixel_x = 6;
 	pixel_y = 1
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "purple"
@@ -19072,6 +19413,7 @@
 /area/varadero/interior/cargo)
 "rxq" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "wred"
 	},
@@ -19289,6 +19631,7 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
 "rJI" = (
@@ -19340,6 +19683,7 @@
 	pixel_x = -6;
 	pixel_y = 13
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "rKL" = (
@@ -19361,7 +19705,7 @@
 /area/varadero/exterior/lz1_console)
 "rLq" = (
 /obj/structure/platform/kutjevo/smooth{
-	layer = 2.990
+	layer = 2
 	},
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
@@ -19431,6 +19775,7 @@
 	pixel_x = 7;
 	pixel_y = 15
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -19491,6 +19836,7 @@
 	pixel_x = 3;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -19522,6 +19868,7 @@
 	pixel_x = -8;
 	pixel_y = 11
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "rSX" = (
@@ -19581,6 +19928,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "purple"
@@ -19716,6 +20064,7 @@
 "sau" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/hand_labeler,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -20087,6 +20436,7 @@
 "srX" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pouch/tools/full,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -20130,6 +20480,7 @@
 /obj/structure/closet/secure_closet/medical1{
 	req_access_txt = "100"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -20213,6 +20564,7 @@
 	pixel_y = 24
 	},
 /obj/item/storage/pouch/machete/full,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "sxR" = (
@@ -20323,6 +20675,7 @@
 "sCK" = (
 /obj/structure/closet/secure_closet/scientist,
 /obj/item/clothing/mask/gas/clown_hat,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "purple"
@@ -20516,6 +20869,7 @@
 /area/varadero/interior/mess)
 "sJB" = (
 /obj/structure/filingcabinet/security,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "red"
@@ -20837,6 +21191,7 @@
 	pixel_x = -6;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "snow_mat"
@@ -20945,6 +21300,13 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/cargo)
+"tkq" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/research)
 "tkH" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/crap_item,
@@ -20997,6 +21359,7 @@
 	pixel_x = -8;
 	pixel_y = 11
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "blue"
@@ -21152,6 +21515,7 @@
 	pixel_x = -9;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "twm" = (
@@ -21330,6 +21694,7 @@
 /obj/structure/closet/crate/trashcart{
 	pixel_y = 8
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -21364,6 +21729,13 @@
 	icon_state = "redfull"
 	},
 /area/varadero/interior/medical)
+"tKh" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/north)
 "tKr" = (
 /obj/structure/machinery/light,
 /obj/structure/bed/chair/office/dark{
@@ -21459,6 +21831,7 @@
 	pixel_x = 7;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "tNT" = (
@@ -21804,12 +22177,15 @@
 	dir = 4
 	},
 /obj/structure/closet/radiation,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "purple"
 	},
 /area/varadero/interior/research)
 "udg" = (
 /obj/structure/closet/secure_closet/engineering_welding,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "blue"
@@ -21944,6 +22320,7 @@
 /area/varadero/exterior/lz1_console)
 "uiq" = (
 /obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -21990,6 +22367,7 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
@@ -22111,6 +22489,7 @@
 "uqw" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/blood/OMinus,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -22141,6 +22520,7 @@
 "usp" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -22272,6 +22652,7 @@
 	pixel_x = 12;
 	pixel_y = 14
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -22494,6 +22875,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -22611,6 +22993,7 @@
 /area/varadero/interior/hall_SE)
 "uMu" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "uMx" = (
@@ -22644,6 +23027,7 @@
 	pixel_x = -6;
 	pixel_y = 15
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -22655,9 +23039,6 @@
 /area/varadero/interior/laundry)
 "uNy" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -22694,6 +23075,7 @@
 /obj/structure/closet/secure_closet/medical3{
 	req_access_txt = "100"
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "wred"
@@ -22989,6 +23371,7 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "blue"
@@ -23188,6 +23571,7 @@
 /area/varadero/exterior/lz1_near)
 "vjv" = (
 /obj/structure/closet/crate/freezer/rations,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -23280,6 +23664,7 @@
 "vnU" = (
 /obj/item/storage/box/bodybags,
 /obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "red"
@@ -23399,6 +23784,7 @@
 	pixel_x = -8;
 	pixel_y = 11
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 5;
 	icon_state = "red"
@@ -23494,6 +23880,7 @@
 	},
 /obj/structure/closet/radiation,
 /obj/structure/barricade/handrail/wire,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	icon_state = "yellow"
 	},
@@ -23515,6 +23902,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/evidence,
 /obj/item/tool/hand_labeler,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 5;
 	icon_state = "red"
@@ -23677,6 +24065,7 @@
 "vFs" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -23744,6 +24133,7 @@
 	pixel_x = 7;
 	pixel_y = 2
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "bluefull"
@@ -23790,6 +24180,7 @@
 "vMU" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -23866,6 +24257,7 @@
 "vPj" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/dry_ramen,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -23894,6 +24286,7 @@
 "vQL" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/frame/light_fixture,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "yellow"
@@ -23987,6 +24380,7 @@
 	pixel_x = -3;
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "vTq" = (
@@ -24054,6 +24448,7 @@
 "vVC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/trackimp,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "red"
@@ -24247,6 +24642,7 @@
 /area/varadero/interior/bunks)
 "wdX" = (
 /obj/structure/filingcabinet/filingcabinet,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "blue"
@@ -24290,6 +24686,7 @@
 	dir = 4
 	},
 /obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -24362,6 +24759,7 @@
 	pixel_x = 6;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -24619,6 +25017,7 @@
 /area/varadero/exterior/lz1_near)
 "wsa" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "blue"
@@ -24709,6 +25108,7 @@
 /area/varadero/interior_protected/caves)
 "wvK" = (
 /obj/structure/closet/crate/freezer,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -24755,6 +25155,7 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -24794,6 +25195,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -24953,6 +25355,7 @@
 "wMx" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/nanopaste,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -24993,6 +25396,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
@@ -25247,6 +25651,7 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "multi_tiles"
@@ -25287,6 +25692,7 @@
 	pixel_x = 6;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -25513,6 +25919,7 @@
 	pixel_x = 6;
 	pixel_y = 18
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "blue"
@@ -25650,6 +26057,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/packageWrap,
 /obj/item/tool/hand_labeler,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -25799,12 +26207,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/hall_SE)
-"xBa" = (
-/obj/item/weapon/gun/energy/laser_top,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
-/area/varadero/interior/technical_storage)
 "xBb" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river,
@@ -26108,6 +26510,12 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/administration)
+"xPu" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/varadero/interior/toilets)
 "xPR" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating/icefloor{
@@ -26256,6 +26664,7 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "blue"
@@ -26364,6 +26773,7 @@
 "ybm" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -26515,6 +26925,7 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "wred"
@@ -26642,6 +27053,7 @@
 	pixel_x = -8;
 	pixel_y = 1
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -26671,6 +27083,7 @@
 	icon_state = "chestdrawer";
 	pixel_x = 8
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -28604,11 +29017,11 @@ efw
 efw
 efw
 efw
-gKw
+tkq
 fay
-uuN
+ifb
 cqB
-hBX
+alN
 fay
 eqe
 xyr
@@ -28788,9 +29201,9 @@ efw
 mzI
 efw
 fay
-wIr
+hrv
 mym
-sDM
+kDT
 fay
 cJa
 hDA
@@ -33106,7 +33519,7 @@ ykc
 suC
 oJB
 cPI
-gTr
+ebm
 mWi
 mWi
 fWi
@@ -35887,7 +36300,7 @@ pQp
 pqH
 sDo
 cXQ
-xBa
+haT
 iUO
 pQp
 nBj
@@ -40635,8 +41048,8 @@ cNu
 ksX
 bsH
 bIj
-cto
-cto
+nqx
+nqx
 cto
 cto
 cto
@@ -41860,7 +42273,7 @@ bbS
 cZZ
 hyr
 ooe
-ukX
+tKh
 sdz
 sdz
 aVQ
@@ -42272,7 +42685,7 @@ tEJ
 cNu
 nTG
 cty
-aOg
+kei
 aOg
 mCF
 mCF
@@ -42454,7 +42867,7 @@ ptY
 uzg
 nTG
 cty
-aOg
+kei
 aOg
 aOg
 mCF
@@ -42964,7 +43377,7 @@ pVN
 cMf
 khb
 evJ
-ara
+ePD
 ara
 ara
 nZk
@@ -43670,7 +44083,7 @@ cBu
 pGs
 pGs
 pGs
-huc
+juW
 juW
 srq
 fal
@@ -43694,7 +44107,7 @@ khb
 evJ
 ara
 vcc
-ara
+ePD
 nZk
 hPD
 uQH
@@ -44072,8 +44485,8 @@ vPj
 hJQ
 uYF
 hen
-hJQ
-qlW
+dPB
+jvY
 qvQ
 bLy
 xNR
@@ -44250,12 +44663,12 @@ qqA
 pbt
 btl
 hen
-qlW
+jvY
 ibo
 uYF
 hen
 qYR
-hJQ
+dPB
 qvQ
 uXX
 xNR
@@ -45901,7 +46314,7 @@ wVf
 kof
 xgY
 phd
-xgY
+oIX
 qDw
 wVf
 pBS
@@ -45913,7 +46326,7 @@ wqb
 wqb
 wqb
 wqb
-wXu
+cVV
 wqb
 rRq
 usB
@@ -46268,7 +46681,7 @@ xOo
 iIL
 qDs
 wVf
-qvO
+gsI
 viK
 xJZ
 xJZ
@@ -46955,7 +47368,7 @@ pGs
 pGs
 pGs
 wOO
-eWC
+fiQ
 tlT
 tlT
 rsB
@@ -47564,8 +47977,8 @@ viK
 wXu
 pCj
 imz
-sHa
-kWB
+ivy
+iIp
 sHa
 ggk
 pCj
@@ -48474,8 +48887,8 @@ viK
 xJZ
 pCj
 imz
-sHa
-kWB
+ivy
+iIp
 sHa
 szh
 pCj
@@ -49387,7 +49800,7 @@ eyt
 eyt
 eyt
 tZd
-vZv
+pDH
 mDW
 sGo
 wlq
@@ -49397,7 +49810,7 @@ vzY
 eQZ
 sGo
 mDW
-oAm
+izv
 ksX
 etv
 cto
@@ -50298,7 +50711,7 @@ eyt
 eyt
 tZd
 vZv
-sGo
+xPu
 tZd
 eQZ
 qXM
@@ -50306,7 +50719,7 @@ tZd
 tcS
 dnU
 tZd
-sGo
+xPu
 oAm
 ksX
 etv
@@ -51886,7 +52299,7 @@ wqb
 bFD
 xJZ
 xJZ
-wXu
+cVV
 wqb
 wqb
 wqb
@@ -55775,7 +56188,7 @@ bsf
 bsf
 avD
 ilr
-pHY
+uvd
 smx
 pTc
 kjI

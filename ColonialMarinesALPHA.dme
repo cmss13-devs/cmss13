@@ -415,6 +415,7 @@
 #include "code\datums\emergency_calls\zombie.dm"
 #include "code\datums\entities\chemical_information.dm"
 #include "code\datums\entities\clans.dm"
+#include "code\datums\entities\connections.dm"
 #include "code\datums\entities\login_triplets.dm"
 #include "code\datums\entities\map_votes.dm"
 #include "code\datums\entities\mc_controller.dm"

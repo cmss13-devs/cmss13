@@ -218,3 +218,9 @@
   - rscadd: Added a hidden Ferret trucker cap to each map
   - imageadd: Added Ferret loaders
   - imageadd: Added Ferret trucker caps
+2022-10-20:
+  Don:
+  - rscadd: Medical personnel now have access to pressurized pouches containing tricordrazine
+      in their vendors.
+  - balance: Revival Mix pressurized pouches now come with tricordrazine instead of
+      peridaxon; the contents are now evenly split between the three reagents.

@@ -180,7 +180,7 @@ datum/preferences/proc/randomize_skin_color()
 	g_skin = green
 	b_skin = blue
 
-/datum/preferences/proc/update_preview_icon()
+/datum/preferences/proc/update_preview_icon(var/refresh_limb_status)
 	if(!owner)
 		return
 
@@ -188,6 +188,9 @@ datum/preferences/proc/randomize_skin_color()
 	if(isnull(preview_dummy))
 		preview_dummy = new()
 	clear_equipment()
+	if(refresh_limb_status)
+		for(var/obj/limb/L in preview_dummy.limbs)
+			L.status = LIMB_ORGANIC
 	preview_dummy.set_species()
 	copy_appearance_to(preview_dummy)
 	preview_dummy.update_body()

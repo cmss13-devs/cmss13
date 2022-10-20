@@ -89,7 +89,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 	LAZYREMOVE(target.traits, type)
 
 /// Put the actual changes made to the human mob in this proc
-/datum/character_trait/proc/apply_trait(mob/living/carbon/human/target)
+/datum/character_trait/proc/apply_trait(mob/living/carbon/human/target, var/datum/equipment_preset/preset)
 	SHOULD_CALL_PARENT(TRUE)
 
 	LAZYADD(target.traits, src)

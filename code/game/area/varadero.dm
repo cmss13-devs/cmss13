@@ -4,7 +4,7 @@
 /area/varadero
 	name = "New Varadero"
 	icon = 'icons/turf/area_varadero.dmi'
-	//ambience = list('figuresomethingout.ogg')
+	ambience = list()
 	icon_state = "varadero"
 	can_build_special = TRUE //T-Comms structure
 	temperature = TROPICAL_TEMP
@@ -49,16 +49,16 @@
 	ceiling = CEILING_DEEP_UNDERGROUND
 
 /area/varadero/interior_protected/comms1
-	name = "New Varadero Cargo Generator"
+	name = "New Varadero - Cargo Generator"
 
 /area/varadero/interior_protected/comms2
-	name = "New Varadero Communications Project Site"
+	name = "New Varadero - Communications Project Site"
 
 /area/varadero/interior_protected/comms3
-	name = "New Varadero Fishing Hole"
+	name = "New Varadero - Fishing Hole"
 
 /area/varadero/exterior/comms4
-	name = "New Varadero Walkway Extension"
+	name = "New Varadero - Walkway Extension"
 
 /area/varadero/interior/oob
 	name = "New Varadero - Out Of Bounds"
@@ -79,7 +79,7 @@
 //exterior areas
 
 /area/varadero/exterior/lz1_near
-	name = "New Varadero - Pontoon Dock"
+	name = "New Varadero - Pontoon Airfield"
 	icon_state = "lz1"
 	is_resin_allowed = FALSE
 

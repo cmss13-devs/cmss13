@@ -192,7 +192,6 @@
 /area/lv522/indoors/a_block/admin
 	name = "A-Block - Colony Operations Centre"
 	icon_state = "mechbay"
-	ceiling = CEILING_GLASS
 
 /area/lv522/indoors/a_block/dorms
 	name = "A-Block - Western Dorms And Offices"
@@ -213,7 +212,6 @@
 /area/lv522/indoors/a_block/medical
 	name = "A-Block - Medical"
 	icon_state = "medbay"
-	ceiling =  CEILING_GLASS
 
 /area/lv522/indoors/a_block/security
 	name = "A-Block - Security"
@@ -222,7 +220,6 @@
 /area/lv522/indoors/a_block/kitchen
 	name = "A-Block - Kitchen And Dining"
 	icon_state = "kitchen"
-	ceiling = CEILING_GLASS
 
 /area/lv522/indoors/a_block/kitchen/damage
 	ceiling = CEILING_NONE
@@ -231,7 +228,6 @@
 /area/lv522/indoors/a_block/executive
 	name = "A-Block - Executive Suite"
 	icon_state = "captain"
-	ceiling = CEILING_GLASS
 
 /area/lv522/indoors/a_block/dorm_north
 	name = "A-Block - Northen Shared Dorms"

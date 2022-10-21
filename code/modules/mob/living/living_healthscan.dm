@@ -388,8 +388,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"colour" = "white"
 						))
-					if(!chemicals_lists["tramadol"])
-						if(chemicals_lists["tramadol"]["amount"] < 15)
+					if(chemicals_lists["tramadol"])
+						if(chemicals_lists["tramadol"]["amount"] < 3)
 							advice += temp_advice
 					else
 						advice += temp_advice

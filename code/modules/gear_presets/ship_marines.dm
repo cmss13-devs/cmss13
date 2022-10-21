@@ -27,7 +27,7 @@
 	)
 	assignment = JOB_SHIP_MARINE
 	rank = JOB_SHIP_MARINE
-	paygrade = "ME5"
+	paygrade = "ME2"
 	role_comm_title = "SM"
 	skills = /datum/skills/ship_marine
 

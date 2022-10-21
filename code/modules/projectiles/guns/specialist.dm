@@ -1019,7 +1019,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
 /obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
 
-	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && istype(mob/living/carbon/human, user))
+	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
 		var/mob/living/carbon/human/huser = user
 		to_chat(user, SPAN_WARNING("Augh!! \The [src]'s launch blast resonates extremely loudly in your ears! You probably should have worn some sort of ear protection..."))
 		huser.apply_effect(3, STUN)

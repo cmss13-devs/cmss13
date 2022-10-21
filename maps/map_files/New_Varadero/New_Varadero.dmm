@@ -11701,10 +11701,6 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/security)
-"kHg" = (
-/obj/structure/prop/invuln/static_corpse/afric_zimmer,
-/turf/open/floor/wood,
-/area/varadero/interior/administration)
 "kHE" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/chapel_carpet{
@@ -19525,6 +19521,10 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/digsite)
+"rCI" = (
+/obj/structure/prop/invuln/static_corpse/afric_zimmer,
+/turf/open/floor/wood,
+/area/varadero/interior/administration)
 "rDz" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 8
@@ -41073,7 +41073,7 @@ kIK
 fAQ
 qqA
 xgG
-kHg
+rCI
 rKB
 jHJ
 tXE

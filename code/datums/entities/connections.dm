@@ -15,5 +15,5 @@ BSQL_PROTECT_DATUM(/datum/entity/connection)
 			"cid"=DB_FIELDTYPE_STRING_SMALL,
 			"ip"=DB_FIELDTYPE_STRING_SMALL,
 			"time"=DB_FIELDTYPE_DATE,
-			"byond_version"=DB_FIELDTYPE_INT,
+			"byond_version"=DB_FIELDTYPE_STRING_SMALL,
 		)

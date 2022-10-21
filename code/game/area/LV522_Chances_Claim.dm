@@ -110,7 +110,7 @@
 	name = "Colony Windbreakers - Observation"
 	icon_state = "purple"
 	requires_power = FALSE
-	ceiling = CEILING_NONE
+	ceiling = CEILING_GLASS
 	soundscape_playlist = SCAPE_PL_LV522_INDOORS
 
 /area/lv522/outdoors/colony_streets/central_streets
@@ -156,6 +156,10 @@
 
 /area/lv522/indoors/lone_buildings
 	name = "LV522 - Lone buildings"
+	icon_state = "green"
+
+/area/lv522/indoors/toilet
+	name = "LV522 - Outdoor Toilets"
 	icon_state = "green"
 
 /area/lv522/indoors/lone_buildings/engineering

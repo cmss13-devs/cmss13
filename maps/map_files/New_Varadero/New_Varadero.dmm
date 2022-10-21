@@ -3720,10 +3720,6 @@
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/security)
-"dpK" = (
-/obj/structure/prop/invuln/static_corpse/afric_zimmer,
-/turf/open/floor/wood,
-/area/varadero/interior/administration)
 "dpO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/evidencebag,
@@ -11705,6 +11701,10 @@
 	icon_state = "red"
 	},
 /area/varadero/interior/security)
+"kHg" = (
+/obj/structure/prop/invuln/static_corpse/afric_zimmer,
+/turf/open/floor/wood,
+/area/varadero/interior/administration)
 "kHE" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/chapel_carpet{
@@ -41073,7 +41073,7 @@ kIK
 fAQ
 qqA
 xgG
-dpK
+kHg
 rKB
 jHJ
 tXE

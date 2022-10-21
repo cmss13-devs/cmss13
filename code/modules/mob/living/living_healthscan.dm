@@ -372,7 +372,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"colour" = "purple"
 						))
-					if(!chemicals_lists["inaprovaline"])
+					if(chemicals_lists["inaprovaline"])
 						if(chemicals_lists["inaprovaline"]["amount"] < 30)
 							advice += temp_advice
 					else
@@ -661,7 +661,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			if(H.getBruteLoss(1) > 30 && reagents_in_body["bicaridine"] < 3)
 				advice += "<span class='scanner'>Administer a single dose of bicaridine.</span>\n"
 			if(H.getBruteLoss(1) > 30 && reagents_in_body["bicaridine"] > 3)
-				advice += "<span class='scanner'>Do not Administer a single dose of bicaridine.</span>\n"
+				advice += "<span class='scanner'>Administer a single dose of bicaridine.</span>\n"
 			if(H.health < 0 && reagents_in_body["inaprovaline"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of inaprovaline.</span>\n"
 

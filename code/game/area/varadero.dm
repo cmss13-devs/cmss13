@@ -4,7 +4,8 @@
 /area/varadero
 	name = "New Varadero"
 	icon = 'icons/turf/area_varadero.dmi'
-	ambience = list()
+	ambience_exterior = AMBIENCE_LV624
+	sound_environment = SOUND_ENVIRONMENT_MOUNTAINS
 	icon_state = "varadero"
 	can_build_special = TRUE //T-Comms structure
 	temperature = TROPICAL_TEMP
@@ -39,10 +40,16 @@
 /area/varadero/exterior
 	name = "New Varadero - Exterior"
 	ceiling = CEILING_NONE
+	ambience_exterior = AMBIENCE_LV624
+	//soundscape_playlist
+	sound_environment = SOUND_ENVIRONMENT_MOUNTAINS
 
 /area/varadero/interior
 	name = "New Varadero - Interior"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	ambience_exterior = AMBIENCE_PRISON
+	//soundscape_playlist
+	sound_environment = SOUND_ENVIRONMENT_ROOM
 
 /area/varadero/interior_protected
 	name = "New Varadero - Interior"

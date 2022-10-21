@@ -22,7 +22,7 @@
     ],
     "survivor_message": "You are an UA employee on the island outpost of New Varadero, it is vital that you do all that you can to contain the outbreak, or at least survive.",
     "map_item_type": "/obj/item/map/new_varadero",
-    "announce_text": "A manual distress signal has been received from United American outpost New Varadero. Survivor count is unknown, and the signal warns of biological hostiles not human in nature. An armed response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "announce_text": "A manual distress signal has been received from United American outpost New Varadero. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.\nDesgination: Radio survey station\n\nPop: 98\nTemp: 95F : 35C ext\nRanking officer: Maj. Afric Zimmerman\nTelecommunications array: Repair required\n\nNo further information available at this time.",
     "monkey_types": [
         "farwa"
     ],

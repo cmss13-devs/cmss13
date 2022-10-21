@@ -340,7 +340,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"colour" = "blue"
 						))
 					if(chemicals_lists["dexalin"])
-						if(chemicals_lists["dexalin"]["amount"] < 15)
+						if(chemicals_lists["dexalin"]["amount"] < 3)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -351,7 +351,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"colour" = "yellow"
 						))
 					if(chemicals_lists["kelotane"])
-						if(chemicals_lists["kelotane"]["amount"] < 15)
+						if(chemicals_lists["kelotane"]["amount"] < 3)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -362,7 +362,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"colour" = "red"
 						))
 					if(chemicals_lists["bicaridine"])
-						if(chemicals_lists["bicaridine"]["amount"] < 15)
+						if(chemicals_lists["bicaridine"]["amount"] < 3)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -373,7 +373,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"colour" = "purple"
 						))
 					if(chemicals_lists["inaprovaline"])
-						if(chemicals_lists["inaprovaline"]["amount"] < 30)
+						if(chemicals_lists["inaprovaline"]["amount"] < 5)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -659,8 +659,6 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			if(H.getFireLoss(1) > 30 && reagents_in_body["kelotane"] < 3)
 				advice += "<span class='scanner'>Administer a single dose of kelotane.</span>\n"
 			if(H.getBruteLoss(1) > 30 && reagents_in_body["bicaridine"] < 3)
-				advice += "<span class='scanner'>Administer a single dose of bicaridine.</span>\n"
-			if(H.getBruteLoss(1) > 30 && reagents_in_body["bicaridine"] > 3)
 				advice += "<span class='scanner'>Administer a single dose of bicaridine.</span>\n"
 			if(H.health < 0 && reagents_in_body["inaprovaline"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of inaprovaline.</span>\n"

@@ -382,11 +382,12 @@
 //=========================//USCM Survivors\\================================\\
 //=======================================================================\\
 
-/obj/item/clothing/under/marine/random
+/obj/item/clothing/under/marine/reconnaissance
 	name = "USCM reconnaissance uniform"
 	desc = "Primarily used during reconnaissance."
-
-/obj/item/clothing/under/marine/random/Initialize(mapload)
+	icon_state = "recon_marine"
+	worn_state = "recon_marine"
+/obj/item/clothing/under/marine/reconnaissance/Initialize(mapload)
 	. = ..()
 	var/R = rand(1,4)
 	switch(R) //this is no longer shitcode, courtesy of stan_albatross

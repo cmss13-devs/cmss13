@@ -14,7 +14,7 @@
 	)
 
 /datum/equipment_preset/survivor/forecon/load_gear(mob/living/carbon/human/H)
-	var/obj/item/clothing/under/marine/random/uniform = new()
+	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
 	var/obj/item/clothing/accessory/patch/patch = new()
@@ -191,7 +191,7 @@
 	paygrade = "MO1"
 
 /datum/equipment_preset/survivor/forecon/squad_leader/load_gear(mob/living/carbon/human/H)
-	var/obj/item/clothing/under/marine/random/uniform = new()
+	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/o1/pin = new()
 	var/obj/item/clothing/accessory/patch/patch = new()
@@ -217,7 +217,7 @@
 	role_comm_title = "FORECON CO"
 
 /datum/equipment_preset/survivor/forecon/major/load_gear(mob/living/carbon/human/H)
-	var/obj/item/clothing/under/marine/random/uniform = new()
+	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/o5/pin = new()
 	var/obj/item/clothing/accessory/patch/patch = new()

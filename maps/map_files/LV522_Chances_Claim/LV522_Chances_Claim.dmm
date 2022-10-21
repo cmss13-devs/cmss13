@@ -5453,7 +5453,7 @@
 	},
 /area/lv522/oob)
 "daL" = (
-/obj/item/clothing/under/marine/random,
+/obj/item/clothing/under/marine/reconnaissance,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -16743,7 +16743,7 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/item/clothing/under/marine/random,
+/obj/item/clothing/under/marine/reconnaissance,
 /obj/item/prop{
 	desc = "A fallen marine's information dog tag. It reads, Lance Corporal Martin 'Coyote' Conte";
 	icon = 'icons/obj/items/card.dmi';

@@ -8188,13 +8188,6 @@
 /obj/item/prop/helmetgarb/riot_shield,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
-"eSH" = (
-/obj/effect/spawner/random/sentry/midchance,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/lowsec)
 "eSZ" = (
 /obj/structure/bed/roller,
 /turf/open/floor/prison{
@@ -8714,7 +8707,6 @@
 /area/fiorina/station/park)
 "fgU" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/sentry/midchance,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "fhc" = (
@@ -23413,7 +23405,6 @@
 /area/fiorina/tumor/ice_lab)
 "nNJ" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/sentry/midchance,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "nOw" = (
@@ -27011,17 +27002,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/security/wardens)
-"qet" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = 13
-	},
-/obj/effect/spawner/random/sentry/midchance,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/fiorina/station/flight_deck)
 "qeu" = (
 /obj/structure/toilet{
 	pixel_y = 4
@@ -76052,7 +76032,7 @@ mcc
 avl
 kqC
 avl
-eSH
+iUy
 kqC
 ggp
 xri
@@ -85322,7 +85302,7 @@ roY
 roY
 mPW
 vvM
-qet
+tet
 eyz
 qGn
 tet

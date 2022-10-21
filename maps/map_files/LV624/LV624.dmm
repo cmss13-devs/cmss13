@@ -18335,10 +18335,13 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "mMv" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/explosive/grenade/incendiary/molotov{
 	pixel_x = -5;
 	pixel_y = -1
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 6;
+	pixel_y = -2
 	},
 /turf/open/floor{
 	dir = 8;

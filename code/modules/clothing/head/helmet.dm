@@ -633,7 +633,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bomb = CLOTHING_ARMOR_HIGH
 	specialty = "M3-T bombardier"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	unacidable = TRUE
 

@@ -95,7 +95,7 @@
 	if(disassembled) // Create a machine frame and delete the current machine
 		var/obj/structure/machinery/constructable_frame/F = new
 		F.forceMove(src.loc)
-	. = ..()
+	return ..()
 
 /obj/structure/machinery/telecomms/attack_remote(var/mob/user as mob)
 	attack_hand(user)

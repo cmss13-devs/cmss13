@@ -276,7 +276,7 @@
 	else
 		if(destroyed_stack_amount)
 			new stack_type(loc, destroyed_stack_amount)
-	. = ..()
+	return ..()
 
 
 /obj/structure/barricade/ex_act(severity, direction, cause_data)

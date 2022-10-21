@@ -251,7 +251,7 @@ obj/structure/windoor_assembly/Destroy()
 		new /obj/item/stack/sheet/glass/reinforced(get_turf(src), 5)
 		if(secure)
 			new /obj/item/stack/rods(get_turf(src), 4)
-	. = ..()
+	return ..()
 //Rotates the windoor assembly clockwise
 /obj/structure/windoor_assembly/verb/revrotate()
 	set name = "Rotate Windoor Assembly"

@@ -785,7 +785,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			new /obj/item/stack/sheet/metal(loc)
 		else
 			new /obj/item/frame/apc(loc)
-	qdel(src)
+	return ..()
 
 //Attack with hand - remove cell (if cover open) or interact with the APC
 /obj/structure/machinery/power/apc/attack_hand(mob/user)

@@ -53,7 +53,7 @@ obj/structure/bed/Destroy()
 	if(!disassembled)
 		if(!isnull(buildstacktype))
 			new buildstacktype(get_turf(src), buildstackamount)
-	. = ..()
+	return ..()
 
 /obj/structure/bed/afterbuckle(mob/M)
 	. = ..()

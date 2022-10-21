@@ -128,7 +128,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				new /obj/item/stack/cable_coil/cut(DT)
 				new /obj/effect/spawner/gibspawner/robot(DT)
 				new /obj/effect/decal/cleanable/blood/oil(DT)
-	. = ..()
+	return ..()
 
 /obj/structure/machinery/door/airlock/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_DOOR

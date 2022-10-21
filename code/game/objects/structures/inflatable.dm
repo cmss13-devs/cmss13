@@ -126,7 +126,7 @@
 	else
 		var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
 		src.transfer_fingerprints_to(R)
-	. = ..()
+	return ..()
 
 
 /obj/structure/inflatable/verb/hand_deflate()

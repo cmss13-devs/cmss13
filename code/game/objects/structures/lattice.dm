@@ -65,7 +65,7 @@
 /obj/structure/lattice/deconstruct(disassembled = TRUE)
 	if(disassembled)
 		new /obj/item/stack/rods(src.loc)
-	. = ..()
+	return ..()
 
 /obj/structure/lattice/proc/updateOverlays()
 	//if(!(istype(src.loc, /turf/open/space)))

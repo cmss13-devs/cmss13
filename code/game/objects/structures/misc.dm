@@ -32,7 +32,7 @@
 		new /obj/item/stack/rods(Tsec)
 
 		new /obj/effect/spawner/gibspawner/robot(Tsec)
-	. = ..()
+	return ..()
 
 /obj/structure/showcase/proc/healthcheck()
 	if(health <= 0)

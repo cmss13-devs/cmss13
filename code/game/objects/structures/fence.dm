@@ -178,7 +178,7 @@
 /obj/structure/fence/deconstruct(disassembled = TRUE)
 	if(disassembled)
 		new /obj/item/stack/rods(loc, 10)
-	. = ..()
+	return ..()
 
 /obj/structure/fence/proc/cut_grille()
 	health = 0

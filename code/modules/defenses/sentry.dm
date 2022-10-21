@@ -557,7 +557,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	if(disassembled)
 		new /obj/item/stack/sheet/metal/medium_stack(loc)
 		new /obj/item/stack/sheet/plasteel/medium_stack(loc)
-	. = ..()
+	return ..()
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

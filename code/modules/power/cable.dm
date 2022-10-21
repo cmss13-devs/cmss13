@@ -173,7 +173,7 @@
 /obj/structure/cable/deconstruct(disassembled = TRUE)
 	if(disassembled)
 		new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
-	. = ..()
+	return ..()
 
 /obj/structure/cable/proc/cableColor(var/colorC)
 	if(colorC)

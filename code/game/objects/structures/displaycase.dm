@@ -28,7 +28,7 @@
 		new /obj/item/shard(src.loc)
 	if (occupied)
 		occupied = 0
-	. = ..()
+	return ..()
 
 /obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.ammo.damage

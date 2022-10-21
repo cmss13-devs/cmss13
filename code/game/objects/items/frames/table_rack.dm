@@ -89,7 +89,7 @@
 	if(disassembled)
 		new /obj/item/stack/sheet/metal(get_turf(src))
 		new /obj/item/stack/rods(get_turf(src))
-	. = ..()
+	return ..()
 
 /*
  * Wooden Table Parts
@@ -117,7 +117,7 @@
 /obj/item/frame/table/wood/deconstruct(disassembled = TRUE)
 	if(disassembled)
 		new /obj/item/stack/sheet/wood(get_turf(src))
-	. = ..()
+	return ..()
 
 /obj/item/frame/table/wood/poor
 	name = "poor wooden table parts"
@@ -156,7 +156,7 @@
 	if(disassembled)
 		new /obj/item/stack/sheet/wood(get_turf(src))
 		new /obj/item/stack/tile/carpet(get_turf(src))
-	. = ..()
+	return ..()
 
 /*
  * Almayer Tables

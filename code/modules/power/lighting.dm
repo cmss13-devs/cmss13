@@ -41,7 +41,7 @@
 /obj/structure/machinery/light_construct/deconstruct(disassembled = TRUE)
 	if(disassembled)
 		new /obj/item/stack/sheet/metal(get_turf(src.loc), sheets_refunded)
-	. = ..()
+	return ..()
 
 /obj/structure/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)

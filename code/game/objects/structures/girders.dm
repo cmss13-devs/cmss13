@@ -222,7 +222,7 @@
 /obj/structure/girder/deconstruct(disassembled = TRUE)
 	if(disassembled)
 		new /obj/item/stack/sheet/metal(loc, 2)
-	. = ..()
+	return ..()
 
 /obj/structure/girder/proc/do_wall(var/obj/item/W, var/mob/user)
 	if(!(state == STATE_WALL))

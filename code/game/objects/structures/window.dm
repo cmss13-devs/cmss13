@@ -298,7 +298,7 @@
 			new /obj/item/stack/sheet/glass/reinforced(loc, 2)
 		else
 			new /obj/item/stack/sheet/glass/reinforced(loc, 2)
-	. = ..()
+	return ..()
 
 
 /obj/structure/window/proc/shatter_window(create_debris)
@@ -545,7 +545,7 @@
 			var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
 			new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
 			new_window_frame.setDir(dir)
-	. = ..()
+	return ..()
 /obj/structure/window/framed/almayer
 	name = "reinforced window"
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."

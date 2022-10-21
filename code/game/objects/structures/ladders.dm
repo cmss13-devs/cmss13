@@ -270,7 +270,7 @@
 
 /obj/structure/ladder/fragile_almayer/deconstruct()
 	new /obj/structure/prop/broken_ladder(loc)
-	qdel(src)
+	return ..()
 
 /obj/structure/prop/broken_ladder
 	name = "rickety ladder"

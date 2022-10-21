@@ -88,9 +88,9 @@
 	return XENO_ATTACK_ACTION
 
 /obj/effect/decal/mecha_wreckage/deconstruct(disassembled = TRUE)
-	if(disassembled)
+	if(!disassembled)
 		robogibs(src)
-	. = ..()
+	return ..()
 
 /obj/effect/decal/mecha_wreckage/gygax
 	name = "Gygax wreckage"

@@ -29,7 +29,7 @@
 			new parts_type(loc, 2)
 	else
 		new /obj/item/stack/sheet/wood(loc)
-	. = ..()
+	return ..()
 
 
 /obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)

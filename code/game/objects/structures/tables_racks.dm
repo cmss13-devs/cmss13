@@ -63,7 +63,7 @@
 			if(prob(50))
 				new /obj/item/stack/rods(loc)
 		new sheet_type(src)
-	. = ..()
+	return ..()
 
 /obj/structure/surface/table/proc/update_adjacent(location)
 	if(!location) location = src //location arg is used to correctly update neighbour tables when deleting a table.
@@ -641,7 +641,7 @@
 	else
 		new /obj/item/stack/sheet/metal(loc)
 	density = 0
-	. = ..()
+	return ..()
 
 /obj/structure/surface/rack/ex_act(severity, direction)
 	. = ..()

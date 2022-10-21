@@ -200,7 +200,7 @@
 		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
 		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
 		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-	. = ..()
+	return ..()
 
 /obj/structure/machinery/door/airlock/sandstone/runed/ex_act(severity, explosion_direction)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_DOOR

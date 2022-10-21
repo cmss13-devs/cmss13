@@ -83,7 +83,7 @@
 	deconstruct(FALSE)
 	explosion(src.loc,-1,-1,0)
 
-/obj/structure/machienry/deployable/barrier/deconstruct(disassembled = TRUE)
+/obj/structure/machinery/deployable/barrier/deconstruct(disassembled = TRUE)
 	if(!disassembled)
 		new /obj/item/stack/rods(loc)
-	. = ..()
+	return ..()

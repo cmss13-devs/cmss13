@@ -163,7 +163,7 @@
 /obj/structure/window_frame/deconstruct(disassembled = TRUE)
 	if(disassembled)
 		new buildstacktype(loc, buildstackamount)
-	. = ..()
+	return ..()
 
 /obj/structure/window_frame/almayer
 	icon_state = "alm_window0_frame"

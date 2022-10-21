@@ -45854,7 +45854,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "tMt" = (
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "tMD" = (
@@ -49959,9 +49961,11 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "vqk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
-/turf/open/floor/corsat{
-	icon_state = "marked"
+/obj/vehicle/train/cargo/trolley,
+/obj/structure/machinery/light,
+/turf/open/floor/prison{
+	icon_state = "darkbrownfull2";
+	tag = "icon-darkbrownfull2"
 	},
 /area/lv522/indoors/c_block/cargo)
 "vqm" = (
@@ -62700,7 +62704,7 @@ wHi
 iPD
 spo
 vXc
-cpy
+vXc
 cpy
 cpy
 umf
@@ -62927,7 +62931,7 @@ yfu
 iPD
 spo
 vXc
-cpy
+vXc
 cpy
 cpy
 umf
@@ -64992,7 +64996,7 @@ max
 max
 max
 tZh
-rHl
+ofi
 max
 xXq
 syM
@@ -65218,8 +65222,8 @@ mse
 mse
 mse
 mse
-rHl
-rHl
+aYO
+ofi
 max
 xXq
 syM
@@ -65445,7 +65449,7 @@ wCC
 max
 max
 max
-rHl
+erA
 tZh
 max
 xXq
@@ -71042,7 +71046,7 @@ rLq
 siT
 uEC
 xqd
-xKO
+xyL
 xqd
 uEC
 pAW
@@ -71052,7 +71056,7 @@ xtb
 joe
 uRx
 jLF
-xyL
+xtb
 hhD
 ugV
 tPx
@@ -71723,7 +71727,7 @@ rLy
 siT
 uEC
 xqd
-xKO
+xyL
 ubv
 xXX
 xtb
@@ -71733,7 +71737,7 @@ xtb
 xqd
 uEC
 wmk
-xyL
+xtb
 hhD
 ugV
 tPx
@@ -73085,7 +73089,7 @@ rLq
 siT
 xTs
 pVx
-xKO
+xtb
 ucx
 usz
 xtb
@@ -73539,7 +73543,7 @@ rLy
 xTs
 uEC
 xqd
-xKO
+xyL
 xqd
 xTs
 rKt
@@ -73766,7 +73770,7 @@ pCW
 uEC
 uEC
 qYv
-xtb
+xyL
 xqd
 xTs
 rsa
@@ -73993,7 +73997,7 @@ vsG
 pVx
 fwy
 qYv
-xtb
+xyL
 pVx
 wmk
 jLF
@@ -76492,10 +76496,10 @@ xRK
 xRK
 iJJ
 wrC
-wrC
+uHN
 uPk
 vnB
-wrC
+uHN
 wrC
 wrC
 xXR
@@ -82698,8 +82702,8 @@ vMu
 yhi
 tex
 bJZ
-uFF
-wFB
+vqk
+jmG
 aza
 ojy
 ild
@@ -82926,7 +82930,7 @@ wdd
 yhi
 yhi
 fxl
-jmG
+six
 gbq
 jwM
 jwM
@@ -83153,7 +83157,7 @@ cqH
 yhi
 qHj
 yhi
-vqk
+six
 jCU
 jwM
 jwM
@@ -83606,8 +83610,8 @@ sLG
 rqA
 wiE
 wiE
-ptp
-jmG
+uGl
+six
 sUj
 jwM
 ild
@@ -83833,8 +83837,8 @@ wYe
 yhi
 yhi
 wiE
-nHA
-wFB
+spM
+jmG
 aza
 jwM
 ild
@@ -94960,8 +94964,8 @@ uwT
 uwT
 uwT
 uwT
-cpy
-cpy
+uwT
+uwT
 cpy
 cpy
 cpy
@@ -95186,9 +95190,9 @@ xxq
 uwT
 uwT
 uwT
-cpy
-cpy
-cpy
+uwT
+uwT
+uwT
 cpy
 cpy
 cpy
@@ -95414,8 +95418,8 @@ uwT
 uwT
 uwT
 uwT
-cpy
-cpy
+uwT
+uwT
 cpy
 cpy
 cpy
@@ -95640,8 +95644,8 @@ uwT
 uwT
 uwT
 uwT
-cpy
-cpy
+uwT
+uwT
 cpy
 cpy
 cpy
@@ -95867,7 +95871,7 @@ tGb
 uwT
 uwT
 uwT
-cpy
+uwT
 cpy
 cpy
 cpy

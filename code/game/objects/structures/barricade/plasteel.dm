@@ -283,6 +283,6 @@
 	stack_amount = 6
 	destroyed_stack_amount = 3
 	barricade_type = "folding_metal"
-	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
+	repair_materials = list("metal" = 0.4, "plasteel" = 0.55)
 
 	linkable = FALSE

@@ -15,7 +15,7 @@
 	barricade_hitsound = 'sound/effects/metalhit.ogg'
 	barricade_type = "metal"
 	can_wire = TRUE
-	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
+	repair_materials = list("metal" = 0.4, "plasteel" = 0.55)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
 

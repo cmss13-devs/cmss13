@@ -241,3 +241,6 @@
       worth.
   kugamo:
   - bugfix: Fixed visual bug where Carriers on fire wouldnt display as such.
+2022-10-21:
+  realforest2001:
+  - admin: Mods can see things on STUI now.

@@ -23,8 +23,8 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 
-/obj/structure/displaycase/deconstruct(disassemble = TRUE)
-	if(!disassemble)
+/obj/structure/displaycase/deconstruct(disassembled = TRUE)
+	if(!disassembled)
 		new /obj/item/shard(src.loc)
 	if (occupied)
 		occupied = 0

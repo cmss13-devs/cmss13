@@ -13,6 +13,7 @@
 	//// Optional vars
 	var/fullscreen_type = null  // If this is set, display a fullscreen type to mobs
 	var/turf_overlay_icon_state // The icon to set on the VFX holder instanced into every turf at round start
+	var/turf_overlay_alpha = 255
 
 	var/effect_message = "tell a coder to fix this | WEATHER EVENT EFFECT MESSAGE"
 	var/damage_per_tick = 200 // more likely to report the bug if it instantly kills them
@@ -21,7 +22,7 @@
 	var/ambience = 'sound/ambience/strata/strata_snow.ogg'
 
 /datum/weather_event/proc/process_mob_effect(var/mob/living/carbon/affected_mob, var/delta_time = 1)
-	if(prob(WEATHER_MESSAGE_PROB))
+	if(effect_message && prob(WEATHER_MESSAGE_PROB))
 		to_chat(affected_mob, SPAN_WARNING(effect_message))
 	if(damage_per_tick)
 		var/calculated_damage = (isXeno(affected_mob) ? damage_per_tick * 3 : damage_per_tick) * delta_time

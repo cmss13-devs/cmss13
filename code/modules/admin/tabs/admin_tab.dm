@@ -318,6 +318,11 @@
 				to_chat(mob, message)
 	message_staff("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\".")
 
+#undef SUBTLE_MESSAGE_IN_HEAD
+#undef SUBTLE_MESSAGE_WEYLAND
+#undef SUBTLE_MESSAGE_USCM
+#undef SUBTLE_MESSAGE_FACTION
+
 /client/proc/get_admin_say()
 	var/msg = input(src, null, "asay \"text\"") as text|null
 	cmd_admin_say(msg)

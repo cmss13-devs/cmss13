@@ -277,6 +277,10 @@
 	log_admin("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
 	message_staff("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
 
+#define SUBTLE_MESSAGE_IN_HEAD "Voice in Head"
+#define SUBTLE_MESSAGE_WEYLAND "Weyland-Yutani"
+#define SUBTLE_MESSAGE_USCM "USCM High Command"
+#define SUBTLE_MESSAGE_FACTION "Faction Specific"
 
 /datum/admins/proc/subtlemessageall()
 	set name = "Subtle Message All"
@@ -286,11 +290,14 @@
 	if(!check_rights(R_MOD))
 		return
 
-	var/list/subtle_message_options = list("Voice in head", "Weyland-Yutani", "USCM High Command", "Faction-specific")
+	var/list/subtle_message_options = list(SUBTLE_MESSAGE_IN_HEAD, SUBTLE_MESSAGE_WEYLAND, SUBTLE_MESSAGE_USCM, SUBTLE_MESSAGE_FACTION)
 	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
 
-	if(message_option == "Faction-specific")
-		message_option = input("Choose which faction", "")
+	if(message_option == SUBTLE_MESSAGE_FACTION)
+		var/faction = input("Choose which faction", "") as text|null
+		if(!faction)
+			return
+		message_option = faction
 
 	var/input = input("Contents of the message", text("Subtle PM to In View")) as text|null
 	if(!input)
@@ -298,13 +305,13 @@
 
 	var/message
 	switch(message_option)
-		if("Voice in head")
+		if(SUBTLE_MESSAGE_IN_HEAD)
 			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [input]")
 		else
 			message = SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
 
 	for(var/mob/living/carbon/human/mob in view(usr.client))
-		if(message_option == "Voice in head")
+		if(message_option == SUBTLE_MESSAGE_IN_HEAD)
 			to_chat(mob, message)
 		else
 			if(mob.get_type_in_ears(/obj/item/device/radio/headset))

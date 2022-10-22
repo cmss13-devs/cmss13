@@ -245,6 +245,8 @@
   realforest2001:
   - admin: Mods can see things on STUI now.
 2022-10-22:
+  Diegoflores31:
+  - bugfix: Toxic trait now applies Toxin damage on touch as intended
   harryob:
   - server: added (deeper) support for tgs with DMAPI support, alongside a verb to
       check the current server revision

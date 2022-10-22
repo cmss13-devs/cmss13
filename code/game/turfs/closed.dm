@@ -236,10 +236,11 @@
 	opacity = 0
 
 /turf/closed/shuttle/dropship2/tornado
-	name = "\improper UD6 Tornado"
+	name = "\improper Tornado"
+	icon = 'icons/turf/dropship3.dmi'
 
 /turf/closed/shuttle/dropship2/tornado/typhoon
-	name = "\improper UD6 Typhoon"
+	name = "\improper Typhoon"
 
 /turf/closed/shuttle/escapepod
 	name = "wall"

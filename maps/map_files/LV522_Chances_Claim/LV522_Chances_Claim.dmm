@@ -2127,17 +2127,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"bsb" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/foamed_metal{
-	layer = 3.1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2";
-	tag = "icon-darkpurplefull2"
-	},
-/area/lv522/indoors/a_block/dorms)
 "bsx" = (
 /obj/structure/cargo_container{
 	icon_state = "gorg 2,0";
@@ -2904,9 +2893,7 @@
 	pixel_x = -1;
 	pixel_y = 29
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -10140,13 +10127,13 @@
 /area/lv522/indoors/a_block/admin)
 "flI" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/weapon/gun/revolver/m44/custom/webley,
 /obj/item/ashtray/bronze{
 	icon_state = "ashtray_full_bl";
 	pixel_x = 6;
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049,
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
 "fmf" = (
@@ -12283,11 +12270,6 @@
 	icon_state = "squares"
 	},
 /area/lv522/atmos/east_reactor)
-"gnP" = (
-/turf/closed/shuttle/dropship2/tornado/typhoon{
-	icon_state = "43"
-	},
-/area/lv522/landing_zone_forecon/UD6_Typhoon)
 "gok" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -13263,12 +13245,13 @@
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
 "gMV" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/turf/closed/wall/mineral/bone_resin,
-/area/lv522/oob)
+/turf/open/floor/strata{
+	icon_state = "blue1"
+	},
+/area/lv522/indoors/a_block/dorm_north)
 "gNb" = (
 /obj/structure/machinery/light,
 /obj/structure/closet/emcloset,
@@ -13532,18 +13515,10 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "gSJ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/flora/pottedplant{
-	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
-	icon_state = "pottedplant_21";
-	layer = 3.1;
-	name = "synthethic potted plant";
-	pixel_y = 14;
-	tag = "icon-plant-10"
-	},
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/foamed_metal{
 	layer = 3.1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -17122,8 +17097,7 @@
 	pixel_x = 11
 	},
 /obj/structure/machinery/light/small{
-	dir = 1;
-	pixel_y = 20
+	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
@@ -17778,9 +17752,6 @@
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "iDO" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
 	pixel_x = 10;
 	pixel_y = 5
@@ -19195,6 +19166,9 @@
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 4
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -19845,11 +19819,11 @@
 /area/lv522/indoors/a_block/security)
 "jvo" = (
 /obj/item/lightstick/red/spoke/planted{
-	pixel_x = 12;
-	pixel_y = 25
+	pixel_x = 9;
+	pixel_y = 18
 	},
-/turf/closed/wall/solaris/reinforced/hull,
-/area/lv522/oob)
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "jvG" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/prison{
@@ -20837,6 +20811,14 @@
 	tag = "icon-floor_marked (SOUTHWEST)"
 	},
 /area/lv522/indoors/lone_buildings/engineering)
+"jQa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/dam/crane{
+	icon_state = "tractor";
+	name = "tractor"
+	},
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/garage)
 "jQk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -22200,6 +22182,15 @@
 	tag = "icon-darkbrownfull2"
 	},
 /area/lv522/landing_zone_2)
+"koG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/lv522/indoors/a_block/bridges/corpo)
 "koM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -23703,6 +23694,12 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
+"kRg" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/bridges/corpo)
 "kRi" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "Bathroom"
@@ -24484,6 +24481,20 @@
 	tag = "icon-floor_plate"
 	},
 /area/lv522/indoors/a_block/admin)
+"lhC" = (
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	icon_state = "blue1"
+	},
+/area/lv522/indoors/a_block/dorm_north)
 "lhD" = (
 /obj/structure/barricade/handrail{
 	dir = 1
@@ -25775,11 +25786,6 @@
 	tag = "icon-darkbrownfull2"
 	},
 /area/lv522/landing_zone_2)
-"lIl" = (
-/turf/closed/shuttle/dropship2/tornado/typhoon{
-	icon_state = "84"
-	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
 "lIB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28975,8 +28981,8 @@
 	},
 /area/lv522/indoors/a_block/bridges/garden_bridge)
 "nfq" = (
-/turf/closed/shuttle/dropship2/tornado/typhoon{
-	icon_state = "42"
+/turf/closed/shuttle/dropship2/tornado{
+	icon_state = "18"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "nfx" = (
@@ -35445,11 +35451,6 @@
 	tag = "icon-darkpurplefull2"
 	},
 /area/lv522/indoors/a_block/bridges/dorms_fitness)
-"pIi" = (
-/turf/closed/shuttle/dropship2/tornado{
-	icon_state = "84"
-	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
 "pIu" = (
 /turf/closed/shuttle/dropship2/tornado/typhoon{
 	icon_state = "86"
@@ -38344,10 +38345,8 @@
 	item_state = "scrapbook";
 	name = "portable game kit"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+/turf/open/floor/corsat{
+	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/fitness)
 "qOz" = (
@@ -38907,10 +38906,8 @@
 "qYc" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/door/window/eastleft,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+/turf/open/floor/corsat{
+	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/fitness)
 "qYl" = (
@@ -39830,7 +39827,9 @@
 	dir = 4
 	},
 /obj/effect/spawner/random/toy,
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
 /area/lv522/indoors/a_block/fitness)
 "rpm" = (
 /obj/item/ammo_magazine/rifle/mar40/lmg,
@@ -40547,7 +40546,7 @@
 /area/lv522/indoors/lone_buildings/engineering)
 "rCi" = (
 /turf/closed/shuttle/dropship2/tornado{
-	icon_state = "85"
+	icon_state = "45"
 	},
 /area/lv522/oob)
 "rCp" = (
@@ -41630,6 +41629,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/strata{
 	icon_state = "blue1"
@@ -45362,9 +45364,6 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "tDQ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/briefcase{
 	pixel_y = 6
@@ -46695,6 +46694,9 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/extinguisher,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -47398,9 +47400,6 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/outdoor)
 "utR" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
 /obj/structure/machinery/power/apc/weak{
 	dir = 1
 	},
@@ -50949,9 +50948,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
 "vMM" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -51579,8 +51576,7 @@
 	pixel_x = -11
 	},
 /obj/structure/machinery/light/small{
-	dir = 1;
-	pixel_y = 20
+	dir = 4
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -59948,9 +59944,9 @@ cpy
 cpy
 cpy
 cpy
-wJt
-wJt
-wJt
+sRA
+sRA
+sRA
 sRA
 sRA
 efH
@@ -60174,10 +60170,10 @@ cpy
 cpy
 cpy
 cpy
-wJt
-wJt
-wJt
-wJt
+sRA
+sRA
+sRA
+sRA
 sRA
 sRA
 sRA
@@ -60340,7 +60336,7 @@ cpy
 cpy
 cpy
 cpy
-lIl
+ujF
 pRM
 qnk
 qHA
@@ -60403,8 +60399,8 @@ cpy
 cpy
 cpy
 cpy
-wJt
-wJt
+sRA
+sRA
 efH
 efH
 sRA
@@ -61259,7 +61255,7 @@ rDz
 scy
 rDz
 tfV
-gnP
+rFp
 sdE
 sIx
 rFp
@@ -61482,7 +61478,7 @@ qLz
 qVl
 rhk
 rhk
-gnP
+rFp
 sdE
 sIx
 tgM
@@ -66963,7 +66959,7 @@ xXz
 hTY
 mZE
 mZE
-bsb
+gSJ
 gSJ
 nLm
 nLm
@@ -67607,11 +67603,11 @@ xtb
 xtb
 xtb
 xtb
+xtb
 xyL
 xyL
 xyL
-xyL
-xyL
+xtb
 xtb
 xtb
 xtb
@@ -68515,11 +68511,11 @@ xTs
 pVx
 vFS
 xqd
-uEC
-wmk
-jLF
-wmk
-xTs
+pVx
+pVx
+vsG
+pVx
+xqd
 xqd
 vFS
 xqd
@@ -78492,7 +78488,7 @@ vlu
 xzn
 xkB
 xED
-gMV
+dEL
 cpy
 cpy
 cpy
@@ -82375,7 +82371,7 @@ ozQ
 wKg
 wKg
 vtl
-rfe
+koG
 rfe
 xlI
 wKg
@@ -82602,7 +82598,7 @@ oKI
 qBR
 uTI
 gIa
-gIa
+kRg
 gIa
 gIa
 wtI
@@ -90549,7 +90545,7 @@ dRL
 dRL
 dRL
 dRL
-rlc
+lhC
 dRL
 dRL
 vTx
@@ -92352,7 +92348,7 @@ yim
 hxu
 dRL
 dRL
-yfP
+gMV
 dRL
 dRL
 dRL
@@ -93230,8 +93226,8 @@ mto
 mEg
 mMU
 vUW
-woG
-woG
+ygK
+ygK
 vUW
 ygK
 ygK
@@ -94459,7 +94455,7 @@ ylr
 cUG
 cSO
 cSO
-vpD
+jQa
 cSO
 cSO
 cSO
@@ -94625,7 +94621,7 @@ yim
 yim
 yim
 ien
-qSH
+jvo
 adU
 qSH
 qSH
@@ -94851,7 +94847,7 @@ nFO
 yim
 yim
 ien
-jvo
+ien
 ien
 iTW
 qSH
@@ -95059,7 +95055,7 @@ wbR
 vUW
 gsZ
 ilK
-pIi
+ujF
 qnb
 iOi
 hfS

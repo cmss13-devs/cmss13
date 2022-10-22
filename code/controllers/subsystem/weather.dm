@@ -40,15 +40,11 @@ SUBSYSTEM_DEF(weather)
 	if(SSmapping.configs[GROUND_MAP].weather_holder)
 		var/weathertype = SSmapping.configs[GROUND_MAP].weather_holder
 		map_holder = new weathertype
+		setup_weather_areas()
+	return ..()
 
-	// Disable the weather subsystem on maps that don't currently implement it
-	if (!map_holder)
-		flags |= SS_NO_FIRE
-		return
-
-	//var/list/weather_areas = list()
-
-	// Each map defines which areas it wants to define as weather areas.
+/datum/controller/subsystem/weather/proc/setup_weather_areas()
+	weather_areas = list()
 	for(var/area/A in all_areas)
 		if(A == A.master && A.weather_enabled && map_holder.should_affect_area(A))
 			weather_areas += A
@@ -59,13 +55,12 @@ SUBSYSTEM_DEF(weather)
 	else
 		curr_master_turf_overlay.icon_state = ""
 
-	// We have successfully built weather areas, now place our effect holder
-	//for (var/area/A as anything in weather_areas)
-		//for (var/turf/T in A)
-		//	if (istype(T, /turf/open) && !(curr_master_turf_overlay in T.vis_contents))
-		//		T.vis_contents += curr_master_turf_overlay
-
-	. = ..()
+/datum/controller/subsystem/weather/proc/force_weather_holder(var/weather_holder)
+	if(weather_holder)
+		if(istext(weather_holder)) weather_holder = text2path(weather_holder)
+		if(ispath(weather_holder))
+			map_holder = new weather_holder
+			setup_weather_areas()
 
 /datum/controller/subsystem/weather/stat_entry(msg)
 	var/time_left = 0
@@ -80,7 +75,7 @@ SUBSYSTEM_DEF(weather)
 	return ..()
 
 /datum/controller/subsystem/weather/fire()
-	if (controller_state_lock)
+	if (!map_holder || controller_state_lock)
 		return
 
 	// End our current event if we must

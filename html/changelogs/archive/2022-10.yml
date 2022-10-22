@@ -250,3 +250,5 @@
   harryob:
   - server: added (deeper) support for tgs with DMAPI support, alongside a verb to
       check the current server revision
+  ito726:
+  - bugfix: Base Runner and Hedgehog Ravager form being able to hurt corpses and caps.

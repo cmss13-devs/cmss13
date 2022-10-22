@@ -8,6 +8,9 @@
 
 var/datum/controller/supply/supply_controller = new()
 
+/area/supply
+	ceiling = CEILING_METAL
+
 /area/supply/station //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"

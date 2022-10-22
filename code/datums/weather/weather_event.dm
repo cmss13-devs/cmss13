@@ -23,6 +23,7 @@
 /datum/weather_event/proc/process_mob_effect(var/mob/living/carbon/affected_mob, var/delta_time = 1)
 	if(prob(WEATHER_MESSAGE_PROB))
 		to_chat(affected_mob, SPAN_WARNING(effect_message))
-	var/calculated_damage = (isXeno(affected_mob) ? damage_per_tick * 3 : damage_per_tick) * delta_time
-	affected_mob.apply_damage(calculated_damage, damage_type)
-	affected_mob.last_damage_data = create_cause_data("Exposure")
+	if(damage_per_tick)
+		var/calculated_damage = (isXeno(affected_mob) ? damage_per_tick * 3 : damage_per_tick) * delta_time
+		affected_mob.apply_damage(calculated_damage, damage_type)
+		affected_mob.last_damage_data = create_cause_data("Exposure")

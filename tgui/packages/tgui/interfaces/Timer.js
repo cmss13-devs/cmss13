@@ -8,32 +8,28 @@ export const Timer = (props, context) => {
 
   const window_width = 360;
   return (
-    <Window
-      width={window_width}
-      height={120}
-    >
+    <Window width={window_width} height={120}>
       <Window.Content>
         <Section>
           <Button
             fluid
-            color={data.is_timing? "green" : "red"}
+            color={data.is_timing ? 'green' : 'red'}
             icon="clock"
-            content={data.is_timing? "Enabled" : "Disabled"}
-            onClick={() => act("set_timing", { should_time: !data.is_timing })}
+            content={data.is_timing ? 'Enabled' : 'Disabled'}
+            onClick={() => act('set_timing', { should_time: !data.is_timing })}
           />
         </Section>
         <Section>
-          <Slider 
+          <Slider
             maxValue={max_time}
             minValue={min_time}
             value={data.current_time}
-            onChange={(e, value) => act("set_time", { time: value })}
+            onChange={(e, value) => act('set_time', { time: value })}
             unit="Seconds"
-            stepPixelSize={window_width/max_time} // width / max_time
+            stepPixelSize={window_width / max_time} // width / max_time
           />
         </Section>
       </Window.Content>
     </Window>
   );
 };
-  

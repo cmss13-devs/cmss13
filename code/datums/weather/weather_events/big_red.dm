@@ -33,5 +33,6 @@
 
 	effect_message = "You feel multiple small rocks hit all over your body!"
 	damage_per_tick = 3
+	damage_type = BRUTE
 
 	ambience = 'sound/ambience/strata/strata_blizzard.ogg'

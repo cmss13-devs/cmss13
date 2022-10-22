@@ -21,6 +21,12 @@
 
 	var/ambience = 'sound/ambience/strata/strata_snow.ogg'
 
+	var/has_process = FALSE // to be used with handle_weather_process()
+
+// remember, this happens every five seconds or so
+/datum/weather_event/proc/handle_weather_process()
+	return
+
 /datum/weather_event/proc/process_mob_effect(var/mob/living/carbon/affected_mob, var/delta_time = 1)
 	if(effect_message && prob(WEATHER_MESSAGE_PROB))
 		to_chat(affected_mob, SPAN_WARNING(effect_message))

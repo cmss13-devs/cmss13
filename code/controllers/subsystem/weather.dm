@@ -83,6 +83,9 @@ SUBSYSTEM_DEF(weather)
 		end_weather_event()
 		return
 
+	if(weather_event_instance?.has_process)
+		weather_event_instance.handle_weather_process()
+
 	// If there's a weather event, return
 	if (is_weather_event)
 		return

@@ -336,7 +336,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 		lighting_overlay.icon_state = "[light]"
 	else
 		lighting_overlay = image(LIGHTING_ICON,,num2text(light),LIGHTING_LAYER)
-		lighting_overlay.plane = LIGHTING_PLANE
+		lighting_overlay.plane = ceiling <= CEILING_GLASS ? EXTERIOR_LIGHTING_PLANE : LIGHTING_PLANE
 	if (light < 6)
 		overlays.Add(lighting_overlay)
 

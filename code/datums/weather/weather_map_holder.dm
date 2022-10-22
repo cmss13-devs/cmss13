@@ -36,6 +36,15 @@
 // Called whenever the weather SS decides to start an event, but
 // warn_time deciseconds before it actually starts
 // (think weather sirens on sorokyne)
-// This can do nothing safely, so you don't have to override it
 /datum/weather_ss_map_holder/proc/weather_warning(var/event_type)
-	return
+	var/datum/weather_event/incoming_event = event_type
+	var/weather_name = initial(incoming_event.display_name)
+	var/list/ground_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND))
+	for(var/mob/living/carbon/human/affected_human in GLOB.alive_human_list)
+		if(!affected_human.stat && affected_human.client && (affected_human.z in ground_levels))
+			playsound_client(affected_human.client, 'sound/effects/radiostatic.ogg', affected_human.loc, 25, FALSE)
+			affected_human.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Weather Alert:</u></span><br>" + "Incoming [weather_name]", /atom/movable/screen/text/screen_text/command_order, rgb(103, 214, 146))
+	for(var/mob/living/carbon/Xenomorph/affected_xeno in GLOB.living_xeno_list)
+		if(!affected_xeno.stat && affected_xeno.client)
+			playsound_client(affected_xeno.client, 'sound/voice/alien_distantroar_3.ogg', affected_xeno.loc, 25, FALSE)
+			affected_xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "Incoming [weather_name]", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))

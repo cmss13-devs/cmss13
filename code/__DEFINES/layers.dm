@@ -156,6 +156,7 @@
 
 //---------- LIGHTING -------------
 #define LIGHTING_PLANE 100
+#define EXTERIOR_LIGHTING_PLANE 101
 
 ///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
 ///Popup Chat Messages

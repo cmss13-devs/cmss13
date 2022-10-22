@@ -244,3 +244,7 @@
 2022-10-21:
   realforest2001:
   - admin: Mods can see things on STUI now.
+2022-10-22:
+  harryob:
+  - server: added (deeper) support for tgs with DMAPI support, alongside a verb to
+      check the current server revision

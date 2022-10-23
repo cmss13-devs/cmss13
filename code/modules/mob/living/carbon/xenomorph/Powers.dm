@@ -102,12 +102,10 @@
 	if(RC.build_animation_effect)
 		warning = new RC.build_animation_effect(current_turf)
 
-		if(wait_time != 2 SECONDS)
-
-			if(wait_time == 1 SECONDS)
+		switch(wait_time)
+			if(1 SECONDS)
 				warning.icon_state = "[warning.icon_state]Fast"
-
-			if(wait_time == 4 SECONDS)
+			if(4 SECONDS)
 				warning.icon_state = "[warning.icon_state]Slow"
 
 		update_icons(warning)

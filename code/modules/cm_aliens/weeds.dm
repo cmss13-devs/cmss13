@@ -419,7 +419,7 @@
 	health = NODE_HEALTH_GROWING
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
-	plane = GAME_PLANE
+	plane = FLOOR_PLANE
 	var/static/staticnode
 	var/overlay_node = TRUE
 

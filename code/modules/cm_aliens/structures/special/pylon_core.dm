@@ -20,6 +20,8 @@
 
 	var/protection_level = TURF_PROTECTION_CAS
 
+	plane = FLOOR_PLANE
+
 /obj/effect/alien/resin/special/pylon/Initialize(mapload, hive_ref)
 	. = ..()
 
@@ -105,6 +107,7 @@
 	var/last_attempt = 0 // logs time of last attempt to prevent spam. if you want to destroy it, you must commit.
 
 	protection_level = TURF_PROTECTION_OB
+
 
 /obj/effect/alien/resin/special/pylon/core/Initialize(mapload, var/datum/hive_status/hive_ref)
 	. = ..()

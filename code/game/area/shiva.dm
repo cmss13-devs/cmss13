@@ -9,13 +9,6 @@
 	temperature = ICE_COLONY_TEMPERATURE
 	lighting_use_dynamic = TRUE
 
-/area/shiva/Initialize()
-	. = ..()
-	if(SSticker.current_state > GAME_STATE_SETTING_UP)
-		add_thunder()
-	else
-		LAZYADD(GLOB.thunder_setup_areas, src)
-
 /area/shuttle/drop1/shiva
 	name = "Shiva's Snowball - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"

@@ -10,13 +10,6 @@
 	temperature = 308.7 //kelvin, 35c, 95f
 	lighting_use_dynamic = 1
 
-/area/kutjevo/Initialize()
-	. = ..()
-	if(SSticker.current_state > GAME_STATE_SETTING_UP)
-		add_thunder()
-	else
-		LAZYADD(GLOB.thunder_setup_areas, src)
-
 /area/shuttle/drop1/kutjevo
 	name = "Kutjevo - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"

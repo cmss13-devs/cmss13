@@ -6,13 +6,6 @@
 	powernet_name = "ground"
 	ambience_exterior = AMBIENCE_TRIJENT
 
-/area/desert_dam/Initialize()
-	. = ..()
-	if(SSticker.current_state > GAME_STATE_SETTING_UP)
-		add_thunder()
-	else
-		LAZYADD(GLOB.thunder_setup_areas, src)
-
 //INTERIOR
 // areas under rock
 /area/desert_dam/interior

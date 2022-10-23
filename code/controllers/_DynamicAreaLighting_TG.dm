@@ -398,9 +398,3 @@ GLOBAL_LIST_INIT(comp2table, list(
 #undef LIGHTING_MAX_LUMINOSITY_STATIC
 #undef LIGHTING_MAX_LUMINOSITY_MOBILE
 #undef LIGHTING_MAX_LUMINOSITY_TURF
-
-/area/proc/add_thunder()
-	if(ceiling < CEILING_GLASS && SSticker?.mode.flags_round_type & MODE_THUNDERSTORM)
-		underlays += GLOB.weather_rain_effect
-		for(var/turf/T in contents)
-			T.update_lumcount(exterior_light)

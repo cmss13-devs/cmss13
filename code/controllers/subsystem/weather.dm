@@ -124,6 +124,8 @@ SUBSYSTEM_DEF(weather)
 		message_admins(SPAN_BLUE("Bad weather event of type [weather_event_type]."))
 		return
 
+	weather_event_instance.start_weather_event()
+
 	// Maintain the controller state
 	controller_state_lock = TRUE
 	is_weather_event_starting = FALSE

@@ -27,13 +27,4 @@
 	ambience = 'sound/ambience/rainforest.ogg'
 
 	has_process = TRUE
-
-/datum/weather_event/heavy_rain/handle_weather_process()
-	if(prob(2))
-		playsound_z(SSmapping.levels_by_trait(ZTRAIT_GROUND), pick('sound/soundscape/thunderclap1.ogg', 'sound/soundscape/thunderclap2.ogg'))
-		for(var/mob/M as anything in GLOB.mob_list)
-			if(M.hud_used)
-				var/atom/movable/screen/plane_master/lighting/exterior/exterior_lighting = M.hud_used.plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
-				if(exterior_lighting)
-					exterior_lighting.alpha = 0
-					animate(exterior_lighting, 1.5 SECONDS, alpha = M.lighting_alpha)
+	lightning_chance = 2

@@ -22,10 +22,21 @@
 	var/ambience = 'sound/ambience/strata/strata_snow.ogg'
 
 	var/has_process = FALSE // to be used with handle_weather_process()
+	var/lightning_chance = 0
+
+/datum/weather_event/proc/start_weather_event()
+	return
 
 // remember, this happens every five seconds or so
 /datum/weather_event/proc/handle_weather_process()
-	return
+	if(lightning_chance && prob(lightning_chance))
+		playsound_z(SSmapping.levels_by_trait(ZTRAIT_GROUND), pick('sound/soundscape/thunderclap1.ogg', 'sound/soundscape/thunderclap2.ogg'))
+		for(var/mob/M as anything in GLOB.mob_list)
+			if(M.hud_used)
+				var/atom/movable/screen/plane_master/lighting/exterior/exterior_lighting = M.hud_used.plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
+				if(exterior_lighting)
+					exterior_lighting.alpha = 0
+					animate(exterior_lighting, 1.5 SECONDS, alpha = min(GLOB.minimum_exterior_lighting_alpha, M.lighting_alpha))
 
 /datum/weather_event/proc/process_mob_effect(var/mob/living/carbon/affected_mob, var/delta_time = 1)
 	if(effect_message && prob(WEATHER_MESSAGE_PROB))

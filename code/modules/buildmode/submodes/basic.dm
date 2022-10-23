@@ -17,8 +17,12 @@
 
 	if(istype(object,/turf) && left_click && !alt_click && !ctrl_click)
 		var/turf/clicked_turf = object
-		if(istype(object, /turf/open/floor/plating/almayer))
-			clicked_turf.PlaceOnTop(/turf/open/floor/plating/almayer)
+		if(istype(object, /turf/closed/wall/almayer/outer))
+			return
+		else if(istype(object, /turf/closed/wall/r_wall))
+			clicked_turf.PlaceOnTop(/turf/closed/wall/almayer/outer)
+		else if(istype(object, /turf/open/floor/plating))
+			clicked_turf.PlaceOnTop(/turf/open/floor/almayer)
 		else if(istype(object, /turf/open/floor))
 			clicked_turf.PlaceOnTop(/turf/closed/wall)
 		else if(istype(object, /turf/closed/wall))
@@ -31,19 +35,26 @@
 		log_admin("Build Mode: [key_name(c)] deleted [object] at [AREACOORD(object)]")
 		if(isturf(object))
 			var/turf/T = object
-			T.ScrapeAway()
+			if(istype(object, /turf/closed/wall/almayer/outer))
+				T.PlaceOnTop(/turf/closed/wall/r_wall)
+			else if(istype(object, /turf/closed/wall/r_wall))
+				T.PlaceOnTop(/turf/closed/wall)
+			else
+				T.ScrapeAway()
 		else if(isobj(object))
 			qdel(object)
 		return
 	else if(istype(object,/turf) && alt_click && left_click)
+		var/obj/structure/window/reinforced/airlock
 		log_admin("Build Mode: [key_name(c)] built an airlock at [AREACOORD(object)]")
-		new/obj/structure/machinery/door/airlock/almayer(get_turf(object))
-	else if(istype(object,/turf) && ctrl_click && left_click)
+		airlock = new/obj/structure/machinery/door/airlock/almayer(get_turf(object))
+		airlock.setDir(BM.build_dir)
+	else if(istype(object, /turf) && ctrl_click && left_click)
 		var/obj/structure/window/reinforced/window
 		var/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 		if(BM.build_dir in diagonals)
 			window = new /obj/structure/window/framed(get_turf(object))
 		else
-			window = new /obj/structure/window/reinforced(get_turf(object))
+			window = new /obj/structure/window/framed/almayer/hull(get_turf(object))
 			window.setDir(BM.build_dir)
 		log_admin("Build Mode: [key_name(c)] built a window at [AREACOORD(object)]")

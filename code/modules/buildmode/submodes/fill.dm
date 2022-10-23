@@ -24,6 +24,14 @@
 	deselect_region()
 
 /datum/buildmode_mode/fill/when_clicked(client/c, params, obj/object)
+	var/list/modifiers = params2list(params)
+
+	if(LAZYACCESS(modifiers, LEFT_CLICK) && LAZYACCESS(modifiers, ALT_CLICK))
+		if(istype(object, /turf) || istype(object, /obj) || istype(object, /mob))
+			objholder = object
+			to_chat(c, SPAN_NOTICE("[initial(object.name)] ([object.type]) selected."))
+		else
+			to_chat(c, SPAN_NOTICE("[initial(object.name)] is not a turf, object, or mob! Please select again."))
 	if(isnull(objholder))
 		to_chat(c, SPAN_WARNING("Select an object type first."))
 		deselect_region()
@@ -33,8 +41,10 @@
 /datum/buildmode_mode/fill/handle_selected_area(client/c, params)
 	var/list/modifiers = params2list(params)
 
+	if(LAZYACCESS(modifiers, ALT_CLICK))
+		return
 	if(LAZYACCESS(modifiers, LEFT_CLICK)) //rectangular
-		if(LAZYACCESS(modifiers, ALT_CLICK))
+		if(LAZYACCESS(modifiers, CTRL_CLICK))
 			var/list/deletion_area = block(get_turf(cornerA),get_turf(cornerB))
 			for(var/deleted_turfs in deletion_area)
 				var/turf/T = deleted_turfs
@@ -43,12 +53,10 @@
 				T.ScrapeAway(INFINITY, CHANGETURF_DEFER_CHANGE)
 		else
 			var/selection_size = abs(cornerA.x - cornerB.x) * abs(cornerA.y - cornerB.y)
-
 			if(selection_size > FILL_WARNING_MIN) // Confirm fill if the number of tiles in the selection is greater than FILL_WARNING_MIN
 				var/choice = alert("Your selected area is [selection_size] tiles! Continue?", "Large Fill Confirmation", "Yes", "No")
 				if(choice != "Yes")
 					return
-
 			for(var/turf/T in block(get_turf(cornerA),get_turf(cornerB)))
 				if(ispath(objholder,/turf))
 					T = T.ChangeTurf(objholder)

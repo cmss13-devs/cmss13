@@ -1,6 +1,6 @@
 /datum/buildmode_mode/boom
 	key = "boom"
-	help = "Click on Mode = Set explosive settings\n\
+	help = "Right Click on Mode = Set explosive settings\n\
 	Mouse Button on obj = Kaboom\n\
 	NOTE: Using the \"Config/Launch Supplypod\" verb allows you to do this in an IC way (i.e., making a cruise missile come down from the sky and explode wherever you click!)"
 

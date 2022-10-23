@@ -259,3 +259,6 @@
       the PR for more info.
   carlarctg:
   - balance: Queen eye can now move up to 3 tiles away from any weeds.
+  harryob:
+  - admin: in view update - you can now subtle message, alert message (the one that
+      appears in the centre of the screen) and direct narrate to all players in view

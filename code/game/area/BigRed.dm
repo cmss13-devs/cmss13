@@ -473,14 +473,14 @@
 /area/bigredv2/outside/space_port
 	name = "\improper Space Port"
 	icon_state = "green"
-	ceiling = CEILING_NONE
+	ceiling = CEILING_GLASS
 	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
 
 /area/bigredv2/outside/space_port_lz2
 	name = "\improper Cargo Landing Pad"
 	icon_state = "green"
-	ceiling = CEILING_NONE
+	ceiling = CEILING_GLASS
 	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
 

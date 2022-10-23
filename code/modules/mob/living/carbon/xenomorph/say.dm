@@ -25,7 +25,7 @@
 
 	var/datum/language/speaking = null
 	if(length(message) >= 2)
-		if(copytext(message,1,2) == ";" && languages.len)
+		if(can_hivemind_speak && copytext(message,1,2) == ";" && languages.len)
 			for(var/datum/language/L in languages)
 				if(L.flags & HIVEMIND)
 					verb = L.speech_verb
@@ -40,7 +40,7 @@
 					break
 
 	if(caste)
-		if(isnull(speaking) || speaking.key != "q") //Not hivemind? Then default to xenocommon. BRUTE FORCE YO
+		if(isnull(speaking) || (!can_hivemind_speak && (speaking.flags & HIVEMIND)) || speaking.key != "q") //Not hivemind? Then default to xenocommon. BRUTE FORCE YO
 			for(var/datum/language/L in languages)
 				if(L.key == speaking_key)
 					verb = L.speech_verb
@@ -56,11 +56,10 @@
 					forced = 1
 					break
 
-	if(speaking && !forced)
-		if (copytext(message,1,2) == ";")
-			message = trim(copytext(message,2))
-		else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")
-			message = trim(copytext(message,3))
+	if(copytext(message,1,2) == ";")
+		message = trim(copytext(message,2))
+	else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")
+		message = trim(copytext(message,3))
 
 	message = capitalize(trim_left(message))
 

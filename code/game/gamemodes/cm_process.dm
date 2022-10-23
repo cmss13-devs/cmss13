@@ -187,12 +187,14 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		peakXenos = length(GLOB.living_xeno_list)
 
 	for(var/mob/M in GLOB.living_xeno_list)
+		if(M.mob_flags & NOBIOSCAN)
+			continue
 		var/area/A = get_area(M)
 		if(A?.flags_area & AREA_AVOID_BIOSCAN)
 			numXenosShip++
 			continue
 		var/atom/where = M
-		if (where == 0 && M.loc)
+		if (where.z == 0 && M.loc)
 			where = M.loc
 		if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
 			numXenosPlanet++
@@ -205,9 +207,11 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 	for (var/i in GLOB.alive_human_list)
 		var/mob/living/carbon/human/H = i
+		if(H.mob_flags & NOBIOSCAN)
+			continue
 		var/atom/where = H
 		if(isSpeciesHuman(H))
-			if (where == 0 && H.loc)
+			if (where.z == 0 && H.loc)
 				where = H.loc
 			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
 				numHostsPlanet++
@@ -314,6 +318,8 @@ Only checks living mobs with a client attached.
 				var/area/A = get_area(M)
 				if(isXeno(M))
 					var/mob/living/carbon/Xenomorph/xeno = M
+					if(!xeno.counts_for_roundend)
+						continue
 					var/datum/hive_status/xeno_hive = GLOB.hive_datum[xeno.hivenumber]
 					if(!xeno_hive || (xeno_hive.need_round_end_check && !xeno_hive.can_delay_round_end(xeno)))
 						continue

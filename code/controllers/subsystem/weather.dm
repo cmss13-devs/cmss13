@@ -13,6 +13,7 @@ SUBSYSTEM_DEF(weather)
 											// the controller enters a proc that significantly modifies its state
 	var/current_event_start_time			// Self explanatory
 	var/last_event_end_time					// Self explanatory
+	var/last_event_check_time
 
 	//// Important vars
 
@@ -91,19 +92,21 @@ SUBSYSTEM_DEF(weather)
 		return
 
 	// Check if we have had enough time between events
-	if (last_event_end_time + map_holder.min_time_between_events > world.time)
+	if (last_event_end_time + map_holder.min_time_between_events > world.time || last_event_check_time + map_holder.min_time_between_checks > world.time)
 		return
 
 	// Each map decides its own logic for implementing weather events.
-	if (!is_weather_event_starting && map_holder.should_start_event())
-		// Set up controller state
-		is_weather_event_starting = TRUE
-		weather_event_type = map_holder.get_new_event()
+	if (!is_weather_event_starting)
+		last_event_check_time = world.time
+		if(map_holder.should_start_event())
+			// Set up controller state
+			is_weather_event_starting = TRUE
+			weather_event_type = map_holder.get_new_event()
 
-		// Tell the map_holder we're starting
-		map_holder.weather_warning(weather_event_type)
+			// Tell the map_holder we're starting
+			map_holder.weather_warning(weather_event_type)
 
-		addtimer(CALLBACK(src, .proc/start_weather_event), map_holder.warn_time)
+			addtimer(CALLBACK(src, .proc/start_weather_event), map_holder.warn_time)
 
 
 // Adjust our state to indicate that we're starting a new event

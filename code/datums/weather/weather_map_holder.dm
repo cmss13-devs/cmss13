@@ -7,10 +7,16 @@
 
 	// Weather SS configuration options
 	var/min_time_between_events = 5 MINUTES // Self explanatory
+	var/min_time_between_checks = 15 MINUTES
+	var/min_check_variance = 10 MINUTES
 	var/warn_time = 30 SECONDS          // Warning time between the call to
 	var/no_weather_turf_icon_state = "" // Icon state to set on the global VFX holder
 										// when there's no weather.
 	var/list/potential_weather_events   // List of types of possible weather events
+
+/datum/weather_ss_map_holder/New()
+	..()
+	min_time_between_checks += rand(min_check_variance * -0.5, min_check_variance * 0.5)
 
 // Should the weather for this map include the passed area?
 /datum/weather_ss_map_holder/proc/should_affect_area(var/area/A)

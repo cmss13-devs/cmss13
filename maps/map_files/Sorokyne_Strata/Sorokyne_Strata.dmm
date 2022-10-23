@@ -3298,6 +3298,9 @@
 /area/strata/ag/interior/dorms/hive)
 "ajn" = (
 /obj/structure/machinery/vending/cigarette/colony,
+/obj/item/clothing/head/soft/ferret{
+	pixel_y = 9
+	},
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan2"

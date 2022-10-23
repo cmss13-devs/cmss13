@@ -534,3 +534,9 @@ Parameters are passed from New.
 // returning a 0 makes it do nothing
 /atom/proc/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
 	return TAILSTAB_COOLDOWN_NONE
+
+/atom/proc/handle_flamer_fire(var/obj/flamer_fire/fire, var/damage, var/delta_time)
+	return
+
+/atom/proc/handle_flamer_fire_crossed(var/obj/flamer_fire/fire)
+	return

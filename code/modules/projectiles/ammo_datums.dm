@@ -1437,14 +1437,11 @@
 	name = ".458 SOCOM round"
 
 	damage = 80
-	penetration = 0
+	penetration = ARMOR_PENETRATION_TIER_2
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
 	accurate_range = 14
 	handful_state = "boomslang_bullet"
-
-/datum/ammo/bullet/lever_action/xm88/pen10
-	penetration = ARMOR_PENETRATION_TIER_2
 
 /datum/ammo/bullet/lever_action/xm88/pen20
 	penetration = ARMOR_PENETRATION_TIER_4
@@ -1454,6 +1451,9 @@
 
 /datum/ammo/bullet/lever_action/xm88/pen40
 	penetration = ARMOR_PENETRATION_TIER_8
+
+/datum/ammo/bullet/lever_action/xm88/pen50
+	penetration = ARMOR_PENETRATION_TIER_10
 
 /*
 //======
@@ -2693,7 +2693,7 @@
 	name = "bone chips"
 	icon_state = "shrapnel_light"
 	ping = null
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
 	damage_type = BRUTE
 	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
 
@@ -2707,6 +2707,10 @@
 	shrapnel_chance = 60
 
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/item/projectile/P)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+			return
 	if(isHumanStrict(M) || isXeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
 		if(M.slowed < 8)
@@ -2733,6 +2737,10 @@
     shrapnel_chance = 0
 
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)
+    if(iscarbon(M))
+        var/mob/living/carbon/C = M
+        if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+            return
     if(isHumanStrict(M) || isXeno(M))
         playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
         if(M.slowed < 6)

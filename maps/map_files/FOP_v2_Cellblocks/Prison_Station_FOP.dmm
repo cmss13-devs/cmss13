@@ -45215,6 +45215,7 @@
 /area/prison/security/monitoring/medsec/central)
 "cvy" = (
 /obj/structure/surface/rack,
+/obj/item/clothing/head/soft/ferret,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "darkred2"

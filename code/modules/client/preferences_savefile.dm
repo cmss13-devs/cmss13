@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	17
+#define SAVEFILE_VERSION_MAX	18
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -61,6 +61,12 @@
 			if(language_traits.len > 1)
 				language_traits = null
 		S["traits"] << language_traits
+
+	if(savefile_version < 18) // adds ambient occlusion by default
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
+		S["toggle_prefs"] << pref_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

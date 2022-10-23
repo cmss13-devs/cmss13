@@ -43,7 +43,7 @@
 	return I
 
 /datum/tech/transitory/tier1
-	name = "Unlock tier 1"
+	name = "Unlock Tier 1"
 	tier = /datum/tier/free
 
 	flags = TREE_FLAG_MARINE|TREE_FLAG_XENO
@@ -51,7 +51,7 @@
 	next = /datum/tier/one
 
 /datum/tech/transitory/tier2
-	name = "Unlock tier 2"
+	name = "Unlock Tier 2"
 	tier = /datum/tier/one_transition_two
 
 	before = /datum/tier/one
@@ -59,12 +59,31 @@
 
 /datum/tech/transitory/tier2/xeno
 	techs_to_unlock = 0
-	required_points = 15
+	required_points = 5
 
 	flags = TREE_FLAG_XENO
 
 /datum/tech/transitory/tier2/marine
 	techs_to_unlock = 0
-	required_points = 15
+	required_points = 5
+
+	flags = TREE_FLAG_MARINE
+
+/datum/tech/transitory/tier3
+	name = "Unlock Tier 3"
+	tier = /datum/tier/two_transition_three
+
+	before = /datum/tier/two
+	next = /datum/tier/three
+
+/datum/tech/transitory/tier3/xeno
+	techs_to_unlock = 0
+	required_points = 5
+
+	flags = TREE_FLAG_XENO
+
+/datum/tech/transitory/tier3/marine
+	techs_to_unlock = 0
+	required_points = 5
 
 	flags = TREE_FLAG_MARINE

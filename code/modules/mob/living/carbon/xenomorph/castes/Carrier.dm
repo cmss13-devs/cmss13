@@ -52,8 +52,6 @@
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
 
-	var/list/hugger_image_list = list()
-
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -70,52 +68,64 @@
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
 
+	var/atom/movable/vis_obj/carrier_huggers/carrier_huggers_icon_carrier
+	var/list/hugger_image_index = list()
+
+/atom/movable/vis_obj/carrier_huggers
+	icon = 'icons/mob/hostiles/carrier.dmi'
+	var/mob/living/carbon/Xenomorph/huggers_owner
+
 /mob/living/carbon/Xenomorph/Carrier/update_icons()
 	. = ..()
 
-	overlays.Cut()
-	var/amount_o_huggers = 0
-	if(huggers_max) //no dividing by zero, sorry
-		amount_o_huggers = round(( huggers_cur / huggers_max ) * 100)
-	switch(amount_o_huggers)
-		if(0)
-			hugger_image_list.Cut()
-			return
-		if(1 to 25)
-			update_icon_maths(1)
-		if(26 to 50)
-			update_icon_maths(2)
-		if(51 to 75)
-			update_icon_maths(3)
-		if(76 to 100)
-			update_icon_maths(4)
-	for(var/i in hugger_image_list)
+	update_hugger_overlays()
+
+/mob/living/carbon/Xenomorph/Carrier/proc/update_hugger_overlays()
+	if(!carrier_huggers_icon_carrier)
+		return
+
+	carrier_huggers_icon_carrier.overlays.Cut()
+
+	if(!huggers_cur)
+		return
+
+	var/icon/huggers_icon = new /icon()
+
+	update_icon_maths(round(( huggers_cur / huggers_max ) * 3.999) + 1)
+
+	for(var/i in hugger_image_index)
 		if(stat == DEAD)
-			overlays += image(icon, "clinger_[i] Knocked Down")
+			carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i] Knocked Down")
 		else if(lying)
 			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-				overlays += image(icon, "clinger_[i] Sleeping")
+				carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i] Sleeping")
 			else
-				overlays += image(icon, "clinger_[i] Knocked Down")
+				carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i] Knocked Down")
 		else
-			overlays += image(icon, "clinger_[i]")
+			carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i]")
+
+	carrier_huggers_icon_carrier.icon = huggers_icon
 
 /mob/living/carbon/Xenomorph/Carrier/proc/update_icon_maths(number)
 	var/funny_list = list(1,2,3,4)
-	if(length(hugger_image_list) != number)
-		if(length(hugger_image_list) > number)
-			while(length(hugger_image_list) != number)
-				hugger_image_list -= hugger_image_list[length(hugger_image_list)]
+	if(length(hugger_image_index) != number)
+		if(length(hugger_image_index) > number)
+			while(length(hugger_image_index) != number)
+				hugger_image_index -= hugger_image_index[length(hugger_image_index)]
 		else
-			while(length(hugger_image_list) != number)
-				for(var/i in hugger_image_list)
+			while(length(hugger_image_index) != number)
+				for(var/i in hugger_image_index)
 					funny_list -= i
-				hugger_image_list += funny_list[rand(1,length(funny_list))]
+				hugger_image_index += funny_list[rand(1,length(funny_list))]
 
 
 /mob/living/carbon/Xenomorph/Carrier/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_carrier))
 	. = ..()
+
+	carrier_huggers_icon_carrier = new(null, src)
+	carrier_huggers_icon_carrier.layer = layer + 0.1
+	vis_contents += carrier_huggers_icon_carrier
 
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)

@@ -288,7 +288,8 @@
 			qdel(src)
 		return
 
-	plant_target.ex_act(2000, dir, cause_data)
+	var/datum/cause_data/temp_cause = create_cause_data(cause_data.cause_name, cause_data.weak_mob.resolve())
+	plant_target.ex_act(2000, dir, temp_cause)
 
 	for(var/turf/closed/wall/W in orange(1, target_turf))
 		if(W.hull)
@@ -304,7 +305,7 @@
 	for(var/obj/structure/machinery/door/D in orange(1, target_turf))
 		D.ex_act(1000 * penetration, , cause_data)
 
-	handle_explosion(target_turf, dir, cause_data)
+	handle_explosion(target_turf, dir, temp_cause)
 
 /obj/item/explosive/plastic/proc/handle_explosion(turf/target_turf, dir, cause_data)
 	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)

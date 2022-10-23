@@ -1161,7 +1161,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper XM88 padded stock"
 	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88 Heavy Rifle."
 	icon_state = "boomslang-stock"
-	wield_delay_mod = WIELD_DELAY_SLOW
+	wield_delay_mod = WIELD_DELAY_NORMAL
 	hud_offset_mod = 6
 
 /obj/item/attachable/stock/xm88/New()

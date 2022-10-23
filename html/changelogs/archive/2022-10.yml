@@ -257,3 +257,5 @@
   - rscadd: Added playable huggers, click on an eggmorpher that has a stored huggers
       to try it out. You can click on the morpher again to refund your hugger. Check
       the PR for more info.
+  carlarctg:
+  - balance: Queen eye can now move up to 3 tiles away from any weeds.

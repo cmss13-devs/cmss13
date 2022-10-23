@@ -17,29 +17,40 @@
 	selected_key = null
 	selected_value = null
 
+#define TYPE_TEXT "text"
+#define TYPE_NUMBER "number"
+#define TYPE_MOB_REFERENCE "mob reference"
+#define TYPE_OBJ_REFERENCE "object reference"
+#define TYPE_TURF_REFERENCE "turf reference"
+
 /datum/buildmode_mode/varedit/change_settings(client/c)
 	var/list/locked = list("vars", "key", "ckey", "client", "icon")
 
 	selected_key = input(usr,"Enter variable name:" ,"Name", "name")
 	if(selected_key in locked && !check_rights(R_DEBUG,0))
 		return TRUE
-	var/type = tgui_input_list(usr,"Select variable type:" ,"Type", list("text","number","mob-reference","obj-reference","turf-reference"))
+	var/type = tgui_input_list(usr,"Select variable type:", "Type", list(TYPE_TEXT, TYPE_NUMBER, TYPE_MOB_REFERENCE, TYPE_OBJ_REFERENCE, TYPE_TURF_REFERENCE))
 
 	if(!type)
 		return TRUE
 
 	switch(type)
-		if("text")
+		if(TYPE_TEXT)
 			selected_value = input(usr,"Enter variable value:" ,"Value", "value") as text
-		if("number")
+		if(TYPE_NUMBER)
 			selected_value = input(usr,"Enter variable value:" ,"Value", 0) as num
-		if("mob-reference")
+		if(TYPE_MOB_REFERENCE)
 			selected_value = input(usr,"Enter variable value:" ,"Value") as mob in GLOB.mob_list
-		if("obj-reference")
+		if(TYPE_OBJ_REFERENCE)
 			selected_value = input(usr,"Enter variable value:" ,"Value") as obj in GLOB.object_list
-		if("turf-reference")
+		if(TYPE_TURF_REFERENCE)
 			selected_value = input(usr,"Enter variable value:" ,"Value") as turf in turfs
 
+#undef TYPE_TEXT
+#undef TYPE_NUMBER
+#undef TYPE_MOB_REFERENCE
+#undef TYPE_OBJ_REFERENCE
+#undef TYPE_TURF_REFERENCE
 
 /datum/buildmode_mode/varedit/when_clicked(client/c, params, obj/object)
 	var/list/modifiers = params2list(params)

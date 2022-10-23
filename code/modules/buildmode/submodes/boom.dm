@@ -2,7 +2,7 @@
 	key = "boom"
 	help = "Click on Mode = Set explosive settings\n\
 	Mouse Button on obj = Kaboom\n\
-	NOTE: Using the \"Launch Supplypod\" verb allows you to do this in an IC way (i.e., making a cruise missile come down from the sky and explode wherever you click!)"
+	NOTE: Using the \"Config/Launch Supplypod\" verb allows you to do this in an IC way (i.e., making a cruise missile come down from the sky and explode wherever you click!)"
 
 	var/falloff = 1200
 	var/power = 400

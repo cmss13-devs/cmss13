@@ -160,7 +160,9 @@
 		if(W.hull)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
-	var/obj/effect/alien/weeds/W = locate() in T
+	var/list/turf_area = range(3, T)
+
+	var/obj/effect/alien/weeds/W = locate() in turf_area
 	if(W && HIVE_ALLIED_TO_HIVE(W.hivenumber, hivenumber))
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 

@@ -308,7 +308,7 @@
 	if(istype(W, /obj/item/explosive/grenade))
 		var/obj/item/explosive/grenade/I = W
 		if(I.active)
-			to_chat(user, SPAN_WARNING("Its to late for that!"))
+			to_chat(user, SPAN_WARNING("It's too late for that!"))
 		return
 
 	//clicking the table

@@ -41,12 +41,15 @@
 	var/progress_amount = 1
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || caste?.evolve_without_queen)
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
-		if(evolution_stored > evolution_threshold - 1)
-			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
-			src << sound('sound/effects/xeno_evolveready.ogg')
+		if(evolution_stored >= evolution_threshold)
+			evolve_message()
+
+/mob/living/carbon/Xenomorph/proc/evolve_message()
+	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
+	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has
 #define PASSIVE_BURN_DAM_CALC(intensity, duration, fire_stacks) intensity*(fire_stacks/duration*0.2 + 0.8)
@@ -464,7 +467,8 @@ Make sure their actual health updates immediately.*/
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
 	if(stat != DEAD && !gibbing)
-		if(health <= crit_health - warding_aura * 20) //dead
+		var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
+		if(health <= crit_health - warding_health) //dead
 			if(prob(gib_chance + 0.5*(crit_health - health)))
 				async_gib(last_damage_data)
 			else

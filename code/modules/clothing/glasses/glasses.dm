@@ -383,7 +383,20 @@
 	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
 	icon_state = "mgoggles"
 	prescription = TRUE
-	flags_equip_slot = SLOT_EYES|SLOT_FACE
+
+/obj/item/clothing/glasses/mgoggles/black
+	name = "black marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has black tinted lenses."
+	icon_state = "mgogglesblk"
+	active_icon_state = "mgogglesblk_down"
+	inactive_icon_state = "mgogglesblk"
+
+/obj/item/clothing/glasses/mgoggles/orange
+	name = "orange marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
+	icon_state = "mgogglesorg"
+	active_icon_state = "mgogglesorg_down"
+	inactive_icon_state = "mgogglesorg"
 
 /obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
 	..()

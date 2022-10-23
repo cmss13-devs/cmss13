@@ -842,10 +842,16 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
 	. = ..()
-	inner.reagents.add_reagent("adrenaline", inner.volume/2.5)
-	inner.reagents.add_reagent("inaprovaline", inner.volume/2.5)
-	inner.reagents.add_reagent("peridaxon", inner.volume/5)
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
+	. = ..()
+	inner.reagents.add_reagent("tricordrazine", inner.volume)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)

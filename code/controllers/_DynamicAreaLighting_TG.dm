@@ -282,6 +282,10 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 	A.SetLightLevel(level)
 	Area.related += A
+
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(A))
+		A.overlays += SSweather.curr_master_turf_overlay
+
 	return A
 
 /turf/proc/shift_to_subarea()

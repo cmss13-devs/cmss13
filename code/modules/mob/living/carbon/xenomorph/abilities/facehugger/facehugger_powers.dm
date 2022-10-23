@@ -18,4 +18,4 @@
 	var/did_hug = FALSE
 	if(facehugger.pounce_distance <= 1 && can_hug(L, facehugger.hivenumber))
 		did_hug = facehugger.handle_hug(L)
-	message_admins("[key_name] [did_hug ? "successfully hugged" : "tried to hug"] [key_name(L)] (Pounce Distance: [facehugger.pounce_distance]) at [get_location_in_text(L)]")
+	log_attack("[key_name] [did_hug ? "successfully hugged" : "tried to hug"] [key_name(L)] (Pounce Distance: [facehugger.pounce_distance]) at [get_location_in_text(L)]")

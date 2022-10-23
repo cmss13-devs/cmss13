@@ -257,6 +257,8 @@
   - rscadd: Added playable huggers, click on an eggmorpher that has a stored huggers
       to try it out. You can click on the morpher again to refund your hugger. Check
       the PR for more info.
+  Laser9:
+  - bugfix: Burgers can now be labeled without losing custom meat names.
   carlarctg:
   - balance: Queen eye can now move up to 3 tiles away from any weeds.
   harryob:

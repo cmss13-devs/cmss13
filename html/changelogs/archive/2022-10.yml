@@ -252,3 +252,8 @@
       check the current server revision
   ito726:
   - bugfix: Base Runner and Hedgehog Ravager form being able to hurt corpses and caps.
+2022-10-23:
+  Geeves, Frans_Feiffer:
+  - rscadd: Added playable huggers, click on an eggmorpher that has a stored huggers
+      to try it out. You can click on the morpher again to refund your hugger. Check
+      the PR for more info.

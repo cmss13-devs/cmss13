@@ -77,7 +77,7 @@
 		to_chat(src, SPAN_WARNING("You would break your tools if you did this."))
 		return
 
-	if(isXenoLarva(T))
+	if(isXenoLarva(T) || isXenoFacehugger(T))
 		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
 		return
 

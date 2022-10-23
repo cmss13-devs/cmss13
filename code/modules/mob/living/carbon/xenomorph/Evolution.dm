@@ -185,11 +185,6 @@
 		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow you to evolve."))
 		return FALSE
 
-	if(isXenoLarva(src)) //Special case for dealing with larvae
-		if(amount_grown < max_grown)
-			to_chat(src, SPAN_WARNING("You are not yet fully grown. Currently at: [amount_grown] / [max_grown]."))
-			return FALSE
-
 	if(isnull(caste.evolves_to))
 		to_chat(src, SPAN_WARNING("You are already the apex of form and function. Go forth and spread the hive!"))
 		return FALSE
@@ -345,12 +340,15 @@
 			if(2) used_tier_2_slots--
 			if(3) used_tier_3_slots--
 
-	var/totalXenos = length(hive.totalXenos) + pooled_factor
+	var/totalXenos = pooled_factor
+	for(var/mob/living/carbon/Xenomorph/xeno as anything in hive.totalXenos)
+		if(xeno.counts_for_slots)
+			totalXenos++
 
 	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))
 		return FALSE
-	else if(tier == 2 && ((used_tier_3_slots / length(hive.totalXenos)) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
+	else if(tier == 2 && ((used_tier_3_slots / totalXenos) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
 		return FALSE
 	else if(hive.allow_queen_evolve && !hive.living_xeno_queen && potential_queens == 1 && isXenoLarva(src) && castepick != XENO_CASTE_DRONE)

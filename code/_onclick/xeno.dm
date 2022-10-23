@@ -41,30 +41,32 @@
 				var/firepatted = FALSE
 				if(src.a_intent == INTENT_HELP)
 					var/fire_level_to_extinguish = 5
-					var/turf/T = target
-					for(var/obj/flamer_fire/FF in T)
+					var/turf/target_turf = target
+					for(var/obj/flamer_fire/fire in target_turf)
 						firepatted = TRUE
-						if((FF.firelevel > fire_level_to_extinguish) && (!FF.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
-							FF.firelevel -= fire_level_to_extinguish
-							FF.update_flame()
+						if((fire.firelevel > fire_level_to_extinguish) && (!fire.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
+							fire.firelevel -= fire_level_to_extinguish
+							fire.update_flame()
 						else
-							switch(FF.fire_variant)
+							switch(fire.fire_variant)
 								if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, extinguishes faster.
-									if(FF.firelevel > 2*fire_level_to_extinguish)
+									if(fire.firelevel > 2*fire_level_to_extinguish)
 										firepatted = TRUE
-										FF.firelevel -= 2*fire_level_to_extinguish
-										FF.update_flame()
-									else qdel(FF)
-								else qdel(FF)
+										fire.firelevel -= 2*fire_level_to_extinguish
+										fire.update_flame()
+									else 
+										qdel(fire)
+								else 
+									qdel(fire)
 				xeno_miss_delay(src)
 				animation_attack_on(target)
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 10, 1) //Quiet to limit spam/nuisance.
 				if(firepatted)
-					visible_message(SPAN_DANGER("[src] pats at the fire!"), \
+					visible_message(SPAN_DANGER("\The [src] pats at the fire!"), \
 					SPAN_DANGER("You pat the fire!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				else
-					visible_message(SPAN_DANGER("[src] swipes at [target]!"), \
-					SPAN_DANGER("You swipe at [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+					visible_message(SPAN_DANGER("\The [src] swipes at \the [target]!"), \
+					SPAN_DANGER("You swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return TRUE
 
 /mob/living/carbon/Xenomorph/RangedAttack(var/atom/A)

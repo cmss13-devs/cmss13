@@ -91,7 +91,7 @@
 					to_chat(user, SPAN_NOTICE("This barricade is already upgraded."))
 					return
 				var/obj/item/stack/sheet/metal/M = W
-				if(user.client.prefs?.no_radials_preference)
+				if(user.client?.prefs?.no_radials_preference)
 					var/choice = tgui_input_list(user, "Choose an upgrade to apply to the barricade", "Apply Upgrade", list(BARRICADE_UPGRADE_BURN, BARRICADE_UPGRADE_BRUTE, BARRICADE_UPGRADE_EXPLOSIVE))
 					if(!choice)
 						return

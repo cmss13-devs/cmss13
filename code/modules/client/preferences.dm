@@ -677,17 +677,17 @@ var/const/MAX_SAVE_SLOTS = 10
 	HTML += "</td></tr></table>"
 	HTML += "</center></table>"
 
-	if(user.client.prefs) //Just makin sure
+	if(user.client?.prefs) //Just makin sure
 		var/b_color = "green"
 		var/msg = "Get random job if preferences unavailable"
 
-		if(user.client.prefs.alternate_option == BE_MARINE)
+		if(user.client?.prefs?.alternate_option == BE_MARINE)
 			b_color = "red"
 			msg = "Be marine if preference unavailable"
-		else if(user.client.prefs.alternate_option == RETURN_TO_LOBBY)
+		else if(user.client?.prefs?.alternate_option == RETURN_TO_LOBBY)
 			b_color = "purple"
 			msg = "Return to lobby if preference unavailable"
-		else if(user.client.prefs.alternate_option == BE_XENOMORPH)
+		else if(user.client?.prefs?.alternate_option == BE_XENOMORPH)
 			b_color = "orange"
 			msg = "Be Xenomorph if preference unavailable"
 

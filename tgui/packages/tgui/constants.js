@@ -45,8 +45,8 @@ export const COLORS = {
   },
   // reagent / chemistry related colours
   reagent: {
-    acidicbuffer: "#fbc314",
-    basicbuffer: "#3853a4",
+    acidicbuffer: '#fbc314',
+    basicbuffer: '#3853a4',
   },
 };
 
@@ -90,7 +90,7 @@ export const RADIO_CHANNELS = [
     color: '#1ecc43',
   },
   {
-    name: 'Dutch\'s Dozen',
+    name: "Dutch's Dozen",
     freq: 1340,
     color: '#1ecc43',
   },
@@ -310,15 +310,15 @@ const GASES = [
 
 export const getGasLabel = (gasId, fallbackValue) => {
   const gasSearchString = String(gasId).toLowerCase();
+  // prettier-ignore
   const gas = GASES.find(gas => gas.id === gasSearchString
     || gas.name.toLowerCase() === gasSearchString);
-  return gas && gas.label
-    || fallbackValue
-    || gasId;
+  return (gas && gas.label) || fallbackValue || gasId;
 };
 
-export const getGasColor = gasId => {
+export const getGasColor = (gasId) => {
   const gasSearchString = String(gasId).toLowerCase();
+  // prettier-ignore
   const gas = GASES.find(gas => gas.id === gasSearchString
     || gas.name.toLowerCase() === gasSearchString);
   return gas && gas.color;

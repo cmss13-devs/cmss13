@@ -192,6 +192,18 @@ var/global/list/gear_datums = list()
 	cost = 2
 	slot = WEAR_EYES
 
+/datum/gear/cmgogglesblack
+	display_name = "Ballistic Goggles (Black)"
+	path = /obj/item/clothing/glasses/mgoggles/black
+	cost = 2
+	slot = WEAR_EYES
+
+/datum/gear/cmgogglesorange
+	display_name = "Ballistic Goggles (Orange)"
+	path = /obj/item/clothing/glasses/mgoggles/orange
+	cost = 2
+	slot = WEAR_EYES
+
 /datum/gear/aviators
 	display_name = "Aviator Shades"
 	path = /obj/item/clothing/glasses/sunglasses/aviator

@@ -15,8 +15,8 @@
 */
 
 #define STUI_TEXT_ATTACK "Attack"
-#define STUI_TEXT_ADMIN "Admin Logs"
-#define STUI_TEXT_STAFF "Staff Chat"
+#define STUI_TEXT_STAFF "Staff Logs"
+#define STUI_TEXT_STAFF_CHAT "Staff Chat"
 #define STUI_TEXT_OOC "OOC"
 #define STUI_TEXT_GAME "Game"
 #define STUI_TEXT_DEBUG "Debug"
@@ -65,12 +65,10 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 	.["tabs"] = list()
 	if(user.client.admin_holder.rights & R_MOD)
 		.["tabs"] += STUI_TEXT_ATTACK
-	if(user.client.admin_holder.rights & R_ADMIN)
-		.["tabs"] += STUI_TEXT_ADMIN
 		.["tabs"] += STUI_TEXT_STAFF
-	if(user.client.admin_holder.rights & R_MOD)
+		.["tabs"] += STUI_TEXT_STAFF_CHAT
 		.["tabs"] += STUI_TEXT_OOC
-	if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
+	if((user.client.admin_holder.rights & R_MOD) || (user.client.admin_holder.rights & R_DEBUG))
 		.["tabs"] += STUI_TEXT_GAME
 	if(user.client.admin_holder.rights & R_DEBUG)
 		.["tabs"] += STUI_TEXT_DEBUG
@@ -91,10 +89,10 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 	if(user.client.admin_holder.rights & R_ADMIN)
 		if(admin.len > stui_length+1)
 			admin.Cut(,admin.len-stui_length)
-		.["logs"][STUI_TEXT_ADMIN] = admin
+		.["logs"][STUI_TEXT_STAFF] = admin
 		if(staff.len > stui_length+1)
 			staff.Cut(,staff.len-stui_length)
-		.["logs"][STUI_TEXT_STAFF] = staff
+		.["logs"][STUI_TEXT_STAFF_CHAT] = staff
 	if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
 		if(game.len > stui_length+1)
 			game.Cut(,game.len-stui_length)

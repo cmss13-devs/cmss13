@@ -28,34 +28,33 @@ export const AccessList = (props, context) => {
     grantDep,
     denyDep,
   } = props;
-  const [
-    selectedAccessName,
-    setSelectedAccessName,
-  ] = useLocalState(context, 'accessName', accesses[0]?.name);
-  const selectedAccess = accesses
-    .find(access => access.name === selectedAccessName);
-  const selectedAccessEntries = sortBy(
-    entry => entry.desc,
-  )(selectedAccess?.accesses || []);
+  const [selectedAccessName, setSelectedAccessName] = useLocalState(
+    context,
+    'accessName',
+    accesses[0]?.name
+  );
+  const selectedAccess = accesses.find(
+    (access) => access.name === selectedAccessName
+  );
+  const selectedAccessEntries = sortBy((entry) => entry.desc)(
+    selectedAccess?.accesses || []
+  );
 
-  const checkAccessIcon = accesses => {
+  const checkAccessIcon = (accesses) => {
     let oneAccess = false;
     let oneInaccess = false;
     for (let element of accesses) {
       if (selectedList.includes(element.ref)) {
         oneAccess = true;
-      }
-      else {
+      } else {
         oneInaccess = true;
       }
     }
     if (!oneAccess && oneInaccess) {
       return 0;
-    }
-    else if (oneAccess && oneInaccess) {
+    } else if (oneAccess && oneInaccess) {
       return 1;
-    }
-    else {
+    } else {
       return 2;
     }
   };
@@ -63,24 +62,26 @@ export const AccessList = (props, context) => {
   return (
     <Section
       title="Access"
-      buttons={(
+      buttons={
         <Fragment>
           <Button
             icon="check-double"
             content="Grant All"
             color="good"
-            onClick={() => grantAll()} />
+            onClick={() => grantAll()}
+          />
           <Button
             icon="undo"
             content="Deny All"
             color="bad"
-            onClick={() => denyAll()} />
+            onClick={() => denyAll()}
+          />
         </Fragment>
-      )}>
+      }>
       <Stack>
         <Stack.Item>
           <Tabs vertical>
-            {accesses.map(access => {
+            {accesses.map((access) => {
               const entries = access.accesses || [];
               const icon = diffMap[checkAccessIcon(entries)].icon;
               const color = diffMap[checkAccessIcon(entries)].color;
@@ -106,7 +107,8 @@ export const AccessList = (props, context) => {
                 icon="check"
                 content="Grant Region"
                 color="good"
-                onClick={() => grantDep(selectedAccess.regid)} />
+                onClick={() => grantDep(selectedAccess.regid)}
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -114,17 +116,19 @@ export const AccessList = (props, context) => {
                 icon="times"
                 content="Deny Region"
                 color="bad"
-                onClick={() => denyDep(selectedAccess.regid)} />
+                onClick={() => denyDep(selectedAccess.regid)}
+              />
             </Stack.Item>
           </Stack>
           <Stack vertical mt={1}>
-            {selectedAccessEntries.map(entry => (
+            {selectedAccessEntries.map((entry) => (
               <Stack.Item key={entry.desc}>
                 <Button.Checkbox
                   fluid
                   content={entry.desc}
                   checked={selectedList.includes(entry.ref)}
-                  onClick={() => accessMod(entry.ref)} />
+                  onClick={() => accessMod(entry.ref)}
+                />
               </Stack.Item>
             ))}
           </Stack>

@@ -11,6 +11,7 @@
 	anchored = TRUE
 	density = FALSE
 	layer = WEED_LAYER
+	plane = FLOOR_PLANE
 	unacidable = TRUE
 	health = WEED_HEALTH_STANDARD
 	var/weed_strength = WEED_LEVEL_STANDARD
@@ -378,6 +379,7 @@
 
 /obj/effect/alien/weeds/weedwall
 	layer = RESIN_STRUCTURE_LAYER
+	plane = GAME_PLANE
 	icon_state = "weedwall"
 	var/list/wall_connections = list("0", "0", "0", "0")
 	hibernate = TRUE
@@ -417,6 +419,7 @@
 	health = NODE_HEALTH_GROWING
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
+	plane = GAME_PLANE
 	var/static/staticnode
 	var/overlay_node = TRUE
 

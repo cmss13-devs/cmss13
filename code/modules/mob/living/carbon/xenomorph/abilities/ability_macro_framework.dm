@@ -179,10 +179,7 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
-/mob/living/carbon/Xenomorph/verb/xeno_tail_stab_action()
-	set category = "Alien"
-	set name = "Tail Stab"
-	set hidden = TRUE
+/mob/living/carbon/Xenomorph/proc/xeno_tail_stab_action()
 	var/mob/living/carbon/Xenomorph/xeno = src
 	if (!istype(xeno))
 		return

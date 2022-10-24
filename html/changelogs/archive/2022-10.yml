@@ -264,3 +264,15 @@
   harryob:
   - admin: in view update - you can now subtle message, alert message (the one that
       appears in the centre of the screen) and direct narrate to all players in view
+2022-10-24:
+  usnpeepoo:
+  - balance: Berserkers rage lock out is now 6 seconds, down from 10. It now has a
+      white glow visible to both marine and xenos during this phase.
+  - balance: Apprehend is no longer a lock on slow, it is now a speed boost with a
+      short duration. During this speed boost the next slash the berserker hits applies
+      a super slow debuff. Apprehend cooldown lowered slightly. It is also activated
+      by pressing the keybind set to it.
+  - balance: Clothesline can now heal without a rage stack, with a lower amount of
+      health gained. Rage stacked clothesline now heals for 200 health (Up from 150)
+  - balance: Eviscerate now has life steal after its activation. The health gained
+      increases by each marine slashed within a 1 tile range.

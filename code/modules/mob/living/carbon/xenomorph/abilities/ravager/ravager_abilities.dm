@@ -65,10 +65,10 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 0
-	xeno_cooldown = 14 SECONDS
+	xeno_cooldown = 17 SECONDS
 
 	// Config values
-	var/speed_buff = 0.70
+	var/speed_buff = 0.75
 	var/buff_duration = 8 SECONDS
 
 

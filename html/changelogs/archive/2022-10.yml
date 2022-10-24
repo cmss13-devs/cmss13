@@ -284,3 +284,4 @@
       health gained. Rage stacked clothesline now heals for 200 health (Up from 150)
   - balance: Eviscerate now has life steal after its activation. The health gained
       increases by each marine slashed within a 1 tile range.
+  - bugfix: Misplaced APC on Sorokyne

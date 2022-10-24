@@ -19,7 +19,7 @@
 	turf_overlay_icon_state = "bigred_sand"
 
 	effect_message = "You feel sand scraping the upper layers of your exterior away!"
-	damage_per_tick = 1
+	damage_per_tick = 0
 	damage_type = BRUTE
 
 	ambience = 'sound/ambience/strata/strata_snowstorm.ogg'

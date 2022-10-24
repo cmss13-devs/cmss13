@@ -436,6 +436,10 @@
 	to_chat(src, SPAN_XENODANGER("You are too small to pick up \the [F]!"))
 	return
 
+/mob/living/carbon/Xenomorph/Facehugger/pickup_fruit(obj/effect/alien/resin/fruit/F)
+	to_chat(src, SPAN_XENODANGER("You are too small to pick up \the [F]!"))
+	return
+
 /obj/item/reagent_container/food/snacks/resin_fruit/greater
 	name = XENO_FRUIT_GREATER
 	desc = "A strange large fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."

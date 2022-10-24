@@ -433,7 +433,7 @@ const PunishmentActions = (props, context) => {
             height="100%"
             icon="clipboard-list"
             color="bad"
-            content="Human name ban"
+            content={!data?.client_name_banned_status ? ("Human name ban") : ("Human name unban")}
             disabled={!hasPermission(data, "ban_human_name")}
             onClick={() => act("ban_human_name")}
           />

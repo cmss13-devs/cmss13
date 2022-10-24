@@ -306,8 +306,8 @@
 		return
 
 	if(istype(W, /obj/item/explosive/grenade))
-		var/obj/item/explosive/grenade/I = W
-		if(I.active)
+		var/obj/item/explosive/grenade/prime = detonating_grenade
+		if(prime.active)
 			to_chat(user, SPAN_WARNING("It's too late for that!"))
 		return
 

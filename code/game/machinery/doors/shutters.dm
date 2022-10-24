@@ -121,3 +121,17 @@
 	closed_layer = PODDOOR_CLOSED_LAYER
 	ex_act(severity)
 		return
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors
+	name = "\improper Uniform Vendor Shutters"
+	id = "bot_uniforms"
+	unacidable = TRUE
+	unslashable = TRUE
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/ex_act(severity)
+		return
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/attacking_item, mob/user)
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
+		return
+	..()

@@ -9836,11 +9836,6 @@
 	},
 /area/almayer/command/cic)
 "aAl" = (
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -9850,7 +9845,13 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Combat Information Center"
+	name = "\improper Combat Information Center";
+	id = "cic_exterior"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -36116,11 +36117,7 @@
 	},
 /area/almayer/living/briefing)
 "dhU" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 2;
-	id = "bot_uniforms";
-	name = "\improper Uniform Vendor Shutters"
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -36775,6 +36772,26 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
+"dum" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	name = "\improper Combat Information Center";
+	id = "cic_exterior"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/command/cic)
 "duo" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 8
@@ -61532,11 +61549,7 @@
 	},
 /area/almayer/squads/delta)
 "oqA" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 2;
-	id = "bot_uniforms";
-	name = "\improper Uniform Vendor Shutters"
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "cargo_arrow"
@@ -78026,10 +78039,8 @@
 	},
 /area/almayer/hallways/repair_bay)
 "vwV" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "bot_uniforms";
-	name = "\improper Uniform Vendor Shutters"
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -107592,7 +107603,7 @@ wVW
 wVW
 aAl
 jnX
-hzL
+dum
 wVW
 wVW
 wVW

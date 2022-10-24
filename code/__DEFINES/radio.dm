@@ -21,7 +21,7 @@
 
 //Radio channels
 #define RADIO_CHANNEL_ALMAYER "Almayer"
-#define RADIO_CHANNEL_ALAMO "Alamo"	
+#define RADIO_CHANNEL_ALAMO "Alamo"
 #define RADIO_CHANNEL_COMMAND "Command"
 #define RADIO_CHANNEL_CCT "CCT"
 #define RADIO_CHANNEL_CLF "CLF"
@@ -40,8 +40,9 @@
 #define RADIO_CHANNEL_REQ "Req"
 #define RADIO_CHANNEL_SPECIAL "special"
 #define RADIO_CHANNEL_SYNDICATE "Syndicate"
-#define RADIO_CHANNEL_SPECOPS "SpecOps" 
-#define RADIO_CHANNEL_UPP "UPP" 
-#define RADIO_CHANNEL_YAUTJA "Yautja" 
+#define RADIO_CHANNEL_SPECOPS "SpecOps"
+#define RADIO_CHANNEL_UPP "UPP"
+#define RADIO_CHANNEL_YAUTJA "Yautja"
 #define RADIO_CHANNEL_WY "WY"
-#define RADIO_CHANNEL_WY_PMC "WY PMC" 
+#define RADIO_CHANNEL_WY_PMC "WY PMC"
+#define RADIO_CHANNEL_VAI "VAI"

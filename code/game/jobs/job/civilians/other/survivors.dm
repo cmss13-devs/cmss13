@@ -7,6 +7,7 @@
 	total_positions = 8
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
+	var/is_synth = FALSE
 	var/intro_text
 	var/story_text
 
@@ -23,14 +24,19 @@
 
 	var/list/potential_spawners = list()
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns)
-		if(spawner.check_can_spawn(H))
+		if(spawner.check_can_spawn(H, is_synth))
 			potential_spawners += spawner
 	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
 	H.forceMove(get_turf(picked_spawner))
 
-	if(picked_spawner.equipment)
+	var/has_equipment = FALSE
+	if(is_synth && picked_spawner.synth_equipment)
+		arm_equipment(H, picked_spawner.synth_equipment, FALSE, TRUE)
+		has_equipment = TRUE
+	else if(!is_synth && picked_spawner.equipment)
 		arm_equipment(H, picked_spawner.equipment, FALSE, TRUE)
-	else
+		has_equipment = TRUE
+	if(!has_equipment)
 		survivor_old_equipment(H)
 
 	if(picked_spawner.roundstart_damage_max > 0)

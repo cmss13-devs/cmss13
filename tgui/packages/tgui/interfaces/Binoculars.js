@@ -9,15 +9,14 @@ export const Binoculars = (_props, context) => {
   const y_coord = data.ycoord;
 
   return (
-    <Window
-      width={450}
-      height={200}>
+    <Window width={450} height={200}>
       <Window.Content scrollable>
-        <Section title="SIMPLIFIED COORDINATES OF TARGET" textAlign="center"
+        <Section
+          title="SIMPLIFIED COORDINATES OF TARGET"
+          textAlign="center"
           fontSize="15px">
           <Box fontSize="30px">
-            LONGITUDE : {x_coord},
-            LATITUDE : {y_coord}
+            LONGITUDE : {x_coord}, LATITUDE : {y_coord}
           </Box>
         </Section>
       </Window.Content>

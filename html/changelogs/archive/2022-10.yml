@@ -210,3 +210,85 @@
   kugamo:
   - refactor: Refactored the resin marks, removing redundant ones, clarifying the
       meaning of some, and adding one.
+2022-10-19:
+  BlackCrystalic, Ghostsheet, ihatethisengine, Firartix, nauticall:
+  - expansion: Lifeboats have been given functionality and can now be used without
+      staff intervention.
+  Monkeysfist:
+  - rscadd: Added a hidden Ferret trucker cap to each map
+  - imageadd: Added Ferret loaders
+  - imageadd: Added Ferret trucker caps
+2022-10-20:
+  Don:
+  - rscadd: Medical personnel now have access to pressurized pouches containing tricordrazine
+      in their vendors.
+  - balance: Revival Mix pressurized pouches now come with tricordrazine instead of
+      peridaxon; the contents are now evenly split between the three reagents.
+  Nanotrasen-Spy:
+  - imageadd: added proper goggles down item sprites
+  - imageadd: added black and amber tinted ballistic goggles to marine preferences
+      gear
+  Segrain:
+  - bugfix: Weeds are once again properly layered over the floor (meaning, for example,
+      that vents and pipes are visible over them where appropriate).
+  Usnpeepoo, Nivrak:
+  - balance: Removed shielding slash from warrior. Warrior slashes now heal for (7
+      + 1 per enemy within 3 tiles, up to 2)% of missing health with a minimum of
+      20 and a maximum of 40. There is now a visual, and chat cue for when a warrior
+      gains extra health per marine.
+  - balance: Warriors health is reverted back to 500, up from 450.
+  - balance: Warriors slash now reduces cooldowns from all abilities by 0.30 seconds
+      worth.
+  kugamo:
+  - bugfix: Fixed visual bug where Carriers on fire wouldnt display as such.
+2022-10-21:
+  realforest2001:
+  - admin: Mods can see things on STUI now.
+2022-10-22:
+  Diegoflores31:
+  - bugfix: Toxic trait now applies Toxin damage on touch as intended
+  harryob:
+  - server: added (deeper) support for tgs with DMAPI support, alongside a verb to
+      check the current server revision
+  ito726:
+  - bugfix: Base Runner and Hedgehog Ravager form being able to hurt corpses and caps.
+2022-10-23:
+  Geeves, Frans_Feiffer:
+  - rscadd: Added playable huggers, click on an eggmorpher that has a stored huggers
+      to try it out. You can click on the morpher again to refund your hugger. Check
+      the PR for more info.
+  Laser9:
+  - bugfix: Burgers can now be labeled without losing custom meat names.
+  carlarctg:
+  - balance: Queen eye can now move up to 3 tiles away from any weeds.
+  harryob:
+  - admin: in view update - you can now subtle message, alert message (the one that
+      appears in the centre of the screen) and direct narrate to all players in view
+2022-10-24:
+  Geeves, Unknownity:
+  - balance: Special nightmare spawns such as CLF and PMC can now spawn CLF/PMC Synthetics.
+  - rscadd: Added a PMC Support synthetic as the W-Y equivalent of a USCM standard
+      synthetic, you can find them in PMC ERTs and nightmare spawns during regular
+      gameplay.
+  Shad0vvs:
+  - balance: Allows Xenos to pat out fires on the ground while on help intent.
+  Warfan1815:
+  - rscadd: 'Adds build animations for some of the resin structures (thick & weak
+      versions of: Walls, Doors, Transparent Membrane & Reflective Walls)'
+  - imageadd: Added the construction animations icons for some of the resin structures
+  stanalbatross:
+  - bugfix: fixed an oversight with uniform vendor shutters that was allowing marines
+      to break into them
+  - bugfix: fixed the cic doors release button
+  usnpeepoo:
+  - balance: Berserkers rage lock out is now 6 seconds, down from 10. It now has a
+      white glow visible to both marine and xenos during this phase.
+  - balance: Apprehend is no longer a lock on slow, it is now a speed boost with a
+      short duration. During this speed boost the next slash the berserker hits applies
+      a super slow debuff. Apprehend cooldown lowered slightly. It is also activated
+      by pressing the keybind set to it.
+  - balance: Clothesline can now heal without a rage stack, with a lower amount of
+      health gained. Rage stacked clothesline now heals for 200 health (Up from 150)
+  - balance: Eviscerate now has life steal after its activation. The health gained
+      increases by each marine slashed within a 1 tile range.
+  - bugfix: Misplaced APC on Sorokyne

@@ -419,7 +419,9 @@
 			X.update_canmove()
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
+
+	X.pounce_distance = get_dist(X, A)
 
 	var/datum/launch_metadata/LM = new()
 	LM.target = A
@@ -431,6 +433,8 @@
 	LM.collision_callbacks = pounce_callbacks
 
 	X.launch_towards(LM)
+
+	X.update_icons()
 
 	additional_effects_always()
 	..()

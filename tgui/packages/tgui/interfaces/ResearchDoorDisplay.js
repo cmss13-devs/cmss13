@@ -6,9 +6,7 @@ export const ResearchDoorDisplay = (_props, context) => {
   const { act, data } = useBackend(context);
 
   return (
-    <Window
-      width={350}
-      height={170}>
+    <Window width={350} height={170}>
       <Window.Content scrollable>
         <Section>
           <Flex height="100%" direction="column">
@@ -18,14 +16,14 @@ export const ResearchDoorDisplay = (_props, context) => {
               </NoticeBox>
             </Flex.Item>
             <Flex.Item>
-              {!data.open_shutter && (
+              {(!data.open_shutter && (
                 <Button
                   fluid={1}
                   icon="lock-open"
                   content="Open shutter"
                   onClick={() => act('shutter')}
                 />
-              ) || (
+              )) || (
                 <Button
                   fluid={1}
                   icon="lock"
@@ -35,14 +33,14 @@ export const ResearchDoorDisplay = (_props, context) => {
               )}
             </Flex.Item>
             <Flex.Item>
-              {!data.open_door && (
+              {(!data.open_door && (
                 <Button
                   fluid={1}
                   icon="door-open"
                   content="Open door"
                   onClick={() => act('door')}
                 />
-              ) || (
+              )) || (
                 <Button
                   fluid={1}
                   icon="door-closed"
@@ -57,19 +55,20 @@ export const ResearchDoorDisplay = (_props, context) => {
                   fluid={1}
                   icon="arrows-alt-v"
                   content="Toggle divider"
-                  onClick={() => act('divider')} />
+                  onClick={() => act('divider')}
+                />
               </Flex.Item>
             )}
             {!!data.has_flash && (
               <Flex.Item>
-                {!data.flash_charging && (
+                {(!data.flash_charging && (
                   <Button
                     fluid={1}
                     icon="sun"
                     content="Activate flash"
                     onClick={() => act('flash')}
                   />
-                ) || (
+                )) || (
                   <Button
                     fluid={1}
                     color="bad"

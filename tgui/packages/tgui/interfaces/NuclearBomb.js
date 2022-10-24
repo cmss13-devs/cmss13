@@ -5,15 +5,10 @@ import { Window } from '../layouts';
 export const NuclearBomb = (_props, context) => {
   const { act, data } = useBackend(context);
 
-  const cantNuke = (
-    !data.anchor,
-    !!data.safety);
+  const cantNuke = (!data.anchor, !!data.safety);
 
   return (
-    <Window
-      theme="retro"
-      width={350}
-      height={200}>
+    <Window theme="retro" width={350} height={200}>
       <Window.Content scrollable>
         <Section>
           <Stack height="100%" direction="column">
@@ -26,14 +21,14 @@ export const NuclearBomb = (_props, context) => {
               </NoticeBox>
             </Stack.Item>
             <Stack.Item>
-              {!data.safety && (
+              {(!data.safety && (
                 <Button
                   fluid={1}
                   icon="lock"
                   content="Enable safety"
                   onClick={() => act('toggleSafety')}
                 />
-              ) || (
+              )) || (
                 <Button.Confirm
                   fluid={1}
                   icon="exclamation-triangle"
@@ -43,14 +38,14 @@ export const NuclearBomb = (_props, context) => {
               )}
             </Stack.Item>
             <Stack.Item>
-              {!data.command_lockout && (
+              {(!data.command_lockout && (
                 <Button
                   fluid={1}
                   icon="lock"
                   content="Enable command lockout"
                   onClick={() => act('toggleCommandLockout')}
                 />
-              ) || (
+              )) || (
                 <Button.Confirm
                   fluid={1}
                   icon="exclamation-triangle"
@@ -60,14 +55,14 @@ export const NuclearBomb = (_props, context) => {
               )}
             </Stack.Item>
             <Stack.Item>
-              {!data.anchor && (
+              {(!data.anchor && (
                 <Button
                   fluid={1}
                   icon="lock"
                   content="Activate anchor"
                   onClick={() => act('toggleAnchor')}
                 />
-              ) || (
+              )) || (
                 <Button.Confirm
                   fluid={1}
                   icon="lock-open"
@@ -77,7 +72,7 @@ export const NuclearBomb = (_props, context) => {
               )}
             </Stack.Item>
             <Stack.Item>
-              {!data.timing && (
+              {(!data.timing && (
                 <Button.Confirm
                   fluid={1}
                   icon="exclamation-triangle"
@@ -86,7 +81,7 @@ export const NuclearBomb = (_props, context) => {
                   disabled={cantNuke}
                   onClick={() => act('toggleNuke')}
                 />
-              ) || (
+              )) || (
                 <Button.Confirm
                   fluid={1}
                   icon="power-off"

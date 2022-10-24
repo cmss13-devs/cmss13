@@ -1,8 +1,8 @@
-/datum/action/xeno_action/verb/verb_roar()
+/datum/action/xeno_action/verb/verb_shriek()
 	set category = "Alien"
-	set name = "Shrieker Roar"
+	set name = "Shrieker Shriek"
 	set hidden = 1
-	var/action_name = "Shrieker Roar"
+	var/action_name = "Shrieker Shriek"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_rooting_slash()
@@ -19,11 +19,11 @@
 	var/action_name = "dash"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_shrieker_switch_roar_type()
+/datum/action/xeno_action/verb/verb_shrieker_switch_shriek_type()
 	set category = "Alien"
-	set name = "Shrieker Switch Roar Types"
+	set name = "Shrieker Switch Shriek Types"
 	set hidden = 1
-	var/action_name = "Toggle Roar Type"
+	var/action_name = "Toggle Shriek Type"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_acid_throw()

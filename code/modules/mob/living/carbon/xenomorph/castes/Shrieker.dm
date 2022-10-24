@@ -1,6 +1,6 @@
 /datum/caste_datum/shrieker
 	caste_type = XENO_CASTE_SHRIEKER
-	caste_desc = "A loud, booming caste that wroughts destruction, or brings support with its roar."
+	caste_desc = "A loud, booming caste that wroughts destruction, or brings support with its shriek."
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_3
@@ -46,11 +46,11 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/roar,
+		/datum/action/xeno_action/activable/shriek,
 		/datum/action/xeno_action/activable/rooting_slash,
 		/datum/action/xeno_action/activable/pounce/shrieker,
 		/datum/action/xeno_action/activable/acid_throw,
-		/datum/action/xeno_action/onclick/shrieker_switch_roar_type,
+		/datum/action/xeno_action/onclick/shrieker_switch_shriek_type,
 		/datum/action/xeno_action/onclick/plant_weeds
 	)
 	mutation_type = SHRIEKER_NORMAL

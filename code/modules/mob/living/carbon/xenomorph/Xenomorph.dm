@@ -279,7 +279,7 @@
 	var/icon_xeno
 	var/icon_xenonid
 
-	var/screech_status_flags = 0
+	var/shriek_status_flags = 0
 
 	/////////////////////////////////////////////////////////////////////
 	//

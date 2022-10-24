@@ -1,4 +1,4 @@
-/datum/action/xeno_action/activable/roar/use_ability(atom/A)
+/datum/action/xeno_action/activable/shriek/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
@@ -15,68 +15,68 @@
 		var/datum/behavior_delegate/shrieker/BD = xeno.behavior_delegate
 		if (!istype(BD))
 			return
-		if (!BD.use_internal_acid_ability(screech_cost))
+		if (!BD.use_internal_acid_ability(shriek_cost))
 			return
 
-	if (curr_effect_type == SHRIEKER_SCREECH_BUFF)
+	if (curr_effect_type == SHRIEKER_SHRIEK_BUFF)
 
 
-		playsound(xeno.loc, screech_sound_effectt, 55, 0, status = 0)
-		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
+		playsound(xeno.loc, shriek_sound_effectt, 55, 0, status = 0)
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a piercing shriek!"))
 		xeno.create_shriekwave(color = "#07f707")
-		var/screech_duration = 150
+		var/shriek_duration = 150
 		var/image/buff_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
 		var/mob/living/carbon/Xenomorph/Praetorian/P = owner
-		if (!(P.screech_status_flags & SHRIEKER_ROAR_ENHANCED))
+		if (!(P.shriek_status_flags & SHRIEKER_SHRIEK_ENHANCED))
 			P.armor_modifier += XENO_ARMOR_MOD_MED
 			P.damage_modifier += XENO_DAMAGE_MOD_SMALL
 			P.recalculate_armor()
 			P.recalculate_damage()
-			P.screech_status_flags |= SHRIEKER_ROAR_ENHANCED
-			to_chat(src, SPAN_XENOWARNING("Your roar empowers you to strike harder!"))
+			P.shriek_status_flags |= SHRIEKER_SHRIEK_ENHANCED
+			to_chat(src, SPAN_XENOWARNING("Your shriek empowers you to strike harder!"))
 			buff_overlay.flick_overlay(P, 150)
 
-			spawn (screech_duration)
+			spawn (shriek_duration)
 				P.armor_modifier -= XENO_ARMOR_MOD_MED
 				P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 				P.recalculate_armor()
 				P.recalculate_damage()
-				P.screech_status_flags &= ~SHRIEKER_ROAR_ENHANCED
-				to_chat(src, SPAN_XENOWARNING("You feel the power of your roar wane."))
+				P.shriek_status_flags &= ~SHRIEKER_SHRIEK_ENHANCED
+				to_chat(src, SPAN_XENOWARNING("You feel the power of your shriek wane."))
 
 		else
-			to_chat(src, SPAN_XENOWARNING("Your roar's effects do NOT stack with other roars!"))
+			to_chat(src, SPAN_XENOWARNING("Your shriek effects do NOT stack with other shrieks!"))
 
 		for(var/mob/living/carbon/Xenomorph/XX in view(6, xeno))
 			var/image/bufff_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
-			if (!(XX.screech_status_flags & SHRIEKER_ROAR_ENHANCED))
+			if (!(XX.shriek_status_flags & SHRIEKER_SHRIEK_ENHANCED))
 				XX.armor_modifier += XENO_ARMOR_MOD_MED
 				XX.damage_modifier += XENO_DAMAGE_MOD_SMALL
-				XX.screech_status_flags |= SHRIEKER_ROAR_ENHANCED
+				XX.shriek_status_flags |= SHRIEKER_SHRIEK_ENHANCED
 				XX.recalculate_armor()
 				XX.recalculate_damage()
 				bufff_overlay.flick_overlay(XX, 150)
-				to_chat(XX, SPAN_XENOWARNING("You feel empowered after heearing the roar of [src]!"))
+				to_chat(XX, SPAN_XENOWARNING("You feel empowered after heearing the shriek of [src]!"))
 
-				spawn (screech_duration)
+				spawn (shriek_duration)
 					XX.armor_modifier -= XENO_ARMOR_MOD_MED
 					XX.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-					XX.screech_status_flags &= ~SHRIEKER_ROAR_ENHANCED
+					XX.shriek_status_flags &= ~SHRIEKER_SHRIEK_ENHANCED
 					XX.recalculate_armor()
 					XX.recalculate_damage()
 					to_chat(XX, SPAN_XENOWARNING("You feel the effects of [src] wane!"))
 			else
-				to_chat(XX, SPAN_XENOWARNING("You can only be empowered by one roar at once!"))
+				to_chat(XX, SPAN_XENOWARNING("You can only be empowered by one shriek at once!"))
 
-	else if (curr_effect_type == SHRIEKER_SCREECH_DEBUFF)
-		playsound(xeno.loc, screech_sound_effectt, 55, 0, status = 0)
-		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
+	else if (curr_effect_type == SHRIEKER_SHRIEK_DEBUFF)
+		playsound(xeno.loc, shriek_sound_effectt, 55, 0, status = 0)
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural shriek!"))
 		xeno.create_shriekwave(color = "#FF0000")
 		var/slow_duration = 40
 
 		for(var/mob/living/carbon/human/human in view(3, xeno))
-			human.visible_message(SPAN_DANGER("[xeno]'s roar shakes your entire body, causing you to fall over in pain!"))
-			if (!(xeno.screech_status_flags & SHRIEKER_SCREECH_DEBUFF))
+			human.visible_message(SPAN_DANGER("[xeno]'s shriek shakes your entire body, causing you to fall over in pain!"))
+			if (!(xeno.shriek_status_flags & SHRIEKER_SHRIEK_DEBUFF))
 				shake_camera(human, 2, 3)
 				human.Daze(debuff_daze)
 				human.KnockDown(get_xeno_stun_duration(human, 0.5))

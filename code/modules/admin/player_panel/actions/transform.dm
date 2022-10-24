@@ -112,7 +112,12 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	  name = XENO_CASTE_CRUSHER,
 	  key = /mob/living/carbon/Xenomorph/Crusher,
 	  color = "purple"
-	)
+	),
+	list(
+	  name = XENO_CASTE_SHRIEKER,
+	  key = /mob/living/carbon/Xenomorph/Shrieker,
+	  color = "purple"
+	),
   ),
   "Alien Tier 4" = list(
 	list(

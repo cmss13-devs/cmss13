@@ -1,8 +1,8 @@
-/datum/action/xeno_action/activable/roar
-	name = "Roar"
+/datum/action/xeno_action/activable/shriek
+	name = "Shriek"
 	action_icon_state = "screech"
-	ability_name = "Roar"
-	macro_path = /datum/action/xeno_action/verb/verb_roar
+	ability_name = "Shriek"
+	macro_path = /datum/action/xeno_action/verb/verb_shriek
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 50 SECONDS
@@ -11,29 +11,29 @@
 	// Config
 
 	// These values are used to determine the
-	// Screech cost and the switching of different types of screeches
+	// Shriek cost and the switching of different types of shriek
 
-	var/screech_sound_effectt = "sound/voice/xeno_praetorian_screech.ogg"
-	var/curr_effect_type = SHRIEKER_SCREECH_BUFF
+	var/shriek_sound_effectt = "sound/voice/xeno_praetorian_screech.ogg"
+	var/curr_effect_type = SHRIEKER_SHRIEK_BUFF
 
 	var/debuff_daze = 3
 
-	var/screech_cost = 150
+	var/shriek_cost = 150
 
 
-/datum/action/xeno_action/onclick/shrieker_switch_roar_type
-	name = "Toggle Roar Type"
+/datum/action/xeno_action/onclick/shrieker_switch_shriek_type
+	name = "Toggle Shriek Type"
 	action_icon_state = "roar_motivate" // default = buff
-	macro_path = /datum/action/xeno_action/verb/verb_shrieker_switch_roar_type
+	macro_path = /datum/action/xeno_action/verb/verb_shrieker_switch_shriek_type
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
-/datum/action/xeno_action/onclick/shrieker_switch_roar_type/can_use_action()
+/datum/action/xeno_action/onclick/shrieker_switch_shriek_type/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
-/datum/action/xeno_action/onclick/shrieker_switch_roar_type/use_ability(atom/A)
+/datum/action/xeno_action/onclick/shrieker_switch_shriek_type/use_ability(atom/A)
 
 	var/mob/living/carbon/Xenomorph/X = owner
 	var/action_icon_result
@@ -41,19 +41,19 @@
 	if(!X.check_state(1))
 		return
 
-	var/datum/action/xeno_action/activable/roar/WH = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/roar)
+	var/datum/action/xeno_action/activable/shriek/WH = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/shriek)
 	if (!istype(WH))
 		return
 
-	if (WH.curr_effect_type == SHRIEKER_SCREECH_BUFF)
+	if (WH.curr_effect_type == SHRIEKER_SHRIEK_BUFF)
 		action_icon_result = "roar_intimidate"
-		WH.curr_effect_type = SHRIEKER_SCREECH_DEBUFF
+		WH.curr_effect_type = SHRIEKER_SHRIEK_DEBUFF
 		to_chat(X, SPAN_XENOWARNING("You will now debuff enemies, knocking them down, slowing, and reducing their vision!"))
 
 	else
 		action_icon_result = "roar_motivate"
-		WH.curr_effect_type = SHRIEKER_SCREECH_BUFF
-		to_chat(X, SPAN_XENOWARNING("You will now give your allies increased armor and damage with your roar!"))
+		WH.curr_effect_type = SHRIEKER_SHRIEK_BUFF
+		to_chat(X, SPAN_XENOWARNING("You will now give your allies increased armor and damage with your shriek!"))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)

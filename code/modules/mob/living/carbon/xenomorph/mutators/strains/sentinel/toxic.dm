@@ -47,6 +47,6 @@
 		return
 	if(bound_xeno.plasma_stored < 30)
 		return
-	A.apply_damage(10, TOX)
-	bound_xeno.plasma_stored -= 30
+	A.apply_damage(5, TOX)
+	bound_xeno.plasma_stored -= 20
 

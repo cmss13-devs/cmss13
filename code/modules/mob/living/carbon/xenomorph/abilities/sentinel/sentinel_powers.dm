@@ -109,24 +109,6 @@
 
 // Toxic Sentinel powers
 
-/datum/action/xeno_action/onclick/toggle_toxic_slash/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
-	if(!istype(xeno))
-		return
-	var/datum/behavior_delegate/sentinel_toxic/behavior = xeno.behavior_delegate
-	if(!istype(behavior))
-		return
-	if(behavior.toxic_toggle)
-		behavior.toxic_toggle = FALSE
-		to_chat(xeno, SPAN_XENOHIGHDANGER("Your slashes will now inject cytotoxin into the victim."))
-		return
-	if(!behavior.toxic_toggle)
-		behavior.toxic_toggle = TRUE
-		to_chat(xeno, SPAN_XENOHIGHDANGER("Your slashes will no longer inject cytotoxin into the victim."))
-		return
-	..()
-	return
-
 /datum/action/xeno_action/activable/blinding_spit/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if(!xeno.check_state())
@@ -195,4 +177,22 @@
 	xeno.recalculate_speed()
 	to_chat(xeno, SPAN_XENOHIGHDANGER("You feel your movement speed slow down!"))
 	buffs_active = FALSE
+
+/datum/action/xeno_action/onclick/toggle_toxic_slash/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+	var/datum/behavior_delegate/sentinel_toxic/behavior = xeno.behavior_delegate
+	if(!istype(behavior))
+		return
+	if(behavior.toxic_toggle)
+		behavior.toxic_toggle = FALSE
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Your slashes will now inject cytotoxin into the victim."))
+		return
+	if(!behavior.toxic_toggle)
+		behavior.toxic_toggle = TRUE
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Your slashes will no longer inject cytotoxin into the victim."))
+		return
+	..()
+	return
 

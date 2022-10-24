@@ -17,7 +17,7 @@
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_DRONE)
-	evolves_to = list(XENO_CASTE_GUARDIAN)
+	evolves_to = list(XENO_CASTE_SHRIEKER)
 	eggs_max = 5
 	throwspeed = SPEED_AVERAGE
 	can_hold_facehuggers = 1

@@ -587,9 +587,9 @@
 	deal_damage()
 	qdel(src)
 
-/obj/effect/xenomorph/acid_delay/guardian_landmine
+/obj/effect/xenomorph/acid_delay/shrieker_landmine
 
-/obj/effect/xenomorph/acid_delay/guardian_landmine/deal_damage()
+/obj/effect/xenomorph/acid_delay/shrieker_landmine/deal_damage()
 
 	for (var/mob/living/carbon/H in loc)
 		if (H.stat == DEAD)

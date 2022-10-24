@@ -287,8 +287,8 @@
 			xeno_type = /mob/living/carbon/Xenomorph/Defender
 		if(XENO_CASTE_BURROWER)
 			xeno_type = /mob/living/carbon/Xenomorph/Burrower
-		if(XENO_CASTE_GUARDIAN)
-			xeno_type = /mob/living/carbon/Xenomorph/Guardian
+		if(XENO_CASTE_SHRIEKER)
+			xeno_type = /mob/living/carbon/Xenomorph/Shrieker
 
 	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 

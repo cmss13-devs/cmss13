@@ -252,7 +252,7 @@
 /mob/living/carbon/Xenomorph/Praetorian/get_blood_id()
 	return "xenobloodroyal"
 
-/mob/living/carbon/Xenomorph/Guardian/get_blood_id()
+/mob/living/carbon/Xenomorph/Shrieker/get_blood_id()
 	return "xenobloodroyal	"
 
 /mob/living/carbon/human/get_blood_id()

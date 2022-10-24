@@ -364,7 +364,7 @@
 #define PRAETORIAN_OPPRESSOR  "Oppressor"
 
 // Shrieker strain flags
-#define Shrieker_NORMAL "Normal"
+#define SHRIEKER_NORMAL "Normal"
 
 // Hellhound strain flags
 #define HELLHOUND_NORMAL	"Normal"

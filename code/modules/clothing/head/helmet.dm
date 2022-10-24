@@ -557,6 +557,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "med_helmet"
 	specialty = "M10 pattern medic"
 
+/obj/item/clothing/head/helmet/marine/covert
+	name = "\improper M10 covert helmet"
+	desc = "An M10 marine helmet version designed for use in darkened enviroments. It is coated with a special anti-reflective paint."
+	icon_state = "marsoc_helmet"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	specialty = "M10 pattern covert"
+
 /obj/item/clothing/head/helmet/marine/leader
 	name = "\improper M11 pattern helmet"
 	desc = "A variant of the standard M10 pattern. The front plate is reinforced. This one contains a small built-in camera and has cushioning to project your fragile brain."

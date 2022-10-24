@@ -95,6 +95,11 @@ export const RADIO_CHANNELS = [
     color: '#1ecc43',
   },
   {
+    name: 'VAI',
+    freq: 1218,
+    color: '#1ecc43',
+  },
+  {
     name: 'ERT',
     freq: 1342,
     color: '#1ecc43',

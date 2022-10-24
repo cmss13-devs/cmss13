@@ -723,7 +723,7 @@
 
 // Destroying morgues & crematoriums
 /obj/structure/morgue/attack_alien(mob/living/carbon/Xenomorph/alien)
-	if(unslashable || health <= 0)
+	if(unslashable)
 		to_chat(alien, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
@@ -742,7 +742,7 @@
 
 // Destroying hydroponics trays
 /obj/structure/machinery/portable_atmospherics/hydroponics/attack_alien(mob/living/carbon/Xenomorph/alien)
-	if(unslashable || health <= 0)
+	if(unslashable)
 		to_chat(alien, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 

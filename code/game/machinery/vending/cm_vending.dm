@@ -99,14 +99,10 @@ IN_USE						used for vending/denying
 
 // Vendor Icon Procs
 
-/obj/structure/machinery/cm_vending/proc/preload_assets()
-	var/datum/asset/simple/dynamic_icons/dyn = get_asset_datum(/datum/asset/simple/dynamic_icons)
-	for (var/list/i in product_icon_list)
-		var/filename = i["href"]
-		if(filename)
-			dyn.update(filename)
 
-/obj/structure/machinery/cm_vending/proc/build_icons(var/list/items, var/name_index=1, var/type_index=3)
+GLOBAL_LIST_EMPTY(vending_products)
+
+/obj/structure/machinery/cm_vending/proc/cm_build_inventory(var/list/items, var/name_index=1, var/type_index=3)
 	for (var/list/item in items)
 		// initial item count setup
 		var/item_name = item[name_index]
@@ -120,50 +116,7 @@ IN_USE						used for vending/denying
 		var/desc = ""
 		var/icon/r = null
 
-		if (ispath(typepath, /obj/effect/essentials_set))
-			var/obj/effect/essentials_set/I = new typepath()
-			var/list/spawned_list = I.spawned_gear_list
-			if(LAZYLEN(spawned_list))
-				var/obj/item/target = spawned_list[1]
-				icon_ref = initial(target.icon)
-				icon_state = initial(target.icon_state)
-				desc = initial(target.desc)
-				var/target_obj = new target()
-				r = getFlatIcon(target_obj)
-				qdel(target_obj)
-		else if (ispath(typepath, /obj/item))
-			var/obj/item/I = typepath
-			desc = initial(I.desc)
-			var/map_decor = initial(I.map_specific_decoration)
-			if (map_decor)
-				icon_state = initial(I.icon_state)
-				icon_ref = "icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi"
-				r = icon(icon_ref, icon_state, SOUTH, 1)
-			else
-				var/target_obj = new I()
-				r = getFlatIcon(target_obj)
-				qdel(target_obj)
-		if(!(item_name in product_icon_list))
-			product_icon_list[item_name] = list(
-				"href" = "",
-				"desc" = desc,
-				"base64" = "",
-			)
-		if(!r)
-			continue
-
-		product_icon_list[item_name]["base64"] = icon2base64(r)
-		/*
-		var/asset_name = generate_asset_name(r)
-		var/key = "[asset_name].png"
-		if(asset_name != null)
-			if(!SSassets.cache[key])
-				SSassets.transport.register_asset(key, r)
-			product_icon_list[item_name] = list(
-				"href"=SSassets.transport.get_asset_url(key),
-				"desc"=desc
-			)
-		*/
+		GLOB.vending_products[typepath] = 1
 
 //get which turf the vendor will dispense its products on.
 /obj/structure/machinery/cm_vending/proc/get_appropriate_vend_turf()
@@ -458,7 +411,6 @@ IN_USE						used for vending/denying
 
 	var/list/data = list(
 		"vendor_name" = name,
-		"theme" = vendor_theme,
 		"show_points" = show_points,
 		"current_m_points" = available_points_to_display,
 		"displayed_records" = display_list,
@@ -537,11 +489,13 @@ IN_USE						used for vending/denying
 
 //-----------TGUI PROCS------------------------
 /obj/structure/machinery/cm_vending/ui_static_data(mob/user)
-	var/list/data = list()
-	data["vendor_name"] = name
-	data["vendor_type"] = "base"
-	data["theme"] = vendor_theme
-	return data
+	. = list()
+	.["vendor_name"] = name
+	.["vendor_type"] = "base"
+	.["theme"] = vendor_theme
+
+/obj/structure/machinery/cm_vending/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/vending_products))
 
 //------------GEAR VENDORS---------------
 //for special role-related gear
@@ -706,8 +660,7 @@ IN_USE						used for vending/denying
 
 /obj/structure/machinery/cm_vending/clothing/Initialize()
 	. = ..()
-	build_icons(get_listed_products(), 1, 3)
-	//preload_assets()
+	cm_build_inventory(get_listed_products(), 1, 3)
 
 /obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
 	if(!(vending_human.marine_buy_flags & listed_products[4]))
@@ -818,6 +771,8 @@ IN_USE						used for vending/denying
 
 		var/is_category = item_ref == null
 
+		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
+
 		//forming new list with index, name, amount, available or not, color and add it to display_list
 		var/display_item = list(
 			"prod_index" = i,
@@ -827,7 +782,8 @@ IN_USE						used for vending/denying
 			"prod_initial" = 0,
 			"prod_icon" = result,
 			"prod_desc" = result["desc"],
-			"prod_cost" = p_cost
+			"prod_cost" = p_cost,
+			"image" = imgid
 		)
 
 		show_points = show_points ? show_points : p_cost > 0
@@ -1093,8 +1049,7 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
 	populate_product_list(1.2)
-	build_icons(listed_products)
-	//preload_assets()
+	cm_build_inventory(get_listed_products())
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
@@ -1148,6 +1103,7 @@ IN_USE						used for vending/denying
 
 		var/p_name = myprod[1]					//taking it's name
 		var/p_amount = myprod[2]				//amount left
+		var/item_ref = myprod[3]
 		var/prod_available = p_amount > 0		//checking if it's available
 		var/list/initial_vals = initial_product_count
 
@@ -1160,6 +1116,9 @@ IN_USE						used for vending/denying
 		var/initial_amount = initial_vals[p_name]
 		var/is_category = p_amount < 0
 
+		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
+
+
 		//forming new list with index, name, amount, available or not, color and add it to display_list
 		var/display_item = list(
 			"prod_index" = i,
@@ -1169,7 +1128,8 @@ IN_USE						used for vending/denying
 			"prod_initial" = initial_amount,
 			"prod_icon" = result,
 			"prod_desc" = result["desc"],
-			"prod_cost" = 0
+			"prod_cost" = 0,
+			"image" = imgid
 		)
 
 		if (is_category == 1)

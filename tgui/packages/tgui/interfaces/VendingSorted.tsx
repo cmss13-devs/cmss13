@@ -30,6 +30,7 @@ interface VendingRecord {
   prod_icon: IconRecord;
   prod_desc?: string;
   prod_cost: number;
+  image: string;
 }
 
 interface VendingCategory {
@@ -133,10 +134,11 @@ const VendableItem2 = (props: VenableItem, context) => {
       align-items="center"
     >
       <Flex.Item>
-        <img
-          className="VendingSorted__Icon"
-          alt={record.prod_name}
-          src={`data:image/jpeg;base64,${record.prod_icon.base64}`} />
+        <span className={classes([
+          `VendingSorted__Icon`,
+          `vending32x32`,
+          `${props.record.image}`
+          ])} />
       </Flex.Item>
 
       <Flex.Item>
@@ -190,10 +192,11 @@ const VendableClothingItem = (props: VenableItem, context) => {
       align-items="center"
     >
       <Flex.Item>
-        <img
-          className="VendingSorted__Icon"
-          alt={record.prod_name}
-          src={`data:image/jpeg;base64,${record.prod_icon.base64}`} />
+        <span className={classes([
+          `VendingSorted__Icon`,
+          `vending32x32`,
+          `${props.record.image}`
+          ])} />
       </Flex.Item>
 
       <Flex.Item>

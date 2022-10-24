@@ -7,24 +7,20 @@
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 	listed_products = list()
 
-
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/Initialize()
-	. = ..()
-	var/list/factions = GLOB.faction_datums
-	for (var/i in 1 to length(factions))
-		var/datum/faction/F = get_faction(factions[i])
-		var/list/equipment = F.get_antag_guns_sorted_equipment()
-		if(LAZYLEN(equipment))
-			build_icons(equipment)
-
-	listed_products = list()
-
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/populate_product_list(var/scale)
 	return
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/get_listed_products(var/mob/user)
-	var/mob/living/carbon/human/H = user
+	if(!user)
+		var/list/all_equipment = list()
+		for (var/i in 1 to length(factions))
+			var/datum/faction/F = get_faction(factions[i])
+			var/list/equipment = F.get_antag_guns_sorted_equipment()
+			if(LAZYLEN(equipment))
+				all_equipment += equipment
+		return all_equipment
 
+	var/mob/living/carbon/human/H = user
 	var/faction = H.faction ? H.faction : FACTION_CLF
 	if(!(faction in listed_products))
 		var/datum/faction/F = get_faction(H.faction)
@@ -33,7 +29,7 @@
 	var/list/products_sets = listed_products[faction]
 	return products_sets
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/ui_data(mob/user)
+/obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	var/list/data = ..()
 	var/mob/living/carbon/human/H = user
 	var/adaptive_vendor_theme = VENDOR_THEME_COMPANY	//for potential future PMC version

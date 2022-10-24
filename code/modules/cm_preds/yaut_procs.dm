@@ -71,7 +71,8 @@
 
 	if(!Adjacent(T))
 		to_chat(src, SPAN_WARNING("You have to be next to your target."))
-
+		return
+		
 	if(isXenoLarva(T) || isXenoFacehugger(T))
 		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
 		return

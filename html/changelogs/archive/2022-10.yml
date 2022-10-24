@@ -265,6 +265,10 @@
   - admin: in view update - you can now subtle message, alert message (the one that
       appears in the centre of the screen) and direct narrate to all players in view
 2022-10-24:
+  stanalbatross:
+  - bugfix: fixed an oversight with uniform vendor shutters that was allowing marines
+      to break into them
+  - bugfix: fixed the cic doors release button
   usnpeepoo:
   - balance: Berserkers rage lock out is now 6 seconds, down from 10. It now has a
       white glow visible to both marine and xenos during this phase.

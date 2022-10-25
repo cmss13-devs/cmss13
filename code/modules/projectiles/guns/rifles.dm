@@ -1270,7 +1270,7 @@
 	desc = "Essentially the civilian predecessor to the L42A, the ABR-40 bears similarities to the L42 in inner workings while sporting a 'hunting rifle' esque furniture made from cheap replica wood."
 	icon_state = "l42wood"
 	item_state = "l42wood"
-	current_mag = /obj/item/ammo_magazine/rifle/l42a/half
+	current_mag = /obj/item/ammo_magazine/rifle/l42a
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
@@ -1301,13 +1301,20 @@
 // Essentially L42 Custom, though more of a sidegrade due to 0 attachments, higher weild delay and the fact that you have to find better magazines.
 /obj/item/weapon/gun/rifle/l42a/abr40/drill
 	name = "\improper ABR-40 Ceremonial Rifle"
-	desc = "An ABR-40 battle rifle, the L42A's predecessor, with a fully polished and almost indistinguishable replica-wood furniture for ceremonial usage. Its frame is shined to perfection and you can even see your reflection in the bolt. Lacks the threaded barrel and underbarrel rail for attachments, with only the bayonet lug being the only place to attach anything. Too cumbersome to be fired with one hand, and the Sergeant Major would kill any marine caught trying."
+	desc = "An ABR-40 battle rifle, the L42A's predecessor, with a fully polished and almost indistinguishable replica-wood furniture for ceremonial usage. Its frame is shined to perfection and you can even see your reflection in the bolt. Lacks the threaded barrel and underbarrel rail for attachments, with only the bayonet lug being the only place to attach anything. Too cumbersome to be fired with one hand, and the Sergeant Major would kill any marine caught trying. Can only accept half size ABR-40 magazines."
+	icon_state = "l42wood_shortmag"
+	item_state = "l42wood_shortmag"
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/half
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/bayonet/c02
 						)
 	wield_delay = WIELD_DELAY_NORMAL
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/rifle/l42a/half,
+		/obj/item/ammo_magazine/rifle/l42a/half/blank
+	)
 
 /obj/item/weapon/gun/rifle/l42a/abr40/drill/set_gun_config_values()
 	..()

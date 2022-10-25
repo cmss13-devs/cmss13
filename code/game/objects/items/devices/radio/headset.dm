@@ -398,8 +398,8 @@
 	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 
 /obj/item/device/radio/headset/almayer/mp
-	name = "military police police radio headset"
-	desc = "This is used by military police. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	name = "marine military police police radio headset"
+	desc = "This is used by marine military police members. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mp)
 

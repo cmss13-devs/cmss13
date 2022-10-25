@@ -8,7 +8,7 @@
 
 //Used for logging people entering cryosleep and important items they are carrying.
 GLOBAL_LIST_EMPTY(frozen_crew)
-GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "Security" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
+GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
 
 //Main cryopod console.
 

@@ -861,6 +861,11 @@
 		if(path_turf.density)
 			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))
 			return FALSE
+		for(var/obj/path_contents in path_turf.contents)
+			if(path_contents != targetted_atom && path_contents.density && !path_contents.throwpass)
+				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))
+				return FALSE
+
 		var/atom/barrier = path_turf.handle_barriers(stabbing_xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
 		if(barrier != path_turf)
 			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno)

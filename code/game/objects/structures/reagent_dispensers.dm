@@ -15,6 +15,7 @@
 	var/dispensing = TRUE
 
 /obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
+	. = ..()
 	return
 
 /obj/structure/reagent_dispensers/Initialize(mapload, reagent_amount = 1000)
@@ -208,12 +209,6 @@
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
-
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		if(user.action_busy)
-			return TRUE
-		toggle_anchored(W, user)
-		return TRUE
 
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You're already peforming an action!"))
@@ -470,6 +465,7 @@
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
 	anchored = 1
+	wrenchable = FALSE
 	density = 0
 	chemical = "virusfood"
 

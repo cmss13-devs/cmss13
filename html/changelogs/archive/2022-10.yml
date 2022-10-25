@@ -293,6 +293,9 @@
       increases by each marine slashed within a 1 tile range.
   - bugfix: Misplaced APC on Sorokyne
 2022-10-25:
+  BeagleGaming1:
+  - bugfix: Updated the entry message of the CMO, CE, and VC to be more consistent
+      with what they do
   harryob:
   - admin: build mode 2 - a bunch of new buttons (and better existing buttons)
   kugamo:

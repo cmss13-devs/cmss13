@@ -80,7 +80,7 @@
 	var/mob/living/carbon/human/C = M
 	var/obj/limb/L = pick(C.limbs)
 	if(L && (L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
-		L.heal_damage(POTENCY_MULTIPLIER_MEDIUM * potency, POTENCY_MULTIPLIER_MEDIUM * potency, TRUE)
+		L.heal_damage(POTENCY_MULTIPLIER_MEDIUM * potency, POTENCY_MULTIPLIER_MEDIUM * potency, robo_repair = TRUE)
 
 /datum/chem_property/positive/repairing/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, TOX)
@@ -95,7 +95,7 @@
 	for(var/obj/limb/T in H.limbs)
 		if(!(T.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			continue
-		T.heal_damage(potency * volume,potency * volume, TRUE)
+		T.heal_damage(potency * volume,potency * volume, robo_repair = TRUE)
 
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC

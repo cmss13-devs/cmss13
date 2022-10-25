@@ -863,7 +863,7 @@
 				return FALSE
 
 		var/atom/barrier = path_turf.handle_barriers(stabbing_xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
-		if(barrier != path_turf && !CHECK_BITFIELD(barrier.flags_atom, ON_BORDER))
+		if(barrier != path_turf)
 			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno)
 			if(!tail_stab_cooldown_multiplier)
 				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))

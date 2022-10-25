@@ -1224,9 +1224,6 @@
 /area/kutjevo/interior/complex/botany)
 "bHo" = (
 /obj/structure/bed/sofa/south/grey/right,
-/obj/item/clothing/head/soft/ferret{
-	pixel_y = -9
-	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "bHA" = (
@@ -1554,11 +1551,6 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central/mine_elevator)
 "cht" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
@@ -8190,6 +8182,10 @@
 	dir = 10
 	},
 /area/kutjevo/interior/colony_South/power2)
+"kYs" = (
+/obj/structure/window/framed/kutjevo/reinforced/hull,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med)
 "kZm" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/gm/river/desert/shallow,
@@ -14096,14 +14092,6 @@
 	dir = 1
 	},
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
-"sQv" = (
-/obj/structure/machinery/blackbox_recorder,
-/obj/item/prop/almayer/flight_recorder/colony{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/complex/botany/east_tech)
 "sRb" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 8;
@@ -14552,7 +14540,11 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/Northwest_Colony)
 "tuq" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/power/apc{
+	dir = 4;
+	pixel_x = 29;
+	start_charge = 0
+	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "tuW" = (
@@ -16397,12 +16389,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_central)
-"vOh" = (
-/obj/structure/machinery/power/terminal{
-	dir = 8
-	},
-/turf/open/floor/kutjevo/colors/orange,
-/area/kutjevo/interior/power_pt2_electric_boogaloo)
 "vOt" = (
 /obj/structure/platform/kutjevo{
 	dir = 8
@@ -17376,9 +17362,6 @@
 /area/kutjevo/interior/colony_South)
 "xlD" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/power/terminal{
-	dir = 8
-	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "xms" = (
@@ -17481,7 +17464,9 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/kutjevo/exterior/runoff_bridge)
 "xrF" = (
-/obj/structure/bed/stool,
+/obj/item/stool{
+	pixel_y = 8
+	},
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "xrT" = (
@@ -34020,7 +34005,7 @@ jzl
 jzl
 esO
 jzl
-lcs
+kYs
 jzl
 jzl
 eMC
@@ -35539,11 +35524,11 @@ wWy
 lLn
 bGX
 kDS
-tuq
+qgW
 uLa
 sef
 qgW
-qgW
+tuq
 cht
 vPE
 vgX
@@ -35706,7 +35691,7 @@ wWy
 lLn
 vDS
 vDS
-vDS
+wGD
 mbS
 lHs
 lHs
@@ -37883,7 +37868,7 @@ kHm
 kHm
 kHm
 kHm
-vOh
+kHm
 xlD
 oQc
 oQc
@@ -41071,7 +41056,7 @@ hws
 qwg
 vcY
 jhS
-sQv
+htT
 dkE
 tfx
 dkE

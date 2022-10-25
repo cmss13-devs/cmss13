@@ -335,8 +335,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/MP/cmp
 	name = "\improper M2 pattern chief military police armor"
-	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	specialty = "M2 pattern chief military police"
+
+/obj/item/clothing/suit/storage/marine/MP/padless/cmp
+	name = "\improper M2 pattern padless chief military police armor"
+	specialty = "M2 pattern padless chief military police"
 
 /obj/item/clothing/suit/storage/marine/MP/general
 	name = "\improper M3 pattern general officer armor"

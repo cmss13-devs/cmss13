@@ -292,3 +292,6 @@
   - balance: Eviscerate now has life steal after its activation. The health gained
       increases by each marine slashed within a 1 tile range.
   - bugfix: Misplaced APC on Sorokyne
+2022-10-25:
+  kugamo:
+  - imageadd: Added muzzle flashes to APC weapons.

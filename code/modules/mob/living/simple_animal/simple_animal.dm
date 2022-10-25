@@ -280,7 +280,7 @@
 
 /mob/living/simple_animal/can_be_pulled_by(var/mob/pulling_mob)
 	if(locate(/obj/item/explosive/plastic) in contents)
-		to_chat(pulling_mob, SPAN_WARNING("You leave [src] alone. It's got live explosives on it!"))
+		to_chat(pulling_mob, SPAN_WARNING("You leave \the [src] alone. It's got live explosives on it!"))
 		return FALSE
 
 /mob/living/simple_animal/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri

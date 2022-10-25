@@ -419,7 +419,9 @@
 			X.update_canmove()
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
+
+	X.pounce_distance = get_dist(X, A)
 
 	var/datum/launch_metadata/LM = new()
 	LM.target = A
@@ -431,6 +433,8 @@
 	LM.collision_callbacks = pounce_callbacks
 
 	X.launch_towards(LM)
+
+	X.update_icons()
 
 	additional_effects_always()
 	..()
@@ -902,8 +906,13 @@
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
-	stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("You skewer [target] through the [limb? limb.display_name : "chest"] with your razor sharp tail!"))
-	playsound(target, "alien_bite", 50, TRUE)
+	if(blunt_stab)
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("You swipe your tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
+		playsound(target, "punch", 50, TRUE)
+		stabbing_xeno.emote("tail")
+	else
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("You skewer [target] through the [limb? limb.display_name : "chest"] with your razor sharp tail!"))
+		playsound(target, "alien_bite", 50, TRUE)
 
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, "tail")

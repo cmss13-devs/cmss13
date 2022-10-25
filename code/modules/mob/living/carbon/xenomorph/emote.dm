@@ -119,3 +119,14 @@
 
 	playsound(loc, "alien_roar_larva", 15)
 	return
+
+/mob/living/carbon/Xenomorph/Facehugger/emote(var/act, var/m_type = 1, var/message = null, player_caused)
+	if(findtext(act, "-", 1, null))
+		var/t1 = findtext(act, "-", 1, null)
+		act = copytext(act, 1, t1)
+
+	if(stat && act != "help")
+		return
+
+	playsound(loc, "alien_roar_larva", 15)
+	return

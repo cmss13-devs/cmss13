@@ -7,10 +7,7 @@ export const Signaller = (props, context) => {
   const { max_freq, min_freq, max_signal, min_signal } = data;
 
   return (
-    <Window
-      width={300}
-      height={170}
-    >
+    <Window width={300} height={170}>
       <Window.Content>
         <Section>
           <Button
@@ -18,7 +15,7 @@ export const Signaller = (props, context) => {
             textAlign="center"
             icon="satellite-dish"
             content="Trigger"
-            onClick={() => act("send_signal")}
+            onClick={() => act('send_signal')}
           />
         </Section>
         <Section>
@@ -29,7 +26,7 @@ export const Signaller = (props, context) => {
                 maxValue={max_freq}
                 minValue={min_freq}
                 value={data.current_freq}
-                onChange={(e, value) => act("set_freq", { value: value })}
+                onChange={(e, value) => act('set_freq', { value: value })}
                 mt={1}
                 stepPixelSize={2}
               />
@@ -40,7 +37,7 @@ export const Signaller = (props, context) => {
                 maxValue={max_signal}
                 minValue={min_signal}
                 value={data.current_signal}
-                onChange={(e, value) => act("set_signal", { value: value })}
+                onChange={(e, value) => act('set_signal', { value: value })}
                 mt={1}
                 stepPixelSize={8}
               />

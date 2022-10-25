@@ -44,9 +44,6 @@
 			if(uses_ammo)
 				load_ammo(PC, user)	//it handles on it's own whether the ammo fits
 				return
-			else
-				to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
-				return TRUE
 
 		else
 			if(uses_ammo && ammo_equipped)
@@ -92,10 +89,9 @@
 		qdel(ammo_equipped)
 	else
 		if(ammo_equipped.ammo_name == "rocket")
-			PC.grab_object(ammo_equipped, "ds_rocket")
+			PC.grab_object(user, ammo_equipped, "ds_rocket")
 		else
-			PC.grab_object(ammo_equipped, "ds_ammo")
-		to_chat(user, SPAN_NOTICE("You remove [ammo_equipped] from \the [src] and grab it with \the [PC]."))
+			PC.grab_object(user, ammo_equipped, "ds_ammo")
 	ammo_equipped = null
 	update_icon()
 
@@ -112,8 +108,7 @@
 		return
 	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
 		return
-	PC.grab_object(src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
-	to_chat(user, SPAN_NOTICE("You've [ship_base ? "uninstalled" : "grabbed"] [PC.loaded] with [PC]."))
+	PC.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	if(ship_base)
 		ship_base.installed_equipment = null
 		ship_base = null

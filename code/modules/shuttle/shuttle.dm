@@ -279,6 +279,14 @@
 /obj/docking_port/stationary/proc/on_crash()
 	return
 
+/// Called when the docked shuttle ignites
+/obj/docking_port/stationary/proc/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
+	return
+
+/// Called when a shuttle is about to complete undocking from this stationary dock (already physically gone)
+/obj/docking_port/stationary/proc/on_departure(obj/docking_port/mobile/departing_shuttle)
+	return
+
 //returns first-found touching shuttleport
 /obj/docking_port/stationary/get_docked()
 	. = locate(/obj/docking_port/mobile) in loc
@@ -520,7 +528,10 @@
 
 // called on entering the igniting state
 /obj/docking_port/mobile/proc/on_ignition()
-	playsound(return_center_turf(), ignition_sound, 60, 0)
+	var/obj/docking_port/stationary/S = get_docked()
+	S?.on_dock_ignition(src)
+	if(ignition_sound)
+		playsound(return_center_turf(), ignition_sound, 60, 0, falloff=4)
 	return
 
 /obj/docking_port/mobile/proc/on_prearrival()

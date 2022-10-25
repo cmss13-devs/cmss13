@@ -12,6 +12,7 @@
 	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.
 	evolves_to = XENO_T1_CASTES
 
+	evolve_without_queen = TRUE
 	can_be_revived = FALSE
 
 /datum/caste_datum/larva/predalien
@@ -25,8 +26,6 @@
 	icon_state = "Bloody Larva"
 	icon_size = 32
 	layer = MOB_LAYER
-	amount_grown = 0
-	max_grown = 60
 	see_in_dark = 8
 	tier = 0  //Larva's don't count towards Pop limits
 	age = XENO_NO_AGE
@@ -42,13 +41,21 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl
 		)
 	mutation_type = "Normal"
+
 	var/poolable = TRUE //Can it be safely pooled if it has no player?
+	var/state_override
 
 	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
 
 /mob/living/carbon/Xenomorph/Larva/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_embryo))
 	. = ..()
+
+/mob/living/carbon/Xenomorph/Larva/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
+		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/Xenomorph/Larva/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
@@ -72,6 +79,7 @@
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
 	poolable = FALSE //Not interchangeable with regular larvas in the pool.
+	state_override = "Predalien "
 
 /mob/living/carbon/Xenomorph/Larva/predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_hunter_embryo))
@@ -81,27 +89,9 @@
 	hunter_data.dishonored_set = src
 	hud_set_hunter()
 
-/mob/living/carbon/Xenomorph/Larva/initialize_pass_flags(var/datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
-
-//Larva Progression.. Most of this stuff is obsolete.
-/mob/living/carbon/Xenomorph/Larva/update_progression()
-	var/progress_amount = 1
-
-	if(hive)
-		progress_amount += (0.5 * hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
-
-	if(amount_grown < max_grown)
-		amount_grown = min(max_grown, amount_grown + progress_amount)
-
-	if(amount_grown >= max_grown)	// to avoid spam
-		if(age < 0)
-			to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='?src=\ref[src];evolve=1;'>Evolve</a>"))
-			src << sound('sound/effects/xeno_evolveready.ogg')
-			age++
+/mob/living/carbon/Xenomorph/Larva/evolve_message()
+	to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='?src=\ref[src];evolve=1;'>Evolve</a>"))
+	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 //Larva code is just a mess, so let's get it over with
 /mob/living/carbon/Xenomorph/Larva/update_icons()
@@ -114,14 +104,13 @@
 		name_prefix = hive.prefix
 		color = hive.color
 
-	if(amount_grown < max_grown/2) //We're still bloody
+	if(evolution_stored >= evolution_threshold)
+		progress = "Mature "
+	else if(evolution_stored < evolution_threshold / 2) //We're still bloody
 		progress = "Bloody "
 		state = "Bloody "
-	if(amount_grown >= max_grown/2)
+	else
 		progress = ""
-		state = ""
-	if(amount_grown >= max_grown)
-		progress = "Mature "
 
 	name = "\improper [name_prefix][progress]Larva ([nicknumber])"
 
@@ -131,23 +120,37 @@
 	change_real_name(src, name)
 
 	if(stat == DEAD)
-		icon_state = "[state]Larva Dead"
+		icon_state = "[state_override || state]Larva Dead"
 	else if(handcuffed || legcuffed)
-		icon_state = "[state]Larva Cuff"
+		icon_state = "[state_override || state]Larva Cuff"
 
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[state]Larva Sleeping"
+			icon_state = "[state_override || state]Larva Sleeping"
 		else
-			icon_state = "[state]Larva Stunned"
+			icon_state = "[state_override || state]Larva Stunned"
 	else
-		icon_state = "[state]Larva"
+		icon_state = "[state_override || state]Larva"
+
+/mob/living/carbon/Xenomorph/Larva/handle_name()
+	return
 
 /mob/living/carbon/Xenomorph/Larva/start_pulling(atom/movable/AM)
 	return
 
 /mob/living/carbon/Xenomorph/Larva/pull_response(mob/puller)
 	return TRUE
+
+/mob/living/carbon/Xenomorph/Larva/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack)
+	a_intent = INTENT_HELP //Forces help intent for all interactions.
+	if(!caste)
+		return FALSE
+
+	if(lying) //No attacks while laying down
+		return FALSE
+
+	A.attack_larva(src)
+	xeno_attack_delay(src) //Adds some lag to the 'attack'
 
 /proc/spawn_hivenumber_larva(var/atom/A, var/hivenumber)
 	if(!GLOB.hive_datum[hivenumber] || isnull(A))

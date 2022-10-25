@@ -36,6 +36,8 @@
 
 	var/datum/hive_status/linked_hive
 
+	plane = FLOOR_PLANE
+
 /obj/effect/alien/resin/special/Initialize(mapload, var/hive_ref)
 	. = ..()
 	maxhealth = health

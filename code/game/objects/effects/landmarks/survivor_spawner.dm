@@ -1,6 +1,7 @@
 /obj/effect/landmark/survivor_spawner
 	name = "special survivor spawner"
 	var/equipment = null
+	var/synth_equipment = null
 	var/list/intro_text = list()
 	var/story_text = ""
 	var/roundstart_damage_min = 0
@@ -15,7 +16,7 @@
 	GLOB.survivor_spawns -= src
 	return ..()
 
-/obj/effect/landmark/survivor_spawner/proc/check_can_spawn(var/mob/living/carbon/human/survivor)
+/obj/effect/landmark/survivor_spawner/proc/check_can_spawn(var/mob/living/carbon/human/survivor, var/is_synth)
 	// prevents stacking survivors on top of eachother
 	if(locate(/mob/living/carbon/human) in loc)
 		return FALSE
@@ -33,6 +34,7 @@
 
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf
 	equipment = /datum/equipment_preset/survivor/clf
+	synth_equipment = /datum/equipment_preset/clf/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -43,6 +45,7 @@
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
 	equipment = /datum/equipment_preset/survivor/pmc
+	synth_equipment = /datum/equipment_preset/pmc/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -53,6 +56,7 @@
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl
 	equipment = /datum/equipment_preset/survivor/wy/manager
+	synth_equipment = /datum/equipment_preset/pmc/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")

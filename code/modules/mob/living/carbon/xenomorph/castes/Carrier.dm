@@ -68,9 +68,64 @@
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
 
+	var/atom/movable/vis_obj/carrier_huggers/carrier_huggers_icon_carrier
+	var/list/hugger_image_index = list()
+
+/atom/movable/vis_obj/carrier_huggers
+	icon = 'icons/mob/hostiles/carrier.dmi'
+	var/mob/living/carbon/Xenomorph/huggers_owner
+
+/mob/living/carbon/Xenomorph/Carrier/update_icons()
+	. = ..()
+
+	update_hugger_overlays()
+
+/mob/living/carbon/Xenomorph/Carrier/proc/update_hugger_overlays()
+	if(!carrier_huggers_icon_carrier)
+		return
+
+	carrier_huggers_icon_carrier.overlays.Cut()
+
+	if(!huggers_cur)
+		return
+
+	var/icon/huggers_icon = new /icon()
+
+	update_icon_maths(round(( huggers_cur / huggers_max ) * 3.999) + 1)
+
+	for(var/i in hugger_image_index)
+		if(stat == DEAD)
+			carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i] Knocked Down")
+		else if(lying)
+			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+				carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i] Sleeping")
+			else
+				carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i] Knocked Down")
+		else
+			carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i]")
+
+	carrier_huggers_icon_carrier.icon = huggers_icon
+
+/mob/living/carbon/Xenomorph/Carrier/proc/update_icon_maths(number)
+	var/funny_list = list(1,2,3,4)
+	if(length(hugger_image_index) != number)
+		if(length(hugger_image_index) > number)
+			while(length(hugger_image_index) != number)
+				hugger_image_index -= hugger_image_index[length(hugger_image_index)]
+		else
+			while(length(hugger_image_index) != number)
+				for(var/i in hugger_image_index)
+					funny_list -= i
+				hugger_image_index += funny_list[rand(1,length(funny_list))]
+
+
 /mob/living/carbon/Xenomorph/Carrier/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_carrier))
 	. = ..()
+
+	carrier_huggers_icon_carrier = new(null, src)
+	carrier_huggers_icon_carrier.layer = layer + 0.1
+	vis_contents += carrier_huggers_icon_carrier
 
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)
@@ -98,6 +153,7 @@
 		if(F.stat != DEAD && !F.sterile)
 			huggers_cur++
 			to_chat(src, SPAN_NOTICE("You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+			update_icons()
 			qdel(F)
 		else
 			to_chat(src, SPAN_WARNING("This [F.name] looks too unhealthy."))
@@ -141,6 +197,7 @@
 		huggers_cur--
 		put_in_active_hand(F)
 		to_chat(src, SPAN_XENONOTICE("You grab one of the facehugger in your storage. Now sheltering: [huggers_cur] / [huggers_max]."))
+		update_icons()
 		return
 
 	if(!istype(F)) //something else in our hand

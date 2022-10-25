@@ -295,3 +295,4 @@
 2022-10-25:
   kugamo:
   - imageadd: Added muzzle flashes to APC weapons.
+  - bugfix: Fixed Carrier's Hugger overlays not being directional.

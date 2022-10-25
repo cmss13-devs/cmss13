@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmp, list(
 		list("Chief MP Uniform", 0, /obj/item/clothing/under/marine/officer/cmp, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/cmp, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel/sec, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("Gear Belt", 0, /obj/item/storage/belt/security/mp/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
+		list("Gear Belt", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("M4A3 Custom Pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
@@ -38,11 +38,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmp, list(
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
-		list("Military Police M2 Pattern Armor", 0, /obj/item/clothing/suit/storage/marine/mp, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
-		list("Military Police M2 Pattern Padless Armor", 0, /obj/item/clothing/suit/storage/marine/mp/padless, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("Military Police M2 Pattern Armor", 0, /obj/item/clothing/suit/storage/marine/MP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Military Police M2 Pattern Padless Armor", 0, /obj/item/clothing/suit/storage/marine/MP/padless, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Military Police M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/mp, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Military Police M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("EYEWEAR (TAKE ALL)", 0, null, null, null),
@@ -137,12 +137,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("DEPLOYMENT GEAR", 0, null, null, null),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/mp/SO, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_REGULAR),
+		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_REGULAR),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_COMBAT_SHOES, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", 0, /obj/item/device/binoculars/range/designator, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT HELMET (CHOOSE 1)", 0, null, null, null),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/mp/SO, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_REGULAR),
+		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_REGULAR),
 		list("M10 Technician Helmet", 0, /obj/item/clothing/head/helmet/marine/tech, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -181,8 +181,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_req_officer, list(
 		list("M44 Custom Revolver", 0, /obj/item/storage/belt/gun/m44/custom, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/mp/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/mp/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -230,8 +230,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/mp/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/mp/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -275,8 +275,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Ceremonial Sword", 0, /obj/item/storage/large_holster/ceremonial_sword/full, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/mp/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/mp/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 

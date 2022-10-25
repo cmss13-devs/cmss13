@@ -684,7 +684,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 pattern captain"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/head/helmet/marine/mp
+/obj/item/clothing/head/helmet/marine/MP
 	name = "\improper M10 pattern military police helmet"
 	desc = "A special variant of the M10 Pattern helmet worn by Military Police. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact."
 	icon_state = "mp_helmet"
@@ -693,21 +693,21 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 pattern military police"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/head/helmet/marine/mp/riot
+/obj/item/clothing/head/helmet/marine/MP/riot
 	name = "\improper M10 pattern riot helmet"
 	desc = "A special variant of the M10 Pattern helmet worn by Riot Police."
 	icon_state = "riot_helmet"
 	item_state = "riot_helmet"
 	specialty = "M10 pattern riot"
 
-/obj/item/clothing/head/helmet/marine/mp/SO
+/obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by Officers of the USCM, attracting the attention of the grunts and sniper fire alike."
 	icon_state = "d_helmet"
 	item_state = "d_helmet"
 	specialty = "M10 pattern officer"
 
-/obj/item/clothing/head/helmet/marine/mp/provost/marshal
+/obj/item/clothing/head/helmet/marine/MP/provost/marshal
 	name = "\improper Provost Marshal Cap"
 	desc = "The expensive headwear of a Provost Marshal. Contains shards of kevlar to keep its valuable contents safe."
 	icon_state = "pvmarshalhat"

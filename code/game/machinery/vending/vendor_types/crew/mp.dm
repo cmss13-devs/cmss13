@@ -13,11 +13,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_mp, list(
 		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
-		list("Military Police M2 Pattern Armor", 0, /obj/item/clothing/suit/storage/marine/mp, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Military Police M2 Pattern Padless Armor", 0, /obj/item/clothing/suit/storage/marine/mp/padless, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Military Police M2 Pattern Armor", 0, /obj/item/clothing/suit/storage/marine/MP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Military Police M2 Pattern Padless Armor", 0, /obj/item/clothing/suit/storage/marine/MP/padless, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Military Police M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/mp, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Military Police M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("EYEWEAR (TAKE ALL)", 0, null, null, null),
@@ -33,12 +33,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_mp, list(
 
 	))
 
-/obj/structure/machinery/cm_vending/clothing/mp
+/obj/structure/machinery/cm_vending/clothing/military_police
 	name = "\improper ColMarTech Military Police Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Military Police standard-issue equipment."
 	req_access = list(ACCESS_MARINE_BRIG)
 	vendor_role = list(JOB_POLICE)
 
-/obj/structure/machinery/cm_vending/clothing/mp/Initialize(mapload, ...)
+/obj/structure/machinery/cm_vending/clothing/military_police/Initialize(mapload, ...)
 	. = ..()
 	listed_products = GLOB.cm_vending_clothing_mp

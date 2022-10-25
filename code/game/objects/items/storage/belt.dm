@@ -322,7 +322,7 @@
 	max_storage_space = 21
 
 
-/obj/item/storage/belt/security/mp
+/obj/item/storage/belt/security/MP
 	name = "\improper M276 pattern military police rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is filled with an array of small pouches, meant to carry non-lethal equipment and restraints."
 	storage_slots = 6
@@ -330,7 +330,7 @@
 	max_storage_space = 30
 
 
-/obj/item/storage/belt/security/mp/full/fill_preset_inventory()
+/obj/item/storage/belt/security/MP/full/fill_preset_inventory()
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/melee/baton(src)
@@ -339,11 +339,11 @@
 	new /obj/item/device/clue_scanner(src)
 
 
-/obj/item/storage/belt/security/mp/UPP
+/obj/item/storage/belt/security/MP/UPP
 	name = "\improper Type 43 military police rig"
 	desc = "The Type 43 is the standard load-bearing equipment of the UPP. It consists of a modular belt with various clips. This version is filled with an array of small pouches, meant to carry non-lethal equipment and restraints."
 
-/obj/item/storage/belt/security/mp/UPP/full/fill_preset_inventory()
+/obj/item/storage/belt/security/MP/UPP/full/fill_preset_inventory()
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/melee/baton(src)

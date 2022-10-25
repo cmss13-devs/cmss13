@@ -208,7 +208,7 @@
 
 /obj/item/clothing/suit/armor/riot/marine
 	name = "\improper M5 riot control armor"
-	desc = "A heavily modified suit of M2 military police armor used to supress riots from buckethead marines. Slows you down a lot."
+	desc = "A heavily modified suit of M2 military police armor used to suppress riots from buckethead marines. Slows you down a lot."
 	icon_state = "riot"
 	item_state = "swat_suit"
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY

@@ -24,6 +24,6 @@
 		total_positions_so_far = positions
 	return positions
 
-/obj/effect/landmark/start/mp
+/obj/effect/landmark/start/police
 	name = JOB_POLICE
 	job = /datum/job/command/mp

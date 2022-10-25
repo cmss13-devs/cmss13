@@ -6565,8 +6565,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
 	id_tag = "Boat2-D2";
 	linked_dock = "almayer-lifeboat2";
-	throw_dir = 1;
-	locked = 1
+	throw_dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -9845,8 +9844,8 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Combat Information Center";
-	id = "cic_exterior"
+	id = "cic_exterior";
+	name = "\improper Combat Information Center"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -14060,8 +14059,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
 	id_tag = "Boat1-D2";
 	linked_dock = "almayer-lifeboat1";
-	throw_dir = 2;
-	locked = 1
+	throw_dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -28295,7 +28293,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "bRH" = (
-/obj/effect/landmark/start/cadet_police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "bRK" = (
@@ -36779,8 +36776,8 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Combat Information Center";
-	id = "cic_exterior"
+	id = "cic_exterior";
+	name = "\improper Combat Information Center"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -39180,7 +39177,6 @@
 	pixel_x = 2;
 	tag = "icon-E"
 	},
-/obj/effect/landmark/start/cadet_police,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1;
@@ -39461,16 +39457,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
-"eyg" = (
-/obj/structure/machinery/cryopod/right{
-	pixel_y = 6
-	},
-/obj/effect/landmark/start/cadet_police,
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/shipboard/brig/cryo)
 "eyG" = (
 /obj/structure/platform,
 /turf/open/floor/almayer{
@@ -43406,7 +43392,6 @@
 	pixel_y = 1;
 	tag = "icon-N"
 	},
-/obj/effect/landmark/start/warden,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -46745,9 +46730,9 @@
 /obj/structure/machinery/recharger,
 /obj/structure/transmitter{
 	dir = 4;
-	name = "Brig Warden's Office Telephone";
+	name = "Yard Office Telephone";
 	phone_category = "Offices";
-	phone_id = "Brig Warden's Office";
+	phone_id = "Brig Yard Office";
 	pixel_x = -16
 	},
 /turf/open/floor/almayer{
@@ -48482,7 +48467,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	dir = 1;
-	name = "\improper Warden Office"
+	name = "\improper Yard Office"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -57656,7 +57641,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "mGn" = (
-/obj/structure/machinery/cm_vending/clothing/military_police_warden,
+/obj/structure/machinery/cm_vending/clothing/military_police,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -62588,8 +62573,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
 	id_tag = "Boat2-D1";
 	linked_dock = "almayer-lifeboat2";
-	throw_dir = 1;
-	locked = 1
+	throw_dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -70203,8 +70187,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
 	id_tag = "Boat1-D1";
 	linked_dock = "almayer-lifeboat1";
-	throw_dir = 2;
-	locked = 1
+	throw_dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -100891,7 +100874,7 @@ akC
 tRX
 uzm
 vxM
-eyg
+vAI
 vAI
 oWI
 vxM

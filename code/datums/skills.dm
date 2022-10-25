@@ -101,7 +101,7 @@
 	skill_name = SKILL_PILOT
 	skill_level = SKILL_PILOT_DEFAULT
 
-/datum/skill/security
+/datum/skill/police
 	skill_name = SKILL_POLICE
 	skill_level = SKILL_POLICE_DEFAULT
 
@@ -537,7 +537,7 @@ COMMAND STAFF
 		SKILL_INTEL = SKILL_INTEL_TRAINED
 	)
 
-/datum/skills/cmp
+/datum/skills/CMP
 	name = "Chief MP"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
@@ -629,7 +629,7 @@ MILITARY NONCOMBATANT
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 	)
 
-/datum/skills/mp
+/datum/skills/MP
 	name = "Military Police"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,

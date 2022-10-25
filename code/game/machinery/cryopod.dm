@@ -29,7 +29,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	cryotype = "Med"
 
 /obj/structure/machinery/computer/cryopod/brig
-	cryotype = "Security"
+	cryotype = "MP"
 
 /obj/structure/machinery/computer/cryopod/eng
 	cryotype = "Eng"
@@ -225,7 +225,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		var/mob/living/carbon/human/H = occupant
 		switch(H.job)
 			if(JOB_POLICE, JOB_CHIEF_POLICE)
-				dept_console = GLOB.frozen_items["Security"]
+				dept_console = GLOB.frozen_items["MP"]
 			if("Nurse", "Doctor","Researcher","Chief Medical Officer")
 				dept_console = GLOB.frozen_items["Med"]
 			if("Maintenance Technician", "Ordnance Technician","Chief Engineer")

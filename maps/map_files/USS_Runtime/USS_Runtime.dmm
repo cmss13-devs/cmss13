@@ -32,7 +32,7 @@
 	},
 /area/event)
 "h" = (
-/obj/effect/landmark/start/mp,
+/obj/effect/landmark/start/police,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},

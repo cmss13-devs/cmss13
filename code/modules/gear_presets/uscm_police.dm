@@ -29,7 +29,7 @@
 	rank = JOB_POLICE
 	paygrade = "ME4"
 	role_comm_title = "MP"
-	skills = /datum/skills/mp
+	skills = /datum/skills/MP
 
 	utility_under = list(/obj/item/clothing/under/marine/mp)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp)
@@ -51,13 +51,13 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/mp/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/mp(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP(H), WEAR_JACKET)
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/eyepiece(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/mp(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
@@ -92,7 +92,7 @@
 	rank = JOB_CHIEF_POLICE
 	paygrade = "MO2"
 	role_comm_title = "CMP"
-	skills = /datum/skills/cmp
+	skills = /datum/skills/CMP
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/cmp)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
@@ -109,13 +109,13 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/cmp(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/mp/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/mp/mat(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/cmp(H), WEAR_JACKET)
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/mp(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -132,7 +132,7 @@
 	rank = "Riot"
 	paygrade = "ME5"
 	role_comm_title = "RMP"
-	skills = /datum/skills/cmp
+	skills = /datum/skills/CMP
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/cmp)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
@@ -149,7 +149,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/cmp(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/riot/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/riot(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/mp/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
@@ -180,4 +180,4 @@
 	rank = "CRMP"
 	paygrade = "MO1"
 	role_comm_title = "CRMP"
-	skills = /datum/skills/cmp
+	skills = /datum/skills/CMP

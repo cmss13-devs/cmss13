@@ -297,7 +297,7 @@
 	specialty = "provost"
 
 	suit_restricted = list(
-		/obj/item/clothing/suit/storage/marine/mp,
+		/obj/item/clothing/suit/storage/marine/MP,
 		/obj/item/clothing/suit/armor/riot/marine,
 		/obj/item/clothing/suit/storage/jacket/marine/provost
 	)

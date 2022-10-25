@@ -162,7 +162,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 					dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[marines_by_squad[squad_name][real_rank][name]]</td><td>[isactive[name]]</td></tr>"
 					even = !even
 	if(dept_flags & FLAG_SHOW_POLICE)
-		dat += "<tr><th colspan=3>Ship Security</th></tr>"
+		dat += "<tr><th colspan=3>Military Police</th></tr>"
 		for(real_rank in mp)
 			for(name in mp[real_rank])
 				dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[mp[real_rank][name]]</td><td>[isactive[name]]</td></tr>"

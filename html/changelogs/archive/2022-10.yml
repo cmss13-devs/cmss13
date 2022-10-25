@@ -293,6 +293,8 @@
       increases by each marine slashed within a 1 tile range.
   - bugfix: Misplaced APC on Sorokyne
 2022-10-25:
+  harryob:
+  - admin: build mode 2 - a bunch of new buttons (and better existing buttons)
   kugamo:
   - imageadd: Added muzzle flashes to APC weapons.
   - bugfix: Fixed Carrier's Hugger overlays not being directional.

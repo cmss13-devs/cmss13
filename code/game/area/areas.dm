@@ -10,6 +10,7 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	layer = AREAS_LAYER
+	plane = BLACKNESS_PLANE
 	mouse_opacity = 0
 	invisibility = INVISIBILITY_LIGHTING
 	var/lightswitch = 1
@@ -387,6 +388,9 @@
 /area/Exited(A)
 	if(istype(A, /obj/structure/machinery))
 		remove_machine(A)
+	else if(ismob(A))
+		var/mob/exiting_mob = A
+		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
 /area/proc/add_machine(var/obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)

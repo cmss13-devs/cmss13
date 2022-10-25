@@ -146,6 +146,9 @@
 				if(!iswelder(O))
 					to_chat(user, SPAN_WARNING("You need welding tool to repair \the [H.name]."))
 					return
+				if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
 				H.handle_repair(O, user)
 				update_icon()
 				return
@@ -161,6 +164,10 @@
 	if(health < max_hp * 0.75)
 		if(!iswelder(O))
 			to_chat(user, SPAN_NOTICE("The frame is way too busted! Try using a [SPAN_HELPFUL("welder")]."))
+			return
+
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_NOTICE("You need a more powerful blowtorch!"))
 			return
 
 		WT = O
@@ -331,7 +338,7 @@
 			seat = vehicle_seat
 			break
 
-	if(istype(A, /obj/screen) || !seat)
+	if(istype(A, /atom/movable/screen) || !seat)
 		return
 
 	if(seat == VEHICLE_DRIVER)

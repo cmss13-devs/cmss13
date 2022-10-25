@@ -190,8 +190,7 @@
 
 	if(ispowerclamp(O))
 		var/obj/item/powerloader_clamp/PC = O
-		PC.grab_object(old, "vehicle_module")
-		to_chat(user, SPAN_NOTICE("You uninstall the \the [PC.loaded] from \the [src] with \the [PC]."))
+		PC.grab_object(user, old, "vehicle_module")
 		PC.loaded.update_icon()
 
 	if(old.slot == HDPT_TREADS && clamped)
@@ -226,6 +225,7 @@
 	old.owner = null
 
 	if(old.health <= 0 && !old.gc_destroyed) // Make sure it's not already being deleted.
+		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
 		qdel(old)
 
 	update_icon()

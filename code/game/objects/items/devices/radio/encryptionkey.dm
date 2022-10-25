@@ -9,6 +9,7 @@
 	var/translate_hive = FALSE
 	var/syndie = FALSE //Signifies that it de-crypts Syndicate transmissions
 	var/list/channels = list()
+	var/list/tracking_options
 	var/abstract = FALSE
 
 /obj/item/device/encryptionkey/binary
@@ -176,7 +177,7 @@
 	channels = list(SQUAD_MARINE_5 = 1)
 
 /obj/item/device/encryptionkey/cryo
-	name = "\improper Reserves Squad Radio Encryption Key"
+	name = "\improper Foxtrot Squad Radio Encryption Key"
 	icon_state = "cryo_key"
 	channels = list(SQUAD_MARINE_CRYO = 1)
 
@@ -190,6 +191,7 @@
 	name = "\improper Weyland-Yutani encryption key"
 	icon_state = "wy_key"
 	channels = list(RADIO_CHANNEL_WY = 1)
+	tracking_options = list("Corporate Liaison" = TRACKER_CL)
 //ERT, PMC
 
 /obj/item/device/encryptionkey/ert
@@ -223,6 +225,10 @@
 	icon_state = "binary_key"
 	channels = list(RADIO_CHANNEL_HIGHCOM = 1, SQUAD_MARSOC = 1, RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_SECURITY = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 1, RADIO_CHANNEL_JTAC = 1, RADIO_CHANNEL_INTEL = 1)
 
+/obj/item/device/encryptionkey/contractor
+	name = "\improper Vanguard's Arrow Incorporated Radio Encryption Key"
+	icon_state = "sl_key"
+	channels = list("Command" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1, "Almayer" = 1)
 /// Used by the Mortar Crew in WO game mode - intently has no squad radio access
 /obj/item/device/encryptionkey/mortar
 	name = "\improper Mortar Crew Radio Encryption Key"

@@ -30,7 +30,7 @@
 
 /datum/law/major_law/interference
 	name = "Interference"
-	desc = "Interfering in an legal arrest being performed with ill intent. Clearly trying to hinder the arrest being performed."
+	desc = "Interfering in a legal arrest being performed with ill intent. Clearly trying to hinder the arrest being performed."
 	brig_time = 15
 
 /datum/law/major_law/neglect_of_duty
@@ -40,7 +40,7 @@
 
 /datum/law/major_law/subterfuge
 	name = "Subterfuge"
-	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the invidivual is working against USCM."
+	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the individual is working against USCM."
 	special_punishment = "Termination of ID/Discharge to planet"
 	brig_time = 15
 

@@ -135,6 +135,9 @@
 
 /obj/structure/machinery/power/geothermal/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(buildstate == 1 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
@@ -372,6 +375,9 @@
 			return TRUE
 
 		else if(iswelder(I))
+			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+				return
 			var/obj/item/tool/weldingtool/WT = I
 
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -431,20 +437,20 @@
 		return 0
 	..()
 
-/obj/structure/machinery/colony_floodlight/examine(mob/user)
-	..()
+/obj/structure/machinery/colony_floodlight/get_examine_text(mob/user)
+	. = ..()
 	if(ishuman(user))
 		if(damaged)
-			to_chat(user, SPAN_WARNING("It is damaged."))
+			. += SPAN_WARNING("It is damaged.")
 			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				switch(repair_state)
-					if(FLOODLIGHT_REPAIR_UNSCREW) to_chat(user, SPAN_INFO("You must first unscrew its maintenance hatch."))
-					if(FLOODLIGHT_REPAIR_CROWBAR) to_chat(user, SPAN_INFO("You must crowbar its maintenance hatch open."))
-					if(FLOODLIGHT_REPAIR_WELD) to_chat(user, SPAN_INFO("You must weld the damage to it."))
-					if(FLOODLIGHT_REPAIR_CABLE) to_chat(user, SPAN_INFO("You must replace its damaged cables."))
-					if(FLOODLIGHT_REPAIR_SCREW) to_chat(user, SPAN_INFO("You must screw its maintenance hatch closed."))
+					if(FLOODLIGHT_REPAIR_UNSCREW) . += SPAN_INFO("You must first unscrew its maintenance hatch.")
+					if(FLOODLIGHT_REPAIR_CROWBAR) . += SPAN_INFO("You must crowbar its maintenance hatch open.")
+					if(FLOODLIGHT_REPAIR_WELD) . += SPAN_INFO("You must weld the damage to it.")
+					if(FLOODLIGHT_REPAIR_CABLE) . += SPAN_INFO("You must replace its damaged cables.")
+					if(FLOODLIGHT_REPAIR_SCREW) . += SPAN_INFO("You must screw its maintenance hatch closed.")
 		else if(!is_lit)
-			to_chat(user, SPAN_INFO("It doesn't seem powered."))
+			. += SPAN_INFO("It doesn't seem powered.")
 
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR

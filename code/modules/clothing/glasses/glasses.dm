@@ -139,9 +139,9 @@
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 
-/obj/item/clothing/glasses/science/examine(mob/user)
+/obj/item/clothing/glasses/science/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_INFO("While wearing them, you can examine items to see their reagent contents."))
+	. += SPAN_INFO("While wearing them, you can examine items to see their reagent contents.")
 
 /obj/item/clothing/glasses/kutjevo
 	name = "kutjevo goggles"
@@ -190,7 +190,7 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/threedglasses
-	desc = "A long time ago, people used these glasses to makes images from screens threedimensional."
+	desc = "A long time ago, people used these glasses to makes images from screens three-dimensional."
 	name = "3D glasses"
 	icon_state = "3d"
 	item_state = "3d"
@@ -205,26 +205,11 @@
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
-/obj/item/clothing/glasses/mgoggles
-	name = "marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
-	icon_state = "mgoggles"
-	item_state = "mgoggles"
-	flags_equip_slot = SLOT_EYES|SLOT_FACE
-
 /obj/item/clothing/glasses/jensen
 	name = "Augmented sunglasses"
 	desc = "Augmented sunglasses with the HUD removed"
 	icon_state = "jensenshades"
 	item_state = "jensenshades"
-	flags_equip_slot = SLOT_EYES|SLOT_FACE
-
-/obj/item/clothing/glasses/mgoggles/prescription
-	name = "prescription marine ballistic goggles"
-	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
-	icon_state = "mgoggles"
-	item_state = "mgoggles"
-	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/mbcg
@@ -380,6 +365,100 @@
 	var/obj/limb/head/user_head = user.get_limb("head")
 	user_head?.vis_contents -= mob_glass_overlay
 
+/obj/item/clothing/glasses/mgoggles
+	name = "marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
+	icon_state = "mgoggles"
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	var/activated = FALSE
+	var/active_icon_state = "mgoggles_down"
+	var/inactive_icon_state = "mgoggles"
+
+	var/datum/action/item_action/activation
+	var/obj/item/attached_item
+	garbage = FALSE
+
+/obj/item/clothing/glasses/mgoggles/prescription
+	name = "prescription marine ballistic goggles"
+	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
+	icon_state = "mgoggles"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/black
+	name = "black marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has black tinted lenses."
+	icon_state = "mgogglesblk"
+	active_icon_state = "mgogglesblk_down"
+	inactive_icon_state = "mgogglesblk"
+
+/obj/item/clothing/glasses/mgoggles/orange
+	name = "orange marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
+	icon_state = "mgogglesorg"
+	active_icon_state = "mgogglesorg_down"
+	inactive_icon_state = "mgogglesorg"
+
+/obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
+	..()
+
+	if(!istype(S))
+		return
+
+	remove_attached_item()
+
+	attached_item = S.master_object
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
+	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, .proc/wear_check)
+	activation = new /datum/action/item_action/toggle(src, S.master_object)
+
+	if(ismob(S.master_object.loc))
+		activation.give_to(S.master_object.loc)
+
+/obj/item/clothing/glasses/mgoggles/on_exit_storage(obj/item/storage/S)
+	remove_attached_item()
+	return ..()
+
+/obj/item/clothing/glasses/mgoggles/proc/remove_attached_item()
+	SIGNAL_HANDLER
+	if(!attached_item)
+		return
+
+	UnregisterSignal(attached_item, COMSIG_PARENT_QDELETING)
+	qdel(activation)
+	attached_item = null
+
+/obj/item/clothing/glasses/mgoggles/ui_action_click(var/mob/owner, var/obj/item/holder)
+	toggle_goggles(owner)
+	activation.update_button_icon()
+
+/obj/item/clothing/glasses/mgoggles/proc/wear_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
+	SIGNAL_HANDLER
+
+	if(slot == WEAR_HEAD && prescription == TRUE && activated)
+		ADD_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription)) //Checks if dropped/unequipped for prescription.
+	else
+		REMOVE_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription)) //Looks messy but potential for adding other cases for goggle types other than prescription in the future such as welding or helmet HUD attachments.
+
+/obj/item/clothing/glasses/mgoggles/proc/toggle_goggles(mob/living/carbon/human/user)
+	if(user.is_mob_incapacitated())
+		return
+
+	if(!attached_item)
+		return
+
+	activated = !activated
+	if(activated)
+		to_chat(user, SPAN_NOTICE("You pull the goggles down."))
+		icon_state = active_icon_state
+		if(prescription == TRUE && user.head == attached_item)
+			ADD_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
+	else
+		to_chat(user, SPAN_NOTICE("You push the goggles up."))
+		icon_state = inactive_icon_state
+		if(prescription == TRUE)
+			REMOVE_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
+
+	attached_item.update_icon()
 
 //welding goggles
 

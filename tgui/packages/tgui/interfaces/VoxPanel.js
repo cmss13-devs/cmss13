@@ -8,14 +8,14 @@ const PAGES = [
   {
     title: 'Send VOX',
     component: () => SendVOX,
-    color: "white",
-    icon: "share",
+    color: 'white',
+    icon: 'share',
   },
   {
     title: 'Sound List',
     component: () => SoundList,
-    color: "red",
-    icon: "table",
+    color: 'red',
+    icon: 'table',
   },
 ];
 
@@ -27,10 +27,7 @@ export const VoxPanel = (props, context) => {
   const PageComponent = PAGES[pageIndex].component();
 
   return (
-    <Window
-      width={500}
-      height={460}
-    >
+    <Window width={500} height={460}>
       <Window.Content scrollable>
         <Tabs>
           {PAGES.map((page, i) => {
@@ -64,38 +61,35 @@ const SendVOX = (props, context) => {
   const vox_keys = Object.keys(glob_vox_types);
   for (let i = 0; i < vox_keys.length; i++) {
     const key = vox_keys[i];
-    let regexString = "\\b"+Object.keys(glob_vox_types[key]).join("\\b|\\b")+"\\b";
-    regexString = regexString.replace(/!/g, "");
-    regexString = regexString.replace(/\./g, "\\.");
-    voxRegexes[key] = new RegExp(regexString, "g");
+    let regexString =
+      '\\b' + Object.keys(glob_vox_types[key]).join('\\b|\\b') + '\\b';
+    regexString = regexString.replace(/!/g, '');
+    regexString = regexString.replace(/\./g, '\\.');
+    voxRegexes[key] = new RegExp(regexString, 'g');
   }
 
-  const [voxRegex, setVoxRegex]
-    = useLocalState(context, "voxRegex", null);
+  const [voxRegex, setVoxRegex] = useLocalState(context, 'voxRegex', null);
 
-  const [voxType, setVoxType]
-    = useLocalState(context, "voxType", null);
+  const [voxType, setVoxType] = useLocalState(context, 'voxType', null);
 
-  const [message, setMessage]
-    = useLocalState(context, "message", "");
+  const [message, setMessage] = useLocalState(context, 'message', '');
 
-  const [volume, setVolume]
-    = useLocalState(context, "volume", 100);
+  const [volume, setVolume] = useLocalState(context, 'volume', 100);
 
-  const [currentFaction, setCurrentFaction]
-    = useLocalState(context, "currentFaction", { [factions[0]]: true });
+  const [currentFaction, setCurrentFaction] = useLocalState(
+    context,
+    'currentFaction',
+    { [factions[0]]: true }
+  );
 
   const handleFactionSet = (val, keysDown) => {
     if (keysDown[KEY_CTRL]) {
       currentFaction[val] = true;
       setCurrentFaction(currentFaction);
     } else if (keysDown[KEY_SHIFT]) {
-      let [
-        startSelecting,
-        foundClickedValue,
-        finishedSelecting,
-      ] = (false, false, false);
-      const toSelect = factions.filter(value => {
+      let [startSelecting, foundClickedValue, finishedSelecting] =
+        (false, false, false);
+      const toSelect = factions.filter((value) => {
         if (finishedSelecting) return false;
 
         if (val === value) {
@@ -134,10 +128,9 @@ const SendVOX = (props, context) => {
     }
   };
 
-  const [validWords, setValidWords]
-    = useLocalState(context, "valid_words", []);
+  const [validWords, setValidWords] = useLocalState(context, 'valid_words', []);
 
-  const handleSetMessage = msg => {
+  const handleSetMessage = (msg) => {
     setMessage(msg);
 
     if (!voxRegex) return;
@@ -154,7 +147,7 @@ const SendVOX = (props, context) => {
           <Section
             title="Faction Select"
             fill
-            buttons={(
+            buttons={
               <Button
                 content="Select All"
                 color="transparent"
@@ -165,8 +158,7 @@ const SendVOX = (props, context) => {
                   setCurrentFaction(currentFaction);
                 }}
               />
-            )}
-          >
+            }>
             <ComboBox
               buttons={factions}
               selected={currentFaction}
@@ -206,8 +198,7 @@ const SendVOX = (props, context) => {
               stepPixelSize={20}
               minValue={0}
               maxValue={100}
-              fluid
-            >
+              fluid>
               Volume: {volume}
             </Slider>
           </Flex.Item>
@@ -217,23 +208,27 @@ const SendVOX = (props, context) => {
                 <Button
                   content="Send to Self"
                   fluid
-                  onClick={() => act("play_to_self", {
-                    vox_type: voxType,
-                    message: message,
-                    volume: volume,
-                  })}
+                  onClick={() =>
+                    act('play_to_self', {
+                      vox_type: voxType,
+                      message: message,
+                      volume: volume,
+                    })
+                  }
                 />
               </Flex.Item>
               <Flex.Item ml={1} grow={1}>
                 <Button
                   content="Send to Factions"
                   fluid
-                  onClick={() => act("play_to_players", {
-                    vox_type: voxType,
-                    message: message,
-                    factions: Object.keys(currentFaction),
-                    volume: volume,
-                  })}
+                  onClick={() =>
+                    act('play_to_players', {
+                      vox_type: voxType,
+                      message: message,
+                      factions: Object.keys(currentFaction),
+                      volume: volume,
+                    })
+                  }
                 />
               </Flex.Item>
             </Flex>
@@ -243,7 +238,7 @@ const SendVOX = (props, context) => {
               Valid Words:
             </Box>
             <Box ml={1} color="white" fontSize="14px" inline>
-              {validWords.join(" ")}
+              {validWords.join(' ')}
             </Box>
           </Flex.Item>
         </Section>
@@ -256,11 +251,13 @@ const SoundList = (props, context) => {
   const { act, data } = useBackend(context);
   const { glob_vox_types } = data;
 
-  const [voxType, setVoxType]
-    = useLocalState(context, "voxFilesType", null);
+  const [voxType, setVoxType] = useLocalState(context, 'voxFilesType', null);
 
-  const [currentSearch, setCurrentSearch]
-    = useLocalState(context, "current_search", "");
+  const [currentSearch, setCurrentSearch] = useLocalState(
+    context,
+    'current_search',
+    ''
+  );
 
   return (
     <Flex direction="column">
@@ -282,20 +279,19 @@ const SoundList = (props, context) => {
               value={currentSearch}
               onInput={(e, val) => setCurrentSearch(val)}
             />
-            <Flex
-              wrap="wrap"
-              justify="space-evenly"
-            >
+            <Flex wrap="wrap" justify="space-evenly">
               {Object.keys(glob_vox_types[voxType])
-                .filter(val => val.match(currentSearch))
-                .map(val => (
+                .filter((val) => val.match(currentSearch))
+                .map((val) => (
                   <Flex.Item key={val} ml={1} mt={1}>
                     <Button
                       content={val}
-                      onClick={() => act("play_to_self", {
-                        vox_type: voxType,
-                        message: val,
-                      })}
+                      onClick={() =>
+                        act('play_to_self', {
+                          vox_type: voxType,
+                          message: val,
+                        })
+                      }
                     />
                   </Flex.Item>
                 ))}
@@ -319,9 +315,9 @@ export const ComboBox = (props, context) => {
   } = props;
 
   const keysDown = {};
-  const handleCombos = e => {
+  const handleCombos = (e) => {
     e.preventDefault();
-    keysDown[e.keyCode] = e.type === "keydown";
+    keysDown[e.keyCode] = e.type === 'keydown';
   };
 
   const handleOnClick = (e, val) => {
@@ -347,19 +343,20 @@ export const ComboBox = (props, context) => {
             tabIndex={0}
             onKeyDown={handleCombos}
             onKeyUp={handleCombos}
-            onSelectStart={() => false}
-          >
+            onSelectStart={() => false}>
             <Flex direction="column">
-              {buttons.map(val => (
+              {buttons.map((val) => (
                 <Flex.Item key={val}>
                   <Button
                     color="transparent"
                     fluid
                     content={val}
-                    selected={typeof selected === "object" && selected
-                      ? selected[val]
-                      : selected === val}
-                    onClick={e => handleOnClick(e, val)}
+                    selected={
+                      typeof selected === 'object' && selected
+                        ? selected[val]
+                        : selected === val
+                    }
+                    onClick={(e) => handleOnClick(e, val)}
                   />
                 </Flex.Item>
               ))}

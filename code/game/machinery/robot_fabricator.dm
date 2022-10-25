@@ -77,22 +77,22 @@ Please wait until completion...</TT><BR>
 
 			switch (part_type)
 				if (1)
-					build_type = /obj/item/robot_parts/l_arm
+					build_type = /obj/item/robot_parts/arm/l_arm
 					build_time = 200
 					build_cost = 25000
 
 				if (2)
-					build_type = /obj/item/robot_parts/r_arm
+					build_type = /obj/item/robot_parts/arm/r_arm
 					build_time = 200
 					build_cost = 25000
 
 				if (3)
-					build_type = /obj/item/robot_parts/l_leg
+					build_type = /obj/item/robot_parts/leg/l_leg
 					build_time = 200
 					build_cost = 25000
 
 				if (4)
-					build_type = /obj/item/robot_parts/r_leg
+					build_type = /obj/item/robot_parts/leg/r_leg
 					build_time = 200
 					build_cost = 25000
 
@@ -134,6 +134,6 @@ Please wait until completion...</TT><BR>
 			else return //Someone's doing href fuckery if this gets here.
 		return
 
-	for (var/mob/M in viewers(1, src))
+	for (var/mob/M as anything in viewers(1, src))
 		if (M.client && M.interactee == src)
 			src.attack_hand(M)

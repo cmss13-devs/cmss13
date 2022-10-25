@@ -10,7 +10,7 @@
 
 /obj/item/prop/helmetgarb/gunoil
 	name = "gun oil"
-	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self cleaning firearm."
+	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self-cleaning firearm."
 	icon_state = "gunoil"
 
 /obj/item/prop/helmetgarb/netting
@@ -40,7 +40,7 @@
 
 /obj/item/prop/helmetgarb/raincover
 	name = "raincover"
-	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least its something."
+	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
 	icon_state = "raincover"
 
 /obj/item/prop/helmetgarb/rabbitsfoot
@@ -55,7 +55,7 @@
 
 /obj/item/prop/helmetgarb/lucky_feather
 	name = "\improper Red Lucky Feather"
-	desc = "It is a riotous red color, made of really crummy plastic and synthetic threading, you know, the same sort of material every every Corporate Liaison's spine is made of."
+	desc = "It is a riotous red color, made of really crummy plastic and synthetic threading, you know, the same sort of material every Corporate Liaison's spine is made of."
 	icon_state = "lucky_feather"
 	color = "red"
 
@@ -66,7 +66,7 @@
 
 /obj/item/prop/helmetgarb/lucky_feather/purple
 	name = "\improper Purple Lucky Feather"
-	desc = "It is a plucky purple color. Legend has it a station AI known as Shakespeare simulated 1000 monkeys typing gibberish in order to replicate the actual works of shakespeare. Art critics are on the fence if this is the first instance of true artificial abstract art."
+	desc = "It is a plucky purple color. Legend has it a station AI known as Shakespeare simulated 1000 monkeys typing gibberish in order to replicate the actual works of Shakespeare. Art critics are on the fence if this is the first instance of true artificial abstract art."
 	color = "purple"
 
 /obj/item/prop/helmetgarb/lucky_feather/yellow
@@ -215,28 +215,28 @@
 			to_chat(user, SPAN_WARNING("You were interrupted."))
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/examine(mob/user)
+/obj/item/prop/helmetgarb/helmet_nvg/get_examine_text(mob/user)
 	. = ..()
 
 	if(shape == NVG_SHAPE_BROKEN)
-		to_chat(user, "They appear to be broken. Maybe someone competent can fix them.")
+		. += "They appear to be broken. Maybe someone competent can fix them."
 	else
 
 		if(shape == NVG_SHAPE_PATCHED)
-			to_chat(user, "They are covered in scratches and have traces of a recent repair.")
+			. += "They are covered in scratches and have traces of a recent repair."
 
 		var/nvg_health_procent = nvg_health / nvg_maxhealth * 100
 		if(nvg_health_procent > 70)
-			to_chat(user, "They appear to be in good shape.")
+			. += "They appear to be in good shape."
 		else if(nvg_health_procent > 50)
-			to_chat(user, "They are visibly damaged.")
+			. += "They are visibly damaged."
 		else if(nvg_health_procent > 30)
-			to_chat(user, "It's unlikely they can sustain more damage.")
+			. += "It's unlikely they can sustain more damage."
 		else if(nvg_health_procent >= 0)
-			to_chat(user, "They are falling apart.")
+			. += "They are falling apart."
 
 	if (get_dist(user, src) <= 1 && (shape == NVG_SHAPE_FINE || shape == NVG_SHAPE_PATCHED))
-		to_chat(user, "A small gauge in the corner reads: Power: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
+		. += "A small gauge in the corner reads: Power: [round(100.0*nvg_charge/nvg_maxcharge) ]%."
 
 /obj/item/prop/helmetgarb/helmet_nvg/on_exit_storage(obj/item/storage/S)
 	remove_attached_item()
@@ -300,8 +300,8 @@
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/update_sight)
 
 	user.add_client_color_matrix("nvg", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#7aff7a")))
-	user.overlay_fullscreen("nvg", /obj/screen/fullscreen/flash/noise/nvg)
-	user.overlay_fullscreen("nvg_blur", /obj/screen/fullscreen/brute/nvg, 3)
+	user.overlay_fullscreen("nvg", /atom/movable/screen/fullscreen/flash/noise/nvg)
+	user.overlay_fullscreen("nvg_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
 	playsound(user, 'sound/handling/toggle_nv1.ogg', 25)
 	nightvision = TRUE
 	user.update_sight()
@@ -445,13 +445,13 @@
 		H.pockets.remove_from_storage(src, get_turf(H))
 
 /obj/item/prop/helmetgarb/helmet_nvg/cosmetic //for "custom loadout", purely cosmetic
-	name = "\improper old M2 night vision goggles"
+	name = "old M2 night vision goggles"
 	desc = "This pair has been gutted of all electronics and therefore not working. But hey, they make you feel tacticool, and that's all that matters, right?"
 	shape = NVG_SHAPE_COSMETIC
 
 /obj/item/prop/helmetgarb/helmet_nvg/marsoc //for MARSOC
 	name = "\improper Tactical M3 night vision goggles"
-	desc = "With an integrated self recharging battery, nothing can stop you. Put them on your helmet and press the button and it's go-time."
+	desc = "With an integrated self-recharging battery, nothing can stop you. Put them on your helmet and press the button and it's go-time."
 	infinite_charge = TRUE
 
 #undef NVG_SHAPE_COSMETIC
@@ -496,7 +496,7 @@
 	icon_state = "helmet_gasmask"
 
 /obj/item/prop/helmetgarb/trimmed_wire
-	name = "\improper trimmed barbed wire"
+	name = "trimmed barbed wire"
 	desc = "It is a length of barbed wire that's had most of the sharp points filed down so that it is safe to handle."
 	icon_state = "trimmed_wire"
 

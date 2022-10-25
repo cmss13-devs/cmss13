@@ -118,17 +118,27 @@
 /obj/item/reagent_container/food/snacks/afterattack(obj/target, mob/user, proximity)
 	return ..()
 
-/obj/item/reagent_container/food/snacks/examine(mob/user)
-	..()
-	if (!(user in range(0)) && user != loc) return
-	if (bitecount==0)
+/obj/item/reagent_container/food/snacks/get_examine_text(mob/user)
+	. = ..()
+	if (!(user in range(0)) && user != loc)
+		return
+	if (!bitecount)
 		return
 	else if (bitecount==1)
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten by someone!"))
+		. += SPAN_NOTICE("\The [src] was bitten by someone!")
 	else if (bitecount<=3)
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten [bitecount] times!"))
+		. += SPAN_NOTICE("\The [src] was bitten [bitecount] times!")
 	else
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten multiple times!"))
+		. += SPAN_NOTICE("\The [src] was bitten multiple times!")
+
+/obj/item/reagent_container/food/snacks/set_name_label(var/new_label)
+	name_label = new_label
+	name = made_from_player + initial(name)
+	if(name_label)
+		name += " ([name_label])"
+
+/obj/item/reagent_container/food/snacks/set_origin_name_prefix(var/name_prefix)
+	made_from_player = name_prefix
 
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
@@ -332,7 +342,7 @@
 
 /obj/item/reagent_container/food/snacks/wy_chips/pepper
 	name = "Weyland-Yutani Pepper Chips"
-	desc = "Premium high quality chips, now with 0% trans fat and added black pepper."
+	desc = "Premium high-quality chips, now with 0% trans fat and added black pepper."
 	icon_state = "wy_chips_pepper"
 	item_state = "wy_chips_pepper"
 	trash = /obj/item/trash/wy_chips_pepper
@@ -560,7 +570,7 @@
 
 /obj/item/reagent_container/food/snacks/boiledegg
 	name = "Boiled egg"
-	desc = "A hard boiled egg."
+	desc = "A hard-boiled egg."
 	icon_state = "egg"
 	filling_color = "#FFFFFF"
 
@@ -1568,7 +1578,7 @@
 	..()
 
 /obj/item/reagent_container/food/snacks/monkeycube/proc/Expand()
-	for(var/mob/M in viewers(src,7))
+	for(var/mob/M as anything in viewers(src,7))
 		to_chat(M, SPAN_WARNING("\The [src] expands!"))
 	var/turf/T = get_turf(src)
 	if(T)
@@ -1898,7 +1908,7 @@
 
 /obj/item/reagent_container/food/snacks/spesslaw
 	name = "Spesslaw"
-	desc = "A lawyers favourite"
+	desc = "A lawyer's favourite"
 	icon_state = "spesslaw"
 	filling_color = "#DE4545"
 
@@ -2247,7 +2257,7 @@
 
 /obj/item/reagent_container/food/snacks/carrotcakeslice
 	name = "Carrot Cake slice"
-	desc = "Carrotty slice of Carrot Cake, carrots are good for your eyes! Also not a lie."
+	desc = "Carroty slice of Carrot Cake, carrots are good for your eyes! Also not a lie."
 	icon_state = "carrotcake_slice"
 	trash = /obj/item/trash/plate
 	filling_color = "#FFD675"
@@ -2412,7 +2422,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel
 	name = "Cheese wheel"
-	desc = "A big wheel of delcious Cheddar."
+	desc = "A big wheel of delicious Cheddar."
 	icon_state = "cheesewheel"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge
 	slices_num = 5

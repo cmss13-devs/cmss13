@@ -21,6 +21,8 @@
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = FALSE
 
+	behavior_delegate_type = /datum/behavior_delegate/burrower_base
+
 	tackle_min = 3
 	tackle_max = 5
 	tackle_chance = 40
@@ -49,13 +51,14 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/build_tunnel,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/place_trap, //second macro
 		/datum/action/xeno_action/activable/burrow, //third macro
-		/datum/action/xeno_action/activable/tremor, //fourth macro
+		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
@@ -97,18 +100,13 @@
 	if(burrow)
 		return 0
 
-/mob/living/carbon/Xenomorph/Burrower/update_icons()
-	if (stat == DEAD)
-		icon_state = "[mutation_type] Burrower Dead"
-	else if (lying)
-		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] Burrower Sleeping"
-		else
-			icon_state = "[mutation_type] Burrower Knocked Down"
-	else if (burrow)
-		icon_state = "[mutation_type] Burrower Burrowed"
-	else
-		icon_state = "[mutation_type] Burrower Running"
+/datum/behavior_delegate/burrower_base
+	name = "Base Burrower Behavior Delegate"
 
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
+/datum/behavior_delegate/burrower_base/on_update_icons()
+	if(bound_xeno.stat == DEAD)
+		return
+
+	if(bound_xeno.burrow)
+		bound_xeno.icon_state = "[bound_xeno.mutation_type] Burrower Burrowed"
+		return TRUE

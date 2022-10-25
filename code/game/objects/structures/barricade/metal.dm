@@ -19,26 +19,29 @@
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
 
-/obj/structure/barricade/metal/examine(mob/user)
-	..()
+/obj/structure/barricade/metal/get_examine_text(mob/user)
+	. = ..()
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED)
-			to_chat(user, SPAN_INFO("The protection panel is still tighly screwed in place."))
+			. += SPAN_INFO("The protection panel is still tighly screwed in place.")
 		if(BARRICADE_BSTATE_UNSECURED)
-			to_chat(user, SPAN_INFO("The protection panel has been removed, you can see the anchor bolts."))
+			. += SPAN_INFO("The protection panel has been removed, you can see the anchor bolts.")
 		if(BARRICADE_BSTATE_MOVABLE)
-			to_chat(user, SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart."))
+			. += SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.")
 
 	switch(upgrade)
 		if(BARRICADE_UPGRADE_BURN)
-			to_chat(user, SPAN_NOTICE("The cade is protected by a biohazardous upgrade."))
+			. += SPAN_NOTICE("The cade is protected by a biohazardous upgrade.")
 		if(BARRICADE_UPGRADE_BRUTE)
-			to_chat(user, SPAN_NOTICE("The cade is protected by a reinforced upgrade."))
+			. += SPAN_NOTICE("The cade is protected by a reinforced upgrade.")
 		if(BARRICADE_UPGRADE_EXPLOSIVE)
-			to_chat(user, SPAN_NOTICE("The cade is protected by an explosive upgrade."))
+			. += SPAN_NOTICE("The cade is protected by an explosive upgrade.")
 
 /obj/structure/barricade/metal/attackby(obj/item/W, mob/user)
 	if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))

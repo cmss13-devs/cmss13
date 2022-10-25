@@ -36,6 +36,8 @@
 
 	var/datum/hive_status/linked_hive
 
+	plane = FLOOR_PLANE
+
 /obj/effect/alien/resin/special/Initialize(mapload, var/hive_ref)
 	. = ..()
 	maxhealth = health
@@ -57,7 +59,7 @@
 	if(linked_hive)
 		linked_hive.remove_special_structure(src)
 		if(linked_hive.living_xeno_queen)
-			xeno_message("Hive: \A [name] has been destroyed at [sanitize(get_area_name(src))]!", 3, linked_hive.hivenumber)
+			xeno_message("Hive: \A [name] has been destroyed at [sanitize_area(get_area_name(src))]!", 3, linked_hive.hivenumber)
 	linked_hive = null
 	STOP_PROCESSING(SSfastobj, src)
 

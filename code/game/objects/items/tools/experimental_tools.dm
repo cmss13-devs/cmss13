@@ -82,7 +82,7 @@
 				var/area/A = get_area(H)
 				var/turf/M_turf = get_turf(H)
 				if(A)
-					area_name = sanitize(A.name)
+					area_name = sanitize_area(A.name)
 
 				if(H.undefibbable)
 					continue
@@ -219,9 +219,9 @@
 		if(32 to 1)
 			overlays += "cpr_batt_lo"
 
-/obj/item/clothing/suit/auto_cpr/examine(mob/user)
+/obj/item/clothing/suit/auto_cpr/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("It has [round(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining."))
+	. += SPAN_NOTICE("It has [round(pdcell.charge * 100 / pdcell.maxcharge)]% charge remaining.")
 
 
 
@@ -349,11 +349,11 @@
 			else
 				overlays += "dialysis_battery_0"
 
-/obj/item/tool/portadialysis/examine(mob/user)
-	..()
+/obj/item/tool/portadialysis/get_examine_text(mob/user)
+	. = ..()
 	var/currentpercent = 0
 	currentpercent = round(pdcell.charge * 100 / pdcell.maxcharge)
-	to_chat(user, SPAN_INFO("It has [currentpercent]% charge left in its internal battery."))
+	. += SPAN_INFO("It has [currentpercent]% charge left in its internal battery.")
 
 /obj/item/tool/portadialysis/proc/painful_detach()
 	if(!attached)	//sanity

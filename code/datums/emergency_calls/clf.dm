@@ -77,3 +77,4 @@
 	max_engineers = 2
 	max_medics = 2
 	max_heavies = 2
+	max_synths = 1

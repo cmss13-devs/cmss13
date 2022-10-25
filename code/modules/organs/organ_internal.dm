@@ -20,22 +20,35 @@
 	var/rejecting            // Is this organ already being rejected?
 	var/obj/item/organ/organ_holder // If not in a body, held in this item.
 	var/list/transplant_data
+	///status of organ - is it healthy, broken, bruised?
+	var/organ_status = ORGAN_HEALTHY
 
 
 /datum/internal_organ/process()
 	if(!owner && !organ_holder)
 		qdel(src)
 
-	return 0
+	return FALSE
 
 /datum/internal_organ/proc/rejuvenate()
 	damage=0
+	set_organ_status()
 
-/datum/internal_organ/proc/is_bruised()
-	return damage >= min_bruised_damage
-
-/datum/internal_organ/proc/is_broken()
-	return damage >= min_broken_damage || cut_away
+/// Set the correct organ state
+/datum/internal_organ/proc/set_organ_status()
+	if(damage > min_broken_damage || cut_away)
+		if(organ_status != ORGAN_BROKEN)
+			organ_status = ORGAN_BROKEN
+			return TRUE
+		return FALSE
+	if(damage > min_bruised_damage)
+		if(organ_status != ORGAN_BRUISED)
+			organ_status = ORGAN_BRUISED
+			return TRUE
+		return FALSE
+	if(organ_status != ORGAN_HEALTHY)
+		organ_status = ORGAN_HEALTHY
+		return TRUE
 
 /datum/internal_organ/New(mob/living/carbon/M)
 	..()
@@ -60,12 +73,14 @@
 	var/obj/limb/parent = owner.get_limb(parent_limb)
 	if (!silent)
 		owner.custom_pain("Something inside your [parent.display_name] hurts a lot.", 1)
+	set_organ_status()
 
 /datum/internal_organ/proc/heal_damage(amount)
 	if(damage < amount)
 		damage = 0
 	else
 		damage -= amount
+	set_organ_status()
 
 /datum/internal_organ/proc/emp_act(severity)
 	switch(robotic)
@@ -129,7 +144,7 @@
 	..()
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 		return
-	if(is_bruised())
+	if(organ_status >= ORGAN_BRUISED)
 		if(prob(2))
 			spawn owner.emote("me", 1, "coughs up blood!")
 			owner.drip(10)
@@ -178,9 +193,9 @@
 		// Get the effectiveness of the liver.
 		var/filter_effect = 3
 		if(!(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS))
-			if(is_bruised())
-				filter_effect -= 1
-			if(is_broken())
+			if(organ_status >= ORGAN_BRUISED)
+				filter_effect--
+			if(organ_status >= ORGAN_BROKEN)
 				filter_effect -= 2
 
 		// Do some reagent filtering/processing.
@@ -195,9 +210,9 @@
 		//Deal toxin damage if damaged
 		if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 			return
-		if(is_bruised() && prob(25))
+		if(organ_status >= ORGAN_BRUISED && prob(25))
 			owner.apply_damage(0.1 * (damage/2), TOX)
-		else if(is_broken() && prob(50))
+		else if(organ_status >= ORGAN_BROKEN && prob(50))
 			owner.apply_damage(0.3 * (damage/2), TOX)
 
 /datum/internal_organ/liver/prosthetic
@@ -215,9 +230,9 @@
 	//Deal toxin damage if damaged
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 		return
-	if(is_bruised() && prob(25))
+	if(organ_status >= ORGAN_BRUISED && prob(25))
 		owner.apply_damage(0.1 * (damage/3), TOX)
-	else if(is_broken() && prob(50))
+	else if(organ_status >= ORGAN_BROKEN && prob(50))
 		owner.apply_damage(0.2 * (damage/3), TOX)
 
 /datum/internal_organ/kidneys/prosthetic
@@ -251,9 +266,9 @@
 	..()
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 		return
-	if(is_bruised())
+	if(organ_status >= ORGAN_BRUISED)
 		owner.eye_blurry = 20
-	if(is_broken())
+	if(organ_status >= ORGAN_BROKEN)
 		owner.eye_blind = 20
 
 /datum/internal_organ/eyes/prosthetic

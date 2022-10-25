@@ -401,18 +401,18 @@
 	mags_min = 1
 	mags_max = 2
 	guns = list(
-		/obj/item/weapon/gun/shotgun/pump/cmb,
-		/obj/item/weapon/gun/shotgun/pump/cmb,
-		/obj/item/weapon/gun/shotgun/pump/cmb,
-		/obj/item/weapon/gun/shotgun/pump/cmb,
-		/obj/item/weapon/gun/shotgun/pump/cmb,
-		/obj/item/weapon/gun/shotgun/pump/cmb,
+		/obj/item/weapon/gun/shotgun/pump/cmb = null,
+		/obj/item/weapon/gun/shotgun/pump/cmb = null,
+		/obj/item/weapon/gun/shotgun/pump/cmb = null,
+		/obj/item/weapon/gun/shotgun/pump/cmb = null,
+		/obj/item/weapon/gun/shotgun/pump/cmb = null,
+		/obj/item/weapon/gun/shotgun/pump/cmb = null,
 		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
 		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
 		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
-		/obj/item/weapon/gun/shotgun/merc,
-		/obj/item/weapon/gun/shotgun/pump/cmb/m3717,
-		/obj/item/weapon/gun/shotgun/double
+		/obj/item/weapon/gun/shotgun/merc = null,
+		/obj/item/weapon/gun/shotgun/pump/cmb/m3717 = null,
+		/obj/item/weapon/gun/shotgun/double = null
 	) //no ammotypes needed as it spawns random 12g boxes. Apart from the r4t. why is the r4t in the shotgun pool? fuck you, that's why.
 
 /obj/effect/spawner/random/gun/shotgun/lowchance
@@ -467,12 +467,12 @@
 	guns = list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
-		/obj/item/weapon/gun/shotgun/merc,
+		/obj/item/weapon/gun/shotgun/merc = null,
 		/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = /obj/item/prop/folded_anti_tank_sadar,
 		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
-		/obj/item/weapon/gun/shotgun/combat,
+		/obj/item/weapon/gun/shotgun/combat = null,
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/weapon/gun/launcher/grenade/m81/m79
+		/obj/item/weapon/gun/launcher/grenade/m81/m79 = null
 		)
 
 /obj/effect/spawner/random/gun/special/lowchance

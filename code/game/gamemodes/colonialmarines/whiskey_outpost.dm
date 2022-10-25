@@ -143,7 +143,7 @@
 /datum/game_mode/whiskey_outpost/proc/update_controllers()
 	//Update controllers while we're on this mode
 	if(SSitem_cleanup)
-		//Cleaning stuff more aggresively
+		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
 		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
 		SSitem_cleanup.wait = 1 MINUTES
@@ -268,8 +268,8 @@
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_X_MAJOR
 			if(round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories += 1
-				round_statistics.current_map.total_xeno_majors += 1
+				round_statistics.current_map.total_xeno_victories++
+				round_statistics.current_map.total_xeno_majors++
 
 	else if(finished == 2)
 		log_game("Round end result - marines won")
@@ -281,8 +281,8 @@
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_M_MAJOR
 			if(round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories += 1
-				round_statistics.current_map.total_marine_majors += 1
+				round_statistics.current_map.total_marine_victories++
+				round_statistics.current_map.total_marine_majors++
 
 	else
 		log_game("Round end result - no winners")

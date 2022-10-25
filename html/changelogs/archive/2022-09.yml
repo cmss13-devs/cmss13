@@ -1,0 +1,446 @@
+2022-09-01:
+  c4xmaniac:
+  - rscadd: Added two Weymed Plus vendors to Sorokyne Strata's medbay.
+  stanalbatross:
+  - bugfix: pred bracers will now decloak you when you drop them
+  - bugfix: pred bracers will now decloak you when you put them into bags
+  - bugfix: pred bracers will now properly decloak you before shocking you if they
+      run out of charge
+  - bugfix: if you get shocked while trying to activate something with a pred bracer,
+      it won't do the action you were trying to do
+  - bugfix: also fixed dropship autolaunch delay having a broken input
+2022-09-02:
+  Drathek:
+  - bugfix: Fixes transformation of a queen breaking hive status and hivemind
+  - refactor: Improves some variable readability
+2022-09-03:
+  Alardunx:
+  - balance: 'Reduced AGM-F cone from 60 degree to 40 degree. Along with the shrapnel
+      count reduction from a previous change, this has essentially two effects: The
+      situation which caused targets to take all Shrapnels can now at most do ~133%
+      expected damage (down from 250%) and the side-hits are even weaker than they
+      were before. Directly in front of the target still deals damage similar to what
+      it used to be (~8-13 shrapnels)'
+  ChainsawMullet:
+  - balance: Changed the HPR to no longer be granted IFF when deploying a bipod.
+  Drathek:
+  - bugfix: Fixed strings of area names (e.g. "ombat Information Center") by using
+      strip_improper instead.
+  Morrow:
+  - qol: Adds fourth unholster keybind option
+  - refactor: Makes the unholster code better.
+  - rscadd: Added shoulder holsters to armament squad prep vendor.
+  joookschad:
+  - balance: Added 5 AP to buckshot, and made it 65 damage from 60.
+  sose96:
+  - balance: Removed 30% damage reduction from DS mounted sentries.
+  stanalbatross:
+  - ui: converted the OB console to tgui
+  - ui: sleepers now use tgui
+  - rscadd: sleepers now can auto-eject if their occupant is dead, and also have access
+      to a wider range of chemicals when their occupant is near death
+  - rscdel: removed the ability of wardens to shield other xenos
+  - rscadd: 'added a new ability to wardens : "retrieve". Works like an oppressor
+      hook but for allies - it can hook and pull an ally to you with a short windup.
+      It costs 100 internal health reserves, and can pull any size xeno while they
+      are resting, but big xenos cannot be pulled while they are standing. The pulled
+      xeno will go through mobs, and will land on the tile behind you if it is not
+      dense.'
+  - rscadd: added "xeno primary action five" and support for it as a macro
+2022-09-04:
+  Geeves, QuickLoad:
+  - rscadd: Latejoiners now get a self defense kit if the ship is in red alert or
+      higher, or when evac has been called.
+  - rscadd: Marines can now latejoin for up to three minutes after hijack.
+  Geevies:
+  - balance: The sniper ghillie now required either the sniper spec skill, or spotter
+      skill to be able to camouflage.
+  - code_imp: Aimed shot is now tied to the sniper rifle, not the ghillie suit.
+  - balance: Added spotter equipment to the sniper box, which comes with a ghillie
+      suit, the helmet, a smock, a spotter's laser designator, and a spotter instructional
+      pamphlet.
+  - balance: You no longer need to prepare position before using aimed shot as sniper.
+  - rscadd: Headset tracking HUDs now bring up a list of options rather than cycling
+      through them.
+  - rscadd: The WY encryption key now enables you to track the CL using the SL tracker.
+      Non-HvH PMC headsets automatically track the CL.
+  - balance: You can now only track someone wearing a uniform with their sensors set
+      to Location/Maximum.
+2022-09-05:
+  FoxyStalin:
+  - rscadd: Added Large Shotgun Shell Pouches to vendors for Drop-ship Pilots, DCCs,
+      Vehicle Crewmen, and Senior Enlisted Advisors.
+  - rscdel: Removes Duplicate Large Pistol Mag Pouch from SEA vendors
+  Morrow:
+  - bugfix: Mechanical lock against unauthorized people giving medals.
+  - rscdel: Removed MP timelocks from Staff Officer.
+  Shad0vvs:
+  - bugfix: Fixed being able to pick up damaged turrets in some cases.
+  - bugfix: Fixed attachments being allowed on the QH-4 Shoulder-Mounted Anti-Tank
+      RPG.
+  Tisx:
+  - bugfix: Changed the max rendering range of rifle bullets so that they don't magically
+      disappear when using a S8 scope.
+  nauticall:
+  - imageadd: 'Resprited the following items: Mounted flash, APC terminal, cell charger,
+      hydroponics machines.'
+  - imageadd: '- Depowered button; will now be gray instead of blue to be less confusing.'
+  stanalbatross:
+  - bugfix: if a normal limb with a robot hand/foot on the end of it is cut off, the
+      robot hand/foot will also be cut off with it and exist as an item, not vanish
+      into nothingness
+  - bugfix: the robot limb item sprites now more closely mirror their onmob sprites
+  - balance: increased the scatter and decreased the accuracy of dual wielding
+2022-09-06:
+  Morrow:
+  - bugfix: Fixes wording of "Remove Jacket" on uniforms to "Toggle Jacket"
+2022-09-07:
+  Geevies:
+  - balance: Unnesting someone by hand now takes eight seconds, cutting them free
+      with something sharp like a knife takes three seconds, and using a blowtorch
+      to cut through takes one second.
+  Morrow:
+  - bugfix: Screwdrivers don't open airlocks again
+  - bugfix: Area soundscapes will now properly exit. No more looping medbay songs
+      forever.
+  stanalbatross:
+  - bugfix: you can no longer stack do_afters when unanchoring/anchoring structures
+  - bugfix: fixed some runtimes at round start
+  - rscadd: xenos can now break the trijent/kutjevo sensor tower, it can still be
+      repaired after being broken
+  - code_imp: improved the sensor tower's code for readability
+2022-09-08:
+  Shad0vvs:
+  - bugfix: Possibly fixes disconnection/crash issues.
+  stanalbatross:
+  - bugfix: doing pushups now checks if you can do them once you select an option
+      BEFORE doing the transform
+2022-09-09:
+  Drulikar:
+  - bugfix: Fixed index out of bounds runtime that was preventing runtime logging.
+  realforest2001:
+  - bugfix: majority of remaining IC references to commodores have been thoroughly
+      nuked.
+  - tweak: CO Senator set to MO6 full Colonel with permission from lore team.
+  stanalbatross:
+  - bugfix: the orbit menu now has its refresh button back, and it properly works
+  - bugfix: the orbit menu now uses tgui_interact procs, as it should
+  - ui: the orbit menu no longer shows empty sections
+  - ui: the orbit menu has been made a bit wider
+2022-09-10:
+  Drathek:
+  - bugfix: Fixed initialization runtimes for updateVisibility by changing ticket_list
+      definition to not be an effect.
+  - bugfix: 'Fixed /datum/config_entry/flag/vote_adjustment_callback not initializing
+      by adding:'
+  - config: Added ALLOW_VOTE_ADJUSTMENT_CALLBACK where when present in config will
+      allow the usage of VOTE_ADJUSTMENT_CALLBACK some_number to adjust votes.
+  Jeser:
+  - rscadd: Added vehicle-specific version of Cancel View action called Vehicle Unbuckle.
+      This one will properly unbuckle you.
+  - bugfix: Fixed unbuckling with tank artillery module active leaving you with huge
+      view range.
+  Morrow:
+  - bugfix: Shocked doors without a real power source will now shock correctly.
+  - bugfix: Xeno shock chances made consistent across ways to open airlocks.
+2022-09-11:
+  Geevies:
+  - rscadd: You can now see who's playing the Queen / her hive leaders from the lobby.
+  Nanu:
+  - bugfix: Fixes the TP function so you can now choose between the Colony chapel
+      and Almayer.
+2022-09-12:
+  stanalbatross:
+  - ui: the chem dispenser now uses tgui
+  - rscadd: added visual indicators on chem dispensers of beakers being in them
+  - spellcheck: changed "tequilla" to "tequila"
+  - ui: upgraded font-awesome to v6.1.2. What does this mean? Many, many more varied
+      icons can be put in TGUI interfaces now.
+  - ui: converted the fax machine to tgui
+  - ui: added a new WY themed tgui theme
+  - soundadd: ported some tgstation computer sounds
+2022-09-13:
+  Shad0vvs:
+  - bugfix: Removed a test logging of every adminhelp.
+  The_Boondock:
+  - bugfix: due to unintended materials being used in phone lines resulting in them
+      being incredibly strong, the mistakes have been found and all current phone
+      lines are recalled and replaced with weaker one to save on cost, they will now
+      break if pulling a heavy objects.
+  morrowwolf:
+  - bugfix: Fixed non-bursted spawned corpses being grabbable.
+  stanalbatross:
+  - server: byond version 1586 is now blacklisted as it breaks vision.
+2022-09-14:
+  Drathek:
+  - bugfix: Fixed Boiler Dump Acid exploit.
+  - bugfix: Fixed onclick actions not removing their macro verb.
+  Lengord:
+  - rscadd: Passable floodlight
+  Morrow:
+  - bugfix: Fixed zero stack sandbags
+2022-09-15:
+  Drathek:
+  - rscadd: Added Screech macro hotkey for Queen Screech. YOU SHOULD RE-BIND SCREECH
+      AS QUEEN, IT IS NOT IN THE DEFAULT XENO-ACTION MACRO LIST.
+  - qol: Changed mobile Queen ability primary hotkeys to 1:Weed, 2:Change Spit, 3:Spit,
+      4:Choose Resin Structure, 5:Secrete Resin.
+  - qol: Changed ovi Queen ability primary hotkeys to 1:Heal, 2:Plasma, 3:Expand Weeds,
+      4:Choose Resin Structure, 5:Secrete Resin.
+  - qol: Set Order Construction as fifth primary ability hotkey for any caste that
+      can use it except Queen and Gardener.
+  - qol: Set Generate Egg as third primary ability hotkey for Eggsac Carrier strain.
+      (1:Weed, 3:Generate Egg, 4:Retrieve Egg, 5:Order Construction).
+  - qol: Set Change Fruit as fifth primary ability hotkey for Gardener strain. (1:Weed,
+      2:Hardy Weed, 3:Resin Surge, 4:Plant Fruit, 5:Change Fruit)
+  - qol: Shifted primary ability hotkeys for Acid Runner to 1:Acid, 2:For the Hive.
+  - qol: Added 10s cooldown to Word of the Queen ability and implemented button status
+      for the cooldown.
+  - qol: Added cooldown status for Queen's Gut ability.
+  - qol: Added cooldown status for Grow Ovipositor ability.
+  - qol: Rearranged ability buttons for Queen, base/whisperer Hivelords, Eggsac Carrier,
+      and Warden.
+  - qol: 'The following abilities now are instantly cast instead of select and then
+      MMB/Shift click: Screech (Queen), Empower (Rav), Spike Shield (Hedgehog), Spike
+      Shed (Hedgehog), Dodge (Dancer), Tremor (Burrower), Roar (Abom), and Smash (Abom).'
+  - qol: Eviscerate (Rav) is now instantly cast when used via hotkey, but not when
+      selected by mouse (this is the existing behavior for Defender Fortify).
+  - qol: 'The following abilities now use the purple button template to indicate active
+      state (like Use Pain already does): Hide, Rest, Toggle Long Range Sight, Resin
+      Walker (Hivelords), Toggle Charging (Charger), Toggle Crest Defense (Defenders),
+      Fortify (Defenders), Empower (Rav), Spike Shield (Hedgehog), Dodge (Dancer),
+      Paralyzing Slash (Sentinel), Crippling Strike (Lurker), Turn Invisible (Lurker),
+      and Defensive Shield (Crusher).'
+  - qol: Added a 0.5 second spam prevention measure when toggling the same ability
+      off to help prevent accidental de-selecting.
+  - bugfix: Fixed Corrosive Acid incorrectly being detected as XENO_PRIMARY_ACTION_5
+      due to overlap in its define with XENO_CORROSIVE_ACID (it has its own dedicated
+      macro anyways).
+  - bugfix: Fixed Word of the Queen ability button missing for pre-ovi young queen.
+  - bugfix: Fixed some abilities such as Remove Eggsac ability re-arranging after
+      second ovi.
+  - bugfix: Fixed Choose Resin Structure ability icon not updating when changing ovi
+      state or becoming a resin whisperer (it basically always reverts back to resin
+      wall on change).
+  - bugfix: Fixed Queen's Gut ability preventing new hive orders when it was on cooldown.
+  - bugfix: Fixed possibility of using plasma for hive orders when unconscious.
+  - bugfix: Fixed possibility of using plasma for Word of the Queen when canceling
+      the message.
+  - bugfix: Fixed De-evolve ability not using plasma nor actually requiring a reason.
+  - bugfix: Fixed Banish ability not using plasma nor actually requiring a reason.
+  - bugfix: Fixed Re-admit ability not using plasma.
+  - bugfix: 'Fixed statistics tracking when using De-evolve ability: It was still
+      tracking old mob and incorrectly incrementing the participant count.'
+  - bugfix: Fixed missing ability_name for Charger Tumble.
+  - bugfix: Fixed incorrect ability_name for Shaman Remember Pain.
+  - bugfix: Fixed selecting xeno actions via verb when hidden (should only apply to
+      queen).
+  - code_imp: Improved more variable readability.
+  - code_imp: Removed unused De-evolve ability code in Abilities.dm.
+  - code_imp: Added /datum/action/xeno_action/activable/proc/action_deselect to be
+      an overridable proc called when a different action is clicked on that causes
+      the current action to be deselected.
+  Geeves, Triiodine:
+  - rscadd: Adds the XM-VESG-1 Flamer Nozzle, an attachment for the standard M240A1
+      incinerator unit. Available in Req and Squad-Req as an underbarrel attachment.
+  - imageadd: Resprites the M240A1 and M240-T incinerator units.
+2022-09-16:
+  Forest2001,Joe lampost, Triiodine, Stan_Albatross,Geevies:
+  - rscadd: Adds a new surgery for use only by predators to heal
+  - rscadd: Adds the medicomp
+  - rscdel: will remove all herbs from the predator ship
+  - qol: makes predator healing easier for preds themselves by guaranteeing they are
+      healed to full after completing the steps of
+  - balance: will remove the ability for preds to instantly kit to 90% HP mid fight.
+  - bugfix: Fixed the predator health bar not showing the predators current health
+      correctly
+  - soundadd: Added a loud roar for predators using the final stage of the healing
+      process which points out their location.
+  - soundadd: Adds two unique sounds for the tools in use during the surgery
+  - tweak: removes all of the brute and burn healing properties of thwei changed the
+      name of the healing crystal.
+  - mapadd: removed 80% of the herbs from the predator ship left the ones in the arena
+      and replaced the racks with more trophy stands also added two extra medicomps
+      in the pred ship medbay if for some reason someone loses the one they spawn
+      with.
+  - spriteadd: Adds four new surgical tools for predators to use during the medicomps
+      operation
+  - imageadd: add Adds a sprite for the medicomp itself
+  Jeser:
+  - bugfix: Fixed DEAFENING echo in vehicle interiors.
+  - rscadd: Added new viewport to van - windshield and fixed it having armored vehicles
+      version of viewports.
+  - rscadd: Added proper handling of explosions for vehicle hardpoint modules. They
+      will now take damage instead of having chance to be instantly deleted even from
+      smallest explosions.
+  - rscadd: Hardpoints will show warning message once their integrity reaches zero
+      due to explosion or when being uninstalled from a vehicle before being deleted.
+  - code_imp: Added grille, chairs, windows (not framed), inflatable wall and door,
+      various Trijent Dam props, trees, colony floodlights, hydro trays vehicle bumps
+      handling.
+  totalepicness:
+  - qol: Liquid tanks are now destroyable by bullets and xenos alike
+  - qol: Water tanks can now be wrenched and unwrenched at will.
+  - bugfix: Fixed the random anchored watertanks in Almayer
+  - bugfix: Fixed anchored OT custom reagent tanks in OT fuel room
+2022-09-17:
+  Stan_Albatross, Thwomper:
+  - rscadd: added the xm88 heavy rifle to req, it is a rifle that must manually chamber
+      each shot. Hitting direct hits will grant "stacks", which increase its ap value
+      and damage up until 40 ap. Sprites by thwomper.
+  - bugfix: trying to fire a weapon with an internal magazine without a chambered
+      round will no longer display a message saying how many rounds are left in the
+      magazine
+2022-09-18:
+  Joelampost:
+  - bugfix: Makes the yautja healing gun not unload if the surgery step is interrupted.
+  Triiodine:
+  - imageadd: 'Updated, resprited, or otherwise replaced the following sprites: Bay12
+      Incinerator trashcans, morgue boxes and trays, telescreens, floor igniters,
+      retro televisions, gas sensors, stationary flashbulbs, glass cases (lamarr and
+      captain''s lazer gun), Falling Falcon''s patch, USCM patch, ties, armbands,
+      signal wands, mineral coins, toyhammer, banana, manuals and books, mesh grilles,
+      T-Comms stock parts, regular stock parts, assemblies (igniter, timer, signaler,
+      etc..), telebaton, harpoon, energy swords, energy cutlass, HEFA sword, handmade
+      stunprod, butterfly knife, wired rod, stun baton, cult tome, cult sword, mercenary
+      sword, captain''s sword, riot shield, switchblade, scythe, claymore, ceremonial
+      unathi knife, LTB projectiles, missle projectiles, and sledgehammers.'
+  - imageadd: 'Added, but did not code in: Maintenance jacks and station handaxes.'
+2022-09-19:
+  mullenpaul:
+  - rscadd: TGUI interface for many cm custom vendors
+  - qol: Search bar for item search for vendors
+  - qol: Item description appears as popup in vendor UI
+  - qol: Item icons are displayed in vendor UI
+2022-09-20:
+  Morrow:
+  - rscadd: Decoration accessories can now be attached to CO armor
+  Shad0vvs:
+  - server: Byond version 1588 is now blacklisted as it breaks vision.
+  Totalepicess, Blithering:
+  - rscadd: Added M41A and L42A blank ammo
+  - rscadd: Added the ABR-40 Ceremonial Rifle, found in SEA vendor, execution and
+      ceremonial room. Sprites by Blithering
+  - rscadd: Added a new ceremonial room to the Almayer, next to the memorial.
+  - rscadd: Added service jacket to SEA vendor
+  stanalbatross:
+  - refactor: repathed /obj/screen to /atom/movable/screen
+  - bugfix: only unacidable intel items are saved from the spawn pool now, this fixes
+      a number of issues with unacidable items such as sentries not being deleted
+      properly
+  - bugfix: the spawn pool and egg morpher will no longer pile all intel items on
+      top of them
+2022-09-21:
+  c4xmaniac:
+  - bugfix: Fixed kutjevo shutters.
+  - balance: LZ1 has been redesigned to make it harder to defend as marines and easier
+      to siege as xenos.
+  - bugfix: Fixed the old and current nightmare inserts on science annex to fit the
+      redesign of the map.
+  - rscdel: Deleted the old nightmare inserts that no longer work due Saw's yard changes
+      and the LZ1 changes I made.
+  - bugfix: Changed the descriptions of the food venders on the prison to match that
+      they're on a prison.
+  - qol: Moved the survivor spawn near park right a little so new survivor players
+      don't get gunned down immediately by a sentry.
+  nauticall:
+  - rscadd: Added more than 150 new sounds into the game; most were ported from A:CM
+      and stock SS13.
+  - rscadd: New firing sounds for the M37, Mk221/Mk210, M4A3, and 88 Mod 4.
+  - rscadd: New sounds for shotgun shell loading, glass breaking, explosions, and
+      explosions greater than 300 power, e.g. OBs and max caps.
+  - rscadd: Added various new interaction noises, particularly when damaging barricades,
+      prying doors, and picking up/dropping items.
+  - rscadd: Several tools now have pickup and drop sounds. In addition to the toolbelt
+      tools, these also include binoculars and fire extinguishers.
+  - bugfix: Patches a bug where the defibrillator would turn invisible once it shifted
+      to the yellow (<50%) level of charge and below.
+2022-09-22:
+  Morrow:
+  - bugfix: Ported fix for the entire screen being black on newer versions of byond
+  - server: Removed blacklisted versions 1586 and 1588
+  stanalbatross:
+  - bugfix: fixed some runtimes
+  - bugfix: if a clothing item takes time to equip, it will now not equip if conditions
+      are not met once its windup to equipping has finished
+2022-09-23:
+  Stan_Albatross, Triiodine, Geeves:
+  - rscadd: Static comms is back! Two towers will spawn in random locations every
+      round, one near-ish to each LZ. They are also displayed on the tacmap. You must
+      repair and power one of them to establish comms with the ship. Survivors can
+      also do so, if they so wish. Sprites by Triiodine, landmark system by Geeves.
+  - rscadd: static comm towers will require specific comm frequencies to be added
+      to them via multitool before they can be spoken on, this means survivors cannot
+      use USCM comms before drop.
+  - rscdel: The Almayer no longer spawns with comms parts, and the comms parts crate
+      cannot be bought.
+  - bugfix: survivor radios now start turned off if they spawn in a body that will
+      become a xeno.
+  - qol: added in-editor camera and APC icons
+  - qol: added broken, wires cut, and broken with no cell apc presets for mappers
+  - bugfix: fixed a few poorly offset cams on the Almayer
+2022-09-24:
+  Drathek:
+  - bugfix: Fixed runtimes caused by gibbing.
+  - code_imp: Added more checks for cause_data usage.
+  Morrow:
+  - rscadd: Flare guns can now be fired into the air via unique action
+  - qol: Signal flares fired by flare guns now show their designation in the flare
+      gun's description.
+2022-09-25:
+  Joe lampost:
+  - bugfix: stops preds form changing their SD size mid SD (this only works if someone
+      tries to change it from small to big)
+  - bugfix: reduces the amount of health gained from the first step of the medicomp
+      by 10 and gave plus 5 to the following steps
+  Morrow:
+  - bugfix: Predalien larva sprite works now
+  stanalbatross:
+  - bugfix: the queen eye can no longer be put in nests
+  - bugfix: when emitting pheromones, if you are using the queen eye, the radial menu
+      will appear from the eye itself
+  - bugfix: fixed broken static comms areas on kutjevo
+  - bugfix: tgui input real number now supports decimals
+2022-09-26:
+  stanalbatross:
+  - ui: the limb printer now uses tgui
+  - ui: the signaller tgui now uses sliders rather than knobs
+  - rscadd: gave the limb printer some love. It now has a unique sprite when printing,
+      can eject metal, has a max metal limit of 500, and starts with 125 metal instead
+      of 1000. It can no longer accept meat (was not used for anything) and its backend
+      code is much better now.
+2022-09-27:
+  Segrain:
+  - bugfix: APCs should no longer spawn in doubles.
+  Shad0vvs:
+  - bugfix: Fixes the health scanner not updating windows properly.
+2022-09-28:
+  Mistfrag:
+  - rscadd: Added new operation-prefix, postfixes and two new titles in order to add
+      some more variety.
+  - rscdel: Deleted campaign operation title since that's outside our usual round's
+      scope, deleted some LRP prefixes like 69-420, and some lrp postfixes like unga-bald.
+  Segrain:
+  - bugfix: Protheses printers no longer cause runtime errors by trying to exist.
+  - bugfix: Spawning humans no longer spam messages and sounds for being equipped.
+  StarkSilence:
+  - qol: Simplified TGUI Health Scanner interface for readability.
+  stanalbatross:
+  - bugfix: the healthscanner will now show IB properly
+  - bugfix: the healthscanner will now properly show frac info to medics
+  - qol: changed the frac message colour to white to make it stand out more
+  - bugfix: fixed some bad del runtimes on init
+2022-09-29:
+  Mistfrag:
+  - rscadd: C4 (3), Machete Scabbard (2), Machete Pouch, M-M Pouch, Small RTO Pack
+      (12), RO Cap (12), SO Cap (12), RO Jacket (12), Ball-Cap (12), Hi-Cap Blowtorch
+      (4), Industrial Blowtorch (2), USCM Medical Uniform
+  totalepicness:
+  - bugfix: Fixes crew compartment attachment points being able to hide objects and
+      mobs.
+2022-09-30:
+  Morrow:
+  - qol: You can now use ; or :[key] for default frequencies.
+  Shad0vvs:
+  - bugfix: Allows you to click yourself with pills(and other force 0 objects) when
+      on harm intent with the do not harm self preference on.

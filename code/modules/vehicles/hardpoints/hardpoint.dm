@@ -38,8 +38,6 @@
 	//visual layer of hardpoint when on vehicle
 	var/hdpt_layer = HDPT_LAYER_WHEELS
 
-	// Whether or not to make a muzzle flash when the gun is fired
-	var/use_muzzle_flash = FALSE
 	// List of offsets for where to place the muzzle flash for each direction
 	var/list/muzzle_flash_pos = list(
 		"1" = list(0, 0),
@@ -85,6 +83,11 @@
 	// The firing arc of this hardpoint
 	var/firing_arc = 0	//in degrees. 0 skips whole arc of fire check
 
+	// Muzzleflash
+	var/use_muzzle_flash = FALSE
+	var/muzzleflash_icon_state = "muzzle_flash"
+	var/underlayer_north_muzzleflash = FALSE
+	var/angle_muzzleflash = TRUE
 
 	//------AMMUNITION VARS----------
 
@@ -116,6 +119,15 @@
 	QDEL_NULL(ammo)
 
 	return ..()
+
+/obj/item/hardpoint/ex_act(severity)
+	if(owner || indestructible)
+		return
+
+	health = max(0, health - severity / 2)
+	if(health <= 0)
+		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
+		qdel(src)
 
 /// Populate traits_to_give in this proc
 /obj/item/hardpoint/proc/set_bullet_traits()
@@ -324,13 +336,14 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	return
 
 //examining a hardpoint
-/obj/item/hardpoint/examine(mob/user, var/integrity_only = FALSE)
+/obj/item/hardpoint/get_examine_text(mob/user, var/integrity_only = FALSE)
 	if(!integrity_only)
-		..()
+		return ..()
+	. = ..()
 	if(health <= 0)
-		to_chat(user, "It's busted!")
+		. += "It's busted!"
 	else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)))
-		to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
+		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader
 /obj/item/hardpoint/proc/reload(var/mob/user)
@@ -385,6 +398,9 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 
 /obj/item/hardpoint/attackby(var/obj/item/O, var/mob/user)
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		handle_repair(O, user)
 		return
 	..()
@@ -531,7 +547,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	P.fire_at(A, user, src, P.ammo.max_range, P.ammo.shell_speed)
 
 	if(use_muzzle_flash)
-		muzzle_flash(Get_Angle(owner, A))
+		muzzle_flash(Get_Angle(origin_turf, A))
 
 	ammo.current_rounds--
 
@@ -596,8 +612,13 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 			muzzle_flash_y += H.px_offsets["[H.loc.dir]"][2]
 
 	var/image_layer = owner.layer + 0.1
+	if(underlayer_north_muzzleflash && dir == NORTH)
+		image_layer = owner.layer - 0.1
 
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
+	if(!angle_muzzleflash)
+		angle = dir2angle(dir)
+
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,muzzleflash_icon_state,image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
 	rotate.Turn(angle)
 	rotate.Translate(muzzle_flash_x, muzzle_flash_y)

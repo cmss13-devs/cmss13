@@ -46,16 +46,16 @@
 	else
 		return 0
 
-/obj/structure/barricade/plasteel/examine(mob/user)
-	..()
+/obj/structure/barricade/plasteel/get_examine_text(mob/user)
+	. = ..()
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED)
-			to_chat(user, SPAN_INFO("The protection panel is still tighly screwed in place."))
+			. += SPAN_INFO("The protection panel is still tighly screwed in place.")
 		if(BARRICADE_BSTATE_UNSECURED)
-			to_chat(user, SPAN_INFO("The protection panel has been removed, you can see the anchor bolts."))
+			. += SPAN_INFO("The protection panel has been removed, you can see the anchor bolts.")
 		if(BARRICADE_BSTATE_MOVABLE)
-			to_chat(user, SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart."))
+			. += SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.")
 
 /obj/structure/barricade/plasteel/weld_cade(obj/item/W, mob/user)
 	busy = TRUE
@@ -64,6 +64,9 @@
 
 /obj/structure/barricade/plasteel/attackby(obj/item/W, mob/user)
 	if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(busy || tool_cooldown > world.time)
 			return
 		tool_cooldown = world.time + 10
@@ -279,7 +282,6 @@
 	debris = list(/obj/item/stack/sheet/metal)
 	stack_amount = 6
 	destroyed_stack_amount = 3
-	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "folding_metal"
 	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
 

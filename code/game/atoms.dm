@@ -55,6 +55,11 @@
 	///Reference to atom being orbited
 	var/atom/orbit_target
 
+	///Default pixel x shifting for the atom's icon.
+	var/base_pixel_x = 0
+	///Default pixel y shifting for the atom's icon.
+	var/base_pixel_y = 0
+
 /atom/New(loc, ...)
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
@@ -179,11 +184,16 @@ directive is properly returned.
 	return found
 
 /atom/proc/examine(mob/user)
-	to_chat(user, "[icon2html(src, user)] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
+	var/list/examine_strings = get_examine_text(user)
+	to_chat(user, examine_block(examine_strings.Join("\n")))
+
+/atom/proc/get_examine_text(mob/user)
+	. = list()
+	. += "[icon2html(src, user)] That's \a [src]." //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	if(desc)
-		to_chat(user, desc)
+		. += desc
 	if(desc_lore)
-		to_chat(user, SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>."))
+		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
@@ -355,7 +365,7 @@ Parameters are passed from New.
 			continue
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
-			temp_flag_counter[flag_str] += 1
+			temp_flag_counter[flag_str]++
 		else
 			temp_flag_counter[flag_str] = 1
 			flags_pass_temp |= flag
@@ -369,7 +379,7 @@ Parameters are passed from New.
 			continue
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
-			temp_flag_counter[flag_str] -= 1
+			temp_flag_counter[flag_str]--
 			if (temp_flag_counter[flag_str] == 0)
 				temp_flag_counter -= flag_str
 				flags_pass_temp &= ~flag
@@ -519,3 +529,14 @@ Parameters are passed from New.
 	for(var/atom/atom_orbiter as anything in orbiters?.orbiters)
 		output += atom_orbiter.get_all_orbiters(processed, source = FALSE)
 	return output
+
+// returns a modifier for how much the tail stab should be cooldowned by
+// returning a 0 makes it do nothing
+/atom/proc/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
+/atom/proc/handle_flamer_fire(var/obj/flamer_fire/fire, var/damage, var/delta_time)
+	return
+
+/atom/proc/handle_flamer_fire_crossed(var/obj/flamer_fire/fire)
+	return

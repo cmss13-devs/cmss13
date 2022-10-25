@@ -31,7 +31,7 @@
 				var/datum/interior/VI = GLOB.interior_manager.get_interior_by_coords(owner_turf.x, owner_turf.y)
 				if(VI && VI.exterior)
 					var/turf/candidate = get_turf(VI.exterior)
-					if(!(candidate.z == T.z))
+					if(candidate.z != T.z)
 						return // Invalid location
 					S.falloff /= 2
 					owner_turf = candidate
@@ -39,7 +39,7 @@
 			S.y = 0
 			S.z = T.y - owner_turf.y
 			var/area/A = owner_turf.loc
-			S.environment = owner_turf == owner.mob.loc ? A.sound_environment : SOUND_ENVIRONMENT_BATHROOM
+			S.environment = A.sound_environment
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 
@@ -127,7 +127,7 @@
 		sound_to(owner, S)
 
 /client/proc/adjust_volume_prefs(var/volume_key, var/prompt = "", var/channel_update = 0)
-	volume_preferences[volume_key]	= (input(prompt, "Volume", volume_preferences[volume_key]*100) as num) / 100
+	volume_preferences[volume_key]	= (tgui_input_number(src, prompt, "Volume", volume_preferences[volume_key]*100)) / 100
 	if(volume_preferences[volume_key] > 1)
 		volume_preferences[volume_key] = 1
 	if(volume_preferences[volume_key] < 0)

@@ -9,11 +9,11 @@
 
     var/obj/item/clothing/mask/cloth/mask_item
 
-/obj/item/weapon/melee/chloroform/examine(mob/user)
+/obj/item/weapon/melee/chloroform/get_examine_text(mob/user)
     . = ..()
 
     if(skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
-        to_chat(user, SPAN_BLUE("It has [uses] use\s left."))
+        . += SPAN_BLUE("It has [uses] use\s left.")
 
 /obj/item/weapon/melee/chloroform/attack(mob/living/M, mob/living/user)
     if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
@@ -43,7 +43,7 @@
 
     remove_stun(M)
 
-    uses -= 1
+    uses--
 
 /obj/item/weapon/melee/chloroform/proc/grab_stun(var/mob/living/M, var/mob/living/user)
     M.anchored = TRUE

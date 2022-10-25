@@ -21,12 +21,12 @@
 	if(broken)
 		icon_state = "[icon_state]_burnt"
 
-/obj/item/device/flash/examine(mob/user)
+/obj/item/device/flash/get_examine_text(mob/user)
 	. = ..()
 	if(broken)
-		to_chat(user, "This one's bulb has popped. Oh well.")
+		. += "This one's bulb has popped. Oh well."
 	else
-		to_chat(user, SPAN_NOTICE("[flashes_stored] / [max_flashes_stored] flashes remaining."))
+		. += SPAN_NOTICE("[flashes_stored] / [max_flashes_stored] flashes remaining.")
 
 /obj/item/device/flash/proc/add_charge()
 	if(broken)

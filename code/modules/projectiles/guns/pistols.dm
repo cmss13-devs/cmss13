@@ -12,7 +12,8 @@
 	force = 6
 	movement_onehanded_acc_penalty_mult = 3
 	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your pistol to be two-handed, it will still be fast to aim
-	fire_sound = 'sound/weapons/gun_servicepistol.ogg'
+	fire_sound = "m4a3"
+	firesound_volume = 25
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
@@ -107,7 +108,6 @@
 	icon_state = "m4a345"
 	item_state = "m4a3"
 
-	fire_sound = 'sound/weapons/gun_glock.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/m1911
 
 
@@ -117,12 +117,33 @@
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_config_values()
 	..()
+	fire_delay = FIRE_DELAY_TIER_8
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
+
+
+/obj/item/weapon/gun/pistol/m1911/socom
+	name = "\improper SOCOM M1911 service pistol"
+	desc = "A timeless classic since the first World War. Chambered in .45 ACP. This one has a darkened grip and appears especially well-kept. "
+	icon_state = "m4a345_s"
+	item_state = "m4a3"
+	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+
+/obj/item/weapon/gun/pistol/m1911/socom/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+
 
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
@@ -158,6 +179,7 @@
 	icon_state = "deagle"
 	item_state = "deagle"
 	fire_sound = 'sound/weapons/gun_DE50.ogg'
+	firesound_volume = 40
 	current_mag = /obj/item/ammo_magazine/pistol/heavy
 	force = 13
 
@@ -331,6 +353,12 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
+/obj/item/weapon/gun/pistol/holdout/flashlight/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/flashlight/flashlight = new(src)
+	flashlight.Attach(src)
+	update_attachable(flashlight.slot)
+
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL
 /obj/item/weapon/gun/pistol/m43pistol
@@ -400,7 +428,8 @@
 	desc = "Standard issue USCM firearm. Also found in the hands of Weyland-Yutani PMC teams. Fires 9mm armor shredding rounds and is capable of 3-round burst."
 	icon_state = "88m4"
 	item_state = "88m4"
-	fire_sound = 'sound/weapons/gun_88m4_v7.ogg'
+	fire_sound = "88m4"
+	firesound_volume = 20
 	reload_sound = 'sound/weapons/gun_88m4_reload.ogg'
 	unload_sound = 'sound/weapons/gun_88m4_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/mod88
@@ -439,6 +468,13 @@
 
 /obj/item/weapon/gun/pistol/mod88/training
 	current_mag = /obj/item/ammo_magazine/pistol/mod88/rubber
+
+
+/obj/item/weapon/gun/pistol/mod88/flashlight/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/flashlight/flashlight = new(src)
+	flashlight.Attach(src)
+	update_attachable(flashlight.slot)
 
 //-------------------------------------------------------
 //VP78 - the only pistol viable as a primary.
@@ -495,12 +531,12 @@
 //-------------------------------------------------------
 /*
 Auto 9 The gun RoboCop uses. A better version of the VP78, with more rounds per magazine. Probably the best pistol around, but takes no attachments.
-It is a modified Beretta 93R, and can fire three round burst or single fire. Whether or not anyone else aside RoboCop can use it is not established.
+It is a modified Beretta 93R, and can fire three-round burst or single fire. Whether or not anyone else aside RoboCop can use it is not established.
 */
 
 /obj/item/weapon/gun/pistol/auto9
 	name = "\improper Auto-9 pistol"
-	desc = "An advanced, select-fire machine pistol capable of three round burst. Last seen cleaning up the mean streets of Detroit."
+	desc = "An advanced, select-fire machine pistol capable of three-round burst. Last seen cleaning up the mean streets of Detroit."
 	icon_state = "auto9"
 	item_state = "auto9"
 
@@ -594,7 +630,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/skorpion
 	name = "\improper CZ-81 machine pistol"
-	desc = "A robust, 20th century firearm that's a combination of pistol and submachinegun. Fires .32ACP caliber rounds from a 20 round magazine."
+	desc = "A robust, 20th century firearm that's a combination of pistol and submachinegun. Fires .32ACP caliber rounds from a 20-round magazine."
 	icon_state = "skorpion"
 	item_state = "skorpion"
 
@@ -635,7 +671,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	fa_max_scatter = SCATTER_AMOUNT_TIER_6
 
 /obj/item/weapon/gun/pistol/skorpion/upp
-	desc = "A robust, 20th century firearm modernized for the 23rd century. Fires .32ACP caliber rounds from a 20 round magazine."
+	desc = "A robust, 20th century firearm modernized for the 23rd century. Fires .32ACP caliber rounds from a 20-round magazine."
 	icon_state = "skorpion_u"
 	item_state = "skorpion_u"
 

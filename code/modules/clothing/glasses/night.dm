@@ -61,6 +61,10 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
+/obj/item/clothing/glasses/night/m42_night_goggles/spotter
+	name = "\improper M42 spotter sight"
+	desc = "A companion headset and night vision goggles system for USCM spotters. Allows highlighted imaging of surroundings. Click it to toggle."
+
 /obj/item/clothing/glasses/night/m42_night_goggles/m42c
 	name = "\improper M42C special operations sight"
 	desc = "A specialized variation of the M42 scout sight system, intended for use with the high-power M42C anti-tank sniper rifle. Allows for highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."
@@ -78,7 +82,7 @@
 
 /obj/item/clothing/glasses/night/m56_goggles
 	name = "\improper M56 head mounted sight"
-	desc = "A headset and goggles system for the M56 Smartgun. Has a low-res short range imager, allowing for view of terrain."
+	desc = "A headset and goggles system for the M56 Smartgun. Has a low-res short-range imager, allowing for view of terrain."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"

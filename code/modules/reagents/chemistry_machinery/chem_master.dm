@@ -157,7 +157,7 @@
 
 		else if(href_list["addcustom"])
 			var/id = href_list["addcustom"]
-			useramount = input("Select the amount to transfer.", 30, useramount) as num
+			useramount = tgui_input_number(usr, "Select the amount to transfer.", "Transfer amount", useramount)
 			transfer_chemicals(src, beaker, useramount, id)
 
 		else if(href_list["addall"])
@@ -177,7 +177,7 @@
 
 		else if(href_list["removecustom"])
 			var/id = href_list["removecustom"]
-			useramount = input("Select the amount to transfer.", 30, useramount) as num
+			useramount = tgui_input_number(usr, "Select the amount to transfer.", "Transfer amount", useramount)
 			if(mode)
 				transfer_chemicals(beaker, src, useramount, id)
 			else
@@ -215,7 +215,7 @@
 				return
 
 			if(href_list["createpill_multiple"])
-				count = Clamp(input("Select the number of pills to make. (max: [max_pill_count])", 10, pillamount) as num|null,0,max_pill_count)
+				count = Clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
 				if(!count)
 					return
 

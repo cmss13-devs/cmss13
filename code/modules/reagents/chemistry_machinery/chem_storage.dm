@@ -31,18 +31,18 @@
 	chemical_data.add_chem_storage(src)
 	start_processing()
 
-/obj/structure/machinery/chem_storage/examine(mob/user)
-	..()
+/obj/structure/machinery/chem_storage/get_examine_text(mob/user)
+	. = ..()
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		var/charge = round((energy / max_energy) * 100)
-		to_chat(user, SPAN_NOTICE("The charge meter reads [charge]%"))
+		. += SPAN_NOTICE("The charge meter reads [charge]%")
 
 /obj/structure/machinery/chem_storage/process()
 	if(recharge_cooldown <= 0)
 		recharge()
 		recharge_cooldown = initial(recharge_cooldown)
 	else
-		recharge_cooldown -= 1
+		recharge_cooldown--
 
 /obj/structure/machinery/chem_storage/proc/recharge()
 	if(inoperable())

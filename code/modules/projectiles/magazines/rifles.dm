@@ -116,7 +116,7 @@
 //M40-SD AKA MARSOC RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
 /obj/item/ammo_magazine/rifle/m40_sd
 	name = "\improper M40-SD magazine (10x24mm)"
-	desc = "A stubby and wide, high capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
+	desc = "A stubby and wide, high-capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
 	icon_state = "m40_sd"
 	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd

@@ -14,6 +14,9 @@
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 
+	pickupsound = "armorequip"
+	dropsound = "armorequip"
+
 /obj/item/clothing/suit/armor/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
 	. = ..()
 	if (.)
@@ -278,7 +281,7 @@
 //When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)
 /obj/item/clothing/suit/armor/reactive
 	name = "Reactive Teleport Armor"
-	desc = "Someone seperated our Research Director from their own head!"
+	desc = "Someone separated our Research Director from their own head!"
 	var/active = 0.0
 	icon_state = "reactiveoff"
 	item_state = "reactiveoff"

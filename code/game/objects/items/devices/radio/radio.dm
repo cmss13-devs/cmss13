@@ -222,7 +222,7 @@
 		actually transmit large mass. Headsets are the only radio devices capable
 		of sending subspace transmissions to the Communications Satellite.
 
-		A headset sends a signal to a subspace listener/reciever elsewhere in space,
+		A headset sends a signal to a subspace listener/receiver elsewhere in space,
 		the signal gets processed and logged, and an audible transmission gets sent
 		to each individual headset.
 	*/
@@ -376,7 +376,7 @@
 			return -1
 	if (!on)
 		return -1
-	if (!freq) //recieved on main frequency
+	if (!freq) //received on main frequency
 		if (!listening)
 			return -1
 	else
@@ -394,16 +394,21 @@
 /obj/item/device/radio/proc/send_hear(freq, level)
 	var/range = receive_range(freq, level)
 	if(range > -1)
-		return get_mobs_in_view(canhear_range, src)
+		var/list/hearers
+		var/list/mobs = get_mobs_in_view(canhear_range, src)
+		var/list/radios = get_radios_in_view(canhear_range, src)
+		hearers += mobs
+		hearers += radios
+		return hearers
 
 
-/obj/item/device/radio/examine(mob/user)
-	..()
+/obj/item/device/radio/get_examine_text(mob/user)
+	. = ..()
 	if ((in_range(src, user) || loc == user))
 		if (b_stat)
-			to_chat(user, SPAN_NOTICE(" [src] can be attached and modified!"))
+			. += SPAN_NOTICE("[src] can be attached and modified!")
 		else
-			to_chat(user, SPAN_NOTICE(" [src] can not be modified or attached!"))
+			. += SPAN_NOTICE("[src] can not be modified or attached!")
 
 
 /obj/item/device/radio/attackby(obj/item/W as obj, mob/user as mob)

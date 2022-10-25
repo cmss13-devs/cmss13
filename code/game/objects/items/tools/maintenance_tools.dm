@@ -19,6 +19,8 @@
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "wrench"
+	pickupsound = 'sound/handling/wrench_pickup.ogg'
+	dropsound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 5.0
@@ -34,9 +36,11 @@
  */
 /obj/item/tool/screwdriver
 	name = "screwdriver"
-	desc = "You can be totally screwwy with this."
+	desc = "You can be totally screwy with this."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "screwdriver"
+	pickupsound = 'sound/handling/multitool_pickup.ogg'
+	dropsound = 'sound/handling/screwdriver_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR | SLOT_FACE
 	force = 5.0
@@ -115,6 +119,8 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "cutters"
 	item_state = "cutters"
+	pickupsound = 'sound/handling/wirecutter_pickup.ogg'
+	dropsound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 6.0
@@ -151,6 +157,8 @@
 	name = "blowtorch"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welder"
+	pickupsound = 'sound/handling/weldingtool_pickup.ogg'
+	dropsound = 'sound/handling/weldingtool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
@@ -164,11 +172,13 @@
 	//Cost to make in the autolathe
 	matter = list("metal" = 70, "glass" = 30)
 
+	inherent_traits = list(TRAIT_TOOL_BLOWTORCH)
+
 	//blowtorch specific stuff
 	var/welding = 0 	//Whether or not the blowtorch is off(0), on(1) or currently welding(2)
 	var/max_fuel = 20 	//The max amount of fuel the welder can hold
 	var/weld_tick = 0	//Used to slowly deplete the fuel when the tool is left on.
-	var/has_welding_screen = TRUE
+	var/has_welding_screen = FALSE
 
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
@@ -186,9 +196,9 @@
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/tool/weldingtool/examine(mob/user)
-	..()
-	to_chat(user, "It contains [get_fuel()]/[max_fuel] units of fuel!")
+/obj/item/tool/weldingtool/get_examine_text(mob/user)
+	. = ..()
+	. += "It contains [get_fuel()]/[max_fuel] units of fuel!"
 
 
 
@@ -436,6 +446,14 @@
 	if(reagents > max_fuel)
 		reagents = max_fuel
 
+/obj/item/tool/weldingtool/simple
+	name = "\improper ME3 hand welder"
+	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
+	max_fuel = 5
+	color = "#cc0000"
+	has_welding_screen = TRUE
+	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
+
 /*
  * Crowbar
  */
@@ -445,6 +463,8 @@
 	desc = "Used to remove floors and to pry open doors."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "crowbar"
+	pickupsound = 'sound/handling/crowbar_pickup.ogg'
+	dropsound = 'sound/handling/crowbar_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 5.0
@@ -491,7 +511,7 @@
 	original_health = health
 
 /obj/item/tool/weldpack/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/weldingtool))
+	if(iswelder(W))
 		var/obj/item/tool/weldingtool/T = W
 		if(T.welding & prob(50))
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion.")
@@ -527,13 +547,14 @@
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
 		to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
 		return
-/obj/item/tool/weldpack/examine(mob/user)
-	..()
-	to_chat(user, "[reagents.total_volume] units of welding fuel left!")
+
+/obj/item/tool/weldpack/get_examine_text(mob/user)
+	. = ..()
+	. += "[reagents.total_volume] units of welding fuel left!"
 	if(original_health > health)
-		to_chat(user, "\The [src] appears to have been damaged, as the self sealing liner has been exposed.")
+		. += "\The [src] appears to have been damaged, as the self sealing liner has been exposed."
 	else
-		to_chat(user, "No punctures are seen on \the [src] upon closer inspection.")
+		. += "No punctures are seen on \the [src] upon closer inspection."
 
 /obj/item/tool/weldpack/bullet_act(var/obj/item/projectile/P)
 	var/damage = P.damage

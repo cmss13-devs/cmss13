@@ -78,6 +78,10 @@
 
 ///from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
+
+/// generally called before temporary non-parallel animate()s on the atom (animation_duration)
+#define COMSIG_ATOM_TEMPORARY_ANIMATION_START "atom_temp_animate_start"
+
 //from base of atom/movable/onTransitZ(): (old_z, new_z)
 #define COMSIG_MOVABLE_Z_CHANGED "movable_ztransit"
 
@@ -135,10 +139,12 @@
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
 	#define COMPONENT_CANCEL_DEVOUR	(1<<0)
-
 // Reserved for tech trees
 #define COMSIG_MOB_ENTER_TREE "mob_enter_tree"
 	#define COMPONENT_CANCEL_TREE_ENTRY (1<<0)
+/// From base of /mob/proc/set_face_dir(): (newdir)
+#define COMSIG_MOB_SET_FACE_DIR "mob_set_face_dir"
+	#define COMPONENT_CANCEL_SET_FACE_DIR (1<<0)
 
 #define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"
 #define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
@@ -240,6 +246,11 @@
 
 /// from /mob/living/carbon/Xenomorph/bullet_act(): (list/damagedata)
 #define COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE "xeno_pre_calculate_armoured_damage_projectile"
+
+// from /mob/living/carbon/Xenomorph/proc/gain_health()
+#define COMSIG_XENO_ON_HEAL "xeno_on_heal"
+#define COMSIG_XENO_ON_HEAL_WOUNDS "xeno_on_heal_wounds"
+
 /// from /mob/living/carbon/Xenomorph/apply_armoured_damage(): (list/damagedata)
 #define COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE "xeno_pre_apply_armoured_damage"
 
@@ -300,6 +311,8 @@
 /// From /atom/movable/Move(): (atom/NewLoc)
 #define COMSIG_MOVABLE_PRE_MOVE "movable_pre_move"
 	#define COMPONENT_CANCEL_MOVE (1<<0)
+/// From /turf/open/gm/river/Entered(): (turf/open/gm/river/river, covered)
+#define COMSIG_MOVABLE_ENTERED_RIVER "movable_entered_river"
 
 ///from /obj/item/reagent_container/food/snacks/proc/On_Consume
 #define COMSIG_SNACK_EATEN "snack_eaten"
@@ -401,6 +414,10 @@
 
 /// From /obj/structure/proc/do_climb(var/mob/living/user, mods)
 #define COMSIG_LIVING_CLIMB_STRUCTURE "climb_over_structure"
+/// From /mob/living/Collide(): (atom/A)
+#define COMSIG_LIVING_PRE_COLLIDE "living_pre_collide"
+	#define COMPONENT_LIVING_COLLIDE_HANDLED (1<<0)
+
 /// From /mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)
 //this is a jank way to use signals, but you would need to rework the entire proc otherwise
 #define COMSIG_HUMAN_CARRY "fireman_carry"
@@ -410,9 +427,11 @@
 
 /// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
 #define COMSIG_XENO_ACTION_USED "xeno_action_used"
-
 /// From /mob/living/carbon/Xenomorph/proc/check_blood_splash()
 #define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"
+/// From /mob/living/carbon/Xenomorph/proc/recalculate_speed()
+#define COMSIG_XENO_RECALCULATE_SPEED "xeno_recalculate_speed"
+
 // shuttle
 /// shuttle mode change
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
@@ -440,6 +459,10 @@
 ///from /datum/component/bonus_damage_stack
 #define COMSIG_BONUS_DAMAGE "bonus_damage"
 
+/// Called whenever xeno should stop momentum (when charging)
+#define COMSIG_XENO_STOP_MOMENTUM "xeno_stop_momentum"
+/// Called whenever xeno should resume charge
+#define COMSIG_XENO_START_CHARGING "xeno_start_charging"
 /// from /datum/squad/proc/put_marine_in_squad
 #define COMSIG_SET_SQUAD "set_squad"
 

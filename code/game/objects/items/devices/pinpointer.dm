@@ -43,11 +43,11 @@
 			icon_state = "pinonfar"
 	spawn(5) .()
 
-/obj/item/device/pinpointer/examine(mob/user)
-	..()
+/obj/item/device/pinpointer/get_examine_text(mob/user)
+	. = ..()
 	for(var/obj/structure/machinery/nuclearbomb/bomb in machines)
 		if(bomb.timing)
-			to_chat(user, "Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]")
+			. += "Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]"
 
 
 /obj/item/device/pinpointer/advpinpointer
@@ -125,10 +125,10 @@
 		if("Location")
 			mode = 1
 
-			var/locationx = input(usr, "Please input the x coordinate to search for.", "Location?" , "") as num
+			var/locationx = tgui_input_real_number(usr, "Please input the x coordinate to search for.", "Location?")
 			if(!locationx || !(usr in view(1,src)))
 				return
-			var/locationy = input(usr, "Please input the y coordinate to search for.", "Location?" , "") as num
+			var/locationy = tgui_input_real_number(usr, "Please input the y coordinate to search for.", "Location?")
 			if(!locationy || !(usr in view(1,src)))
 				return
 

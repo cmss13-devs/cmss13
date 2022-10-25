@@ -51,12 +51,12 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
-/obj/item/weapon/melee/baton/examine(mob/user)
-	..()
+/obj/item/weapon/melee/baton/get_examine_text(mob/user)
+	. = ..()
 	if(bcell)
-		to_chat(user, SPAN_NOTICE("The baton is [round(bcell.percent())]% charged."))
+		. += SPAN_NOTICE("The baton is [round(bcell.percent())]% charged.")
 	else
-		to_chat(user, SPAN_WARNING("The baton does not have a power source installed."))
+		. += SPAN_WARNING("The baton does not have a power source installed.")
 
 /obj/item/weapon/melee/baton/attack_hand(mob/user)
 	if(check_user_auth(user))

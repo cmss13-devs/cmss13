@@ -22,7 +22,7 @@
 
 /obj/structure/machinery/door/window/Destroy()
 	density = 0
-	playsound(src, "shatter", 50, 1)
+	playsound(src, "windowshatter", 50, 1)
 	. = ..()
 
 /obj/structure/machinery/door/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -112,7 +112,8 @@
 			electronics = null
 			ae.forceMove(src.loc)
 		if(operating == -1)
-			ae.icon_state = "door_electronics_smoked"
+			ae.fried = TRUE
+			ae.update_icon()
 			operating = 0
 		src.density = 0
 		qdel(src)
@@ -194,7 +195,8 @@
 				ae = electronics
 				electronics = null
 				ae.forceMove(src.loc)
-			ae.icon_state = "door_electronics_smoked"
+			ae.fried = TRUE
+			ae.update_icon()
 
 			operating = 0
 			qdel(src)

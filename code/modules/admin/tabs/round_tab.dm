@@ -8,7 +8,7 @@
 			to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 			return
 
-		var/value = input(src,"How many additional predators can join? Decreasing the value is not recommended. Current predator count: [SSticker.mode.pred_current_num]","Input:", SSticker.mode.pred_additional_max) as num|null
+		var/value = tgui_input_number(src,"How many additional predators can join? Decreasing the value is not recommended. Current predator count: [SSticker.mode.pred_current_num]","Input:", 0, (SSticker.mode.pred_additional_max - SSticker.mode.pred_current_num))
 
 		if(value < SSticker.mode.pred_current_num)
 			to_chat(src, SPAN_NOTICE("Aborting. Number cannot be lower than the current pred count. (current: [SSticker.mode.pred_current_num], attempted: [value])"))
@@ -20,7 +20,7 @@
 
 /datum/admins/proc/force_predator_round()
 	set name = "Toggle Predator Round"
-	set desc = "Force toggle a predator round for the round type. Only works on maps that support Predator spawns."
+	set desc = "Force-toggle a predator round for the round type. Only works on maps that support Predator spawns."
 	set category = "Server.Round"
 
 	if(!SSticker || SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
@@ -28,7 +28,7 @@
 		return
 
 	var/datum/game_mode/predator_round = SSticker.mode
-	if(alert("Are you sure you want to force toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") == "No")
+	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") == "No")
 		return
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
@@ -87,7 +87,7 @@
 		return
 	J = RoleAuthority.roles_by_name[role]
 	var/tpos = J.spawn_positions
-	var/num = input("How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]","Number:", tpos) as num|null
+	var/num = tgui_input_number(src, "How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]","Number:", tpos)
 	if(isnull(num))
 		return
 	if(!RoleAuthority.modify_role(J, num))

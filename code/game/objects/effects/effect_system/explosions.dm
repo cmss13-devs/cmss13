@@ -25,9 +25,9 @@
 			s.set_up(2, 1, location)
 			s.start()
 
-			for(var/mob/M in viewers(5, location))
+			for(var/mob/M as anything in viewers(5, location))
 				to_chat(M, SPAN_WARNING("The solution violently explodes."))
-			for(var/mob/M in viewers(1, location))
+			for(var/mob/M as anything in viewers(1, location))
 				if (prob (50 * amount))
 					to_chat(M, SPAN_WARNING("The explosion knocks you down."))
 					M.KnockDown(rand(1,5))
@@ -39,7 +39,7 @@
 			light = max(-1, amount/8)
 			if (flash && flashing_factor) flash = light + 1
 
-			for(var/mob/M in viewers(8, location))
+			for(var/mob/M as anything in viewers(8, location))
 				to_chat(M, SPAN_WARNING("The solution violently explodes."))
 
 			explosion(location, -1, -1, light, flash)

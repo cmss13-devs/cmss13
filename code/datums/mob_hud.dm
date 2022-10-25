@@ -270,7 +270,8 @@ var/list/datum/mob_hud/huds = list(
 	else
 		var/amount = health > 0 ? round(health * 100 / maxHealth, 10) : CEILING(health, 10)
 		if(health < 0)
-			amount = round((health / (crit_health - warding_aura * 20)) * -100, 10)
+			var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
+			amount = round((health / (crit_health - warding_health)) * -100, 10)
 		else
 			amount = CEILING((health / maxHealth) * 100, 10)
 		if(!amount)
@@ -430,7 +431,7 @@ var/list/datum/mob_hud/huds = list(
 						holder3.icon_state = "huddead"
 						holder2_set = 1
 			else
-				if(heart && (heart.is_broken() && check_tod())) // broken heart icon
+				if(heart && (heart.organ_status >= ORGAN_BROKEN && check_tod())) // broken heart icon
 					holder.icon_state = "huddeadheart"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadheart"

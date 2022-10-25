@@ -9,6 +9,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	var/pass_hivenumber = TRUE
 
 	var/build_overlay_icon
+	var/build_animation_effect
 
 	var/range_between_constructions
 	var/build_path
@@ -114,6 +115,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	cost = XENO_RESIN_WALL_COST
 
 	build_path = /turf/closed/wall/resin
+	build_animation_effect = /obj/effect/resin_construct/weak
 
 /datum/resin_construction/resin_turf/wall/thick
 	name = "Thick Resin Wall"
@@ -122,7 +124,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	cost = XENO_RESIN_WALL_THICK_COST
 
 	build_path = /turf/closed/wall/resin/thick
-
+	build_animation_effect = /obj/effect/resin_construct/thick
 
 /datum/resin_construction/resin_turf/wall/queen
 	name = "Queen Resin Wall"
@@ -134,6 +136,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /turf/closed/wall/resin
 	build_path_thick = /turf/closed/wall/resin/thick
 	thick_hiveweed = TRUE
+	build_animation_effect = /obj/effect/resin_construct/weak
 
 /datum/resin_construction/resin_turf/wall/reflective
 	name = "Reflective Resin Wall"
@@ -152,6 +155,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	cost = XENO_RESIN_MEMBRANE_COST
 
 	build_path = /turf/closed/wall/resin/membrane
+	build_animation_effect = /obj/effect/resin_construct/transparent/weak
 
 /datum/resin_construction/resin_turf/membrane/queen
 	name = "Queen Resin Membrane"
@@ -162,6 +166,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /turf/closed/wall/resin/membrane
 	build_path_thick = /turf/closed/wall/resin/membrane/thick
 	thick_hiveweed = TRUE
+	build_animation_effect = /obj/effect/resin_construct/transparent/weak
 
 /datum/resin_construction/resin_turf/membrane/thick
 	name = "Thick Resin Membrane"
@@ -170,7 +175,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	cost = XENO_RESIN_MEMBRANE_THICK_COST
 
 	build_path = /turf/closed/wall/resin/membrane/thick
-
+	build_animation_effect = /obj/effect/resin_construct/transparent/thick
 
 // Resin Doors
 /datum/resin_construction/resin_obj/door
@@ -180,6 +185,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	cost = XENO_RESIN_DOOR_COST
 
 	build_path = /obj/structure/mineral_door/resin
+	build_animation_effect = /obj/effect/resin_construct/door
 
 /datum/resin_construction/resin_obj/door/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
 	if (!..())
@@ -211,6 +217,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /obj/structure/mineral_door/resin
 	build_path_thick = /obj/structure/mineral_door/resin/thick
 	thick_hiveweed = TRUE
+	build_animation_effect = /obj/effect/resin_construct/door
 
 /datum/resin_construction/resin_obj/door/thick
 	name = "Thick Resin Door"
@@ -219,6 +226,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	cost = XENO_RESIN_DOOR_THICK_COST
 
 	build_path = /obj/structure/mineral_door/resin/thick
+	build_animation_effect = /obj/effect/resin_construct/door
 
 
 // Resin Nests
@@ -288,7 +296,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 /datum/resin_construction/resin_obj/shield_dispenser
 	name = "Shield Pillar"
-	desc = "A tall, strange pillar that gives shield to the interacter. Has a hefty cooldown."
+	desc = "A tall, strange pillar that gives shield to the interactor. Has a hefty cooldown."
 	construction_name = "shield pillar"
 	cost = XENO_RESIN_SHIELD_PILLAR_COST
 	max_per_xeno = 1

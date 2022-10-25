@@ -42,15 +42,17 @@
 	mob_size = MOB_SIZE_BIG
 	tier = 1
 	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
+	show_age_prefix = FALSE
 	small_explosives_stun = FALSE
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/pounce/predalien,
-		/datum/action/xeno_action/activable/predalien_roar,
-		/datum/action/xeno_action/activable/smash,
+		/datum/action/xeno_action/onclick/predalien_roar,
+		/datum/action/xeno_action/onclick/smash,
 		/datum/action/xeno_action/activable/devastate,
 	)
 	mutation_type = "Normal"
@@ -108,36 +110,36 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 	return original_damage + kills * 2.5
 
-/datum/behavior_delegate/predalien_base/handle_slash(mob/M)
-	if(bound_xeno.can_not_harm(M))
+/datum/behavior_delegate/predalien_base/handle_slash(mob/victim)
+	if(bound_xeno.can_not_harm(victim))
 		return FALSE
 
-	var/mob/living/carbon/Xenomorph/Predalien/X = bound_xeno
+	var/mob/living/carbon/Xenomorph/Predalien/xeno = bound_xeno
 
-	if(!istype(X))
+	if(!istype(xeno))
 		return FALSE
 
-	if(M.stat == DEAD && isXenoOrHuman(M))
-		if(X.action_busy)
-			to_chat(X, SPAN_XENONOTICE("You are already performing an action!"))
+	if(victim.stat == DEAD && isXenoOrHuman(victim))
+		if(xeno.action_busy)
+			to_chat(xeno, SPAN_XENONOTICE("You are already performing an action!"))
 			return TRUE
 
-		playsound(X.loc, 'sound/weapons/slice.ogg', 25)
-		xeno_attack_delay(X)
+		playsound(xeno.loc, 'sound/weapons/slice.ogg', 25)
+		xeno_attack_delay(xeno)
 
-		if(!do_after(X, X.butcher_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M))
-			to_chat(X, SPAN_XENONOTICE("You decide not to butcher [M]"))
+		if(!do_after(xeno, xeno.butcher_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
+			to_chat(xeno, SPAN_XENONOTICE("You decide not to butcher [victim]"))
 			return TRUE
 
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
+		if(ishuman(victim))
+			var/mob/living/carbon/human/human_victim = victim
 
 			for(var/i in 1 to 3)
-				var/obj/item/reagent_container/food/snacks/meat/h_meat = new(H.loc)
-				h_meat.name = "[H.name] meat"
+				var/obj/item/reagent_container/food/snacks/meat/h_meat = new(human_victim.loc)
+				h_meat.name = "[human_victim.name] meat"
 
-		else if (isXeno(M))
-			var/mob/living/carbon/Xenomorph/xeno_victim = M
+		else if (isXeno(victim))
+			var/mob/living/carbon/Xenomorph/xeno_victim = victim
 
 			new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 			var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
@@ -145,9 +147,9 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
 			xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
 
-		playsound(X.loc, 'sound/effects/blobattack.ogg', 25)
+		playsound(xeno.loc, 'sound/effects/blobattack.ogg', 25)
 
-		M.gib("butchering")
+		victim.gib(create_cause_data("butchering", xeno))
 
 		return TRUE
 

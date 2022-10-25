@@ -154,6 +154,10 @@
 #define ORGAN_ASSISTED	1
 #define ORGAN_ROBOT		2
 
+#define ORGAN_HEALTHY 0
+#define ORGAN_BRUISED 1
+#define ORGAN_BROKEN 2
+
 //=================================================
 
 //Languages!
@@ -173,6 +177,7 @@
 #define SURGERY_MODE_ON			(1<<3)  // Mob on surgery mode, will attempt surgery when using relevant items on harm/disarm intent.
 #define MUTINEER				(1<<4)  // Part of the Mutiny Gang
 #define GIVING					(1<<5)	// Is currently trying to give an item to someone
+#define NOBIOSCAN				(1<<6)
 
 //=================================================
 
@@ -231,11 +236,15 @@
 #define EMOTE_ICON_FISTBUMP  7
 #define EMOTE_ICON_HEADBUTT  8
 #define EMOTE_ICON_TAILSWIPE 9
+#define EMOTE_ICON_ROCK_PAPER_SCISSORS 10
+#define EMOTE_ICON_ROCK 11
+#define EMOTE_ICON_PAPER 12
+#define EMOTE_ICON_SCISSORS 13
 
-#define ACTION_RED_POWER_UP		10
-#define ACTION_GREEN_POWER_UP	11
-#define ACTION_BLUE_POWER_UP	12
-#define ACTION_PURPLE_POWER_UP	13
+#define ACTION_RED_POWER_UP		14
+#define ACTION_GREEN_POWER_UP	15
+#define ACTION_BLUE_POWER_UP	16
+#define ACTION_PURPLE_POWER_UP	17
 
 //defins for datum/hud
 
@@ -271,6 +280,7 @@
 #define EMOTING_FIST_BUMP  2
 #define EMOTING_HEADBUTT   3
 #define EMOTING_TAIL_SWIPE 4
+#define EMOTING_ROCK_PAPER_SCISSORS 5
 
 //forcesay types
 #define SUDDEN 0
@@ -344,6 +354,7 @@
 
 // Crusher strain flags
 #define CRUSHER_NORMAL		"Normal"
+#define CRUSHER_CHARGER		"Charger"
 
 // Praetorian strain flags
 #define PRAETORIAN_NORMAL	  "Normal"

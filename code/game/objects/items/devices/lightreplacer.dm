@@ -61,9 +61,9 @@
 	uses = max_uses
 	failmsg = "The [name]'s refill light blinks red."
 
-/obj/item/device/lightreplacer/examine(mob/user)
-	..()
-	to_chat(user, "It has [uses] lights remaining.")
+/obj/item/device/lightreplacer/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [uses] lights remaining."
 
 /obj/item/device/lightreplacer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/sheet/glass))
@@ -111,7 +111,7 @@
 	uses = min(max(uses + amount, 0), max_uses)
 
 /obj/item/device/lightreplacer/proc/Charge(var/mob/user)
-	charge += 1
+	charge++
 	if(charge > 7)
 		AddUses(1)
 		charge = 1

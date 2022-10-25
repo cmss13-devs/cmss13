@@ -74,11 +74,7 @@
 		if (H.stat == DEAD)
 			return
 
-<<<<<<< refs/remotes/origin/Weakrefs
-	if(WEAKREF(A) in dot_cooldown_atoms)
-=======
 		if(WEAKREF(A) in dot_cooldown_atoms)
->>>>>>> Fixing Weakrefs
 		return
 
 	dot_cooldown_atoms += WEAKREF(A)

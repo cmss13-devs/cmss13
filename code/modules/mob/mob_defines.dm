@@ -233,3 +233,5 @@
 	var/move_on_shuttle = TRUE // Can move on the shuttle.
 
 	var/list/important_radio_channels = list()
+
+	var/datum/click_intercept

@@ -324,7 +324,7 @@
 
 /obj/item/device/radio/headset/ert
 	name = "Wey-Yu Response Team headset"
-	desc = "The headset of the boss's boss. Channels are as follows: :h - Response Team :c - command, :p - security, :n - engineering, :m - medical."
+	desc = "The headset of the boss's boss. Channels are as follows: :h - Response Team :c - command, :p - military police, :n - engineering, :m - medical."
 	icon_state = "com_headset"
 	item_state = "headset"
 	freerange = 1
@@ -399,13 +399,13 @@
 
 /obj/item/device/radio/headset/almayer/mp
 	name = "military police police radio headset"
-	desc = "This is used by military police. Channels are as follows: :p - security, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	desc = "This is used by military police. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mp)
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor
 	name = "marine honor guard radio headset"
-	desc = "This is used by members of the marine honor guard. Channels are as follows: :p - security, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	desc = "This is used by members of the marine honor guard. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mp)
 	volume = RADIO_VOLUME_RAISED
@@ -419,7 +419,7 @@
 
 /obj/item/device/radio/headset/almayer/cmp
 	name = "marine chief MP radio headset"
-	desc = "For discussing vessel defense and marine de-drunkening protocols. Channels are as follows: :v - marine command, :p - security, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	desc = "For discussing vessel defense and marine de-drunkening protocols. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmp)
 	volume = RADIO_VOLUME_CRITICAL
@@ -434,7 +434,7 @@
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor/com
 	name = "marine honor guard command radio headset"
-	desc = "Given to highly trusted marine honor guard only. It features a non-standard brace. Channels are as follows: :v - marine command, :p - security, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	desc = "Given to highly trusted marine honor guard only. It features a non-standard brace. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "mcom_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmp)
 
@@ -464,14 +464,14 @@
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom
 	name = "marine senior command headset"
-	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - security, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
+	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmp/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom/synth
 	name = "marine synth headset"
-	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - security, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
+	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
 	icon_state = "ms_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmp/synth)
 	volume = RADIO_VOLUME_CRITICAL
@@ -829,7 +829,7 @@
 
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
-	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - security, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom"
+	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom"
 	icon_state = "mhc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
 	volume = RADIO_VOLUME_CRITICAL

@@ -301,3 +301,5 @@
   kugamo:
   - imageadd: Added muzzle flashes to APC weapons.
   - bugfix: Fixed Carrier's Hugger overlays not being directional.
+  realforest2001:
+  - bugfix: Fixes tailstab going through blocked tiles.

@@ -19,7 +19,7 @@
 	var/mob/living/carbon/human/H = new(T)
 	M.transfer_to(H, TRUE)
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_WARDEN, JOB_CHIEF_POLICE), time_required_for_job))
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_CHIEF_POLICE, time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/uscm_event/provost/inspector, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Inspector of the USCM Provost Office!"))
@@ -98,7 +98,7 @@
 	var/mob/living/carbon/human/H = new(T)
 	M.transfer_to(H, TRUE)
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_INTEL,JOB_WARDEN), time_required_for_job))
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_INTEL, time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/uscm_event/uaac/tis/io, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Intelligence Officer working for the UAAC-TIS!"))

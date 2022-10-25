@@ -77,5 +77,5 @@
 
 /datum/law/major_law/misuse_of_authority
 	name = "Misuse of Authority"
-	desc = "The exercising of power to a malicious extent by Ship Marines or deputized personnel acting as an SM; examples include beating a downed prisoner, excessive use of harmful or non-lethal force, or other abusive actions that led to the harm of a person in custody. Detained suspects should not have more force used on them than necessary in order to pacify them. Force may be used against retaliating or escaping parties only to the point where they are sufficiently pacified."
+	desc = "The exercising of power to a malicious extent by Military Police or deputized personnel acting as an MP; examples include beating a downed prisoner, excessive use of harmful or non-lethal force, or other abusive actions that led to the harm of a person in custody. Detained suspects should not have more force used on them than necessary in order to pacify them. Force may be used against retaliating or escaping parties only to the point where they are sufficiently pacified."
 	brig_time = 20

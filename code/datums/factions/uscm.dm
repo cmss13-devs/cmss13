@@ -102,11 +102,11 @@
 				border_rk = "command"
 			if(JOB_TIS_IO,JOB_TIS_SA)
 				marine_rk = "tissa"
-			if(JOB_SHIP_MASTER_AT_ARMS)
-				marine_rk = "maa"
+			if(JOB_CHIEF_POLICE)
+				marine_rk = "cmp"
 				border_rk = "command"
-			if(JOB_SHIP_MARINE)
-				marine_rk = "sm"
+			if(JOB_POLICE)
+				marine_rk = "mp"
 			if(JOB_CHIEF_REQUISITION)
 				marine_rk = "ro"
 			if(JOB_CARGO_TECH)

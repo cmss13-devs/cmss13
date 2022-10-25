@@ -21,7 +21,7 @@
 		list("OoI Tracker", 20, /obj/item/device/tracker, "white", "A tracker that tracks different objects of interest in a nearby range."),
 
         list("<h2>KITS</h2>", -1, null, null, null),
-        list("Badass Kit", 12, /obj/item/storage/box/badass_kit, "white", "Contains SM private comms encryption key, for snooping into enemy communications and sunglasses that protect you from flashbangs"),
+        list("Badass Kit", 12, /obj/item/storage/box/badass_kit, "white", "Contains MP private comms encryption key, for snooping into enemy communications and sunglasses that protect you from flashbangs"),
         list("Tools Kit", 15, /obj/item/storage/toolbox/antag, "white", "A toolbox containing general tools and an engineering pamphlet to help you break into places of interest."),
         list("Hacking Kit", 15, /obj/item/storage/box/antag_signaller, "white", "A box containing a screwdriver, a multi-tool and an engineering pamphlet, as well as 5 signallers to help you hack doors."),
 

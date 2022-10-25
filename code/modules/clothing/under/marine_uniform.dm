@@ -97,14 +97,14 @@
 	specialty = "USCM mess technician"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/under/marine/ship_marine
-	name = "ship marine jumpsuit"
-	desc = "Standard-issue Ship Marine uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	icon_state = "SM_jumpsuit"
-	worn_state = "SM_jumpsuit"
+/obj/item/clothing/under/marine/mp
+	name = "military police jumpsuit"
+	desc = "Standard-issue Military Police uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "MP_jumpsuit"
+	worn_state = "MP_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
-	specialty = "ship marine"
+	specialty = "military police"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer
@@ -125,15 +125,15 @@
 	worn_state = "io"
 	specialty = "marine intelligence officer"
 
-/obj/item/clothing/under/marine/officer/master_at_arms
-	name = "\improper master-at-arms uniform"
-	desc = "A uniform typically worn by Master-at-Arms of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
-	icon_state = "MAT_jumpsuit"
-	item_state = "MAT_jumpsuit"
-	worn_state = "MAT_jumpsuit"
+/obj/item/clothing/under/marine/officer/cmp
+	name = "\improper chief MP uniform"
+	desc = "A uniform typically worn by a Chief MP of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
+	icon_state = "CMP_jumpsuit"
+	item_state = "CMP_jumpsuit"
+	worn_state = "CMP_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-	specialty = "master-at-arms"
+	specialty = "chief MP"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/technical
@@ -285,7 +285,7 @@
 //=========================//PROVOST\\================================\\
 //=======================================================================\\
 
-/obj/item/clothing/under/marine/ship_marine/provost
+/obj/item/clothing/under/marine/mp/provost
 	flags_jumpsuit = FALSE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
@@ -297,7 +297,7 @@
 	specialty = "provost"
 
 	suit_restricted = list(
-		/obj/item/clothing/suit/storage/marine/ship_marine,
+		/obj/item/clothing/suit/storage/marine/mp,
 		/obj/item/clothing/suit/armor/riot/marine,
 		/obj/item/clothing/suit/storage/jacket/marine/provost
 	)
@@ -306,39 +306,39 @@
 
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
-/obj/item/clothing/under/marine/ship_marine/provost/enforcer
+/obj/item/clothing/under/marine/mp/provost/enforcer
 	name = "\improper Provost Enforcer Uniform"
 	desc = "The crisp uniform of a Provost Enforcer."
 
-/obj/item/clothing/under/marine/ship_marine/provost/tml
+/obj/item/clothing/under/marine/mp/provost/tml
 	name = "\improper Provost Team Leader Uniform"
 	desc = "The crisp uniform of a Provost Team Leader."
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 
-/obj/item/clothing/under/marine/ship_marine/provost/advisor
+/obj/item/clothing/under/marine/mp/provost/advisor
 	name = "\improper Provost Advisor Uniform"
 	desc = "The crisp uniform of a Provost Advisor."
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 
-/obj/item/clothing/under/marine/ship_marine/provost/inspector
+/obj/item/clothing/under/marine/mp/provost/inspector
 	name = "\improper Provost Inspector Uniform"
 	desc = "The crisp uniform of a Provost Inspector."
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 
-/obj/item/clothing/under/marine/ship_marine/provost/marshal
+/obj/item/clothing/under/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Uniform"
 	desc = "The crisp uniform of a Provost Marshal."
 	icon_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
 
-/obj/item/clothing/under/marine/ship_marine/provost/marshal/sector
+/obj/item/clothing/under/marine/mp/provost/marshal/sector
 	name = "\improper Provost Sector Marshal Uniform"
 	desc = "The crisp uniform of a Provost Sector Marshal."
 
-/obj/item/clothing/under/marine/ship_marine/provost/marshal/chief
+/obj/item/clothing/under/marine/mp/provost/marshal/chief
 	name = "\improper Provost Chief Marshal Uniform"
 	desc = "The crisp uniform of the Provost Chief Marshal."
 

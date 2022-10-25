@@ -253,8 +253,8 @@ var/waiting_for_drop_votes = 0
 		if(0) //colonial marine
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-		if(1) // SM
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ship_marine(H), WEAR_BODY)
+		if(1) // MP
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 		if(2) //Commander!
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(H), WEAR_BODY)

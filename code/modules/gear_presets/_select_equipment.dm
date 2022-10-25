@@ -698,7 +698,7 @@ var/list/rebel_rifles = list(
 		if(4) // The Security Synth
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security2(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/security/ship_marine/full(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/security/mp/full(H), WEAR_WAIST)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/sec(H), WEAR_HEAD)
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 			H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
@@ -754,7 +754,7 @@ var/list/rebel_rifles = list(
 		if(9) // The Detective Synth
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/det(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/security/ship_marine/full(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/security/mp/full(H), WEAR_WAIST)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/det_suit/black(H), WEAR_JACKET)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/det_hat(H), WEAR_HEAD)
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)

@@ -684,37 +684,30 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 pattern captain"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/head/helmet/marine/ship_marine
-	name = "\improper M10 pattern ship marine helmet"
-	desc = "A special variant of the M10 Pattern helmet worn by Ship Marines. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact."
-	icon_state = "sm_helmet"
-	item_state = "sm_helmet"
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+/obj/item/clothing/head/helmet/marine/mp
+	name = "\improper M10 pattern military police helmet"
+	desc = "A special variant of the M10 Pattern helmet worn by Military Police. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact."
+	icon_state = "mp_helmet"
+	item_state = "mp_helmet"
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	specialty = "M10 pattern ship marine"
+	specialty = "M10 pattern military police"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/head/helmet/marine/ship_marine/riot
+/obj/item/clothing/head/helmet/marine/mp/riot
 	name = "\improper M10 pattern riot helmet"
 	desc = "A special variant of the M10 Pattern helmet worn by Riot Police."
 	icon_state = "riot_helmet"
 	item_state = "riot_helmet"
 	specialty = "M10 pattern riot"
 
-/obj/item/clothing/head/helmet/marine/ship_marine/SO
+/obj/item/clothing/head/helmet/marine/mp/SO
 	name = "\improper M10 pattern Officer Helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by Officers of the USCM, attracting the attention of the grunts and sniper fire alike."
 	icon_state = "d_helmet"
 	item_state = "d_helmet"
 	specialty = "M10 pattern officer"
 
-/obj/item/clothing/head/helmet/marine/ship_marine/provost/marshal
+/obj/item/clothing/head/helmet/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Cap"
 	desc = "The expensive headwear of a Provost Marshal. Contains shards of kevlar to keep its valuable contents safe."
 	icon_state = "pvmarshalhat"

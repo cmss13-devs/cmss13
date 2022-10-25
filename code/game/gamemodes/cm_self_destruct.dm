@@ -404,7 +404,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			if("dest_trigger")
 				if(EvacuationAuthority.initiate_self_destruct()) nanomanager.close_user_uis(usr, src, "main")
 			if("dest_cancel")
-				var/list/allowed_officers = list(JOB_CO, JOB_XO, JOB_SO, JOB_SHIP_MASTER_AT_ARMS, JOB_CMO, JOB_CHIEF_ENGINEER)
+				var/list/allowed_officers = list(JOB_CO, JOB_XO, JOB_SO, JOB_CHIEF_POLICE, JOB_CMO, JOB_CHIEF_ENGINEER)
 				if(!allowed_officers.Find(usr.job))
 					to_chat(usr, SPAN_NOTICE("You don't have the necessary clearance to cancel the emergency destruct system."))
 					return

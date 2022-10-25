@@ -9,7 +9,7 @@
 	throw_range = 10
 	flags_atom = FPRINT|CONDUCT
 
-	var/skilllock = SKILL_SECURITY_FLASH
+	var/skilllock = SKILL_POLICE_FLASH
 	var/flashes_stored = 5
 	var/max_flashes_stored = 5 //how many you can do per minute
 	var/broken = FALSE     //Is the flash burnt out?
@@ -41,7 +41,7 @@
 		return FALSE
 	var/mob/living/carbon/human/H = user
 
-	if(skilllock && !skillcheck(H, SKILL_SECURITY, skilllock))
+	if(skilllock && !skillcheck(H, SKILL_POLICE, skilllock))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 		return FALSE
 

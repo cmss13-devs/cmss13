@@ -11,12 +11,12 @@
 	. = ..()
 	src.roles = JOB_COMMAND_ROLES_LIST
 
-/datum/timelock/ship_marine
-	name = "Ship Marine Roles"
+/datum/timelock/mp
+	name = "Military Police Roles"
 
-/datum/timelock/ship_marine/New(name, time_required, list/roles)
+/datum/timelock/mp/New(name, time_required, list/roles)
 	. = ..()
-	src.roles = JOB_SHIP_MARINE_ROLES_LIST
+	src.roles = JOB_POLICE_ROLES_LIST
 
 /datum/timelock/human
 	name = "Human Roles"

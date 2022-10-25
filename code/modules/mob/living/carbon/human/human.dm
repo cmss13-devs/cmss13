@@ -390,7 +390,7 @@
 				if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
 					to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 					return
-				if(istype(wear_id, /obj/item/card/id/dogtag) && (undefibbable || !skillcheck(usr, SKILL_SECURITY, SKILL_SECURITY_SKILLED)))
+				if(istype(wear_id, /obj/item/card/id/dogtag) && (undefibbable || !skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED)))
 					var/obj/item/card/id/dogtag/DT = wear_id
 					if(!DT.dogtag_taken)
 						if(stat == DEAD)
@@ -408,7 +408,7 @@
 						to_chat(usr, SPAN_WARNING("Someone's already taken [src]'s information tag."))
 					return
 			//police skill lets you strip multiple items from someone at once.
-			if(!usr.action_busy || skillcheck(usr, SKILL_SECURITY, SKILL_SECURITY_SKILLED))
+			if(!usr.action_busy || skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED))
 				var/slot = href_list["item"]
 				var/obj/item/what = get_item_by_slot(slot)
 				if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
@@ -1394,7 +1394,7 @@
 		dat += "Surgery: [usr.skills.get_skill_level(SKILL_SURGERY)]<br/>"
 		dat += "Research: [usr.skills.get_skill_level(SKILL_RESEARCH)]<br/>"
 		dat += "Pilot: [usr.skills.get_skill_level(SKILL_PILOT)]<br/>"
-		dat += "Police: [usr.skills.get_skill_level(SKILL_SECURITY)]<br/>"
+		dat += "Police: [usr.skills.get_skill_level(SKILL_POLICE)]<br/>"
 		dat += "Powerloader: [usr.skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
 		dat += "Vehicles: [usr.skills.get_skill_level(SKILL_VEHICLE)]<br/>"
 		dat += "JTAC: [usr.skills.get_skill_level(SKILL_JTAC)]<br/>"

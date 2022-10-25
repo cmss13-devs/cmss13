@@ -321,9 +321,9 @@
 			dat += "<hr>Other:<br>"
 			roles_show ^= FLAG_SHOW_MISC
 
-		else if(roles_show & FLAG_SHOW_SECURITY && ROLES_SECURITY.Find(J.title))
-			dat += "<hr>Ship Marine:<br>"
-			roles_show ^= FLAG_SHOW_SECURITY
+		else if(roles_show & FLAG_SHOW_POLICE && ROLES_POLICE.Find(J.title))
+			dat += "<hr>Military Police:<br>"
+			roles_show ^= FLAG_SHOW_POLICE
 
 		else if(roles_show & FLAG_SHOW_ENGINEERING && ROLES_ENGINEERING.Find(J.title))
 			dat += "<hr>Engineering:<br>"

@@ -32,7 +32,7 @@
 	},
 /area/event)
 "h" = (
-/obj/effect/landmark/start/ship_marine,
+/obj/effect/landmark/start/mp,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},

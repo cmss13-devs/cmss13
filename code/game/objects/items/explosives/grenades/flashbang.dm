@@ -7,7 +7,7 @@
 	harmful = FALSE
 
 	//skill required to use
-	var/skill_requirement = SKILL_SECURITY_SKILLED
+	var/skill_requirement = SKILL_POLICE_SKILLED
 
 	//ignores ship anti-grief system
 	antigrief_protection = FALSE
@@ -41,7 +41,7 @@
 	if(isnull(loc))
 		return
 
-	if(!skillcheck(user, SKILL_SECURITY, skill_requirement))
+	if(!skillcheck(user, SKILL_POLICE, skill_requirement))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 
@@ -79,7 +79,7 @@
 	var/trained_human = FALSE
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(skillcheck(H, SKILL_SECURITY, SKILL_SECURITY_SKILLED))
+		if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			trained_human = TRUE
 
 		var/list/protections = list(H.glasses, H.wear_mask, H.head)
@@ -207,7 +207,7 @@
 	icon_state = "flashbang_noskill"
 	item_state = "grenade_flashbang_noskill"
 
-	skill_requirement = SKILL_SECURITY_DEFAULT
+	skill_requirement = SKILL_POLICE_DEFAULT
 
 /obj/item/explosive/grenade/flashbang/noskill/primed
 	det_time = 10

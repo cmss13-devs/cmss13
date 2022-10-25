@@ -28,7 +28,7 @@
 /obj/item/device/clue_scanner/attack_self(mob/user)
 	. = ..()
 
-	if(!skillcheck(user, SKILL_SECURITY, SKILL_SECURITY_SKILLED))
+	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 

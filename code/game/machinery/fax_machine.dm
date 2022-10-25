@@ -384,7 +384,7 @@ var/list/alldepartments = list()
 	target_department = DEPARTMENT_PROVOST
 
 /obj/structure/machinery/faxmachine/uscm/brig/chief
-	department = "Master-at-Arms"
+	department = "Chief MP"
 
 /obj/structure/machinery/faxmachine/uscm/brig/provost
 	department = DEPARTMENT_PROVOST

@@ -35,7 +35,7 @@
 #define RADIO_CHANNEL_INTEL "Intel"
 #define RADIO_CHANNEL_JTAC "JTAC"
 #define RADIO_CHANNEL_MEDSCI "MedSci"
-#define RADIO_CHANNEL_SECURITY "Security"
+#define RADIO_CHANNEL_MP "MP"
 #define RADIO_CHANNEL_NORMANDY "Normandy"
 #define RADIO_CHANNEL_REQ "Req"
 #define RADIO_CHANNEL_SPECIAL "special"

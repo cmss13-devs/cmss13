@@ -397,17 +397,17 @@
 	volume = RADIO_VOLUME_CRITICAL
 	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 
-/obj/item/device/radio/headset/almayer/ship_marine
-	name = "ship marine police radio headset"
-	desc = "This is used by ship marines. Channels are as follows: :p - security, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+/obj/item/device/radio/headset/almayer/mp
+	name = "military police police radio headset"
+	desc = "This is used by military police. Channels are as follows: :p - security, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/ship_marine)
+	initial_keys = list(/obj/item/device/encryptionkey/mp)
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor
 	name = "marine honor guard radio headset"
 	desc = "This is used by members of the marine honor guard. Channels are as follows: :p - security, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/ship_marine)
+	initial_keys = list(/obj/item/device/encryptionkey/mp)
 	volume = RADIO_VOLUME_RAISED
 	locate_setting = TRACKER_CO
 	misc_tracking = TRUE
@@ -417,11 +417,11 @@
 		"Executive Officer" = TRACKER_XO
 	)
 
-/obj/item/device/radio/headset/almayer/master_at_arms
-	name = "marine master-at-arms radio headset"
+/obj/item/device/radio/headset/almayer/cmp
+	name = "marine chief MP radio headset"
 	desc = "For discussing vessel defense and marine de-drunkening protocols. Channels are as follows: :v - marine command, :p - security, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/master_at_arms)
+	initial_keys = list(/obj/item/device/encryptionkey/cmp)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom
@@ -436,7 +436,7 @@
 	name = "marine honor guard command radio headset"
 	desc = "Given to highly trusted marine honor guard only. It features a non-standard brace. Channels are as follows: :v - marine command, :p - security, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "mcom_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/master_at_arms)
+	initial_keys = list(/obj/item/device/encryptionkey/cmp)
 
 /obj/item/device/radio/headset/almayer/po
 	name = "marine pilot radio headset"
@@ -466,14 +466,14 @@
 	name = "marine senior command headset"
 	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - security, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
 	icon_state = "mco_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/master_at_arms/cdrcom)
+	initial_keys = list(/obj/item/device/encryptionkey/cmp/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom/synth
 	name = "marine synth headset"
 	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - security, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
 	icon_state = "ms_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/master_at_arms/synth)
+	initial_keys = list(/obj/item/device/encryptionkey/cmp/synth)
 	volume = RADIO_VOLUME_CRITICAL
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CO

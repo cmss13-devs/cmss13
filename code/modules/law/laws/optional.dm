@@ -13,7 +13,7 @@
 
 /datum/law/optional_law/resisting
     name = "Resisting Arrest"
-    desc = "To resist a lawful arrest or search by a Ship Marine."
+    desc = "To resist a lawful arrest or search by Military Police."
     brig_time = 10
 
 /datum/law/optional_law/major_unruly

@@ -52,7 +52,7 @@ Make the USCM proud!"}
 
 
 //*************************************
-//---------------- Master-at-Arms -------------
+//---------------- Chief MP -------------
 //*************************************/
 /datum/job/command/warrant/whiskey
 	title = JOB_WO_CHIEF_POLICE

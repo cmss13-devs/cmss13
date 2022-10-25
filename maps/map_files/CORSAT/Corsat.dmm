@@ -9313,7 +9313,7 @@
 /area/corsat/omega/hangar/security)
 "aAi" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/storage/belt/security/ship_marine/full,
+/obj/item/storage/belt/security/mp/full,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -12208,7 +12208,7 @@
 /area/corsat/gamma/hangar)
 "aHt" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/storage/belt/security/ship_marine/full,
+/obj/item/storage/belt/security/mp/full,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/storage/pouch/general/medium,
 /obj/item/storage/pouch/pistol,
@@ -14128,7 +14128,7 @@
 /area/corsat/omega/airlocknorth/id)
 "aMB" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/storage/belt/security/ship_marine/full,
+/obj/item/storage/belt/security/mp/full,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -19548,7 +19548,7 @@
 /area/corsat/omega/control)
 "baf" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/storage/belt/security/ship_marine/full,
+/obj/item/storage/belt/security/mp/full,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -19569,7 +19569,7 @@
 /area/corsat/gamma/engineering)
 "bah" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/storage/belt/security/ship_marine/full,
+/obj/item/storage/belt/security/mp/full,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -29605,7 +29605,7 @@
 	icon_state = "hossecure1";
 	name = "Head of Security's Locker"
 	},
-/obj/item/storage/belt/security/ship_marine/full,
+/obj/item/storage/belt/security/mp/full,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/device/binoculars,
 /obj/item/device/flashlight,
@@ -29748,7 +29748,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "bDd" = (
-/obj/item/storage/belt/security/ship_marine/full,
+/obj/item/storage/belt/security/mp/full,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -29785,7 +29785,7 @@
 	},
 /area/corsat/omega/security)
 "bDk" = (
-/obj/item/storage/belt/security/ship_marine/full,
+/obj/item/storage/belt/security/mp/full,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -44663,7 +44663,7 @@
 /area/corsat/gamma/residential)
 "hIh" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/storage/belt/security/ship_marine/full,
+/obj/item/storage/belt/security/mp/full,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,
@@ -60281,7 +60281,7 @@
 /area/corsat/sigma/south)
 "tlX" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/storage/belt/security/ship_marine/full,
+/obj/item/storage/belt/security/mp/full,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88,

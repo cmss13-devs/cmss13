@@ -361,7 +361,7 @@ CULT
 		return
 	var/mob/living/carbon/human/Hu = owner
 
-	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_SECURITY, SKILL_SECURITY_SKILLED)))
+	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
 		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
 		return
 
@@ -498,7 +498,7 @@ CULT
 	if(!istype(chosen))
 		return
 
-	if(skillcheck(chosen, SKILL_SECURITY, SKILL_SECURITY_MAX) || (chosen in converted))
+	if(skillcheck(chosen, SKILL_POLICE, SKILL_POLICE_MAX) || (chosen in converted))
 		to_chat(H, SPAN_WARNING("You can't convert [chosen]!"))
 		return
 

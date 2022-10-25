@@ -75,7 +75,7 @@
 	//uniform
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(H), WEAR_BODY)
 	//jacket
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/ship_marine/SO(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/mp/SO(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/mercsword/ceremonial(H), WEAR_J_STORE)
 	//waist
 	H.equip_to_slot_or_del(new sidearmpath(H), WEAR_WAIST)
@@ -120,7 +120,7 @@
 	//uniform
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/exec(H), WEAR_BODY)
 	//jacket
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/ship_marine/SO(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/mp/SO(H), WEAR_JACKET)
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
 	//limbs
@@ -246,7 +246,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/hg
-	name = "WO Honor Guard" // SM
+	name = "WO Honor Guard" // MP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)

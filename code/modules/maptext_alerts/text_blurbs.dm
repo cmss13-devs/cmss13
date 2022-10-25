@@ -11,7 +11,7 @@
 
 /**Shows operation start blurb to living marines. Slightly different for squad marines, pilots, and deploying ship crew/passengers.
 exempt_ztraits = trait or list of traits of zlevels where any marines don't see the message, ex. marine faction survivors colonyside
-shouldn't see the ship marines' drop message. Ex. ZTRAIT_GROUND by default.
+shouldn't see the military polices' drop message. Ex. ZTRAIT_GROUND by default.
 unit = the unit the marines are from. FF, Dust Raiders etc. Military crew see this.
 base = the base the marines are staging from. The ship, Whiskey Outpost etc. Noncombat crew see this.**/
 /proc/show_blurb_uscm(list/exempt_ztraits = ZTRAIT_GROUND, unit = "2nd Bat. 'Falling Falcons'", base = station_name)
@@ -50,7 +50,7 @@ base = the base the marines are staging from. The ship, Whiskey Outpost etc. Non
 				mobarray["combat"] += H
 			if(BLURB_USCM_FLIGHT)
 				mobarray["po"] += H
-			if(BLURB_USCM_SHIP_MARINE)
+			if(BLURB_USCM_POLICE)
 				mobarray["shp_m"] += H
 			if(BLURB_USCM_ENGI)
 				mobarray["eng"] += H

@@ -115,7 +115,7 @@ WARNING!*/
 	jobs += generate_job_ban_list(M, P, ROLES_AUXIL_SUPPORT, "Support", "ccccff")
 	jobs += "<br>"
 // MPs
-	jobs += generate_job_ban_list(M, P, ROLES_SECURITY, "Police", "ffdddd")
+	jobs += generate_job_ban_list(M, P, ROLES_POLICE, "Police", "ffdddd")
 	jobs += "<br>"
 //Engineering (Yellow)
 	jobs += generate_job_ban_list(M, P, ROLES_ENGINEERING, "Engineering", "fff5cc")

@@ -13,7 +13,7 @@
 #define SKILL_RESEARCH "research"
 #define SKILL_ANTAG "antag"
 #define SKILL_PILOT "pilot"
-#define SKILL_SECURITY "security"
+#define SKILL_POLICE "police"
 #define SKILL_POWERLOADER "powerloader"
 #define SKILL_VEHICLE "vehicles"
 #define SKILL_JTAC "jtac"
@@ -90,10 +90,10 @@
 #define SKILL_ANTAG_MAX 2
 
 //police skill, hidden
-#define SKILL_SECURITY_DEFAULT 0
-#define SKILL_SECURITY_FLASH 1 //flash use (CE, CMO, any officer starting with a flash)
-#define SKILL_SECURITY_SKILLED 2 //all police gear use, can strip someone's clothes simultaneously (SM)
-#define SKILL_SECURITY_MAX 2
+#define SKILL_POLICE_DEFAULT 0
+#define SKILL_POLICE_FLASH 1 //flash use (CE, CMO, any officer starting with a flash)
+#define SKILL_POLICE_SKILLED 2 //all police gear use, can strip someone's clothes simultaneously (MP)
+#define SKILL_POLICE_MAX 2
 
 
 //cqc skill
@@ -101,7 +101,7 @@
 //slight increase in punch damage.
 #define SKILL_CQC_DEFAULT 0
 #define SKILL_CQC_TRAINED 1
-#define SKILL_CQC_SKILLED 2 //no risk of accidental weapon discharge upon disarming (SM)
+#define SKILL_CQC_SKILLED 2 //no risk of accidental weapon discharge upon disarming (MP)
 #define SKILL_CQC_EXPERT 3
 #define SKILL_CQC_MASTER 5
 #define SKILL_CQC_MAX 5

@@ -257,10 +257,10 @@ datum/preferences/proc/randomize_skin_color()
 			return /datum/equipment_preset/synth/uscm
 		if(JOB_WORKING_JOE)
 			return /datum/equipment_preset/synth/working_joe
-		if(JOB_SHIP_MASTER_AT_ARMS)
-			return /datum/equipment_preset/uscm_ship/ship_marine/master_at_arms
-		if(JOB_SHIP_MARINE)
-			return /datum/equipment_preset/uscm_ship/ship_marine/standard
+		if(JOB_CHIEF_POLICE)
+			return /datum/equipment_preset/uscm_ship/mp/cmp
+		if(JOB_POLICE)
+			return /datum/equipment_preset/uscm_ship/mp/standard
 		if(JOB_CREWMAN)
 			return /datum/equipment_preset/uscm/tank/full
 		if(JOB_SEA)

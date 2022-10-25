@@ -47,7 +47,7 @@
 		//var/obj/structure/closet/secure_closet/securecom/S = i
 		//var/loc_to_spawn = S.opened ? get_turf(S) : S
 		//var/obj/item/weapon/gun/rifle/m46c/I = new(loc_to_spawn)
-		//new /obj/item/clothing/suit/storage/marine/ship_marine/CO(loc_to_spawn)
+		//new /obj/item/clothing/suit/storage/marine/mp/CO(loc_to_spawn)
 		//new /obj/item/clothing/head/helmet/marine/CO(loc_to_spawn)
 		//I.name_after_co(H, I)
 

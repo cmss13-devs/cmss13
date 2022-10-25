@@ -820,3 +820,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (maint_all_access && check_access_list(list(ACCESS_MARINE_MAINT))))
 		return TRUE
 	return ..(M)
+
+/obj/structure/machinery/door/airlock/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
+	xeno.emote("tail")
+	var/damage = xeno.melee_damage_upper * TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER
+	take_damage(damage, xeno)
+	return TAILSTAB_COOLDOWN_NORMAL

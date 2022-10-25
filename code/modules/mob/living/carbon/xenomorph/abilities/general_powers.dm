@@ -917,7 +917,7 @@
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, "tail")
 
-	var/damage = stabbing_xeno.melee_damage_upper * 1.2
+	var/damage = stabbing_xeno.melee_damage_upper * TAILSTAB_MOB_DAMAGE_MULTIPLIER
 	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
 	target.Daze(3)
 	shake_camera(target, 2, 1)

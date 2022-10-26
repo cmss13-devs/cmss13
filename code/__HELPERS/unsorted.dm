@@ -1748,7 +1748,7 @@ var/list/WALLITEMS = list(
 	if(isRemoteControlling(user))
 		return TRUE
 	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
-	if(user.client.prefs && !(user.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
+	if(user.client?.prefs && !(user.client?.prefs?.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
 		if(isXeno(user))
 			var/mob/living/carbon/Xenomorph/X = user
 			if(X.selected_ability)

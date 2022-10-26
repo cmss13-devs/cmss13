@@ -303,3 +303,7 @@
   - bugfix: Fixed Carrier's Hugger overlays not being directional.
   realforest2001:
   - bugfix: Fixes tailstab going through blocked tiles.
+2022-10-26:
+  Usnpeepoo:
+  - bugfix: Fixes a few issues with client/pref checks. SG auto fire now works with
+      help intent safety.

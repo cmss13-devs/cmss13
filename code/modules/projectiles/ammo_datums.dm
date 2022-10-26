@@ -2466,12 +2466,12 @@
 		var/mob/living/carbon/human/H = M
 		if(H.eye_blind < 4) //This is to make it so that it only applies the blindness if it is less than the ammount to be applied
 			H.eye_blind = 4
+			to_chat(H, SPAN_DANGER("Xeno spit got on your eyes."))
 		if(is_hugged) //This gives it the same power to knockdown hosts as regular sentinel
 			if(H.knocked_down < 3)
 				H.AdjustKnockeddown(1 * power)
+				to_chat(H, SPAN_DANGER("The xeno spit makes you fall over."))
 			return
-
-
 
 /datum/ammo/xeno/cytotoxin/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
 	if(ishuman(M))

@@ -19,6 +19,7 @@
 	var/list/notify_list = list() // list of xeno mobs to notify on trigger
 	var/datum/effect_system/smoke_spread/smoke_system
 	var/datum/cause_data/cause_data
+	plane = FLOOR_PLANE
 
 /obj/effect/alien/resin/trap/Initialize(mapload, mob/living/carbon/Xenomorph/X)
 	. = ..()

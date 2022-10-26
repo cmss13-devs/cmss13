@@ -9,7 +9,15 @@
 
 	listed_products = list()
 
-/obj/structure/machinery/cm_vending/clothing/antag/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/cm_vending/clothing/antag/get_listed_products(var/mob/user)
+	if(!user)
+		var/list/all_equipment = list()
+		var/list/presets = typesof(/datum/equipment_preset)
+		for(var/i in presets)
+			var/datum/equipment_preset/eq = i
+			if(LAZYLEN(eq))
+				all_equipment += eq.get_antag_clothing_equipment()
+		return all_equipment
 
 	if(!ishuman(user))
 		return
@@ -34,46 +42,20 @@
 		if(!(/datum/equipment_preset/clf in listed_products))
 			listed_products[/datum/equipment_preset/clf] = GLOB.gear_path_presets_list[/datum/equipment_preset/clf].get_antag_clothing_equipment()
 		products_sets = listed_products[/datum/equipment_preset/clf]
+	return products_sets
 
-	if(products_sets.len)
-		for(var/i in 1 to products_sets.len)
-			var/list/myprod = products_sets[i]
-			var/p_name = myprod[1]
-			var/p_cost = myprod[2]
-			if(p_cost > 0)
-				p_name += " ([p_cost] points)"
-
-			var/prod_available = FALSE
-			var/avail_flag = myprod[4]
-			if(m_points >= p_cost && (!avail_flag || buy_flags & avail_flag))
-				prod_available = TRUE
-
-			//place in main list, name, cost, available or not, color.
-			display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_available" = prod_available, "prod_color" = myprod[5]))
-
+/obj/structure/machinery/cm_vending/clothing/antag/ui_static_data(mob/user)
+	var/list/data = ..()
+	var/mob/living/carbon/human/H = user
 	var/adaptive_vendor_theme = VENDOR_THEME_COMPANY	//for potential future PMC version
 	switch(H.faction)
 		if(FACTION_UPP)
 			adaptive_vendor_theme = VENDOR_THEME_UPP
 		if(FACTION_CLF)
 			adaptive_vendor_theme = VENDOR_THEME_CLF
-
-	var/list/data = list(
-		"vendor_name" = name,
-		"theme" = adaptive_vendor_theme,
-		"show_points" = use_points,
-		"current_m_points" = m_points,
-		"displayed_records" = display_list,
-	)
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "cm_vending.tmpl", name , 600, 700)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(0)
-
+	data["theme"] = adaptive_vendor_theme
+	return data
+/*
 /obj/structure/machinery/cm_vending/clothing/antag/handle_topic(mob/user, href, href_list)
 	if(in_range(src, user) && isturf(loc) && ishuman(user))
 		user.set_interaction(src)
@@ -193,7 +175,7 @@
 	stat &= ~IN_USE
 	update_icon()
 	return
-
+*/
 //--------------RANDOM EQUIPMENT AND GEAR------------------------
 
 /obj/effect/essentials_set/random/clf_shoes

@@ -772,7 +772,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/is_category = item_ref == null
 
 		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
-
 		//forming new list with index, name, amount, available or not, color and add it to display_list
 		var/display_item = list(
 			"prod_index" = i,
@@ -1394,6 +1393,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //same thing, but spawns only 1 item from the list
 /obj/effect/essentials_set/random/New(loc)
+	if(!loc)
+		return
 	var/typepath = pick(spawned_gear_list)
 	if(ispath(typepath, /obj/item/weapon/gun))
 		new typepath(loc, TRUE)

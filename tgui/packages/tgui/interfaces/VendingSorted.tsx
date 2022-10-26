@@ -137,8 +137,8 @@ const VendableItem2 = (props: VenableItem, context) => {
         <span className={classes([
           `VendingSorted__Icon`,
           `vending32x32`,
-          `${props.record.image}`
-          ])} />
+          `${props.record.image}`,
+        ])} />
       </Flex.Item>
 
       <Flex.Item>
@@ -195,8 +195,8 @@ const VendableClothingItem = (props: VenableItem, context) => {
         <span className={classes([
           `VendingSorted__Icon`,
           `vending32x32`,
-          `${props.record.image}`
-          ])} />
+          `${props.record.image}`,
+        ])} />
       </Flex.Item>
 
       <Flex.Item>

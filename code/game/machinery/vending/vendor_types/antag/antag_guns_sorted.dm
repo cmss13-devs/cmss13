@@ -11,6 +11,7 @@
 	return
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/get_listed_products(var/mob/user)
+	var/list/factions = GLOB.faction_datums
 	if(!user)
 		var/list/all_equipment = list()
 		for (var/i in 1 to length(factions))
@@ -26,8 +27,7 @@
 		var/datum/faction/F = get_faction(H.faction)
 		listed_products[faction] = F.get_antag_guns_sorted_equipment()
 
-	var/list/products_sets = listed_products[faction]
-	return products_sets
+	return listed_products[faction]
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	var/list/data = ..()

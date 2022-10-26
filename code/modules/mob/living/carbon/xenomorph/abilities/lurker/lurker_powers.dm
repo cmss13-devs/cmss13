@@ -183,6 +183,9 @@
 		return
 
 	if(!isXenoOrHuman(Target) || Xeno.can_not_harm(Target))
+		Xeno.visible_message(SPAN_XENOWARNING("\The [Xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
+		apply_cooldown(cooldown_modifier = 0.1)
+		playsound(Xeno, "alien_tail_swipe", 50, TRUE)
 		return
 
 	if(distance > 2)
@@ -195,6 +198,8 @@
 		if(!Xeno.Adjacent(Target))
 			to_chat(Xeno, SPAN_XENONOTICE("You cannot execute [Target] from that far away."))
 			return
+		if(Xeno.action_busy)
+			return
 		Xeno.visible_message(SPAN_DANGER("[Xeno] Prepares for devastating attack on [Target]."), \
 		SPAN_XENOWARNING("You carefully aim your tail towards [Target] vital organs."), null, 5)
 		if(!do_after(Xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -203,6 +208,7 @@
 			return
 		to_chat(Xeno, SPAN_XENOHIGHDANGER("You brutally pierce [Target] chest with your tail."))
 		Xeno.visible_message(SPAN_DANGER("[Xeno] pierces [Target] chest with his tail."))
+		playsound(Target,'sound/weapons/alien_bite2.ogg', 50, 1)
 		Xeno.flick_attack_overlay(Target, "tail")
 		Target.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, "chest", 5)
 		Xeno.gain_health(100)

@@ -148,7 +148,7 @@
 
 	if (ishuman(H))
 		var/mob/living/carbon/human/target = H
-		Hu.update_xeno_hostile_hud()
+		target.update_xeno_hostile_hud()
 
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, root_duration))
 		to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))

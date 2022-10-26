@@ -66,7 +66,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_rooting_slash
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 13 SECONDS
+	xeno_cooldown = 11 SECONDS
 	plasma_cost = 100
 
 	// Root config
@@ -102,7 +102,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_throw
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
-	xeno_cooldown = 21 SECONDS
+	xeno_cooldown = 22 SECONDS
 
 	var/throw_cost = 70
 

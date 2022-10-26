@@ -278,7 +278,6 @@
 	opacity = 0
 	anchored = 1
 	unacidable = TRUE
-	plane = FLOOR_PLANE
 	var/atom/acid_t
 	var/ticks = 0
 	var/acid_strength = 1 //100% speed, normal

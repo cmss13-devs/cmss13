@@ -746,7 +746,7 @@
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand() || user.get_inactive_hand())
-		to_chat(usr, SPAN_WARNING("You need a free hand to shoot \the [src]."))
+		to_chat(usr, SPAN_WARNING("You need two free hands to shoot \the [src]."))
 		return HANDLE_CLICK_UNHANDLED
 	if(!user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))

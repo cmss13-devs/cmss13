@@ -203,7 +203,6 @@ directive is properly returned.
 /atom/proc/contents_explosion(severity)
 	for(var/atom/A in contents)
 		A.ex_act(severity)
-		CHECK_TICK
 
 /atom/proc/ex_act(severity)
 	contents_explosion(severity)

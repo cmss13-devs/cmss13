@@ -106,6 +106,7 @@
 	if (LPA && istype(LPA))
 		LPA.knockdown = TRUE // pounce knocks down
 		LPA.freeze_self = TRUE
+	bound_xeno.invisible = TRUE
 	can_go_invisible = FALSE
 	invis_start_time = world.time
 
@@ -114,6 +115,7 @@
 	if (LPA && istype(LPA))
 		LPA.knockdown = FALSE // pounce no longer knocks down
 		LPA.freeze_self = FALSE
+	bound_xeno.invisible = FALSE
 
 	// SLIGHTLY hacky because we need to maintain lots of other state on the lurker
 	// whenever invisibility is on/off CD and when it's active.

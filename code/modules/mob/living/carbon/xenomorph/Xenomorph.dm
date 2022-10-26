@@ -262,6 +262,7 @@
 	//////////////////////////////////////////////////////////////////
 	var/weedwalking_activated = 0 //Hivelord's weedwalking
 	var/tunnel = 0
+	var/invisible = 0 // for check on lurker invisibility
 	var/burrow = 0
 	var/fortify = 0
 	var/crest_defense = 0

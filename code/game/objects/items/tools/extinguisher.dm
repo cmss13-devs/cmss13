@@ -49,6 +49,13 @@
 	max_water = 500
 	power = PYRO_EXTINGUISHER_PWR
 
+/obj/item/tool/extinguisher/sl
+	name = "squad leader fire extinguisher"
+	desc = "A longer lasting fire extinguisher meant for squad leaders."
+	w_class = SIZE_MEDIUM
+	force = 3.0
+	max_water = 200
+
 /obj/item/tool/extinguisher/pyro/atmos_tank
 	max_water = 500000 //so it never runs out, theoretically
 

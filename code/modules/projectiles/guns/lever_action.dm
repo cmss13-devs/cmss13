@@ -481,3 +481,10 @@ their unique feature is that a direct hit will buff your damage and firerate
 #undef FLOATING_PENETRATION_TIER_2
 #undef FLOATING_PENETRATION_TIER_3
 #undef FLOATING_PENETRATION_TIER_4
+
+/obj/item/weapon/gun/lever_action/xm88_suppressed // Recon kit
+	starting_attachment_types = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/stock/xm88,
+		/obj/item/attachable/scope/mini/xm88
+	)

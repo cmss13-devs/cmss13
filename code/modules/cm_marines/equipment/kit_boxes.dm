@@ -340,7 +340,7 @@
 
 /obj/item/storage/box/kit/mini_pyro/fill_preset_inventory()
 	new /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit(src)
-	new /obj/item/weapon/gun/flamer/underextinguisher(src)
+	new /obj/item/tool/extinguisher/mini(src)
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/ammo_magazine/flamer_tank/gellied(src)
@@ -520,3 +520,82 @@
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)
+
+/obj/item/storage/box/kit/spotter
+	name = "\improper Recon Kit" // Meant for SLs only
+	pro_case_overlay = "recon"
+
+/obj/item/storage/box/kit/recon/fill_preset_inventory()
+	new	/obj/item/explosive/plastic/breaching_charge(src)
+	new	/obj/item/explosive/plastic/breaching_charge
+	new	/obj/item/device/binoculars/range/designator(src)
+	new	/obj/item/map/current_map(src)
+	new	/obj/item/storage/box/zipcuffs(src)
+	new	/obj/item/device/motiondetector(src)
+	new	/obj/item/ammo_magazine/pistol(src)
+	new	/obj/item/ammo_magazine/pistol(src)
+	new	/obj/item/storage/pouch/general/large(src)
+	new	/obj/item/storage/large_holster/machete/full(src)
+	new	/obj/item/weapon/gun/lever_action/xm88_suppressed(src)
+	new	/obj/item/ammo_magazine/lever_action/xm88(src)
+	new	/obj/item/ammo_magazine/lever_action/xm88(src)
+	new	/obj/item/storage/belt/shotgun/xm88(src)
+
+/obj/item/storage/box/kit/assault
+	name = "\improper Assault Kit" // Meant for SLs only
+	pro_case_overlay = "assault"
+
+/obj/item/storage/box/kit/assault/fill_preset_inventory()
+	new	/obj/item/explosive/plastic/breaching_charge(src)
+	new	/obj/item/explosive/plastic/breaching_charge(src)
+	new	/obj/item/explosive/plastic/breaching_charge(src)
+	new	/obj/item/device/binoculars/range/designator(src)
+	new	/obj/item/map/current_map(src)
+	new	/obj/item/storage/box/zipcuffs(src)
+	new	/obj/item/storage/box/packet/incendiary(src)
+	new	/obj/item/storage/box/packet/incendiary(src)
+	new /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit(src)
+	new /obj/item/tool/extinguisher/sl(src)
+	new /obj/item/ammo_magazine/flamer_tank(src)
+	new /obj/item/ammo_magazine/flamer_tank(src)
+	new /obj/item/ammo_magazine/flamer_tank/gellied(src)
+	new /obj/item/tool/extinguisher/mini(src)
+
+/obj/item/storage/box/kit/triage
+	name = "\improper Triage Kit" // Meant for SLs only, this turns an SL into a mini-medic as an option when they may have no medics on lower pop.
+	pro_case_overlay = "triage"
+
+/obj/item/storage/box/kit/triage/fill_preset_inventory()
+
+	new	/obj/item/explosive/plastic/breaching_charge(src)
+	new	/obj/item/device/binoculars/range/designator(src)
+	new	/obj/item/map/current_map(src)
+	new	/obj/item/storage/box/zipcuffs(src)
+	new	/obj/item/reagent_container/glass/minitank/basic(src)
+	new	/obj/item/storage/pouch/pressurized_reagent_canister/revival(src)
+	new	/obj/item/storage/pouch/autoinjector/full(src)
+	new	/obj/item/clothing/glasses/hud/sensor(src)
+	new	/obj/item/storage/belt/medical(src)
+	new	/obj/item/device/defibrillator(src)
+	new	/obj/item/device/healthanalyzer(src)
+
+/obj/item/storage/box/kit/construction
+	name = "\improper Construction Kit" // Meant for SLs only, this turns an SL into a mini-engie as an option when they may have no engie on lower pop.
+	pro_case_overlay = "construction"
+
+/obj/item/storage/box/kit/construction/fill_preset_inventory()
+
+	new	/obj/item/explosive/plastic/breaching_charge(src)
+	new	/obj/item/explosive/plastic/breaching_charge(src)
+	new	/obj/item/device/binoculars/range/designator(src)
+	new	/obj/item/map/current_map(src)
+	new	/obj/item/storage/box/zipcuffs(src)
+	new	/obj/item/explosive/plastic(src)
+	new	/obj/item/explosive/plastic(src)
+	new	/obj/item/storage/belt/utility/full(src)
+	new	/obj/item/tool/weldpack/minitank(src)
+	new	/obj/item/stack/sandbags_empty/half(src)
+	new	/obj/item/stack/sheet/metal/large_stack(src)
+	new	/obj/item/stack/sheet/plasteel/medium_stack(src)
+	new	/obj/item/stack/barbed_wire/full_stack(src)
+	new	/obj/item/tool/shovel/etool/folded(src)

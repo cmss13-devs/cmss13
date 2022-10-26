@@ -2,13 +2,16 @@
 
 GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("SQUAD LEADER KIT (CHOOSE 1)", 0, null, null, null),
-		list("Essential SL Flamethrower Kit", 0, /obj/effect/essentials_set/leader/flamethrower, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Assault Kit", 0, /obj/effect/essentials_set/leader/assault, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Construction Kit", 0, /obj/effect/essentials_set/leader/construction, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Recon Kit", 0, /obj/effect/essentials_set/leader/recon, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Triage Kit", 0, /obj/effect/essentials_set/leader/triage, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("UTILITIES", 0, null, null, null),
 		list("Whistle", 3, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("Range Finder", 3, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", 5, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
-		list("M2 Night Vision Goggles", 20, /obj/item/prop/helmetgarb/helmet_nvg, null, VENDOR_ITEM_RECOMMENDED),
+		list("M2 Night Vision Goggles", 25, /obj/item/prop/helmetgarb/helmet_nvg, null, VENDOR_ITEM_RECOMMENDED),
 		list("Machete Scabbard (Full)", 4, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("Machete Pouch (Full)", 4, /obj/item/storage/pouch/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 3, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
@@ -22,7 +25,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("Insulated Gloves", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),
 		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Plastic explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_RECOMMENDED),
+		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_RECOMMENDED),
 		list("Breaching Charge", 7, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_RECOMMENDED),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
 		list("Signal Flare Pack", 7, /obj/item/storage/box/m94/signal, null, VENDOR_ITEM_REGULAR),
@@ -95,6 +98,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 /obj/structure/machinery/cm_vending/gear/leader/Initialize(mapload, ...)
 	. = ..()
 	listed_products = GLOB.cm_vending_gear_leader
+
+/obj/structure/machinery/cm_vending/gear/leader/vend_succesfully(list/L, mob/living/carbon/human/buyer, turf/T)
+	. = ..()
+	if(istype(., /obj/effect/essentials_set/leader))
+		var/obj/effect/essentials_set/leader/leader_kit = .
+		leader_kit.handle_buy(buyer)
 
 //------------CLOTHING VENDOR---------------
 
@@ -184,26 +193,70 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 
 //------------ESSENTIAL SETS---------------
 
-/obj/effect/essentials_set/leader
+	var/specialization = "Leader"
+	var/list/skill_boost = list()
+
+/obj/effect/essentials_set/leader/New(loc)
+	..()
+	for(var/typepath in always_spawn)
+		if(always_spawn[typepath])
+			new typepath(loc, always_spawn[typepath])
+		else
+			new typepath(loc)
+
+/obj/effect/essentials_set/leader/proc/handle_buy(var/mob/living/carbon/human/buyer)
+	var/skill_list_length = length(skill_boost)
+	if(skill_list_length)
+		for(var/skill in skill_boost)
+			buyer.skills.set_skill(skill, skill_boosts[skill])
+		to_chat(buyer, SPAN_BOLDNOTICE("Your [english_list(skill_boosts)] skill[skill_list_length > 1 ? "s have" : " has"] been increased!"))
+	var/obj/item/card/id/ID = buyer.wear_id
+	if(ID)
+		ID.set_assignment((buyer.assigned_squad ? (buyer.assigned_squad.name + " ") : "") + JOB_SQUAD_LEADER + " ([specialization])")
+		GLOB.data_core.manifest_modify(buyer.real_name, WEAKREF(buyer), JOB_SQUAD_LEADER + " ([specialization])")
+
+/obj/effect/essentials_set/leader/assault
 	spawned_gear_list = list(
-		/obj/item/explosive/plastic,
-		/obj/item/device/binoculars/range/designator,
-		/obj/item/map/current_map,
-		/obj/item/ammo_magazine/rifle/m41aMK1/ap,
-		/obj/item/ammo_magazine/rifle/m41aMK1/ap,
-		/obj/item/ammo_magazine/rifle/m41aMK1,
-		/obj/item/ammo_magazine/rifle/m41aMK1,
-		/obj/item/weapon/gun/rifle/m41aMK1/ap,
-		/obj/item/tool/extinguisher/mini,
-		/obj/item/storage/box/zipcuffs
+		/obj/item/storage/box/kit/assault
+	)
+	specialization = "Assault"
+	skill_boosts = list(
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_JTAC = SKILL_JTAC_EXPERT
 	)
 
-/obj/effect/essentials_set/leader/flamethrower
+/obj/effect/essentials_set/leader/construction
 	spawned_gear_list = list(
-		/obj/item/explosive/plastic,
-		/obj/item/device/binoculars/range/designator,
-		/obj/item/map/current_map,
-		/obj/item/storage/box/kit/mini_pyro,
-		/obj/item/tool/extinguisher/mini,
-		/obj/item/storage/box/zipcuffs
+		/obj/item/storage/box/kit/construction
+	)
+	specialization = "Construction"
+	skill_boosts = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI
+	)
+
+/obj/effect/essentials_set/leader/recon
+	spawned_gear_list = list(
+		/obj/item/storage/box/kit/recon
+	)
+	specialization = "Recon"
+	skill_boosts = list(
+		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER
+	)
+
+/obj/effect/essentials_set/leader/triage
+	spawned_gear_list = list(
+		/obj/item/storage/box/kit/triage
+	)
+	specialization = "Triage"
+
+/obj/effect/essentials_set/leader/triage/handle_buy(var/mob/living/carbon/human/buyer)
+	..()
+	var/datum/skills/SL/skills = buyer.skills
+	skills.fireman_carry_speed = 1 SECONDS
+	to_chat(buyer, SPAN_BOLDNOTICE("Your ability to fireman carry has been improved!"))
+
+	specialization = "Triage"
+	skill_boosts = list(
+		SKILL_MEDICAL_TRAINED = SKILL_MEDICAL_MEDIC
 	)

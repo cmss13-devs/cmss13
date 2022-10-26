@@ -308,6 +308,13 @@
 		filling.icon_state = "[icon_state][round_percent]"
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
+
+/obj/item/reagent_container/glass/minitank/basic
+	starts_with_reagent = list(
+		"bicaridine" = 60,
+		"kelotane" = 60,
+		"tramadol" = 60
+	)
 /obj/item/reagent_container/glass/beaker/large
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units."

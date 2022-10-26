@@ -170,6 +170,7 @@
 
 	if(!target_mob.client)
 		to_chat(user, SPAN_WARNING("[target.name] does not have a client!"))
+		return
 
 	if(!target_mob.ckey)
 		to_chat(user, SPAN_DANGER("Warning: Mob ckey for [target_mob.name] not found."))
@@ -180,12 +181,15 @@
 
 	var/new_name
 
-	if(alert(user, "Do you want to manually set the name for [target_mob.ckey]?", "Confirmation", "Yes", "No") == "No")
-		new_name = random_name(target_mob.gender)
-	else
-		var/raw_name = input(user, "Choose the new name:", "Name Input")  as text|null
-		if(!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
-			new_name = reject_bad_name(raw_name)
+	switch(alert(user, "Do you want to manually set the name for [target_mob.ckey]?", "Confirmation", "Yes", "No", "Cancel"))
+		if("Cancel")
+			return
+		if("No")
+			new_name = random_name(target_mob.gender)
+		if("Yes")
+			var/raw_name = input(user, "Choose the new name:", "Name Input")  as text|null
+			if(!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
+				new_name = reject_bad_name(raw_name)
 
 	if(!new_name)
 		to_chat(user, SPAN_NOTICE("Invalid name. The name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and ."))
@@ -193,6 +197,7 @@
 
 	if(!target_mob.client)
 		to_chat(user, SPAN_WARNING("[target.name] does not have a client!"))
+		return
 
 	if(!target_mob.ckey)
 		to_chat(user, SPAN_DANGER("Warning: Mob ckey for [target_mob.name] not found."))

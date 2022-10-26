@@ -130,7 +130,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	brainmob.name = H.real_name
 	brainmob.real_name = H.real_name
 	brainmob.blood_type = H.blood_type
-	if(H.mind)
+	if(H.mind && !iszombie(H))
 		H.mind.transfer_to(brainmob)
 	brainmob.container = src
 

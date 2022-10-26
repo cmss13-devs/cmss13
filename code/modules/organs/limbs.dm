@@ -864,6 +864,7 @@ This function completely restores a damaged organ to perfect condition.
 				owner.drop_inv_item_on_ground(owner.wear_r_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
 				owner.update_hair()
+				if(owner.species) owner.species.handle_head_loss(owner)
 			if(BODY_FLAG_ARM_RIGHT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 					organ = new /obj/item/robot_parts/arm/r_arm(owner.loc)

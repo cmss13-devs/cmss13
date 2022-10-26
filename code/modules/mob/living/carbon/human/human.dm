@@ -80,6 +80,11 @@
 	. += ""
 	. += "Security Level: [uppertext(get_security_level())]"
 
+	if(species?.has_species_tab_items)
+		var/list/species_tab_items = species.get_status_tab_items(src)
+		for(var/tab_item in species_tab_items)
+			. += tab_item
+
 	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
 
@@ -1223,6 +1228,8 @@
 
 
 /mob/living/carbon/human/proc/vomit_on_floor()
+	if(stat)
+		return
 	var/turf/T = get_turf(src)
 	visible_message(SPAN_DANGER("[src] vomits on the floor!"), null, null, 5)
 	nutrition -= 20

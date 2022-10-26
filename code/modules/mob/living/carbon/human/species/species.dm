@@ -109,6 +109,8 @@
 
 	var/ignores_stripdrag_flag = FALSE
 
+	var/has_species_tab_items = FALSE
+
 /datum/species/New()
 	if(unarmed_type)
 		unarmed = new unarmed_type()
@@ -464,3 +466,9 @@
 /datum/species/proc/handle_blood_splatter(var/mob/living/carbon/human/human, var/splatter_dir)
 	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir)
 	return bloodsplatter
+
+/datum/species/proc/get_status_tab_items()
+	return list()
+
+/datum/species/proc/handle_head_loss(var/mob/living/carbon/human/human)
+	return

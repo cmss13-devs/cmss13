@@ -674,9 +674,8 @@
 	return ..()
 
 /datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/H)
-	H.set_species("Human") // Set back, so that we can get our claws again
-
-	H.set_species("Zombie")
+	H.set_species(SPECIES_HUMAN) // Set back, so that we can get our claws again
+	H.set_species(SPECIES_ZOMBIE)
 
 /datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/H)
 	var/uniform_path = pick(/obj/item/clothing/under/colonist, /obj/item/clothing/under/colonist/ua_civvies, /obj/item/clothing/under/colonist/wy_davisone, /obj/item/clothing/under/colonist/wy_joliet_shopsteward, /obj/item/clothing/under/marine/ua_riot, /obj/item/clothing/under/suit_jacket/manager, /obj/item/clothing/under/suit_jacket/director)

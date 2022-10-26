@@ -548,14 +548,13 @@ IN_USE						used for vending/denying
 									if("Pyro Set")
 									H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
 									specialist_assignment = "Pyro"
-									else
 									to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 									vend_fail()
 									return
 GLOB/data_core/manifest_modify(H/real_name, WEAKREF[H], ID/assignment)
 available_specialist_sets / p_name
 
-if(bitf = MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SQUAD_LEADER))
+if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SQUAD_LEADER))
 	if(H.job != JOB_SQUAD_LEADER)
 		to_chat(H, SPAN_WARNING("Only squad leaders can take squad leaders sets."))
 		vend_fail()
@@ -569,7 +568,7 @@ if(bitf = MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SQUAD_LEADER))
 			to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization kit!"))
 			return
 			var/specialist_assignment
-			switch(p_name)
+			switch{p_name}
 			if("Recon Kit")
 				H.skills.set_skill(SKILL_ENDURANCE_MASTER, SKILL_INTEL_TRAINED)
 				specialist_assignment = "Reconassiance"
@@ -582,11 +581,10 @@ if(bitf = MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SQUAD_LEADER))
 						if("Assault Kit")
 							H.skills.set_skill(SKILL_CQC_TRAINED, SKILL_JTAC_EXPERT)
 							specialist_assignment = "Assault"
-							else
 							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							vend_fail()
 							return
-GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID/assignment)
+GLOB/data_core/manifest_modify(H/real_name, WEAKREF(H), ID/assignment)
 		if(!handle_points(H, L))
 		return
 
@@ -620,6 +618,8 @@ GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID/assignment)
 			to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
 			vend_fail()
 			return FALSE
+
+if(kit.vendmessage) to_chat(buyer, SPAN_BOLDNOTICE(vendmessage))
 
 /obj/structure/machinery/cm_vending/gear/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)

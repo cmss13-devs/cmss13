@@ -360,7 +360,7 @@
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/ammo_magazine/flamer_tank/gellied(src)
-	new /obj/item/tool/extinguisher/mini(src)
+	new /obj/item/weapon/gun/flamer/underextinguisher(src)
 
 
 /obj/item/storage/box/kit/mini_sniper
@@ -540,6 +540,7 @@
 /obj/item/storage/box/kit/spotter
 	name = "\improper Recon Kit" // Meant for SLs only
 	pro_case_overlay = "recon"
+	to_chat(buyer, SPAN_BOLDNOTICE("Originally an NCO in FORECON, you disgraced yourself on an operation in a friendly fire incident. While your platoon prepared for another mission to LV-552, the CO informed you of your demotion. Following it, you've been transferred to the Falling Falcons, an infamous USCM battalion as a punishment. Get out there and prove yourself once more. Oorah."
 
 /obj/item/storage/box/kit/recon/fill_preset_inventory()
 	new	/obj/item/explosive/plastic/breaching_charge(src)
@@ -557,6 +558,7 @@
 /obj/item/storage/box/kit/assault
 	name = "\improper Assault Kit" // Overhaul of Pyrotechnic SL Kit
 	pro_case_overlay = "assault"
+	to_chat(buyer, SPAN_BOLDNOTICE("An assault marine in the USCM, you were originally a SADAR technician by trade. During Operation Tychon's Tackle, you proved yourself while assisting the Falling Falcons in destroying CLF improvised armored vehicles. For your performance, you were promoted to Sergeant by the Heyst's CO. Following the battle, while the USS Heyst undergoes repairs you were transferred to the USS Almayer. Your CQC training onboard the Heyst still serves you well. Go and burn them out, Marine!"))
 
 /obj/item/storage/box/kit/assault/fill_preset_inventory()
 	new	/obj/item/explosive/plastic/breaching_charge(src)
@@ -578,6 +580,7 @@
 /obj/item/storage/box/kit/triage
 	name = "\improper Triage Kit" // Meant for SLs only, this turns an SL into a mini-medic as an option when they may have no medics on lower pop.
 	pro_case_overlay = "triage"
+	to_chat(buyer, SPAN_BOLDNOTICE("A medic by training, you were assigned to the Falling Falcons in 2180. You were sent onto Operation Tychon's Tackle and gained notoriety from the Almayer's original CO. Field promoted to Sergeant, and later taught by the SEA before reentering hypersleep; You remember your medical training, but your leadership comes first. Oorah!"))
 
 /obj/item/storage/box/kit/triage/fill_preset_inventory()
 
@@ -587,7 +590,6 @@
 	new	/obj/item/storage/box/zipcuffs(src)
 	new	/obj/item/reagent_container/glass/minitank/basic(src)
 	new	/obj/item/storage/pouch/pressurized_reagent_canister/revival(src)
-	new	/obj/item/storage/pouch/autoinjector/full(src)
 	new	/obj/item/clothing/glasses/hud/sensor(src)
 	new	/obj/item/storage/belt/medical(src)
 	new	/obj/item/device/defibrillator(src)
@@ -597,6 +599,7 @@
 /obj/item/storage/box/kit/construction
 	name = "\improper Construction Kit" // Meant for SLs only, this turns an SL into a mini-engie as an option when they may have no engie on lower pop.
 	pro_case_overlay = "construction"
+to_chat(buyer, SPAN_BOLDNOTICE("You were an engineer in the Dust Raiders before being promoted to the rank of Sergeant. With your promotion, you had to say goodbye to the Dust Raiders and were transferred by the needs of the Marine Corps to the Falling Falcons. You still remember your engineering training, but your leadership comes first. Oorah!"))
 
 /obj/item/storage/box/kit/construction/fill_preset_inventory()
 

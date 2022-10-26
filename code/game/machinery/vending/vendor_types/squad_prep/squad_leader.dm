@@ -193,29 +193,28 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 
 //------------ESSENTIAL SETS---------------
 
+/obj/effect/essentials_set/leader
+
 	specialist_assignment = "Assault"
-	to_chat(buyer, SPAN_BOLDNOTICE("An assault marine in the USCM, you were originally a SADAR technician by trade. During Operation Tychon's Tackle, you proved yourself while assisting the Falling Falcons in destroying CLF improvised armored vehicles. For your performance, you were promoted to Sergeant by the Heyst's CO. Following the battle, while the USS Heyst undergoes repairs you were transferred to the USS Almayer. Your CQC training onboard the Heyst still serves you well. Go and burn them out, Marine!"))
-/obj/effect/essentials_set/leader/assault,
+/obj/effect/essentials_set/leader/assault
 	spawned_gear_list = list(
 		/obj/item/storage/box/kit/assault
 	)
 
 	specialist_assignment = "Construction"
-	to_chat(buyer, SPAN_BOLDNOTICE("You were an engineer in the Dust Raiders before being promoted to the rank of Sergeant. With your promotion, you had to say goodbye to the Dust Raiders and were transferred by the needs of the Marine Corps to the Falling Falcons. You still remember your engineering training, but your leadership comes first. Oorah!"))
+	/obj/effect/essentials_set/leader/construction
 	spawned_gear_list = list(
 		/obj/item/storage/box/kit/construction
 	)
 
 	specialist_assignment = "Recon"
-	to_chat(buyer, SPAN_BOLDNOTICE("Originally an NCO in FORECON, you disgraced yourself on an operation in a friendly fire incident. While your platoon prepared for another mission to LV-552, the CO informed you of your demotion. Following it, you've been transferred to the Falling Falcons, an infamous USCM battalion as a punishment. Get out there and prove yourself once more. Oorah."
-/obj/effect/essentials_set/leader/recon,
+/obj/effect/essentials_set/leader/recon
 	spawned_gear_list = list(
 		/obj/item/storage/box/kit/recon
 	)
 
 	specialist_assignment "Triage"
-	to_chat(buyer, SPAN_BOLDNOTICE("A medic by training, you were assigned to the Falling Falcons in 2180. You were sent onto Operation Tychon's Tackle and gained notoriety from the Almayer's original CO. Field promoted to Sergeant, and later taught by the SEA before reentering hypersleep; You remember your medical training, but your leadership comes first. Oorah!"))
-/obj/effect/essentials_set/leader/triage,
+/obj/effect/essentials_set/leader/triage
 	spawned_gear_list = list(
 		/obj/item/storage/box/kit/triage
 	)

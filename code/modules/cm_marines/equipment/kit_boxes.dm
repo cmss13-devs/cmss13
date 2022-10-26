@@ -599,7 +599,7 @@
 /obj/item/storage/box/kit/construction
 	name = "\improper Construction Kit" // Meant for SLs only, this turns an SL into a mini-engie as an option when they may have no engie on lower pop.
 	pro_case_overlay = "construction"
-to_chat(buyer, SPAN_BOLDNOTICE("You were an engineer in the Dust Raiders before being promoted to the rank of Sergeant. With your promotion, you had to say goodbye to the Dust Raiders and were transferred by the needs of the Marine Corps to the Falling Falcons. You still remember your engineering training, but your leadership comes first. Oorah!"))
+	to_chat(buyer, SPAN_BOLDNOTICE("You were an engineer in the Dust Raiders before being promoted to the rank of Sergeant. With your promotion, you had to say goodbye to the Dust Raiders and were transferred by the needs of the Marine Corps to the Falling Falcons. You still remember your engineering training, but your leadership comes first. Oorah!"))
 
 /obj/item/storage/box/kit/construction/fill_preset_inventory()
 

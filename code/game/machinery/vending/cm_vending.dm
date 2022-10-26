@@ -553,15 +553,45 @@ IN_USE						used for vending/denying
 							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							vend_fail()
 							return
-					ID.set_assignment((H.assigned_squad ? (H.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
-					GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
-					available_specialist_sets -= p_name
+GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
+available_specialist_sets -= p_name
 
+if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SQUAD_LEADER))
+					if(H.job != JOB_SQUAD_LEADER)
+						to_chat(H, SPAN_WARNING("Only squad leaders can take squad leaders sets."))
+						vend_fail()
+						return
+						to_chat(H, SPAN_WARNING("You already have a specialization."))
+						vend_fail()
+						return
+					var/p_name = L[1]
+					var/obj/item/card/id/ID = H.wear_id
+					if(!istype(ID) || ID.registered_ref != WEAKREF(user))
+						to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization kit!"))
+						return
+					var/specialist_assignment
+					switch(p_name)
+						if("Recon Kit")
+							H.skills.set_skill(SKILL_ENDURANCE_MASTER, SKILL_INTEL_TRAINED)
+							specialist_assignment = "Reconassiance"
+						if("Triage Kit")
+							H.skills.set_skill(SKILL_MEDICAL_MEDIC)
+							specialist_assignment = "Triage"
+						if("Construction Kit")
+							H.skills.set_skill(SKILL_ENGINEER_ENGI, SKILL_CONSTRUCTION_ENGI)
+							specialist_assignment = "Construction"
+						if("Assault Kit")
+							H.skills.set_skill(SKILL_CQC_TRAINED, SKILL_JTAC_EXPERT)
+							specialist_assignment = "Assault"
+						else
+							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
+							vend_fail()
+							return
+GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
+		if(!handle_points(H, L))
+		return
 
-			if(!handle_points(H, L))
-				return
-
-			vend_succesfully(L, H, T)
+		vend_succesfully(L, H, T)
 
 		add_fingerprint(user)
 		ui_interact(user) //updates the nanoUI window

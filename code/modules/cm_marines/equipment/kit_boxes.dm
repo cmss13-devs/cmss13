@@ -249,6 +249,22 @@
 			//this is to be able to use C4s that are coming with the kit
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+		if("Assault")
+			box = new /obj/item/storage/box/kit/assault(T)
+			specialist_assignment = "Assault"
+			user.skills.set_skill(SKILL_CQC_TRAINED, SKILL_JTAC_EXPERT)
+		if("Recon")
+			box = new /obj/item/storage/box/kit/recon(T)
+			specialist_assignment = "Recon"
+			user.skills.set_skill(SKILL_ENDURANCE_MASTER, SKILL_INTEL_TRAINED)
+		if("Triage")
+			box = new /obj/item/storage/box/kit/triage(T)
+			specialist_assignment = "Triage"
+			user.skills.set_skill(SKILL_MEDICAL_MEDIC)
+		if("Construction")
+			box = new /obj/item/storage/box/kit/construction(T)
+			specialist_assignment = "Construction"
+			user.skills.set_skill(SKILL_ENGINEER_ENGI, SKILL_CONSTRUCTION_ENGI)
 	if(specialist_assignment)
 		user.put_in_hands(spec_box)
 		ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
@@ -532,17 +548,14 @@
 	new	/obj/item/map/current_map(src)
 	new	/obj/item/storage/box/zipcuffs(src)
 	new	/obj/item/device/motiondetector(src)
-	new	/obj/item/ammo_magazine/pistol(src)
-	new	/obj/item/ammo_magazine/pistol(src)
-	new	/obj/item/storage/pouch/general/large(src)
-	new	/obj/item/storage/large_holster/machete/full(src)
 	new	/obj/item/weapon/gun/lever_action/xm88_suppressed(src)
 	new	/obj/item/ammo_magazine/lever_action/xm88(src)
 	new	/obj/item/ammo_magazine/lever_action/xm88(src)
 	new	/obj/item/storage/belt/shotgun/xm88(src)
+	new /obj/item/device/encryptionkey/intel(src)
 
 /obj/item/storage/box/kit/assault
-	name = "\improper Assault Kit" // Meant for SLs only
+	name = "\improper Assault Kit" // Overhaul of Pyrotechnic SL Kit
 	pro_case_overlay = "assault"
 
 /obj/item/storage/box/kit/assault/fill_preset_inventory()
@@ -560,6 +573,7 @@
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/ammo_magazine/flamer_tank/gellied(src)
 	new /obj/item/tool/extinguisher/mini(src)
+	new /obj/item/device/encryptionkey/jtac(src)
 
 /obj/item/storage/box/kit/triage
 	name = "\improper Triage Kit" // Meant for SLs only, this turns an SL into a mini-medic as an option when they may have no medics on lower pop.
@@ -578,6 +592,7 @@
 	new	/obj/item/storage/belt/medical(src)
 	new	/obj/item/device/defibrillator(src)
 	new	/obj/item/device/healthanalyzer(src)
+	new /obj/item/device/encryptionkey/med(src)
 
 /obj/item/storage/box/kit/construction
 	name = "\improper Construction Kit" // Meant for SLs only, this turns an SL into a mini-engie as an option when they may have no engie on lower pop.
@@ -599,3 +614,4 @@
 	new	/obj/item/stack/sheet/plasteel/medium_stack(src)
 	new	/obj/item/stack/barbed_wire/full_stack(src)
 	new	/obj/item/tool/shovel/etool/folded(src)
+	new /obj/item/device/encryptionkey/engi(src)

@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_mp, list(
 	spawned_gear_list = list(
 		/obj/item/weapon/gun/rifle/m41a,
 		/obj/item/device/binoculars,
-		/obj/item/ammo_magazine/rifle/extended,
+		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/rifle
 	)
@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_mp, list(
 	spawned_gear_list = list(
 		/obj/item/weapon/gun/rifle/l42a,
 		/obj/item/device/binoculars,
-		/obj/item/ammo_magazine/rifle/l42a/extended,
+		/obj/item/ammo_magazine/rifle/l42a,
 		/obj/item/ammo_magazine/rifle/l42a,
 		/obj/item/ammo_magazine/rifle/l42a
 	)

@@ -44,6 +44,11 @@
 	icon_state = "m42c"
 	max_rounds = 6
 
+/obj/item/ammo_magazine/sniper/elite/penetrating
+	name = "\improper M42C penetrating marksman magazine (10x99mm)"
+	desc = "A magazine of specialized supersonic 10x99mm anti-tank rounds. These have been tipped with tungsten-carbide and given a custom, proprietary WY propellant, and as such, can completely penetrate through almost all hull. Use in spaceships not recommended."
+	icon_state = "m42c_flak"
+	default_ammo = /datum/ammo/bullet/sniper/elite/penetrating
 
 //SVD //Based on the actual Dragunov sniper rifle.
 

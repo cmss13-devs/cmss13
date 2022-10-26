@@ -517,8 +517,9 @@
 		new /obj/item/ammo_magazine/rifle/lmg(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sniper/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/sniper/elite(src)
+	new /obj/item/ammo_magazine/sniper/elite/penetrating(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_rifle/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

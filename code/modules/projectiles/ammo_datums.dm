@@ -1645,12 +1645,6 @@
 	damage = 150
 	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
 
-/datum/ammo/bullet/sniper/elite/set_bullet_traits()
-	. = ..()
-	LAZYADD(traits_to_give, list(
-	    BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
-	))
-
 /datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P.homing_target && M == P.homing_target)
 		var/mob/living/L = M
@@ -1666,6 +1660,17 @@
 			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
 		// 150% damage to runners (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+
+/datum/ammo/bullet/sniper/elite/penetrating
+	name = "supersonic tungsten carbide sniper bullet"
+	penetration = ARMOR_PENETRATION_TIER_10 * 2 //i love tiers
+	shell_speed = AMMO_SPEED_TIER_6
+
+/datum/ammo/bullet/sniper/elite/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+	    BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
 
 /*
 //======

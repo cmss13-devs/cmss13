@@ -307,3 +307,5 @@
   Usnpeepoo:
   - bugfix: Fixes a few issues with client/pref checks. SG auto fire now works with
       help intent safety.
+  aceroy:
+  - bugfix: All fueltank dispensers are now wrenchable

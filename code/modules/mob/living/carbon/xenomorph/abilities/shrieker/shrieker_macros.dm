@@ -9,7 +9,7 @@
 	set category = "Alien"
 	set name = "Rooting Slash"
 	set hidden = 1
-	var/action_name = "Rooting SLash"
+	var/action_name = "Rooting Slash"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_pounce_shrieker()

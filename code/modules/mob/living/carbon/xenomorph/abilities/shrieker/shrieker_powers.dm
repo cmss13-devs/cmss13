@@ -147,7 +147,7 @@
 	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 15)
 
 	if (ishuman(H))
-		var/mob/living/carbon/human/Hu = H
+		var/mob/living/carbon/human/target = H
 		Hu.update_xeno_hostile_hud()
 
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, root_duration))

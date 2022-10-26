@@ -253,7 +253,7 @@
 	return "xenobloodroyal"
 
 /mob/living/carbon/Xenomorph/Shrieker/get_blood_id()
-	return "xenobloodroyal	"
+	return "xenobloodroyal"
 
 /mob/living/carbon/human/get_blood_id()
 	if((NO_BLOOD in species.flags))

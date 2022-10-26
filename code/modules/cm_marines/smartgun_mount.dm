@@ -1093,7 +1093,7 @@
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
 	to_chat(user, SPAN_NOTICE("You deploy \the [M]."))
-	if((rounds > 0) && user.get_active_hand() || user.get_inactive_hand())
+	if((rounds > 0) && !user.get_inactive_hand())
 		user.set_interaction(M)
 	M.rounds = rounds
 	M.overheat_value = overheat_value

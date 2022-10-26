@@ -109,6 +109,10 @@
 				PC.update_icon("ds_ammo")
 
 
+/// Adds default ammunition effect if no weapon logic to dictate otherwise
+/obj/structure/ship_ammo/proc/apply_default_warhead(datum/cas_firing_solution/FS)
+	return
+
 //30mm gun
 
 /obj/structure/ship_ammo/heavygun
@@ -122,8 +126,6 @@
 	ammo_used_per_firing = 40
 	point_cost = 275
 	fire_mission_delay = 2
-	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
-	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
 
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
 	. = ..()
@@ -135,36 +137,8 @@
 	else
 		return "It's loaded with an empty [name]."
 
-/obj/structure/ship_ammo/heavygun/detonate_on(turf/impact)
-	set waitfor = 0
-	var/list/turf_list = list()
-	for(var/turf/T in range(bullet_spread_range, impact))
-		turf_list += T
-	var/soundplaycooldown = 0
-	var/debriscooldown = 0
-	for(var/i = 1 to ammo_used_per_firing)
-		var/turf/U = pick(turf_list)
-		sleep(1)
-		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-		U.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
-		create_shrapnel(U,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
-		for(var/atom/movable/AM in U)
-			if(iscarbon(AM))
-				AM.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
-			else
-				AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
-		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(U, 'sound/effects/gauimpact.ogg',40,1,20)
-			soundplaycooldown = 3
-		soundplaycooldown--
-		if(!debriscooldown)
-			U.ceiling_debris_check(1)
-			debriscooldown = 6
-		debriscooldown--
-		new /obj/effect/particle_effect/expl_particles(U)
-	sleep(11) //speed of sound simulation
-	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
-
+/obj/structure/ship_ammo/heavygun/apply_default_warhead(datum/cas_firing_solution/FS)
+	FS.AddComponent(/datum/component/cas_warhead_heavygun)
 
 /obj/structure/ship_ammo/heavygun/antitank
 	name = "PGU-105 30mm Anti-tank ammo crate"
@@ -173,11 +147,9 @@
 	travelling_time = 60
 	ammo_count = 400
 	max_ammo_count = 400
-	ammo_used_per_firing = 40
-	bullet_spread_range = 4
 	point_cost = 325
 	fire_mission_delay = 2
-	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
+	payload_type = /datum/cas_effect/ordnance/heavygun/antitank
 
 //laser battery
 
@@ -210,27 +182,6 @@
 		return "It's loaded with \a [src] at [round(100*ammo_count/max_ammo_count)]% charge."
 	else
 		return "It's loaded with an empty [name]."
-
-
-/obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact)
-	set waitfor = 0
-	var/list/turf_list = list()
-	for(var/turf/T in range(impact, 3)) //This is its area of effect
-		turf_list += T
-	playsound(impact, 'sound/effects/pred_vision.ogg', 20, 1)
-	for(var/i=1 to 16) //This is how many tiles within that area of effect will be randomly ignited
-		var/turf/U = pick(turf_list)
-		turf_list -= U
-		laser_burn(U)
-
-	if(!ammo_count && !QDELETED(src))
-		qdel(src) //deleted after last laser beam is fired and impact the ground.
-
-
-
-/obj/structure/ship_ammo/laser_battery/proc/laser_burn(turf/T)
-	fire_spread_recur(T, create_cause_data(initial(name), source_mob), 1, null, 5, 75, "#EE6515")//Very, very intense, but goes out very quick
-
 
 //Rockets
 

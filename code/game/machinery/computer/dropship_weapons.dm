@@ -299,7 +299,7 @@
 				if(!DEW.ammo_equipped.can_fire_at(TU, usr))
 					return
 
-				DEW.open_fire(LT.signal_loc)
+				DEW.open_fire(LT, TU, usr)
 				break
 
 	if(href_list["deselect"])

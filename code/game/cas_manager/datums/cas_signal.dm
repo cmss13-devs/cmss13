@@ -1,5 +1,5 @@
 /datum/cas_signal
-	var/signal_loc
+	var/atom/signal_loc
 	var/name = "Unknown Electronic Signal"
 	var/target_id = 0
 	var/obj/structure/machinery/camera/cas/linked_cam

@@ -168,7 +168,7 @@
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
 			var/area/A = get_area(shootloc)
 			if(shootloc && !CEILING_IS_PROTECTED(A?.ceiling, CEILING_PROTECTION_TIER_3) && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
-				item.weapon.open_fire_firemission(shootloc)
+				item.weapon.open_fire_firemission(null, shootloc, usr) // This eventually needs to pass the signal through
 		sleep(step_delay)
 	if(envelope)
 		envelope.change_current_loc(null)

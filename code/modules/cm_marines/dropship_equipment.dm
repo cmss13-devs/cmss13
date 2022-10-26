@@ -600,71 +600,74 @@
 		ammo_equipped.ammo_count = max(ammo_equipped.ammo_count-ammo_equipped.ammo_used_per_firing, 0)
 	update_icon()
 
-/obj/structure/dropship_equipment/weapon/proc/open_fire(obj/selected_target, var/mob/user = usr)
-	set waitfor = 0
-	var/turf/target_turf = get_turf(selected_target)
-	if(firing_sound)
-		playsound(loc, firing_sound, 70, 1)
-	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
-	var/ammo_max_inaccuracy = SA.max_inaccuracy
-	var/ammo_accuracy_range = SA.accuracy_range
-	var/ammo_travelling_time = SA.travelling_time //how long the rockets/bullets take to reach the ground target.
-	var/ammo_warn_sound = SA.warning_sound
-	var/ammo_warn_sound_volume = SA.warning_sound_volume
-	deplete_ammo()
-	last_fired = world.time
+/// Sets the firing solution guidance parameters
+/obj/structure/dropship_equipment/weapon/proc/setup_guidance(datum/cas_firing_solution/FS)
+	var/has_targeting_module = FALSE
 	if(linked_shuttle)
 		for(var/obj/structure/dropship_equipment/electronics/targeting_system/TS in linked_shuttle.equipments)
-			ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy and reduce travelling time.
-			ammo_max_inaccuracy = max(ammo_max_inaccuracy -3, 1)
-			ammo_travelling_time = max(ammo_travelling_time - 20, 10)
+			has_targeting_module = TRUE
 			break
 
-	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
-	if(ammo_travelling_time)
-		var/total_seconds = max(round(ammo_travelling_time/10),1)
-		for(var/i = 0 to total_seconds)
-			sleep(10)
-			if(!selected_target || !selected_target.loc)//if laser disappeared before we reached the target,
-				ammo_accuracy_range++ //accuracy decreases
+	var/travelling_time = ammo_equipped.travelling_time
+	if(FS.mode == CAS_MODE_DIRECT)
+		if(!has_targeting_module)
+			FS.AddComponent(/datum/component/cas_laser_guidance, ammo_equipped.max_inaccuracy, ammo_equipped.accuracy_range)
+		else
+			FS.AddComponent(/datum/component/cas_laser_guidance, ammo_equipped.max_inaccuracy - 3, ammo_equipped.accuracy_range - 2)
+			travelling_time = max(travelling_time - 20, 10)
 
-	// clamp back to maximum inaccuracy
-	ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
+	else if(FS.mode == CAS_MODE_FM)
+		travelling_time = 0 // Simplfication of FM mode firing in steps instead of ammunition travel time
+		if(!has_targeting_module)
+			FS.AddComponent(/datum/component/cas_simple_guidance, ammo_equipped.max_inaccuracy, ammo_equipped.accuracy_range / 2)
+		else
+			FS.AddComponent(/datum/component/cas_simple_guidance, ammo_equipped.max_inaccuracy, (ammo_equipped.accuracy_range - 2) / 2)
 
-	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
-	var/turf/impact = pick(possible_turfs)
-	if(ammo_warn_sound)
-		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1)
-	new /obj/effect/overlay/temp/blinking_laser (impact)
-	sleep(10)
-	SA.source_mob = user
-	SA.detonate_on(impact)
+	return travelling_time // Expected time to impact as estimate for other effects
 
-/obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, var/mob/user = usr)
-	set waitfor = 0
-	var/turf/target_turf = get_turf(selected_target)
+/// Sets the payload components used by the weapon
+/obj/structure/dropship_equipment/weapon/proc/setup_payload(datum/cas_firing_solution/FS)
+	// By default just passthrough the ammo's type
+	if(ammo_equipped.payload_type)
+		var/datum/cas_effect/payload = new ammo_equipped.payload_type()
+		if(FS.mode == CAS_MODE_DIRECT)
+			FS.AddComponent(/datum/component/cas_timed_fuse, payload)
+		if(FS.mode == CAS_MODE_FM) // no warning dot
+			FS.AddComponent(/datum/component/cas_timed_fuse, payload, null, 0.5 SECONDS)
+
+/obj/structure/dropship_equipment/weapon/proc/open_fire(datum/cas_signal/SS, turf/T, mob/user)
+	var/datum/cas_firing_solution/FS = new()
+	FS.mode = CAS_MODE_DIRECT
+	FS.source_mob = user
+	FS.name = ammo_equipped.name
+	setup_payload(FS)
+	var/travelling_time = setup_guidance(FS)
+	FS.AddComponent(/datum/component/cas_delayed_impact, travelling_time)
+	if(ammo_equipped.warning_sound)
+		FS.AddComponent(/datum/component/cas_inbound_sfx, travelling_time - 10, ammo_equipped.warning_sound, ammo_equipped.warning_sound_volume)
+	FS.fire(T, SS)
+
+	msg_admin_niche("[key_name(user)] is direct-firing [ammo_equipped] onto [SS.signal_loc] at ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP LOC</a>)")
+	deplete_ammo()
 	if(firing_sound)
 		playsound(loc, firing_sound, 70, 1)
-		playsound(target_turf, firing_sound, 70, 1)
-	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
-	var/ammo_accuracy_range = SA.accuracy_range
-	// no warning sound and no travel time
-	deplete_ammo()
 	last_fired = world.time
-	if(linked_shuttle)
-		for(var/obj/structure/dropship_equipment/electronics/targeting_system/TS in linked_shuttle.equipments)
-			ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy
-			break
 
-	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
+/obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(datum/cas_signal/SS, turf/T, mob/user)
+	var/datum/cas_firing_solution/FS = new()
+	FS.mode = CAS_MODE_FM
+	FS.source_mob = user
+	FS.name = ammo_equipped.name
+	setup_payload(FS)
+	setup_guidance(FS)
+	if(ammo_equipped.warning_sound)
+		FS.AddComponent(/datum/component/cas_inbound_sfx, 0, ammo_equipped.warning_sound, ammo_equipped.warning_sound_volume)
+	FS.fire(T, SS)
 
-	var/list/possible_turfs = list()
-	for(var/turf/TU in range(ammo_accuracy_range, target_turf))
-		possible_turfs += TU
-	var/turf/impact = pick(possible_turfs)
-	sleep(3)
-	SA.source_mob = user
-	SA.detonate_on(impact)
+	deplete_ammo()
+	if(firing_sound)
+		playsound(loc, firing_sound, 70, 1)
+	last_fired = world.time
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"

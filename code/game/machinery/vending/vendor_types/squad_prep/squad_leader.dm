@@ -205,9 +205,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 			new typepath(loc)
 
 /obj/effect/essentials_set/leader/proc/handle_buy(var/mob/living/carbon/human/buyer)
-	var/skill_list_length = length(skill_boost)
+	var/skill_list_length = length(skill_boosts)
 	if(skill_list_length)
-		for(var/skill in skill_boost)
+		for(var/skill in skill_boosts)
 			buyer.skills.set_skill(skill, skill_boosts[skill])
 		to_chat(buyer, SPAN_BOLDNOTICE("Your [english_list(skill_boosts)] skill[skill_list_length > 1 ? "s have" : " has"] been increased!"))
 	var/obj/item/card/id/ID = buyer.wear_id
@@ -220,6 +220,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		/obj/item/storage/box/kit/assault
 	)
 	specialization = "Assault"
+		to_chat(buyer, SPAN_BOLDNOTICE("An assault marine in the USCM, you were originally a SADAR technician by trade. During Operation Tychon's Tackle, you proved yourself while assisting the Falling Falcons in destroying CLF improvised armored vehicles. For your performance, you were promoted to Sergeant by the Heyst's CO. Following the battle, while the USS Heyst undergoes repairs you were transfered to the USS Almayer. Your CQC training onboard the Heyst still serves you well. Go get some, Marine!"))
 	skill_boosts = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_JTAC = SKILL_JTAC_EXPERT
@@ -230,6 +231,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		/obj/item/storage/box/kit/construction
 	)
 	specialization = "Construction"
+		to_chat(buyer, SPAN_BOLDNOTICE("You were an engineer in the Dust Raiders before being promoted to the rank of Sergeant. With your promotion, you had to say goodbye to the Dust Raiders and were transfered by the needs of the Marine Corps to the Falling Falcons. You still remember your engineering training, but your leadership comes first. Oorah!"))
 	skill_boosts = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI
@@ -240,6 +242,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		/obj/item/storage/box/kit/recon
 	)
 	specialization = "Recon"
+			to_chat(buyer, SPAN_BOLDNOTICE("A master in tracking and reconassiance, you haven't come from the USCM. Originally an NCO in FORECON, you disgraced yourself on an operation in a friendly fire incident. While your platoon prepared for another mission to LV-552, the CO informed you of your demotion. Following it, you've been transfered to the Falling Falcons, an infamous USCM battalion as a punishment. Get out there and prove yourself! Oorah."))
 	skill_boosts = list(
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER
 	)
@@ -249,14 +252,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		/obj/item/storage/box/kit/triage
 	)
 	specialization = "Triage"
+		to_chat(buyer, SPAN_BOLDNOTICE("A medic by training, you were assigned to the Falling Falcons in 2180. You were sent onto Operation Tychon's Tackle and gained notoriety from the Almayer's original CO. Field promoted to Sergeant, and later taught by the SEA before reentering cryo; You remember your medical training, but your leadership comes first. Oorah!"))
+	skill_boosts = list(
+		SKILL_MEDICAL_TRAINED = SKILL_MEDICAL_MEDIC
+	)
 
 /obj/effect/essentials_set/leader/triage/handle_buy(var/mob/living/carbon/human/buyer)
 	..()
 	var/datum/skills/SL/skills = buyer.skills
 	skills.fireman_carry_speed = 1 SECONDS
-	to_chat(buyer, SPAN_BOLDNOTICE("Your ability to fireman carry has been improved!"))
 
-	specialization = "Triage"
-	skill_boosts = list(
-		SKILL_MEDICAL_TRAINED = SKILL_MEDICAL_MEDIC
-	)

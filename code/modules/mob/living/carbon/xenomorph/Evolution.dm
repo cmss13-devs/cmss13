@@ -139,14 +139,13 @@
 	else
 		new_xeno.plasma_stored = new_xeno.plasma_max*(plasma_stored/plasma_max) //preserve the ratio of plasma
 
-	for(var/i in src.built_structures)
-		new_xeno.built_structures += built_structures[i]
-
 	new_xeno.built_structures = built_structures.Copy()
 
 	for(var/i in built_structures)
 		var/list/L = built_structures[i]
 		QDEL_NULL_LIST(L)
+
+	built_structures = null
 
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You emerge in a greater form from the husk of your old body. For the hive!"))
@@ -309,6 +308,8 @@
 	for(var/i in built_structures)
 		var/list/L = built_structures[i]
 		QDEL_NULL_LIST(L)
+
+	built_structures = null
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!

@@ -183,6 +183,9 @@
 	..()
 
 /obj/effect/alien/resin/special/eggmorph/attack_ghost(mob/dead/observer/user)
+	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") == "No")
+		return
+
 	if(world.time < hugger_timelock)
 		to_chat(user, SPAN_WARNING("The hive cannot support huggers yet..."))
 		return
@@ -207,9 +210,6 @@
 			current_hugger_count++
 	if(playable_hugger_limit <= current_hugger_count)
 		to_chat(user, SPAN_WARNING("\The [src] cannot support more huggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
-		return
-
-	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") == "No")
 		return
 
 	var/mob/living/carbon/Xenomorph/Facehugger/hugger = new /mob/living/carbon/Xenomorph/Facehugger(loc, null, linked_hive.hivenumber)

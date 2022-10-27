@@ -200,6 +200,45 @@
 #define WEAR_IN_R_STORE     "in_r_store"
 #define WEAR_IN_SHOES		"in_shoes"
 
+// Contained Sprites
+#define WORN_LHAND	"_lh"
+#define WORN_RHAND	"_rh"
+#define WORN_LSTORE	"_ls"
+#define WORN_RSTORE "_rs"
+#define WORN_SSTORE "_ss"
+#define WORN_LEAR 	"_le"
+#define WORN_REAR 	"_re"
+#define WORN_HEAD 	"_he"
+#define WORN_UNDER 	"_un"
+#define WORN_SUIT 	"_su"
+#define WORN_GLOVES	"_gl"
+#define WORN_SHOES	"_sh"
+#define WORN_EYES	"_ey"
+#define WORN_BELT	"_be"
+#define WORN_BACK	"_ba"
+#define WORN_ID		"_id"
+#define WORN_MASK	"_ma"
+
+GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
+	WEAR_L_HAND = WORN_LHAND,
+	WEAR_R_HAND = WORN_RHAND,
+	WEAR_L_STORE = WORN_LSTORE,
+	WEAR_R_STORE = WORN_RSTORE,
+	WEAR_J_STORE = WORN_SSTORE,
+	WEAR_L_EAR = WORN_LEAR,
+	WEAR_R_EAR = WORN_REAR,
+	WEAR_HEAD = WORN_HEAD,
+	WEAR_BODY = WORN_UNDER,
+	WEAR_JACKET = WORN_SUIT,
+	WEAR_HANDS = WORN_GLOVES,
+	WEAR_FEET = WORN_SHOES,
+	WEAR_EYES = WORN_EYES,
+	WEAR_WAIST = WORN_BELT,
+	WEAR_BACK = WORN_BACK,
+	WEAR_ID = WORN_ID,
+	WEAR_FACE = WORN_MASK
+))
+
 /proc/slotdefine2slotbit(slotdefine)
 	. = NO_FLAGS
 	switch(slotdefine)

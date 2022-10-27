@@ -20,6 +20,8 @@
 	connected = new tray_path(src)
 
 /obj/structure/morgue/Destroy()
+	for(var/atom/movable/object in contents)
+		object.forceMove(loc)
 	. = ..()
 	QDEL_NULL(connected)
 

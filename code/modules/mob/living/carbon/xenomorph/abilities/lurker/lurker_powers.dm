@@ -110,7 +110,7 @@
 	shake_camera(Target, 2, 1)
 	apply_cooldown_override(40)
 
-/datum/action/xeno_action/onclick/flurry/use_ability(atom/A) //flurry ability
+/datum/action/xeno_action/activable/flurry/use_ability(atom/A) //flurry ability
 	var/mob/living/carbon/Xenomorph/Xeno = owner
 	if (!istype(Xeno))
 		return
@@ -121,6 +121,7 @@
 
 	Xeno.visible_message(SPAN_DANGER("[Xeno] slashes frantically the area in front of him!"), \
 	SPAN_XENOWARNING("You unleash a barrage of slashes!"))
+	playsound(Xeno, "alien_tail_swipe3", 30)
 	apply_cooldown()
 
 	// Transient turf list
@@ -128,9 +129,9 @@
 	var/list/temp_turfs = list()
 	var/list/telegraph_atom_list = list()
 
-	// Code to get a 2x3 area of turfs
+	// Code to get a 1x3 area of turfs
 	var/turf/root = get_turf(Xeno)
-	var/facing = Xeno.dir
+	var/facing = get_dir(Xeno, A)
 	var/turf/infront = get_step(root, facing)
 	var/turf/infront_left = get_step(root, turn(facing, 45))
 	var/turf/infront_right = get_step(root, turn(facing, -45))
@@ -141,6 +142,7 @@
 		temp_turfs += infront_right
 
 	for (var/turf/T in temp_turfs)
+
 		if (!istype(T))
 			continue
 
@@ -162,12 +164,12 @@
 			SPAN_XENOWARNING("You slash [Target] multiple times!"))
 			Xeno.flick_attack_overlay(Target, "slash")
 			Target.last_damage_data = create_cause_data(Xeno.caste_type, Xeno)
-			Target.apply_armoured_damage(20, ARMOR_MELEE, BRUTE)
+			log_attack("[key_name(Xeno)] attacked [key_name(Target)] with Flurry")
+			Target.apply_armoured_damage(30, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(Target), "alien_claw_flesh", 30, TRUE)
-			playsound(Xeno, "alien_tail_swipe3", 30)
 			Xeno.emote("roar")
 			Xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-			Xeno.gain_health(20)
+			Xeno.gain_health(30)
 			..()
 			return
 
@@ -181,6 +183,26 @@
 
 	if(!Xeno.check_state())
 		return
+
+	var/list/turf/path = getline2(Xeno, Target, include_from_atom = FALSE)
+	for(var/turf/path_turf as anything in path)
+		if(path_turf.density)
+			to_chat(Xeno, SPAN_WARNING("There's something blocking you from stricking!"))
+			return
+		var/atom/barrier = path_turf.handle_barriers(Xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		if(barrier != path_turf)
+			to_chat(Xeno, SPAN_WARNING("There's something blocking you from stricking!"))
+			return
+		for(var/obj/structure/S in path_turf)
+			if(istype(S, /obj/structure/window/framed))
+				var/obj/structure/window/framed/W = S
+				if(W.unslashable)
+					return
+				W.shatter_window(TRUE)
+				apply_cooldown(cooldown_modifier = 0.5)
+				Xeno.visible_message(SPAN_XENOWARNING("\The [Xeno] strikes the window with his tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
+				playsound(get_turf(Target), "glassbreak3", 30, TRUE)
+				return
 
 	if(!isXenoOrHuman(Target) || Xeno.can_not_harm(Target))
 		Xeno.visible_message(SPAN_XENOWARNING("\The [Xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
@@ -211,10 +233,11 @@
 		playsound(Target,'sound/weapons/alien_bite2.ogg', 50, 1)
 		Xeno.flick_attack_overlay(Target, "tail")
 		Target.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, "chest", 5)
-		Xeno.gain_health(100)
+		Xeno.gain_health(150)
 		Xeno.xeno_jitter(1 SECONDS)
 		Xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 		Target.last_damage_data = create_cause_data(Xeno.caste_type, Xeno)
+		log_attack("[key_name(Xeno)] Executed [key_name(Target)] with Tail Jab")
 		Xeno.emote("roar")
 		apply_cooldown()
 		return
@@ -226,5 +249,6 @@
 	Target.apply_armoured_damage(20, ARMOR_MELEE, BRUTE, "chest")
 	Target.KnockDown(0.5, 0.5)
 	Target.last_damage_data = create_cause_data(Xeno.caste_type, Xeno)
+	log_attack("[key_name(Xeno)] attacked [key_name(Target)] with Tail Jab")
 	step_away(Target, Xeno, 2, 2)
 	apply_cooldown() // normal cooldown if you havent executed anyone

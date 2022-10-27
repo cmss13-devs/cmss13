@@ -91,13 +91,13 @@
 	knockdown = FALSE
 	freeze_self = FALSE
 
-/datum/action/xeno_action/onclick/flurry
+/datum/action/xeno_action/activable/flurry
 	name = "Flurry"
 	action_icon_state = "rav_spike"
 	ability_name = "Flurry"
 	macro_path = /datum/action/xeno_action/verb/verb_flurry
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 30
 
 

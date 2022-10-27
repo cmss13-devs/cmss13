@@ -11,7 +11,7 @@
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/pounce/rush,
-		/datum/action/xeno_action/onclick/flurry,
+		/datum/action/xeno_action/activable/flurry,
 		/datum/action/xeno_action/activable/tail_Jab
 	)
 	keystone = TRUE
@@ -27,7 +27,7 @@
 	L.health_modifier -= XENO_HEALTH_MOD_MED
 	L.speed_modifier += XENO_SPEED_FASTMOD_TIER_2
 	L.armor_modifier += XENO_ARMOR_MOD_LARGE
-	L.melee_damage_lower = XENO_DAMAGE_TIER_2
+	L.melee_damage_lower = XENO_DAMAGE_TIER_3
 	L.melee_damage_upper = XENO_DAMAGE_TIER_3
 	L.attack_speed_modifier -= 2
 

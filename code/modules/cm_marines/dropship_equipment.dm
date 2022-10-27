@@ -642,7 +642,7 @@
 	FS.AddComponent(/datum/component/cas_delayed_impact, travelling_time)
 	FS.AddComponent(/datum/component/cas_warning_dot)
 	if(ammo_equipped.warning_sound)
-		FS.AddComponent(/datum/component/cas_inbound_sfx, travelling_time - 10, ammo_equipped.warning_sound, ammo_equipped.warning_sound_volume)
+		FS.AddComponent(/datum/component/cas_inbound_sfx, travelling_time - (1 SECONDS), ammo_equipped.warning_sound, ammo_equipped.warning_sound_volume)
 	FS.fire(T, SS)
 
 	msg_admin_niche("[key_name(user)] is direct-firing [ammo_equipped] onto [SS.signal_loc] at ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP LOC</a>)")
@@ -659,8 +659,7 @@
 	setup_payload(FS)
 	setup_guidance(FS) // No travel time in FM
 	FS.AddComponent(/datum/component/cas_roof_impact) // Ceiling debris and standard CAS protection
-	FS.AddComponent(/datum/component/cas_delayed_impact, 0.5 SECONDS)
-	FS.AddComponent(/datum/component/cas_warning_dot)
+	FS.AddComponent(/datum/component/cas_delayed_impact, 1 SECONDS)
 	if(ammo_equipped.warning_sound)
 		FS.AddComponent(/datum/component/cas_inbound_sfx, 0, ammo_equipped.warning_sound, ammo_equipped.warning_sound_volume)
 	FS.fire(T, SS)

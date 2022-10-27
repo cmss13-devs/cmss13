@@ -24,7 +24,7 @@
 /datum/component/cas_laser_guidance/proc/fly(source, delta_time)
 	SIGNAL_HANDLER
 	var/datum/cas_firing_solution/P = parent
-	if(!P.signal_target.signal_loc.loc)
+	if(!P?.signal_target?.signal_loc?.loc)
 		ammo_accuracy_range += (delta_time * inaccuracy_increment)
 
 /datum/component/cas_laser_guidance/proc/retarget(source, atom/target)
@@ -40,6 +40,7 @@
 	SIGNAL_HANDLER
 	qdel(src)
 
+/// Guidance resets target to turf location if the previous target is lost
 /datum/component/cas_laser_guidance/proc/fallback(source, atom/old_target)
 	SIGNAL_HANDLER
 	var/datum/cas_firing_solution/P = parent

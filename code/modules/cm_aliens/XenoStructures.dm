@@ -146,6 +146,7 @@
 	opacity = 0
 	health = HEALTH_RESIN_XENO_STICKY
 	layer = RESIN_STRUCTURE_LAYER
+	plane = FLOOR_PLANE
 	var/slow_amt = 8
 	var/hivenumber = XENO_HIVE_NORMAL
 

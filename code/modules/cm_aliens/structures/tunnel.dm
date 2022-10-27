@@ -14,6 +14,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = RESIN_STRUCTURE_LAYER
+	plane = FLOOR_PLANE
 
 	var/tunnel_desc = "" //description added by the hivelord.
 

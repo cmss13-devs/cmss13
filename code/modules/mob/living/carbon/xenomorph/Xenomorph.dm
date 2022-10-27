@@ -237,6 +237,7 @@
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
 
 	var/got_evolution_message = FALSE
+	var/pounce_distance = 0
 
 
 	//////////////////////////////////////////////////////////////////

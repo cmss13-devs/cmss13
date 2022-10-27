@@ -212,6 +212,29 @@
 	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") == "No")
 		return
 
+	if(world.time - user.timeofdeath < 3 MINUTES)
+		var/time_left = round((user.timeofdeath + 3 MINUTES - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. ([time_left] seconds left)"))
+		return
+	if(!stored_huggers)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any huggers to inhabit."))
+		return
+
+	if(world.time > last_marine_count + marine_count_cooldown)
+		var/marine_count = 0
+		for(var/mob/mob as anything in GLOB.human_mob_list)
+			if(mob.job in ROLES_MARINES)
+				marine_count++
+		playable_hugger_limit = round(marine_count / 5)
+
+	var/current_hugger_count = 0
+	for(var/mob/mob as anything in GLOB.living_xeno_list)
+		if(isXenoFacehugger(mob))
+			current_hugger_count++
+	if(playable_hugger_limit <= current_hugger_count)
+		to_chat(user, SPAN_WARNING("\The [src] cannot support more huggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
+		return
+
 	var/mob/living/carbon/Xenomorph/Facehugger/hugger = new /mob/living/carbon/Xenomorph/Facehugger(loc, null, linked_hive.hivenumber)
 	user.mind.transfer_to(hugger, TRUE)
 	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [src]!"), SPAN_XENODANGER("You emerge out of \the [src] and awaken from your slumber. For the Hive!"))

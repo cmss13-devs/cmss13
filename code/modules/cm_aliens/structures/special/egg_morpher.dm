@@ -227,7 +227,7 @@
 				marine_count++
 		playable_hugger_limit = round(marine_count / 5)
 
-	var/current_hugger_count = 0
+	current_hugger_count = 0
 	for(var/mob/mob as anything in GLOB.living_xeno_list)
 		if(isXenoFacehugger(mob))
 			current_hugger_count++

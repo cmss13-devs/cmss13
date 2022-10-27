@@ -112,6 +112,7 @@
 #include "code\__HELPERS\#maths.dm"
 #include "code\__HELPERS\_lists.dm"
 #include "code\__HELPERS\_time.dm"
+#include "code\__HELPERS\chat.dm"
 #include "code\__HELPERS\cmp.dm"
 #include "code\__HELPERS\files.dm"
 #include "code\__HELPERS\filters.dm"

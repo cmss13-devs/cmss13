@@ -1,24 +1,40 @@
-/// Displays targeting dot before enqueuing an actual ordnance effect
-/datum/component/cas_timed_fuse
+/// Displays targeting dot holding impact
+/datum/component/cas_warning_dot
 	dupe_mode = COMPONENT_DUPE_UNIQUE
-	/// Effect to enqueue
-	var/datum/cas_effect/target_effect
-	/// Warning atom-effect type
-	var/warn_effect
-	/// Delay between warning effect and main effect
 	var/delay
+	var/effect_type
+	var/active = FALSE
+	var/atom/movable/effect
 
-/datum/component/cas_timed_fuse/Initialize(datum/cas_effect/target_effect, warn_effect = /obj/effect/overlay/temp/blinking_laser, delay = 1 SECONDS)
-	if(!istype(parent, /datum/cas_firing_solution))
-		return COMPONENT_INCOMPATIBLE
-	src.target_effect = target_effect
-	src.warn_effect = warn_effect
+/datum/component/cas_warning_dot/Initialize(delay = 1 SECONDS, effect_type = /obj/effect/overlay/temp/blinking_laser)
 	src.delay = delay
-	RegisterSignal(parent, COMSIG_CAS_SOLUTION_IMPACT, .proc/impact)
+	src.effect_type = effect_type
+	RegisterSignal(parent, COMSIG_CAS_SOLUTION_TERMINAL, .proc/check)
+	RegisterSignal(parent, COMSIG_CAS_SOLUTION_PROCESS,  .proc/tick)
+	RegisterSignal(parent, COMSIG_CAS_SOLUTION_RETARGETED, .proc/move)
 
-/datum/component/cas_timed_fuse/proc/impact(source, atom/target)
+/datum/component/cas_warning_dot/proc/check(source, atom/target)
 	SIGNAL_HANDLER
-	if(warn_effect)
-		new warn_effect(target)
-	target_effect.arm(parent)
-	addtimer(CALLBACK(target_effect, /datum/cas_effect.proc/fire), delay)
+	if(!active)
+		var/turf/T = get_turf(target)
+		effect = new effect_type(T)
+		RegisterSignal(effect, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		active = TRUE
+	if(delay <= 0)
+		qdel(src)
+		return
+	return COMPONENT_CAS_SOLUTION_HOLD
+
+/datum/component/cas_warning_dot/proc/tick(source, delta_time)
+	SIGNAL_HANDLER
+	if(delay > 0 && active)
+		delay -= delta_time * 10
+
+/datum/component/cas_warning_dot/proc/move(source, atom/target)
+	SIGNAL_HANDLER
+	if(effect)
+		effect.forceMove(get_turf(target))
+
+/datum/component/cas_warning_dot/proc/cleanup()
+	SIGNAL_HANDLER
+	effect = null

@@ -18,8 +18,8 @@
 	RegisterSignal(parent, COMSIG_CAS_SOLUTION_RETARGET, .proc/fallback)
 	RegisterSignal(parent, list(
 		COMSIG_CAS_SOLUTION_IMPACT,
-		COMSIG_CAS_SOLUTION_MISS,
-		COMSIG_CAS_SOLUTION_INTERCEPTED), .proc/disable)
+		COMSIG_CAS_SOLUTION_INTERCEPTED,
+		COMSIG_CAS_SOLUTION_MISSED), .proc/disable)
 
 /datum/component/cas_laser_guidance/proc/fly(source, delta_time)
 	SIGNAL_HANDLER

@@ -1,8 +1,8 @@
 /datum/component/cas_warhead_laser/Initialize()
 	RegisterSignal(parent, COMSIG_CAS_SOLUTION_IMPACT, .proc/boom)
 
-/datum/component/cas_warhead_laser/proc/boom
-	SIGNAL_HANLDER
+/datum/component/cas_warhead_laser/proc/boom(datum/source, atom/target)
+	SIGNAL_HANDLER
 	var/list/turf_list = list()
 	for(var/turf/T in range(target, 3)) //This is its area of effect
 		turf_list += T

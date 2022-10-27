@@ -596,11 +596,11 @@
 
 
 /obj/structure/dropship_equipment/weapon/proc/deplete_ammo()
-	if(ammo_equipped)
-		ammo_equipped.ammo_count = max(ammo_equipped.ammo_count-ammo_equipped.ammo_used_per_firing, 0)
+	if(!ammo_equipped?.deplete_ammo())
+		ammo_equipped = null
 	update_icon()
 
-/// Sets the firing solution guidance parameters
+/// Sets the firing solution guidance parameters (accuracy, travel time, etc)
 /obj/structure/dropship_equipment/weapon/proc/setup_guidance(datum/cas_firing_solution/FS)
 	var/has_targeting_module = FALSE
 	if(linked_shuttle)
@@ -627,13 +627,9 @@
 
 /// Sets the payload components used by the weapon
 /obj/structure/dropship_equipment/weapon/proc/setup_payload(datum/cas_firing_solution/FS)
-	// By default just passthrough the ammo's type
-	if(ammo_equipped.payload_type)
-		var/datum/cas_effect/payload = new ammo_equipped.payload_type()
-		if(FS.mode == CAS_MODE_DIRECT)
-			FS.AddComponent(/datum/component/cas_timed_fuse, payload)
-		if(FS.mode == CAS_MODE_FM) // no warning dot
-			FS.AddComponent(/datum/component/cas_timed_fuse, payload, null, 0.5 SECONDS)
+	// By default just refers to the ammo
+	ammo_equipped.setup_payload(FS)
+
 
 /obj/structure/dropship_equipment/weapon/proc/open_fire(datum/cas_signal/SS, turf/T, mob/user)
 	var/datum/cas_firing_solution/FS = new()
@@ -642,7 +638,9 @@
 	FS.name = ammo_equipped.name
 	setup_payload(FS)
 	var/travelling_time = setup_guidance(FS)
+	FS.AddComponent(/datum/component/cas_roof_impact) // Ceiling debris and standard CAS protection
 	FS.AddComponent(/datum/component/cas_delayed_impact, travelling_time)
+	FS.AddComponent(/datum/component/cas_warning_dot)
 	if(ammo_equipped.warning_sound)
 		FS.AddComponent(/datum/component/cas_inbound_sfx, travelling_time - 10, ammo_equipped.warning_sound, ammo_equipped.warning_sound_volume)
 	FS.fire(T, SS)
@@ -659,7 +657,10 @@
 	FS.source_mob = user
 	FS.name = ammo_equipped.name
 	setup_payload(FS)
-	setup_guidance(FS)
+	setup_guidance(FS) // No travel time in FM
+	FS.AddComponent(/datum/component/cas_roof_impact) // Ceiling debris and standard CAS protection
+	FS.AddComponent(/datum/component/cas_delayed_impact, 0.5 SECONDS)
+	FS.AddComponent(/datum/component/cas_warning_dot)
 	if(ammo_equipped.warning_sound)
 		FS.AddComponent(/datum/component/cas_inbound_sfx, 0, ammo_equipped.warning_sound, ammo_equipped.warning_sound_volume)
 	FS.fire(T, SS)

@@ -7,7 +7,7 @@
 
 /datum/cas_firing_solution
 	/// User-friendly name of firing instance
-	var/name = "Abstract Firing Solution"
+	var/name = "CAS Firing Solution"
 	/// Intended target
 	var/atom/target
 	/// Electronic signature target
@@ -56,15 +56,19 @@
 	// Terminal validation may hold the actual impact or cause a miss
 	var/validate = SEND_SIGNAL(src, COMSIG_CAS_SOLUTION_TERMINAL, target)
 	if(validate & COMPONENT_CAS_SOLUTION_MISS)
-		SEND_SIGNAL(src, COMSIG_CAS_SOLUTION_MISSED, target)
 		status = CAS_FIRING_IMPACT
+		SEND_SIGNAL(src, COMSIG_CAS_SOLUTION_MISSED, target)
+		qdel(src)
 		return
+
 	if(validate & COMPONENT_CAS_SOLUTION_HOLD)
 		return
 
-	// Enter impact mode, this is final
+	// Final impact
 	status = CAS_FIRING_IMPACT
 	SEND_SIGNAL(src, COMSIG_CAS_SOLUTION_IMPACT, target)
+	// We delete on subsequent processing if no component is requeting to stay alive
+	return
 
 /datum/cas_firing_solution/proc/fire(atom/target, datum/cas_signal/signal_target)
 	if(status != CAS_FIRING_IDLE)
@@ -86,7 +90,7 @@
 	UnregisterSignal(src.target, COMSIG_PARENT_QDELETING)
 	src.target = target
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/target_lost)
-	SEND_SIGNAL(src, COMSIG_CAS_SOLUTION_RETARGETED)
+	SEND_SIGNAL(src, COMSIG_CAS_SOLUTION_RETARGETED, target)
 
 /datum/cas_firing_solution/proc/target_lost()
 	SIGNAL_HANDLER

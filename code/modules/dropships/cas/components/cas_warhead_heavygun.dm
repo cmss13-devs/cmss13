@@ -17,36 +17,35 @@
 		return COMPONENT_INCOMPATIBLE
 	src.shells = shells
 	src.bullet_spread_range = bullet_spread_range
-	src.shrapnel_type = sharpnel_type
+	src.shrapnel_type = shrapnel_type
 	RegisterSignal(parent, COMSIG_CAS_SOLUTION_IMPACT, .proc/prime)
-	RegisterSignal(parent, COMSIG_CAS_SOLUTION_PROCESS, .proc/hold)
+	RegisterSignal(parent, COMSIG_CAS_SOLUTION_PROCESS, .proc/fire)
 
 /datum/component/cas_warhead_heavygun/proc/prime(source, atom/target)
 	SIGNAL_HANDLER
 	locked_target = get_turf(target)
 
-/datum/component/cas_warhead_heavygun/proc/hold(source)
+/datum/component/cas_warhead_heavygun/proc/fire(source, delta_time)
+	SIGNAL_HANDLER
 	if(locked_target && shells)
-		return COMPONENT_CAS_SOLUTION_PROCESSING
-
-/datum/component/cas_warhead_heavygun/process(delta_time)
-	if(!locked_target)
-		return
-	time_counter += delta_time * 10
-	var/list/turf/turf_list = RANGE_TURFS(bullet_spread_range, locked_target)
-	while(time_counter >= 1 && shells >= 1)
-		shells--
-		time_counter--
-		shell_explosion(pick(turf_list))
-	if(shells >= 1)
-		return
-	if(time_counter > 1 SECONDS) // one second after end, supersonic bang
-		playsound(locked_target, 'sound/effects/gau.ogg',100,1,60)
-		qdel(src)
-		return PROCESS_KILL
+		time_counter += delta_time * 10
+		var/list/turf/turf_list = RANGE_TURFS(bullet_spread_range, locked_target)
+		while(time_counter >= 1 && shells >= 1)
+			shells--
+			time_counter--
+			shell_explosion(pick(turf_list))
+		if(shells >= 1)
+			return COMPONENT_CAS_SOLUTION_PROCESSING
+		if(time_counter > 1 SECONDS) // one second after end, supersonic bang
+			playsound(locked_target, 'sound/effects/gau.ogg',100,1,60)
+			qdel(src)
+			return
+		return COMPONENT_CAS_SOLUTION_PROCESSING // still going
 
 /datum/component/cas_warhead_heavygun/proc/shell_explosion(turf/T)
-	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+	set waitfor = FALSE
+	var/datum/cas_firing_solution/P = parent
+	var/datum/cause_data/cause_data = create_cause_data(initial(P.name), P.source_mob)
 	T.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(alldirs), cause_data)
 	create_shrapnel(T, 1, 0, 0, shrapnel_type, cause_data, FALSE, 100) //simulates a bullet
 	for(var/atom/movable/AM as anything in T)

@@ -13,5 +13,5 @@
 	SIGNAL_HANDLER
 	var/datum/cas_firing_solution/P = parent
 	var/turf/target_turf = get_turf(target)
-	cell_explosion(target_turf, exp_power, exp_falloff, exp_falloff_type, null, create_cause_data(P.name, P.source_mob))
+	INVOKE_ASYNC(GLOBAL_PROC, /proc/cell_explosion, target_turf, exp_power, exp_falloff, exp_falloff_type, null, create_cause_data(P.name, P.source_mob))
 	qdel(src)

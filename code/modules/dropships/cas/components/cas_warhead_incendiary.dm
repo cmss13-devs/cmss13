@@ -11,7 +11,7 @@
 	src.fire_color = fire_color
 	RegisterSignal(parent, COMSIG_CAS_SOLUTION_IMPACT, .proc/boom)
 
-/datum/component/cas_warhead_incendary/proc/boom(source, atom/target)
+/datum/component/cas_warhead_incendiary/proc/boom(source, atom/target)
 	SIGNAL_HANDLER
 	var/datum/cas_firing_solution/P = parent
 	var/turf/target_turf = get_turf(target)

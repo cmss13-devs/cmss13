@@ -11,6 +11,7 @@
 	src.ammo_max_inaccuracy = ammo_max_inaccuracy
 	src.ammo_accuracy_range = ammo_accuracy_range
 	RegisterSignal(parent, COMSIG_CAS_SOLUTION_TERMINAL, .proc/retarget)
+	RegisterSignal(parent, COMSIG_CAS_SOLUTION_RETARGET, .proc/fallback)
 
 /datum/component/cas_simple_guidance/proc/retarget(source, atom/target)
 	SIGNAL_HANDLER
@@ -20,3 +21,8 @@
 	var/list/turf/turf_list = RANGE_TURFS(ammo_accuracy_range, T)
 	var/turf/new_target = pick(turf_list)
 	P.retarget(new_target)
+
+/datum/component/cas_simple_guidance/proc/fallback(source, atom/old_target)
+	SIGNAL_HANDLER
+	var/datum/cas_firing_solution/P = parent
+	P.retarget(get_turf(old_target))

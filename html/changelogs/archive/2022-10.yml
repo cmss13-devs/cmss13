@@ -321,3 +321,5 @@
   - bugfix: Removed hardcoding on hydro trays on Kutjevo to be unslashable/unacidable
   harryob:
   - bugfix: cables now appear under weeds and catwalks correctly.
+  - bugfix: coffin's no longer transmutate wood into metal, and require a crowbar
+      to break.

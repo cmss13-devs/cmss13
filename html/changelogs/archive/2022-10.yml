@@ -323,6 +323,8 @@
   - bugfix: cables now appear under weeds and catwalks correctly.
   - bugfix: coffin's no longer transmutate wood into metal, and require a crowbar
       to break.
+  - admin: build mode 2 now allows you to copy variables in advanced mode by holding
+      down shift
   kugamo:
   - bugfix: Fixed Carriers getting xenoid sprites when carrying huggers.
   - bugfix: Fixed bad shading around resin traps, fast/sticky resin, eggs, and tunnels.

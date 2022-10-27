@@ -1460,7 +1460,6 @@
 #include "code\modules\discord\discord_embed.dm"
 #include "code\modules\droppod\container_droppod.dm"
 #include "code\modules\droppod\droppod_ui.dm"
-#include "code\modules\dropships\testing.dm"
 #include "code\modules\dropships\attach_points\attach_point.dm"
 #include "code\modules\dropships\attach_points\templates.dm"
 #include "code\modules\dropships\cas\fire_mission_record.dm"

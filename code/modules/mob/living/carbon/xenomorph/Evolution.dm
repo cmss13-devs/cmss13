@@ -141,10 +141,6 @@
 
 	new_xeno.built_structures = built_structures.Copy()
 
-	for(var/i in built_structures)
-		var/list/L = built_structures[i]
-		QDEL_NULL_LIST(L)
-
 	built_structures = null
 
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
@@ -304,10 +300,6 @@
 	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 
 	new_xeno.built_structures = built_structures.Copy()
-
-	for(var/i in built_structures)
-		var/list/L = built_structures[i]
-		QDEL_NULL_LIST(L)
 
 	built_structures = null
 

@@ -213,7 +213,7 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/send_tgs_restart()
 	if(CONFIG_GET(string/new_round_alert_channel) && CONFIG_GET(string/new_round_alert_role_id))
 		if(round_statistics)
-			send2chat("[round_statistics.round_name] Completed!", CONFIG_GET(string/new_round_alert_channel))
+			send2chat("[round_statistics.round_name] completed!", CONFIG_GET(string/new_round_alert_channel))
 		if(SSmapping.next_map_configs)
 			var/datum/map_config/next_map = SSmapping.next_map_configs[GROUND_MAP]
 			if(next_map)

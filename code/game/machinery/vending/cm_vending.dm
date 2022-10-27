@@ -111,11 +111,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if (!item_name || item_name == "" || !typepath)
 			continue
 
-		var/icon_ref = null
-		var/icon_state = null
-		var/desc = ""
-		var/icon/r = null
-
 		GLOB.vending_products[typepath] = 1
 
 //get which turf the vendor will dispense its products on.

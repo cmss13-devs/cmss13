@@ -14,9 +14,10 @@
 		var/list/all_equipment = list()
 		var/list/presets = typesof(/datum/equipment_preset)
 		for(var/i in presets)
-			var/datum/equipment_preset/eq = i
-			if(LAZYLEN(eq))
-				all_equipment += eq.get_antag_clothing_equipment()
+			var/datum/equipment_preset/eq = new i
+			var/list/equipment = eq.get_antag_clothing_equipment()
+			if(LAZYLEN(equipment))
+				all_equipment += equipment
 		return all_equipment
 
 	if(!ishuman(user))

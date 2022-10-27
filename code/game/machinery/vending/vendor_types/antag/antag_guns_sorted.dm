@@ -29,7 +29,7 @@
 
 	return listed_products[faction]
 
-/obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/ui_static_data(mob/user)
 	var/list/data = ..()
 	var/mob/living/carbon/human/H = user
 	var/adaptive_vendor_theme = VENDOR_THEME_COMPANY	//for potential future PMC version

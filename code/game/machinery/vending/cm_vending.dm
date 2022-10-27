@@ -759,8 +759,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/priority = myprod[5]
 
 		var/result = list()
+		var/obj/item/I = item_ref
 		result["href"] = ""
-		result["desc"] = ""
+		result["desc"] = initial(I.desc)
 		if (p_name in product_icon_list)
 			result = product_icon_list[p_name]
 
@@ -768,6 +769,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
 		//forming new list with index, name, amount, available or not, color and add it to display_list
+
 		var/display_item = list(
 			"prod_index" = i,
 			"prod_name" = p_name,
@@ -775,7 +777,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			"prod_color" = priority,
 			"prod_initial" = 0,
 			"prod_icon" = result,
-			"prod_desc" = result["desc"],
+			"prod_desc" = initial(I.desc),
 			"prod_cost" = p_cost,
 			"image" = imgid
 		)
@@ -1114,6 +1116,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 
 		//forming new list with index, name, amount, available or not, color and add it to display_list
+		var/obj/item/I = item_ref
 		var/display_item = list(
 			"prod_index" = i,
 			"prod_name" = p_name,
@@ -1121,7 +1124,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			"prod_color" = myprod[4],
 			"prod_initial" = initial_amount,
 			"prod_icon" = result,
-			"prod_desc" = result["desc"],
+			"prod_desc" = initial(I.desc),
 			"prod_cost" = 0,
 			"image" = imgid
 		)

@@ -24,8 +24,6 @@
 		return
 	var/mob/living/carbon/human/H = user
 
-	var/list/display_list = list()
-
 	var/m_points = 0
 	var/buy_flags = NO_FLAGS
 	if(use_snowflake_points)

@@ -279,11 +279,20 @@
 			if (!isnull(c) && c != "#FFFFFF")
 				I.Blend(initial(c), ICON_MULTIPLY)
 		else
-			if(ispath(k, /obj/effect))
-				continue
-			item = new k()
-			I = icon(item.icon, item.icon_state, SOUTH)
-			qdel(item)
+			if (ispath(k, /obj/effect/essentials_set))
+				var/obj/effect/essentials_set/es_set = new k()
+				var/list/spawned_list = es_set.spawned_gear_list
+				if(LAZYLEN(spawned_list))
+					var/obj/item/target = spawned_list[1]
+					icon_file = initial(target.icon)
+					icon_state = initial(target.icon_state)
+					var/target_obj = new target()
+					I = getFlatIcon(target_obj)
+					qdel(target_obj)
+			else
+				item = new k()
+				I = icon(item.icon, item.icon_state, SOUTH)
+				qdel(item)
 		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
 
 		Insert(imgid, I)

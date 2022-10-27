@@ -1457,6 +1457,7 @@
 #include "code\modules\desert_dam\sandstorm\sandstorm.dm"
 #include "code\modules\destilery\main.dm"
 #include "code\modules\discord\discord_embed.dm"
+#include "code\modules\discord\tgs_commands.dm"
 #include "code\modules\droppod\container_droppod.dm"
 #include "code\modules\droppod\droppod_ui.dm"
 #include "code\modules\dropships\attach_points\attach_point.dm"

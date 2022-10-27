@@ -142,6 +142,12 @@
 	for(var/i in src.built_structures)
 		new_xeno.built_structures += built_structures[i]
 
+	new_xeno.built_structures = built_structures.Copy()
+
+	for(var/i in built_structures)
+		var/list/L = built_structures[i]
+		QDEL_NULL_LIST(L)
+
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You emerge in a greater form from the husk of your old body. For the hive!"))
 
@@ -297,6 +303,12 @@
 			xeno_type = /mob/living/carbon/Xenomorph/Burrower
 
 	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
+
+	new_xeno.built_structures = built_structures.Copy()
+
+	for(var/i in built_structures)
+		var/list/L = built_structures[i]
+		QDEL_NULL_LIST(L)
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!

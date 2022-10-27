@@ -312,6 +312,8 @@
   aceroy:
   - bugfix: All fueltank dispensers are now wrenchable
 2022-10-27:
+  Aceroy:
+  - bugfix: Health Analyzers now accurately recommend when to administer dosages
   Usnpeepoo:
   - bugfix: M2C can no longer be shot at with an item/gun in your active hand.
   Usnpepoo:

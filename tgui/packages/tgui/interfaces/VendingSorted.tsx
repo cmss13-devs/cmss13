@@ -205,17 +205,14 @@ const VendableClothingItem = (props: VenableItem, context) => {
 
       {cost !== 0
         && (
-          <>
-            <Flex.Item>
-              <span className="VendingSorted__Text">
-                {cost === 0 ? undefined : `${cost}P`}
-              </span>
-            </Flex.Item>
-
-            <Flex.Item>
-              <Box className="VendingSorted__Spacer" />
-            </Flex.Item>
-          </>)}
+          <Flex.Item className="VendingSorted__Cost">
+            <span className={classes([
+              "VendingSorted__Text",
+            ])}>
+              {cost === 0 ? undefined : `${cost}P`}
+            </span>
+          </Flex.Item>
+        )}
 
       <Flex.Item grow={1}>
         <VendButton

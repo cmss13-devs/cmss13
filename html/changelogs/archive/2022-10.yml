@@ -311,3 +311,6 @@
       help intent safety.
   aceroy:
   - bugfix: All fueltank dispensers are now wrenchable
+2022-10-27:
+  harryob:
+  - bugfix: cables now appear under weeds and catwalks correctly.

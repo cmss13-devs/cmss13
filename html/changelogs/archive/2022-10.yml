@@ -314,5 +314,7 @@
 2022-10-27:
   Usnpeepoo:
   - bugfix: M2C can no longer be shot at with an item/gun in your active hand.
+  Usnpepoo:
+  - bugfix: Defenders crest down now blocks rest similar to fortify
   harryob:
   - bugfix: cables now appear under weeds and catwalks correctly.

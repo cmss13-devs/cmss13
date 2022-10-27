@@ -1,7 +1,7 @@
 /obj/item/device/cotablet
 	icon = 'icons/obj/items/devices.dmi'
 	name = "command tablet"
-	desc = "A special device used by the Captain of the ship."
+	desc = "A portable command interface used by top brass, capable of issuing commands over long ranges to their linked computer. Built to withstand a nuclear bomb."
 	suffix = "\[3\]"
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
@@ -23,6 +23,7 @@
 	var/tacmap_additional_parameter = null
 	var/minimap_name = "Marine Minimap"
 	COOLDOWN_DECLARE(announcement_cooldown)
+	COOLDOWN_DECLARE(distress_cooldown)
 
 /obj/item/device/cotablet/Initialize()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -58,6 +59,8 @@
 	data["alert_level"] = security_level
 	data["evac_status"] = EvacuationAuthority.evac_status
 	data["endtime"] = announcement_cooldown
+	data["distresstime"] = distress_cooldown
+	data["distresstimelock"] = DISTRESS_TIME_LOCK
 	data["worldtime"] = world.time
 
 	return data
@@ -148,6 +151,22 @@
 			log_game("[key_name(usr)] has called for an emergency evacuation.")
 			message_staff("[key_name_admin(usr)] has called for an emergency evacuation.")
 			. = TRUE
+
+		if("distress")
+			if(!SSticker.mode)
+				return FALSE //Not a game mode?
+
+			if(security_level == SEC_LEVEL_DELTA)
+				to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
+				return FALSE
+
+			for(var/client/C in GLOB.admins)
+				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
+					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
+			message_staff("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
+			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
+			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
+			return TRUE
 
 /obj/item/device/cotablet/proc/update_mapview(var/close = 0)
 	if (close || !current_mapviewer || !Adjacent(current_mapviewer))

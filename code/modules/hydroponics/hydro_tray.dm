@@ -6,8 +6,8 @@
 	icon_state = "hydrotray3"
 	density = 1
 	anchored = 1
-	unslashable = TRUE
-	health = 0
+	unslashable = FALSE
+	health = 100
 	flags_atom = OPENCONTAINER
 	throwpass = 1
 	layer = BELOW_OBJ_LAYER

@@ -192,6 +192,18 @@ var/global/list/gear_datums = list()
 	cost = 2
 	slot = WEAR_EYES
 
+/datum/gear/cmgogglesblack
+	display_name = "Ballistic Goggles (Black)"
+	path = /obj/item/clothing/glasses/mgoggles/black
+	cost = 2
+	slot = WEAR_EYES
+
+/datum/gear/cmgogglesorange
+	display_name = "Ballistic Goggles (Orange)"
+	path = /obj/item/clothing/glasses/mgoggles/orange
+	cost = 2
+	slot = WEAR_EYES
+
 /datum/gear/aviators
 	display_name = "Aviator Shades"
 	path = /obj/item/clothing/glasses/sunglasses/aviator
@@ -516,6 +528,18 @@ var/global/list/gear_datums = list()
 	display_name = "Authentic Tickets to Space Jam"
 	path = /obj/item/prop/helmetgarb/spacejam_tickets
 	cost = 4
+	slot = WEAR_IN_BACK
+
+/datum/gear/weyland_booze
+	display_name = "Weyland-Yutani Lite"
+	path = /obj/item/reagent_container/food/drinks/cans/beer
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/weyland_IPA
+	display_name = "Weyland-Yutani IPA"
+	path = /obj/item/reagent_container/food/drinks/cans/beer
+	cost = 2
 	slot = WEAR_IN_BACK
 
 /datum/gear/pdt_kit

@@ -160,7 +160,9 @@
 		if(W.hull)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
-	var/obj/effect/alien/weeds/W = locate() in T
+	var/list/turf_area = range(3, T)
+
+	var/obj/effect/alien/weeds/W = locate() in turf_area
 	if(W && HIVE_ALLIED_TO_HIVE(W.hivenumber, hivenumber))
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 
@@ -244,8 +246,6 @@
 	attack_sound = null
 	friendly = "nuzzles"
 	wall_smash = 0
-	amount_grown = 0
-	max_grown = 10
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_IMMOBILE
@@ -275,6 +275,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction/queen_macro, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
@@ -306,6 +307,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction/queen_macro, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
@@ -391,15 +393,10 @@
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 
-/mob/living/carbon/Xenomorph/Queen/generate_name()
-	. = ..()
-
-	var/datum/hive_status/in_hive = hive
-	if(!in_hive)
-		in_hive = GLOB.hive_datum[hivenumber]
-
+/mob/living/carbon/Xenomorph/Queen/handle_name(var/datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	if(queen_aged)
+		age_xeno()
 		switch(age)
 			if(XENO_NORMAL) name = "[name_prefix]Queen"			 //Young
 			if(XENO_MATURE) name = "[name_prefix]Elder Queen"	 //Mature
@@ -412,6 +409,16 @@
 			hud_update()
 
 		name = "[name_prefix]Young Queen"
+
+	var/name_client_prefix = ""
+	var/name_client_postfix = ""
+	if(client)
+		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
+		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
+	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
+
+	//Update linked data so they show up properly
+	change_real_name(src, name)
 
 /mob/living/carbon/Xenomorph/Queen/proc/make_combat_effective()
 	queen_aged = TRUE
@@ -546,7 +553,7 @@
 		return FALSE
 	if(!check_plasma(50))
 		return FALSE
-	
+
 	// Get a reference to the ability to utilize cooldowns
 	var/datum/action/xeno_action/onclick/queen_word/word_ability
 	for(var/datum/action/xeno_action/action in actions)
@@ -555,7 +562,7 @@
 			if(!word_ability.action_cooldown_check())
 				return FALSE
 			break
-	
+
 	var/input = stripped_multiline_input(src, "This message will be broadcast throughout the hive.", "Word of the Queen", "")
 	if(!input)
 		return FALSE

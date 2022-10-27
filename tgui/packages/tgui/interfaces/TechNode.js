@@ -18,24 +18,19 @@ export const TechNode = (props, context) => {
   } = data;
 
   return (
-    <Window
-      width={500}
-      height={300}
-      theme={theme}
-    >
+    <Window width={500} height={300} theme={theme}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>
             <Section
               title="Information"
               fill
-              buttons={(
+              buttons={
                 <Button
-                  content={"Tech points: " + total_points}
+                  content={'Tech points: ' + total_points}
                   backgroundColor="transparent"
                 />
-              )}
-            >
+              }>
               <LabeledList>
                 <LabeledList.Item label="Name">{name}</LabeledList.Item>
                 <LabeledList.Item label="Description">{desc}</LabeledList.Item>
@@ -67,13 +62,15 @@ export const TechNode = (props, context) => {
                 textAlign="center"
                 width="100%"
                 p=".5rem"
-                disabled={
-                  (!can_afford || !valid_tier || unlocked) ? true : false
-                }
+                disabled={!can_afford || !valid_tier || unlocked ? true : false}
                 tooltip={
-                  unlocked ? "Already unlocked"
-                    : !valid_tier ? "Tech tier not unlocked"
-                      : !can_afford ? "Not enough tech points" : ""
+                  unlocked
+                    ? 'Already unlocked'
+                    : !valid_tier
+                    ? 'Tech tier not unlocked'
+                    : !can_afford
+                    ? 'Not enough tech points'
+                    : ''
                 }
                 onClick={() => act('purchase')}
               />

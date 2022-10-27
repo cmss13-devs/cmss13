@@ -1,6 +1,6 @@
 /turf/closed/wall
 	name = "wall"
-	desc = "A huge chunk of metal used to seperate rooms."
+	desc = "A huge chunk of metal used to separate rooms."
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "0"
 	opacity = 1
@@ -126,37 +126,37 @@
 	. = ..()
 
 //Appearance
-/turf/closed/wall/examine(mob/user)
+/turf/closed/wall/get_examine_text(mob/user)
 	. = ..()
 
 	if(!damage)
 		if (acided_hole)
-			to_chat(user, SPAN_WARNING("It looks fully intact, except there's a large hole that could've been caused by some sort of acid."))
+			. += SPAN_WARNING("It looks fully intact, except there's a large hole that could've been caused by some sort of acid.")
 		else
-			to_chat(user, SPAN_NOTICE("It looks fully intact."))
+			. += SPAN_NOTICE("It looks fully intact.")
 	else
 		var/dam = damage / damage_cap
 		if(dam <= 0.3)
-			to_chat(user, SPAN_WARNING("It looks slightly damaged."))
+			. += SPAN_WARNING("It looks slightly damaged.")
 		else if(dam <= 0.6)
-			to_chat(user, SPAN_WARNING("It looks moderately damaged."))
+			. += SPAN_WARNING("It looks moderately damaged.")
 		else
-			to_chat(user, SPAN_DANGER("It looks heavily damaged."))
+			. += SPAN_DANGER("It looks heavily damaged.")
 
 		if (acided_hole)
-			to_chat(user, SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid."))
+			. += SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid.")
 
 	switch(d_state)
 		if(WALL_STATE_WELD)
-			to_chat(user, SPAN_INFO("The outer plating is intact. A blowtorch should slice it open."))
+			. += SPAN_INFO("The outer plating is intact. A blowtorch should slice it open.")
 		if(WALL_STATE_SCREW)
-			to_chat(user, SPAN_INFO("The outer plating has been sliced open. A screwdriver should remove the support lines."))
+			. += SPAN_INFO("The outer plating has been sliced open. A screwdriver should remove the support lines.")
 		if(WALL_STATE_WIRECUTTER)
-			to_chat(user, SPAN_INFO("The support lines have been removed. Wirecutters will take care of the hydraulic lines."))
+			. += SPAN_INFO("The support lines have been removed. Wirecutters will take care of the hydraulic lines.")
 		if(WALL_STATE_WRENCH)
-			to_chat(user, SPAN_INFO("The hydralic lines have been cut. A wrench will remove the anchor bolts."))
+			. += SPAN_INFO("The hydralic lines have been cut. A wrench will remove the anchor bolts.")
 		if(WALL_STATE_CROWBAR)
-			to_chat(user, SPAN_INFO("The anchor bolts have been removed. A crowbar will pry apart the connecting rods."))
+			. += SPAN_INFO("The anchor bolts have been removed. A crowbar will pry apart the connecting rods.")
 
 //Damage
 /turf/closed/wall/proc/take_damage(dam, var/mob/M)

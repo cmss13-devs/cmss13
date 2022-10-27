@@ -48,7 +48,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
 	var/ooccolor
 	var/be_special = 0				// Special role selection
-	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC // flags in #define/mode.dm
+	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
@@ -101,7 +101,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	//character preferences
 	var/real_name						//our character's name
-	var/be_random_name = 0				//whether we are a random name every round
+	var/be_random_name = FALSE				//whether we are a random name every round
+	var/human_name_ban = FALSE
+
+
 	var/be_random_body = 0				//whether we have a random appearance every round
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 19						//age of character
@@ -534,6 +537,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
+			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
@@ -676,7 +680,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	HTML += "</td></tr></table>"
 	HTML += "</center></table>"
 
-	if(user.client.prefs) //Just makin sure
+	if(user.client?.prefs) //Just makin sure
 		var/b_color = "green"
 		var/msg = "Get random job if preferences unavailable"
 
@@ -1008,6 +1012,9 @@ var/const/MAX_SAVE_SLOTS = 10
 		if("input")
 			switch(href_list["preference"])
 				if("name")
+					if(human_name_ban)
+						to_chat(user, SPAN_NOTICE("You are banned from custom human names."))
+						return
 					var/raw_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if (!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
@@ -1248,7 +1255,13 @@ var/const/MAX_SAVE_SLOTS = 10
 							switch(ascii_char)
 								// A  .. Z
 								if(65 to 90)			//Uppercase Letters will work on first char
-									if(!first_char)
+
+									if(length(xeno_prefix)!=2)
+										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
+										return
+
+									if(!first_char && playtime < 300 HOURS)
+										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [time_left_until(300 HOURS, playtime, 1 HOURS)] more hours to unlock double letter xeno postfix.")))
 										all_ok = FALSE
 								// 0  .. 9
 								if(48 to 57)			//Numbers will work if not the first char
@@ -1593,6 +1606,13 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("toggles_ert")
 					var/flag = text2num(href_list["flag"])
 					toggles_ert ^= flag
+
+				if("ambientocclusion")
+					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION
+					var/atom/movable/screen/plane_master/game_world/plane_master = locate() in user?.client.screen
+					if (!plane_master)
+						return
+					plane_master.backdrop(user?.client.mob)
 
 				if("save")
 					if(save_cooldown > world.time)

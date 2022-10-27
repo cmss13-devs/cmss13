@@ -118,7 +118,7 @@
 	set name = "EM Pulse"
 	set category = "Admin.Fun"
 
-	if(!check_rights(R_DEBUG|R_FUN))
+	if(!check_rights(R_DEBUG|R_ADMIN))
 		return
 
 	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
@@ -199,7 +199,7 @@
 	if (!SSticker.mode)
 		return
 
-	if(!check_rights(R_FUN)) // Seems more like an event thing than an admin thing
+	if(!check_rights(R_SPAWN)) // Seems more like an event thing than an admin thing
 		return
 
 	var/list/list_of_calls = list()
@@ -308,8 +308,8 @@
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
 
 /datum/admins/proc/admin_force_selfdestruct()
-	set name = "Self Destruct"
-	set desc = "Trigger self destruct countdown. This should not be done if the self destruct has already been called."
+	set name = "Self-Destruct"
+	set desc = "Trigger self-destruct countdown. This should not be done if the self-destruct has already been called."
 	set category = "Admin.Events"
 
 	if(!SSticker.mode || !check_rights(R_ADMIN) || get_security_level() == "delta")
@@ -320,7 +320,7 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	message_staff("[key_name_admin(usr)] admin-started self destruct system.")
+	message_staff("[key_name_admin(usr)] admin-started self-destruct system.")
 
 /client/proc/view_faxes()
 	set name = "View Faxes"
@@ -517,7 +517,7 @@
 
 /client/proc/cmd_admin_xeno_report()
 	set name = "Report: Queen Mother"
-	set desc = "Basically a command announcement, but only for selected Xenos Hive"
+	set desc = "Basically a command announcement, but only for selected Xeno's Hive"
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
@@ -641,7 +641,7 @@
 	set name = "Toggle Remote Control"
 	set category = "Admin.Events"
 
-	if(!check_rights(R_FUN))
+	if(!check_rights(R_SPAWN))
 		return
 
 	remote_control = !remote_control
@@ -666,7 +666,7 @@
 // ----------------------------
 
 /datum/admins/proc/event_panel()
-	if(!check_rights(R_FUN,0))
+	if(!check_rights(R_ADMIN,0))
 		return
 
 	var/dat = {"
@@ -729,7 +729,7 @@
 		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
 				<A href='?src=\ref[src];[HrefToken()];chem_panel=make_report'>Make Chem Report</A><br>
 				<br>"}
-	if(check_rights(R_FUN,0))
+	if(check_rights(R_ADMIN,0))
 		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=create_random_reagent'>Generate Reagent</A><br>
 				<br>
 				<A href='?src=\ref[src];[HrefToken()];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>

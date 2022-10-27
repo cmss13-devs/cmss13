@@ -125,8 +125,8 @@ DEFINES in setup.dm, referenced here.
 
 	if(in_hand == src && (flags_item & TWOHANDED))
 		if(active_attachable)
-			active_attachable.unload_attachment(user)
-			return
+			if(active_attachable.unload_attachment(user))
+				return
 		unload(user)//It has to be held if it's a two hander.
 		return
 	else
@@ -516,7 +516,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 
 /mob/living/carbon/human/proc/can_unholster_from_storage_slot(var/obj/item/storage/slot)
-	if(isnull(slot)) 
+	if(isnull(slot))
 		return FALSE
 	if(slot == shoes)//Snowflakey check for shoes and uniform
 		if(shoes.stored_item && isweapon(shoes.stored_item))
@@ -540,7 +540,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if(isweapon(slot)) //then check for weapons
 		return slot
-		
+
 	return FALSE
 
 //For the holster hotkey
@@ -574,10 +574,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 		quick_equip()
 	else //empty hand, start checking slots and holsters
-		
+
 		//default order: suit, belt, back, pockets, uniform, shoes
 		var/list/slot_order = list("s_store", "belt", "back", "l_store", "r_store", "w_uniform", "shoes")
-		
+
 		var/obj/item/slot_selected
 
 		for(var/slot in slot_order)
@@ -588,7 +588,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 					break
 				else
 					unholster_number_offset--
-		
+
 		if(slot_selected)
 			slot_selected.attack_hand(src)
 
@@ -743,15 +743,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(G.active_attachable)
 		// unload the attachment
 		var/drop_to_ground = TRUE
-		if(user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
+		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND))
 			drop_to_ground = FALSE
 			unwield(user)
-		G.active_attachable.unload_attachment(usr, FALSE, drop_to_ground)
-		return
+		if(G.active_attachable.unload_attachment(usr, FALSE, drop_to_ground))
+			return
 
 	//unloading a regular gun
 	var/drop_to_ground = TRUE
-	if(user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
+	if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND))
 		drop_to_ground = FALSE
 		unwield(user)
 		if(!(G.flags_gun_features & GUN_INTERNAL_MAG))

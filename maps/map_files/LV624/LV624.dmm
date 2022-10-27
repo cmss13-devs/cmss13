@@ -5568,6 +5568,9 @@
 /area/lv624/ground/jungle/west_jungle)
 "ayW" = (
 /obj/structure/largecrate/random,
+/obj/item/clothing/head/soft/ferret{
+	pixel_y = 5
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
@@ -11198,6 +11201,10 @@
 /area/lv624/lazarus/comms)
 "aTj" = (
 /obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "brown"
@@ -13872,6 +13879,10 @@
 "cpY" = (
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_east_jungle)
+"cqm" = (
+/obj/structure/powerloader_wreckage/ft,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/containers)
 "cqw" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -49917,7 +49928,7 @@ pDt
 aen
 xNK
 xNK
-xNK
+cqm
 qjf
 qjf
 qjf

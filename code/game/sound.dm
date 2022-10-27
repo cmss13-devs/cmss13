@@ -28,7 +28,7 @@
 //freq: the frequency of the sound. Setting it to 1 will assign it a random frequency
 //sound_range: the maximum theoretical range (in tiles) of the sound, by default is equal to the volume.
 //vol_cat: the category of this sound, used in client volume. There are 3 volume categories: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes) and VOLUME_ADM (Admin sounds and some other stuff)
-//channel: use this only when you want to force the sound to play on an specific channel
+//channel: use this only when you want to force the sound to play on a specific channel
 //status: the regular 4 sound flags
 //falloff: max range till sound volume starts dropping as distance increases
 

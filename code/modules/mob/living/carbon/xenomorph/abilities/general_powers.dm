@@ -84,6 +84,10 @@
 		to_chat(src, SPAN_WARNING("You cannot rest while burrowed!"))
 		return
 
+	if(crest_defense)
+		to_chat(src, SPAN_WARNING("You cannot rest while your crest is down!"))
+		return
+
 	return ..()
 
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
@@ -419,7 +423,9 @@
 			X.update_canmove()
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
+
+	X.pounce_distance = get_dist(X, A)
 
 	var/datum/launch_metadata/LM = new()
 	LM.target = A
@@ -431,6 +437,8 @@
 	LM.collision_callbacks = pounce_callbacks
 
 	X.launch_towards(LM)
+
+	X.update_icons()
 
 	additional_effects_always()
 	..()
@@ -852,3 +860,98 @@
 			return
 
 		current = get_step_towards(current, target_turf)
+
+/datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
+	var/mob/living/carbon/Xenomorph/stabbing_xeno = owner
+
+	if(!action_cooldown_check())
+		return FALSE
+
+	if(!stabbing_xeno.check_state())
+		return FALSE
+
+	if (world.time <= stabbing_xeno.next_move)
+		return FALSE
+
+	var/distance = get_dist(stabbing_xeno, targetted_atom)
+	if(distance > 2)
+		return FALSE
+
+	var/list/turf/path = getline2(stabbing_xeno, targetted_atom, include_from_atom = FALSE)
+	for(var/turf/path_turf as anything in path)
+		if(path_turf.density)
+			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))
+			return FALSE
+		for(var/obj/path_contents in path_turf.contents)
+			if(path_contents != targetted_atom && path_contents.density && !path_contents.throwpass)
+				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))
+				return FALSE
+
+		var/atom/barrier = path_turf.handle_barriers(stabbing_xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		if(barrier != path_turf)
+			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno)
+			if(!tail_stab_cooldown_multiplier)
+				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))
+			else
+				apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
+				xeno_attack_delay(stabbing_xeno)
+			return FALSE
+
+	var/tail_stab_cooldown_multiplier = targetted_atom.handle_tail_stab(stabbing_xeno)
+	if(tail_stab_cooldown_multiplier)
+		stabbing_xeno.animation_attack_on(targetted_atom)
+		apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
+		xeno_attack_delay(stabbing_xeno)
+		return ..()
+
+	if(!isXenoOrHuman(targetted_atom))
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
+		apply_cooldown(cooldown_modifier = 0.1)
+		xeno_attack_delay(stabbing_xeno)
+		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
+		return FALSE
+
+	if(stabbing_xeno.can_not_harm(targetted_atom))
+		return FALSE
+
+	var/mob/living/carbon/target = targetted_atom
+
+	if(target.stat == DEAD || HAS_TRAIT(target, TRAIT_NESTED))
+		return FALSE
+
+	var/obj/limb/limb = target.get_limb(check_zone(stabbing_xeno.zone_selected))
+	if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
+		return FALSE
+
+	if(!check_and_use_plasma_owner())
+		return FALSE
+
+	if(stabbing_xeno.behavior_delegate)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
+
+	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
+
+	if(blunt_stab)
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("You swipe your tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
+		playsound(target, "punch", 50, TRUE)
+		stabbing_xeno.emote("tail")
+	else
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("You skewer [target] through the [limb? limb.display_name : "chest"] with your razor sharp tail!"))
+		playsound(target, "alien_bite", 50, TRUE)
+
+	stabbing_xeno.animation_attack_on(target)
+	stabbing_xeno.flick_attack_overlay(target, "tail")
+
+	var/damage = stabbing_xeno.melee_damage_upper * 1.2
+	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
+	target.Daze(3)
+	shake_camera(target, 2, 1)
+
+	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
+
+	apply_cooldown()
+	xeno_attack_delay(stabbing_xeno)
+
+	..()
+	return target

@@ -2144,9 +2144,9 @@
 /area/shiva/interior/colony/central)
 "ajw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
+	name = "\improper Colony Power Substation";
 	req_access = null;
-	req_one_access = null;
-	name = "\improper Colony Power Substation"
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -10468,9 +10468,9 @@
 	pixel_y = 24
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
+	name = "\improper Colony Power Substation";
 	req_access = null;
-	req_one_access = null;
-	name = "\improper Colony Power Substation"
+	req_one_access = null
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
@@ -10492,6 +10492,16 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/central)
+"eMh" = (
+/obj/structure/prop/ice_colony/flamingo{
+	dir = 9
+	},
+/obj/item/clothing/head/soft/ferret{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/cp_lz2)
 "eMx" = (
 /obj/structure/surface/rack,
 /obj/item/tool/lighter/zippo,
@@ -10929,6 +10939,16 @@
 "flN" = (
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/research_hab)
+"flV" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva{
+	icon_state = "bluefull"
+	},
+/area/shiva/interior/colony/s_admin)
 "fmi" = (
 /obj/structure/bed,
 /obj/effect/landmark/objective_landmark/science,
@@ -16646,8 +16666,8 @@
 "lnk" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	start_charge = 10;
-	name = "telecomms relay power controller"
+	name = "telecomms relay power controller";
+	start_charge = 10
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -16773,8 +16793,8 @@
 "lro" = (
 /obj/structure/machinery/power/apc{
 	dir = 8;
-	start_charge = 0;
-	name = "telecomms relay power controller"
+	name = "telecomms relay power controller";
+	start_charge = 0
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -28106,6 +28126,16 @@
 	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
+"xCW" = (
+/obj/structure/prop/ice_colony/flamingo{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/flamingo/festive{
+	pixel_x = -9;
+	pixel_y = 18
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/cp_lz2)
 "xDq" = (
 /obj/structure/closet/radiation,
 /obj/effect/spawner/random/technology_scanner,
@@ -39624,7 +39654,7 @@ cgd
 qta
 ntc
 kOV
-eni
+eMh
 kOV
 toD
 pWf
@@ -39947,7 +39977,7 @@ ayc
 qta
 ntc
 kOV
-eni
+xCW
 kOV
 cRq
 pWf
@@ -44717,7 +44747,7 @@ san
 hyu
 kzr
 swF
-hyu
+flV
 nOd
 qNn
 qNn

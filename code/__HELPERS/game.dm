@@ -319,5 +319,16 @@ proc/isInSight(var/atom/A, var/atom/B)
 			window_flash(C)
 
 /// Removes an image from a client's `.images`. Useful as a callback.
-/proc/remove_image_from_client(image/image, client/remove_from)
-	remove_from?.images -= image
+/proc/remove_image_from_client(image/image_to_remove, client/remove_from)
+	remove_from?.images -= image_to_remove
+
+///Like remove_image_from_client, but will remove the image from a list of clients
+/proc/remove_images_from_clients(image/image_to_remove, list/show_to)
+	for(var/client/remove_from in show_to)
+		remove_from.images -= image_to_remove
+
+///Add an image to a list of clients and calls a proc to remove it after a duration
+/proc/flick_overlay_to_clients(image/image_to_show, list/show_to, duration)
+	for(var/client/add_to in show_to)
+		add_to.images += image_to_show
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_images_from_clients, image_to_show, show_to), duration, TIMER_CLIENT_TIME)

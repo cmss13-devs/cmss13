@@ -63,7 +63,7 @@
 //Reagent generation classifications
 #define CHEM_CLASS_NONE             0 //Default. Chemicals not used in the chem generator
 #define CHEM_CLASS_BASIC            1 //Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
-#define CHEM_CLASS_COMMON           2 //Chemicals which recipe is commonly known and made (bicardine, alkysine, salt)
+#define CHEM_CLASS_COMMON           2 //Chemicals which recipe is commonly known and made (bicaridine, alkysine, salt)
 #define CHEM_CLASS_UNCOMMON         3 //Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 #define CHEM_CLASS_RARE             4 //Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
 #define CHEM_CLASS_SPECIAL          5 //Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
@@ -91,6 +91,7 @@
 #define REAGENT_NOT_INGESTIBLE	(1<<2) // Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.
 #define REAGENT_CANNOT_OVERDOSE	(1<<3) // Whether the reagent canNOT trigger its overdose effects. Used by regulating property. For ordinary reagents with no overdose effect, instead keep var/overdose at 0.
 #define REAGENT_TYPE_STIMULANT  (1<<4)
+#define REAGENT_NO_GENERATION	(1<<5) // Reagent doesn't randomly generate in chemicals
 
 /*
 	properties defines
@@ -104,6 +105,7 @@
 #define PROPERTY_HEMORRAGING		"hemorrhaging"
 #define PROPERTY_CARCINOGENIC		"carcinogenic"
 #define PROPERTY_HEPATOTOXIC		"hepatotoxic"
+#define PROPERTY_INTRAVENOUS		"intravenous"
 #define PROPERTY_NEPHROTOXIC		"nephrotoxic"
 #define PROPERTY_PNEUMOTOXIC		"pneumotoxic"
 #define PROPERTY_OCULOTOXIC 		"oculotoxic"
@@ -150,6 +152,8 @@
 #define PROPERTY_BONEMENDING 		"bonemending"
 #define PROPERTY_FLUXING 			"fluxing"
 #define PROPERTY_NEUROCRYOGENIC		"neurocryogenic"
+#define PROPERTY_NEUTRALIZING		"neutralizing"
+#define PROPERTY_DISRUPTING			"disrupting"
 #define PROPERTY_ANTIPARASITIC		"anti-parasitic"
 #define PROPERTY_ELECTROGENETIC		"electrogenetic"
 #define PROPERTY_ORGANSTABILIZE		"organ-stabilizing"
@@ -168,6 +172,7 @@
 #define PROPERTY_REGULATING			"regulating"
 #define PROPERTY_CIPHERING			"ciphering"
 #define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
+#define PROPERTY_FIRE_PENETRATING	"fire-penetrating"
 //Admin Only Properties
 #define PROPERTY_ORGAN_HEALING "organ-healing"
 #define PROPERTY_CROSSMETABOLIZING	"cross-metabolizing"
@@ -179,7 +184,6 @@
 #define PROPERTY_RADIUS				"radius" // Fire related admin property
 #define PROPERTY_INTENSITY			"intensity" // Fire related admin property
 #define PROPERTY_DURATION			"duration" // Fire related admin property
-#define PROPERTY_FIRE_PENETRATING	"fire-penetrating" // Fire related admin property
 //Reaction Properties
 #define PROPERTY_FUELING			"fueling"
 #define PROPERTY_OXIDIZING			"oxidizing"
@@ -227,3 +231,34 @@
 // Injectors
 #define INJECTOR_USES 3
 #define INJECTOR_PERCENTAGE_OF_OD 0.5
+
+//defines for research level multipliers
+#define RESEARCH_LEVEL_INCREASE_MULTIPLIER	3 //Scales cost of increasing clearance using credits
+#define TECHTREE_LEVEL_MULTIPLIER			2 //Scales tech level to max amplification level
+
+//Property cost multipliers for the chemical simulator
+#define PROPERTY_COST_MAX					8
+#define PROPERTY_MULTIPLIER_RARE			2
+#define PROPERTY_MULTIPLIER_ANOMALOUS		5
+
+/*
+	For minimum potencies for properties
+	Create maxes are what can be reached in create mode at a given tech level
+	Potency maxes are what can be reached in amplify mode (with unlimited levels at T3)
+*/
+#define CREATE_MAX_TIER_1					2
+#define CREATE_MAX_TIER_2					4
+#define CREATE_MAX_TIER_3					5
+#define POTENCY_MAX_TIER_1					3
+#define POTENCY_MAX_TIER_2					5
+
+//for scaling chem effects based on potency
+#define POTENCY_MULTIPLIER_VLOW				0.25
+#define POTENCY_MULTIPLIER_LOW				0.5
+#define POTENCY_MULTIPLIER_MEDIUM			2
+#define POTENCY_MULTIPLIER_HIGH				3
+#define POTENCY_MULTIPLIER_VHIGH			5
+#define POTENCY_MULTIPLIER_EXTREME			10
+
+//used in speed_modifier component
+#define HUMAN_STAMINA_MULTIPLIER 			5

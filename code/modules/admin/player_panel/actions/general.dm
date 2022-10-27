@@ -21,7 +21,7 @@
 /datum/player_action/gib
 	action_tag = "mob_gib"
 	name = "Gib"
-	permissions_required = R_FUN
+	permissions_required = R_ADMIN
 
 /datum/player_action/gib/act(var/client/user, var/mob/target, var/list/params)
 	target.gib(create_cause_data(user.key))
@@ -78,7 +78,7 @@
 /datum/player_action/force_say
 	action_tag = "mob_force_say"
 	name = "Force Say"
-	permissions_required = R_FUN
+	permissions_required = R_ADMIN
 
 /datum/player_action/force_say/act(var/client/user, var/mob/target, var/list/params)
 	if(!params["to_say"]) return
@@ -93,7 +93,7 @@
 /datum/player_action/force_emote
 	action_tag = "mob_force_emote"
 	name = "Force Emote"
-	permissions_required = R_FUN
+	permissions_required = R_ADMIN
 
 /datum/player_action/force_emote/act(var/client/user, var/mob/target, var/list/params)
 	if(!params["to_emote"]) return

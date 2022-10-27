@@ -10,8 +10,6 @@
 
 
 /mob/living/Initialize()
-	create_health_display()
-
 	. = ..()
 
 	fire_reagent = new /datum/reagent/napalm/ut()
@@ -34,12 +32,6 @@
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
 	QDEL_NULL(hallucinations)
-	QDEL_NULL(health_display)
-
-/mob/living/proc/create_health_display()
-	QDEL_NULL(health_display)
-
-	health_display = new(src)
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
@@ -378,7 +370,7 @@
 		//the puller can always swap with its victim if on grab intent
 		if(L.pulledby == src && a_intent == INTENT_GRAB)
 			mob_swap = 1
-		//restrained people act if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
+		//restrained people act if they were on 'help' intent to prevent a person being pulled from being separated from their puller
 		else if((L.is_mob_restrained() || L.a_intent == INTENT_HELP) && (is_mob_restrained() || a_intent == INTENT_HELP))
 			mob_swap = 1
 		if(mob_swap)

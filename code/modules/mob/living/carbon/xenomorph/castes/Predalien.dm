@@ -42,12 +42,14 @@
 	mob_size = MOB_SIZE_BIG
 	tier = 1
 	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
+	show_age_prefix = FALSE
 	small_explosives_stun = FALSE
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/pounce/predalien,
 		/datum/action/xeno_action/onclick/predalien_roar,
 		/datum/action/xeno_action/onclick/smash,

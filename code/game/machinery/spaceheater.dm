@@ -25,13 +25,13 @@
 	if(open)
 		overlays  += "sheater-open"
 
-/obj/structure/machinery/space_heater/examine(mob/user)
-	..()
-	to_chat(user, "The heater is [on ? "on" : "off"] and the hatch is [open ? "open" : "closed"].")
+/obj/structure/machinery/space_heater/get_examine_text(mob/user)
+	. = ..()
+	. += "The heater is [on ? "on" : "off"] and the hatch is [open ? "open" : "closed"]."
 	if(open)
-		to_chat(user, "The power cell is [cell ? "installed" : "missing"].")
+		. += "The power cell is [cell ? "installed" : "missing"]."
 	else
-		to_chat(user, "The charge meter reads [cell ? round(cell.percent(),1) : 0]%")
+		. += "The charge meter reads [cell ? round(cell.percent(),1) : 0]%"
 
 
 /obj/structure/machinery/space_heater/emp_act(severity)

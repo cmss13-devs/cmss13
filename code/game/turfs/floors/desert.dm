@@ -7,7 +7,7 @@
 	icon_state = "desert1"
 	is_groundmap_turf = TRUE
 
-/turf/open/desert/ex_act(severity) //Should make it indestructable
+/turf/open/desert/ex_act(severity) //Should make it indestructible
 	return
 
 /turf/open/desert/fire_act(exposed_temperature, exposed_volume)

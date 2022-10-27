@@ -117,7 +117,7 @@ var/list/alldepartments = list()
 		ui = new(user, src, "FaxMachine", "[src.name]")
 		ui.open()
 
-/obj/structure/machinery/computer/aa_console/ui_state(mob/user)
+/obj/structure/machinery/faxmachine/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/faxmachine/ui_status(mob/user, datum/ui_state/state)

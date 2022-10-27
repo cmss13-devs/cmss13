@@ -83,16 +83,24 @@ FORENSIC SCANNER
 
 	var/popup_window = TRUE
 	var/last_scan
-	var/mob/living/last_mob
+	var/datum/health_scan/last_health_display
 	var/alien = FALSE
+
+/obj/item/device/healthanalyzer/Destroy()
+	QDEL_NULL(last_health_display)
+	return ..()
 
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
 	if(!popup_window)
 		last_scan = M.health_scan(user, FALSE, TRUE, popup_window, alien)
 	else
-		M.health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
-		last_scan = M.health_display.ui_data(user, data_detail_level = DETAIL_LEVEL_HEALTHANALYSER)
-		last_mob = M
+		if (!last_health_display)
+			last_health_display = new(M)
+		else
+			last_health_display.target_mob = M
+		SStgui.close_user_uis(user, src)
+		last_scan = last_health_display.ui_data(user, DETAIL_LEVEL_HEALTHANALYSER)
+		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
 	to_chat(user, SPAN_NOTICE("[user] has analyzed [M]'s vitals."))
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
 	src.add_fingerprint(user)
@@ -116,12 +124,12 @@ FORENSIC SCANNER
 	if(!last_scan)
 		return
 
+	SStgui.close_user_uis(user, last_health_display)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "HealthScan", "[last_mob.name]'s health scan")
+		ui = new(user, src, "HealthScan", "Stored Health Scan")
 		ui.open()
 		ui.set_autoupdate(FALSE)
-
 
 /obj/item/device/healthanalyzer/ui_data(mob/user)
 	return last_scan

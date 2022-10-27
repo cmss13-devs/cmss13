@@ -1,7 +1,6 @@
-/mob/living/silicon/robot/examine(mob/user)
+/mob/living/silicon/robot/get_examine_text(mob/user)
 	if( (user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat) && !istype(user,/mob/dead/observer) )
-		to_chat(user, SPAN_NOTICE("Something is there but you can't see it."))
-		return
+		return list(SPAN_NOTICE("Something is there but you can't see it."))
 
 	var/msg = "<span class='info'>*---------*\nThis is [icon2html(src)] \a <EM>[src]</EM>[custom_name ? ", [modtype] [braintype]" : ""]!\n"
 	msg += "<span class='warning'>"
@@ -41,5 +40,4 @@
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		msg += "\nIt is [pose]"
 
-	to_chat(user, msg)
-	return
+	return list(msg)

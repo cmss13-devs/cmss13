@@ -3,7 +3,7 @@
 
 /obj/item/weapon/gun
 	name = "gun"
-	desc = "Its a gun. It's pretty terrible, though."
+	desc = "It's a gun. It's pretty terrible, though."
 	icon = 'icons/obj/items/weapons/guns/gun.dmi'
 	icon_state = ""
 	item_state = "gun"
@@ -497,8 +497,8 @@
 	update_mag_overlay()
 	update_attachables()
 
-/obj/item/weapon/gun/examine(mob/user)
-	..()
+/obj/item/weapon/gun/get_examine_text(mob/user)
+	. = ..()
 	var/dat = ""
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		dat += "The safety's on!<br>"
@@ -516,10 +516,10 @@
 			else 								dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
 		else 									dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
-		dat += "[icon2html(src)] <a href='?src=\ref[src];list_stats=1'>\[See combat statistics]</a><br>"
+		dat += "<a href='?src=\ref[src];list_stats=1'>\[See combat statistics]</a>"
 
 	if(dat)
-		to_chat(user, dat)
+		. += dat
 
 /obj/item/weapon/gun/Topic(href, href_list)
 	. = ..()
@@ -885,7 +885,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return FALSE
 	if(!user || !user.client || !user.client.prefs)
 		return FALSE
-	else if(user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP)
+	else if(user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (user.a_intent == INTENT_HELP))
 		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			//Absolutely SCREAM this at people so they don't get killed by it
 			to_chat(user, SPAN_WARNING("Help intent safety is on! Switch to another intent to fire your weapon."))
@@ -997,11 +997,11 @@ and you're good to go.
 
 			// This is where the magazine is auto-ejected
 			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
-				if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
+				if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
 					update_icon()
 				else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
 					var/drop_to_ground = TRUE
-					if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+					if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
 						drop_to_ground = FALSE
 						unwield(user)
 						user.swap_hand()

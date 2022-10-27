@@ -41350,6 +41350,7 @@
 	dir = 4
 	},
 /obj/effect/blocker/toxic_water/Group_2,
+/obj/item/clothing/head/soft/ferret,
 /turf/open/desert/desert_shore/shore_edge1{
 	dir = 4
 	},
@@ -55899,6 +55900,7 @@
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dBU" = (
 /obj/structure/surface/table,
+/obj/item/clothing/head/soft/ferret,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -65383,6 +65385,14 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"krR" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/security/detective)
 "ktJ" = (
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/interior/caves/temple)
@@ -78519,7 +78529,7 @@ chG
 ceA
 ceA
 aVB
-aXM
+krR
 aZK
 bdM
 aZL

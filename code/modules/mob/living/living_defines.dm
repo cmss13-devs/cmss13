@@ -87,6 +87,3 @@
 	var/list/active_surgeries = DEFENSE_ZONES_LIVING
 	///Assoc. list - incision depths, by aim zone. Set by initialize_incision_depths().
 	var/list/incision_depths = DEFENSE_ZONES_LIVING
-
-	///the mob's associated HEALTH SCAN DISPLAY
-	var/datum/health_scan/health_display

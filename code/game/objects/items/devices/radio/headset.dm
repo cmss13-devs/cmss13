@@ -644,31 +644,31 @@
 
 //############################## CRYO ###############################
 /obj/item/device/radio/headset/almayer/marine/cryo
-	name = "marine reserves radio headset"
-	desc = "This is used by Reserve squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	name = "marine foxtrot radio headset"
+	desc = "This is used by Foxtrot squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	icon_state = "cryo_headset"
 	frequency = CRYO_FREQ
 
 /obj/item/device/radio/headset/almayer/marine/cryo/lead
-	name = "marine reserves leader radio headset"
-	desc = "This is used by the marine Reserve squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	name = "marine foxtrot leader radio headset"
+	desc = "This is used by the marine Foxtrot squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine/cryo/rto
-	name = "marine reserves RTO radio headset"
-	desc = "This is used by the marine Reserve RTO. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	name = "marine foxtrot RTO radio headset"
+	desc = "This is used by the marine Foxtrot RTO. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
 	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/cryo/engi
-	name = "marine reserves engineer radio headset"
-	desc = "This is used by the marine Reserve combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	name = "marine foxtrot engineer radio headset"
+	desc = "This is used by the marine Foxtrot combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/cryo/med
-	name = "marine reserves corpsman radio headset"
-	desc = "This is used by the marine Reserve combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	name = "marine foxtrot corpsman radio headset"
+	desc = "This is used by the marine Foxtrot combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
 /obj/item/device/radio/headset/almayer/marine/mortar
@@ -818,6 +818,14 @@
 	frequency = DTH_FREQ
 	icon_state = "pmc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
+
+/obj/item/device/radio/headset/distress/contractor
+	name = "VAI Headset"
+	desc = "A special headset used by Vanguard's Arrow Incorporated mercenaries, features a non-standard brace. Channels are as follows: :g - public, :v - marine command, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
+	frequency = VAI_FREQ
+	icon_state = "vai_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/contractor)
+	has_hud = TRUE
 
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"

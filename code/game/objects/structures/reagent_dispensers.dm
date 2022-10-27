@@ -14,9 +14,6 @@
 	var/chemical = ""
 	var/dispensing = TRUE
 
-/obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
-	return
-
 /obj/structure/reagent_dispensers/Initialize(mapload, reagent_amount = 1000)
 	. = ..()
 	create_reagents(reagent_amount)
@@ -425,6 +422,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "peppertank"
 	anchored = 1
+	wrenchable =  FALSE
 	density = 0
 	amount_per_transfer_from_this = 45
 	chemical = "condensedcapsaicin"
@@ -463,6 +461,7 @@
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
 	anchored = 1
+	wrenchable = FALSE
 	density = 0
 	chemical = "virusfood"
 

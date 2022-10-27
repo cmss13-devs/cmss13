@@ -26,6 +26,7 @@
 	var/fling_distance = 4
 	var/stun_power = 1
 	var/weaken_power = 1
+	var/slowdown = FALSE
 
 
 // Warrior Lunge

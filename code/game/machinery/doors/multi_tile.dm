@@ -240,20 +240,86 @@
 	safe = FALSE
 	autoclose = FALSE
 	locked = TRUE
-	var/obj/structure/machinery/door/airlock/sis_lock
+	opacity = FALSE
+	glass = TRUE
+	var/throw_dir = EAST
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/LateInitialize()
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/try_to_activate_door(mob/user)
+	return
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/bumpopen(mob/user as mob)
+	return
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/proc/close_and_lock()
+	unlock(TRUE)
+	close(TRUE)
+	lock(TRUE)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/proc/unlock_and_open()
+	unlock(TRUE)
+	open(TRUE)
+	lock(TRUE)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/close()
 	. = ..()
-	if(id)
-		for(var/obj/structure/machinery/door/airlock/A in machines)
-			if(A.id_tag == id)
-				sis_lock = A
-				break
+	for(var/turf/self_turf as anything in locs)
+		var/turf/projected = get_ranged_target_turf(self_turf, throw_dir, 1)
+		for(var/atom/movable/atom_movable in self_turf)
+			if(ismob(atom_movable) && !isobserver(atom_movable))
+				var/mob/mob = atom_movable
+				mob.KnockDown(5)
+				to_chat(mob, SPAN_HIGHDANGER("\The [src] shoves you out!"))
+			else if(isobj(atom_movable))
+				var/obj/object = atom_movable
+				if(object.anchored)
+					continue
+			else
+				continue
+			INVOKE_ASYNC(atom_movable, /atom/movable.proc/throw_atom, projected, 1, SPEED_FAST, null, FALSE)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/Destroy()
-	sis_lock = null
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override)
 	. = ..()
+	if(istype(port, /obj/docking_port/mobile/lifeboat))
+		var/obj/docking_port/mobile/lifeboat/lifeboat = port
+		lifeboat.doors += src
 
+/// External airlock that is part of the lifeboat dock
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor
+	name = "bulkhead blast door"
+	desc = "A heavyset bulkhead door. Built to withstand explosions, gunshots, and extreme pressure. Chances are you're not getting through this."
+	icon = 'icons/obj/structures/doors/almayerblastdoor.dmi'
+	safe = FALSE
+	/// ID of the related stationary docking port operating this
+	var/linked_dock
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/Initialize(mapload, ...)
+	GLOB.lifeboat_doors += src
+	return ..()
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/Destroy()
+	GLOB.lifeboat_doors -= src
+	return ..()
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/proc/vacate_premises()
+	for(var/turf/self_turf as anything in locs)
+		var/turf/near_turf = get_step(self_turf, throw_dir)
+		var/turf/projected = get_ranged_target_turf(near_turf, throw_dir, 50)
+		for(var/atom/movable/atom_movable in near_turf)
+			if(ismob(atom_movable) && !isobserver(atom_movable))
+				var/mob/mob = atom_movable
+				mob.Stun(10)
+				to_chat(mob, SPAN_HIGHDANGER("You get sucked into space!"))
+			else if(isobj(atom_movable))
+				var/obj/object = atom_movable
+				if(object.anchored)
+					continue
+			else
+				continue
+			INVOKE_ASYNC(atom_movable, /atom/movable.proc/throw_atom, projected, 50, SPEED_FAST, null, TRUE)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/proc/bolt_explosion()
+	var/turf/turf = get_step(src, throw_dir|dir)
+	cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("lifeboat explosive bolt"))
 
 // Elevator door
 /obj/structure/machinery/door/airlock/multi_tile/elevator

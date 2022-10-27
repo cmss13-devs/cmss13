@@ -136,23 +136,13 @@
 			else
 				shake_camera(mob, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
 
-	for(var/mob/living/carbon/mob in oview(7, xeno))
-		if(SEND_SIGNAL(mob, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
+	var/list/mobs_in_view = list()
+	for(var/mob/living/carbon/M in oview(7, xeno))
+		mobs_in_view += M
+	for(var/mob/living/carbon/M in orange(10, xeno))
+		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
 			continue
-
-		mob.scream_stun_timeout = 20 SECONDS
-		var/dist = get_dist(xeno, mob)
-		if(dist <= 4)
-			to_chat(mob, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
-			mob.AdjustStunned(4)
-			mob.KnockDown(4)
-			if(!mob.ear_deaf)
-				mob.AdjustEarDeafness(5) //Deafens them temporarily
-		else if(dist >= 5 && dist < 7)
-			mob.AdjustStunned(3)
-			if(!mob.ear_deaf)
-				mob.AdjustEarDeafness(2)
-			to_chat(mob, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
+		M.handle_queen_screech(xeno, mobs_in_view)
 
 	apply_cooldown()
 
@@ -330,7 +320,7 @@
 /datum/action/xeno_action/onclick/queen_word/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
 	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
-	xeno.hive_message() 
+	xeno.hive_message()
 
 /datum/action/xeno_action/onclick/queen_tacmap
 	name = "View Xeno Tacmap"

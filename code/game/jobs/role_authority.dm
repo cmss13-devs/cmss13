@@ -762,6 +762,8 @@ var/global/players_preassigned = 0
 			M = /mob/living/carbon/Xenomorph/Larva
 		if(XENO_CASTE_PREDALIEN_LARVA)
 			M = /mob/living/carbon/Xenomorph/Larva/predalien
+		if(XENO_CASTE_FACEHUGGER)
+			M = /mob/living/carbon/Xenomorph/Facehugger
 		if(XENO_CASTE_RUNNER)
 			M = /mob/living/carbon/Xenomorph/Runner
 		if(XENO_CASTE_DRONE)
@@ -839,3 +841,26 @@ var/global/players_preassigned = 0
 				break
 
 		transfer_marine.hud_set_squad()
+
+// returns TRUE if transfer_marine's role is at max capacity in the new squad
+/datum/authority/branch/role/proc/check_squad_capacity(var/mob/living/carbon/human/transfer_marine, var/datum/squad/new_squad)
+	switch(transfer_marine.job)
+		if(JOB_SQUAD_LEADER)
+			if(new_squad.num_leaders >= new_squad.max_leaders)
+				return TRUE
+		if(JOB_SQUAD_SPECIALIST)
+			if(new_squad.num_specialists >= new_squad.max_specialists)
+				return TRUE
+		if(JOB_SQUAD_ENGI)
+			if(new_squad.num_engineers >= new_squad.max_engineers)
+				return TRUE
+		if(JOB_SQUAD_MEDIC)
+			if(new_squad.num_medics >= new_squad.max_medics)
+				return TRUE
+		if(JOB_SQUAD_SMARTGUN)
+			if(new_squad.num_smartgun >= new_squad.max_smartgun)
+				return TRUE
+		if(JOB_SQUAD_RTO)
+			if(new_squad.num_rto >= new_squad.max_rto)
+				return TRUE
+	return FALSE

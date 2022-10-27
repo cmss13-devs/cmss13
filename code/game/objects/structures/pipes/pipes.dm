@@ -3,6 +3,7 @@
 /obj/structure/pipes
 	anchored = TRUE
 	layer = ATMOS_DEVICE_LAYER
+	plane = FLOOR_PLANE
 
 	var/list/connected_to = list()
 	var/list/valid_directions = list(NORTH, SOUTH, EAST, WEST)

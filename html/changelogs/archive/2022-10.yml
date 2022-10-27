@@ -323,3 +323,5 @@
   - bugfix: cables now appear under weeds and catwalks correctly.
   - bugfix: coffin's no longer transmutate wood into metal, and require a crowbar
       to break.
+  kugamo:
+  - bugfix: Fixed Carriers getting xenoid sprites when carrying huggers.

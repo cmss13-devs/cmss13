@@ -20,6 +20,11 @@
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
 
+/obj/structure/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_BURROWED
+
 /obj/structure/Destroy()
 	//before ..() because the parent does loc = null
 	for(var/atom/movable/A in contents_recursive())

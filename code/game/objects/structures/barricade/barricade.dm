@@ -43,7 +43,7 @@
 /obj/structure/barricade/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = NONE
+		PF.flags_can_pass_all = PASS_BURROWED
 		PF.flags_can_pass_front = NONE
 		PF.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
 	flags_can_pass_front_temp = PASS_OVER_THROW_MOB

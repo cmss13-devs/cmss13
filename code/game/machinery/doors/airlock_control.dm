@@ -11,7 +11,7 @@
 /obj/structure/machinery/door/airlock/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = NONE
+		PF.flags_can_pass_all = PASS_BURROWED
 
 /obj/structure/machinery/door/airlock/proc/can_radio()
 	if(!arePowerSystemsOn())

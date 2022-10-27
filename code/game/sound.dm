@@ -323,6 +323,8 @@
 				S = pick('sound/voice/alien_hiss1.ogg','sound/voice/alien_hiss2.ogg','sound/voice/alien_hiss3.ogg')
 			if("alien_tail_swipe")
 				S = pick('sound/effects/alien_tail_swipe1.ogg','sound/effects/alien_tail_swipe2.ogg','sound/effects/alien_tail_swipe3.ogg')
+			if("alien_sburrower_attack")
+				S = pick('sound/effects/burrower_attack1.ogg','sound/effects/burrower_attack2.ogg')
 			if("alien_help")
 				S = pick('sound/voice/alien_help1.ogg','sound/voice/alien_help2.ogg','sound/voice/alien_help3.ogg')
 			if("alien_drool")

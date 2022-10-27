@@ -287,6 +287,10 @@
 					target = null
 				targets.Remove(M)
 				continue
+			
+			if(HAS_TRAIT(M, TRAIT_ABILITY_BURROWED))
+				targets.Remove(M)
+				continue
 
 		else if(!(A.type in other_targets))
 			if(A == target)

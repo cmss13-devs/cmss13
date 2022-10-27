@@ -388,8 +388,8 @@
 			if(istype(S, /obj/structure/window/framed) && smash_windows)
 				var/obj/structure/window/framed/W = S
 				if(!W.unslashable)
-					W.deconstruct(disassembled = FALSE)
-
+					W.shatter_window(TRUE)
+					playsound(T, "windowshatter", 50, TRUE)
 			if(S.opacity)
 				return FALSE
 

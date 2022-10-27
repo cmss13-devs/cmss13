@@ -33,10 +33,6 @@ Basics, the most important.
 
 /datum/config_entry/string/dburl
 
-/// Shutdown server instead of actually restarting when using /world/Reboot()
-/datum/config_entry/flag/no_restarts
-	config_entry_value = TRUE
-
 /// Server to notify of game events
 /datum/config_entry/string/manager_url
 

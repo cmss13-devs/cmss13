@@ -105,11 +105,9 @@
 			to_chat(user, SPAN_WARNING("INVALID TARGET: target must be on the surface."))
 			return FALSE
 		if(user.sight & SEE_TURFS)
-			var/list/turf/path = getline2(user, A, include_from_atom = FALSE)
-			for(var/turf/T in path)
-				if(T.opacity)
-					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
-					return FALSE
+			if(!check_clear_path_to_target(user, A, FALSE)
+				to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
+				return FALSE
 		acquire_target(A, user)
 		return TRUE
 	return FALSE

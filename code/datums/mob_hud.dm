@@ -136,8 +136,6 @@ var/list/datum/mob_hud/huds = list(
 /datum/mob_hud/xeno_infection
 	hud_icons = list(STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST)
 
-
-
 //Xeno status hud, for xenos
 /datum/mob_hud/xeno
 	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
@@ -211,6 +209,11 @@ var/list/datum/mob_hud/huds = list(
 			continue
 		hud.add_to_hud(src)
 
+/mob/living/simple_animal/hostile/alien/hologram/add_to_all_mob_huds()
+	for(var/datum/mob_hud/hud in huds)
+		if(!istype(hud, /datum/mob_hud/xeno))
+			continue
+		hud.add_to_hud(src)
 
 /mob/proc/remove_from_all_mob_huds()
 	return
@@ -233,6 +236,10 @@ var/list/datum/mob_hud/huds = list(
 		else if (istype(hud, /datum/mob_hud/xeno_infection))
 			hud.remove_hud_from(src)
 
+/mob/living/simple_animal/hostile/alien/hologram/remove_from_all_mob_huds()
+	for(var/datum/mob_hud/hud in huds)
+		if(istype(hud, /datum/mob_hud/xeno))
+			hud.remove_from_hud(src)
 
 
 

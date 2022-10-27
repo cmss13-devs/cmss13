@@ -96,7 +96,6 @@
 	var/counts_for_slots = TRUE
 	var/counts_for_roundend = TRUE
 	var/refunds_larva_if_banished = TRUE
-	var/shaman_interactive = TRUE // whether shaman abilities affect this xeno
 	var/can_hivemind_speak = TRUE
 
 	// Tackles
@@ -640,18 +639,21 @@
 	else if(stat == UNCONSCIOUS)
 		. += "It quivers a bit, but barely moves."
 	else
-		var/percent = (health / maxHealth * 100)
-		switch(percent)
-			if(95 to 101)
-				. += "It looks quite healthy."
-			if(75 to 94)
-				. += "It looks slightly injured."
-			if(50 to 74)
-				. += "It looks injured."
-			if(25 to 49)
-				. += "It bleeds with sizzling wounds."
-			if(1 to 24)
-				. += "It is heavily injured and limping badly."
+		if(!wound_icon_carrier.alpha) // == 0
+			. += "You can't spot any wounds."
+		else
+			var/percent = (health / maxHealth * 100)
+			switch(percent)
+				if(95 to 101)
+					. += "It looks quite healthy."
+				if(75 to 94)
+					. += "It looks slightly injured."
+				if(50 to 74)
+					. += "It looks injured."
+				if(25 to 49)
+					. += "It bleeds with sizzling wounds."
+				if(1 to 24)
+					. += "It is heavily injured and limping badly."
 
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/xeno = user

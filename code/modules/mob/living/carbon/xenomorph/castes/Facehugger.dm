@@ -38,7 +38,6 @@
 	counts_for_slots = FALSE
 	counts_for_roundend = FALSE
 	refunds_larva_if_banished = FALSE
-	shaman_interactive = FALSE
 	can_hivemind_speak = FALSE
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

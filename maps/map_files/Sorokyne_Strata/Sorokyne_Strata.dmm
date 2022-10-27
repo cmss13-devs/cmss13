@@ -22467,11 +22467,6 @@
 /obj/structure/platform/strata{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_x = -29;
-	start_charge = 0
-	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "bsU" = (
@@ -33426,10 +33421,10 @@
 "haU" = (
 /obj/structure/machinery/power/apc{
 	dir = 4;
-	pixel_x = 28;
+	pixel_x = -28;
 	start_charge = 0
 	},
-/turf/open/auto_turf/snow/brown_base/layer1,
+/turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/crash)
 "haZ" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -47293,7 +47288,7 @@ aVq
 aVq
 bgS
 bgS
-haU
+bgS
 bgS
 bgS
 bhO
@@ -47683,7 +47678,7 @@ aVq
 aVq
 bgS
 bgS
-xzR
+haU
 xzR
 bgS
 bhN

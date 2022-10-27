@@ -316,5 +316,8 @@
   - bugfix: M2C can no longer be shot at with an item/gun in your active hand.
   Usnpepoo:
   - bugfix: Defenders crest down now blocks rest similar to fortify
+  Youbar:
+  - balance: Xenos can now slash morgues, crematoriums, and hydro trays
+  - bugfix: Removed hardcoding on hydro trays on Kutjevo to be unslashable/unacidable
   harryob:
   - bugfix: cables now appear under weeds and catwalks correctly.

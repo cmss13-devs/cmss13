@@ -58,7 +58,7 @@
 	if(!. || isnull(loc))
 		return
 
-	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(src))
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
 		// Let staff know, in case someone's actually about to try to grief
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
@@ -107,7 +107,7 @@
 		det_time ? addtimer(CALLBACK(src, .proc/prime), det_time) : prime()
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
 	update_icon()
-	
+
 /obj/item/explosive/grenade/prime(var/force = FALSE)
 	..()
 	if(!QDELETED(src))

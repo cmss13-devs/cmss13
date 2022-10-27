@@ -54,3 +54,10 @@ var/global/list/note_categories = list("Admin", "Merit", "Commanding Officer", "
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
 #define AHELP_RESOLVED 3
+
+/// Disables antigrief entirely: Anyone can activate explosives at any time on the Almayer.
+#define ANTIGRIEF_DISABLED 0
+/// Enables antigrief on the Almayer, but only for new players: Those who've had less than 10 total human hours.
+#define ANTIGRIEF_NEW_PLAYERS 1
+/// Enables antigrief entirely: Nobody can activate explosives on the Almayer, unless the ship crashed.
+#define ANTIGRIEF_ENABLED 2

@@ -325,3 +325,4 @@
       to break.
   kugamo:
   - bugfix: Fixed Carriers getting xenoid sprites when carrying huggers.
+  - bugfix: Fixed bad shading around resin traps, fast/sticky resin, eggs, and tunnels.

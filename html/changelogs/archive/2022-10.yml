@@ -335,6 +335,11 @@
   - bugfix: No more zoom glitches with binoculars and mounted turrets.
   Morrow:
   - bugfix: Stops the ability to grab or grab-throw simple animals with C4 on them.
+  Segrain:
+  - bugfix: Requisitions once again can properly order all ammunition boxes and mortar
+      shells.
+  - bugfix: ASRS should no longer randomly deliver crate of components for communications
+      tower.
   Shad0vvs:
   - bugfix: Fixes Ravagers being able to use scissor cuts though corners that are
       walled off.

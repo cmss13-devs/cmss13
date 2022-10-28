@@ -347,3 +347,5 @@
   harryob:
   - server: new round alert lives again, via tgs
   - bugfix: autoreconnect now works
+  stanalbatross:
+  - bugfix: xenos can no longer build most structures on the same tile as open doors

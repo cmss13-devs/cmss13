@@ -287,6 +287,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/bayonet)
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
+/obj/item/weapon/gun/shotgun/combat/covert
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/extended_barrel)
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
+
 //MARSOC MK210, an earlier developmental variant of the MK211 tactical used by the USCM MARSOC.
 /obj/item/weapon/gun/shotgun/combat/marsoc
 	name = "\improper MK210 tactical shotgun"

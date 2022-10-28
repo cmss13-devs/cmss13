@@ -6,7 +6,14 @@
 
 import { classes } from 'common/react';
 import { RefObject } from 'inferno';
-import { computeFlexClassName, computeFlexItemClassName, computeFlexItemProps, computeFlexProps, FlexItemProps, FlexProps } from './Flex';
+import {
+  computeFlexClassName,
+  computeFlexItemClassName,
+  computeFlexItemProps,
+  computeFlexProps,
+  FlexItemProps,
+  FlexProps,
+} from './Flex';
 
 type StackProps = FlexProps & {
   vertical?: boolean;
@@ -20,9 +27,7 @@ export const Stack = (props: StackProps) => {
       className={classes([
         'Stack',
         fill && 'Stack--fill',
-        vertical
-          ? 'Stack--vertical'
-          : 'Stack--horizontal',
+        vertical ? 'Stack--vertical' : 'Stack--horizontal',
         className,
         computeFlexClassName(props),
       ])}
@@ -35,7 +40,7 @@ export const Stack = (props: StackProps) => {
 };
 
 type StackItemProps = FlexProps & {
-  innerRef?: RefObject<HTMLDivElement>,
+  innerRef?: RefObject<HTMLDivElement>;
 };
 
 const StackItem = (props: StackItemProps) => {

@@ -39,7 +39,6 @@
 	if (world.time < next_click)
 		return
 
-
 	next_click = world.time + 1 //Maximum code-permitted clickrate 10.26/s, practical maximum manual rate: 8.5, autoclicker maximum: between 7.2/s and 8.5/s.
 	var/list/mods = params2list(params)
 
@@ -59,16 +58,16 @@
 	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
-	if (client.buildmode)
-		if (istype(A, /obj/effect/bmode) || istype(A, /obj/effect/buildholder))
+	if(istype(A, /obj/statclick))
+		A.clicked(src, mods)
+		return
+
+	if(client.click_intercept)
+		if(istype(A, /atom/movable/screen/buildmode))
 			A.clicked(src, mods)
 			return
 
-		client.buildmode.object_click(src, mods, A)
-		return
-
-	if(istype(A, /obj/statclick))
-		A.clicked(src, mods)
+	if(check_click_intercept(params,A))
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
@@ -149,6 +148,18 @@
 			next_move += 4
 		UnarmedAttack(A, 1, mods)
 
+/mob/proc/check_click_intercept(params,A)
+	//Client level intercept
+	if(client?.click_intercept)
+		if(call(client.click_intercept, "InterceptClickOn")(src, params, A))
+			return TRUE
+
+	//Mob level intercept
+	if(click_intercept)
+		if(call(click_intercept, "InterceptClickOn")(src, params, A))
+			return TRUE
+
+	return FALSE
 
 /*	OLD DESCRIPTION
 	Standard mob ClickOn()

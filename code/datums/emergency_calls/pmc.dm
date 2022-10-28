@@ -3,7 +3,7 @@
 /datum/emergency_call/pmc
 	name = "Weyland-Yutani PMC (Squad)"
 	mob_max = 6
-	probability = 25
+	probability = 20
 	shuttle_id = "Distress_PMC"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
@@ -11,6 +11,8 @@
 	max_smartgunners = 1
 	max_medics = 1
 	max_heavies = 2
+	var/max_synths = 1
+	var/synths = 0
 
 
 /datum/emergency_call/pmc/New()
@@ -32,6 +34,10 @@
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani squad leader!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_leader, TRUE, TRUE)
+	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
+		synths++
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani support synthetic!"))
+		arm_equipment(mob, /datum/equipment_preset/pmc/synth, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani medic!"))
@@ -54,10 +60,16 @@
 
 
 /datum/emergency_call/pmc/print_backstory(mob/living/carbon/human/M)
-	to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
-	to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
-	to_chat(M, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
-	to_chat(M, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]"))
+	if(isHumanStrict(M))
+		to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
+		to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
+		to_chat(M, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
+		to_chat(M, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]"))
+	else
+		to_chat(M, SPAN_BOLD("You were brought online in a Weyland-Yutani synthetic production facility, knowing only your engineers for the first few weeks for your pseudo-life."))
+		to_chat(M, SPAN_BOLD("You were programmed with standard synthetic skills as per facility and geneva protocol."))
+		to_chat(M, SPAN_BOLD("Throughout your service, you gained recognition as a capable unit and your model was given equipment upgrades which USCM models lack."))
+		to_chat(M, SPAN_BOLD("You were given all available information about the xenomorph threat apart from classified data reserved for special employees."))
 	to_chat(M, SPAN_BOLD("You are part of  Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawl of the Tychon's Rift sector."))
 	to_chat(M, SPAN_BOLD("Task-force Oberon is stationed aboard the USCSS Royce, a powerful Weyland-Yutani cruiser that patrols the outer edges of Tychon's Rift. "))
 	to_chat(M, SPAN_BOLD("Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland-Yutani science teams."))
@@ -74,6 +86,7 @@
 	max_medics = 2
 	max_heavies = 2
 	max_smartgunners = 2
+	max_synths = 1
 
 /datum/emergency_call/pmc/chem_retrieval
 	name = "Weyland-Yutani PMC (Chemical Investigation Squad)"

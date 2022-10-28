@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	17
+#define SAVEFILE_VERSION_MAX	18
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -62,6 +62,12 @@
 				language_traits = null
 		S["traits"] << language_traits
 
+	if(savefile_version < 18) // adds ambient occlusion by default
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
+		S["toggle_prefs"] << pref_toggles
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -117,6 +123,8 @@
 	S["fps"]				>> fps
 	S["ghost_vision_pref"]	>> ghost_vision_pref
 	S["ghost_orbit"]		>> ghost_orbit
+
+	S["human_name_ban"] >> human_name_ban
 
 	S["xeno_prefix"]		>> xeno_prefix
 	S["xeno_postfix"]		>> xeno_postfix
@@ -267,6 +275,8 @@
 	S["fps"]				<< fps
 	S["ghost_vision_pref"]	<< ghost_vision_pref
 	S["ghost_orbit"]		<< ghost_orbit
+
+	S["human_name_ban"] << human_name_ban
 
 	S["xeno_prefix"]		<< xeno_prefix
 	S["xeno_postfix"]		<< xeno_postfix

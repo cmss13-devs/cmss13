@@ -104,6 +104,7 @@
 	max_heavies = 1
 	max_smartgunners = 1
 	max_engineers = 2
+	max_synths = 1
 	heavy_pick = FALSE
 
 /obj/effect/landmark/ert_spawns/distress_upp

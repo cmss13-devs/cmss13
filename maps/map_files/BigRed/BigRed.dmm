@@ -26389,6 +26389,10 @@
 	},
 /obj/effect/spawner/random/powercell,
 /obj/effect/spawner/random/powercell,
+/obj/item/clothing/head/soft/ferret{
+	pixel_x = -4;
+	pixel_y = 7
+	},
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -26593,10 +26597,7 @@
 /turf/open/floor,
 /area/bigredv2/caves/eta/storage)
 "bxL" = (
-/obj/effect/decal/mecha_wreckage/seraph{
-	desc = "Completely unrepairable, it appears to be the wreckage of a prototype exosuit capable of mounting heavy firearms.";
-	name = "WY P/X-6400 wreckage"
-	},
+/obj/structure/powerloader_wreckage/ft,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -36778,6 +36779,10 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigred/ground/garage_workshop)
+"qaR" = (
+/obj/vehicle/powerloader/ft,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
 "qez" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
@@ -52617,7 +52622,7 @@ aeI
 aeI
 aeI
 anp
-avT
+qaR
 avT
 avT
 axZ

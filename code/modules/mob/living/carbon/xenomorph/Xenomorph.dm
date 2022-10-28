@@ -672,6 +672,8 @@
 	QDEL_NULL(mutators)
 	QDEL_NULL(behavior_delegate)
 
+	built_structures = null
+
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
 

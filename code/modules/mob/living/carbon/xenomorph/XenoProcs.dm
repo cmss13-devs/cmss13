@@ -399,7 +399,7 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
 
-/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE)
+/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE, var/check_doors = TRUE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
@@ -407,6 +407,11 @@
 			if(!silent)
 				to_chat(src, SPAN_WARNING("This is too close to a [bb.linked_structure]!"))
 			return
+		if(check_doors)
+			if(istype(O, /obj/structure/machinery/door))
+				if(!silent)
+					to_chat(src, SPAN_WARNING("\The [O] is blocking the resin! There's not enough space to build that here."))
+				return
 		if(istype(O, /obj/item/clothing/mask/facehugger))
 			if(!silent)
 				to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))

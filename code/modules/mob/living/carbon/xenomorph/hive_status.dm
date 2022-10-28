@@ -10,7 +10,7 @@
 	var/list/xeno_info
 	var/hive_location
 	var/pooled_larva
-	var/evilution_level
+	var/evolution_level
 
 	var/data_initialized = FALSE
 
@@ -92,9 +92,9 @@
 /datum/hive_status_ui/proc/update_pooled_larva(send_update = TRUE)
 	pooled_larva = assoc_hive.stored_larva
 	if(SSxevolution)
-		evilution_level = SSxevolution.get_evolution_boost_power(assoc_hive.hivenumber)
+		evolution_level = SSxevolution.get_evolution_boost_power(assoc_hive.hivenumber)
 	else
-		evilution_level = 1
+		evolution_level = 1
 
 	if(send_update)
 		SStgui.update_uis(src)
@@ -135,7 +135,7 @@
 	.["queen_location"] = get_area_name(assoc_hive.living_xeno_queen)
 	.["hive_location"] = hive_location
 	.["pooled_larva"] = pooled_larva
-	.["evilution_level"] = evilution_level
+	.["evolution_level"] = evolution_level
 
 	var/mob/living/carbon/Xenomorph/Queen/Q = user
 	.["is_in_ovi"] = istype(Q) && Q.ovipositor

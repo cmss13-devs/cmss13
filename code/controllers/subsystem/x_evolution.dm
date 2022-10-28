@@ -3,7 +3,7 @@
 #define EVOLUTION_INCREMENT_TIME (30 MINUTES) // Evolution increases by 1 every 25 minutes.
 
 SUBSYSTEM_DEF(xevolution)
-	name = "Evilution"
+	name = "Evolution"
 	wait = 1 MINUTES
 	priority = SS_PRIORITY_INACTIVITY
 
@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(xevolution)
 		if(!force_boost_power)
 			boost_power[HS.hivenumber] = boost_power_new
 
-		//Update displayed Evilution, which is under larva apparently
+		//Update displayed Evolution, which is under larva apparently
 		HS.hive_ui.update_pooled_larva()
 
 /datum/controller/subsystem/xevolution/proc/get_evolution_boost_power(var/hivenumber)

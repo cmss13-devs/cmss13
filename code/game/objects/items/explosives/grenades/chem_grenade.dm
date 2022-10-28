@@ -269,3 +269,97 @@
 	containers += B2
 
 	update_icon()
+
+
+/obj/item/explosive/grenade/custom/research
+	name = "Large Custom Grenade"
+	desc = "A custom chemical grenade with an M15 casing. This casing variant was designed in such a way for easier assembly."
+	icon_state = "large_grenade_custom"
+	allowed_containers = list(/obj/item/reagent_container/glass)
+	max_container_volume = 180
+	reaction_limits = list(	"max_ex_power" = 215,	"base_ex_falloff" = 90,	"max_ex_shards" = 32,
+							"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
+							"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	)
+	underslug_launchable = FALSE
+	has_blast_wave_dampener = FALSE
+	w_class = SIZE_MEDIUM
+	matter = list("metal" = 7000)
+
+/obj/item/explosive/grenade/custom/research/attackby(obj/item/W as obj, mob/user as mob)
+	if(!customizable || active)
+		return
+	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
+		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
+		return
+	if(istype(W,/obj/item/device/assembly_holder) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
+		var/obj/item/device/assembly_holder/det = W
+		if(detonator)
+			to_chat(user, SPAN_DANGER("This casing already has a detonator."))
+			return
+		if((!isigniter(det.a_left) && !isigniter(det.a_right)))
+			to_chat(user, SPAN_DANGER("Assembly must contain one igniter."))
+			return
+		if((!(det.a_left.type in allowed_sensors) && !isigniter(det.a_left)) || (!(det.a_right.type in allowed_sensors) && !isigniter(det.a_right)))
+			to_chat(user, SPAN_DANGER("Assembly contains a sensor that is incompatible with this type of casing."))
+			return
+		if(!det.secured)
+			to_chat(user, SPAN_DANGER("Assembly must be secured with screwdriver."))
+			return
+		to_chat(user, SPAN_NOTICE("You add [W] to the [name]."))
+		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+		user.temp_drop_inv_item(det)
+		det.forceMove(src)
+		detonator = det
+		assembly_stage = ASSEMBLY_UNLOCKED
+		desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
+		update_icon()
+	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		if(assembly_stage == ASSEMBLY_UNLOCKED)
+			if(containers.len)
+				to_chat(user, SPAN_NOTICE("You lock the assembly."))
+			else
+				to_chat(user, SPAN_NOTICE("You lock the empty assembly."))
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
+			creator = user
+			cause_data = create_cause_data(initial(name), user)
+			assembly_stage = ASSEMBLY_LOCKED
+		else if(assembly_stage == ASSEMBLY_LOCKED)
+			to_chat(user, SPAN_NOTICE("You unlock the assembly."))
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
+			desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
+			assembly_stage = ASSEMBLY_UNLOCKED
+		update_icon()
+	else if(is_type_in_list(W, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
+		if(current_container_volume >= max_container_volume)
+			to_chat(user, SPAN_DANGER("The [name] can not hold more containers."))
+			return
+		else
+			if(W.reagents.total_volume)
+				if(W.reagents.maximum_volume + current_container_volume > max_container_volume)
+					to_chat(user, SPAN_DANGER("\the [W] is too large for [name]."))
+					return
+				if(user.temp_drop_inv_item(W))
+					to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
+					W.forceMove(src)
+					containers += W
+					current_container_volume += W.reagents.maximum_volume
+					assembly_stage = ASSEMBLY_UNLOCKED
+					desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
+			else
+				to_chat(user, SPAN_DANGER("\the [W] is empty."))
+
+/obj/item/explosive/grenade/custom/research/chemsmoke
+	name = "Custom Chemical Smoke Grenade"
+	desc = "A custom chemical grenade with a specialized casing. This casing has been designed to only be effective with chemical smoke mixes, it is not advised to use it as a standard explosive."
+	icon_state = "large_grenade"
+	allowed_containers = list(/obj/item/reagent_container/glass)
+	max_container_volume = 240
+	reaction_limits = list(	"max_ex_power" = 50,	"base_ex_falloff" = 50,	"max_ex_shards" = 0,
+							"max_fire_rad" = 1,		"max_fire_int" = 3,	"max_fire_dur" = 3,
+							"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	)
+	underslug_launchable = FALSE
+	has_blast_wave_dampener = FALSE
+	w_class = SIZE_MEDIUM
+	matter = list("metal" = 8000)

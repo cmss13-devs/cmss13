@@ -149,6 +149,23 @@
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 
+/obj/structure/machinery/cm_vending/sorted/tech/research_assembly
+	name = "\improper Research Chemical Assembly Vendor"
+	desc = "A large storage machine containing custom chemical explosives and assembly components."
+	icon_state = "robotics"
+	req_access = list(ACCESS_MARINE_RESEARCH)
+
+/obj/structure/machinery/cm_vending/sorted/tech/research_assembly/populate_product_list(var/scale)
+	listed_products = list(
+		list("ASSEMBLY COMPONENTS", -1, null, null),
+		list("Igniter", 5, /obj/item/device/assembly/igniter, VENDOR_ITEM_REGULAR),
+		list("Timer", 5, /obj/item/device/assembly/timer, VENDOR_ITEM_REGULAR),
+
+		list("CUSTOM GRENADES", -1, null, null),
+		list("Custom Large Grenade", 10, /obj/item/explosive/grenade/custom/research, VENDOR_ITEM_REGULAR),
+		list("Custom Chemical Smoke Grenade", 5, /obj/item/explosive/grenade/custom/research/chemsmoke, VENDOR_ITEM_REGULAR)
+	)
+
 //------COLONY-SPECIFIC VENDORS-------
 
 /obj/structure/machinery/cm_vending/sorted/tech/science

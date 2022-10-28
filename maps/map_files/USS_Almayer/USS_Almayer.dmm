@@ -4349,15 +4349,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/mineral/plastic{
-	amount = 15
-	},
-/obj/item/stack/sheet/glass{
-	amount = 20;
-	pixel_x = 3;
-	pixel_y = 3
-	},
+/obj/structure/machinery/cm_vending/sorted/tech/research_assembly,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -37374,6 +37366,21 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/engineering/upper_engineering)
+"dEu" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/plastic{
+	amount = 15
+	},
+/obj/item/stack/sheet/glass{
+	amount = 20;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/testlab)
 "dEC" = (
 /obj/structure/sign/safety/escapepod{
 	pixel_x = 8;
@@ -120593,7 +120600,7 @@ eNT
 anF
 anF
 taH
-aBe
+dEu
 cJM
 vHO
 jNc

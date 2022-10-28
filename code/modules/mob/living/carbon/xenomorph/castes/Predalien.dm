@@ -54,8 +54,8 @@
 		/datum/action/xeno_action/onclick/smash,
 		/datum/action/xeno_action/activable/devastate,
 	)
-	mutation_icon = "Normal" //this as well
-	mutation_type = "Normal" //this as well
+	mutation_icon = "Normal"
+	mutation_type = "Normal"
 
 	var/butcher_time = 6 SECONDS
 

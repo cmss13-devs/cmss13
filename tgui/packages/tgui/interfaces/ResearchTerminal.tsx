@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Stack, Section, Flex, Tabs, Box, Icon } from '../components';
+import { Button, Stack, Section, Flex, Tabs, Box } from '../components';
 import { Window } from '../layouts';
 import { logger } from '../logging';
 import { Table, TableCell, TableRow } from '../components/Table';
@@ -44,15 +44,15 @@ const PurchaseDocs = (_, context) => {
               <Flex.Item key={x}>
                 <Button
                   className={classes([
-                    "DoButton",
                     !available_levels.includes(x) && "HiddenButton",
-                    isDisabled && "DoButton-disabled",])}
+                    isDisabled && "Button-disabled",
+                  ])}
                   disabled={isDisabled}
                   onClick={() => setPurchaseSelection(x)}
                 >
                   Level {x} {costs[x]}CR
                 </Button>
-              </Flex.Item>)})}
+              </Flex.Item>); })}
         </Flex>
         <hr />
 
@@ -91,12 +91,12 @@ const ConfirmationDialogue = (props: ConfirmationProps, context) => {
       <Stack.Item>
         <Stack fill>
           <Stack.Item>
-            <Button className="DoButton ConfirmButton" icon="check" onClick={props.onConfirm}>
+            <Button className="Button ConfirmButton" icon="check" onClick={props.onConfirm}>
               Confirm
             </Button>
           </Stack.Item>
           <Stack.Item>
-            <Button className="DoButton" icon="cancel" onClick={props.onCancel}>
+            <Button icon="cancel" onClick={props.onCancel}>
               Cancel
             </Button>
           </Stack.Item>
@@ -124,7 +124,7 @@ const CompoundTable = (_, context) => {
 
   return (
     <div className="chem-table-wrapper">
-      <Table className="chem_table">
+      <Table>
         <TableRow>
           <TableCell textAlign="center">
             <span className="table_header">Compound</span>
@@ -141,16 +141,16 @@ const CompoundTable = (_, context) => {
                   {x.type}
                 </span>
               </TableCell>
-              <TableCell className="action-td">
+              <TableCell>
                 <Flex className="compound_actions" justify="space-around" align-items="stretch" wrap={false}>
                   <Flex.Item>
-                    <Button className="DoButton" icon="book" onClick={() => act("read_document", { "print_type": 'XRF Scans', "print_title": x.id })}>
+                    <Button icon="book" onClick={() => act("read_document", { "print_type": 'XRF Scans', "print_title": x.id })}>
                       Read
                     </Button>
                   </Flex.Item>
                   <Flex.Item>
                     <Button
-                      className={classes(["DoButton", data.photocopier_error && "DoButton-disabled"])}
+                      className={classes([data.photocopier_error && "Button-disabled"])}
                       disabled={data.photocopier_error}
                       icon="print"
                       onClick={() => act("print", { "print_type": 'XRF Scans', "print_title": x.id })}
@@ -161,14 +161,14 @@ const CompoundTable = (_, context) => {
                   {isMainTerminal && !x.isPublished
                   && (
                     <Flex.Item>
-                      <Button className="DoButton" icon="upload" onClick={() => act("publish_document", { "print_type": 'XRF Scans', "print_title": x.id })}>
+                      <Button icon="upload" onClick={() => act("publish_document", { "print_type": 'XRF Scans', "print_title": x.id })}>
                         Publish
                       </Button>
                     </Flex.Item>)}
                   {isMainTerminal && x.isPublished
                   && (
                     <Flex.Item>
-                      <Button className="DoButton" icon="remove" onClick={() => act("unpublish_document", { "print_type": 'XRF Scans', "print_title": x.id })}>
+                      <Button icon="remove" onClick={() => act("unpublish_document", { "print_type": 'XRF Scans', "print_title": x.id })}>
                         Unpublish
                       </Button>
                     </Flex.Item>)}
@@ -182,16 +182,16 @@ const CompoundTable = (_, context) => {
 };
 
 const PhotocopierMissing = () => {
-  return <span>
+  return (<span>
     ERROR: no linked printer found.
-  </span>
-}
+          </span>);
+};
 
 const TonerEmpty = () => {
-  return <span>
+  return (<span>
     ERROR: Printer toner is empty.
-  </span>
-}
+          </span>);
+};
 
 const ImproveClearanceConfirmation = (props, context) => {
   const { data, act } = useBackend<TerminalProps>(context);
@@ -200,8 +200,7 @@ const ImproveClearanceConfirmation = (props, context) => {
     return null;
   }
   return (
-    <>
-      <Stack vertical>
+    <Stack vertical>
         <Stack.Item>
           <ConfirmationDialogue
             className="Confirm-Dialogue"
@@ -218,9 +217,8 @@ const ImproveClearanceConfirmation = (props, context) => {
             </span>
           </ConfirmationDialogue>
         </Stack.Item>
-      </Stack>
-    </>)
-}
+    </Stack>);
+};
 
 const XClearanceConfirmation = (props, context) => {
   const { data, act } = useBackend<TerminalProps>(context);
@@ -229,8 +227,7 @@ const XClearanceConfirmation = (props, context) => {
     return null;
   }
   return (
-    <>
-      <Stack vertical>
+    <Stack vertical>
         <Stack.Item>
           <ConfirmationDialogue
             className="Confirm-Dialogue"
@@ -245,9 +242,8 @@ const XClearanceConfirmation = (props, context) => {
             </span>
           </ConfirmationDialogue>
         </Stack.Item>
-      </Stack>
-    </>)
-}
+    </Stack>);
+};
 
 const ResearchManager = (_, context) => {
   const { data } = useBackend<TerminalProps>(context);
@@ -272,11 +268,11 @@ const ResearchManager = (_, context) => {
 
 const ErrorStack = (_, context) => {
   const { data } = useBackend<TerminalProps>(context);
-  return <Stack>
+  return (<Stack>
     {data.photocopier_error === 1 && <PhotocopierMissing />}
     {data.printer_toner === 0 && <TonerEmpty />}
-  </Stack>
-}
+          </Stack>);
+};
 
 const ResearchOverview = (_, context) => {
   const [selectedTab, setSelectedTab] = useLocalState(context, 'research_tab', 1);
@@ -324,7 +320,7 @@ const ClearanceImproveButton = (_, context) => {
       {clearance_level < 5
         && (
           <Button
-            className={classes(["DoButton", isDisabled && "DoButton-disabled"])}
+            className={classes([isDisabled && "Button-disabled"])}
             disabled={isDisabled}
             onClick={() => {
               setSelectedTab(1);
@@ -337,11 +333,10 @@ const ClearanceImproveButton = (_, context) => {
           && (
             <Flex.Item>
               <Button
-                className={classes(["DoButton",
-                data.rsc_credits < 5 && "DoButton-disabled"])}
+                className={classes([data.rsc_credits < 5 && "Button-disabled"])}
                 onClick={() => {
                   setSelectedTab(1);
-                  setConfirm("request_clearance_x_access")
+                  setConfirm("request_clearance_x_access");
                 }}
               >
                 Request X (5)
@@ -351,8 +346,8 @@ const ClearanceImproveButton = (_, context) => {
         && (
           <Flex.Item>
             <Button
-              disabled={true}
-              className={classes(["DoButton", isDisabled && "DoButton-disabled"])}
+              disabled
+              className={classes([isDisabled && "Button-disabled"])}
             >
               Maximum clearance reached
             </Button>
@@ -383,7 +378,7 @@ export const ResearchTerminal = (_, context) => {
         {showSharpen
           && (
             <Section>
-              <Button className="DoButton" onClick={() => setSharpen(sharpen === 0 ? 1 : 0)}>
+              <Button onClick={() => setSharpen(sharpen === 0 ? 1 : 0)}>
                 Toggle Sharpen
               </Button>
             </Section>)}

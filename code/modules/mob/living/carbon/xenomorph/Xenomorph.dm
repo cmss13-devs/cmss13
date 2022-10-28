@@ -681,10 +681,6 @@
 	QDEL_NULL(mutators)
 	QDEL_NULL(behavior_delegate)
 
-	for(var/i in built_structures)
-		var/list/L = built_structures[i]
-		QDEL_NULL_LIST(L)
-
 	built_structures = null
 
 	vis_contents -= wound_icon_carrier

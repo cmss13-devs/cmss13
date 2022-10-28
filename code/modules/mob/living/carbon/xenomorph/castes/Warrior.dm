@@ -50,6 +50,7 @@
 		/datum/action/xeno_action/activable/fling,
 	)
 
+	mutation_icon = WARRIOR_NORMAL
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
 	icon_xeno = 'icons/mob/hostiles/warrior.dmi'

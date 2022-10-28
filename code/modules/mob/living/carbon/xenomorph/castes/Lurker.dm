@@ -45,6 +45,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
+	mutation_icon = LURKER_NORMAL
 	mutation_type = LURKER_NORMAL
 	claw_type = CLAW_TYPE_SHARP
 

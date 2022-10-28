@@ -122,6 +122,7 @@
 	var/acid_level = 0
 
 	// Mutator-related and other important vars
+	var/mutation_icon = null
 	var/mutation_type = null
 	var/datum/mutator_set/individual_mutators/mutators = new
 
@@ -351,7 +352,7 @@
 
 	mutators.xeno = src
 
-	update_icon_source()
+	update_icon_source() //I'm not sure why this is here. Line 379 calls recalculate everything which calls this.
 
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]

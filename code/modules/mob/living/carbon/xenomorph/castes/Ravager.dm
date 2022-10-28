@@ -41,6 +41,7 @@
 	tier = 3
 	pixel_x = -16
 	old_x = -16
+	mutation_icon = RAVAGER_NORMAL
 	mutation_type = RAVAGER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 

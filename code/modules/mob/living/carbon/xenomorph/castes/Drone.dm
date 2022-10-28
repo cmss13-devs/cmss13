@@ -64,6 +64,7 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 		)
+	mutation_icon = DRONE_NORMAL
 	mutation_type = DRONE_NORMAL
 
 	icon_xeno = 'icons/mob/hostiles/drone.dmi'

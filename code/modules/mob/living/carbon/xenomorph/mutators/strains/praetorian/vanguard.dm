@@ -34,6 +34,7 @@
 	MS.recalculate_actions(description, flavor_description)
 	P.recalculate_everything()
 
+	P.mutation_icon = PRAETORIAN_VANGUARD
 	P.mutation_type = PRAETORIAN_VANGUARD
 
 	apply_behavior_holder(P)

@@ -41,7 +41,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl
 		)
-	mutation_type = "Normal"
+	mutation_type = "Normal" //fix this john
 	var/poolable = TRUE //Can it be safely pooled if it has no player?
 
 	icon_xenonid = 'icons/mob/xenonids/larva.dmi'

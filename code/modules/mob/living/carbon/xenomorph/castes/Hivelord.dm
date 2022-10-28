@@ -64,6 +64,7 @@
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // to be consistent with drone placement
 		/datum/action/xeno_action/onclick/toggle_speed, //fourth macro
 		)
+	mutation_icon = HIVELORD_NORMAL
 	mutation_type = HIVELORD_NORMAL
 
 	icon_xeno = 'icons/mob/hostiles/hivelord.dmi'

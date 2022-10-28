@@ -49,6 +49,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 	)
+	mutation_icon = SENTINEL_NORMAL
 	mutation_type = SENTINEL_NORMAL
 
 	icon_xenonid = 'icons/mob/xenonids/sentinel.dmi'

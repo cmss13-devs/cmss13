@@ -1,10 +1,8 @@
 
 $darkcolor: #110000;
-$lightcolor: #FFBF00;
+$lightcolor: #FFBF00 !default;
 $font-family: monospace;
 $background-radial-opacity: 0.2;
-
-
 
 @use '../base.scss' with (
   $color-bg: $darkcolor,

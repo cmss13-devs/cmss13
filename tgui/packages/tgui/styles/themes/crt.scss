@@ -59,6 +59,39 @@ $flicker-color-end:darken($lightcolor, 0.2);
 
   .Layout__content {
     background-image: none;
+    background: radial-gradient(
+      rgba($lightcolor, $background-radial-opacity),
+      rgba($lightcolor, math.div($background-radial-opacity, 5)));
+  }
+
+  .Layout__content::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+    animation-name: flicker;
+    animation-duration: 1s;
+  }
+  .Layout__content::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
   }
 
   .Layout__content--scrollable {
@@ -69,41 +102,11 @@ $flicker-color-end:darken($lightcolor, 0.2);
     scrollbar-gutter: $lightcolor;
   }
 
-  .TabWrapper {
-    margin-left: -4px;
-    margin-right: -5px;
-  }
-
-  .TabbedPage {
-    border-left: 2px solid $lightcolor;
-    border-right: 2px solid $lightcolor;
-    margin-left: -3px;
-    margin-right: -3px;
-    margin-top: -12px;
-  }
-
-  .TabbedContent {
-    margin-left: 3px;
-    margin-right: 3px;
-    margin-top: 12px;
-    margin-bottom: 12px;
-  }
-
   span {
     color: $lightcolor;
     font-family: $font-family;
     font-size: $small-text;
     font-weight: bold;
-  }
-
-  .purchase-reports {
-    margin-left: 20px;
-  }
-
-  .purchase-flex {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
   }
 
   .DoButton {
@@ -162,15 +165,7 @@ $flicker-color-end:darken($lightcolor, 0.2);
     }
   }
 
-  .Confirm-Dialogue {
-    margin-left: 3px;
-  }
-
-  .HiddenButton {
-    visibility: hidden;
-  }
-
-  .sep {
+  hr {
     color: $lightcolor;
     border: 1px solid $lightcolor;
   }
@@ -213,61 +208,11 @@ $flicker-color-end:darken($lightcolor, 0.2);
     }
   }
 
-  .table_header {
-    font-size: $large-text;
-  }
-
   td {
     border: 1px solid $lightcolor;
     margin-top: 1px;
     margin-bottom: 1px;
     justify-content: center;
-
-    .chemical-td {
-      width: 60%;
-    }
-
-    .action-td {
-      border: 1px solid $lightcolor;
-    }
-  }
-
-  .compound_label {
-    margin-left: 12px;
-    margin-bottom: 3px;
-    margin-top: 3px;
-    display: inline-block;
-    line-height: $large-text;
-    display: flex;
-  }
-
-  .compound_actions{
-    margin-bottom: 4px;
-    margin-top: 3px;
-  }
-  .chem-table-wrapper {
-    padding-left: 1vw;
-    padding-right: 1vw;
-  }
-  .chem_table {
-    border: 1px solid $lightcolor;
-    width: 100%;
-  }
-
-  .container {
-    border: 2px solid $lightcolor;
-    background-color: transparent;
-    box-sizing: content-box;
-
-    .Section__title {
-      height: $large-text;
-      margin-bottom: 12px;
-    }
-
-    .Section__titleText {
-      font-weight: bold;
-      font-size: $large-text;
-    }
   }
 
   @keyframes flicker {
@@ -418,38 +363,5 @@ $flicker-color-end:darken($lightcolor, 0.2);
     }
 
   }
-  .crt::after {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(18, 16, 16, 0.1);
-    opacity: 0;
-    z-index: 2;
-    pointer-events: none;
-    animation: flicker 0.15s infinite;
-    animation-name: flicker;
-    animation-duration: 1s;
-  }
-  .crt::before {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 2;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
-  }
-  .crt {
-    background: radial-gradient(
-      rgba($lightcolor, $background-radial-opacity),
-      rgba($lightcolor, math.div($background-radial-opacity, 5)));
-  }
+
 }

@@ -30,6 +30,11 @@
 	var/list/to_revive = list()
 	var/list/revive_times = list()
 
+	var/basic_moan = 'sound/hallucinations/far_noise.ogg'
+	var/basic_variance = TRUE
+	var/rare_moan = 'sound/hallucinations/veryfar_noise.ogg'
+	var/rare_variance = TRUE
+
 /datum/species/zombie/handle_post_spawn(var/mob/living/carbon/human/zombie)
 	zombie.set_languages(list("Zombie"))
 
@@ -73,9 +78,9 @@
 
 /datum/species/zombie/handle_unique_behavior(var/mob/living/carbon/human/zombie)
 	if(prob(5))
-		playsound(zombie.loc, 'sound/hallucinations/far_noise.ogg', 15, 1)
+		playsound(zombie.loc, basic_moan, 15, basic_variance)
 	else if(prob(5))
-		playsound(zombie.loc, 'sound/hallucinations/veryfar_noise.ogg', 15, 1)
+		playsound(zombie.loc, rare_moan, 15, rare_variance)
 
 /datum/species/zombie/handle_death(var/mob/living/carbon/human/zombie, gibbed)
 	set waitfor = 0

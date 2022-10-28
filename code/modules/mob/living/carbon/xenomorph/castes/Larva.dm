@@ -8,6 +8,7 @@
 	melee_vehicle_damage = 0
 	max_health = XENO_HEALTH_LARVA
 	caste_desc = "D'awwwww, so cute!"
+	entry_message_body "<a href='"+URL_WIKI_XENO_QUICKSTART+">You are a larva!</a> You can grow into a stronger Xenomorph of your choice! Remain in the hive until you've grown into a Tier One Caste, and follow the orders of your Queen! For the hive!"
 	speed = XENO_SPEED_TIER_10
 	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.
 	evolves_to = XENO_T1_CASTES

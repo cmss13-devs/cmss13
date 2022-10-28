@@ -23,7 +23,8 @@
 	is_intelligent = 1
 	evolution_allowed = FALSE
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
-	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
+	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs. Lead your hive"
+	entry_message_body = "<a href='"+URL_QUEEN_GUIDE+"'>Lead your Hive to victory over the Marines.</a> Use your powerful pheromones and your command abilities to organise the Hive. Lay eggs to create facehuggers and accumulate more Larvae. Use your screech to defend yourself and signal pushes. Use your acid to melt into places."
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND

@@ -8,23 +8,23 @@
 #define URL_WIKI_RULES				"https://cm-ss13.com/wiki/Rules"
 
 #define URL_WIKI_LANDING			"https://cm-ss13.com/wiki/Main_Page"
-#define URL_WIKI_COC				"https://cm-ss13.com/wiki/Rank"
-#define URL_WIKI_LAW				"https://cm-ss13.com/wiki/Marine_Law"
-#define URL_WIKI_XENO_QUICKSTART	"https://cm-ss13.com/wiki/Xeno_Quickstart_Guide"
-#define URL_WIKI_MARINE_QUICKSTART	"https://cm-ss13.com/wiki/Marine_Quickstart_Guide"
+#define URL_WIKI_COC			"https://cm-ss13.com/wiki/Rank"
+#define URL_WIKI_LAW			"https://cm-ss13.com/wiki/Marine_Law"
+#define URL_WIKI_XENO_QUICKSTART			"https://cm-ss13.com/wiki/Xeno_Quickstart_Guide"
+#define URL_WIKI_MARINE_QUICKSTART			"https://cm-ss13.com/wiki/Marine_Quickstart_Guide"
 #define URL_WIKI_MACROS				"https://cm-ss13.com/wiki/Macros"
-#define URL_WIKI_SOP				"https://cm-ss13.com/wiki/Standard_Operating_Procedure"
+#define URL_WIKI_SOP			"https://cm-ss13.com/wiki/Standard_Operating_Procedure"
 #define URL_WIKI_CO_RULES			"https://cm-ss13.com/wiki/CO_Council_Rulings"
-#define URL_WIKI_CONSTRUCTION		"https://cm-ss13.com/wiki/Guide_to_construction"
-#define URL_WIKI_ENGINEERING		"https://cm-ss13.com/wiki/Guide_to_Engineering"
+#define URL_WIKI_CONSTRUCTION			"https://cm-ss13.com/wiki/Guide_to_construction"
+#define URL_WIKI_ENGINEERING			"https://cm-ss13.com/wiki/Guide_to_Engineering"
 #define URL_WIKI_HACKING			"https://cm-ss13.com/wiki/Guide_to_Engineering#Hacking"
-#define URL_WIKI_APC				"https://cm-ss13.com/wiki/Guide_to_Engineering#APC_Maintenance"
+#define URL_WIKI_APC			"https://cm-ss13.com/wiki/Guide_to_Engineering#APC_Maintenance"
 #define URL_WIKI_SURGERY			"https://cm-ss13.com/wiki/Surgery"
 #define URL_WIKI_MEDICAL			"https://cm-ss13.com/wiki/Guide_to_Medicine"
 
 ///////////////////////// Guides For Start /////////////////////////////////////////
 
-#define URL_WIKI_CO_GUIDE			"https://cm-ss13.com/wiki/Commanding_Officer" // Command Guides Start here //
+#define URL_WIKI_CO_GUIDE			"https://cm-ss13.com/wiki/Commanding_Officer" // Command //
 #define URL_WIKI_XO_GUIDE			"https://cm-ss13.com/wiki/Executive_Officer"
 #define URL_WIKI_SO_GUIDE			"https://cm-ss13.com/wiki/Staff_Officer"
 #define URL_WIKI_SEA_GUIDE			"https://cm-ss13.com/wiki/Senior_Enlisted_Advisor"
@@ -59,5 +59,6 @@
 ///////////////////////// Forum Documents /////////////////////////////////////////
 #define URL_FORUM					"https://cm-ss13.com/forums"
 #define URL_FORUM_APPEALS			"https://cm-ss13.com/forums/forms.php?do=form&fid=6"
-#define URL_FORUM_PLAYER_REPORT		"https://cm-ss13.com/forums/forms.php?do=form&fid=10"
-#define URL_FORUM_STAFF_REPORT		"https://cm-ss13.com/forums/forms.php?do=form&fid=12"
+#define URL_FORUM_PLAYER_REPORT			"https://cm-ss13.com/forums/forms.php?do=form&fid=10"
+#define URL_FORUM_STAFF_REPORT			"https://cm-ss13.com/forums/forms.php?do=form&fid=12"
+#define URL_QUEEN_GUIDE			"https://cm-ss13.com/forums/showthread.php?8404-Ultimate-Queen-Guide-Rip-amp-amp-Tear-(Image-Heavy)"

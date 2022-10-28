@@ -10,7 +10,7 @@
 	selection_class = "job_researcher"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/researcher
-	entry_message_body = "You're a commissioned officer of the USCM, though you are not in the ship's chain of command. You are tasked with researching and developing new medical treatments, helping your fellow doctors, and generally learning new things. Your role involves a lot of roleplaying, but you can perform the function of a regular doctor. Do not hand out things to Marines without getting permission from your supervisor."
+	entry_message_body = "You're a commissioned officer of the USCM, though you are not in the ship's chain of command. You are tasked with <a href='"+URL_WIKI_RSR_GUIDE+"'>researching</a> and developing new medical treatments, helping your fellow doctors, and generally learning new things. Your role involves a lot of roleplaying, but you can perform the function of a regular doctor. Do not hand out things to Marines without getting permission from your supervisor."
 
 /datum/job/civilian/researcher/set_spawn_positions(var/count)
 	spawn_positions = rsc_slot_formula(count)

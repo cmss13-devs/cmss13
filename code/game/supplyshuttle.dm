@@ -398,7 +398,7 @@ var/datum/controller/supply/supply_controller = new()
 	for(var/typepath in subtypesof(/datum/supply_packs))
 		var/datum/supply_packs/P = new typepath()
 		if(P.group == "ASRS")
-			random_supply_packs[P.name] = P
+			random_supply_packs += P
 		else
 			supply_packs[P.name] = P
 	spawn(0)
@@ -434,10 +434,7 @@ var/datum/controller/supply/supply_controller = new()
 //This is a weighted pick based upon their cost.
 //Their cost will go up if the crate is picked
 /datum/controller/supply/proc/add_random_crate()
-	var/list/pickfrom = list()
-	for(var/supply_name in supply_controller.random_supply_packs)
-		pickfrom += supply_controller.random_supply_packs[supply_name]
-	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(pickfrom)
+	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(random_supply_packs)
 	if(C == null)
 		return
 	C.cost = round(C.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight

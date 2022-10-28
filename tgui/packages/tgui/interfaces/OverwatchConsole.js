@@ -360,15 +360,19 @@ export const OverwatchMonitor = (props, context) => {
     user,
   } = data;
 
-  const marine_data = sortBy(
-    marine => marine.role
-  )(Object.values(marine_list) ?? []);
-  const unique_jobs = uniqBy(
-    marine => marine.role
-  )(Object.values(marine_list) ?? []);
+  const marine_data = sortBy((marine) => marine.role)(
+    Object.values(marine_list) ?? []
+  );
+  const unique_jobs = uniqBy((marine) => marine.role)(
+    Object.values(marine_list) ?? []
+  );
 
-  const [searchText, setSearchText] = useLocalState(context, "searchText", "");
-  const [selectedJob, setSelectedJob] = useLocalState(context, "selectedJob", "");
+  const [searchText, setSearchText] = useLocalState(context, 'searchText', '');
+  const [selectedJob, setSelectedJob] = useLocalState(
+    context,
+    'selectedJob',
+    ''
+  );
 
   return (
     <>
@@ -390,9 +394,9 @@ export const OverwatchMonitor = (props, context) => {
             )}
             <Stack.Item>
               <Dropdown
-                options={unique_jobs.map(marine => marine.role)}
+                options={unique_jobs.map((marine) => marine.role)}
                 disabled={operator !== user}
-                displayText={"Select Role"}
+                displayText={'Select Role'}
                 onSelected={(value) => setSelectedJob(value)}
                 noscroll
                 width="8em"
@@ -467,11 +471,15 @@ export const OverwatchMonitor = (props, context) => {
                   <Table.Cell bold>Area</Table.Cell>
                   <Table.Cell bold>SL Distance</Table.Cell>
                 </Table.Row>
-                {marine_data?.filter((marine) => !marine?.filtered)
+                {marine_data
+                  ?.filter((marine) => !marine?.filtered)
                   .filter(searchFor(searchText))
-                  .filter((marine) => marine?.role === selectedJob
-                  || selectedJob === null
-                  || !selectedJob)
+                  .filter(
+                    (marine) =>
+                      marine?.role === selectedJob
+                      || selectedJob === null
+                      || !selectedJob
+                  )
                   .map((marine_data) => (
                     <Table.Row key={marine_data}>
                       <Table.Cell textAlign="center">
@@ -595,23 +603,27 @@ export const OverwatchSupplies = (props, context) => {
   const { x_supply, y_supply, supply_cooldown, supply_ready, world_time }
     = data;
 
-  const cooldown = round(supply_cooldown - world_time / 10);
+  const cooldown = round(supply_cooldown - world_time * 0.1);
 
   const [target_x, setTargetX] = useLocalState(context, 'target_x', x_supply);
   const [target_y, setTargetY] = useLocalState(context, 'target_y', y_supply);
+
+  const cooldown_seconds = data.supply_cooldown_time * 0.1;
+  const lower_cooldown_seconds = cooldown_seconds * 0.4;
+  const upper_cooldown_seconds = cooldown_seconds * 0.8;
 
   return (
     <Section title="Supply Drop">
       <OverwatchAuthenticated />
       <ProgressBar
         ranges={{
-          good: [-Infinity, 200],
-          average: [200, 400],
-          bad: [Infinity, 400],
+          good: [-Infinity, lower_cooldown_seconds],
+          average: [lower_cooldown_seconds, upper_cooldown_seconds],
+          bad: [Infinity, upper_cooldown_seconds],
         }}
         minValue={0}
-        maxValue={500}
-        value={cooldown}>
+        maxValue={data.supply_cooldown_time}
+        value={cooldown_seconds}>
         {cooldown > 0 ? cooldown + ' second cooldown' : 'Ready to Fire'}
       </ProgressBar>
       <Divider />
@@ -718,9 +730,7 @@ export const OverwatchBomb = (props, context) => {
   const [bomb_y, setTargetY] = useLocalState(context, 'bomb_y', y_bomb);
 
   const bombardment_enabled
-    = bombardment <= 0
-    && !almayer_cannon_disabled
-    && almayer_cannon_ready;
+    = bombardment <= 0 && !almayer_cannon_disabled && almayer_cannon_ready;
 
   return (
     <Section title="Orbital Bombardment">
@@ -731,8 +741,8 @@ export const OverwatchBomb = (props, context) => {
           average: [200, 400],
           bad: [Infinity, 400],
         }}
-        minValue="0"
-        maxValue="500"
+        minValue={0}
+        maxValue={500}
         value={bombardment}>
         {bombardment > 0 ? bombardment + ' second cooldown' : 'Ready to Fire'}
       </ProgressBar>

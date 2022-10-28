@@ -24,6 +24,8 @@
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
 
+	var/supply_cooldown_time = 500 SECONDS
+
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
 	SSmapview.map_machines += src
@@ -402,7 +404,7 @@
 		if(C) C.anchored = FALSE
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
 		return
-	COOLDOWN_START(S, next_supplydrop, 500 SECONDS)
+	COOLDOWN_START(S, next_supplydrop, supply_cooldown_time)
 	if(ismob(usr))
 		var/mob/M = usr
 		M.count_niche_stat(STATISTICS_NICHE_CRATES)
@@ -587,14 +589,13 @@
 	data["user"] = user
 
 	var/list/squad_list = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
-		if(S.active && !S.overwatch_officer && S.faction == faction && S.name != "Root")
-			squad_list += S.name
+	for(var/datum/squad/squad in RoleAuthority.squads)
+		if(squad.active && !squad.overwatch_officer && squad.faction == faction && squad.name != "Root")
+			squad_list += squad.name
 	data["squad_list"] = squad_list
 
 	data["almayer_cannon_ready"] = almayer_orbital_cannon?.loaded_tray
 	data["almayer_cannon_disabled"] = almayer_orbital_cannon?.is_disabled
-	data["bombardment_cooldown"] = almayer_orbital_cannon?.ob_firing_cooldown
 
 	data["supply_cooldown"] = current_squad?.next_supplydrop
 	data["marine_list"] = current_squad ? get_marine_data(current_squad) : FALSE
@@ -602,6 +603,15 @@
 
 	var/obj/structure/closet/crate/drop_closet = locate() in current_squad?.drop_pad.loc
 	data["supply_ready"] = drop_closet ? TRUE : FALSE
+
+	return(data)
+
+/obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
+
+	var/list/data = list()
+
+	data["max_supply_cooldown"] = almayer_orbital_cannon?.ob_firing_cooldown
+	data["max_bombardment_cooldown"] = supply_cooldown_time
 
 	return(data)
 
@@ -613,10 +623,6 @@
 	. = ..()
 	if(.)
 		return
-
-	var/mob/user = usr
-	if(get_dist(user, src) > 1)
-		return FALSE
 
 	switch(action)
 
@@ -642,8 +648,8 @@
 					current_squad.send_squad_message("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.", displayed_icon = src)
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system control override disengaged.")]")
 				else
-					var/mob/living/carbon/human/H = operator
-					var/obj/item/card/id/ID = H.get_idcard()
+					var/mob/living/carbon/human/current_operator = operator
+					var/obj/item/card/id/ID = current_operator.get_idcard()
 					current_squad.send_squad_message("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.", displayed_icon = src)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
 				current_squad = null
@@ -655,8 +661,8 @@
 
 		if("pick_squad")
 			if(current_squad?.release_overwatch())
-				var/mob/living/carbon/human/H = operator
-				var/obj/item/card/id/ID = H.get_idcard()
+				var/mob/living/carbon/human/current_operator = operator
+				var/obj/item/card/id/ID = current_operator.get_idcard()
 				current_squad.send_squad_message("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.", displayed_icon = src)
 				if(cam && !ishighersilicon(usr))
 					usr.reset_view(null)
@@ -762,10 +768,10 @@
 				var/squaddie = params["squaddie"]
 				if(!(squaddie in marine_filter))
 					marine_filter += squaddie
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Marine now hidden.")]")
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("[squaddie] now hidden.")]")
 				else
 					marine_filter -= squaddie
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Marine will now be shown.")]")
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("[squaddie] will now be shown.")]")
 			return TRUE
 
 		if("change_lead")

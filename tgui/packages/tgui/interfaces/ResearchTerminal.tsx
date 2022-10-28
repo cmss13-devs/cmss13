@@ -105,6 +105,13 @@ const ConfirmationDialogue = (props: ConfirmationProps, context) => {
     </Stack>);
 };
 
+const NoCompoundsDetected = (_, context) => {
+  return (
+    <span>
+      Error: no chemicals have been detected.
+    </span>);
+};
+
 const CompoundTable = (_, context) => {
   const { data, act } = useBackend<TerminalProps>(context);
   const isMainTerminal = data.main_terminal === 1;
@@ -121,6 +128,10 @@ const CompoundTable = (_, context) => {
   const researchDocs = documents.map(x => {
     return { id: x, type: data.research_documents['XRF Scans'][x], isPublished: published.includes(x) };
   });
+
+  if(researchDocs.length === 0) {
+    return <NoCompoundsDetected />;
+  }
 
   return (
     <div className="chem-table-wrapper">
@@ -365,7 +376,7 @@ export const ResearchTerminal = (_, context) => {
     <Window
       width={480 * 2}
       height={320 * 2}
-      theme="crt"
+      theme="crtyellow"
     >
       <Window.Content scrollable>
         <Section

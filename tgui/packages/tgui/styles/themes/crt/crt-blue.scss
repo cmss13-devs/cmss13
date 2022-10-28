@@ -1,0 +1,10 @@
+@use 'sass:meta';
+
+@use '../crt.scss' with (
+  $lightcolor: #8ac8ff,
+  $darkcolor: #000011,
+);
+
+.theme-crtblue {
+  @extend .theme-crt;
+}

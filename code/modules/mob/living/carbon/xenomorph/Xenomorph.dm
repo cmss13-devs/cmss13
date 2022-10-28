@@ -122,7 +122,7 @@
 	var/acid_level = 0
 
 	// Mutator-related and other important vars
-	var/mutation_icon = null
+	var/mutation_icon_state = null
 	var/mutation_type = null
 	var/datum/mutator_set/individual_mutators/mutators = new
 

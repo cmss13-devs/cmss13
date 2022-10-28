@@ -40,7 +40,6 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-	mutation_icon = PRAETORIAN_NORMAL
 	mutation_type = PRAETORIAN_NORMAL
 
 	base_actions = list(

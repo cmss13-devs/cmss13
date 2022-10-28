@@ -64,7 +64,6 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 		)
-	mutation_icon = BURROWER_NORMAL
 	mutation_type = BURROWER_NORMAL
 
 	icon_xeno = 'icons/mob/hostiles/burrower.dmi'
@@ -109,5 +108,5 @@
 		return
 
 	if(bound_xeno.burrow)
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon] Burrower Burrowed"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state] Burrower Burrowed"
 		return TRUE

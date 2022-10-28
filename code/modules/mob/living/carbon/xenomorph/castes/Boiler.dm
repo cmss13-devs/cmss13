@@ -42,7 +42,6 @@
 	tier = 3
 	gib_chance = 100
 	drag_delay = 6 //pulling a big dead xeno is hard
-	mutation_icon = BOILER_NORMAL
 	mutation_type = BOILER_NORMAL
 
 	tileoffset = 0

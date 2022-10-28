@@ -66,7 +66,6 @@
 		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
 		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
 		)
-	mutation_icon = CARRIER_NORMAL
 	mutation_type = CARRIER_NORMAL
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'

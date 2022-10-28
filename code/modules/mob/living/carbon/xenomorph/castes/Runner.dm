@@ -54,7 +54,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 	)
-	mutation_icon = RUNNER_NORMAL
 	mutation_type = RUNNER_NORMAL
 
 	icon_xeno = 'icons/mob/hostiles/runner.dmi'

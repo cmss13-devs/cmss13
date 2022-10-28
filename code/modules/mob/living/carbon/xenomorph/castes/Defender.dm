@@ -44,7 +44,7 @@
 		/datum/action/xeno_action/onclick/tail_sweep,
 		/datum/action/xeno_action/activable/fortify,
 	)
-	mutation_icon = DEFENDER_NORMAL
+	mutation_icon_state = DEFENDER_NORMAL
 	mutation_type = DEFENDER_NORMAL
 	icon_xeno = 'icons/mob/hostiles/defender.dmi'
 	icon_xenonid = 'icons/mob/xenonids/defender.dmi'
@@ -71,8 +71,8 @@
 		return
 
 	if(bound_xeno.fortify)
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon] Defender Fortify"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Defender Fortify"
 		return TRUE
 	if(bound_xeno.crest_defense)
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon] Defender Crest"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Defender Crest"
 		return TRUE

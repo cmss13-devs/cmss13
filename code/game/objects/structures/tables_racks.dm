@@ -309,7 +309,7 @@
 		var/obj/item/explosive/grenade/detonating_grenade = W
 		if(detonating_grenade.active)
 			to_chat(user, SPAN_WARNING("It's too late for that!"))
-		return
+			return
 
 	//clicking the table
 	if(flipped)

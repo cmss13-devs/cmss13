@@ -34,8 +34,7 @@
 	w_class = SIZE_MEDIUM
 	eye_protection = 2
 	vision_impair = VISION_IMPAIR_MAX
-	var/hug_memory = 0 //Variable to hold the "memory" of how many anti-hugs remain.  Because people were abusing the fuck out of it.
-
+	
 /obj/item/clothing/head/welding/attack_self(mob/user)
 	..()
 	toggle()

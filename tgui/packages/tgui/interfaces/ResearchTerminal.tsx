@@ -35,7 +35,7 @@ const PurchaseDocs = (_, context) => {
       <Stack.Item>
         <span>Purchase Reports</span>
       </Stack.Item>
-      <hr className="sep" />
+      <hr />
       <Stack.Item>
         <Flex justify="space-between" fill className="purchase-flex">
           {all_levels.map(x => {
@@ -54,7 +54,7 @@ const PurchaseDocs = (_, context) => {
                 </Button>
               </Flex.Item>)})}
         </Flex>
-        <hr className="sep" />
+        <hr />
 
         {purchaseSelection !== '0'
           && (
@@ -262,7 +262,7 @@ const ResearchManager = (_, context) => {
           </span>
         </Stack.Item>
       </Stack>
-      <hr className="sep" />
+      <hr />
       <PurchaseDocs />
       <ImproveClearanceConfirmation />
       <XClearanceConfirmation />
@@ -368,11 +368,11 @@ export const ResearchTerminal = (_, context) => {
   const showSharpen = false;
   return (
     <Window
-      width={480}
-      height={320}
+      width={480 * 2}
+      height={320 * 2}
       theme="crt"
     >
-      <Window.Content scrollable className={classes([!sharpen && 'crt'])}>
+      <Window.Content scrollable>
         <Section
           title={`Clearance Level ${data.clearance_level}`}
           className="container"

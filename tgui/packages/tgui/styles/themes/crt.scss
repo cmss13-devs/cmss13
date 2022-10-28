@@ -1,8 +1,11 @@
+@use 'sass:color';
+@use "sass:math";
+@use 'sass:meta';
 
-$darkcolor: #110000;
+$darkcolor: #110000 !default;
 $lightcolor: #FFBF00 !default;
 $font-family: monospace;
-$background-radial-opacity: 0.2;
+$background-radial-opacity: 0.2 !default;
 
 @use '../base.scss' with (
   $color-bg: $darkcolor,
@@ -19,13 +22,8 @@ $background-radial-opacity: 0.2;
 $small-text: 2vw;
 $large-text: 3vw;
 
-@use 'sass:color';
-@use "sass:math";
-@use 'sass:meta';
-
 $flicker-color-start:lighten($lightcolor, 0.2);
 $flicker-color-end:darken($lightcolor, 0.2);
-
 .theme-crt {
   @include meta.load-css('../layouts/Window.scss');
   @include meta.load-css('../layouts/TitleBar.scss', $with: (
@@ -115,37 +113,9 @@ $flicker-color-end:darken($lightcolor, 0.2);
     }
   }
 
-  .Button-disabled {
-    color: $lightcolor;
-    border: 1px solid $lightcolor;
-    background-color: red;
-    &:hover,
-    &:focus,
-    &:visited,
-    &:target {
-      color: $lightcolor;
-      background-color: none;
-    }
-  }
-
   .Button--disabled {
     background-color: none;
     color: $lightcolor;
-  }
-
-  @keyframes confirmFlicker {
-    0% {
-      background-color: $lightcolor;
-      color: $darkcolor;
-    }
-    50% {
-      background-color: $darkcolor;
-      color: $lightcolor;
-    }
-    100% {
-      background-color: $lightcolor;
-      color: $darkcolor;
-    }
   }
 
   .Button.ConfirmButton {
@@ -173,15 +143,11 @@ $flicker-color-end:darken($lightcolor, 0.2);
 
   .Tabs--horizontal {
     .Tab {
-      border-bottom: 2px solid $lightcolor;
+      border: 2px solid $lightcolor;
+      border-bottom: 6px solid $lightcolor;
       text-align: center;
       background-color: rgba(0, 0, 0, 0);
       font-weight: bold;
-
-      &:hover {
-        outline: 2px solid $lightcolor;
-        outline-style: groove;
-      }
     }
 
     .Tab--selected {
@@ -214,71 +180,21 @@ $flicker-color-end:darken($lightcolor, 0.2);
     justify-content: center;
   }
 
-  @keyframes flicker {
+  @keyframes confirmFlicker {
     0% {
-      opacity: 0.27861;
-    }
-    5% {
-      opacity: 0.34769;
-    }
-    10% {
-      opacity: 0.23604;
-    }
-    15% {
-      opacity: 0.90626;
-    }
-    20% {
-      opacity: 0.18128;
-    }
-    25% {
-      opacity: 0.83891;
-    }
-    30% {
-      opacity: 0.65583;
-    }
-    35% {
-      opacity: 0.67807;
-    }
-    40% {
-      opacity: 0.26559;
-    }
-    45% {
-      opacity: 0.84693;
+      background-color: $lightcolor;
+      color: $darkcolor;
     }
     50% {
-      opacity: 0.96019;
-    }
-    55% {
-      opacity: 0.08594;
-    }
-    60% {
-      opacity: 0.20313;
-    }
-    65% {
-      opacity: 0.71988;
-    }
-    70% {
-      opacity: 0.53455;
-    }
-    75% {
-      opacity: 0.37288;
-    }
-    80% {
-      opacity: 0.71428;
-    }
-    85% {
-      opacity: 0.70419;
-    }
-    90% {
-      opacity: 0.7003;
-    }
-    95% {
-      opacity: 0.36108;
+      background-color: $darkcolor;
+      color: $lightcolor;
     }
     100% {
-      opacity: 0.24387;
+      background-color: $lightcolor;
+      color: $darkcolor;
     }
   }
+
   @keyframes textShadow {
     0% {
       text-shadow: 0.4389924193300864px 0 1px $flicker-color-start, -0.4389924193300864px 0 1px $flicker-color-end, 0 0 3px;
@@ -292,75 +208,76 @@ $flicker-color-end:darken($lightcolor, 0.2);
     20% {
       text-shadow: none
     }
-    /*
-    10% {
-      text-shadow: 0.02956275843481219px 0 1px $flicker-color-start, -0.02956275843481219px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    15% {
-      text-shadow: 0.40218538552878136px 0 1px $flicker-color-start, -0.40218538552878136px 0 1px $flicker-color-end, 0 0 3px;
-    }*/
-
-    /*
-    20% {
-      text-shadow: 3.4794037899852017px 0 1px $flicker-color-start, -3.4794037899852017px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    25% {
-      text-shadow: 1.6125630401149584px 0 1px $flicker-color-start, -1.6125630401149584px 0 1px $flicker-color-end, 0 0 3px;
-    }*/
-
-    /*
-    30% {
-      text-shadow: 0.7015590085143956px 0 1px $flicker-color-start, -0.7015590085143956px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    35% {
-      text-shadow: 3.896914047650351px 0 1px $flicker-color-start, -3.896914047650351px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    40% {
-      text-shadow: 3.870905614848819px 0 1px $flicker-color-start, -3.870905614848819px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    45% {
-      text-shadow: 2.231056963361899px 0 1px $flicker-color-start, -2.231056963361899px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    */
-
-    /*
-    50% {
-      text-shadow: 0.08084290417898504px 0 1px $flicker-color-start, -0.08084290417898504px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    55% {
-      text-shadow: 2.3758461067427543px 0 1px $flicker-color-start, -2.3758461067427543px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    60% {
-      text-shadow: 2.202193051050636px 0 1px $flicker-color-start, -2.202193051050636px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    65% {
-      text-shadow: 2.8638780614874975px 0 1px $flicker-color-start, -2.8638780614874975px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    70% {
-      text-shadow: 0.48874025155497314px 0 1px $flicker-color-start, -0.48874025155497314px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    75% {
-      text-shadow: 1.8948491305757957px 0 1px $flicker-color-start, -1.8948491305757957px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    80% {
-      text-shadow: 0.0833037308038857px 0 1px $flicker-color-start, -0.0833037308038857px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    85% {
-      text-shadow: 0.09769827255241735px 0 1px $flicker-color-start, -0.09769827255241735px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    90% {
-      text-shadow: 3.443339761481782px 0 1px $flicker-color-start, -3.443339761481782px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    95% {
-      text-shadow: 2.1841838852799786px 0 1px $flicker-color-start, -2.1841838852799786px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    100% {
-      text-shadow: 2.6208764473832513px 0 1px $flicker-color-start, -2.6208764473832513px 0 1px $flicker-color-end, 0 0 3px;
-    }*/
     100% {
       text-shadow: none
     }
-
   }
-
 }
+
+@keyframes flicker {
+  0% {
+    opacity: 0.27861;
+  }
+  5% {
+    opacity: 0.34769;
+  }
+  10% {
+    opacity: 0.23604;
+  }
+  15% {
+    opacity: 0.90626;
+  }
+  20% {
+    opacity: 0.18128;
+  }
+  25% {
+    opacity: 0.83891;
+  }
+  30% {
+    opacity: 0.65583;
+  }
+  35% {
+    opacity: 0.67807;
+  }
+  40% {
+    opacity: 0.26559;
+  }
+  45% {
+    opacity: 0.84693;
+  }
+  50% {
+    opacity: 0.96019;
+  }
+  55% {
+    opacity: 0.08594;
+  }
+  60% {
+    opacity: 0.20313;
+  }
+  65% {
+    opacity: 0.71988;
+  }
+  70% {
+    opacity: 0.53455;
+  }
+  75% {
+    opacity: 0.37288;
+  }
+  80% {
+    opacity: 0.71428;
+  }
+  85% {
+    opacity: 0.70419;
+  }
+  90% {
+    opacity: 0.7003;
+  }
+  95% {
+    opacity: 0.36108;
+  }
+  100% {
+    opacity: 0.24387;
+  }
+}
+
+

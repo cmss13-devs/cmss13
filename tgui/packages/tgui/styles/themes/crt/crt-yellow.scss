@@ -1,0 +1,10 @@
+@use 'sass:meta';
+
+@use '../crt.scss' as yellow with (
+  $lightcolor: #FFBF00,
+  $darkcolor: #111100
+);
+
+.theme-crtyellow {
+  @extend .theme-crt;
+}

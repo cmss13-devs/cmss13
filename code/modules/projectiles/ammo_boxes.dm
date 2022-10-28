@@ -819,7 +819,7 @@
 				else
 					flare_type = /obj/item/device/flashlight/flare
 				for(var/obj/item/device/flashlight/flare/F in flare_pack.contents)
-					if(F.fuel < 1)
+					if(F.burned_out)
 						to_chat(user, SPAN_WARNING("Some flares in \the [F] are used."))
 						return
 					if(F.type != flare_type)

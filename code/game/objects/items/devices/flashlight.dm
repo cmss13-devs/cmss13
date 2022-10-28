@@ -238,19 +238,17 @@
 	name = "flare"
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
-	brightness_on = 5 //As bright as a flashlight, but more disposable. Doesn't burn forever though
+	brightness_on = 4
 	icon_state = "flare"
 	item_state = "flare"
 	actions = list()	//just pull it manually, neckbeard.
 	raillight_compatible = 0
-	var/fuel = 0
-	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
+	var/flare_time = 1 MINUTES
+	var/flare_variance = 15 SECONDS // 15 seconds one way, 15 seconds the other way
+	var/burned_out = FALSE
+	var/burnout_timer_id
 	var/on_damage = 7
 	var/ammo_datum = /datum/ammo/flare
-
-/obj/item/device/flashlight/flare/Initialize()
-	. = ..()
-	fuel = rand(1600 SECONDS, 2000 SECONDS)
 
 /obj/item/device/flashlight/flare/dropped(mob/user)
 	. = ..()
@@ -258,21 +256,11 @@
 		var/mob/living/carbon/flare_user = user
 		flare_user.toggle_throw_mode(THROW_MODE_OFF)
 
-/obj/item/device/flashlight/flare/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/item/device/flashlight/flare/process(delta_time)
-	fuel -= fuel_rate * delta_time
-	if(fuel <= 0 || !on)
-		burn_out()
-
 /obj/item/device/flashlight/flare/proc/burn_out()
 	turn_off()
-	fuel = 0
+	burned_out = TRUE
 	icon_state = "[initial(icon_state)]-empty"
 	add_to_garbage(src)
-	STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/proc/turn_on()
 	on = TRUE
@@ -280,10 +268,11 @@
 	update_brightness()
 	force = on_damage
 	damtype = "fire"
-	START_PROCESSING(SSobj, src)
+	var/burn_time = flare_time + rand(flare_variance * -1, flare_variance)
+	burnout_timer_id = addtimer(CALLBACK(src, .proc/burn_out), burn_time, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /obj/item/device/flashlight/flare/proc/turn_off()
-	on = 0
+	on = FALSE
 	heat_source = 0
 	force = initial(force)
 	damtype = initial(damtype)
@@ -296,8 +285,8 @@
 /obj/item/device/flashlight/flare/attack_self(mob/living/user)
 
 	// Usual checks
-	if(!fuel)
-		to_chat(user, SPAN_NOTICE("It's out of fuel."))
+	if(burned_out)
+		to_chat(user, SPAN_NOTICE("It's already burnt out."))
 		return FALSE
 	if(on)
 		if(!do_after(user, 2.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
@@ -308,6 +297,7 @@
 		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
 		SPAN_WARNING("You snuff out [src], singing your hand."))
 		user.apply_damage(7, BURN, hand)
+		deltimer(burnout_timer_id)
 		burn_out()
 		//TODO: add snuff out sound so guerilla CLF snuffing flares get noticed
 		return
@@ -321,7 +311,7 @@
 		var/mob/living/carbon/U = user
 		if(istype(U) && !U.throw_mode)
 			U.toggle_throw_mode(THROW_MODE_NORMAL)
-			
+
 /obj/item/device/flashlight/flare/proc/activate_signal(mob/living/carbon/human/user)
 	return
 
@@ -331,7 +321,7 @@
 
 /// Flares deployed by a flare gun
 /obj/item/device/flashlight/flare/on/gun
-	brightness_on = 7
+	brightness_on = 5
 
 //Special flare subtype for the illumination flare shell
 //Acts like a flare, just even stronger, and set length
@@ -343,9 +333,8 @@
 	mouse_opacity = 0
 	brightness_on = 7 //Way brighter than most lights
 
-/obj/item/device/flashlight/flare/on/illumination/Initialize()
-	. = ..()
-	fuel = rand(800 SECONDS, 1000 SECONDS) // Half the duration of a flare, but justified since it's invincible
+	flare_time = 10 MINUTES
+	flare_variance = 2 MINUTES
 
 /obj/item/device/flashlight/flare/on/illumination/turn_off()
 	..()
@@ -359,26 +348,30 @@
 	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, oh it'll burn ya'."
 	icon_state = "starshell_ash"
 	brightness_on = 7
-	anchored = 1//can't be picked up
+	anchored = TRUE //can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
+
+	flare_time = 40 SECONDS
+	flare_variance = 20 SECONDS
 
 /obj/item/device/flashlight/flare/on/starshell_ash/Initialize(mapload, ...)
 	if(mapload)
 		return INITIALIZE_HINT_QDEL
-	. = ..()
-	fuel = rand(5 SECONDS, 60 SECONDS)
+	return ..()
 
 /obj/item/device/flashlight/flare/on/illumination/chemical
 	name = "chemical light"
 	brightness_on = 0
 
+	flare_variance = 0
+
 /obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, var/amount)
+	flare_time = amount * 5 SECONDS
 	. = ..()
 	brightness_on = round(amount * 0.04)
 	if(!brightness_on)
 		return INITIALIZE_HINT_QDEL
 	SetLuminosity(brightness_on)
-	fuel = amount * 5 SECONDS
 
 /obj/item/device/flashlight/slime
 	gender = PLURAL
@@ -422,9 +415,8 @@
 	var/datum/cas_signal/signal
 	var/activate_message = TRUE
 
-/obj/item/device/flashlight/flare/signal/Initialize()
-	. = ..()
-	fuel = rand(160 SECONDS, 200 SECONDS)
+	flare_time = 3 MINUTES
+	flare_variance = 30 SECONDS
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -461,7 +453,6 @@
 	..()
 
 /obj/item/device/flashlight/flare/signal/Destroy()
-	STOP_PROCESSING(SSobj, src)
 	if(signal)
 		cas_groups[faction].remove_signal(signal)
 		qdel(signal)
@@ -486,10 +477,11 @@
 /obj/item/device/flashlight/flare/signal/debug
 	name = "debug signal flare"
 	desc = "A signal flare used to test CAS runs. If you're seeing this, someone messed up."
+	flare_time = INFINITY
+	flare_variance = 0
 
 /obj/item/device/flashlight/flare/signal/debug/Initialize()
 	..()
-	fuel = INFINITY
 	return INITIALIZE_HINT_ROUNDSTART
 
 /obj/item/device/flashlight/flare/signal/debug/LateInitialize()

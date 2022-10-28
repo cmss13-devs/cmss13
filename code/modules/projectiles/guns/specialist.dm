@@ -1216,7 +1216,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		if(F.on)
 			to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
 			return
-		if(!F.fuel)
+		if(F.burned_out)
 			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
 			return
 		if(current_mag && current_mag.current_rounds == 0)

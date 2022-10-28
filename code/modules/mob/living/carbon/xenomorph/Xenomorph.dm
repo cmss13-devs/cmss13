@@ -352,7 +352,7 @@
 
 	mutators.xeno = src
 
-	update_icon_source() //I'm not sure why this is here. Line 379 calls recalculate everything which calls this.
+	update_icon_source() //I'm not sure why this is here. recalculate_everything() calls update_icon_source() later down this proc
 
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]

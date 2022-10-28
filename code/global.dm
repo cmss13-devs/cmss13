@@ -25,7 +25,6 @@
 #define R_EVENT			(1<<18)
 
 #define R_EVERYTHING	((1<<19)-1) //the sum of all other rank permissions
-#define G_DEVELOPER		(1<<20)
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
 //=================================================
 

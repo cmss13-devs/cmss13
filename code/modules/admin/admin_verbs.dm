@@ -20,6 +20,8 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
 	/client/proc/invismin,
+	/client/proc/set_explosive_antigrief,
+	/client/proc/check_explosive_antigrief,
 	/client/proc/cmd_mod_say,
 	/client/proc/dsay,
 	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
@@ -74,8 +76,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/check_round_statistics,
 	/client/proc/force_ground_shuttle,
 	/client/proc/force_teleporter,
-	/client/proc/set_explosive_antigrief,
-	/client/proc/check_explosive_antigrief,
 	/client/proc/matrix_editor,
 	/datum/admins/proc/open_shuttlepanel
 )
@@ -94,7 +94,6 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_change_custom_event,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
-	/client/proc/toggle_explosive_antigrief,
 	/client/proc/force_shuttle,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,

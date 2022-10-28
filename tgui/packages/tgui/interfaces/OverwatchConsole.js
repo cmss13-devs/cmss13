@@ -608,7 +608,7 @@ export const OverwatchSupplies = (props, context) => {
   const [target_x, setTargetX] = useLocalState(context, 'target_x', x_supply);
   const [target_y, setTargetY] = useLocalState(context, 'target_y', y_supply);
 
-  const cooldown_seconds = data.supply_cooldown_time * 0.1;
+  const cooldown_seconds = data.max_supply_cooldown * 0.1;
   const lower_cooldown_seconds = cooldown_seconds * 0.4;
   const upper_cooldown_seconds = cooldown_seconds * 0.8;
 
@@ -732,17 +732,21 @@ export const OverwatchBomb = (props, context) => {
   const bombardment_enabled
     = bombardment <= 0 && !almayer_cannon_disabled && almayer_cannon_ready;
 
+  const cooldown_seconds = data.max_bombardment_cooldown * 0.1;
+  const lower_cooldown_seconds = cooldown_seconds * 0.4;
+  const upper_cooldown_seconds = cooldown_seconds * 0.8;
+
   return (
     <Section title="Orbital Bombardment">
       <OverwatchAuthenticated />
       <ProgressBar
         ranges={{
-          good: [-Infinity, 200],
-          average: [200, 400],
-          bad: [Infinity, 400],
+          good: [-Infinity, lower_cooldown_seconds],
+          average: [lower_cooldown_seconds, upper_cooldown_seconds],
+          bad: [Infinity, upper_cooldown_seconds],
         }}
         minValue={0}
-        maxValue={500}
+        maxValue={cooldown_seconds}
         value={bombardment}>
         {bombardment > 0 ? bombardment + ' second cooldown' : 'Ready to Fire'}
       </ProgressBar>

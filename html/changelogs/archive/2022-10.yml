@@ -338,6 +338,8 @@
   Shad0vvs:
   - bugfix: Fixes Ravagers being able to use scissor cuts though corners that are
       walled off.
+  Unknownity:
+  - bugfix: The property Repairing now works again and also on synthetics via TOUCH
   carlarctg:
   - bugfix: Fixed resin spikes deleting on evolution, allowing drones who evolve into
       hivelord (or vice versa) to keep them.

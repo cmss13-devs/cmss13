@@ -59,7 +59,7 @@
 		if(H.spawned_corpse)
 			to_chat(user, SPAN_XENOWARNING("This one does not look suitable!"))
 			return
-
+		user.stop_pulling() // disrupt any grabs
 		larva_amount++
 	if(isXeno(M))
 		if(!linked_hive || M.stat != DEAD)

@@ -333,6 +333,8 @@
 2022-10-28:
   Aceroy:
   - bugfix: No more zoom glitches with binoculars and mounted turrets.
+  Morrow:
+  - bugfix: Stops the ability to grab or grab-throw simple animals with C4 on them.
   Shad0vvs:
   - bugfix: Fixes Ravagers being able to use scissor cuts though corners that are
       walled off.

@@ -16,20 +16,12 @@ $background-radial-opacity: 0.2;
   $bg-map-keys: (),
 );
 
-//$small-text: base.em(14px);
-//$large-text: base.em(18px);
-
 $small-text: 2vw;
 $large-text: 3vw;
 
 @use 'sass:color';
 @use "sass:math";
 @use 'sass:meta';
-
-//$flicker-color-start:rgba(0,30,255,0.5);
-//$flicker-color-end:rgba(255,0,80,0.3);
-//$flicker-color-start:rgba(230,230,230,0.5);
-//$flicker-color-end:rgba(230,230,230,0.3);
 
 $flicker-color-start:lighten($lightcolor, 0.2);
 $flicker-color-end:darken($lightcolor, 0.2);
@@ -107,7 +99,7 @@ $flicker-color-end:darken($lightcolor, 0.2);
     font-weight: bold;
   }
 
-  .DoButton {
+  .Button {
     background-color: $lightcolor;
     color: $darkcolor;
     font-family: $font-family;
@@ -123,7 +115,7 @@ $flicker-color-end:darken($lightcolor, 0.2);
     }
   }
 
-  .DoButton-disabled {
+  .Button-disabled {
     color: $lightcolor;
     border: 1px solid $lightcolor;
     background-color: red;
@@ -156,7 +148,7 @@ $flicker-color-end:darken($lightcolor, 0.2);
     }
   }
 
-  .DoButton.ConfirmButton {
+  .Button.ConfirmButton {
     animation: confirmFlicker 5s infinite;
     &:hover {
       animation:none;
@@ -204,6 +196,15 @@ $flicker-color-end:darken($lightcolor, 0.2);
         outline: none;
       }
     }
+  }
+
+  .Table {
+    border: 1px solid $lightcolor;
+    width: 100%;
+  }
+
+  .Section {
+    border: 2px solid $lightcolor;
   }
 
   td {

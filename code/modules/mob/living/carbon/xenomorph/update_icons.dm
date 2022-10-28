@@ -53,13 +53,22 @@
 
 	if(stat == DEAD)
 		icon_state = "[mutation_icon_state || mutation_type] [caste.caste_type] Dead"
+		if(!icon state) in icon_states(icon_xeno)
+			icon_state = "Normal [caste.caste_type] Dead"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
 			icon_state = "[mutation_icon_state || mutation_type] [caste.caste_type] Sleeping"
+			if(!icon state) in icon_states(icon_xeno)
+				icon_state = "Normal [caste.caste_type] Sleeping"
 		else
 			icon_state = "[mutation_icon_state || mutation_type] [caste.caste_type] Knocked Down"
+			if(!icon state) in icon_states(icon_xeno)
+				icon_state = "Normal [caste.caste_type] Knocked Down"
 	else
 		icon_state = "[mutation_icon_state || mutation_type] [caste.caste_type] Running"
+		if(!icon state) in icon_states(icon_xeno)
+			icon_state = "Normal [caste.caste_type] Running"
+
 
 /mob/living/carbon/Xenomorph/regenerate_icons()
 	..()

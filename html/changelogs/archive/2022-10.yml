@@ -333,6 +333,10 @@
 2022-10-28:
   Aceroy:
   - bugfix: No more zoom glitches with binoculars and mounted turrets.
+  carlarctg:
+  - bugfix: Fixed resin spikes deleting on evolution, allowing drones who evolve into
+      hivelord (or vice versa) to keep them.
+  - bugfix: Tail stab now has a msg if you aim for a nonexistent limb
   harryob:
   - server: new round alert lives again, via tgs
   - bugfix: autoreconnect now works

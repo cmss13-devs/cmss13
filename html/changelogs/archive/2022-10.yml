@@ -331,6 +331,8 @@
   - bugfix: Fixed Carriers getting xenoid sprites when carrying huggers.
   - bugfix: Fixed bad shading around resin traps, fast/sticky resin, eggs, and tunnels.
 2022-10-28:
+  Aceroy:
+  - bugfix: No more zoom glitches with binoculars and mounted turrets.
   harryob:
   - server: new round alert lives again, via tgs
   - bugfix: autoreconnect now works

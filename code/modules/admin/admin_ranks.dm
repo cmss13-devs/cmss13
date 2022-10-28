@@ -45,7 +45,6 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 				if("mod")						rights |= R_MOD
 				if("mentor")					rights |= R_MENTOR
 				if("profiler")					rights |= R_PROFILER
-				if("developer")					rights |= G_DEVELOPER
 
 		admin_ranks[rank] = rights
 		previous_rights = rights

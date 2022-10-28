@@ -809,7 +809,10 @@ cases. Override_icon_state should be a list.*/
 	if(world.time <= user.zoom_cooldown) //If we are spamming the zoom, cut it out
 		return
 	user.zoom_cooldown = world.time + 20
-
+	if(user.interactee)
+		user.unset_interaction()
+	else
+		user.set_interaction(src)
 	if(user.client)
 		user.client.change_view(viewsize, src)
 
@@ -842,11 +845,6 @@ cases. Override_icon_state should be a list.*/
 	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
 	SPAN_NOTICE("You peer through \the [zoom_device]."))
 	zoom = !zoom
-	if(user.interactee)
-		user.unset_interaction()
-	else
-		user.set_interaction(src)
-
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)
 	var/mob_state

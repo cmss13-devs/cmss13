@@ -205,7 +205,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")
 
-	if(world.TgsAvailable)
+	if(TgsAvailable())
 		send_tgs_restart()
 
 		TgsReboot()

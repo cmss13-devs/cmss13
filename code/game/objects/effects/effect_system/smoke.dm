@@ -356,8 +356,8 @@
 			return
 	var/effect_amt = round(6 + amount*6)
 	M.eye_blurry = max(M.eye_blurry, effect_amt)
-	M.apply_damage(1, OXY) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
-	M.apply_stamina_damage(17) // Slowdown progressively gets worse until they eventually get stunned
+	M.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
+	M.apply_stamina_damage(18) // Slowdown progressively gets worse until they eventually get stunned
 	if(prob(20))
 		M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind && prob(25)) //Eye exposure damage
@@ -371,20 +371,14 @@
 		else
 			M.emote("gasp")
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
-	if(prob(5))
-		to_chat(M, SPAN_DANGER("You stumble!"))
+	if(prob(10))
+		to_chat(M, SPAN_HIGHDANGER("You stumble!"))
 		M.KnockDown(1)
 		M.emote("pain")
 		M.apply_damage(3,TOX) // Blood toxicity
 
-	//Topical damage (neurotoxin on exposed skin)
-	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
-	if(prob(40 + round(amount*15))) //Highly likely to drop items due to arms/hands seizing up
-		M.drop_held_item()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.temporary_slowdown = max(H.temporary_slowdown, round(effect_amt*1.5)) //One tick every two second
-		H.recalculate_move_delay = TRUE
+
+	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if it is paralyzed!"))
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire
 	time_to_live = 16

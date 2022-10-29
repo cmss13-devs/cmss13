@@ -37,8 +37,8 @@
 
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service)
 
-/datum/equipment_preset/uscm_ship/mp/standard/load_rank(mob/living/carbon/human/H)
-	if(H.client && get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
+/datum/equipment_preset/uscm_ship/mp/standard/load_rank(mob/living/carbon/human/human)
+	if(human.client && get_job_playtime(human.client, rank) < JOB_PLAYTIME_TIER_1)
 		return "ME2"
 	return paygrade
 

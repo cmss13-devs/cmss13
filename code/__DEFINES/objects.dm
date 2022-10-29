@@ -154,3 +154,7 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 
 /// Marks an object as organic. Used for alien structures and any other organic material
 #define OBJ_ORGANIC				(1<<0)
+/// Makes the item not spawn a band around the helmet if it's used as a helmet garb
+#define OBJ_NO_HELMET_BAND	(1<<1)
+/// Marks the object as helmet garb
+#define OBJ_IS_HELMET_GARB (1<<2)

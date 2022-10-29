@@ -368,24 +368,24 @@
 	prefs.save_preferences()
 
 /client/proc/switch_item_animations() //Switches tg-style item animations on, not-on-same-tile, and off
-	if(!(prefs.toggle_prefs & TOGGLE_ITEM_ANIMATIONS || prefs.toggle_prefs & TOGGLE_SAME_TILE_ITEM_ANIMATIONS))
-		prefs.toggle_prefs += TOGGLE_ITEM_ANIMATIONS
-		to_chat(src, SPAN_BOLDNOTICE("You will see item animations."))
-		prefs.save_preferences()
-		return "On"
+	switch(prefs.item_animation_pref_level)
+		if(SHOW_ITEM_ANIMATIONS_NONE)
+			prefs.item_animation_pref_level = SHOW_ITEM_ANIMATIONS_HALF
+			to_chat(src, SPAN_BOLDNOTICE("You will now see all item animations, except for those that occur on their own tile."))
+			prefs.save_preferences()
+			return "On"
 
-	if(prefs.toggle_prefs & TOGGLE_ITEM_ANIMATIONS)
-		prefs.toggle_prefs -= TOGGLE_ITEM_ANIMATIONS
-		prefs.toggle_prefs += TOGGLE_SAME_TILE_ITEM_ANIMATIONS
-		to_chat(src, SPAN_BOLDNOTICE("You will see item animations, except for those that occur on their own tile."))
-		prefs.save_preferences()
-		return "Not Same Tile"
+		if(SHOW_ITEM_ANIMATIONS_HALF)
+			prefs.item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
+			to_chat(src, SPAN_BOLDNOTICE("You will now see all item animations."))
+			prefs.save_preferences()
+			return "Not Same Tile"
 
-	if(prefs.toggle_prefs & TOGGLE_SAME_TILE_ITEM_ANIMATIONS)
-		prefs.toggle_prefs -= TOGGLE_SAME_TILE_ITEM_ANIMATIONS
-		to_chat(src, SPAN_BOLDNOTICE("You will no longer see item animations."))
-		prefs.save_preferences()
-		return "Off"
+		if(SHOW_ITEM_ANIMATIONS_ALL)
+			prefs.item_animation_pref_level = SHOW_ITEM_ANIMATIONS_NONE
+			to_chat(src, SPAN_BOLDNOTICE("You will no longer see item animations."))
+			prefs.save_preferences()
+			return "Off"
 
 //------------ GHOST PREFERENCES ---------------------------------
 

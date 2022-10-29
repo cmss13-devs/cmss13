@@ -49,7 +49,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/ooccolor
 	var/be_special = 0				// Special role selection
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION // flags in #define/mode.dm
-	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_ITEM_ANIMATIONS|TOGGLE_SAME_TILE_ITEM_ANIMATIONS // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
@@ -58,6 +57,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL
+	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
@@ -574,11 +574,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ALTERNATING_DUAL_WIELD]'><b>[toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_SWAP_HANDS]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS ? "On" : "Off"]</b></a><br>"
-			dat += "<b>Toggle Item Animations: \
-					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ITEM_ANIMATIONS]'><b>[toggle_prefs & TOGGLE_ITEM_ANIMATIONS ? "On" : "Off"]</b></a><br>"
-
-			dat += "<b>Toggle Item Animations: \
-					</b> <a href='?_src_=prefs;preference=switch_prefs;flag1=[TOGGLE_ITEM_ANIMATIONS]flag2=[TOGGLE_SAME_TILE_ITEM_ANIMATIONS]'><b>[toggle_prefs & TOGGLE_ITEM_ANIMATIONS ? "On" : toggle_prefs & TOGGLE_SAME_TILE_ITEM_ANIMATIONS ? "Not Same Tile" : "Off"]</b></a><br>"
+			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
 		if(MENU_ERT) //wart
 			dat += "<div id='column1'>"
 			dat += "<h2><b><u>ERT Settings:</u></b></h2>"

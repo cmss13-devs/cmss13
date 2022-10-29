@@ -6,6 +6,7 @@ $darkcolor: #110000 !default;
 $lightcolor: #FFBF00 !default;
 $font-family: monospace;
 $background-radial-opacity: 0.2 !default;
+$name: "crt" !default;
 
 @use '../base.scss' with (
   $color-bg: $darkcolor,
@@ -24,7 +25,8 @@ $large-text: 3vw;
 
 $flicker-color-start:lighten($lightcolor, 0.2);
 $flicker-color-end:darken($lightcolor, 0.2);
-.theme-crt {
+
+%theme-crt {
   @include meta.load-css('../layouts/Window.scss');
   @include meta.load-css('../layouts/TitleBar.scss', $with: (
     'background-color': $darkcolor,
@@ -118,12 +120,6 @@ $flicker-color-end:darken($lightcolor, 0.2);
     color: $lightcolor;
   }
 
-  .Button.ConfirmButton {
-    animation: confirmFlicker 5s infinite;
-    &:hover {
-      animation:none;
-    }
-  }
 
   hr {
     color: $lightcolor;
@@ -279,5 +275,4 @@ $flicker-color-end:darken($lightcolor, 0.2);
     opacity: 0.24387;
   }
 }
-
 

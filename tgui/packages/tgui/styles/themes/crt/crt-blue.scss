@@ -1,10 +1,36 @@
 @use 'sass:meta';
 
+$light: #8ac8ff;
+$dark: #000011;
+
 @use '../crt.scss' with (
-  $lightcolor: #8ac8ff,
-  $darkcolor: #000011,
+  $lightcolor: $light,
+  $darkcolor: $dark,
+  $name: "blue",
 );
 
 .theme-crtblue {
-  @extend .theme-crt;
+  @extend %theme-crt;
+
+  @keyframes blueConfirmFlicker {
+    0% {
+      background-color: $light;
+      color: $dark;
+    }
+    50% {
+      background-color: $dark;
+      color: $light;
+    }
+    100% {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+
+  .Button.ConfirmButton {
+    animation: blueConfirmFlicker 5s infinite;
+    &:hover {
+      animation:none;
+    }
+  }
 }

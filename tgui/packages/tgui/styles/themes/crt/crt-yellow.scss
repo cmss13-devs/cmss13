@@ -1,10 +1,36 @@
 @use 'sass:meta';
 
+$light: #FFBF00;
+$dark: #111100;
+
 @use '../crt.scss' as yellow with (
-  $lightcolor: #FFBF00,
-  $darkcolor: #111100
+  $lightcolor: $light,
+  $darkcolor: $dark,
+  $name: "yellow",
 );
 
 .theme-crtyellow {
-  @extend .theme-crt;
+  @extend %theme-crt;
+
+  @keyframes yellowConfirmFlicker {
+    0% {
+      background-color: $light;
+      color: $dark;
+    }
+    50% {
+      background-color: $dark;
+      color: $light;
+    }
+    100% {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+
+  .Button.ConfirmButton {
+    animation: yellowConfirmFlicker 5s infinite;
+    &:hover {
+      animation:none;
+    }
+  }
 }

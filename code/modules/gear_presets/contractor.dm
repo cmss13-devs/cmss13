@@ -420,9 +420,12 @@
 	idtype = /obj/item/card/id/data
 	assignment = "VAIPO Support Synthetic"
 	rank = JOB_CONTRACTOR_SYN
-	skills = /datum/skills/synthetic
 	faction = FACTION_CONTRACTOR
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+
+/datum/equipment_preset/contractor/duty/synth/load_skills(mob/living/carbon/human/H)
+		H.set_skills(/datum/skills/synthetic)
+		H.allow_gun_usage = FALSE
 
 /datum/equipment_preset/contractor/duty/synth/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
@@ -828,7 +831,11 @@
 	rank = JOB_CONTRACTOR_COVSYN
 	skills = /datum/skills/synthetic
 	faction = FACTION_CONTRACTOR
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE, LANGUAGE_TSL)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+
+/datum/equipment_preset/contractor/covert/synth/load_skills(mob/living/carbon/human/H)
+		H.set_skills(/datum/skills/synthetic)
+		H.allow_gun_usage = FALSE
 
 /datum/equipment_preset/contractor/covert/synth/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(50;MALE,50;FEMALE)

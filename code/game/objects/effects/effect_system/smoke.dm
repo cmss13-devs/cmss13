@@ -371,11 +371,11 @@
 		else
 			M.emote("gasp")
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
-	if(prob(10))
+	if(prob(8))
 		to_chat(M, SPAN_HIGHDANGER("You stumble!"))
 		M.KnockDown(1)
 		M.emote("pain")
-		M.apply_damage(3,TOX) // Blood toxicity
+		M.apply_damage(5,TOX) // Blood toxicity
 
 
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if it is paralyzed!"))

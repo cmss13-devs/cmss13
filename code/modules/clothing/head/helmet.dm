@@ -299,6 +299,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headband = "headbandgreen",
 	/obj/item/clothing/head/headband/tan = "headbandtan",
 	/obj/item/clothing/head/headband/red = "headbandred",
+	/obj/item/clothing/head/headband/brown = "helmet_headbandbrown",
+	/obj/item/clothing/head/headband/gray = "helmet_headbandgray",
 	/obj/item/clothing/head/headband/squad = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/tool/candle = "candle",
 	/obj/item/clothing/mask/facehugger/lamarr = "lamarr",

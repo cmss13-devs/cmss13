@@ -134,6 +134,12 @@
 /obj/item/clothing/head/headband/tan
 	icon_state = "headbandtan"
 
+/obj/item/clothing/head/headband/brown
+	icon_state = "headbandbrown"
+
+/obj/item/clothing/head/headband/gray
+	icon_state = "headbandgray"
+
 /obj/item/clothing/head/headband/rebel
 	desc = "A headband made from a simple strip of cloth. The words \"DOWN WITH TYRANTS\" are emblazoned on the front."
 	icon_state = "rebelband"
@@ -175,7 +181,7 @@
 	return ..()
 
 /obj/item/clothing/head/headband/squad/proc/adapt_to_squad()
-	var/squad_color = "tan"
+	var/squad_color = "gray"
 	var/mob/living/carbon/human/wearer = recursive_holder_check(src)
 	if(istype(wearer) && wearer.assigned_squad)
 		var/squad_name = lowertext(wearer.assigned_squad.name)
@@ -236,6 +242,9 @@
 						/obj/item/clothing/head/headband = "hat_headbandgreen",
 						/obj/item/clothing/head/headband/tan = "hat_headbandtan",
 						/obj/item/clothing/head/headband/red = "hat_headbandred",
+						/obj/item/clothing/head/headband/brown = "hat_headbandbrown",
+						/obj/item/clothing/head/headband/gray = "hat_headbandgray",
+						/obj/item/clothing/head/headband/squad = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
 						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
 						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",

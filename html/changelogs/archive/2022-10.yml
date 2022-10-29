@@ -358,3 +358,7 @@
   Shad0vvs:
   - bugfix: Now displays the first letter of areas properly on the Xeno death alert
       message.
+  usnpeepoo:
+  - balance: Berserkers apprehend now has an actual cooldown, its speed increased
+      very slightly.
+  - balance: Berserkers eviscerates life steal gain and max has been lowered

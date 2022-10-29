@@ -278,7 +278,6 @@
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/T)
 	..()
 	for(var/obj/structure/barricade/B in T)
-		to_chat_forced(world,"A") // REMOVETHISREMOVETHIS
 		B.take_acid_damage(XENO_ACID_GAS_BARRICADE_DAMAGE)
 		if(prob(50)) // anti sound spam
 			if(prob(50))
@@ -404,6 +403,7 @@
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire/affect(var/mob/living/carbon/M)
 	..()
+	
 	if(isXeno(M))
 		return
 	if(isYautja(M) && prob(75))

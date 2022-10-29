@@ -100,11 +100,12 @@
 		return FALSE
 	if(T.density)
 		return TRUE
-	var/move_dir = 0
-	for(var/obj/structure/obstacle in T)
-		move_dir = get_dir(src, T)
-		if(obstacle.BlockedPassDirs(src, move_dir))
-			return TRUE
+	if(prob(20))
+		var/move_dir = 0
+		for(var/obj/structure/obstacle in T)
+			move_dir = get_dir(src, T)
+			if(obstacle.BlockedPassDirs(src, move_dir))
+				return TRUE
 
 
 /obj/effect/particle_effect/smoke/proc/affect(var/mob/living/carbon/M)
@@ -278,6 +279,12 @@
 	..()
 	for(var/obj/structure/barricade/B in T)
 		B.take_acid_damage(XENO_ACID_BARRICADE_DAMAGE)
+		B.take_acid_damage(XENO_ACID_GAS_BARRICADE_DAMAGE)
+		if(prob(50)) // anti sound spam
+			if(prob(50))
+				playsound(src,"acid_sizzle",25)
+			else
+				playsound(src,"acid_hit",25)
 
 	for(var/obj/vehicle/multitile/R in T)
 		R.take_damage_type(15, "acid")

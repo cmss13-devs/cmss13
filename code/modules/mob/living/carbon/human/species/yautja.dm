@@ -85,17 +85,6 @@
 
 	ignores_stripdrag_flag = TRUE
 
-/datum/species/yautja/New()
-	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PREGAME_LOBBY, .proc/setup_yautja_icons)
-
-/datum/species/yautja/proc/setup_yautja_icons()
-	SIGNAL_HANDLER
-
-	icobase_source = CONFIG_GET(string/species_hunter)
-	deform_source = CONFIG_GET(string/species_hunter)
-	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PREGAME_LOBBY, .proc/setup_yautja_icons)
-
 /datum/species/yautja/larva_impregnated(var/obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = GLOB.hive_datum[embryo.hivenumber]
 

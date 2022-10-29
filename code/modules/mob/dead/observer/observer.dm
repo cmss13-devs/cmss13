@@ -72,7 +72,7 @@
 			icon_state = "anglo_example"
 			overlays += H.overlays
 		else if(isYautja(body))
-			icon = get_icon_from_source(CONFIG_GET(string/species_hunter))
+			icon = 'icons/mob/humans/species/r_predator.dmi'
 			icon_state = "yautja_example"
 			overlays += body.overlays
 		else if(ismonkey(body))

@@ -177,10 +177,6 @@
 	pixel_x = -12
 	old_x = -12
 
-/mob/living/simple_animal/hostile/alien/lurker/handle_icon()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_lurker))
-	return ..()
-
 // Still using old projectile code - commenting this out for now
 // /mob/living/simple_animal/hostile/alien/sentinel
 // 	name = "alien sentinel"

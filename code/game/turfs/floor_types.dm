@@ -360,8 +360,6 @@
 	breakable_tile = FALSE
 	burnable_tile = FALSE
 	baseturfs = /turf/open/floor
-	tool_flags = REMOVE_CROWBAR
-
 
 /turf/open/floor/engine/make_plating()
 	return
@@ -371,7 +369,7 @@
 		return
 	if(!user)
 		return
-	if(HAS_TRAIT(C, TRAIT_TOOL_CROWBAR))
+	if(HAS_TRAIT(C, TRAIT_TOOL_WRENCH))
 		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s protective cover."),
 		SPAN_NOTICE("You start removing [src]'s protective cover."))
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)

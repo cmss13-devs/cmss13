@@ -115,7 +115,7 @@
 
 /obj/structure/closet/secure_closet/freezer/industry
 	name = "Industry Freezer"
-	desc = "A powerful fine tuned freezer used to polymerize chemicals in the cold. This one is set to the perfect temperature for paraformaldehyde polymerization. The freezer must be kept closed for polymerization."
+	desc = "A powerful fine-tuned freezer used to polymerize chemicals in the cold. This one is set to the perfect temperature for paraformaldehyde polymerization. The freezer must be kept closed for polymerization."
 	req_access = list(ACCESS_MARINE_OT)
 	var/obj/structure/machinery/paraform_cooler/CU
 

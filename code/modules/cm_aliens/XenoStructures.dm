@@ -3,7 +3,7 @@
  */
 /obj/effect/alien
 	name = "alien thing"
-	desc = "theres something alien about this"
+	desc = "There's something alien about this."
 	icon = 'icons/mob/hostiles/Effects.dmi'
 	unacidable = TRUE
 	health = 1
@@ -146,6 +146,7 @@
 	opacity = 0
 	health = HEALTH_RESIN_XENO_STICKY
 	layer = RESIN_STRUCTURE_LAYER
+	plane = FLOOR_PLANE
 	var/slow_amt = 8
 	var/hivenumber = XENO_HIVE_NORMAL
 
@@ -297,7 +298,7 @@
 			return
 	qdel(src)
 
-/obj/effect/alien/resin/marker/examine(mob/user)
+/obj/effect/alien/resin/marker/get_examine_text(mob/user)
 	. = ..()
 	var/mob/living/carbon/Xenomorph/xeno_createdby
 	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
@@ -305,7 +306,7 @@
 		if(X.nicknumber == createdby)
 			xeno_createdby = X
 	if(isXeno(user) || isobserver(user))
-		to_chat(user, "[mark_meaning.desc], ordered by [xeno_createdby.name]")
+		. += "[mark_meaning.desc], ordered by [xeno_createdby.name]"
 
 /obj/effect/alien/resin/marker/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.hive_pos == 1 || M.nicknumber == createdby)

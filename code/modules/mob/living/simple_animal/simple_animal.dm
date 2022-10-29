@@ -278,6 +278,11 @@
 
 	return
 
+/mob/living/simple_animal/can_be_pulled_by(var/mob/pulling_mob)
+	if(locate(/obj/item/explosive/plastic) in contents)
+		to_chat(pulling_mob, SPAN_WARNING("You leave \the [src] alone. It's got live explosives on it!"))
+		return FALSE
+	return ..()
 
 /mob/living/simple_animal/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
 	if(istype(O, /obj/item/stack/medical))
@@ -288,7 +293,7 @@
 				if(MED.get_amount() >= 1)
 					apply_damage(-MED.heal_brute, BRUTE)
 					MED.use(1)
-					for(var/mob/M in viewers(src, null))
+					for(var/mob/M as anything in viewers(src, null))
 						if ((M.client && !( M.blinded )))
 							M.show_message(SPAN_NOTICE("[user] applies the [MED] on [src]"))
 					return

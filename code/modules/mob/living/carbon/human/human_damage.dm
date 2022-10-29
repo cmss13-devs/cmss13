@@ -75,18 +75,24 @@
 	return brainloss
 
 //These procs fetch a cumulative total damage from all limbs
-/mob/living/carbon/human/getBruteLoss(var/organic_only=0)
+/mob/living/carbon/human/getBruteLoss(var/organic_only = FALSE, var/robotic_only = FALSE)
 	var/amount = 0
 	for(var/obj/limb/O in limbs)
-		if(!(organic_only && O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
-			amount += O.brute_dam
+		if(organic_only && (O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
+			continue
+		if(robotic_only && !(O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
+			continue
+		amount += O.brute_dam
 	return amount
 
-/mob/living/carbon/human/getFireLoss(var/organic_only=0)
+/mob/living/carbon/human/getFireLoss(var/organic_only = FALSE, var/robotic_only = FALSE)
 	var/amount = 0
 	for(var/obj/limb/O in limbs)
-		if(!(organic_only && O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
-			amount += O.burn_dam
+		if(organic_only && (O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
+			continue
+		if(robotic_only && !(O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
+			continue
+		amount += O.burn_dam
 	return amount
 
 
@@ -468,7 +474,7 @@ This function restores all limbs.
 	return TRUE
 
 // Heal or damage internal organs
-// Organ has to be either a internal organ by string or a limb with internal organs in.
+// Organ has to be either an internal organ by string or a limb with internal organs in.
 /mob/living/carbon/human/apply_internal_damage(var/damage = 0, var/organ)
 	if(!damage)
 		return

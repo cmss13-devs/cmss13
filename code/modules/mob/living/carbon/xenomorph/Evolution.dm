@@ -139,12 +139,16 @@
 	else
 		new_xeno.plasma_stored = new_xeno.plasma_max*(plasma_stored/plasma_max) //preserve the ratio of plasma
 
+	new_xeno.built_structures = built_structures.Copy()
+
+	built_structures = null
+
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You emerge in a greater form from the husk of your old body. For the hive!"))
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
-		
+
 	src.transfer_observers_to(new_xeno)
 
 	qdel(src)
@@ -184,11 +188,6 @@
 	if(handcuffed || legcuffed)
 		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow you to evolve."))
 		return FALSE
-
-	if(isXenoLarva(src)) //Special case for dealing with larvae
-		if(amount_grown < max_grown)
-			to_chat(src, SPAN_WARNING("You are not yet fully grown. Currently at: [amount_grown] / [max_grown]."))
-			return FALSE
 
 	if(isnull(caste.evolves_to))
 		to_chat(src, SPAN_WARNING("You are already the apex of form and function. Go forth and spread the hive!"))
@@ -295,6 +294,10 @@
 
 	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 
+	new_xeno.built_structures = built_structures.Copy()
+
+	built_structures = null
+
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
@@ -321,9 +324,9 @@
 	if(round_statistics && !new_xeno.statistic_exempt)
 		round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
-	
+
 	src.transfer_observers_to(new_xeno)
-	
+
 	qdel(src)
 
 /mob/living/carbon/Xenomorph/proc/can_evolve(castepick, potential_queens)
@@ -345,12 +348,15 @@
 			if(2) used_tier_2_slots--
 			if(3) used_tier_3_slots--
 
-	var/totalXenos = length(hive.totalXenos) + pooled_factor
+	var/totalXenos = pooled_factor
+	for(var/mob/living/carbon/Xenomorph/xeno as anything in hive.totalXenos)
+		if(xeno.counts_for_slots)
+			totalXenos++
 
 	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))
 		return FALSE
-	else if(tier == 2 && ((used_tier_3_slots / length(hive.totalXenos)) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
+	else if(tier == 2 && ((used_tier_3_slots / totalXenos) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
 		return FALSE
 	else if(hive.allow_queen_evolve && !hive.living_xeno_queen && potential_queens == 1 && isXenoLarva(src) && castepick != XENO_CASTE_DRONE)

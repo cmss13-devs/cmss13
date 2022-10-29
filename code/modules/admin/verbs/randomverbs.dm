@@ -1,3 +1,8 @@
+
+#define ANTIGRIEF_OPTION_ENABLED "Enabled"
+#define ANTIGRIEF_OPTION_NEW_PLAYERS "Enabled for New Players"
+#define ANTIGRIEF_OPTION_DISABLED "Disabled"
+
 /client/proc/cmd_mentor_check_new_players()	//Allows mentors / admins to determine who the newer players are.
 	set category = "Admin"
 	set name = "Check new Players"
@@ -12,7 +17,7 @@
 			return
 		if(!CONFIG_GET(flag/mentor_tools))
 			to_chat(src, "Mentors do not have permission to use this.")
-	
+
 	var/age = alert(src, "Age check", "Show accounts up to how many days old ?", "7", "30" , "All")
 
 	if(age == "All")
@@ -104,11 +109,49 @@
 	else
 		to_chat(usr, SPAN_WARNING("You need to be a ghost in order to use this."))
 
-// bite me
-var/global/explosive_antigrief_on = TRUE
-/client/proc/toggle_explosive_antigrief()
-	set name = "Toggle Explosive Antigrief"
+/client/proc/set_explosive_antigrief()
+	set name = "Set Explosive Antigrief"
 	set category = "Admin.Game"
 
-	explosive_antigrief_on = !explosive_antigrief_on
-	message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has [explosive_antigrief_on ? "enabled" : "disabled"] explosive antigrief"))
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		return
+
+
+	var/antigrief_choice = tgui_input_list(usr, "Select the preferred antigrief type:", "Select", list(ANTIGRIEF_OPTION_ENABLED, ANTIGRIEF_OPTION_NEW_PLAYERS, ANTIGRIEF_OPTION_DISABLED))
+	if(!antigrief_choice)
+		return
+
+	switch(antigrief_choice)
+		if(ANTIGRIEF_OPTION_DISABLED)
+			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_DISABLED)
+			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has disabled explosive antigrief."))
+		if(ANTIGRIEF_OPTION_ENABLED)
+			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has fully enabled explosive antigrief for all players."))
+			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_ENABLED)
+		if(ANTIGRIEF_OPTION_NEW_PLAYERS)
+			message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has enabled explosive antigrief for new players (less than 10 total human hours)."))
+			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_NEW_PLAYERS)
+		else
+			message_staff(FONT_SIZE_LARGE("Error! [key_name_admin(usr)] attempted to toggle explosive antigrief but the selected value was [antigrief_choice]. Setting it to enabled."))
+			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_ENABLED)
+
+/client/proc/check_explosive_antigrief()
+	set name = "Check Explosive Antigrief"
+	set category = "Admin.Game"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		return
+
+	switch(CONFIG_GET(number/explosive_antigrief))
+		if(ANTIGRIEF_DISABLED)
+			to_chat(src, SPAN_BOLDNOTICE("Explosive antigrief is currently disabled."))
+		if(ANTIGRIEF_ENABLED)
+			to_chat(src, SPAN_BOLDNOTICE("Explosive antigrief is currently fully enabled."))
+		if(ANTIGRIEF_NEW_PLAYERS)
+			to_chat(src, SPAN_BOLDNOTICE("Explosive antigrief is currently enabled for new players."))
+		else
+			to_chat(src, SPAN_BOLDNOTICE("Explosive antigrief has an unknown value... you should probably fix that."))
+
+#undef ANTIGRIEF_OPTION_ENABLED
+#undef ANTIGRIEF_OPTION_NEW_PLAYERS
+#undef ANTIGRIEF_OPTION_DISABLED

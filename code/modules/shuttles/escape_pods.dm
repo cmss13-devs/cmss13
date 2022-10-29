@@ -214,50 +214,69 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	//id_tag is the generic connection tag.
 	//TODO make sure you can't C4 this.
 
-	ex_act(severity)
-		return FALSE
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ex_act(severity)
+	return FALSE
 
-	ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
-		var/launch_status[] = evacuation_program.check_launch_status()
-		var/data[] = list(
-			"docking_status"	= evacuation_program.dock_state,
-			"door_state"		= evacuation_program.memory["door_status"]["state"],
-			"door_lock"			= evacuation_program.memory["door_status"]["lock"],
-			"can_lock"			= 0, //evacuation_program.dock_state == (STATE_READY || STATE_DELAYED) ? 1:0,
-			"can_force"			= evacuation_program.dock_state == (STATE_READY || STATE_DELAYED) ? 1:0,
-			"can_delay"			= launch_status[2]
-		)
+// TGUI stufferinos \\
 
-		ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/attack_hand(mob/user)
+	if(..())
+		return
+	tgui_interact(user)
 
-		if (!ui)
-			ui = new(user, src, ui_key, "escape_pod_console.tmpl", id_tag, 470, 290)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(0)
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "EscapePodConsole", "[src.name]")
+		ui.open()
 
-	Topic(href, href_list)
-		if(..())
-			return TRUE	//Has to return true to fail. For some reason.
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
-		var/datum/shuttle/ferry/marine/evacuation_pod/P = shuttle_controller.shuttles[id_tag]
-		switch(href_list["command"])
-			if("force_launch")
-				P.prepare_for_launch()
-			if("delay_launch")
-				evacuation_program.dock_state = evacuation_program.dock_state == STATE_DELAYED ? STATE_READY : STATE_DELAYED
-			if("lock_door")
-				if(P.D.density) //Closed
-					spawn()
-						P.D.unlock()
-						P.D.open()
-						P.D.lock()
-				else //Open
-					spawn()
-						P.D.unlock()
-						P.D.close()
-						P.D.lock()
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
 
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_data(mob/user)
+	var/list/data = list()
+	var/launch_status[] = evacuation_program.check_launch_status()
+	var/datum/shuttle/ferry/marine/evacuation_pod/P = shuttle_controller.shuttles[id_tag]
+
+	data["docking_status"] = evacuation_program.dock_state
+	data["door_state"] = P.D.density
+	data["door_lock"] = P.D.locked
+	data["can_delay"] = launch_status[2]
+
+	return data
+
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/datum/shuttle/ferry/marine/evacuation_pod/P = shuttle_controller.shuttles[id_tag]
+
+	switch(action)
+		if("force_launch")
+			P.prepare_for_launch()
+			. = TRUE
+		if("delay_launch")
+			evacuation_program.dock_state = evacuation_program.dock_state == STATE_DELAYED ? STATE_READY : STATE_DELAYED
+			. = TRUE
+		if("lock_door")
+			if(P.D.density) //Closed
+				P.D.unlock()
+				P.D.open()
+				P.D.lock()
+			else //Open
+				P.D.unlock()
+				P.D.close()
+				P.D.lock()
+			. = TRUE
+
+
+// TGUI stuff END \\
 
 //=========================================================================================
 //================================Controller Program=======================================

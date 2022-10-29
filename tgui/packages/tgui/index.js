@@ -17,6 +17,7 @@ import './styles/themes/retro.scss';
 import './styles/themes/syndicate.scss';
 import './styles/themes/wizard.scss';
 import './styles/themes/weyland.scss';
+import './styles/themes/uscm.scss';
 import './styles/themes/xeno.scss';
 import './styles/themes/hive_status.scss';
 
@@ -58,7 +59,7 @@ const setupApp = () => {
   store.subscribe(renderApp);
 
   // Dispatch incoming messages
-  window.update = msg => store.dispatch(Byond.parseJson(msg));
+  window.update = (msg) => store.dispatch(Byond.parseJson(msg));
 
   // Process the early update queue
   while (true) {
@@ -72,6 +73,7 @@ const setupApp = () => {
   // Enable hot module reloading
   if (module.hot) {
     setupHotReloading();
+    // prettier-ignore
     module.hot.accept([
       './components',
       './debug',

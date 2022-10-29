@@ -58,6 +58,15 @@
 /datum/chem_property/proc/update_reagent() //used for changing other variables in the reagent, set update to FALSE to remove the update
 	return
 
+/datum/chem_property/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
+	return
+
+/datum/chem_property/proc/reaction_obj(var/obj/O, var/volume, var/potency)
+	return
+
+/datum/chem_property/proc/reaction_turf(var/turf/T, var/volume, var/potency)
+	return
+
 /datum/chem_property/proc/post_update_reagent()
 	return
 
@@ -95,3 +104,4 @@
 	if(category & PROPERTY_TYPE_ANOMALOUS)
 		text += "Anomalous "
 	return text
+	

@@ -9,7 +9,7 @@
 	icon_state = "m4a3"
 	max_rounds = 9
 	w_class = SIZE_SMALL
-	default_ammo = /datum/ammo/bullet/pistol/heavy
+	default_ammo = /datum/ammo/bullet/pistol
 	gun_type = /obj/item/weapon/gun/pistol/m4a3
 
 /obj/item/ammo_magazine/pistol/hp
@@ -58,7 +58,7 @@
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".45"
 	icon_state = "m4a345"//rename later
-	max_rounds = 9
+	max_rounds = 14
 	gun_type = /obj/item/weapon/gun/pistol/m1911
 
 
@@ -96,6 +96,7 @@
 /obj/item/ammo_magazine/pistol/mod88/rubber
 	name = "\improper 88M4 rubber magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/rubber
+	icon_state = "88m4_mag_rubber"
 
 
 //-------------------------------------------------------
@@ -238,7 +239,7 @@
 //-------------------------------------------------------
 /*
 Auto 9 The gun RoboCop uses. A better version of the VP78, with more rounds per magazine. Probably the best pistol around, but takes no attachments.
-It is a modified Beretta 93R, and can fire three round burst or single fire. Whether or not anyone else aside RoboCop can use it is not established.
+It is a modified Beretta 93R, and can fire three-round burst or single fire. Whether or not anyone else aside RoboCop can use it is not established.
 */
 
 /obj/item/ammo_magazine/pistol/auto9

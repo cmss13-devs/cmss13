@@ -154,6 +154,10 @@
 #define ORGAN_ASSISTED	1
 #define ORGAN_ROBOT		2
 
+#define ORGAN_HEALTHY 0
+#define ORGAN_BRUISED 1
+#define ORGAN_BROKEN 2
+
 //=================================================
 
 //Languages!
@@ -173,6 +177,7 @@
 #define SURGERY_MODE_ON			(1<<3)  // Mob on surgery mode, will attempt surgery when using relevant items on harm/disarm intent.
 #define MUTINEER				(1<<4)  // Part of the Mutiny Gang
 #define GIVING					(1<<5)	// Is currently trying to give an item to someone
+#define NOBIOSCAN				(1<<6)
 
 //=================================================
 

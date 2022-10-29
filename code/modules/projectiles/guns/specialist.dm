@@ -528,17 +528,17 @@
 /obj/item/weapon/gun/launcher/grenade/on_pocket_removal()
 	update_icon()
 
-/obj/item/weapon/gun/launcher/grenade/examine(mob/user) //Different treatment for single-shot VS multi-shot GLs.
-	..()
+/obj/item/weapon/gun/launcher/grenade/get_examine_text(mob/user) //Different treatment for single-shot VS multi-shot GLs.
+	. = ..()
 	if(get_dist(user, src) > 2 && user != loc)
 		return
 	if(length(cylinder.contents))
 		if(internal_slots == 1)
-			to_chat(user, SPAN_NOTICE("It is loaded with a grenade."))
+			. += SPAN_NOTICE("It is loaded with a grenade.")
 		else
-			to_chat(user, SPAN_NOTICE("It is loaded with <b>[length(cylinder.contents)] / [internal_slots]</b> grenades."))
+			. += SPAN_NOTICE("It is loaded with <b>[length(cylinder.contents)] / [internal_slots]</b> grenades.")
 	else
-		to_chat(user, SPAN_NOTICE("It is empty."))
+		. += SPAN_NOTICE("It is empty.")
 
 
 obj/item/weapon/gun/launcher/grenade/update_icon()
@@ -634,7 +634,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_WARNING("The [name] is empty."))
 			return FALSE
 		var/obj/item/explosive/grenade/G = cylinder.contents[1]
-		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(G))
+		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
 			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 			return FALSE
@@ -888,13 +888,13 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	recoil = RECOIL_AMOUNT_TIER_3
 
 
-/obj/item/weapon/gun/launcher/rocket/examine(mob/user)
-	..()
+/obj/item/weapon/gun/launcher/rocket/get_examine_text(mob/user)
+	. = ..()
 	if(current_mag.current_rounds <= 0)
-		to_chat(user, "It's not loaded.")
+		. += "It's not loaded."
 		return
 	if(current_mag.current_rounds > 0)
-		to_chat(user, "It has an 84mm [ammo.name] loaded.")
+		. += "It has an 84mm [ammo.name] loaded."
 
 
 /obj/item/weapon/gun/launcher/rocket/able_to_fire(mob/living/user)
@@ -908,7 +908,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		if(skill_locked && !skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return 0
-		if(user.faction == FACTION_MARINE && explosive_grief_check(src))
+		if(user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
 			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 			return FALSE
@@ -1036,7 +1036,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 /obj/item/weapon/gun/launcher/rocket/m57a4
 	name = "\improper M57-A4 'Lightning Bolt' quad thermobaric launcher"
-	desc = "The M57-A4 'Lightning Bolt' is posssibly the most destructive man-portable weapon ever made. It is a 4-barreled missile launcher capable of burst-firing 4 thermobaric missiles. Enough said."
+	desc = "The M57-A4 'Lightning Bolt' is possibly the most destructive man-portable weapon ever made. It is a 4-barreled missile launcher capable of burst-firing 4 thermobaric missiles. Enough said."
 	icon_state = "m57a4"
 	item_state = "m57a4"
 
@@ -1086,9 +1086,9 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	desc = "The M83A2 SADAR is a lightweight one-shot anti-armour weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
 	var/fired = FALSE
 
-/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/examine(mob/user)
+/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("You can fold it up with unique-action."))
+	. += SPAN_NOTICE("You can fold it up with unique-action.")
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	. = ..()
@@ -1171,6 +1171,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	gun_category = GUN_CATEGORY_HANDGUN
 	attachable_allowed = list(/obj/item/attachable/scope/mini/flaregun)
 
+	var/last_signal_flare_name
+
 
 /obj/item/weapon/gun/flare/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -1224,16 +1226,16 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			current_mag.current_rounds++
 			qdel(I)
 			update_icon()
-		else 
+		else
 			to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
-	else 
+	else
 		to_chat(user, SPAN_WARNING("That's not a flare!"))
-		
+
 /obj/item/weapon/gun/flare/unload(mob/user)
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 	unload_flare(user)
-	
+
 /obj/item/weapon/gun/flare/proc/unload_flare(mob/user)
 	if(!current_mag)
 		return
@@ -1245,3 +1247,47 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_NOTICE("You unload \the [unloaded_flare] from \the [src]."))
 			user.put_in_hands(unloaded_flare)
 		update_icon()
+
+/obj/item/weapon/gun/flare/unique_action(mob/user)
+	if(!user || !isturf(user.loc) || !current_mag || !current_mag.current_rounds)
+		return
+
+	var/turf/flare_turf = user.loc
+	var/area/flare_area = flare_turf.loc
+
+	if(flare_area.ceiling > CEILING_GLASS)
+		to_chat(user, SPAN_NOTICE("The roof above you is too dense."))
+		return
+
+	if(!istype(ammo, /datum/ammo/flare))
+		to_chat(user, SPAN_NOTICE("\The [src] jams as it is somehow loaded with incorrect ammo!"))
+		return
+
+	if(user.action_busy)
+		return
+
+	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		return
+
+	current_mag.current_rounds--
+
+	flare_turf.ceiling_debris()
+
+	var/datum/ammo/flare/explicit_ammo = ammo
+
+	var/obj/item/device/flashlight/flare/fired_flare = new explicit_ammo.flare_type(get_turf(src))
+	to_chat(user, SPAN_NOTICE("You fire \the [fired_flare] into the air!"))
+	fired_flare.visible_message(SPAN_WARNING("\A [fired_flare] bursts into brilliant light in the sky!"))
+	fired_flare.invisibility = INVISIBILITY_MAXIMUM
+	fired_flare.mouse_opacity = FALSE
+	playsound(user.loc, fire_sound, 50, 1)
+
+	if(fired_flare.activate_signal(user))
+		last_signal_flare_name = fired_flare.name
+
+	update_icon()
+
+/obj/item/weapon/gun/flare/get_examine_text(mob/user)
+	. = ..()
+	if(last_signal_flare_name)
+		. += SPAN_NOTICE("The last signal flare fired has the designation: [last_signal_flare_name]")

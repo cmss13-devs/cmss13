@@ -44,7 +44,7 @@
 		var/obj/item/master_item = master_object
 		if(master_item.flags_item & NODROP) return
 
-		if(!istype(over_object, /obj/screen))
+		if(!istype(over_object, /atom/movable/screen))
 			return TRUE
 
 		//Makes sure master_item is equipped before putting it in hand, so that we can't drag it into our hand from miles away.

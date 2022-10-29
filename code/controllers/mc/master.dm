@@ -211,6 +211,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	world.change_fps(CONFIG_GET(number/fps))
 	var/initialized_tod = REALTIMEOFDAY
 
+	if(tgs_prime)
+		world.TgsInitializationComplete()
+
 	if(sleep_offline_after_initializations)
 		world.sleep_offline = TRUE
 	sleep(1)
@@ -593,7 +596,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	log_world("MC: SoftReset: Finished.")
 	. = 1
 
-/// Warns us that the end of tick byond map_update will be laggier then normal, so that we can just skip running subsystems this tick.
+/// Warns us that the end of tick byond map_update will be laggier than normal, so that we can just skip running subsystems this tick.
 /datum/controller/master/proc/laggy_byond_map_update_incoming()
 	if (!skip_ticks)
 		skip_ticks = 1

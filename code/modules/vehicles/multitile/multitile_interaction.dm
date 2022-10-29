@@ -338,7 +338,7 @@
 			seat = vehicle_seat
 			break
 
-	if(istype(A, /obj/screen) || !seat)
+	if(istype(A, /atom/movable/screen) || !seat)
 		return
 
 	if(seat == VEHICLE_DRIVER)

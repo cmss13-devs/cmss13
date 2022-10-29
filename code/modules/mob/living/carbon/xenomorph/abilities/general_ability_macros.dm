@@ -123,11 +123,11 @@
 
 /datum/action/xeno_action/verb/verb_toggle_long_range()
 	set category = "Alien"
-	set name = "Toggle Long Range Sight"
+	set name = "Toggle Long-Range Sight"
 	set hidden = 1
-	var/action_name = "Toggle Long Range Sight"
+	var/action_name = "Toggle Long-Range Sight"
 	if(isXenoRunner(src))
-		action_name = "Toggle Long Range Sight (10)"
+		action_name = "Toggle Long-Range Sight (10)"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_resin_hole()
@@ -200,7 +200,7 @@
 	set name = "Toggle Nightvision"
 	set hidden = 1
 	var/mob/living/carbon/C = src
-	for(var/obj/screen/xenonightvision/B in C.client.screen)
+	for(var/atom/movable/screen/xenonightvision/B in C.client.screen)
 		B.clicked(src)
 
 /datum/action/xeno_action/verb/place_construction()

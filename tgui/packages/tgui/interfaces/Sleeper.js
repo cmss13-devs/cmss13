@@ -84,7 +84,8 @@ const SleeperOccupant = (props, context) => {
             selected={auto_eject_dead}
             content={auto_eject_dead ? 'On' : 'Off'}
             onClick={() =>
-              act('auto_eject_dead_' + (auto_eject_dead ? 'off' : 'on'))}
+              act('auto_eject_dead_' + (auto_eject_dead ? 'off' : 'on'))
+            }
           />
           <Button
             icon="user-slash"
@@ -92,8 +93,7 @@ const SleeperOccupant = (props, context) => {
             onClick={() => act('ejectify')}
           />
         </>
-      }
-    >
+      }>
       <LabeledList>
         <LabeledList.Item label="Name">{occupant.name}</LabeledList.Item>
         <LabeledList.Item label="Health">
@@ -105,8 +105,7 @@ const SleeperOccupant = (props, context) => {
               good: [0.5, Infinity],
               average: [0, 0.5],
               bad: [-Infinity, 0],
-            }}
-          >
+            }}>
             {round(occupant.health, 0)}
           </ProgressBar>
         </LabeledList.Item>
@@ -118,8 +117,7 @@ const SleeperOccupant = (props, context) => {
             min="0"
             max={occupant.maxTemp}
             value={occupant.bodyTemperature / occupant.maxTemp}
-            color={tempColors[occupant.temperatureSuitability + 3]}
-          >
+            color={tempColors[occupant.temperatureSuitability + 3]}>
             {round(occupant.btCelsius, 0)}&deg;C,
             {round(occupant.btFaren, 0)}&deg;F
           </ProgressBar>
@@ -135,8 +133,7 @@ const SleeperOccupant = (props, context) => {
                   bad: [-Infinity, 0.6],
                   average: [0.6, 0.9],
                   good: [0.6, Infinity],
-                }}
-              >
+                }}>
                 {occupant.bloodPercent}%, {occupant.bloodLevel}cl
               </ProgressBar>
             </LabeledList.Item>
@@ -163,8 +160,7 @@ const SleeperDamage = (props, context) => {
               min="0"
               max="100"
               value={occupant[d[1]] / 100}
-              ranges={damageRange}
-            >
+              ranges={damageRange}>
               {round(occupant[d[1]], 0)}
             </ProgressBar>
           </LabeledList.Item>
@@ -176,11 +172,7 @@ const SleeperDamage = (props, context) => {
 
 const SleeperDialysis = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    hasOccupant,
-    dialysis,
-    occupant,
-  } = data;
+  const { hasOccupant, dialysis, occupant } = data;
   const canDialysis = dialysis;
   const dialysisDisabled = !hasOccupant || !occupant.totalreagents;
   return (
@@ -194,27 +186,20 @@ const SleeperDialysis = (props, context) => {
           content={canDialysis ? 'Active' : 'Inactive'}
           onClick={() => act('togglefilter')}
         />
-      }
-    >
+      }>
       {!occupant.totalreagents && (
-        <NoticeBox danger>
-          Occupant has no chemicals to remove!
-        </NoticeBox>
+        <NoticeBox danger>Occupant has no chemicals to remove!</NoticeBox>
       )}
-      {canDialysis && (
+      {(canDialysis && (
         <ProgressBar
           min="0"
           max={occupant.reagentswhenstarted}
-          value={occupant.totalreagents/occupant.reagentswhenstarted}
-          title="Reagents left/Reagents when dialysis was started"
-        >
+          value={occupant.totalreagents / occupant.reagentswhenstarted}
+          title="Reagents left/Reagents when dialysis was started">
           {occupant.totalreagents}/{occupant.reagentswhenstarted}
         </ProgressBar>
-      ) || !dialysisDisabled && (
-        <NoticeBox info>
-          Dialysis inactive!
-        </NoticeBox>
-      )}
+      )) ||
+        (!dialysisDisabled && <NoticeBox info>Dialysis inactive!</NoticeBox>)}
     </Section>
   );
 };
@@ -251,8 +236,7 @@ const SleeperChemicals = (props, context) => {
               level="3"
               mx="0"
               lineHeight="18px"
-              buttons={odWarning}
-            >
+              buttons={odWarning}>
               <Flex align="flex-start">
                 <ProgressBar
                   min="0"
@@ -260,26 +244,25 @@ const SleeperChemicals = (props, context) => {
                   value={chem.occ_amount / maxchem}
                   color={barColor}
                   title="Amount of chemicals currently inside the occupant / Total amount injectable by this machine"
-                  mr="0.5rem"
-                >
+                  mr="0.5rem">
                   {chem.pretty_amount}/{maxchem}u
                 </ProgressBar>
                 {amounts.map((a, i) => (
                   <Button
                     key={i}
                     disabled={
-                      !chem.injectable
-                      || chem.occ_amount + a > maxchem
-                      || occupant.stat === 2
+                      !chem.injectable ||
+                      chem.occ_amount + a > maxchem ||
+                      occupant.stat === 2
                     }
                     icon="syringe"
                     content={'Inject ' + a + 'u'}
                     title={
-                      'Inject '
-                      + a
-                      + 'u of '
-                      + chem.title
-                      + ' into the occupant'
+                      'Inject ' +
+                      a +
+                      'u of ' +
+                      chem.title +
+                      ' into the occupant'
                     }
                     mb="0"
                     height="19px"
@@ -287,7 +270,8 @@ const SleeperChemicals = (props, context) => {
                       act('chemical', {
                         chemid: chem.id,
                         amount: a,
-                      })}
+                      })
+                    }
                   />
                 ))}
               </Flex>

@@ -125,6 +125,8 @@
 				proba = 75
 			else if(R.id in list("blood", "radium", "uranium"))
 				proba = 25
+			else if(istype(R, /datum/reagent/generated)) //ensures custom chemicals will apply turf effects
+				proba = 100
 
 			spawn(0)
 				for(var/i = 0, i < runs, i++)

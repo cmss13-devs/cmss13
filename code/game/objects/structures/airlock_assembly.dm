@@ -27,11 +27,11 @@
 
 	update_icon()
 
-/obj/structure/airlock_assembly/examine(mob/user)
+/obj/structure/airlock_assembly/get_examine_text(mob/user)
 	. = ..()
 
 	var/helpmessage
-	to_chat(user, SPAN_NOTICE("A [SPAN_HELPFUL("crowbar")] will dismantle it."))
+	. += SPAN_NOTICE("A [SPAN_HELPFUL("crowbar")] will dismantle it.")
 	switch(state)
 		if(STATE_STANDARD)
 			if(anchored)
@@ -49,7 +49,7 @@
 		if(STATE_SCREWDRIVER)
 			helpmessage += "[SPAN_HELPFUL("Weld")] it all in place."
 	helpmessage += "You can name it with a [SPAN_HELPFUL("pen")]."
-	to_chat(user, SPAN_NOTICE(helpmessage))
+	. += SPAN_NOTICE(helpmessage)
 
 /obj/structure/airlock_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	if(user.action_busy)

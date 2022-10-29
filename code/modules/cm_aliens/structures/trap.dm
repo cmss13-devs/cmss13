@@ -19,6 +19,7 @@
 	var/list/notify_list = list() // list of xeno mobs to notify on trigger
 	var/datum/effect_system/smoke_spread/smoke_system
 	var/datum/cause_data/cause_data
+	plane = FLOOR_PLANE
 
 /obj/effect/alien/resin/trap/Initialize(mapload, mob/living/carbon/Xenomorph/X)
 	. = ..()
@@ -38,19 +39,19 @@
 		WD.overlay_node = FALSE
 		WD.overlays.Cut()
 
-/obj/effect/alien/resin/trap/examine(mob/user)
+/obj/effect/alien/resin/trap/get_examine_text(mob/user)
 	if(!isXeno(user))
 		return ..()
-	to_chat(user, "A hole for setting a trap.")
+	. = ..()
 	switch(trap_type)
 		if(RESIN_TRAP_EMPTY)
-			to_chat(user, "It's empty.")
+			. += "It's empty."
 		if(RESIN_TRAP_HUGGER)
-			to_chat(user, "There's a little one inside.")
+			. += "There's a little one inside."
 		if(RESIN_TRAP_GAS)
-			to_chat(user, "It's filled with pressurised gas.")
+			. += "It's filled with pressurised gas."
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
-			to_chat(user, "It's filled with pressurised acid.")
+			. += "It's filled with pressurised acid."
 
 /obj/effect/alien/resin/trap/proc/facehugger_die()
 	var/obj/item/clothing/mask/facehugger/FH = new (loc)

@@ -64,12 +64,10 @@
 	pressure = 3*ONE_ATMOSPHERE
 	pressure_full = 3*ONE_ATMOSPHERE
 
-
-	examine(mob/user)
-		..()
-		if(pressure < 50 && loc==user)
-			to_chat(user, SPAN_DANGER("The meter on the [src.name] indicates you are almost out of air!"))
-			user << sound('sound/effects/alert.ogg')
+/obj/item/tank/emergency_oxygen/get_examine_text(mob/user)
+	. = ..()
+	if(pressure < 50 && loc==user)
+		. += SPAN_DANGER("The meter on \the [src] indicates you are almost out of air!")
 
 /obj/item/tank/emergency_oxygen/engi
 	name = "extended-capacity emergency oxygen tank"
@@ -105,7 +103,7 @@
 
 /obj/item/tank/phoron/update_icon()
 	. = ..()
-	
+
 	if(volume <= 0)
 		icon_state = "phoron_empty"
 	else

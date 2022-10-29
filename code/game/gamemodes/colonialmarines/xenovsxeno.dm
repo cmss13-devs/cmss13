@@ -68,7 +68,7 @@
 /datum/game_mode/xenovs/proc/update_controllers()
 	//Update controllers while we're on this mode
 	if(SSitem_cleanup)
-		//Cleaning stuff more aggresively
+		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
 		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
 		SSitem_cleanup.wait = 1 MINUTES
@@ -134,6 +134,9 @@
 		transform_survivor(ghost_mind, xeno_turf = xeno_turf) //Create a new host
 		original.apply_damage(50, BRUTE)
 		original.spawned_corpse = TRUE
+
+		for(var/obj/item/device/radio/radio in original.contents_recursive())
+			radio.listening = FALSE
 
 		var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
 		original.statistic_exempt = TRUE

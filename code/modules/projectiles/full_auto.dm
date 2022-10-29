@@ -9,7 +9,7 @@
 		return
 
 	// No shooting the 4th wall
-	if(istype(A, /obj/screen))
+	if(istype(A, /atom/movable/screen))
 		return
 
 	// No FA on attachables
@@ -26,7 +26,7 @@
 	if(A.Adjacent(user) && user.a_intent != INTENT_HARM)
 		return
 
-	if(user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP)
+	if(user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (user.a_intent == INTENT_HELP))
 		if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			to_chat(user, SPAN_NOTICE("You consider shooting at [A], but do not follow through."))
 		return
@@ -56,7 +56,7 @@
 		return
 	var/mob/user = loc
 
-	if(istype(hovered, /obj/screen))
+	if(istype(hovered, /atom/movable/screen))
 		return
 
 	if(get_turf(hovered) == get_turf(user))

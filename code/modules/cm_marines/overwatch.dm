@@ -673,11 +673,11 @@
 		if(current_squad.squad_leader)
 			var/mob/living/carbon/human/SL = current_squad.squad_leader
 			if(!SL.stat && SL.client)
-				SL.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order, message_colour)
+				SL.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
 	else
 		for(var/mob/living/carbon/human/M in current_squad.marines_list)
 			if(!M.stat && M.client) //Only living and connected people in our squad
-				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /obj/screen/text/screen_text/command_order, message_colour)
+				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
 
 
 // Alerts all groundside marines about the incoming OB
@@ -840,28 +840,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is already in [new_squad]!")]")
 		return
 
-	var/no_place = FALSE
-	switch(transfer_marine.job)
-		if(JOB_SQUAD_LEADER)
-			if(new_squad.num_leaders == new_squad.max_leaders)
-				no_place = TRUE
-		if(JOB_SQUAD_SPECIALIST)
-			if(new_squad.num_specialists == new_squad.max_specialists)
-				no_place = TRUE
-		if(JOB_SQUAD_ENGI)
-			if(new_squad.num_engineers >= new_squad.max_engineers)
-				no_place = TRUE
-		if(JOB_SQUAD_MEDIC)
-			if(new_squad.num_medics >= new_squad.max_medics)
-				no_place = TRUE
-		if(JOB_SQUAD_SMARTGUN)
-			if(new_squad.num_smartgun == new_squad.max_smartgun)
-				no_place = TRUE
-		if(JOB_SQUAD_RTO)
-			if(new_squad.num_rto >= new_squad.max_rto)
-				no_place = TRUE
-
-	if(no_place)
+	if(RoleAuthority.check_squad_capacity(transfer_marine, new_squad))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [new_squad] can't have another [transfer_marine.job].")]")
 		return
 

@@ -15,7 +15,7 @@
 	var/chatWarn = 0 //Tracks how many times someone has spammed and gives them a no-no timer
 	var/talked = 0 //Won't let someone say something again in under a second.
 
-	var/obj/screen/hands = null //robot
+	var/atom/movable/screen/hands = null //robot
 
 	var/adminhelp_marked = 0 // Prevents marking an Adminhelp more than once. Making this a client define will cause runtimes and break some Adminhelps
 	var/adminhelp_marked_admin = "" // Ckey of last marking admin
@@ -97,6 +97,9 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
+
+	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
+	var/default_honor_value = 1 // when killed by a yautja, this determines the minimum amount of honor gained
 
 	var/bodytemperature = 310.055	//98.7 F
 	var/old_x = 0
@@ -214,6 +217,7 @@
 	appearance_flags = TILE_BOUND
 	var/mouse_icon = null
 
+	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel
 
 	var/datum/focus
@@ -229,3 +233,5 @@
 	var/move_on_shuttle = TRUE // Can move on the shuttle.
 
 	var/list/important_radio_channels = list()
+
+	var/datum/click_intercept

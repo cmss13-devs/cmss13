@@ -87,70 +87,62 @@
 	X.tunnel_delay = 0
 
 //Queen Abilities
-/datum/action/xeno_action/activable/screech
+/datum/action/xeno_action/onclick/screech
 	name = "Screech (250)"
 	action_icon_state = "screech"
 	ability_name = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_screech
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 50 SECONDS
 	plasma_cost = 250
 	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
+	no_cooldown_msg = FALSE // Needed for onclick actions
+	ability_primacy = XENO_SCREECH
 
-/datum/action/xeno_action/activable/screech/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
+/datum/action/xeno_action/onclick/screech/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
 
-	if (!istype(X))
+	if (!istype(xeno))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!xeno.check_state())
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
 	//screech is so powerful it kills huggers in our hands
-	if(istype(X.r_hand, /obj/item/clothing/mask/facehugger))
-		var/obj/item/clothing/mask/facehugger/FH = X.r_hand
-		if(FH.stat != DEAD)
-			FH.die()
+	if(istype(xeno.r_hand, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/hugger = xeno.r_hand
+		if(hugger.stat != DEAD)
+			hugger.die()
 
-	if(istype(X.l_hand, /obj/item/clothing/mask/facehugger))
-		var/obj/item/clothing/mask/facehugger/FH = X.l_hand
-		if(FH.stat != DEAD)
-			FH.die()
+	if(istype(xeno.l_hand, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/hugger = xeno.l_hand
+		if(hugger.stat != DEAD)
+			hugger.die()
 
-	playsound(X.loc, X.screech_sound_effect, 75, 0, status = 0)
-	X.visible_message(SPAN_XENOHIGHDANGER("[X] emits an ear-splitting guttural roar!"))
-	X.create_shriekwave() //Adds the visual effect. Wom wom wom
+	playsound(xeno.loc, xeno.screech_sound_effect, 75, 0, status = 0)
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
+	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
 
-	for(var/mob/M in view())
-		if(M && M.client)
-			if(isXeno(M))
-				shake_camera(M, 10, 1)
+	for(var/mob/mob in view())
+		if(mob && mob.client)
+			if(isXeno(mob))
+				shake_camera(mob, 10, 1)
 			else
-				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
+				shake_camera(mob, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
 
-	for(var/mob/living/carbon/M in oview(7, X))
-		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, X) & COMPONENT_SCREECH_ACT_CANCEL)
+	var/list/mobs_in_view = list()
+	for(var/mob/living/carbon/M in oview(7, xeno))
+		mobs_in_view += M
+	for(var/mob/living/carbon/M in orange(10, xeno))
+		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
 			continue
-
-		M.scream_stun_timeout = 20 SECONDS
-		var/dist = get_dist(X, M)
-		if(dist <= 4)
-			to_chat(M, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
-			M.AdjustStunned(4)
-			M.KnockDown(4)
-			if(!M.ear_deaf)
-				M.AdjustEarDeafness(5) //Deafens them temporarily
-		else if(dist >= 5 && dist < 7)
-			M.AdjustStunned(3)
-			if(!M.ear_deaf)
-				M.AdjustEarDeafness(2)
-			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
+		M.handle_queen_screech(xeno, mobs_in_view)
 
 	apply_cooldown()
 
@@ -162,10 +154,16 @@
 	ability_name = "gut"
 	macro_path = /datum/action/xeno_action/verb/verb_gut
 	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 15 MINUTES
+	plasma_cost = 200
+	cooldown_message = "You feel your anger return. You are ready to gut again."
 
-/datum/action/xeno_action/activable/gut/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	X.queen_gut(A)
+/datum/action/xeno_action/activable/gut/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
+	if(!action_cooldown_check())
+		return
+	if(xeno.queen_gut(target))
+		apply_cooldown()
 	..()
 
 /datum/action/xeno_action/onclick/psychic_whisper
@@ -317,150 +315,21 @@
 	name = "Word of the Queen (50)"
 	action_icon_state = "queen_word"
 	plasma_cost = 50
+	xeno_cooldown = 10 SECONDS
 
-/datum/action/xeno_action/onclick/queen_word/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	X.hive_message()
+/datum/action/xeno_action/onclick/queen_word/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
+	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
+	xeno.hive_message()
 
 /datum/action/xeno_action/onclick/queen_tacmap
 	name = "View Xeno Tacmap"
 	action_icon_state = "toggle_queen_zoom"
 	plasma_cost = 0
 
-/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	X.xeno_tacmap()
-
-/datum/action/xeno_action/deevolve
-	name = "De-Evolve a Xenomorph"
-	action_icon_state = "xeno_deevolve"
-	plasma_cost = 500
-
-/datum/action/xeno_action/deevolve/action_activate()
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	if(!X.check_state())
-		return
-	if(X.observed_xeno)
-		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
-		if(!X.check_plasma(plasma_cost)) return
-
-		if(T.is_ventcrawling)
-			to_chat(X, SPAN_XENOWARNING("[T] can't be deevolved here."))
-			return
-
-		if(!isturf(T.loc))
-			to_chat(X, SPAN_XENOWARNING("[T] can't be deevolved here."))
-			return
-
-		if(T.health <= 0)
-			to_chat(X, SPAN_XENOWARNING("[T] is too weak to be deevolved."))
-			return
-
-		if(length(T.caste.deevolves_to) < 1)
-			to_chat(X, SPAN_XENOWARNING("[T] can't be deevolved."))
-			return
-
-		var/newcaste
-
-		if(length(T.caste.deevolves_to) == 1)
-			newcaste = T.caste.deevolves_to[1]
-		else if(length(T.caste.deevolves_to) > 1)
-			newcaste = tgui_input_list(X, "Choose a caste you want to de-evolve [T] to.", "De-evolve", T.caste.deevolves_to, theme="hive_status")
-
-		if(!newcaste)
-			return
-
-		if(newcaste == "Larva")
-			to_chat(X, SPAN_XENOWARNING("You cannot deevolve xenomorphs to larva."))
-			return
-
-		var/confirm = alert(X, "Are you sure you want to deevolve [T] from [T.caste.caste_type] to [newcaste]?", , "Yes", "No")
-		if(confirm == "No")
-			return
-
-		var/reason = stripped_input(X, "Provide a reason for deevolving this xenomorph, [T]")
-		if(isnull(reason))
-			to_chat(X, SPAN_XENOWARNING("You must provide a reason for deevolving [T]."))
-			return
-
-		if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_xeno != T)
-			return
-
-		if(T.is_ventcrawling)
-			return
-
-		if(!isturf(T.loc))
-			return
-
-		if(T.health <= 0)
-			return
-
-		to_chat(T, SPAN_XENOWARNING("The queen is deevolving you for the following reason: [reason]"))
-
-		var/xeno_type
-
-		switch(newcaste)
-			if(XENO_CASTE_RUNNER)
-				xeno_type = /mob/living/carbon/Xenomorph/Runner
-			if(XENO_CASTE_DRONE)
-				xeno_type = /mob/living/carbon/Xenomorph/Drone
-			if(XENO_CASTE_SENTINEL)
-				xeno_type = /mob/living/carbon/Xenomorph/Sentinel
-			if(XENO_CASTE_SPITTER)
-				xeno_type = /mob/living/carbon/Xenomorph/Spitter
-			if(XENO_CASTE_LURKER)
-				xeno_type = /mob/living/carbon/Xenomorph/Lurker
-			if(XENO_CASTE_WARRIOR)
-				xeno_type = /mob/living/carbon/Xenomorph/Warrior
-			if(XENO_CASTE_DEFENDER)
-				xeno_type = /mob/living/carbon/Xenomorph/Defender
-			if(XENO_CASTE_BURROWER)
-				xeno_type = /mob/living/carbon/Xenomorph/Burrower
-
-		//From there, the new xeno exists, hopefully
-		var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(T), T)
-
-		if(!istype(new_xeno))
-			//Something went horribly wrong!
-			to_chat(X, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
-			if(new_xeno)
-				qdel(new_xeno)
-			return
-
-		if(T.mind)
-			T.mind.transfer_to(new_xeno)
-		else
-			new_xeno.key = T.key
-			if(new_xeno.client)
-				new_xeno.client.change_view(world_view_size)
-				new_xeno.client.pixel_x = 0
-				new_xeno.client.pixel_y = 0
-
-		//Regenerate the new mob's name now that our player is inside
-		new_xeno.generate_name()
-		if(new_xeno.client)
-			new_xeno.set_lighting_alpha_from_prefs(new_xeno.client)
-		// If the player has self-deevolved before, don't allow them to do it again
-		if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in T.verbs))
-			remove_verb(new_xeno, /mob/living/carbon/Xenomorph/verb/Deevolve)
-
-		new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [T]."), \
-		SPAN_XENODANGER("[X] makes you regress into your previous form."))
-
-		if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
-			X.hive.living_xeno_queen.overwatch(new_xeno)
-
-		message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
-
-		if(round_statistics && !new_xeno.statistic_exempt)
-			round_statistics.track_new_participant(T.faction, -1) //so an evolved xeno doesn't count as two.
-		SSround_recording.recorder.track_player(new_xeno)
-		qdel(T)
-		X.use_plasma(plasma_cost)
-
-	else
-		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to de-evolve."))
-
+/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/Queen/xeno = owner
+	xeno.xeno_tacmap()
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 

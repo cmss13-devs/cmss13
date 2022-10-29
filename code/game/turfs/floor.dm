@@ -16,7 +16,7 @@
 	var/plating_type = /turf/open/floor/plating
 	var/tool_flags = REMOVE_CROWBAR
 
-/turf/open/floor/examine(mob/user)
+/turf/open/floor/get_examine_text(mob/user)
 	. = ..()
 	if(!hull_floor)
 		var/tool_output = list()
@@ -27,7 +27,7 @@
 		if(tool_flags & REMOVE_SCREWDRIVER)
 			tool_output += SPAN_GREEN("screwdriver")
 		if(length(tool_output))
-			to_chat(user, SPAN_NOTICE("\The [src] can be removed with \a [english_list(tool_output)]."))
+			. += SPAN_NOTICE("\The [src] can be removed with \a [english_list(tool_output)].")
 
 
 /turf/open/floor/plating/is_plasteel_floor()

@@ -28,15 +28,15 @@
 	if (fixture_type == "bulb")
 		icon_state = "bulb-construct-stage1"
 
-/obj/structure/machinery/light_construct/examine(mob/user)
-	..()
+/obj/structure/machinery/light_construct/get_examine_text(mob/user)
+	. = ..()
 	switch(stage)
 		if(1)
-			to_chat(user, "It's an empty frame.")
+			. += "It's an empty frame."
 		if(2)
-			to_chat(user, "It's wired.")
+			. += "It's wired."
 		if(3)
-			to_chat(user, "The casing is closed.")
+			. += "The casing is closed."
 
 
 /obj/structure/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
@@ -246,9 +246,7 @@
 	. = ..()
 
 /obj/structure/machinery/light/proc/is_broken()
-	if(status == LIGHT_BROKEN)
-		return 1
-	return 0
+	return status == LIGHT_BROKEN
 
 /obj/structure/machinery/light/update_icon()
 
@@ -303,7 +301,7 @@
 	update()
 
 // examine verb
-/obj/structure/machinery/light/examine(mob/user)
+/obj/structure/machinery/light/get_examine_text(mob/user)
 	..()
 	switch(status)
 		if(LIGHT_OK)
@@ -367,7 +365,7 @@
 		if(prob(1+W.force * 5))
 
 			to_chat(user, "You hit the light, and it smashes!")
-			for(var/mob/M in viewers(src))
+			for(var/mob/M as anything in viewers(src))
 				if(M == user)
 					continue
 				M.show_message("[user.name] smashed the light!", 3, "You hear a tinkle of breaking glass", 2)
@@ -463,7 +461,7 @@
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
-			for(var/mob/M in viewers(src))
+			for(var/mob/M as anything in viewers(src))
 				M.show_message(SPAN_DANGER("[user.name] smashed the light!"), 3, "You hear a tinkle of breaking glass", 2)
 			broken()
 			return
@@ -593,6 +591,14 @@
 		sleep(1)
 		qdel(src)
 
+/obj/structure/machinery/light/handle_tail_stab(var/mob/living/carbon/Xenomorph/stabbing_xeno)
+	if(is_broken())
+		to_chat(stabbing_xeno, SPAN_WARNING("\The [src] is already broken!"))
+		return
+	stabbing_xeno.visible_message(SPAN_DANGER("\The [stabbing_xeno] smashes \the [src] with its tail!"), SPAN_DANGER("You smash \the [src] with your tail!"), null, 5)
+	broken() //Smashola!
+	return TAILSTAB_COOLDOWN_VERY_LOW
+
 // the light item
 // can be tube or bulb subtypes
 // will fit into empty /obj/structure/machinery/light of the corresponding type
@@ -697,7 +703,7 @@
 		status = LIGHT_BROKEN
 		force = 5
 		sharp = IS_SHARP_ITEM_SIMPLE
-		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+		playsound(src.loc, "glassbreak", 25, 1)
 		update()
 
 /obj/structure/machinery/landinglight

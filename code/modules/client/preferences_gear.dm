@@ -78,6 +78,12 @@ var/global/list/gear_datums = list()
 	cost = 3
 	slot = WEAR_HEAD
 
+/datum/gear/cmheadbandsquad
+	display_name = "USCM Headband (Squad)"
+	path = /obj/item/clothing/head/headband/squad
+	cost = 3
+	slot = WEAR_HEAD
+
 /datum/gear/cmheadset
 	display_name = "USCM Earpiece"
 	path = /obj/item/clothing/head/headset
@@ -251,6 +257,12 @@ var/global/list/gear_datums = list()
 /datum/gear/tacticalmaskblack
 	display_name = "Tactical Mask (Green)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tacticalmasksquad
+	display_name = "Tactical Mask (Squad)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
 	slot = WEAR_FACE
 	cost = 2
 //

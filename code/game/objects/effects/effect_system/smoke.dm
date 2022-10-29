@@ -278,7 +278,7 @@
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/T)
 	..()
 	for(var/obj/structure/barricade/B in T)
-		B.take_acid_damage(XENO_ACID_BARRICADE_DAMAGE)
+		to_chat_forced(world,"A") // REMOVETHISREMOVETHIS
 		B.take_acid_damage(XENO_ACID_GAS_BARRICADE_DAMAGE)
 		if(prob(50)) // anti sound spam
 			if(prob(50))

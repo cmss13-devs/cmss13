@@ -211,7 +211,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		TgsReboot()
 		TgsEndProcess()
 	else
-		..(reason)
+		shutdown()
 
 /world/proc/send_tgs_restart()
 	if(CONFIG_GET(string/new_round_alert_channel) && CONFIG_GET(string/new_round_alert_role_id))

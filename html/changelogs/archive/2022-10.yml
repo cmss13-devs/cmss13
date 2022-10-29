@@ -354,3 +354,7 @@
   - bugfix: autoreconnect now works
   stanalbatross:
   - bugfix: xenos can no longer build most structures on the same tile as open doors
+2022-10-29:
+  Shad0vvs:
+  - bugfix: Now displays the first letter of areas properly on the Xeno death alert
+      message.

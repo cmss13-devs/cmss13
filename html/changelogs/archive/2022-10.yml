@@ -377,6 +377,8 @@
   - bugfix: Fixes zombie eyes rendering incorrectly.
   - bugfix: Zombies that zombify while lying down now get their equipment correctly.
   - spellcheck: Zombie claw attacks now have sensical attack names.
+  Mister-moon1:
+  - code_imp: removed unused antihug code for the welding helmet
   TotalEpicness:
   - bugfix: Putting bodies in the pool now disrupts grab.
   harryob:

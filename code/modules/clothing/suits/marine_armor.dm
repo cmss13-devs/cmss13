@@ -1560,9 +1560,27 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-
-/obj/item/clothing/suit/storage/marine/MP/provost/marshal/chief
-	name = "\improper M3 pattern Provost Chief Marshal armor"
+	storage_slots = 2
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	allowed = list(/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/device/hailer,
+		/obj/item/storage/belt/gun,
+		/obj/item/weapon/melee/claymore/mercsword/ceremonial,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
+	uniform_restricted = list(/obj/item/clothing/under/uaac/tis)
 
 //================//UNITED AMERICAS RIOT CONTROL\\=====================\\
 //=======================================================================\\

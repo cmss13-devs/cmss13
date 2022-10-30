@@ -523,19 +523,19 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	desc = "This variant of the ubiquitous M3 pattern ballistics vest has been extensively modified, providing extra protection against disembowelment and bisections after these injuries were reported commonly for Synthetics. Testing a new methodology for USCM armor, the M3A1 Synthetic Vest is meant to be quickly disassembled and taken apart to replace acid-damaged sections with fresh plating during an operation."
 	icon_state = "VL_syn_camo"
 	flags_atom = NO_NAME_OVERRIDE
-	flags_marine_armor = ARMOR_LAMP_OVERLAY|SYNTH_ALLOWED //No squad colors + can be worn by synths.
+	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	storage_slots = 1
+	storage_slots = 0
 	time_to_unequip = 0.5 SECONDS
-	time_to_equip = 1 SECONDS
+	time_to_equip = 0.5 SECONDS
 	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/marine/light/synvest/vanilla
@@ -1056,10 +1056,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	storage_slots = 3
 
-/obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth/Initialize()
-	flags_atom |= NO_NAME_OVERRIDE
-	flags_marine_armor |= SYNTH_ALLOWED
-	return ..()
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC
 	name = "\improper PMC gunner armor"

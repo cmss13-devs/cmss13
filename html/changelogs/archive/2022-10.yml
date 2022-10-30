@@ -365,3 +365,7 @@
   - balance: Berserkers apprehend now has an actual cooldown, its speed increased
       very slightly.
   - balance: Berserkers eviscerates life steal gain and max has been lowered
+2022-10-30:
+  Geevies:
+  - admin: The ghost verb alert component now allows Aghosting as well as regular
+      ghosting.

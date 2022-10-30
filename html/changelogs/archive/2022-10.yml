@@ -369,3 +369,5 @@
   Geevies:
   - admin: The ghost verb alert component now allows Aghosting as well as regular
       ghosting.
+  TotalEpicness:
+  - bugfix: Putting bodies in the pool now disrupts grab.

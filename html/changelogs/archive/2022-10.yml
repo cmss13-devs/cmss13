@@ -369,5 +369,13 @@
   Geevies:
   - admin: The ghost verb alert component now allows Aghosting as well as regular
       ghosting.
+  - qol: Added a revive timer for zombies, as well as an alert for ghosts when their
+      bodies revive.
+  - balance: Zombie claws now apply a slowdown even if the slashed target is already
+      infected. Synths only get a regular slowdown, not a super slowdown.
+  - balance: You can now permanently kill zombies by decapitating them.
+  - bugfix: Fixes zombie eyes rendering incorrectly.
+  - bugfix: Zombies that zombify while lying down now get their equipment correctly.
+  - spellcheck: Zombie claw attacks now have sensical attack names.
   TotalEpicness:
   - bugfix: Putting bodies in the pool now disrupts grab.

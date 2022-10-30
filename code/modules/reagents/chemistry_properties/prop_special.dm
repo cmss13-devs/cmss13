@@ -227,7 +227,7 @@
 	max_level = 4
 
 /datum/chem_property/special/curing/process(mob/living/M, var/potency = 1, delta_time)
-	var/datum/species/zombie/zs = GLOB.all_species["Zombie"]
+	var/datum/species/zombie/zs = GLOB.all_species[SPECIES_ZOMBIE]
 
 	if(!ishuman(M))
 		return

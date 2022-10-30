@@ -39,6 +39,10 @@
 	attack_verb = list("punch","bust","skewer")
 	damage = 10
 
+/datum/unarmed_attack/punch/synthetic
+    attack_verb = list("punch","strik","slugg","bludgeon","impact","maul")
+    damage = 45
+
 /datum/unarmed_attack/claws
 	attack_verb = list("scratch", "claw")
 	attack_sound = 'sound/weapons/slice.ogg'

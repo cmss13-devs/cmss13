@@ -135,7 +135,7 @@
 
 	if(isHumanStrict(M))
 		var/mob/living/carbon/human/H = M
-		if(!(var/datum/disease/black_goo/BG in H.viruses))
+		if(!("Black Goo" in H.viruses))
 			H.contract_disease(new /datum/disease/black_goo())
 		var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - H.getarmor(user.zone_selected, ARMOR_BIO), 0)
 

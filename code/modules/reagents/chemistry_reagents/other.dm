@@ -681,7 +681,7 @@
 	id = "blackgooweak"
 	custom_metabolism = REAGENTS_METABOLISM
 
-/datum/reagent/blackgoo/weak/reaction_mob()
+/datum/reagent/blackgoo/weak/reaction_mob(mob/m, var/method, var/volume)
 	return
 
 

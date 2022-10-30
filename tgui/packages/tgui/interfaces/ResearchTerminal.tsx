@@ -1,11 +1,9 @@
 import { useBackend, useLocalState } from '../backend';
 import { Button, Stack, Section, Flex, Tabs, Box } from '../components';
 import { Window } from '../layouts';
-import { logger } from '../logging';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { classes } from '../../common/react';
 import { BoxProps } from '../components/Box';
-
 
 interface TerminalProps {
   "clearance_level": number;
@@ -34,8 +32,9 @@ const PurchaseDocs = (_, context) => {
     <Stack vertical>
       <Stack.Item>
         <span>Purchase Reports</span>
+        <hr />
       </Stack.Item>
-      <hr />
+
       <Stack.Item>
         <Flex justify="space-between" fill className="purchase-flex">
           {all_levels.map(x => {
@@ -45,7 +44,6 @@ const PurchaseDocs = (_, context) => {
                 <Button
                   className={classes([
                     !available_levels.includes(x) && "HiddenButton",
-                    isDisabled && "Button-disabled",
                   ])}
                   disabled={isDisabled}
                   onClick={() => setPurchaseSelection(x)}
@@ -54,12 +52,12 @@ const PurchaseDocs = (_, context) => {
                 </Button>
               </Flex.Item>); })}
         </Flex>
-        <hr />
-
-        {purchaseSelection !== '0'
-          && (
+      </Stack.Item>
+      <hr />
+      {purchaseSelection !== '0'
+        && (
+          <Flex.Item>
             <ConfirmationDialogue
-              className="Confirm-Dialogue"
               onConfirm={() => {
                 act("purchase_document", { purchase_document: purchaseSelection });
                 setPurchaseSelection('0');
@@ -67,13 +65,12 @@ const PurchaseDocs = (_, context) => {
               onCancel={() => setPurchaseSelection('0')}
             >
               <span>
-                Are you sure you want to purchase a
-                level <u>{purchaseSelection}</u> document?
+                Are you sure you want to purchase a level <u>{purchaseSelection}</u> document?
                 <br />
                 It will cost <u>{costs[purchaseSelection]}</u> credits.
               </span>
-            </ConfirmationDialogue>)}
-      </Stack.Item>
+            </ConfirmationDialogue>
+          </Flex.Item>)}
     </Stack>);
 };
 
@@ -84,7 +81,7 @@ interface ConfirmationProps extends BoxProps {
 
 const ConfirmationDialogue = (props: ConfirmationProps, context) => {
   return (
-    <Stack vertical className={props.className}>
+    <Stack vertical className="Confirm-Dialogue">
       <Stack.Item>
         {props.children}
       </Stack.Item>
@@ -134,62 +131,60 @@ const CompoundTable = (_, context) => {
   }
 
   return (
-    <div className="chem-table-wrapper">
-      <Table>
-        <TableRow>
-          <TableCell textAlign="center">
-            <span className="table_header">Compound</span>
-          </TableCell>
-          <TableCell textAlign="center">
-            <span className="table_header">Actions</span>
-          </TableCell>
-        </TableRow>
-        {researchDocs.map(x =>
-          (
-            <TableRow key={x.id}>
-              <TableCell className="chemical-td">
-                <span className="compound_label">
-                  {x.type}
-                </span>
-              </TableCell>
-              <TableCell>
-                <Flex className="compound_actions" justify="space-around" align-items="stretch" wrap={false}>
-                  <Flex.Item>
-                    <Button icon="book" onClick={() => act("read_document", { "print_type": 'XRF Scans', "print_title": x.id })}>
-                      Read
-                    </Button>
-                  </Flex.Item>
-                  <Flex.Item>
-                    <Button
-                      className={classes([data.photocopier_error && "Button-disabled"])}
-                      disabled={data.photocopier_error}
-                      icon="print"
-                      onClick={() => act("print", { "print_type": 'XRF Scans', "print_title": x.id })}
-                    >
-                      Print
-                    </Button>
-                  </Flex.Item>
-                  {isMainTerminal && !x.isPublished
+    <Table>
+      <TableRow>
+        <TableCell textAlign="center">
+          <span>Compound</span>
+        </TableCell>
+        <TableCell textAlign="center">
+          <span>Actions</span>
+        </TableCell>
+      </TableRow>
+      {researchDocs.map(x => {
+        const doc_ref = { "print_type": 'XRF Scans', "print_title": x.id };
+        return (
+          <TableRow key={x.id}>
+            <TableCell className="chemical-td">
+              <span className="compound_label">
+                {x.type}
+              </span>
+            </TableCell>
+            <TableCell>
+              <Flex className="compound_actions" justify="space-around" align-items="stretch" wrap={false}>
+                <Flex.Item>
+                  <Button icon="book" onClick={() => act("read_document", doc_ref)}>
+                    Read
+                  </Button>
+                </Flex.Item>
+                <Flex.Item>
+                  <Button
+                    disabled={data.photocopier_error}
+                    icon="print"
+                    onClick={() => act("print", doc_ref)}
+                  >
+                    Print
+                  </Button>
+                </Flex.Item>
+                {isMainTerminal && !x.isPublished
                   && (
                     <Flex.Item>
-                      <Button icon="upload" onClick={() => act("publish_document", { "print_type": 'XRF Scans', "print_title": x.id })}>
+                      <Button icon="upload" onClick={() => act("publish_document", doc_ref)}>
                         Publish
                       </Button>
                     </Flex.Item>)}
-                  {isMainTerminal && x.isPublished
+                {isMainTerminal && x.isPublished
                   && (
                     <Flex.Item>
-                      <Button icon="remove" onClick={() => act("unpublish_document", { "print_type": 'XRF Scans', "print_title": x.id })}>
+                      <Button icon="remove" onClick={() => act("unpublish_document", doc_ref)}>
                         Unpublish
                       </Button>
                     </Flex.Item>)}
-                </Flex>
-              </TableCell>
-            </TableRow>
-          )
-        )}
-      </Table>
-    </div>);
+              </Flex>
+            </TableCell>
+          </TableRow>
+        );
+      })}
+    </Table>);
 };
 
 const PhotocopierMissing = () => {
@@ -214,17 +209,17 @@ const ImproveClearanceConfirmation = (props, context) => {
     <Stack vertical>
         <Stack.Item>
           <ConfirmationDialogue
-            className="Confirm-Dialogue"
             onConfirm={() => {
               act("broker_clearance");
               setConfirm(undefined);
             }}
             onCancel={() => setConfirm(undefined)}
           >
-            <span className="Tab__text">
-              The CL can swipe their ID card on the console to increase clearance for
-              free, given enough DEFCON. Are you sure you want to spend <u>{data.broker_cost}</u> research
-              credits to increase the clearance immediately?
+            <span>
+              The CL can swipe their ID card on the console to increase
+              clearance for free, given enough DEFCON. Are you sure you want to
+              spend <u>{data.broker_cost}</u> research credits to increase the
+              clearance immediately?
             </span>
           </ConfirmationDialogue>
         </Stack.Item>
@@ -241,15 +236,15 @@ const XClearanceConfirmation = (props, context) => {
     <Stack vertical>
         <Stack.Item>
           <ConfirmationDialogue
-            className="Confirm-Dialogue"
             onConfirm={() => {
               act("request_clearance_x_access");
               setConfirm(undefined);
             }}
             onCancel={() => setConfirm(undefined)}
           >
-            <span className="Tab__text">
-              Are you sure you wish request clearance level <u>X</u> access for <u>5</u> credits?
+            <span>
+              Are you sure you wish request clearance level <u>X</u> access
+              for <u>5</u> credits?
             </span>
           </ConfirmationDialogue>
         </Stack.Item>
@@ -258,8 +253,6 @@ const XClearanceConfirmation = (props, context) => {
 
 const ResearchManager = (_, context) => {
   const { data } = useBackend<TerminalProps>(context);
-  const clearance_level = data.clearance_level;
-  const x_access = data.clearance_x_access;
   return (
     <Box>
       <Stack vertical>
@@ -279,17 +272,26 @@ const ResearchManager = (_, context) => {
 
 const ErrorStack = (_, context) => {
   const { data } = useBackend<TerminalProps>(context);
-  return (<Stack>
-    {data.photocopier_error === 1 && <PhotocopierMissing />}
-    {data.printer_toner === 0 && <TonerEmpty />}
-          </Stack>);
+  return (
+    <Stack>
+      {data.photocopier_error === 1
+        && (
+          <Stack.Item>
+            <PhotocopierMissing />
+          </Stack.Item>)}
+      {data.printer_toner === 0
+        && (
+          <Stack.Item>
+            <TonerEmpty />
+          </Stack.Item>)}
+    </Stack>);
 };
 
 const ResearchOverview = (_, context) => {
   const [selectedTab, setSelectedTab] = useLocalState(context, 'research_tab', 1);
   return (
     <div className="TabWrapper">
-      <Tabs fluid fill >
+      <Tabs fluid>
         <Tabs.Tab
           selected={selectedTab === 1}
           onClick={() => setSelectedTab(1)}
@@ -307,20 +309,23 @@ const ResearchOverview = (_, context) => {
           View Chemicals
         </Tabs.Tab>
       </Tabs>
-      <div className="TabbedPage">
-        <div className="TabbedContent">
-          <br />
-          <ErrorStack />
-          {selectedTab === 1 && <ResearchManager />}
-          {selectedTab === 2 && <CompoundTable />}
-        </div>
+      <div className="TabbedContent">
+        <Stack vertical>
+          <Stack.Item>
+            <ErrorStack />
+          </Stack.Item>
+          <Stack.Item>
+            {selectedTab === 1 && <ResearchManager />}
+            {selectedTab === 2 && <CompoundTable />}
+          </Stack.Item>
+        </Stack>
       </div>
     </div>
   );
 };
 
 const ClearanceImproveButton = (_, context) => {
-  const { data, act } = useBackend<TerminalProps>(context);
+  const { data } = useBackend<TerminalProps>(context);
   const [selectedTab, setSelectedTab] = useLocalState(context, 'research_tab', 1);
   const [confirm, setConfirm] = useLocalState<string|undefined>(context, 'purchase_confirmation', undefined);
   const clearance_level = data.clearance_level;
@@ -331,7 +336,6 @@ const ClearanceImproveButton = (_, context) => {
       {clearance_level < 5
         && (
           <Button
-            className={classes([isDisabled && "Button-disabled"])}
             disabled={isDisabled}
             onClick={() => {
               setSelectedTab(1);
@@ -344,7 +348,7 @@ const ClearanceImproveButton = (_, context) => {
           && (
             <Flex.Item>
               <Button
-                className={classes([data.rsc_credits < 5 && "Button-disabled"])}
+                disabled={data.rsc_credits < 5}
                 onClick={() => {
                   setSelectedTab(1);
                   setConfirm("request_clearance_x_access");
@@ -356,10 +360,7 @@ const ClearanceImproveButton = (_, context) => {
       {x_access !== 0
         && (
           <Flex.Item>
-            <Button
-              disabled
-              className={classes([isDisabled && "Button-disabled"])}
-            >
+            <Button disabled>
               Maximum clearance reached
             </Button>
           </Flex.Item>)}
@@ -368,10 +369,7 @@ const ClearanceImproveButton = (_, context) => {
 };
 
 export const ResearchTerminal = (_, context) => {
-  const { data, act } = useBackend<TerminalProps>(context);
-  const [sharpen, setSharpen] = useLocalState(context, 'sharpen', 0);
-  logger.info(data);
-  const showSharpen = false;
+  const { data } = useBackend<TerminalProps>(context);
   return (
     <Window
       width={480 * 2}
@@ -381,18 +379,10 @@ export const ResearchTerminal = (_, context) => {
       <Window.Content scrollable>
         <Section
           title={`Clearance Level ${data.clearance_level}`}
-          className="container"
           buttons={<ClearanceImproveButton />}
         >
           <ResearchOverview />
         </Section>
-        {showSharpen
-          && (
-            <Section>
-              <Button onClick={() => setSharpen(sharpen === 0 ? 1 : 0)}>
-                Toggle Sharpen
-              </Button>
-            </Section>)}
       </Window.Content>
     </Window>);
 };

@@ -6,7 +6,6 @@ $dark: #111100;
 @use '../crt.scss' as yellow with (
   $lightcolor: $light,
   $darkcolor: $dark,
-  $name: "yellow",
 );
 
 .theme-crtyellow {

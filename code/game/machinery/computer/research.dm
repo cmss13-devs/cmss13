@@ -204,8 +204,6 @@
 			chemical_data.unpublish_document(print_type, print_title)
 		if("request_clearance_x_access")
 			var/purchase_cost = 5
-			if(alert(usr,"Are you sure you wish request clearance level X access for [purchase_cost] credits?","Warning","Yes","No") != "Yes")
-				return
 			if(purchase_cost <= chemical_data.rsc_credits)
 				chemical_data.clearance_x_access = TRUE
 				chemical_data.reached_x_access = TRUE

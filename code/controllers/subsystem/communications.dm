@@ -328,7 +328,7 @@ SUBSYSTEM_DEF(radio)
 	if(freq_span)
 		return freq_span
 	if(frequency in PMC_FREQS)
-		return "cctradio"
+		return "pmcradio"
 	if(frequency in UPP_FREQS)
 		return "syndradio"
 	if(frequency in CLF_FREQS)

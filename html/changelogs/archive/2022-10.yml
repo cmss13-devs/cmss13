@@ -379,3 +379,6 @@
   - spellcheck: Zombie claw attacks now have sensical attack names.
   TotalEpicness:
   - bugfix: Putting bodies in the pool now disrupts grab.
+  harryob:
+  - server: the server no longer allows graceful server restarts, and forcefully dies
+      at the end of every round

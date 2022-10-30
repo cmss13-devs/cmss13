@@ -260,6 +260,14 @@
 	if(auto_retrieval_slot)
 		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
 
+/obj/item/weapon/gun/get_examine_line(mob/user)
+	. = ..()
+	if(HAS_FLAG(flags_gun_features, GUN_TRIGGER_SAFETY))
+		var/atom/holder = recursive_holder_check(src)
+		var/distance = get_dist(holder, user)
+		if(distance <= 1)
+			. += " (S)"
+
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
 

@@ -6,7 +6,6 @@ $dark: #001100;
 @use '../crt.scss' with (
   $lightcolor: $light,
   $darkcolor: $dark,
-  $name: "green",
 );
 
 .theme-crtgreen {

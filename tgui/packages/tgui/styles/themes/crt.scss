@@ -6,7 +6,6 @@ $darkcolor: #110000 !default;
 $lightcolor: #FFBF00 !default;
 $font-family: monospace;
 $background-radial-opacity: 0.2 !default;
-$name: "crt" !default;
 
 @use '../base.scss' with (
   $color-bg: $darkcolor,
@@ -23,9 +22,6 @@ $name: "crt" !default;
 $small-text: 2vw;
 $large-text: 3vw;
 
-$flicker-color-start:lighten($lightcolor, 0.2);
-$flicker-color-end:darken($lightcolor, 0.2);
-
 %theme-crt {
   @include meta.load-css('../layouts/Window.scss');
   @include meta.load-css('../layouts/TitleBar.scss', $with: (
@@ -39,12 +35,14 @@ $flicker-color-end:darken($lightcolor, 0.2);
     'title-text-color': $lightcolor
   ));
   @include meta.load-css('../components/Button.scss', $with: (
+    'color-default': $lightcolor,
     'color-disabled': darken($lightcolor, 30)
   ));
 
   @include meta.load-css('../components/Tabs.scss', $with: (
     'tab-color': $darkcolor,
-    'tab-color-selected': $darkcolor
+    'tab-color-selected': $darkcolor,
+    'text-color': $lightcolor
   ));
 
   .Layout__content {
@@ -100,8 +98,6 @@ $flicker-color-end:darken($lightcolor, 0.2);
   }
 
   .Button {
-    background-color: $lightcolor;
-    color: $darkcolor;
     font-family: $font-family;
     font-size: $small-text;
     font-weight: bold;
@@ -118,8 +114,14 @@ $flicker-color-end:darken($lightcolor, 0.2);
   .Button--disabled {
     background-color: none;
     color: $lightcolor;
-  }
 
+    &:hover,
+    &:focus,
+    &:visited,
+    &:target {
+      color: $lightcolor;
+    }
+  }
 
   hr {
     color: $lightcolor;
@@ -129,11 +131,9 @@ $flicker-color-end:darken($lightcolor, 0.2);
   .Tab__text {
     font-size: $large-text;
     font-family: $font-family;
-    color: $lightcolor;
   }
 
   .Tab__left {
-    color: $lightcolor;
     font-size: $large-text;
   }
 
@@ -162,7 +162,6 @@ $flicker-color-end:darken($lightcolor, 0.2);
 
   .Table {
     border: 1px solid $lightcolor;
-    width: 100%;
   }
 
   .Section {
@@ -174,39 +173,6 @@ $flicker-color-end:darken($lightcolor, 0.2);
     margin-top: 1px;
     margin-bottom: 1px;
     justify-content: center;
-  }
-
-  @keyframes confirmFlicker {
-    0% {
-      background-color: $lightcolor;
-      color: $darkcolor;
-    }
-    50% {
-      background-color: $darkcolor;
-      color: $lightcolor;
-    }
-    100% {
-      background-color: $lightcolor;
-      color: $darkcolor;
-    }
-  }
-
-  @keyframes textShadow {
-    0% {
-      text-shadow: 0.4389924193300864px 0 1px $flicker-color-start, -0.4389924193300864px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    5% {
-      text-shadow: 0.7928974010788217px 0 1px $flicker-color-start, -0.7928974010788217px 0 1px $flicker-color-end, 0 0 3px;
-    }
-    10% {
-      text-shadow: 0.02956275843481219px 0 1px $lightcolor, -0.02956275843481219px 0 1px $lightcolor, 0 0 3px;
-    }
-    20% {
-      text-shadow: none
-    }
-    100% {
-      text-shadow: none
-    }
   }
 }
 

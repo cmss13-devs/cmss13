@@ -18,27 +18,16 @@ $large-text: 3vw;
   margin-bottom: 4px;
   margin-top: 3px;
 }
-.chem-table-wrapper {
-  padding-left: 1vw;
-  padding-right: 1vw;
-}
 
 .TabWrapper {
   margin-left: -4px;
   margin-right: -5px;
 }
 
-.TabbedPage {
-  margin-left: -3px;
-  margin-right: -3px;
-  margin-top: -12px;
-}
-
 .TabbedContent {
-  margin-left: 3px;
-  margin-right: 3px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  margin-top: 2vw;
 }
 
 .Section {
@@ -46,7 +35,7 @@ $large-text: 3vw;
   box-sizing: content-box;
 
   .Section__title {
-    margin-bottom: 12px;
+    margin-bottom: 1vw;
     font-size: $large-text;
   }
 
@@ -56,14 +45,10 @@ $large-text: 3vw;
   }
 }
 
-.purchase-reports {
-  margin-left: 20px;
-}
-
 .purchase-flex {
   margin-left: 5px;
   margin-right: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 1vw;
 }
 
 .HiddenButton {
@@ -72,6 +57,7 @@ $large-text: 3vw;
 
 .Confirm-Dialogue {
   margin-left: 3px;
+  font-size: $large-text;
 }
 
 .chemical-td {

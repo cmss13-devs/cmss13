@@ -23401,7 +23401,7 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/queen.dmi';
+	icon = 'icons/mob/xenos/queen.dmi';
 	icon_state = "Normal Queen Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -23565,7 +23565,7 @@
 /obj/structure/prop/invuln{
 	desc = "It is slimy.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/sentinel.dmi';
+	icon = 'icons/mob/xenos/sentinel.dmi';
 	icon_state = "Normal Sentinel Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -23575,7 +23575,7 @@
 /obj/structure/prop/invuln{
 	desc = "He knows something that you don't.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/larva.dmi';
+	icon = 'icons/mob/xenos/larva.dmi';
 	icon_state = "Larva Sleeping";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24043,7 +24043,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24053,7 +24053,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24063,7 +24063,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24073,7 +24073,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";

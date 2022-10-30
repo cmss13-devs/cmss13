@@ -51,7 +51,7 @@
 	tackle_min = 2
 	tackle_max = 6
 
-	icon_xeno = 'icons/mob/hostiles/lurker.dmi'
+	icon_xeno = 'icons/mob/xenos/lurker.dmi'
 	icon_xenonid = 'icons/mob/xenonids/lurker.dmi'
 
 /datum/behavior_delegate/lurker_base

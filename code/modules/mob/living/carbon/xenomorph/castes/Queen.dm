@@ -257,7 +257,7 @@
 	small_explosives_stun = FALSE
 	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
-	icon_xeno = 'icons/mob/hostiles/queen.dmi'
+	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
 
 	var/breathing_counter = 0

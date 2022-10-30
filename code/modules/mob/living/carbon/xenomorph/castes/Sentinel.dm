@@ -51,7 +51,7 @@
 	)
 	mutation_type = SENTINEL_NORMAL
 
-	icon_xeno = 'icons/mob/hostiles/sentinel.dmi'
+	icon_xeno = 'icons/mob/xenos/sentinel.dmi'
 	icon_xenonid = 'icons/mob/xenonids/sentinel.dmi'
 
 /datum/behavior_delegate/sentinel_base

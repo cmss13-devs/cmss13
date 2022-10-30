@@ -4,7 +4,7 @@
 /obj/effect/alien
 	name = "alien thing"
 	desc = "There's something alien about this."
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	unacidable = TRUE
 	health = 1
 	flags_obj = OBJ_ORGANIC
@@ -321,7 +321,7 @@
 //Resin Doors
 /obj/structure/mineral_door/resin
 	name = "resin door"
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	mineralType = "resin"
 	hardness = 1.5
 	health = HEALTH_DOOR_XENO

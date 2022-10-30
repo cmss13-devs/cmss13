@@ -42,7 +42,7 @@
 	name = XENO_CASTE_CARRIER
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
 	icon_size = 64
-	icon_xeno = 'icons/mob/hostiles/carrier.dmi'
+	icon_xeno = 'icons/mob/xenos/carrier.dmi'
 	icon_state = "Carrier Walking"
 	plasma_types = list(PLASMA_PURPLE)
 
@@ -118,7 +118,7 @@
 
 /mob/living/carbon/Xenomorph/Carrier/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
-	hugger_overlays_icon = mutable_appearance('icons/mob/hostiles/overlay_effects64x64.dmi',"empty")
+	hugger_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
 
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)

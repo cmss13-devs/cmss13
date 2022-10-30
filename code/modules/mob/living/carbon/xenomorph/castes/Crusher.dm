@@ -58,7 +58,7 @@
 	mutation_type = CRUSHER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
-	icon_xeno = 'icons/mob/hostiles/crusher.dmi'
+	icon_xeno = 'icons/mob/xenos/crusher.dmi'
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
 
 // Refactored to handle all of crusher's interactions with object during charge.

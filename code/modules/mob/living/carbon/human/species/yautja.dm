@@ -52,6 +52,9 @@
 	knock_down_reduction = 4
 	stun_reduction = 4
 
+	icobase = 'icons/mob/humans/species/r_predator.dmi'
+	deform = 'icons/mob/humans/species/r_predator.dmi'
+
 	acid_blood_dodge_chance = 70
 
 		//Set their special slot priority

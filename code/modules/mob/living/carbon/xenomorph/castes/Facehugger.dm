@@ -47,7 +47,7 @@
 	)
 	mutation_type = "Normal"
 
-	icon_xeno = 'icons/mob/hostiles/facehugger.dmi'
+	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
 
 /mob/living/carbon/Xenomorph/Facehugger/initialize_pass_flags(var/datum/pass_flags_container/PF)

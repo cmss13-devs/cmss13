@@ -361,9 +361,6 @@
 	add_inherent_verbs(H)
 	apply_signals(H)
 
-	icobase = 'icons/mob/humans/species/r_predator.dmi'
-	deform = 'icons/mob/humans/species/r_predator.dmi'
-
 /// Apply signals to the human
 /datum/species/proc/apply_signals(var/mob/living/carbon/human/H)
 	return

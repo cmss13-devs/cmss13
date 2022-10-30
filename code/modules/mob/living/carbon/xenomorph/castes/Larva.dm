@@ -45,7 +45,7 @@
 	var/poolable = TRUE //Can it be safely pooled if it has no player?
 	var/state_override
 
-	icon_xeno = 'icons/mob/hostiles/larva.dmi'
+	icon_xeno = 'icons/mob/xenos/larva.dmi'
 	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
 
 /mob/living/carbon/Xenomorph/Larva/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -73,7 +73,7 @@
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/Xenomorph/Larva/predalien
-	icon_xeno = 'icons/mob/xenos_old/1x1_Xenos.dmi'
+	icon_xeno = 'icons/mob/xenos/predalien_larva.dmi'
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
 	poolable = FALSE //Not interchangeable with regular larvas in the pool.

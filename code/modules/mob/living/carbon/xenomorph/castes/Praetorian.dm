@@ -54,7 +54,7 @@
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
 	)
 
-	icon_xeno = 'icons/mob/hostiles/praetorian.dmi'
+	icon_xeno = 'icons/mob/xenos/praetorian.dmi'
 	icon_xenonid = 'icons/mob/xenonids/praetorian.dmi'
 
 /datum/behavior_delegate/praetorian_base

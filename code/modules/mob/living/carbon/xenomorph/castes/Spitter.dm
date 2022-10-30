@@ -55,7 +55,7 @@
 	)
 	mutation_type = SPITTER_NORMAL
 
-	icon_xeno = 'icons/mob/hostiles/spitter.dmi'
+	icon_xeno = 'icons/mob/xenos/spitter.dmi'
 	icon_xenonid = 'icons/mob/xenonids/spitter.dmi'
 
 /datum/behavior_delegate/spitter_base

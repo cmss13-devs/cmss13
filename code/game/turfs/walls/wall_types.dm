@@ -689,7 +689,7 @@
 /turf/closed/wall/resin
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
-	icon = 'icons/mob/hostiles/structures.dmi'
+	icon = 'icons/mob/xenos/structures.dmi'
 	icon_state = "resin"
 	walltype = WALL_RESIN
 	damage_cap = HEALTH_WALL_XENO

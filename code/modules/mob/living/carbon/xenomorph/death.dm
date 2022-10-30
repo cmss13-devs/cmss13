@@ -145,9 +145,9 @@
 	var/to_flick = "gibbed-a"
 	var/icon_path
 	if(mob_size >= MOB_SIZE_BIG)
-		icon_path = 'icons/mob/hostiles/xenomorph_64x64.dmi'
+		icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	else
-		icon_path = 'icons/mob/hostiles/xenomorph_48x48.dmi'
+		icon_path = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	switch(caste.caste_type)
 		if(XENO_CASTE_RUNNER)
 			to_flick = "gibbed-a-runner"

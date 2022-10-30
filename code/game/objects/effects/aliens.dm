@@ -7,7 +7,7 @@
 	name = "alien thing"
 	desc = "You shouldn't be seeing this."
 	unacidable = TRUE
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	layer = FLY_LAYER
 
 /obj/effect/xenomorph/splatter

@@ -322,14 +322,6 @@
 		return -1 //Transciever Disabled.
 	return ..(freq, level, 1)
 
-/obj/item/device/radio/headset/ert
-	name = "Wey-Yu Response Team headset"
-	desc = "The headset of the boss's boss. Channels are as follows: :h - Response Team :c - command, :p - security, :n - engineering, :m - medical."
-	icon_state = "com_headset"
-	item_state = "headset"
-	freerange = 1
-	initial_keys = list(/obj/item/device/encryptionkey/ert)
-
 //MARINE HEADSETS
 
 /obj/item/device/radio/headset/almayer
@@ -790,7 +782,7 @@
 /obj/item/device/radio/headset/distress/UPP
 	name = "UPP headset"
 	desc = "A special headset used by UPP military. To access the colony channel, use :h."
-	frequency = RUS_FREQ
+	frequency = UPP_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_UPP
@@ -821,7 +813,7 @@
 /obj/item/device/radio/headset/distress/commando
 	name = "Commando headset"
 	desc = "A special headset used by unidentified operatives. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
-	frequency = DTH_FREQ
+	frequency = WY_WO_FREQ
 	icon_state = "pmc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
 

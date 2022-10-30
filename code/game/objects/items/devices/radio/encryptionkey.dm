@@ -194,11 +194,6 @@
 	tracking_options = list("Corporate Liaison" = TRACKER_CL)
 //ERT, PMC
 
-/obj/item/device/encryptionkey/ert
-	name = "Wey-Yu Radio Encryption Key"
-	icon_state = "cypherkey"
-	channels = list(RADIO_CHANNEL_ERT = 1, RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_WY = 1)
-
 /obj/item/device/encryptionkey/dutch
 	name = "\improper Dutch's Dozen Radio Encryption Key"
 	icon_state = "stripped_key"
@@ -207,18 +202,18 @@
 /obj/item/device/encryptionkey/PMC
 	name = "\improper Weyland-Yutani PMC Radio Encryption Key"
 	icon_state = "pmc_key"
-	channels = list(RADIO_CHANNEL_WY_PMC = 1, RADIO_CHANNEL_WY = 1)
+	channels = list(RADIO_CHANNEL_PMC_GEN = 1, RADIO_CHANNEL_WY = 1)
 
 /obj/item/device/encryptionkey/bears
 	name = "\improper UPP Radio Encryption Key"
 	icon_state = "upp_key"
 	syndie = 1
-	channels = list(RADIO_CHANNEL_UPP = 1)
+	channels = list(RADIO_CHANNEL_UPP_GEN = 1)
 
 /obj/item/device/encryptionkey/commando
 	name = "\improper WY Commando Radio Encryption Key"
 	icon_state = "pmc_key"
-	channels = list(RADIO_CHANNEL_SPECOPS = 1, RADIO_CHANNEL_WY = 1)
+	channels = list(RADIO_CHANNEL_WY_WO = 1, RADIO_CHANNEL_WY = 1)
 
 /obj/item/device/encryptionkey/highcom
 	name = "\improper USCM High Command Radio Encryption Key"

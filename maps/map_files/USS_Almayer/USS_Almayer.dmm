@@ -13050,8 +13050,8 @@
 	},
 /area/almayer/evacuation/pod10)
 "aLk" = (
-/obj/structure/largecrate/random/case,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/sign/poster/safety,
+/turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull/l_f_s)
 "aLl" = (
 /obj/structure/machinery/light/small{
@@ -14950,6 +14950,12 @@
 	dir = 4;
 	tag = "icon-bulb1 (EAST)"
 	},
+/obj/item/reagent_container/glass/bucket/mopbucket,
+/obj/item/tool/mop{
+	pixel_x = -6;
+	pixel_y = 14
+	},
+/obj/structure/janitorialcart,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -27546,6 +27552,9 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 30
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
@@ -39370,6 +39379,13 @@
 /obj/structure/machinery/cryopod/evacuation,
 /turf/open/shuttle/escapepod,
 /area/almayer/evacuation/pod18)
+"evw" = (
+/mob/living/simple_animal/mouse/brown,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_f_s)
 "evX" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -46793,11 +46809,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
 "hKe" = (
-/obj/structure/surface/rack,
-/obj/item/device/lightreplacer,
-/obj/item/device/lightreplacer{
-	pixel_x = 6
-	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -56246,6 +56258,21 @@
 	tag = "icon-red (NORTHWEST)"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"lXf" = (
+/obj/structure/closet,
+/obj/item/stack/sheet/glass/large_stack,
+/obj/item/device/lightreplacer,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/stack/rods{
+	amount = 40
+	},
+/obj/item/tool/weldingtool,
+/obj/item/clothing/glasses/welding,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_f_s)
 "lXg" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
@@ -66877,6 +66904,12 @@
 "qMu" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/upper_hull/u_a_p)
+"qMG" = (
+/obj/structure/sink{
+	pixel_y = 24
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_f_s)
 "qMP" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/pillbottles{
@@ -98144,7 +98177,7 @@ aaa
 aad
 aag
 nXP
-hKe
+mGL
 mGL
 hJp
 mGL
@@ -98756,8 +98789,8 @@ nXP
 mGL
 hJp
 uNL
-sAm
-dNB
+lXf
+hKe
 uNL
 xCR
 bSv
@@ -98959,8 +98992,8 @@ nXP
 tRV
 mGL
 uNL
-mNf
-mGL
+qMG
+evw
 uNL
 hJp
 bSv
@@ -99161,8 +99194,8 @@ aag
 nXP
 hJp
 mGL
-uNL
 aLk
+hJp
 hJp
 uNL
 hJp

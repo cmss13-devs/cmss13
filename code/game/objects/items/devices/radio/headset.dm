@@ -841,7 +841,7 @@
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. Channels are as follows: :h - public, .a - medical"
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/clf/medic)
 /obj/item/device/radio/headset/distress/CLF/command
-	desc = "A special headset used by small groups of trained operatives. Or terrorists. Channels are as follows: :h - public, .a - medical, .b - engineering, .c - CLF general, .d - combat controller, .g Command"
+	desc = "A special headset used by small groups of trained operatives. Or terrorists. Channels are as follows: :h - public, .a - medical, .b - engineering, .c - command, .d - combat controller, .g clf general"
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/clf/command)
 
 //WY Headsets

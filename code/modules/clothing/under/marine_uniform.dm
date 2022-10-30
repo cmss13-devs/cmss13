@@ -100,12 +100,19 @@
 /obj/item/clothing/under/marine/mp
 	name = "military police jumpsuit"
 	desc = "Standard-issue Military Police uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	icon_state = "MP_jumpsuit"
-	worn_state = "MP_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military police"
-	flags_atom = NO_SNOW_TYPE
+
+	has_pre_blood_mob_overlay_handling = TRUE
+
+/obj/item/clothing/under/marine/mp/Initialize(mapload, list/new_protection, list/override_icon_state)
+	. = ..()
+	overlays += image('icons/obj/items/clothing/uniform_overlays.dmi', null, "mp-uniform")
+
+/obj/item/clothing/under/marine/mp/handle_pre_blood_overlay(var/image/mob_overlay)
+	mob_overlay.overlays += image('icons/mob/humans/onmob/uniform_overlays.dmi', null, "mp-uniform")
+	return mob_overlay
 
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"
@@ -128,13 +135,22 @@
 /obj/item/clothing/under/marine/officer/cmp
 	name = "\improper chief MP uniform"
 	desc = "A uniform typically worn by a Chief MP of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
-	icon_state = "CMP_jumpsuit"
-	item_state = "CMP_jumpsuit"
-	worn_state = "CMP_jumpsuit"
+	icon_state = "BO_jumpsuit"
+	item_state = "BO_jumpsuit"
+	worn_state = "BO_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "chief MP"
-	flags_atom = NO_SNOW_TYPE
+
+	has_pre_blood_mob_overlay_handling = TRUE
+
+/obj/item/clothing/under/marine/officer/cmp/Initialize(mapload, list/new_protection, list/override_icon_state)
+	. = ..()
+	overlays += image('icons/obj/items/clothing/uniform_overlays.dmi', null, "cmp-uniform")
+
+/obj/item/clothing/under/marine/officer/cmp/handle_pre_blood_overlay(var/image/mob_overlay)
+	mob_overlay.overlays += image('icons/mob/humans/onmob/uniform_overlays.dmi', null, "cmp-uniform")
+	return mob_overlay
 
 /obj/item/clothing/under/marine/officer/technical
 	name = "technical officer uniform"

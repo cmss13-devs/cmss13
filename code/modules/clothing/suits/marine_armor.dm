@@ -305,7 +305,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	flags_atom = NO_SNOW_TYPE
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
@@ -325,13 +324,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/device/walkman)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp, /obj/item/clothing/under/marine/officer/cmp)
 	specialty = "M2 pattern military police"
-	item_state_slots = list(WEAR_JACKET = "mp")
 
 /obj/item/clothing/suit/storage/marine/MP/padless
 	name = "\improper M2 pattern padless military police armor"
 	icon_state = "mp_2"
 	specialty = "M2 pattern padless military police"
-	item_state_slots = list(WEAR_JACKET = "mp_2")
 
 /obj/item/clothing/suit/storage/marine/MP/cmp
 	name = "\improper M2 pattern chief military police armor"
@@ -351,6 +348,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M3 pattern general"
 	item_state_slots = list(WEAR_JACKET = "general")
 	w_class = SIZE_MEDIUM
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/marine/MP/SO
 	name = "\improper M3 pattern officer armor"
@@ -361,6 +359,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit, /obj/item/clothing/under/rank/chief_medical_officer)
 	specialty = "M2 pattern officer"
 	item_state_slots = list(WEAR_JACKET = "officer")
+	flags_atom = NO_SNOW_TYPE
 
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.
@@ -377,6 +376,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M3 pattern captain"
 	item_state_slots = list(WEAR_JACKET = "co_officer")
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
+	flags_atom = NO_SNOW_TYPE
 
 
 /obj/item/clothing/suit/storage/marine/MP/CO/jacket
@@ -386,6 +386,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state = "bridge_coat_armored"
 	item_state_slots = list(WEAR_JACKET = "bridge_coat_armored")
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK)
+	flags_atom = NO_SNOW_TYPE
 
 
 /obj/item/clothing/suit/storage/marine/smartgunner

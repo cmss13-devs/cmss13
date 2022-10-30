@@ -20,6 +20,8 @@
 	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
 	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
 
+	var/has_pre_blood_mob_overlay_handling = FALSE
+
 /obj/item/clothing/get_examine_line(mob/user)
 	. = ..()
 	var/list/ties = list()
@@ -85,10 +87,15 @@
 	return
 
 /obj/item/clothing/get_mob_overlay(mob/user_mob, slot)
-	var/image/ret = ..()
+	var/image/mob_overlay = ..()
+	return handle_clothing_mob_overlay(mob_overlay, user_mob, slot)
 
+/obj/item/clothing/proc/handle_clothing_mob_overlay(var/image/mob_overlay, var/mob/user_mob, var/slot)
 	if(slot == WEAR_L_HAND || slot == WEAR_R_HAND)
-		return ret
+		return mob_overlay
+
+	if(has_pre_blood_mob_overlay_handling)
+		mob_overlay = handle_pre_blood_overlay(mob_overlay)
 
 	if(blood_color && blood_overlay_type)
 		var/blood_icon = 'icons/effects/blood.dmi'
@@ -96,12 +103,15 @@
 			var/mob/living/carbon/human/H = user_mob
 			blood_icon = H.species.blood_mask
 		var/image/bloodsies = overlay_image(blood_icon, "[blood_overlay_type]_blood", blood_color, RESET_COLOR|NO_CLIENT_COLOR)
-		ret.overlays += bloodsies
+		mob_overlay.overlays += bloodsies
 
 	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
-			ret.overlays |= A.get_mob_overlay(user_mob, slot)
-	return ret
+			mob_overlay.overlays |= A.get_mob_overlay(user_mob, slot)
+	return mob_overlay
+
+/obj/item/clothing/proc/handle_pre_blood_overlay(var/image/mob_overlay)
+	return mob_overlay
 
 ///////////////////////////////////////////////////////////////////////
 // Ears: headsets, earmuffs and tiny objects

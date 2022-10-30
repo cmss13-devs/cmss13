@@ -691,7 +691,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "mp_helmet"
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
-	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/helmet/marine/MP/riot
 	name = "\improper M10 pattern riot helmet"
@@ -699,6 +698,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "riot_helmet"
 	item_state = "riot_helmet"
 	specialty = "M10 pattern riot"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"
@@ -706,6 +706,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "d_helmet"
 	item_state = "d_helmet"
 	specialty = "M10 pattern officer"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/helmet/marine/MP/provost/marshal
 	name = "\improper Provost Marshal Cap"

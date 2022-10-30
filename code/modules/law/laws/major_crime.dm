@@ -9,7 +9,7 @@
 
 /datum/law/major_law/disorderly_conduct
 	name = "Disorderly Conduct"
-	desc = "Directly and intentionally disrupting primary operations of the ship. Fighting in the RO line, disrupting the briefing."
+	desc = "Directly and intentionally disrupting primary operations of the ship. Fighting in the RO line, extensively or repeatedly disrupting the briefing."
 	brig_time = 10
 
 /datum/law/major_law/assault

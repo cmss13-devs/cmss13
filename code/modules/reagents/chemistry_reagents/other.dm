@@ -653,7 +653,7 @@
 	color = "#604030" // rgb: 96, 64, 48
 	chemclass = CHEM_CLASS_UNCOMMON
 
-/datum/reagent/blackgoo
+/datum/reagent/blackgoo //This is the version that quickly causes a person to be infected
 	name = "Black goo"
 	id = "blackgoo"
 	description = "A strange dark liquid of unknown origin and effect."
@@ -666,13 +666,26 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human")
-			H.contract_disease(new /datum/disease/black_goo)
+			var/datum/disease/black_goo/transform_to_zombie = new /datum/disease/black_goo()
+			transform_to_zombie.stage = 4
+			H.contract_disease(transform_to_zombie)
 
 /datum/reagent/blackgoo/reaction_turf(var/turf/T, var/volume)
 	if(!istype(T)) return
 	if(volume < 3) return
 	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
 		new /obj/effect/decal/cleanable/blackgoo(T)
+
+/datum/reagent/blackgoo/weak //This is the reagent that zombies will inflict with
+	name = "Weak Black goo"
+	id = "blackgooweak"
+	custom_metabolism = REAGENTS_METABOLISM
+
+/datum/reagent/blackgoo/weak/reaction_mob()
+	return
+
+
+
 
 
 // Chemfire supplements

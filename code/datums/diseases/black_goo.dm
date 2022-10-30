@@ -22,9 +22,10 @@
 	var/stage_counter = 0 // tells a dead infectee their stage, so they can know when-abouts they'll revive
 
 /datum/disease/black_goo/stage_act()
-	..()
-	if(!ishuman(affected_mob)) return
+	if(!isHumanStrict(affected_mob)) return
 	var/mob/living/carbon/human/H = affected_mob
+	if(H.stat == DEAD || stage > 2 || affected_mob.reagents.get_reagent_amount("blackgooweak") > 30)
+		..()
 
 	if(age > 1.5*stage_minimum_age) stage_prob = 100 //if it takes too long we force a stage increase
 	else stage_prob = initial(stage_prob)
@@ -128,23 +129,18 @@
 /obj/item/weapon/zombie_claws/attack(mob/living/M, mob/living/carbon/human/user)
 	if(iszombie(M))
 		return FALSE
-
 	. = ..()
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
 	if(isHumanStrict(M))
 		var/mob/living/carbon/human/H = M
-
-		for(var/datum/disease/black_goo/BG in H.viruses)
-			user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is infected</B>")))
-			return .
-
+		if(!(var/datum/disease/black_goo/BG in H.viruses))
+			H.contract_disease(new /datum/disease/black_goo())
 		var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - H.getarmor(user.zone_selected, ARMOR_BIO), 0)
 
 		if(prob(bio_protected))
-			M.AddDisease(new /datum/disease/black_goo())
-			user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is now infected</B>")))
+			H.reagents.add_reagent("blackgooweak", 15, H.reagents)
 
 	M.SetSuperslowed(max(2, M.superslowed)) // Make them slower
 

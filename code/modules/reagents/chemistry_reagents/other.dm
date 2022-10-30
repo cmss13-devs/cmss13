@@ -685,9 +685,6 @@
 	return
 
 
-
-
-
 // Chemfire supplements
 
 /datum/reagent/napalm

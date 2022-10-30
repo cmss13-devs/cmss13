@@ -41,7 +41,7 @@
 
 /datum/unarmed_attack/punch/synthetic
     attack_verb = list("punch","strik","slugg","bludgeon","impact","maul")
-    damage = 45
+    damage = 35
 
 /datum/unarmed_attack/claws
 	attack_verb = list("scratch", "claw")

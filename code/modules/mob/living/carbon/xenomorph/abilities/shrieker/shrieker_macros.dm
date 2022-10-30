@@ -1,8 +1,8 @@
 /datum/action/xeno_action/verb/verb_shriek()
 	set category = "Alien"
-	set name = "Shrieker Shriek"
+	set name = "Piercing Shriek"
 	set hidden = 1
-	var/action_name = "Shrieker Shriek"
+	var/action_name = "Piercing Shriek"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_rooting_slash()

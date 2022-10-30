@@ -567,7 +567,7 @@
 
 /obj/effect/xenomorph/acid_delay/proc/deal_damage()
 	for (var/mob/living/carbon/H in loc)
-		if (H.stat == DEAD)
+		if (H.stat == DEAD || HAS_TRAIT(H, TRAIT_NESTED))
 			continue
 
 		if(H.ally_of_hivenumber(hivenumber))
@@ -592,7 +592,7 @@
 /obj/effect/xenomorph/acid_delay/shrieker_landmine/deal_damage()
 
 	for (var/mob/living/carbon/H in loc)
-		if (H.stat == DEAD)
+		if (H.stat == DEAD || HAS_TRAIT(H, TRAIT_NESTED))
 			continue
 
 		if(H.ally_of_hivenumber(hivenumber))

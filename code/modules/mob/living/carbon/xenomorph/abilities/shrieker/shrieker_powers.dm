@@ -5,6 +5,7 @@
 
 	if (!action_cooldown_check())
 		return
+
 	if (!check_plasma_owner())
 		return
 
@@ -12,75 +13,74 @@
 		return
 
 	if (xeno.mutation_type == SHRIEKER_NORMAL)
-		var/datum/behavior_delegate/shrieker/BD = xeno.behavior_delegate
-		if (!istype(BD))
+		var/datum/behavior_delegate/shrieker/behavior_del = xeno.behavior_delegate
+		if (!istype(behavior_del))
 			return
-		if (!BD.use_internal_acid_ability(shriek_cost))
+		if (!behavior_del.use_internal_acid_ability(shriek_cost))
 			return
 
 	if (curr_effect_type == SHRIEKER_SHRIEK_BUFF)
 
-
-		playsound(xeno.loc, shriek_sound_effectt, 55, 0, status = 0)
+		playsound(xeno.loc, shriek_sound_effect, 55, 0, status = 0)
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a piercing shriek!"))
 		xeno.create_shriekwave(color = "#07f707")
-		var/shriek_duration = 150
-		var/image/buff_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
-		var/mob/living/carbon/Xenomorph/Praetorian/P = owner
-		if (!(P.shriek_status_flags & SHRIEKER_SHRIEK_ENHANCED))
-			P.armor_modifier += XENO_ARMOR_MOD_MED
-			P.damage_modifier += XENO_DAMAGE_MOD_SMALL
-			P.recalculate_armor()
-			P.recalculate_damage()
-			P.shriek_status_flags |= SHRIEKER_SHRIEK_ENHANCED
-			to_chat(src, SPAN_XENOWARNING("Your shriek empowers you to strike harder!"))
-			buff_overlay.flick_overlay(P, 150)
+		var/shriek_duration = 15 SECONDS
+		var/image/buffed_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
+		var/mob/living/carbon/Xenomorph/Shrieker/shrieker = owner
+		if (!(shrieker.shriek_status_flags & SHRIEKER_SHRIEK_ENHANCED))
+			shrieker.armor_modifier += XENO_ARMOR_MOD_MED
+			shrieker.damage_modifier += XENO_DAMAGE_MOD_SMALL
+			shrieker.recalculate_armor()
+			shrieker.recalculate_damage()
+			shrieker.shriek_status_flags |= SHRIEKER_SHRIEK_ENHANCED
+			to_chat(SPAN_XENOWARNING("Your shriek empowers you to strike harder!"))
+			buffed_overlay.flick_overlay(shrieker, 15 SECONDS)
 
 			spawn (shriek_duration)
-				P.armor_modifier -= XENO_ARMOR_MOD_MED
-				P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-				P.recalculate_armor()
-				P.recalculate_damage()
-				P.shriek_status_flags &= ~SHRIEKER_SHRIEK_ENHANCED
-				to_chat(src, SPAN_XENOWARNING("You feel the power of your shriek wane."))
+				shrieker.armor_modifier -= XENO_ARMOR_MOD_MED
+				shrieker.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+				shrieker.recalculate_armor()
+				shrieker.recalculate_damage()
+				shrieker.shriek_status_flags &= ~SHRIEKER_SHRIEK_ENHANCED
+				to_chat(SPAN_XENOWARNING("You feel the power of your shriek wane."))
 
 		else
-			to_chat(src, SPAN_XENOWARNING("Your shriek effects do NOT stack with other shrieks!"))
+			to_chat(SPAN_XENOWARNING("Your shriek effects do NOT stack with other shrieks!"))
 
-		for(var/mob/living/carbon/Xenomorph/XX in view(6, xeno))
-			var/image/bufff_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
-			if (!(XX.shriek_status_flags & SHRIEKER_SHRIEK_ENHANCED))
-				XX.armor_modifier += XENO_ARMOR_MOD_MED
-				XX.damage_modifier += XENO_DAMAGE_MOD_SMALL
-				XX.shriek_status_flags |= SHRIEKER_SHRIEK_ENHANCED
-				XX.recalculate_armor()
-				XX.recalculate_damage()
-				bufff_overlay.flick_overlay(XX, 150)
-				to_chat(XX, SPAN_XENOWARNING("You feel empowered after heearing the shriek of [src]!"))
+		for(var/mob/living/carbon/Xenomorph/xenoes in view(buff_range, xeno))
+			var/image/xeno_buffed_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
+			if (!(xenoes.shriek_status_flags & SHRIEKER_SHRIEK_ENHANCED))
+				xenoes.armor_modifier += XENO_ARMOR_MOD_MED
+				xenoes.damage_modifier += XENO_DAMAGE_MOD_SMALL
+				xenoes.shriek_status_flags |= SHRIEKER_SHRIEK_ENHANCED
+				xenoes.recalculate_armor()
+				xenoes.recalculate_damage()
+				xeno_buffed_overlay.flick_overlay(xenoes, 15 SECONDS)
+				to_chat(xenoes, SPAN_XENOWARNING("You feel empowered after heearing the shriek of [src]!"))
 
 				spawn (shriek_duration)
-					XX.armor_modifier -= XENO_ARMOR_MOD_MED
-					XX.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-					XX.shriek_status_flags &= ~SHRIEKER_SHRIEK_ENHANCED
-					XX.recalculate_armor()
-					XX.recalculate_damage()
-					to_chat(XX, SPAN_XENOWARNING("You feel the effects of [src] wane!"))
+					xenoes.armor_modifier -= XENO_ARMOR_MOD_MED
+					xenoes.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+					xenoes.shriek_status_flags &= ~SHRIEKER_SHRIEK_ENHANCED
+					xenoes.recalculate_armor()
+					xenoes.recalculate_damage()
+					to_chat(xenoes, SPAN_XENOWARNING("You feel the effects of [src] wane!"))
 			else
-				to_chat(XX, SPAN_XENOWARNING("You can only be empowered by one shriek at once!"))
+				to_chat(xenoes, SPAN_XENOWARNING("You can only be empowered by one shriek at once!"))
 
 	else if (curr_effect_type == SHRIEKER_SHRIEK_DEBUFF)
-		playsound(xeno.loc, shriek_sound_effectt, 55, 0, status = 0)
+		playsound(xeno.loc, shriek_sound_effect, 55, 0, status = 0)
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural shriek!"))
 		xeno.create_shriekwave(color = "#FF0000")
-		var/slow_duration = 40
+		var/slow_duration = 4 SECONDS
 
-		for(var/mob/living/carbon/human/human in view(3, xeno))
-			human.visible_message(SPAN_DANGER("[xeno]'s shriek shakes your entire body, causing you to fall over in pain!"))
+		for(var/mob/living/carbon/human/H in view(debuff_range, xeno))
+			to_chat(H, SPAN_HIGHDANGER("[xeno]'s shriek shakes your entire body, causing you to fall over in pain!"))
 			if (!(xeno.shriek_status_flags & SHRIEKER_SHRIEK_DEBUFF))
-				shake_camera(human, 2, 3)
-				human.Daze(debuff_daze)
-				human.KnockDown(get_xeno_stun_duration(human, 0.5))
-				new /datum/effects/xeno_slow(human, xeno, null, null, get_xeno_stun_duration(human, slow_duration))
+				shake_camera(H, 2, 3)
+				H.Daze(debuff_daze)
+				H.KnockDown(get_xeno_stun_duration(H, 0.5))
+				new /datum/effects/xeno_slow(H, xeno, null, null, get_xeno_stun_duration(H, slow_duration))
 
 	apply_cooldown()
 	..()
@@ -122,7 +122,7 @@
 					return
 
 
-	if (H.stat == DEAD)
+	if (H.stat == DEAD || HAS_TRAIT(H, TRAIT_NESTED))
 		to_chat(X, SPAN_XENODANGER("[H] is dead, why would you want to touch it?"))
 		return
 
@@ -162,17 +162,17 @@
 
 /datum/action/xeno_action/activable/pounce/shrieker/additional_effects(mob/living/L)
 
-	var/mob/living/carbon/human/H = L
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(X.mutation_type != SHRIEKER_NORMAL)
+	var/mob/living/carbon/human/human = L
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.mutation_type != SHRIEKER_NORMAL)
 		return
 
-	var/datum/behavior_delegate/shrieker/BD = X.behavior_delegate
+	var/datum/behavior_delegate/shrieker/BD = xeno.behavior_delegate
 	if (!istype(BD))
 		return
 
-	X.visible_message(SPAN_XENODANGER("The [X] dashes forward, its claws extended!"), SPAN_XENODANGER("You dash forward, extending your claws!"))
-	H.attack_alien(X, 15)
+	xeno.visible_message(SPAN_XENODANGER("The [xeno] dashes forward, its claws extended!"), SPAN_XENODANGER("You dash forward, extending your claws!"))
+	human.attack_alien(xeno, 15)
 
 
 /datum/action/xeno_action/activable/acid_throw/use_ability(atom/A)
@@ -190,7 +190,7 @@
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if (!check_plasma_owner())
 		return
 
 	if(!check_clear_path_to_target(X, A, TRUE))

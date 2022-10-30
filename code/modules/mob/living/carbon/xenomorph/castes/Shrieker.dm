@@ -23,7 +23,7 @@
 
 	tackle_min = 2
 	tackle_max = 4
-	tackle_chance = 45
+	tackle_chance = 40
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
@@ -112,7 +112,7 @@
 
 /datum/behavior_delegate/shrieker/proc/use_internal_acid_ability(cost)
 	if (cost > internal_acid_level)
-		to_chat(bound_xeno, SPAN_XENODANGER("Your acid reserves are insufficient! You need at least [cost] to do that!"))
+		to_chat(bound_xeno, SPAN_XENODANGER("Your acid reserves are insufficient! You need [cost] to do that!"))
 		return FALSE
 	else
 		remove_internal_acid_level(cost)

@@ -13,14 +13,15 @@
 	// These values are used to determine the
 	// Shriek cost and the switching of different types of shriek
 
-	var/shriek_sound_effectt = "sound/voice/xeno_praetorian_screech.ogg"
+	var/shriek_sound_effect  = "sound/voice/xeno_praetorian_screech.ogg"
 	var/curr_effect_type = SHRIEKER_SHRIEK_BUFF
 
 	var/debuff_daze = 3
 
 	var/shriek_cost = 150
 
-
+	var/buff_range = 6
+	var/debuff_range = 3
 /datum/action/xeno_action/onclick/shrieker_switch_shriek_type
 	name = "Toggle Shriek Type"
 	action_icon_state = "roar_motivate" // default = buff
@@ -38,21 +39,21 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	var/action_icon_result
 
-	if(!X.check_state(1))
+	if(!X.check_state(TRUE))
 		return
 
-	var/datum/action/xeno_action/activable/shriek/WH = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/shriek)
-	if (!istype(WH))
+	var/datum/action/xeno_action/activable/shriek/shriek_ability = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/shriek)
+	if (!istype(shriek_ability))
 		return
 
-	if (WH.curr_effect_type == SHRIEKER_SHRIEK_BUFF)
+	if (shriek_ability.curr_effect_type == SHRIEKER_SHRIEK_BUFF)
 		action_icon_result = "roar_intimidate"
-		WH.curr_effect_type = SHRIEKER_SHRIEK_DEBUFF
+		shriek_ability.curr_effect_type = SHRIEKER_SHRIEK_DEBUFF
 		to_chat(X, SPAN_XENOWARNING("You will now debuff enemies, knocking them down, slowing, and reducing their vision!"))
 
 	else
 		action_icon_result = "roar_motivate"
-		WH.curr_effect_type = SHRIEKER_SHRIEK_BUFF
+		shriek_ability.curr_effect_type = SHRIEKER_SHRIEK_BUFF
 		to_chat(X, SPAN_XENOWARNING("You will now give your allies increased armor and damage with your shriek!"))
 
 	button.overlays.Cut()
@@ -66,7 +67,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_rooting_slash
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 11 SECONDS
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 100
 
 	// Root config
@@ -85,7 +86,7 @@
 	ability_name = "Dash"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 11 SECONDS
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 50
 
 	// Config options

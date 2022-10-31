@@ -153,7 +153,7 @@ const CompoundRecord = (props: CompoundRecordProps, context) => {
           </Flex.Item>
           {props.canPrint && <Flex.Item>
             <Button
-              disabled={data.photocopier_error}
+              disabled={data.photocopier_error || data.printer_toner === 0}
               icon="print"
               onClick={() => act("print", doc_ref)}
             >

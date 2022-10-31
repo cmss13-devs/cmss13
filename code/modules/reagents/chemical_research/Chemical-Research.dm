@@ -33,6 +33,14 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	)
 	research_documents["[document_type]"] += list(new_document)
 
+/datum/chemical_data/proc/get_report(var/doc_type, var/doc_title)
+	var/obj/item/paper/research_report/report = null
+	for(var/i in chemical_data.research_documents[doc_type])
+		if(i["document_title"] == doc_title)
+			report = i["document"]
+			break
+	return report
+
 /datum/chemical_data/proc/publish_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
 	if(!research_publications["[document_type]"])
 		research_publications["[document_type]"] = list()
@@ -53,7 +61,6 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	// find the document, in all research documents
 	// the user might unpublish a different version to the published one
 	for(var/i in docs)
-		var/doc_title = i["document_title"]
 		if(i["document_title"] == title)
 			published_to_remove += i
 			break
@@ -68,7 +75,6 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 
 	// remove all published references
 	for(var/i in all_published_references)
-		var/id = i["document_title"]
 		published_docs -= list(i)
 	return TRUE
 

@@ -28,6 +28,10 @@
 	var/stored_metal = 125 // starts with 125 metal loaded
 	var/max_metal = 500
 
+/obj/structure/machinery/autodoc/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += SPAN_NOTICE("It has [stored_metal] metal avalible for limb replacements.")
 
 /obj/structure/machinery/autodoc/Initialize()
 	. = ..()

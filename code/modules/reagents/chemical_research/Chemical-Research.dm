@@ -46,17 +46,31 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	research_publications["[document_type]"] += list(new_document)
 
 /datum/chemical_data/proc/unpublish_document(var/document_type, var/title)
-	if(research_publications["[document_type]"]["[title]"])
-		//TODO fix this function, it isn't picking it up
-		var/list/published_doc = research_publications["[document_type]"]["[title]"]
-		var/doc_name = published_doc["name"]
-		var/list/remove_list = list()
-		for(var/i in research_publications["[document_type]"])
-			if(i["name"] == doc_name)
-				remove_list += i
-		for(var/i in remove_list)
-			research_publications["[document_type]"] -= i
+	if(!research_publications["[document_type]"])
 		return TRUE
+	var/list/published_to_remove = list()
+	var/list/docs = research_documents["[document_type]"]
+	// find the document, in all research documents
+	// the user might unpublish a different version to the published one
+	for(var/i in docs)
+		var/doc_title = i["document_title"]
+		if(i["document_title"] == title)
+			published_to_remove += i
+			break
+	// collect all documents which match the name of the doc to unpublish
+	var/chem_name = published_to_remove["document"]
+	var/list/all_published_references = list()
+	var/list/published_docs = research_publications["[document_type]"]
+	for(var/i in published_docs)
+		var/doc_name = i["document"]
+		if(cmptext(doc_name, chem_name) == 1)
+			all_published_references += list(i)
+
+	// remove all published references
+	for(var/i in all_published_references)
+		var/id = i["document_title"]
+		published_docs -= list(i)
+	return TRUE
 
 /datum/chemical_data/proc/save_new_properties(var/list/properties)
 	var/list/property_names = list()

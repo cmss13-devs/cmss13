@@ -123,6 +123,7 @@ interface CompoundRecordProps {
   compound: CompoundData;
 }
 
+
 const CompoundRecord = (props: CompoundRecordProps, context) => {
   const { data, act } = useBackend<TerminalProps>(context);
   const isMainTerminal = data.main_terminal === 1;
@@ -176,7 +177,7 @@ const CompoundRecord = (props: CompoundRecordProps, context) => {
       </TableCell>
     </TableRow>
   );
-}
+};
 
 interface DocInfo {
   time: string;
@@ -206,10 +207,10 @@ const ResearchReportTable = (_, context) => {
       </Stack.Item>
       <hr />
       <Stack.Item>
-        <CompoundTable docs={data.research_documents['XRF Scans'] ?? []}/>
+        <CompoundTable docs={data.research_documents['XRF Scans'] ?? []} />
       </Stack.Item>
     </Stack>);
-}
+};
 
 interface CompoundTableProps {
   docs: DocumentRecord[];
@@ -234,16 +235,16 @@ const CompoundTable = (props: CompoundTableProps, context) => {
       id: x.document_title,
       docNumber: Number.parseInt(x.document_title.split(" ")[0]),
       type: doctype,
-      isPublished: isPublished(doctype.document)
+      isPublished: isPublished(doctype.document),
     };
   }).forEach(x => {
     if(hideOld) {
       if (!outputDocs.has(x.type.document)) {
-        outputDocs.set(x.type.document, x)
+        outputDocs.set(x.type.document, x);
         return;
       }
       if (x.docNumber > (outputDocs.get(x.type.document)?.docNumber ?? 0)) {
-        outputDocs.set(x.type.document, x)
+        outputDocs.set(x.type.document, x);
       }
     } else {
       outputDocs.set(x.id, x);
@@ -378,10 +379,10 @@ const PublishedMaterial = (props, context) => {
   return (
     <Stack vertical>
       <Stack.Item>
-        <CompoundTable docs={data.published_documents['XRF Scans'] ?? []}/>
+        <CompoundTable docs={data.published_documents['XRF Scans'] ?? []} />
       </Stack.Item>
     </Stack>);
-}
+};
 
 const ResearchOverview = (_, context) => {
   const [selectedTab, setSelectedTab] = useLocalState(context, 'research_tab', 1);

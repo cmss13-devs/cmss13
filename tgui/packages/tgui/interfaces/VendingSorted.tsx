@@ -14,20 +14,12 @@ const VENDOR_ITEM_REGULAR = 1;
 const VENDOR_ITEM_MANDATORY = 2;
 const VENDOR_ITEM_RECOMMENDED = 3;
 
-interface IconRecord {
-  icon_sheet: string;
-  icon_state: string;
-  href: string;
-  base64: string;
-}
-
 interface VendingRecord {
   prod_index: number;
   prod_name: string;
   prod_available: number;
   prod_initial: number;
   prod_color?: number;
-  prod_icon: IconRecord;
   prod_desc?: string;
   prod_cost: number;
   image: string;
@@ -100,14 +92,12 @@ const VendButton = (props: VendButtonProps, _) => {
         'VendingSorted__VendButton',
         props.isRecommended && 'VendingSorted__RecommendedVendButton',
         props.isMandatory && 'VendingSorted__MandatoryVendButton',
-        props.className,
       ])}
       preserveWhitespace
       icon={props.text ? undefined : (props.available ? "circle-down" : "xmark")}
       onMouseDown={(e) => {
         e.preventDefault();
         props.onClick();
-
       }}
       textAlign="center"
       disabled={!props.available}>
@@ -116,7 +106,7 @@ const VendButton = (props: VendButtonProps, _) => {
   );
 };
 
-const VendableItem2 = (props: VenableItem, context) => {
+const VendableItem = (props: VenableItem, context) => {
   const { data, act } = useBackend<VendingData>(context);
   const { record } = props;
 
@@ -124,8 +114,6 @@ const VendableItem2 = (props: VenableItem, context) => {
   const available = quantity > 0;
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
-
-  const description = record.prod_desc;
 
   return (
     <Flex
@@ -304,7 +292,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
                   i % 2 ? "VendingFlexAlt" : undefined,
                 ])}
               >
-                {vendor_type === "sorted" && <VendableItem2 record={record} />}
+                {vendor_type === "sorted" && <VendableItem record={record} />}
                 {vendor_type === "clothing" && <VendableClothingItem record={record} />}
               </Stack.Item>
             );

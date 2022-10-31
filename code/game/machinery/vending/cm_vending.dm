@@ -41,7 +41,6 @@
 	var/vend_y_offset = 0
 
 	var/list/listed_products = list()
-	var/list/product_icon_list = list()
 	var/list/initial_product_count = list()
 
 /*
@@ -761,10 +760,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 		var/result = list()
 		var/obj/item/I = item_ref
-		result["href"] = ""
-		result["desc"] = initial(I.desc)
-		if (p_name in product_icon_list)
-			result = product_icon_list[p_name]
 
 		var/is_category = item_ref == null
 
@@ -1102,10 +1097,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/list/initial_vals = initial_product_count
 
 		var/result = list()
-		result["href"] = ""
-		result["desc"] = ""
-		if (p_name in product_icon_list)
-			result = product_icon_list[p_name]
 
 		var/initial_amount = initial_vals[p_name]
 		var/is_category = p_amount < 0

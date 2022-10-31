@@ -612,17 +612,6 @@ proc/sort_atoms_by_layer(var/list/atoms)
 	I.color = color
 	I.flick_overlay(src, time)
 
-//Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
-// exporting it as text, and then parsing the base64 from that.
-// (This relies on byond automatically storing icons in savefiles as base64)
-/proc/icon2base64(icon/icon, iconKey = "misc")
-	if (!isicon(icon))
-		return FALSE
-	GLOB.iconCache[iconKey] << icon
-	var/iconData = GLOB.iconCache.ExportText(iconKey)
-	var/list/partial = splittext(iconData, "{")
-	return replacetext(copytext(partial[2], 3, -5), "\n", "")
-
 /proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE)
 	if (!thing)
 		return

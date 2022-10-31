@@ -7,12 +7,13 @@ var/global/list/gear_datums = list()
 	return 1
 
 /datum/gear
-	var/display_name       //Name/index.
-	var/path               //Path to item.
-	var/cost               //Number of points used.
-	var/slot               //Slot to equip to.
-	var/list/allowed_roles //Roles that can spawn with this item.
-	var/whitelisted        //Term to check the whitelist for..
+	var/display_name         // Name/index.
+	var/path                 // Path to item.
+	var/cost                 // Number of points used.
+	var/slot                 // Slot to equip to.
+	var/list/allowed_roles   // Roles that can spawn with this item.
+	var/whitelisted          // Term to check the whitelist for..
+	var/list/allowed_origins
 
 // This is sorted both by slot and alphabetically! Don't fuck it up!
 // Headslot items
@@ -22,18 +23,21 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/head/cmbandana
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/cmbandanatan
 	display_name = "USCM Bandana (Tan)"
 	path = /obj/item/clothing/head/cmbandana/tan
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/cmbeanie
 	display_name = "USCM Beanie (Gray)"
 	path = /obj/item/clothing/head/beanie/gray
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/cmbeanie/green
 	display_name = "USCM Beanie (Green)"
@@ -48,59 +52,69 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/head/beret/cm/squadberet
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 /datum/gear/cmberet
 	display_name = "USCM Beret (Green)"
 	path = /obj/item/clothing/head/beret/cm
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/cmberettan
 	display_name = "USCM Beret (Tan)"
 	path = /obj/item/clothing/head/beret/cm/tan
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/cmheadband
 	display_name = "USCM Headband (Green)"
 	path = /obj/item/clothing/head/headband
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/cmheadbandred
 	display_name = "USCM Headband (Red)"
 	path = /obj/item/clothing/head/headband/red
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/cmheadbandtan
 	display_name = "USCM Headband (Tan)"
 	path = /obj/item/clothing/head/headband/tan
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/cmheadset
 	display_name = "USCM Earpiece"
 	path = /obj/item/clothing/head/headset
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/cmcap
 	display_name = "USCM Cap"
 	path = /obj/item/clothing/head/cmcap
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/booniehat
 	display_name = "USCM Boonie Hat (Olive)"
 	path = /obj/item/clothing/head/cmcap/boonie
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/booniehattan
 	display_name = "USCM Boonie Hat (Tan)"
 	path = /obj/item/clothing/head/cmcap/boonie/tan
 	cost = 3
 	slot = WEAR_HEAD
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/durag
 	display_name = "Durag (Mission Specific)"
@@ -167,6 +181,7 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/mask/rebreather/scarf/green
 	cost = 2
 	slot = WEAR_FACE
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/cmbalaclava/tan
 	display_name = "USCM Balaclava (Tan)"
@@ -215,6 +230,7 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/glasses/regular
 	cost = 2
 	slot = WEAR_EYES
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/prescglasses
 	display_name = "Prescription Glasses"
@@ -379,12 +395,14 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/accessory/patch
 	cost = 1
 	slot = WEAR_IN_ACCESSORY
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/falconpatch
 	display_name = "Falling Falcons shoulder patch"
 	path = /obj/item/clothing/accessory/patch/falcon
 	cost = 1
 	slot = WEAR_IN_ACCESSORY
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/gas_mask
 	display_name = "Gas Mask"
@@ -517,6 +535,7 @@ var/global/list/gear_datums = list()
 	path = /obj/item/prop/helmetgarb/flair_uscm
 	cost = 1
 	slot = WEAR_IN_BACK
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/broken_nvgs
 	display_name = "Broken Night Vision Goggles"

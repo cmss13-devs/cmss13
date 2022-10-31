@@ -86,6 +86,7 @@
 			captured_mob.pixel_x = 16
 			captured_mob.pixel_y = 16
 			vis_contents += captured_mob
+			user.stop_pulling() // Automatically remove the grab
 			huggers_to_grow += huggers_per_corpse
 			update_icon()
 		return

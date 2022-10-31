@@ -384,3 +384,6 @@
   harryob:
   - server: the server no longer allows graceful server restarts, and forcefully dies
       at the end of every round
+2022-10-31:
+  Morrow:
+  - rscadd: Added suit slot sprites for mateba belts

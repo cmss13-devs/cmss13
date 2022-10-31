@@ -29627,7 +29627,6 @@
 /area/bigredv2/outside/lz2_west_cas)
 "ced" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
-/obj/item/weapon/gun/rifle/m41a/training,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -30928,13 +30927,6 @@
 	tag = "icon-mars_cave_5"
 	},
 /area/bigredv2/caves_lambda)
-"eGa" = (
-/obj/item/weapon/gun/shotgun/combat/riot,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17";
-	tag = "icon-mars_cave_17"
-	},
-/area/bigredv2/caves_research)
 "eGb" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -32214,13 +32206,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
-"hqC" = (
-/obj/item/ammo_magazine/rifle/mar40/lmg,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/caves/mining)
 "hqD" = (
 /turf/open/floor{
 	dir = 10;
@@ -32742,12 +32727,13 @@
 	},
 /area/bigredv2/caves/mining)
 "irM" = (
-/obj/item/weapon/shield/riot,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
+/obj/effect/spawner/random/gun/smg/midchance,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
 	},
-/area/bigredv2/caves_research)
+/area/bigredv2/caves/mining)
 "isr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
@@ -32846,6 +32832,7 @@
 	tag = "icon-gib6"
 	},
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/spawner/random/gun/pistol/highchance,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -33775,6 +33762,7 @@
 /area/bigredv2/caves/mining)
 "key" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/spawner/random/gun/pistol/lowchance,
 /turf/open/mars_cave,
 /area/bigredv2/caves/mining)
 "kfk" = (
@@ -33854,7 +33842,6 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/plating{
 	dir = 8;
@@ -34410,7 +34397,7 @@
 	pixel_y = 3;
 	tag = "icon-gib6"
 	},
-/obj/item/weapon/gun/rifle/m41a/training,
+/obj/item/weapon/gun/revolver/cmb,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_3"
 	},
@@ -34816,7 +34803,6 @@
 "miD" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/security/marshal,
-/obj/item/weapon/gun/revolver/cmb,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -35022,7 +35008,6 @@
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "mFT" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/effect/landmark/corpsespawner/russian,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/mars_cave{
@@ -35414,14 +35399,11 @@
 	},
 /area/bigredv2/caves_se)
 "nBb" = (
-/obj/item/ammo_magazine/pistol/b92fs,
-/obj/item/weapon/gun/pistol/b92fs{
-	pixel_x = 13;
-	pixel_y = -7
-	},
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6";
-	tag = "icon-mars_dirt_6"
+/obj/effect/spawner/random/gun/pistol/midchance,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
 "nCp" = (
@@ -37038,7 +37020,6 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -37266,17 +37247,6 @@
 "qVi" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
-/area/bigredv2/caves/mining)
-"qVB" = (
-/obj/item/weapon/shield/riot,
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -8;
-	pixel_y = 6
-	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17";
-	tag = "icon-mars_cave_17"
-	},
 /area/bigredv2/caves/mining)
 "qYY" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -37534,11 +37504,6 @@
 "rtV" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/landmark/corpsespawner/miner,
-/obj/item/weapon/gun/rifle/m16{
-	pixel_x = 10
-	},
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
 /obj/effect/decal/cleanable/blood,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
@@ -37890,11 +37855,8 @@
 /area/bigredv2/caves/mining)
 "rXy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/structure/surface/table,
-/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary{
-	pixel_y = 12
-	},
+/obj/effect/spawner/random/gun/shotgun/highchance,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -38630,6 +38592,7 @@
 	pixel_y = 3;
 	tag = "icon-gib6"
 	},
+/obj/effect/spawner/random/pills/lowchance,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16";
 	tag = "icon-mars_cave_16"
@@ -39690,8 +39653,7 @@
 	icon_state = "gib6";
 	tag = "icon-gib6"
 	},
-/obj/item/weapon/gun/rifle/mar40/lmg,
-/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/effect/spawner/random/gun/pistol/lowchance,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -39952,7 +39914,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "vzL" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/effect/spawner/random/gun/rifle,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -39971,12 +39933,7 @@
 	},
 /area/bigredv2/caves_north)
 "vAL" = (
-/obj/item/prop/helmetgarb/riot_shield,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_7";
-	tag = "icon-mars_dirt_7"
-	},
-/area/bigredv2/caves_research)
+)
 "vBy" = (
 /obj/item/ammo_magazine/shotgun/beanbag/riot,
 /turf/open/mars_cave{
@@ -40202,14 +40159,6 @@
 	tag = "icon-mars_dirt_4"
 	},
 /area/space)
-"weO" = (
-/obj/structure/closet/secure_closet/medical_wall,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
-	},
-/area/bigredv2/caves/mining)
 "wfd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/solaris/reinforced,
@@ -40907,10 +40856,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
-"xrp" = (
-/obj/structure/largecrate/decent,
-/turf/open/floor/plating,
-/area/bigredv2/caves/mining)
 "xrO" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -40930,6 +40875,7 @@
 "xte" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light,
+/obj/effect/spawner/random/gun/smg/lowchance,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -41251,7 +41197,6 @@
 /obj/item/ore/uranium{
 	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
 	},
-/obj/structure/largecrate/mediocre,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "xWz" = (
@@ -41381,20 +41326,18 @@
 	},
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/security/marshal,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/effect/spawner/random/gun/rifle/highchance,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/caves/mining)
 "ydd" = (
-/obj/item/weapon/shield/riot{
-	pixel_x = -6
-	},
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
 /obj/effect/landmark/corpsespawner/ua_riot,
+/obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -41502,10 +41445,10 @@
 	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/closet/crate,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/weapon/gun/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -46054,7 +45997,7 @@ xTM
 qeX
 heG
 pZe
-pSa
+nBb
 wLD
 utk
 uHQ
@@ -47983,7 +47926,7 @@ wtj
 wtj
 mBo
 wtj
-xrp
+wtj
 rzT
 hEK
 vmV
@@ -48221,7 +48164,7 @@ pSa
 pSa
 hRy
 hCT
-pSa
+irM
 tBK
 kCe
 pSa
@@ -49309,7 +49252,7 @@ lBe
 pSa
 pSa
 iLu
-xhB
+pSa
 kCe
 nqr
 kCe
@@ -50155,7 +50098,7 @@ lYC
 yfs
 uxx
 yda
-nBb
+szw
 gki
 paz
 eBn
@@ -52741,7 +52684,7 @@ keg
 keg
 keg
 keg
-vCU
+vAL
 kgx
 kgx
 kgx
@@ -53828,7 +53771,7 @@ dEV
 euF
 euF
 sSU
-vCU
+vAL
 xgw
 euF
 euF
@@ -54047,8 +53990,8 @@ sSU
 kgx
 kgx
 kgx
-vCU
-vCU
+vAL
+vAL
 kgx
 kgx
 kgx
@@ -55158,7 +55101,7 @@ aao
 aao
 wCo
 jWj
-qVB
+hwe
 jUY
 rsv
 rsv
@@ -55615,7 +55558,7 @@ rxh
 rxh
 rxh
 vcA
-hqC
+rxh
 aao
 aao
 aao
@@ -57329,7 +57272,7 @@ xkq
 xkq
 nXC
 guM
-vAL
+nny
 guM
 ybk
 aao
@@ -57763,9 +57706,9 @@ xkq
 xkq
 nXC
 qFg
-irM
 guM
-eGa
+guM
+ybk
 xkq
 aao
 aao

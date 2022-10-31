@@ -33,6 +33,10 @@
 		scope = SSnightmare.contexts[NIGHTMARE_CTX_GLOBAL]
 	return scope.scenario[pname]
 
+/// Set a value in the scenario. This should only be used by manual user intervention, such as admins tweaking scenario!!
+/datum/nmcontext/proc/set_scenario_value(pname, value)
+	scenario[pname] = value
+
 /// Resolve a config file path using context configuration
 /datum/nmcontext/proc/get_file_path(relative_path, file_type = "config")
 	if(config["prefix_[file_type]"])

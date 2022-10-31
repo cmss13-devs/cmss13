@@ -59,7 +59,6 @@ Additional game mode variables.
 	var/pred_start_count	= 4 //The initial count of predators
 
 	var/pred_additional_max = 0
-	var/pred_round_chance 	= 20 //%
 	var/pred_leader_count 	= 0 //How many Leader preds are active
 	var/pred_leader_max 	= 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
 

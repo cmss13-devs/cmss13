@@ -79,6 +79,16 @@ SUBSYSTEM_DEF(nightmare)
 	load_file("[MC.nightmare_path]/[NIGHTMARE_FILE_BASE]", "[context_name]-[NIGHTMARE_ACT_BASE]")
 	log_debug("Nightmare: Loaded map environment {[context_name],[map_type]}")
 
+/// Returns a value from the global scenario
+/datum/controller/subsystem/nightmare/proc/get_scenario_value(name)
+	var/datum/nmcontext/context = contexts[NIGHTMARE_CTX_GLOBAL]
+	return context.get_scenario_value(name)
+
+/// Override a value from the global scenario
+/datum/controller/subsystem/nightmare/proc/set_scenario_value(name, value)
+	var/datum/nmcontext/context = contexts[NIGHTMARE_CTX_GLOBAL]
+	return context.set_scenario_value(name, value)
+
 /// Reads a JSON file, returns a branch nmnode representing contents of file
 /datum/controller/subsystem/nightmare/proc/load_file(filename, tag)
 	RETURN_TYPE(/datum/nmnode/branch)

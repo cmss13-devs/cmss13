@@ -112,6 +112,14 @@
 		ui = new(user, src, "ResearchTerminal", name)
 		ui.open()
 
+/obj/structure/machinery/computer/research/proc/get_report(var/doc_type, var/doc_title)
+	var/obj/item/paper/research_report/report = null
+	for(var/i in chemical_data.research_documents[doc_type])
+		if(i["document_title"] == doc_title)
+			report = i["document"]
+			break
+	return report
+
 /obj/structure/machinery/computer/research/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -125,7 +133,7 @@
 		if ("read_document")
 			var/print_type = params["print_type"]
 			var/print_title = params["print_title"]
-			var/obj/item/paper/research_report/report = chemical_data.research_documents[print_type][print_title]
+			var/obj/item/paper/research_report/report = get_report(print_type, print_title)
 			if(report)
 				report.read_paper(user)
 			return
@@ -137,7 +145,7 @@
 				var/print_title = params["print_title"]
 				photocopier.toner = max(0, photocopier.toner - 1)
 				var/obj/item/paper/research_report/printing = new /obj/item/paper/research_report/(photocopier.loc)
-				var/obj/item/paper/research_report/report = chemical_data.research_documents[print_type][print_title]
+				var/obj/item/paper/research_report/report = get_report(print_type, print_title)
 				if(report)
 					printing.name = report.name
 					printing.info = report.info
@@ -193,7 +201,7 @@
 		if("publish_document")
 			var/print_type = params["print_type"]
 			var/print_title = params["print_title"]
-			var/obj/item/paper/research_report/report = chemical_data.research_documents[print_type][print_title]
+			var/obj/item/paper/research_report/report = get_report(print_type, print_title)
 			if(!report)
 				to_chat(usr, SPAN_WARNING("Report data corrupted. Unable to transmit."))
 				return

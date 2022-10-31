@@ -5,10 +5,20 @@ import { Table, TableCell, TableRow } from '../components/Table';
 import { classes } from '../../common/react';
 import { BoxProps } from '../components/Box';
 
+interface DocumentLog {
+  ['XRF Scans']?: Array<DocumentRecord>
+}
+
+interface DocumentRecord {
+  document_title: string;
+  time: string;
+  document: string;
+}
+
 interface TerminalProps {
   "clearance_level": number;
-  "research_documents": Map<string, {string: string}>;
-  "published_documents": Map<string, Map<string, string>>;
+  "research_documents": DocumentLog;
+  "published_documents": DocumentLog;
   "rsc_credits": number;
   "broker_cost": number;
   "base_purchase_cost": number;
@@ -109,24 +119,138 @@ const NoCompoundsDetected = (_, context) => {
     </span>);
 };
 
-const CompoundTable = (_, context) => {
+interface CompoundRecordProps {
+  compound: CompoundData;
+}
+
+const CompoundRecord = (props: CompoundRecordProps, context) => {
   const { data, act } = useBackend<TerminalProps>(context);
   const isMainTerminal = data.main_terminal === 1;
-  const hasScans = (docs) => Object.keys(docs).includes('XRF Scans');
+  const { compound } = props;
+  const doc_ref = { "print_type": 'XRF Scans', "print_title": compound.id };
+  return (
+    <TableRow key={compound.id}>
+      <TableCell>
+        <span className="compound_label">
+          {compound.type.time}
+        </span>
+      </TableCell>
 
-  const published = !hasScans(data.published_documents)
-    ? []
-    : Array.from(Object.keys(data.published_documents['XRF Scans']));
+      <TableCell className="chemical-td">
+        <span className="compound_label">
+          {compound.type.document.split(" ")[2]}
+        </span>
+      </TableCell>
 
-  const documents = !hasScans(data.research_documents)
-    ? []
-    : Array.from(Object.keys(data.research_documents['XRF Scans']));
+      <TableCell>
+        <Flex className="compound_actions" justify="space-around" align-items="stretch" wrap={false}>
+          <Flex.Item>
+            <Button icon="book" onClick={() => act("read_document", doc_ref)}>
+              Read
+            </Button>
+          </Flex.Item>
+          <Flex.Item>
+            <Button
+              disabled={data.photocopier_error}
+              icon="print"
+              onClick={() => act("print", doc_ref)}
+            >
+              Print
+            </Button>
+          </Flex.Item>
+          {isMainTerminal && !compound.isPublished
+            && (
+              <Flex.Item>
+                <Button icon="upload" onClick={() => act("publish_document", doc_ref)}>
+                  Publish
+                </Button>
+              </Flex.Item>)}
+          {isMainTerminal && compound.isPublished
+            && (
+              <Flex.Item>
+                <Button icon="remove" onClick={() => act("unpublish_document", doc_ref)}>
+                  Unpublish
+                </Button>
+              </Flex.Item>)}
+        </Flex>
+      </TableCell>
+    </TableRow>
+  );
+}
 
-  const researchDocs = documents.map(x => {
-    return { id: x, type: data.research_documents['XRF Scans'][x], isPublished: published.includes(x) };
+interface DocInfo {
+  time: string;
+  document: string;
+}
+
+interface CompoundData {
+  id: string;
+  docNumber: number;
+  type: DocInfo;
+  isPublished: boolean;
+}
+
+const ResearchReportTable = (_, context) => {
+  const { data } = useBackend<TerminalProps>(context);
+  const [hideOld, setHideOld] = useLocalState(context, 'hide_old', false);
+
+  return (
+    <Stack vertical>
+      <Stack.Item>
+        <Flex>
+          <Flex.Item>
+            {hideOld && <Button onClick={() => setHideOld(false)}>Show All Reports</Button>}
+            {!hideOld && <Button onClick={() => setHideOld(true)}>Hide Old Reports</Button>}
+          </Flex.Item>
+        </Flex>
+      </Stack.Item>
+      <hr />
+      <Stack.Item>
+        <CompoundTable docs={data.research_documents['XRF Scans'] ?? []}/>
+      </Stack.Item>
+    </Stack>);
+}
+
+interface CompoundTableProps {
+  docs: DocumentRecord[];
+}
+
+const CompoundTable = (props: CompoundTableProps, context) => {
+  const { data } = useBackend<TerminalProps>(context);
+  const [hideOld, setHideOld] = useLocalState(context, 'hide_old', false);
+  const published = data.published_documents['XRF Scans'] ?? [];
+
+  const documents = props.docs;
+
+  const outputDocs: Map<String, CompoundData> = new Map();
+  documents.map(x => {
+    const doctype = x as DocInfo;
+    const isPublished = (chemName: string) =>
+      published
+        .filter(x => x.document_title.includes(chemName))
+        .length > 0;
+
+    return {
+      id: x.document_title,
+      docNumber: Number.parseInt(x.document_title.split(" ")[0]),
+      type: doctype,
+      isPublished: isPublished(doctype.document)
+    };
+  }).forEach(x => {
+    if(hideOld) {
+      if (!outputDocs.has(x.type.document)) {
+        outputDocs.set(x.type.document, x)
+        return;
+      }
+      if (x.docNumber > (outputDocs.get(x.type.document)?.docNumber ?? 0)) {
+        outputDocs.set(x.type.document, x)
+      }
+    } else {
+      outputDocs.set(x.id, x);
+    }
   });
 
-  if(researchDocs.length === 0) {
+  if(outputDocs.size === 0) {
     return <NoCompoundsDetected />;
   }
 
@@ -134,58 +258,20 @@ const CompoundTable = (_, context) => {
     <Table>
       <TableRow>
         <TableCell textAlign="center">
+          <span>Scan Time</span>
+        </TableCell>
+        <TableCell textAlign="center">
           <span>Compound</span>
         </TableCell>
         <TableCell textAlign="center">
           <span>Actions</span>
         </TableCell>
       </TableRow>
-      {researchDocs.map(x => {
-        const doc_ref = { "print_type": 'XRF Scans', "print_title": x.id };
-        return (
-          <TableRow key={x.id}>
-            <TableCell className="chemical-td">
-              <span className="compound_label">
-                {x.type}
-              </span>
-            </TableCell>
-            <TableCell>
-              <Flex className="compound_actions" justify="space-around" align-items="stretch" wrap={false}>
-                <Flex.Item>
-                  <Button icon="book" onClick={() => act("read_document", doc_ref)}>
-                    Read
-                  </Button>
-                </Flex.Item>
-                <Flex.Item>
-                  <Button
-                    disabled={data.photocopier_error}
-                    icon="print"
-                    onClick={() => act("print", doc_ref)}
-                  >
-                    Print
-                  </Button>
-                </Flex.Item>
-                {isMainTerminal && !x.isPublished
-                  && (
-                    <Flex.Item>
-                      <Button icon="upload" onClick={() => act("publish_document", doc_ref)}>
-                        Publish
-                      </Button>
-                    </Flex.Item>)}
-                {isMainTerminal && x.isPublished
-                  && (
-                    <Flex.Item>
-                      <Button icon="remove" onClick={() => act("unpublish_document", doc_ref)}>
-                        Unpublish
-                      </Button>
-                    </Flex.Item>)}
-              </Flex>
-            </TableCell>
-          </TableRow>
-        );
-      })}
+      {Array.from(outputDocs.values())
+        .map(x => <CompoundRecord compound={x} />)}
     </Table>);
 };
+
 
 const PhotocopierMissing = () => {
   return (<span>
@@ -287,6 +373,16 @@ const ErrorStack = (_, context) => {
     </Stack>);
 };
 
+const PublishedMaterial = (props, context) => {
+  const { data } = useBackend<TerminalProps>(context);
+  return (
+    <Stack vertical>
+      <Stack.Item>
+        <CompoundTable docs={data.published_documents['XRF Scans'] ?? []}/>
+      </Stack.Item>
+    </Stack>);
+}
+
 const ResearchOverview = (_, context) => {
   const [selectedTab, setSelectedTab] = useLocalState(context, 'research_tab', 1);
   return (
@@ -308,6 +404,14 @@ const ResearchOverview = (_, context) => {
         >
           View Chemicals
         </Tabs.Tab>
+        <Tabs.Tab
+          selected={selectedTab === 3}
+          onClick={() => setSelectedTab(3)}
+          icon="book"
+          color="black"
+        >
+          Published Material
+        </Tabs.Tab>
       </Tabs>
       <div className="TabbedContent">
         <Stack vertical>
@@ -316,7 +420,8 @@ const ResearchOverview = (_, context) => {
           </Stack.Item>
           <Stack.Item>
             {selectedTab === 1 && <ResearchManager />}
-            {selectedTab === 2 && <CompoundTable />}
+            {selectedTab === 2 && <ResearchReportTable />}
+            {selectedTab === 3 && <PublishedMaterial />}
           </Stack.Item>
         </Stack>
       </div>

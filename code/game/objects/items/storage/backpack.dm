@@ -400,6 +400,7 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 15
+	xeno_types = null
 
 /obj/item/storage/backpack/marine/satchel/big //wacky squad marine loadout item, its the IO backpack.
 	name = "\improper USCM logistics IMP backpack"
@@ -551,6 +552,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A specially-designed smock with pockets for all your sniper needs."
 	icon_state = "smock"
 	worn_accessible = TRUE
+	xeno_types = null
 
 /obj/item/storage/backpack/marine/marsoc
 	name = "\improper USCM MARSOC IMP tactical rucksack"
@@ -558,6 +560,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "With a backpack like this, you'll forget you're on a hell march designed to kill you."
 	worn_accessible = TRUE
 	has_gamemode_skin = FALSE
+	xeno_types = null
 
 /obj/item/storage/backpack/marine/rocketpack
 	name = "\improper USCM IMP M22 rocket bags"
@@ -565,6 +568,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "rocketpack"
 	worn_accessible = TRUE
 	has_gamemode_skin = FALSE //monkeysfist101 never sprited a snowtype but included duplicate icons. Why?? Recolor and touch up sprite at a later date.
+	xeno_types = null
 
 /obj/item/storage/backpack/marine/grenadepack
 	name = "\improper USCM IMP M63A1 grenade satchel"
@@ -577,6 +581,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	can_hold = list(/obj/item/explosive/grenade)
 	is_id_lockable = TRUE
 	has_gamemode_skin = FALSE
+	xeno_types = null
 
 /obj/item/storage/backpack/marine/grenadepack/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/belt/grenade))
@@ -591,6 +596,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_w_class = SIZE_HUGE
 	storage_slots = 8
 	can_hold = list(/obj/item/mortar_shell)
+	xeno_types = null
 
 /// G-8-a general pouch belt
 /obj/item/storage/backpack/general_belt
@@ -769,7 +775,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_storage_space = 18
 	storage_slots = null
 	has_gamemode_skin = TRUE
-
+	xeno_types = null
 
 /obj/item/storage/backpack/marine/engineerpack/Initialize()
 	. = ..()

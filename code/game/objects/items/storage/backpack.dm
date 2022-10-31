@@ -40,8 +40,8 @@
 		return ..()
 	if(!isXeno(target_mob))
 		return ..()
+	var/mob/living/carbon/Xenomorph/xeno = target_mob
 	if(target_mob.stat != DEAD) // If the Xeno is alive, fight back
-		var/mob/living/carbon/Xenomorph/xeno = target_mob
 		var/mob/living/carbon/carbon_user = user
 		if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
 			user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
@@ -55,6 +55,7 @@
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return FALSE
 
+	// Ensure conditions still valid
 	if(src != user.get_active_hand())
 		return FALSE
 	if(!user.Adjacent(target_mob))
@@ -62,20 +63,14 @@
 	user.drop_inv_item_on_ground(src)
 	if(!src || QDELETED(src)) //Might be self-deleted?
 		return FALSE
+
+	// Create their vis object if needed
+	if(!xeno.backpack_icon_carrier)
+		xeno.backpack_icon_carrier = new(null, xeno)
+		xeno.vis_contents += xeno.backpack_icon_carrier
+
 	target_mob.put_in_back(src)
 	return FALSE
-
-/obj/item/storage/backpack/get_mob_overlay(mob/user_mob, slot, state_modifier = "")
-	if(slot != WEAR_BACK)
-		return ..()
-
-	if(xeno_icon_state)
-		var/mob_icon = default_xeno_onmob_icons[user_mob.type]
-		if(!mob_icon)
-			return ..()
-		return overlay_image(mob_icon, xeno_icon_state + state_modifier, color, RESET_COLOR)
-
-	return ..()
 
 /obj/item/storage/backpack/proc/toggle_lock(obj/item/card/id/card, mob/living/carbon/human/H)
 	if(QDELETED(locking_id))

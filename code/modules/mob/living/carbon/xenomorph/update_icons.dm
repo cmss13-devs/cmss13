@@ -111,8 +111,12 @@
 		apply_overlay(X_L_HAND_LAYER)
 
 /mob/living/carbon/Xenomorph/update_inv_back()
-	remove_overlay(X_BACK_LAYER)
-	if(!back)
+	if(!backpack_icon_carrier)
+		return
+
+	var/obj/item/storage/backpack/backpack = back
+	if(!backpack?.xeno_icon_state)
+		backpack_icon_carrier.icon_state = "none"
 		return
 
 	var/state_modifier = ""
@@ -126,13 +130,11 @@
 	else if(handle_special_state())
 		state_modifier = handle_special_backpack_states()
 
-	var/image/img = back.get_mob_overlay(src, WEAR_BACK, state_modifier)
-	img.layer = -X_BACK_LAYER
+	backpack_icon_carrier.icon_state = backpack.xeno_icon_state + state_modifier
 
+	backpack_icon_carrier.layer = -X_BACK_LAYER
 	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
-		img.layer = -X_BACK_FRONT_LAYER
-	overlays_standing[X_BACK_LAYER] = img
-	apply_overlay(X_BACK_LAYER)
+		backpack_icon_carrier.layer = -X_BACK_FRONT_LAYER
 
 /mob/living/carbon/Xenomorph/proc/update_inv_resource()
 	remove_overlay(X_RESOURCE_LAYER)
@@ -264,26 +266,32 @@
 			wound_icon_carrier.icon_state = handle_special_wound_states(health_threshold)
 
 
-///Used to display the xeno wounds without rapidly switching overlays
-/atom/movable/vis_obj/xeno_wounds
-	icon = 'icons/mob/hostiles/wounds.dmi'
-	var/mob/living/carbon/Xenomorph/wound_owner
+///Used to display the xeno wounds/backpacks without rapidly switching overlays
+/atom/movable/vis_obj
+	var/mob/living/carbon/owner
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/atom/movable/vis_obj/xeno_wounds
+	icon = 'icons/mob/hostiles/wounds.dmi'
 
-/atom/movable/vis_obj/xeno_wounds/Initialize(mapload, mob/living/carbon/Xenomorph/owner)
+/atom/movable/vis_obj/Initialize(mapload, mob/living/carbon/source)
 	. = ..()
-	if(owner)
-		wound_owner = owner
+	if(source)
+		owner = source
 		RegisterSignal(owner, COMSIG_ATOM_DIR_CHANGE, .proc/on_dir_change)
 
-/atom/movable/vis_obj/xeno_wounds/Destroy()
-	if(wound_owner)
-		UnregisterSignal(wound_owner, COMSIG_ATOM_DIR_CHANGE)
-		wound_owner = null
+/atom/movable/vis_obj/xeno_pack/Initialize(mapload, mob/living/carbon/source)
+	. = ..()
+	if(source)
+		icon = default_xeno_onmob_icons[source.type]
+
+/atom/movable/vis_obj/Destroy()
+	if(owner)
+		UnregisterSignal(owner, COMSIG_ATOM_DIR_CHANGE)
+		owner = null
 	return ..()
 
-/atom/movable/vis_obj/xeno_wounds/proc/on_dir_change(mob/living/carbon/Xenomorph/source, olddir, newdir)
+/atom/movable/vis_obj/proc/on_dir_change(mob/living/carbon/source, olddir, newdir)
 	SIGNAL_HANDLER
 	dir = newdir
 

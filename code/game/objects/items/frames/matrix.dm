@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "matrix"
 	matter = list("metal" = 7500)
-	var/obj/item/reagent_container/glass/beaker/vial/construction
+	var/obj/item/reagent_container/glass/beaker/vial/B
 	var/state = ASSEMBLY_EMPTY
 
 /obj/item/frame/matrix/attackby(var/obj/item/W, mob/user as mob)
@@ -13,11 +13,13 @@
 			if(istype(W, /obj/item/reagent_container/glass/beaker/vial) && W.reagents.total_volume == 30)
 				user.drop_held_item(W)
 				W.forceMove(src)
-				var/datum/reagent/matrixchem = W.reagents.reagent_list[1]
 				state = ASSEMBLY_UNLOCKED
 				to_chat(user, SPAN_NOTICE("You add the vial to the matrix"))
 				desc = initial(desc) + "\nThe vial is installed but is not screwed."
-				to_chat(user, SPAN_WARNING("TEST: PROPERTIES OF THE CHEM" + (matrixchem.properties)))
+				var/datum/reagent/S = W.reagents.reagent_list[1]
+				var/datum/chem_property/P = S.get_property(PROPERTY_PHOTOSENSETIVE)
+				if(P)
+					to_chat(user, SPAN_NOTICE("it works!"))
 				return
 			else if(W.reagents.total_volume < 30)
 				to_chat(user, SPAN_WARNING("You need a full container for effectivness!"))

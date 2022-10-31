@@ -930,7 +930,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if (!has_access)
 		return
 
-	user.set_interaction(src)
 	tgui_interact(user)
 
 

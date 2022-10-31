@@ -14,7 +14,7 @@
 	flags_inventory = COVEREYES|ALLOWINTERNALS|COVERMOUTH|ALLOWREBREATH|CANTSTRIP
 	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_atom = NO_FLAGS
-	flags_item = NOBLUDGEON
+	flags_item = NOBLUDGEON|NOTABLEMERGE
 	throw_range = 1
 	layer = FACEHUGGER_LAYER
 

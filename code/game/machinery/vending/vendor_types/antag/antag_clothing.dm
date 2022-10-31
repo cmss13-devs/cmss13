@@ -18,6 +18,7 @@
 			var/list/equipment = eq.get_antag_clothing_equipment()
 			if(LAZYLEN(equipment))
 				all_equipment += equipment
+			qdel(eq)
 		return all_equipment
 
 	if(!ishuman(user))

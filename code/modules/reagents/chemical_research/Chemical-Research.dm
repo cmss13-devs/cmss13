@@ -24,20 +24,38 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 /datum/chemical_data/proc/save_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
 	if(!research_documents["[document_type]"])
 		research_documents["[document_type]"] = list()
-	var/list/new_document[0]
-	new_document["[title]"] = R
-	research_documents["[document_type]"] += new_document
+	var/save_time = worldtime2text()
+
+	var/list/new_document = list(
+		"document_title"=title,
+		"time"=save_time,
+		"document"=R
+	)
+	research_documents["[document_type]"] += list(new_document)
 
 /datum/chemical_data/proc/publish_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
 	if(!research_publications["[document_type]"])
 		research_publications["[document_type]"] = list()
-	var/list/new_document[0]
-	new_document["[title]"] = R
-	research_publications["[document_type]"] += new_document
+	var/save_time = worldtime2text()
+
+	var/list/new_document = list(
+		"document_title"=title,
+		"time"=save_time,
+		"document"=R
+	)
+	research_publications["[document_type]"] += list(new_document)
 
 /datum/chemical_data/proc/unpublish_document(var/document_type, var/title)
 	if(research_publications["[document_type]"]["[title]"])
-		research_publications["[document_type]"] -= title
+		//TODO fix this function, it isn't picking it up
+		var/list/published_doc = research_publications["[document_type]"]["[title]"]
+		var/doc_name = published_doc["name"]
+		var/list/remove_list = list()
+		for(var/i in research_publications["[document_type]"])
+			if(i["name"] == doc_name)
+				remove_list += i
+		for(var/i in remove_list)
+			research_publications["[document_type]"] -= i
 		return TRUE
 
 /datum/chemical_data/proc/save_new_properties(var/list/properties)

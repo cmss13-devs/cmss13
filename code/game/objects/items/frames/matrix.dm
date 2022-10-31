@@ -7,9 +7,9 @@
 	var/obj/item/reagent_container/glass/beaker/vial/B
 	var/state = ASSEMBLY_EMPTY
 	var/upgrade = MATRIX_DEFAULT
+	var/property = null
 
-
-//Upgrades type
+//Upgrades types
 //Matrix default - nothing, basicly what you get roundstart in CAS
 //Matrix NVG - guidance camera gets NVG filter depended on potency of the property
 //Matrix wide - gives a wider view which depends on potency of the proeprty.
@@ -23,17 +23,18 @@
 				to_chat(user, SPAN_NOTICE("You add the vial to the matrix"))
 				desc = initial(desc) + "\nThe vial is installed but is not screwed."
 				var/datum/reagent/S = W.reagents.reagent_list[1]
-				var/datum/chem_property/P = S.get_property(PROPERTY_PHOTOSENSETIVE || PROPERTY_CRYSTALIZATION)
-				to_chat(user, SPAN_NOTICE(P))
-				if(P == PROPERTY_PHOTOSENSETIVE)
+				property = S.properties
+				to_chat(user, SPAN_NOTICE(english_list(property)))
+				if(locate(/datum/chem_property/positive/photosensetive) in property)
 					upgrade = MATRIX_NVG
 					to_chat(user, SPAN_NOTICE("upgrade switched to NVG!"))
 					return
-				else if (P == PROPERTY_CRYSTALIZATION)
+				else if (locate(/datum/chem_property/positive/crystalization) in property)
 					upgrade = MATRIX_WIDE
 					to_chat(user, SPAN_NOTICE("upgrade switched to Wide!"))
 					return
 				else
+					upgrade = MATRIX_DEFAULT
 					return
 			else if(W.reagents.total_volume < 30)
 				to_chat(user, SPAN_WARNING("You need a full container for effectivness!"))

@@ -37,6 +37,17 @@
 	user.set_interaction(src)
 	ui_interact(user)
 
+/obj/structure/machinery/computer/dropship_weapons/attackby(var/obj/item/frame/W, mob/user as mob)
+	if(istype(W, /obj/item/frame/matrix))
+		var/obj/item/frame/matrix/MATRIX = W
+		if(MATRIX.state == ASSEMBLY_LOCKED)
+			user.drop_held_item(W, src)
+			W.forceMove(src)
+			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
+			upgraded = MATRIX.upgrade
+			to_chat(user, SPAN_WARNING("DEBUG upgrade changed to" + upgraded))
+		else
+			to_chat(user, SPAN_WARNING("matrix is not complete!"))
 
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]

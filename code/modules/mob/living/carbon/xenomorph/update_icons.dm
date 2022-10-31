@@ -268,32 +268,15 @@
 
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
 /atom/movable/vis_obj
-	var/mob/living/carbon/owner
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
 
 /atom/movable/vis_obj/xeno_wounds
 	icon = 'icons/mob/hostiles/wounds.dmi'
-
-/atom/movable/vis_obj/Initialize(mapload, mob/living/carbon/source)
-	. = ..()
-	if(source)
-		owner = source
-		RegisterSignal(owner, COMSIG_ATOM_DIR_CHANGE, .proc/on_dir_change)
 
 /atom/movable/vis_obj/xeno_pack/Initialize(mapload, mob/living/carbon/source)
 	. = ..()
 	if(source)
 		icon = default_xeno_onmob_icons[source.type]
-
-/atom/movable/vis_obj/Destroy()
-	if(owner)
-		UnregisterSignal(owner, COMSIG_ATOM_DIR_CHANGE)
-		owner = null
-	return ..()
-
-/atom/movable/vis_obj/proc/on_dir_change(mob/living/carbon/source, olddir, newdir)
-	SIGNAL_HANDLER
-	dir = newdir
 
 //Xeno Overlays Indexes//////////
 #undef X_BACK_LAYER

@@ -484,10 +484,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //-----------TGUI PROCS------------------------
 /obj/structure/machinery/cm_vending/ui_static_data(mob/user)
-	. = list()
-	.["vendor_name"] = name
-	.["vendor_type"] = "base"
-	.["theme"] = vendor_theme
+	var/list/data = list()
+	data["vendor_name"] = name
+	data["vendor_type"] = "base"
+	data["theme"] = vendor_theme
+	return data
 
 /obj/structure/machinery/cm_vending/ui_assets(mob/user)
 	return list(get_asset_datum(/datum/asset/spritesheet/vending_products))
@@ -850,9 +851,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if ("vend")
 			if(stat & IN_USE)
 				return
-			var/has_access = can_access_to_vend(usr)
-			if (!has_access)
-				return TRUE
 
 			var/idx=params["prod_index"]
 

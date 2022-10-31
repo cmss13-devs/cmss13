@@ -25,7 +25,7 @@
 #define DELTA		4
 #define ECHO		5
 #define CRYO		6
-#define MARSOC		7
+#define SOF		7
 #define NOSQUAD 	8
 
 var/list/armormarkings = list()
@@ -965,9 +965,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 #undef FULL_CAMOUFLAGE_ALPHA
 
-/obj/item/clothing/suit/storage/marine/marsoc
-	name = "\improper MARSOC commando armor"
-	desc = "A heavily customized suit of M3 armor. Used by MARSOC operators."
+/obj/item/clothing/suit/storage/marine/sof
+	name = "\improper SOF Armor"
+	desc = "A heavily customized suit of M3 armor. Used by Marine Raiders."
 	icon_state = "marsoc"
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH

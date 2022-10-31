@@ -83572,7 +83572,7 @@
 /area/almayer/shipboard/port_point_defense)
 "xMh" = (
 /obj/structure/closet/crate{
-	desc = "One of those old special operations crates from back in the day. After a leaked report from a meeting of MARSOC leadership lambasted the crates as 'waste of operational funds' the crates were removed from service.";
+	desc = "One of those old special operations crates from back in the day. After a leaked report from a meeting of SOF leadership lambasted the crates as 'waste of operational funds' the crates were removed from service.";
 	name = "special operations crate"
 	},
 /obj/item/clothing/mask/gas/swat,

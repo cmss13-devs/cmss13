@@ -387,15 +387,15 @@
 	flags_jumpsuit = FALSE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 
-//=========================//MARSOC\\================================\\
+//=========================//Marine Raiders\\================================\\
 
 /obj/item/clothing/under/marine/veteran/marsoc
-	name = "MARSOC tactical operator uniform"
-	desc = "A black uniform for elite Marine operators. So this is where all their money goes."
+	name = "SOF Uniform"
+	desc = "A black uniform for elite Marine personnel. Designed to be comfortable and help blend into dark enviorments."
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	icon_state = "marsoc"
 	worn_state = "marsoc"
-	specialty = "marsoc uniform"
+	specialty = "sof uniform"
 	flags_item = NO_SNOW_TYPE
 
 //=========================//PMC\\================================\\

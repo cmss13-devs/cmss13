@@ -26,9 +26,9 @@
 			if(JOB_INTEL) marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
 			if(JOB_CREWMAN) marine_rk = "tc"
-			if(JOB_MARSOC) marine_rk = "soc"
-			if(JOB_MARSOC_SL) marine_rk = "soctl"
-			if(JOB_MARSOC_CMD) marine_rk = "soccmd"
+			if(JOB_MARINE_RAIDER) marine_rk = "soc"
+			if(JOB_MARINE_RAIDER_SL) marine_rk = "soctl"
+			if(JOB_MARINE_RAIDER_CMD) marine_rk = "soccmd"
 		if(squad.squad_leader == H)
 			switch(squad.squad_type)
 				if("Squad") marine_rk = "leader_a"

@@ -14542,7 +14542,6 @@
 "tuq" = (
 /obj/structure/machinery/power/apc{
 	dir = 4;
-	pixel_x = 29;
 	start_charge = 0
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles,

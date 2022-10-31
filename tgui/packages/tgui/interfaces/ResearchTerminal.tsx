@@ -119,7 +119,7 @@ const NoCompoundsDetected = (_, context) => {
     </span>);
 };
 
-interface CompoundRecordProps {
+interface CompoundRecordProps extends BoxProps{
   compound: CompoundData;
 }
 
@@ -193,12 +193,11 @@ interface CompoundData {
 
 const ResearchReportTable = (_, context) => {
   const { data } = useBackend<TerminalProps>(context);
-  const [hideOld, setHideOld] = useLocalState(context, 'hide_old', false);
-
+  const [hideOld, setHideOld] = useLocalState(context, 'hide_old', true);
   return (
     <Stack vertical>
       <Stack.Item>
-        <Flex>
+        <Flex justify="space-between" fill>
           <Flex.Item>
             {hideOld && <Button onClick={() => setHideOld(false)}>Show All Reports</Button>}
             {!hideOld && <Button onClick={() => setHideOld(true)}>Hide Old Reports</Button>}
@@ -207,19 +206,23 @@ const ResearchReportTable = (_, context) => {
       </Stack.Item>
       <hr />
       <Stack.Item>
-        <CompoundTable docs={data.research_documents['XRF Scans'] ?? []} />
+        <CompoundTable docs={data.research_documents['XRF Scans'] ?? []} timeLabel="Scan Time" />
       </Stack.Item>
     </Stack>);
 };
 
 interface CompoundTableProps {
   docs: DocumentRecord[];
+  timeLabel: string;
 }
 
 const CompoundTable = (props: CompoundTableProps, context) => {
   const { data } = useBackend<TerminalProps>(context);
-  const [hideOld, setHideOld] = useLocalState(context, 'hide_old', false);
+  const [hideOld] = useLocalState(context, 'hide_old', true);
   const published = data.published_documents['XRF Scans'] ?? [];
+
+  const [sortby, setSortBy] = useLocalState(context, 'sort_by', 'time');
+  const [sortdir, setSortdir] = useLocalState(context, 'sort_dir', 'asc');
 
   const documents = props.docs;
 
@@ -233,7 +236,7 @@ const CompoundTable = (props: CompoundTableProps, context) => {
 
     return {
       id: x.document_title,
-      docNumber: Number.parseInt(x.document_title.split(" ")[0]),
+      docNumber: Number.parseInt(x.document_title.split(" ")[0], 10),
       type: doctype,
       isPublished: isPublished(doctype.document),
     };
@@ -255,21 +258,59 @@ const CompoundTable = (props: CompoundTableProps, context) => {
     return <NoCompoundsDetected />;
   }
 
+  const iconRef = (name: string, isNum: boolean) => sortby === name
+    ? sortdir === 'asc'
+      ? isNum ? "arrow-down-1-9" : "arrow-down-a-z" // small to big
+      : isNum ? "arrow-down-9-1" : "arrow-down-z-a" // big to small
+    : "space";
+
+  const sortColClick = (name: string) => {
+    if (sortby === name) {
+      setSortdir(sortdir === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(name);
+    }
+  };
+
+
   return (
     <Table>
       <TableRow>
         <TableCell textAlign="center">
-          <span>Scan Time</span>
+          <Button
+            icon={iconRef('time', true)}
+            onClick={() => sortColClick('time')}
+          >
+            {props.timeLabel}
+          </Button>
         </TableCell>
         <TableCell textAlign="center">
-          <span>Compound</span>
+          <Button icon={iconRef('name', false)} onClick={() => sortColClick('name')}>
+            Compound
+          </Button>
         </TableCell>
         <TableCell textAlign="center">
           <span>Actions</span>
         </TableCell>
       </TableRow>
       {Array.from(outputDocs.values())
-        .map(x => <CompoundRecord compound={x} />)}
+        .sort((a, b) => {
+          if (sortby === "time") {
+            if (sortdir === "asc") {
+              return a.type.time < b.type.time ? -1 : 1;
+            } else {
+              return a.type.time > b.type.time ? -1 : 1;
+            }
+          } else {
+            if (sortdir === "asc") {
+              return a.type.document.localeCompare(b.type.document);
+            } else {
+              return b.type.document.localeCompare(a.type.document);
+            }
+
+          }
+        })
+        .map(x => <CompoundRecord compound={x} key={x.id} />)}
     </Table>);
 };
 
@@ -379,7 +420,7 @@ const PublishedMaterial = (props, context) => {
   return (
     <Stack vertical>
       <Stack.Item>
-        <CompoundTable docs={data.published_documents['XRF Scans'] ?? []} />
+        <CompoundTable docs={data.published_documents['XRF Scans'] ?? []} timeLabel="Published" />
       </Stack.Item>
     </Stack>);
 };

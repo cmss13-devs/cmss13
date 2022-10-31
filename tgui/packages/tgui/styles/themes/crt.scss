@@ -2,21 +2,13 @@
 @use "sass:math";
 @use 'sass:meta';
 
-$darkcolor: #110000 !default;
-$lightcolor: #FFBF00 !default;
 $font-family: monospace;
 $background-radial-opacity: 0.2 !default;
 
-@use '../base.scss' with (
-  $color-bg: $darkcolor,
-  $color-bg-grad-spread: 0%,
-  $border-radius: 0,
-);
+@use '../base.scss';
 
 @use '../colors.scss' with (
-  $primary: $lightcolor,
-  $fg-map-keys: (),
-  $bg-map-keys: (),
+  $primary: base.$color-fg
 );
 
 $small-text: 2vw;
@@ -25,31 +17,31 @@ $large-text: 3vw;
 %theme-crt {
   @include meta.load-css('../layouts/Window.scss');
   @include meta.load-css('../layouts/TitleBar.scss', $with: (
-    'background-color': $darkcolor,
-    'text-color': $lightcolor
+    'background-color': base.$color-bg,
+    'text-color': base.$color-fg
   ));
   @include meta.load-css('../layouts/Layout.scss', $with: (
     'scrollbar-color-multiplier': 0.5
   ));
   @include meta.load-css('../components/Section.scss', $with: (
-    'title-text-color': $lightcolor
+    'title-text-color': base.$color-fg,
   ));
   @include meta.load-css('../components/Button.scss', $with: (
-    'color-default': $lightcolor,
-    'color-disabled': darken($lightcolor, 30)
+    'color-default': base.$color-fg,
+    'color-disabled': darken(base.$color-fg, 30)
   ));
 
   @include meta.load-css('../components/Tabs.scss', $with: (
-    'tab-color': $darkcolor,
-    'tab-color-selected': $darkcolor,
-    'text-color': $lightcolor
+    'tab-color': base.$color-bg,
+    'tab-color-selected': base.$color-bg,
+    'text-color': base.$color-fg
   ));
 
   .Layout__content {
     background-image: none;
     background: radial-gradient(
-      rgba($lightcolor, $background-radial-opacity),
-      rgba($lightcolor, math.div($background-radial-opacity, 5)));
+      rgba(colors.$primary, $background-radial-opacity),
+      rgba(colors.$primary, math.div($background-radial-opacity, 5)));
   }
 
   .Layout__content::after {
@@ -83,15 +75,15 @@ $large-text: 3vw;
   }
 
   .Layout__content--scrollable {
-    scrollbar-track-color: $darkcolor;
-    scrollbar-shadow-color: $lightcolor;
-    scrollbar-face-color: $darkcolor;
-    scrollbar-arrow-color: $lightcolor;
-    scrollbar-gutter: $lightcolor;
+    scrollbar-track-color: base.$color-bg;
+    scrollbar-shadow-color: base.$color-fg;
+    scrollbar-face-color: base.$color-bg;
+    scrollbar-arrow-color: base.$color-fg;
+    scrollbar-gutter: base.$color-fg;
   }
 
   span {
-    color: $lightcolor;
+    color: base.$color-fg;
     font-family: $font-family;
     font-size: $small-text;
     font-weight: bold;
@@ -101,31 +93,31 @@ $large-text: 3vw;
     font-family: $font-family;
     font-size: $small-text;
     font-weight: bold;
-    border: 1px solid $lightcolor;
+    border: 1px solid base.$color-fg;
     &:hover,
     &:focus,
     &:visited,
     &:target {
-      background-color: $lightcolor;
-      color: $darkcolor;
+      background-color: base.$color-fg;
+      color: base.$color-bg;
     }
   }
 
   .Button--disabled {
     background-color: none;
-    color: $lightcolor;
+    color: base.$color-fg;
 
     &:hover,
     &:focus,
     &:visited,
     &:target {
-      color: $lightcolor;
+      color: base.$color-fg;
     }
   }
 
   hr {
-    color: $lightcolor;
-    border: 1px solid $lightcolor;
+    color: base.$color-fg;
+    border: 1px solid base.$color-fg;
   }
 
   .Tab__text {
@@ -139,20 +131,20 @@ $large-text: 3vw;
 
   .Tabs--horizontal {
     .Tab {
-      border: 2px solid $lightcolor;
-      border-bottom: 6px solid $lightcolor;
+      border: 2px solid base.$color-fg;
+      border-bottom: 6px solid base.$color-fg;
       text-align: center;
       background-color: rgba(0, 0, 0, 0);
       font-weight: bold;
     }
 
     .Tab--selected {
-      border: 2px solid $lightcolor;
+      border: 2px solid base.$color-fg;
       border-bottom: none;
-      background-color: $lightcolor;
+      background-color: base.$color-fg;
       .Tab__left,
       .Tab__text {
-        color: $darkcolor;
+        color: base.$color-bg;
       }
       &:hover {
         outline: none;
@@ -161,15 +153,15 @@ $large-text: 3vw;
   }
 
   .Table {
-    border: 1px solid $lightcolor;
+    border: 1px solid base.$color-fg;
   }
 
   .Section {
-    border: 2px solid $lightcolor;
+    border: 2px solid base.$color-fg;
   }
 
   td {
-    border: 1px solid $lightcolor;
+    border: 1px solid base.$color-fg;
     margin-top: 1px;
     margin-bottom: 1px;
     justify-content: center;

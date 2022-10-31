@@ -31496,7 +31496,6 @@
 "fML" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "fMT" = (
@@ -34644,19 +34643,6 @@
 /obj/item/shard{
 	icon_state = "small";
 	tag = "icon-small"
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3";
-	tag = "icon-platingdmg3 (WEST)"
-	},
-/area/bigredv2/caves/mining)
-"lSH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/crap{
-	icon_state = "barrel_white";
-	name = "\improper white barrel";
-	desc = "What is in here? A note reads on the side: \" For you, Yuri \" "
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -46650,7 +46636,7 @@ kCe
 ufu
 vdS
 pSa
-lSH
+kCe
 uHQ
 aao
 aao

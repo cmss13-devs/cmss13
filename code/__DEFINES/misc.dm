@@ -49,6 +49,8 @@
 #define CELLS 8								//Amount of cells per row/column in grid
 #define CELLSIZE (world.icon_size/CELLS)	//Size of a cell in pixel
 
+
+
 // *************************************** //
 // DO_AFTER FLAGS
 // These flags denote behaviors related to timed actions.
@@ -122,6 +124,11 @@
 #define ASSEMBLY_EMPTY		0
 #define ASSEMBLY_UNLOCKED	1
 #define ASSEMBLY_LOCKED		2
+
+// Matrix CAS Upgrades
+#define MATRIX_DEFAULT 	0
+#define MATRIX_NVG 		1
+#define MATRIX_WIDE 	2
 
 // Statistics defines
 #define STATISTIC_XENO "xeno"

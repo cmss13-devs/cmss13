@@ -19,6 +19,7 @@
 	var/datum/cas_fire_mission/editing_firemission
 	var/firemission_signal //id of the signal
 	var/in_firemission_mode = FALSE
+	var/upgraded = MATRIX_DEFAULT
 
 
 /obj/structure/machinery/computer/dropship_weapons/New()

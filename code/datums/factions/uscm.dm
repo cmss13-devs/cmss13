@@ -59,7 +59,6 @@
 				holder.overlays += IMG3
 	else
 		var/marine_rk
-		var/border_rk
 		var/obj/item/card/id/ID = H.get_idcard()
 		var/_role
 		if(H.mind)
@@ -69,16 +68,12 @@
 		switch(GET_DEFAULT_ROLE(_role))
 			if(JOB_XO)
 				marine_rk = "xo"
-				border_rk = "command"
 			if(JOB_CO)
 				marine_rk = "co"
-				border_rk = "command"
 			if(JOB_SO)
 				marine_rk = "so"
-				border_rk = "command"
 			if(JOB_GENERAL, JOB_COLONEL)
 				marine_rk = "general"
-				border_rk = "command"
 			if(JOB_INTEL)
 				marine_rk = "io"
 			if(JOB_PILOT)
@@ -93,18 +88,14 @@
 				marine_rk = "pvtml"
 			if(JOB_PROVOST_INSPECTOR)
 				marine_rk = "pvi"
-				border_rk = "command"
 			if(JOB_PROVOST_ADVISOR)
 				marine_rk = "pva"
-				border_rk = "command"
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
-				border_rk = "command"
 			if(JOB_TIS_IO,JOB_TIS_SA)
 				marine_rk = "tissa"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
-				border_rk = "command"
 			if(JOB_POLICE)
 				marine_rk = "mp"
 			if(JOB_CHIEF_REQUISITION)
@@ -113,20 +104,16 @@
 				marine_rk = "ct"
 			if(JOB_CHIEF_ENGINEER)
 				marine_rk = "ce"
-				border_rk = "command"
 			if(JOB_MAINT_TECH)
 				marine_rk = "mt"
 			if(JOB_ORDNANCE_TECH)
 				marine_rk = "ot"
 			if(JOB_CMO)
 				marine_rk = "cmo"
-				border_rk = "command"
 			if(JOB_DOCTOR)
 				marine_rk = "doctor"
-				border_rk = "command"
 			if(JOB_RESEARCHER)
 				marine_rk = "researcher"
-				border_rk = "command"
 			if(JOB_NURSE)
 				marine_rk = "nurse"
 			if(JOB_SEA)
@@ -136,5 +123,3 @@
 			I.color = "#5A934A"
 			holder.overlays += I
 			holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "hudsquad_[marine_rk]")
-			if(border_rk)
-				holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "hudmarineborder[border_rk]")

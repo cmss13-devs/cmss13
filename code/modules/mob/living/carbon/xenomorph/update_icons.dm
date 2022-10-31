@@ -122,7 +122,9 @@
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
 			state_modifier = " Sleeping"
 		else
-			state_modifier= " Knocked Down"
+			state_modifier = " Knocked Down"
+	else if(handle_special_state())
+		state_modifier = handle_special_backpack_states()
 
 	var/image/img = back.get_mob_overlay(src, WEAR_BACK, state_modifier)
 	img.layer = -X_BACK_LAYER
@@ -236,6 +238,9 @@
 
 /mob/living/carbon/Xenomorph/proc/handle_special_wound_states()
 	return FALSE
+
+/mob/living/carbon/Xenomorph/proc/handle_special_backpack_states()
+	return ""
 
 // Shamelessly inspired from the equivalent proc on TGCM
 /mob/living/carbon/Xenomorph/proc/update_wounds()

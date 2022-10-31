@@ -388,7 +388,12 @@ var/list/default_onmob_icons = list(
 
 var/list/default_xeno_onmob_icons = list(
 		/mob/living/carbon/Xenomorph/Runner = 'icons/mob/hostiles/onmob/runner.dmi',
-		/mob/living/carbon/Xenomorph/Praetorian = 'icons/mob/hostiles/onmob/praetorian.dmi'
+		/mob/living/carbon/Xenomorph/Praetorian = 'icons/mob/hostiles/onmob/praetorian.dmi',
+		/mob/living/carbon/Xenomorph/Drone = 'icons/mob/hostiles/onmob/drone.dmi',
+		/mob/living/carbon/Xenomorph/Warrior = 'icons/mob/hostiles/onmob/warrior.dmi',
+		/mob/living/carbon/Xenomorph/Defender = 'icons/mob/hostiles/onmob/defender.dmi',
+		/mob/living/carbon/Xenomorph/Sentinel = 'icons/mob/hostiles/onmob/sentinel.dmi',
+		/mob/living/carbon/Xenomorph/Spitter = 'icons/mob/hostiles/onmob/spitter.dmi'
 		)
 
 // species names

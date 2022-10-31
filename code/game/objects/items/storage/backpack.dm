@@ -16,8 +16,8 @@
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE
 	var/lock_overridable = TRUE
-	var/xeno_icon_state = null
-	var/list/xeno_types = null
+	var/xeno_icon_state = null //the icon_state for xeno's wearing this (using the dmi defined in default_xeno_onmob_icons list)
+	var/list/xeno_types = null //what xeno types can equip this backpack
 
 /obj/item/storage/backpack/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/card/id/) && is_id_lockable && ishuman(user))
@@ -369,7 +369,7 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	item_state = "marinepack"
 	has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
 	xeno_icon_state = "marinepack"
-	xeno_types = list(/mob/living/carbon/Xenomorph/Praetorian)
+	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Warrior, /mob/living/carbon/Xenomorph/Defender, /mob/living/carbon/Xenomorph/Sentinel, /mob/living/carbon/Xenomorph/Spitter)
 
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM corpsman backpack"
@@ -377,7 +377,7 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	icon_state = "marinepack_medic"
 	item_state = "marinepack_medic"
 	xeno_icon_state = "medicpack"
-	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian)
+	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Warrior, /mob/living/carbon/Xenomorph/Defender, /mob/living/carbon/Xenomorph/Sentinel, /mob/living/carbon/Xenomorph/Spitter)
 
 /obj/item/storage/backpack/marine/tech
 	name = "\improper USCM technician backpack"
@@ -385,7 +385,7 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	icon_state = "marinepack_techi"
 	item_state = "marinepack_techi"
 	xeno_icon_state = "marinepack"
-	xeno_types = list(/mob/living/carbon/Xenomorph/Praetorian)
+	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Warrior, /mob/living/carbon/Xenomorph/Defender, /mob/living/carbon/Xenomorph/Sentinel, /mob/living/carbon/Xenomorph/Spitter)
 
 /obj/item/storage/backpack/marine/satchel/intel
 	name = "\improper USCM lightweight expedition pack"

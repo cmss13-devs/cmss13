@@ -25,10 +25,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 /datum/preferences
 	var/client/owner
-	var/obj/screen/preview/preview_front
+	var/atom/movable/screen/preview/preview_front
 	var/mob/living/carbon/human/dummy/preview_dummy
-	var/obj/screen/rotate/alt/rotate_left
-	var/obj/screen/rotate/rotate_right
+	var/atom/movable/screen/rotate/alt/rotate_left
+	var/atom/movable/screen/rotate/rotate_right
 
 	//doohickeys for savefiles
 	var/path
@@ -48,7 +48,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
 	var/ooccolor
 	var/be_special = 0				// Special role selection
-	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC // flags in #define/mode.dm
+	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
@@ -101,7 +101,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	//character preferences
 	var/real_name						//our character's name
-	var/be_random_name = 0				//whether we are a random name every round
+	var/be_random_name = FALSE				//whether we are a random name every round
+	var/human_name_ban = FALSE
+
+
 	var/be_random_body = 0				//whether we have a random appearance every round
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 19						//age of character
@@ -534,6 +537,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
+			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
@@ -617,7 +621,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
 			continue
-		index += 1
+		index++
 		if((index >= limit) || (job.title in splitJobs))
 			if((index < limit) && (lastJob != null))
 				//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
@@ -676,7 +680,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	HTML += "</td></tr></table>"
 	HTML += "</center></table>"
 
-	if(user.client.prefs) //Just makin sure
+	if(user.client?.prefs) //Just makin sure
 		var/b_color = "green"
 		var/msg = "Get random job if preferences unavailable"
 
@@ -804,7 +808,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					SetChoices(user)
 				if("random")
 					if(alternate_option == GET_RANDOM_JOB || alternate_option == BE_MARINE || alternate_option == RETURN_TO_LOBBY)
-						alternate_option += 1
+						alternate_option++
 					else if(alternate_option == BE_XENOMORPH)
 						alternate_option = 0
 					else
@@ -1008,6 +1012,9 @@ var/const/MAX_SAVE_SLOTS = 10
 		if("input")
 			switch(href_list["preference"])
 				if("name")
+					if(human_name_ban)
+						to_chat(user, SPAN_NOTICE("You are banned from custom human names."))
+						return
 					var/raw_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if (!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
@@ -1018,7 +1025,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("xeno_vision_level_pref")
 					var/static/list/vision_level_choices = list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG)
-					var/choice = tgui_input_list(user, "Choose your default xeno vision level", "Vision level", vision_level_choices)
+					var/choice = tgui_input_list(user, "Choose your default xeno vision level", "Vision level", vision_level_choices, theme="hive_status")
 					if(!choice)
 						return
 					xeno_vision_level_pref = choice
@@ -1047,7 +1054,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("pred_gender")
 					predator_gender = predator_gender == MALE ? FEMALE : MALE
 				if("pred_age")
-					var/new_predator_age = input(user, "Choose your Predator's age(20 to 10000):", "Character Preference") as num|null
+					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(20 to 10000):", "Character Preference", 1234, 10000, 20)
 					if(new_predator_age) predator_age = max(min( round(text2num(new_predator_age)), 10000),20)
 				if("pred_trans_type")
 					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
@@ -1055,13 +1062,13 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					predator_translator_type = new_translator_type
 				if("pred_mask_type")
-					var/new_predator_mask_type = input(user, "Choose your mask type:\n(1-12)", "Mask Selection") as num|null
+					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-12)", "Mask Selection", 1, 12, 1)
 					if(new_predator_mask_type) predator_mask_type = round(text2num(new_predator_mask_type))
 				if("pred_armor_type")
-					var/new_predator_armor_type = input(user, "Choose your armor type:\n(1-7)", "Armor Selection") as num|null
+					var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-7)", "Armor Selection", 1, 7, 1)
 					if(new_predator_armor_type) predator_armor_type = round(text2num(new_predator_armor_type))
 				if("pred_boot_type")
-					var/new_predator_boot_type = input(user, "Choose your greaves type:\n(1-4)", "Greave Selection") as num|null
+					var/new_predator_boot_type = tgui_input_number(user, "Choose your greaves type:\n(1-4)", "Greave Selection", 1, 4, 1)
 					if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
 				if("pred_mask_mat")
 					var/new_pred_mask_mat = tgui_input_list(user, "Choose your mask material:", "Mask Material", PRED_MATERIALS)
@@ -1133,9 +1140,9 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/list/options = list("Mateba","Desert Eagle")
 
 					if(whitelist_flags & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
-						options += list("Commodore's Mateba","Golden Desert Eagle")
+						options += list("Colonel's Mateba","Golden Desert Eagle")
 					else
-						options -= list("Commodore's Mateba","Golden Desert Eagle") //This is weird and should not be necessary but it wouldn't remove these from the list otherwise
+						options -= list("Colonel's Mateba","Golden Desert Eagle") //This is weird and should not be necessary but it wouldn't remove these from the list otherwise
 
 					var/new_co_sidearm = tgui_input_list(user, "Choose your preferred sidearm.", "Commanding Officer's Sidearm", options)
 					if(!new_co_sidearm)
@@ -1248,7 +1255,13 @@ var/const/MAX_SAVE_SLOTS = 10
 							switch(ascii_char)
 								// A  .. Z
 								if(65 to 90)			//Uppercase Letters will work on first char
-									if(!first_char)
+
+									if(length(xeno_prefix)!=2)
+										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
+										return
+
+									if(!first_char && playtime < 300 HOURS)
+										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [time_left_until(300 HOURS, playtime, 1 HOURS)] more hours to unlock double letter xeno postfix.")))
 										all_ok = FALSE
 								// 0  .. 9
 								if(48 to 57)			//Numbers will work if not the first char
@@ -1263,7 +1276,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							to_chat(user, "<font color='red'>Invalid Xeno Postfix. Your Postfix can contain single letter and an optional digit after it.</font>")
 
 				if("age")
-					var/new_age = input(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference") as num|null
+					var/new_age = tgui_input_number(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference", 19, AGE_MAX, AGE_MIN)
 					if(new_age)
 						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
 
@@ -1509,7 +1522,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					UI_style_color = UI_style_color_new
 
 				if("UIalpha")
-					var/UI_style_alpha_new = input(user, "Select a new alpha (transparency) parametr for your UI, between 50 and 255") as num
+					var/UI_style_alpha_new = tgui_input_number(user, "Select a new alpha (transparency) parameter for your UI, between 50 and 255", "Select alpha", 255, 255, 50)
 					if(!UI_style_alpha_new || !(UI_style_alpha_new <= 255 && UI_style_alpha_new >= 50))
 						return
 					UI_style_alpha = UI_style_alpha_new
@@ -1593,6 +1606,13 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("toggles_ert")
 					var/flag = text2num(href_list["flag"])
 					toggles_ert ^= flag
+
+				if("ambientocclusion")
+					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION
+					var/atom/movable/screen/plane_master/game_world/plane_master = locate() in user?.client.screen
+					if (!plane_master)
+						return
+					plane_master.backdrop(user?.client.mob)
 
 				if("save")
 					if(save_cooldown > world.time)

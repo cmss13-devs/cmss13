@@ -394,3 +394,177 @@
   - balance: Nerfs the AGMF from 400+dmg on avg with a maxcap of 750 down to around
       200 dmg on avg with a maxcap of 400dmg via turning the shrapnel count down to
       16 from 30.
+  theflyingflail:
+  - bugfix: fixed trijent dam cl survivor not spawning with survivor equipment
+2022-08-21:
+  Morrow:
+  - bugfix: You can no longer use picked up simple mobs to get around the C4 limits.
+  theflyingflail:
+  - rscadd: Added ert medical pouch to ert corpses
+  - tweak: Swapped PMC mask for heat coif in black market crate and pmc corpses
+2022-08-22:
+  Geevies:
+  - bugfix: Xenos no longer lose their age/name when rejoining the game.
+  Jeser:
+  - balance: Vehicles now can receive damage from various environmental acidic sources
+      like toxin rivers in addition to acid spray. Colony Vans receive wheels damage
+      when driving through toxins river on Trijent Dam now.
+  - bugfix: Fixed some vehicle spawners behaviour and vehicle speed.
+2022-08-23:
+  Morrow:
+  - rscadd: Dropship droppable sentries can now be seen on dropship cameras.
+  - bugfix: Dropship droppable sentries have working lights when dropped.
+  Segrain:
+  - bugfix: Giving items no longer requires recipient to have both hands empty.
+  - bugfix: Feeding pills to somebody while lagging and clicking a lot no longer leaves
+      ghost pills on the floor.
+  stanalbatross:
+  - bugfix: fixed poorly aligned AP magazine overlays on the type 71 carbine and commando
+      carbine
+  - qol: added a keybind for LOOC
+  - balance: the cluster OB now has 1/6th stronger explosions and fires 25% more explosives
+      in the same time
+  - bugfix: fixed not being able to open an airlock's wires UI if the airlock had
+      no power
+  - bugfix: fixed APCs not automatically reopening their UI if one was already open
+      when their covers were closed/opened
+2022-08-24:
+  Diegoflores31:
+  - qol: MTs can now craft normal almayer doors (personal and glass) instead of legacy
+      SS13 doors
+  - code_imp: Changed Airlock Assembly code to spawn cm airlocks instead of legacy
+      and support directional construction.
+  - imageadd: replaced some legacy SS13 airlock assembly sprites for new sprites.
+  Segrain:
+  - bugfix: Items dumped out of containers no longer appear on top of mobs.
+  - bugfix: Spawn pools and egg morphers no longer get blocked by documents and other
+      indestructible items from melted bodies.
+  stanalbatross:
+  - ui: converted the supply drop console to TGUI
+  - bugfix: mortar interface numberinputs now work properly
+  - ui: the nuclear fission explosive now uses tgui
+2022-08-25:
+  Drathek:
+  - rscadd: Added Give Royal Jelly ability (costs 500 plasma) to select a current
+      or previous xeno and grant an award to be displayed at round end just like a
+      marine award.
+  - imageadd: Added dev art for Queen Award depicting purple jelly above a xeno head.
+  - code_imp: Added totalDeadXenos list to hive_status to track any xenos that aren't
+      hard removed (changed hives).
+  - code_imp: Added view_record/medal_view to support queries to the DB for medal
+      information.
+  - code_imp: Added an optional theme argument to constructors for tgui_input_list
+      and applied hive_status theme to various xenomorph input list choices.
+  - refactor: Improved variable readability, commented most medal code, and moved
+      award names to defines.
+  - bugfix: Fixed Medals Given niche stat sometimes not getting granted if recipient
+      mob found before giver mob.
+  - bugfix: Fixed niche stats not getting displayed in panel_stats global tab for
+      xeno castes.
+  - bugfix: Command tablet not finding any mobs visible for its print medal message.
+      It should also print the medals faster since it is prior to a database call.
+  - admin: Added "Award a royal jelly" to admin Events Panel that picks a hive, and
+      awards a royal jelly (with overrideable giver attribution).
+  - admin: Added tgui Medals Panel to view marine and xeno medals/jelly, rescind medals
+      from that round (actually deleting the items too), and add medals/jelly (with
+      overrideable giver attribution for xenos or overrideable medal location for
+      marines).
+  - admin: Added href link to open Medals Panel in message when a medal is created/deleted.
+  Git-Nivrak:
+  - bugfix: Fixed a bug which would make you have increased movement delay after stopping
+      to pull a mob for one tile
+  Morrow:
+  - bugfix: Fixes size oversight for ordnance tech custom grenades.
+2022-08-26:
+  stanalbatross:
+  - admin: fixed not being able to remove notes
+2022-08-27:
+  TheBoondock:
+  - refactor: refactored radio channels into using defines
+  nauticall:
+  - bugfix: Fixed M56D infinite ammo bug caused by swapping drum magazines on an M56D
+      emplacement.
+  stanalbatross:
+  - qol: added keybinds for basically every yautja verb
+2022-08-28:
+  Nanotrasen-Spy:
+  - rscadd: Ballistic goggles can now be flipped up and down on helmets and hats.
+      Ballistic goggle sprites changed to look like they have 1 piece lenses instead
+      of being green glasses
+  - rscadd: Changes to all eye HUD glasses sprites except M4RA and M56 glasses to
+      be monacles
+  Segrain:
+  - bugfix: Inputting numbers once again accepts negative values where relevant (e.g.
+      coordinates).
+  - bugfix: Wrench once again can be properly used in fixing vehicles' hulls.
+  Shad0vvs:
+  - bugfix: Reverted a change allowing warriors to punch from 2 tiles away and giving
+      them daze on punch.
+  stanalbatross:
+  - bugfix: the British flag will now, once more, display properly in chat
+  - bugfix: you can no longer infinitely add glass to airlock assemblies, you can
+      now also take glass out of them.
+  - bugfix: updated the construction text for airlocks
+  - balance: the underbarrel grenade launcher is now pump-action! you must pump it
+      TWICE to fire it (open and close the breech, this cocks it). To reload it you
+      must open the breech. You open/close the breech (and thus pump it) via UNIQUE-ACTION
+      while the attachment is activated
+  - qol: you can now unload the UGL as you would with a normal gun, while it is activated
+  - soundadd: added new sounds for opening and closing the UGL + reloading grenades
+      into the UGL
+  - rscdel: blowtorches no longer always protect you from eye damage
+  - rscadd: added "old blowtorches", which have a weaker flame that only lets them
+      weld vents and doors. However, this makes their welding screens effective and
+      as such they do not hurt your eyes.
+  - rscadd: added pushups, you can do pushups with a verb in the IC tab
+  - bugfix: you can no longer crawl without enough limbs to do so
+  - ui: number input now uses tgui
+  - bugfix: when making pills from a chemmaster the creation number will now default
+      to 16, not 10
+2022-08-29:
+  Morrow:
+  - rscadd: More options to chief engineer vendor as well as an extended section for
+      deployment gear.
+2022-08-30:
+  Geevies:
+  - rscadd: AI xenos have been tweaked to function a bit more like normal xenos (no
+      ability use).
+  Mister-moon1:
+  - Fix: Ammo type of M2C changed to be the correct ammo
+2022-08-31:
+  Geevies:
+  - rscadd: Adds rock paper scissors, you can play it by help intenting someone's
+      head. Your intent influences your play.
+  Nanotrasen-Spy:
+  - bugfix: Fixed missing icons for ballistic goggles in certain cases
+  TotalEpicness, TheDonkified and Lumdor:
+  - rscadd: Added charger strain for crusher.
+  - experiment: Charger functions very similarly to old crusher. Hold movement key
+      and after a while you gain momentum to ram humans and certain objects. Behavior
+      upon collision with different things are subject to change.
+  - Passive: Directional armor. Charger has 50 frontal armor, 35 side armor, and 25
+      rear armor. Because of this ability, charger crusher is unable to direction
+      lock itself.
+  - experiment: 'Active 1: Toggle Charging. Use this ability to toggle charging on
+      and off.'
+  - experiment: 'Active 2: Tumble. Clicking to the side of where the crusher is facing
+      will launch it 2 tiles to the side in the clicked direction. Hitting a human
+      will knock them over. This ability can be used while charge to quickly offset
+      yourself. However, it will reset your momentum to 0.'
+  - rscadd: Tumble now has cool sound effects and a spin.
+  - imageadd: Added tumble ability sprites
+  - tweak: Charger now takes 3 full hits to destroy a normal wall instead of destroying
+      it in pretty much one. Xeno walls take half damage
+  - experiment: 'Active 3: Charger stomp. Unlike the base crusher, it does not stun,
+      but does heavy damage to any human unfortunate enough to be under the charger,
+      it also applies a mild screen shake to any humans in view and can be used to
+      help escape.'
+  - experiment: 'Active 4: Ram. A simple offensive ability that flings mobs without
+      stun. Much like warrior fling.'
+  - rscadd: Xenos blocking a charger's path when charger get pushed to the side, if
+      no clear path to move to exists, they get flicker stunned so that charger may
+      charge.
+  stanalbatross:
+  - admin: 'fixed the following broken hrefs : game panel'
+  - bugfix: properly fixed stack transfer amounts
+  - code_imp: changed several instances of += 1 and -= 1 to ++ and --

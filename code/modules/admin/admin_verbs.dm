@@ -38,7 +38,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/force_shuttle,
 	/client/proc/force_ground_shuttle,
 	/client/proc/force_teleporter,
-	/client/proc/toggle_explosive_antigrief,
+	/client/proc/set_explosive_antigrief,
+	/client/proc/check_explosive_antigrief,
 	/client/proc/matrix_editor,
 	/datum/admins/proc/open_shuttlepanel
 )
@@ -177,6 +178,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_admin_change_their_name,
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
+	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_pm_context,
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/cmd_admin_check_contents,
@@ -233,6 +235,9 @@ var/list/admin_verbs_mod = list(
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
 	/datum/admins/proc/wakeall,
+	/datum/admins/proc/directnarrateall,
+	/datum/admins/proc/subtlemessageall,
+	/datum/admins/proc/alertall,
 	/datum/admins/proc/togglejoin,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
@@ -254,6 +259,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_change_their_name,
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
+	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_pm_context,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/show_player_panel,
@@ -263,7 +269,8 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions
-	/client/proc/cmd_admin_world_narrate	/*sends text to all players with no padding*/
+	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
+	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
 )
 
 var/list/roundstart_mod_verbs = list(
@@ -279,6 +286,7 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, admin_verbs_mod)
 	if(CLIENT_HAS_RIGHTS(src, R_ADMIN))
 		add_verb(src, admin_verbs_admin)
+		add_verb(src, admin_verbs_fun)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		add_verb(src, /client/proc/cmd_mentor_say)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
@@ -286,8 +294,6 @@ var/list/roundstart_mod_verbs = list(
 	if(CLIENT_HAS_RIGHTS(src, R_BAN))
 		add_verb(src, admin_verbs_ban)
 		add_verb(src, admin_verbs_teleport) // ???
-	if(CLIENT_HAS_RIGHTS(src, R_FUN))
-		add_verb(src, admin_verbs_fun)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
 		add_verb(src, admin_verbs_server)
 	if(CLIENT_HAS_RIGHTS(src, R_DEBUG))
@@ -434,7 +440,7 @@ var/list/roundstart_mod_verbs = list(
 	set name = "Edit Appearance"
 	set category = null
 
-	if(!check_rights(R_FUN))	return
+	if(!check_rights(R_ADMIN))	return
 
 	if(!istype(M, /mob/living/carbon/human))
 		to_chat(usr, SPAN_DANGER("You can only do this to humans!"))

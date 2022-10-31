@@ -239,7 +239,7 @@
 	var/datum/recipe/recipe = select_recipe(available_recipes,src)
 	var/obj/cooked
 	if (!recipe)
-		dirty += 1
+		dirty++
 		if (prob(max(10,dirty*5)))
 			if (!wzhzhzh(4 * time_multiplier))
 				abort()

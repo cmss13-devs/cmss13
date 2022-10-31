@@ -33,7 +33,7 @@
 	// List of verbs to give when a mob is seated in each seat type
 	var/list/seat_verbs
 
-	move_delay = VEHICLE_SPEED_SLOW
+	move_delay = VEHICLE_SPEED_STATIC
 	// The next world.time when the vehicle can move
 	var/next_move = 0
 	// How much momentum the vehicle has. Increases by 1 each move
@@ -239,20 +239,19 @@
 		overlays += J
 
 //Normal examine() but tells the player what is installed and if it's broken
-/obj/vehicle/multitile/examine(var/mob/user)
-	..()
-
+/obj/vehicle/multitile/get_examine_text(var/mob/user)
+	. = ..()
 	for(var/obj/item/hardpoint/H in hardpoints)
-		to_chat(user, "There is \a [H] module installed.")
+		. += "There is \a [H] module installed."
 		H.examine(user, TRUE)
 	if(clamped)
-		to_chat(user, "There is a vehicle clamp attached.")
+		. += "There is a vehicle clamp attached."
 	if(isXeno(user) && interior)
 		var/passengers_amount = interior.passengers_taken_slots
 		for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
 			passengers_amount += RRS.taken
 		if(passengers_amount > 0)
-			to_chat(user, "You can sense approximately [passengers_amount] hosts inside.")
+			. += "You can sense approximately [passengers_amount] hosts inside."
 
 /obj/vehicle/multitile/proc/load_hardpoints()
 	return
@@ -323,7 +322,7 @@
 
 	M.set_interaction(src)
 	M.reset_view(src)
-	give_action(M, /datum/action/human_action/cancel_view)
+	give_action(M, /datum/action/human_action/vehicle_unbuckle)
 
 /obj/vehicle/multitile/proc/get_seat_mob(var/seat)
 	return seats[seat]
@@ -391,7 +390,6 @@
 	if(desc)
 		V.desc = desc
 
-
 //Dealing enough damage to destroy the vehicle
 /obj/effect/vehicle_spawner/proc/load_damage(var/obj/vehicle/multitile/V)
 	V.take_damage_type(1e8, "abstract")
@@ -410,3 +408,8 @@
 
 /obj/vehicle/multitile/get_applying_acid_time()
 	return 3 SECONDS
+
+//handling dangerous acidic environment, like acidic spray or toxic waters, maybe toxic vapor in future
+/obj/vehicle/multitile/proc/handle_acidic_environment(var/atom/A)
+	for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
+		Loco.handle_acid_damage(A)

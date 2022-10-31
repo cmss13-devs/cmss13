@@ -38,34 +38,29 @@
 				var/obj/structure/ship_ammo/SA = PC.loaded
 				SA.transfer_ammo(src, user)
 				return FALSE
-			else
-				to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
-				return FALSE
 		else
 			if(ammo_count < 1)
 				to_chat(user, SPAN_WARNING("\The [src] has ran out of ammo, so you discard it!"))
 				qdel(src)
 				return FALSE
 
-			to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
 			if(ammo_name == "rocket")
-				PC.grab_object(src, "ds_rocket", 'sound/machines/hydraulics_1.ogg')
+				PC.grab_object(user, src, "ds_rocket", 'sound/machines/hydraulics_1.ogg')
 			else
-				PC.grab_object(src, "ds_ammo", 'sound/machines/hydraulics_1.ogg')
+				PC.grab_object(user, src, "ds_ammo", 'sound/machines/hydraulics_1.ogg')
 			update_icon()
 			return FALSE
 	else
 		. = ..()
 
 
-/obj/structure/ship_ammo/examine(mob/user)
-	..()
-	to_chat(user, "Moving this will require some sort of lifter.")
+/obj/structure/ship_ammo/get_examine_text(mob/user)
+	. = ..()
+	. += "Moving this will require some sort of lifter."
 
 //what to show to the user that examines the weapon we're loaded on.
 /obj/structure/ship_ammo/proc/show_loaded_desc(mob/user)
-	to_chat(user, "It's loaded with \a [src].")
-	return
+	return "It's loaded with \a [src]."
 
 /obj/structure/ship_ammo/proc/detonate_on(turf/impact)
 	return
@@ -119,7 +114,7 @@
 /obj/structure/ship_ammo/heavygun
 	name = "\improper PGU-100 Multi-Purpose 30mm ammo crate"
 	icon_state = "30mm_crate"
-	desc = "A crate full of PGU-100 30mm Multi-Purpose ammo designed to penetrate light (non reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti Tank 30mm ammo is needed."
+	desc = "A crate full of PGU-100 30mm Multi-Purpose ammo designed to penetrate light (non reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti-Tank 30mm ammo is needed."
 	equipment_type = /obj/structure/dropship_equipment/weapon/heavygun
 	ammo_count = 400
 	max_ammo_count = 400
@@ -130,15 +125,15 @@
 	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
 
-/obj/structure/ship_ammo/heavygun/examine(mob/user)
-	..()
-	to_chat(user, "It has [ammo_count] round\s.")
+/obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [ammo_count] round\s."
 
 /obj/structure/ship_ammo/heavygun/show_loaded_desc(mob/user)
 	if(ammo_count)
-		to_chat(user, "It's loaded with \a [src] containing [ammo_count] round\s.")
+		return "It's loaded with \a [src] containing [ammo_count] round\s."
 	else
-		to_chat(user, "It's loaded with an empty [name].")
+		return "It's loaded with an empty [name]."
 
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact)
 	set waitfor = 0
@@ -205,16 +200,16 @@
 	fire_mission_delay = 4 //very good but long cooldown
 
 
-/obj/structure/ship_ammo/laser_battery/examine(mob/user)
-	..()
-	to_chat(user, "It's at [round(100*ammo_count/max_ammo_count)]% charge.")
+/obj/structure/ship_ammo/laser_battery/get_examine_text(mob/user)
+	. = ..()
+	. += "It's at [round(100*ammo_count/max_ammo_count)]% charge."
 
 
 /obj/structure/ship_ammo/laser_battery/show_loaded_desc(mob/user)
 	if(ammo_count)
-		to_chat(user, "It's loaded with \a [src] at [round(100*ammo_count/max_ammo_count)]% charge.")
+		return "It's loaded with \a [src] at [round(100*ammo_count/max_ammo_count)]% charge."
 	else
-		to_chat(user, "It's loaded with an empty [name].")
+		return "It's loaded with an empty [name]."
 
 
 /obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact)
@@ -261,7 +256,7 @@
 //this one is air-to-air only
 /obj/structure/ship_ammo/rocket/widowmaker
 	name = "\improper AIM-224/B 'Widowmaker'"
-	desc = "The AIM-224/B missile is a retrofit of the latest in air to air missile technology. Earning the nickname of 'Widowmaker' from various dropship pilots after improvements to its guidence warhead prevents it from being jammed leading to its high kill rate. Not well suited for ground bombardment but its high velocity makes it reach its target quickly. This one has been modified to be a free-fall bomb as a result of dropship ammo shortages."
+	desc = "The AIM-224/B missile is a retrofit of the latest in air-to-air missile technology. Earning the nickname of 'Widowmaker' from various dropship pilots after improvements to its guidance warhead prevents it from being jammed leading to its high kill rate. Not well suited for ground bombardment but its high velocity makes it reach its target quickly. This one has been modified to be a free-fall bomb as a result of dropship ammo shortages."
 	icon_state = "single"
 	travelling_time = 30 //not powerful, but reaches target fast
 	ammo_id = ""
@@ -276,7 +271,7 @@
 
 /obj/structure/ship_ammo/rocket/banshee
 	name = "\improper AGM-227 'Banshee'"
-	desc = "The AGM-227 missile is a mainstay of the overhauled dropship fleet against any mobile or armored ground targets. It's earned the nickname of 'Banshee' from the sudden wail that it emitts right before hitting a target. Useful to clear out large areas."
+	desc = "The AGM-227 missile is a mainstay of the overhauled dropship fleet against any mobile or armored ground targets. It's earned the nickname of 'Banshee' from the sudden wail that it emits right before hitting a target. Useful to clear out large areas."
 	icon_state = "banshee"
 	ammo_id = "b"
 	point_cost = 300
@@ -322,7 +317,7 @@
 
 /obj/structure/ship_ammo/rocket/napalm
 	name = "\improper XN-99 'Napalm'"
-	desc = "The XN-99 'Napalm' is an incendiary missile  used to turn specific targeted areas into giant balls of fire for a long time."
+	desc = "The XN-99 'Napalm' is an incendiary missile used to turn specific targeted areas into giant balls of fire for a long time."
 	icon_state = "napalm"
 	ammo_id = "n"
 	point_cost = 500
@@ -369,11 +364,11 @@
 
 /obj/structure/ship_ammo/minirocket/show_loaded_desc(mob/user)
 	if(ammo_count)
-		to_chat(user, "It's loaded with \a [src] containing [ammo_count] minirocket\s.")
+		return "It's loaded with \a [src] containing [ammo_count] minirocket\s."
 
-/obj/structure/ship_ammo/minirocket/examine(mob/user)
-	..()
-	to_chat(user, "It has [ammo_count] minirocket\s.")
+/obj/structure/ship_ammo/minirocket/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [ammo_count] minirocket\s."
 
 
 /obj/structure/ship_ammo/minirocket/incendiary

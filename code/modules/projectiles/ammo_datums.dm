@@ -51,6 +51,8 @@
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
 
+	var/flamer_reagent_type = /datum/reagent/napalm/ut
+
 /datum/ammo/New()
 	set_bullet_traits()
 
@@ -210,10 +212,12 @@
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/T, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
-	if(!istype(T)) return
-	if(locate(/obj/flamer_fire) in T) return
+	if(!istype(T))
+		return
+	if(locate(/obj/flamer_fire) in T)
+		return
 
-	var/datum/reagent/napalm/ut/R = new()
+	var/datum/reagent/R = new flamer_reagent_type()
 	new /obj/flamer_fire(T, cause_data, R)
 
 
@@ -300,11 +304,12 @@
 // Used by M4A3, M4A3 Custom and B92FS
 /datum/ammo/bullet/pistol
 	name = "pistol bullet"
-
-	damage = 35
-	accuracy = HIT_ACCURACY_TIER_2
-	effective_range_max = 4
-	damage_falloff = DAMAGE_FALLOFF_TIER_4 //should be useful in close-range mostly
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
+	accuracy = -HIT_ACCURACY_TIER_3
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	damage = 40
+	penetration= ARMOR_PENETRATION_TIER_2
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/tiny
 	name = "light pistol bullet"
@@ -395,8 +400,8 @@
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	damage = 40
-	penetration= ARMOR_PENETRATION_TIER_2
+	damage = 55
+	penetration= ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/heavy/cluster
@@ -409,7 +414,7 @@
 
 /datum/ammo/bullet/pistol/heavy/super //Commander's variant
 	name = ".50 heavy pistol bullet"
-	damage = 50
+	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_4
@@ -697,8 +702,7 @@
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
 	..()
-	if(T.density)
-		cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/revolver/webley //Mateba round without the knockdown.
 	name = ".455 Webley bullet"
@@ -894,6 +898,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	max_range = 24 //So S8 users don't have their bullets magically disappaer at 22 tiles (S8 can see 24 tiles)
 
 /datum/ammo/bullet/rifle/holo_target
 	name = "holo-targeting rifle bullet"
@@ -1180,10 +1185,10 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_5
 	accurate_range = 4
 	max_range = 4
-	damage = 60
+	damage = 65
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
-	penetration	= 0
+	penetration	= ARMOR_PENETRATION_TIER_1
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
@@ -1219,7 +1224,7 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 4
 	max_range = 6
-	damage = 60
+	damage = 65
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_1
@@ -1355,7 +1360,7 @@
 	accurate_range = 8 //Big low-velocity projectile; this is for blasting dangerous game at close range.
 	max_range = 14 //At this range, it's lost all its damage anyway.
 	damage = 300 //Hits like a buckshot PB.
-	penetration = 15
+	penetration = ARMOR_PENETRATION_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_1 * 3 //It has a lot of energy, but the 26mm bullet drops off fast.
 	effective_range_max	= EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
 	var/hit_messages = list()
@@ -1388,7 +1393,7 @@
 	name = "lever-action bullet"
 
 	damage = 80
-	penetration = ARMOR_PENETRATION_TIER_1
+	penetration = 0
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
 	accurate_range = 14
@@ -1428,6 +1433,28 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_6
 	handful_state = "marksman_lever_action_bullet"
+
+/datum/ammo/bullet/lever_action/xm88
+	name = ".458 SOCOM round"
+
+	damage = 80
+	penetration = ARMOR_PENETRATION_TIER_2
+	accuracy = HIT_ACCURACY_TIER_1
+	shell_speed = AMMO_SPEED_TIER_6
+	accurate_range = 14
+	handful_state = "boomslang_bullet"
+
+/datum/ammo/bullet/lever_action/xm88/pen20
+	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/lever_action/xm88/pen30
+	penetration = ARMOR_PENETRATION_TIER_6
+
+/datum/ammo/bullet/lever_action/xm88/pen40
+	penetration = ARMOR_PENETRATION_TIER_8
+
+/datum/ammo/bullet/lever_action/xm88/pen50
+	penetration = ARMOR_PENETRATION_TIER_10
 
 /*
 //======
@@ -2171,7 +2198,7 @@
 
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
-			stun_time += 1
+			stun_time++
 			H.KnockDown(stun_time)
 		else
 			M.KnockDown(stun_time, 1)
@@ -2667,7 +2694,7 @@
 	name = "bone chips"
 	icon_state = "shrapnel_light"
 	ping = null
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
 	damage_type = BRUTE
 	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
 
@@ -2681,6 +2708,10 @@
 	shrapnel_chance = 60
 
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/item/projectile/P)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+			return
 	if(isHumanStrict(M) || isXeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
 		if(M.slowed < 8)
@@ -2707,6 +2738,10 @@
     shrapnel_chance = 0
 
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)
+    if(iscarbon(M))
+        var/mob/living/carbon/C = M
+        if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+            return
     if(isHumanStrict(M) || isXeno(M))
         playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
         if(M.slowed < 6)
@@ -2895,7 +2930,7 @@
 	name = "flame"
 	icon_state = "pulse0"
 	damage_type = BURN
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_HITS_TARGET_TURF
 
 	max_range = 6
 	damage = 35
@@ -2918,16 +2953,12 @@
 /datum/ammo/flamethrower/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
-/datum/ammo/flamethrower/tank_flamer/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
-		return
-	if(locate(/obj/flamer_fire) in T)
-		return
-	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, cause_data, R, 2)
+/datum/ammo/flamethrower/tank_flamer
+	flamer_reagent_type = /datum/reagent/napalm/blue
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
+	flamer_reagent_type = /datum/reagent/napalm/blue
 
 	accuracy = HIT_ACCURACY_TIER_8
 	accurate_range = 6
@@ -2939,12 +2970,6 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
-
-/datum/ammo/flamethrower/sentry_flamer/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
-		return
-	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, cause_data, R, 0)
 
 /datum/ammo/flamethrower/sentry_flamer/glob
 	max_range = 14
@@ -2988,6 +3013,7 @@
 	shell_speed = AMMO_SPEED_TIER_3
 
 	var/flare_type = /obj/item/device/flashlight/flare/on/gun
+	handful_type = /obj/item/device/flashlight/flare
 
 /datum/ammo/flare/set_bullet_traits()
 	. = ..()
@@ -2996,32 +3022,38 @@
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flare(get_turf(P), P.firer)
+	drop_flare(get_turf(P), P, P.firer)
 
 /datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_flare(get_turf(P), P.firer)
+	drop_flare(get_turf(P), P, P.firer)
 
 /datum/ammo/flare/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density && isturf(P.loc))
-		drop_flare(P.loc, P.firer)
+		drop_flare(P.loc, P, P.firer)
 	else
-		drop_flare(T, P.firer)
+		drop_flare(T, P, P.firer)
 
 /datum/ammo/flare/do_at_max_range(obj/item/projectile/P, var/mob/firer)
-	drop_flare(get_turf(P), P.firer)
+	drop_flare(get_turf(P), P, P.firer)
 
-/datum/ammo/flare/proc/drop_flare(var/turf/T, var/mob/firer)
+/datum/ammo/flare/proc/drop_flare(var/turf/T, obj/item/projectile/fired_projectile, var/mob/firer)
 	var/obj/item/device/flashlight/flare/G = new flare_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
 	return G
+
 /datum/ammo/flare/signal
 	name = "signal flare"
 	icon_state = "flare_signal"
 	flare_type = /obj/item/device/flashlight/flare/signal/gun
+	handful_type = /obj/item/device/flashlight/flare/signal
 
-/datum/ammo/flare/signal/drop_flare(turf/T, mob/firer)
-	var/obj/item/device/flashlight/flare/signal/gun/G = ..()
-	G.activate_signal(firer)
+/datum/ammo/flare/signal/drop_flare(turf/T, obj/item/projectile/fired_projectile, mob/firer)
+	var/obj/item/device/flashlight/flare/signal/gun/signal_flare = ..()
+	signal_flare.activate_signal(firer)
+	if(istype(fired_projectile.shot_from, /obj/item/weapon/gun/flare))
+		var/obj/item/weapon/gun/flare/flare_gun_fired_from = fired_projectile.shot_from
+		flare_gun_fired_from.last_signal_flare_name = signal_flare.name
+
 /datum/ammo/flare/starshell
 	name = "starshell ash"
 	icon_state = "starshell_bullet"

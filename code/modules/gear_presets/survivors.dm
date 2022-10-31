@@ -1017,6 +1017,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(H), WEAR_HANDS)
 	add_random_cl_survivor_loot(H)
 
+	..()
+
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason/corsat
 	name = "Survivor - Interstellar Commerce Commission Liaison CORSAT"
 	assignment = "Interstellar Commerce Commission Liaison"

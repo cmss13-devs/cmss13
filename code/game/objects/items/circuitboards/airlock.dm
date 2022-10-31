@@ -9,7 +9,12 @@
 	var/one_access = 0 //if set to 1, door would receive req_one_access instead of req_access
 	var/last_configurator = null
 	var/locked = 1
+	var/fried = FALSE
 
+/obj/item/circuitboard/airlock/update_icon()
+	. = ..()
+	if(fried)
+		icon_state = "door_electronics_smoked"
 
 /obj/item/circuitboard/airlock/attack_self(mob/user as mob)
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))

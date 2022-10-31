@@ -39,6 +39,7 @@
 	var/atom/movable/following = null
 	var/datum/orbit_menu/orbit_menu
 	var/mob/observetarget = null	//The target mob that the ghost is observing. Used as a reference in logout()
+	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	alpha = 127
 
@@ -48,7 +49,7 @@
 	set category = "Ghost.Settings"
 	ghostvision = !ghostvision
 	if(hud_used)
-		var/obj/screen/plane_master/lighting/lighting = hud_used.plane_masters["[GHOST_PLANE]"]
+		var/atom/movable/screen/plane_master/lighting/lighting = hud_used.plane_masters["[GHOST_PLANE]"]
 		if (lighting)
 			lighting.alpha = ghostvision? 255 : 0
 	to_chat(usr, SPAN_NOTICE("You [(ghostvision?"now":"no longer")] have ghost vision."))
@@ -187,6 +188,7 @@
 
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)
+	QDEL_NULL(last_health_display)
 	GLOB.observer_list -= src
 	following = null
 	return ..()
@@ -349,7 +351,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			mind.player_entity.update_panel_data(round_statistics)
 		ghostize(TRUE)
 	else
-		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)","Are you sure you want to ghost?","Ghost","Stay in body")
+		var/list/options = list("Ghost", "Stay in body")
+		if(check_rights(R_MOD))
+			options = list("Aghost") + options
+		var/response = tgui_alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", options)
+		if(response == "Aghost")
+			client.admin_ghost()
+			return
 		if(response != "Ghost")	return	//didn't want to ghost after-all
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
@@ -393,8 +401,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/obj/effect/step_trigger/S in new_turf)	//<-- this is dumb
 		S.Crossed(src)
 
-/mob/dead/observer/examine(mob/user)
-	to_chat(user, desc)
+/mob/dead/observer/get_examine_text(mob/user)
+	return list(desc)
 
 /mob/dead/observer/can_use_hands()
 	return 0
@@ -469,7 +477,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(!istype(target))
 		return
-	target.health_scan(src, do_checks = FALSE)
+
+	if (!last_health_display)
+		last_health_display = new(target)
+	else
+		last_health_display.target_mob = target
+	last_health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE)
 
 /mob/dead/observer/verb/follow_local(var/mob/target)
 	set category = "Ghost.Follow"
@@ -485,7 +498,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(!orbit_menu)
 		orbit_menu = new(src)
-	orbit_menu.ui_interact(src)
+	orbit_menu.tgui_interact(src)
 
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(var/atom/movable/target)
@@ -670,7 +683,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	else if(length(hives) == 1) // Only one hive, don't need an input menu for that
 		last_hive_checked.hive_ui.open_hive_status(src)
 	else
-		faction = tgui_input_list(src, "Select which hive status menu to open up", "Hive Choice", hives)
+		faction = tgui_input_list(src, "Select which hive status menu to open up", "Hive Choice", hives, theme="hive_status")
 		if(!faction)
 			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
 			return
@@ -913,20 +926,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	. += ""
 	. += "Game Mode: [GLOB.master_mode]"
 
-	if(SSticker.HasRoundStarted())
-		return
+	if(!SSticker.HasRoundStarted())
+		var/time_remaining = SSticker.GetTimeLeft()
+		if(time_remaining > 0)
+			. += "Time To Start: [round(time_remaining)]s"
+		else if(time_remaining == -10)
+			. += "Time To Start: DELAYED"
+		else
+			. += "Time To Start: SOON"
 
-	var/time_remaining = SSticker.GetTimeLeft()
-	if(time_remaining > 0)
-		. += "Time To Start: [round(time_remaining)]s"
-	else if(time_remaining == -10)
-		. += "Time To Start: DELAYED"
-	else
-		. += "Time To Start: SOON"
-
-	. += "Players: [SSticker.totalPlayers]"
-	if(client.admin_holder)
-		. += "Players Ready: [SSticker.totalPlayersReady]"
+		. += "Players: [SSticker.totalPlayers]"
+		if(client.admin_holder)
+			. += "Players Ready: [SSticker.totalPlayersReady]"
 
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()

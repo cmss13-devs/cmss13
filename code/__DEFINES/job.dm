@@ -8,7 +8,7 @@
 #define SQUAD_MARINE_3					"Charlie"
 #define SQUAD_MARINE_4					"Delta"
 #define SQUAD_MARINE_5					"Echo"
-#define SQUAD_MARINE_CRYO				"Reserves"
+#define SQUAD_MARINE_CRYO				"Foxtrot"
 #define SQUAD_MARSOC					"MARSOC"
 
 // Job name defines
@@ -83,6 +83,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_STOWAWAY					"Stowaway"
 
+#define JOB_COLONEL						"USCM Colonel"
 #define JOB_GENERAL						"USCM General"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
@@ -148,6 +149,23 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_LEADER					"PMC Leader"
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR				"PMC Site Director"
+#define JOB_PMC_SYNTH                   "PMC Support Synthetic"
+
+//---- Contractors ----//
+#define JOB_CONTRACTOR						"VAIPO Mercenary"
+#define JOB_CONTRACTOR_ST					"VAIPO Mercenary"
+#define JOB_CONTRACTOR_MEDIC				"VAIMS Medical Specialist"
+#define JOB_CONTRACTOR_ENGI					"VAIPO Engineering Specialist"
+#define JOB_CONTRACTOR_MG					"VAIPO Automatic Rifleman"
+#define JOB_CONTRACTOR_TL					"VAIPO Team Leader"
+#define JOB_CONTRACTOR_SYN					"VAIPO Support Synthetic"
+#define JOB_CONTRACTOR_COV					"VAISO Mercenary"
+#define JOB_CONTRACTOR_COVST				"VAISO Mercenary"
+#define JOB_CONTRACTOR_COVMED				"VAIMS Medical Specialist"
+#define JOB_CONTRACTOR_COVENG				"VAISO Engineering Specialist"
+#define JOB_CONTRACTOR_COVMG				"VAISO Automatic Rifleman"
+#define JOB_CONTRACTOR_COVTL            	"VAISO Team Leader"
+#define JOB_CONTRACTOR_COVSYN				"VAISO Support Synthetic"
 
 //-------- UPP --------//
 #define JOB_UPP							"UPP Private"
@@ -221,6 +239,12 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PROVOST_CMARSHAL			"Provost Chief Marshal"
 
 #define PROVOST_JOB_LIST				list(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
+
+//-------- UAAC --------//
+#define JOB_TIS_IO						"UAAC-TIS Intelligence Officer"
+#define JOB_TIS_SA						"UAAC-TIS Special Agent"
+
+#define TIS_JOB_LIST					list(JOB_TIS_SA, JOB_TIS_IO)
 
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"

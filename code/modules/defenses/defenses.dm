@@ -60,7 +60,7 @@
 		icon_state = "defense_base_off"
 
 
-/obj/structure/machinery/defenses/examine(mob/user)
+/obj/structure/machinery/defenses/get_examine_text(mob/user)
 	. = ..()
 
 	var/message = ""
@@ -73,7 +73,7 @@
 	message += "\n"
 	if(display_additional_stats)
 		message += SPAN_INFO("Its display reads - Kills: [kills] | Shots: [shots].")
-	to_chat(user, message)
+	. += message
 
 /obj/structure/machinery/defenses/proc/power_on()
 	if(stat == DEFENSE_DAMAGED)
@@ -161,6 +161,10 @@
 		if(!do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return
 
+		if(health < health_max * 0.25) //repeat check
+			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))
+			return
+
 		user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
 
 		playsound(loc, 'sound/mecha/mechmove04.ogg', 30, 1)
@@ -207,6 +211,9 @@
 			return
 
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = O
 		if(health < 0)
 			to_chat(user, SPAN_WARNING("[src]'s internal circuitry is ruined, there's no way you can salvage this on the go."))

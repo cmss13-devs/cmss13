@@ -171,7 +171,8 @@
 		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date]</i></font> "
 		///Can remove notes from anyone other than yourself, unless you're the host. So long as you have deletion access anyway.
 		if((can_del && target != get_player_from_key(key)) || ishost(usr))
-			dat += "<A href='?src=\ref[src];remove_wl_info=[key];remove_index=[N.id]'>Remove</A>"
+			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_wl_info=[key];remove_index=[N.id]'>Remove</A>"
+
 		dat += "<br><br>"
 
 	dat += "<br>"

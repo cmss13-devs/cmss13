@@ -8,29 +8,53 @@
 	matter = list("metal" = 500, "glass" = 0)
 	var/list/part = null
 
-/obj/item/robot_parts/l_arm
+/obj/item/robot_parts/arm/l_arm
 	name = "robot left arm"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
 	icon_state = "l_arm"
 	part = list("l_arm","l_hand")
 
-/obj/item/robot_parts/r_arm
+/obj/item/robot_parts/arm/r_arm
 	name = "robot right arm"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
 	icon_state = "r_arm"
 	part = list("r_arm","r_hand")
 
-/obj/item/robot_parts/l_leg
+/obj/item/robot_parts/leg/l_leg
 	name = "robot left leg"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
 	icon_state = "l_leg"
 	part = list("l_leg","l_foot")
 
-/obj/item/robot_parts/r_leg
+/obj/item/robot_parts/leg/r_leg
 	name = "robot right leg"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
 	icon_state = "r_leg"
 	part = list("r_leg","r_foot")
+
+/obj/item/robot_parts/hand/l_hand
+	name = "robot left hand"
+	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	icon_state = "l_hand"
+	part = list("l_hand")
+
+/obj/item/robot_parts/hand/r_hand
+	name = "robot right hand"
+	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	icon_state = "r_hand"
+	part = list("r_hand")
+
+/obj/item/robot_parts/foot/l_foot
+	name = "robot left foot"
+	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	icon_state = "l_foot"
+	part = list("l_foot")
+
+/obj/item/robot_parts/foot/r_foot
+	name = "robot right foot"
+	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	icon_state = "r_foot"
+	part = list("r_foot")
 
 /obj/item/robot_parts/chest
 	name = "robot torso"
@@ -60,10 +84,10 @@
 	name = "robot endoskeleton"
 	desc = "A complex metal backbone with standard limb sockets and pseudomuscle anchors."
 	icon_state = "robo_suit"
-	var/obj/item/robot_parts/l_arm/l_arm = null
-	var/obj/item/robot_parts/r_arm/r_arm = null
-	var/obj/item/robot_parts/l_leg/l_leg = null
-	var/obj/item/robot_parts/r_leg/r_leg = null
+	var/obj/item/robot_parts/arm/l_arm/l_arm = null
+	var/obj/item/robot_parts/arm/r_arm/r_arm = null
+	var/obj/item/robot_parts/leg/l_leg/l_leg = null
+	var/obj/item/robot_parts/leg/r_leg/r_leg = null
 	var/obj/item/robot_parts/chest/chest = null
 	var/obj/item/robot_parts/head/head = null
 	var/created_name = ""
@@ -96,25 +120,25 @@
 
 /obj/item/robot_parts/robot_suit/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/robot_parts/l_leg))
+	if(istype(W, /obj/item/robot_parts/leg/l_leg))
 		if(l_leg)	return
 		if(user.drop_inv_item_to_loc(W, src))
 			l_leg = W
 			updateicon()
 
-	if(istype(W, /obj/item/robot_parts/r_leg))
+	if(istype(W, /obj/item/robot_parts/leg/r_leg))
 		if(r_leg)	return
 		if(user.drop_inv_item_to_loc(W, src))
 			r_leg = W
 			updateicon()
 
-	if(istype(W, /obj/item/robot_parts/l_arm))
+	if(istype(W, /obj/item/robot_parts/arm/l_arm))
 		if(l_arm)	return
 		if(user.drop_inv_item_to_loc(W, src))
 			l_arm = W
 			updateicon()
 
-	if(istype(W, /obj/item/robot_parts/r_arm))
+	if(istype(W, /obj/item/robot_parts/arm/r_arm))
 		if(r_arm)	return
 		if(user.drop_inv_item_to_loc(W, src))
 			r_arm = W

@@ -16,7 +16,7 @@ INITIALIZE_IMMEDIATE(/obj/plane_master_controller)
 	owner_hud = hud
 	var/assoc_controlled_planes = list()
 	for(var/i in controlled_planes)
-		var/obj/screen/plane_master/instance = owner_hud.plane_masters["[i]"]
+		var/atom/movable/screen/plane_master/instance = owner_hud.plane_masters["[i]"]
 		if(!instance) //If we looked for a hud that isn't instanced, just keep going
 			stack_trace("[i] isn't a valid plane master layer for [owner_hud.type], are you sure it exists in the first place?")
 			continue
@@ -27,34 +27,34 @@ INITIALIZE_IMMEDIATE(/obj/plane_master_controller)
 /obj/plane_master_controller/add_filter(name, priority, list/params)
 	. = ..()
 	for(var/i in controlled_planes)
-		var/obj/screen/plane_master/pm_iterator = controlled_planes[i]
+		var/atom/movable/screen/plane_master/pm_iterator = controlled_planes[i]
 		pm_iterator.add_filter(name, priority, params)
 
 ///Full override so we can just use filterrific
 /obj/plane_master_controller/remove_filter(name_or_names)
 	. = ..()
 	for(var/i in controlled_planes)
-		var/obj/screen/plane_master/pm_iterator = controlled_planes[i]
+		var/atom/movable/screen/plane_master/pm_iterator = controlled_planes[i]
 		pm_iterator.remove_filter(name_or_names)
 
 /obj/plane_master_controller/update_filters()
 	. = ..()
 	for(var/i in controlled_planes)
-		var/obj/screen/plane_master/pm_iterator = controlled_planes[i]
+		var/atom/movable/screen/plane_master/pm_iterator = controlled_planes[i]
 		pm_iterator.update_filters()
 
 ///Gets all filters for this controllers plane masters
 /obj/plane_master_controller/proc/get_filters(name)
 	. = list()
 	for(var/i in controlled_planes)
-		var/obj/screen/plane_master/pm_iterator = controlled_planes[i]
+		var/atom/movable/screen/plane_master/pm_iterator = controlled_planes[i]
 		. += pm_iterator.get_filter(name)
 
 ///Transitions all filters owned by this plane master controller
 /obj/plane_master_controller/transition_filter(name, time, list/new_params, easing, loop)
 	. = ..()
 	for(var/i in controlled_planes)
-		var/obj/screen/plane_master/pm_iterator = controlled_planes[i]
+		var/atom/movable/screen/plane_master/pm_iterator = controlled_planes[i]
 		pm_iterator.transition_filter(name, time, new_params, easing, loop)
 
 

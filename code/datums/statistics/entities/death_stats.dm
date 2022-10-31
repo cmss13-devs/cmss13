@@ -64,6 +64,10 @@
 	if(!mind || statistic_exempt)
 		return
 
+	if(cause_data && !istype(cause_data))
+		stack_trace("track_mob_death called with string cause ([cause_data]) instead of datum")
+		cause_data = create_cause_data(cause_data)
+
 	var/datum/entity/statistic/death/new_death = DB_ENTITY(/datum/entity/statistic/death)
 	var/datum/entity/player/player_entity = get_player_from_key(mind.ckey)
 	if(player_entity)
@@ -78,16 +82,16 @@
 	var/area/A = get_area(death_loc)
 	new_death.area_name = A.name
 
-	new_death.cause_name = cause_data.cause_name
-	var/datum/entity/player/cause_player = get_player_from_key(cause_data.ckey)
+	new_death.cause_name = cause_data?.cause_name
+	var/datum/entity/player/cause_player = get_player_from_key(cause_data?.ckey)
 	if(cause_player)
 		new_death.cause_player_id = cause_player.id
-	new_death.cause_role_name = cause_data.role
-	new_death.cause_faction_name = cause_data.faction
+	new_death.cause_role_name = cause_data?.role
+	new_death.cause_faction_name = cause_data?.faction
 
-	var/mob/cause_mob = cause_data.resolve_mob()
+	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob)
-		cause_mob.life_kills_total += 1
+		cause_mob.life_kills_total += life_value
 
 	if(getBruteLoss())
 		new_death.total_brute = round(getBruteLoss())

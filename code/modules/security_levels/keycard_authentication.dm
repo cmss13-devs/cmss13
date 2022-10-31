@@ -9,7 +9,7 @@
 	var/screen = 1
 	var/confirmed = 0 //This variable is set by the device that confirms the request.
 	var/confirm_delay = 20 //(2 seconds)
-	var/busy = 0 //Busy when waiting for authentication or an event request has been sent from this device.
+	var/busy = FALSE //Busy when waiting for authentication or an event request has been sent from this device.
 	var/obj/structure/machinery/keycard_auth/event_source
 	var/mob/event_triggered_by
 	var/mob/event_confirmed_by
@@ -125,7 +125,7 @@
 	if(inoperable())
 		return
 	event_source = source
-	busy = 1
+	busy = TRUE
 	active = 1
 	icon_state = "auth_on"
 
@@ -134,7 +134,7 @@
 	event_source = null
 	icon_state = "auth_off"
 	active = 0
-	busy = 0
+	busy = FALSE
 
 /obj/structure/machinery/keycard_auth/proc/trigger_event()
 	switch(event)
@@ -175,7 +175,7 @@ var/global/maint_all_access = 1
 	name = "CORSAT automated biohazard override"
 	card_type = /obj/item/card/data/corsat
 	announce_title = "CORSAT Security Authority automated announcement"
-	window_desc = "This device is used to override the CORSAT automated lockdown. It requires both of the authentication disks, which can be found in the offices of various heads of deparments around the station."
+	window_desc = "This device is used to override the CORSAT automated lockdown. It requires both of the authentication disks, which can be found in the offices of various heads of departments around the station."
 	desc = "This device is used override the CORSAT automatic biohazard lockdown."
 
 /obj/structure/machinery/keycard_auth/lockdown/prison

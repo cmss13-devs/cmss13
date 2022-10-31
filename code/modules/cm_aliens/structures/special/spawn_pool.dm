@@ -29,11 +29,10 @@
 		linked_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	linked_hive.spawn_pool = src
 
-/obj/effect/alien/resin/special/pool/examine(mob/user)
-	..()
+/obj/effect/alien/resin/special/pool/get_examine_text(mob/user)
+	. = ..()
 	if(isXeno(user) || isobserver(user))
-		var/message = "It has [linked_hive.stored_larva] more larvae to grow."
-		to_chat(user, message)
+		. += "It has [linked_hive.stored_larva] more larvae to grow."
 
 /obj/effect/alien/resin/special/pool/attackby(obj/item/I, mob/user)
 	if(!istype(I, /obj/item/grab) || !isXeno(user))
@@ -60,8 +59,8 @@
 		if(H.spawned_corpse)
 			to_chat(user, SPAN_XENOWARNING("This one does not look suitable!"))
 			return
-
-		larva_amount += 1
+		user.stop_pulling() // disrupt any grabs
+		larva_amount++
 	if(isXeno(M))
 		if(!linked_hive || M.stat != DEAD)
 			return
@@ -95,7 +94,7 @@
 	vis_contents += melting_body
 	update_icon()
 	new /obj/effect/overlay/temp/acid_pool_splash(loc)
-	playsound(src, 'sound/effects/slosh.ogg', 25, 1)
+	playsound(src, 'sound/effects/acidpool.ogg', 25, 1)
 
 	linked_hive.stored_larva += larva_amount
 
@@ -131,17 +130,17 @@
 	if(!melting_body)
 		return
 
-	melting_body.pixel_y -= 1
+	melting_body.pixel_y--
 	playsound(src, 'sound/bullets/acid_impact1.ogg', 25)
-	iterations -= 1
+	iterations--
 	if(!iterations)
 		vis_contents.Cut()
 
 		for(var/atom/movable/A in melting_body.contents_recursive()) // Get rid of any unacidable objects so we don't delete them
-			if(isobj(A))
-				var/obj/O = A
-				if(O.unacidable)
-					O.forceMove(get_turf(loc))
+			if(isitem(A))
+				var/obj/item/item = A
+				if(item.is_objective && item.unacidable)
+					item.forceMove(get_step(loc, pick(alldirs)))
 
 		QDEL_NULL(melting_body)
 	else
@@ -160,7 +159,7 @@
 			return FALSE
 
 		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from \the [src]!"),
-		SPAN_XENODANGER("You emerge out of the [src] and awaken from your slumber. For the Hive!"))
+		SPAN_XENODANGER("You emerge out of \the [src] and awaken from your slumber. For the Hive!"))
 		msg_admin_niche("[key_name(new_xeno)] emerged from \a [src]. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))

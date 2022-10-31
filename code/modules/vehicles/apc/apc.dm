@@ -172,6 +172,12 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	FPW.dir = turn(V.dir, 90)
 	FPW.name = "Left "+ initial(FPW.name)
 	FPW.origins = list(2, 0)
+	FPW.muzzle_flash_pos = list(
+		"1" = list(-18, 14),
+		"2" = list(18, -42),
+		"4" = list(34, 3),
+		"8" = list(-32, -34)
+	)
 
 	FPW = new
 	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_TWO
@@ -179,6 +185,12 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	FPW.dir = turn(V.dir, -90)
 	FPW.name = "Right "+ initial(FPW.name)
 	FPW.origins = list(-2, 0)
+	FPW.muzzle_flash_pos = list(
+		"1" = list(16, 14),
+		"2" = list(-18, -42),
+		"4" = list(34, -34),
+		"8" = list(-32, 2)
+	)
 
 /obj/effect/vehicle_spawner/apc/Initialize()
 	. = ..()
@@ -191,8 +203,8 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	load_misc(APC)
 	load_fpw(APC)
-	handle_direction(APC)
 	load_hardpoints(APC)
+	handle_direction(APC)
 	APC.update_icon()
 
 //PRESET: FPWs, wheels installed
@@ -205,8 +217,8 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	load_misc(APC)
 	load_fpw(APC)
-	handle_direction(APC)
 	load_hardpoints(APC)
+	handle_direction(APC)
 	load_damage(APC)
 	APC.update_icon()
 
@@ -232,16 +244,21 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 /obj/effect/vehicle_spawner/apc/unarmed/spawn_vehicle()
 	var/obj/vehicle/multitile/apc/unarmed/APC = new (loc)
 
+	load_misc(APC)
 	load_hardpoints(APC)
 	handle_direction(APC)
 	APC.update_icon()
+
+/obj/effect/vehicle_spawner/apc/unarmed/load_hardpoints(var/obj/vehicle/multitile/apc/V)
+	return
 
 //PRESET: default hardpoints, destroyed
 /obj/effect/vehicle_spawner/apc/unarmed/decrepit/spawn_vehicle()
 	var/obj/vehicle/multitile/apc/unarmed/APC = new (loc)
 
-	handle_direction(APC)
+	load_misc(APC)
 	load_hardpoints(APC)
+	handle_direction(APC)
 	load_damage(APC)
 	APC.update_icon()
 

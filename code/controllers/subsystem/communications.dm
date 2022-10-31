@@ -74,6 +74,7 @@ var/const/PMC_FREQ 		= 1235
 var/const/WY_FREQ 		= 1236
 var/const/DUT_FREQ 		= 1340
 var/const/ERT_FREQ 		= 1342
+var/const/VAI_FREQ		= 1218
 var/const/RUS_FREQ		= 1338
 var/const/CLF_FREQ		= 1339
 var/const/DTH_FREQ 		= 1344
@@ -114,50 +115,51 @@ var/const/COLONY_FREQ	= 1469
 var/const/MAX_FREE_FREQ = 1599 // -------------------------------------------------
 
 var/list/radiochannels = list(
-	"Response Team" = ERT_FREQ,
-	"Yautja" 		= YAUT_FREQ,
-	"WY" 			= WY_FREQ,
-	"WY PMC" 		= PMC_FREQ,
-	"SpecOps" 		= DTH_FREQ,
-	"UPP" 			= RUS_FREQ,
-	"CLF"			= CLF_FREQ,
-	"DD"			= DUT_FREQ,
-	"HighCom"		= HC_FREQ,
-	"CCT"			= CCT_FREQ, // HvH JTAC Equiv
+	RADIO_CHANNEL_ERT  			= ERT_FREQ,
+	RADIO_CHANNEL_YAUTJA		= YAUT_FREQ,
+	RADIO_CHANNEL_WY			= WY_FREQ,
+	RADIO_CHANNEL_WY_PMC		= PMC_FREQ,
+	RADIO_CHANNEL_VAI			= VAI_FREQ,
+	RADIO_CHANNEL_SPECOPS		= DTH_FREQ,
+	RADIO_CHANNEL_UPP			= RUS_FREQ,
+	RADIO_CHANNEL_CLF			= CLF_FREQ,
+	RADIO_CHANNEL_DUTCH_DOZEN	= DUT_FREQ,
+	RADIO_CHANNEL_HIGHCOM		= HC_FREQ,
+	RADIO_CHANNEL_CCT			= CCT_FREQ, // HvH JTAC Equiv
 
-	"Almayer"		= PUB_FREQ,
-	"Command"		= COMM_FREQ,
-	"MedSci"		= MED_FREQ,
-	"Engi"			= ENG_FREQ,
-	"MP"			= SEC_FREQ,
-	"Req"			= SUP_FREQ,
-	"JTAC"			= JTAC_FREQ,
-	"Intel" 		= INTEL_FREQ,
+	RADIO_CHANNEL_ALMAYER		= PUB_FREQ,
+	RADIO_CHANNEL_COMMAND		= COMM_FREQ,
+	RADIO_CHANNEL_MEDSCI		= MED_FREQ,
+	RADIO_CHANNEL_ENGI			= ENG_FREQ,
+	RADIO_CHANNEL_MP			= SEC_FREQ,
+	RADIO_CHANNEL_REQ			= SUP_FREQ,
+	RADIO_CHANNEL_JTAC			= JTAC_FREQ,
+	RADIO_CHANNEL_INTEL 		= INTEL_FREQ,
 
-	SQUAD_MARINE_1	= ALPHA_FREQ,
-	SQUAD_MARINE_2	= BRAVO_FREQ,
-	SQUAD_MARINE_3	= CHARLIE_FREQ,
-	SQUAD_MARINE_4	= DELTA_FREQ,
-	SQUAD_MARINE_5	= ECHO_FREQ,
-	SQUAD_MARINE_CRYO		= CRYO_FREQ,
-	SQUAD_MARSOC	= MARSOC_FREQ,
+	SQUAD_MARINE_1				= ALPHA_FREQ,
+	SQUAD_MARINE_2				= BRAVO_FREQ,
+	SQUAD_MARINE_3				= CHARLIE_FREQ,
+	SQUAD_MARINE_4				= DELTA_FREQ,
+	SQUAD_MARINE_5				= ECHO_FREQ,
+	SQUAD_MARINE_CRYO			= CRYO_FREQ,
+	SQUAD_MARSOC				= MARSOC_FREQ,
 
-	SQUAD_MARINE_1	= ALPHA_FREQ,
-	SQUAD_MARINE_2	= BRAVO_FREQ,
-	SQUAD_MARINE_3	= CHARLIE_FREQ,
-	SQUAD_MARINE_4	= DELTA_FREQ,
-	SQUAD_MARINE_5	= ECHO_FREQ,
-	SQUAD_MARINE_CRYO		= CRYO_FREQ,
-	SQUAD_MARSOC	= MARSOC_FREQ,
+	SQUAD_MARINE_1				= ALPHA_FREQ,
+	SQUAD_MARINE_2				= BRAVO_FREQ,
+	SQUAD_MARINE_3				= CHARLIE_FREQ,
+	SQUAD_MARINE_4				= DELTA_FREQ,
+	SQUAD_MARINE_5				= ECHO_FREQ,
+	SQUAD_MARINE_CRYO			= CRYO_FREQ,
+	SQUAD_MARSOC				= MARSOC_FREQ,
 
-	"Alamo"			= DS1_FREQ,
-	"Normandy"		= DS2_FREQ,
+	RADIO_CHANNEL_ALAMO			= DS1_FREQ,
+	RADIO_CHANNEL_NORMANDY 		= DS2_FREQ,
 
-	"Colony"		= COLONY_FREQ
+	RADIO_CHANNEL_COLONY		= COLONY_FREQ
 )
 
 // central command channels, i.e deathsquid & response teams
-#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
+#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, VAI_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
 
 // Antag channels, i.e. Syndicate
 #define ANTAG_FREQS list()
@@ -173,11 +175,11 @@ var/list/radiochannels = list(
 //Other devices can then choose to send signals to only those devices that belong to a particular filter.
 //This is done for performance, so we don't send signals to lots of machines unnecessarily.
 
-//This filter is special because devices belonging to default also recieve signals sent to any other filter.
+//This filter is special because devices belonging to default also receive signals sent to any other filter.
 var/const/RADIO_DEFAULT = "radio_default"
 
 var/const/RADIO_TO_AIRALARM = "radio_airalarm" //air alarms
-var/const/RADIO_FROM_AIRALARM = "radio_airalarm_rcvr" //devices interested in recieving signals from air alarms
+var/const/RADIO_FROM_AIRALARM = "radio_airalarm_rcvr" //devices interested in receiving signals from air alarms
 var/const/RADIO_CHAT = "radio_telecoms"
 var/const/RADIO_ATMOSIA = "radio_atmos"
 var/const/RADIO_NAVBEACONS = "radio_navbeacon"
@@ -209,6 +211,7 @@ SUBSYSTEM_DEF(radio)
 		"[JTAC_FREQ]" = "jtacradio",
 		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
+		"[VAI_FREQ]" = "vairadio",
 		"[RUS_FREQ]" = "syndradio",
 		"[CLF_FREQ]" = "clfradio",
 		"[CCT_FREQ]" = "cctradio",

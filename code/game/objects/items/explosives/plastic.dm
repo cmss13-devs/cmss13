@@ -52,7 +52,7 @@
 		if(istimer(detonator.a_right) || istimer(detonator.a_left))
 			detonator.attack_self(user)
 		return
-	var/new_time = input(usr, "Please set the timer.", "Timer", min_timer) as num
+	var/new_time = tgui_input_number(usr, "Please set the timer.", "Timer", min_timer, 60, min_timer)
 	if(new_time < min_timer)
 		new_time = min_timer
 	else if(new_time > 60)
@@ -62,7 +62,7 @@
 
 /obj/item/explosive/plastic/afterattack(atom/target, mob/user, flag)
 	setDir(get_dir(user, target))
-	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(src))
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting it!"))
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
@@ -288,7 +288,8 @@
 			qdel(src)
 		return
 
-	plant_target.ex_act(2000, dir, cause_data)
+	var/datum/cause_data/temp_cause = create_cause_data(cause_data.cause_name, cause_data.weak_mob.resolve())
+	plant_target.ex_act(2000, dir, temp_cause)
 
 	for(var/turf/closed/wall/W in orange(1, target_turf))
 		if(W.hull)
@@ -304,7 +305,7 @@
 	for(var/obj/structure/machinery/door/D in orange(1, target_turf))
 		D.ex_act(1000 * penetration, , cause_data)
 
-	handle_explosion(target_turf, dir, cause_data)
+	handle_explosion(target_turf, dir, temp_cause)
 
 /obj/item/explosive/plastic/proc/handle_explosion(turf/target_turf, dir, cause_data)
 	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)

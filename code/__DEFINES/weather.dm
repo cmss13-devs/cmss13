@@ -1,7 +1,7 @@
 // Holds defines related to weather
 
 
-// Probabilities of a weather event occuring each tick, per map
+// Probabilities of a weather event occurring each tick, per map
 #define PROB_WEATHER_SOROKYNE 100 //Map specific defines go here.
 
 #define WEATHER_TYPE_NO_WEATHER 0

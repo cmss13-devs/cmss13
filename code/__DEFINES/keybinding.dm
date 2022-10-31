@@ -36,6 +36,7 @@
 
 //Communication
 #define COMSIG_KB_CLIENT_OOC_DOWN "keybinding_client_ooc_down"
+#define COMSIG_KB_CLIENT_LOOC_DOWN "keybinding_client_looc_down"
 #define COMSIG_KB_CLIENT_SAY_DOWN "keybinding_client_say_down"
 #define COMSIG_KB_CLIENT_ME_DOWN "keybinding_client_me_down"
 #define COMSIG_KB_CLIENT_WHISPER_DOWN "keybinding_client_whisper_down"
@@ -44,6 +45,7 @@
 #define COMSIG_KB_HUMAN_QUICKEQUIP_DOWN "keybinding_human_quickequip_down"
 #define COMSIG_KB_HUMAN_SECONDARY_DOWN "keybinding_human_secondary_down"
 #define COMSIG_KB_HUMAN_TERTIARY_DOWN "keybinding_human_tertiary_down"
+#define COMSIG_KB_HUMAN_QUATERNARY_DOWN "keybinding_human_quaternary_down"
 #define COMSIG_KB_HUMAN_QUICK_EQUIP_DOWN "keybinding_human_quick_equip_down"
 
 #define COMSIG_KB_HUMAN_ISSUE_ORDER "keybinding_human_issue_order"
@@ -122,11 +124,50 @@
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_TWO "keybinding_xeno_primary_attack_two"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_THREE "keybinding_xeno_primary_attack_three"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR "keybinding_xeno_primary_attack_four"
+#define COMSIG_KB_XENO_PRIMARY_ATTACK_FIVE "keybinding_xeno_primary_attack_five"
 
-#define COMSIG_KB_XENO_EMIT_PHEROMONES "keybiding_xeno_emit_pheromones"
-#define COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY "keybiding_xeno_emit_pheromones_frenzy"
-#define COMSIG_KB_XENO_EMIT_PHEROMONES_WARDING "keybiding_xeno_emit_pheromones_warding"
-#define COMSIG_KB_XENO_EMIT_PHEROMONES_RECOVERY "keybiding_xeno_emit_pheromones_recovery"
+#define COMSIG_KB_XENO_EMIT_PHEROMONES "keybinding_xeno_emit_pheromones"
+#define COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY "keybinding_xeno_emit_pheromones_frenzy"
+#define COMSIG_KB_XENO_EMIT_PHEROMONES_WARDING "keybinding_xeno_emit_pheromones_warding"
+#define COMSIG_KB_XENO_EMIT_PHEROMONES_RECOVERY "keybinding_xeno_emit_pheromones_recovery"
 
 #define COMSIG_KB_XENO_CORROSIVE_ACID "keybinding_xeno_corrosive_acid"
 #define COMSIG_KB_XENO_TECH_SECRETE_RESIN "keybinding_xeno_tech_secrete_resin"
+#define COMSIG_KB_XENO_SCREECH "keybinding_xeno_screech"
+#define COMSIG_KB_TAIL_STAB "keybinding_tail_stab"
+
+// Yautja
+
+#define COMSIG_KB_YAUTJA_BUTCHER "keybinding_yautja_butcher"
+#define COMSIG_KB_YAUTJA_PRED_BUY "keybinding_yautja_pred_buy"
+#define COMSIG_KB_YAUTJA_MARK_PANEL "keybinding_yautja_mark_panel"
+#define COMSIG_KB_YAUTJA_MARK_FOR_HUNT "keybinding_yautja_mark_for_hunt"
+#define COMSIG_KB_YAUTJA_REMOVE_FROM_HUNT "keybinding_yautja_remove_from_hunt"
+
+// Yautja Bracer
+#define COMSIG_KB_YAUTJA_TOGGLE_NOTIFICATION_SOUND "keybinding_yautja_toggle_notification_sound"
+#define COMSIG_KB_YAUTJA_BRACER_MESSAGE "keybinding_yautja_bracer_message"
+#define COMSIG_KB_YAUTJA_WRISTBLADES "keybinding_yautja_wristblades"
+#define COMSIG_KB_YAUTJA_TRACK_GEAR "keybinding_yautja_track_gear"
+#define COMSIG_KB_YAUTJA_CLOAKER "keybinding_yautja_cloaker"
+#define COMSIG_KB_YAUTJA_CASTER "keybinding_yautja_caster"
+#define COMSIG_KB_YAUTJA_CHANGE_EXPLOSION_TYPE "keybinding_yautja_change_explosion_type"
+#define COMSIG_KB_YAUTJA_ACTIVATE_SUICIDE "keybinding_yautja_activate_suicide"
+#define COMSIG_KB_YAUTJA_INJECTORS "keybinding_yautja_injectors"
+#define COMSIG_KB_YAUTJA_CAPSULE "keybinding_yautja_capsule"
+#define COMSIG_KB_YAUTJA_CALL_DISK "keybinding_yautja_call_disk"
+#define COMSIG_KB_YAUTJA_REMOVE_TRACKED_ITEM "keybinding_yautja_remove_tracked_item"
+#define COMSIG_KB_YAUTJA_ADD_TRACKED_ITEM "keybinding_yautja_add_tracked_item"
+#define COMSIG_KB_YAUTJA_CALL_COMBI "keybinding_yautja_call_combi"
+#define COMSIG_KB_YAUTJA_TRANSLATE "keybinding_yautja_translate"
+#define COMSIG_KB_YAUTJA_BRACERNAME "keybinding_yautja_bracername"
+#define COMSIG_KB_YAUTJA_IDCHIP "keybinding_yautja_idchip"
+#define COMSIG_KB_YAUTJA_LINK_BRACER "keybinding_yautja_link_bracer"
+
+//mask
+#define COMSIG_KB_YAUTJA_MASK_TOGGLE_ZOOM "keybinding_yautja_mask_toggle_zoom"
+#define COMSIG_KB_YAUTJA_MASK_TOGGLESIGHT "keybinding_yautja_mask_togglesight"
+
+//misc yautja
+
+#define COMSIG_KB_YAUTJA_TELE_LOC "keybinding_yautja_tele_loc"

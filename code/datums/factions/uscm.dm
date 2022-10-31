@@ -40,6 +40,7 @@
 
 		H.langchat_color = squad_colors_chat[H.assigned_squad.color]
 
+		if(!marine_rk) marine_rk = H.rank_fallback
 		if(marine_rk)
 			var/image/IMG = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
 			if(squad_clr)
@@ -75,7 +76,7 @@
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
-			if(JOB_GENERAL)
+			if(JOB_GENERAL, JOB_COLONEL)
 				marine_rk = "general"
 				border_rk = "command"
 			if(JOB_INTEL)
@@ -99,6 +100,8 @@
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
+			if(JOB_TIS_IO,JOB_TIS_SA)
+				marine_rk = "tissa"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 				border_rk = "command"

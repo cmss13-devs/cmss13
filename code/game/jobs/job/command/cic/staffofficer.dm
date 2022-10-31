@@ -1,9 +1,9 @@
 /datum/job/command/bridge
 	title = JOB_SO
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 4
+	spawn_positions = 4
 	allow_additional = 1
-	scaled = 1
+	scaled = FALSE
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/so
 	entry_message_body = "Your job is to monitor the Marines, man the CIC, and listen to your superior officers. You are in charge of logistics and the overwatch system. You are also in line to take command after other eligible superior commissioned officers."
@@ -28,8 +28,7 @@
 
 AddTimelock(/datum/job/command/bridge, list(
 	JOB_SQUAD_LEADER = 1 HOURS,
-	JOB_HUMAN_ROLES = 15 HOURS,
-	JOB_POLICE_ROLES = 1 HOURS
+	JOB_HUMAN_ROLES = 15 HOURS
 ))
 
 /obj/effect/landmark/start/bridge

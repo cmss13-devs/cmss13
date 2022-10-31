@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(playtime)
 	while (currentrun.len)
 		var/client/C = currentrun[currentrun.len]
 		currentrun.len--
-		
+
 		var/mob/M = C.mob
 		var/datum/entity/player/P = C.player_data
 
@@ -23,16 +23,16 @@ SUBSYSTEM_DEF(playtime)
 			if(MC_TICK_CHECK)
 				return
 			continue
-		
+
 		var/datum/entity/player_time/PTime = LAZYACCESS(P.playtimes, M.job)
-		
+
 		if(!PTime)
 			PTime = DB_ENTITY(/datum/entity/player_time)
 			PTime.player_id = P.id
 			PTime.role_id = M.job
 			LAZYSET(P.playtimes, M.job, PTime)
-		
-		PTime.total_minutes += 1
+
+		PTime.total_minutes++
 		PTime.save()
 
 		if (MC_TICK_CHECK)

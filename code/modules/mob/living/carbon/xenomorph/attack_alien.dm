@@ -161,7 +161,7 @@
 
 			apply_damage(f_damage, BRUTE, affecting, sharp = 1, edge = 1) //This should slicey dicey
 			if(acid_damage)
-				playsound(loc, "acid_hit", 25, 1)
+				playsound(loc, "acid_strike", 25, 1)
 				var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
 				var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, acid_damage, armor_block_acid)
 				//nice messages so people know that armor works
@@ -282,7 +282,7 @@
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
-	if(stat != DEAD || chestburst || spawned_corpse)
+	if(stat != DEAD || chestburst)
 		return TRUE
 
 	if(status_flags & XENO_HOST)
@@ -352,6 +352,19 @@
 		M.apply_damage(10)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/barricade/handle_tail_stab(mob/living/carbon/Xenomorph/xeno)
+	take_damage((xeno.melee_damage_upper * 1.2) * brute_multiplier)
+	if(barricade_hitsound)
+		playsound(src, barricade_hitsound, 25, 1)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] stabs \the [src] apart!"), SPAN_DANGER("You stab \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] stabs \the [src] with its razor sharp tail!"), SPAN_DANGER("You stab \the [src] with your razor sharp tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	if(is_wired)
+		xeno.visible_message(SPAN_DANGER("The barbed wire slices into \the [xeno]'s tail!"), SPAN_DANGER("The barbed wire slices into your tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		xeno.apply_damage(5)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/surface/rack/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -398,7 +411,7 @@
 
 //Smashing lights
 /obj/structure/machinery/light/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(status == 2) //Ignore if broken. Note that we can't use defines here
+	if(is_broken()) //Ignore if broken. Note that we can't use defines here
 		return FALSE
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] smashes [src]!"), \
@@ -508,7 +521,7 @@
 /obj/structure/machinery/door/airlock/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/turf/cur_loc = M.loc
 	if(isElectrified())
-		if(shock(M, 70))
+		if(shock(M, 100))
 			return XENO_NO_DELAY_ACTION
 
 	if(!density)
@@ -552,10 +565,10 @@
 
 	if(!arePowerSystemsOn())
 		delay = 1 SECONDS
-		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, SOUND_FREQ_HIGH * 1.8)
+		playsound(loc, "alien_doorpry", 25, TRUE)
 	else
 		delay = 4 SECONDS
-		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
+		playsound(loc, "alien_doorpry", 25, TRUE)
 
 	M.visible_message(SPAN_WARNING("[M] digs into [src] and begins to pry it open."), \
 	SPAN_WARNING("You dig into [src] and begin to pry it open."), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -654,60 +667,97 @@
 //Exception is Queen and shuttles, because plot power
 /obj/structure/machinery/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(unslashable || health <= 0)
-		to_chat(M, SPAN_WARNING("You stare at [src] cluelessly."))
+		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
-		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		M.visible_message(SPAN_DANGER("[M] slices \the [src] apart!"), \
+		SPAN_DANGER("You slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		if(!unacidable)
 			qdel(src)
 	else
-		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
-		SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] \the [src]!"), \
+		SPAN_DANGER("You [M.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-
+// Destroying reagent dispensers
 /obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(unslashable || health <= 0)
-		to_chat(M, SPAN_WARNING("You stare at [src] cluelessly."))
+		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
-		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		M.visible_message(SPAN_DANGER("[M] slices \the [src] apart!"), \
+		SPAN_DANGER("You slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		if(!unacidable)
 			qdel(src)
 	else
-		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
-		SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] \the [src]!"), \
+		SPAN_DANGER("You [M.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-
+// Destroying filing cabinets
 /obj/structure/filingcabinet/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(unslashable || health <= 0)
-		to_chat(M, SPAN_WARNING("You stare at [src] cluelessly."))
+		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
-		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		M.visible_message(SPAN_DANGER("[M] slices \the [src] apart!"), \
+		SPAN_DANGER("You slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		if(!unacidable)
 			qdel(src)
 	else
-		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
-		SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] \the [src]!"), \
+		SPAN_DANGER("You [M.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
+// Destroying morgues & crematoriums
+/obj/structure/morgue/attack_alien(mob/living/carbon/Xenomorph/alien)
+	if(unslashable)
+		to_chat(alien, SPAN_WARNING("You stare at \the [src] cluelessly."))
+		return XENO_NO_DELAY_ACTION
+
+	var destroyloc = loc
+	alien.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(rand(alien.melee_damage_lower, alien.melee_damage_upper))
+	if(health <= 0)
+		alien.visible_message(SPAN_DANGER("[alien] slices \the [src] apart!"), \
+		SPAN_DANGER("You slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		new /obj/item/stack/sheet/metal(destroyloc, 2)
+	else
+		alien.visible_message(SPAN_DANGER("[alien] [alien.slashes_verb] \the [src]!"), \
+		SPAN_DANGER("You [alien.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return XENO_ATTACK_ACTION
+
+// Destroying hydroponics trays
+/obj/structure/machinery/portable_atmospherics/hydroponics/attack_alien(mob/living/carbon/Xenomorph/alien)
+	if(unslashable)
+		to_chat(alien, SPAN_WARNING("You stare at \the [src] cluelessly."))
+		return XENO_NO_DELAY_ACTION
+
+	alien.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(rand(alien.melee_damage_lower, alien.melee_damage_upper))
+	if(health <= 0)
+		alien.visible_message(SPAN_DANGER("[alien] slices \the [src] apart!"), \
+		SPAN_DANGER("You slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		if(!unacidable)
+			qdel(src)
+	else
+		alien.visible_message(SPAN_DANGER("[alien] [alien.slashes_verb] \the [src]!"), \
+		SPAN_DANGER("You [alien.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return XENO_ATTACK_ACTION
 
 /datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/Xenomorph/M, shuttle_tag)
 	if(!queen_locked) //we have not hijacked it yet
@@ -822,7 +872,7 @@
 		update_icon()
 		visible_message(SPAN_DANGER("[src]'s cover swings open, exposing the wires!"), null, null, 5)
 	else
-		beenhit += 1
+		beenhit++
 	return XENO_ATTACK_ACTION
 
 /obj/structure/ladder/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -843,7 +893,7 @@
 	M.visible_message("[M] slashes away at [src]!","You slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
 	health  = max(health - rand(M.melee_damage_lower, M.melee_damage_upper), 0)
 	if(!health)
-		playsound(src, "shatter", 70, 1)
+		playsound(src, "glassbreak", 70, 1)
 		damaged = TRUE
 		if(is_lit)
 			SetLuminosity(0)
@@ -864,22 +914,21 @@
 	if(M.a_intent == INTENT_HELP || !bleed_layer)
 		return XENO_NO_DELAY_ACTION
 
-	M.visible_message(SPAN_NOTICE("[M] starts clearing out [src]."), \
-	SPAN_NOTICE("You start clearing out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	M.visible_message(SPAN_NOTICE("[M] starts clearing out \the [src]..."), SPAN_NOTICE("You start \the clearing out [src]..."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-	xeno_attack_delay(M)
 
-	if(!do_after(M, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		return XENO_NO_DELAY_ACTION
+	while(bleed_layer > 0)
+		xeno_attack_delay(M)
+		if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			return XENO_NO_DELAY_ACTION
 
-	if(!bleed_layer)
-		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
-		return XENO_NO_DELAY_ACTION
+		if(!bleed_layer)
+			to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
+			return XENO_NO_DELAY_ACTION
 
-	M.visible_message(SPAN_NOTICE("[M] clears out [src]."), \
-	SPAN_NOTICE("You clear out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
-	bleed_layer -= 1
-	update_icon(1, 0)
+		bleed_layer--
+		update_icon(1, 0)
+
 	return XENO_NO_DELAY_ACTION
 
 /turf/open/snow/attack_larva(mob/living/carbon/Xenomorph/Larva/M)

@@ -256,7 +256,7 @@
 
 	X.frozen = TRUE
 	X.update_canmove()
-	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, null, null, FALSE, 1, FALSE, 1))
+	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
 		to_chat(X, SPAN_XENOWARNING("You cancel your abduct."))
 		apply_cooldown()
 
@@ -552,30 +552,31 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/prae_dodge/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!istype(X) || !X.check_state())
+	if (!istype(xeno) || !xeno.check_state())
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	if (X.mutation_type != PRAETORIAN_DANCER)
+	if (xeno.mutation_type != PRAETORIAN_DANCER)
 		return
 
-	var/datum/behavior_delegate/praetorian_dancer/BD = X.behavior_delegate
-	if (!istype(BD))
+	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
+	if (!istype(behavior))
 		return
 
-	BD.dodge_activated = TRUE
-	to_chat(X, SPAN_XENOHIGHDANGER("You can now dodge through mobs!"))
-	X.speed_modifier -= speed_buff_amount
-	X.add_temp_pass_flags(PASS_MOB_THRU)
-	X.recalculate_speed()
+	behavior.dodge_activated = TRUE
+	button.icon_state = "template_active"
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You can now dodge through mobs!"))
+	xeno.speed_modifier -= speed_buff_amount
+	xeno.add_temp_pass_flags(PASS_MOB_THRU)
+	xeno.recalculate_speed()
 
 	addtimer(CALLBACK(src, .proc/remove_effects), duration)
 
@@ -583,25 +584,26 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/prae_dodge/proc/remove_effects()
-	var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
+	var/mob/living/carbon/Xenomorph/xeno = owner
 
-	if (!istype(X))
+	if (!istype(xeno))
 		return
 
-	if (X.mutation_type != PRAETORIAN_DANCER)
+	if (xeno.mutation_type != PRAETORIAN_DANCER)
 		return
 
-	var/datum/behavior_delegate/praetorian_dancer/BD = X.behavior_delegate
-	if (!istype(BD))
+	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
+	if (!istype(behavior))
 		return
 
-	if (BD.dodge_activated)
-		BD.dodge_activated = FALSE
-		X.speed_modifier += speed_buff_amount
-		X.remove_temp_pass_flags(PASS_MOB_THRU)
-		X.recalculate_speed()
-		to_chat(X, SPAN_XENOHIGHDANGER("You can no longer dodge through mobs!"))
+	if (behavior.dodge_activated)
+		behavior.dodge_activated = FALSE
+		button.icon_state = "template"
+		xeno.speed_modifier += speed_buff_amount
+		xeno.remove_temp_pass_flags(PASS_MOB_THRU)
+		xeno.recalculate_speed()
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You can no longer dodge through mobs!"))
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -866,4 +868,151 @@
 
 	apply_cooldown()
 	..()
+	return
+
+/datum/action/xeno_action/activable/prae_retrieve/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!istype(X))
+		return
+
+	var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
+	if(!istype(BD))
+		return
+
+	if(X.observed_xeno != null)
+		to_chat(X, SPAN_XENOHIGHDANGER("You cannot retrieve sisters through overwatch!"))
+		return
+
+	if(!isXeno(A) || !X.can_not_harm(A))
+		to_chat(X, SPAN_XENODANGER("You must target one of your sisters!"))
+		return
+
+	if(A == X)
+		to_chat(X, SPAN_XENODANGER("You cannot retrieve yourself!"))
+		return
+
+	if(X.anchored)
+		to_chat(X, SPAN_XENODANGER("That sister cannot move!"))
+		return
+
+	if(!(A in view(7, X)))
+		to_chat(X, SPAN_XENODANGER("That sister is too far away!"))
+		return
+
+	var/mob/living/carbon/Xenomorph/targetXeno = A
+
+	if(!(targetXeno.resting || targetXeno.stat == UNCONSCIOUS))
+		if(targetXeno.mob_size > MOB_SIZE_BIG)
+			to_chat(X, SPAN_WARNING("[targetXeno] is too big to retrieve while standing up!"))
+			return
+
+	if(targetXeno.stat == DEAD)
+		to_chat(X, SPAN_WARNING("[targetXeno] is already dead!"))
+		return
+
+	if(!action_cooldown_check() || X.action_busy)
+		return
+
+	if(!X.check_state())
+		return
+
+	if(!check_plasma_owner())
+		return
+
+	if(!BD.use_internal_hp_ability(retrieve_cost))
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	// Build our turflist
+	var/list/turf/turflist = list()
+	var/list/telegraph_atom_list = list()
+	var/facing = get_dir(X, A)
+	var/reversefacing = get_dir(A, X)
+	var/turf/T = X.loc
+	var/turf/temp = X.loc
+	for(var/x in 0 to max_distance)
+		temp = get_step(T, facing)
+		if(facing in diagonals) // check if it goes through corners
+			var/reverse_face = reverse_dir[facing]
+			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
+			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
+			if((!back_left || back_left.density) && (!back_right || back_right.density))
+				break
+		if(!temp || temp.density || temp.opacity)
+			break
+
+		var/blocked = FALSE
+		for(var/obj/structure/S in temp)
+			if(S.opacity || ((istype(S, /obj/structure/barricade) || istype(S, /obj/structure/machinery/door)) && S.density))
+				blocked = TRUE
+				break
+		if(blocked)
+			to_chat(X, SPAN_XENOWARNING("You can't reach [targetXeno] with your resin retrieval hook!"))
+			return
+
+		T = temp
+
+		if(T in turflist)
+			break
+
+		turflist += T
+		facing = get_dir(T, A)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/green(T, windup)
+
+	if(!length(turflist))
+		to_chat(X, SPAN_XENOWARNING("You don't have any room to do your retrieve!"))
+		return
+
+	X.visible_message(SPAN_XENODANGER("[X] prepares to fire its resin retrieval hook at [A]!"), SPAN_XENODANGER("You prepare to fire your resin retrieval hook at [A]!"))
+	X.emote("roar")
+
+	var/throw_target_turf = get_step(X.loc, facing)
+	var/turf/behind_turf = get_step(X.loc, reversefacing)
+	if(!(behind_turf.density))
+		throw_target_turf = behind_turf
+
+	X.frozen = TRUE
+	X.update_canmove()
+	if(windup)
+		if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
+			to_chat(X, SPAN_XENOWARNING("You cancel your retrieve."))
+			apply_cooldown()
+
+			for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
+				telegraph_atom_list -= XT
+				qdel(XT)
+
+			X.frozen = FALSE
+			X.update_canmove()
+
+			return
+
+	X.frozen = FALSE
+	X.update_canmove()
+
+	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
+
+	var/successful_retrieve = FALSE
+	for(var/turf/target_turf in turflist)
+		if(targetXeno in target_turf)
+			successful_retrieve = TRUE
+			break
+
+	if(!successful_retrieve)
+		to_chat(X, SPAN_XENOWARNING("You can't reach [targetXeno] with your resin retrieval hook!"))
+		return
+
+	to_chat(targetXeno, SPAN_XENOBOLDNOTICE("You are pulled toward [X]!"))
+
+	shake_camera(targetXeno, 10, 1)
+	var/throw_dist = get_dist(throw_target_turf, targetXeno)-1
+	if(throw_target_turf == behind_turf)
+		throw_dist++
+		to_chat(X, SPAN_XENOBOLDNOTICE("You fling [targetXeno] over your head with your resin hook, and they land behind you!"))
+	else
+		to_chat(X, SPAN_XENOBOLDNOTICE("You fling [targetXeno] towards you with your resin hook, and they in front of you!"))
+	targetXeno.throw_atom(throw_target_turf, throw_dist, SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
+	apply_cooldown()
 	return

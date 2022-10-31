@@ -122,7 +122,7 @@
 
 /obj/structure/closet/crate/secure/explosives
 	name = "explosives crate"
-	desc = "A explosives crate"
+	desc = "An explosives crate"
 	icon_state = "secure_locked_explosives"
 	icon_opened = "secure_open_explosives"
 	icon_locked = "secure_locked_explosives"

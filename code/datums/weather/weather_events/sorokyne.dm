@@ -3,7 +3,7 @@
     name = "Snow"
     display_name = "Snow"
     length = 10 MINUTES
-    fullscreen_type = /obj/screen/fullscreen/weather/snow
+    fullscreen_type = /atom/movable/screen/fullscreen/weather/snow
     effect_type = /datum/effects/weather/snow
     turf_overlay_icon_state = "strata_snowing"
 
@@ -11,7 +11,7 @@
     name = "Snowstorm"
     display_name = "Snowstorm"
     length = 6 MINUTES
-    fullscreen_type = /obj/screen/fullscreen/weather/snowstorm
+    fullscreen_type = /atom/movable/screen/fullscreen/weather/snowstorm
     effect_type = /datum/effects/weather/snowstorm
     turf_overlay_icon_state = "strata_storm"
 
@@ -19,6 +19,6 @@
     name = "Blizzard"
     display_name = "Blizzard"
     length = 4 MINUTES
-    fullscreen_type = /obj/screen/fullscreen/weather/blizzard
+    fullscreen_type = /atom/movable/screen/fullscreen/weather/blizzard
     turf_overlay_icon_state = "strata_blizzard"
     effect_type = /datum/effects/weather/snow

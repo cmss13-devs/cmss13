@@ -90,7 +90,7 @@
 
 /obj/item/map/FOP_map_v3
 	name = "\improper Fiorina Orbital Civilian Annex Map"
-	desc = "A scan produced by the the Almayer's sensor array of the Fiorina Orbital Penitentiary Civilian Annex. It appears to have broken off from the rest of the station and is now in free geo-sync orbit around the planet."
+	desc = "A scan produced by the Almayer's sensor array of the Fiorina Orbital Penitentiary Civilian Annex. It appears to have broken off from the rest of the station and is now in free geo-sync orbit around the planet."
 	html_link = "images/e/e0/Prison_Station_Science_Annex.png"
 	color = "#e88a10"
 
@@ -150,7 +150,7 @@
 			color = "#e88a10"
 		if(MAP_PRISON_STATION_V3)
 			name = "\improper Fiorina Orbital Penitentiary Map"
-			desc = "A scan produced by the the Almayer's sensor array of the Fiorina Orbital Penitentiary Civilian Annex. It appears to have broken off from the rest of the station and is now in free geo-sync orbit around the planet."
+			desc = "A scan produced by the Almayer's sensor array of the Fiorina Orbital Penitentiary Civilian Annex. It appears to have broken off from the rest of the station and is now in free geo-sync orbit around the planet."
 			html_link = "images/e/e0/Prison_Station_Science_Annex.png"
 			color = "#e88a10"
 		if(MAP_DESERT_DAM)

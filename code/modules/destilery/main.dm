@@ -13,7 +13,7 @@
 	var/list/obj/item/reagent_container/food/input = list()
 	var/list/obj/item/reagent_container/food/output = list()
 	var/obj/item/reagent_container/food/milled_item
-	var/busy = 0
+	var/busy = FALSE
 	var/progress = 0
 	var/error = 0
 	name = "\improper Mill"
@@ -39,7 +39,7 @@
 			milled_item = input[1]
 			input -= milled_item
 			progress = 0
-			busy = 1
+			busy = TRUE
 			update_use_power(2)
 		return
 
@@ -58,7 +58,7 @@
 			error = 1
 
 	QDEL_NULL(milled_item)
-	busy = 0
+	busy = FALSE
 
 /obj/structure/machinery/mill/attackby(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
@@ -84,7 +84,7 @@
 	var/list/obj/item/reagent_container/food/output = list()
 	var/obj/item/reagent_container/food/fermenting_item
 	var/water_level = 0
-	var/busy = 0
+	var/busy = FALSE
 	var/progress = 0
 	var/error = 0
 	name = "\improper Fermenter"
@@ -110,7 +110,7 @@
 			fermenting_item = input[1]
 			input -= fermenting_item
 			progress = 0
-			busy = 1
+			busy = TRUE
 			update_use_power(2)
 		return
 
@@ -131,7 +131,7 @@
 			error = 1
 
 	QDEL_NULL(fermenting_item)
-	busy = 0
+	busy = FALSE
 
 /obj/structure/machinery/fermenter/attackby(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
@@ -153,7 +153,7 @@
 	var/list/obj/item/reagent_container/food/input = list()
 	var/list/obj/item/reagent_container/food/output = list()
 	var/obj/item/reagent_container/food/destilling_item
-	var/busy = 0
+	var/busy = FALSE
 	var/progress = 0
 	var/error = 0
 	name = "\improper Still"
@@ -179,7 +179,7 @@
 			destilling_item = input[1]
 			input -= destilling_item
 			progress = 0
-			busy = 1
+			busy = TRUE
 			update_use_power(2)
 		return
 
@@ -195,7 +195,7 @@
 			error = 1
 
 	QDEL_NULL(destilling_item)
-	busy = 0
+	busy = FALSE
 
 /obj/structure/machinery/still/attackby(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
@@ -218,7 +218,7 @@
 	var/list/obj/item/reagent_container/food/input = list()
 	var/obj/item/reagent_container/food/squeezed_item
 	var/water_level = 0
-	var/busy = 0
+	var/busy = FALSE
 	var/progress = 0
 	var/error = 0
 	name = "\improper Squeezer"
@@ -240,7 +240,7 @@
 	var/list/obj/item/reagent_container/food/input = list()
 	var/list/obj/item/reagent_container/food/output = list()
 	var/obj/item/reagent_container/food/spinning_item
-	var/busy = 0
+	var/busy = FALSE
 	var/progress = 0
 	var/error = 0
 	var/enzymes = 0
@@ -264,7 +264,7 @@
 			spinning_item = input[1]
 			input -= spinning_item
 			progress = 0
-			busy = 1
+			busy = TRUE
 			update_use_power(2)
 		return
 
@@ -279,7 +279,7 @@
 		spinning_item.reagents.remove_reagent("enzyme",transfer_enzymes)
 
 	output += spinning_item
-	busy = 0
+	busy = FALSE
 
 /obj/structure/machinery/centrifuge/attackby(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))

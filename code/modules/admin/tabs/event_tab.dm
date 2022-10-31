@@ -92,11 +92,11 @@
 		if("Big Bomb")
 			explosion(epicenter, 3, 5, 7, 5, , , , cause_data)
 		if("Custom Bomb")
-			var/power = input(src, "Power?", "Power?") as num
+			var/power = tgui_input_number(src, "Power?", "Power?")
 			if(!power)
 				return
 
-			var/falloff = input(src, "Falloff?", "Falloff?") as num
+			var/falloff = tgui_input_number(src, "Falloff?", "Falloff?")
 			if(!falloff)
 				return
 
@@ -118,7 +118,7 @@
 	set name = "EM Pulse"
 	set category = "Admin.Fun"
 
-	if(!check_rights(R_DEBUG|R_FUN))
+	if(!check_rights(R_DEBUG|R_ADMIN))
 		return
 
 	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
@@ -199,7 +199,7 @@
 	if (!SSticker.mode)
 		return
 
-	if(!check_rights(R_FUN)) // Seems more like an event thing than an admin thing
+	if(!check_rights(R_SPAWN)) // Seems more like an event thing than an admin thing
 		return
 
 	var/list/list_of_calls = list()
@@ -292,7 +292,7 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 
-	var/points_to_add = input(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0) as num
+	var/points_to_add = tgui_input_real_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
 	if(points_to_add == 0)
 		return
 	else if((supply_controller.points + points_to_add) < 0)
@@ -308,8 +308,8 @@
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
 
 /datum/admins/proc/admin_force_selfdestruct()
-	set name = "Self Destruct"
-	set desc = "Trigger self destruct countdown. This should not be done if the self destruct has already been called."
+	set name = "Self-Destruct"
+	set desc = "Trigger self-destruct countdown. This should not be done if the self-destruct has already been called."
 	set category = "Admin.Events"
 
 	if(!SSticker.mode || !check_rights(R_ADMIN) || get_security_level() == "delta")
@@ -320,7 +320,7 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	message_staff("[key_name_admin(usr)] admin-started self destruct system.")
+	message_staff("[key_name_admin(usr)] admin-started self-destruct system.")
 
 /client/proc/view_faxes()
 	set name = "View Faxes"
@@ -376,7 +376,34 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	give_medal_award()
+	give_medal_award(as_admin=TRUE)
+
+/client/proc/award_jelly()
+	if(!check_rights(R_ADMIN))
+		return
+
+	// Mostly replicated code from observer.dm.hive_status()
+	var/list/hives = list()
+	var/datum/hive_status/last_hive_checked
+
+	var/datum/hive_status/hive
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
+		if(hive.totalXenos.len > 0 || hive.totalDeadXenos.len > 0)
+			hives += list("[hive.name]" = hive.hivenumber)
+			last_hive_checked = hive
+
+	if(!length(hives))
+		to_chat(src, SPAN_ALERT("There seem to be no hives at the moment."))
+		return
+	else if(length(hives) > 1) // More than one hive, display an input menu for that
+		var/faction = tgui_input_list(src, "Select which hive to award", "Hive Choice", hives, theme="hive_status")
+		if(!faction)
+			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
+			return
+		last_hive_checked = GLOB.hive_datum[hives[faction]]
+
+	give_jelly_award(last_hive_checked, as_admin=TRUE)
 
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
@@ -490,7 +517,7 @@
 
 /client/proc/cmd_admin_xeno_report()
 	set name = "Report: Queen Mother"
-	set desc = "Basically a command announcement, but only for selected Xenos Hive"
+	set desc = "Basically a command announcement, but only for selected Xeno's Hive"
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
@@ -614,7 +641,7 @@
 	set name = "Toggle Remote Control"
 	set category = "Admin.Events"
 
-	if(!check_rights(R_FUN))
+	if(!check_rights(R_SPAWN))
 		return
 
 	remote_control = !remote_control
@@ -639,7 +666,7 @@
 // ----------------------------
 
 /datum/admins/proc/event_panel()
-	if(!check_rights(R_FUN,0))
+	if(!check_rights(R_ADMIN,0))
 		return
 
 	var/dat = {"
@@ -670,6 +697,7 @@
 		<BR>
 		<B>Misc</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<BR>
@@ -701,7 +729,7 @@
 		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
 				<A href='?src=\ref[src];[HrefToken()];chem_panel=make_report'>Make Chem Report</A><br>
 				<br>"}
-	if(check_rights(R_FUN,0))
+	if(check_rights(R_ADMIN,0))
 		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=create_random_reagent'>Generate Reagent</A><br>
 				<br>
 				<A href='?src=\ref[src];[HrefToken()];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>
@@ -801,17 +829,17 @@
 			var/obj/structure/ob_ammo/warhead/explosive/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "HE orbital warhead")
 			if(!OBShell.name) return//null check to cancel
-			OBShell.clear_power = input("How much explosive power should the wall clear blast have?", "Set clear power", 1200) as num|null
+			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200)
 			if(isnull(OBShell.clear_power)) return
-			OBShell.clear_falloff = input("How much falloff should the wall clear blast have?", "Set clear falloff", 400) as num|null
+			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
 			if(isnull(OBShell.clear_falloff)) return
-			OBShell.standard_power = input("How much explosive power should the main blasts have?", "Set blast power", 600) as num|null
+			OBShell.standard_power = tgui_input_number(src, "How much explosive power should the main blasts have?", "Set blast power", 600)
 			if(isnull(OBShell.standard_power)) return
-			OBShell.standard_falloff = input("How much falloff should the main blasts have?", "Set blast falloff", 30) as num|null
+			OBShell.standard_falloff = tgui_input_number(src, "How much falloff should the main blasts have?", "Set blast falloff", 30)
 			if(isnull(OBShell.standard_falloff)) return
-			OBShell.clear_delay = input("How much delay should the clear blast have?", "Set clear delay", 3) as num|null
+			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
 			if(isnull(OBShell.clear_delay)) return
-			OBShell.double_explosion_delay = input("How much delay should the clear blast have?", "Set clear delay", 6) as num|null
+			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 6)
 			if(isnull(OBShell.double_explosion_delay)) return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
 			warhead = OBShell
@@ -820,15 +848,15 @@
 			var/obj/structure/ob_ammo/warhead/cluster/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Cluster orbital warhead")
 			if(!OBShell.name) return//null check to cancel
-			OBShell.total_amount = input("How many salvos should be fired?", "Set cluster number", 60) as num|null
+			OBShell.total_amount = tgui_input_number(src, "How many salvos should be fired?", "Set cluster number", 60)
 			if(isnull(OBShell.total_amount)) return
-			OBShell.instant_amount = input("How many shots per salvo? (Max 10)", "Set shot count", 3) as num|null
+			OBShell.instant_amount = tgui_input_number(src, "How many shots per salvo? (Max 10)", "Set shot count", 3)
 			if(isnull(OBShell.instant_amount)) return
 			if(OBShell.instant_amount > 10)
 				OBShell.instant_amount = 10
-			OBShell.explosion_power = input("How much explosive power should the blasts have?", "Set blast power", 300) as num|null
+			OBShell.explosion_power = tgui_input_number(src, "How much explosive power should the blasts have?", "Set blast power", 300)
 			if(isnull(OBShell.explosion_power)) return
-			OBShell.explosion_falloff = input("How much falloff should the blasts have?", "Set blast falloff", 150) as num|null
+			OBShell.explosion_falloff = tgui_input_number(src, "How much falloff should the blasts have?", "Set blast falloff", 150)
 			if(isnull(OBShell.explosion_falloff)) return
 			statsmessage = "Custom Cluster OB ([OBShell.name]) Stats from [key_name(usr)]: Salvos: [OBShell.total_amount], Shot per Salvo: [OBShell.instant_amount], Explosion Power: [OBShell.explosion_power], Explosion Falloff: [OBShell.explosion_falloff]."
 			warhead = OBShell
@@ -837,19 +865,19 @@
 			var/obj/structure/ob_ammo/warhead/incendiary/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Incendiary orbital warhead")
 			if(!OBShell.name) return//null check to cancel
-			OBShell.clear_power = input("How much explosive power should the wall clear blast have?", "Set clear power", 1200) as num|null
+			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200)
 			if(isnull(OBShell.clear_power)) return
-			OBShell.clear_falloff = input("How much falloff should the wall clear blast have?", "Set clear falloff", 400) as num|null
+			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
 			if(isnull(OBShell.clear_falloff)) return
-			OBShell.clear_delay = input("How much delay should the clear blast have?", "Set clear delay", 3) as num|null
+			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
 			if(isnull(OBShell.clear_delay)) return
-			OBShell.distance = input("How many tiles radius should the fire be? (Max 30)", "Set fire radius", 18) as num|null
+			OBShell.distance = tgui_input_number(src, "How many tiles radius should the fire be? (Max 30)", "Set fire radius", 18)
 			if(isnull(OBShell.distance)) return
 			if(OBShell.distance > 30)
 				OBShell.distance = 30
-			OBShell.fire_level = input("How long should the fire last?", "Set fire duration", 70) as num|null
+			OBShell.fire_level = tgui_input_number(src, "How long should the fire last?", "Set fire duration", 70)
 			if(isnull(OBShell.fire_level)) return
-			OBShell.burn_level = input("How damaging should the fire be?", "Set fire strength", 80) as num|null
+			OBShell.burn_level = tgui_input_number(src, "How damaging should the fire be?", "Set fire strength", 80)
 			if(isnull(OBShell.burn_level)) return
 			var/list/firetypes = list("white","blue","red","green","custom")
 			OBShell.fire_type = tgui_input_list(usr, "Select the fire color:", "Fire color", firetypes)

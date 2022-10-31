@@ -31,9 +31,9 @@
 	. = ..()
 	populate_deck()
 
-/obj/item/toy/deck/examine(mob/user)
+/obj/item/toy/deck/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("There are <b>[length(cards)]</b> cards remaining in the deck."))
+	. += SPAN_NOTICE("There are <b>[length(cards)]</b> cards remaining in the deck.")
 
 /obj/item/toy/deck/proc/populate_deck()
 	var/card_id = 1
@@ -133,7 +133,7 @@
 		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
 		return
 
-	var/num_cards = input(user, "How many cards do you want to draw? ([cards_length] remaining)", "Card Drawing") as null|num
+	var/num_cards = tgui_input_number(user, "How many cards do you want to draw? ([cards_length] remaining)", "Card Drawing", 1, cards_length, 1)
 	cards_length = length(cards)
 	if(!cards_length)
 		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
@@ -268,7 +268,7 @@
 	var/pile_state = FALSE
 	var/list/datum/playing_card/cards = list()
 
-/obj/item/toy/handcard/get_examine_line()
+/obj/item/toy/handcard/get_examine_line(mob/user)
 	. = ..()
 	if(!concealed)
 		. += " ([length(cards)] card\s)"
@@ -394,18 +394,18 @@
 		return
 	usr.put_in_hands(src)
 
-/obj/item/toy/handcard/examine(mob/user)
-	..()
+/obj/item/toy/handcard/get_examine_text(mob/user)
+	. = ..()
 	if(length(cards))
-		to_chat(user, SPAN_NOTICE("It has <b>[length(cards)]</b> cards."))
+		. += SPAN_NOTICE("It has <b>[length(cards)]</b> cards.")
 		if(pile_state)
 			if(!concealed)
-				to_chat(user, SPAN_NOTICE("The top card is <b>[cards[length(cards)].name]</b>."))
+				. += SPAN_NOTICE("The top card is <b>[cards[length(cards)].name]</b>.")
 		else if(loc == user)
 			var/card_names = list()
 			for(var/datum/playing_card/P as anything in cards)
 				card_names += P.name
-			to_chat(user, SPAN_NOTICE("The cards are: [english_list(card_names)]"))
+			. += SPAN_NOTICE("The cards are: [english_list(card_names)]")
 
 
 /obj/item/toy/handcard/update_icon(var/direction = 0)

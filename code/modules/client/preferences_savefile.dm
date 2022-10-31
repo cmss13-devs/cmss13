@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	17
+#define SAVEFILE_VERSION_MAX	18
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -62,6 +62,12 @@
 				language_traits = null
 		S["traits"] << language_traits
 
+	if(savefile_version < 18) // adds ambient occlusion by default
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
+		S["toggle_prefs"] << pref_toggles
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -117,6 +123,8 @@
 	S["fps"]				>> fps
 	S["ghost_vision_pref"]	>> ghost_vision_pref
 	S["ghost_orbit"]		>> ghost_orbit
+
+	S["human_name_ban"] >> human_name_ban
 
 	S["xeno_prefix"]		>> xeno_prefix
 	S["xeno_postfix"]		>> xeno_postfix
@@ -206,7 +214,7 @@
 	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
-	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Commodore's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
+	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
 	sea_path			= sanitize_inlist(sea_path, list("Command", "Technical"), initial(sea_path))
 	yautja_status		= sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status		= sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
@@ -267,6 +275,8 @@
 	S["fps"]				<< fps
 	S["ghost_vision_pref"]	<< ghost_vision_pref
 	S["ghost_orbit"]		<< ghost_orbit
+
+	S["human_name_ban"] << human_name_ban
 
 	S["xeno_prefix"]		<< xeno_prefix
 	S["xeno_postfix"]		<< xeno_postfix

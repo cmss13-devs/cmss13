@@ -27,7 +27,7 @@
 
 /mob/living/simple_animal/parrot
 	name = "\improper Parrot"
-	desc = "The parrot squaks, \"It's a Parrot! BAWWK!\""
+	desc = "The parrot squawks, \"It's a Parrot! BAWWK!\""
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "parrot_fly"
 	icon_living = "parrot_fly"

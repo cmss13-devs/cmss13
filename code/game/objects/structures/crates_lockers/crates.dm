@@ -159,7 +159,7 @@
 
 /obj/structure/closet/crate/ammo/alt/flame
 	name = "ammunitions crate"
-	desc = "An black crate. Warning, contents are flammable!"
+	desc = "A black crate. Warning, contents are flammable!"
 	icon_state = "closed_ammo_alt2"
 	icon_opened = "open_ammo_alt"//does not have its own unique icon
 	icon_closed = "closed_ammo_alt2"
@@ -201,7 +201,7 @@
 
 /obj/structure/closet/crate/explosives
 	name = "explosives crate"
-	desc = "A explosives crate"
+	desc = "An explosives crate"
 	icon_state = "closed_explosives"
 	icon_opened = "open_explosives"
 	icon_closed = "closed_explosives"
@@ -247,7 +247,7 @@
 
 /obj/structure/closet/crate/internals
 	name = "internals crate"
-	desc = "A internals crate."
+	desc = "An internals crate."
 	icon_state = "closed_oxygen"
 	icon_opened = "open_oxygen"
 	icon_closed = "closed_oxygen"

@@ -9,7 +9,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	//load text from file
 	var/list/Lines = file2list("config/admin_ranks.txt")
 
-	//process each line seperately
+	//process each line separately
 	for(var/line in Lines)
 		if(!length(line))				continue
 		if(copytext(line,1,2) == "#")	continue
@@ -29,7 +29,6 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 				if("buildmode","build")			rights |= R_BUILDMODE
 				if("admin")						rights |= R_ADMIN
 				if("ban")						rights |= R_BAN
-				if("fun")						rights |= R_FUN
 				if("server")					rights |= R_SERVER
 				if("debug")						rights |= R_DEBUG
 				if("permissions","rights")		rights |= R_PERMISSIONS
@@ -38,7 +37,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 				if("rejuv","rejuvinate")		rights |= R_REJUVINATE
 				if("color")						rights |= R_COLOR
 				if("varedit")					rights |= R_VAREDIT
-				if("everything","host","all")	rights |= (R_HOST|R_BUILDMODE|R_ADMIN|R_BAN|R_FUN|R_SERVER|R_DEBUG|R_PERMISSIONS|R_POSSESS|R_STEALTH|R_REJUVINATE|R_COLOR|R_VAREDIT|R_SOUNDS|R_SPAWN|R_MOD|R_MENTOR)
+				if("everything","host","all")	rights |= (R_HOST|R_BUILDMODE|R_ADMIN|R_BAN|R_SERVER|R_DEBUG|R_PERMISSIONS|R_POSSESS|R_STEALTH|R_REJUVINATE|R_COLOR|R_VAREDIT|R_SOUNDS|R_SPAWN|R_MOD|R_MENTOR)
 				if("sound","sounds")			rights |= R_SOUNDS
 				if("nolock")					rights |= R_NOLOCK
 				if("spawn","create")			rights |= R_SPAWN
@@ -70,7 +69,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	var/list/ALines = file2list("config/admins.txt")
 	var/list/MLines = file2list("config/mentors.txt")
 
-	//process each line seperately
+	//process each line separately
 	for(var/line in MLines)
 		process_rank_file(line, TRUE)
 	for(var/line in ALines)

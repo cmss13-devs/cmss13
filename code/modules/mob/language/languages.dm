@@ -83,7 +83,7 @@
 
 /datum/language/sainja //Yautja tongue
 	name = LANGUAGE_YAUTJA
-	desc = "The deep, rumbling, gutteral sounds of the Yautja predators. It is difficult to speak for those without facial mandibles."
+	desc = "The deep, rumbling, guttural sounds of the Yautja predators. It is difficult to speak for those without facial mandibles."
 	speech_verb = "rumbles"
 	ask_verb = "rumbles"
 	exclaim_verb = "roars"

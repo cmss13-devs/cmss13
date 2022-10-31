@@ -1,5 +1,5 @@
 //=================================================
-//Self destruct, nuke, and evacuation.
+//Self-destruct, nuke, and evacuation.
 #define EVACUATION_TIME_LOCK 			1 HOURS
 #define DISTRESS_TIME_LOCK 				6 MINUTES
 #define SHUTTLE_TIME_LOCK 				15 MINUTES
@@ -22,6 +22,10 @@
 
 #define FLAGS_EVACUATION_DENY 1
 #define FLAGS_SELF_DESTRUCT_DENY 2
+
+#define LIFEBOAT_LOCKED -1
+#define LIFEBOAT_INACTIVE 0
+#define LIFEBOAT_ACTIVE 1
 
 #define XENO_ROUNDSTART_PROGRESS_AMOUNT 			2
 #define XENO_ROUNDSTART_PROGRESS_TIME_1 			0
@@ -86,6 +90,7 @@
 #define TOGGLE_MEMBER_PUBLIC				(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
 #define TOGGLE_OOC_FLAG						(1<<12) // determines if your country flag appears by your name in ooc chat
 #define TOGGLE_MIDDLE_MOUSE_SWAP_HANDS		(1<<13) //Toggle whether middle click swaps your hands
+#define TOGGLE_AMBIENT_OCCLUSION            (1<<14) // toggles if ambient occlusion is turned on or off
 //=================================================
 
 var/list/be_special_flags = list(
@@ -94,7 +99,7 @@ var/list/be_special_flags = list(
 )
 
 #define AGE_MIN 19			//youngest a character can be
-#define AGE_MAX 160			//oldest a character can be
+#define AGE_MAX 90			//oldest a character can be //no. you are not allowed to be 160.
 //Number of marine players against which the Marine's gear scales
 #define MARINE_GEAR_SCALING_NORMAL 30
 #define MAX_GEAR_COST 7 //Used in chargen for loadout limit.
@@ -125,7 +130,7 @@ var/global/list/ROLES_ENGINEERING 	= list(JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH,
 var/global/list/ROLES_REQUISITION 	= list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH, JOB_WO_CHIEF_REQUISITION, JOB_WO_REQUISITION)
 var/global/list/ROLES_MEDICAL 	  	= list(JOB_CMO, JOB_RESEARCHER, JOB_DOCTOR, JOB_NURSE, JOB_WO_CMO, JOB_WO_RESEARCHER, JOB_WO_DOCTOR)
 var/global/list/ROLES_MARINES	  	= list(JOB_SQUAD_LEADER, JOB_SQUAD_RTO, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE)
-var/global/list/ROLES_SQUAD_ALL	  	= list(SQUAD_MARINE_1, SQUAD_MARINE_2, SQUAD_MARINE_3, SQUAD_MARINE_4, SQUAD_MARINE_5)
+var/global/list/ROLES_SQUAD_ALL	  	= list(SQUAD_MARINE_1, SQUAD_MARINE_2, SQUAD_MARINE_3, SQUAD_MARINE_4, SQUAD_MARINE_5, SQUAD_MARINE_CRYO)
 
 var/global/list/ROLES_XENO	  		= list(JOB_XENOMORPH_QUEEN, JOB_XENOMORPH)
 var/global/list/ROLES_WHITELISTED	= list(JOB_SYNTH_SURVIVOR, JOB_PREDATOR)

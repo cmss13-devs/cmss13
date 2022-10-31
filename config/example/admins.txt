@@ -1,4 +1,6 @@
 ######################################################################
+# This document should be placed in the /config/ folder to have effect.    #
+# Lines starting with # are comments                                 #
 # Basically, ckey goes first. Rank goes after the "-"                #
 # Case is not important for ckey.                                    #
 # Case IS important for the rank. However punctuation/spaces are not #

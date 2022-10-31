@@ -30,10 +30,10 @@
 		N.name = job_name
 		humans_killed["[job_name]"] = N
 	var/datum/entity/statistic/S = humans_killed["[job_name]"]
-	S.value += 1
+	S.value++
 	if(job)
 		count_personal_human_kill(job_name, cause, job)
-	total_kills += 1
+	total_kills++
 
 /datum/entity/player_stats/proc/count_xeno_kill(var/caste, var/cause, var/job)
 	if(!caste)
@@ -43,10 +43,10 @@
 		N.name = caste
 		xenos_killed["[caste]"] = N
 	var/datum/entity/statistic/S = xenos_killed["[caste]"]
-	S.value += 1
+	S.value++
 	if(job)
 		count_personal_xeno_kill(caste, cause, job)
-	total_kills += 1
+	total_kills++
 
 //*****************
 //Mob Procs - death
@@ -57,7 +57,7 @@
 	for(var/datum/entity/statistic/death/stat_entity in death_list)
 		if(!stat_entity.cause_name)
 			continue
-		causes["[stat_entity.cause_name]"] += 1
+		causes["[stat_entity.cause_name]"]++
 		if(!nemesis)
 			nemesis = new()
 			nemesis.name = stat_entity.cause_name

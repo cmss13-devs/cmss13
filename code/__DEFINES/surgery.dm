@@ -3,7 +3,7 @@
 ///checks if the item has a path that can be specifically used in a surgery step and is not flagged to not message on failed init - ex. cable coil, trauma kits etc.
 #define is_surgery_init_tool(W) (is_type_in_typecache(W, GLOB.surgical_init_tools))
 
-///Multiplier to surgery times when working on yourself. 
+///Multiplier to surgery times when working on yourself.
 #define SELF_SURGERY_SLOWDOWN 1.5
 
 ///No incision.
@@ -92,6 +92,7 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 ///Tools used to close incisions. May need surgical line in future. Check /datum/surgery_step/cauterize var/tools_lit if adding activatable tools.
 #define SURGERY_TOOLS_CAUTERIZE list(\
 	/obj/item/tool/surgery/cautery = SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/tool/surgery/wound_clamp	= SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/scalpel/laser = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/clothing/mask/cigarette = SURGERY_TOOL_MULT_SUBOPTIMAL,\
 	/obj/item/tool/lighter = SURGERY_TOOL_MULT_SUBSTITUTE,\
@@ -164,4 +165,24 @@ See also /datum/surgery_step/saw_off_limb/failure var/list/cannot_hack, listing 
 #define SURGERY_TOOLS_BONE_MEND list(\
 	/obj/item/tool/surgery/bonegel = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/screwdriver = SURGERY_TOOL_MULT_SUBSTITUTE\
+	)
+
+/////////////////////////////
+//	 	Medicomp steps	   //
+/////////////////////////////
+#define SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND	list(\
+	/obj/item/tool/surgery/stabilizer_gel = SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/tool/surgery/bonegel = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
+	)
+
+#define SURGERY_TOOLS_MEDICOMP_MEND_WOUND	list(\
+	/obj/item/tool/surgery/healing_gun	= SURGERY_TOOL_MULT_IDEAL,\
+	)
+
+#define SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND	list(\
+	/obj/item/tool/surgery/wound_clamp	= SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/tool/surgery/cautery = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/tool/lighter = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/tool/weldingtool = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
 	)

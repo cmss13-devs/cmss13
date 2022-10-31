@@ -57,6 +57,8 @@
 
 /obj/structure/machinery/cryo_cell/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
+	if(inoperable())
+		return UI_DISABLED
 	if(user == occupant)
 		return UI_CLOSE //can't use it from inside!
 

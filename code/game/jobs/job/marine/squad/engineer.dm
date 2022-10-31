@@ -40,3 +40,19 @@ AddTimelock(/datum/job/marine/engineer, list(
 	name = JOB_SQUAD_ENGI
 	icon_state = "engi_spawn"
 	job = /datum/job/marine/engineer
+
+/obj/effect/landmark/start/marine/engineer/alpha
+	icon_state = "engi_spawn_alpha"
+	squad = SQUAD_MARINE_1
+
+/obj/effect/landmark/start/marine/engineer/bravo
+	icon_state = "engi_spawn_bravo"
+	squad = SQUAD_MARINE_2
+
+/obj/effect/landmark/start/marine/engineer/charlie
+	icon_state = "engi_spawn_charlie"
+	squad = SQUAD_MARINE_3
+
+/obj/effect/landmark/start/marine/engineer/delta
+	icon_state = "engi_spawn_delta"
+	squad = SQUAD_MARINE_4

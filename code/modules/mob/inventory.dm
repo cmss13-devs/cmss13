@@ -21,12 +21,11 @@
 	if(!l_hand)
 		if(W.loc == src && !(W.flags_item & DELONDROP))
 			W.dropped(src)
-
+		W.pickup(src)
 		W.forceMove(src)
 		l_hand = W
 		W.layer = ABOVE_HUD_LAYER
 		W.plane = ABOVE_HUD_PLANE
-		W.pickup(src)
 		W.equipped(src,WEAR_L_HAND)
 		update_inv_l_hand()
 		return TRUE
@@ -41,12 +40,11 @@
 	if(!r_hand)
 		if(W.loc == src && !(W.flags_item & DELONDROP))
 			W.dropped(src)
-
+		W.pickup(src)
 		W.forceMove(src)
 		r_hand = W
 		W.layer = ABOVE_HUD_LAYER
 		W.plane = ABOVE_HUD_PLANE
-		W.pickup(src)
 		W.equipped(src,WEAR_R_HAND)
 		update_inv_r_hand()
 		return TRUE

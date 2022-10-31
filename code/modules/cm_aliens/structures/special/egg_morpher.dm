@@ -14,6 +14,13 @@
 	var/huggers_to_grow_max = 12
 	var/mob/captured_mob
 	var/datum/shape/rectangle/range_bounds
+
+	var/hugger_timelock = 15 MINUTES
+
+	var/last_marine_count = -5 MINUTES
+	var/marine_count_cooldown = 2 MINUTES
+	var/playable_hugger_limit = 4
+
 	appearance_flags = KEEP_TOGETHER
 	layer = LYING_BETWEEN_MOB_LAYER
 
@@ -37,10 +44,10 @@
 
 	. = ..()
 
-/obj/effect/alien/resin/special/eggmorph/examine(mob/user)
-	..()
+/obj/effect/alien/resin/special/eggmorph/get_examine_text(mob/user)
+	. = ..()
 	if(isXeno(user) || isobserver(user))
-		to_chat(user, "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow.")
+		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow."
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/grab))
@@ -66,7 +73,7 @@
 				return
 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
 				return
-			visible_message(SPAN_DANGER("\The [src] churns as it begins digest \the [M], spitting out foul smelling fumes!"))
+			visible_message(SPAN_DANGER("\The [src] churns as it begins digest \the [M], spitting out foul-smelling fumes!"))
 			playsound(src, "alien_drool", 25)
 			if(captured_mob)
 				//Get rid of what we have there, we're overwriting it
@@ -89,11 +96,11 @@
 				to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
 				return
 			if(user)
-				visible_message(SPAN_XENOWARNING("[user] slides [F] back into [src]."), \
-					SPAN_XENONOTICE("You place the child back into [src]."))
+				visible_message(SPAN_XENOWARNING("[user] slides [F] back into \the [src]."), \
+					SPAN_XENONOTICE("You place the child back into \the [src]."))
 				user.temp_drop_inv_item(F)
 			else
-				visible_message(SPAN_XENOWARNING("[F] crawls back into [src]!"))
+				visible_message(SPAN_XENOWARNING("[F] crawls back into \the [src]!"))
 			stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 			qdel(F)
 		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
@@ -119,17 +126,17 @@
 		return
 	last_spawned = world.time
 	if(huggers_to_grow > 0)
-		huggers_to_grow -= 1
+		huggers_to_grow--
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 		if(huggers_to_grow <= 0)
 			visible_message(SPAN_DANGER("\The [src] groans as its contents are reduced to nothing!"))
 			vis_contents.Cut()
 
-			for(var/atom/movable/A in captured_mob.contents_recursive()) // Get rid of any unacidable objects so we don't delete them
-				if(isobj(A))
-					var/obj/O = A
-					if(O.unacidable)
-						O.forceMove(get_turf(loc))
+			for(var/atom/movable/A in captured_mob.contents_recursive()) // Get rid of any intel objects so we don't delete them
+				if(isitem(A))
+					var/obj/item/item = A
+					if(item.is_objective && item.unacidable)
+						item.forceMove(get_step(loc, pick(alldirs)))
 
 			QDEL_NULL(captured_mob)
 			update_icon()
@@ -174,5 +181,42 @@
 		new /obj/item/clothing/mask/facehugger(loc, linked_hive.hivenumber)
 		return XENO_NONCOMBAT_ACTION
 	..()
+
+/obj/effect/alien/resin/special/eggmorph/attack_ghost(mob/dead/observer/user)
+	if(world.time < hugger_timelock)
+		to_chat(user, SPAN_WARNING("The hive cannot support huggers yet..."))
+		return
+	if(world.time - user.timeofdeath < 3 MINUTES)
+		var/time_left = round((user.timeofdeath + 3 MINUTES - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. ([time_left] seconds left)"))
+		return
+	if(!stored_huggers)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any huggers to inhabit."))
+		return
+
+	if(world.time > last_marine_count + marine_count_cooldown)
+		var/marine_count = 0
+		for(var/mob/mob as anything in GLOB.human_mob_list)
+			if(mob.job in ROLES_MARINES)
+				marine_count++
+		playable_hugger_limit = round(marine_count / 5)
+
+	var/current_hugger_count = 0
+	for(var/mob/mob as anything in GLOB.living_xeno_list)
+		if(isXenoFacehugger(mob))
+			current_hugger_count++
+	if(playable_hugger_limit <= current_hugger_count)
+		to_chat(user, SPAN_WARNING("\The [src] cannot support more huggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
+		return
+
+	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") == "No")
+		return
+
+	var/mob/living/carbon/Xenomorph/Facehugger/hugger = new /mob/living/carbon/Xenomorph/Facehugger(loc, null, linked_hive.hivenumber)
+	user.mind.transfer_to(hugger, TRUE)
+	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [src]!"), SPAN_XENODANGER("You emerge out of \the [src] and awaken from your slumber. For the Hive!"))
+	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
+	hugger.generate_name()
+	stored_huggers--
 
 #undef EGGMORPG_RANGE

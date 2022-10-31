@@ -41,7 +41,7 @@
 
 /obj/item/clothing/under/rank/worker_overalls
 	name = "worker overalls"
-	desc = "An outfit fit for the hard working man."
+	desc = "An outfit fit for the hard-working man."
 	icon_state = "worker_overalls"
 	item_state = "bl_suit"
 	flags_jumpsuit = FALSE

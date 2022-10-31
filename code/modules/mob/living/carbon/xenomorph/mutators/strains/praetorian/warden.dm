@@ -14,6 +14,7 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/spray_acid/prae_warden,
 		/datum/action/xeno_action/activable/warden_heal,
+		/datum/action/xeno_action/activable/prae_retrieve,
 		/datum/action/xeno_action/onclick/prae_switch_heal_type,
 		/datum/action/xeno_action/onclick/emit_pheromones
 	)

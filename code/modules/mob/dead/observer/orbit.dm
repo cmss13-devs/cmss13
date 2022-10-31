@@ -10,7 +10,8 @@
 /datum/orbit_menu/ui_state(mob/user)
 	return GLOB.observer_state
 
-/datum/orbit_menu/proc/ui_interact(mob/user, datum/tgui/ui)
+/datum/orbit_menu/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "Orbit")
@@ -35,7 +36,7 @@
 				owner.do_observe(poi)
 			. = TRUE
 		if("refresh")
-			update_static_data()
+			update_static_data(owner)
 			. = TRUE
 		if("toggle_observe")
 			auto_observe = !auto_observe
@@ -43,6 +44,7 @@
 				owner.do_observe(owner.orbit_target)
 			else
 				owner.reset_perspective(null)
+			. = TRUE
 
 
 

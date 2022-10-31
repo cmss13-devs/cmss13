@@ -82,6 +82,12 @@
 	icon_state = "rainbowsoft"
 	cap_color = "rainbow"
 
+/obj/item/clothing/head/soft/ferret
+	name = "\improper Ferret Heavy Industries trucker hat"
+	desc = "It's a trucker hat. They're becoming collector items since Ferret went under in 2180."
+	icon_state = "ferretsoft"
+	cap_color = "ferret"
+
 /obj/item/clothing/head/soft/sec
 	name = "security cap"
 	desc = "It's baseball hat in tasteful red color."

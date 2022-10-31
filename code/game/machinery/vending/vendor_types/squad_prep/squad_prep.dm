@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep
 	name = "\improper ColMarTech Automated Weapons Rack"
-	desc = "A automated weapon rack hooked up to a big storage of standard-issue weapons."
+	desc = "An automated weapon rack hooked up to a big storage of standard-issue weapons."
 	icon_state = "guns"
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_CARGO)
@@ -51,7 +51,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/training //Nonlethal stuff for events.
 	name = "\improper ColMarTech Automated Training Weapons Rack"
-	desc = "A automated weapon rack hooked up to a big storage of standard-issue weapons and non-lethal ammunition."
+	desc = "An automated weapon rack hooked up to a big storage of standard-issue weapons and non-lethal ammunition."
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/training/populate_product_list(var/scale)
 	listed_products = list(

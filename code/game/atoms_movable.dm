@@ -183,8 +183,8 @@
 /atom/movable/clone/attackby(obj/item/I, mob/living/user)
 	return src.mstr.attackby(I, user)
 
-/atom/movable/clone/examine(mob/user)
-	return src.mstr.examine(user)
+/atom/movable/clone/get_examine_text(mob/user)
+	return src.mstr.get_examine_text(user)
 
 /atom/movable/clone/bullet_act(obj/item/projectile/P)
 	return src.mstr.bullet_act(P)

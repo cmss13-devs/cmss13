@@ -78,7 +78,10 @@
 		update_icon()
 		return 1
 
-	if (istype(O, /obj/item/tool/weldingtool))
+	if (iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = O
 		if (WT.remove_fuel(0))
 			if(health < maxHealth)
@@ -121,12 +124,12 @@
 			if (O.damtype == HALLOSS)
 				damage = 0
 			apply_damage(damage, BRUTE)
-			for(var/mob/M in viewers(src, null))
+			for(var/mob/M as anything in viewers(src, null))
 				if ((M.client && !( M.blinded )))
 					M.show_message(SPAN_DANGER("\b [src] has been attacked with the [O] by [user]. "))
 		else
 			to_chat(usr, SPAN_DANGER("This weapon is ineffective, it does no damage."))
-			for(var/mob/M in viewers(src, null))
+			for(var/mob/M as anything in viewers(src, null))
 				if ((M.client && !( M.blinded )))
 					M.show_message(SPAN_DANGER("[user] gently taps [src] with the [O]. "))
 
@@ -139,7 +142,7 @@
 		src.name = "Spider-bot ([M.brainmob.name])"
 
 /mob/living/simple_animal/spiderbot/proc/explode(var/cause = "exploding") //When emagged.
-	for(var/mob/M in viewers(src, null))
+	for(var/mob/M as anything in viewers(src, null))
 		if ((M.client && !( M.blinded )))
 			M.show_message(SPAN_DANGER("[src] makes an odd warbling noise, fizzles, and explodes."))
 	explosion(get_turf(loc), -1, -1, 3, 5)
@@ -252,7 +255,7 @@
 	to_chat(src, SPAN_DANGER("There is nothing of interest to take."))
 	return 0
 
-/mob/living/simple_animal/spiderbot/examine(mob/user)
-	..()
+/mob/living/simple_animal/spiderbot/get_examine_text(mob/user)
+	. = ..()
 	if(held_item)
-		to_chat(user, "It is carrying \a [held_item] [icon2html(held_item, user)].")
+		. += "It is carrying \a [held_item] [icon2html(held_item, user)]."

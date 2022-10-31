@@ -69,7 +69,7 @@
 	B1.reagents.add_reagent("aluminum", 15)
 	B1.reagents.add_reagent("fuel",20)
 	B2.reagents.add_reagent("phoron", 15)
-	B2.reagents.add_reagent("sacid", 15)
+	B2.reagents.add_reagent("sulphuric acid", 15)
 	B1.reagents.add_reagent("fuel",20)
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src)

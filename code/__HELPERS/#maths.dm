@@ -19,6 +19,7 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 					)
 #define Ceiling(x) (-round(-x))
 #define Clamp(val, min_val, max_val) (max(min_val, min(val, max_val)))
+#define CLAMP01(x) (clamp(x, 0, 1))
 
 // cotangent
 #define Cot(x) (1 / Tan(x))

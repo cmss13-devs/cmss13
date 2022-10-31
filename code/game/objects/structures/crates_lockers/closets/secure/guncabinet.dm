@@ -12,9 +12,9 @@
 	req_access = list(ACCESS_MARINE_WO) //Trusting the CMP to be able to open the lockers on any alert level, just in case
 	var/req_level = SEC_LEVEL_GREEN
 
-/obj/structure/closet/secure_closet/guncabinet/examine()
-	..()
-	to_chat(usr, SPAN_NOTICE("[src] will only open on [num2seclevel(req_level)] security level."))
+/obj/structure/closet/secure_closet/guncabinet/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("[src] will only open on [num2seclevel(req_level)] security level.")
 
 /obj/structure/closet/secure_closet/guncabinet/Initialize()
 	. = ..()

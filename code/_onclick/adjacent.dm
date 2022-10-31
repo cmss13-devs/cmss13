@@ -271,7 +271,7 @@ Quick adjacency (to turf):
 				if(blocker.handle_barrier_chance())
 					return blocker
 			else
-				guaranteed_hit += 1
+				guaranteed_hit++
 				cur_dense_blockers += blocker
 				break
 		if (guaranteed_hit == 2)

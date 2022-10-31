@@ -7,7 +7,7 @@
 	unacidable = TRUE
 	layer = LOWER_ITEM_LAYER
 	var/turf/closed/wall/holed_wall
-	
+
 /obj/effect/acid_hole/Initialize()
 	. = ..()
 	if(istype(loc, /turf/closed/wall))
@@ -48,7 +48,7 @@
 	if(user.action_busy || user.lying)
 		return
 
-	playsound(src, 'sound/effects/metal_creaking.ogg', 25, 1)
+	playsound(src, "pry", 25, 1)
 	xeno_attack_delay(user)
 	if(do_after(user, 60, INTERRUPT_ALL, BUSY_ICON_GENERIC) && !QDELETED(src) && holed_wall && !user.lying && istype(holed_wall))
 		holed_wall.take_damage(rand(2000,3500))

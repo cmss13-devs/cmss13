@@ -2,7 +2,7 @@
 	name = "security camera"
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
-	icon_state = "camera"
+	icon_state = "autocam_editor"
 	use_power = 2
 	idle_power_usage = 5
 	active_power_usage = 10
@@ -53,6 +53,12 @@
 		ASSERT(src.network.len > 0)
 
 	set_pixel_location()
+	update_icon()
+
+/obj/structure/machinery/camera/update_icon()
+	. = ..()
+	if(icon_state == "autocam_editor")
+		icon_state = "camera"
 
 /obj/structure/machinery/camera/set_pixel_location()
 	switch(dir)
@@ -120,6 +126,9 @@
 		interact(user)
 
 	else if(iswelder(W) && canDeconstruct())
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(weld(W, user))
 			if(assembly)
 				assembly.forceMove(loc)

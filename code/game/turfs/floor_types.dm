@@ -48,7 +48,10 @@
 		var/obj/item/stack/cable_coil/coil = C
 		coil.turf_place(src, user)
 		return
-	if(istype(C, /obj/item/tool/weldingtool))
+	if(iswelder(C))
+		if(!HAS_TRAIT(C, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/welder = C
 		if(welder.isOn() && (broken || burnt))
 			if(welder.remove_fuel(0, user))
@@ -203,7 +206,7 @@
 /turf/open/floor/almayer/empty/is_weedable()
 	return NOT_WEEDABLE
 
-/turf/open/floor/almayer/empty/ex_act(severity) //Should make it indestructable
+/turf/open/floor/almayer/empty/ex_act(severity) //Should make it indestructible
 	return
 
 /turf/open/floor/almayer/empty/fire_act(exposed_temperature, exposed_volume)
@@ -338,7 +341,7 @@
 
 /turf/open/floor/wood/ship
 	name = "fake wooden floor"
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know."
+	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high-pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know."
 	tile_type = /obj/item/stack/tile/wood/fake
 
 /turf/open/floor/vault
@@ -564,7 +567,7 @@
 
 /turf/open/floor/interior/tatami
 	name = "tatami flooring"
-	desc = "A type of flooring often used in traditional japanese-style housing."
+	desc = "A type of flooring often used in traditional Japanese-style housing."
 	icon_state = "tatami"
 
 /turf/open/floor/interior/plastic

@@ -127,7 +127,7 @@
 				center_of_mass = "x=16;y=6"
 			if("sugar")
 				name = "Sugar"
-				desc = "Tastey space sugar!"
+				desc = "Tasty space sugar!"
 				center_of_mass = "x=16;y=6"
 			else
 				name = "Misc Condiment Bottle"
@@ -159,7 +159,7 @@
 	. = ..()
 	reagents.add_reagent("sugar", 50)
 
-/obj/item/reagent_container/food/condiment/saltshaker		//Seperate from above since it's a small shaker rather then
+/obj/item/reagent_container/food/condiment/saltshaker		//Separate from above since it's a small shaker rather then
 	name = "Salt Shaker"											//	a large one.
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"

@@ -59,7 +59,7 @@ var/global/dmm_suite/preloader/_preloader = new
 	if(!y_offset)
 		y_offset = 1
 	if(!z_offset)
-		world.maxz += 1
+		world.maxz++
 		z_offset = world.maxz
 
 	var/list/bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)

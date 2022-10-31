@@ -47,7 +47,7 @@
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs."))
 		return FALSE
 
-	var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos)
+	var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
 	if(!xeno_candidate)
 		return FALSE
@@ -188,7 +188,7 @@
 	wave_number = 7
 	wave_type = WO_STATIC_WAVE
 	number_of_xenos = 0
-	command_announcement = list("Major Ike Saker speaking, The Captain is still trying to try and get off world contact. An engineer platoon managed to destroy the main entrance into this valley this should give you a short break while the aliens find another way in. I have also recieved word that the 2nd 'Falling Falcons' Battalion. Should be near. I used to be stationed with them they are top notch!", "Major Ike Saker, 3rd Battalion Command, LV-624 Garrison")
+	command_announcement = list("Major Ike Saker speaking, The Captain is still trying to try and get off world contact. An engineer platoon managed to destroy the main entrance into this valley this should give you a short break while the aliens find another way in. I have also received word that the 2nd 'Falling Falcons' Battalion. Should be near. I used to be stationed with them they are top notch!", "Major Ike Saker, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave8
 	wave_number = 8

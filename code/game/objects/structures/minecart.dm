@@ -29,8 +29,8 @@
 		if(1 to 25)
 			overlays += "+small_amount"
 
-/obj/structure/minecart/examine(var/mob/user)
-	..()
+/obj/structure/minecart/get_examine_text(var/mob/user)
+	. = ..()
 	var/text
 	switch(round(amount * 100 / MINECART_MAX_PHORON))
 		if(99 to INFINITY)
@@ -44,7 +44,7 @@
 		else
 			text = "It appears to be empty."
 
-	to_chat(user, SPAN_NOTICE(text))
+	. += SPAN_NOTICE(text)
 
 /obj/structure/minecart/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)

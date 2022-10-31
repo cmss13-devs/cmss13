@@ -17,12 +17,23 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/paper,
 
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
+		/obj/item/tool/crew_monitor,
 		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/device/motiondetector,
+
 	)
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -129,7 +140,7 @@
 
 /obj/item/clothing/suit/storage/labcoat/researcher
 	name = "researcher's labcoat"
-	desc = "A high quality labcoat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
+	desc = "A high-quality labcoat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
 	icon_state = "sciencecoat"
 	item_state = "sciencecoat"
 
@@ -166,25 +177,27 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	allowed = list(
-		/obj/item/device/analyzer,
-		/obj/item/device/multitool,
-		/obj/item/device/pipe_painter,
-		/obj/item/device/t_scanner,
-		/obj/item/tool/screwdriver,
-		/obj/item/tool/weldingtool,
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/wrench,
-		/obj/item/clothing/mask/gas,
+		/obj/item/weapon/gun/,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
-		/obj/item/tool/pen,
-		/obj/item/device/binoculars,
 		/obj/item/tool/crew_monitor,
-		/obj/item/reagent_container/hypospray,
+		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/device/motiondetector,
 	)
 
 /obj/item/clothing/suit/storage/snow_suit/survivor
@@ -196,7 +209,7 @@
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_MEDIUM 
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS

@@ -1,16 +1,18 @@
-//returns 1 if this mob has sufficient access to use this object
+//returns TRUE if this mob has sufficient access to use this object
+//returns FALSE otherwise
 /obj/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
-	if(check_access()) return 1
-	if(isRemoteControlling(M)) return 1 //AI can do whatever he wants
+	if(check_access()) return TRUE
+	if(isRemoteControlling(M)) return TRUE //AI can do whatever he wants
 
 	else if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		//if they are holding or wearing a card that has access, that works
-		if(check_access(H.get_active_hand()) || check_access(H.wear_id)) return 1
+		if(check_access(H.get_active_hand()) || check_access(H.wear_id)) return TRUE
 	else if(istype(M, /mob/living/carbon/Xenomorph))
 		var/mob/living/carbon/C = M
-		if(check_access(C.get_active_hand())) return 1
+		if(check_access(C.get_active_hand())) return TRUE
+	return FALSE
 
 /obj/item/proc/GetAccess() return list()
 

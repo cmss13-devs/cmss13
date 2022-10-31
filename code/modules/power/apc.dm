@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
 	icon = 'icons/obj/structures/machinery/power.dmi'
-	icon_state = "apc0"
+	icon_state = "apc_mapicon"
 	anchored = 1
 	use_power = 0
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
@@ -366,27 +366,27 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	addtimer(CALLBACK(src, .proc/update), 5)
 
-/obj/structure/machinery/power/apc/examine(mob/user)
-	to_chat(user, desc)
+/obj/structure/machinery/power/apc/get_examine_text(mob/user)
+	. = list(desc)
 
 	if(stat & BROKEN)
-		to_chat(user, SPAN_INFO("It appears to be completely broken. It's hard to see what else is wrong with it."))
+		. += SPAN_INFO("It appears to be completely broken. It's hard to see what else is wrong with it.")
 		return
 	if(opened)
 		if(has_electronics && terminal)
-			to_chat(user, SPAN_INFO("The cover is [opened == APC_COVER_REMOVED ? "removed":"open"] and the power cell is [cell ? "installed":"missing"]."))
+			. += SPAN_INFO("The cover is [opened == APC_COVER_REMOVED ? "removed":"open"] and the power cell is [cell ? "installed":"missing"].")
 		else if (!has_electronics && terminal)
-			to_chat(user, SPAN_INFO("There are some wires but no any electronics."))
+			. += SPAN_INFO("There are some wires but no any electronics.")
 		else if (has_electronics && !terminal)
-			to_chat(user, SPAN_INFO("Electronics installed but not wired."))
+			. += SPAN_INFO("Electronics installed but not wired.")
 		else
-			to_chat(user, SPAN_INFO("There is no electronics nor connected wires."))
+			. += SPAN_INFO("There is no electronics nor connected wires.")
 
 	else
 		if(stat & MAINT)
-			to_chat(user, SPAN_INFO("The cover is closed. Something is wrong with it, it doesn't work."))
+			. += SPAN_INFO("The cover is closed. Something is wrong with it, it doesn't work.")
 		else
-			to_chat(user, SPAN_INFO("The cover is closed."))
+			. += SPAN_INFO("The cover is closed.")
 
 //Update the APC icon to show the three base states
 //Also add overlays for indicator lights
@@ -533,7 +533,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(last_update_state == update_state && last_update_overlay == update_overlay)
 		return 0
 	if(last_update_state != update_state)
-		results += 1
+		results++
 	if(last_update_overlay != update_overlay && update_overlay != 0)
 		results += 2
 	return results
@@ -636,6 +636,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			SPAN_NOTICE("You [wiresexposed ? "expose" : "unexpose"] [src]'s wiring."))
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			update_icon()
+			if(SStgui.close_uis(src)) //if you had UIs open before from this APC...
+				tgui_interact(user) //then close them and open up the new ones (wires/panel)
 
 	else if(istype(W, /obj/item/card/id)) //Trying to unlock the interface with an ID card
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -725,6 +727,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		to_chat(user, SPAN_WARNING("You cannot put the board inside, the frame is damaged."))
 		return
 	else if(iswelder(W) && opened && has_electronics == 0 && !terminal)
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
@@ -777,8 +782,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return attack_hand(user)
 			if(!opened && wiresexposed && (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS)))
 				return attack_hand(user)
-			user.visible_message(SPAN_DANGER("[user] hits [src] with [W]!"), \
-			SPAN_DANGER("You hit [src] with [W]!"))
+			user.visible_message(SPAN_DANGER("[user] hits [src] with \the [W]!"), \
+			SPAN_DANGER("You hit [src] with \the [W]!"))
 
 //Attack with hand - remove cell (if cover open) or interact with the APC
 /obj/structure/machinery/power/apc/attack_hand(mob/user)
@@ -846,7 +851,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				update_icon()
 				visible_message(SPAN_WARNING("[src]'s cover flies open, exposing the wires!"))
 			else
-				beenhit += 1
+				beenhit++
 			return
 
 
@@ -896,7 +901,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	switch(wire)
 		if(APC_WIRE_MAIN_POWER)
-			shock(usr, 50)
+			if(user)
+				shock(usr, 50)
+				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
+				SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
+				SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
 			shorted = 1
 			if(with_message)
 				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
@@ -977,7 +986,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/mob/living/carbon/human/H = user
 	if(istype(H))
 		if(H.getBrainLoss() >= 60)
-			for(var/mob/M in viewers(src, null))
+			for(var/mob/M as anything in viewers(src, null))
 				H.visible_message(SPAN_WARNING("[H] stares cluelessly at [src] and drools."),
 				SPAN_WARNING("You stare cluelessly at [src] and drool."))
 			return 0
@@ -1104,7 +1113,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		//Set channels depending on how much charge we have left
 		// Allow the APC to operate as normal if the cell can charge
 		if(charging && longtermpower < 10)
-			longtermpower += 1
+			longtermpower++
 		else if(longtermpower > -10)
 			longtermpower -= 2
 
@@ -1269,6 +1278,36 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	area.power_environ = 0
 	area.power_change()
 	. = ..()
+
+/obj/structure/machinery/power/apc/wires_cut
+	icon_state = "apcewires_mapicon"
+
+/obj/structure/machinery/power/apc/wires_cut/Initialize(mapload, ndir, building)
+	. = ..()
+	wiresexposed = TRUE
+	for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
+		cut(wire)
+	update_icon()
+	beenhit = 4
+
+/obj/structure/machinery/power/apc/fully_broken
+	icon_state = "apc2_mapicon"
+
+/obj/structure/machinery/power/apc/fully_broken/Initialize(mapload, ndir, building)
+	. = ..()
+	wiresexposed = TRUE
+	for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
+		cut(wire)
+	beenhit = 4
+	set_broken()
+
+/obj/structure/machinery/power/apc/fully_broken/no_cell
+	icon_state = "apc1_mapicon"
+
+/obj/structure/machinery/power/apc/fully_broken/no_cell/Initialize(mapload, ndir, building)
+	. = ..()
+	QDEL_NULL(cell)
+	update_icon()
 
 /obj/structure/machinery/power/apc/antag
 	cell_type = /obj/item/cell/apc/full

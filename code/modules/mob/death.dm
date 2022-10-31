@@ -51,7 +51,8 @@
 		visible_message("<b>\The [src.name]</b> [deathmessage]")
 
 	if(cause_data && !istype(cause_data))
-		stack_trace("death called with string cause instead of datum")
+		stack_trace("death called with string cause ([cause_data]) instead of datum")
+		cause_data = create_cause_data(cause_data)
 
 	stat = DEAD
 
@@ -102,7 +103,7 @@
 
 /mob/proc/handle_death_cause(var/datum/cause_data/cause_data, var/turf/death_loc)
 	track_mob_death(cause_data, death_loc)
-	if(cause_data)
+	if(cause_data && istype(cause_data))
 		var/obj/O = cause_data.resolve_cause()
 		if(isdefenses(O))
 			var/obj/structure/machinery/defenses/TR = O
@@ -110,7 +111,7 @@
 		var/mob/cause_mob = cause_data.resolve_mob()
 		if(cause_mob)
 			if(isYautja(cause_mob) && cause_mob.client && cause_mob != src)
-				INVOKE_ASYNC(cause_mob.client, /client.proc/add_honor, max(life_kills_total, 1))
+				INVOKE_ASYNC(cause_mob.client, /client.proc/add_honor, max(life_kills_total, default_honor_value))
 
 			if(isXeno(cause_mob))
 				var/mob/living/carbon/Xenomorph/X = cause_mob

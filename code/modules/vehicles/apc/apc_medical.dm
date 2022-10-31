@@ -114,8 +114,8 @@
 	var/obj/vehicle/multitile/apc/medical/APC = new (loc)
 
 	load_misc(APC)
-	handle_direction(APC)
 	load_hardpoints(APC)
+	handle_direction(APC)
 	APC.update_icon()
 
 //PRESET: only wheels installed
@@ -127,8 +127,8 @@
 	var/obj/vehicle/multitile/apc/medical/APC = new (loc)
 
 	load_misc(APC)
-	handle_direction(APC)
 	load_hardpoints(APC)
+	handle_direction(APC)
 	load_damage(APC)
 	APC.update_icon()
 

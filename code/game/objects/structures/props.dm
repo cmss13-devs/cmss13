@@ -72,7 +72,7 @@
 
 /obj/structure/prop/dam/torii
 	name = "torii arch"
-	desc = "A traditional japanese archway, made out of wood, and adorned with lanterns."
+	desc = "A traditional Japanese archway, made out of wood, and adorned with lanterns."
 	icon = 'icons/obj/structures/props/torii.dmi'
 	icon_state = "torii"
 	density = 0
@@ -107,7 +107,7 @@
 	var/L
 	if(lit)
 		return
-	if(istype(W, /obj/item/tool/weldingtool))
+	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())
 			L = 1
@@ -164,7 +164,7 @@
 
 /obj/structure/prop/dam/gravestone
 	name = "grave marker"
-	desc = "A grave marker, in the traditional japanese style."
+	desc = "A grave marker, in the traditional Japanese style."
 	icon = 'icons/obj/structures/props/props.dmi'
 	icon_state = "gravestone1"
 
@@ -661,7 +661,7 @@
 
 /obj/structure/prop/ice_colony/surveying_device/measuring_device
 	name = "measuring device"
-	desc = "Some sort of doohicky that measures stuff."
+	desc = "Some sort of doohickey that measures stuff."
 	icon_state = "measuring_device"
 
 /obj/structure/prop/ice_colony/dense
@@ -748,7 +748,7 @@
 	density = 1
 
 /obj/structure/prop/static_tank/fuel
-	desc = "It contains Decatuxole-Hypospaldirol. A non volatile liquid fuel type that tastes like oranges. Can't really be used for anything outside of atmos-rocket boosters."
+	desc = "It contains Decatuxole-Hypospaldirol. A non-volatile liquid fuel type that tastes like oranges. Can't really be used for anything outside of atmos-rocket boosters."
 	icon_state = "weldtank_old"
 
 /obj/structure/prop/static_tank/water
@@ -894,9 +894,9 @@
 			else
 				inscription = message
 
-/obj/structure/prop/wooden_cross/examine(mob/user)
-	..()
-	to_chat(user, "\"[inscription]\"")
+/obj/structure/prop/wooden_cross/get_examine_text(mob/user)
+	. = ..()
+	. += "There's something carved into it. It reads: \"[inscription]\""
 
 /obj/structure/prop/wooden_cross/attack_hand(mob/user)
 	if(helmet)

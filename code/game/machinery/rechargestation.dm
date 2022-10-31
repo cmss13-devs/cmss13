@@ -84,8 +84,9 @@
 /obj/structure/machinery/recharge_station/allow_drop()
 	return 0
 
-/obj/structure/machinery/recharge_station/examine(mob/user)
-	to_chat(user, "The charge meter reads: [round(chargepercentage())]%")
+/obj/structure/machinery/recharge_station/get_examine_text(mob/user)
+	. = ..()
+	. += "The charge meter reads: [round(chargepercentage())]%"
 
 /obj/structure/machinery/recharge_station/proc/chargepercentage()
 	return ((current_internal_charge / max_internal_charge) * 100)

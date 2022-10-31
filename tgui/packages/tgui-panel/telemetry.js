@@ -12,16 +12,17 @@ const logger = createLogger('telemetry');
 
 const MAX_CONNECTIONS_STORED = 10;
 
+// prettier-ignore
 const connectionsMatch = (a, b) => (
   a.ckey === b.ckey
     && a.address === b.address
     && a.computer_id === b.computer_id
 );
 
-export const telemetryMiddleware = store => {
+export const telemetryMiddleware = (store) => {
   let telemetry;
   let wasRequestedWithPayload;
-  return next => action => {
+  return (next) => (action) => {
     const { type, payload } = action;
     // Handle telemetry requests
     if (type === 'telemetry/request') {
@@ -34,8 +35,7 @@ export const telemetryMiddleware = store => {
       logger.debug('sending');
       const limits = payload?.limits || {};
       // Trim connections according to the server limit
-      const connections = telemetry.connections
-        .slice(0, limits.connections);
+      const connections = telemetry.connections.slice(0, limits.connections);
       sendMessage({
         type: 'telemetry',
         payload: {
@@ -56,7 +56,7 @@ export const telemetryMiddleware = store => {
         }
         // Load telemetry
         if (!telemetry) {
-          telemetry = await storage.get('telemetry') || {};
+          telemetry = (await storage.get('telemetry')) || {};
           if (!telemetry.connections) {
             telemetry.connections = [];
           }
@@ -64,6 +64,7 @@ export const telemetryMiddleware = store => {
         }
         // Append a connection record
         let telemetryMutated = false;
+        // prettier-ignore
         const duplicateConnection = telemetry.connections
           .find(conn => connectionsMatch(conn, client));
         if (!duplicateConnection) {

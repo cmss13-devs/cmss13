@@ -52,6 +52,10 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 			return tools_cache[tool.type]
 	return FALSE
 
+///does any extra checks that is is SUBTYPED to perform
+/datum/surgery_step/proc/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
+	return TRUE
+
 ///The proc that actually performs the step.
 /datum/surgery_step/proc/attempt_step(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	var/tool_type = tool_check(user, tool, surgery) //A boolean, a key to the tools list for duration multipliers, and a faster method than istype() for steps to test tools.
@@ -67,6 +71,9 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
+
+	if(!extra_checks(user, target, target_zone, tool, surgery, repeating, skipped))
+		return FALSE // you must put the failure to_chat inside the checks
 
 	surgery.step_in_progress = TRUE
 
@@ -158,6 +165,7 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 
 	if(tool?.flags_item & ANIMATED_SURGICAL_TOOL) //Don't want to reset sprites on things like lighters, welding torches etc.
 		tool.icon_state = initial(tool.icon_state)
+		tool.update_icon() // in order to not reset shit too far.
 
 	if(advance)
 		if(skipped) //Skipped previous step.

@@ -231,9 +231,9 @@
 			"locked" = user.client?.prefs.tgui_lock,
 		),
 		"client" = list(
-			"ckey" = user.client.ckey,
-			"address" = user.client.address,
-			"computer_id" = user.client.computer_id,
+			"ckey" = user.client?.ckey,
+			"address" = user.client?.address,
+			"computer_id" = user.client?.computer_id,
 		),
 		"user" = list(
 			"name" = "[user]",

@@ -228,6 +228,9 @@
 		grab_level = 0
 		if(client)
 			client.recalculate_move_delay()
+			// When you stop pulling a mob after you move a tile with it your next movement will still include
+			// the grab delay so we have to fix it here (we love code)
+			client.next_movement = world.time + client.move_delay
 		if(hud_used && hud_used.pull_icon)
 			hud_used.pull_icon.icon_state = "pull0"
 		if(istype(r_hand, /obj/item/grab))

@@ -312,7 +312,7 @@
 			if(!CH.suspended)
 				if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 					if(vendor_account)
-						var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
+						var/attempt_pin = tgui_input_number(usr, "Enter pin code", "Vendor transaction")
 						var/datum/money_account/D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
 						transfer_and_vend(D)
 					else

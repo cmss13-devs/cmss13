@@ -89,7 +89,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "\improper Airtight plastic flaps"
-	desc = "Heavy duty, airtight, plastic flaps."
+	desc = "Heavy-duty, airtight, plastic flaps."
 
 
 /obj/structure/machinery/computer/supplycomp
@@ -118,106 +118,142 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supply_drop_console
 	name = "Supply Drop Console"
-	desc = "An old fashioned computer hooked into the nearby Supply Drop system."
+	desc = "An old-fashioned computer hooked into the nearby Supply Drop system."
 	icon_state = "security_cam"
 	circuit = /obj/item/circuitboard/computer/supply_drop_console
 	req_access = list(ACCESS_MARINE_CARGO)
 	var/x_supply = 0
 	var/y_supply = 0
 	var/datum/squad/current_squad = null
-	var/busy = 0 //The computer is busy launching a drop, lock controls
-	var/drop_cooldown = 5000
+	var/busy = FALSE //The computer is busy launching a drop, lock controls
+	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
 	var/faction = FACTION_MARINE
+	var/obj/structure/closet/crate/loaded_crate
+	COOLDOWN_DECLARE(next_fire)
+
+/obj/structure/machinery/computer/supply_drop_console/ui_status(mob/user)
+	. = ..()
+	if(inoperable(MAINT))
+		return UI_CLOSE
+
+/obj/structure/machinery/computer/supply_drop_console/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
+/obj/structure/machinery/computer/supply_drop_console/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SupplyDropConsole", name)
+		ui.open()
+
+/obj/structure/machinery/computer/supply_drop_console/ui_static_data(mob/user)
+	var/list/data = list()
+
+	var/list/squad_list = list()
+	for(var/datum/squad/S in RoleAuthority.squads)
+		if(S.active && S.faction == faction && S.color)
+			squad_list += list(list(
+				"squad_name" = S.name,
+				"squad_color" = squad_colors[S.color]
+				))
+
+	data["can_pick_squad"] = can_pick_squad
+	data["squad_list"] = squad_list
+
+	return data
+
+/obj/structure/machinery/computer/supply_drop_console/ui_data(mob/user)
+	var/list/data = list()
+
+	check_pad()
+	data["current_squad"] = current_squad
+	data["launch_cooldown"] = drop_cooldown
+	data["nextfiretime"] = next_fire
+	data["worldtime"] = world.time
+	data["x_offset"] = x_supply
+	data["y_offset"] = y_supply
+	data["active"] = busy
+	data["loaded"] = loaded_crate
+	if(loaded_crate)
+		data["crate_name"] = loaded_crate.name
+	else
+		data["crate_name"] = null
+
+	return data
+
+/obj/structure/machinery/computer/supply_drop_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("set_x")
+			var/new_x = text2num(params["set_x"])
+			if(!new_x)
+				return
+			x_supply = new_x
+			. = TRUE
+
+		if("set_y")
+			var/new_y = text2num(params["set_y"])
+			if(!new_y)
+				return
+			y_supply = new_y
+			. = TRUE
+
+		if("pick_squad")
+			if(can_pick_squad)
+				var/datum/squad/selected = get_squad_by_name(params["squad_name"])
+				if(selected)
+					current_squad = selected
+					attack_hand(usr)
+					. = TRUE
+				else
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
+					. = TRUE
+
+		if("send_beacon")
+			if(current_squad)
+				if(!COOLDOWN_FINISHED(src, next_fire))
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Supply drop not yet available! Please wait [COOLDOWN_TIMELEFT(src, next_fire)/10] seconds!")]")
+					return
+				else
+					handle_supplydrop()
+					. = TRUE
+
+		if("refresh_pad")
+			check_pad()
+			. = TRUE
 
 /obj/structure/machinery/computer/supply_drop_console/attack_hand(mob/user)
 	if(..())  //Checks for power outages
 		return
 	if(!allowed(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
-		return 1
-	user.set_interaction(src)
-	var/dat = "<body>"
-
-	if(can_pick_squad)
-		if(!current_squad) //No squad has been set yet. Pick one.
-			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>----------</A><BR>"
-		else
-			dat += "Current Squad: [current_squad.name] Squad</A><A href='?src=\ref[src];operation=pick_squad'>\[Change\]</A><BR>"
-
-	dat += "<BR><B>Supply Drop Control</B><BR><BR>"
-	if(!current_squad)
-		dat += "No squad selected!"
-	else
-		dat += "<B>Current Supply Drop Status:</B> "
-		var/cooldown_left = (current_squad.supply_cooldown + drop_cooldown) - world.time
-		if(cooldown_left > 0)
-			dat += "Launch tubes resetting ([round(cooldown_left/10)] seconds)<br>"
-		else
-			dat += SET_CLASS("Ready!", INTERFACE_GREEN)
-			dat += "<br>"
-		dat += "<B>Launch Pad Status:</b> "
-		var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc
-		if(C)
-			dat += SET_CLASS("Supply crate loaded", INTERFACE_GREEN)
-			dat += "<BR>"
-		else
-			dat += "Empty<BR>"
-		dat += "<B>Longitude:</B> [x_supply] <A href='?src=\ref[src];operation=supply_x'>\[Change\]</a><BR>"
-		dat += "<B>Latitude:</B> [y_supply] <A href='?src=\ref[src];operation=supply_y'>\[Change\]</a><BR><BR>"
-		dat += "<A href='?src=\ref[src];operation=dropsupply'>\[LAUNCH!\]</a>"
-	dat += "<BR><BR>----------------------<br>"
-	dat += "<A href='?src=\ref[src];operation=refresh'>{Refresh}</a><br>"
-
-	show_browser(user, dat, "Supply Drop Console", "overwatch", "size=550x550")
+		return TRUE
+	tgui_interact(user)
 	return
 
-/obj/structure/machinery/computer/supply_drop_console/Topic(href, href_list)
-	if(..())  //Checks for power outages
-		return
-	if(!href_list["operation"])
-		return
-	switch(href_list["operation"])
-		if("pick_squad")
-			if(can_pick_squad)
-				var/list/squad_list = list()
-				for(var/datum/squad/S in RoleAuthority.squads)
-					if(S.active && S.faction == faction)
-						squad_list += S.name
-
-				var/name_sel = tgui_input_list(usr, "Which squad would you like to claim for Overwatch?", "Overwatch", squad_list)
-				if(!name_sel) return
-				var/datum/squad/selected = get_squad_by_name(name_sel)
-				if(selected)
-					current_squad = selected
-					attack_hand(usr)
-				else
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
-		if("supply_x")
-			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
-			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Longitude is now [input].")]")
-			x_supply = input
-		if("supply_y")
-			var/input = input(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
-			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Latitude is now [input].")]")
-			y_supply = input
-		if("refresh")
-			src.attack_hand(usr)
-		if("dropsupply")
-			if(current_squad)
-				if((current_squad.supply_cooldown + drop_cooldown) > world.time)
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Supply drop not yet available!")]")
-				else
-					handle_supplydrop()
-	src.attack_hand(usr) //Refresh
+/obj/structure/machinery/computer/supply_drop_console/proc/check_pad()
+	if(!current_squad.drop_pad)
+		loaded_crate = null
+		return FALSE
+	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc
+	if(C)
+		loaded_crate = C
+		return C
+	else
+		loaded_crate = null
+		return FALSE
 
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
 	if(busy)
-		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("\The [name] is busy processing another action!")]")
 		return
 
-	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
-	if(!istype(C))
+	var/obj/structure/closet/crate/C = check_pad()
+	if(!C)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
 		return
 
@@ -243,7 +279,7 @@ var/datum/controller/supply/supply_controller = new()
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
-	busy = 1
+	busy = TRUE
 
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop is now loading into the launch tube! Stand by!")]")
 	C.visible_message(SPAN_WARNING("\The [C] begins to load into a launch tube. Stand clear!"))
@@ -252,10 +288,11 @@ var/datum/controller/supply/supply_controller = new()
 	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
 	spawn(100)
 		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
-			if(C) C.anchored = FALSE
+			if(C)
+				C.anchored = FALSE
 			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
 			return
-		S.supply_cooldown = world.time
+		COOLDOWN_START(src, next_fire, drop_cooldown)
 		if(ismob(usr))
 			var/mob/M = usr
 			M.count_niche_stat(STATISTICS_NICHE_CRATES)
@@ -268,7 +305,7 @@ var/datum/controller/supply/supply_controller = new()
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
 		C.visible_message("[icon2html(C, viewers(src))] [SPAN_BOLDNOTICE("The '[C.name]' supply drop falls from the sky!")]")
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
-		busy = 0
+		busy = FALSE
 
 
 //Sends a string to our currently selected squad.
@@ -358,13 +395,12 @@ var/datum/controller/supply/supply_controller = new()
 
 //Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
 /datum/controller/supply/process()
-	for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs - /datum/supply_packs/asrs))
+	for(var/typepath in subtypesof(/datum/supply_packs))
 		var/datum/supply_packs/P = new typepath()
-		supply_packs[P.name] = P
-	for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs - /datum/supply_packs/asrs))
-		var/datum/supply_packs/P = new typepath()
-		if(P.cost > 1 && P.buyable == 0)
-			random_supply_packs[P.name] = P
+		if(P.group == "ASRS")
+			random_supply_packs += P
+		else
+			supply_packs[P.name] = P
 	spawn(0)
 		set background = 1
 		while(1)
@@ -373,7 +409,7 @@ var/datum/controller/supply/supply_controller = new()
 				points += points_per_process
 				if(iteration >= 20 && iteration % base_random_crate_interval == 0 && supply_controller.shoppinglist.len <= 20)
 					add_random_crates()
-					crate_iteration += 1
+					crate_iteration++
 			sleep(processing_interval)
 
 //This adds function adds the amount of crates that calculate_crate_amount returns
@@ -395,26 +431,10 @@ var/datum/controller/supply/supply_controller = new()
 	return crate_amount
 
 //Here we pick what crate type to send to the marines.
-/datum/controller/supply/proc/add_random_crate()
-	var/randpick = rand(1,100)
-	switch(randpick)
-		if(1 to 40)
-			pickcrate("Munition")
-		if(41 to 81)
-			pickcrate("Utility")
-		if(81 to 100)
-			pickcrate("Everything")
-
-//Here we pick the exact crate from the crate types to send to the marines.
 //This is a weighted pick based upon their cost.
 //Their cost will go up if the crate is picked
-/datum/controller/supply/proc/pickcrate(var/T = "Everything")
-	var/list/pickfrom = list()
-	for(var/supply_name in supply_controller.random_supply_packs)
-		var/datum/supply_packs/N = supply_controller.random_supply_packs[supply_name]
-		if((T == "Everything" || N.group == T)  && !N.buyable)
-			pickfrom += N
-	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(pickfrom)
+/datum/controller/supply/proc/add_random_crate()
+	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(random_supply_packs)
 	if(C == null)
 		return
 	C.cost = round(C.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight
@@ -1138,13 +1158,13 @@ var/datum/controller/supply/supply_controller = new()
 		if(!VO) return
 		if(VO.has_vehicle_lock()) return
 
+		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
 
 		VO.on_created(ordered_vehicle)
 
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
-		spent = TRUE
 
 	add_fingerprint(usr)
 	updateUsrDialog()

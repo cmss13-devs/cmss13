@@ -39,18 +39,18 @@
 		if(E.icon_path && E.obj_icon_state_path)
 			overlays += image(E.icon_path, icon_state = E.obj_icon_state_path)
 
-/obj/structure/barricade/handrail/examine(mob/user)
-	..()
+/obj/structure/barricade/handrail/get_examine_text(mob/user)
+	. = ..()
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED)
-			to_chat(user, SPAN_INFO("The [barricade_type] is safely secured to the ground."))
+			. += SPAN_INFO("The [barricade_type] is safely secured to the ground.")
 		if(BARRICADE_BSTATE_UNSECURED)
-			to_chat(user, SPAN_INFO("The bolts nailing it to the ground has been unsecured."))
+			. += SPAN_INFO("The bolts nailing it to the ground has been unsecured.")
 		if(BARRICADE_BSTATE_FORTIFIED)
 			if(reinforced)
-				to_chat(user, SPAN_INFO("The [barricade_type] has been reinforced with metal."))
+				. += SPAN_INFO("The [barricade_type] has been reinforced with metal.")
 			else
-				to_chat(user, SPAN_INFO("Metal has been laid across the [barricade_type]. Weld it to secure it."))
+				. += SPAN_INFO("Metal has been laid across the [barricade_type]. Weld it to secure it.")
 
 /obj/structure/barricade/handrail/proc/reinforce()
 	if(reinforced)
@@ -153,6 +153,9 @@
 					return
 			else
 				if(iswelder(W))	// Finish reinforcing
+					if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+						to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+						return
 					if(user.action_busy)
 						return
 					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))

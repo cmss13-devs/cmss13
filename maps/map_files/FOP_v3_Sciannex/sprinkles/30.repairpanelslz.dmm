@@ -1,0 +1,431 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/space,
+/area/template_noop)
+"b" = (
+/obj/item/stock_parts/subspace/filter{
+	pixel_y = 6
+	},
+/turf/open/space,
+/area/template_noop)
+"c" = (
+/obj/structure/cargo_container{
+	desc = "A huge industrial shipping container. This one is in space.";
+	icon_state = "red 0,0";
+	tag = "icon-red 0,0"
+	},
+/turf/open/space,
+/area/template_noop)
+"d" = (
+/obj/item/clothing/head/helmet/space{
+	pixel_x = -7;
+	pixel_y = -8
+	},
+/turf/open/space/basic,
+/area/template_noop)
+"e" = (
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/template_noop)
+"f" = (
+/obj/item/stack/sandbags_empty/half,
+/turf/open/floor/prison,
+/area/template_noop)
+"g" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space,
+/area/template_noop)
+"h" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/item/stack/sheet/metal,
+/turf/open/space,
+/area/template_noop)
+"i" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/space,
+/area/template_noop)
+"j" = (
+/obj/item/stack/sandbags/large_stack,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"l" = (
+/obj/item/limb/head/synth{
+	pixel_x = -9
+	},
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/space/basic,
+/area/template_noop)
+"m" = (
+/turf/open/floor/almayer_hull,
+/area/template_noop)
+"n" = (
+/obj/structure/cargo_container{
+	desc = "A huge industrial shipping container. You're not sure how it got here.";
+	icon_state = "red 2,0";
+	tag = "icon-red 2,0"
+	},
+/turf/open/space,
+/area/template_noop)
+"p" = (
+/turf/open/floor/prison,
+/area/template_noop)
+"q" = (
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"s" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space,
+/area/template_noop)
+"t" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space,
+/area/template_noop)
+"u" = (
+/turf/open/space,
+/area/template_noop)
+"v" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/item/book/manual/engineering_construction,
+/turf/open/space/basic,
+/area/template_noop)
+"w" = (
+/obj/structure/bedsheetbin{
+	icon_state = "linenbin-empty";
+	name = "solar lattice";
+	pixel_y = 6
+	},
+/turf/open/floor/almayer_hull,
+/area/template_noop)
+"x" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/template_noop)
+"y" = (
+/obj/item/stack/sandbags_empty/half,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/template_noop)
+"z" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/item/clothing/head/cardborg,
+/turf/open/space,
+/area/template_noop)
+"A" = (
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/space/basic,
+/area/template_noop)
+"B" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/turf/open/space,
+/area/template_noop)
+"C" = (
+/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/prison/reinforced/hull,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"D" = (
+/obj/item/trash/used_stasis_bag{
+	desc = "Wow, instant sand. They really have everything in space.";
+	name = "Insta-Sand! bag"
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"E" = (
+/obj/item/trash/used_stasis_bag{
+	desc = "Wow, instant sand. They really have everything in space.";
+	name = "Insta-Sand! bag"
+	},
+/turf/open/floor/prison,
+/area/template_noop)
+"F" = (
+/obj/structure/window/framed/prison/reinforced/hull,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"G" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/template_noop)
+"H" = (
+/obj/structure/reagent_dispensers/oxygentank,
+/turf/open/space,
+/area/template_noop)
+"I" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/effect/spawner/random/tool{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/effect/spawner/random/tool{
+	pixel_x = 9
+	},
+/turf/open/space,
+/area/template_noop)
+"J" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/space,
+/area/template_noop)
+"L" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/template_noop)
+"M" = (
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space,
+/area/template_noop)
+"N" = (
+/turf/open/floor{
+	desc = "A sophisticated device that captures and converts light from the system's star into energy for the station.";
+	icon_state = "solarpanel";
+	name = "solarpanel"
+	},
+/area/template_noop)
+"O" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/space,
+/area/template_noop)
+"P" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/floor/almayer_hull,
+/area/template_noop)
+"Q" = (
+/turf/open/auto_turf/sand/layer1,
+/area/template_noop)
+"R" = (
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space/basic,
+/area/template_noop)
+"S" = (
+/turf/open/space/basic,
+/area/template_noop)
+"T" = (
+/obj/item/stack/sandbags_empty/half,
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/template_noop)
+"U" = (
+/obj/item/stack/sheet/metal,
+/turf/open/space,
+/area/template_noop)
+"V" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/item/circuitboard/solar_tracker,
+/turf/open/space,
+/area/template_noop)
+"W" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/floor/almayer_hull,
+/area/template_noop)
+"X" = (
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "darkyellow2"
+	},
+/area/template_noop)
+"Y" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/space,
+/area/template_noop)
+"Z" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/space,
+/area/template_noop)
+
+(1,1,1) = {"
+x
+C
+F
+F
+F
+F
+F
+F
+p
+"}
+(2,1,1) = {"
+F
+S
+H
+M
+m
+Z
+u
+x
+F
+"}
+(3,1,1) = {"
+F
+A
+I
+t
+W
+J
+s
+i
+F
+"}
+(4,1,1) = {"
+F
+R
+N
+N
+w
+N
+N
+g
+F
+"}
+(5,1,1) = {"
+F
+v
+N
+N
+m
+N
+N
+g
+F
+"}
+(6,1,1) = {"
+F
+R
+N
+N
+w
+N
+N
+g
+F
+"}
+(7,1,1) = {"
+F
+l
+V
+O
+P
+Y
+a
+B
+x
+"}
+(8,1,1) = {"
+F
+d
+u
+h
+m
+z
+u
+b
+x
+"}
+(9,1,1) = {"
+x
+F
+F
+F
+F
+x
+u
+c
+x
+"}
+(10,1,1) = {"
+x
+j
+Q
+Q
+Q
+F
+u
+n
+F
+"}
+(11,1,1) = {"
+f
+E
+q
+Q
+Q
+F
+u
+u
+F
+"}
+(12,1,1) = {"
+X
+y
+L
+q
+D
+F
+U
+u
+F
+"}
+(13,1,1) = {"
+G
+p
+e
+T
+p
+x
+F
+F
+x
+"}

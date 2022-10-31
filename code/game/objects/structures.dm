@@ -46,6 +46,8 @@
 
 /obj/structure/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(user.action_busy)
+			return TRUE
 		toggle_anchored(W, user)
 		return TRUE
 	..()

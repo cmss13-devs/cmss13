@@ -130,3 +130,7 @@
 
 	attackby()
 		return
+
+/obj/structure/machinery/floodlight/landing/floor
+	icon_state = "floor_flood01"
+	density = FALSE

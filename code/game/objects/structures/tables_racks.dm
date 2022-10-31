@@ -305,6 +305,12 @@
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
 
+	if(istype(W, /obj/item/explosive/grenade))
+		var/obj/item/explosive/grenade/detonating_grenade = W
+		if(detonating_grenade.active)
+			to_chat(user, SPAN_WARNING("It's too late for that!"))
+			return
+
 	//clicking the table
 	if(flipped)
 		return
@@ -344,6 +350,7 @@
 
 	usr.visible_message(SPAN_WARNING("[usr] flips [src]!"),
 	SPAN_WARNING("You flip [src]!"))
+	playsound(loc, "metalbang", 25)
 
 	if(climbable)
 		structure_shaken()
@@ -502,7 +509,10 @@
 	return 0 //No, just no. It's a full desk, you can't flip that
 
 /obj/structure/surface/table/reinforced/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/tool/weldingtool))
+	if (iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
 			if(status == 2)

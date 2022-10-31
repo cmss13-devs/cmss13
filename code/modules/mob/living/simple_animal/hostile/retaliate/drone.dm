@@ -97,13 +97,13 @@
 		s.set_up(3, 1, src)
 		s.start()
 
-	//sometimes our targetting sensors malfunction, and we attack anyone nearby
+	//sometimes our targeting sensors malfunction, and we attack anyone nearby
 	if(prob(disabled ? 0 : 1))
 		if(hostile_drone)
-			src.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src] retracts several targetting vanes, and dulls it's running lights."))
+			src.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src] retracts several targeting vanes, and dulls it's running lights."))
 			hostile_drone = 0
 		else
-			src.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [src] suddenly lights up, and additional targetting vanes slide into place."))
+			src.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] [src] suddenly lights up, and additional targeting vanes slide into place."))
 			hostile_drone = 1
 
 	if(health / maxHealth > 0.9)

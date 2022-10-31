@@ -61,17 +61,17 @@ They're all essentially identical when it comes to getting the job done.
 		else if(C.l_hand == src)
 			C.update_inv_l_hand()
 
-/obj/item/ammo_magazine/examine(mob/user)
-	..()
+/obj/item/ammo_magazine/get_examine_text(mob/user)
+	. = ..()
 
 	if(flags_magazine & AMMUNITION_HIDE_AMMO)
 		return
 	// It should never have negative ammo after spawn. If it does, we need to know about it.
 	if(current_rounds < 0)
-		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE R1: negative current_rounds on examine.")
+		. += "Something went horribly wrong. Ahelp the following: ERROR CODE R1: negative current_rounds on examine."
 		log_debug("ERROR CODE R1: negative current_rounds on examine. User: <b>[usr]</b> Magazine: <b>[src]</b>")
 	else
-		to_chat(user, "[src] has <b>[current_rounds]</b> rounds out of <b>[max_rounds]</b>.")
+		. += "[src] has <b>[current_rounds]</b> rounds out of <b>[max_rounds]</b>."
 
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
@@ -313,3 +313,14 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_casing/shell
 	name = "spent shell"
 	icon_state = "shell_"
+
+/obj/item/ammo_box/magazine/lever_action/xm88
+	name = "\improper .458 bullets box (.458 x 300)"
+	icon_state = "base_458"
+	overlay_ammo_type = "_blank"
+	overlay_gun_type = "_458"
+	overlay_content = "_458"
+	magazine_type = /obj/item/ammo_magazine/handful/lever_action/xm88
+
+/obj/item/ammo_box/magazine/lever_action/xm88/empty
+	empty = TRUE

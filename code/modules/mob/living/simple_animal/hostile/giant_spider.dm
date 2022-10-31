@@ -30,7 +30,7 @@
 	var/poison_per_bite = 5
 	var/poison_type = "toxin"
 	faction = "spiders"
-	var/busy = 0
+	var/busy = FALSE
 	move_to_delay = 6
 	speed = 3
 
@@ -97,7 +97,7 @@
 		if(busy == MOVING_TO_TARGET)
 			if(cocoon_target == C && get_dist(src,cocoon_target) > 1)
 				cocoon_target = null
-			busy = 0
+			busy = FALSE
 			stop_automated_movement = 0
 
 /mob/living/simple_animal/hostile/giant_spider/nurse/Life(delta_time)
@@ -126,7 +126,7 @@
 					spawn(40)
 						if(busy == SPINNING_WEB)
 							new /obj/effect/spider/stickyweb(src.loc)
-							busy = 0
+							busy = FALSE
 							stop_automated_movement = 0
 				else
 					//third, lay an egg cluster there
@@ -141,7 +141,7 @@
 								if(!E)
 									new /obj/effect/spider/eggcluster(src.loc)
 									fed--
-								busy = 0
+								busy = FALSE
 								stop_automated_movement = 0
 					else
 						//fourthly, cocoon any nearby items so those pesky pinkskins can't use them
@@ -193,11 +193,11 @@
 										large_cocoon = 1
 								if(large_cocoon)
 									C.icon_state = pick("cocoon_large1","cocoon_large2","cocoon_large3")
-							busy = 0
+							busy = FALSE
 							stop_automated_movement = 0
 
 		else
-			busy = 0
+			busy = FALSE
 			stop_automated_movement = 0
 
 #undef SPINNING_WEB

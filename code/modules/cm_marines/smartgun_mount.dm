@@ -15,7 +15,7 @@
 //Adds a coin for engi vendors
 /obj/item/coin/marine/engineer
 	name = "marine engineer support token"
-	desc = "Insert this into a engineer vendor in order to access a support weapon."
+	desc = "Insert this into an engineer vendor in order to access a support weapon."
 	icon_state = "coin_adamantine"
 
 // First thing we need is the ammo drum for this thing.
@@ -67,12 +67,12 @@
 
 	update_icon()
 
-/obj/item/device/m56d_gun/examine(mob/user as mob) //Let us see how much ammo we got in this thing.
-	..()
+/obj/item/device/m56d_gun/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
+	. = ..()
 	if(rounds)
-		to_chat(usr, "It has [rounds] out of 700 rounds.")
+		. += "It has [rounds] out of 700 rounds."
 	else
-		to_chat(usr, "It seems to be lacking a ammo drum.")
+		. += "It seems to be lacking a ammo drum."
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
 	var/icon_name = "M56D_gun"
@@ -163,7 +163,10 @@
 	icon_state = "folded_mount_frame"
 
 /obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/tool/weldingtool))
+	if (iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 
 		if(WT.remove_fuel(1, user))
@@ -263,14 +266,14 @@
 		icon_name += "_mount"
 	icon_state = icon_name
 
-/obj/structure/machinery/m56d_post/examine(mob/user)
-	..()
+/obj/structure/machinery/m56d_post/get_examine_text(mob/user)
+	. = ..()
 	if(!anchored)
-		to_chat(user, "It must be <B>screwed</b> to the floor.")
+		. += "It must be <B>screwed</b> to the floor."
 	else if(!gun_mounted)
-		to_chat(user, "The <b>M56D heavy machine gun</b> is not yet mounted.")
+		. += "The <b>M56D heavy machine gun</b> is not yet mounted."
 	else
-		to_chat(user, "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job.")
+		. += "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job."
 
 /obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M))
@@ -482,18 +485,18 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/structure/machinery/m56d_hmg/examine(mob/user) //Let us see how much ammo we got in this thing.
-	..()
+/obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
+	. = ..()
 	if(ishuman(user))
 		if(rounds)
-			to_chat(user, SPAN_NOTICE("It has [rounds] round\s out of [rounds_max]."))
+			. += SPAN_NOTICE("It has [rounds] round\s out of [rounds_max].")
 		else
-			to_chat(user, SPAN_WARNING("It seems to be lacking ammo."))
+			. += SPAN_WARNING("It seems to be lacking ammo.")
 		switch(damage_state)
-			if(M56D_DMG_NONE) to_chat(user, SPAN_INFO("It looks like it's in good shape."))
-			if(M56D_DMG_SLIGHT) to_chat(user, SPAN_WARNING("It has sustained some damage, but still fires very steadily."))
-			if(M56D_DMG_MODERATE) to_chat(user, SPAN_WARNING("It's damaged, but holding, rattling with each shot fired."))
-			if(M56D_DMG_HEAVY) to_chat(user, SPAN_WARNING("It's falling apart, barely able to handle the force of its own shots."))
+			if(M56D_DMG_NONE) . += SPAN_INFO("It looks like it's in good shape.")
+			if(M56D_DMG_SLIGHT) . += SPAN_WARNING("It has sustained some damage, but still fires very steadily.")
+			if(M56D_DMG_MODERATE) . += SPAN_WARNING("It's damaged, but holding, rattling with each shot fired.")
+			if(M56D_DMG_HEAVY) . += SPAN_WARNING("It's falling apart, barely able to handle the force of its own shots.")
 
 /obj/structure/machinery/m56d_hmg/update_icon() //Lets generate the icon based on how much ammo it has.
 	if(!rounds)
@@ -556,13 +559,16 @@
 		if(rounds)
 			var/obj/item/ammo_magazine/m56d/D = new(user.loc)
 			D.current_rounds = rounds
-		rounds = min(rounds + M.current_rounds, rounds_max)
+		rounds = M.current_rounds
 		update_icon()
 		user.temp_drop_inv_item(O)
 		qdel(O)
 		return
 
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 
@@ -732,15 +738,15 @@
 		return HANDLE_CLICK_UNHANDLED
 	if(operator != user)
 		return HANDLE_CLICK_UNHANDLED
-	if(istype(A,/obj/screen))
+	if(istype(A,/atom/movable/screen))
 		return HANDLE_CLICK_UNHANDLED
 	if(is_bursting)
 		return HANDLE_CLICK_UNHANDLED
 	if(user.lying || get_dist(user,src) > 1 || user.is_mob_incapacitated())
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
-	if(user.get_active_hand())
-		to_chat(usr, SPAN_WARNING("You need a free hand to shoot \the [src]."))
+	if(user.get_active_hand() || user.get_inactive_hand())
+		to_chat(usr, SPAN_WARNING("You need two free hands to shoot \the [src]."))
 		return HANDLE_CLICK_UNHANDLED
 	if(!user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
@@ -968,12 +974,13 @@
 /obj/item/ammo_magazine/m2c
 	name = "M2C Ammunition Box (10x28mm tungsten rounds)"
 	desc = "A box of 125, 10x28mm tungsten rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
+	caliber = "10x28mm"
 	w_class = SIZE_LARGE
 	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	icon_state = "m56de"
 	item_state = "m56de"
 	max_rounds = 125
-	default_ammo = /datum/ammo/bullet/smartgun
+	default_ammo = /datum/ammo/bullet/machinegun/auto
 	gun_type = null
 
 //STORAGE BOX FOR THE MACHINEGUN
@@ -1101,6 +1108,10 @@
 	if(!iswelder(O) || user.action_busy)
 		return
 
+	if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
+
 	if(!broken_gun)
 		to_chat(user, SPAN_WARNING("\The [src] isn't critically broken, no need for field recovery operations."))
 		return
@@ -1125,7 +1136,7 @@
 // MACHINEGUN, AUTOMATIC
 /obj/structure/machinery/m56d_hmg/auto
 	name = "\improper M2C Heavy Machinegun"
-	desc = "A deployable, heavy machine gun. The M2C 'Chimp' HB is a modified M2 HB recongifured to fire 10x28 Caseless Tungsten rounds for USCM use. It is capable of recoiless fire and fast-rotating. However it has a debilitating overheating issue due to the poor quality of metals used in the parts, forcing it to be used in decisive, crushing engagements as a squad support weapon. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
+	desc = "A deployable, heavy machine gun. The M2C 'Chimp' HB is a modified M2 HB reconfigured to fire 10x28 Caseless Tungsten rounds for USCM use. It is capable of recoilless fire and fast-rotating. However it has a debilitating overheating issue due to the poor quality of metals used in the parts, forcing it to be used in decisive, crushing engagements as a squad support weapon. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56DE"
 	icon_full = "M56DE"
@@ -1291,6 +1302,9 @@
 
 	// WELDER REPAIR
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 
@@ -1333,7 +1347,7 @@
 	if(params["shift"] || params["ctrl"] || params["alt"])
 		return
 
-	if(istype(A, /obj/screen))
+	if(istype(A, /atom/movable/screen))
 		return
 
 	if(user.get_active_hand() || user.get_inactive_hand())
@@ -1361,7 +1375,7 @@
 		return
 	var/mob/user = operator
 
-	if(istype(hovered, /obj/screen))
+	if(istype(hovered, /atom/movable/screen))
 		return
 
 	if(get_turf(hovered) == get_turf(user))

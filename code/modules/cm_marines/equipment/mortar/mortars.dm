@@ -148,8 +148,8 @@
 
 /obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, manual = FALSE)
 	if(manual)
-		temp_targ_x = input("Input the longitude of the target.") as num
-		temp_targ_y = input("Input the latitude of the target.") as num
+		temp_targ_x = tgui_input_real_number(user, "Input the longitude of the target.")
+		temp_targ_y = tgui_input_real_number(user, "Input the latitude of the target.")
 
 	if(!can_fire_at(user, test_targ_x = deobfuscate_x(temp_targ_x), test_targ_y = deobfuscate_y(temp_targ_y)))
 		return
@@ -180,8 +180,8 @@
 
 /obj/structure/mortar/proc/handle_dial(mob/user, temp_dial_x = 0, temp_dial_y = 0, manual = FALSE)
 	if(manual)
-		temp_dial_x = input("Set longitude adjustement from -10 to 10.") as num
-		temp_dial_y = input("Set latitude adjustement from -10 to 10.") as num
+		temp_dial_x = tgui_input_number(user, "Set longitude adjustement from -10 to 10.", "Longitude", 0, 10, -10)
+		temp_dial_y = tgui_input_number(user, "Set latitude adjustement from -10 to 10.", "Latitude", 0, 10, -10)
 
 	if(!can_fire_at(user, test_dial_x = temp_dial_x, test_dial_y = temp_dial_y))
 		return
@@ -356,7 +356,7 @@
 	return TRUE
 
 /obj/structure/mortar/fixed
-	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses manual targetting dials. Insert round to fire. This one is bolted and welded into the ground."
+	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses manual targeting dials. Insert round to fire. This one is bolted and welded into the ground."
 	fixed = TRUE
 
 /obj/structure/mortar/wo

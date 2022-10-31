@@ -674,9 +674,8 @@
 	return ..()
 
 /datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/H)
-	H.set_species("Human") // Set back, so that we can get our claws again
-
-	H.set_species("Zombie")
+	H.set_species(SPECIES_HUMAN) // Set back, so that we can get our claws again
+	H.set_species(SPECIES_ZOMBIE)
 
 /datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/H)
 	var/uniform_path = pick(/obj/item/clothing/under/colonist, /obj/item/clothing/under/colonist/ua_civvies, /obj/item/clothing/under/colonist/wy_davisone, /obj/item/clothing/under/colonist/wy_joliet_shopsteward, /obj/item/clothing/under/marine/ua_riot, /obj/item/clothing/under/suit_jacket/manager, /obj/item/clothing/under/suit_jacket/director)
@@ -926,7 +925,7 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/weldpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tanker(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech/tanker(H), WEAR_HEAD)
 
 	spawn_weapon(/obj/item/weapon/gun/smg/m39, /obj/item/ammo_magazine/smg/m39/extended, H, 0, 3)
 

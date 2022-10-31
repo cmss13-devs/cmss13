@@ -58,7 +58,8 @@ export const Radio = (props, context) => {
                   onDrag={(e, value) =>
                     act('frequency', {
                       adjust: value - frequency / 10,
-                    })}
+                    })
+                  }
                 />
               )}
               {tunedChannel && (
@@ -117,7 +118,8 @@ export const Radio = (props, context) => {
                       onClick={() =>
                         act('channel', {
                           channel: channel.name,
-                        })}
+                        })
+                      }
                     />
                   </Box>
                 ))}

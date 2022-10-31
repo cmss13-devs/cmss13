@@ -16,9 +16,10 @@
 	var/accept_glass = 0 //At 0 ONLY accepts glass containers. Kinda misleading varname.
 	var/obj/item/reagent_container/beaker = null
 	var/ui_check = 0
+	var/static/list/possible_transfer_amounts = list(5,10,20,30,40)
 	var/list/dispensable_reagents = list("hydrogen","lithium","carbon","nitrogen","oxygen","fluorine",
 	"sodium","aluminum","silicon","phosphorus","sulfur","chlorine","potassium","iron",
-	"copper","mercury","radium","water","ethanol","sugar","sacid")
+	"copper","mercury","radium","water","ethanol","sugar","sulphuric acid")
 
 /obj/structure/machinery/chem_dispenser/medbay
 	network = "Medbay"
@@ -26,18 +27,9 @@
 /obj/structure/machinery/chem_dispenser/research
 	network = "Research"
 
-/obj/structure/machinery/chem_dispenser/power_change()
-	..()
-	nanomanager.update_uis(src) // update all UIs attached to src
-
 /obj/structure/machinery/chem_dispenser/process()
 	if(!chem_storage)
 		chem_storage = chemical_data.connect_chem_storage(network)
-	if(ui_check <= 0)
-		nanomanager.update_uis(src) // update all UIs attached to src
-		ui_check = 15
-	else
-		ui_check -= 1
 
 /obj/structure/machinery/chem_dispenser/Initialize()
 	. = ..()
@@ -54,102 +46,122 @@
 			qdel(src)
 			return
 
+/obj/structure/machinery/chem_dispenser/update_icon()
+	. = ..()
+	overlays.Cut()
+	if(beaker)
+		overlays += "+beaker[rand(1, 5)]"
+		if(!inoperable())
+			overlays += "+onlight"
 
 /obj/structure/machinery/chem_dispenser/on_stored_atom_del(atom/movable/AM)
 	if(AM == beaker)
 		beaker = null
 
- /**
-  * The ui_interact proc is used to open and update Nano UIs
-  * If ui_interact is not used then the UI will not update correctly
-  * ui_interact is currently defined for /atom/movable
-  *
-  * @param user /mob The mob who is interacting with this ui
-  * @param ui_key string A string key to use for this ui. Allows for multiple unique uis on one obj/mob (defaut value "main")
-  *
-  * @return nothing
-  */
-/obj/structure/machinery/chem_dispenser/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
-	if(inoperable() || !chem_storage)
-		return
-	if(user.stat || user.is_mob_restrained())
-		return
+/obj/structure/machinery/chem_dispenser/proc/replace_beaker(mob/living/user, obj/item/reagent_container/new_beaker)
+	if(beaker)
+		beaker.forceMove(src.loc)
+		if(user && Adjacent(user))
+			user.put_in_hands(beaker)
+	if(new_beaker)
+		beaker = new_beaker
+	else
+		beaker = null
+	update_icon()
+	SStgui.update_uis(src)
+	return TRUE
 
-	// this is the data which will be sent to the ui
-	var/list/data = list(
-		"amount" = amount,
-		"energy" = round(chem_storage.energy),
-		"maxEnergy" = round(chem_storage.max_energy),
-		"isBeakerLoaded" = istype(beaker),
-		"glass" = accept_glass
-	)
-	var beakerContents[0]
-	var beakerCurrentVolume = 0
+/obj/structure/machinery/chem_dispenser/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		replace_beaker(user)
+	return ..()
+
+// TGUI \\
+
+
+/obj/structure/machinery/chem_dispenser/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+
+/obj/structure/machinery/chem_dispenser/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChemDispenser", name)
+		ui.open()
+
+/obj/structure/machinery/chem_dispenser/ui_static_data(mob/user)
+	. = list()
+	.["beakerTransferAmounts"] = possible_transfer_amounts
+
+/obj/structure/machinery/chem_dispenser/ui_data(mob/user)
+	. = list()
+	.["amount"] = amount
+	.["energy"] = round(chem_storage.energy)
+	.["maxEnergy"] = round(chem_storage.max_energy)
+	.["isBeakerLoaded"] = beaker ? 1 : 0
+
+	var/list/beakerContents = list()
+	var/beakerCurrentVolume = 0
 	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beakerContents.Add(list(list("name" = R.name, "volume" = R.volume))) // list in a list because Byond merges the first list...
+			beakerContents += list(list("name" = R.name, "volume" = R.volume))	 // list in a list because Byond merges the first list...
 			beakerCurrentVolume += R.volume
-	data["beakerContents"] = beakerContents
+	.["beakerContents"] = beakerContents
 
-	if(beaker)
-		data["beakerCurrentVolume"] = beakerCurrentVolume
-		data["beakerMaxVolume"] = beaker.volume
+	if (beaker)
+		.["beakerCurrentVolume"] = beakerCurrentVolume
+		.["beakerMaxVolume"] = beaker.volume
 	else
-		data["beakerCurrentVolume"] = null
-		data["beakerMaxVolume"] = null
+		.["beakerCurrentVolume"] = null
+		.["beakerMaxVolume"] = null
 
-	var chemicals[0]
+	var/list/chemicals = list()
 	for(var/re in dispensable_reagents)
 		var/datum/reagent/temp = chemical_reagents_list[re]
 		if(temp)
-			chemicals.Add(list(list("title" = temp.name, "id" = temp.id, "commands" = list("dispense" = temp.id)))) // list in a list because Byond merges the first list...
-	data["chemicals"] = chemicals
+			var/chemname = temp.name
+			chemicals.Add(list(list("title" = chemname, "id" = temp.id)))
+	.["chemicals"] = chemicals
 
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "chem_dispenser.tmpl", ui_title, 390, 655)
-		// when the ui is first opened this is the data it will use
-		ui.set_initial_data(data)
-		// open the new ui window
-		ui.open()
-
-/obj/structure/machinery/chem_dispenser/Topic(href, href_list)
+/obj/structure/machinery/chem_dispenser/ui_act(action, list/params)
 	. = ..()
 	if(.)
 		return
-	if(inoperable())
-		return FALSE // don't update UIs attached to this object
 
-	if(href_list["amount"])
-		amount = round(text2num(href_list["amount"]), 5) // round to nearest 5
-		if(amount < 0) // Since the user can actually type the commands himself, some sanity checking
-			amount = 0
-		if(amount > 240)
-			amount = 240
+	switch(action)
+		if("amount")
+			if(inoperable() || QDELETED(beaker))
+				return
+			var/target = text2num(params["target"])
+			if(target in possible_transfer_amounts)
+				amount = target
+				. = TRUE
+		if("dispense")
+			if(inoperable() || QDELETED(beaker))
+				return
+			var/reagent_name = params["reagent"]
+			if(beaker && dispensable_reagents.Find(reagent_name))
+				var/obj/item/reagent_container/B = beaker
+				var/datum/reagents/R = B.reagents
+				var/space = R.maximum_volume - R.total_volume
 
-	if(href_list["dispense"])
-		if(dispensable_reagents.Find(href_list["dispense"]) && beaker != null && (beaker.is_open_container() || beaker.flags_atom & CAN_BE_DISPENSED_INTO))
-			var/obj/item/reagent_container/B = beaker
-			var/datum/reagents/R = B.reagents
-			var/space = R.maximum_volume - R.total_volume
+				R.add_reagent(reagent_name, min(amount, chem_storage.energy * 10, space))
+				chem_storage.energy = max(chem_storage.energy - min(amount, chem_storage.energy * 10, space) / 10, 0)
 
-			R.add_reagent(href_list["dispense"], min(amount, chem_storage.energy * 10, space))
-			chem_storage.energy = max(chem_storage.energy - min(amount, chem_storage.energy * 10, space) / 10, 0)
+			. = TRUE
 
-	if(href_list["ejectBeaker"])
-		if(!beaker)
-			return FALSE
+		if("remove")
+			if(inoperable())
+				return
+			var/amount = text2num(params["amount"])
+			if(beaker && (amount in possible_transfer_amounts))
+				beaker.reagents.remove_any(amount)
+				. = TRUE
 
-		if(!Adjacent(usr) || !usr.put_in_hands(beaker))
-			beaker.forceMove(loc)
-		beaker = null
-
-	add_fingerprint(usr)
-	attack_hand(usr)
-	return TRUE // update UIs attached to this object
+		if("eject")
+			replace_beaker(usr)
+			. = TRUE
 
 /obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/B, mob/user)
 	if(isrobot(user))
@@ -165,7 +177,8 @@
 				user.put_in_hands(old_beaker)
 			else
 				to_chat(user, SPAN_NOTICE("You set \the [B] on the machine."))
-			nanomanager.update_uis(src) // update all UIs attached to src
+			SStgui.update_uis(src)
+		update_icon()
 		return
 
 /obj/structure/machinery/chem_dispenser/attack_remote(mob/user as mob)
@@ -177,7 +190,7 @@
 	if(req_skill && !skillcheck(user, req_skill, req_skill_level))
 		to_chat(user, SPAN_WARNING("You don't have the training to use this."))
 		return
-	ui_interact(user)
+	tgui_interact(user)
 
 /obj/structure/machinery/chem_dispenser/soda
 	icon_state = "soda_dispenser"

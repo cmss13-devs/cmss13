@@ -18,6 +18,8 @@
 	deevolves_to = list("Larva")
 	can_vent_crawl = 0
 
+	behavior_delegate_type = /datum/behavior_delegate/defender_base
+
 	tackle_min = 2
 	tackle_max = 4
 
@@ -36,34 +38,15 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/slam,
 		/datum/action/xeno_action/onclick/toggle_crest,
 		/datum/action/xeno_action/activable/headbutt,
 		/datum/action/xeno_action/onclick/tail_sweep,
 		/datum/action/xeno_action/activable/fortify,
 	)
 	mutation_type = DEFENDER_NORMAL
-
 	icon_xeno = 'icons/mob/hostiles/defender.dmi'
 	icon_xenonid = 'icons/mob/xenonids/defender.dmi'
-
-
-/mob/living/carbon/Xenomorph/Defender/update_icons()
-	if (stat == DEAD)
-		icon_state = "[mutation_type] Defender Dead"
-	else if (lying)
-		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] Defender Sleeping"
-		else
-			icon_state = "[mutation_type] Defender Knocked Down"
-	else if (fortify)
-		icon_state = "[mutation_type] Defender Fortify"
-	else if (crest_defense)
-		icon_state = "[mutation_type] Defender Crest"
-	else
-		icon_state = "[mutation_type] Defender Running"
-
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
 
 /mob/living/carbon/Xenomorph/Defender/handle_special_state()
 	if(fortify)
@@ -78,3 +61,17 @@
 		return "Defender_fortify_[severity]"
 	if(crest_defense)
 		return "Defender_crest_[severity]"
+
+/datum/behavior_delegate/defender_base
+	name = "Base Defender Behavior Delegate"
+
+/datum/behavior_delegate/defender_base/on_update_icons()
+	if(bound_xeno.stat == DEAD)
+		return
+
+	if(bound_xeno.fortify)
+		bound_xeno.icon_state = "[bound_xeno.mutation_type] Defender Fortify"
+		return TRUE
+	if(bound_xeno.crest_defense)
+		bound_xeno.icon_state = "[bound_xeno.mutation_type] Defender Crest"
+		return TRUE

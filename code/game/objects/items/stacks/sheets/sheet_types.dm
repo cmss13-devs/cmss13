@@ -257,6 +257,8 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		new/datum/stack_recipe("empty 45-70 bullets box (Trackers)", /obj/item/ammo_box/magazine/lever_action/tracker/empty), \
 		new/datum/stack_recipe("empty 45-70 bullets box (Marksman)", /obj/item/ammo_box/magazine/lever_action/marksman/empty), \
 		null, \
+		new/datum/stack_recipe("empty .458 bullets box", /obj/item/ammo_box/magazine/lever_action/xm88/empty), \
+		null, \
 		new/datum/stack_recipe("empty smg ammo box (10x20mm)", /obj/item/ammo_box/rounds/smg/empty), \
 		new/datum/stack_recipe("empty smg ammo box (10x20mm AP)", /obj/item/ammo_box/rounds/smg/ap/empty), \
 		new/datum/stack_recipe("empty smg ammo box (10x20mm Incen)", /obj/item/ammo_box/rounds/smg/incen/empty), \

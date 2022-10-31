@@ -12,7 +12,7 @@
 
 /obj/item/weapon/melee/nullrod
 	name = "null rod"
-	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomenae."
+	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomena."
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	flags_equip_slot = SLOT_WAIST

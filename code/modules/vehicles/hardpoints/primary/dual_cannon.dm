@@ -22,9 +22,13 @@
 	ammo = new /obj/item/ammo_magazine/hardpoint/boyars_dualcannon
 	max_clips = 2
 
+	use_muzzle_flash = TRUE
+	angle_muzzleflash = FALSE
+	muzzleflash_icon_state = "muzzle_flash_double"
+
 	muzzle_flash_pos = list(
-		"1" = list(10, -29),
-		"2" = list(-10, 10),
+		"1" = list(11, -29),
+		"2" = list(-11, 10),
 		"4" = list(-14, 9),
 		"8" = list(14, 9)
 	)

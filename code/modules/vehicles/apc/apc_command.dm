@@ -190,8 +190,8 @@
 	var/obj/vehicle/multitile/apc/command/APC = new (loc)
 
 	load_misc(APC)
-	handle_direction(APC)
 	load_hardpoints(APC)
+	handle_direction(APC)
 	APC.update_icon()
 
 //PRESET: only wheels installed

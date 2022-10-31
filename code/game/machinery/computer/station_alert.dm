@@ -22,6 +22,11 @@
 		ui = new(user, src, "StationAlertConsole", name)
 		ui.open()
 
+/obj/structure/machinery/computer/station_alert/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_DISABLED
+
 /obj/structure/machinery/computer/station_alert/ui_data(mob/user)
 	var/list/data = list()
 

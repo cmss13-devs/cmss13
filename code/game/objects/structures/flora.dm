@@ -86,7 +86,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 
 /obj/structure/flora/tree/joshua
 	name = "joshua tree"
-	desc = "A tall tree covered in spiky-like needles, covering it's trunk."
+	desc = "A tall tree covered in spiky-like needles, covering its trunk."
 	icon = 'icons/obj/structures/props/joshuatree.dmi'
 	icon_state = "joshua_1"
 	pixel_x = 0

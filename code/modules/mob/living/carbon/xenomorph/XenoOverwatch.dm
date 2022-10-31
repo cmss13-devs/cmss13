@@ -7,8 +7,12 @@
 	macro_path = /datum/action/xeno_action/verb/verb_watch_xeno
 
 /datum/action/xeno_action/watch_xeno/can_use_action()
+	if(!owner)
+		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (X.is_mob_incapacitated() || X.buckled || X.burrow)
+	if(!istype(X))
+		return FALSE
+	if(X.is_mob_incapacitated() || X.buckled || X.burrow)
 		return FALSE
 	else
 		return TRUE
@@ -42,7 +46,7 @@
 		if (T != X && !is_admin_level(T.z) && X.hivenumber == T.hivenumber) // Can't overwatch yourself, Xenos in Thunderdome, or Xenos in other hives
 			possible_xenos += T
 
-	var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos)
+	var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
 
 	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || is_admin_level(selected_xeno.z) || !X.check_state(TRUE))
 		X.overwatch(X.observed_xeno, TRUE) // Cancel OW

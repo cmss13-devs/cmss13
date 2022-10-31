@@ -43,7 +43,7 @@
 //Cultist
 /obj/item/clothing/suit/cultist_hoodie
 	name = "black robe"
-	desc = "Looks eery and weird, almost as if it belongs to a cult."
+	desc = "Looks eerie and weird, almost as if it belongs to a cult."
 	icon_state = "chaplain_hoodie"
 	item_state = "chaplain_hoodie"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
@@ -92,7 +92,7 @@
 //Chef
 /obj/item/clothing/suit/chef
 	name = "Chef's apron"
-	desc = "An apron used by a high class chef."
+	desc = "An apron used by a high-class chef."
 	icon_state = "chef"
 	item_state = "chef"
 	gas_transfer_coefficient = 0.90
@@ -253,12 +253,27 @@
 		/obj/item/tool/wrench,
 		/obj/item/clothing/mask/gas,
 
+		/obj/item/weapon/gun,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
+		/obj/item/tool/crew_monitor,
 		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
@@ -337,25 +352,22 @@
 	desc = "This shouldn't be here..."
 	blood_overlay_type = "armor"
 	allowed = list(
-		/obj/item/reagent_container/hypospray,
-		/obj/item/device/analyzer,
-		/obj/item/device/multitool,
-		/obj/item/device/pipe_painter,
-		/obj/item/device/t_scanner,
-		/obj/item/tool/screwdriver,
-		/obj/item/tool/weldingtool,
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/wrench,
-		/obj/item/clothing/mask/gas,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
-		/obj/item/tool/pen,
-		/obj/item/device/binoculars,
 		/obj/item/tool/crew_monitor,
+		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)

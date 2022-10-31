@@ -11,3 +11,9 @@
 #define HUD_WHITE "white"
 #define HUD_ALIEN "alien"
 #define HUD_ROBOT "robot"
+
+// Consider these images/atoms as part of the UI/HUD (apart of the appearance_flags)
+/// Used for progress bars and chat messages
+#define APPEARANCE_UI_IGNORE_ALPHA (RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|RESET_ALPHA|PIXEL_SCALE)
+/// Used for HUD objects
+#define APPEARANCE_UI (RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|PIXEL_SCALE)

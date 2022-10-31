@@ -4,7 +4,7 @@
 	var/list/fullscreens = list()
 
 /mob/proc/overlay_fullscreen(category, type, severity)
-	var/obj/screen/fullscreen/screen = fullscreens[category]
+	var/atom/movable/screen/fullscreen/screen = fullscreens[category]
 	if (!screen || screen.type != type)
 		// needs to be recreated
 		clear_fullscreen(category, FALSE)
@@ -22,7 +22,7 @@
 	return screen
 
 /mob/proc/clear_fullscreen(category, animated = 10)
-	var/obj/screen/fullscreen/screen = fullscreens[category]
+	var/atom/movable/screen/fullscreen/screen = fullscreens[category]
 	if(!screen)
 		return
 
@@ -36,7 +36,7 @@
 			client.screen -= screen
 		qdel(screen)
 
-/mob/proc/clear_fullscreen_after_animate(obj/screen/fullscreen/screen)
+/mob/proc/clear_fullscreen_after_animate(atom/movable/screen/fullscreen/screen)
 	if(client)
 		client.screen -= screen
 	qdel(screen)
@@ -52,7 +52,7 @@
 
 /mob/proc/reload_fullscreens()
 	if(client)
-		var/obj/screen/fullscreen/screen
+		var/atom/movable/screen/fullscreen/screen
 		for(var/category in fullscreens)
 			screen = fullscreens[category]
 			if(screen.should_show_to(src))
@@ -62,7 +62,7 @@
 				client.screen -= screen
 
 
-/obj/screen/fullscreen
+/atom/movable/screen/fullscreen
 	icon = 'icons/mob/hud/screen1_full.dmi'
 	icon_state = "default"
 	screen_loc = "CENTER-7,CENTER-7"
@@ -73,112 +73,112 @@
 	var/fs_view = 7
 	var/show_when_dead = FALSE
 
-/obj/screen/fullscreen/proc/update_for_view(client_view)
+/atom/movable/screen/fullscreen/proc/update_for_view(client_view)
 	if (screen_loc == "CENTER-7,CENTER-7" && fs_view != client_view)
 		var/list/actualview = getviewsize(client_view)
 		fs_view = client_view
 		transform = matrix(actualview[1]/FULLSCREEN_OVERLAY_RESOLUTION_X, 0, 0, 0, actualview[2]/FULLSCREEN_OVERLAY_RESOLUTION_Y, 0)
 
-/obj/screen/fullscreen/proc/should_show_to(mob/mymob)
+/atom/movable/screen/fullscreen/proc/should_show_to(mob/mymob)
 	if(!show_when_dead && mymob.stat == DEAD)
 		return FALSE
 	return TRUE
 
-/obj/screen/fullscreen/Destroy()
+/atom/movable/screen/fullscreen/Destroy()
 	severity = 0
 	. = ..()
 
-/obj/screen/fullscreen/brute
+/atom/movable/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
 	layer = FULLSCREEN_DAMAGE_LAYER
 
-/obj/screen/fullscreen/brute/nvg
+/atom/movable/screen/fullscreen/brute/nvg
 	color = COLOR_BLACK
 
-/obj/screen/fullscreen/oxy
+/atom/movable/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
 	layer = FULLSCREEN_DAMAGE_LAYER
 
-/obj/screen/fullscreen/flash/noise/nvg
+/atom/movable/screen/fullscreen/flash/noise/nvg
 	alpha = 27.5
 
-/obj/screen/fullscreen/crit
+/atom/movable/screen/fullscreen/crit
 	icon_state = "passage"
 	layer = FULLSCREEN_CRIT_LAYER
 
-/obj/screen/fullscreen/blind
+/atom/movable/screen/fullscreen/blind
 	icon_state = "blackimageoverlay"
 	layer = FULLSCREEN_BLIND_LAYER
 
-/obj/screen/fullscreen/impaired
+/atom/movable/screen/fullscreen/impaired
 	icon_state = "impairedoverlay"
 	layer = FULLSCREEN_IMPAIRED_LAYER
 
-/obj/screen/fullscreen/flash
+/atom/movable/screen/fullscreen/flash
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 	layer = FULLSCREEN_FLASH_LAYER
 
-/obj/screen/fullscreen/flash/noise
+/atom/movable/screen/fullscreen/flash/noise
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "noise"
 
-/obj/screen/fullscreen/high
+/atom/movable/screen/fullscreen/high
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "druggy"
 	layer = FULLSCREEN_DRUGGY_LAYER
 
-/obj/screen/fullscreen/nvg
+/atom/movable/screen/fullscreen/nvg
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "nvg_hud"
 	appearance_flags = NONE
 
-/obj/screen/fullscreen/thermal
+/atom/movable/screen/fullscreen/thermal
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "thermal_hud"
 	appearance_flags = NONE
 
-/obj/screen/fullscreen/meson
+/atom/movable/screen/fullscreen/meson
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "meson_hud"
 	appearance_flags = NONE
 
-/obj/screen/fullscreen/meson/refurb
+/atom/movable/screen/fullscreen/meson/refurb
 	icon_state = "refurb_meson_hud"
 
-/obj/screen/fullscreen/pain
+/atom/movable/screen/fullscreen/pain
 	icon_state = "painoverlay"
 	layer = FULLSCREEN_PAIN_LAYER
 
-/obj/screen/fullscreen/xeno_pain
+/atom/movable/screen/fullscreen/xeno_pain
 	icon_state = "xeno_painoverlay"
 	layer = FULLSCREEN_PAIN_LAYER
 
 //Weather overlays//
 
-/obj/screen/fullscreen/weather
+/atom/movable/screen/fullscreen/weather
 	icon_state = "initialize this"
 	layer = FULLSCREEN_WEATHER_LAYER
 	appearance_flags = NONE
 	show_when_dead = TRUE
 
 
-/obj/screen/fullscreen/weather/snow
+/atom/movable/screen/fullscreen/weather/snow
 	icon_state = "test state"
 
-/obj/screen/fullscreen/weather/snowstorm
+/atom/movable/screen/fullscreen/weather/snowstorm
 	icon_state = "impairedoverlay1" // Populate this
 
-/obj/screen/fullscreen/weather/blizzard
+/atom/movable/screen/fullscreen/weather/blizzard
 	icon_state = "impairedoverlay2" // Populate this
 
-/obj/screen/fullscreen/lighting_backdrop
+/atom/movable/screen/fullscreen/lighting_backdrop
 	icon = 'icons/mob/hud/screen1.dmi'
 	icon_state = "flash"
 	transform = matrix(200, 0, 0, 0, 200, 0)
@@ -187,13 +187,13 @@
 	show_when_dead = TRUE
 
 //Provides darkness to the back of the lighting plane
-/obj/screen/fullscreen/lighting_backdrop/lit
+/atom/movable/screen/fullscreen/lighting_backdrop/lit
 	invisibility = INVISIBILITY_LIGHTING
 	layer = BACKGROUND_LAYER+21
 	color = "#000"
 	show_when_dead = TRUE
 
 //Provides whiteness in case you don't see lights so everything is still visible
-/obj/screen/fullscreen/lighting_backdrop/unlit
+/atom/movable/screen/fullscreen/lighting_backdrop/unlit
 	layer = BACKGROUND_LAYER+20
 	show_when_dead = TRUE

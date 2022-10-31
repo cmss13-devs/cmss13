@@ -17,10 +17,9 @@
 /datum/asset/simple/fontawesome
 	keep_local_name = TRUE
 	assets = list(
-		"fa-regular-400.eot"  = 'html/font-awesome/webfonts/fa-regular-400.eot',
-		"fa-regular-400.woff" = 'html/font-awesome/webfonts/fa-regular-400.woff',
-		"fa-solid-900.eot"    = 'html/font-awesome/webfonts/fa-solid-900.eot',
-		"fa-solid-900.woff"   = 'html/font-awesome/webfonts/fa-solid-900.woff',
+		"fa-regular-400.ttf" = 'html/font-awesome/webfonts/fa-regular-400.ttf',
+		"fa-solid-900.ttf" = 'html/font-awesome/webfonts/fa-solid-900.ttf',
+		"fa-v4compatibility.ttf" = 'html/font-awesome/webfonts/fa-v4compatibility.ttf',
 		"font-awesome.css" = 'html/font-awesome/css/all.min.css',
 		"v4shim.css" = 'html/font-awesome/css/v4-shims.min.css',
 	)
@@ -128,6 +127,32 @@
 			assets[filename] = fcopy_rsc(path + filename)
 	..()
 
+/datum/asset/simple/dynamic_icons
+	keep_local_name = TRUE
+	assets = list()
+
+/datum/asset/simple/dynamic_icons/proc/update(var/filename)
+	var/list/filenames = list(filename)
+	if(islist(filename))
+		filenames = filename
+	for(var/asset in filenames)
+		if(!(asset in assets))
+			var/key = copytext(asset, 7)
+			assets += list(key)
+			var/datum/asset_cache_item/ACI = SSassets.cache[key]
+			if(ACI)
+				SSassets.transport.preload += list(key=ACI)
+
+/datum/asset/simple/dynamic_icons/proc/register_single(var/asset_name)
+	var/datum/asset_cache_item/ACI = SSassets.transport.register_asset(asset_name, assets[asset_name])
+	if (!ACI)
+		log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
+		return
+	if (legacy)
+		ACI.legacy = legacy
+	if (keep_local_name)
+		ACI.keep_local_name = keep_local_name
+	assets[asset_name] = ACI
 
 /datum/asset/simple/other
 	keep_local_name = TRUE

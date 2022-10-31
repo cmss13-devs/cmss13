@@ -40,9 +40,11 @@
 	if(severity >= 30)
 		flash_eyes()
 
+	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
+
 	if(severity > EXPLOSION_THRESHOLD_LOW && stomach_contents.len)
 		for(var/mob/M in stomach_contents)
-			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, cause_data, pierce)
+			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, last_damage_data, pierce)
 
 	var/b_loss = 0
 	var/f_loss = 0
@@ -55,8 +57,6 @@
 	var/armor_punch = armor_break_calculation(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	apply_armorbreak(armor_punch)
 
-	last_damage_data = cause_data
-
 	last_hit_time = world.time
 
 	var/shieldtotal = 0
@@ -65,8 +65,8 @@
 
 	if (damage >= (health + shieldtotal) && damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
-		gib(cause_data)
-		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, cause_data)
+		gib(last_damage_data)
+		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, last_damage_data)
 		return
 	if (damage >= 0)
 		b_loss += damage * 0.5
@@ -291,3 +291,23 @@
 
 	var/list/overlap = iff_tag.faction_groups & access_to_check
 	return length(overlap)
+
+/mob/living/carbon/Xenomorph/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+	. = ..()
+	switch(fire.fire_variant)
+		if(FIRE_VARIANT_TYPE_B)
+			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
+				reset_xeno_armor_debuff_after_time(src, delta_time*10)
+			fire.type_b_debuff_xeno_armor(src) //Always reapplies debuff each time to minimize gap.
+
+/mob/living/carbon/Xenomorph/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+	. = ..()
+	switch(fire.fire_variant)
+		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire
+			if(!armor_deflection_debuff) //Only applies the xeno armor shred reset when the debuff isn't present or was recently removed.
+				reset_xeno_armor_debuff_after_time(src, 20)
+			var/resist_modifier = fire.type_b_debuff_xeno_armor(src)
+			fire.set_on_fire(src) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
+			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
+			if(resist_modifier > 0)
+				to_chat(src, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))

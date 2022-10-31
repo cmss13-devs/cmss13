@@ -176,12 +176,14 @@
 				if (T != X && !is_admin_level(T.z) && X.hivenumber == T.hivenumber)
 					possible_xenos += T
 
-			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos)
+			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
 
 			if(selected_xeno == FunkTownOhyea)
 				for(var/mob/living/carbon/Xenomorph/forced_xeno in X.hive.totalXenos)
 					to_chat(forced_xeno, SPAN_XENOANNOUNCE("Hive! Your queen commands: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
 					forced_xeno.start_tracking_resin_mark(mark_to_force)
+					forced_xeno.hud_used.locate_marker.overlays.Cut()
+					flick("marker_alert", forced_xeno.hud_used.locate_marker)
 					. = TRUE
 				update_all_data()
 				return

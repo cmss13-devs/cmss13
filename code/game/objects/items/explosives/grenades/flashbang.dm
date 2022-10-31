@@ -202,7 +202,7 @@
 //Makes it perfect support tool, but not an insta win.
 /obj/item/explosive/grenade/flashbang/noskill
 	name = "M40 stun grenade"
-	desc = "A less-lethal explosive device used to temporarily disorient an enemy by producing a flash of light and an intensely loud \"bang\", which cause temporary blindness and deafness. More commonly referred to as a \"flashbang\". Still dangerous if explodes near."
+	desc = "A less-lethal explosive device used to temporarily disorient an enemy by producing a flash of light and an intensely loud \"bang\", which cause temporary blindness and deafness. More commonly referred to as a \"flashbang\". Still dangerous if it explodes nearby."
 
 	icon_state = "flashbang_noskill"
 	item_state = "grenade_flashbang_noskill"
@@ -282,16 +282,16 @@
 			M.Daze(2)
 			M.SetEarDeafness(max(M.ear_deaf, 3))
 		if(3)
-			M.flash_eyes(1, TRUE, /obj/screen/fullscreen/flash, 10)
+			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 10)
 			M.Daze(5)
 			M.SetEarDeafness(max(M.ear_deaf, 5))
 		if(4)
-			M.flash_eyes(1, TRUE, /obj/screen/fullscreen/flash, 20)
+			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 20)
 			M.Daze(5)
 			M.SetEarDeafness(max(M.ear_deaf, 7))
 			M.ear_damage += rand(1, 5)
 		if(5)
-			M.flash_eyes(1, TRUE, /obj/screen/fullscreen/flash, 50)
+			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 50)
 			M.Daze(10)
 			M.KnockDown(5)
 			M.SetEarDeafness(max(M.ear_deaf, 10))

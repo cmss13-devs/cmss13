@@ -9,7 +9,7 @@
 	. = ..()
 	serial_number = "[rand(0,9)][pick(alphabet_uppercase)][rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)][pick(alphabet_uppercase)]"
 
-/obj/item/device/examine(mob/user)
-	..()
+/obj/item/device/get_examine_text(mob/user)
+	. = ..()
 	if(!isXeno(user) && (get_dist(user, src) < 2 || isobserver(user)) && serial_number)
-		to_chat(user, SPAN_INFO("The serial number is [serial_number]."))
+		. += SPAN_INFO("The serial number is [serial_number].")

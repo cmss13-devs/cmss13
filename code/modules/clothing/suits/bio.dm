@@ -2,7 +2,7 @@
 /obj/item/clothing/head/bio_hood
 	name = "bio hood"
 	icon_state = "bio"
-	desc = "A hood that protects the head and face from biological comtaminants."
+	desc = "A hood that protects the head and face from biological contaminants."
 	permeability_coefficient = 0.01
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE

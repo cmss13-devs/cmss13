@@ -1,3 +1,4 @@
+
 // Rav charge
 /datum/action/xeno_action/activable/pounce/charge
 	name = "Charge"
@@ -17,12 +18,12 @@
 	should_destroy_objects = TRUE   // Only used for ravager charge
 
 // Base ravager shield ability
-/datum/action/xeno_action/activable/empower
+/datum/action/xeno_action/onclick/empower
 	name = "Empower"
 	action_icon_state = "empower"
 	ability_name = "empower"
 	macro_path = /datum/action/xeno_action/verb/verb_empower
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 50
 	xeno_cooldown = 22 SECONDS
@@ -56,7 +57,7 @@
 
 //// BERSERKER ACTIONS
 
-/datum/action/xeno_action/activable/apprehend
+/datum/action/xeno_action/onclick/apprehend
 	name = "Apprehend"
 	action_icon_state = "rav_enrage"
 	ability_name = "apprehend"
@@ -64,11 +65,11 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 0
-	xeno_cooldown = 200
+	xeno_cooldown = 17 SECONDS
 
 	// Config values
-	var/max_distance = 6 // 5 tiles between
-	var/windup_duration = 10
+	var/speed_buff = 0.75
+	var/buff_duration = 8 SECONDS
 
 
 /datum/action/xeno_action/activable/clothesline
@@ -82,7 +83,8 @@
 	xeno_cooldown = 140
 
 	// Config values
-	var/heal_per_rage = 150
+	var/base_heal = 100
+	var/additional_healing_enraged = 100
 	var/damage = 20
 	var/fling_dist_base = 4
 	var/daze_amount = 2
@@ -92,7 +94,7 @@
 	action_icon_state = "rav_eviscerate"
 	ability_name = "eviscerate"
 	macro_path = /datum/action/xeno_action/verb/verb_eviscerate
-	action_type = XENO_ACTION_CLICK
+	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
 	xeno_cooldown = 230
@@ -108,12 +110,12 @@
 
 ////// HEDGEHOG ABILITIES
 
-/datum/action/xeno_action/activable/spike_shield
+/datum/action/xeno_action/onclick/spike_shield
 	name = "Spike Shield (150 shards)"
 	action_icon_state = "rav_shard_shield"
 	ability_name = "spike shield"
 	macro_path = /datum/action/xeno_action/verb/verb_spike_shield
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 0
 	xeno_cooldown = 9 SECONDS + 2 SECONDS // Left operand is the actual CD, right operand is the buffer for the shield duration
@@ -140,12 +142,12 @@
 	var/shard_cost = 75
 	var/ammo_type = /datum/ammo/xeno/bone_chips
 
-/datum/action/xeno_action/activable/spike_shed
+/datum/action/xeno_action/onclick/spike_shed
 	name = "Spike Shed (50 shards)"
 	action_icon_state = "rav_shard_shed"
 	ability_name = "spike shed"
 	macro_path = /datum/action/xeno_action/verb/verb_shed_spikes
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
 	xeno_cooldown = 300
@@ -154,6 +156,5 @@
 	var/shard_cost = 50
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread
 	var/shrapnel_amount = 40
-
 
 

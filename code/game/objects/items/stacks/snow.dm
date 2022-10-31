@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 				var/turf/open/auto_turf/snow/AT = T
 				AT.changing_layer(AT.bleed_layer += 1)
 			else
-				T.bleed_layer += 1
+				T.bleed_layer++
 				T.update_icon(TRUE, FALSE)
 			use(1)
 

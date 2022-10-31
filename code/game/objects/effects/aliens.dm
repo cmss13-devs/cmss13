@@ -83,8 +83,8 @@
 			else
 				switch(FF.fire_variant)
 					if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, extinguishes faster.
-						if(FF.firelevel > 2*fire_level_to_extinguish)
-							FF.firelevel -= 2*fire_level_to_extinguish
+						if(FF.firelevel > 3*fire_level_to_extinguish)
+							FF.firelevel -= 3*fire_level_to_extinguish
 							FF.update_flame()
 						else qdel(atm)
 					else
@@ -121,9 +121,7 @@
 
 		if(isVehicleMultitile(atm))
 			var/obj/vehicle/multitile/V = atm
-			for(var/obj/item/hardpoint/locomotion/Loco in V.hardpoints)
-				Loco.handle_acid_spray(src)
-				break
+			V.handle_acidic_environment(src)
 			continue
 
 	START_PROCESSING(SSobj, src)
@@ -157,9 +155,7 @@
 			apply_spray(AM)
 	else if(isVehicleMultitile(AM))
 		var/obj/vehicle/multitile/V = AM
-		for(var/obj/item/hardpoint/locomotion/Loco in V.hardpoints)
-			Loco.handle_acid_spray(src)
-			break
+		V.handle_acidic_environment(src)
 
 //damages human that comes in contact
 /obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/H, should_stun = TRUE)
@@ -449,6 +445,9 @@
 
 /obj/effect/xenomorph/xeno_telegraph/brown
 	icon_state = "xeno_telegraph_brown"
+
+/obj/effect/xenomorph/xeno_telegraph/green
+	icon_state = "xeno_telegraph_green"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook"

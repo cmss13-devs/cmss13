@@ -75,7 +75,7 @@
 	var/list/marines_list = list()	// list of mobs (or name, not always a mob ref) in that squad.
 
 	var/mob/living/carbon/human/overwatch_officer = null	//Who's overwatching this squad?
-	var/supply_cooldown = 0	//Cooldown for supply drops
+	COOLDOWN_DECLARE(next_supplydrop)
 
 	///Text strings, not HTML safe so don't use it without encoding
 	var/primary_objective = null

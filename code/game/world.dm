@@ -36,6 +36,8 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 
+	GLOB.revdata = new
+	initialize_tgs()
 	initialize_marine_armor()
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
@@ -116,7 +118,13 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
+/world/proc/initialize_tgs()
+	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
+	GLOB.revdata.load_tgs_info()
+
 /world/Topic(T, addr, master, key)
+	TGS_TOPIC
+
 	if (T == "ping")
 		var/x = 1
 		for (var/client/C)
@@ -197,15 +205,25 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")
 
+	if(TgsAvailable())
+		send_tgs_restart()
 
-	if(!notify_manager(restarting = TRUE))
-		log_debug("Failed to notify manager daemon of restart")
-
-	if(CONFIG_GET(flag/no_restarts))
+		TgsReboot()
+		TgsEndProcess()
+	else
 		shutdown()
-		return
 
-	..(reason)
+/world/proc/send_tgs_restart()
+	if(CONFIG_GET(string/new_round_alert_channel) && CONFIG_GET(string/new_round_alert_role_id))
+		if(round_statistics)
+			send2chat("[round_statistics.round_name] completed!", CONFIG_GET(string/new_round_alert_channel))
+		if(SSmapping.next_map_configs)
+			var/datum/map_config/next_map = SSmapping.next_map_configs[GROUND_MAP]
+			if(next_map)
+				send2chat("<@&[CONFIG_GET(string/new_round_alert_role_id)]> Restarting! Next map is [next_map.map_name]", CONFIG_GET(string/new_round_alert_channel))
+		else
+			send2chat("<@&[CONFIG_GET(string/new_round_alert_role_id)]> Restarting!", CONFIG_GET(string/new_round_alert_channel))
+	return
 
 /world/proc/send_reboot_sound()
 	var/reboot_sound = SAFEPICK(reboot_sfx)
@@ -214,31 +232,6 @@ var/world_topic_spam_protect_time = world.timeofday
 		for(var/client/client as anything in GLOB.clients)
 			if(client?.prefs.toggles_sound & SOUND_REBOOT)
 				SEND_SOUND(client, reboot_sound_ref)
-
-/world/proc/notify_manager(restarting = FALSE)
-	. = FALSE
-	var/manager = CONFIG_GET(string/manager_url)
-	if(!manager)
-		return TRUE
-
-	var/list/payload = list()
-	payload["round_time"] = world.time
-	payload["drift"] = Master.tickdrift
-	if(restarting)
-		payload["restarting"] = TRUE
-		if(SSticker?.mode)
-			payload["round_result"] = SSticker.mode.end_round_message()
-	if(round_statistics?.round_name)
-		payload["mission_name"] = round_statistics.round_name
-	if(SSmapping.next_map_configs)
-		var/datum/map_config/next_map = SSmapping.next_map_configs[GROUND_MAP]
-		if(next_map)
-			payload["next_map"] = next_map.map_name
-	payload["avg_players"] = SSstats_collector.get_avg_players()
-
-	var/payload_ser = url_encode(json_encode(payload))
-	world.Export("[manager]/?payload=[payload_ser]")
-	return TRUE
 
 /world/proc/load_mode()
 	var/list/Lines = file2list("data/mode.txt")

@@ -16,12 +16,12 @@
 	else
 		return temp_access
 
-/obj/item/card/id/guest/examine(mob/user)
-	..()
+/obj/item/card/id/guest/get_examine_text(mob/user)
+	. = ..()
 	if (world.time < expiration_time)
-		to_chat(user, SPAN_NOTICE("This pass expires at [worldtime2text(expiration_time)]."))
+		. += SPAN_NOTICE("This pass expires at [worldtime2text(expiration_time)].")
 	else
-		to_chat(user, SPAN_WARNING("It expired at [worldtime2text(expiration_time)]."))
+		. += SPAN_WARNING("It expired at [worldtime2text(expiration_time)].")
 
 /obj/item/card/id/guest/read()
 	if (world.time > expiration_time)
@@ -118,7 +118,7 @@
 				if(reas)
 					reason = reas
 			if ("duration")
-				var/dur = input("Duration (in minutes) during which pass is valid (up to 30 minutes).", "Duration") as num|null
+				var/dur = tgui_input_number(usr, "Duration (in minutes) during which pass is valid (up to 30 minutes).", "Duration", 5, 30, 1)
 				if (dur)
 					if (dur > 0 && dur <= 30)
 						duration = dur

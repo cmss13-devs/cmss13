@@ -94,8 +94,13 @@
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] effortlessly flings [H] to the side!"), SPAN_XENOWARNING("You effortlessly fling [H] to the side!"))
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
-	H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
-	H.apply_effect(weaken_power, WEAKEN)
+	if(stun_power)
+		H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
+	if(weaken_power)
+		H.apply_effect(weaken_power, WEAKEN)
+	if(slowdown)
+		if(H.slowed < slowdown)
+			H.Slow(slowdown)
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 	shake_camera(H, 2, 1)
 
@@ -133,6 +138,9 @@
 		return
 
 	var/mob/living/carbon/H = A
+
+	if (!X.Adjacent(H))
+		return
 
 	if(H.stat == DEAD) return
 	if(HAS_TRAIT(H, TRAIT_NESTED)) return
@@ -179,19 +187,3 @@
 
 	shake_camera(H, 2, 1)
 	step_away(H, X, 2)
-
-	// Check actions list for a warrior punch and reset it's cooldown if it's there
-	var/datum/action/xeno_action/activable/warrior_punch/punch_action = null
-	for (var/datum/action/xeno_action/activable/warrior_punch/P in X.actions)
-		punch_action = P
-		break
-
-	if (punch_action && !punch_action.action_cooldown_check())
-		if(isXeno(H))
-			punch_action.reduce_cooldown(punch_action.xeno_cooldown / 2)
-		else
-			punch_action.end_cooldown()
-
-	H.Daze(3)
-	H.Slow(5)
-	apply_cooldown()

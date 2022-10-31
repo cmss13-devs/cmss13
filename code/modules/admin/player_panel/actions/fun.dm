@@ -1,7 +1,7 @@
 /datum/player_action/fun
 	action_tag = "fun"
 	name = "Fun"
-	permissions_required = R_FUN
+	permissions_required = R_ADMIN
 
 /datum/player_action/fun/narrate
 	action_tag = "mob_narrate"

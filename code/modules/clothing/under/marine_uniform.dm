@@ -181,7 +181,7 @@
 	desc = "A uniform worn by vehicle crewmen of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "marine_tanker"
 	worn_state = "marine_tanker"
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/tanker)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/tanker, /obj/item/clothing/suit/storage/jacket/marine/service/tanker)
 	specialty = "vehicle crewman"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	item_state_slots = list(WEAR_BODY = "marine_tanker")
@@ -220,14 +220,8 @@
 /obj/item/clothing/under/marine/officer/ce
 	name = "chief engineer uniform"
 	desc = "A uniform for a military engineer. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	icon_state = "EC_jumpsuit"
 	worn_state = "EC_jumpsuit"
 	specialty = "chief engineer"
@@ -237,14 +231,8 @@
 /obj/item/clothing/under/marine/officer/engi
 	name = "engineer uniform"
 	desc = "A uniform for a military engineer. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	icon_state = "mt_jumpsuit"
 	worn_state = "mt_jumpsuit"
 	specialty = "engineer"
@@ -263,14 +251,8 @@
 /obj/item/clothing/under/marine/officer/researcher
 	name = "researcher clothes"
 	desc = "A simple set of civilian clothes worn by researchers."
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	icon_state = "research_jumpsuit"
 	worn_state = "research_jumpsuit"
 	specialty = "researcher"
@@ -304,11 +286,6 @@
 	name = "marine dress uniform"
 	desc = "A dress uniform typically worn marines of the USCM. The Sergeant Major would kill you if you got this dirty."
 	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
@@ -339,14 +316,6 @@
 	)
 
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/marine/mp/provost/enforcer
 	name = "\improper Provost Enforcer Uniform"
@@ -384,6 +353,33 @@
 	name = "\improper Provost Chief Marshal Uniform"
 	desc = "The crisp uniform of the Provost Chief Marshal."
 
+//==================//UNITED AMERICAS ALLIED COMMAND\\===================\\
+//=======================================================================\\
+
+/obj/item/clothing/under/uaac/tis
+	name = "\improper UAAC-TIS Special Agent Uniform"
+	desc = "A modified USCM Provost uniform, with its original insignia replaced by those of the UAAC-TIS Intelligence Service. TIS Special Agents are often recruited from the upper echelons of law enforcement agencies in various UA armed forces. These recruits often take all their gear, uniform included with them and later modify them to include TIS and UAAC insignia."
+	flags_jumpsuit = FALSE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	siemens_coefficient = 0.9
+	icon_state = "tis"
+	worn_state = "tis"
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/under/uaac/tis/io
+	name = "\improper UAAC-TIS Intelligence Officer uniform"
+	desc = "Originally a USCM officer uniform, all insignia have been carefully removed and replaced by a simple TIS pin worn over the right breast. Like their Special Agent counterparts, TIS Intel Officers are typically transplants from UA aligned armed forces, often initially recruited on a temporary basis then transferred permanently. As such, officers are often forced to adapt their original uniforms."
+	icon_state = "BO_jumpsuit"
+	worn_state = "BO_jumpsuit"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\
 
@@ -410,14 +406,6 @@
 	icon_state = "pmc_jumpsuit"
 	worn_state = "pmc_jumpsuit"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/PMC,
 							/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC,
@@ -435,14 +423,6 @@
 	desc = "An armored uniform worn by Weyland-Yutani elite commandos. It is well protected while remaining light and comfortable."
 	icon_state = "commando_jumpsuit"
 	worn_state = "commando_jumpsuit"
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 //=========================//UPP\\================================\\
 
@@ -522,7 +502,7 @@
 
 /obj/item/clothing/under/marine/veteran/freelancer
 	name = "\improper freelancer fatigues"
-	desc = "A set of loose fitting fatigues, perfect for an informal mercenary. Smells like gunpowder, apple pie, and covered in grease and sake stains."
+	desc = "A set of loose-fitting fatigues, perfect for an informal mercenary. Smells like gunpowder, apple pie, and covered in grease and sake stains."
 	icon_state = "freelancer_uniform"
 	worn_state = "freelancer_uniform"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
@@ -564,14 +544,6 @@
 	icon_state = "mercenary_heavy_uniform"
 	worn_state = "mercenary_heavy_uniform"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/mercenary)
 
 /obj/item/clothing/under/marine/veteran/mercenary/miner
@@ -645,8 +617,8 @@
 	sensor_faction = FACTION_MARINE
 
 /obj/item/clothing/under/colonist/wy_joliet_shopsteward
-	name = "stewart utilities"
-	desc = "A stylish brown vest and shorts - uniforms like this are often worn by clerks and shop stewarts."
+	name = "steward utilities"
+	desc = "A stylish brown vest and shorts - uniforms like this are often worn by clerks and shop stewards."
 	icon_state = "wy_joliet_shopsteward"
 	worn_state = "wy_joliet_shopsteward"
 	has_sensor = UNIFORM_HAS_SENSORS
@@ -658,7 +630,7 @@
 
 /obj/item/clothing/under/tshirt/w_br
 	name = "white T-shirt and brown pants"
-	desc = "A confortable white T-shirt and brown jeans."
+	desc = "A comfortable white T-shirt and brown jeans."
 	icon_state = "tshirt_w_br"
 	worn_state = "tshirt_w_br"
 	has_sensor = UNIFORM_HAS_SENSORS
@@ -666,7 +638,7 @@
 
 /obj/item/clothing/under/tshirt/gray_blu
 	name = "gray T-shirt and jeans"
-	desc = "A confortable gray T-shirt and blue jeans."
+	desc = "A comfortable gray T-shirt and blue jeans."
 	icon_state = "tshirt_gray_blu"
 	worn_state = "tshirt_gray_blu"
 	has_sensor = UNIFORM_HAS_SENSORS
@@ -674,7 +646,7 @@
 
 /obj/item/clothing/under/tshirt/r_bla
 	name = "red T-shirt and black pants"
-	desc = "A confortable red T-shirt and black jeans."
+	desc = "A comfortable red T-shirt and black jeans."
 	icon_state = "tshirt_r_bla"
 	worn_state = "tshirt_r_bla"
 	has_sensor = UNIFORM_HAS_SENSORS

@@ -6,11 +6,11 @@
 	monkey_amount = 5
 	corpses_to_spawn = 0
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
+	static_comms_amount = 1
 	var/round_status_flags
 
 	var/research_allocation_interval = 10 MINUTES
 	var/next_research_allocation = 0
-	var/research_allocation_amount = 5
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -159,7 +159,7 @@
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
 	if(next_research_allocation < world.time)
-		chemical_data.update_credits(research_allocation_amount)
+		chemical_data.update_credits(chemical_data.research_allocation_amount)
 		next_research_allocation = world.time + research_allocation_interval
 
 	if(!round_finished)
@@ -254,7 +254,7 @@
 /datum/game_mode/colonialmarines/check_queen_status(var/hivenumber)
 	set waitfor = 0
 	if(!(flags_round_type & MODE_INFESTATION)) return
-	xeno_queen_deaths += 1
+	xeno_queen_deaths++
 	var/num_last_deaths = xeno_queen_deaths
 	sleep(QUEEN_DEATH_COUNTDOWN)
 	//We want to make sure that another queen didn't die in the interim.
@@ -286,29 +286,29 @@
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
 			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories += 1
-				round_statistics.current_map.total_xeno_majors += 1
+				round_statistics.current_map.total_xeno_victories++
+				round_statistics.current_map.total_xeno_majors++
 		if(MODE_INFESTATION_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
 			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories += 1
-				round_statistics.current_map.total_marine_majors += 1
+				round_statistics.current_map.total_marine_victories++
+				round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
 			musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
 			end_icon = "xeno_minor"
 			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories += 1
+				round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
 			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories += 1
+				round_statistics.current_map.total_marine_victories++
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
 			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_draws += 1
+				round_statistics.current_map.total_draws++
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)

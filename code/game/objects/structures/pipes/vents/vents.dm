@@ -28,14 +28,14 @@
 	uid = gl_uid
 	gl_uid++
 
-/obj/structure/pipes/vents/examine(mob/user)
-	..()
+/obj/structure/pipes/vents/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(user, src) <= 1)
-		to_chat(user, SPAN_INFO("A small gauge in the corner reads 0.1 L/s; 0W."))
+		. += SPAN_INFO("A small gauge in the corner reads 0.1 L/s; 0W.")
 	else
-		to_chat(user, SPAN_INFO("You are too far away to read the gauge."))
+		. += SPAN_INFO("You are too far away to read the gauge.")
 	if(welded)
-		to_chat(user, SPAN_INFO("It seems welded shut."))
+		. += SPAN_INFO("It seems welded shut.")
 
 /obj/structure/pipes/vents/update_icon(var/safety = 0)
 	if(!check_icon_cache())
@@ -73,30 +73,33 @@
 
 /obj/structure/pipes/vents/attackby(obj/item/W, mob/user)
 	if(iswelder(W))
+		var/weldtime = 50
+		if(HAS_TRAIT(W, TRAIT_TOOL_SIMPLE_BLOWTORCH))
+			weldtime = 60
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
-			user.visible_message(SPAN_NOTICE("[user] starts welding [src] with [WT]."), \
-			SPAN_NOTICE("You start welding [src] with [WT]."))
+			user.visible_message(SPAN_NOTICE("[user] starts welding \the [src] with \the [WT]."), \
+			SPAN_NOTICE("You start welding \the [src] with \the [WT]."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user, weldtime * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src || !WT.isOn()) return 0
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!welded)
-					user.visible_message(SPAN_NOTICE("[user] welds [src] shut."), \
-					SPAN_NOTICE("You weld [src] shut."))
+					user.visible_message(SPAN_NOTICE("[user] welds \the [src] shut."), \
+					SPAN_NOTICE("You weld \the [src] shut."))
 					welded = 1
 					update_icon()
 					msg_admin_niche("[key_name(user)] welded a vent pump.")
 					return 1
 				else
-					user.visible_message(SPAN_NOTICE("[user] welds [src] open."), \
-					SPAN_NOTICE("You weld [src] open."))
+					user.visible_message(SPAN_NOTICE("[user] welds \the [src] open."), \
+					SPAN_NOTICE("You weld \the [src] open."))
 					welded = 0
 					msg_admin_niche("[key_name(user)] un-welded a vent pump.")
 					update_icon()
 					return 1
 			else
-				to_chat(user, SPAN_WARNING("[W] needs to be on to start this task."))
+				to_chat(user, SPAN_WARNING("\The [W] needs to be on to start this task."))
 				return 0
 		else
 			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))

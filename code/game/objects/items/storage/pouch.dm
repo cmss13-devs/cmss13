@@ -35,9 +35,9 @@
 		overlays += "+[icon_state]_full"
 
 
-/obj/item/storage/pouch/examine(mob/user)
-	..()
-	to_chat(user, "Can be worn by attaching it to a pocket.")
+/obj/item/storage/pouch/get_examine_text(mob/user)
+	. = ..()
+	. += "Can be worn by attaching it to a pocket."
 
 
 /obj/item/storage/pouch/equipped(mob/user, slot)
@@ -231,7 +231,7 @@
 	new /obj/item/stack/medical/bruise_pack(src)
 
 /obj/item/storage/pouch/firstaid/full/pills/fill_preset_inventory()
-	new /obj/item/storage/pill_bottle/packet/bicardine(src)
+	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
@@ -581,6 +581,10 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
 
+/obj/item/storage/pouch/shotgun/large/buckshot/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
+
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
 	desc = "It can carry grenades, plastic explosives, mine boxes, and other explosives."
@@ -842,10 +846,16 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
 	. = ..()
-	inner.reagents.add_reagent("adrenaline", inner.volume/2.5)
-	inner.reagents.add_reagent("inaprovaline", inner.volume/2.5)
-	inner.reagents.add_reagent("peridaxon", inner.volume/5)
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
+	. = ..()
+	inner.reagents.add_reagent("tricordrazine", inner.volume)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
@@ -916,9 +926,11 @@
 	to_chat(user, SPAN_NOTICE("You refill the [src]."))
 	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/examine(mob/user)
-	..()
-	display_contents(user)
+/obj/item/storage/pouch/pressurized_reagent_canister/get_examine_text(mob/user)
+	. = ..()
+	var/display_info = display_contents(user)
+	if(display_info)
+		. += display_info
 
 /obj/item/storage/pouch/pressurized_reagent_canister/update_icon()
 	overlays.Cut()
@@ -935,12 +947,11 @@
 	if(isXeno(user))
 		return
 	if(!inner)
-		to_chat(user, "This [src] has no container inside!")
-		return
+		return "This [src] has no container inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		to_chat(user, "This [src] contains: [get_reagent_list_text()]")
+		return "This [src] contains: [get_reagent_list_text()]"
 	else
-		to_chat(user, "You don't know what's in it.")
+		return "You don't know what's in it."
 
 //returns a text listing the reagents (and their volume) in the atom. Used by Attack logs for reagents in pills
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/get_reagent_list_text()
@@ -1031,7 +1042,7 @@
 
 /obj/item/storage/pouch/electronics
 	name = "electronics pouch"
-	desc = "It is designed to hold most electronics, power cells and circuitboards."
+	desc = "It is designed to hold most electronics, power cells and circuit boards."
 	icon_state = "electronics"
 	storage_slots = 6
 	can_hold = list(
@@ -1160,10 +1171,10 @@
 	var/sling_range = 1
 	var/obj/item/slung
 
-/obj/item/storage/pouch/sling/examine(mob/user)
-	..()
+/obj/item/storage/pouch/sling/get_examine_text(mob/user)
+	. = ..()
 	if(slung && slung.loc != src)
-		to_chat(user, "\the [slung] is attached to the sling.")
+		. += "\The [slung] is attached to the sling."
 
 /obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, stop_messages = FALSE)
 	if(slung)
@@ -1274,7 +1285,7 @@
 		icon_state = "[initial(icon_state)]_full"
 	else
 		icon_state = initial(icon_state)
-		
+
 /obj/item/storage/pouch/machete/_item_insertion(obj/item/W, prevent_warning = 0)
 	..()
 	playsound(src, sheathe_sound, vol = 15, vary = TRUE)

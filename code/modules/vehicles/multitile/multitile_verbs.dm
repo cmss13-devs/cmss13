@@ -222,7 +222,7 @@
 //toggles gyrostabilizer for vehicles that have turret, allowing it to keep direction regardless hull rotations
 /obj/vehicle/multitile/proc/toggle_gyrostabilizer()
 	set name = "Toggle Turret Gyrostabilizer"
-	set desc = "Toggles Turret Gyrostabilizer allowing it independant movement regardless of hull direction."
+	set desc = "Toggles Turret Gyrostabilizer allowing it independent movement regardless of hull direction."
 	set category = "Vehicle"
 
 	var/mob/M = usr

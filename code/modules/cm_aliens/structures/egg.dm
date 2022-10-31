@@ -10,6 +10,7 @@
 	anchored = 1
 	layer = LYING_BETWEEN_MOB_LAYER	//to stop hiding eggs under corpses
 	health = 80
+	plane = FLOOR_PLANE
 	var/list/egg_triggers = list()
 	var/status = EGG_GROWING //can be EGG_GROWING, EGG_GROWN, EGG_BURST, EGG_BURSTING, or EGG_DESTROYED; all mutually exclusive
 	var/on_fire = FALSE
@@ -33,10 +34,10 @@
 /obj/effect/alien/egg/ex_act(severity)
 	Burst(TRUE)//any explosion destroys the egg.
 
-/obj/effect/alien/egg/examine(mob/user)
+/obj/effect/alien/egg/get_examine_text(mob/user)
 	. = ..()
 	if(isXeno(user) && status == EGG_GROWN)
-		to_chat(user, "Ctrl + Click egg to retrieve child into your empty hand if you can carry it.")
+		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
 
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.hivenumber != hivenumber)
@@ -207,7 +208,7 @@
 	var/damage = W.force
 	if(W.w_class < SIZE_LARGE || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
 		damage /= 4
-	if(istype(W, /obj/item/tool/weldingtool))
+	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 
 		if(WT.remove_fuel(0, user))

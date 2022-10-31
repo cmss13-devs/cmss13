@@ -16,9 +16,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	/// The set of all resolved tickets
 	var/list/resolved_tickets = list()
 
-	var/obj/effect/statclick/ticket_list/astatclick = new(null, null, AHELP_ACTIVE)
-	var/obj/effect/statclick/ticket_list/cstatclick = new(null, null, AHELP_CLOSED)
-	var/obj/effect/statclick/ticket_list/rstatclick = new(null, null, AHELP_RESOLVED)
+	var/obj/statclick/ticket_list/astatclick = new(null, null, AHELP_ACTIVE)
+	var/obj/statclick/ticket_list/cstatclick = new(null, null, AHELP_CLOSED)
+	var/obj/statclick/ticket_list/rstatclick = new(null, null, AHELP_RESOLVED)
 
 /datum/admin_help_tickets/Destroy()
 	QDEL_LIST(active_tickets)
@@ -102,7 +102,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	for(var/I in active_tickets)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
-			var/obj/effect/statclick/updated = AH.statclick.update()
+			var/obj/statclick/updated = AH.statclick.update()
 			L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH))
 		else
 			++num_disconnected
@@ -140,14 +140,14 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //TICKET LIST STATCLICK
 //
 
-/obj/effect/statclick/ticket_list
+/obj/statclick/ticket_list
 	var/current_state
 
-/obj/effect/statclick/ticket_list/Initialize(mapload, name, state)
+/obj/statclick/ticket_list/Initialize(mapload, name, state)
 	. = ..()
 	current_state = state
 
-/obj/effect/statclick/ticket_list/clicked()
+/obj/statclick/ticket_list/clicked()
 	if (!CLIENT_IS_STAFF(usr.client))
 		message_staff("[key_name_admin(usr)] non-holder clicked on a ticket list statclick! ([src])")
 		log_game("[key_name(usr)] non-holder clicked on a ticket list statclick! ([src])")
@@ -156,7 +156,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	GLOB.ahelp_tickets.BrowseTickets(current_state)
 
 //called by admin topic
-/obj/effect/statclick/ticket_list/proc/Action()
+/obj/statclick/ticket_list/proc/Action()
 	clicked()
 
 #define WEBHOOK_NONE 0
@@ -188,7 +188,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	/// The collection of interactions with this ticket. Use AddInteraction() or, preferably, admin_ticket_log()
 	var/list/ticket_interactions
 	/// Statclick holder for the ticket
-	var/obj/effect/statclick/ahelp/statclick
+	var/obj/statclick/ahelp/statclick
 	/// Static counter used for generating each ticket ID
 	var/static/ticket_counter = 0
 	/// The list of clients currently responding to the opening ticket before it gets a response
@@ -578,7 +578,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 //Forwarded action from admin/Topic
 /datum/admin_help/proc/Action(action)
-	testing("Ahelp action: [action]")
 	if(webhook_sent != WEBHOOK_NONE)
 		var/datum/discord_embed/embed = new()
 		embed.title = "Ticket #[id]"
@@ -640,17 +639,17 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 // TICKET STATCLICK
 //
 
-/obj/effect/statclick/ahelp
+/obj/statclick/ahelp
 	var/datum/admin_help/ahelp_datum
 
-/obj/effect/statclick/ahelp/Initialize(mapload, datum/admin_help/AH)
+/obj/statclick/ahelp/Initialize(mapload, datum/admin_help/AH)
 	ahelp_datum = AH
 	. = ..()
 
-/obj/effect/statclick/ahelp/update()
+/obj/statclick/ahelp/update()
 	return ..(ahelp_datum.name)
 
-/obj/effect/statclick/ahelp/clicked()
+/obj/statclick/ahelp/clicked()
 	if (!CLIENT_IS_STAFF(usr.client))
 		message_staff("[key_name_admin(usr)] non-holder clicked on an ahelp statclick! ([src])")
 		log_game("[key_name(usr)] non-holder clicked on an ahelp statclick! ([src])")
@@ -658,7 +657,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	ahelp_datum.TicketPanel()
 
-/obj/effect/statclick/ahelp/Destroy()
+/obj/statclick/ahelp/Destroy()
 	ahelp_datum = null
 	return ..()
 

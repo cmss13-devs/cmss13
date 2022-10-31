@@ -106,6 +106,9 @@
 	var/obj/item/tool/weldingtool/WT = W
 	if(istype(WT))
 		if(!damaged) return
+		if(!HAS_TRAIT(WT, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(WT.remove_fuel(0, user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
 			user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s damage."), \

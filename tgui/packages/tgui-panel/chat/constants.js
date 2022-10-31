@@ -53,7 +53,8 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_LOCALCHAT,
     name: 'Local',
     description: 'In-character local messages (say, emote, etc)',
-    selector: '.say, .emote, .say_quote, .german, .rough, .japanese, .monkey, .vox, .changeling, .soghun, .tajaran, .xenotalk',
+    selector:
+      '.say, .emote, .say_quote, .german, .rough, .japanese, .monkey, .vox, .changeling, .soghun, .tajaran, .xenotalk',
   },
   {
     type: MESSAGE_TYPE_RADIO,
@@ -65,13 +66,15 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_INFO,
     name: 'Info',
     description: 'Non-urgent messages from the game and items',
-    selector: '.notice:not(.pm), .adminnotice, .info, .role_body, .role_header, .event_announcement, .announce_header, .announce_header_blue, .announce_body, .sinister, .cult, .xenonotice, .xenoannounce, .yautjabold, .yautjaboldbig',
+    selector:
+      '.notice:not(.pm), .adminnotice, .info, .role_body, .role_header, .event_announcement, .announce_header, .announce_header_blue, .announce_body, .sinister, .cult, .xenonotice, .xenoannounce, .yautjabold, .yautjaboldbig',
   },
   {
     type: MESSAGE_TYPE_WARNING,
     name: 'Warnings',
     description: 'Urgent messages from the game and items',
-    selector: '.warning:not(.pm), .critical, .userdanger, .italics, .xenowarning, .xenominorwarning',
+    selector:
+      '.warning:not(.pm), .critical, .userdanger, .italics, .xenowarning, .xenominorwarning',
   },
   {
     type: MESSAGE_TYPE_DEADCHAT,
@@ -95,7 +98,8 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_COMBAT,
     name: 'Combat Log',
     description: 'Urist McTraitor has stabbed you with a knife!',
-    selector: '.danger, .moderate, .disarm, .attack, .passive, .xenodanger, .xenohighdanger, .highdanger, .avoidharm',
+    selector:
+      '.danger, .moderate, .disarm, .attack, .passive, .xenodanger, .xenohighdanger, .highdanger, .avoidharm',
   },
   {
     type: MESSAGE_TYPE_HELPFUL,

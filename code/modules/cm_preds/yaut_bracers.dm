@@ -77,25 +77,34 @@
 	var/perc_charge = (charge / charge_max * 100)
 	H.update_power_display(perc_charge)
 
+/// handles decloaking only on HUNTER gloves
+/obj/item/clothing/gloves/yautja/proc/decloak()
+	return
 
-//This is the main proc for checking AND draining the bracer energy. It must have M passed as an argument.
-//It can take a negative value in amount to restore energy.
-//Also instantly updates the yautja power HUD display.
-/obj/item/clothing/gloves/yautja/proc/drain_power(var/mob/living/carbon/human/M, var/amount)
-	if(!M)
+/*
+*This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
+*It can take a negative value in amount to restore energy.
+*Also instantly updates the yautja power HUD display.
+*/
+/obj/item/clothing/gloves/yautja/proc/drain_power(var/mob/living/carbon/human/human, var/amount)
+	if(!human)
 		return FALSE
 	if(charge < amount)
-		to_chat(M, SPAN_WARNING("Your bracers lack the energy. They have only <b>[charge]/[charge_max]</b> remaining and need <B>[amount]</b>."))
+		to_chat(human, SPAN_WARNING("Your bracers lack the energy. They have only <b>[charge]/[charge_max]</b> remaining and need <B>[amount]</b>."))
 		return FALSE
 
 	charge -= amount
 	var/perc = (charge / charge_max * 100)
-	M.update_power_display(perc)
+	human.update_power_display(perc)
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
+	if(!HAS_TRAIT(human, TRAIT_YAUTJA_TECH) && !human.hunter_data.thralled)
 		if(prob(15))
-			shock_user(M)
+			if(cloaked)
+				decloak(human)
+				cloak_timer = world.time + 5 SECONDS
+			shock_user(human)
+			return FALSE
 
 	return TRUE
 
@@ -152,9 +161,9 @@
 
 	return FALSE
 
-/obj/item/clothing/gloves/yautja/examine(mob/user)
-	..()
-	to_chat(user, SPAN_NOTICE("They currently have <b>[charge]/[charge_max]</b> charge."))
+/obj/item/clothing/gloves/yautja/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("They currently have <b>[charge]/[charge_max]</b> charge.")
 
 
 // Toggle the notification sound
@@ -165,7 +174,6 @@
 
 	notification_sound = !notification_sound
 	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
-
 
 
 /obj/item/clothing/gloves/yautja/thrall
@@ -193,6 +201,7 @@
 
 	var/exploding = 0
 	var/inject_timer = 0
+	var/healing_capsule_timer = 0
 	var/disc_timer = 0
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/name_active = TRUE
@@ -200,6 +209,7 @@
 	var/caster_material = "ebony"
 
 	var/obj/item/card/id/bracer_chip/embedded_id
+
 
 	var/caster_deployed = FALSE
 	var/obj/item/weapon/gun/energy/yautja/plasma_caster/caster
@@ -264,23 +274,32 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	var/mob/living/carbon/human/H = loc
+	var/mob/living/carbon/human/human = loc
 
 	if(cloaked)
 		charge = max(charge - 10, 0)
 		if(charge <= 0)
 			decloak(loc)
 		//Non-Yautja have a chance to get stunned with each power drain
-		if(!isYautja(H))
+		if(!isYautja(human))
 			if(prob(15))
-				shock_user(H)
-				decloak(loc)
+				decloak(human)
+				shock_user(human)
 		return
 	return ..()
 
 /obj/item/clothing/gloves/yautja/hunter/dropped(mob/user)
 	move_chip_to_bracer()
+	if(cloaked)
+		decloak(user)
 	..()
+
+/obj/item/clothing/gloves/yautja/hunter/on_enter_storage(obj/item/storage/S)
+	if(ishuman(loc))
+		var/mob/living/carbon/human/human = loc
+		if(cloaked)
+			decloak(human)
+	. = ..()
 
 //We use this to activate random verbs for non-Yautja
 /obj/item/clothing/gloves/yautja/hunter/proc/activate_random_verb(var/mob/caller)
@@ -529,7 +548,7 @@
 
 	decloak(wearer, TRUE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/decloak(var/mob/user, forced)
+/obj/item/clothing/gloves/yautja/hunter/decloak(var/mob/user, forced)
 	if(!user)
 		return
 
@@ -599,7 +618,7 @@
 
 	exploding = 1
 	var/turf/T = get_turf(src)
-	if(explosion_type == 0 && victim.stat == CONSCIOUS && is_ground_level(T.z))
+	if(explosion_type == SD_TYPE_BIG && victim.stat == CONSCIOUS && is_ground_level(T.z))
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
@@ -612,8 +631,8 @@
 		if(victim)
 			victim.gib() // kills the pred
 			qdel(victim)
-		var/datum/cause_data/cause_data = create_cause_data("yautja self destruct", victim)
-		if(explosion_type == 0 && is_ground_level(T.z))
+		var/datum/cause_data/cause_data = create_cause_data("yautja self-destruct", victim)
+		if(explosion_type == SD_TYPE_BIG && is_ground_level(T.z))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Dramatically BIG explosion.
 		else
 			cell_explosion(T, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
@@ -624,12 +643,17 @@
 	set category = "Yautja.Misc"
 	set src in usr
 
+	if(explosion_type == SD_TYPE_SMALL && exploding)
+		to_chat(usr, SPAN_WARNING("Why would you want to do this?"))
+		return
+
 	if(alert("Which explosion type do you want?","Explosive Bracers", "Small", "Big") == "Big")
-		explosion_type = 0
-		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Large")
+		explosion_type = SD_TYPE_BIG
+		log_attack("[key_name_admin(usr)] has changed their Self-Destruct to Large")
 	else
-		explosion_type = 1
-		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Small")
+		explosion_type = SD_TYPE_SMALL
+		log_attack("[key_name_admin(usr)] has changed their Self-Destruct to Small")
+		return
 
 /obj/item/clothing/gloves/yautja/hunter/verb/activate_suicide()
 	set name = "Final Countdown (!)"
@@ -694,7 +718,7 @@
 				return
 			exploding = FALSE
 			to_chat(M, SPAN_NOTICE("Your bracers stop beeping."))
-			message_staff("[M] ([M.key]) has deactivated their Self Destruct.")
+			message_staff("[M] ([M.key]) has deactivated their Self-Destruct.")
 		return
 	if(istype(M.wear_mask,/obj/item/clothing/mask/facehugger) || (M.status_flags & XENO_HOST))
 		to_chat(M, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))
@@ -722,7 +746,7 @@
 
 
 /obj/item/clothing/gloves/yautja/hunter/verb/injectors()
-	set name = "Create Self-Heal Crystal"
+	set name = "Create Stabilising Crystal"
 	set category = "Yautja.Utility"
 	set desc = "Create a focus crystal to energize your natural healing processes."
 	set src in usr
@@ -742,7 +766,7 @@
 		return FALSE
 
 	if(inject_timer)
-		to_chat(caller, SPAN_WARNING("You recently activated the healing crystal. Be patient."))
+		to_chat(caller, SPAN_WARNING("You recently activated the stabilising crystal. Be patient."))
 		return FALSE
 
 	if(!drain_power(caller, 1000))
@@ -759,8 +783,49 @@
 
 /obj/item/clothing/gloves/yautja/hunter/proc/injectors_ready()
 	if(ismob(loc))
-		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new healing crystal is ready to be created."))
+		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new stabilising crystal is ready to be created."))
 	inject_timer = FALSE
+
+/obj/item/clothing/gloves/yautja/hunter/verb/healing_capsule()
+	set name = "Create Healing Capsule"
+	set category = "Yautja.Utility"
+	set desc = "Create a healing capsule for your healing gun."
+	set src in usr
+	. = healing_capsule_internal(usr, FALSE)
+
+
+/obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_internal(var/mob/caller, var/forced = FALSE)
+	if(caller.is_mob_incapacitated())
+		return FALSE
+
+	. = check_random_function(caller, forced)
+	if(.)
+		return
+
+	if(caller.get_active_hand())
+		to_chat(caller, SPAN_WARNING("Your active hand must be empty!"))
+		return FALSE
+
+	if(healing_capsule_timer)
+		to_chat(usr, SPAN_WARNING("Your bracer is still generating a new healing capsule!"))
+		return FALSE
+
+	if(!drain_power(caller, 800))
+		return FALSE
+
+	healing_capsule_timer = TRUE
+	addtimer(CALLBACK(src, .proc/healing_capsule_ready), 4 MINUTES)
+
+	to_chat(caller, SPAN_NOTICE("You feel your bracer churn as it pops out a healing capsule."))
+	var/obj/item/tool/surgery/healing_gel/O = new(caller)
+	caller.put_in_active_hand(O)
+	playsound(src, 'sound/machines/click.ogg', 15, 1)
+	return TRUE
+
+/obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_ready()
+	if(ismob(loc))
+		to_chat(loc, SPAN_NOTICE("Your bracers beep faintly and inform you that a new healing capsule is ready to be created."))
+	healing_capsule_timer = FALSE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_disk()
 	set name = "Call Smart-Disc"
@@ -853,7 +918,7 @@
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_combi()
-	set name = "Yank Combi-stick"
+	set name = "Yank combi-stick"
 	set category = "Yautja.Weapons"
 	set desc = "Yank on your combi-stick's chain, if it's in range. Otherwise... recover it yourself."
 	set src in usr

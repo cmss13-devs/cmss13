@@ -182,6 +182,9 @@
 		return ..()
 
 	if(iswelder(O) && health >= initial(health))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/hardpoint/H
 		for(var/obj/item/hardpoint/potential_hardpoint in hardpoints)
 			if(potential_hardpoint.health < initial(potential_hardpoint.health))
@@ -268,6 +271,7 @@
 	var/obj/vehicle/multitile/van/VAN = new (loc)
 
 	load_misc(VAN)
+	load_hardpoints(VAN)
 	handle_direction(VAN)
 	load_damage(VAN)
 	VAN.update_icon()
@@ -276,5 +280,13 @@
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
 
 //PRESET: wheels installed
+/obj/effect/vehicle_spawner/van/fixed/spawn_vehicle()
+	var/obj/vehicle/multitile/van/VAN = new (loc)
+
+	load_misc(VAN)
+	load_hardpoints(VAN)
+	handle_direction(VAN)
+	VAN.update_icon()
+
 /obj/effect/vehicle_spawner/van/fixed/load_hardpoints(var/obj/vehicle/multitile/van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)

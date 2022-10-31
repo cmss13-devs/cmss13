@@ -38,13 +38,13 @@
 	SetLuminosity(0)
 	. = ..()
 
-/obj/structure/machinery/bot/examine(mob/user)
-	..()
+/obj/structure/machinery/bot/get_examine_text(mob/user)
+	. = ..()
 	if(health < maxhealth)
 		if(health > maxhealth/3)
-			to_chat(user, SPAN_WARNING("[src]'s parts look loose."))
+			. += SPAN_WARNING("[src]'s parts look loose.")
 		else
-			to_chat(user, SPAN_DANGER("[src]'s parts look very loose!"))
+			. += SPAN_DANGER("[src]'s parts look very loose!")
 
 /obj/structure/machinery/bot/attack_animal(var/mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0)	return
@@ -61,7 +61,10 @@
 		if(!locked)
 			open = !open
 			to_chat(user, SPAN_NOTICE("Maintenance panel is now [src.open ? "opened" : "closed"]."))
-	else if(istype(W, /obj/item/tool/weldingtool))
+	else if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(health < maxhealth)
 			if(open)
 				health = min(maxhealth, health+10)

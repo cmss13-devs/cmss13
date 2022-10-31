@@ -157,7 +157,7 @@ var/list/advance_cures = 	list(
 	if(!amount_get)
 		number_of = 1
 		while(prob(20))
-			number_of += 1
+			number_of++
 
 	for(var/i = 1; number_of >= i; i++)
 		var/datum/symptom/S = pick(possible_symptoms)
@@ -382,7 +382,7 @@ var/list/advance_cures = 	list(
 			var/datum/symptom/S = new symptom
 			if(!D.HasSymptom(S))
 				D.symptoms += S
-				i -= 1
+				i--
 	while(i > 0)
 
 	if(D.symptoms.len > 0)

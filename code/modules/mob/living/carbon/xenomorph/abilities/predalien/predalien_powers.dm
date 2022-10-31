@@ -1,38 +1,38 @@
-/datum/action/xeno_action/activable/predalien_roar/use_ability(atom/A)
-    var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/onclick/predalien_roar/use_ability(atom/target)
+    var/mob/living/carbon/Xenomorph/xeno = owner
 
     if (!action_cooldown_check())
         return
 
-    if (!X.check_state())
+    if (!xeno.check_state())
         return
 
     if(!check_and_use_plasma_owner())
         return
 
-    playsound(X.loc, screech_sound_effect, 75, 0, status = 0)
-    X.visible_message(SPAN_XENOHIGHDANGER("[X] emits a guttural roar!"))
-    X.create_shriekwave(color = "#FF0000")
+    playsound(xeno.loc, screech_sound_effect, 75, 0, status = 0)
+    xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
+    xeno.create_shriekwave(color = "#FF0000")
 
-    for(var/mob/living/carbon/C in view(7, X))
-        if(ishuman(C))
-            var/mob/living/carbon/human/H = C
-            H.disable_special_items()
+    for(var/mob/living/carbon/carbon in view(7, xeno))
+        if(ishuman(carbon))
+            var/mob/living/carbon/human/human = carbon
+            human.disable_special_items()
 
-            var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in H
-            if(isYautja(H) && YG)
+            var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in human
+            if(isYautja(human) && YG)
                 if(YG.cloaked)
-                    YG.decloak(H)
+                    YG.decloak(human)
 
                 YG.cloak_timer = xeno_cooldown * 0.1
-        else if(isXeno(C) && X.can_not_harm(C))
-            var/datum/behavior_delegate/predalien_base/P = X.behavior_delegate
-            if(!istype(P))
+        else if(isXeno(carbon) && xeno.can_not_harm(carbon))
+            var/datum/behavior_delegate/predalien_base/behavior = xeno.behavior_delegate
+            if(!istype(behavior))
                 continue
-            new /datum/effects/xeno_buff(C, X, ttl = (0.25 SECONDS * P.kills + 3 SECONDS), bonus_damage = bonus_damage_scale * P.kills, bonus_speed = (bonus_speed_scale * P.kills))
+            new /datum/effects/xeno_buff(carbon, xeno, ttl = (0.25 SECONDS * behavior.kills + 3 SECONDS), bonus_damage = bonus_damage_scale * behavior.kills, bonus_speed = (bonus_speed_scale * behavior.kills))
 
 
-    for(var/mob/M in view(X))
+    for(var/mob/M in view(xeno))
         if(M && M.client)
             shake_camera(M, 10, 1)
 
@@ -41,24 +41,24 @@
     . = ..()
     return
 
-/datum/action/xeno_action/activable/smash/use_ability(atom/A)
-    var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/onclick/smash/use_ability(atom/target)
+    var/mob/living/carbon/Xenomorph/xeno = owner
 
     if (!action_cooldown_check())
         return
 
-    if (!X.check_state())
+    if (!xeno.check_state())
         return
 
-    var/datum/behavior_delegate/predalien_base/P = X.behavior_delegate
-    if(!istype(P))
+    var/datum/behavior_delegate/predalien_base/behavior = xeno.behavior_delegate
+    if(!istype(behavior))
         return
 
     if(!check_plasma_owner())
         return
 
-    if(!do_after(X, activation_delay, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-        to_chat(X, "Keep still whilst trying to smash into the ground")
+    if(!do_after(xeno, activation_delay, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+        to_chat(xeno, "Keep still whilst trying to smash into the ground")
 
         var/real_cooldown = xeno_cooldown
 
@@ -70,24 +70,24 @@
     if(!check_and_use_plasma_owner())
         return
 
-    playsound(X.loc, pick(smash_sounds), 50, 0, status = 0)
-    X.visible_message(SPAN_XENOHIGHDANGER("[X] smashes into the ground!"))
+    playsound(xeno.loc, pick(smash_sounds), 50, 0, status = 0)
+    xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] smashes into the ground!"))
 
-    X.create_stomp()
+    xeno.create_stomp()
 
-    for(var/mob/living/carbon/C in oview(round(P.kills * 0.5 + 2), X))
-        if(!X.can_not_harm(C) && C.stat != DEAD)
-            C.frozen = 1
-            C.update_canmove()
+    for(var/mob/living/carbon/carbon in oview(round(behavior.kills * 0.5 + 2), xeno))
+        if(!xeno.can_not_harm(carbon) && carbon.stat != DEAD)
+            carbon.frozen = 1
+            carbon.update_canmove()
 
-            if (ishuman(C))
-                var/mob/living/carbon/human/H = C
-                H.update_xeno_hostile_hud()
+            if (ishuman(carbon))
+                var/mob/living/carbon/human/human = carbon
+                human.update_xeno_hostile_hud()
 
-            addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, C), get_xeno_stun_duration(C, freeze_duration))
+            addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, carbon), get_xeno_stun_duration(carbon, freeze_duration))
 
 
-    for(var/mob/M in view(X))
+    for(var/mob/M in view(xeno))
         if(M && M.client)
             shake_camera(M, 0.2 SECONDS, 1)
 
@@ -96,67 +96,67 @@
     . = ..()
     return
 
-/datum/action/xeno_action/activable/devastate/use_ability(atom/A)
-    var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/activable/devastate/use_ability(atom/target)
+    var/mob/living/carbon/Xenomorph/xeno = owner
 
     if (!action_cooldown_check())
         return
 
-    if (!X.check_state())
+    if (!xeno.check_state())
         return
 
-    if (!isXenoOrHuman(A) || X.can_not_harm(A))
-        to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
+    if (!isXenoOrHuman(target) || xeno.can_not_harm(target))
+        to_chat(xeno, SPAN_XENOWARNING("You must target a hostile!"))
         return
 
-    if (get_dist_sqrd(A, X) > 2)
-        to_chat(X, SPAN_XENOWARNING("[A] is too far away!"))
+    if (get_dist_sqrd(target, xeno) > 2)
+        to_chat(xeno, SPAN_XENOWARNING("[target] is too far away!"))
         return
 
-    var/mob/living/carbon/H = A
+    var/mob/living/carbon/carbon = target
 
-    if (H.stat == DEAD)
-        to_chat(X, SPAN_XENOWARNING("[H] is dead, why would you want to touch them?"))
+    if (carbon.stat == DEAD)
+        to_chat(xeno, SPAN_XENOWARNING("[carbon] is dead, why would you want to touch them?"))
         return
 
-    var/datum/behavior_delegate/predalien_base/P = X.behavior_delegate
-    if(!istype(P))
+    var/datum/behavior_delegate/predalien_base/behavior = xeno.behavior_delegate
+    if(!istype(behavior))
         return
 
     if (!check_and_use_plasma_owner())
         return
 
-    H.frozen = 1
-    H.update_canmove()
+    carbon.frozen = 1
+    carbon.update_canmove()
 
-    if (ishuman(H))
-        var/mob/living/carbon/human/Hu = H
-        Hu.update_xeno_hostile_hud()
+    if (ishuman(carbon))
+        var/mob/living/carbon/human/human = carbon
+        human.update_xeno_hostile_hud()
 
     apply_cooldown()
 
-    X.frozen = 1
-    X.anchored = 1
-    X.update_canmove()
+    xeno.frozen = 1
+    xeno.anchored = 1
+    xeno.update_canmove()
 
-    if (do_after(X, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-        X.emote("roar")
-        X.visible_message(SPAN_XENOHIGHDANGER("[X] rips open the guts of [H]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [H]!"))
-        H.spawn_gibs()
-        playsound(get_turf(H), 'sound/effects/gibbed.ogg', 30, 1)
-        H.KnockDown(get_xeno_stun_duration(H, 0.5))
-        H.apply_armoured_damage(get_xeno_damage_slash(H, base_damage + damage_scale * P.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+    if (do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+        xeno.emote("roar")
+        xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [carbon]!"))
+        carbon.spawn_gibs()
+        playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 30, 1)
+        carbon.KnockDown(get_xeno_stun_duration(carbon, 0.5))
+        carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage + damage_scale * behavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 
-        X.animation_attack_on(H)
-        X.flick_attack_overlay(H, "slash")
+        xeno.animation_attack_on(carbon)
+        xeno.flick_attack_overlay(carbon, "slash")
 
-    X.frozen = 0
-    X.anchored = 0
-    X.update_canmove()
+    xeno.frozen = 0
+    xeno.anchored = 0
+    xeno.update_canmove()
 
-    unroot_human(H)
+    unroot_human(carbon)
 
-    X.visible_message(SPAN_XENODANGER("[X] rapidly slices into [H]!"))
+    xeno.visible_message(SPAN_XENODANGER("[xeno] rapidly slices into [carbon]!"))
 
     . = ..()
     return

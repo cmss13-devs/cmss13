@@ -516,9 +516,9 @@
 		data++
 		switch(data)
 			if(51 to 200)
-				M.sleeping += 1
+				M.sleeping++
 			if(201 to INFINITY)
-				M.sleeping += 1
+				M.sleeping++
 				M.apply_damage(2, TOX)
 
 /datum/reagent/gargle_blaster
@@ -609,7 +609,7 @@
 
 /datum/reagent/drink/cold/rewriter
 	name = "Rewriter"
-	description = "The secret of the sanctuary of the Libarian..."
+	description = "The secret of the sanctuary of the Librarian..."
 	id = "rewriter"
 	color = "#485000" // rgb:72, 080, 0
 

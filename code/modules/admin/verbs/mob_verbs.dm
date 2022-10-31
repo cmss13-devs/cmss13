@@ -1,3 +1,7 @@
+#define NARRATION_METHOD_SAY "Say"
+#define NARRATION_METHOD_ME "Me"
+#define NARRATION_METHOD_DIRECT "Direct"
+
 // Converted this into a proc. Verb will be separate
 /client/proc/change_ckey(mob/M in GLOB.mob_list, var/a_ckey = null)
 	var/new_ckey = a_ckey
@@ -85,7 +89,7 @@
 	set category = "Admin.Fun"
 	set name = "Gib"
 
-	if(!check_rights(R_ADMIN|R_FUN))	return
+	if(!check_rights(R_ADMIN))	return
 
 	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
 	if(confirm != "Yes") return
@@ -192,6 +196,37 @@
 			message_staff("[key_name(src)] sent an admin alert to [key_name(M)] with custom message [message].")
 		else
 			return
+
+/client/proc/cmd_admin_object_narrate(var/obj/selected)
+	set name = "Object Narrate"
+	set category = null
+
+	if(!check_rights(R_MOD))
+		return
+
+	var/type = tgui_input_list(usr,
+				"What type of narration?",
+				"Narration",
+				list(NARRATION_METHOD_SAY, NARRATION_METHOD_ME, NARRATION_METHOD_DIRECT))
+	if(!type) return
+	var/message = input(usr,
+				"What should it say?",
+				"Narrating as [selected.name]")
+	if(!message) return
+
+	var/list/heard = get_mobs_in_view(world_view_size, selected)
+
+	switch(type)
+		if(NARRATION_METHOD_SAY)
+			selected.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE)
+			selected.visible_message("<b>[selected]</b> says, \"[message]\"")
+		if(NARRATION_METHOD_ME)
+			selected.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+			selected.visible_message("<b>[selected]</b> [message]")
+		if(NARRATION_METHOD_DIRECT)
+			selected.visible_message("[message]")
+	log_admin("[key_name(src)] sent an Object Narrate with message [message].")
+	message_staff("[key_name(src)] sent an Object Narrate with message [message].")
 
 /client/proc/cmd_admin_direct_narrate(var/mob/M)
 	set name = "Narrate"
@@ -301,7 +336,7 @@
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		hives += list("[hive.name]" = hive.hivenumber)
 
-	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives)
+	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives, theme="hive_status")
 
 	if(!H)
 		to_chat(usr, "This mob no longer exists")
@@ -368,3 +403,7 @@
 
 	message_staff("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
 	return
+
+#undef NARRATION_METHOD_SAY
+#undef NARRATION_METHOD_ME
+#undef NARRATION_METHOD_DIRECT

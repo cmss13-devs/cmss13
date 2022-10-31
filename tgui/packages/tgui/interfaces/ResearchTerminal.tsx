@@ -5,11 +5,11 @@ import { Table, TableCell, TableRow } from '../components/Table';
 import { classes } from '../../common/react';
 import { BoxProps } from '../components/Box';
 
-interface DocumentLog {
+export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>
 }
 
-interface DocumentRecord {
+export interface DocumentRecord {
   document_title: string;
   time: string;
   document: string;
@@ -121,6 +121,7 @@ const NoCompoundsDetected = (_, context) => {
 
 interface CompoundRecordProps extends BoxProps{
   compound: CompoundData;
+  canPrint: boolean;
 }
 
 
@@ -150,7 +151,7 @@ const CompoundRecord = (props: CompoundRecordProps, context) => {
               Read
             </Button>
           </Flex.Item>
-          <Flex.Item>
+          {props.canPrint && <Flex.Item>
             <Button
               disabled={data.photocopier_error}
               icon="print"
@@ -158,7 +159,7 @@ const CompoundRecord = (props: CompoundRecordProps, context) => {
             >
               Print
             </Button>
-          </Flex.Item>
+                             </Flex.Item>}
           {isMainTerminal && !compound.isPublished
             && (
               <Flex.Item>
@@ -206,17 +207,21 @@ const ResearchReportTable = (_, context) => {
       </Stack.Item>
       <hr />
       <Stack.Item>
-        <CompoundTable docs={data.research_documents['XRF Scans'] ?? []} timeLabel="Scan Time" />
+        <CompoundTable
+          docs={data.research_documents['XRF Scans'] ?? []}
+          timeLabel="Scan Time"
+          canPrint />
       </Stack.Item>
     </Stack>);
 };
 
-interface CompoundTableProps {
+export interface CompoundTableProps extends BoxProps {
   docs: DocumentRecord[];
   timeLabel: string;
+  canPrint: boolean;
 }
 
-const CompoundTable = (props: CompoundTableProps, context) => {
+export const CompoundTable = (props: CompoundTableProps, context) => {
   const { data } = useBackend<TerminalProps>(context);
   const [hideOld] = useLocalState(context, 'hide_old', true);
   const published = data.published_documents['XRF Scans'] ?? [];
@@ -274,7 +279,7 @@ const CompoundTable = (props: CompoundTableProps, context) => {
 
 
   return (
-    <Table>
+    <Table className={props.className}>
       <TableRow>
         <TableCell textAlign="center">
           <Button
@@ -310,7 +315,7 @@ const CompoundTable = (props: CompoundTableProps, context) => {
 
           }
         })
-        .map(x => <CompoundRecord compound={x} key={x.id} />)}
+        .map(x => <CompoundRecord compound={x} key={x.id} canPrint={props.canPrint} />)}
     </Table>);
 };
 
@@ -420,7 +425,10 @@ const PublishedMaterial = (props, context) => {
   return (
     <Stack vertical>
       <Stack.Item>
-        <CompoundTable docs={data.published_documents['XRF Scans'] ?? []} timeLabel="Published" />
+        <CompoundTable
+          docs={data.published_documents['XRF Scans'] ?? []}
+          timeLabel="Published"
+          canPrint />
       </Stack.Item>
     </Stack>);
 };

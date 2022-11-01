@@ -43,7 +43,7 @@
 	hud.tgui_interact(owner)
 
 /obj/item/clothing/glasses/hud/health/ui_state(mob/user)
-	return GLOB.not_incapacitated_state
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/item/clothing/glasses/hud/health/ui_data(mob/user)
 	var/list/data = list(

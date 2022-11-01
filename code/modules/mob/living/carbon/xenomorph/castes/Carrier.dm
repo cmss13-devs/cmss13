@@ -68,12 +68,8 @@
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
 
-	var/atom/movable/vis_obj/carrier_huggers/carrier_huggers_icon_carrier
 	var/list/hugger_image_index = list()
-
-/atom/movable/vis_obj/carrier_huggers
-	icon = 'icons/mob/hostiles/carrier.dmi'
-	var/mob/living/carbon/Xenomorph/huggers_owner
+	var/mutable_appearance/hugger_overlays_icon
 
 /mob/living/carbon/Xenomorph/Carrier/update_icons()
 	. = ..()
@@ -81,11 +77,11 @@
 	update_hugger_overlays()
 
 /mob/living/carbon/Xenomorph/Carrier/proc/update_hugger_overlays()
-	if(!carrier_huggers_icon_carrier)
+	if(!hugger_overlays_icon)
 		return
 
-	overlays -= carrier_huggers_icon_carrier
-	carrier_huggers_icon_carrier.overlays.Cut()
+	overlays -= hugger_overlays_icon
+	hugger_overlays_icon.overlays.Cut()
 
 	if(!huggers_cur)
 		hugger_image_index.Cut()
@@ -95,16 +91,16 @@
 
 	for(var/i in hugger_image_index)
 		if(stat == DEAD)
-			carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i] Knocked Down")
+			hugger_overlays_icon.overlays += icon(icon, "clinger_[i] Knocked Down")
 		else if(lying)
 			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-				carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i] Sleeping")
+				hugger_overlays_icon.overlays += icon(icon, "clinger_[i] Sleeping")
 			else
-				carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i] Knocked Down")
+				hugger_overlays_icon.overlays +=icon(icon, "clinger_[i] Knocked Down")
 		else
-			carrier_huggers_icon_carrier.overlays += icon(icon, "clinger_[i]")
+			hugger_overlays_icon.overlays +=icon(icon, "clinger_[i]")
 
-	overlays += carrier_huggers_icon_carrier
+	overlays += hugger_overlays_icon
 
 /mob/living/carbon/Xenomorph/Carrier/proc/update_icon_maths(number)
 	var/funny_list = list(1,2,3,4)
@@ -123,13 +119,7 @@
 	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_carrier))
 	. = ..()
 
-	carrier_huggers_icon_carrier = new(null, src)
-	carrier_huggers_icon_carrier.layer = layer + 0.1
-
-/mob/living/carbon/Xenomorph/Carrier/Destroy()
-	. = ..()
-
-	QDEL_NULL(carrier_huggers_icon_carrier)
+	hugger_overlays_icon = mutable_appearance('icons/mob/hostiles/overlay_effects64x64.dmi',"empty")
 
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)

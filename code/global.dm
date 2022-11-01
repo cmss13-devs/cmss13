@@ -22,8 +22,9 @@
 #define R_HOST			(1<<15)
 #define R_PROFILER		(1<<16)
 #define R_NOLOCK		(1<<17)
+#define R_EVENT			(1<<18)
 
-#define R_EVERYTHING	((1<<18)-1) //the sum of all other rank permissions
+#define R_EVERYTHING	((1<<19)-1) //the sum of all other rank permissions
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
 //=================================================
 

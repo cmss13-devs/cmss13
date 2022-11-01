@@ -104,3 +104,8 @@
 /datum/config_entry/flag/ert_admin_call_only
 
 /datum/config_entry/flag/use_loyalty_implants
+
+/datum/config_entry/number/explosive_antigrief
+	min_val = ANTIGRIEF_DISABLED
+	max_val = ANTIGRIEF_ENABLED
+	config_entry_value = ANTIGRIEF_NEW_PLAYERS

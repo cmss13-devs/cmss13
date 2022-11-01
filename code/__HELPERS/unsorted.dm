@@ -1634,12 +1634,19 @@ var/list/WALLITEMS = list(
 // * The dropship crash hasn't happened yet
 // * An admin hasn't disabled explosive antigrief
 // Certain areas may be exempt from this check. Look up explosive_antigrief_exempt_areas
-/proc/explosive_grief_check(var/obj/item/explosive/E)
-	var/turf/T = get_turf(E)
-	if(!(T.loc.type in GLOB.explosive_antigrief_exempt_areas))
+/proc/explosive_antigrief_check(var/obj/item/explosive/explosive, var/mob/user)
+	var/turf/Turf = get_turf(explosive)
+	if(!(Turf.loc.type in GLOB.explosive_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if((T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && explosive_antigrief_on)
-			return TRUE
+		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured)
+			switch(CONFIG_GET(number/explosive_antigrief))
+				if(ANTIGRIEF_DISABLED)
+					return FALSE
+				if(ANTIGRIEF_NEW_PLAYERS) //if they have less than 10 hours, dont let them prime nades
+					if(user.client && user.client.get_total_human_playtime() < JOB_PLAYTIME_TIER_1)
+						return TRUE
+				else //ANTIGRIEF_ENABLED
+					return TRUE
 	return FALSE
 
 // Returns only the perimeter of the block given by the min and max turfs

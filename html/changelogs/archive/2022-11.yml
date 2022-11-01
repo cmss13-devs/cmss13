@@ -9,6 +9,7 @@
   - balance: Removes ceramic plates from new contractors.
   TotalEpicness:
   - qol: You can now check how much metal an autodoc has before it's out.
+  - bugfix: Fixes some minor mapping bugs on kutjevo
   Totalepicess:
   - bugfix: Fixes space areas on Shivas elevator nightmare.
   realforest2001:

@@ -33,6 +33,7 @@
   realforest2001:
   - bugfix: Smods are now given the buttons unlocked for them in 1225
   - admin: Reorganised staff verb lists and added Devs and Managers to Staffwho.
+  - bugfix: Xenonid huggers are now visible again (player controlled)
   totalepicness5:
   - bugfix: Fixed plasteel rod to metal rod alchemy with reinforced floors
   - spellcheck: Fixed some awful to_chats in reinforced floors.

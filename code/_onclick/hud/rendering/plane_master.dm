@@ -76,6 +76,10 @@
 	blend_mode_override = BLEND_MULTIPLY
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/atom/movable/screen/plane_master/lighting/exterior
+	name = "exterior lighting plane master"
+	plane = EXTERIOR_LIGHTING_PLANE
+
 /atom/movable/screen/plane_master/runechat
 	name = "runechat plane master"
 	plane = RUNECHAT_PLANE

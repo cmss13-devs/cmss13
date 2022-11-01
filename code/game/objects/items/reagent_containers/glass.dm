@@ -191,6 +191,7 @@
 	item_state = "beaker"
 	matter = list("glass" = 500)
 	attack_speed = 4
+	actions_types = list(/datum/action/item_action/glass_beaker/set_transfer_amount)
 
 /obj/item/reagent_container/glass/beaker/on_reagent_change()
 	update_icon()
@@ -229,6 +230,21 @@
 	if(!is_open_container())
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
 		overlays += lid
+
+
+/datum/action/item_action/glass_beaker/set_transfer_amount
+
+/datum/action/item_action/glass_beaker/set_transfer_amount/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Set Transfer Amount"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/chemistry.dmi', button, "beaker")
+	button.overlays += IMG
+
+/datum/action/item_action/glass_beaker/set_transfer_amount/action_activate()
+	var/obj/item/reagent_container/glass/beaker/beak = holder_item
+	beak.set_APTFT()
 
 /obj/item/reagent_container/glass/minitank
 	name = "MS-11 Smart Refill Tank"

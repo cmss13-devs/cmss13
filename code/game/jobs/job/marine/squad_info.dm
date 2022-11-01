@@ -1,7 +1,12 @@
-/datum/squad/proc/ui_interact(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
+/datum/squad/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SquadInfo", "Squad Info")
+		ui.open()
 
+
+/datum/squad/ui_data(mob/user)
 	if(!squad_info_data.len)					//initial first update of data
 		update_all_squad_info()
 	if(squad_info_data["total_mar"] != count)	//updates for new marines
@@ -9,20 +14,8 @@
 		if(squad_leader && squad_info_data["sl"]["name"] != squad_leader.real_name)
 			update_squad_leader()
 		update_squad_ui()
-
-	var/list/ui_data = squad_info_data.Copy()
-	// This needs to be passed since we're not handling the full UI interaction on the mob itself
-	var/userref = "\ref[user]"
-
-	ui_data["userref"] = userref
-
-	var/datum/nanoui/ui = nanomanager.try_update_ui(user, user, "squad_info_ui", null, ui_data)
-	if(isnull(ui))
-		ui = new(user, user, "squad_info_ui", "squad_info.tmpl", "[name] Squad Info", 460, 400)
-		ui.set_initial_data(ui_data)
-		ui.open()
-
-		squad_info_uis += user
+	var/list/data = squad_info_data.Copy()
+	return data
 
 //used once on first opening
 /datum/squad/proc/update_all_squad_info()

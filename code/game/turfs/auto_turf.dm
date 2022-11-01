@@ -322,6 +322,7 @@
 /turf/open/auto_turf/shale/layer0
 	icon_state = "shale_0"
 	bleed_layer = 0
+	color = "#6699CC"
 
 /turf/open/auto_turf/shale/layer0_puddle
 	icon_state = "shale_0_puddle"

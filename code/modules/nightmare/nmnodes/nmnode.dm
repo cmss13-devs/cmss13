@@ -18,7 +18,13 @@
 	var/list/conds = spec["when"]
 	if(islist(conds))
 		for(var/pname in conds)
-			AddComponent(/datum/component/nmnode_cond, pname, conds[pname])
+			var/pvalue = conds[pname]
+			var/modifier = copytext(pname, 1, 2)
+			var/negate = FALSE
+			if(modifier == "!")
+				negate = TRUE
+				pname = copytext(pname, 2)
+			AddComponent(/datum/component/nmnode_cond, pname, pvalue, negate)
 
 /// Implementation of the node, resolving into tasks in the given context
 /datum/nmnode/proc/resolve(datum/nmcontext/context)

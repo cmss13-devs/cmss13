@@ -53,6 +53,7 @@ SUBSYSTEM_DEF(nightmare)
 	for(var/context_name in contexts)
 		if(stat != NIGHTMARE_STATUS_RUNNING)
 			return TRUE // Panic Abort
+		set_scenario_value("gamemode", GLOB.master_mode) // Architectural pitfall - Hope it doesn't change during setup :(
 		var/datum/nmcontext/context = contexts[context_name]
 		var/datum/nmnode/root = roots["[context_name]-[NIGHTMARE_ACT_BASE]"]
 		if(root)
@@ -84,7 +85,7 @@ SUBSYSTEM_DEF(nightmare)
 	var/datum/nmcontext/context = contexts[NIGHTMARE_CTX_GLOBAL]
 	return context.get_scenario_value(name)
 
-/// Override a value from the global scenario
+/// Override a value from the global scenario.
 /datum/controller/subsystem/nightmare/proc/set_scenario_value(name, value)
 	var/datum/nmcontext/context = contexts[NIGHTMARE_CTX_GLOBAL]
 	return context.set_scenario_value(name, value)

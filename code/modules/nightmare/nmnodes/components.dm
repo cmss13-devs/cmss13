@@ -11,6 +11,7 @@
 	. = ..()
 	src.pname = pname
 	src.pvalue = pvalue
+	src.negate = negate
 
 /datum/component/nmnode_cond/RegisterWithParent()
 	. = ..()

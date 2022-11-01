@@ -1,4 +1,6 @@
 2022-11-01:
+  BeagleGaming1:
+  - bugfix: Fixed CL incorrectly spawning at late join cryo room at round start
   realforest2001:
   - bugfix: Smods are now given the buttons unlocked for them in 1225
   - admin: Reorganised staff verb lists and added Devs and Managers to Staffwho.

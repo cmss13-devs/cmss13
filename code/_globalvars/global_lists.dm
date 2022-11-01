@@ -127,7 +127,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)
 GLOBAL_LIST_INIT(language_keys, setup_language_keys())					//table of say codes for all languages
 
 // Origins
-GLOBAL_LIST_INIT_TYPED(origins, /datum/origin, setup_origins())
+GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
 GLOBAL_LIST_INIT(player_origins, list(ORIGIN_USCM, ORIGIN_USCM_LUNA, ORIGIN_USCM_OTHER, ORIGIN_USCM_COLONY, ORIGIN_USCM_FOREIGN, ORIGIN_USCM_AW))
 
 //Xeno mutators
@@ -206,13 +206,6 @@ var/global/list/paramslist_cache = list()
 		S.race_key = rkey //Used in mob icon caching.
 		all_species[S.name] = S
 	return all_species
-
-/proc/setup_origins()
-	var/list/all_origins = list()
-	for(var/origin_type in subtypesof(/datum/origin))
-		var/datum/origin/origin = new origin_type
-		all_origins[origin.name] = origin
-	return all_origins
 
 /proc/setup_ammo()
 	var/list/blacklist = list(/datum/ammo/energy, /datum/ammo/energy/yautja, /datum/ammo/energy/yautja/rifle, /datum/ammo/bullet/shotgun, /datum/ammo/xeno)

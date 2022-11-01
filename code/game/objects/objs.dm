@@ -381,3 +381,6 @@
 		return 4 SECONDS
 
 	return 1 SECONDS
+
+/obj/proc/set_origin_name_prefix(var/name_prefix)
+	return

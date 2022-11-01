@@ -9,7 +9,7 @@
 ########################################################################################
 # PLEASE NOTE: depending on config options, some abilities will be unavailable regardless if you have permission to use them!
 # ALSO NOTE: this is a WorkInProgress at the moment. Most of this is just arbitrarily thrown in whatever group because LoadsaWork2Do+LittleTime.
-#            I'll be doing more moving around as feedback comes in. So be sure to check the notes after updates.
+
 
 # KEYWORDS:
 # +MENTOR = Basic Mentor Commands
@@ -33,6 +33,8 @@
 
 Donator 		+COLOR
 Mentor      	+MENTOR +COLOR
+
+
 Trial Moderator +MOD +SERVER +COLOR
 Moderator 		+MOD +SERVER +BAN +REJUV +COLOR +NOLOCK
 Trial Admin 	+ADMIN +MOD +SERVER +BAN +REJUV +SPAWN +STEALTH +VAREDIT +COLOR
@@ -52,7 +54,7 @@ Manager			+EVERYTHING
 Head Dev		+EVERYTHING
 
 
-Senior Mentor 	 +MENTOR +MOD +SERVER +COLOR
+Legacy Mentor 	 +MENTOR +COLOR
 Senior Moderator +ADMIN +MOD +SERVER +BAN +REJUV +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE
 Senior Admin  	 +ADMIN +MOD +SERVER +BAN +REJUV +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE +DEBUG
 

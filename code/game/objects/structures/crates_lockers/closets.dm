@@ -17,6 +17,8 @@
 	var/open_sound = 'sound/handling/hinge_squeak1.ogg'
 	var/close_sound = 'sound/handling/hinge_squeak2.ogg'
 
+	var/material = MATERIAL_METAL
+
 	var/store_items = TRUE
 	var/store_mobs = TRUE
 	var/fill_from_loc = TRUE //Whether items from the tile are automatically moved inside the closet.
@@ -214,25 +216,35 @@
 			return
 		if(W.flags_item & ITEM_ABSTRACT)
 			return 0
-		if(iswelder(W))
-			if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		if(material == MATERIAL_METAL)
+			if(iswelder(W))
+				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
+				var/obj/item/tool/weldingtool/WT = W
+				if(!WT.isOn())
+					to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+					return
+				if(!WT.remove_fuel(0 ,user))
+					to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
+					return
+				playsound(src, 'sound/items/Welder.ogg', 25, 1)
+				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				new /obj/item/stack/sheet/metal(src.loc)
+				for(var/mob/M as anything in viewers(src))
+					M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), 3, "You hear welding.", 2)
+				qdel(src)
 				return
-			var/obj/item/tool/weldingtool/WT = W
-			if(!WT.isOn())
-				to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+		if(material == MATERIAL_WOOD)
+			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+				playsound(src, 'sound/effects/woodhit.ogg')
+				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				new /obj/item/stack/sheet/wood(src.loc)
+				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [W]."), "You pry apart [src].")
+				qdel(src)
 				return
-			if(!WT.remove_fuel(0 ,user))
-				to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
-				return
-			playsound(src, 'sound/items/Welder.ogg', 25, 1)
-			if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				return
-			new /obj/item/stack/sheet/metal(src.loc)
-			for(var/mob/M as anything in viewers(src))
-				M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), 3, "You hear welding.", 2)
-			qdel(src)
-			return
 		if(isrobot(user))
 			return
 		user.drop_inv_item_to_loc(W,loc)

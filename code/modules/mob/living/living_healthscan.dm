@@ -89,7 +89,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		if(!(reagent.flags & REAGENT_SCANNABLE) && detail_level == DETAIL_LEVEL_HEALTHANALYSER)
 			data["has_unknown_chemicals"] = TRUE
 			continue
-		chemicals_lists["[reagent.name]"] = list(
+		chemicals_lists["[reagent.id]"] = list(
 			"name" = reagent.name,
 			"amount" = round(reagent.volume, 0.1),
 			"od" = reagent.overdose != 0 && reagent.volume > reagent.overdose && !(reagent.flags & REAGENT_CANNOT_OVERDOSE),
@@ -247,6 +247,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 		//advice!
 		var/list/advice = list()
+		var/list/temp_advice = list()
 		if(!permadead)
 			if(human_target_mob.getBruteLoss(robotic_only = TRUE) > 20)
 				advice += list(list(
@@ -299,67 +300,106 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "pizza-slice",
 						"colour" = "white"
 						))
-				if(internal_bleeding && chemicals_lists["quickclot"] < 5)
-					advice += list(list(
+				if(internal_bleeding)
+					temp_advice = list(list(
 						"advice" = "Administer a single dose of quickclot.",
 						"icon" = "syringe",
 						"colour" = "red"
 						))
-				if(human_target_mob.getToxLoss() > 10 && chemicals_lists["anti_toxin"] < 5)
-					advice += list(list(
+					if(chemicals_lists["quickclot"])
+						if(chemicals_lists["quickclot"]["amount"] < 5)
+							advice += temp_advice
+					else
+						advice += temp_advice
+				if(human_target_mob.getToxLoss() > 10)
+					temp_advice = list(list(
 						"advice" = "Administer a single dose of dylovene.",
 						"icon" = "syringe",
 						"colour" = "green"
 						))
-				if((human_target_mob.getToxLoss() > 50 || (human_target_mob.getOxyLoss() > 50 && human_target_mob.blood_volume > 400) || human_target_mob.getBrainLoss() >= 10) && chemicals_lists["peridaxon"] < 5)
-					advice += list(list(
+					if(chemicals_lists["anti_toxin"])
+						if(chemicals_lists["anti_toxin"]["amount"] < 5)
+							advice += temp_advice
+					else
+						advice += temp_advice
+				if((human_target_mob.getToxLoss() > 50 || (human_target_mob.getOxyLoss() > 50 && human_target_mob.blood_volume > 400) || human_target_mob.getBrainLoss() >= 10))
+					temp_advice = list(list(
 						"advice" = "Administer a single dose of peridaxon.",
 						"icon" = "syringe",
 						"colour" = "grey"
 						))
-				if(human_target_mob.getOxyLoss() > 50 && chemicals_lists["dexalin"] < 5)
-					advice += list(list(
+					if(chemicals_lists["peridaxon"])
+						if(chemicals_lists["peridaxon"]["amount"] < 5)
+							advice += temp_advice
+					else
+						advice += temp_advice
+				if(human_target_mob.getOxyLoss() > 50)
+					temp_advice = list(list(
 						"advice" = "Administer a single dose of dexalin.",
 						"icon" = "syringe",
 						"colour" = "blue"
 						))
-				if(human_target_mob.getFireLoss(organic_only = TRUE) > 30 && (chemicals_lists["kelotane"] < 3 || chemicals_lists["dermaline"] < 3))
-					advice += list(list(
+					if(chemicals_lists["dexalin"])
+						if(chemicals_lists["dexalin"]["amount"] < 3)
+							advice += temp_advice
+					else
+						advice += temp_advice
+				if(human_target_mob.getFireLoss(organic_only = TRUE) > 30)
+					temp_advice = list(list(
 						"advice" = "Administer a single dose of kelotane.",
 						"icon" = "syringe",
 						"colour" = "yellow"
 						))
-				if(human_target_mob.getBruteLoss(organic_only = TRUE) > 30 && (chemicals_lists["bicaridine"] < 3 || chemicals_lists["meralyne"] < 3))
-					advice += list(list(
+					if(chemicals_lists["kelotane"])
+						if(chemicals_lists["kelotane"]["amount"] < 3)
+							advice += temp_advice
+					else
+						advice += temp_advice
+				if(human_target_mob.getBruteLoss(organic_only = TRUE) > 30)
+					temp_advice = list(list(
 						"advice" = "Administer a single dose of bicaridine.",
 						"icon" = "syringe",
 						"colour" = "red"
 						))
-				if(human_target_mob.health < 0 && chemicals_lists["inaprovaline"] < 5)
-					advice += list(list(
+					if(chemicals_lists["bicaridine"])
+						if(chemicals_lists["bicaridine"]["amount"] < 3)
+							advice += temp_advice
+					else
+						advice += temp_advice
+				if(human_target_mob.health < 0)
+					temp_advice = list(list(
 						"advice" = "Administer a single dose of inaprovaline.",
 						"icon" = "syringe",
 						"colour" = "purple"
 						))
-
+					if(chemicals_lists["inaprovaline"])
+						if(chemicals_lists["inaprovaline"]["amount"] < 5)
+							advice += temp_advice
+					else
+						advice += temp_advice
 				var/has_pain = FALSE
 				for(var/datum/effects/pain/P in target_mob.effects_list)
 					has_pain = TRUE
 					break
 
-				if(has_pain && chemicals_lists["tramadol"] < 3 && !chemicals_lists["paracetamol"])
-					advice += list(list(
+				if(has_pain && !chemicals_lists["paracetamol"])
+					temp_advice = list(list(
 						"advice" = "Administer a single dose of tramadol.",
 						"icon" = "syringe",
 						"colour" = "white"
 						))
+					if(chemicals_lists["tramadol"])
+						if(chemicals_lists["tramadol"]["amount"] < 3)
+							advice += temp_advice
+					else
+						advice += temp_advice
+
 				if(chemicals_lists["paracetamol"])
 					advice += list(list(
 						"advice" = "Do NOT administer tramadol.",
 						"icon" = "window-close",
 						"colour" = "red"
 						))
-
 		if(advice.len)
 			data["advice"] = advice
 		else

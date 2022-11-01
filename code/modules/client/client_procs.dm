@@ -315,6 +315,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!xeno_postfix || xeno_name_ban)
 		xeno_postfix = ""
 
+	human_name_ban = prefs.human_name_ban
+
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 
 	if(GLOB.player_details[ckey])

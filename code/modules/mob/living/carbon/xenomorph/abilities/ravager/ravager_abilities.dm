@@ -1,3 +1,4 @@
+
 // Rav charge
 /datum/action/xeno_action/activable/pounce/charge
 	name = "Charge"
@@ -56,7 +57,7 @@
 
 //// BERSERKER ACTIONS
 
-/datum/action/xeno_action/activable/apprehend
+/datum/action/xeno_action/onclick/apprehend
 	name = "Apprehend"
 	action_icon_state = "rav_enrage"
 	ability_name = "apprehend"
@@ -64,11 +65,11 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 0
-	xeno_cooldown = 200
+	xeno_cooldown = 17 SECONDS
 
 	// Config values
-	var/max_distance = 6 // 5 tiles between
-	var/windup_duration = 10
+	var/speed_buff = 0.75
+	var/buff_duration = 8 SECONDS
 
 
 /datum/action/xeno_action/activable/clothesline
@@ -82,7 +83,8 @@
 	xeno_cooldown = 140
 
 	// Config values
-	var/heal_per_rage = 150
+	var/base_heal = 100
+	var/additional_healing_enraged = 100
 	var/damage = 20
 	var/fling_dist_base = 4
 	var/daze_amount = 2
@@ -154,6 +156,5 @@
 	var/shard_cost = 50
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread
 	var/shrapnel_amount = 40
-
 
 

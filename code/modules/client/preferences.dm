@@ -101,7 +101,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	//character preferences
 	var/real_name						//our character's name
-	var/be_random_name = 0				//whether we are a random name every round
+	var/be_random_name = FALSE				//whether we are a random name every round
+	var/human_name_ban = FALSE
+
+
 	var/be_random_body = 0				//whether we have a random appearance every round
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 19						//age of character
@@ -677,7 +680,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	HTML += "</td></tr></table>"
 	HTML += "</center></table>"
 
-	if(user.client.prefs) //Just makin sure
+	if(user.client?.prefs) //Just makin sure
 		var/b_color = "green"
 		var/msg = "Get random job if preferences unavailable"
 
@@ -1009,6 +1012,9 @@ var/const/MAX_SAVE_SLOTS = 10
 		if("input")
 			switch(href_list["preference"])
 				if("name")
+					if(human_name_ban)
+						to_chat(user, SPAN_NOTICE("You are banned from custom human names."))
+						return
 					var/raw_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if (!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)

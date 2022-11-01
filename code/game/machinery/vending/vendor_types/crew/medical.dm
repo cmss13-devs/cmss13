@@ -6,7 +6,7 @@
 	icon_state = "dress"
 
 /obj/structure/machinery/cm_vending/clothing/medical_crew/get_listed_products(mob/user)
-	if(user == null)
+	if(!user)
 		var/list/combined = list()
 		combined += GLOB.cm_vending_clothing_nurse
 		combined += GLOB.cm_vending_clothing_researcher

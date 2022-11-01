@@ -5,7 +5,7 @@
 	vendor_role = list(JOB_CHIEF_POLICE,JOB_CMO,JOB_XO,JOB_CHIEF_ENGINEER,JOB_CHIEF_REQUISITION)
 
 /obj/structure/machinery/cm_vending/clothing/senior_officer/get_listed_products(mob/user)
-	if(user == null)
+	if(!user)
 		var/list/combined = list()
 		combined += GLOB.cm_vending_clothing_xo
 		combined += GLOB.cm_vending_clothing_chief_engineer

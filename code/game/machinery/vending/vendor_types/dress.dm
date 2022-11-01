@@ -41,7 +41,7 @@
 	return display_list
 
 /obj/structure/machinery/cm_vending/clothing/dress/get_listed_products(mob/user)
-	if (user == null)
+	if (!user)
 		return get_products_preset(typesof(/datum/equipment_preset))
 
 	if(!ishuman(user))

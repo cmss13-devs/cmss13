@@ -17,6 +17,19 @@
   Usnpeepoo:
   - bugfix: Facehuggers can now be put on a table/rack without causing a multitude
       of issues.
+  mullenpaul:
+  - refactor: uscm clothing vendors now use tgui
+  - refactor: added alt text for icons on cm vendor
+  - refactor: updated existing tgui vendors to new style
+  - qol: when using cm vendor ui you can close by pressing escape
+  - refactor: vendor icons now use spritesheet for asset transfer
+  - refactor: cm vendors now inform UI about what kind of vendor it is (clothing/
+      sorted)
+  - refactor: updated uscm role specific vending machines to use global item list
+      via get_listed_products
+  - refactor: clothing item list for synth snowflake now global list
+  - refactor: uscm dress vendor rewritten with custom tgui code because of how item
+      assignment is made
   realforest2001:
   - bugfix: Smods are now given the buttons unlocked for them in 1225
   - admin: Reorganised staff verb lists and added Devs and Managers to Staffwho.

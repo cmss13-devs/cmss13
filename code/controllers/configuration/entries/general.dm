@@ -186,6 +186,12 @@ Administrative related.
 /datum/config_entry/flag/show_mods
 	config_entry_value = TRUE
 
+/datum/config_entry/flag/show_devs
+	config_entry_value = TRUE
+
+/datum/config_entry/flag/show_manager
+	config_entry_value = TRUE
+
 /datum/config_entry/flag/looc_enabled
 
 /datum/config_entry/number/lobby_countdown

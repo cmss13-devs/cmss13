@@ -18,11 +18,6 @@
 	SIGNAL_HANDLER
 	active_liaison = null
 
-/datum/job/civilian/liaison/nightmare
-	flags_startup_parameters = NO_FLAGS
-	gear_preset = /datum/equipment_preset/uscm_ship/liaison/nightmare
-	entry_message_body = "It was just a regular day in the office when the higher up decided to send you in to this hot mess. If only you called in sick that day... The Wey-Yu mercs were hired to protect some important science experiment, and Wey-Yu expects you to keep them in line. These are hardened killers, and you write on paper for a living. It won't be easy, that's for damn sure. Best to let the mercs do the killing and the dying, but remind them who pays the bills."
-
 /obj/effect/landmark/start/liaison
 	name = JOB_CORPORATE_LIAISON
 	job = /datum/job/civilian/liaison

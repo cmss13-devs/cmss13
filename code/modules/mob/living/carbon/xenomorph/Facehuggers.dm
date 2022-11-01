@@ -38,7 +38,7 @@
 	var/jumps_left = 2
 
 	var/icon_xeno = 'icons/mob/hostiles/Effects.dmi'
-	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
+	var/icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()

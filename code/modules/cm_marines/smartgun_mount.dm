@@ -7,7 +7,7 @@
 #define M2C_HIGH_COOLDOWN_ROLL 0.45
 #define M2C_PASSIVE_COOLDOWN_AMOUNT 4
 #define M2C_OVERHEAT_OVERLAY 14
-#define M2C_CRUSHER_STUN 3 SECONDS
+#define M2C_CRUSHER_STUN 3 //amount in ticks (roughly 3 seconds)
 
 //////////////////////////////////////////////////////////////
 //Mounted MG, Replacment for the current jury rig code.

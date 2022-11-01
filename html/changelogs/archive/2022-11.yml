@@ -1,0 +1,4 @@
+2022-11-01:
+  totalepicness5:
+  - bugfix: Fixed plasteel rod to metal rod alchemy with reinforced floors
+  - spellcheck: Fixed some awful to_chats in reinforced floors.

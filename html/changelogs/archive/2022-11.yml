@@ -12,6 +12,8 @@
   - bugfix: Fixes some minor mapping bugs on kutjevo
   Totalepicess:
   - bugfix: Fixes space areas on Shivas elevator nightmare.
+  Totalepicness:
+  - refractor: Updated the sound backend to support echos/offsets
   Usnpeepoo:
   - bugfix: Facehuggers can now be put on a table/rack without causing a multitude
       of issues.

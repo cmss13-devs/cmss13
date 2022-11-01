@@ -1,6 +1,11 @@
 2022-11-01:
   BeagleGaming1:
   - bugfix: Fixed CL incorrectly spawning at late join cryo room at round start
+  Geeves, Triiodine:
+  - rscadd: Added unique weather events to Big Red / Solaris Ridge and LV-624.
+  - refactor: Refactored weather code to hopefully be less laggy.
+  - refactor: Refactored Faction Clash to use the weather subsystem rather than manually
+      placing rain.
   Kraso:
   - bugfix: Fixes being knocked down for several minutes by being rammed by a crusher
       while manning a M2C. You should now be knocked down for the appropriate time

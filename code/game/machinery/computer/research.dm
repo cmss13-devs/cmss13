@@ -80,6 +80,9 @@
 	msg_admin_niche("[key_name(user)] has updated the research clearance to level [give_level][give_x ? "X" : ""].")
 	return
 
+/obj/structure/machinery/computer/research/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
 /obj/structure/machinery/computer/research/attack_hand(mob/user as mob)
 	if(inoperable())
 		return

@@ -24,12 +24,6 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(use_snowflake_points)
-		m_points = H.marine_snowflake_points
-	else
-		m_points = H.marine_points
-	buy_flags = H.marine_buy_flags
-
 	var/list/products_sets = list()
 	if(H.assigned_equipment_preset)
 		if(!(H.assigned_equipment_preset.type in listed_products))

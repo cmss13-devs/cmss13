@@ -1,6 +1,10 @@
 2022-11-01:
   BeagleGaming1:
   - bugfix: Fixed CL incorrectly spawning at late join cryo room at round start
+  Kraso:
+  - bugfix: Fixes being knocked down for several minutes by being rammed by a crusher
+      while manning a M2C. You should now be knocked down for the appropriate time
+      of 3 seconds.
   Morrow:
   - balance: Removes ceramic plates from new contractors.
   TotalEpicness:

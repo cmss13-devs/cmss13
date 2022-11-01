@@ -416,10 +416,10 @@
 	assignment = JOB_UPP_ENGI
 	rank = JOB_UPP_ENGI
 	role_comm_title = "Sap"
-	paygrade = "UE3S"
+	paygrade = "UE3"
 
 /datum/equipment_preset/upp/sapper/load_gear(mob/living/carbon/human/H)
-	//Sappers should have lots of gear and whatnot that helps them attack or siege marines
+	//Engineers should have lots of gear and whatnot that helps them attack or siege marines
 	//But that'll need a lot of effort so for now they are just soldiers with a toolbox.
 	//back
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/upp, WEAR_BACK)
@@ -1586,10 +1586,10 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/kolonel
-	name = "UPP Kolonel"
+	name = "UPP Podpolkovnik"
 	assignment = JOB_UPP_KOL_OFFICER
 	rank = JOB_UPP_KOL_OFFICER
-	role_comm_title = "Kol."
+	role_comm_title = "Pdk."
 	paygrade = "UO5"
 	skills = /datum/skills/upp/commander
 
@@ -1991,16 +1991,7 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/upp/conscript
-	//meme role
-	name = "UPP Conscript"
-	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/upp
-	assignment = JOB_UPP_CONSCRIPT
-	rank = JOB_UPP_CONSCRIPT
-	role_comm_title = "Cons"
-	paygrade = "UE0"
 
 /datum/equipment_preset/upp/conscript/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -2101,14 +2092,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando
-	name = "UPP Commando"
+	name = "UPP Assault Pioneer (Covert)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando
 	assignment = JOB_UPP_COMMANDO
 	rank = JOB_UPP_COMMANDO
-	role_comm_title = "JKdo"
-	paygrade = "UC1"
+	role_comm_title = "Pio."
+	paygrade = "UE4"
 	idtype = /obj/item/card/id/data
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_NEOSPANISH)
 
@@ -2224,14 +2215,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/medic
-	name = "UPP Commando Medic"
+	name = "UPP Assault Pioneer Medic (Covert)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando/medic
 	assignment = JOB_UPP_COMMANDO_MEDIC
 	rank = JOB_UPP_COMMANDO_MEDIC
-	role_comm_title = "2ndKdo"
-	paygrade = "UC2"
+	role_comm_title = "MPio."
+	paygrade = "UE5"
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -2393,14 +2384,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/leader
-	name = "UPP Commando Leader"
+	name = "UPP Assault Pioneer Leader (Covert)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando/leader
 	assignment = JOB_UPP_COMMANDO_LEADER
 	rank = JOB_UPP_COMMANDO_LEADER
-	role_comm_title = "1stKdo"
-	paygrade = "UC3"
+	role_comm_title = "CPio."
+	paygrade = "UO3"
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/H)

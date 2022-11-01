@@ -168,27 +168,26 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_CONTRACTOR_COVSYN				"VAISO Support Synthetic"
 
 //-------- UPP --------//
-#define JOB_UPP							"UPP Private"
-#define JOB_UPP_CONSCRIPT				"UPP Conscript"
-#define JOB_UPP_ENGI					"UPP Korporal Sapper"
-#define JOB_UPP_MEDIC					"UPP Korporal Medic"
-#define JOB_UPP_SPECIALIST				"UPP Serzhant"
-#define JOB_UPP_LEADER					"UPP Master Serzhant"
+#define JOB_UPP							"UPP Ryadovoy"
+#define JOB_UPP_ENGI					"UPP MSgt Engineer"
+#define JOB_UPP_MEDIC					"UPP MSgt Medic"
+#define JOB_UPP_SPECIALIST				"UPP Sergeant"
+#define JOB_UPP_LEADER					"UPP Starshiy Sergeant"
 #define JOB_UPP_POLICE					"UPP Politsiya"
-#define JOB_UPP_LT_OFFICER				"UPP Leytenant"
-#define JOB_UPP_LT_DOKTOR				"UPP Leytenant Doktor"
-#define JOB_UPP_SRLT_OFFICER			"UPP Senior Leytenant"
-#define JOB_UPP_KPT_OFFICER				"UPP Kapitan"
-#define JOB_UPP_MAY_OFFICER				"UPP Mayjor"
-#define JOB_UPP_KOL_OFFICER				"UPP Kolonel"
+#define JOB_UPP_LT_OFFICER				"UPP Mladshiy Lieutenant"
+#define JOB_UPP_LT_DOKTOR				"UPP Lieutenant Doctor"
+#define JOB_UPP_SRLT_OFFICER			"UPP Starshiy Lieutenant"
+#define JOB_UPP_KPT_OFFICER				"UPP Captain"
+#define JOB_UPP_MAY_OFFICER				"UPP Major"
+#define JOB_UPP_KOL_OFFICER				"UPP Podpolkovnik"
 
 #define JOB_UPP_COMBAT_SYNTH			"UPP Combat Synthetic"
 
 #define UPP_JOB_LIST					list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER, JOB_UPP_COMBAT_SYNTH)
 
-#define JOB_UPP_COMMANDO				"UPP Junior Kommando"
-#define JOB_UPP_COMMANDO_MEDIC			"UPP 2nd Kommando"
-#define JOB_UPP_COMMANDO_LEADER			"UPP 1st Kommando"
+#define JOB_UPP_COMMANDO				"UPP Ryadovoy Pioneer"
+#define JOB_UPP_COMMANDO_MEDIC			"UPP Mladshiy Pioneer"
+#define JOB_UPP_COMMANDO_LEADER			"UPP Starshiy Pioneer"
 
 #define UPP_COMMANDO_JOB_LIST			list(JOB_UPP_COMMANDO, JOB_UPP_COMMANDO_MEDIC, JOB_UPP_COMMANDO_LEADER)
 

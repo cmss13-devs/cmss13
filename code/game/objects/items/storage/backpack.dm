@@ -906,7 +906,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 //UPP engineer welderpack
 /obj/item/storage/backpack/marine/engineerpack/upp
 	name = "\improper UCP3-E technician welderpack"
-	desc = "A special version of the Union Combat Pack MK3 featuring a small fueltank for quick blowtorch refueling. Used by UPP combat engineers."
+	desc = "A special version of the Union Combat Pack MK3 featuring a small fueltank for quick blowtorch refueling. Used by UPP Sappers."
 	icon_state = "satchel_upp_welder"
 	has_gamemode_skin = FALSE
 	worn_accessible = TRUE
@@ -915,8 +915,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp
 	name = "\improper V86 Thermal Cloak"
-	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units."
-	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
+	desc = "A thermo-optic camouflage cloak commonly used by UPP Assault Pioneer units."
+	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP armor to equip this.
 
 	max_storage_space = 21
 	camo_alpha = 10

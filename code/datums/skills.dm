@@ -1093,12 +1093,6 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
 	)
-/datum/skills/upp/conscript
-	name = "UPP Conscript"
-	skills = list(
-		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT
-	)
-
 /*
 ----------------------------
 Private Military Contractors

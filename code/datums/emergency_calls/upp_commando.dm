@@ -1,10 +1,10 @@
 
-//UPP COMMANDOS
+//UPP
 /datum/emergency_call/upp_commando
-	name = "UPP Commandos"
+	name = "UPP Assault Pioneers (Covert)"
 	mob_max = 6
 	probability = 0
-	objectives = "Stealthily assault the ship. Use your silenced weapons, tranquilizers, and night vision to get the advantage on the enemy. Take out the power systems, comms and engine. Stick together and keep a low profile."
+	objectives = "Stealthily assault the USS Almayer. Use your silenced weapons, tranquilizers, and night vision to avoid detection by the USCM. Gain any information from the ship's ARES system and CiC, then pull out."
 	shuttle_id = "Distress_UPP"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_upp
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_upp/item
@@ -14,13 +14,13 @@
 	to_chat(M, SPAN_BOLD("You grew up in relativly simple family in [pick(75;"Eurasia", 25;"a famished UPP colony")] with few belongings or luxuries."))
 	to_chat(M, SPAN_BOLD("The family you grew up with were [pick(50;"getting by", 25;"impoverished", 25;"starving")] and you were one of [pick(10;"two", 20;"three", 20;"four", 30;"five", 20;"six")] children."))
 	to_chat(M, SPAN_BOLD("You come from a long line of [pick(40;"crop-harvesters", 20;"soldiers", 20;"factory workers", 5;"scientists", 15;"engineers")], and quickly enlisted to improve your living conditions."))
-	to_chat(M, SPAN_BOLD("Following your enlistment UPP military at the age of 17 you were assigned to the 17th 'Smoldering Sons' battalion (six hundred strong) under the command of Colonel Ganbaatar."))
+	to_chat(M, SPAN_BOLD("Following your enlistment UPP military at the age of 17 you were assigned to the 17th 'Smoldering Sons' battalion (six hundred strong) under the command of Podpolkovnik Ganbaatar."))
 	to_chat(M, SPAN_BOLD("You were shipped off with the battalion to one of the UPP's most remote territories, a gas giant designated MV-35 in the Anglo-Japanese Arm, in the Tychon's Rift sector."))
 	to_chat(M, SPAN_BOLD("For the past 14 months, you and the rest of the Smoldering Sons have been stationed at MV-35's only facility, the helium refinery, Altai Station."))
 	to_chat(M, SPAN_BOLD("As MV-35 and Altai Station are the only UPP-held zones in the Tychon's Rift sector for many lightyears, you have spent most of your military career holed up in crammed quarters in near darkness, waiting for supply shipments and transport escort deployments."))
-	to_chat(M, SPAN_BOLD("With the recent arrival of the enemy USCM battalion the 'Falling Falcons' and their flagship, the [MAIN_SHIP_NAME], the UPP has felt threatened in the sector."))
-	to_chat(M, SPAN_BOLD("In an effort to protect the vunerable MV-35 from the emproaching UA/USCM imperialists, the leadership of your battalion has opted this the best opportunity to strike at the Falling Falcons to catch them off guard."))
-	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Colonel Ganbaatar.")))
+	to_chat(M, SPAN_BOLD("With the recent arrival of the enemy USCM battalion the 'Falling Falcons' and their flagship, the [MAIN_SHIP_NAME], the UPP has raised combat awareness in the sector."))
+	to_chat(M, SPAN_BOLD("You're the best of the best, and UPP command has sent you in to discretly recover all intel from the [MAIN_SHIP_NAME]. Get in, recover all valuable information, ensure the [MAIN_SHIP_NAME] never returns to the Neroid sector."))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Podpolkovnik Ganbaatar.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))
 	to_chat(M, SPAN_NOTICE(" Use say :3 <text> to speak in your native tongue."))

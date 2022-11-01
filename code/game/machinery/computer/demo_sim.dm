@@ -185,8 +185,6 @@
 			switch(dummy_mode)
 				if(CLF_MODE)
 					user.client.cmd_admin_dress_human(dummy, "CLF Soldier", no_logs = TRUE)
-				if(UPP_MODE)
-					user.client.cmd_admin_dress_human(dummy, "UPP Conscript", no_logs = TRUE)
 			dummy.name = "simulated human"
 			QDEL_IN(dummy, detonation_cooldown_time - 10 SECONDS)
 		else

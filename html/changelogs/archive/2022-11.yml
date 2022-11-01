@@ -1,6 +1,8 @@
 2022-11-01:
   BeagleGaming1:
   - bugfix: Fixed CL incorrectly spawning at late join cryo room at round start
+  Morrow:
+  - balance: Removes ceramic plates from new contractors.
   TotalEpicness:
   - qol: You can now check how much metal an autodoc has before it's out.
   Totalepicess:

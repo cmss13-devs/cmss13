@@ -1,10 +1,12 @@
 /datum/squad/tgui_interact(mob/user, datum/tgui/ui)
-	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "SquadInfo", "Squad Info")
 		ui.open()
 
+/datum/squad/ui_state(mob/user)
+	. = ..()
+	return GLOB.not_incapacitated_state
 
 /datum/squad/ui_data(mob/user)
 	if(!squad_info_data.len)					//initial first update of data
@@ -16,6 +18,43 @@
 		update_squad_ui()
 	var/list/data = squad_info_data.Copy()
 	return data
+
+/datum/squad/proc/get_marine_from_name(var/name)
+	for(var/mob/living/carbon/human/H in squad_info_uis)
+		if(H.name == target_marine)
+			return H
+	return null
+
+/datum/squad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = usr
+	switch (action)
+		if ("assign_ft")
+			var/target_marine = params["target_marine"]
+			var/target_team = params["target_ft"]
+			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
+			if(!target)
+				world.log << "Failed to find [target_marine]"
+				return
+
+			assign_fireteam(target_team, target)
+			return
+		if ("unassign_ft")
+			var/target_marine = params["target_marine"]
+			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
+			if(!target)
+				world.log << "Failed to find [target_marine]"
+				return
+			unassign_fireteam(target, FALSE)
+		if ("unassign_ftl")
+			var/target_marine = params["target_marine"]
+			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
+			if(!target)
+				world.log << "Failed to find [target_marine]"
+				return
+			unassign_ft_leader(target, FALSE)
 
 //used once on first opening
 /datum/squad/proc/update_all_squad_info()

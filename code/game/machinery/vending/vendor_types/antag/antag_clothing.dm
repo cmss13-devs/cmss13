@@ -24,9 +24,6 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-
-	var/m_points = 0
-	var/buy_flags = NO_FLAGS
 	if(use_snowflake_points)
 		m_points = H.marine_snowflake_points
 	else

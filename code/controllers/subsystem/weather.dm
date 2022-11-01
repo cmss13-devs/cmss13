@@ -12,8 +12,9 @@ SUBSYSTEM_DEF(weather)
 	var/controller_state_lock = FALSE		// Used to prevent double-calls of important methods. Is set anytime
 											// the controller enters a proc that significantly modifies its state
 	var/current_event_start_time			// Self explanatory
-	var/last_event_end_time					// Self explanatory
-	var/last_event_check_time
+
+	COOLDOWN_DECLARE(last_event_end_time)
+	COOLDOWN_DECLARE(last_event_check_time)
 
 	//// Important vars
 
@@ -92,12 +93,12 @@ SUBSYSTEM_DEF(weather)
 		return
 
 	// Check if we have had enough time between events
-	if (last_event_end_time + map_holder.min_time_between_events > world.time || last_event_check_time + map_holder.min_time_between_checks > world.time)
+	if (!COOLDOWN_FINISHED(src, last_event_end_time) || !COOLDOWN_FINISHED(src, last_event_check_time))
 		return
 
 	// Each map decides its own logic for implementing weather events.
 	if (!is_weather_event_starting)
-		last_event_check_time = world.time
+		COOLDOWN_START(src, last_event_check_time, map_holder.min_time_between_checks)
 		if(map_holder.should_start_event())
 			// Set up controller state
 			is_weather_event_starting = TRUE
@@ -180,7 +181,7 @@ SUBSYSTEM_DEF(weather)
 	is_weather_event = FALSE
 	update_mobs_weather()
 	controller_state_lock = FALSE
-	last_event_end_time = world.time
+	COOLDOWN_START(src, last_event_end_time, map_holder.min_time_between_events)
 
 /datum/controller/subsystem/weather/proc/update_mobs_weather()
 	for(var/mob/mob as anything in GLOB.living_mob_list)

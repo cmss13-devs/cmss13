@@ -950,7 +950,11 @@
 	if(length(contents))
 		overlays += "+[icon_state]_full"
 	if(inner)
-		overlays += "+[icon_state]_loaded"
+		//tint the inner display based on what chemical is inside
+		var/image/I = image(icon, icon_state="+[icon_state]_loaded")
+		if(inner.reagents)
+			I.color = mix_color_from_reagents(inner.reagents.reagent_list)
+		overlays += I
 
 
 /obj/item/storage/pouch/pressurized_reagent_canister/empty(mob/user)

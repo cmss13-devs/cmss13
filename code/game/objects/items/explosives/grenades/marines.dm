@@ -469,8 +469,8 @@
 		M.Daze(dazed_time * 0.5)
 
 	if(M.mob_size >= MOB_SIZE_BIG)//big xenos not KO'ed
-		M.Slow(slowdown_time * 1.5)//They are slowed more :trol:
-		M.Daze(dazed_time * 1.5)
+		M.Slow(slowdown_time * 1.2)//They are slowed more :trol:
+		M.Daze(dazed_time * 1.2)
 		return
 
 	M.KnockDown(knockout_time)//but little xenos and humans are
@@ -489,9 +489,9 @@
 	inactive_icon = "baton_slug"
 	antigrief_protection = FALSE
 	impact_damage = 15
-	slowdown_time = 2.2
-	knockout_time = 1
-	dazed_time = 2
+	slowdown_time = 2
+	knockout_time = 0.8
+	dazed_time = 1.7
 
 /obj/item/explosive/grenade/slug/baton/Initialize()
 	. = ..()

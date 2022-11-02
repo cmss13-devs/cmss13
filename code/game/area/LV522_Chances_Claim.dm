@@ -5,13 +5,6 @@
 	can_build_special = TRUE
 	powernet_name = "ground"
 
-/area/lv522/Initialize()
-	. = ..()
-	if(SSticker.current_state > GAME_STATE_SETTING_UP)
-		add_thunder()
-	else
-		LAZYADD(GLOB.thunder_setup_areas, src)
-
 //parent types
 
 /area/lv522/indoors

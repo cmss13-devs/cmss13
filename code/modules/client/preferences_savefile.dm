@@ -124,6 +124,8 @@
 	S["ghost_vision_pref"]	>> ghost_vision_pref
 	S["ghost_orbit"]		>> ghost_orbit
 
+	S["human_name_ban"] >> human_name_ban
+
 	S["xeno_prefix"]		>> xeno_prefix
 	S["xeno_postfix"]		>> xeno_postfix
 	S["xeno_name_ban"]		>> xeno_name_ban
@@ -274,6 +276,8 @@
 	S["ghost_vision_pref"]	<< ghost_vision_pref
 	S["ghost_orbit"]		<< ghost_orbit
 
+	S["human_name_ban"] << human_name_ban
+
 	S["xeno_prefix"]		<< xeno_prefix
 	S["xeno_postfix"]		<< xeno_postfix
 	S["xeno_name_ban"]		<< xeno_name_ban
@@ -388,8 +392,7 @@
 	S["disabilities"]		>> disabilities
 	S["organ_data"]			>> organ_data
 	S["gear"]				>> gear
-	S["home_system"] 		>> home_system
-	S["citizenship"] 		>> citizenship
+	S["origin"] 			>> origin
 	S["faction"] 			>> faction
 	S["religion"] 			>> religion
 	S["traits"]				>> traits
@@ -460,8 +463,7 @@
 
 	//if(!skin_style) skin_style = "Default"
 
-	if(!home_system) home_system = "Unset"
-	if(!citizenship) citizenship = CITIZENSHIP_US
+	if(!origin) origin = ORIGIN_USCM
 	if(!faction)     faction =     "None"
 	if(!religion)    religion =    RELIGION_AGNOSTICISM
 	if(!preferred_squad)	preferred_squad = "None"
@@ -527,8 +529,7 @@
 	S["disabilities"]		<< disabilities
 	S["organ_data"]			<< organ_data
 	S["gear"]				<< gear
-	S["home_system"] 		<< home_system
-	S["citizenship"] 		<< citizenship
+	S["origin"] 			<< origin
 	S["faction"] 			<< faction
 	S["religion"] 			<< religion
 	S["traits"]				<< traits

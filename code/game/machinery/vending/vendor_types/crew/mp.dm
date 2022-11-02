@@ -42,9 +42,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_mp, list(
 	req_access = list(ACCESS_MARINE_BRIG)
 	vendor_role = list(JOB_POLICE)
 
-/obj/structure/machinery/cm_vending/clothing/military_police/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_clothing_mp
+/obj/structure/machinery/cm_vending/clothing/military_police/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_clothing_mp
 
 /obj/effect/essentials_set/mp
 	spawned_gear_list = list(

@@ -425,6 +425,30 @@ const PunishmentActions = (props, context) => {
         </Stack>
       </Section>
 
+      <Section level={2} title="Human Name">
+        <Stack
+          align="right"
+          grow={1}
+        >
+          <Button
+            width="100%"
+            icon="clipboard-list"
+            color="average"
+            content="Human name reset"
+            disabled={!hasPermission(data, "reset_human_name")}
+            onClick={() => act("reset_human_name")}
+          />
+          <Button
+            width="100%"
+            height="100%"
+            icon="clipboard-list"
+            color="bad"
+            content={!data?.client_name_banned_status ? ("Human name ban") : ("Human name unban")}
+            disabled={!hasPermission(data, "ban_human_name")}
+            onClick={() => act("ban_human_name")}
+          />
+        </Stack>
+      </Section>
       <Section level={2} title="Xenomorph Name">
         <Stack align="right" grow={1}>
           <Button

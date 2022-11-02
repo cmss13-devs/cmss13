@@ -1,0 +1,55 @@
+2022-11-01:
+  BeagleGaming1:
+  - bugfix: Fixed CL incorrectly spawning at late join cryo room at round start
+  Geeves, Triiodine:
+  - rscadd: Added unique weather events to Big Red / Solaris Ridge and LV-624.
+  - refactor: Refactored weather code to hopefully be less laggy.
+  - refactor: Refactored Faction Clash to use the weather subsystem rather than manually
+      placing rain.
+  Kraso:
+  - bugfix: Fixes being knocked down for several minutes by being rammed by a crusher
+      while manning a M2C. You should now be knocked down for the appropriate time
+      of 3 seconds.
+  Morrow:
+  - balance: Removes ceramic plates from new contractors.
+  TotalEpicness:
+  - qol: You can now check how much metal an autodoc has before it's out.
+  - bugfix: Fixes some minor mapping bugs on kutjevo
+  Totalepicess:
+  - bugfix: Fixes space areas on Shivas elevator nightmare.
+  Totalepicness:
+  - refractor: Updated the sound backend to support echos/offsets
+  Usnpeepoo:
+  - bugfix: Facehuggers can now be put on a table/rack without causing a multitude
+      of issues.
+  mullenpaul:
+  - refactor: uscm clothing vendors now use tgui
+  - refactor: added alt text for icons on cm vendor
+  - refactor: updated existing tgui vendors to new style
+  - qol: when using cm vendor ui you can close by pressing escape
+  - refactor: vendor icons now use spritesheet for asset transfer
+  - refactor: cm vendors now inform UI about what kind of vendor it is (clothing/
+      sorted)
+  - refactor: updated uscm role specific vending machines to use global item list
+      via get_listed_products
+  - refactor: clothing item list for synth snowflake now global list
+  - refactor: uscm dress vendor rewritten with custom tgui code because of how item
+      assignment is made
+  realforest2001:
+  - bugfix: Smods are now given the buttons unlocked for them in 1225
+  - admin: Reorganised staff verb lists and added Devs and Managers to Staffwho.
+  - bugfix: Xenonid huggers are now visible again (player controlled)
+  totalepicness5:
+  - bugfix: Fixed plasteel rod to metal rod alchemy with reinforced floors
+  - spellcheck: Fixed some awful to_chats in reinforced floors.
+2022-11-02:
+  Geevies:
+  - rscadd: Implemented the Origin system framework, currently it only restricts A.W.
+      middle-names to the A.W. origin, and USCM gear in character set-up to USCM origins,
+      so no survivors, UPP, or CLF with USCM gear.
+  ThePiachu:
+  - spellcheck: Fixed an internal typo of Bicaridine Pill Packet.
+  usnpeepoo:
+  - spellcheck: Playable hugger join message is more clearer
+  - code_imp: Hugger is now called "facehugger" in the code
+  - bugfix: Pooling bodies into an eggmorpher disrupts grabs automatically

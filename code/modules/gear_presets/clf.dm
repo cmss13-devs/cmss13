@@ -4,6 +4,7 @@
 	assignment = JOB_CLF
 	rank = FACTION_CLF
 	faction = FACTION_CLF
+	origin_override = ORIGIN_CIVILIAN
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/New()

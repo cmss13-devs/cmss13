@@ -17,6 +17,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	var/max_per_xeno = RESIN_CONSTRUCTION_NO_MAX
 
 	var/thick_hiveweed = FALSE // if this is set, the thick variants will only work on hiveweeds
+	var/cant_build_on_doors = TRUE // if it can be built on a tile with an open door or not
 
 /datum/resin_construction/proc/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
 	var/mob/living/carbon/Xenomorph/blocker = locate() in T
@@ -59,7 +60,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 		to_chat(X, SPAN_WARNING("This area is too unstable to support a construction"))
 		return FALSE
 
-	if(!X.check_alien_construction(T))
+	if(!X.check_alien_construction(T, check_doors = cant_build_on_doors))
 		return FALSE
 
 	if(range_between_constructions)
@@ -259,6 +260,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_time = 1 SECONDS
 
 	build_path = /obj/effect/alien/resin/sticky
+	cant_build_on_doors = FALSE
 
 
 // Fast Resin
@@ -270,6 +272,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_time = 1 SECONDS
 
 	build_path = /obj/effect/alien/resin/sticky/fast
+	cant_build_on_doors = FALSE
 
 /datum/resin_construction/resin_obj/resin_spike
 	name = "Resin Spike"

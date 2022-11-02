@@ -101,7 +101,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	//character preferences
 	var/real_name						//our character's name
-	var/be_random_name = 0				//whether we are a random name every round
+	var/be_random_name = FALSE				//whether we are a random name every round
+	var/human_name_ban = FALSE
+
+
 	var/be_random_body = 0				//whether we have a random appearance every round
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 19						//age of character
@@ -132,8 +135,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/preferred_squad = "None"
 
 		//Some faction information.
-	var/home_system = "Unset"           	//System of birth.
-	var/citizenship = CITIZENSHIP_US 		//Current home system.
+	var/origin = ORIGIN_USCM
 	var/faction = "None"                	//Antag faction/general associated faction.
 	var/religion = RELIGION_AGNOSTICISM     //Religious association.
 
@@ -370,7 +372,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 			dat += "<div id='column3'>"
 			dat += "<h2><b><u>Background Information:</u></b></h2>"
-			dat += "<b>Citizenship:</b> <a href='?_src_=prefs;preference=citizenship;task=input'><b>[citizenship]</b></a><br/>"
+			dat += "<b>Origin:</b> <a href='?_src_=prefs;preference=origin;task=input'><b>[origin]</b></a><br/>"
 			dat += "<b>Religion:</b> <a href='?_src_=prefs;preference=religion;task=input'><b>[religion]</b></a><br/>"
 
 			dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
@@ -677,7 +679,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	HTML += "</td></tr></table>"
 	HTML += "</center></table>"
 
-	if(user.client.prefs) //Just makin sure
+	if(user.client?.prefs) //Just makin sure
 		var/b_color = "green"
 		var/msg = "Get random job if preferences unavailable"
 
@@ -967,7 +969,8 @@ var/const/MAX_SAVE_SLOTS = 10
 		if ("random")
 			switch (href_list["preference"])
 				if ("name")
-					real_name = random_name(gender)
+					var/datum/origin/character_origin = GLOB.origins[origin]
+					real_name = character_origin.generate_human_name(gender)
 				if ("age")
 					age = rand(AGE_MIN, AGE_MAX)
 				if ("ethnicity")
@@ -1009,6 +1012,9 @@ var/const/MAX_SAVE_SLOTS = 10
 		if("input")
 			switch(href_list["preference"])
 				if("name")
+					if(human_name_ban)
+						to_chat(user, SPAN_NOTICE("You are banned from custom human names."))
+						return
 					var/raw_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if (!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
@@ -1463,10 +1469,10 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/skin_style_name = tgui_input_list(user, "Select a new skin style", "Skin style", list("default1", "default2", "default3"))
 					if(!skin_style_name) return
 
-				if("citizenship")
-					var/choice = tgui_input_list(user, "Please choose your current citizenship.", "Citizenship selection", citizenship_choices)
+				if("origin")
+					var/choice = tgui_input_list(user, "Please choose your character's origin.", "Origin Selection", GLOB.player_origins)
 					if(choice)
-						citizenship = choice
+						origin = choice
 
 				if("religion")
 					var/choice = tgui_input_list(user, "Please choose a religion.", "Religion choice", religion_choices + "Other")
@@ -1612,6 +1618,11 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(save_cooldown > world.time)
 						to_chat(user, SPAN_WARNING("You need to wait [round((save_cooldown-world.time)/10)] seconds before you can do that again."))
 						return
+					var/datum/origin/character_origin = GLOB.origins[origin]
+					var/name_error = character_origin.validate_name(real_name)
+					if(name_error)
+						tgui_alert(user, name_error, "Invalid Name", list("OK"))
+						return
 					save_preferences()
 					save_character()
 					save_cooldown = world.time + 50
@@ -1712,8 +1723,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.h_style = h_style
 	character.f_style = f_style
 
-	character.home_system = home_system
-	character.citizenship = citizenship
+	character.origin = origin
 	character.personal_faction = faction
 	character.religion = religion
 
@@ -1850,8 +1860,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.gen_record = gen_record
 	character.exploit_record = exploit_record
 
-	character.home_system = home_system
-	character.citizenship = citizenship
+	character.origin = origin
 	character.personal_faction = faction
 	character.religion = religion
 

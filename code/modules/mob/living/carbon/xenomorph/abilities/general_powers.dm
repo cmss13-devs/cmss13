@@ -84,6 +84,10 @@
 		to_chat(src, SPAN_WARNING("You cannot rest while burrowed!"))
 		return
 
+	if(crest_defense)
+		to_chat(src, SPAN_WARNING("You cannot rest while your crest is down!"))
+		return
+
 	return ..()
 
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
@@ -900,6 +904,7 @@
 
 	var/obj/limb/limb = target.get_limb(check_zone(stabbing_xeno.zone_selected))
 	if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
+		to_chat(stabbing_xeno, (SPAN_WARNING("What [limb.display_name]?")))
 		return FALSE
 
 	if(!check_and_use_plasma_owner())

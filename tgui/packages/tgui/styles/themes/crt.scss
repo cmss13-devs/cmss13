@@ -8,13 +8,52 @@ $background-radial-opacity: 0.2 !default;
 @use '../base.scss';
 
 @use '../colors.scss' with (
-  $primary: base.$color-fg
+  $primary: base.$color-fg,
+  $label: base.$color-fg
 );
 
 $small-text: 2vw;
 $large-text: 3vw;
 
 %theme-crt {
+  @include meta.load-css('../components/Divider.scss', $with: (
+    'color': base.$color-fg,
+  ));
+  @include meta.load-css('../components/Stack.scss');
+
+  @include meta.load-css('../components/Slider.scss', $with: (
+    'cursor-color': darken(base.$color-fg, 0.2),
+    'popup-background-color': base.$color-bg,
+    'popup-text-color': base.$color-fg
+  ));
+
+  @include meta.load-css('../components/Input.scss', $with: (
+    'text-color': base.$color-fg,
+    'background-color': base.$color-bg,
+    'border-color': base.$color-fg,
+  ));
+
+  @include meta.load-css('../components/NumberInput.scss', $with: (
+    'text-color': base.$color-fg,
+    'background-color': base.$color-bg,
+    'border-color': base.$color-fg
+  ));
+
+  @include meta.load-css('../components/Knob.scss', $with: (
+    'ring-color': base.$color-fg,
+    'knob-color': base.$color-bg,
+    'popup-background-color': base.$color-bg,
+    'popup-text-color': base.$color-fg
+  ));
+
+  @include meta.load-css('../components/ProgressBar.scss', $with: (
+    'color-default-fill': base.$color-fg
+  ));
+
+  @include meta.load-css('../components/BlockQuote.scss', $with: (
+    'color-default': base.$color-fg
+  ));
+
   @include meta.load-css('../layouts/Window.scss');
   @include meta.load-css('../layouts/TitleBar.scss', $with: (
     'background-color': base.$color-bg,
@@ -33,11 +72,14 @@ $large-text: 3vw;
 
   @include meta.load-css('../components/Tabs.scss', $with: (
     'tab-color': base.$color-bg,
-    'tab-color-selected': base.$color-bg,
-    'text-color': base.$color-fg
+    'tab-color-selected': base.$color-fg,
+    'text-color': base.$color-fg,
+    'text-color-selected': base.$color-bg,
+    'tab-color-hovered': rgba(base.$color-fg, 0.3),
   ));
 
   .Layout__content {
+
     background-image: none;
     background: radial-gradient(
       rgba(colors.$primary, $background-radial-opacity),

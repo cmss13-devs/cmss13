@@ -958,12 +958,12 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!GLOB.character_trait_groups[trait_group])
 						trait_group = null
 					var/trait = text2path(href_list["trait"])
-					var/datum/character_trait/CT = GLOB.character_traits[trait]
-					CT?.try_give_trait(src)
+					var/datum/character_trait/character_trait = GLOB.character_traits[trait]
+					character_trait?.try_give_trait(src)
 					open_character_traits(user, trait_group)
-					if(CT.refresh_choices)
+					if(character_trait.refresh_choices)
 						ShowChoices(user)
-					if(CT.refresh_mannequin)
+					if(character_trait.refresh_mannequin)
 						update_preview_icon()
 					return TRUE
 				if("remove_trait")
@@ -971,12 +971,12 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!GLOB.character_trait_groups[trait_group])
 						trait_group = null
 					var/trait = text2path(href_list["trait"])
-					var/datum/character_trait/CT = GLOB.character_traits[trait]
-					CT?.try_remove_trait(src)
+					var/datum/character_trait/character_trait = GLOB.character_traits[trait]
+					character_trait?.try_remove_trait(src)
 					open_character_traits(user, trait_group)
-					if(CT.refresh_choices)
+					if(character_trait.refresh_choices)
 						ShowChoices(user)
-					if(CT.refresh_mannequin)
+					if(character_trait.refresh_mannequin)
 						update_preview_icon()
 					return TRUE
 
@@ -1307,10 +1307,10 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("h_style")
 					var/list/valid_hairstyles = list()
 					for(var/hairstyle in GLOB.hair_styles_list)
-						var/datum/sprite_accessory/S = GLOB.hair_styles_list[hairstyle]
-						if( !(species in S.species_allowed))
+						var/datum/sprite_accessory/sprite_accessory = GLOB.hair_styles_list[hairstyle]
+						if( !(species in sprite_accessory.species_allowed))
 							continue
-						if(!S.selectable)
+						if(!sprite_accessory.selectable)
 							continue
 
 						valid_hairstyles[hairstyle] = GLOB.hair_styles_list[hairstyle]
@@ -1331,10 +1331,10 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("grad_style")
 					var/list/valid_hair_gradients = list()
 					for(var/hair_gradient in GLOB.hair_gradient_list)
-						var/datum/sprite_accessory/S = GLOB.hair_gradient_list[hair_gradient]
-						if(!(species in S.species_allowed))
+						var/datum/sprite_accessory/sprite_accessory = GLOB.hair_gradient_list[hair_gradient]
+						if(!(species in sprite_accessory.species_allowed))
 							continue
-						if(!S.selectable)
+						if(!sprite_accessory.selectable)
 							continue
 						valid_hair_gradients[hair_gradient] = GLOB.hair_gradient_list[hair_gradient]
 					valid_hair_gradients = sortList(valid_hair_gradients)
@@ -1365,14 +1365,14 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("f_style")
 					var/list/valid_facialhairstyles = list()
 					for(var/facialhairstyle in GLOB.facial_hair_styles_list)
-						var/datum/sprite_accessory/S = GLOB.facial_hair_styles_list[facialhairstyle]
-						if(gender == MALE && S.gender == FEMALE)
+						var/datum/sprite_accessory/sprite_accessory = GLOB.facial_hair_styles_list[facialhairstyle]
+						if(gender == MALE && sprite_accessory.gender == FEMALE)
 							continue
-						if(gender == FEMALE && S.gender == MALE)
+						if(gender == FEMALE && sprite_accessory.gender == MALE)
 							continue
-						if( !(species in S.species_allowed))
+						if( !(species in sprite_accessory.species_allowed))
 							continue
-						if(!S.selectable)
+						if(!sprite_accessory.selectable)
 							continue
 
 						valid_facialhairstyles[facialhairstyle] = GLOB.facial_hair_styles_list[facialhairstyle]
@@ -1988,8 +1988,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(!read_traits)
 		read_traits = TRUE
 		for(var/trait in traits)
-			var/datum/character_trait/CT = GLOB.character_traits[trait]
-			trait_points -= CT.cost
+			var/datum/character_trait/character_trait = GLOB.character_traits[trait]
+			trait_points -= character_trait.cost
 	var/dat = "<body onselectstart='return false;'>"
 	dat += "<center>"
 	var/datum/character_trait_group/current_trait_group
@@ -2009,21 +2009,21 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "</center>"
 	dat += "<table>"
 	for(var/trait in current_trait_group.traits)
-		var/datum/character_trait/CT = trait
-		if(!CT.applyable)
+		var/datum/character_trait/character_trait = trait
+		if(!character_trait.applyable)
 			continue
-		var/has_trait = (CT.type in traits)
+		var/has_trait = (character_trait.type in traits)
 		var/task = has_trait ? "remove_trait" : "give_trait"
 		var/button_class = has_trait ? "class='linkOn'" : ""
 		dat += "<tr><td width='40%'>"
-		if(has_trait || CT.can_give_trait(src))
-			dat += "<a href='?_src_=prefs;preference=traits;task=[task];trait=[CT.type];trait_group=[current_trait_group.type]' [button_class]>"
-			dat += "[CT.trait_name]"
+		if(has_trait || character_trait.can_give_trait(src))
+			dat += "<a href='?_src_=prefs;preference=traits;task=[task];trait=[character_trait.type];trait_group=[current_trait_group.type]' [button_class]>"
+			dat += "[character_trait.trait_name]"
 			dat += "</a>"
 		else
-			dat += "<i>[CT.trait_name]</i>"
-		var/cost_text = CT.cost ? " ([CT.cost] points)" : ""
-		dat += "</td><td>[CT.trait_desc][cost_text]</td></tr>"
+			dat += "<i>[character_trait.trait_name]</i>"
+		var/cost_text = character_trait.cost ? " ([character_trait.cost] points)" : ""
+		dat += "</td><td>[character_trait.trait_desc][cost_text]</td></tr>"
 		dat += ""
 	dat += "</table>"
 	dat += "</body>"

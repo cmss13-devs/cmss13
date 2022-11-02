@@ -214,7 +214,7 @@
 
 	var/mob/living/carbon/Xenomorph/Facehugger/hugger = new /mob/living/carbon/Xenomorph/Facehugger(loc, null, linked_hive.hivenumber)
 	user.mind.transfer_to(hugger, TRUE)
-	hugger.visible_message(SPAN_XENODANGER("A child suddenly emerges out of \the [src]!"), SPAN_XENODANGER("You emerge out of \the [src] and awaken from your slumber. For the Hive!"))
+	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [src]!"), SPAN_XENODANGER("You emerge out of \the [src] and awaken from your slumber. For the Hive!"))
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
 	stored_huggers--

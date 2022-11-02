@@ -124,7 +124,7 @@
 	uses_ethnicity = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 
-	burn_mod = 0.60 //made for combat
+	burn_mod = 0.6 //made for combat
 	total_health = 250 //made for combat
 
 	hair_color = "#000000"

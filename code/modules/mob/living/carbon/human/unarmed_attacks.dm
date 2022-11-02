@@ -40,7 +40,7 @@
 	damage = 10
 
 /datum/unarmed_attack/punch/synthetic
-	attack_verb = list("clock","strik","slugg","bludgeon","impact","maul")
+	attack_verb = list("punch","clock","slugg","bludgeon","maul")
 	attack_sound = 'sound/weapons/synthpunch1.ogg'
 	damage = 35
 

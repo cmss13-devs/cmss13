@@ -404,11 +404,6 @@
 	unbuckle()
 	return XENO_NONCOMBAT_ACTION
 
-//Portable surgical bed. Ditto, though it's meltable.
-/obj/structure/bed/portable_surgery/attack_alien(mob/living/carbon/Xenomorph/M)
-	unbuckle()
-	return XENO_NONCOMBAT_ACTION
-
 //Smashing lights
 /obj/structure/machinery/light/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(is_broken()) //Ignore if broken. Note that we can't use defines here

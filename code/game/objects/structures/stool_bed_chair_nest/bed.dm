@@ -265,28 +265,6 @@ obj/structure/bed/Destroy()
 	R.add_fingerprint(user)
 	QDEL_NULL(held)
 
-//////////////////////////////////////////////
-//			PORTABLE SURGICAL BED			//
-//////////////////////////////////////////////
-
-/obj/structure/bed/portable_surgery
-	name = "portable surgical bed"
-	desc = "A collapsible surgical bed. It's not perfect, but it's the best you'll get short of an actual surgical table."
-	icon = 'icons/obj/structures/rollerbed.dmi'
-	icon_state = "surgical_down"
-	buckling_y = 2
-	foldabletype = /obj/item/roller/surgical
-	base_bed_icon = "surgical"
-	accepts_bodybag = FALSE
-	surgery_duration_multiplier = SURGERY_SURFACE_MULT_ADEQUATE
-
-/obj/item/roller/surgical
-	name = "portable surgical bed"
-	desc = "A collapsed surgical bed that can be carried around."
-	icon_state = "surgical_folded"
-	rollertype = /obj/structure/bed/portable_surgery
-	matter = list("plastic" = 6000)
-
 ////////////////////////////////////////////
 			//MEDEVAC STRETCHER
 //////////////////////////////////////////////

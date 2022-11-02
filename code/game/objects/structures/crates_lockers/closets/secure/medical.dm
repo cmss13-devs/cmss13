@@ -169,4 +169,3 @@
 /obj/structure/closet/secure_closet/surgical/Initialize()
 	. = ..()
 	new /obj/item/storage/surgical_tray(src)
-	new /obj/item/roller/surgical(src)

@@ -103,6 +103,10 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 
 		step_duration *= surface_modifier
 
+		if(surface_modifier < SURGERY_SURFACE_MULT_IDEAL && (SURGERY_DEPTH_DEEP in surgery.invasiveness))
+			to_chat(user, SPAN_WARNING("You need a better surgical theatre for a procedure that's this invasive!"))
+			return
+
 	var/try_to_fail
 	if(user.a_intent != INTENT_HELP)
 		try_to_fail = TRUE

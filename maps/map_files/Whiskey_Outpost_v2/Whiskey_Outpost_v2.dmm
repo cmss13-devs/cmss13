@@ -5126,8 +5126,6 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/item/roller/surgical,
-/obj/item/roller/surgical,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitegreen";

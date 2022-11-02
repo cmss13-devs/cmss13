@@ -75,6 +75,13 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 	if(!extra_checks(user, target, target_zone, tool, surgery, repeating, skipped))
 		return FALSE // you must put the failure to_chat inside the checks
 
+	var/obj/limb/surgery_limb = target.get_limb(target_zone)
+	if(surgery_limb)
+		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
+		if(blocker)
+			to_chat(user, SPAN_WARNING("\The [blocker] \the [target] is wearing restricts your access to the surgical site, take it off!"))
+			return
+
 	surgery.step_in_progress = TRUE
 
 	var/step_duration = time
@@ -103,7 +110,7 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 
 		step_duration *= surface_modifier
 
-		if(surgery.surgical_table_required && surface_modifier < SURGERY_SURFACE_MULT_IDEAL)
+		if(surgery.surgical_table_required && surface_modifier > SURGERY_SURFACE_MULT_IDEAL)
 			to_chat(user, SPAN_WARNING("You need a better surgical theatre for a procedure that's this invasive!"))
 			return
 

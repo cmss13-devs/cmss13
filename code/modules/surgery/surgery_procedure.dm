@@ -47,6 +47,8 @@
 
 /datum/surgery/New(surgery_target, surgery_location, surgery_limb)
 	..()
+	if(surgical_table_required)
+		lying_required = TRUE
 	if(surgery_target)
 		target = surgery_target
 		if(surgery_location)

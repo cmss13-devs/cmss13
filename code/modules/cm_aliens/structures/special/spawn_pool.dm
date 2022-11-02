@@ -10,6 +10,7 @@
 	var/surge_cooldown = 90 SECONDS
 	var/surge_incremental_reduction = 3 SECONDS
 	var/mob/melting_body
+	var/larva_leeway_time = 120 SECONDS //Amount of time larva get to evolve before going back in the pool.
 
 	luminosity = 3
 
@@ -107,11 +108,12 @@
 		return
 
 	for(var/mob/living/carbon/Xenomorph/Larva/L in range(2, src))
-		if(!L.ckey && L.poolable && !QDELETED(L))
-			visible_message(SPAN_XENODANGER("[L] quickly dives into the pool."))
-			linked_hive.stored_larva++
-			linked_hive.hive_ui.update_pooled_larva()
-			qdel(L)
+		if(L.hivenumber == linked_hive.hivenumber)
+			if((!L.ckey || (world.time >= (L.life_time_start + larva_leeway_time))) && L.poolable && !QDELETED(L))
+				visible_message(SPAN_XENODANGER("[L] quickly dives into the pool."))
+				linked_hive.stored_larva++
+				linked_hive.hive_ui.update_pooled_larva()
+				qdel(L)
 
 	if((last_larva_time + spawn_cooldown) < world.time && can_spawn_larva()) // every minute
 		last_larva_time = world.time

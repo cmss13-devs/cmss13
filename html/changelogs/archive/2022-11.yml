@@ -42,3 +42,8 @@
   totalepicness5:
   - bugfix: Fixed plasteel rod to metal rod alchemy with reinforced floors
   - spellcheck: Fixed some awful to_chats in reinforced floors.
+2022-11-02:
+  Geevies:
+  - rscadd: Implemented the Origin system framework, currently it only restricts A.W.
+      middle-names to the A.W. origin, and USCM gear in character set-up to USCM origins,
+      so no survivors, UPP, or CLF with USCM gear.

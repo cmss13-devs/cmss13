@@ -894,6 +894,7 @@
 			A.update_uses_left()
 			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 			A.update_icon()
+			update_icon()
 		return ..()
 	else if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
 		to_chat(user, SPAN_WARNING("[W] is not compatible with this system!"))
@@ -1003,6 +1004,7 @@
 		if(inner)
 			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
 			inner.reagents.clear_reagents()
+			update_icon()
 
 /obj/item/storage/pouch/document
 	name = "large document pouch"

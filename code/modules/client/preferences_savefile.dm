@@ -392,8 +392,7 @@
 	S["disabilities"]		>> disabilities
 	S["organ_data"]			>> organ_data
 	S["gear"]				>> gear
-	S["home_system"] 		>> home_system
-	S["citizenship"] 		>> citizenship
+	S["origin"] 			>> origin
 	S["faction"] 			>> faction
 	S["religion"] 			>> religion
 	S["traits"]				>> traits
@@ -464,8 +463,7 @@
 
 	//if(!skin_style) skin_style = "Default"
 
-	if(!home_system) home_system = "Unset"
-	if(!citizenship) citizenship = CITIZENSHIP_US
+	if(!origin) origin = ORIGIN_USCM
 	if(!faction)     faction =     "None"
 	if(!religion)    religion =    RELIGION_AGNOSTICISM
 	if(!preferred_squad)	preferred_squad = "None"
@@ -531,8 +529,7 @@
 	S["disabilities"]		<< disabilities
 	S["organ_data"]			<< organ_data
 	S["gear"]				<< gear
-	S["home_system"] 		<< home_system
-	S["citizenship"] 		<< citizenship
+	S["origin"] 			<< origin
 	S["faction"] 			<< faction
 	S["religion"] 			<< religion
 	S["traits"]				<< traits

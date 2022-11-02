@@ -23,61 +23,6 @@ Ashbaugh
 Atkinson
 Aultman
 Auman
-A.W. Adze
-A.W. Axe
-A.W. Bagh Nakha
-A.W. Bo
-A.W. Bola
-A.W. Bow
-A.W. Bowman
-A.W. Cannon
-A.W. Carbine
-A.W. Cestus
-A.W. Club
-A.W. Culverin
-A.W. Dagger
-A.W. Dao
-A.W. Derringer
-A.W. Dha
-A.W. Dussack
-A.W. Emeici
-A.W. Falchion
-A.W. Fan
-A.W. Flyssa
-A.W. Gauntlet
-A.W. Hammer
-A.W. Halberd
-A.W. Harquebus
-A.W. Hatchet
-A.W. Hwando
-A.W. Katar
-A.W. Kampilan
-A.W. Knuckles
-A.W. Lance
-A.W. Lancer
-A.W. Larim
-A.W. Maduvu
-A.W. Mace
-A.W. Maru
-A.W. Mauser
-A.W. Messer
-A.W. Mine
-A.W. Mubuchae
-A.W. Nyepel
-A.W. Onager
-A.W. Pata
-A.W. Pike
-A.W. Ram
-A.W. Saber
-A.W. Seax
-A.W. Shamshir
-A.W. Sickle
-A.W. Sling
-A.W. Spear
-A.W. Spears
-A.W. Staff
-A.W. Sword
-A.W. Tekko
 Baer
 Bailey
 Baker

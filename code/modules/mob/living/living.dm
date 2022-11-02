@@ -299,9 +299,15 @@
 		return 0
 
 /mob/living/forceMove(atom/destination)
-	if(pulling && !destination.Adjacent(pulling))
-	if(pulledby && !destination.Adjacent(pulledby))
-		pulledby.stop_pulling()
+	if(pulling)
+		var/pull_dist = get_dist(pulling, destination)
+		if(pulling.z != destination?.z || pull_dist < 0 || pull_dist > 1)
+			stop_pulling()
+	if(pulledby) // This being doubled up screams misdesign
+		var/pull_dist = get_dist(pulledby, destination)
+		if(pulledby.z != destination?.z || pull_dist < 0 || pull_dist > 1)
+			pulledby.stop_pulling()
+
 	if(buckled && destination != buckled.loc)
 		buckled.unbuckle()
 	. = ..()

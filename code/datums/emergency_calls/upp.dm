@@ -21,7 +21,7 @@
 /datum/emergency_call/upp/New()
 	..()
 	arrival_message = "T*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns )0r c|*$e @u*r*r$ c0m&*t."
-	objectives = "Listen to your superior officers. Gain any political leverage and secure intel from the [MAIN_SHIP_NAME]"
+	objectives = "Listen to your superior officers. Board the [MAIN_SHIP_NAME] and ensure the UA doesn't return to the Neroid sector!"
 
 
 /datum/emergency_call/upp/print_backstory(mob/living/carbon/human/M)
@@ -39,7 +39,7 @@
 	to_chat(M, SPAN_BOLD("For the past 14 months, you and the rest of the Smoldering Sons have been stationed at MV-35's only facility, the helium refinery, Altai Station."))
 	to_chat(M, SPAN_BOLD("As MV-35 and Altai Station are the only UPP-held zones in the Tychon's Rift sector for many lightyears, you have spent most of your military career holed up in crammed quarters in near darkness, waiting for supply shipments and transport escort deployments."))
 	to_chat(M, SPAN_BOLD("With the recent arrival of the enemy USCM battalion the 'Falling Falcons' and their flagship, the [MAIN_SHIP_NAME], the UPP has raised combat awareness in the sector."))
-	to_chat(M, SPAN_BOLD("In an effort to protect the vulnerable MV-35 from the encroaching USCM imperialists, battalion leadership has sent you to this distress signal to ward off the USCM. Avoid hostile contact, but ensure the USCM knows they aren't welcome."))
+	to_chat(M, SPAN_BOLD("Podpolkovnik Ganbaatar has sent your detachment to the [MAIN_SHIP_NAME] to wipe out the Falling Falcons while they're weak! Glory to the Smoldering Sons!"))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Podpolkovnik Ganbaatar.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))

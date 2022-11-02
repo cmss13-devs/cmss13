@@ -135,7 +135,7 @@
 	clear_tripwires()
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
-			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's hugger traps at [A.name] has been burnt!"))
+			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's facehugger traps at [A.name] has been burnt!"))
 
 /obj/effect/alien/resin/trap/proc/get_spray_type(var/level)
 	switch(level)

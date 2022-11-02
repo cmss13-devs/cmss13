@@ -163,13 +163,13 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.highcom_paygrades)))
 		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
 		return
-	
+
 	if(!card.registered_ref)
 		user.visible_message("ERROR: ID card not registered in USCM registry. Potential medal fraud detected.")
 		return
-	
+
 	var/real_owner_ref = card.registered_ref
-		
+
 	if(real_owner_ref != WEAKREF(user))
 		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
 		return
@@ -191,7 +191,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	for(var/mob/living/carbon/Xenomorph/xeno in hive.totalXenos)
 		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award self
 			continue
-		if (xeno.tier == 0) // Don't award larva or huggers
+		if (xeno.tier == 0) // Don't award larva or facehuggers
 			continue
 		if (!as_admin && istype(xeno.caste, /datum/caste_datum/queen)) // Don't award queens unless admin
 			continue
@@ -202,7 +202,7 @@ GLOBAL_LIST_EMPTY(jelly_awards)
 	for(var/mob/living/carbon/Xenomorph/xeno in hive.totalDeadXenos)
 		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award previous selves
 			continue
-		if (xeno.tier == 0) // Don't award larva or huggers
+		if (xeno.tier == 0) // Don't award larva or facehuggers
 			continue
 		if (!as_admin && istype(xeno.caste, /datum/caste_datum/queen)) // Don't award previous queens unless admin
 			continue

@@ -74,12 +74,8 @@
 		if (H.stat == DEAD)
 			return
 
-<<<<<<< refs/remotes/origin/Weakrefs
-	if(WEAKREF(A) in dot_cooldown_atoms)
-=======
 		if(WEAKREF(A) in dot_cooldown_atoms)
->>>>>>> Fixing Weakrefs
-		return
+			return
 
 	dot_cooldown_atoms += WEAKREF(A)
 	addtimer(CALLBACK(src, .proc/dot_cooldown_up, A), dot_cooldown_duration)

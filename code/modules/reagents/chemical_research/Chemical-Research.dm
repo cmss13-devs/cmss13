@@ -35,9 +35,9 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 
 /datum/chemical_data/proc/get_report(var/doc_type, var/doc_title)
 	var/obj/item/paper/research_report/report = null
-	for(var/i in chemical_data.research_documents[doc_type])
-		if(i["document_title"] == doc_title)
-			report = i["document"]
+	for(var/document_data in chemical_data.research_documents[doc_type])
+		if(document_data["document_title"] == doc_title)
+			report = document_data["document"]
 			break
 	return report
 
@@ -60,22 +60,22 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	var/list/docs = research_documents["[document_type]"]
 	// find the document, in all research documents
 	// the user might unpublish a different version to the published one
-	for(var/i in docs)
-		if(i["document_title"] == title)
-			published_to_remove += i
+	for(var/research_doc in docs)
+		if(research_doc["document_title"] == title)
+			published_to_remove += research_doc
 			break
 	// collect all documents which match the name of the doc to unpublish
 	var/chem_name = published_to_remove["document"]
 	var/list/all_published_references = list()
 	var/list/published_docs = research_publications["[document_type]"]
-	for(var/i in published_docs)
-		var/doc_name = i["document"]
+	for(var/published_doc in published_docs)
+		var/doc_name = published_doc["document"]
 		if(cmptext(doc_name, chem_name) == 1)
-			all_published_references += list(i)
+			all_published_references += list(published_doc)
 
 	// remove all published references
-	for(var/i in all_published_references)
-		published_docs -= list(i)
+	for(var/published_doc in all_published_references)
+		published_docs -= list(published_doc)
 	return TRUE
 
 /datum/chemical_data/proc/save_new_properties(var/list/properties)

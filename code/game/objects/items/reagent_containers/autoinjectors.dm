@@ -31,6 +31,11 @@
 		verbs += /obj/item/storage/pill_bottle/verb/set_maptext
 	update_icon()
 
+/obj/item/reagent_container/hypospray/autoinjector/proc/update_uses_left()
+	var/UL = reagents.total_volume / amount_per_transfer_from_this
+	UL = round(UL) == UL ? UL : round(UL) + 1
+	uses_left = UL
+
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/M, mob/user)
 	if(uses_left <= 0)
 		return

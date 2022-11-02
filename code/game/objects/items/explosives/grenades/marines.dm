@@ -469,8 +469,8 @@
 		M.Daze(dazed_time * 0.5)
 
 	if(M.mob_size >= MOB_SIZE_BIG)//big xenos not KO'ed
-		M.Slow(slowdown_time * 1.5)//They are slowed more :trol:
-		M.Daze(dazed_time * 1.5)
+		M.Slow(slowdown_time * 1.2)//They are slowed more :trol:
+		M.Daze(dazed_time * 1.2)
 		return
 
 	M.KnockDown(knockout_time)//but little xenos and humans are

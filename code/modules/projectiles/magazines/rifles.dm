@@ -291,7 +291,7 @@
 	w_class = SIZE_MEDIUM
 
 //-------------------------------------------------------
-////NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE
+// NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE
 
 /obj/item/ammo_magazine/rifle/nsg23
 	name = "\improper NSG 23 magazine (10x24mm)"

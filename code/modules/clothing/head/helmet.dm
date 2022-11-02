@@ -198,7 +198,7 @@
 //=======================================================================\\
 
 GLOBAL_LIST_INIT(allowed_helmet_items, list(
-	///// TOBACCO-RELATED
+	// TOBACCO-RELATED
 	/obj/item/tool/lighter/random = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/tool/lighter/zippo = "helmet_lighter_zippo",
 	/obj/item/storage/box/matches = "helmet_matches",
@@ -212,7 +212,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/storage/fancy/cigarettes/lucky_strikes_4 = "hat_cig_ls_mre",
 	/obj/item/storage/fancy/cigar/matchbook = "helmet_matches_mre",
 
-	///// CARDS
+	// CARDS
 	/obj/item/toy/deck = "helmet_card_deck",
 	/obj/item/toy/deck/uno = "helmet_card_uno",
 	/obj/item/toy/handcard = "helmet_card_card",
@@ -222,7 +222,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/toy/handcard/uno_reverse_yellow = "yellow_reverse",
 	/obj/item/toy/handcard/uno_reverse_purple = "purple_reverse",
 
-	///// FOOD AND SNACKS
+	// FOOD AND SNACKS
 	/obj/item/reagent_container/food/drinks/flask = "helmet_flask",
 	/obj/item/reagent_container/food/drinks/flask/marine = "helmet_flask",
 	/obj/item/reagent_container/food/snacks/eat_bar = "helmet_snack_eat",
@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/reagent_container/food/snacks/wrapped/barcardine = "barcardine-bars",
 
 
-	///// EYEWEAR
+	// EYEWEAR
 	/obj/item/clothing/glasses/mgoggles = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/prescription = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/black = HELMET_GARB_RELAY_ICON_STATE,
@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/glasses/eyepatch = "eyepatch",
 	/obj/item/clothing/glasses/regular/hipster = "persc-glasses",
 
-	///// WALKMAN AND CASSETTES
+	// WALKMAN AND CASSETTES
 	/obj/item/device/walkman = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/device/cassette_tape/pop1 = "cassette_blue",
 	/obj/item/device/cassette_tape/pop2 = "cassette_rainbow",
@@ -265,7 +265,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/device/cassette_tape/ocean = "cassette_ocean",
 	/obj/item/storage/pouch/cassette = "cassette_pouch",
 
-	///// PREFERENCES GEAR
+	// PREFERENCES GEAR
 	/obj/item/prop/helmetgarb/gunoil = "gunoil",
 	/obj/item/prop/helmetgarb/netting = "netting",
 	/obj/item/prop/helmetgarb/spent_buckshot = "spent_buckshot",
@@ -291,7 +291,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/bullet_pipe = "bullet_pipe",
 	/obj/item/prop/helmetgarb/spacejam_tickets = "tickets_to_space_jam",
 
-	///// MISC
+	// MISC
 	/obj/item/tool/pen = "helmet_pen_black",
 	/obj/item/tool/pen/blue = "helmet_pen_blue",
 	/obj/item/tool/pen/red = "helmet_pen_red",
@@ -317,7 +317,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/riot_shield = "helmet_riot_shield",
 	/obj/item/attachable/flashlight = HELMET_GARB_RELAY_ICON_STATE,
 
-	///// MEDICAL
+	// MEDICAL
 	/obj/item/stack/medical/bruise_pack ="brutepack (bandages)",
 	/obj/item/stack/medical/ointment = "ointment",
 	/obj/item/tool/surgery/scalpel = "scalpel",

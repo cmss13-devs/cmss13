@@ -85,8 +85,7 @@
 	..()
 
 
-///////////CM largecrates ///////////////////////
-//Possibly the most generically named procs in history. congrats
+// CM largecrates
 /obj/structure/largecrate/random
 	name = "supply crate"
 	var/num_things = 0

@@ -55,3 +55,5 @@
 #define VEHICLE_CLASS_HEAVY		(1<<4)		//heavy class armor (tank)
 
 #define TANK_POPLOCK				90
+
+#define COOLDOWN_VEHICLE_BROADCASTER	5 SECONDS

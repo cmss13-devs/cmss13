@@ -337,13 +337,13 @@
 	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/V = user.interactee
-	if(!istype(V))
+	var/obj/vehicle/multitile/Vehicle = user.interactee
+	if(!istype(Vehicle))
 		return
 
 	var/seat
-	for(var/vehicle_seat in V.seats)
-		if(V.seats[vehicle_seat] == user)
+	for(var/vehicle_seat in Vehicle.seats)
+		if(Vehicle.seats[vehicle_seat] == user)
 			seat = vehicle_seat
 			break
 	if(!seat)
@@ -356,25 +356,25 @@
 	if(user.silent)
 		return
 
-	if(V.health < initial(V.health) * 0.5)
-		to_chat(user, SPAN_WARNING("\The [V]'s hull is too damaged to operate!"))
+	if(Vehicle.health < initial(Vehicle.health) * 0.5)
+		to_chat(user, SPAN_WARNING("\The [Vehicle]'s hull is too damaged to operate!"))
 
-	if(!V.broadcaster_available)
-		to_chat(user, SPAN_DANGER("Broadcaster was recently used. Wait a bit!"))
+	if(!COOLDOWN_FINISHED(Vehicle, next_broadcasting))
+		to_chat(user, SPAN_DANGER("Broadcaster was recently used. Wait [round(COOLDOWN_TIMELEFT(Vehicle, next_broadcasting)/10)] seconds!"))
 		return
 
 	var/message = strip_html(input(user, "Enter a message to broadcast", "Vehicle broadcaster", null)  as text)
 	if(!message)
 		return
 
-	if(!V.broadcaster_available)
-		to_chat(user, SPAN_DANGER("Broadcaster was recently used. Wait a bit!"))
+	if(!COOLDOWN_FINISHED(Vehicle, next_broadcasting))
+		to_chat(user, SPAN_DANGER("Broadcaster was recently used. Wait [round(COOLDOWN_TIMELEFT(Vehicle, next_broadcasting)/10)] seconds!"))
 		return
 
-	if(V.health < initial(V.health) * 0.5)
-		to_chat(user, SPAN_WARNING("\The [V]'s hull is too damaged to operate!"))
+	if(Vehicle.health < initial(Vehicle.health) * 0.5)
+		to_chat(user, SPAN_WARNING("\The [Vehicle]'s hull is too damaged to operate!"))
 
-	if(user.interactee != V)
+	if(user.interactee != Vehicle)
 		return
 
 	//we simulate actually speaking into microphone, so those in interior can also hear it.
@@ -383,24 +383,22 @@
 	//then we capitalize and proceed with bradcasting part
 	message = capitalize(message)
 
-	log_admin("[key_name(user)] used \a [V]'s broadcaster to say: >[message]<")
+	log_admin("[key_name(user)] used \a [Vehicle]'s broadcaster to say: >[message]<")
 
 	if(user.stat == CONSCIOUS)
-		var/list/mob/living/carbon/human/recipients = viewers(8, V) // slow but we need it
+		COOLDOWN_START(Vehicle, next_broadcasting, COOLDOWN_VEHICLE_BROADCASTER)
+		var/list/mob/living/carbon/human/recipients = viewers(8, Vehicle) // slow but we need it
 		for(var/mob/living/carbon/human/O in recipients)
 			if(O.species && O.species.name == "Yautja") //NOPE
-				O.show_message("\The [V] broadcasts something, but you can't understand it.")
+				O.show_message("\The [Vehicle] broadcasts something, but you can't understand it.")
 				continue
-			O.show_message("\The <B>[V]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]",2) // 2 stands for hearable message
+			O.show_message("\The <B>[Vehicle]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]",2) // 2 stands for hearable message
 
-		for(seat in V.seats)
-			if(ishuman(V.seats[seat]))
-				recipients += V.seats[seat]
+		for(seat in Vehicle.seats)
+			if(ishuman(Vehicle.seats[seat]))
+				recipients += Vehicle.seats[seat]
 
-		user.langchat_vehicle_broadcast(message, recipients, user.get_default_language(), V)
-
-		V.broadcaster_available = FALSE
-		addtimer(VARSET_CALLBACK(V, broadcaster_available, TRUE), 5 SECONDS)
+		user.langchat_vehicle_broadcast(message, recipients, user.get_default_language(), Vehicle)
 
 //Support gunner verbs
 

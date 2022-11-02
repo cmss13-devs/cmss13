@@ -31,7 +31,7 @@
 	var/next_honk = 0	//to prevent spamming
 
 	//broadcaster
-	var/broadcaster_available = TRUE
+	COOLDOWN_DECLARE(next_broadcasting)
 
 	// List of verbs to give when a mob is seated in each seat type
 	var/list/seat_verbs

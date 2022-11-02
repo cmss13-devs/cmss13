@@ -152,9 +152,9 @@
 		addtimer(CALLBACK(src, /atom.proc/langchat_drop_image, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 //used for broadcasting from a vehicle
-/mob/proc/langchat_vehicle_broadcast(message, var/list/listeners, language, var/obj/vehicle/multitile/V)
+/mob/proc/langchat_vehicle_broadcast(message, var/list/listeners, language, var/obj/vehicle/multitile/Vehicle)
 
-	if(!V || interactee != V)
+	if(!Vehicle || interactee != Vehicle)
 		return
 
 	langchat_drop_image()

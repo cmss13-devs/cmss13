@@ -5,6 +5,9 @@
 
 #define COOLDOWN_DECLARE(cd_index) var/##cd_index = 0
 
+//cd_source is an atom that is uses this cooldown
+//cd_index is the var that we declared where next use time (current world.time + cd_time) is stored
+//cd_time is the actual time of cooldown
 #define COOLDOWN_START(cd_source, cd_index, cd_time) (cd_source.cd_index = world.time + (cd_time))
 
 //Returns true if the cooldown has run its course, false otherwise

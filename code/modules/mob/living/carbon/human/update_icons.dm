@@ -201,6 +201,7 @@ There are several things that need to be remembered:
 					var/icon/temp_hair = icon(hair_style.icon, "[hair_style.icon_state]_s")
 					temp_hair.Blend(temp, ICON_SUBTRACT)
 					gradient_overlay.icon = temp_hair
+					gradient_overlay.layer = -HAIR_GRADIENT_LAYER
 					gradient_overlay.color = list(null, null, null, null, rgb(r_gradient, g_gradient, b_gradient))
 					overlays_standing[HAIR_GRADIENT_LAYER] = gradient_overlay
 					apply_overlay(HAIR_GRADIENT_LAYER)

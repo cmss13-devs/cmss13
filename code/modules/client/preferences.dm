@@ -327,13 +327,14 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "</a>"
 			dat += "<br>"
 
-			dat += "<b>Hair Gradient:</b> "
-			dat += "<a href='?_src_=prefs;preference=grad_style;task=input'><b>[grad_style]</b></a>"
-			dat += " | "
-			dat += "<a href='?_src_=prefs;preference=grad;task=input'>"
-			dat += "<b>Color</b> <span class='square' style='background-color: #[num2hex(r_gradient, 2)][num2hex(g_gradient, 2)][num2hex(b_gradient)];'></span>"
-			dat += "</a>"
-			dat += "<br>"
+			if(/datum/character_trait/hair_dye in traits)
+				dat += "<b>Hair Gradient:</b> "
+				dat += "<a href='?_src_=prefs;preference=grad_style;task=input'><b>[grad_style]</b></a>"
+				dat += " | "
+				dat += "<a href='?_src_=prefs;preference=grad;task=input'>"
+				dat += "<b>Color</b> <span class='square' style='background-color: #[num2hex(r_gradient, 2)][num2hex(g_gradient, 2)][num2hex(b_gradient)];'></span>"
+				dat += "</a>"
+				dat += "<br>"
 
 			dat += "<b>Facial Hair:</b> "
 			dat += "<a href='?_src_=prefs;preference=f_style;task=input'><b>[f_style]</b></a>"
@@ -960,6 +961,10 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/datum/character_trait/CT = GLOB.character_traits[trait]
 					CT?.try_give_trait(src)
 					open_character_traits(user, trait_group)
+					if(CT.refresh_choices)
+						ShowChoices(user)
+					if(CT.refresh_mannequin)
+						update_preview_icon()
 					return TRUE
 				if("remove_trait")
 					var/trait_group = text2path(href_list["trait_group"])
@@ -969,6 +974,10 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/datum/character_trait/CT = GLOB.character_traits[trait]
 					CT?.try_remove_trait(src)
 					open_character_traits(user, trait_group)
+					if(CT.refresh_choices)
+						ShowChoices(user)
+					if(CT.refresh_mannequin)
+						update_preview_icon()
 					return TRUE
 
 		if("toggle_job_gear")
@@ -1724,9 +1733,16 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.g_hair = g_hair
 	character.b_hair = b_hair
 
-	character.r_gradient = r_gradient
-	character.g_gradient = g_gradient
-	character.b_gradient = b_gradient
+	if(/datum/character_trait/hair_dye in traits)
+		character.r_gradient = r_gradient
+		character.g_gradient = g_gradient
+		character.b_gradient = b_gradient
+		character.grad_style = grad_style
+	else
+		character.r_gradient = initial(character.r_gradient)
+		character.g_gradient = initial(character.g_gradient)
+		character.b_gradient = initial(character.b_gradient)
+		character.grad_style = initial(character.grad_style)
 
 	character.r_facial = r_facial
 	character.g_facial = g_facial
@@ -1737,7 +1753,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.b_skin = b_skin
 
 	character.h_style = h_style
-	character.grad_style = grad_style
 	character.f_style = f_style
 
 	character.home_system = home_system
@@ -1799,9 +1814,16 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.g_hair = g_hair
 	character.b_hair = b_hair
 
-	character.r_gradient = r_gradient
-	character.g_gradient = g_gradient
-	character.b_gradient = b_gradient
+	if(/datum/character_trait/hair_dye in traits)
+		character.r_gradient = r_gradient
+		character.g_gradient = g_gradient
+		character.b_gradient = b_gradient
+		character.grad_style = grad_style
+	else
+		character.r_gradient = initial(character.r_gradient)
+		character.g_gradient = initial(character.g_gradient)
+		character.b_gradient = initial(character.b_gradient)
+		character.grad_style = initial(character.grad_style)
 
 	character.r_facial = r_facial
 	character.g_facial = g_facial
@@ -1812,7 +1834,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.b_skin = b_skin
 
 	character.h_style = h_style
-	character.grad_style = grad_style
 	character.f_style = f_style
 
 	// Destroy/cyborgize organs

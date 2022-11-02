@@ -1250,6 +1250,7 @@
 #include "code\modules\asset_cache\asset_list_items.dm"
 #include "code\modules\asset_cache\transports\asset_transport.dm"
 #include "code\modules\character_traits\character_trait.dm"
+#include "code\modules\character_traits\hair_dye.dm"
 #include "code\modules\character_traits\languages.dm"
 #include "code\modules\character_traits\skills.dm"
 #include "code\modules\clans\clan.dm"

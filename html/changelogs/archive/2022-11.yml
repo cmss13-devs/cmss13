@@ -50,3 +50,4 @@
   usnpeepoo:
   - spellcheck: Playable hugger join message is more clearer
   - code_imp: Hugger is now called "facehugger" in the code
+  - bugfix: Pooling bodies into an eggmorpher disrupts grabs automatically

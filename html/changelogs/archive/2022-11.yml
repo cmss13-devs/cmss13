@@ -47,6 +47,8 @@
   - rscadd: Implemented the Origin system framework, currently it only restricts A.W.
       middle-names to the A.W. origin, and USCM gear in character set-up to USCM origins,
       so no survivors, UPP, or CLF with USCM gear.
+  ThePiachu:
+  - spellcheck: Fixed an internal typo of Bicaridine Pill Packet.
   usnpeepoo:
   - spellcheck: Playable hugger join message is more clearer
   - code_imp: Hugger is now called "facehugger" in the code

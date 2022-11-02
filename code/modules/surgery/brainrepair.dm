@@ -9,6 +9,7 @@
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM //Brain doesn't actually have much in the way of nerve endings.
+	surgical_table_required = TRUE
 	steps = list(/datum/surgery_step/remove_bone_chips)
 	var/dmg_min = 0
 	var/dmg_max = BONECHIPS_MAX_DAMAGE
@@ -17,7 +18,7 @@
 	var/datum/internal_organ/brain/B = patient.internal_organs_by_name["brain"]
 	if(!B || B.damage <= dmg_min || B.robotic == ORGAN_ROBOT)
 		return FALSE
-	if(dmg_max && B.damage > dmg_max)	
+	if(dmg_max && B.damage > dmg_max)
 		return FALSE
 	return TRUE
 

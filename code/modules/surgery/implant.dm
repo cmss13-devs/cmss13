@@ -11,6 +11,7 @@
 	possible_locs = list("chest", "head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
+	surgical_table_required = TRUE
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/create_cavity,

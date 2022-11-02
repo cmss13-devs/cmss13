@@ -8,6 +8,7 @@
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
+	surgical_table_required = TRUE
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(/datum/surgery_step/fix_vein)
 

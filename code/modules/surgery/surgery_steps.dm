@@ -103,7 +103,7 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 
 		step_duration *= surface_modifier
 
-		if(surface_modifier < SURGERY_SURFACE_MULT_IDEAL && (SURGERY_DEPTH_DEEP in surgery.invasiveness))
+		if(surgery.surgical_table_required && surface_modifier < SURGERY_SURFACE_MULT_IDEAL)
 			to_chat(user, SPAN_WARNING("You need a better surgical theatre for a procedure that's this invasive!"))
 			return
 

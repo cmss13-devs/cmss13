@@ -475,6 +475,7 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 	possible_locs = list("chest","head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
+	surgical_table_required = TRUE
 	steps = list(
 		/datum/surgery_step/close_encased_step,
 		/datum/surgery_step/open_encased_step,

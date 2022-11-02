@@ -27,6 +27,8 @@
 	var/requires_bodypart = TRUE
 	///Does the victim needs to be lying down? Surgeries that can be performed while standing aren't affected by the surface the patient is on.
 	var/lying_required = TRUE
+	/// Does the victim need to be on an actual surgical table?
+	var/surgical_table_required = FALSE
 	///Can the surgery be performed on yourself?
 	var/self_operable = FALSE
 	///How strong a level of anesthesia is needed to avoid risking pain causing a step to fail?

@@ -90,9 +90,9 @@
 	langchat_image.maptext_width = LANGCHAT_WIDTH
 
 	langchat_listeners = listeners
-	for(var/mob/M in langchat_listeners)
-		if(langchat_client_enabled(M) && !M.ear_deaf && (skip_language_check || M.say_understands(src, language)))
-			M.client.images += langchat_image
+	for(var/mob/Listener in langchat_listeners)
+		if(langchat_client_enabled(Listener) && !Listener.ear_deaf && (skip_language_check || Listener.say_understands(src, language)))
+			Listener.client.images += langchat_image
 
 	if(isturf(loc))
 		langchat_image.loc = src
@@ -136,9 +136,9 @@
 	langchat_image.maptext_width = LANGCHAT_WIDTH * 2
 
 	langchat_listeners = listeners
-	for(var/mob/M in langchat_listeners)
-		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
-			M.client.images += langchat_image
+	for(var/mob/Listener in langchat_listeners)
+		if(langchat_client_enabled(Listener) && !Listener.ear_deaf && Listener.say_understands(src, language))
+			Listener.client.images += langchat_image
 
 	if(isturf(loc))
 		langchat_image.loc = src
@@ -175,9 +175,9 @@
 	langchat_image.maptext_width = LANGCHAT_WIDTH * 2
 
 	langchat_listeners = listeners
-	for(var/mob/M in langchat_listeners)
-		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
-			M.client.images += langchat_image
+	for(var/mob/Listener in langchat_listeners)
+		if(langchat_client_enabled(Listener) && !Listener.ear_deaf && Listener.say_understands(src, language))
+			Listener.client.images += langchat_image
 
 	langchat_image.loc = interactee
 	langchat_image.maptext_y += 32

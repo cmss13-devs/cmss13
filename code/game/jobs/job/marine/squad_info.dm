@@ -26,6 +26,9 @@
 			return H
 	return null
 
+/datum/squad/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/ranks))
+
 /datum/squad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -36,32 +39,37 @@
 			var/target_team = params["target_ft"]
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
 			if(!target)
-				world.log << "Failed to find [target_marine]"
 				return
 
-			assign_fireteam(target_team, target)
+			assign_fireteam(target_team, target, TRUE)
 			return
+
 		if ("unassign_ft")
 			var/target_marine = params["target_marine"]
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
 			if(!target)
-				world.log << "Failed to find [target_marine]"
 				return
-			unassign_fireteam(target, FALSE)
+			unassign_fireteam(target, TRUE)
+			return
+
 		if ("demote_ftl")
-			var/target_marine = params["target_marine"]
-			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
-			if(!target)
-				world.log << "Failed to find [target_marine]"
-				return
-			unassign_ft_leader(target, FALSE)
+			var/target_team = params["target_ft"]
+			unassign_ft_leader(target_team, FALSE, TRUE)
+			return
+
 		if ("promote_ftl")
 			var/target_marine = params["target_marine"]
+			var/target_team = params["target_ft"]
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
 			if(!target)
-				world.log << "Failed to find [target_marine]"
 				return
-			unassign_ft_leader(target, FALSE)
+			assign_ft_leader(target_team, target, TRUE)
+			return
+
+		if ("disband_ft")
+			var/target_team = params["target_ft"]
+			unassign_ft_leader(target_team, TRUE, TRUE)
+			return
 
 //used once on first opening
 /datum/squad/proc/update_all_squad_info()

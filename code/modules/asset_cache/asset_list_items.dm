@@ -256,6 +256,35 @@
 		Insert("[icon_name]_big", iconBig)
 	return ..()
 
+/datum/asset/spritesheet/ranks
+	name = "squad_ranks"
+
+/datum/asset/spritesheet/ranks/register()
+	world.log << "register rank spritesheet"
+	var/icon_file = "icon/mob/hud/marine_hud.dmi"
+	var/list/squadIcons = squad_colors
+
+	// squad marine
+	var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
+
+	var/list/icon_data = list(
+		list("Mar", "hudsquad_ass"),
+		list("Eng", "hudsquad_engi"),
+		list("Med", "hudsquad_med"),
+		list("SG", "hudsquad_gun"),
+		list("Spc", "hudsquad_spec"),
+		list("RTO", "hudsquad_rto"),
+		list("SL", "hudsquad_leader"),
+	)
+
+	for(var/i in icon_data)
+
+		var/list/iconref = i
+		world.log << "icon for [iconref[1]]"
+		var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)
+		squad_icon.Blend(background, ICON_UNDERLAY)
+		Insert(iconref[1], squad_icon)
+
 /datum/asset/spritesheet/vending_products
 	name = "vending"
 

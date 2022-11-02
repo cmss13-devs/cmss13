@@ -1,6 +1,42 @@
 @use '../base.scss';
 @use '../colors.scss';
 @use '../functions.scss' as *;
+
+.FireteamBox {
+  border: 1px solid base.$color-fg;
+  padding: 6px;
+  margin-top: 6px;
+  width: 30vw;
+
+  .Title {
+    position: relative;
+    display: inline-block;
+    height: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -16px;
+    background-color: base.$color-bg;
+    border: 1px solid base.$color-fg;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-weight: bold;
+  }
+}
+
+.Test {
+  border: 5px solid red;
+}
+
+.FireteamMembersTable {
+  td {
+    border: 1px solid base.$color-fg;
+    font-weight: bold;
+    padding: 1px;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
 /*
 .SLIcon {
   width: 16px;

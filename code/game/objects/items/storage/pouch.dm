@@ -857,6 +857,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
 	. = ..()
+	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)

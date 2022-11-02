@@ -20,8 +20,9 @@
 	return data
 
 /datum/squad/proc/get_marine_from_name(var/name)
-	for(var/mob/living/carbon/human/H in squad_info_uis)
-		if(H.name == target_marine)
+	for(var/marine in marines_list)
+		var/mob/living/carbon/human/H = marine
+		if(H.name == name)
 			return H
 	return null
 
@@ -29,7 +30,6 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = usr
 	switch (action)
 		if ("assign_ft")
 			var/target_marine = params["target_marine"]
@@ -48,7 +48,14 @@
 				world.log << "Failed to find [target_marine]"
 				return
 			unassign_fireteam(target, FALSE)
-		if ("unassign_ftl")
+		if ("demote_ftl")
+			var/target_marine = params["target_marine"]
+			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
+			if(!target)
+				world.log << "Failed to find [target_marine]"
+				return
+			unassign_ft_leader(target, FALSE)
+		if ("promote_ftl")
 			var/target_marine = params["target_marine"]
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
 			if(!target)

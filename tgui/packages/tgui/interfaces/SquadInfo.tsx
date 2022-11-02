@@ -9,6 +9,7 @@ interface SquadLeadEntry {
   observer: number;
 }
 
+
 interface SquadMarineEntry {
   name: string;
   med: number;
@@ -52,9 +53,10 @@ const SquadLeader = (_, context) => {
 };
 
 const FireTeam = (props: {ft: string}, context) => {
-  const { data } = useBackend<SquadProps>(context);
+  const { data, act } = useBackend<SquadProps>(context);
   const fireteam: FireTeamEntry = data.fireteams[props.ft];
   const members: SquadMarineEntry[] = Object.keys(fireteam.mar).map(x => fireteam.mar[x]);
+  const fireteamLead = fireteam.tl;
   return (
     <div>
       <Stack vertical>
@@ -62,7 +64,11 @@ const FireTeam = (props: {ft: string}, context) => {
           {fireteam.name}
         </Stack.Item>
         <Stack.Item>
-          Team Lead: {fireteam.tl?.name} <Button>Demote</Button>
+          Team Lead: {fireteam.tl?.name}
+          {fireteam.tl?.name !== 'Not assigned'
+            && (
+              <Button onClick={() => act('demote_ftl', {target_marine: fireteam.tl?.name})}>Demote</Button>
+            )}
         </Stack.Item>
         <Stack.Item>
           <Table>
@@ -116,11 +122,18 @@ const FireTeamMember = (props: {member: SquadMarineEntry, team: string}, context
         )}
       {props.team !== "unassigned"
         && (
-          <TableCell>
-            <Button onClick={() => act('unassign_ft', { target_marine: props.member.name })}>
-                Unassign
-            </Button>
-          </TableCell>
+          <>
+            <TableCell>
+              <Button onClick={() => act('promote_ftl', { target_ft: props.team, target_marine: props.member.name })}>
+                Promote
+              </Button>
+            </TableCell>
+            <TableCell>
+              <Button onClick={() => act('unassign_ft', { target_marine: props.member.name })}>
+                  Unassign
+              </Button>
+            </TableCell>
+          </>
         )}
       <TableCell />
     </TableRow>);

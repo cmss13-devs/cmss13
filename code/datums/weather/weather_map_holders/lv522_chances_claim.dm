@@ -12,8 +12,8 @@
 		/datum/weather_event/heavy_rain/lv522
 	)
 
-/datum/weather_ss_map_holder/lv624/should_affect_area(var/area/A)
+/datum/weather_ss_map_holder/lv522_chances_claim/should_affect_area(var/area/A)
 	return !CEILING_IS_PROTECTED(A.ceiling, CEILING_GLASS)
 
-/datum/weather_ss_map_holder/lv522/should_start_event()
+/datum/weather_ss_map_holder/lv522_chances_claim/should_start_event()
 	return TRUE

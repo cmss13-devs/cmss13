@@ -5,7 +5,6 @@ import { Box, Button, Flex, Section, Stack, Table } from '../components';
 import { BoxProps } from '../components/Box';
 import { TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
-import { logger } from '../logging';
 
 interface SquadLeadEntry {
   name: string;
@@ -75,15 +74,21 @@ const FireTeamLead = (props: {fireteam: FireTeamEntry, ft: string}, context) => 
 };
 interface FireteamBoxProps extends BoxProps {
   name: string;
+  isEmpty: boolean;
 }
 
 const FireteamBox = (props: FireteamBoxProps, context) => {
+
   return (
-    <Box className="FireteamBox">
+    <Box className={classes(["FireteamBox", props.isEmpty && 'emptyFireteamBox'])}>
       <div className="Title">
         {props.name}
       </div>
-      {props.children}
+      {!props.isEmpty
+        && (
+          <div>
+            {props.children}
+          </div>)}
     </Box>
   );
 };
@@ -96,15 +101,14 @@ const FireTeam = (props: {ft: string}, context) => {
     && (fireteam.tl instanceof Array
       || fireteam.tl?.name === "Not assigned"
       || fireteam.tl?.name === "Unassigned");
+
+  if (isEmpty) {
+    return null;
+  }
+
   return (
-    <FireteamBox name={fireteam.name}>
+    <FireteamBox name={fireteam.name} isEmpty={isEmpty}>
       <Stack vertical>
-        {isEmpty
-        && (
-          <Stack.Item>
-            <span>Fireteam is empty.</span>
-          </Stack.Item>
-        )}
         {!isEmpty
           && (
             <>
@@ -165,7 +169,7 @@ const FireTeamMember = (props: {member: SquadMarineEntry, team: string, fireteam
       {props.team === "unassigned"
         && (
           <TableCell>
-            <Flex justify="space-around">
+            <Flex justify="space-around" fill>
               <Flex.Item>
                 <Button onClick={() => act('assign_ft', assignFT1)}>
                   FT1
@@ -224,7 +228,7 @@ const UnassignedMembers = (_, context) => {
                 </TableCell>
               </TableRow>
               {unassignedMembers.map(x => (
-                <TableRow>
+                <TableRow key={x.name}>
                   <FireTeamMember member={x} key={x.name} team="unassigned" />
                 </TableRow>))}
             </Table>
@@ -237,27 +241,28 @@ export const SquadInfo = (_, context) => {
   return (
     <Window width={680} height={500} theme="ntos">
       <Window.Content>
-        <Stack vertical>
-          <Stack.Item>
-            <Section title={`${data.squad} Squad Leader: ${data.sl?.name ?? 'None'}`}>
-              <Flex justify="space-between">
-                <Flex.Item>
-                  <FireTeam ft="FT1" />
-                </Flex.Item>
-                <Flex.Item>
-                  <FireTeam ft="FT2" />
-                </Flex.Item>
-                <Flex.Item>
-                  <FireTeam ft="FT3" />
-                </Flex.Item>
-              </Flex>
-            </Section>
-          </Stack.Item>
-          <hr />
-          <Stack.Item>
-            <UnassignedMembers />
-          </Stack.Item>
-        </Stack>
+        <Section title={`${data.squad} Squad Leader: ${data.sl?.name ?? 'None'}`}>
+          <Flex fill justify="space-around">
+            <Flex.Item>
+              <Section title="Fireteams">
+                <Flex justify="space-between" direction="column">
+                  <Flex.Item>
+                    <FireTeam ft="FT1" />
+                  </Flex.Item>
+                  <Flex.Item>
+                    <FireTeam ft="FT2" />
+                  </Flex.Item>
+                  <Flex.Item>
+                    <FireTeam ft="FT3" />
+                  </Flex.Item>
+                </Flex>
+              </Section>
+            </Flex.Item>
+            <Flex.Item>
+              <UnassignedMembers />
+            </Flex.Item>
+          </Flex>
+        </Section>
       </Window.Content>
     </Window>);
 };

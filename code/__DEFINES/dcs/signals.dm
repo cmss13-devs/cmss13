@@ -166,7 +166,6 @@
 
 
 //Machine Guns (m56D, M2C)
-#define COMSIG_MOB_MG_ENTERED "mob_mg_enter"
 #define COMSIG_MOB_MG_EXIT "mob_mg_exit"
 
 // Return a nonzero value to cancel these actions

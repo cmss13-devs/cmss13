@@ -869,8 +869,6 @@
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
 	RegisterSignal(user, COMSIG_MOB_RESISTED, .proc/exit_interaction)
 	RegisterSignal(user, COMSIG_MOB_MG_EXIT, .proc/exit_interaction)
-
-	user.frozen = TRUE
 	flags_atom |= RELAY_CLICK
 	user.status_flags |= IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] mans \the [src]."),SPAN_NOTICE("You man \the [src], locked and loaded!"))
@@ -886,6 +884,7 @@
 	flags_atom &= ~RELAY_CLICK
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
+	user.unfreeze()
 	user.reset_view(null)
 	user.forceMove(get_step(src, reverse_direction(src.dir)))
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
@@ -895,14 +894,11 @@
 	if(operator == user) //We have no operator now
 		operator = null
 	remove_action(user, /datum/action/human_action/mg_exit)
-
 	UnregisterSignal(user, list(
 		COMSIG_MOB_MG_EXIT,
 		COMSIG_MOB_RESISTED
 	))
 
-	user.update_canmove()
-	user.unfreeze()
 
 /obj/structure/machinery/m56d_hmg/proc/update_pixels(var/mob/user, var/mounting = TRUE)
 	if(mounting)
@@ -1643,12 +1639,6 @@
 	update_pixels(user)
 	playsound(src.loc, 'sound/items/m56dauto_rotate.ogg', 25, 1)
 	to_chat(user, SPAN_NOTICE("You rotate [src], using the tripod to support your pivoting movement."))
-
-
-
-
-/obj/structure/machinery/m56d_hmg/auto/exit_interaction(mob/user)
-	..()
 
 
 /obj/structure/machinery/m56d_hmg/auto/proc/disable_interaction(mob/user, NewLoc, direction)

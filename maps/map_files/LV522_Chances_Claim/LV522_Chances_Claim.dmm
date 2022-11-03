@@ -68,7 +68,7 @@
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "acq" = (
 /obj/structure/prop/vehicles/crawler{
 	dir = 8;
@@ -155,6 +155,9 @@
 	tag = "icon-darkbrownfull2"
 	},
 /area/lv522/indoors/lone_buildings/spaceport)
+"aep" = (
+/turf/closed/wall/shiva/prefabricated,
+/area/lv522/landing_zone_2/ceiling)
 "aeq" = (
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
@@ -1406,7 +1409,7 @@
 "aTw" = (
 /obj/structure/bed/chair,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "aTA" = (
 /obj/structure/platform{
 	dir = 1
@@ -1911,6 +1914,9 @@
 	tag = "icon-darkbrownfull2"
 	},
 /area/lv522/indoors/c_block/garage)
+"bgS" = (
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/landing_zone_2/ceiling)
 "bgV" = (
 /obj/structure/cargo_container{
 	health = 5000;
@@ -2130,7 +2136,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "bnf" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison{
@@ -6117,7 +6123,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "dkL" = (
 /obj/structure/cargo_container/horizontal{
 	icon_state = "0,1";
@@ -6367,7 +6373,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "doP" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -9682,7 +9688,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "eQB" = (
 /obj/structure/machinery/portable_atmospherics/canister/phoron,
 /turf/open/floor/corsat{
@@ -9774,7 +9780,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "eSY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -10188,7 +10194,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "feF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -11748,7 +11754,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "fPa" = (
 /obj/structure/prop/server_equipment/yutani_server{
 	density = 0;
@@ -14024,7 +14030,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "gTw" = (
 /turf/open/floor/corsat{
 	dir = 6;
@@ -14166,6 +14172,9 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
+"gVA" = (
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/lv522/landing_zone_2/ceiling)
 "gVG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -14941,7 +14950,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "hjB" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18178,7 +18187,7 @@
 "iBl" = (
 /obj/structure/largecrate/supply/supplies/metal,
 /turf/open/auto_turf/shale/layer0,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "iBo" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/under/overalls,
@@ -20352,7 +20361,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "jur" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -10;
@@ -22879,7 +22888,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "koG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -23214,7 +23223,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "kvc" = (
 /obj/structure/cargo_container/horizontal{
 	icon_state = "0,1";
@@ -25635,7 +25644,7 @@
 "lpP" = (
 /obj/structure/largecrate/random/mini/med,
 /turf/open/auto_turf/shale/layer0,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "lpY" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -26472,7 +26481,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "lHL" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -26814,7 +26823,7 @@
 "lPq" = (
 /obj/structure/largecrate/random,
 /turf/open/auto_turf/shale/layer0,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "lPv" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/structure/platform,
@@ -27054,7 +27063,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "lVD" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/corsat{
@@ -27674,7 +27683,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "mjF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -28590,7 +28599,7 @@
 "mDT" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/auto_turf/shale/layer0,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "mDX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/space_heater/radiator/red{
@@ -28822,7 +28831,7 @@
 "mKu" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/auto_turf/shale/layer0,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "mKA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -29593,7 +29602,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "nax" = (
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/south_street)
@@ -32631,7 +32640,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "oiP" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -34216,7 +34225,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "oRr" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison{
@@ -34833,7 +34842,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "pdF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -35116,7 +35125,7 @@
 /area/lv522/outdoors/nw_rockies)
 "piD" = (
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "piW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/shale/layer1,
@@ -35248,7 +35257,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "pmg" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -35631,7 +35640,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "puu" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor/strata{
@@ -37139,7 +37148,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "pWW" = (
 /obj/item/stack/sheet/wood,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -37456,7 +37465,7 @@
 "qda" = (
 /obj/structure/largecrate/random/barrel,
 /turf/open/auto_turf/shale/layer0,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "qdc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -37944,7 +37953,7 @@
 "qpE" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/shale/layer0,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "qqc" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/structure/machinery/light,
@@ -40329,7 +40338,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "rex" = (
 /turf/open/floor/strata{
 	dir = 4;
@@ -42202,6 +42211,12 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"rOb" = (
+/turf/open/floor/prison{
+	icon_state = "darkbrownfull2";
+	tag = "icon-darkbrownfull2"
+	},
+/area/lv522/landing_zone_2/ceiling)
 "rOf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -42338,7 +42353,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "rRJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -42434,7 +42449,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "rSW" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 8
@@ -42634,7 +42649,7 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "rZc" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 6
@@ -42698,7 +42713,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "rZR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/space_heater/radiator/red{
@@ -43366,7 +43381,7 @@
 /area/lv522/indoors/c_block/mining)
 "snX" = (
 /turf/closed/wall/strata_outpost,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "sol" = (
 /obj/structure/machinery/landinglight/ds1,
 /turf/open/floor/prison{
@@ -44169,7 +44184,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "sGT" = (
 /obj/structure/barricade/deployable,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -45553,7 +45568,7 @@
 "tjx" = (
 /obj/structure/largecrate/random/mini,
 /turf/open/auto_turf/shale/layer0,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "tjM" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -45690,7 +45705,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "tlX" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -46417,7 +46432,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "tBw" = (
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder{
 	icon_state = "closed";
@@ -47706,7 +47721,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "tZR" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -47862,7 +47877,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "udv" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/window/reinforced,
@@ -49283,7 +49298,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "uGU" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/corsat{
@@ -50458,7 +50473,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "vdf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -50493,7 +50508,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "vdE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -51207,7 +51222,7 @@
 "vpp" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/plating,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "vpB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/space_heater/radiator/red{
@@ -52468,7 +52483,7 @@
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "vPl" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat{
@@ -52867,7 +52882,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "vWe" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -53614,7 +53629,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "wjE" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -55076,7 +55091,7 @@
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "wNC" = (
 /obj/structure/platform{
 	dir = 8
@@ -57730,7 +57745,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/shale/layer0,
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "xPK" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison,
@@ -58367,7 +58382,7 @@
 	icon_state = "darkyellowfull2";
 	tag = "icon-darkyellowfull2 (EAST)"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "yat" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	icon_state = "door_locked";
@@ -58874,7 +58889,7 @@
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
 	},
-/area/lv522/landing_zone_2)
+/area/lv522/landing_zone_2/ceiling)
 "yjU" = (
 /obj/structure/cargo_container/horizontal{
 	icon_state = "0,1";
@@ -88225,15 +88240,15 @@ xdX
 uwT
 oWy
 pLu
-rnq
+gVA
 vcR
 vcR
-rnq
+gVA
 vcR
 vcR
-rnq
-rnq
-rnq
+gVA
+gVA
+gVA
 cpy
 cpy
 cpy
@@ -88459,7 +88474,7 @@ yar
 yar
 yar
 yar
-ybz
+aep
 wQa
 wQa
 wQa
@@ -88686,7 +88701,7 @@ tBb
 bnd
 gTn
 yar
-ybz
+aep
 wQa
 eXG
 cex
@@ -88912,9 +88927,9 @@ rZL
 rZL
 oiK
 rSM
-rnq
-rnq
-rnq
+gVA
+gVA
+gVA
 eXG
 eXG
 eXG
@@ -89133,7 +89148,7 @@ uwT
 uwT
 fWG
 fWG
-rnq
+gVA
 wNr
 juh
 juh
@@ -89360,7 +89375,7 @@ uwT
 uwT
 fWG
 fWG
-rnq
+gVA
 udl
 kuW
 kuW
@@ -89593,9 +89608,9 @@ rZL
 rZL
 oiK
 rSM
-rnq
-rnq
-rnq
+gVA
+gVA
+gVA
 wQa
 wQa
 wQa
@@ -89821,7 +89836,7 @@ juh
 pur
 wjh
 yar
-ybz
+aep
 eXG
 wQa
 wQa
@@ -90048,7 +90063,7 @@ yar
 yar
 yar
 yar
-ybz
+aep
 eXG
 wQa
 wQa
@@ -90268,15 +90283,15 @@ uwT
 uwT
 uwT
 uwT
-rnq
+gVA
 vcR
 vcR
-rnq
+gVA
 vcR
 vcR
-rnq
-rnq
-rnq
+gVA
+gVA
+gVA
 wQa
 eXG
 eXG
@@ -91857,15 +91872,15 @@ uwT
 uwT
 uwT
 uwT
-rnq
+gVA
 vcR
 vcR
-rnq
+gVA
 vcR
 vcR
-rnq
-rnq
-rnq
+gVA
+gVA
+gVA
 wQa
 wQa
 wQa
@@ -92088,8 +92103,8 @@ vcR
 lPq
 tjx
 iBl
-eXG
-eXG
+bgS
+bgS
 xPH
 acp
 lSF
@@ -92314,9 +92329,9 @@ fWG
 vcR
 lPq
 lPq
-eXG
-eXG
-eXG
+bgS
+bgS
+bgS
 xPH
 acp
 lSF
@@ -92541,9 +92556,9 @@ fWG
 vcR
 mKu
 lPq
-eXG
-eXG
-eXG
+bgS
+bgS
+bgS
 xPH
 acp
 lSF
@@ -92765,12 +92780,12 @@ cpy
 cpy
 uwT
 uwT
-rnq
-eXG
-eXG
-eXG
-eXG
-eXG
+gVA
+bgS
+bgS
+bgS
+bgS
+bgS
 xPH
 acp
 lSF
@@ -92992,12 +93007,12 @@ cpy
 cpy
 fWG
 fWG
-rnq
-eXG
-eXG
-eXG
-eXG
-eXG
+gVA
+bgS
+bgS
+bgS
+bgS
+bgS
 xPH
 acp
 lSF
@@ -93219,12 +93234,12 @@ cpy
 cpy
 fWG
 tXW
-rnq
-eXG
+gVA
+bgS
 mKu
-eXG
-eXG
-eXG
+bgS
+bgS
+bgS
 xPH
 acp
 lSF
@@ -93451,7 +93466,7 @@ mKu
 mKu
 qda
 lpP
-eXG
+bgS
 xPH
 acp
 lSF
@@ -93901,9 +93916,9 @@ uwT
 uwT
 uwT
 vcR
-eXG
+bgS
 qpE
-eXG
+bgS
 qda
 qda
 xPH
@@ -94127,15 +94142,15 @@ uwT
 uwT
 uwT
 uwT
-rnq
+gVA
 vcR
 vcR
-rnq
+gVA
 vcR
 vcR
-rnq
-rnq
-rnq
+gVA
+gVA
+gVA
 gRp
 sol
 xYA
@@ -95268,7 +95283,7 @@ lHH
 lHH
 lHH
 rew
-hIf
+rOb
 pme
 vpp
 hIf

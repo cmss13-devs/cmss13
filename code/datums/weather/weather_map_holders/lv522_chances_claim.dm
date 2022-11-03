@@ -2,7 +2,7 @@
 	name = "LV-522 Map Holder"
 
 	warn_time = 0
-	min_time_between_events = 0
+	min_time_between_events = 20 MINUTES
 	min_time_between_checks = 0
 	min_check_variance = 0
 

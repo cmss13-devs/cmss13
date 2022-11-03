@@ -15,8 +15,9 @@
 		update_free_mar()
 		if(squad_leader && squad_info_data["sl"]["name"] != squad_leader.real_name)
 			update_squad_leader()
-		update_squad_ui()
 	var/list/data = squad_info_data.Copy()
+	data["squad"] = name
+	data["squad_color"] = squad_colors[color]
 	return data
 
 /datum/squad/proc/get_marine_from_name(var/name)
@@ -42,6 +43,7 @@
 				return
 
 			assign_fireteam(target_team, target, TRUE)
+			update_all_squad_info()
 			return
 
 		if ("unassign_ft")
@@ -50,11 +52,13 @@
 			if(!target)
 				return
 			unassign_fireteam(target, TRUE)
+			update_all_squad_info()
 			return
 
 		if ("demote_ftl")
 			var/target_team = params["target_ft"]
 			unassign_ft_leader(target_team, FALSE, TRUE)
+			update_all_squad_info()
 			return
 
 		if ("promote_ftl")
@@ -64,11 +68,13 @@
 			if(!target)
 				return
 			assign_ft_leader(target_team, target, TRUE)
+			update_all_squad_info()
 			return
 
 		if ("disband_ft")
 			var/target_team = params["target_ft"]
 			unassign_ft_leader(target_team, TRUE, TRUE)
+			update_all_squad_info()
 			return
 
 //used once on first opening
@@ -84,18 +90,6 @@
 		i++
 	squad_info_data["mar_free"] = list()
 	update_free_mar()
-
-/datum/squad/proc/update_squad_ui()		//proc that handles opened UIs updates
-	for(var/mob/living/carbon/human/H in squad_info_uis)
-		var/rmv_user = TRUE
-		for(var/datum/nanoui/ui in H.open_uis)
-			if(ui.ui_key == "squad_info_ui")
-				rmv_user = FALSE
-				var/list/ui_data = squad_info_data.Copy()
-				ui_data["userref"] = "\ref[H]"
-				ui = nanomanager.try_update_ui(H, H, "squad_info_ui", null, ui_data)
-		if(rmv_user)
-			squad_info_uis -= H
 
 //SL update. Should always be paired up with FT or free marines update
 /datum/squad/proc/update_squad_leader()

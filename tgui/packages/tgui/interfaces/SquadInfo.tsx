@@ -1,9 +1,11 @@
 
+import { classes } from 'common/react';
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Section, Stack, Table } from '../components';
 import { BoxProps } from '../components/Box';
 import { TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
+import { logger } from '../logging';
 
 interface SquadLeadEntry {
   name: string;
@@ -42,6 +44,8 @@ interface SquadProps {
   total_kia: number;
   total_free: number;
   user: {name: string, observer: number}
+  squad: string;
+  squad_color: string;
 }
 
 const FireTeamLead = (props: {fireteam: FireTeamEntry, ft: string}, context) => {
@@ -88,25 +92,24 @@ const FireTeam = (props: {ft: string}, context) => {
   const { data, act } = useBackend<SquadProps>(context);
   const fireteam: FireTeamEntry = data.fireteams[props.ft];
   const members: SquadMarineEntry[] = Object.keys(fireteam.mar).map(x => fireteam.mar[x]);
+  const isEmpty = members.length === 0
+    && (fireteam.tl instanceof Array
+      || fireteam.tl?.name === "Not assigned"
+      || fireteam.tl?.name === "Unassigned");
   return (
     <FireteamBox name={fireteam.name}>
       <Stack vertical>
-        {members.length === 0
+        {isEmpty
         && (
           <Stack.Item>
             <span>Fireteam is empty.</span>
           </Stack.Item>
         )}
-        {members.length > 0
+        {!isEmpty
           && (
             <>
               <Stack.Item>
                 <FireTeamLead fireteam={fireteam} ft={props.ft} />
-              </Stack.Item>
-              <Stack.Item>
-                <Button onClick={() => act('disband_ft', { target_ft: props.ft })}>
-                  Disband
-                </Button>
               </Stack.Item>
               <hr />
               <Stack.Item>
@@ -151,11 +154,10 @@ const FireTeamMember = (props: {member: SquadMarineEntry, team: string, fireteam
   };
 
   const unassign = () => act('unassign_ft', { target_ft: props.team, target_marine: props.member.name });
-
   return (
     <>
       <TableCell>
-          {props.member.rank}
+          <span className={classes(['MarineIcon', 'squadranks32x32', `squad-${data.squad}-hud-${props.member.rank}`])} />
       </TableCell>
       <TableCell>
         {props.member.name}
@@ -221,7 +223,10 @@ const UnassignedMembers = (_, context) => {
                   Actions
                 </TableCell>
               </TableRow>
-              {unassignedMembers.map(x => <FireTeamMember member={x} key={x.name} team="unassigned" />)}
+              {unassignedMembers.map(x => (
+                <TableRow>
+                  <FireTeamMember member={x} key={x.name} team="unassigned" />
+                </TableRow>))}
             </Table>
           </Section>)}
     </>);
@@ -234,7 +239,7 @@ export const SquadInfo = (_, context) => {
       <Window.Content>
         <Stack vertical>
           <Stack.Item>
-            <Section title={`Squad Leader: ${data.sl?.name ?? 'None'}`}>
+            <Section title={`${data.squad} Squad Leader: ${data.sl?.name ?? 'None'}`}>
               <Flex justify="space-between">
                 <Flex.Item>
                   <FireTeam ft="FT1" />

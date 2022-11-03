@@ -257,15 +257,11 @@
 	return ..()
 
 /datum/asset/spritesheet/ranks
-	name = "squad_ranks"
+	name = "squadranks"
 
 /datum/asset/spritesheet/ranks/register()
-	world.log << "register rank spritesheet"
-	var/icon_file = "icon/mob/hud/marine_hud.dmi"
-	var/list/squadIcons = squad_colors
-
-	// squad marine
-	var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
+	var/icon_file = "icons/mob/hud/marine_hud.dmi"
+	var/list/squads = list("Alpha", "Bravo", "Charlie", "Delta", "Foxtrot", "Cryo")
 
 	var/list/icon_data = list(
 		list("Mar", "hudsquad_ass"),
@@ -277,13 +273,21 @@
 		list("SL", "hudsquad_leader"),
 	)
 
-	for(var/i in icon_data)
+	var/i
+	for(i = 1; i < length(squads); i++)
+		var/squad = squads[i]
+		var/color = squad_colors[i]
+		for(var/iref in icon_data)
+			var/list/iconref = iref
+			var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)
+			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
+			background.Blend(color, ICON_MULTIPLY)
+			squad_icon.Blend(background, ICON_UNDERLAY)
+			squad_icon.Crop(25,25,32,32)
+			squad_icon.Scale(32,32)
 
-		var/list/iconref = i
-		world.log << "icon for [iconref[1]]"
-		var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)
-		squad_icon.Blend(background, ICON_UNDERLAY)
-		Insert(iconref[1], squad_icon)
+			Insert("squad-[squad]-hud-[iconref[1]]", squad_icon)
+	return ..()
 
 /datum/asset/spritesheet/vending_products
 	name = "vending"

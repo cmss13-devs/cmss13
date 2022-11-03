@@ -34,6 +34,13 @@
 	icon_state = "explored"
 	is_resin_allowed =  "FALSE"
 
+/area/lv522/landing_zone_1/ceiling
+	ceiling = CEILING_METAL
+
+/area/lv522/landing_zone_1/tunnel
+	name = "Chance's Claim - Landing Zone One Tunnels"
+	ceiling = CEILING_METAL
+
 /area/shuttle/drop1/lv522
 	name = "Chance's Claim - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
@@ -51,6 +58,9 @@
 	name = "Chance's Claim - Landing Zone Two"
 	icon_state = "explored"
 	is_resin_allowed =  "FALSE"
+
+/area/lv522/landing_zone_2/ceiling
+	ceiling = CEILING_METAL
 
 /area/shuttle/drop2/lv522
 	name = "Chance's Claim - Dropship Normandy Landing Zone"
@@ -117,17 +127,14 @@
 /area/lv522/outdoors/colony_streets/south_street
 	name = "Colony Streets - South"
 	icon_state = "south"
-	is_resin_allowed =  "FALSE"
 
 /area/lv522/outdoors/colony_streets/south_east_street
 	name = "Colony Streets - Southeast"
 	icon_state = "southeast"
-	is_resin_allowed =  "FALSE"
 
 /area/lv522/outdoors/colony_streets/south_west_street
 	name = "Colony Streets - Southwest"
 	icon_state = "southwest"
-	is_resin_allowed =  "FALSE"
 
 /area/lv522/outdoors/colony_streets/north_west_street
 	name = "Colony Streets - Northwest"
@@ -190,9 +197,15 @@
 	name = "A-Block - Western Dorms And Offices"
 	icon_state = "fitness"
 
+/area/lv522/indoors/a_block/dorms/glass
+	ceiling = CEILING_GLASS
+
 /area/lv522/indoors/a_block/fitness
 	name = "A-Block - Fitness Centre"
 	icon_state = "fitness"
+
+/area/lv522/indoors/a_block/fitness/glass
+	ceiling = CEILING_GLASS
 
 /area/lv522/indoors/a_block/hallway
 	name = "A-Block - South Operations Hallway"
@@ -206,13 +219,22 @@
 	name = "A-Block - Medical"
 	icon_state = "medbay"
 
+/area/lv522/indoors/a_block/medical/glass
+	ceiling = CEILING_GLASS
+
 /area/lv522/indoors/a_block/security
 	name = "A-Block - Security"
 	icon_state = "head_quarters"
 
+/area/lv522/indoors/a_block/security/glass
+	ceiling = CEILING_GLASS
+
 /area/lv522/indoors/a_block/kitchen
 	name = "A-Block - Kitchen And Dining"
 	icon_state = "kitchen"
+
+/area/lv522/indoors/a_block/kitchen/glass
+	ceiling = CEILING_GLASS
 
 /area/lv522/indoors/a_block/kitchen/damage
 	ceiling = CEILING_NONE
@@ -221,6 +243,9 @@
 /area/lv522/indoors/a_block/executive
 	name = "A-Block - Executive Suite"
 	icon_state = "captain"
+
+/area/lv522/indoors/a_block/executive/glass
+	ceiling = CEILING_GLASS
 
 /area/lv522/indoors/a_block/dorm_north
 	name = "A-Block - Northen Shared Dorms"
@@ -259,6 +284,9 @@
 	name = "A-Block - Corporate Office"
 	icon_state = "toxlab"
 
+/area/lv522/indoors/a_block/corpo/glass
+	ceiling =  CEILING_GLASS
+
 /area/lv522/indoors/a_block/garden
 	name = "A-Block - West Operations Garden"
 	icon_state = "green"
@@ -275,6 +303,9 @@
 /area/lv522/indoors/b_block/hydro
 	name = "B-Block - Hydroponics"
 	icon_state = "hydro"
+
+/area/lv522/indoors/b_block/hydro/glass
+	ceiling = CEILING_GLASS
 
 /area/lv522/indoors/b_block/bar
 	name = "B-Block - Bar"

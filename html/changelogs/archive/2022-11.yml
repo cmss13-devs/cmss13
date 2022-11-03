@@ -54,6 +54,8 @@
   - code_imp: Hugger is now called "facehugger" in the code
   - bugfix: Pooling bodies into an eggmorpher disrupts grabs automatically
 2022-11-03:
+  Joelampost:
+  - bugfix: Certain tiles on the pred ship now no longer stop you performing surgery.
   Mistfrag:
   - qol: Linked respective wiki page to all Marine roles.
   - code_imp: Added defines for every wiki page on marines.

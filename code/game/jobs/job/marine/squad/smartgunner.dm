@@ -6,7 +6,7 @@
 	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/sg
-	entry_message_body = "You are the smartgunner. Your task is to provide heavy weapons support."
+	entry_message_body = "<a href='"+URL_WIKI_SG_GUIDE+"'>You are the smartgunner.</a> Your task is to provide heavy weapons support."
 
 /datum/job/marine/smartgunner/set_spawn_positions(var/count)
 	spawn_positions = sg_slot_formula(count)

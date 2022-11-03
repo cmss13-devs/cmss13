@@ -6,7 +6,6 @@
 	var/tier = 0
 	var/dead_icon = "Drone Dead"
 	var/language = LANGUAGE_XENOMORPH
-
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
 	var/melee_vehicle_damage = 10	//allows fine tuning melee damage to vehicles per caste.

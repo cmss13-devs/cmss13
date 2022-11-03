@@ -1,13 +1,10 @@
-// ------ CHANGE LOG ------ \\
-
+// ------ CHANGE LOG ------ //
 #define URL_CHANGELOG				"https://cm-ss13.com/changelog"
 
-// ------ ISSUE TRACKER ------ \\
-
+// ------ ISSUE TRACKER ------ //
 #define URL_ISSUE_TRACKER			"https://github.com/cmss13-devs/cmss13/issues"
 
-// ------ MISC WIKI LINKS ------ \\
-
+// ------ MISC WIKI LINKS ------ //
 #define URL_WIKI_RULES				"https://cm-ss13.com/wiki/Rules"
 #define URL_WIKI_LANDING			"https://cm-ss13.com/wiki/Main_Page"
 #define URL_WIKI_COC			"https://cm-ss13.com/wiki/Rank"
@@ -24,8 +21,7 @@
 #define URL_WIKI_SURGERY			"https://cm-ss13.com/wiki/Surgery"
 #define URL_WIKI_MEDICAL			"https://cm-ss13.com/wiki/Guide_to_Medicine"
 
-// ------  SPAWN GUIDES------ \\
-
+// ------  SPAWN GUIDES------ //
 #define URL_WIKI_CO_GUIDE			"https://cm-ss13.com/wiki/Commanding_Officer" // Command //
 #define URL_WIKI_XO_GUIDE			"https://cm-ss13.com/wiki/Executive_Officer"
 #define URL_WIKI_SO_GUIDE			"https://cm-ss13.com/wiki/Staff_Officer"
@@ -58,8 +54,7 @@
 #define URL_WIKI_CL_GUIDE			"https://cm-ss13.com/wiki/Corporate_Liaison" // Misc //
 #define URL_WIKI_SURV_GUIDE			"https://cm-ss13.com/wiki/Survivor"
 
-// ------ FORUM LINKS ------ \\
-
+// ------ FORUM LINKS ------ //
 #define URL_FORUM					"https://cm-ss13.com/forums"
 #define URL_FORUM_APPEALS			"https://cm-ss13.com/forums/forms.php?do=form&fid=6"
 #define URL_FORUM_PLAYER_REPORT			"https://cm-ss13.com/forums/forms.php?do=form&fid=10"

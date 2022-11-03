@@ -121,8 +121,10 @@
 	W.paygrade = load_rank(H)
 	W.uniform_sets = uniform_sets
 	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.faction == FACTION_NEUTRAL) H.faction = faction
-	if(!H.faction_group) H.faction_group = faction_group.Copy()
+	if(H.faction == FACTION_NEUTRAL)
+		H.faction = faction
+	if(!H.faction_group)
+		H.faction_group = faction_group.Copy()
 	if(H.mind)
 		H.mind.name = H.real_name
 		if(H.mind.initial_account)

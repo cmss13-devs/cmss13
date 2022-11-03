@@ -43,7 +43,7 @@
 	layer = 2.99;
 	name = "hole"
 	},
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/oob)
 "abX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -598,7 +598,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "asn" = (
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/outdoors/w_rockies)
 "asz" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -3909,7 +3909,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/mining)
 "cpy" = (
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/oob)
 "cpC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9300,7 +9300,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/oob)
 "eHS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -12516,7 +12516,7 @@
 /area/lv522/indoors/b_block/bar)
 "ghw" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/oob)
 "ghy" = (
 /obj/structure/surface/table/almayer,
@@ -16669,7 +16669,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "hUZ" = (
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/outdoors/n_rockies)
 "hVh" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -32886,7 +32886,7 @@
 /area/lv522/atmos/outdoor)
 "ooe" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/oob)
 "ooh" = (
 /obj/structure/surface/table/almayer,
@@ -35091,7 +35091,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/oob)
 "phm" = (
 /obj/structure/surface/table/almayer,
@@ -46540,7 +46540,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "tCN" = (
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "tCR" = (
 /obj/structure/bed/chair,
@@ -50379,7 +50379,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/oob)
 "vbm" = (
 /obj/structure{
@@ -51854,7 +51854,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/hallway)
 "vDo" = (
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/landing_zone_2)
 "vDp" = (
 /obj/structure/surface/table/almayer,
@@ -53280,7 +53280,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "wdY" = (
-/turf/closed/wall/rock,
+/turf/closed/wall/rock/brown,
 /area/lv522/outdoors/p_w_rockies)
 "wea" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,

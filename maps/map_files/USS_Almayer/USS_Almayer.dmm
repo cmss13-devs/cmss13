@@ -83857,6 +83857,12 @@
 	dir = 8;
 	tag = "icon-tube1 (WEST)"
 	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/transmitter/rotary{
+	phone_category = "Almayer";
+	phone_id = "Intelligence Center Telephone";
+	name = "Intelligence Center Telephone"
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";

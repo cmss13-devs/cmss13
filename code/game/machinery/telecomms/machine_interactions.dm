@@ -93,7 +93,7 @@
 
 /obj/structure/machinery/telecomms/deconstruct(disassembled = TRUE)
 	if(disassembled) // Create a machine frame and delete the current machine
-		new var/obj/structure/machinery/constructable_frame(src)
+		new /obj/structure/machinery/constructable_frame(src)
 	return ..()
 
 /obj/structure/machinery/telecomms/attack_remote(var/mob/user as mob)

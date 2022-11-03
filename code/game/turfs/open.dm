@@ -667,6 +667,7 @@
 	name = "ship floor"
 	icon_state = "floor6"
 	supports_surgery = TRUE
+	allow_construction = TRUE
 
 //not really plating, just the look
 /turf/open/shuttle/plating

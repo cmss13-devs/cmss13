@@ -596,3 +596,23 @@ CULT
 	H.reset_view()
 	remove_from(H)
 
+
+/datum/action/human_action/mg_exit
+	name = "Exit MG"
+	action_icon_state = "cancel_view"
+
+/datum/action/human_action/mg_exit/give_to(user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_MG_ENTERED, .proc/remove_from)
+
+/datum/action/human_action/mg_exit/remove_from(mob/M)
+	. = ..()
+	UnregisterSignal(M, COMSIG_MOB_MG_ENTERED)
+
+/datum/action/human_action/mg_exit/action_activate()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+	SEND_SIGNAL(H, COMSIG_MOB_MG_EXIT)
+	remove_from(H)

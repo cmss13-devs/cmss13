@@ -205,7 +205,7 @@
 	H.emote("pain")
 	if(prob(20))
 		to_chat(src, "You trip into the pool!")
-		H.KnockDown(2 SECONDS)
+		H.KnockDown(5)
 	do_human_damage(H)
 
 /obj/effect/alien/resin/special/pool/proc/do_human_damage(var/mob/living/carbon/human/H)
@@ -221,5 +221,7 @@
 		return
 	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
 	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
+	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_leg")
+	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_leg")
 
 

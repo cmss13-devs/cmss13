@@ -50,6 +50,7 @@
 
 #define SS_INIT_TICKER_SPAWN       999
 #define SS_INIT_INPUT              85
+#define SS_INIT_CLICKS             50
 #define SS_INIT_RUST               26
 #define SS_INIT_SUPPLY_SHUTTLE     25
 #define SS_INIT_GARBAGE            24
@@ -97,6 +98,7 @@
 #define SS_INIT_CHAT			   -100 //Should be last to ensure chat remains smooth during init.
 
 #define SS_PRIORITY_INPUT          1000
+#define SS_PRIORITY_CLICKS         800
 #define SS_PRIORITY_TIMER          700
 #define SS_PRIORITY_SOUND          250
 #define SS_PRIORITY_TICKER         200

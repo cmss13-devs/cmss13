@@ -337,7 +337,7 @@
 			}); */
 
 			// Status panel implementation ------------------------------------------------
-			var status_tab_parts = ["<a href='byond://winset?command=Panel-Ready'>Loading.</a>"];
+			var status_tab_parts = ["Loading..."];
 			var current_tab = null;
 			var local_fontsize
 			// Per `storage.js` for tgui:
@@ -350,7 +350,7 @@
 				local_fontsize = 11;
 			}
 			var current_fontsize = local_fontsize ? parseInt(local_fontsize) : 11; // in px, also determines line height and category header sizes for the verb menus
-			var mc_tab_parts = [["<a href='byond://winset?command=Panel-Ready'>Loading...</a>", ""]];
+			var mc_tab_parts = [["Loading...", ""]];
 			var tickets = [];
 			var href_token = null;
 			var verb_tabs = [];
@@ -358,6 +358,7 @@
 			var permanent_tabs = []; // tabs that won't be cleared by wipes
 			var turfcontents = [];
 			var turfname = "";
+			var initDone = false;
 			var imageRetryDelay = 500;
 			var imageRetryLimit = 50;
 			var menu = document.querySelector('#menu');
@@ -570,6 +571,7 @@
 				}
 				createOptionsButton();
 				SendTabsToByond();
+				initDone = true;
 			}
 
 			function SendTabsToByond() {
@@ -653,7 +655,7 @@
 				} else if (tab == turfname) {
 					draw_listedturf();
 				} else {
-					statcontentdiv[textContentKey] = "<a href='byond://winset?command=Panel-Ready'>Loading.....</a>";
+					statcontentdiv[textContentKey] = "Loading...";
 				}
 				window.location.href = "byond://winset?statbrowser.is-visible=true";
 			}
@@ -993,13 +995,13 @@
 			}
 
 			window.onload = function () {
-				document.getElementById("statcontent").innerText = "<a href='byond://winset?command=Panel-Ready'>Onload done</a>";
 				NotifyByondOnload();
 			};
 
 			function NotifyByondOnload() {
+				if (initDone) { return; }
+				setTimeout(NotifyByondOnload, 2000)
 				window.location.href = "byond://winset?command=Panel-Ready";
-				document.getElementById("statcontent").innerText = "<a href='byond://winset?command=Panel-Ready'>Sent</a>";
 			}
 
 			function create_debug() {

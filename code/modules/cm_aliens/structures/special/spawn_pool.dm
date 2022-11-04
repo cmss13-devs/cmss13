@@ -215,9 +215,9 @@
 	playsound(H, get_sfx("acid_sizzle"), 30)
 	addtimer(CALLBACK(src, .proc/do_human_damage, H), 3 SECONDS, TIMER_UNIQUE)
 
-	if(H.resting)
+	if(H.resting || H.knocked_down || H.knocked_out) //why are all these seperate variables
 		for(var/i in DEFENSE_ZONES_LIVING)
-			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, i)
+			H.apply_armoured_damage(damage_amount * 0.35, ARMOR_BIO, BURN, i)
 		return
 	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
 	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")

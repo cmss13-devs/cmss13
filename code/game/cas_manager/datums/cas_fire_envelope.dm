@@ -10,7 +10,6 @@
 	var/soundeffect //what sound effect to play
 	var/step_delay
 	var/max_offset
-	var/nightvision
 
 	var/mission_error
 

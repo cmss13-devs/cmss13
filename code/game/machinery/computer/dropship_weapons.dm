@@ -20,8 +20,7 @@
 	var/firemission_signal //id of the signal
 	var/in_firemission_mode = FALSE
 	var/upgraded = MATRIX_DEFAULT // we transport upgrade var from matrixdm
-	var/power //effectivness of a matrix
-	var/matrixcol //color of matrix
+	var/matrixcol //color of matrix, only used when we upgrade to nv
 	var/matrixsize //viewport of matrix
 
 
@@ -631,12 +630,7 @@
 	..()
 	if(firemission_envelope && firemission_envelope.guidance)
 		firemission_envelope.remove_user_from_tracking(user)
-
-/obj/structure/machinery/computer/dropship_weapons/proc/exit_cam(mob/user)
-	SIGNAL_HANDLER
-
-	user.unset_interaction()
-
+		
 /obj/structure/machinery/computer/dropship_weapons/proc/update_trace_loc()
 	if(!firemission_envelope)
 		return

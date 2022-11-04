@@ -360,6 +360,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
 	addtimer(CALLBACK(src, .proc/check_panel_loaded), 10 SECONDS)
 	tgui_panel.initialize()
+	client.init_statbrowser()
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
 	CEI.show_player_event_info(src)

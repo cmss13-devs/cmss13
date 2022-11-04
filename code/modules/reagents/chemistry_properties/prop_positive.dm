@@ -756,18 +756,18 @@
 	name = PROPERTY_PHOTOSENSETIVE
 	code = "PTS"
 	description = "Reacts with any amount of light. Probably could be usefull to create light-sensetive objects. Not safe to adminster."
-	rarity = PROPERTY_RARE
+	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 
 /datum/chem_property/positive/photosensetive/process(mob/living/M, var/potency = 1)
-	to_chat(M, SPAN_NOTICE("You feel abnormal headache."))
+	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
 	M.apply_internal_damage(potency, "brain")
 
 /datum/chem_property/positive/crystalization
 	name = PROPERTY_CRYSTALIZATION
 	code = "CRS"
 	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to adminster"
-	rarity = PROPERTY_RARE
+	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 
 /datum/chem_property/positive/photosensetive/process(mob/living/M, var/potency = 1)

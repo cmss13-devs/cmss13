@@ -19,7 +19,10 @@
 	var/datum/cas_fire_mission/editing_firemission
 	var/firemission_signal //id of the signal
 	var/in_firemission_mode = FALSE
-	var/upgraded = MATRIX_DEFAULT
+	var/upgraded = MATRIX_DEFAULT // we transport upgrade var from matrixdm
+	var/power //effectivness of a matrix
+	var/matrixcol //color of matrix
+	var/matrixsize //viewport of matrix
 
 
 /obj/structure/machinery/computer/dropship_weapons/New()
@@ -37,7 +40,7 @@
 	user.set_interaction(src)
 	ui_interact(user)
 
-/obj/structure/machinery/computer/dropship_weapons/attackby(var/obj/item/frame/W, mob/user as mob)
+/obj/structure/machinery/computer/dropship_weapons/attackby(var/obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/frame/matrix))
 		var/obj/item/frame/matrix/MATRIX = W
 		if(MATRIX.state == ASSEMBLY_LOCKED)
@@ -45,6 +48,8 @@
 			W.forceMove(src)
 			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
 			upgraded = MATRIX.upgrade
+			matrixcol = MATRIX.matrixcol
+			matrixsize = MATRIX.matrixsize
 			to_chat(user, SPAN_WARNING("DEBUG upgrade changed to" + upgraded))
 		else
 			to_chat(user, SPAN_WARNING("matrix is not complete!"))
@@ -169,12 +174,10 @@
 
 		if((screen_mode != 0 && in_firemission_mode) || !selected_firemission)
 			in_firemission_mode = FALSE
-
 		if(selected_firemission && in_firemission_mode)
 			if(selected_firemission.check(src)!=FIRE_MISSION_ALL_GOOD)
 				in_firemission_mode = FALSE
 				selected_firemission = null
-
 		if(selected_firemission && in_firemission_mode)
 			screen_mode = 3
 			fm_offset = firemission_envelope.recorded_offset
@@ -413,6 +416,7 @@
 		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
+		firemission_envelope.remove_user_from_tracking(usr)
 		in_firemission_mode = FALSE
 
 	if(href_list["change_direction"])
@@ -629,6 +633,10 @@
 	if(firemission_envelope && firemission_envelope.guidance)
 		firemission_envelope.remove_user_from_tracking(user)
 
+/obj/structure/machinery/computer/dropship_weapons/proc/exit_cam(mob/user)
+	SIGNAL_HANDLER
+
+	user.unset_interaction()
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_trace_loc()
 	if(!firemission_envelope)

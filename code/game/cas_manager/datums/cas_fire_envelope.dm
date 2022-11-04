@@ -10,6 +10,7 @@
 	var/soundeffect //what sound effect to play
 	var/step_delay
 	var/max_offset
+	var/nightvision
 
 	var/mission_error
 
@@ -178,18 +179,41 @@
 	var/mob/M = user
 	if(istype(M) && M.client)
 		M.reset_view(guidance)
+		if(linked_console.upgraded == MATRIX_NVG)
+			M.add_client_color_matrix("matrix_nvg", 99, color_matrix_multiply(color_matrix_saturation(1), color_matrix_from_string(linked_console.matrixcol)))
+			M.overlay_fullscreen("matrix", /atom/movable/screen/fullscreen/flash/noise/nvg)
+			M.overlay_fullscreen("matrix_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
+			M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+			M.sync_lighting_plane_alpha()
+		else if (linked_console.upgraded == MATRIX_WIDE)
+			M.client?.change_view(linked_console.matrixsize, M)
 		if(!(user in guidance.users))
 			guidance.users += user
+			RegisterSignal(usr, COMSIG_MOB_RESISTED, .proc/exit_cam_resist)
 
 
 /datum/cas_fire_envelope/proc/remove_user_from_tracking(user)
 	if(!guidance)
 		return
+	var/mob/M = user
 	if(user && (user in guidance.users))
-		guidance.users -= user
-		var/mob/M = user
 		if(istype(M) && M.client)
 			M.reset_view()
+		if(linked_console.upgraded == MATRIX_NVG)
+			M.remove_client_color_matrix("matrix_nvg")
+			M.clear_fullscreen("matrix")
+			M.clear_fullscreen("matrix_blur")
+			M.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+			M.sync_lighting_plane_alpha()
+		if(linked_console.upgraded == MATRIX_WIDE)
+			M.client?.change_view(7, M)
+		guidance.users -= user
+
+/datum/cas_fire_envelope/proc/exit_cam_resist(mob/user)
+	SIGNAL_HANDLER
+
+	remove_user_from_tracking(user)
+
 
 /datum/cas_fire_envelope/proc/check_firemission_loc(datum/cas_signal/target_turf)
 	return TRUE //redefined in child class

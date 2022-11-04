@@ -49,8 +49,6 @@
 #define CELLS 8								//Amount of cells per row/column in grid
 #define CELLSIZE (world.icon_size/CELLS)	//Size of a cell in pixel
 
-
-
 // *************************************** //
 // DO_AFTER FLAGS
 // These flags denote behaviors related to timed actions.

@@ -114,7 +114,6 @@
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 
-	GLOB.item_list += src
 	if(inherent_traits)
 		for(var/trait in inherent_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_INHERENT)
@@ -134,7 +133,6 @@
 	QDEL_NULL_LIST(actions)
 	master = null
 	locked_to_mob = null
-	GLOB.item_list -= src
 
 	var/obj/item/storage/S = loc
 	if(istype(S))

@@ -215,9 +215,9 @@
 	w_class = SIZE_TINY
 
 /obj/item/disk/objective/Destroy()
-	objective?.disk = null
+	qdel(objective)
 	objective = null
-	retrieve_objective.target_item = null
+	qdel(retrieve_objective)
 	retrieve_objective = null
 	return ..()
 

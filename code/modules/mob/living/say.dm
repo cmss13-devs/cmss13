@@ -1,8 +1,4 @@
 var/list/department_radio_keys = list(
-	  ":r" = RADIO_EAR_RIGHT,			"#r" = RADIO_EAR_RIGHT,				".r" = RADIO_EAR_RIGHT,
-	  ":l" = RADIO_EAR_LEFT ,			"#l" = RADIO_EAR_LEFT ,				".l" = RADIO_EAR_LEFT ,
-	  ":i" = RADIO_CHANNEL_INTERCOM,	"#i" = RADIO_CHANNEL_INTERCOM,		".i" = RADIO_CHANNEL_INTERCOM,
-	  ":w" = RADIO_MODE_WHISPER,		"#w" = RADIO_MODE_WHISPER,			".w" = RADIO_MODE_WHISPER,
 	  ":+" = RADIO_CHANNEL_SPECIAL,		"#+" = RADIO_CHANNEL_SPECIAL,		".+" = RADIO_CHANNEL_SPECIAL, //activate radio-specific special functions
 
 	  ":m" = RADIO_CHANNEL_MEDSCI,		"#m" = RADIO_CHANNEL_MEDSCI,		".m" = RADIO_CHANNEL_MEDSCI,
@@ -23,11 +19,6 @@ var/list/department_radio_keys = list(
 	  ":o" = RADIO_CHANNEL_CCT,			"#o" = RADIO_CHANNEL_CCT,			".o" = RADIO_CHANNEL_CCT,
 	  ":z" = RADIO_CHANNEL_HIGHCOM,		"#z" = RADIO_CHANNEL_HIGHCOM,		".z" = RADIO_CHANNEL_HIGHCOM,
 	  ":k" = SQUAD_MARSOC,				"#k" = SQUAD_MARSOC,				".k" = SQUAD_MARSOC,
-
-	  ":R" = RADIO_EAR_RIGHT,			"#R" = RADIO_EAR_RIGHT,				".R" = RADIO_EAR_RIGHT,
-	  ":L" = RADIO_EAR_LEFT ,			"#L" = RADIO_EAR_LEFT ,				".L" = RADIO_EAR_LEFT ,
-	  ":I" = RADIO_CHANNEL_INTERCOM,	"#I" = RADIO_CHANNEL_INTERCOM,		".I" = RADIO_CHANNEL_INTERCOM,
-	  ":W" = RADIO_MODE_WHISPER,		"#W" = RADIO_MODE_WHISPER,			".W" = RADIO_MODE_WHISPER,
 
 	  ":M" = RADIO_CHANNEL_MEDSCI,		"#M" = RADIO_CHANNEL_MEDSCI,		".M" = RADIO_CHANNEL_MEDSCI,
 	  ":N" = RADIO_CHANNEL_ENGI, 		"#N" = RADIO_CHANNEL_ENGI,			".N" = RADIO_CHANNEL_ENGI,
@@ -50,14 +41,9 @@ var/list/department_radio_keys = list(
 
 	  //kinda localization -- rastaf0
 	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
-	  ":�" = RADIO_EAR_RIGHT,	"#�" = RADIO_EAR_RIGHT,		".�" = RADIO_EAR_RIGHT,
-	  ":�" = RADIO_EAR_LEFT ,	"#�" = RADIO_EAR_LEFT ,		".�" = RADIO_EAR_LEFT ,
-	  ":�" = RADIO_CHANNEL_INTERCOM,	"#�" = RADIO_CHANNEL_INTERCOM,		".�" = RADIO_CHANNEL_INTERCOM,
 	  ":�" = RADIO_CHANNEL_COMMAND,		"#�" = RADIO_CHANNEL_COMMAND,		".�" = RADIO_CHANNEL_COMMAND,
 	  ":�" = RADIO_CHANNEL_MEDSCI,		"#�" = RADIO_CHANNEL_MEDSCI,		".�" = RADIO_CHANNEL_MEDSCI,
 	  ":�" = RADIO_CHANNEL_ENGI,	"#�" = RADIO_CHANNEL_ENGI,	".�" = RADIO_CHANNEL_ENGI,
-	  ":�" = RADIO_MODE_WHISPER,		"#�" = RADIO_MODE_WHISPER,		".�" = RADIO_MODE_WHISPER,
-	  ":�" = RADIO_CHANNEL_SYNDICATE,	"#�" = RADIO_CHANNEL_SYNDICATE,		".�" = RADIO_CHANNEL_SYNDICATE,
 )
 
 /mob/living/proc/binarycheck()

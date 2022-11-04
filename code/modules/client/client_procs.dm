@@ -427,6 +427,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		GLOB.admins -= src
 	GLOB.directory -= ckey
 	GLOB.clients -= src
+	SSping.currentrun -= src
 
 	unansweredAhelps?.Remove(computer_id)
 	log_access("Logout: [key_name(src)]")

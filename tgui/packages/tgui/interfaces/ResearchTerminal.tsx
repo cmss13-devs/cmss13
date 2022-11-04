@@ -13,6 +13,7 @@ export interface DocumentRecord {
   document_title: string;
   time: string;
   document: string;
+  category: string;
 }
 
 interface TerminalProps {
@@ -28,6 +29,7 @@ interface TerminalProps {
   "photocopier_error": number;
   "printer_toner": number;
 }
+
 
 const PurchaseDocs = (_, context) => {
   const { data, act } = useBackend<TerminalProps>(context);
@@ -115,7 +117,7 @@ const ConfirmationDialogue = (props: ConfirmationProps, context) => {
 const NoCompoundsDetected = (_, context) => {
   return (
     <span>
-      Error: no chemicals have been detected.
+      ERROR: no chemicals have been detected.
     </span>);
 };
 
@@ -129,12 +131,18 @@ const CompoundRecord = (props: CompoundRecordProps, context) => {
   const { data, act } = useBackend<TerminalProps>(context);
   const isMainTerminal = data.main_terminal === 1;
   const { compound } = props;
-  const doc_ref = { "print_type": 'XRF Scans', "print_title": compound.id };
+  const doc_ref = { "print_type": compound.category, "print_title": compound.id };
   return (
     <TableRow key={compound.id}>
       <TableCell>
         <span className="compound_label">
           {compound.type.time}
+        </span>
+      </TableCell>
+
+      <TableCell>
+        <span className="compound_label">
+          {compound.type.doctype}
         </span>
       </TableCell>
 
@@ -183,10 +191,12 @@ const CompoundRecord = (props: CompoundRecordProps, context) => {
 interface DocInfo {
   time: string;
   document: string;
+  doctype: string;
 }
 
 interface CompoundData {
   id: string;
+  category: string;
   docNumber: number;
   type: DocInfo;
   isPublished: boolean;
@@ -195,6 +205,13 @@ interface CompoundData {
 const ResearchReportTable = (_, context) => {
   const { data } = useBackend<TerminalProps>(context);
   const [hideOld, setHideOld] = useLocalState(context, 'hide_old', true);
+  const documents = Object.keys(data.research_documents)
+    .map(x => {
+      const output = data.research_documents[x] as DocumentRecord[];
+      output.forEach(y => { y.category = x; });
+      return output;
+    })
+    .flat() as DocumentRecord[];
   return (
     <Stack vertical>
       <Stack.Item>
@@ -208,7 +225,7 @@ const ResearchReportTable = (_, context) => {
       <hr />
       <Stack.Item>
         <CompoundTable
-          docs={data.research_documents['XRF Scans'] ?? []}
+          docs={documents}
           timeLabel="Scan Time"
           canPrint />
       </Stack.Item>
@@ -224,8 +241,13 @@ export interface CompoundTableProps extends BoxProps {
 export const CompoundTable = (props: CompoundTableProps, context) => {
   const { data } = useBackend<TerminalProps>(context);
   const [hideOld] = useLocalState(context, 'hide_old', true);
-  const published = data.published_documents['XRF Scans'] ?? [];
-
+  const published = Object.keys(data.published_documents)
+    .map(x => {
+      const output = data.published_documents[x] as DocumentRecord[];
+      output.forEach(y => { y.category = x; });
+      return output;
+    })
+    .flat() as DocumentRecord[];
   const [sortby, setSortBy] = useLocalState(context, 'sort_by', 'time');
   const [sortdir, setSortdir] = useLocalState(context, 'sort_dir', 'asc');
 
@@ -233,17 +255,25 @@ export const CompoundTable = (props: CompoundTableProps, context) => {
 
   const outputDocs: Map<String, CompoundData> = new Map();
   documents.map(x => {
-    const doctype = x as DocInfo;
+    const document_prefix = x.document_title.split(" ")[0];
+    const doc_number = Number.parseInt(document_prefix, 10);
+    const doctype: DocInfo = {
+      doctype: Number.isNaN(doc_number) ? "Synthesis" : "Analysis",
+      document: x.document,
+      time: x.time,
+    };
     const isPublished = (chemName: string) =>
       published
         .filter(x => x.document_title.includes(chemName))
         .length > 0;
 
+
     return {
       id: x.document_title,
-      docNumber: Number.parseInt(x.document_title.split(" ")[0], 10),
+      docNumber: Number.isNaN(doc_number) ? 0 : doc_number,
       type: doctype,
       isPublished: isPublished(doctype.document),
+      category: x.category,
     };
   }).forEach(x => {
     if(hideOld) {
@@ -251,11 +281,13 @@ export const CompoundTable = (props: CompoundTableProps, context) => {
         outputDocs.set(x.type.document, x);
         return;
       }
-      if (x.docNumber > (outputDocs.get(x.type.document)?.docNumber ?? 0)) {
+
+      if (x.type.time.localeCompare((outputDocs.get(x.type.document)?.type.time ?? ""))) {
         outputDocs.set(x.type.document, x);
       }
+
     } else {
-      outputDocs.set(x.id, x);
+      outputDocs.set(x.id + x.type.time, x);
     }
   });
 
@@ -288,6 +320,11 @@ export const CompoundTable = (props: CompoundTableProps, context) => {
           >
             {props.timeLabel}
           </Button>
+        </TableCell>
+        <TableCell textAlign="center">
+          <span>
+            Type
+          </span>
         </TableCell>
         <TableCell textAlign="center">
           <Button icon={iconRef('name', false)} onClick={() => sortColClick('name')}>
@@ -422,11 +459,19 @@ const ErrorStack = (_, context) => {
 
 const PublishedMaterial = (props, context) => {
   const { data } = useBackend<TerminalProps>(context);
+  const documents = Object.keys(data.published_documents)
+    .map(x => {
+      const output = data.published_documents[x] as DocumentRecord[];
+      output.forEach(y => { y.category = x; });
+      return output;
+    })
+    .flat() as DocumentRecord[];
+
   return (
     <Stack vertical>
       <Stack.Item>
         <CompoundTable
-          docs={data.published_documents['XRF Scans'] ?? []}
+          docs={documents}
           timeLabel="Published"
           canPrint />
       </Stack.Item>

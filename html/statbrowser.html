@@ -548,7 +548,7 @@
 			// example entry from 2D vector: (IC, Say)
 			function init_statbrowser(c, v) {
 				document.getElementById("statcontent").style.fontSize = current_fontsize + "px";
-
+				initDone = true;
 				wipe_verbs(); // remove all verb categories so we can replace them
 				checkStatusTab(); // remove all status tabs
 				verb_tabs = JSON.parse(c);
@@ -571,7 +571,7 @@
 				}
 				createOptionsButton();
 				SendTabsToByond();
-				initDone = true;
+
 			}
 
 			function SendTabsToByond() {

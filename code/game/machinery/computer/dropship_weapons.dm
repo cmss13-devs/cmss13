@@ -50,7 +50,6 @@
 			upgraded = MATRIX.upgrade
 			matrixcol = MATRIX.matrixcol
 			matrixsize = MATRIX.matrixsize
-			to_chat(user, SPAN_WARNING("DEBUG upgrade changed to" + upgraded))
 		else
 			to_chat(user, SPAN_WARNING("matrix is not complete!"))
 

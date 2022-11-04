@@ -763,14 +763,14 @@
 	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
 	M.apply_internal_damage(potency, "brain")
 
-/datum/chem_property/positive/crystalization
-	name = PROPERTY_CRYSTALIZATION
+/datum/chem_property/positive/crystallization
+	name = PROPERTY_CRYSTALLIZATION
 	code = "CRS"
 	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to adminster"
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 
-/datum/chem_property/positive/photosensetive/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/crystallization/process(mob/living/M, var/potency = 1)
 	to_chat(M, SPAN_WARNING("You feel like many razor sharp blades cut through your insides!"))
 	M.take_limb_damage(brute = 0.5 * potency)
 	M.apply_internal_damage(potency, "liver")

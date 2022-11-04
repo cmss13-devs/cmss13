@@ -358,7 +358,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Initialize tgui panel
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
-	addtimer(CALLBACK(src, .proc/check_panel_loaded), 30 SECONDS)
+	addtimer(CALLBACK(src, .proc/check_panel_loaded), 10 SECONDS)
 	tgui_panel.initialize()
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
@@ -477,12 +477,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_assets()
-	spawn (10) //removing this spawn causes all clients to not get verbs.
-		//load info on what assets the client has
-		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
+	//load info on what assets the client has
+	src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
 
-		//Precache the client with all other assets slowly, so as to not block other browse() calls
-		addtimer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
+	//Precache the client with all other assets slowly, so as to not block other browse() calls
+	SSassets.transport.send_assets_slow(src, SSassets.transport.preload)
 
 /proc/setup_player_entity(var/ckey)
 	if(!ckey)

@@ -204,7 +204,7 @@
 
 	H.emote("pain")
 	if(prob(20))
-		to_chat(src, "You trip into the pool!")
+		to_chat(H, SPAN_DANGER("You trip into the pool!"))
 		H.KnockDown(5)
 	do_human_damage(H)
 

@@ -337,7 +337,7 @@
 			}); */
 
 			// Status panel implementation ------------------------------------------------
-			var status_tab_parts = ["Loading..."];
+			var status_tab_parts = ["<a href='byond://winset?command=Panel-Ready'>Loading.</a>"];
 			var current_tab = null;
 			var local_fontsize
 			// Per `storage.js` for tgui:
@@ -350,7 +350,7 @@
 				local_fontsize = 11;
 			}
 			var current_fontsize = local_fontsize ? parseInt(local_fontsize) : 11; // in px, also determines line height and category header sizes for the verb menus
-			var mc_tab_parts = [["Loading...", ""]];
+			var mc_tab_parts = [["<a href='byond://winset?command=Panel-Ready'>Loading...</a>", ""]];
 			var tickets = [];
 			var href_token = null;
 			var verb_tabs = [];
@@ -653,7 +653,7 @@
 				} else if (tab == turfname) {
 					draw_listedturf();
 				} else {
-					statcontentdiv[textContentKey] = "Loading...";
+					statcontentdiv[textContentKey] = "<a href='byond://winset?command=Panel-Ready'>Loading.....</a>";
 				}
 				window.location.href = "byond://winset?statbrowser.is-visible=true";
 			}
@@ -993,12 +993,13 @@
 			}
 
 			window.onload = function () {
+				document.getElementById("statcontent").innerText = "<a href='byond://winset?command=Panel-Ready'>Onload done</a>";
 				NotifyByondOnload();
-				document.getElementById("statcontent").appendChild(document.createElement("... Loaded!"));
 			};
 
 			function NotifyByondOnload() {
 				window.location.href = "byond://winset?command=Panel-Ready";
+				document.getElementById("statcontent").innerText = "<a href='byond://winset?command=Panel-Ready'>Sent</a>";
 			}
 
 			function create_debug() {

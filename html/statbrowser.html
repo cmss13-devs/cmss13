@@ -567,11 +567,12 @@
 					sortVerbs(); // sort them
 					if (do_update) {
 						draw_verbs(current_tab);
+					} else {
+						draw_status()
 					}
 				}
 				createOptionsButton();
 				SendTabsToByond();
-				tab_change("Status", true);
 			}
 
 			function SendTabsToByond() {

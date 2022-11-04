@@ -26,20 +26,19 @@
 				to_chat(user, SPAN_NOTICE(english_list(S.properties)))
 				if(S.get_property(PROPERTY_PHOTOSENSETIVE) && !S.get_property(PROPERTY_CRYSTALIZATION))
 					var/datum/chem_property/G = S.get_property(PROPERTY_PHOTOSENSETIVE)
-					power = G.level - (G.level - 7)
-					if(power <= 5)
-						matrixcol = "#4b774b"
-					else if (power >= 6)
+					power = G.level - 5
+					if(power <= 0)
+						matrixcol = "#4b9c4b"
+					else if (power >= 1)
 						matrixcol= "#7aff7a"
 					upgrade = MATRIX_NVG
 					return
 				else if (S.get_property(PROPERTY_CRYSTALIZATION))
 					var/datum/chem_property/G = S.get_property(PROPERTY_CRYSTALIZATION)
-					power = G.level - (G.level - 5)
-					if(power <= 5)
+					power = G.level - 5
+					if(power <= 0)
 						matrixsize = 9
-						power = 0
-					else if (power >= 6)
+					else if (power >= 1)
 						matrixsize = 12
 					upgrade = MATRIX_WIDE
 					return

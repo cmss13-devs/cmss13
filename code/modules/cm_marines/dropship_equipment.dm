@@ -139,7 +139,10 @@
 		linked_console.selected_equipment = src
 		to_chat(user, SPAN_NOTICE("You select [src]."))
 
-
+/obj/structure/dropship_equipment/proc/report_to_control_consoles(var/message, var/max_distance = 2)
+	if(linked_shuttle)
+		for(var/obj/structure/machinery/computer/shuttle_control/control_console as anything in linked_shuttle.controls)
+			control_console.visible_message(message, max_distance = max_distance)
 
 //////////////////////////////////// turret holders //////////////////////////////////////
 
@@ -385,6 +388,35 @@
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	equip_categories = list(DROPSHIP_FUEL_EQP)
 
+	var/list/fuel_types = list(
+		COMPOUND_PHI,
+		COMPOUND_OMEGA,
+		COMPOUND_TAU,
+		COMPOUND_EPSILON
+	)
+	var/desired_fuel_type
+	var/atom/fuel_pump
+
+/obj/structure/dropship_equipment/fuel/proc/generate_desired_fuel()
+	desired_fuel_type = pick(fuel_types)
+	report_to_control_consoles("[capitalize_first_letters(name)] demands: <b>[capitalize_first_letters(desired_fuel_type)]</b>")
+
+/obj/structure/dropship_equipment/fuel/proc/take_rod(var/obj/item/compound_rod/rod, var/mob/user)
+	if(rod.compound == desired_fuel_type)
+		linked_shuttle.recharging = max(linked_shuttle.recharging - 10 SECONDS, 0)
+		report_to_control_consoles("[capitalize_first_letters(name)] received <b>CORRECT</b> compound, time <b>REDUCED</b> to [linked_shuttle.recharging / 10] seconds!")
+		to_chat(user, "[capitalize_first_letters(name)] received <b>CORRECT</b> compound, time <b>REDUCED</b> to [linked_shuttle.recharging / 10] seconds!")
+	else
+		linked_shuttle.recharging = max(linked_shuttle.recharging + 10 SECONDS, 0)
+		report_to_control_consoles("[capitalize_first_letters(name)] received <b>INCORRECT</b> compound, time <b>INCREASED</b> to [linked_shuttle.recharging / 10] seconds!")
+		to_chat(user, "[capitalize_first_letters(name)] received <b>INCORRECT</b> compound, time <b>INCREASED</b> to [linked_shuttle.recharging / 10] seconds!")
+	qdel(rod)
+
+/obj/structure/dropship_equipment/fuel/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/compound_rod) && linked_shuttle?.moving_status == SHUTTLE_WARMUP)
+		take_rod(item)
+		return
+	return ..()
 
 /obj/structure/dropship_equipment/fuel/update_equipment()
 	if(ship_base)
@@ -411,6 +443,34 @@
 	icon_state = "cooling_system"
 	point_cost = 800
 
+/obj/structure/dropship_equipment/fuel/cooling_system/attack_hand(mob/user)
+	if(linked_shuttle)
+		linked_shuttle.recharging += 10 SECONDS
+		to_chat(user, SPAN_WARNING("Shuttle recharge time increased to [linked_shuttle.recharging / 10] seconds!"))
+		return
+	return ..()
+
+/obj/item/compound_rod
+	name = "compound rod"
+	desc = "A rod designed to be inserted into dropship fuel and cooling systems, the insides are filled with a special compound."
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "c_tube"
+	var/compound = COMPOUND_PHI
+
+/obj/item/compound_rod/get_examine_text(mob/user)
+	. = ..()
+	if(get_dist(src, user) <= 1)
+		. += SPAN_NOTICE("Upon closer examination, you notice this rod contains: <b>[compound]</b>")
+
+
+/obj/item/compound_rod/omega
+	compound = COMPOUND_OMEGA
+
+/obj/item/compound_rod/tau
+	compound = COMPOUND_TAU
+
+/obj/item/compound_rod/epsilon
+	compound = COMPOUND_EPSILON
 
 ///////////////////////////////////// ELECTRONICS /////////////////////////////////////////
 

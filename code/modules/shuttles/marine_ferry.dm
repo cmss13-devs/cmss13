@@ -186,6 +186,9 @@
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
+	for(var/obj/structure/dropship_equipment/fuel/fuel_equipment in equipments)
+		fuel_equipment.generate_desired_fuel()
+
 	for(var/obj/structure/dropship_equipment/fuel/cooling_system/CS in equipments)
 		recharging = round(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
 		break

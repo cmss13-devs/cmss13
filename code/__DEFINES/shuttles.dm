@@ -90,3 +90,9 @@
 
 #define LOCKDOWN_TIME 6 MINUTES
 #define GROUND_LOCKDOWN_TIME 3 MINUTES
+
+// FUEL TYPES
+#define COMPOUND_PHI "compound phi"
+#define COMPOUND_OMEGA "compound omega"
+#define COMPOUND_TAU "compound tau"
+#define COMPOUND_EPSILON "compound epsilon"

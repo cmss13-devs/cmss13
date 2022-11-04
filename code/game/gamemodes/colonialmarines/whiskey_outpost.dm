@@ -110,9 +110,9 @@
 	update_controllers()
 
 	// Delete most of ship map for performance
-	var/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	var/list/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 	for(var/obj/o in world)
-		if(o?.loc && o?.loc.z in z_levels)
+		if(o?.loc && (o?.loc.z in z_levels))
 			qdel(o)
 
 	initialize_post_marine_gear_list()

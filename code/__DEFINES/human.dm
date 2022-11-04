@@ -153,14 +153,6 @@
 #define PLAYER_SYNTHS list(SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
 #define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COMBAT, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
 
-// Human citizenship defines
-#define CITIZENSHIP_US			"United Americas (United States)"
-#define CITIZENSHIP_LUNA		"United Americas (Luna)"
-#define CITIZENSHIP_OTHER		"United Americas (Other)"
-#define CITIZENSHIP_COLONY		"Limited Service (Colony)"
-#define CITIZENSHIP_FOREIGN		"Green Card (Foreign)"
-
-
 // Human religion defines
 #define RELIGION_PROTESTANT		 		"Christianity (Protestant)"
 #define RELIGION_CATHOLIC				"Christianity (Catholic)"

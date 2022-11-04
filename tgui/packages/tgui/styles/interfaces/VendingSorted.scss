@@ -4,12 +4,43 @@
 
 $title-text-color: base.$color-fg !default;
 
-.VendingSorted__HideDesc {
-  pointer-events: none;
+$button-bg-opacity: 0.25;
+$recommended-color: #3a9b52;
+$mandatory-color: rgb(128, 83, 0);
+
+.VendingSorted__Description {
+  position: absolute;
+  right: 10vw;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  width: 79vw;
+}
+.VendingSorted__DescIcon {
+  position: absolute;
+  display: inline-block;
+  width: 79vw;
+  height: 36%;
+  margin-top: -36px;
+  vertical-align: middle;
+}
+.VendingSorted_MandatoryDescription {
+  background-color: $mandatory-color;
+  .Section__title {
+    border-bottom: base.em(2px) solid $mandatory-color;
+  }
 }
 
-.VendingSorted__ShowDesc {
-  pointer-events: all;
+.VendingSorted_RecommendedDescription {
+  background-color: $recommended-color;
+  .Section__title {
+    border-bottom: base.em(2px) solid $recommended-color;
+  }
+}
+
+.VendingSorted__Tooltip {
+  width: 100%;
 }
 
 .VendingSorted__SearchBox {
@@ -30,6 +61,10 @@ $title-text-color: base.$color-fg !default;
 
 .VendingSorted__CategorySection {
   width: 100%;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .VendingSorted__Category {
@@ -41,27 +76,81 @@ $title-text-color: base.$color-fg !default;
   color: white;
 }
 
-.VendingSorted__Button {
-  text-align: center;
+.theme-weyland {
+  .VendingSorted__VendButton {
+    background-color: rgba(#ffffff, $button-bg-opacity);
+    transition: none;
+    .Button__content {
+      color: #ffffff;
+      mix-blend-mode: difference;
+      text-shadow: 2px 2px #444444;
+    }
+  }
 }
 
 .VendingSorted__VendButton {
-  width: 25px;
-  height: 18px;
-  line-height: 18px;
+  width: 100%;
+  display:block;
+  font-size: base.em(14px);
+  font-weight: bold;
+  background-color: rgba(colors.$primary, $button-bg-opacity);
+  border: 2px solid colors.$primary;
+  display: block;
+  &:hover,
+  &:focus {
+    transition: colors.$primary 0ms, background-color 0ms;
+    background-color: colors.$primary;
+  }
+
+  .Button__content {
+    align-self: flex-start;
+    text-align: left;
+    margin-top: -2px;
+    margin-bottom: -1px;
+  }
 }
 
 .VendingSorted__RecommendedVendButton {
-  background-color: #3a9b52;
+  background-color: rgba($recommended-color, $button-bg-opacity);
+  border: 1px solid rgba($recommended-color, 1);
+  transition: $recommended-color 50ms, background-color 50ms;
+  &:hover,
+  &:focus {
+    transition: $recommended-color 0ms, background-color 0ms;
+    background-color: $recommended-color;
+  }
 }
 
 .VendingSorted__MandatoryVendButton {
-  color: rgb(128, 83, 0);
+  background-color: rgba($mandatory-color, $button-bg-opacity);
+  border: 1px solid rgba($mandatory-color, 1);
+  transition: $mandatory-color 50ms, background-color 50ms;
+
+  &:hover,
+  &:focus {
+    background-color: $mandatory-color;
+    transition: $mandatory-color 0ms, background-color 0ms;
+  }
+}
+
+.VendingFlexAlt {
+  background-color: rgba(#000000, 0.6);
+}
+
+.VendingItem {
+  margin: 0;
 }
 
 .VendingSorted__Icon {
   min-width: 32px;
   max-width: 32px;
+  max-height: 32px;
+  margin-top: -6px;
+  margin-bottom: -6px;
+}
+
+.VendingSorted__Cost {
+  width: 30px;
 }
 
 .VendingSorted__Text {
@@ -82,24 +171,17 @@ $title-text-color: base.$color-fg !default;
 }
 
 .VendingSorted__MandatoryItemText {
-  color: orange;
+  color: rgb(255, 200, 90);
 }
 
 .VendingSorted__RecommendedItemText {
-  color: #56e97b;
+  color: #56E97B;
 }
 
 .VendingSorted__Spacer {
   width: 15px;
 }
 
-.VendingSorted__ItemFlex {
-  margin-top: 5px;
-}
-
-.VendingSorted__ItemBox {
-  height: 18px;
-}
 
 .VendingSorted__ItemSeparator {
   height: 1px;
@@ -108,15 +190,4 @@ $title-text-color: base.$color-fg !default;
   position: absolute;
   width: 100%;
   margin-top: -0px;
-}
-
-.VendingSorted__Tooltip {
-  background-color: red;
-}
-
-.VendingSorted__Description {
-  margin-left: -5px;
-  margin-right: -5px;
-  margin-top: -1px;
-  margin-bottom: -1px;
 }

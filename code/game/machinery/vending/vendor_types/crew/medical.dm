@@ -5,12 +5,14 @@
 	vendor_role = list(JOB_DOCTOR,JOB_NURSE,JOB_RESEARCHER,JOB_CMO)
 	icon_state = "dress"
 
-/obj/structure/machinery/cm_vending/clothing/medical_crew/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_clothing_doctor
-
-
 /obj/structure/machinery/cm_vending/clothing/medical_crew/get_listed_products(mob/user)
+	if(!user)
+		var/list/combined = list()
+		combined += GLOB.cm_vending_clothing_nurse
+		combined += GLOB.cm_vending_clothing_researcher
+		combined += GLOB.cm_vending_clothing_cmo
+		combined += GLOB.cm_vending_clothing_doctor
+		return combined
 	if(user.job == JOB_NURSE)
 		return GLOB.cm_vending_clothing_nurse
 	else if(user.job == JOB_RESEARCHER)
@@ -18,6 +20,8 @@
 	else if(user.job == JOB_CMO)
 		///defined in senior_officers.dm
 		return GLOB.cm_vending_clothing_cmo
+	else if(user.job == JOB_DOCTOR)
+		return GLOB.cm_vending_clothing_doctor
 	return ..()
 
 

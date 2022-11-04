@@ -155,11 +155,15 @@
 	set name = "Staffwho"
 	set category = "Admin"
 
-	var/dat = "<B>Administration:</B><br>"
+	var/dat = ""
 	var/list/mappings
+	if(CONFIG_GET(flag/show_manager))
+		LAZYSET(mappings, "<B style='color:purple'>Management</B>", R_HOST)
+	if(CONFIG_GET(flag/show_devs))
+		LAZYSET(mappings, "<B style='color:blue'>Developers</B>", R_PROFILER)
 	LAZYSET(mappings, "<B style='color:red'>Admins</B>", R_ADMIN)
 	if(CONFIG_GET(flag/show_mods))
-		LAZYSET(mappings, "<B style='color:orange'>Moderators</B>", R_MOD && R_BAN)
+		LAZYSET(mappings, "<B style='color:orange'>Moderators</B>", R_MOD)
 	if(CONFIG_GET(flag/show_mentors))
 		LAZYSET(mappings, "<B style='color:green'>Mentors</B>", R_MENTOR)
 

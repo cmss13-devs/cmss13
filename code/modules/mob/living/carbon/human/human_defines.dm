@@ -36,8 +36,7 @@
 	var/datum/species/species //Contains icon generation and language information, set during New().
 
 	// General information
-	var/home_system = ""
-	var/citizenship = ""
+	var/origin = ""
 	var/personal_faction = ""
 	var/religion = ""
 

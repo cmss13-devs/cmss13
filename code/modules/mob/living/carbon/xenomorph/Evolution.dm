@@ -147,6 +147,10 @@
 	else
 		new_xeno.plasma_stored = new_xeno.plasma_max*(plasma_stored/plasma_max) //preserve the ratio of plasma
 
+	new_xeno.built_structures = built_structures.Copy()
+
+	built_structures = null
+
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You emerge in a greater form from the husk of your old body. For the hive!"))
 
@@ -297,6 +301,10 @@
 			xeno_type = /mob/living/carbon/Xenomorph/Burrower
 
 	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
+
+	new_xeno.built_structures = built_structures.Copy()
+
+	built_structures = null
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!

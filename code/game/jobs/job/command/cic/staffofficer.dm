@@ -6,7 +6,7 @@
 	scaled = FALSE
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/so
-	entry_message_body = "Your job is to monitor the Marines, man the CIC, and listen to your superior officers. You are in charge of logistics and the overwatch system. You are also in line to take command after other eligible superior commissioned officers."
+	entry_message_body = "<a href='"+URL_WIKI_SO_GUIDE+"'>Your job is to monitor the Marines, man the CIC, and listen to your superior officers.</a> You are in charge of logistics and the overwatch system. You are also in line to take command after other eligible superior commissioned officers."
 
 /datum/job/command/bridge/set_spawn_positions(var/count)
 	spawn_positions = so_slot_formula(count)

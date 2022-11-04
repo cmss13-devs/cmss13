@@ -169,6 +169,12 @@
 
 	for (var/x in 0 to 3)
 		temp = get_step(T, facing)
+		if(facing in diagonals) // check if it goes through corners
+			var/reverse_face = reverse_dir[facing]
+			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
+			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
+			if((!back_left || back_left.density) && (!back_right || back_right.density))
+				break
 		if(!temp || temp.density || temp.opacity)
 			break
 
@@ -358,8 +364,8 @@
 	var/damage = base_damage
 	var/range = 1
 	var/windup_reduction = 0
-	var/lifesteal_per_marine = 80
-	var/max_lifesteal = 300
+	var/lifesteal_per_marine = 50
+	var/max_lifesteal = 250
 	var/lifesteal_range =  1
 
 	if (xeno.mutation_type == RAVAGER_BERSERKER)

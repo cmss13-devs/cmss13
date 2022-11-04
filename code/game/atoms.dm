@@ -351,10 +351,6 @@ Parameters are passed from New.
 	for(var/datum/effects/acid/A in effects_list)
 		qdel(A)
 
-/atom/proc/remove_weather_effects()
-	for(var/datum/effects/weather/W in effects_list)
-		qdel(W)
-
 // Movement
 /atom/proc/add_temp_pass_flags(flags_to_add)
 	if (isnull(temp_flag_counter))

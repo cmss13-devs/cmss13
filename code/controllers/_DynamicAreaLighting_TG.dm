@@ -282,6 +282,10 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 	A.SetLightLevel(level)
 	Area.related += A
+
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(A))
+		A.overlays += SSweather.curr_master_turf_overlay
+
 	return A
 
 /turf/proc/shift_to_subarea()
@@ -336,7 +340,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 		lighting_overlay.icon_state = "[light]"
 	else
 		lighting_overlay = image(LIGHTING_ICON,,num2text(light),LIGHTING_LAYER)
-		lighting_overlay.plane = LIGHTING_PLANE
+		lighting_overlay.plane = ceiling <= CEILING_GLASS ? EXTERIOR_LIGHTING_PLANE : LIGHTING_PLANE
 	if (light < 6)
 		overlays.Add(lighting_overlay)
 
@@ -394,9 +398,3 @@ GLOBAL_LIST_INIT(comp2table, list(
 #undef LIGHTING_MAX_LUMINOSITY_STATIC
 #undef LIGHTING_MAX_LUMINOSITY_MOBILE
 #undef LIGHTING_MAX_LUMINOSITY_TURF
-
-/area/proc/add_thunder()
-	if(ceiling < CEILING_GLASS && SSticker?.mode.flags_round_type & MODE_THUNDERSTORM)
-		underlays += GLOB.weather_rain_effect
-		for(var/turf/T in contents)
-			T.update_lumcount(exterior_light)

@@ -27,7 +27,7 @@
 	//update the current life tick, can be used to e.g. only do something every 4 ticks
 	life_tick++
 
-	if(stat == DEAD && species.name == "Zombie")
+	if(stat == DEAD && species.name == SPECIES_ZOMBIE)
 		handle_chemicals_in_body(delta_time)
 		return
 

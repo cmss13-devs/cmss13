@@ -904,6 +904,7 @@
 
 	var/obj/limb/limb = target.get_limb(check_zone(stabbing_xeno.zone_selected))
 	if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
+		to_chat(stabbing_xeno, (SPAN_WARNING("What [limb.display_name]?")))
 		return FALSE
 
 	if(!check_and_use_plasma_owner())

@@ -22,6 +22,11 @@
 			total_positions_so_far = positions
 	return positions
 
+/datum/job/command/intel/generate_entry_conditions(mob/living/carbon/human/H)
+	..()
+	if(!Check_WO())
+		H.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
+
 AddTimelock(/datum/job/command/intel, list(
 	JOB_SQUAD_ROLES = 5 HOURS
 ))

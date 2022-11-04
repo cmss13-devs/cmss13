@@ -447,8 +447,9 @@
 
 /obj/item/device/radio/headset/almayer/intel
 	name = "marine intel radio headset"
-	desc = "Used by Intelligence Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :j - JTAC, :t - intel."
-	initial_keys = list(/obj/item/device/encryptionkey/po)
+	desc = "Used by Intelligence Officers. Channels are as follows: ; - intel, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e = echo, :f = foxtrot, :j - JTAC, :u = req, :n = engineering, :m = medical."
+	frequency = INTEL_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/iofficer)
 
 /obj/item/device/radio/headset/almayer/mcl
 	name = "corporate liaison radio headset"

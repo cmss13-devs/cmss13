@@ -105,6 +105,11 @@
 	icon_state = "cap_key"
 	channels = list(RADIO_CHANNEL_COMMAND = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 1, RADIO_CHANNEL_JTAC = 1, RADIO_CHANNEL_INTEL = 1)
 
+/obj/item/device/encryptionkey/iofficer
+	name = "\improper Marine intelligence Officer Radio Encryption Key"
+	icon_state = "cap_key"
+	channels = list(RADIO_CHANNEL_INTEL = 1, RADIO_CHANNEL_COMMAND = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 1, RADIO_CHANNEL_JTAC = 1, RADIO_CHANNEL_ALMAYER = 1)
+
 /obj/item/device/encryptionkey/mcom/cl
 	name = "\improper Corporate Liaison radio encryption key"
 	icon_state = "cap_key"
@@ -119,11 +124,6 @@
 	name = "\improper Marine Pilot Officer Radio Encryption Key"
 	icon_state = "cap_key"
 	channels = list(RADIO_CHANNEL_COMMAND = 1, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, SQUAD_MARINE_5 = 0, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_JTAC = 1, RADIO_CHANNEL_INTEL = 1)
-
-/obj/item/device/encryptionkey/io
-	name = "\improper Marine Intelligence Officer Radio Encryption Key"
-	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = 1, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, SQUAD_MARINE_5 = 0, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_INTEL = 1)
 
 /obj/item/device/encryptionkey/mcom/ai //AI only.
 	channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 1, RADIO_CHANNEL_JTAC = 1, RADIO_CHANNEL_INTEL = 1)

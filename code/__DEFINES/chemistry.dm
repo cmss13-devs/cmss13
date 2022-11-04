@@ -152,7 +152,7 @@
 #define PROPERTY_BONEMENDING 		"bonemending"
 #define PROPERTY_FLUXING 			"fluxing"
 #define PROPERTY_NEUROCRYOGENIC		"neurocryogenic"
-#define PROPERTY_CRYSTALIZATION		"crystalization"
+#define PROPERTY_CRYSTALLIZATION	"crystallization"
 #define PROPERTY_PHOTOSENSETIVE		"photosensetive"
 #define PROPERTY_NEUTRALIZING		"neutralizing"
 #define PROPERTY_DISRUPTING			"disrupting"

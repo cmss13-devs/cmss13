@@ -1,6 +1,6 @@
 /obj/item/frame/matrix
 	name = "Matrix frame"
-	desc = "Assembly for dropship guidance camera matrix."
+	desc = "Assembly for dropship camera matrix, installed into weapons console. Has complex series of lenses to pass light through fluid. \nBecause fluids of the vial is spread evenly inside, it cant be removed after its been inserted. "
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "matrix"
 	matter = list("metal" = 7500)
@@ -24,7 +24,7 @@
 				desc = initial(desc) + "\nThe vial is installed but is not screwed."
 				var/datum/reagent/S = W.reagents.reagent_list[1]
 				to_chat(user, SPAN_NOTICE(english_list(S.properties)))
-				if(S.get_property(PROPERTY_PHOTOSENSETIVE) && !S.get_property(PROPERTY_CRYSTALIZATION))
+				if(S.get_property(PROPERTY_PHOTOSENSETIVE) && !S.get_property(PROPERTY_CRYSTALLIZATION))
 					var/datum/chem_property/G = S.get_property(PROPERTY_PHOTOSENSETIVE)
 					power = G.level - 5
 					if(power <= 0)
@@ -33,8 +33,8 @@
 						matrixcol= "#7aff7a"
 					upgrade = MATRIX_NVG
 					return
-				else if (S.get_property(PROPERTY_CRYSTALIZATION))
-					var/datum/chem_property/G = S.get_property(PROPERTY_CRYSTALIZATION)
+				else if (S.get_property(PROPERTY_CRYSTALLIZATION))
+					var/datum/chem_property/G = S.get_property(PROPERTY_CRYSTALLIZATION)
 					power = G.level - 5
 					if(power <= 0)
 						matrixsize = 9

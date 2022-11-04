@@ -1,7 +1,7 @@
 import { useBackend } from '../backend';
 import { Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { DocumentLog, CompoundTable } from './ResearchTerminal';
+import { DocumentLog, CompoundTable, DocumentRecord } from './ResearchTerminal';
 
 interface TerminalProps {
   "published_documents": DocumentLog;
@@ -10,6 +10,13 @@ interface TerminalProps {
 
 export const PublishedDocsHud = (_, context) => {
   const { data } = useBackend<TerminalProps>(context);
+  const published = Object.keys(data.published_documents)
+    .map(x => {
+      const output = data.published_documents[x] as DocumentRecord[];
+      output.forEach(y => { y.category = x; });
+      return output;
+    })
+    .flat() as DocumentRecord[];
   return (
     <Window width={500} height={400} theme="ntos">
       <Window.Content scrollable>
@@ -18,7 +25,7 @@ export const PublishedDocsHud = (_, context) => {
             <Stack.Item>
               <CompoundTable
                 className="PublishedDocs"
-                docs={data.published_documents['XRF Scans'] ?? []}
+                docs={published}
                 timeLabel="Published"
                 canPrint={false} />
             </Stack.Item>

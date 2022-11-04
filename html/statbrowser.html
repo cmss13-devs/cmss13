@@ -992,10 +992,10 @@
 				tab_change("Status");
 			}
 
-			window.onload = function () {
-				alert("Statpanel onload")
-				NotifyByondOnload();
-			};
+			window.addEventListener('load', _ => {
+				NotifyByondOnload()
+				document.getElementById("statcontent").appendChild(document.createElement("... Loaded!"));
+			})
 
 			function NotifyByondOnload() {
 				window.location.href = "byond://winset?command=Panel-Ready";

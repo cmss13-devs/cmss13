@@ -1,8 +1,10 @@
 var/list/department_radio_keys = list(
+	  ":r" = RADIO_EAR_RIGHT,			"#r" = RADIO_EAR_RIGHT,				".r" = RADIO_EAR_RIGHT,
+	  ":l" = RADIO_EAR_LEFT ,			"#l" = RADIO_EAR_LEFT ,				".l" = RADIO_EAR_LEFT ,
 	  ":i" = RADIO_CHANNEL_INTERCOM,	"#i" = RADIO_CHANNEL_INTERCOM,		".i" = RADIO_CHANNEL_INTERCOM,
 	  ":h" = RADIO_CHANNEL_DEPARTMENT,	"#h" = RADIO_CHANNEL_DEPARTMENT,	".h" = RADIO_CHANNEL_DEPARTMENT,
-	  ":+" = RADIO_CHANNEL_SPECIAL,		"#+" = RADIO_CHANNEL_SPECIAL,		".+" = RADIO_CHANNEL_SPECIAL, //activate radio-specific special functions
 	  ":w" = RADIO_MODE_WHISPER,		"#w" = RADIO_MODE_WHISPER,			".w" = RADIO_MODE_WHISPER,
+	  ":+" = RADIO_CHANNEL_SPECIAL,		"#+" = RADIO_CHANNEL_SPECIAL,		".+" = RADIO_CHANNEL_SPECIAL, //activate radio-specific special functions
 
 	  ":m" = RADIO_CHANNEL_MEDSCI,		"#m" = RADIO_CHANNEL_MEDSCI,		".m" = RADIO_CHANNEL_MEDSCI,
 	  ":n" = RADIO_CHANNEL_ENGI, 		"#n" = RADIO_CHANNEL_ENGI,			".n" = RADIO_CHANNEL_ENGI,

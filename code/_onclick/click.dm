@@ -16,7 +16,7 @@
 	if not, return 0 to perform regular click functions like picking up items off the ground.
 	~ BMC777
 */
-it'
+
 /client/Click(atom/A, location, control, params)
 	if (control && !ignore_next_click)	// No .click macros allowed, and only one click per mousedown.
 		ignore_next_click = TRUE

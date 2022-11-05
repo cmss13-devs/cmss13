@@ -32,6 +32,14 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	GLOB.shuttle_controls -= src
 	return ..()
 
+/obj/structure/machinery/computer/shuttle_control/get_examine_text(mob/user)
+	. = ..()
+	var/proximity = Adjacent(user)
+	for(var/obj/structure/dropship_equipment/equipment as anything in shuttle_equipments)
+		var/list/examine_string = equipment.get_console_examine(user, proximity)
+		if(examine_string)
+			. += examine_string
+
 /obj/structure/machinery/computer/shuttle_control/proc/get_shuttle()
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 

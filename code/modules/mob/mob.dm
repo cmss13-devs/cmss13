@@ -169,11 +169,11 @@
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
-/atom/proc/visible_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
+/atom/proc/visible_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER, show_small_icon = FALSE)
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
-		M.show_message(message, 1, blind_message, 2, message_flags)
+		M.show_message(show_small_icon ? "[icon2html(src, M)] [message]" : message, 1, blind_message, 2, message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7

@@ -380,6 +380,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(all_skills, /datum/skill, skill_name)
 GLOBAL_LIST_EMPTY(timelocks)
 
 
+GLOBAL_LIST_INIT(dropship_compounds, list(COMPOUND_PHI, COMPOUND_OMEGA, COMPOUND_TAU, COMPOUND_EPSILON))
+
 //the global list of specialist kits that haven't been claimed yet.
 var/global/list/available_specialist_sets = list(
 			"Scout Set",

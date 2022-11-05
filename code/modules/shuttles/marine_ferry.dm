@@ -186,9 +186,6 @@
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
-	for(var/obj/structure/dropship_equipment/fuel/fuel_equipment in equipments)
-		fuel_equipment.generate_desired_fuel()
-
 	for(var/obj/structure/dropship_equipment/fuel/cooling_system/CS in equipments)
 		recharging = round(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
 		break
@@ -350,9 +347,8 @@
 		SSticker.mode.flags_round_type |= MODE_DS_LANDED
 		SSticker.mode.ds_first_landed(src)
 
-	for(var/X in equipments)
-		var/obj/structure/dropship_equipment/E = X
-		E.on_arrival()
+	for(var/obj/structure/dropship_equipment/equipment as anything in equipments)
+		equipment.on_arrival()
 
 	moving_status = SHUTTLE_IDLE
 

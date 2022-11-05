@@ -142,7 +142,10 @@
 /obj/structure/dropship_equipment/proc/report_to_control_consoles(var/message, var/max_distance = 2)
 	if(linked_shuttle)
 		for(var/obj/structure/machinery/computer/shuttle_control/control_console as anything in linked_shuttle.controls)
-			control_console.visible_message(message, max_distance = max_distance)
+			control_console.visible_message("[capitalize_first_letters(control_console.name)] blares, \"[message]\"", max_distance = max_distance, show_small_icon = TRUE)
+
+/obj/structure/dropship_equipment/proc/get_console_examine(var/mob/user, var/proximity)
+	return
 
 //////////////////////////////////// turret holders //////////////////////////////////////
 
@@ -388,33 +391,43 @@
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	equip_categories = list(DROPSHIP_FUEL_EQP)
 
-	var/list/fuel_types = list(
-		COMPOUND_PHI,
-		COMPOUND_OMEGA,
-		COMPOUND_TAU,
-		COMPOUND_EPSILON
-	)
 	var/desired_fuel_type
 	var/atom/fuel_pump
 
-/obj/structure/dropship_equipment/fuel/proc/generate_desired_fuel()
-	desired_fuel_type = pick(fuel_types)
-	report_to_control_consoles("[capitalize_first_letters(name)] demands: <b>[capitalize_first_letters(desired_fuel_type)]</b>")
+/obj/structure/dropship_equipment/fuel/get_console_examine(var/mob/user, var/proximity)
+	if(desired_fuel_type)
+		return list("[capitalize_first_letters(name)] demands: <b>[capitalize_first_letters(desired_fuel_type)]</b>.")
 
-/obj/structure/dropship_equipment/fuel/proc/take_rod(var/obj/item/compound_rod/rod, var/mob/user)
-	if(rod.compound == desired_fuel_type)
+/obj/structure/dropship_equipment/fuel/on_arrival()
+	. = ..()
+	desired_fuel_type = pick(GLOB.dropship_compounds)
+	report_to_control_consoles("[capitalize_first_letters(name)] demands: <b>[capitalize_first_letters(desired_fuel_type)]</b>.")
+
+/obj/structure/dropship_equipment/fuel/proc/take_compound(var/compound_type, var/mob/user)
+	if(compound_type == desired_fuel_type)
 		linked_shuttle.recharging = max(linked_shuttle.recharging - 10 SECONDS, 0)
-		report_to_control_consoles("[capitalize_first_letters(name)] received <b>CORRECT</b> compound, time <b>REDUCED</b> to [linked_shuttle.recharging / 10] seconds!")
-		to_chat(user, "[capitalize_first_letters(name)] received <b>CORRECT</b> compound, time <b>REDUCED</b> to [linked_shuttle.recharging / 10] seconds!")
+		if(linked_shuttle.recharging > 0)
+			report_to_control_consoles("[capitalize_first_letters(name)] received <b>CORRECT</b> compound, time <b>REDUCED</b> to [linked_shuttle.recharging / 10] seconds!")
+			to_chat(user, "[capitalize_first_letters(name)] received <b>CORRECT</b> compound, time <b>REDUCED</b> to [linked_shuttle.recharging / 10] seconds!")
+		else
+			report_to_control_consoles("[capitalize_first_letters(name)] received <b>CORRECT</b> compound, dropship ready for take-off!")
+			to_chat(user, "[capitalize_first_letters(name)] received <b>CORRECT</b> compound, dropship ready for take-off!")
 	else
-		linked_shuttle.recharging = max(linked_shuttle.recharging + 10 SECONDS, 0)
+		linked_shuttle.recharging = linked_shuttle.recharging + 10 SECONDS
 		report_to_control_consoles("[capitalize_first_letters(name)] received <b>INCORRECT</b> compound, time <b>INCREASED</b> to [linked_shuttle.recharging / 10] seconds!")
 		to_chat(user, "[capitalize_first_letters(name)] received <b>INCORRECT</b> compound, time <b>INCREASED</b> to [linked_shuttle.recharging / 10] seconds!")
-	qdel(rod)
 
 /obj/structure/dropship_equipment/fuel/attackby(obj/item/item, mob/user)
-	if(istype(item, /obj/item/compound_rod) && linked_shuttle?.moving_status == SHUTTLE_WARMUP)
-		take_rod(item)
+	if(istype(item, /obj/item/nozzle) && linked_shuttle?.moving_status == SHUTTLE_IDLE)
+		if(linked_shuttle.recharging <= 0)
+			to_chat(user, SPAN_WARNING("Too late, the shuttle's already refueled!"))
+			return
+		var/obj/item/nozzle/nozzle = item
+		if(do_after(user, 3 SECONDS, INTERRUPT_ALL))
+			if(linked_shuttle.recharging <= 0)
+				to_chat(user, SPAN_WARNING("Too late, the shuttle's already refueled!"))
+				return
+			take_compound(nozzle.compound_type, user)
 		return
 	return ..()
 
@@ -449,28 +462,6 @@
 		to_chat(user, SPAN_WARNING("Shuttle recharge time increased to [linked_shuttle.recharging / 10] seconds!"))
 		return
 	return ..()
-
-/obj/item/compound_rod
-	name = "compound rod"
-	desc = "A rod designed to be inserted into dropship fuel and cooling systems, the insides are filled with a special compound."
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "c_tube"
-	var/compound = COMPOUND_PHI
-
-/obj/item/compound_rod/get_examine_text(mob/user)
-	. = ..()
-	if(get_dist(src, user) <= 1)
-		. += SPAN_NOTICE("Upon closer examination, you notice this rod contains: <b>[compound]</b>")
-
-
-/obj/item/compound_rod/omega
-	compound = COMPOUND_OMEGA
-
-/obj/item/compound_rod/tau
-	compound = COMPOUND_TAU
-
-/obj/item/compound_rod/epsilon
-	compound = COMPOUND_EPSILON
 
 ///////////////////////////////////// ELECTRONICS /////////////////////////////////////////
 

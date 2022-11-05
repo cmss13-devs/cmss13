@@ -13560,6 +13560,10 @@
 /obj/structure/platform_decoration,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
+"gIv" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/w_rockies)
 "gIH" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -38789,6 +38793,7 @@
 	layer = 4.2;
 	pixel_x = 17
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/w_rockies)
 "qDw" = (
@@ -42681,6 +42686,7 @@
 	pixel_x = 1;
 	pixel_y = 11
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "rYD" = (
@@ -44886,6 +44892,10 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
+"sSi" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/wall/rock,
+/area/lv522/outdoors/w_rockies)
 "sSk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -52760,6 +52770,10 @@
 	icon_state = "blue1"
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
+"vTO" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/w_rockies)
 "vTT" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -56230,6 +56244,7 @@
 	name = "\improper M577 armored personnel carrier";
 	pixel_y = -21
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/w_rockies)
 "xjC" = (
@@ -66438,7 +66453,7 @@ efH
 efH
 orE
 oVK
-sRA
+vTO
 rYq
 xjB
 efH
@@ -66665,9 +66680,9 @@ efH
 efH
 rWS
 asn
-sRA
+vTO
 qDt
-efH
+gIv
 asn
 vjC
 efH
@@ -66893,8 +66908,8 @@ ien
 asn
 asn
 ien
-asn
-efH
+sSi
+gIv
 ien
 efH
 efH

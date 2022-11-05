@@ -353,7 +353,7 @@
 								if(!surgery) break
 								H.disabilities &= ~NEARSIGHTED
 								H.sdisabilities &= ~DISABILITY_BLIND
-								E.damage = 0
+								E.heal_damage(E.damage)
 								E.eye_surgery_stage = 0
 
 

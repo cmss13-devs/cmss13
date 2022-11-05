@@ -87,21 +87,6 @@
 				marine_rk = "dcc"
 			if(JOB_CREWMAN)
 				marine_rk = "tc"
-			if(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER)
-				marine_rk = "pvo"
-			if(JOB_PROVOST_TML)
-				marine_rk = "pvtml"
-			if(JOB_PROVOST_INSPECTOR)
-				marine_rk = "pvi"
-				border_rk = "command"
-			if(JOB_PROVOST_ADVISOR)
-				marine_rk = "pva"
-				border_rk = "command"
-			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
-				marine_rk = "pvm"
-				border_rk = "command"
-			if(JOB_TIS_IO,JOB_TIS_SA)
-				marine_rk = "tissa"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 				border_rk = "command"
@@ -136,6 +121,28 @@
 				marine_rk = "nurse"
 			if(JOB_SEA)
 				marine_rk = "sea"
+				border_rk = "command"
+			if(JOB_SYNTH)
+				marine_rk = "syn"
+			if(JOB_MESS_SERGEANT)
+				marine_rk = "messtech"
+			if(JOB_PROVOST_ENFORCER)
+				marine_rk = "pve"
+			if(JOB_PROVOST_TML)
+				marine_rk = "pvtml"
+			if(JOB_PROVOST_INSPECTOR)
+				marine_rk = "pvi"
+				border_rk = "command"
+			if(JOB_PROVOST_ADVISOR)
+				marine_rk = "pva"
+				border_rk = "command"
+			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
+				marine_rk = "pvm"
+				border_rk = "command"
+			if(JOB_TIS_IO)
+				marine_rk = "tisio"
+			if(JOB_TIS_SA)
+				marine_rk = "tissa"
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
 			I.color = "#5A934A"

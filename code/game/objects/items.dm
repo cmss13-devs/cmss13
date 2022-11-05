@@ -147,22 +147,25 @@
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)
+	var/msg = pick(" is destroyed by the blast!", " is obliterated by the blast!", " shatters as the explosion englufs it!", " disentegrates in the blast!", " perishes in the blast!", " is mangled into uselessness from the blast!")
+	if(indestructible)
+		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
-				if(!indestructible)
-					qdel(src)
+				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src][msg]")))
+				qdel(src)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				if(!indestructible)
-					qdel(src)
+				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src][msg]")))
+				qdel(src)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			if(!indestructible)
-				qdel(src)
+			visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src][msg]")))
+			qdel(src)
 
 /obj/item/mob_launch_collision(var/mob/living/L)
 	forceMove(L.loc)

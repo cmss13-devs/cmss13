@@ -21,7 +21,8 @@
 	var/in_firemission_mode = FALSE
 	var/upgraded = MATRIX_DEFAULT // we transport upgrade var from matrixdm
 	var/matrixcol //color of matrix, only used when we upgrade to nv
-	var/matrixsize //viewport of matrix
+	var/power //level of the property
+	var/datum/cas_signal/selected_cas_signal
 
 
 /obj/structure/machinery/computer/dropship_weapons/New()
@@ -48,7 +49,8 @@
 			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
 			upgraded = MATRIX.upgrade
 			matrixcol = MATRIX.matrixcol
-			matrixsize = MATRIX.matrixsize
+			power = MATRIX.power
+
 		else
 			to_chat(user, SPAN_WARNING("matrix is not complete!"))
 
@@ -565,7 +567,6 @@
 			to_chat(usr, SPAN_DANGER("Bug encountered, no CAS group exists for this console, report this to a coder!"))
 			return
 
-		var/datum/cas_signal/selected_cas_signal
 		var/targ_id = text2num(href_list["cas_camera"])
 		for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
 			if(LT.target_id == targ_id && LT.valid_signal())
@@ -577,9 +578,18 @@
 			return
 
 		selected_cas_signal.linked_cam.view_directly(usr)
+		give_action(usr, /datum/action/human_action/cancel_view)
+		RegisterSignal(usr, COMSIG_MOB_RESET_VIEW, .proc/remove_from_view)
+		RegisterSignal(usr, COMSIG_MOB_RESISTED, .proc/remove_from_view)
+		firemission_envelope.apply_upgrade(usr)
 		to_chat(usr, "You peek through the guidance camera.")
 
 	ui_interact(usr)
+
+/obj/structure/machinery/computer/dropship_weapons/proc/remove_from_view()
+	UnregisterSignal(usr, COMSIG_MOB_RESET_VIEW)
+	selected_cas_signal.linked_cam.remove_from_view(usr)
+	firemission_envelope.remove_upgrades(usr)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission()
 	set waitfor = 0
@@ -630,7 +640,7 @@
 	..()
 	if(firemission_envelope && firemission_envelope.guidance)
 		firemission_envelope.remove_user_from_tracking(user)
-		
+
 /obj/structure/machinery/computer/dropship_weapons/proc/update_trace_loc()
 	if(!firemission_envelope)
 		return

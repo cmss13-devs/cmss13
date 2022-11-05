@@ -25,20 +25,16 @@
 				var/datum/reagent/S = W.reagents.reagent_list[1]
 				if(S.get_property(PROPERTY_PHOTOSENSETIVE) && !S.get_property(PROPERTY_CRYSTALLIZATION))
 					var/datum/chem_property/G = S.get_property(PROPERTY_PHOTOSENSETIVE)
-					power = G.level - 5
-					if(power <= 0)
-						matrixcol = "#4b9c4b"
-					else if (power >= 1)
+					power = G.level
+					if(power <= 3)
+						matrixcol = "#19c519"
+					else if (power >= 4)
 						matrixcol= "#7aff7a"
 					upgrade = MATRIX_NVG
 					return
 				else if (S.get_property(PROPERTY_CRYSTALLIZATION))
 					var/datum/chem_property/G = S.get_property(PROPERTY_CRYSTALLIZATION)
-					power = G.level - 5
-					if(power <= 0)
-						matrixsize = 9
-					else if (power >= 1)
-						matrixsize = 12
+					power = G.level
 					upgrade = MATRIX_WIDE
 					return
 				else

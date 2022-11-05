@@ -7,10 +7,11 @@
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_BOILER) //Only boiler.
 	mutator_actions_to_remove = list(
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
-		/datum/action/xeno_action/activable/bombard,
-		/datum/action/xeno_action/activable/acid_lance,
+		/datum/action/xeno_action/activable/xeno_spit/bombard,
+		/datum/action/xeno_action/onclick/shift_spits/boiler,
+		/datum/action/xeno_action/activable/spray_acid/boiler,
 		/datum/action/xeno_action/onclick/dump_acid,
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/boiler_trap,

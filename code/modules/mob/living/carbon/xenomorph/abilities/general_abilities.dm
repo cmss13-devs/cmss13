@@ -269,6 +269,7 @@
 	var/delay = 20
 	var/handles_movement = TRUE
 	var/movement_buffer = 0  // how much you can move before zoom breaks
+	var/movement_slowdown = 0 // if we can move while zoomed, how slowed will we be when zoomed in? Use speed modifiers.
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
 	var/mob/living/carbon/Xenomorph/xeno = owner
@@ -287,6 +288,9 @@
 		xeno.zoom_out() // will also handle icon_state
 		xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \
 		SPAN_NOTICE("You stop looking off into the distance."), null, 5)
+		if(movement_slowdown)
+			xeno.speed_modifier -= movement_slowdown
+			xeno.recalculate_speed()
 	else
 		xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."), \
 			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
@@ -295,20 +299,22 @@
 		if(xeno.is_zoomed) return
 		if(handles_movement)
 			RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
+		if(movement_slowdown)
+			xeno.speed_modifier += movement_slowdown
+			xeno.recalculate_speed()
 		xeno.zoom_in()
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/xeno, var/actually_moving, var/direction, var/specific_direction)
 	SIGNAL_HANDLER
-
+	movement_buffer--
 	if(!actually_moving)
 		return
-
-	movement_buffer--
 	if(movement_buffer <= 0)
 		movement_buffer = initial(movement_buffer)
-		mover.zoom_out() // will also handle icon_state
-		UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
+		xeno.zoom_out() // will also handle icon_state
+		UnregisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK)
+		xeno.recalculate_speed()
 
 // General use acid spray, can be subtyped to customize behavior.
 // ... or mutated at runtime by another action that retrieves and edits these values

@@ -1,7 +1,9 @@
 /datum/action/xeno_action/onclick/toggle_long_range/boiler
 	should_delay = TRUE
-	delay = 20
+	delay = 5
 	ability_primacy = XENO_PRIMARY_ACTION_4
+	handles_movement = FALSE
+	movement_slowdown = XENO_SPEED_SLOWMOD_ZOOM
 
 /datum/action/xeno_action/activable/acid_lance
 	name = "Acid Lance"

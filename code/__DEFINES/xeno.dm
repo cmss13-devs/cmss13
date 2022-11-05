@@ -392,6 +392,7 @@
 #define XENO_SPEED_SLOWMOD_TIER_8       0.4
 #define XENO_SPEED_SLOWMOD_TIER_9       0.45
 #define XENO_SPEED_SLOWMOD_TIER_10      0.5
+#define XENO_SPEED_SLOWMOD_ZOOM		    0.75
 
 // Neuro power
 #define XENO_NEURO_TIER_1   1

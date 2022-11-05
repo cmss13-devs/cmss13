@@ -45,15 +45,6 @@ var/list/department_radio_keys = list(
 	  ":O" = RADIO_CHANNEL_CCT,			"#O" = RADIO_CHANNEL_CCT,			".O" = RADIO_CHANNEL_CCT,
 	  ":Z" = RADIO_CHANNEL_HIGHCOM,		"#Z" = RADIO_CHANNEL_HIGHCOM,		".Z" = RADIO_CHANNEL_HIGHCOM,
 	  ":K" = SQUAD_SOF,				"#K" = SQUAD_SOF,				".K" = SQUAD_SOF,
-
-	  //kinda localization -- rastaf0
-	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
-	  ":�" = RADIO_CHANNEL_INTERCOM,	"#�" = RADIO_CHANNEL_INTERCOM,		".�" = RADIO_CHANNEL_INTERCOM,
-	  ":�" = RADIO_CHANNEL_DEPARTMENT,	"#�" = RADIO_CHANNEL_DEPARTMENT,	".�" = RADIO_CHANNEL_DEPARTMENT,
-	  ":�" = RADIO_CHANNEL_COMMAND,		"#�" = RADIO_CHANNEL_COMMAND,		".�" = RADIO_CHANNEL_COMMAND,
-	  ":�" = RADIO_CHANNEL_MEDSCI,		"#�" = RADIO_CHANNEL_MEDSCI,		".�" = RADIO_CHANNEL_MEDSCI,
-	  ":�" = RADIO_CHANNEL_ENGI,	"#�" = RADIO_CHANNEL_ENGI,	".�" = RADIO_CHANNEL_ENGI,
-	  ":�" = RADIO_MODE_WHISPER,		"#�" = RADIO_MODE_WHISPER,		".�" = RADIO_MODE_WHISPER,
 )
 
 /mob/living/proc/binarycheck()

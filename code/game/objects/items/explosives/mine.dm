@@ -159,6 +159,7 @@
 	if(customizable && assembly_stage == ASSEMBLY_LOCKED)
 		if(isigniter(detonator.a_right) && isigniter(detonator.a_left))
 			set_tripwire()
+			use_dir = TRUE
 			return
 		else
 			..()
@@ -312,4 +313,3 @@
 	customizable = TRUE
 	matter = list("metal" = 3750)
 	has_blast_wave_dampener = TRUE
-	use_dir = TRUE

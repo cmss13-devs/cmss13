@@ -15,9 +15,6 @@
 #define RADIO_VOLUME_IMPORTANT_STR "Important"
 #define RADIO_VOLUME_CRITICAL_STR "Critical"
 #define RADIO_MODE_WHISPER "whisper"
-//Left and right ears
-#define RADIO_EAR_LEFT "left ear"
-#define RADIO_EAR_RIGHT "right ear"
 
 //Radio channels
 #define RADIO_CHANNEL_ALMAYER "Almayer"
@@ -39,7 +36,6 @@
 #define RADIO_CHANNEL_NORMANDY "Normandy"
 #define RADIO_CHANNEL_REQ "Req"
 #define RADIO_CHANNEL_SPECIAL "special"
-#define RADIO_CHANNEL_SYNDICATE "Syndicate"
 #define RADIO_CHANNEL_SPECOPS "SpecOps"
 #define RADIO_CHANNEL_UPP "UPP"
 #define RADIO_CHANNEL_YAUTJA "Yautja"

@@ -54,7 +54,6 @@ var/list/department_radio_keys = list(
 	  ":�" = RADIO_CHANNEL_MEDSCI,		"#�" = RADIO_CHANNEL_MEDSCI,		".�" = RADIO_CHANNEL_MEDSCI,
 	  ":�" = RADIO_CHANNEL_ENGI,	"#�" = RADIO_CHANNEL_ENGI,	".�" = RADIO_CHANNEL_ENGI,
 	  ":�" = RADIO_MODE_WHISPER,		"#�" = RADIO_MODE_WHISPER,		".�" = RADIO_MODE_WHISPER,
-	  ":�" = RADIO_CHANNEL_SYNDICATE,	"#�" = RADIO_CHANNEL_SYNDICATE,		".�" = RADIO_CHANNEL_SYNDICATE,
 )
 
 /mob/living/proc/binarycheck()

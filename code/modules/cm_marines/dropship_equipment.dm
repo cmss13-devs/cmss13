@@ -408,14 +408,11 @@
 		linked_shuttle.recharging = max(linked_shuttle.recharging - 10 SECONDS, 0)
 		if(linked_shuttle.recharging > 0)
 			report_to_control_consoles("[capitalize_first_letters(name)] received <b>CORRECT</b> compound, time <b>REDUCED</b> to [linked_shuttle.recharging / 10] seconds!")
-			to_chat(user, "[capitalize_first_letters(name)] received <b>CORRECT</b> compound, time <b>REDUCED</b> to [linked_shuttle.recharging / 10] seconds!")
 		else
 			report_to_control_consoles("[capitalize_first_letters(name)] received <b>CORRECT</b> compound, dropship ready for take-off!")
-			to_chat(user, "[capitalize_first_letters(name)] received <b>CORRECT</b> compound, dropship ready for take-off!")
 	else
 		linked_shuttle.recharging = linked_shuttle.recharging + 10 SECONDS
 		report_to_control_consoles("[capitalize_first_letters(name)] received <b>INCORRECT</b> compound, time <b>INCREASED</b> to [linked_shuttle.recharging / 10] seconds!")
-		to_chat(user, "[capitalize_first_letters(name)] received <b>INCORRECT</b> compound, time <b>INCREASED</b> to [linked_shuttle.recharging / 10] seconds!")
 
 /obj/structure/dropship_equipment/fuel/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/nozzle) && linked_shuttle?.moving_status == SHUTTLE_IDLE)
@@ -423,7 +420,8 @@
 			to_chat(user, SPAN_WARNING("Too late, the shuttle's already refueled!"))
 			return
 		var/obj/item/nozzle/nozzle = item
-		if(do_after(user, 3 SECONDS, INTERRUPT_ALL))
+		playsound(loc, 'sound/effects/spray3.ogg', vol = 15, vary = TRUE)
+		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			if(linked_shuttle.recharging <= 0)
 				to_chat(user, SPAN_WARNING("Too late, the shuttle's already refueled!"))
 				return

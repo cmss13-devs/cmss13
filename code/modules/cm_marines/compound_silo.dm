@@ -11,7 +11,7 @@
 
 	var/obj/item/nozzle/attached_to
 	var/atom/tether_holder
-	var/tether_range = 7
+	var/tether_range = 12
 
 /obj/structure/compound_silo/omega
 	compound_type = COMPOUND_OMEGA
@@ -34,15 +34,16 @@
 	recall_nozzle()
 	return COMPONENT_ABORT_QDEL
 
+/obj/structure/compound_silo/forceMove(atom/dest)
+	recall_nozzle()
+	return ..()
+
 /obj/structure/compound_silo/proc/recall_nozzle()
 	if(ismob(attached_to.loc))
 		var/mob/M = attached_to.loc
 		M.drop_held_item(attached_to)
-		playsound(get_turf(M), "rtb_handset", 100, FALSE, 7)
 
 	attached_to.forceMove(src)
-
-	update_icon()
 
 /obj/structure/compound_silo/attack_hand(mob/user)
 	. = ..()
@@ -53,10 +54,12 @@
 	if(!ishuman(user))
 		return
 
+	playsound(user.loc, 'sound/handling/multitool_pickup.ogg', vol = 15, vary = TRUE)
 	user.put_in_active_hand(attached_to)
 
 /obj/structure/compound_silo/attackby(obj/item/W, mob/user)
 	if(W == attached_to)
+		playsound(user.loc, 'sound/handling/multitool_drop.ogg', vol = 15, vary = TRUE)
 		recall_nozzle()
 		return
 	return ..()
@@ -142,7 +145,7 @@
 	if(tether_from == tether_to)
 		return
 
-	var/list/tether_effects = apply_tether(tether_from, tether_to, range = attached_to.tether_range, icon = "wire", always_face = FALSE)
+	var/list/tether_effects = apply_tether(tether_from, tether_to, range = attached_to.tether_range, icon = "chain", always_face = FALSE)
 	tether_effect = tether_effects["tetherer_tether"]
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, .proc/reset_tether)
 

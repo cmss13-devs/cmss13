@@ -295,6 +295,9 @@
 					return
 		load_target_tag = "reagent_dispenser"
 
+	else if(istype(target, /obj/structure/compound_silo))
+		load_target_tag = "reagent_dispenser"
+
 	else if(istypestrict(target, /obj/structure/machinery/floodlight))
 		var/obj/structure/machinery/floodlight/FD = target
 		if(FD.anchored)

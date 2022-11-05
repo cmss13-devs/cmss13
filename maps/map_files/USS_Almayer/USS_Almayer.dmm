@@ -6565,8 +6565,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
 	id_tag = "Boat2-D2";
 	linked_dock = "almayer-lifeboat2";
-	throw_dir = 1;
-	locked = 1
+	throw_dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -9845,8 +9844,8 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Combat Information Center";
-	id = "cic_exterior"
+	id = "cic_exterior";
+	name = "\improper Combat Information Center"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -14060,8 +14059,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
 	id_tag = "Boat1-D2";
 	linked_dock = "almayer-lifeboat1";
-	throw_dir = 2;
-	locked = 1
+	throw_dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -36779,8 +36777,8 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Combat Information Center";
-	id = "cic_exterior"
+	id = "cic_exterior";
+	name = "\improper Combat Information Center"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -40439,6 +40437,10 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"eTv" = (
+/obj/structure/compound_silo,
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_f_p)
 "eTF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -49289,6 +49291,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
+/obj/structure/compound_silo,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "iRr" = (
@@ -61626,6 +61629,14 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
+"orw" = (
+/obj/structure/sign/safety/bulkhead_door{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/obj/structure/compound_silo/omega,
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_f_p)
 "orH" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 10
@@ -62588,8 +62599,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
 	id_tag = "Boat2-D1";
 	linked_dock = "almayer-lifeboat2";
-	throw_dir = 1;
-	locked = 1
+	throw_dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -70203,8 +70213,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
 	id_tag = "Boat1-D1";
 	linked_dock = "almayer-lifeboat1";
-	throw_dir = 2;
-	locked = 1
+	throw_dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -70468,6 +70477,11 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
+"sqd" = (
+/obj/structure/machinery/light,
+/obj/structure/compound_silo/tau,
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_f_p)
 "sqo" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -70489,6 +70503,10 @@
 	tag = "icon-green (NORTH)"
 	},
 /area/almayer/shipboard/brig/cells)
+"srP" = (
+/obj/structure/compound_silo/epsilon,
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_f_p)
 "srV" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/firealarm{
@@ -71595,6 +71613,11 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"sQm" = (
+/obj/structure/machinery/light,
+/obj/structure/compound_silo/omega,
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_f_p)
 "sQF" = (
 /turf/open/floor/almayer{
 	icon_state = "red";
@@ -77578,6 +77601,10 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/hallways/hangar)
+"vmG" = (
+/obj/structure/compound_silo/tau,
+/turf/open/floor/plating,
+/area/almayer/hull/lower_hull/l_f_p)
 "vmK" = (
 /obj/structure{
 	health = 150;
@@ -101630,7 +101657,7 @@ btO
 bcm
 tlI
 jEs
-kCT
+srP
 lsb
 fcG
 ufp
@@ -102034,7 +102061,7 @@ bGE
 bHB
 bBN
 bcm
-kCT
+eTv
 kCT
 kCT
 kCT
@@ -102648,7 +102675,7 @@ gdi
 piX
 kCT
 kCT
-kCT
+srP
 mzo
 dQH
 vRz
@@ -103054,7 +103081,7 @@ kCT
 xVj
 vox
 kCT
-hTu
+sQm
 mzo
 oFG
 vRz
@@ -103257,7 +103284,7 @@ qPg
 oas
 mni
 kCT
-fIf
+orw
 mzo
 oFG
 vRz
@@ -104678,7 +104705,7 @@ kCT
 kCT
 ePk
 kCT
-hTu
+sqd
 mzo
 oFG
 vhq
@@ -105285,7 +105312,7 @@ bcm
 sti
 kCT
 iTN
-kCT
+vmG
 kOk
 fIf
 mzo

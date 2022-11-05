@@ -59,3 +59,13 @@
   Mistfrag:
   - qol: Linked respective wiki page to all Marine roles.
   - code_imp: Added defines for every wiki page on marines.
+2022-11-05:
+  realforest2001:
+  - rscdel: Removed Provost Officer job as it is now obsolete.
+  - tweak: Changed how the HUDs draw their icon pools to allow for easier differentiation
+      in file names.
+  - tweak: Changed the Dropship Crew Chief HUD Icon to fit enlisted style rather than
+      using junior officer style.
+  - tweak: Changed the UAAC-TIS Special Agent HUD Icon to officer colors, leaving
+      current icon for TIS Intel Officer.
+  - rscadd: Added HUD icons for Synthetic and Mess Technician.

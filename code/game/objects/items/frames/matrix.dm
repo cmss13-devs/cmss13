@@ -23,7 +23,6 @@
 				to_chat(user, SPAN_NOTICE("You add the vial to the matrix, and the testing indicator lights up with green"))
 				desc = initial(desc) + "\nThe vial is installed but is not screwed."
 				var/datum/reagent/S = W.reagents.reagent_list[1]
-				to_chat(user, SPAN_NOTICE(english_list(S.properties)))
 				if(S.get_property(PROPERTY_PHOTOSENSETIVE) && !S.get_property(PROPERTY_CRYSTALLIZATION))
 					var/datum/chem_property/G = S.get_property(PROPERTY_PHOTOSENSETIVE)
 					power = G.level - 5

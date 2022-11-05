@@ -157,6 +157,10 @@
 				return
 
 		if("teleport_corpses")
+			if(GLOB.dead_mob_list.len < 0)
+				to_chat(owner, SPAN_ALERT("No corpses found. Aborting."))
+				return
+
 			if(alert(owner, "[GLOB.dead_mob_list.len] corpses are marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
 				return
 			for(var/mob/M in GLOB.dead_mob_list)
@@ -171,7 +175,7 @@
 			if(!item)
 				return
 
-			var/list/types = typesof(/atom)
+			var/list/types = typesof(/obj)
 			var/list/matches = new()
 
 			//Figure out which object they might be trying to fetch
@@ -187,7 +191,7 @@
 				chosen = matches[1]
 			else
 				//If we have multiple options, let them select which one they meant
-				chosen = tgui_input_list(usr, "Select an atom type", "Spawn Atom", matches)
+				chosen = tgui_input_list(usr, "Select an object type", "Find Object", matches)
 
 			if(!chosen)
 				return
@@ -196,8 +200,11 @@
 			var/list/targets = list()
 			for(var/obj/item/M in GLOB.item_list)
 				if(istype(M, chosen))
-					to_world("YES")
 					targets += M
+
+			if(targets.len < 1)
+				to_chat(owner, SPAN_ALERT("No items of type [chosen] were found. Aborting."))
+				return
 
 			if(alert(owner, "[targets.len] items are marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
 				return

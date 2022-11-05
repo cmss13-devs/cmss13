@@ -413,11 +413,14 @@
 	else
 		linked_shuttle.recharging = linked_shuttle.recharging + 10 SECONDS
 		report_to_control_consoles("[capitalize_first_letters(name)] received <b>INCORRECT</b> compound, time <b>INCREASED</b> to [linked_shuttle.recharging / 10] seconds!")
+	desired_fuel_type = null
 
 /obj/structure/dropship_equipment/fuel/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/nozzle) && linked_shuttle?.moving_status == SHUTTLE_IDLE)
 		if(linked_shuttle.recharging <= 0)
 			to_chat(user, SPAN_WARNING("Too late, the shuttle's already refueled!"))
+			return
+		if(user.action_busy)
 			return
 		var/obj/item/nozzle/nozzle = item
 		playsound(loc, 'sound/effects/spray3.ogg', vol = 15, vary = TRUE)

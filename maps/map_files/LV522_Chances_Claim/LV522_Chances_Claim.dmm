@@ -1744,6 +1744,14 @@
 	tag = "icon-floor_plate"
 	},
 /area/lv522/indoors/c_block/cargo)
+"bbL" = (
+/obj/structure/machinery/power/apc/weak{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/lv522/atmos/east_reactor/east)
 "bce" = (
 /obj/item/trash/hotdog,
 /obj/item/reagent_container/food/drinks/cans/souto{
@@ -15126,8 +15134,16 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
 "hlh" = (
-/turf/open/space/basic,
-/area/lv522/outdoors/colony_streets/north_west_street)
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/weak{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/lv522/atmos/east_reactor/north)
 "hll" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/binoculars,
@@ -38768,9 +38784,6 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
 "qDt" = (
-/obj/effect/vehicle_spawner/apc_cmd/decrepit{
-	dir = 4
-	},
 /obj/item/ammo_magazine/m2c{
 	current_rounds = 0;
 	layer = 4.2;
@@ -56208,6 +56221,17 @@
 	tag = "icon-darkyellowfull2 (EAST)"
 	},
 /area/lv522/indoors/lone_buildings/outdoor_bot)
+"xjB" = (
+/obj/structure/machinery{
+	density = 1;
+	dir = 4;
+	icon = 'icons/obj/vehicles/apc.dmi';
+	icon_state = "apc_base_com";
+	name = "\improper M577 armored personnel carrier";
+	pixel_y = -21
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/w_rockies)
 "xjC" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -66416,13 +66440,13 @@ orE
 oVK
 sRA
 rYq
-efH
+xjB
 efH
 viN
 rGi
 efH
 efH
-hlh
+hJZ
 jGh
 xyf
 hJZ
@@ -80403,7 +80427,7 @@ cpy
 cpy
 cpy
 yeQ
-wvV
+hlh
 bhd
 spI
 spI
@@ -95399,7 +95423,7 @@ dUD
 efR
 rLg
 rLg
-uMP
+bbL
 uMP
 faK
 uMP

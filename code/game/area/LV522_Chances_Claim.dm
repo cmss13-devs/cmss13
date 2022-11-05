@@ -32,7 +32,8 @@
 /area/lv522/landing_zone_1
 	name = "Chance's Claim - Landing Zone One"
 	icon_state = "explored"
-	is_resin_allowed =  "FALSE"
+	is_resin_allowed =  FALSE
+	is_landing_zone = TRUE
 
 /area/lv522/landing_zone_1/ceiling
 	ceiling = CEILING_METAL
@@ -57,7 +58,8 @@
 /area/lv522/landing_zone_2
 	name = "Chance's Claim - Landing Zone Two"
 	icon_state = "explored"
-	is_resin_allowed =  "FALSE"
+	is_resin_allowed =  FALSE
+	is_landing_zone = TRUE
 
 /area/lv522/landing_zone_2/ceiling
 	ceiling = CEILING_METAL

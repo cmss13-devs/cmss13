@@ -395,7 +395,7 @@
 	var/atom/fuel_pump
 
 /obj/structure/dropship_equipment/fuel/get_console_examine(var/mob/user, var/proximity)
-	if(desired_fuel_type)
+	if(desired_fuel_type && proximity)
 		return list("[capitalize_first_letters(name)] demands: <b>[capitalize_first_letters(desired_fuel_type)]</b>.")
 
 /obj/structure/dropship_equipment/fuel/on_arrival()
@@ -456,13 +456,6 @@
 	desc = "A cooling system for dropships. It produces additional cooling reducing delays between launch. Fits inside the engine attach points. You need a powerloader to lift it."
 	icon_state = "cooling_system"
 	point_cost = 800
-
-/obj/structure/dropship_equipment/fuel/cooling_system/attack_hand(mob/user)
-	if(linked_shuttle)
-		linked_shuttle.recharging += 10 SECONDS
-		to_chat(user, SPAN_WARNING("Shuttle recharge time increased to [linked_shuttle.recharging / 10] seconds!"))
-		return
-	return ..()
 
 ///////////////////////////////////// ELECTRONICS /////////////////////////////////////////
 

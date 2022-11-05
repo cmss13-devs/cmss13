@@ -118,7 +118,6 @@
 		return FALSE
 	return ..()
 
-
 /obj/item/nozzle/proc/on_beam_removed()
 	if(!attached_to)
 		return

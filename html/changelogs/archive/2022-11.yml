@@ -90,6 +90,9 @@
   - bugfix: fixed inconsistent floor tiling on the USS Almayer by replacing all the
       floor tiles under doors with appropriate warning stripes so you don't hurt your
       toes
+  harryob:
+  - bugfix: afk players are now correctly flagged by the server, and can be cleaned
+      up (eg, afk larvae)
   usnpeepoo:
   - bugfix: Mini-Flamer sentries no longer deal unintended damage to queens/ravagers/fire
       immune xenos

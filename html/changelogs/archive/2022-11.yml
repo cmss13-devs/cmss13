@@ -70,6 +70,9 @@
       current icon for TIS Intel Officer.
   - rscadd: Added HUD icons for Synthetic and Mess Technician.
 2022-11-06:
+  Morrow:
+  - bugfix: Removes an extra APC at the crashed ship on sorokyne and also offsets
+      correctly off of plating.
   SpartanBobby:
   - rscadd: Added two new issues of "Boots!" magazine to the Almayer
   - rscadd: Slightly extended the evidence room of the brig

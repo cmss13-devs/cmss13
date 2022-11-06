@@ -69,3 +69,12 @@
   - tweak: Changed the UAAC-TIS Special Agent HUD Icon to officer colors, leaving
       current icon for TIS Intel Officer.
   - rscadd: Added HUD icons for Synthetic and Mess Technician.
+2022-11-06:
+  SpartanBobby:
+  - rscadd: Added two new issues of "Boots!" magazine to the Almayer
+  - rscadd: Slightly extended the evidence room of the brig
+  - rscadd: Added two new books to the USS Almayer one of the books "Space beast"
+      is ICly considered contraband
+  - bugfix: fixed inconsistent floor tiling on the USS Almayer by replacing all the
+      floor tiles under doors with appropriate warning stripes so you don't hurt your
+      toes

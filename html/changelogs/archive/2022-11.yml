@@ -70,6 +70,9 @@
       current icon for TIS Intel Officer.
   - rscadd: Added HUD icons for Synthetic and Mess Technician.
 2022-11-06:
+  Don2137:
+  - qol: Made the medevac stretcher selection message on the dropship console more
+      obvious to indicate that you need to click the medevac system to winch the patient.
   Fortelian:
   - rscadd: Added janitorial closet to northwest maintenance above navigation. Contains
       generic cleaning/repair equipment such as glass, metal rods, mop & bucket, space

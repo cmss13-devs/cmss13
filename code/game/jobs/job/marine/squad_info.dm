@@ -18,7 +18,19 @@
 	var/list/data = squad_info_data.Copy()
 	data["squad"] = name
 	data["squad_color"] = squad_colors[color]
+	data["is_lead"] = get_leadership(user)
 	return data
+
+/datum/squad/proc/get_leadership(mob/user)
+	var/mob/living/carbon/human/H = user
+	if (H.name == squad_leader.name)
+		return "sl"
+	else
+		for(var/fireteam in fireteams)
+			var/mob/living/carbon/human/ftl = fireteam_leaders[fireteam]
+			if (ftl && ftl.name == H.name)
+				return fireteam
+	return FALSE
 
 /datum/squad/proc/get_marine_from_name(var/name)
 	for(var/marine in marines_list)
@@ -34,10 +46,17 @@
 	. = ..()
 	if(.)
 		return
+
+	var/islead = get_leadership(usr)
+
 	switch (action)
 		if ("assign_ft")
 			var/target_marine = params["target_marine"]
 			var/target_team = params["target_ft"]
+
+			if (islead != "sl")
+				return
+
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
 			if(!target)
 				return
@@ -48,6 +67,10 @@
 
 		if ("unassign_ft")
 			var/target_marine = params["target_marine"]
+
+			if (islead != "sl")
+				return
+
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
 			if(!target)
 				return
@@ -57,6 +80,10 @@
 
 		if ("demote_ftl")
 			var/target_team = params["target_ft"]
+
+			if (islead != "sl")
+				return
+
 			unassign_ft_leader(target_team, FALSE, TRUE)
 			update_all_squad_info()
 			return
@@ -64,6 +91,10 @@
 		if ("promote_ftl")
 			var/target_marine = params["target_marine"]
 			var/target_team = params["target_ft"]
+
+			if (islead != "sl")
+				return
+
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
 			if(!target)
 				return
@@ -73,6 +104,10 @@
 
 		if ("disband_ft")
 			var/target_team = params["target_ft"]
+
+			if (islead != "sl")
+				return
+
 			unassign_ft_leader(target_team, TRUE, TRUE)
 			update_all_squad_info()
 			return

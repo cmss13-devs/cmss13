@@ -6,15 +6,35 @@
   border: 1px solid base.$color-fg;
   padding: 6px;
   margin-top: 6px;
-  width: 30vw;
+}
+
+.ftlFlex {
+  width: 95vw;
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style: none;
+  height: 600px;
+  overflow-y: scroll;
+  align-content: flex-start;
+  padding-top: 8px;
+
+  .FireteamBox {
+    justify-items: center;
+    text-align: center;
+    margin: 0 1rem 1rem 0;
+    padding: 8px;
+    border: 2px solid red;
+    width: 300px;
+    align-self: flex-start;
+  }
 }
 
 .Title {
   position: relative;
   display: inline-block;
   height: 18px;
-  left: 50%;
-  transform: translateX(-50%);
   top: -16px;
   background-color: base.$color-bg;
   border: 1px solid base.$color-fg;
@@ -32,10 +52,12 @@
 }
 
 .FireteamMembersTable {
+  width: 250px;
+
   td {
     border: 1px solid base.$color-fg;
     font-weight: bold;
-    padding: 1px;
+    padding: 2px;
     text-align: center;
     vertical-align: middle;
   }

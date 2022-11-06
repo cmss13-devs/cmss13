@@ -596,7 +596,7 @@ var/list/roundstart_mod_verbs = list(
 	set category = "OOC"
 
 	message_staff("[key_name(usr)] announced a random fact.")
-	SSticker.mode?.declare_random_fact()
+	SSticker.mode?.declare_fun_facts()
 
 
 #undef MAX_WARNS

@@ -17,8 +17,8 @@
 	Xeno.recalculate_speed()
 
 	if (Xeno.mutation_type == LURKER_NORMAL)
-		var/datum/behavior_delegate/lurker_base/BD = Xeno.behavior_delegate
-		BD.on_invisibility()
+		var/datum/behavior_delegate/lurker_base/behavior = Xeno.behavior_delegate
+		behavior.on_invisibility()
 
 	// if we go off early, this also works fine.
 	invis_timer_id = addtimer(CALLBACK(src, .proc/invisibility_off), duration, TIMER_STOPPABLE)
@@ -47,9 +47,9 @@
 		Xeno.recalculate_speed()
 
 		if (Xeno.mutation_type == LURKER_NORMAL)
-			var/datum/behavior_delegate/lurker_base/BD = Xeno.behavior_delegate
-			if (istype(BD))
-				BD.on_invisibility_off()
+			var/datum/behavior_delegate/lurker_base/behavior = Xeno.behavior_delegate
+			if (istype(behavior))
+				behavior.on_invisibility_off()
 
 /datum/action/xeno_action/onclick/lurker_invisibility/ability_cooldown_over()
 	to_chat(owner, SPAN_XENOHIGHDANGER("You are ready to use your invisibility again!"))
@@ -70,9 +70,9 @@
 	if (Xeno.mutation_type != LURKER_NORMAL)
 		return
 
-	var/datum/behavior_delegate/lurker_base/BD = Xeno.behavior_delegate
-	if (istype(BD))
-		BD.next_slash_buffed = TRUE
+	var/datum/behavior_delegate/lurker_base/behavior = Xeno.behavior_delegate
+	if (istype(behavior))
+		behavior.next_slash_buffed = TRUE
 
 	to_chat(Xeno, SPAN_XENOHIGHDANGER("Your next slash will deal increased damage!"))
 
@@ -119,7 +119,7 @@
 	if (!action_cooldown_check())
 		return
 
-	Xeno.visible_message(SPAN_DANGER("[Xeno] slashes frantically the area in front of him!"), \
+	Xeno.visible_message(SPAN_DANGER("[Xeno] slashes frantically the area in front of it!"), \
 	SPAN_XENOWARNING("You unleash a barrage of slashes!"))
 	playsound(Xeno, "alien_tail_swipe3", 30)
 	apply_cooldown()

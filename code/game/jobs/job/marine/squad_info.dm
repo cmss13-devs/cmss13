@@ -106,16 +106,6 @@
 			update_all_squad_info()
 			return
 
-		if ("disband_ft")
-			var/target_team = params["target_ft"]
-
-			if (islead != "sl")
-				return
-
-			unassign_ft_leader(target_team, TRUE, TRUE)
-			update_all_squad_info()
-			return
-
 //used once on first opening
 /datum/squad/proc/update_all_squad_info()
 	squad_info_data["sl"] = list()

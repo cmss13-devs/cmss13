@@ -93,6 +93,9 @@
   harryob:
   - bugfix: afk players are now correctly flagged by the server, and can be cleaned
       up (eg, afk larvae)
+  stanalbatross:
+  - qol: you can now toggle off item pickup animations or selectively toggle off item
+      animations of objects being moved around in inventory
   usnpeepoo:
   - bugfix: Mini-Flamer sentries no longer deal unintended damage to queens/ravagers/fire
       immune xenos

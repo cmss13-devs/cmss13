@@ -27,7 +27,7 @@
 
 /datum/squad/proc/get_leadership(mob/user)
 	var/mob/living/carbon/human/H = user
-	if (H.name == squad_leader.name)
+	if (squad_leader && H.name == squad_leader.name)
 		return "sl"
 	else
 		for(var/fireteam in fireteams)

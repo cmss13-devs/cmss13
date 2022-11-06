@@ -264,7 +264,7 @@
 	var/list/squads = list("Alpha", "Bravo", "Charlie", "Delta", "Foxtrot", "Cryo")
 
 	var/list/icon_data = list(
-		list("Mar", "hudsquad_ass"),
+		list("Mar", null),
 		list("Eng", "hudsquad_engi"),
 		list("Med", "hudsquad_med"),
 		list("SG", "hudsquad_gun"),
@@ -279,14 +279,15 @@
 		var/color = squad_colors[i]
 		for(var/iref in icon_data)
 			var/list/iconref = iref
-			var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)
 			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
 			background.Blend(color, ICON_MULTIPLY)
-			squad_icon.Blend(background, ICON_UNDERLAY)
-			squad_icon.Crop(25,25,32,32)
-			squad_icon.Scale(16,16)
+			if(iconref[2])
+				var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)
+				background.Blend(squad_icon, ICON_OVERLAY)
+			background.Crop(25,25,32,32)
+			background.Scale(16,16)
 
-			Insert("squad-[squad]-hud-[iconref[1]]", squad_icon)
+			Insert("squad-[squad]-hud-[iconref[1]]", background)
 	return ..()
 
 /datum/asset/spritesheet/vending_products

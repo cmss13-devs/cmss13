@@ -48,31 +48,49 @@ interface SquadProps {
   objective: { primary?: string, secondary?: string}
 }
 
+const FireTeamLeadLabel = (props: {ftl: SquadMarineEntry}, context) => {
+  const { data } = useBackend<SquadProps>(context);
+  const { ftl } = props;
+  return (
+    <>
+      <Stack.Item>
+        <span>TL:</span>
+      </Stack.Item>
+      <Stack.Item>
+        <span className={classes(['squadranks16x16', `squad-${data.squad}-hud-${ftl.rank}`])} />
+      </Stack.Item>
+      <Stack.Item>
+        <span>
+          {ftl.paygrade} {ftl.name}
+        </span>
+      </Stack.Item>
+    </>);
+};
+
 const FireTeamLead = (props: {fireteam: FireTeamEntry, ft: string}, context) => {
   const { data, act } = useBackend<SquadProps>(context);
   const fireteamLead = props.fireteam.tl;
-  if (fireteamLead === undefined) {
-    return <span>Team Lead: Unassigned</span>;
-  }
+  const isNotAssigned = fireteamLead === undefined
+    || fireteamLead instanceof Array
+    || fireteamLead.name === "Not assigned";
 
-  if (fireteamLead instanceof Array) {
-    return <span>Team Lead: Unassigned</span>;
-  }
+  const assignedFireteamLead = fireteamLead as SquadMarineEntry;
 
   const demote = () => act('demote_ftl', { target_ft: props.ft });
   return (
-    <Flex fill justify="space-between">
+    <Flex fill justify="space-between" className="TeamLeadFlex">
       <Flex.Item>
-        <span className="TeamLeadName">
-          TL:
-        </span>
-        <span className={classes(['MarineIcon', 'squadranks16x16', `squad-${data.squad}-hud-${fireteamLead.rank}`])} />
-        <span className="TeamLeadName">
-          {fireteamLead.paygrade} {fireteamLead.name}
-        </span>
+        <Stack>
+          {isNotAssigned
+            && (
+              <Stack.Item>
+                <span>Team Lead: Unassigned</span>
+              </Stack.Item>)}
+          {!isNotAssigned && <FireTeamLeadLabel ftl={assignedFireteamLead} />}
+        </Stack>
       </Flex.Item>
       <Flex.Item>
-        {fireteamLead.name !== 'Not assigned' && data.is_lead === "sl"
+        {assignedFireteamLead.name !== 'Not assigned' && data.is_lead === "sl"
             && (
             <Button icon="xmark" onClick={demote} />
         )}
@@ -88,7 +106,7 @@ interface FireteamBoxProps extends BoxProps {
 const FireteamBox = (props: FireteamBoxProps, context) => {
 
   return (
-    <Box className={classes(["FireteamBox", props.isEmpty && 'emptyFireteamBox'])}>
+    <Box className={classes(["FireteamBox"])}>
       <div className="Title">
         {props.name}
       </div>
@@ -121,19 +139,16 @@ const FireTeam = (props: {ft: string}, context) => {
 
   return (
     <FireteamBox name={fireteam?.name ?? "Unassigned"} isEmpty={isEmpty}>
-      <Stack vertical>
+      <Flex direction="column" fill>
         {!isEmpty
           && (
             <>
               {props.ft !== "Unassigned"
                 && (
-                  <>
-                    <Stack.Item>
+                  <Flex.Item>
                       <FireTeamLead fireteam={fireteam} ft={props.ft} />
-                    </Stack.Item>
-                    <hr />
-                  </>)}
-              <Stack.Item>
+                  </Flex.Item>)}
+              <Flex.Item>
                 <Table className="FireteamMembersTable">
                   <TableRow>
                     <TableCell>
@@ -157,9 +172,9 @@ const FireTeam = (props: {ft: string}, context) => {
                     </TableRow>))
                   }
                 </Table>
-              </Stack.Item>
+              </Flex.Item>
             </>)}
-      </Stack>
+      </Flex>
     </FireteamBox>);
 };
 
@@ -184,7 +199,7 @@ const FireTeamMember = (props: {member: SquadMarineEntry, team: string, fireteam
   return (
     <>
       <TableCell>
-          <span className={classes(['MarineIcon', 'squadranks16x16', `squad-${data.squad}-hud-${props.member.rank}`])} />
+          <span className={classes(['squadranks16x16', `squad-${data.squad}-hud-${props.member.rank}`])} />
       </TableCell>
       <TableCell>
         {props.member.paygrade}
@@ -196,37 +211,37 @@ const FireTeamMember = (props: {member: SquadMarineEntry, team: string, fireteam
       {data.is_lead === "sl"
         && (
           <TableCell>
-            <Flex justify="space-around" fill>
+            <Stack fill justify="center">
               {props.team === "Unassigned"
                 && (
                   <>
-                  <Flex.Item>
+                  <Stack.Item>
                     <Button onClick={() => act('assign_ft', assignFT1)}>
                       1
                     </Button>
-                  </Flex.Item>
-                  <Flex.Item>
+                  </Stack.Item>
+                  <Stack.Item>
                     <Button onClick={() => act('assign_ft', assignFT2)}>
                       2
                     </Button>
-                  </Flex.Item>
-                  <Flex.Item>
+                  </Stack.Item>
+                  <Stack.Item>
                     <Button onClick={() => act('assign_ft', assignFT3)}>
                       3
                     </Button>
-                  </Flex.Item>
+                  </Stack.Item>
                   </>)}
               {props.team !== "Unassigned"
                 && (
                   <>
-                    <Flex.Item>
+                    <Stack.Item>
                       <Button icon="chevron-up" onClick={promote} />
-                    </Flex.Item>
-                    <Flex.Item>
+                    </Stack.Item>
+                    <Stack.Item>
                       <Button icon="xmark" onClick={unassign} />
-                    </Flex.Item>
+                    </Stack.Item>
                   </>)}
-            </Flex>
+            </Stack>
           </TableCell>)}
     </>);
 };
@@ -247,10 +262,11 @@ const SquadObjectives = (props, context) => {
 };
 
 export const SquadInfo = (_, context) => {
-  const { data } = useBackend<SquadProps>(context);
+  const { config, data } = useBackend<SquadProps>(context);
   const fireteams = ["FT1", "FT2", "FT3", "Unassigned"];
+
   return (
-    <Window theme="ntos">
+    <Window theme="usmc" width={680} height={675}>
       <Window.Content>
         <Flex fill justify="space-around" direction="column">
           <Flex.Item>

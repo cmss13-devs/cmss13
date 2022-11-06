@@ -2,29 +2,25 @@
 @use '../colors.scss';
 @use '../functions.scss' as *;
 
-.FireteamBox {
-  border: 1px solid base.$color-fg;
-  padding: 6px;
-  margin-top: 6px;
-}
+$border-color: rgba(base.$color-fg, 0.6);
 
 .ftlFlex {
   width: 95vw;
-  border: 2px solid green;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   list-style: none;
-  height: 600px;
+  height: 500px;
   overflow-y: scroll;
   align-content: flex-start;
   padding-top: 8px;
 
   .FireteamBox {
+    padding-top: 6px;
     text-align: center;
     margin: 0 1rem 1rem 0;
-    padding: 8px;
-    border: 2px solid red;
+    border-radius: 6px;
+    border: 2px solid $border-color;
     min-width: 290px;
   }
 }
@@ -35,31 +31,70 @@
   height: 18px;
   top: -16px;
   background-color: base.$color-bg;
-  border: 1px solid base.$color-fg;
-  padding-left: 4px;
-  padding-right: 4px;
+  border: 2px solid $border-color;
+  border-radius: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
   font-weight: bold;
 }
 
-.MarineIcon {
-  width: 16px;
-}
-
-.TeamLeadName {
-  font-weight: bold;
-  font-size: 12px;
+.TeamLeadFlex {
+  padding-left: 6px;
+  padding-right: 12px;
+  padding-bottom: 2px;
+  span {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
 
 .FireteamMembersTable {
+  border-radius: 6px;
+  margin-bottom: -2.5px;
+
   td {
-    border: 1px solid base.$color-fg;
+    border: 1px solid $border-color;
     font-weight: bold;
     padding: 2px;
     text-align: center;
     vertical-align: middle;
+    padding-left: 6px;
+  }
+  td:first-child {
+    border-left: 0;
+
+
+  }
+  td:last-child {
+    border-right: 0;
+    padding-right: 6px;
+  }
+  tr:last-child {
+    td {
+      border-bottom: 0;
+    }
   }
 }
 
-.emptyFireteamBox {
-  height: 0px;
+.Button {
+  width: 100%;
+  display:block;
+  font-size: base.em(14px);
+  font-weight: bold;
+  background-color: rgba(colors.$primary, 0.25);
+  border: 2px solid colors.$primary;
+  display: block;
+  &:hover,
+  &:focus {
+    transition: colors.$primary 0ms, background-color 0ms;
+    background-color: colors.$primary;
+  }
+
+  .Button__content {
+    align-self: flex-start;
+    text-align: left;
+    margin-top: -2px;
+    margin-bottom: -1px;
+  }
 }

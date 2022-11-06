@@ -76,6 +76,8 @@
       cleaner, etc
   - rscadd: Adds a no smoking sign to OB chambering room. Probably shouldn't have
       an open flame in there...
+  John_Rico:
+  - bugfix: OT claymore no longer blows up in random directions
   Mistfrag:
   - spellcheck: MARSOC is now referred to as Marine Raiders/SOF. This makes them more
       compliant to lore and closer to their standard marines.

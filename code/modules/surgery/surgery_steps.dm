@@ -82,8 +82,6 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 			to_chat(user, SPAN_WARNING("\The [blocker] \the [target] is wearing restricts your access to the surgical site, take it off!"))
 			return
 
-	surgery.step_in_progress = TRUE
-
 	var/step_duration = time
 	var/self_surgery
 	var/tool_modifier
@@ -112,8 +110,9 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 
 		if(surgery.surgical_table_required && surface_modifier > SURGERY_SURFACE_MULT_IDEAL)
 			to_chat(user, SPAN_WARNING("You need a better surgical theatre for a procedure that's this invasive!"))
-			return
+			return FALSE
 
+	surgery.step_in_progress = TRUE
 	var/try_to_fail
 	if(user.a_intent != INTENT_HELP)
 		try_to_fail = TRUE

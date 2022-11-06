@@ -190,7 +190,7 @@
 
 	for(var/turf/T in range(1, src))
 		var/obj/effect/xenomorph/spray/spray = new /obj/effect/xenomorph/spray(T)
-		spray.cause_data = create_cause_data(src)
+		spray.cause_data = create_cause_data(src.name)
 
 	. = ..()
 
@@ -215,7 +215,7 @@
 	playsound(H, get_sfx("acid_sizzle"), 30)
 	addtimer(CALLBACK(src, .proc/do_human_damage, H), 3 SECONDS, TIMER_UNIQUE)
 
-	if(H.resting || H.knocked_down || H.knocked_out) //why are all these seperate variables
+	if(H.lying)
 		for(var/i in DEFENSE_ZONES_LIVING)
 			H.apply_armoured_damage(damage_amount * 0.35, ARMOR_BIO, BURN, i)
 		return

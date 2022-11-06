@@ -105,6 +105,7 @@
   harryob:
   - bugfix: afk players are now correctly flagged by the server, and can be cleaned
       up (eg, afk larvae)
+  - bugfix: tgui's autoclose correctly, now, and not every 3.5 seconds
   stanalbatross:
   - qol: you can now toggle off item pickup animations or selectively toggle off item
       animations of objects being moved around in inventory

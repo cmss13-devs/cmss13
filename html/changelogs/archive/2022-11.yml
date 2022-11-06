@@ -70,6 +70,9 @@
       current icon for TIS Intel Officer.
   - rscadd: Added HUD icons for Synthetic and Mess Technician.
 2022-11-06:
+  Mistfrag:
+  - spellcheck: MARSOC is now referred to as Marine Raiders/SOF. This makes them more
+      compliant to lore and closer to their standard marines.
   Morrow:
   - bugfix: Removes an extra APC at the crashed ship on sorokyne and also offsets
       correctly off of plating.

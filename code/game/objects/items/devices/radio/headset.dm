@@ -835,11 +835,11 @@
 	volume = RADIO_VOLUME_CRITICAL
 	ignore_z = TRUE
 
-/obj/item/device/radio/headset/almayer/marsoc
-	name = "USCM MARSOC headset"
-	desc = "Issued exclusively to members of the Marines Special Operations Command."
+/obj/item/device/radio/headset/almayer/sof
+	name = "USCM SOF headset"
+	desc = "Issued exclusively to Marine Raiders and members of the USCM's Force Reconnaissance."
 	icon_state = "soc_headset"
-	frequency = MARSOC_FREQ
+	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc)
 	volume = RADIO_VOLUME_IMPORTANT
 	ignore_z = TRUE

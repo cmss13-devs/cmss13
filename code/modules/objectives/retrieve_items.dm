@@ -2,6 +2,7 @@
 // *** Basic retrieve item and get it to an area ***
 // --------------------------------------------
 /datum/cm_objective/retrieve_item
+	name = "Retrieve an Item"
 	var/obj/target_item
 	var/list/area/target_areas
 	var/area/initial_area

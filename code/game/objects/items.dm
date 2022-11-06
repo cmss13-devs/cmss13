@@ -782,7 +782,7 @@ cases. Override_icon_state should be a list.*/
 	INVOKE_ASYNC(user, /atom.proc/visible_message, SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
-	user.zoom_cooldown = world.time + 20
+	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
@@ -806,9 +806,9 @@ cases. Override_icon_state should be a list.*/
 	unzoom(user)
 
 /obj/item/proc/do_zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0)
-	if(world.time <= user.zoom_cooldown) //If we are spamming the zoom, cut it out
+	if(!COOLDOWN_FINISHED(user, zoom_cooldown)) //If we are spamming the zoom, cut it out
 		return
-	user.zoom_cooldown = world.time + 20
+	COOLDOWN_START(user, zoom_cooldown, 20)
 	if(user.interactee)
 		user.unset_interaction()
 	else
@@ -895,9 +895,14 @@ cases. Override_icon_state should be a list.*/
 	var/list/viewers_clients = list()
 	for(var/mob/M as anything in viewers(7, src))
 		if(M.client)
+			if(M.client.prefs.item_animation_pref_level == SHOW_ITEM_ANIMATIONS_NONE)
+				continue
+			if(src.loc == target.loc && M.client.prefs.item_animation_pref_level == SHOW_ITEM_ANIMATIONS_HALF)
+				continue
 			viewers_clients += M.client
 
 	flick_overlay_to_clients(pickup_animation, viewers_clients, 4)
+
 	var/matrix/animation_matrix = new(pickup_animation.transform)
 	animation_matrix.Turn(pick(-30, 30))
 	animation_matrix.Scale(0.65)

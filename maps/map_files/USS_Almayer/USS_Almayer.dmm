@@ -13114,8 +13114,11 @@
 	},
 /area/almayer/evacuation/pod10)
 "aLk" = (
-/obj/structure/largecrate/random/case,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hull/lower_hull/l_f_s)
 "aLl" = (
 /obj/structure/machinery/light/small{
@@ -15007,6 +15010,12 @@
 	dir = 4;
 	tag = "icon-bulb1 (EAST)"
 	},
+/obj/item/reagent_container/glass/bucket/mopbucket,
+/obj/item/tool/mop{
+	pixel_x = -6;
+	pixel_y = 14
+	},
+/obj/structure/janitorialcart,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -27835,6 +27844,9 @@
 	},
 /area/almayer/squads/req)
 "bPC" = (
+/obj/structure/sign/nosmoking_2{
+	pixel_x = 28
+	},
 /turf/open/floor/almayer{
 	icon_state = "cargo_arrow"
 	},
@@ -39241,6 +39253,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
+"eqk" = (
+/mob/living/simple_animal/mouse/brown,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_f_s)
 "eqv" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall11";
@@ -46990,15 +47009,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
 "hKe" = (
-/obj/structure/surface/rack,
-/obj/item/device/lightreplacer,
-/obj/item/device/lightreplacer{
-	pixel_x = 6
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/obj/structure/sign/poster/safety,
+/turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull/l_f_s)
 "hKi" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -52566,6 +52578,12 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/corporateliason)
+"kmM" = (
+/obj/structure/sink{
+	pixel_y = 24
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_f_s)
 "knH" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/sign/safety/coffee{
@@ -66655,6 +66673,21 @@
 /obj/effect/landmark/late_join/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
+"qDv" = (
+/obj/structure/closet,
+/obj/item/stack/sheet/glass/large_stack,
+/obj/item/device/lightreplacer,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/stack/rods{
+	amount = 40
+	},
+/obj/item/tool/weldingtool,
+/obj/item/clothing/glasses/welding,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_f_s)
 "qDz" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -98440,7 +98473,7 @@ aaa
 aad
 aag
 nXP
-hKe
+mGL
 mGL
 hJp
 mGL
@@ -99052,8 +99085,8 @@ nXP
 mGL
 hJp
 uNL
-sAm
-dNB
+qDv
+aLk
 uNL
 xCR
 bSv
@@ -99255,8 +99288,8 @@ nXP
 tRV
 mGL
 uNL
-mNf
-mGL
+kmM
+eqk
 uNL
 hJp
 bSv
@@ -99457,8 +99490,8 @@ aag
 nXP
 hJp
 mGL
-uNL
-aLk
+hKe
+hJp
 hJp
 uNL
 hJp

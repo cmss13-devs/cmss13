@@ -102,6 +102,8 @@
   - bugfix: fixed inconsistent floor tiling on the USS Almayer by replacing all the
       floor tiles under doors with appropriate warning stripes so you don't hurt your
       toes
+  fira:
+  - bugfix: Half fixed statpanel failing to load. It might still behave erratically.
   harryob:
   - bugfix: afk players are now correctly flagged by the server, and can be cleaned
       up (eg, afk larvae)

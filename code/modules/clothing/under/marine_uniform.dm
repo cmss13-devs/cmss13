@@ -104,14 +104,17 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military police"
 
+	var/has_mp_overlay = TRUE
 	has_pre_blood_mob_overlay_handling = TRUE
 
 /obj/item/clothing/under/marine/mp/Initialize(mapload, list/new_protection, list/override_icon_state)
 	. = ..()
-	overlays += image('icons/obj/items/clothing/uniform_overlays.dmi', null, "mp-uniform")
+	if(has_mp_overlay)
+		overlays += image('icons/obj/items/clothing/uniform_overlays.dmi', null, "mp-uniform")
 
 /obj/item/clothing/under/marine/mp/handle_pre_blood_overlay(var/image/mob_overlay)
-	mob_overlay.overlays += image('icons/mob/humans/onmob/uniform_overlays.dmi', null, "mp-uniform")
+	if(has_mp_overlay)
+		mob_overlay.overlays += image('icons/mob/humans/onmob/uniform_overlays.dmi', null, "mp-uniform")
 	return mob_overlay
 
 /obj/item/clothing/under/marine/officer
@@ -322,6 +325,8 @@
 
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
+	has_mp_overlay = FALSE
+
 /obj/item/clothing/under/marine/mp/provost/enforcer
 	name = "\improper Provost Enforcer Uniform"
 	desc = "The crisp uniform of a Provost Enforcer."
@@ -329,26 +334,26 @@
 /obj/item/clothing/under/marine/mp/provost/tml
 	name = "\improper Provost Team Leader Uniform"
 	desc = "The crisp uniform of a Provost Team Leader."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
+	icon_state = "provost_gray"
+	worn_state = "provost_gray"
 
 /obj/item/clothing/under/marine/mp/provost/advisor
 	name = "\improper Provost Advisor Uniform"
 	desc = "The crisp uniform of a Provost Advisor."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
+	icon_state = "provost_gray"
+	worn_state = "provost_gray"
 
 /obj/item/clothing/under/marine/mp/provost/inspector
 	name = "\improper Provost Inspector Uniform"
 	desc = "The crisp uniform of a Provost Inspector."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
+	icon_state = "provost_gray"
+	worn_state = "provost_gray"
 
 /obj/item/clothing/under/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Uniform"
 	desc = "The crisp uniform of a Provost Marshal."
-	icon_state = "WO_jumpsuit"
-	worn_state = "WO_jumpsuit"
+	icon_state = "provost_black"
+	worn_state = "provost_black"
 
 /obj/item/clothing/under/marine/mp/provost/marshal/sector
 	name = "\improper Provost Sector Marshal Uniform"

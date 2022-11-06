@@ -91,6 +91,8 @@
   Morrow:
   - bugfix: Removes an extra APC at the crashed ship on sorokyne and also offsets
       correctly off of plating.
+  Segrain:
+  - admin: Object Narrate verb is back under proper permissions.
   SpartanBobby:
   - rscadd: Added two new issues of "Boots!" magazine to the Almayer
   - rscadd: Slightly extended the evidence room of the brig

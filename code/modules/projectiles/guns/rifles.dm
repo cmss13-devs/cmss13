@@ -216,7 +216,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 
 //-------------------------------------------------------
-//M40-SD AKA MARSOC RIFLE FROM HELL (It's actually an M41A, don't tell!)
+//M40-SD AKA SOF RIFLE FROM HELL (It's actually an M41A, don't tell!)
 
 /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
 	name = "\improper M40-SD pulse rifle"

@@ -257,7 +257,7 @@
 /area/shiva/interior/caves/left_spiders)
 "aaQ" = (
 /obj/effect/spider/stickyweb,
-/obj/item/clothing/head/helmet/marine/marsoc,
+/obj/item/clothing/head/helmet/marine/sof,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "aaR" = (

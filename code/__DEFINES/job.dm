@@ -9,7 +9,7 @@
 #define SQUAD_MARINE_4					"Delta"
 #define SQUAD_MARINE_5					"Echo"
 #define SQUAD_MARINE_CRYO				"Foxtrot"
-#define SQUAD_MARSOC					"MARSOC"
+#define SQUAD_SOF					"SOF"
 
 // Job name defines
 #define JOB_SQUAD_MARINE				"Squad Rifleman"
@@ -73,10 +73,10 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_REQUISITION_ROLES           /datum/timelock/requisition
 #define JOB_REQUISITION_ROLES_LIST      list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
 
-#define JOB_MARSOC						"MARSOC Operator"
-#define JOB_MARSOC_SL					"MARSOC Team Leader"
-#define JOB_MARSOC_CMD					"MARSOC Officer"
-#define JOB_MARSOC_ROLES_LIST			list(JOB_MARSOC, JOB_MARSOC_SL, JOB_MARSOC_CMD)
+#define JOB_MARINE_RAIDER						"Marine Raider"
+#define JOB_MARINE_RAIDER_SL					"Marine Raider Team Lead"
+#define JOB_MARINE_RAIDER_CMD					"Marine Raider Platoon Lead"
+#define JOB_MARINE_RAIDER_ROLES_LIST			list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
 
 #define JOB_HUMAN_ROLES                 /datum/timelock/human
 #define JOB_XENO_ROLES                  /datum/timelock/xeno

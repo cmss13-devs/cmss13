@@ -707,15 +707,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "pvmarshalhat"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
-/obj/item/clothing/head/helmet/marine/marsoc
-	name = "\improper MARSOC Operator Helmet"
-	desc = "A special variant of the M10 Pattern Helmet worn by MARSOC operators. Fitted for quad NODs."
+/obj/item/clothing/head/helmet/marine/sof
+	name = "\improper SOF Operator Helmet"
+	desc = "A special variant of the M10 Pattern Helmet worn by USCM SOF."
 	icon_state = "marsoc_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	specialty = "M10 pattern MARSOC"
+	specialty = "M10 pattern SOF"
 	flags_atom = NO_SNOW_TYPE
 
 

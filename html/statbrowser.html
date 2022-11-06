@@ -358,6 +358,7 @@
 			var permanent_tabs = []; // tabs that won't be cleared by wipes
 			var turfcontents = [];
 			var turfname = "";
+			var initDone = false;
 			var imageRetryDelay = 500;
 			var imageRetryLimit = 50;
 			var menu = document.querySelector('#menu');
@@ -547,7 +548,7 @@
 			// example entry from 2D vector: (IC, Say)
 			function init_statbrowser(c, v) {
 				document.getElementById("statcontent").style.fontSize = current_fontsize + "px";
-
+				initDone = true;
 				wipe_verbs(); // remove all verb categories so we can replace them
 				checkStatusTab(); // remove all status tabs
 				verb_tabs = JSON.parse(c);
@@ -566,6 +567,8 @@
 					sortVerbs(); // sort them
 					if (do_update) {
 						draw_verbs(current_tab);
+					} else {
+						draw_status()
 					}
 				}
 				createOptionsButton();
@@ -997,6 +1000,8 @@
 			};
 
 			function NotifyByondOnload() {
+				if (initDone) { return; }
+				setTimeout(NotifyByondOnload, 2000)
 				window.location.href = "byond://winset?command=Panel-Ready";
 			}
 

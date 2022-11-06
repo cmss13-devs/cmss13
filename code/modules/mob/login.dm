@@ -56,7 +56,5 @@
 			var/datum/callback/CB = foo
 			CB.Invoke()
 
-	client.init_statbrowser()
-
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGIN, src)
 	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)

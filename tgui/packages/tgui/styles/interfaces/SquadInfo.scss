@@ -21,13 +21,11 @@
   padding-top: 8px;
 
   .FireteamBox {
-    justify-items: center;
     text-align: center;
     margin: 0 1rem 1rem 0;
     padding: 8px;
     border: 2px solid red;
-    width: 300px;
-    align-self: flex-start;
+    min-width: 290px;
   }
 }
 
@@ -43,17 +41,16 @@
   font-weight: bold;
 }
 
-.Test {
-  border: 5px solid red;
+.MarineIcon {
+  width: 16px;
 }
 
-.MarineIcon {
-  width: 32px;
+.TeamLeadName {
+  font-weight: bold;
+  font-size: 12px;
 }
 
 .FireteamMembersTable {
-  width: 250px;
-
   td {
     border: 1px solid base.$color-fg;
     font-weight: bold;
@@ -66,53 +63,3 @@
 .emptyFireteamBox {
   height: 0px;
 }
-
-/*
-.SLIcon {
-  width: 16px;
-  height: 16px;
-  background-image: url(squadSLIcon.png);
-}
-
-.MedIcon {
-  width: 16px;
-  height: 16px;
-  background-image: url(squadMedIcon.png);
-}
-
-.EngIcon {
-  width: 16px;
-  height: 16px;
-  background-image: url(squadEngIcon.png);
-}
-
-.SGIcon {
-  width: 16px;
-  height: 16px;
-  background-image: url(squadSGIcon.png);
-}
-
-.SpcIcon {
-  width: 16px;
-  height: 16px;
-  background-image: url(squadSpcIcon.png);
-}
-
-.RTOIcon {
-  width: 16px;
-  height: 16px;
-  background-image: url(squadRTOIcon.png);
-}
-
-.FRespIcon {
-  width: 16px;
-  height: 16px;
-  background-image: url(squadFRespIcon.png);
-}
-
-.TechIcon {
-  width: 16px;
-  height: 16px;
-  background-image: url(squadTechIcon.png);
-}
-*/

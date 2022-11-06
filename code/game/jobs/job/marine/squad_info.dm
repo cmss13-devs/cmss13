@@ -19,6 +19,10 @@
 	data["squad"] = name
 	data["squad_color"] = squad_colors[color]
 	data["is_lead"] = get_leadership(user)
+	data["objective"] = list(
+		"primary" = primary_objective,
+		"secondary" = secondary_objective,
+	)
 	return data
 
 /datum/squad/proc/get_leadership(mob/user)

@@ -284,7 +284,7 @@
 			background.Blend(color, ICON_MULTIPLY)
 			squad_icon.Blend(background, ICON_UNDERLAY)
 			squad_icon.Crop(25,25,32,32)
-			squad_icon.Scale(32,32)
+			squad_icon.Scale(16,16)
 
 			Insert("squad-[squad]-hud-[iconref[1]]", squad_icon)
 	return ..()

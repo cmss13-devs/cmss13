@@ -1994,6 +1994,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "</table>"
 	dat += "</body>"
 	show_browser(user, dat, "Character Traits", "character_traits")
+	update_preview_icon(TRUE)
 
 #undef MENU_MARINE
 #undef MENU_XENOMORPH

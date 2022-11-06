@@ -19,7 +19,7 @@
 	SSobjectives.statistics["documents_total_instances"]++
 
 /datum/cm_objective/document/Destroy()
-	document.objective = null
+	document?.objective = null
 	document = null
 	initial_area = null
 	return ..()
@@ -135,9 +135,9 @@
 	pixel_x = rand(-9, 9)
 
 /obj/item/document_objective/Destroy()
-	objective.document = null
+	qdel(objective)
 	objective = null
-	retrieve_objective.target_item = null
+	qdel(retrieve_objective)
 	retrieve_objective = null
 	return ..()
 

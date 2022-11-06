@@ -139,7 +139,7 @@ const FireTeam = (props: {ft: string}, context) => {
 
   return (
     <FireteamBox name={fireteam?.name ?? "Unassigned"} isEmpty={isEmpty}>
-      <Flex direction="column" fill>
+      <Flex direction="column">
         {!isEmpty
           && (
             <>
@@ -151,18 +151,18 @@ const FireTeam = (props: {ft: string}, context) => {
               <Flex.Item>
                 <Table className="FireteamMembersTable">
                   <TableRow>
-                    <TableCell>
+                    <TableCell className="RoleCell">
                       Role
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="RankCell">
                       Rank
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="MemberCell">
                       Member
                     </TableCell>
                     {data.is_lead === "sl"
                       && (
-                        <TableCell>
+                        <TableCell className="ActionCell">
                           {props.ft === "Unassigned" ? "Assign FT" : "Actions"}
                         </TableCell>)}
                   </TableRow>

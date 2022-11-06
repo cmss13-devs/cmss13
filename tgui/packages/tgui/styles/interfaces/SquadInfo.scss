@@ -77,6 +77,18 @@ $border-color: rgba(base.$color-fg, 0.6);
   }
 }
 
+.RoleCell {
+  width: 32px;
+}
+
+.RankCell {
+  width: 32px;
+}
+
+.ActionCell {
+  width: 115px;
+}
+
 .Button {
   width: 100%;
   display:block;

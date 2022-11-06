@@ -2957,7 +2957,7 @@
 	flamer_reagent_type = /datum/reagent/napalm/blue
 
 /datum/ammo/flamethrower/sentry_flamer
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
 	flamer_reagent_type = /datum/reagent/napalm/blue
 
 	accuracy = HIT_ACCURACY_TIER_8
@@ -2996,7 +2996,7 @@
 /datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
 		return
-	var/datum/reagent/napalm/R = new()
+	var/datum/reagent/napalm/ut/R = new()
 	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
 

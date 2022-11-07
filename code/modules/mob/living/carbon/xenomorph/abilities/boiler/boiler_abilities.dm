@@ -41,7 +41,7 @@
 
 /datum/action/xeno_action/activable/spray_acid/boiler
 	plasma_cost = 40
-	xeno_cooldown = 8 SECONDS
+	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do

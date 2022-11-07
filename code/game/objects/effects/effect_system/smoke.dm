@@ -279,11 +279,8 @@
 	..()
 	for(var/obj/structure/barricade/B in T)
 		B.take_acid_damage(XENO_ACID_GAS_BARRICADE_DAMAGE)
-		if(prob(50)) // anti sound spam
-			if(prob(50))
-				playsound(src,"acid_sizzle",25)
-			else
-				playsound(src,"acid_hit",25)
+		if(prob(75)) // anti sound spam
+			playsound(src,pick("acid_sizzle","acid_hit"),25)
 
 	for(var/obj/vehicle/multitile/R in T)
 		R.take_damage_type(15, "acid")
@@ -364,11 +361,12 @@
 	M.eye_blurry = max(M.eye_blurry, effect_amt)
 	M.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
 	M.apply_stamina_damage(18) // Slowdown progressively gets worse until they eventually get stunned
+	M.make_dizzy(30)
 	if(prob(20))
 		M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind && prob(25)) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
-		M.eye_blind = max(M.eye_blind, round(effect_amt/3))
+		M.eye_blind = max(M.eye_blind, round(effect_amt/4))
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))
@@ -377,14 +375,15 @@
 		else
 			M.emote("gasp")
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
-	if(prob(8))
+	if(prob(10))
 		to_chat(M, SPAN_HIGHDANGER("You stumble!"))
-		M.KnockDown(1)
+		step(M,pick(CARDINAL_ALL_DIRS))
+		M.Daze(5) // Unable to talk and weldervision
+		M.make_jittery(25)
+		M.make_dizzy(55)
 		M.emote("pain")
 		M.apply_damage(5,TOX) // Blood toxicity
-
-
-	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if it is paralyzed!"))
+	to_chat(M, SPAN_DANGER(pick("Your body is going numb, almost as if it is paralyzed!","Your limbs start seizing up!","You feel lightheaded!")))
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire
 	time_to_live = 16
@@ -403,7 +402,7 @@
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire/affect(var/mob/living/carbon/M)
 	..()
-	
+
 	if(isXeno(M))
 		return
 	if(isYautja(M) && prob(75))

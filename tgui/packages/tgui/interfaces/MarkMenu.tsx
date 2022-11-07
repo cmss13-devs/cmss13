@@ -12,8 +12,33 @@ import {
 } from '../components';
 import { Window } from '../layouts';
 
+interface MarkProps {
+  mark_meanings: Mark[];
+  mark_list_infos: PlacedMark[];
+  selected_mark?: string;
+  is_leader: HivePosition;
+  user_nicknumber: string;
+}
+
+interface Mark {
+  name: string;
+  icon_state: string;
+  desc: string;
+  id: string;
+  image: string;
+}
+
+interface PlacedMark extends Mark {
+  owner: string;
+  owner_name: string;
+  area: string;
+}
+
+// The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
+type HivePosition = 0 | 1 | 2;
+
 export const MarkMenu = (props, context) => {
-  const { data } = useBackend(context);
+  const { data, act } = useBackend<MarkProps>(context);
   const { mark_meanings, mark_list_infos, selected_mark, is_leader } = data;
 
   return (
@@ -39,7 +64,7 @@ export const MarkMenu = (props, context) => {
 };
 
 const MarkMeaningList = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { data, act } = useBackend<MarkProps>(context);
   const { mark_meanings, selected_mark } = data;
 
   return (
@@ -70,8 +95,8 @@ const MarkMeaningList = (props, context) => {
 };
 
 const HiveMarkList = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { mark_list_infos, tracked_mark, is_leader, user_nicknumber } = data;
+  const { data, act } = useBackend<MarkProps>(context);
+  const { mark_list_infos, is_leader, user_nicknumber } = data;
 
   return (
     <Flex direction="column">
@@ -150,7 +175,7 @@ const HiveMarkList = (props, context) => {
 };
 
 const XenoCollapsible = (props, context) => {
-  const { data } = useBackend(context);
+  const { data, act } = useBackend<MarkProps>(context);
   const { title, children } = props;
   const { hive_color } = data;
 

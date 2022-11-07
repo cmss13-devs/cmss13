@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Expedition Pack", 0, /obj/item/storage/backpack/marine/satchel/intel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
-		list("Radio Telephone Pack", 0, /obj/item/storage/backpack/marine/satchel/rto, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Radio Telephone Pack", 0, /obj/item/storage/backpack/marine/satchel/rto/io, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("XM12 Officer Helmet", 0, /obj/item/clothing/head/helmet/marine/rto/intel, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),

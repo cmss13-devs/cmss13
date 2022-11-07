@@ -557,7 +557,6 @@
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
-	armor_energy = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"

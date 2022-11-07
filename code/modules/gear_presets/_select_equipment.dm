@@ -20,6 +20,7 @@
 	var/minimum_age
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
+	var/origin_override
 
 	//Uniform data
 	var/utility_under = null
@@ -136,6 +137,11 @@
 	load_race(H, mob_client)
 	if(randomise || uses_special_name)
 		load_name(H, randomise, mob_client)
+	else if(origin_override)
+		var/datum/origin/origin = GLOB.origins[origin_override]
+		H.name = origin.correct_name(H.name, H.gender)
+	if(origin_override)
+		H.origin = origin_override
 	load_skills(H, mob_client) //skills are set before equipment because of skill restrictions on certain clothes.
 	load_languages(H, mob_client)
 	load_age(H, mob_client)
@@ -167,6 +173,12 @@
 	for(i in H.client.prefs.gear)
 		G = gear_datums[i]
 		if(G)
+			if(G.allowed_roles && !(assignment in G.allowed_roles))
+				to_chat(H, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Role"))
+				return
+			if(G.allowed_origins && !(H.origin in G.allowed_origins))
+				to_chat(H, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Origin"))
+				return
 			if(!H.equip_to_slot_or_del(new G.path, G.slot))
 				H.equip_to_slot_or_del(new G.path, WEAR_IN_BACK)
 
@@ -233,12 +245,13 @@
 						P.forceMove(H.loc)
 
 /datum/equipment_preset/proc/load_traits(mob/living/carbon/human/H, var/client/mob_client)
-	if(!H.client || !H.client.prefs || !H.client.prefs.traits)
+	var/client/real_client = mob_client || H.client
+	if(!real_client?.prefs?.traits)
 		return
 
-	for(var/trait in H.client.prefs.traits)
+	for(var/trait in real_client.prefs.traits)
 		var/datum/character_trait/CT = GLOB.character_traits[trait]
-		CT.apply_trait(H)
+		CT.apply_trait(H, src)
 
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"

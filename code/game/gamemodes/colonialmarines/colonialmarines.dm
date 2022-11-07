@@ -327,7 +327,7 @@
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
-	declare_random_fact()
+	declare_fun_facts()
 
 	return 1
 

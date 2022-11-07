@@ -410,6 +410,8 @@
 	if(!(admin_holder.rights & R_POSSESS))
 		remove_verb(src, /client/proc/release)
 		remove_verb(src, /client/proc/possess)
+	if(!(admin_holder.rights & R_EVENT))
+		remove_verb(src, /client/proc/cmd_admin_object_narrate)
 
 /client/proc/hide_admin_verbs()
 	set name = "Admin Verbs - Hide"

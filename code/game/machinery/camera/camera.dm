@@ -319,12 +319,9 @@
 	viewing_users += user
 	user.client?.eye = get_turf(src)
 	user.client?.perspective = EYE_PERSPECTIVE
-	give_action(user, /datum/action/human_action/cancel_view)
-	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from_view)
 
 /obj/structure/machinery/camera/cas/proc/remove_from_view(var/mob/living/carbon/human/user)
 	viewing_users -= user
-	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
 
 /obj/structure/machinery/camera/cas/isXRay()
 	return TRUE

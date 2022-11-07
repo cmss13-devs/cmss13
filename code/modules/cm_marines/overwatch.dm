@@ -216,10 +216,10 @@
 				if(current_squad.squad_leader)
 					if(H == current_squad.squad_leader)
 						dist = "<b>N/A</b>"
-						if(current_squad.name == SQUAD_MARSOC)
-							if(H.job == JOB_MARSOC_CMD)
+						if(current_squad.name == SQUAD_SOF)
+							if(H.job == JOB_MARINE_RAIDER_CMD)
 								act_sl = " (direct command)"
-							else if(H.job != JOB_MARSOC_SL)
+							else if(H.job != JOB_MARINE_RAIDER_SL)
 								act_sl = " (acting TL)"
 						else if(H.job != JOB_SQUAD_LEADER)
 							act_sl = " (acting SL)"

@@ -47,7 +47,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_automatic_punctuation,
 	/client/proc/toggle_middle_mouse_click,
 	/client/proc/toggle_clickdrag_override,
-	/client/proc/toggle_dualwield
+	/client/proc/toggle_dualwield,
+	/client/proc/toggle_middle_mouse_swap_hands,
+	/client/proc/switch_item_animations
 ))
 
 /client/Topic(href, href_list, hsrc)
@@ -427,6 +429,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		GLOB.admins -= src
 	GLOB.directory -= ckey
 	GLOB.clients -= src
+	SSping.currentrun -= src
 
 	unansweredAhelps?.Remove(computer_id)
 	log_access("Logout: [key_name(src)]")

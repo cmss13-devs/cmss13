@@ -24,6 +24,10 @@
 		total_positions_so_far = positions
 	return positions
 
+AddTimelock(/datum/job/command/mp, list(
+	JOB_SQUAD_ROLES = 10 HOURS
+))
+
 /obj/effect/landmark/start/police
 	name = JOB_POLICE
 	job = /datum/job/command/mp

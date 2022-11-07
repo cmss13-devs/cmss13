@@ -77,10 +77,12 @@
 		entry["area"] = get_area_name(RM)
 		entry["id"] = RM.weak_reference.reference
 		entry["image"] = RM.mark_meaning.icon_state
+		entry["time"] = RM.createdTime
 
 		mark_list_infos += list(entry)
 
 	.["mark_list_infos"] = mark_list_infos
+	.["tracked_mark"] = WEAKREF(X.tracked_marker).reference
 
 /datum/mark_menu_ui/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

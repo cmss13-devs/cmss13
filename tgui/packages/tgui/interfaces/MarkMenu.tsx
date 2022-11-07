@@ -6,6 +6,7 @@ import {
   Flex,
   Stack,
   Button,
+  Icon,
   Collapsible,
   Table,
 } from '../components';
@@ -17,6 +18,7 @@ interface MarkProps {
   selected_mark?: string;
   is_leader: HivePosition;
   user_nicknumber: string;
+  tracked_mark: null | string;
 }
 
 interface Mark {
@@ -31,6 +33,7 @@ interface PlacedMark extends Mark {
   owner: string;
   owner_name: string;
   area: string;
+  time: string;
 }
 
 // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
@@ -127,8 +130,12 @@ const MarkSelection = (props, context) => {
 };
 
 const HistoricalMark = (props: {mark: PlacedMark}, context) => {
+  const { data } = useBackend<MarkProps>(context);
   const { mark } = props;
   const [historicalSelected, setHistoricalSelected] = useLocalState(context, 'historicalSelected', '');
+
+  const isTracked = data.tracked_mark === null ? false : data.tracked_mark === mark.id;
+
   return (
     <Box
       className={classes([historicalSelected === mark.id && 'Selected'])}
@@ -155,8 +162,16 @@ const HistoricalMark = (props: {mark: PlacedMark}, context) => {
                 <Stack.Item>
                   <span>Owner: {mark.owner_name}</span>
                 </Stack.Item>
+                <Stack.Item>
+                  <span>Placed: {mark.time}</span>
+                </Stack.Item>
               </Stack>
             </Flex.Item>
+            {isTracked
+              && (
+                <Flex.Item>
+                  <Icon name="eye" className="TrackIcon" size={2} />
+                </Flex.Item>)}
           </Flex>
         </Stack.Item>
       </Stack>
@@ -192,9 +207,6 @@ const MarkHistory = (props, context) => {
 };
 
 export const MarkMenu = (props, context) => {
-  const { data, act } = useBackend<MarkProps>(context);
-  const { mark_meanings, mark_list_infos, selected_mark, is_leader } = data;
-
   return (
     <Window
       title={'Mark Menu'}
@@ -248,6 +260,7 @@ const MarkMeaningList = (props: {onClick?: () => void}, context) => {
     </Tabs>
   );
 };
+
 
 const HiveMarkList = (props, context) => {
   const { data, act } = useBackend<MarkProps>(context);

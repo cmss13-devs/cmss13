@@ -531,8 +531,8 @@
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
-	name = "sunglasses"
+	desc = "Generic off-brand eyewear, used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
+	name = "cheap sunglasses"
 	icon_state = "sun"
 	item_state = "sunglasses"
 	darkness_view = -1
@@ -552,11 +552,12 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/sunglasses/big
-	name = "shades"
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks many flashes."
+	name = "bimex personal shades"
+	desc = "'Save the colonies and look cool doing it. Targeting lasers, atomic flash blasts, and solar radiation can cause instant blindness on the battlefield—but not while wearing a pair of BiMex sunglasses or goggles. The patented mirror refractory technology of BiMex lenses is even rumored to have reflected directed energy weapons back on their target!'"
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	armor_energy = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"

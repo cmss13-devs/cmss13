@@ -135,13 +135,13 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/thugshades
-	display_name = "Shades"
+	display_name = "BiMex Personal Shades"
 	path = /obj/item/clothing/glasses/sunglasses/big
 	cost = 2
 	slot = WEAR_EYES
 
 /datum/gear/sunglasses
-	display_name = "Sunglasses"
+	display_name = "Cheap Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses
 	cost = 2
 	slot = WEAR_EYES

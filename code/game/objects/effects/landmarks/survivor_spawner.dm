@@ -68,28 +68,28 @@
 
 //Military Survivors//
 
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_major
+/obj/effect/landmark/survivor_spawner/lv522_forecon_major
 	equipment = /datum/equipment_preset/survivor/forecon/major
 	intro_text = list("<h2>You are the commanding officer of the USS Hanyut.</h2>",\
 	"<span class='notice'>You are VERY aware of the Xenomorph threat.</span>")
 	story_text = "This entire operation went shits up when your team investigated the atmospheric processor two weeks ago, from that point on you've been surviving by the skin of your teeth waiting your ship's automated distress beacon to be picked up... until now."
 
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_major/check_can_spawn(var/mob/living/carbon/human/survivor)
+/obj/effect/landmark/survivor_spawner/lv522_forecon_major/check_can_spawn(var/mob/living/carbon/human/survivor)
 	if(RoleAuthority.roles_whitelist[survivor.ckey] & WHITELIST_COMMANDER)
 		return ..()
 	return FALSE
 
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_tech
+/obj/effect/landmark/survivor_spawner/lv522_forecon_tech
 	equipment = /datum/equipment_preset/survivor/forecon/tech
 
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_marksman
+/obj/effect/landmark/survivor_spawner/lv522_forecon_marksman
 	equipment = /datum/equipment_preset/survivor/forecon/marksman
 
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_smartgunner
+/obj/effect/landmark/survivor_spawner/lv522_forecon_smartgunner
 	equipment = /datum/equipment_preset/survivor/forecon/smartgunner
 
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_grenadier
+/obj/effect/landmark/survivor_spawner/lv522_forecon_grenadier
 	equipment = /datum/equipment_preset/survivor/forecon/grenadier
 
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_squad_leader
+/obj/effect/landmark/survivor_spawner/lv522_forecon_squad_leader
 	equipment = /datum/equipment_preset/survivor/forecon/squad_leader

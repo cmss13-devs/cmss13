@@ -6,6 +6,9 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/forecon/standard"
     ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/forecon"
+    ],
     "defcon_triggers": [
         3300,
         2100,

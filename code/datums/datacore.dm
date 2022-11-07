@@ -325,6 +325,19 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 		L.fields["exploit_record"] = "No additional information acquired."
 	locked += L
 
+/// Remove an entry from the manifest
+/obj/effect/datacore/proc/manifest_remove(ref, name)
+	var/use_name = isnull(ref)
+	for(var/datum/data/record/data_record as anything in GLOB.data_core.general)
+		if(use_name)
+			if(data_record.fields["name"] == name)
+				GLOB.data_core.general -= data_record.fields["name"]
+				break
+		else
+			if(data_record.fields["ref"] == ref)
+				GLOB.data_core.general -= data_record.fields["ref"]
+				break
+	return FALSE
 
 proc/get_id_photo(var/mob/living/carbon/human/H)
 	var/icon/preview_icon = null

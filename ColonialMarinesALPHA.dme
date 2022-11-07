@@ -728,6 +728,7 @@
 #include "code\game\machinery\computer\HolodeckControl.dm"
 #include "code\game\machinery\computer\medical.dm"
 #include "code\game\machinery\computer\Operating.dm"
+#include "code\game\machinery\computer\pmc_transfer.dm"
 #include "code\game\machinery\computer\pod.dm"
 #include "code\game\machinery\computer\prisoner.dm"
 #include "code\game\machinery\computer\research.dm"

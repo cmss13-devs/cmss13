@@ -47,7 +47,7 @@
 	mutation_type = BOILER_NORMAL
 	spit_delay  = 25 SECONDS
 	tileoffset = 4
-	viewsize = 6
+	viewsize = 7
 
 	icon_xeno = 'icons/mob/hostiles/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/boiler.dmi'
@@ -62,9 +62,9 @@
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
 		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
 		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
-		/datum/action/xeno_action/activable/spray_acid/boiler,
-		/datum/action/xeno_action/onclick/dump_acid, //3rd macro
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler //4th macro
+		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4rd macro
+		/datum/action/xeno_action/onclick/dump_acid //4th macro
 
 	)
 

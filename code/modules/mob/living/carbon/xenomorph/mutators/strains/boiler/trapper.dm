@@ -1,7 +1,7 @@
 
 /datum/xeno_mutator/trapper
 	name = "STRAIN: Boiler - Trapper"
-	description = "You trade your ability to bombard for longer range vision, traps that immobilize your opponents, and unblockable acid mines."
+	description = "You trade your ability to bombard, speed, health and armor for longer range vision, traps that immobilize your opponents, and unblockable acid mines."
 	flavor_description = "I love the smell of burnin' tallhost flesh in the Mornin'."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -35,8 +35,10 @@
 	B.viewsize = TRAPPER_VIEWRANGE
 	B.mutation_type = BOILER_TRAPPER
 	B.plasma_types -= PLASMA_NEUROTOXIN
+	B.armor_modifier -= XENO_ARMOR_MOD_VERYLARGE // no armor
+	B.health_modifier -= XENO_HEALTH_MOD_MED
 
-	B.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
+	B.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs
 	B.recalculate_everything()
 
 	apply_behavior_holder(B)

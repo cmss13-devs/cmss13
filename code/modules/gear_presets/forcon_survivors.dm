@@ -235,3 +235,18 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/davenport(H), WEAR_IN_BACK)
+
+//----------------------\\
+
+/datum/equipment_preset/synth/survivor/forecon
+	name = "Survivor - USCM Synthetic"
+
+/datum/equipment_preset/synth/survivor/forecon/load_gear(mob/living/carbon/human/preset_human) //Bishop from Aliens
+	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)
+	preset_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(preset_human), WEAR_BACK)
+	preset_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red(preset_human), WEAR_FEET)
+	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(preset_human), WEAR_ACCESSORY)
+	preset_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(preset_human), WEAR_L_HAND)
+	preset_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(preset_human), WEAR_R_HAND)
+	preset_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(preset_human), WEAR_R_STORE)
+	preset_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(preset_human), WEAR_L_STORE)

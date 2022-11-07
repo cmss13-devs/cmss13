@@ -34,15 +34,9 @@
 
 	var/weather_holder
 
-	var/list/survivor_types = list(
-		/datum/equipment_preset/survivor/scientist,
-		/datum/equipment_preset/survivor/doctor,
-		/datum/equipment_preset/survivor/chef,
-		/datum/equipment_preset/survivor/chaplain,
-		/datum/equipment_preset/survivor/miner,
-		/datum/equipment_preset/survivor/colonial_marshal,
-		/datum/equipment_preset/survivor/engineer
-	)
+	var/list/survivor_types
+
+	var/list/synth_survivor_types
 
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 
@@ -61,6 +55,21 @@
 	var/list/xvx_hives = list(XENO_HIVE_ALPHA = 0, XENO_HIVE_BRAVO = 0)
 
 	var/vote_cycle = 1
+
+/datum/map_config/New()
+	survivor_types = list(
+		/datum/equipment_preset/survivor/scientist,
+		/datum/equipment_preset/survivor/doctor,
+		/datum/equipment_preset/survivor/chef,
+		/datum/equipment_preset/survivor/chaplain,
+		/datum/equipment_preset/survivor/miner,
+		/datum/equipment_preset/survivor/colonial_marshal,
+		/datum/equipment_preset/survivor/engineer
+	)
+
+	synth_survivor_types = list(
+		/datum/equipment_preset/synth/survivor
+	)
 
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config = new
@@ -165,6 +174,23 @@
 		pathed_survivor_types += survivor_typepath
 	survivor_types = pathed_survivor_types.Copy()
 
+	if(islist(json["synth_survivor_types"]))
+		synth_survivor_types = json["synth_survivor_types"]
+	else if ("synth_survivor_types" in json)
+		log_world("map_config synth_survivor_types is not a list!")
+		return
+
+	var/list/pathed_synth_survivor_types = list()
+	for(var/synth_surv_type in synth_survivor_types)
+		var/synth_survivor_typepath = synth_surv_type
+		if(!ispath(synth_survivor_typepath))
+			synth_survivor_typepath = text2path(synth_surv_type)
+			if(!ispath(synth_survivor_typepath))
+				log_world("[synth_surv_type] isn't a proper typepath, removing from synth_survivor_types list")
+				continue
+		pathed_synth_survivor_types += synth_survivor_typepath
+	synth_survivor_types = pathed_synth_survivor_types.Copy()
+
 	if (islist(json["monkey_types"]))
 		monkey_types = list()
 		for(var/monkey in json["monkey_types"])
@@ -237,7 +263,7 @@
 
 	if(json["perf_mode"])
 		perf_mode = json["perf_mode"]
-		
+
 	if(json["vote_cycle"])
 		vote_cycle = json["vote_cycle"]
 

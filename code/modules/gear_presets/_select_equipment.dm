@@ -121,10 +121,8 @@
 	W.paygrade = load_rank(H)
 	W.uniform_sets = uniform_sets
 	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.faction == FACTION_NEUTRAL)
-		H.faction = faction
-	if(!H.faction_group)
-		H.faction_group = faction_group.Copy()
+	H.faction = faction
+	H.faction_group = faction_group.Copy()
 	if(H.mind)
 		H.mind.name = H.real_name
 		if(H.mind.initial_account)
@@ -667,8 +665,6 @@ var/list/rebel_rifles = list(
 
 /datum/equipment_preset/proc/add_random_synth_survivor_equipment(var/mob/living/carbon/human/H)
 	var/random_gear = rand(0,10)
-	if(SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM)
-		random_gear = 99
 	switch(random_gear)
 		if(0) // The Classic Joe
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
@@ -790,15 +786,6 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/toxin(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H.back), WEAR_IN_BACK)
-		if(99) //Bishop from Aliens - steal his look! (wristwatch not included) - LV-522 exclusive
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/red(H), WEAR_FEET)
-			H.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(H), WEAR_ACCESSORY)
-			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_R_HAND)
-			H.faction = FACTION_MARINE
-			H.faction_group = FACTION_LIST_MARINE
 
 /datum/equipment_preset/proc/add_random_survivor_medical_gear(var/mob/living/carbon/human/H) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
 	var/random_gear = rand(0,4)

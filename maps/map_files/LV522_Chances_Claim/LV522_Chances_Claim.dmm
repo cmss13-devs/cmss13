@@ -9858,7 +9858,7 @@
 	},
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "eUX" = (
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "eVc" = (
@@ -11606,7 +11606,7 @@
 	icon_state = "bedroll_o";
 	name = "bedroll"
 	},
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_smartgunner,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_smartgunner,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -15867,7 +15867,7 @@
 	icon_state = "bedroll_o";
 	name = "bedroll"
 	},
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "blue"
@@ -16333,7 +16333,7 @@
 	name = "bedroll"
 	},
 /obj/item/trash/uscm_mre,
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -17943,7 +17943,7 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "iuK" = (
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 9;
@@ -18240,7 +18240,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_tech,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_tech,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "iBs" = (
@@ -18466,7 +18466,7 @@
 	},
 /area/lv522/indoors/a_block/security)
 "iHg" = (
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	icon_state = "blue"
 	},
@@ -23530,7 +23530,7 @@
 /area/lv522/indoors/c_block/casino)
 "kAj" = (
 /obj/structure/bed/chair/comfy,
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_squad_leader,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_squad_leader,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "kAn" = (
@@ -26012,7 +26012,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_major,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_major,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "lyg" = (
@@ -26034,7 +26034,7 @@
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "lyQ" = (
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "blue"
@@ -26679,7 +26679,7 @@
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_marksman,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_marksman,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -28143,7 +28143,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "mqv" = (
-/obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_grenadier,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_grenadier,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
@@ -35080,7 +35080,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "pfX" = (
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
 "pgg" = (
@@ -39111,7 +39111,7 @@
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
 "qKk" = (
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
@@ -45082,7 +45082,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue"
@@ -46305,7 +46305,7 @@
 "twq" = (
 /obj/structure/platform_decoration,
 /obj/item/reagent_container/food/drinks/flask/marine,
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue_plate"
@@ -53454,7 +53454,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "wfe" = (
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 6;
@@ -54678,7 +54678,7 @@
 	icon_state = "bedroll_o";
 	name = "bedroll"
 	},
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "wCS" = (
@@ -56241,8 +56241,11 @@
 	dir = 4;
 	icon = 'icons/obj/vehicles/apc.dmi';
 	icon_state = "apc_base_com";
+	indestructible = 1;
 	name = "\improper M577 armored personnel carrier";
-	pixel_y = -21
+	pixel_y = -21;
+	unacidable = 1;
+	unslashable = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/shale/layer0,
@@ -58046,7 +58049,7 @@
 "xRz" = (
 /obj/structure/platform_decoration,
 /obj/structure/bed/roller,
-/obj/effect/landmark/survivor_spawner/lv_522,
+/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 1;

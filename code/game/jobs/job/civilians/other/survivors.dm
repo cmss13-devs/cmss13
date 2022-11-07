@@ -126,6 +126,9 @@
 		/datum/equipment_preset/synth/survivor,
 	)
 
+	if(length(SSmapping.configs[GROUND_MAP].synth_survivor_types))
+		survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
+
 	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
 
 AddTimelock(/datum/job/civilian/survivor, list(

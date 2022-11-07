@@ -21,7 +21,7 @@ var/list/department_radio_keys = list(
 	  ":y" = RADIO_CHANNEL_WY,			"#y" = RADIO_CHANNEL_WY,			".y" = RADIO_CHANNEL_WY,
 	  ":o" = RADIO_CHANNEL_CCT,			"#o" = RADIO_CHANNEL_CCT,			".o" = RADIO_CHANNEL_CCT,
 	  ":z" = RADIO_CHANNEL_HIGHCOM,		"#z" = RADIO_CHANNEL_HIGHCOM,		".z" = RADIO_CHANNEL_HIGHCOM,
-	  ":k" = SQUAD_SOF,				"#k" = SQUAD_SOF,				".k" = SQUAD_SOF,
+	  ":k" = SQUAD_SOF,					"#k" = SQUAD_SOF,					".k" = SQUAD_SOF,
 
 	  ":I" = RADIO_CHANNEL_INTERCOM,	"#I" = RADIO_CHANNEL_INTERCOM,		".I" = RADIO_CHANNEL_INTERCOM,
 	  ":H" = RADIO_CHANNEL_DEPARTMENT,	"#H" = RADIO_CHANNEL_DEPARTMENT,	".H" = RADIO_CHANNEL_DEPARTMENT,
@@ -44,7 +44,7 @@ var/list/department_radio_keys = list(
 	  ":Y" = RADIO_CHANNEL_WY,			"#Y" = RADIO_CHANNEL_WY,			".Y" = RADIO_CHANNEL_WY,
 	  ":O" = RADIO_CHANNEL_CCT,			"#O" = RADIO_CHANNEL_CCT,			".O" = RADIO_CHANNEL_CCT,
 	  ":Z" = RADIO_CHANNEL_HIGHCOM,		"#Z" = RADIO_CHANNEL_HIGHCOM,		".Z" = RADIO_CHANNEL_HIGHCOM,
-	  ":K" = SQUAD_SOF,				"#K" = SQUAD_SOF,				".K" = SQUAD_SOF,
+	  ":K" = SQUAD_SOF,					"#K" = SQUAD_SOF,					".K" = SQUAD_SOF,
 )
 
 /mob/living/proc/binarycheck()

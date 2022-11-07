@@ -24,6 +24,7 @@
 #define RADIO_CHANNEL_CLF "CLF"
 #define RADIO_CHANNEL_COLONY "Colony"
 #define RADIO_CHANNEL_DEPARTMENT "department"
+#define RADIO_CHANNEL_HEADSET "headset"
 #define RADIO_CHANNEL_DUTCH_DOZEN "DD"
 #define RADIO_CHANNEL_ENGI "Engi"
 #define RADIO_CHANNEL_ERT "Response Team"

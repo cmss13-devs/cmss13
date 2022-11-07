@@ -43,6 +43,8 @@ FLOOR SAFES
 	var/space = 0		//the combined w_class of everything in the safe
 	var/maxspace = 24	//the maximum combined w_class of stuff in the safe
 
+	var/datum/cm_objective/crack_safe/objective
+
 
 /obj/structure/safe/Initialize(mapload, ...)
 	. = ..()
@@ -65,6 +67,11 @@ FLOOR SAFES
 
 	if(spawnkey)
 		new /obj/item/paper/safe_key(loc) //Spawn the key on top of the safe.
+
+/obj/structure/safe/Destroy()
+	qdel(objective)
+	objective = null
+	return ..()
 
 /obj/structure/safe/proc/check_unlocked(mob/user as mob, canhear)
 	if(user && canhear)

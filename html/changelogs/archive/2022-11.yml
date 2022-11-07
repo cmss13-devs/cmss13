@@ -59,3 +59,63 @@
   Mistfrag:
   - qol: Linked respective wiki page to all Marine roles.
   - code_imp: Added defines for every wiki page on marines.
+2022-11-05:
+  realforest2001:
+  - rscdel: Removed Provost Officer job as it is now obsolete.
+  - tweak: Changed how the HUDs draw their icon pools to allow for easier differentiation
+      in file names.
+  - tweak: Changed the Dropship Crew Chief HUD Icon to fit enlisted style rather than
+      using junior officer style.
+  - tweak: Changed the UAAC-TIS Special Agent HUD Icon to officer colors, leaving
+      current icon for TIS Intel Officer.
+  - rscadd: Added HUD icons for Synthetic and Mess Technician.
+2022-11-06:
+  Don2137:
+  - qol: Made the medevac stretcher selection message on the dropship console more
+      obvious to indicate that you need to click the medevac system to winch the patient.
+  Fortelian:
+  - rscadd: Added janitorial closet to northwest maintenance above navigation. Contains
+      generic cleaning/repair equipment such as glass, metal rods, mop & bucket, space
+      cleaner, etc
+  - rscadd: Adds a no smoking sign to OB chambering room. Probably shouldn't have
+      an open flame in there...
+  Geevies:
+  - rscadd: Made fun facts show more fun facts, fun!
+  - rscadd: Commissioned officers (CIC staff, IOs, DPs) can now have prosthetic limbs,
+      selected via Character Traits in character setup.
+  - admin: Added zombie spawnpoints for events.
+  John_Rico:
+  - bugfix: OT claymore no longer blows up in random directions
+  Mistfrag:
+  - spellcheck: MARSOC is now referred to as Marine Raiders/SOF. This makes them more
+      compliant to lore and closer to their standard marines.
+  Morrow:
+  - bugfix: Removes an extra APC at the crashed ship on sorokyne and also offsets
+      correctly off of plating.
+  Segrain:
+  - admin: Object Narrate verb is back under proper permissions.
+  SpartanBobby:
+  - rscadd: Added two new issues of "Boots!" magazine to the Almayer
+  - rscadd: Slightly extended the evidence room of the brig
+  - rscadd: Added two new books to the USS Almayer one of the books "Space beast"
+      is ICly considered contraband
+  - bugfix: fixed inconsistent floor tiling on the USS Almayer by replacing all the
+      floor tiles under doors with appropriate warning stripes so you don't hurt your
+      toes
+  fira:
+  - bugfix: Half fixed statpanel failing to load. It might still behave erratically.
+  harryob:
+  - bugfix: afk players are now correctly flagged by the server, and can be cleaned
+      up (eg, afk larvae)
+  - bugfix: tgui's autoclose correctly, now, and not every 3.5 seconds
+  stanalbatross:
+  - qol: you can now toggle off item pickup animations or selectively toggle off item
+      animations of objects being moved around in inventory
+  usnpeepoo:
+  - bugfix: Mini-Flamer sentries no longer deal unintended damage to queens/ravagers/fire
+      immune xenos
+  - bugfix: Mini-Flamer sentries actually use the correct flame type.
+2022-11-07:
+  Geeves, Frans_Feiffer:
+  - rscadd: Added Weyland-Yutani Corporate Security Goons, which replaces the PMC
+      survivor. Also has a distress beacon which admins can spawn them with.

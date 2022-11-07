@@ -887,7 +887,7 @@
 		linked_stretcher = null
 		return
 
-	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected stretcher's beacon."))
+	to_chat(user, SPAN_NOTICE("You move your dropship above the selected stretcher's beacon. You can now manually activate the medevac system to hoist the patient up."))
 
 	if(linked_stretcher)
 		linked_stretcher.linked_medevac = null

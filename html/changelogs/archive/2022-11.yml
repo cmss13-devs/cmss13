@@ -115,3 +115,7 @@
   - bugfix: Mini-Flamer sentries no longer deal unintended damage to queens/ravagers/fire
       immune xenos
   - bugfix: Mini-Flamer sentries actually use the correct flame type.
+2022-11-07:
+  Geeves, Frans_Feiffer:
+  - rscadd: Added Weyland-Yutani Corporate Security Goons, which replaces the PMC
+      survivor. Also has a distress beacon which admins can spawn them with.

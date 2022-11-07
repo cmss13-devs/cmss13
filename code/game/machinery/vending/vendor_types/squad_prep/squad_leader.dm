@@ -3,6 +3,7 @@
 GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("SQUAD LEADER KIT (CHOOSE 1)", 0, null, null, null),
 		list("Essential SL Flamethrower Kit", 0, /obj/effect/essentials_set/leader/flamethrower, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential SL M41A MK1 Kit", 0, /obj/effect/essentials_set/leader, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
 		list("Whistle", 3, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),

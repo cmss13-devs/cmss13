@@ -7,7 +7,6 @@
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_CARGO)
 	hackable = TRUE
-//changing it so that the gun as the corresponding ammo bellow it
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/populate_product_list(var/scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
@@ -225,7 +224,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta
 
 //------------SQUAD PREP UNIFORM VENDOR---------------
-//changing how the order of the items in the list to make it fit the ColMarTech Automated Marine Equipment Rack.
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep
 	name = "\improper ColMarTech Surplus Uniform Vendor"
 	desc = "An automated supply rack hooked up to a small storage of standard marine uniforms."

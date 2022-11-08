@@ -283,8 +283,9 @@
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
-	xeno.speed_modifier = initial(xeno.speed_modifier)// Reset the speed modifier should you be disrupted while zooming or whatnot
 	var/mob/living/carbon/Xenomorph/xeno = owner
+	xeno.speed_modifier = initial(xeno.speed_modifier)// Reset the speed modifier should you be disrupted while zooming or whatnot
+
 	if(xeno.is_zoomed)
 		xeno.zoom_out() // will also handle icon_state
 		xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."), \

@@ -34,6 +34,7 @@ interface PlacedMark extends Mark {
   owner_name: string;
   area: string;
   time: string;
+  watching: Array<string>;
 }
 
 // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
@@ -141,8 +142,12 @@ const HistoricalMark = (props: {mark: PlacedMark}, context) => {
       className={classes([historicalSelected === mark.id && 'Selected'])}
       onClick={() => setHistoricalSelected(historicalSelected === '' ? mark.id : historicalSelected === mark.id ? '' : mark.id)}
     >
-      <Stack className="MarkStack" direction="row">
-        <Stack.Item className="ChooseMark__BuildIcon">
+      <Flex
+        className="MarkStack"
+        direction="row"
+        justify="flex-start"
+      >
+        <Flex.Item className="ChooseMark__BuildIcon">
           <span
             className={classes([
               `choosemark64x64`,
@@ -150,9 +155,9 @@ const HistoricalMark = (props: {mark: PlacedMark}, context) => {
               'ChooseMark__BuildIcon',
             ])}
           />
-        </Stack.Item>
-        <Stack.Item className="MarkLabel">
-          <Flex align="flex-top" justify="space-between" fill align-items="stretch">
+        </Flex.Item>
+        <Flex.Item className="MarkLabel">
+          <Flex align="flex-top" justify="space-between">
             <Flex.Item >
               <Stack vertical>
                 <Stack.Item>
@@ -167,14 +172,23 @@ const HistoricalMark = (props: {mark: PlacedMark}, context) => {
                 </Stack.Item>
               </Stack>
             </Flex.Item>
+
+            <Flex.Item>
+              <div className={classes(["MarkWatch", "Test"])}>
+                {mark.watching.map(x => <div>
+                    <span>{x}</span>
+                  </div>)}
+              </div>
+            </Flex.Item>
+
             {isTracked
               && (
                 <Flex.Item>
                   <Icon name="eye" className="TrackIcon" size={2} />
                 </Flex.Item>)}
           </Flex>
-        </Stack.Item>
-      </Stack>
+        </Flex.Item>
+      </Flex>
     </Box>
   );
 };

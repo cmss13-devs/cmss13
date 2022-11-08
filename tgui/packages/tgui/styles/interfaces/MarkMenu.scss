@@ -13,6 +13,22 @@
   margin-top: 16px;
   margin-right: 16px;
   color: 2px solid lighten(#52375c, 0.2);
+  height: 100%;
+}
+
+.Test {
+  border: 2px solid red;
+}
+
+.MarkWatch {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  div {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
 }
 
 .History {
@@ -22,7 +38,6 @@
     display: block;
     z-index: 2;
     background-color: black;
-    width: 100%;
     border: 2px solid lighten(#52375c, 0.2);
   }
 

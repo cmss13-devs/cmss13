@@ -78,6 +78,7 @@
 		entry["id"] = RM.weak_reference.reference
 		entry["image"] = RM.mark_meaning.icon_state
 		entry["time"] = RM.createdTime
+		entry["watching"] = RM.xenos_tracking
 
 		mark_list_infos += list(entry)
 
@@ -182,6 +183,7 @@
 
 			if(selected_xeno == FunkTownOhyea)
 				for(var/mob/living/carbon/Xenomorph/forced_xeno in X.hive.totalXenos)
+					forced_xeno.stop_tracking_resin_mark(false, silent=TRUE)
 					to_chat(forced_xeno, SPAN_XENOANNOUNCE("Hive! Your queen commands: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
 					forced_xeno.start_tracking_resin_mark(mark_to_force)
 					forced_xeno.hud_used.locate_marker.overlays.Cut()
@@ -192,6 +194,7 @@
 			if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno.stat == DEAD || is_admin_level(selected_xeno.z) || !X.check_state(1))
 				return
 			else
+				selected_xeno.stop_tracking_resin_mark(false, silent=TRUE)
 				to_chat(selected_xeno, SPAN_XENOBOLDNOTICE("Your queen commands you to follow: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
 				selected_xeno.start_tracking_resin_mark(mark_to_force)
 				update_all_data()

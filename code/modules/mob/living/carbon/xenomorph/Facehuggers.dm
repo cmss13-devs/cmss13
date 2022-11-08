@@ -37,7 +37,7 @@
 	/// the nearest human before dying
 	var/jumps_left = 2
 
-	var/icon_xeno = 'icons/mob/hostiles/effects.dmi'
+	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
 	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)

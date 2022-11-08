@@ -7,8 +7,6 @@ import {
   Stack,
   Button,
   Icon,
-  Collapsible,
-  Table,
 } from '../components';
 import { Window } from '../layouts';
 
@@ -102,12 +100,7 @@ const MarkSelection = (props, context) => {
             color="xeno"
             onClick={() => setSelectionMenu(!selectionMenu)}
             compact>
-            <span
-              className={classes([
-                `choosemark64x64`,
-                `${mark_prototype?.image}${'_big'}`,
-              ])}
-            />
+            <MarkImage image={mark_prototype?.image} size="64x64"/>
           </Button>
         </Stack.Item>
         <Stack.Item>
@@ -130,6 +123,16 @@ const MarkSelection = (props, context) => {
   );
 };
 
+const MarkImage = (props: {image: string, size: string}, _) => {
+  return (<span
+    className={classes([
+      `choosemark${props.size}`,
+      `${props.image}${props.size === '64x64' ? '_big' : ''}`,
+      'ChooseMark__BuildIcon',
+    ])}
+  />)
+}
+
 const HistoricalMark = (props: {mark: PlacedMark}, context) => {
   const { data } = useBackend<MarkProps>(context);
   const { mark } = props;
@@ -145,37 +148,30 @@ const HistoricalMark = (props: {mark: PlacedMark}, context) => {
       <Flex
         className="MarkStack"
         direction="row"
-        justify="flex-start"
+        justify="space-between"
+        fill
       >
         <Flex.Item className="ChooseMark__BuildIcon">
-          <span
-            className={classes([
-              `choosemark64x64`,
-              `${mark.image}_big`,
-              'ChooseMark__BuildIcon',
-            ])}
-          />
+          <MarkImage image={mark.image} size='64x64'/>
         </Flex.Item>
-        <Flex.Item className="MarkLabel">
-          <Flex align="flex-top" justify="space-between">
-            <Flex.Item >
-              <Stack vertical>
+        <Flex.Item className={classes(["MarkLabel"])}>
+          <Flex align="flex-top" justify="flex-start" fill>
+            <Flex.Item>
+              <Stack vertical className="HistoricalLabel">
                 <Stack.Item>
-                  <span className="MarkName">{mark.name} - </span>
+                  <span className="MarkName">{mark.name}</span>
+                </Stack.Item>
+                <Stack.Item>
                   <span>{mark.area}</span>
                 </Stack.Item>
                 <Stack.Item>
-                  <span>Owner: {mark.owner_name}</span>
-                </Stack.Item>
-                <Stack.Item>
-                  <span>Placed: {mark.time}</span>
+                  <span>Owner: {mark.owner_name} - {mark.time}</span>
                 </Stack.Item>
               </Stack>
             </Flex.Item>
-
-            <Flex.Item>
-              <div className={classes(["MarkWatch", "Test"])}>
-                {mark.watching.map(x => <div>
+            <Flex.Item grow={1}>
+              <div className={classes(["MarkWatch"])}>
+                {mark.watching.map(x => <div key={x}>
                     <span>{x}</span>
                   </div>)}
               </div>
@@ -226,7 +222,7 @@ export const MarkMenu = (props, context) => {
       title={'Mark Menu'}
       theme="hive_status"
       resizable
-      width={500}
+      width={560}
       height={680}>
       <Window.Content scrollable>
         <Stack vertical>
@@ -257,13 +253,7 @@ const MarkMeaningList = (props: {onClick?: () => void}, context) => {
           }}>
           <Stack align="center">
             <Stack.Item>
-              <span
-                className={classes([
-                  `choosemark${'32x32'}`,
-                  `${val.image}${''}`,
-                  'ChooseMark__BuildIcon',
-                ])}
-              />
+              <MarkImage image={val.image} size='32x32'/>
             </Stack.Item>
             <Stack.Item grow>
               <Box fontSiz>{val.desc}</Box>
@@ -272,102 +262,5 @@ const MarkMeaningList = (props: {onClick?: () => void}, context) => {
         </Tabs.Tab>
       ))}
     </Tabs>
-  );
-};
-
-
-const HiveMarkList = (props, context) => {
-  const { data, act } = useBackend<MarkProps>(context);
-  const { mark_list_infos, is_leader, user_nicknumber } = data;
-
-  return (
-    <Flex direction="column">
-      <Table className="xeno_list">
-        <Table.Row header className="xenoListRow">
-          <Table.Cell width="12.25%" className="noPadCell" />
-          <Table.Cell width="12.25%">Owner</Table.Cell>
-          <Table.Cell width="12.25%">Type</Table.Cell>
-          <Table.Cell width="12.25%">Location</Table.Cell>
-          <Table.Cell width="50%">Actions</Table.Cell>
-        </Table.Row>
-        {mark_list_infos.map((val, index) => (
-          <Table.Row key={index}>
-            <Table.Cell width="12.25%">
-              <Flex>
-                <span
-                  className={classes([
-                    `choosemark${'32x32'}`,
-                    `${val.image}${''}`,
-                    'ChooseMark__BuildIcon',
-                  ])}
-                />
-              </Flex>
-            </Table.Cell>
-            <Table.Cell width="12.25%">{val.owner_name}</Table.Cell>
-            <Table.Cell width="12.25%">{val.name}</Table.Cell>
-            <Table.Cell width="12.25%">{val.area}</Table.Cell>
-            <Table.Cell width="50%" className="noPadCell" textAlign="center">
-              <Flex
-                unselectable="on"
-                wrap="wrap"
-                className="actionButton"
-                align="center"
-                justify="space-around"
-                inline>
-                <Flex.Item>
-                  <Button
-                    content="Watch"
-                    color="xeno"
-                    onClick={() => act('watch', { type: val.id })}
-                  />
-                  <Button
-                    content="Track"
-                    color="xeno"
-                    onClick={() => act('track', { type: val.id })}
-                  />
-                  {is_leader === 1 && (
-                    <Button
-                      content="Destroy"
-                      color="red"
-                      onClick={() => act('destroy', { type: val.id })}
-                    />
-                  )}
-                  {user_nicknumber === val.owner && is_leader !== 1 && (
-                    <Button
-                      content="Destroy"
-                      color="red"
-                      onClick={() => act('destroy', { type: val.id })}
-                    />
-                  )}
-                  {is_leader === 1 && (
-                    <Button
-                      content="Force Tracking"
-                      color="xeno"
-                      onClick={() => act('force', { type: val.id })}
-                    />
-                  )}
-                </Flex.Item>
-              </Flex>
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table>
-    </Flex>
-  );
-};
-
-const XenoCollapsible = (props, context) => {
-  const { data, act } = useBackend<MarkProps>(context);
-  const { title, children } = props;
-  const { hive_color } = data;
-
-  return (
-    <Collapsible
-      title={title}
-      backgroundColor={!!hive_color && hive_color}
-      color={!hive_color && 'xeno'}
-      open>
-      {children}
-    </Collapsible>
   );
 };

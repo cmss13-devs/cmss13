@@ -10,8 +10,9 @@
 }
 
 .TrackIcon {
-  margin-top: 16px;
-  margin-right: 16px;
+  margin-top: 20px;
+  margin-right: 8px;
+  margin-left: 8px;
   color: 2px solid lighten(#52375c, 0.2);
   height: 100%;
 }
@@ -21,14 +22,19 @@
 }
 
 .MarkWatch {
-  display: flex;
+  display: inline-flexbox;
   flex-direction: row;
   flex-wrap: wrap;
   list-style: none;
   div {
     padding-left: 3px;
     padding-right: 3px;
+    display: inline-flex;
   }
+}
+
+.HistoricalLabel {
+  width: 160px;
 }
 
 .History {
@@ -39,6 +45,7 @@
     z-index: 2;
     background-color: black;
     border: 2px solid lighten(#52375c, 0.2);
+    width: 100%;
   }
 
   .Selected {
@@ -49,6 +56,7 @@
     line-height: 18px;
     background-color: base.$color-bg-section;
     margin-top: 2px;
+    margin-bottom: 2px;
 
     .MenuSelectionButton {
       .Button {

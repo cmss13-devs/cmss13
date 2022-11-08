@@ -112,6 +112,13 @@
 	. = ..()
 	name = "plating"
 
+/// Visually like plating+catwalks but without overlaying or interactions - mainly for Reqs Elevator
+/turf/open/floor/plating/bare_catwalk
+	name = "catwalk"
+	desc = "Cats really don't like these things."
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "plating_catwalk"
+
 /turf/open/floor/plating/plating_catwalk
 	name = "catwalk"
 	desc = "Cats really don't like these things."

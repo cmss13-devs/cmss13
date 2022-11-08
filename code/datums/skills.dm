@@ -129,7 +129,7 @@
 	skill_name = SKILL_DOMESTIC
 	skill_level = SKILL_DOMESTIC_NONE
 
-datum/skill/fireman
+/datum/skill/fireman
 	skill_name = SKILL_FIREMAN
 	skill_level = SKILL_FIREMAN_DEFAULT
 

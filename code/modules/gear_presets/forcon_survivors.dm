@@ -240,6 +240,8 @@
 
 /datum/equipment_preset/synth/survivor/forecon
 	name = "Survivor - USCM Synthetic"
+	assignment = "Reconnaissance Synthetic"
+	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/synth/survivor/forecon/load_gear(mob/living/carbon/human/preset_human) //Bishop from Aliens
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)

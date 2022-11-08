@@ -16,7 +16,7 @@
 	GLOB.survivor_spawns -= src
 	return ..()
 
-/obj/effect/landmark/survivor_spawner/proc/check_can_spawn(var/mob/living/carbon/human/survivor, var/is_synth)
+/obj/effect/landmark/survivor_spawner/proc/check_can_spawn(var/mob/living/carbon/human/survivor)
 	// prevents stacking survivors on top of eachother
 	if(locate(/mob/living/carbon/human) in loc)
 		return FALSE

@@ -24,20 +24,12 @@
 
 	var/list/potential_spawners = list()
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns)
-		if(spawner.check_can_spawn(H, is_synth))
+		if(spawner.check_can_spawn(H))
 			potential_spawners += spawner
 	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
 	H.forceMove(get_turf(picked_spawner))
 
-	var/has_equipment = FALSE
-	if(is_synth && picked_spawner.synth_equipment)
-		arm_equipment(H, picked_spawner.synth_equipment, FALSE, TRUE)
-		has_equipment = TRUE
-	else if(!is_synth && picked_spawner.equipment)
-		arm_equipment(H, picked_spawner.equipment, FALSE, TRUE)
-		has_equipment = TRUE
-	if(!has_equipment)
-		survivor_old_equipment(H)
+	handle_equip_gear(H, picked_spawner)
 
 	if(picked_spawner.roundstart_damage_max > 0)
 		if(istype(picked_spawner) && picked_spawner.roundstart_damage_max > 0)
@@ -106,9 +98,14 @@
 
 	return TRUE
 
-/datum/job/civilian/survivor/proc/survivor_old_equipment(var/mob/living/carbon/human/H)
-	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
-	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
+/datum/job/civilian/survivor/proc/handle_equip_gear(var/mob/living/carbon/human/equipping_human, var/obj/effect/landmark/survivor_spawner/picked_spawner)
+	if(picked_spawner.equipment)
+		arm_equipment(equipping_human, picked_spawner.equipment, FALSE, TRUE)
+		return
+	else
+		var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
+		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
+		return
 
 /datum/job/civilian/survivor/synth
 	title = JOB_SYNTH_SURVIVOR
@@ -121,15 +118,14 @@
 /datum/job/civilian/survivor/synth/set_spawn_positions(var/count)
 	return spawn_positions
 
-/datum/job/civilian/survivor/synth/survivor_old_equipment(var/mob/living/carbon/human/H)
-	var/list/survivor_types = list(
-		/datum/equipment_preset/synth/survivor,
-	)
-
-	if(length(SSmapping.configs[GROUND_MAP].synth_survivor_types))
-		survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
-
-	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
+/datum/job/civilian/survivor/synth/handle_equip_gear(var/mob/living/carbon/human/equipping_human, var/obj/effect/landmark/survivor_spawner/picked_spawner)
+	if(picked_spawner.synth_equipment)
+		arm_equipment(equipping_human, picked_spawner.synth_equipment, FALSE, TRUE)
+		return
+	else
+		var/list/synth_survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
+		arm_equipment(equipping_human, pick(synth_survivor_types), FALSE, TRUE)
+		return
 
 AddTimelock(/datum/job/civilian/survivor, list(
 	JOB_SQUAD_ROLES = 5 HOURS,

@@ -486,9 +486,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_variation = 6
 
 /obj/item/clothing/suit/storage/marine/light
-	name = "\improper M3-L pattern light armor"
-	desc = "A lighter, cut down version of the standard M3 pattern armor. It sacrifices durability for more speed."
-	specialty = "\improper M3-L pattern light"
+	name = "\improper M3-R Reconnaissance Pattern Armor"
+desc = "The M3-R is a configuration of the iconic M3 Personal Body Armor meant to be issued out towards specialised recon units - In practice, due to it's cheap manufacturing cost and the high flexibility offered by the M3-R, it's become a favourite within front-line units. While still being made up of the same ultra-light titanium alloy, the M3-R configuration removes the groin-padding, and overall has had armor shaved off to maximise speed."
+	specialty = "\improper M3-R Recce Pattern Armor"
 	icon_state = "L1"
 	armor_variation = 6
 	slowdown = SLOWDOWN_ARMOR_LIGHT

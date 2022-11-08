@@ -100,7 +100,7 @@ const MarkSelection = (props, context) => {
             color="xeno"
             onClick={() => setSelectionMenu(!selectionMenu)}
             compact>
-            <MarkImage image={mark_prototype?.image} size="64x64"/>
+            <MarkImage image={mark_prototype?.image} size="64x64" />
           </Button>
         </Stack.Item>
         <Stack.Item>
@@ -130,8 +130,8 @@ const MarkImage = (props: {image: string, size: string}, _) => {
       `${props.image}${props.size === '64x64' ? '_big' : ''}`,
       'ChooseMark__BuildIcon',
     ])}
-  />)
-}
+  />);
+};
 
 const HistoricalMark = (props: {mark: PlacedMark}, context) => {
   const { data } = useBackend<MarkProps>(context);
@@ -152,7 +152,7 @@ const HistoricalMark = (props: {mark: PlacedMark}, context) => {
         fill
       >
         <Flex.Item className="ChooseMark__BuildIcon">
-          <MarkImage image={mark.image} size='64x64'/>
+          <MarkImage image={mark.image} size='64x64' />
         </Flex.Item>
         <Flex.Item className={classes(["MarkLabel"])}>
           <Flex align="flex-top" justify="flex-start" fill>
@@ -171,9 +171,10 @@ const HistoricalMark = (props: {mark: PlacedMark}, context) => {
             </Flex.Item>
             <Flex.Item grow={1}>
               <div className={classes(["MarkWatch"])}>
-                {mark.watching.map(x => <div key={x}>
+                {mark.watching.map(x => (
+                  <div key={x}>
                     <span>{x}</span>
-                  </div>)}
+                  </div>))}
               </div>
             </Flex.Item>
 
@@ -253,7 +254,7 @@ const MarkMeaningList = (props: {onClick?: () => void}, context) => {
           }}>
           <Stack align="center">
             <Stack.Item>
-              <MarkImage image={val.image} size='32x32'/>
+              <MarkImage image={val.image} size='32x32' />
             </Stack.Item>
             <Stack.Item grow>
               <Box fontSiz>{val.desc}</Box>

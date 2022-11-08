@@ -36,8 +36,9 @@
 #define AMMO_NO_DEFLECT			(1<<21)
 ///Can only hit people with criminal status
 #define AMMO_MP					(1<<22)
+#define AMMO_FLAME				(1<<23) // Handles sentry flamers glob
 /// Can BE people with it
-#define AMMO_HIGHIMPACT			(1<<23)
+#define AMMO_HIGHIMPACT			(1<<24)
 
 
 //Gun defines for gun related thing. More in the projectile folder.

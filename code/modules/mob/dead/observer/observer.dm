@@ -351,7 +351,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			mind.player_entity.update_panel_data(round_statistics)
 		ghostize(TRUE)
 	else
-		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)","Are you sure you want to ghost?","Ghost","Stay in body")
+		var/list/options = list("Ghost", "Stay in body")
+		if(check_rights(R_MOD))
+			options = list("Aghost") + options
+		var/response = tgui_alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", options)
+		if(response == "Aghost")
+			client.admin_ghost()
+			return
 		if(response != "Ghost")	return	//didn't want to ghost after-all
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
@@ -712,13 +718,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/zombie_list = list()
-
+	if(length(GLOB.zombie_landmarks))
+		zombie_list += list("Underground Zombie" = "Underground Zombie")
 	for(var/mob/living/carbon/human/A in GLOB.zombie_list)
 		if(!A.client && A.stat != DEAD) // Only living zombies
 			zombie_list += list(A.real_name = A)
 
-
-	if(zombie_list.len == 0)
+	if(!length(zombie_list))
 		to_chat(src, SPAN_DANGER("There are no available zombies."))
 		return
 
@@ -726,15 +732,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!choice)
 		return
 
-	if(!client)
+	if(!client || !mind)
+		return
+
+	if(choice == "Underground Zombie")
+		if(!length(GLOB.zombie_landmarks))
+			to_chat(src, SPAN_WARNING("Sorry, the last underground zombie just got taken."))
+			return
+		var/obj/effect/landmark/zombie/spawn_point = pick(GLOB.zombie_landmarks)
+		spawn_point.spawn_zombie(src)
 		return
 
 	var/mob/living/carbon/human/Z = zombie_list[choice]
 
-	if(!Z || !mind)
-		return
-
-	if(QDELETED(Z)) //should never occur,just to be sure.
+	if(!Z || QDELETED(Z))
 		return
 
 	if(Z.stat == DEAD)

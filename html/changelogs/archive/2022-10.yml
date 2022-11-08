@@ -354,3 +354,36 @@
   - bugfix: autoreconnect now works
   stanalbatross:
   - bugfix: xenos can no longer build most structures on the same tile as open doors
+2022-10-29:
+  Joe lampost:
+  - bugfix: Stops duplication of smart discs
+  - bugfix: Stops the skinning of synths
+  Shad0vvs:
+  - bugfix: Now displays the first letter of areas properly on the Xeno death alert
+      message.
+  usnpeepoo:
+  - balance: Berserkers apprehend now has an actual cooldown, its speed increased
+      very slightly.
+  - balance: Berserkers eviscerates life steal gain and max has been lowered
+2022-10-30:
+  Geevies:
+  - admin: The ghost verb alert component now allows Aghosting as well as regular
+      ghosting.
+  - qol: Added a revive timer for zombies, as well as an alert for ghosts when their
+      bodies revive.
+  - balance: Zombie claws now apply a slowdown even if the slashed target is already
+      infected. Synths only get a regular slowdown, not a super slowdown.
+  - balance: You can now permanently kill zombies by decapitating them.
+  - bugfix: Fixes zombie eyes rendering incorrectly.
+  - bugfix: Zombies that zombify while lying down now get their equipment correctly.
+  - spellcheck: Zombie claw attacks now have sensical attack names.
+  Mister-moon1:
+  - code_imp: removed unused antihug code for the welding helmet
+  TotalEpicness:
+  - bugfix: Putting bodies in the pool now disrupts grab.
+  harryob:
+  - server: the server no longer allows graceful server restarts, and forcefully dies
+      at the end of every round
+2022-10-31:
+  Morrow:
+  - rscadd: Added suit slot sprites for mateba belts

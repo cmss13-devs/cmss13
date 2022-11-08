@@ -1,0 +1,121 @@
+2022-11-01:
+  BeagleGaming1:
+  - bugfix: Fixed CL incorrectly spawning at late join cryo room at round start
+  Geeves, Triiodine:
+  - rscadd: Added unique weather events to Big Red / Solaris Ridge and LV-624.
+  - refactor: Refactored weather code to hopefully be less laggy.
+  - refactor: Refactored Faction Clash to use the weather subsystem rather than manually
+      placing rain.
+  Kraso:
+  - bugfix: Fixes being knocked down for several minutes by being rammed by a crusher
+      while manning a M2C. You should now be knocked down for the appropriate time
+      of 3 seconds.
+  Morrow:
+  - balance: Removes ceramic plates from new contractors.
+  TotalEpicness:
+  - qol: You can now check how much metal an autodoc has before it's out.
+  - bugfix: Fixes some minor mapping bugs on kutjevo
+  Totalepicess:
+  - bugfix: Fixes space areas on Shivas elevator nightmare.
+  Totalepicness:
+  - refractor: Updated the sound backend to support echos/offsets
+  Usnpeepoo:
+  - bugfix: Facehuggers can now be put on a table/rack without causing a multitude
+      of issues.
+  mullenpaul:
+  - refactor: uscm clothing vendors now use tgui
+  - refactor: added alt text for icons on cm vendor
+  - refactor: updated existing tgui vendors to new style
+  - qol: when using cm vendor ui you can close by pressing escape
+  - refactor: vendor icons now use spritesheet for asset transfer
+  - refactor: cm vendors now inform UI about what kind of vendor it is (clothing/
+      sorted)
+  - refactor: updated uscm role specific vending machines to use global item list
+      via get_listed_products
+  - refactor: clothing item list for synth snowflake now global list
+  - refactor: uscm dress vendor rewritten with custom tgui code because of how item
+      assignment is made
+  realforest2001:
+  - bugfix: Smods are now given the buttons unlocked for them in 1225
+  - admin: Reorganised staff verb lists and added Devs and Managers to Staffwho.
+  - bugfix: Xenonid huggers are now visible again (player controlled)
+  totalepicness5:
+  - bugfix: Fixed plasteel rod to metal rod alchemy with reinforced floors
+  - spellcheck: Fixed some awful to_chats in reinforced floors.
+2022-11-02:
+  Geevies:
+  - rscadd: Implemented the Origin system framework, currently it only restricts A.W.
+      middle-names to the A.W. origin, and USCM gear in character set-up to USCM origins,
+      so no survivors, UPP, or CLF with USCM gear.
+  ThePiachu:
+  - spellcheck: Fixed an internal typo of Bicaridine Pill Packet.
+  usnpeepoo:
+  - spellcheck: Playable hugger join message is more clearer
+  - code_imp: Hugger is now called "facehugger" in the code
+  - bugfix: Pooling bodies into an eggmorpher disrupts grabs automatically
+2022-11-03:
+  Joelampost:
+  - bugfix: Certain tiles on the pred ship now no longer stop you performing surgery.
+  Mistfrag:
+  - qol: Linked respective wiki page to all Marine roles.
+  - code_imp: Added defines for every wiki page on marines.
+2022-11-05:
+  realforest2001:
+  - rscdel: Removed Provost Officer job as it is now obsolete.
+  - tweak: Changed how the HUDs draw their icon pools to allow for easier differentiation
+      in file names.
+  - tweak: Changed the Dropship Crew Chief HUD Icon to fit enlisted style rather than
+      using junior officer style.
+  - tweak: Changed the UAAC-TIS Special Agent HUD Icon to officer colors, leaving
+      current icon for TIS Intel Officer.
+  - rscadd: Added HUD icons for Synthetic and Mess Technician.
+2022-11-06:
+  Don2137:
+  - qol: Made the medevac stretcher selection message on the dropship console more
+      obvious to indicate that you need to click the medevac system to winch the patient.
+  Fortelian:
+  - rscadd: Added janitorial closet to northwest maintenance above navigation. Contains
+      generic cleaning/repair equipment such as glass, metal rods, mop & bucket, space
+      cleaner, etc
+  - rscadd: Adds a no smoking sign to OB chambering room. Probably shouldn't have
+      an open flame in there...
+  Geevies:
+  - rscadd: Made fun facts show more fun facts, fun!
+  - rscadd: Commissioned officers (CIC staff, IOs, DPs) can now have prosthetic limbs,
+      selected via Character Traits in character setup.
+  - admin: Added zombie spawnpoints for events.
+  John_Rico:
+  - bugfix: OT claymore no longer blows up in random directions
+  Mistfrag:
+  - spellcheck: MARSOC is now referred to as Marine Raiders/SOF. This makes them more
+      compliant to lore and closer to their standard marines.
+  Morrow:
+  - bugfix: Removes an extra APC at the crashed ship on sorokyne and also offsets
+      correctly off of plating.
+  Segrain:
+  - admin: Object Narrate verb is back under proper permissions.
+  SpartanBobby:
+  - rscadd: Added two new issues of "Boots!" magazine to the Almayer
+  - rscadd: Slightly extended the evidence room of the brig
+  - rscadd: Added two new books to the USS Almayer one of the books "Space beast"
+      is ICly considered contraband
+  - bugfix: fixed inconsistent floor tiling on the USS Almayer by replacing all the
+      floor tiles under doors with appropriate warning stripes so you don't hurt your
+      toes
+  fira:
+  - bugfix: Half fixed statpanel failing to load. It might still behave erratically.
+  harryob:
+  - bugfix: afk players are now correctly flagged by the server, and can be cleaned
+      up (eg, afk larvae)
+  - bugfix: tgui's autoclose correctly, now, and not every 3.5 seconds
+  stanalbatross:
+  - qol: you can now toggle off item pickup animations or selectively toggle off item
+      animations of objects being moved around in inventory
+  usnpeepoo:
+  - bugfix: Mini-Flamer sentries no longer deal unintended damage to queens/ravagers/fire
+      immune xenos
+  - bugfix: Mini-Flamer sentries actually use the correct flame type.
+2022-11-07:
+  Geeves, Frans_Feiffer:
+  - rscadd: Added Weyland-Yutani Corporate Security Goons, which replaces the PMC
+      survivor. Also has a distress beacon which admins can spawn them with.

@@ -364,8 +364,8 @@
 	var/damage = base_damage
 	var/range = 1
 	var/windup_reduction = 0
-	var/lifesteal_per_marine = 80
-	var/max_lifesteal = 300
+	var/lifesteal_per_marine = 50
+	var/max_lifesteal = 250
 	var/lifesteal_range =  1
 
 	if (xeno.mutation_type == RAVAGER_BERSERKER)

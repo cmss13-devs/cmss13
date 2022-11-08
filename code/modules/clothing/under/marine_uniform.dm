@@ -387,6 +387,8 @@
 	desc = "Primarily used during reconnaissance."
 	icon_state = "recon_marine"
 	worn_state = "recon_marine"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/under/marine/reconnaissance/Initialize(mapload)
 	. = ..()
 	var/R = rand(1,4)

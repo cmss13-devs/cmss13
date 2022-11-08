@@ -7,7 +7,6 @@
 	total_positions = 8
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
-	var/is_synth = FALSE
 	var/intro_text
 	var/story_text
 

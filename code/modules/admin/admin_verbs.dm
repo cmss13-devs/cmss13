@@ -98,6 +98,7 @@ var/list/admin_verbs_minor_event = list(
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
+	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/toggle_ob_spawn,
@@ -596,7 +597,7 @@ var/list/roundstart_mod_verbs = list(
 	set category = "OOC"
 
 	message_staff("[key_name(usr)] announced a random fact.")
-	SSticker.mode?.declare_random_fact()
+	SSticker.mode?.declare_fun_facts()
 
 
 #undef MAX_WARNS

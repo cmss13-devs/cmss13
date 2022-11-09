@@ -152,6 +152,10 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_SYNTH                   "PMC Support Synthetic"
 #define JOB_PMC_RECRUIT					"PMC Recruit" // Somewhat part of the PMC, these are PFCs recurited by the CL
 
+//-------- WY Goons --------//
+#define JOB_WY_GOON						"WY Corporate Security"
+#define JOB_WY_GOON_LEAD				"WY Corporate Security Lead"
+
 //---- Contractors ----//
 #define JOB_CONTRACTOR						"VAIPO Mercenary"
 #define JOB_CONTRACTOR_ST					"VAIPO Mercenary"

@@ -83,9 +83,9 @@
 		mark_list_infos += list(entry)
 
 	.["mark_list_infos"] = mark_list_infos
-	.["tracked_mark"] = X.tracked_marker == null
-		? null
-		: WEAKREF(X.tracked_marker).reference
+	.["tracked_mark"] = null
+	if(X.tracked_marker)
+		.["tracked_mark"] = WEAKREF(X.tracked_marker).reference
 
 /datum/mark_menu_ui/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

@@ -119,3 +119,8 @@
   Geeves, Frans_Feiffer:
   - rscadd: Added Weyland-Yutani Corporate Security Goons, which replaces the PMC
       survivor. Also has a distress beacon which admins can spawn them with.
+2022-11-09:
+  kugamo:
+  - rscadd: Spawn pool now harms humans if entered, and spills acid when destroyed.
+  - bugfix: Fixed spawn pool visual bug were it had stopped making things appear to
+      be inside the liquid.

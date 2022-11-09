@@ -17,8 +17,8 @@ const HEAD_TYPES = ['Helmet', 'Beret', 'Tactical Cap'];
 export const PmcTransfer = (props, context) => {
   const { act, data } = useBackend(context);
   const { verification, possible_verifications, human } = data;
-  var primary;
-  if (verification == true) {
+  let primary;
+  if (verification) {
     primary = <PMCArmorSelect />;
   } else if (!human) {
     primary = <PMCTransferWindow />;
@@ -52,7 +52,7 @@ const PMCTransferWindow = (props, context) => {
           Possible Transfers Left: {possible_verifications}
         </Stack.Item>
       </Stack>
-      {(!!(possible_verifications <= 0) && <NoRecruitsDimmer />) || <></>}
+      {(!!(possible_verifications <= 0) && <NoRecruitsDimmer />)}
     </Section>
   );
 };
@@ -100,7 +100,7 @@ const PMCArmorSelect = (props, context) => {
           />
         </Flex.Item>
       </Flex>
-      {(!!(possible_verifications <= 0) && <NoRecruitsDimmer />) || <></>}
+      {possible_verifications <= 0 && <NoRecruitsDimmer />}
     </Section>
   );
 };
@@ -122,7 +122,7 @@ const PMCVerification = (props, context) => {
       By checking the box, you are confirming that you have followed company
       procedure for the vetting and recruitment of PMC units from USMC ranks,
       and that the appropriate paperwork has been filed, namely record form
-      268-C and any paperwork the recruit's former employer may require.
+      268-C and any paperwork the recruit&apos;s former employer may require.
       <ButtonCheckbox
         checked={verification}
         disabled={is_loading || !!(possible_verifications <= 0)}
@@ -131,8 +131,8 @@ const PMCVerification = (props, context) => {
         onClick={() => act('startLoading')}>
         Confirm
       </ButtonCheckbox>
-      {(is_loading && <LoadingScreenDimmer />) || <></>}
-      {(!!(possible_verifications <= 0) && <NoRecruitsDimmer />) || <></>}
+      {(is_loading && <LoadingScreenDimmer />)}
+      {(!!(possible_verifications <= 0) && <NoRecruitsDimmer />)}
     </Section>
   );
 };

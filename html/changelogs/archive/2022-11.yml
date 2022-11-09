@@ -120,6 +120,8 @@
   - rscadd: Added Weyland-Yutani Corporate Security Goons, which replaces the PMC
       survivor. Also has a distress beacon which admins can spawn them with.
 2022-11-09:
+  Diegoflores31:
+  - bugfix: Deletes duplicated Melee skills some roles.
   harryob:
   - server: testmerges facilitated by TGS will be shown in the new player join message
   kugamo:

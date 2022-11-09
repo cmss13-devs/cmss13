@@ -8,8 +8,8 @@
 	flash_pain()
 
 	if (stun_amount)
-		Stun(stun_amount)
-		KnockDown(stun_amount)
+		apply_effect(stun_amount, STUN)
+		apply_effect(stun_amount, WEAKEN)
 		apply_effect(STUTTER, stun_amount)
 		apply_effect(EYE_BLUR, stun_amount)
 

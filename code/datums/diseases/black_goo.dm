@@ -99,7 +99,7 @@
 	set waitfor = 0
 	zombie_transforming = TRUE
 	H.vomit_on_floor()
-	H.AdjustStunned(5)
+	H.adjust_effect(5, STUN)
 	sleep(20)
 	H.make_jittery(500)
 	sleep(30)
@@ -146,7 +146,7 @@
 			M.AddDisease(new /datum/disease/black_goo())
 			user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is now infected</B>")))
 
-	M.SetSuperslowed(max(2, M.superslowed)) // Make them slower
+	M.set_effect(max(2, M.superslowed), SUPERSLOW) // Make them slower
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(get_dist(src, O) > 1)

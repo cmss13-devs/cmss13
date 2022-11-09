@@ -330,7 +330,7 @@
 		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
 			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
-			PMC_sniper.KnockDown(5)
+			PMC_sniper.apply_effect(5, WEAKEN)
 
 //SVD //Based on the actual Dragunov sniper rifle.
 
@@ -1026,7 +1026,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	for(var/mob/living/carbon/C in backblast_loc)
 		if(!C.lying) //Have to be standing up to get the fun stuff
 			C.apply_damage(15, BRUTE) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
-			C.Stun(4) //For good measure
+			C.apply_effect(4, STUN) //For good measure
 			C.emote("pain")
 
 		..()

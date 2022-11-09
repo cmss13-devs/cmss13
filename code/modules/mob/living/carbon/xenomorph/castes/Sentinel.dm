@@ -86,7 +86,7 @@
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You add neurotoxin into your attack, [carbon_target] is about to fall over paralyzed!"))
 		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
 		carbon_target.sway_jitter(times = 3, steps = round(NEURO_TOUCH_DELAY/3))
-		carbon_target.Daze(4)
+		carbon_target.apply_effect(4, DAZE)
 		addtimer(CALLBACK(src, .proc/paralyzing_slash, carbon_target), NEURO_TOUCH_DELAY)
 		next_slash_buffed = FALSE
 	if(!next_slash_buffed)
@@ -98,5 +98,5 @@
 #undef NEURO_TOUCH_DELAY
 
 /datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
-	human_target.KnockDown(2)
+	human_target.apply_effect(2, WEAKEN)
 	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))

@@ -720,6 +720,11 @@
 /obj/structure/machinery/computer/crew/yautja
 	faction = FACTION_YAUTJA
 
+/obj/structure/machinery/computer/crew/pmc_recruit
+	name = "recruit monitoring computer"
+	icon_state = "crew_small"
+	faction = FACTION_PMC_RECRUIT
+
 GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 #define SENSOR_LIVING 1

@@ -72890,6 +72890,10 @@
 /obj/item/spacecash/c1000,
 /obj/item/storage/box/drinkingglasses,
 /obj/item/storage/fancy/cigar,
+/obj/structure/machinery/computer/crew/pmc_recruit{
+	dir = 4;
+	pixel_x = -17
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
 "tnY" = (

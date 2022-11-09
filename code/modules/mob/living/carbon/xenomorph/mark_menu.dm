@@ -7,7 +7,7 @@
 	if(!X.client)
 		return
 
-	if(!X.check_state())
+	if(!X.check_state(TRUE))
 		return
 
 	if(!data_initialized)
@@ -109,6 +109,8 @@
 	switch(action)
 		if("choose_mark")
 			var/selected_type = text2path(params["type"])
+			if(!ispath(selected_type, /datum/xeno_mark_define)) // Hacky fix
+				return
 			var/datum/xeno_mark_define/x = new selected_type
 			var/datum/action/xeno_action/activable/info_marker/Xenos_mark_info_action
 			to_chat(X, SPAN_NOTICE("You will now declare '<b>[x.name]</b>!' when marking resin."))
@@ -174,12 +176,14 @@
 				if (T != X && !is_admin_level(T.z) && X.hivenumber == T.hivenumber)
 					possible_xenos += T
 
-			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos)
+			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
 
 			if(selected_xeno == FunkTownOhyea)
 				for(var/mob/living/carbon/Xenomorph/forced_xeno in X.hive.totalXenos)
 					to_chat(forced_xeno, SPAN_XENOANNOUNCE("Hive! Your queen commands: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
 					forced_xeno.start_tracking_resin_mark(mark_to_force)
+					forced_xeno.hud_used.locate_marker.overlays.Cut()
+					flick("marker_alert", forced_xeno.hud_used.locate_marker)
 					. = TRUE
 				update_all_data()
 				return

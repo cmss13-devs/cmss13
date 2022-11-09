@@ -13,8 +13,6 @@
 
 /obj/structure/bed/chair/Initialize()
 	. = ..()
-	if(anchored)
-		verbs -= /atom/movable/verb/pull
 	handle_rotation()
 
 /obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -23,7 +21,7 @@
 		PF.flags_can_pass_all = PASS_AROUND|PASS_UNDER
 	flags_can_pass_all_temp = PASS_OVER
 
-/obj/structure/bed/chair/handle_rotation() //Making this into a seperate proc so office chairs can call it on Move()
+/obj/structure/bed/chair/handle_rotation() //Making this into a separate proc so office chairs can call it on Move()
 	if(src.dir == NORTH)
 		src.layer = FLY_LAYER
 	else
@@ -73,7 +71,7 @@
 /obj/structure/bed/chair/attack_alien(mob/living/carbon/Xenomorph/M)
 	. = ..()
 	if(stacked_size)
-		stack_collapse(M)
+		stack_collapse()
 
 /obj/structure/bed/chair/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH) && stacked_size)
@@ -83,7 +81,7 @@
 		if(I.flags_item & WIELDED)
 			return ..()
 		if(locate(/mob/living) in loc)
-			to_chat(user, SPAN_NOTICE("There's someone is in the way!"))
+			to_chat(user, SPAN_NOTICE("There's someone in the way!"))
 			return FALSE
 		user.drop_inv_item_to_loc(I, src)
 		stacked_size++
@@ -101,28 +99,46 @@
 		if(stacked_size > 8)
 			to_chat(user, SPAN_WARNING("The stack of chairs looks unstable!"))
 			if(prob(sqrt(50 * stacked_size)))
-				stack_collapse(user)
+				stack_collapse()
 				return FALSE
 		return FALSE
+
+	if(istype(I, /obj/item/powerloader_clamp))
+		var/obj/item/powerloader_clamp/PC = I
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return TRUE
+		if(!stacked_size)
+			to_chat(user, SPAN_WARNING("\The [PC] can only grab stacks of chairs."))
+			return TRUE
+		//skill reduces the chance of collapse
+		if(stacked_size > 8 && prob(50 / user.skills.get_skill_level(SKILL_POWERLOADER)))
+			stack_collapse()
+			return TRUE
+
+		PC.grab_object(user, src, "chairs", 'sound/machines/hydraulics_2.ogg')
+		update_icon()
+		return TRUE
+
 	return ..()
 
 /obj/structure/bed/chair/hitby(atom/movable/AM)
 	. = ..()
 	if(istype(AM, /mob/living) && stacked_size)
 		var/mob/living/M = AM
-		stack_collapse(M)
+		stack_collapse()
 		M.Stun(2)
 		M.KnockDown(2)
 	else if(stacked_size > 8 && prob(50))
-		stack_collapse(AM)
+		stack_collapse()
 
 /obj/structure/bed/chair/ex_act(power)
 	. = ..()
 	if(stacked_size)
 		stack_collapse()
 
-/obj/structure/bed/chair/proc/stack_collapse(var/mob/user)
-	user.visible_message(SPAN_HIGHDANGER("The stack of chairs collapses!!!"))
+/obj/structure/bed/chair/proc/stack_collapse()
+	visible_message(SPAN_HIGHDANGER("The stack of chairs collapses!!!"))
 	var/turf/starting_turf = get_turf(src)
 	playsound(starting_turf, 'sound/weapons/metal_chair_crash.ogg', 30, 1, 30)
 	for(var/obj/item/weapon/melee/twohanded/folded_metal_chair/falling_chair in src.contents)
@@ -136,9 +152,9 @@
 		falling_chair.forceMove(starting_turf)
 		falling_chair.pixel_x = rand(-8, 8)
 		falling_chair.pixel_y = rand(-8, 8)
-		falling_chair.throw_atom(target_turf, rand(2, 5), SPEED_FAST, user, TRUE)
+		falling_chair.throw_atom(target_turf, rand(2, 5), SPEED_FAST, null, TRUE)
 	var/obj/item/weapon/melee/twohanded/folded_metal_chair/I = new picked_up_item(starting_turf)
-	I.throw_atom(starting_turf, rand(2, 5), SPEED_FAST, user, TRUE)
+	I.throw_atom(starting_turf, rand(2, 5), SPEED_FAST, null, TRUE)
 	qdel(src)
 
 /obj/structure/bed/chair/proc/update_overlays()
@@ -246,6 +262,26 @@
 
 /obj/structure/bed/chair/comfy/blue
 	icon_state = "comfychair_blue"
+
+/obj/structure/bed/chair/comfy/alpha
+	icon_state = "comfychair_alpha"
+	name = "Alpha squad chair"
+	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Alpha squad red. Only for the bravest and freshest USCM recruits."
+
+/obj/structure/bed/chair/comfy/bravo
+	icon_state = "comfychair_bravo"
+	name = "Bravo squad chair"
+	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Bravo squad brown. Certified fortified on all sides from enemy incursion."
+
+/obj/structure/bed/chair/comfy/charlie
+	icon_state = "comfychair_charlie"
+	name = "Charlie squad chair"
+	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Charlie squad purple. Feels out of place without a full breakfast to accompany it."
+
+/obj/structure/bed/chair/comfy/delta
+	icon_state = "comfychair_delta"
+	name = "Delta squad chair"
+	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Delta squad blue. This chair is most likely to be the first to fight and first to die."
 
 /obj/structure/bed/chair/office
 	anchored = 0
@@ -405,7 +441,10 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && chair_state == DROPSHIP_CHAIR_BROKEN)
 		to_chat(user, SPAN_WARNING("\The [src] appears to be broken and needs welding."))
 		return
-	else if((istype(W, /obj/item/tool/weldingtool) && chair_state == DROPSHIP_CHAIR_BROKEN))
+	else if((iswelder(W) && chair_state == DROPSHIP_CHAIR_BROKEN))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/C = W
 		if(C.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
@@ -443,7 +482,10 @@
 			if(DROPSHIP_CHAIR_BROKEN)
 				to_chat(user, SPAN_WARNING("\The [src] appears to be broken and needs welding."))
 				return
-	else if((istype(W, /obj/item/tool/weldingtool) && chair_state == DROPSHIP_CHAIR_BROKEN))
+	else if((iswelder(W) && chair_state == DROPSHIP_CHAIR_BROKEN))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/C = W
 		if(C.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
@@ -497,6 +539,8 @@
 
 /obj/item/weapon/melee/twohanded/folded_metal_chair/attack(mob/living/M as mob, mob/living/user as mob)
 	. = ..()
+	if(!.)
+		return
 	if(flags_item & WIELDED)
 		M.apply_stamina_damage(17, check_zone(user.zone_selected))
 	playsound(get_turf(user), 'sound/weapons/metal_chair_clang.ogg', 20, 1)

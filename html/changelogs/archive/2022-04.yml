@@ -1,0 +1,449 @@
+2022-04-03:
+  Geeves:
+  - bugfix: Warden praes no longer have an energy bar after dying.
+  Jackie_Estegado:
+  - rscadd: Forensic scanners can now store multiple fingerprints.
+  - bugfix: Fixed area scanning with forensic scanners.
+  KiVts:
+  - rscadd: Adds new munition for CAS AGM-84 'Harpoon' 150 power, 9 tiles wide, 300
+      points cost.
+  - rscadd: Adds new minirocket ammo - Flares for CAS, 150 points cost, similar to
+      mortar flare.
+  Kugamo:
+  - rscadd: Ghost distress beacon alert now has CLICKABLE link to join the response
+      team.
+  Segrain:
+  - bugfix: Hijacked dropship once again properly explodes walls around the crash
+      site.
+  - bugfix: Xenos ghosting no longer message ghosts if they are deleted or not actually
+      freed for taking.
+  - bugfix: Fixed exploits allowing acid runners to explode in vents.
+  Shad0vvs:
+  - tweak: Changed retro translator overhead color to white.
+  - bugfix: Now properly shows predator overhead text to all in the area.
+  - tweak: Renamed new human mob late joins as 'NEW JOIN' in niche admin logs.
+  - tweak: Adds the mentorsound to the SEA newplayer alert message.
+  - bugfix: Fixed the new player niche admin message to properly display late joining
+      new players as new players.
+  - bugfix: Fixed the SEA newplayer alert message to properly display both readied
+      and late joining new players.
+  - rscadd: Adds a verb to confirm if a mob is aghosted or not.
+  - tweak: Prevents aghosted mobs from showing on the available xenomorphs list.
+  - tweak: Only shows Xenomorphs that have 60 seconds left until triggered 'available'
+      so they aren't shown to clients beforehand.
+  - tweak: After 20 minutes, Starts the away_timer if your client is inactive (null
+      clients bypass this timer), this will kick those logged in but inactive for
+      10 minutes(Admins are immune to this kicking), along with allowing xenomorph
+      mobs to be taken if the client is inactive for 5 minutes (larva 1.3 minutes),
+      this includes the Queen.
+  Stan_Albatross:
+  - bugfix: attacking people with chairs while on surgery mode and help intent will
+      no longer silently stamina damage them.
+  forest2001:
+  - bugfix: Fixes me being stupid in whitelist tag settings.
+  ihatethisengine2:
+  - bugfix: heal_over_time effect (queen's heal, fruits) now also heals burn damage.
+2022-04-04:
+  Stan_Albatross:
+  - tweak: The shoulder holster can now hold two pistol magazines or speedloaders,
+      alongside a pistol or revolver.
+  - tweak: removing the reinforcement from a fueltank now gives you back the plasteel
+      you put in, instead of metal
+  - tweak: gave the premade sentries an icon in the map editor (this doesn't affect
+      in-game)
+  - maptweak: added two sentries to the south side of the ship in the LV CLF nightmare
+      insert
+  - rscadd: Added a specialised anti-vehicle single shot RPG for use in HvH events.
+      Its name is somewhat familiar. It can be folded up with unique-action and unfolded
+      with Z (attack_self)
+  - rscadd: Added anti-tank rockets for all rocket launchers, admin spawn only
+  - rscadd: Added the mar-50 LMG, an LMG version of the beloved MAR platform. Coming
+      soon to a CLF loadout near you.
+  - bugfix: fixed some broken icons for the knife harness
+  Vanagandr:
+  - tweak: 'Reworked req elevator animations: the contents of the elevator are now
+      visible in transit instead of teleporting.'
+  ghostsheet, Stan_Albatross:
+  - rscadd: Added a metal foam grenade - the M40 MFHS. Creates a metal foam blockade
+      with the same size as the HIDP grenade.
+  - rscadd: The M40 MFHS will available in REQ and also in engi, SL, and RTO vendors
+      for 5 points.
+  - tweak: Metal Foam damage is no longer RNG, it now has a fixed amount of health
+      - 45/85 depending on the type.
+  theflyingflail:
+  - rscadd: Added 5 hour engineering timelock for survivor
+  - rscadd: Added 5 hour medical role timelock for survivor
+  - tweak: raised squad role timelock on survivors to 5 hours
+2022-04-05:
+  Geeves:
+  - rscadd: Added an option to the Distress Beacon admin tool that lets them choose
+      whether to spawn the ERT team at their spawnpoints, or at the admin's current
+      location.
+  - tweak: Pheromone changing is now instant, you don't have to click the button twice
+      before the UI opens. To emit no pheros, just select the one you're currently
+      emitting.
+  - bugfix: Dutch's Dozen Flamethrower now properly spawns with its M60.
+  - bugfix: Dutch's Dozen now have their role on their IDs.
+  Geeves, monkeysfist:
+  - rscadd: Added CPR dummies to the SEA equipment rack. Use in-hand to deploy, drag
+      into hand slot to pick back up. Functions exactly as normal CPR otherwise.
+  Kugamo:
+  - rscadd: Added ability to attach rail flashlight to marine helmets.
+  - imageadd: Added sprites for when rail flashlight attached to marine helmets.
+  Stan_Albatross:
+  - rscadd: The walkman vendor now requires money for transactions. You didn't think
+      you were going to get away with getting them forever for free, did you?
+  - bugfix: vending subtype vendors will now properly update their UIs when you buy
+      stuff, swipe your card through them, etc.
+  - rscadd: added a new small shuttle for admin/event use. It docks on the top deck,
+      by engineering. The pizza ERT will also arrive via this shuttle.
+  - rscadd: added a separate small ert station for the small shuttle (known as the
+      VIP shuttle).
+  - bugfix: the shutters on the big shuttle will now only open on the side that they
+      need to, and will not open to space when docking.
+  - maptweak: moved around some shuttle transit locations on the admin level.
+  - maptweak: replaced the side by side single doors on the big ERT shuttle with proper
+      double doors
+  - rscadd: Added the S10 variable zoom scope - a scope that can switch between a
+      2x and 4x zoom level, but is otherwise identical to the S8 scope. You can move
+      while using the 2x zoom level. It spawns attached to sniper rifles but otherwise
+      cannot be acquired. You cannot switch zoom levels while scoped in.
+  - tweak: Reduced the slowdown from being scoped in with the s4 scope, removed the
+      inherent fire delay from it, and reduced its fire delay while scoped in a little.
+      You can always move while zoomed in with the s4 scope.
+  - tweak: Removed the slowdown when wielded and NOT aimed in with the s4 scope and
+      other miniscopes.
+  Stan_Albatross, Triiodine:
+  - rscadd: Added backpack sprayer reagent tanks, ported from TG. Research gets one
+      for their hydroponics, and some have been added to botany areas on the maps.
+      Sprites by Triiodine
+  - rscadd: Added a new synthtool - the backpack combined foam sprayer and extinguisher.
+      Works like a backpack sprayer, can act like an extinguisher or shoot targeted
+      globs of foam, or compacted foam ball projectiles. Foam globs cover 1 tile and
+      can only be fired adjacent to you, they cost 10 water to fire. Foam balls cover
+      3x3 and can be fired anywhere, they cost 100 water to fire. Extinguisher blasts
+      are as strong as pyro spec underbarrel flamer blasts, and they cost 10 water
+      to fire.
+  Vanagandr:
+  - rscadd: Added a two-pistol gunslinger belt, for Discount Ocelots. Not military
+      issue - getting them smuggled aboard will take some black-marketeering.
+  - tweak: Tweaks to gun belt code; revolver holster underlays no longer have snowflake
+      sprite offsets. Can now have multiple guns in a belt, horizontally-worn holsters
+      etc.
+  - tweak: Updated Beretta holster underlay to match its improved sprite.
+  - bugfix: 1911 now has an underlay when holstered.
+2022-04-06:
+  Shad0vvs:
+  - rscadd: Added choices to midis if they're to be played globally, to marines, xenos,
+      all inview, or a single mob inview. Added the single mob inview choice to internet
+      sounds as well.
+  Watermelon:
+  - tweak: Nightvision now has 3 modes instead of 2, allowing for an intermediate
+      mode which still gives you night vision but allows you to differentiate between
+      light spots and dark spots. Xenos and observers default to this intermediate
+      mode, marines NVG goggles are stuck on this intermediate mode.
+  - tweak: You can no longer see into pitch black areas if you don't have night vision
+      as a player anymore.
+  - rscdel: The toggle darkness preference has been removed. Observers now start,
+      by default, with night vision enabled.
+2022-04-08:
+  Solidfury7:
+  - tweak: Reduced damage from toxic water in trijent dam to larva.
+  Stan_Albatross:
+  - maptweak: Predators can now use the chemistry machines on the predator ship.
+  Vicacrov:
+  - bugfix: Fixed some stairs on Fiorina Science Annex hiding objects, such as barricades
+      or resin traps (#273) (#371).
+  ihatethisengine2:
+  - tweak: Spitter now can evolve into Praetorian.
+  - tweak: Praetorian now can choose whether to de-evolve into Spitter or into Warrior.
+  theflyingflail:
+  - rscadd: Added new gladiator armor item
+  - rscadd: Added new gladiator and hunter armor in pred ship cells
+  - tweak: Gladiator loadout to include first aid pouch
+  - tweak: Gladiator helmet now has increased protection
+  - tweak: Gladiator now has crowbar stored in the belt
+  - tweak: Gladiators now have hunter chain mail undersuit
+  - tweak: hunger games code due to gladiator armor and loadout changes
+  - tweak: Removed holy hand grenade from gladiator champion (nanu request)
+2022-04-10:
+  Geeves:
+  - rscadd: MMB clicking clothes (jackets, armor, helmets) with pockets will now open
+      the pockets. MMB clicking a uniform with a storage accessory will now open that
+      accessory's pockets.
+  - rscadd: You can now transfer the tools from a surgery tray to a surgical webbing
+      vest by clicking on the vest with the tray.
+  - tweak: Added Critical state to hand-held crew monitor.
+  - bugfix: Hand-held crew monitors now respect fake z-levels like the Almayer.
+  - rscadd: Synthetics now have the HAS_UNDERWEAR flag, giving the option to wear
+      underwear.
+  Nancok:
+  - bugfix: Removed map bloat and fixed some nightmare inserts I made for them to
+      work again
+  Segrain:
+  - bugfix: Squad medics and several WO roles now properly have intended JTAC skills.
+  - tweak: Adjusted backend defines for leadership skill. Should still work the same
+      as before in practice.
+  - tweak: Adjusted backend logic behind acting squad leaders and gaining ability
+      to issue orders. Should still work the same in practice.
+  - bugfix: Actual squad leaders no longer lose ability to issue orders when replaced
+      by acting squad leader.
+  - rscadd: 'New keybinds for humans: Issue Order (opens the menu for choosing the
+      order to issue), Issue Move order, Issue Hold order, Issue Focus order (selfdescriptive).
+      Not bound to anything by default - set your own keys.'
+  - rscadd: 'New keybinds for xenomorphs: Emit Pheromones, Emit Frenzy pheromone,
+      Emit Warding pheromone, Emit Recovery pheromone. As above, but activating main
+      Emit Pheromones keybind when already emitting a pheromone simply disables it
+      - activate again to open the menu for choosing a new pheromone.'
+  - rscdel: Humans issuing an order no longer shout a randomly picked phrase over
+      radio.
+  Stan_Albatross:
+  - rscdel: the IMP backpack has been removed from the upgrade list for bell towers
+  - rscdel: the JIMP backpack has been removed from the upgrade list for JIMA flags
+  Stan_Albatross, Carlarc, Thwomper:
+  - rscadd: Added the R4T, a lever-action rifle. Admin only for now but will come
+      to survivors and CLF and maybe some other ERTs soon. Sprites by Thwomper, 98%
+      of the code by Carlarc, rebasing and bringing up to date by Stan_Albatross
+  - rscadd: You can now check if a MD is on long range or short range by the switch
+      on the side.
+  - tweak: Using the Unload-Weapon verb on guns with internal magazines will no longer
+      swap hands.
+  - bugfix: Reworks handfuls code to be less agonizing to co-exist in the same universe
+      with.
+  - bugfix: Fixed squad req vendors having far, far too many sidearm pouches
+  Vicacrov:
+  - bugfix: Fixes the kitchen grinder to be an all-in-one grinder, instead of an industrial
+      one.
+  sg2002:
+  - bugfix: Human armor now mitigates damage transferred from other limbs. For example,
+      when your hand is slashed, and it reaches max damage all the extra damage starts
+      getting transferred to your arm. The armor covering your arm would now reduce
+      that damage.
+  theflyingflail:
+  - rscadd: Added 10 new synth survivor roles which are randomized
+  - rscadd: Added new WY Gun Cabinet requiring WY access
+  - rscadd: Added synth specific survival pouch
+  - tweak: tweaked synth survivor loadout to include station bounced radio
+  - tweak: 'removed PMC survivor access to dropship '
+  - tweak: 'Created new access level WY_Corporate_DS with help of Day / Rebecca Sterling '
+  - tweak: Alamo and Normandy console to no longer work for survivors with WY_CORPORATE
+      access
+  - tweak: Tweaked secure gun locker in big red to normal lockers since PMC survivor
+      lost access to it
+  - bugfix: fixed PMC survivor not having WY faction alliance, ID card, and others
+  - bugfix: fixed corporate supervisor not having proper access
+2022-04-14:
+  Geeves:
+  - rscadd: Req now gets 20000 bucks every 30 minutes, starting from minute 00:30.
+  - tweak: On Whiskey Outpost, Xenos no longer spam dchat when they die.
+  - tweak: Bodies that aren't DNR but have ghosts that have disconnected will now
+      show a red outline around the medhud, rather than the DNR line.
+  Geeves, Triiodine:
+  - rscadd: Added CM specific taskbar icons.
+  Memesky:
+  - bugfix: Fixed CO legacy council perms
+  - tweak: Changed CO Council radio rank from CDRE to CO to match new ranks
+  Nivrak:
+  - bugfix: Predator Self-Destruct now originates from the bracer rather than the
+      predator
+  Puckaboo2:
+  - tweak: Edited existing Gardener and Healer icon states for Drone. You may now
+      differentiate Healer drones from their sticky resin dripping from their limbs
+      and Gardener drones from the spores they grow on their backs.
+  - tweak: Edited existing Eggsac and Shaman icon states for Carrier. You may now
+      differentiate Shaman from their jungle green crest and egg juice dripping from
+      their claws and Eggsac Carriers from the swollen pseudo-ovipositor taking the
+      place of their tails.
+  - tweak: Filled in any small gaps within all xenomorph sprites with a 1 alpha color
+      to prevent misfires from clicking on a 1x1 pixel gap within the sprites.
+  - rscdel: Removed Scatterspitter icon states from Sentinel.
+  Segrain:
+  - rscadd: Ghosts can now check health of living mobs via right click menu (toggle
+      it on in ghost settings on Preferences tab).
+  Triiodine:
+  - rscadd: Added sound effects when the server reboots feat. TGstation. You can change
+      your client preference in the Preferences - Sound tab and section. They are
+      disabled by default.
+  forest2001:
+  - tweak: Changed medal creation and changing assigned role in security/employee
+      records to check a list of paygrades for verification instead of preset rank
+      names we do not have.
+  - tweak: Medal creation now uses a proc to reduce code duplication
+  - bugfix: Provost Chief Marshal and Provost Officer now have the correct displays
+      on their rank pins.
+  - rscadd: Changing data records, such as a name in the manifest, is now logged.
+  - bugfix: Pardon button is actually fixed.
+2022-04-20:
+  Firartix:
+  - server: Containers now properly includes youtube-dl, fixing usage of 'Play Internet
+      Sound'
+  Geeves:
+  - bugfix: Fixed job roles being overriden by their equipped versions on some occasions.
+  - rscadd: Your whitelist status now updates your uniform when you select CO or Synth,
+      meaning CO leaders will show the beret type and Synth will show the uniform
+      drip.
+  - rscadd: Added a new Pred emote for luring in worthy prey.
+  Stanley:
+  - balance: Provost enforcers now have mk221s instead of SMGs, and get some tear
+      gas grenades and both beanbag and slug rounds.
+  - balance: Hefa knight armour buffed in melee, explosive, and bullet values. HEFA
+      knights given a medical pouch, replacing one of their explosive pouches. Melee
+      hefa knights given an extra sword.
+  - balance: The pizza delivery guy now spawns with a crowbar. Also, they can finally
+      work for pizza galaxy.
+2022-04-21:
+  Triiodine, Nauticall, Thwomper:
+  - imageadd: 'Resprited the following weapons: M41A, L42A, M92, M39, M42A, MOU, R4T'
+  null:
+  - rscdel: Removed Disposals pipe dispensers from the USS Almayer.
+  - bugfix: Fixed MK1 underslung grenade launcher having high toss when it shouldn't
+  Kirie Saito:
+  - balance: The XO now has the ability to get a ceremonial sword from their vendor,
+      in place of a sidearm.
+  Geeves:
+  - bugfix: Fixes Pred typing indicators getting stuck to them.
+  Stanley:
+  - bugfix: predators themselves will now blow up when SDing, not the tile that they
+      SDed on.
+  - expansion: when a predator triggers their SD, all yautja will be informed.
+  - bugfix: all yautja messages for SDing other people now use real names.
+  - bugfix: building walls on weeds will no longer make them invisible
+  Monkeysfist101:
+  - rscadd: Added more names to the randomized name list.
+2022-04-22:
+  Geeves:
+  - ui: Re-did the character creation screen for ease of use and visual clarity.
+  Nanu:
+  - balance: Lowered the amount of Money req gets significantly. From 80k to 34k on
+      120 Humans.
+  Spircen:
+  - bugfix: Fixes an oversight letting anyone set a shuttle to flyby. Now only players
+      with the pilot skill can set the shuttle to flyby.
+  Stan_Albatross:
+  - balance: The drop pouch can now hold 6 tiny items / 3 small items / 2 normal items
+      (space was increased from 5 to 6)
+  Vanagandr:
+  - bugfix: Readds headshot effects accidentally removed by the synth damage overlay
+      MR.
+  - bugfix: Fixes limb stumps for feet & hands being swapped when facing left-right
+      -- left hand stump showing when facing right, etc.
+  - expansion: Headshot effects and severed limb gore now reflect the victim's blood
+      colour.
+2022-04-23:
+  50RemAndCounting:
+  - bugfix: the Oxycodone bottle from medical and chemistry vendors now has the default
+      60 unit transfer rate as all the other medicine bottles do.
+  - balance: Added Rangefinder and Laser designator as purchasable options in the
+      Synthetic auxiliary gear rack, priced at 8 and 12 points respectively.
+  - balance: Added Logistics IMP backpacks to Commanding Officer and Synthetic primary
+      gear vendors as an alternative backpack option.
+  Geeves:
+  - rscadd: Survivor Synths and Working Joes now have partial nightvision.
+  - rscadd: Synth headsets can now track COs, XOs, LZs, and each type of SL.
+  - rscadd: Synth headsets now have unique sprites.
+  Stan_Albatross:
+  - qol: made req and jtac channels in dark mode easier to read by lightening their
+      colours
+  - balance: overhauled the CLF loadouts, giving more/better weapons, removing the
+      mod 88 from the rifle pool, and giving the spec a chance to spawn with an r4t!
+      The spec also gets an anti-tank rocket launcher and maybe an LMG. Other loadouts
+      all get some other tweaks.
+  ghostsheet:
+  - bugfix: Shoulder holster should work like they used to.
+2022-04-24:
+  Stan_Albatross:
+  - bugfix: fixed being able to set up the m2c inside tarps, among other things.
+2022-04-25:
+  Geeves:
+  - expansion: CO armor now works as a smartgun harness.
+  - expansion: Yautja HPCs now have anti-vehicle effects.
+  Stan_Albatross:
+  - spellcheck: fixed an inaccuracy in the message when you get noted.
+  TotalEpicness:
+  - balance: Removed the stun baton denied access stun,  added a new spark effect
+      for when you pick up a baton that you do not have access to.
+2022-04-26:
+  Stan_Albatross:
+  - expansion: Added a ladder between the chef's hydroponics garden and a maint tunnel
+      near the officers' mess for easier travel
+  - expansion: Added a new type of ladder that breaks on hijack. The above ladder
+      is one of them.
+  - bugfix: fixed yet more poorly offset almayer cameras
+  - expansion: swapped the PO guns and PO gear vendor positions around to let two
+      people gear up properly at once
+  ghostsheet:
+  - bugfix: Quick equip works when not wearing a uniform.
+2022-04-27:
+  Geeves:
+  - bugfix: Fixes one of the phones on the ERT station appearing on the phone list
+      as an null entry by making it uncallable.
+  Geeves, Nauticall:
+  - rscadd: Added xeno IFF tags that prevent smart weapons from shooting the implanted
+      xeno. Use an access tuner to reprogram these, it uses the IFF group on your
+      ID. You can remove it with any surgical tool that has the pinch quality, but
+      remember to be on help intent if you work on xenos.
+  - rscadd: Added the xeno IFF tags to ASRS. Mapped them into Research and the CLs
+      backroom.
+  - rscadd: The PMC Xeno Handler now spawns with an access tuner.
+  - bugfix: Fixed a bug where smart weapons cached your IFF and didn't bother to set
+      the new IFF if you picked up an ID with a different IFF group.
+  Stan_Albatross:
+  - bugfix: fixed some issues with misalignement of the north facing open and closed
+      sprites for the folding metal cade, and misalignment of the barbed wire on the
+      north facing closed plasteel cade sprite.
+  - bugfix: when you take off glasses, they will now properly go away from your onmob
+      and the hud will deactivate.
+  - bugfix: deactivated mesons now use the degoggles sprite instead of remaining the
+      same.
+  null:
+  - server: added proper gpanel integration for game-end notifications and fixed some
+      rough edges with it
+  - balance: Prevented Wardens from using the heal ability on other Wardens.
+  - bugfix: Fixed barricade hit sounds being improperly loaded under docker setup
+  Spircen:
+  - bugfix: Survivor Engineer for Trijent its back on the kind of survivors you can
+      spawn as
+  - bugfix: Burger in hand item no longer dissapears after you remove the package.
+  50RemAndCounting:
+  - qol: Rearranged the Strip clickdrag menu items so that (Exo)suit, Suit storage
+      and Back item slot buttons are always on the top of the body parts list.
+  - soundadd: ports the boatswain sound effect from Baystation 12 to be used by ARES
+      when announcing a CO/SEA on deck.
+  - bugfix: made the defib noises, telephone rining and Desert Eagle firing sounds
+      a bit quieter.
+2022-04-28:
+  50RemAndCounting:
+  - qol: Recoloured the Chief Engineer security and squad headset HUD icons to be
+      more visually distinct from the Maintenance Technician HUD icons.
+  Geeves:
+  - balance: The XvX Slash Damage modifier has been lowered to x1.5 from x2.25.
+  Spircen:
+  - bugfix: Cigarrete Vendor at Hangar now puts the items over it instead of under
+      it.
+  Stan_Albatross:
+  - bugfix: fixes unload-weapon not swapping hands
+  - bugfix: fixes the shoulder holster not fitting the smartpistol
+  - balance: buffed yautja plasma pistol damage a bit
+  - balance: the yautja plasma pistol now sets people on fire
+  - balance: the yautja spike launcher now has a damage multiplier on walls, like
+      a masterkey, and will do EXTREME amounts of damage to them.
+  null:
+  - qol: Replaced outdated "OOC.Hotkeys Help" verb by "Preferences.Edit Hotkeys" to
+      open keybinds editor
+2022-04-29:
+  null:
+  - rscdel: Removed Techs and Tech Tree system. We've done our best to find orphaned
+      gadgets a new home in AdminLand...
+  - rscadd: Railgun Computers are back on the Almayer, but HC added safeties to prevent
+      their unauthorized use.
+  - rscadd: Forget Spec Tokens. Added a 'Tank Coupon' for use in events. Use sparingly...
+  - rscadd: Added an standalone implant printer box, for 2 out of 4 special implants.
+  - rscdel: Removed RTO Backpack "Call Droppod" action, since there were none to call
+      anyway.
+2022-04-30:
+  Spircen:
+  - bugfix: Peridaxon, Alkysine, Imidazoline, RussianRed and Quickclot Pill Bottle
+      now has skilllock to open.
+  - bugfix: Sprites for the MK50 armor
+  Triiodine:
+  - balance: 'Buff: reduced the APC M56 FPW reload time down to 20s from 90s.'

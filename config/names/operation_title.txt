@@ -5,9 +5,11 @@ Operation
 Patrol
 Investigation
 Sortie
-Campaign
 Recon
 Inspection
 Manoeuvre
 Task Force
 Program
+Strategic Response Program
+Project
+Peacekeeping Mission

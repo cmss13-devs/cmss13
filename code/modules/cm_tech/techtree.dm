@@ -9,8 +9,6 @@
 	var/list/unlocked_techs = list() // Unlocked techs (single use)
 	var/list/all_techs = list() // All techs that can be unlocked. Each sorted into tiers
 
-	var/points = INITIAL_STARTING_POINTS
-
 	var/background_icon = "background"
 	var/background_icon_locked = "marine"
 	var/turf/entrance
@@ -31,6 +29,12 @@
 
 	var/obj/structure/resource_node/passive_node
 
+	// Tech points
+	var/total_points = 0 // How many points we have earned total.
+	var/total_points_last_sitrep = 0 // The total points we had at the last announcement. Used to calculate how many points were earned since then.
+	var/points = INITIAL_STARTING_POINTS // Current points.
+	var/points_mult = 1.0 // Factor we earn points by. Increases based on current unlocked tech tier.
+
 	// UI Variables
 	var/ui_theme
 
@@ -47,8 +51,6 @@
 /datum/techtree/proc/generate_tree()
 	if(!zlevel)
 		return
-
-	passive_node.make_active()
 
 	var/longest_tier = 0
 	for(var/tier in all_techs)
@@ -103,19 +105,21 @@
 	points = max(number, 0)
 
 /datum/techtree/proc/add_points(var/number)
-	set_points(points + number)
+	set_points(points + (number * points_mult))
+	total_points += number * points_mult
+
+/datum/techtree/proc/spend_points(var/number)
+	set_points(points - number)
 
 /datum/techtree/proc/can_use_points(var/number)
 	if(number <= points)
 		return TRUE
-	else
-		return FALSE
+	return FALSE
 
 /datum/techtree/proc/check_and_use_points(var/number)
 	if(!can_use_points(number))
 		return FALSE
-
-	add_points(-number)
+	spend_points(number)
 	return TRUE
 
 /datum/techtree/proc/has_access(var/mob/M, var/access_required)
@@ -177,3 +181,7 @@
 
 /datum/techtree/proc/can_attack(var/mob/living/carbon/H)
 	return TRUE
+
+/// Triggered just after a tier change
+/datum/techtree/proc/on_tier_change(datum/tier/oldtier)
+	return

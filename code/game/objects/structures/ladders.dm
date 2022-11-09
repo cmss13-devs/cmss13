@@ -13,7 +13,7 @@
 	layer = LADDER_LAYER
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam
-	var/busy = 0 //Ladders are wonderful creatures, only one person can use it at a time
+	var/busy = FALSE //Ladders are wonderful creatures, only one person can use it at a time
 
 /obj/structure/ladder/Initialize(mapload, ...)
 	. = ..()
@@ -92,7 +92,7 @@
 	step(user, get_dir(user, src))
 	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
 	SPAN_NOTICE("You start climbing [ladder_dir_name] [src]."))
-	busy = 1
+	busy = TRUE
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
 		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && !user.lying && !user.buckled && !user.anchored)
 			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
@@ -100,7 +100,7 @@
 			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
 			ladder_dest.add_fingerprint(user)
 			user.trainteleport(ladder_dest.loc)
-	busy = 0
+	busy = FALSE
 	add_fingerprint(user)
 
 /obj/structure/ladder/check_eye(mob/user)
@@ -206,10 +206,10 @@
 			ladder_dest = down
 		else return //just in case
 
-		if(G.has_iff && user.faction == FACTION_MARINE && explosive_grief_check(G))
-			to_chat(user, SPAN_WARNING("\The [G.name]'s IFF inhibitor prevents you from priming the grenade!"))
+		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
+			to_chat(user, SPAN_WARNING("\The [G.name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
 			// Let staff know, in case someone's actually about to try to grief
-			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 			return
 
 		user.visible_message(SPAN_WARNING("[user] takes position to throw [G] [ladder_dir_name] [src]."),
@@ -255,3 +255,29 @@
 			step_away(F,src,rand(1, 5))
 	else
 		return attack_hand(user)
+
+/obj/structure/ladder/fragile_almayer //goes away on hijack
+	name = "rickety ladder"
+	desc = "A slightly less stable-looking ladder, installed out of dry dock by some enterprising maintenance tech. Looks like it could collapse at any moment."
+
+/obj/structure/ladder/fragile_almayer/Initialize()
+	. = ..()
+	GLOB.hijack_bustable_ladders += src
+
+/obj/structure/ladder/fragile_almayer/Destroy()
+	GLOB.hijack_bustable_windows -= src
+	return ..()
+
+/obj/structure/ladder/fragile_almayer/proc/break_and_replace()
+	new /obj/structure/prop/broken_ladder(loc)
+	qdel(src)
+
+/obj/structure/prop/broken_ladder
+	name = "rickety ladder"
+	desc = "Well, it was only a matter of time."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "ladder00"
+	anchored = 1
+	unslashable = TRUE
+	unacidable = TRUE
+	layer = LADDER_LAYER

@@ -1,5 +1,6 @@
 GLOBAL_LIST_INIT(icon_source_files, list(
 	"icons/mob/hostiles/larva.dmi" = 'icons/mob/hostiles/larva.dmi',
+	"icons/mob/hostiles/facehugger.dmi" = 'icons/mob/hostiles/facehugger.dmi',
 	"icons/mob/hostiles/boiler.dmi" = 'icons/mob/hostiles/boiler.dmi',
 	"icons/mob/hostiles/burrower.dmi" = 'icons/mob/hostiles/burrower.dmi',
 	"icons/mob/hostiles/carrier.dmi" = 'icons/mob/hostiles/carrier.dmi',

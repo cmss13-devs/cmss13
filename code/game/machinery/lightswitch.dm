@@ -36,9 +36,9 @@
 		else
 			icon_state = "light0"
 
-/obj/structure/machinery/light_switch/examine(mob/user)
-	..()
-	to_chat(user, "It is [on? "on" : "off"].")
+/obj/structure/machinery/light_switch/get_examine_text(mob/user)
+	. = ..()
+	. += "It is [on? "on" : "off"]."
 
 /obj/structure/machinery/light_switch/attack_hand(mob/user)
 	on = !on

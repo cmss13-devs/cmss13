@@ -1,35 +1,45 @@
-/datum/playingcard
+/datum/playing_card
 	var/name = "playing card"
 	var/card_icon = "card_back"
 	var/back_icon = "card_back"
 	var/sort_index = 0
+
+/datum/playing_card/New(var/set_name, var/set_card_icon, var/set_back_icon, var/set_sort_index)
+	..()
+	if(set_name)
+		name = set_name
+	if(set_card_icon)
+		card_icon = set_card_icon
+	if(set_back_icon)
+		back_icon = set_back_icon
+	if(set_sort_index)
+		sort_index = set_sort_index
 
 /obj/item/toy/deck
 	name = "deck of cards"
 	desc = "A simple deck of playing cards."
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "deck"
+	w_class = SIZE_TINY
+	flags_item = NOTABLEMERGE
+
 	var/base_icon = "deck"
 	var/max_cards = 52
-	w_class = SIZE_TINY
-
-	var/list/datum/playingcard/cards = list()
+	var/list/datum/playing_card/cards = list()
 
 /obj/item/toy/deck/Initialize()
 	. = ..()
 	populate_deck()
 
+/obj/item/toy/deck/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("There are <b>[length(cards)]</b> cards remaining in the deck.")
+
 /obj/item/toy/deck/proc/populate_deck()
-	var/datum/playingcard/P
 	var/card_id = 1
-	for(var/suit in list("spades","clubs","diamonds","hearts"))
-		for(var/number in list("ace","two","three","four","five","six","seven","eight","nine","ten","jack","queen","king"))
-			P = new()
-			P.name = "[number] of [suit]"
-			P.card_icon = "[suit]_[number]"
-			P.back_icon = "back_[base_icon]"
-			P.sort_index = card_id++
-			cards += P
+	for(var/suit in list("spades", "clubs", "diamonds", "hearts"))
+		for(var/number in list("ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"))
+			cards += new /datum/playing_card("[number] of [suit]", "[suit]_[number]", "back_[base_icon]", card_id++)
 
 /obj/item/toy/deck/uno
 	name = "deck of UNO cards"
@@ -39,53 +49,43 @@
 	max_cards = 108
 
 /obj/item/toy/deck/uno/populate_deck()
-	var/datum/playingcard/P
 	var/card_id = 1
 	//wild cards
-
-	for(var/suit in list("wild","wild-draw-four"))
+	for(var/suit in list("wild", "wild-draw-four"))
 		for(var/i = 1 to 4)
-			P = new()
-			P.name = "[suit]"
-			P.card_icon = "[suit]"
-			P.back_icon = "back_[base_icon]"
-			P.sort_index = card_id++
-			cards += P
+			cards += new /datum/playing_card("[suit]", "[suit]", "back_[base_icon]", card_id++)
 
 	//color cards
-	for(var/suit in list("red","purple","blue","yellow"))
+	for(var/suit in list("red", "purple", "blue", "yellow"))
 		//1 zero per color
-		P = new()
-		P.name = "[suit] zero"
-		P.card_icon = "[suit]_zero"
-		P.back_icon = "back_[base_icon]"
-		P.sort_index = card_id++
-		cards += P
+		cards += new /datum/playing_card("[suit] zero", "[suit]_zero", "back_[base_icon]", card_id++)
 
 		//2 of each 1-9, skip, draw 2, reverse per color
 		for(var/i = 1 to 2)
 			for(var/number in list("one","two","three","four","five","six","seven","eight","nine","skip","draw-two","reverse"))
-				P = new()
-				P.name = "[suit] [number]"
-				P.card_icon = "[suit]_[number]"
-				P.back_icon = "back_[base_icon]"
-				P.sort_index = card_id++
-				cards += P
+				cards += new /datum/playing_card("[suit] [number]", "[suit]_[number]", "back_[base_icon]", card_id++)
+
+/obj/item/toy/deck/attack_hand(mob/user)
+	if(user.get_inactive_hand() == src)
+		handle_draw_cards(user)
+		return
+	return ..()
 
 /obj/item/toy/deck/attackby(obj/item/O, mob/user)
-	if(istype(O,/obj/item/toy/handcard))
+	if(istype(O, /obj/item/toy/handcard))
 		var/obj/item/toy/handcard/H = O
-		for(var/datum/playingcard/P in H.cards)
+		for(var/datum/playing_card/P as anything in H.cards)
 			cards += P
 		update_icon()
 		qdel(O)
-		to_chat(user, "You place your cards on the bottom of the deck.")
+		user.visible_message(SPAN_NOTICE("<b>[user]</b> places their cards on the bottom of \the [src]."), SPAN_NOTICE("You place your cards on the bottom of the deck."))
 		return
 	..()
 
 /obj/item/toy/deck/update_icon()
-	if(cards.len == max_cards) icon_state = base_icon
-	else if(cards.len == 0) icon_state = "[base_icon]_empty"
+	var/cards_length = length(cards)
+	if(cards_length == max_cards) icon_state = base_icon
+	else if(!cards_length) icon_state = "[base_icon]_empty"
 	else icon_state = "[base_icon]_open"
 
 /obj/item/toy/deck/verb/draw_card()
@@ -94,83 +94,102 @@
 	set desc = "Draw a card from a deck."
 	set src in view(1)
 
-	if(usr.stat || !Adjacent(usr)) return
+	if(usr.stat || !Adjacent(usr))
+		return
 
 	if(!ishuman(usr))
 		return
 
 	var/mob/living/carbon/human/user = usr
 
-	if(!cards.len)
-		to_chat(usr, "There are no cards in the deck.")
+	if(!length(cards))
+		to_chat(usr, SPAN_WARNING("There are no cards in the deck."))
 		return
 
-	var/obj/item/toy/handcard/H
-	if(user.l_hand && istype(user.l_hand,/obj/item/toy/handcard))
-		H = user.l_hand
-	else if(user.r_hand && istype(user.r_hand,/obj/item/toy/handcard))
-		H = user.r_hand
-	else
-		H = new(get_turf(src))
-		user.put_in_hands(H)
-
-	var/datum/playingcard/P = cards[1]
+	var/obj/item/toy/handcard/H = get_or_make_user_hand(user)
+	var/datum/playing_card/P = cards[1]
 	H.cards += P
 	cards -= P
 	H.update_icon()
 	update_icon()
-	user.visible_message("\The [user] draws a card.")
-	to_chat(user, "It's the [P].")
+	user.visible_message(SPAN_NOTICE("\The [user] draws a card."), SPAN_NOTICE("You draw the <b>[P]</b>."))
 
 /obj/item/toy/deck/verb/draw_cards()
 	set category = "Object"
-	set name = "Draw N Cards"
+	set name = "Draw X Cards"
 	set desc = "Draw amount cards from a deck."
 	set src in view(1)
 
-	if(usr.stat || !ishuman(usr) || !Adjacent(usr)) return
+	handle_draw_cards(usr)
+
+/obj/item/toy/deck/proc/handle_draw_cards(var/mob/mob)
+	if(mob.stat || !ishuman(mob) || !Adjacent(mob))
+		return
 
 	var/mob/living/carbon/human/user = usr
 
-	if(!cards.len)
-		to_chat(usr, "There are no cards in the deck.")
+	var/cards_length = length(cards)
+	if(!cards_length)
+		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
 		return
 
-	var/obj/item/toy/handcard/H
-	if(user.l_hand && istype(user.l_hand,/obj/item/toy/handcard))
-		H = user.l_hand
-	else if(user.r_hand && istype(user.r_hand,/obj/item/toy/handcard))
-		H = user.r_hand
-	else
-		H = new(get_turf(src))
-		user.put_in_hands(H)
-
-	var/num_cards_text = stripped_input(usr, "How many cards?", "Draw Cards" , "1", 5)
-	var/num_cards = text2num(num_cards_text)
-	if(!num_cards || num_cards < 0)
-		to_chat(usr, SPAN_WARNING("Incorrect input format."))
+	var/num_cards = tgui_input_number(user, "How many cards do you want to draw? ([cards_length] remaining)", "Card Drawing", 1, cards_length, 1)
+	cards_length = length(cards)
+	if(!cards_length)
+		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
 		return
-
-	if(cards.len<num_cards)
-		to_chat(usr, SPAN_WARNING("Not enough cards in the deck."))
+	if(!num_cards || num_cards <= 0)
 		return
+	num_cards = min(num_cards, cards_length)
 
 	if(num_cards==1)
-		user.visible_message("\The [user] draws a card.")
+		user.visible_message(SPAN_NOTICE("\The [user] draws a card."), SPAN_NOTICE("You draw a card."))
 	else
-		user.visible_message("\The [user] draws [num_cards] cards.")
+		user.visible_message(SPAN_NOTICE("\The [user] draws [num_cards] cards."), SPAN_NOTICE("You draw [num_cards] cards."))
+
+	var/obj/item/toy/handcard/H = get_or_make_user_hand(user)
 
 	var/chat_message = ""
-	while(num_cards>0)
-		var/datum/playingcard/P = cards[1]
+	for(var/i = 1 to num_cards)
+		var/datum/playing_card/P = cards[1]
 		H.cards += P
 		cards -= P
-		H.update_icon()
-		update_icon()
 		num_cards--
 		chat_message += "[P]; "
 
-	to_chat(user, "You've drawn: [chat_message]")
+	H.update_icon()
+	update_icon()
+
+	to_chat(user, SPAN_NOTICE("You've drawn: [chat_message]"))
+
+/obj/item/toy/deck/verb/draw_pile()
+	set name = "Draw Pile (Concealed)"
+	set desc = "Draw a concealed pile from the deck."
+	set category = "Object"
+	set src in view(1)
+
+	if(usr.stat || !ishuman(usr) || !Adjacent(usr))
+		return
+
+	var/mob/living/carbon/human/user = usr
+
+	var/cards_length = length(cards)
+	if(!cards_length)
+		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
+		return
+
+	var/obj/item/toy/handcard/H = new(get_turf(src))
+	user.put_in_hands(H)
+
+	H.concealed = TRUE
+	H.pile_state = TRUE
+
+	user.visible_message(SPAN_NOTICE("\The [user] draws a concealed pile of cards."), SPAN_NOTICE("You draw a concealed pile of cards."))
+
+	H.cards = cards.Copy()
+	cards = list()
+	H.update_icon()
+	update_icon()
 
 /obj/item/toy/deck/verb/deal_card()
 	set category = "Object"
@@ -178,28 +197,28 @@
 	set desc = "Deal a card from a deck."
 	set src in view(1)
 
-	if(usr.stat || !Adjacent(usr)) return
+	if(usr.stat || !Adjacent(usr))
+		return
 
-	if(!cards.len)
-		to_chat(usr, "There are no cards in the deck.")
+	if(!length(cards))
+		to_chat(usr, SPAN_WARNING("There are no cards in the deck."))
 		return
 
 	var/list/players = list()
 	for(var/mob/living/player in viewers(3))
 		if(!player.stat)
 			players += player
-	//players -= usr
 
 	var/mob/living/M = tgui_input_list(usr, "Who do you wish to deal a card?", "Deal card", players)
-	if(!usr || QDELETED(src) || !Adjacent(usr) || !M || QDELETED(M)) return
-
-	if(!cards.len)
+	if(!usr || QDELETED(src) || !Adjacent(usr) || !M || QDELETED(M))
 		return
 
-	for(var/mob/living/L in viewers(3))
-		if(L == M)
-			deal_at(usr, M)
-			break
+	if(!length(cards))
+		to_chat(usr, SPAN_WARNING("There are no cards in the deck."))
+		return
+
+	if(get_dist(usr, M) < 4)
+		deal_at(usr, M)
 
 /obj/item/toy/deck/proc/deal_at(mob/user, mob/target)
 	var/obj/item/toy/handcard/H = new(get_step(user, user.dir))
@@ -210,28 +229,29 @@
 	H.update_icon()
 	update_icon()
 	if(user == target)
-		user.visible_message("\The [user] deals a card to \himself.")
+		user.visible_message(SPAN_NOTICE("\The [user] deals a card to \himself."), SPAN_NOTICE("You deal a card to yourself."))
 	else
-		user.visible_message("\The [user] deals a card to \the [target].")
+		user.visible_message(SPAN_NOTICE("\The [user] deals a card to \the [target]."), SPAN_NOTICE("You deal a card to \the [target]."))
 	H.throw_atom(get_step(target,target.dir), 10, SPEED_VERY_FAST, H)
 
 /obj/item/toy/deck/attack_self(var/mob/user)
 	..()
 	var/list/newcards = list()
-	while(cards.len)
-		var/datum/playingcard/P = pick(cards)
+	for(var/i = 1 to length(cards))
+		var/datum/playing_card/P = pick_n_take(cards)
 		newcards += P
-		cards -= P
 	cards = newcards
-	user.visible_message("\The [user] shuffles [src].")
+	user.visible_message(SPAN_NOTICE("\The [user] shuffles \the [src]."), SPAN_NOTICE("You shuffle \the [src]."))
 
 /obj/item/toy/deck/MouseDrop(atom/over)
-	if(!usr || !over) return
+	if(!usr || !over)
+		return
 
-	if(!ishuman(over) || !(over in viewers(3))) return
+	if(!ishuman(over) || get_dist(usr, over) > 3)
+		return
 
-	if(!cards.len)
-		to_chat(usr, "There are no cards in the deck.")
+	if(!length(cards))
+		to_chat(usr, SPAN_WARNING("There are no cards in the deck."))
 		return
 
 	deal_at(usr, over)
@@ -242,10 +262,16 @@
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "empty"
 	w_class = SIZE_TINY
+	flags_item = NOTABLEMERGE
 
-	var/concealed = 0
-	var/discard_pile = FALSE
-	var/list/datum/playingcard/cards = list()
+	var/concealed = FALSE
+	var/pile_state = FALSE
+	var/list/datum/playing_card/cards = list()
+
+/obj/item/toy/handcard/get_examine_line(mob/user)
+	. = ..()
+	if(!concealed)
+		. += " ([length(cards)] card\s)"
 
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"
@@ -267,183 +293,150 @@
 	icon_state = "purple_reverse"
 	desc = "Always handy to have one or three of these up your sleeve.."
 
-/obj/item/toy/handcard/attackby(obj/item/O, mob/user)
-	if(istype(O,/obj/item/toy/handcard))
-		var/obj/item/toy/handcard/H = O
-		for(var/datum/playingcard/P in H.cards)
-			cards += P
-		src.concealed = H.concealed
-		qdel(O)
-		if(loc != user)
-			user.put_in_hands(src)
-		update_icon()
-		return
-	..()
-
 /obj/item/toy/handcard/verb/toggle_discard_state()
+	set name = "Toggle Pile State"
+	set desc = "Set or Unset this hand as a pile. Try not having multiple discard piles nearby."
 	set category = "Object"
-	set name = "Toggle Discard State"
-	set desc = "Set or Unset this pile as a discard pile. Try not having multiple discard piles nearby"
 	set src in usr
-	if(usr.stat || !ishuman(usr) || !Adjacent(usr)) return
 
-	discard_pile = !discard_pile
-	usr.visible_message("\The [usr] [discard_pile ? "sets" : "unsets"] a discard pile.")
+	if(usr.stat || !ishuman(usr))
+		return
+
+	pile_state = !pile_state
+	usr.visible_message(SPAN_NOTICE("\The [usr] [pile_state ? "sets" : "unsets"] a pile."), SPAN_NOTICE("You [pile_state ? "set" : "unset"] a pile."))
+	update_icon()
 
 /obj/item/toy/handcard/verb/sort_cards()
 	set category = "Object"
 	set name = "Sort Hand"
-	set desc = "Sort this hand by deck's initial order"
+	set desc = "Sort this hand by deck's initial order."
 	set src in usr
-	if(usr.stat || !ishuman(usr) || !Adjacent(usr)) return
+
+	if(usr.stat || !ishuman(usr))
+		return
 
 	//fuck any qsorts and merge sorts. This needs to be brutally easy
-	for(var/i=1, i<=cards.len, i++)
-		for(var/k=i+1, k<=cards.len, k++)
+	var/cards_length = length(cards)
+	for(var/i = 1 to cards_length)
+		for(var/k = 2 to cards_length)
 			if(cards[i].sort_index > cards[k].sort_index)
 				var/crd = cards[i]
 				cards[i] = cards[k]
 				cards[k] = crd
 
-	src.update_icon()
-	usr.visible_message("\The [usr] sorts \his hand.")
+	update_icon()
+	usr.visible_message(SPAN_NOTICE("\The [usr] sorts \his hand."), SPAN_NOTICE("You sort your hand."))
 
-/obj/item/toy/handcard/verb/discard()
-	set category = "Object"
-	set name = "Discard"
-	set desc = "Place a card from your hand in front of you or onto a discard pile."
-	set src in usr
-	var/list/to_discard = list()
-	for(var/datum/playingcard/P in cards)
-		to_discard[P.name] = P
-	var/discarding = tgui_input_list(usr, "Which card do you wish to put down?", "Discard card", to_discard)
-
-	if(!discarding || !usr || QDELETED(src) || loc != usr) return
-
-	var/datum/playingcard/card = to_discard[discarding]
-	if(QDELETED(card))
+/obj/item/toy/handcard/attackby(obj/item/O, mob/user)
+	if(istype(O, /obj/item/toy/handcard))
+		var/obj/item/toy/handcard/H = O
+		var/cards_length = length(H.cards)
+		for(var/datum/playing_card/P in H.cards)
+			cards += P
+		qdel(O)
+		if(pile_state)
+			if(concealed)
+				user.visible_message(SPAN_NOTICE("\The [user] adds [cards_length > 1 ? "their hand" : "a card"] to \the [src]."), SPAN_NOTICE("You add [cards_length > 1 ? "your hand" : "<b>[cards[length(cards)].name]</b>"] to the \the [src]."))
+			else
+				user.visible_message(SPAN_NOTICE("\The [user] adds [cards_length > 1 ? "their hand" : "<b>[cards[length(cards)].name]</b>"] to \the [src]."), SPAN_NOTICE("You add [cards_length > 1 ? "your hand" : "<b>[cards[length(cards)].name]</b>"] to \the [src]."))
+		else
+			if(loc != user)
+				user.put_in_hands(src)
+		update_icon()
 		return
-	var/found = FALSE
-	for(var/datum/playingcard/P in cards)
-		if(P == card)
-			found = TRUE
-			break
-	if(!found)
-		return
-	qdel(to_discard)
+	..()
 
-	cards -= card
-	if(!cards.len)
-		qdel(src)
+/obj/item/toy/handcard/attack_hand(mob/user)
+	if(user.get_inactive_hand() == src)
+		var/list/to_pick_up = list()
+		for(var/datum/playing_card/P as anything in cards)
+			to_pick_up[P.name] = P
 
-	usr.visible_message("\The [usr] plays \the [discarding].")
-
-	for(var/obj/item/toy/handcard/hc in orange(1, usr))
-		if(hc && hc.discard_pile)
-			hc.cards += card
-			hc.update_icon()
-			if(src)
-				src.update_icon()
+		var/picking_up = tgui_input_list(user, "Which card do you wish to pick up?", "Take a card", to_pick_up)
+		if(!picking_up || !user || QDELETED(src))
 			return
 
-	var/obj/item/toy/handcard/H = new(src.loc)
-	H.cards += card
-	H.concealed = 0
-	H.discard_pile = discard_pile
-	H.update_icon()
-	H.forceMove(get_step(usr,usr.dir))
-	if(src)
-		src.update_icon()
+		var/datum/playing_card/card = to_pick_up[picking_up]
+		if(QDELETED(card) || !(card in cards))
+			return
 
-/obj/item/toy/handcard/verb/take_top_card()
-	set category = "Object"
-	set name = "Take a Card"
-	set desc = "Pick a card and add it to your hand"
-	set src in view(1)
-
-	if(!ishuman(usr)) return
-
-	var/list/to_pick_up = list()
-	for(var/datum/playingcard/P in cards)
-		to_pick_up[P.name] = P
-	var/picking_up = tgui_input_list(usr, "Which card do you wish to pick up?", "Take a card", to_pick_up)
-
-	if(!picking_up || !usr || QDELETED(src)) return
-
-	var/mob/living/carbon/human/user = usr
-
-	var/datum/playingcard/card = to_pick_up[picking_up]
-	if(QDELETED(card))
+		var/obj/item/toy/handcard/H = get_or_make_user_hand(user, src)
+		H.cards += card
+		cards -= card
+		H.update_icon()
+		if(!length(cards))
+			qdel(src)
+		else
+			update_icon()
 		return
-	var/found = FALSE
-	for(var/datum/playingcard/P in cards)
-		if(P == card)
-			found = TRUE
-			break
-	if(!found)
+	else if(pile_state)
+		var/obj/item/toy/handcard/H = get_or_make_user_hand(user, src)
+		var/datum/playing_card/P = cards[length(cards)]
+		H.cards += P
+		cards -= P
+		H.update_icon()
+		user.visible_message(SPAN_NOTICE("<b>[user]</b> draws a card from \the [src]."), SPAN_NOTICE("You draw <b>[P.name]</b> from \the [src]."))
+		if(!length(cards))
+			qdel(src)
+		else
+			update_icon()
 		return
-	qdel(to_pick_up)
-
-	cards -= card
-	if(!cards.len)
-		qdel(src)
-
-	usr.visible_message("\The [user] takes \the [picking_up].")
-
-	var/obj/item/toy/handcard/H
-	if(user.l_hand && istype(user.l_hand,/obj/item/toy/handcard))
-		H = user.l_hand
-	else if(user.r_hand && istype(user.r_hand,/obj/item/toy/handcard))
-		H = user.r_hand
-	else
-		H = new(get_turf(src))
-		usr.put_in_hands(H)
-
-	var/datum/playingcard/P = card
-	H.cards += P
-	cards -= P
-	H.update_icon()
-	if(src)
-		src.update_icon()
-
+	return ..()
 
 /obj/item/toy/handcard/attack_self(var/mob/user)
 	..()
 	concealed = !concealed
 	update_icon()
-	user.visible_message("\The [user] [concealed ? "conceals" : "reveals"] their hand.")
+	user.visible_message(SPAN_NOTICE("\The [user] [concealed ? "conceals" : "reveals"] their hand."), SPAN_NOTICE("You [concealed ? "conceal" : "reveal"] your hand."))
 
-/obj/item/toy/handcard/examine(mob/user)
-	..()
-	if(cards.len)
-		to_chat(user, "It has [cards.len] cards.")
-		if((!concealed || loc == user))
-			to_chat(user, "The cards are: ")
-			for(var/datum/playingcard/P in cards)
-				to_chat(user, "A [P.name].")
+/obj/item/toy/handcard/MouseDrop(atom/over)
+	if(usr != over || !Adjacent(usr))
+		return
+	usr.put_in_hands(src)
+
+/obj/item/toy/handcard/get_examine_text(mob/user)
+	. = ..()
+	if(length(cards))
+		. += SPAN_NOTICE("It has <b>[length(cards)]</b> cards.")
+		if(pile_state)
+			if(!concealed)
+				. += SPAN_NOTICE("The top card is <b>[cards[length(cards)].name]</b>.")
+		else if(loc == user)
+			var/card_names = list()
+			for(var/datum/playing_card/P as anything in cards)
+				card_names += P.name
+			. += SPAN_NOTICE("The cards are: [english_list(card_names)]")
+
 
 /obj/item/toy/handcard/update_icon(var/direction = 0)
-	if(cards.len > 1)
-		name = "hand of cards"
-		desc = "Some playing cards."
+	var/cards_length = length(cards)
+	if(pile_state)
+		if(concealed)
+			name = "draw pile"
+			desc = "A pile of cards to draw from."
+		else
+			name = "discard pile"
+			desc = "A pile of cards you can discard to."
 	else
-		name = "a playing card"
-		desc = "A playing card."
+		if(cards_length > 1)
+			name = "hand of cards"
+			desc = "Some playing cards."
+		else
+			name = "a playing card"
+			desc = "A playing card."
 
 	overlays.Cut()
 
-	if(!cards.len)
+	if(!cards_length)
 		return
 
-	if(cards.len == 1)
-		var/datum/playingcard/P = cards[1]
+	if(cards_length == 1 || pile_state)
+		var/datum/playing_card/P = cards[cards_length]
 		var/image/I = new(src.icon, (concealed ? P.back_icon : P.card_icon))
-		I.pixel_x += (-5+rand(10))
-		I.pixel_y += (-5+rand(10))
 		overlays += I
 		return
 
-	var/offset = Floor(80/cards.len)
+	var/offset = Floor(80/cards_length)
 
 	var/matrix/M = matrix()
 	if(direction)
@@ -459,7 +452,7 @@
 				M.Turn(90)
 				M.Translate(-2, 0)
 	var/i = 0
-	for(var/datum/playingcard/P in cards)
+	for(var/datum/playing_card/P as anything in cards)
 		var/image/I = new(src.icon, (concealed ? P.back_icon : P.card_icon))
 		switch(direction)
 			if(SOUTH)
@@ -474,13 +467,25 @@
 		overlays += I
 		i++
 
-/obj/item/toy/handcard/dropped(mob/user as mob)
+/obj/item/toy/handcard/dropped(mob/user)
 	..()
 	if(locate(/obj/structure/surface/table, loc))
-		src.update_icon(user.dir)
+		update_icon(user.dir)
 	else
 		update_icon()
 
-/obj/item/toy/handcard/pickup(mob/user as mob)
+/obj/item/toy/handcard/pickup(mob/user)
 	. = ..()
-	src.update_icon()
+	update_icon()
+
+
+/proc/get_or_make_user_hand(var/mob/living/user, var/obj/item/toy/handcard/ignore_hand)
+	var/obj/item/toy/handcard/H
+	if(istype(user.l_hand, /obj/item/toy/handcard) && user.l_hand != ignore_hand)
+		H = user.l_hand
+	else if(istype(user.r_hand, /obj/item/toy/handcard) && user.r_hand != ignore_hand)
+		H = user.r_hand
+	else
+		H = new(get_turf(user))
+		usr.put_in_hands(H)
+	return H

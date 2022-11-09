@@ -156,7 +156,7 @@
 		return 0
 
 	M.drop_held_item()
-	M:sleeping += 1
+	M:sleeping++
 	if(M.coughedtime != 1)
 		M.coughedtime = 1
 		if(ishuman(M)) //Humans only to avoid issues
@@ -265,9 +265,9 @@
 	var/gas_damage = 20
 
 /obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
-	var/mob/living/carbon/Xenomorph/X = cause_data.resolve_mob()
-	if (istype(X) && X.hivenumber)
-		hivenumber = X.hivenumber
+	var/mob/living/carbon/Xenomorph/xeno = cause_data?.resolve_mob()
+	if (istype(xeno) && xeno.hivenumber)
+		hivenumber = xeno.hivenumber
 
 		set_hive_data(src, hivenumber)
 
@@ -280,7 +280,7 @@
 		B.take_acid_damage(XENO_ACID_BARRICADE_DAMAGE)
 
 	for(var/obj/vehicle/multitile/R in T)
-		R.take_damage_type(20, "acid")
+		R.take_damage_type(15, "acid")
 
 	for(var/obj/structure/machinery/m56d_hmg/auto/H in T)
 		H.update_health(XENO_ACID_HMG_DAMAGE)
@@ -493,8 +493,7 @@
 		lifetime = smoke_time
 	radius = min(radius, 10)
 	amount = radius
-	if(new_cause_data)
-		cause_data = new_cause_data
+	cause_data = istype(new_cause_data) ? new_cause_data : create_cause_data(new_cause_data)
 
 /datum/effect_system/smoke_spread/start()
 	if(holder)

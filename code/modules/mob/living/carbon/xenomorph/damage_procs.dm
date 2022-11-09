@@ -1,3 +1,37 @@
+/mob/living/carbon/Xenomorph/attackby(obj/item/item, mob/user)
+	if(user.a_intent != INTENT_HELP)
+		return ..()
+	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL) && ishuman(user))
+		var/mob/living/carbon/human/programmer = user
+		if(!iff_tag)
+			to_chat(user, SPAN_WARNING("\The [src] doesn't have an IFF tag to reprogram."))
+			return
+		programmer.visible_message(SPAN_NOTICE("[programmer] starts reprogramming \the [src]'s IFF tag..."), SPAN_NOTICE("You start reprogramming \the [src]'s IFF tag..."), max_distance = 3)
+		if(!do_after(programmer, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_DIFF_LOC, BUSY_ICON_GENERIC))
+			return
+		if(!iff_tag)
+			to_chat(programmer, SPAN_WARNING("\The [src]'s tag got removed while you were reprogramming it!"))
+			return
+		if(!iff_tag.handle_reprogramming(programmer, src))
+			return
+		programmer.visible_message(SPAN_NOTICE("[programmer] reprograms \the [src]'s IFF tag."), SPAN_NOTICE("You reprogram \the [src]'s IFF tag."), max_distance = 3)
+		return
+	if(item.type in SURGERY_TOOLS_PINCH)
+		if(!iff_tag)
+			to_chat(user, SPAN_WARNING("\The [src] doesn't have an IFF tag to remove."))
+			return
+		user.visible_message(SPAN_NOTICE("[user] starts removing \the [src]'s IFF tag..."), SPAN_NOTICE("You start removing \the [src]'s IFF tag..."), max_distance = 3)
+		if(!do_after(user, 5 SECONDS * SURGERY_TOOLS_PINCH[item.type], INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_DIFF_LOC, BUSY_ICON_GENERIC))
+			return
+		if(!iff_tag)
+			to_chat(user, SPAN_WARNING("\The [src]'s tag got removed while you were removing it!"))
+			return
+		user.put_in_hands(iff_tag)
+		iff_tag = null
+		user.visible_message(SPAN_NOTICE("[user] removes \the [src]'s IFF tag."), SPAN_NOTICE("You remove \the [src]'s IFF tag."), max_distance = 3)
+		return
+	return ..()
+
 /mob/living/carbon/Xenomorph/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data, pierce=0)
 
 	if(lying)
@@ -6,9 +40,11 @@
 	if(severity >= 30)
 		flash_eyes()
 
+	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
+
 	if(severity > EXPLOSION_THRESHOLD_LOW && stomach_contents.len)
 		for(var/mob/M in stomach_contents)
-			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, cause_data, pierce)
+			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, last_damage_data, pierce)
 
 	var/b_loss = 0
 	var/f_loss = 0
@@ -21,8 +57,6 @@
 	var/armor_punch = armor_break_calculation(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	apply_armorbreak(armor_punch)
 
-	last_damage_data = cause_data
-
 	last_hit_time = world.time
 
 	var/shieldtotal = 0
@@ -31,8 +65,8 @@
 
 	if (damage >= (health + shieldtotal) && damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
-		gib(cause_data)
-		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, cause_data)
+		gib(last_damage_data)
+		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, last_damage_data)
 		return
 	if (damage >= 0)
 		b_loss += damage * 0.5
@@ -70,7 +104,7 @@
 
 	var/list/damagedata = list(
 		"damage" = damage,
-		"armor" = (armor_deflection + armor_deflection_buff) * effectiveness_mult,
+		"armor" = (armor_deflection + armor_deflection_buff - armor_deflection_debuff) * effectiveness_mult,
 		"penetration" = penetration,
 		"armour_break_pr_pen" = armour_break_pr_pen,
 		"armour_break_flat" = armour_break_flat,
@@ -200,7 +234,7 @@
 	updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/check_blood_splash(damage = 0, damtype = BRUTE, chancemod = 0, radius = 1)
-	if(!damage || world.time < acid_splash_last + acid_splash_cooldown || SSticker?.mode?.hardcore)
+	if(!damage || !acid_blood_damage || world.time < acid_splash_last + acid_splash_cooldown || SSticker?.mode?.hardcore)
 		return FALSE
 	var/chance = 20 //base chance
 	if(damtype == BRUTE) chance += 5
@@ -229,8 +263,8 @@
 			splash_chance = 80 - (i * 5)
 			if(victim.loc == loc) splash_chance += 30 //Same tile? BURN
 			splash_chance += distance * -15
-			if(victim.species && victim.species.name == "Yautja")
-				splash_chance -= 70 //Preds know to avoid the splashback.
+			if(victim.species?.acid_blood_dodge_chance)
+				splash_chance -= victim.species.acid_blood_dodge_chance
 
 			if(splash_chance > 0 && prob(splash_chance)) //Success!
 				var/dmg = list("damage" = acid_blood_damage)
@@ -244,3 +278,36 @@
 				victim.take_limb_damage(0, dmg["damage"]) //Sizzledam! This automagically burns a random existing body part.
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time
+
+/mob/living/carbon/Xenomorph/get_target_lock(var/access_to_check)
+	if(isnull(access_to_check))
+		return
+
+	if(!iff_tag)
+		return ..()
+
+	if(!islist(access_to_check))
+		return access_to_check in iff_tag.faction_groups
+
+	var/list/overlap = iff_tag.faction_groups & access_to_check
+	return length(overlap)
+
+/mob/living/carbon/Xenomorph/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+	. = ..()
+	switch(fire.fire_variant)
+		if(FIRE_VARIANT_TYPE_B)
+			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
+				reset_xeno_armor_debuff_after_time(src, delta_time*10)
+			fire.type_b_debuff_xeno_armor(src) //Always reapplies debuff each time to minimize gap.
+
+/mob/living/carbon/Xenomorph/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+	. = ..()
+	switch(fire.fire_variant)
+		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire
+			if(!armor_deflection_debuff) //Only applies the xeno armor shred reset when the debuff isn't present or was recently removed.
+				reset_xeno_armor_debuff_after_time(src, 20)
+			var/resist_modifier = fire.type_b_debuff_xeno_armor(src)
+			fire.set_on_fire(src) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
+			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
+			if(resist_modifier > 0)
+				to_chat(src, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))

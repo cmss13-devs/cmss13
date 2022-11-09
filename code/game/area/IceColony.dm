@@ -160,7 +160,7 @@
 /area/ice_colony/exterior/underground/caves
 	name = "\improper Underground Caves"
 	icon_state = "cave"
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25
 	ambience_exterior = AMBIENCE_CAVE
@@ -474,7 +474,7 @@
 	fake_zlevel = 2 // underground
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
-	sound_environment = 2
+	sound_environment = SOUND_ENVIRONMENT_ROOM
 
 /*
  * Underground - Crew Areas
@@ -584,7 +584,7 @@
 /area/ice_colony/underground/maintenance
 	name = "\improper Underground Maintenance"
 	icon_state = "maintcentral"
-	sound_environment = 6
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	base_muffle = MUFFLE_MEDIUM
 
 /area/ice_colony/underground/maintenance/central

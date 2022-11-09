@@ -76,10 +76,10 @@
 	desc = "A specialised prod designed for incapacitating xenomorphic lifeforms with. This one seems to be much more effective than its predecessor."
 	color = "#FF6666"
 
-	attack(mob/M, mob/user)
-		..()
-		M.KnockDown(14)
+/obj/item/weapon/stunprod/improved/attack(mob/M, mob/user)
+	..()
+	M.KnockDown(14)
 
-	examine(mob/user)
-		..()
-		to_chat(user, SPAN_NOTICE("It has [charges] charges left."))
+/obj/item/weapon/stunprod/improved/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("It has [charges] charges left.")

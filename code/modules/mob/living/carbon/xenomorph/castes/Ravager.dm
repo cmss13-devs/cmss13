@@ -4,6 +4,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
 	melee_damage_upper = XENO_DAMAGE_TIER_6
+	melee_vehicle_damage = XENO_DAMAGE_TIER_7	//Queen and Ravs have extra multiplier when dealing damage in multitile_interaction.dm
 	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_PLASMA_TIER_3
@@ -20,7 +21,7 @@
 	tacklestrength_max = 5
 
 	evolution_allowed = FALSE
-	deevolves_to = XENO_CASTE_LURKER
+	deevolves_to = list(XENO_CASTE_LURKER)
 	caste_desc = "A brutal, devastating front-line attacker."
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 	attack_delay = -1
@@ -47,8 +48,9 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/pounce/charge,
-		/datum/action/xeno_action/activable/empower,
+		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/scissor_cut,
 	)
 

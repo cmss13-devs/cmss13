@@ -14,7 +14,8 @@
 	max_rounds = 1500
 
 /obj/item/ammo_magazine/sentry/premade
-	max_rounds = 1000000
+	max_rounds = 99999
+	current_rounds = 99999
 
 /obj/item/ammo_magazine/sentry/premade/dumb
 	default_ammo = /datum/ammo/bullet/turret/dumb
@@ -29,7 +30,7 @@
 // FLAMER Sentry
 /obj/item/ammo_magazine/sentry_flamer
 	name = "sentry incinerator tank"
-	desc = "A fuel tank of usually Ultra Thick Napthal Fuel, a sticky combustable liquid chemical, used in the UA 42-F."
+	desc = "A fuel tank of usually Ultra Thick Napthal Fuel, a sticky combustible liquid chemical, used in the UA 42-F."
 	w_class = SIZE_MEDIUM
 	icon_state = "ua571c"
 	flags_magazine = NO_FLAGS

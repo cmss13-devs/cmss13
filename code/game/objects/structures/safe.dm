@@ -43,14 +43,20 @@ FLOOR SAFES
 	var/space = 0		//the combined w_class of everything in the safe
 	var/maxspace = 24	//the maximum combined w_class of stuff in the safe
 
+	var/datum/cm_objective/crack_safe/objective
 
-/obj/structure/safe/Initialize()
+
+/obj/structure/safe/Initialize(mapload, ...)
 	. = ..()
 	tumbler_1_pos = 0
 	tumbler_1_open = (rand(0,10) * 5)
 
 	tumbler_2_pos = 0
 	tumbler_2_open = (rand(0,10) * 5)
+
+	if(is_ground_level(loc.z))
+		//adding an objective for cracking open the safe
+		new /datum/cm_objective/crack_safe(src)
 
 	for(var/obj/item/I in loc)
 		if(space >= maxspace)
@@ -61,6 +67,11 @@ FLOOR SAFES
 
 	if(spawnkey)
 		new /obj/item/paper/safe_key(loc) //Spawn the key on top of the safe.
+
+/obj/structure/safe/Destroy()
+	qdel(objective)
+	objective = null
+	return ..()
 
 /obj/structure/safe/proc/check_unlocked(mob/user as mob, canhear)
 	if(user && canhear)
@@ -137,6 +148,7 @@ FLOOR SAFES
 			open = !open
 			update_icon()
 			updateUsrDialog()
+			SEND_SIGNAL(src, COMSIG_SAFE_OPENED)
 			return
 		else
 			to_chat(user, SPAN_NOTICE("You can't [open ? "close" : "open"] [src], the lock is engaged!"))

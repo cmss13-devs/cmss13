@@ -10,6 +10,11 @@
 	pockets.max_storage_space = 4
 	flags_atom |= USES_HEARING
 
+/obj/item/clothing/suit/storage/get_pockets()
+	if(pockets)
+		return pockets
+	return ..()
+
 /obj/item/clothing/suit/storage/attack_hand(mob/user, mods)
 	if(loc != user)
 		..(user) // If it's in a box (e.g. SG or spec gear), don't click the pockets pls

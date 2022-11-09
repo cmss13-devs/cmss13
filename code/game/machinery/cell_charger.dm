@@ -27,11 +27,11 @@
 	else
 		overlays.Cut()
 
-/obj/structure/machinery/cell_charger/examine(mob/user)
-	..()
-	to_chat(user, "There's [charging ? "a" : "no"] cell in the charger.")
+/obj/structure/machinery/cell_charger/get_examine_text(mob/user)
+	. = ..()
+	. += "There's [charging ? "a" : "no"] cell in the charger."
 	if(charging)
-		to_chat(user, "Current charge: [charging.charge]")
+		. += "Current charge: [charging.charge]"
 
 /obj/structure/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)

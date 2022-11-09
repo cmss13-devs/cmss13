@@ -1,4 +1,4 @@
-//Experimental engine for the Almayer.  Should be fancier.  I expect I'll eventually make it totally seperate from the Geothermal as I don't like the procs... - Apop
+//Experimental engine for the Almayer.  Should be fancier.  I expect I'll eventually make it totally separate from the Geothermal as I don't like the procs... - Apop
 
 
 #define FUSION_ENGINE_MAX_POWER_GEN	50000 //Full capacity
@@ -134,6 +134,9 @@
 			to_chat(user, SPAN_WARNING("You need to remove the fuel cell from [src] first."))
 			return TRUE
 	else if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(buildstate == 1)
 			var/obj/item/tool/weldingtool/WT = O
 			if(WT.remove_fuel(1, user))
@@ -227,40 +230,40 @@
 	else
 		return ..()
 
-/obj/structure/machinery/power/fusion_engine/examine(mob/user)
-	..()
+/obj/structure/machinery/power/fusion_engine/get_examine_text(mob/user)
+	. = ..()
 	if(ishuman(user))
 		if(buildstate)
-			to_chat(user, SPAN_INFO("It's broken."))
+			. += SPAN_INFO("It's broken.")
 			switch(buildstate)
 				if(1)
-					to_chat(user, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
+					. += SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it.")
 				if(2)
-					to_chat(user, SPAN_INFO("Use a wirecutters, then wrench to repair it."))
+					. += SPAN_INFO("Use a wirecutters, then wrench to repair it.")
 				if(3)
-					to_chat(user, SPAN_INFO("Use a wrench to repair it."))
+					. += SPAN_INFO("Use a wrench to repair it.")
 			return FALSE
 
 		if(!is_on)
-			to_chat(user, SPAN_INFO("It looks offline."))
+			. += SPAN_INFO("It looks offline.")
 		else
-			to_chat(user, SPAN_INFO("The power gauge reads: [power_gen_percent]%"))
+			. += SPAN_INFO("The power gauge reads: [power_gen_percent]%")
 		if(fusion_cell)
-			to_chat(user, SPAN_INFO("You can see a fuel cell in the receptacle."))
+			. += SPAN_INFO("You can see a fuel cell in the receptacle.")
 			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				switch(fusion_cell.get_fuel_percent())
 					if(0 to 10)
-						to_chat(user, SPAN_DANGER("The fuel cell is critically low."))
+						. += SPAN_DANGER("The fuel cell is critically low.")
 					if(10 to 25)
-						to_chat(user, SPAN_WARNING("The fuel cell is running low."))
+						. += SPAN_WARNING("The fuel cell is running low.")
 					if(25 to 50)
-						to_chat(user, SPAN_INFO("The fuel cell is a little under halfway."))
+						. += SPAN_INFO("The fuel cell is a little under halfway.")
 					if(50 to 75)
-						to_chat(user, SPAN_INFO("The fuel cell is a little above halfway."))
+						. += SPAN_INFO("The fuel cell is a little above halfway.")
 					if(75 to INFINITY)
-						to_chat(user, SPAN_INFO("The fuel cell is nearly full."))
+						. += SPAN_INFO("The fuel cell is nearly full.")
 		else
-			to_chat(user, SPAN_INFO("There is no fuel cell in the receptacle."))
+			. += SPAN_INFO("There is no fuel cell in the receptacle.")
 
 /obj/structure/machinery/power/fusion_engine/update_icon()
 	switch(buildstate)
@@ -320,7 +323,7 @@
 	name = "\improper WL-6 universal fuel cell"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "cell-full"
-	desc = "A rechargable fuel cell designed to work as a power source for the Cheyenne-Class transport or for Westingland S-52 Reactors."
+	desc = "A rechargeable fuel cell designed to work as a power source for the Cheyenne-Class transport or for Westingland S-52 Reactors."
 	var/fuel_amount = 100.0
 	var/max_fuel_amount = 100.0
 
@@ -337,10 +340,10 @@
 		else
 			icon_state = "cell-full"
 
-/obj/item/fuelCell/examine(mob/user)
-	..()
+/obj/item/fuelCell/get_examine_text(mob/user)
+	.  = ..()
 	if(ishuman(user))
-		to_chat(user, "The fuel indicator reads: [get_fuel_percent()]%")
+		. += "The fuel indicator reads: [get_fuel_percent()]%"
 
 /obj/item/fuelCell/proc/get_fuel_percent()
 	return round(100*fuel_amount/max_fuel_amount)

@@ -14,8 +14,8 @@
 
 	// Stuff needed to render the map
 	var/map_name
-	var/obj/screen/map_view/cam_screen
-	var/obj/screen/background/cam_background
+	var/atom/movable/screen/map_view/cam_screen
+	var/atom/movable/screen/background/cam_background
 
 	/// All turfs within range of the currently active camera
 	var/list/range_turfs = list()
@@ -59,6 +59,11 @@
 	if(!isRemoteControlling(user))
 		user.set_interaction(src)
 	tgui_interact(user)
+
+/obj/structure/machinery/computer/security/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_DISABLED
 
 /obj/structure/machinery/computer/security/tgui_interact(mob/user, datum/tgui/ui)
 	// Update UI
@@ -118,10 +123,11 @@
 		var/list/cameras = get_available_cameras()
 		var/obj/structure/machinery/camera/selected_camera
 		selected_camera = cameras[c_tag]
-		// Cause Unicode breaks c_tags
+		// Unicode breaks c_tags
+		// Currently the only issues with character names comes from the improper or proper tags and so we strip and recheck if not found.
 		if(!selected_camera)
 			for(var/I in cameras)
-				if(copytext_char(I, 3) == c_tag)
+				if(strip_improper(I) == c_tag)
 					selected_camera = cameras[I]
 					break
 		current = selected_camera
@@ -249,7 +255,7 @@
 
 /obj/structure/machinery/computer/security/wooden_tv
 	name = "Security Cameras"
-	desc = "An old TV hooked into the stations camera network."
+	desc = "An old TV hooked into the station's camera network."
 	icon_state = "security_det"
 	circuit = null
 

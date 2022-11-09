@@ -8,6 +8,8 @@
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
 	hitsound = 'sound/weapons/smash.ogg'
+	pickupsound = 'sound/handling/wrench_pickup.ogg'
+	dropsound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 10
 	w_class = SIZE_MEDIUM
@@ -47,14 +49,17 @@
 	max_water = 500
 	power = PYRO_EXTINGUISHER_PWR
 
+/obj/item/tool/extinguisher/pyro/atmos_tank
+	max_water = 500000 //so it never runs out, theoretically
+
 /obj/item/tool/extinguisher/Initialize()
 	. = ..()
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
 
-/obj/item/tool/extinguisher/examine(mob/user)
-	..()
-	to_chat(user, "It contains [reagents.total_volume] units of water left!")
+/obj/item/tool/extinguisher/get_examine_text(mob/user)
+	. = ..()
+	. += "It contains [reagents.total_volume] units of water left!"
 
 /obj/item/tool/extinguisher/attack_self(mob/user)
 	..()
@@ -96,7 +101,8 @@
 			return
 		var/mob/living/M = user
 		M.ExtinguishMob()
-		new /obj/effect/particle_effect/water(get_turf(user))
+		var/obj/effect/particle_effect/water/water_effect = new /obj/effect/particle_effect/water(get_turf(user))
+		QDEL_IN(water_effect, 1 SECONDS)
 		reagents.total_volume -= EXTINGUISHER_WATER_USE_AMT
 		return
 
@@ -176,18 +182,15 @@
 			W.reagents.reaction(atm)
 			if(istype(atm, /obj/flamer_fire))
 				var/obj/flamer_fire/FF = atm
-				if(FF.firelevel > power)
+				if((FF.firelevel > power) && (!FF.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
 					FF.firelevel -= power
 					FF.update_flame()
-				else
+				else //See: aliens.dm acid extinguishing behavior for more variant cases if needed.
 					qdel(atm)
 				continue
 			if(isliving(atm)) //For extinguishing mobs on fire
 				var/mob/living/M = atm
 				M.ExtinguishMob()
-				for(var/obj/item/clothing/mask/cigarette/C in M.contents)
-					if(C.item_state == C.icon_on)
-						C.die()
 			if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
 				atm.extinguish_acid()
 		T = get_turf(W)

@@ -66,7 +66,7 @@
 
 /obj/structure/machinery/defenses/sentry/proc/set_range()
 	if(omni_directional)
-		range_bounds = RECT(x, y, 7, 7)
+		range_bounds = RECT(x, y, 8, 8)
 		return
 	switch(dir)
 		if(EAST)
@@ -97,19 +97,20 @@
 	else
 		overlays += "[defense_type] uac_[sentry_type]"
 
-/obj/structure/machinery/defenses/sentry/attack_hand(mob/user as mob)
+
+/obj/structure/machinery/defenses/sentry/attack_hand_checks(var/mob/user)
 	if(immobile)
 		to_chat(user, SPAN_WARNING("[src]'s panel is completely locked, you can't do anything."))
-		return
+		return FALSE
 
-	..()
+	return TRUE
 
-/obj/structure/machinery/defenses/sentry/examine(mob/user)
+/obj/structure/machinery/defenses/sentry/get_examine_text(mob/user)
 	. = ..()
 	if(ammo)
-		to_chat(user, SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] rounds loaded."))
+		. += SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded.")
 	else
-		to_chat(user, SPAN_NOTICE("[src] is empty and needs to be refilled with ammo."))
+		. += SPAN_NOTICE("[src] is empty and needs to be refilled with ammo.")
 
 /obj/structure/machinery/defenses/sentry/power_on_action()
 	target = null
@@ -387,13 +388,13 @@
 	name = "UA-577 Gauss Turret"
 	immobile = TRUE
 	turned_on = TRUE
-	icon_state = "sentry_on"
+	icon_state = "premade" //for the map editor only
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 
-/obj/structure/machinery/defenses/sentry/premade/examine(mob/user)
+/obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it."))
+	. += SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it.")
 
 /obj/structure/machinery/defenses/sentry/premade/attackby(var/obj/item/O, var/mob/user)
 	return
@@ -416,7 +417,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 //the turret inside a static sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/deployable
 	name = "UA-633 Static Gauss Turret"
-	desc = "An fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
+	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
 	fire_delay = 1
@@ -436,6 +437,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 /obj/structure/machinery/defenses/sentry/premade/dropship
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
+	omni_directional = TRUE
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
@@ -515,13 +517,36 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 
 /obj/structure/machinery/defenses/sentry/launchable
 	name = "\improper UA 571-O sentry post"
-	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 1500-round drum magazine."
+	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 1500-round drum magazine.  Due to the deployment method it is incapable of being moved."
 	ammo = new /obj/item/ammo_magazine/sentry/dropped
 	faction_group = FACTION_LIST_MARINE
-	luminosity = 5
 	omni_directional = TRUE
 	immobile = TRUE
 	static = TRUE
+	var/obj/structure/machinery/camera/cas/linked_cam
+	var/static/sentry_count = 1
+	var/sentry_number
+
+/obj/structure/machinery/defenses/sentry/launchable/Initialize()
+	. = ..()
+	sentry_number = sentry_count
+	sentry_count++
+
+/obj/structure/machinery/defenses/sentry/launchable/Destroy()
+	QDEL_NULL(linked_cam)
+	. = ..()
+
+/obj/structure/machinery/defenses/sentry/launchable/power_on_action()
+	. = ..()
+	linked_cam = new(loc, "[name] [sentry_number] at [get_area(src)] ([obfuscate_x(x)], [obfuscate_y(y)])")
+
+/obj/structure/machinery/defenses/sentry/launchable/power_off_action()
+	. = ..()
+	QDEL_NULL(linked_cam)
+
+
+/obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(var/mob/user)
+	return TRUE // We want to be able to turn it on / off while keeping it immobile
 
 /obj/structure/machinery/defenses/sentry/launchable/handle_empty()
 	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!</span>")

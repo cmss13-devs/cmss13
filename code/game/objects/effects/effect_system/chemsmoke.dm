@@ -78,13 +78,13 @@
 	var/area/A = get_area(location)
 
 	var/where = "[A.name]|[location.x], [location.y]"
-	var/whereLink = "<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
+	var/whereLink = "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 
 	if(carry.my_atom.fingerprintslast)
 		var/mob/M = GLOB.directory[carry.my_atom.fingerprintslast]
 		var/more = ""
 		if(M)
-			more = "(<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[M]'>?</a>)"
+			more = "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[M]'>?</a>)"
 		message_staff("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast][more].")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 	else
@@ -125,6 +125,8 @@
 				proba = 75
 			else if(R.id in list("blood", "radium", "uranium"))
 				proba = 25
+			else if(istype(R, /datum/reagent/generated)) //ensures custom chemicals will apply turf effects
+				proba = 100
 
 			spawn(0)
 				for(var/i = 0, i < runs, i++)

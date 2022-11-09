@@ -1,0 +1,297 @@
+2021-12-01:
+  Morrow:
+  - bugfix: Fixes Invisible Logi Backpack on some maps
+  Nanu:
+  - tweak: Tweaks the Hornets dmg. Lowers the dmg to 20 per pellet. Increased the
+      bonus dmg stacks to 5%.
+  Stan_Albatross:
+  - bugfix: Planted c4 will no longer be moved by explosions.
+  forest2001:
+  - tweak: USS Almayer Lifeboats have swapped IDs, as they're currently the wrong
+      way round.
+2021-12-05:
+  alardun:
+  - tweak: AGM-F's Jagged Shrapnel projectiles are now significantly more accurate,
+      as their 'accuracy' is baked in the spray pattern rather than individual hit
+      chance.
+  - bugfix: (Actually from Nov 29th, 2021, but it wasn't properly included in there)
+      Airburst grenades, such as AGM-F and Hornet, no longer duplicates their guaranteed-hit
+      projectiles in certains circumstance (such as having ghosts observing you).
+2021-12-06:
+  Morrow:
+  - bugfix: No longer able to use sandstone to bypass construction checks.
+  - bugfix: Fixes doubled word on supply drop console
+  Segrain:
+  - bugfix: Carriers no longer can take both strains at once.
+  Stan_Albatross:
+  - bugfix: partially deconstructing or deconstructing the supply drop console will
+      no longer remove the squad restrictions on it or decrease the pad cooldowns.
+  - tweak: renamed the ASRS console's circuitboard to \"ASRS console\".
+  - tweak: Defibs are now bulky size when their paddles are out, like blowtorches.
+      Make sure to put their paddles back in to store them.
+  - tweak: Halved the cooldown for putting defib paddles in / out
+  TeDGamer:
+  - tweak: Fix sentry magazine size description
+2021-12-08:
+  forest2001:
+  - bugfix: Simplemob aliens have the right sprites now
+  sg2002:
+  - bugfix: \"Be marine if preference unavailable\" option now works again.
+2021-12-09:
+  forest2001:
+  - rscadd: Added the Dextrous trait, allowing mobs to not be affected by grab delay.
+  - tweak: You can now reinforce grab on any mob you can push, so long as it is your
+      size or smaller.
+2021-12-10:
+  Geeves:
+  - bugfix: Queens modifying build, slash, nesting, etc. perms will now send the message
+      to the correct hive. Humans evaccing will now be sent to all hives.
+  - rscadd: Setting Survivor to high will now change your preview character to a survivor
+      relevant to the current map.
+  - bugfix: Wielding two shields at once will no longer disable the slowdown.
+  - tweak: Observing and following a xeno will now always display only their current
+      name.
+  Geeves, Triiodine:
+  - rscadd: Adds the Dropship Crew Chief, a companion to the Pilot Officer. They are
+      capable of piloting the ship in the absence of the PO, but their main duty is
+      to maintain order in the dropship and assist the PO in maintaining their assigned
+      ship.
+  - tweak: PO now always has 2 slots, it lost its third slot, replaced by the two
+      DCC slots.
+  Morrow:
+  - tweak: Surgical Vest storage increased by 1 for Surgical Line
+  - rscadd: Adds Surgical Line to the MED APC's Surgical Cabinet
+  Nanu:
+  - tweak: M39 Nerf - ROF down to 450 from 600
+  - tweak: M39 Nerf - DMG on AP down to 24 from 28.
+  - tweak: M39 Nerf - DMG on HV down to 34 from 40.
+  - tweak: M39 Buff - Decreased the falloff to 8 from 10.
+  Segrain:
+  - bugfix: ASRS no longer randomly orders techweb versions of trauma/burn kits.
+  - bugfix: Trauma/burn kits now correctly apply their healing to the limb actually
+      being targeted.
+  - bugfix: Directly treating burn damage on limbs (advanced burn kits, surgically
+      tending wounds) no longer leaves behind phantom pain.
+  - bugfix: Using middle click to look into a pill bottle in a toggled medical belt
+      no longer takes out an invisible pill.
+  - bugfix: Making pills is now properly logged and no longer asks for a name that
+      is not going to be used.
+  - tweak: Cleaned the code for certain survivors improving research's clearance level,
+      removed deprecated code for CL's effects.
+  - bugfix: Custom flamethrower fuel now properly calculates its variable properties.
+  - bugfix: Producing custom incendiary/explosive chemicals now properly ignites/explodes
+      when created above sensitivity threshold (i.e. overdose amount).
+  - bugfix: Processing reagents now properly accounts for variable frequency of processing.
+  - bugfix: Metabolism frequency of most reagents is no longer off by a factor of
+      two.
+  - bugfix: Reagents now properly process their last dose in the body.
+  - bugfix: A.C.I.D. vests are once again constructed with wirecutters as advertised.
+  - bugfix: Crew monitoring computers no longer report mobs on admin z-level (e.g.
+      thunderdome).
+  Stan_Albatross:
+  - tweak: You no longer need piloting skill to cancel flybys, instead only needing
+      access to the console.
+  - tweak: Queens can no longer cancel flybys.
+  - tweak: Added a synth-specific version of the snow suit with no armour for the
+      snowflake vendor
+  - tweak: 'All synth specific exosuit/coat items (bomber jackets, synth snow suit,
+      synth external webbing, and windbreakers) can now hold the same items : analysers,
+      multitools, pipe painters, radios, t-ray scanners, crowbars, screwdrivers, welding
+      tools, wirecutters, wrenches, gas masks, flashlights, health analysers, hyposprays,
+      emergency oxygen tanks, pens, binoculars, and the crew monitor.'
+  - maptweak: you can no longer early weed on the metal tiles just outside the LZs
+      on LV-642.
+  TeDGamer:
+  - tweak: Fire spread should spawn a fire on dense tiles before stopping
+  - tweak: Resin structures ( non-special structures only for now ) take damage over
+      time while on fire
+  forest2001:
+  - rscadd: Added the SMMC paygrade.
+  insertnamehere123:
+  - bugfix: PlantBGone and other herbicides now kill weeds as intended.
+2021-12-11:
+  Geeves:
+  - bugfix: The LZ Detector now does what it says it does.
+  - bugfix: The WO mortars now properly have their camera set to the mortar channel.
+  - rscadd: Yautja now get a message when a hunting trap gets triggered.
+  - bugfix: Oppressor's abduct and tail lash no longer works through corners.
+  - tweak: Abduc and tail lash will now only spend plasma if the ability was cast
+      successfully.
+  - bugfix: Ceremonial daggers now start flaying immediately upon clicking on the
+      dead humanoid.
+  - bugfix: The universal recorder will now take the speaker's name from their voice
+      name, not their appearance name.
+  - tweak: 'The universal recorder now only works with set languages, any other languages
+      will have the speaker appear as unknown and the language will be scrambled.
+      Current known languages are: English, Japanese, Russian, Spacendeutchen, Spanish.'
+  - tweak: Bipods now only slows you down if you move or get moved while it's deployed.
+  Geeves, Triiodine:
+  - rscadd: Sandstone can now be used to create sandstone handrails in two variants,
+      flat and crenellated.
+  - rscadd: Added sandstone sheets to the pred ship.
+  Nancok:
+  - rscadd: 'nightmare mapgen, scenario and mapgen_variations files for all maps (except
+      generic, USS_Runtime and chinook)  '
+  - tweak: modified config of the maps to read the nightmare files
+  - tweak: allow medical storage rig to carry surgical line, reagent scanner, plant
+      analyzer
+  - tweak: 'allow lifesaver bag to carry reagent scanner and plant analyzer  '
+  - tweak: allow m804 heavygunner rig to carry wirecutters
+  Stan_Albatross:
+  - rscadd: Added the model 12 bolt-action rifle, a replacement for generic use of
+      bolt action rifles on maps.
+  - maptweak: Changed all the generic parent type bolt-action rifles on Shiva's Snowball
+      to model 12s.
+  - maptweak: replaced the old sprite style airlocks in marshalls and dorms on Solaris
+      Ridge with modern ones.
+2021-12-17:
+  Geeves:
+  - tweak: Improved the look of the GAU's hit particles.
+  - tweak: CAS now checks for skill, rather than job. Dropship weapons now have a
+      skill requirement. POs can use all types of weapons, while DCCs can use GAUs
+      and laser beam guns.
+  Nanu:
+  - maptweak: Updates Haunted House to tgm format
+  Stan_Albatross:
+  - rscadd: Added maturity (for cheese). Cooking cheese wheels in a microwave will
+      quickly mature them, but you need to add special reagents to mature it all the
+      way. All cheese maturities work in all recipes. Different maturities of cheese
+      will change its reagent contents alongside how strong it is.
+  - tweak: The recipe to produce cheese now makes immature cheese.
+  - maptweak: The cheese on the Almayer has been replaced by mature cheese.
+  - rscadd: Added a new nightmare insert for the armoury on LV, containing cheese,
+      and a note explaining the prescence of cheese.
+  forest2001:
+  - tweak: SEA had a base paygrade drop down to Gunnery Sergeant (Again)
+  - rscadd: SEAs can now choose a promotion path in preferences, Command path will
+      use the ranks they have currently (1stSGT & SGM) while technical path will use
+      MSGT and MGySGT.
+  - tweak: 'SEA time ranks are as follows: Grade 7 default, Grade 8 10 hours, Grade
+      9 70 hours.'
+2021-12-18:
+  Firartix:
+  - rscadd: Added flight ambience handling for tg shuttle backend
+  - soundadd: Added new idle and flying sound. They're very discreet.
+  Geeves:
+  - tweak: Tweaked a lot of the Shaman ability grammar to make more sense and be less
+      spammy.
+  - tweak: Shaman abilities now work for xenomorphs that are allied to their hive
+      as well.
+  - tweak: The range of the Shaman's Remember Pain ability is now seven tiles.
+  - rscadd: The Shaman now has the ability to choose when to use the remembered pain
+      via a toggle in the ability bar.
+  - tweak: The frenzied scream Shaman ability now uses a multi-xeno scream sound.
+  - rscadd: The Remember Pain Shaman ability now uses a new purple effect instead
+      of the already used blue one.
+  - rscadd: The Shaman can now see how strong their emitted pheromone aura is.
+  - bugfix: Removed the Shaman's hugger storage properly.
+  - tweak: The Shaman's Adrenal Healing ability has been renamed to Adrenal Shielding.
+  Nivrak:
+  - bugfix: ghosts of dead players now properly have their overlays again
+  Segrain:
+  - bugfix: Epinephrine injections no longer affect defibrillating synths.
+  - bugfix: Synths no longer can be injected at all.
+  - bugfix: Camera consoles in hangar control bubble once again look as they should.
+  - bugfix: Overdose threshold is once again properly treated as strict inequality.
+  forest2001:
+  - tweak: Working Joe preset is now using appropriate naming.
+  - tweak: Working Joe preset now has all access, loses special names and does not
+      spawn identical to a survivor synthetic.
+  - bugfix: MP Cadet can now use MP vendors!
+  - bugfix: Mobs can no longer enter disposal chutes.
+  - tweak: Disabling time-medals also now disables time-ranks.
+2021-12-19:
+  Segrain:
+  - bugfix: Groundside operations' console once again has its access requirement.
+2021-12-20:
+  Geeves:
+  - rscadd: Huggers held in-hand will no longer die if you're a Carrier.
+2021-12-21:
+  Geeves:
+  - rscadd: You can now holster bananas in shoulder holsters.
+  - rscadd: Added the ability to hide job gear in the character creation menu, as
+      well as cycle through some background images for contrast. You can also rotate
+      the character by clicking on the blue arrows around them.
+  Nanu:
+  - tweak: Tweaks the Christmas Decorator to start earlier.
+  - tweak: The meals sent on-board the USS Almayer have gotten a touch of Christmas
+      Sprinkling.
+  Segrain:
+  - bugfix: Photos taken at the edge of user's view no longer cut off into darkness.
+2021-12-22:
+  50RemAndCounting:
+  - rscadd: Added a new variant of the M3A1 Synthetic Utility Vest which changes colour
+      depending on the map (Mission-specific camo patterns), selectable alongside
+      the existing gray vest.
+  - tweak: Moved the Hazard Vest and the labcoats from the Synthetic Gear Vendor to
+      the Snowflake Vendor.
+  Geeves:
+  - rscadd: Elder Yautja can now set their communicator's volume at will, it starts
+      quiet, like all communicators.
+  Geeves, Triiodine:
+  - tweak: Pylons have been replaced by Hive Clusters, they have the exact same effects
+      as pylons, except they don't block mortars and CAS. They are much cheaper to
+      make and maintain, however. Placing a construction node costs 400 plasma, completing
+      it costs 500. Repairing it costs 300.
+  Nancok:
+  - tweak: 'Reduced time required to clear snow as xeno to 12 ticks (down from 25)  '
+  Nanu:
+  - tweak: The throwing knive has had its damage reduced to 75dmg on un-armored xenos.
+  - tweak: 'The MOU has been moved from the squad vendors to req. '
+  - tweak: Increases the fire delay to 1.5 from 0.5 when un-cloaking as a scout spec.
+  Segrain:
+  - bugfix: Destroying a powerloader no longer annihilates everything it was carrying.
+  - bugfix: Working Joes are old generation once again.
+  Triiodine:
+  - maptweak: The Almayer is now festive. Please do not spike the eggnog like last
+      year.
+  forest2001:
+  - tweak: Renamed /datum/job/distress to /datum/job/special
+  - bugfix: Warden and Admirals now have functional sechud icons again.
+  - tweak: Categorised the hud.dmi file, as it was a complete mess. Ordered security
+      and squad huds to be all in the same order.
+  - tweak: Changed icon names for squad hud and sec hud to be easily distinguished.
+  - tweak: Renamed the hud_icons.dmi file to hud_yautja.dmi, as it only contained
+      Yautja related hud icons.
+  monkeysfist:
+  - rscadd: Added \"Vote No\" poster to CL office.
+2021-12-24:
+  Frans_Feiffer:
+  - tweak: The sleeves of the CO's base uniform are now rollable.
+  - tweak: The CO Jackets shoulders have been altered; they shouldn't be as broad
+      as they were before.
+  - imageadd: Resprited the CO Bomber Jacket, made it possible to unbutton the Jacket
+      as well.
+  - imageadd: 'Resprited the last of the legacy CO uniforms, that way they fit in
+      with the rest. '
+2021-12-25:
+  Nivrak:
+  - tweak: Marines in WO now have an extra 2 minutes to prepare
+  - tweak: Nerfed overall amount of xenos in WO (especially boilers), In return waves
+      now spawn continuously
+  - bugfix: Fixed bioscan announce in WO
+  - tweak: In WO the round will result in a marine victory 10 minutes after the last
+      wave, this overall means marines have to hold for much less time
+  - rscadd: Added some fluff story announces before the first wave which also tell
+      you how much time you have left to prepare, credit to Firartix
+  - tweak: Instead of spawning massive amounts of xenos in WO, players can now choose
+      from a list of available castes and spawn by demand
+  - rscadd: WO Honor guards now have minimedic level of medical skill to use medHUD
+      glasses while using overwatch consoles
+  - rscadd: Added an empty pressurized reagent pouch in the medic vendor for 3 points,
+      Mainly for WO as they dont get their usual vendor
+  - rscadd: Added welder-satchels to WO vendors
+  - rscadd: 'Changed Mortar Crews headset to a unique one which has the following
+      channels: Engineering, JTAC, Tactics, Req - Credit to Nanu'
+  - tweak: The mortars in WO are now buffed to have less falloff over long distances
+  - tweak: Tweaked some WO gear presets - Credit to Nanu
+  - bugfix: Picking a strain as a xeno in WO will no longer remove the xeno health
+      reduction from WO
+  - rscadd: WO is now voteable every 5 rounds.
+  - bugfix: Fixed some bugs related to WO
+  Triiodine:
+  - maptweak: Remapped Whiskey Outpost
+2021-12-28:
+  50RemAndCounting:
+  - tweak: Fixed mission-specific camo M3A1 Synthetic Utility Vest variant honking,
+      fixed white t-shirt and brown slacks synth uniform inconsistencies.

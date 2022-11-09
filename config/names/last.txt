@@ -80,6 +80,7 @@ Burris
 Buzzard
 Byers
 Bynum
+Cabrera
 Caldwell
 Callison
 Camp
@@ -124,8 +125,12 @@ Davis
 Dawkins
 Day
 De La Cruz
+De La Huerta
 De La Rosa
+De La Torre
+De La Vega
 Dean
+Delao
 Delgado
 Demuth
 Dennis
@@ -241,12 +246,14 @@ Houser
 Houston
 Howard
 Howe
+Huerta
 Huey
 Hughes
 Hunt
 Hunter
 Hutton
 Hynes
+Iglesias
 Ironmonger
 Isemann
 Jackson
@@ -489,6 +496,7 @@ Schofield
 Schrader
 Scott
 Seidner
+Serrano
 Shafer
 Shaffer
 Shane
@@ -563,6 +571,7 @@ Valdez
 Vanleer
 Vargas
 Vega
+Velasco
 Waldron
 Walker
 Wallick

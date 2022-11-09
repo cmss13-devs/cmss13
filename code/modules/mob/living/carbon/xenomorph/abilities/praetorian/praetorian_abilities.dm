@@ -103,12 +103,12 @@
 		to_chat(X, SPAN_WARNING("You will now throw marines with your cleave."))
 
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 
 ////////// Oppressor powers
 /datum/action/xeno_action/activable/prae_abduct
 	name = "Abduct"
-	action_icon_state = "stomp"
+	action_icon_state = "abduct"
 	ability_name = "abduct"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -174,13 +174,13 @@
 
 	var/click_miss_cooldown = 15
 
-/datum/action/xeno_action/activable/prae_dodge
+/datum/action/xeno_action/onclick/prae_dodge
 	name = "Dodge"
 	action_icon_state = "prae_dodge"
 	ability_name = "dodge"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_dodge
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	plasma_cost = 200
 	xeno_cooldown = 190
 
@@ -298,15 +298,15 @@
 
 	var/debuff_cost = 100
 
-	var/curr_effect_type = WARDEN_HEAL_SHIELD
+	var/curr_effect_type = WARDEN_HEAL_HP
 
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type
 	name = "Toggle Heal Type"
-	action_icon_state = "warden_shield" // default = shield
+	action_icon_state = "warden_heal" // default = heal
 	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_heal_types
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -325,20 +325,30 @@
 	if (!istype(WH))
 		return
 
-	if (WH.curr_effect_type == WARDEN_HEAL_SHIELD)
-		action_icon_result = "warden_heal"
-		WH.curr_effect_type = WARDEN_HEAL_HP
-		to_chat(X, SPAN_XENOWARNING("You will now protect your allies with a heal!"))
-
-	else if (WH.curr_effect_type == WARDEN_HEAL_HP)
+	if (WH.curr_effect_type == WARDEN_HEAL_HP)
 		action_icon_result = "warden_rejuvenate"
 		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
 		to_chat(X, SPAN_XENOWARNING("You will now protect your allies by rejuvenating them!"))
 
 	else
-		action_icon_result = "warden_shield"
-		WH.curr_effect_type = WARDEN_HEAL_SHIELD
-		to_chat(X, SPAN_XENOWARNING("You will now protect your allies by increasing their resilience from afar!"))
+		action_icon_result = "warden_heal"
+		WH.curr_effect_type = WARDEN_HEAL_HP
+		to_chat(X, SPAN_XENOWARNING("You will now protect your allies with a heal!"))
 
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
+
+/datum/action/xeno_action/activable/prae_retrieve
+	name = "Retrieve"
+	action_icon_state = "retrieve"
+	ability_name = "retrieve"
+	macro_path = /datum/action/xeno_action/verb/verb_prae_retrieve
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 100
+	plasma_cost = 180
+
+	// Config
+	var/max_distance = 7
+	var/windup = 6
+	var/retrieve_cost = 100

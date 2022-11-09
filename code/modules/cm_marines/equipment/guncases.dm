@@ -95,6 +95,37 @@
 	new /obj/item/storage/box/packet/hornet(src)
 
 //------------
+//R4T lever action rifle
+/obj/item/storage/box/guncase/r4t_scout
+	name = "\improper R4T lever action rifle case"
+	desc = "A gun case containing the R4T lever action rifle, intended for scouting. Comes with an ammunition belt, the optional revolver attachment for it, two boxes of ammunition, a sling, and a stock for the rifle."
+	storage_slots = 7
+	can_hold = list(/obj/item/weapon/gun/lever_action/r4t, /obj/item/attachable/stock/r4t, /obj/item/attachable/magnetic_harness/lever_sling, /obj/item/ammo_magazine/lever_action, /obj/item/ammo_magazine/lever_action/training, /obj/item/storage/belt/shotgun/lever_action, /obj/item/storage/belt/gun/m44/lever_action/attach_holster, /obj/item/device/motiondetector/m717)
+
+/obj/item/storage/box/guncase/r4t_scout/fill_preset_inventory()
+	new /obj/item/weapon/gun/lever_action/r4t(src)
+	new /obj/item/attachable/stock/r4t(src)
+	new /obj/item/attachable/magnetic_harness/lever_sling(src)
+	new /obj/item/ammo_magazine/lever_action(src)
+	new /obj/item/ammo_magazine/lever_action(src)
+	new /obj/item/storage/belt/shotgun/lever_action(src)
+	new /obj/item/storage/belt/gun/m44/lever_action/attach_holster(src)
+
+/obj/item/storage/box/guncase/xm88
+	name = "\improper XM88 heavy rifle case"
+	desc = "A gun case containing the XM88 Heavy Rifle, a prototype weapon designed for use against heavily armored infantry targets and light vehicles. Contains an ammunition belt, two boxes of ammunition, the XS-9 Targeting Relay attachment, and the stock for the rifle."
+	storage_slots = 6
+	can_hold = list(/obj/item/weapon/gun/lever_action/xm88, /obj/item/attachable/stock/xm88, /obj/item/attachable/scope/mini/xm88, /obj/item/ammo_magazine/lever_action/xm88, /obj/item/storage/belt/shotgun/xm88)
+
+/obj/item/storage/box/guncase/xm88/fill_preset_inventory()
+	new /obj/item/weapon/gun/lever_action/xm88(src)
+	new /obj/item/attachable/stock/xm88(src)
+	new /obj/item/attachable/scope/mini/xm88(src)
+	new /obj/item/ammo_magazine/lever_action/xm88(src)
+	new /obj/item/ammo_magazine/lever_action/xm88(src)
+	new /obj/item/storage/belt/shotgun/xm88(src)
+
+//------------
 /obj/item/storage/box/guncase/flamer
 	name = "\improper M240 incinerator case"
 	desc = "A gun case containing the M240A1 incinerator unit. It does come loaded, but you'll still have to find extra tanks as you go."
@@ -140,3 +171,34 @@
 	new /obj/item/ammo_magazine/m2c(src)
 	new /obj/item/storage/belt/marine/m2c(src)
 
+//------------
+/obj/item/storage/box/guncase/m41a
+	name = "\improper M41A pulse rifle MK2 case"
+	desc = "A gun case containing the M41A pulse rifle MK2."
+	storage_slots = 5
+	can_hold = list(/obj/item/weapon/gun/rifle/m41a, /obj/item/ammo_magazine/rifle)
+
+/obj/item/storage/box/guncase/m41a/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41a(src)
+	for(var/i = 1 to 4)
+		new /obj/item/ammo_magazine/rifle(src)
+	
+	
+//------------
+/obj/item/storage/box/guncase/pumpshotgun
+	name = "\improper M37A2 Pump Shotgun case"
+	desc = "A gun case containing the M37A2 Pump Shotgun."
+	storage_slots = 4
+	can_hold = list(/obj/item/weapon/gun/shotgun/pump, /obj/item/ammo_magazine/shotgun/buckshot, /obj/item/ammo_magazine/shotgun/flechette, /obj/item/ammo_magazine/shotgun/slugs)
+
+/obj/item/storage/box/guncase/pumpshotgun/fill_preset_inventory()
+	new /obj/item/weapon/gun/shotgun/pump(src)
+	for(var/i = 1 to 3)
+		var/random_pick = rand(1, 3)
+		switch(random_pick)
+			if(1)
+				new /obj/item/ammo_magazine/shotgun/buckshot(src)
+			if(2)
+				new /obj/item/ammo_magazine/shotgun/flechette(src)
+			if(3)
+				new /obj/item/ammo_magazine/shotgun/slugs(src)

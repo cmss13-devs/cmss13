@@ -486,14 +486,14 @@
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_cave_cas)
 "bP" = (
 /obj/item/tank/air,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_cave_cas)
 "bQ" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
@@ -586,14 +586,14 @@
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_cave_cas)
 "ci" = (
 /obj/item/tool/warning_cone,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_cave_cas)
 "cj" = (
 /obj/item/tool/pickaxe,
 /turf/open/floor,
@@ -607,7 +607,7 @@
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_cave_cas)
 "cl" = (
 /turf/open/floor{
 	dir = 1;
@@ -635,9 +635,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "nk" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris,
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_plant)
 "np" = (
 /obj/item/tank/air,
 /turf/open/floor,
@@ -648,13 +648,13 @@
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_cave_cas)
 "zu" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_cave_cas)
 "Ms" = (
 /obj/structure/machinery/computer3/server/rack,
 /obj/effect/decal/warning_stripes{
@@ -665,21 +665,21 @@
 /area/bigredv2/outside/filtration_plant)
 "Qx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_plant)
 "Rv" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_plant)
 "TX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -695,7 +695,7 @@
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_cave_cas)
 "US" = (
 /turf/open/floor{
 	dir = 8;
@@ -714,12 +714,12 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "WD" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/filtration_cave_cas)
 "XC" = (
 /obj/structure/cargo_container{
 	icon_state = "red 2,0";

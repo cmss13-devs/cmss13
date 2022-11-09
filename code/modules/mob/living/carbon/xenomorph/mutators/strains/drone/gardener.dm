@@ -8,28 +8,34 @@
 		/datum/action/xeno_action/activable/secrete_resin,
 		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
-		/datum/action/xeno_action/activable/transfer_plasma,
-		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/activable/transfer_plasma
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/resin_surge, //second macro
-		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, //third macro
-		/datum/action/xeno_action/onclick/change_fruit //fourth macro
-		)
+		/datum/action/xeno_action/onclick/plant_weeds/gardener, // second macro
+		/datum/action/xeno_action/activable/resin_surge, // third macro
+		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, // fourth macro
+		/datum/action/xeno_action/onclick/change_fruit
+	)
 	keystone = TRUE
 
-/datum/xeno_mutator/gardener/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/gardener/apply_mutator(datum/mutator_set/individual_mutators/mutator)
 	. = ..()
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
-	D.mutation_type = DRONE_GARDENER
-	D.max_placeable = 3
-	mutator_update_actions(D)
-	MS.recalculate_actions(description, flavor_description)
-	D.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
-	D.available_placeable = list("Greater Resin Fruit", "Unstable Resin Fruit", "Spore Resin Fruit")
+	var/mob/living/carbon/Xenomorph/Drone/drone = mutator.xeno
+	drone.mutation_type = DRONE_GARDENER
+	drone.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed, /obj/effect/alien/resin/fruit/plasma)
+	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
+	drone.max_placeable = 6
+	mutator_update_actions(drone)
+	// Also change the primacy value for our place construction ability (because we want it in the same place but have another primacy ability)
+	for(var/datum/action/xeno_action/action in drone.actions)
+		if(istype(action, /datum/action/xeno_action/activable/place_construction))
+			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
+			break // Don't need to keep looking
+	mutator.recalculate_actions(description, flavor_description)
+	drone.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
 	name = "Plant Resin Fruit (50)"
@@ -43,9 +49,9 @@
 	var/health_cost = 50
 
 /datum/action/xeno_action/onclick/plant_resin_fruit/greater
-	name = "Plant Greater Resin Fruit (100)"
+	name = "Plant Resin Fruit (100)"
 	plasma_cost = 100
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/verb/plant_resin_fruit()
 	set category = "Alien"
@@ -88,40 +94,27 @@
 		return
 
 	if (check_and_use_plasma_owner())
-		if(length(X.current_placeable) >= X.max_placeable)
+		if(length(X.current_fruits) >= X.max_placeable)
 			to_chat(X, SPAN_XENOWARNING("You cannot sustain another fruit, one will wither away to allow this one to live!"))
-			var/obj/effect/alien/resin/fruit/old_fruit = X.current_placeable[1]
-			X.current_placeable.Remove(old_fruit)
+			var/obj/effect/alien/resin/fruit/old_fruit = X.current_fruits[1]
+			X.current_fruits.Remove(old_fruit)
 			qdel(old_fruit)
 
 		X.visible_message(SPAN_XENONOTICE("\The [X] secretes fluids and shape it into a fruit!"), \
 		SPAN_XENONOTICE("You secrete a portion of your vital fluids and shape it into a fruit!"), null, 5)
 
-		var/to_place_text = X.available_placeable[X.selected_placeable_index]
-		var/placed = null
-		switch(to_place_text)
-			if("Lesser Resin Fruit")
-				placed = new /obj/effect/alien/resin/fruit(W.loc, W, X)
-			if("Greater Resin Fruit")
-				placed = new /obj/effect/alien/resin/fruit/greater(W.loc,W, X)
-			if("Unstable Resin Fruit")
-				placed = new /obj/effect/alien/resin/fruit/unstable(W.loc, W, X)
-			if("Spore Resin Fruit")
-				placed = new /obj/effect/alien/resin/fruit/spore(W.loc, W, X)
-		if(!placed)
+		var/obj/effect/alien/resin/fruit/fruit = new X.selected_fruit(W.loc, W, X)
+		if(!fruit)
 			to_chat(X, SPAN_XENOHIGHDANGER("Couldn't find the fruit to place! Contact a coder!"))
 			return
 		X.adjustBruteLoss(health_cost)
 		X.updatehealth()
 		playsound(X.loc, "alien_resin_build", 25)
-		X.current_placeable.Add(placed)
+		X.current_fruits.Add(fruit)
 
-		var/number_of_fruit = length(X.current_placeable)
+		var/number_of_fruit = length(X.current_fruits)
+		button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
 		update_button_icon()
-		if(number_of_fruit > 1)
-			button.overlays -= "+stack_[number_of_fruit-1]"
-
-		button.overlays += "+stack_[number_of_fruit]"
 
 	apply_cooldown()
 	..()
@@ -130,37 +123,99 @@
 
 /datum/action/xeno_action/onclick/change_fruit
 	name = "Change Fruit"
-	action_icon_state = "fruit_greater"
+	action_icon_state = "blank"
 	ability_name = "change fruit"
 	plasma_cost = 0
 	xeno_cooldown = 0
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
-/datum/action/xeno_action/onclick/change_fruit/New()
-	..()
+/datum/action/xeno_action/onclick/change_fruit/give_to(mob/living/carbon/Xenomorph/xeno)
+	. = ..()
+
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hostiles/fruits.dmi', action_icon_state)
+	button.overlays += image(icon_file, button, action_icon_state)
+	button.overlays += image('icons/mob/hostiles/fruits.dmi', button, initial(xeno.selected_fruit.mature_icon_state))
 
 /datum/action/xeno_action/onclick/change_fruit/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	X.selected_placeable_index++
-	if(X.selected_placeable_index > length(X.available_placeable))
-		X.selected_placeable_index = 1
-	to_chat(X, SPAN_XENO("You will plant [X.available_placeable[X.selected_placeable_index]]"))
-	button.overlays.Cut()
-	var/fruit_icon = "fruit_lesser"
-	switch(X.available_placeable[X.selected_placeable_index])
-		if("Lesser Resin Fruit")
-			fruit_icon = "fruit_lesser"
-		if("Greater Resin Fruit")
-			fruit_icon = "fruit_greater"
-		if("Unstable Resin Fruit")
-			fruit_icon = "fruit_unstable"
-		if("Spore Resin Fruit")
-			fruit_icon = "fruit_spore"
-	button.overlays += image('icons/mob/hostiles/fruits.dmi', fruit_icon)
+	if(!X.check_state())
+		return
+
+	tgui_interact(X)
+	return ..()
+
+/datum/action/xeno_action/onclick/change_fruit/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/choose_fruit))
+
+/datum/action/xeno_action/onclick/change_fruit/ui_static_data(mob/user)
+	var/mob/living/carbon/Xenomorph/X = user
+	if(!istype(X))
+		return
+
+	. = list()
+
+	var/list/fruits = list()
+	for(var/obj/effect/alien/resin/fruit/fruit as anything in X.available_fruits)
+		var/list/entry = list()
+
+		entry["name"] = initial(fruit.name)
+		entry["desc"] = initial(fruit.desc)
+		entry["image"] = replacetext(initial(fruit.mature_icon_state), " ", "-")
+		entry["id"] = "[fruit]"
+		fruits += list(entry)
+
+	.["fruits"] = fruits
+
+/datum/action/xeno_action/onclick/change_fruit/ui_data(mob/user)
+	var/mob/living/carbon/Xenomorph/X = user
+	if(!istype(X))
+		return
+
+	. = list()
+	.["selected_fruit"] = X.selected_fruit
+
+
+/datum/action/xeno_action/onclick/change_fruit/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChooseFruit", "Choose Fruit")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/action/xeno_action/onclick/change_fruit/Destroy()
+	SStgui.close_uis(src)
+	return ..()
+
+/datum/action/xeno_action/onclick/change_fruit/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/action/xeno_action/onclick/change_fruit/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/Xenomorph/X = usr
+	if(!istype(X))
+		return
+
+	switch(action)
+		if("choose_fruit")
+			var/selected_type = text2path(params["type"])
+			if(!(selected_type in X.available_fruits))
+				return
+
+			var/obj/effect/alien/resin/fruit/fruit = selected_type
+			to_chat(X, SPAN_NOTICE("You will now build <b>[initial(fruit.name)]\s</b> when secreting resin."))
+			//update the button's overlay with new choice
+			button.overlays.Cut()
+			button.overlays += image(icon_file, button, action_icon_state)
+			button.overlays += image('icons/mob/hostiles/fruits.dmi', button, initial(fruit.mature_icon_state))
+			X.selected_fruit = selected_type
+			. = TRUE
+		if("refresh_ui")
+			. = TRUE
 
 /*
 	Resin Surge
@@ -174,11 +229,11 @@
 	xeno_cooldown = 10 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	var/channel_in_progress = FALSE
 	var/max_range = 7
 
-/datum/action/xeno_action/activable/resin_surge/use_ability(atom/A)
+/datum/action/xeno_action/activable/resin_surge/use_ability(atom/A, mods)
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (!istype(X))
 		return
@@ -186,12 +241,20 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!X.check_state(TRUE))
 		return
 
-	if (!can_see(X, A, max_range))
-		to_chat(X, SPAN_XENODANGER("You cannot see that location!"))
+	if(mods["click_catcher"])
 		return
+
+	if(ismob(A)) // to prevent using thermal vision to bypass clickcatcher
+		if(!can_see(X, A, max_range))
+			to_chat(X, SPAN_XENODANGER("You cannot see that location!"))
+			return
+	else
+		if(get_dist(X, A) > max_range)
+			to_chat(X, SPAN_WARNING("That's too far away!"))
+			return
 
 	if (!check_and_use_plasma_owner())
 		return
@@ -219,7 +282,7 @@
 				break
 
 		if(!buff_already_present)
-			new /datum/effects/xeno_structure_reinforcement(structure_to_buff, X, ttl = 3 SECONDS)
+			new /datum/effects/xeno_structure_reinforcement(structure_to_buff, X, ttl = 15 SECONDS)
 			X.visible_message(SPAN_XENODANGER("\The [X] surges the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), \
 			SPAN_XENONOTICE("You surge the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), null, 5)
 		else
@@ -271,4 +334,27 @@
 	set name = "Resin Surge"
 	set hidden = 1
 	var/action_name = "Resin Surge"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/onclick/plant_weeds/gardener
+	name = "Plant Hardy Weeds (125)"
+	ability_name = "Plant Hardy Weeds"
+	action_icon_state = "plant_gardener_weeds"
+	plasma_cost = 125
+	macro_path = /datum/action/xeno_action/verb/verb_plant_gardening_weeds
+	xeno_cooldown = 2 MINUTES
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	node_type = /obj/effect/alien/weeds/node/gardener
+
+/obj/effect/alien/weeds/node/gardener
+	spread_on_semiweedable = TRUE
+	block_structures = BLOCK_SPECIAL_STRUCTURES
+	fruit_growth_multiplier = 0.8
+
+/datum/action/xeno_action/verb/verb_plant_gardening_weeds()
+	set category = "Alien"
+	set name = "Plant Hardy Weeds"
+	set hidden = 1
+	var/action_name = "Plant Hardy Weeds (125)"
 	handle_xeno_macro(src, action_name)

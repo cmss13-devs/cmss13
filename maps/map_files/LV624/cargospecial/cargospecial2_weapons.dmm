@@ -12,11 +12,11 @@
 /turf/closed/wall,
 /area/lv624/lazarus/quartstorage)
 "q" = (
-/obj/item/ammo_magazine/smg/mp7,
+/obj/item/ammo_magazine/smg/mp27,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "t" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "B" = (
@@ -45,12 +45,12 @@
 /area/lv624/lazarus/quartstorage)
 "U" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_magazine/smg/mp7,
-/obj/item/ammo_magazine/smg/mp7,
-/obj/item/weapon/gun/shotgun/double{
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/weapon/gun/shotgun/double/with_stock{
 	pixel_y = -4
 	},
-/obj/item/weapon/gun/smg/mp7{
+/obj/item/weapon/gun/smg/mp27{
 	pixel_y = 8
 	},
 /turf/open/floor/vault,

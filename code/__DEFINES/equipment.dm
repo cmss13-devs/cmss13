@@ -45,6 +45,7 @@
 #define ITEM_OVERRIDE_NORTHFACE	(1<<10) // For backpacks if they should have unique layering functions
 #define CAN_DIG_SHRAPNEL		(1<<11) // whether activating it digs shrapnel out of the user and striking others with medical skills can dig shapnel out of other people.
 #define ANIMATED_SURGICAL_TOOL	(1<<12) // whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
+#define NOTABLEMERGE			(1<<13) // The item goes on top of tables, instead of into them with the overlay system
 
 //==========================================================================================
 
@@ -172,7 +173,6 @@
 #define WEAR_L_EAR			"wear_l_ear"
 #define WEAR_R_EAR			"wear_r_ear"
 #define WEAR_BODY			"w_uniform"
-#define WEAR_LEGS			"legs"
 #define WEAR_FEET			"shoes"
 #define WEAR_HANDS			"gloves"
 #define WEAR_WAIST			"belt"
@@ -200,6 +200,76 @@
 #define WEAR_IN_R_STORE     "in_r_store"
 #define WEAR_IN_SHOES		"in_shoes"
 
+// Contained Sprites
+#define WORN_LHAND	"_lh"
+#define WORN_RHAND	"_rh"
+#define WORN_LSTORE	"_ls"
+#define WORN_RSTORE "_rs"
+#define WORN_SSTORE "_ss"
+#define WORN_LEAR 	"_le"
+#define WORN_REAR 	"_re"
+#define WORN_HEAD 	"_he"
+#define WORN_UNDER 	"_un"
+#define WORN_SUIT 	"_su"
+#define WORN_GLOVES	"_gl"
+#define WORN_SHOES	"_sh"
+#define WORN_EYES	"_ey"
+#define WORN_BELT	"_be"
+#define WORN_BACK	"_ba"
+#define WORN_ID		"_id"
+#define WORN_MASK	"_ma"
+
+GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
+	WEAR_L_HAND = WORN_LHAND,
+	WEAR_R_HAND = WORN_RHAND,
+	WEAR_L_STORE = WORN_LSTORE,
+	WEAR_R_STORE = WORN_RSTORE,
+	WEAR_J_STORE = WORN_SSTORE,
+	WEAR_L_EAR = WORN_LEAR,
+	WEAR_R_EAR = WORN_REAR,
+	WEAR_HEAD = WORN_HEAD,
+	WEAR_BODY = WORN_UNDER,
+	WEAR_JACKET = WORN_SUIT,
+	WEAR_HANDS = WORN_GLOVES,
+	WEAR_FEET = WORN_SHOES,
+	WEAR_EYES = WORN_EYES,
+	WEAR_WAIST = WORN_BELT,
+	WEAR_BACK = WORN_BACK,
+	WEAR_ID = WORN_ID,
+	WEAR_FACE = WORN_MASK
+))
+
+/proc/slotdefine2slotbit(slotdefine)
+	. = NO_FLAGS
+	switch(slotdefine)
+		if(WEAR_ID)
+			. = SLOT_ID
+		if(WEAR_L_EAR, WEAR_R_EAR)
+			. = SLOT_EAR
+		if(WEAR_BODY)
+			. = SLOT_ICLOTHING
+		if(WEAR_FEET)
+			. = SLOT_FEET
+		if(WEAR_HANDS)
+			. = SLOT_HANDS
+		if(WEAR_WAIST)
+			. = SLOT_WAIST
+		if(WEAR_JACKET)
+			. = SLOT_OCLOTHING
+		if(WEAR_EYES)
+			. = SLOT_EYES
+		if(WEAR_FACE)
+			. = SLOT_FACE
+		if(WEAR_HEAD)
+			. = SLOT_HEAD
+		if(WEAR_BACK)
+			. = SLOT_BACK
+		if(WEAR_L_STORE, WEAR_R_STORE)
+			. = SLOT_STORE
+		if(WEAR_ACCESSORY)
+			. = SLOT_ACCESSORY
+		if(WEAR_J_STORE)
+			. = SLOT_SUIT_STORE
 
 //=================================================
 
@@ -304,6 +374,7 @@
 #define ACCESSORY_SLOT_RANK     "Rank"
 #define ACCESSORY_SLOT_DECOR    "Decor"
 #define ACCESSORY_SLOT_MEDAL    "Medal"
+#define ACCESSORY_SLOT_PONCHO	"Ponchos"
 #define ACCESSORY_SLOT_ARMOR_C  "Chest armor"			//Used for uniform armour inserts.
 #define ACCESSORY_SLOT_ARMOR_A  "Arm armor"
 #define ACCESSORY_SLOT_ARMOR_L  "Leg armor"

@@ -1,0 +1,481 @@
+2019-09-02:
+  Aceluke:
+  - maptweak: Remapped Almayer Requisitions, giving the RO a bedroom and fixing some
+      floor tiles.
+  - rscadd: Finally gave Requisitions weapons in their armory.
+  - maptweak: Replaced the barricades in all requisitions lines with railings alongside
+      added some to the elevated briefing.
+  - maptweak: Added more Dropship Crash locations.
+  - maptweak: Remapped Almayer upper and lower Engineering.
+  - maptweak: Fixed some floor tiles on the Almayer and removed a misplaced table
+      in charlie prep.
+  - maptweak: Remapped Briefing to give it elevation above marines, meant to resemble
+      a stage.
+  - maptweak: Removed the pipes between the upper and lower z-levels on ice
+  - bugfix: Fixed a camera in lower southern security on the almayer
+  Atebite:
+  - tweak: Airlock, APC and vendor Wires are no longer randomized
+  - tweak: Wire panels have been updated to use NanoUI
+  - rscdel: Signalers can no longer be used with airlocks
+  - rscadd: Xenomorphs can now self-deevolve once per life. Self-deevolving xenomorphs
+      can deevolve into larvas
+  - rscadd: The tank can now open doors by driving into them, given that the door
+      is wide enough for the tank to fit through and that the driver/gunner has access
+  - rscadd: Specially, the tank can open the southern dropship doors
+  Cakey:
+  - bugfix: Fixed held items appearing while cloaked.
+  - rscdel: Emergency cryo troops has been removed as a DEFCON reward.
+  - rscdel: Lowered the cryo troops DEFCON reward by 1.
+  - rscdel: Spec kits will no longer spawn via ASRS.
+  - tweak: ASRS Ammunition values have been tweaked slightly.
+  - rscdel: The specialist grenade launcher will now fire slower when using a mini-scope,
+      as well as require standing still to activate.
+  - rscadd: Player statistics are here! Players can now view tracked statistics within
+      the round related to personal and global entities. You can view these statistics
+      via the statistics panel, found in the lobby menu (after round start), or by
+      using Show-Statistics in the Ghost tab (you can't view stats while alive). Statistics
+      include, but are not limited to, Job stats, Caste stats, Weapon stats, Kills,
+      Deaths, Screams, Steps Walked, Lives Saved, and much more.
+  - rscadd: Added the kill feed panel, where you can view the kill feed update in
+      real time as an observer by using Show-Kill-Feed in the Ghost tab.
+  - rscadd: Kills, Deaths and Player damage will now track their source, which includes
+      but is not limited to, gunshots, slashes, grenades, OBs, CAS fire, mortars,
+      chemicals, chemical overdoses, fire, gibs, suicides, russian roulette shots,
+      melee weapon hits, fisticuffs, and decapitation.
+  - rscadd: Ghosts will now be able to see deaths via the dead-chat kill-feed, which
+      will display who died, where, and how.
+  - rscadd: All projectiles will now track their source, including explosion shrapnel,
+      OBs, Mortars, CAS weapons, and Tank weapons.
+  - rscadd: All chemicals will now track their source, and kills via overdose will
+      be tracked back to the injector.
+  - rscadd: Explosions will now track their source, and generate logs appropriately.
+  - rscadd: Added round-end random facts, which will give random tidbits regarding
+      the round statistics.
+  - rscadd: Re-added Flanders Fields to the end-round messages.
+  - rscadd: Each round will now aut-generate a random operation name. This will be
+      used on round-start and in the statistics panel.
+  - tweak: Synthetics can no longer prime harmful grenades.
+  Foolosopher:
+  - bugfix: Xeno corpses will now show up in pictures
+  Fourkhan:
+  - bugfix: Fixed some cases where clipping through an unclimbable object would be
+      possible with the help of a barricade.
+  RavingManiac:
+  - rscadd: Explosions should transmit across levels through stairs and ladders. Magic.
+  - tweak: Spall from explosions is now called 'spall' instead of 'light shrapnel'.
+  Retrokinesis:
+  - bugfix: You can no longer destroy the portable comms terminal with a wrench.
+  Slywater:
+  - experiment: Implemented a new Z-level transition system to better suit combat
+      and movement across levels.
+  - rscadd: Added stairs to both sides of medbay.
+  - rscadd: Added stairs above Alpha prep, and below Delta prep.
+  - tweak: Ghosts can travel up stairs by moving onto the lighter side, and travel
+      down stairs by moving onto the darker side.
+  TheDonkified:
+  - bugfix: Fixing a ruptured/damaged lung will now actually stop you from suffocating
+      in addition to allowing anesthetics to work during surgery. You DO NOT have
+      to take off and put on anesthetic tanks after repairing a ruptured lung, your
+      patient will take in the fumes on their own.
+  - bugfix: You can actually cancel out of evolution again using the 'Resist' verb.
+      Other actions that would not properly cancel with resist will properly cancel
+      again.
+  - bugfix: Being dragged through sticky resin will no longer stack movement delay
+      to the point of making you a vegetable cripple.
+  TobiNerd:
+  - bugfix: Plant analyzers now read reagent names instead of code id.
+  - bugfix: Fixed the fluxing property.
+  - tweak: Generic Toxin is no longer a possible component in generated chemicals.
+  - tweak: The following properties has been renamed... caustic to corrosive, anti-caustic
+      to anti-corrosive, enjoyable to euphoric, neurosedative to relaxing, irritating
+      to allergenic, gastrotoxic to emetic, biopeutic to neogenetic.
+  - tweak: Tweaked the normal and overdosis effects of several chemical properties.
+  - tweak: You can now put clipboards into filing cabinets and vialboxes into smartfridges.
+  - maptweak: Remapped the entirety of the Almayer Research department. Tweaked the
+      Morgue, telecomms and computer lab to make space.
+  - rscadd: Added a Chemical Centrifuge to Almayer Research. This research machine
+      splits chemicals from an input beaker into separate vials. More details can
+      be found on the wiki.
+  - rscadd: The Corporate Liaison has been given a new negotiation power over research.
+      The ability to change the XRF clearance level with a swipe of their ID card.
+      For now, this is limited by the current DEFCON progress.
+  - rscadd: Added more chemical properties to the pool for randomly chemicals.
+  - rscadd: Added some admin-only chemical properties.
+  - rscadd: Doc the senior researcher has been added to Almayer Research.
+  - tweak: The Dinnerware vendor now vends saltshakers, peppermills and universal
+      enzyme.
+  - tweak: You can now attach IV drips to xenomorphs.
+  - tweak: Made the vial easier to click.
+  - bugfix: 'You no longer get scammed with souto classic inside every can of souto.
+      #7378'
+  - bugfix: Fixed anti-neurotoxin.
+  - bugfix: 'Fixed the autodoc eject function checking the research skill instead
+      of surgery skill. #7380'
+  - bugfix: Fixed the fluffing property not working as intended.
+  - bugfix: Stabbing someone in the eyes with a screwdriver now causes eye damage
+      again.
+  Vampmare:
+  - bugfix: Roundstart Queen will now be selected from the people with queen pref
+      on. It used to be selected from people with queen AND xeno pref on.
+  - tweak: Observers and xenos can now examine xenos and their chosen strain will
+      show up.
+  - tweak: Medics and Doctors or anyone with that medical skill can now stab others
+      with their boot knives on HELP INTENT to remove their shrapnel.
+  - experiment: Ravager Rework plus two strains.
+  - rscadd: 'New Ravager has increased health, armour, but less speed and damage.
+      This moves it more towards the intended front-line warrior akin to a Crusher. '
+  - rscadd: The Ravager now has a chance to embed shrapnel on hitting humans, the
+      chance scales according to armour.
+  - rscadd: Ravager gains a guaranteed tail stab every 7 seconds. A tail stab is a
+      normal attack that has a bit of armour penetration.
+  - rscdel: Tail stab armour penetration has been nerfed slightly.
+  - rscdel: Base Ravager no longer has a chance to delimb on hit.
+  - rscdel: Base Ravager can no longer charge.
+  - rscdel: Removed the strain Spin Slash
+  - rscadd: 'Ravager Strain: Veteran. This is the old Ravager, sacrifices the new
+      abilities, regains delimb and charge. Same stat wise.'
+  - rscadd: 'Ravager Strain: Hedgehog. Loses the shrapnel embed and guaranteed tail
+      stab. Gains two new abilities, first is Spin Slash, same as the old one. Second
+      is Spike Spray, it flings out shrapnel towards the aimed direction and it does
+      very little damage, but anyone hit is embedded with shrapnel and slowed for
+      a short while.'
+  - tweak: Shrapnel has been changed. If humans move while embedded, they will recieve
+      brute damage to a body part. It is suggested they get rid of shrapnel fast.
+  - rscadd: Marines can now use their boot knife to remove shrapnel. Press Z in hotkey
+      mode to use it and the equivalent in normal mode.
+  Vampmare & Triiodine:
+  - rscadd: Handrails, railings, etc now exist. They can be vaulted, reinforced, and
+      melted. They cannot be wired or repaired, even when reinforced. Handrails provide
+      minimal projectile cover.
+  - rscadd: Handrails can be constructed for two metal. They can be reinforced to
+      provide cover and block hostile movement for one metal sheet. Use a welder to
+      secure the reinforcing plate. Use a crowbar to remove it.
+  - rscadd: Handrails can be unsecured and moved with a wrench. Use a screwdriver
+      to deconstruct an unsecured handrail into metal sheets.
+  - rscadd: You can replace the reinforcing metal plate to replenish a handrail's
+      bonus health. Do this by following regular construction methods and cycling
+      the damaged piece out.
+  - rscadd: Tall grass has been adjusted so it is no longer code-unique to Trijent
+      Dam. Expect this gameplay element on other maps in the near future.
+  - imageadd: Added some map variant decals for later use.
+2019-09-04:
+  Cakey:
+  - bugfix: Unacidable objects within things will now drop to the ground when their
+      holder is destroyed.
+  - tweak: Player statistic saves have been wiped due to several big bugfixes.
+  - bugfix: Vehicles will now properly track roadkills to their driver.
+  - bugfix: Chestbursts will no longer count as kills for larva.
+  - bugfix: Playtimes will now correctly save and load for statistics.
+  - bugfix: Fixed dead chat kill-feed jump buttons.
+  - tweak: Reduced the clutter of un-noteworthy statistics.
+  - tweak: Cryogenics will now save statistics correctly.
+  Frans_Feiffer:
+  - imageadd: Added on mob and map variant skins for the G8 pouch.
+  Retrokinesis:
+  - bugfix: Power can now be successfully restored on prison station.
+  Vampmare:
+  - bugfix: Knives and other embedded big objects can now be properly yanked out.
+  - bugfix: SL tracker now updates properly when the SL spawns in.
+  - bugfix: You will now suffer in silence when moving with embedded shrapnel. Screaming
+      has a brute treshold now.
+2019-09-10:
+  Aceluke:
+  - bugfix: Fixed a badly located dropship location.
+  Atebite:
+  - bugfix: Specialist weapons will no longer get destroyed by explosions
+  - bugfix: HSDP (smoke) grenades now detonate properly again
+  - bugfix: You will no longer see heal messages when unconscious or dead
+  - bugfix: Gun sprites should now appear correctly on your back/suit, even when empty
+  - bugfix: '... and some other stuff'
+  - tweak: The hive status panel has been updated to use NanoUI
+  - tweak: The hive status panel now shows the strain of each xeno
+  - tweak: The hive status panel now shows the health of each xenos
+  - rscadd: Added Comic Sans as a chat font
+  - tweak: Weeds will now die when there is no node nearby that can sustain the weeds
+  - tweak: To compensate for the fact that weed removal is now easier, the health
+      regenerating effect of weeds have been slightly increased
+  Cakey:
+  - bugfix: Fixed gun firerates resetting when attaching attachies.
+  - bugfix: Fixed gun wield slowdowns not being set properly.
+  - bugfix: Fixed stock attachments from showing when they should not.
+  - tweak: The Mod88 pistol has been changed to default to LE armor-shredding rounds,
+      to better fit its purpose as an armor-focus sidearm.
+  - tweak: Increased the M41A's effective range before damage falloff is applied.
+  - tweak: The M41A can now use quick-fire adapters once again.
+  - tweak: Added LE variants to L42 and M41 ammunition in vendors.
+  - tweak: Added LE variants to L42 and M41 ammunition boxes in vendors.
+  - bugfix: Fixed several statistics issues, such as xeno kill saving/loading, tracking,
+      top caste statistics, null value displaying, and runtime fixes.
+  - rscadd: Added the niche stats system, built to allow us to add new single-number
+      statistics for individual roles and values in order to add additional tracking
+      to the game. Along with this, the following stats have been added as niche stats;
+      Executions Made, Times Shocked, Grenades Thrown, Flights Piloted, Handcuffs
+      Applied, Pills Fed, Accidental Discharges, Fultons Deployed, Disks Decrypted,
+      Data Uploaded, Chemicals Discovered, Supplies Airdropped, Bombardments Fired,
+      Barricades Built, Barricades Repaired, Generators Repaired, APCs Repaired, Bones
+      Mended, Internal Bleedings Stopped, Necrosis Stopped, Brains Mended, Eyes Mended,
+      Larvae Removed, Shrapnel Removed, Limbs Amputated, Organs Repaired, Organs Implanted,
+      Organs Harvested.
+  - experimental: If you have any other niche statistics to suggest, please contact
+      Cakey on discord. He'd love to hear them.
+  - tweak: Specialist and Smartgunner slots will now scale at 1 slot per 20 marines
+      in the round, with a minimum of 2.
+  - tweak: Tank crewmen will no longer be playable under 80 marines in the round.
+  - imageadd: Uniforms have been standardized throughout the marines. Commissioned
+      officers will now wear variants of uniform, coat, and accessories to match.
+  - rscadd: Added the personal uniform vendor, mapped throughout the ship, which can
+      be used to dispense personal utility, service, and dress uniforms. The CO must
+      authorise their use via a button within their quarters.
+  Foolosopher & monkeysfist101:
+  - rscadd: Added walkman players. They can be found in the conference rooms of the
+      Almayer
+  Frans_Feiffer:
+  - imageadd: Adjusted the belt side and suit storage sprites for the G8 pouch.
+  RavingManiac:
+  - tweak: Resin walls and membranes are now stronger. Resin doors are also buffed,
+      but still weaker than walls. Build times and plasma costs for resin increased
+      across the board. Overall, the hive's resin structure will present more of an
+      obstacle to the marines.
+  - tweak: Walls and airlocks now take more damage from bullets before collapsing.
+  TheDonkified:
+  - rscadd: Xenos are given burrowed larva instead of empty larva to compensate for
+      roundstart population gap between xenos and marines.
+  TobiNerd:
+  - bugfix: Fixed incorrectly placed pipe and door in the Officer Cafeteria.
+  - bugfix: Fixed paper dispensers in research using uscm papers instead of company
+      ones.
+  - rscdel: Removed the analyze function from the Chemmaster 3000.
+  Vampmare:
+  - rscadd: Base Ravager has gained a new ability Empower. Empower gives you temporary
+      health based on the amount of enemies in a 2 tile range around you. The temporary
+      health is permanent, but it resets and starts from 0 upon next use. So, use
+      it with 5 enemies around, get 5 stacked health. Re-use it with only 3 enemies
+      around, temporary health gets reset down to 3 stacked health.
+  - tweak: Survivors should now spawn with boot knives or boots with boot knives in
+      them.
+  - tweak: Scout Cloak and Pyrotechnician Fuel Toggle now both use the verb specialist-activation
+      to activate.
+  - tweak: Auto-equip now works with the Pyrotechnician fuelpack and the special flamer.
+  - tweak: Fuel type B has been modified. It is now a quick burn, low damage and large
+      AOE type of fuel. It will functions as a better version of Gel for the Pyrotechnician
+  - tweak: Recoloured Gel fuel to be green.
+  - spellcheck: Renamed the Veteran Enlist Kit to Veteran Enlisted Kit.
+  - rscadd: Ported goonchat over to CM. Credits to whoever made it in the first place
+      in goon.
+2019-09-12:
+  Aceluke / Foolosopher / Cakey:
+  - wip: Reworked the southern side of LV almost in its entirely, information on what
+      was done is down below. It is highly suggested to take a machete or knife down
+      to the colony now as you have a lot more natural flora to deal with on the colony
+      in exchange for the new FoB changes which were made. To summarize, both LZ1
+      and LZ2 are highly defensible now but outside their safety is a highly untamed
+      jungle which can be cut or burned down. More updates will come for LV, but for
+      now the main change has been added.
+  - maptweak: Walled off both LZs on LV, allowing for more secure FoBs and a more
+      set defense for marines with one major entry way and 2 side entrances.
+  - rscadd: Added doorways and walls to the side entrances of the LZs so marines have
+      some starting defences against xenos upon deployment.
+  - rscadd: New mechanics for cutting down flora has been added. There are two types
+      of blades which can be used. Small bladed weapons and large bladed weapons.
+      Small bladed weapons, like the combat knife, can cut down small vegetation with
+      one hit, while taking multiple hits to take down large vegetation in multiple
+      hits. Large bladed weapons, like the machete, can still cut down all flora in
+      one hit.
+  - rscadd: Added bushes and grass-like flora all across LV, these can be cut down
+      with a combat knife or higher bladed weapon in one hit.
+  - rscadd: Added tallgrass all across LV, this can be cut down just like vines with
+      a machete level bladed weapon in one hit, while taking 3 hits with a smaller
+      bladed weapon.
+  - tweak: Changed Vines to be able to be cut down by small bladed weapons.
+  - rscadd: Fire can now burn down all types of flora. Bushes, vines, and tallgrass.
+      Fire still spreads on tallgrass as it used to do.
+  - tweak: Fire does not spread on tallgrass anymore, this was changed so vines could
+      be burned down and not spread which would have resulted in a forest fire.
+  - tweak: Changed predator/Yautja wristblades to be considered small blades, enabling
+      them to cut down all types of flora added. Tallgrass, vines, and bushes.
+  - tweak: Changed the pathing for several flora objects, allowing them to be able
+      cut down if desired by staff.
+  - maptweak: Cargo north of LZ1 has been moved and its outsides redesigned.
+  - maptweak: Remodeled the engineering dome on LV, allowing for more open space for
+      an easier time setting up power and more space to move around in.
+  - tweak: Reduced the power requirement for colony floodlights. Expect them to last
+      a lot longer if power is setup on both LV and Ice colony.
+  - tweak: Very slightly increased the amount of damage a floodlight can take, it
+      isn't much, but they should be able to take one more slash before breaking.
+  - maptweak: More floodlights have been added to LV, allowing for almost all colony
+      pathways to be lit up if turned on.
+  - maptweak: Remapped a few of the nightmare creations to fit with the reworked map,
+      expect some new variations for LV's nightmare modes soon.
+  - maptweak: Removed the cargo containers entirely from LV's LZ1.
+  - bugfix: The Lazarus Landing signs now at both LZs can be walked/shot through now.
+  Atebite:
+  - rscadd: Squad prep closet vendors now vend boots with knives already in them
+  - rscadd: A new Hivelord strain has been added - Resin Whisperer. This strain makes
+      you give up the ability to make thick resin and decreases your plasma pool by
+      20%, but gives you a long range sight and the ability to place normal resin
+      structures up to 13 tiles away
+  - rscadd: A visual effect has been added to weeds when resin structures are being
+      built on them
+  - bugfix: The smartgun's motion detector should now work properly
+  Fourkhan:
+  - tweak: Increased the explosive armor of the Oppressor Praetorian.
+  - tweak: Decreased the windup and activation time of the Oppressor Praetorian grenade.
+  - tweak: Oppressor Praetorian smoke grenades now extinguish fire on living creatures
+      and the ground in their radius.
+  - tweak: Oppressor Praetorian smoke grenades now deal more damage and stun more
+      consistently.
+  - tweak: Decreased the damage of sniper specialist flak ammunition.
+  - tweak: Sniper flak ammunition no longer deals explosive damage.
+  - tweak: Reduced the fire rate of the sniper specialist with bipod deployed.
+  - bugfix: The incendiary OB now works again (isn't just a 3x3 square of blue fire).
+  - tweak: Buffed the duration of the incendiary OB.
+  - tweak: Increased the damage of the incendiary OB.
+  - tweak: Dramatically increased the power of the HE OB.
+  - tweak: Increased the duration of the cluster OB.
+  - tweak: Increased the power of the individual explosions in the cluster OB.
+  - tweak: Removing shrapnel with your bootknife now removes ALL shrapnel in your
+      body in one go.
+  - tweak: Decreased the explosive armor of Ravagers.
+  - tweak: Reduced the stun associated with shocked doors.
+  - tweak: Nerfed Praetorain pheromones slightly.
+  - tweak: Nerfed Ravager hitpoint total slightly.
+  - tweak: Nerfed the pheromone increase from Royal Guard Praetorian .
+  - tweak: Nerfed Praetorian speed slightly.
+  - tweak: Buffed the fire delay, accuracy, and ammo of the M41AMK2.
+  - tweak: Dramatically buffed the burst performance of the M41AMK2.
+  Frans_Feiffer:
+  - imageadd: Major Ike strikes again. Mateba has been completely resprited.
+  Vampmare:
+  - bugfix: M4RA and Type 71 now have firing sounds again
+2019-09-14:
+  Fourkhan:
+  - rscadd: Burrowed larva now count for tier 2 and tier 3 slots, but less than other
+      Xenos.
+  - tweak: The more burrowed larva there are, the less each additional burrowed larva
+      counts.
+  - tweak: Increased lurker hitpoint total.
+  - tweak: Reverted some of the Xeno structures HP buff.
+  - tweak: Resin doors are now DRAMATICALLY weaker than resin walls. (Walls are 3x
+      tougher than doors)
+  - bugfix: Tank Crewman scaling now works correctly as noted in prior changelogs.
+  Vampmare:
+  - tweak: Reduced HPR damage slightly. Reduced burst fire delay, this is a buff
+  - tweak: Reduced M39 damage slightly. Increased M39 scatter slightly
+  - tweak: Reduced M41A damage slightly. Reduced smartgun damage slightly
+  - tweak: Increased movement speed slowdown for wielded HPR, general rifles and scoped
+      in. SMG will also feel this when lighter armour is worn.
+  - tweak: Heavily reduced acid splash damage
+  - tweak: Upped L42MK1 magazine size to 25 rounds. Increased L42MK1 damage
+  - rscadd: Added two new OOC verbs. Reload Goonchat will try to fix any goonchat
+      issues. Old Chat will switch you back to the old chat.
+  - imageadd: Slightly changed the M44 Revolver sprite.
+  - imageadd: New sprites for Telebaton and switchblade.
+2019-09-20:
+  Atebite:
+  - rscadd: If you have the skill to issue orders, you will now get action buttons
+      for the different orders in your top-left action bar.
+  - tweak: Orders now last for 20 seconds on a 60 second cooldown
+  - rscadd: 'A new Sentinel strain has been added: Scatterspitter. This strain makes
+      you give up your usual spits, corrosive acid and a bit of speed in exchange
+      for a small amount of armor and a potent, neurotoxic, shotgun-like spit'
+  Foolosopher:
+  - rscdel: Replaced the verb "Check Pulse" with "Check Status"
+  - rscadd: Using Check Status on a player will give out general health info about
+      them, including if they're revivable
+  - rscadd: Additionally, using Check Status on yourself will also list broken limbs
+      (except head, chest and groin)
+  - rscadd: Doctors can get accurate fracture readings from HF2 scanners
+  Jeser:
+  - bugfix: Fixed sentry stopping to work in specific cases.
+  Slywater:
+  - bugfix: Pulling now breaks properly when things aren't adjacent.
+  TheDonkified:
+  - rscadd: The Climb On verb for operating tables that caused you to rest when you
+      climbed them has been changed to "Mount Operating Table". The Climb On verb
+      is still there but you just climb it like you climb a table.
+  TobiNerd:
+  - tweak: Refactored how random research chemicals are balanced. Expect them to be
+      generally more useful now.
+  - tweak: The XRF will now tell you which clearance level you need for a chemical.
+  - tweak: Researchers will now always spawn with a synthesis note.
+  - tweak: Lowered how many players it takes to unlock a researcher slot.
+  Vampmare:
+  - tweak: The transit time on a hijacked Dropship has been halved. This the time
+      it takes the Queen to go from planet to Alamyer.
+  - rscdel: LE ammo for various guns have been removed. You won't be able to aquire
+      it anymore.
+  - tweak: Reduced wielded SMG slowdown a bit.
+  - tweak: Spitters' acid spit has been changed. It will now apply a burn DoT to mobs
+      hit or barricades hit. It stacks.  This DoT can be REMOVED by using an extinguisher
+      on the mob or barricade. Very much like extinguishing fire.
+  - tweak: Neuro has been changed to follow superslow->dazed->knockdown. So 3 shots
+      are now required to knockdown a marine instead of 4.
+2019-09-29:
+  Aceluke:
+  - maptweak: Added dirt spots around LV's jungle so xenos have a place to rest at
+      that isnt dirt road required.
+  - maptweak: Made the west fog gap 1 tile wider.
+  Atebite:
+  - experimental: Large parts of the human backend has been refactored or removed.
+      Hopefully this should help a little bit with the lag
+  - rscdel: Infections have been removed
+  - rscdel: Since infections are no longer a thing, spaceacilin has been removed from
+      medical vendors and belts
+  - tweak: The amount of storage slots in medical belts has been reduced to 13 due
+      to the aforementioned removal of spaceacilin pill bottles
+  - rscdel: Radiation has been removed
+  - rscdel: Since radiation is no longer a thing, arithrazine and hyronalin has been
+      removed from the game entirely
+  Foolosopher:
+  - rscadd: Added Toggle Underbarrel and Toggle Auto-eject verbs. Load-from-attachment
+      is now called use-attachment
+  Fourkhan:
+  - bugfix: Green headbands now fit in helmets.
+  - tweak: Renamed Thermite back to Thermite for clarity in death logs.
+  - bugfix: Fixed an exploit where it was possible to duplicate tank ammo.
+  - bugfix: Fixed an issue where predators could self-destruct multiple times.
+  - bugfix: Oppressor Praetorian can no longer spam multiple grenades if the button
+      is clicked fast enough
+  - rscadd: Switched the tank primary and secondary flamers.
+  - rscadd: The old secondary flamer is the new primary flamer. Its accuracy has been
+      slightly buffed and it now uses blue flame.
+  - rscadd: The new primary flamer's flames are very hot, but burn out relatively
+      quickly.
+  - rscadd: The old primary flamer is the new secondary flamer. It now fires regular
+      flame.
+  - tweak: Nerfed the damage of the tank minigun.
+  - rscadd: Instead of running Xenos over and stunning them, the tank now deals direct
+      damage.
+  - rscadd: This effect is magnified SIGNIFICANTLY when crushing Xenos against walls
+      or other solid objects.
+  - rscadd: When a caste successfully blocks the tank from moving, it takes no damage
+      from the ram.
+  - rscadd: Tank ram damage is also slightly buffed by the overdrive enhancer.
+  Frans_Feiffer:
+  - rscadd: The B8 Smart-scope now fits on the COs M46c Pulse Rifle.
+  Jeser:
+  - bugfix: Removed aliens in-depth understanding of tank engineering that allowed
+      them to see exact modules' integrity values. Thank god it was fixed before they
+      reverse engineered their own tank.
+  TheDonkified:
+  - rscadd: Added verb for toggling stock attachments called 'Toggle Stock Attachment'.
+  - rscadd: Can repair automated closets, attachment vendor, and other similar vendors
+      that were previously unrepairable.
+  - rscadd: Vendors in general will be more resistant to explosions. They still have
+      a chance to break and require repairs from weaker explosions, however they are
+      less likely to completely get deleted unless an explosion is powerful.
+  - rscadd: Creating items via metal, wood, etc will try to put it in your inactive
+      hand. If there is something already in your inactive hand but it is stackable,
+      it will try to fill that stack if the created item is of the same type.
+  - rscadd: If there are still leftovers (the new item is not the same type as the
+      item in your inactive hand, there was too much of the new item, or either item
+      was not stackable), then they will try to fill your active hand.
+  - bugfix: Trying to repair a vendor a functional vendor with power issues will give
+      a proper message reflecting that.
+  - bugfix: Cupola has working IFF again.
+  - bugfix: Empty HEFA box has a sprite again.
+  - bugfix: Fully repaired doors will no longer show as 'slightly damaged'.
+  Vampmare:
+  - imageadd: Captains now have their own armour in the secure locker in the Armoury.
+  - rscdel: Disabled directional lightning temporarily.
+  - tweak: Scatterspit strain is now even slower.

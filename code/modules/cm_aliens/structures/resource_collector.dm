@@ -22,7 +22,7 @@
 		linked_hive = hive_ref
 		if(linked_hive.living_xeno_queen)
 			var/current_area_name = get_area_name(src)
-			xeno_message("Hive: \A [src] has been constructed at [sanitize(current_area_name)]!", 3, linked_hive.hivenumber)
+			xeno_message("Hive: \A [src] has been constructed at [sanitize_area(current_area_name)]!", 3, linked_hive.hivenumber)
 	if(new_node)
 		connected_node = new_node
 		connected_node.update_icon()
@@ -38,7 +38,7 @@
 	. = ..()
 
 
-// /obj/effect/alien/resin/collector/examine(mob/user)
+// /obj/effect/alien/resin/collector/get_examine_text(mob/user)
 // 	..()
 // 	if(isXeno(user) || isobserver(user))
 // 		to_chat(user, "It has [connected_node.amount_left] resources left.")
@@ -50,7 +50,7 @@
 	if(!connected_node)
 		visible_message(SPAN_DANGER("\The [src] groans and collapses as its contents are reduced to nothing!"))
 		if(linked_hive.living_xeno_queen)
-			xeno_message("Hive: \A [src] has been depleted at [sanitize(current_area_name)]!", 3, linked_hive.hivenumber)
+			xeno_message("Hive: \A [src] has been depleted at [sanitize_area(current_area_name)]!", 3, linked_hive.hivenumber)
 		qdel(src)
 		return
 	last_gathered_time = world.time

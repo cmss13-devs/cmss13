@@ -135,7 +135,7 @@
 	new /obj/item/clothing/shoes/brown(src)
 	new /obj/item/storage/box/evidence(src)
 	new /obj/item/clothing/suit/armor/det_suit(src)
-	new /obj/item/clothing/accessory/holster/armpit(src)
+	new /obj/item/clothing/accessory/storage/holster/armpit(src)
 
 /obj/structure/closet/secure_closet/detective/update_icon()
 	if(broken)

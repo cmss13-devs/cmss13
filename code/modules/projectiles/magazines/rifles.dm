@@ -86,42 +86,48 @@
 
 /obj/item/ammo_magazine/rifle/m41aMK1
 	name = "\improper M41A MK1 magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds plus 1 in the chamber."
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds."
 	icon_state = "m41a_mk1"
 	max_rounds = 95
 	gun_type = /obj/item/weapon/gun/rifle/m41aMK1
+	default_ammo = /datum/ammo/bullet/rifle
+
+/obj/item/ammo_magazine/rifle/m41aMK1/ap
+	name = "\improper M41A MK1 AP magazine (10x24mm)"
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains AP bullets."
+	icon_state = "m41a_mk1_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
 /obj/item/ammo_magazine/rifle/m41aMK1/incendiary
 	name = "\improper M41A MK1 incendiary magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds plus 1 in the chamber. This one contains incendiary bullets."
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains incendiary bullets."
 	icon_state = "m41a_mk1_incendiary"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 
 /obj/item/ammo_magazine/rifle/m41aMK1/toxin
 	name = "\improper M41A MK1 toxin magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds plus 1 in the chamber. This one contains toxic bullets."
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains toxic bullets."
 	icon_state = "m41a_mk1_toxin"
 	default_ammo = /datum/ammo/bullet/rifle/ap/toxin
 
 /obj/item/ammo_magazine/rifle/m41aMK1/penetrating
 	name = "\improper M41A MK1 wall-piercing magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds plus 1 in the chamber. This one contains wall-piercing bullets."
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains wall-piercing bullets."
 	icon_state = "m41a_mk1_penetrating"
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 
 /obj/item/ammo_magazine/rifle/m41aMK1/cluster
 	name = "\improper M41A MK1 cluster magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds plus 1 in the chamber. This one contains cluster bullets."
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains cluster bullets."
 	icon_state = "m41a_mk1_cluster"
 	default_ammo = /datum/ammo/bullet/rifle/ap/cluster
 
 
 //-------------------------------------------------------
-//M40-SD AKA MARSOC RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
+//M40-SD AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
 /obj/item/ammo_magazine/rifle/m40_sd
 	name = "\improper M40-SD magazine (10x24mm)"
-	desc = "A stubby and wide, high capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
+	desc = "A stubby and wide, high-capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
 	icon_state = "m40_sd"
 	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
@@ -147,7 +153,13 @@
 	bonus_overlay = "mar40_ex"
 	icon_state = "mar40_extended"
 
-
+/obj/item/ammo_magazine/rifle/mar40/lmg
+	name = "\improper MAR drum magazine (7.62x39mm)"
+	desc = "A 7.62x39mm drum magazine for the MAR-50 LMG."
+	caliber = "7.62x39mm"
+	icon_state = "mar50"
+	max_rounds = 100
+	gun_type = /obj/item/weapon/gun/rifle/mar40/lmg
 
 //-------------------------------------------------------
 //M16 RIFLE
@@ -172,6 +184,18 @@
 	gun_type = /obj/item/weapon/gun/rifle/m16
 	w_class = SIZE_MEDIUM
 
+//-------------------------------------------------------
+//AR10 RIFLE
+
+/obj/item/ammo_magazine/rifle/ar10
+	name = "\improper AR10 magazine (7.62x51mm)"
+	desc = "A 7.62x51mm magazine for the AR10 assault rifle."
+	caliber = "7.62x51mm"
+	icon_state = "ar10"
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 20
+	gun_type = /obj/item/weapon/gun/rifle/ar10
+	w_class = SIZE_MEDIUM
 
 //-------------------------------------------------------
 //M41AE2 HEAVY PULSE RIFLE

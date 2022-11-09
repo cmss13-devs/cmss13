@@ -123,28 +123,29 @@
 
 	return 100 * (reagents.total_volume / max_rounds)
 
-/obj/item/ammo_magazine/flamer_tank/examine(mob/user)
-	..()
-	to_chat(user, SPAN_NOTICE("It contains:"))
+/obj/item/ammo_magazine/flamer_tank/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("It contains:")
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
-			to_chat(user, SPAN_NOTICE(" [R.volume] units of [R.name]."))
+			. += SPAN_NOTICE(" [R.volume] units of [R.name].")
 	else
-		to_chat(user, SPAN_NOTICE("Nothing."))
+		. += SPAN_NOTICE("Nothing.")
 
 // This is gellie fuel. Green Flames.
 /obj/item/ammo_magazine/flamer_tank/gellied
-	name = "incinerator tank (Gel)"
-	desc = "A fuel tank full of heavier gel fuel. Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot. Handle with exceptional care."
+	name = "incinerator tank (B-Gel)"
+	desc = "A fuel tank full of specialized Ultra Thick Napthal Fuel type B-Gel. Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to break them down. Handle with exceptional care."
 	caliber = "Napalm Gel"
 	flamer_chem = "napalmgel"
 	max_rounds = 200
 
 	max_range = 7
+	max_duration = 50
 
 /obj/item/ammo_magazine/flamer_tank/EX
 	name = "incinerator tank (EX)"
-	desc = "A fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustable liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
+	desc = "A fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
 	caliber = "Napalm EX"
 	flamer_chem = "napalmex"
 
@@ -168,16 +169,16 @@
 	if(usr.get_active_hand() != src)
 		return
 
-	var/set_pressure = Clamp(input("Change fuel pressure to: (max: [max_pressure])", 10, fuel_pressure) as num|null,1,max_pressure)
+	var/set_pressure = Clamp(tgui_input_number(usr, "Change fuel pressure to: (max: [max_pressure])", "Fuel pressure", fuel_pressure, 10, 1), 1 ,max_pressure)
 	if(!set_pressure)
 		to_chat(usr, SPAN_WARNING("You can't find that setting on the regulator!"))
 	else
 		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t"))
 		fuel_pressure = set_pressure
 
-/obj/item/ammo_magazine/flamer_tank/custom/examine(mob/user)
-	..()
-	to_chat(user, SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t"))
+/obj/item/ammo_magazine/flamer_tank/custom/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t")
 
 // Pyro regular flamer tank just bigger than the base flamer tank.
 /obj/item/ammo_magazine/flamer_tank/large
@@ -200,7 +201,7 @@
 // This is the green flamer fuel for the pyro.
 /obj/item/ammo_magazine/flamer_tank/large/B
 	name = "large incinerator tank (B)"
-	desc = "A large fuel tank of Ultra Thick Napthal Fuel type B, a wide-spreading sticky combustable liquid chemical that burns up fast with a low temperature, for use in the M240-T incinerator unit. Handle with care."
+	desc = "A large fuel tank of Ultra Thick Napthal Fuel type B, a special variant of napalm that is easily extinguished, but disperses over a wide area while burning slowly. The composition reacts with inorganic materials to break them down, causing severe damage. For use in the M240-T incinerator unit. Handle with care."
 	caliber = "Napalm B"
 	flamer_chem = "napalmb"
 
@@ -209,7 +210,7 @@
 // This is the blue flamer fuel for the pyro.
 /obj/item/ammo_magazine/flamer_tank/large/X
 	name = "large incinerator tank (X)"
-	desc = "A large fuel tank of Ultra Thick Napthal Fuel type X, a sticky combustable liquid chemical that burns extremely hot, for use in the M240-T incinerator unit. Handle with care."
+	desc = "A large fuel tank of Ultra Thick Napthal Fuel type X, a sticky combustible liquid chemical that burns extremely hot, for use in the M240-T incinerator unit. Handle with care."
 	caliber = "Napalm X"
 	flamer_chem = "napalmx"
 
@@ -217,7 +218,7 @@
 
 /obj/item/ammo_magazine/flamer_tank/large/EX
 	name = "large incinerator tank (EX)"
-	desc = "A large fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustable liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
+	desc = "A large fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
 	caliber = "Napalm EX"
 	flamer_chem = "napalmex"
 

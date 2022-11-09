@@ -49,20 +49,20 @@
 	flags_can_pass_front_temp = PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp = PASS_OVER_THROW_MOB
 
-/obj/structure/barricade/examine(mob/user)
-	..()
-	to_chat(user, SPAN_INFO("It is recommended to stand flush to a barricade or more than four tiles away for maximum efficiency."))
+/obj/structure/barricade/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_INFO("It is recommended to stand flush to a barricade or more than four tiles away for maximum efficiency.")
 	if(is_wired)
-		to_chat(user, SPAN_INFO("There is a length of wire strewn across the top of this barricade."))
+		. += SPAN_INFO("There is a length of wire strewn across the top of this barricade.")
 	switch(damage_state)
 		if(BARRICADE_DMG_NONE)
-			to_chat(user, SPAN_INFO("It appears to be in good shape."))
+			. += SPAN_INFO("It appears to be in good shape.")
 		if(BARRICADE_DMG_SLIGHT)
-			to_chat(user, SPAN_WARNING("It's slightly damaged, but still very functional."))
+			. += SPAN_WARNING("It's slightly damaged, but still very functional.")
 		if(BARRICADE_DMG_MODERATE)
-			to_chat(user, SPAN_WARNING("It's quite beat up, but it's holding together."))
+			. += SPAN_WARNING("It's quite beat up, but it's holding together.")
 		if(BARRICADE_DMG_HEAVY)
-			to_chat(user, SPAN_WARNING("It's crumbling apart, just a few more blows will tear it apart."))
+			. += SPAN_WARNING("It's crumbling apart, just a few more blows will tear it apart.")
 
 /obj/structure/barricade/update_icon()
 	overlays.Cut()
@@ -183,7 +183,7 @@
 		user.visible_message(SPAN_DANGER("The zombie smashed at the [src.barricade_type] barricade!"),
 		SPAN_DANGER("You smack the [src.barricade_type] barricade!"))
 		if(barricade_hitsound)
-			playsound(src, barricade_hitsound, 25, 1)
+			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(W)
 		return
 
@@ -241,7 +241,7 @@
 	if(W.force > force_level_absorption)
 		..()
 		if(barricade_hitsound)
-			playsound(src, barricade_hitsound, 25, 1)
+			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(W)
 
 /obj/structure/barricade/bullet_act(obj/item/projectile/P)
@@ -357,6 +357,7 @@
 
 /obj/structure/barricade/proc/weld_cade(obj/item/tool/weldingtool/WT, mob/user)
 	if(!metallic)
+		user.visible_message(SPAN_WARNING("You can't weld \the [src]!"))
 		return FALSE
 
 	if(!(WT.remove_fuel(2, user)))

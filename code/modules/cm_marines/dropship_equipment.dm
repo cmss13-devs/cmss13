@@ -38,15 +38,19 @@
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		if(PC.loaded)
-			load_ammo(PC, user)
-
-		else if(uses_ammo && ammo_equipped)
-			unload_ammo(PC, user)
+			if(ammo_equipped)
+				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
+				return TRUE
+			if(uses_ammo)
+				load_ammo(PC, user)	//it handles on it's own whether the ammo fits
+				return
 
 		else
-			grab_equipment(PC, user)
+			if(uses_ammo && ammo_equipped)
+				unload_ammo(PC, user)
+			else
+				grab_equipment(PC, user)
 		return TRUE
-
 
 /obj/structure/dropship_equipment/proc/load_ammo(var/obj/item/powerloader_clamp/PC, var/mob/living/user)
 	if(!ship_base || !uses_ammo || ammo_equipped || !istype(PC.loaded, /obj/structure/ship_ammo))
@@ -79,16 +83,15 @@
 		return
 	if(!ammo_equipped || !PC.linked_powerloader || PC.linked_powerloader.buckled_mob != user)
 		return
-	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	if(!ammo_equipped.ammo_count)
 		ammo_equipped.moveToNullspace()
-		to_chat(user, SPAN_NOTICE("You discard the empty [ammo_equipped.name] in [src]."))
+		to_chat(user, SPAN_NOTICE("You discard the empty [ammo_equipped.name] in \the [src]."))
 		qdel(ammo_equipped)
 	else
-		ammo_equipped.forceMove(PC.linked_powerloader)
-		PC.loaded = ammo_equipped
-		PC.update_icon()
-		to_chat(user, SPAN_NOTICE("You remove [ammo_equipped] from [src] and load it into [PC]."))
+		if(ammo_equipped.ammo_name == "rocket")
+			PC.grab_object(user, ammo_equipped, "ds_rocket")
+		else
+			PC.grab_object(user, ammo_equipped, "ds_ammo")
 	ammo_equipped = null
 	update_icon()
 
@@ -105,11 +108,7 @@
 		return
 	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
 		return
-	forceMove(PC.linked_powerloader)
-	PC.loaded = src
-	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	PC.update_icon()
-	to_chat(user, SPAN_NOTICE("You've [ship_base ? "uninstalled" : "grabbed"] [PC.loaded] with [PC]."))
+	PC.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	if(ship_base)
 		ship_base.installed_equipment = null
 		ship_base = null
@@ -119,10 +118,6 @@
 			if(linked_console && linked_console.selected_equipment == src)
 				linked_console.selected_equipment = null
 	update_equipment()
-
-
-
-
 
 /obj/structure/dropship_equipment/update_icon()
 	return
@@ -168,10 +163,10 @@
 		deployed_turret = new(src)
 		deployed_turret.deployment_system = src
 
-/obj/structure/dropship_equipment/sentry_holder/examine(mob/user)
-	..()
+/obj/structure/dropship_equipment/sentry_holder/get_examine_text(mob/user)
+	. = ..()
 	if(!deployed_turret)
-		to_chat(user, "Its turret is missing.")
+		. += "Its turret is missing."
 
 /obj/structure/dropship_equipment/sentry_holder/on_launch()
 	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically undeployed
@@ -286,10 +281,10 @@
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
 
-/obj/structure/dropship_equipment/mg_holder/examine(mob/user)
-	..()
+/obj/structure/dropship_equipment/mg_holder/get_examine_text(mob/user)
+	. = ..()
 	if(!deployed_mg)
-		to_chat(user, "Its machine gun is missing.")
+		. += "Its machine gun is missing."
 
 /obj/structure/dropship_equipment/mg_holder/on_launch()
 	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external mgs are automatically undeployed
@@ -433,7 +428,7 @@
 /obj/structure/dropship_equipment/electronics/spotlights
 	name = "spotlight"
 	icon_state = "spotlights"
-	desc = "A set of highpowered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
+	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
 	is_interactable = TRUE
 	point_cost = 300
 	var/spotlights_cooldown
@@ -589,12 +584,14 @@
 		else
 			linked_console.selected_equipment = src
 
-/obj/structure/dropship_equipment/weapon/examine(mob/user)
-	..()
+/obj/structure/dropship_equipment/weapon/get_examine_text(mob/user)
+	. = ..()
 	if(ammo_equipped)
-		ammo_equipped.show_loaded_desc(user)
+		var/ammo_info = ammo_equipped.show_loaded_desc(user)
+		if(ammo_info)
+			. += ammo_info
 	else
-		to_chat(user, "It's empty.")
+		. += "It's empty."
 
 
 
@@ -623,7 +620,7 @@
 			ammo_travelling_time = max(ammo_travelling_time - 20, 10)
 			break
 
-	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
+	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
 	if(ammo_travelling_time)
 		var/total_seconds = max(round(ammo_travelling_time/10),1)
 		for(var/i = 0 to total_seconds)
@@ -671,9 +668,9 @@
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
-	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its inital production run."
+	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run."
 	icon_state = "30mm_cannon"
-	firing_sound = 'sound/effects/cannon30.ogg'
+	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	point_cost = 400
 	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
@@ -890,7 +887,7 @@
 		linked_stretcher = null
 		return
 
-	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected stretcher's beacon."))
+	to_chat(user, SPAN_NOTICE("You move your dropship above the selected stretcher's beacon. You can now manually activate the medevac system to hoist the patient up."))
 
 	if(linked_stretcher)
 		linked_stretcher.linked_medevac = null

@@ -9,6 +9,8 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
+	pickupsound = 'sound/handling/paper_pickup.ogg'
+	dropsound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_speed = SPEED_FAST
@@ -61,7 +63,7 @@
 		return
 	icon_state = "paper"
 
-/obj/item/paper/examine(mob/user)
+/obj/item/paper/get_examine_text(mob/user)
 //	..()	//We don't want them to see the dumb "this is a paper" thing every time.
 // I didn't like the idea that people can read tiny pieces of paper from across the room.
 // Now you need to be next to the paper in order to read it.
@@ -73,8 +75,7 @@
 		else
 			read_paper(user)
 	else
-		to_chat(user, SPAN_NOTICE("It is too far away."))
-	return
+		return list(SPAN_NOTICE("It is too far away."))
 
 /obj/item/paper/proc/read_paper(mob/user)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
@@ -138,7 +139,7 @@
 /obj/item/paper/get_vv_options()
 	. = ..()
 	. += "<option value>-----PAPER-----</option>"
-	. += "<option value='?_src_=admin_holder;customise_paper=\ref[src]'>Customise content</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];customise_paper=\ref[src]'>Customise content</option>"
 
 /obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
 	var/locid = 0
@@ -211,6 +212,10 @@
 	t = replacetext(t, "\[large\]", "<font size=\"4\">")
 	t = replacetext(t, "\[/large\]", "</font>")
 	t = replacetext(t, "\[sign\]", "<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
+	t = replacetext(t, "\[date\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [game_year]")]</i></font>")
+	t = replacetext(t, "\[shortdate\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "DD/MM/[game_year]")]</i></font>")
+	t = replacetext(t, "\[time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")]</i></font>")
+	t = replacetext(t, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [game_year]")]</i></font>")
 	t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
 
 	t = replacetext(t, "\[h1\]", "<H1>")
@@ -237,7 +242,7 @@
 		t = replacetext(t, "\[wy\]", "<img src = wylogo.png>")
 		t = replacetext(t, "\[uscm\]", "<img src = uscmlogo.png>")
 
-		t = "<font face=\"[deffont]\" color=[P ? P.colour : "black"]>[t]</font>"
+		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
 		t = replacetext(t, "\[*\]", "")
 		t = replacetext(t, "\[hr\]", "")
@@ -251,7 +256,7 @@
 		t = replacetext(t, "\[cell\]", "")
 		t = replacetext(t, "\[logo\]", "")
 
-		t = "<font face=\"[crayonfont]\" color=[P ? P.colour : "black"]><b>[t]</b></font>"
+		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[t]</b></font>"
 
 //	t = replacetext(t, "#", "") // Junk converted to nothing!
 
@@ -501,7 +506,7 @@
 
 /obj/item/paper/sop
 	name = "paper- 'Standard Operating Procedure'"
-	info = "Alert Levels:<BR>\nBlue- Emergency<BR>\n\t1. Caused by fire<BR>\n\t2. Caused by manual interaction<BR>\n\tAction:<BR>\n\t\tClose all fire doors. These can only be opened by reseting the alarm<BR>\nRed- Ejection/Self Destruct<BR>\n\t1. Caused by module operating computer.<BR>\n\tAction:<BR>\n\t\tAfter the specified time the module will eject completely.<BR>\n<BR>\nEngine Maintenance Instructions:<BR>\n\tShut off ignition systems:<BR>\n\tActivate internal power<BR>\n\tActivate orbital balance matrix<BR>\n\tRemove volatile liquids from area<BR>\n\tWear a fire suit<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nToxin Laboratory Procedure:<BR>\n\tWear a gas mask regardless<BR>\n\tGet an oxygen tank.<BR>\n\tActivate internal atmosphere<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nDisaster Procedure:<BR>\n\tFire:<BR>\n\t\tActivate sector fire alarm.<BR>\n\t\tMove to a safe area.<BR>\n\t\tGet a fire suit<BR>\n\t\tAfter:<BR>\n\t\t\tAssess Damage<BR>\n\t\t\tRepair damages<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tMeteor Shower:<BR>\n\t\tActivate fire alarm<BR>\n\t\tMove to the back of ship<BR>\n\t\tAfter<BR>\n\t\t\tRepair damage<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tAccidental Reentry:<BR>\n\t\tActivate fire alarms in front of ship.<BR>\n\t\tMove volatile matter to a fire proof area!<BR>\n\t\tGet a fire suit.<BR>\n\t\tStay secure until an emergency ship arrives.<BR>\n<BR>\n\t\tIf ship does not arrive-<BR>\n\t\t\tEvacuate to a nearby safe area!"
+	info = "Alert Levels:<BR>\nBlue- Emergency<BR>\n\t1. Caused by fire<BR>\n\t2. Caused by manual interaction<BR>\n\tAction:<BR>\n\t\tClose all fire doors. These can only be opened by reseting the alarm<BR>\nRed- Ejection/Self-Destruct<BR>\n\t1. Caused by module operating computer.<BR>\n\tAction:<BR>\n\t\tAfter the specified time the module will eject completely.<BR>\n<BR>\nEngine Maintenance Instructions:<BR>\n\tShut off ignition systems:<BR>\n\tActivate internal power<BR>\n\tActivate orbital balance matrix<BR>\n\tRemove volatile liquids from area<BR>\n\tWear a fire suit<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nToxin Laboratory Procedure:<BR>\n\tWear a gas mask regardless<BR>\n\tGet an oxygen tank.<BR>\n\tActivate internal atmosphere<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nDisaster Procedure:<BR>\n\tFire:<BR>\n\t\tActivate sector fire alarm.<BR>\n\t\tMove to a safe area.<BR>\n\t\tGet a fire suit<BR>\n\t\tAfter:<BR>\n\t\t\tAssess Damage<BR>\n\t\t\tRepair damages<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tMeteor Shower:<BR>\n\t\tActivate fire alarm<BR>\n\t\tMove to the back of ship<BR>\n\t\tAfter<BR>\n\t\t\tRepair damage<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tAccidental Reentry:<BR>\n\t\tActivate fire alarms in front of ship.<BR>\n\t\tMove volatile matter to a fire proof area!<BR>\n\t\tGet a fire suit.<BR>\n\t\tStay secure until an emergency ship arrives.<BR>\n<BR>\n\t\tIf ship does not arrive-<BR>\n\t\t\tEvacuate to a nearby safe area!"
 
 /obj/item/paper/prison_station/test_log
 	name = "paper- 'Test Log'"
@@ -538,6 +543,42 @@
 /obj/item/paper/lv_624/cheese
 	name = "paper= 'Note on the contents of the armoury'"
 	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshall"
+
+/obj/item/paper/bigred/walls
+	name = "crumpled note"
+	info = "<b>there is cotten candy in the walls</b>"
+
+/obj/item/paper/bigred/union
+	name = "Shaft miners union"
+	info = "Today we have had enough of being underpaid and treated like shit for not reaching the higher up's unreasonable quotas of ore. They say this place has a \"sea of valuable ores,\" yet we have been mining for years and are yet to find a single diamond. We have had it, enough is enough. They think they can control everything we do, they thought wrong! We, the oppressed workers, shall rise up against the capitalist dogs in a mutiny and take back our pay by force. \n If they send their dogs here to bust us, we will kill each and every single one of them."
+
+/obj/item/paper/bigred/finance
+	name = "Important Finance Letter"
+	info = "TO: JOSEPH BARNES, HEAD OF COLONY FINANCE \n FROM: AIDEN MENG, HEAD OF COLONY MINING \n When will we get additional funds to fix the mining robot. That robot could do a month's worth of work in a matter of hours! Yet we still have the same quotas that we had before it was broken. In fact, when will we get more funding at all? Most of my people are now going on 10 months without a single dollar from this work, and the few dollars we do have can barely keep this facility on its knees. \n When will research stop taking half of the colony's funds? Yes, I know they have some super secret W-Y corporate project, but in all honesty not a single word about that project has come out of the labs. Do you really want to trust a project you don’t even know about? \n Let me know ASAP if and when we may be getting funding. I am afraid I cannot keep their hopes up much longer... \n - Meng"
+
+/obj/item/paper/bigred/smuggling
+	name = "Folded note"
+	info = "Alright Jeff, I know you still owe me after standing up for you when you got caught with a whole pill bottle of mindbreaker. Remember how I got you out of 15 years in the slammer? \n Anyways, I have a special task for you that you can do to repay me. \n <p> Whenever you unload a cargo container look for any crate with a blue hexagon on it. </p>  <p>Upon finding one, DO NOT OPEN it under ANY circumstances, and keep it away from anyone else. You then bring it to virology, specifically the back of the lobby where there is a hole into the caves. </p> \n <p> Then, leave it at the nearest crevice to the right and my men will take it. Should there be any backup, just stack it on top.</p> \n<p> Easy, right? Just moving cargo. If anyone asks what’s in it, it’s just power tools. </p> \n <p> Good luck, I'll slide you a few blunts of space weed that we have as a tip if you work well. </p>"
+	color = "grey"
+
+/obj/item/paper/bigred/witness
+	name = "Journal of the witness"
+	info = "Throughout history, humans have been fighting evil. Whether that be communists, slackers, liberals, assholes, or your boss, those evils are all eventually dealt with one way or another. <p> However, there is one that I have seen with my own eyes when I snuck into Lambda caves, an organism that reeks of so much evil that it immediately fills you with rage and terror. \n After I saw it, I realized the sheer insanity of this administration to even allow this monstrosity in our colony. \n Into... my colony ... my HOME for fucks sakes, and I have to LIVE with these chucklefuck bastards who are too blind by their idiocy and corporate percentages to even realise the evil that they have brought here."
+	color = "green"
+/obj/item/paper/bigred/them
+	name = "THEM"
+	color = "green"
+	info = "<p>I can't fucking take it, I am fully convinced with ZERO doubt that the entire colony administration is controlled by THEM. Those fucking THINGs that are so outrageously evil that calling them monsters would be an insult to monsters.</p> <p> I get why they are hiding them now, because they are their actual masters. Controlling the will of the colony and threatening the entire human race.</p> \n <p> Those... things are not the experiments being experimented on by our scientists, but rather we are the experiments for THEM! </p> \n And they don't want anyone not controlled by them to know about it. I bet if everyone knew about it, the lambda secret labs would be burned to the ground within hours... if only there was a way we could do that..."
+
+/obj/item/paper/bigred/crazy
+	name = "THEY ARE COMING FOR ME"
+	info = "Fuck man, I have tried and tried to tell people, from my co-workers and friends to anyone who would listen to me. Each and every single time I have been called crazy. <p> Then recently THEY took notice, and started sending their minions against me, almost everywhere i go outside of the caves, there is constantly a marshal on my ass, stalking me at least 30 feet away. They KNOW and they want me silenced or dead. </p> \n Then one day the head of security himself, Jim FUCKING Hamilton instructed me to stop \" spreading rumors \" or face consequences. <p> <b> No, I will not follow what a mere puppet wants me to do, a lap dog being controlled by THEM!</b>  </p> \n \n There is some hope, however. There is word going around of a mutiny at my workplace. The miners will rise up and forcibly take control of the administration, and their leader has agreed with me to investigate lambda and expose it once and for all!. <p> However, I can’t just leave them exposed with their twisted secrets uncovered. They’re too dangerous to be left alive and they are going to find some way to escape justice. When the mutiny happens, I will shoot my way through the security to find the thermobaric explosives that were mistakenly sent here, transport them amidst the chaos to the secret lab, and save the colony and ALL of humanity by obliterating it.  </p>"
+	color = "green"
+
+/obj/item/paper/bigred/final
+	name = "Final entry"
+	color = "green"
+	info =  "<p> I could not do it, the fucking marshals, the minions of THEM, have gotten a whiff of my co-workers plans and started raiding us pre-emptively. We managed to get word of it and erected a few barricades to slow them down, but it is too late. Our plan, my plan to save humanity has turned to dust. </p> As I lay and write this, they are gassing the entire area with tear gas, while gunshots echo around the caves. \n  They have gotten to my mind already, their voices are... laughing, saying that, \" it's over \" and that \n “we have risen\". Their voices are mocking me as I could do nothing to prevent their rise \n Just as I am about to finish my final entry, I overhear a few panicked radio calls from a dead officer's radio, about a code red lambda breach, and \" X-RAYS OUT OF CONTAINMENT\". \n However, not a single one of their cries has been met with a response as their fellow officers are too preoccupied with beating up poor miners... \n <b> They have won.... they have PLANNED THIS all along.... </b> \n only God may save us now..."
 
 /obj/item/paper/crumpled
 	name = "paper scrap"
@@ -578,6 +619,7 @@
 	generate()
 
 /obj/item/paper/research_notes/proc/generate()
+	is_objective = TRUE
 	if(!note_type)
 		note_type = pick(prob(50);"synthesis",prob(35);"grant",prob(15);"test")
 	var/datum/reagent/generated/C = data
@@ -695,7 +737,7 @@
 	chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
 	data = C
-	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
 	. = ..()
 
 /obj/item/paper/research_notes/grant
@@ -795,15 +837,21 @@
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
 
-/obj/item/paper/fingerprint/Initialize(mapload, var/criminal_name = "", var/criminal_rank = "", var/criminal_squad = "", var/description = "")
+/obj/item/paper/fingerprint/Initialize(mapload, var/list/prints)
 	. = ..()
-	var/template = {"\[center\]\[logo\]\[/center\]
-		\[center\]\[b\]\[i\]Fingerprint Sample From [criminal_name]\[/b\]\[/i\]\[hr\]
+	var/template = {"\[center\]\[logo\]\[/center\]"}
+
+	var/i = 0
+	for(var/obj/effect/decal/prints/print_set in prints)
+		i++
+		template += {"\[center\]\[b\]\[i\]Fingerprint Sample #[i]\[/b\]\[/i\]\[hr\]
 		\[small\]
-		Name: [criminal_name]\[br\]
-		Rank: [criminal_rank]\[br\]
-		Squad: [criminal_squad]\[br\]
-		Description [description]\[br\]
+		Name: [print_set.criminal_name]\[br\]
+		Rank: [print_set.criminal_rank]\[br\]
+		Squad: [print_set.criminal_squad]\[br\]
+		Description: [print_set.description]\[br\]
 		\[/small\]
-		\[/center\]"}
+		\[/center\]
+		\[br\]"}
+
 	info = parsepencode(template, null, null, FALSE)

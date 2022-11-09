@@ -222,6 +222,11 @@
 		var/datum/hive_status/hive = GLOB.hive_datum[L.hivenumber]
 		L.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		playsound(L, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
+		if(L.client)
+			L.set_lighting_alpha_from_prefs(L.client)
+
+		L.attack_log += "\[[time_stamp()]\]<font color='red'> chestbursted from [key_name(victim)]</font>"
+		victim.attack_log += "\[[time_stamp()]\]<font color='orange'> Was chestbursted, larva was [key_name(L)]</font>"
 
 		if(burstcount)
 			step(L, pick(cardinal))
@@ -241,23 +246,25 @@
 		if(!victim.first_xeno)
 			to_chat(L, SPAN_XENOHIGHDANGER("The Queen's will overwhelms your instincts..."))
 			to_chat(L, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
+			log_attack("[key_name(victim)] chestbursted, the larva was [key_name(L)].") //this is so that admins are not spammed with los logs
 
 	for(var/obj/item/alien_embryo/AE in victim)
 		qdel(AE)
 
+	var/datum/cause_data/cause = create_cause_data("chestbursting", src)
 	if(burstcount >= 4)
-		victim.gib("chestbursting")
+		victim.gib(cause)
 	else
 		if(ishuman(victim))
 			var/mob/living/carbon/human/H = victim
-			H.last_damage_data = create_cause_data("chestbursting", null)
+			H.last_damage_data = cause
 			var/datum/internal_organ/O
 			var/i
 			for(i in list("heart","lungs")) //This removes (and later garbage collects) both organs. No heart means instant death.
 				O = H.internal_organs_by_name[i]
 				H.internal_organs_by_name -= i
 				H.internal_organs -= O
-		victim.death(create_cause_data("chestbursting", src)) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
+		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
 

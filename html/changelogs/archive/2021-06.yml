@@ -1,0 +1,452 @@
+2021-06-01:
+  GoldenDarkness55:
+  - tweak: Changed lurker alpha from 35 to 25
+2021-06-02:
+  Nanu:
+  - rscdel: Removed trucks from Big Red.
+  - maptweak: Reworked the garage near Lz1 on Big Red.
+  - bugfix: Fixed some area issues near virology.
+  - rscdel: Removed trucks from LV.
+  - maptweak: Added back the Corporate Dome, this time with some changes to itself.
+  - bugfix: Replaced a lot of old types of Reinforced Tables with new types.
+2021-06-03:
+  forest2001:
+  - bugfix: Fixed me being stupid. Translator works again.
+2021-06-04:
+  Cakey:
+  - bugfix: Fixes gibbing related runtimes for death tracking.
+  - bugfix: Fixes runtimes caused by wildfires
+  Carlarc:
+  - rscadd: You can now uproot xeno fruits as a marine, though the result won't necessarily
+      be fully edible.
+  - tweak: Added a new chemical property.
+  Foolosopher:
+  - tweak: Bandage, ointments and splints can now be applied to the selected limb
+      by simply clicking/activating the item
+  Segrain:
+  - bugfix: Fixed sound for dividing wall in containment cells.
+  TheDonkified:
+  - bugfix: Can no longer place people on roller beds if there is something blocking
+      the path between you and the roller bed (example, LV fog).
+2021-06-05:
+  50RemAndCounting:
+  - tweak: Reduced the LV fog timer by 10 minutes.
+  Aortae:
+  - tweak: Updated toilets to increase hunger when used.
+  - imageadd: Updated sink and toilet sprites. Added new animations for sink and toilet.
+  - soundadd: Added new sounds for sink and toilet.
+  Carlarc:
+  - tweak: The M4RA can now fire one-handed, including with the underbarrel attachments.
+  Nanu:
+  - tweak: The W-Y Deathsquad have gotten new names, they now start with "Whiteout".
+  - tweak: 'The W-Y Whiteout Team are made up of a modified Gen 1 Synth Type, they
+      are tough and extremely hard to kill due to their extra armor and health. '
+  - tweak: Buffed the /2 PMC Rifle due to it being powercrept by the Mk2. Gave it
+      a 15% dmg buff.
+  - tweak: Made synths be able to use grenades and guns with just a VV change.
+  NeroCavalier:
+  - rscadd: Gives XOs and SOs an extra large general pouch
+  TheDonkified:
+  - rscadd: Queen gets a building boost for the first 30 minutes of round start. This
+      boost applies to building while in ovi and removes both the building cooldown
+      and the plasma cost. However, the removed building cooldown only applies if
+      the turf is within 35 tiles of the hive core.
+  Vanagandr:
+  - bugfix: NO_PERMANENT_DAMAGE flag now prevents fractures as intended.
+  - tweak: Ravager Scissor Cut and Praetorian Pierce now use a more intuitive target
+      angle calculation. This is the same formula used for directional slash.
+2021-06-06:
+  Carlarc:
+  - rscadd: Replaced wallpiercing rounds with cluster rounds.
+  Firartix:
+  - bugfix: Fix mistake with forum link in BYOND pager server info
+2021-06-07:
+  Carlarc_Triiodine:
+  - rscadd: Added a hoverpack, admin-only for now.
+  TheDonkified:
+  - bugfix: Eggs will properly be triggered when pushing mobs or regurgitating mobs
+      on top of them.
+  - bugfix: Facehuggers will go through xenos when jumping at humans.
+  Vanagandr:
+  - rscadd: You can now PB at (almost) your gun's full normal fire rate. Provided
+      it's an otherwise valid PB (gun can PB, harm intent) an attempt that fails due
+      to no ammo, safety, gun on cooldown etc. won't add click delay. You *will* get
+      a delay if you miss and click a ground tile, at least until I get around to
+      reworking item attack delays (500+ overrides to dig through and adjust means
+      don't hold your breath).
+  - bugfix: Fixes a bug with suicide where you could turn the safety on or unwield
+      a gun that needed to be wielded to fire etc. before it finishes but it still
+      killed you.
+2021-06-08:
+  50RemAndCounting:
+  - rscadd: (Re)added the USCM Officer uniform and added the USCM standard uniform
+      to the CO dress vendor list.
+  - rscdel: Removed useless trap items, including the purchasable underslung grenade
+      launcher, the F2000 rifle, the VP78 pistol etc.
+  Firartix:
+  - tweak: rewrote ammobox transfer to properly account for changes while transfering
+  Jackie:
+  - bugfix: Non-lethal guns can no longer be used to suicide.
+  NeroCavalier:
+  - tweak: You can now see your hair when wearing a ushanka.
+  - rscadd: Added a color matching helmet for CIC staff.
+  - tweak: Made CO and SO armor contain 3 slots.
+  - rscadd: Added boot knives and shotgun scabbards to SO armory lockers.
+  Segrain:
+  - bugfix: White phosphorous rockets and flamer sentries once again work properly.
+  - bugfix: Vehicle hardpoints should now properly track the cause data of their shots.
+  TheDonkified:
+  - rscadd: Added fire delay groups to counteract gun-juggling combos that deal too
+      much burst damage.
+  - rscadd: After you have fired a MOU53, dropping it or storing it in one of your
+      inventory slots will incur a 1 second fire delay to firing any other MOU53s.
+  TheFlyingFlail:
+  - rscadd: Added New Survivors Types For LV-624
+  - rscadd: Added New Survivors Types For Solaris Ridge
+  - rscadd: Added New Survivors Types For Trijent Dam
+  - rscadd: Created Separate Interstellar Human Rights Watcher for Fionna and Soro
+  - tweak: Tweaked Survivor Loadouts For Soro Doctor, Researcher, and Interstellar
+      Human Rights Watcher
+  - tweak: Gave several doctors their missing health huds
+  - tweak: Tweaked Security and Colonial Marshall-type survivors so they have distinct
+      handguns for each map as opposed to the same throughout the maps.
+  - tweak: Tweaked Trucker and Chaplin Loadout
+  - bugfix: Fixed Spelling Error in researcher on all researchers
+  - bugfix: Fixed issue where survivors were spawning in without knives used for removing
+      shrapnel
+  Vanagandr:
+  - tweak: Stock and muzzle attachments now shift guns to one side or another, so
+      that the overall sprite remains centered. Theoretically it works on any item
+      in any inventory slot, but I can't think of any others that really need it.
+2021-06-09:
+  Benbot16:
+  - experiment: Tweaks research in a few different ways.
+  - rscadd: Research now gets a free research note when they buy a new clearance level.
+      New research notes are also slightly cheaper.
+  - tweak: OD and metabolization of custom chemicals now scales somewhat with chemical
+      level.
+  - tweak: Create mode's minimum cost is increased when using high-level properties,
+      or when using large amounts of properties.
+  - tweak: 'Chemical transmission is now limited by property level. This starts at
+      level 4, and increases by 1 every time clearance is raised. '
+  - rscdel: Roundstart sources of MST/NST properties have been removed.
+  - tweak: MST now makes you slightly hungrier.
+  Carlarc:
+  - rscadd: You can now grab items inside a storage container that are inside another
+      storage container. Like an injector in a firstaid kit in a satchel.
+  - rscadd: Alt-clicking most storage items draw the last item in them. (Except gun
+      belts, which draw the last non-gun item.)
+  - bugfix: Middle-click no longer swaps hands if you're using it to quickly open
+      a container. (Which is something you can do with middle click!)
+  - tweak: Added tips displaying the above.
+  NeroCavalier:
+  - rscadd: Adds Mk.1 magazine for 6 points to SL vendor
+  Vanagandr:
+  - bugfix: Re-enabled Triiodine's stump sprites on severed limbs.
+  naut:
+  - rscadd: A metric ton of changes to CO sidearms. See below.
+  - rscadd: CO's Desert Eagle has been buffed up to speed to rival the Mateba in stats.
+      Still inferior in damage to the Mateba but comes with more ammunition as a tradeoff.
+  - rscadd: New 'super' variants of Desert Eagle ammo added that only fit the CO Deagle(s).
+      Comes with massively buffed stats compared to the base (survivor) model.
+  - tweak: Swapped sprites of survivor Deagle and CO Deagle around. CO Deagle now
+      has wooden grips while the regular Deagle has rubberized ones.
+  - bugfix: Desert Eagle high-impact ammo can now properly stun and BE people.
+  - bugfix: Desert Eagle BEs are now role-locked to CO just like with the Mateba.
+  - soundadd: Desert Eagle firing sound changed. Now 150% meatier.
+  - rscadd: Commanding Officers are now able to choose their sidearm in Character
+      Preferences instead of in the vendor. Choices are the Mateba, Desert Eagle,
+      M4A3C and VP78. Commodores additionally get the golden Mateba and Desert Eagle.
+  - rscdel: Removed CO sidearms from the vendor (as they already spawn with it roundstart).
+  - tweak: Modified descriptions of CO sidearms.
+  - imageadd: New magazines and holster sprites for Desert Eagle.
+  - tweak: Point costs for items in CO vendor shifted a wee bit.
+  - bugfix: Admiral coat should no longer have a bugged sprite on non-LV maps.
+2021-06-10:
+  Firartix:
+  - tweak: allowed turf listing to relay middle click (eg. ability activation)
+  - bugfix: fixed recent issue breaking interactions with turf contents list
+  - bugfix: made pager status update periodically again
+  Foolosopher:
+  - bugfix: Fixed a bug where punching someone would always hit any limb except the
+      one targeted
+  TeDGamer:
+  - tweak: Acid runner macro is now selected instead of activated.
+  Triiodine:
+  - maptweak: removed all unnecessary hull walls on Kutjevo.
+  - maptweak: remapped south botany on Kutjevo.
+  - maptweak: removed majority ledges on Kutjevo.
+  - maptweak: remapped scrubland on Kutjevo.
+2021-06-11:
+  50RemAndCounting:
+  - wip: Added a new Experimental Tools vendor to synthetic prep, containing a limited
+      variety of specialized items oriented towards usage by synthetics, alongside
+      an initial set of items in it.
+  Mercadier:
+  - tweak: Made soda fountains and booze fountains wrenchable.
+  - tweak: Added some Tips of the Round.
+  NeroCavalier:
+  - tweak: Masterkeys can be attached to MK1s again.
+  Silencer_pl:
+  - bugfix: Stackable construction materials no longer can be exploited to attack
+      without any click delay.
+  TheDonkified:
+  - tweak: The climb time for ledges has been decreased from 1 second to 0.2 seconds.
+  Vanagandr:
+  - bugfix: Can no longer use the pick-up verb on mobs.
+  - bugfix: Fixed bug where it was possible to start multiple exclusive timed actions.
+      For ex. defibbing, splinting, possibly surgeries and various engi things as
+      well.
+  - bugfix: Gun scatter will no longer break burst target tracking.
+  - bugfix: If you're firing a PB burst with a gun that needs both hands to fire and
+      then unwield it, you will now stop firing
+  - tweak: Adjusted projectile knockback screenshake. Buck/plasma rifle hits no longer
+      cause shake beyond their 2 tile knockback range, ditto for heavy revolver shots
+      beyond 4 tiles. T3s don't get shaken by buck/heavy rev/plasma rifle hits. Slug/scout
+      rifle impact ammo hits cause screenshake to non-xenos again.
+  senjx:
+  - tweak: The CAS rocket pod has been renamed to missile pod. The AIM-224 Widowmaker
+      rocket has been renamed to AIM-224/B Widowmaker missile. Both are unchanged
+      in function.
+2021-06-12:
+  Carlarc:
+  - rscadd: 'Added a gamemode for admin HvH setup: Faction Clash. '
+  - rscadd: In FC, on non-station maps, exterior areas will gain dim brightness and
+      a rain effect will appear on this gamemode. Not much else will change from normal
+      extended settings.
+  - tweak: In FC, marines will be unable to peer down scopes, as they have 'fogged
+      up'. Sad!
+  - tweak: (Always) Humans can now snuff out flares after a short windup.
+  - tweak: Added an option in the Events Panel to disable CAS.
+  - rscadd: The extended barrel has been reworked to slightly increase bullet speed
+      and accuracy.
+2021-06-13:
+  Carlarc:
+  - tweak: Cleaned up fire code, allowing for fire damage to be properly reduced not
+      just nullified by fire armor.
+  - tweak: Due to code shenanigans, M35 armor now makes you immune to welder fuel
+      fire.
+  - tweak: Xenos dragging marines into fire no longer get ignited themselves.
+  TrollerNoob:
+  - bugfix: AGM-227 'Banshee' now properly spawns fire. It burns hot, but doesn't
+      last long.
+  - tweak: AGM-277 'Banshee' has now been efficiently fueled, resulting in less explosion
+      damage for a much higher fire intensity. Explosion fall off has been moderately
+      reduced. (175 explosion, 20 linear fall off, 50 burn intensity, 15 burn duration)
+  - tweak: GBU-67 'Keeper II' has had its explosion damage and fall off drastically
+      increased. It also hits laser-guided targets much quicker. (450 explosion, 100
+      exponential fall off)
+  - tweak: AIM-224 'Widowmaker' now has slightly less fall off. (300 explosion, 40
+      linear fall off)
+  - tweak: XN-99 'Napalm' now has orange fire, correctly conveying its identical intensity
+      to UTNapalm. (200 explosion, 25 linear fall off, 30 burn intensity, 60 burn
+      duration)
+  - tweak: Mini Rocket Stacks have been refitted, although there's no noticeable change.
+      (200 explosion, 44 linear fall off)
+  - tweak: Incendiary Mini Rocket Stacks were found to be overfueled. The fire now
+      affects a slightly smaller area. (200 explosion, 44 linear fall off, 20 burn
+      intensity, 25 burn duration)
+  - tweak: Laser Batteries have received some enhancements after extensive field testing.
+      They burn much, much hotter and have a bigger area of effect, but go out just
+      as fast. (75 burn intensity, 5 burn duration)
+  - tweak: All old explosion procs in dropship_ammo.dm have been converted to use
+      cell_explosion, making tweaking much easier. GAU has been left untouched for
+      now.
+2021-06-14:
+  Carnage068:
+  - tweak: Hedgehog Ravager health increased from 610 to 650. Explosion resist increased
+      by 20%.
+  - tweak: Hedgehog Fire Spikes ability cooldown decreased from 13 seconds to 10.
+      Projectiles increased from 7 to 8.
+  - tweak: Hedgehog's Shed Spikes ability no longer reduces their armor by an additional
+      10 for the duration of the lockout. Projectiles increased from 20 to 40. Movement
+      speed gain during lockout increased from 0.75 to 0.85.
+  - tweak: Hedgehog's bone chip shrapnel damage per tile-moved increased from 0.4
+      to 0.6.
+  Jeser:
+  - rscadd: Added access restrictions to ColMarTech Techpod Vendor based on user faction.
+      In Distress Beacon gamemode vendor's access is limited to USCM faction. New
+      access_settings_override variable in vendor allows staff to lift access restrictions.
+      In Whiskey Outpost gamemode access requirements are always lifted. In other
+      gamemodes access requirements are lifted by default, but can be limited by staff
+      to original as in Distress Beacon gamemode via toggling access_settings_override
+      variable.
+  - tweak: ColMarTech Techpod Vendor no longer will be accessible if area is unpowered.
+2021-06-15:
+  Jeser:
+  - tweak: Added confirmation for unpacking crates with machinery inside.
+  - tweak: Barrels, some guns and medical crates now drop metal sheets when unpacked.
+  - tweak: Made message that appears when vote starts easier to notice.
+  - tweak: Made sound played again when vote starts.
+2021-06-16:
+  TheDonkified:
+  - maptweak: Replaced a bunch of heavy reinforced walls with metal walls throughout
+      Fiorina Science Annex. This should allow for more flanking avenues.
+  - maptweak: Removed a lattice in the "Fiberbush Infestation" area to make a pushing
+      lane less congested.
+  Vanagandr:
+  - bugfix: Restored original 0.3s attackspeed to medical stacks, nanopaste, and cable
+      coil.
+  - bugfix: Fixed a runtime error with pyro backpack and patrol cap.
+2021-06-17:
+  TheDonkified:
+  - tweak: AP SMG damage nerfed from 35 to 28.
+  - tweak: Removed damage tier system.
+  - tweak: Crusher charge now applies frontal directional armor. When charging, your
+      frontal armor is 45.
+  - tweak: Windup pounces now make you face towards where you're charging. You only
+      face North/South/East/West though, so your direction during diagonal charges
+      will be a bit weird.
+  - bugfix: Crusher charge deals damage to walls again.
+2021-06-18:
+  Jeser:
+  - bugfix: MED APC interior triage decals were finally bolted to the floor and won't
+      jump into a pile at first wall hit anymore.
+  - tweak: MED APC interior IVs are now anchored and won't be flying around interior
+      trying to hit you in the eye either.
+2021-06-20:
+  50RemAndCounting:
+  - rscadd: 'Added an EMP grenades crate, to be used for admin spawns and HVH events.
+      Filepath for staff with gpanel access: /obj/structure/closet/crate/empexplosives'
+  Benbot16:
+  - bugfix: Hydroponics plants that had unique reagents now have them again (For example,
+      corn oil in corn)
+  Cakey:
+  - rscadd: Resin structures like spikes, acid pillars and reflective walls will now
+      correctly track the respective builder mobs when tracking damage.
+  - tweak: Resin traps will now track their last filler mob as the mob to pass when
+      tracking damage caused by acid and gas traps
+  - bugfix: chemistry reagents should now properly track the last person to apply
+      them to something.
+  - tweak: Sentry explosions will now track their owner mob when tracking damage dealt.
+  Carlarc:
+  - bugfix: Fixed trapper acid mines and traps being unable to be fired at max vision
+      range.
+  - bugfix: Fixed unskilled humans being immune to bonebreaks.
+  Nimiety:
+  - tweak: Swapped almayer medical medic satchels for uscm ones
+  TheDonkified:
+  - tweak: Nerfed the Fortifying Weeds cost per minute scaling. Each percentage of
+      fortifying weeds past 5% costs 0.078 tech points compared to 0.055 before.
+2021-06-22:
+  Cakey:
+  - rscadd: Individual round information and their outcomes are now stored in the
+      database.
+  - rscadd: Global per-map information is now stored in the database.
+  - tweak: Custom chemicals will now be tracked as generic custom chemicals in the
+      death tracker.
+  - rscadd: Medals are now tracked in the database.
+2021-06-24:
+  Carlarc:
+  - bugfix: Fixed PMC/Whiteout OP smartgun MD.
+  monkeysfist:
+  - imageadd: Added poster sprites.
+  naut:
+  - tweak: Shipside synthetics are now insulated from shocks.
+  - tweak: CIC tablet now has the ability to view the tactical map.
+  - tweak: CIC tablet now shows the signature of the person who sent it, just like
+      the CIC ops console.
+  - bugfix: Fixed admiral jacket icon breaking on different maps.
+2021-06-25:
+  Jeser:
+  - bugfix: Fixed being unable to fold portable barricades that were mapped/spawned
+      as structures.
+2021-06-26:
+  TheDonkified:
+  - tweak: Cleanable (ie blood) overlays should now be deletable from maps.
+  Triiodine:
+  - experiment: 'Re-mapped and updated Ice Colony. Renamed Ice Colony to in-universe
+      name: Shivas Snowball.'
+  - maptweak: Replaced the Almayer CIC, Dropship, and CL telephones with rotary desk
+      phones.
+  - maptweak: Added a hula girl bobble to the Alamo dash.
+  - maptweak: Added something the Charlie's stole during shoreleave to Delta-Charlie
+      extended operation bunks.
+  - imageadd: Added editor icons for various technical objects and landmarks often
+      used in the map making process. Should make maps in-editor more readable.
+  - rscadd: Added squad colored flags. They can be found on Shivas Snowball, and maybe
+      other maps in the future!
+  - bugfix: Fixed some broken typepaths on the USS Almayer and Sorokyne Strate.
+2021-06-27:
+  Cakey:
+  - bugfix: The Walkman now plays musical notes when playing in-ear again.
+  Carlarc:
+  - tweak: Marines will now eat MREs instead of nibbling them.
+  Nanu:
+  - bugfix: Hull walls on Ice Colony can no longer be breached.
+  - rscadd: Updates the Header for the Changelog.
+  benbot16:
+  - rscadd: 'OTs can now create custom flamer tanks. The fuel usage rates of these
+      tanks can be changed, allowing for longer ranges and better fuel duration at
+      the expense of fuel usage. '
+  - tweak: 'Slightly lowered the duration/intensity penalties on Oxidizing, Fueling,
+      and Flowing properties. This should only apply to flamer fire, not custom explosives. '
+  forest2001:
+  - tweak: Shipside Synthetics can now be Generation 1, with no stat change
+  - tweak: Repathed synthetic species.
+  - tweak: Repathed synthetic mobs.
+  - tweak: Synthetics no longer have increased burn water resistance.
+  monkeysfist:
+  - bugfix: Fixed incorrect game date. Date had been change to 2182
+2021-06-28:
+  Jeser:
+  - bugfix: Entering vans via back now moves you to the inside of the interior instead
+      of dark cold abyss nearby.
+  Mercadier:
+  - tweak: Blood vendors should now be wrenchable and hackable.
+  Triiodine:
+  - bugfix: Fixes the Normandy LZ being unavailable as a primary LZ on Shivas Snowball
+      (Ice V3)
+2021-06-29:
+  NeroCavalier:
+  - rscadd: Helmets now have a verb that hides your hair to prevent it from clipping
+      through. It is off by default.
+  TheDonkified:
+  - tweak: SMG starts experiencing falloff after travelling 4 tiles. Each tile past
+      its effective range reduces damage by 10. This mainly applies to basic SMG ammo,
+      AP, and HV.
+  - tweak: Pistols starts experiencing falloff after travelling 4 tiles. Each tile
+      past its effective range reduces damage by 7.
+  - tweak: Rifles starts experiencing falloff after travelling 7 tiles. Each tile
+      past its effective range reduces damage by 5.
+  - tweak: Removed damage falloff values for ammo types that did not utilize it.
+  - tweak: Accuracy penalty for ammo type being past its accurate range increased
+      from 5 to 10.
+  - tweak: Added 0.5 seconds to MOU fire delay group.
+  Vanagandr:
+  - rscdel: Removed unused target zone override for item melee.
+  - rscdel: Removed vestigial impact icon system, since nothing used it. Commented
+      shotgun slug/mateba hits didn't make sense; they were blatantly lethal, yet
+      even non-fatal hits caused displayed them.
+  - tweak: Tweaked Triiodine's mateba/shotgun slug headshot graphics into light, medium,
+      and heavy headshot effects, assigned them to bullets accordingly. Shotgun =
+      heavy, small pistols = light, most things = medium.
+  - rscadd: Executions and suicide now have gory wound effects which are layered above
+      hair but below hats/helmets. You know what you have to do.
+  - tweak: Suicide can no longer decap, fiddled with suicide/execution damage a little.
+  Vicacrov:
+  - rscadd: 'Xenomorph nest - Once a humanoid is nested, it gets a 4-second timer.
+      While this timer is active, the human cannot be unnested by Xenomorphs, to avoid
+      accidental unnesting. This timer does NOT affect humans, they can still instantly
+      unnest each other. '
+  - rscdel: Xenomorph nest - Removed the deprecated re-nesting cooldown that was added
+      to combat the infinite unnesting-renesting cycle, as marines can no longer break
+      out of their nests.
+  - bugfix: Xenomorph nest - Fixed a bug where human mobs without a mind did not get
+      their lights and motion detectors turned off, once being nested.
+  forest2001:
+  - tweak: Bracer shock checks for species group now instead of species name.
+  - tweak: Hunter verbs now check for the relevant trait instead of species.
+  monkeysfist:
+  - imageadd: Added more posters.
+2021-06-30:
+  BelleCl:
+  - rscadd: New hairstyle called "Ponytail 6".
+  - tweak: Slight edit to an older hairstyle to fit helmets and hats better.
+  Jeser:
+  - tweak: Buffed CMD APC sensor radius from 32 to 45 tiles due to old radius being
+      clearly lacking considering once a minute tactical map updates.
+  monkeysfist:
+  - rscadd: Marines can now remove the jacket from their BDUs. So far only works on
+      all non-snow ground pounder BDU types and basic UPP BDU.
+  - tweak: Restored old, higher contrast, skull facepaint.

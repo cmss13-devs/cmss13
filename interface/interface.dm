@@ -35,6 +35,18 @@
 		to_chat(src, SPAN_DANGER("The rules URL is not set in the server configuration."))
 	return
 
+/client/verb/changelog()
+	set name = "Changelog"
+	set category = "OOC"
+	if(!GLOB.changelog_tgui)
+		GLOB.changelog_tgui = new /datum/changelog()
+
+	GLOB.changelog_tgui.tgui_interact(mob)
+	if(prefs.lastchangelog != GLOB.changelog_hash)
+		prefs.lastchangelog = GLOB.changelog_hash
+		prefs.save_preferences()
+		winset(src, "infowindow.changelog", "font-style=;")
+
 /client/verb/discord()
 	set name = "Discord"
 	set desc = "Join our Discord! Meet and talk with other players in the server."
@@ -57,79 +69,17 @@
 	set name = "Set FPS"
 	set desc = "Set client FPS. 20 is the default"
 	set category = "Preferences"
-	var/fps = input(usr,"New FPS Value. 0 is server-sync. Higher values cause more desync. Values over 30 not recommended.","Set FPS") as num
+	var/fps = tgui_input_number(usr,"New FPS Value. 0 is server-sync. Higher values cause more desync. Values over 30 not recommended.","Set FPS", 0, MAX_FPS, MIN_FPS)
 	if(world.byond_version >= 511 && byond_version >= 511 && fps >= MIN_FPS && fps <= MAX_FPS)
 		vars["fps"] = fps
 		prefs.fps = fps
 		prefs.save_preferences()
 	return
 
-/client/verb/hotkeys_help()
-	set name = "hotkeys-help"
-	set category = "OOC"
-
-	var/hotkey_mode = {"<font color='purple'>
-Hotkey-Mode: (hotkey-mode must be on)
-\tTAB = toggle hotkey-mode
-\ta = left
-\ts = down
-\td = right
-\tw = up
-\tq = drop
-\te = equip
-\tshift+e = sidearm equip
-\tr = throw
-\tt = say
-\tx = swap-hand
-\tz = activate held object (or y)
-\t1 = help-intent
-\t2 = disarm-intent
-\t3 = grab-intent
-\t4 = harm-intent
-</font>"}
-
-	var/other = {"<font color='purple'>
-Any-Mode: (hotkey doesn't need to be on)
-\tCtrl+a = left
-\tCtrl+s = down
-\tCtrl+d = right
-\tCtrl+w = up
-\tCtrl+q = drop
-\tCtrl+e = equip
-\tCtrl+r = throw
-\tCtrl+x = swap-hand
-\tCtrl+z = activate held object (or Ctrl+y)
-\tCtrl+1 = help-intent
-\tCtrl+2 = disarm-intent
-\tCtrl+3 = grab-intent
-\tCtrl+4 = harm-intent
-\tNum1 = swap target between right leg and right foot
-\tNum2 = target groin
-\tNum3 = swap target between left leg and left foot
-\tNum4 = swap target between right arm and right hand
-\tNum5 = target chest
-\tNum6 = swap target between left arm and left hand
-\tNum8 = swap target between head, eyes, and mouth
-\tDEL = pull
-\tINS = cycle-intents-right
-\tHOME = drop
-\tPGUP = swap-hand
-\tPGDN = activate held object
-\tEND = throw
-</font>"}
-
-	var/admin = {"<font color='purple'>
-Admin:
-\tF5 = Aghost (admin-ghost)
-\tF6 = player-panel
-\tF7 = admin-pm
-\tF8 = Invisimin
-</font>"}
-
-	to_chat(src, hotkey_mode)
-	to_chat(src, other)
-	if(admin_holder)
-		to_chat(src, admin)
+/client/verb/edit_hotkeys()
+	set name = "Edit Hotkeys"
+	set category = "Preferences"
+	prefs.macros.tgui_interact(usr)
 
 /client/var/client_keysend_amount = 0
 /client/var/next_keysend_reset = 0

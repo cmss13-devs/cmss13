@@ -1,3 +1,5 @@
+/obj/effect/decal
+	plane = FLOOR_PLANE
 
 // Used for spray that you spray at walls, tables, hydrovats etc
 /obj/effect/decal/spraystill
@@ -22,7 +24,7 @@
 		check_reactions(get_step(src, get_dir(src, A)))
 	else
 		check_reactions()
-	tiles_left -= 1
+	tiles_left--
 	if(tiles_left)
 		addtimer(CALLBACK(src, .proc/move_towards, A, move_delay, tiles_left), move_delay)
 	else
@@ -40,24 +42,16 @@
 		// Are we hitting someone?
 		if(ishuman(A))
 			// Check what they are hit with
-			var/reagent_list_text		// The list of reagents
-			var/counter = 0				// Used for formatting
-			var/log_spraying = FALSE	// If it worths logging
+			var/list/reagent_list = list()
 			for(var/X in reagents.reagent_list)
 				var/datum/reagent/R = X
 				// Is it a chemical we should log?
 				if(R.spray_warning)
-					if(counter == 0)
-						reagent_list_text += "[R.name]"
-					else
-						reagent_list_text += ", [R.name]"
+					reagent_list += "[R]"
 
 			// One or more bad reagents means we log it
-			if(!counter)
-				log_spraying = TRUE
-
-			// Did we have a log-worthy spray? Then we log it
-			if(log_spraying && source_user)
+			if(length(reagent_list) && source_user)
+				var/reagent_list_text = english_list(reagent_list)
 				var/mob/living/carbon/human/M = A
 				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been sprayed with [name] (REAGENT: [reagent_list_text]) by [key_name(source_user)]</font>")
 				source_user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \a [name] (REAGENT: [reagent_list_text]) to spray [key_name(M)]</font>")

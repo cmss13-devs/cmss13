@@ -168,6 +168,21 @@
 	if (..(SC))
 		contraband_enabled = SC.can_order_contraband
 
+/obj/item/circuitboard/computer/supplycomp/vehicle
+	name = "Circuit board (vehicle ASRS console)"
+	build_path = /obj/structure/machinery/computer/supplycomp/vehicle
+	var/spent = FALSE //so that they can't just reconstruct the console to get another APC
+	var/tank_unlocked = FALSE
+
+/obj/item/circuitboard/computer/supplycomp/vehicle/construct(var/obj/structure/machinery/computer/supplycomp/vehicle/SCV)
+	if (..(SCV))
+		SCV.spent = spent
+		SCV.tank_unlocked = tank_unlocked
+
+/obj/item/circuitboard/computer/supplycomp/vehicle/deconstruct(var/obj/structure/machinery/computer/supplycomp/vehicle/SCV)
+	if (..(SCV))
+		spent = SCV.spent
+		tank_unlocked = SCV.tank_unlocked
 
 /obj/item/circuitboard/computer/operating
 	name = "Circuit board (Operating Computer)"
@@ -234,7 +249,7 @@
 			to_chat(user, SPAN_DANGER("Circuit controls are locked."))
 			return
 		var/existing_networks = jointext(network,",")
-		var/input = strip_html(input(usr, "Which networks would you like to connect this camera console circuit to? Seperate networks with a comma. No Spaces!\nFor example: military,Security,Secret ", "Multitool-Circuitboard interface", existing_networks))
+		var/input = strip_html(input(usr, "Which networks would you like to connect this camera console circuit to? Separate networks with a comma. No Spaces!\nFor example: military,Security,Secret ", "Multitool-Circuitboard interface", existing_networks))
 		if(!input)
 			to_chat(usr, "No input found please hang up and try your call again.")
 			return

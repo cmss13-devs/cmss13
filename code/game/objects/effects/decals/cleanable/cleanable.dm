@@ -73,9 +73,7 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	cleaned_up = TRUE
 	if(!cleanable_turf?.cleanables[cleanable_type])
 		return
-	if(overlayed_image)
-		cleanable_turf.overlays -= overlayed_image
-		overlayed_image = null
+	clear_overlay()
 	if(!QDELING(cleanable_turf.cleanables[cleanable_type]))
 		qdel(cleanable_turf.cleanables[cleanable_type])
 	LAZYREMOVE(cleanable_turf.cleanables, cleanable_type)
@@ -85,3 +83,8 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	overlayed_image.appearance = appearance
 	cleanable_turf.overlays += overlayed_image
 	moveToNullspace() // This obj should not be on the turf for performance
+
+/obj/effect/decal/cleanable/proc/clear_overlay()
+	if(overlayed_image)
+		cleanable_turf.overlays -= overlayed_image
+		overlayed_image = null

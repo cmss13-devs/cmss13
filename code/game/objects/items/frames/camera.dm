@@ -39,6 +39,9 @@
 		if(1)
 			// State 1
 			if(iswelder(W))
+				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
 				if(weld(W, user))
 					to_chat(user, "You weld the assembly securely into place.")
 					anchored = 1
@@ -65,7 +68,9 @@
 				return
 
 			else if(iswelder(W))
-
+				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
 				if(weld(W, user))
 					to_chat(user, "You unweld the assembly from it's place.")
 					state = 1
@@ -78,7 +83,7 @@
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
-				var/input = strip_html(input(usr, "Which networks would you like to connect this camera to? Seperate networks with a comma. No Spaces!\nFor example: military, Security,Secret ", "Set Network", "military"))
+				var/input = strip_html(input(usr, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: military, Security,Secret ", "Set Network", "military"))
 				if(!input)
 					to_chat(usr, "No input found please hang up and try your call again.")
 					return
@@ -159,6 +164,7 @@
 	if(user.action_busy)
 		return 0
 	if(!WT.isOn())
+		to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 		return 0
 
 	to_chat(user, SPAN_NOTICE("You start to weld the [src].."))
@@ -166,6 +172,7 @@
 	WT.eyecheck(user)
 	if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return 0
 		return 1
 	return 0

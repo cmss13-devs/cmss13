@@ -1,12 +1,15 @@
 /.git
+/.gitlab-ci.yml
+/.github
+/.vscode
 /*.txt
+/bin
 /tmp
 /data
 /cfg
 /scripts
 /.gitlab
 /.vscode
-/.gitlab-ci.yml
 /tools/dmitool
 /tools/runtimes
 /local.db*
@@ -16,3 +19,4 @@
 *.rsc.dyn
 *.log
 *.lk
+

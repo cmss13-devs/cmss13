@@ -33,7 +33,7 @@
 
 /obj/structure/lz_sign/dam_sign
 	name = "Trijent landing sign"
-	desc = "A large sign that reads 'Trijent mining colony', with half the sign written in japanese.."
+	desc = "A large sign that reads 'Trijent mining colony', with half the sign written in Japanese.."
 	icon = 'icons/obj/structures/props/landing_signs.dmi'
 	icon_state = "dam_sign"
 
@@ -49,6 +49,11 @@
 /obj/structure/lz_sign/sorokyne_sign/interior
 	desc = "A large sign that reads 'Sorokyne - СОРОКІНО - POP. 110' The Company logo is proudly emblazoned in the corner. Someone has crudely written 'FUCK OFF' in teal paint across the majority of the sign."
 	icon_state = "sorokyne_sign_2"
+
+/obj/structure/lz_sign/new_varadero
+	name = "New Varadero landing sign"
+	desc = "A large sign that reads 'New Varadero'. Its always sunny here!"
+	icon_state = "new_varadero"
 
 /obj/structure/lz_sign/chigusa_sign //Relocated from Desert Dam code files.
 	name = "Chigusa Shipyard Sign"

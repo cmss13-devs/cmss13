@@ -14,7 +14,6 @@
 var/global/datum/entity/statistic/round/round_statistics
 var/global/list/datum/entity/player_entity/player_entities = list()
 var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracking_ids to tacbinos and signal flares
-
 /datum/game_mode
 	var/name = "invalid"
 	var/config_tag = null
@@ -28,13 +27,23 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	var/force_end_at = 0
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
+	/// When set and this gamemode is selected, the taskbar icon will change to the png selected here
+	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
+	var/static_comms_amount = 0
 	var/obj/structure/machinery/computer/shuttle_control/active_lz = null
 
 	var/datum/entity/statistic/round/round_stats = null
 
 	var/list/roles_to_roll
 
+	var/corpses_to_spawn = 0
+
 	var/hardcore = FALSE
+
+/datum/game_mode/New()
+	..()
+	if(taskbar_icon)
+		GLOB.available_taskbar_icons |= taskbar_icon
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	to_world("<B>Notice</B>: [src] did not define announce()")
@@ -61,6 +70,10 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 /datum/game_mode/proc/pre_setup()
 	SHOULD_CALL_PARENT(TRUE)
 	setup_structures()
+	if(static_comms_amount)
+		spawn_static_comms()
+	if(corpses_to_spawn)
+		generate_corpses()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
 	return 1
 
@@ -70,6 +83,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 
 ///Triggered when the dropship first lands.
 /datum/game_mode/proc/ds_first_landed(var/datum/shuttle/ferry/marine/m_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return
 
 /// Spawn structures relevant to the game mode setup, done before actual game setup. By default try to setup everything.
@@ -220,6 +235,33 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 		if(player.mind && (player.job in ROLES_COMMAND ))
 			heads += player.mind
 	return heads
+
+
+/datum/game_mode/proc/generate_corpses()
+	var/list/obj/effect/landmark/corpsespawner/gamemode_spawn_corpse = GLOB.corpse_spawns.Copy()
+	while(corpses_to_spawn--)
+		if(!length(gamemode_spawn_corpse))
+			break
+		var/obj/effect/landmark/corpsespawner/spawner = pick(gamemode_spawn_corpse)
+		var/turf/spawnpoint = get_turf(spawner)
+		if(spawnpoint)
+			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
+			M.create_hud() //Need to generate hud before we can equip anything apparently...
+			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
+		gamemode_spawn_corpse.Remove(spawner)
+
+/datum/game_mode/proc/spawn_static_comms()
+	for(var/i = 1 to static_comms_amount)
+		var/obj/effect/landmark/static_comms/SCO = pick_n_take(GLOB.comm_tower_landmarks_net_one)
+		var/obj/effect/landmark/static_comms/SCT = pick_n_take(GLOB.comm_tower_landmarks_net_two)
+		if(!SCO)
+			break
+		SCO.spawn_tower()
+		if(!SCT)
+			break
+		SCT.spawn_tower()
+	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_one)
+	QDEL_NULL_LIST(GLOB.comm_tower_landmarks_net_two)
 
 //////////////////////////
 //Reports player logouts//

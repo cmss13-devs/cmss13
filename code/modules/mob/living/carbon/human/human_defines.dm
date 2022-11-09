@@ -29,15 +29,14 @@
 	var/age = 30		//Player's age (pure fluff)
 	var/b_type = "A+"	//Player's bloodtype
 
-	var/underwear = 1	//Which underwear the player wants
-	var/undershirt = 0	//Which undershirt the player wants.
+	var/underwear = "Boxers (Camo Conforming)"	//Which underwear the player wants
+	var/undershirt = "Undershirt"	//Which undershirt the player wants.
 	var/backbag = 2		//Which backpack type the player has chosen. Satchel or Backpack.
 
 	var/datum/species/species //Contains icon generation and language information, set during New().
 
 	// General information
-	var/home_system = ""
-	var/citizenship = ""
+	var/origin = ""
 	var/personal_faction = ""
 	var/religion = ""
 
@@ -109,6 +108,9 @@
 	var/temporary_slowdown = 0 //Stacking slowdown caused from effects, currently used by neurotoxin gas
 	var/shield_slowdown = 0 // Slowdown from readying shields
 
+	var/datum/equipment_preset/assigned_equipment_preset
+	var/rank_fallback
+
 	var/datum/squad/assigned_squad	//the squad this human is assigned to
 	var/assigned_fireteam = 0		//the fireteam this human is assigned to
 	var/squad_status = null			//var for squad info window. Can be null, "M.I.A" and "K.I.A"
@@ -139,6 +141,8 @@
 	var/list/embedded_items = list() 	//A list of all the shrapnel currently embedded in the human
 
 	var/list/synthetic_HUD_toggled = list(FALSE,FALSE)
+
+	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
 	//Taken from update_icons
 	var/list/overlays_standing[TOTAL_LAYERS]

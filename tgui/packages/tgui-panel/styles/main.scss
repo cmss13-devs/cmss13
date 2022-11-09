@@ -22,7 +22,6 @@
 @include meta.load-css('~tgui/styles/atomic/debug-layout.scss');
 @include meta.load-css('~tgui/styles/atomic/outline.scss');
 @include meta.load-css('~tgui/styles/atomic/text.scss');
-@include meta.load-css('~tgui/styles/atomic/misc.scss');
 
 // Components
 @include meta.load-css('~tgui/styles/components/BlockQuote.scss');

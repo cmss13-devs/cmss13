@@ -95,7 +95,7 @@
 	mob.next_delay_update = world.time + mob.next_delay_delay
 
 /client/Move(n, direct)
-	if(world.time < next_movement)
+	if(world.time < next_movement || (mob.lying && mob.crawling))
 		return
 
 	next_move_dir_add = 0
@@ -113,13 +113,13 @@
 	if(mob.noclip)
 		switch(direct)
 			if(NORTH)
-				mob.y += 1
+				mob.y++
 			if(SOUTH)
-				mob.y -= 1
+				mob.y--
 			if(EAST)
-				mob.x += 1
+				mob.x++
 			if(WEST)
-				mob.x -= 1
+				mob.x--
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
@@ -131,7 +131,7 @@
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
-	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || !mob.on_movement())
+	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || (mob.lying && !mob.can_crawl))
 		return
 
 	//Check if you are being grabbed and if so attemps to break it
@@ -142,6 +142,10 @@
 			return
 		else if(!mob.resist_grab(TRUE))
 			return
+
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct) & COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK)
+		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+		return
 
 	if(mob.buckled)
 		return mob.buckled.relaymove(mob, direct)
@@ -158,12 +162,36 @@
 		if(mob.next_move_slowdown)
 			move_delay += mob.next_move_slowdown
 			mob.next_move_slowdown = 0
+		if((mob.flags_atom & DIRLOCK) && mob.dir != direct)
+			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
 
 		mob.last_move_intent = world.time + 10
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		//We are now going to move
-		moving = 1
+		moving = TRUE
 		mob.move_intentionally = TRUE
+		if(mob.lying)
+			//check for them not being a limbless blob (only humans have limbs)
+			if(ishuman(mob))
+				var/mob/living/carbon/human/human = mob
+				var/list/extremities = list("l_hand", "r_hand", "l_foot", "r_foot", "l_arm", "r_arm", "l_leg", "r_leg")
+				for(var/zone in extremities)
+					if(!(human.get_limb(zone)))
+						extremities.Remove(zone)
+				if(extremities.len < 4)
+					next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+					mob.move_intentionally = FALSE
+					moving = FALSE
+					return
+			//now crawl
+			mob.crawling = TRUE
+			if(!do_after(mob, 3 SECONDS, INTERRUPT_MOVED|INTERRUPT_UNCONSCIOUS|INTERRUPT_STUNNED|INTERRUPT_RESIST|INTERRUPT_CHANGED_LYING, BUSY_ICON_GENERIC))
+				mob.crawling = FALSE
+				next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+				mob.move_intentionally = FALSE
+				moving = FALSE
+				return
+		mob.crawling = FALSE
 		if(mob.confused)
 			mob.Move(get_step(mob, pick(cardinal)))
 		else
@@ -173,11 +201,11 @@
 				mob.tile_contents = list()
 		if(.)
 			mob.track_steps_walked()
-			mob.life_steps_total += 1
+			mob.life_steps_total++
 			if(mob.clone != null)
 				mob.update_clone()
 		mob.move_intentionally = FALSE
-		moving = 0
+		moving = FALSE
 		next_movement = world.time + move_delay
 	return
 
@@ -264,6 +292,3 @@
 
 	prob_slip = round(prob_slip)
 	return(prob_slip)
-
-/mob/proc/on_movement()
-	return TRUE

@@ -26,14 +26,11 @@
 	. = ..()
 	if(!next)
 		return
+	var/datum/tier/previous_tier = holder.tier
 	var/datum/tier/next_tier = holder.tree_tiers[next]
 	if(next_tier)
 		holder.tier = next_tier
-		/*
-		for(var/a in next_tier.tier_turfs)
-			var/turf/T = a
-			T.color = next_tier.color
-		*/
+		holder.on_tier_change(previous_tier)
 
 /datum/tech/transitory/get_tier_overlay()
 	if(!next)
@@ -46,7 +43,7 @@
 	return I
 
 /datum/tech/transitory/tier1
-	name = "Unlock tier 1"
+	name = "Unlock Tier 1"
 	tier = /datum/tier/free
 
 	flags = TREE_FLAG_MARINE|TREE_FLAG_XENO
@@ -54,80 +51,39 @@
 	next = /datum/tier/one
 
 /datum/tech/transitory/tier2
-	name = "Unlock tier 2"
+	name = "Unlock Tier 2"
 	tier = /datum/tier/one_transition_two
 
 	before = /datum/tier/one
 	next = /datum/tier/two
 
 /datum/tech/transitory/tier2/xeno
-	techs_to_unlock = 1
-	required_points = 10
+	techs_to_unlock = 0
+	required_points = 5
 
 	flags = TREE_FLAG_XENO
 
 /datum/tech/transitory/tier2/marine
-	techs_to_unlock = 2
-	required_points = 10
+	techs_to_unlock = 0
+	required_points = 5
 
 	flags = TREE_FLAG_MARINE
 
 /datum/tech/transitory/tier3
-	name = "Unlock tier 3"
+	name = "Unlock Tier 3"
 	tier = /datum/tier/two_transition_three
 
 	before = /datum/tier/two
 	next = /datum/tier/three
 
 /datum/tech/transitory/tier3/xeno
-	techs_to_unlock = 1
-	required_points = 15
+	techs_to_unlock = 0
+	required_points = 5
 
 	flags = TREE_FLAG_XENO
 
 /datum/tech/transitory/tier3/marine
-	techs_to_unlock = 2
-	required_points = 15
+	techs_to_unlock = 0
+	required_points = 5
 
 	flags = TREE_FLAG_MARINE
-
-/*
-/datum/tech/transitory/tier4
-	name = "Unlock tier 4"
-	tier = /datum/tier/three_transition_four
-
-	flags = TREE_FLAG_MARINE|TREE_FLAG_XENO
-
-	required_points = 0
-
-	before = /datum/tier/three
-	next = /datum/tier/four
-
-	// This is sadly disabled for now
-	var/control_points_needed = 0.5
-
-/datum/tech/transitory/tier4/check_tier_level(var/mob/M) // Can unlock this at any tier after 2
-	if(holder.tier.tier < initial(before.tier))
-		to_chat(M, SPAN_WARNING("You can't unlock this node!"))
-		return
-
-	/*
-	var/list/resources = SStechtree.resources
-
-	var/total = 0
-	var/controlled = 0
-	for(var/a in resources)
-		var/obj/structure/resource_node/R = a
-
-		if(!(R.z in GAME_PLAY_Z_LEVELS))
-			continue
-
-		if(R.tree == tree)
-			controlled++
-
-		total++
-
-	*/
-
-	return TRUE
-*/

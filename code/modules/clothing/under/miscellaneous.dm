@@ -16,8 +16,8 @@
 	icon_state = "scratch"
 
 /obj/item/clothing/under/sl_suit
-	desc = "It's a very amish looking suit."
-	name = "amish suit"
+	desc = "It's a very Amish-looking suit."
+	name = "Amish suit"
 	icon_state = "sl_suit"
 
 /obj/item/clothing/under/waiter
@@ -145,13 +145,6 @@
 	desc = "Includes shoes and plaid"
 	icon_state = "kilt"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_FEET
-
-/obj/item/clothing/under/gladiator
-	name = "gladiator uniform"
-	desc = "Are you not entertained? Is that not why you are here?"
-	icon_state = "gladiator"
-	flags_armor_protection = BODY_FLAG_CHEST
-
 
 //wedding stuff
 /obj/item/clothing/under/wedding

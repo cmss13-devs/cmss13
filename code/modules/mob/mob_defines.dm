@@ -6,6 +6,8 @@
 	var/mob_flags = NO_FLAGS
 	var/datum/mind/mind
 
+	var/icon_size = 32
+
 	// An ID that uniquely identifies this mob through the full round
 	var/gid = 0
 
@@ -13,7 +15,7 @@
 	var/chatWarn = 0 //Tracks how many times someone has spammed and gives them a no-no timer
 	var/talked = 0 //Won't let someone say something again in under a second.
 
-	var/obj/screen/hands = null //robot
+	var/atom/movable/screen/hands = null //robot
 
 	var/adminhelp_marked = 0 // Prevents marking an Adminhelp more than once. Making this a client define will cause runtimes and break some Adminhelps
 	var/adminhelp_marked_admin = "" // Ckey of last marking admin
@@ -27,6 +29,7 @@
 	I'll make some notes on where certain variable defines should probably go.
 	Changing this around would probably require a good look-over the pre-existing code.
 	*/
+	var/list/observers //The list of people observing this mob.
 	var/zone_selected = "chest"
 
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
@@ -41,6 +44,8 @@
 	var/next_move_slowdown = 0	// Amount added during the next movement_delay(), then is reset.
 	var/speed = 0 //Speed that modifies the movement delay of a given mob
 	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
+	var/crawling = FALSE
+	var/can_crawl = TRUE
 	var/monkeyizing = null	//Carbon
 	var/hand = null
 	var/eye_blind = null	//Carbon
@@ -61,6 +66,7 @@
 	var/sleeping = 0		//Carbon
 	var/resting = 0			//Carbon
 	var/paralyzed = 0		//Carbon
+	var/gibbing = FALSE
 	var/lying = FALSE
 	var/lying_prev = 0
 	var/canmove = 1
@@ -68,11 +74,17 @@
 	unacidable = FALSE
 	var/mob_size = MOB_SIZE_HUMAN
 	var/list/embedded = list()          // Embedded items, since simple mobs don't have organs.
-	var/list/languages = list()         // For speaking/listening.
+	var/list/datum/language/languages = list()         // For speaking/listening.
 	var/list/speak_emote = list("says") // Verbs used when speaking. Defaults to 'say' if speak_emote is null.
 	var/emote_type = 1		// Define emote default type, 1 for seen emotes, 2 for heard emotes
 
 	var/name_archive //For admin things like possession
+
+	///Override for sound_environments. If this is set the user will always hear a specific type of reverb (Instead of the area defined reverb)
+	var/sound_environment_override = SOUND_ENVIRONMENT_NONE
+
+	// Determines what the alpha of the lighting is to this mob.
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
 	/// List of active luminosity sources for handling of light stacking
 	var/list/atom/luminosity_sources
@@ -85,6 +97,9 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
+
+	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
+	var/default_honor_value = 1 // when killed by a yautja, this determines the minimum amount of honor gained
 
 	var/bodytemperature = 310.055	//98.7 F
 	var/old_x = 0
@@ -164,13 +179,14 @@
 	var/universal_understand = 0 // Set to 1 to enable the mob to understand everyone, not necessarily speak
 
 	var/immune_to_ssd = 0
+	var/aghosted = FALSE //If the mob owner is currently aghosted.
 
 	var/list/tile_contents = list()  //the contents of the turf being examined in the stat panel
 	var/tile_contents_change = 0
 
 	var/STUI_log = 1
 
-	var/away_timer = 0 //How long the player has been disconnected
+	var/away_timer = 0 //How long the player has not done an action.
 
 	var/recently_pointed_to = 0 //used as cooldown for the pointing verb.
 
@@ -201,6 +217,7 @@
 	appearance_flags = TILE_BOUND
 	var/mouse_icon = null
 
+	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel
 
 	var/datum/focus
@@ -216,3 +233,5 @@
 	var/move_on_shuttle = TRUE // Can move on the shuttle.
 
 	var/list/important_radio_channels = list()
+
+	var/datum/click_intercept

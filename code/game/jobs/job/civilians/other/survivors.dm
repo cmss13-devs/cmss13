@@ -7,6 +7,7 @@
 	total_positions = 8
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
+	var/is_synth = FALSE
 	var/intro_text
 	var/story_text
 
@@ -21,25 +22,34 @@
 	. = ..()
 	var/mob/living/carbon/human/H = .
 
-	var/obj/effect/landmark/survivor_spawner/spawner = pick(GLOB.survivor_spawns)
-	H.forceMove(get_turf(spawner))
+	var/list/potential_spawners = list()
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns)
+		if(spawner.check_can_spawn(H, is_synth))
+			potential_spawners += spawner
+	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
+	H.forceMove(get_turf(picked_spawner))
 
-	if(istype(spawner) && spawner.equipment)
-		arm_equipment(H, spawner.equipment, FALSE, TRUE)
-	else
+	var/has_equipment = FALSE
+	if(is_synth && picked_spawner.synth_equipment)
+		arm_equipment(H, picked_spawner.synth_equipment, FALSE, TRUE)
+		has_equipment = TRUE
+	else if(!is_synth && picked_spawner.equipment)
+		arm_equipment(H, picked_spawner.equipment, FALSE, TRUE)
+		has_equipment = TRUE
+	if(!has_equipment)
 		survivor_old_equipment(H)
 
-	if(istype(spawner) && spawner.roundstart_damage_max > 0)
-		for(var/i in 0 to spawner.roundstart_damage_times)
-			H.take_limb_damage(rand(spawner.roundstart_damage_min, spawner.roundstart_damage_max), 0)
+	if(picked_spawner.roundstart_damage_max > 0)
+		for(var/i in 0 to picked_spawner.roundstart_damage_times)
+			H.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
 
 	H.name = H.get_visible_name()
 
-	if(istype(spawner) && spawner.intro_text && length(spawner.intro_text))
-		intro_text = spawner.intro_text
+	if(length(picked_spawner.intro_text))
+		intro_text = picked_spawner.intro_text
 
-	if(istype(spawner) && spawner.story_text)
-		story_text = spawner.story_text
+	if(picked_spawner.story_text)
+		story_text = picked_spawner.story_text
 
 /datum/job/civilian/survivor/generate_entry_message(var/mob/living/carbon/human/H)
 	if(intro_text)
@@ -118,5 +128,7 @@
 	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
 
 AddTimelock(/datum/job/civilian/survivor, list(
-	JOB_SQUAD_ROLES = 3 HOURS
+	JOB_SQUAD_ROLES = 5 HOURS,
+	JOB_ENGINEER_ROLES = 5 HOURS,
+	JOB_MEDIC_ROLES = 5 HOURS
 ))

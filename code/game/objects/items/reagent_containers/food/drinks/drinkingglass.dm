@@ -136,9 +136,9 @@
 					name = "Glass of Vermouth"
 					desc = "You wonder why you're even drinking this straight."
 					center_of_mass = "x=16;y=12"
-				if("tequilla")
-					icon_state = "tequillaglass"
-					name = "Glass of Tequilla"
+				if("tequila")
+					icon_state = "tequilaglass"
+					name = "Glass of tequila"
 					desc = "Now all that's missing is the weird colored shades!"
 					center_of_mass = "x=16;y=12"
 				if("patron")
@@ -164,7 +164,7 @@
 				if("whiterussian")
 					icon_state = "whiterussianglass"
 					name = "White Russian"
-					desc = "A very nice looking drink. But that's just, like, your opinion, man."
+					desc = "A very nice-looking drink. But that's just, like, your opinion, man."
 					center_of_mass = "x=16;y=9"
 				if("screwdrivercocktail")
 					icon_state = "screwdriverglass"
@@ -194,11 +194,11 @@
 				if("bravebull")
 					icon_state = "bravebullglass"
 					name = "Brave Bull"
-					desc = "Tequilla and Coffee liquor, brought together in a mouthwatering mixture. Drink up."
+					desc = "tequila and Coffee liquor, brought together in a mouthwatering mixture. Drink up."
 					center_of_mass = "x=15;y=8"
-				if("tequillasunrise")
-					icon_state = "tequillasunriseglass"
-					name = "Tequilla Sunrise"
+				if("tequilasunrise")
+					icon_state = "tequilasunriseglass"
+					name = "tequila Sunrise"
 					desc = "Oh great, now you feel nostalgic about sunrises back on Terra..."
 					center_of_mass = "x=16;y=10"
 				if("phoronspecial")
@@ -213,7 +213,7 @@
 				if("manlydorf")
 					icon_state = "manlydorfglass"
 					name = "The Manly Dorf"
-					desc = "A manly concotion made from Ale and Beer. Intended for true men only."
+					desc = "A manly concoction made from Ale and Beer. Intended for true men only."
 					center_of_mass = "x=16;y=10"
 				if("irishcream")
 					icon_state = "irishcreamglass"
@@ -228,7 +228,7 @@
 				if("b52")
 					icon_state = "b52glass"
 					name = "B-52"
-					desc = "Kahlua, Irish Cream, and congac. You will get bombed."
+					desc = "Kahlua, Irish Cream, and cognac. You will get bombed."
 					center_of_mass = "x=16;y=10"
 				if("atomicbomb")
 					icon_state = "atomicbombglass"
@@ -258,7 +258,7 @@
 				if("vodkatonic")
 					icon_state = "vodkatonicglass"
 					name = "Vodka and Tonic"
-					desc = "For when a gin and tonic isn't russian enough."
+					desc = "For when a gin and tonic isn't Russian enough."
 					center_of_mass = "x=16;y=7"
 				if("manhattan")
 					icon_state = "manhattanglass"
@@ -268,7 +268,7 @@
 				if("manhattan_proj")
 					icon_state = "proj_manhattanglass"
 					name = "Manhattan Project"
-					desc = "A scienitst drink of choice, for thinking how to blow up the station."
+					desc = "A scientist drink of choice, for thinking how to blow up the station."
 					center_of_mass = "x=17;y=8"
 				if("ginfizz")
 					icon_state = "ginfizzglass"
@@ -433,7 +433,7 @@
 				if("soy_latte")
 					icon_state = "soy_latte"
 					name = "Soy Latte"
-					desc = "A nice and refrshing beverage while you are reading."
+					desc = "A nice and refreshing beverage while you are reading."
 					center_of_mass = "x=15;y=9"
 				if("cafe_latte")
 					icon_state = "cafe_latte"
@@ -488,7 +488,7 @@
 				if("irishcarbomb")
 					icon_state = "irishcarbomb"
 					name = "Irish Car Bomb"
-					desc = "An irish car bomb."
+					desc = "An Irish car bomb."
 					center_of_mass = "x=16;y=8"
 				if("syndicatebomb")
 					icon_state = "syndicatebomb"
@@ -573,7 +573,7 @@
 				if("rewriter")
 					icon_state = "rewriter"
 					name = "Rewriter"
-					desc = "The secret of the sanctuary of the Libarian..."
+					desc = "The secret of the sanctuary of the Librarian..."
 					center_of_mass = "x=16;y=9"
 				if("suidream")
 					icon_state = "sdreamglass"
@@ -631,6 +631,74 @@
 			desc = "Your standard drinking glass."
 			center_of_mass = "x=16;y=10"
 			return
+
+/obj/item/reagent_container/food/drinks/drinkingglass/attack(mob/living/target as mob, mob/living/user as mob)
+	if(!target)
+		return
+
+	if(user.a_intent != INTENT_HARM)
+		return ..()
+
+	force = 15
+
+	var/obj/limb/affecting = user.zone_selected
+	var/drowsy_threshold = 0
+
+	drowsy_threshold = CLOTHING_ARMOR_MEDIUM - target.getarmor(affecting, ARMOR_MELEE)
+
+	target.apply_damage(force, BRUTE, affecting, sharp=0)
+
+	if(affecting == "head" && iscarbon(target) && !isXeno(target))
+		for(var/mob/O in viewers(user, null))
+			if(target != user)
+				O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a glass of [name], by [user]!</B>")), 1)
+			else
+				O.show_message(text(SPAN_DANGER("<B>[target] hit \himself with a glass of [name] on the head!</B>")), 1)
+		if(drowsy_threshold > 0)
+			target.apply_effect(min(drowsy_threshold, 10) , DROWSY)
+
+	else //Regular attack text
+		for(var/mob/O in viewers(user, null))
+			if(target != user)
+				O.show_message(text(SPAN_DANGER("<B>[target] has been attacked with a glass of [name], by [user]!</B>")), 1)
+			else
+				O.show_message(text(SPAN_DANGER("<B>[target] has attacked \himself with a glass of [name]!</B>")), 1)
+
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has attacked [target.name] ([target.ckey]) with a glass!</font>")
+	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been smashed with a glass by [user.name] ([user.ckey])</font>")
+	msg_admin_attack("[user.name] ([user.ckey]) attacked [target.name] ([target.ckey]) with a glass (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+
+	if(reagents)
+		for(var/mob/O in viewers(user, null))
+			O.show_message(text(SPAN_NOTICE("<B>The contents of \the [src] splashes all over [target]!</B>")), 1)
+		reagents.reaction(target, TOUCH)
+
+	smash(target, user)
+
+	return
+
+/obj/item/reagent_container/food/drinks/drinkingglass/bullet_act(obj/item/projectile/P)
+	. = ..()
+	smash()
+
+/obj/item/reagent_container/food/drinks/drinkingglass/proc/smash(mob/living/target, mob/living/user)
+	var/obj/item/weapon/melee/broken_glass/B
+	if(user)
+		user.temp_drop_inv_item(src)
+		B = new /obj/item/weapon/melee/broken_glass(user.loc)
+		user.put_in_active_hand(B)
+	else
+		B = new /obj/item/weapon/melee/broken_glass(src.loc)
+	if(prob(33))
+		if(target)
+			new/obj/item/shard(target.loc) // Create a glass shard at the target's location!
+		else
+			new/obj/item/shard(src.loc)
+
+	playsound(src, "shatter", 25, 1)
+	transfer_fingerprints_to(B)
+
+	qdel(src)
 
 // for /obj/structure/machinery/vending/sovietsoda
 /obj/item/reagent_container/food/drinks/drinkingglass/soda

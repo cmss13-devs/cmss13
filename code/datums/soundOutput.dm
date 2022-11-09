@@ -4,7 +4,7 @@
 	var/list/soundscape_playlist 	= list() //Updated on changing areas
 	var/ambience 					= null //The file currently being played as ambience
 	var/status_flags 				= 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
-
+	var/list/echo
 /datum/soundOutput/New(client/C)
 	if(!C)
 		qdel(src)
@@ -22,66 +22,82 @@
 	S.frequency = T.frequency
 	S.falloff = T.falloff
 	S.status = T.status
-
+	S.echo = T.echo
 	if(T.x && T.y && T.z)
 		var/turf/owner_turf = get_turf(owner.mob)
-
 		if(owner_turf)
 			// We're in an interior and sound came from outside
 			if(owner_turf.z == GLOB.interior_manager.interior_z && owner_turf.z != T.z)
 				var/datum/interior/VI = GLOB.interior_manager.get_interior_by_coords(owner_turf.x, owner_turf.y)
 				if(VI && VI.exterior)
 					var/turf/candidate = get_turf(VI.exterior)
-					if(!(candidate.z == T.z))
+					if(candidate.z != T.z)
 						return // Invalid location
 					S.falloff /= 2
 					owner_turf = candidate
 			S.x = T.x - owner_turf.x
 			S.y = 0
 			S.z = T.y - owner_turf.y
+			var/area/A = owner_turf.loc
+			S.environment = A.sound_environment
+		S.y += T.y_s_offset
+		S.x += T.x_s_offset
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 
+	if(owner.mob.sound_environment_override != SOUND_ENVIRONMENT_NONE)
+		S.environment = owner.mob.sound_environment_override
+
 	sound_to(owner,S)
 
-/datum/soundOutput/proc/update_ambience(area/new_area, force_cur_amb)
-	if(!istype(new_area))
-		new_area = get_area(owner.mob)
+/datum/soundOutput/proc/update_ambience(area/target_area, ambience_override, force_update = FALSE)
+	var/status_flags = SOUND_STREAM
+	var/target_ambience = ambience_override
 
-	soundscape_playlist = new_area.soundscape_playlist
+	if(!(owner.prefs.toggles_sound & SOUND_AMBIENCE))
+		if(!force_update)
+			return
+		status_flags |= SOUND_MUTE
+
+	// Autodetect mode
+	if(!target_area && !target_ambience)
+		target_area = get_area(owner.mob)
+		if(!target_area)
+			return
+	if(!target_ambience)
+		target_ambience = target_area.get_sound_ambience(owner)
+	if(target_area)
+		soundscape_playlist = target_area.soundscape_playlist
 
 	var/sound/S = sound(null,1,0,SOUND_CHANNEL_AMBIENCE)
 
+	if(ambience == target_ambience)
+		if(!force_update)
+			return
+		status_flags |= SOUND_UPDATE
+	else
+		S.file = target_ambience
+		ambience = target_ambience
+
+
 	S.volume = 100 * owner.volume_preferences[VOLUME_AMB]
-	S.environment = new_area.sound_environment
-	S.status = SOUND_STREAM
+	S.status = status_flags
 
-	var/area_ambience = new_area.get_sound_ambience(owner)
-
-	if(!force_cur_amb)
-		if(area_ambience == ambience)
-			S.status |= SOUND_UPDATE
-		else
-			ambience = area_ambience
-
-	var/muffle
-	if(new_area.ceiling_muffle)
-		switch(new_area.ceiling)
-			if(CEILING_NONE)
-				muffle = 0
-			if(CEILING_GLASS)
-				muffle = MUFFLE_MEDIUM
-			if(CEILING_METAL)
-				muffle = MUFFLE_HIGH
-			else
-				S.volume = 0
-
-	muffle += new_area.base_muffle
-
-	S.echo = list(muffle)
-	S.file = ambience
-	if(!(owner.prefs.toggles_sound & SOUND_AMBIENCE))
-		S.status |= SOUND_MUTE
+	if(target_area)
+		S.environment = target_area.sound_environment
+		var/muffle
+		if(target_area.ceiling_muffle)
+			switch(target_area.ceiling)
+				if(CEILING_NONE)
+					muffle = 0
+				if(CEILING_GLASS)
+					muffle = MUFFLE_MEDIUM
+				if(CEILING_METAL)
+					muffle = MUFFLE_HIGH
+				else
+					S.volume = 0
+		muffle += target_area.base_muffle
+		S.echo = list(muffle)
 	sound_to(owner, S)
 
 
@@ -113,7 +129,7 @@
 		sound_to(owner, S)
 
 /client/proc/adjust_volume_prefs(var/volume_key, var/prompt = "", var/channel_update = 0)
-	volume_preferences[volume_key]	= (input(prompt, "Volume", volume_preferences[volume_key]*100) as num) / 100
+	volume_preferences[volume_key]	= (tgui_input_number(src, prompt, "Volume", volume_preferences[volume_key]*100)) / 100
 	if(volume_preferences[volume_key] > 1)
 		volume_preferences[volume_key] = 1
 	if(volume_preferences[volume_key] < 0)
@@ -134,7 +150,7 @@
 	set name = "Adjust Volume Ambience"
 	set category = "Preferences.Sound"
 	adjust_volume_prefs(VOLUME_AMB, "Set the volume for ambience and soundscapes", 0)
-	soundOutput.update_ambience()
+	soundOutput.update_ambience(null, null, TRUE)
 
 /client/verb/adjust_volume_admin_music()
 	set name = "Adjust Volume Admin MIDIs"

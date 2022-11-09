@@ -8,6 +8,10 @@
 	mob_flags = KNOWS_TECHNOLOGY
 	uses_ethnicity = TRUE
 
+/datum/species/human/handle_on_fire(humanoidmob)
+	. = ..()
+	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))
+
 //Tougher humans, basically action movie protagonists.
 /datum/species/human/hero
 	name = "Human Hero"

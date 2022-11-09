@@ -61,12 +61,12 @@
 		else
 	return
 
-/obj/structure/machinery/optable/examine(mob/user)
-	..()
+/obj/structure/machinery/optable/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(user, src) > 2 && !isobserver(user))
 		return
 	if(anes_tank)
-		to_chat(user, SPAN_INFO("It has an [anes_tank] connected with the gauge showing [round(anes_tank.pressure,0.1)] kPa."))
+		. += SPAN_INFO("It has an [anes_tank] connected with the gauge showing [round(anes_tank.pressure,0.1)] kPa.")
 
 /obj/structure/machinery/optable/attack_hand(mob/living/user)
 	if(buckled_mob)
@@ -100,10 +100,12 @@
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
-	if(H.wear_mask && !H.drop_inv_item_on_ground(H.wear_mask))
-		to_chat(user, SPAN_DANGER("You can't remove their mask!"))
-		return
-
+	if(H.wear_mask)
+		var/obj/item/mask = H.wear_mask
+		if(mask.flags_inventory & CANTSTRIP)
+			to_chat(user, SPAN_DANGER("You can't remove their mask!"))
+			return
+		H.drop_inv_item_on_ground(mask)
 	var/obj/item/clothing/mask/breath/medical/B = new()
 	if(!H.equip_if_possible(B, WEAR_FACE, TRUE))
 		to_chat(user, SPAN_DANGER("You can't fit the gas mask over their face!"))

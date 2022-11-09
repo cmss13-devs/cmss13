@@ -37,10 +37,10 @@ SUBSYSTEM_DEF(statpanels)
 //			var/ping_str = url_encode("Ping: [round(target.lastping, 1)]ms (Average: [round(target.avgping, 1)]ms)")
 			var/other_str = url_encode(json_encode(target.mob.get_status_tab_items()))
 			target << output("[encoded_global_data];;[other_str]", "statbrowser:update")
-		if(!target.admin_holder)
+		if(!CLIENT_IS_STAFF(target))
 			target << output("", "statbrowser:remove_admin_tabs")
 		else
-			if(!("Admin" in target.panel_tabs))
+			if(!("Admin" in target.panel_tabs) || !("Tickets" in target.panel_tabs))
 				target << output("[url_encode(target.admin_holder.href_token)]", "statbrowser:add_admin_tabs")
 			if(!("MC" in target.panel_tabs) && check_client_rights(target, R_DEBUG|R_HOST, FALSE))
 				target << output("", "statbrowser:add_mc_tab")
@@ -50,6 +50,8 @@ SUBSYSTEM_DEF(statpanels)
 				if(!mc_data_encoded)
 					generate_mc_data()
 				target << output("[mc_data_encoded];[coord_entry]", "statbrowser:update_mc")
+			if(target.stat_tab == "Tickets")
+				set_tickets_tab(target)
 		if(target.mob)
 			var/mob/M = target.mob
 			if(M?.listed_turf)
@@ -107,6 +109,9 @@ SUBSYSTEM_DEF(statpanels)
 		if(MC_TICK_CHECK)
 			return
 
+/datum/controller/subsystem/statpanels/proc/set_tickets_tab(client/target)
+	var/list/ahelp_tickets = GLOB.ahelp_tickets.stat_entry()
+	target << output("[url_encode(json_encode(ahelp_tickets))];", "statbrowser:update_tickets")
 
 /datum/controller/subsystem/statpanels/proc/generate_mc_data()
 	var/list/mc_data = list(

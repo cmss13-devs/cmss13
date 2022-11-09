@@ -53,7 +53,7 @@
 				var/turf/mob_loc = get_turf(M)
 				loc_display = mob_loc.loc
 			dat += "ID: [T.id]|Location: [loc_display]<BR>"
-			dat += "<A href='?src=\ref[src];warn=\ref[T]'>(<font color=red><i>Message Holder</i></font>)</A> |<BR>"
+			dat += "<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];warn=\ref[T]'>(<font color=red><i>Message Holder</i></font>)</A> |<BR>"
 			dat += "********************************<BR>"
 		dat += "<HR><A href='?src=\ref[src];lock=1'>Lock Console</A>"
 

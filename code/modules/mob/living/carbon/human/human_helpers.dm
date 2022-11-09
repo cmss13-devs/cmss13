@@ -240,11 +240,13 @@
 	for(var/i in cont)
 		if(istype(i, /obj/item/device/motiondetector))
 			var/obj/item/device/motiondetector/md = i
-			md.toggle_active(src, TRUE)
+			md.toggle_active(src, old_active = TRUE, forced = TRUE)
 		if(istype(i, /obj/item/weapon/gun/smartgun))
 			var/obj/item/weapon/gun/smartgun/sg = i
 			if(sg.motion_detector)
 				sg.motion_detector = FALSE
+				var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in sg.actions
+				TMD.update_icon()
 				sg.motion_detector()
 
 /mob/living/carbon/human/proc/disable_headsets()
@@ -261,6 +263,10 @@
 			var/obj/item/clothing/suit/storage/marine/S = wear_suit
 			if(S.turn_off_light(src))
 				light_off++
+		for(var/obj/item/clothing/head/helmet/marine/H in contents)
+			for(var/obj/item/attachable/flashlight/FL in H.pockets)
+				if(FL.activate_attachment(H, src, TRUE))
+					light_off++
 	if(guns)
 		for(var/obj/item/weapon/gun/G in contents)
 			if(G.turn_off_light(src))
@@ -299,7 +305,7 @@
 
 /mob/living/carbon/human/a_intent_change(intent as num)
 	. = ..()
-	if(HAS_TRAIT(src, TRAIT_INTENT_EYES)) //1st gen synths change eye colour based on intent
+	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye colour based on intent. But not when they're dead.
 		switch(a_intent)
 			if(INTENT_HELP) //Green, defalt
 				r_eyes = 0
@@ -436,3 +442,6 @@
 	if(hud_used && hud_used.locate_leader.alpha)
 		hud_used.locate_leader.alpha = 0
 		hud_used.locate_leader.mouse_opacity = 0
+
+/mob/living/carbon/human/handle_blood_splatter(var/splatter_dir)
+	species.handle_blood_splatter(src, splatter_dir)

@@ -65,7 +65,7 @@
 	. = ..(mapload)
 	path = list()
 	permutated = list()
-	weapon_cause_data = cause_data
+	weapon_cause_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 	firer = cause_data?.resolve_mob()
 
 /obj/item/projectile/Destroy()
@@ -151,6 +151,7 @@
 	starting = get_turf(src)
 	if(starting != loc)
 		forceMove(starting) //Put us on the turf, if we're not.
+
 	target_turf = get_turf(target)
 	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
 		qdel(src)
@@ -177,7 +178,7 @@
 		var/mob/M = firer
 		M.track_shot(weapon_cause_data.cause_name)
 
-	//If we have the the right kind of ammo, we can fire several projectiles at once.
+	//If we have the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		ammo.fire_bonus_projectiles(src)
 
@@ -329,15 +330,12 @@
 	if(firer && T == firer.loc && !is_shrapnel)
 		return FALSE
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
+
+	var/hit_turf = FALSE
 	// Explosive ammo always explodes on the turf of the clicked target
 	// So does ammo that's flagged to always hit the target
 	if(((ammo_flags & AMMO_EXPLOSIVE) || (ammo_flags & AMMO_HITS_TARGET_TURF)) && T == target_turf)
-		ammo.on_hit_turf(T,src)
-
-		if(T && T.loc)
-			T.bullet_act(src)
-
-		return TRUE
+		hit_turf = TRUE
 
 	if(ammo_flags & AMMO_SCANS_NEARBY && proj_dir)
 		//this thing scans depending on dir
@@ -382,7 +380,7 @@
 			return TRUE
 
 	// Empty turf, keep moving
-	if(!T.contents.len)
+	if(!T.contents.len && !hit_turf)
 		return FALSE
 
 	for(var/atom/movable/clone/C in T) //Handle clones if there are any
@@ -401,6 +399,14 @@
 	for(var/mob/living/L in T)
 		if(handle_mob(L))
 			return TRUE
+
+	if(hit_turf)
+		ammo.on_hit_turf(T, src)
+
+		if(T && T.loc)
+			T.bullet_act(src)
+
+		return TRUE
 
 /obj/item/projectile/proc/handle_object(obj/O)
 	// If we've already handled this atom, don't do it again
@@ -447,6 +453,8 @@
 	if((MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && L.stat == DEAD) || (L in permutated))
 		return FALSE
 	permutated |= L
+	if((ammo.flags_ammo_behavior & (AMMO_XENO_ACID|AMMO_XENO_TOX|AMMO_XENO_BONE)) && L.stat == DEAD) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
+		return FALSE
 
 	var/hit_chance = L.get_projectile_hit_chance(src)
 
@@ -456,6 +464,8 @@
 
 		if(original != L || hit_roll > hit_chance-base_miss_chance[def_zone]-20)	// If hit roll is high or the firer wasn't aiming at this mob, we still hit but now we might hit the wrong body part
 			def_zone = rand_zone()
+		else
+			SEND_SIGNAL(firer, COMSIG_DIRECT_BULLET_HIT, L)
 		hit_chance -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
 
 		#if DEBUG_HIT_CHANCE
@@ -477,7 +487,7 @@
 				ammo.on_hit_turf(get_turf(src),src)
 				T.bullet_act(src)
 			else if(L && L.loc && (L.bullet_act(src) != -1))
-				ammo.on_hit_mob(L,src)
+				ammo.on_hit_mob(L,src, firer)
 
 				// If we are a xeno shooting something
 				if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && L.stat != DEAD && ammo.apply_delegate)
@@ -910,14 +920,7 @@
 	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
 
 		var/splatter_dir = get_dir(P.starting, loc)
-		if(isHumanStrict(src))
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
-		if(isYautja(src))
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter(loc, splatter_dir)
-		if(isXeno(src))
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)
-		if(isSynth(src))
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter(loc, splatter_dir)
+		handle_blood_splatter(splatter_dir)
 
 		. = TRUE
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
@@ -928,6 +931,9 @@
 				P.ammo.on_embed(src, organ)
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type
+			var/obj/item/large_shrapnel/large_embed = new P.ammo.shrapnel_type
+			if(istype(large_embed))
+				large_embed.on_embed(src, organ)
 			if(istype(new_embed))
 				var/found_one = FALSE
 				for(var/obj/item/shard/shrapnel/S in embedded_items)
@@ -955,6 +961,10 @@
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
+	if((ammo_flags & AMMO_FLAME) && (src.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE))
+		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
+		return
+
 	if(isXeno(P.firer))
 		var/mob/living/carbon/Xenomorph/X = P.firer
 		if(X.can_not_harm(src))
@@ -972,7 +982,7 @@
 	flash_weak_pain()
 
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
-		var/armor = armor_deflection + armor_deflection_buff
+		var/armor = armor_deflection + armor_deflection_buff - armor_deflection_debuff
 
 		var/list/damagedata = list(
 			"damage" = damage,
@@ -1007,8 +1017,7 @@
 
 	if(damage)
 		//only apply the blood splatter if we do damage
-		var/splatter_dir = get_dir(P.starting, loc)//loc is the xeno getting hit, P.starting is the turf of where the projectile got spawned
-		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)
+		handle_blood_splatter(get_dir(P.starting, loc))
 
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone)	//Deal the damage.
 		if(xeno_shields.len)
@@ -1142,7 +1151,7 @@
 		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !A?.statistic_exempt) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			if(!istype(P.ammo, /datum/ammo/energy/taser))
 				round_statistics.total_friendly_fire_instances++
-				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>) (<a href='?priv_msg=\ref[firingMob.client]'>PM</a>)"
+				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>) ([firingMob.client ? "<a href='?priv_msg=[firingMob.client.ckey]'>PM</a>" : "NO CLIENT"])"
 				var/ff_living = TRUE
 				if(src.stat == DEAD)
 					ff_living = FALSE

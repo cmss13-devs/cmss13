@@ -66,7 +66,10 @@
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
 				return
-		else if(istype(I, /obj/item/tool/weldingtool) && mode == -1)
+		else if(iswelder(I) && mode == -1)
+			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+				return
 			if(contents.len > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
@@ -600,6 +603,7 @@
 	var/dpdir = 0		//Bitmask of pipe directions
 	dir = 0				//dir will contain dominant direction for junction pipes
 	health = 10 	//Health points 0-10
+	plane = FLOOR_PLANE
 	layer = DISPOSAL_PIPE_LAYER //Slightly lower than wires and other pipes
 	var/base_icon_state	//Initial icon state on map
 
@@ -682,9 +686,9 @@
 		return
 	if(istype(T, /turf/open/floor)) //intact floor, pop the tile
 		var/turf/open/floor/F = T
-		if(!F.is_plating())
+		if(!F.intact_tile)
 			if(!F.broken && !F.burnt)
-				new F.floor_tile.type(H)//Add to holder so it will be thrown with other stuff
+				new F.tile_type(H, 1, F.type)
 			F.make_plating()
 
 	if(direction) //Direction is specified
@@ -780,7 +784,10 @@
 	if(T.intact_tile)
 		return //Prevent interaction with T-scanner revealed pipes
 	add_fingerprint(user)
-	if(istype(I, /obj/item/tool/weldingtool))
+	if(iswelder(I))
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/W = I
 
 		if(W.remove_fuel(0, user))
@@ -936,7 +943,7 @@
 		return null
 	return P
 
-// *** special cased almayer stuff because its all one z level ***
+// *** special cased almayer stuff because it's all one z level ***
 
 /obj/structure/disposalpipe/up/almayer
 	var/id
@@ -1263,7 +1270,10 @@
 	if(T.intact_tile)
 		return //Prevent interaction with T-scanner revealed pipes
 	add_fingerprint(user)
-	if(istype(I, /obj/item/tool/weldingtool))
+	if(iswelder(I))
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0, user))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -1370,7 +1380,10 @@
 			mode = 0
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
-	else if(istype(I, /obj/item/tool/weldingtool) && mode == 1)
+	else if(iswelder(I) && mode == 1)
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0, user))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)

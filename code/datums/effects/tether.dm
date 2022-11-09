@@ -4,7 +4,7 @@
 	var/range = 0
 	var/datum/effects/tethered/tethered
 	var/tether_icon // The icon used for the Beam proc for the tether
-	var/beam_id
+	var/datum/beam/tether_beam
 	var/always_face
 
 /datum/effects/tethering/New(var/atom/A, var/range, var/icon, var/always_face)
@@ -26,13 +26,12 @@
 	RegisterSignal(affected_atom, COMSIG_MOVABLE_MOVED, .proc/moved)
 
 /datum/effects/tethering/Destroy()
-	if (tethered)
+	if(tethered)
 		tethered.tether = null
 		qdel(tethered)
 		tethered = null
-	if (affected_atom)
-		if (islist(affected_atom.beams))
-			affected_atom.beams -= "[beam_id]"
+	if(affected_atom)
+		QDEL_NULL(tether_beam)
 		UnregisterSignal(affected_atom, COMSIG_MOVABLE_MOVED)
 	. = ..()
 
@@ -41,6 +40,11 @@
 
 	if (isnull(tethered))
 		return
+
+	if(isStructure(tethered.affected_atom))//we are attached to a structure, shouldnt move it (too heavy)
+		var/obj/structure/anchored_object = tethered.affected_atom
+		if(anchored_object.anchored)
+			return
 
 	var/atom/movable/A = tethered.affected_atom
 	if (get_dist(affected_atom, A) <= range)
@@ -61,7 +65,7 @@
 /datum/effects/tethering/proc/set_tethered(var/datum/effects/tethered/T)
 	tethered = T
 	T.tether = src
-	beam_id = affected_atom.Beam(T.affected_atom, tether_icon, 'icons/effects/beam.dmi', BEAM_INFINITE_DURATION, range+1, always_face)
+	tether_beam = affected_atom.beam(T.affected_atom, tether_icon, time = BEAM_INFINITE_DURATION, maxdistance = range+1, always_turn = always_face)
 
 /datum/effects/tethered
 	effect_name = "tethered"

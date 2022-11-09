@@ -15,7 +15,7 @@
 
 	var/secondsElectrified = 0
 	var/visible = 1
-	var/panel_open = 0
+	var/panel_open = FALSE
 	var/operating = 0
 	var/autoclose = 0
 	var/glass = 0

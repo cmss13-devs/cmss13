@@ -40,6 +40,7 @@
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
 	var/remains_type = /obj/effect/decal/remains/xeno
+	var/bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
 	var/death_sound
 	var/death_message = "seizes up and falls limp, their eyes dead and lifeless..."
 
@@ -61,6 +62,7 @@
 	var/reagent_tag                 //Used for metabolizing reagents.
 
 	var/darksight = 2
+	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
 	var/brute_mod = null    // Physical damage reduction/malus.
 	var/burn_mod = null     // Burn damage reduction/malus.
@@ -93,6 +95,8 @@
 	var/stun_reduction = 1 //how much the stunned effect is reduced per Life call.
 	var/knock_out_reduction = 1 //same thing
 
+	var/acid_blood_dodge_chance = 0
+
 	var/list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY
 	var/list/equip_adjust = list()
 	var/list/equip_overlays = list()
@@ -104,6 +108,8 @@
 	var/list/mob_inherent_traits
 
 	var/ignores_stripdrag_flag = FALSE
+
+	var/has_species_tab_items = FALSE
 
 /datum/species/New()
 	if(unarmed_type)
@@ -147,7 +153,7 @@
 		H.internal_organs_by_name[organ] = new organ_type(H)
 
 	if(flags & IS_SYNTHETIC)
-		C.robotize() //Also gets all other limbs, as those are attached.
+		C.robotize(synth_skin = TRUE) //Also gets all other limbs, as those are attached.
 		for(var/datum/internal_organ/I in H.internal_organs)
 			I.mechanize()
 
@@ -171,7 +177,10 @@
 		if(FEMALE)
 			t_him = "her"
 
-	if(target_zone in list("l_arm", "r_arm"))
+	if(target_zone == "head")
+		attempt_rock_paper_scissors(H, target)
+		return
+	else if(target_zone in list("l_arm", "r_arm"))
 		attempt_high_five(H, target)
 		return
 	else if(target_zone in list("l_hand", "r_hand"))
@@ -184,6 +193,70 @@
 		H.visible_message(SPAN_NOTICE("[H] pats [target] on the back to make [t_him] feel better!"), \
 			SPAN_NOTICE("You pat [target] on the back to make [t_him] feel better!"), null, 4)
 	playsound(target, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
+
+/datum/species/proc/attempt_rock_paper_scissors(var/mob/living/carbon/human/H, var/mob/living/carbon/human/target)
+	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
+		to_chat(H, SPAN_WARNING("You have no hands!"))
+		return
+
+	if(!target.get_limb("r_hand") && !target.get_limb("l_hand"))
+		to_chat(H, SPAN_WARNING("They have no hands!"))
+		return
+
+	//Responding to a raised hand
+	if(target.flags_emote & EMOTING_ROCK_PAPER_SCISSORS && do_after(H, 5, INTERRUPT_MOVED, EMOTE_ICON_ROCK_PAPER_SCISSORS))
+		if(!(target.flags_emote & EMOTING_ROCK_PAPER_SCISSORS)) //Additional check for if the target moved or was already high fived.
+			to_chat(H, SPAN_WARNING("Too slow!"))
+			return
+		target.flags_emote &= ~EMOTING_ROCK_PAPER_SCISSORS
+		var/static/list/game_quips = list("Rock...", "Paper...", "Scissors...", "Shoot!")
+		for(var/quip in game_quips)
+			if(!H.Adjacent(target))
+				to_chat(list(H, target), SPAN_WARNING("You need to be standing next to each other to play!"))
+				return
+			to_chat(list(H, target), SPAN_NOTICE(quip))
+			sleep(5)
+		var/static/list/intent_to_play = list(
+			"[INTENT_HELP]" = "random",
+			"[INTENT_DISARM]" = "scissors",
+			"[INTENT_GRAB]" = "paper",
+			"[INTENT_HARM]" = "rock"
+		)
+		var/static/list/play_to_emote = list(
+			"rock" = EMOTE_ICON_ROCK,
+			"paper" = EMOTE_ICON_PAPER,
+			"scissors" = EMOTE_ICON_SCISSORS
+		)
+		var/protagonist_plays = intent_to_play["[H.a_intent]"] == "random" ? pick("rock", "paper", "scissors") : intent_to_play["[H.a_intent]"]
+		var/antagonist_plays = intent_to_play["[target.a_intent]"] == "random" ? pick("rock", "paper", "scissors") : intent_to_play["[target.a_intent]"]
+		var/winner_text = " It's a draw!"
+		if(protagonist_plays != antagonist_plays)
+			var/static/list/what_beats_what = list("rock" = "scissors", "scissors" = "paper", "paper" = "rock")
+			if(antagonist_plays == what_beats_what[protagonist_plays])
+				winner_text = " [H] wins!"
+			else
+				winner_text = " [target] wins!"
+		H.visible_message(SPAN_NOTICE("[H] plays <b>[protagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[protagonist_plays]</b>![winner_text]"), max_distance = 5)
+		target.visible_message(SPAN_NOTICE("[target] plays <b>[antagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[antagonist_plays]</b>![winner_text]"), max_distance = 5)
+		playsound(target, "clownstep", 35, TRUE)
+		INVOKE_ASYNC(GLOBAL_PROC, .proc/do_after, H, 8, INTERRUPT_NONE, play_to_emote[protagonist_plays])
+		INVOKE_ASYNC(GLOBAL_PROC, .proc/do_after, target, 8, INTERRUPT_NONE, play_to_emote[antagonist_plays])
+		H.animation_attack_on(target)
+		target.animation_attack_on(H)
+		H.start_audio_emote_cooldown(5 SECONDS)
+		target.start_audio_emote_cooldown(5 SECONDS)
+		return
+
+	//Initiate high five
+	if(H.recent_audio_emote)
+		to_chat(H, "You just did an audible emote. Wait a while.")
+		return
+
+	H.visible_message(SPAN_NOTICE("[H] challenges [target] to a game of rock paper scissors!"), SPAN_NOTICE("You challenge [target] to a game of rock paper scissors!"), null, 4)
+	H.flags_emote |= EMOTING_ROCK_PAPER_SCISSORS
+	if(do_after(H, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_ROCK_PAPER_SCISSORS) && H.flags_emote & EMOTING_ROCK_PAPER_SCISSORS)
+		to_chat(H, SPAN_NOTICE("You were left hanging!"))
+	H.flags_emote &= ~EMOTING_ROCK_PAPER_SCISSORS
 
 /datum/species/proc/attempt_high_five(var/mob/living/carbon/human/H, var/mob/living/carbon/human/target)
 	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
@@ -352,7 +425,7 @@
 /datum/species/proc/build_hud(var/mob/living/carbon/human/H)
 	return
 
-// Grabs the window recieved when you click-drag someone onto you.
+// Grabs the window received when you click-drag someone onto you.
 /datum/species/proc/get_inventory_dialogue(var/mob/living/carbon/human/H)
 	return
 
@@ -380,3 +453,22 @@
 			return 1
 
 	return 0
+
+/datum/species/proc/get_hairstyle(var/style)
+	return GLOB.hair_styles_list[style]
+
+// Used for checking on how each species would scream when they are burning
+/datum/species/proc/handle_on_fire(var/humanoidmob)
+	// call this for each species so each has their own unique scream options when burning alive
+	// heebie-jebies made me do all this effort, I HATE YOU
+	return
+
+/datum/species/proc/handle_blood_splatter(var/mob/living/carbon/human/human, var/splatter_dir)
+	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir)
+	return bloodsplatter
+
+/datum/species/proc/get_status_tab_items()
+	return list()
+
+/datum/species/proc/handle_head_loss(var/mob/living/carbon/human/human)
+	return

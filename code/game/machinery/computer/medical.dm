@@ -214,7 +214,7 @@
 				src.temp = text("Are you sure you wish to delete all records?<br>\n\t<A href='?src=\ref[];temp=1;del_all2=1'>Yes</A><br>\n\t<A href='?src=\ref[];temp=1'>No</A><br>", src, src)
 
 			if (href_list["del_all2"])
-				for(var/datum/data/record/R in GLOB.data_core.medical)
+				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					GLOB.data_core.medical -= R
 					qdel(R)
 					//Foreach goto(494)
@@ -414,7 +414,7 @@
 				src.active1 = null
 				src.active2 = null
 				t1 = lowertext(t1)
-				for(var/datum/data/record/R in GLOB.data_core.medical)
+				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					if ((lowertext(R.fields["name"]) == t1 || t1 == lowertext(R.fields["id"])))
 						src.active2 = R
 					else
@@ -457,7 +457,7 @@
 					else
 						P.info += "<B>Medical Record Lost!</B><BR>"
 					P.info += "</TT>"
-					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The USS Almayer,[]/[], []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),game_year,worldtime2text())
+					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The [MAIN_SHIP_NAME],[]/[], []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),game_year,worldtime2text())
 					src.printing = null
 
 			if(href_list["print_bs"])//Prints latest body scan
@@ -472,14 +472,14 @@
 					var/obj/item/paper/P = new /obj/item/paper( src.loc )
 					P.name = text("Scan: [], []",record.fields["name"],worldtime2text())
 					P.info += text("<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Scan Record</I><HR><H2>[]</H2>\n</center>",record.fields["name"])
-					for(var/datum/data/record/R in GLOB.data_core.medical)
+					for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 						if (R.fields["name"] ==  record.fields["name"])
 							if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
 								P.info += R.fields["last_scan_result"]
 								break
 							else
 								P.info += "No scan on record."
-					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The USS Almayer,  []/[], []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),game_year,worldtime2text())
+					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The [MAIN_SHIP_NAME],  []/[], []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),game_year,worldtime2text())
 					src.printing = null
 
 
@@ -493,7 +493,7 @@
 		..(severity)
 		return
 
-	for(var/datum/data/record/R in GLOB.data_core.medical)
+	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)

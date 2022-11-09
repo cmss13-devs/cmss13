@@ -59,3 +59,14 @@
 
 /datum/element/drop_retrieval/pouch_sling/dropped(obj/item/I, mob/user)
 	container.handle_retrieval(user)
+
+/datum/element/drop_retrieval/mister
+	compatible_types = list(/obj/item/reagent_container/spray/mister)
+
+/datum/element/drop_retrieval/mister/dropped(obj/item/I, mob/user)
+	var/obj/item/reagent_container/glass/watertank/WT = user.back
+	if(!istype(WT))
+		return ..()
+	WT.remove_noz()
+	to_chat(user, SPAN_WARNING("\The [I]'s magnetic harness snaps it back onto \the [WT]!"))
+	WT.update_icon()

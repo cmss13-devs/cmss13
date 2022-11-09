@@ -7,6 +7,7 @@
 	flags_atom = NO_FLAGS
 	flags_item = NOBLUDGEON|DELONDROP|ITEM_ABSTRACT
 	layer = ABOVE_HUD_LAYER
+	plane = ABOVE_HUD_PLANE
 	item_state = "nothing"
 	w_class = SIZE_HUGE
 	var/atom/movable/grabbed_thing
@@ -40,10 +41,11 @@
 	if(isturf(target))
 		var/turf/T = target
 		if(!T.density && T.Adjacent(user))
-			step(user.pulling, get_dir(user.pulling.loc, T))
+			var/move_dir = get_dir(user.pulling.loc, T)
+			step(user.pulling, move_dir)
 			var/mob/living/pmob = user.pulling
 			if(istype(pmob))
-				pmob.on_movement()
+				SEND_SIGNAL(pmob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, move_dir, move_dir)
 
 
 /obj/item/grab/attack_self(mob/user)

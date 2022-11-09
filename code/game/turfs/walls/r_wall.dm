@@ -1,6 +1,6 @@
 /turf/closed/wall/r_wall
 	name = "reinforced wall"
-	desc = "A huge chunk of reinforced metal used to seperate rooms."
+	desc = "A huge chunk of reinforced metal used to separate rooms."
 	icon_state = "r_wall"
 	opacity = 1
 	density = 1
@@ -29,7 +29,7 @@
 			if(hull)
 				to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))
 			else
-				if(istype(W, /obj/item/tool/weldingtool))
+				if(iswelder(W))
 					var/obj/item/tool/weldingtool/WT = W
 					WT.remove_fuel(0,user)
 				thermitemelt(user)
@@ -38,22 +38,34 @@
 	if(try_weldingtool_usage(W, user) || try_nailgun_usage(W, user))
 		return
 
+	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		if(user.action_busy)
+			return
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+			return
+
+		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
+		if(!do_after(user, 10 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
+			to_chat(user, SPAN_NOTICE("You stop taking down \the [src]."))
+			return
+		to_chat(user, SPAN_NOTICE("You tear down \the [src]."))
+
+		playsound(src, 'sound/effects/meteorimpact.ogg', 40, 1)
+		playsound(src, 'sound/effects/ceramic_shatter.ogg', 40, 1)
+
+		take_damage(damage_cap)
+		return
 
 	//DECONSTRUCTION
 	switch(d_state)
 		if(WALL_STATE_WELD)
 			if(iswelder(W))
+				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
 				var/obj/item/tool/weldingtool/WT = W
-				playsound(src, 'sound/items/Welder.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] begins slicing through the outer plating."),
-				SPAN_NOTICE("You begin slicing through the outer plating."))
-				if(!WT || !WT.isOn())
-					return
-				if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					return
-				d_state = WALL_STATE_SCREW
-				user.visible_message(SPAN_NOTICE("[user] slices through the outer plating."), SPAN_NOTICE("You slice through the outer plating."))
-				return
+				try_weldingtool_deconstruction(WT, user)
 
 		if(WALL_STATE_SCREW)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -181,7 +193,7 @@
 
 /turf/closed/wall/r_wall/unmeltable
 	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
+	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	icon_state = "r_wall"
 	walltype = WALL_REINFORCED
 	hull = 1
@@ -229,13 +241,13 @@
 
 /turf/closed/wall/r_wall/prison_unmeltable
 	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
+	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	icon = 'icons/turf/walls/prison.dmi'
 	icon_state = "rwall"
 	walltype = WALL_REINFORCED
 	hull = 1
 
-/turf/closed/wall/r_wall/prison_unmeltable/ex_act(severity) //Should make it indestructable
+/turf/closed/wall/r_wall/prison_unmeltable/ex_act(severity) //Should make it indestructible
 		return
 
 /turf/closed/wall/r_wall/prison_unmeltable/fire_act(exposed_temperature, exposed_volume)
@@ -254,10 +266,10 @@
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable
 	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
+	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	hull = 1
 
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable/ex_act(severity) //Should make it indestructable
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable/ex_act(severity) //Should make it indestructible
 		return
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable/fire_act(exposed_temperature, exposed_volume)

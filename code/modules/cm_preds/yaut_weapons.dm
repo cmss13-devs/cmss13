@@ -2,62 +2,14 @@
 ########### Weapon Reused Procs ###########
 #########################################*/
 //Onehanded Weapons
-/obj/item/weapon/melee/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/weapon/melee/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-//Twohanded Weapons
-/obj/item/weapon/melee/twohanded/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/twohanded/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/weapon/melee/twohanded/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-//Ranged Weapons
-/obj/item/weapon/gun/energy/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
 
 /obj/item/weapon/gun/energy/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	. = ..()
 	STOP_PROCESSING(SSobj, src)
-
-/obj/item/weapon/gun/energy/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-//Spike Launcher
-/obj/item/weapon/gun/launcher/spike/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/gun/launcher/spike/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/weapon/gun/launcher/spike/Destroy()
-	. = ..()
-	remove_from_missing_pred_gear(src)
 	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /*#########################################
 ############## Misc Weapons ###############
@@ -90,6 +42,7 @@
 
 /obj/item/weapon/wristblades
 	name = "wrist blades"
+	var/plural_name = "wrist blades"
 	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -111,20 +64,16 @@
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 
-/obj/item/weapon/wristblades/New()
-	..()
-	if(usr)
-		var/obj/item/weapon/wristblades/W = usr.get_inactive_hand()
-		if(istype(W)) //wristblade in usr's other hand.
-			attack_speed = attack_speed - attack_speed/3
+	var/has_speed_bonus = TRUE
+
+/obj/item/weapon/wristblades/equipped(mob/user, slot)
+	. = ..()
+	if(has_speed_bonus && (slot == WEAR_L_HAND || slot == WEAR_R_HAND) && istype(user.get_inactive_hand(), /obj/item/weapon/wristblades))
+		attack_speed = initial(attack_speed) - 2
 
 /obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
-	playsound(M,'sound/weapons/wristblades_off.ogg', 15, 1)
-	if(M)
-		var/obj/item/weapon/wristblades/W = M.get_inactive_hand()
-		if(istype(W))
-			W.attack_speed = initial(attack_speed)
-	..()
+	. = ..()
+	attack_speed = initial(attack_speed)
 
 /obj/item/weapon/wristblades/afterattack(atom/A, mob/user, proximity)
 	if(!proximity || !user || user.action_busy)
@@ -137,52 +86,38 @@
 		if(D.heavy)
 			to_chat(usr, SPAN_DANGER("[D] is too heavy to be forced open."))
 			return FALSE
-		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
-		SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
+		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open..."), SPAN_DANGER("You jam your [name] into [D] and strain to rip it open..."))
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
-			user.visible_message(SPAN_DANGER("[user] forces [D] open with the [name]."),
-			SPAN_DANGER("You force [D] open with the [name]."))
+			user.visible_message(SPAN_DANGER("[user] forces [D] open with the [name]!"), SPAN_DANGER("You force [D] open with the [name]."))
 			D.open(TRUE)
 
 	else if(istype(A, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/D = A
-		if(D.isSwitchingStates || user.a_intent == INTENT_HARM || user.action_busy) return
+		if(D.isSwitchingStates || user.a_intent == INTENT_HARM)
+			return
 		if(D.density)
-			user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
-			SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
+			user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open..."), SPAN_DANGER("You jam your [name] into [D] and strain to rip it open..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
-				user.visible_message(SPAN_DANGER("[user] forces [D] open using the [name]."),
-				SPAN_DANGER("You force [D] open with your [name]."))
+				user.visible_message(SPAN_DANGER("[user] forces [D] open using the [name]!"), SPAN_DANGER("You force [D] open with your [name]."))
 				D.Open()
 		else
-			user.visible_message(SPAN_DANGER("[user] pushes [D] with their [name] to force it closed."),
-			SPAN_DANGER("You push [D] with your [name] to force it closed."))
+			user.visible_message(SPAN_DANGER("[user] pushes [D] with their [name] to force it closed..."), SPAN_DANGER("You push [D] with your [name] to force it closed..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !D.density)
-				user.visible_message(SPAN_DANGER("[user] forces [D] closed using the [name]."),
-				SPAN_DANGER("You force [D] closed with your [name]."))
+				user.visible_message(SPAN_DANGER("[user] forces [D] closed using the [name]!"), SPAN_DANGER("You force [D] closed with your [name]."))
 				D.Close()
 
-/obj/item/weapon/wristblades/attack_self(mob/user)
+/obj/item/weapon/wristblades/attack_self(mob/living/carbon/human/user)
 	..()
-	for(var/obj/item/clothing/gloves/yautja/hunter/Y in user.contents)
-		Y.wristblades()
-
-/obj/item/weapon/wristblades/blades //simplest way to ensure scimitars don't get speedup buff.
-
-/obj/item/weapon/wristblades/blades/afterattack(atom/A, mob/user, proximity)
-	if(!proximity || !user || user.action_busy)
-		return FALSE
-	if(user)
-		var/obj/item/weapon/wristblades/blades/W = user.get_inactive_hand()
-		attack_speed = (istype(W)) ? 4 : initial(attack_speed)
-
-	..()
+	if(istype(user))
+		var/obj/item/clothing/gloves/yautja/hunter/gloves = user.gloves
+		gloves.wristblades_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
 
 /obj/item/weapon/wristblades/scimitar
 	name = "wrist scimitar"
+	plural_name = "wrist scimitars"
 	desc = "A huge, serrated blade extending from a metal gauntlet."
 	icon_state = "scim"
 	item_state = "scim"
@@ -200,6 +135,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
+	var/human_adapted = FALSE
 
 /obj/item/weapon/melee/yautja/chain
 	name = "chainwhip"
@@ -217,160 +153,39 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
+	attack_speed = 0.8 SECONDS
 	hitsound = 'sound/weapons/chain_whip.ogg'
 
 
 /obj/item/weapon/melee/yautja/chain/attack(mob/target, mob/living/user)
 	. = ..()
-	if(isYautja(user) && isXeno(target))
+	if((human_adapted || isYautja(user)) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
 
 /obj/item/weapon/melee/yautja/sword
 	name = "clan sword"
-	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggresive and lethal hunters."
+	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 	force = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_5
-	sharp = IS_SHARP_ITEM_SIMPLE
+	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = TRUE
 	embeddable = FALSE
 	w_class = SIZE_LARGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	attack_speed = 0.9 SECONDS
+	attack_speed = 1 SECONDS
 	unacidable = TRUE
-
-	var/parrying
-	var/parrying_duration = 3 SECONDS
-	var/cur_parrying_cooldown
-	var/parrying_delay = 11 SECONDS // effectively 8, starts counting on activation
-
-
-/obj/item/weapon/melee/yautja/sword/attack(mob/living/target, mob/living/carbon/human/user, var/riposte)
-	if(parrying && !riposte)
-		to_chat(user, SPAN_WARNING("You're a bit busy concentrating to hit something."))
-		return
+	
+/obj/item/weapon/melee/yautja/sword/attack(mob/target, mob/living/user)
 	. = ..()
-	if(!.)
-		return
-	if(isYautja(user) && isXeno(target))
+	if((human_adapted || isYautja(user)) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
-
-/obj/item/weapon/melee/yautja/sword/attack_self(mob/living/carbon/human/user)
-	..()
-	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-		if(do_after(user, 0.5 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
-			var/wield_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
-			if(!prob(wield_chance))
-				user.visible_message(SPAN_DANGER("[user] tries to hold \the [src] steadily but drops it!"),SPAN_DANGER("You focus on \the [src], attempting to hold it steadily, but its heavy weight makes you lose your grip!"))
-				user.hand ? user.drop_l_hand() : user.drop_r_hand()
-				return
-	if(cur_parrying_cooldown > world.time)
-		to_chat(user, SPAN_WARNING("You've attempted to parry too soon, you must wait a bit before regaining your focus."))
-		return
-	cur_parrying_cooldown = world.time + parrying_delay
-	parry(user)
-
-/obj/item/weapon/melee/yautja/sword/proc/parry(mob/living/carbon/human/user)
-	user.visible_message(SPAN_HIGHDANGER("[user] starts holding \the [src] steadily..."),SPAN_DANGER("You focus on \the [src], holding it to parry any incoming attacks."))
-	flags_item |= NODROP
-	parrying = TRUE
-
-	var/filt_color = COLOR_WHITE
-	var/filt_alpha = 70
-	filt_color += num2text(filt_alpha, 2, 16)
-	user.add_filter("parry_sword", 1, list("type" = "outline", "color" = filt_color, "size" = 2))
-
-	RegisterSignal(user, COMSIG_HUMAN_BULLET_ACT, .proc/deflect_bullet)
-	RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, .proc/riposte_slash)
-	RegisterSignal(user, COMSIG_ITEM_ATTEMPT_ATTACK, .proc/riposte_melee)
-	addtimer(CALLBACK(src, .proc/end_parry, user), parrying_duration)
-
-/obj/item/weapon/melee/yautja/sword/proc/deflect_bullet(mob/living/carbon/human/user, var/x, var/y, obj/item/projectile/P)
-	SIGNAL_HANDLER
-	var/parry_chance = 100
-	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-		parry_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
-
-	if(P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT || P.projectile_override_flags & AMMO_NO_DEFLECT)
-		return
-
-	if(!prob(parry_chance))
-		user.visible_message(SPAN_DANGER("[user] fails to deflect \the [P]!"),SPAN_DANGER("You fail to deflect \the [P]!"))
-		return
-
-	if(!P.runtime_iff_group)
-		user.visible_message(SPAN_DANGER("[user] blocks \the [P] and deflects it back at [P.firer]!"),SPAN_DANGER("You parry \the [P] and deflect it at [P.firer]!"))
-
-		var/obj/item/projectile/new_proj = new(src)
-		new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING|AMMO_NO_DEFLECT)
-		new_proj.firer = user
-
-		// Move back to who fired you.
-		new_proj.jank_wrapper()
-
-		new_proj.fire_at(P.firer, user, src, 10, speed = P.ammo.shell_speed)
-	return COMPONENT_CANCEL_BULLET_ACT
-
-/obj/item/weapon/melee/yautja/sword/proc/riposte_slash(mob/living/carbon/human/user, list/slashdata, var/mob/living/carbon/Xenomorph/X)
-	SIGNAL_HANDLER
-	if(user.is_mob_incapacitated())
-		return
-
-	var/parry_chance = 100
-	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-		parry_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
-
-	if(!prob(parry_chance))
-		user.visible_message(SPAN_DANGER("[user] fails to block the slash!"),SPAN_DANGER("You fail to parry the slash!"))
-		return
-
-	user.visible_message(SPAN_DANGER("[user] blocks the slash and counterattacks!"),SPAN_DANGER("You parry the slash and initiate a riposte attack!"))
-	slashdata["n_damage"] = 0
-	attack(X, user, riposte = TRUE)
-
-/obj/item/weapon/melee/yautja/sword/proc/riposte_melee(mob/living/carbon/human/user, var/mob/living/carbon/human/target)
-	SIGNAL_HANDLER
-	if(user.is_mob_incapacitated())
-		return
-
-	if(user == target)
-		return
-
-	var/parry_chance = 100
-	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-		parry_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
-
-	if(!prob(parry_chance))
-		user.visible_message(SPAN_DANGER("[user] fails to block the slash!"),SPAN_DANGER("You fail to parry the slash!"))
-		return
-
-	target.animation_attack_on(user)
-	user.visible_message(SPAN_DANGER("[user] blocks the slash and counterattacks!"),SPAN_DANGER("You parry the slash and initiate a riposte attack!"))
-	attack(target, user, riposte = TRUE)
-	return COMPONENT_CANCEL_ATTACK
-
-/obj/item/weapon/melee/yautja/sword/proc/end_parry(mob/living/carbon/human/user)
-	user.visible_message(SPAN_HIGHDANGER("[user] lowers \the [src]."),SPAN_DANGER("You lower \the [src], no longer parrying."))
-	flags_item &= ~NODROP
-	parrying = FALSE
-
-	user.remove_filter("parry_sword")
-
-	UnregisterSignal(user, list(COMSIG_HUMAN_XENO_ATTACK, COMSIG_HUMAN_BULLET_ACT, COMSIG_ITEM_ATTEMPT_ATTACK))
-
-/obj/item/projectile/proc/jank_wrapper()
-	RegisterSignal(src, COMSIG_BULLET_PRE_HANDLE_MOB, .proc/bullet_ignore_mob)
-
-/obj/item/projectile/proc/bullet_ignore_mob(var/mob/M)
-	SIGNAL_HANDLER
-	if(M == firer)
-		return COMPONENT_BULLET_PASS_THROUGH
 
 /obj/item/weapon/melee/yautja/scythe
 	name = "double war scythe"
@@ -392,7 +207,7 @@
 
 /obj/item/weapon/melee/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	..()
-	if(isYautja(user) && isXeno(target))
+	if((human_adapted || isYautja(user)) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 15
 
@@ -422,6 +237,7 @@
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
+
 	var/on = 1
 	var/charged
 
@@ -530,12 +346,14 @@
 	. = ..()
 	if(!.)
 		return
-	if(isSpeciesYautja(user) && isXeno(target))
+	if((human_adapted || isSpeciesYautja(user)) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
 
 	if(target == user || target.stat == DEAD)
 		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
+		return
+	if(isanimal(target))
 		return
 
 	if(!charged)
@@ -547,7 +365,7 @@
 		add_filter("combistick_charge", 1, list("type" = "outline", "color" = color, "size" = 2))
 
 /obj/item/weapon/melee/yautja/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
-	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+	if(!human_adapted && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		user.visible_message(SPAN_DANGER("[user] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
@@ -564,7 +382,7 @@
 
 /obj/item/weapon/melee/yautja/knife
 	name = "ceremonial dagger"
-	desc = "A viciously sharp dagger enscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
+	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
 	icon_state = "predknife"
 	item_state = "knife"
 	flags_atom = FPRINT|CONDUCT
@@ -694,6 +512,7 @@
 	throw_speed = SPEED_VERY_FAST
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
+	var/human_adapted = FALSE
 
 /obj/item/weapon/melee/twohanded/yautja/spear
 	name = "hunter spear"
@@ -712,7 +531,7 @@
 	item_state = "glaive"
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_9
-	throwforce = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_TIER_3
 	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	sharp = IS_SHARP_ITEM_BIG
 	flags_atom = FPRINT|CONDUCT
@@ -723,7 +542,7 @@
 	. = ..()
 	if(!.)
 		return
-	if(isYautja(user) && isXeno(target))
+	if((human_adapted || isYautja(user)) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
 
@@ -794,12 +613,19 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
+/obj/item/weapon/gun/launcher/spike/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 25, GLOB.damage_boost_turfs),
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 25, GLOB.damage_boost_breaching)
+	))
 
-/obj/item/weapon/gun/launcher/spike/examine(mob/user)
+/obj/item/weapon/gun/launcher/spike/get_examine_text(mob/user)
 	if(isYautja(user))
-		..()
-		to_chat(user, "It currently has [spikes] / [max_spikes] spikes.")
-	else to_chat(user, "Looks like some kind of...mechanical donut.")
+		. = ..()
+		. += SPAN_NOTICE("It currently has <b>[spikes]/[max_spikes]</b> spikes.")
+	else
+		. = list()
+		. += SPAN_NOTICE("Looks like some kind of...mechanical donut.")
 
 /obj/item/weapon/gun/launcher/spike/update_icon()
 	..()
@@ -816,6 +642,7 @@
 /obj/item/weapon/gun/launcher/spike/load_into_chamber()
 	if(spikes > 0)
 		in_chamber = create_bullet(ammo, initial(name))
+		apply_traits(in_chamber)
 		spikes--
 		return in_chamber
 
@@ -835,6 +662,7 @@
 
 /obj/item/weapon/gun/energy/yautja
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	works_in_recharger = FALSE
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
@@ -887,11 +715,13 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 
-/obj/item/weapon/gun/energy/yautja/plasmarifle/examine(mob/user)
+/obj/item/weapon/gun/energy/yautja/plasmarifle/get_examine_text(mob/user)
 	if(isYautja(user))
-		..()
-		to_chat(user, "It currently has [charge_time] / 100 charge.")
-	else to_chat(user, "This thing looks like an alien rifle of some kind. Strange.")
+		. = ..()
+		. += SPAN_NOTICE("It currently has <b>[charge_time]/100</b> charge.")
+	else
+		. = list()
+		. += SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange.")
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/update_icon()
 	if(last_regen < charge_time + 20 || last_regen > charge_time || charge_time > 95)
@@ -979,12 +809,13 @@
 
 
 
-/obj/item/weapon/gun/energy/yautja/plasmapistol/examine(mob/user)
+/obj/item/weapon/gun/energy/yautja/plasmapistol/get_examine_text(mob/user)
 	if(isYautja(user))
-		..()
-		to_chat(user, "It currently has [charge_time] / 40 charge.")
+		. = ..()
+		. += SPAN_NOTICE("It currently has <b>[charge_time]/40</b> charge.")
 	else
-		to_chat(user, "This thing looks like an alien rifle of some kind. Strange.")
+		. = list()
+		. += SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange.")
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/able_to_fire(mob/user)
@@ -1021,25 +852,40 @@
 	desc = "A powerful, shoulder-mounted energy weapon."
 	icon_state = "plasma"
 	item_state = "plasma_wear"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_BACK = "plasma_wear_off",
+		WEAR_J_STORE = "plasma_wear_off"
+	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/stun
 	muzzle_flash = null // TO DO, add a decent one.
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	actions_types = list(/datum/action/item_action/toggle)
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
+	indestructible = TRUE
 
-	var/obj/item/clothing/gloves/yautja/source = null
-	var/charge_cost = 100 //How much energy is needed to fire.
+	var/obj/item/clothing/gloves/yautja/hunter/source = null
+	charge_cost = 100 //How much energy is needed to fire.
 	var/mode = "stun"//fire mode (stun/lethal)
 	var/strength = "low power stun bolts"//what it's shooting
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, var/caster_material = "ebony")
+	icon_state += "_[caster_material]"
+	item_state += "_[caster_material]"
+	item_state_slots[WEAR_BACK] += "_[caster_material]"
+	item_state_slots[WEAR_J_STORE] += "_[caster_material]"
 	. = ..()
+	source = loc
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
@@ -1106,7 +952,7 @@
 	switch(mode)
 		if("stun")
 			mode = "lethal"
-			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beep: [src] is now set to [mode] mode"))
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
 			strength = "plasma bolts"
 			charge_cost = 100
 			fire_delay = FIRE_DELAY_TIER_6 * 3
@@ -1116,7 +962,7 @@
 
 		if("lethal")
 			mode = "stun"
-			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beep: [src] is now set to [mode] mode"))
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
 			strength = "low power stun bolts"
 			charge_cost = 30
 			fire_delay = FIRE_DELAY_TIER_6
@@ -1124,31 +970,33 @@
 			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/examine(mob/user)
+/obj/item/weapon/gun/energy/yautja/plasma_caster/get_examine_text(mob/user)
 	. = ..()
 	var/msg = "It is set to fire [strength]."
 	if(mode == "lethal")
-		to_chat(user, SPAN_RED(msg))
+		. += SPAN_RED(msg)
 	else
-		to_chat(user, SPAN_ORANGE(msg))
+		. += SPAN_ORANGE(msg)
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
-	playsound(M,'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
+	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
+	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
 	if(source)
 		forceMove(source)
+		source.caster_deployed = FALSE
 		return
 	..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/able_to_fire(mob/user)
-	if(!source)	return
+	if(!source)
+		return
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
-
 	return ..()
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/load_into_chamber()
-	if(source.drain_power(usr,charge_cost))
+/obj/item/weapon/gun/energy/yautja/plasma_caster/load_into_chamber(mob/user)
+	if(source.drain_power(user, charge_cost))
 		in_chamber = create_bullet(ammo, initial(name))
 		return in_chamber
 

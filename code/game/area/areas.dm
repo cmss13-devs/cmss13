@@ -10,6 +10,7 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	layer = AREAS_LAYER
+	plane = BLACKNESS_PLANE
 	mouse_opacity = 0
 	invisibility = INVISIBILITY_LIGHTING
 	var/lightswitch = 1
@@ -54,7 +55,7 @@
 	/// Default sound to play as ambience for clients entering the area
 	VAR_PROTECTED/ambience_exterior
 	/// Default sound environment to use for the area, as list or int BYOND preset: http://www.byond.com/docs/ref/#/sound/var/environment
-	var/sound_environment = 2
+	var/sound_environment = SOUND_ENVIRONMENT_ROOM
 
 	//Power stuff
 	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
@@ -115,6 +116,8 @@
 
 /// Returns the correct ambience sound track for a client in this area
 /area/proc/get_sound_ambience(client/target)
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src))
+		return SSweather.weather_event_instance.ambience
 	return ambience_exterior
 
 /area/proc/poweralert(var/state, var/obj/source as obj)
@@ -371,33 +374,31 @@
 
 /area/Entered(A,atom/OldLoc)
 	if(ismob(A))
-		var/mob/M = A
-
-		if(isliving(M))
-			// Update all our weather vars and trackers
-			INVOKE_ASYNC(M,/mob/living.proc/update_weather)
-
-		if(!M.client)
+		if(!OldLoc)
 			return
-
-		if(M.client.soundOutput)
-			INVOKE_ASYNC(M.client.soundOutput, /datum/soundOutput.proc/update_ambience, src)
-
-		return
-
-	if(istype(A, /obj/structure/machinery))
-		INVOKE_ASYNC(src, .proc/add_machine, A)
+		var/mob/M = A
+		var/area/old_area = get_area(OldLoc)
+		if(old_area.master == master)
+			return
+		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
+	else if(istype(A, /obj/structure/machinery))
+		add_machine(A)
 
 /area/Exited(A)
 	if(istype(A, /obj/structure/machinery))
-		INVOKE_ASYNC(src, .proc/remove_machine, A)
+		remove_machine(A)
+	else if(ismob(A))
+		var/mob/exiting_mob = A
+		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
 /area/proc/add_machine(var/obj/structure/machinery/M)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(istype(M))
 		use_power(M.calculate_current_power_usage(), M.power_channel)
 		M.power_change()
 
 /area/proc/remove_machine(var/obj/structure/machinery/M)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(istype(M))
 		use_power(-M.calculate_current_power_usage(), M.power_channel)
 

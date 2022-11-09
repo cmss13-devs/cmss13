@@ -12,7 +12,7 @@
 	///When initiating surgeries, this defines their order when listed in initiation selector or 'you can't use this tool for anything, but could x, y, or z' messages.
 	var/priority = SURGERY_PRIORITY_MODERATE
 	var/desc = "surgery description"
-	///List of steps in the surgery. 
+	///List of steps in the surgery.
 	var/list/steps = list()
 	/**List of possible locations the surgery can be performed on. This is target zones: DEFENSE_ZONES_LIVING lists all options. ALL_LIMBS doesn't include eyes/mouth.
 	Note also that steps don't check this and it is possible to include a step that can't be performed on a target limb.**/
@@ -22,7 +22,7 @@
 	///How deep the incision must be before this operation is a valid option.
 	var/invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	///Status flag(s) required on the target limb to perform an operation. NONE for any limb type. (FLAG|FLAG) is an OR check, granular this-but-not-this or this-and-this checks should be in can_start()
-	var/requires_bodypart_type = LIMB_ORGANIC
+	var/requires_bodypart_type = LIMB_ORGANIC|LIMB_SYNTHSKIN
 	///TRUE if the surgery requires a non-destroyed limb; FALSE if it requires a destroyed one, or doesn't need a limb.
 	var/requires_bodypart = TRUE
 	///Does the victim needs to be lying down? Surgeries that can be performed while standing aren't affected by the surface the patient is on.
@@ -93,7 +93,7 @@
 	if(lying_required && !target.lying)
 		to_chat(user, SPAN_WARNING("[user == target ? "You need" : "[target] needs"] to be lying down for this operation!"))
 		return FALSE
-	
+
 	if(user == target)
 		if(!self_operable)
 			to_chat(user, SPAN_WARNING("You can't perform this operation on yourself!"))

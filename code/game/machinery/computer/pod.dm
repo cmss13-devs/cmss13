@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/computer/pod
 	name = "Pod Launch Control"
-	desc = "A controll for launching pods. Some people prefer firing Mechas."
+	desc = "A control for launching pods. Some people prefer firing Mechas."
 	icon_state = "computer_generic"
 	density = TRUE
 	circuit = /obj/item/circuitboard/computer/pod

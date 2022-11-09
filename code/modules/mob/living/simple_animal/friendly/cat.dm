@@ -1,6 +1,7 @@
 //Cat
 /mob/living/simple_animal/cat
 	name = "cat"
+	real_name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
 	icon_state = "cat2"
 	icon_living = "cat2"
@@ -25,6 +26,7 @@
 	sight = SEE_MOBS
 	see_in_dark = 8
 	see_invisible = 15
+	var/miaow_counter = 0
 
 /mob/living/simple_animal/cat/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -34,6 +36,10 @@
 /mob/living/simple_animal/cat/Life(delta_time)
 	//MICE!
 	if((src.loc) && isturf(src.loc))
+		if(stat != DEAD)
+			if(++miaow_counter >= rand(20, 30)) //Increase the meow variable each tick. Play it at random intervals.
+				playsound(loc, "cat_meow", 15, 1, 4)
+				miaow_counter = 0 //Reset the counter
 		if(!stat && !resting && !buckled)
 			for(var/mob/living/simple_animal/mouse/M in view(1,src))
 				if(!M.stat)
@@ -82,9 +88,10 @@
 			walk_to(src,movement_target,0,3)
 
 /mob/living/simple_animal/cat/MouseDrop(atom/over_object)
-
+	if(!CAN_PICKUP(usr, src))
+		return ..()
 	var/mob/living/carbon/H = over_object
-	if(!istype(H) || !Adjacent(H)) return ..()
+	if(!istype(H) || !Adjacent(H) || H != usr) return ..()
 
 	if(H.a_intent == INTENT_HELP)
 		get_scooped(H)
@@ -107,6 +114,7 @@
 
 /mob/living/simple_animal/cat/Jones
 	name = "Jones"
+	real_name = "Jones"
 	desc = "A tough, old stray whose origin no one seems to know."
 	icon_state = "cat2"
 	icon_living = "cat2"

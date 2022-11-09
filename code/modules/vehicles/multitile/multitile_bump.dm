@@ -151,7 +151,7 @@
 /obj/structure/dropship_equipment/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(V.seats[VEHICLE_DRIVER])
 		var/last_moved = V.l_move_time	//in case VC moves before answering
-		if(alert("Are you sure you want to crush \the [name]?",,"Yes","No") == "Yes")
+		if(alert(V.seats[VEHICLE_DRIVER], "Are you sure you want to crush \the [name]?", "Ramming confirmation","Yes","No") == "Yes")
 			if(last_moved == V.l_move_time)
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -212,6 +212,84 @@
 	qdel(src)
 	return TRUE
 
+/obj/structure/foamed_metal/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(!(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY))
+		V.move_momentum -= V.move_momentum * 0.5
+	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+	playsound(src, 'sound/effects/metalhit.ogg', 20)
+	qdel(src)
+	return TRUE
+
+/obj/structure/grille/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(!(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY))
+		V.move_momentum -= V.move_momentum * 0.5
+	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+	playsound(src, 'sound/effects/grillehit.ogg', 20)
+	qdel(src)
+	return TRUE
+
+/obj/structure/inflatable/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
+		V.move_momentum -= V.move_momentum * 0.5
+	visible_message(SPAN_DANGER("\The [V] rams \the [src]!"))
+	density = FALSE
+	deflate(TRUE)
+	return TRUE
+
+/obj/structure/bed/chair/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	visible_message(SPAN_DANGER("\The [V] rams \the [src]!"))
+	if(stacked_size)
+		stack_collapse()
+	else
+		qdel(src)
+	return TRUE
+
+/obj/structure/prop/dam/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM)
+		V.move_momentum -= V.move_momentum * 0.5
+	else if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY))
+		return FALSE
+
+	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+	playsound(src, 'sound/effects/metal_crash.ogg', 20)
+	qdel(src)
+	return TRUE
+
+/obj/structure/prop/dam/drill/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	return FALSE
+
+/obj/structure/prop/dam/torii/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	return FALSE
+
+/obj/structure/prop/dam/large_boulder/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	return FALSE
+
+/obj/structure/prop/dam/wide_boulder/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	return FALSE
+
+/obj/structure/flora/tree/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
+		return FALSE
+	else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
+		V.move_momentum -= V.move_momentum * 0.5
+
+	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+	playsound(src, 'sound/effects/metal_crash.ogg', 20)
+	playsound(src, 'sound/effects/woodhit.ogg', 20)
+	qdel(src)
+	return TRUE
+
+/obj/structure/flora/tree/jungle/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	return FALSE
+
+/obj/structure/window/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(not_damageable)
+		return FALSE
+
+	health = 0
+	healthcheck()
+	return TRUE
+
 //-------------------------MACHINERY------------------------
 
 /obj/structure/machinery/door/handle_vehicle_bump(var/obj/vehicle/multitile/V)
@@ -246,6 +324,17 @@
 		visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
 		playsound(V, 'sound/effects/metal_crash.ogg', 35)
 		Destroy()
+	return FALSE
+
+/obj/structure/machinery/door/poddoor/almayer/handle_vehicle_bump(obj/vehicle/multitile/V)
+	if(!unacidable)
+		if(vehicle_resistant)
+			visible_message(SPAN_DANGER("\The [V] can't destroy [src]!"))
+			playsound(V, 'sound/effects/metal_crash.ogg', 35)
+		else
+			visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
+			playsound(V, 'sound/effects/metal_crash.ogg', 35)
+			Destroy()
 	return FALSE
 
 /obj/structure/machinery/cm_vending/handle_vehicle_bump(var/obj/vehicle/multitile/V)
@@ -318,6 +407,19 @@
 	deployment_system.undeploy_mg()
 	return FALSE
 
+/obj/structure/machinery/defenses/sentry/launchable/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(V.seats[VEHICLE_DRIVER])
+		var/last_moved = V.l_move_time	//in case VC moves before answering
+		if(alert(V.seats[VEHICLE_DRIVER], "Are you sure you want to crush \the [name]?", "Ramming confirmation","Yes","No") == "Yes")
+			if(last_moved == V.l_move_time)
+				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+				playsound(V, 'sound/effects/metal_crash.ogg', 20)
+				log_attack("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
+				message_staff("[src] was crushed by [key_name(V.seats[VEHICLE_DRIVER])] with [V].")
+				qdel(src)
+				return FALSE
+	return FALSE
+
 /obj/structure/machinery/disposal/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	qdel(src)
 	return TRUE
@@ -333,6 +435,16 @@
 /obj/structure/machinery/floodlight/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		return FALSE
+	playsound(V, 'sound/effects/metal_crash.ogg', 20)
+	visible_message(SPAN_DANGER("\The [V]crushes \the [src]!"))
+	qdel(src)
+	return TRUE
+
+/obj/structure/machinery/colony_floodlight/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
+		return FALSE
+	if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY))
+		V.move_momentum -= V.move_momentum * 0.5
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V]crushes \the [src]!"))
 	qdel(src)
@@ -356,6 +468,14 @@
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	qdel(src)
 	return TRUE
+
+/obj/structure/machinery/portable_atmospherics/hydroponics/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(!(V.vehicle_flags & VEHICLE_CLASS_WEAK))
+		playsound(V, 'sound/effects/metal_crash.ogg', 20)
+		visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+		qdel(src)
+		return TRUE
+	return FALSE
 
 //-------------------------VEHICLES------------------------
 
@@ -452,7 +572,7 @@
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
 		if(faction == driver.faction)
-			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[driver.x];Y=[driver.y];Z=[driver.z]'>JMP</a>) (<a href='?priv_msg=\ref[driver.client]'>PM</a>)")
+			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[driver.x];Y=[driver.y];Z=[driver.z]'>JMP</a>) ([driver.client ? "<a href='?priv_msg=[driver.client.ckey]'>PM</a>" : "NO CLIENT"])")
 	else
 		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].")	//to be able to determine whether vehicle was pushign friendlies
 
@@ -469,14 +589,15 @@
 			KnockDown(0.5, 1)
 		else
 			KnockDown(1, 1)
-
 	else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
+		dmg = TRUE
 		if(get_target_lock(driver.faction))
 			KnockDown(0.5, 1)
+			apply_damage(5 + rand(0, 5), BRUTE, no_limb_loss = TRUE)
+			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING(SPAN_BOLD("*YOU RAMMED AN ALLY AND HURT THEM!*")))
 		else
 			KnockDown(2, 1)
-			apply_damage(5 + rand(0, 10), BRUTE)
-			dmg = TRUE
+			apply_damage(10 + rand(0, 10), BRUTE)
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM)
 		KnockDown(3, 1)
@@ -494,9 +615,9 @@
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
 		if(faction == driver.faction)
-			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[driver.x];Y=[driver.y];Z=[driver.z]'>JMP</a>) (<a href='?priv_msg=\ref[driver.client]'>PM</a>)")
+			msg_admin_ff("[key_name(driver)] rammed and damaged member of allied faction [key_name(src)] with \the [V] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[driver.x];Y=[driver.y];Z=[driver.z]'>JMP</a>) ([driver.client ? "<a href='?priv_msg=[driver.client.ckey]'>PM</a>" : "NO CLIENT"])")
 	else
-		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].")	//to be able to determine whether vehicle was pushign friendlies
+		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].")	//to be able to determine whether vehicle was pushing friendlies
 
 	return TRUE
 
@@ -514,18 +635,20 @@
 	var/momentum_penalty = FALSE
 
 	if((mob_size >= MOB_SIZE_IMMOBILE) && !is_mob_incapacitated() && !buckled)
-		var/dir_between = get_dir(src, V)
 		if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY))	//heavy vehicles just don't give a damn
+			var/dir_between = get_dir(src, V)
 			if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 				blocked = TRUE
+			//Check what dir they should be facing to be looking directly at the vehicle
+			else if(dir_between == dir)	//front hit (facing the vehicle)
+				blocked = TRUE
+			else if(dir_between == reverse_dir[dir])	// rear hit (facing directly away from the vehicle)
+				takes_damage = TRUE
+			//side hit
+			else if(caste.caste_type == XENO_CASTE_QUEEN)	// queen blocks even with sides
+				blocked = TRUE
 			else
-				//Check what dir they should be facing to be looking directly at the vehicle
-				if(dir_between == dir)	//front hit (facing the vehicle)
-					blocked = TRUE
-				else if(dir_between == reverse_dir[dir])	// rear hit (facing directly away from the vehicle)
-					takes_damage = TRUE
-				else	//side hit
-					momentum_penalty = TRUE
+				momentum_penalty = TRUE
 
 		if(blocked)
 			visible_message(SPAN_DANGER("\The [src] digs it's claws into the ground, anchoring itself in place and halting \the [V] in it's tracks!"),
@@ -654,7 +777,7 @@
 		return . = ..()
 
 //CRUSHER CHARGE COLLISION
-//Crushers going top speed can charge into & move frame broken vehicles
+//Crushers going top speed can charge into & move vehicles with broken/without locmotion module
 /obj/vehicle/multitile/Collided(var/atom/A)
 	. = ..()
 
@@ -662,13 +785,17 @@
 		var/mob/living/carbon/Xenomorph/Crusher/C = A
 		if(!C.throwing)
 			return
+		var/do_move = TRUE
 		if(health > 0)
 			take_damage_type(100, "blunt", C)
 			visible_message(SPAN_DANGER("\The [A] ramms \the [src]!"))
-			log_attack("\The [src] was rammed by [key_name(C)].")
-		else
+			for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
+				if(Loco.health > 0)
+					do_move = FALSE
+					break
+		if(do_move)
 			try_move(C.dir, force=TRUE)
 			visible_message(SPAN_DANGER("The sheer force of the impact makes \the [src] slide back!"))
-			log_attack("\The [src] was rammed and pushed by [key_name(C)].")
+		log_attack("\The [src] was rammed [do_move ? "and pushed " : " "]by [key_name(C)].")
 		playsound(loc, 'sound/effects/metal_crash.ogg', 35)
 		interior_crash_effect()

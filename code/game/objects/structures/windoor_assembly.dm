@@ -48,7 +48,10 @@ obj/structure/windoor_assembly/Destroy()
 	//I really should have spread this out across more states but thin little windoors are hard to sprite.
 	switch(state)
 		if("01")
-			if(istype(W, /obj/item/tool/weldingtool) && !anchored )
+			if(iswelder(W) && !anchored )
+				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
 				var/obj/item/tool/weldingtool/WT = W
 				if (WT.remove_fuel(0,user))
 					user.visible_message("[user] dissassembles the windoor assembly.", "You start to dissassemble the windoor assembly.")
@@ -140,7 +143,7 @@ obj/structure/windoor_assembly/Destroy()
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src) return
 
-					to_chat(user, SPAN_NOTICE(" You cut the windoor wires.!"))
+					to_chat(user, SPAN_NOTICE(" You cut the windoor wires!"))
 					new/obj/item/stack/cable_coil(get_turf(user), 1)
 					src.state = "01"
 					if(src.secure)
@@ -149,7 +152,10 @@ obj/structure/windoor_assembly/Destroy()
 						src.name = "Anchored Windoor Assembly"
 
 			//Adding airlock electronics for access. Step 6 complete.
-			else if(istype(W, /obj/item/circuitboard/airlock) && W:icon_state != "door_electronics_smoked")
+			else if(istype(W, /obj/item/circuitboard/airlock))
+				var/obj/item/circuitboard/airlock/board = W
+				if(board.fried)
+					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 

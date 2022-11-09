@@ -156,3 +156,32 @@
 /area/fiorina/station/research_cells
 	name = "Fiorina - Research Cellblock"
 	icon_state = "station0"
+
+//telecomms areas
+/area/fiorina/station/telecomm
+	name = "Fiorina - Communications Relay"
+	icon_state = "ass_line"
+	is_resin_allowed = FALSE
+	ceiling_muffle = FALSE
+	base_muffle = MUFFLE_LOW
+
+/area/fiorina/station/telecomm/lz1_cargo
+	name = "Fiorina - LZ1 Cargo Communications Relay"
+
+/area/fiorina/station/telecomm/lz1_containers
+	name = "Fiorina - LZ1 Containers Communications Relay"
+
+/area/fiorina/station/telecomm/lz1_tram
+	name = "Fiorina - LZ1 Aux Port Communications Relay"
+
+/area/fiorina/station/telecomm/lz1_engineering
+	name = "Fiorina - Engineering Primary Communications Relay"
+
+/area/fiorina/station/telecomm/lz2_engineering
+	name = "Fiorina - Engineering Secondary Communications Relay"
+
+/area/fiorina/station/telecomm/lz2_north
+	name = "Fiorina - LZ2 North Communications Relay"
+
+/area/fiorina/station/telecomm/lz2_maint
+	name = "Fiorina - Backup Communications Relay"

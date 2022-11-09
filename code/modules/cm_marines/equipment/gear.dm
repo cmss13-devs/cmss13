@@ -13,7 +13,7 @@
 
 /obj/item/bodybag/tarp
 	name = "\improper V1 thermal-dapening tarp (folded)"
-	desc = "A tarp carried by USCM Snipers. When laying underneath the tarp, the sniper is almost indistinguishable from the landscape if utilized correctly. The tarp contains a thermal-dampening weave to hide the wearer's heat signatures, optical camoflauge, and smell dampening."
+	desc = "A tarp carried by USCM Snipers. When laying underneath the tarp, the sniper is almost indistinguishable from the landscape if utilized correctly. The tarp contains a thermal-dampening weave to hide the wearer's heat signatures, optical camouflage, and smell dampening."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "jungletarp_folded"
 	w_class = SIZE_MEDIUM
@@ -192,7 +192,7 @@
 
 /obj/item/reagent_container/food/snacks/protein_pack
 	name = "stale USCM protein bar"
-	desc = "The most fake looking protein bar you have ever laid eyes on, covered in the a subtitution chocolate. The powder used to make these is a subsitute of a substitute of whey substitute."
+	desc = "The most fake-looking protein bar you have ever laid eyes on, covered in a substitution chocolate. The powder used to make these is a substitute of a substitute of whey substitute."
 	icon_state = "yummers"
 	filling_color = "#ED1169"
 	w_class = SIZE_TINY
@@ -222,7 +222,7 @@
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal2
 	name = "\improper USCM Prepared Meal (pork)"
-	desc = "A tray of standard USCM food. Partially raw pork, goopy corn and some water mashed potatos fill this tray."
+	desc = "A tray of standard USCM food. Partially raw pork, goopy corn and some water mashed potatoes fill this tray."
 	icon_state = "MREb"
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal2/Initialize()
@@ -242,7 +242,7 @@
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal4
 	name = "\improper USCM Prepared Meal (pizza)"
-	desc = "A tray of standard USCM food. Cold pizza, wet greenbeans and a shitty egg fill this tray. Get something other than pizza, lardass."
+	desc = "A tray of standard USCM food. Cold pizza, wet green beans and a shitty egg fill this tray. Get something other than pizza, lardass."
 	icon_state = "MREd"
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal4/Initialize()
@@ -272,7 +272,7 @@
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas1
 	name = "\improper USCM M25 'X-MAS' Meal: Sugar Cookies"
-	desc = "The USCM M25 Sugar Cookies Meal was designed to give marines a feeling of Christmas joy. But to the bemusement of superior officers, the costs-savings measure of simply fabricating protein bars in the shape of cookies with chocolate substitute chips and the replacement of the expected milk with artifically colored water did not go over well with most marines."
+	desc = "The USCM M25 Sugar Cookies Meal was designed to give marines a feeling of Christmas joy. But to the bemusement of superior officers, the costs-savings measure of simply fabricating protein bars in the shape of cookies with chocolate substitute chips and the replacement of the expected milk with artificially colored water did not go over well with most marines."
 	icon_state = "mreCookies"
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas1/Initialize()

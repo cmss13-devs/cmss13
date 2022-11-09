@@ -1,0 +1,698 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bA" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/central_jungle)
+"bQ" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv624/lazarus/fitness)
+"dw" = (
+/obj/item/clothing/under/shorts/red,
+/obj/structure/surface/rack,
+/obj/item/clothing/under/shorts/green{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/item/clothing/under/shorts/grey{
+	pixel_x = -1;
+	pixel_y = -8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"gL" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Leisure Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/fitness)
+"hb" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = 29
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"hX" = (
+/obj/structure/filingcabinet/medical,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor,
+/area/lv624/lazarus/fitness)
+"ic" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/central_jungle)
+"iv" = (
+/obj/item/toy/inflatable_duck,
+/turf/open/gm/river,
+/area/lv624/lazarus/fitness)
+"iJ" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/colony/north_nexus_road)
+"jS" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/under/swimsuit/black,
+/obj/item/clothing/under/swimsuit/blue{
+	pixel_x = 7
+	},
+/obj/item/clothing/under/swimsuit/red{
+	pixel_x = -7
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"kE" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"kY" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"li" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"ls" = (
+/obj/item/tool/soap,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv624/lazarus/fitness)
+"lB" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/fitness)
+"ma" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/central_jungle)
+"oK" = (
+/obj/item/shard,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"re" = (
+/obj/structure/closet/crate/secure/hydrosec,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"rI" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"sA" = (
+/turf/closed/wall,
+/area/lv624/lazarus/fitness)
+"tV" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Leisure Dome";
+	req_access_txt = "100"
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/fitness)
+"vq" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"wj" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/south_medbay_road)
+"wH" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"wO" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/central_jungle)
+"xt" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/central_jungle)
+"xS" = (
+/turf/open/gm/grass,
+/area/lv624/ground/colony/south_medbay_road)
+"yO" = (
+/obj/item/toy/beach_ball,
+/turf/open/gm/river,
+/area/lv624/lazarus/fitness)
+"yP" = (
+/obj/effect/landmark/good_item,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"yV" = (
+/obj/structure/sign/safety/water{
+	pixel_x = 7;
+	pixel_y = 26
+	},
+/obj/structure/surface/table,
+/obj/item/storage/box/cups,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"zq" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv624/lazarus/fitness)
+"Be" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	name = "Fitness APC";
+	pixel_y = 30;
+	start_charge = 0
+	},
+/obj/effect/decal/remains/human,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"Ei" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"Er" = (
+/obj/effect/landmark/good_item,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv624/lazarus/fitness)
+"Ez" = (
+/turf/open/floor,
+/area/lv624/lazarus/fitness)
+"EG" = (
+/turf/open/gm/river,
+/area/lv624/lazarus/fitness)
+"Fx" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv624/lazarus/fitness)
+"FO" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"Ga" = (
+/obj/structure/prop/static_tank/water,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"Gf" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/colony/south_medbay_road)
+"Iu" = (
+/obj/structure/machinery/atm{
+	name = "Weyland-Yutani Automatic Teller Machine";
+	pixel_x = -30
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"IA" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"Jk" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/central_jungle)
+"JM" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/grass,
+/area/lv624/ground/colony/south_medbay_road)
+"KS" = (
+/obj/structure/fence,
+/turf/open/gm/grass,
+/area/lv624/ground/colony/north_nexus_road)
+"NC" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/central_jungle)
+"Ot" = (
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/fitness)
+"Ou" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/gm/river,
+/area/lv624/lazarus/fitness)
+"Pw" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/north_nexus_road)
+"Px" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"Rf" = (
+/obj/structure/closet/athletic_mixed,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"Rl" = (
+/obj/item/clothing/under/shorts/red,
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/snorkel,
+/obj/item/clothing/mask/snorkel,
+/obj/item/clothing/mask/snorkel,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"SW" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"Td" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass,
+/area/lv624/ground/colony/south_medbay_road)
+"Ua" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/central_jungle)
+"Us" = (
+/obj/structure/closet/athletic_mixed,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"UM" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"Vb" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/colony/south_medbay_road)
+"Vo" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/fitness)
+"VM" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"Wj" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_central_jungle)
+"WV" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/colony/north_nexus_road)
+"Zo" = (
+/obj/effect/landmark/good_item,
+/turf/open/gm/river,
+/area/lv624/lazarus/fitness)
+"ZM" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/colony/south_medbay_road)
+
+(1,1,1) = {"
+ZM
+xS
+Td
+xS
+xS
+Vo
+Ez
+hX
+Vo
+NC
+Jk
+Ua
+Ua
+xt
+bA
+"}
+(2,1,1) = {"
+ZM
+xS
+xS
+JM
+xS
+sA
+lB
+tV
+sA
+sA
+NC
+Jk
+wO
+ma
+NC
+"}
+(3,1,1) = {"
+ZM
+sA
+Vo
+Ot
+Vo
+sA
+Be
+li
+vq
+sA
+Vo
+Vo
+Ot
+sA
+NC
+"}
+(4,1,1) = {"
+Vb
+Vo
+Ga
+oK
+vq
+Ei
+vq
+vq
+vq
+Ei
+re
+vq
+FO
+Fx
+ic
+"}
+(5,1,1) = {"
+Gf
+Vo
+rI
+vq
+bQ
+bQ
+zq
+ls
+bQ
+bQ
+bQ
+vq
+VM
+Vo
+NC
+"}
+(6,1,1) = {"
+wj
+sA
+yV
+vq
+bQ
+EG
+EG
+EG
+Zo
+EG
+bQ
+vq
+Px
+sA
+NC
+"}
+(7,1,1) = {"
+sA
+sA
+vq
+vq
+bQ
+EG
+yO
+EG
+EG
+EG
+bQ
+vq
+vq
+sA
+sA
+"}
+(8,1,1) = {"
+Vo
+Iu
+vq
+vq
+Er
+EG
+EG
+Ou
+EG
+EG
+bQ
+vq
+vq
+Us
+Vo
+"}
+(9,1,1) = {"
+gL
+vq
+vq
+vq
+bQ
+EG
+EG
+EG
+EG
+EG
+bQ
+vq
+vq
+vq
+gL
+"}
+(10,1,1) = {"
+Ot
+UM
+vq
+vq
+bQ
+EG
+EG
+iv
+EG
+EG
+bQ
+vq
+vq
+Rf
+Vo
+"}
+(11,1,1) = {"
+sA
+sA
+vq
+vq
+bQ
+EG
+EG
+EG
+EG
+EG
+bQ
+vq
+vq
+sA
+sA
+"}
+(12,1,1) = {"
+Pw
+sA
+vq
+vq
+bQ
+EG
+Ou
+EG
+EG
+EG
+bQ
+vq
+jS
+sA
+Wj
+"}
+(13,1,1) = {"
+WV
+Fx
+SW
+yP
+bQ
+bQ
+bQ
+bQ
+bQ
+bQ
+bQ
+yP
+Rl
+Vo
+Wj
+"}
+(14,1,1) = {"
+iJ
+Vo
+kE
+vq
+IA
+UM
+vq
+vq
+vq
+hb
+vq
+vq
+dw
+Vo
+Wj
+"}
+(15,1,1) = {"
+KS
+sA
+Ot
+Vo
+Vo
+sA
+kY
+vq
+vq
+sA
+Vo
+Vo
+Vo
+sA
+wH
+"}

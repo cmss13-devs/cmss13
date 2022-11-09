@@ -60,12 +60,12 @@
 		icon_state = "defense_base_off"
 
 
-/obj/structure/machinery/defenses/examine(mob/user)
+/obj/structure/machinery/defenses/get_examine_text(mob/user)
 	. = ..()
 
 	var/message = ""
 	if(ishuman(user))
-		message += SPAN_INFO("Multitool is used to disassemble it.")
+		message += SPAN_INFO("A multitool can be used to disassemble it.")
 		message += "\n"
 		message += SPAN_INFO("The turret is currently [locked? "locked" : "unlocked"] to non-engineers.")
 		message += "\n"
@@ -73,7 +73,7 @@
 	message += "\n"
 	if(display_additional_stats)
 		message += SPAN_INFO("Its display reads - Kills: [kills] | Shots: [shots].")
-	to_chat(user, message)
+	. += message
 
 /obj/structure/machinery/defenses/proc/power_on()
 	if(stat == DEFENSE_DAMAGED)
@@ -149,16 +149,20 @@
 			return
 
 		if(health < health_max * 0.25)
-			to_chat(user, SPAN_WARNING("[src] is too damaged to pick up!"))
+			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))
 			return
 
 		if(static)
-			to_chat(user, SPAN_WARNING("[src] is bolted to the ground!"))
+			to_chat(user, SPAN_WARNING("\The [src] is bolted to the ground!"))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] begins disassembling [src]."), SPAN_NOTICE("You begin disassembling [src]."))
+		user.visible_message(SPAN_NOTICE("[user] begins disassembling \the [src]."), SPAN_NOTICE("You begin disassembling \the [src]."))
 
 		if(!do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			return
+
+		if(health < health_max * 0.25) //repeat check
+			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
@@ -170,6 +174,7 @@
 				LAZYADD(faction_group, i)
 		power_off()
 		HD.forceMove(T)
+		HD.set_name_label(name_label)
 		HD.dropped = 1
 		HD.update_icon()
 		placed = 0
@@ -206,6 +211,9 @@
 			return
 
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = O
 		if(health < 0)
 			to_chat(user, SPAN_WARNING("[src]'s internal circuitry is ruined, there's no way you can salvage this on the go."))
@@ -230,6 +238,9 @@
 	return TRUE
 
 /obj/structure/machinery/defenses/attack_hand(var/mob/user)
+	if(!attack_hand_checks(user))
+		return
+
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
@@ -262,6 +273,9 @@
 	else
 		power_off()
 
+
+/obj/structure/machinery/defenses/proc/attack_hand_checks(var/mob/user)
+	return TRUE
 
 /obj/structure/machinery/defenses/proc/power_on_action(var/mob/user)
 	return

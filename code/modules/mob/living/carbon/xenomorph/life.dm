@@ -27,10 +27,8 @@
 		update_icons()
 		handle_luminosity()
 
-		if (behavior_delegate)
-			var/datum/behavior_delegate/MD = behavior_delegate
-			MD.on_life()
-
+		if(behavior_delegate)
+			behavior_delegate.on_life()
 
 		if(loc)
 			handle_environment()
@@ -43,12 +41,15 @@
 	var/progress_amount = 1
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || caste?.evolve_without_queen)
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
-		if(evolution_stored >= evolution_threshold - 1)
-			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
-			src << sound('sound/effects/xeno_evolveready.ogg')
+		if(evolution_stored >= evolution_threshold)
+			evolve_message()
+
+/mob/living/carbon/Xenomorph/proc/evolve_message()
+	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
+	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has
 #define PASSIVE_BURN_DAM_CALC(intensity, duration, fire_stacks) intensity*(fire_stacks/duration*0.2 + 0.8)
@@ -68,6 +69,7 @@
 	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
 		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
 		apply_damage(dmg, BURN)
+		INVOKE_ASYNC(src, /mob.proc/emote, pick("roar", "needhelp"))
 
 #undef PASSIVE_BURN_DAM_CALC
 
@@ -101,7 +103,7 @@
 
 		if(use_current_aura || use_leader_aura)
 			for(var/mob/living/carbon/Xenomorph/Z as anything in GLOB.living_xeno_list)
-				if(Z.ignores_pheromones || Z.z != z || get_dist(aura_center, Z) > round(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
+				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || Z.z != z || get_dist(aura_center, Z) > round(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
 					continue
 				if(use_leader_aura)
 					Z.affected_by_pheromones(leader_current_aura, leader_aura_strength)
@@ -149,28 +151,8 @@
 
 	updatehealth()
 
-	if(health <= crit_health - warding_aura * 20) //dead
-		if(prob(gib_chance + 0.5*(crit_health - health)))
-			INVOKE_ASYNC(src, .proc/gib, last_damage_data)
-		else
-			death(last_damage_data)
-		return
-
-	else if(health <= 0) //in crit
-		if(hardcore)
-			INVOKE_ASYNC(src, .proc/gib, last_damage_data)
-		else
-			stat = UNCONSCIOUS
-			blinded = 1
-			see_in_dark = 5
-			if(isXenoRunner(src) && layer != initial(layer)) //Unhide
-				layer = MOB_LAYER
-
-	else						//alive and not in crit! Turn on their vision.
-		if(isXenoBoiler(src))
-			see_in_dark = 20
-		else
-			see_in_dark = 8
+	if(health > 0 && stat != DEAD)	//alive and not in crit! Turn on their vision.
+		see_in_dark = 50
 
 		SetEarDeafness(0) //All this stuff is prob unnecessary
 		ear_damage = 0
@@ -200,7 +182,7 @@
 
 		if(regular_update)
 			if(eye_blurry)
-				overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
+				overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
 				src.eye_blurry--
 				src.eye_blurry = max(0, src.eye_blurry)
 			else
@@ -246,12 +228,12 @@
 
 	var/severity = HUD_PAIN_STATES_XENO - Ceiling(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
 	if(severity)
-		overlay_fullscreen("xeno_pain", /obj/screen/fullscreen/xeno_pain, severity)
+		overlay_fullscreen("xeno_pain", /atom/movable/screen/fullscreen/xeno_pain, severity)
 	else
 		clear_fullscreen("xeno_pain")
 
 	if(blinded)
-		overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+		overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 	else
 		clear_fullscreen("blind")
 
@@ -261,7 +243,7 @@
 		reset_view(null)
 
 	if(dazed)
-		overlay_fullscreen("dazed", /obj/screen/fullscreen/impaired, 5)
+		overlay_fullscreen("dazed", /atom/movable/screen/fullscreen/impaired, 5)
 	else
 		clear_fullscreen("dazed")
 
@@ -301,12 +283,16 @@ Xenos don't actually take oxyloss, oh well
 hmmmm, this is probably unnecessary
 Make sure their actual health updates immediately.*/
 
-#define XENO_HEAL_WOUNDS(m, recov) \
-apply_damage(-((maxHealth / 70) + 0.5 + (maxHealth / 70) * recov/2)*(m), BRUTE); \
-apply_damage(-(maxHealth / 60 + 0.5 + (maxHealth / 60) * recov/2)*(m), BURN); \
-apply_damage(-(maxHealth * 0.1 + 0.5 + (maxHealth * 0.1) * recov/2)*(m), OXY); \
-apply_damage(-(maxHealth / 5 + 0.5 + (maxHealth / 5) * recov/2)*(m), TOX); \
-updatehealth()
+/mob/living/carbon/Xenomorph/proc/heal_wounds(m, recov)
+	var/heal_penalty = 0
+	var/list/L = list("healing" = heal_penalty)
+	SEND_SIGNAL(src, COMSIG_XENO_ON_HEAL_WOUNDS, L)
+	heal_penalty = - L["healing"]
+	apply_damage(min(-((maxHealth / 70) + 0.5 + (maxHealth / 70) * recov/2)*(m) + heal_penalty, 0), BRUTE)
+	apply_damage(min(-(maxHealth / 60 + 0.5 + (maxHealth / 60) * recov/2)*(m) + heal_penalty, 0), BURN)
+	apply_damage(min(-(maxHealth * 0.1 + 0.5 + (maxHealth * 0.1) * recov/2)*(m) + heal_penalty, 0), OXY)
+	apply_damage(min(-(maxHealth / 5 + 0.5 + (maxHealth / 5) * recov/2)*(m) + heal_penalty, 0), TOX)
+	updatehealth()
 
 
 /mob/living/carbon/Xenomorph/proc/handle_environment()
@@ -337,11 +323,11 @@ updatehealth()
 			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
 				if(lying || resting)
 					if(health < 0) //Unconscious
-						XENO_HEAL_WOUNDS(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
+						heal_wounds(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
-						XENO_HEAL_WOUNDS(caste.heal_resting * regeneration_multiplier, recoveryActual)
+						heal_wounds(caste.heal_resting * regeneration_multiplier, recoveryActual)
 				else
-					XENO_HEAL_WOUNDS(caste.heal_standing * regeneration_multiplier, recoveryActual)
+					heal_wounds(caste.heal_standing * regeneration_multiplier, recoveryActual)
 				updatehealth()
 
 			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)
@@ -392,7 +378,7 @@ updatehealth()
 	if(!hud_used || !hud_used.locate_leader)
 		return
 
-	var/obj/screen/queen_locator/QL = hud_used.locate_leader
+	var/atom/movable/screen/queen_locator/QL = hud_used.locate_leader
 	if(!loc)
 		QL.icon_state = "trackoff"
 		return
@@ -411,7 +397,13 @@ updatehealth()
 			tracking_atom = hive.hive_location
 		else
 			var/leader_tracker = text2num(QL.track_state)
-			if(!hive || !hive.xeno_leader_list[leader_tracker])
+			if(!hive || !hive.xeno_leader_list)
+				QL.icon_state = "trackoff"
+				return
+			if(leader_tracker > hive.xeno_leader_list.len)
+				QL.icon_state = "trackoff"
+				return
+			if(!hive.xeno_leader_list[leader_tracker])
 				QL.icon_state = "trackoff"
 				return
 			tracking_atom = hive.xeno_leader_list[leader_tracker]
@@ -439,7 +431,7 @@ updatehealth()
 	var/tracked_marker_turf = get_turf(tracked_marker)	 //so I made local variables to circumvent this
 	var/area/A = get_area(loc)
 	var/area/MA = get_area(tracked_marker_turf)
-	var/obj/screen/mark_locator/ML = hud_used.locate_marker
+	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.desc = client
 
 	ML.overlays.Cut()
@@ -474,9 +466,40 @@ updatehealth()
 	else
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
-	recalculate_move_delay = TRUE
-
+	if(stat != DEAD && !gibbing)
+		var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
+		if(health <= crit_health - warding_health) //dead
+			if(prob(gib_chance + 0.5*(crit_health - health)))
+				async_gib(last_damage_data)
+			else
+				death(last_damage_data)
+			return
+		else if(health <= 0) //in crit
+			if(hardcore)
+				async_gib(last_damage_data)
+			else if(world.time > next_grace_time && stat == CONSCIOUS)
+				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
+				if(grace_time)
+					sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
+					addtimer(CALLBACK(src, .proc/handle_crit), grace_time)
+				else
+					handle_crit()
+				next_grace_time = world.time + grace_time
 	med_hud_set_health()
+
+/mob/living/carbon/Xenomorph/proc/handle_crit()
+	if(stat == DEAD || gibbing)
+		return
+
+	sound_environment_override = SOUND_ENVIRONMENT_NONE
+	stat = UNCONSCIOUS
+	blinded = 1
+	see_in_dark = 5
+	if(layer != initial(layer)) //Unhide
+		layer = initial(layer)
+	recalculate_move_delay = TRUE
+	if(!lying)
+		update_canmove()
 
 /mob/living/carbon/Xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0

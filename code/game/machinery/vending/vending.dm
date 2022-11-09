@@ -56,10 +56,10 @@
 	var/icon_vend //Icon_state when vending!
 	var/icon_deny //Icon_state when vending!
 	var/seconds_electrified = 0 //Shock customers like an airlock.
-	var/shoot_inventory = 0 //Fire items at customers! We're broken!
+	var/shoot_inventory = FALSE //Fire items at customers! We're broken!
 	var/shut_up = 0 //Stop spouting those godawful pitches!
 	var/extended_inventory = 0 //can we access the hidden inventory?
-	var/panel_open = 0 //Hacking that vending machine. Gonna get a free candy bar.
+	var/panel_open = FALSE //Hacking that vending machine. Gonna get a free candy bar.
 	var/wires = 15
 	var/obj/item/coin/coin
 	var/announce_hacked = TRUE
@@ -286,15 +286,18 @@
 		if(user.drop_inv_item_to_loc(W, src))
 			coin = W
 			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
+			ui_interact(user)
 		return
 	else if(istype(W, /obj/item/card))
 		var/obj/item/card/I = W
 		scan_card(I)
+		ui_interact(user)
 		return
 	else if (istype(W, /obj/item/spacecash/ewallet))
 		if(user.drop_inv_item_to_loc(W, src))
 			ewallet = W
 			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
+			ui_interact(user)
 		return
 
 	..()
@@ -309,7 +312,7 @@
 			if(!CH.suspended)
 				if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 					if(vendor_account)
-						var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
+						var/attempt_pin = tgui_input_number(usr, "Enter pin code", "Vendor transaction")
 						var/datum/money_account/D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
 						transfer_and_vend(D)
 					else
@@ -508,14 +511,17 @@
 					else
 						to_chat(usr, SPAN_DANGER("The ewallet doesn't have enough money to pay for that."))
 						src.currently_vending = R
+						ui_interact(usr)
 
 				else
 					src.currently_vending = R
+					ui_interact(usr)
 
 			return
 
 		else if (href_list["cancel_buying"])
 			src.currently_vending = null
+			ui_interact(usr)
 			return
 
 		else if ((href_list["cutwire"]) && (src.panel_open))
@@ -600,6 +606,8 @@
 /obj/structure/machinery/vending/proc/release_item(var/datum/data/vending_product/R, var/delay_vending = 0, var/mob/living/carbon/human/user)
 	set waitfor = 0
 
+	ui_interact(user)
+
 	if (delay_vending)
 		use_power(vend_power_usage)	//actuators and stuff
 		if (icon_vend)
@@ -626,6 +634,7 @@
 	if(istype(A, /obj/item))
 		var/obj/item/I = A
 		stock(I, user)
+		ui_interact(user)
 
 /obj/structure/machinery/vending/proc/stock(obj/item/item_to_stock, mob/user)
 	var/datum/data/vending_product/R //Let's try with a new datum.
@@ -647,6 +656,27 @@
 				if(A.current_rounds < A.max_rounds)
 					to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
 					return
+			if(istype(item_to_stock,/obj/item/device/walkman))
+				var/obj/item/device/walkman/W = item_to_stock
+				if(W.tape)
+					to_chat(user,SPAN_WARNING("Remove the tape first!"))
+					return
+
+			if(istype(item_to_stock, /obj/item/device/defibrillator))
+				var/obj/item/device/defibrillator/D = item_to_stock
+				if(!D.dcell)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
+					return
+				if(D.dcell.charge < D.dcell.maxcharge)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
+					return
+
+			if(istype(item_to_stock, /obj/item/cell))
+				var/obj/item/cell/C = item_to_stock
+				if(C.charge < C.maxcharge)
+					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
+					return
+
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)
 					item_to_stock.unwield(user)
@@ -768,7 +798,7 @@
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if (VENDING_WIRE_SHOOT_INV)
 			if(!src.shoot_inventory)
-				src.shoot_inventory = 1
+				src.shoot_inventory = TRUE
 				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 
 /obj/structure/machinery/vending/proc/mend(var/wire)
@@ -781,7 +811,7 @@
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 0
 		if (VENDING_WIRE_SHOOT_INV)
-			src.shoot_inventory = 0
+			src.shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
 /obj/structure/machinery/vending/proc/pulse(var/wire)

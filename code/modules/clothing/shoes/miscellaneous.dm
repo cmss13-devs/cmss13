@@ -5,7 +5,7 @@
 	item_state = "brown"
 	permeability_coefficient = 0.05
 	flags_inventory = NOSLIPPING
-	
+
 	var/list/clothing_choices = list()
 	siemens_coefficient = 0.8
 
@@ -87,7 +87,6 @@
 	icon_state = "galoshes"
 	permeability_coefficient = 0.05
 	flags_inventory = NOSLIPPING
-	slowdown = SHOES_SLOWDOWN+1
 
 /obj/item/clothing/shoes/clown_shoes
 	desc = "The prankster's standard-issue clowning shoes. Damn they're huge!"
@@ -150,7 +149,7 @@
 
 /obj/item/clothing/shoes/snow
 	name = "snow boots"
-	desc = "When you feet are as cold as your heart"
+	desc = "When your feet are as cold as your heart"
 	icon_state = "swat"
 	siemens_coefficient = 0.6
 	flags_cold_protection = BODY_FLAG_FEET

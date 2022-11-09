@@ -12,7 +12,7 @@
 	baseturfs += type
 
 /turf/open/auto_turf/is_weedable()//for da xenos
-	return TRUE
+	return FULLY_WEEDABLE
 
 /turf/open/auto_turf/get_dirt_type()
 	return DIRT_TYPE_GROUND //automatically diggable I guess
@@ -103,7 +103,23 @@
 	variant = 1
 	variant_prefix_name = "rocky"
 
-//Ice Colony perma frost
+/turf/open/auto_turf/sand_white
+	layer_name = list("aged igneous", "wind swept dunes", "warn a coder", "warn a coder", "warn a coder")
+	icon_state = "varadero_1"
+	icon_prefix = "varadero"
+
+/turf/open/auto_turf/sand_white/get_dirt_type()
+	return DIRT_TYPE_SAND
+
+/turf/open/auto_turf/sand_white/layer0
+	icon_state = "varadero_0"
+	bleed_layer = 0
+
+/turf/open/auto_turf/sand_white/layer1
+	icon_state = "varadero_1"
+	bleed_layer = 1
+
+//Ice Colony permafrost
 /turf/open/auto_turf/ice
 	name = "auto-ice"
 	icon = 'icons/turf/floors/auto_ice.dmi'
@@ -146,7 +162,7 @@
 		return DIRT_TYPE_GROUND
 
 /turf/open/auto_turf/snow/is_weedable()
-	return !bleed_layer
+	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/auto_turf/snow/attackby(var/obj/item/I, var/mob/user)
 	//Light Stick
@@ -177,21 +193,21 @@
 	if(M.a_intent == INTENT_HELP || !bleed_layer)
 		return XENO_NO_DELAY_ACTION
 
-	M.visible_message(SPAN_NOTICE("[M] starts clearing out the [name]."), SPAN_NOTICE("You start clearing out the [name]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	M.visible_message(SPAN_NOTICE("[M] starts clearing out \the [src]..."), SPAN_NOTICE("You start clearing out \the [src]..."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-	xeno_attack_delay(M)
-	if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		return XENO_NO_DELAY_ACTION
 
-	if(!bleed_layer)
-		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
-		return XENO_NO_DELAY_ACTION
+	while(bleed_layer > 0)
+		xeno_attack_delay(M)
+		if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			return XENO_NO_DELAY_ACTION
 
-	M.visible_message(SPAN_NOTICE("[M] clears out [src]."), \
-	SPAN_NOTICE("You clear out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+		if(!bleed_layer)
+			to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
+			return XENO_NO_DELAY_ACTION
 
-	var/new_layer = bleed_layer - 1
-	changing_layer(new_layer)
+		var/new_layer = bleed_layer - 1
+		changing_layer(new_layer)
+
 	return XENO_NO_DELAY_ACTION
 
 /turf/open/auto_turf/snow/Entered(atom/movable/AM)
@@ -231,3 +247,64 @@
 /turf/open/auto_turf/snow/layer4
 	icon_state = "snow_4" //Add sorokyne rock decals to this one
 	bleed_layer = 4
+
+
+//new strata turfs
+
+/turf/open/auto_turf/snow/brown_base
+	icon_state = "snow_b_0"
+	icon_prefix = "snow_b"
+
+/turf/open/auto_turf/snow/brown_base/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/snow/brown_base/layer0
+
+/turf/open/auto_turf/snow/brown_base/layer0 //still have to manually define the layers for the editor
+	icon_state = "snow_b_0"
+	bleed_layer = 0
+
+/turf/open/auto_turf/snow/brown_base/layer1
+	icon_state = "snow_b_1"
+	bleed_layer = 1
+
+/turf/open/auto_turf/snow/brown_base/layer2
+	icon_state = "snow_b_2"
+	bleed_layer = 2
+
+/turf/open/auto_turf/snow/brown_base/layer3
+	icon_state = "snow_b_3"
+	bleed_layer = 3
+
+/turf/open/auto_turf/snow/brown_base/layer4
+	icon_state = "snow_b_4" //Add sorokyne rock decals to this one
+	bleed_layer = 4
+/turf/open/auto_turf/strata_grass
+	name = "matted grass"
+	icon = 'icons/turf/floors/auto_strata_grass.dmi'
+	icon_state = "grass_0"
+	icon_prefix = "grass"
+	layer_name = list("ground","lush thick grass")
+	desc = "grass, dirt, mud, and other assorted high moisture cave flooring."
+
+/turf/open/auto_turf/strata_grass/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/strata_grass/layer0
+
+/turf/open/auto_turf/strata_grass/layer0
+	icon_state = "grass_0"
+	bleed_layer = 0
+	variant_prefix_name = "matted grass"
+
+/turf/open/auto_turf/strata_grass/layer0_mud
+	icon_state = "grass_0_mud"
+	bleed_layer = 0
+	variant = "mud"
+	variant_prefix_name = "muddy"
+
+/turf/open/auto_turf/strata_grass/layer0_mud_alt
+	icon_state = "grass_0_mud_alt"
+	bleed_layer = 0
+	variant = "mud_alt"
+	variant_prefix_name = "muddy"
+
+/turf/open/auto_turf/strata_grass/layer1
+	icon_state = "grass_1"
+	bleed_layer = 1

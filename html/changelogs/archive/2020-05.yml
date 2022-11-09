@@ -1,0 +1,463 @@
+2020-05-06:
+  Fourkhan:
+  - tweak: Praetorians can no longer shield across Z-levels.
+  - tweak: Praetorian shielding is much less effective when used through Overwatch
+      on the same Z-level.
+  Jeser:
+  - tweak: Made Join the USCM window easier to navigate.
+  - rscadd: Examining vehicles as xenomorphs will now tell you approximate amount
+      of hosts inside.
+  - rscadd: Tank and APC now support firing not selected weapon with Middle Mouse
+      Button. New Toggle Middle/Shift Clicking verb will allow you to switch between
+      MMB and Shift + Click to shoot not selected weapon.
+  - rscadd: CTRL + Clicking as Gunner will activate support module if possible.
+  - rscadd: ALT + Clicking as tank Gunner will toggle Turret Gyrostabilizer.
+  - rscadd: Added Get Status Info verb that opens a window with all available information
+      about your vehicle and it's modules.
+  - rscadd: Added Vehicle Controls Guide verb that opens a window with information
+      about all vehicle verbs and shortcuts. Mandatory read for those playing on VC
+      for the first time.
+  - tweak: Humans now can enter/exit vehicle with items in hands. Use HARM intent
+      to attack vehicles in melee.
+  - tweak: Artillery module now applies zoom based on turret direction instead of
+      hull direction, as well as updates it correctly upon turret rotation.
+  - tweak: Artillery module now works regardless of whether you have turret installed
+      or not and will apply zoom based on hull direction in such cases.
+  - bugfix: M103 pattern Vehicle-Ammo rig can hold Boyars Dualcannon and Flare Launcher
+      magazines now.
+  - bugfix: Fixed Shift + Click examine not working from inside of a vehicle.
+  - bugfix: Fixed exploit that allowed shooting weapons while using binoculars.
+  - bugfix: Fixed modules not showing their integrity when not installed on vehicles.
+  - bugfix: Fixed Toggle Gyro verb not showing user a message in chat.
+  TobiNerd:
+  - bugfix: Did some cleanup of ERT code, which might have fixed some random bugs.
+  UnwaveringGrey:
+  - rscadd: Added CO's peaked parade dress cap to the CO's locker in their quarters.
+  - rsctweak: Changed wording on the MP Beret description to more clearly state how
+      armored it is.
+  Vampmare:
+  - tweak: Reduced Defender armour bonus in Fortify.
+  - tweak: Steelcrest Defender now has less base armour. Reduced the armour and explosive
+      resistance Steelcrest gets in Fortify.
+  unwaveringgrey:
+  - bugfix: Movespeed now recalculates immediately when dragging.
+2020-05-13:
+  Frans_Feiffer:
+  - imageadd: Resprited a set of donor gear upon request.
+  Ranged66:
+  - tweak: Added extra human gibbing shrapnel variants for visual effects.
+  - bugfix: Fixed thermite sometimes not burning a wall.
+  - tweak: Excessive thermite on a wall now speeds up the burning process.
+  - tweak: Getting a IV needle *ripped* out makes you SCREAM.
+  - tweak: Knocked down humans now have a slight randomization in their position and
+      orientation. A 20 corpse pile will no longer look like a single guy.
+  - tweak: Examining pill bottles gives you a rough estimate of how full they are.
+  - tweak: Flamer sentry bursts into flames upon destruction.
+  Vampmare:
+  - bugfix: Fixed unintended xeno abilities going through walls and being spammable.
+      They can go over barricades and window frames.
+  - bugfix: Fixed Egg Morpher accepting bodies when its full.
+  - bugfix: Scout cloak camouflage ability is now only usable by Scout.
+  - bugfix: Prespawned sentries can no longer be multitooled.
+  - bugfix: Prae Warden can no longer build up heals by spitting at corpses.
+  - tweak: Evo Pods now work off-weeds as well.
+  - tweak: Larva now get a consistent evo speed and is affected by Evo Pods.
+  - rscadd: Boiler Acid Glob slight damage increase against cades.
+  - rscadd: Boiler Trapper Mine slight damage increase against cades.
+  - rscadd: Increased Crusher base health. Increased Crusher Charge speed.
+  - rscadd: Increased Defender Fortify for base and Steelcrest. Increased movement
+      speed in Fortify for Steelcrest.
+  - rscdel: Tesla coil now disables defenses in a 7x7, same as its damage radius.
+      Tesla Coil health is reduced from 200 to 150.
+  - rscdel: Reduced Prae Vanguard Dash distance by 1 tile.
+  - rscadd: Reduced cooldown between applying acid DoTs to same target for Spitter.
+  - rscadd: Ravager Berserker now gets a base health increase. Berserker Apprehend
+      now slows for a bit when initially targeting.
+  - rscadd: Ravager Hedgehog now gets a base armour increase.
+  - rscdel: ASRS now has a lower chance of spitting out metal and plasteel.
+  - bugfix: Fixed the missing scanner console in Medical Brig. Fixed missing fax machine
+      in Brig. Fixed wrong description of Insubordination.
+  - bugfix: Fixed Boiler Trapper being able to fire into the dropship cockpit.
+  - bugfix: Fixed custom hud alpha and color not applying to all hud elements.
+  - imageadd: Ravager and Praetorian now visually change with strain choice. The sprites
+      are subject to change.
+  - imageadd: Ravager Hedgehog Shield will now have a visual sprite when active. Sprite
+      is subject to change.
+  - tweak: Ravager Berserker Eviscerate is now telegraphed.
+2020-05-18:
+  Frans_Feiffer:
+  - imageadd: Resprited a set of donor gear upon request.
+  Jeser:
+  - rscadd: 'Added 3 more announcement warnings for nuke: half of timer left, 1 minute
+      left and 10 seconds left. [#11219]'
+  - tweak: All nuke announcements now work for other factions, such as CLF and UPP.
+  - tweak: Tweaked nuclear bomb's sprites.
+  - tweak: Changed nuke's Control Panel NanoUI window from W-Y to USCM style.
+  - bugfix: Fixed Follow by Faction/Hive not actually filtering mobs of other Factions/Hives.
+      [Tyrfull Games]
+  - bugfix: Fixed being able to toggle MD range modes through space and time. [csd]
+  - bugfix: Fixed colony Synthetics appearing in Crew Manifest.
+  - tweak: Tweaked Join the USCM and Crew Manifest windows size.
+  - tweak: 'Improved Crew Manifest: now it uses same categories as Join the USCM window,
+      is centered in window, long roles and names won''t be taking two lines and squad
+      marines are now sorted by rank for easier navigation.'
+  - tweak: View Crew Manifest verb for humans now works only if you belong to USCM,
+      PMC or Death Squad factions.
+  - tweak: M56D and it's mount don't block RPG rockets now.
+  - tweak: Specialist's M92 Grenade Launcher now adds HIGH TOSS effect to it's grenades,
+      allowing you to shoot grenades over vendors and some other objects.
+  - tweak: You can throw items over simple vehicles. You can throw items over multitile
+      vehicles using High Toss.
+  - tweak: 'You can throw items over: M56D and it''s mount, computers, gibbers, microwaves,
+      food processors, biogenerators, fax machines, laptop vendors, mech bay recharge
+      ports, mech part fabricators, cyborg recharging stations, showcases, ore boxes,
+      xenoautopsy jar shelves and all 5 types of xenoautopsy cryo tanks (these can
+      be found on some maps in research facilities).'
+  - tweak: You can throw items over smartfridges, megaseed servitors and other smart
+      storages with High Toss.
+  - tweak: Gibbers, microwaves, food processors, biogenerators, juicers and smartfridges
+      became wrenchable.
+  - experiment: 'Reminder: to activate High Toss, CTRL + Click the throw button.'
+  - bugfix: Fixed closing Vehicle Status Info and Vehicle Controls Guide windows causing
+      problems with vehicles.
+  - bugfix: Fixed being unable to shoot vehicle weapons while having barricades/platforms
+      or similar objects within 2 tiles on line of fire.
+  - tweak: Slightly increased arc of fire for vehicle weaponry (Roughly +1 tile on
+      both sides).
+  Neth:
+  - tweak: Hedgehog shield spikes activation rate is now tied to upgrade level. Once
+      per second at young, and close to current rate at ancient.
+  - tweak: Scatterspitter's range is now equal to normal spit range. Reduced Scatterspitter's
+      shotgun spit cooldown by half a second.
+  - tweak: Reduced round start PO slots from 4 to 2. Reduced total PO slots from 4
+      to 3
+  - tweak: Members of same faction should deal less permanent damage to eachother.
+      Internal bleeding removed from Friendly Fire damage. Bone Break removed from
+      Friendly Fire damage. Organ Damage removed from Friendly Fire damage. Delimb
+      chance nullified for Friendly Fire damage. Shrapnel chance nullified for Friendly
+      Fire damage.
+  - tweak: Explosions caused by other marines is also affected. OB/CAS/Mortar fire
+      are excluded and should still deal full damage.
+  Ranged66:
+  - tweak: Buffed the damage of the machete, fireaxe (wielded), and most of the sword
+      lineup. (event swords mostly, claymore, katana etc)
+  - rscadd: Changed riot shield functionality. You can now activate it to raise/lower
+      your blocking stance. This slows your movementspeed, but greatly increases the
+      block chance. A successful block will make you lower the shield.
+  - tweak: Riot shield on your back now has a small chance to block damage.
+  - tweak: Lowered the bonus damage% of the melee skill somewhat.
+  ThePiachu:
+  - bugfix: All objective items are now solvable.
+  - bugfix: Survivor rescue objective is now fixed. To complete it a survivor needs
+      to get onto Almayer. After that they can do anything not to confine them to
+      the ship.
+  - bugfix: Retrieving processed intel items now works properly as an objective.
+  - imageadd: Added a slight variation for the Progress Report sprite.
+  - tweak: Progress Reports now take longer to read, but generate clues directly for
+      Disks.
+  - tweak: Technical Manuals now generate clues directly for item retrieval.
+  - tweak: Papers, manuals, folders, etc. that generate clues now are renamed after
+      the first read with the name of what they have clues about.
+  - tweak: Technical Manuals, retrievable items now have unique names.
+  - tweak: Item retrieval objectives are now more lenient with areas they accept as
+      destination.
+  - tweak: Objective clues are now displayed more prominently in chat.
+  - tweak: Document pouch now can sweep all documents from the floor.
+  - rscadd: Added a dev tool for bulk fetching of objective items and corpses.
+  - tweak: Since CTs can basically get their hands on most comms, they received upgraded
+      encryption key to put them on par with the RO.
+  - tweak: RO and CTs can now access Engineering comms.
+  - rscadd: CL received exclusive WY comms encryption key (:y). They can also give
+      it out to their mooks using their special briefcase. WY PMCs can also access
+      this channel. Have fun scheeming!
+  - rscdel: ASRS will stop sending motion detectors, plastic explosives, Mod 88, M44
+      crates on its own.
+  - tweak: Sentry ammo and fuel tanks have a lower priority in ASRS automatic dispensing
+      now.
+  - bugfix: Squashing some runtime errors.
+  TobiNerd:
+  - bugfix: Fixed chemical fire properties not additive to each other, but were rather
+      overwriting each other.
+  - bugfix: Fixed the explosive property using a positive falloff modifier rather
+      than a negative. A higher explosive level results in a falloff modifier closer
+      to 0, while a low explosive level is closer to -3.
+  - tweak: Water now has a -3 modifier to fire intensity.
+  - tweak: Made hypermetabolic a negative property.
+  - tweak: Halved how powerful hypometabolic is per level.
+  - tweak: Tweaked how thanatometabolic affects effectiveness.
+  - spellcheck: Hypermetabolic code is called EMB not EBM.
+  UnwaveringGrey:
+  - bugfix: Fixed MP berets not giving decap protection.
+  Vampmare:
+  - imageadd: Ravager and Praetorian now visually change with strain choice. The sprites
+      are subject to change.
+  - imageadd: Ravager Hedgehog Shield will now have a visual sprite when active. Sprite
+      is subject to change.
+  - tweak: Ravager Berserker Eviscerate is now telegraphed.
+  - tweak: Xenos no longer examine on shift click if its their ability button and
+      they have an ability active.
+2020-05-20:
+  Neth:
+  - tweak: Friendly Fire now can break bones, remove splints and embed objects
+  - rscdel: Removed HEFA from marine loadouts, supply, and vendors. Cargo can still
+      vend big HEFA boxes if they want to get killed by CO
+  - tweak: Surplus explosives crate - removed 2 HEFA with no compensation
+  - tweak: Small Grenade Belt - 2xHIDP, 3xHEDP, 3xHEFA -> 3xHIDP, 3xHEDP
+  - tweak: Big Grenade Belt - 6xHIDP, 5xHEDP, 5xHEFA -> 8xHIDP, 7x HEDP
+  - tweak: Explosive Pouch - 2xHEDP, 1xHEFA -> 3xHEDP
+  - tweak: Grenadier Set - 1xSmall Grenade Belt, 1xExplosive Pouch, 3xHEFA -> 1xSmall
+      Grenade Belt, 1xExplosive Pouch
+  ThePiachu:
+  - bugfix: Portable TCOMMs will now properly count for objectives, regardless of
+      turf power status.
+2020-05-23:
+  Neth:
+  - tweak: LV DEFCON levels (10%, 20%, 30%, 50%) -> (15%, 30%, 45%, 70%)
+  - tweak: Other maps DEFCON levels are now (10%, 25%, 40%, 60%)
+  - tweak: Defender Tailsweep CD increased from 10/10/10/10 to 15/13/11/10
+  - tweak: Defender Tailsweep stun reduced from 2u to 1u (stun time depends on the
+      Endurance stat)
+  - tweak: Scatterspitter spit range reduced from 7 to 5
+  - bugfix: Scatterspitter accurate range is now equal to spit range (was 4, now upped
+      to 5)
+  - tweak: Larva evolution requirement reduced from 100 to 60
+  TheDonkified:
+  - bugfix: Base rav empower macro works again if you are young ravager or if your
+      plasma stored is not as high as empower's plasma requirement.
+  ThePiachu:
+  - tweak: All Operating Tables start with an anesthetic tank by default. This should
+      make sure all OTs on all maps are useful for field surgery.
+  - bugfix: Fixed a chemical addiction runtime bug.
+  - tweak: Added a new option for Xeno Queen to set who can destroy the special resin
+      structures - builders and leaders, only leaders or only herself.
+  - bugfix: Ice Colony survivors will now spawn with proper ice gear.
+  - tweak: Botanist survivor now spawns with a satchel.
+  - rscadd: Added an intel computer to the IO area. You can use it to upload clues
+      you know about for everyone to see in their objective clues.
+  - tweak: Item finding objectives don't create command reports anymore to avoid late
+      game spam.
+  - bugfix: Synth survivors shouldn't get broken bones anymore.
+  - tweak: Ghosted larva can be taken over by other players without the usual cooldown.
+  - tweak: Weston-Yamada has released a new line of more aerodynamic paper products.
+      The reductino of drag will increase the travel distance of WY-branded paper
+      7-fold! This has already been touted as a great victory for WY research staff
+      that have been dreaming of toss-based research paper sorting for years.
+  - rscadd: To go along with the new aerodynamic paper, Weston-Yamata has released
+      a line of corporate-exclusive clicky pens, with stylish black, blue and red
+      ink colour variants. Now the CLs will be able to engage with the old traditions
+      of clicking their pens idilly during boring meetings.
+  - tweak: Synthetics (as well as non-cliented mobs) have aquired access to a larger
+      pool of audible emotes. The Company believes that making their product be able
+      to audibly express pain will lead to higher customer satisfaction and less amount
+      of missed maintenance cycles.
+  - tweak: Tweaked how objective clues are stored and displayed.
+  - bugfix: Initial xeno hosts don't count as 'survivors' for the sake of objective
+      controller (aka we don't spawn a lot of expensive objectives and instantly fail
+      them making DEFCON really hard).
+  - tweak: Recovered corpses now stay recovered once they get to the morgue - you
+      can cremate them as needed so you won't be forced to turn morgue slabs into
+      clown cars on Prison Station ;).
+  - bugfix: Removed some errors around xeno ability cooldowns, synth beheading, clipboards,
+      etc.
+  - tweak: Admin noclipping now generates a log.
+  - rscadd: Added a new objective type - safe cracking. It's a low-value objective
+      meant to give IOs clues as to how to crack open various surface-level safes.
+  - bugfix: Debug controllers verb now lists a few missing controllers.
+  - tweak: Changed how DEFCON percentage display level is calculated in View Objectives
+      Clues and other places. It will be calculated as a ratio of total points gathered
+      vs what you need to unlock the next level (and counting upwards). This means
+      for example once you reach 100% DEFCON 5 you will be dropped to 50% DEFCON 4.
+      This should give everyone a better estimate of how much work is still to be
+      done.
+  - tweak: Survivor rescue objective now handles the fact that Synths can be repaired
+      after death.
+  - tweak: Objectives now have a guaranteed minimal amount of clues generated. Folders
+      and Disks have two, safes have four, experimental items have eight. This will
+      ensure various objectives will be a bit more interconnected and you're less
+      likely to hit a dead end by missing one clue.
+  - bugfix: Fixed a bug around xeno shield damage carryover.
+  TobiNerd:
+  - bugfix: Fixed chemicals igniting with less than 0 burn intensity.
+  Vampmare:
+  - tweak: Vanguard Dash can now be manually recasted after the dash to activate the
+      slash around. You have 2 seconds to slash around you or it will automatically
+      activate.
+  - tweak: Dancer Tail Trip will now also slow for 3 seconds if the person isnt tagged.
+  - tweak: Hedgehog Shield has been changed. The activation rate has been removed.
+      Duration reduced to 2 seconds. Cooldown reduced to about 12 seconds. Shield
+      amount upped a great deal. Activation cost reduced to 150 shards. It will now
+      function more as a parry.
+  - bugfix: Clothesline can no longer target dead bodies.
+2020-05-24:
+  Neth:
+  - tweak: Metal Barricade cost increased from 4 to 10. Build time reduced from 4s
+      to 2s. Last step deconstruction time reduced from 5s to 2s. Destroyed stack
+      amount is 5.
+  - tweak: Metal Barricade repair now costs 2u fuel (out of 20 in default welder).
+      Repair amount upgraded from 150 to 200. Engineers cannot be pushed while repairing.
+  - tweak: Metal Barricade health increased from 315 to 450.
+  - tweak: Plasteel Barricade cost increased from 5 to 10. Build time remained the
+      same. Deconstruction time remained the same. Destroyed stack amount is 5.
+  - tweak: Plasteel Barricade repair now costs 5u fuel (out of 20 in default welder).
+      Repair amount upgraded from 150 to 200. Engineers cannot be pushed while repairing.
+  - tweak: Plasteel Barricade health increased from 600 to 800
+  - tweak: Deployable Barricades repair does not reduce max health. Repair now costs
+      2u fuel. Repair amount reduced from 160 per 5 seconds to 100 per 5 seconds.
+  - tweak: Deployable Barricades deploy time reduced from 1s to 0.5s. Removing barricade
+      still takes 5s.
+  - tweak: Deployable Barricades no longer let xenos pounce (or marines to jump) over
+      the front of the cade. Unlike wired cades, they do not stun, and do not block
+      pouncing (and jumping over) from the back.
+  - tweak: Wooden barricade cost from 5 planks to 10
+  - tweak: Wiring barricades no longer adds 50 health to them
+2020-05-27:
+  Neth:
+  - tweak: metal barricade repair fuel cost 2 -> 1
+  - tweak: plasteel barricade repair fuel cost 5 -> 1
+  - tweak: folding barricade repair fuel cost 2 -> 1
+  - tweak: Acid now deal DOT damage to barricades once per 5 seconds for 50 seconds
+      (10 procs). After that acid is removed and barricade stands (if it still has
+      health)
+  - tweak: medium acid - 40 damage per 5 seconds per stack - 400 damage total
+  - tweak: strong acid - 100 damage per 5 seconds per stack - 1000 damage total
+  - tweak: Added variables so that admins can customize OB warheads more easily
+  - tweak: Green blinking laser will appear 1 second before OB strike, so you can
+      say "OH FUCK" before you get gibbed
+  - tweak: Incendiary and HE Warheads will clear impact location with immense damage
+      in radius 2. Whatever is there will get gibbed
+  - tweak: HE Warhead now spawns two waves (effectively doubling the damage) in the
+      same radius with small delay between waves
+  - tweak: HE Warhead will try to find open terrain in radius 2 from impact to prevent
+      bad hits into cave walls
+  - tweak: Incendiary Warhead radius buffed from 12 to 18
+  - tweak: Cluster OB now bombards in radius 12 for 30 seconds, firing 6 bombs every
+      second
+  ThePiachu:
+  - bugfix: Fixed a runtime error with chemistry holders mixing some odd chemicals.
+  - bugfix: Fixed a CPU hog issue caused by Stat() proc being called a bit too often
+      when not needed.
+  - rscadd: Added a new objective - alien containment. Works like retrieving xeno
+      corpses, but for living aliens. Put them in your containment cell, keep them
+      alive and they will be worth more points than corpses!
+  - tweak: Yautja now also count for containment and corpse retrieval. Happy hunting!
+  - tweak: On the flip side, the research containment will now open if the related
+      terminal gets destroyed, or in an event of a dropship crash. This is to let
+      xenos in containment be rescued without admin intervention, as well as give
+      contained players an opportunity for revenge. .
+  - bugfix: Fixed a wrong var being passed to an admin function.
+  - bugfix: Fixed a runtime error around addiction.
+  - tweak: Changed DEFCON level accounting to a controller type for easier debugging.
+  - tweak: Added a description for synth smartpack recharging method (use grab intent
+      on an APC to recharge your smartpack. I bet you were today years old when you
+      learned you could've been doing that since November).
+  - tweak: Paper scraps with a safe clue get renamed properly
+  - spellcheck: Disks are now 'bloodied', instead of 'bloddied'.
+  Vampmare:
+  - tweak: All xeno abilities now consider marine armour when attacking. Even acid,
+      which will consider the acid resistance of the armour. This will result in xenos
+      doing less damage than before for the initial stage, but it will be rebalanced
+      over time.
+  - tweak: Adjusted most ability damage values slightly to compensate for the armour.
+  - tweak: Removed the RNG chance of marine armour blocking attacks.
+  - tweak: Berserker Eviscarate and Vanguard Pierce now ignores 20% of the target
+      armour and Dancer Impale ignores 10%.
+  - tweak: Heavy armour no longer cover feet and hands.
+  - bugfix: Fixed Spitter acid spit not applying DoT to barricades.
+  - tweak: Upped Spitter DoT barricade damage slightly.
+  - tweak: Decreased Prae acid spit damage.
+  - tweak: Decreased Spitter acid DoT damage. Increased duration of Spitter acid DoT.
+  - tweak: Decreased acid spray damage slightly across the board when standing up.
+  - tweak: Lowered Oppressor Tail Lash windup. It now has a telegraph. Increased throw
+      range to 5 tiles.
+2020-05-30:
+  Awan:
+  - tweak: Yautja can now use their relay to add teleport locations
+  - tweak: Yautja can now exit the teleporter with what they are dragging.
+  - tweak: Yautja can now pick their teleport location.
+  - tweak: The plasma rifle has been removed.
+  - tweak: Yautja Self Destruct is now small by default.
+  - tweak: Yautja Self Destruct detonation source is bracer.
+  - tweak: Yautja can now edit tracked items.
+  - tweak: Scythe no longer delimbs. Scythe has a chance to slice twice now.
+  - tweak: Yautja can heal humans with Thwei. Humans still can't self apply Thwei.
+  - tweak: You can throw smartdisk without activating it.
+  - tweak: Yautja can now make floors.
+  - tweak: Yautja heal more from healing herbs.
+  - tweak: Various spelling errors around Yautja items and abilities were fixed.
+  John Titor:
+  - tweak: Removed duplicate alphabet lists.
+  - tweak: Xeno tunnels get a more unique default name to help distinguish them on
+      some maps.
+  - tweak: Drones and Queens can now rename xeno tunnels.
+  - tweak: Scout cloak disables itself when user gets hugged.
+  - tweak: Motion detectors and data detectors disable themselves on huggers applied,
+      death and when dropped onto the floor to save some processing cycles.
+  - tweak: Document pouches now specify if they are large or small by name.
+  - tweak: WY Chemical Investigation Squad now gets some handy large document pouches
+      for their research work.
+  - tweak: Cleaned up how radio channels are displayed in the headset UI.
+  Neth:
+  - tweak: Only one stack of acid vomit can be applied per level
+  Slywater:
+  - maptweak: Added random objective landmarks to Big Red.
+  ThePiachu:
+  - rscadd: Added a random objective spawner system. It's meant to give more variety
+      to where objectives are spawned around various maps, as well as allow easier
+      tweaking of objective generation for those maps. The system will slowly be rolled
+      out on a few maps.
+  - maptweak: Added random objective landmarks to LV-624.
+  Triiodine:
+  - rscadd: 'Boxing gloves now actually work. You must be on HARM INTENT to box. You
+      can only box other people wearing boxing gloves. You can stay in the fight longer
+      by taking painkillers. You can''t box Yautja or Xenos. #7924, #7952, #11840.'
+  - bugfix: Fixed the flicker rebound on the animated muzzle flash by slowing the
+      frame speed down to 1 byond tick instead of .5
+  - rscadd: Added back in the missing ceremonial sword icon.
+  - spellcheck: Fixed the Mateba naming inconsistencies.
+  - spellcheck: Changed the description of the M44 Custom to reflect its appearance.
+  - imageadd: Resprited the M56B 'Smartgun', L42A, M41A Mk2, M41A2 Mk2, M41AE2 (HPR),
+      M39, M39/B2, M44, M4A3, M4A3 Custom, VP78, 88 Mod 4, M46C, M92 Grenade Launcher,
+      HG 37-12, PPSH17-B, MAR40, and MAR30.
+  - imageadd: Resprited the M41A skeleton stock.
+  - spellcheck: Renamed the M41A skeleton stock to solid stock.
+  - imageadd: Added the original teal map color variation back to Prison Station.
+      This applies to armors and weapons.
+  - imagedel: Removed map variants of the M4A3.
+  - imageadd: Added M37-12 and M79 icons. Presently unused.
+  - imageadd: Added partial support for 'urban' armor and weapon coloring. Presently
+      unused.
+  - imageadd: Slightly adjusted the S4 Telescopic attached icon.
+  - imageadd: Added Redikal.zip's animated muzzle flash.
+  - rscadd: Added the M44 Custom.
+  - rscadd: Armed the Requisitions Officer and Senioer Enlisted Advisor with the M44
+      Custom.
+  - soundadd: Changed the firing audio of the M41AE2 (HPR), L42A, MAR40, MAR30, and
+      M16.
+  - soundadd: Changed the reload and unload audio of the MAR40, MAR30, and M16.
+  - soundadd: Added support for alternate 'magazine rattle' sounds for low ammo firearms
+      as an alternative to pitch shifting. Presently unused.
+  - bugfix: Fixed jungle uniforms of Staff Officer's not being green.
+  - bugfix: Fixed the Commanding Officer's armor looking for map variant icons where
+      there were none.
+  - experiment: Sorted numerous icon sheets internally with 'marker sorting'.
+  - imagedel: Removed a lot of legacy icons.
+  - rscdel: Removed the last traces of wizards from the code.
+  thepiachu:
+  - bugfix: Limited spam caused by messaging the High Command.
+  - tweak: ERTs will now let admins know more explicitly if they are hostile.
+  - tweak: Freelancers' objective will be more explicitly worded in case they are
+      hostile.
+  - tweak: Deadchat will receive notification of which ERT shuttle was called.
+  - bugfix: Squashed some null errors around uniforms, praetorian powers, mutator
+      lists, reagent samples, etc.
+  - tweak: SEAs now start with a back item.
+  - tweak: You can't add a sandwitch to a sandwitch anymore to avoid sandwitchceptions
+      causing bugs.
+  - rscdel: Collapsed unused cloaking device into the chameleon projector.
+  - bugfix: Fixed runtime bugs around primary LZ, reagents, mutators, reviving, movement
+      events, hallucinations and chat printouts.
+  - maptweak: Added random objective landmarks to Ice Colony
+  - imageadd: Added some programmer art sprites for objective landmarks for our mappers.
+  - maptweak: Added random objective landmarks to Prison Station.
+  - maptweak: Added random objective landmarks to CORSAT.
+  - bugfix: Fixed objectives not being generated on some maps.

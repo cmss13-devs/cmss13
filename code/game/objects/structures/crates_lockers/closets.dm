@@ -17,6 +17,8 @@
 	var/open_sound = 'sound/handling/hinge_squeak1.ogg'
 	var/close_sound = 'sound/handling/hinge_squeak2.ogg'
 
+	var/material = MATERIAL_METAL
+
 	var/store_items = TRUE
 	var/store_mobs = TRUE
 	var/fill_from_loc = TRUE //Whether items from the tile are automatically moved inside the closet.
@@ -123,6 +125,10 @@
 
 /obj/structure/closet/proc/store_items(var/stored_units)
 	for(var/obj/item/I in src.loc)
+		if(istype(I, /obj/item/explosive/plastic)) //planted c4 may not go in closets
+			var/obj/item/explosive/plastic/P = I
+			if(P.active)
+				continue
 		var/item_size = Ceiling(I.w_class / 2)
 		if(stored_units + item_size > storage_capacity)
 			continue
@@ -149,6 +155,15 @@
 	if(!(src.opened ? src.close() : src.open()))
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 	return
+
+
+/obj/structure/closet/proc/take_damage(damage)
+	health = max(health - damage, 0)
+	if(health <= 0)
+		for(var/atom/movable/A as anything in src)
+			A.forceMove(src.loc)
+		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
+		qdel(src)
 
 // this should probably use dump_contents()
 /obj/structure/closet/ex_act(severity)
@@ -178,16 +193,11 @@
 	open()
 
 /obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
-	health -= round(Proj.damage*0.3)
-	if(prob(30)) playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-	if(health <= 0)
-		for(var/atom/movable/A as mob|obj in src)
-			A.forceMove(src.loc)
-		spawn(1)
-			playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
-			qdel(src)
+	take_damage(Proj.damage*0.3)
+	if(prob(30))
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 
-	return 1
+	return TRUE
 
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
@@ -206,32 +216,64 @@
 			return
 		if(W.flags_item & ITEM_ABSTRACT)
 			return 0
-		if(istype(W, /obj/item/tool/weldingtool))
-			var/obj/item/tool/weldingtool/WT = W
-			if(!WT.remove_fuel(0,user))
-				to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
+		if(material == MATERIAL_METAL)
+			if(iswelder(W))
+				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
+				var/obj/item/tool/weldingtool/WT = W
+				if(!WT.isOn())
+					to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+					return
+				if(!WT.remove_fuel(0 ,user))
+					to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
+					return
+				playsound(src, 'sound/items/Welder.ogg', 25, 1)
+				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				new /obj/item/stack/sheet/metal(src.loc)
+				for(var/mob/M as anything in viewers(src))
+					M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), 3, "You hear welding.", 2)
+				qdel(src)
 				return
-			new /obj/item/stack/sheet/metal(src.loc)
-			for(var/mob/M in viewers(src))
-				M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), 3, "You hear welding.", 2)
-			qdel(src)
-			return
+		if(material == MATERIAL_WOOD)
+			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+				playsound(src, 'sound/effects/woodhit.ogg')
+				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				new /obj/item/stack/sheet/wood(src.loc)
+				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [W]."), "You pry apart [src].")
+				qdel(src)
+				return
 		if(isrobot(user))
 			return
 		user.drop_inv_item_to_loc(W,loc)
 
-	else if(istype(W, /obj/item/packageWrap))
+	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
 		return
-	else if(istype(W, /obj/item/tool/weldingtool))
+	else if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
-		if(!WT.remove_fuel(0,user))
+		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+			return
+		if(!WT.remove_fuel(0, user))
 			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
+			return
+		playsound(src, 'sound/items/Welder.ogg', 25, 1)
+		if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 		welded = !welded
 		update_icon()
-		for(var/mob/M in viewers(src))
+		for(var/mob/M as anything in viewers(src))
 			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), 3, "You hear welding.", 2)
 	else
+		if(isXeno(user))
+			var/mob/living/carbon/Xenomorph/opener = user
+			src.attack_alien(opener)
+			return
 		src.attack_hand(user)
 	return
 

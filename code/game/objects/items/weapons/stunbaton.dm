@@ -51,12 +51,12 @@
 	else
 		icon_state = "[initial(icon_state)]"
 
-/obj/item/weapon/melee/baton/examine(mob/user)
-	..()
+/obj/item/weapon/melee/baton/get_examine_text(mob/user)
+	. = ..()
 	if(bcell)
-		to_chat(user, SPAN_NOTICE("The baton is [round(bcell.percent())]% charged."))
+		. += SPAN_NOTICE("The baton is [round(bcell.percent())]% charged.")
 	else
-		to_chat(user, SPAN_WARNING("The baton does not have a power source installed."))
+		. += SPAN_WARNING("The baton does not have a power source installed.")
 
 /obj/item/weapon/melee/baton/attack_hand(mob/user)
 	if(check_user_auth(user))
@@ -75,15 +75,17 @@
 	var/mob/living/carbon/human/H = user
 	if(istype(H))
 		var/obj/item/card/id/I = H.wear_id
-		if(!istype(I) || !check_access(I))
-			H.visible_message(SPAN_NOTICE("[src] beeeps as [H] picks it up"), SPAN_DANGER("WARNING: Unauthorized user detected. Denying access..."))
-			H.KnockDown(20)
+		if(!istype(I) || !check_access(I) && status)
+			var/datum/effect_system/spark_spread/s = new
+			s.set_up(5, 1, src.loc)
+			H.visible_message(SPAN_NOTICE("[src] beeps as [H] picks it up"), SPAN_DANGER("WARNING: Unauthorized user detected. Denying access..."))
 			H.visible_message(SPAN_WARNING("[src] beeps and sends a shock through [H]'s body!"))
+			H.emote("pain")
+			s.start()
 			deductcharge(hitcost)
 			add_fingerprint(user)
 			return FALSE
 	return TRUE
-
 /obj/item/weapon/melee/baton/pull_response(mob/puller)
 	return check_user_auth(puller)
 

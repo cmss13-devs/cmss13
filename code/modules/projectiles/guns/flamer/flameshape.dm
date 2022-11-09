@@ -18,7 +18,7 @@
 	if(!should_call)
 		to_call = null
 
-	new /obj/flamer_fire(T, F2.weapon_cause_data, F2.tied_reagent, new_spread_amt, F2.tied_reagents, fs, F2.target_clicked, to_call, fuel_pressure)
+	new /obj/flamer_fire(T, F2.weapon_cause_data, F2.tied_reagent, new_spread_amt, F2.tied_reagents, fs, F2.target_clicked, to_call, fuel_pressure, F2.fire_variant)
 	return TRUE
 
 /datum/flameshape/default

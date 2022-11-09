@@ -72,7 +72,7 @@
 
 /obj/structure/prop/dam/torii
 	name = "torii arch"
-	desc = "A traditional japanese archway, made out of wood, and adorned with lanterns."
+	desc = "A traditional Japanese archway, made out of wood, and adorned with lanterns."
 	icon = 'icons/obj/structures/props/torii.dmi'
 	icon_state = "torii"
 	density = 0
@@ -107,7 +107,7 @@
 	var/L
 	if(lit)
 		return
-	if(istype(W, /obj/item/tool/weldingtool))
+	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())
 			L = 1
@@ -164,7 +164,7 @@
 
 /obj/structure/prop/dam/gravestone
 	name = "grave marker"
-	desc = "A grave marker, in the traditional japanese style."
+	desc = "A grave marker, in the traditional Japanese style."
 	icon = 'icons/obj/structures/props/props.dmi'
 	icon_state = "gravestone1"
 
@@ -538,7 +538,7 @@
 /obj/structure/prop/power_transformer
 	name = "power transformer"
 	icon = 'icons/obj/structures/props/power_transformer.dmi'
-	icon_state = "power_transformer"
+	icon_state = "transformer"
 	bound_width = 64
 	bound_height = 64
 	desc = "A passive electrical component that controls where and which circuits power flows into."
@@ -603,6 +603,20 @@
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
 
+/obj/structure/prop/invuln/dropship_parts	//for TG shuttle system
+	density = TRUE
+
+/obj/structure/prop/invuln/dropship_parts/beforeShuttleMove()	//moves content but leaves the turf behind (for cool space turf)
+	. = ..()
+	if(. & MOVE_AREA)
+		. |= MOVE_CONTENTS
+		. &= ~MOVE_TURF
+
+/obj/structure/prop/invuln/dropship_parts/lifeboat
+	name = "Lifeboat"
+	icon = 'icons/turf/lifeboat.dmi'
+
+
 /obj/structure/prop/brazier
 	name = "brazier"
 	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
@@ -658,7 +672,7 @@
 
 /obj/structure/prop/ice_colony/surveying_device/measuring_device
 	name = "measuring device"
-	desc = "Some sort of doohicky that measures stuff."
+	desc = "Some sort of doohickey that measures stuff."
 	icon_state = "measuring_device"
 
 /obj/structure/prop/ice_colony/dense
@@ -736,6 +750,21 @@
 	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
 	icon_state = "wreath"
 
+
+/obj/structure/prop/static_tank
+	name = "liquid tank"
+	desc = "Warning, contents under pressure!"
+	icon = 'icons/obj/structures/props/generic_props.dmi'
+	icon_state = "tank"
+	density = 1
+
+/obj/structure/prop/static_tank/fuel
+	desc = "It contains Decatuxole-Hypospaldirol. A non-volatile liquid fuel type that tastes like oranges. Can't really be used for anything outside of atmos-rocket boosters."
+	icon_state = "weldtank_old"
+
+/obj/structure/prop/static_tank/water
+	desc = "It contains non-potable water. A label on the side instructs you to boil before consumption. It smells vaguely like the showers on the Almayer."
+	icon_state = "watertank_old"
 
 //INVULNERABLE PROPS
 
@@ -876,9 +905,9 @@
 			else
 				inscription = message
 
-/obj/structure/prop/wooden_cross/examine(mob/user)
-	..()
-	to_chat(user, "\"[inscription]\"")
+/obj/structure/prop/wooden_cross/get_examine_text(mob/user)
+	. = ..()
+	. += "There's something carved into it. It reads: \"[inscription]\""
 
 /obj/structure/prop/wooden_cross/attack_hand(mob/user)
 	if(helmet)

@@ -13,100 +13,97 @@
 	var/tag_x
 	anchored = 0
 
-	attack_hand(mob/user as mob)
-		if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
-			wrapped.forceMove(get_turf(src.loc))
-			if(istype(wrapped, /obj/structure/closet))
-				var/obj/structure/closet/O = wrapped
-				O.welded = 0
-		qdel(src)
-		return
+/obj/structure/bigDelivery/attack_hand(mob/user as mob)
+	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
+		wrapped.forceMove(get_turf(src.loc))
+		if(istype(wrapped, /obj/structure/closet))
+			var/obj/structure/closet/O = wrapped
+			O.welded = 0
+	qdel(src)
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		if(istype(W, /obj/item/device/destTagger))
-			var/obj/item/device/destTagger/O = W
-			if(O.currTag)
-				if(src.sortTag != O.currTag)
-					to_chat(user, SPAN_NOTICE("You have labeled the destination as [O.currTag]."))
-					if(!src.sortTag)
-						src.sortTag = O.currTag
-						update_icon()
-					else
-						src.sortTag = O.currTag
-					playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
+/obj/structure/bigDelivery/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/device/destTagger))
+		var/obj/item/device/destTagger/O = W
+		if(O.currTag)
+			if(src.sortTag != O.currTag)
+				to_chat(user, SPAN_NOTICE("You have labeled the destination as [O.currTag]."))
+				if(!src.sortTag)
+					src.sortTag = O.currTag
+					update_icon()
 				else
-					to_chat(user, SPAN_WARNING("The package is already labeled for [O.currTag]."))
+					src.sortTag = O.currTag
+				playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 			else
-				to_chat(user, SPAN_WARNING("You need to set a destination first!"))
+				to_chat(user, SPAN_WARNING("The package is already labeled for [O.currTag]."))
+		else
+			to_chat(user, SPAN_WARNING("You need to set a destination first!"))
 
-		else if(istype(W, /obj/item/tool/pen))
-			switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
-				if("Title")
-					var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
-					if(!str || !length(str))
-						to_chat(usr, SPAN_WARNING(" Invalid text."))
-						return
-					user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
-					SPAN_NOTICE("You title \the [src]: \"[str]\""),\
-					"You hear someone scribbling a note.")
-					name = "[name] ([str])"
-					if(!examtext && !nameset)
-						nameset = 1
-						update_icon()
-					else
-						nameset = 1
-				if("Description")
-					var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
-					if(!str || !length(str))
-						to_chat(usr, SPAN_DANGER("Invalid text."))
-						return
-					if(!examtext && !nameset)
-						examtext = str
-						update_icon()
-					else
-						examtext = str
-					user.visible_message("\The [user] labels \the [src] with \a [W], scribbling down: \"[examtext]\"",\
-					SPAN_NOTICE("You label \the [src]: \"[examtext]\""),\
-					"You hear someone scribbling a note.")
-		return
+	else if(istype(W, /obj/item/tool/pen))
+		switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
+			if("Title")
+				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
+				if(!str || !length(str))
+					to_chat(usr, SPAN_WARNING(" Invalid text."))
+					return
+				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
+				SPAN_NOTICE("You title \the [src]: \"[str]\""),\
+				"You hear someone scribbling a note.")
+				name = "[name] ([str])"
+				if(!examtext && !nameset)
+					nameset = 1
+					update_icon()
+				else
+					nameset = 1
+			if("Description")
+				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
+				if(!str || !length(str))
+					to_chat(usr, SPAN_DANGER("Invalid text."))
+					return
+				if(!examtext && !nameset)
+					examtext = str
+					update_icon()
+				else
+					examtext = str
+				user.visible_message("\The [user] labels \the [src] with \a [W], scribbling down: \"[examtext]\"",\
+				SPAN_NOTICE("You label \the [src]: \"[examtext]\""),\
+				"You hear someone scribbling a note.")
 
-	update_icon()
-		overlays = new()
-		if(nameset || examtext)
-			var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_label")
-			if(icon_state == "deliverycloset")
-				I.pixel_x = 2
-				if(label_y == null)
-					label_y = rand(-6, 11)
-				I.pixel_y = label_y
-			else if(icon_state == "deliverycrate")
-				if(label_x == null)
-					label_x = rand(-8, 6)
-				I.pixel_x = label_x
-				I.pixel_y = -3
-			overlays += I
-		if(src.sortTag)
-			var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_tag")
-			if(icon_state == "deliverycloset")
-				if(tag_x == null)
-					tag_x = rand(-2, 3)
-				I.pixel_x = tag_x
-				I.pixel_y = 9
-			else if(icon_state == "deliverycrate")
-				if(tag_x == null)
-					tag_x = rand(-8, 6)
-				I.pixel_x = tag_x
-				I.pixel_y = -3
-			overlays += I
+/obj/structure/bigDelivery/update_icon()
+	overlays = new()
+	if(nameset || examtext)
+		var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_label")
+		if(icon_state == "deliverycloset")
+			I.pixel_x = 2
+			if(label_y == null)
+				label_y = rand(-6, 11)
+			I.pixel_y = label_y
+		else if(icon_state == "deliverycrate")
+			if(label_x == null)
+				label_x = rand(-8, 6)
+			I.pixel_x = label_x
+			I.pixel_y = -3
+		overlays += I
+	if(src.sortTag)
+		var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_tag")
+		if(icon_state == "deliverycloset")
+			if(tag_x == null)
+				tag_x = rand(-2, 3)
+			I.pixel_x = tag_x
+			I.pixel_y = 9
+		else if(icon_state == "deliverycrate")
+			if(tag_x == null)
+				tag_x = rand(-8, 6)
+			I.pixel_x = tag_x
+			I.pixel_y = -3
+		overlays += I
 
-	examine(mob/user)
-		..()
-		if(get_dist(src, user) <= 4)
-			if(sortTag)
-				to_chat(user, SPAN_NOTICE("It is labeled \"[sortTag]\""))
-			if(examtext)
-				to_chat(user, SPAN_NOTICE("It has a note attached which reads, \"[examtext]\""))
-		return
+/obj/structure/bigDelivery/get_examine_text(mob/user)
+	. = ..()
+	if(get_dist(src, user) <= 4)
+		if(sortTag)
+			. += SPAN_NOTICE("It is labeled \"[sortTag]\"")
+		if(examtext)
+			. += SPAN_NOTICE("It has a note attached which reads, \"[examtext]\"")
 
 /obj/item/smallDelivery
 	desc = "A small wrapped package."
@@ -205,13 +202,13 @@
 				I.pixel_y = -3
 		overlays += I
 
-/obj/item/smallDelivery/examine(mob/user)
-	..()
+/obj/item/smallDelivery/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(src, user) <= 4)
 		if(sortTag)
-			to_chat(user, SPAN_NOTICE("It is labeled \"[sortTag]\""))
+			. += SPAN_NOTICE("It is labeled \"[sortTag]\"")
 		if(examtext)
-			to_chat(user, SPAN_NOTICE("It has a note attached which reads, \"[examtext]\""))
+			. += SPAN_NOTICE("It has a note attached which reads, \"[examtext]\"")
 
 /obj/item/packageWrap
 	name = "package wrapper"
@@ -265,7 +262,7 @@
 			P.add_fingerprint(usr)
 			O.add_fingerprint(usr)
 			src.add_fingerprint(usr)
-			src.amount -= 1
+			src.amount--
 			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
 			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
 			"You hear someone taping paper around a small object.")
@@ -303,10 +300,10 @@
 		return
 	return
 
-/obj/item/packageWrap/examine(mob/user)
-	..()
+/obj/item/packageWrap/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(src, user) < 2)
-		to_chat(user, SPAN_NOTICE(" There are [amount] units of package wrap left!"))
+		. += SPAN_NOTICE(" There are [amount] units of package wrap left!")
 
 
 /obj/item/device/destTagger
@@ -422,7 +419,10 @@
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			to_chat(user, "You attach the screws around the power connection.")
 			return
-	else if(istype(I,/obj/item/tool/weldingtool) && c_mode==1)
+	else if(iswelder(I) && c_mode==1)
+		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)

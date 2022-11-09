@@ -288,6 +288,13 @@
 	color = "#100800" // rgb: 16, 8, 0
 	adj_drowsy 	= 	-3
 
+/datum/reagent/drink/cold/wy_cola
+	name = "Fruit Beer"
+	id = "fruit_beer"
+	description = "An insulting Mango flavored beverage. Tastes like rotten fruit."
+	color = "#100800" // rgb: 16, 8, 0
+	adj_drowsy = -3
+
 /datum/reagent/drink/cold/nuka_cola
 	name = "Nuka Cola"
 	id = "nuka_cola"
@@ -509,9 +516,9 @@
 		data++
 		switch(data)
 			if(51 to 200)
-				M.sleeping += 1
+				M.sleeping++
 			if(201 to INFINITY)
-				M.sleeping += 1
+				M.sleeping++
 				M.apply_damage(2, TOX)
 
 /datum/reagent/gargle_blaster
@@ -602,7 +609,7 @@
 
 /datum/reagent/drink/cold/rewriter
 	name = "Rewriter"
-	description = "The secret of the sanctuary of the Libarian..."
+	description = "The secret of the sanctuary of the Librarian..."
 	id = "rewriter"
 	color = "#485000" // rgb:72, 080, 0
 

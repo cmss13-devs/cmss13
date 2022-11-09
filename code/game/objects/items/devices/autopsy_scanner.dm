@@ -91,7 +91,7 @@
 	var/scan_data = ""
 
 	if(timeofdeath)
-		scan_data += "<b>Time of death:</b> [worldtime2text(timeofdeath)]<br><br>"
+		scan_data += "<b>Time of death:</b> [worldtime2text("hh:mm", timeofdeath)] [time2text(timeofdeath, "DDD MMM DD [game_year]")]<br><br>"
 
 	var/n = 1
 	for(var/wdata_idx in wdata)
@@ -140,7 +140,7 @@
 		if(damaging_weapon)
 			scan_data += "Severity: [damage_desc]<br>"
 			scan_data += "Hits by weapon: [total_hits]<br>"
-		scan_data += "Approximate time of wound infliction: [worldtime2text(age)]<br>"
+		scan_data += "Approximate time of wound infliction: [worldtime2text("hh:mm", age)] [time2text(age, "DDD MMM DD [game_year]")]<br>"
 		scan_data += "Affected limbs: [D.organ_names]<br>"
 		scan_data += "Possible weapons:<br>"
 		for(var/weapon_name in weapon_chances)
@@ -183,7 +183,7 @@
 		if(surface.surgery_duration_multiplier <= SURGERY_SURFACE_MULT_ADEQUATE)
 			table = TRUE
 			break
-	
+
 	if(!table)
 		to_chat(usr, "<b>You can't work here, you need to put [M] on a proper surgical bed.</b>")
 		return

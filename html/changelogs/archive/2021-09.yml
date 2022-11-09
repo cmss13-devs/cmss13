@@ -1,0 +1,586 @@
+2021-09-01:
+  Firartix:
+  - bugfix: Made ID generation copy faction_group to avoid obvious IFF issues during
+      ID modification
+  SpartanBobby:
+  - tweak: Minor Edits to the Trijent sand temple and its intact nightmare
+  Vanagandr:
+  - tweak: Big game hunter's bandolier object sprite more displays ammo more accurately.
+  - bugfix: Fixed empty bandolier's object sprite flashing between empty and full.
+2021-09-02:
+  Geeves:
+  - rscadd: Poor eyesight now adds the impaired vision overlay when you lose your
+      glasses.
+  - bugfix: Having poor eyesight no longer makes you unflashable.
+  Nanu:
+  - experiment: These are Experimental Cade Buffs, subject to change.
+  - tweak: All cades now no longer take 50% more burn dmg, but rather 15% more burn
+      dmg instead.
+  - tweak: Metal Cades when upgraded have no loss against other types, but it has
+      been changed from 50% more protection to 25%.
+  - tweak: Trapper has had its special dmg against cades nerfed, it no longer deals
+      20% more by default, but rather 15%.
+  Vanagandr:
+  - tweak: When using the combat clickdrag pref, ctrl-clicks on allies now go through
+      immediately on mousedown. Previously all clicks on allies were treated normally,
+      as if the pref wasn't on. This should make grabbing things in combat with the
+      pref set a bit more responsive.
+  forest2001:
+  - rscadd: Corporate Directors now have the skills to Execute
+  - rscadd: Adds a bunch more marine and naval ranks, splitting them into categories.
+  - tweak: Provost now use Naval Rank structure to distance themselves from the Chain
+      of Command.
+  - tweak: Removes Sergeant First Class, replacing it with Gunnery Sergeant.
+  - tweak: Replaces original Gunnery Sergeant with Master Sergeant.
+  - tweak: To accommodate the added ranks, some existing ranks (Most officers) have
+      received a bump in paygrade. This does not alter the rank that appears when
+      they speak over comms.
+  monkeysfist:
+  - imageadd: Resprited legacy wheelchair.
+2021-09-03:
+  Frans_Feiffer_Nanu:
+  - rscadd: 'Thanks to Nanu, Admins now have more UPP presets to spawn in for events.
+      These roles include: Sapper, MP, Officer, Senior Officer, Kapitan, etc. '
+  - imageadd: With the arrival of new UPP roles comes new sprites. Sappers, MPs, Officers,
+      Kapitans, etc. all come with their own distinct uniforms/suits.
+  - imageadd: 'Resprited all currently existing UPP uniforms, suits, and headgear
+      to be in line with modern CM style.. '
+  - imageadd: 'Adds 4 civilian uniforms, as well as a cap and ushanka for Admins to
+      spawn. '
+  - imageadd: 'UPP standard-issue ushankas, as well as civilian ushankas come with
+      the ability to tie the flaps up. '
+  - imageadd: 'Save for the Officer''s uniform, you can roll up the sleeves on each
+      uniform, and even cut them off by clicking on the sprite with a knife while
+      on harm-intent. '
+  Jackie_Estegado:
+  - bugfix: Fixed some food recipes that broke with the xeno gibbing update.
+  - bugfix: Microwaves are no longer impossible to repair.
+  Segrain:
+  - bugfix: Trying to enter a vehicle now is correctly interrupted if the vehicle
+      moves.
+  Stan_Albatross:
+  - bugfix: The M240-T fuel tanks crate's description now accurately describes its
+      contents.
+  - bugfix: The M402 mortar crate's description now accurately describes its contents.
+  - bugfix: Corrected spelling of "pyrotechnics" crate.
+  TheFlyingFlail:
+  - tweak: Fixed hacking issue related to SEA training vendor
+  forest2001:
+  - bugfix: Fixed misshown paygrades for RTOs and unset ID cards
+  ghostsheet:
+  - rscadd: Queen will now have footsteps sounds, currently at 1.5 times the screen
+      range.
+  monkeysfist:
+  - tweak: Renamed the Purple Sac to Resin Node as it hasn't been purple or sac-ish
+      in about five years.
+  xGhostFQ_and_monkeysfist:
+  - rscadd: Added a Weyland-Yutani branded Pepper Chips
+  - rscadd: Added sprites for future red chip bag
+  - tweak: Organized trash file
+2021-09-05:
+  AGasCanister:
+  - rscadd: Squad Engis can now buy a Sentry Upgrade Kit for 30 Points
+  - tweak: Etools start folded in Squad Engi Vendors.
+2021-09-06:
+  Dusanking123:
+  - tweak: Changed Commanding Officer's flavor text.
+  Firartix:
+  - bugfix: number menu entries in queen spawn in case of several spawns in the same
+      area
+  FrankTheMagicPotato:
+  - rscadd: Added two new security statuses, Suspect and NJP, along with icons.
+  Geeves:
+  - bugfix: Using lights other than your marine armor light will no longer cause you
+      to stop emitting light. Light sources should now work as expected.
+  Schalkguy:
+  - tweak: 'Changed tertiary draw hotkey order. Teritary hotkey will now draw from
+      shoulder holster before belt. '
+  Segrain:
+  - rscadd: Improved spawning cookies.
+  - bugfix: Oldschool explosions now work better with the cause_data system.
+  Silencer_pl:
+  - tweak: All MP headwear now shares the statistics of the regular MP beret.
+  - tweak: The naming convention and description style for all MP headwear has been
+      unified.
+  - bugfix: The Character Profile should now properly save underwear choices for female
+      characters.
+  - tweak: Instead of being an unbreakable permastun, Alcohol bottles now apply Drowsy
+      (a combination of a speed debuff and vision impairment) when used on someone's
+      head with harm intent. The time spent drowsy depends on head gear. A M10 helmet
+      or equivalent head armor is enough to completely negate this effect.
+  Stan_Albatross:
+  - tweak: Changed EMPed security camera sprites to fit with other Almayer cams instead
+      of legacy ss13 sprites.
+  - tweak: Pyro spec will now glow a teal colour when firewalk protocol is active.
+  Vanagandr:
+  - tweak: 'Boonie hats and expedition caps are now subtypes of patrol caps. They
+      can hold and show all items caps can: cig packets, pens, goggles, headbands,
+      NVGs.'
+  - rscadd: You can now wear NVGs and headbands on caps and boonie hats.
+  - rscadd: Can now tuck boonie chinstrap away. V. fashionable.
+  - tweak: Tweaked sprite for marine goggles on caps - headband now less obtrusive.
+  - bugfix: Bandages in helmets are now visible.
+  - bugfix: CO's cap now uses the relevant map skin.
+  - tweak: Tweaked the layering of body/cryobags and offsets when they're buckled
+      to rollerbeds so that they now render above the roller even when empty.
+  monkeysfist:
+  - rscadd: Added green power loaders to decorate colonies
+  - tweak: Animated power loader work light
+  - tweak: Changed a loader on Shiva to the new version
+  naut:
+  - bugfix: People with medical skill no longer have help intent safety toggled on
+      by default.
+  - tweak: Help intent safety is no longer activated when surgery mode is on, instead
+      relying on surgery mode being on itself to deny harming a patient.
+  - tweak: You can now fire firearms while surgery mode is on.
+  - tweak: Help intent safety now displays a clearer message stating you should switch
+      intents before being able to fire.
+  - maptweak: Revamped the Almayer CIC. Consoles have been rearranged, windoors have
+      been added and the armory has been increased in size.
+  - maptweak: Several additional alarms and TV screens have been added to the Almayer,
+      as has some semiotic signage.
+  - maptweak: Security cameras have been added to the CIC.
+  - maptweak: Lifeboat doors now have a different sprite.
+  - rscadd: Added a tablet locker to the CIC. Unlockable by anyone with COMMANDER
+      access, e.g. CO, XO, and military department heads. Now houses the command tablet,
+      instead of having to break into the CO's office to snatch it.
+  - rscadd: Added a tabletop version of the crew monitoring console, implemented into
+      the CIC for easy crew monitoring.
+  - rscadd: Added a golden zippo lighter to replace the instanced lighters in the
+      CO's and CL's offices.
+  - bugfix: Fixed lifeboat hatches being rendered on top of Marines. No more hidey
+      holes.
+  - tweak: Other misc tweaks and fixes to the Almayer.
+2021-09-07:
+  Geeves:
+  - tweak: Queen footsteps are now more bassy.
+  Nanu:
+  - maptweak: Maintenance to LV, removed a few weapons and fixed some chokepoints.
+  - maptweak: LV - Sand Temple Doors can now be acided again if its the ruined temple.
+  - maptweak: LV - West fog gap has been widened slightly.
+  Nivrak:
+  - bugfix: Fixed broken attack overlays on non-mobs
+  - bugfix: Ashtray now works with fancy cigarettes
+  - bugfix: Slash or Tackle Overlays no longer become stuck forever on the target
+      if the mob is deleted before the overlay is.
+  ihatethisengine2:
+  - tweak: Marines no longer pass out due to broken legs. Instead, they have a chance
+      to simply fall over, only if both of their legs are crippled.
+  - bugfix: Destroyed legs now correctly affect fall over possibility.
+2021-09-08:
+  Nivrak:
+  - rscadd: "Added a preference to disable\enable permission error messages."
+2021-09-11:
+  Binbers:
+  - tweak: Decapitated head sprites now retain the players eye color and facepaint
+      selections
+  - tweak: Female sprites finally look distinguishable from males for all races
+  Geeves:
+  - rscadd: Shift-clicking your SL/Queen locator will now give you the name of the
+      area you're in.
+  - rscadd: Alt-clicking the queen tracker will now let you configure it to look for
+      other things, such as the hive core or a specific xeno leader.
+  Vanagandr:
+  - rscadd: Ported a lot of backend procs for colour effects ingame from TG. Added
+      a system for applying these effects screen-wide. These can recolour things,
+      saturate or desaturate the screen, inflict terrifying colour distortions etc.
+  - rscadd: Added a broken VR headset. Anime is not real. It cannot hurt you. The
+      Caramelldansen HUD suffers no such circumscription.
+  forest2001:
+  - rscadd: Added more UPP ranks, changed a couple of the current ranks to a slightly
+      higher paygrade to accomodate.
+  - rscadd: Added UPP command officer skills, for Kolonel+ so they can use their matebas
+  - tweak: Master Sergeant changed from ME8 to ME8E, ME8 is now First Sergeant
+2021-09-12:
+  Firartix:
+  - bugfix: Removed a duplicated movement handler call for performance
+  Segrain:
+  - bugfix: Fixed an exploit allowing building doors in unintended locations.
+  Stan_Albatross:
+  - rscadd: Added experimental mesons (mesons with nvg + meson vision) to the synth
+      tools vendor. They can only be worn by synths.
+  Vanagandr:
+  - rscadd: Added a preference for alternating dual-wielding, where firing switches
+      hands to the offhand gun. You still take the dual-wielding accuracy + scatter
+      + recoil penalties.
+  forest2001:
+  - tweak: Default paygrade on ID cards is now NE1 instead of E0, so it works with
+      the paygrade system properly.
+  - tweak: WY Headset now uses a blank white sprite, with PMC headset retaining the
+      current sprite.
+  - rscadd: Representative is now a formal paygrade, rather than brute forced into
+      UPP and RESS rep roles.
+  - tweak: Marine Commanding Officer headset renamed to Marine Senior Command headset
+      as it's in use by the XO and Synthetic and not just the CO.
+  - bugfix: Interstellar Commerce Comission Representative no longer spawns with a
+      PMC radio, and now spawns with a liaison radio.
+  - tweak: In addition to the engineering skill lock, the AA cannon now requires either
+      Almayer Engineering access or CIC access to change location.
+  - tweak: The suffix of (as ID NAME) when using another persons ID is now only used
+      if your face is identifiable. If your face can't be distinguished you will be
+      assumed to be who your ID says you are, rather than an unknown figure playing
+      pretend. This does not carry over to radio communication, and you will remain
+      identifiable if you speak over radio even while your ID is that of someone else,
+      or you are missing one.
+  - tweak: Agent ID cards can now set paygrades
+  - rscdel: Removed Syndicate Command ID cards as they're legacy code that don't even
+      have a purpose/function.
+  - bugfix: Reverts changes to "Unknown" prefix and Agent IDs
+  monkeysfist:
+  - imageadd: Added prop sprites - Jukebox, bedrolls, and used bandages.
+  - imageadd: Added null poster sprite.
+  - tweak: Tweaked loader sprite.
+  naut:
+  - bugfix: Hotfixed the broken observer sprite.
+2021-09-13:
+  Benbot16:
+  - rscadd: The SL tracker can now be toggled between pointing to a marine's SL, their
+      FTL, and the LZ. This can be done by using the "Switch Tracker Target" verb
+      on the headset/in the objects tab.
+  Juxtaposed:
+  - tweak: Prompts Xenos with a yes/no when attempting to remove living hosts from
+      nests.
+  QuickLoad:
+  - rscadd: Added a new armor selection system which allows SEAs to choose their armor
+      of choice.
+  - tweak: Shifted some items around for ease of use, also changes some pouches, a
+      belt and a single attachie.
+  - tweak: Modifies SEA's loadout to have boots, whistle and binos.
+  - rscdel: removed Combat Equipment selection, which is instead found in other categories.
+  - rscdel: M16 and M44 along with their ammo types are all removed due to oversight.
+  Stan_Albatross:
+  - tweak: 'Removed the fourth PO slot. '
+  Stobarico:
+  - imageadd: All engineering CZP modified emplacements now have different sprites.
+  - tweak: Motion detector tower no longer has invisibility.
+  - tweak: Cloaker bell has less alpha (more invisible) and 50 more health.
+  - tweak: Both the IMP and JIMA frames are now backpacks with 10 storage (same as
+      a mini phone backpack JTAC has). They can be accessed like a satchel.
+  - tweak: Shotgun sentry has 250 health and works like a wired barricade. Xenos attacking
+      it or pouncing it while it's turned on will take 20 damage (pounces cause stun
+      like wired barricades). It shoots slightly faster and one tile further as well.
+  - tweak: DMR sentry has 50 less health, takes 2 seconds to deploy and 1.5 to grab
+      instead of 1 for both. It also shoots very slightly faster.
+  - tweak: Mini sentry lost 50 health, but its damage multiplier went from 0.4 to
+      0.6.
+  - rscdel: Assault flamer removed.
+  - tweak: Mini flamer sentry has been merged with the Assault flamer. It can now
+      be walked over, assembled and disassembled quicker and its fire doesn't linger
+      too long on the ground. However it lost 50 health.
+  - tweak: Plasma sentry has 50 less health, takes 2 seconds to deploy and 1.5 to
+      grab instead of 1 for both.
+  - bugfix: The plasma flame glob actually has a range of 14 now instead of 11 (sentry
+      fired at 14, bullet only went at 11).
+  - tweak: Extended flag takes 2 seconds to deploy. It also lost 50 health.
+  - tweak: Warbanner takes 0.5 seconds to deploy and pick up and can be walked over.
+      The gimmicky warbanner stacking mechanic has been removed and replaced by buffs
+      that linger for 5 seconds as you exit the area. It also gained 50 health.
+  - tweak: Stunning tesla has been buffed to have much lower fire delay.
+  - tweak: Micro tesla has been buffed to have much lower fire delay, be able to be
+      walked over and have 75 more health.
+  Tisx:
+  - tweak: Updated descriptions of certain squad vendors, grammar and spelling fixes
+      elsewhere.
+  Vanagandr:
+  - tweak: SMG holster can now hold the MP27, Skorpion, and MAC-15.
+  - tweak: SMG holster now uses a different, dynamic method of showing the holstered
+      gun, including any attachments, bloodstains etc. Cosmetic only - rail lights
+      on holstered SMGs do not illuminate.
+  - imagedel: Removed gun-in-holster SMG holster sprites, since that's handled ingame
+      now.
+  forest2001:
+  - bugfix: CIC Tablet locker is now wall mounted properly.
+  - bugfix: Queen eye can no longer spread hive weeds.
+  - bugfix: Queen eye can no longer spread weeds or build across Z levels.
+  naut:
+  - rscadd: Changed changelog icons to semiotic standard. Idea by monkeysfist.
+2021-09-14:
+  Segrain:
+  - bugfix: Completely broken vehicles now can properly be entered from any adjacent
+      spot.
+  - bugfix: If APC (the vehicle kind) is already completely broken, xenos slashing
+      it now can properly finish its hull and break into it.
+  forest2001:
+  - tweak: Psychic Whisper can now be used while resting.
+  - rscadd: Added Psychic Radiance, an AOE version of Psychic Whisper.
+2021-09-15:
+  Segrain:
+  - bugfix: If APC (the power kind) is already completely broken, xenos no longer
+      try to keep slashing it forever.
+  Stan_albatross:
+  - maptweak: 'Trijent dam : Opened up the 1 tile path leading to the river from sand
+      temple'
+  TheFlyingFlail:
+  - tweak: Reduced fax machine cooldown by 50%
+  Vanagandr:
+  - maptweak: 'Distributed a couple of disco goggle headsets around the Almayer. Three
+      in bunks and rec, two in maint. Note for MPs: it''s only a war crime if they''re
+      ENEMY prisoners.'
+  - bugfix: Fixed flipped RO & CO caps and boonie hats using the wrong sprites. Can
+      no longer try to flip CO peaked caps - you are not a U-Boat captain and even
+      if you were the sprites don't exist.
+  ihatethisengine2:
+  - rscadd: Added Cancel View button for APC viewports, side guns, driver and gunner.
+  - tweak: Shift-click on your seat will resume the view.
+  - bugfix: Folded etool spawns with correct item_icon
+  monkeysfist:
+  - imageadd: Added Sorokyne Security on-mob sprites for when Sorokyne comes back.
+2021-09-16:
+  50RemAndCounting:
+  - rscadd: Added the G8A General Utility Pouch and a Shotgun Shell pouch to the Commanding
+      Officer Gear Vendor.
+2021-09-18:
+  50RemAndCounting:
+  - soundadd: Added CIC ambient sound effects.
+  Geeves:
+  - bugfix: Fixed a bunch of runtimes surrounding boilers exploding, xenos gibbing
+      in general, cleanable decals not deleting properly, and storage items runtiming
+      in character creation.
+  Nanu:
+  - tweak: Re-enables MP
+  Segrain:
+  - bugfix: Fixed an exploit with vanguard's dash ability.
+  - bugfix: Fixed runtime errors with items on preview dummies in character setup.
+  - bugfix: CE and RTOs now properly get service medals.
+  - rscdel: Assistant RTOs are no more. All RTOs are now sergeants.
+  - tweak: Squad specialists are now corporals.
+  - bugfix: RTOs are now sorted properly among other squad roles on various lists.
+  Vanagandr:
+  - bugfix: Fixed the damage I did to screenshake; should re-center properly again.
+  - bugfix: 'Fixes to CO executions: Can no longer execute yourself. Can no longer
+      execute people twice. Cannot perform more than one execution at a time. Failed
+      execution attempts no longer fire or use up ammunition. Failing an execution
+      with a Mateba on burstfire no longer bricks the gun.'
+  ihatethisengine2:
+  - tweak: Alt-click on the SL tracker switches tracker target
+2021-09-19:
+  Firartix:
+  - bugfix: made players taking control of nullspaced ghosts not just crash down the
+      whole server
+  monkeysfist:
+  - rscadd: Added tons of Semiotic Standard to the Almayer.
+  - bugfix: Fixed incorrect sprite path with waterhaz semiotic and re-added the West
+      semiotic.
+  - bugfix: Fixed Groves poster from honking.
+2021-09-20:
+  Geeves:
+  - rscadd: Flare shells now contain a small camera as well, they last for three minutes
+      in the air. These cameras can be viewed through the mortar's new TGUI menu by
+      clicking on View Cameras.
+  - bugfix: Closing a camera UI now resets the last camera location, when you re-open
+      the interface and click on the same camera you used while you closed the UI,
+      it will now properly switch to that camera instead of displaying static.
+  - bugfix: Cameras now take turf lighting into account. If a turf is unlit, a camera
+      will not be able to see it.
+  - rscadd: The M56D HMG now has IFF.
+  - tweak: The M56D's firing delay has been reduced.
+  - tweak: The mini-engi 'Combat Technician Support Kit' no longer comes with an M56D,
+      instead gaining a claymore and two C4 blocks.
+  - rscadd: Added the M56D Support Kit to the ColMarTech Automated Armaments Vendor,
+      which is where the M56D is now acquired.
+  Moltov:
+  - tweak: Decreases the bible's storage space to something more reasonable and prevents
+      them from holding engineer tools/devices/.
+  - maptweak: Added a single disposals unit to Requisitions storage, and some pipes
+      to connect it to the disposals system.
+2021-09-21:
+  50RemAndCounting:
+  - tweak: Updated the M3A1 Synthetic Utility Vest's sprite to its final version,
+      increased its suit storage space from 1 to 3 slots.
+  Geeves:
+  - bugfix: Shooting a weapon with muzzleflash no longer makes you permanently glow.
+  Pyrodes:
+  - rscadd: Adds a Weyland-Yutani water bottle to marine MREs
+  Segrain:
+  - bugfix: Several item interactions in cooking (e.g. egg+flour=dough) work once
+      again.
+  monkeysfist:
+  - tweak: Wiping off facepaint now mentions that it wipes off facepaint instead of
+      lipstick. Conversely, this will still say facepaint when you're wiping off lipstick,
+      but far more people use facepaint than lipstick so c'est la vie.
+  - tweak: Reordered head to be the highest limb layer.
+  - bugfix: Fullbody paint now shows on limbs.
+2021-09-22:
+  Segrain:
+  - bugfix: Always lit areas (e.g. insides of a dropship) now correctly show up on
+      cameras.
+  - bugfix: Changing active camera no longer causes issues on the viewing console.
+2021-09-23:
+  Frans_Feiffer:
+  - imageadd: Resprites the existing USCM rankboards and pins, updated the onmobs
+      to reflect the changes.
+  - imageadd: 'Updates the overlays for when webbing is attached to uniforms. '
+  Triiodine:
+  - bugfix: Runners can no longer hide under Dropship consoles
+  - maptweak: Replaced legacy tables in the ERT dock.
+  - bugfix: ERT control consoles are now dense.
+  monkeysfist:
+  - imageadd: Added toaster sprites for later use.
+  - tweak: Organized Kitchen.dmi.
+  - tweak: Routed fridges to Kitchen.dmi to be with all of the other sentient appliances
+      that miss their friend.
+  - tweak: Cleaned up a bunch of redundant lines in Freezer.dm
+2021-09-24:
+  Firartix:
+  - bugfix: gave CTs their independance back, instead of being internally considered
+      OTs. Glory to Cargonia!
+  - tweak: CTs will not incorrectly be fenced behind a one hour engineering timelock
+      anymore as a result
+  Segrain:
+  - bugfix: Crew monitoring computer should no longer break at seemingly random.
+  - bugfix: UPP ERT leader once again correctly gets his gear.
+  - tweak: More construction and assembly processes now properly respect restricted
+      areas.
+  TotalEpicness:
+  - rscadd: Eject ID verb (right click) that ejects ID from machines to prevent them
+      from eating ID cards when unpowered
+  Triiodine:
+  - imageadd: Added a variant of the fire extinguisher cabinet, it comes in classic
+      white and new sleek black (Just like on the lifeboats!)
+  - imageadd: 'Resprited or redid or the follow legacy sprites: Implanter cases, implanters,
+      monkey cubes, classic CM M1911, floor tiles (metal, carpet, wood), atmos lockers,
+      bio-suit lockers (security, janitor, science), wall mounted medical and fire
+      cabinets, mineral pickaxes (silver, gold, diamond, plasma), earmuffs, the plasma
+      cutter, phoron glass sheets'
+  - imageadd: Fixed the inconsistent nightmare that was closets.dmi
+  - imageadd: Added new sprites for the mini sentry and mini flamer sentry, as well
+      as support for base-less defense types.
+  - imageadd: Added crawler vehicle sprites to vehicle.dmi for future use. Mappers,
+      you can instance these!
+  Vanagandr:
+  - bugfix: Human wound overlays for burns no longer show as red.
+2021-09-25:
+  BlackCrystalic:
+  - bugfix: fixed ban checker for xeno.
+  Firartix:
+  - bugfix: Rebounding Mobs/Items (slamming after throw/disposals/pounce) now only
+      go over things that respectively intend Mobs/Items to go over them (instead
+      of mixing both up)
+  - bugfix: fix SD admin button not working when rods are missing
+  - tweak: Tidied overall layout of CAS Weapons Console's NanoUI
+  Moltovz:
+  - tweak: tweak Retractable railings are now vaultable.
+  Pyrodes:
+  - tweak: Lowered the build time for wooden barricade from 50 to 20
+  Vanagandr:
+  - bugfix: Fixed some bugs with bolt-actions. They should no longer behave like semi-automatics
+      with error messages.
+  - bugfix: Cocking/unloading a gun with no magazine inserted now drops an appropriate
+      bullet instead of deleting it.
+  - bugfix: Removing someone else's disco goggles now properly removes the eye overlay
+      as well.
+  forest2001:
+  - tweak: Mentors are now handled from a seperate file on the server
+2021-09-26:
+  Triiodine:
+  - bugfix: Stair cut platforms directions now actually match their icon, no more
+      phantom vaults around the top of staircases.
+  - bugfix: Fixed a space area on the Almayer in the R&D dept.
+  - bugfix: Fixed a door over a wall on Annex.
+2021-09-27:
+  Firartix:
+  - bugfix: Removed/Updated some invalid objects in map files
+  Geeves:
+  - bugfix: Autolathes can now switch their categories again.
+  - tweak: The click delay when using reagent containers and assemblies have been
+      reduced, meaning you can operate reagent tanks and assemblies faster.
+  - tweak: Igniters now start unsecured and ready to be attached.
+  - rscadd: Using a reagent container on a Chem Dispenser, Chem Master, or All-in-One
+      Grinder now swaps the containers if there's one already inserted, instead of
+      denying you access.
+  - bugfix: Antag vendors now work properly again.
+  - bugfix: Mobs stuck on solid turfs, like walls, now properly calculate bullet hit
+      chance when fired upon. This means IFF now works when you shoot at someone stuck
+      inside a resin wall.
+  - rscadd: Re-added Echo squad to standard play. They are the squad that cryorines
+      spawn into. You can also be put into Echo squad, but you cannot join as an Echo
+      marine from roundstart. Echo squad has access to every squad's prep.
+  - rscadd: Cryorines now spawn a Squad Leader if they don't have one.
+  - tweak: Requisitions no longer holds a copy of every squad's marine gloves, instead
+      they have normal marine gloves and standard black marine gloves, wear it as
+      you wish.
+  - rscadd: Being put into another squad will automatically update your headset frequency
+      and armor colors.
+  Segrain:
+  - tweak: Background changes to signals for unequipping items.
+  - bugfix: Fixed runtime errors involving prescription glasses.
+  - bugfix: Fixed a runtime error during hive structure construction choice.
+  - bugfix: Fixed a runtime error on unnesting live men.
+  forest2001:
+  - tweak: FF Logs are now color coded - Green for Living Target, Orange for Dead
+      Target.
+  - tweak: Taser shots no longer create FF logs.
+  - tweak: Changed Xeno slash log for infected & nested to a staff alert instead of
+      FF message.
+  naut:
+  - rscadd: You can now buckle (and buckle others) to chairs and beds that are right
+      next to them, instead of needing them to stand on top of it to buckle.
+  - soundadd: Added buckling sound effects for above.
+2021-09-28:
+  Firartix:
+  - bugfix: bone breaking now actually uses bone break combat configuration for purpose
+      of computing armor bypass and critical hits instead of organ damage one. values
+      being the same anyway, this actually changes nothing.
+  Geeves:
+  - rscadd: Yautja healing crystals now help with internal and external bleeding.
+  - rscadd: APC hardpoints now get darker as they get damaged.
+  - rscadd: Freed mobs now display their role next to their name in the freed mobs
+      menu.
+  Segrain:
+  - tweak: Code for View Variables staff tool slightly tidied.
+  - rscadd: New staff tool for creating custom papers without using a fax.
+  Triiodine:
+  - maptweak: Replaced hull windows with Big Red hull windows on 35.Filtration restored,
+      a Nightmare Insert for Big Red. Also removed walls under said windows.
+  - maptweak: Remapped all areas around the yard on Sci-Annex. Oh and I removed the
+      pillar, you know the one.
+  Vanagandr:
+  - bugfix: Shotgun ammo pouch no longer changes its sprite when opened.
+  - bugfix: Storage items with map skin variants that spawn full no longer have the
+      wrong-coloured flap until first opened.
+  - bugfix: Gunbelt sprite fullness no longer affected by whether the gun is or is
+      not inserted.
+  ihatethisengine2:
+  - tweak: Users can now only start restart votes if there are no active admins online.
+  - bugfix: Admin rights are now checked properly when creating votes.
+2021-09-29:
+  Firartix:
+  - bugfix: Fixed a number of improperly deleted objects around mobs (backend performance)
+  - tweak: Increased quadtree density to reduce overhead of range checking (eg. in
+      sound and automated sentries)
+  - tweak: Optimized a good part of the range checking code implementation
+  - rscadd: Added a verb for admins with +FUN to load map templates as new z-levels
+      easily (Admin, Events, Load Event Level)
+  Geeves:
+  - rscadd: Squad Leaders can now fireman carry. It has a 3 second delay. They do
+      not get any police skills.
+  forest2001:
+  - rscadd: Returns Scimitars to Hunter Bracers. They take the place of a primary
+      weapon, do increased damage compared to normal wristblades but don't have a
+      speed increase on continual use.
+  ghostsheet:
+  - bugfix: Fixed an incorrect sprite for the Classic Cigar
+2021-09-30:
+  Geeves:
+  - bugfix: You can now toggle the Squad Leader locator's modes while having an item
+      in your hand, but you must have an empty hand to access the UI.
+  - bugfix: The Squad Leader locator's LZ locator function now works on non-default
+      HUD settings.
+  - rscadd: Spawned in zombies will now have various worn uniforms and shoes, rather
+      than just the colonist uniform with marine boots.
+  - rscadd: When you die and have the zombie virus inside you, the virus will let
+      you know what stage you're in as long as you remain inside your body. Each time
+      it progresses a stage, it'll tell you, and tell you approximately when you'll
+      revive. As a failsafe, if you reach the last stage without transforming, you'll
+      be force-transformed.
+  - rscadd: Gave the zombie language a unique look, so it doesn't look like they're
+      speaking Russian all the time.
+  Segrain:
+  - bugfix: Radios work properly once again.
+  ihatethisengine2:
+  - bugfix: Now users really can only start restart votes if there are no active admins
+      online.
+  sg2002:
+  - rscadd: Marines can now speak on multiple channels at the same time using "..".
+      For example "..abcd OB incoming!" would broadcast that on all 4 channels. You
+      can speak on up to 4 channels at a time.

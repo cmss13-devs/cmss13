@@ -510,7 +510,7 @@
 	for(var/j=0; j<explonum; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, , , ,create_cause_data("dropship crash")) //Clears out walls
+		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
 		sleep(3)
 
 	// Break the ultra-reinforced windows.
@@ -518,6 +518,10 @@
 	for(var/i in GLOB.hijack_bustable_windows)
 		var/obj/structure/window/H = i
 		H.shatter_window(1)
+
+	for(var/k in GLOB.hijack_bustable_ladders)
+		var/obj/structure/ladder/fragile_almayer/L = k
+		L.break_and_replace()
 
 	// Delete the briefing door(s).
 	for(var/D in GLOB.hijack_deletable_windows)
@@ -544,7 +548,7 @@
 			shake_camera(M, 10, 1)
 			M.KnockDown(3)
 
-	enter_allowed = 0 //No joining after dropship crash
+	addtimer(CALLBACK(src, .proc/disable_latejoin), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
 
 	var/list/turfs_trg = get_shuttle_turfs(T_trg, info_datums) //Final destination turfs <insert bad jokey reference here>
 
@@ -590,6 +594,9 @@
 	if(SSticker.mode)
 		SSticker.mode.is_in_endgame = TRUE
 		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
+
+/datum/shuttle/ferry/marine/proc/disable_latejoin()
+	enter_allowed = FALSE
 
 
 /datum/shuttle/ferry/marine/short_jump()

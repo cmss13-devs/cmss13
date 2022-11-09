@@ -19,6 +19,8 @@
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "wrench"
+	pickupsound = 'sound/handling/wrench_pickup.ogg'
+	dropsound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 5.0
@@ -34,9 +36,11 @@
  */
 /obj/item/tool/screwdriver
 	name = "screwdriver"
-	desc = "You can be totally screwwy with this."
+	desc = "You can be totally screwy with this."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "screwdriver"
+	pickupsound = 'sound/handling/multitool_pickup.ogg'
+	dropsound = 'sound/handling/screwdriver_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR | SLOT_FACE
 	force = 5.0
@@ -115,6 +119,8 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "cutters"
 	item_state = "cutters"
+	pickupsound = 'sound/handling/wirecutter_pickup.ogg'
+	dropsound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 6.0
@@ -151,6 +157,8 @@
 	name = "blowtorch"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welder"
+	pickupsound = 'sound/handling/weldingtool_pickup.ogg'
+	dropsound = 'sound/handling/weldingtool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
@@ -164,10 +172,13 @@
 	//Cost to make in the autolathe
 	matter = list("metal" = 70, "glass" = 30)
 
+	inherent_traits = list(TRAIT_TOOL_BLOWTORCH)
+
 	//blowtorch specific stuff
 	var/welding = 0 	//Whether or not the blowtorch is off(0), on(1) or currently welding(2)
 	var/max_fuel = 20 	//The max amount of fuel the welder can hold
 	var/weld_tick = 0	//Used to slowly deplete the fuel when the tool is left on.
+	var/has_welding_screen = FALSE
 
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
@@ -185,9 +196,9 @@
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/tool/weldingtool/examine(mob/user)
-	..()
-	to_chat(user, "It contains [get_fuel()]/[max_fuel] units of fuel!")
+/obj/item/tool/weldingtool/get_examine_text(mob/user)
+	. = ..()
+	. += "It contains [get_fuel()]/[max_fuel] units of fuel!"
 
 
 
@@ -210,7 +221,7 @@
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
 		if (!S) return
-		if(!(S.status & LIMB_ROBOT) || user.a_intent != INTENT_HELP)
+		if(!(S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
 			return ..()
 
 		if(user.action_busy)
@@ -353,7 +364,8 @@
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
 //Note: This should probably be moved to mob
 /obj/item/tool/weldingtool/proc/eyecheck(mob/user)
-	if(!iscarbon(user))	return 1
+	if(has_welding_screen || !iscarbon(user))
+		return TRUE
 	var/safety = user.get_eye_protection()
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -434,6 +446,14 @@
 	if(reagents > max_fuel)
 		reagents = max_fuel
 
+/obj/item/tool/weldingtool/simple
+	name = "\improper ME3 hand welder"
+	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
+	max_fuel = 5
+	color = "#cc0000"
+	has_welding_screen = TRUE
+	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
+
 /*
  * Crowbar
  */
@@ -443,6 +463,8 @@
 	desc = "Used to remove floors and to pry open doors."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "crowbar"
+	pickupsound = 'sound/handling/crowbar_pickup.ogg'
+	dropsound = 'sound/handling/crowbar_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 5.0
@@ -478,15 +500,18 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
-	var/max_fuel = 600 //Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
+	health = 75		// More robust liner I guess
+	var/original_health = 1 //placeholder value to be replaced in init
+	var/max_fuel = 600 	//Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
 
 /obj/item/tool/weldpack/Initialize()
 	. = ..()
 	create_reagents(max_fuel) //Lotsa refills
 	reagents.add_reagent("fuel", max_fuel)
+	original_health = health
 
 /obj/item/tool/weldpack/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/weldingtool))
+	if(iswelder(W))
 		var/obj/item/tool/weldingtool/T = W
 		if(T.welding & prob(50))
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion.")
@@ -497,6 +522,9 @@
 				qdel(src)
 			return
 		else
+			if(T.reagents.total_volume == T.max_fuel)
+				to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
+				return
 			if(T.welding)
 				to_chat(user, SPAN_DANGER("That was close!"))
 			src.reagents.trans_to(W, T.max_fuel)
@@ -513,13 +541,44 @@
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
 		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of the pack and fill it back up again from the tank."))
+		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, SPAN_NOTICE(" The pack is already full!"))
+		to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
 		return
 
-/obj/item/tool/weldpack/examine(mob/user)
+/obj/item/tool/weldpack/get_examine_text(mob/user)
+	. = ..()
+	. += "[reagents.total_volume] units of welding fuel left!"
+	if(original_health > health)
+		. += "\The [src] appears to have been damaged, as the self sealing liner has been exposed."
+	else
+		. += "No punctures are seen on \the [src] upon closer inspection."
+
+/obj/item/tool/weldpack/bullet_act(var/obj/item/projectile/P)
+	var/damage = P.damage
+	health -= damage
 	..()
-	to_chat(user, "[reagents.total_volume] units of welding fuel left!")
+	healthcheck()
+	return 1
+
+/obj/item/tool/weldpack/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/item/tool/weldpack/proc/explode()
+	if(reagents.handle_volatiles())
+		qdel(src)
+	return
+
+
+
+/obj/item/tool/weldpack/minitank
+	name = "ES-11 fuel canister"
+	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!' "
+	icon_state = "welderpackmini"
+	max_fuel = 120 //Just barely enough to be better than the satchel
+	flags_equip_slot = SLOT_WAIST
+	w_class = SIZE_MEDIUM
+	health = 50

@@ -1,6 +1,6 @@
 /obj/item/device/assembly/igniter
 	name = "igniter"
-	desc = "A small electronic device able to ignite combustable substances."
+	desc = "A small electronic device able to ignite combustible substances."
 	icon_state = "igniter"
 	matter = list("metal" = 500, "glass" = 50, "waste" = 10)
 	wires = WIRE_ASSEMBLY_RECEIVE

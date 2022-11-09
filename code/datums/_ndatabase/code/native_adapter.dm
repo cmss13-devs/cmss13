@@ -85,7 +85,7 @@
 /datum/db/adapter/native_adapter/update_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
 	if(!sync)
 		set waitfor = 0
-	
+
 	for(var/list/vals in values)
 		var/list/qpars = list()
 		var/query_updaterow = getquery_update_row(table_name, vals, qpars)
@@ -152,14 +152,14 @@
 		return TRUE // no action required
 
 	var/tablecount = internal_table_count(table_name)
-	// check if we have any records	
+	// check if we have any records
 	if(tablecount == 0)
 		// just MURDER IT
 		return internal_drop_table(table_name) && internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types, id)
-	
+
 	return internal_drop_backup_table(table_name) && internal_create_backup_table(table_name, old_fields) && internal_migrate_to_backup(table_name, old_fields) && \
 		internal_drop_table(table_name) && internal_create_table(table_name, field_types) && internal_migrate_table(table_name, old_fields) && internal_record_table_in_sys(type_name, table_name, field_types, id)
-	
+
 
 
 /datum/db/adapter/native_adapter/proc/internal_create_table(table_name, field_types)
@@ -350,9 +350,9 @@
 				insert_items+="[field]"
 			local_first = FALSE
 		calltext += "SELECT [id],[local_text]"
-		id += 1
+		id++
 		first = FALSE
-	
+
 	return {"
 		INSERT INTO [table_name] (id, [insert_items]) [calltext];
 	"}
@@ -388,7 +388,7 @@
 	for(var/id in ids)
 		if(!first)
 			idtext+=","
-		idtext += "[text2num(id)]"	
+		idtext += "[text2num(id)]"
 		first = FALSE
 	return {"
 		DELETE FROM [table_name] WHERE id IN ([idtext]);
@@ -407,19 +407,19 @@
 			return "INT"
 		if(DB_FIELDTYPE_CHAR)
 			return "TEXT"
-		if(DB_FIELDTYPE_STRING_SMALL)	
+		if(DB_FIELDTYPE_STRING_SMALL)
 			return "TEXT"
-		if(DB_FIELDTYPE_STRING_MEDIUM)	
+		if(DB_FIELDTYPE_STRING_MEDIUM)
 			return "TEXT"
-		if(DB_FIELDTYPE_STRING_LARGE)	
+		if(DB_FIELDTYPE_STRING_LARGE)
 			return "TEXT"
-		if(DB_FIELDTYPE_STRING_MAX)	
+		if(DB_FIELDTYPE_STRING_MAX)
 			return "TEXT"
-		if(DB_FIELDTYPE_DATE)	
+		if(DB_FIELDTYPE_DATE)
 			return "TEXT"
-		if(DB_FIELDTYPE_TEXT)	
+		if(DB_FIELDTYPE_TEXT)
 			return "TEXT"
-		if(DB_FIELDTYPE_BLOB)	
+		if(DB_FIELDTYPE_BLOB)
 			return "BLOB"
 		if(DB_FIELDTYPE_DECIMAL)
 			return "NUMERIC"
@@ -463,7 +463,7 @@
 		if(!field_path)
 			field_path = field
 		internal_parse_column(field, field_path, view, shared_options, meta_to_load, meta_to_table, join_conditions, field_alias)
-	
+
 	if(view.root_filter)
 		var/list/filter_columns = view.root_filter.get_columns()
 		for(var/field in filter_columns)
@@ -478,7 +478,7 @@
 			var/result_true = case_f.result_true
 			var/result_false = case_f.result_false
 			var/condition_text = get_filter(case_f.condition, field_alias, pflds)
-			var/true_text			
+			var/true_text
 			if(result_true)
 				var/datum/db/native_function/native_true = result_true
 				if(istype(native_true))
@@ -524,7 +524,7 @@
 		var/name_t = meta_to_load[mtt].table_name
 		var/join_c = get_filter(join_conditions[alias_t], null, pre_pflds)
 		join_text += "LEFT JOIN `[name_t]` as `[alias_t]` on [join_c] "
-	
+
 	query_text += join_text
 
 	query_text += "WHERE "
@@ -562,7 +562,7 @@
 		var/group_text = "GROUP BY "
 		var/index_order = 1
 		for(var/fld in view.group_by)
-			var/field = field_alias[fld]			
+			var/field = field_alias[fld]
 			group_text += "[field]"
 			if(index_order != group_length)
 				group_text += ","
@@ -578,7 +578,7 @@
 	// this is a function?
 	if(istype(NF))
 		var/list/field_list = NF.get_columns()
-		
+
 		for(var/sub_field in field_list)
 			internal_parse_column(sub_field, sub_field, view, shared_options, meta_to_load, meta_to_table, join_conditions, field_alias)
 		if(field)
@@ -604,12 +604,12 @@
 		else
 			current_path = table_link
 		current_field = COPY_AFTER_FOUND(current_field, link_loc)
-		link_loc = findtextEx(current_field, ".")				
+		link_loc = findtextEx(current_field, ".")
 		if(!meta_to_table[current_path])
 			var/step_child = "T_[shared_options["table_alias_id"]]"
 			meta_to_table[current_path] = step_child
 			shared_options["table_alias_id"]++
-			var/datum/entity_link/next_link = current_root.outbound_links[table_link]				
+			var/datum/entity_link/next_link = current_root.outbound_links[table_link]
 			if(next_link)
 				meta_to_load[current_path] = next_link.parent_meta
 				join_conditions[step_child] = next_link.get_filter(step_child, current_alias)
@@ -617,7 +617,7 @@
 				next_link = current_root.inbound_links[table_link]
 				if(!next_link)
 					return FALSE // failed to initialize view
-				meta_to_load[current_path] = next_link.child_meta					
+				meta_to_load[current_path] = next_link.child_meta
 				join_conditions[step_child] = next_link.get_filter(current_alias, step_child)
 
 		current_root = meta_to_load[current_path]

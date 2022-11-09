@@ -13,6 +13,8 @@
 	var/last_message_count = 0 //contins a number of how many times a message identical to last_message was sent.
 	var/talked = 0
 	var/chatWarn = 0
+	/// The last urgent ahelp that this player sent
+	COOLDOWN_DECLARE(urgent_ahelp_cooldown)
 
 		/////////
 		//OTHER//
@@ -28,7 +30,11 @@
 	var/donator = 0
 	var/adminhelped = 0
 
-	var/obj/screen/click_catcher/void
+	var/datum/click_intercept = null
+
+	var/atom/movable/screen/click_catcher/void
+
+	var/country
 
 		///////////////
 		//SOUND STUFF//
@@ -56,6 +62,8 @@
 	var/player_age = "Requires database"	//So admins know why it isn't working - Used to determine how old the account is - in days.
 	var/related_accounts_ip = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this ip
 	var/related_accounts_cid = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
+
+	var/human_name_ban = FALSE
 
 	var/xeno_prefix = "XX"
 	var/xeno_postfix = ""
@@ -112,3 +120,7 @@
 	var/next_move_dir_add
 	/// On next move, subtract this dir from the move that would otherwise be done
 	var/next_move_dir_sub
+
+	//screen_text vars
+	///lazylist of screen_texts for this client, first in this list is the one playing
+	var/list/atom/movable/screen/text/screen_text/screen_texts

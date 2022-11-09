@@ -47,6 +47,7 @@ var/global/players_preassigned = 0
 
 	var/list/unassigned_players
 	var/list/squads
+	var/list/squads_by_type
 
 //Whenever the controller is created, we want to set up the basic role lists.
 /datum/authority/branch/role/New()
@@ -105,9 +106,11 @@ var/global/players_preassigned = 0
 		roles_by_name[J.title] = J
 
 	squads = list()
+	squads_by_type = list()
 	for(var/squad in squads_all) //Setting up our squads.
 		var/datum/squad/S = new squad()
 		squads += S
+		squads_by_type[S.type] = S
 
 	load_whitelist()
 
@@ -314,20 +317,6 @@ var/global/players_preassigned = 0
 		return assigned
 	return roles_left
 
-/datum/authority/branch/role/proc/assign_to_xenomorph(var/mob/M)
-	var/datum/mind/P = M.mind
-	var/datum/game_mode/G = SSticker.mode
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	// if we don't have at least one thing - abort
-	if(!P || !G || !hive)
-		return
-
-	if(hive.stored_larva)
-		hive.stored_larva--
-		G.transform_xeno(P)
-
-	return
-
 /datum/authority/branch/role/proc/assign_initial_roles(var/priority, var/list/roles_to_iterate, var/list/unassigned_players, count = TRUE)
 	var/assigned = 0
 	if(!length(roles_to_iterate) || !length(unassigned_players))
@@ -505,14 +494,6 @@ var/global/players_preassigned = 0
 /datum/authority/branch/role/proc/equip_role(mob/living/M, datum/job/J, turf/late_join)
 	if(!istype(M) || !istype(J))
 		return
-	//If they didn't join late, we want to move them to the start position for their role.
-	if(late_join)
-		M.forceMove(late_join) //If they late joined, we passed on the location from the parent proc.
-	else //If they didn't, we need to find a suitable spawn location for them.
-		if(!length(GLOB.spawns_by_job[J.type]))
-			log_debug("Failed to find a spawn for [J.type]")
-			return FALSE
-		M.forceMove(get_turf(pick(GLOB.spawns_by_job[J.type])))
 
 	. = TRUE
 
@@ -562,6 +543,39 @@ var/global/players_preassigned = 0
 		var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 		WO.self_set_headset(H)
 
+	var/assigned_squad
+	if(ishuman(H))
+		var/mob/living/carbon/human/human = H
+		if(human.assigned_squad)
+			assigned_squad = human.assigned_squad.name
+
+	if(isturf(late_join))
+		H.forceMove(late_join)
+	else if(late_join)
+		var/turf/late_join_turf
+		if(GLOB.latejoin_by_squad[assigned_squad])
+			late_join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else
+			late_join_turf = get_turf(pick(GLOB.latejoin))
+		H.forceMove(late_join_turf)
+	else
+		var/turf/join_turf
+		if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][J.type])
+			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][J.type]))
+		else if(GLOB.spawns_by_job[J.type])
+			join_turf = get_turf(pick(GLOB.spawns_by_job[J.type]))
+		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
+			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else
+			join_turf = get_turf(pick(GLOB.latejoin))
+		H.forceMove(join_turf)
+
+	for(var/cardinal in GLOB.cardinals)
+		var/obj/structure/machinery/cryopod/pod = locate() in get_step(H, cardinal)
+		if(pod)
+			pod.go_in_cryopod(H, silent = TRUE)
+			break
+
 	H.sec_hud_set_ID()
 	H.hud_set_squad()
 
@@ -580,7 +594,7 @@ var/global/players_preassigned = 0
 
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.roundstart && S.usable)
+		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S
 
 	var/datum/squad/lowest = pick(mixed_squads)
@@ -635,7 +649,7 @@ var/global/players_preassigned = 0
 	// The following code removes non useable squads from the lists of squads we assign marines too.
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.usable)
+		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
 			mixed_squads += S
 
 	//Deal with non-standards first.
@@ -748,6 +762,8 @@ var/global/players_preassigned = 0
 			M = /mob/living/carbon/Xenomorph/Larva
 		if(XENO_CASTE_PREDALIEN_LARVA)
 			M = /mob/living/carbon/Xenomorph/Larva/predalien
+		if(XENO_CASTE_FACEHUGGER)
+			M = /mob/living/carbon/Xenomorph/Facehugger
 		if(XENO_CASTE_RUNNER)
 			M = /mob/living/carbon/Xenomorph/Runner
 		if(XENO_CASTE_DRONE)
@@ -780,7 +796,8 @@ var/global/players_preassigned = 0
 			M = /mob/living/carbon/Xenomorph/Boiler
 		if(XENO_CASTE_PREDALIEN)
 			M =	/mob/living/carbon/Xenomorph/Predalien
-
+		if(XENO_CASTE_HELLHOUND)
+			M =	/mob/living/carbon/Xenomorph/Hellhound
 	return M
 
 
@@ -824,3 +841,26 @@ var/global/players_preassigned = 0
 				break
 
 		transfer_marine.hud_set_squad()
+
+// returns TRUE if transfer_marine's role is at max capacity in the new squad
+/datum/authority/branch/role/proc/check_squad_capacity(var/mob/living/carbon/human/transfer_marine, var/datum/squad/new_squad)
+	switch(transfer_marine.job)
+		if(JOB_SQUAD_LEADER)
+			if(new_squad.num_leaders >= new_squad.max_leaders)
+				return TRUE
+		if(JOB_SQUAD_SPECIALIST)
+			if(new_squad.num_specialists >= new_squad.max_specialists)
+				return TRUE
+		if(JOB_SQUAD_ENGI)
+			if(new_squad.num_engineers >= new_squad.max_engineers)
+				return TRUE
+		if(JOB_SQUAD_MEDIC)
+			if(new_squad.num_medics >= new_squad.max_medics)
+				return TRUE
+		if(JOB_SQUAD_SMARTGUN)
+			if(new_squad.num_smartgun >= new_squad.max_smartgun)
+				return TRUE
+		if(JOB_SQUAD_RTO)
+			if(new_squad.num_rto >= new_squad.max_rto)
+				return TRUE
+	return FALSE

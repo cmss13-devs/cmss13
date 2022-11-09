@@ -150,8 +150,8 @@
 	clearance_access = 4
 
 /obj/item/card/id/silver/clearance_badge/cl
-	name = "corporate liason badge"
-	desc = "A corporate holo-badge in unique corporate orange and white. It is fingerprint locked with clearance level 5 access. It is commonly held by corporate liasons."
+	name = "corporate liaison badge"
+	desc = "A corporate holo-badge in unique corporate orange and white. It is fingerprint locked with clearance level 5 access. It is commonly held by corporate liaisons."
 	icon_state = "cl"
 	clearance_access = 5
 
@@ -189,9 +189,9 @@
 	desc = "A corporate holo-badge. It's a unique Corporate orange and white."
 	icon_state = "cl"
 
-/obj/item/card/id/gold/commodore
+/obj/item/card/id/gold/council
 	name = "identification holo-badge"
-	desc = "A real bronze gold Commodore's holo-badge. Commands respect, authority, and it makes an excellent paperweight."
+	desc = "A real bronze gold Colonel's holo-badge. Commands respect, authority, and it makes an excellent paperweight."
 	icon_state = "commodore"
 
 /obj/item/card/id/pmc
@@ -206,15 +206,15 @@
 
 /obj/item/card/id/pmc/ds
 	name = "\improper Corporate holo-badge"
-	desc = "It lists a callsign and a bloodtype. Issued to Whiteout protocol teams only."
+	desc = "It lists a callsign and a blood type. Issued to Whiteout protocol teams only."
 	icon_state = "ds"
 
-/obj/item/card/id/admiral
-	name = "admirality holo-badge"
+/obj/item/card/id/general
+	name = "general officer holo-badge"
 	desc = "Top brass of the top brass. Issued to only the most dedicated."
-	icon_state = "admiral"
+	icon_state = "general"
 	registered_name = "The USCM"
-	assignment = "Admiral"
+	assignment = "General"
 	New()
 		access = get_all_centcom_access()
 
@@ -347,10 +347,10 @@
 	var/dogtag_taken = FALSE
 
 
-/obj/item/card/id/dogtag/examine(mob/user)
-	..()
+/obj/item/card/id/dogtag/get_examine_text(mob/user)
+	. = ..()
 	if(ishuman(user))
-		to_chat(user, SPAN_NOTICE("It reads \"[registered_name] - [assignment] - [blood_type]\""))
+		. += SPAN_NOTICE("It reads \"[registered_name] - [assignment] - [blood_type]\"")
 
 
 /obj/item/dogtag
@@ -384,15 +384,15 @@
 	else
 		. = ..()
 
-/obj/item/dogtag/examine(mob/user)
-	..()
+/obj/item/dogtag/get_examine_text(mob/user)
+	. = ..()
 	if(ishuman(user) && fallen_names && fallen_names.len)
 		var/msg = "There [fallen_names.len>1 ? \
 			"are [fallen_names.len] tags.<br>They read":\
 			"is one ID tag.<br>It reads"]:"
 		for (var/i=1 to fallen_names.len)
 			msg += "<br>[i]. \"[fallen_names[i]] - [fallen_assgns[i]] - [fallen_blood_types[i]]\""
-		to_chat(user, SPAN_NOTICE("[msg]"))
+		. += SPAN_NOTICE("[msg]")
 
 // Used to authenticate to CORSAT machines. Doesn't do anything except have its type variable
 /obj/item/card/data/corsat

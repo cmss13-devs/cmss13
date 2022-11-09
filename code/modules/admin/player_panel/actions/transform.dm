@@ -31,6 +31,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	  name = "Larva",
 	  key = /mob/living/carbon/Xenomorph/Larva,
 	  color = "purple"
+	),
+	list(
+	  name = "Facehugger",
+	  key = /mob/living/carbon/Xenomorph/Facehugger,
+	  color = "purple"
 	)
   ),
   "Alien Tier 1" = list(
@@ -141,6 +146,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	  name = "Corgi",
 	  key = /mob/living/simple_animal/corgi,
 	  color = "orange"
+	),
+	list(
+	  name = XENO_CASTE_HELLHOUND,
+	  key = /mob/living/carbon/Xenomorph/Hellhound,
+	  color = "orange"
 	)
   )
 ))
@@ -168,8 +178,6 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 		if(isXeno(target))
 			var/mob/living/carbon/Xenomorph/X = target
 			newXeno.set_hive_and_update(X.hivenumber)
-
-		newXeno.generate_name()
 
 
 	QDEL_IN(target, 0.3 SECONDS)

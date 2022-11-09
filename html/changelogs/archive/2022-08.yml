@@ -1,0 +1,570 @@
+2022-08-01:
+  50RemAndCounting:
+  - imageadd: added several new hazard vest colour variants.
+  CasperEvans, CometBlaze:
+  - rscadd: IOs are back! You need 5 hours in squad roles to be able to select them
+  - rscadd: Gathering intel, setting communications, enabling colony power and collecting
+      corpses (human or xeno) will now award you tech points, these points can be
+      cashed in for extra points for Req or CAS or for more OBs at any tech console.
+  - rscadd: All maps now have documents and other relevant items scattered about them
+  - rscadd: 'The old IO office has been refurbished to serve a new purpose: being
+      an office for IOs'
+  - rscadd: Data Detectors have been made available to marine vendors
+  - rscadd: ARES now yells at command when comms are estabilished
+  - rscadd: Marines can now get small document pouches from their vendor
+  - balance: Requisitions no longer receives points every 30 minutes
+  - balance: Reduced number of roundstart OBs from 4 to 2
+  - bugfix: Colonists and colonist corpses no longer show up on the marines' crew
+      monitor
+  - tweak: Filing cabinets now dump their contents when destroyed
+  JeserTheFox:
+  - balance: Hardpoints require 10 seconds to apply acid to them to prevent easy combat
+      melting.
+  - balance: Vehicles require 3 seconds to apply acid instead of 4 and receive twice
+      more damage for it.
+  Kaga:
+  - bugfix: Fixed an unintended oversight where mobs were taking damage calculated
+      for runners from the Aimed Shot ability when used by an XMB or M42C sniper rifle.
+      Normal-size Xenos now have their own tier for damage calculation.
+  Tisx:
+  - balance: Changed GAU impacts from a purely explosive damage model to a more ballistic
+      one for greater fine tuning.
+  - spellcheck: Renamed GAU ammo types; standard is now PGU-100 Multi-purpose. HV
+      is now PGU-105 Anti-Tank
+  - balance: Current damage numbers for GAU are; 150 damage 10 AP for multi-purpose.
+      95 damage and 40 AP (2x the bullets however) for Anti-tank
+  - balance: Point cost for both ammo types have been changed to be more equivalent
+      with each other.
+  - qol: Getting directly hit by a GAU shell will now display a message (same as getting
+      hit by any other bullet)
+  - soundadd: Added in some new sounds to the GAU to spice things up a bit.
+2022-08-02:
+  Morrow:
+  - bugfix: Orbiters will now follow xenos if they evolve or de-evolve
+  Stan_Albatross, Triiodine:
+  - rscadd: added random spawners for survivor loot items (guns, sentries, stims,
+      thermals, etc). These random spawners come in a few types - stimulants, thermals,
+      shotguns, rifles, smgs, special weapons, and pistols. They also come in four
+      rarities - 100%, 80%, 50%, and 20%. These all have unique icons and can be further
+      configured with how many additional mags they spawn for gun spawners, if they
+      move around, etc.
+  - rscadd: added more double doors to sci annex
+  - rscadd: coded in and added inhands for the ar10, sprites by Triiodine
+  - rscadd: coded in and added inhands for the laser UZI, sprites by Triiodine
+  - soundadd: added sounds for the ar10 firing and cocking, by Triiodine
+  - soundadd: added a new sound for laser firing, from tg
+  - imageadd: added some new laser sprites from tg
+  - imageadd: added back sprites for the m16 and ar10, by Triiodine
+  - balance: changed most of the survivor loot on science annex to random spawners
+  - rscadd: made the claymore spawners on the lv destroyed hydro nightmare insert
+      random
+  - balance: the m79 can now fit on your back
+  stanalbatross:
+  - rscadd: powerloaders and cargo tugs are no longer blocked by vehicle blockers
+  - rscadd: added vehicle blockers that block all vehicles including powerloaders
+      to dropship cockpit doors and escape pod doors
+  - bugfix: fixed a few permanently lit areas on shiva's snowball
+  - bugfix: fixed basically every shiva's snowball APC starting powered
+  - code_imp: refactored how defib sprites are applied to use overlays
+2022-08-03:
+  Segrain:
+  - bugfix: Professor Dummy being unhugable now properly means that it cannot be infected
+      by other methods too.
+  - bugfix: Professor Dummy can no longer be abused for spawning unhealthy amount
+      of severed limb items.
+2022-08-04:
+  CometBlaze:
+  - qol: Using the radiopack's phone is now done via a button similarly to turning
+      on the armour light. Hanging up is still done by clicking the radiopack
+  - bugfix: Grabbing items from the radiopack no longer requires pixel hunting
+  Geevies:
+  - balance: Added an additional crew weapon attachment point to both dropships, also
+      added a rappel system into the hanger.
+  Jeser:
+  - bugfix: Fixed warning messages for heavy fire support (Orbital Bombardment, Close
+      Air Support, mortar) not showing direction if mob was on target tile.
+  - rscadd: Added OB ammo crate capable of storing OB warheads and fuel only. New
+      OBs come in this crate now.
+  - imageadd: Added sprites for OB ammo crate.
+  Morrow:
+  - bugfix: Charlie cafeteria chairs should face the correct way now. Also removes
+      folding chairs missed in previous removal PR.
+  Shad0vvs:
+  - bugfix: Fixed new radiator sprites defaulting to parent.
+  stanalbatross:
+  - bugfix: fixed smartgun icons not updating when autofire/the motion detector was
+      turned off automatically
+  - bugfix: fixed the motion detector claiming that YOU turned it off when you died.
+      It will now "short out"
+  - bugfix: fixed issuing an order breaking all the sg buttons
+2022-08-05:
+  Geevies:
+  - refactor: Hellhounds are now based on xeno code, making them far less terrible
+      to play as.
+  - rscadd: Forsaken and Yautja hives now never delay round end, Corrupted don't count
+      as hostile xenos as long as they're allied to marines, as far as round-end is
+      concerned.
+  Jeser:
+  - rscadd: Vehicles appear in Follow window now and can be followed from there.
+2022-08-06:
+  Geeves, Sose96:
+  - balance: Big Red caves can't be CAS'd anymore.
+  Geevies:
+  - bugfix: Building a tunnel over a resin hole now destroys the resin hole.
+  - balance: You can no longer place a resin node over resin hole. And you can no
+      longer place resin holes on resin nodes.
+  Ghostsheet:
+  - balance: you can now take machetes out of the machete pouch via hotkey
+  stanalbatross:
+  - rscdel: removed officers knowing languages that they would absolutely not have
+      the time to learn before being deployed, instead take these languages in the
+      character setup screen
+  - rscdel: removed the automatic ability of CLs to speak Japanese - not all WY employees
+      would speak Japanese, if you want to roleplay as a Japanese speaker CL take
+      the language from the setup screen
+  - code_imp: split the actions.dmi file into actions.dmi and actions_xeno.dmi to
+      make adding new action sprites easier and cause less conflicts
+  - rscadd: re-added the first responder pouch - it's like a medical pouch but can
+      hold some special items like roller beds and stasis bags, but also can't hold
+      some other items. Can be found in the same places as medical pouches.
+2022-08-07:
+  Jeser:
+  - qol: CTRL + Clicking APC Supply vendor starts an automated repeating restocking
+      process of every valid items within 1 tile of vendor. Should prevent VC players
+      from breaking fingers and hands restocking lots of supplies manually. Information
+      about that appears upon examining the vendor.
+  - qol: Slightly increased amount of standard-issue weapons and ammunition, so that
+      there is no need to restock those at roundstart, and even without restocking
+      APC can provide marines with basic resupply.
+  - qol: Materials stacks no longer require user to split them into appropriate stack
+      sizes, it is done automatically by vendor, any left overs will be returned back.
+  - code_imp: Returned restocking of empty mags in squad prep vendors.
+  Morrow:
+  - rscadd: Adds wield sound for machete pouch
+  - bugfix: Bravo briefing chairs should be oriented correctly now. Also adds a missed
+      chair.
+  stanalbatross:
+  - rscadd: added balloon alerts from TG, a system designed to supplement and replace
+      to_chats. These are short floating messages that quickly fade out, and are designed
+      to give you visual feedback on actions. They are currently only implemented
+      for multitool APC tracking.
+  - rscadd: 'Solaris Ridge : tweaked some areas, doors, windows, and added a server
+      room to lambda'
+  - rscadd: added green pens, the CL gets a green pen in their briefcase
+  - balance: upped the price of ultrazine in the CL briefcase to 25 points
+  - balance: you can no longer buy ultrazine or neurostimulator implants from the
+      CL briefcase before 12:25
+  - code_imp: made the code for update_icons on pens much nicer
+  - rscadd: added DCC spawn landmarks to the uss runtime
+  - qol: added paper macros for date and time. [date] for date, [shortdate] for number
+      date, [time] for time, [date+time] for both.
+2022-08-08:
+  Morrow:
+  - admin: Resin walls on dead bodies will now be logged.
+  Segrain:
+  - bugfix: Items with actions no longer have FIX ME for icons.
+  stanalbatross:
+  - rscadd: the telebaton can now deal 50 stam damage when used on a human if not
+      on harm intent
+2022-08-09:
+  CometBlaze:
+  - qol: Added a verb to the OOC fix tab that resets the Objectives Data Tab (use
+      this when your objectives UI bluescreens)
+  - admin: Added a new verb to the Debug tab that resets the Data Tab of the Intel
+      Database as a whole
+  Morrow:
+  - Fix: Puts M41A folding stock in req and squad prep vendors. Fixes some unintended
+      behavior with starting unfolded.
+  Stan_Albatross, Frans_Feiffer:
+  - rscadd: Added a new medical tool - the portable dialysis machine, which is a medium
+      sized item. Attach it to someone and it will filter out all the drugs from their
+      bloodstream over time, but also take some of their blood in the process. Has
+      enough charge for 100s of use, or 150u of drugs. Can be recharged. Make sure
+      to detach it by clicking the person it's attached to with it again before walking
+      away or putting it away, or they'll get a nasty needle wound. Sprites by Frans_Feiffer.
+  - rscadd: added a portable dialysis machine to lower medbay, added portable dialysis
+      machines to the synthtool vendor for 15 points.
+  - bugfix: autocompressors can now be recharged
+  Stan_Albatross, Triiodine:
+  - rscadd: added an M41 series folding stock, can be attached to the M41aMK1, M41aMK2,
+      and M46c (as well as sister guns). Is slightly worse than the solid stock, but
+      can be folded. Sprites by Triiodine
+  - balance: buffed the rifle solid stock a bit
+  - imageadd: resprited the MK1, by Triiodine
+  - imageadd: added map variants for the m46c, by Triiodine
+  sose96:
+  - balance: Sentry deployment system now shoots 360 and has 30% reduced damage due
+      to potential overlapping fields of fire.
+  stanalbatross:
+  - refactor: refactored beam code
+  - bugfix: RTO backpacks with no phone now have an icon state
+  - rscadd: added AGM-S smoke grenades, they work like smoke grenades but in AGM form,
+      and have a smaller radius.
+  - bugfix: fixed roundstart dead bodies having pulses
+  - bugfix: fixed the sprite offsets on the double barrel shotgun
+  - bugfix: fixed smartfridge ID wires not working (supposedly). They now disable
+      ID checking when pulsed and totally lock you out when cut.
+  - bugfix: fixed MK1 ap mags not being in WO
+  - bugfix: fixed unnest notifications showing to bursted people
+2022-08-10:
+  Stan_Albatross:
+  - code_imp: ported the screen messages system from TGMC
+  - qol: added messages that appear on your screen for receiving squad messages and
+      objective updates from overwatch, tweaked the sound played upon receiving squad
+      messages
+  - qol: added messages that appear on your screen for when hive orders are changed
+  stanalbatross:
+  - balance: larvas can no longer evolve off weeds before 15 minutes into the round
+      has passed.
+2022-08-11:
+  50RemAndCounting:
+  - soundadd: readded old Almayer/Sulaco ambient noise.
+  Shad0vvs:
+  - bugfix: Fixed possible null runtime in prefrences_savefile.
+  stanalbatross:
+  - bugfix: you can no longer build windows on the same tile as an m56d, this will
+      prevent abuse via firing "through" a window on the same tile as you
+  - bugfix: m2cs can no longer be built on top of each other
+  - qol: you can now rotate windows with alt-click
+  - bugfix: fixed a bug with the pred mask where it would not properly remove vision
+      filters from people wearing it when turned off/taken off
+  - refactor: refactored pred mask HUD/effects application code
+  - qol: abovehead emotes now use smaller chat + a small blue asterisk before them,
+      which makes them much easier to read
+  - qol: added a setting to turn off seeing abovehead emotes
+  - qol: added abovehead chat settings to the setup settings section
+  - bugfix: abovehead emotes no longer inherit size and boldness from their user
+2022-08-12:
+  Jeser:
+  - qol: Supply and logistics workers, rejoice! Ammo boxes became stackable. Regular
+      ammo boxes can be stacked up to 2 per tile, miscellaneous supply boxes (flares
+      and MREs, currently) up to 4 per tile. No stacking for nail gun ammo, because
+      of a snowflake sprite.
+  - qol: Added flare box overlay to make it easier to separate MRE from flare boxes.
+  - balance: Reworked how explosion happens when flaming ammo boxes.
+  - code_imp: Explosion level scales with amount of rounds inside. Boxes will not
+      explode until amount of rounds inside won't reach a certain threshold. Fully
+      filled boxes explode harder now.
+  - code_imp: After being flamed, boxes now spend some time being on fire before they
+      will be deleted or explode, during which they receive a new on fire overlay.
+      This time is also based on amount of ammo in the box. If the box is going to
+      blow up, overlay will be slightly different to indicate that.
+  - imageadd: New sprites include burning and burning, going to explode overlays as
+      well as M94 flare box markings overlay.
+  johnravioliUSA:
+  - bugfix: The M276 Pattern Ammo Load Rig is now under the belts section of the Surplus
+      Uniform Vendor inside the squad prep room.
+2022-08-13:
+  ChainsawMullet:
+  - rscdel: Warrior's Boxer strain has been removed.
+  Shad0vvs:
+  - bugfix: Fixed the pred mask to have the proper huds attached.
+  stanalbatross:
+  - ui: cryopods now use tgui
+  - rscadd: cryopods now have a toggleable auto-eject function. They will auto-eject
+      dead and fully healed people
+  - rscadd: ARES will now announce over the radio when cryopods auto-eject someone
+2022-08-14:
+  Diegoflores31:
+  - bugfix: Bodyscanner no longer dissapears marines if they hop inside at the same
+      time.
+  Joe Lampost:
+  - bugfix: Fixed the plasma caster being able to be deleted by explosions which breaks
+      it completely if it happens
+  - bugfix: Corrected some weird spelling of human in the scalping code
+  - soundadd: added three new pain screams for preds
+  Nanu:
+  - bugfix: Fixes a minor issue with MDB. Remember case sensitive stuff.
+  SpartanBobby:
+  - balance: VP78 Now costs 15 points in PFC vendor
+  - balance: VP78 Now has the lore accurate 18 magazine capacity instead of 14
+  - balance: VP78 Now has the lore-accurate pre-attached laser sight
+  - balance: VP78 Now has falloff 5 from falloff 7, one more than the MK2
+  Tisx:
+  - balance: Changed Multi-Purpose ammo count and bullets per burst to match Anti-Tank's.
+  stanalbatross:
+  - ui: overhauled the command tablet to use tgui
+  - ui: area power controllers, more commonly known as APCs, now use TGUI.
+  - ui: SMESes also now use TGUI
+  - ui: changed the research door control UI from HTML to TGUI
+  - ui: changed the filtration console UI from HTML to TGUI
+  - ui: changed the binoculars UI from HTML to TGUI
+  - ui: changed the AA cannon UI from HTML to TGUI
+  - bugfix: fixed resin markers and the queen exit hologram buttons being "FIX ME"
+  - rscadd: shooting bottles will now cause them to break
+  - rscadd: gave glasses the same shattering mechanics as bottles
+  - bugfix: BEs will now actually fire bullets again
+2022-08-15:
+  Geevies:
+  - rscadd: You can now crawl if you try moving while lying down, crawling takes three
+      seconds.
+  - bugfix: Xenos now always update their name and default vision mode when a client
+      transfers into them.
+  Jeser:
+  - rscadd: Specialist kit (the one that allows you to select a specialization and
+      receive a respecting equipment box) now supports specifying what roles are able
+      to activate it or removing restrictions at all by admins for events.
+  - qol: Specialist kit shows what roles exactly can use it upon examination now.
+  - bugfix: Fixed a couple of bugs and exploits related to specialist kit.
+  - imageadd: Specialist kit has it's own sprite now!
+  stanalbatross:
+  - bugfix: fixes incorrectly named corpse spawners, incorrectly parsed to, and unused
+      variable
+  theflyingflail:
+  - rscadd: Added New Weapon Pool for PMC Survivors
+  - rscadd: Prisoner survivors now have a chance to spawn with a helmet or weapon
+  - rscadd: FP9000 and MP5 have been added to the survivor spawn pool to help combat
+      shotgun meta while adding variety to weapon loadouts
+  - rscdel: Removed old things
+  - qol: Reduced amount of lines required for survivors to spawn with essential gear
+  - qol: Survival pouches now include radios and knives
+  - qol: Unique survivor spawn weapons now include ammo belts to help free up space
+  - tweak: PMC survivors now draw from a separate weapons pool dedicated to PMC survivors
+  - tweak: PMC survivors no longer spawn with pmc mask
+  - tweak: Survivors no longer spawn with pistol belts or any belts
+  - tweak: Survivors doctors have updated medical loot spawn due to loss of belts
+  - tweak: Moved the large stack of metal from survivor pouches to the survivor's
+      satchel
+  - tweak: tweaked various survivor skills and load-outs at the request of devs
+  - balance: CMB Shotguns have been reduced to 50% spawn chance as opposed to 75%
+  - bugfix: Various bugs related to winter gear not spawning and CL loot
+  - bugfix: Research survivors now can do surgery again
+  - bugfix: Fixed chaplain survivor being unable to store a weapon in robes
+  - bugfix: Fixed issue were survivors didn't spawn with winter gear
+2022-08-16:
+  Jeser:
+  - bugfix: Fixed specialist dogtags specialization assignment.
+  stanalbatross:
+  - bugfix: hotfixed the colonial marshal corpse spawner breaking
+2022-08-17:
+  Segrain:
+  - refactor: Corpse spawning landmarks should now actually spawn their supposed corpses
+      correctly in every case.
+  - bugfix: WO Honour Guard specialists once again can properly select their kits.
+  - bugfix: Requisitions' cryo storage console works once again.
+  TheBoondock:
+  - bugfix: fixes on fire dead xenomorph being eternal light source even when extinguished
+  stanalbatross:
+  - ui: made the NtOS error message weyland-yutani themed
+  - balance: hardy weeds can no longer be planted in unweedable areas. They will still
+      spread into not normally weedable areas, but cannot be planted there.
+2022-08-18:
+  50RemAndCounting:
+  - rscdel: Removed the wrongfully added surgical webbing vest crate as a purchasable
+      option in the req console.
+  TheBoondock:
+  - bugfix: fixed a xeno being able to smash open welded lockers just as easily as
+      normal closed lockers
+  stanalbatross:
+  - bugfix: xenos can no longer damage dead bodies with acid
+2022-08-19:
+  50RemAndCounting:
+  - bugfix: fixed the service (and some other) uniforms' sleeves and trousers being
+      one pixel too short when viewed from certain directions
+  Kaga:
+  - bugfix: OOC Country Flags should now retry failed people after a minute, as well
+      as be less likely to runtime.
+  Morrow:
+  - admin: Adds fingerprints for built walls
+  Segrain:
+  - bugfix: IO objectives tied to items no longer bluescreen due to said items getting
+      exploded.
+2022-08-20:
+  Drulikar:
+  - bugfix: Fixed power APCs being unbreakable (atleast not by small/med xenos) after
+      basic repairs have been made (mending wires and closing panel)
+  - bugfix: Xenos now cut all power APC wires, not just all - 1 because of an off-by-one
+      error
+  - bugfix: If a power APC's wires are exposed some reason, now they can just immediately
+      be slashed
+  - code_imp: Power APC cut proc now can take a boolean argument to hide messages
+      (And xeno slashing now doesn't produce the redundant messages)
+  Kaga:
+  - rscadd: Added in a new type of embedded shrapnel, unexploded ordnance. Currently
+      only the event-related AT Rockets can rarely (5%) cause it when hitting unintended
+      soft targets (human mobs) directly. Moving with one embedded has a small chance
+      to detonate it with each step, but it can be yanked out as with other embedded
+      objects.
+  - rscadd: Unexploded Anti-Tank Rockets can be manually detonated in various ways
+      as a makeshift weapon or tool. While significantly weaker than proper rockets,
+      they detonate in a contained direction when used. Despite the potential uses,
+      they are highly unstable and prone to accidental detonations with each interaction.
+      Exercise caution when handling them!
+  Nanu:
+  - balance: Nerfs the AGMF from 400+dmg on avg with a maxcap of 750 down to around
+      200 dmg on avg with a maxcap of 400dmg via turning the shrapnel count down to
+      16 from 30.
+  theflyingflail:
+  - bugfix: fixed trijent dam cl survivor not spawning with survivor equipment
+2022-08-21:
+  Morrow:
+  - bugfix: You can no longer use picked up simple mobs to get around the C4 limits.
+  theflyingflail:
+  - rscadd: Added ert medical pouch to ert corpses
+  - tweak: Swapped PMC mask for heat coif in black market crate and pmc corpses
+2022-08-22:
+  Geevies:
+  - bugfix: Xenos no longer lose their age/name when rejoining the game.
+  Jeser:
+  - balance: Vehicles now can receive damage from various environmental acidic sources
+      like toxin rivers in addition to acid spray. Colony Vans receive wheels damage
+      when driving through toxins river on Trijent Dam now.
+  - bugfix: Fixed some vehicle spawners behaviour and vehicle speed.
+2022-08-23:
+  Morrow:
+  - rscadd: Dropship droppable sentries can now be seen on dropship cameras.
+  - bugfix: Dropship droppable sentries have working lights when dropped.
+  Segrain:
+  - bugfix: Giving items no longer requires recipient to have both hands empty.
+  - bugfix: Feeding pills to somebody while lagging and clicking a lot no longer leaves
+      ghost pills on the floor.
+  stanalbatross:
+  - bugfix: fixed poorly aligned AP magazine overlays on the type 71 carbine and commando
+      carbine
+  - qol: added a keybind for LOOC
+  - balance: the cluster OB now has 1/6th stronger explosions and fires 25% more explosives
+      in the same time
+  - bugfix: fixed not being able to open an airlock's wires UI if the airlock had
+      no power
+  - bugfix: fixed APCs not automatically reopening their UI if one was already open
+      when their covers were closed/opened
+2022-08-24:
+  Diegoflores31:
+  - qol: MTs can now craft normal almayer doors (personal and glass) instead of legacy
+      SS13 doors
+  - code_imp: Changed Airlock Assembly code to spawn cm airlocks instead of legacy
+      and support directional construction.
+  - imageadd: replaced some legacy SS13 airlock assembly sprites for new sprites.
+  Segrain:
+  - bugfix: Items dumped out of containers no longer appear on top of mobs.
+  - bugfix: Spawn pools and egg morphers no longer get blocked by documents and other
+      indestructible items from melted bodies.
+  stanalbatross:
+  - ui: converted the supply drop console to TGUI
+  - bugfix: mortar interface numberinputs now work properly
+  - ui: the nuclear fission explosive now uses tgui
+2022-08-25:
+  Drathek:
+  - rscadd: Added Give Royal Jelly ability (costs 500 plasma) to select a current
+      or previous xeno and grant an award to be displayed at round end just like a
+      marine award.
+  - imageadd: Added dev art for Queen Award depicting purple jelly above a xeno head.
+  - code_imp: Added totalDeadXenos list to hive_status to track any xenos that aren't
+      hard removed (changed hives).
+  - code_imp: Added view_record/medal_view to support queries to the DB for medal
+      information.
+  - code_imp: Added an optional theme argument to constructors for tgui_input_list
+      and applied hive_status theme to various xenomorph input list choices.
+  - refactor: Improved variable readability, commented most medal code, and moved
+      award names to defines.
+  - bugfix: Fixed Medals Given niche stat sometimes not getting granted if recipient
+      mob found before giver mob.
+  - bugfix: Fixed niche stats not getting displayed in panel_stats global tab for
+      xeno castes.
+  - bugfix: Command tablet not finding any mobs visible for its print medal message.
+      It should also print the medals faster since it is prior to a database call.
+  - admin: Added "Award a royal jelly" to admin Events Panel that picks a hive, and
+      awards a royal jelly (with overrideable giver attribution).
+  - admin: Added tgui Medals Panel to view marine and xeno medals/jelly, rescind medals
+      from that round (actually deleting the items too), and add medals/jelly (with
+      overrideable giver attribution for xenos or overrideable medal location for
+      marines).
+  - admin: Added href link to open Medals Panel in message when a medal is created/deleted.
+  Git-Nivrak:
+  - bugfix: Fixed a bug which would make you have increased movement delay after stopping
+      to pull a mob for one tile
+  Morrow:
+  - bugfix: Fixes size oversight for ordnance tech custom grenades.
+2022-08-26:
+  stanalbatross:
+  - admin: fixed not being able to remove notes
+2022-08-27:
+  TheBoondock:
+  - refactor: refactored radio channels into using defines
+  nauticall:
+  - bugfix: Fixed M56D infinite ammo bug caused by swapping drum magazines on an M56D
+      emplacement.
+  stanalbatross:
+  - qol: added keybinds for basically every yautja verb
+2022-08-28:
+  Nanotrasen-Spy:
+  - rscadd: Ballistic goggles can now be flipped up and down on helmets and hats.
+      Ballistic goggle sprites changed to look like they have 1 piece lenses instead
+      of being green glasses
+  - rscadd: Changes to all eye HUD glasses sprites except M4RA and M56 glasses to
+      be monacles
+  Segrain:
+  - bugfix: Inputting numbers once again accepts negative values where relevant (e.g.
+      coordinates).
+  - bugfix: Wrench once again can be properly used in fixing vehicles' hulls.
+  Shad0vvs:
+  - bugfix: Reverted a change allowing warriors to punch from 2 tiles away and giving
+      them daze on punch.
+  stanalbatross:
+  - bugfix: the British flag will now, once more, display properly in chat
+  - bugfix: you can no longer infinitely add glass to airlock assemblies, you can
+      now also take glass out of them.
+  - bugfix: updated the construction text for airlocks
+  - balance: the underbarrel grenade launcher is now pump-action! you must pump it
+      TWICE to fire it (open and close the breech, this cocks it). To reload it you
+      must open the breech. You open/close the breech (and thus pump it) via UNIQUE-ACTION
+      while the attachment is activated
+  - qol: you can now unload the UGL as you would with a normal gun, while it is activated
+  - soundadd: added new sounds for opening and closing the UGL + reloading grenades
+      into the UGL
+  - rscdel: blowtorches no longer always protect you from eye damage
+  - rscadd: added "old blowtorches", which have a weaker flame that only lets them
+      weld vents and doors. However, this makes their welding screens effective and
+      as such they do not hurt your eyes.
+  - rscadd: added pushups, you can do pushups with a verb in the IC tab
+  - bugfix: you can no longer crawl without enough limbs to do so
+  - ui: number input now uses tgui
+  - bugfix: when making pills from a chemmaster the creation number will now default
+      to 16, not 10
+2022-08-29:
+  Morrow:
+  - rscadd: More options to chief engineer vendor as well as an extended section for
+      deployment gear.
+2022-08-30:
+  Geevies:
+  - rscadd: AI xenos have been tweaked to function a bit more like normal xenos (no
+      ability use).
+  Mister-moon1:
+  - Fix: Ammo type of M2C changed to be the correct ammo
+2022-08-31:
+  Geevies:
+  - rscadd: Adds rock paper scissors, you can play it by help intenting someone's
+      head. Your intent influences your play.
+  Nanotrasen-Spy:
+  - bugfix: Fixed missing icons for ballistic goggles in certain cases
+  TotalEpicness, TheDonkified and Lumdor:
+  - rscadd: Added charger strain for crusher.
+  - experiment: Charger functions very similarly to old crusher. Hold movement key
+      and after a while you gain momentum to ram humans and certain objects. Behavior
+      upon collision with different things are subject to change.
+  - Passive: Directional armor. Charger has 50 frontal armor, 35 side armor, and 25
+      rear armor. Because of this ability, charger crusher is unable to direction
+      lock itself.
+  - experiment: 'Active 1: Toggle Charging. Use this ability to toggle charging on
+      and off.'
+  - experiment: 'Active 2: Tumble. Clicking to the side of where the crusher is facing
+      will launch it 2 tiles to the side in the clicked direction. Hitting a human
+      will knock them over. This ability can be used while charge to quickly offset
+      yourself. However, it will reset your momentum to 0.'
+  - rscadd: Tumble now has cool sound effects and a spin.
+  - imageadd: Added tumble ability sprites
+  - tweak: Charger now takes 3 full hits to destroy a normal wall instead of destroying
+      it in pretty much one. Xeno walls take half damage
+  - experiment: 'Active 3: Charger stomp. Unlike the base crusher, it does not stun,
+      but does heavy damage to any human unfortunate enough to be under the charger,
+      it also applies a mild screen shake to any humans in view and can be used to
+      help escape.'
+  - experiment: 'Active 4: Ram. A simple offensive ability that flings mobs without
+      stun. Much like warrior fling.'
+  - rscadd: Xenos blocking a charger's path when charger get pushed to the side, if
+      no clear path to move to exists, they get flicker stunned so that charger may
+      charge.
+  stanalbatross:
+  - admin: 'fixed the following broken hrefs : game panel'
+  - bugfix: properly fixed stack transfer amounts
+  - code_imp: changed several instances of += 1 and -= 1 to ++ and --

@@ -1,0 +1,573 @@
+2019-02-01:
+  Neth Iafin:
+  - tweak: Buckshot secondary pellet spread increased so that most of shells land
+      2 tiles infort of you but quickly spread.
+  - tweak: Maximum and minimum buckshot damage variance has been reduced. It has less
+      chance to instakill and less chance to do almost no damage.
+  - tweak: No other changes were made to buckshot, so it still damages well even at
+      4-5 tiles, but chance of getting hit by all 4 pellets at that range is close
+      to none even with attachments.
+  Triiodine:
+  - bugfix: Fixed a silly with Win-door layering.
+2019-02-02:
+  Awan:
+  - experiment: ASRS has been added again.
+  - experiment: ASRS is the Automatic Supply Retrieval System.
+  - experiment: It will spawn in crates with items over time.
+  - experiment: The amount of crates is variable and will change during the mission.
+  - experiment: The first 5 waves will always be exactly 5 crates though.
+  - experiment: You no longer get supply points over time.
+  - experiment: Crates/manifests give less points back but will still give points
+      back
+  Cakey:
+  - tweak: Removed the ability to apply facehuggers to people standing up.
+  ThePiachu:
+  - rscadd: Requisitions now has a Supply Drop Console - a way for them to deploy
+      supply crates directly without having to rely on Squad Officers on overwatch
+      duty. The Console is hardwired into a new, separate pad.
+  - bugfix: Surplus Uniform Vendor in Requisitions is no longer keyed to Charlie Squad.
+  - tweak: Surplus Uniform Vendor in Requisitions now comes stocked with a few Squad,
+      Requisitions and Engineering Encryption Keys.
+  - tweak: Bayonet sheaths are available for PFCs and at Requisitions.
+  - experiment: As part of our cleanup endeavours, the "DNA" datum has been removed
+      from the game. The features we were using (blood types, fingerprints, etc.)
+      have been ported over, while everything extraneous was removed. At the very
+      least, this should greatly simplify the Player Panel for admins.
+  - rscdel: Removed a fair bit of peripheral code around DNA - cloning machines, dna
+      injectors, DNA-altering and copying viruses and other things that weren't seen
+      in the normal rounds in ages.
+  Triiodine:
+  - imageadd: Replaced all legacy headset sprites and cypher keys.
+  - bugfix: Fixes a typepath for cargo headsets.
+  monkeysfist101:
+  - imageadd: Restored SS13 mellonhead to fix sprite conflicts.
+2019-02-03:
+  MattAtlas:
+  - rscdel: Head melee knockouts have been removed on all mobs.
+  Neth Iafin:
+  - tweak: Wield delay has been removed on most weapons.
+  - tweak: Rocket Launcher still has its delay.
+  - tweak: Accuracy and scatter debuff is applied that slowly tapers off to the usual
+      value in time that was before set to be wield delay.
+  - tweak: Angled grip speeds this process.
+  - tweak: There is no visual hint about this process, at least yet.
+  - tweak: There is a guaranteed less than 1/10th of a second delay for pulling weapon
+      from slot or wielding it.
+  - tweak: Stock slowdown reduced, fire delay removed. Instead a significant (akin
+      to vgrip debuff / agrip buff) Wield Delay has been added, however stock's accuracy
+      should make it manageable.
+  - tweak: Increased bullet resistance values for most USCM armors. Less damage from
+      FF should happen.
+  - tweak: Same with other factions. HvH should be FUUUUN. (no it is not, yet)
+  ThePiachu:
+  - rscadd: As part of its ongoing inclusion initiative, the Company is proud to present
+      the Third Generation Synthetic line. They have the same capabilities as their
+      Second Generation counterparts, but come in more human-like skin colours meant
+      to emulate various Earth ethnicities. All USCM Second Gen Synthetic have been
+      upgraded to the Third Generation model (for a nominal service fee). Those wishing
+      to keep the familiar Second Generation look can do so using their Preferences.
+  - bugfix: Webbing shouldn't fit into other storage items anymore.
+  - bugfix: CTs should now have access to general Marine Prep areas.
+  - bugfix: Mod's name changing power should ignore empty string names and should
+      change subject's ID as well as their dchat name.
+  - bugfix: Larvas can now use tunnels.
+  - tweak: Bigger xenos take longer to enter tunnels. Larvas take less time.
+  - tweak: Observers can now right-click and follow a mob.
+  - bugfix: Forensic scanner should report proper DNA now.
+  - bugfix: Roudstart mob initialisation should be a touch faster since we're no longer
+      reloading cache all the time.
+  - bugfix: You shouldn't be able to latejoin as a PFC without a squad anymore.
+  - bugfix: Supply Drop Console is now properly access-restricted.
+  Triiodine:
+  - bugfix: Fixed another silly with secured windoors
+2019-02-04:
+  Awan:
+  - tweak: Adjustments to ASRS
+  - rscdel: Removed these crates
+  - rscdel: All crates with just loose grenades. Those in boxes still spawn.
+  - rscdel: All pistol ammo. (Except for the overflow crates.)
+  - rscdel: Smartgun crate.
+  - tweak: Made crates give more points
+  - tweak: Decreased the amount of crates that spawn.
+  - tweak: Adjusted chances for each crate type
+  MattAtlas:
+  - tweak: Prescription goggles and aviator shades now cost 2 points in the loadout
+      instead of 3.
+  - rscadd: Prescription glasses are now in the loadout.
+  - tweak: Issue order now gives a message when it's off cooldown.
+  - tweak: Regurgitating now plays a sound cue.
+  - tweak: You will now know when you're about to regurgitate a human a few seconds
+      prior.
+  - rscadd: Squad Leaders can now buy a MedHUD in their vendor.
+  - tweak: Squad Leaders and those with equal medical skill can now use Med HUDs.
+  - bugfix: Rejuvenate now properly updates Xeno HUD.
+  monkeysfist101:
+  - imageadd: Added Working Joe suit sprites.
+2019-02-05:
+  Cakey:
+  - rscadd: Marines rejoice! Visit your local barber for new hair and facial styles.
+  ThePiachu:
+  - rscdel: As an ongoing effort to remove code we never use, a few things have been
+      removed from the codebase. Syndicate, traitors, names of systems, religions,
+      factions, criminal organisations, have been removed. Magic has also been deleted
+      from the game.
+  - tweak: Off-weed healing doesn't work if you are on Almayer and the Queen isn't.
+  - tweak: Motion detector and whistle now come with a HUD icons.
+  - tweak: Burrowers now can dig tunnels in ice floors.
+  - tweak: Attacking snow as xeno with any non-help intent will start clearing it.
+  - tweak: Resin walls will remember the actual amount of snow underneath it not to
+      produce snow patches out of nowhere.
+  - tweak: Xeno traps will now let you know if they've been triggered or destroyed.
+  - tweak: Destroying a hugger trap now triggers it just like an acid or gas trap.
+  - rscdel: As an ongoing effort to remove code we never use, a few things have been
+      removed from the codebase. Syndicate, traitors, names of systems, religions,
+      factions, criminal organisations, have been removed. Magic has also been deleted
+      from the game.
+2019-02-06:
+  MattAtlas:
+  - bugfix: Honked armor sprites have been fixed.
+  - bugfix: Chainwhip sprite has been fixed.
+  Miraviel:
+  - rscadd: Big Red. Named areas were added to the caves (Eastern Caves, Lambda Lab
+      Caves, etc).
+  - rscadd: Big Red. Added sinks to the Hospital operation room, to Kitchen and to
+      Hydroponics (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/5640">#5640</a>).
+  - rscdel: Big Red. Removed Virology Queen (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/3957">#3957</a>)
+      and off-weed xenomorph spawn points.
+  - bugfix: Big Red. Fixed some lighting issues (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/4869">#4869</a>).
+  - rscadd: Almayer. Added a disposal chute from Medbay to Requisitions for spare
+      equipment (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/1041">#1041</a>).
+  - rscadd: Almayer. Added a fax machine to the CO's office (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/3043">#3043</a>),
+      an autolathe to Research (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/5420">#5420</a>),
+      and replaced the CL's bookshelf with a safe (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/4217">#4217</a>).
+  - rscadd: Almayer. Added door buttons to surgeries and medical armoury (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/1817">#1817</a>),
+      more disposal bins (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/3651">#3651</a>),
+      a photocopier, a camera, and a hand labeller to Research (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/3457">#3457</a>).
+  - tweak: Almayer. Briefing checkpoint shutters were changed to be open at roundstart,
+      moved the spare fuel cells closer to the OB cannon (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/4675">#4675</a>)
+      and changed the firing range armoury's access requirements to Almayer enlisted
+      personnel (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/3812">#3812</a>).
+  - bugfix: Almayer. Fixed the brig not having cameras (<a href="https://gitlab.com/cmdevs/ColonialMarines/issues/5505">#5505</a>)
+      and moved mirrors from above toilets.
+2019-02-08:
+  Cakey:
+  - rscadd: Added the ability to select primary landing zones. Dropship consoles have
+      been added to LZ2 on all maps and will now only allow the Xenomorph Queen to
+      interact with them if designated as primary LZ. The primary LZ can be selected
+      from the CO's communications console. Primary LZ is defaulted to LZ1 25 minutes
+      into the round.
+  - tweak: The maintenance doors at LZ2 on Ice can now be melted after being opened
+      by marines.
+2019-02-09:
+  MattAtlas:
+  - rscadd: Instructional Pamphlets have been added to PFC vendors. These items, when
+      used, increase your selected skill level by one. Marines that already trained
+      cannot use these.
+  - tweak: All ERTs should now spawn with a full first aid pouch, which means HvH
+      is slightly more playable.
+  - tweak: Broken armor icons on ice are actually fixed now.
+  Miraviel:
+  - rscadd: Admin-level. Added a CLF/UPP bunker for HvH events (#5585).
+  Neth Iafin:
+  - tweak: 'NEW: You can''t peek thru signal flares with obstructed roof (so either
+      clear sky or glass roof). You still can fire using those flares but you have
+      to go in blind or work with ground team. You still can follow the fire mission''s
+      shooting path without obstruction but only after you start shooting.'
+  - tweak: 'NEW: Same for offset peeking. If tile is obstructed, your screen will
+      go dark and you will receive a message. You still can execute Fire Missions.'
+  - tweak: 'NEW: Signal Flares has to be ON THE GROUND to work. Not in hand or in
+      backpack. If you pick signal flare mid flight, Fire Mission will be aborted.'
+  - tweak: Above changes made to prevent queen killing in Ovipositor and some unfair
+      air raids on spawn points. These changes do not completely remove it, they just
+      make so that all parts of the marine forces has to cooperate to acheive game
+      turning actions, and not just PO looking into every flare and jumping from offset
+      to offset.
+  - imageadd: PO's can now return their dropship home at any point from a Fly-By mission
+      by hitting Abort. This sets the time left to land to 10 seconds.
+  - imageadd: PO's and Queen can now see how much time left to fly.
+  - imageadd: Most of the round start PO equipment was removed (excluding ammo and
+      few attachments). Points were refunded.
+  - imageadd: Added signal flares to SL and PFC vendors. Those act as flares that
+      can emit light for less time than normal flare (around 5 times less). However
+      they provide constant signal (until they are snuffed out or melted) to the PO
+      and can be used instead of laser.
+  - imageadd: Signal Flare Packs can be bought from the Req.
+  - imageadd: Laser and Laser battery are made cheaper but they hit smaller AOE. Right
+      now they are PERFECT weapon for Strafing Runs but be sure to spread shots, as
+      different lasers hitting same spot is sub-optimal.
+  - imageadd: Installing a fuel enhancer will allow you to fly longer during Fly-By's.
+  - experiment: 'Fire Mission Mode:'
+  - imageadd: PO's can set up Fire Missions - basically strafing runs on the surface
+      of the planet.
+  - imageadd: Everyone in the radius of actual Strafing Run location are warned by
+      loud sonic boom. Sonic boom has BIG radius, YOU ARE WARNED. But run and hide
+      in any case.
+  - imageadd: Fire Missions should be created after all of the combat equipment has
+      been installed on the dropship, including ammunition.
+  - imageadd: In Fire Mission editor you can set up how mission itself plays out and
+      with what offsets from the center (called GIMBAL). Do note, that all gimbals
+      are relative to the direction of the strafing run, so if you do a strafing run
+      south, left will be on the screen's right and vice versa
+  - imageadd: While preparing for the Strafing Run you can peek thru the optical scope
+      and see the situation planetside, change direction of the run and offset on
+      that direction. You DO NOT NEED any additional attachments to do this.
+  - imageadd: You can continue peeking thru the optical scope and see how your Fire
+      Mission resolves in real time. That lets you trully feel the Xeno salt... or
+      in case of FF Strafing Run... oh boy.
+  - imageadd: If any error happens during Fire Mission setup, watch the chat for messages.
+  - imageadd: Every weapon has a delay in Fire Mission set up, so you can't fill every
+      fire segment. Again, watch the chat for hints if you use incorrect cooldowns.
+  - imageadd: GAU has a delay of 2. So you can do Fire-Wait-Fire.
+  - imageadd: Mini-rockets has a delay of 3. So you can do Fire-Wait-Wait-Fire.
+  - imageadd: Laser has a delay of 4. So you can do Fire-Wait-Wait-Wait-Fire.
+  - imageadd: Big rockets have no delay but they only have one rocket.
+  - imageadd: FATTY AND NAPALM ROCKETS CANNOT BE FIRED DURING CAS RUNS.
+  - imageadd: Fire Mission has to have ZERO errors for it to be run-able. If Fire
+      Mission stops abruptly, it's probably because it has error now (most likely
+      no ammo). You have to have enough ammo for ALL of the strafing run. If you see
+      numbers in yellow in the Fire Mission setup, that means you won't have enough
+      ammo for SECOND strafing run. If numbers are red - you don't have enough ammo
+      RIGHT NOW.
+  - imageadd: Better manual will be soon. So for now some rounds will have a PO Instructor
+      Character explaining it ICly.
+  - imageadd: Interface sucks, but oh well, it's NanoUI.
+  - imageadd: There could be some bugs with you being able to target caves, but note
+      that even tho you CAN target them and WILL fire at them, nothing will happen
+      and you will waste ammo.
+  ThePiachu:
+  - rscadd: PFCs have been given Kits. A Kit is a box that costs 45 kit points and
+      will have a variety of items fitting a particular playstyle. Kits will be more
+      cost effective than buying individual items from their vendor.
+  - rscadd: Current PFC Kits include mini-constructor, mini-engineer, mini-medic,
+      mini-pyro and mini-sniper. Those are not nearly as potent as proper Engineers,
+      Medics or Specs, but fulfill a similar role with more common items.
+  - rscadd: New role has been added - Synth Survivor. You can roll it independently
+      of a normal Survivor, but you do need to be Whitelisted in order to play this
+      role. If chosen, you start as a Gen 1 Synth on the planet surface. Normal Synthetic
+      Guidelines apply. If a Synth Survivor is spawned, xenos will be compensated
+      with extra smallhost spawn to balance things out.
+  - rscadd: Added a Working Joe gear presets for Admins to spawn as needed.
+  - tweak: 'Implemented #5371 - Gen 1 Synths will now change eye colour based on their
+      intent.'
+  - tweak: M41A armor piercing ammo crate now contains an entire box of AP ammo, but
+      is a bit more expensive.
+  - rscdel: Removed the flare pack from ASRS random drops.
+  Triiodine:
+  - imageadd: Added a new piece of lobby art.
+  - tweak: Updated lobby art turf description, better credits associated artists.
+  - bugfix: Fixed Lifesaver bag icon issues. It will appear on mobs now.
+2019-02-10:
+  Miraviel:
+  - rscadd: Almayer. Added spare medevac stretchers to Medbay (#5530).
+  - rscadd: Almayer. Added a guaranteed brown webbing to each shipside engineering
+      locker, more empty pill bottles to medicine closets, and cleaned up both (#5590).
+  - tweak: Almayer. Cleans up CIC Armory lockers, adds helmets and shotgun shell rigs
+      (#5729).
+  - maptweak: Almayer. Replaces medical research laboratories' indestructible north
+      and south walls with hull ones (#4251). Containment cells are unchanged.
+  - bugfix: Almayer. Removes space cameras (#5740).
+  ThePiachu:
+  - bugfix: Regurgitating people while in tunnel shouldn't cause a runtime error due
+      to your location being null.
+  - bugfix: ASRS shouldn't try giving you a null box causing the Requisition lift
+      to bork.
+  - bugfix: You can use tunnels even without a Queen being alive.
+  - bugfix: Running a fire mission without ammo shouldn't cause a runtime error.
+  Triiodine:
+  - imageadd: The M42C has been visually redrawn. Wield sprites added.
+  - imageadd: The M240 & M240T have been redrawn.
+  - imageadd: The M46C now has suit slot and back sprites.
+  - bugfix: The Type-71 and variants have had their left handed wield sprites fixed.
+2019-02-11:
+  Neth Iafin:
+  - tweak: Most of the tweaks are directed at signal flares that were found a bit
+      too much when used but at the same time rarely used.
+  - tweak: Signal Flares now take time (5 seconds) before they become fully active.
+      After that they can't be picked up. You can still push them with explosives,
+      but why.
+  - tweak: Signal Flare lifetime is now cut in half.
+  - tweak: You can't use Signal Flare that was activated on a different level.
+  - tweak: Dropship roofs are now metal, instead of nothing, making pilots unable
+      to see the target in another dropship.
+  - tweak: Prison Civ Quarters now has heavy metal roof. Pilots can't see there directly
+      either.
+  - tweak: Removed Signal Flares from PFCs and SLs. Added Pack of Signal Flares (5
+      flares in it) to SL vendor for 15 points.
+  - tweak: Added few packs of Signal Flares to 'ColMarTech automated armaments vendor'.
+      Bother your local RO to get some.
+  - tweak: Changed sprite of Signal Flare Pack, thanks to Triiodine. Now Sig-Flare
+      Pack is called H-89S.
+  - tweak: Removed 2 roundstart mini-rocket stacks that were added last week.
+  - bugfix: Fixed bug that forced view to reset on ladders, cameras and CAS.
+  - bugfix: Fixed lost gimbals on Dropships.
+  RavingManiac:
+  - rscadd: Acid spray will now reduce or extinguish fires, depending on fire intensity.
+  - rscadd: Explosions will clear smoke clouds.
+  - tweak: Reduced burst delay of some automatic pistols, as well as the M46C.
+  - tweak: Refactored attacks on simple animals. Such attacks now have the save audio/visual
+      effects as attacks on regular mobs.
+  - tweak: Quintupled line-of-sight embryo incubation bonus. As before, light is not
+      neccessary for it to work.
+  - tweak: Scary thing made scarier.
+  - tweak: Adjusted skillsets of human factions:<br>- The CLF have poor firearms training,
+      but make up for it with resourcefulness, plus diverse skillsets from their civilian
+      backgrounds.<br>- The Freelancers and the UPP have roughly the same training
+      as the USCM, but with additional construction/engineering skills.<br>- Private
+      Military Contractors have superior firearms training, as well as security and
+      construction/engineering skills.
+  ThePiachu:
+  - tweak: Select Equipment works on non-humanoids (including observers). If used
+      on a non-humanoid, it will turn them into a human first before applying a preset.
+  - bugfix: Cryo ERT marines should appear in the crew manifest.
+  - tweak: DEFCON's Cryo ERTs no longer announce a distress beacon, but spawn the
+      same otherwise.
+  - tweak: Faction information is embedded into users' ID. Antag vendors on the admin
+      level refer to that ID now. Future items might refer to that ID as well rather
+      than using mind's faction. Setting up mobs for an event should be easier with
+      this.
+  Triiodine:
+  - bugfix: Changed X Y attachment location on M240 Incinerator.
+2019-02-12:
+  Miraviel:
+  - rscadd: Prison Station. The grass is diggable now. Added a grass patch to Yard.
+  - rscadd: Prison Station. Added a cautery to the surgery room (#4752) and a few
+      more welding helmets around the map (#5601).
+  - tweak: Prison Station. The ceiling was changed to glass everywhere, meaning that
+      medevac/CAS/supply drops are available thorough the entire map.
+  - tweak: Prison Station. Xeno spawnpoints were tweaked to allow more options for
+      a starter hive (#1986). Survivor, monkey, and predator spawnpoints were changed
+      accordingly.
+  - rscdel: Prison Station. Medical and Panopticon do not connect anymore.
+  - rscdel: Prison Station. Medium Security and Protective Custody do not connect
+      anymore.
+  - rscdel: Prison Station. Yard blast doors were removed (#5475).
+  ThePiachu:
+  - tweak: Old Follow verb has been restored. New Follow functionality (for right-click
+      follow) is now under Follow Them. Since there is no way of creating a right-click
+      verb without also creating a corresponging verb in the sidebar, it's there too
+      now.
+2019-02-13:
+  MattAtlas:
+  - tweak: The engineering and construction pamphlets have been merged into one.
+  - tweak: The constructor kit no longer has plasteel that the constructors can't
+      use. Instead, it has ten more metal sheets.
+  - tweak: You can no longer use more than one pamphlet. Don't hog them all.
+  - rscadd: 'Added a new PFC kit: the JTAC kit. It contains two packs of signal flares
+      and a shiny pair of tactical binoculars. These ONLY spawn in Requisitions and
+      cannot be bought at vendors.'
+  - rscadd: Alongside the JTAC kits, a new frequency has been added, the JTAC frequency.
+      Command radio headsets and SL headsets spawn with this by default. Squad Leaders
+      also get the JTAC frequency, and the JTAC kits get its encryption key. Talk
+      on it with the :j prefix.
+  - tweak: Squad Marines can now select M39 holsters and buy gyroscopic stabilizers
+      from their vendor.
+  - experiment: The first patch of the Xeno Rebalance is here. This is an experimental
+      rebalance aimed at making younger tiers viable in combat, and making latter
+      tiers less overwhelmingly strong. Nothing here is final and may change.
+  - tweak: Tier 1 Xenos have had their power curve lowered a little. Young Tier 1s
+      are roughly equal to slightly better old Mature Tier 1s, with Ancients keeping
+      their old strength - however, most of it has been trickled down to lower upgrades.
+  - tweak: Tier 2 Xenos have had their power curve lowered. Elder is now the peak
+      strength, lower upgrades are about slightly better old Mature levels, and Ancient
+      only gives you mutator points and an extra chevron.
+  - tweak: Tier 3 Xenos have also had their power curve flattened. Young Tier 3s are
+      about midway from old Young to old Mature, while Matures retain full Mature
+      T3 strength. Elder Tier 3s and Ancient Tier 3s now receive very slight bonuses
+      to stats, and nothing major.
+  - tweak: The Queen keeps its old power curve and upgrade timer.
+  - tweak: Lurkers have been tweaked to do slightly less damage overall, with pounce
+      delay being a little higher.
+  - tweak: Upgrade and evolve timers for tier ones have been halved. The time to upgrade
+      to mature for tier twos has been halved.
+  - experiment: Tales tell of a new, dormant upgrade strain of Xenomorphs, surpassing
+      even the old Ancients in strength...
+2019-02-17:
+  Deanthelis:
+  - rscadd: A new autoresponse has been added.
+  - tweak: The devour as xeno autoresponse has been adjusted to be accurate.
+  - rscdel: Stools can no longer be used to stun things.
+  MattAtlas:
+  - bugfix: Chainwhip sprite fixed for real.
+  - bugfix: Scout specialists should now find a JTAC encryption key in their box.
+  - bugfix: Decapitated humans should no longer still have hair.
+  - tweak: Greatly increased fire tick damage on Xenomorphs.
+  - tweak: The M40 HEDP and M15 should now have a bigger, stronger blast radius.
+  - tweak: M12 blast grenades have been slightly buffed.
+  - tweak: Damage no longer randomly applies organ damage or internal bleeding. Instead,
+      there's now a required amount of brute damage on the targeted area.
+  - tweak: Ravager RNG delimb now requires some damage on the targeted limb before
+      activating.
+  - tweak: Xenomorph upgrade timers are now equal to what they were before.
+  - tweak: Metal barricade health has been increased.
+  - tweak: Harpoons, vox casters, the chain mesh, relay beacons, and ceremonial knives
+      no longer count as Yautja gear.
+  - tweak: Entrenching tools now dig up five dirt at once, at the cost of being slower.
+  - rscadd: The mortar crate now comes with two JTAC encryption keys.
+  - tweak: Predators should now have proper skills when they spawn.
+  - tweak: Predators should now spawn with hunting pouches.
+  - rscdel: Stat mutators and mutator flaws have been removed.
+  MattAtlas, Triiodine:
+  - imageadd: Grenades now have a new explosion animation, courtesy of Triiodine.
+  Miraviel:
+  - bugfix: Fixed acid-users able to fill resin holes filled with facehuggers (#5786).
+  - bugfix: Fixed humans able to unholster weapons while being handcuffed (#5703).
+  - bugfix: Fixed rejuvenate not restoring plasma for xenomorphs.
+  - bugfix: Fixed various ASRS typos (#5715).
+  - rscadd: Added MREs to marine vendors (#5755).
+  - tweak: Added the ability to deconstruct and acid window frames again (#2113).
+  - tweak: Added an extra 'You probably need to find its instructions on a paper scrap.'
+      sentence to failed folder reading attempts (#5692).
+  - tweak: Changed wooden barricades to be climbable and passable by thrown objects
+      (#5683).
+  - tweak: Changed DEFCON folders and disks to tiny objects.
+  - tweak: Reduced the size of helmets and underbarrel attachments to make them fit
+      into bags (#5682).
+  - tweak: Reduced the time to disarm claymores to 6 seconds (#5741).
+  - rscdel: Removed the 'Ring around the Rosie' lobby music (#5727).
+  Neth Iafin:
+  - tweak: Both GAU ammunitions now deal +50% damage and have tighter spread.
+  - tweak: GAU can now hit same tile multiple times during fire
+  - bugfix: Signal Flares now actually expire
+  - bugfix: CAS camera works again, HUZZAH!
+  ThePiachu:
+  - tweak: G1 Synthetics have been retired from the Almayer. Old G1 players can still
+      spawn with them for now.
+  - tweak: Synths can now repair their own damage with the appropriate tools. They
+      have to do it slowly and carefully not to void their warranty.
+  - tweak: Synth survivors now start with a melee weapon by default to defend themselves
+      with.
+  - tweak: Working Joe suit has been added to Synth Vendor.
+  - tweak: Health Analyzers work on Synths now.
+  - tweak: Synths should have the default large font on comms now.
+2019-02-19:
+  Awan:
+  - tweak: Removed all ASRS explosive crates.
+  - tweak: Made ASRS not spawn crates the first few minutes.
+  Cakey:
+  - rscdel: Savefiles with unselectable hair styles have been scrubbed.
+  MattAtlas:
+  - tweak: Fire tick damage has been slightly reduced.
+  - bugfix: Predators should now actually have the Butcher and Claim Equipment verbs
+      again.
+2019-02-23:
+  MattAtlas:
+  - tweak: The M41A deals less damage.
+  - tweak: The M39 deals less damage. M39 AP now deals less damage than normal M39
+      rounds, however it gets more AP.
+  - tweak: Metal barricade HP has been lowered.
+  - tweak: Required damage for ravager delimb reduced.
+  - tweak: Increased chance of ravager RNG delimb.
+  - tweak: Reduced required damage for internal bleeding and organ damage as the threshold
+      was way too high before. You still won't get instant internal bleeding from
+      a few slashes however.
+  - tweak: Slightly increased Elder benefits for T3s.
+  - tweak: M40 HEDP grenade radius has been reduced. Explosion falloff has been reduced
+      as well to compensate.
+  - experimental: Xenomorph upgrade ratios have been halved once again to compensate
+      for the mutator removal.
+  Miraviel and Cakey:
+  - maptweak: Lower medical has been remapped. Ping me (Miraviel) on Discord if you
+      have any feedback!
+  - maptweak: The brig has been moved to the lower deck, positioned inbetween medical
+      and briefing. The lower deck has been stretched slightly to accomodate.
+  - maptweak: Added a gym to the Almayer.
+  - maptweak: Added a conference room to the fore of the CIC.
+  - maptweak: The officer's mess has been made bigger.
+  - maptweak: Added ladders connecting Astronavigation to the CIC.
+  Slywater:
+  - maptweak: Reworked SD in preparation for making it a distress option. Also tweaked
+      it to give xenos the edge.
+  - maptweak: Added more pods to lower deck (adjacent to prep).
+2019-02-24:
+  MattAtlas:
+  - tweak: The Mini-Engineer kit now gets welding goggles and tools pouch with a welding
+      tool instead of a multitool.
+  - rscdel: The sentry safety option has been removed.
+  - tweak: Smartgun damage has been buffed.
+  - rscadd: Requisitions can now order anti-tank sniper rifle magazines for the XM42B.
+  - tweak: The XM42B should no longer miss.
+  - rscadd: Primordial Predaliens have been added. You'll know when one is spawned...
+  ThePiachu:
+  - bugfix: ASRS shouldn't be giving out infinite amount of crates anymore.
+  - tweak: Ammo boxes have been re-added to Requisition vendors.
+  monkeysfist101:
+  - imageadd: Changed drink machines to Souto branding.
+2019-02-25:
+  Cakey:
+  - rscadd: Added tactical nuke option when reaching DEFCON 1. The tactical nuke can
+      be deployed on the colony to wipe out any living thing from the mortal realm.
+      With a set timer of 5 minutes (pending change), the xenomorphs will be alerted
+      of its activation, and will be shown a pinpointer to its position. The Xenomorph
+      Queen can diffuse the bomb by clicking on it, and this takes 15 seconds.
+  - rscadd: Tank crewmen have been re-enabled as roundstart crew. The tank vendor
+      has been replaced with a tank part fabricator, which starts at 0 points. DEFCON
+      rewards can grant the tank part fabricator points to build additional parts,
+      and the tank only has access to the minigun turret and grenade launcher without
+      this.
+  - tweak: Tank crewmen now have engineering skills to repair their own tank, as well
+      as better leadership skills.
+  - tweak: DEFCON thresholds have been lowered overall.
+  - rscadd: Added the Intelligence Officer role, for gathering DEFCON intel and point
+      scores throughout the round.
+  - rscadd: Added the data detector, a devide that is given to Intelligence Officers
+      to detect objective items, such as intel, xeno corpses, devices, and disks.
+  - tweak: DEFCON objective values have been tweaked. You now actually recieve points
+      for recovering xenomorph corpses.
+  - tweak: You no longer need the corresponding paper scrap to be able to interact
+      with folders.
+  - tweak: Folders will now display their code in their names.
+  - rscadd: Added the Fulton recovery device, a 5-use item that allows you to send
+      crates, unrevivable marines, dead xenomorphs, and other animals into orbit to
+      be collected by the dropships. They are available from the marine vendors for
+      30 points, as well as given to Intelligence officers for free.
+  - rscadd: Added the Fulton recovery system, a new dropship hardpoint that can be
+      used during transit (without requiring flyby). In order to use it, install the
+      system and select it using the cockpit while in transit. Balloons set up by
+      ground-side troops will only last 3 minutes, so pick your targets carefully!
+  MattAtlas:
+  - bugfix: Queens may no longer set themselves as leaders.
+  Miraviel:
+  - tweak: Almayer. Medical. Moved the sleeper to the bottom right corner, added another
+      body scanner in its former place. Cryotubes were changed to eject patients whichever
+      direction they face (west on the Almayer). Removed a cryotube for the sake of
+      visuals. Might re-add it later if we really need it.
+  - bugfix: Almayer. Medical. Fixed the medical-to-hangar airlock access issues, added
+      a missing dropper to the chemistry. Added an access requirement to the CMO's
+      personal cabinet and shutters to his office. Moved a wall sign from below a
+      light tube.
+  - tweak: Almayer. Brig. Isolation cell windows were made super strong. Removed an
+      extra potted plant and an APC from processing. Added lights to the security
+      office, shutters to the armory. Added access requirements to the shutters and
+      the wall-mounted flashes. Moved the fire alarm in the main room.
+  - bugfix: Almayer. Brig. Fixed the entry and the two pairs of exit shutters not
+      reacting to their buttons.
+  - bugfix: Almayer. Fixed the lack of lights in the conference room.
+2019-02-26:
+  Cakey:
+  - bugfix: Fixes paper scrap reading.
+  - bugfix: Fixes fulton stacks.
+  - tweak: Tweaked space lighting.
+  - tweak: Tweaked marine headset channels.
+  - tweak: Gave the RO more command access.
+  - tweak: Added TCs, SOs, POs, XOs, and COs to the squad HUDs.
+  MattAtlas:
+  - tweak: Slightly lowered smartgun damage to saner levels.
+  - tweak: Mateba accuracy has been buffed.
+  - tweak: Humans with helmets should no longer be able to be decapitated. Synths
+      are unaffected by this.
+  Miraviel:
+  - tweak: LV. Added more larva spawnpoints. Some pre-spawned resin structures were
+      changed.
+  - bugfix: LV. Reinforced window frames were swapped to normal ones where the wall
+      is not reinforced, so acid-users can melt in. Deleted some awkward fog parts
+      (#4092). Fixed a floating APC (#4091).
+2019-02-27:
+  MattAtlas:
+  - bugfix: Xenomorphs should no longer lose stats upon upgrading to elder/ancient.
+      Oops.
+  - rscadd: Added the extended barrel, suppressor and recoil compensator to the PFC
+      vendor.
+  - tweak: Removed the increased wield delay from the vertical grip. You just move
+      a bit slower now.
+  - tweak: The Chief Engineer now has squad comms and MedSci comms once again.
+  - tweak: The CMP now has MedSci and Engineering comms again.

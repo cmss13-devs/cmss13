@@ -1,14 +1,12 @@
-/mob/living/carbon/human/examine(mob/user)
+/mob/living/carbon/human/get_examine_text(mob/user)
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
-		to_chat(user, desc)
-		return
+		return list(desc)
 
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
-		to_chat(user, SPAN_NOTICE("Something is there but you can't see it."))
-		return
+		return list(SPAN_NOTICE("Something is there but you can't see it."))
 
 	if(isXeno(user))
-		var/msg = "<span class='info'>*---------*\nThis is "
+		var/msg = "<span class='info'>This is "
 
 		if(icon)
 			msg += "[icon2html(icon, user)] "
@@ -26,12 +24,13 @@
 		if(on_fire)
 			msg += "It is on fire!\n"
 		if(stat == DEAD)
-			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n"
+			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n</span>"
 		else if(stat || !client)
 			msg += "<span class='xenowarning'>It doesn't seem responsive.\n</span>"
-		msg += "*---------*</span>"
-		to_chat(user, msg)
-		return
+		msg += "</span>"
+		return list(msg)
+
+	. = list()
 
 	var/skipgloves = 0
 	var/skipsuitstorage = 0
@@ -70,7 +69,7 @@
 	if(I)
 		id_paygrade = I.paygrade
 	var/rank_display = get_paygrades(id_paygrade, FALSE, gender)
-	var/msg = "<span class='info'>*---------*\nThis is "
+	var/msg = "<span class='info'>\nThis is "
 
 	if(skipjumpsuit && skipface) //big suits/masks/helmets make it hard to tell their gender
 		t_He = "They"
@@ -97,65 +96,65 @@
 
 	//uniform
 	if(w_uniform && !skipjumpsuit)
-		msg += "[t_He] [t_is] wearing [w_uniform.get_examine_line()].\n"
+		msg += "[t_He] [t_is] [w_uniform.get_examine_location(src, user, WEAR_BODY, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//head
 	if(head)
-		msg += "[t_He] [t_is] wearing [head.get_examine_line()] on [t_his] head.\n"
+		msg += "[t_He] [t_is] wearing [head.get_examine_line(user)] [head.get_examine_location(src, user, WEAR_HEAD, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//suit/armour
 	if(wear_suit)
-		msg += "[t_He] [t_is] wearing [wear_suit.get_examine_line()].\n"
+		msg += "[t_He] [t_is] [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him, t_has, t_is)].\n"
 	//suit/armour storage
 	if(s_store && !skipsuitstorage)
-		msg += "[t_He] [t_is] carrying [s_store.get_examine_line()] [wear_suit ? "on [t_his] [wear_suit.name]" : "around [t_his] back"].\n"
+		msg += "[t_He] [t_is] carrying [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//back
 	if(back)
-		msg += "[t_He] [t_has] [back.get_examine_line()] on [t_his] back.\n"
+		msg += "[t_He] [t_has] [back.get_examine_line(user)] [back.get_examine_location(src, user, WEAR_BACK, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//left hand
 	if(l_hand)
-		msg += "[t_He] [t_is] holding [l_hand.get_examine_line()] in [t_his] left hand.\n"
+		msg += "[t_He] [t_is] holding [l_hand.get_examine_line(user)] [l_hand.get_examine_location(src, user, WEAR_L_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//right hand
 	if(r_hand)
-		msg += "[t_He] [t_is] holding [r_hand.get_examine_line()] in [t_his] right hand.\n"
+		msg += "[t_He] [t_is] holding [r_hand.get_examine_line(user)] [r_hand.get_examine_location(src, user, WEAR_R_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//gloves
 	if(gloves && !skipgloves)
-		msg += "[t_He] [t_has] [gloves.get_examine_line()] on [t_his] hands.\n"
+		msg += "[t_He] [t_has] [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_him, t_has, t_is)].\n"
 	else if(hands_blood_color)
 		msg += SPAN_WARNING("[t_He] [t_has] [(hands_blood_color != "#030303") ? "blood" : "oil"]-stained hands!\n")
 
 	//belt
 	if(belt)
-		msg += "[t_He] [t_has] [belt.get_examine_line()] about [t_his] waist.\n"
+		msg += "[t_He] [t_has] [belt.get_examine_line(user)] [belt.get_examine_location(src, user, WEAR_WAIST, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//shoes
 	if(shoes && !skipshoes)
-		msg += "[t_He] [t_is] wearing [shoes.get_examine_line()] on [t_his] feet.\n"
+		msg += "[t_He] [t_is] wearing [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_him, t_has, t_is)].\n"
 	else if(feet_blood_color)
 		msg += SPAN_WARNING("[t_He] [t_has] [(feet_blood_color != "#030303") ? "blood" : "oil"]-stained feet!\n")
 
 	//mask
 	if(wear_mask && !skipmask)
-		msg += "[t_He] [t_has] [wear_mask.get_examine_line()] on [t_his] face.\n"
+		msg += "[t_He] [t_has] [wear_mask.get_examine_line(user)] [wear_mask.get_examine_location(src, user, WEAR_FACE, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//eyes
 	if(glasses && !skipeyes)
-		msg += "[t_He] [t_has] [glasses.get_examine_line()] covering [t_his] eyes.\n"
+		msg += "[t_He] [t_has] [glasses.get_examine_line(user)] [glasses.get_examine_location(src, user, WEAR_EYES, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//ears
 	if(!skipears)
 		if(wear_l_ear)
-			msg += "[t_He] [t_has] [wear_l_ear.get_examine_line()] on [t_his] left ear.\n"
+			msg += "[t_He] [t_has] [wear_l_ear.get_examine_line(user)] [wear_l_ear.get_examine_location(src, user, WEAR_L_EAR, t_He, t_his, t_him, t_has, t_is)].\n"
 		if(wear_r_ear)
-			msg += "[t_He] [t_has] [wear_r_ear.get_examine_line()] on [t_his] right ear.\n"
+			msg += "[t_He] [t_has] [wear_r_ear.get_examine_line(user)] [wear_r_ear.get_examine_location(src, user, WEAR_R_EAR, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//ID
 	if(wear_id)
-		msg += "[t_He] [t_is] wearing [wear_id.get_examine_line()].\n"
+		msg += "[t_He] [t_is] [wear_id.get_examine_location(src, user, WEAR_ID, t_He, t_his, t_him, t_has, t_is)].\n"
 
 	//Admin-slept
 	if(sleeping > 8000000)
@@ -232,27 +231,27 @@
 				is_destroyed["[temp.display_name]"] = 1
 				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("<b>[t_He] is missing [t_his] [temp.display_name].</b>\n")
 				continue
-			if(temp.status & LIMB_ROBOT)
+			if(temp.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 				if(!(temp.brute_dam + temp.burn_dam))
-					if(!(species && species.flags & IS_SYNTHETIC))
+					if(!(temp.status & LIMB_SYNTHSKIN) && !(species && species.flags & IS_SYNTHETIC))
 						wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] robot [temp.display_name]!\n")
 						continue
 				else
-					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] robot [temp.display_name]. It has")
+					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] [temp.status & LIMB_SYNTHSKIN ? "synthskin" : "robot"] [temp.display_name]. It has")
 				if(temp.brute_dam) switch(temp.brute_dam)
 					if(0 to 20)
-						wound_flavor_text["[temp.display_name]"] += " some dents"
+						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some [temp.status & LIMB_SYNTHSKIN ? "surface damage" : "dents"]")
 					if(21 to INFINITY)
-						wound_flavor_text["[temp.display_name]"] += pick(" a lot of dents"," severe denting")
+						wound_flavor_text["[temp.display_name]"] += temp.status & LIMB_SYNTHSKIN ? SPAN_WARNING(pick(" a lot of surface damage", " severe surface damage")) : SPAN_WARNING(pick(" a lot of dents"," severe denting"))
 				if(temp.brute_dam && temp.burn_dam)
-					wound_flavor_text["[temp.display_name]"] += " and"
+					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" and")
 				if(temp.burn_dam) switch(temp.burn_dam)
 					if(0 to 20)
-						wound_flavor_text["[temp.display_name]"] += " some burns"
+						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some burns")
 					if(21 to INFINITY)
-						wound_flavor_text["[temp.display_name]"] += pick(" a lot of burns"," severe melting")
+						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(pick(" a lot of burns"," severe melting"))
 				if(wound_flavor_text["[temp.display_name]"])
-					wound_flavor_text["[temp.display_name]"] += "!\n"
+					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING("!\n")
 			else if(temp.wounds.len > 0)
 				var/list/wound_descriptors = list()
 				for(var/datum/wound/W as anything in temp.wounds)
@@ -462,7 +461,7 @@
 		// scan reports
 		var/datum/data/record/N = null
 		var/me_ref = WEAKREF(src)
-		for(var/datum/data/record/R in GLOB.data_core.medical)
+		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 			if (R.fields["ref"] == me_ref)
 				N = R
 				break
@@ -483,36 +482,36 @@
 	if(print_flavor_text())
 		msg += "[print_flavor_text()]\n"
 
-	msg += "*---------*</span>"
+	msg += "</span>"
 
 	if (pose)
 		if( findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0 )
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		msg += "\n[t_He] is [pose]"
 
-	to_chat(user, msg)
+	. += msg
 
 
 	if(isYautja(user))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
-			to_chat(user, SPAN_BLUE("Their bracers identifies them as <b>[real_name]</b>."))
-		to_chat(user, SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey."))
+			. += SPAN_BLUE("Their bracers identifies them as <b>[real_name]</b>.")
+		. += SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey.")
 		if(src.hunter_data.hunted)
-			to_chat(user, SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name]."))
+			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")
 
 		if(src.hunter_data.dishonored)
-			to_chat(user, SPAN_RED("[src] was marked as dishonorable for '[src.hunter_data.dishonored_reason]'."))
+			. += SPAN_RED("[src] was marked as dishonorable for '[src.hunter_data.dishonored_reason]'.")
 		else if(src.hunter_data.honored)
-			to_chat(user, SPAN_GREEN("[src] was honored for '[src.hunter_data.honored_reason]'."))
+			. += SPAN_GREEN("[src] was honored for '[src.hunter_data.honored_reason]'.")
 
 		if(src.hunter_data.thralled)
-			to_chat(user, SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'."))
+			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
-			to_chat(user, SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set]."))
+			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
 
 
-//Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
+//Helper procedure. Called by /mob/living/carbon/human/get_examine_text() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/M, hudtype)
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M

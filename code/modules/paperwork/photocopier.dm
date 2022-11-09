@@ -212,6 +212,7 @@
 	copy.ico = original.ico
 	copy.offset_x = original.offset_x
 	copy.offset_y = original.offset_y
+	copy.update_icon()
 
 	//Iterates through stamps and puts a matching gray overlay onto the copy
 	var/image/img                                //

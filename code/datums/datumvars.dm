@@ -413,7 +413,7 @@ body
 		href_list["datumrefresh"] = href_list["mob_player_panel"]
 
 	else if(href_list["give_disease"])
-		if(!check_rights(R_ADMIN|R_FUN))
+		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["give_disease"])
@@ -425,7 +425,7 @@ body
 		href_list["datumrefresh"] = href_list["give_disease"]
 
 	else if(href_list["build_mode"])
-		if(!check_rights(R_ADMIN|R_FUN))
+		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["build_mode"])
@@ -531,7 +531,7 @@ body
 		A.enable_pixel_scaling()
 
 	else if(href_list["explode"])
-		if(!check_rights(R_DEBUG|R_FUN))
+		if(!check_rights(R_DEBUG))
 			return
 
 		var/atom/A = locate(href_list["explode"])
@@ -544,7 +544,7 @@ body
 		href_list["datumrefresh"] = href_list["explode"]
 
 	else if(href_list["emp"])
-		if(!check_rights(R_DEBUG|R_FUN))
+		if(!check_rights(R_DEBUG))
 			return
 
 		var/atom/A = locate(href_list["emp"])
@@ -609,7 +609,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("monkeyone"=href_list["makemonkey"]))
+		admin_holder.Topic(href, list("monkeyone"=href_list["makemonkey"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["makerobot"])
 		if(!check_rights(R_SPAWN))
@@ -624,7 +624,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("makerobot"=href_list["makerobot"]))
+		admin_holder.Topic(href, list("makerobot"=href_list["makerobot"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN))
@@ -639,7 +639,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("makealien"=href_list["makealien"]))
+		admin_holder.Topic(href, list("makealien"=href_list["makealien"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["changehivenumber"])
 		if(!check_rights(R_DEBUG|R_ADMIN))
@@ -650,7 +650,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 			return
 
-		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"]))
+		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["makeai"])
 		if(!check_rights(R_SPAWN))
@@ -665,7 +665,7 @@ body
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
-		admin_holder.Topic(href, list("makeai"=href_list["makeai"]))
+		admin_holder.Topic(href, list("makeai"=href_list["makeai"], "admin_token" = RawHrefToken()))
 
 	else if(href_list["selectequipment"])
 		if(!check_rights(R_SPAWN))
@@ -712,7 +712,7 @@ body
 		if(!H.skills)
 			H.skills = new /datum/skills/pfc(H)
 
-		var/selected_skill = tgui_input_list(usr, "Please choose a skill to edit.","Skills", list("cqc","endurance","engineer", "construction","firearms", "pistols", "rifles", "smgs", "shotguns", "heavy_weapons","smartgun","spec_weapons","leadership","medical","surgery","research","melee_weapons","pilot","police","powerloader"))
+		var/selected_skill = tgui_input_list(usr, "Please choose a skill to edit.","Skills", GLOB.all_skills)
 		if(!selected_skill)
 			return
 
@@ -720,7 +720,8 @@ body
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		var/new_skill_level = input("Select a new level for the [selected_skill] skill ","New Skill Level") as null|num
+		var/new_skill_level = tgui_input_number(usr, "Select a new level for the [selected_skill] skill ","New Skill Level")
+
 		if(isnull(new_skill_level))
 			return
 
@@ -991,7 +992,7 @@ body
 		M.regenerate_icons()
 
 	else if(href_list["adjustDamage"] && href_list["mobToDamage"])
-		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN))
+		if(!check_rights(R_DEBUG|R_ADMIN))
 			return
 
 		var/mob/living/L = locate(href_list["mobToDamage"])
@@ -1000,7 +1001,7 @@ body
 
 		var/Text = href_list["adjustDamage"]
 
-		var/amount =  input("Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0) as num
+		var/amount = tgui_input_real_number(usr, "Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0)
 
 		if(!L)
 			to_chat(usr, "Mob doesn't exist anymore")
@@ -1058,7 +1059,7 @@ body
 		message_staff("TRAIT: [key_name(usr)] removed trait '[trait_old]' from [key_name(C)]")
 
 	else if(href_list["setmatrix"])
-		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN|R_VAREDIT))
+		if(!check_rights(R_DEBUG|R_ADMIN|R_VAREDIT))
 			return
 
 		var/atom/A = locate(href_list["setmatrix"])

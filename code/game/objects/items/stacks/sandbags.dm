@@ -6,7 +6,7 @@
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "sandbag_stack"
 	item_state = "sandbag_stack"
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	force = 2
 	throwforce = 0
 	throw_speed = SPEED_VERY_FAST
@@ -19,7 +19,7 @@
 	if (istype(W, /obj/item/tool/shovel))
 		var/obj/item/tool/shovel/ET = W
 		if(ET.dirt_amt)
-			ET.dirt_amt -= 1
+			ET.dirt_amt--
 			ET.update_icon()
 			var/obj/item/stack/sandbags/new_bags = new(user.loc)
 			new_bags.add_to_stacks(user)
@@ -42,12 +42,15 @@
 
 
 //half a max stack
+/obj/item/stack/sandbags_empty/small_stack
+	amount = STACK_10
+
 /obj/item/stack/sandbags_empty/half
 	amount = 25
 
 //full stack
 /obj/item/stack/sandbags_empty/full
-	amount = 50
+	amount = STACK_50
 
 //Full sandbags
 /obj/item/stack/sandbags
@@ -60,7 +63,7 @@
 	w_class = SIZE_LARGE
 	force = 9.0
 	throwforce = 15.0
-	throw_speed = 0
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 25
 	attack_verb = list("hit", "bludgeoned", "whacked")
@@ -68,6 +71,9 @@
 
 /obj/item/stack/sandbags/large_stack
 	amount = 25
+
+/obj/item/stack/sandbags/small_stack
+	amount = 5
 
 /obj/item/stack/sandbags/attack_self(mob/living/user)
 	..()

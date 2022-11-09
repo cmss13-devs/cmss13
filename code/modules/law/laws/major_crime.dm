@@ -30,7 +30,7 @@
 
 /datum/law/major_law/interference
 	name = "Interference"
-	desc = "Interfering in an legal arrest being performed with ill intent. Clearly trying to hinder the arrest being performed."
+	desc = "Interfering in a legal arrest being performed with ill intent. Clearly trying to hinder the arrest being performed."
 	brig_time = 15
 
 /datum/law/major_law/neglect_of_duty
@@ -40,7 +40,7 @@
 
 /datum/law/major_law/subterfuge
 	name = "Subterfuge"
-	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the invidivual is working against USCM."
+	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the individual is working against USCM."
 	special_punishment = "Termination of ID/Discharge to planet"
 	brig_time = 15
 
@@ -62,7 +62,7 @@
 
 /datum/law/major_law/prevarication
 	name = "Prevarication"
-	desc = "To intentionally order the arrest of a marine who is then found to be innocent, or to apply an improper or abusive NJP."
+	desc = "To intentionally order the arrest of a person on false charges who is then found to be innocent, or to apply an improper or abusive NJP. This includes intentionally arresting a person on false charges, on one's own initiative without orders."
 	brig_time = 20
 
 /datum/law/major_law/sexual_harrasment
@@ -74,3 +74,8 @@
 	name = "Animal Cruelty"
 	desc = "Injuring or killing any domestic animal or wild life with malicious intent. Research monkeys used for chemical research, scientific purposes or hostile wildlife are exempt."
 	brig_time = 30
+
+/datum/law/major_law/misuse_of_authority
+	name = "Misuse of Authority"
+	desc = "The exercising of power to a malicious extent by Military Police or deputized personnel acting as an MP; examples include beating a downed prisoner, excessive use of harmful or non-lethal force, or other abusive actions that led to the harm of a person in custody. Detained suspects should not have more force used on them than necessary in order to pacify them. Force may be used against retaliating or escaping parties only to the point where they are sufficiently pacified."
+	brig_time = 20

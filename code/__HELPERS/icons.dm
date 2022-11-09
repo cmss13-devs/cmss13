@@ -600,12 +600,17 @@ proc/sort_atoms_by_layer(var/list/atoms)
 		A.overlays.Remove(src)
 
 /mob/proc/flick_heal_overlay(time, color = "#00FF00") //used for warden and queen healing
-    var/image/I = new('icons/mob/mob.dmi', src, "heal_overlay")
-    I.layer = FLY_LAYER
-    I.appearance_flags = RESET_COLOR
+	var/image/I = image('icons/mob/mob.dmi', src, "heal_overlay")
+	switch(icon_size)
+		if(48)
+			I.pixel_x = 8
+		if(64)
+			I.pixel_x = 16
+	I.layer = FLY_LAYER
+	I.appearance_flags = RESET_COLOR
 
-    I.color = color
-    I.flick_overlay(src, time)
+	I.color = color
+	I.flick_overlay(src, time)
 
 /proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE)
 	if (!thing)

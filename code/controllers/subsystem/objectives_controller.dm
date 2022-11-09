@@ -1,69 +1,159 @@
+#define CORPSES_TO_SPAWN 25
+
 SUBSYSTEM_DEF(objectives)
-	name = "objectives"
+	name = "Objectives"
 	init_order = SS_INIT_OBJECTIVES
-	flags = SS_NO_FIRE
+	wait = 5.5 SECONDS
 	var/list/objectives = list()
-	var/list/active_objectives = list()
-	var/list/inactive_objectives = list()
-	var/list/non_processing_objectives = list()
-	var/datum/cm_objective/establish_power/power
-	var/datum/cm_objective/recover_corpses/marines/marines
-	var/datum/cm_objective/recover_corpses/xenos/xenos
-	var/datum/cm_objective/contain/contain
-	var/datum/cm_objective/analyze_chems/chems
-	var/bonus_admin_points = 0 //bonus points given by admins, doesn't increase the point cap, but does increase points for easier rewards
+	var/list/processing_objectives = list()
+	var/datum/cm_objective/communications/comms
+	var/datum/cm_objective/power/establish_power/power
+	var/datum/cm_objective/recover_corpses/corpsewar
+	// var/datum/cm_objective/contain/contain
+	var/next_sitrep = SITREP_INTERVAL
+	var/first_drop_complete = FALSE // Some objectives don't process until first drop.
 
-	var/nextDChatAnnouncement = 5 MINUTES //5 minutes in
+	var/statistics = list()
 
-	var/corpses = 15
+
+	// Keep track of the list of objectives to process, in case we need to defer to the next tick.
+	var/list/datum/cm_objective/current_active_run = list()
 
 /datum/controller/subsystem/objectives/Initialize(start_timeofday)
 	. = ..()
-	generate_objectives()
-	clear_objective_landmarks()
-	connect_objectives()
-	// Setup some global objectives
-	power = new /datum/cm_objective/establish_power
-	marines = new /datum/cm_objective/recover_corpses/marines
-	xenos = new /datum/cm_objective/recover_corpses/xenos
-	contain = new /datum/cm_objective/contain
-	chems = new /datum/cm_objective/analyze_chems
-	//objectives_controller.add_objective(new /datum/cm_objective/minimise_losses/squad_marines)
-	add_objective(new /datum/cm_objective/recover_corpses/colonists)
-	active_objectives += power
 
-	generate_corpses(corpses)
+	statistics["documents_completed"] = 0
+	statistics["documents_total_instances"] = 0
+	statistics["documents_total_points_earned"] = 0
+
+	statistics["chemicals_completed"] = 0
+	statistics["chemicals_total_instances"] = 0
+	statistics["chemicals_total_points_earned"] = 0
+
+	statistics["data_retrieval_completed"] = 0
+	statistics["data_retrieval_total_instances"] = 0
+	statistics["data_retrieval_total_points_earned"] = 0
+
+	statistics["item_retrieval_completed"] = 0
+	statistics["item_retrieval_total_instances"] = 0
+	statistics["item_retrieval_total_points_earned"] = 0
+
+	statistics["miscellaneous_completed"] = 0
+	statistics["miscellaneous_total_instances"] = 0
+	statistics["miscellaneous_total_points_earned"] = 0
+
+	statistics["corpses_recovered"] = 0
+	statistics["corpses_total_points_earned"] = 0
+
+	power = new
+	comms = new
+	corpsewar = new
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/pre_round_start)
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/post_round_start)
+	RegisterSignal(SSdcs, COMSIG_GLOB_DS_FIRST_LANDED, .proc/on_marine_landing)
+
+/datum/controller/subsystem/objectives/fire(resumed = FALSE)
+	if(!resumed)
+		current_active_run = processing_objectives.Copy()
+
+		if(world.time > next_sitrep && SSobjectives.first_drop_complete)
+			announce_stats()
+			if(MC_TICK_CHECK)
+				return
+
+	while(length(current_active_run))
+		var/datum/cm_objective/O = current_active_run[length(current_active_run)]
+
+		current_active_run.len--
+		O.process()
+		O.check_completion()
+		if(O.state == OBJECTIVE_COMPLETE)
+			stop_processing_objective(O)
+
+		if(MC_TICK_CHECK)
+			return
+
+// Called when marines first drop
+/datum/controller/subsystem/objectives/proc/on_marine_landing()
+	SIGNAL_HANDLER
+	first_drop_complete = TRUE
+	UnregisterSignal(SSdcs, COMSIG_GLOB_DS_FIRST_LANDED)
+
+/datum/controller/subsystem/objectives/proc/announce_stats()
+	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
+
+	var/message = "TECH REPORT: [round(tree.points, 0.1)] points available"
+	var/earned = round(tree.total_points - tree.total_points_last_sitrep, 0.1)
+	if (earned)
+		message += " (+[earned])"
+	message += "."
+
+	ai_silent_announcement(message, ":v", TRUE)
+	ai_silent_announcement(message, ":t", TRUE)
+	tree.total_points_last_sitrep = tree.total_points
+
+	next_sitrep = world.time + SITREP_INTERVAL
+
+/// Allows to perform objective initialization later on in case of map changes
+/datum/controller/subsystem/objectives/proc/initialize_objectives()
+	SHOULD_NOT_SLEEP(TRUE)
+	generate_objectives()
+	connect_objectives()
+	corpsewar.generate_corpses(CORPSES_TO_SPAWN)
 
 /datum/controller/subsystem/objectives/proc/generate_objectives()
-	if(objective_spawn_close.len == 0 || objective_spawn_medium.len == 0 || objective_spawn_far.len == 0 || objective_spawn_science.len == 0)
+	if(!length(GLOB.objective_landmarks_close) || !length(GLOB.objective_landmarks_medium) \
+	|| !length(GLOB.objective_landmarks_far)   || !length(GLOB.objective_landmarks_science))
 		//The map doesn't have the correct landmarks, so we generate nothing, hoping the map has normal objectives
 		return
 
-	//roughly the numbers LV has:
 	var/paper_scraps = 40
 	var/progress_reports = 15
 	var/folders = 30
 	var/technical_manuals = 10
 	var/disks = 30
 	var/experimental_devices = 15
-
 	var/research_papers = 15
 	var/vial_boxes = 20
 
 	//A stub of tweaking item spawns based on map
-	if(SSmapping.configs[GROUND_MAP].map_name == MAP_CORSAT)
-		vial_boxes = 30
-		research_papers = 30
-		experimental_devices = 20
+	switch(SSmapping.configs[GROUND_MAP])
+		if(MAP_LV_624)
+			paper_scraps = 35
+			progress_reports = 12
+			folders = 25
+			disks = 25
+		if(MAP_CORSAT)
+			vial_boxes = 30
+			research_papers = 30
+			experimental_devices = 20
 
 	//Calculating document ratios so we don't end up with filing cabinets holding 10 documents because there are few filing cabinets
-	var/relative_document_ratio_close = objective_spawn_close_documents.len / objective_spawn_close.len
-	var/relative_document_ratio_medium = objective_spawn_medium_documents.len / objective_spawn_medium.len
-	var/relative_document_ratio_far = objective_spawn_far_documents.len / objective_spawn_far.len
-	var/relative_document_ratio_science = objective_spawn_science_documents.len / objective_spawn_science.len
+	// TODO: use less dumb structuring than legacy one
+	var/relative_document_ratio_close = 0
+	for(var/key in GLOB.objective_landmarks_close)
+		if(GLOB.objective_landmarks_close[key])
+			relative_document_ratio_close++
+	relative_document_ratio_close /= length(GLOB.objective_landmarks_close)
+
+	var/relative_document_ratio_medium = 0
+	for(var/key in GLOB.objective_landmarks_medium)
+		if(GLOB.objective_landmarks_medium[key])
+			relative_document_ratio_medium++
+	relative_document_ratio_medium /= length(GLOB.objective_landmarks_medium)
+
+	var/relative_document_ratio_far = 0
+	for(var/key in GLOB.objective_landmarks_far)
+		if(GLOB.objective_landmarks_far[key])
+			relative_document_ratio_far++
+	relative_document_ratio_far /= length(GLOB.objective_landmarks_far)
+
+	var/relative_document_ratio_science = 0
+	for(var/key in GLOB.objective_landmarks_science)
+		if(GLOB.objective_landmarks_science[key])
+			relative_document_ratio_science++
+	relative_document_ratio_science /= length(GLOB.objective_landmarks_science)
 
 	//Intel
 	for(var/i=0;i<paper_scraps;i++)
@@ -99,68 +189,62 @@ SUBSYSTEM_DEF(objectives)
 		var/dest = pick(15;"close", 30;"medium", 5;"far", 50;"science")
 		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)
 
-/datum/controller/subsystem/objectives/proc/generate_corpses(corpses)
-	var/list/obj/effect/landmark/corpsespawner/objective_spawn_corpse = GLOB.corpse_spawns.Copy()
-	while(corpses--)
-		if(!length(objective_spawn_corpse))
-			break
-		var/obj/effect/landmark/corpsespawner/spawner = pick(objective_spawn_corpse)
-		var/turf/spawnpoint = get_turf(spawner)
-		if(spawnpoint)
-			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
-			M.create_hud() //Need to generate hud before we can equip anything apparently...
-			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
-		objective_spawn_corpse.Remove(spawner)
-
-/datum/controller/subsystem/objectives/proc/clear_objective_landmarks()
-	//Don't need them anymore, so we remove them
-	objective_spawn_close = null
-	objective_spawn_medium = null
-	objective_spawn_far = null
-	objective_spawn_science = null
-	objective_spawn_close_documents = null
-	objective_spawn_medium_documents = null
-	objective_spawn_far_documents = null
-	objective_spawn_science_documents = null
+// Populate the map with objective items.
 
 /datum/controller/subsystem/objectives/proc/spawn_objective_at_landmark(var/dest, var/obj/item/it)
-	var/picked_locaton
+	var/picked_location
 	switch(dest)
 		if("close")
-			picked_locaton = pick(objective_spawn_close)
+			picked_location = pick(GLOB.objective_landmarks_close)
 		if("medium")
-			picked_locaton = pick(objective_spawn_medium)
+			picked_location = pick(GLOB.objective_landmarks_medium)
 		if("far")
-			picked_locaton = pick(objective_spawn_far)
+			picked_location = pick(GLOB.objective_landmarks_far)
 		if("science")
-			picked_locaton = pick(objective_spawn_science)
+			picked_location = pick(GLOB.objective_landmarks_science)
 
 		if("close_documents")
-			if(objective_spawn_close_documents.len)
-				picked_locaton = pick(objective_spawn_close_documents)
-			if(!picked_locaton)
-				picked_locaton = pick(objective_spawn_close)
-		if("medium_documents")
-			if(objective_spawn_medium_documents.len)
-				picked_locaton = pick(objective_spawn_medium_documents)
-			if(!picked_locaton)
-				picked_locaton = pick(objective_spawn_medium)
-		if("far_documents")
-			if(objective_spawn_far_documents.len)
-				picked_locaton = pick(objective_spawn_far_documents)
-			if(!picked_locaton)
-				picked_locaton = pick(objective_spawn_far)
-		if("science_documents")
-			if(objective_spawn_science_documents.len)
-				picked_locaton = pick(objective_spawn_science_documents)
-			if(!picked_locaton)
-				picked_locaton = pick(objective_spawn_science)
+			var/list/candidates = list()
+			for(var/key in GLOB.objective_landmarks_close)
+				if(GLOB.objective_landmarks_close[key])
+					candidates += key
+			picked_location = SAFEPICK(candidates)
+			if(!picked_location)
+				picked_location = pick(GLOB.objective_landmarks_close)
 
-	if(!picked_locaton)
+		if("medium_documents")
+			var/list/candidates = list()
+			for(var/key in GLOB.objective_landmarks_medium)
+				if(GLOB.objective_landmarks_medium[key])
+					candidates += key
+			picked_location = SAFEPICK(candidates)
+			if(!picked_location)
+				picked_location = pick(GLOB.objective_landmarks_medium)
+
+		if("far_documents")
+			var/list/candidates = list()
+			for(var/key in GLOB.objective_landmarks_far)
+				if(GLOB.objective_landmarks_far[key])
+					candidates += key
+			picked_location = SAFEPICK(candidates)
+			if(!picked_location)
+				picked_location = pick(GLOB.objective_landmarks_far)
+
+		if("science_documents")
+			var/list/candidates = list()
+			for(var/key in GLOB.objective_landmarks_science)
+				if(GLOB.objective_landmarks_science[key])
+					candidates += key
+			picked_location = SAFEPICK(candidates)
+			if(!picked_location)
+				picked_location = pick(GLOB.objective_landmarks_science)
+
+	picked_location = get_turf(picked_location)
+	if(!picked_location)
 		CRASH("Unable to pick a location at [dest] for [it]")
 
 	var/generated = FALSE
-	for(var/obj/O in picked_locaton)
+	for(var/obj/O in picked_location)
 		if(istype(O, /obj/structure/closet) || istype(O, /obj/structure/safe) || istype(O, /obj/structure/filingcabinet))
 			if(istype(O, /obj/structure/closet))
 				var/obj/structure/closet/c = O
@@ -172,23 +256,11 @@ SUBSYSTEM_DEF(objectives)
 			break
 
 	if(!generated)
-		new it(picked_locaton)
-
-
-/datum/controller/subsystem/objectives/proc/connect_objectives()
-	for(var/datum/cm_objective/C in objectives)
-		if(!(C in objectives))
-			objectives += C
-		if(C.objective_flags & OBJ_PROCESS_ON_DEMAND)
-			non_processing_objectives += C
-		else
-			inactive_objectives += C
-	setup_tree()
-	for(var/datum/cm_objective/N in non_processing_objectives)
-		N.activate()
+		new it(picked_location)
 
 /datum/controller/subsystem/objectives/proc/pre_round_start()
 	SIGNAL_HANDLER
+	initialize_objectives()
 	for(var/datum/cm_objective/O in objectives)
 		O.pre_round_start()
 
@@ -197,227 +269,101 @@ SUBSYSTEM_DEF(objectives)
 	for(var/datum/cm_objective/O in objectives)
 		O.post_round_start()
 
-/datum/controller/subsystem/objectives/proc/get_objectives_progress()
-	var/point_total = 0
-	var/complete = 0
+/datum/controller/subsystem/objectives/proc/connect_objectives()
+	// Sets up the objective interdependence tree
+	// Every objective (which isn't a dead end) gets one guaranteed objective it unlocks.
+	// Every objective gets x random objectives that unlock it based on variable 'number_of_clues_to_generate'
 
-	var/list/categories = list()
-	var/list/notable_objectives = list()
+	var/list/low_value
+	var/list/medium_value
+	var/list/high_value
+	var/list/extreme_value
+	var/list/absolute_value
 
-	for(var/datum/cm_objective/C in objectives)
-		if(C.display_category)
-			if(!(C.display_category in categories))
-				categories += C.display_category
-				categories[C.display_category] = list("count" = 0, "total" = 0, "complete" = 0)
-			categories[C.display_category]["count"]++
-			categories[C.display_category]["total"] += C.total_point_value()
-			categories[C.display_category]["complete"] += C.get_point_value()
-
-		if(C.display_flags & OBJ_DISPLAY_AT_END)
-			notable_objectives += C
-
-		point_total += C.total_point_value()
-		complete += C.get_point_value()
-
-	var/dat = ""
-	if(objectives.len) // protect against divide by zero
-		dat = "<b>Total Objectives:</b> [complete]pts completed ([round(100.0*complete/point_total)]%)<br>"
-		if(categories.len)
-			var/total = 1 //To avoid divide by zero errors, just in case...
-			var/compl
-			for(var/cat in categories)
-				total = categories[cat]["total"]
-				compl = categories[cat]["complete"]
-				if(total == 0)
-					total = 1 //To avoid divide by zero errors, just in case...
-				dat += "<b>[cat]: </b> [compl]pts completed ([round(100.0*compl/total)]%)<br>"
-
-		for(var/datum/cm_objective/O in notable_objectives)
-			dat += O.get_readable_progress()
-
-	return dat
-
-/datum/controller/subsystem/objectives/proc/setup_tree()
-	//Sets up the objective interdependance tree
-	//Every objective that is not a dead end enables an objective of a higher tier
-	//Every objective that needs prerequisites gets them from objectives of lower tier
-	//If an objective doesn't need prerequisites, it can't be picked by lower tiers
-	//If an objective is a dead end, it can't be picked by higher tiers
-
-	var/list/no_value = list()
-	var/list/low_value = list()
-	var/list/low_value_with_prerequisites = list()
-	var/list/med_value = list()
-	var/list/med_value_with_prerequisites = list()
-	var/list/high_value = list()
-	var/list/high_value_with_prerequisites = list()
-	var/list/extreme_value = list()
-	var/list/extreme_value_with_prerequisites = list()
-	var/list/absolute_value = list()
-	var/list/absolute_value_with_prerequisites = list()
-
+	// Sort objectives into categories
 	for(var/datum/cm_objective/O in objectives)
-		if(O.objective_flags & OBJ_DO_NOT_TREE)
+		if(O.objective_flags & OBJECTIVE_DO_NOT_TREE)
 			continue // exempt from the tree
-		switch(O.priority)
-			if(OBJECTIVE_NO_VALUE)
-				no_value += O
+		switch(O.value)
 			if(OBJECTIVE_LOW_VALUE)
-				low_value += O
-				if(O.prerequisites_required != PREREQUISITES_NONE)
-					low_value_with_prerequisites += O
+				LAZYADD(low_value, O)
 			if(OBJECTIVE_MEDIUM_VALUE)
-				med_value += O
-				if(O.prerequisites_required != PREREQUISITES_NONE)
-					med_value_with_prerequisites += O
+				LAZYADD(medium_value, O)
 			if(OBJECTIVE_HIGH_VALUE)
-				high_value += O
-				if(O.prerequisites_required != PREREQUISITES_NONE)
-					high_value_with_prerequisites += O
+				LAZYADD(high_value, O)
 			if(OBJECTIVE_EXTREME_VALUE)
-				extreme_value += O
-				if(O.prerequisites_required != PREREQUISITES_NONE)
-					extreme_value_with_prerequisites += O
+				LAZYADD(extreme_value, O)
 			if(OBJECTIVE_ABSOLUTE_VALUE)
-				absolute_value += O
-				if(O.prerequisites_required != PREREQUISITES_NONE)
-					absolute_value_with_prerequisites += O
+				LAZYADD(absolute_value, O)
 
-	var/datum/cm_objective/enables
-	for(var/datum/cm_objective/N in no_value)
-		if(!low_value_with_prerequisites || !low_value_with_prerequisites.len)
-			break
-		if(N.objective_flags & OBJ_DEAD_END)
-			no_value -= N // stop it being picked
-			continue
-		enables = pick(low_value_with_prerequisites)
-		if(!enables)
-			break
-		N.enables_objectives += enables
-		enables.required_objectives += N
-	for(var/datum/cm_objective/L in low_value)
-		while(L.required_objectives.len < L.number_of_clues_to_generate && no_value.len)
-			var/datum/cm_objective/req = pick(no_value)
-			if(req in L.required_objectives)
-				continue //don't want to pick the same thing twice
-			L.required_objectives += req
-			req.enables_objectives += L
-		if(!med_value_with_prerequisites || !med_value_with_prerequisites.len)
-			break
-		if(L.objective_flags & OBJ_DEAD_END)
-			low_value -= L
-			continue
-		enables = pick(med_value_with_prerequisites)
-		if(!enables)
-			break
-		L.enables_objectives += enables
-		enables.required_objectives += L
-	for(var/datum/cm_objective/M in med_value)
-		while(M.required_objectives.len < M.number_of_clues_to_generate && low_value.len)
+	// Set up preqrequisites:
+	// Low
+	for(var/datum/cm_objective/objective in low_value)
+		// Add at least one guaranteed clue for this objective to unlock.
+		if (!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(medium_value))
+			var/datum/cm_objective/enables = pick(medium_value)
+			link_objectives(objective, enables)
+
+	// Medium
+	for(var/datum/cm_objective/objective in medium_value)
+		while(LAZYLEN(objective.required_objectives) < objective.number_of_clues_to_generate && LAZYLEN(low_value))
 			var/datum/cm_objective/req = pick(low_value)
-			if(req in M.required_objectives)
-				continue //don't want to pick the same thing twice
-			M.required_objectives += req
-			req.enables_objectives += M
-		if(!high_value_with_prerequisites || !high_value_with_prerequisites.len)
-			break
-		if(M.objective_flags & OBJ_DEAD_END)
-			med_value -= M
-			continue
-		enables = pick(high_value_with_prerequisites)
-		if(!enables)
-			break
-		M.enables_objectives += enables
-		enables.required_objectives += M
-	for(var/datum/cm_objective/H in high_value)
-		while(H.required_objectives.len < H.number_of_clues_to_generate && med_value.len)
-			var/datum/cm_objective/req = pick(med_value)
-			if(req in H.required_objectives)
-				continue //don't want to pick the same thing twice
-			H.required_objectives += req
-			req.enables_objectives += H
-		if(!extreme_value_with_prerequisites || !extreme_value_with_prerequisites.len)
-			break
-		if(H.objective_flags & OBJ_DEAD_END)
-			high_value -= H
-			continue
-		enables = pick(extreme_value_with_prerequisites)
-		if(!enables)
-			break
-		H.enables_objectives += enables
-		enables.required_objectives += H
-	for(var/datum/cm_objective/E in extreme_value)
-		while(E.required_objectives.len < E.number_of_clues_to_generate && high_value.len)
+			if(req in objective.required_objectives || (req.objective_flags & OBJECTIVE_DEAD_END))
+				continue //don't want to pick the same thing twice OR use a dead-end objective.
+			link_objectives(req, objective)
+
+		// Add at least one guaranteed clue for this objective to unlock.
+		if (!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(high_value))
+			var/datum/cm_objective/enables = pick(high_value)
+			link_objectives(objective, enables)
+
+	// High
+	for(var/datum/cm_objective/objective in high_value)
+		while(LAZYLEN(objective.required_objectives) < objective.number_of_clues_to_generate && LAZYLEN(medium_value))
+			var/datum/cm_objective/req = pick(medium_value)
+			if(req in objective.required_objectives || (req.objective_flags & OBJECTIVE_DEAD_END))
+				continue //don't want to pick the same thing twice OR use a dead-end objective.
+			link_objectives(req, objective)
+
+		// Add at least one guaranteed clue for this objective to unlock.
+		if (!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(extreme_value))
+			var/datum/cm_objective/enables = pick(extreme_value)
+			link_objectives(objective, enables)
+
+	// Extreme
+	for(var/datum/cm_objective/objective in extreme_value)
+		while(LAZYLEN(objective.required_objectives) < objective.number_of_clues_to_generate && LAZYLEN(high_value))
 			var/datum/cm_objective/req = pick(high_value)
-			if(req in E.required_objectives)
-				continue //don't want to pick the same thing twice
-			E.required_objectives += req
-			req.enables_objectives += E
-		if(!absolute_value_with_prerequisites || !absolute_value_with_prerequisites.len)
-			break
-		if(E.objective_flags & OBJ_DEAD_END)
-			extreme_value -= E
-			continue
-		enables = pick(absolute_value_with_prerequisites)
-		if(!enables)
-			break
-		E.enables_objectives += enables
-		enables.required_objectives += E
-	for(var/datum/cm_objective/A in absolute_value)
-		while(A.required_objectives.len < A.number_of_clues_to_generate && extreme_value.len)
+			if(req in objective.required_objectives || (req.objective_flags & OBJECTIVE_DEAD_END))
+				continue //don't want to pick the same thing twice OR use a dead-end objective.
+			link_objectives(req, objective)
+
+		// Add at least one guaranteed clue for this objective to unlock.
+		if (!(objective.objective_flags & OBJECTIVE_DEAD_END) && LAZYLEN(absolute_value))
+			var/datum/cm_objective/enables = pick(absolute_value)
+			link_objectives(objective, enables)
+
+	// Absolute
+	for(var/datum/cm_objective/objective in absolute_value)
+		while(LAZYLEN(objective.required_objectives) < objective.number_of_clues_to_generate && LAZYLEN(extreme_value))
 			var/datum/cm_objective/req = pick(extreme_value)
-			if(req in A.required_objectives)
-				continue //don't want to pick the same thing twice
-			A.required_objectives += req
-			req.enables_objectives += A
+			if(req in objective.required_objectives || (req.objective_flags & OBJECTIVE_DEAD_END))
+				continue //don't want to pick the same thing twice OR use a dead-end objective.
+			link_objectives(req, objective)
+
+// For linking 2 objectives together in the objective tree
+/datum/controller/subsystem/objectives/proc/link_objectives(var/datum/cm_objective/required_objective, var/datum/cm_objective/enabled_objective)
+	LAZYADD(enabled_objective.required_objectives, required_objective)
+	LAZYADD(required_objective.enables_objectives, enabled_objective)
 
 /datum/controller/subsystem/objectives/proc/add_objective(var/datum/cm_objective/O)
-	if(!(O in objectives))
-		objectives += O
-	if((O.objective_flags & OBJ_PROCESS_ON_DEMAND) && !(O in non_processing_objectives))
-		non_processing_objectives += O
-	else if(!(O in inactive_objectives))
-		inactive_objectives += O
-		O.activate()
+	LAZYADD(objectives, O)
 
 /datum/controller/subsystem/objectives/proc/remove_objective(var/datum/cm_objective/O)
-	objectives -= O
-	non_processing_objectives -= O
-	inactive_objectives -= O
-	active_objectives -= O
+	LAZYREMOVE(objectives, O)
 
-/datum/controller/subsystem/objectives/proc/get_total_points()
-	var/total_points = 0
+/datum/controller/subsystem/objectives/proc/start_processing_objective(var/datum/cm_objective/O)
+	processing_objectives += O
 
-	for(var/datum/cm_objective/L in objectives)
-		total_points += L.total_point_value()
-
-	return total_points
-
-/datum/controller/subsystem/objectives/proc/get_scored_points()
-	var/scored_points = 0 + bonus_admin_points//bonus points only apply to scored points, not to total, to make admin lives easier
-
-	for(var/datum/cm_objective/L in objectives)
-		scored_points += L.get_point_value()
-
-	return scored_points
-
-/datum/controller/subsystem/objectives/proc/get_objective_completion_stats()
-	var/total_points = get_total_points()
-	var/scored_points = get_scored_points()
-
-	var/list/answer = list()
-	answer["scored_points"] = scored_points
-	answer["total_points"] = total_points
-
-	if(world.time > nextDChatAnnouncement)
-		nextDChatAnnouncement += 5 MINUTES //5 minutes
-
-		for(var/i in GLOB.observer_list)
-			var/mob/M = i
-			//Announce the numbers to deadchat
-			to_chat(M, SPAN_WARNING("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%)."))
-
-		message_staff("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%).", 1)
-
-	return answer
+/datum/controller/subsystem/objectives/proc/stop_processing_objective(var/datum/cm_objective/O)
+	processing_objectives -= O

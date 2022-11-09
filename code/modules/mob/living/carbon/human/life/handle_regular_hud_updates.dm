@@ -7,8 +7,6 @@
 
 	if(stat != DEAD) //the dead get zero fullscreens
 
-		update_sight()
-
 		if(stat == UNCONSCIOUS)
 			var/severity = 0
 			switch(health)
@@ -22,7 +20,7 @@
 				if(-90 to -80) severity = 8
 				if(-95 to -90) severity = 9
 				if(-INFINITY to -95) severity = 10
-			overlay_fullscreen("crit", /obj/screen/fullscreen/crit, severity)
+			overlay_fullscreen("crit", /atom/movable/screen/fullscreen/crit, severity)
 		else
 			clear_fullscreen("crit")
 			if(oxyloss)
@@ -35,7 +33,7 @@
 					if(35 to 40) severity = 5
 					if(40 to 45) severity = 6
 					if(45 to INFINITY) severity = 7
-				overlay_fullscreen("oxy", /obj/screen/fullscreen/oxy, severity)
+				overlay_fullscreen("oxy", /atom/movable/screen/fullscreen/oxy, severity)
 			else
 				clear_fullscreen("oxy")
 
@@ -52,25 +50,25 @@
 					if(45 to 70) severity = 4
 					if(70 to 85) severity = 5
 					if(85 to INFINITY) severity = 6
-				overlay_fullscreen("brute", /obj/screen/fullscreen/brute, severity)
+				overlay_fullscreen("brute", /atom/movable/screen/fullscreen/brute, severity)
 			else
 				clear_fullscreen("brute")
 
 
 		if(blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 		else
 			clear_fullscreen("blind")
 
 		if(eye_blurry || dazed)
-			overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
+			overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
 		else if((disabilities & NEARSIGHTED) && !HAS_TRAIT(src, TRAIT_NEARSIGHTED_EQUIPMENT))
-			overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 2)
+			overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 2)
 		else
 			clear_fullscreen("eye_blurry")
 
 		if(druggy)
-			overlay_fullscreen("high", /obj/screen/fullscreen/high)
+			overlay_fullscreen("high", /atom/movable/screen/fullscreen/high)
 		else
 			clear_fullscreen("high")
 
@@ -157,7 +155,7 @@
 						else
 							hud_used.bodytemp_icon.icon_state = "temp0"
 
-		if(interactee)
+		if(interactee && isatom(interactee))
 			interactee.check_eye(src)
 	return TRUE
 
@@ -167,9 +165,9 @@
 
 	var/datum/custom_hud/ui_datum
 	if(client)
-		ui_datum = custom_huds_list[client.prefs.UI_style]
+		ui_datum = GLOB.custom_huds_list[client.prefs.UI_style]
 	else
-		ui_datum = custom_huds_list["midnight"]
+		ui_datum = GLOB.custom_huds_list[HUD_MIDNIGHT]
 
 	var/is_bleeding = is_bleeding()
 	if(is_bleeding)

@@ -12,6 +12,7 @@
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH,
+		ACCESS_WY_CORPORATE_DS,
 		ACCESS_MARINE_MEDBAY
 	)
 	skills = /datum/skills/civilian
@@ -109,5 +110,5 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/director(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/director(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/director(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general(H), WEAR_WAIST)
 	..()

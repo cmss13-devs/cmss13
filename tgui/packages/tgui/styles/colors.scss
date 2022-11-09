@@ -29,7 +29,7 @@ $average: #f08f11 !default;
 $bad: #db2828 !default;
 $label: #7e90a7 !default;
 $underline: #7e90a767 !default;
-$xeno: #52375C !default;
+$xeno: #52375c !default;
 
 // Background and foreground color lightness ratios
 $bg-lightness: -15% !default;
@@ -73,15 +73,17 @@ $fg-map-keys: map.keys($_gen_map) !default;
 $bg-map-keys: map.keys($_gen_map) !default;
 
 $fg-map: ();
+
 @each $color-name in $fg-map-keys {
-  $fg-map: map-merge($fg-map, (
-    $color-name: fg(map.get($_gen_map, $color-name)),
-  ));
+  // prettier-ignore
+  $fg-map: map-merge($fg-map, ($color-name: fg(map.get($_gen_map, $color-name)),
+      ));
 }
 
 $bg-map: ();
+
 @each $color-name in $bg-map-keys {
-  $bg-map: map-merge($bg-map, (
-    $color-name: bg(map.get($_gen_map, $color-name)),
-  ));
+  // prettier-ignore
+  $bg-map: map-merge($bg-map, ($color-name: bg(map.get($_gen_map, $color-name)),
+      ));
 }

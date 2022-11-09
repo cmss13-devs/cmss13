@@ -68,3 +68,7 @@
 
 //Return either pick(list) or null if list is not of type /list or is empty
 #define SAFEPICK(L) (length(L) ? pick(L) : null)
+
+///sort any value in a list
+/proc/sort_list(list/list_to_sort, cmp=/proc/cmp_text_asc)
+	return sortTim(list_to_sort.Copy(), cmp)

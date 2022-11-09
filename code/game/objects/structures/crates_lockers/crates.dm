@@ -159,7 +159,7 @@
 
 /obj/structure/closet/crate/ammo/alt/flame
 	name = "ammunitions crate"
-	desc = "An black crate. Warning, contents are flammable!"
+	desc = "A black crate. Warning, contents are flammable!"
 	icon_state = "closed_ammo_alt2"
 	icon_opened = "open_ammo_alt"//does not have its own unique icon
 	icon_closed = "closed_ammo_alt2"
@@ -201,7 +201,7 @@
 
 /obj/structure/closet/crate/explosives
 	name = "explosives crate"
-	desc = "A explosives crate"
+	desc = "An explosives crate"
 	icon_state = "closed_explosives"
 	icon_opened = "open_explosives"
 	icon_closed = "closed_explosives"
@@ -214,6 +214,19 @@
 	icon_closed = "closed_freezer"
 	var/target_temp = T0C - 40
 	var/cooling_power = 40
+
+/obj/structure/closet/crate/freezer/cooler
+	icon = 'icons/obj/structures/souto_land.dmi'
+	desc = "A cozy cooler for your beer and other beverages."
+	icon_state = "cooler_closed"
+	icon_opened = "cooler_open"
+	icon_closed = "cooler_closed"
+	cooling_power = 10//not nearly as good as the actual freezer crate
+
+/obj/structure/closet/crate/freezer/cooler/oj
+	icon_state = "cooler-oj_closed"
+	icon_opened = "cooler-oj_open"
+	icon_closed = "cooler-oj_closed"
 
 
 /obj/structure/closet/crate/hydroponics
@@ -234,7 +247,7 @@
 
 /obj/structure/closet/crate/internals
 	name = "internals crate"
-	desc = "A internals crate."
+	desc = "An internals crate."
 	icon_state = "closed_oxygen"
 	icon_opened = "open_oxygen"
 	icon_closed = "closed_oxygen"
@@ -320,13 +333,6 @@
 	icon_state = "closed_trashcart"
 	icon_opened = "open_trashcart"
 	icon_closed = "closed_trashcart"
-
-/obj/structure/closet/crate/wayland
-	name = "Weyland Yutani crate"
-	desc = "A crate with a Weyland Yutani insignia on it."
-	icon_state = "closed_wayland"
-	icon_opened = "open_wayland"
-	icon_closed = "closed_wayland"
 
 /obj/structure/closet/crate/weapon
 	name = "weapons crate"

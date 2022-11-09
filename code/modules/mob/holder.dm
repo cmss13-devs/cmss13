@@ -40,10 +40,17 @@
 /mob/living/proc/get_scooped(var/mob/living/carbon/grabber)
 	if(!holder_type)
 		return
-	var/obj/item/holder/H = new holder_type(loc)
-	src.forceMove(H)
-	H.name = loc.name
-	H.attack_hand(grabber)
+	if(isXeno(grabber))
+		to_chat(grabber, SPAN_WARNING("You leave [src] alone. It cannot be made a host, so there is no use for it."))
+		return
+	if(locate(/obj/item/explosive/plastic) in contents)
+		to_chat(grabber, SPAN_WARNING("You leave [src] alone. It's got live explosives on it!"))
+		return
+
+	var/obj/item/holder/mob_holder = new holder_type(loc)
+	src.forceMove(mob_holder)
+	mob_holder.name = loc.name
+	mob_holder.attack_hand(grabber)
 
 	to_chat(grabber, "You scoop up [src].")
 	to_chat(src, "[grabber] scoops you up.")

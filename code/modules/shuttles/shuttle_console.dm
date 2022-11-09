@@ -338,16 +338,17 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	if(href_list["fire_mission"])
 		if(shuttle.moving_status != SHUTTLE_IDLE) return
 		if(shuttle.locked) return
-		shuttle.transit_gun_mission = !shuttle.transit_gun_mission
-		if(shuttle.transit_gun_mission)
+		if(!shuttle.transit_gun_mission)
 			var/mob/M = usr
 			if(M.mind && M.skills && !M.skills.get_skill_level(SKILL_PILOT)) //only pilots can activate the fire mission mode, but everyone can reset it back to transport..
 				to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 				return
 			else
 				to_chat(usr, SPAN_NOTICE("You upload a flight plan for a low altitude flyby above the planet."))
+				shuttle.transit_gun_mission = TRUE
 		else
 			to_chat(usr, SPAN_NOTICE("You reset the flight plan to a transport mission between the Almayer and the planet."))
+			shuttle.transit_gun_mission = FALSE
 
 	if(href_list["lockdown"])
 		if(shuttle.door_override)
@@ -488,7 +489,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 			if(!dropship.automated_launch) //If we're toggling it on...
 				var/auto_delay
-				auto_delay = input("Set the delay for automated departure after recharging", "Automated Departure Settings", 0) as num
+				auto_delay = tgui_input_number(usr, "Set the delay for automated departure after recharging (seconds)", "Automated Departure Settings", DROPSHIP_MIN_AUTO_DELAY/10, DROPSHIP_MAX_AUTO_DELAY/10, DROPSHIP_MIN_AUTO_DELAY/10)
 				dropship.automated_launch_delay = Clamp(auto_delay SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
 			dropship.set_automated_launch(!dropship.automated_launch)
 
@@ -518,7 +519,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/Initialize()
 	. = ..()
@@ -542,7 +543,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/Initialize()
 	. = ..()

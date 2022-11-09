@@ -927,7 +927,7 @@
 "cH" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/clothing/shoes/combat,
-/obj/item/clothing/under/gladiator,
+/obj/item/clothing/under/chainshirt/hunter,
 /obj/item/clothing/gloves/combat,
 /obj/item/clothing/head/helmet/gladiator,
 /turf/open/floor/holofloor{
@@ -1362,6 +1362,18 @@
 "kl" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lantern,
+/turf/open/floor/holofloor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/yautja)
+"ld" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/shoes/combat,
+/obj/item/clothing/under/chainshirt/hunter,
+/obj/item/clothing/gloves/combat,
+/obj/item/clothing/head/helmet/gladiator,
+/obj/item/clothing/suit/armor/gladiator,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -3058,7 +3070,7 @@ Zv
 Zv
 Zv
 ji
-cH
+ld
 Zv
 ZI
 dp
@@ -3250,7 +3262,7 @@ Zv
 Zv
 Zv
 ji
-cH
+ld
 Zv
 ZI
 Zv
@@ -3442,7 +3454,7 @@ Zv
 Zv
 Zv
 ji
-cH
+ld
 Zv
 ZI
 dL

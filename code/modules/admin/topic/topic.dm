@@ -1,8 +1,42 @@
+/datum/admins/proc/CheckAdminHref(href, href_list)
+	var/auth = href_list["admin_token"]
+	. = auth && (auth == href_token || auth == GLOB.href_token)
+	if(.)
+		return
+	var/msg = !auth ? "no" : "a bad"
+	message_admins("[key_name_admin(usr)] clicked an href with [msg] authorization key!")
+	if(CONFIG_GET(flag/debug_admin_hrefs))
+		message_admins("Debug mode enabled, call not blocked. Please ask your coders to review this round's logs.")
+		log_world("UAH: [href]")
+		return TRUE
+	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
+
 /datum/admins/Topic(href, href_list)
 	..()
 
 	if(usr.client != src.owner || !check_rights(0))
 		message_admins("[usr.key] has attempted to override the admin panel!")
+		return
+
+	if(!CheckAdminHref(href, href_list))
+		return
+
+
+	if(href_list["ahelp"])
+		if(!check_rights(R_ADMIN|R_MOD, TRUE))
+			return
+
+		var/ahelp_ref = href_list["ahelp"]
+		var/datum/admin_help/AH = locate(ahelp_ref)
+		if(AH)
+			AH.Action(href_list["ahelp_action"])
+		else
+			to_chat(usr, "Ticket [ahelp_ref] has been deleted!", confidential = TRUE)
+		return
+
+	if(href_list["adminplayeropts"])
+		var/mob/M = locate(href_list["adminplayeropts"])
+		show_player_panel(M)
 		return
 
 	if(href_list["editrights"])
@@ -91,7 +125,7 @@
 			message_admins("[key_name_admin(usr)] toggled the [new_permission] permission of [adm_ckey]")
 
 //======================================================
-//Everything that has to do with evac and self destruct.
+//Everything that has to do with evac and self-destruct.
 //The rest of this is awful.
 //======================================================
 	if(href_list["evac_authority"])
@@ -178,6 +212,7 @@
 			if("observer")			transformed = M.change_mob_type( /mob/dead/observer , null, null, delmob )
 
 			if("larva")				transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Larva , null, null, delmob )
+			if("facehugger")		transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Facehugger , null, null, delmob )
 			if("defender")			transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Defender, null, null, delmob )
 			if("warrior")			transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Warrior, null, null, delmob )
 			if("runner")			transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Runner , null, null, delmob )
@@ -281,7 +316,7 @@
 		var/mins = 0
 		if(minutes > CMinutes)
 			mins = minutes - CMinutes
-		mins = input(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time",1440) as num|null
+		mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time", 1440, 43800, 1)
 		if(!mins)	return
 		mins = min(525599,mins)
 		minutes = CMinutes + mins
@@ -358,24 +393,24 @@
 	//Extra (Orange)
 		var/isbanned_dept = jobban_isbanned(M, "Syndicate", P)
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='ffeeaa'><th colspan='10'><a href='?src=\ref[src];jobban3=Syndicate;jobban4=\ref[M]'>Extras</a></th></tr><tr align='center'>"
+		jobs += "<tr bgcolor='ffeeaa'><th colspan='10'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Syndicate;jobban4=\ref[M]'>Extras</a></th></tr><tr align='center'>"
 
 		//ERT
 		if(jobban_isbanned(M, "Emergency Response Team", P) || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Emergency Response Team;jobban4=\ref[M]'><font color=red>Emergency Response Team</font></a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Emergency Response Team;jobban4=\ref[M]'><font color=red>Emergency Response Team</font></a></td>"
 		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Emergency Response Team;jobban4=\ref[M]'>Emergency Response Team</a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Emergency Response Team;jobban4=\ref[M]'>Emergency Response Team</a></td>"
 
 		//Survivor
 		if(jobban_isbanned(M, "Survivor", P) || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Survivor;jobban4=\ref[M]'><font color=red>Survivor</font></a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'><font color=red>Survivor</font></a></td>"
 		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Survivor;jobban4=\ref[M]'>Survivor</a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'>Survivor</a></td>"
 
 		if(jobban_isbanned(M, "Agent", P) || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Agent;jobban4=\ref[M]'><font color=red>Agent</font></a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Agent;jobban4=\ref[M]'><font color=red>Agent</font></a></td>"
 		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Agent;jobban4=\ref[M]'>Agent</a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Agent;jobban4=\ref[M]'>Agent</a></td>"
 
 		body = "<body>[jobs]</body>"
 		dat = "<tt>[body]</tt>"
@@ -459,7 +494,11 @@
 
 			return 1
 		return 0 //we didn't do anything!
+	else if(href_list["adminplayerobservefollow"])
+		if(!isobserver(usr) && !check_rights(R_ADMIN))
+			return
 
+		usr.client?.admin_follow(locate(href_list["adminplayerobservefollow"]))
 	else if(href_list["boot2"])
 		var/mob/M = locate(href_list["boot2"])
 		if (ismob(M))
@@ -497,7 +536,7 @@
 			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
 			return
 		var/mob_key = M.ckey
-		var/mins = input(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time",1440) as num|null
+		var/mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time", 1440, 43800, 1)
 		if(!mins)
 			return
 		if(mins >= 525600) mins = 525599
@@ -632,7 +671,7 @@
 
 		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
 		for(var/mode in config.modes)
-			dat += {"<A href='?src=\ref[src];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
+			dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
 		dat += {"Now: [master_mode]"}
 		show_browser(usr, dat, "Change Gamemode", "c_mode")
 
@@ -645,8 +684,8 @@
 			return alert(usr, "The game mode has to be secret!", null, null, null, null)
 		var/dat = {"<B>What game mode do you want to force secret to be? Use this if you want to change the game mode, but want the players to believe it's secret. This will only work if the current game mode is secret.</B><HR>"}
 		for(var/mode in config.modes)
-			dat += {"<A href='?src=\ref[src];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
-		dat += {"<A href='?src=\ref[src];f_secret2=secret'>Random (default)</A><br>"}
+			dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
+		dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];f_secret2=secret'>Random (default)</A><br>"}
 		dat += {"Now: [secret_force_mode]"}
 		show_browser(usr, dat, "Change Secret Gamemode", "f_secret")
 
@@ -696,7 +735,7 @@
 		H.corgize()
 
 	else if(href_list["forcespeech"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
@@ -796,21 +835,21 @@
 		var/datum/hive_status/hive = hives[hive_name]
 
 		if(href_list["makecultist"])
-			var/datum/equipment_preset/other/xeno_cultist/XC = new()
-			XC.load_race(H, hive.hivenumber)
-			XC.load_status(H)
+			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+			preset.load_race(H, hive.hivenumber)
+			preset.load_status(H)
 			message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
 
 		else if(href_list["makecultistleader"])
-			var/datum/equipment_preset/other/xeno_cultist/leader/XC = new()
-			XC.load_race(H, hive.hivenumber)
-			XC.load_status(H)
+			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
+			preset.load_race(H, hive.hivenumber)
+			preset.load_status(H)
 			message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
 
 		H.faction = hive.internal_faction
 
 	else if(href_list["forceemote"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		var/mob/M = locate(href_list["forceemote"])
 		if(!ismob(M))
@@ -846,7 +885,7 @@
 		qdel(M)
 
 	else if(href_list["tdome1"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -870,7 +909,7 @@
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
 	else if(href_list["tdome2"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -894,7 +933,7 @@
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
 	else if(href_list["tdomeadmin"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -915,7 +954,7 @@
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
 	else if(href_list["tdomeobserve"])
-		if(!check_rights(R_FUN))	return
+		if(!check_rights(R_ADMIN))	return
 
 		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
 			return
@@ -1336,7 +1375,7 @@
 				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!sent_by)
 					return
-				fax_message = generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - USS ALMAYER", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
+				fax_message = generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
 		show_browser(usr, "<body class='paper'>[fax_message]</body>", "clfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice == "Cancel")
@@ -1589,7 +1628,7 @@
 		create_xenos_list(href_list)
 
 	else if(href_list["events"])
-		if(!check_rights(R_FUN))
+		if(!check_rights(R_ADMIN))
 			return
 
 		topic_events(href_list["events"])
@@ -1611,10 +1650,6 @@
 			return
 
 		topic_vehicles(href_list["vehicle"])
-
-	else if(href_list["ahelp"])
-
-		topic_ahelps(href_list)
 
 	// player info stuff
 
@@ -1693,36 +1728,36 @@
 
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
 		distress_cancel = FALSE
-		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;distresscancel=\ref[usr]'>CANCEL</A>)")
+		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
 		addtimer(CALLBACK(src, .proc/accept_ert, usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
 		destroy_cancel = FALSE
-		message_staff("[key_name_admin(usr)] has opted to GRANT the self destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;sdcancel=\ref[usr]'>CANCEL</A>)")
+		message_staff("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
 			if(distress_cancel)
 				return
 			var/mob/ref_person = locate(href_list["destroyship"])
 			set_security_level(SEC_LEVEL_DELTA)
-			log_game("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]")
-			message_staff("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]", 1)
+			log_game("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]")
+			message_staff("[key_name_admin(usr)] has granted self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
-	if(href_list["sddeny"]) // CentComm-deny. The self destruct is denied, without any further conditions
+	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
-		marine_announcement("The self destruct request has not received a response, ARES is now recalculating statistics.", "Self Destruct System")
-		log_game("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]")
-		message_staff("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]", 1)
+		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System")
+		log_game("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]")
+		message_staff("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
 	if(href_list["sdcancel"])
 		if(destroy_cancel)
-			to_chat(usr, "The self destruct was already canceled.")
+			to_chat(usr, "The self-destruct was already canceled.")
 			return
 		if(get_security_level() == "delta")
-			to_chat(usr, "Too late! The self destruct was started.")
+			to_chat(usr, "Too late! The self-destruct was started.")
 			return
-		log_game("[key_name_admin(usr)] has canceled the self destruct.")
-		message_staff("[key_name_admin(usr)] has canceled the self destruct.")
+		log_game("[key_name_admin(usr)] has canceled the self-destruct.")
+		message_staff("[key_name_admin(usr)] has canceled the self-destruct.")
 		destroy_cancel = 1
 		return
 
@@ -1741,7 +1776,7 @@
 
 	var/dat = ""
 	dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-	dat += "<tr align='center' bgcolor='[color]'><th colspan='[length(roles)]'><a href='?src=\ref[src];jobban3=[department]dept;jobban4=\ref[M]'>[department]</a></th></tr><tr align='center'>"
+	dat += "<tr align='center' bgcolor='[color]'><th colspan='[length(roles)]'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[department]dept;jobban4=\ref[M]'>[department]</a></th></tr><tr align='center'>"
 	for(var/jobPos in roles)
 		if(!jobPos)
 			continue
@@ -1750,10 +1785,10 @@
 			continue
 
 		if(jobban_isbanned(M, job.title, P))
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
+			dat += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 			counter++
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
+			dat += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 			counter++
 
 		if(counter >= 5) //So things dont get squiiiiished!

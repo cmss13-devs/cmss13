@@ -53,12 +53,9 @@
 	S.scanning = FALSE
 
 	moveToNullspace()
-	S.found_prints = src
+	LAZYADD(S.print_list, src)
 	S.update_icon()
-	to_chat(user, SPAN_INFO("Print set found: [generate_clue()]"))
-
-/obj/effect/decal/prints/proc/generate_clue()
-	return md5(criminal_name + criminal_rank)
+	to_chat(user, SPAN_INFO("New print sets found: 1, total amount: [length(S.print_list)]"))
 
 /obj/effect/decal/prints/proc/decipher_clue()
 	var/information = ""

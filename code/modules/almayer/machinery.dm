@@ -20,7 +20,13 @@
 
 /obj/item/prop/almayer/flight_recorder
 	name = "\improper FR-112 flight recorder"
-	desc = "A small red box that contains flight data from a dropship while its on mission. Usually refered to the black box, although this one comes in bloody red."
+	desc = "A small red box that contains flight data from a dropship while it's on mission. Usually referred to as the black box, although this one comes in bloody red."
+	icon_state = "flight_recorder"
+	w_class = SIZE_LARGE
+
+/obj/item/prop/almayer/flight_recorder/colony
+	name = "\improper CIR-60 colony information recorder"
+	desc = "A small red box that records colony announcements, colonist flatlines and other key readouts. Usually refered to the black box, although this one comes in bloody red."
 	icon_state = "flight_recorder"
 	w_class = SIZE_LARGE
 
@@ -56,7 +62,7 @@
 
 /obj/item/prop/almayer/comp_open
 	name = "dropship maintenance computer"
-	desc = "A opened dropship maintenance computer, it seems to be off however. It's used by technicians and pilots to find damaged or broken systems on a dropship. It has various outlets for different systems."
+	desc = "An opened dropship maintenance computer, it seems to be off however. It's used by technicians and pilots to find damaged or broken systems on a dropship. It has various outlets for different systems."
 	icon_state = "hangar_comp_open"
 	w_class = SIZE_LARGE
 
@@ -118,7 +124,7 @@
 
 /obj/structure/machinery/prop/almayer/NavCon
 	name = "NavCon"
-	desc = "Navigational console for ploting course and heading of the ship. Since the AI calculates all long range navigation, this is only used for in-system course corrections and orbital maneuvers. Don't touch it!"
+	desc = "Navigational console for plotting course and heading of the ship. Since the AI calculates all long-range navigation, this is only used for in-system course corrections and orbital maneuvers. Don't touch it!"
 
 	density = 0
 	anchored = 1
@@ -164,7 +170,7 @@
 
 /obj/structure/machinery/prop/almayer/NavCon2
 	name = "NavCon 2"
-	desc = "Navigational console for ploting course and heading of the ship. Since the AI calculates all long range navigation, this is only used for in-system course corrections and orbital maneuvers. Don't touch it!"
+	desc = "Navigational console for plotting course and heading of the ship. Since the AI calculates all long-range navigation, this is only used for in-system course corrections and orbital maneuvers. Don't touch it!"
 
 	density = 0
 	anchored = 1
@@ -319,13 +325,13 @@
 
 /obj/structure/prop/almayer/computers/mission_planning_system
 	name = "\improper MPS IV computer"
-	desc = "The Mission Planning System IV (MPS IV), a enhancement in mission planning and charting for dropship pilots across the USCM. Fully capable of customizing their flight paths and loadouts to suit their combat needs."
+	desc = "The Mission Planning System IV (MPS IV), an enhancement in mission planning and charting for dropship pilots across the USCM. Fully capable of customizing their flight paths and loadouts to suit their combat needs."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "mps"
 
 /obj/structure/prop/almayer/computers/mapping_computer
 	name = "\improper CMPS II computer"
-	desc = "The Common Mapping Production System version II allows for sensory imput from satellites and ship systems to derive planetary maps in a standardized fashion for all USCM pilots."
+	desc = "The Common Mapping Production System version II allows for sensory input from satellites and ship systems to derive planetary maps in a standardized fashion for all USCM pilots."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "mapping_comp"
 
@@ -349,7 +355,7 @@
 
 /obj/structure/prop/almayer/missile_tube
 	name = "\improper Mk 33 ASAT launcher system"
-	desc = "Cold launch tubes that can fire a few varieties of missiles out of them The most common being the ASAT-21 Rapier IV missile used against satellites and other spacecraft and the BGM-227 Sledgehammer missile which is used for ground attack."
+	desc = "Cold launch tubes that can fire a few varieties of missiles out of them, the most common being the ASAT-21 Rapier IV missile used against satellites and other spacecraft and the BGM-227 Sledgehammer missile which is used for ground attack."
 	icon = 'icons/obj/structures/props/almayer_props96.dmi'
 	icon_state = "missiletubenorth"
 	bound_width = 32
@@ -387,8 +393,8 @@
 	else
 		. = ..()
 
-/obj/structure/prop/almayer/ship_memorial/examine(mob/user)
-	..()
+/obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
+	. = ..()
 	if((isobserver(user) || ishuman(user)) && fallen_list)
 		var/faltext = ""
 		for(var/i = 1 to fallen_list.len)
@@ -396,11 +402,11 @@
 				faltext += "[fallen_list[i]], "
 			else
 				faltext += fallen_list[i]
-		to_chat(user, SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>."))
+		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
 
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"
-	desc = "The Mark 74 Railgun is top of the line for space based weaponry. Capable of firing a round with a diameter of 3/4ths of a meter at 24 kilometers per second. It also is capable of using a variety of round types which can be interchanged at anytime with its newly designed feed system."
+	desc = "The Mark 74 Railgun is top of the line for space-based weaponry. Capable of firing a round with a diameter of 3/4ths of a meter at 24 kilometers per second. It also is capable of using a variety of round types which can be interchanged at any time with its newly designed feed system."
 	icon = 'icons/obj/structures/machinery/artillery.dmi'
 	icon_state = "1"
 	unslashable = TRUE

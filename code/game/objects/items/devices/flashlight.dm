@@ -194,7 +194,7 @@
 //Generic Candelabra
 /obj/item/device/flashlight/lamp/candelabra
 	name = "candelabra"
-	desc = "A firehazard that can be used to thwack things with impunity."
+	desc = "A fire hazard that can be used to thwack things with impunity."
 	icon_state = "candelabra"
 	force = 15
 
@@ -321,6 +321,9 @@
 		var/mob/living/carbon/U = user
 		if(istype(U) && !U.throw_mode)
 			U.toggle_throw_mode(THROW_MODE_NORMAL)
+			
+/obj/item/device/flashlight/flare/proc/activate_signal(mob/living/carbon/human/user)
+	return
 
 /obj/item/device/flashlight/flare/on/Initialize()
 	. = ..()
@@ -433,7 +436,8 @@
 		faction = user.faction
 		addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
 
-/obj/item/device/flashlight/flare/signal/proc/activate_signal(mob/living/carbon/human/user)
+/obj/item/device/flashlight/flare/signal/activate_signal(mob/living/carbon/human/user)
+	..()
 	if(faction && cas_groups[faction])
 		signal = new(src)
 		signal.target_id = ++cas_tracking_id_increment
@@ -444,8 +448,9 @@
 		anchored = TRUE
 		if(activate_message)
 			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
-		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP LOC</a>)")
+		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP LOC</a>)")
 		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]).")
+		return TRUE
 
 /obj/item/device/flashlight/flare/signal/attack_hand(mob/user)
 	if (!user) return

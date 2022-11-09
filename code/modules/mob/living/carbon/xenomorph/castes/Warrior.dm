@@ -4,6 +4,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_5
+	melee_vehicle_damage = XENO_DAMAGE_TIER_5
 	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_NO_PLASMA
@@ -15,7 +16,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
-	deevolves_to = XENO_CASTE_DEFENDER
+	deevolves_to = list(XENO_CASTE_DEFENDER)
 	caste_desc = "A powerful front line combatant."
 	can_vent_crawl = 0
 
@@ -43,6 +44,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/warrior_punch,
 		/datum/action/xeno_action/activable/lunge,
 		/datum/action/xeno_action/activable/fling,
@@ -50,38 +52,20 @@
 
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
-
 	icon_xeno = 'icons/mob/hostiles/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
-
-/mob/living/carbon/Xenomorph/Warrior/update_icons()
-	if (stat == DEAD)
-		icon_state = "[mutation_type] Warrior Dead"
-	else if (lying)
-		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] Warrior Sleeping"
-		else
-			icon_state = "[mutation_type] Warrior Knocked Down"
-	else if (agility)
-		icon_state = "[mutation_type] Warrior Agility"
-	else
-		icon_state = "[mutation_type] Warrior Running"
-
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
-
+	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
 /mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
-
 /mob/living/carbon/Xenomorph/Warrior/stop_pulling()
-	if(isliving(pulling))
-		var/mob/living/L = pulling
-		L.SetStunned(0)
-		L.SetKnockeddown(0)
-	..()
-
+	if(isliving(pulling) && lunging)
+		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
+		var/mob/living/lunged = pulling
+		lunged.SetStunned(0)
+		lunged.SetKnockeddown(0)
+	return ..()
 
 /mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
 	if (!check_state() || agility)
@@ -95,7 +79,6 @@
 	if(!QDELETED(L) && !QDELETED(L.pulledby) && L != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
 		L.pulledby.stop_pulling()
-		return // Warrior should not-regrab the victim to reset the knockdown
 
 	. = ..(L, lunge, should_neckgrab)
 
@@ -111,6 +94,11 @@
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))
+			lunging = TRUE
+			addtimer(CALLBACK(src, .proc/stop_lunging), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
+
+/mob/living/carbon/Xenomorph/Warrior/proc/stop_lunging(var/world_time)
+	lunging = FALSE
 
 /mob/living/carbon/Xenomorph/Warrior/hitby(atom/movable/AM)
 	if(ishuman(AM))
@@ -120,225 +108,59 @@
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"
 
-	var/stored_shield_max = 160
-	var/stored_shield_per_slash = 40
-	var/datum/component/shield_component
+	var/slash_charge_cdr = 0.30 SECONDS // Amount to reduce charge cooldown by per slash
+	var/lifesteal_percent = 7
+	var/max_lifesteal = 9
+	var/lifesteal_range =  3
+	var/lifesteal_lock_duration = 20
+	var/color = "#6c6f24"
+	var/emote_cooldown = 0
 
-/datum/behavior_delegate/warrior_base/New()
-	. = ..()
+/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_self()
+	..()
 
-/datum/behavior_delegate/warrior_base/add_to_xeno()
-	. = ..()
-	if(!shield_component)
-		shield_component = bound_xeno.AddComponent(\
-			/datum/component/shield_slash,\
-			stored_shield_max,\
-			stored_shield_per_slash,\
-			"Warrior Shield")
-	else
-		bound_xeno.TakeComponent(shield_component)
+	var/datum/action/xeno_action/activable/lunge/cAction1 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/lunge)
+	if (!cAction1.action_cooldown_check())
+		cAction1.reduce_cooldown(slash_charge_cdr)
 
-/datum/behavior_delegate/warrior_base/remove_from_xeno()
-	shield_component.RemoveComponent()
-	return ..()
+	var/datum/action/xeno_action/activable/fling/cAction2 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/fling)
+	if (!cAction2.action_cooldown_check())
+		cAction2.reduce_cooldown(slash_charge_cdr)
 
-/datum/behavior_delegate/warrior_base/Destroy(force, ...)
-	qdel(shield_component)
-	return ..()
+	var/datum/action/xeno_action/activable/warrior_punch/cAction3 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/warrior_punch)
+	if (!cAction3.action_cooldown_check())
+		cAction3.reduce_cooldown(slash_charge_cdr)
 
-/datum/behavior_delegate/boxer
-	name = "Boxer Warrior Behavior Delegate"
+/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
+	..()
 
-	var/ko_delay = 5 SECONDS
-	var/max_clear_head = 3
-	var/clear_head_delay = 15 SECONDS
-	var/clear_head = 3
-	var/next_clear_head_regen
-	var/clear_head_tickcancel
+	var/final_lifesteal = lifesteal_percent
+	var/list/mobs_in_range = oviewers(lifesteal_range, bound_xeno)
 
-	var/mob/punching_bag
-	var/ko_counter = 0
-	var/ko_reset_timer
-	var/max_ko_counter = 15
+	for(var/mob/mob as anything in mobs_in_range)
+		if(final_lifesteal >= max_lifesteal)
+			break
 
-	var/image/ko_icon
-	var/image/big_ko_icon
+		if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
+			continue
 
-/datum/behavior_delegate/boxer/New()
-	. = ..()
+		if(bound_xeno.can_not_harm(mob))
+			continue
 
-	if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_XVX)) // this is pain to do, but how else? hopefully we can replace clarity with something better in the future
-		clear_head = 0
-		max_clear_head = 0
+		final_lifesteal++
 
-/datum/behavior_delegate/boxer/append_to_stat()
-	. = list()
-	if(punching_bag)
-		. += "Beating [punching_bag] - [ko_counter] hits"
-	. += "Clarity [clear_head] hits"
+// This part is then outside the for loop
+		if(final_lifesteal >= max_lifesteal)
+			bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 90))
+			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name] glows as it heals even more from its injuries!."), SPAN_XENODANGER("You glow as you heal even more from your injuries!"))
+			bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
+		if(istype(bound_xeno) && world.time > emote_cooldown && bound_xeno)
+			bound_xeno.emote("roar")
+			bound_xeno.xeno_jitter(1 SECONDS)
+			emote_cooldown = world.time + 5 SECONDS
+		addtimer(CALLBACK(src, .proc/lifesteal_lock), lifesteal_lock_duration/2)
 
-/datum/behavior_delegate/boxer/on_life()
-	var/wt = world.time
-	if(wt > next_clear_head_regen && clear_head<max_clear_head)
-		clear_head++
-		next_clear_head_regen = wt + clear_head_delay
+	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 20, 40))
 
-/datum/behavior_delegate/boxer/melee_attack_additional_effects_target(mob/living/carbon/A, ko_boost = 0.5)
-	if(!ismob(A))
-		return
-	if(punching_bag != A)
-		remove_ko()
-		punching_bag = A
-		ko_icon = image(null, A)
-		ko_icon.alpha = 196
-		ko_icon.maptext_width = 16
-		ko_icon.maptext_x = 16
-		ko_icon.maptext_y = 16
-		ko_icon.layer = 20
-		if(bound_xeno.client && bound_xeno.client.prefs && !bound_xeno.client.prefs.lang_chat_disabled)
-			bound_xeno.client.images += ko_icon
-
-	ko_counter += ko_boost
-	if(ko_counter > max_ko_counter)
-		ko_counter = max_ko_counter
-	var/to_display = round(ko_counter)
-	ko_icon.maptext = "<span class='center langchat'>[to_display]</span>"
-
-	ko_reset_timer = addtimer(CALLBACK(src, .proc/remove_ko), ko_delay, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
-
-/datum/behavior_delegate/boxer/proc/remove_ko()
-	punching_bag = null
-	ko_counter = 0
-	if(bound_xeno.client && ko_icon)
-		bound_xeno.client.images -= ko_icon
-	ko_icon = null
-
-/datum/behavior_delegate/boxer/proc/display_ko_message(var/mob/H)
-	if(!bound_xeno.client)
-		return
-	if(!bound_xeno.client.prefs || bound_xeno.client.prefs.lang_chat_disabled)
-		return
-	big_ko_icon = image(null, H)
-	big_ko_icon.alpha = 196
-	big_ko_icon.maptext_y = H.langchat_height
-	big_ko_icon.maptext_width = LANGCHAT_WIDTH
-	big_ko_icon.maptext_height = 64
-	big_ko_icon.color = "#FF0000"
-	big_ko_icon.maptext_x = LANGCHAT_X_OFFSET
-	big_ko_icon.maptext = "<span class='center langchat langchat_bolditalicbig'>KO!</span>"
-	bound_xeno.client.images += big_ko_icon
-	addtimer(CALLBACK(src, .proc/remove_big_ko), 2 SECONDS)
-
-/datum/behavior_delegate/boxer/proc/remove_big_ko()
-	if(bound_xeno.client && big_ko_icon)
-		bound_xeno.client.images -= big_ko_icon
-	big_ko_icon = null
-
-// a lot of repeats but it's because we are calling different parent procs
-/mob/living/carbon/Xenomorph/Warrior/Daze(amount)
-	var/datum/behavior_delegate/boxer/BD = behavior_delegate
-	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
-		..(amount)
-		return
-	if(BD.clear_head_tickcancel == world.time)
-		return
-	BD.clear_head_tickcancel = world.time
-	BD.clear_head--
-	if(BD.clear_head<=0)
-		BD.clear_head = 0
-
-/mob/living/carbon/Xenomorph/Warrior/SetDazed(amount)
-	var/datum/behavior_delegate/boxer/BD = behavior_delegate
-	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
-		..(amount)
-		return
-	if(BD.clear_head_tickcancel == world.time)
-		return
-	BD.clear_head_tickcancel = world.time
-	BD.clear_head--
-	if(BD.clear_head<=0)
-		BD.clear_head = 0
-
-/mob/living/carbon/Xenomorph/Warrior/AdjustDazed(amount)
-	var/datum/behavior_delegate/boxer/BD = behavior_delegate
-	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
-		..(amount)
-		return
-	if(BD.clear_head_tickcancel == world.time)
-		return
-	BD.clear_head_tickcancel = world.time
-	BD.clear_head--
-	if(BD.clear_head<=0)
-		BD.clear_head = 0
-
-/mob/living/carbon/Xenomorph/Warrior/KnockDown(amount, forced)
-	var/datum/behavior_delegate/boxer/BD = behavior_delegate
-	if(forced || mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
-		..(amount, forced)
-		return
-	if(BD.clear_head_tickcancel == world.time)
-		return
-	BD.clear_head_tickcancel = world.time
-	BD.clear_head--
-	if(BD.clear_head<=0)
-		BD.clear_head = 0
-
-/mob/living/carbon/Xenomorph/Warrior/SetKnockeddown(amount)
-	var/datum/behavior_delegate/boxer/BD = behavior_delegate
-	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
-		..(amount)
-		return
-	if(BD.clear_head_tickcancel == world.time)
-		return
-	BD.clear_head_tickcancel = world.time
-	BD.clear_head--
-	if(BD.clear_head<=0)
-		BD.clear_head = 0
-
-/mob/living/carbon/Xenomorph/Warrior/AdjustKnockeddown(amount)
-	var/datum/behavior_delegate/boxer/BD = behavior_delegate
-	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
-		..(amount)
-		return
-	if(BD.clear_head_tickcancel == world.time)
-		return
-	BD.clear_head_tickcancel = world.time
-	BD.clear_head--
-	if(BD.clear_head<=0)
-		BD.clear_head = 0
-
-/mob/living/carbon/Xenomorph/Warrior/Stun(amount)
-	var/datum/behavior_delegate/boxer/BD = behavior_delegate
-	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
-		..(amount)
-		return
-	if(BD.clear_head_tickcancel == world.time)
-		return
-	BD.clear_head_tickcancel = world.time
-	BD.clear_head--
-	if(BD.clear_head<=0)
-		BD.clear_head = 0
-
-/mob/living/carbon/Xenomorph/Warrior/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
-	var/datum/behavior_delegate/boxer/BD = behavior_delegate
-	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
-		..(amount)
-		return
-	if(BD.clear_head_tickcancel == world.time)
-		return
-	BD.clear_head_tickcancel = world.time
-	BD.clear_head--
-	if(BD.clear_head<=0)
-		BD.clear_head = 0
-
-/mob/living/carbon/Xenomorph/Warrior/AdjustStunned(amount)
-	var/datum/behavior_delegate/boxer/BD = behavior_delegate
-	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
-		..(amount)
-		return
-	if(BD.clear_head_tickcancel == world.time)
-		return
-	BD.clear_head_tickcancel = world.time
-	BD.clear_head--
-	if(BD.clear_head<=0)
-		BD.clear_head = 0
+/datum/behavior_delegate/warrior_base/proc/lifesteal_lock()
+	bound_xeno.remove_filter("empower_rage")

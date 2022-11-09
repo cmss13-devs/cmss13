@@ -1,4 +1,4 @@
-var/global/river_activated = 0
+var/global/river_activated = FALSE
 
 /obj/structure/machinery/filtration/console
 	name = "console"
@@ -47,29 +47,36 @@ var/global/river_activated = 0
 	update_icon()
 	return
 
-/obj/structure/machinery/filtration/console/attack_hand(mob/user as mob)
-	user.set_interaction(src)
-	//var/area/A = src.loc
-	var/d1
-	//var/d2
+/obj/structure/machinery/filtration/console/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "FiltrationControl", "[src.name]")
+		ui.open()
 
-	if (istype(user, /mob/living/carbon/human) || isRemoteControlling(user))
-		d1 = "<A href='?src=\ref[src];reset=1'>ACTIVATE RIVER</A>"
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT>[d1]</TT></BODY></HTML>"
-		river_activated = 1
-		show_browser(user, dat, "Filtration Control Console", "console")
+/obj/structure/machinery/filtration/console/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
-/obj/structure/machinery/filtration/console/Topic(href, href_list)
-	..()
-	if (usr.stat || inoperable())
+/obj/structure/machinery/filtration/console/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+
+/obj/structure/machinery/filtration/console/ui_data(mob/user)
+	var/list/data = list()
+
+	data["filt_on"] = river_activated
+
+	return data
+
+/obj/structure/machinery/filtration/console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
 		return
 
-	//if (buildstage != 2)
-	//	return
+	switch(action)
+		if("activate_filt")
+			river_activated = TRUE
 
-	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
-		usr.set_interaction(src)
-	else
-		close_browser(usr, "console")
-		return
-	return
+/obj/structure/machinery/filtration/console/attack_hand(mob/user)
+	. = ..()
+	tgui_interact(user)

@@ -12,13 +12,26 @@
 	///This excludes all the juices and dairy in cartons that are also defined in this file.
 	var/isGlass = TRUE
 
+/obj/item/reagent_container/food/drinks/bottle/bullet_act(obj/item/projectile/P)
+	. = ..()
+	if(isGlass)
+		smash()
+
 ///Audio/visual bottle breaking effects start here
 /obj/item/reagent_container/food/drinks/bottle/proc/smash(mob/living/target, mob/living/user)
-	user.temp_drop_inv_item(src)
-	var/obj/item/weapon/melee/broken_bottle/B = new /obj/item/weapon/melee/broken_bottle(user.loc)
-	user.put_in_active_hand(B)
+	var/obj/item/weapon/melee/broken_bottle/B
+	if(user)
+		user.temp_drop_inv_item(src)
+		B = new /obj/item/weapon/melee/broken_bottle(user.loc)
+		user.put_in_active_hand(B)
+	else
+		B = new /obj/item/weapon/melee/broken_bottle(src.loc)
 	if(prob(33))
-		new/obj/item/shard(target.loc) // Create a glass shard at the target's location!
+		if(target)
+			new/obj/item/shard(target.loc) // Create a glass shard at the target's location!
+		else
+			new/obj/item/shard(src.loc)
+
 	B.icon_state = icon_state
 
 	var/icon/I = new('icons/obj/items/drinks.dmi', icon_state)
@@ -26,8 +39,7 @@
 	I.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
 	B.icon = I
 
-	playsound(src, "shatter", 25, 1)
-	user.put_in_active_hand(B)
+	playsound(src, "windowshatter", 15, 1)
 	transfer_fingerprints_to(B)
 
 	qdel(src)
@@ -48,17 +60,21 @@
 
 	target.apply_damage(force, BRUTE, affecting, sharp=0)
 
-	if(affecting == "head" && istype(target, /mob/living/carbon/) && !isXeno(target))
+	if(affecting == "head" && iscarbon(target) && !isXeno(target))
 		for(var/mob/O in viewers(user, null))
-			if(target != user) O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a bottle of [name], by [user]!</B>")), 1)
-			else O.show_message(text(SPAN_DANGER("<B>[target] hit \himself with a bottle of [name] on the head!</B>")), 1)
+			if(target != user)
+				O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a bottle of [name], by [user]!</B>")), 1)
+			else
+				O.show_message(text(SPAN_DANGER("<B>[target] hit \himself with a bottle of [name] on the head!</B>")), 1)
 		if(drowsy_threshold > 0)
 			target.apply_effect(min(drowsy_threshold, 10) , DROWSY)
 
 	else //Regular attack text
 		for(var/mob/O in viewers(user, null))
-			if(target != user) O.show_message(text(SPAN_DANGER("<B>[target] has been attacked with a bottle of [name], by [user]!</B>")), 1)
-			else O.show_message(text(SPAN_DANGER("<B>[target] has attacked \himself with a bottle of [name]!</B>")), 1)
+			if(target != user)
+				O.show_message(text(SPAN_DANGER("<B>[target] has been attacked with a bottle of [name], by [user]!</B>")), 1)
+			else
+				O.show_message(text(SPAN_DANGER("<B>[target] has attacked \himself with a bottle of [name]!</B>")), 1)
 
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has attacked [target.name] ([target.ckey]) with a bottle!</font>")
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been smashed with a bottle by [user.name] ([user.ckey])</font>")
@@ -66,7 +82,7 @@
 
 	if(reagents)
 		for(var/mob/O in viewers(user, null))
-			O.show_message(text(SPAN_NOTICE("<B>The contents of the [src] splashes all over [target]!</B>")), 1)
+			O.show_message(text(SPAN_NOTICE("<B>The contents of \the [src] splashes all over [target]!</B>")), 1)
 		reagents.reaction(target, TOUCH)
 
 	smash(target, user)
@@ -77,7 +93,7 @@
 	if(!isGlass || !istype(I, /obj/item/paper))
 		return ..()
 	if(!reagents || !reagents.reagent_list.len)
-		to_chat(user, SPAN_NOTICE("[src] is empty..."))
+		to_chat(user, SPAN_NOTICE("\The [src] is empty..."))
 		return
 	var/alcohol_potency = 0
 	for(var/datum/reagent/R in reagents.reagent_list)
@@ -88,7 +104,7 @@
 			alcohol_potency += RA.boozepwr * (R.volume / 8)
 
 	if(alcohol_potency < BURN_LEVEL_TIER_1)
-		to_chat(user, SPAN_NOTICE("There's not enough flammable liquid in [src]!"))
+		to_chat(user, SPAN_NOTICE("There's not enough flammable liquid in \the [src]!"))
 		return
 	alcohol_potency = Clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
 
@@ -104,7 +120,7 @@
 ///Alcohol bottles and their contents.
 /obj/item/reagent_container/food/drinks/bottle/gin
 	name = "\improper Griffeater Gin"
-	desc = "A bottle of high quality gin, produced in the New London Space Station."
+	desc = "A bottle of high-quality gin, produced in the New London Space Station."
 	icon_state = "ginbottle"
 	center_of_mass = "x=16;y=4"
 
@@ -197,15 +213,15 @@
 	name = "\improper White Queen bottle"
 	icon_state = "w_queen"
 
-/obj/item/reagent_container/food/drinks/bottle/tequilla
-	name = "\improper Caccavo Guaranteed Quality Tequilla"
+/obj/item/reagent_container/food/drinks/bottle/tequila
+	name = "\improper Caccavo Guaranteed Quality tequila"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
-	icon_state = "tequillabottle"
+	icon_state = "tequilabottle"
 	center_of_mass = "x=16;y=3"
 
-/obj/item/reagent_container/food/drinks/bottle/tequilla/Initialize()
+/obj/item/reagent_container/food/drinks/bottle/tequila/Initialize()
 	. = ..()
-	reagents.add_reagent("tequilla", 100)
+	reagents.add_reagent("tequila", 100)
 
 /obj/item/reagent_container/food/drinks/bottle/davenport
 	name = "\improper Davenport Rye Whiskey"
@@ -229,7 +245,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Silver laced tequilla, served in space night clubs across the galaxy."
+	desc = "Silver laced tequila, served in space night clubs across the galaxy."
 	icon_state = "patronbottle"
 	center_of_mass = "x=16;y=6"
 
@@ -289,7 +305,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/cognac
 	name = "Chateau De Baton Premium Cognac"
-	desc = "A sweet and strongly alchoholic drink, made after numerous distillations and years of maturing. You might as well not scream 'SHITCURITY' this time."
+	desc = "A sweet and strongly alcoholic drink, made after numerous distillations and years of maturing. You might as well not scream 'SHITCURITY' this time."
 	icon_state = "cognacbottle"
 	center_of_mass = "x=16;y=6"
 
@@ -349,13 +365,60 @@
 
 /obj/item/reagent_container/food/drinks/bottle/pwine
 	name = "Warlock's Velvet"
-	desc = "What a delightful packaging for a surely high quality wine! The vintage must be amazing!"
+	desc = "What a delightful packaging for a surely high-quality wine! The vintage must be amazing!"
 	icon_state = "pwinebottle"
 	center_of_mass = "x=16;y=4"
 
 /obj/item/reagent_container/food/drinks/bottle/pwine/Initialize()
 	. = ..()
 	reagents.add_reagent("pwine", 100)
+
+////////////////////////// BEERS ///////////////////////
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft
+	name = "Pendleton's Triple Star Lager"
+	desc = "A brand of colonial lager prevalent in the Outer Rim but practically unknown in the inner systems, probably because of health concerns. It tastes like absolutely nothing familiar to you, but is oddly refreshing and has a fruity taste. The label on the back reads, 'Brewed with exotic hops in Costaguana.' You're almost certain that's a fake country."
+	icon_state = "pendleton"
+	center_of_mass = "x=16;y=13"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/Initialize()
+	. = ..()
+	reagents.add_reagent("beer", 30)
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/tuxedo
+	name = "Tuxedo Premium"
+	desc = "A craft ale originally brewed in England, the Tuxedo Premium brand is widely advertised as a beer for the gentleman; one not enjoyed in a pub, but rather sipped over a formal dinner. It doesn't sell very well, partially because it doesn't taste much different than any other beer and partially because it is three times as expensive. But cherish it! This is the nectar of the rich."
+	icon_state = "tuxedo"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/ganucci
+	name = "Ganucci's Genuine Light Beer"
+	desc = "A light beer with a watery taste and sour undertones. It's not the best, but it's dirt cheap, and brewed in Italy, so it's naturally popular with the masses. Contrary to popular belief, it is real beer, and not in fact druidic dirt water."
+	icon_state = "ganucci"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/bluemalt
+	name = "Blue Malt"
+	desc = "A malt beer with an alcohol content that toes the line of legality. So-called 'blue' because it's the color face you get when you down so many of these that your heart stops working. The surgeon general's warning is printed in huge letters on the back of the bottle. Do guns count as heavy machinery?"
+	icon_state = "bluemalt"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/partypopper
+	name = "Party Popper Ale"
+	desc = "A fun, exotic craft beer from the colonies that mixes in a tiny bit of sugar along with light, fruity ale. The result makes the taste buds in your mouth do a little dance, presumably of confusion, and is said to make people smile after a sip. Best served at parties, worst served at funerals. Smile over your best friend's grave, why don't you."
+	icon_state = "partypopper"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/tazhushka
+	name = "Tazhushka's Turquoise Beer"
+	desc = "A UPP-originating beer made by the eponymous Tazhushka State Brewery. It singes your throat when you drink it, but it makes you also feel ready for anything. For a time, at least, until the hangover the brand is famous for kicks in and wrecks you inside out."
+	icon_state = "tazhushka"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/reaper
+	name = "Reaper Red"
+	desc = "A strong Japanese beer that is marketed as 'daring' and 'adventurous'. Considering the label is quite literally the universal sign for 'HAZARD', it's safe to say drinking enough of this will be enough of a daring adventure to make you move up your next appointment with your doctor regarding your weeping liver."
+	icon_state = "reaper"
+
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/mono
+	name = "Mono Lager"
+	desc = "This black and white beer bottle does not say where it's from, nor does it say what it is supposed to be. All you know is that it is a beer, and it has a rather bland taste. Makes you feel like you're looking through a photo from four centuries ago. Rumor is if you say the name fast enough, it makes you want to say a long-winded, villainous speech."
+	icon_state = "mono"
 
 //////////////////////////JUICES AND STUFF ///////////////////////
 

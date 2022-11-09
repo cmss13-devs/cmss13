@@ -81,7 +81,7 @@
 	if(shock(user, 70))
 		return
 
-	damage_dealt += 1
+	damage_dealt++
 
 	health -= damage_dealt
 	healthcheck()
@@ -225,6 +225,6 @@
 /obj/structure/grille/fire_act(exposed_temperature, exposed_volume)
 	if(!destroyed)
 		if(exposed_temperature > T0C + 1500)
-			health -= 1
+			health--
 			healthcheck()
 	..()

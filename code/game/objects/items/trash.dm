@@ -29,7 +29,7 @@
 /obj/item/trash/buritto
 	name = "Burrito wrapper"
 	icon_state = "burrito"
-	desc = "A foul smelling plastic film that once held a microwave burrito. Packaged by the Weyland-Yutani Corporation."
+	desc = "A foul-smelling plastic film that once held a microwave burrito. Packaged by the Weyland-Yutani Corporation."
 
 /obj/item/trash/candy
 	name = "Candy"
@@ -143,6 +143,20 @@
 /obj/item/trash/plate
 	name = "Plate"
 	icon_state = "plate"
+
+/obj/item/trash/ceramic_plate
+	name = "ceramic plate"
+	icon_state = "ceramic_plate"
+	desc = "A ceramic plate, it doesn't seem like it's done its patriotic duty of being a stand for food yet. Now that you look at it, this might make a good throwing weapon..."
+	throw_range = 5
+	throw_speed = SPEED_VERY_FAST
+	throwforce = 5
+
+/obj/item/trash/ceramic_plate/launch_impact(atom/hit_atom)
+	. = ..()
+	playsound(get_turf(src), "shatter", 50, TRUE)
+	visible_message(SPAN_DANGER("\The [src] shatters into a thousand tiny fragments!"))
+	qdel(src)
 
 /obj/item/trash/snack_bowl
 	name = "Snack bowl"

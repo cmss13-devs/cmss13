@@ -1,4 +1,3 @@
-
 /obj/structure/reagent_dispensers
 	name = "dispenser"
 	desc = "..."
@@ -6,15 +5,14 @@
 	icon_state = "watertank"
 	density = 1
 	anchored = 0
+	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
-
+	wrenchable = TRUE
+	unslashable = FALSE
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100,200,300)
 	var/chemical = ""
 	var/dispensing = TRUE
-
-/obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
-	return
 
 /obj/structure/reagent_dispensers/Initialize(mapload, reagent_amount = 1000)
 	. = ..()
@@ -29,15 +27,20 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
-/obj/structure/reagent_dispensers/examine(mob/user)
-	..()
+/obj/structure/reagent_dispensers/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(user, src) > 2 && user != loc) return
-	to_chat(user, SPAN_NOTICE(" It contains:"))
+	. += SPAN_NOTICE("It contains:")
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
-			to_chat(user, SPAN_NOTICE(" [R.volume] units of [R.name]"))
+			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
 	else
-		to_chat(user, SPAN_NOTICE(" Nothing."))
+		. += SPAN_NOTICE(" Nothing.")
+
+/obj/structure/reagent_dispensers/Destroy()
+	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
+	visible_message(SPAN_NOTICE("\The [src] falls apart as its contents spill everywhere!"))
+	. = ..()
 
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -53,6 +56,31 @@
 	var/N = tgui_input_list(usr, "Amount per transfer from this:","[src]", possible_transfer_amounts)
 	if(N)
 		amount_per_transfer_from_this = N
+
+/obj/structure/reagent_dispensers/proc/healthcheck()
+	if(health <= 0)
+		qdel(src)
+
+/obj/structure/reagent_dispensers/bullet_act(var/obj/item/projectile/Proj)
+	health -= Proj.damage
+	if(Proj.firer)
+		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+		log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	healthcheck()
+	return TRUE
+
+/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/user)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	user.animation_attack_on(src)
+	health -= (rand(user.melee_damage_lower, user.melee_damage_upper))
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	user.visible_message(SPAN_DANGER("[user] slashes \the [src]!"), \
+	SPAN_DANGER("You slash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	healthcheck()
+	return XENO_ATTACK_ACTION
+
 
 /obj/structure/reagent_dispensers/verb/set_transfer_direction() //set amount_per_transfer_from_this
 	set name = "Set transfer direction"
@@ -100,21 +128,21 @@
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
-	desc = "A watertank"
+	desc = "A water tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
 	chemical = "water"
 
 /obj/structure/reagent_dispensers/ammoniatank
 	name = "ammoniatank"
-	desc = "An ammoniatank"
+	desc = "An ammonia tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
 
 /obj/structure/reagent_dispensers/oxygentank
 	name = "oxygentank"
-	desc = "An oxygentank"
+	desc = "An oxygen tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "oxygentank"
 	chemical = "oxygen"
@@ -124,11 +152,11 @@
 	desc = "A sulfuric acid tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "sacidtank"
-	chemical = "sacid"
+	chemical = "sulphuric acid"
 
 /obj/structure/reagent_dispensers/pacidtank
 	name = "polytrinic acid tank"
-	desc = "A polytrinic acidtank"
+	desc = "A polytrinic acid tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "pacidtank"
 	chemical = "pacid"
@@ -142,7 +170,7 @@
 
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
-	desc = "A fueltank"
+	desc = "A fuel tank"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
@@ -153,15 +181,16 @@
 	var/reinforced = FALSE
 	var/datum/weakref/source_mob
 
-/obj/structure/reagent_dispensers/fueltank/examine(mob/user)
-	..()
-	if(user != loc) return
+/obj/structure/reagent_dispensers/fueltank/get_examine_text(mob/user)
+	. = ..()
+	if(user != loc)
+		return
 	if(modded)
-		to_chat(user, SPAN_DANGER("Fuel faucet is wrenched open, leaking the fuel!"))
+		. += SPAN_DANGER("The fuel faucet is wrenched open, leaking the fuel!")
 	if(rig)
-		to_chat(user, SPAN_NOTICE("There is some kind of device rigged to the tank."))
+		. += SPAN_NOTICE("There is some kind of device rigged to the tank.")
 	if(reinforced)
-		to_chat(user, SPAN_NOTICE("It seems to be reinforced with metal shielding."))
+		. += SPAN_NOTICE("It seems to be reinforced with metal shielding.")
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand()
 	if(rig)
@@ -186,7 +215,7 @@
 			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
 		modded = modded ? 0 : 1
 		if (modded)
-			message_admins("[key_name_admin(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
+			message_admins("[key_name_admin(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
 			log_game("[key_name(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel.")
 			leak_fuel(amount_per_transfer_from_this)*/
 	if(istype(W,/obj/item/device/assembly_holder))
@@ -208,7 +237,7 @@
 
 		var/obj/item/device/assembly_holder/H = W
 		if (istype(H.a_left,/obj/item/device/assembly/igniter) || istype(H.a_right,/obj/item/device/assembly/igniter))
-			msg_admin_niche("[key_name_admin(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name_admin(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
 			log_game("[key_name(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion.")
 
 		rig = W
@@ -248,7 +277,7 @@
 
 		user.visible_message(SPAN_DANGER("[user] removes the shielding from [src]."),\
 		SPAN_NOTICE("You remove the shielding from [src]."))
-		new /obj/item/stack/sheet/metal(loc, STACK_5)
+		new /obj/item/stack/sheet/plasteel(loc, STACK_10)
 
 		reinforced = FALSE
 		update_icon()
@@ -263,7 +292,7 @@
 
 	if(Proj.damage > 10 && prob(60) && !reinforced)
 		if(Proj.firer)
-			message_staff("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+			message_staff("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
 			log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 		exploding = TRUE
 		explode()
@@ -330,12 +359,12 @@
 
 /obj/structure/reagent_dispensers/fueltank/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	if(!reinforced)
-		reagents.source_mob = flame_cause_data.weak_mob
+		reagents.source_mob = flame_cause_data?.weak_mob
 		explode()
 
 /obj/structure/reagent_dispensers/fueltank/gas
 	name = "gastank"
-	desc = "A gastank"
+	desc = "A gas tank"
 
 /obj/structure/reagent_dispensers/fueltank/gas/leak_fuel(amount)
 	if(reagents.total_volume == 0)
@@ -346,13 +375,13 @@
 
 /obj/structure/reagent_dispensers/fueltank/gas/methane
 	name = "methanetank"
-	desc = "A methanetank"
+	desc = "A methane tank"
 	icon_state = "methanetank"
 	chemical = "methane"
 
 /obj/structure/reagent_dispensers/fueltank/gas/hydrogen
 	name = "hydrogentank"
-	desc = "A hydrogentank"
+	desc = "A hydrogen tank"
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
 
@@ -393,6 +422,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "peppertank"
 	anchored = 1
+	wrenchable =  FALSE
 	density = 0
 	amount_per_transfer_from_this = 45
 	chemical = "condensedcapsaicin"
@@ -418,6 +448,12 @@
 	amount_per_transfer_from_this = 10
 	chemical = "beer"
 
+/obj/structure/reagent_dispensers/beerkeg/alt
+	icon_state = "beertank_alt"
+
+/obj/structure/reagent_dispensers/beerkeg/alt_dark
+	icon_state = "beertank_alt2"
+
 /obj/structure/reagent_dispensers/virusfood
 	name = "virus food dispenser"
 	desc = "A dispenser of virus food."
@@ -425,6 +461,7 @@
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
 	anchored = 1
+	wrenchable = FALSE
 	density = 0
 	chemical = "virusfood"
 

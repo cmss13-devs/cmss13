@@ -3,6 +3,8 @@ var/world_view_size = 7
 var/lobby_view_size = 16
 
 var/internal_tick_usage = 0
+
+var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 /world
 	mob = /mob/new_player
 	turf = /turf/open/space/basic
@@ -31,8 +33,11 @@ var/internal_tick_usage = 0
 	round_scheduler_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
 	mutator_logs = file("data/logs/[year_string]/mutator_logs.log")
 	mutator_logs << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
+	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
+	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 
+	GLOB.revdata = new
+	initialize_tgs()
 	initialize_marine_armor()
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
@@ -44,6 +49,7 @@ var/internal_tick_usage = 0
 	jobban_loadbanfile()
 	LoadBans()
 	load_motd()
+	load_tm_message()
 	load_mode()
 	loadShuttleInfoDatums()
 	populate_gear_list()
@@ -113,7 +119,13 @@ var/internal_tick_usage = 0
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
+/world/proc/initialize_tgs()
+	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
+	GLOB.revdata.load_tgs_info()
+
 /world/Topic(T, addr, master, key)
+	TGS_TOPIC
+
 	if (T == "ping")
 		var/x = 1
 		for (var/client/C)
@@ -184,7 +196,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 /world/Reboot(var/reason)
 	Master.Shutdown()
-
+	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
 	for(var/thing in GLOB.clients)
 		if(!thing)
@@ -194,20 +206,33 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")
 
-	var/round_extra_data = ""
-	// Notify helper daemon of reboot, regardless of reason.
-	if(SSticker.mode)
-		round_extra_data = "&message=[SSticker.mode.end_round_message()]"
-	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
+	if(TgsAvailable())
+		send_tgs_restart()
 
-	if(CONFIG_GET(flag/no_restarts))
+		TgsReboot()
+		TgsEndProcess()
+	else
 		shutdown()
-		return
 
-	..(reason)
+/world/proc/send_tgs_restart()
+	if(CONFIG_GET(string/new_round_alert_channel) && CONFIG_GET(string/new_round_alert_role_id))
+		if(round_statistics)
+			send2chat("[round_statistics.round_name] completed!", CONFIG_GET(string/new_round_alert_channel))
+		if(SSmapping.next_map_configs)
+			var/datum/map_config/next_map = SSmapping.next_map_configs[GROUND_MAP]
+			if(next_map)
+				send2chat("<@&[CONFIG_GET(string/new_round_alert_role_id)]> Restarting! Next map is [next_map.map_name]", CONFIG_GET(string/new_round_alert_channel))
+		else
+			send2chat("<@&[CONFIG_GET(string/new_round_alert_role_id)]> Restarting!", CONFIG_GET(string/new_round_alert_channel))
+	return
 
-
-
+/world/proc/send_reboot_sound()
+	var/reboot_sound = SAFEPICK(reboot_sfx)
+	if(reboot_sound)
+		var/sound/reboot_sound_ref = sound(reboot_sound)
+		for(var/client/client as anything in GLOB.clients)
+			if(client?.prefs.toggles_sound & SOUND_REBOOT)
+				SEND_SOUND(client, reboot_sound_ref)
 
 /world/proc/load_mode()
 	var/list/Lines = file2list("data/mode.txt")
@@ -223,6 +248,11 @@ var/world_topic_spam_protect_time = world.timeofday
 
 /world/proc/load_motd()
 	join_motd = file2text("config/motd.txt")
+
+/world/proc/load_tm_message()
+	var/datum/getrev/revdata = GLOB.revdata
+	if(revdata.testmerge.len)
+		current_tms = revdata.GetTestMergeInfo()
 
 /world/proc/update_status()
 	//Note: Hub content is limited to 254 characters, including limited HTML/CSS.

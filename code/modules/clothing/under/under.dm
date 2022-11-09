@@ -44,20 +44,26 @@
 	else
 		worn_state = icon_state
 
+	var/rollable_state = "[worn_state]_d[contained_sprite ? "_un" : ""]"
+	var/cuttable_state = "[worn_state]_df[contained_sprite ? "_un" : ""]"
+	var/removable_state = "[worn_state]_dj[contained_sprite ? "_un" : ""]"
+	var/check_icon = contained_sprite ? icon : default_onmob_icons[WEAR_BODY]
+	var/list/check_icon_states = icon_states(check_icon)
+
 	//autodetect rollability
-	if((worn_state + "_d") in icon_states(default_onmob_icons[WEAR_BODY]))
+	if(rollable_state in check_icon_states)
 		flags_jumpsuit |= UNIFORM_SLEEVE_ROLLABLE
 	else if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLABLE)
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_ROLLABLE
 		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having rollable sleeves but could not detect a rolled icon state.")
 
-	if((worn_state + "_df") in icon_states(default_onmob_icons[WEAR_BODY]))
+	if(cuttable_state in check_icon_states)
 		flags_jumpsuit |= UNIFORM_SLEEVE_CUTTABLE
 	else if(flags_jumpsuit & UNIFORM_SLEEVE_CUTTABLE)
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_CUTTABLE
 		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having cuttable sleeves but could not detect a cut icon state.")
 
-	if((worn_state + "_dj") in icon_states(default_onmob_icons[WEAR_BODY]))
+	if(removable_state in check_icon_states)
 		flags_jumpsuit |= UNIFORM_JACKET_REMOVABLE
 	else if(flags_jumpsuit & UNIFORM_JACKET_REMOVABLE)
 		flags_jumpsuit &= ~UNIFORM_JACKET_REMOVABLE
@@ -110,18 +116,18 @@
 				add_fingerprint(usr)
 
 
-/obj/item/clothing/under/examine(mob/user)
-	..()
+/obj/item/clothing/under/get_examine_text(mob/user)
+	. = ..()
 	if(has_sensor)
 		switch(sensor_mode)
 			if(SENSOR_MODE_OFF)
-				to_chat(user, "Its sensors appear to be disabled.")
+				. += "Its sensors appear to be disabled."
 			if(SENSOR_MODE_BINARY)
-				to_chat(user, "Its binary life sensors appear to be enabled.")
+				. += "Its binary life sensors appear to be enabled."
 			if(SENSOR_MODE_DAMAGE)
-				to_chat(user, "Its vital tracker appears to be enabled.")
+				. += "Its vital tracker appears to be enabled."
 			if(SENSOR_MODE_LOCATION)
-				to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
+				. += "Its vital tracker and tracking beacon appear to be enabled."
 
 /obj/item/clothing/under/proc/set_sensors(mob/user)
 	if (istype(user, /mob/dead/)) return
@@ -187,11 +193,15 @@
 		under_icon = icon_override
 	else if(human_bodytype && LAZYISIN(sprite_sheets, human_bodytype))
 		under_icon = sprite_sheets[human_bodytype]
+	else if(contained_sprite)
+		under_icon = icon
 	else if(LAZYISIN(item_icons, WEAR_BODY))
 		under_icon = item_icons[WEAR_BODY]
 	else
 		under_icon = default_onmob_icons[WEAR_BODY]
-	if(!(("[worn_state]_d") in icon_states(under_icon)))
+
+	var/check_worn_state = "[worn_state]_d[contained_sprite ? "_un" : ""]"
+	if(!(check_worn_state in icon_states(under_icon)))
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/verb/rollsuit()
@@ -229,15 +239,19 @@
 		under_icon = icon_override
 	else if(human_bodytype && LAZYISIN(sprite_sheets, human_bodytype))
 		under_icon = sprite_sheets[human_bodytype]
+	else if(contained_sprite)
+		under_icon = icon
 	else if(LAZYISIN(item_icons, WEAR_BODY))
 		under_icon = item_icons[WEAR_BODY]
 	else
 		under_icon = default_onmob_icons[WEAR_BODY]
-	if(!(("[worn_state]_dj") in icon_states(under_icon)))
+
+	var/check_worn_state = "[worn_state]_dj[contained_sprite ? "_un" : ""]"
+	if(!(check_worn_state in icon_states(under_icon)))
 		flags_jumpsuit &= ~UNIFORM_JACKET_REMOVABLE
 
 /obj/item/clothing/under/verb/removejacket()
-	set name = "Remove Jacket"
+	set name = "Toggle Jacket"
 	set category = "Object"
 	set src in usr
 	if(!isliving(usr))

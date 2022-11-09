@@ -11,10 +11,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
-"ad" = (
-/obj/structure/machinery/disposal,
-/turf/open/floor/almayer,
-/area/adminlevel/chinook/sec)
 "af" = (
 /turf/open/floor/almayer_hull{
 	icon_state = "outerhull_dir"
@@ -55,7 +51,6 @@
 /area/space)
 "am" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -64,7 +59,7 @@
 /area/adminlevel/chinook)
 "ap" = (
 /obj/structure/closet/secure_closet/securecom{
-	name = "admiral's secure box"
+	name = "general's secure box"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -590,7 +585,7 @@
 /area/adminlevel/chinook/sec)
 "bR" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/storage/mateba_case/admiral{
+/obj/item/storage/mateba_case/general{
 	pixel_y = 4
 	},
 /turf/open/floor/almayer,
@@ -755,13 +750,6 @@
 	name = "\improper carpet"
 	},
 /area/adminlevel/chinook/sec)
-"cx" = (
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/adminlevel/chinook/cargo)
 "cy" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/weldingtool/largetank,
@@ -1107,7 +1095,6 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/multitool,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -1209,7 +1196,7 @@
 "dU" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "\improper Commodore Meeting Room"
+	name = "\improper 2BG Command Meeting Room"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -1234,7 +1221,7 @@
 "dZ" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Commodore, Fifth Division"
+	name = "\improper Colonel, Fifth Division"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -1775,9 +1762,9 @@
 	pixel_y = 32
 	},
 /obj/structure/closet/secure_closet/commander{
-	name = "commodore's locker"
+	name = "colonel's locker"
 	},
-/obj/item/clothing/head/beret/marine/commander/cdre,
+/obj/item/clothing/head/beret/marine/commander/council,
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
 	icon = 'icons/turf/floors/floors.dmi';
@@ -1794,7 +1781,7 @@
 /area/adminlevel/chinook/engineering)
 "fK" = (
 /obj/structure/closet/secure_closet/securecom{
-	name = "commodore's secure box"
+	name = "colonel's secure box"
 	},
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
@@ -1839,7 +1826,7 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/securecom{
-	name = "commodore's secure box"
+	name = "colonel's secure box"
 	},
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
@@ -2116,7 +2103,6 @@
 	},
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -2168,7 +2154,6 @@
 "gT" = (
 /obj/structure/machinery/telecomms/relay/preset/centcom,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -2834,7 +2819,7 @@
 "jc" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Commodore, Third Division"
+	name = "\improper Colonel, Third Division"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -2856,7 +2841,7 @@
 "jg" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Commodore, First Division"
+	name = "\improper Colonel, First Division"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -3177,7 +3162,7 @@
 "ki" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Commodore, Second Division"
+	name = "\improper Colonel, Second Division"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -3468,9 +3453,9 @@
 /area/adminlevel/chinook/event)
 "kU" = (
 /obj/structure/closet/secure_closet/commander{
-	name = "commodore's locker"
+	name = "colonel's locker"
 	},
-/obj/item/clothing/head/beret/marine/commander/cdre,
+/obj/item/clothing/head/beret/marine/commander/council,
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
 	icon = 'icons/turf/floors/floors.dmi';
@@ -3621,13 +3606,6 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
-"lz" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver";
-	tag = "icon-silver (WEST)"
-	},
-/area/adminlevel/chinook)
 "lC" = (
 /turf/closed/wall/almayer/reinforced,
 /area/adminlevel/chinook/event)
@@ -5614,7 +5592,7 @@
 "rX" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "Commodore, Fourth Division"
+	name = "\improper Colonel, Fourth Division"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -6761,9 +6739,9 @@
 /area/adminlevel/chinook/engineering)
 "vs" = (
 /obj/structure/closet/secure_closet/commander{
-	name = "commodore's locker"
+	name = "colonel's locker"
 	},
-/obj/item/clothing/head/beret/marine/commander/cdre,
+/obj/item/clothing/head/beret/marine/commander/council,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -6961,7 +6939,6 @@
 	listening_level = 9
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -7326,13 +7303,6 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/chinook/event)
-"xk" = (
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/adminlevel/chinook)
 "xn" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/structure/extinguisher_cabinet{
@@ -7410,7 +7380,7 @@
 "xH" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "\improper Captain Offices"
+	name = "\improper SCO Offices"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -7500,7 +7470,7 @@
 "ya" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
-	name = "\improper Rear Admiral, 3rd Fleet 2nd Battlegroup"
+	name = "\improper General, 3rd Fleet 2nd Battlegroup"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -7708,7 +7678,6 @@
 	listening_level = 9
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -8313,9 +8282,9 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/commander{
-	name = "commodore's locker"
+	name = "colonel's locker"
 	},
-/obj/item/clothing/head/beret/marine/commander/cdre,
+/obj/item/clothing/head/beret/marine/commander/council,
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
 	icon = 'icons/turf/floors/floors.dmi';
@@ -8746,7 +8715,6 @@
 "CN" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/adminlevel/chinook)
@@ -8903,7 +8871,6 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -9055,13 +9022,6 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
-"Ea" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "silver";
-	tag = "icon-silver (WEST)"
-	},
-/area/adminlevel/chinook)
 "Ed" = (
 /obj/structure/machinery/cm_vending/clothing/dress,
 /turf/open/floor/almayer{
@@ -9476,7 +9436,6 @@
 "FQ" = (
 /obj/structure/machinery/telecomms/hub/preset_cent,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -11326,7 +11285,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/adminlevel/chinook/shuttle)
@@ -11594,7 +11552,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -13092,7 +13049,6 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -13145,7 +13101,6 @@
 	freq_listening = list(1353,1357,1359,1355,1469,1471,1354,1342,1344,1235,1340,1214,1358,1356,1236,1240,1449,1451,1453,1455)
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -13288,7 +13243,6 @@
 "SQ" = (
 /obj/structure/machinery/telecomms/server/presets/centcomm,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -13502,7 +13456,7 @@
 /area/adminlevel/chinook/engineering)
 "TG" = (
 /obj/structure/machinery/door/airlock/almayer/command{
-	name = "\improper Rear Admiral, 3rd Fleet 2nd Battlegroup"
+	name = "\improper General, 3rd Fleet 2nd Battlegroup"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -14139,7 +14093,6 @@
 	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -14510,7 +14463,6 @@
 /area/adminlevel/chinook/event)
 "WV" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/adminlevel/chinook/cargo)
@@ -15066,17 +15018,9 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/chinook/event)
-"Yp" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red";
-	tag = "icon-red"
-	},
-/area/adminlevel/chinook/sec)
 "Yq" = (
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/adminlevel/chinook/shuttle)
@@ -15300,7 +15244,6 @@
 	name = "Chinook Telecommunications Mainframe"
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -17681,7 +17624,7 @@ SP
 tO
 ag
 wp
-xk
+ag
 ag
 ag
 ag
@@ -24909,7 +24852,7 @@ Wq
 qZ
 jY
 Vj
-lz
+Vj
 Vj
 Vj
 Vj
@@ -26850,7 +26793,7 @@ Vj
 Vj
 Vj
 WC
-Ea
+Vj
 XY
 XY
 Vj
@@ -26877,8 +26820,8 @@ JB
 pw
 Ke
 pw
-cx
-cx
+pw
+pw
 pw
 pw
 pw
@@ -27597,11 +27540,11 @@ ZI
 WF
 Br
 ZQ
-Yp
-Yp
+Cf
+Cf
 ZQ
-Yp
-Yp
+Cf
+Cf
 ZJ
 ZQ
 YL
@@ -27879,11 +27822,11 @@ ok
 RK
 gc
 gN
-Yp
-Yp
+Cf
+Cf
 KL
-Yp
-Yp
+Cf
+Cf
 Br
 EM
 Li
@@ -27988,10 +27931,10 @@ Yb
 GA
 YY
 Ej
-Yp
-Yp
+Cf
+Cf
 KL
-Yp
+Cf
 ZQ
 Ub
 Yb
@@ -28130,7 +28073,7 @@ lh
 ZY
 gc
 Lu
-ad
+de
 gc
 Ik
 lh
@@ -28613,10 +28556,10 @@ Ff
 HJ
 Jr
 KL
-Yp
-Yp
-Yp
-Yp
+Cf
+Cf
+Cf
+Cf
 ZQ
 Vh
 ZQ
@@ -28632,20 +28575,20 @@ zD
 Yb
 ZQ
 CW
-Yp
+Cf
 KL
-Yp
-Yp
-Yp
+Cf
+Cf
+Cf
 Cf
 ZQ
-Yp
+Cf
 KL
 ng
 GA
-Yp
-Yp
-Yp
+Cf
+Cf
+Cf
 Br
 Xl
 Xl
@@ -29004,12 +28947,12 @@ Yb
 YL
 SK
 hw
-Yp
+Cf
 LB
 gc
 Pb
 dM
-Yp
+Cf
 ZJ
 YL
 gc
@@ -30274,8 +30217,8 @@ lh
 ZQ
 Ub
 ZQ
-Yp
-Yp
+Cf
+Cf
 ZQ
 Ub
 ZQ
@@ -30663,10 +30606,10 @@ Br
 Br
 lh
 Gb
-Yp
+Cf
 KL
-Yp
-Yp
+Cf
+Cf
 ZJ
 Bp
 DO
@@ -31279,22 +31222,22 @@ al
 al
 Bc
 ZQ
-Yp
-Yp
+Cf
+Cf
 ZQ
-Yp
-Yp
-Yp
+Cf
+Cf
+Cf
 ZJ
 lh
 Gb
-Yp
+Cf
 ZQ
-Yp
-Yp
+Cf
+Cf
 ZQ
-Yp
-Yp
+Cf
+Cf
 gc
 Bu
 YL
@@ -31305,7 +31248,7 @@ gc
 gc
 xL
 KL
-Yp
+Cf
 Qz
 Qz
 Fr
@@ -32304,14 +32247,14 @@ bb
 ZJ
 GA
 Gb
-Yp
-Yp
-Yp
+Cf
+Cf
+Cf
 XL
-Yp
+Cf
 KL
-Yp
-Yp
+Cf
+Cf
 ZJ
 YL
 Tx

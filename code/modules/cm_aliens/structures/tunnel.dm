@@ -14,6 +14,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = RESIN_STRUCTURE_LAYER
+	plane = FLOOR_PLANE
 
 	var/tunnel_desc = "" //description added by the hivelord.
 
@@ -41,6 +42,9 @@
 
 		hive.tunnels += src
 
+	var/obj/effect/alien/resin/trap/resin_trap = locate() in L
+	if(resin_trap)
+		qdel(resin_trap)
 
 /obj/structure/tunnel/Destroy()
 	if(hive)
@@ -58,10 +62,10 @@
 
 	return FALSE
 
-/obj/structure/tunnel/examine(mob/user)
-	..()
+/obj/structure/tunnel/get_examine_text(mob/user)
+	. = ..()
 	if(tunnel_desc && (isfriendly(user) || isobserver(user)))
-		to_chat(user, SPAN_INFO("The pheromone scent reads: \'[tunnel_desc]\'"))
+		. += SPAN_INFO("The pheromone scent reads: \'[tunnel_desc]\'")
 
 /obj/structure/tunnel/proc/healthcheck()
 	if(health <= 0)
@@ -111,7 +115,7 @@
 				continue
 
 			tunnels += list(T.tunnel_desc = T)
-		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", tunnels)
+		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", tunnels, theme="hive_status")
 		if(!pick)
 			return FALSE
 

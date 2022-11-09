@@ -542,4 +542,4 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 /obj/structure/transmitter/touchtone
 	name = "touch-tone telephone"
 	icon_state = "rotary_phone"//placeholder
-	desc = "Ancient aliens, its all true. I'm an expert just like you!"
+	desc = "Ancient aliens, it's all true. I'm an expert just like you!"

@@ -22,16 +22,19 @@
 	create_reagents(100)
 
 
-/obj/structure/bed/chair/janicart/examine(mob/user)
-	to_chat(user, "[icon2html(src, usr)] This [callme] contains [reagents.total_volume] unit\s of water!")
+/obj/structure/bed/chair/janicart/get_examine_text(mob/user)
+	. = list()
+	. += "[icon2html(src, usr)] This [callme] contains [reagents.total_volume] unit\s of water!"
 	if(mybag)
-		to_chat(user, "\A [mybag] is hanging on the [callme].")
+		. += "\A [mybag] is hanging on the [callme]."
 
 
 /obj/structure/bed/chair/janicart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/mop))
+		var/obj/item/tool/mop/mop = I
 		if(reagents.total_volume > 1)
-			reagents.trans_to(I, 2)
+			reagents.trans_to(mop, mop.max_reagent_volume)
+			mop.update_icon()
 			to_chat(user, SPAN_NOTICE("You wet [I] in the [callme]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		else

@@ -77,11 +77,18 @@
 		// Flamer fire?
 		if(istype(atm, /obj/flamer_fire))
 			var/obj/flamer_fire/FF = atm
-			if(FF.firelevel > fire_level_to_extinguish)
+			if((FF.firelevel > fire_level_to_extinguish) && (!FF.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
 				FF.firelevel -= fire_level_to_extinguish
 				FF.update_flame()
 			else
-				qdel(atm)
+				switch(FF.fire_variant)
+					if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, extinguishes faster.
+						if(FF.firelevel > 3*fire_level_to_extinguish)
+							FF.firelevel -= 3*fire_level_to_extinguish
+							FF.update_flame()
+						else qdel(atm)
+					else
+						qdel(atm)
 			continue
 
 		if (istype(atm, /obj/structure/barricade))
@@ -100,6 +107,8 @@
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
 			M.ExtinguishMob()
+			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
+				continue
 			if (iscarbon(M))
 				var/mob/living/carbon/C = M
 				if (C.ally_of_hivenumber(hivenumber))
@@ -108,6 +117,11 @@
 				apply_spray(M)
 				M.apply_armoured_damage(damage_amount, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
+			continue
+
+		if(isVehicleMultitile(atm))
+			var/obj/vehicle/multitile/V = atm
+			V.handle_acidic_environment(src)
 			continue
 
 	START_PROCESSING(SSobj, src)
@@ -139,6 +153,9 @@
 		var/mob/living/carbon/Xenomorph/X = AM
 		if (X.hivenumber != hivenumber)
 			apply_spray(AM)
+	else if(isVehicleMultitile(AM))
+		var/obj/vehicle/multitile/V = AM
+		V.handle_acidic_environment(src)
 
 //damages human that comes in contact
 /obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/H, should_stun = TRUE)
@@ -428,6 +445,9 @@
 
 /obj/effect/xenomorph/xeno_telegraph/brown
 	icon_state = "xeno_telegraph_brown"
+
+/obj/effect/xenomorph/xeno_telegraph/green
+	icon_state = "xeno_telegraph_green"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook"

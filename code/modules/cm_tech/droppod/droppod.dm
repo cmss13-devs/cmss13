@@ -151,14 +151,14 @@
 
 /obj/structure/droppod/proc/post_land()
 	density = TRUE
-	for(var/mob/M in loc)
-		M.gib(initial(name))
+	for(var/mob/mob in loc)
+		mob.gib(create_cause_data(initial(name)))
 
-	for(var/obj/structure/O in loc)
-		O.update_health(-land_damage)
+	for(var/obj/structure/structure in loc)
+		structure.update_health(-land_damage)
 
-	for(var/mob/M in view(7, loc))
-		shake_camera(M, 4, 5)
+	for(var/mob/mob in view(7, loc))
+		shake_camera(mob, 4, 5)
 
 	addtimer(CALLBACK(src, .proc/open), open_time)
 

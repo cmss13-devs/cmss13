@@ -82,7 +82,7 @@
 		return
 	var/job_actual = get_actual_job_name(src)
 	if(!human_stats.round_played)
-		human_stats.total_rounds_played += 1
+		human_stats.total_rounds_played++
 		human_stats.round_played = TRUE
 	human_stats.total_playtime += life_time_total
 	human_stats.track_job_playtime(job_actual, life_time_total)
@@ -112,7 +112,7 @@
 	if(!S)
 		return
 	if(!S.round_played)
-		S.total_rounds_played += 1
+		S.total_rounds_played++
 		S.round_played = TRUE
 	S.total_playtime += time
 	if(round_statistics)
@@ -121,10 +121,10 @@
 
 /datum/entity/player_stats/human/count_personal_death(var/job)
 	var/datum/entity/player_stats/job/S = setup_job_stats(job)
-	S.total_deaths += 1
+	S.total_deaths++
 	if(round_statistics)
 		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job)
-		R.total_deaths += 1
+		R.total_deaths++
 
 //******************
 //Stat Procs - kills
@@ -161,10 +161,10 @@
 		return
 	if(cause)
 		var/datum/entity/weapon_stats/W = setup_weapon_stats(cause)
-		W.total_kills +=1
+		W.total_kills++
 		if(round_statistics)
 			var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(cause)
-			R.total_kills +=1
+			R.total_kills++
 		recalculate_top_weapon()
 	..()
 
@@ -173,10 +173,10 @@
 		return
 	if(cause)
 		var/datum/entity/weapon_stats/W = setup_weapon_stats(cause)
-		W.total_kills +=1
+		W.total_kills++
 		if(round_statistics)
 			var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(cause)
-			R.total_kills +=1
+			R.total_kills++
 		recalculate_top_weapon()
 	..()
 
@@ -341,7 +341,7 @@
 	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
 	if(isnull(human_stats))
 		return
-	human_stats.total_friendly_fire += 1
+	human_stats.total_friendly_fire++
 	human_stats.count_weapon_friendly_fire(weapon, amount)
 	human_stats.count_personal_friendly_fire(job, amount)
 
@@ -404,5 +404,5 @@
 		return
 	if(isnull(human_stats.total_screams))
 		human_stats.total_screams = 0
-	human_stats.total_screams += 1
+	human_stats.total_screams++
 	human_stats.count_personal_scream(job, amount)

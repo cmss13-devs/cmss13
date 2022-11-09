@@ -143,7 +143,7 @@
 
 /obj/item/tool/surgery/scalpel/pict_system
 	name = "\improper PICT system"
-	desc = "The Precision Incision and Cauterization Tool uses a high-frequency vibrating blade, laser cautery, and suction liquid control system to precisely sever target tissues while preventing all fluid leakage. Despite its troubled development program and horrifying pricetag, outside of complex experimental surgeries it isn't any better than an ordinary twenty-dollar scalpel and can't create a full-length incision bloodlessly."
+	desc = "The Precision Incision and Cauterization Tool uses a high-frequency vibrating blade, laser cautery, and suction liquid control system to precisely sever target tissues while preventing all fluid leakage. Despite its troubled development program and horrifying price tag, outside of complex experimental surgeries it isn't any better than an ordinary twenty-dollar scalpel and can't create a full-length incision bloodlessly."
 	icon_state = "pict_system"
 	w_class = SIZE_SMALL
 	force = 7.5
@@ -162,7 +162,7 @@
 
 /obj/item/tool/surgery/circular_saw
 	name = "circular saw"
-	desc = "For heavy duty cutting."
+	desc = "For heavy-duty cutting."
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
@@ -180,7 +180,7 @@
 
 /obj/item/tool/surgery/circular_saw/predatorbonesaw
 	name = "bone saw"
-	desc = "For heavy duty cutting."
+	desc = "For heavy-duty cutting."
 	icon_state = "predator_bonesaw"
 	flags_item = NO_FLAGS
 
@@ -195,6 +195,7 @@
 	force = 0
 	throwforce = 1.0
 	w_class = SIZE_SMALL
+	matter = list("plastic" = 7500)
 
 /obj/item/tool/surgery/bonegel/predatorbonegel
 	name = "gel gun"
@@ -212,6 +213,7 @@
 
 	force = 0
 	throwforce = 1.0
+	matter = list("plastic" = 5000)
 
 	w_class = SIZE_SMALL
 	var/usage_amount = 10
@@ -300,6 +302,70 @@ t. optimisticdude
 	icon_state = "drapes"
 	w_class = SIZE_SMALL
 	flags_item = NOBLUDGEON
+
+/*
+ * MEDICOMP TOOLS
+ */
+
+/obj/item/tool/surgery/stabilizer_gel
+	name = "stabilizer gel vial"
+	desc = "Used for stabilizing wounds for treatment."
+	icon_state = "stabilizer_gel"
+	force = 0
+	throwforce = 1.0
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR
+
+/obj/item/tool/surgery/healing_gun
+	name = "healing gun"
+	desc = "Used for mending stabilized wounds."
+	icon_state = "healing_gun"
+	force = 0
+	throwforce = 1.0
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
+	var/loaded  = TRUE
+
+/obj/item/tool/surgery/healing_gun/update_icon()
+	if(loaded)
+		icon_state = "healing_gun"
+	else
+		icon_state = "healing_gun_empty"
+
+/obj/item/tool/surgery/healing_gun/attackby(obj/item/O, mob/user)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You have no idea how to put \the [O] into \the [src]!"))
+		return
+	if(istype(O, /obj/item/tool/surgery/healing_gel))
+		if(loaded)
+			to_chat(user, SPAN_WARNING("There's already a capsule inside the healing gun!"))
+			return
+		user.visible_message(SPAN_NOTICE("[user] loads \the [src] with \a [O].") ,SPAN_NOTICE("You load \the [src] with \a [O]."))
+		playsound(loc, 'sound/items/air_release.ogg',25)
+		loaded = TRUE
+		update_icon()
+		qdel(O)
+		return
+	return ..()
+
+/obj/item/tool/surgery/healing_gel
+	name = "healing gel capsule"
+	desc = "Used for reloading the healing gun."
+	icon_state = "healing_gel"
+	force = 0
+	throwforce = 1.0
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR
+
+/obj/item/tool/surgery/wound_clamp
+	name = "wound clamp"
+	desc = "Used for clamping wounds after treatment."
+	icon_state = "wound_clamp"
+	force = 0
+	throwforce = 1.0
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
+
 
 //XENO AUTOPSY TOOL
 

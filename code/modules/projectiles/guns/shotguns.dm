@@ -8,7 +8,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun
 	w_class = SIZE_LARGE
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
-	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
+	reload_sound = "shell_load"
 	cocked_sound = 'sound/weapons/gun_shotgun_reload.ogg'
 	var/break_sound = 'sound/weapons/handling/gun_mou_open.ogg'
 	var/seal_sound = 'sound/weapons/handling/gun_mou_close.ogg'
@@ -19,6 +19,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	wield_delay = WIELD_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky afterall
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
+	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
 	var/gauge = "12g"
 
 /obj/item/weapon/gun/shotgun/Initialize(mapload, spawn_empty)
@@ -26,11 +27,11 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(current_mag)
 		replace_tube(current_mag.current_rounds) //Populate the chamber.
 
-/obj/item/weapon/gun/shotgun/examine(mob/user)
+/obj/item/weapon/gun/shotgun/get_examine_text(mob/user)
 	. = ..()
 	if(flags_gun_features & GUN_AMMO_COUNTER && user)
 		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(user, "It has [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] rounds remaining.")
+		. += "It has [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] rounds remaining."
 
 /obj/item/weapon/gun/shotgun/set_gun_config_values()
 	..()
@@ -207,9 +208,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
-/obj/item/weapon/gun/shotgun/merc/examine(mob/user)
-	..()
-	if(in_chamber) to_chat(user, "It has a chambered round.")
+/obj/item/weapon/gun/shotgun/merc/get_examine_text(mob/user)
+	. = ..()
+	if(in_chamber) . += "It has a chambered round."
 
 //-------------------------------------------------------
 //TACTICAL SHOTGUN
@@ -220,7 +221,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "mk221"
 	item_state = "mk221"
 
-	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
+	fire_sound = "gun_shotgun_tactical"
+	firesound_volume = 20
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
@@ -265,9 +267,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
-/obj/item/weapon/gun/shotgun/combat/examine(mob/user)
-	..()
-	if(in_chamber) to_chat(user, "It has a chambered round.")
+/obj/item/weapon/gun/shotgun/combat/get_examine_text(mob/user)
+	. = ..()
+	if(in_chamber) . += "It has a chambered round."
 
 
 /obj/item/weapon/gun/shotgun/combat/riot
@@ -279,20 +281,23 @@ can cause issues with ammo types getting mixed up during the burst.
 	gauge = "20g"
 
 /obj/item/weapon/gun/shotgun/combat/guard
-	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a red handle to signify its use with Military Police Honor Gaurds"
+	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a red handle to signify its use with Military Police Honor Guards."
 	icon_state = "mp221"
 	item_state = "mp221"
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/bayonet)
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
-//MARSOC MK210, an earlier developmental variant of the MK211 tactical used by the USCM MARSOC.
+/obj/item/weapon/gun/shotgun/combat/covert
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/extended_barrel)
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
+
+//SOF MK210, an earlier developmental variant of the MK211 tactical used by USCM SOF.
 /obj/item/weapon/gun/shotgun/combat/marsoc
 	name = "\improper MK210 tactical shotgun"
-	desc = "Way back in 2168, Wey-Yu began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM MARSOC division wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic, made of stamped medal, and keeps the UGL. Truly an engineering marvel."
+	desc = "Way back in 2168, Wey-Yu began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM Special Operations Forces wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic, made of stamped medal, and keeps the UGL. Truly an engineering marvel."
 	icon_state = "mk210"
 	item_state = "mk210"
 
-	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
@@ -438,8 +443,8 @@ can cause issues with ammo types getting mixed up during the burst.
 //DOUBLE SHOTTY
 
 /obj/item/weapon/gun/shotgun/double
-	name = "double barrel shotgun"
-	desc = "A double barreled shotgun of archaic, but sturdy design. Uses 12 Gauge Special slugs, but can only hold 2 at a time."
+	name = "\improper Spearhead Rival 78"
+	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. Only holds two 12g shells at a time."
 	icon_state = "dshotgun"
 	item_state = "dshotgun"
 
@@ -455,14 +460,15 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness)
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/stock/double)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	burst_delay = 0 //So doubleshotty can doubleshot
 	has_open_icon = TRUE
 
 /obj/item/weapon/gun/shotgun/double/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 21,"rail_x" = 15, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 16)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14, "stock_x" = 13, "stock_y" = 14)
 
 /obj/item/weapon/gun/shotgun/double/set_gun_config_values()
 	..()
@@ -477,12 +483,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/shotgun/double/examine(mob/user)
-	..()
+/obj/item/weapon/gun/shotgun/double/get_examine_text(mob/user)
+	. = ..()
 	if(!current_mag)
 		return
-	if(current_mag.chamber_closed) to_chat(user, "It's closed.")
-	else to_chat(user, "It's open with [current_mag.current_rounds] shell\s loaded.")
+	if(current_mag.chamber_closed) . += "It's closed."
+	else . += "It's open with [current_mag.current_rounds] shell\s loaded."
 
 /obj/item/weapon/gun/shotgun/double/unique_action(mob/user)
 	if(flags_item & WIELDED)
@@ -539,7 +545,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(!current_mag)
 		return
 	if(refund) current_mag.current_rounds++
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/shotgun/double/reload_into_chamber(mob/user)
 	if(!current_mag)
@@ -561,16 +567,24 @@ can cause issues with ammo types getting mixed up during the burst.
 		playsound(user, seal_sound, 25, 1)
 
 
+/obj/item/weapon/gun/shotgun/double/with_stock/handle_starting_attachment()
+	. = ..()
+	var/obj/item/attachable/stock/double/S = new(src)
+	S.hidden = FALSE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
 /obj/item/weapon/gun/shotgun/double/sawn
-	name = "sawn-off shotgun"
-	desc = "A double barreled shotgun whose barrel has been artificially shortened to reduce range but increase damage and spread."
+	name = "\improper sawn-off Spearhead Rival 78"
+	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. It has been artificially shortened to reduce range but increase damage and spread."
 	icon_state = "sshotgun"
 	item_state = "sshotgun"
 	flags_equip_slot = SLOT_WAIST
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 22, "under_x" = 18, "under_y" = 16, "stock_x" = 18, "stock_y" = 16)
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14,  "stock_x" = 18, "stock_y" = 16)
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_config_values()
 	..()
@@ -597,6 +611,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	reload_sound = 'sound/weapons/handling/gun_mou_reload.ogg'//unique shell insert
 	flags_equip_slot = SLOT_BACK
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	additional_fire_group_delay = 1.5 SECONDS
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
@@ -614,9 +629,6 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/stock/mou53)
 	map_specific_decoration = TRUE
-	fire_delay_group = list(
-		FIRE_DELAY_GROUP_MOU = 1.5 SECONDS
-	)
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 21, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
@@ -903,7 +915,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	flags_equip_slot = SLOT_BACK
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
-	var/pump_sound = 'sound/weapons/gun_shotgun_pump.ogg'
+	firesound_volume = 60
+	var/pump_sound = "shotgunpump"
 	var/pump_delay //Higher means longer delay.
 	var/recent_pump //world.time to see when they last pumped it.
 	var/pumped = FALSE //Used to see if the shotgun has already been pumped.
@@ -932,6 +945,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/pump/Initialize(mapload, spawn_empty)
 	. = ..()
 	pump_delay = FIRE_DELAY_TIER_4*2
+	additional_fire_group_delay += pump_delay
 
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_attachment_offsets()
@@ -986,7 +1000,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	ready_shotgun_tube()
 
-	playsound(user, pump_sound, 25, 1)
+	playsound(user, pump_sound, 10, 1)
 	recent_pump = world.time
 	if (in_chamber)
 		pumped = TRUE
@@ -1015,11 +1029,11 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/cmb
 	name = "\improper HG 37-12 pump shotgun"
-	desc = "A nine-round pump action shotgun with internal tube magazine allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals."
+	desc = "A eight-round pump action shotgun with dual internal tube magazine allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals."
 	icon_state = "hg3712"
 	item_state = "hg3712"
 	fire_sound = 'sound/weapons/gun_shotgun_small.ogg'
-	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
@@ -1029,6 +1043,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/attached_gun/extinguisher,
 						/obj/item/attachable/attached_gun/flamer)
+	starting_attachment_types = list(/obj/item/attachable/stock/hg3712)
 	map_specific_decoration = FALSE
 
 
@@ -1038,7 +1053,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 15,"rail_x" = 7, "rail_y" = 18, "under_x" = 19, "under_y" = 13, "stock_x" = 19, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 21, "under_x" = 22, "under_y" = 15, "stock_x" = 24, "stock_y" = 10)
 
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_config_values()
@@ -1053,5 +1068,14 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/shotgun/pump/cmb/m3717
+	name = "\improper M37-17 pump shotgun"
+	desc = "A ten-round pump action shotgun with dual internal tube magazine allowing for quick reloading and highly accurate fire. Issued to select USCM vessels out on the rim."
+	icon_state = "m3717"
+	item_state = "m3717"
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb/m3717
+	starting_attachment_types = list(/obj/item/attachable/stock/hg3712/m3717)
+	unacidable = TRUE
+	damage_mult = 1.1
 
 //-------------------------------------------------------

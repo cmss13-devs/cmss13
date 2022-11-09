@@ -5,7 +5,7 @@
 	..()
 	ui_datum = hud_type
 	if(!istype(ui_datum))
-		ui_datum = custom_huds_list["midnight"]
+		ui_datum = GLOB.custom_huds_list[HUD_MIDNIGHT]
 
 	gear = list(
 		"i_clothing" =   list("loc" = ui_datum.ui_iclothing, "slot" = WEAR_BODY, 		"state" = "center", "toggle" = 1, "dir" = SOUTH),
@@ -110,103 +110,105 @@
 		client.screen -= hud_used.hotkeybuttons
 		hud_used.hotkey_ui_hidden = 1
 
-/datum/hud/human/hidden_inventory_update()
+/datum/hud/human/hidden_inventory_update(mob/viewer)
 	if(!mymob || !ui_datum)
 		return
 	var/mob/living/carbon/human/H = mymob
+	var/mob/screenmob = viewer || H
 	if(!gear.len)
 		inventory_shown = FALSE
 		return //species without inv slots don't show items.
 
-	if(inventory_shown && hud_shown)
+	if(screenmob.hud_used.inventory_shown && screenmob.hud_used.hud_shown)
 		if(H.shoes)
 			H.shoes.screen_loc = ui_datum.ui_shoes
-			H.client.screen += H.shoes
+			screenmob.client.screen += H.shoes
 		if(H.gloves)
 			H.gloves.screen_loc = ui_datum.ui_gloves
-			H.client.screen += H.gloves
+			screenmob.client.screen += H.gloves
 		if(H.wear_l_ear)
 			H.wear_l_ear.screen_loc = ui_datum.ui_wear_l_ear
-			H.client.screen += H.wear_l_ear
+			screenmob.client.screen += H.wear_l_ear
 		if(H.wear_r_ear)
 			H.wear_r_ear.screen_loc = ui_datum.ui_wear_r_ear
-			H.client.screen += H.wear_r_ear
+			screenmob.client.screen += H.wear_r_ear
 		if(H.glasses)
 			H.glasses.screen_loc = ui_datum.ui_glasses
-			H.client.screen += H.glasses
+			screenmob.client.screen += H.glasses
 		if(H.w_uniform)
 			H.w_uniform.screen_loc = ui_datum.ui_iclothing
-			H.client.screen += H.w_uniform
+			screenmob.client.screen += H.w_uniform
 		if(H.wear_suit)
 			H.wear_suit.screen_loc = ui_datum.ui_oclothing
-			H.client.screen += H.wear_suit
+			screenmob.client.screen += H.wear_suit
 		if(H.wear_mask)
 			H.wear_mask.screen_loc = ui_datum.ui_mask
-			H.client.screen += H.wear_mask
+			screenmob.client.screen += H.wear_mask
 		if(H.head)
 			H.head.screen_loc = ui_datum.ui_head
-			H.client.screen += H.head
+			screenmob.client.screen += H.head
 	else
 		if(H.shoes)
-			H.shoes.screen_loc = null
+			screenmob.client.screen -= H.shoes
 		if(H.gloves)
-			H.gloves.screen_loc = null
-		if(H.wear_l_ear)
-			H.wear_l_ear.screen_loc = null
+			screenmob.client.screen -= H.gloves
 		if(H.wear_r_ear)
-			H.wear_r_ear.screen_loc = null
+			screenmob.client.screen -= H.wear_r_ear
+		if(H.wear_l_ear)
+			screenmob.client.screen -= H.wear_l_ear
 		if(H.glasses)
-			H.glasses.screen_loc = null
+			screenmob.client.screen -= H.glasses
 		if(H.w_uniform)
-			H.w_uniform.screen_loc = null
+			screenmob.client.screen -= H.w_uniform
 		if(H.wear_suit)
-			H.wear_suit.screen_loc = null
+			screenmob.client.screen -= H.wear_suit
 		if(H.wear_mask)
-			H.wear_mask.screen_loc = null
+			screenmob.client.screen -= H.wear_mask
 		if(H.head)
-			H.head.screen_loc = null
+			screenmob.client.screen -= H.head
 
-/datum/hud/human/persistant_inventory_update()
-	if(!mymob || !ui_datum)
+/datum/hud/human/persistent_inventory_update(mob/viewer)
+	if(!mymob)
 		return
 
+	. = ..()
+
 	var/mob/living/carbon/human/H = mymob
+	var/mob/screenmob = viewer || H
 
-	if(hud_shown)
-		if(!gear.len) //species without inv slots don't show items.
-			return
-
-		if(H.s_store)
-			H.s_store.screen_loc = ui_datum.hud_slot_offset(H.s_store, ui_datum.ui_sstore1)
-			H.client.screen += H.s_store
-		if(H.wear_id)
-			H.wear_id.screen_loc = ui_datum.hud_slot_offset(H.wear_id, ui_datum.ui_id)
-			H.client.screen += H.wear_id
-		if(H.belt)
-			H.belt.screen_loc = ui_datum.hud_slot_offset(H.belt, ui_datum.ui_belt)
-			H.client.screen += H.belt
-		if(H.back)
-			H.back.screen_loc = ui_datum.hud_slot_offset(H.back, ui_datum.ui_back)
-			H.client.screen += H.back
-		if(H.l_store)
-			H.l_store.screen_loc = ui_datum.hud_slot_offset(H.l_store, ui_datum.ui_storage1)
-			H.client.screen += H.l_store
-		if(H.r_store)
-			H.r_store.screen_loc = ui_datum.hud_slot_offset(H.r_store, ui_datum.ui_storage2)
-			H.client.screen += H.r_store
-	else
-		if(H.s_store)
-			H.s_store.screen_loc = null
-		if(H.wear_id)
-			H.wear_id.screen_loc = null
-		if(H.belt)
-			H.belt.screen_loc = null
-		if(H.back)
-			H.back.screen_loc = null
-		if(H.l_store)
-			H.l_store.screen_loc = null
-		if(H.r_store)
-			H.r_store.screen_loc = null
+	if(screenmob.hud_used)
+		if(screenmob.hud_used.hud_shown)
+			if(H.s_store)
+				H.s_store.screen_loc = ui_datum.hud_slot_offset(H.s_store, ui_datum.ui_sstore1)
+				screenmob.client.screen += H.s_store
+			if(H.wear_id)
+				H.wear_id.screen_loc = ui_datum.hud_slot_offset(H.wear_id, ui_datum.ui_id)
+				screenmob.client.screen += H.wear_id
+			if(H.belt)
+				H.belt.screen_loc = ui_datum.hud_slot_offset(H.belt, ui_datum.ui_belt)
+				screenmob.client.screen += H.belt
+			if(H.back)
+				H.back.screen_loc = ui_datum.hud_slot_offset(H.back, ui_datum.ui_back)
+				screenmob.client.screen += H.back
+			if(H.l_store)
+				H.l_store.screen_loc = ui_datum.hud_slot_offset(H.l_store, ui_datum.ui_storage1)
+				screenmob.client.screen += H.l_store
+			if(H.r_store)
+				H.r_store.screen_loc = ui_datum.hud_slot_offset(H.r_store, ui_datum.ui_storage2)
+				screenmob.client.screen += H.r_store
+		else
+			if(H.s_store)
+				screenmob.client.screen -= H.s_store
+			if(H.wear_id)
+				screenmob.client.screen -= H.wear_id
+			if(H.belt)
+				screenmob.client.screen -= H.belt
+			if(H.back)
+				screenmob.client.screen -= H.back
+			if(H.l_store)
+				screenmob.client.screen -= H.l_store
+			if(H.r_store)
+				screenmob.client.screen -= H.r_store
 
 	if(hud_version != HUD_STYLE_NOHUD)
 		if(H.r_hand)
@@ -223,7 +225,7 @@
 
 /datum/hud/human/proc/draw_inventory_slots(var/gear, var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
 	for(var/gear_slot in gear)
-		var/obj/screen/inventory/inv_box = new /obj/screen/inventory()
+		var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 		inv_box.icon = ui_datum.ui_style_icon
 		inv_box.layer = HUD_LAYER
 		inv_box.color = ui_color
@@ -244,7 +246,7 @@
 			static_inventory += inv_box
 
 /datum/hud/human/proc/draw_toggle_inv(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	var/obj/screen/using = new /obj/screen/toggle_inv()
+	var/atom/movable/screen/using = new /atom/movable/screen/toggle_inv()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_inventory
 	if(ui_color)
@@ -254,12 +256,13 @@
 	static_inventory += using
 
 /datum/hud/human/proc/draw_hand_equip(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
-	var/obj/screen/using = new /obj/screen()
+	var/atom/movable/screen/using = new /atom/movable/screen()
 	using.name = "equip"
 	using.icon = ui_datum.ui_style_icon
 	using.icon_state = "act_equip"
 	using.screen_loc = ui_datum.ui_equip
 	using.layer = ABOVE_HUD_LAYER
+	using.plane = ABOVE_HUD_PLANE
 	if(ui_color)
 		using.color = ui_color
 	if(ui_alpha)
@@ -267,19 +270,19 @@
 	static_inventory += using
 
 /datum/hud/human/proc/draw_oxygen(var/datum/custom_hud/ui_datum)
-	oxygen_icon = new /obj/screen/oxygen()
+	oxygen_icon = new /atom/movable/screen/oxygen()
 	oxygen_icon.icon = ui_datum.ui_style_icon
 	oxygen_icon.screen_loc = ui_datum.UI_OXYGEN_LOC
 	infodisplay += oxygen_icon
 
 /datum/hud/human/proc/draw_bodytemp(var/datum/custom_hud/ui_datum)
-	bodytemp_icon = new /obj/screen/bodytemp()
+	bodytemp_icon = new /atom/movable/screen/bodytemp()
 	bodytemp_icon.icon = ui_datum.ui_style_icon
 	bodytemp_icon.screen_loc = ui_datum.UI_TEMP_LOC
 	infodisplay += bodytemp_icon
 
 /datum/hud/human/proc/draw_nutrition(var/datum/custom_hud/ui_datum)
-	nutrition_icon = new /obj/screen()
+	nutrition_icon = new /atom/movable/screen()
 	nutrition_icon.icon = ui_datum.ui_style_icon
 	nutrition_icon.icon_state = "nutrition0"
 	nutrition_icon.name = "nutrition"
@@ -287,41 +290,41 @@
 	infodisplay += nutrition_icon
 
 /datum/hud/human/proc/draw_locator_spot(var/datum/custom_hud/ui_datum)
-	locate_leader = new /obj/screen/squad_leader_locator()
+	locate_leader = new /atom/movable/screen/squad_leader_locator()
 	locate_leader.icon = ui_datum.ui_style_icon
 	locate_leader.screen_loc = ui_datum.UI_SL_LOCATOR_LOC
 	infodisplay += locate_leader
 
 /datum/hud/human/proc/draw_gun_related(var/datum/custom_hud/ui_datum, var/ui_alpha)
-	use_attachment = new /obj/screen()
+	use_attachment = new /atom/movable/screen()
 	use_attachment.icon = ui_datum.ui_style_icon
 	use_attachment.icon_state = "gun_attach"
 	use_attachment.name = "Activate weapon attachment"
 	use_attachment.screen_loc = ui_datum.ui_gun_attachment
 	static_inventory += use_attachment
 
-	toggle_raillight = new /obj/screen()
+	toggle_raillight = new /atom/movable/screen()
 	toggle_raillight.icon = ui_datum.ui_style_icon
 	toggle_raillight.icon_state = "gun_raillight"
 	toggle_raillight.name = "Toggle Rail Flashlight"
 	toggle_raillight.screen_loc = ui_datum.ui_gun_railtoggle
 	static_inventory += toggle_raillight
 
-	eject_mag = new /obj/screen()
+	eject_mag = new /atom/movable/screen()
 	eject_mag.icon = ui_datum.ui_style_icon
 	eject_mag.icon_state = "gun_loaded"
 	eject_mag.name = "Eject magazine"
 	eject_mag.screen_loc = ui_datum.ui_gun_eject
 	static_inventory += eject_mag
 
-	toggle_burst = new /obj/screen()
+	toggle_burst = new /atom/movable/screen()
 	toggle_burst.icon = ui_datum.ui_style_icon
 	toggle_burst.icon_state = "gun_burst"
 	toggle_burst.name = "Toggle burst fire"
 	toggle_burst.screen_loc = ui_datum.ui_gun_burst
 	static_inventory += toggle_burst
 
-	unique_action = new /obj/screen()
+	unique_action = new /atom/movable/screen()
 	unique_action.icon = ui_datum.ui_style_icon
 	unique_action.icon_state = "gun_unique"
 	unique_action.name = "Use unique action"
@@ -329,52 +332,52 @@
 	static_inventory += unique_action
 
 	//Handle the gun settings buttons
-	gun_setting_icon = new /obj/screen/gun/mode()
+	gun_setting_icon = new /atom/movable/screen/gun/mode()
 	gun_setting_icon.alpha = ui_alpha
 	gun_setting_icon.screen_loc = ui_datum.ui_gun_select
 	gun_setting_icon.update_icon(mymob)
 	static_inventory += gun_setting_icon
 
-	gun_item_use_icon = new /obj/screen/gun/item()
+	gun_item_use_icon = new /atom/movable/screen/gun/item()
 	gun_item_use_icon.alpha = ui_alpha
 	gun_item_use_icon.screen_loc = ui_datum.ui_gun1
 	gun_item_use_icon.update_icon(mymob)
 	static_inventory += gun_item_use_icon
 
-	gun_move_icon = new /obj/screen/gun/move()
+	gun_move_icon = new /atom/movable/screen/gun/move()
 	gun_move_icon.alpha = ui_alpha
 	gun_move_icon.screen_loc = ui_datum.ui_gun2
 	gun_move_icon.update_icon(mymob)
 	static_inventory += gun_move_icon
 
-	gun_run_icon = new /obj/screen/gun/run()
+	gun_run_icon = new /atom/movable/screen/gun/run()
 	gun_run_icon.alpha = ui_alpha
 	gun_run_icon.screen_loc = ui_datum.ui_gun3
 	gun_run_icon.update_icon(mymob)
 	static_inventory += gun_run_icon
 
 /datum/hud/human/proc/draw_status_effects(var/datum/custom_hud/ui_datum)
-	slowed_icon = new /obj/screen()
+	slowed_icon = new /atom/movable/screen()
 	slowed_icon.icon = ui_datum.ui_style_icon
 	slowed_icon.icon_state = "status_0"
 	infodisplay += slowed_icon
 
-	bleeding_icon = new /obj/screen()
+	bleeding_icon = new /atom/movable/screen()
 	bleeding_icon.icon = ui_datum.ui_style_icon
 	bleeding_icon.icon_state = "status_0"
 	infodisplay += bleeding_icon
 
-	shrapnel_icon = new /obj/screen()
+	shrapnel_icon = new /atom/movable/screen()
 	shrapnel_icon.icon = ui_datum.ui_style_icon
 	shrapnel_icon.icon_state = "status_0"
 	infodisplay += shrapnel_icon
 
-	tethering_icon = new /obj/screen()
+	tethering_icon = new /atom/movable/screen()
 	tethering_icon.icon = ui_datum.ui_style_icon
 	tethering_icon.icon_state = "status_0"
 	infodisplay += tethering_icon
 
-	tethered_icon = new /obj/screen()
+	tethered_icon = new /atom/movable/screen()
 	tethered_icon.icon = ui_datum.ui_style_icon
 	tethered_icon.icon_state = "status_0"
 	infodisplay += tethered_icon
@@ -382,7 +385,7 @@
 
 /mob/living/carbon/human/create_hud()
 	if(client && client.prefs && !hud_used)
-		var/ui_datum = custom_huds_list[client.prefs.UI_style]
+		var/ui_datum = GLOB.custom_huds_list[client.prefs.UI_style]
 		var/ui_color = client.prefs.UI_style_color
 		var/ui_alpha = client.prefs.UI_style_alpha
 		hud_used = new /datum/hud/human(src, ui_datum, ui_color, ui_alpha)

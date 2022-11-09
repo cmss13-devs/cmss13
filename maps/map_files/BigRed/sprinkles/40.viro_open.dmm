@@ -3,7 +3,11 @@
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "ab" = (
-/turf/closed/wall/solaris/reinforced/hull,
+/obj/structure/fence,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
+	},
 /area/bigredv2/outside/virology)
 "ac" = (
 /obj/effect/decal/cleanable/dirt,
@@ -30,8 +34,7 @@
 "af" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -68,15 +71,15 @@
 "al" = (
 /obj/structure/fence,
 /turf/open/mars_cave{
-	tag = "icon-mars_cave_7";
-	icon_state = "mars_cave_7"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/virology)
 "am" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/mars_cave{
-	tag = "icon-mars_cave_14";
-	icon_state = "mars_cave_14"
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
 	},
 /area/bigredv2/outside/virology)
 "an" = (
@@ -105,10 +108,10 @@
 "ar" = (
 /obj/structure/fence,
 /turf/open/mars_cave{
-	tag = "icon-mars_cave_13";
-	icon_state = "mars_cave_13"
+	icon_state = "mars_cave_7";
+	tag = "icon-mars_cave_7"
 	},
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/virology)
 "as" = (
 /turf/open/floor{
 	tag = "icon-asteroidwarning (NORTHWEST)";
@@ -140,7 +143,6 @@
 "aw" = (
 /obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
-	icon_state = "tube1";
 	dir = 4
 	},
 /obj/structure/inflatable,
@@ -178,8 +180,7 @@
 /area/bigredv2/outside/virology)
 "aA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -213,7 +214,6 @@
 "aH" = (
 /obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
-	icon_state = "tube1";
 	dir = 4
 	},
 /obj/structure/inflatable,
@@ -248,8 +248,7 @@
 /area/bigredv2/outside/virology)
 "aM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/structure/inflatable/popped/door,
 /turf/open/floor{
@@ -275,8 +274,7 @@
 /area/bigredv2/outside/virology)
 "aR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -298,8 +296,7 @@
 /area/bigredv2/outside/nw)
 "aW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/structure/inflatable/door,
 /turf/open/floor{
@@ -369,8 +366,7 @@
 	tag = "icon-gib6"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -436,10 +432,9 @@
 	},
 /area/bigredv2/outside/virology)
 "bp" = (
-/obj/item/weapon/gun/flamer,
 /turf/open/mars_cave{
-	tag = "icon-mars_dirt_5";
-	icon_state = "mars_dirt_5"
+	icon_state = "mars_dirt_6";
+	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/outside/virology)
 "bq" = (
@@ -534,7 +529,6 @@
 "bE" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4;
-	icon_state = "officechair_white";
 	tag = ""
 	},
 /turf/open/floor{
@@ -594,6 +588,12 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/nw)
+"uN" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_5";
+	tag = "icon-mars_dirt_5"
+	},
+/area/bigredv2/outside/virology)
 "zC" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -631,12 +631,26 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/virology)
+"Kv" = (
+/obj/item/weapon/gun/flamer,
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_4";
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/virology)
 "Po" = (
 /obj/structure/inflatable,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (NORTHEAST)";
 	icon_state = "asteroidwarning";
 	dir = 5
+	},
+/area/bigredv2/outside/virology)
+"Ry" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_14";
+	tag = "icon-mars_cave_14"
 	},
 /area/bigredv2/outside/virology)
 "Vr" = (
@@ -653,8 +667,8 @@ aa
 aa
 al
 ar
-aa
-aa
+ab
+ab
 aa
 aa
 aa
@@ -664,9 +678,9 @@ aa
 aa
 aa
 am
-an
+Ry
 bp
-aa
+uN
 aa
 aa
 aa
@@ -677,7 +691,7 @@ aa
 aa
 an
 aN
-ag
+Kv
 ah
 ah
 bs
@@ -721,7 +735,7 @@ aX
 be
 "}
 (7,1,1) = {"
-ab
+bd
 ao
 bo
 at
@@ -733,7 +747,7 @@ aY
 bd
 "}
 (8,1,1) = {"
-ab
+bd
 br
 bx
 at
@@ -745,7 +759,7 @@ aZ
 bd
 "}
 (9,1,1) = {"
-ab
+bd
 bu
 by
 av
@@ -757,7 +771,7 @@ ba
 bd
 "}
 (10,1,1) = {"
-ab
+bd
 bv
 bz
 av
@@ -769,7 +783,7 @@ lB
 bd
 "}
 (11,1,1) = {"
-ab
+bd
 bw
 bA
 av
@@ -781,7 +795,7 @@ ag
 bd
 "}
 (12,1,1) = {"
-ab
+bd
 bv
 Vr
 av
@@ -793,7 +807,7 @@ ag
 bd
 "}
 (13,1,1) = {"
-ab
+bd
 bw
 bA
 av
@@ -805,7 +819,7 @@ bb
 bd
 "}
 (14,1,1) = {"
-ab
+bd
 Po
 FK
 av
@@ -817,7 +831,7 @@ bk
 bd
 "}
 (15,1,1) = {"
-ab
+bd
 ag
 ag
 at
@@ -829,7 +843,7 @@ GE
 bd
 "}
 (16,1,1) = {"
-ab
+bd
 ag
 ag
 at
@@ -841,7 +855,7 @@ GE
 bd
 "}
 (17,1,1) = {"
-ab
+bd
 ag
 aw
 bA
@@ -853,39 +867,39 @@ bG
 bd
 "}
 (18,1,1) = {"
-ab
+bd
 ag
-ab
+bd
 zC
 af
 Kk
-ab
+bd
 bF
 bH
 bd
 "}
 (19,1,1) = {"
-ab
-ab
-ab
+bd
+bd
+bd
 at
 aA
 GE
-ab
-ab
-ab
+bd
+bd
+bd
 bd
 "}
 (20,1,1) = {"
 ac
 ak
-ab
+bd
 zC
 aR
 Kk
-ab
+bd
 aU
-ab
+bd
 bc
 "}
 (21,1,1) = {"

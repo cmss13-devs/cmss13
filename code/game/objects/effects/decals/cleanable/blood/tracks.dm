@@ -12,6 +12,8 @@
 	var/list/steps_in
 	var/list/steps_out
 
+	var/list/overlay_images = list()
+
 /obj/effect/decal/cleanable/blood/tracks/Crossed()
 	return
 
@@ -30,11 +32,13 @@
 	else
 		LAZYSET(steps_in, "[direction]", I)
 
-	// Need to do this because of BYOND behavior that does not update overlayed images
-	// after modifying their appearances
-	cleanable_turf.overlays -= overlayed_image
-	overlayed_image.overlays += I
-	cleanable_turf.overlays += overlayed_image
+	overlay_images += I
+	cleanable_turf.overlays += I
+
+/obj/effect/decal/cleanable/blood/tracks/clear_overlay()
+	if(length(overlay_images))
+		cleanable_turf.overlays -= overlay_images
+		overlay_images = null
 
 /obj/effect/decal/cleanable/blood/tracks/footprints
 	name = "footprints"

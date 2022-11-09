@@ -1,0 +1,534 @@
+2021-11-03:
+  50RemAndCounting:
+  - rscadd: 'Added two new colour variants of the synth Smartpack: black and white.'
+  - tweak: Made the smartpacks look like actual backpacks, removed the weird exoskeletons
+      from their onmob sprites.
+  Kugamo:
+  - rscadd: Adds ability to pick up chairs, wield them, stack them, unstack them,
+      and move the stacks with powerloaders.
+  - soundadd: Added sounds for when attacking other mobs with chairs, when mobs are
+      hit by thrown chairs, and when chair stacks collapse.
+  - imageadd: Adds images for folded metal chair item, and inhand sprites for this
+      item.
+  Segrain:
+  - bugfix: Assorted fixes to chemical research calculating costs of operations.
+  - bugfix: Research terminal without a linked copier no longer tries (and fails)
+      perform operations requiring printing a document.
+  - rscdel: Research work in one round no longer affects any future rounds.
+2021-11-04:
+  naut:
+  - bugfix: Melee attacking targets is now possible on non-help intent while surgery
+      mode is on.
+  - bugfix: C4 explosives attached to a wall are no longer obscured by wall-mounted
+      objects like signs or displays.
+  - bugfix: The Desert Eagle now has correct, non-floating attachment offsets.
+  - bugfix: Status displays now correctly show the blue alert state.
+  - tweak: The vote alarm is quieter and no longer ruptures eardrums.
+  - tweak: Pending phone calls now time out 30 seconds after ringing.
+  - tweak: Telephones now have a visible message when ringing ('rings vigorously').
+  - tweak: Help intent safety locking your weapon now has an audible click.
+  - tweak: Status display flashes now sync with the fire alarms.
+2021-11-05:
+  Kugamo:
+  - bugfix: Fixes all chairs being able to be picked up as a folding chair, not being
+      able to be dismantled, being able to be stacked, and other chair bugs.
+2021-11-06:
+  Casper:
+  - soundadd: Added lower engineering, ARES chamber and hangar sound effects.
+  Firartix:
+  - rscadd: Added performance options to map configs, Mostly targeted for WO
+  Geeves:
+  - bugfix: Fixes phone timeout timers, it should now work as intended.
+  Hatterhat:
+  - tweak: Dropping an active flare or a primed grenade now disables throw mode.
+  Nivrak:
+  - bugfix: Fixed a bug with ERTs not spawning when shuttle subsystem is disabled
+  Segrain:
+  - bugfix: Timed actions now take (about) as long as they are intended to take.
+  Vanagandr:
+  - imageadd: 'Mortar belt now has visible onmob sprite when a gun is holstered in
+      it. Smartgun belt ditto, and now shows holstered guns. Many belts now have in-hand
+      states, either using generic marine belt sprites or specific new ones. New:
+      inhands for prison variant marine ammo belt, toolbelts/tankbelt, all medic lifesaver
+      bags, upp belts.'
+  - tweak: Tweaked Ivan's loadout to remove error guns, empty magazines, sentry mags,
+      training guns & ammo etc. It's still UPP Roulette but you should reliably get
+      things that can hurt people. Ivan's belt now has a working holster and comes
+      with a sidearm.
+  - bugfix: Mr & Mrs Quackers now have correct on-belt states. CM is saved.
+  naut:
+  - rscadd: Added bunnies.
+  - rscadd: Added Dave, the cool bunny.
+2021-11-07:
+  Kugamo:
+  - tweak: Nerfs wielded folding chairs' stamina damage, now takes 6 hits to knockdown
+      from 4.
+2021-11-09:
+  KatherineSmith:
+  - tweak: 'Updated bottle sizes in vendors to match the standard. All bottles should
+      now be 60u. '
+  Triiodine:
+  - rscadd: alien melee and marine projectiles now cause blood hit effects if damage
+      is dealt to the receiving mob.
+2021-11-10:
+  Vanagandr:
+  - tweak: Updated old references to the Falling Falcons as 7th bn - it's the 2nd.
+  ihatethisengine2:
+  - bugfix: Automatic punctuation now works in radio and hivemind.
+2021-11-11:
+  GoldenDarkness55:
+  - tweak: Warrior punch slow duration increased from 4s to 6s.
+  Stan_albatross:
+  - bugfix: Cameras will no longer take photos when you put them in storage items
+  - bugfix: Cameras will no longer take photos when you attempt to put them in inventory
+      slots
+  ihatethisengine2:
+  - bugfix: OW transmissions/objectives now display quotes correctly (' instead of
+      &#39;)
+2021-11-12:
+  Mercadier:
+  - maptweak: Renovated the ERT station - it is now more spacious, has a lobby, a
+      holding cell, a boxing ring and a lounge.
+  Stan_Albatross:
+  - rscadd: 'Trijent Dam : added a garage to the map, north of marshalls, with a truck
+      and some wheels.'
+  - bugfix: The breaching hammer can no longer destroy walls remotely.
+  - bugfix: The breaching hammer can no longer skip wall deconstruction timers.
+  - tweak: Changed the name of the breach B5 to B5 breaching hammer
+  - tweak: Added some unique attack verbs to the B5 breaching hammer
+  - tweak: Changed the sounds for the breaching hammer taking down walls to stronger-sounding
+      ones.
+  - rscadd: Added the B5 breaching hammer to the synth experimental tools vendor,
+      a hammer that can be used to take down walls and girders (only by synths), fits
+      on your back like a fire-axe does. Original code by Vampmare.
+  TheFlyingFlail:
+  - rscadd: Added kutjevo related civilian sprites courtesy of Triiodine
+  - rscadd: Coded new sprites into wearable clothing with appropriate types associated
+      with attributes
+  - rscadd: 'Added new survivor specific trucker and chaplain to Kutjevo '
+  - rscadd: Added gear kutjevo survivors
+  - rscadd: Added gear randomizer for doctor survivor
+  - rscadd: Added loot randomizer to corporation liaison survivors so they are not
+      as useless as before
+  - rscadd: Added primary weapon randomizer for all survivors as opposed to always
+      spawning with CMB shotgun
+  - tweak: Removed mod88 from scientist survivor
+  - tweak: Tweaked pistol variety survivors can spawn with
+  - tweak: Removed clipboard from CL survivor as it got in the way of them receiving
+      additional gear they otherwise could have used
+  - tweak: Tweaked colonial marshal survivors to always spawn with heavy pistols due
+      to their status in the colony.
+  - tweak: Removed useless items from the survivor gear randomizer like the lemon
+      slice and etc for items survivors are more likely to use
+  - tweak: Removed items from spawning in the right hand for survivors. This will
+      allow them to now spawn with the extra item as intended.
+  - rscdel: Removed security survivor pistol spawn
+  - bugfix: Fixed doctor survivors not spawning with tool pouch
+  - bugfix: Fixed LV-624 Head of security not spawning with a shotgun
+  - bugfix: Removed duplicate code for LV-624 security guard
+  - bugfix: Fixed PMC Survivor not spawning with appropriate gear & survivor related
+      skills
+  - bugfix: Fixed Roughneck Survivors not spawning with appropriate gear
+  - rscdel: Deleted unnecessary desktop.ini that was left in the previous survivor
+      mr. My bad.
+  - tweak: Moved PMC Survivor, Corporate Manager Survivor, and CLF survivor to survivor
+      gear preset folder for better organization
+  - tweak: Gave roughneck survivors PMC/MERC skills
+  - tweak: Colonial Marshall survivors had their MP belt removed for heavy pistol
+      belt to save space for random items to spawn.
+  - rscadd: Added PMC skill for PMC/MERC survivors so combat survivors don't have
+      to use colonial marshal skills anymore
+  - rscadd: Added new Freelancer and Mercenary Survivor roles for future use
+  Triiodine:
+  - bugfix: Fixes burrowers being able to tunnel into inaccessible airlocks on the
+      Almayer.
+  - bugfix: You can no longer walk inside of ARES.
+  - bugfix: Removed some 200 instances of racks on Trijent that had their layer set
+      incorrectly (making them appear beneath weeds).
+  - bugfix: Fixed all the broken stair cut borders on Kutjevo and Science Annex.
+  - bugfix: You can no longer walk through the Orbital Cannon on the Almayer.
+  - bugfix: Added an observer landmark to the center of briefing on the Almayer. Better
+      than Cryo I guess.
+  - bugfix: Moved a dropship crash point out of cargo and into Delta-Charlie prep.
+      This prevents the doors opening into the cargo lift.
+  - bugfix: Lifeboat pump rooms now actually respect lighting and the powernet.
+  - bugfix: Moved some cameras back onto the walls where they were supposed to be
+      on the Almayer.
+  - bugfix: Plastic floors and other floor types from the Chigusa Shipyard icon file
+      now actually have damaged states, and won't turn black when blown up. (They
+      are used on Trijent, Shivas, and Sorokyne).
+  - bugfix: Added some missing firedoors, and removed double firedoors from Almayer
+      prep rooms.
+  - bugfix: 1x1 Orange Boulders are now dense.
+  - maptweak: APCs in the lifeboat fuel pumps and lifeboat lounge are now hardened.
+  forest2001:
+  - bugfix: Hunterhud now saves the proper name of the hunter, instead of 'Unknown'
+  - tweak: Renamed the 'Toggle-Marines-Joining' verb to 'Toggle-Joining-Round'.
+  stan_albatross:
+  - tweak: Reduced nailgun magazine size from 50 to 48 rounds.
+2021-11-13:
+  Firartix:
+  - bugfix: fixed invalid round logging in huntergames game_mode
+  - bugfix: Fixed an issue with docker container for game ignoring stop signals
+  - tweak: Bumped built BYOND container version from 1539 to 1542
+  - tweak: Added complete multi-stage docker builds in Dockerfile, in addition to
+      just the 'package to container' used by CI.
+  - tweak: Added a sample testing docker-compose environment to codebase
+  - tweak: Server now shutdowns instead of restarting by default. This was already
+      the case in production setup.
+  Geeves:
+  - bugfix: Attacking a humanoid with an item that does more than 5 damage now properly
+      tracks it, meaning Yautja kills on humans count for honor again, so does punching
+      them.
+  - bugfix: Killing yourself as a yautja no longer gives you bonus honor points.
+  - bugfix: Damaging and killing someone by tossing them into a wall will properly
+      be attributed to you.
+  Nanu:
+  - maptweak: Moves a couple Survivor spawns away from the hives on Shivas Snowball.
+  - maptweak: Removes the rotary phones from planetside on Shiva.
+  Nanu Sionnach:
+  - rscadd: Adds a new wound overlay for xenos, makes it easier to see when they are
+      dead and near death.
+2021-11-17:
+  forest2001:
+  - bugfix: Fixed Yautja headsets, Elders and above now have larger text. This was
+      supposed to have happened in a previous MR but accidentally got overwritten.
+2021-11-18:
+  Nanu:
+  - tweak: Changes the UPP knife marines can spawn with to one with equal stats to
+      the normal bayonet.
+  Nivrak:
+  - tweak: Changed how roles backend works, No change gameplay wise
+  sg2002:
+  - bugfix: Resin Whisperer Hivelord can no longer build thick structures selected
+      before mutating.
+  - bugfix: The Queen can no longer build structures selected for her eye before de-oving.
+2021-11-19:
+  Geeves:
+  - rscadd: Yautja translators have received some tweaks.
+  Geeves, Frans Feifer:
+  - rscadd: Added cassette pouches to the Rec-Vend vendor, they're small storage items
+      that can hold three cassette tapes and fit in helmets.
+2021-11-20:
+  Firartix:
+  - tweak: Removed 30 minute limit on Respawn verb when enabled
+  Geeves, Frans Feifer:
+  - rscadd: Added a shield to the yautja equipment list.
+  Nivrak:
+  - bugfix: Explosions no longer ignore shields for gibbing xenos
+  Stan_Albatross:
+  - rscadd: BYOND members now get a byond logo next to their name when they speak
+      in OOC
+  - rscadd: You can turn this on and off via preference verb
+  Vanagandr:
+  - bugfix: Fixed rendering issue with blood overlays on objects put on tables/racks.
+2021-11-21:
+  Firartix:
+  - tweak: tgchat won't display both reconnecting and disconnected notifications at
+      same time anymore
+  - tweak: tgchat reconnecting notification now has a reconnect button
+  - experiment: tgchat will attempt to have clients auto-reconnect after 6 to 12 seconds
+      on server restart (note that currently ndatabase+brsql backed servers will still
+      require full server init before letting clients fully connect, which might still
+      take up to 40-60s)
+  - rscadd: Added automatic cobwebs decorators throughout the Almayer, increasing
+      through October as Halloween gets closer...
+  Geeves:
+  - rscadd: The launchable PO sentry now casts light, about as much as a standard
+      flare or flashlight.
+  Molto:
+  - rscadd: Added a new hairstyle (Overeye Long)
+  Nancok:
+  - spellcheck: Xenos no longer attempt to caress with non existant scythe-arms and
+      now use their claws instead.
+  - tweak: 'allow storing sidearm magazine boxes on the back slot  '
+  - tweak: allow storing **primary** magazine boxes on the back slot, too
+  Nivrak:
+  - rscadd: Added a follow button to the player panel
+  Stan_Albatross:
+  - spellcheck: replaced all instances of \"avaliable\" with \"available\"
+  - bugfix: Toggling BYOND membership publicity will no longer toggle the preference
+      to harm yourself.
+  Total Epicness:
+  - tweak: Sticky resin and fast resin build time reduction. 4 seconds > 2 seconds
+  Triiodine:
+  - experiment: Renamed M240 fuel crates on the ASRS console and added a mixed fuel
+      crate containing x2 Gellied and x2 Normal tanks.
+  - imageadd: Added unique icons for certain ammo boxes, including flamer ammo
+  - experiment: Renamed B12 pattern squad leader armor and M4 pattern RTO armor to
+      generic variants. Added B12 and M4 pattern armor to squad vendors as purchase
+      options. Added M4 armor to the ASRS purchase system.
+  - experiment: Reduced the price of metal and plasteel in requisitions ASRS purchase
+      system. Added a mixed plasteel-metal crate as a mid price between the two unique
+      crates.
+  - experiment: Reduced the price of folding barricade crates.
+  - experiment: Reduced the price of the SMES parts kit in ASRS.
+  - experiment: Reduced the price of specialist ammo across the board
+  - rscadd: Added x2 Broilter-T Fuelpacks to the flamethrower crate in ASRS.
+  - experiment: Changed all loose grenade crates to contain two grenade packets of
+      the correct type (x3 grenades per packet), increasing the grenade count of each
+      crate by 1. 6 from 5.
+  - rscadd: Added White Phosphorus (HPDP) grenades, packets, and boxes to req and
+      squad vendors.
+  - rscadd: Added M240 flamer flame tanks to the random ASRS crate spawns.
+  - rscadd: Added B12 and M4 armor crates to the random ASRS spawns.
+  - rscdel: Removed the First Responder pouch entirely. All instances of it have been
+      replaced with a medical pouch with the same contents. This version is marked
+      (splints) in vendors.
+  - rscadd: Added a variant of the medical pouch that has 4 pill bottles (Tramadol,
+      Bicardine, Kelotane, and Dexalin respectively). This version is marked (pills)
+      in vendors.
+  - rscdel: Removed attachments from all squad vendors (excluding the attachment vendor
+      in general prep of course).
+  - rscdel: Removed all marine kits from standard play. The Honor Guard kits remain
+      on the upperdeck.
+  - rscadd: Added the restriced firearms category to squad role vendors and reqiusitions.
+      These guncases can be purchased with squad points, most do not come with ammunition.
+      However, ammunition can freely be acquired in general squad prep weapon / ammo
+      vendors.
+  - rscadd: Added the utilities section to squad role vendors, this section contains
+      (most) of the parts and items found in the aforemention removed kits as well
+      as some bonuses. This includes the ever important SensorMate hud.
+  - experiment: The M2C and M56D heavy machine guns, as well as the M240 guncases
+      can only be acquired by squad engineers, or at requisitions.
+  - experiment: The VP78 Hand Cannon, SU-6 Smart Pistol, MOU53 Break Action Shotgun,
+      and M41AE2 Heavy Pulse Rifle are available to all squad roles as point purchases.
+      They can also be gotten at Req.
+  - experiment: The M41A MK1 can be obtained at requsitions alone. It is not available
+      in squad vendors.
+  - rscadd: Added the explosives section to (most) squad role vendors. This section
+      contains grenade packets. Grenade packets contain x3 of the stated grenade type.
+      HEFA grenades are still restricted to req though.
+  - rscadd: Added the sling pouch. It can contain one medium item that will return
+      to the pouch when dropped like a magnetic harness. This was made with the motion
+      detector in mind.
+  - rscadd: Added the machete pouch. Its the machete scabbard, but it fits in your
+      pocket. Weapon draw macros don't work on it though.
+  - rscadd: Added the M82F flare gun to standard squad vendors and the PO's prep vendor.
+  - rscadd: Added the G8-A belt / pouch thing to PFC vendors as a belt choice.
+  - rscadd: Added the M40 grenade rig to squad role vendors and the surplus uniform
+      vendor.
+  - experiment: Increased the capacity of the M40 grenade rig to 12 from 8 (specialist
+      belt unaffected)
+  - experiment: Reordered the surplus uniform vendor contents to have a 'belts' section.
+  - experiment: Removed the skill requirement for the SensorMate HUD
+  - rscadd: Added the IMP Logistics satchel. Its a big satchel backpack hybrid (It
+      is the IO bag, don't question it). It can be found in the utilities section
+      of squad vendors.
+  - rscadd: Added the smartgunner drum belt. It can hold 6 ammo drums, but doesn't
+      come with a sidearm. It starts with the same amount of drums as the now renamed
+      smartgunner sidearm belt.
+  - rscadd: The new machete pouch has been added as standard equipment for the smartgunner.
+  - rscadd: Add the new IMP logistics backpack to req alongside all the other speciality
+      bags and backpacks.
+  - rscadd: Added pre-filled medical pouchs (aforementioned splints and pill variants)
+      to req alongside the empty variants.
+  - spellcheck: Added the MK2 designation to M41A ammunition in vendors that also
+      have M41A MK1 magazines.
+  - spellcheck: Changed 'barrel' to 'muzzle' in attachment vendors.
+  - rscadd: Added the M10 technician helmet to the surplus uniform vendor and req.
+  - rscadd: Added skill-less variants of kelotane, bicardine, and emergency auto injectors.
+  - experiment: Changed medium metal stacks to contain 30 metal from 25.
+  - rscadd: Added the 'med-small-stack' of metal which contains 20 sheets, and the
+      'med-large-stack' which contains 40 sheets for use by mappers. The same has
+      been done for plasteel.
+  - bugfix: Pistol magazine pouches shouldn't be able to hold shotgun shells anymore.
+  - spellcheck: Changed the description for the M12 dust helmet and the M11 helmet
+      (previously RTO and SL helmets).
+  - spellcheck: Removed the X from the XM4 items used by the RTO.
+  - spellcheck: Changed the description of the 88 Mod 4 to better reflect its place
+      in the game's canon.
+  - rscadd: Added Rain covers, helmet netting, gun lube, USCM flair, and M5 integrated
+      gasmasks to the surplus squad uniform vendors.
+  - imageadd: Replaced the old 'pro case' icons (the ones marine kits used).
+  - rscadd: Added radio keys for JTAC, Tactics, Engineering, and Supply as point buys
+      to squad vendors.
+  - rscadd: Added JTAC, Engineering, and Powerloader pamphlets to squad vendors (where
+      there wasn't overlap with the role's existing skills).
+  - rscadd: Added HIRR baton slugs from the Technical Manual. They slow aliens and
+      enemy humans for 2 seconds on hit. They deal 45 damage with no AP. Large xenos
+      are slowed for 3.5 seconds on hit. Small xenos and enemy faction human mobs
+      are knocked down for 0.3 seconds. Synthetics and Hunters are slowed for 1 second.
+  - rscadd: Added the M79 grenade launcher, it comes loaded with baton slugs by default.
+      It has IFF and can fire any (marine) grenade type.
+  - rscadd: Added the star shell grenade, it explodes into burning phosphorus that
+      is brighter than standard flares, but doesn't last as long. They can ignite
+      mobs, but the accuracy is terribly low. It must be fired from a launcher in
+      order to function.
+  - rscadd: Added the hornet grenade, it explodes into small .22lr pellets just like
+      the real world 40mm hornet shell. Think of it like a airburst grenade but with
+      weaker buckshot. Explodes into a 15 degree cone, dealing 45 damage per bullet
+      with 25 AP. It must be fired from a launcher in order to function.
+  - imageadd: Updated the van bandolier belt sprites.
+  - experiment: Nerfed the HPDP grenade. It now deals 40 damage per tick from 50.
+      Aliens and Hunters take 25% reduced damage in Phosphorus Smoke (30 per tick).
+      Firestacks remain at 5 added per tick. Keep in mind phosphorus smoke deals TRUE
+      BURN DAMAGE, in that it ignores fire resistance and armor, which is why its
+      so nasty to Hunters.
+  - experiment: HPDP grenades on the Almayer and those available to marines release
+      a weaker version of WP smoke compared to those employed by MARSOC. They deal
+      30 damage per tick, and Aliens and Hunters take 50% reduced damage from this
+      variant (15 per tick). Firestacks remain at 5 added per tick.
+  - rscadd: Added knife webbing to req. It is a webbing vest that can hold 5 knives.
+  - rscadd: The new first-aid pouch injectors can be refilled at nanomeds, and wey-meds.
+      Left click the used injector onto a powered and applicable device.
+  - imageadd: Resprited the bronze heart medal.
+  - rscadd: Added gun oil, helmet netting, helmet rain covers, USCM flair, and the
+      M5 integrated gasmask to squad uniform supply vendors.
+  - rscadd: Added the 88 Mod 4 burst stock, enabling burst fire and massively buffing
+      the weapon into a primary. While attached, the weapon cannot fit into a holster
+      and must be worn on the armor. Currently admin spawn only.
+  Vanagandr:
+  - maptweak: 'Almayer medbay: moved some lights in operating theatres that were overlapping
+      surgery tool lockers, tweaked semiotic standard signs and a camera next to the
+      APC to remove overlaps. '
+2021-11-22:
+  Triiodine:
+  - bugfix: The SG drum belt can now actually hold SG drums. Whoops.
+2021-11-23:
+  Geeves:
+  - bugfix: Added RTO Prep to the all marine access list, roles that are supposed
+      to have all access can now enter it.
+  Triiodine:
+  - bugfix: The baton slug now actually hits Aliens.
+  - bugfix: The Logistics Satchel object should now appear on 'classic' skin maps.
+  - bugfix: RTO's now have access to the other first-aid pouch types.
+  - experiment: Reduced the price of VP78 guncases across the board (by 4 and 5 respectively
+      depending on initial price point).
+  - experiment: Increased the frequency of Magnetic Harnesses in Req and Squad Req.
+  - experiment: Increased the frequency of Composite Barricades in Req and Squad req.
+  - experiment: Increased the frequency of holo-target rounds in Req by a factor of
+      2.
+  - bugfix: Re-added holo-target magazines to guncases.
+2021-11-26:
+  Nanu:
+  - tweak: The Revolvers (Not Mateba) no longer stuns humans on hit with regular ammo.
+  Stan_Albatross:
+  - maptweak: 'Solaris Ridge, Trijent Dam : soda fountains will no longer block movement
+      on the tile south of them'
+2021-11-27:
+  Geeves:
+  - bugfix: Clan bracers can no longer be stripped. Bracers now only clamp when they're
+      on the gloves slot.
+  Jeser:
+  - tweak: Queen now deals 150% of damage to multitile vehicles to discourage blocking.
+      Ravagers still do 200% of damage.
+  - experiment: Temporary PARS-159 Boyars Dual Cannon tweaks until vehicle weapon
+      system overhaul is finished.
+  - experiment: Damage reduced 60 to 50, AP reduced 30 to 15, firing delay decreased
+      1s to 0.7s, ammo count increased 40 to 60 rounds, max range decreased 32 to
+      12 tiles, accurate range decreased 32 to 10 tiles, accurate range min removed,
+      round speed decreased 6 to 5 tiles per tick, flak effect removed, IFF effect
+      added. Small to average sized targets on tile hit will experience slight concussion
+      (shake screen).
+  - tweak: 'M56 Firing Port Weapon changes: Ammo count increased from 45 to 75, removed
+      reduced view range, now it is same as crewmen get, 8 tiles.'
+  - tweak: Standing on top of a vacant support gunner seat and clicking on M56 FPW
+      handle will buckle you into the seat and give you control of the gun.
+  - tweak: Increased APC MED passenger slots from 4 to 6. Added two seats.
+  - rscdel: Disabled CMD APC techweb vendor.
+  - bugfix: Fixed not opaque walls in APC interiors.
+  - bugfix: Closed turfs and vehicles now actually appear in lower left status bar
+      when you hover mouse over them.
+  - tweak: Admin vehicle-related verbs were moved to the Vehicle Panel. Panel updated.
+      Fixed not being able to select Tank and APCs for these verbs.
+  - bugfix: Sentries now consider multitile vehicles an obstacle and won't try to
+      shoot through them, resulting in friendly fire cases.
+  - rscadd: Vehicles now consider the faction of the last mob buckling into Driver/Gunner
+      seat as their own.
+  - tweak: IFF-supporting rounds don't deal damage to vehicles of their faction now.
+  - bugfix: Fixed several bugs with vehicle naming, added clear warning that it's
+      IC nickname/callsign and that crewmen can be punished for meme names.
+  - tweak: Vans can now be shot if you aim at them, preventing them from being virtually
+      invincible during HvH combat.
+  - bugfix: Fixed melee weapons dealing huge damage directly to vehicle hull. (Thanks
+      Segrain for noticing this)
+  Pyrodes:
+  - rscadd: Added a wooden cross
+  Stan_Albatross:
+  - maptweak: removed a double bed tile in the XO's bunk room on the Almayer.
+  - rscdel: Removed every last reference to Nanotrasen and replaced them all with
+      Weyland-Yutani.
+  Stan_albatross:
+  - maptweak: Added privacy shutters to the POs' bunks and to the Officers' mess.
+  forest2001:
+  - rscadd: Added a bunch of new fun thrall mechanics to make it more engaging and
+      motivating to have or become a thrall!
+  - rscadd: Divided the bracers and mask into Hunter and Thrall variants to allow
+      more dynamic capabilities and reduce clutter on the respective versions.
+  - rscadd: Added the ability to link your (hunter) bracer to that of your thrall,
+      and directly communicate between the two.
+  - rscadd: Thrall bracers can be used to claim gear similar to how Hunter's can do.
+      This has the same requirement of being on a Hunter ship.
+  - rscadd: \"ancient alien\" versions of all Hunter armor pieces, this serves as
+      the template and represents an older, more worn down version of the gear. Primary
+      use will be in temples and such as leftovers.
+  - rscadd: Added thrall versions of all Hunter armor pieces. They have the same statistics
+      as the above armor however have unique sprites and can carry human equipment.
+  - tweak: Hunter Greaves have had their melee armor upgraded from MEDIUMLOW to MEDIUM
+      to be equal to marine combat boots.
+  - maptweak: Added thrall bracer boxes to the Huntership.
+  - maptweak: Replaced some of the spare armor pieces with thrall armor.
+  - rscdel: Removed yautja_old from presets files.
+  - bugfix: Abominations can now change hives without going invisible
+  stan_albatross:
+  - tweak: renamed the \"experimental vendor\" to the \"experimental tools vendor\"
+  - rscadd: added the experimental tools token to the synthetic uniform vendor, one
+      per synthetic. Inserting this token into the experimental tools vendor gives
+      it 45 points, and is how each synthetic will get their points. Each time you
+      insert one it will add 45 points to the point tally of the vendor. This avoids
+      issues with latejoins and second synths not being able to get synthtools. Survivor
+      synths cannot vend these tokens.
+  - tweak: 'in lieu of the above changes, the synthetic experimental tools vendor
+      now starts with zero points, you must insert an experimental tools token to
+      acquire them. '
+2021-11-28:
+  Stan_Albatross:
+  - bugfix: removed the ability of burrowed xenos to overwatch, preventing burrowers
+      from being able to bypass their screen vision while burrowing.
+  - bugfix: applied incapacitation and buckled checks to Queen overwatching via the
+      Queen locator
+2021-11-29:
+  Geeves:
+  - bugfix: Yautja translator type preference now properly saves.
+  - rscadd: Senior Enlisted Advisors now have the ability to make their LOOCs appear
+      in their overhead chat.
+  - tweak: Marine Tacmaps no longer care about which squad is being overwatched, all
+      squads will always have their regular squad colors.
+  - rscadd: Queens on ovi now have access to a Xeno Tacmap in the Alien tabs, as 'View
+      Xeno Tacmap'. The structure of the cave isn't shrouded for them, but it does
+      not showcase human movement, only xeno.
+  - rscadd: Yautja hunter globes now have a combination of Marine and Xeno tacmaps.
+  - rscadd: Added factional tacmaps for UPP, CLF, PMCs.
+  - rscadd: You can no longer shoot or attack dead enemies during Faction Clash, nor
+      can you strip their gear or pull them around if they're crit or dead. Staff
+      can toggle this feature mid-round.
+  - tweak: Engineers can't select the DMR or Plasma Glob turret as their engitech
+      upgrade during Faction Clash. Staff can toggle this feature mid-round.
+  - rscadd: Admins can now toggle OB warheads spawning roundstart or not.
+  - rscadd: Your seeing in darkness as an observer preference will now persist.
+  - bugfix: Your taskbar flashing preferences now properly load.
+  - tweak: Only people part of the marine faction are able to see what the primary
+      LZ is in the Status panel now.
+  Stan_Albatross:
+  - tweak: When you set orders via overwatch, they will appear in chat for those recieving
+      them as well.
+  - tweak: When you overwatch message a squad or SL, or set orders, the message/orders
+      that you sent will be shown back to you.
+  - tweak: Clarified when the OB and supply drops are on cooldown via error messages
+      when attempting launch from the overwatch consoles, renamed a few instances
+      of \"orbital bombardment\" to \"orbital bombardment cannon\".
+2021-11-30:
+  Geeves:
+  - bugfix: Marine announcements will now properly only be sent to marines, PMCs,
+      and anyone aboard the Almayer.
+  - rscadd: Added factional groundside consoles. These only send announcements to
+      their specific faction, and cannot set the LZ or overwatch USCM squads.
+  - rscadd: Observers now get a message when an OB is fired, and can jump to its location
+      to view the carnage.
+  - tweak: 'UPP Comms now shows up as UPP rather than #unkn.'
+  - bugfix: Selecting the Plasma Glob sentry upgrade will now properly give you the
+      Plasma Glob sentry upgrade.
+  forest2001:
+  - bugfix: Thrall armor now uses its sprites rather than getting overwritten and
+      becoming invisible.

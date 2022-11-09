@@ -1,8 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aF" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "1,6"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "cs" = (
 /turf/closed/shuttle/lifeboat{
@@ -31,9 +32,10 @@
 	},
 /area/shuttle/lifeboat)
 "ew" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "1,0"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "eL" = (
 /turf/closed/shuttle/lifeboat{
@@ -49,9 +51,10 @@
 /turf/closed/shuttle/lifeboat/transparent,
 /area/shuttle/lifeboat)
 "hY" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "26,1"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "iR" = (
 /turf/closed/shuttle/lifeboat{
@@ -66,9 +69,10 @@
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "jU" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,6"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "jW" = (
 /turf/closed/shuttle/lifeboat/transparent{
@@ -77,7 +81,7 @@
 /area/shuttle/lifeboat)
 "jX" = (
 /obj/structure/extinguisher_cabinet/lifeboat{
-	pixel_x = 11;
+	pixel_x = 8;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
@@ -153,10 +157,18 @@
 	icon_state = "7,0"
 	},
 /area/shuttle/lifeboat)
+"vd" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = 15;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/shuttle/lifeboat)
 "vx" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,3"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "vz" = (
 /turf/closed/shuttle/lifeboat{
@@ -175,9 +187,17 @@
 /area/shuttle/lifeboat)
 "xG" = (
 /obj/docking_port/mobile/lifeboat/port,
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,0"
 	},
+/turf/template_noop,
+/area/shuttle/lifeboat)
+"yf" = (
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = -12;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "yE" = (
 /turf/closed/shuttle/lifeboat{
@@ -190,30 +210,34 @@
 	},
 /area/shuttle/lifeboat)
 "zd" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,2"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "zq" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "26,5"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "BC" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "25,6"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "Ct" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/prop/almayer/computer{
+/obj/structure/machinery/computer/shuttle/lifeboat{
 	dir = 8
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "Cz" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat2-D1"
+	id = "Boat1-D1";
+	throw_dir = 1
 	},
 /turf/open/shuttle/lifeboat{
 	icon_state = "test_floor4";
@@ -243,15 +267,20 @@
 /area/shuttle/lifeboat)
 "FZ" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	pixel_x = -9;
+	pixel_x = -5;
+	pixel_y = 27
+	},
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = 10;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "Gf" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "25,0"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "Hv" = (
 /turf/closed/shuttle/lifeboat{
@@ -288,13 +317,15 @@
 	},
 /area/shuttle/lifeboat)
 "MF" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,5"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "MN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat2-D2"
+	id = "Boat1-D2";
+	throw_dir = 1
 	},
 /turf/open/shuttle/lifeboat{
 	icon_state = "test_floor4";
@@ -365,9 +396,10 @@
 	},
 /area/shuttle/lifeboat)
 "So" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,4"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "Sy" = (
 /turf/closed/shuttle/lifeboat{
@@ -375,9 +407,10 @@
 	},
 /area/shuttle/lifeboat)
 "SV" = (
-/turf/closed/shuttle/lifeboat{
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,1"
 	},
+/turf/template_noop,
 /area/shuttle/lifeboat)
 "TO" = (
 /turf/closed/shuttle/lifeboat{
@@ -396,9 +429,8 @@
 /area/shuttle/lifeboat)
 "Uf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network{
-	dir = 8;
-	network = list("almayer","vehicle")
+/obj/structure/machinery/computer/security/almayer/vehicle{
+	dir = 8
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
@@ -494,7 +526,7 @@ vZ
 (8,1,1) = {"
 mB
 PU
-Ro
+yf
 nn
 Ro
 OX
@@ -575,7 +607,7 @@ fr
 (17,1,1) = {"
 Rs
 Id
-jX
+vd
 nn
 Ro
 iR

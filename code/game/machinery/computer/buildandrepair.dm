@@ -19,10 +19,13 @@
 					to_chat(user, SPAN_NOTICE(" You wrench the frame into place."))
 					src.anchored = 1
 					src.state = 1
-			if(istype(P, /obj/item/tool/weldingtool))
+			if(iswelder(P))
+				if(!HAS_TRAIT(P, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					return
 				var/obj/item/tool/weldingtool/WT = P
-				if(!WT.remove_fuel(0, user))
-					to_chat(user, "[WT] must be on to complete this task.")
+				if(!WT.isOn())
+					to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 					return
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

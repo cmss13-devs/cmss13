@@ -22,10 +22,10 @@ var/list/robot_verbs_default = list(
 
 //Hud stuff
 
-	var/obj/screen/cells = null
-	var/obj/screen/inv1 = null
-	var/obj/screen/inv2 = null
-	var/obj/screen/inv3 = null
+	var/atom/movable/screen/cells = null
+	var/atom/movable/screen/inv1 = null
+	var/atom/movable/screen/inv2 = null
+	var/atom/movable/screen/inv3 = null
 
 //3 Modules can be activated at any one time.
 	var/obj/item/circuitboard/robot_module/module = null
@@ -170,21 +170,21 @@ var/list/robot_verbs_default = list(
 	switch(modtype)
 		if("Standard")
 			module = new /obj/item/circuitboard/robot_module/standard(src)
-			module.channels = list("Command" = 1, "MP" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 0, "MedSci" = 0, "Req" = 0 )
+			module.channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 0, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, RADIO_CHANNEL_ENGI = 0, RADIO_CHANNEL_MEDSCI = 0, RADIO_CHANNEL_REQ = 0 )
 			module_sprites["Default"] = "robot"
 			module_sprites["Droid"] = "droid"
 			module_sprites["Drone"] = "drone-standard"
 
 		if("Service")
 			module = new /obj/item/circuitboard/robot_module/butler(src)
-			module.channels = list("Command" = 1, "MP" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 0, "MedSci" = 0, "Req" = 0 )
+			module.channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 0, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, RADIO_CHANNEL_ENGI = 0, RADIO_CHANNEL_MEDSCI = 0, RADIO_CHANNEL_REQ = 0 )
 			module_sprites["Default"] = "Service2"
 			module_sprites["Rich"] = "maximillion"
 			module_sprites["Drone"] = "drone-service"
 
 		if("Medic")
 			module = new /obj/item/circuitboard/robot_module/medic(src)
-			module.channels = list("Command" = 1, "MP" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 0, "MedSci" = 1, "Req" = 0 )
+			module.channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 0, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, RADIO_CHANNEL_ENGI = 0, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 0 )
 			if(camera && ("Robots" in camera.network))
 				camera.network.Add("Medical")
 			module_sprites["Standard"] = "surgeon"
@@ -194,7 +194,7 @@ var/list/robot_verbs_default = list(
 
 		if("Surgeon")
 			module = new /obj/item/circuitboard/robot_module/surgeon(src)
-			module.channels = list("Command" = 1, "MP" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 0, "MedSci" = 1, "Req" = 0 )
+			module.channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 0, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, RADIO_CHANNEL_ENGI = 0, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 0 )
 			if(camera && ("Robots" in camera.network))
 				camera.network.Add("Medical")
 			module_sprites["Standard"] = "surgeon"
@@ -204,14 +204,14 @@ var/list/robot_verbs_default = list(
 
 		if("Security")
 			module = new /obj/item/circuitboard/robot_module/security(src)
-			module.channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 0, "MedSci" = 0, "Req" = 0 )
+			module.channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 1, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, RADIO_CHANNEL_ENGI = 0, RADIO_CHANNEL_MEDSCI = 0, RADIO_CHANNEL_REQ = 0 )
 			module_sprites["Bloodhound"] = "bloodhound"
 			module_sprites["Bloodhound - Treaded"] = "secborg+tread"
 			module_sprites["Drone"] = "drone-sec"
 
 		if("Engineering")
 			module = new /obj/item/circuitboard/robot_module/engineering(src)
-			module.channels = list("Command" = 1, "MP" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 1, "MedSci" = 0, "Req" = 0 )
+			module.channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 0, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 0, RADIO_CHANNEL_REQ = 0 )
 			if(camera && ("Robots" in camera.network))
 				camera.network.Add("Engineering")
 			module_sprites["Landmate"] = "landmate"
@@ -220,7 +220,7 @@ var/list/robot_verbs_default = list(
 
 		if("Janitor")
 			module = new /obj/item/circuitboard/robot_module/janitor(src)
-			module.channels = list("Command" = 1, "MP" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 0, "MedSci" = 0, "Req" = 0 )
+			module.channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 0, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, RADIO_CHANNEL_ENGI = 0, RADIO_CHANNEL_MEDSCI = 0, RADIO_CHANNEL_REQ = 0 )
 			module_sprites["Mop Gear Rex"] = "mopgearrex"
 			module_sprites["Drone"] = "drone-janitor"
 
@@ -449,7 +449,10 @@ var/list/robot_verbs_default = list(
 
 				return
 
-	if (istype(W, /obj/item/tool/weldingtool))
+	if (iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if (src == user)
 			to_chat(user, SPAN_WARNING("You lack the reach to be able to repair yourself."))
 			return
@@ -495,10 +498,10 @@ var/list/robot_verbs_default = list(
 				sleep(30)
 				to_chat(user, "You damage some parts of the chassis, but eventually manage to rip out [mmi]!")
 				var/obj/item/robot_parts/robot_suit/C = new/obj/item/robot_parts/robot_suit(loc)
-				C.l_leg = new/obj/item/robot_parts/l_leg(C)
-				C.r_leg = new/obj/item/robot_parts/r_leg(C)
-				C.l_arm = new/obj/item/robot_parts/l_arm(C)
-				C.r_arm = new/obj/item/robot_parts/r_arm(C)
+				C.l_leg = new/obj/item/robot_parts/leg/l_leg(C)
+				C.r_leg = new/obj/item/robot_parts/leg/r_leg(C)
+				C.l_arm = new/obj/item/robot_parts/arm/l_arm(C)
+				C.r_arm = new/obj/item/robot_parts/arm/r_arm(C)
 				C.updateicon()
 				new/obj/item/robot_parts/chest(loc)
 				qdel(src)
@@ -764,18 +767,21 @@ var/list/robot_verbs_default = list(
 		if(!module_state_1)
 			module_state_1 = O
 			O.layer = ABOVE_HUD_LAYER
+			O.plane = ABOVE_HUD_PLANE
 			contents += O
 			if(istype(module_state_1,/obj/item/robot/sight))
 				sight_mode |= module_state_1:sight_mode
 		else if(!module_state_2)
 			module_state_2 = O
 			O.layer = ABOVE_HUD_LAYER
+			O.plane = ABOVE_HUD_PLANE
 			contents += O
 			if(istype(module_state_2,/obj/item/robot/sight))
 				sight_mode |= module_state_2:sight_mode
 		else if(!module_state_3)
 			module_state_3 = O
 			O.layer = ABOVE_HUD_LAYER
+			O.plane = ABOVE_HUD_PLANE
 			contents += O
 			if(istype(module_state_3,/obj/item/robot/sight))
 				sight_mode |= module_state_3:sight_mode
@@ -867,7 +873,7 @@ var/list/robot_verbs_default = list(
 /mob/living/silicon/robot/proc/ResetSecurityCodes()
 	set category = "Robot Commands"
 	set name = "Reset Identity Codes"
-	set desc = "Scrambles your security and identification codes and resets your current buffers.  Unlocks you and but permenantly severs you from your AI and the robotics console and will deactivate your camera system."
+	set desc = "Scrambles your security and identification codes and resets your current buffers.  Unlocks you and but permanently severs you from your AI and the robotics console and will deactivate your camera system."
 
 	var/mob/living/silicon/robot/R = src
 

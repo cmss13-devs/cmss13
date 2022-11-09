@@ -21,9 +21,11 @@
 	var/max_range = 9 //9 tiles, 7 is screen range, controlled by the type of napalm in the canister. We max at 9 since diagonal bullshit.
 
 	attachable_allowed = list( //give it some flexibility.
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/attached_gun/extinguisher)
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/attached_gun/flamer_nozzle
+	)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY
 	gun_category = GUN_CATEGORY_HEAVY
 
@@ -32,9 +34,20 @@
 	. = ..()
 	update_icon()
 
-
 /obj/item/weapon/gun/flamer/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
+	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 11, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
+
+/obj/item/weapon/gun/flamer/x_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return 8
+	return 0
+
+/obj/item/weapon/gun/flamer/y_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return -1
+	return 0
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
@@ -48,12 +61,12 @@
 	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
 	update_icon()
 
-/obj/item/weapon/gun/flamer/examine(mob/user)
-	..()
+/obj/item/weapon/gun/flamer/get_examine_text(mob/user)
+	. = ..()
 	if(current_mag)
-		to_chat(user, "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!")
+		. += "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!"
 	else
-		to_chat(user, "There's no tank in [src]!")
+		. += "There's no tank in [src]!"
 
 /obj/item/weapon/gun/flamer/update_icon()
 	..()
@@ -65,15 +78,14 @@
 	icon_state = new_icon_state
 
 	if(current_mag && current_mag.reagents)
-
 		var/image/I = image(icon, icon_state="[base_gun_icon]_strip")
 		I.color = mix_color_from_reagents(current_mag.reagents.reagent_list)
-
 		overlays += I
 
 	if(!(flags_gun_features & GUN_TRIGGER_SAFETY))
+		var/obj/item/attachable/attached_gun/flamer_nozzle/nozzle = locate() in contents
 		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
-		I.pixel_x += 3
+		I.pixel_x += nozzle && nozzle == active_attachable ? 6 : 1
 		overlays += I
 
 /obj/item/weapon/gun/flamer/able_to_fire(mob/user)
@@ -91,8 +103,10 @@
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
 	set waitfor = 0
+
 	if(!able_to_fire(user))
 		return
+
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 	if (!targloc || !curloc)
@@ -108,27 +122,16 @@
 			active_attachable.activate_attachment(src, null, TRUE)
 		else
 			active_attachable.fire_attachment(target, src, user) //Fire it.
-		return
-
-	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
-		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
-			return
-		if(active_attachable.current_rounds <= 0)
-			click_empty(user) //If it's empty, let them know.
-			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
-			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
-			active_attachable.activate_attachment(src, null, TRUE)
-		else
-			active_attachable.fire_attachment(target, src, user) //Fire it.
 			active_attachable.last_fired = world.time
 		return
 
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
-		to_chat(user, SPAN_WARNING("The weapon isn't lit"))
+		to_chat(user, SPAN_WARNING("\The [src] isn't lit!"))
 		return
 
 	if(!current_mag)
 		return
+
 	if(current_mag.current_rounds <= 0)
 		click_empty(user)
 	else
@@ -198,6 +201,7 @@
 	var/datum/reagent/R = current_mag.reagents.reagent_list[1]
 
 	var/flameshape = R.flameshape
+	var/fire_type = R.fire_type
 
 	R.intensityfire = Clamp(R.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
 	R.durationfire = Clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
@@ -218,7 +222,7 @@
 
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user), fuel_pressure)
+	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user), fuel_pressure, fire_type)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(var/mob/living/user)
 	if(current_mag)
@@ -229,7 +233,7 @@
 
 /obj/item/weapon/gun/flamer/deathsquad //w-y deathsquad waist flamer
 	name = "\improper M240A3 incinerator unit"
-	desc = "A next-generation incinerator unit, the M240A3 is much lighter and dextreous than its predecessors thanks to the ceramic alloy construction. It can be slinged over a belt and usually comes equipped with X-type fuel."
+	desc = "A next-generation incinerator unit, the M240A3 is much lighter and dextrous than its predecessors thanks to the ceramic alloy construction. It can be slinged over a belt and usually comes equipped with X-type fuel."
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
 	flags_equip_slot = SLOT_BACK | SLOT_WAIST
 	current_mag = /obj/item/ammo_magazine/flamer_tank/EX
@@ -243,10 +247,15 @@
 	indestructible = 1
 	current_mag = null
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
+
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/extinguisher
+	)
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	flags_item = TWOHANDED|NO_CRYO_STORE
-
 
 /obj/item/weapon/gun/flamer/M240T/unique_action(mob/user)
 	if(fuelpack)
@@ -273,8 +282,20 @@
 			return TRUE
 	return ..()
 
+/obj/item/weapon/gun/flamer/M240T/x_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return 7
+	return 0
+
+/obj/item/weapon/gun/flamer/M240T/y_offset_by_attachment_type(var/attachment_type)
+	switch(attachment_type)
+		if(/obj/item/attachable/flashlight)
+			return -1
+	return 0
+
 /obj/item/weapon/gun/flamer/M240T/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
+	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 13, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
 
 /obj/item/weapon/gun/flamer/M240T/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if (!link_fuelpack(user) && !current_mag)
@@ -329,10 +350,29 @@
 		return TRUE
 	return FALSE
 
+GLOBAL_LIST_EMPTY(flamer_particles)
+/particles/flamer_fire
+	icon = 'icons/effects/particles/fire.dmi'
+	icon_state = "bonfire"
+	width = 100
+	height = 100
+	count = 1000
+	spawning = 8
+	lifespan = 0.7 SECONDS
+	fade = 1 SECONDS
+	grow = -0.01
+	velocity = list(0, 0)
+	position = generator("box", list(-16, -16), list(16, 16), NORMAL_RAND)
+	drift = generator("vector", list(0, -0.2), list(0, 0.2))
+	gravity = list(0, 0.95)
+	scale = generator("vector", list(0.3, 0.3), list(1,1), NORMAL_RAND)
+	rotation = 30
+	spin = generator("num", -20, 20)
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
-//Time to redo part of abby's code.
-//Create a flame sprite object. Doesn't work like regular fire, ie. does not affect atmos or heat
+/particles/flamer_fire/New(var/set_color)
+	..()
+	color = set_color
+
 /obj/flamer_fire
 	name = "fire"
 	desc = "Ouch!"
@@ -357,7 +397,9 @@
 	var/datum/reagents/tied_reagents
 	var/datum/callback/to_call
 
-/obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C, var/fuel_pressure = 1)
+	var/fire_variant = FIRE_VARIANT_DEFAULT
+
+/obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C, var/fuel_pressure = 1, var/fire_type = FIRE_VARIANT_DEFAULT)
 	. = ..()
 	if(!R)
 		R = new /datum/reagent/napalm/ut()
@@ -369,11 +411,17 @@
 
 	flameshape = new_flameshape
 
+	fire_variant = fire_type
+
 	//non-dynamic flame is already colored
 	if(R.burn_sprite == "dynamic")
 		color = R.burncolor
 	else
 		flame_icon = R.burn_sprite
+
+	if(!GLOB.flamer_particles[R.burncolor])
+		GLOB.flamer_particles[R.burncolor] = new /particles/flamer_fire(R.burncolor)
+	particles = GLOB.flamer_particles[R.burncolor]
 
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
@@ -382,8 +430,10 @@
 
 	target_clicked = target
 
-	if(cause_data)
+	if(istype(cause_data))
 		weapon_cause_data = cause_data
+	else if(cause_data)
+		weapon_cause_data = create_cause_data(cause_data)
 	else
 		weapon_cause_data = create_cause_data(initial(name), null)
 
@@ -421,7 +471,7 @@
 		var/turf/open/snow/S = loc
 
 		if (S.bleed_layer > 0)
-			S.bleed_layer -= 1
+			S.bleed_layer--
 			S.update_icon(1, 0)
 
 	if (istype(loc, /turf/open/auto_turf/snow))
@@ -446,7 +496,7 @@
 						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						if(weapon_cause_data.cause_name)
 							H.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)"
+						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
 						var/ff_living = TRUE
 						if(H.stat == DEAD)
 							ff_living = FALSE
@@ -466,7 +516,11 @@
 		var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
 		if(!(sig_result & COMPONENT_NO_IGNITE))
-			M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+			switch(fire_variant)
+				if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
+					M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+				else
+					M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
 		if(sig_result & COMPONENT_NO_BURN)
 			continue
@@ -495,8 +549,22 @@
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_FLAME
 
-/obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
-	set_on_fire(M)
+/obj/flamer_fire/Crossed(atom/movable/atom_movable)
+	atom_movable.handle_flamer_fire_crossed(src)
+
+/obj/flamer_fire/proc/type_b_debuff_xeno_armor(var/mob/living/carbon/Xenomorph/X)
+	var/sig_result = SEND_SIGNAL(X, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
+	. = 1
+	if(sig_result & COMPONENT_XENO_FRENZY)
+		. = 0.8
+	if(sig_result & COMPONENT_NO_IGNITE)
+		. = 0.6
+	X.armor_deflection_debuff = (X.armor_deflection + X.armor_deflection_buff) * 0.5 * . //At the moment this just directly sets the debuff var since it's the only interaction with it. In the future if the var is used more, usages of type_b_debuff_armor may need to be refactored (or just make them mutually exclusive and have the highest overwrite).
+
+/mob/living/carbon/Xenomorph/proc/reset_xeno_armor_debuff_after_time(var/mob/living/carbon/Xenomorph/X, var/wait_ticks) //Linked onto Xenos instead of the fire so it doesn't cancel on fire deletion.
+	spawn(wait_ticks)
+	if(X.armor_deflection_debuff)
+		X.armor_deflection_debuff = 0
 
 /obj/flamer_fire/proc/set_on_fire(mob/living/M)
 	if(!istype(M))
@@ -504,6 +572,9 @@
 
 	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
 	var/burn_damage = round(burnlevel * 0.5)
+	switch(fire_variant)
+		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
+			burn_damage = burnlevel
 	var/fire_intensity_resistance = M.check_fire_intensity_resistance()
 
 	if(!tied_reagent.fire_penetrating)
@@ -517,7 +588,11 @@
 		X.plasma_stored = X.plasma_max
 
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
-		M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+		switch(fire_variant)
+			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
+				M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+			else
+				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
 	if(sig_result & COMPONENT_NO_BURN && !tied_reagent.fire_penetrating)
 		burn_damage = 0
@@ -528,7 +603,14 @@
 
 	M.last_damage_data = weapon_cause_data
 	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
-	to_chat(M, SPAN_DANGER("You are burned!"))
+
+	var/variant_burn_msg = null
+	switch(fire_variant) //Fire variant special message appends.
+		if(FIRE_VARIANT_TYPE_B)
+			if(isXeno(M))
+				var/mob/living/carbon/Xenomorph/X = M
+				X.armor_deflection?(variant_burn_msg=" You feel the flames weakening your exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
+	to_chat(M, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
 	M.updatehealth()
 
 /obj/flamer_fire/proc/update_flame()
@@ -559,7 +641,8 @@
 	if(!istype(T)) //Is it a valid turf? Has to be on a floor
 		qdel(src)
 		return PROCESS_KILL
-	T.flamer_fire_act(burnlevel*delta_time)
+	var/damage = burnlevel*delta_time
+	T.flamer_fire_act(damage)
 
 	update_flame()
 
@@ -567,14 +650,8 @@
 		qdel(src)
 		return
 
-	var/j = 0
-	for(var/i in loc)
-		if(++j >= 11) break
-		if(isliving(i))
-			set_on_fire(i)
-		else if(isobj(i))
-			var/obj/O = i
-			O.flamer_fire_act(0, weapon_cause_data)
+	for(var/atom/thing in loc)
+		thing.handle_flamer_fire(src, damage, delta_time)
 
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.
 	firelevel -= 2 //reduce the intensity by 2 per tick
@@ -611,7 +688,7 @@
 
 		switch(spread_direction)
 			if(NORTH,SOUTH,EAST,WEST)
-				spread_power -= 1
+				spread_power--
 			else
 				spread_power -= 1.414 //diagonal spreading
 
@@ -641,7 +718,7 @@
 		var/spread_power = range
 		switch(direction)
 			if(NORTH,SOUTH,EAST,WEST)
-				spread_power -= 1
+				spread_power--
 			else
 				spread_power -= 1.414 //diagonal spreading
 		var/turf/T = get_step(target, direction)

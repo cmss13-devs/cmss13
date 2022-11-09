@@ -8,6 +8,9 @@
 	var/item_state = null //if you don't want to use icon_state for onmob inhand/belt/back/ear/suitstorage/glove sprite.
 						//e.g. most headsets have different icon_state but they all use the same sprite when shown on the mob's ears.
 						//also useful for items with many icon_state values when you don't want to make an inhand sprite for each value.
+	/// When set to true, every single sprite can be found in the one icon .dmi, rather than being spread into onmobs, inhands, and objects
+	var/contained_sprite = FALSE
+
 	var/r_speed = 1.0
 	var/force = 0
 	var/damtype = BRUTE
@@ -26,7 +29,24 @@
 	var/pry_capable = 0 //whether this item can be used to pry things open.
 	var/heat_source = 0 //whether this item is a source of heat, and how hot it is (in Kelvin).
 
-	var/hitsound = null
+	//SOUND VARS
+	///Sound to be played when item is picked up
+	var/pickupsound
+	///Volume of pickup sound
+	var/pickupvol = 15
+	///Whether the pickup sound will vary in pitch/frequency
+	var/pickup_vary = TRUE
+
+	///Sound to be played when item is dropped
+	var/dropsound
+	///Volume of drop sound
+	var/dropvol = 15
+	///Whether the drop sound will vary in pitch/frequency
+	var/drop_vary = TRUE
+
+	///Play this when you thwack someone with the item
+	var/hitsound
+
 	var/center_of_mass = "x=16;y=16"
 	///Adjusts the item's position in the HUD, currently only by guns with stock/barrel attachments.
 	var/hud_offset = 0
@@ -61,8 +81,9 @@
 	var/list/allowed = null //suit storage stuff.
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
 	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
+	var/zoom_initial_mob_dir = null // the initial dir the mob faces when it zooms in
 
-	var/list/uniform_restricted //Need to wear this uniform to equip this
+	var/list/obj/item/uniform_restricted //Need to wear this uniform to equip this
 
 	var/time_to_equip = 0 // set to ticks it takes to equip a worn suit.
 	var/time_to_unequip = 0 // set to ticks it takes to unequip a worn suit.
@@ -89,6 +110,8 @@
 	var/blood_color = "" //color of the blood on us if there's any.
 	appearance_flags = KEEP_TOGETHER //taken from blood.dm
 
+	var/is_objective = FALSE //lets us know if the item is an objective or not
+
 	var/list/inherent_traits
 
 /obj/item/Initialize(mapload, ...)
@@ -104,6 +127,9 @@
 		drag_delay = 1
 	if(isstorage(loc))
 		appearance_flags |= NO_CLIENT_COLOR //It's spawned in an inventory item, so saturation/desaturation etc. effects shouldn't affect it.
+
+	if(flags_item & ITEM_PREDATOR)
+		AddElement(/datum/element/yautja_tracked_item)
 
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
@@ -155,20 +181,6 @@
 /obj/item/proc/suicide_act(mob/user)
 	return
 
-/obj/item/verb/move_to_top()
-	set name = "Move To Top"
-	set category = "Object"
-	set src in oview(1)
-
-	if(!istype(src.loc, /turf) || usr.stat || usr.is_mob_restrained() )
-		return
-
-	var/turf/T = src.loc
-
-	moveToNullspace()
-
-	src.forceMove(T)
-
 /*Global item proc for all of your unique item skin needs. Works with any
 item, and will change the skin to whatever you specify here. You can also
 manually override the icon with a unique skin if wanted, for the outlier
@@ -197,7 +209,8 @@ cases. Override_icon_state should be a list.*/
 	else return
 
 
-/obj/item/examine(mob/user)
+/obj/item/get_examine_text(mob/user)
+	. = list()
 	var/size
 	switch(w_class)
 		if(SIZE_TINY)
@@ -213,9 +226,11 @@ cases. Override_icon_state should be a list.*/
 		if(SIZE_MASSIVE)
 			size = "massive"
 		else
-	to_chat(user, "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item.")
+	. += "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item."
 	if(desc)
-		to_chat(user, desc)
+		. += desc
+	if(desc_lore)
+		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
 
 /obj/item/attack_hand(mob/user)
 	if (!user)
@@ -297,23 +312,31 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
+	if(dropsound && (src.loc.z))
+		playsound(src, dropsound, dropvol, drop_vary)
+	src.do_drop_animation(user)
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
 
 // called just as an item is picked up (loc is not yet changed)
-/obj/item/proc/pickup(mob/user)
+/obj/item/proc/pickup(mob/user, silent)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
-	return
+	if(pickupsound && !silent && src.loc?.z)
+		playsound(src, pickupsound, pickupvol, pickup_vary)
+	do_pickup_animation(user)
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
 	SHOULD_CALL_PARENT(TRUE)
 	appearance_flags &= ~NO_CLIENT_COLOR
-	if(src in S.hearing_items)
+	if(LAZYISIN(S.hearing_items, src))
 		LAZYREMOVE(S.hearing_items, src)
-
+		if(!LAZYLEN(S.hearing_items))
+			S.flags_atom &= ~USES_HEARING
+	var/atom/location = S.get_loc_turf()
+	do_drop_animation(location)
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
 /obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
@@ -321,6 +344,7 @@ cases. Override_icon_state should be a list.*/
 	appearance_flags |= NO_CLIENT_COLOR //It's in an inventory item, so saturation/desaturation etc. effects shouldn't affect it.
 	if(src.flags_atom & USES_HEARING)
 		LAZYADD(S.hearing_items, src)
+		S.flags_atom |= USES_HEARING
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/finder as mob)
@@ -343,7 +367,7 @@ cases. Override_icon_state should be a list.*/
 // slot uses the slot_X defines found in setup.dm
 // for items that can be placed in multiple slots
 // note this isn't called during the initial dressing of a player
-/obj/item/proc/equipped(mob/user, slot)
+/obj/item/proc/equipped(mob/user, slot, silent)
 	SHOULD_CALL_PARENT(TRUE)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
@@ -354,16 +378,19 @@ cases. Override_icon_state should be a list.*/
 		add_verb(user, verbs)
 		for(var/v in verbs)
 			LAZYDISTINCTADD(user.item_verbs[v], src)
+		for(var/datum/action/item_action in actions)
+			item_action.give_to(user) //some items only give their actions buttons when in a specific slot.
 	else
 		remove_item_verbs(user)
 
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
-	for(var/X in actions)
-		var/datum/action/A = X
-		if(item_action_slot_check(user, slot)) //some items only give their actions buttons when in a specific slot.
-			A.give_to(user)
+
 
 	appearance_flags |= NO_CLIENT_COLOR //So that saturation/desaturation etc. effects don't hit inventory.
+	if(LAZYLEN(uniform_restricted))
+		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+		if(flags_equip_slot & slotdefine2slotbit(slot))
+			RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, .proc/check_for_uniform_restriction)
 
 // Called after the item is removed from equipment slot.
 /obj/item/proc/unequipped(mob/user, slot)
@@ -371,15 +398,27 @@ cases. Override_icon_state should be a list.*/
 
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot)
 
+	// Unregister first so as not to have to handle our own event
+	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src, slot)
+
+/obj/item/proc/check_for_uniform_restriction(mob/user, obj/item/item, var/slot)
+	SIGNAL_HANDLER
+
+	if(item.flags_equip_slot & slotdefine2slotbit(slot))
+		if(is_type_in_list(item, uniform_restricted))
+			user.drop_inv_item_on_ground(src)
+			to_chat(user, SPAN_NOTICE("You drop \the [src] to the ground while unequipping \the [item]."))
+
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(mob/user, slot)
 	return TRUE
 
 // The mob M is attempting to equip this item into the slot passed through as 'slot'. return TRUE if it can do this and 0 if it can't.
 // If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.
-// Set disable_warning to 1 if you wish it to not give you outputs.
+// Set disable_warning to TRUE if you wish it to not give you outputs.
 // warning_text is used in the case that you want to provide a specific warning for why the item cannot be equipped.
-/obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = 0)
+/obj/item/proc/mob_can_equip(mob/M, slot, disable_warning = FALSE)
 	if(!slot)
 		return FALSE
 	if(!M)
@@ -404,14 +443,40 @@ cases. Override_icon_state should be a list.*/
 		if(H.species && !(slot in mob_equip))
 			return FALSE
 
+		if(uniform_restricted)
+			var/list/required_clothing = list()
+			var/restriction_satisfied = FALSE
+			for(var/obj/item/restriction_type as anything in uniform_restricted)
+				var/valid_equip_slots = initial(restriction_type.flags_equip_slot)
+				required_clothing += initial(restriction_type.name)
+				// You can't replace this with a switch(), flags_equip_slot is a bitfield
+				if(valid_equip_slots & SLOT_ICLOTHING)
+					if(istype(H.w_uniform, restriction_type))
+						restriction_satisfied = TRUE
+						break
+				if(valid_equip_slots & SLOT_OCLOTHING)
+					if(istype(H.wear_suit, restriction_type))
+						restriction_satisfied = TRUE
+						break
+			if(!restriction_satisfied)
+				if(!disable_warning)
+					to_chat(H, SPAN_WARNING("You cannot wear this without wearing one of the following; [required_clothing.Join(", ")]."))
+				return FALSE
+
 		switch(slot)
 			if(WEAR_L_HAND)
 				if(H.l_hand)
 					return FALSE
+				if(H.lying)
+					to_chat(H, SPAN_WARNING("You can't equip that while lying down."))
+					return
 				return TRUE
 			if(WEAR_R_HAND)
 				if(H.r_hand)
 					return FALSE
+				if(H.lying)
+					to_chat(H, SPAN_WARNING("You can't equip that while lying down."))
+					return
 				return TRUE
 			if(WEAR_FACE)
 				if(H.wear_mask)
@@ -562,9 +627,9 @@ cases. Override_icon_state should be a list.*/
 							var/obj/item/clothing/accessory/storage/S = A
 							if(S.hold.can_be_inserted(src, TRUE))
 								return TRUE
-						else if(istype(A, /obj/item/clothing/accessory/holster))
-							var/obj/item/clothing/accessory/holster/AH = A
-							if(!(AH.holstered) && AH.can_holster(src))
+						else if(istype(A, /obj/item/storage/internal/accessory/holster))
+							var/obj/item/storage/internal/accessory/holster/AH = A
+							if(!(AH.current_gun) && AH.can_be_inserted(src))
 								return TRUE
 				return FALSE
 			if(WEAR_IN_JACKET)
@@ -661,40 +726,6 @@ cases. Override_icon_state should be a list.*/
 		else
 			return !ignore_non_flags
 
-/obj/item/verb/verb_pickup()
-	set src in oview(1)
-	set category = "Object"
-	set name = "Pick up"
-
-	if(!(usr)) //BS12 EDIT
-		return
-	if(ismob(src))
-		return
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !Adjacent(usr))
-		return
-	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/brain)))//Is humanoid, and is not a brain
-		to_chat(usr, SPAN_DANGER("You can't pick things up!"))
-		return
-	if(src.anchored) //Object isn't anchored
-		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
-		return
-	if(!usr.hand && usr.r_hand) //Right hand is not full
-		to_chat(usr, SPAN_DANGER("Your right hand is full."))
-		return
-	if(usr.hand && usr.l_hand) //Left hand is not full
-		to_chat(usr, SPAN_DANGER("Your left hand is full."))
-		return
-	if(!istype(src.loc, /turf)) //Object is on a turf
-		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
-		return
-	//All checks are done, time to pick it up!
-	if (world.time <= usr.next_move)
-		return
-	usr.next_move += 6 // stop insane pickup speed
-	usr.UnarmedAttack(src)
-	return
-
-
 //This proc is executed when someone clicks the on-screen UI button. To make the UI button show, set the 'icon_action_button' to the icon_state of the image of the button in actions.dmi
 //The default action is attack_self().
 //Checks before we get to here are: mob is alive, mob is not restrained, paralyzed, asleep, resting, laying, item is on the mob.
@@ -725,35 +756,6 @@ cases. Override_icon_state should be a list.*/
 	if(I && !(I.flags_item & ITEM_ABSTRACT))
 		I.showoff(src)
 
-/datum/event_handler/event_gun_zoom
-	var/obj/item/zooming_item
-	var/mob/living/calee
-	flags_handler = HNDLR_FLAG_SINGLE_FIRE
-
-/datum/event_handler/event_gun_zoom/New(obj/item/_zooming_item, mob/living/_calee)
-	zooming_item = _zooming_item
-	calee = _calee
-
-/datum/event_handler/event_gun_zoom/Destroy()
-	if(zooming_item)
-		zooming_item.zoom_event_handler = null
-		zooming_item = null
-	calee = null
-	. = ..()
-
-/datum/event_handler/event_gun_zoom/handle(sender, datum/event_args/event_args)
-	if(calee && calee.client) //Dropped when disconnected, whoops
-		if(zooming_item && zooming_item.zoom && calee) //sanity check
-			zooming_item.zoom(calee)
-
-/*
-For zooming with scope or binoculars. This is called from
-modules/mob/mob_movement.dm if you move you will be zoomed out
-modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
-keep_zoom - do we keep zoom during movement. be careful with setting this to 1
-*/
-
-/obj/item/var/zoom_event_handler
 
 /obj/item/proc/zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 	if(!user)
@@ -783,42 +785,47 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	INVOKE_ASYNC(user, /atom.proc/visible_message, SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
-	user.zoom_cooldown = world.time + 20
+	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
-	if(zoom_event_handler)
-		user.remove_movement_handler(zoom_event_handler)
-		UnregisterSignal(src, list(
-			COMSIG_ITEM_DROPPED,
-			COMSIG_ITEM_UNWIELD,
-		))
-		qdel(zoom_event_handler)
+	UnregisterSignal(src, list(
+		COMSIG_ITEM_DROPPED,
+		COMSIG_ITEM_UNWIELD,
+	))
+	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
 		user.client.change_view(world_view_size, src)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 
+/obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, var/actually_moving, var/direction, var/specific_direction)
+	SIGNAL_HANDLER
+
+	if(mover.dir != zoom_initial_mob_dir && mover.client) //Dropped when disconnected, whoops
+		unzoom(mover)
+
 /obj/item/proc/unzoom_dropped_callback(datum/source, mob/user)
 	SIGNAL_HANDLER
 	unzoom(user)
 
 /obj/item/proc/do_zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0)
-	if(world.time <= user.zoom_cooldown) //If we are spamming the zoom, cut it out
+	if(!COOLDOWN_FINISHED(user, zoom_cooldown)) //If we are spamming the zoom, cut it out
 		return
-	user.zoom_cooldown = world.time + 20
-
+	COOLDOWN_START(user, zoom_cooldown, 20)
+	if(user.interactee)
+		user.unset_interaction()
+	else
+		user.set_interaction(src)
 	if(user.client)
 		user.client.change_view(viewsize, src)
 
-		if(zoom_event_handler)
-			qdel(zoom_event_handler)
-		zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
-		if(!keep_zoom)
-			user.add_movement_handler(zoom_event_handler)
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
 		), .proc/unzoom_dropped_callback)
+		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/zoom_handle_mob_move_or_look)
+
+		zoom_initial_mob_dir = user.dir
 
 		var/tilesize = 32
 		var/viewoffset = tilesize * tileoffset
@@ -841,10 +848,6 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
 	SPAN_NOTICE("You peer through \the [zoom_device]."))
 	zoom = !zoom
-	if(user.interactee)
-		user.unset_interaction()
-	else
-		user.set_interaction(src)
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)
 	var/mob_state
@@ -855,5 +858,140 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 		mob_state = item_state
 	else
 		mob_state = icon_state
+	if(contained_sprite)
+		mob_state += GLOB.slot_to_contained_sprite_shorthand[slot]
 	return mob_state
 
+/obj/item/proc/drop_to_floor(mob/wearer)
+	SIGNAL_HANDLER
+	wearer.drop_inv_item_on_ground(src)
+
+// item animatzionen
+
+/obj/item/proc/do_pickup_animation(atom/target)
+	if(!istype(loc, /turf))
+		return
+	var/image/pickup_animation = image(icon = src, loc = loc, layer = layer + 0.1)
+	var/animation_alpha = 175
+	if(target.alpha < 175)
+		animation_alpha = target.alpha
+	pickup_animation.alpha = animation_alpha
+	pickup_animation.plane = GAME_PLANE
+	pickup_animation.transform.Scale(0.75)
+	pickup_animation.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+
+	var/turf/current_turf = get_turf(src)
+	var/direction = get_dir(current_turf, target)
+	var/to_x = target.base_pixel_x
+	var/to_y = target.base_pixel_y
+
+	if(direction & NORTH)
+		to_y += 32
+	else if(direction & SOUTH)
+		to_y -= 32
+	if(direction & EAST)
+		to_x += 32
+	else if(direction & WEST)
+		to_x -= 32
+	if(!direction)
+		to_y += 10
+		pickup_animation.pixel_x += 6 * (prob(50) ? 1 : -1) //6 to the right or left, helps break up the straight upward move
+
+	var/list/viewers_clients = list()
+	for(var/mob/M as anything in viewers(7, src))
+		if(M.client)
+			if(M.client.prefs.item_animation_pref_level == SHOW_ITEM_ANIMATIONS_NONE)
+				continue
+			if(src.loc == target.loc && M.client.prefs.item_animation_pref_level == SHOW_ITEM_ANIMATIONS_HALF)
+				continue
+			viewers_clients += M.client
+
+	flick_overlay_to_clients(pickup_animation, viewers_clients, 4)
+
+	var/matrix/animation_matrix = new(pickup_animation.transform)
+	animation_matrix.Turn(pick(-30, 30))
+	animation_matrix.Scale(0.65)
+
+	animate(pickup_animation, alpha = animation_alpha, pixel_x = to_x, pixel_y = to_y, time = 3, transform = animation_matrix, easing = CUBIC_EASING)
+	animate(alpha = 0, transform = matrix().Scale(0.7), time = 1)
+
+/obj/item/proc/do_drop_animation(atom/moving_from)
+	if(!istype(loc, /turf))
+		return
+
+	if(!istype(moving_from))
+		return
+
+	var/turf/current_turf = get_turf(src)
+	var/direction = get_dir(moving_from, current_turf)
+	var/from_x = moving_from.base_pixel_x
+	var/from_y = moving_from.base_pixel_y
+
+	if(direction & NORTH)
+		from_y -= 32
+	else if(direction & SOUTH)
+		from_y += 32
+	if(direction & EAST)
+		from_x -= 32
+	else if(direction & WEST)
+		from_x += 32
+	if(!direction)
+		from_y += 10
+		from_x += 6 * (prob(50) ? 1 : -1) //6 to the right or left, helps break up the straight upward move
+
+	//We're moving from these chords to our current ones
+	var/old_x = pixel_x
+	var/old_y = pixel_y
+	var/old_alpha = alpha
+	var/matrix/old_transform = transform
+	var/matrix/animation_matrix = new(old_transform)
+	animation_matrix.Turn(pick(-30, 30))
+	animation_matrix.Scale(0.7) // Shrink to start, end up normal sized
+
+	pixel_x = from_x
+	pixel_y = from_y
+	alpha = 0
+	transform = animation_matrix
+
+	SEND_SIGNAL(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, 3)
+	// This is instant on byond's end, but to our clients this looks like a quick drop
+	animate(src, alpha = old_alpha, pixel_x = old_x, pixel_y = old_y, transform = old_transform, time = 3, easing = CUBIC_EASING)
+
+/atom/movable/proc/do_item_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item)
+	var/image/attack_image
+	if(visual_effect_icon)
+		attack_image = image('icons/effects/effects.dmi', attacked_atom, visual_effect_icon, attacked_atom.layer + 0.1)
+	else if(used_item)
+		attack_image = image(icon = used_item, loc = attacked_atom, layer = attacked_atom.layer + 0.1)
+		attack_image.plane = attacked_atom.plane + 1
+
+		// Scale the icon.
+		attack_image.transform *= 0.4
+		// The icon should not rotate.
+		attack_image.appearance_flags = APPEARANCE_UI
+
+		// Set the direction of the icon animation.
+		var/direction = get_dir(src, attacked_atom)
+		if(direction & NORTH)
+			attack_image.pixel_y = -12
+		else if(direction & SOUTH)
+			attack_image.pixel_y = 12
+
+		if(direction & EAST)
+			attack_image.pixel_x = -14
+		else if(direction & WEST)
+			attack_image.pixel_x = 14
+
+		if(!direction) // Attacked self?!
+			attack_image.pixel_y = 12
+			attack_image.pixel_x = 5 * (prob(50) ? 1 : -1)
+
+	if(!attack_image)
+		return
+
+	flick_overlay_to_clients(attack_image, GLOB.clients, 10)
+	var/matrix/copy_transform = new(transform)
+	// And animate the attack!
+	animate(attack_image, alpha = 175, transform = copy_transform.Scale(0.75), pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
+	animate(time = 1)
+	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)

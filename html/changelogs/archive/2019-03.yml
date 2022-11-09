@@ -1,0 +1,516 @@
+2019-03-02:
+  Cakey:
+  - rscadd: Re-added the ship self destruct systems.
+  - rscadd: The tank now gets a smoke launcher on roundstart.
+  - rscadd: You can now view all DEFCON rewards from the comms console.
+  - tweak: Changed DEFCON points per level and reward costs. Point rewards per level.
+  - maptweak: Added toolbelts and welding equipment to the Tanker's quarters.
+  - maptweak: Reshuffled the CIC to have all seating positions visible from all seating
+      positions.
+  - tweak: Fulton stacks have been increased to 10.
+  - tweak: Added a Fulton Recover Device crate to requisitions.
+  MattAtlas:
+  - tweak: Predators can now be combat hugged once again, since it was far too hard
+      to infect a Predator before.
+  - tweak: Spitter acid spit damage has been buffed.
+  - bugfix: The plasma rifle should actually do damage now.
+  - experimental: M41A, M39, M4RA and the main buckshot shell have all had their damage
+      slightly lowered as an experiment.
+  - tweak: Xenomorphs should now gain more health earlier in maturity.
+  MattAtlas, Triiodine:
+  - rscadd: The M5A6 smartpistol has been added. It can be found in Requisitions vendors.
+      This pistol fires IFF AP ammunition.
+  - rscadd: The M39 arm brace stock has been added. This stock makes one handing much
+      better while making wielding much worse. It can be found in the Requisitions
+      attachment vendor.
+  - rscadd: Light and Heavy armor types have been added to the PFC marine vendors.
+      As you would expect, Heavy armor protects significantly more against melee and
+      bullets, while also covering feet. Light armor protects less but you run faster.
+  - bugfix: PMCs should now actually have PMC IFF. That means the PMC sniper shouldn't
+      hit them.
+  - rscadd: The smartpistol has its own unique belt that can also be gotten from Requisitions.
+  - imageadd: New PFC kit sprites courtesy of Triiodine.
+  Neth Iafin:
+  - rscadd: All new item sprites are made by Triiodine.
+  - rscadd: Added L41A Battle Rifle.
+  - rscadd: Added Heavy Support kit.
+  - rscadd: Added Deployable Folding Barricades.
+  - rscadd: Added IFTS Mini-Scope and Carbon Stock - Battle Rifle's unique attachments.
+  - tweak: Rebalanced Marine Vendor costs. Item cost has been scaled to usefulness.
+  - rscadd: 'MORE DETAILS:'
+  - rscadd: L41A Battle Rifle - easy to carry, doesn't slow you down, worse accuracy
+      when wielded than M41A, better accuracy (slightly) when not wielded over M41A.
+      This weapon can't burstfire but can become super precise with the help of attachments.
+  - rscadd: Battle Rifle uses its own magazines that use standard M41A ammo. Each
+      magazine can contain up to 20 bullets, except extended mag that contains 35
+      bullets. There is also AP variant with standard capacity.
+  - rscadd: Battle Rifle can quickly (1 second) detach and attach its barrel attachment.
+  - rscadd: 'Battle Rifle can have following attachments: suppressor, bayonet, red
+      dot, flashlight, extended barrel, quickfire adapter, magnetic harness, carbon
+      stock, scope, miniscope, IFTS Mini-Scope.'
+  - rscadd: IFTS Mini-Scope - Unique attachment for the Battle Rifle. It allows you
+      to zoom with offset akin to miniscope but has no drawbacks/benefits to accuracy
+      or scatter. Scope also gives a small slowdown to movement speed while scoped
+      in. Scoping in takes up to one second.
+  - rscadd: IFTS Mini-Scope can be only received by taking mini-sniper kit or being
+      Medic/Engineer and picking it as your free attachment.
+  - rscadd: IFTS Mini-Scope has IFF but it also lowers your RoF.
+  - rscadd: Carbon Stock - unique attachment for the Battle Rifle. Gives Battle Rifle
+      a significant increase in accuracy while only increasing wield delay and size.
+  - tweak: Mini-sniper kit now provides L41A Battle Rifle, Supressor, Extended Barrel,
+      IFTS Mini-Scope, Carbon Stock, 2 Battle Rifle AP mags.
+  - rscadd: Composite Deployable Folding Barricades - barricade that can be deployed
+      in 3 seconds without any training. They can be repaired without skill for 40%
+      of their health. If Folding Barricade took more than 40% of the damage, it's
+      maximum possible health after repairs will lower.
+  - rscadd: To collapse barricade, drag its deployed sprite onto yourself. Collapsing
+      a barricade takes 10 seconds.
+  - rscadd: Folding Barricades are resistant to acid (cannot be melted), cannot be
+      jumped over (as if they had barbed wire) but do not slash back. They cannot
+      be rotated or moved, they can be only undeployed and then redeployed.
+  - rscadd: Folding Barricades can only be carried in hands or on the back instead
+      of backpack.
+  - rscadd: Folding Barricades are extremely rare.
+  - rscadd: Added 4xFolding Barricade to req for 100 points.
+  - rscadd: 'Added a rare requisition only kit - Heavy Support Kit. It conists of:
+      HP Rifle, 1 ammo box for HP rifle, Bipod, Folding Barricade, Welding Tool and
+      Welding Glasses.'
+  - tweak: 'Webbing cost for PFC: 15 -> 30.'
+  - tweak: 'Grenade cost for PFC: 15 -> 10.'
+  - tweak: 'Battle Rifle Special Mags cost for PFC: 15 -> 10.'
+  - tweak: 'Fire Extinguisher cost for PFC: 15 -> 5.'
+  - tweak: 'UNRELATED:'
+  - tweak: Increased normal sniper rifle's accuracy so it always hits.
+  - tweak: Increased flak's AoE damage.
+  - tweak: Removed flechette from PFC vendors and added them to main prep vendors.
+  RavingManiac:
+  - rscadd: Projectile changes:<br>- Most machines and structures, including window
+      frames, can serve as cover<br>- Any item can be hit if specifically clicked
+      on. Unanchored items will be thrown about by force of the bullet. Smaller items
+      are harder to hit<br>- Lights can be shot out
+  - bugfix: Plastic explosives will cause a proper explosion when planted on mobs
+  Triiodine:
+  - imageadd: Re-did all ammunition boxes.
+  - imageadd: Re-did all shotgun boxes.
+  - imageadd: Added extended magazines, finally.
+  - imageadd: M4RA magazines have been made unique.
+  - imagedel: Removed all legacy ammunition icons.
+  - rscadd: Big M39 AP ammo boxes have been added to ASRS.
+  - rscadd: Big flechette boxes have been added to req vendors.
+  - bugfix: Gives the grenade spec their proper armor. Truth is, it was rigged from
+      the start.
+  - tweak: Retired B18 for M3-G4. It is now an admin spawn only. It will return soon
+      though, never fear.
+  - tweak: M3-G4 inherits all B18 stats. Tricord arm injectors have been removed.
+      Has greatly increased explosives resistance.
+  - tweak: All specialist armors are now un-acidable.
+  - bugfix: Fixed some grammar issues on specialist & PFC kit descriptors.
+  - rscadd: Added expedition caps for Synthetics.
+  - rscadd: Added peaked Captain's cap.
+  - rscadd: Added CMO's peaked cap.
+  - rscadd: Added CDRE's beret.
+  - rscadd: Added Captain's coat.
+  - imageadd: Captain's beret, Captain's peaked cap, CMO's peaked cap, CDRE's beret,
+      Captain's coat.
+  - imagedel: Removed all Unathi, Skrell, Tajaran, & Vox clothing sprites.
+  - imageadd: Made the Light Replacer too tacticool for its own good.
+  - imageadd: Redid Trauma & Burn kits.
+  - imageadd: Redid splint bundles.
+  - imageadd: Redid penlights.
+  - imageadd: Redid miniature fire extinguishers.
+  - imageadd: Redid emergency prybars.
+  - imageadd: Redid disposable cameras.
+  - imageadd: Reshaded hazard cones.
+  - imageadd: Added proper IO Data Detector icons.
+  - imageadd: Added proper IO Fulton icons.
+  - tweak: Light Replacers can now go into construction pouches.
+  - imagedel: Removed a whole slew of legacy sprites that will never see use.
+2019-03-03:
+  MattAtlas:
+  - tweak: Smartpistol magazines can now be bought in PFC vendors.
+  - bugfix: Smartpistol holsters can now actually be attached to the exosuit slot.
+  - tweak: Engineers and Medics can now buy heavy and light armor in their vendors.
+  Neth Iafin:
+  - tweak: Mini-sniper kit now has miniscope insted of IFF scope.
+  - tweak: IFF Scope is a Requisition Only attachment.
+  - tweak: IFF Scope reduces gun damage and also reduces fire rate.
+  - tweak: L41A has no damage falloff at all now.
+  - tweak: Carbon Stocks for L41A can now be picked by Medics and Engies as their
+      free attachment.
+  - tweak: Webbing costs 15 again.
+  - tweak: Medics, Engineers and Squad Leads now have access to L41A AP and Extended
+      mags.
+  - tweak: Folding Barricades are now MUCH quicker to deploy and repair.
+  - rscadd: Added ability for Developer+ staff to change ratio of roundstart xeno
+      and survivors to give more control over rounds when features are tested or added
+      for one side.
+  Triiodine:
+  - spellcheck: Renamed all sub-class kits.
+  - tweak: Moves IFTS Rifleman kit to Requisitions.
+  - rscadd: Added M39 Point Man kit to Requisitions.
+  - bugfix: Hotfix, corrects armor icon pathing.
+  - bugfix: Hotfix, corrects smart pistol right hand states.
+  - bugfix: Hotfix, corrects smg brace attached state.
+  - bugfix: Corrects smg brace scatter accuracy.
+  - spellcheck: Renamed Commodore's peaked cap to Captain's peaked cap.
+  - tweak: Renamed M5A6 smart pistol to SU-6 smart pistol.
+  - bugfix: Adjusted L4A1 attachement offsets.
+  - bugfix: Adjusted SU-6 Smartpistol attachment offsets.
+  - bugfix: Put the L4A1 into the req vendors.
+  - bugfix: Fixed flechette box icon error.
+  - bugfix: Fixed SU-6 loading rig mob sprites.
+2019-03-04:
+  MattAtlas:
+  - tweak: Heavy armor should now slow you down a little more.
+  - bugfix: Light/Heavy armor should now spawn with randomized icons like normal marine
+      armor.
+  - bugfix: PMC SG armor icons should now work properly on ice colony.
+  NGGJamie:
+  - bugfix: Fixed the ability to call in DEFCON assets.
+2019-03-06:
+  Cakey:
+  - bugfix: Fixed the UNHOLY LAG caused by nukes. Hopefully.
+  - rscadd: Fridges are now nuke-proof.
+  MattAtlas:
+  - bugfix: The non-primary dropship may no longer be called down by the Queen.
+  - tweak: Sentry crates now contain high cap cells. When a sentry is built, it automatically
+      spawns with an highcap inside.
+  - tweak: Hivelord plasma storage has been increased.
+  - bugfix: The mateba should now always decapitate. Always. Don't get BE'd...
+  Miraviel:
+  - rscadd: The last xenomorph now gets a warning that they are the last one.
+  - rscadd: Larvae get the last hive order in the chat upon bursting.
+  - rscadd: The hive order now displays in the chat.
+  - rscadd: Added entrenching tools to Requisitions and an orderable crate that comes
+      with empty sandbags and two etools (#5580).
+  - tweak: Raised the Pilot Officers' medical skill by one (#5575).
+  - tweak: Added a roller bed to the mini medic PFC kit (#5830).
+  - tweak: Organs from the bioprinter were temporarily removed (#5896).
+  - tweak: Xenomorphs can now slash and destroy resin doors instead of slowly ripping
+      them down.
+  - bugfix: Xenomorphs can no longer destroy resin structures with help intent (#5930).
+  - bugfix: Requisition's Echo supply pad now takes 5 minutes to recharge (#5864).
+  - rscadd: Cryotubes now rapidly heal (and fix!) internal bleeding over time as long
+      as they have cryoxadone or clonexadone in them.
+  - rscadd: Cryotubes now notify bystanders when their patient's internal bleeding
+      is or their external wounds are healed.
+  - maptweak: Almayer. Deck 1's ventillation system, from the OB cannon to the R&R
+      area, was vastly expanded. Not final yet, working on the rest.
+  - maptweak: Almayer. Moved the crew monitoring console to the public area.
+  - maptweak: Almayer. Added a disposal bin and two MarineMeds to the Treatment Center.
+  - maptweak: Almayer. Removed medical masks from the surgery tables and added a status
+      display to the main area.
+  - maptweak: Almayer. The Dropship Fabricator and the public Autolathe were swapped
+      (#5752).
+  - maptweak: Almayer. The Brig Armoury was given two more tactical shotguns and more
+      ammo. Its airlock's access was fixed.
+  - bugfix: Almayer. A dropship crash site was changed so the cockpit won't be in
+      space anymore.
+  - bugfix: Almayer. Removed a camera, very much lost in space; moved overlapping
+      fire alarms elsewhere.
+  - bugfix: Almayer. CIC Armoury and various corridors were given lights; disposals
+      were fixed south of the Pilot Workshop.
+  Triiodine:
+  - imageadd: Re-did the L41A visuals. The inhands & mob sprites are unchanged.
+  - spellcheck: Renamed the L41A Battle Rifle to the L42-MK1 Pulse Carbine.
+  - tweak: Moved the Mini-Sniper kit back to the PFC vendors.
+  - spellcheck: Renamed the IFTS Rifleman Kit to the L42-MK1 Sniper kit.
+  - tweak: The L42-MK1 Sniper Kit kit no longer contains an IFTS Mini-scope.
+  - spellcheck: Renamed the First Defense Combat kit to the Forward HPR Shield kit.
+  - spellcheck: Removed all name references to miniature roles.
+  - rscadd: Added L42-MK1 Magazine boxes to ASRS, requisitions vendors.
+  - rscadd: Added M44 PW-MX speed loaders to requisitions vendors.
+  - imageadd: Tweaked the IFTS Mini-Scope visuals.
+  - bugfix: Added empty Smart Pistol belt states.
+2019-03-09:
+  Cakey:
+  - bugfix: The Self Destruct no longer automatically starts on ship crash.
+  - bugfix: Fixed the containment windows being black voids.
+  - bugfix: Fixed dropship and tank point stores not referencing correctly.
+  MattAtlas:
+  - tweak: Increased HEDP stun falloff.
+  - tweak: Locking the dropship via the lockdown button under the cockpit now takes
+      five seconds.
+  - rscdel: Removed ancient and incorrect text about survivors getting survivorbanned
+      if they stick around landing zones.
+  - experiment: Xenomorph Strains have been added to all Xenomorphs excluding Ravager,
+      Sentinel and Lurker (for now)! These new mutators are intended to be 'sidegrade
+      castes', where picking one would change your playstyle. As for what they do?
+      Well... find out yourself!
+  - experiment: Adjustments will be made as time goes on, and others will be added
+      too. They can be bought as you would buy a normal mutator. Keep in mind that
+      they count as Keystones, so you will not be able to buy another Keystone if
+      you have a Strain bought, and viceversa.
+  Miraviel:
+  - rscadd: Larvae now get a notification once they are ready to evolve.
+  - tweak: The Stats panel for Xenomorphs was tweaked to give more important information
+      in a less cluttered way.
+  - tweak: The Stats panel now notifies the Queen of available leader slots and the
+      number of leftover larvae.
+  RavingManiac:
+  - rscadd: If a sentry turret hasn't fired in a while, it will beep before firing.
+  - bugfix: Bullets will no longer pass straight through tanks without hitting anything.
+  ReDikAl.ZiP:
+  - imageadd: Remade old Riot Suit and Riot Helmet, enjoy!
+  Slywater:
+  - rscadd: Added "Follow ERT", "Follow Survivor", and "Follow Synth" verbs.
+  - rscadd: Added fancier cigarette vendors to the brig and CIC.
+  ThePiachu:
+  - bugfix: ERTs should work on a proper timer now.
+  - bugfix: Individual Flechette box numbers in Requisitions have been tweaked.
+  - bugfix: Synths should not be able to spam-heal themselves anymore.
+  Triiodine:
+  - bugfix: Fixed population scaling issues with the L42-MK1 magazine boxes.
+2019-03-11:
+  MattAtlas:
+  - tweak: Reduced Jab stun. Predators should no longer get stunned by Jab.
+  - tweak: Boxer now removes Lunge as well.
+  - tweak: Increased Transfer Health healing.
+  - tweak: Increased Light Armor protection, both ballistic and melee.
+  - tweak: Slightly decreased Vomiter Acid Spray damage.
+  - tweak: Increased the acid spray cooldown on Vomiter.
+  - tweak: Decreased the time it takes for weak acid spray (the Vomiter's) to self-delete.
+  - tweak: Vomiter Acid Spray now knocks you down for a split second so that you don't
+      run through 6 tiles of it immediately.
+  - tweak: Increased the Lower Crest slowdown.
+  - tweak: Decreased Steel Crested Lower Crest defense bonus.
+  - tweak: Increased the Fortify slowdown for Steel Crest defenders.
+  - tweak: The Praetorian Tail Sweep is now a 100% knockdown chance. Defender tail
+      sweep is unaltered.
+  - rscdel: Removed the Crusher's Earthquake strain. It was a decent idea on paper
+      but didn't work so well in game. They'll get something new, so don't lose your
+      hopes yet.
+  - rscdel: Runner Harasser strain has been removed as well. It was too much of a
+      direct upgrade regardless of what could've been done to balance it.
+  - bugfix: Fixed Jab going through walls.
+  - bugfix: Fixed Tremor not telling you what it does.
+  Miraviel:
+  - maptweak: Big Red. Changed far East and Southeast Caves a bit to make them less
+      of boring, straight corridors.
+  - maptweak: Big Red. Lambda and Eta labs were split up into four areas (area-wise,
+      the building is unchanged).
+  - bugfix: Big Red. Fixed a floating APC (#5709).
+  - bugfix: Made the OB and the Anti-Air cannon parts unacidable.
+  - bugfix: Closed curtains can now be slashed by xenos (#5428).
+  - bugfix: Increased the nutriment values of MREs.
+  - bugfix: Donuts are now tiny items (#5891).
+  - rscadd: Areas close to the LZs on all four maps are now unable to be weeded, trapped,
+      or be built on by xenomorphs during the first bit of the round (30-45 minutes).
+  Slywater:
+  - tweak: Empty pods will no longer leave automatically. Instead, they will stay
+      behind until activated manually.
+2019-03-17:
+  Cakey:
+  - maptweak: Intelligence Officers beware, Big Red, Ice Colony, and Prison Station
+      have all been given higher intel amounts (They were previously lacking almost
+      any at all).
+  - bugfix: Fixed window rotations not working.
+  - tweak: Roundend draw time is now 25 minutes (previously 20).
+  - tweak: You can now only call either the Self Destruct or Distress Beacon as an
+      either-or option.
+  MattAtlas:
+  - tweak: Lieutenant Commanders now have the ability to make CIC announcements, call
+      distress beacons, et cetera.
+  - tweak: The PFC vendor pointbuy options have been cleaned up and divided into more
+      categories. Some have been added as well.
+  - tweak: Squad Leader, Specialist, Medic and Engineer vendors now use the pointbuy
+      system for attachments and ammo. Their attachments are equal to the PFCs', with
+      a few added.
+  - rscdel: Air alarm electronics have been nuked, and are no longer a thing.
+  - tweak: The MAR-30 carbine has been retooled into a single shot variant of the
+      MAR-40 with no burst fire. It can take a few more attachments than the MAR-40.
+  - tweak: Removed a lot of really bad primary weapon spawns for freelancers and CLF.
+  - tweak: The SVD's scatter has been reduced.
+  - tweak: The requisitions attachment vendor is now sorted in alphabetically ordered
+      groups (Barrel, Rail, Grip, Stock, Underbarrel).
+  - rscadd: Added an underbarrel flashlight to requisitions.
+  - rscadd: All ERTs should now spawn with crowbars in their backpacks.
+  - tweak: Increased the amount of both .45 pistols and smartpistols in Req vendors.
+  - tweak: The Req ammunition vendor now has much more .45/smartpistol ammo.
+  - tweak: Buffed the .45 M4A3 magazine size to 14 instead of a measly 7.
+  - tweak: The M44 should now be much more accurate.
+  - tweak: The M44 should now have less scatter as well.
+  - tweak: Most revolvers should now have a slightly faster firing speed.
+  - tweak: M4A3 .45 and Smartpistol ammo magazines can now be bought from the ASRS
+      console.
+  - rscadd: Added a new kit to the PFC vendor, the Personal Self Defense kit. It comes
+      with an 88 Mod 4, 5 magazines for it, a belt, a red-dot sight and a laser sight.
+  - rscadd: Added a new kit to the PFC vendor, the M40 Grenadier kit. It comes with
+      an 8-slot belt for grenades, an explosive pouch and some additional grenades.
+  - rscadd: Added a new kit to Requisitions vendors, the Veteran Enlist kit. It comes
+      with an M41A Mk 1, 4 magazines for it, a large magazine pouch, a masterkey and
+      a mini flamethrower.
+  - tweak: Lowered the amount of larvae the Xenos get per latejoin.
+  Miraviel:
+  - bugfix: LV-624. Replaced the old cave turf sprites on the nightmare variants with
+      the new ones.
+  - bugfix: Re-added the time to the stat panel. Whoops.
+  - bugfix: Egg layer carriers no longer see the stored huggers line on the stats
+      panel.
+  RavingManiac:
+  - rscadd: Machine gun deployment system can be deployed and stowed manually by clicking
+      on it.
+  - rscadd: Machine gun deployment system may now be mounted in the dropship external
+      weapon slots.
+  - rscadd: Sentry deployment system may now be mounted in the dropship crew compartment.
+  - rscadd: Second crew compartment equipment slot added to each dropship.
+  - rscadd: Proper bullet ping effects when sentry guns and heavy machine guns are
+      hit by bullets.
+  - tweak: M56D mounted smartgun now called the M56D heavy machine gun, to make it
+      more apparent that it should not be fired directly at the faces of friendly
+      personnel.
+  - tweak: Slightly decreased the amount of projectile cover provided by barricades
+      and computers.
+  - tweak: Increased the amount of projectile cover provided by window frames, unflipped
+      tables and miscellaneous machinery.
+  ReDikAl.ZiP:
+  - imageadd: Added a new sprite to ERT console.
+  Spheretech:
+  - rscadd: Added 4 new Tactical Masks as loadout options.
+  - rscadd: Added the tan boonie hat.
+  - rscadd: Tan & red headbands can now be put on marine helmets.
+  ThePiachu, monkeysfist101 and Miraviel:
+  - experiment: A new, experimental vendor has been added to the game - the Snowflake
+      Vendor. It contains a variety of vanity items. At the moment only the Synths
+      will have access to this vendor. We expect them to use this power wisely and
+      adhere to the high RP standards we expect of them.
+  Triiodine:
+  - imageadd: Updated the Master Key, Mini-Scope, Rail-Scope, Red-Dot.
+  - imageadd: Adjusted the extended barrel attachment visuals.
+  - rscadd: Added the S6 Reflex sight to Requisitions.
+  - spellcheck: Renamed the Mini-Scope, Rail-Scope, Red-Dot.
+  - spellcheck: Re-wrote a lot of attachment descriptions.
+  - tweak: Converts the under barrel flashlight into the Flash-Grip
+  - imagedel: Removed ERT backpacks.
+  - imagedel: Removed the Captain's satchel & backpacks.
+  - imagedel: Removed Toddlers (I don't know either).
+  - imagedel: Removed old M94 Flare packs.
+  - imagedel: Removed old Marine box packs.
+  - imagedel: Removed the King in Yellow and other bible variants.
+  - imagedel: Removed most Cult Gamemode image content.
+  - imagedel: Removed old busy status sprites.
+  - imagedel: Removed PAI image content.
+  - imagedel: Removed all species mob sprites. (Vox, Unathi, Skrell, Tajara).
+  - imagedel: Removed apiary image content.
+  - imagedel: Removed magic.
+  - imagedel: Removed meteors.
+  - imagedel: Removed air alarms.
+  - imagedel: Removed Nar'sie.
+  - imagedel: Removed old SMES units.
+  - imagedel: Removed legacy rechargers.
+  - imagedel: Removed legacy powerloaders.
+  - imagedel: Removed legacy cameras.
+  - imagedel: Removed legacy surgery cases and sterile satchels.
+  - imagedel: Removed laser machinery coder sprites.
+  - imagedel: Removed all image archives.
+  - imageadd: Redid all legacy backpacks for colonists (The chaplain pack is unaffected).
+  - imageadd: Redid the Syndicate toolbox.
+  - imageadd: Redid the Syndicate cardboard box.
+  - imageadd: Redid USCM medical satchels.
+  - imageadd: USCM Technician satchels have been turned into USCM Technician chestrigs
+      (This is a purely cosmetic change).
+  - imageadd: Added a placeholder M40 HEFA ice variant box.
+  - imageadd: Redid leather satchels.
+  - imageadd: Redid secure briefcases.
+  - imageadd: Redid plant bags.
+  - imageadd: Added ice variants to the welding backpack. Got that one squared away.
+  - tweak: Sorted satchels into colony & USCM variants backend wise.
+  - tweak: Re-wrote Giggles Von Honkerton's description to be more accurate.
+  - tweak: Replaced the Captain's satchel and backpack with a leather satchel.
+  - tweak: The G8 Utility Pouch can now attach to the belt slot.
+  - bugfix: Re-added L42MK1 back sprites.
+  - bugfix: Sorted some uniforms into the proper sprite sheet.
+  - bugfix: Cleaned up the IV icon tree.
+  - rscdel: Gutted botany bees.
+  - rscdel: Gutted telekinetics.
+2019-03-18:
+  monkeysfist101:
+  - tweak: Headband no longer becomes ushanka on Ice.
+2019-03-23:
+  Awan:
+  - bugfix: The Stock crate is now orderable again.
+  - tweak: The sadar can now be unloaded. It also will only drop the rocket frame
+      when fired.
+  - tweak: Made the dropship and tank fabricator's require access.
+  - rscadd: You can now use ; to talk in hivemind. Debating if this should be the
+      only way.
+  Cakey:
+  - rscadd: Added the ability to target bodyparts using the Numpad in hotkey mode.
+  - rscadd: Added the DRG-NF Flamethrower primary weapon for the tank. Fires blue
+      flames, xenos beware!
+  - rscadd: Added the AC3-E Autocannon primary weapon for the tank. Fires flak rounds,
+      xenos beware!
+  - rscadd: Re-added the tank vendor, allowing round-start selection for tank crew.
+      Certain equipment such as the LTB and artillery module are not available on
+      roundstart and still locked behind DEFCON.
+  - tweak: Tank weapons can now aim at anything, previously restricted to turfs. This
+      means being able to shoot downed mobs, items, and lined up bottles.
+  - tweak: Plasteel cades can now be linked up using a crowbar to allow for opening
+      multiple plasteel cades in a row.
+  - tweak: Tanks can now drive into plasteel cades to open them.
+  - tweak: Tank modules can now be repaired by removing said module from the tank
+      and using a welder on them.
+  MattAtlas:
+  - rscadd: Dutch's Dozen have been re-added to the game as an admin-spawn only ERT
+      (and as a Select Equipment preset, which I reccomend using, considering how
+      strong they are).
+  - tweak: The Ol' Painless should actually hit things now.
+  - bugfix: The grenadier belt should now actually spawn with grenades.
+  - tweak: The Veteran Enlist kit is now no longer in requisitions and can be bought
+      in the PFC vendors.
+  - bugfix: Fixed pointbuy vendors being able to go into the negatives.
+  - tweak: Vomiter acid spray is now limited to five tiles instead of seven.
+  - soundadd: White phosphorus rockets now make a sound when they spread flames.
+  - soundadd: The M5 RPG now has its own sound effect.
+  - tweak: White phosphorus rockets now have a bigger AoE, and the fire they make
+      is now blue flame. Make sure to pack an extinguisher!
+  - tweak: In addition, direct hits on mobs now do a LOT of damage.
+  - tweak: White Phosphorus rockets are also more expensive now.
+  - tweak: Made Railgun acid glob damage more consistent.
+  - tweak: Increased Railgun bombard speed.
+  - tweak: Decreased Railgun bombard cooldown.
+  MattAtlas, Spheretech:
+  - rscadd: Added new tactical masks to the loadout instead of the old ones. You can
+      pull them up and down with the Pull Up/Down verb.
+  - tweak: Marines now have 7 loadout points instead of 5.
+  Slywater:
+  - bugfix: Corrects the ERT jobban typo.
+  - bugfix: Fixes the north and south brig shutters.
+  - rscadd: The defib icon will now turn red if a patient is DNR (to save time and
+      resources).
+  - rscadd: The medHUD healthbar will now flash red and black if a patient is about
+      to die.
+  - rscadd: The the defib icon will flicker if a patient has less than a minute until
+      brain-death.
+  ThePiachu:
+  - rscdel: Removed remnants of supermatter, singularities, shield emitters and omnis
+      from the code.
+  Unknown:
+  - bugfix: Fixed welder back pack icons. The ice and normal variants should work
+      a-okay now.
+  monkeysfist101:
+  - imageadd: Modified all CM head gear inventory sprites
+  - imagedel: Removed redundant hidden directions.
+  - imgadd: Added missing boonie sprite.
+  - soundadd: <img src="https://i.imgur.com/RzDJOhB.jpg">
+  - imagedel: Removed old Bay12 and TG posters including .dm files.
+  - tweak: Unified all poster .dm's under 'posters.dm'
+  - imageadd: Made new 80's and CM themed posters. More to come.
+  - rscadd: Added five new Isolation themed posters.
+  - imgadd: YOU ALWAYS KNOW A WORKING JOE.
+  - rscadd: Added posters to req.
+  - tweak: Fixed a donor's headband not aligning properly.
+  - imgadd: Fixed damaged wood tiles to match new style.
+2019-03-26:
+  John Titor:
+  - experiment: We now have a new master controller.
+  Ranged66:
+  - tweak: Dead xeno embryos will change the HUD icon to a skull.
+  - bugfix: Ghosts can no longer buckle people to operating tables.
+  - tweak: Holocards moved to new and hopefully more visible location.
+  - bugfix: Fixed an infinite metal exploit.
+  - bugfix: Hopefully fixed the larva that unburrow upon queen death not receiving
+      players.
+  - tweak: Various xeno abilities (pheromones, spittype etc) can now be used while
+      resting.
+  - bugfix: Fixed some rare bugs happening with warrior grabs.

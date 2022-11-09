@@ -38,10 +38,7 @@ SUBSYSTEM_DEF(techtree)
 		var/turf/z_min = locate(1, 1, zlevel)
 		var/turf/z_max = locate(world.maxx, world.maxy, zlevel)
 
-		var/obj/structure/resource_node/passive_node = new(z_max, FALSE, FALSE)
-		passive_node.set_tree(tree.name)
 
-		tree.passive_node = passive_node
 
 		for(var/t in block(z_min, z_max))
 			var/turf/Tu = t

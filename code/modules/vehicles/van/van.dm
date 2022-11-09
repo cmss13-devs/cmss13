@@ -182,6 +182,9 @@
 		return ..()
 
 	if(iswelder(O) && health >= initial(health))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/hardpoint/H
 		for(var/obj/item/hardpoint/potential_hardpoint in hardpoints)
 			if(potential_hardpoint.health < initial(potential_hardpoint.health))
@@ -215,13 +218,6 @@
 /obj/vehicle/multitile/van/proc/reset_overdrive()
 	misc_multipliers["move"] += overdrive_speed_mult
 
-//van spawner that spawns in an van that's NOT eight kinds of awful, mostly for testing purposes
-/obj/vehicle/multitile/van/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
-
-/obj/vehicle/multitile/van/decrepit/load_damage(var/obj/vehicle/multitile/R)
-	take_damage_type(1e8, "abstract") //OOF.ogg
-
 /obj/vehicle/multitile/van/get_projectile_hit_boolean(obj/item/projectile/P)
 	if(src == P.original) //clicking on the van itself will hit it.
 		var/hitchance = P.get_effective_accuracy()
@@ -245,3 +241,52 @@
 		return FALSE
 
 	return ..()
+
+/*
+** PRESETS SPAWNERS
+*/
+
+/obj/effect/vehicle_spawner/van
+	name = "Van Spawner"
+	icon = 'icons/obj/vehicles/van.dmi'
+	icon_state = "van_base"
+	pixel_x = -16
+	pixel_y = -16
+
+/obj/effect/vehicle_spawner/van/Initialize()
+	. = ..()
+	spawn_vehicle()
+	qdel(src)
+
+//PRESET: no hardpoints
+/obj/effect/vehicle_spawner/van/spawn_vehicle()
+	var/obj/vehicle/multitile/van/VAN = new (loc)
+
+	load_misc(VAN)
+	handle_direction(VAN)
+	VAN.update_icon()
+
+//PRESET: wheels installed, destroyed
+/obj/effect/vehicle_spawner/van/decrepit/spawn_vehicle()
+	var/obj/vehicle/multitile/van/VAN = new (loc)
+
+	load_misc(VAN)
+	load_hardpoints(VAN)
+	handle_direction(VAN)
+	load_damage(VAN)
+	VAN.update_icon()
+
+/obj/effect/vehicle_spawner/van/decrepit/load_hardpoints(var/obj/vehicle/multitile/van/V)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+
+//PRESET: wheels installed
+/obj/effect/vehicle_spawner/van/fixed/spawn_vehicle()
+	var/obj/vehicle/multitile/van/VAN = new (loc)
+
+	load_misc(VAN)
+	load_hardpoints(VAN)
+	handle_direction(VAN)
+	VAN.update_icon()
+
+/obj/effect/vehicle_spawner/van/fixed/load_hardpoints(var/obj/vehicle/multitile/van/V)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)

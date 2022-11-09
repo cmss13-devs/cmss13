@@ -11,8 +11,8 @@
 	var/access_code = 0
 	var/datum/money_account/linked_account
 
-/obj/item/device/eftpos/New()
-	..()
+/obj/item/device/eftpos/Initialize()
+	. = ..()
 	machine_id = "[station_name] EFTPOS #[num_financial_terminals++]"
 	access_code = rand(1111,111111)
 	spawn(0)
@@ -25,7 +25,7 @@
 		R.info += "<b>When first setting up your EFTPOS device:</b>"
 		R.info += "1. Memorise your EFTPOS command code (provided with all EFTPOS devices).<br>"
 		R.info += "2. Confirm that your EFTPOS device is connected to your local accounts database. For additional assistance with this step, contact Weyland-Yutani IT Support<br>"
-		R.info += "3. Confirm that your EFTPOS device has been linked to the account that you wish to recieve funds for all transactions processed on this device.<br>"
+		R.info += "3. Confirm that your EFTPOS device has been linked to the account that you wish to receive funds for all transactions processed on this device.<br>"
 		R.info += "<b>When starting a new transaction with your EFTPOS device:</b>"
 		R.info += "1. Ensure the device is UNLOCKED so that new data may be entered.<br>"
 		R.info += "2. Enter a sum of money and reference message for the new transaction.<br>"
@@ -156,9 +156,9 @@
 	if(href_list["choice"])
 		switch(href_list["choice"])
 			if("change_code")
-				var/attempt_code = input("Re-enter the current EFTPOS access code", "Confirm old EFTPOS code") as num
+				var/attempt_code = tgui_input_number(usr, "Re-enter the current EFTPOS access code", "Confirm old EFTPOS code", 1000, 999999, 1000)
 				if(attempt_code == access_code)
-					var/trycode = input("Enter a new access code for this device (4-6 digits, numbers only)", "Enter new EFTPOS code") as num
+					var/trycode = tgui_input_number(usr, "Enter a new access code for this device (4-6 digits, numbers only)", "Enter new EFTPOS code", 1000, 999999, 1000)
 					if(trycode >= 1000 && trycode <= 999999)
 						access_code = trycode
 					else
@@ -167,15 +167,15 @@
 				else
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Incorrect code entered.")]")
 			if("change_id")
-				var/attempt_code = text2num(input("Re-enter the current EFTPOS access code", "Confirm EFTPOS code"))
+				var/attempt_code = tgui_input_number(usr, "Re-enter the current EFTPOS access code", "Confirm EFTPOS code", 1000, 999999, 1000)
 				if(attempt_code == access_code)
 					eftpos_name = input("Enter a new terminal ID for this device", "Enter new EFTPOS ID") + " EFTPOS scanner"
 					print_reference()
 				else
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Incorrect code entered.")]")
 			if("link_account")
-				var/attempt_account_num = input("Enter account number to pay EFTPOS charges into", "New account number") as num
-				var/attempt_pin = input("Enter pin code", "Account pin") as num
+				var/attempt_account_num = tgui_input_number(usr, "Enter account number to pay EFTPOS charges into", "New account number", 111111, 999999, 111111)
+				var/attempt_pin = tgui_input_number(usr, "Enter pin code", "Account pin", 1111, 111111, 1111)
 				linked_account = attempt_account_access(attempt_account_num, attempt_pin, 1)
 				if(linked_account)
 					if(linked_account.suspended)
@@ -187,7 +187,7 @@
 				var/choice = input("Enter reason for EFTPOS transaction", "Transaction purpose")
 				if(choice) transaction_purpose = choice
 			if("trans_value")
-				var/try_num = input("Enter amount for EFTPOS transaction", "Transaction amount") as num
+				var/try_num = tgui_input_number(usr, "Enter amount for EFTPOS transaction", "Transaction amount")
 				if(try_num < 0)
 					alert("That is not a valid amount!")
 				else
@@ -198,7 +198,7 @@
 						transaction_locked = 0
 						transaction_paid = 0
 					else
-						var/attempt_code = input("Enter EFTPOS access code", "Reset Transaction") as num
+						var/attempt_code = tgui_input_number(usr, "Enter EFTPOS access code", "Reset Transaction")
 						if(attempt_code == access_code)
 							transaction_locked = 0
 							transaction_paid = 0
@@ -234,7 +234,7 @@
 					var/attempt_pin = ""
 					var/datum/money_account/D = get_account(C.associated_account_number)
 					if(D.security_level)
-						attempt_pin = input("Enter pin code", "EFTPOS transaction") as num
+						attempt_pin = tgui_input_number(usr, "Enter pin code", "EFTPOS transaction")
 						D = null
 					D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
 					if(D)

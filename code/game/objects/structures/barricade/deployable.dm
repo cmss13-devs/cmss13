@@ -8,7 +8,7 @@
 	brute_multiplier = 1
 	crusher_resistant = TRUE
 	force_level_absorption = 15
-	barricade_hitsound = "sound/effects/metalhit.ogg"
+	barricade_hitsound = 'sound/effects/metalhit.ogg'
 	barricade_type = "folding"
 	can_wire = FALSE
 	can_change_dmg_state = 1
@@ -19,13 +19,16 @@
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/source_type = /obj/item/stack/folding_barricade	//had to add this here, cause mapped in porta cades were unfoldable.
 
-/obj/structure/barricade/deployable/examine(mob/user)
-	..()
-	to_chat(user, SPAN_INFO("Drag its sprite onto yourself to undeploy."))
+/obj/structure/barricade/deployable/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_INFO("Drag its sprite onto yourself to undeploy.")
 
 /obj/structure/barricade/deployable/attackby(obj/item/W, mob/user)
 
 	if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 		var/obj/item/tool/weldingtool/WT = W
@@ -137,9 +140,12 @@
 /obj/item/stack/folding_barricade/attack_self(mob/user)
 	. = ..()
 
-	for(var/obj/structure/barricade/B in loc)
-		if(B != src && B.dir == dir)
-			to_chat(user, SPAN_WARNING("There's already a barricade here."))
+	if(usr.action_busy)
+		return
+
+	for(var/obj/structure/barricade/B in usr.loc)
+		if(B.dir == user.dir)
+			to_chat(user, SPAN_WARNING("There is already \a [B] in this direction!"))
 			return
 
 	var/turf/open/OT = usr.loc
@@ -158,7 +164,13 @@
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_WARNING("You were interrupted."))
 		return
+
+	for(var/obj/structure/barricade/B in usr.loc) //second check so no memery
+		if(B.dir == user.dir)
+			to_chat(user, SPAN_WARNING("There is already \a [B] in this direction!"))
+			return
 
 	user.visible_message(SPAN_NOTICE("[user] has finished deploying [src.singular_name]."),
 			SPAN_NOTICE("You finish deploying [src.singular_name]."))
@@ -195,6 +207,9 @@
 		return
 
 	else if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(src != user.get_inactive_hand())
 			to_chat(user, SPAN_WARNING("You need to hold [src.singular_name] in hand or deploy to repair it."))
 			return
@@ -244,7 +259,7 @@
 
 /obj/item/stack/folding_barricade/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
-		if(!istype(over_object, /obj/screen))
+		if(!istype(over_object, /atom/movable/screen))
 			return ..()
 
 		if(loc != usr || (loc && loc.loc == usr))
@@ -259,10 +274,10 @@
 					if(usr.drop_inv_item_on_ground(src))
 						usr.put_in_l_hand(src)
 
-/obj/item/stack/folding_barricade/examine(mob/user)
+/obj/item/stack/folding_barricade/get_examine_text(mob/user)
 	. = ..()
 	if(health < maxhealth)
-		to_chat(user, "Appears to be damaged.")
+		. += SPAN_WARNING("It appears to be damaged.")
 
 /obj/item/stack/folding_barricade/three
 	amount = 3

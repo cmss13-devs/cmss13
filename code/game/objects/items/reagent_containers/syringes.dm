@@ -18,10 +18,19 @@
 	w_class = SIZE_TINY
 	flags_item = NOBLUDGEON
 	sharp = IS_SHARP_ITEM_SIMPLE
+	transparent = TRUE
+	reagent_desc_override = TRUE //uses display_contents
 	var/mode = SYRINGE_DRAW
 
 /obj/item/reagent_container/syringe/on_reagent_change()
 	update_icon()
+
+/obj/item/reagent_container/syringe/get_examine_text(mob/user)
+	. = ..()
+	var/pill_info = display_contents(user)
+	if(pill_info)
+		. += pill_info
+
 
 /obj/item/reagent_container/syringe/pickup(mob/user)
 	..()
@@ -30,13 +39,6 @@
 /obj/item/reagent_container/syringe/dropped(mob/user)
 	..()
 	update_icon()
-
-
-
-/obj/item/reagent_container/syringe/examine(mob/user)
-	..()
-	display_contents(user)
-
 
 /obj/item/reagent_container/syringe/attack_self(mob/user)
 	..()

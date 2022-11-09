@@ -229,25 +229,26 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/accessory/medal/examine(mob/user)
-	..()
+/obj/item/clothing/accessory/medal/get_examine_text(mob/user)
+	. = ..()
 
 	var/citation_to_read = ""
 	if(medal_citation)
 		citation_to_read = "The citation reads \'[medal_citation]\'."
 
-	to_chat(user, "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]")
+	. += "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]"
 
 /obj/item/clothing/accessory/medal/bronze
 	name = "bronze medal"
 	desc = "A bronze medal."
 
 /obj/item/clothing/accessory/medal/bronze/conduct
-	name = "distinguished conduct medal"
+	name = MARINE_CONDUCT_MEDAL
 	desc = "A bronze medal awarded for distinguished conduct. Whilst a great honor, this is the most basic award given by the USCM"
+	icon_state = "bronze_b"
 
 /obj/item/clothing/accessory/medal/bronze/heart
-	name = "bronze heart medal"
+	name = MARINE_BRONZE_HEART_MEDAL
 	desc = "A bronze heart-shaped medal awarded for sacrifice. It is often awarded posthumously or for severe injury in the line of duty."
 	icon_state = "bronze_heart"
 
@@ -258,10 +259,10 @@
 /obj/item/clothing/accessory/medal/silver
 	name = "silver medal"
 	desc = "A silver medal."
-	icon_state = "silver"
+	icon_state = "silver_b"
 
 /obj/item/clothing/accessory/medal/silver/valor
-	name = "medal of valor"
+	name = MARINE_VALOR_MEDAL
 	desc = "A silver medal awarded for acts of exceptional valor."
 
 /obj/item/clothing/accessory/medal/silver/security
@@ -271,37 +272,38 @@
 /obj/item/clothing/accessory/medal/gold
 	name = "gold medal"
 	desc = "A prestigious golden medal."
-	icon_state = "gold"
+	icon_state = "gold_b"
 
 /obj/item/clothing/accessory/medal/gold/captain
 	name = "medal of captaincy"
 	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of a captain to Wey-Yu, and their undisputable authority over their crew."
 
 /obj/item/clothing/accessory/medal/gold/heroism
-	name = "medal of exceptional heroism"
-	desc = "An extremely rare golden medal awarded only by the USCM. To recieve such a medal is the highest honor and as such, very few exist."
+	name = MARINE_HEROISM_MEDAL
+	desc = "An extremely rare golden medal awarded only by the USCM. To receive such a medal is the highest honor and as such, very few exist."
 
 /obj/item/clothing/accessory/medal/platinum
 	name = "platinum medal"
-	desc = "A very prestigious platinum medal, only able to be handed out by admirals due to special circumstances."
-	icon_state = "platinum"
+	desc = "A very prestigious platinum medal, only able to be handed out by generals due to special circumstances."
+	icon_state = "platinum_b"
 
 /obj/item/clothing/accessory/medal/bronze/service
 	name = "bronze service medal"
 	desc = "A bronze medal awarded for a marine's service within the USCM. It is a very common medal, and is typically the first medal a marine would receive."
+	icon_state = "bronze"
 
 /obj/item/clothing/accessory/medal/silver/service
 	name = "silver service medal"
 	desc = "A shiny silver medal awarded for a marine's service within the USCM. It is a somewhat common medal which signifies the amount of time a marine has spent in the line of duty."
-
+	icon_state = "silver"
 /obj/item/clothing/accessory/medal/gold/service
 	name = "gold service medal"
 	desc = "A prestigious gold medal awarded for a marine's service within the USCM. It is a rare medal which signifies the amount of time a marine has spent in the line of duty."
-
+	icon_state = "gold"
 /obj/item/clothing/accessory/medal/platinum/service
 	name = "platinum service medal"
-	desc = "The highest service medal that can be awarded to a marine; such medals are hand-given by USCM Admirals to a marine. It signifies the sheer amount of time a marine has spent in the line of duty."
-
+	desc = "The highest service medal that can be awarded to a marine; such medals are hand-given by USCM Generals to a marine. It signifies the sheer amount of time a marine has spent in the line of duty."
+	icon_state = "platinum"
 //Armbands
 /obj/item/clothing/accessory/armband
 	name = "red armband"
@@ -343,111 +345,26 @@
 //patches
 /obj/item/clothing/accessory/patch
 	name = "\improper USCM patch"
-	desc = "A fire resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_ROLLED|UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "\improper Falling Falcons patch"
-	desc = "A fire resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
 
-//holsters
-/obj/item/clothing/accessory/holster
-	name = "shoulder holster"
-	desc = "A handgun holster."
-	icon_state = "holster"
-	var/obj/item/weapon/gun/holstered = null
-	slot = ACCESSORY_SLOT_UTILITY
-	high_visibility = TRUE
+/obj/item/clothing/accessory/poncho
+	name = "USCM Poncho"
+	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."
+	icon_state = "poncho"
+	slot = ACCESSORY_SLOT_PONCHO
 
-/obj/item/clothing/accessory/holster/Destroy()
-	QDEL_NULL(holstered)
+/obj/item/clothing/accessory/poncho/Initialize()
 	. = ..()
-
-//subtypes can override this to specify what can be holstered
-/obj/item/clothing/accessory/holster/proc/can_holster(obj/item/I, mob/user)
-	if(!isgun(I) && !isbanana(I))
-		to_chat(user, SPAN_DANGER("Only guns can be holstered!"))
-		return FALSE
-	if(I.w_class > SIZE_MEDIUM)
-		to_chat(user, SPAN_DANGER("\The [I] won't fit in \the [src]!"))
-		return FALSE
-	return TRUE
-
-/obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user)
-	if(holstered)
-		to_chat(user, SPAN_DANGER("There is already a [holstered] holstered here!"))
-		return
-
-	var/obj/item/weapon/gun/W = I
-	if(!can_holster(W, user))
-		return
-
-	holstered = W
-	user.drop_inv_item_to_loc(holstered, src)
-	holstered.add_fingerprint(user)
-	user.visible_message(SPAN_NOTICE("[user] holsters \the [holstered]."), "You holster \the [holstered].")
-
-/obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
-	if(!holstered)
-		return
-
-	if(user.get_active_hand() && user.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("You need an empty hand to draw the [holstered]!"))
-	else
-		if(user.a_intent == INTENT_HARM)
-			usr.visible_message(SPAN_DANGER("[user] draws the [holstered], ready to shoot!"), \
-			SPAN_DANGER("You draw [holstered], ready to shoot!"))
-		else
-			user.visible_message(SPAN_NOTICE("[user] draws the [holstered], pointing it at the ground."), \
-			SPAN_NOTICE("You draw the [holstered], pointing it at the ground."))
-		user.put_in_hands(holstered)
-		holstered.add_fingerprint(user)
-		holstered = null
-
-/obj/item/clothing/accessory/holster/attack_hand(mob/user as mob)
-	if (has_suit)	//if we are part of a suit
-		if (holstered)
-			unholster(user)
-		return TRUE
-
-	..(user)
-
-/obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob)
-	holster(W, user)
-
-/obj/item/clothing/accessory/holster/emp_act(severity)
-	if (holstered)
-		holstered.emp_act(severity)
-	..()
-
-/obj/item/clothing/accessory/holster/examine(mob/user)
-	..()
-	if (holstered)
-		to_chat(user, "A [holstered] is holstered here.")
-	else
-		to_chat(user, "It is empty.")
-
-/obj/item/clothing/accessory/holster/additional_examine_text()
-	if(holstered)
-		return ", carrying \a [holstered]."
-	. = ..()
-
-/obj/item/clothing/accessory/holster/armpit
-	name = "shoulder holster"
-	desc = "A worn-out handgun holster. Perfect for concealed carry"
-	icon_state = "holster"
-
-/obj/item/clothing/accessory/holster/waist
-	name = "shoulder holster"
-	desc = "A handgun holster. Made of expensive leather."
-	icon_state = "holster"
-	item_state = "holster_low"
-
-
-
-
+	select_gamemode_skin(type)
+	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
+	update_icon()
 
 //Ties that can store stuff
 
@@ -533,6 +450,12 @@
 	icon_state = "webbing"
 	hold = /obj/item/storage/internal/accessory/webbing
 
+/obj/item/clothing/accessory/storage/webbing/five_slots
+	hold = /obj/item/storage/internal/accessory/webbing/five_slots
+
+/obj/item/storage/internal/accessory/webbing/five_slots
+	storage_slots = 5
+
 /obj/item/storage/internal/accessory/black_vest
 	storage_slots = 5
 
@@ -585,6 +508,21 @@
 	desc = "A stylish black waistcoat with plenty of discreet pouches, to be both utilitarian and fashionable without compromising looks."
 	icon_state = "waistcoat"
 
+/obj/item/clothing/accessory/storage/black_vest/tool_webbing
+	hold = /obj/item/storage/internal/accessory/black_vest/tool_webbing
+
+/obj/item/storage/internal/accessory/black_vest/tool_webbing
+	storage_slots = 7
+
+/obj/item/storage/internal/accessory/black_vest/tool_webbing/fill_preset_inventory()
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/device/multitool(src)
+
 /obj/item/storage/internal/accessory/surg_vest
 	storage_slots = 13
 	can_hold = list(
@@ -592,6 +530,25 @@
 		/obj/item/stack/medical/advanced/bruise_pack,
 		/obj/item/stack/nanopaste
 	)
+
+/obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/storage/surgical_tray))
+		var/obj/item/storage/surgical_tray/ST = W
+		if(!length(ST.contents))
+			return
+		if(length(contents) >= storage_slots)
+			to_chat(user, SPAN_WARNING("The surgical webbing vest is already full."))
+			return
+		if(!do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			return
+		for(var/obj/item/I in ST)
+			if(length(contents) >= storage_slots)
+				break
+			ST.remove_from_storage(I)
+			attempt_item_insertion(I, TRUE, user)
+		user.visible_message("[user] transfers the tools from \the [ST] to the surgical webbing vest.", SPAN_NOTICE("You transfer the tools from \the [ST] to the surgical webbing vest."), max_distance = 3)
+		return
+	return ..()
 
 /obj/item/storage/internal/accessory/surg_vest/equipped/fill_preset_inventory()
 	new /obj/item/tool/surgery/scalpel/pict_system(src)
@@ -616,6 +573,11 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/equipped
 	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
+/obj/item/clothing/accessory/storage/surg_vest/blue
+	name = "blue surgical webbing vest"
+	desc = "A matte blue synthcotton vest purpose-made for holding surgical tools."
+	icon_state = "vest_blue"
 
 /obj/item/clothing/accessory/storage/knifeharness
 	name = "M272 pattern knife vest"
@@ -662,12 +624,99 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 	w_class = SIZE_LARGE	//Allow storage containers that's medium or below
 	storage_slots = null
 	max_w_class = SIZE_MEDIUM
-	max_storage_space = 5	//weight system like backpacks, hold enough for 1 medium and 1 small item
-	cant_hold = list(	//Prevent inventory bloat
+	max_storage_space = 6	//weight system like backpacks, hold enough for 2 medium (normal) size items, or 3 small items, or 6 tiny items
+	cant_hold = list(	//Prevent inventory powergame
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible,
 		)
 	storage_flags = NONE	//no verb, no quick draw, no tile gathering
+
+/obj/item/clothing/accessory/storage/holster
+	name = "shoulder holster"
+	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."
+	icon_state = "holster"
+	slot = ACCESSORY_SLOT_UTILITY
+	high_visibility = TRUE
+	hold = /obj/item/storage/internal/accessory/holster
+
+/obj/item/storage/internal/accessory/holster
+	w_class = SIZE_LARGE
+	max_w_class = SIZE_MEDIUM
+	var/obj/item/weapon/gun/current_gun
+	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
+	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
+	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
+	can_hold = list(
+
+//Can hold variety of pistols and revolvers together with ammo for them. Can also hold the flare pistol and signal/illumination flares.
+	/obj/item/weapon/gun/pistol,
+	/obj/item/weapon/gun/energy/taser,
+	/obj/item/weapon/gun/revolver,
+	/obj/item/ammo_magazine/pistol,
+	/obj/item/ammo_magazine/revolver,
+	/obj/item/weapon/gun/flare,
+	/obj/item/device/flashlight/flare
+
+	 )
+
+/obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
+	if(AM == current_gun)
+		current_gun = null
+
+/obj/item/clothing/accessory/storage/holster/attack_hand(mob/user, mods)
+	var/obj/item/storage/internal/accessory/holster/H = hold
+	if(H.current_gun && ishuman(user) && (loc == user || has_suit))
+		if(mods && mods["alt"] && length(H.contents) > 1) //Withdraw the most recently inserted magazine, if possible.
+			var/obj/item/I = H.contents[length(H.contents)]
+			if(isgun(I))
+				I = H.contents[length(H.contents) - 1]
+			I.attack_hand(user)
+		else
+			H.current_gun.attack_hand(user)
+		return
+
+	..()
+
+/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/W, stop_messages)
+	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
+		if(isgun(W))
+			if(current_gun)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("[src] already holds \a [W]."))
+				return
+		else //Must be ammo.
+			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
+			var/ammo_stored = length(contents)
+			if(current_gun)
+				ammo_stored--
+			if(ammo_stored >= ammo_slots)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
+				return
+		return 1
+
+/obj/item/storage/internal/accessory/holster/_item_insertion(obj/item/W)
+	if(isgun(W))
+		current_gun = W //If there's no active gun, we want to make this our gun
+		playsound(src, sheatheSound, 15, TRUE)
+	. = ..()
+
+/obj/item/storage/internal/accessory/holster/_item_removal(obj/item/W)
+	if(isgun(W))
+		current_gun = null
+		playsound(src, drawSound, 15, TRUE)
+	. = ..()
+
+/obj/item/clothing/accessory/storage/holster/armpit
+	name = "shoulder holster"
+	desc = "A worn-out handgun holster. Perfect for concealed carry"
+	icon_state = "holster"
+
+/obj/item/clothing/accessory/storage/holster/waist
+	name = "shoulder holster"
+	desc = "A handgun holster. Made of expensive leather."
+	icon_state = "holster"
+	item_state = "holster_low"
 
 /*
 	Holobadges are worn on the belt or neck, and can be used to show that the holder is an authorized

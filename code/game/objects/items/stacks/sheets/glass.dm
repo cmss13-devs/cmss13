@@ -70,14 +70,14 @@
 				user.put_in_hands(RG)
 
 /obj/item/stack/sheet/glass/proc/construct_window(mob/user)
-	if(!user || !src)	return 0
-	if(!istype(user.loc,/turf)) return 0
+	if(!user || !src)	return FALSE
+	if(!istype(user.loc,/turf)) return FALSE
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
-		return 0
+		return FALSE
 	if(ishuman(user) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
 		to_chat(user, SPAN_WARNING("You are not trained to build with [src]..."))
-		return 0
+		return FALSE
 	var/title = "Sheet-[name]"
 	title += " ([src.amount] sheet\s left)"
 	var/to_build = tgui_input_list(user, title, "What would you like to construct?", construction_options)
@@ -87,22 +87,36 @@
 	if(!(istype(T) && T.allow_construction))
 		to_chat(user, SPAN_WARNING("Windows must be constructed on a proper surface!"))
 		return
+	var/fail = FALSE
+	for(var/obj/X in T.contents - src)
+		if(istype(X, /obj/structure/machinery/defenses))
+			fail = TRUE
+			break
+		else if(istype(X, /obj/structure/machinery/m56d_hmg))
+			fail = TRUE
+			break
+	if(fail)
+		to_chat(user, SPAN_WARNING("You can't make a window here, something is in the way."))
+		return
 	switch(to_build)
 		if("One Direction")
-			if(!src)	return 1
-			if(src.loc != user)	return 1
-
+			if(!src)	return TRUE
+			if(src.loc != user)	return TRUE
+			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in T // for M2C HMG, look at smartgun_mount.dm
+			if(AC)
+				to_chat(usr, SPAN_WARNING("\The [src] cannot be built here!"))
+				return TRUE
 			var/list/directions = new/list(cardinal)
 			var/i = 0
 			for (var/obj/structure/window/win in user.loc)
 				i++
 				if(i >= 4)
 					to_chat(user, SPAN_DANGER("There are too many windows in this location."))
-					return 1
+					return TRUE
 				directions-=win.dir
 				if(!(win.dir in cardinal))
 					to_chat(user, SPAN_DANGER("Can't let you do that."))
-					return 1
+					return TRUE
 
 			//Determine the direction. It will first check in the direction the person making the window is facing, if it finds an already made window it will try looking at the next cardinal direction, etc.
 			var/dir_to_set = 2
@@ -118,38 +132,43 @@
 			WD.set_constructed_window(dir_to_set)
 			src.use(1)
 		if("Full Window")
-			if(!src)	return 1
-			if(src.loc != user)	return 1
+			if(!src)	return TRUE
+			if(src.loc != user)	return TRUE
 			if(src.amount < 4)
 				to_chat(user, SPAN_DANGER("You need more glass to do that."))
-				return 1
+				return TRUE
 			if(locate(/obj/structure/window) in user.loc)
 				to_chat(user, SPAN_DANGER("There is a window in the way."))
-				return 1
+				return TRUE
 			var/obj/structure/window/WD = new created_full_window(user.loc)
 			WD.set_constructed_window()
 			src.use(4)
 		if("Windoor")
-			if(!is_reinforced) return 1
+			if(!is_reinforced) return TRUE
 
-			if(!src || src.loc != user) return 1
+			if(!src || src.loc != user) return TRUE
 
-			if(isturf(user.loc) && locate(/obj/structure/windoor_assembly/, user.loc))
+			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in T // for M2C HMG, look at smartgun_mount.dm
+			if(AC)
+				to_chat(usr, SPAN_WARNING("\The [src] cannot be built here!"))
+				return TRUE
+
+			if(isturf(T) && locate(/obj/structure/windoor_assembly/, T))
 				to_chat(user, SPAN_DANGER("There is already a windoor assembly in that location."))
-				return 1
+				return TRUE
 
-			if(isturf(user.loc) && locate(/obj/structure/machinery/door/window/, user.loc))
+			if(isturf(T) && locate(/obj/structure/machinery/door/window/, T))
 				to_chat(user, SPAN_DANGER("There is already a windoor in that location."))
-				return 1
+				return TRUE
 
 			if(src.amount < 5)
 				to_chat(user, SPAN_DANGER("You need more glass to do that."))
-				return 1
+				return TRUE
 
-			new /obj/structure/windoor_assembly(user.loc, user.dir, 1)
+			new /obj/structure/windoor_assembly(T, user.dir, 1)
 			src.use(5)
 
-	return 0
+	return FALSE
 
 
 /*
@@ -157,7 +176,7 @@
  */
 /obj/item/stack/sheet/glass/reinforced
 	name = "reinforced glass"
-	desc = "Reinforced glass is made out of squares of regular silicate glass layered on a metallic rod matrice. This glass is more resistant to direct impacts, even if it may crack."
+	desc = "Reinforced glass is made out of squares of regular silicate glass layered on a metallic rod matrix. This glass is more resistant to direct impacts, even if it may crack."
 	singular_name = "reinforced glass sheet"
 	icon_state = "sheet-rglass"
 	stack_id = "reinf glass sheet"
@@ -208,7 +227,7 @@
  */
 /obj/item/stack/sheet/glass/phoronrglass
 	name = "reinforced phoron glass"
-	desc = "Reinforced phoron glass is made out of squares of silicate-phoron alloy glass layered on a metallic rod matrice. It is insanely resistant to both physical shock and heat."
+	desc = "Reinforced phoron glass is made out of squares of silicate-phoron alloy glass layered on a metallic rod matrix. It is insanely resistant to both physical shock and heat."
 	singular_name = "reinforced phoron glass sheet"
 	icon_state = "sheet-phoronrglass"
 	matter = list("glass" = 7500,"metal" = 1875)

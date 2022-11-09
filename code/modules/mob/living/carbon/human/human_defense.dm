@@ -22,7 +22,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				msg_admin_attack("[key_name(src)] was disarmed by a stun effect in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 				drop_inv_item_on_ground(c_hand)
-				if (affected.status & LIMB_ROBOT)
+				if (affected.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 					emote("me", 1, "drops what they were holding, their [affected.display_name] malfunctioning!")
 				else
 					var/emote_scream = pick("screams in pain and", "lets out a sharp cry and", "cries out and")
@@ -220,17 +220,17 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/bloody = FALSE
 	if((I.damtype == BRUTE || I.damtype == HALLOSS) && prob(I.force*2 + 25))
-		if(!(affecting.status & LIMB_ROBOT))
-			I.add_mob_blood(src)	//Make the weapon bloody, not the person.
-			if(prob(33))
-				bloody = TRUE
-				var/turf/location = loc
-				if(istype(location, /turf))
-					location.add_mob_blood(src)
-				if(ishuman(user))
-					var/mob/living/carbon/human/H = user
-					if(get_dist(H, src) <= 1) //people with TK won't get smeared with blood
-						H.add_blood(get_blood_color(), BLOOD_BODY|BLOOD_HANDS)
+		var/color_override = (affecting.status & LIMB_ROBOT) ? COLOR_OIL : null
+		I.add_mob_blood(src, color_override)	//Make the weapon bloody, not the person.
+		if(prob(33))
+			bloody = TRUE
+			var/turf/location = loc
+			if(istype(location, /turf))
+				location.add_mob_blood(src, color_override)
+			if(ishuman(user))
+				var/mob/living/carbon/human/H = user
+				if(get_dist(H, src) <= 1) //people with TK won't get smeared with blood
+					H.add_blood(color_override || get_blood_color(), BLOOD_BODY|BLOOD_HANDS)
 
 
 		switch(hit_area)
@@ -326,9 +326,9 @@ Contains most of the procs that are called when a mob is attacked by something
 		var/client/assailant = M.client
 		if (damage > 5)
 			last_damage_mob = M
-			M.track_hit(initial(name))
+			M.track_hit(initial(O.name))
 			if (M.faction == faction)
-				M.track_friendly_fire(initial(name))
+				M.track_friendly_fire(initial(O.name))
 		if (assailant)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
@@ -396,3 +396,13 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/list/overlap = id_group & access_to_check
 	return length(overlap)
+
+/mob/living/carbon/human/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+	. = ..()
+	switch(fire.fire_variant)
+		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire
+			var/resist_modifier = 1
+			if(HAS_TRAIT(src, TRAIT_SUPER_STRONG))
+				resist_modifier = 0.25
+			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
+			to_chat(src, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))

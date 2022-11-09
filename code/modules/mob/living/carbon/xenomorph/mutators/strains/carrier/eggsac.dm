@@ -6,10 +6,12 @@
 	caste_whitelist = list(XENO_CASTE_CARRIER)
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/throw_hugger,
-		/datum/action/xeno_action/onclick/place_trap
+		/datum/action/xeno_action/onclick/place_trap,
+		/datum/action/xeno_action/activable/retrieve_egg // readding it so it gets at the end of the ability list
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/generate_egg
+		/datum/action/xeno_action/activable/generate_egg,
+		/datum/action/xeno_action/activable/retrieve_egg // readding it so it gets at the end of the ability list
 	)
 	keystone = TRUE
 
@@ -28,6 +30,8 @@
 	MS.recalculate_actions(description, flavor_description)
 	C.recalculate_pheromones()
 	C.recalculate_plasma()
+	if(C.huggers_cur > 0)
+		playsound(C.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 	C.huggers_cur = 0
 	C.huggers_max = 0
 	C.extra_build_dist = 1
@@ -38,9 +42,10 @@
 	action_icon_state = "lay_egg"
 	ability_name = "generate egg"
 	xeno_cooldown = 30 SECONDS
-	cooldown_message = "You aren't ready to form another egg yet."
+	cooldown_message = "You are ready to form another egg."
 	action_type = XENO_ACTION_ACTIVATE
 	plasma_cost = XENO_PLASMA_TIER_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/generate_egg/can_use_action()
 	if(!owner)
@@ -51,7 +56,7 @@
 
 /datum/action/xeno_action/activable/generate_egg/use_ability()
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	if(!istype(X))
+	if(!istype(X) || !action_cooldown_check())
 		return FALSE
 	if(X.eggs_cur >= X.eggs_max)
 		to_chat(X, SPAN_XENOWARNING("You don't have any space to store a new egg!"))

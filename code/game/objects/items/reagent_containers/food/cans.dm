@@ -92,49 +92,17 @@
 
 
 
-//DRINKS
+//SODA
 
-/obj/item/reagent_container/food/drinks/cans/cola
-	name = "\improper Fruit-Beer"
-	desc = "In theory, Mango flavored root beer sounds like a pretty good idea. Weyland-Yutani has disproved yet another theory with its latest line of cola. Canned by the Weyland-Yutani Corporation."
-	icon_state = "fruit_beer"
+/obj/item/reagent_container/food/drinks/cans/classcola
+	name = "\improper Classic Cola"
+	desc = "A classic cola with a taste that's been around for centuries. Nobody can beat it."
+	icon_state = "cola"
 	center_of_mass = "x=16;y=10"
 
-/obj/item/reagent_container/food/drinks/cans/cola/Initialize()
+/obj/item/reagent_container/food/drinks/cans/classcola/Initialize()
 	. = ..()
 	reagents.add_reagent("cola", 30)
-
-/obj/item/reagent_container/food/drinks/cans/waterbottle
-	name = "\improper Weyland-Yutani Bottled Spring Water"
-	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
-	icon_state = "wy_water"
-	center_of_mass = "x=15;y=8"
-
-/obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
-	. = ..()
-	reagents.add_reagent("water", 30)
-
-/obj/item/reagent_container/food/drinks/cans/beer
-	name = "beer bottle"
-	desc = "Beer. You've dialed in your target. Time to fire for effect."
-	icon_state = "beer"
-	center_of_mass = "x=16;y=12"
-
-/obj/item/reagent_container/food/drinks/cans/beer/Initialize()
-	. = ..()
-	reagents.add_reagent("beer", 30)
-
-/obj/item/reagent_container/food/drinks/cans/ale
-	name = "ale bottle"
-	desc = "Beer's misunderstood cousin."
-	icon_state = "alebottle"
-	item_state = "beer"
-	center_of_mass = "x=16;y=10"
-
-/obj/item/reagent_container/food/drinks/cans/ale/Initialize()
-	. = ..()
-	reagents.add_reagent("ale", 30)
-
 
 /obj/item/reagent_container/food/drinks/cans/space_mountain_wind
 	name = "\improper Mountain Wind"
@@ -148,7 +116,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/thirteenloko
 	name = "\improper Thirteen Loko"
-	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkeness, or even death. Please Drink Responsibly."
+	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
 	icon_state = "thirteen_loko"
 	center_of_mass = "x=16;y=8"
 
@@ -158,7 +126,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/dr_gibb
 	name = "\improper Dr. Gibb"
-	desc = "A delicious mixture of 42 different flavors of chemicals that you can't pronoounce."
+	desc = "A delicious mixture of 42 different flavors of chemicals that you can't pronounce."
 	icon_state = "dr_gibb"
 	center_of_mass = "x=16;y=10"
 
@@ -225,7 +193,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/tonic/Initialize()
 	. = ..()
-	reagents.add_reagent("tonic", 50)
+	reagents.add_reagent("tonic", 30)
 
 /obj/item/reagent_container/food/drinks/cans/sodawater
 	name = "soda water"
@@ -235,7 +203,74 @@
 
 /obj/item/reagent_container/food/drinks/cans/sodawater/Initialize()
 	. = ..()
-	reagents.add_reagent("sodawater", 50)
+	reagents.add_reagent("sodawater", 30)
+
+//BODA
+
+/obj/item/reagent_container/food/drinks/cans/boda
+	name = "\improper Boda"
+	desc = "State regulated soda beverage. Enjoy comrades."
+	icon_state = "boda"
+	center_of_mass = "x=16;y=10"
+
+/obj/item/reagent_container/food/drinks/cans/boda/Initialize()
+	. = ..()
+	reagents.add_reagent("sodawater", 30)
+
+/obj/item/reagent_container/food/drinks/cans/bodaplus
+	name = "\improper Boda-Plyus"
+	desc = "State regulated soda beverage, now with added surplus flavoring. Enjoy comrades."
+	icon_state = "blank_can"
+	center_of_mass = "x=16;y=10"
+
+/obj/item/reagent_container/food/drinks/cans/bodaplus/Initialize()
+	. = ..()
+	reagents.add_reagent("cola", 30)
+
+//WEYLAND-YUTANI
+
+/obj/item/reagent_container/food/drinks/cans/cola
+	name = "\improper Fruit-Beer"
+	desc = "In theory, Mango flavored root beer sounds like a pretty good idea. Weyland-Yutani has disproved yet another theory with its latest line of cola. Canned by the Weyland-Yutani Corporation."
+	icon_state = "fruit_beer"
+	center_of_mass = "x=16;y=10"
+
+/obj/item/reagent_container/food/drinks/cans/cola/Initialize()
+	. = ..()
+	reagents.add_reagent("fruit_beer", 30)
+
+/obj/item/reagent_container/food/drinks/cans/waterbottle
+	name = "\improper Weyland-Yutani Bottled Spring Water"
+	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
+	icon_state = "wy_water"
+	center_of_mass = "x=15;y=8"
+
+/obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
+	. = ..()
+	reagents.add_reagent("water", 30)
+
+/obj/item/reagent_container/food/drinks/cans/beer
+	name = "\improper Weyland-Yutani Lite"
+	desc = "Beer. You've dialed in your target. Time to fire for effect."
+	icon_state = "beer"
+	center_of_mass = "x=16;y=12"
+
+/obj/item/reagent_container/food/drinks/cans/beer/Initialize()
+	. = ..()
+	reagents.add_reagent("beer", 30)
+
+/obj/item/reagent_container/food/drinks/cans/ale
+	name = "\improper Weyland-Yutani IPA"
+	desc = "Beer's misunderstood cousin."
+	icon_state = "alebottle"
+	item_state = "beer"
+	center_of_mass = "x=16;y=10"
+
+/obj/item/reagent_container/food/drinks/cans/ale/Initialize()
+	. = ..()
+	reagents.add_reagent("ale", 30)
+
+//SOUTO
 
 /obj/item/reagent_container/food/drinks/cans/souto
 	name = "\improper Souto Can"
@@ -307,7 +342,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/lime
 	name = "\improper Diet Lime Souto"
-	desc = "Ten kinds of acid, two cups of fake sugar, almost a full tank of carbon dioxide, and about 210 kPs all crammed into an aluminum can. What's not to love? Canned in Havana."
+	desc = "Ten kinds of acid, two cups of fake sugar, almost a full tank of carbon dioxide, and about 210 kPa all crammed into an aluminum can. What's not to love? Canned in Havana."
 	icon_state = "souto_diet_lime"
 	item_state = "souto_diet_lime"
 
@@ -437,6 +472,8 @@
 	. = ..()
 	reagents.add_reagent("souto_pineapple", 25)
 	reagents.add_reagent("water", 25)
+
+//ASPEN
 
 /obj/item/reagent_container/food/drinks/cans/aspen
 	name = "\improper Weyland-Yutani Aspen Beer"

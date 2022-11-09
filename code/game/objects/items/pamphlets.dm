@@ -19,26 +19,28 @@ obj/item/pamphlet/Initialize()
 /obj/item/pamphlet/attack_self(mob/living/carbon/human/user)
 	..()
 
-	if(!istype(user))
+	if(!can_use(user))
 		return
-
-	if(trait in user.traits)
-		to_chat(user, SPAN_WARNING("You know this already!"))
-		return
-
-	if(user.has_used_pamphlet == TRUE && !bypass_pamphlet_limit)
-		to_chat(user, SPAN_WARNING("You've already used a pamphlet!"))
-		return
-
-	to_chat(user, SPAN_NOTICE(flavour_text))
-
-	trait.apply_trait(user)
-
-	if(!bypass_pamphlet_limit)
-		user.has_used_pamphlet = TRUE
+	on_use(user)
 
 	qdel(src)
 
+/obj/item/pamphlet/proc/can_use(mob/living/carbon/human/user)
+	if(!istype(user))
+		return FALSE
+	if(trait in user.traits)
+		to_chat(user, SPAN_WARNING("You know this already!"))
+		return FALSE
+	if(user.has_used_pamphlet == TRUE && !bypass_pamphlet_limit)
+		to_chat(user, SPAN_WARNING("You've already used a pamphlet!"))
+		return FALSE
+	return TRUE
+
+/obj/item/pamphlet/proc/on_use(mob/living/carbon/human/user)
+	to_chat(user, SPAN_NOTICE(flavour_text))
+	trait.apply_trait(user)
+	if(!bypass_pamphlet_limit)
+		user.has_used_pamphlet = TRUE
 
 /obj/item/pamphlet/skill/medical
 	name = "medical instructional pamphlet"
@@ -57,6 +59,45 @@ obj/item/pamphlet/Initialize()
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a radio on it."
 	icon_state = "pamphlet_jtac"
 	trait = /datum/character_trait/skills/jtac
+
+/obj/item/pamphlet/skill/spotter
+	name = "Spotter instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a pair of binoculars on it."
+	icon_state = "pamphlet_spotter"
+	trait = /datum/character_trait/skills/spotter
+	bypass_pamphlet_limit = TRUE
+
+/obj/item/pamphlet/skill/spotter/can_use(mob/living/carbon/human/user)
+	var/specialist_skill = user.skills.get_skill_level(SKILL_SPEC_WEAPONS)
+	if(specialist_skill == SKILL_SPEC_SNIPER)
+		to_chat(user, SPAN_WARNING("You don't need to use this! Give it to another marine to make them your spotter."))
+		return FALSE
+	if(specialist_skill != SKILL_SPEC_DEFAULT)
+		to_chat(user, SPAN_WARNING("You're already a specialist! Give this to a lesser trained marine."))
+		return FALSE
+
+	if(user.job != JOB_SQUAD_MARINE)
+		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
+		return
+
+	var/obj/item/card/id/ID = user.wear_id
+	if(!istype(ID)) //not wearing an ID
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+	if(ID.registered_ref != WEAKREF(user))
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+
+	return ..()
+
+/obj/item/pamphlet/skill/spotter/on_use(mob/living/carbon/human/user)
+	. = ..()
+	user.rank_fallback = "ass"
+	user.hud_set_squad()
+
+	var/obj/item/card/id/ID = user.wear_id
+	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Squad Spotter")
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Squad Spotter")
 
 /obj/item/pamphlet/skill/machinegunner
 	name = "heavy machinegunner instructional pamphlet"
@@ -86,6 +127,13 @@ obj/item/pamphlet/Initialize()
 	trait = /datum/character_trait/skills/surgery
 	bypass_pamphlet_limit = TRUE
 
+/obj/item/pamphlet/skill/intel
+	name = "field intelligence instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has an intelligence insignia."
+	icon_state = "pamphlet_reading"
+	trait = /datum/character_trait/skills/intel
+	bypass_pamphlet_limit = TRUE
+
 /obj/item/pamphlet/language
 	name = "translation pamphlet"
 	desc = "A pamphlet used by lazy USCM interpreters to quickly learn new languages on the spot."
@@ -101,6 +149,11 @@ obj/item/pamphlet/Initialize()
 	name = "Pages of Turedobando Yohei Adobencha Zohuken"
 	desc = "These are some torn pages from a famous isekai manga named 'Turedobando Yohei Adobencha Zohuken' or Japanese Mercenary Adventure Sequel about a travelling band of Freelancers sent into a fantasy world. Why do you even know this?"
 	trait = /datum/character_trait/language/japanese
+
+/obj/item/pamphlet/language/chinese
+	name = "Pages from the Little Red Book"
+	desc = "没有共产党就没有新中国! Pages from the handbook to starting a famine that kills over 100 million of your people. Apparently this will help you learn Chinese."
+	trait = /datum/character_trait/language/chinese
 
 /obj/item/pamphlet/language/german
 	name = "Translated Lyrics to 99 Luftballons"
@@ -128,6 +181,6 @@ obj/item/pamphlet/Initialize()
 
 /obj/item/pamphlet/language/monkey
 	name = "scribbled drawings"
-	desc = "A piece of paper covered in crude depictions of bananas and various types of primates. Probably drawn by a three year old child - or an unusually intelligent marine."
+	desc = "A piece of paper covered in crude depictions of bananas and various types of primates. Probably drawn by a three-year-old child - or an unusually intelligent marine."
 	trait = /datum/character_trait/language/primitive
 

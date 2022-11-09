@@ -43,7 +43,7 @@
 		if(2)
 			src.take_limb_damage(10)
 			Stun(rand(1,5))
-	flash_eyes(1, TRUE, type = /obj/screen/fullscreen/flash/noise)
+	flash_eyes(1, TRUE, type = /atom/movable/screen/fullscreen/flash/noise)
 
 	to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
 	to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))

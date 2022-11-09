@@ -25,7 +25,9 @@
 	vend_delay = 34
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	vend_power_usage = 85000 //85 kJ to heat a 250 mL cup of coffee
-	products = list(/obj/item/reagent_container/food/drinks/coffee = 25,/obj/item/reagent_container/food/drinks/tea = 25,/obj/item/reagent_container/food/drinks/h_chocolate = 25)
+	products = list(/obj/item/reagent_container/food/drinks/coffee = 25,
+					/obj/item/reagent_container/food/drinks/tea = 25,
+					/obj/item/reagent_container/food/drinks/h_chocolate = 25)
 	contraband = list(/obj/item/reagent_container/food/drinks/ice = 10)
 	prices = list()
 
@@ -209,7 +211,7 @@
 
 /obj/structure/machinery/vending/sea
 	name = "SeaTech"
-	desc = "A equipment vendor designed to save lives"
+	desc = "An equipment vendor designed to save lives"
 	product_ads = "Semper Fi!;First to Fight!;Ooh Rah.;Leathernecks!;The Few. The Proud.;Esprit de Corps;Jarhead.;Devil Dogs."
 	icon_state = "sec"
 	icon_deny = "sec-deny"
@@ -273,11 +275,11 @@
 
 /obj/structure/machinery/vending/sovietsoda
 	name = "BODA"
-	desc = "An old sweet water vending machine,how did this end up here?"
+	desc = "An old sweet water vending machine, how did this end up here?"
 	icon_state = "sovietsoda"
 	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
-	products = list(/obj/item/reagent_container/food/drinks/drinkingglass/soda = 30)
-	contraband = list(/obj/item/reagent_container/food/drinks/drinkingglass/cola = 20)
+	products = list(/obj/item/reagent_container/food/drinks/cans/boda = 30)
+	contraband = list(/obj/item/reagent_container/food/drinks/cans/bodaplus = 20)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 // All instances of this vendor will share a single inventory for items in the shared list.
@@ -337,3 +339,45 @@
 
 		i++;
 	return
+
+/obj/structure/machinery/vending/walkman
+	name = "\improper Rec-Vend"
+	desc = "Contains Weyland-Yutani approved recreational items, like Walkmans and Cards."
+	icon_state = "walkman"
+	product_ads = "The only place to have fun in the entire Marine Corps!;You'll find no better music from here to Arcturus!;Instructions not included with decks of cards!;No volume controls - you don't need them!;All products responsibly made by people having just as much fun as you will be!"
+	vend_delay = 5
+	idle_power_usage = 200
+
+	products = list(/obj/item/device/cassette_tape/pop1 = 10,
+		/obj/item/device/cassette_tape/hiphop = 10,
+		/obj/item/device/cassette_tape/nam = 10,
+		/obj/item/device/cassette_tape/ocean = 10,
+		/obj/item/device/cassette_tape/pop3 = 10,
+		/obj/item/device/cassette_tape/pop4 = 10,
+		/obj/item/device/cassette_tape/pop2 = 10,
+		/obj/item/device/cassette_tape/heavymetal = 10,
+		/obj/item/device/cassette_tape/hairmetal = 10,
+		/obj/item/device/cassette_tape/indie = 10,
+		/obj/item/device/walkman = 50,
+		/obj/item/storage/pouch/cassette = 15,
+		/obj/item/toy/deck = 5,
+		/obj/item/toy/deck/uno = 5,
+		/obj/item/device/camera = 5)
+
+	contraband = list(/obj/item/toy/sword = 2)
+
+	prices = list(/obj/item/device/cassette_tape/pop1 = 3,
+		/obj/item/device/cassette_tape/hiphop = 3,
+		/obj/item/device/cassette_tape/nam = 3,
+		/obj/item/device/cassette_tape/ocean = 4,
+		/obj/item/device/cassette_tape/pop3 = 3,
+		/obj/item/device/cassette_tape/pop4 = 3,
+		/obj/item/device/cassette_tape/pop2 = 3,
+		/obj/item/device/cassette_tape/heavymetal = 3,
+		/obj/item/device/cassette_tape/hairmetal = 3,
+		/obj/item/device/cassette_tape/indie = 3,
+		/obj/item/device/walkman = 15,
+		/obj/item/storage/pouch/cassette = 10,
+		/obj/item/toy/deck = 20,
+		/obj/item/toy/deck/uno = 15,
+		/obj/item/device/camera = 30)

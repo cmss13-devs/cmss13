@@ -115,6 +115,37 @@
 	handle_reactions()
 	return total_transfered
 
+///This proc is one that removes all reagents from the targeted datum other than the designated ignored reagent
+/datum/reagents/proc/remove_any_but(var/reagent_to_ignore, var/amount=1)
+	var/total_transfered = 0
+	var/current_list_element = 1
+
+	current_list_element = rand(1, reagent_list.len)
+
+	while(total_transfered != amount)
+		if(total_transfered >= amount) break
+		if(total_volume <= 0 || !reagent_list.len) break
+
+		if(current_list_element > reagent_list.len) current_list_element = 1
+		var/datum/reagent/current_reagent = reagent_list[current_list_element]
+
+		if(current_reagent.id == reagent_to_ignore)
+			if(reagent_list.len == 1) break //if the reagent to be avoided is the only one in the list, we're done here.
+			if(current_list_element == 1)
+				current_reagent = reagent_list[current_list_element + 1] //if the selected reagent was number 1, we don't want it trying to draw id.0, so we add 1
+			else
+				current_reagent = reagent_list[current_list_element - 1] //same for if it was the last one in the list
+
+		remove_reagent(current_reagent.id, 1)
+
+		current_list_element++
+		total_transfered++
+		update_total()
+
+	handle_reactions()
+	return total_transfered
+
+
 /datum/reagents/proc/get_master_reagent()
 	var/the_volume = 0
 	for(var/datum/reagent/A in reagent_list)
@@ -176,7 +207,8 @@
 	var/datum/reagents/R = target.reagents
 	amount = min(min(amount, total_volume), R.maximum_volume - R.total_volume)
 	trans_to_datum(V, amount, reaction = FALSE)
-
+	if(isSynth(target))
+		return
 	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
 
 	for(var/datum/reagent/RG in V.reagent_list) // If it can't be ingested, remove it.
@@ -634,7 +666,7 @@
 		var/source_mob_name = "unknown"
 		if(source_atom)
 			source_mob_name = "[source_atom]"
-		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] made by [key_name(source_mob_name)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
+		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] made by [key_name(source_mob_name)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
 		exploded = TRUE
 		return
 

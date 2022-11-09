@@ -24,24 +24,12 @@
 		return FALSE
 
 	if(M == user)
-		if(istype(M,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-			if(H.species.flags & IS_SYNTHETIC)
-				to_chat(H, SPAN_DANGER("You have a monitor for a head, where do you think you're going to put that?"))
-				return FALSE
-
 		to_chat(M, SPAN_NOTICE(" You swallow a gulp from \the [src]."))
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-		return TRUE
-	else if(istype(M, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
-		if(H.species.flags & IS_SYNTHETIC)
-			to_chat(user, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
-			return FALSE
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
@@ -132,19 +120,20 @@
 
 	return ..()
 
-/obj/item/reagent_container/food/drinks/examine(mob/user)
-	..()
-	if (get_dist(user, src) > 1 && user != loc) return
+/obj/item/reagent_container/food/drinks/get_examine_text(mob/user)
+	. = ..()
+	if (get_dist(user, src) > 1 && user != loc)
+		return
 	if(!reagents || reagents.total_volume==0)
-		to_chat(user, SPAN_NOTICE(" \The [src] is empty!"))
+		. += SPAN_NOTICE("\The [src] is empty!")
 	else if (reagents.total_volume<=src.volume/4)
-		to_chat(user, SPAN_NOTICE(" \The [src] is almost empty!"))
+		. += SPAN_NOTICE("\The [src] is almost empty!")
 	else if (reagents.total_volume<=src.volume*0.66)
-		to_chat(user, SPAN_NOTICE(" \The [src] is half full!"))
+		. += SPAN_NOTICE("\The [src] is half full!")
 	else if (reagents.total_volume<=src.volume*0.90)
-		to_chat(user, SPAN_NOTICE(" \The [src] is almost full!"))
+		. += SPAN_NOTICE("\The [src] is almost full!")
 	else
-		to_chat(user, SPAN_NOTICE(" \The [src] is full!"))
+		. += SPAN_NOTICE("\The [src] is full!")
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -165,7 +154,7 @@
 	flags_atom = FPRINT|CONDUCT|OPENCONTAINER
 
 /obj/item/reagent_container/food/drinks/golden_cup/tournament_26_06_2011
-	desc = "A golden cup. It will be presented to a winner of tournament 26 june and name of the winner will be graved on it."
+	desc = "A golden cup. It will be presented to a winner of tournament 26 June and name of the winner will be graved on it."
 
 
 ///////////////////////////////////////////////Drinks
@@ -223,7 +212,7 @@
 /obj/item/reagent_container/food/drinks/tea
 	name = "\improper Duke Purple Tea"
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
-	icon_state = "teacup"
+	icon_state = "tea"
 	item_state = "coffee"
 	center_of_mass = "x=16;y=14"
 
@@ -234,7 +223,8 @@
 /obj/item/reagent_container/food/drinks/ice
 	name = "ice cup"
 	desc = "Careful, cold ice, do not chew."
-	icon_state = "coffee"
+	icon_state = "coffee_nolid"
+	item_state = "coffee"
 	center_of_mass = "x=15;y=10"
 
 /obj/item/reagent_container/food/drinks/ice/Initialize()
@@ -254,7 +244,7 @@
 
 /obj/item/reagent_container/food/drinks/dry_ramen
 	name = "cup ramen"
-	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
+	desc = "Just add 10ml water, self-heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 	center_of_mass = "x=16;y=11"
 
@@ -280,6 +270,37 @@
 	else
 		icon_state = "water_cup_e"
 
+/obj/item/reagent_container/food/drinks/cup
+	name = "plastic cup"
+	desc = "A generic red cup. Beer pong, anyone?"
+	icon = 'icons/obj/items/cup.dmi'
+	icon_state = "solocup"
+	throwforce = 0
+	w_class = SIZE_TINY
+	matter = list("plastic" = 5)
+	attack_verb = list("bludgeoned", "whacked", "slapped")
+
+/obj/item/reagent_container/food/drinks/cup/attack_self(mob/user)
+	. = ..()
+	if(user.a_intent == INTENT_HARM)
+		user.visible_message(SPAN_WARNING("[user] crushes \the [src]!"), SPAN_WARNING("You crush \the [src]!"))
+		if(reagents.total_volume > 0)
+			reagents.clear_reagents()
+			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+			to_chat(user, SPAN_WARNING("The contents of \the [src] spill!"))
+		qdel(src)
+		var/obj/item/trash/crushed_cup/C = new /obj/item/trash/crushed_cup(user)
+		user.equip_to_slot_if_possible(C, (user.hand ? WEAR_L_HAND : WEAR_R_HAND))
+
+/obj/item/trash/crushed_cup
+	name = "crushed cup"
+	desc = "A sad crushed and destroyed cup. It's now useless trash. What a waste."
+	icon = 'icons/obj/items/cup.dmi'
+	icon_state = "crushed_solocup"
+	throwforce = 0
+	w_class = SIZE_TINY
+	matter = list("plastic" = 5)
+	attack_verb = list("bludgeoned", "whacked", "slapped")
 
 //////////////////////////drinkingglass and shaker//
 //Note by Darem: This code handles the mixing of drinks. New drinks go in three places: In Chemistry-Reagents.dm (for the drink
@@ -312,6 +333,13 @@
 	. = ..()
 	reagents.add_reagent("water", 59)
 	reagents.add_reagent("hooch", 1)
+
+/obj/item/reagent_container/food/drinks/flask/weylandyutani
+	name = "\improper Weyland-Yutani flask"
+	desc = "A metal flask embossed with Weyland-Yutani's signature logo. A nifty little corporate souvenir if you like the company."
+	icon_state = "flask_wy"
+	volume = 60
+	center_of_mass = "x=17;y=8"
 
 /obj/item/reagent_container/food/drinks/flask/detflask
 	name = "detective's flask"
@@ -350,3 +378,4 @@
 	name = "Weyland-Yutani coffee mug"
 	desc = "A matte gray coffee mug bearing the Weyland-Yutani logo on its front. Either issued as corporate standard, or bought as a souvenir for people who love the Company oh so dearly. Probably the former."
 	icon_state = "wycup"
+

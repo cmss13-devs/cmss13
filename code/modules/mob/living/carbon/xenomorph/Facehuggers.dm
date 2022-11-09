@@ -14,7 +14,7 @@
 	flags_inventory = COVEREYES|ALLOWINTERNALS|COVERMOUTH|ALLOWREBREATH|CANTSTRIP
 	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_atom = NO_FLAGS
-	flags_item = NOBLUDGEON
+	flags_item = NOBLUDGEON|NOTABLEMERGE
 	throw_range = 1
 	layer = FACEHUGGER_LAYER
 
@@ -38,7 +38,7 @@
 	var/jumps_left = 2
 
 	var/icon_xeno = 'icons/mob/hostiles/Effects.dmi'
-	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
+	var/icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
@@ -51,7 +51,6 @@
 			new_icon = icon_xenonid
 
 	icon = new_icon
-
 	set_hive_data(src, hivenumber)
 	go_active()
 
@@ -141,15 +140,15 @@
 		var/mob/living/carbon/Xenomorph/Carrier/C = user
 		C.store_hugger(src)
 
-/obj/item/clothing/mask/facehugger/examine(mob/user)
-	..()
+/obj/item/clothing/mask/facehugger/get_examine_text(mob/user)
+	. = ..()
 	switch(stat)
 		if(DEAD, UNCONSCIOUS)
-			to_chat(user, SPAN_DANGER("[src] is not moving."))
+			. += SPAN_DANGER("[src] is not moving.")
 		if(CONSCIOUS)
-			to_chat(user, SPAN_DANGER("[src] seems to be active."))
+			. += SPAN_DANGER("[src] seems to be active.")
 	if(sterile)
-		to_chat(user, SPAN_DANGER("It looks like the proboscis has been removed."))
+		. += SPAN_DANGER("It looks like the proboscis has been removed.")
 
 /obj/item/clothing/mask/facehugger/attackby(obj/item/W, mob/user)
 	if(W.flags_item & NOBLUDGEON)
@@ -239,14 +238,15 @@
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M)
+/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M, var/silent = FALSE, var/knockout_mod = 1)
 	if(attached || !can_hug(M, hivenumber))
-		return
+		return FALSE
 
 	// This is always going to be valid because of the can_hug check above
 	var/mob/living/carbon/human/H = M
 	attached = TRUE
-	H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
+	if(!silent)
+		H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
 
 	if(isXeno(loc)) //Being carried? Drop it
 		var/mob/living/carbon/Xenomorph/X = loc
@@ -256,7 +256,7 @@
 		forceMove(H.loc)//Just checkin
 
 	if(!H.handle_hugger_attachment(src))
-		return
+		return FALSE
 
 	forceMove(H)
 	icon_state = initial(icon_state)
@@ -268,9 +268,11 @@
 		playsound(loc, H.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
 	if(!sterile)
 		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
-			H.KnockOut(MIN_IMPREGNATION_TIME * 0.5, TRUE) //THIS MIGHT NEED TWEAKS
+			H.KnockOut(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, TRUE) //THIS MIGHT NEED TWEAKS
 
 	addtimer(CALLBACK(src, .proc/impregnate, H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
+
+	return TRUE
 
 /obj/item/clothing/mask/facehugger/proc/impregnate(mob/living/carbon/human/target)
 	if(!target || target.wear_mask != src) //Was taken off or something
@@ -377,7 +379,7 @@
 	if(!impregnated)
 		icon_state = "[initial(icon_state)]_dead"
 	stat = DEAD
-
+	flags_inventory &= ~CANTSTRIP
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] curls up into a ball!</span>")
 	playsound(src.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 
@@ -446,7 +448,7 @@
 	if(head && !(head.flags_item & NODROP))
 		var/obj/item/clothing/head/D = head
 		if(istype(D))
-			if(D.anti_hug > 1)
+			if(D.anti_hug >= 1)
 				visible_message(SPAN_DANGER("[hugger] smashes against [src]'s [D.name]!"))
 				D.anti_hug = max(0, --D.anti_hug)
 				if(prob(15)) // 15% chance the hugger will go idle after ripping off a helmet. Otherwise it will keep going.
@@ -474,7 +476,7 @@
 			if(FH.stat != DEAD)
 				return FALSE
 
-		if(W.anti_hug > 1)
+		if(W.anti_hug >= 1)
 			visible_message(SPAN_DANGER("[hugger] smashes against [src]'s [W.name]!"))
 			W.anti_hug = max(0, --W.anti_hug)
 			if(prob(15)) //15% chance the hugger will go idle after ripping off a mask. Otherwise it will keep going.

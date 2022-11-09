@@ -21,13 +21,13 @@
 		/obj/item/stack/sheet/mineral/silver = list("silver" = 20),
 		/obj/item/stack/sheet/mineral/gold = list("gold" = 20),
 		/obj/item/grown/nettle/death = list("pacid" = 0),
-		/obj/item/grown/nettle = list("sacid" = 0),
+		/obj/item/grown/nettle = list("sulphuric acid" = 0),
 
 		//Blender Stuff
 		/obj/item/reagent_container/food/snacks/grown/soybeans = list("soymilk" = 0),
 		/obj/item/reagent_container/food/snacks/grown/tomato = list("ketchup" = 0),
 		/obj/item/reagent_container/food/snacks/grown/corn = list("cornoil" = 0),
-		///obj/item/reagent_container/food/snacks/grown/wheat = list("flour" = -5),
+		/obj/item/reagent_container/food/snacks/grown/wheat = list("flour" = -5),
 		/obj/item/reagent_container/food/snacks/grown/ricestalk = list("rice" = -5),
 		/obj/item/reagent_container/food/snacks/grown/cherries = list("cherryjelly" = 0),
 		/obj/item/reagent_container/food/snacks/grown/plastellium = list("plasticide" = 5),
@@ -45,6 +45,7 @@
 		/obj/item/reagent_container/food/snacks/grown/tomato = list("tomatojuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/carrot = list("carrotjuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/berries = list("berryjuice" = 0),
+		/obj/item/reagent_container/food/snacks/grown/soybeans = list("soymilk" = 0),
 		/obj/item/reagent_container/food/snacks/grown/banana = list("banana" = 0),
 		/obj/item/reagent_container/food/snacks/grown/potato = list("potato" = 0),
 		/obj/item/reagent_container/food/snacks/grown/lemon = list("lemonjuice" = 0),
@@ -53,6 +54,7 @@
 		/obj/item/reagent_container/food/snacks/watermelonslice = list("watermelonjuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/grapes = list("grapejuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/poisonberries = list("poisonberryjuice" = 0),
+
 	)
 
 
@@ -417,7 +419,7 @@
 
 /obj/structure/machinery/reagentgrinder/industrial
 	name = "Industrial Grinder"
-	desc = "a heavy duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
+	desc = "a heavy-duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
 	icon_state = "industry1"
 	limit = 30
 	blend_items = list (
@@ -432,7 +434,10 @@
 		/obj/item/stack/sheet/aluminum = list("aluminum" = 60),
 		/obj/item/stack/sheet/copper = list("copper" = 60),
 		/obj/item/grown/nettle/death = list("pacid" = 0),
-		/obj/item/grown/nettle = list("sacid" = 0),
+		/obj/item/grown/nettle = list("sulphuric acid" = 0),
+
+		//Special Stuff
+		/obj/item/reagent_container/hypospray/autoinjector/yautja = list("thwei" = 30),
 
 		//Blender Stuff
 		/obj/item/reagent_container/food/snacks/grown/corn = list("cornoil" = 0)

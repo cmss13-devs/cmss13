@@ -21,6 +21,20 @@
 	for(var/i in 1 to storage_slots)
 		new content_type(src)
 
+var/list/grenade_packets = list(
+	/obj/item/storage/box/packet/high_explosive,
+	/obj/item/storage/box/packet/baton_slug,
+	/obj/item/storage/box/packet/flare,
+	/obj/item/storage/box/packet/hornet,
+	/obj/item/storage/box/packet/incendiary,
+	/obj/item/storage/box/packet/smoke,
+	/obj/item/storage/box/packet/phosphorus,
+	/obj/item/storage/box/packet/phosphorus/upp,
+	/obj/item/storage/box/packet/m15,
+	/obj/item/storage/box/packet/airburst_he,
+	/obj/item/storage/box/packet/airburst_incen
+	)
+
 /obj/item/storage/box/packet/high_explosive
 	name = "HEDP grenade packet"
 	desc = "It contains three HEDP high explosive grenades."
@@ -34,7 +48,7 @@
 	content_type = /obj/item/explosive/grenade/slug/baton
 
 /obj/item/storage/box/packet/flare
-	name = "M74 AMG-S star shell packet"
+	name = "M74 AGM-S star shell packet"
 	desc = "It contains three M40-F Star Shell Grenades. 40mm grenades that explode into burning ash. Great for temporarily lighting an area."
 	icon_state = "starshell_packet"
 	content_type = /obj/item/explosive/grenade/HE/airburst/starshell
@@ -83,12 +97,17 @@
 /obj/item/storage/box/packet/airburst_he
 	name = "M74 airbust grenade packet"
 	desc = "It contains three M74 airburst fragmentation grenades. This end towards the enemy."
-	icon_state = "general_packet"
+	icon_state = "agmf_packet"
 	content_type = /obj/item/explosive/grenade/HE/airburst
 
 /obj/item/storage/box/packet/airburst_incen
 	name = "M74 airbust incendiary grenade packet"
 	desc = "It contains three M74 airburst incendiary grenades. This end towards the enemy."
-	icon_state = "general_packet"
+	icon_state = "agmi_packet"
 	content_type = /obj/item/explosive/grenade/incendiary/airburst
 
+/obj/item/storage/box/packet/airburst_smoke
+	name = "M74 airbust smoke grenade packet"
+	desc = "It contains three M74 airburst smoke grenades. This end towards the enemy."
+	icon_state = "agms_packet"
+	content_type = /obj/item/explosive/grenade/smokebomb/airburst

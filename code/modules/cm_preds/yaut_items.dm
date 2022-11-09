@@ -3,12 +3,11 @@
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
 
 /proc/add_to_missing_pred_gear(var/obj/item/W)
-	if(!(W in yautja_gear) && !(W in untracked_yautja_gear) && !is_admin_level(W.z))
-		yautja_gear += W
+	if(!is_admin_level(W.z))
+		GLOB.loose_yautja_gear |= W
 
 /proc/remove_from_missing_pred_gear(var/obj/item/W)
-	if(W in yautja_gear)
-		yautja_gear -= W
+	GLOB.loose_yautja_gear -= W
 
 //=================//\\=================\\
 //======================================\\
@@ -94,19 +93,6 @@
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
-/obj/item/clothing/suit/armor/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/suit/armor/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/suit/armor/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
 /obj/item/clothing/suit/armor/yautja/hunter
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
@@ -152,83 +138,62 @@
 	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_[armor_material]")
 
 
-/obj/item/clothing/cape
-
-/obj/item/clothing/cape/eldercape
-	name = "\improper Yautja Cape"
-	desc = "A battle-worn cape passed down by elder Yautja. Councillors who've proven themselves worthy may also be rewarded with one of these capes."
-
+/obj/item/clothing/yautja_cape
+	name = PRED_YAUTJA_CAPE
+	desc = "A battle-worn cape passed down by elder Yautja."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "cape_elder"
+	icon_state = "fullcape"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
-
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
+	var/clan_rank_required = CLAN_RANK_LEADER_INT
+	var/councillor_override = FALSE
 
-/obj/item/clothing/cape/eldercape/New(location, cape_number)
-	..()
-	switch(cape_number)
-		if(1341)
-			name = "\improper 'Mantle of the Dragon'"
-			icon_state = "cape_elder_tr"
-			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_tr")
-		if(7128)
-			name = "\improper 'Mantle of the Swamp Horror'"
-			icon_state = "cape_elder_joshuu"
-			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_joshuu")
-		if(9867)
-			name = "\improper 'Mantle of the Enforcer'"
-			icon_state = "cape_elder_feweh"
-			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_feweh")
-		if(4879)
-			name = "\improper 'Mantle of the Ambivalent Collector'"
-			icon_state = "cape_elder_n"
-			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_n")
+/obj/item/clothing/yautja_cape/Initialize(mapload, var/new_color = "#654321")
+	. = ..()
+	color = new_color
 
-/obj/item/clothing/cape/eldercape/dropped(mob/living/user)
+/obj/item/clothing/yautja_cape/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
 
-/obj/item/clothing/cape/eldercape/pickup(mob/living/user)
+/obj/item/clothing/yautja_cape/pickup(mob/living/user)
 	if(isYautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/clothing/cape/eldercape/Destroy()
+/obj/item/clothing/yautja_cape/Destroy()
 	remove_from_missing_pred_gear(src)
 	return ..()
 
-/obj/item/clothing/cape/eldercape/verb/recolor()
-	set name = "Dye Cape"
-	set desc = "Allows you to add a custom color to your cape. Single use."
-	set src in usr
+/obj/item/clothing/yautja_cape/ceremonial
+	name = PRED_YAUTJA_CEREMONIAL_CAPE
+	icon_state = "ceremonialcape"
+	councillor_override = TRUE
 
-	if(color)
-		to_chat(usr, "Your cape is already dyed!")
-		return
+/obj/item/clothing/yautja_cape/third
+	name = PRED_YAUTJA_THIRD_CAPE
+	icon_state = "thirdcape"
+	clan_rank_required = CLAN_RANK_ELDER_INT
 
-	var/new_color = input(usr, "Choose your cape's colour. \nMeme colours may result in action taken by the council. \nSINGLE USE ONLY.", "Dye your cape") as color|null
-	if(!new_color)
-		return
+/obj/item/clothing/yautja_cape/half
+	name = PRED_YAUTJA_HALF_CAPE
+	icon_state = "halfcape"
+	clan_rank_required = CLAN_RANK_ELITE_INT
 
-	color = new_color
-	log_game("[key_name(usr)] has changed their cape color to '[color]'")
-	icon_state = "cape_elder_n"
-	to_chat(usr, "Your cape has been dyed!")
+/obj/item/clothing/yautja_cape/quarter
+	name = PRED_YAUTJA_QUARTER_CAPE
+	icon_state = "quartercape"
+	clan_rank_required = CLAN_RANK_BLOODED_INT
 
-
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUM
-	armor_energy = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_MEDIUM
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-
+/obj/item/clothing/yautja_cape/poncho
+	name = PRED_YAUTJA_PONCHO
+	icon_state = "councilor_poncho"
+	clan_rank_required = CLAN_RANK_ADMIN_INT
+	councillor_override = TRUE
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"
@@ -290,20 +255,6 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
-
-/obj/item/clothing/shoes/yautja/hunter/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/shoes/yautja/hunter/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/shoes/yautja/hunter/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
 /obj/item/clothing/shoes/yautja/hunter/knife/New()
 	..()
 	stored_item = new /obj/item/weapon/melee/yautja/knife(src)
@@ -334,19 +285,6 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-
-/obj/item/clothing/under/chainshirt/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/clothing/under/chainshirt/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/under/chainshirt/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
 
 /obj/item/clothing/under/chainshirt/hunter
 	name = "body mesh"
@@ -386,9 +324,9 @@
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
-	for(var/mob/living/carbon/hellhound/H in GLOB.player_list)
-		if(istype(H) && !H.stat)
-			to_chat(H, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
+	for(var/mob/living/carbon/Xenomorph/Hellhound/hellhound as anything in GLOB.hellhound_list)
+		if(!hellhound.stat)
+			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
 
 /obj/item/device/radio/headset/yautja/attackby()
@@ -402,7 +340,7 @@
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."
 	icon_state = "cypherkey"
-	channels = list("Yautja" = 1)
+	channels = list(RADIO_CHANNEL_YAUTJA = 1)
 
 //Yes, it's a backpack that goes on the belt. I want the backpack noises. Deal with it (tm)
 /obj/item/storage/backpack/yautja
@@ -422,19 +360,6 @@
 	storage_slots = 12
 	max_storage_space = 30
 
-/obj/item/storage/backpack/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/storage/backpack/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/storage/backpack/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
 
 /obj/item/device/yautja_teleporter
 	name = "relay beacon"
@@ -451,19 +376,6 @@
 	unacidable = TRUE
 	var/timer = 0
 
-/obj/item/device/yautja_teleporter/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/device/yautja_teleporter/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/device/yautja_teleporter/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
 /obj/item/device/yautja_teleporter/attack_self(mob/user)
 	set waitfor = FALSE
 
@@ -475,7 +387,7 @@
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
 
-	if(!isYautja(H))
+	if(!isYautja(H) || is_admin_level(H.z))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
 
@@ -586,7 +498,7 @@
 	overlays += blood_overlay
 
 	if(!scalpee) //Presumably spawned as map decoration.
-		true_desc = "This is the scalp of an irrelevant hooman."
+		true_desc = "This is the scalp of an irrelevant human."
 		color = list(null, null, null, null, rgb(rand(0,255), rand(0,255), rand(0,255)))
 		return
 
@@ -640,28 +552,28 @@
 	switch(scalpee.life_kills_total)
 		if(0)
 			if(dishonourable)
-				true_desc += " hooman who was even more shameful than usual."
+				true_desc += " human who was even more shameful than usual."
 				worth = -1
 			else if(honourable) //They weren't marked as killing anyone but otherwise distinguished themselves.
-				true_desc += " hooman."
+				true_desc += " human."
 			else
-				true_desc += "n irrelevant hooman."
+				true_desc += "n irrelevant human."
 				worth = 0
 
 		if(1 to 4)
 			if(dishonourable)
-				true_desc += " hooman who could have been worthy, had [they] not insisted on disgracing [themselves]."
+				true_desc += " human who could have been worthy, had [they] not insisted on disgracing [themselves]."
 				worth = -1
 			else
-				true_desc += " respectable hooman with blood on [their] hands."
+				true_desc += " respectable human with blood on [their] hands."
 
 		if(5 to 9)
-			true_desc += "n uncommonly destructive hooman."
+			true_desc += "n uncommonly destructive human."
 			if(!dishonourable)
 				worth = 2 //Even if they did do something dishonourable, this person is worth at least grudging respect.
 
 		if(10 to INFINITY)
-			true_desc += " truly worthy hooman, no doubt descended from many storied warriors. [capitalize(their)] arms were soaked to the elbows with the life-blood of many."
+			true_desc += " truly worthy human, no doubt descended from many storied warriors. [capitalize(their)] arms were soaked to the elbows with the life-blood of many."
 			worth = 2
 
 	if(length(biography))
@@ -678,16 +590,16 @@
 			if(2)
 				true_desc += SPAN_BLUE("\nThis fine trophy was taken by [user.real_name] after a successful hunt.")
 
-/obj/item/scalp/examine(mob/user)
-	..()
+/obj/item/scalp/get_examine_text(mob/user)
+	. = ..()
 	if(isYautja(user) || isobserver(user))
-		to_chat(user, true_desc)
+		. += true_desc
 	else
-		to_chat(user, "Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
+		. += SPAN_WARNING("Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound
 	name = "hellhound caller"
-	spawner_type = /mob/living/carbon/hellhound
+	spawner_type = /mob/living/carbon/Xenomorph/Hellhound
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -705,7 +617,7 @@
 	..()
 	if(!active)
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			to_chat(user, "What's this thing?")
+			to_chat(user, SPAN_WARNING("What's this thing?"))
 			return
 		to_chat(user, SPAN_WARNING("You activate the hellhound beacon!"))
 		activate(user)
@@ -713,11 +625,6 @@
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
 			C.toggle_throw_mode(THROW_MODE_NORMAL)
-	else
-		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			return
-		activated_turf = get_turf(user)
-		display_camera(user)
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/activate(mob/user)
 	if(active)
@@ -743,31 +650,6 @@
 		user.unset_interaction()
 	else if ( !current || get_turf(user) != activated_turf || src.loc != user ) //camera doesn't work, or we moved.
 		user.unset_interaction()
-
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/proc/display_camera(var/mob/user as mob)
-	var/list/L = list()
-	for(var/mob/living/carbon/hellhound/H in GLOB.hellhound_list)
-		L += H.real_name
-	L["Cancel"] = "Cancel"
-
-	var/choice = tgui_input_list(user,"Which hellhound would you like to observe? (moving will drop the feed)","Camera View", L)
-	if(!choice || choice == "Cancel" || isnull(choice))
-		user.unset_interaction()
-		to_chat(user, "Stopping camera feed.")
-		return
-
-	for(var/mob/living/carbon/hellhound/Q in GLOB.hellhound_list)
-		if(Q.real_name == choice)
-			current = Q.camera
-			break
-
-	if(istype(current))
-		to_chat(user, "Switching feed..")
-		user.set_interaction(current)
-
-	else
-		to_chat(user, "Something went wrong with the camera feed.")
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/New()
 	. = ..()
@@ -836,7 +718,7 @@
 		disarm(user)
 	//Humans and synths don't know how to handle those traps!
 	if(isHumanSynthStrict(user) && armed)
-		to_chat(user, "You foolishly reach out for \the [src]...")
+		to_chat(user, SPAN_WARNING("You foolishly reach out for \the [src]..."))
 		trapMob(user)
 		return
 	. = ..()
@@ -992,3 +874,39 @@
 	flags_equip_slot = SLOT_ID
 	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
 	paygrade = null
+
+/obj/item/storage/medicomp
+	name = "medicomp"
+	desc = "A complex kit of alien tools and medicines."
+	icon_state = "medicomp"
+	use_sound = "toolbox"
+	w_class = SIZE_SMALL
+	storage_flags = STORAGE_FLAGS_DEFAULT
+	flags_item = ITEM_PREDATOR
+	storage_slots = 12
+	can_hold = list(
+					/obj/item/tool/surgery/stabilizer_gel,
+					/obj/item/tool/surgery/healing_gun,
+					/obj/item/tool/surgery/wound_clamp,
+					/obj/item/reagent_container/hypospray/autoinjector/yautja,
+					/obj/item/device/healthanalyzer/alien,
+					/obj/item/tool/surgery/healing_gel
+					)
+
+/obj/item/storage/medicomp/full/fill_preset_inventory()
+	new /obj/item/tool/surgery/stabilizer_gel(src)
+	new /obj/item/tool/surgery/healing_gun(src)
+	new /obj/item/tool/surgery/wound_clamp(src)
+	new	/obj/item/device/healthanalyzer/alien(src)
+	new	/obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new	/obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new	/obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new	/obj/item/tool/surgery/healing_gel/(src)
+	new	/obj/item/tool/surgery/healing_gel/(src)
+	new	/obj/item/tool/surgery/healing_gel/(src)
+
+/obj/item/storage/medicomp/update_icon()
+	if(!contents.len)
+		icon_state = "medicomp_open"
+	else
+		icon_state = "medicomp"

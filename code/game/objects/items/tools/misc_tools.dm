@@ -37,10 +37,10 @@
 	if(length(A.name) + length(label) > 64)
 		to_chat(user, SPAN_NOTICE("Label too big."))
 		return
-	if(isliving(A))
+	if(isliving(A) || istype(A, /obj/item/holder))
 		to_chat(user, SPAN_NOTICE("You can't label living beings."))
 		return
-	if(istype(A, /obj/item/reagent_container/glass))
+	if((istype(A, /obj/item/reagent_container/glass)) && (!(istype(A, /obj/item/reagent_container/glass/minitank))))
 		to_chat(user, SPAN_NOTICE("The label will not stick to [A]. Use a pen instead."))
 		return
 	if(istype(A, /obj/item/tool/surgery) || istype(A, /obj/item/reagent_container/pill))
@@ -60,7 +60,7 @@
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."), \
-						 SPAN_NOTICE("You label [A] as \"[label]\"."))
+	SPAN_NOTICE("You label [A] as \"[label]\"."))
 
 	log_admin("[user] has labeled [A.name] with label \"[label]\". (CKEY: ([user.ckey]))")
 
@@ -129,10 +129,10 @@
     Instead of updating labels_left to user every label used,
     Have the user examine it to show them.
 */
-/obj/item/tool/hand_labeler/examine(mob/user)
+/obj/item/tool/hand_labeler/get_examine_text(mob/user)
     . = ..()
-    to_chat(user, SPAN_NOTICE("It has [labels_left] out of [initial(labels_left)] labels left."))
-    to_chat(user, SPAN_HELPFUL("Use paper to refill it."))
+    . += SPAN_NOTICE("It has [labels_left] out of [initial(labels_left)] labels left.")
+    . += SPAN_HELPFUL("Use paper to refill it.")
 
 
 /*
@@ -150,7 +150,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 15
 	matter = list("metal" = 10)
-	var/colour = "black"	//what colour the ink is!
+	var/pen_colour = "black"	//what colour the ink is!
 	var/on = TRUE
 	var/clicky = FALSE
 
@@ -167,7 +167,9 @@
 	update_pen_state()
 
 /obj/item/tool/pen/proc/update_pen_state()
-	icon_state = "pen_[colour]_[on? "on": "off"]"
+	overlays.Cut()
+	if(on)
+		overlays += "+[pen_colour]_tip"
 
 /obj/item/tool/pen/clicky
 	desc = "It's a WY brand extra clicky black ink pen."
@@ -176,7 +178,7 @@
 
 /obj/item/tool/pen/blue
 	desc = "It's a normal blue ink pen."
-	colour = "blue"
+	pen_colour = "blue"
 
 /obj/item/tool/pen/blue/clicky
 	desc = "It's a WY brand extra clicky blue ink pen."
@@ -185,16 +187,25 @@
 
 /obj/item/tool/pen/red
 	desc = "It's a normal red ink pen."
-	colour = "red"
+	pen_colour = "red"
 
 /obj/item/tool/pen/red/clicky
 	desc = "It's a WY brand extra clicky red ink pen."
 	name = "WY red pen"
 	clicky = TRUE
 
+/obj/item/tool/pen/green
+	desc = "It's a normal green ink pen."
+	pen_colour = "green"
+
+/obj/item/tool/pen/green/clicky
+	desc = "It's a WY brand extra clicky green ink pen."
+	name = "WY green pen"
+	clicky = TRUE
+
 /obj/item/tool/pen/invisible
-	desc = "It's an invisble pen marker."
-	colour = "white"
+	desc = "It's an invisible pen marker."
+	pen_colour = "white"
 
 
 /obj/item/tool/pen/attack(mob/M as mob, mob/user as mob)

@@ -8,11 +8,14 @@
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	siemens_coefficient = 0.6
 	w_class = SIZE_HUGE
-	allowed = list(/obj/item/weapon/gun)//Guns only.
+	allowed = list(/obj/item/weapon/gun, /obj/item/storage/backpack/general_belt)//Guns only.
 	uniform_restricted = list(/obj/item/clothing/under)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
+
+	pickupsound = "armorequip"
+	dropsound = "armorequip"
 
 /obj/item/clothing/suit/armor/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
 	. = ..()
@@ -180,9 +183,32 @@
 	time_to_unequip = 20
 	time_to_equip = 20
 
+/obj/item/clothing/suit/armor/gladiator
+	name = "gladiator armor"
+	desc = "Are you not entertained? Is that not why you are here?"
+	icon_state = "gladiator"
+	item_state = "gladiator"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = HIDEJUMPSUIT
+	siemens_coefficient = 0.5
+	time_to_unequip = 20
+	time_to_equip = 20
+	allowed = list(/obj/item/weapon/melee/claymore/mercsword,
+		/obj/item/weapon/shield/riot,
+		/obj/item/device/flashlight,
+	)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
+
 /obj/item/clothing/suit/armor/riot/marine
 	name = "\improper M5 riot control armor"
-	desc = "A heavily modified suit of M2 MP Armor used to supress riots from buckethead marines. Slows you down a lot."
+	desc = "A heavily modified suit of M2 MP Armor used to suppress riots from buckethead marines. Slows you down a lot."
 	icon_state = "riot"
 	item_state = "swat_suit"
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
@@ -255,7 +281,7 @@
 //When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)
 /obj/item/clothing/suit/armor/reactive
 	name = "Reactive Teleport Armor"
-	desc = "Someone seperated our Research Director from their own head!"
+	desc = "Someone separated our Research Director from their own head!"
 	var/active = 0.0
 	icon_state = "reactiveoff"
 	item_state = "reactiveoff"
@@ -350,7 +376,7 @@
 
 /obj/item/clothing/suit/armor/tactical
 	name = "tactical armor"
-	desc = "A suit of armor most often used by Special Weapons and Tactics squads. Includes padded vest with pockets along with shoulder and kneeguards."
+	desc = "A suit of armor most often used by Special Weapons and Intel squads. Includes padded vest with pockets along with shoulder and kneeguards."
 	icon_state = "swatarmor"
 	item_state = "armor"
 	var/obj/item/weapon/gun/holstered = null

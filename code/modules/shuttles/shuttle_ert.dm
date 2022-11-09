@@ -5,6 +5,7 @@
 	transit_direction = NORTH
 	move_time = ERT_SHUTTLE_TRANSIT_DURATION
 	var/use_umbilical = FALSE
+	var/use_small_docks = FALSE //the two docks by engineering, on the upper deck
 
 /datum/shuttle/ferry/ert/can_launch()
 	//ert shuttle at the start area.
@@ -37,6 +38,16 @@
 		for(var/obj/structure/machinery/door/poddoor/PD in machines)
 			if(!PD.density && PD.id == umbili_id)
 				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/close)
+	if(use_small_docks && location == 0)
+		var/smalldock_id
+		if(istype(area_station, /area/shuttle/distress/arrive_n_engi))
+			smalldock_id = "n_engi"
+		else if(istype(area_station, /area/shuttle/distress/arrive_s_engi))
+			smalldock_id = "s_engi"
+		else return
+		for(var/obj/structure/machinery/door/poddoor/PD in machines)
+			if(!PD.density && PD.id == smalldock_id)
+				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/close)
 
 
 
@@ -63,6 +74,17 @@
 		//open the almayer's north of south umbilical shutters and the shuttle's north or south shutters
 		for(var/obj/structure/machinery/door/poddoor/PD in machines)
 			if(PD.density && PD.id == umbili_id)
+				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/open)
+
+	if(use_small_docks && location == 0) //arrival at almayer
+		var/smalldock_id
+		if(istype(area_station, /area/shuttle/distress/arrive_n_engi))
+			smalldock_id = "n_engi"
+		else if(istype(area_station, /area/shuttle/distress/arrive_s_engi))
+			smalldock_id = "s_engi"
+		else return
+		for(var/obj/structure/machinery/door/poddoor/PD in machines)
+			if(PD.density && PD.id == smalldock_id)
 				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/open)
 
 	else
@@ -159,6 +181,8 @@
 			var/dock_list = list("Port", "Starboard", "Aft")
 			if(MS.use_umbilical)
 				dock_list = list("Port Hangar", "Starboard Hangar")
+			if(MS.use_small_docks)
+				dock_list = list("Port Engineering", "Starboard Engineering")
 			var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
 			if(MS.moving_status != SHUTTLE_IDLE || !is_admin_level(z))
 				return
@@ -168,6 +192,8 @@
 				if("Aft") dock_id = /area/shuttle/distress/arrive_3
 				if("Port Hangar") dock_id = /area/shuttle/distress/arrive_s_hangar
 				if("Starboard Hangar") dock_id = /area/shuttle/distress/arrive_n_hangar
+				if("Port Engineering") dock_id = /area/shuttle/distress/arrive_s_engi
+				if("Starboard Engineering") dock_id = /area/shuttle/distress/arrive_n_engi
 				else return
 
 			for(var/datum/shuttle/ferry/ert/F in shuttle_controller.process_shuttles)
@@ -185,3 +211,9 @@
 					break
 
 		ui_interact(usr)
+
+/obj/structure/machinery/computer/shuttle_control/ert/terminal
+	icon_state = "comm_alt"
+	shuttle_tag = "Distress"
+	unacidable = TRUE
+	density = FALSE

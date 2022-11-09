@@ -130,18 +130,6 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	icon_state = "rdecks"
 	is_resin_allowed = TRUE
 
-/area/strata/ag/exterior/research_decks/north
-	name = "North Outpost Decks"
-
-/area/strata/ag/exterior/research_decks/south
-	name = "South Outpost Decks"
-
-/area/strata/ag/exterior/research_decks/east
-	name = "East Outpost Decks"
-
-/area/strata/ag/exterior/research_decks/west
-	name = "West Outpost Decks"
-
 /area/strata/ag/exterior/research_decks/center //The decks on the deck.
 	name = "Seconday Outpost Decks"
 
@@ -170,19 +158,19 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 ////////Telecomms//////////////////
 
 /area/strata/ag/interior/tcomms/ //T-Comms is inside until you leave the sheltered area..
-	name = "Telecommunications Relay"
+	name = "Relay"
 	icon_state = "tcomms1"
 
 /area/strata/ag/interior/tcomms/tcomms_engi
-	name = "Telecommunications Maintenance"
+	name = "Relay Maintenance"
 	icon_state = "tcomms2"
 
 /area/strata/ag/exterior/tcomms/tcomms_cave
-	name = "Telecommunications Cave"
+	name = "Relay Cave"
 	icon_state = "tcomms3"
 
 /area/strata/ag/exterior/tcomms/tcomms_deck
-	name = "Telecommunications Storage Deck"
+	name = "Relay Storage Deck"
 	icon_state = "tcomms4"
 
 //JUNGLE CAVES, ALL UNDERGROUND, ALL INTERIOR//
@@ -300,6 +288,10 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	name = "Flight Control Offices"
 	icon_state = "offices"
 
+/area/strata/ag/interior/admin_tcomms/ //T-Comms is inside until you leave the sheltered area..
+	name = "Telecommunications"
+	icon_state = "tcomms1"
+
 /area/strata/ag/exterior/administration_decks
 	name = "Flight Control Office Deck"
 	icon_state = "offices"
@@ -389,17 +381,8 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	name = "Ice Path"
 	icon_state = "path"
 
-/area/strata/ag/exterior/paths/northadmin
-	name = "North Of Flight Control"
-
-/area/strata/ag/exterior/paths/eastadmin
-	name = "East Of Flight Control"
-
-/area/strata/ag/exterior/paths/southadmin
-	name = "South Of Flight Control"
-
-/area/strata/ag/exterior/paths/westadmin
-	name = "West Of Flight Control"
+/area/strata/ag/exterior/paths/adminext
+	name = "Flight Control Exterior"
 
 /area/strata/ag/exterior/paths/dorms_quad //The area between the deck.
 	name = "Mining Dormitories Quad"

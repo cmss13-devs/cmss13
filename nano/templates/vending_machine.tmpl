@@ -1,8 +1,10 @@
 
 {{if data.currently_vending_name}}
 	<div itemLabel>
-		You have selected {{:data.currently_vending_name}}.
+		You have selected : {{:data.currently_vending_name}}.
+		<br>
 		Please swipe your ID to pay for the article.
+		<br>
 		{{:helper.link('Cancel', null, {'cancel_buying' : '1'}, null, null)}}
 	</div>
 {{else}}

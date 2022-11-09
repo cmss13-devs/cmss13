@@ -58,16 +58,13 @@
 		if(fullness > 540 && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return
+		if(isSynth(C))
+			fullness = 200 //Synths never get full
 
 		if(fullness > 540)
 			C.overeat_cooldown = world.time + OVEREAT_TIME
 
 		if(M == user)//If you're eating it yourself
-			if(istype(M,/mob/living/carbon/human))
-				var/mob/living/carbon/human/H = M
-				if(H.species.flags & IS_SYNTHETIC)
-					to_chat(H, SPAN_DANGER("You have a monitor for a head, where do you think you're going to put that?"))
-					return
 			if (fullness <= 50)
 				to_chat(M, SPAN_WARNING("You hungrily chew out a piece of [src] and gobble it!"))
 			if (fullness > 50 && fullness <= 150)
@@ -79,12 +76,6 @@
 			if (fullness > 540)
 				to_chat(M, SPAN_WARNING("You reluctantly force more of [src] to go down your throat."))
 		else
-			if(istype(M,/mob/living/carbon/human))
-				var/mob/living/carbon/human/H = M
-				if(H.species.flags & IS_SYNTHETIC)
-					to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
-					return
-
 			if (fullness <= 540)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
@@ -127,17 +118,27 @@
 /obj/item/reagent_container/food/snacks/afterattack(obj/target, mob/user, proximity)
 	return ..()
 
-/obj/item/reagent_container/food/snacks/examine(mob/user)
-	..()
-	if (!(user in range(0)) && user != loc) return
-	if (bitecount==0)
+/obj/item/reagent_container/food/snacks/get_examine_text(mob/user)
+	. = ..()
+	if (!(user in range(0)) && user != loc)
+		return
+	if (!bitecount)
 		return
 	else if (bitecount==1)
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten by someone!"))
+		. += SPAN_NOTICE("\The [src] was bitten by someone!")
 	else if (bitecount<=3)
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten [bitecount] times!"))
+		. += SPAN_NOTICE("\The [src] was bitten [bitecount] times!")
 	else
-		to_chat(user, SPAN_NOTICE(" \The [src] was bitten multiple times!"))
+		. += SPAN_NOTICE("\The [src] was bitten multiple times!")
+
+/obj/item/reagent_container/food/snacks/set_name_label(var/new_label)
+	name_label = new_label
+	name = made_from_player + initial(name)
+	if(name_label)
+		name += " ([name_label])"
+
+/obj/item/reagent_container/food/snacks/set_origin_name_prefix(var/name_prefix)
+	made_from_player = name_prefix
 
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
@@ -341,7 +342,7 @@
 
 /obj/item/reagent_container/food/snacks/wy_chips/pepper
 	name = "Weyland-Yutani Pepper Chips"
-	desc = "Premium high quality chips, now with 0% trans fat and added black pepper."
+	desc = "Premium high-quality chips, now with 0% trans fat and added black pepper."
 	icon_state = "wy_chips_pepper"
 	item_state = "wy_chips_pepper"
 	trash = /obj/item/trash/wy_chips_pepper
@@ -569,7 +570,7 @@
 
 /obj/item/reagent_container/food/snacks/boiledegg
 	name = "Boiled egg"
-	desc = "A hard boiled egg."
+	desc = "A hard-boiled egg."
 	icon_state = "egg"
 	filling_color = "#FFFFFF"
 
@@ -1577,13 +1578,17 @@
 	..()
 
 /obj/item/reagent_container/food/snacks/monkeycube/proc/Expand()
-	for(var/mob/M in viewers(src,7))
+	for(var/mob/M as anything in viewers(src,7))
 		to_chat(M, SPAN_WARNING("\The [src] expands!"))
 	var/turf/T = get_turf(src)
 	if(T)
 		new monkey_type(T)
 	qdel(src)
 
+/obj/item/reagent_container/food/snacks/monkeycube/extinguish()
+	. = ..()
+	if(!package)
+		Expand()
 
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped
 	desc = "Still wrapped in some paper."
@@ -1903,7 +1908,7 @@
 
 /obj/item/reagent_container/food/snacks/spesslaw
 	name = "Spesslaw"
-	desc = "A lawyers favourite"
+	desc = "A lawyer's favourite"
 	icon_state = "spesslaw"
 	filling_color = "#DE4545"
 
@@ -2252,7 +2257,7 @@
 
 /obj/item/reagent_container/food/snacks/carrotcakeslice
 	name = "Carrot Cake slice"
-	desc = "Carrotty slice of Carrot Cake, carrots are good for your eyes! Also not a lie."
+	desc = "Carroty slice of Carrot Cake, carrots are good for your eyes! Also not a lie."
 	icon_state = "carrotcake_slice"
 	trash = /obj/item/trash/plate
 	filling_color = "#FFD675"
@@ -2417,7 +2422,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel
 	name = "Cheese wheel"
-	desc = "A big wheel of delcious Cheddar."
+	desc = "A big wheel of delicious Cheddar."
 	icon_state = "cheesewheel"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge
 	slices_num = 5
@@ -3147,6 +3152,7 @@
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
 		package = 0
 		icon_state = "hburger"
+		item_state = "burger"
 
 /obj/item/reagent_container/food/snacks/packaged_hdogs
 	name = "Packaged Hotdog"

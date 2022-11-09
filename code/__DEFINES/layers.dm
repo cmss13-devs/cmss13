@@ -1,7 +1,13 @@
 
-//defines for atom layers
+//Defines for atom layers and planes
 
 //the hardcoded ones are AREA_LAYER = 1, TURF_LAYER = 2, OBJ_LAYER = 3, MOB_LAYER = 4, FLY_LAYER = 5
+
+/*=============================*\
+|								|
+|		  LAYER DEFINES			|
+|								|
+\*=============================*/
 
 //#define AREA_LAYER 1
 
@@ -111,8 +117,6 @@
 
 #define ABOVE_FLY_LAYER 6
 
-#define AREAS_LAYER 999 //for areas, so they appear above everything else on map file.
-
 #define ABOVE_LIGHTING_PLANE 16
 
 #define BELOW_FULLSCREEN_LAYER 16.9 //blip from motion detector
@@ -132,3 +136,46 @@
 
 #define CINEMATIC_LAYER 21
 
+#define AREAS_LAYER 999 //for areas, so they appear above everything else on map file.
+
+/*=============================*\
+|								|
+|		  PLANE DEFINES			|
+|								|
+\*=============================*/
+
+//NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
+#define LOWEST_EVER_PLANE -200
+
+#define FLOOR_PLANE -7
+#define GAME_PLANE -6
+
+#define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
+
+#define GHOST_PLANE 80
+
+//---------- LIGHTING -------------
+#define LIGHTING_PLANE 100
+#define EXTERIOR_LIGHTING_PLANE 101
+
+///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
+///Popup Chat Messages
+#define RUNECHAT_PLANE 501
+
+//-------------------- Rendering ---------------------
+#define RENDER_PLANE_GAME 990
+#define RENDER_PLANE_NON_GAME 995
+#define RENDER_PLANE_MASTER 999
+
+//-------------------- HUD ---------------------
+#define FULLSCREEN_PLANE 900
+
+//HUD layer defines
+#define HUD_PLANE 1000
+#define ABOVE_HUD_PLANE 1100
+
+#define CINEMATIC_PLANE 1200
+
+
+///Plane master controller keys
+#define PLANE_MASTERS_GAME "plane_masters_game"

@@ -64,7 +64,7 @@
 	if(!(user in viewers(M, null)))
 		showname = "."
 
-	if (user.a_intent == INTENT_HELP && ((user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY) || (user.mob_flags & SURGERY_MODE_ON)))
+	if (user.a_intent == INTENT_HELP && ((user.client?.prefs && user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY) || (user.mob_flags & SURGERY_MODE_ON)))
 		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),\
 			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."), null, 4)
@@ -94,8 +94,8 @@
 		user.flick_attack_overlay(M, "punch")
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
-			power = armor_damage_reduction(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, 20, 0, 0, X.armor_integrity)
-			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, 20, 0, 0, X.armor_integrity)
+			power = armor_damage_reduction(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
+			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
 			X.apply_armorbreak(armor_punch)
 		if(hitsound)
 			playsound(loc, hitsound, 25, 1)

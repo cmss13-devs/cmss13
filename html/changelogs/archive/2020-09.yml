@@ -1,0 +1,513 @@
+2020-09-01:
+  Waltermeldron:
+  - rscadd: Pred limit now scales with population
+2020-09-02:
+  Jeser:
+  - tweak: 'If job gets slot opened, it will stay open for the rest of the round now,
+      whether current population satisfies slot unlocking requirements or not. Reason
+      why this was changed in a simple example: player gets spawned as Squad Specialist,
+      but 20 minutes later has to go to cryo. However, by this time, a dozen or two
+      marines have died and amount of alive and active USCM personnel humans is lower
+      than required for 4th Specialist slot to be opened. This results in slot being
+      locked. In most cases, for the whole round.'
+  - bugfix: Fixed Adjust Job Slots verb not doing anything.
+  - rscadd: Added verb for staff to debug Role Authority system.
+2020-09-04:
+  Jeser:
+  - bugfix: Fixed dropships being permanently stuck if attempted to fly on transport
+      mode while not having a respecting LZ mapped.
+2020-09-05:
+  Vicacrov:
+  - bugfix: Fixed the lobby art being cropped.
+  Waltermeldron:
+  - tweak: Zombie claws do more damage.
+  - tweak: Zombies now revive 4x faster.
+  - bugfix: Fixed zombies not being able to heal if spawned with the zombie preset.
+  - bugfix: Zombies can no longer speak english.
+  - bugfix: Xenos should now be safe to move on the dropship as it is crash landing.
+  - tweak: Made pointing a lot faster.
+2020-09-06:
+  Vicacrov:
+  - tweak: Magazine Pouch slot number was increased from 2 to 3.
+  - tweak: Large Magazine Pouch slot number was increased from 3 to 4.
+  Waltermeldron:
+  - rscadd: Agents now have a new ability that allows them to receive their objectives
+      whenever they're ready.
+  - tweak: Agents can now disable their suit tracker. This'll easily give them away
+      if caught.
+  - rscadd: Added a new item that Agents can use to retrieve their gear. They start
+      with 40 points and can spend these points on various gadgets and tools. This
+      may be expanded upon later to give the opportunity for Agents to gain points
+      by completing objectives.
+  - rscadd: This item can convert ammo into rubber bullets by hitting them with the
+      briefcase whilst the magazine is full. Only works for some magazines. Rubber
+      bullets can be used freely to defer MPs and are completely non-lethal.
+  - rscadd: Agents can now attach signalers to doors to help them plan and possibly
+      stop people from chasing them.
+  - rscadd: Added a new stamina system. MP tools and rubber bullets use this system.
+  - rscadd: Taser has been reworked to have 16 shots and high fire rate, at the cost
+      of no longer being able to instantly stun people.
+  - rscadd: Rubber bullets have a unique firing sound that distinguishes them from
+      normal bullets.
+  - tweak: Melee weapons and fists no longer have RNG knockdown. This is in preparation
+      to tie them in with the stamina system.
+  - rscadd: MPs can now carry people by aggressively grabbing their target and dragging
+      their target onto themselves whilst on the grab intent.
+  - rscdel: Removed neck grabs.
+  - bugfix: Fixed trapper boilers shooting through multiple zlevels.
+2020-09-07:
+  Vampmare:
+  - tweak: Removed the Pete Hat and Nurse Cap from Synth Snowflake vendor.
+  Vicacrov:
+  - bugfix: Fixed Resin Whisperer Hivelords building thick walls and doors remotely.
+  - bugfix: Fixed Xenomorphs ceasing to exist when they crawled to a tunnel that was
+      blown up during the process.
+  - bugfix: Fixed Burrowers being able to use Tremor while ventcrawling.
+2020-09-08:
+  Jeser:
+  - wip: 'General vehicle changes:'
+  - rscadd: Added exterior cameras to vehicles with separate network. 5 camera consoles
+      in CIC (1 per Overwatch seat and 1 at CO seat) have access to the vehicle cameras
+      network. Vehicle cameras should appear in the top of the cameras list for quick
+      access. Cameras are disabled once vehicle hull runs out of health and reenabled
+      after fixing it.
+  - bugfix: Fixed vehicles not being shown on tactical map.
+  - tweak: Added var/visible_in_tacmap to vehicles that is responsible for visibility
+      on tactical map.
+  - rscadd: Added wall-mounted storage compartment. Allows Vehicle Crewmen to store
+      personal possessions or weaponry ammunition. Can't fit mobs inside. Only accessible
+      by Vehicle Crewmen. Added to the interiors of tank and all APC modifications.
+  - imageadd: Added wall-mounted storage compartment sprites by Bongosz and Triiodine.
+  - rscadd: Added CIC tacmap to command APC.
+  - bugfix: Fixed vehicle interior props being destructible.
+  - bugfix: Fixed emotes from outside being seen inside of vehicles.
+  - bugfix: Fixed exploit allowing to put more magazines into vehicle weapons than
+      supposed to.
+  - bugfix: Fixed new vendors not reacting to being bumped into by multitile vehicles.
+  - bugfix: Fixed momentum bug, that was freezing vehicle in place for several seconds.
+  - tweak: Added sounds for loading magazine into loader, reloading hardpoint and
+      for xenos attacking vehicle.
+  - tweak: Vehicle ramming changes. Simple vehicles (powerloader, cargo tug) are now
+      destroyed in 3 rams. Multitile vehicles have proper bumping code and don't ignore
+      each other anymore. When ramming into multitile vehicle, both vehicles' last
+      movement direction and momentum are taken into account and damage taken by vehicles
+      is increased respectively.
+  - tweak: Vehicle skills requirements for Tank and APC were icnreased to Crewman
+      level.
+  - bugfix: Fixed Toggle Gyrostabilizer verb not working.
+  - tweak: 'Tank movement. Regular treads speed was increased. Robustreads speed was
+      increased to previous speed of regular treads. Maximum momentum of tank was
+      increased from 2 to 3. Summary: tanks momentum gain is slightly slower than
+      it was while top speed is much higher.'
+  - rscadd: 'Added Activate Horn verb for driver. Activates vehicle signal. Has 10
+      seconds delay. Shortcut: CTRL + Click. Keep in mind, that vehicles horn can
+      be heard in approximately 15 tiles radius both by allies and foes.'
+  - rscadd: Added Name Vehicle verb for both VCs. Allows to add nickname/callsign
+      of the vehicle at the end of it's name in quotation marks. 26 characters max.
+      Single use.
+  - tweak: Updated and tweaked Vehicle Controls Guide. Features colored categories,
+      description of new verbs and shortcuts and sorted in alphabetical order.
+  - wip: 'Modules changes:'
+  - tweak: Made M34A2-A Multipurpose Turret a dense object.
+  - tweak: Vehicle weaponry now shows ammo status after shooting. Message about not
+      being ready to fire won't be shown for weapons with high rate of fire (LTAA-AP
+      Minigun, M56 Cupola, RE-RE700 Frontal Cannon).
+  - tweak: M56 Cupola and RE-RE700 Frontal Cannon. Delay between shots was increased
+      from 0.5 to 1.5 seconds and 0.5 to 1.6 seconds and now they fire in bursts of
+      3 and 4 rounds, respectively.
+  - bugfix: Fixed M56 Cupola's and RE-RE700 Frontal Cannon's IFF bug. (Thanks to Waltermeldron
+      for help with identifying bug's source)
+  - tweak: Smoke Launcher. Delay between shots was increased from 3 to 7 seconds.
+      Spare magazines amount reduced from 4 to 3. Amount of ammo in the magazine was
+      increased from 6 to 10.
+  - tweak: Upon activation Smoke Launcher shoots two smoke grenades 3 tiles ahead
+      and 2 tiles to the LEFT and RIGHT from hull's direction with 1 second delay,
+      creating a smoke screen in front of the tank.
+  - tweak: Grenade Launcher. Minimal (3 tiles) and maximum (7 tiles) firing range
+      were introduced. Trying to shoot too close will prevent the shot, while shooting
+      further than maximum range will instead shoot at maximum range.
+  - tweak: Smoke and Grenade launchers ammo now flies above humans and xenos.
+  - tweak: Secondary Flamer. Arc of fire was increased from 60 to 90 degrees.
+  - bugfix: Fixed Flamer path always starting in front of the tank, rather than turret.
+  - wip: 'Miscellaneous changes:'
+  - bugfix: Fixed tools pouch in Vehicle Crewman rack having wrong tools in it.
+  - tweak: Replaced Z-level restriction on Vehicle ASRS console with role requirement.
+  - bugfix: Fixed problems with hearing sounds from inside of vehicle interior. Sounds
+      should be louder now.
+  - bugfix: Fixed vehicle clamps functionality.
+  - tweak: Labelers don't work on multitile vehicles anymore.
+  TobiNerd:
+  - rscadd: Added a template for merge request changelogs.
+  Vampmare:
+  - tweak: 'Updated existing Agent objectives to be harder. Added new ones. Added
+      new special fluff items for Agents to steal. '
+  - tweak: MPs now receive a vague announcement from ARES when Agents accept an objective.
+  - tweak: Added Foreign Activity to JAS.
+  - bugfix: Steal objective now checks webbing and armour slots as well.
+  - tweak: You can now overeat with a cooldown. Overeating provides no benefit at
+      all, its purely for RP/fluff/poison objective.
+  Vicacrov:
+  - maptweak: Made Big Red's northern caves a bit prettier.
+  Waltermeldron:
+  - bugfix: Fixed access tuner vending a toolbox instead of an access tuner.
+2020-09-09:
+  Jeser:
+  - bugfix: Removed debug logs from suspicious weapons racks.
+  - tweak: Reduced vending delay in attachments vendors.
+  Waltermeldron:
+  - bugfix: Fixed a bug with warrior where it wouldn't properly stun a human when
+      flung because the human was being grabbed by the warrior.
+2020-09-10:
+  TobiNerd:
+  - bugfix: Chefs can now cut food on tables again.
+  Vicacrov:
+  - bugfix: 'Fixed the incediary OB''s colour: it''s white again.'
+  - rscadd: Added a debug verb for firing OBs. Expect abombs to be more creative from
+      now o- I mean, it is a very useful tool for testing. Really.
+  - bugfix: Fixed two survivor loadouts not having boots on CORSAT.
+  Waltermeldron:
+  - tweak: Click delay when clicking on items in your inventory has been removed.
+2020-09-11:
+  Jeser:
+  - rscdel: Removed Vehicle Crewman role population lock. Rejoice!
+  - rscadd: Added tank population lock in Vehicle ASRS Console. Currenty set to 90
+      USCM personnel. Tank won't be opened even if population will satisfy requirements
+      later in round to prevent Crewmen sitting half a round not taking APC, hoping
+      to get tank. Staff can enable/disable lock if needed.
+  - tweaks: Changed admin messages when someone cryos. They will now show only for
+      non-PFC humans, will include their job and how much time has passed since they
+      joined the game. Person putting someone in cryopod will also be shown.
+  - tweaks: Despawn timer for ghosted humans in cryopods is reduced from 10 to 2 minutes.
+  - bugfix: Fixed bug when despawning in cryopod not always freed the job slot.
+  Waltermeldron:
+  - bugfix: Fixed click delay breaking at midnight.
+2020-09-12:
+  Neth:
+  - rscadd: Removed some folders
+  - tweak: Removed some more tools no one used.
+2020-09-13:
+  Waltermeldron:
+  - tweak: Increased agent's tranquilizer stamina damage.
+2020-09-14:
+  NethIafin:
+  - rscadd: Added Xenonid sprites as default hostile sprites.
+  Vampmare:
+  - bugfix: Fixed being able to duplicate barbed wire from fences. They no longer
+      drop wire.
+  Waltermeldron:
+  - bugfix: Fixed stunprod sprite
+2020-09-15:
+  TobiNerd:
+  - bugfix: Nitroglycerin recipe no longer results in potassium hydroxide.
+  - maptweak: Expanded two-tile chokepoints on LV and Big Red to 3-4 tiles. Tank remains
+      unable to enter areas it is not meant to due to low ceilings.
+  - bugfix: Fixed Big Red podlocks sometimes layering below objects. They now use
+      the updated podlock sprites.
+  - bugfix: Fixed Big Red podlocks not having control buttons.
+  - bugfix: Fixed Prison Station's crashed ship podlocks' layering issue, same as
+      above.
+  Vicacrov:
+  - bugfix: Fixed cyborg recharge stations being undestroyable. They are now called
+      robot recharge stations.
+  - tweak: The xeno special structures (core, pylon, pool, etc.) no longer get destroyed
+      on the dropship, during hijack.
+2020-09-16:
+  Vicacrov:
+  - rscdel: Suxamorycin was removed from the game.
+  - tweak: The special PMC medic's suxamorycin hypospray was swapped with a chloral
+      hydrate one.
+2020-09-17:
+  Vampmare:
+  - tweak: Changed SO poplocks, there's now always 1 and an additional one is added
+      for every 40 humans. Also reduced the pop required for Second Synth from 140->120.
+  - tweak: Split the Communication Console into Groundside Operations console and
+      Almayer Control console. The Groundside Operations has comms, tactical map and
+      a simple version of overwatch added. Almayer Control handles DEFCON, alert level,
+      ship announcements, ERT, distress and SD.
+  - tweak: CO tablet can now only do announcements and DEFCON.
+  Vicacrov:
+  - bugfix: Fixed the Solaris Ridge podlocks being see-through.
+  - bugfix: Fixed the Solaris Ridge Virology entrance not being at least 3 wides tile,
+      as other chokes on this map.
+  - bugfix: Fixed the space tile on Solaris Ridge's Lambda entrance.
+  - maptweak: Replaced the Solaris Ridge Virology nightmare insert's plastic floor
+      with regular flooring.
+  - bugfix: Fixed the Requisitions pad not accepting manifests and not giving money
+      for them.
+  alardun:
+  - bugfix: The Turing now waits when it has no energy, rather than doing the operation
+      anyway.
+  ghostsheet:
+  - tweak: HPR has its magazine auto-ejector disabled by default.
+  - tweak: Smartgun has its magazine auto-ejector enabled by default.
+2020-09-18:
+  Vampmare:
+  - tweak: CO tablet now has Award Medals and Start Evacuation again.
+  - tweak: Signature on announcements is now cursive. Ship announcement is also signed.
+  - bugfix: Ground Operations simple overwatch should now correctly count the marines
+      and display who's counted.
+  - bugfix: Splints should now function correctly with pain. You get pain, if your
+      limb is not broken but splinted. Pain is reduced if you splint a broken limb.
+      Taking the splint off should remove the reduction or the pain.
+2020-09-19:
+  Jeser:
+  - maptweak: Replaced Overwatch console in Command APC with Groundside Operations
+      Console.
+  Waltermeldron:
+  - bugfix: Fixed the gitlab link in the AdminHelp menu.
+2020-09-20:
+  Benbot16:
+  - bugfix: Fixes a window merged into an airlock on Trijent.
+  Carlarc:
+  - bugfix: Lunge is on Xeno-Primary-Action-One and Punch is on Xeno-Primary-Action-Two
+      now, like the HUD buttons imply.
+  Vampmare:
+  - rscadd: Added Priest Robes, Worker Overalls and Bomber Jacket to the Synth Snowflake
+      Vendor. Sprites by Bongosz.
+  - tweak: Worker Joe uniform updated by Bongosz.
+  alardun:
+  - bugfix: The bonemending properties no longer instantly repairs the limb once the
+      knitting start. It was supposed to have a delay, but it was set to a negative
+      value.
+  - bugfix: The above means that the system meant to prevent bones under attack from
+      knitting is once again active.
+  - tweak: 'Bonemending now works unsplinted at level 6 and above, rather than 11.
+      If a bone start knitting before a splint is applied, it will take significantly
+      longer to knit, even if a splint is applied afterward. '
+  - bugfix: Thwei now once again mends unsplinted bones, albeit slower.
+  - bugfix: Regulating now work as intended and prevents overdosis on the attached
+      reagent.
+  - bugfix: Thwei now gives some DEFCON when scanned via the Advanced XRF Scanner.
+  - bugfix: Thwei no longer gives more research credits if scanned more than one time.
+  - tweak: The DNA desintegrating message about 20000$ being sent to the Almayer is
+      now true. Those may be found in the DEFCON assets.
+  - tweak: Hypometabolism is now a flat 35% duration increase per level.
+  - tweak: Hypermetabolism is now a flat 25% metabolism increase per level. On most
+      chemical, that was already the case.
+  optimisticdude:
+  - rscadd: 'Added machete and fireaxe as circular saw substitutes for amputation
+      or rib opening. Machete has a 75% success rate, fireaxe has a 60% success rate. '
+  - tweak: 'Welding tool has been buffed to have equal success rate to the lighter,
+      from 25% to 50%. '
+2020-09-21:
+  Vampmare:
+  - tweak: Added full-auto to smartgun. You switch it on by toggling burst mode.
+  - tweak: 'Ported updated Asset Cache from TG: https://github.com/tgstation/tgstation/tree/master/code/modules/asset_cache.'
+  Waltermeldron:
+  - bugfix: Time tracking has been fixed. Playtimes have been reset.
+  - tweak: Humans can no longer be tossed 7 tiles. Range has been reduced to 4 tiles.
+  - tweak: You must be carrying someone or have them in a chokehold to throw someone
+      now.
+  ghostsheet:
+  - imageadd: Added new red hunger icon to replace the old grey hunger icon (to reduce
+      confusion).
+2020-09-22:
+  Firartix:
+  - bugfix: designators only target on-map atoms to avoid footlazing by clicking inventory
+  Triiodine:
+  - rscadd: Added a new map to rotation, Kutjevo Refinery.
+  - bugfix: Fixed shutters with 0 density on initialization from blocking vision.
+  - imageadd: landmark specific icons for hive, queen, and monkey spawns.
+  Vampmare:
+  - bugfix: Fixed humans being unrevivable.
+  - bugfix: Fixed zoom not cancelling on movement.
+  alardun:
+  - bugfix: It is no longer possible to remove a vial out of the XRF just as it begins
+      printing, corrupting the paper.
+  - bugfix: Lockdown shutter removed from Ordnance Workshop. It was controlled by
+      Research.
+  - bugfix: Research Door Button now works.
+  - bugfix: Catalyst properties are no longer removed upon a successful relation when
+      it is the reference property.
+  - bugfix: While combining properties, properties in front of the actual combo no
+      longer add a portion of their level to the combo property.
+  - tweak: Boosting and Cryometabolizing now gives the proper bonus per level (it
+      was effectively double)
+  - rscadd: Added exponential falloff mode. Explosives that uses it can have a tighter
+      kill zone without losing too much in the inner part of their explosion, or having
+      insane radius.
+  - tweak: HEDP grenade now use exponential falloff mode. Values subject to changes,
+      but essentially it loses a tile of killing power (100/75/50/25 => 100/75/25)
+  ghostsheet:
+  - bugfix: Removed invisible platforms in Briefing.
+  sg2002:
+  - bugfix: Bipod on HPR now correctly increases the firing speed when deployed.
+  spookydonut:
+  - tweak: Fixed problems detected by the SpacemanDMM suite and enabled the full functionality
+      of the dm langserver VS Code plugin
+  - tweak: Added SpacemanDMM suite dreamchecker to gitlab continuous integration (CI)
+2020-09-23:
+  John:
+  - bugfix: Fixed Sorokyne Jungle and Ice walls being destructible.
+  - bugfix: Actually put Kutjevo Refinery into rotation, whoops!
+  - bugfix: Replaces the CORSAT placeholder link for Kutjevo Refinery handheld maps
+      with one of Kutjevo.
+  Vampmare:
+  - bugfix: Fixed medal not spawning on CO tablet. Fixed CO tablet being unable to
+      call evac.
+2020-09-24:
+  Benbot16:
+  - bugfix: Fixes XN-99 Napalm flames being passed an invalid reagent, resulting in
+      them neither generating light or igniting mobs travelling over them
+  - tweak: Makes XN-99 Napalm's flames more circular in shape
+  - tweak: Makes the flames generated a bit more circular in shape
+  Bundeswehr:
+  - tweak: Lowered HPR and M39 firing sounds by 10 dB.
+  Carlarc:
+  - bugfix: Fixed bug where Jab had no macro, sorry Boxers!
+  - tweak: Unfortunately this means lunge and punch needed to be reshuffled, so Punch
+      is now Xeno-Primary-Action-One, and Lunge is Xeno-Primary-Action-Two.
+  - tweak: Most ways to get the M240 will now include an underbarrel extinguisher
+      with it.
+  - tweak: Underbarrel extinguisher is now the HME-12 underbarrel extinguisher
+  Segrain:
+  - bugfix: Plants in hydroponics trays now properly progress through visual stages
+      of growth.
+  - tweak: Customising chemicals in synthesis simulator now lists all properties in
+      the new chemical's name.
+  - bugfix: Fixed a rare issue with synthesis simulator refusing to correctly make
+      a new custom chemical.
+  - bugfix: CMO's terminal now can properly unpublish published documents.
+  Vicacrov:
+  - maptweak: All ultra-reinforced windows now break upon hijack crashing.
+  - maptweak: Added missing podlocks and emergency shutters to CIC.
+  - maptweak: The ultra-reinforced windows in CIC, since they break, were given podlocks
+      for lockdown.
+  - rscadd: Added an automated, precise bioscan for both sides when only one human
+      or xeno is left. It occurs immediately after the last-but-one human or xeno
+      dies.
+  - rscadd: Added a message for the last living human, notifying them that they are
+      the last player (similar to the xeno one).
+  Waltermeldron:
+  - bugfix: (Hive Wars) Fixed one hive getting all the xenos because they got their
+      spawnpool up first.
+  - tweak: (Hive Wars) Added a 5 minute Queen timer. Xenos can no longer instantly
+      get a Queen after one dies.
+  - rscadd: Xenomorph aging is now determined by your playtime as a caste.
+  - tweak: Backend changes on how your xeno playtime is calculated.
+  - bugfix: Fixed msay, hivemind and other various channels not working on goonchat.
+  alardun:
+  - bugfix: Removed a Runtime Error added by "Catalyst properties are no longer removed
+      upon a successful relation when it is the reference property."
+  - tweak: The rare, legendary and anomalous penalty that is applied on relating a
+      property is now applied when the reference has those trait, rather than the
+      target. Anomalous affect its both way, since they are meant to be difficult
+      to change.
+  callunaborealis:
+  - tweak: Added the Magazine Pouch as an option under Pouches in the ColMarTech Automated
+      Marine Equipment Rack
+  - tweak: Added the Large Magazine Pouch as an option costing 15 points in the ColMarTech
+      Automated Marine Equipment Rack, ColMarTech Pilot Officer Equipment Rack and
+      ColMarTech Vehicle Crewman Equipment Rack
+  - tweak: Added the Large Magazine Pouch as an option costing 10 points under Supplies
+      in the ColMarTech Intelligence Officer Gear Rack
+  naut:
+  - tweak: Reagent containers now only splash their contents on the floor or a mob
+      on harm intent.
+  spookydonut:
+  - tweak: Replaces some spawn() usage with varset callback timers
+  - tweak: Renamed Dispose() to Destroy()
+  - tweak: Fixed new warnings from dreamchecker about iterators
+  - tweak: Changed subsystems to use definition macros
+  - tweak: Removed btime.dll
+  - tweak: Added SHOULD_CALL_PARENT lint to /datum/proc/Dispose() and fixed offending
+      cases
+  - tweak: Added SHOULD_CALL_PARENT lint to /atom/proc/Initialize() and fixed offending
+      cases
+2020-09-25:
+  Triiodine:
+  - bugfix: Hull windows will no longer break open into space upon Hijack.
+2020-09-26:
+  Jeser:
+  - bugfix: Fixed binoculars exploit.
+  Vicacrov:
+  - tweak: Changed all computers to be passable, except for the ones with big sprites
+      (arcade machine, crew monitoring console, dropship computers, etc.)
+  Waltermeldron:
+  - tweak: The view statistics menu now shows your playtime instead of your 6 month
+      old outdated statistics.
+2020-09-27:
+  Firartix:
+  - bugfix: cryo/hypersleep now correctly removes from overwatch/squad
+  Fourkhan:
+  - tweak: Reduced Crusher's slash damage by 5
+  - tweak: Removed AoE slow from Crusher's slashes.
+  Frozentsbgg:
+  - tweak: Fixed Spacejam Ticket to display correct memorial date
+  Spartanbobby:
+  - rscadd: Adds Type 80 Bayonet,lucky strike and emerald green cigerette packets
+      to custom loadout for 4 points, 1 point and 1 point
+  Waltermeldron:
+  - rscadd: Tiers will now show up in the playtime menu when you unlock them.
+  alardun:
+  - bugfix: The DEFCON value for Analyze Chem now shows the correct percentage.
+  - bugfix: Runner can no longer keep its zoom when mutating to a strain.
+  - bugfix: Dismantling girders now gives the correct amount of metal. (#19 corypaulson123)
+  - bugfix: Full-auto can no longer remain stuck after toggling full-auto off. (#4
+      sargantmuffinman101)
+  callunaborealis:
+  - bugfix: Synthetics occupying a robot recharge station when destroyed are now ejected
+      instead of being destroyed too.
+  ghostsheet:
+  - bugfix: Tricordrazine autoinjector now has the correct volume.
+  naut:
+  - soundadd: Replaced the existing suppressor fire .ogg's with two new firing noises.
+  - tweak: Renamed old suppressor firing noises to 'old' names.
+  - soundadd: Ports over several sounds from Baystation12.
+  - soundadd: Match, lighter, and zippo lighter now have activation noises.
+  - tweak: Changed Zippo lighter's description to "A fancy steel Zippo lighter. Ignite
+      in style."
+  - soundadd: Toolbox, first-aid kit and surgical tray now use a 'toolbox' opening
+      noise.
+  - soundadd: Added popping sound when opening a pill bottle.
+  - tweak: Changed MRE box and MRE meal opening sounds.
+2020-09-28:
+  Vampmare:
+  - bugfix: People getting aimed at no longer get deleted. Thanks to spookydonut for
+      catching it.
+  Waltermeldron:
+  - bugfix: Queens will now properly age when they spawn in
+2020-09-29:
+  Carlarc:
+  - tweak: Facepaints can now be selected as starting items in the custom loadout.
+  Jeser:
+  - experiment: Big backend changes to hardpoints. Nothing should change gameplay
+      wise for now. All categories of hardpoints now support passive buffs, active
+      abilities, armor resistances changes and gun behaviours.
+  - rscadd: Added backend support for modules, activatable by vehicle driver.
+  - bugfix: Fixed OD still working with treads broken and missing.
+  RavingManiac:
+  - rscadd: Added squad markings to the hangar for hangar briefings.
+  Sir:
+  - tweak: Added two small pockets to the synth's bomber jacket, waistcoat and overalls.
+  - tweak: Chef apron can now hold knives just like the chef outfit.
+  Triiodine:
+  - maptweak: 'Kutjevo: Made the LZ more vehicle friendly.'
+  - maptweak: 'Kutjevo: Added more armor vests for survivors littered about the map.'
+  - maptweak: 'Kutjevo: Added Bad Blood spawn markers.'
+  - maptweak: 'Kutjevo: Added some extra DEFCON spawn markers for science items.'
+  - maptweak: 'Kutjevo: Removed an excess APC in the hydroelectric dam.'
+  alardun:
+  - rscadd: Admins can now flag players as cultists without fumbling with presets
+      for 2 minutes.
+  - tweak: 'Combat Boots vendored by shipside Military staff will now vend the variant
+      loaded with a M5 Bayonet. Civilian staff is excluded. '
+  ghostsheet:
+  - bugfix: The Underbarrel extinguisher now plays sound correctly.
+  spookydonut:
+  - bugfix: Fixes railings in reqs looking weird
+  - bugfix: Fixes all the bad atom inits that ssatoms detects locally
+  - tweak: Updated StonedMC
+2020-09-30:
+  Carlarc:
+  - rscadd: 'Being healed by a warden praetorian or queen now jitters the healed xenomorph
+      and shows a blue, bold message in chat. '
+  - rscadd: 'Jitter duration is dependant on the kind of healing: Shielding is 1 second,
+      rejuvenating is 2 seconds, and warden or queen healing is 3 seconds of jitter,
+      pay attention marines!'
+  Vampmare:
+  - bugfix: 'Fixed colourless blood. '
+  - bugfix: Changed wall connections and pipe connections to properly use Initialize.
+  spookydonut:
+  - tweak: Made ssdefcon pausable
+  - tweak: Removed a lot of string typepaths

@@ -9,10 +9,6 @@
 		blinded = 1
 		silent = 0
 	else //ALIVE. LIGHTS ARE ON
-		//updatehealth() // moved to Life()
-
-		recalculate_move_delay = TRUE
-
 		if(health <= HEALTH_THRESHOLD_DEAD || (species.has_organ["brain"] && !has_brain()))
 			death(last_damage_data)
 			blinded = 1
@@ -138,7 +134,7 @@
 			drowsyness = max(0,drowsyness - 2)
 			eye_blurry = max(2, eye_blurry)
 			if(drowsyness > 10 && prob(5))
-				sleeping += 1
+				sleeping++
 				KnockOut(5)
 
 		confused = max(0, confused - 1)

@@ -3,14 +3,15 @@
 /obj/structure/machinery/cryo_cell
 	name = "cryo cell"
 	icon = 'icons/obj/structures/machinery/cryogenics2.dmi'
-	icon_state = "cell-off"
+	icon_state = "cell"
 	density = 0
 	anchored = 1.0
 	layer = BELOW_OBJ_LAYER
 
 	var/temperature = 0
-
-	var/on = 0
+	var/autoeject = FALSE
+	var/release_notice = FALSE
+	var/on = FALSE
 	use_power = 1
 	idle_power_usage = 20
 	active_power_usage = 200
@@ -22,6 +23,11 @@
 	. = ..()
 	start_processing()
 
+/obj/structure/machinery/cryo_cell/Destroy()
+	QDEL_NULL(beaker)
+	. = ..()
+
+
 /obj/structure/machinery/cryo_cell/process()
 	if(!on)
 		updateUsrDialog()
@@ -31,112 +37,112 @@
 		if(occupant.stat != DEAD)
 			process_occupant()
 		else
-			go_out()
+			go_out(TRUE, TRUE) //Whether auto-eject is on or not, we don't permit literal deadbeats to hang around.
+			playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
+			visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("\The [src] pings: Patient is dead!")]")
 
 	updateUsrDialog()
-	return 1
+	return TRUE
 
 /obj/structure/machinery/cryo_cell/allow_drop()
-	return 0
+	return FALSE
 
-/obj/structure/machinery/cryo_cell/cryo_cell/relaymove(mob/user)
+/obj/structure/machinery/cryo_cell/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE))
 		return
 	go_out()
 
 /obj/structure/machinery/cryo_cell/attack_hand(mob/user)
-	ui_interact(user)
+	tgui_interact(user)
 
- /**
-  * The ui_interact proc is used to open and update Nano UIs
-  * If ui_interact is not used then the UI will not update correctly
-  * ui_interact is currently defined for /atom/movable (which is inherited by /obj and /mob)
-  *
-  * @param user /mob The mob who is interacting with this ui
-  * @param ui_key string A string key to use for this ui. Allows for multiple unique uis on one obj/mob (defaut value "main")
-  * @param ui /datum/nanoui This parameter is passed by the nanoui process() proc when updating an open ui
-  *
-  * @return nothing
-  */
-/obj/structure/machinery/cryo_cell/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	if(user == occupant || user.stat)
-		return
+/obj/structure/machinery/cryo_cell/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_DISABLED
+	if(user == occupant)
+		return UI_CLOSE //can't use it from inside!
 
-	// this is the data which will be sent to the ui
-	var/data[0]
+
+/obj/structure/machinery/cryo_cell/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Cryo", name)
+		ui.open()
+
+/obj/structure/machinery/cryo_cell/ui_data(mob/user)
+	var/list/data = list()
 	data["isOperating"] = on
-	data["hasOccupant"] = occupant ? 1 : 0
+	data["hasOccupant"] = occupant ? TRUE : FALSE
+	data["autoEject"] = autoeject
+	data["notify"] = release_notice
 
-	var/occupantData[0]
-	if (occupant)
-		occupantData["name"] = occupant.name
-		occupantData["stat"] = occupant.stat
-		occupantData["health"] = occupant.health
-		occupantData["maxHealth"] = occupant.maxHealth
-		occupantData["minHealth"] = HEALTH_THRESHOLD_DEAD
-		occupantData["bruteLoss"] = occupant.getBruteLoss()
-		occupantData["oxyLoss"] = occupant.getOxyLoss()
-		occupantData["toxLoss"] = occupant.getToxLoss()
-		occupantData["fireLoss"] = occupant.getFireLoss()
-		occupantData["bodyTemperature"] = occupant.bodytemperature
-	data["occupant"] = occupantData;
+	data["occupant"] = list()
+	if(occupant)
+		var/mob/living/mob_occupant = occupant
+		data["occupant"]["name"] = mob_occupant.name
+		switch(mob_occupant.stat)
+			if(CONSCIOUS)
+				data["occupant"]["stat"] = "Conscious"
+				data["occupant"]["statstate"] = "good"
+			if(UNCONSCIOUS)
+				data["occupant"]["stat"] = "Unconscious"
+				data["occupant"]["statstate"] = "average"
+			if(DEAD)
+				data["occupant"]["stat"] = "Dead"
+				data["occupant"]["statstate"] = "bad"
+		data["occupant"]["health"] = round(mob_occupant.health, 1)
+		data["occupant"]["maxHealth"] = mob_occupant.maxHealth
+		data["occupant"]["minHealth"] = HEALTH_THRESHOLD_DEAD
+		data["occupant"]["bruteLoss"] = round(mob_occupant.getBruteLoss(), 1)
+		data["occupant"]["oxyLoss"] = round(mob_occupant.getOxyLoss(), 1)
+		data["occupant"]["toxLoss"] = round(mob_occupant.getToxLoss(), 1)
+		data["occupant"]["fireLoss"] = round(mob_occupant.getFireLoss(), 1)
+		data["occupant"]["bodyTemperature"] = round(mob_occupant.bodytemperature, 1)
+		if(mob_occupant.bodytemperature < 255)
+			data["occupant"]["temperaturestatus"] = "good"
+		else if(mob_occupant.bodytemperature < T0C)
+			data["occupant"]["temperaturestatus"] = "average"
+		else
+			data["occupant"]["temperaturestatus"] = "bad"
 
 	data["cellTemperature"] = round(temperature)
-	data["cellTemperatureStatus"] = "good"
-	if(temperature > T0C) // if greater than 273.15 kelvin (0 celcius)
-		data["cellTemperatureStatus"] = "bad"
-	else if(temperature > 225)
-		data["cellTemperatureStatus"] = "average"
 
-	data["isBeakerLoaded"] = beaker ? 1 : 0
+	data["isBeakerLoaded"] = beaker ? TRUE : FALSE
+	var/beakerContents = list()
+	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
+		for(var/datum/reagent/R in beaker.reagents.reagent_list)
+			beakerContents += list(list("name" = R.name, "volume" = R.volume))
+	data["beakerContents"] = beakerContents
+	return data
 
-	data["beakerLabel"] = null
-	data["beakerVolume"] = 0
-	if(beaker)
-		data["beakerLabel"] = beaker.label_text ? beaker.label_text : null
-		if (beaker.reagents && beaker.reagents.reagent_list.len)
-			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				data["beakerVolume"] += R.volume
-
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "cryo.tmpl", "Cryo Cell Control System", 520, 410)
-		// when the ui is first opened this is the data it will use
-		ui.set_initial_data(data)
-		// open the new ui window
-		ui.open()
-		// auto update every Master Controller tick
-		ui.set_auto_update(1)
-
-/obj/structure/machinery/cryo_cell/Topic(href, href_list)
-	if(usr == occupant)
-		return 0 // don't update UIs attached to this object
-
-	if(..())
-		return 0 // don't update UIs attached to this object
-
-	if(href_list["switchOn"])
-		on = 1
-		update_icon()
-
-	if(href_list["switchOff"])
-		on = 0
-		update_icon()
-
-	if(href_list["ejectBeaker"])
-		if(beaker)
-			beaker.forceMove(get_step(loc, SOUTH))
-			beaker = null
-
-	if(href_list["ejectOccupant"])
-		if(!occupant)
-			return // don't update UIs attached to this object
-		go_out()
-
-	return 1 // update UIs attached to this object
+/obj/structure/machinery/cryo_cell/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("power")
+			on = !on
+			update_icon()
+			. = TRUE
+		if("eject")
+			if(!occupant)
+				return
+			go_out()
+			. = TRUE
+		if("autoeject")
+			autoeject = !autoeject
+			. = TRUE
+		if("ejectbeaker")
+			if(beaker)
+				beaker.forceMove(get_step(loc, dir))
+				if(Adjacent(usr))
+					usr.put_in_hands(beaker)
+				beaker = null
+				. = TRUE
+		if("notice")
+			release_notice = !release_notice
+			. = TRUE
+	updateUsrDialog()
 
 /obj/structure/machinery/cryo_cell/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/reagent_container/glass))
@@ -154,7 +160,7 @@
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
 			reagentnames += ";[R.name]"
 
-		msg_admin_niche("[key_name(user)] put a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).", 1)
+		msg_admin_niche("[key_name(user)] put \a [beaker] into \the [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).", 1)
 
 		if(user.drop_inv_item_to_loc(W, src))
 			user.visible_message("[user] adds \a [W] to \the [src]!", "You add \a [W] to \the [src]!")
@@ -170,13 +176,8 @@
 
 
 /obj/structure/machinery/cryo_cell/update_icon()
-	if(on)
-		if(occupant)
-			icon_state = "cell-occupied"
-			return
-		icon_state = "cell-on"
-		return
-	icon_state = "cell-off"
+	icon_state = initial(icon_state)
+	icon_state = "[icon_state]-[on ? "on" : "off"]-[occupant ? "occupied" : "empty"]"
 
 /obj/structure/machinery/cryo_cell/proc/process_occupant()
 	if(occupant)
@@ -195,7 +196,7 @@
 
 			//severe damage should heal waaay slower without proper chemicals
 			if(occupant.bodytemperature < 225)
-				if (occupant.getToxLoss())
+				if(occupant.getToxLoss())
 					occupant.apply_damage(max(-1, -20/occupant.getToxLoss()), TOX)
 				var/heal_brute = occupant.getBruteLoss() ? min(1, 20/occupant.getBruteLoss()) : 0
 				var/heal_fire = occupant.getFireLoss() ? min(1, 20/occupant.getFireLoss()) : 0
@@ -206,55 +207,68 @@
 		if(beaker && !has_cryo_medicine)
 			beaker.reagents.trans_to(occupant, 1, 10)
 			beaker.reagents.reaction(occupant)
-		if(occupant.health >= 100)
+		if(!occupant.getBruteLoss(TRUE) && !occupant.getFireLoss(TRUE) && !occupant.getCloneLoss() && autoeject) //release the patient automatically when brute and burn are handled on non-robotic limbs
 			display_message("external wounds are")
-			go_out()
+			go_out(TRUE)
+			return
+		if(occupant.health >= 100 && autoeject)
+			display_message("external wounds are")
+			go_out(TRUE)
+			return
 
-/obj/structure/machinery/cryo_cell/proc/go_out()
-	if(!( occupant ))
+/obj/structure/machinery/cryo_cell/proc/go_out(auto_eject = null, dead = null)
+	if(!(occupant))
 		return
-	if (occupant.client)
+	if(occupant.client)
 		occupant.client.eye = occupant.client.mob
 		occupant.client.perspective = MOB_PERSPECTIVE
 	switch(dir)
-		if(1)
+		if(NORTH)
 			occupant.forceMove(get_step(loc, NORTH))
-		if(4)
+		if(EAST)
 			occupant.forceMove(get_step(loc, EAST))
-		if(8)
+		if(WEST)
 			occupant.forceMove(get_step(loc, WEST))
 		else
 			occupant.forceMove(get_step(loc, SOUTH))
-	if (occupant.bodytemperature < 261 && occupant.bodytemperature >= 70)
+	if(occupant.bodytemperature < 261 && occupant.bodytemperature >= 70)
 		occupant.bodytemperature = 261
 		occupant.recalculate_move_delay = TRUE
 	occupant = null
+	if(auto_eject) //Turn off and announce if auto-ejected because patient is recovered or dead.
+		on = FALSE
+		if(release_notice) //If auto-release notices are on as it should be, let the doctors know what's up
+			playsound(src.loc, 'sound/machines/ping.ogg', 100, 14)
+			var/reason = "Reason for release:</b> Patient recovery."
+			if(dead)
+				reason = "<b>Reason for release:</b> Patient death."
+			ai_silent_announcement("Patient [occupant] has been automatically released from \the [src] at: [get_area(occupant)]. [reason]", MED_FREQ)
 	update_use_power(1)
 	update_icon()
 	return
 
 /obj/structure/machinery/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
-	if (inoperable())
+	if(inoperable())
 		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
 		return
-	if (!istype(M))
+	if(!istype(M) || isXeno(M))
 		to_chat(usr, SPAN_DANGER("<B>The cryo cell cannot handle such a lifeform!</B>"))
 		return
-	if (occupant)
+	if(occupant)
 		to_chat(usr, SPAN_DANGER("<B>The cryo cell is already occupied!</B>"))
 		return
-	if (M.abiotic())
+	if(M.abiotic())
 		to_chat(usr, SPAN_DANGER("Subject may not have abiotic items on."))
 		return
 	if(do_after(usr, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(usr, SPAN_NOTICE("You move [M.name] inside the cryo cell."))
 		M.forceMove(src)
 		if(M.health >= -100 && (M.health <= 0 || M.sleeping))
-			to_chat(M, SPAN_NOTICE(" <b>You feel cold liquid surround you. Your skin starts to freeze up.</b>"))
+			to_chat(M, SPAN_NOTICE("<b>You feel cold liquid surround you. Your skin starts to freeze up.</b>"))
 		occupant = M
 		update_use_power(2)
 		update_icon()
-		return 1
+		return TRUE
 
 /obj/structure/machinery/cryo_cell/proc/display_message(msg)
 	playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
@@ -265,10 +279,10 @@
 	set category = "Object"
 	set src in oview(1)
 	if(usr == occupant)//If the user is inside the tube...
-		if (usr.stat == 2)//and he's not dead....
+		if(usr.stat == 2)//and he's not dead....
 			return
 
-		if (alert(usr, "Would you like to activate the ejection sequence of the cryo cell? Healing may be in progress.", "Confirm", "Yes", "No") == "Yes")
+		if(alert(usr, "Would you like to activate the ejection sequence of the cryo cell? Healing may be in progress.", "Confirm", "Yes", "No") == "Yes")
 			to_chat(usr, SPAN_NOTICE("Cryo cell release sequence activated. This will take thirty seconds."))
 			visible_message(SPAN_WARNING ("The cryo cell's tank starts draining as its ejection lights blare!"))
 			sleep(300)
@@ -276,7 +290,7 @@
 				return
 			go_out()//and release him from the eternal prison.
 		else
-			if (usr.stat != 0)
+			if(usr.stat != 0)
 				return
 			go_out()
 	return
@@ -285,7 +299,7 @@
 	set name = "Move Inside"
 	set category = "Object"
 	set src in oview(1)
-	if (usr.stat != 0)
+	if(usr.stat != CONSCIOUS)
 		return
 	put_mob(usr)
 	return

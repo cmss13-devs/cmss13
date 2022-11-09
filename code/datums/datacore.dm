@@ -205,9 +205,10 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 
 		var/list/jobs_to_check = ROLES_CIC + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_POLICE + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES
 		for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+			if(is_admin_level(H.z))
+				continue
 			if(H.job in jobs_to_check)
 				manifest_inject(H)
-		return
 
 /obj/effect/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat)
 	var/datum/data/record/foundrecord
@@ -256,8 +257,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	G.fields["m_stat"]		= "Stable"
 	G.fields["sex"]			= H.gender
 	G.fields["species"]		= H.get_species()
-	G.fields["home_system"]	= H.home_system
-	G.fields["citizenship"]	= H.citizenship
+	G.fields["origin"]		= H.origin
 	G.fields["faction"]		= H.personal_faction
 	G.fields["mob_faction"]	= H.faction
 	G.fields["religion"]	= H.religion
@@ -314,8 +314,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	L.fields["sex"]			= H.gender
 	L.fields["b_type"]		= H.b_type
 	L.fields["species"]		= H.get_species()
-	L.fields["home_system"]	= H.home_system
-	L.fields["citizenship"]	= H.citizenship
+	L.fields["origin"]		= H.origin
 	L.fields["faction"]		= H.personal_faction
 	L.fields["religion"]	= H.religion
 	L.fields["ref"]			= WEAKREF(H)

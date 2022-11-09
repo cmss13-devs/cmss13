@@ -150,6 +150,9 @@ TICKLAG 0.5
 ## Uncomment this to ban use of ToR
 #TOR_BAN
 
+## Uncomment this to have country flags pop up in OOC alongside names if the user has the pref turned on (uses IP-API)
+#OOC_COUNTRY_FLAGS
+
 ## Comment this out to disable automuting
 #AUTOMUTE_ON
 
@@ -219,6 +222,9 @@ AUTOOOCMUTE
 # commissioned by Neth
 #LOBBY_ART_IMAGES lobbyart13
 #LOBBY_ART_AUTHORS Substance20
+# Art given by Sennen/Rasta
+#LOBBY_ART_IMAGES lobbyart14
+#LOBBY_ART_AUTHORS Sennen
 
 ## System command that invokes youtube-dl, used by Play Internet Sound.
 ## You can install youtube-dl with

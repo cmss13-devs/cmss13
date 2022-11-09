@@ -84,13 +84,13 @@
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.
 
-/obj/item/ammo_magazine/smg/mp7
+/obj/item/ammo_magazine/smg/mp27
 	name = "\improper MP27 magazine (4.6x30mm)"
 	desc = "A 4.6mm magazine for the MP27."
 	default_ammo = /datum/ammo/bullet/smg/ap
 	caliber = "4.6x30mm"
 	icon_state = "mp7"
-	gun_type = /obj/item/weapon/gun/smg/mp7
+	gun_type = /obj/item/weapon/gun/smg/mp27
 	max_rounds = 30 //Also comes in 20 and 40.
 
 
@@ -114,17 +114,32 @@
 //-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.
 
-/obj/item/ammo_magazine/smg/uzi //Based on the Uzi.
+/obj/item/ammo_magazine/smg/mac15 //Based on the Uzi.
 	name = "\improper MAC-15 magazine (9mm)"
 	desc = "A magazine for the MAC-15."
 	caliber = "9mm"
 	icon_state = "mac15"
 	max_rounds = 32 //Can also be 20, 25, 40, and 50.
-	gun_type = /obj/item/weapon/gun/smg/uzi
+	gun_type = /obj/item/weapon/gun/smg/mac15
 
-/obj/item/ammo_magazine/smg/uzi/extended
+/obj/item/ammo_magazine/smg/mac15/extended
 	name = "\improper MAC-15 extended magazine (9mm)"
 	max_rounds = 50
+
+//-------------------------------------------------------
+// the real UZI
+
+/obj/item/ammo_magazine/smg/uzi
+	name = "\improper UZI magazine (9x21mm)"
+	desc = "A magazine for the UZI. Seems pretty small, huh? Anything larger caused feeding errors."
+	caliber = "9x12mm"
+	icon_state = "uzi"
+	max_rounds = 25
+	gun_type = /obj/item/weapon/gun/smg/uzi
+
+/obj/item/ammo_magazine/smg/mac15/extended
+	name = "\improper UZI extended magazine (9x21mm)"
+	max_rounds = 32
 
 
 //-------------------------------------------------------

@@ -1,53 +1,27 @@
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-/datum/asset/simple/tgui_common
-	keep_local_name = TRUE
-	assets = list(
-		"tgui-common.bundle.js" = 'tgui/public/tgui-common.bundle.js',
-	)
-
 /datum/asset/simple/tgui
 	keep_local_name = TRUE
 	assets = list(
-		"tgui.bundle.js" = 'tgui/public/tgui.bundle.js',
-		"tgui.bundle.css" = 'tgui/public/tgui.bundle.css',
+		"tgui.bundle.js" = file("tgui/public/tgui.bundle.js"),
+		"tgui.bundle.css" = file("tgui/public/tgui.bundle.css"),
 	)
 
 /datum/asset/simple/tgui_panel
 	keep_local_name = TRUE
 	assets = list(
-		"tgui-panel.bundle.js" = 'tgui/public/tgui-panel.bundle.js',
-		"tgui-panel.bundle.css" = 'tgui/public/tgui-panel.bundle.css',
+		"tgui-panel.bundle.js" = file("tgui/public/tgui-panel.bundle.js"),
+		"tgui-panel.bundle.css" = file("tgui/public/tgui-panel.bundle.css"),
 	)
 
 /datum/asset/simple/fontawesome
 	keep_local_name = TRUE
 	assets = list(
-		"fa-regular-400.eot"  = 'html/font-awesome/webfonts/fa-regular-400.eot',
-		"fa-regular-400.woff" = 'html/font-awesome/webfonts/fa-regular-400.woff',
-		"fa-solid-900.eot"    = 'html/font-awesome/webfonts/fa-solid-900.eot',
-		"fa-solid-900.woff"   = 'html/font-awesome/webfonts/fa-solid-900.woff',
-		"font-awesome.css" = 'html/font-awesome/css/all.min.css'
-	)
-
-/datum/asset/simple/changelog
-	keep_local_name = TRUE
-	assets = list(
-		"88x31.png" = 'html/88x31.png',
-		"bug-minus.png" = 'html/bug-minus.png',
-		"cross-circle.png" = 'html/cross-circle.png',
-		"hard-hat-exclamation.png" = 'html/hard-hat-exclamation.png',
-		"image-minus.png" = 'html/image-minus.png',
-		"image-plus.png" = 'html/image-plus.png',
-		"music-minus.png" = 'html/music-minus.png',
-		"music-plus.png" = 'html/music-plus.png',
-		"tick-circle.png" = 'html/tick-circle.png',
-		"wrench-screwdriver.png" = 'html/wrench-screwdriver.png',
-		"spell-check.png" = 'html/spell-check.png',
-		"burn-exclamation.png" = 'html/burn-exclamation.png',
-		"chevron.png" = 'html/chevron.png',
-		"chevron-expand.png" = 'html/chevron-expand.png',
-		"changelog.css" = 'html/changelog.css'
+		"fa-regular-400.ttf" = 'html/font-awesome/webfonts/fa-regular-400.ttf',
+		"fa-solid-900.ttf" = 'html/font-awesome/webfonts/fa-solid-900.ttf',
+		"fa-v4compatibility.ttf" = 'html/font-awesome/webfonts/fa-v4compatibility.ttf',
+		"font-awesome.css" = 'html/font-awesome/css/all.min.css',
+		"v4shim.css" = 'html/font-awesome/css/v4-shims.min.css',
 	)
 
 /datum/asset/simple/common
@@ -97,6 +71,10 @@
 			SSassets.transport.register_asset(filename, fcopy_rsc(path + filename))
 
 /datum/asset/nanoui/send(client, uncommon, var/send_only_temp = FALSE)
+	if(!client)
+		log_debug("Warning! Tried to send nanoui data with a null client! (asset_list_items.dm line 76)")
+		return
+
 	if(!islist(uncommon))
 		uncommon = list(uncommon)
 
@@ -114,6 +92,9 @@
 	uncommon_dirs = list()
 
 /datum/asset/nanoui/weapons/send(client)
+	if(!client)
+		log_debug("Warning! Tried to send nanoui weapon data with a null client! (asset_list_items.dm line 93)")
+		return
 	SSassets.transport.send_assets(client, common)
 
 
@@ -146,6 +127,32 @@
 			assets[filename] = fcopy_rsc(path + filename)
 	..()
 
+/datum/asset/simple/dynamic_icons
+	keep_local_name = TRUE
+	assets = list()
+
+/datum/asset/simple/dynamic_icons/proc/update(var/filename)
+	var/list/filenames = list(filename)
+	if(islist(filename))
+		filenames = filename
+	for(var/asset in filenames)
+		if(!(asset in assets))
+			var/key = copytext(asset, 7)
+			assets += list(key)
+			var/datum/asset_cache_item/ACI = SSassets.cache[key]
+			if(ACI)
+				SSassets.transport.preload += list(key=ACI)
+
+/datum/asset/simple/dynamic_icons/proc/register_single(var/asset_name)
+	var/datum/asset_cache_item/ACI = SSassets.transport.register_asset(asset_name, assets[asset_name])
+	if (!ACI)
+		log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
+		return
+	if (legacy)
+		ACI.legacy = legacy
+	if (keep_local_name)
+		ACI.keep_local_name = keep_local_name
+	assets[asset_name] = ACI
 
 /datum/asset/simple/other
 	keep_local_name = TRUE
@@ -187,7 +194,7 @@
 	for (var/k in GLOB.resin_constructions_list)
 		var/datum/resin_construction/RC = k
 
-		var/icon_file = 'icons/mob/hud/actions.dmi'
+		var/icon_file = 'icons/mob/hud/actions_xeno.dmi'
 		var/icon_state = initial(RC.construction_name)
 		var/icon_name = replacetext(icon_state, " ", "-")
 
@@ -248,3 +255,83 @@
 		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
 		Insert("[icon_name]_big", iconBig)
 	return ..()
+
+/datum/asset/spritesheet/vending_products
+	name = "vending"
+
+/datum/asset/spritesheet/vending_products/register()
+	for (var/k in GLOB.vending_products)
+		var/atom/item = k
+		var/icon_file = initial(item.icon)
+		var/icon_state = initial(item.icon_state)
+		var/icon/I
+
+		if (!ispath(item, /atom))
+			world.log << "not atom! [item]"
+			continue
+
+		if (sprites[icon_file])
+			continue
+
+		if(icon_state in icon_states(icon_file))
+			I = icon(icon_file, icon_state, SOUTH)
+			var/c = initial(item.color)
+			if (!isnull(c) && c != "#FFFFFF")
+				I.Blend(initial(c), ICON_MULTIPLY)
+		else
+			if (ispath(k, /obj/effect/essentials_set))
+				var/obj/effect/essentials_set/es_set = new k()
+				var/list/spawned_list = es_set.spawned_gear_list
+				if(LAZYLEN(spawned_list))
+					var/obj/item/target = spawned_list[1]
+					icon_file = initial(target.icon)
+					icon_state = initial(target.icon_state)
+					var/target_obj = new target()
+					I = getFlatIcon(target_obj)
+					qdel(target_obj)
+			else
+				item = new k()
+				I = icon(item.icon, item.icon_state, SOUTH)
+				qdel(item)
+		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
+
+		Insert(imgid, I)
+	return ..()
+
+
+/datum/asset/spritesheet/choose_fruit
+	name = "choosefruit"
+
+/datum/asset/spritesheet/choose_fruit/register()
+	var/icon_file = 'icons/mob/hostiles/fruits.dmi'
+	var/icon_states_list = icon_states(icon_file)
+	for(var/obj/effect/alien/resin/fruit/fruit as anything in typesof(/obj/effect/alien/resin/fruit))
+		var/icon_state = initial(fruit.mature_icon_state)
+		var/icon_name = replacetext(icon_state, " ", "-")
+
+		if (sprites[icon_name])
+			continue
+
+		if(!(icon_state in icon_states_list))
+			var/icon_states_string
+			for (var/an_icon_state in icon_states_list)
+				if (!icon_states_string)
+					icon_states_string = "[json_encode(an_icon_state)](\ref[an_icon_state])"
+				else
+					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"
+			stack_trace("[fruit] does not have a valid icon state, icon=[icon_file], icon_state=[json_encode(icon_state)](\ref[icon_state]), icon_states=[icon_states_string]")
+			icon_file = 'icons/turf/floors/floors.dmi'
+			icon_state = ""
+
+		var/icon/iconNormal = icon(icon_file, icon_state, SOUTH)
+		Insert(icon_name, iconNormal)
+
+		var/icon/iconBig = icon(icon_file, icon_state, SOUTH)
+		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
+		Insert("[icon_name]_big", iconBig)
+	return ..()
+
+/datum/asset/simple/orbit
+	assets = list(
+		"ghost.png" = 'html/images/ghost.png'
+	)

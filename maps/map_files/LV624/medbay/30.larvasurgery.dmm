@@ -36,7 +36,6 @@
 "an" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
-
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor{
@@ -51,11 +50,11 @@
 	pixel_y = 3
 	},
 /obj/item/clothing/mask/surgical,
-
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/item/storage/belt/medical/full,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteblue";
@@ -68,7 +67,6 @@
 	freerange = 1;
 	frequency = 1469;
 	name = "General Listening Channel";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/open/floor{
@@ -102,6 +100,7 @@
 /area/lv624/lazarus/medbay)
 "at" = (
 /obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "whitebluefull";
 	tag = "icon-whitebluefull"
@@ -183,7 +182,6 @@
 	freerange = 1;
 	frequency = 1469;
 	name = "General Listening Channel";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/open/floor{
@@ -274,10 +272,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bs" = (
-/obj/item/tool/kitchen/utensil/fork{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/tool/kitchen/utensil/fork,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -315,7 +310,6 @@
 	pixel_y = 4
 	},
 /obj/item/tool/pen,
-
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -381,7 +375,6 @@
 "qr" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/spray,
-
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
@@ -406,7 +399,7 @@
 	pixel_y = 30;
 	start_charge = 0
 	},
-/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	dir = 1;
@@ -424,8 +417,8 @@
 /area/lv624/lazarus/medbay)
 "us" = (
 /obj/structure/filingcabinet,
-
 /obj/structure/machinery/light,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue"
@@ -482,6 +475,7 @@
 /area/lv624/lazarus/medbay)
 "CZ" = (
 /obj/item/bedsheet/medical,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -492,7 +486,6 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteblue";
@@ -508,7 +501,6 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
-
 /turf/open/floor{
 	icon_state = "whitebluefull";
 	tag = "icon-whitebluefull"
@@ -523,10 +515,10 @@
 /area/lv624/ground/colony/south_medbay_road)
 "Gu" = (
 /obj/structure/closet/wardrobe,
-
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whiteblue"
@@ -534,10 +526,7 @@
 /area/lv624/lazarus/medbay)
 "JK" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/drinks/cans/waterbottle{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/tool/kitchen/utensil/knife{
 	pixel_x = 8;
 	pixel_y = 6
@@ -584,8 +573,7 @@
 /area/lv624/lazarus/medbay)
 "QG" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
-	pixel_x = 2;
-	pixel_y = 0
+	pixel_x = 2
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -593,7 +581,6 @@
 /area/lv624/lazarus/medbay)
 "QQ" = (
 /obj/structure/surface/table,
-
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
@@ -608,7 +595,7 @@
 /area/lv624/lazarus/medbay)
 "Vq" = (
 /obj/structure/surface/table,
-
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue"

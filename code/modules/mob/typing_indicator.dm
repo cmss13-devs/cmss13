@@ -1,31 +1,34 @@
 #define TYPING_INDICATOR_LIFETIME 30 * 10	//grace period after which typing indicator disappears regardless of text in chatbar
 
 mob/var/hud_typing = 0 //set when typing in an input window instead of chatline
-mob/var/typing
 mob/var/last_typed
 mob/var/last_typed_time
 
 var/global/image/typing_indicator
+var/global/list/image/typed_typing_indicators
 
-/mob/proc/set_typing_indicator(var/state)
+/mob/proc/set_typing_indicator(var/state, var/type)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	if(!typing_indicator)
-		typing_indicator = image('icons/mob/hud/talk.dmi',null,"typing")
+		typing_indicator = image('icons/mob/hud/talk.dmi', null, "typing")
 		typing_indicator.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
+	if(type && !LAZYISIN(typed_typing_indicators, type))
+		LAZYINITLIST(typed_typing_indicators)
+		var/image/I = image('icons/mob/hud/talk.dmi', null, type)
+		I.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
+		typed_typing_indicators[type] = I
+
+	var/image/indicator = type ? typed_typing_indicators[type] : typing_indicator
 
 	if(client)
 		if(client.prefs.toggles_chat & SHOW_TYPING)
-			overlays -= typing_indicator
+			overlays -= indicator
 		else
 			if(state)
-				if(!typing)
-					if(stat == CONSCIOUS) overlays += typing_indicator
-					typing = 1
+				if(stat == CONSCIOUS) overlays += indicator
 			else
-				if(typing)
-					overlays -= typing_indicator
-					typing = 0
+				overlays -= indicator
 			return state
 
 /mob/verb/say_wrapper()

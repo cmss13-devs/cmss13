@@ -38,8 +38,6 @@
 	//visual layer of hardpoint when on vehicle
 	var/hdpt_layer = HDPT_LAYER_WHEELS
 
-	// Whether or not to make a muzzle flash when the gun is fired
-	var/use_muzzle_flash = FALSE
 	// List of offsets for where to place the muzzle flash for each direction
 	var/list/muzzle_flash_pos = list(
 		"1" = list(0, 0),
@@ -85,6 +83,11 @@
 	// The firing arc of this hardpoint
 	var/firing_arc = 0	//in degrees. 0 skips whole arc of fire check
 
+	// Muzzleflash
+	var/use_muzzle_flash = FALSE
+	var/muzzleflash_icon_state = "muzzle_flash"
+	var/underlayer_north_muzzleflash = FALSE
+	var/angle_muzzleflash = TRUE
 
 	//------AMMUNITION VARS----------
 
@@ -116,6 +119,15 @@
 	QDEL_NULL(ammo)
 
 	return ..()
+
+/obj/item/hardpoint/ex_act(severity)
+	if(owner || indestructible)
+		return
+
+	health = max(0, health - severity / 2)
+	if(health <= 0)
+		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
+		qdel(src)
 
 /// Populate traits_to_give in this proc
 /obj/item/hardpoint/proc/set_bullet_traits()
@@ -324,13 +336,14 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	return
 
 //examining a hardpoint
-/obj/item/hardpoint/examine(mob/user, var/integrity_only = FALSE)
+/obj/item/hardpoint/get_examine_text(mob/user, var/integrity_only = FALSE)
 	if(!integrity_only)
-		..()
+		return ..()
+	. = ..()
 	if(health <= 0)
-		to_chat(user, "It's busted!")
-	else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)))
-		to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
+		. += "It's busted!"
+	else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)))
+		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader
 /obj/item/hardpoint/proc/reload(var/mob/user)
@@ -385,7 +398,8 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 
 /obj/item/hardpoint/attackby(var/obj/item/O, var/mob/user)
 	if(iswelder(O))
-		if(user.action_busy)
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 		handle_repair(O, user)
 		return
@@ -406,47 +420,66 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	if(!WT.isOn())
 		to_chat(user, SPAN_WARNING("You need to light your [WT] first."))
 		return
-	if(WT.get_fuel() < 10)
+	if(WT.get_fuel() < 1)
 		to_chat(user, SPAN_WARNING("You need to refill \the [WT] first."))
 		return
 	if(being_repaired)
 		to_chat(user, SPAN_WARNING("\The [src] is already being repaired."))
 		return
+	if(user.action_busy)
+		return
 
-	var/needed_time = 1
+	//instead of making timer for repairing 10% of HP longer, we adjust how much % of max HP we fix per 1 second.
+	//Using original 10% per welding as reference
+	var/amount_fixed = 5	//in %
 	switch(slot)
-		if(HDPT_TURRET)
-			needed_time = 6
-		if(HDPT_PRIMARY)
-			needed_time = 5
-		if(HDPT_SECONDARY)
-			needed_time = 4
-		if(HDPT_SUPPORT)
-			needed_time = 4
 		if(HDPT_ARMOR)
-			needed_time = 7
+			amount_fixed = 1.4
+		if(HDPT_TURRET)
+			amount_fixed = 1.6
+		if(HDPT_PRIMARY)
+			amount_fixed = 2
+		if(HDPT_SECONDARY)
+			amount_fixed = 2.5
+		if(HDPT_SUPPORT)
+			amount_fixed = 2.5
 		if(HDPT_TREADS)
-			needed_time = 3
+			amount_fixed = 3.3
 
 	being_repaired = TRUE
-	playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
+
+	//skill level adjustment: instead of reducing welding time, we increase amount fixed.
+	//Uses skill duration multiplier proc in order to not create a bicycle.
+	var/amount_fixed_adjustment = user.get_skill_duration_multiplier(SKILL_ENGINEER)
 	user.visible_message(SPAN_NOTICE("[user] starts repairing \the [name]."), SPAN_NOTICE("You start repairing \the [name]."))
-	if(!do_after(user, 1 SECONDS * needed_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = needed_time))
-		user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]."))
-		being_repaired = FALSE
-		return
+	playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
+	while(WT.get_fuel() > 1)
+		if(!(world.time % 3))
+			playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			break
 
-	//we check for adjacency only if we are not installed. This is for turret for now
-	if(!owner && !Adjacent(user))
-		user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]."))
-		being_repaired = FALSE
-		return
+		//we check for adjacency only if we are not installed. This is for turret for now
+		if(!owner && !Adjacent(user))
+			break
 
-	WT.remove_fuel(needed_time, user)
-	health += round(0.1 * initial(health))
-	health = Clamp(health, 0, initial(health))
-	user.visible_message(SPAN_NOTICE("[user] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. Integrity now at [round(get_integrity_percent())]%."))
+		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+			break
+
+		WT.remove_fuel(1, user)
+
+		//get_skill_duration_multiplier returns a multiplier, so we delete by it
+		health += initial(health)/100 * (amount_fixed / amount_fixed_adjustment)
+		if(health >= initial(health))
+			health = initial(health)
+			user.visible_message(SPAN_NOTICE("[user] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
+			being_repaired = FALSE
+			return
+		to_chat(user, SPAN_NOTICE("The integrity of \the [src] is now at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
+
 	being_repaired = FALSE
+	user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(round(get_integrity_percent()))]%."))
 	return
 
 //determines whether something is in firing arc of a hardpoint
@@ -514,7 +547,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	P.fire_at(A, user, src, P.ammo.max_range, P.ammo.shell_speed)
 
 	if(use_muzzle_flash)
-		muzzle_flash(Get_Angle(owner, A))
+		muzzle_flash(Get_Angle(origin_turf, A))
 
 	ammo.current_rounds--
 
@@ -579,8 +612,13 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 			muzzle_flash_y += H.px_offsets["[H.loc.dir]"][2]
 
 	var/image_layer = owner.layer + 0.1
+	if(underlayer_north_muzzleflash && dir == NORTH)
+		image_layer = owner.layer - 0.1
 
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
+	if(!angle_muzzleflash)
+		angle = dir2angle(dir)
+
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,muzzleflash_icon_state,image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
 	rotate.Turn(angle)
 	rotate.Translate(muzzle_flash_x, muzzle_flash_y)
@@ -606,3 +644,6 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 // debug proc
 /obj/item/hardpoint/proc/set_mf_use_trt(var/use)
 	use_mz_trt_offsets = use
+
+obj/item/hardpoint/get_applying_acid_time()
+	return 10 SECONDS //you are not supposed to be able to easily combat-melt irreplaceable things.

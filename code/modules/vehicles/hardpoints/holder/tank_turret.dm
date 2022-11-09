@@ -92,15 +92,18 @@
 /obj/item/hardpoint/holder/tank_turret/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
-		if(PC.linked_powerloader)
-			if(!PC.loaded)
-				forceMove(PC.linked_powerloader)
-				PC.loaded = src
-				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-				PC.update_icon()
-				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
-				update_icon()
+		if(!PC.linked_powerloader)
+			qdel(PC)
+			return TRUE
 
+		if(health < 1)
+			visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered!"))
+			qdel(src)
+			return TRUE
+
+		PC.grab_object(user, src, "vehicle_module", 'sound/machines/hydraulics_2.ogg')
+		update_icon()
+		return TRUE
 	..()
 
 /obj/item/hardpoint/holder/tank_turret/get_hardpoint_info()

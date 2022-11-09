@@ -135,11 +135,6 @@ menu "menu"
 		category = "&Help"
 		saved-params = "is-checked"
 	elem
-		name = "&Hotkeys"
-		command = "hotkeys-help"
-		category = "&Help"
-		saved-params = "is-checked"
-	elem
 		name = "Volume"
 		command = ""
 		saved-params = "is-checked"
@@ -171,7 +166,7 @@ window "mainwindow"
 		title = "CM-SS13 - USS Almayer"
 		is-maximized = true
 		statusbar = false
-		icon = 'icons\\ss13_64.png'
+		icon = 'icons\\taskbar\\gml_distress.png'
 		macro = "default"
 		menu = "menu"
 	elem "split"
@@ -264,7 +259,7 @@ window "mapwindow"
 		text-color = none
 		is-default = true
 		saved-params = "zoom;letterbox;zoom-mode"
-		style = ".center { text-align: center; } .langchat { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; } .langchat_yell { font-weight: bold; font-size: 10px; } .langchat_bolded { font-weight: bold; font-size: 8px; } .langchat_announce { font-weight: bold; font-size: 12px; } .langchat_bolditalicbig {font-weight: bold; font-size: 24px; font-style: italic;}"
+		style = ".center { text-align: center; } .langchat { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; } .langchat_small { font-size: 6px; } .langchat_yell { font-weight: bold; font-size: 10px; } .langchat_bolded { font-weight: bold; font-size: 8px; } .langchat_announce { font-weight: bold; font-size: 12px; } .langchat_bolditalicbig {font-weight: bold; font-size: 24px; font-style: italic; } .langchat_italic {font-style: italic; }"
 
 window "outputwindow"
 	elem "outputwindow"

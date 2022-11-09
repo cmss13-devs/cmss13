@@ -101,14 +101,20 @@
 					P.trigger()
 				else
 					return
+
 			chemical_data.update_credits(2)
 			chemical_identified_list[S.id] = S.objective_value
+			SSobjectives.statistics["chemicals_completed"]++
+			SSobjectives.statistics["chemicals_total_points_earned"] += S.objective_value
+
+			var/datum/techtree/tree = GET_TREE(TREE_MARINE)
+			tree.add_points(S.objective_value)
 	else
 		report.name = "Analysis of ERROR"
 		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
 		report.info += "<B>Result:</B><BR>Analysis failed for sample #[sample_number].<BR><BR>\n"
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
-	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the A-XRF Scanner.<BR>The USS Almayer, [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
+	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the A-XRF Scanner.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 
 /datum/reagent/proc/print_report(var/turf/loc, var/obj/item/paper/research_report/report, var/admin_spawned = FALSE, var/sample_number = 0)
 	if(!report)

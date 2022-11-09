@@ -29,18 +29,21 @@
 			to_chat(user, SPAN_WARNING("[src] already has a [O.name] attached."))
 			return
 
-		for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
-			if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-				user.visible_message(SPAN_WARNING("[user] starts attaching the vehicle clamp to [src]."), SPAN_NOTICE("You start attaching the vehicle clamp to [src]."))
-				if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_BUILD))
-					user.visible_message(SPAN_WARNING("[user] stops attaching the vehicle clamp to [src]."), SPAN_WARNING("You stop attaching the vehicle clamp to [src]."))
-					return
-				user.visible_message(SPAN_WARNING("[user] attaches the vehicle clamp to [src]."), SPAN_NOTICE("You attach the vehicle clamp to [src] and lock the mechanism with your ID."))
-				attach_clamp(O, user)
-			else
-				to_chat(user, SPAN_WARNING("You don't know how to use [O] with [src]."))
+		//only can clamp friendly vehicles
+		if(!get_target_lock(user.faction_group))
+			to_chat(user, SPAN_WARNING("You can attach clamp to vehicles of your faction only."))
 			return
-		to_chat(user, SPAN_WARNING("There are no treads to attach [O.name] to."))
+
+		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+			to_chat(user, SPAN_WARNING("You don't know how to use \the [O.name]."))
+			return
+
+		for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
+			user.visible_message(SPAN_WARNING("[user] attaches the vehicle clamp to \the [src]."), SPAN_NOTICE("You attach the vehicle clamp to \the [src] and lock the mechanism."))
+			attach_clamp(O, user)
+			return
+
+		to_chat(user, SPAN_WARNING("There are no treads or wheels to attach \the [O.name] to."))
 		return
 
 	// Are we trying to remove a vehicle clamp?
@@ -50,12 +53,12 @@
 
 		user.visible_message(SPAN_WARNING("[user] starts removing the vehicle clamp from [src]."), SPAN_NOTICE("You start removing the vehicle clamp from [src]."))
 		if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
 				return
-			user.visible_message(SPAN_WARNING("[user] skillfully removes the vehicle clamp from [src]."), SPAN_NOTICE("You unlock the mechanism with your ID and skillfully remove the vehicle clamp from [src]."))
+			user.visible_message(SPAN_WARNING("[user] swiftly removes the vehicle clamp from [src]."), SPAN_NOTICE("You skillfully unlock the mechanism and swiftly remove the vehicle clamp from [src]."))
 		else
-			if(!do_after(user, 30 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
 				return
 			user.visible_message(SPAN_WARNING("[user] clumsily removes the vehicle clamp from [src]."), SPAN_NOTICE("You manage to unlock vehicle clamp and take it off [src]."))
@@ -63,41 +66,66 @@
 		return
 
 	//try to fit something in vehicle without getting in ourselves
-	if(istype(O, /obj/item/grab) && user.a_intent == INTENT_HELP && ishuman(user))
-		var/mob_x = user.x - src.x
-		var/mob_y = user.y - src.y
-		for(var/entrance in entrances)
-			var/entrance_coord = entrances[entrance]
-			if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
-				var/obj/item/grab/G = O
-				var/atom/dragged_atom = G.grabbed_thing
-				if(istype(/obj/item/explosive/grenade, dragged_atom))
-					var/obj/item/explosive/grenade/nade = dragged_atom
-					if(!nade.active)		//very creative, but no.
-						break
-				handle_fitting_pulled_atom(user, dragged_atom)
-				return
-		to_chat(user, SPAN_INFO("In order to try fitting pulled object into vehicle without getting in, stand at the entrance and click on vehicle with pulled object on [SPAN_HELPFUL("HELP")] intent."))
+	if(istype(O, /obj/item/grab) && ishuman(user))	//only humans are allowed to fit dragged stuff inside
+		if(user.a_intent == INTENT_HELP)
+			var/mob_x = user.x - src.x
+			var/mob_y = user.y - src.y
+			for(var/entrance in entrances)
+				var/entrance_coord = entrances[entrance]
+				if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
+					var/obj/item/grab/G = O
+					var/atom/dragged_atom = G.grabbed_thing
+					if(istype(/obj/item/explosive/grenade, dragged_atom))
+						var/obj/item/explosive/grenade/nade = dragged_atom
+						if(!nade.active)		//very creative, but no.
+							break
+
+					handle_fitting_pulled_atom(user, dragged_atom)
+					return
+		else
+			to_chat(user, SPAN_INFO("Use [SPAN_HELPFUL("HELP")] intent to put a pulled object or creature into the vehicle without getting inside yourself."))
+			handle_player_entrance(user)
+			return
 
 	if(istype(O, /obj/item/device/motiondetector))
+		if(!interior)
+			to_chat(user, SPAN_WARNING("It appears that [O] cannot establish borders of space inside \the [src]. (PLEASE, TELL A DEV, SOMETHING BROKE)"))
+			return
+		var/obj/item/device/motiondetector/MD = O
 
-		user.visible_message(SPAN_WARNING("[user] fumbles with \the [O] aimed at \the [src]."), SPAN_NOTICE("You start recalibrating \the [O] to scan \the [src]'s interior for abnormal activity."))
-		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			user.visible_message(SPAN_WARNING("[user] stops fumbling with \the [O]."), SPAN_WARNING("You stop trying to scan \the [src]'s interior."))
+		if(!MD.active)
+			to_chat(user, SPAN_WARNING("\The [MD] must be activated in order to scan \the [src]'s interior."))
+			return
+
+		user.visible_message(SPAN_WARNING("[user] fumbles with \the [MD] aimed at \the [src]."), SPAN_NOTICE("You start recalibrating \the [MD] to scan \the [src]'s interior for signatures."))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			user.visible_message(SPAN_WARNING("[user] stops fumbling with \the [MD]."), SPAN_WARNING("You stop trying to scan \the [src]'s interior."))
 			return
 		if(get_dist(src, user) > 2)
 			to_chat(user, SPAN_WARNING("You are too far from \the [src]."))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] finishes fumbling with \the [O]."), SPAN_NOTICE("You finish recalibrating \the [O] and scanning \the [src]'s interior for abnormal activity."))
+		user.visible_message(SPAN_WARNING("[user] finishes fumbling with \the [MD]."), SPAN_NOTICE("You finish recalibrating \the [MD] and scanning \the [src]'s interior for signatures."))
 
 		interior.update_passenger_count()
-		var/obj/item/device/motiondetector/MD = O
-		if(interior.xenos_taken_slots)
+
+		var/humans_inside = 0
+		if(length(interior.role_reserved_slots))
+			for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
+				humans_inside += RRS.taken
+		humans_inside += interior.passengers_taken_slots
+
+		var/msg = ""
+		if(humans_inside || interior.xenos_taken_slots)
+			msg += "\The [MD] shows [humans_inside ? ("approximately [SPAN_HELPFUL(humans_inside)] signatures") : "no signatures"] of unknown affiliation\
+			[interior.xenos_taken_slots ? (" and about [SPAN_HELPFUL(interior.xenos_taken_slots)] abnormal signatures") : ""] inside of \the [src]."
 			MD.show_blip(user, src)
 			playsound(user, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, FALSE, 7, 2)
+			to_chat(user, SPAN_NOTICE(msg))
 		else
 			playsound(user, 'sound/items/detector.ogg', 60, FALSE, 7, 2)
+			to_chat(user, SPAN_WARNING("\The [MD] can't pick up any signatures, so the vehicle should be empty. In theory."))
+		return
 
 	if(user.a_intent != INTENT_HARM)
 		handle_player_entrance(user)
@@ -107,13 +135,19 @@
 
 // Frame repairs on the vehicle itself
 /obj/vehicle/multitile/proc/handle_repairs(var/obj/item/O, var/mob/user)
+	if(user.action_busy)
+		return
 	var/max_hp = initial(health)
-	if(health == max_hp)
+	if(health > max_hp)
+		health = max_hp
 		to_chat(user, SPAN_NOTICE("The hull is fully intact."))
 		for(var/obj/item/hardpoint/holder/H in hardpoints)
 			if(H.health > 0)
 				if(!iswelder(O))
 					to_chat(user, SPAN_WARNING("You need welding tool to repair \the [H.name]."))
+					return
+				if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 					return
 				H.handle_repair(O, user)
 				update_icon()
@@ -122,49 +156,64 @@
 				to_chat(user, SPAN_WARNING("[H] is beyond repairs!"))
 				return
 
-	// For health < 75%, the frame needs welderwork
+	var/repair_message = "welding structural struts back in place"
+	var/sound_file = 'sound/items/weldingtool_weld.ogg'
+	var/obj/item/tool/weldingtool/WT
+
+	// For health < 75%, the frame needs welderwork, otherwise wrench
 	if(health < max_hp * 0.75)
 		if(!iswelder(O))
-			to_chat(user, SPAN_NOTICE("The frame is way too busted! Try using a welder."))
+			to_chat(user, SPAN_NOTICE("The frame is way too busted! Try using a [SPAN_HELPFUL("welder")]."))
 			return
 
-		var/obj/item/tool/weldingtool/WT = O
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_NOTICE("You need a more powerful blowtorch!"))
+			return
+
+		WT = O
 		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] begins welding structural struts back in place on \the [src]."), SPAN_NOTICE("You begin welding structural struts back in place on \the [src]."))
-		playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
-
-		if(!do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_WARNING("[user] stops welding on \the [src]."), SPAN_NOTICE("You stop welding on \the [src]."))
-			return
-
-		if(!WT.isOn())
-			return
-
-		user.visible_message(SPAN_WARNING("[user] welds structural struts back in place on \the [src]."), SPAN_NOTICE("You weld structural struts back in place on \the [src]."))
-
-		health = min(max_hp * 0.75, health + max_hp * 0.25)
-	// For health >= 75% tighten some fuckin' bolts or some shit i don't know i'm not a mechanic
 	else
 		if(!HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-			to_chat(user, SPAN_NOTICE("The frame is structurally sound, but there are a lot of loose nuts and bolts. Try using a wrench."))
+			to_chat(user, SPAN_NOTICE("The frame is structurally sound, but there are a lot of loose nuts and bolts. Try using a [SPAN_HELPFUL("wrench")]."))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] begins tightening various nuts and bolts on \the [src]."), SPAN_NOTICE("You begin tightening various nuts and bolts on \the [src]."))
+		repair_message = "tightening various nuts and bolts on"
+		sound_file = 'sound/items/Ratchet.ogg'
 
-		if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|INTERRUPT_CLICK, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_WARNING("[user] stops tightening nuts and bolts on \the [src]."), SPAN_NOTICE("You stop tightening nuts and bolts on \the [src]."))
+	var/amount_fixed_adjustment = user.get_skill_duration_multiplier(SKILL_ENGINEER)
+	user.visible_message(SPAN_WARNING("[user] [repair_message] on \the [src]."), SPAN_NOTICE("You begin [repair_message] on \the [src]."))
+	playsound(get_turf(user), sound_file, 25)
+
+	while(health < max_hp)
+		if(!(world.time % 3))
+			playsound(get_turf(user), sound_file, 25)
+
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			user.visible_message(SPAN_WARNING("[user] stops [repair_message] on \the [src]."), SPAN_NOTICE("You stop [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] finishes tightening nuts and bolts on \the [src]."), SPAN_NOTICE("You finish tightening nuts and bolts on \the [src]."))
+		health += max_hp/100 * (5 / amount_fixed_adjustment)
 
-		health = max_hp
-		if(!luminosity)
-			SetLuminosity(initial(luminosity))
-		toggle_cameras_status(TRUE)
+		if(WT)
+			WT.remove_fuel(1, user)
+			if(WT.get_fuel() < 1)
+				user.visible_message(SPAN_WARNING("[user] stops [repair_message] on \the [src]."), SPAN_NOTICE("You stop [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
+				return
+			if(health >= max_hp * 0.75)
+				user.visible_message(SPAN_WARNING("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. The frame is structurally sound now, but there are a lot of loose nuts and bolts. Try using a [SPAN_HELPFUL("wrench")]."))
+				return
 
+		to_chat(user, SPAN_NOTICE("Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
+
+	health = initial(health)
+	SetLuminosity(initial(luminosity))
+	toggle_cameras_status(TRUE)
 	update_icon()
+	user.visible_message(SPAN_NOTICE("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%. "))
+	return
 
 //Special case for entering the vehicle without using the verb
 /obj/vehicle/multitile/attack_hand(var/mob/user)
@@ -187,7 +236,7 @@
 
 	user.forceMove(middle)
 
-/obj/vehicle/multitile/attack_alien(var/mob/living/carbon/Xenomorph/X, var/dam_bonus)
+/obj/vehicle/multitile/attack_alien(var/mob/living/carbon/Xenomorph/X)
 	// If they're on help intent, attempt to enter the vehicle
 	if(X.a_intent == INTENT_HELP)
 		handle_player_entrance(X)
@@ -202,7 +251,13 @@
 		to_chat(X, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
 		return XENO_NO_DELAY_ACTION
 
-	var/damage = (rand(X.melee_damage_lower, X.melee_damage_upper) + dam_bonus) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
+	var/damage = (X.melee_vehicle_damage + rand(-5,5)) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
+
+	var/damage_mult = 1
+	//Ravs, as designated vehicles fighters do a heckin double damage
+	//Queen, being Queen, does x2 damage to discourage blocking her
+	if(X.caste == XENO_CASTE_RAVAGER || X.caste == XENO_CASTE_QUEEN)
+		damage_mult = 2
 
 	//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 	if(X.frenzy_aura > 0)
@@ -213,21 +268,13 @@
 	//Somehow we will deal no damage on this attack
 	if(!damage)
 		playsound(X.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-		X.animation_attack_on(src)
-		X.visible_message(SPAN_DANGER("\The [X] lunges at [src]!"), \
-		SPAN_DANGER("You lunge at [src]!"))
+		X.visible_message(SPAN_DANGER("\The [X] swipes at \the [src] to no effect!"), \
+		SPAN_DANGER("You swipe at \the [src] to no effect!"))
 		return XENO_ATTACK_ACTION
 
-	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
-	SPAN_DANGER("You slash [src]!"))
+	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"), \
+	SPAN_DANGER("You slash \the [src]!"))
 	playsound(X.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
-
-	var/damage_mult = 1
-	if(X.caste == XENO_CASTE_RAVAGER) //Ravs does a heckin double damage
-		damage_mult = 2
-
-	else if(X.caste == XENO_CASTE_QUEEN) //Queen does 150% damage to discourage blocking her
-		damage_mult = 1.5
 
 	take_damage_type(damage * damage_mult, "slash", X)
 
@@ -243,6 +290,8 @@
 	var/penetration = P.ammo.penetration
 	var/firer = P.firer
 
+	//IFF bullets magically stop themselves short of hitting friendly vehicles,
+	//because both sentries and smartgun users keep trying to shoot through them
 	if(P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
 		return
 
@@ -289,7 +338,7 @@
 			seat = vehicle_seat
 			break
 
-	if(istype(A, /obj/screen) || !seat)
+	if(istype(A, /atom/movable/screen) || !seat)
 		return
 
 	if(seat == VEHICLE_DRIVER)
@@ -373,9 +422,16 @@
 	if(isXeno(M))
 		enter_time = 3 SECONDS
 	else
-		if(door_locked && !allowed(M) && health > 0)
-			to_chat(M, SPAN_DANGER("\The [src] is locked!"))
-			return
+		if(door_locked && health > 0)	//check if lock on and actually works
+			if(ishuman(M))
+				var/mob/living/carbon/human/user = M
+				if(!allowed(user) || !get_target_lock(user.faction_group))	//if we are human, we check access and faction
+					to_chat(user, SPAN_WARNING("\The [src] is locked!"))
+					return
+			else
+				to_chat(M, SPAN_WARNING("\The [src] is locked!"))	//animals are not allowed inside without supervision
+				return
+
 
 	// Only xenos can force their way in without doors, and only when the frame is completely broken
 	if(!entrance_used && health > 0)
@@ -432,16 +488,16 @@
 		if(!success)
 			to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src] and leave [ismob(dragged_atom) ? "them" : "it"] outside."))
 
-/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/M, var/atom/dragged_atom)
-	if(!ishuman(M))
+//try to fit something into the vehicle
+/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/living/carbon/human/user, var/atom/dragged_atom)
+	if(!ishuman(user))
+		return
+	if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
+		to_chat(user, SPAN_WARNING("\The [src] is locked!"))
 		return
 
-	if(health > 0 && door_locked && !allowed(M))
-		to_chat(M, SPAN_DANGER("\The [src] is locked!"))
-		return
-
-	var/mob_x = M.x - src.x
-	var/mob_y = M.y - src.y
+	var/mob_x = user.x - x
+	var/mob_y = user.y - y
 	var/entrance_used = null
 	for(var/entrance in entrances)
 		var/entrance_coord = entrances[entrance]
@@ -449,43 +505,43 @@
 			entrance_used = entrance
 			break
 
-	to_chat(M, SPAN_NOTICE("You start trying to fit [dragged_atom] into \the [src]..."))
-	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	to_chat(user, SPAN_NOTICE("You start trying to fit [dragged_atom] into \the [src]..."))
+	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		return
-	if(mob_x != M.x - src.x || mob_y != M.y - src.y)
+	if(mob_x != user.x - x || mob_y != user.y - y)
 		return
 
 	var/atom/currently_dragged
 
-	if(istype(M.get_inactive_hand(), /obj/item/grab))
-		var/obj/item/grab/G = M.get_inactive_hand()
+	if(istype(user.get_inactive_hand(), /obj/item/grab))
+		var/obj/item/grab/G = user.get_inactive_hand()
 		currently_dragged = G.grabbed_thing
-	else if(istype(M.get_active_hand(), /obj/item/grab))
-		var/obj/item/grab/G = M.get_active_hand()
+	else if(istype(user.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/G = user.get_active_hand()
 		currently_dragged = G.grabbed_thing
 
 	if(currently_dragged != dragged_atom)
-		to_chat(M, SPAN_WARNING("You stop fiting [dragged_atom] inside \the [src]!"))
+		to_chat(user, SPAN_WARNING("You stop fiting [dragged_atom] inside \the [src]!"))
 		return
 
 	var/success = interior.enter(dragged_atom, entrance_used)
 	if(success)
-		to_chat(M, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
 	else
-		to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
 	return
 
 //CLAMP procs, unsafe proc, checks are done before calling it
 /obj/vehicle/multitile/proc/attach_clamp(obj/item/vehicle_clamp/O, mob/user)
 	user.temp_drop_inv_item(O, 0)
-	O.forceMove(src)
 	clamped = TRUE
-	move_delay = 50000
+	move_delay = VEHICLE_SPEED_STATIC
 	next_move = world.time + move_delay
+	qdel(O)
 	update_icon()
 	message_staff("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")
 
-/obj/vehicle/multitile/proc/detach_clamp(mob/user)
+/obj/vehicle/multitile/proc/detach_clamp(var/mob/user)
 	clamped = FALSE
 	move_delay = initial(move_delay)
 
@@ -494,10 +550,11 @@
 		Loco.on_install(src)	//we restore speed respective to wheels/treads if any installed
 
 	next_move = world.time + move_delay
-	for(var/obj/item/vehicle_clamp/TC in src)
-		if(user)
-			TC.forceMove(get_turf(user))
-			message_staff("[key_name(user)] ([user.job]) detached vehicle clamp from [src]")
-		else
-			TC.forceMove(get_turf(src))
+	var/obj/item/vehicle_clamp/O = new(get_turf(src))
+	if(user)
+		O.forceMove(get_turf(user))
+		message_staff("[key_name(user)] ([user.job]) detached vehicle clamp from \the [src]")
+	else
+		O.forceMove(get_turf(src))
+		message_staff("Vehicle clamp was detached from \the [src].")
 	update_icon()

@@ -1,0 +1,354 @@
+2020-01-09:
+  Cakey:
+  - rscadd: Xenomorph Acid Splashback when being damaged will now have a cooldown
+      between each proc. No more acid stacking on multiple hits.
+  - rscadd: Updated Command tablet software with new Apple Inc. version 5.0.
+  - rscadd: The orbital cannon will now disable for 10 minutes after the Queen disables
+      remote control.
+  - tweak: Survivor is now timelocked to 3 hours of squad roles.
+  Foolosopher:
+  - rscadd: Added muffling and reverberation for sounds
+  - rscadd: Dropships, OBs and mortar sounds can be heard even if you get near their
+      range after the sound was first played
+  - soundadd: Added ambience sounds and soundscapes. More to come in the near future
+  - soundadd: Added some new sounds
+  Jeser:
+  - bugfix: Fixed xenos not receiving announcement when Nuclear Fission charge is
+      activated.
+  - rscadd: Added announcement for Yautja about Nuclear Fission charge being activated
+      and deactivated.
+  - rscdel: Removed any ways for Yautja to interact with Nuclear Fission charge.
+  - rscadd: Added verb to create Yautja AI Announcement to admins.
+  - tweak: Changed Nuclear Fission charge nanoUI template. Renamed buttons names to
+      be (hopefully) less confusing.
+  - tweak: Updated autoresponses and added new ones. [#8415]
+  - rscadd: Made it very difficult not to notice being marked for hunt by yautja.
+  - rscadd: Made it very difficult not to notice a C4 being planted on you.
+  - rscadd: Embedded glass shards are now also removed with knife along with shrapnel.
+      [#8205]
+  - rscdel: Removed policing skills from survivors.
+  - rscdel: Removed Flashlight Grip from squad attachments vendor since it is available
+      in Weapons Rack.
+  - tweak: Tweaked the content of the smartgunner Equipment Rack. [#8503]
+  - bugfix: Fixed the bug that made any rocket into HE when you unloaded RPG. [Watermelon914]
+  - tweak: Updated descriptions of RPG rockets to include information about warhead
+      behavior upon hitting target.
+  - rscadd: Choosing a strain will now prompt a confirmation window with strain description.
+  Lengord:
+  - tweak: Changed colony and bio_dome floodlight sprites
+  - imageadd: Added few floodlight sprites for later use
+  - imagedel: Deleted old yellow floodlight sprite
+  Neth:
+  - rscadd: Xeno names are now time locked. You get letters in front of your number
+      from the get-go. Letter+Number combo at the end is unlocked after 24 hours of
+      playing as xeno. Three letter combo in front of the name is unlocked after 124
+      hours of playing as xeno. Both options cannot be used at the same time, so either
+      post-number or three letters infront. The time constraint on three letter name
+      is supposed to be this big, and we expect it to be rare.
+  - rscadd: You do not lose your xeno name if you did not unlock the combo for it
+      and had it before this feature was activated.
+  - rscadd: Mod+ level staff can reset your xeno name or ban you permanently from
+      using anything but XX xeno name. This is reversible and is logged, including
+      name of the staff member who did this.
+  - rscadd: Added chat filtering options to preferences. They won't cover all the
+      things, but should reduce clutter until a better system is introduced.
+  - tweak: Reworked how chat works in the backend. Should work much faster, reducing
+      load from the backend logic.
+  - rscadd: You can now highlight words in your goonchat. There are 5 words you can
+      use, each of them have different color.
+  - tweak: Reworked how NanoUI works in backend. Expect some performance improvements.
+  - tweak: Sentry no longer spams with the sound effect creating a lot of lag.
+  Ranged66:
+  - rscadd: Xenos and humans gibbed by sufficiently large explosions send out bloody
+      shards of bone.
+  - rscadd: Being drunk now numbs (some of) the pain.
+  - tweak: RPG AP/HE rockets gib marines on direct hit.
+  - tweak: Dead xenos of the smaller castes can now be buckled to roller beds.
+  - tweak: Dylovene pills contain 15u instead of 25u.
+  - tweak: The shoulder holster for sidearms can now be found in marine vendors for
+      15 points, and in medic/engi vendors as accessory.
+  - tweak: Corrosive acid gets the name of the thing it's on.
+  - tweak: You can shieldbash riot shields with more weapons now.
+  - tweak: Reduced handcuff breakout-timer to 1 minutes (was 2).
+  - tweak: Manning the M56D Heavy Machine Gun makes you un-bumpable the same way defibbing
+      etc. does.
+  RavingManiac:
+  - tweak: Projectile hit rolls made less convoluted. Projectiles will also only target
+      body parts of the mob they are aimed at. It is no longer possible to lay down
+      a hail of suppressive fire that specifically hits left feet
+  - tweak: Bipods no longer cause wielded slowdown while deployed
+  - rscadd: Creatures will face the object they are pulling.
+  TobiNerd:
+  - bugfix: Calibrated the predator teleporter targeting system to work under the
+      harsh weather of Sorokyne.
+  - experiment: The company has provided a new state of the art machine to the Almayer
+      Research Department, the Synthesis Simulator
+  - rscadd: The Synthesis Simulator uses advanced algorithms to perform simulations
+      of reagent properties, for the purpose of calculating the synthesis required
+      to make a new variant of said chemical. This can be done with all research chemicals
+      AND several default chemicals.
+  - wip: The Synthesis Simulator can currently only work with medicinal properties.
+      Non-medicinal properties to follow.
+  - rscadd: Mixing Synthesized chemical variants with other variants of the same kind
+      or with their original form, will react them back into the original.
+  - rscadd: The Synthesis Simulator runs using a new resource called research credits.
+      Research credits are granted by identifying chemicals and defcon decreasing.
+      More methods are to come.
+  - rscadd: Survivor doctor, survivor scientist and survivor liason now holds special
+      id cards that can bypass clearance level requirements up to level 3, 4 and 5
+      respectively, regardless of defcon status. This can only be done by the actual
+      card holder.
+  - rscadd: Added a research data terminal to the research study. This machine stores
+      XRF scans and synthesis reports, and shows the status of research clearance
+      and credits.
+  - tweak: Research clearance can now be increased using research credits at the research
+      data terminal. You can still use a willing CL as a potential free shortcut though.
+  - tweak: Research clearance is now updated using the research data terminal instead
+      of the XRF.
+  - tweak: Research clearance now starts at level 1.
+  - tweak: The XRF now prints the overdose threshold and potency of properties.
+  - tweak: Research chemicals are now scanable with the HF2.
+  - tweak: Research chemicals can no longer require synthetic blood as a component.
+  - tweak: The chemical report that the scientist survivor holds now contains more
+      data.
+  - tweak: Research containment control consoles now require research access.
+  - tweak: Research laboratory no longer requires chemical access.
+  - bugfix: Chemistry backend received some cleanup. Debugging research chems and
+      reactions should now be more consistent.
+  - bugfix: Fixed the access requirement for the east facing windoor at the research
+      desk.
+  - bugfix: Fixed admin made chemicals having a default overdose threshold of 0.
+  TobiNerd, Retrokinesis and Fourkhan:
+  - maptweak: Added a new map, CORSAT.
+  - rscadd: CORSAT features a lockdown system, which will automatically open after
+      a set time in the round, or by manual override using special keycards found
+      on the station. These keycards trigger pings on the intel scanner.
+  - imageadd: Sprites for CORSAT done by TobiNerd and Triiodine.
+  - soundadd: Sound effect for the CORSAT teleportation platform by Slywater.
+  - maptweak: A special thanks to Forest2001 for assisting with the early development
+      of the map.
+  Vampmare:
+  - tweak: 'Specialist gear is now locked to the owner when they are equipped. Nobody
+      else can equip the gear until the original owner is permadead, then it gets
+      unlocked and locked to the first new person that equips it. '
+  - tweak: Nests are now UNRESISTABLE. Upon being nested, you will be given an option
+      to remain in your body or ghost. If you pick to ghost and is freed from your
+      nest while ghosted, you will be brought back into your body. So the only way
+      to get out of a nest is by someone else unnesting you.
+  - tweak: The time it takes to nest someone has been drastically increased.
+  - tweak: Facehuggers no longer instantly jump from opened eggs.
+  - tweak: Frenzy no longer increases tackle chance.
+  - tweak: Facehugger jump range has been decreased.
+2020-01-12:
+  Neth:
+  - tweak: Eggs can now be planted only in a 15 cell radius around queen in ovipositor.
+      If there is no queen - eggs can be planted whereever. Queen cannot plant her
+      own eggs while not in ovipositor. This has no effect on humans planting eggs
+      in research.
+  - rscadd: Queen can plant eggs while in ovipositor withing 3 tiles range from her.
+  - tweak: You can't plant eggs if you do not belong to any hive.
+  - rscadd: Both queen ovi planting range and egg planting radius for hive can be
+      changed by admins during the game for event purposes.
+  TobiNerd:
+  - tweak: You can now dump contents from basically any storage container, including
+      pill bottles and cigarette packs, directly into the chem grinder by clicking
+      it.
+  Vampmare:
+  - tweak: Added a small windup to hugging someone.
+  - tweak: Synthetics cant be nested anymore.
+  - tweak: Reduced the multiburst average output.
+  - tweak: If there is a Queen alive, nests are now only buildable if the Queen is
+      in Ovipositor and the nest is built within 15 tiles of the Queen. If there is
+      no Queen, its free game as usual.
+2020-01-18:
+  Cakey:
+  - bugfix: Fixed the L42 zero damage falloff (It wasn't working).
+  - rscadd: Mods can now play as Senior Enlisted Advisors.
+  - bugfix: Fixed certain issues that caused player statistics to completely break
+      and no longer track anything.
+  Fourkhan:
+  - bugfix: Smoke effects should now apply much more consistently across the board.
+  - experimental: Damage numbers should be approximately the same.
+  - bugfix: Boiler acid smoke now damages barricades as intended (previously it did
+      nothing).
+  - bugfix: Oppressor Prae smoke now extinguishes mobs more consistently.
+  - tweak: Greatly increased the efficiency of some small components of the combat
+      backend.
+  - tweak: Increased Queen's Neuro Cooldown by 1 second.
+  - tweak: Decreased the max range for Queen's neuro from 8+ to 6 tiles.
+  - tweak: Effectively, this means Queen neuro has 100% hit chance while there are
+      4 or less tiles between the Queen and the Marine, NOT counting the tile the
+      Queen or Marine is standing on.
+  Jeser:
+  - bugfix: Fixed announcements being seen by players in lobby.
+  - bugfix: Fixed dropship hijack announcement not been played.
+  - bugfix: Fixed command announcements being seen by unconscious humans.
+  - bugfix: Fixed Yautja announcements not being seen by observers.
+  - bugfix: ARES standard telecomms announcements will play sound only to humans in
+      Almayer z-level and observers now.
+  - bugfix: Fixed announcements being seen by all factions. Command announcements
+      will be seen only by USCM and PMCs factions from now on.
+  - tweak: Maintenance access changes announcements will use ARES standard telecomms
+      announcements instead of command announcements now. That means they can only
+      be heard on Almayer and only if you have access to Almayer General channel in
+      your headset or you are standing near intercom.
+  - rscadd: 'Added new type of announcement: ARES shipwide announcement. It works
+      like command announcement, but only for humans in Almayer z-level. It also doesn''t
+      rely on Tcomms being powered or having access to Almayer General channel, so
+      all humans on ship will see it. Currently only available for admins.'
+  - rscadd: Added option for admins to choose which faction or hive they want to send
+      announcement to (including All Hives/Factions options), allowing more flexible
+      announcements use during events. Read instructions during making announcement
+      for more info.
+  - rscadd: 'Activated signal flares and red lasers will now receive specific name
+      with fixed ID number that will be visible to PO in their weapons console. For
+      example: Bravo-6 flare (Central Barrens), Charlie-4 laser (East Jungle). If
+      user doesn''t have squad assigned, squad name will be changed to X. [#8594]'
+  - tweak: Tactical binoculars were renamed to Laser Designators. Their description
+      now contains their ID number. Rangefinders and laser designators descriptions
+      have been updated.
+  - rscadd: Ctrl + Clicking rangefinder or laser designator during lasing will stop
+      lasing without looking up from the device.
+  - imageadd: New binoculars and rangefinders/laser designator sprites by Frans_Feiffer.
+      Old binoculars sprite is used for civillian version.
+  - bugfix: Unconscious facehuggers (in manually opened egg or dropped on the ground)
+      now can be stored as Carrier or used to infect hosts directly without delay.
+      They still need time to recover to be able to jump on their own.
+  - rscadd: Ctrl + Clicking eggs as xenomorph will now open egg and put facehugger
+      into your empty hand, provided you can carry facehuggers and have an empty hand.
+  Neth:
+  - bugfix: Fixes larvae burrowing upon bursting when they have active players in
+      them.
+  Ranged66:
+  - rscadd: Added 'switch storage drawing method' functionality to all clothing with
+      storage (armor, labcoats, vests etc!), and webbings or other accessories.
+  RavingManiac:
+  - rscadd: 'New firearm: The Basira-Armstrong rifle, a civilian semi-automatic hunting
+      rifle renown for its light weight and pinpoint accuracy. Comparable to the L42A
+      battle rifle. Replaces the CLF''s SVD in most instances.'
+  - tweak: CLF firearms skill is now 'untrained' for fighters and medics. CLF leaders
+      are gifted with standard firearms training.
+  - bugfix: CLF uniform name fixed.
+  - rscadd: Proximity sensors will now beep on detecting movement, followed by an
+      adjustable 2-10 second delay before triggering.
+  - tweak: Proximity sensors will no longer trigger upon being dropped, thrown or
+      otherwise moved around.
+  - bugfix: Mini-scopes will properly revert gun slowdown when zooming out.
+  - bugfix: Lunge mines should work properly when used on mobs now.
+  TobiNerd:
+  - tweak: On Corsat, mostly everything on the marine side of the lockdown is now
+      glass ceiling. Xeno side is mostly unchanged, but the control modules are now
+      also glass (#8912).
+  - bugfix: 'Corsat canister rooms are no longer protected by pressure shutters (Demetrius
+      Montanez, #8892).'
+  - rscdel: Removed the xeno stunprods that could be found in Corsat, Omega, due to
+      being bugged.
+  Vicacrov:
+  - tweak: Crew manifest - The manifest now automatically updates a person's status
+      to Deceased if they become permadead.
+  - tweak: Chief and Military Police - CMPs and MPs now spawn with a knife in their
+      boots and a universal recorder in their pockets.
+  - tweak: Tank Crewman - The TCs' now spawn with a slightly different loadout, to
+      help newer TCs get started.
+  - tweak: Requisitions - The RO now has a level one policing skill (akin to other
+      officers) and spawns with a flash.
+  - tweak: Requisitions - Humans cannot walk through plastic flaps anymore. Xenomorphs,
+      synthetics, predators, and crabs are not affected by this.
+  - tweak: Vendors - Added zippo lighters to the CIC and the colony cigarette vendors.
+  - bugfix: Vendors - Fixed the hangar's engi-vend access requirements.
+2020-01-19:
+  Jeser:
+  - rscdel: Removed UA 571-C sentry crate from free ASRS crates pool.
+  - bugfix: Fixed M5 RPG showing rocket loaded when it's empty upon examining.
+  - tweak: Squad Smartgunner, Specialist, Leader and Intelligence Officer Automated
+      Closets now have a selection of webbings/holster instead of vending uniform
+      with attached webbing. [#8967]
+  Vicacrov:
+  - tweak: Chemistry - The chemmaster and chem dispenser machines are no longer restricted
+      by IDs, but by having a high enough medical skill. This means that doctor/research
+      survivors can now use chemistry machinery.
+  - bugfix: Requisitions - Fixed the caseless sniper ammo crate containing flak ammo.
+  - bugfix: LV-624 - Fixed the overgrown hydro insert having reinforced windows instead
+      of regular ones.
+  - tweak: Resin door - Made resin doors open and close faster. They stay open for
+      the same duration.
+2020-01-28:
+  Cakey:
+  - tweak: Cutting airlock ID wires will remove access requirements from the airlock.
+  - bugfix: Fixed tank statistics not tracking any explosion-based weapons and kills.
+  - bugfix: Fixed the tank grenade launcher from not tracking kills.
+  Foolosopher:
+  - soundadd: Added new sounds and replaced some old ones
+  - soundadd: Fully added ambient sounds to Big Red and Ice Colony.
+  - rscadd: Gas masks no longer block CPR
+  Jeser:
+  - bugfix: Fixed facehuggers still being able to leap on target while being unconscious
+      in some cases. [Max Deppe]
+  - tweak: Eggs cannot be hidden under corpses anymore.
+  - tweak: Removed delay between opening an egg and a facehugger leaping towards target.
+      That means walking right near egg is a guaranteed facehug now.
+  - bugfix: Fixed eggs not triggering on their own.
+  - bugfix: Fixed exploit with dropping facehugger to instantly hug hosts.
+  - bugfix: Fixed not being able to plant egg in Thunderdome.
+  - bugfix: Fixed exploit that allowed retrieving huggers from eggs through space
+      and time.
+  - bugfix: Made self destruction room rods unslashable.
+  - rscadd: Vending wearable items from Automated clothing Closets and Surplus Uniform
+      Vendors will now automatically equip said items if possible. Includes attaching
+      webbings/holsters to uniform.
+  Lengord:
+  - bugfix: Fixed facehugger sprite under plasteel cade
+  - bugfix: Fixed SU-6 and highpower pistols in belt sprites
+  RavingManiac:
+  - rscadd: The M5 'Night Raider' survival knife is now the M5 'Night Raider' bayonet,
+      and can be mounted on a firearm.
+  TobiNerd:
+  - bugfix: The Turing Dispenser no longer draws upon the void for infinite power.
+      (#9210 Alardun)
+  Triiodine:
+  - imageadd: Redrew (almost) all Marine armors and helmets. Armor is now green by
+      default. Original colors (Teal) can be enabled on specific maps at mapper discretion.
+      Weapons colors will follow in a different update.
+  - imageadd: Standard USCM headgear and headwear is now green by default.
+  - imageadd: Redrew the M11 throwing knife.
+  - imageadd: M10 Medic helmets are now visually distinct.
+  - imageadd: Redrew the armor of the Holy Order of the HEFA Knights, the HEFAdiers.
+  Vampmare:
+  - rscadd: Night Skin has been introduced for windows and chat. This is for the nightowls
+      who stay up late. You can turn it on and off in the preferences under Toggle
+      Window Skin. If you are not using goonchat, all messages will look terrible,
+      so a fair warning. Report if there are any eye-glaring issues with text on night
+      skin.
+  Vicacrov:
+  - tweak: Changelog - Massively updated our changelog's contributor names, coders,
+      maintainers included. Spriters were not included before at all!
+  - rscadd: Intelligence Officer - IOs were given their own weapon vendors in the
+      room where they spawn. They can be accessed by bridge and cargo personnel.
+  - tweak: Intelligence Officer - The computer lab is no longer accessible by regular
+      logistics person. Engineers can still access it. Anyone with bridge access can
+      now access it as well.
+  - bugfix: Intelligence Officer - IOs can now access the computer lab again. The
+      restriction of cargo and squad preparations still remains.
+  - tweak: Airlocks - Secure airlocks (especially the yautja ones) now open faster.
+  - tweak: Yautja - The Mark for Hunt message no longer notifies the prey that they
+      are being hunted. (That's what you get for metaing it, duh!)
+  - tweak: Yautja - The Mark for Hunt can no longer be used on anything but living
+      humans and living xenomorphs.
+  - rscadd: Yautja - The Mark for Hunt verb now notifies every yautja about your chosen
+      prey and your current location.
+  - rscadd: 'Yautja - New verb added: Remove from Hunt. If for any reason you need
+      to turn your attention elsewhere, you can do so now.'
+  - rscadd: Yautja - Butchering the mob, that you marked previously for hunting, will
+      now consume the mark and notify every yautja of your successful hunt.
+  - rscadd: Yautja - When a fellow hunter dies, all yautja will be notified about
+      their death.
+  - rscadd: Yautja - Upon xenomorphs hijacking, all yautja are notified about the
+      end of the hunt.
+  - rscadd: Yautja - A new OOC channel is added for the yautja, called YOOC. Works
+      similarly to MOOC and XOOC, as in only staff members can use it, and only the
+      staff, the observers, and the yautja players see it.
+  - soundadd: Yautja - The yautja bracer now has its own sound effect which can be
+      turned on and off.
+  - bugfix: Preferences - Fixed Background Information and Eye colour appearing twice.
+  - tweak: Requisitions - Removed the cargo access from Intelligence Officers.
+  - bugfix: Requisitions - Requisition Officers now have proper access to squad preps.

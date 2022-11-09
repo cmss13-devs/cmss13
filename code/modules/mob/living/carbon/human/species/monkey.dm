@@ -77,6 +77,10 @@
 	if(prob(1))
 		H.emote(pick("chimper","scratch","jump","roll","tail"))
 
+/datum/species/monkey/handle_on_fire(humanoidmob)
+	. = ..()
+	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))
+
 /datum/species/monkey/yiren
 	name = "Yiren"
 	name_plural = "Yiren"

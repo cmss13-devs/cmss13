@@ -2,10 +2,12 @@
 	name = "OB Ammo"
 	desc = "Purchase orbital bombardment ammo."
 
-	required_points = 5
+	required_points = 10
 	increase_per_purchase = 2
 
 	tier = /datum/tier/two
+
+	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 
 	var/type_to_give
 
@@ -27,8 +29,7 @@
 	desc = "Highly explosive bombardment ammo, to be loaded into the orbital cannon."
 	icon_state = "ob_he"
 
-	announce_name = "Additional OB projectiles - HE"
-	announce_message = "Additional Orbital Bombardment ordnance (HE) have been delivered to Requisitions' ASRS."
+	announce_message = "Additional Orbital Bombardment warheads (HE) have been delivered to Requisitions' ASRS."
 
 	flags = TREE_FLAG_MARINE
 
@@ -39,8 +40,7 @@
 	desc = "Highly explosive bombardment ammo that fragments, to be loaded into the orbital cannon."
 	icon_state = "ob_cluster"
 
-	announce_name = "Additional OB projectiles - Cluster"
-	announce_message = "Additional Orbital Bombardment ordnance (Cluster) have been delivered to Requisitions' ASRS."
+	announce_message = "Additional Orbital Bombardment warheads (Cluster) have been delivered to Requisitions' ASRS."
 
 	flags = TREE_FLAG_MARINE
 
@@ -51,8 +51,7 @@
 	desc = "Highly flammable bombardment ammo, to be loaded into the orbital cannon"
 	icon_state = "ob_incend"
 
-	announce_name = "Additional OB projectiles - Incendiary"
-	announce_message = "Additional Orbital Bombardment ordnance (Incendiary) have been delivered to Requisitions' ASRS."
+	announce_message = "Additional Orbital Bombardment warheads (Incendiary) have been delivered to Requisitions' ASRS."
 
 	flags = TREE_FLAG_MARINE
 

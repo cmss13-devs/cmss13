@@ -116,7 +116,7 @@
 
 /obj/item/ammo_magazine/rocket
 	name = "\improper 84mm high explosive rocket"
-	desc = "A rocket tube loaded with a HE warhead. Deals high damage to soft targets on direct hit and stuns most targets in a 5-meter wide area for a short time. Has decreased effect on heavily armored targets."
+	desc = "A rocket tube loaded with a HE warhead. Deals high damage to soft targets on direct hit and stuns most targets in a 5-meter-wide area for a short time. Has decreased effect on heavily armored targets."
 	caliber = "rocket"
 	icon_state = "rocket"
 
@@ -311,3 +311,17 @@
 		name = "\improper 84mm spent rocket array"
 		desc = "A spent rocket tube assembly for the M57-A4 quad launcher. Activate in hand to disassemble for metal."
 		icon_state = "quad_rocket_e"
+
+//-------------------------------------------------------
+//Anti-tank rocket
+
+/obj/item/ammo_magazine/rocket/anti_tank
+	name = "\improper 84mm Anti-Tank Rocket"
+	desc = "An anti-armour rocket specifically modified for penetration of armoured vehicle hulls."
+	caliber = "rocket"
+	icon_state = "at_rocket"
+
+	max_rounds = 1
+	default_ammo = /datum/ammo/rocket/ap/anti_tank
+	gun_type = /obj/item/weapon/gun/launcher/rocket/anti_tank
+	reload_delay = 100

@@ -1,0 +1,361 @@
+2022-01-02:
+  Chiwi:
+  - rscadd: Adds rolled sleeves and jacketless sprites for MP, WO and Warden uniforms.
+      Code modified to allow these states.
+  - rscadd: Adds shoulder pads to MP armors, classifies original sets as padless.
+  - tweak: ARMOR class added to MP equipment vendor.
+  Geeves:
+  - bugfix: Directly targeting a mob will now always hit it when you throw something
+      at it. No matter if it's resting or if you high toss it.
+  - rscadd: The UPP now get green tactical scarves on cold maps.
+  - rscadd: Resin spikes have been added to the drone and hivelord build lists, reflective
+      walls and acid pillars have been added to hivelord build lists.
+  - tweak: Acid pillar damage has been lowered, the acid splash travels 0.1 second
+      slower per tile, acid pillars now target one person at a time, depending on
+      who's nearest. Acid pillars no longer target crit people.
+  - tweak: Resin whisperer's long range resin build ability's cooldown has been reduced
+      to 1 seconds, down from 2, though the structure still takes two seconds to build.
+      It no longer requires line-based line of sight, if you can see the tile, you
+      can build there. It no longer spams your chat that it's ready again. You can
+      start building the next resin construction before the previous one finishes.
+      If the build progress is interrupted, the cooldown will be doubled.
+  - tweak: Resin whisperer hivelords no longer have a long sight ability, their view
+      range now gets increased upon taking the strain.
+  - tweak: Resin whisperer now takes twice the time the time to build distant walls,
+      but adjacent walls will take the standard build time.
+  - tweak: Reflective walls no longer beam the bullet back at you with pinpoint accuracy.
+      A random scatter of up to 30 degrees will be applied, and each mob only has
+      a 35% chance to be hit. Additionally, the bullet will only deal half its regular
+      damage.
+  - bugfix: Fixed a bug where certain xeno abilities could be done through overwatch,
+      but claimed you couldn't do it.
+  - tweak: Destroying walls on auto snow, ice, or sand turfs, will now create a cleared
+      turf, instead of a turf with its original layers.
+  - bugfix: Fixed a bug where overriding xeno ability cooldowns wouldn't work properly.
+  - rscadd: Rewrote pheromone code to be less strenuous on the server, while still
+      working as it always has. Additionally, xenos between allied hives can now benefit
+      from eachother's pheromones.
+  - bugfix: Smartpacks no longer modify the entire species when going into protective
+      mode. All the effects are localized to the wearer.
+  - tweak: Smartpack protective mode now also disables using firearms, in the event
+      combat synths get their hands on them. Additionally, you can no longer remove
+      the smartpack when it's in protective mode.
+  GoldenDarkness55:
+  - bugfix: AP RPG stun times now closer to what the code intended.
+  Insertusername:
+  - tweak: Made a copy of the Wooden TV that links to the mortar cams.
+  - maptweak: Adds a TV linked to the mortar cams to the OT room.
+  Nancok:
+  - rscadd: added the circuit board vendor
+  - rscadd: added a circuit board for building the main research terminal
+  - tweak: allows carrying components from the component vendor in an electronics
+      pouch
+  - maptweak: 'placed the vendor on the \"bubble\" of lower engineering  '
+  Shad0vvs:
+  - tweak: Adds 3 hour and 1 month conversion to minutes to newban tooltip.
+  TeDGamer:
+  - bugfix: Fix the reagent type of mini-flamers
+  Triiodine:
+  - rscadd: Gave the Acid Pillar a new sprite.
+  Vanagandr:
+  - tweak: People without medic skills can now dig shrapnel out of themselves by clicking
+      themselves with the bayonet on help intent. Adds consistency in behaviour and
+      should prevent some accidents - \"how do I get this out?\" \"Use your knife.\"
+      -stab-.
+  - tweak: Fiddled with the messaging when digging shrapnel.
+  forest2001:
+  - rscadd: Added the YMX Scanner, a hunter version of the HF2 Health Analyzer. It
+      is now required to scan Hunter biology, or any mob with TRAIT_FOREIGN_BIO.
+  - tweak: Signallers can now be attached to doors again without being an Agent, as
+      they don't exist.
+  ghostsheet:
+  - tweak: The SL locator for Dark HUD has been move up to the top right hand corner.
+2022-01-03:
+  Geeves:
+  - rscadd: Added the ability to look at a flare/laze's camera via the CAS weapon
+      control menu.
+  Segrain:
+  - bugfix: Hive leaders once again properly broadcast queen's pheromones.
+  Stan_Albatross:
+  - bugfix: The SL indicator in the \"dark\" mode HUD has been moved down so it will
+      no longer overlap with status effect icons
+  - tweak: The M4RA sight now has an integrated sensorhud.
+  - rscadd: Added a new item for scout specialists - the V3 reactive thermal tarp.
+      Works like a normal v2 thermal tarp (as seen on kutjevo), but cloaks to the
+      same level as a scout cloak and does so in 5 seconds rather than 12. Is also
+      a small sized item. It can only be closed (i.e. turning on the cloak) by people
+      with scout-level specialist skills. Has a 1 second stun upon exiting.
+  - maptweak: added disposal units to the shared prep rooms on the Almayer. Remember,
+      cleanliness is next to Godliness!
+  - bugfix: fixed a misplaced camera north of the morgue on the Almayer
+2022-01-07:
+  Geeves:
+  - rscadd: The Honor Guard kit now contains a special honor guard headset which provides
+      the wearer with the ability to track the CO or the XO, depending on the tracking
+      setting.
+  - rscadd: Similarly, the WO Honor Guard now also spawns with this headset.
+  - bugfix: Resin whisperers can no longer stack buildings.
+  - bugfix: Direct Throw Targeting now only works on mobs, which should fix Req crates
+      and grenades going haywire.
+  - rscadd: Split the Sleep All staff ability into Sleep All and Wake All. Sleep All
+      will apply a Knockout effect to prevent people causing a ruckus from escaping
+      the range of the admin's wrath. Similarly, Wake All will wake everyone who's
+      sleeping, preventing poor fools from getting blasted when the ruffians are awoken.
+  - rscadd: Added damage taken fun fact. This will display the person who took the
+      most damage before eventually dying.
+  - rscdel: Removed the calories burned fun fact.
+  - rscadd: Living mobs are now candidates for fun facts as well, you no longer have
+      to die to get the spotlight.
+  Stan_Albatross:
+  - bugfix: you can now actually put dead bodies in the scout's v3 reactive tarp.
+  Triiodine:
+  - bugfix: Single tile prefab structures (which compose larger structures), should
+      now only be dense on their own tile.
+  monkeysfist:
+  - tweak: Moved the USS Almayer command, logistics, and support personnel under the
+      banner of the USCMC.
+  - tweak: Reranked most of the roles. Some got promoted, but most were demoted.
+  - tweak: Squashed the majority of the rank system to bring the ranks closer in line
+      with the number of marines in play.
+  - tweak: Renamed Medic to Marine Hospital Corpsman to be in line with the films.
+  - tweak: Renamed Engineer to Squad Combat Technician to be in line with the films.
+  - tweak: Renamed Squad Marine to Squad Rifleman to be in line with the films.
+  - tweak: Renamed Squad Specialist to Squad Weapons Specialist to better differentiate
+      it from the Army rank.
+  - tweak: Renamed rank pins and boards as we no longer need to differentiate between
+      Marine and Navy Ranks.
+  - tweak: Renamed misc rooms, uniforms, crates, and gear to reflect new job titles.
+2022-01-09:
+  Geeves:
+  - rscadd: Split Hear Midis and Hear Internet Sounds into two separate options in
+      character creation, as the latter tends to be less laggier. If you don't want
+      to hear internet sounds, you'll want to disable the option.
+  - rscadd: 'Added a jump to offset coordinate ability for staff, which allows them
+      to jump to a turf according to the IC coordinate system. '
+  - bugfix: Survivor types not being typepath no longer gets spammed into the log
+      each time the round starts.
+  GoldenDarkness55:
+  - rscadd: Added a new sentinel ability - paralyzing slash - empowers the sentinel's
+      next slash to inject neurotoxin. Has a 12s cooldown, applies a 4s daze, causes
+      target to visually sway and once the 4 seconds pass it applies a knockdown for
+      2 seconds.
+  - tweak: Sentinel neurospit changed, stacking stuns removed. Now has 1.5s cooldown,
+      and applies a 2.5s superslow on hit. Range and projectile speed increased by
+      1.
+  - tweak: Scatterspitter spit moved to base sentinel, renamed to Scattered Spit,
+      cooldown changed to 8s, projectile amount increased by 1 and scatter increased
+      by 20. It now applies a 0.7 knockdown on any target hit (multiple projectiles
+      hitting the same target do not stack up).
+  - tweak: Sentinel tackle min-max changed from 2-6 to 4-4, tackle strength changed
+      from 4-5 to 4-4.
+  - rscdel: Removed sentinel scatterspitter strain.
+  - rscdel: Removed neurotoxic air splash.
+  - rscdel: Removed most neuro stacking mechanics.
+  Segrain:
+  - bugfix: Squad specialists should now properly be spread across real squads.
+  - bugfix: Slashing barricades now actually accounts for reinforcement against brute
+      attacks.
+  forest2001:
+  - tweak: Who verb now displays USCM Personnel and \"Marines\" rather than USCM Personnel
+      and \"Squad Riflemen\"
+2022-01-15:
+  ChainsawMullet:
+  - tweak: Changed the two incendiary buckshot spawns to incendiary slug spawns
+  - tweak: Changed the MK1 with toxin near LZ1 to a MK2 with toxin
+  - tweak: Changed 2 of the MK1s in armoury (with 3 mags each) to MK2s with 1 ext
+      and 2 regular mags
+  Chiwi:
+  - bugfix: Fixes padless MP armors not displaying the correct mob sprites.
+  - rscadd: Adds padless CMP and Warden armor to their respective vendors.
+  Shad0vvs:
+  - tweak: Changes the Annex Cryogenic labs indestructible wall choke into destructible
+      walls.
+  Stan_Albatross:
+  - maptweak: added a phone to the SEA's office
+2022-01-16:
+  GoldenDarkness55:
+  - tweak: Tail lash cast time reduced from 0.4 to 0.2
+  - bugfix: Oppressor Abduct tuned back to its intended cast time (0.4 to 0.8)
+  Mercadier:
+  - rscadd: Added admin-spawnable pamphlets for standard languages as well as monkey,
+      xenomorph and yautja for use in events.
+  - rscadd: Added admin-spawnable pamphlets for more skills for use in events.
+  - tweak: You can now only pick one extra language on the traits screen. No more
+      pentalingual marines - most of them have enough trouble with English.
+  - maptweak: Fixed a misplaced piece of carpet in the ERT station.
+  Nanu:
+  - tweak: Survivors endurance level has been lowered to two.
+  Segrain:
+  - rscadd: Two new keybinds for cycling your targeted zone forward and backward through
+      all of them.
+  Shad0vvs:
+  - bugfix: Removes stacked duplicate doors for the Almayer's Evidence Room.
+  Solidfury7:
+  - tweak: Reduced Fulton Recovery System and Medevac system cost
+  Stan_Albatross:
+  - maptweak: 'Whiskey Outpost : Added a second line to the cargo bay.'
+  - maptweak: 'Whiskey Outpost : Added bunk rooms for SLs and the reporter.'
+  - maptweak: 'Whiskey Outpost : Added a synthetic gear room and CO gear room.'
+  - maptweak: 'Whiskey Outpost : Remapped the chemistry room to make it easier to
+      work in.'
+  - maptweak: 'Whiskey Outpost : Changed all the surgical trays on the map to surgical
+      tray wall lockers, added two cryotubes and a pillgun to triage, added two surgical
+      roller beds to medbay.'
+  - maptweak: 'Whiskey Outpost : Moved some spawn landmarks around and added some
+      new ones to make spawning more random and varied.'
+  - maptweak: 'Whiskey Outpost : CIC : added colour coding to overwatch consoles,
+      added ID and squad control computers.'
+  - tweak: toggling the paddles on a defib will no longer incur a 1 second click delay
+      for shocking. The cooldowns for paddle toggling and shocking are now completely
+      separate.
+  - bugfix: 'Fiorina Science Annex : patched a way to get into space (the three normal
+      walls near the southeast entrance of medbay)'
+  - maptweak: 'Sorokyne Strata : merged a lot of smaller, unimportant areas into larger
+      ones. This should help reduce lag.'
+  Tisx:
+  - tweak: 'LOOC is now a much more visible pink. '
+2022-01-21:
+  TotalEpicness:
+  - bugfix: Fixed the XSS spacecheck so now it checks before & after the timer instead
+      of after.
+  Triiodine:
+  - imageadd: Added a icon for NOOP (pass through no change turfs) used by Nightmare
+      inserts. No more plating on your insert projects. This should help reviewers
+      and mappers alike.
+  - imageadd: Changed the missing-icon for default floors. This will help identify
+      broken turf icons.
+  forest2001:
+  - tweak: Non harmful grenades can now detonate without IFF restrictions on the Almayer.
+  - tweak: Backend change, mentor file now checks a config list rather than hardcode
+  the_flying_flail:
+  - rscadd: Added black market clothing crate providing non-hostile neutral faction
+      mercenary clothing like pmc, freelancer clothing and armor
+  - rscadd: Added new weapons to black-market crates such as the mp5, m60, and other
+      weapons you might find in a colony
+  - tweak: Tweaked black market weapon crate ammo amount so you receive 5 ammo per
+      weapon received.
+  - tweak: Removed weapons requiring specialist training to use in the black market
+      crate and ammo crate respectively
+  - tweak: Russian weapons crate is now known as Hyperdine weapons crate
+  - tweak: 'Tweaked USMC and Hyperdine Weapon crate to include ammo for weapons '
+  - bugfix: Fixed black market ammo crate so it now properly appears in arsr
+2022-01-22:
+  BlackCrystalic:
+  - tweak: Who and staff who are now UI pop-up windows, rather than appearing in chat.
+  FoxyStalin:
+  - tweak: Adds a flak magazine to the sniper spec's starting kit.
+  - tweak: Adds an incendiary Magazine to the sniper spec's starting kit.
+  Shad0vvs:
+  - bugfix: Prevented resin nodes from overlaying on top of resin holes.
+  TeDGamer:
+  - tweak: Big xenos can destroy APCs after cutting their wires
+  forest2001:
+  - rscadd: Fax Machines have been updated slightly. They now have fluff versions
+      (WY Corporate, General and USCM Military fax machines). These are not yet added
+      to the Almayer
+  - rscadd: Each fluff version has it's own \"network\" displayed as \"logged into\"
+      where originally it was only W-Y. High Command versions of each fax have a special
+      Network used to stamp faxes.
+  - rscadd: Added preset fax machines for various places to reduce instancing in map
+      files.
+  - tweak: Admin View-Faxes can now specifically view Provost, USCM High Command,
+      Weyland-Yutani or inter-machine faxes.
+  sg2002:
+  - bugfix: Fixed Standard Marine roll. There used to be only 1 slot per priority,
+      so 3 in total. Now 40 percent of readied players can become standard marines
+      and no less than 8. This limit does not affect \"Be marine if preference unavailable\"
+      setting or late joining.
+  - tweak: Population limited role slot limits are now calculated based on the total
+      readied population and not only on the people rolling marine.
+  - bugfix: \"If preference unavilable\" rolls now correctly give xenos burrowed.
+2022-01-24:
+  BlackCrystalic:
+  - tweak: Weather layer updated, now weather have higher layer rather than have xenos
+  Insertusername:
+  - tweak: Scalpels can dig out shrapnel when not in surgery mode
+  - tweak: Doctors spawn with labcoats equipped
+  - rscadd: Adds Meralyne and it's recipe to the game
+  Stan_Albatross:
+  - bugfix: Fixes security record computers' access requirements not working.
+  sg2002:
+  - bugfix: Fixed some players getting counted twice at roundstart, resulting in more
+      xeno slots than intended.
+2022-01-25:
+  BlackCrystalic:
+  - bugfix: Added for telecom icon_state 9_0 and 9_1, no more invisible tcoms.
+  TotalEpicness:
+  - tweak: G8-A general pouch belt uses backpack-type storage now. It still holds
+      3 normal-sized items maximum, however now you can hold smaller items.
+  - tweak: G8-A general pouch belt uses a non-confusing name in code (sparepouch >
+      general_belt)
+  TotalEpicness5:
+  - rscadd: You can now FINALLY dig sandbags continuously by picking up empty sandbags
+      and digging with a shovel in another hand. Thanks ihatethisengine2 for doing
+      most of the work on this.
+  - spellcheck: Changed attack verbs \"bludgeoned\" > \"slapped\"
+  forest2001:
+  - imageadd: Adds a TEMPORARY map sprite for reinforced walls. Improved version to
+      come in a later MR.
+  - experiment: Almost entirely remapped Brig.
+  - maptweak: The Brig is now more consistent in use of reinforced walls.
+  - maptweak: Brig Surgery can now be independantly accessed by doctors without MP
+      assistance. Corpsmen do not have access.
+  - maptweak: Brig Interrogation now has an observation room beside it, with shutters
+      toggleable to... maintain privacy.
+  - maptweak: Added an independantly operated Armory door for the CMP to open.
+  - maptweak: Permanent Cells now attach to the Courtyard, however they do not have
+      access beyond an ultra-reinforced window.
+  - maptweak: Execution has been moved adjacent to the new Perma Cells.
+  - maptweak: The Courtyard now has windows in the wall to allow prisoners to gaze
+      into space. These are ultra-reinforced.
+  - maptweak: CMP Office has been moved to the old location of Execution. The Warden
+      office now overlooks the courtyard.
+  - maptweak: The ladders connecting Astronav Maintenance with Brig Maintenance are
+      now secured by Brig Doors.
+  - experiment: Almayer Tweaks and Fixes.
+  - maptweak: Astronavigation and Reactor Core rooms now have reinforced hull to reflect
+      it being important areas of the ship.
+  - maptweak: TComms, Astronavigation and Reactor Core rooms all now have reinforced
+      hull walls due to their importance.
+  - maptweak: The reinforced hull walls around the CIC area have been tidied up, as
+      they were scattered about almost randomly.
+  - maptweak: Added the new Fax Machines into the Almayer.
+  - tweak: Added Reinforced Airlock Door Subtypes, they provide resistance to Masterkey
+      shotguns and can be found in Brig, Astronav, CIC, OT Workshop, TComms and Research.
+  - tweak: Moved Crew Job Vendors to a subfolder.
+  - maptweak: Added nonfunctional vendors for CT, MT, OT, Department Heads, XO, Staff
+      Officers and Medical to reduce any future mapping conflicts when implementing
+      them.
+  - bugfix: Maintenance Hatches now use access properly. No more all access to secure
+      areas. Massively reduced amount of instances for maintenance hatches.
+  - bugfix: Enabling Maintenance Security now actually works.
+  - bugfix: Research doors are now the correct subtypes.
+  - bugfix: CMO Locker no longer spawns a radio on colony Z levels.
+  - bugfix: The Almayer Flight Office is no longer in two places at once.
+  - bugfix: Toilets are no longer safe from unfriendly unbuckles.
+  monkeysfist:
+  - tweak: Restored Marine food vendors to normal.
+  - maptweak: Complied with the HOA and took down the Christmas decorations.
+2022-01-26:
+  Chiwi:
+  - tweak: Scout Cloak's south-facing onmob sprite fixed. The scout's arms are visible
+      now.
+  - bugfix: The female variation of underwear briefs no longer have an extra pixel
+      that is visible over the uniform.
+  Patternseeker:
+  - rscadd: You can click-drag yourself into entering cryopods now.
+  - tweak: Renames \"Admin Player Panel\" to \"User Panel\"
+  Stan_Albatross:
+  - bugfix: Metal and plasteel sheet in-hand north-facing sprites are now properly
+      on the side of the hand they are being held in.
+2022-01-28:
+  Geeves:
+  - rscadd: You can now make snowballs out of stacks of snow.
+  Nivrak:
+  - maptweak: Added a missing sandbag in Whiskey Outpost
+  Shad0vvs:
+  - bugfix: Fixes resin special construction being able to be built in the APC.
+2022-01-29:
+  Stan_Albatross:
+  - bugfix: Req's vendors on WO will no longer vend to the right table, and will instead
+      vend their items onto themselves.

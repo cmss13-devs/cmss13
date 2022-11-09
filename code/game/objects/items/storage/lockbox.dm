@@ -37,13 +37,13 @@
 		if(!locked)
 			..()
 		else
-			to_chat(user, SPAN_DANGER("Its locked!"))
+			to_chat(user, SPAN_DANGER("It's locked!"))
 		return
 
 
 	show_to(mob/user as mob)
 		if(locked)
-			to_chat(user, SPAN_DANGER("Its locked!"))
+			to_chat(user, SPAN_DANGER("It's locked!"))
 		else
 			..()
 		return

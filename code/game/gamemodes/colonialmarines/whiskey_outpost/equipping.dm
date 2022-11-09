@@ -139,7 +139,7 @@ You can order bunker crew to assist you, in place of proper cargo technicians."}
 //*************************************/
 /datum/job/civilian/professor/whiskey
 	title = JOB_WO_CMO
-	gear_preset = /datum/equipment_preset/wo/head_surgeron
+	gear_preset = /datum/equipment_preset/wo/head_surgeon
 
 	generate_entry_message()
 		. = {"You volunteered to assist ground-side with medical duties. That may have been a mistake.

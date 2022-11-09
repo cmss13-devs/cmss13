@@ -4,7 +4,7 @@
 
 /turf/closed/wall/almayer
 	name = "hull"
-	desc = "A metal wall used to seperate rooms and make up the ship."
+	desc = "A metal wall used to separate rooms and make up the ship."
 	icon = 'icons/turf/walls/almayer.dmi'
 	icon_state = "testwall"
 	walltype = WALL_HULL
@@ -47,13 +47,13 @@
 
 /turf/closed/wall/almayer/reinforced
 	name = "reinforced hull"
-	desc = "A reinforced metal wall used to seperate rooms and make up the ship."
+	desc = "A reinforced metal wall used to separate rooms and make up the ship."
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
 
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
-	desc = "A metal wall used to seperate space from the ship"
+	desc = "A metal wall used to separate space from the ship"
 	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	walltype = WALL_HULL
@@ -381,7 +381,7 @@
 
 /turf/closed/wall/mineral/phoron
 	name = "phoron wall"
-	desc = "A wall with phoron plating. This is definately a bad idea."
+	desc = "A wall with phoron plating. This is definitely a bad idea."
 	mineral = "phoron"
 	color = "#9635aa"
 
@@ -397,7 +397,7 @@
 	desc = "A wall made of molted old resin. This place is more alive than you are."
 
 /turf/closed/wall/mineral/bone/is_weedable()
-    return FALSE
+	return NOT_WEEDABLE
 
 /turf/closed/wall/mineral/bone/ex_act(severity, explosion_direction, source, mob/source_mob)
 	return
@@ -503,6 +503,11 @@
 /turf/closed/wall/strata_ice/ex_act(severity)
 	return
 
+/turf/closed/wall/strata_ice/dirty
+	icon_state = "strata_ice_dirty"
+	desc = "Columns and crags stacked atop one another. They defiantly push towards the heavens, but are stopped short by dripping frigid excess."
+	walltype = WALL_STRATA_ICE_DIRTY
+
 /turf/closed/wall/strata_ice/jungle
 	name = "jungle vegetation"
 	icon = 'icons/turf/walls/jungle_veg.dmi'
@@ -520,12 +525,25 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
-/turf/closed/wall/strata_outpost_bare
+/turf/closed/wall/strata_outpost
 	name = "bare outpost walls"
 	icon = 'icons/turf/walls/strata_outpost.dmi'
 	icon_state = "strata_bare_outpost_"
 	desc = "A thick and chunky metal wall. The surface is barren and imposing."
 	walltype = WALL_STRATA_OUTPOST_BARE
+
+/turf/closed/wall/strata_outpost/reinforced
+	name = "ribbed outpost walls"
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+	max_temperature = 28000
+
+/turf/closed/wall/strata_outpost/reinforced/hull
+	hull = 1
+	icon_state = "strata_hull"
+	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
 //SOLARIS RIDGE TILESET//
 
@@ -572,7 +590,7 @@
 
 /turf/closed/wall/dev/reinforced/hull
 	name = "greybox hull wall"
-	desc = "Just like in the orange box! This one is indestructable."
+	desc = "Just like in the orange box! This one is indestructible."
 	hull = 1
 
 //KUTJEVO DESERT WALLS / SHARED TRIJENT TILESET
@@ -607,7 +625,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced/hull
 	icon_state = "colonyh"
 	name = "reinforced colony wall"
-	desc = "Dusty worn down walls that were once built to last. This one is indestructable."
+	desc = "Dusty worn down walls that were once built to last. This one is indestructible."
 	hull = 1
 
 //ICE COLONY, AKA SHIVA'S SNOWBALL TOBLERONE WALLS
@@ -617,7 +635,7 @@
 /turf/closed/wall/shiva/ice
 	name = "black ice sabs"
 	icon_state = "shiva_ice"
-	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The perma frost fluctuates between 20in and 12in during the Summer months."
+	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
 
@@ -1080,36 +1098,34 @@
 
 	var/brute_multiplier = 0.3
 	var/explosive_multiplier = 0.3
+	var/reflection_multiplier = 0.5
 
 /turf/closed/wall/resin/reflective/bullet_act(obj/item/projectile/P)
 	if(src in P.permutated)
 		return
 
-	var/original_damage = P.damage
-	if(P.ammo.damage_type == BRUTE)
-		damage *= brute_multiplier
-
-	if(prob(chance_to_reflect))
-		if(P.runtime_iff_group || P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
-			// Bullet gets absorbed if it has IFF or can't be reflected.
-			return
-
-		var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
-		new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING)
-		new_proj.damage = original_damage * 0.5 // don't make it too punishing
-		new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
-
-		// Move back to who fired you.
-		RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, .proc/bullet_ignore_turf)
-		new_proj.permutated |= src
-
-		var/angle = Get_Angle(src, P.firer) + rand(30, -30)
-		var/atom/target = get_angle_target_turf(src, angle, get_dist(src, P.firer))
-		new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed, is_shrapnel = TRUE)
-
-		return TRUE
-	else
+	if(!prob(chance_to_reflect))
+		if(P.ammo.damage_type == BRUTE)
+			P.damage *= brute_multiplier
 		return ..()
+	if(P.runtime_iff_group || P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
+		// Bullet gets absorbed if it has IFF or can't be reflected.
+		return
+
+	var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
+	new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING)
+	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
+	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
+
+	// Move back to who fired you.
+	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, .proc/bullet_ignore_turf)
+	new_proj.permutated |= src
+
+	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
+	var/atom/target = get_angle_target_turf(src, angle, get_dist(src, P.firer))
+	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed, is_shrapnel = TRUE)
+
+	return TRUE
 
 /turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/item/projectile/P, var/turf/T)
 	SIGNAL_HANDLER

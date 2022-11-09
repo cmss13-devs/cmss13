@@ -64,41 +64,9 @@
 /*
 Frequency range: 1200 to 1600
 Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency, even during mapmaking)
-
-Radio:
-1459 - standard radio chat
-1351 - Science
-1353 - Command
-1355 - Medical
-1357 - Engineering
-1359 - Security
-1341 - death squad
-1443 - Confession Intercom
-1347 - Cargo techs
-
-Devices:
-1451 - tracking implant
-1457 - RSD default
-
-On the map:
-1311 for prison shuttle console (in fact, it is not used)
-1435 for status displays
-1437 for atmospherics/fire alerts
-1438 for engine components
-1439 for air pumps, air scrubbers, atmo control
-1441 for atmospherics - supply tanks
-1443 for atmospherics - distribution loop/mixed air tank
-1445 for bot nav beacons
-1447 for mulebot, secbot and ed209 control
-1449 for airlock controls, electropack, magnets
-1451 for toxin lab access
-1453 for engineering access
-1455 for AI access
 */
-//var/const/COMM_FREQ = 1353
-//var/const/SCI_FREQ = 1351
-//var/const/SUP_FREQ = 1347
 
+var/const/MIN_FREE_FREQ = 1201 // -------------------------------------------------
 
 //Misc channels
 var/const/YAUT_FREQ 	= 1214
@@ -106,11 +74,13 @@ var/const/PMC_FREQ 		= 1235
 var/const/WY_FREQ 		= 1236
 var/const/DUT_FREQ 		= 1340
 var/const/ERT_FREQ 		= 1342
+var/const/VAI_FREQ		= 1218
 var/const/RUS_FREQ		= 1338
 var/const/CLF_FREQ		= 1339
 var/const/DTH_FREQ 		= 1344
 var/const/AI_FREQ 		= 1447
 var/const/HC_FREQ		= 1240
+var/const/CCT_FREQ		= 1350
 
 //Ship department channels
 var/const/COMM_FREQ 	= 1353
@@ -119,8 +89,7 @@ var/const/ENG_FREQ 		= 1357
 var/const/SEC_FREQ 		= 1359
 var/const/SUP_FREQ 		= 1354
 var/const/JTAC_FREQ 	= 1358
-var/const/TACTICS_FREQ	= 1356
-var/const/CCT_FREQ		= 1350
+var/const/INTEL_FREQ	= 1356
 
 var/const/DS1_FREQ		= 1441
 var/const/DS2_FREQ		= 1443
@@ -130,55 +99,73 @@ var/const/ALPHA_FREQ 	= 1449
 var/const/BRAVO_FREQ 	= 1451
 var/const/CHARLIE_FREQ 	= 1453
 var/const/DELTA_FREQ 	= 1455
-var/const/ECHO_FREQ 	= 1457
+var/const/ECHO_FREQ 	= 1456
+var/const/CRYO_FREQ		= 1457
+var/const/SOF_FREQ	= 1241
+
+var/const/MIN_FREQ 		= 1460 // ------------------------------------------------------
 
 var/const/PUB_FREQ 		= 1461
 
+var/const/MAX_FREQ 		= 1468 // ------------------------------------------------------
+
 //Civilian channels
-var/const/CIV_GEN_FREQ 	= 1469
-var/const/CIV_COMM_FREQ = 1471
+var/const/COLONY_FREQ	= 1469
+
+var/const/MAX_FREE_FREQ = 1599 // -------------------------------------------------
 
 var/list/radiochannels = list(
-	"Response Team" = ERT_FREQ,
-	"Yautja" 		= YAUT_FREQ,
-	"WY" 			= WY_FREQ,
-	"WY PMC" 		= PMC_FREQ,
-	"SpecOps" 		= DTH_FREQ,
-	"UPP" 			= RUS_FREQ,
-	"CLF"			= CLF_FREQ,
-	"Colonist"		= DUT_FREQ,
-	"HighCom"		= HC_FREQ,
-	"CCT"			= CCT_FREQ, // HvH JTAC Equiv
+	RADIO_CHANNEL_ERT  			= ERT_FREQ,
+	RADIO_CHANNEL_YAUTJA		= YAUT_FREQ,
+	RADIO_CHANNEL_WY			= WY_FREQ,
+	RADIO_CHANNEL_WY_PMC		= PMC_FREQ,
+	RADIO_CHANNEL_VAI			= VAI_FREQ,
+	RADIO_CHANNEL_SPECOPS		= DTH_FREQ,
+	RADIO_CHANNEL_UPP			= RUS_FREQ,
+	RADIO_CHANNEL_CLF			= CLF_FREQ,
+	RADIO_CHANNEL_DUTCH_DOZEN	= DUT_FREQ,
+	RADIO_CHANNEL_HIGHCOM		= HC_FREQ,
+	RADIO_CHANNEL_CCT			= CCT_FREQ, // HvH JTAC Equiv
 
-	"Almayer"		= PUB_FREQ,
-	"Command"		= COMM_FREQ,
-	"MedSci"		= MED_FREQ,
-	"Engi"			= ENG_FREQ,
-	"MP"			= SEC_FREQ,
-	"Req"			= SUP_FREQ,
-	"JTAC"			= JTAC_FREQ,
-	"Tactics" 		= TACTICS_FREQ,
+	RADIO_CHANNEL_ALMAYER		= PUB_FREQ,
+	RADIO_CHANNEL_COMMAND		= COMM_FREQ,
+	RADIO_CHANNEL_MEDSCI		= MED_FREQ,
+	RADIO_CHANNEL_ENGI			= ENG_FREQ,
+	RADIO_CHANNEL_MP			= SEC_FREQ,
+	RADIO_CHANNEL_REQ			= SUP_FREQ,
+	RADIO_CHANNEL_JTAC			= JTAC_FREQ,
+	RADIO_CHANNEL_INTEL 		= INTEL_FREQ,
 
-	SQUAD_NAME_1	= ALPHA_FREQ,
-	SQUAD_NAME_2	= BRAVO_FREQ,
-	SQUAD_NAME_3	= CHARLIE_FREQ,
-	SQUAD_NAME_4	= DELTA_FREQ,
-	SQUAD_NAME_5	= ECHO_FREQ,
-	"Alamo"			= DS1_FREQ,
-	"Normandy"		= DS2_FREQ,
+	SQUAD_MARINE_1				= ALPHA_FREQ,
+	SQUAD_MARINE_2				= BRAVO_FREQ,
+	SQUAD_MARINE_3				= CHARLIE_FREQ,
+	SQUAD_MARINE_4				= DELTA_FREQ,
+	SQUAD_MARINE_5				= ECHO_FREQ,
+	SQUAD_MARINE_CRYO			= CRYO_FREQ,
+	SQUAD_SOF				= SOF_FREQ,
 
-	"Common"		= CIV_GEN_FREQ,
-	"Civ Command"	= CIV_COMM_FREQ
+	SQUAD_MARINE_1				= ALPHA_FREQ,
+	SQUAD_MARINE_2				= BRAVO_FREQ,
+	SQUAD_MARINE_3				= CHARLIE_FREQ,
+	SQUAD_MARINE_4				= DELTA_FREQ,
+	SQUAD_MARINE_5				= ECHO_FREQ,
+	SQUAD_MARINE_CRYO			= CRYO_FREQ,
+	SQUAD_SOF				= SOF_FREQ,
+
+	RADIO_CHANNEL_ALAMO			= DS1_FREQ,
+	RADIO_CHANNEL_NORMANDY 		= DS2_FREQ,
+
+	RADIO_CHANNEL_COLONY		= COLONY_FREQ
 )
 
 // central command channels, i.e deathsquid & response teams
-#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ)
+#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, VAI_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, SOF_FREQ)
 
 // Antag channels, i.e. Syndicate
 #define ANTAG_FREQS list()
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
-#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ERT_FREQ, DTH_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, SUP_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ)
+#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, SUP_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
@@ -188,11 +175,11 @@ var/list/radiochannels = list(
 //Other devices can then choose to send signals to only those devices that belong to a particular filter.
 //This is done for performance, so we don't send signals to lots of machines unnecessarily.
 
-//This filter is special because devices belonging to default also recieve signals sent to any other filter.
+//This filter is special because devices belonging to default also receive signals sent to any other filter.
 var/const/RADIO_DEFAULT = "radio_default"
 
 var/const/RADIO_TO_AIRALARM = "radio_airalarm" //air alarms
-var/const/RADIO_FROM_AIRALARM = "radio_airalarm_rcvr" //devices interested in recieving signals from air alarms
+var/const/RADIO_FROM_AIRALARM = "radio_airalarm_rcvr" //devices interested in receiving signals from air alarms
 var/const/RADIO_CHAT = "radio_telecoms"
 var/const/RADIO_ATMOSIA = "radio_atmos"
 var/const/RADIO_NAVBEACONS = "radio_navbeacon"
@@ -222,8 +209,9 @@ SUBSYSTEM_DEF(radio)
 		"[MED_FREQ]" = "medradio",
 		"[SUP_FREQ]" = "supradio",
 		"[JTAC_FREQ]" = "jtacradio",
-		"[TACTICS_FREQ]" = "intelradio",
+		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
+		"[VAI_FREQ]" = "vairadio",
 		"[RUS_FREQ]" = "syndradio",
 		"[CLF_FREQ]" = "clfradio",
 		"[CCT_FREQ]" = "cctradio",
@@ -231,7 +219,11 @@ SUBSYSTEM_DEF(radio)
 		"[BRAVO_FREQ]" = "bravoradio",
 		"[CHARLIE_FREQ]" = "charlieradio",
 		"[DELTA_FREQ]" = "deltaradio",
-		"[ECHO_FREQ]" = "echoradio"
+		"[ECHO_FREQ]" = "echoradio",
+		"[CRYO_FREQ]" = "cryoradio",
+		"[SOF_FREQ]" = "hcradio",
+		"[HC_FREQ]" = "hcradio",
+		"[COLONY_FREQ]" = "deptradio",
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, var/new_frequency as num, var/filter = null as text|null)
@@ -299,13 +291,13 @@ SUBSYSTEM_DEF(radio)
 	tcomm_machines_almayer -= machine
 
 /datum/controller/subsystem/radio/proc/get_frequency_span(var/frequency)
+	var/freq_span = freq_to_span["[frequency]"]
+	if(freq_span)
+		return freq_span
 	if(frequency in ANTAG_FREQS)
 		return "syndradio"
 	if(frequency in CENT_FREQS)
 		return "centradio"
-	var/freq_span = freq_to_span["[frequency]"]
-	if(freq_span)
-		return freq_span
 	if(frequency in DEPT_FREQS)
 		return "deptradio"
 	return "radio"

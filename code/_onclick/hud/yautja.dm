@@ -1,5 +1,5 @@
 /datum/hud/human/yautja/draw_locator_spot(var/datum/custom_hud/ui_datum)
-	pred_power_icon = new /obj/screen()
+	pred_power_icon = new /atom/movable/screen()
 	pred_power_icon.icon = 'icons/mob/hud/hud_yautja.dmi'
 	pred_power_icon.icon_state = "powerbar10"
 	pred_power_icon.name = "bracer power stored"
@@ -9,7 +9,7 @@
 
 /mob/living/carbon/human/yautja/create_hud()
 	if(client && !hud_used)
-		var/ui_datum = custom_huds_list[client.prefs.UI_style]
+		var/ui_datum = GLOB.custom_huds_list[client.prefs.UI_style]
 		var/ui_color = client.prefs.UI_style_color
 		var/ui_alpha = client.prefs.UI_style_alpha
 		hud_used = new /datum/hud/human/yautja(src, ui_datum, ui_color, ui_alpha)

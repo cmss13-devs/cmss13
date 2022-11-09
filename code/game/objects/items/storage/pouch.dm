@@ -35,9 +35,9 @@
 		overlays += "+[icon_state]_full"
 
 
-/obj/item/storage/pouch/examine(mob/user)
-	..()
-	to_chat(user, "Can be worn by attaching it to a pocket.")
+/obj/item/storage/pouch/get_examine_text(mob/user)
+	. = ..()
+	. += "Can be worn by attaching it to a pocket."
 
 
 /obj/item/storage/pouch/equipped(mob/user, slot)
@@ -66,10 +66,9 @@
 /obj/item/storage/pouch/general/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
 		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M,user, M.transfer_handful_amount)
-	else if(istype(W, /obj/item/storage/box/nade_box))
-		var/obj/item/storage/box/nade_box/M = W
-		dump_into(M,user)
+		dump_ammo_to(M,user)
+	else if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/box/m94))
+		dump_into(W, user)
 	else
 		return ..()
 
@@ -158,15 +157,16 @@
 /obj/item/storage/pouch/survival
 	name = "survival pouch"
 	desc = "It can carry flashlights, a pill, a crowbar, metal sheets, and some bandages."
-	icon_state = "survival"
-	storage_slots = 5
+	icon_state = "tools"
+	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/device/flashlight,
 		/obj/item/tool/crowbar,
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/sheet/metal
+		/obj/item/device/radio,
+		/obj/item/attachable/bayonet
 	)
 
 /obj/item/storage/pouch/survival/full/fill_preset_inventory()
@@ -174,7 +174,33 @@
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/device/radio(src)
+	new /obj/item/attachable/bayonet(src)
+
+/obj/item/storage/pouch/survival/synth
+	name = "synth survival pouch"
+	desc = "An emergency pouch given to synthetics in the event of an emergency."
+	icon_state = "tools"
+	storage_slots = 7
+	max_w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/device/flashlight,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/weldingtool,
+		/obj/item/stack/cable_coil,
+		/obj/item/stack/sheet/metal,
+		/obj/item/device/radio,
+		/obj/item/attachable/bayonet
+	)
+
+/obj/item/storage/pouch/survival/synth/full/fill_preset_inventory()
+	new /obj/item/device/flashlight(src)
+	new /obj/item/tool/crowbar/red(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/stack/cable_coil(src)
 	new /obj/item/stack/sheet/metal/large_stack(src)
+	new /obj/item/device/radio(src)
+	new /obj/item/attachable/bayonet(src)
 
 /obj/item/storage/pouch/firstaid
 	name = "first-aid pouch"
@@ -205,7 +231,7 @@
 	new /obj/item/stack/medical/bruise_pack(src)
 
 /obj/item/storage/pouch/firstaid/full/pills/fill_preset_inventory()
-	new /obj/item/storage/pill_bottle/packet/bicardine(src)
+	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
@@ -285,12 +311,8 @@
 	if(current_gun)
 		playsound(src, drawSound, 15, TRUE)
 		gun_underlay = image('icons/obj/items/clothing/belts.dmi', current_gun.base_gun_icon)
-		if(!istype(current_gun,/obj/item/weapon/gun/pistol))
-			gun_underlay.pixel_x = icon_x + 1
-			gun_underlay.pixel_y = icon_y + 3
-		else
-			gun_underlay.pixel_x = icon_x
-			gun_underlay.pixel_y = icon_y
+		gun_underlay.pixel_x = icon_x
+		gun_underlay.pixel_y = icon_y
 		gun_underlay.color = current_gun.color
 		underlays += gun_underlay
 	else
@@ -304,7 +326,6 @@
 	desc = "A specialized, sturdy pouch issued to Captains. Can hold their sidearm, the command tablet and a set of binoculars."
 	storage_slots = 3
 	icon_state = "command_pouch"
-	storage_flags = STORAGE_FLAGS_POUCH
 	can_hold = list(
 					/obj/item/weapon/gun/revolver,
 					/obj/item/weapon/gun/pistol,
@@ -315,7 +336,7 @@
 	var/obj/item/device/binoculars/binos
 	var/obj/item/device/cotablet/tablet
 	icon_x = -6
-	icon_y = -0
+	icon_y = 0
 
 /obj/item/storage/pouch/pistol/command/Destroy()
 	binos = null
@@ -454,6 +475,9 @@
 	else
 		return ..()
 
+/obj/item/storage/pouch/magazine/pulse_rifle/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -555,6 +579,14 @@
 /obj/item/storage/pouch/shotgun/large/riot/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
+
+/obj/item/storage/pouch/shotgun/large/slug/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
+
+/obj/item/storage/pouch/shotgun/large/buckshot/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
@@ -675,6 +707,31 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
 
+/obj/item/storage/pouch/first_responder
+	name = "first responder pouch"
+	desc = "A pouch designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
+	icon_state = "frt_med"
+	storage_slots = 4
+
+	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/roller,
+		/obj/item/bodybag,
+	)
+
+/obj/item/storage/pouch/first_responder/full/fill_preset_inventory()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/roller(src)
+	new /obj/item/tool/extinguisher/mini(src)
+	new /obj/item/bodybag/cryobag(src)
+
+
 /obj/item/storage/pouch/vials
 	name = "vial pouch"
 	desc = "A pouch for carrying glass vials."
@@ -742,6 +799,13 @@
 	desc = "It's specifically made to hold a medkit."
 	can_hold = list(/obj/item/storage/firstaid)
 
+/obj/item/storage/pouch/medkit/handle_mmb_open(var/mob/user)
+	var/obj/item/storage/firstaid/FA = locate() in contents
+	if(FA)
+		FA.open(user)
+		return
+	return ..()
+
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/storage/firstaid/regular(src)
@@ -785,10 +849,16 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
 	. = ..()
-	inner.reagents.add_reagent("adrenaline", inner.volume/2.5)
-	inner.reagents.add_reagent("inaprovaline", inner.volume/2.5)
-	inner.reagents.add_reagent("peridaxon", inner.volume/5)
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
+	. = ..()
+	inner.reagents.add_reagent("tricordrazine", inner.volume)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
@@ -859,9 +929,11 @@
 	to_chat(user, SPAN_NOTICE("You refill the [src]."))
 	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/examine(mob/user)
-	..()
-	display_contents(user)
+/obj/item/storage/pouch/pressurized_reagent_canister/get_examine_text(mob/user)
+	. = ..()
+	var/display_info = display_contents(user)
+	if(display_info)
+		. += display_info
 
 /obj/item/storage/pouch/pressurized_reagent_canister/update_icon()
 	overlays.Cut()
@@ -878,12 +950,11 @@
 	if(isXeno(user))
 		return
 	if(!inner)
-		to_chat(user, "This [src] has no container inside!")
-		return
+		return "This [src] has no container inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		to_chat(user, "This [src] contains: [get_reagent_list_text()]")
+		return "This [src] contains: [get_reagent_list_text()]"
 	else
-		to_chat(user, "You don't know what's in it.")
+		return "You don't know what's in it."
 
 //returns a text listing the reagents (and their volume) in the atom. Used by Attack logs for reagents in pills
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/get_reagent_list_text()
@@ -919,6 +990,29 @@
 			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
 			inner.reagents.clear_reagents()
 
+/obj/item/storage/pouch/document
+	name = "large document pouch"
+	desc = "It can contain papers, folders, disks, technical manuals, and clipboards."
+	icon_state = "document"
+	storage_slots = 21
+	max_w_class = SIZE_MEDIUM
+	max_storage_space = 21
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_CLICK_GATHER
+	can_hold = list(
+		/obj/item/paper,
+		/obj/item/clipboard,
+		/obj/item/document_objective/paper,
+		/obj/item/document_objective/report,
+		/obj/item/document_objective/folder,
+		/obj/item/disk/objective,
+		/obj/item/document_objective/technical_manual
+	)
+
+/obj/item/storage/pouch/document/small
+	name = "small document pouch"
+	desc = "A smaller version of the document pouch. It can contain papers, folders, disks, technical manuals, and clipboards."
+	storage_slots = 7
+
 /obj/item/storage/pouch/flare
 	name = "flare pouch"
 	desc = "A pouch designed to hold flares. Refillable with an M94 flare pack."
@@ -951,7 +1045,7 @@
 
 /obj/item/storage/pouch/electronics
 	name = "electronics pouch"
-	desc = "It is designed to hold most electronics, power cells and circuitboards."
+	desc = "It is designed to hold most electronics, power cells and circuit boards."
 	icon_state = "electronics"
 	storage_slots = 6
 	can_hold = list(
@@ -991,6 +1085,16 @@
 	new /obj/item/stack/sheet/plasteel(src, 50)
 	new /obj/item/stack/sheet/metal(src, 50)
 	new /obj/item/stack/sandbags_empty(src, 50)
+
+/obj/item/storage/pouch/construction/full_barbed_wire/fill_preset_inventory()
+	new /obj/item/stack/sheet/plasteel(src, 50)
+	new /obj/item/stack/sheet/metal(src, 50)
+	new /obj/item/stack/barbed_wire(src, 20)
+
+/obj/item/storage/pouch/construction/low_grade_full/fill_preset_inventory()
+	new /obj/item/stack/sheet/plasteel(src, 30)
+	new /obj/item/stack/sheet/metal(src, 50)
+	new /obj/item/stack/barbed_wire(src, 15)
 
 /obj/item/storage/pouch/tools
 	name = "tools pouch"
@@ -1070,10 +1174,10 @@
 	var/sling_range = 1
 	var/obj/item/slung
 
-/obj/item/storage/pouch/sling/examine(mob/user)
-	..()
+/obj/item/storage/pouch/sling/get_examine_text(mob/user)
+	. = ..()
 	if(slung && slung.loc != src)
-		to_chat(user, "\the [slung] is attached to the sling.")
+		. += "\The [slung] is attached to the sling."
 
 /obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, stop_messages = FALSE)
 	if(slung)
@@ -1165,3 +1269,33 @@
 				underlays += image(first_tape.icon, null, first_tape.icon_state, pixel_y = -4)
 			if(0)
 				icon_state = base_icon_state
+
+/obj/item/storage/pouch/machete
+	name = "\improper H6B pattern M2132 machete scabbard"
+	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."
+	icon = 'icons/obj/items/storage.dmi'
+	icon_state = "macheteB_holster"
+	item_state = "machete_holster"
+	max_w_class = SIZE_LARGE
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
+	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
+
+	var/sheathe_sound = 'sound/weapons/gun_rifle_draw.ogg'
+	var/draw_sound = 'sound/weapons/gun_rifle_draw.ogg'
+
+/obj/item/storage/pouch/machete/update_icon()
+	if(length(contents))
+		icon_state = "[initial(icon_state)]_full"
+	else
+		icon_state = initial(icon_state)
+
+/obj/item/storage/pouch/machete/_item_insertion(obj/item/W, prevent_warning = 0)
+	..()
+	playsound(src, sheathe_sound, vol = 15, vary = TRUE)
+
+/obj/item/storage/pouch/machete/_item_removal(obj/item/W, atom/new_location)
+	..()
+	playsound(src, draw_sound, vol = 15, vary = TRUE)
+
+/obj/item/storage/pouch/machete/full/fill_preset_inventory()
+	new /obj/item/weapon/melee/claymore/mercsword/machete(src)

@@ -7,32 +7,41 @@
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin/hivelord,
 		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/onclick/toggle_speed
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/secrete_resin/remote, //third macro
+		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/onclick/toggle_speed // readding it so it gets at the end of the ability list
 	)
 	keystone = TRUE
 
-/datum/xeno_mutator/resinwhisperer/apply_mutator(var/datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/resinwhisperer/apply_mutator(var/datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if(!.)
 		return
 
-	var/mob/living/carbon/Xenomorph/Hivelord/H = MS.xeno
-	H.plasmapool_modifier = 0.8 // -20% plasma pool
-	H.extra_build_dist = 12 // 1 + 12 = 13 tile build range
-	H.can_stack_builds = TRUE
+	var/mob/living/carbon/Xenomorph/Hivelord/xeno = mutator_set.xeno
+	xeno.plasmapool_modifier = 0.8 // -20% plasma pool
+	xeno.extra_build_dist = 12 // 1 + 12 = 13 tile build range
+	xeno.can_stack_builds = TRUE
 
-	H.client.change_view(10, src)
+	xeno.client.change_view(10, src)
 
-	H.mutation_type = HIVELORD_RESIN_WHISPERER
-	mutator_update_actions(H)
-	MS.recalculate_actions(description, flavor_description)
-	H.recalculate_plasma()
+	xeno.mutation_type = HIVELORD_RESIN_WHISPERER
+	mutator_update_actions(xeno)
+	mutator_set.recalculate_actions(description, flavor_description)
+	xeno.recalculate_plasma()
 
-	H.set_resin_build_order(GLOB.resin_build_order_drone)
+	xeno.set_resin_build_order(GLOB.resin_build_order_drone)
+	for(var/datum/action/xeno_action/action in xeno.actions)
+		// Also update the choose_resin icon since it resets
+		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
+			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
+			if(choose_resin_ability)
+				choose_resin_ability.update_button_icon(xeno.selected_resin)
+				break // Don't need to keep looking
 
 /*
  *    Coerce Resin ability

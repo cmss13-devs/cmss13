@@ -40,7 +40,7 @@ mob/living/carbon/proc/handle_hallucinations()
 				//to_chat(src, "Traitor Items")
 				if(!halitem)
 					halitem = new
-					var/datum/custom_hud/ui_datum = custom_huds_list[client.prefs.UI_style]
+					var/datum/custom_hud/ui_datum = GLOB.custom_huds_list[client.prefs.UI_style]
 					var/list/slots_free = list(ui_datum.ui_lhand, ui_datum.ui_rhand)
 					if(l_hand)
 						slots_free -= ui_datum.ui_lhand

@@ -3,15 +3,14 @@
 GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("SQUAD LEADER KIT (CHOOSE 1)", 0, null, null, null),
 		list("Essential SL Flamethrower Kit", 0, /obj/effect/essentials_set/leader/flamethrower, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("Essential SL MK1 Rifle Kit", 0, /obj/effect/essentials_set/leader, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("UTILITIES", 0, null, null, null),
 		list("Whistle", 3, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-		list("Logistics IMP Backpack", 10, /obj/item/storage/backpack/marine/satchel/big, null, VENDOR_ITEM_REGULAR),
 		list("Range Finder", 3, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", 5, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
+		list("M2 Night Vision Goggles", 20, /obj/item/prop/helmetgarb/helmet_nvg, null, VENDOR_ITEM_RECOMMENDED),
 		list("Machete Scabbard (Full)", 4, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
-		list("Machete Pouch (Full)", 4, /obj/item/storage/large_holster/macheteB/full, null, VENDOR_ITEM_REGULAR),
+		list("Machete Pouch (Full)", 4, /obj/item/storage/pouch/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 3, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("M4 Pattern Armor", 30, /obj/item/clothing/suit/storage/marine/rto, null, VENDOR_ITEM_REGULAR),
@@ -24,6 +23,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plastic explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_RECOMMENDED),
+		list("Breaching Charge", 7, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_RECOMMENDED),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
 		list("Signal Flare Pack", 7, /obj/item/storage/box/m94/signal, null, VENDOR_ITEM_REGULAR),
 		list("Tools Pouch (Full)", 5, /obj/item/storage/pouch/tools/full, null, VENDOR_ITEM_REGULAR),
@@ -36,8 +36,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("M40 HSDP Smoke Packet (x3 grenades)", 9, /obj/item/storage/box/packet/smoke, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Frag Airburst Packet (x3 airburst grenades)", 20, /obj/item/storage/box/packet/airburst_he, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Incendiary Airburst Packet (x3 airburst grenades)", 20, /obj/item/storage/box/packet/airburst_incen, null, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Smoke Airburst Packet (x3 airburst grenades)", 10, /obj/item/storage/box/packet/airburst_smoke, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Hornet Airburst Packet (x3 airburst grenades", 20, /obj/item/storage/box/packet/hornet, null, VENDOR_ITEM_REGULAR),
 		list("M20 Mine Box (x4 mines)", 20, /obj/item/storage/box/explosive_mines, null, VENDOR_ITEM_REGULAR),
+		list("M40 MFHS Metal Foam Grenade", 5, /obj/item/explosive/grenade/metal_foam, null, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL SUPPLIES", 0, null, null, null),
 		list("Adv Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_REGULAR),
@@ -64,9 +66,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("M39 Extended Magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/extended , null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/ap , null, VENDOR_ITEM_REGULAR),
 		list("M41A Extended Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/extended , null, VENDOR_ITEM_REGULAR),
-		list("M41A MK1 Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Tank (Napthal)", 3, /obj/item/ammo_magazine/flamer_tank, null, VENDOR_ITEM_REGULAR),
-		list("M240 Incinerator Tank (Gel)", 3, /obj/item/ammo_magazine/flamer_tank/gellied, null, VENDOR_ITEM_REGULAR),
+		list("M240 Incinerator Tank (B-Gel)", 3, /obj/item/ammo_magazine/flamer_tank/gellied, null, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARMS", 0, null, null, null),
 		list("M240 Incinerator Unit", 18, /obj/item/storage/box/guncase/flamer, null, VENDOR_ITEM_REGULAR),
@@ -77,7 +78,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Engineering Radio Encryption Key", 3, /obj/item/device/encryptionkey/engi, null, VENDOR_ITEM_REGULAR),
-		list("Tactics Radio Encryption Key", 3, /obj/item/device/encryptionkey/tactics, null, VENDOR_ITEM_REGULAR),
+		list("Intel Radio Encryption Key", 3, /obj/item/device/encryptionkey/intel, null, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Encryption Key", 3, /obj/item/device/encryptionkey/jtac, null, VENDOR_ITEM_REGULAR),
 		list("Supply Radio Encryption Key", 3, /obj/item/device/encryptionkey/req, null, VENDOR_ITEM_REGULAR),
 	))
@@ -142,7 +143,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Shoulder Holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
@@ -157,27 +158,26 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 	req_access = list(ACCESS_MARINE_LEADER)
 	vendor_role = list(JOB_SQUAD_LEADER)
 
-/obj/structure/machinery/cm_vending/clothing/leader/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_clothing_leader
+/obj/structure/machinery/cm_vending/clothing/leader/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_clothing_leader
 
 /obj/structure/machinery/cm_vending/clothing/leader/alpha
-	squad_tag = SQUAD_NAME_1
+	squad_tag = SQUAD_MARINE_1
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/bravo
-	squad_tag = SQUAD_NAME_2
+	squad_tag = SQUAD_MARINE_2
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/charlie
-	squad_tag = SQUAD_NAME_3
+	squad_tag = SQUAD_MARINE_3
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/delta
-	squad_tag = SQUAD_NAME_4
+	squad_tag = SQUAD_MARINE_4
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/lead
 
@@ -188,11 +188,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/map/current_map,
+		/obj/item/ammo_magazine/rifle/m41aMK1/ap,
+		/obj/item/ammo_magazine/rifle/m41aMK1/ap,
 		/obj/item/ammo_magazine/rifle/m41aMK1,
 		/obj/item/ammo_magazine/rifle/m41aMK1,
-		/obj/item/ammo_magazine/rifle/m41aMK1,
-		/obj/item/ammo_magazine/rifle/m41aMK1,
-		/obj/item/weapon/gun/rifle/m41aMK1,
+		/obj/item/weapon/gun/rifle/m41aMK1/ap,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/box/zipcuffs
 	)

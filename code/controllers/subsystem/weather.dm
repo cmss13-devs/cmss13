@@ -12,7 +12,9 @@ SUBSYSTEM_DEF(weather)
 	var/controller_state_lock = FALSE		// Used to prevent double-calls of important methods. Is set anytime
 											// the controller enters a proc that significantly modifies its state
 	var/current_event_start_time			// Self explanatory
-	var/last_event_end_time					// Self explanatory
+
+	COOLDOWN_DECLARE(last_event_end_time)
+	COOLDOWN_DECLARE(last_event_check_time)
 
 	//// Important vars
 
@@ -30,6 +32,9 @@ SUBSYSTEM_DEF(weather)
 	// Holds necessary data for the current weather event
 	var/datum/weather_event/weather_event_instance
 
+	/// List of master areas to use for applying effects
+	var/list/area/weather_areas = list()
+
 /datum/controller/subsystem/weather/Initialize(start_timeofday)
 	// Set up our map delegate datum for supported maps
 	// The ONLY place where things should depend on map_tag
@@ -37,18 +42,14 @@ SUBSYSTEM_DEF(weather)
 	if(SSmapping.configs[GROUND_MAP].weather_holder)
 		var/weathertype = SSmapping.configs[GROUND_MAP].weather_holder
 		map_holder = new weathertype
+		setup_weather_areas()
+	return ..()
 
-	// Disable the weather subsystem on maps that don't currently implement it
-	if (!map_holder)
-		flags |= SS_NO_FIRE
-		return
-
-	var/list/weather_areas = list()
-
-	// Each map defines which areas it wants to define as weather areas.
-	for (var/area/A in all_areas)
-		if (map_holder.should_affect_area(A))
-			add_as_weather_area(A, weather_areas)
+/datum/controller/subsystem/weather/proc/setup_weather_areas()
+	weather_areas = list()
+	for(var/area/A in all_areas)
+		if(A == A.master && A.weather_enabled && map_holder.should_affect_area(A))
+			weather_areas += A
 
 	curr_master_turf_overlay = new /obj/effect/weather_vfx_holder
 	if (map_holder.no_weather_turf_icon_state)
@@ -56,25 +57,27 @@ SUBSYSTEM_DEF(weather)
 	else
 		curr_master_turf_overlay.icon_state = ""
 
-	// We have successfully built weather areas, now place our effect holder
-	for (var/area/A in weather_areas)
-		for (var/turf/T in A)
-			if (istype(T, /turf/open) && !(curr_master_turf_overlay in T.vis_contents))
-				T.vis_contents += curr_master_turf_overlay
-
-	. = ..()
+/datum/controller/subsystem/weather/proc/force_weather_holder(var/weather_holder)
+	if(weather_holder)
+		if(istext(weather_holder)) weather_holder = text2path(weather_holder)
+		if(ispath(weather_holder))
+			map_holder = new weather_holder
+			setup_weather_areas()
 
 /datum/controller/subsystem/weather/stat_entry(msg)
+	var/time_left = 0
+	if(weather_event_instance?.length)
+		time_left = (current_event_start_time + weather_event_instance.length - world.time) / 10
 	if (is_weather_event && weather_event_instance.display_name)
-		msg = "P: Current event: [weather_event_instance.display_name]"
+		msg = "P: Current event: [weather_event_instance.display_name] - [time_left] seconds left"
 	else if (is_weather_event)
-		msg = "P: Current event of unknown type ([weather_event_type])"
+		msg = "P: Current event of unknown type ([weather_event_type]) - [time_left] seconds left"
 	else
 		msg = "P: No event"
 	return ..()
 
 /datum/controller/subsystem/weather/fire()
-	if (controller_state_lock)
+	if (!map_holder || controller_state_lock)
 		return
 
 	// End our current event if we must
@@ -82,30 +85,36 @@ SUBSYSTEM_DEF(weather)
 		end_weather_event()
 		return
 
+	if(weather_event_instance?.has_process)
+		weather_event_instance.handle_weather_process()
+
 	// If there's a weather event, return
 	if (is_weather_event)
 		return
 
 	// Check if we have had enough time between events
-	if (last_event_end_time + map_holder.min_time_between_events > world.time)
+	if (!COOLDOWN_FINISHED(src, last_event_end_time) || !COOLDOWN_FINISHED(src, last_event_check_time))
 		return
 
 	// Each map decides its own logic for implementing weather events.
-	if (!is_weather_event_starting && map_holder.should_start_event())
-		// Set up controller state
-		is_weather_event_starting = TRUE
-		weather_event_type = map_holder.get_new_event()
+	if (!is_weather_event_starting)
+		COOLDOWN_START(src, last_event_check_time, map_holder.min_time_between_checks)
+		if(map_holder.should_start_event())
+			// Set up controller state
+			is_weather_event_starting = TRUE
+			weather_event_type = map_holder.get_new_event()
 
-		// Tell the map_holder we're starting
-		map_holder.weather_warning(weather_event_type)
+			// Tell the map_holder we're starting
+			map_holder.weather_warning(weather_event_type)
 
-		addtimer(CALLBACK(src, .proc/start_weather_event), map_holder.warn_time)
+			addtimer(CALLBACK(src, .proc/start_weather_event), map_holder.warn_time)
 
 
 // Adjust our state to indicate that we're starting a new event
 // and tell all the mobs we care about to check back in to realize there's
 // now weather.
 /datum/controller/subsystem/weather/proc/start_weather_event()
+	SHOULD_NOT_SLEEP(TRUE)
 	if (controller_state_lock)
 		return
 
@@ -115,6 +124,8 @@ SUBSYSTEM_DEF(weather)
 	if(!weather_event_instance)
 		message_admins(SPAN_BLUE("Bad weather event of type [weather_event_type]."))
 		return
+
+	weather_event_instance.start_weather_event()
 
 	// Maintain the controller state
 	controller_state_lock = TRUE
@@ -128,16 +139,21 @@ SUBSYSTEM_DEF(weather)
 	else
 		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] starting with duration of [weather_event_instance.length] ds."))
 
-	if (weather_event_instance.turf_overlay_icon_state)
-		curr_master_turf_overlay.icon_state = weather_event_instance.turf_overlay_icon_state
+	curr_master_turf_overlay.icon_state = weather_event_instance.turf_overlay_icon_state
+	curr_master_turf_overlay.alpha = weather_event_instance.turf_overlay_alpha
+	for(var/area/area as anything in weather_areas)
+		if(area.weather_enabled)
+			for(var/area/subarea as anything in area.related)
+				subarea.overlays += curr_master_turf_overlay
 
-	update_mobs()
+	update_mobs_weather()
 	controller_state_lock = FALSE
 
 // Adjust our state to indicate that the weather event that WAS running is over
 // and tell all the mobs we care about to check back in to realize there's
 // no more weather.
 /datum/controller/subsystem/weather/proc/end_weather_event()
+	SHOULD_NOT_SLEEP(TRUE)
 
 	if (controller_state_lock)
 		return
@@ -147,6 +163,10 @@ SUBSYSTEM_DEF(weather)
 		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] ending after [weather_event_instance.length] ds."))
 	else
 		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] ending after [weather_event_instance.length] ds."))
+
+	for(var/area/area as anything in weather_areas)
+		for(var/area/subarea as anything in area.related)
+			subarea.overlays -= curr_master_turf_overlay
 
 	if (map_holder.no_weather_turf_icon_state)
 		curr_master_turf_overlay.icon_state = map_holder.no_weather_turf_icon_state
@@ -159,32 +179,15 @@ SUBSYSTEM_DEF(weather)
 		weather_event_instance = null
 
 	is_weather_event = FALSE
-	update_mobs()
+	update_mobs_weather()
 	controller_state_lock = FALSE
-	last_event_end_time = world.time
+	COOLDOWN_START(src, last_event_end_time, map_holder.min_time_between_events)
 
-
-// Enqueue areas
-/datum/controller/subsystem/weather/proc/add_as_weather_area(var/area/A, var/list/weather_areas)
-	if (istype(A, /area/space) || !A.weather_enabled)
-		return
-
-	weather_areas += A
-	for (var/area/relatedA in A.related)
-		weather_areas += relatedA
-
-// Check whether or not a given atom should be affected by weather.
-// Uses a switch statement on map_tag to hand the execution off to
-// map-dependent logic.
-/datum/controller/subsystem/weather/proc/weather_affects_check(var/atom/A)
-	return map_holder.should_affect_atom(A)
-
-
-/datum/controller/subsystem/weather/proc/update_mobs()
-	// Update weather for living mobs
-	for (var/i in (GLOB.alive_human_list + GLOB.living_xeno_list))
-		var/mob/living/L = i
-		L.update_weather()
+/datum/controller/subsystem/weather/proc/update_mobs_weather()
+	for(var/mob/mob as anything in GLOB.living_mob_list)
+		mob?.client?.soundOutput?.update_ambience(null, null, TRUE)
+		if(!is_weather_event)
+			mob.clear_fullscreen("weather")
 
 /obj/effect/weather_vfx_holder
 	name = "weather vfx holder"

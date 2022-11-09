@@ -482,37 +482,34 @@
 	if(LAZYLEN(linked_pylons))
 		switch(get_pylon_protection_level())
 			if(TURF_PROTECTION_MORTAR)
-				to_chat(user, "The ceiling above is made of light resin. Doesn't look like it's going to stop much.")
-				return
+				return "The ceiling above is made of light resin. Doesn't look like it's going to stop much."
 			if(TURF_PROTECTION_CAS)
-				to_chat(user, "The ceiling above is made of resin. Seems about as strong as a cavern roof.")
-				return
+				return "The ceiling above is made of resin. Seems about as strong as a cavern roof."
 			if(TURF_PROTECTION_OB)
-				to_chat(user, "The ceiling above is made of thick resin. Nothing is getting through that.")
-				return
+				return "The ceiling above is made of thick resin. Nothing is getting through that."
 
 	var/area/A = get_area(src)
 	switch(A.ceiling)
 		if(CEILING_GLASS)
-			to_chat(user, "The ceiling above is glass. That's not going stop anything.")
+			return "The ceiling above is glass. That's not going stop anything."
 		if(CEILING_METAL)
-			to_chat(user, "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything.")
+			return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
 		if(CEILING_UNDERGROUND_ALLOW_CAS)
-			to_chat(user, "It is underground. A thin cavern roof lies above. Doesn't look like it's going to stop much.")
+			return "It is underground. A thin cavern roof lies above. Doesn't look like it's going to stop much."
 		if(CEILING_UNDERGROUND_BLOCK_CAS)
-			to_chat(user, "It is underground. The cavern roof lies above. Can probably stop most ordnance.")
+			return "It is underground. The cavern roof lies above. Can probably stop most ordnance."
 		if(CEILING_UNDERGROUND_METAL_ALLOW_CAS)
-			to_chat(user, "It is underground. The ceiling above is made of thin metal. Doesn't look like it's going to stop much.")
+			return "It is underground. The ceiling above is made of thin metal. Doesn't look like it's going to stop much."
 		if(CEILING_UNDERGROUND_METAL_BLOCK_CAS)
-			to_chat(user, "It is underground. The ceiling above is made of metal.  Can probably stop most ordnance.")
+			return "It is underground. The ceiling above is made of metal.  Can probably stop most ordnance."
 		if(CEILING_DEEP_UNDERGROUND)
-			to_chat(user, "It is deep underground. The cavern roof lies above. Nothing is getting through that.")
+			return "It is deep underground. The cavern roof lies above. Nothing is getting through that."
 		if(CEILING_DEEP_UNDERGROUND_METAL)
-			to_chat(user, "It is deep underground. The ceiling above is made of thick metal. Nothing is getting through that.")
+			return "It is deep underground. The ceiling above is made of thick metal. Nothing is getting through that."
 		if(CEILING_REINFORCED_METAL)
-			to_chat(user, "The ceiling above is heavy reinforced metal. Nothing is getting through that.")
+			return "The ceiling above is heavy reinforced metal. Nothing is getting through that."
 		else
-			to_chat(user, "It is in the open.")
+			return "It is in the open."
 
 /turf/proc/wet_floor()
 	return
@@ -528,34 +525,34 @@
 //Check if you can plant weeds on that turf.
 //Does NOT return a message, just a 0 or 1.
 /turf/proc/is_weedable()
-	return !density
+	return density ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/space/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/open/gm/grass/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/open/gm/dirtgrassborder/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/open/gm/river/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/open/gm/coast/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/open/snow/is_weedable()
-	return !bleed_layer
+	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/mars/is_weedable()
-	return FALSE
+	return SEMI_WEEDABLE
 
 /turf/open/jungle/is_weedable()
-	return FALSE
+	return NOT_WEEDABLE
 
 /turf/closed/wall/is_weedable()
-	return TRUE //so we can spawn weeds on the walls
+	return FULLY_WEEDABLE //so we can spawn weeds on the walls
 
 
 /turf/proc/can_dig_xeno_tunnel()

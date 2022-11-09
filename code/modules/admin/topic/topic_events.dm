@@ -18,8 +18,12 @@
 			admin_cancel_evacuation()
 		if("disable_shuttle_console")
 			disable_shuttle_console()
+		if("add_req_points")
+			add_req_points()
 		if("medal")
 			owner.award_medal()
+		if("jelly")
+			owner.award_jelly()
 		if("pmcguns")
 			owner.toggle_gun_restrictions()
 		if("monkify")
@@ -77,12 +81,16 @@
 			message_staff("[key_name_admin(usr)] changed research clearance level to [level].")
 			chemical_data.clearance_level = level
 		if("give_research_credits")
-			var/amount = input(usr, "How many credits to add?") as num
+			var/amount = tgui_input_real_number(usr, "How many credits to add?")
 			if(amount != 0) //can add negative numbers too!
 				message_staff("[key_name_admin(usr)] added [amount] research credits.")
 				chemical_data.update_credits(amount)
 
 /datum/admins/proc/create_humans_list(var/href_list)
+	if(SSticker?.current_state < GAME_STATE_PLAYING)
+		alert("Please wait until the game has started before spawning humans")
+		return
+
 	var/atom/initial_spot = usr.loc
 	var/turf/initial_turf = get_turf(initial_spot)
 
@@ -149,6 +157,10 @@
 		message_staff("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
 
 /datum/admins/proc/create_xenos_list(var/href_list)
+	if(SSticker?.current_state < GAME_STATE_PLAYING)
+		alert("Please wait until the game has started before spawning xenos")
+		return
+
 	var/atom/initial_spot = usr.loc
 	var/turf/initial_turf = get_turf(initial_spot)
 

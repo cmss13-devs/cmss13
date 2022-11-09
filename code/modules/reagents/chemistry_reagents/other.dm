@@ -119,10 +119,7 @@
 
 /datum/reagent/water/reaction_obj(var/obj/O, var/volume)
 	src = null
-	if(istype(O,/obj/item/reagent_container/food/snacks/monkeycube))
-		var/obj/item/reagent_container/food/snacks/monkeycube/cube = O
-		if(!cube.package)
-			cube.Expand()
+	O.extinguish()
 
 /datum/reagent/water/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with water can help put them out!
 	if(!istype(M, /mob/living))
@@ -485,21 +482,6 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
 
-/datum/reagent/fuel/reaction_obj(var/obj/O, var/volume)
-	var/turf/the_turf = get_turf(O)
-	if(!the_turf)
-		return //No sense trying to start a fire if you don't have a turf to set on fire. --NEO
-	new /obj/effect/decal/cleanable/liquid_fuel(the_turf, volume)
-
-/datum/reagent/fuel/reaction_turf(var/turf/T, var/volume)
-	new /obj/effect/decal/cleanable/liquid_fuel(T, volume)
-
-/datum/reagent/fuel/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with welding fuel to make them easy to ignite!
-	if(!istype(M, /mob/living))
-		return
-	if(method == TOUCH)
-		M.adjust_fire_stacks(volume / 10)
-
 /datum/reagent/space_cleaner
 	name = "Space cleaner"
 	id = "cleaner"
@@ -587,6 +569,7 @@
 	burncolormod = 2
 	chemclass = CHEM_CLASS_RARE
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nanites
 	name = "Nanomachines"
@@ -709,7 +692,7 @@
 /datum/reagent/napalm/ut
 	name = "UT-Napthal Fuel"
 	id = "utnapthal"
-	description = "Known as Ultra Thick Napthal Fuel, a sticky combustable liquid chemical, typically used with flamethrowers."
+	description = "Known as Ultra Thick Napthal Fuel, a sticky combustible liquid chemical, typically used with flamethrowers."
 	burncolor = "#EE6515"
 	properties = list()
 
@@ -723,19 +706,20 @@
 
 // This is gellie fuel. Green Flames.
 /datum/reagent/napalm/gel
-	name = "Napthal Gel"
+	name = "Napalm B-Gel"
 	id = "napalmgel"
-	description = "Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot."
+	description = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to ignite them."
 	flameshape = FLAMESHAPE_LINE
 	color = "#00ff00"
 	burncolor = "#00ff00"
 	burn_sprite = "green"
 	properties = list()
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /datum/reagent/napalm/gel/New()
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
-		PROPERTY_DURATION 	= BURN_TIME_INSTANT,
+		PROPERTY_DURATION 	= BURN_TIME_TIER_5,
 		PROPERTY_RADIUS 	= 7
 	)
 	. = ..()
@@ -744,7 +728,7 @@
 /datum/reagent/napalm/blue
 	name = "Napalm X"
 	id = "napalmx"
-	description = "A sticky combustable liquid chemical that burns extremely hot."
+	description = "A sticky combustible liquid chemical that burns extremely hot."
 	color = "#00b8ff"
 	burncolor = "#00b8ff"
 	burn_sprite = "blue"
@@ -762,12 +746,13 @@
 /datum/reagent/napalm/green
 	name = "Napalm B"
 	id = "napalmb"
-	description = "A wide-spreading sticky combustable liquid chemical that burns slowly with a low temperature."
+	description = "A special variant of napalm that's unable to cling well to anything, but disperses over a wide area while burning slowly. The composition reacts with inorganic materials to ignite them, causing severe damage."
 	flameshape = FLAMESHAPE_TRIANGLE
 	color = "#00ff00"
 	burncolor = "#00ff00"
 	burn_sprite = "green"
 	properties = list()
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /datum/reagent/napalm/green/New()
 	properties = list(
@@ -780,7 +765,7 @@
 /datum/reagent/napalm/penetrating
 	name = "Napalm EX"
 	id = "napalmex"
-	description = "A sticky combustable liquid chemical that penetrates the best fire retardants."
+	description = "A sticky combustible liquid chemical that penetrates the best fire retardants."
 	color = "#800080"
 	burncolor = "#800080"
 	burn_sprite = "dynamic"
@@ -805,19 +790,13 @@
 	chemfiresupp = TRUE
 	burncolor = "#ff9300"
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 8)
+	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9)
 
 /datum/reagent/chlorinetrifluoride/on_mob_life(var/mob/living/M) // Not a good idea, instantly messes you up from the inside out.
 	. = ..()
 	M.adjust_fire_stacks(max(M.fire_stacks, 15))
 	M.IgniteMob(TRUE)
 	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
-
-/datum/reagent/chlorinetrifluoride/reaction_mob(var/mob/M, var/method = TOUCH, var/volume) // Spilled on you? Not good either, but not /as/ bad.
-	var/mob/living/L = M
-	if(istype(L))
-		L.adjust_fire_stacks(max(L.fire_stacks, 10))
-		L.IgniteMob(TRUE)
 
 /datum/reagent/methane
 	name = "Methane"
@@ -962,7 +941,7 @@
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC))
+		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC) || !H.huggable)
 			volume = 0
 			return
 		if(volume < overdose_critical)

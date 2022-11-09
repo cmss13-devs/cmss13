@@ -34,8 +34,7 @@
 	w_class = SIZE_MEDIUM
 	eye_protection = 2
 	vision_impair = VISION_IMPAIR_MAX
-	var/hug_memory = 0 //Variable to hold the "memory" of how many anti-hugs remain.  Because people were abusing the fuck out of it.
-
+	
 /obj/item/clothing/head/welding/attack_self(mob/user)
 	..()
 	toggle()
@@ -54,7 +53,6 @@
 			icon_state = initial(icon_state)
 			eye_protection = initial(eye_protection)
 			to_chat(usr, "You flip the [src] down to protect your eyes.")
-			anti_hug = hug_memory //This will reset the hugged var, but ehh. More efficient than making a new var for it.
 		else
 			vision_impair = VISION_IMPAIR_NONE
 			flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
@@ -62,8 +60,6 @@
 			icon_state = "[initial(icon_state)]up"
 			eye_protection = 0
 			to_chat(usr, "You push the [src] up out of your face.")
-			hug_memory = anti_hug
-			anti_hug = 0
 		up = !up
 
 		if(ishuman(loc))

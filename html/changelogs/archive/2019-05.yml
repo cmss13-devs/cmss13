@@ -1,0 +1,284 @@
+2019-05-05:
+  Cakey:
+  - bugfix: Removed all walls under windows in Desert Dam.
+  - bugfix: Fixed desert dirt being strange.
+  - bugfix: Fixed tank secondary and support use hotkeys (middle mouse and ctrl-clicking
+      based on active weapon).
+  Fourkhan:
+  - bugfix: Cryotubes now work again.
+  - tweak: Cryotubes automatically eject patients after their wounds are healed.
+  - tweak: Rebalanced Ravager spin slash.
+  - tweak: Decreased damage by ~30%.
+  - tweak: Marines targetted by spin slash will now be knocked over.
+  - bugfix: Icon now correctly updates when the ability is on cooldown.
+  - bugfix: LOOC now works inside the tank.
+  Frans_Feiffer:
+  - imageadd: High Command has authorized a new, more fitting design for the Command
+      Tablet.
+  John Titor:
+  - wip: A number of balance changes have been made to prepare for new Xeno strains
+      in the following weeks.
+  - tweak: Refactored xeno health scaling. Xenos receive their largest growth in HP
+      at Elder, while Ancient is now a very small increase.
+  - rscadd: Moderately increased xeno health across the board, with more favor toward
+      flimsier castes. Ancient lurkers are no longer weaker than ancient drones.
+  - rscadd: Halved the time it takes for a ghost to occupy a buried larva. Xenos will
+      obtain reinforcements from deadchat faster.
+  MattAtlas, Vicacrov:
+  - rscadd: Squad leaders, attention! Squad-based requisitions have been added west
+      of your squad preps. It will be your (and your acting variants') job to manage
+      them.
+  - rscadd: These requisitions outlets have all three vendors found in cargo, however
+      they have less stock overall. These numbers are not final and will change!
+  - rscadd: Acting squad leaders have access to the squad requisitions rooms.
+  - rscadd: All squad roles now have an attachments box (the same as WO's) in their
+      vendor.
+  - tweak: Flare ammo is now IFF.
+  Neth:
+  - rscdel: Old armor logic was killed, thrown out of the window and buried.
+  - rscadd: New armor logic works as direct % damage reduction. If armor is too high
+      compared to damage, further reduction is applied.
+  - rscadd: Damage for a lot of guns was changed. Health and armor for both sides
+      was changed. Thus there is no point in giving changelog for them... but still
+      see far below.
+  - rscadd: Armor hardiness is added to xenos. The longer xeno stays in combat, the
+      less effective armor becomes up to the point of being completely useless. Your
+      armor value is displayed to the right as a shield icon.
+  - rscadd: If xeno doesn't take damage to armor for 30 seconds and is on weeds, the
+      armor regeneration will start. It will take 15 minutes for crusher to go from
+      0 to 100, and 5 minutes for low armored units like spitters, warriors, hivelords,
+      burrowers.
+  - rscadd: Smaller xenos have evasion, which basically adds accuracy required to
+      hit hostiles properly. Naturally, castes that don't have armor have this characteristic.
+      Evasion goes better with upgrade for those castes.
+  - rscadd: If you have more than 60% hardiness you regain armor faster. For example
+      crusher will recover from 60% to 100% in 3 minutes.
+  - rscadd: Warding pheromones no longer give armor and damage reduction. Warding
+      increases needed critical damage to die, reduces damage to armor up to 50% on
+      max level.
+  - rscadd: Burrowers are stronger in combat so they can be backstabbing semi-combat
+      caste, but they are slow above ground.
+  - rscadd: Changed how many xeno-larva spawn from latejoin marines.
+  - rscadd: Queen heal and give plasma are made stronger to accomodate new HP values
+      for Xeno.
+  - rscadd: Xeno progression is now fixed, so every caste progresses in a same way
+  - rscadd: Runners, Drones, Sentinels, Boilers, Lurkers now have no armor and can't
+      get any. They pretty much don't need armor integrity and are expected to get
+      by with just pure health pool.
+  - rscadd: CPR can now extend defibbable time for marines if you do it no often that
+      once per 10 seconds.
+  - rscadd: All weapon nerfs have been removed. M41 normal ammo received big damage
+      increase. Slugs have less armor penetration but slugs break armor a lot faster.
+      M39 normal ammo damage buffed. Flechette buffed, buckshot back to old damage
+      values but armor can make it not as good as before. Buckshot should be good
+      against unarmored.
+  - rscadd: Smartgun is super accurate (because it's smart), deals not very much damage
+      but breaks armor fast.
+  - rscadd: Sentry turrets are very accurate but suck at armor piercing. Use it against
+      quick enemies and use m56 against armored targets.
+  - rscadd: SMG fire rate and damage buffed.
+  - rscadd: Recovery is nullified while xeno is on fire.
+  - rscadd: Bipod increases rate of fire of sniper rifle by 150%
+  Ranged66:
+  - tweak: Gave simple mobs (carp, npc aliens etc) attack animations and fixed hunter
+      spiders.
+  - rscadd: The Runner caste has gained a weaker long-range vision ability for scouting
+      purposes.
+  - rscadd: Airlocks now get damaged by projectiles and gained special effects upon
+      being destroyed.
+  Slywater:
+  - bugfix: Fixed more wall-windows on Trijent.
+  - bugfix: Fixed Eastern power on Trijent.
+  - tweak: CPR can now prevent suffocation.
+  TheDonkified:
+  - rscadd: Defibbing someone will make you unpushable.
+  - bugfix: Fixed sprite issues with revolvers and break action shotgun sprites.
+  - bugfix: Gun attachments are visually removed now.
+  - bugfix: Flamer sprite will change when unlighting again.
+  - bugfix: Fixed railgun losing zoom upon upgrading.
+  - bugfix: Removed the ping message.
+  - bugfix: Fixed commander medals not being as long as they used to be.
+  - bugfix: Fixed resin structures not showing proper name in textlog and made hivelord
+      structures show 'thick' for appropriate structures.
+  - bugfix: 'Fixed tank middle and ctrl click not working. Note: it is not cyclic.
+      Order of hardpoints are prioritized in the following order: primary -> secondary
+      -> support. This is regardless of which one is currently selected.'
+  - bugfix: Repairing hardpoints should actually repair 10% of their health now.
+  - bugfix: Apostrophes should appear properly in situations where they previously
+      didn't.
+  - bugfix: Gun overlay should properly update now.
+  - bugfix: Eggsac carrier can no longer store huggers.
+  Vicacrov:
+  - rscadd: Assigned overwatch officers now show up on the stat panel for each squad.
+  - bugfix: Fixed the stat panel not updating for marines.
+  - tweak: Reworked the left half of lower medical on the Almayer. The details are
+      as follows.
+  - tweak: Chemistry can be now manned by two personnel to help medics at the early
+      game rush. Its equipment was expanded accordingly.
+  - tweak: The door to the Treatment Center is now in line with the Alamo's starboard
+      hatches.
+  - tweak: The top-left equipment room was merged into the bottom-left one and the
+      new chemistry was moved into its place.
+  - tweak: Chemistry got a new vending machine called WeylandChem Plus. It only has
+      chem bottles, doubled amount. They vend directly into your hand and their transfer
+      amount starts out maxed.
+  - tweak: Added advanced first aid kits, syringes, and syringe cases for public use.
+  - tweak: Defibrillators were added to the Treatment Center so doctors are less likely
+      to take them.
+  - tweak: The premade cryoxadone beakers were moved to chemistry.
+  - tweak: Added more rollerbeds for public use and one more welding helmet.
+  - tweak: Defibrillator rechargers, vendors, and body bag boxes are now closer to
+      the entrance for easier accessibility.
+  monkeysfist101:
+  - imageadd: Added cigarette packet inhands.
+  - tweak: Modified Macho Sauce to accommodate diet drinks.
+  - tweak: Reorganized most drink files and culled redundant drink reagents.
+  - imageadd: Souto now has inhand sprites.
+2019-05-14:
+  TheDonkified:
+  - rscadd: Reworked the squad distribution computer so that almost anyone can be
+      assigned to a squad. The only people who cannot be assigned to a marine squad
+      are untrained civilians such as doctors. You must grab the person and click
+      on the squad distribution computer to "scan" them in, and make sure they're
+      standing next to the computer during the squad change/assignment.
+  - tweak: Self-examine is slightly more descriptive in very niche situations.
+  - tweak: You gain your original speed back much faster after being healed/getting
+      surgery.
+  - tweak: Made 'Go to Lobby' the default option when you do not get your job. Make
+      sure your prefs are set to the correct option.
+  - tweak: Made the M56D mount more resistant to explosions. Damage to melee will
+      remain the same.
+  - tweak: The clunkiness when setting up the M56D has been reduced. You still need
+      to place the mount and setup the M56D as you normally would before. However,
+      once the M56D has been fully built, you don't have to keep placing the mount
+      and then the M56D. Instead, mount remains attached to the M56D and you only
+      have to setup it up and screwdriver M56D to set it up again at a different position.
+      Sprites by Frans.
+  - rscadd: M56D mount can be constructed. First you need 5 plasteel (this is excuse
+      for resistance to explosions). Then 10 metal and weld. Placeholder sprites for
+      now.
+  - tweak: Motion detector can fit in armor slot now.
+  - rscadd: Humanoid mobs can no longer hurt others when on HELP intent. This includes
+      shooting and melee. If there are any situations that I missed, report on Gitlab.
+  - rscadd: There is now a preference to disable NON-HELP intent actions on YOURSELF
+      from going through. For example, if you keep PBing and you accidentally hit
+      yourself during screenshake.
+  - tweak: Medic and engi vendors allow you to pick a vest instead of being constrained
+      to webbing. Other specialized roles will still only get default webbing.
+  - rscadd: Can repair broken vendors as squad engi+. Steps are screwdriver -> wirecutter
+      -> 5 cable coil -> 1 metal -> screwdriver.
+  - rscadd: Engineers can deconstruct all deconstructable machines now. However, they
+      can't rebuild them (MTs+ can do that though).
+  - bugfix: Supply console in req can be repaired.
+  - rscadd: Burrowers can rename tunnels.
+  - tweak: Railgun has lower delay between shots (10 seconds instead of 15).
+  - tweak: Railgun always hits barricades.
+  - tweak: Railgun does more damage to barricades.
+  TobiNerd:
+  - tweak: 'Added a rollerbed to medic''s essential kit #6417.'
+  - tweak: Replaced the rollerbeds in medic prep with a box of sterile masks.
+  - tweak: 'Added a few more training nades to firing range. #6488'
+  - tweak: 'Added two more weapon racks to each prep and moved the surplus uniform
+      vendor. #6378'
+  - tweak: 'Adjusted the CIC lobby and MP desk for better visibility. #6369'
+  - tweak: Added a box of donk-pockets to the research lobby.
+  - tweak: Researchers now have access to containment lockdown.
+  TobiNerd, Vicacrov:
+  - tweak: Replaced the extra building material in SL requisitions with random kits.
+  Triiodine:
+  - bugfix: The MOU and M44 should now draw properly.
+  - bugfix: The M44 belt should no longer be honked.
+  - tweak: All pistol belts now hold a maximum of 7 objects instead of 8 now.
+  - imageadd: Re-sprited the stun-baton.
+  Vicacrov:
+  - bugfix: Fixed the Normandy missing a NanoMed and an intercom.
+  - bugfix: Fixed a broken disposal pipe at east delta preparations.
+  - tweak: Made the hangar autolathe public again.
+  - tweak: SL reqs were given a queue and were a bit remodelled.
+  - rscadd: Specialists now have access to SL req.
+  - rscadd: Intelligence Officers now have vendors instead of lockers.
+  - tweak: Intelligence Officers now can hack APCs and airlocks instead of being able
+      to build barricades.
+  - tweak: Quick Clot and Peridaxon pill dosages were lowered to 7 from 10, to avoid
+      instant ODing when two people administer them simultaneously. (OD threshold
+      is still 20.)
+  - tweak: Epinephrine is now made of Carbon, Nitrogen, Oxygen, and yields twice as
+      much as before.
+  - rscadd: Pilot Officers and Synthetics can now regain control over the dropship
+      by using the console - provided they can hack it for 3 minutes without dying.
+  - bugfix: Folding barricades, just like any other type of barricades, cannot be
+      deployed on the dropships anymore.
+  - bugfix: Intelligence officers now spawn with a pair of insulated gloves.
+  - tweak: MPs were given morgue, SL req, and engineering accesses.
+  - tweak: Predator Young Bloods were renamed to Bloodeds.
+  - tweak: Triggered trap messages in the hivemind now appear in a smaller, italicized
+      font.
+  - tweak: Upon evolving, the hive now gets an accurate message whether T2 or T3 slots
+      are open, instead of a generalized alert.
+2019-05-15:
+  Fourkhan:
+  - tweak: Nerfed limb bleedout rate back to sane levels.
+  - rscdel: Nerfed HEFA boiler.
+2019-05-18:
+  Cakey:
+  - rscadd: CO, XO, SOs, POs, TCs, and IOs now have HUD icons for all marines to identify
+      them by. Go and get some glorious charges going!
+  - tweak: The MOU53 shotgun is now triple-chambered, with a triple-fire burst mode.
+  Fourkhan:
+  - tweak: Nerfed Ravager HP slightly at mature/elder/ancient.
+  Neth Iafins:
+  - tweak: Due to fix in MC we had to update how plasma regen works now that it is
+      called less often. Plasma regen is now % related to xenos total plasma, but
+      still different from caste to caste.
+  TheDonkified:
+  - bugfix: You can screwdriver unbroken vendors again.
+  - tweak: Reverted delimb bleeding change.
+  - bugfix: Female humans have bra's again.
+  TobiNerd:
+  - bugfix: Fixes dropships landing and merging with each other.
+  Vicacrov:
+  - bugfix: Readded the data detector to the Intelligence Officers' equipment rack.
+  monkeysfist101:
+  - rscadd: PiZzA TiMe.
+  - imagecadd: Cleaned-up and tweaked the spacing of most vending machine sprites.
+2019-05-23:
+  Triiodine:
+  - bugfix: Fixed the M44 mob, belt states.
+  - bugfix: Fixed a stray pixel on the medical overlays.
+  - bugfix: Fixed a bunch of deep rooted Predator icon issues.
+  - bugfix: Fixed marinemeds vanishing their supply stock while denying users.
+  - bugfix: Fixed synthetic stock being off color this whole time.
+  Vicacrov:
+  - rscadd: Added a roundend announcement listing every fallen marine, if their dog
+      tag is added to the memorial slab.
+  - rscadd: Predators were given a new skill called Mark for Hunt. Marking a mob will
+      notify both parties - and the staff - that the hunt is on. Predators, please
+      use this to avoid unnecessary ahelps and player reports.
+2019-05-24:
+  ReDikAl.ZiP:
+  - imageadd: Remade sprites for Neuro/Acid boiler globs!
+  - imageadd: Added new sprite for Shatter acid glob.
+  - bugfix: Fixed Predator Radio sprite.
+  - rscadd: Added Tank Belt. It can hold two tank-ammo clips.
+  - maptweak: Added two tank belts into Tank Office
+  Retrokinesis:
+  - rscadd: G2 and G3 synthetic units now come equipped with built-in medical and
+      security HUDs. Toggle them from the new Synthetic panel.
+  - rscadd: Added an industrial blowtorch as an option in the synth equipment vendor.
+  - rscadd: Snowflakes rejoice! Additional fashion options are now available from
+      the synth vendor.
+  TheDonkified:
+  - bugfix: Fixed bug with wirecutters not properly interacting with vendors (for
+      hacking).
+  - bugfix: Fixed issues with timed actions on other people cancelling randomly.
+  - bugfix: Fixed tank not trampling deployable barricades
+  - bugfix: Fixed BE not permakilling.
+  - rscadd: Made the help intent change a preference disabled by default.
+  Triiodine:
+  - imageadd: Updated the Squad HUD. For real this time.
+  Vicacrov:
+  - bugfix: Fixed the M82-F flare gun accepting dead flares.
+  - bugfix: Fixes synthetics getting permament pain damage from yanking out embedded
+      objects from themselves.
+  - bugfix: Fixed the nanopaste not being stackable.
+  - bugfix: Fixed books having broken links.

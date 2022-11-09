@@ -182,3 +182,10 @@
 	prefix = "ACMC"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o10c
 	ranking = 24
+
+/datum/paygrade/marine/o10s
+	paygrade = "MO10S"
+	name = "Commandant of the Marine Corps"
+	prefix = "CMC"
+	rank_pin = /obj/item/clothing/accessory/ranks/marine/o10c
+	ranking = 25

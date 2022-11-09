@@ -268,8 +268,14 @@ var/list/datum/mob_hud/huds = list(
 	if(stat == DEAD)
 		holder.icon_state = "[health_hud_type]0"
 	else
-		var/amount = round(health*100/maxHealth, 10)
-		if(!amount) amount = 1 //don't want the 'zero health' icon when we still have 4% of our health
+		var/amount = health > 0 ? round(health * 100 / maxHealth, 10) : CEILING(health, 10)
+		if(health < 0)
+			var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
+			amount = round((health / (crit_health - warding_health)) * -100, 10)
+		else
+			amount = CEILING((health / maxHealth) * 100, 10)
+		if(!amount)
+			amount = -1 //don't want the 'zero health' icon when we are crit
 		holder.icon_state = "[health_hud_type][amount]"
 
 /mob/living/carbon/Xenomorph/proc/overlay_shields()
@@ -329,7 +335,9 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/living/carbon/human/med_hud_set_status()
 	var/image/holder = hud_list[STATUS_HUD]
+	holder.overlays.Cut()
 	var/image/holder2 = hud_list[STATUS_HUD_OOC]
+	holder2.overlays.Cut()
 	var/image/holder3 = hud_list[STATUS_HUD_XENO_INFECTION]
 	var/image/holder4 = hud_list[STATUS_HUD_XENO_CULTIST]
 
@@ -340,9 +348,23 @@ var/list/datum/mob_hud/huds = list(
 	holder4.icon_state = "hudblank"
 
 	if(species && species.flags & IS_SYNTHETIC)
-		holder.icon_state = "hudsynth"
-		holder2.icon_state = "hudsynth"
-		holder3.icon_state = "hudsynth"
+		holder3.icon_state = "hudsynth" // xenos have less awareness of synth status
+		if(stat != DEAD)
+			holder.icon_state = "hudsynth"
+			holder2.icon_state = "hudsynth"
+		else
+			if(!client)
+				var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
+				if(!G)
+					holder.icon_state = "hudsynthdnr"
+					holder2.icon_state = "hudsynthdnr"
+				else if(!G.client)
+					holder.overlays += image('icons/mob/hud/hud.dmi', "hudnosynthclient")
+					holder2.overlays += image('icons/mob/hud/hud.dmi', "hudnosynthclient")
+			else
+				holder.icon_state = "hudsynthdead"
+				holder2.icon_state = "hudsynthdead"
+			return
 	else
 		var/revive_enabled = stat == DEAD && check_tod() && is_revivable()
 		if(stat == DEAD)
@@ -378,34 +400,38 @@ var/list/datum/mob_hud/huds = list(
 
 		if(stat == DEAD)
 			if(revive_enabled)
-				var/mob/dead/observer/G = get_ghost()
-				if(client || istype(G))
-					if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
-						holder.icon_state = "huddeadalmost"
+				if(!client)
+					var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
+					if(!G)
+						holder.icon_state = "huddeaddnr"
 						if(!holder2_set)
-							holder2.icon_state = "huddeadalmost"
+							holder2.icon_state = "huddeaddnr"
 							holder3.icon_state = "huddead"
 							holder2_set = 1
-					else if(world.time > timeofdeath + revive_grace_period - 2.5 MINUTES)
-						holder.icon_state = "huddeadclose"
-						if(!holder2_set)
-							holder2.icon_state = "huddeadclose"
-							holder3.icon_state = "huddead"
-							holder2_set = 1
-					else
-						holder.icon_state = "huddeaddefib"
-						if(!holder2_set)
-							holder2.icon_state = "huddeaddefib"
-							holder3.icon_state = "huddead"
-							holder2_set = 1
-				else
-					holder.icon_state = "huddeaddnr"
+						return
+					else if(!G.client)
+						holder.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
+						holder2.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
+				if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
+					holder.icon_state = "huddeadalmost"
 					if(!holder2_set)
-						holder2.icon_state = "huddeaddnr"
+						holder2.icon_state = "huddeadalmost"
+						holder3.icon_state = "huddead"
+						holder2_set = 1
+				else if(world.time > timeofdeath + revive_grace_period - 2.5 MINUTES)
+					holder.icon_state = "huddeadclose"
+					if(!holder2_set)
+						holder2.icon_state = "huddeadclose"
+						holder3.icon_state = "huddead"
+						holder2_set = 1
+				else
+					holder.icon_state = "huddeaddefib"
+					if(!holder2_set)
+						holder2.icon_state = "huddeaddefib"
 						holder3.icon_state = "huddead"
 						holder2_set = 1
 			else
-				if(heart && (heart.is_broken() && check_tod())) // broken heart icon
+				if(heart && (heart.organ_status >= ORGAN_BROKEN && check_tod())) // broken heart icon
 					holder.icon_state = "huddeadheart"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadheart"
@@ -595,7 +621,7 @@ var/list/datum/mob_hud/huds = list(
 	holder.overlays.Cut()
 
 	if(mob_flags & MUTINEER)
-		holder.icon_state = "hudmutineer"
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer")
 		return
 
 	F.modify_hud_holder(holder, src)
@@ -691,15 +717,15 @@ var/global/image/hud_icon_hudfocus
 	holder.overlays.Cut()
 	if(mobility_aura)
 		if(!hud_icon_hudmove)
-			hud_icon_hudmove = image('icons/mob/hud/hud.dmi', src, "hudmove")
+			hud_icon_hudmove = image('icons/mob/hud/marine_hud.dmi', src, "hudmove")
 		holder.overlays += hud_icon_hudmove
 	if(protection_aura)
 		if(!hud_icon_hudhold)
-			hud_icon_hudhold = image('icons/mob/hud/hud.dmi', src, "hudhold")
+			hud_icon_hudhold = image('icons/mob/hud/marine_hud.dmi', src, "hudhold")
 		holder.overlays += hud_icon_hudhold
 	if(marksman_aura)
 		if(!hud_icon_hudfocus)
-			hud_icon_hudfocus = image('icons/mob/hud/hud.dmi', src, "hudfocus")
+			hud_icon_hudfocus = image('icons/mob/hud/marine_hud.dmi', src, "hudfocus")
 		holder.overlays += hud_icon_hudfocus
 	hud_list[ORDER_HUD] = holder
 

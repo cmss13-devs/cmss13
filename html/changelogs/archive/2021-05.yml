@@ -1,0 +1,543 @@
+2021-05-01:
+  Nanu:
+  - rscadd: Added devs and updated thanks in the changelog_html.
+  Segrain:
+  - bugfix: MARSOC's engineering tools once again have their sprites.
+2021-05-02:
+  Carlarc:
+  - rscadd: Ported datum status traits from TG. Applied them to Yautja code.
+  - tweak: You can perform surgery on Predators if you so choose.
+  - tweak: You can use the ceremonial dagger to flay things of a different species
+      than yours, if you're strong enough.
+  - rscadd: 'Ravager: Visual indicators for empowering, scissor cut and super-empowering
+      (Empowering with 3 or more tragets)'
+  - rscadd: Slightly increased charge CD reduction per slash. (Experimental)
+  - rscadd: 'Super-empowering and slash buff are now based on targets nearby instead
+      of shields, and the former gives the following effects for 5 seconds:'
+  - rscadd: 'On Empower: Charge tramples + slashes on hit, Scissor cut superslows.'
+  - rscadd: 'On Empower: Grow a bright red spooky hue.'
+  - bugfix: 'Praetorian: Fixed Oppressor buffed slash not dealing damage.'
+  - rscdel: Halved Oppressor Punch damage.
+  Segrain:
+  - spellcheck: Building with Build Distribution technology no longer says that it
+      spent plasma when it actually was free.
+  - bugfix: Hivelord's thickening resin structures now has proper static cost per
+      structure type.
+  Vanagandr:
+  - tweak: Tidied armour plate backend code and tweaked descriptions.
+  - tweak: Examining a uniform with attached trauma plate will now show you its damage
+      status.
+  - tweak: Examining a uniform with a shoulder holster will now tell you what gun
+      it has in it, if any.
+  - tweak: Added break sound and message to ceramic plate.
+  - tweak: You can no longer attach armour plates to suit/armor type clothing (bulletproof
+      vests etc). No different mechanically as they only function when attached to
+      a uniform, but it prevents confusion.
+  - bugfix: Removed duplicate message when attaching armour plates to uniforms.
+  - bugfix: A human who is buckled to a bed or goes prone no longer has rotated chat
+      text. Other transforms will still mess it up if they don't countertransform
+      the langchat image, but resting/buckle is the main chat bug.
+2021-05-03:
+  Jackie_Estegado:
+  - rscadd: Added a third option to Switch Storage Draw Method, which gets the item
+      stored in the left most slot.
+  - bugfix: Locked grenadepacks can now only be emptied by their owner.
+  TheDonkified:
+  - tweak: Cleans up and reorganizes mortar code.
+  - bugfix: Mortar can be fired again if the turf being targetted gets a pylon up
+      before the mortar shell lands and detonates.
+  Triiodine:
+  - imageadd: Replaces jungle wall sprites with an updated version.
+  naut:
+  - rscadd: Changed a fair bit of stuff regarding the Commanding Officer and their
+      Mateba.
+  - tweak: Replaced the M1911 in the CO vendor with an M4A3 custom. Also added a VP78
+      as a tertiary option.
+  - rscadd: CO vendor contents modified, as shown below.
+  - tweak: CO vendor now has boots and gloves added to the combat equipment section.
+  - tweak: CO vendor now has eyewear available as a selection, with SecHUD, MedHUD,
+      and three variants of sunglasses available.
+  - rscdel: Removed redundant dress options from the CO's dress vendor, see above.
+  - tweak: CO white beret name changed to 'marine captain white beret'.
+  - tweak: Description of CO armor and SO armor has been modified.
+  - tweak: Modified the name/desc of the lockable leather satchel to make it more
+      prominent.
+  - tweak: Battlefield Executions can now only be performed by COs and up. Mateba
+      PBs can still be used by anyone, only without execution.
+  - tweak: Mateba high impact ammo now comes loaded in the Mateba as standard. Mateba
+      high impact ammo in the belt increased to 3.
+  - tweak: Mateba's normal ammo AP doubled from 10 to 20. High impact AP remains the
+      same.
+  - tweak: Mateba damage increased by one tier.
+  - rscadd: Additional Mateba belts, variants, and accessories added for future implementation/admin
+      spawning.
+  - spellcheck: Fixed the Mateba explosive ammo having wrong spelling in its pathname.
+  - rscadd: Admiral stuff tweaked a bit. See below.
+  - tweak: Admiral jacket description and statistics changed. Subtype changed to marine
+      jacket subtype, now has 4 storage slots.
+  - tweak: Admirals now have MP-level police skill as well as engineering skill.
+  - tweak: Admirals now speak more languages.
+  - tweak: Admiral loadout tweaked. Now spawn with a telescopic baton, flash, command
+      tablet, and large Mateba pouch. Removed several vestigial items (such as the
+      breath mask and oxygen tank).
+  - tweak: Admirals now get alternative uniform options in the dress vendor.
+2021-05-04:
+  Jackie_Estegado:
+  - tweak: Added delay to deploying inflatables.
+  forest2001:
+  - rscadd: Added volume levels for certain radios. They cannot currently be changed
+      by the user. Heads of Department and certain special radios will now broadcast
+      in large text regardless of leadership skill. Important radios, such as SL,
+      RTO, PO and Command Radios will now broadcast in slightly larger text than normal
+      unless leadership level is higher than the volume.
+2021-05-05:
+  Jeser:
+  - imageadd: Added a lot of edited interior sprites for all vehicles.
+  - maptweak: Updated tank and van interiors.
+  - maptweak: Filled empty tiles in APC interior with proper parts.
+  - maptweak: Added phones to tank and APC interiors. They can be find under Vehicles
+      tab.
+  - bugfix: Fixed van's frontal passenger seat being very difficult to buckle in.
+  Triiodine:
+  - maptweak: Added a new access hallway to Kutjevo powerplant, this should make it
+      a more viable flank option.
+  - maptweak: Moved the grow platforms at Kutjevo Botany entrance to the center, shortening
+      the choke. It should be a more dynamic push.
+  - maptweak: Widened the east stone bridge into Kutjevo Botany Bay. Widened the Kutjevo
+      powerplant north entrance. Widened the far south east Botany Bay entrance.
+  - maptweak: Added a nailgun to the new access hallway in east Botany on Kutjevo.
+  - bugfix: Fixed some water layering issues on Kutjevo by botany bridge and on the
+      inlet props near the LZ.
+2021-05-06:
+  BIgboyyo:
+  - tweak: Buffed M16's Damage by 10%.
+  - tweak: Buffed the Dutch's Dozen M16's damage by 5% (Plus the 10% M16 buff).
+  - tweak: Dutch's Dozen soldiers now spawn with AP ammo for their M16's.
+  Jeser:
+  - bugfix: Fixed problem with flashbang cluster.
+  - imageadd: Edited sprites for flashbang cluster and for M40 stun grenade.
+  - rscadd: 'Added event version of flashbangs: M40 stun grenade. Policing skill isn''t
+      required to use grenade and neither grenade effects are affected by it. Knockdowns
+      only within 3x3 area, applies temporary blindness, deafness and daze with varying
+      strength based on distance to target. Xenos only get dazed and deaf. Lying down
+      significantly reduces flashbang''s effect.'
+2021-05-07:
+  50RemAndCounting:
+  - tweak: Changed all mentions of "Submissive" xenos hive in code to "Tamed"
+  Frans_Feiffer:
+  - tweak: At the request of BIgboyyo, made the priest robes a suit instead of a uniform.
+  - tweak: VC uniforms now have map specific variants. The sleeves are now rollable
+      as well.
+  TheDonkified:
+  - rscadd: Added a signal for when items call attack_self.
+  - tweak: The M39 can no longer accept the BFA.
+  - tweak: Removed the PB burst damage boost. There is still a damage boost for PB
+      bursting a mob that is lying down or is unconscious.
+  forest2001:
+  - bugfix: Fixes Remove from Clan not executing the correct codeblock due to an extra
+      's'
+  - bugfix: Closing runed sandstone doors no longer leaves them transparent.
+  - tweak: Replaced existing sandstone temples with runed sandstone
+  - tweak: Reskinned the sandstone platform sprites to greyscale so they can be used
+      for the other minerals
+2021-05-08:
+  Carlarc:
+  - rscadd: MARSOC shotgun now has a magharness to the waist and keeps the MK221 UGL.
+  - rscadd: MARSOC now has an MD and ceramic plate in their bag.
+  - tweak: Shuffled around MARSOC equipment.
+  - tweak: 'Code: You can now add stuff into helmets via select equipment.'
+  - bugfix: Fixed an exploit that allowed engineers to make OT nades explode instantly.
+  - tweak: Improved buildmode logging
+  Jackie_Estegado:
+  - tweak: Windows destroyed by thrown objects now generate fingerprints.
+  - tweak: All types of windows now generate fingerprints.
+  TheDonkified:
+  - tweak: The rejuvenation implant no longer gives brain stimulants. Instead, it
+      gives you the redemption stimulant. It also gives only 0.5 units of speed stimulant
+      instead of 3 units.
+  - tweak: 'Halved the amount of time for weeds to grow (10->5 seconds) and for weeds
+      to decay after their nodes are destroyed (20->10 seconds). '
+  - tweak: 'Explosions deal between 2%-10% of their severity as damage to weeds instead
+      of RNG based on damage thresholds. '
+  - tweak: Upped normal weed health from 1 to 5. Boot knives and bayoneted guns should
+      still one-hit normal weeds, but non-bayoneted guns and other items with force
+      less than 15 will no longer one-hit normal weeds.
+  - tweak: Weed nodes start out with the same health as normal weeds. When they expand
+      fully (or cannot expand any further from a confined space), they "grow" to have
+      their standard health.
+  Triiodine:
+  - maptweak: Fixed some rockwalls behind the latest Kutjevo expansion.
+  naut:
+  - rscadd: Resprited a few objects n' such.
+  - imageadd: Upgraded defibrillator now has a red color scheme to differentiate it
+      from the regular defib.
+  - imageadd: Ladders have been resprited. Alpha added inside the ladder rungs in
+      order to make them more easily clickable.
+  - imageadd: Implant injectors resprited. Difference between unused and used sprites
+      is now more noticeable.
+  - imageadd: Resprited the implant itself. Now looks more CM-ey.
+  - imageadd: USCM logo on status displays now flickers occasionally.
+  - imageadd: Resprited incendiary buckshot to have its own sprite rather than the
+      'custom color' variant used currently.
+  - imageadd: Military Wardens (MW) now have their own icon on the SecHUD.
+  - tweak: Medic CZSP kits now have all of their contents in the box itself. Upgraded
+      kits are no longer located in their own box.
+  - tweak: Changed names of hud.dmi to make it work with the Warden.
+  - tweak: Modified descriptions of Medic CZSP items.
+  - tweak: Defibrillator code tweaked. Defibs now flash red when they're out of battery.
+  - tweak: Code on incendiary buckshot has been modified to use the new sprites rather
+      than the old.
+2021-05-09:
+  Segrain:
+  - bugfix: Quickly storing items in helmets no longer leaves their ghosts to haunt
+      you.
+  - bugfix: Defibrillators no longer waste a charge when the patient is no longer
+      valid by the end of procedure (e.g. revived by somebody else or expired).
+  - bugfix: Defibrillators now can actually use all of their charges, including the
+      last one.
+  Vanagandr:
+  - bugfix: Fixes click delay bug I introduced with inserting items into the inventory
+      screen of worn/carried storage items (belts etc) and internal storages (webbings,
+      spec GL). Putting things into a worn/carried storage item should not be affected
+      by action delay; taking items out should.
+  - tweak: 'Due to a code simplification, interacting with an item in a storage item
+      using another item applies action delay again, if the storage isn''t in your
+      inventory. Example: pouring liquid into a beaker which is inside a satchel.'
+  - bugfix: Tables and racks are now 'transparent' for the purposes of adjacency checks,
+      IE it calculates as though the item were sitting on the same tile as the table.
+      This fixes a bug I introduced with not being able to insert items into the inventory
+      screen of a storage item on a table (surgery tray) and probably fixes something
+      else somewhere also.
+  - tweak: 'Click delay for interacting with tables+racks moved to their code, rather
+      than being checked for by all clicks. Additionally, the 0.2s delay is now specifically
+      for putting items on surfaces, rather than also applying to interacting with
+      items which are on a surface. Example: pouring liquid into a beaker which is
+      on a table.'
+  forest2001:
+  - tweak: Repaths (almost) all Hunter weapons
+2021-05-10:
+  alardun:
+  - tweak: Adjusted movement functionality slightly to standardize how the direction
+      is set between directional keys and left-mouse. There shouldn't be any impact,
+      but notify me if going around barricade becomes weird.
+  - rscadd: Added Xenomorph damage overlays. Xenomorph now shows damage when their
+      health drops belows 75%/50%/25% health, with them dissapearing if healed.
+2021-05-11:
+  Carlarc:
+  - bugfix: Fixed inability to switch between activable abilities while incapacitated.
+      In practice, this means you can switch between lunge, fling, etc. while stunned
+      as a Xenomorph. It is possible but unlikely this means some abilities might
+      unintentionally be usable while incapacitated.
+  Segrain:
+  - bugfix: Poor wooden tables are now visible in every shape.
+  ghostsheet:
+  - bugfix: Fixed flares not being activated properly.
+2021-05-15:
+  NeroCavalier:
+  - rscadd: Lets M41A MK.1 Pulse Rifles load extended magazines.
+  - tweak: Changed the SL's Flamer Kit to contain a mini-pyro one instead.
+  TheDonkified:
+  - rscadd: When multiple eggs are triggered by someone walking, their respective
+      huggers will return immediately if there is no one to jump to.
+2021-05-16:
+  Avalanchee:
+  - maptweak: 'Expanding the painfully tight eastern nightmare insert chokepoint on
+      LV624 and adding more breathing space for both sides '
+  Carlarc:
+  - rscadd: 'Added tip of the round. Suggestions for new tips welcome in the #ideasguys
+      discord channel.'
+  Firartix:
+  - bugfix: Fixed sniper pre-equipped loadout overriding generic spec's, breaking
+      it in character preview and some admin ERTs
+  John:
+  - tweak: All Xenomorphs, excluding runners, lurkers, and the Queen, have had their
+      health increased by 25%.
+  - rscadd: Added more Xenomorph health tiers.
+  John_Titor_Back_Again:
+  - tweak: Xenos that were buffed prior with the 25% health buff is being tuned back
+      by roughly 15% leading to an effective health increase of about 10%.
+  - tweak: Praetorian has seen a nerf of 5% Health from prior buffs, and Ravager a
+      5% health increase.
+  - tweak: Crusher keeps its 25% Health increase for now, subject to change.
+  - tweak: Maths went wrong, health actually as intended now.
+  Lumdor:
+  - tweak: Changed the minimum timer for the assembly timer from 2 seconds to 3 seconds.
+  - tweak: Changed the skill required to modify explosives to engineer master.
+  NeroCavalier:
+  - tweak: Removes oxycodone from rejuvenation implant
+2021-05-17:
+  alardun:
+  - tweak: Reduced aimed shot time from 1.5s + 0.05 * tile to 1.25s + 0.05 * tile.
+  ghostsheet:
+  - bugfix: Resin holes will no longer be hidden by purple sacs.
+2021-05-18:
+  Carlarc:
+  - imageadd: Resprited the wielded sprite of the NY-762, holdout pistol, b92fs, CMB
+      revolver, pk-9, and automag.
+  - imageadd: Added m4a3-like slide-back icons for the b92fs and automag.
+  - imageadd: Added sprites for b92fs, automag and holdout pistol magazines.
+  - imageadd: Restored the MP7 magazine's sprite.
+  Vanagandr:
+  - rscadd: Alt-click now directly takes items from carried or worn inventory items
+      which can have Storage Drawing Method toggled or have direct drawing set. This
+      includes webbings, machete/shotgun scabbards, gunbelts, pouches, labcoats, and
+      marine armour, among others.
+  - rscadd: Alt-clicking a gunbelt with a gun in it will draw a non-gun item if possible.
+      Includes smartgunner and mortar belts.
+  - tweak: 'Uniforms with webbings attached can no longer be put into inventory storage,
+      in line with the webbing itself. '
+  - tweak: Adds and applies 'isgun()' type check shortcut generally.
+  - bugfix: Fixes bug where gunbelts would jam up if the gun inside melted or was
+      otherwise deleted.
+2021-05-19:
+  Benbot16:
+  - rscadd: Research now passively gains points over time, at a rate of 5 points every
+      10 minutes.
+  - tweak: Randomly generated reagents are more likely to be better.
+  - tweak: The Synthesis Simulator can only modify randomly-generated reagents.
+  - rscdel: 'The CL can no longer print research-related papers. '
+2021-05-20:
+  Carlarc:
+  - rscadd: The last 1.5 seconds of super-empower halve your glow, giving you a warning
+      before it fades.
+  - tweak: Refactored empower mobs in range check to be more performant, hopefully
+      will help with reported lag.
+  - tweak: Defender headbutt now does 30 damage, 20 if crest lowered.
+  Segrain:
+  - bugfix: Inserting magazines/attachments into guns no longer makes the gun shoot
+      you.
+  Vanagandr:
+  - bugfix: Fixed click delay preventing you from putting things into webbing/armour
+      storage screens. I have written this thrice now, and what I tell you three times
+      is true.
+  spookydonut:
+  - bugfix: Make colony cameras init on their own colony network
+  - bugfix: Protect colony and overwatch camera networks
+2021-05-21:
+  Cakey:
+  - bugfix: Fixes runtimes caused by chemical overdose related deaths
+  Segrain:
+  - bugfix: Activating medkits to open them and pill bottles to take out a pill no
+      longer dumps the entire container onto the floor.
+  - bugfix: Toggling the light on worn smartpack no longer dumps its contents either.
+  - tweak: Overhauled code for magnetic harness. No functional changes.
+  - bugfix: Quickdraw from gunbelts once again works.
+  - bugfix: Wallmounted storages in vehicles work again.
+  Vanagandr:
+  - tweak: Being shot while wearing a ceramic plate now has the impact flash effect.
+  - bugfix: The nailgun can now PB-staple mobs to surfaces or inflict superslow at
+      angles other than the cardinal, and detects those surfaces much more consistently.
+      Anything bigger than a T1 was and is exempt.
+  - tweak: Modified PB backend a bit for efficiency, shouldn't have any visible effect.
+      Any issues would probably be with the under-extinguisher failing to fire, but
+      testing shows no issues.
+  - rscadd: Attachable guns now track their own last-fired time, fixing them sometimes
+      having enormous fire delays when activated after firing the host gun. This also
+      means firing an underbarrel attachment doesn't put the main gun on cooldown.
+  - bugfix: You can now extinguish yourself or others using melee clicks with an activated
+      underbarrel extinguisher.
+  forest2001:
+  - tweak: Changed the icon pathing for Hunter equipment and weapons due to the sheer
+      number of sprites involved.
+  - wip: If any icons are missing please ping @forest2001#2001 on discord and I'll
+      make a hotfix ASAP.
+  - rscadd: Added the ability to change armour material, this alters its visuals.
+2021-05-22:
+  Cakey:
+  - bugfix: Toxic water tiles will now correctly show up in death causes.
+  - bugfix: Underbarrel flamers will now correctly track the user in death logs
+  Segrain:
+  - bugfix: Acid spray no longer commits friendly fire (friendly acid?) on its hive's
+      weeds and xenos.
+  Vanagandr:
+  - bugfix: Fixes a bug where guns became immune to fire delay after a PB.
+  spookydonut:
+  - bugfix: Mobs can now die again
+2021-05-23:
+  Cakey:
+  - bugfix: Fixes runtimes with clicking on surfaces without click mods.
+  - bugfix: Mobs will now correctly track their total kills again.
+  Carlarc:
+  - tweak: Did some backend magic with traits that allows the possibility of any item
+      becoming any tool easily. Except welding tools.
+  Segrain:
+  - bugfix: Lurker slash on knocked down targets no longer causes runtime errors.
+  - bugfix: Chestbursting, larva suicide and some other exotic causes of death now
+      properly kill you.
+  - bugfix: Boiler's Dump Acid ability now correctly attributes its damage.
+  Vanagandr:
+  - tweak: Increased theoretical maximum clicks-per-second from 6.9 (practical max
+      5.5) to 10.26 (practical max 8.5).
+  - rscadd: Added a debug tool for determining ingame click rates.
+2021-05-25:
+  50RemAndCounting:
+  - experiment: Added a Surgical Webbing Vest to the synthetic gear vendor and the
+      field surgery supplies room in medbay, a new webbing type that can hold only
+      surgical tools and nothing else. Can currently hold the entirety of current
+      surgical tray's contents, values and stats subject to future change. Sprites
+      done by Nauticall!
+  - rscadd: Added the M3A1 pattern Synthetic Utility Vest, an M3-VL ballistics vest
+      variant which offers no protection and can be used by synthetics.
+  - tweak: Changed the Synth Councillor gear preset to spawn with the leather satchel
+      instead of the standard USCM satchel to be more in line with the rest of the
+      council-exclusive fancy clothing.
+  TheDonkified:
+  - rscdel: Default BYOND statusbar.
+  - rscadd: Custom status bar that is above input now and properly changes between
+      darkmode and lightmode.
+  - rscadd: Added a preference for hiding the statusbar.
+  Vanagandr:
+  - bugfix: Using a bayonet to cut the sleeves off of uniforms fixed - no more spamming
+      cutting on uniforms that have already had their sleeves removed, plus the safety
+      check now functions and means you won't honk your uniform if it doesn't have
+      cut sleeve sprites.
+  - tweak: Patches/armbands no longer display on-mob if the uniform's sleeves were
+      cut off.
+  - tweak: Patches/armbands now show on marine snow uniforms with their collar rolled
+      or cut off.
+  - bugfix: Can now pin medals onto mobs properly. This includes yourself, as well
+      as other people. Existing code, but terribly broken. Added some safety checks
+      while I was at it.
+  - rscadd: Can now perform unga macho bullshit medal award ceremonies by harm-intent
+      punching the medal into the recipient's flesh.
+  - bugfix: Attaching clothing accessories to jacket items with inventories no longer
+      tries to put them into storage, breaking the overlay sprite.
+  - rscadd: A variety of jacket-type items can now have accessories attached to them.
+      For ex. detective/CMB jackets, pilot flak jacket, hazard vests, labcoats. Marine
+      service/dress/officer jackets already had this. Exactly which categories an
+      item can take depends on it, IE vests can't have armbands or patches, CMB/detective
+      jacket already have badges where a medal would go, CO dress and bomber jackets
+      have bling or fur where rank tabs would attach. Rank tabs only attach to marine
+      service/dress jackets. No jacket- or suit-type item can attach webbings or shoulder
+      holsters. If you attach a flashy hooah moto patch to your ghillie suit and the
+      CLF counter-snipers get you, it's your own fault.
+  - rscadd: You can also hang medals off of most armours, but remember that bling
+      makes for a good bullseye. Also, it will fall off of your armour when the medic
+      removes it to zap you back to life.
+  - tweak: When spawning in, the game now attempts to attach playtime medals to your
+      jacket/armour first, if possible.
+  - bugfix: Screaming after being splashed with xeno blood now checks if YOU can feel
+      pain, rather than the xeno who did the bleeding.
+  - tweak: Misc. typo fixes, minor code adjustments to facilitate the above changes.
+  naut:
+  - rscadd: Added the Commodore-in-Chief beret for CO senators.
+  - tweak: CO vendor modified. Now come with more attachments an' stuff for points.
+  - tweak: CO sidearm selection moved to weapons vendor instead of clothing vendor.
+  - tweak: Dress vendor modified, now better categorizes uniforms.
+  - rscadd: Added new solid variations of the 2x1 command and medical doors.
+  - rscadd: Added an Almayer blast door that blends into the wall.
+  - imageadd: Added a few new semiotic standard signs.
+  optimisticdude:
+  - rscadd: Added bump climbing for ledges/platforms; walk into them to start climbing!
+  - rscadd: 'Adds unique climb text for endurance 3+ people climbing over structures. '
+2021-05-26:
+  Atebite:
+  - rscadd: All groundside marines now get a text and audio warning on OB launches
+      along with information about OB type and impact area.
+  Cakey:
+  - tweak: End of round fun facts will now pick the best possible statistic when considering
+      candidates.
+  - bugfix: End of round fun facts will no longer pick candidates with 0 kills etc.
+  ChainsawMullet:
+  - tweak: Lurker's Invisibility will now always apply a 20% speed boost until the
+      invisibility ends, rather than being dependent on no xenos being nearby.
+  Nanu:
+  - rscadd: Added a resin node landmark spawner, they should only spawn on the appropriate
+      game modes.
+  - maptweak: Added resin node landmark spawners to all maps in current rotation,
+      nightmare inserts included. No more does admins have to mass delete them at
+      roundstart during a HvH event.
+  - maptweak: Added two new hive spawns to Trijent, one is in the SE Corner of the
+      map. Some survs spawns were moved a bit away to compensate for this change.
+  - bugfix: Fixed mapping errors on Kutjevo, Solaris Ridge and LV.
+  - bugfix: Kutjevo, Solaris Ridge and LV got some slight changes to how their areas
+      were placed to make it more consistent.
+  TheDonkified:
+  - bugfix: Can no longer mix and match ammo handfuls with ammo boxes. For example,
+      you can no longer use a handful of normal SMG ammo to fill in an ammo box of
+      SMG AP bullets.
+  forest2001:
+  - tweak: Hunter death message now reports the name of the Hunter instead of 'Unknown'.
+      The same applies to the message for thralls.
+  - tweak: Honored humans can now carry gear. If this is abused for meta purposes
+      it will be retracted.
+2021-05-27:
+  Carlarc:
+  - rscadd: Added some more tips.
+  Nanu:
+  - tweak: Nerfed the UPP throwing knife slightly as Marines can start with it.
+  Vanagandr:
+  - tweak: The underbarrel extinguisher is now exempt from the usual pre-firing checks
+      again.
+  forest2001:
+  - tweak: Hunter verbs are now in categories for future changes.
+  - tweak: Bracer Translator no longer requires the purchase of equipment.
+2021-05-28:
+  Segrain:
+  - bugfix: OT explosives should once again work both in simulations and in reality.
+2021-05-29:
+  TheDonkified:
+  - rscadd: The masterkey is now specialized in breaching and deals extra damage to
+      walls, airlocks, window frames, and other structures. It also does extra damage
+      to pylons (4 shots should take out a standard pylon).
+  - tweak: The masterkey now loads 5 buckshot shells instead of 3.
+  - tweak: Window frames have buffed health (200 -> 600) and can now be shot out.
+  - tweak: Airlocks have lower health (2000 -> 1200).
+  - tweak: When shot, girders calculate damage from the projectile rather than the
+      projectile's ammo type.
+  - tweak: When shot, airlocks calculate damage from the projectile rather than the
+      projectile's ammo type.
+  - tweak: Any bonus projectiles will now inherit the bullet traits from their parent
+      projectile.
+  - bugfix: The ammo for your gun will no longer be displayed after firing an attached
+      gun.
+  Vanagandr:
+  - rscadd: Added a combat click-drag override preference. When this is set and you're
+      on disarm or harm intent, depressing the mouse triggers a click immediately
+      even if you hold it down. Clicking something in your inventory, yourself, or
+      an ally behaves normally, unless you're a xeno clicking with an empty hand.
+      This applies to all clicks, including shooting and middle-mouse abilities.
+  - tweak: The game will now only process one click per mouse-down. This shouldn't
+      have any practical effect on the game aside from stopping the above from triggering
+      extra clicks.
+  - rscadd: Added mentorhelp default reply for above pref.
+  forest2001:
+  - rscadd: Added a new Synthetic species to be used for event tweaks so there aren't
+      any conflicts with natural spawns.
+  - rscadd: Added an event "hivemind" language (Telepath Implant).
+  - rscadd: Added the ability to add/remove status traits via View-Variables.
+  - rscadd: Added two traits, Crawler and Simple_Desc. Crawler allows ventcrawling
+      with items on. Inanimate prevents examine showing anything other than default
+      "desc" variable.
+  - bugfix: Monkeys can climb into vents again
+  - tweak: High Command radio prefix changed to Z
+  - tweak: Intel Radio replaced with Tactics Radio, key changed to T
+2021-05-30:
+  50RemAndCounting:
+  - tweak: Made the smartgun firing sounds quieter.
+  ChainsawMullet:
+  - tweak: Standard rifle ammo (used by M41 and L42) has been given 5 armour penetration.
+      It is now better or equal to AP up to 20 armour, and can hold its own at 25-30
+      while being less effective.
+  Jackie_Estegado:
+  - tweak: Changed the order limbs are displayed on scanners to be more user friendly.
+  TheDonkified:
+  - bugfix: The glow filter from fortifying weeds will disappear if a xeno moves off
+      weeds when the weeds under them are destroyed.
+  - bugfix: The glow filter from fortifying weeds will no longer be shown when xenos
+      are on enemy weeds.
+  naut:
+  - tweak: RPG/SADAR in-hand sprite (unwielded) is now more visible from the sides.
+2021-05-31:
+  Firartix:
+  - bugfix: fixed a few invalid displayed counts around claymores
+  TeDGamer:
+  - bugfix: Non-resin walls no longer get resin explosive damage reduction 75% of
+      the time
+  forest2001:
+  - bugfix: Twohanded Hunter weapons now fit on back slot & combistick can now be
+      folded again.
+  - bugfix: Xenos can no longer force open "heavy" doors.
+  - tweak: Sandstone Temple Walls can no longer be slashed, and instead must be melted
+      by boilers or blown up.
+  - tweak: Sandstone Temple Walls baseturf is now the Temple Floor.

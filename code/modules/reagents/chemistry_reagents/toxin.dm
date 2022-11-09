@@ -49,7 +49,7 @@
 /datum/reagent/toxin/phoron
 	name = "Phoron"
 	id = "phoron"
-	description = "A special form of metalic plasma that is not found on Earth. While phoron is highly flammable and extremely toxic, its high energy density makes it one of the best solid fuel alternatives. Liquid phoron is often used for research purposes and in the medical industry a catalyst to many advanced chemicals."
+	description = "A special form of metallic plasma that is not found on Earth. While phoron is highly flammable and extremely toxic, its high energy density makes it one of the best solid fuel alternatives. Liquid phoron is often used for research purposes and in the medical industry a catalyst to many advanced chemicals."
 	reagent_state = LIQUID
 	color = "#E71B00" // rgb: 231, 27, 0
 	chemfiresupp = TRUE
@@ -74,7 +74,7 @@
 /datum/reagent/toxin/cyanide //Fast and Lethal
 	name = "Cyanide"
 	id = "cyanide"
-	description = "Cyanide is a naturally occuring toxic chemical, that has been used as a mean of killing for centuries because of its immediate effects. Symptoms include nausea, weakness, and difficulty breathing."
+	description = "Cyanide is a naturally occurring toxic chemical, that has been used as a mean of killing for centuries because of its immediate effects. Symptoms include nausea, weakness, and difficulty breathing."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
@@ -87,6 +87,7 @@
 	description = "Useful for dealing with undesirable customers."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/carpotoxin
 	name = "Carpotoxin"
@@ -95,6 +96,7 @@
 	reagent_state = LIQUID
 	color = "#003333" // rgb: 0, 51, 51
 	properties = list(PROPERTY_TOXIC = 2)
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/zombiepowder
 	name = "Zombie Powder"
@@ -103,6 +105,7 @@
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
 	properties = list(PROPERTY_TOXIC = 1)
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/zombiepowder/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -163,34 +166,7 @@
 	description = "A harmful toxic mixture used to kill plantlife. Very toxic to animals."
 	reagent_state = LIQUID
 	color = "#49002E" // rgb: 73, 0, 46
-
-/datum/reagent/toxin/plantbgone/reaction_obj(var/obj/O, var/volume)
-	if(istype(O,/obj/effect/alien/weeds/))
-		var/obj/effect/alien/weeds/alien_weeds = O
-		alien_weeds.take_damage(rand(15,35)) // Kills alien weeds pretty fast
-	else if(istype(O,/obj/effect/glowshroom)) // Even a small amount is enough to kill it
-		qdel(O)
-	else if(istype(O,/obj/effect/plantsegment))
-		if(prob(50)) qdel(O) // Kills kudzu too.
-	else if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
-		var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = O
-
-		if(tray.seed)
-			tray.health -= rand(30,50)
-			if(tray.pestlevel > 0)
-				tray.pestlevel -= 2
-			if(tray.weedlevel > 0)
-				tray.weedlevel -= 3
-			tray.toxins += 4
-			tray.check_level_sanity()
-			tray.update_icon()
-
-/datum/reagent/toxin/plantbgone/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
-	src = null
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(!C.wear_mask) // If not wearing a mask
-			C.apply_damage(2, TOX) // 4 toxic damage per application, doubled for some reason
+	properties = list(PROPERTY_TOXIC = 2)
 
 /datum/reagent/toxin/stoxin
 	name = "Soporific"
@@ -254,73 +230,14 @@
 
 /datum/reagent/toxin/acid
 	name = "Sulphuric acid"
-	id = "sacid"
+	id = "sulphuric acid"
 	description = "A common and very corrosive mineral acid used for many industrial purposes."
 	reagent_state = LIQUID
 	spray_warning = TRUE
 	color = "#DB5008" // rgb: 219, 80, 8
 	var/meltprob = 10
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 1)
-
-/datum/reagent/toxin/acid/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//magic numbers everywhere
-	if(!istype(M, /mob/living))
-		return
-	if(method == TOUCH)
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.head)
-				if(prob(meltprob) && !H.head.unacidable)
-					to_chat(H, SPAN_DANGER("Your headgear melts away but protects you from the acid!"))
-					qdel(H.head)
-					H.update_inv_head(0)
-					H.update_hair(0)
-				else
-					to_chat(H, SPAN_WARNING("Your headgear protects you from the acid."))
-				return
-
-			if(H.wear_mask)
-				if(prob(meltprob) && !H.wear_mask.unacidable)
-					to_chat(H, SPAN_DANGER("Your mask melts away but protects you from the acid!"))
-					qdel(H.wear_mask)
-					H.update_inv_wear_mask(0)
-					H.update_hair(0)
-				else
-					to_chat(H, SPAN_WARNING("Your mask protects you from the acid."))
-				return
-
-			if(H.glasses) //Doesn't protect you from the acid but can melt anyways!
-				if(prob(meltprob) && !H.glasses.unacidable)
-					to_chat(H, SPAN_DANGER("Your glasses melts away!"))
-					qdel(H.glasses)
-					H.update_inv_glasses(0)
-
-		if(!M.unacidable)
-			if(istype(M, /mob/living/carbon/human) && volume >= 10)
-				var/mob/living/carbon/human/H = M
-				var/obj/limb/affecting = H.get_limb("head")
-				if(affecting)
-					if(affecting.take_damage(4, 2))
-						H.UpdateDamageIcon()
-					if(prob(meltprob)) //Applies disfigurement
-						if(H.pain.feels_pain)
-							H.emote("scream")
-						H.status_flags |= DISFIGURED
-						H.name = H.get_visible_name()
-			else
-				M.take_limb_damage(min(6, volume)) // uses min() and volume to make sure they aren't being sprayed in trace amounts (1 unit != insta rape) -- Doohl
-	else
-		if(!M.unacidable)
-			M.take_limb_damage(min(6, volume))
-
-/datum/reagent/toxin/acid/reaction_obj(var/obj/O, var/volume)
-	if((istype(O,/obj/item) || istype(O,/obj/effect/glowshroom)) && prob(meltprob * 3))
-		if(!O.unacidable)
-			var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
-			I.desc = "Looks like this was \an [O] some time ago."
-			for(var/mob/M in viewers(5, O))
-				to_chat(M, SPAN_WARNING("\the [O] melts."))
-			qdel(O)
+	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 3)
 
 /datum/reagent/toxin/acid/polyacid
 	name = "Polytrinic acid"
@@ -350,3 +267,12 @@
 	reagent_state = SOLID
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_TOXIC = 1)
+
+/datum/reagent/toxin/molecular_acid
+	name = "Diluted Molecular Acid"
+	id = "molecularacid"
+	description = "An acid of unknown composition, this sample doesn't seem to be as dangerous those found within Xenomorph bloodstreams."
+	color = "#669900"
+	reagent_state = LIQUID
+	chemclass = CHEM_CLASS_NONE
+	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1)

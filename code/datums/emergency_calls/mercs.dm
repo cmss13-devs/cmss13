@@ -51,8 +51,8 @@
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Ensure they are not destroyed.</b>")))
 
-/datum/emergency_call/mercs/create_member(datum/mind/M)
-	var/turf/spawn_loc = get_spawn_point()
+/datum/emergency_call/mercs/create_member(datum/mind/M, var/turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
@@ -62,12 +62,11 @@
 	M.transfer_to(H, TRUE)
 	H.job = "Mercenary"
 
-	if(!leader)       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the Freelancer leader!"))
-
-	else if(medics < max_medics)
+	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/medic, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer medic!"))
@@ -86,7 +85,7 @@
 	max_medics = 3
 
 /datum/emergency_call/heavy_mercs
-	name = "Elite Mercenaries"
+	name = "Elite Mercenaries (Random Alignment)"
 	mob_min = 4
 	mob_max = 8
 	probability = 0
@@ -103,11 +102,17 @@
 	else
 		objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
+/datum/emergency_call/heavy_mercs/hostile
+	name = "Elite Mercenaries (HOSTILE to USCM)"
+
 /datum/emergency_call/heavy_mercs/hostile/New()
 	. = ..()
 	hostility = TRUE
 	arrival_message = "[MAIN_SHIP_NAME], this is Elite Freelancer shuttle [pick(alphabet_lowercase)][pick(alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
 	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
+
+/datum/emergency_call/heavy_mercs/friendly
+	name = "Elite Mercenaries (Friendly)"
 
 /datum/emergency_call/heavy_mercs/friendly/New()
 	. = ..()
@@ -127,8 +132,8 @@
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Ensure they are not destroyed.</b>")))
 
-/datum/emergency_call/heavy_mercs/create_member(datum/mind/M)
-	var/turf/spawn_loc = get_spawn_point()
+/datum/emergency_call/heavy_mercs/create_member(datum/mind/M, var/turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
@@ -138,20 +143,19 @@
 	M.transfer_to(H, TRUE)
 	H.job = "Mercenary"
 
-	if(!leader)       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))       //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the Elite Mercenary leader!"))
-
-	else if(medics < max_medics)
+	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/medic, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary medic!"))
-	else if(engineers < max_engineers)
+	else if(engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/engineer, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary engineer!"))
-	else if(heavies < max_heavies)
+	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		heavies++
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/heavy, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary specialist!"))

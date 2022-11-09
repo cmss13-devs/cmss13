@@ -88,7 +88,7 @@
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 	else
 		H.AdjustSlowed(2)
-		trap_ability.empowering_charge_counter += 1
+		trap_ability.empowering_charge_counter++
 
 	if(!trap_ability.empowered && trap_ability.empowering_charge_counter >= trap_ability.empower_charge_max)
 		trap_ability.empowered = TRUE

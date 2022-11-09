@@ -204,14 +204,13 @@
 
 
 /mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
-	if(G && G.active)
-		see_in_dark += G.darkness_view
-		if(G.vision_flags)
-			sight |= G.vision_flags
-			if(!druggy)
-				see_invisible = SEE_INVISIBLE_MINIMUM
-		if(istype(G,/obj/item/clothing/glasses/night))
-			see_invisible = SEE_INVISIBLE_MINIMUM
+	if(!G || !G.active)
+		return
+	see_in_dark += G.darkness_view
+	if(G.vision_flags)
+		sight |= G.vision_flags
+	if(G.lighting_alpha < lighting_alpha)
+		lighting_alpha = G.lighting_alpha
 
 /mob/living/carbon/human/handle_silent()
 	if(..())

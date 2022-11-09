@@ -93,6 +93,7 @@
 #define SOUND_AMBIENCE	4
 #define SOUND_LOBBY		8
 #define SOUND_INTERNET	16
+#define SOUND_REBOOT	32
 
 //toggles_chat
 #define CHAT_OOC			1
@@ -110,24 +111,42 @@
 #define CHAT_GHOSTHIVEMIND	4096
 #define CHAT_NICHELOGS		8192
 
-//toggles_flashing
-#define FLASH_ROUNDSTART   (1<<0)
-#define FLASH_ROUNDEND     (1<<1)
-#define FLASH_CORPSEREVIVE (1<<2)
-#define FLASH_ADMINPM      (1<<3)
-
 //toggles_ghost
-#define GHOST_DARKNESS     (1<<0)
+#define GHOST_HEALTH_SCAN  (1<<0)
+
+//toggles_flashing
+#define FLASH_ROUNDSTART		(1<<0)
+#define FLASH_ROUNDEND			(1<<1)
+#define FLASH_CORPSEREVIVE		(1<<2)
+#define FLASH_ADMINPM			(1<<3)
+#define FLASH_UNNEST			(1<<4)
+#define FLASH_POOLSPAWN			(1<<5)
+
+//toggles_langchat
+#define LANGCHAT_SEE_EMOTES		(1<<0)
+
+//toggles_ert
+#define PLAY_LEADER (1<<0)
+#define PLAY_MEDIC (1<<1)
+#define PLAY_ENGINEER (1<<2)
+#define PLAY_HEAVY (1<<3)
+#define PLAY_SMARTGUNNER (1<<4)
+#define PLAY_SYNTH (1<<5)
+#define PLAY_MISC (1<<6)
 
 //=================================================
 
 #define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_ATTACKLOGS|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
 
+#define TOGGLES_GHOST_DEFAULT (GHOST_HEALTH_SCAN)
+
+#define TOGGLES_LANGCHAT_DEFAULT (LANGCHAT_SEE_EMOTES)
+
 #define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET)
 
-#define TOGGLES_FLASHING_DEFAULT (FLASH_ROUNDSTART|FLASH_ROUNDEND|FLASH_CORPSEREVIVE|FLASH_ADMINPM)
+#define TOGGLES_FLASHING_DEFAULT (FLASH_ROUNDSTART|FLASH_ROUNDEND|FLASH_CORPSEREVIVE|FLASH_ADMINPM|FLASH_UNNEST)
 
-#define TOGGLES_GHOST_DEFAULT (GHOST_DARKNESS)
+#define TOGGLES_ERT_DEFAULT (PLAY_LEADER|PLAY_MEDIC|PLAY_ENGINEER|PLAY_HEAVY|PLAY_SMARTGUNNER|PLAY_SYNTH|PLAY_MISC)
 
 
 // Game Intents
@@ -311,6 +330,7 @@
 #define WALL_CULT "cult"
 #define WALL_STONE "stone"
 #define WALL_STRATA_ICE "strata_ice"
+#define WALL_STRATA_ICE_DIRTY "strata_ice_dirty"
 #define WALL_JUNGLE_UPDATED "jungle_veg"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
@@ -370,7 +390,7 @@
 #define SHUTTLE_GROUND   3
 
 // Misc game defines
-#define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use
+#define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use //why is this a define let alone a GLOBAL define oh my good lord
 
 // Chat delay amounts
 #define CHAT_SAY_DELAY      2

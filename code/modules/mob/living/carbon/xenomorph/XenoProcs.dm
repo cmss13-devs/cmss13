@@ -21,6 +21,17 @@
 			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.ally_of_hivenumber(hivenumber))) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
+//Sends a maptext alert to our currently selected squad. Does not make sound.
+/proc/xeno_maptext(var/text = "", var/title_text = "", var/hivenumber = XENO_HIVE_NORMAL)
+	if(text == "" || !hivenumber)
+		return //Logic
+
+	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
+		for(var/datum/mind/L in SSticker.mode.xenomorphs)
+			var/mob/living/carbon/M = L.current
+			if(M && istype(M) && !M.stat && M.client && M.ally_of_hivenumber(hivenumber)) //Only living and connected xenos
+				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
+
 /proc/xeno_message_all(var/message = null, var/size = 3)
 	xeno_message(message, size)
 
@@ -34,7 +45,7 @@
 	. += ""
 
 	. += "Health: [round(health)]/[round(maxHealth)]"
-	. += "Armor: [round(0.01*armor_integrity*armor_deflection)]/[round(armor_deflection)]"
+	. += "Armor: [round(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[round(armor_deflection)]"
 	. += "Plasma: [round(plasma_stored)]/[round(plasma_max)]"
 	. += "Slash Damage: [round((melee_damage_lower+melee_damage_upper)/2)]"
 
@@ -57,11 +68,9 @@
 
 	var/evolve_progress
 
-	if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
-		evolve_progress = "[round(amount_grown)]/[max_grown]"
-	else if(caste && caste.evolution_allowed)
+	if(caste && caste.evolution_allowed)
 		evolve_progress = "[round(evolution_stored)]/[evolution_threshold]"
-		if(hive && !hive.allow_no_queen_actions)
+		if(hive && !hive.allow_no_queen_actions && !caste?.evolve_without_queen)
 			if(!hive.living_xeno_queen)
 				evolve_progress += " (NO QUEEN)"
 			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
@@ -133,14 +142,14 @@
 //A simple handler for checking your state. Used in pretty much all the procs.
 /mob/living/carbon/Xenomorph/proc/check_state(var/permissive = 0)
 	if(!permissive)
-		if(is_mob_incapacitated() || lying || buckled)
+		if(is_mob_incapacitated() || lying || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
 		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
 	else
-		if(is_mob_incapacitated() || buckled)
+		if(is_mob_incapacitated() || buckled || evolving)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
 
@@ -173,6 +182,12 @@
 /mob/living/carbon/Xenomorph/proc/gain_health(value)
 	if(bruteloss == 0 && fireloss == 0)
 		return
+
+	var/list/L = list("healing" = value)
+	SEND_SIGNAL(src, COMSIG_XENO_ON_HEAL, L)
+	value = L["healing"]
+	if(value < 0)
+		value = 0
 
 	if(bruteloss < value)
 		value -= bruteloss
@@ -253,7 +268,7 @@
 		return
 
 	var/mob/living/carbon/M = L
-	if(M.stat || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L))
+	if(M.stat || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L) || M == src)
 		throwing = FALSE
 		return
 
@@ -296,7 +311,8 @@
 		step_to(src, M)
 
 	if (pounceAction.freeze_self)
-		playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
+		if(pounceAction.freeze_play_sound)
+			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		canmove = FALSE
 		frozen = TRUE
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, .proc/unfreeze), pounceAction.freeze_time, TIMER_STOPPABLE)
@@ -357,14 +373,15 @@
 			A.forceMove(get_true_turf(src))
 
 /mob/living/carbon/Xenomorph/proc/toggle_nightvision()
-	if(see_invisible == SEE_INVISIBLE_MINIMUM)
-		see_invisible = SEE_INVISIBLE_LEVEL_TWO //Turn it off.
-		see_in_dark = 4
-		sight |= SEE_MOBS
+	see_in_dark = 12
+	sight |= SEE_MOBS
+	if(lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE)
+		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	else if(lighting_alpha == LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	else
-		see_invisible = SEE_INVISIBLE_MINIMUM
-		see_in_dark = 8
-		sight |= SEE_MOBS
+		lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+	update_sight()
 
 /mob/living/carbon/Xenomorph/proc/regurgitate(mob/living/victim, stuns = FALSE)
 	if(stomach_contents.len)
@@ -382,7 +399,7 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
 
-/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE)
+/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE, var/check_doors = TRUE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
@@ -390,6 +407,11 @@
 			if(!silent)
 				to_chat(src, SPAN_WARNING("This is too close to a [bb.linked_structure]!"))
 			return
+		if(check_doors)
+			if(istype(O, /obj/structure/machinery/door))
+				if(!silent)
+					to_chat(src, SPAN_WARNING("\The [O] is blocking the resin! There's not enough space to build that here."))
+				return
 		if(istype(O, /obj/item/clothing/mask/facehugger))
 			if(!silent)
 				to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))
@@ -548,7 +570,7 @@
 	if(L.status & LIMB_DESTROYED)
 		return FALSE
 
-	if(L.status & LIMB_ROBOT)
+	if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		L.take_damage(rand(30,40), 0, 0) // just do more damage
 		visible_message(SPAN_XENOWARNING("You hear [M]'s [L.display_name] being pulled beyond its load limits!"), \
 		SPAN_XENOWARNING("[M]'s [L.display_name] begins to tear apart!"))
@@ -654,7 +676,7 @@
 
 /mob/living/carbon/Xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
 	if(!target)
-		to_chat(src, SPAN_XENONOTICE("This resin mark no longer exists!."))
+		to_chat(src, SPAN_XENONOTICE("This resin mark no longer exists!"))
 		return
 	target.xenos_tracking |= src
 	tracked_marker = target
@@ -662,7 +684,7 @@
 	to_chat(src, SPAN_INFO("shift click the compass to watch the mark, alt click to stop tracking"))
 
 /mob/living/carbon/Xenomorph/proc/stop_tracking_resin_mark(destroyed) //tracked_marker shouldnt be nulled outside this PROC!! >:C
-	var/obj/screen/mark_locator/ML = hud_used.locate_marker
+	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.overlays.Cut()
 	if(destroyed)
 		to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))

@@ -43,13 +43,15 @@
 
 /datum/tech/proc/check_tier_level(var/mob/M)
 	if(holder.tier.tier < tier.tier)
-		to_chat(M, SPAN_WARNING("This tier level has not been unlocked yet!"))
-		return
+		if(M)
+			to_chat(M, SPAN_WARNING("This tier level has not been unlocked yet!"))
+		return FALSE
 
 	var/datum/tier/t_target = holder.tree_tiers[tier.type]
 	if(t_target.max_techs != INFINITE_TECHS && LAZYLEN(holder.unlocked_techs[tier.type]) >= t_target.max_techs)
-		to_chat(M, SPAN_WARNING("You can't purchase any more techs of this tier!"))
-		return
+		if(M)
+			to_chat(M, SPAN_WARNING("You can't purchase any more techs of this tier!"))
+		return FALSE
 
 	return TRUE
 
@@ -63,7 +65,7 @@
 
 	unlocked = TRUE
 	to_chat(user, SPAN_HELPFUL("You have purchased the '[name]' tech node."))
-	holder.add_points(-required_points)
+	holder.spend_points(required_points)
 	update_icon(node)
 	return TRUE
 
@@ -71,12 +73,10 @@
 	return holder.ui_status(user, state)
 
 /datum/tech/ui_data(mob/user)
-	var/total_points = 0
-	if(holder)
-		total_points = holder.points
-
 	. = list(
-		"total_points" = total_points,
+		"total_points" = holder.points,
+		"valid_tier" = check_tier_level(),
+		"can_afford" = holder.can_use_points(required_points),
 		"unlocked" = tech_flags & TECH_FLAG_MULTIUSE? FALSE: unlocked,
 		"cost" = required_points
 	)
@@ -101,7 +101,7 @@
 	if(!ui)
 		ui = new(user, src, "TechNode", name)
 		ui.open()
-		ui.set_autoupdate(FALSE)
+		ui.set_autoupdate(TRUE)
 
 /datum/tech/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

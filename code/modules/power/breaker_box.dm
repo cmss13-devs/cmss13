@@ -15,7 +15,7 @@
 	density = 1
 	anchored = 1
 	var/on = 0
-	var/busy = 0
+	var/busy = FALSE
 	var/directions = list(1,2,4,8,5,6,9,10)
 
 /obj/structure/machinery/power/breakerbox/activated
@@ -26,24 +26,24 @@
 	. = ..()
 	set_state(1)
 
-/obj/structure/machinery/power/breakerbox/examine(mob/user)
-	to_chat(user, "Large machine with heavy duty switching circuits used for advanced grid control")
+/obj/structure/machinery/power/breakerbox/get_examine_text(mob/user)
+	. = list("Large machine with heavy-duty switching circuits used for advanced grid control")
 	if(on)
-		to_chat(user, SPAN_XENOWARNING(" It seems to be online."))
+		. += SPAN_XENOWARNING("It seems to be online.")
 	else
-		to_chat(user, SPAN_DANGER("It seems to be offline"))
+		. += SPAN_DANGER("It seems to be offline")
 
 /obj/structure/machinery/power/breakerbox/attack_remote(mob/user)
 	if(busy)
 		to_chat(user, SPAN_DANGER("System is busy. Please wait until current operation is finished before changing power settings."))
 		return
 
-	busy = 1
+	busy = TRUE
 	to_chat(user, SPAN_XENOWARNING(" Updating power settings.."))
 	if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) //5s for AI as AIs can manipulate electronics much faster.
 		set_state(!on)
 		to_chat(user, SPAN_XENOWARNING(" Update Completed. New setting:[on ? "on": "off"]"))
-	busy = 0
+	busy = FALSE
 
 
 /obj/structure/machinery/power/breakerbox/attack_hand(mob/user)
@@ -52,7 +52,7 @@
 		to_chat(user, SPAN_DANGER("System is busy. Please wait until current operation is finished before changing power settings."))
 		return
 
-	busy = 1
+	busy = TRUE
 	for(var/mob/O in viewers(user))
 		O.show_message(text(SPAN_DANGER("[user] started reprogramming [src]!")), 1)
 
@@ -61,7 +61,7 @@
 		user.visible_message(\
 		SPAN_NOTICE("[user.name] [on ? "enabled" : "disabled"] the breaker box!"),\
 		SPAN_NOTICE("You [on ? "enabled" : "disabled"] the breaker box!"))
-	busy = 0
+	busy = FALSE
 
 /obj/structure/machinery/power/breakerbox/proc/set_state(var/state)
 	on = state

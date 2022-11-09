@@ -90,17 +90,13 @@
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 		INVOKE_ASYNC(AI, /mob/living/silicon/decoy/ship_ai.proc/say, message)
 
-/proc/ai_silent_announcement(var/message, var/channel_prefix)
+/proc/ai_silent_announcement(var/message, var/channel_prefix, bypass_cooldown = FALSE)
 	if(!message)
 		return
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
-		if(AI.silent_announcement_cooldown >= world.time)
-			continue
-
-		AI.silent_announcement_cooldown = world.time + 10 SECONDS
 		if(channel_prefix)
-			message = "[channel_prefix] [message]"
+			message = "[channel_prefix][message]"
 		INVOKE_ASYNC(AI, /mob/living/silicon/decoy/ship_ai.proc/say, message)
 
 /mob/proc/detectable_by_ai()
@@ -123,6 +119,16 @@
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
+
+	announcement_helper(message, title, targets, sound_to_play)
+//Subtype of AI shipside announcement for "All Hands On Deck" alerts (COs and SEAs joining the game)
+/proc/all_hands_on_deck(var/message, var/title = MAIN_AI_SYSTEM, var/sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'), var/signature)
+	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
+	for(var/mob/T in targets)
+		if(isobserver(T))
+			continue
+		if(!ishuman(T) || isYautja(T) || !is_mainship_level(T.z))
+			targets.Remove(T)
 
 	announcement_helper(message, title, targets, sound_to_play)
 

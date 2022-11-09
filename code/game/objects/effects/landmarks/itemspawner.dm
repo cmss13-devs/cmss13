@@ -16,7 +16,8 @@
 
 /obj/effect/landmark/costume/gladiator/Initialize()
 	. = ..()
-	new /obj/item/clothing/under/gladiator(src.loc)
+	new /obj/item/clothing/under/chainshirt/hunter(src.loc)
+	new /obj/item/clothing/suit/armor/gladiator(src.loc)
 	new /obj/item/clothing/head/helmet/gladiator(src.loc)
 	return INITIALIZE_HINT_QDEL
 

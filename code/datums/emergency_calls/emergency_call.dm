@@ -18,7 +18,7 @@
 	var/arrival_message = "" //Msg to display about when the shuttle arrives
 	var/objectives //Txt of objectives to display to joined. Todo: make this into objective notes
 	var/objective_info //For additional info in the objectives txt
-	var/probability = 0 //Chance of it occuring. Total must equal 100%
+	var/probability = 0 //Chance of it occurring. Total must equal 100%
 	var/hostility //For ERTs who are either hostile or friendly by random chance.
 	var/list/datum/mind/members = list() //Currently-joined members.
 	var/list/datum/mind/candidates = list() //Potential candidates for enlisting.
@@ -28,14 +28,18 @@
 	var/medics = 0
 	var/engineers = 0
 	var/heavies = 0
+	var/smartgunners = 0
 	var/max_medics = 1
 	var/max_engineers = 1
 	var/max_heavies = 1
+	var/max_smartgunners = 1
 	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
 	var/spawn_max_amount = FALSE
 
 	var/ert_message = "An emergency beacon has been activated"
+
+	var/time_required_for_job = 5 HOURS
 
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(all_calls.len) //It's already been set up.
@@ -91,8 +95,8 @@
 
 	for(var/mob/dead/observer/M in GLOB.observer_list)
 		if(M.client)
-			to_chat(M, FONT_SIZE_LARGE("\n<span class='attack'>[ert_message]. Use the <B>Ghost > Join Response Team</b> verb to join!</span>"))
-			to_chat(M, "<span class='attack'>You cannot join if you have Ghosted recently.</span>\n")
+			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("\n[ert_message]. &gt; <a href='?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a> &lt; </span>")))
+			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
 
 /datum/game_mode/proc/activate_distress()
 	var/datum/emergency_call/random_call = get_random_call()
@@ -100,6 +104,11 @@
 		return
 	random_call.activate()
 	return
+
+/datum/emergency_call/proc/check_timelock(var/client/C, var/list/roles, var/hours)
+	if(C?.check_timelock(roles, hours))
+		return TRUE
+	return FALSE
 
 /mob/dead/observer/verb/JoinResponseTeam()
 	set name = "Join Response Team"
@@ -165,7 +174,7 @@
 	else
 		to_chat(usr, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
 
-/datum/emergency_call/proc/activate(announce = TRUE)
+/datum/emergency_call/proc/activate(announce = TRUE, var/turf/override_spawn_loc)
 	set waitfor = 0
 	if(!SSticker.mode) //Something horribly wrong with the gamemode ticker
 		return
@@ -178,9 +187,9 @@
 	if(announce)
 		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
 
-	addtimer(CALLBACK(src, /datum/emergency_call.proc/spawn_candidates, announce), 30 SECONDS)
+	addtimer(CALLBACK(src, /datum/emergency_call.proc/spawn_candidates, announce, override_spawn_loc), 30 SECONDS)
 
-/datum/emergency_call/proc/spawn_candidates(announce = TRUE)
+/datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
@@ -241,12 +250,12 @@
 				i++
 				if(i > mob_max)
 					break //Some logic. Hopefully this will never happen..
-				create_member(M)
+				create_member(M, override_spawn_loc)
 
 
 		if(spawn_max_amount && i < mob_max)
 			for(var/c in i to mob_max)
-				create_member()
+				create_member(null, override_spawn_loc)
 
 		candidates = list()
 
@@ -270,7 +279,7 @@
 		landmark = SAFEPICK(GLOB.ert_spawns[name_of_spawn])
 	return landmark ? get_turf(landmark) : null
 
-/datum/emergency_call/proc/create_member(datum/mind/M) //This is the parent, each type spawns its own variety.
+/datum/emergency_call/proc/create_member(datum/mind/M, var/turf/override_spawn_loc) //This is the parent, each type spawns its own variety.
 	return
 
 //Spawn various items around the shuttle area thing.

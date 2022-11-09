@@ -170,9 +170,9 @@
 		T.tunnel_desc = "[new_name]"
 	return
 
-/datum/action/xeno_action/activable/tremor/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.used_tremor
+/datum/action/xeno_action/onclick/tremor/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	return !xeno.used_tremor
 
 /mob/living/carbon/Xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
 	if(burrow || is_ventcrawling)

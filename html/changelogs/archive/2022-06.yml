@@ -1,0 +1,378 @@
+2022-06-01:
+  Diegoflores31:
+  - bugfix: CMO can now wear Officer armor as intended
+  - bugfix: CMO now spawns with CMO uniform and hat  instead of green scrubs
+  Geevies:
+  - balance: Masterkeys now deal less damage against walls, in general, everything
+      will now take one more shot.
+  - balance: Omni-sentries now detect xenos up to four tiles away (up from three).
+      The shooting stops when the xeno moves more than five tiles away.
+  Git-Nivrak:
+  - bugfix: Added a check to prevent pooling infected mobs which haven't burst yet
+  Segrain:
+  - bugfix: Operation name overlay at deployment once again properly displays above
+      inventory items.
+  - bugfix: CLF males no longer have random chance of being named Unknown.
+2022-06-03:
+  Diegoflores31:
+  - bugfix: Xenos can no longer get inside bodyscanners, cryopods, or sleepers.
+  - bugfix: Humans cannot jump into body scanners instantly anymore.
+2022-06-04:
+  Geevies:
+  - rscadd: Added a new nightmare insert to LV, brought back the corpsespawner system.
+  Git-Nivrak:
+  - code_imp: Optimized some say() related code
+  Laser9:
+  - bugfix: Fixed throw speeds of plasteel rods, wired glass tiles, and sandbags.
+  Shad0vvs:
+  - bugfix: Added the faction report and global narrate to mod's verb list.
+  - bugfix: Added proper checks to possessing/releasing objects and attack log verbs.
+  TotalEpicness:
+  - rscadd: Added back the engineering tool vendors to Comtech prep
+  TotalEpicness5:
+  - bugfix: Fixed flare guns not being able to be put in shoulder holster, again.
+      Should work now.. I promise! :D
+  - bugfix: G8 belts should now be able to be consistently placed in armor.
+  - imageadd: Added in sprites for thermal and meson pred visor because someone forgot
+      to add them and it caused errors.
+  stanalbatross:
+  - balance: removed logi backpacks other than for synths
+  - balance: removed the two free rocket backpacks in the OT room
+2022-06-05:
+  TotalEpicness:
+  - rscadd: MS-11 Smart Autoinjector Refill Tanks can now be stored in medrigs.
+2022-06-06:
+  Geevies:
+  - rscadd: Radial menus now have labels.
+2022-06-09:
+  Geevies:
+  - rscadd: Added the pick-say macro, which can assign a lot of battlecries to one
+      button. Check the PR for instructions on how to use it.
+  Rem1:
+  - bugfix: Removes an access to space on the Almayer.
+2022-06-10:
+  Geevies:
+  - bugfix: Throwing a uniform will no longer rip your armor off.
+  Youtubeboy139:
+  - imageadd: New Welding and Advanced Welding goggle onmob sprites
+  nauticall:
+  - rscadd: Synthetics can now eat and drink.
+2022-06-11:
+  FrogZeke:
+  - rscadd: 'Working Joe role added, currently whitelisted, name is ''Working Joe
+      #(random number)'''
+  - rscadd: Expanded WJ loadout update to include an engineering headset, construction
+      pouch, electronics pouch, mop, mop bucket, wet floor sign, 2 spacer cleaners,
+      trash bag
+  - rscadd: Start of round spawn for added to ARES
+  - rscadd: Synthvivor appearance can be selected based on players generation selection
+  - bugfix: 'Added suit sensors to the following items in the synthetic snowflake
+      vendors: ua_civvies, wy_davisone, wy_joliet_shopsteward, tshirt/w_br, tshirt/gray_blu,
+      tshirt/r_bla'
+  - code_imp: Changed Whiteout code to have 'Davis One' style appear with its parent
+      species changed
+  Git-Nivrak:
+  - bugfix: Fixed a runtime error with storages
+  Laser9:
+  - bugfix: Clothing items with anti-hug capabilities now resist the correct number
+      of face-hugging attempts.
+2022-06-16:
+  BKryth:
+  - soundadd: added the bell sound when camouflaged bell is triggered
+  Geevies:
+  - rscadd: Added antag vendor gear for UPP Mayjors, UPP conscripts, and UPP/CLF Synths.
+  - refactor: Refactored antag vendors to get their lists from the human jobs directly,
+      rather than being defined on top of the vendor. Everything should work as expected
+      still.
+  Joelampost:
+  - soundadd: Changed two sounds, pred uncloaking and cloaking now have new sounds
+  Morrow:
+  - bugfix: Tape Recorders should record again.  Even in storage containers.
+  silencer_pl:
+  - bugfix: The admin supply pod launcher no longer crashes when it tries to display
+      some of its tooltips
+2022-06-17:
+  Diegoflores31:
+  - rscadd: Adds Nights Vision Goggles, This tool will grant you will the ability
+      to see in the dark at the expense of battery power but be wary since this item
+      is fragile and can break if you are slashed on the head in which case you will
+      need an engineer to repair it using a screwdriver. Can be purchased at SL/RTO
+      squad vendors.
+  - rscadd: Replaced MARSOC NVGs with an unlimited power variant the new standard
+      NVGs.
+  - rscadd: Added a NVG Crate (x3) to ASRS.
+  Geevies:
+  - rscadd: Added a xeno crit health indicator.
+  - rscadd: Crushers now un-dirlock after their charge completes or gets interrupted.
+  - bugfix: Praetorians now say dashes instead of dashs when they dash.
+  - rscadd: Bumped the body spawn count from corpsespawners to 25, up from 15.
+  - balance: Synths now have a 35% increased acid blood dodge chance.
+  - rscadd: Yautja thralls now refer to the thrallee as a mentor, not a master.
+  - bugfix: Yautja thralls can now properly use their weaponry.
+  - refactor: Refactored a whole lot of Yautja code, some things may be wonky.
+  Git-Nivrak:
+  - rscadd: A dead banished xeno will now be unable to rejoin that hive until 30 minutes
+      have passed, The xeno is readmitted or the Queen dies.
+  Jeser:
+  - rscadd: Added transport without Firing Ports Weapons interior.
+  - bugfix: Replaced floor with void in some parts of APC interiors to prevent weeds
+      spreading to non-walkable tiles.
+  - balance: Reduced reload time on Firing Ports Weapons to 10 seconds.
+  - balance: MED APC interior no longer supports surgery, operating table was removed.
+      Back half of interior was rearranged to improve triage capability.
+  - balance: MED APC's revivable bodies slots were increased from 4 to 8 in accordance
+      to the dedicated triage role.
+  - rscadd: Added toggleable inbuilt welding visor to M50 Tanker helmet. Works exactly
+      like one in the M10 technician helmet.
+  - rscadd: Added SensorMate HUD to vehicle crewman vendor for 15 points as well as
+      few more items.
+  - rscdel: Removed welding protection category in vehicle crewman vendor.
+  - balance: Surgery in vehicle interiors is now only allowed if the patient is located
+      on interior medical tile. Surgery is impossible on water and shuttle tiles.
+  Spircen:
+  - qol: Skillless autoinjectors now have an different sprite, name and description.
+  TotalEpicness:
+  - bugfix: Fixed a typo.
+  - bugfix: Fixes an oversight that allowed woyers to keep their shield after choosing
+      a strain by adding in a component to remove shield.
+  - bugfix: Syndi goggles ( instanced as Bug-B-Gone goggles) no longer display incorrect
+      sprites.
+  - bugfix: The maintenance just below the south upper medbay stairwell now has a
+      door.
+  TotalEpicness5:
+  - qol: Removed the off-hand limitation on attachments
+  Youtubeboy139:
+  - imageadd: New grab sprites
+  realforest2001:
+  - qol: Renamed marine cryo equipment presets and ERTs to the same standards and
+      reduce confusion.
+  - expansion: Squads now have a number of config variables to determine if they can
+      be transferred into, overwatched, or used by your faction.
+  - rscadd: Echo Squad is now activated from the Groundside Operations console, rather
+      than being active from the start of the round.
+  - rscadd: Squad Leaders now have a HUD icon even when not active squad leader, being
+      assigned as (acting) Squad Leader uses same icon as present.
+  - rscadd: Cryorines are now automatically added to a Reserves squad.
+  - rscadd: MARSOC are now automatically added to a unique squad.
+  - rscadd: Added MARSOC Team Leader and MARSOC Officer roles.
+  - rscadd: Added the option to choose between covert MARSOC and standard ops. This
+      changes if they use codenames or not.
+  - rscadd: MARSOC now have HUD Icons.
+  - rscadd: Squads now have defined types; Squad, Team and Cell. These determine what
+      squad leaders are called in overwatch and the icons used for aSLs in that squad.
+  - code_imp: Working on 1-2 squads for PMCs and 4 for UPP.
+  silencer_pl:
+  - bugfix: Security Terminals no longer eat ID cards for no reason and with no feedback.
+  silencer_pl, ScarletReign:
+  - imageadd: Added squad color themed comfy chair variants.
+  - rscadd: Squad themed chairs can now be constructed for 2 metal each.
+  - rscadd: The briefing room now uses squad themed, stationary chairs.
+  stanalbatross:
+  - rscadd: added two new hud styles - holographic and grey.
+  - qol: when you spawn as a pooled larva, if you have the appropriate pref on, your
+      window will flash. Pref enabled by default.
+  - qol: increased the volume of the notification sound when being spawned as a pooled
+      larva.
+2022-06-18:
+  50RemAndCounting:
+  - bugfix: fixed the marine synth headset not having access to marine squad (alpha,
+      bravo, charlie, etc.) radio channels.
+  Diegoflores31:
+  - rscadd: Adds Breaching Charge . A fast planting explosive that keeps the operator
+      safe while emiting deadly shrapnel towards the target . This new explosive is
+      available at Squad Engineer , SL and REQ vendors.
+  - rscadd: Adds Breaching Charge crate to ASRS
+  Segrain:
+  - bugfix: Marines once again only get assigned to squads from Alpha to Delta and
+      not to nonexistent squads like "Echo" or "Whiteout".
+  silencer_pl,Thwomper:
+  - rscadd: Adds a MP themed service jacket for all roles that can get the regular
+      version from general uniform vendors.
+  - rscadd: Adds a role-specific MP themed service jacket to all MPs as an option
+      from general uniform vendors. Not SOP compliant.
+  - rscadd: Adds role-specific "jacket-over-armor" MP armor variants to MP role uniform
+      vendors. SOP compliant.
+2022-06-19:
+  Geevies:
+  - rscdel: Command and PO headsets have a 1 minute cooldown on multibroadcasts, while
+      all other headsets have 3 minutes.
+  TotalEpicness5:
+  - rscadd: Expanded big red's southwestern section.
+  - rscadd: Created 'Abandoned mining caves' an abandoned section of big red SW caves
+      that features new cave networks and a warehouse for tight combat!
+  - rscadd: Moved big red SW caves hive spawn point to Abandoned Mining.
+  realforest2001:
+  - code_imp: Autosquad no longer assigns spawned mobs into squads if on admin zlevel
+2022-06-20:
+  50RemAndCounting:
+  - bugfix: fixed CE not having a golden wrench icon on marine squad HUDs
+  Geeves, Youtubeboy139, Triiodine:
+  - rscadd: Added the Boots! PDT/L Battle Buddy kit to the custom gear loadout and
+      Requisitions vendor (under the Misc section). It's a watch / locator tube kit
+      that allows you to track your battle buddy up to five times before needing a
+      cell swap.
+  Geevies:
+  - rscadd: Added some hair and facial hair style variation to UPP.
+  Maciekkub:
+  - rscadd: you can now hold flares in your holster to supplement your flare gun
+  - rscadd: Trying to manually insert a gun into a holster which already has a gun
+      in store will now display the name of the gun which is in the holster instead
+      of "a gun"
+  - rscdel: Removed old holster (not used anymore)
+  - bugfix: fixed the issue where some revolvers and ammo were not able to be inserted
+      into shoulder holsters
+  - code_imp: changed references to the new code and replaced methods to match the
+      commonly used holsters
+  PhantomEpicness:
+  - bugfix: Fixed being able to pump shotguns and do non-attachment stuff offhand.
+      Attachments, SG settings, and gun safety can still be toggled offhand.( I don't
+      know who has SG settings or gun safety macros but good for them I guess)
+  Silencer_pl:
+  - bugfix: MP service jackets no longer get sprite errors on snow maps.
+  Youtubeboy139:
+  - rscadd: New HG3712 and M3717 integrated stock items
+  - rscadd: New internal mags for the HG3712 and M3717 - both accurate to the lore
+      of each gun
+  - rscdel: Removed varedit editions of the M3717 from `Kutjevo` and `Fiorina_SciAnnex`
+  - rscadd: M3717 items to `Kutjevo` and `Fiorina_SciAnnex`
+  - imageadd: New HG3712 and HG3717 shotgun sprites
+  - imageadd: New MK221 variant sprites
+  - imageadd: New Merc Shotgun sprite
+  stanalbatross:
+  - rscadd: Added orbiting for ghosts, this replaces the prior janky follow system.
+      Will make you fly around mobs you orbit perfectly.
+  - rscadd: Added ghost HUD buttons, one to orbit and one to reenter your body. More
+      to come later.
+  - rscadd: Added backend support for doubleclicking.
+  - rscadd: Reworked observing, it will now show the mob's hud to you while you remain
+      orbiting. Only works with humans.
+2022-06-21:
+  Maciekkub:
+  - bugfix: Fixed M60, the minigun and the UPP minigun not having the PB flag.
+  Triiodine, Monkeysfist101:
+  - refactor: Rewrote some energy gun code so we can actually have energy guns now.
+  - bugfix: Body bag boxes no longer fit into storage containers.
+  - bugfix: Bushes should stop catching bullets.
+  - bugfix: Medals should show up on your mob again.
+  - rscadd: Added the Pflager Katsumata Series-D Blaster(M2019 Blaster), the LAPD
+      .44 special (M2049 Blaster), and the PKL 'Double' Blaster from Bladerunner.
+  - rscadd: Added the RXF-M5 EVA pistol from Alien, as it appears on the Nostromo.
+  - bugfix: You can now cut open boxing gloves with any sharp item.
+  - imageadd: Made all the landing signs 2.5d kinda. Also fixed some inconsistencies
+      with the rack and bed sprites.
+  - imageadd: 'Resprited or added: rock sprites and rock prop code, a new set of sandy
+      auto-turfs, generic curtains, generic pressure tank props, redone cargo tug
+      sprites, beer coolers, the new varadero landing sign, entirely redone r&d props
+      (lathe, analyzer, circuit printer), levers for conveyors, mulebots, red folding
+      chairs and red stools, o2 storage racks, pepper spray refill thing, nuke pinpointer,
+      deployable security barrier sprites, handheld mining drill sprites, signal wands,
+      the EFTPOS scanner, plastic sheets, cardboard sheets, the double barrel shotgun,
+      the M43 hummingbird pistol, motion device 3, the structural analyzer, the old
+      flashbulb, EMP grenades, the voice component doodad, autopsy scanner, toner
+      cartridge, paint buckets, robot analyzer, shield components, destination taggers,
+      wrapping paper, game set, bike horn, mateba key, and another set of pews.'
+  Watermelon914:
+  - admin: Tickets are no longer horrendous to deal with as an admin.
+  - admin: Admins can now ping one another with @
+  - admin: 'You can link tickets by doing # ticket number'
+  - admin: Moves adminhelp and staffwho to the Admin tab. Adds mentorhelp verb
+2022-06-22:
+  Silencer_pl:
+  - bugfix: Fixed two instances of doubled chairs in the briefing room.
+  stanalbatross:
+  - bugfix: labels on sentries will now persist when they are deployed and picked
+      back up
+2022-06-23:
+  Geeves:
+  - bugfix: Fixed double chung properly. It is now impossible to use two shotguns
+      to fire faster than the fire + pump delay.
+  Jeser:
+  - bugfix: Fixed aliens being able to build structures under vehicles.
+  TotalEpicness:
+  - rscadd: Hivecore now has an 5 minute cooldown after being destroyed before another
+      one can be built. This cool down only takes affect after 20 minutes round time.
+  - qol: Hivecore now notifies if someone is destroying it and also has a confirmation
+      warning.
+  stanalbatross:
+  - bugfix: you can no longer lase through walls
+  - bugfix: fixed some instances of "!." ending sentences
+2022-06-24:
+  Stan_Albatross:
+  - bugfix: you can no longer remove accessories from uniforms from unlimited range
+      after you drop it/throw it away
+  - spellcheck: fixed some weird wording in the KIA/MIA assignment menu
+  stanalbatross:
+  - bugfix: The PMC sniper's cap no longer obscures your face
+  - balance: added more sniper ammo to the PMC sniper's loadout alongside giving them
+      a first aid kit and a PMC SMG as their sidearm.
+  - bugfix: trying to weld walls while your welder is off will no longer let you weld
+      them.
+  - bugfix: trying to weld a closet while your welder is off will no longer tell you
+      you don't have enough fuel.
+  - rscadd: added a minor do_after to closet welding and breaking.
+2022-06-25:
+  50RemAndCounting, Quickload:
+  - imageadd: added a dark blue variant of the surgical webbing vest, functionally
+      identical to the existing green version.
+  Maciekkub:
+  - bugfix: Fixes M5RPG text displaying "It's unloaded but has round chambered" and
+      now correctly displays if it's empty upon examine
+  - bugfix: Sound and notification now only play when you reach max threshold or above.
+  Silencer_pl:
+  - bugfix: MP service jackets can be opened and closed again without causing icon
+      errors.
+  stanalbatross:
+  - balance: bodybag boxes can now only hold bodybags
+  - qol: made the input box for writing medal citations larger.
+2022-06-26:
+  Stan_Albatross:
+  - rscadd: added a functioning top cover to the smartgun, can be opened and closed
+      with alt-click. You must open the cover to remove the drum or replace it. You
+      cannot fire the gun with the cover open. Thanks to Jooks for the sounds of opening/closing
+      the cover.
+  - bugfix: fixed being able to telepathically toggle the mode of laser designators.
+  stanalbatross:
+  - bugfix: bodybag boxes will no longer runtime on init
+  - bugfix: Ravagers will no longer count holograms such as the queen eye as enemies
+      for the purposes of empowering.
+2022-06-27:
+  Geeves:
+  - bugfix: Ported a fix on /tg/ created by willox that might fix the sticky movement
+      keys bug.
+  Joe Lampost,Spartanbobby:
+  - soundadd: Added Yautja pain screams
+  - soundadd: Yautja can now mimic xenomorphs with *alienhelp and *aliengrowl
+  - soundadd: 'Yautja now have three new soulful emotes to use to create a sense of
+      dread: *click2, *overthere and *comeonout'
+  - soundadd: added a new sound for claiming trophies *roar2
+  stanalbatross:
+  - balance: removed the type 23 from the black market crate pool
+  - balance: tweaked down the damage of all type 23 ammo (8g shells)
+2022-06-28:
+  50RemAndCounting:
+  - spellcheck: fixed a few typos and spelling inconsistencies in Captain Hans Naiche's
+      announcements on Whiskey Outpost.
+  Diegoflores31:
+  - balance: Increased C4 damage to nearby walls to make its destructive power more
+      consistent.
+  - balance: increased wall damage to breaching charge to be able to break the reinforced
+      wall where it is planted.
+  - bugfix: fixed C4 and bcharge timers getting stuck on 60
+  Maciekkub:
+  - bugfix: You cannot crowbar grass tiles on Almayer preventing duplication.
+  naut:
+  - rscadd: Added some new craft beers that can be found in the Booze-o-Mat.
+  stanalbatross:
+  - bugfix: fixed some tiles in the brig on the Almayer not allowing construction.
+  - rscadd: Added two new nightmare inserts for the gym on LV.
+2022-06-29:
+  Geevies:
+  - rscadd: Tweaked some xeno cultist equipment to be more generic.
+  - rscadd: Tweaked how human speech in the hivemind appears to look way better.
+  - bugfix: Equipping someone as a xeno cultist will no longer duplicate their robes/hood,
+      and it'll be force-attached from the start.
+  - balance: Xeno cultists can now partially see in the darkness.
+  - admin: Xeno cultists now get XOOC messages too.
+2022-06-30:
+  Diegoflores31:
+  - bugfix: Eggsac Carrier can no longer bypass Egg production cooldown

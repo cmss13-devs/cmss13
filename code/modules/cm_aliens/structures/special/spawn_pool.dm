@@ -11,6 +11,8 @@
 	var/surge_incremental_reduction = 3 SECONDS
 	var/mob/melting_body
 
+	var/damage_amount = 20
+
 	luminosity = 3
 
 /obj/effect/alien/resin/special/pool/update_icon()
@@ -18,9 +20,9 @@
 	overlays.Cut()
 	underlays.Cut()
 	underlays += "[icon_state]_underlay"
-	overlays += image(icon, "[icon_state]_overlay", layer = ABOVE_MOB_LAYER)
+	overlays += mutable_appearance(icon, "[icon_state]_overlay", layer = ABOVE_MOB_LAYER, plane = GAME_PLANE)
 	if(linked_hive.stored_larva)
-		overlays += "[icon_state]_bubbling"
+		overlays += mutable_appearance(icon,"[icon_state]_bubbling", layer = ABOVE_MOB_LAYER + 0.1, plane = GAME_PLANE)
 
 /obj/effect/alien/resin/special/pool/New(loc, var/hive_ref)
 	last_larva_time = world.time
@@ -29,11 +31,10 @@
 		linked_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	linked_hive.spawn_pool = src
 
-/obj/effect/alien/resin/special/pool/examine(mob/user)
-	..()
+/obj/effect/alien/resin/special/pool/get_examine_text(mob/user)
+	. = ..()
 	if(isXeno(user) || isobserver(user))
-		var/message = "It has [linked_hive.stored_larva] more larvae to grow."
-		to_chat(user, message)
+		. += "It has [linked_hive.stored_larva] more larvae to grow."
 
 /obj/effect/alien/resin/special/pool/attackby(obj/item/I, mob/user)
 	if(!istype(I, /obj/item/grab) || !isXeno(user))
@@ -50,14 +51,18 @@
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+
 		if(H.is_revivable())
 			to_chat(user, SPAN_XENOWARNING("This one is not suitable yet!"))
+			return
+		if(H.chestburst && H.stat != DEAD) // This isn't covered in H.is_revivable() as it returns FALSE if chestburst is TRUE
+			to_chat(user, SPAN_XENOWARNING("Let this one burst first!"))
 			return
 		if(H.spawned_corpse)
 			to_chat(user, SPAN_XENOWARNING("This one does not look suitable!"))
 			return
-
-		larva_amount += 1
+		user.stop_pulling() // disrupt any grabs
+		larva_amount++
 	if(isXeno(M))
 		if(!linked_hive || M.stat != DEAD)
 			return
@@ -91,7 +96,7 @@
 	vis_contents += melting_body
 	update_icon()
 	new /obj/effect/overlay/temp/acid_pool_splash(loc)
-	playsound(src, 'sound/effects/slosh.ogg', 25, 1)
+	playsound(src, 'sound/effects/acidpool.ogg', 25, 1)
 
 	linked_hive.stored_larva += larva_amount
 
@@ -119,8 +124,7 @@
 	if(linked_hive.hijack_pooled_surge && (last_surge_time + surge_cooldown) < world.time)
 		last_surge_time = world.time
 		linked_hive.stored_larva++
-		for(var/mob/dead/observer/ghost in GLOB.observer_list)
-			to_chat(ghost, SPAN_DEADSAY("The hive has gained another pooled larva! Use the Join As Xeno verb to take it."))
+		announce_dchat("The hive has gained another pooled larva! Use the Join As Xeno verb to take it.", src)
 		if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 			surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
 
@@ -128,11 +132,18 @@
 	if(!melting_body)
 		return
 
-	melting_body.pixel_y -= 1
+	melting_body.pixel_y--
 	playsound(src, 'sound/bullets/acid_impact1.ogg', 25)
-	iterations -= 1
+	iterations--
 	if(!iterations)
 		vis_contents.Cut()
+
+		for(var/atom/movable/A in melting_body.contents_recursive()) // Get rid of any unacidable objects so we don't delete them
+			if(isitem(A))
+				var/obj/item/item = A
+				if(item.is_objective && item.unacidable)
+					item.forceMove(get_step(loc, pick(alldirs)))
+
 		QDEL_NULL(melting_body)
 	else
 		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool.proc/melt_body, iterations), 2 SECONDS)
@@ -149,14 +160,18 @@
 		if(isnull(new_xeno))
 			return FALSE
 
-		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from the [src]!"),
-		SPAN_XENODANGER("You emerge out of the [src] and awaken from your slumber. For the Hive!"))
-		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from \the [src]!"),
+		SPAN_XENODANGER("You emerge out of \the [src] and awaken from your slumber. For the Hive!"))
+		msg_admin_niche("[key_name(new_xeno)] emerged from \a [src]. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
+		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 			qdel(new_xeno)
 			return FALSE
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
-		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+		if(new_xeno.client)
+			if(new_xeno.client?.prefs.toggles_flashing & FLASH_POOLSPAWN)
+				window_flash(new_xeno.client)
 
 		linked_hive.stored_larva--
 		linked_hive.hive_ui.update_pooled_larva()
@@ -172,4 +187,41 @@
 		visible_message(SPAN_XENODANGER("You hear something resembling a scream from [src] as it's destroyed!"))
 		xeno_message(SPAN_XENOANNOUNCE("Psychic pain storms throughout the hive as the spawn pool is destroyed! You will no longer gain pooled larva over time."), 3, linked_hive.hivenumber)
 		linked_hive.hijack_pooled_surge = FALSE
+
+	for(var/turf/T in range(1, src))
+		var/obj/effect/xenomorph/spray/spray = new /obj/effect/xenomorph/spray(T)
+		spray.cause_data = create_cause_data(src.name)
+
 	. = ..()
+
+/obj/effect/alien/resin/special/pool/Crossed(var/atom/movable/AM)
+	. = ..()
+
+	if(!ishuman(AM))
+		return
+
+	var/mob/living/carbon/human/H = AM
+
+	H.emote("pain")
+	if(prob(20))
+		to_chat(H, SPAN_DANGER("You trip into the pool!"))
+		H.KnockDown(5)
+	do_human_damage(H)
+
+/obj/effect/alien/resin/special/pool/proc/do_human_damage(var/mob/living/carbon/human/H)
+	if(H.loc != loc)
+		return
+
+	playsound(H, get_sfx("acid_sizzle"), 30)
+	addtimer(CALLBACK(src, .proc/do_human_damage, H), 3 SECONDS, TIMER_UNIQUE)
+
+	if(H.lying)
+		for(var/i in DEFENSE_ZONES_LIVING)
+			H.apply_armoured_damage(damage_amount * 0.35, ARMOR_BIO, BURN, i)
+		return
+	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
+	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
+	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_leg")
+	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_leg")
+
+

@@ -75,6 +75,7 @@
 #define INTERRUPT_MIDDLECLICK       (1<<15)
 #define INTERRUPT_DAZED             (1<<16)
 #define INTERRUPT_EMOTE             (1<<17)
+#define INTERRUPT_CHANGED_LYING     (1<<18)  // By default not in INTERRUPT_ALL (too niche)
 
 #define INTERRUPT_ALL               (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF|INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_NEEDHAND|INTERRUPT_RESIST)
 #define INTERRUPT_ALL_OUT_OF_RANGE  (INTERRUPT_ALL & (~INTERRUPT_DIFF_TURF)|INTERRUPT_OUT_OF_RANGE)
@@ -121,6 +122,11 @@
 #define ASSEMBLY_EMPTY		0
 #define ASSEMBLY_UNLOCKED	1
 #define ASSEMBLY_LOCKED		2
+
+// Matrix CAS Upgrades
+#define MATRIX_DEFAULT 	0
+#define MATRIX_NVG 		1
+#define MATRIX_WIDE 	2
 
 // Statistics defines
 #define STATISTIC_XENO "xeno"
@@ -192,13 +198,13 @@
  */
 #define get_area(A) (isarea(A) ? A : get_step(A, 0)?.loc)
 
-//Misc text define. Does 4 spaces. Used as a makeshift tabulator.
-#define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
-
 //https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
 #define MOUSE_OPACITY_TRANSPARENT 0
 #define MOUSE_OPACITY_ICON 1
 #define MOUSE_OPACITY_OPAQUE 2
+
+//Misc text define. Does 4 spaces. Used as a makeshift tabulator.
+#define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
 
 #define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
 
@@ -221,3 +227,25 @@
 
 //Automatic punctuation
 #define ENDING_PUNCT list(".", "-", "?", "!")
+
+//ghost vision mode pref settings
+#define GHOST_VISION_LEVEL_NO_NVG		"No Night Vision"
+#define GHOST_VISION_LEVEL_MID_NVG		"Half Night Vision"
+#define GHOST_VISION_LEVEL_FULL_NVG		"Full Night Vision"
+
+//Ghost orbit types:
+#define GHOST_ORBIT_CIRCLE "circular"
+#define GHOST_ORBIT_TRIANGLE "triangular"
+#define GHOST_ORBIT_HEXAGON "hexagonal"
+#define GHOST_ORBIT_SQUARE "square"
+#define GHOST_ORBIT_PENTAGON "pentagonal"
+
+//Command message cooldown defines:
+#define COOLDOWN_COMM_MESSAGE		30 SECONDS
+#define COOLDOWN_COMM_MESSAGE_LONG	1 MINUTES
+#define COOLDOWN_COMM_REQUEST		5 MINUTES
+#define COOLDOWN_COMM_CENTRAL		30 SECONDS
+#define COOLDOWN_COMM_DESTRUCT		5 MINUTES
+
+// filters
+#define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-2, size=4, border=4, color="#04080FAA")

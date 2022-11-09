@@ -23,11 +23,11 @@
 	//code. Very ugly. I dont care. Moving this stuff here so its easy
 	//to find it.
 
-	//TODO: seperate this out
+	//TODO: separate this out
 	//update the current life tick, can be used to e.g. only do something every 4 ticks
 	life_tick++
 
-	if(stat == DEAD && species.name == "Zombie")
+	if(stat == DEAD && species.name == SPECIES_ZOMBIE)
 		handle_chemicals_in_body(delta_time)
 		return
 
@@ -47,6 +47,9 @@
 			//Random events (vomiting etc)
 			if(!stat && getToxLoss() >= 45 && nutrition > 20)
 				vomit()
+
+			if(on_fire)
+				species.handle_on_fire(src)
 
 			//effects of being grabbed aggressively by another mob
 			if(pulledby && pulledby.grab_level)
@@ -73,10 +76,10 @@
 	//Handle temperature/pressure differences between body and environment
 	handle_environment() //Optimized a good bit.
 
+	updatehealth()
+
 	//Status updates, death etc.
 	handle_regular_status_updates() //Optimized a bit
-
-	updatehealth()
 
 	update_canmove()
 

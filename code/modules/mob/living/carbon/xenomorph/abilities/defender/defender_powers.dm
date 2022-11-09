@@ -1,32 +1,34 @@
-/datum/action/xeno_action/onclick/toggle_crest/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+/datum/action/xeno_action/onclick/toggle_crest/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if (!istype(xeno))
 		return
 
-	if(X.fortify)
-		to_chat(X, SPAN_XENOWARNING("You cannot use abilities while fortified."))
+	if(xeno.fortify)
+		to_chat(xeno, SPAN_XENOWARNING("You cannot use abilities while fortified."))
 		return
 
-	if(!X.check_state())
+	if(!xeno.check_state())
 		return
 
 	if(!action_cooldown_check())
 		return
 
-	X.crest_defense = !X.crest_defense
+	xeno.crest_defense = !xeno.crest_defense
 
-	if(X.crest_defense)
-		to_chat(X, SPAN_XENOWARNING("You lower your crest."))
-		X.ability_speed_modifier += speed_debuff
-		X.armor_deflection_buff += armor_buff
-		X.mob_size = MOB_SIZE_BIG //knockback immune
-		X.update_icons()
+	if(xeno.crest_defense)
+		to_chat(xeno, SPAN_XENOWARNING("You lower your crest."))
+		xeno.ability_speed_modifier += speed_debuff
+		xeno.armor_deflection_buff += armor_buff
+		xeno.mob_size = MOB_SIZE_BIG //knockback immune
+		button.icon_state = "template_active"
+		xeno.update_icons()
 	else
-		to_chat(X, SPAN_XENOWARNING("You raise your crest."))
-		X.ability_speed_modifier -= speed_debuff
-		X.armor_deflection_buff -= armor_buff
-		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
-		X.update_icons()
+		to_chat(xeno, SPAN_XENOWARNING("You raise your crest."))
+		xeno.ability_speed_modifier -= speed_debuff
+		xeno.armor_deflection_buff -= armor_buff
+		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
+		button.icon_state = "template"
+		xeno.update_icons()
 
 	apply_cooldown()
 	..()
@@ -66,12 +68,11 @@
 		return
 
 	if(!X.crest_defense)
+		apply_cooldown()
 		X.throw_atom(get_step_towards(H, X), 3, SPEED_SLOW, X)
-
 	if(!X.Adjacent(H))
+		on_cooldown_end()
 		return
-
-	apply_cooldown()
 
 	H.last_damage_data = create_cause_data(X.caste_type, X)
 	X.visible_message(SPAN_XENOWARNING("[X] rams [H] with its armored crest!"), \
@@ -94,7 +95,7 @@
 
 	H.throw_atom(T, headbutt_distance, SPEED_SLOW, src)
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
-
+	apply_cooldown()
 	..()
 	return
 
@@ -148,37 +149,53 @@
 	return
 
 // Defender Fortify
-/datum/action/xeno_action/activable/fortify/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+/datum/action/xeno_action/activable/fortify/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if (!istype(xeno))
 		return
 
-	if(X.crest_defense && X.steelcrest)
+	if(xeno.crest_defense && xeno.steelcrest)
 		to_chat(src, SPAN_XENOWARNING("You cannot fortify while your crest is already down!"))
 		return
 
-	if(X.crest_defense)
+	if(xeno.crest_defense)
 		to_chat(src, SPAN_XENOWARNING("You cannot use fortify with your crest lowered."))
 		return
 
-	if(!X.check_state())
+	if(!xeno.check_state())
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	playsound(get_turf(X), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
+	playsound(get_turf(xeno), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
 
-	if(!X.fortify)
+	if(!xeno.fortify)
 		RegisterSignal(owner, COMSIG_MOB_DEATH, .proc/death_check)
-		fortify_switch(X, TRUE)
+		fortify_switch(xeno, TRUE)
+		if(xeno.selected_ability != src)
+			button.icon_state = "template_active"
 	else
 		UnregisterSignal(owner, COMSIG_MOB_DEATH)
-		fortify_switch(X, FALSE)
+		fortify_switch(xeno, FALSE)
+		if(xeno.selected_ability != src)
+			button.icon_state = "template"
 
 	apply_cooldown()
 	..()
 	return
+
+/datum/action/xeno_action/activable/fortify/action_activate()
+	..()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.fortify && xeno.selected_ability != src)
+		button.icon_state = "template_active"
+
+/datum/action/xeno_action/activable/fortify/action_deselect()
+	..()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.fortify)
+		button.icon_state = "template_active"
 
 /datum/action/xeno_action/activable/fortify/proc/fortify_switch(var/mob/living/carbon/Xenomorph/X, var/fortify_state)
 	if(X.fortify == fortify_state)

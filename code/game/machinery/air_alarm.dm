@@ -813,7 +813,7 @@ table tr:first-child th:first-child { border: none;}
 		var/list/selected = TLV["temperature"]
 		var/max_temperature = min(selected[3] - T0C, MAX_TEMPERATURE)
 		var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
-		var/input_temperature = input("What temperature would you like the system to mantain? (Capped between [min_temperature]C and [max_temperature]C)", "Thermostat Controls") as num|null
+		var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature]C and [max_temperature]C)", "Thermostat Controls", min_temperature, max_temperature, min_temperature)
 		if(!input_temperature || input_temperature > max_temperature || input_temperature < min_temperature)
 			to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")
 		else
@@ -842,7 +842,7 @@ table tr:first-child th:first-child { border: none;}
 					var/threshold = text2num(href_list["var"])
 					var/list/selected = TLV[env]
 					var/list/thresholds = list("lower bound", "low warning", "high warning", "upper bound")
-					var/newval = input("Enter [thresholds[threshold]] for [env]", "Alarm triggers", selected[threshold]) as null|num
+					var/newval = tgui_input_real_number(usr, "Enter [thresholds[threshold]] for [env]", "Alarm triggers", selected[threshold])
 					if (isnull(newval) || ..() || (locked && !isRemoteControlling(usr)))
 						return
 					if (newval<0)
@@ -1019,12 +1019,12 @@ table tr:first-child th:first-child { border: none;}
 	..()
 	update_icon()
 
-/obj/structure/machinery/alarm/examine(mob/user)
-	..()
+/obj/structure/machinery/alarm/get_examine_text(mob/user)
+	. = ..()
 	if (buildstage < 2)
-		to_chat(user, "It is not wired.")
+		. += "It is not wired."
 	if (buildstage < 1)
-		to_chat(user, "The circuit is missing.")
+		. += "The circuit is missing."
 
 
 

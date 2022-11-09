@@ -175,7 +175,7 @@
 	icon_state = "poster4"
 
 /obj/structure/sign/poster/propaganda/Initialize()
-	serial_number = pick(4,14,15,20,21,40)
+	serial_number = pick(4,14,15,20,21,40,41)
 	.=..()
 
 /obj/structure/sign/poster/safety

@@ -30,6 +30,9 @@
 	item_state = "chaplain"
 	flags_jumpsuit = FALSE
 
+/obj/item/clothing/under/rank/chaplain/cultist
+	name = "cultist jumpsuit"
+
 /obj/item/clothing/suit/priest_robe
 	name = "priest robes"
 	desc = "A long dress with a purple scarf, often worn by religious folk."
@@ -38,7 +41,7 @@
 
 /obj/item/clothing/under/rank/worker_overalls
 	name = "worker overalls"
-	desc = "An outfit fit for the hard working man."
+	desc = "An outfit fit for the hard-working man."
 	icon_state = "worker_overalls"
 	item_state = "bl_suit"
 	flags_jumpsuit = FALSE

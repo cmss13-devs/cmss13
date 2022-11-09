@@ -30,39 +30,39 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 
-/obj/structure/girder/examine(mob/user)
-	..()
+/obj/structure/girder/get_examine_text(mob/user)
+	. = ..()
 	if (health <= 0)
-		to_chat(user, "It's broken, but can be mended by welding it.")
+		. += "It's broken, but can be mended by welding it."
 		return
 
 	switch(state)
 		if(STATE_STANDARD)
 			if(step_state == STATE_STANDARD)
-				to_chat(user, SPAN_NOTICE("It looks ready for a [SPAN_HELPFUL("screwdriver")] to dismantle, [SPAN_HELPFUL("metal")] to create a wall or [SPAN_HELPFUL("plasteel")] to create a reinforced wall."))
+				. += SPAN_NOTICE("It looks ready for a [SPAN_HELPFUL("screwdriver")] to dismantle, [SPAN_HELPFUL("metal")] to create a wall or [SPAN_HELPFUL("plasteel")] to create a reinforced wall.")
 				return
 		if(STATE_DISMANTLING)
 			if(step_state == STATE_SCREWDRIVER)
-				to_chat(user, SPAN_NOTICE("Support struts are unsecured. [SPAN_HELPFUL("Wirecutters")] to remove."))
+				. += SPAN_NOTICE("Support struts are unsecured. [SPAN_HELPFUL("Wirecutters")] to remove.")
 			else if(step_state == STATE_WIRECUTTER)
-				to_chat(user, SPAN_NOTICE("Support struts are removed. [SPAN_HELPFUL("Crowbar")] to dislodge, [SPAN_HELPFUL("wrench")] to dismantle."))
+				. += SPAN_NOTICE("Support struts are removed. [SPAN_HELPFUL("Crowbar")] to dislodge, [SPAN_HELPFUL("wrench")] to dismantle.")
 			return
 		if(STATE_WALL)
 			if(step_state == STATE_METAL)
-				to_chat(user, SPAN_NOTICE("Metal added. [SPAN_HELPFUL("Screwdrivers")] to attach."))
+				. += SPAN_NOTICE("Metal added. [SPAN_HELPFUL("Screwdrivers")] to attach.")
 			else if(step_state == STATE_SCREWDRIVER)
-				to_chat(user, SPAN_NOTICE("Metal attached. [SPAN_HELPFUL("Weld")] to finish."))
+				. += SPAN_NOTICE("Metal attached. [SPAN_HELPFUL("Weld")] to finish.")
 			return
 		if(STATE_REINFORCED_WALL)
 			if(step_state == STATE_PLASTEEL)
-				to_chat(user, SPAN_NOTICE("Plasteel added. Add [SPAN_HELPFUL("metal rods")] to stengthen."))
+				. += SPAN_NOTICE("Plasteel added. Add [SPAN_HELPFUL("metal rods")] to stengthen.")
 			else if(step_state == STATE_RODS)
-				to_chat(user, SPAN_NOTICE("Metal rods added. [SPAN_HELPFUL("Screwdrivers")] to attach."))
+				. += SPAN_NOTICE("Metal rods added. [SPAN_HELPFUL("Screwdrivers")] to attach.")
 			else if(step_state == STATE_SCREWDRIVER)
-				to_chat(user, SPAN_NOTICE("Plasteel attached. [SPAN_HELPFUL("Weld")] to finish."))
+				. += SPAN_NOTICE("Plasteel attached. [SPAN_HELPFUL("Weld")] to finish.")
 			return
 		if(STATE_DISPLACED)
-			to_chat(user, SPAN_NOTICE("It looks dislodged. [SPAN_HELPFUL("Crowbar")] to secure it."))
+			. += SPAN_NOTICE("It looks dislodged. [SPAN_HELPFUL("Crowbar")] to secure it.")
 
 /obj/structure/girder/update_icon()
 	. = ..()
@@ -81,6 +81,23 @@
 	if(user.action_busy)
 		return TRUE //no afterattack
 
+	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		if(user.action_busy)
+			return
+		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+			return
+
+		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
+			to_chat(user, SPAN_NOTICE("You stop taking down \the [src]."))
+			return
+		to_chat(user, SPAN_NOTICE("You tear down \the [src]."))
+
+		playsound(loc, 'sound/effects/metal_shatter.ogg', 40, 1)
+		dismantle()
+		return
+
 	if(istool(W) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 		to_chat(user, SPAN_WARNING("You are not trained to configure [src]..."))
 		return TRUE
@@ -89,6 +106,9 @@
 		if(change_state(W, user))
 			return
 	else if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(QDELETED(src))
 				return
@@ -214,6 +234,9 @@
 		return TRUE
 
 	if(iswelder(W) && step_state == STATE_SCREWDRIVER)
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(5, user))
 			to_chat(user, SPAN_NOTICE("You start welding the new additions."))
@@ -230,6 +253,10 @@
 			else
 				T.PlaceOnTop(/turf/closed/wall)
 				SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WALL, /turf/closed/wall)
+			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
+			if(weeds_in_tile)
+				qdel(weeds_in_tile)
+			T.add_fingerprint(user)
 			qdel(src)
 		return TRUE
 	return FALSE
@@ -257,6 +284,9 @@
 		return TRUE
 
 	if(iswelder(W) && step_state == STATE_SCREWDRIVER)
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(5, user))
 			to_chat(user, SPAN_NOTICE("You start welding the new additions."))
@@ -271,6 +301,10 @@
 				T.PlaceOnTop(/turf/closed/wall/almayer/reinforced)
 			else
 				T.PlaceOnTop(/turf/closed/wall/r_wall)
+			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
+			if(weeds_in_tile)
+				qdel(weeds_in_tile)
+			T.add_fingerprint(user)
 			qdel(src)
 		return TRUE
 
@@ -287,10 +321,17 @@
 		dmg = round(P.damage * 0.5)
 	if(dmg)
 		health -= dmg
+		take_damage(dmg)
 		bullet_ping(P)
 	if(health <= 0)
 		update_state()
 	return TRUE
+
+/obj/structure/girder/proc/take_damage(damage)
+	health = max(health - damage, 0)
+	if(health <= 0)
+		update_state()
+
 
 /obj/structure/girder/proc/dismantle()
 	health = 0

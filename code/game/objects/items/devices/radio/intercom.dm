@@ -23,6 +23,9 @@
 	ai = null
 	. = ..()
 
+/obj/item/device/radio/intercom/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
 /obj/item/device/radio/intercom/attack_remote(mob/user as mob)
 	src.add_fingerprint(user)
 	spawn (0)
@@ -61,11 +64,11 @@
 		last_tick = world.timeofday
 
 		if(!src.loc)
-			on = 0
+			on = FALSE
 		else
 			var/area/A = src.loc.loc
 			if(!A || !isarea(A) || !A.master)
-				on = 0
+				on = FALSE
 			else
 				on = A.master.powered(POWER_CHANNEL_EQUIP) // set "on" to the power status
 

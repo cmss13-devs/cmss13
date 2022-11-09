@@ -2,6 +2,7 @@
 	var/total_hits = 0
 	var/datum/entity/player_stats/caste/top_caste = null // reference to /datum/entity/player_stats/caste (i.e. ravager)
 	var/list/caste_stats_list = list() // list of types /datum/entity/player_stats/caste
+	var/list/datum/entity/statistic/medal/medal_list = list() // list of all royal jelly earned
 
 /datum/entity/player_stats/xeno/get_playtime(var/type)
 	if(!type || type == FACTION_XENOMORPH)
@@ -42,7 +43,7 @@
 	if(isnull(xeno_stats))
 		return
 	if(!xeno_stats.round_played)
-		xeno_stats.total_rounds_played += 1
+		xeno_stats.total_rounds_played++
 		xeno_stats.round_played = TRUE
 	xeno_stats.total_playtime += life_time_total
 	xeno_stats.track_caste_playtime(caste_type, life_time_total)
@@ -68,7 +69,7 @@
 /datum/entity/player_stats/xeno/proc/track_caste_playtime(var/caste, var/time = 0)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	if(!S.round_played)
-		S.total_rounds_played += 1
+		S.total_rounds_played++
 		S.round_played = TRUE
 	S.total_playtime += time
 	if(round_statistics)
@@ -77,10 +78,10 @@
 
 /datum/entity/player_stats/xeno/count_personal_death(var/caste)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
-	S.total_deaths += 1
+	S.total_deaths++
 	if(round_statistics)
 		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
-		R.total_deaths += 1
+		R.total_deaths++
 
 //******************
 //Stat Procs - kills

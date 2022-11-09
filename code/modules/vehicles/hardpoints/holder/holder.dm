@@ -19,18 +19,18 @@
 		var/image/I = H.get_hardpoint_image()
 		overlays += I
 
-/obj/item/hardpoint/holder/examine(var/mob/user, integrity_only = FALSE)
-
+/obj/item/hardpoint/holder/get_examine_text(var/mob/user, integrity_only = FALSE)
+	. = ..()
 	if(!integrity_only)
-		..()
+		return ..()
 	else
 		if(health <= 0)
-			to_chat(user, "It's busted!")
-		else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)))
-			to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
+			. += "It's busted!"
+		else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)))
+			. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 	for(var/obj/item/hardpoint/H in hardpoints)
-		to_chat(user, "There is a [H] module installed on \the [src].")
-		H.examine(user, TRUE)
+		. += "There is a [H] module installed on \the [src]."
+		. += H.get_examine_text(user, TRUE)
 
 /obj/item/hardpoint/holder/get_hardpoint_info()
 	..()

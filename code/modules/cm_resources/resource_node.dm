@@ -47,7 +47,7 @@
 	return TRUE
 
 
-// /obj/structure/resource_node/examine(mob/user)
+// /obj/structure/resource_node/get_examine_text(mob/user)
 // 	..()
 // 	to_chat(user, "It has [amount_left] resources left.")
 

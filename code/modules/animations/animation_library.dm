@@ -14,6 +14,11 @@ Instead of being uniform, it starts out a littler slower, goes fast in the middl
 	animate(transform = matrix(240 * direction, MATRIX_ROTATE), time = 1)
 	animate(transform = null, time = 2, easing = SINE_EASING|EASE_OUT)
 
+/proc/animation_move_up_slightly(atom/A, loop_num = 0)
+	animate(A, transform = matrix(330, MATRIX_ROTATE), time = 1, loop = loop_num, easing = SINE_EASING|EASE_IN)
+	animate(transform = matrix(330, MATRIX_ROTATE), time = 1)
+	animate(transform = null, time = 2, easing = SINE_EASING|EASE_OUT)
+
 //Makes it look like the user threw something in the air (north) and then caught it.
 /proc/animation_toss_snatch(atom/A)
 	A.transform *= 0.75

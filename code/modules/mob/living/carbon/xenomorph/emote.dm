@@ -12,7 +12,7 @@
 				return
 			if(player_caused)
 				if(client)
-					if (client.prefs.muted & MUTE_IC)
+					if(client.prefs.muted & MUTE_IC)
 						to_chat(src, SPAN_WARNING("You cannot send IC messages (muted)"))
 						return
 					if(client.handle_spam_prevention(message, MUTE_IC))
@@ -110,6 +110,17 @@
 
 
 /mob/living/carbon/Xenomorph/Larva/emote(var/act, var/m_type = 1, var/message = null, player_caused)
+	if(findtext(act, "-", 1, null))
+		var/t1 = findtext(act, "-", 1, null)
+		act = copytext(act, 1, t1)
+
+	if(stat && act != "help")
+		return
+
+	playsound(loc, "alien_roar_larva", 15)
+	return
+
+/mob/living/carbon/Xenomorph/Facehugger/emote(var/act, var/m_type = 1, var/message = null, player_caused)
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		act = copytext(act, 1, t1)

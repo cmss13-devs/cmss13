@@ -1,0 +1,246 @@
+2019-11-10:
+  Cakey:
+  - tweak: Reduced the marine pop requirement for Tank Crewmen to 100 (previously
+      120).
+  - tweak: Round-start role pop restrictions will now also take into account un-readied
+      players.
+  Fourkhan:
+  - tweak: Added a small amount of armor piercing to buckshot.
+  - tweak: Slightly increased the accuracy of buckshot in the 2-3 tiles range.
+  - tweak: Decreased the amount the barrel charger nerfs accuracy and fire delay.
+  - tweak: Burrowed larva no longer count towards tier 3 slots.
+  - tweak: Xenos now have 5 minutes of free evolution at roundstart regardless of
+      whether or not the Queen is on her Ovi.
+  Jeser:
+  - rscadd: Added assisted reload for RPG. In order to perform an assisted reload,
+      RPG operator should wield rocket launcher, marine with rocket should stand right
+      behind RPG operator and click them with a rocket. Reloading this way takes less
+      time than reloading by RPG operator on their own.
+  - rscadd: Added crowbar to Combat Technician Support Kit.
+  - rscadd: Made PFC kits to automatically fold once emptied akin to MREs.
+  - tweak: Collapsing MB-6 Folding Barricade timer has been halved to 4 seconds. (#7935)
+  - tweak: AP rocket for M5 RPG rocket launcher now has maximum accuracy within 7
+      tiles and loses accuracy as it travels beyond that distance. (#7917)
+  - tweak: Stun time from direct hit with M5 RPG AP rocket was increased by 2 seconds.
+  - tweak: Construction pouch can hold floor tiles now. (#7873)
+  - rscadd: Successfully acquiring target's coordinates will prompt a window with
+      said coordinates, instead of showing them in chat. (#7997)
+  - rscadd: Added fullscreen damage overlays for xenos for faster identification of
+      current health akin to human's pain overlay. No more sudden death because you
+      didn't notice your health status.
+  - imageadd: Fullscreen damage sprites by Triiodine.
+  Slywater:
+  - bugfix: Fixed burrowers being able to burrow on stairs and generally breaking
+      spacetime.
+  TobiNerd:
+  - maptweak: Buffed filtration caves on Big Red.
+  - rscadd: Added the Turing Dispenser to Almayer Research. This semi-automated chem
+      dispenser can be programmed using vials to repeat simple or advanced chem recipes.
+  - tweak: Added a chemist pouch for holding beakers and bottles, and a vial pouch
+      that can hold up to 6 vials. Click the vial pouch with a vial box to move all
+      the vials into the pouch or vice versa.
+  - tweak: Tweaked the Researcher's starting loadout. Their pouches are replaced with
+      the vial and chemist pouch respectively, in addition to a syringe in their labcoat.
+  - tweak: You can now empty blood packs with the centrifuge.
+  - tweak: Planetside research notes will no longer be about clearance level 1 chems.
+  - tweak: You can now change the transfer amount of syringes and also use them on
+      blood bags. (#8015)
+  - spellcheck: Corrected some chem description errors.
+  - bugfix: Fixed smartgunner and morgue access being the same thing.
+  - bugfix: Fixed the ID computer missing chemistry and morgue access buttons.
+  Triiodine:
+  - rscadd: Rejoice! The USCM has slackened facial grooming standards. New hair styles
+      are now available.
+  - spellcheck: Renamed the incorrectly titled Van Dyke moustache to Horseshoe moustache.
+      Character saves are unaffected.
+  - spellcheck: The multitool has been renamed to 'Security Access Tuner'
+  - imageadd: Metal, plasteel, sandbags, helmets, flametanks, magazines, speedloaders,
+      motion detectors, data detectors, entrenching tools, flashbangs, HEDP, HEFA,
+      incen, smoke, phos,  training grenades, (standard) loading rigs, G-41 backpacks,
+      machete holsters, marinepacks, access tuners, crowbars, wrenches, cutters, rebreathers,
+      and blowtorches have new unique in-hand sprites.
+  - imageadd: Flashbang grenades, rebreathers, L42 Magazines, M41 Magazines, M39 Magazines,
+      & Medibot have been resprited.
+  - soundadd: The U7 Underbarrel Shotgun blast, HPR fire SFX, burst toggles, smartgun
+      reloads, underbarrel attachment handling and rail-lights have new or adjusted
+      sounds.
+  - imageadd: Shotgun shells, boxes, and magazines now have in-hand icons that should
+      dynamically update if they're empty or full.
+  - imageadd: Rack parts have new inhand sprites.
+  - bugfix: The MOU-53 now spawns empty, like all other guns.
+  - rscadd: Reflex sights can now be purchased with points from all squad role specific
+      vendors.
+  - tweak: The M39 Submachine Gun can now attach the underbarrel flashlight grip.
+  - maptweak: Added some extra window panels to squad prep to keep things consistent.
+  - maptweak: Added spare hand labelers to squad requisitions.
+  - experiment: The Almayer map has been cleaned of all excessive non-instanced variables.
+      Please keep an eye out for bugs.
+  - tweak: Sorted the squad prep automated weapon racks.
+  - tweak: Extra MREs, Underslung Grenade Launchers, underbarrel flashlight grips,
+      and spare M39 & L42A stocks have been added to the automated weapon racks.
+  monkeysfist101:
+  - rscadd: Added four new cassettes.
+  - tweak: Tweaked helmet goggles and installed framework for different sprites on
+      helmet and cap for when hat garb is fixed.
+  phil235:
+  - rscadd: Added Beer packs.
+  - tweak: Removed the M46C pulse rifle's full auto mode.
+2019-11-16:
+  Atebite:
+  - bugfix: Fixed all pipes that weren't properly connected on all maps.
+  - tweak: The cooldown on Resin Whisperer's build ability is now only applied if
+      the building succeeds.
+  - tweak: Smartguns are now unacidable and indestructible
+  Cakey:
+  - tweak: Reduced the chat timer cooldown.
+  - rscadd: Beanbag shells will now use a separate sound when firing.
+  Fourkhan:
+  - tweak: Nerfed Dancer's tail attack damage in preparation for a more comprehensive
+      rework.
+  Neth:
+  - rscadd: you can now dedicate a discard pile so if someone is right near one, they
+      will discard to it instead of right in front of them
+  - rscadd: you can now draw more than 1 card from the deck by using separate verb
+  - rscadd: hands and piles of cards no longer freak out at 20 cards and stop rendering
+      the entire pile. the limit is now 80 cards
+  - rscadd: you can now sort your hand of cards
+  Phil235:
+  - bugfix: Fixed lighting issues with flashlight grip.
+  - tweak: Flashlight grip is now as bright as rail flashlight.
+  - tweak: You can no longer attach two light source attachments on a gun.
+  TheDonkified:
+  - rscadd: Corner pouncing and corner throwing/grenade firing/etc have been added.
+  - rscadd: When thrown by another mob or propelled by another mob and you hit something
+      dense (NOT A MOB), you will get damage. For example, you're fellow marines blows
+      you up and you are thrown against a wall.
+  - rscadd: 'You can throw items over machines (such as vendors or consoles) as well
+      as mobs. When trying to perform a high toss, there is a ~1 second timer before
+      you perform the throw. It also has a maximum range of 4 tiles. If there are
+      items that you think should not block high toss, feel free to make a suggestion
+      in Gitlab. '
+  - rscadd: 'To activate high toss, press CTRL+R or CTRL+click the throw HUD button.
+      Note: if to untoggle throw, you need to follow the same procedure you used to
+      toggle a throw type in the first place (e.g. you are in high toss throw mode,
+      you need to press CTRL+R, CTRL+click the throw HUD button, or use your high
+      toss macro to untoggle throwing). You can macro throwing, the commands are Toggle-Normal-Throw
+      and Toggle-High-Toss.'
+  - rscadd: You can walk through plastic flaps, there is a 2 second delay.
+  - rscadd: Smoke goes through girders now.
+  - rscadd: Flamethrowers deal damage to barricades (only when hitting them at the
+      front) and resin structures.
+  - tweak: Fire cannot go through the front of barricades. Acid spray cannot go through
+      barricades at all.
+  - tweak: Reworked how movement and slashing was handled with barricades and adjacent
+      structures.
+  - bugfix: Diagonal movement exploits and bugs have been resolved.
+  - bugfix: You can slash people who are not fully protected by cover (behind an open
+      plasteel barricade, not protected by both sides if you are attack from a corner,
+      etc)
+  - experiment: Throwing has been changed as well as how throw damage is calculated.
+      Report any issues where something is too weak or too strong.
+  - bugfix: You can slash portable TComms again.
+  TobiNerd:
+  - bugfix: Fixed a bunch of symmetrical inconsistencies for lights on the Almayer.
+  Vampmare:
+  - rscadd: Added the S-V42 Prototype Smartpack. A backpack with inbuilt flashlight
+      that unlocks special abilities if equipped by a Synthethic. First ability is
+      Protective Form, the Synthetic gains insane protection but is unable to attack
+      for a short duration. Second ability is Immobile Form, the Synthetic becomes
+      unable to move, but also unable to be moved by others. Last ability is Repair
+      Form, which just heals the Synthetic for a good bit damage after standing still
+      for some time. All abilities have a cost, the backpack has  a battery with charge
+      and the only way to recharge the battery is by using GRAB intent on APCs, sucking
+      out their power.
+  - tweak: Added three colours of S-V42 Prototype Smartpack to Synthetic Vendors.
+  - tweak: Human abilities, like the orders, now properly show when they're on CD
+      and not.
+  - bugfix: IB now shows up properly on the Health Analyzer.
+  - tweak: Embedded objects will now show up on the Health Analyzer.
+  - bugfix: Increased shrapnel text so its noticeable now.
+  - tweak: Added kelotane, bicaridine and tramadol autoinjectors to WeylandMed Plus
+      vendors, planetside ones.
+  - tweak: 'Xenos can no longer drag DEAD and INFECTED bodies that won''t have time
+      to burst. So anyone infected just before they die become undraggable. '
+  - bugfix: Dexalin Plus autoinjectors are now actually dexalin plus and not discount
+      version.
+  - tweak: Bleeding has been tweaked to be more sane.
+  - tweak: Renamed the L42 to L42A battle rifle and changed its description.
+  - tweak: Changed the gel fuel description to be more clear about what it does.
+  - tweak: Increased nade falloff, effective range reduced as a result.
+2019-11-19:
+  Fourkhan:
+  - tweak: Marine clothing resists cold slightly better.
+  Phil235:
+  - bugfix: Fixes blood overlay bug on humans.
+  - rscdel: Removes forensic scanner and console.
+  TheDonkified:
+  - rscadd: Gave autolathe sexy new UI and sounds to indicate when it's started printing
+      and finished printing
+  - rscadd: Autolathe can now queue items (maximum of 5 in the queue)
+  - bugfix: Messages with no text will no longer be sent
+  - bugfix: Cannot add assemblies to grenades with assemblies
+  - tweak: Hive status xeno counts are centered
+  - tweak: Can now print hand labelers from and put them in the autolathe
+  - tweak: Ejecting beakers/pill bottles from the chem master/chem dispenser will
+      try to put them in your hands first
+  - rscadd: 'Can empty storage items (i.e. bags and backpacks) by using them in your
+      hand. There will be a ~2 second delay before it will empty. Items that previously
+      had this behavior will retain it with no delay. NOTE: boxes (e.g. the spec gear
+      boxes or sentry boxes) do not have this behavior.'
+  - rscadd: Additionally, can empty those items via clicking on an adjacent tile.
+      Toggle this behavior by using the 'Toggle Tile Dumping' verb.
+  - rscadd: There is an 'Empty' verb that you can macro, but for now it is clunky
+      because it will bring up all of the empty-able storage items in your storage
+      slots.
+  - bugfix: Prae can no longer tailstab through corners.
+  - bugfix: Most issues related to chat styles bleeding should be fixed. Report in
+      Gitlab if said issues persist.
+  - bugfix: You can no longer blow up the fog.
+  TobiNerd:
+  - bugfix: Fixed an issue with the Turing Dispenser not running cycles correctly
+      using only the memory program.
+  Triiodine, with the help of Fourkhan:
+  - maptweak: Added a new map, Sorokyne Strata.
+  monkeysfist101:
+  - tweak: Fixed a few cassette description typos and incorrectly named songs.
+2019-11-25:
+  Cakey:
+  - bugfix: Fixed gas clouds such as boiler and praetorian gas not tracking damage
+      statistics correctly. [Naes Listless]
+  - bugfix: Fixed appearances of things when worn in the belt slot. [Concerned], [Tilly
+      Losch], [NoneYa]
+  - bugfix: Fixed layering issues with certain human effects appearing above lighting.
+      [RobertoMoreno], [slowest]
+  - tweak: M37, CMB and combat shotguns have had their shell tube capacities increased
+      from 8 to 9.
+  Jeser:
+  - rscadd: Map vote window will pop up automatically upon map vote start. Don't let
+      the Ice be selected! Do your part!
+  Neth:
+  - tweak: Point Blank shots no longer affected by wield delay or hip-fire delay [Destrok]
+  Phil235:
+  - tweak: Xenomorphs can no longer place constructions on tiles with a destroyed
+      fence.
+  - tweak: Xenomorph clicking an occupied nest on harm intent now unnests the occupant.
+  - tweak: Xenomorph can no longer handle facehuggers while on fire.
+  - tweak: Buffed the chance to dodge friendly fire while on walk intent.
+  - bugfix: Fixed opTable not updating its victim when the power is out. [TobiNerd]
+  - bugfix: Fixed not being able to screw open a nanomed. [Tilly Losch]
+  - bugfix: Fixed smartgun using two mag rounds per shot fired. [Pandora]
+  - bugfix: Fixed survivors not having proper civilian access on their id. [Troika]
+  TheDonkified:
+  - bugfix: Additional projectiles from flechette/buckshot will now hit resting/downed
+      mobs. [Kineem]
+  - bugfix: Can now see LOOC when in closets, cryo bags, and morgue tables. [Tilly
+      Losch]
+  - bugfix: Can now throw stuff into disposals bins. [Wintermote]
+  - bugfix: Fixes visual bug with leader star and pheromone HUD icons not updating
+      when queen dies, deovis, etc. [Vicacrov/Watermelon]
+  - bugfix: You cannot climb structures through diagonals. [Vicacrov]
+  - bugfix: When burn damage is patched up, the {B} part should remove now. [Ranged]
+  - bugfix: When you ghost, mob will properly reflect that you have ghosted.
+  - bugfix: Blowing up fuel tanks will actually blow them up, so no more testing that
+      shit out in firing range ( I know who you are :) )
+  - tweak: Aliens no longer see rank when they hear humans talk. [Wintermote]
+  - rscadd: Unless you are actively hiding (larva or runner), mobs that are alive
+      should always layer over dead ones when lying down. [Pyotr Nachocheese]

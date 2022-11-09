@@ -14,27 +14,32 @@
 #define AMMO_EXPLOSIVE 			(1<<0)
 #define AMMO_XENO_ACID 			(1<<1)
 #define AMMO_XENO_TOX			(1<<2)
-#define AMMO_ENERGY 			(1<<3)
-#define AMMO_ROCKET				(1<<4)
-#define AMMO_SNIPER				(1<<5)
-#define AMMO_ANTISTRUCT			(1<<6) // Primarily for railgun but can be implemented for other projectiles that are for antitank and antistructure (wall/machine)
-#define AMMO_SKIPS_ALIENS 		(1<<7)
-#define AMMO_IS_SILENCED 		(1<<8) //Unused right now.
-#define AMMO_IGNORE_ARMOR		(1<<9)
-#define AMMO_IGNORE_RESIST		(1<<10)
-#define AMMO_BALLISTIC			(1<<11)
-#define AMMO_IGNORE_COVER		(1<<12)
-#define AMMO_SCANS_NEARBY		(1<<13) //ammo that is scanning stuff nearby - VERY resource intensive
-#define AMMO_STOPPED_BY_COVER	(1<<14)
-#define AMMO_SPECIAL_EMBED		(1<<15)
-#define AMMO_STRIKES_SURFACE	(1<<16) // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
-#define AMMO_HITS_TARGET_TURF	(1<<17) // Whether or not the bullet hits the target that was clicked or if it keeps travelling
-#define AMMO_ALWAYS_FF			(1<<18)
-#define AMMO_HOMING				(1<<19) // If the bullet target is a mob, it will correct its trajectory toward the mob.
+#define AMMO_XENO_BONE			(1<<3) // Needed for some boneshards based abilities
+#define AMMO_ENERGY 			(1<<4)
+#define AMMO_ROCKET				(1<<5)
+#define AMMO_SNIPER				(1<<6)
+#define AMMO_ANTISTRUCT			(1<<7) // Primarily for railgun but can be implemented for other projectiles that are for antitank and antistructure (wall/machine)
+#define AMMO_SKIPS_ALIENS 		(1<<8)
+#define AMMO_IS_SILENCED 		(1<<9) //Unused right now.
+#define AMMO_IGNORE_ARMOR		(1<<10)
+#define AMMO_IGNORE_RESIST		(1<<11)
+#define AMMO_BALLISTIC			(1<<12)
+#define AMMO_IGNORE_COVER		(1<<13)
+#define AMMO_SCANS_NEARBY		(1<<14) //ammo that is scanning stuff nearby - VERY resource intensive
+#define AMMO_STOPPED_BY_COVER	(1<<15)
+#define AMMO_SPECIAL_EMBED		(1<<16)
+#define AMMO_STRIKES_SURFACE	(1<<17) // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
+#define AMMO_HITS_TARGET_TURF	(1<<18) // Whether or not the bullet hits the target that was clicked or if it keeps travelling
+#define AMMO_ALWAYS_FF			(1<<19)
+#define AMMO_HOMING				(1<<20) // If the bullet target is a mob, it will correct its trajectory toward the mob.
 /// Can't be deflected
-#define AMMO_NO_DEFLECT			(1<<20)
+#define AMMO_NO_DEFLECT			(1<<21)
 ///Can only hit people with criminal status
-#define AMMO_MP					(1<<21)
+#define AMMO_MP					(1<<22)
+#define AMMO_FLAME				(1<<23) // Handles sentry flamers glob
+/// Can BE people with it
+#define AMMO_HIGHIMPACT			(1<<24)
+
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)
@@ -42,7 +47,7 @@
 #define GUN_UNUSUAL_DESIGN		(1<<2)
 #define GUN_SILENCED			(1<<3)
 #define GUN_AUTOMATIC			(1<<4)
-#define GUN_INTERNAL_MAG		(1<<5)
+#define GUN_INTERNAL_MAG		(1<<5)  // If checking for ammo with current.mag you have to check it against numerical values, as booleans will not trigger.
 #define GUN_AUTO_EJECTOR		(1<<6)
 #define GUN_AMMO_COUNTER		(1<<7)
 #define GUN_BURST_ON			(1<<8)
@@ -57,9 +62,9 @@
 #define GUN_ANTIQUE 			(1<<17)
 #define GUN_RECOIL_BUILDUP		(1<<18)
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
-#define GUN_FIRED_BY_USER		(1<<19)
-#define GUN_SUPPORT_PLATFORM	(1<<20) /// support weapon, bipod will grant IFF
-#define GUN_BURST_ONLY			(1<<21)
+#define GUN_SUPPORT_PLATFORM	(1<<19) /// support weapon, bipod will grant IFF
+#define GUN_BURST_ONLY			(1<<20)
+#define GUN_FULL_AUTO_ONLY		(1<<21)
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1
@@ -68,6 +73,7 @@
 #define ATTACH_RELOADABLE	8
 #define ATTACH_WEAPON		16 //is a weapon that fires stuff
 #define ATTACH_MELEE        32 //This attachment should activate if you attack() with it attached.
+
 //Ammo magazine defines, for flags_magazine
 
 #define AMMUNITION_REFILLABLE   (1<<0)
@@ -90,11 +96,12 @@
 #define SLOWDOWN_ADS_VERSATILE			0.50
 #define SLOWDOWN_ADS_SHOTGUN			0.75
 #define SLOWDOWN_ADS_RIFLE				1
+#define SLOWDOWN_AMT_GREENFIRE			1.5
 #define SLOWDOWN_ADS_SCOPE				1.20
 #define SLOWDOWN_ADS_LMG				1.75
 #define SLOWDOWN_ADS_INCINERATOR		1.75
 #define SLOWDOWN_ADS_SPECIALIST			1.75
-#define SLOWDOWN_ADS_MINISCOPE_DYNAMIC	2
+#define SLOWDOWN_ADS_MINISCOPE_DYNAMIC	1.8
 #define SLOWDOWN_ADS_SUPERWEAPON		2.75
 
 //Wield delays, in milliseconds. 10 is 1 second
@@ -115,7 +122,7 @@
 #define EXPLOSION_THRESHOLD_HIGH	300
 
 #define EXPLOSION_THRESHOLD_GIB		200 //how much it takes to gib a mob
-#define EXPLOSION_PRONE_MULTIPLIER	0.5 //prone mobs recieve less damage from explosions
+#define EXPLOSION_PRONE_MULTIPLIER	0.5 //prone mobs receive less damage from explosions
 
 //Explosion damage multipliers for different objects
 #define EXPLOSION_DAMAGE_MULTIPLIER_DOOR     	15
@@ -169,6 +176,9 @@
 #define CLOTHING_ARMOR_VERYHIGHPLUS 45
 #define CLOTHING_ARMOR_ULTRAHIGH 50
 #define CLOTHING_ARMOR_ULTRAHIGHPLUS 55
+#define CLOTHING_ARMOR_GIGAHIGH 70
+#define CLOTHING_ARMOR_GIGAHIGHPLUS 75
+#define CLOTHING_ARMOR_GIGAHIGHDOUBLEPLUSGOOD 80
 #define CLOTHING_ARMOR_HARDCORE 100
 
 #define UNIFORM_NO_SENSORS 0

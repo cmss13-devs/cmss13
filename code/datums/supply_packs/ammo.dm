@@ -36,6 +36,14 @@
 	containername = "\improper rifle AP ammo crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_rounds_box_xm88
+	name = ".458 bullets box crate (x300 rounds)"
+	contains = list(/obj/item/ammo_box/magazine/lever_action/xm88)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper .458 bullets crate"
+	group = "Ammo"
+
 //------------------------Magazine Boxes crates----------------
 
 /datum/supply_packs/ammo_m4a3_mag_box
@@ -340,7 +348,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_napalm_gel
-	name = "M240 Napalm Gel (x4)"
+	name = "M240 Napalm B-Gel (x4)"
 	contains = list(
 					/obj/item/ammo_magazine/flamer_tank/gellied,
 					/obj/item/ammo_magazine/flamer_tank/gellied,
@@ -353,7 +361,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_flamer_mixed
-	name = "M240 Fuel Crate (x2 normal, x2 gellied)"
+	name = "M240 Fuel Crate (x2 normal, x2 b-gel)"
 	contains = list(/obj/item/ammo_magazine/flamer_tank,
 					/obj/item/ammo_magazine/flamer_tank,
 					/obj/item/ammo_magazine/flamer_tank/gellied,
@@ -375,6 +383,7 @@
 					/obj/item/ammo_magazine/rifle/incendiary,
 					/obj/item/ammo_magazine/rifle/l42a/incendiary,
 					/obj/item/ammo_magazine/rifle/m41aMK1,
+					/obj/item/ammo_magazine/rifle/m41aMK1/ap,
 					/obj/item/ammo_magazine/rifle/m4ra,
 					/obj/item/ammo_magazine/rifle/lmg,
 					/obj/item/ammo_magazine/pistol,

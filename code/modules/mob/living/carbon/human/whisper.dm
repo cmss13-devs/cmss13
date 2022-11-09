@@ -112,7 +112,7 @@
 	spawn(30)
 		if(client) client.images -= speech_bubble
 		if(not_dead_speaker)
-			log_say("[name] \[Whisper\]: [message] (CKEY: [key]) (JOB: [job])")
+			log_say("[name != "Unknown" ? name : "([real_name])"] \[Whisper\]: [message] (CKEY: [key]) (JOB: [job])")
 			for(var/mob/M in listening)
 				if(M.client) M.client.images -= speech_bubble
 			for(var/mob/M in eavesdropping)

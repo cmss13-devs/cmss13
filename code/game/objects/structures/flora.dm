@@ -86,7 +86,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 
 /obj/structure/flora/tree/joshua
 	name = "joshua tree"
-	desc = "A tall tree covered in spiky-like needles, covering it's trunk."
+	desc = "A tall tree covered in spiky-like needles, covering its trunk."
 	icon = 'icons/obj/structures/props/joshuatree.dmi'
 	icon_state = "joshua_1"
 	pixel_x = 0
@@ -167,6 +167,7 @@ ICE GRASS
 	icon = 'icons/obj/structures/props/tallgrass.dmi'
 	unslashable = TRUE
 	unacidable = TRUE
+	cut_level = PLANT_CUT_MACHETE
 	var/overlay_type = "tallgrass_overlay"
 
 /obj/structure/flora/grass/tallgrass/Initialize()
@@ -239,7 +240,6 @@ ICE GRASS
 	color = COLOR_G_JUNG
 	icon_state = "tallgrass"
 	desc = "A clump of vibrant jungle grasses"
-	cut_level = PLANT_CUT_MACHETE
 	fire_flag = FLORA_BURN_SPREAD_ONCE
 
 /obj/structure/flora/grass/tallgrass/jungle/corner
@@ -278,6 +278,7 @@ ICE GRASS
 	icon_state = "firstbush_1"
 	variations = 4
 	cut_level = PLANT_CUT_KNIFE
+	projectile_coverage = 0//CEASE EATING BULLETS, I BEG YOU
 
 /obj/structure/flora/bush/ausbushes/ausbush
 	icon_state = "firstbush_1"
@@ -323,6 +324,7 @@ ICE GRASS
 
 /obj/structure/flora/bush/ausbushes/var3
 	icon_state = "leafybush_1"
+	cut_level = PLANT_CUT_KNIFE
 	variations = 3
 
 /obj/structure/flora/bush/ausbushes/var3/leafybush
@@ -372,6 +374,7 @@ ICE GRASS
 	icon = 'icons/obj/structures/props/dam.dmi'
 	desc = "A small, leafy bush."
 	icon_state = "tree_1"
+	cut_level = PLANT_CUT_KNIFE
 	layer = ABOVE_XENO_LAYER
 
 /obj/structure/flora/bush/desert/cactus

@@ -1,5 +1,7 @@
 /obj/item/clothing
 	name = "clothing"
+	pickupvol = 40
+	dropvol = 40
 	var/eye_protection = 0 //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
 	var/armor_melee = 0
 	var/armor_bullet = 0
@@ -15,13 +17,15 @@
 	var/list/restricted_accessory_slots = list()
 	var/drag_unequip = FALSE
 	var/blood_overlay_type = "" //which type of blood overlay to use on the mob when bloodied
+	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
+	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
 
-/obj/item/clothing/get_examine_line()
+/obj/item/clothing/get_examine_line(mob/user)
 	. = ..()
 	var/list/ties = list()
 	for(var/obj/item/clothing/accessory/accessory in accessories)
 		if(accessory.high_visibility)
-			ties += "\a [accessory.get_examine_line()]"
+			ties += "\a [accessory.get_examine_line(user)]"
 	if(ties.len)
 		.+= " with [english_list(ties)] attached"
 	if(LAZYLEN(accessories) > ties.len)
@@ -98,26 +102,6 @@
 		for(var/obj/item/clothing/accessory/A in accessories)
 			ret.overlays |= A.get_mob_overlay(user_mob, slot)
 	return ret
-
-
-
-//BS12: Species-restricted clothing check.
-//CM Update : Restricting armor to specific uniform
-/obj/item/clothing/mob_can_equip(M as mob, slot)
-	//if we can't equip the item anyway, don't bother with further checks (cuts down on spam)
-	if (!..())
-		return 0
-
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/clothing/under/U = H.w_uniform
-
-		if(uniform_restricted && (!is_type_in_list(U, uniform_restricted) || !U))
-			to_chat(H, SPAN_WARNING("Your [U ? "[U.name]":"naked body"] doesn't allow you to wear this [name]."))
-			return 0
-
-	return 1
-
 
 ///////////////////////////////////////////////////////////////////////
 // Ears: headsets, earmuffs and tiny objects
@@ -374,16 +358,38 @@
 		for (var/i in items_allowed)
 			if(istype(I, i))
 				if(stored_item)	return
-				M.drop_held_item()
 				stored_item = I
-				I.forceMove(src)
+				M.drop_inv_item_to_loc(I, src)
 				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
 				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 				update_icon()
 				desc = initial(desc) + "\nIt is storing \a [stored_item]."
 				break
 
-/obj/item/clothing/equipped(mob/user, slot)
-	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && LAZYLEN(equip_sounds))
-		playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
+/obj/item/clothing/equipped(mob/user, slot, silent)
+	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && slot != WEAR_L_STORE && slot != WEAR_R_STORE  && slot != WEAR_J_STORE) //is it going to an actual clothing slot rather than a pocket, hand, or backpack?
+		if(!silent && LAZYLEN(equip_sounds))
+			playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
+		if(clothing_traits_active)
+			for(var/trait in clothing_traits)
+				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
 	..()
+
+/obj/item/clothing/unequipped(mob/user, slot)
+	for(var/trait in clothing_traits)
+		REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
+	. = ..()
+
+/obj/item/clothing/proc/get_pockets()
+	var/obj/item/clothing/accessory/storage/S = locate() in accessories
+	if(S)
+		return S.hold
+	return null
+
+/obj/item/clothing/clicked(var/mob/user, var/list/mods)
+	var/obj/item/storage/internal/pockets = get_pockets()
+	if(pockets && !mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
+		pockets.open(user)
+		return TRUE
+
+	return ..()

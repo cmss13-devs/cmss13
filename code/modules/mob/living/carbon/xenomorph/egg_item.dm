@@ -25,13 +25,13 @@
 	set_hive_data(src, hivenumber)
 	. = ..()
 
-/obj/item/xeno_egg/examine(mob/user)
-	..()
+/obj/item/xeno_egg/get_examine_text(mob/user)
+	. = ..()
 	if(isXeno(user))
-		to_chat(user, "A queen egg, it needs to be planted on weeds to start growing.")
+		. += "A queen egg, it needs to be planted on weeds to start growing."
 		if(hivenumber != XENO_HIVE_NORMAL)
 			var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-			to_chat(user, "This one appears to belong to the [hive.prefix]hive")
+			. += "This one appears to belong to the [hive.prefix]hive"
 
 /obj/item/xeno_egg/afterattack(atom/target, mob/user, proximity)
 	if(isXeno(user))

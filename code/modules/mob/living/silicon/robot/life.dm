@@ -146,9 +146,6 @@
 
 /mob/living/silicon/robot/proc/handle_regular_hud_updates()
 
-	update_sight()
-
-
 	if (hud_used && hud_used.healths)
 		if (src.stat != DEAD)
 			if(ismaintdrone(src))
@@ -223,17 +220,17 @@
 
 	if(stat != DEAD) //the dead get zero fullscreens
 		if(blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 		else
 			clear_fullscreen("blind")
 
 		if (eye_blurry)
-			overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
+			overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
 		else
 			clear_fullscreen("eye_blurry")
 
 		if(druggy)
-			overlay_fullscreen("high", /obj/screen/fullscreen/high)
+			overlay_fullscreen("high", /atom/movable/screen/fullscreen/high)
 		else
 			clear_fullscreen("high")
 
@@ -252,7 +249,7 @@
 		for(var/obj/I in contents)
 			if(I && !(istype(I,/obj/item/cell) || istype(I,/obj/item/device/radio)  || istype(I,/obj/structure/machinery/camera) || istype(I,/obj/item/device/mmi)))
 				client.screen += I
-	var/datum/custom_hud/robot/ui_datum = custom_huds_list["robot"]
+	var/datum/custom_hud/robot/ui_datum = GLOB.custom_huds_list[HUD_ROBOT]
 	if(module_state_1)
 		module_state_1.screen_loc = ui_datum.ui_inv1
 	if(module_state_2)

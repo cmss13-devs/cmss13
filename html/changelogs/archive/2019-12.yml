@@ -1,0 +1,226 @@
+2019-12-06:
+  Cakey:
+  - bugfix: Intelligence officers will no longer start with the munchies. [Wintermote]
+  - rscadd: Help intent emotes are now target-based. You can once again perform a
+      hug by clicking someone with the groin as your target.
+  - rscadd: Timed help intent emotes have been added. You can initiate a timed emote
+      by clicking on someone with either hands or either arms as your target. Anyone
+      can respond to a timed emote by clicking on you with the same target criteria
+      (hands or arms). Hand target emotes will perform fistbumps while arm target
+      emotes will perform high fives.
+  - rscadd: Xenomorphs can also perform timed help intent emotes by targeting either
+      the head for a headbutt or the groin for a tail clash.
+  - tweak: Resisting out of nests will now stun you for three seconds.
+  - rscadd: OOC messages will now redirect to LOOC if you do not have permission to
+      speak in OOC.
+  - rscadd: Added new scaling options for client views. You can now select 48x48,
+      96x96, 128x128 and 256x256 scaling options. [julian94]
+  Lengord:
+  - imageadd: 'Added M4RA back sprite and suit slot sprite #8243'
+  RavingManiac:
+  - rscadd: PMC squads now have medics
+  - rscadd: PMC squad assignments based on quotas instead of randomization
+  - tweak: PMCs use light backpacks instead of leather satchels
+  - rscadd: CLF now have survivor endurance
+  - rscadd: 'CLF equipment changes: Randomized armor, IED chem grenades instead of
+      stick grenades, chance of getting SVDs, chance of getting lunge mines'
+  - rscadd: Added in Vampmare's alternate CLF armors
+  - rscadd: 'New weapon: the lunge mine. Used by especially ''brave'' CLF fighters.
+      Sprite by Frans Feiffer'
+  - tweak: Freelancers get randomized headgear
+  - tweak: UPP commandos get thermal cloaks instead of chameleon projectors. Said
+      cloaks require UPP armor to be worn
+  - tweak: '[REDACTED] squads buffed'
+  - rscadd: Ammunition spawned for ERTs will fill up armor, belts and pouches before
+      spawning in backpacks
+  - tweak: Non-marine guns buffed, including the Type 71, MAR-40, and most SMGs
+  - tweak: ERT smartguns start loaded
+  Slywater:
+  - bugfix: Fixed the APC at Trijent transit-medical being irreparable due to the
+      asphalt floor.
+  TheDonkfied:
+  - bugfix: Saving character prefs and switching character slots as a ghost will work
+      now [julian94]
+  - bugfix: Trijent sentries will no longer shoot survivors with appropriate access
+      [Naes Listeless]
+  - bugfix: Evolving as a xeno leader will no longer cause you to lose your leader
+      status, fixing bug with xenos having too many leaders. [TeDGamer]
+  TobiNerd:
+  - bugfix: Trijent Dam and Sorokyne Strata now actually have research items...
+  - rscdel: Removed the sensor tower on Sorokyne Strata until it stops crashing the
+      game.
+  - bugfix: Areas near, behind and between the LZs on Sorokyne Strata can no longer
+      be weeded at roundstart.
+  - bugfix: Certain areas on Sorokyne Strata does no longer allow tunnels.
+2019-12-12:
+  Cakey:
+  - tweak: Nightvision goggles now have skill requirements.
+  - rscadd: Added medal tracking to the statistics panel. Any medals you recieve will
+      now be tracked under the medals tab, under the human tab.
+  - rscadd: Added niche statistics for medals given and received.
+  - rscadd: Role timelocks are here. Once enabled, new players will be unable to play
+      as roles they do not meet the playtime requirements to. You will be able to
+      view any unmet requirements for a role in the character creation menu. Additionally,
+      Queen will be timelocked as well (Only for round-start, anyone can still evolve
+      to queen after the round has started). Existing players with playtime in a role
+      will have their roles unlocked without needing to meet any requirements.
+  - rscadd: Added the Senior Enlisted advisor, a mentor-only role dedicated to helping
+      and teaching players about game mechanics, regulations, law, and potentially
+      offering new roleplay opportunities for ship-side roles. SEAs have no combat
+      skills, are ranked E8 GySGT (Gunnery Sergeant), and are old grouches!
+  - rscadd: SEA players with over 9 hours played will be granted the rank of E9 SGM
+      (Sergeant Major)
+  - rscadd: Added minimum character ages to certain roles. If your character does
+      not meet the age requirement for the role you are spawned in as, it will be
+      changed to the minimum age.
+  - rscadd: PFC Marines with playtimes under 9 hours will now be given the rank of
+      Private (PVT) to better help players identify those that may be new to the game.
+      Try not to bully the newbies!
+  - rscadd: Humans will now show their rank next to their name on examine.
+  - maptweak: Added the Senior Enlisted Advisor office near Cryogenics.
+  Neth:
+  - bugfix: Stun and Knockdown recovery attempt now done when said Stun or Knockdown
+      should end, instead of next life tick.
+  - tweak: Buckshot stun rebalanced from 0.1-2.0 second range to flat 0.9 seconds
+      of stun
+  - tweak: Slug stun rebalanced from 0.1-3.2 second range to flat 1.1 seconds of stun
+  TheDonkified:
+  - rscadd: Most non-NanoUI interfaces have been converted to use an updated style
+      sheet. Report on Gitlab any legacy interfaces (only interfaces expected to be
+      used were updated). There might be more style sheets added, but for now only
+      the new darkmode and legacy are supported.
+  - rscadd: Added search functionality to hive status
+  - rscadd: Added search functionality to the overwatch menu
+  - tweak: Restructured Character Prefs menu to be more reasonably sized with "Modern"
+      UI
+  - tweak: The job prefs screen will now display priorities all together rather than
+      forcing you to cycle
+  - bugfix: Closing TacMap windows for both sides should properly close them in most
+      cases. Occasionally, you will need to close them multiple times.
+  - bugfix: Fixes being unable to demote ROs to CTs or promoting people to RO via
+      identification computer [Patrick Bisson]
+  - bugfix: Can assign people to command roles via identification computer
+  - bugfix: Bioscans accurately count planetside mobs. [Terror4000rus]
+  - bugfix: Flames go through grilles now. [csd]
+  - bugfix: Any issues with extinguisher water not going through objects are resolved.
+      [Terror4000rus]
+  - bugfix: Throw speed from explosions will be properly calculated now.
+  - rscadd: Added a preference for guns with auto-ejectors to cause you to unwield,
+      put the empty magazine in your offhand, and switch to that offhand. [Sakuyoi]
+  - rscadd: Added a preference to disable auto-ejectors completely. There is a still
+      a verb in the 'Weapon' tab for disabling it for individual guns. [slowest]
+  - rscadd: Added a preference for the 'Unload Magazine' verb and 'Eject magazine'
+      HUD button to cause you to unwield, put the empty magazine in your offhand,
+      and switch to that offhand.
+  - tweak: Instead of individual verbs for toggleable prefs (bar the xeno prefs),
+      they have been replaced with an all-encompassing 'Toggle Preferences' verb in
+      the preferences tab that opens up a window and shiny buttons to press.
+  - tweak: CE has max-level powerloader skill. [forest2001, Destrok]
+  - tweak: The CO tablet and CIC communications computer have separate cooldowns for
+      announcements. [Dauntausa]
+  - tweak: The CO tablet announcements gives a tiny message at the end stating they
+      were made from a CO tablet. [CallMeArty]
+  - tweak: Buffed the Mod88. It has faster firing speed (not as fast as M4A3) and
+      more damage. [Chekov Archer]
+  - tweak: The width of extinguisher spray is no longer RNG (clicking on a tile orthogonal
+      to you will be guaranteed 3 tiles wide). RNG is now related to which side is
+      the strongest.
+  TobiNerd:
+  - imageadd: Added bat and slug sprites by Emerald Blood.
+  - maptweak: Added a few bats to the northern caves on LV.
+  Vampmare:
+  - tweak: Reorganized everything admin related.
+  - tweak: Adminhelp and Staffwho verbs were moved to OOC tab.
+  - tweak: Water no longer EXTINGUISHES FIRE when you ENTER it. You need to RESIST
+      first.
+  - tweak: Resisting in water now instantly removes fire or acid.
+  - tweak: The Company is now known as Weston-Yamada.
+  - tweak: Big Red now uses the Trijent uniforms and associated armours.
+  - imageadd: Sniper ghillie suit now has a Trijent/Big Red variant.
+2019-12-16:
+  TobiNerd:
+  - bugfix: Convinced a some tiles on Sorokyne they are not actually water. [csd]
+  - bugfix: Pamphlets now fit inside filing cabinets.
+2019-12-18:
+  Cakey:
+  - rscadd: Constructible sentries have been overhauled to work on a much more reliable
+      system and will no longer have significant issues with firing at enemies.
+  - rscadd: The fire delay for the constructible sentries has been halved. Damage
+      has been reduced. Total damage should be about the same.
+  - rscadd: Increased the amount of rounds a sentry and its magazines store from 500
+      to 750.
+  - rscdel: Removed the burst fire option of the constructible sentries as they are
+      no longer required.
+2019-12-19:
+  Cakey:
+  - tweak: Cloaked targets such as Yautja or UPP commandos will no longer trigger
+      sentries.
+  Vampmare:
+  - bugfix: Self-extinguish works again.
+  - bugfix: Predator traps can be resisted out of again. [BroseidonMOO]
+  - bugfix: Synthetics can no longer be Prae abducted. [Pierce]
+  - bugfix: Dead synthetics can now be grabbed by humans when they die Immobile. [Brandon
+      M.]
+2019-12-21:
+  Cakey:
+  - bugfix: Fixed survivor and other special roles from not properly tracking statistics.
+  - bugfix: Fixed xenomorph ability tracking not loading correctly on round restart.
+  - bugfix: Fixed formatting of the participants tab and abilities list on the statistics
+      panel.
+  - bugfix: Fixed medal tracking for medal recipients.
+  - bugfix: Fixed xeno takeover playing towards the original user stats.
+  Neth:
+  - tweak: Increased penetration for Sentry Turret. Sentry turret no longer deals
+      damage to armor.
+  - tweak: Turret bullet speed increased to near-hitscan speed
+  Triiodine:
+  - maptweak: Placed Landing Zone signs on Sorokyne Strata, Solaris Ridge (LZ2), Trijent
+      Dam (LZ2), and Prison Station (LZ1).
+  - maptweak: Made Ice Colony LZ2 a bit larger.
+  - bugfix: Fixed pre-existing membrane and resin walls on Sorokyne Strata displaying
+      the incorrect under turf.
+  - bugfix: Added proper MAP_TAG swaps for the HTML based colony map for Sorokyne
+      Strata.
+  - bugfix: Sorokyne Strata colony maps should now spawn in the Almayer canteen on
+      round start.
+  - bugfix: Wielded grenade launchers on desert maps no longer appear one handed when
+      in the right hand and facing east.
+  - spellcheck: Rewrote and fixed up some grammatical disagreements on the Landing
+      Zone sign examine texts.
+  Vampmare:
+  - rscadd: A new HUD theme with a different take than the normal one has been added,
+      "Dark", give it a go.
+  - rscadd: Status effects have been added to the UI, currently, shrapnel, bleeding
+      and slowed.
+  - tweak: Changed the placement of the UI elements, so they are more condensed.
+  - tweak: The internals UI element has been moved to a verb in the object tab for
+      when its relevant.
+  - tweak: 'Accuracy is no longer dependent on your current health, lower health meant
+      lower accuracy. This means that xenos under 50% health can now actually hit
+      things. '
+  - tweak: The superslow duration of neuro has been reduced.
+  - tweak: Reduced Queen neuro accuracy.
+  - tweak: Total acid spit damage has been reduced.
+  - tweak: Neuro airbust range has been reduced from 5x5 to 3x3.
+  - tweak: Getting hit by neuro airbust while you're nested now does nothing.
+2019-12-22:
+  Cakey:
+  - rscadd: Added gun executions to the game. Players can trigger executions on unconcious
+      targets while on either disarm or grab intent, initiating a three second wind-up
+      before performing a guaranteed kill.
+  Foolosopher:
+  - tweak: Gas masks are now purely cosmetic
+  Fourkhan and Triiodine:
+  - rscadd: Added many more helmet customization options.
+  - rscadd: Crayons, Certain Uno(and regular) cards, Walkmans, Walkman tapes, Pizza,
+      sunglasses of all kinds, scapels, the Medbay snacks, candles, the (broken) loadout
+      headsets, medical supplies, flares, and more will now appear on your helmet
+      when stored in its storage slots.
+  - rscadd: Several new options have been added to the loadout selection menu which
+      have various cosmetic effects when placed into helmets, such as rosaries, gun
+      oil, various types of spent ammunition, flairs, netting, raincovers, and more.
+  - tweak: The pen and cigarette have been reduced from 2 points to 1 in loadout.
+  - bugfix: More than one object can now display on your helmet. Got that one squared
+      away.
+  Neth:
+  - bugfix: Tailstab no longer pass thru walls

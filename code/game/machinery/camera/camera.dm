@@ -2,7 +2,7 @@
 	name = "security camera"
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
-	icon_state = "camera"
+	icon_state = "autocam_editor"
 	use_power = 2
 	idle_power_usage = 5
 	active_power_usage = 10
@@ -13,7 +13,7 @@
 	var/c_tag_order = 999
 	var/status = 1.0
 	anchored = 1.0
-	var/panel_open = 0 // 0 = Closed / 1 = Open
+	var/panel_open = FALSE // 0 = Closed / 1 = Open
 	var/invuln = null
 	var/bugged = 0
 	var/obj/item/frame/camera/assembly = null
@@ -53,6 +53,12 @@
 		ASSERT(src.network.len > 0)
 
 	set_pixel_location()
+	update_icon()
+
+/obj/structure/machinery/camera/update_icon()
+	. = ..()
+	if(icon_state == "autocam_editor")
+		icon_state = "camera"
 
 /obj/structure/machinery/camera/set_pixel_location()
 	switch(dir)
@@ -120,6 +126,9 @@
 		interact(user)
 
 	else if(iswelder(W) && canDeconstruct())
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(weld(W, user))
 			if(assembly)
 				assembly.forceMove(loc)
@@ -250,6 +259,7 @@
 	if(user.action_busy)
 		return 0
 	if(!WT.isOn())
+		to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 		return 0
 
 	//Do after stuff here
@@ -259,6 +269,7 @@
 	WT.eyecheck(user)
 	if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(!WT.isOn())
+			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return 0
 		playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] welds [src]."),
@@ -308,12 +319,9 @@
 	viewing_users += user
 	user.client?.eye = get_turf(src)
 	user.client?.perspective = EYE_PERSPECTIVE
-	give_action(user, /datum/action/human_action/cancel_view)
-	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from_view)
 
 /obj/structure/machinery/camera/cas/proc/remove_from_view(var/mob/living/carbon/human/user)
 	viewing_users -= user
-	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
 
 /obj/structure/machinery/camera/cas/isXRay()
 	return TRUE

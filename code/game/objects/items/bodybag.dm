@@ -43,21 +43,15 @@
 		used = CB.used
 
 /obj/item/storage/box/bodybags
-	name = "body bags"
+	name = "body bags box"
 	desc = "This box contains body bags."
 	icon_state = "bodybags"
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_LARGE
+	can_hold = list(/obj/item/bodybag)
 
-/obj/item/storage/box/bodybags/New()
-	..()
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-	new /obj/item/bodybag(src)
-
+/obj/item/storage/box/bodybags/fill_preset_inventory()
+	for(var/i = 1 to 7)
+		new /obj/item/bodybag(src)
 
 /obj/structure/closet/bodybag
 	name = "body bag"
@@ -295,27 +289,25 @@
 	if(used > max_uses)
 		open()
 
-/obj/structure/closet/bodybag/cryobag/examine(mob/living/user)
-	..()
-	if(stasis_mob)
-		if(ishuman(stasis_mob))
-			if(hasHUD(user,"medical"))
-				var/mob/living/carbon/human/H = stasis_mob
-				var/stasis_ref = WEAKREF(H)
-				for(var/datum/data/record/R in GLOB.data_core.medical)
-					if (R.fields["ref"] == stasis_ref)
-						if(!(R.fields["last_scan_time"]))
-							to_chat(user, "<span class = 'deptradio'>No scan report on record</span>\n")
-						else
-							to_chat(user, "<span class = 'deptradio'><a href='?src=\ref[src];scanreport=1'>Scan from [R.fields["last_scan_time"]]</a></span>\n")
-						break
+/obj/structure/closet/bodybag/cryobag/get_examine_text(mob/living/user)
+	. = ..()
+	if(ishuman(stasis_mob) && hasHUD(user,"medical"))
+		var/mob/living/carbon/human/H = stasis_mob
+		var/stasis_ref = WEAKREF(H)
+		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
+			if (R.fields["ref"] == stasis_ref)
+				if(!(R.fields["last_scan_time"]))
+					. += "<span class = 'deptradio'>No scan report on record</span>\n"
+				else
+					. += "<span class = 'deptradio'><a href='?src=\ref[src];scanreport=1'>Scan from [R.fields["last_scan_time"]]</a></span>\n"
+				break
 
 
 
 	switch(used)
-		if(0 to 600) to_chat(user, "It looks new.")
-		if(601 to 1200) to_chat(user, "It looks a bit used.")
-		if(1201 to 1800) to_chat(user, "It looks really used.")
+		if(0 to 600) . += "It looks new."
+		if(601 to 1200) . += "It looks a bit used."
+		if(1201 to 1800) . += "It looks really used."
 
 /obj/structure/closet/bodybag/cryobag/Topic(href, href_list)
 	. = ..()
@@ -332,13 +324,31 @@
 			if(ishuman(stasis_mob))
 				var/mob/living/carbon/human/H = stasis_mob
 				var/stasis_ref = WEAKREF(H)
-				for(var/datum/data/record/R in GLOB.data_core.medical)
+				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					if (R.fields["ref"] == stasis_ref)
-						if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
-							show_browser(usr, R.fields["last_scan_result"], "Last Medical Scan of [H]", "scanresults", "size=430x600")
+						if(R.fields["last_scan_time"] && R.fields["last_tgui_scan_result"])
+							tgui_interact(usr, human = H)
 						break
 
+/obj/structure/closet/bodybag/cryobag/tgui_interact(mob/user, datum/tgui/ui, var/mob/living/carbon/human/human)
+	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "HealthScan", "Last Medical Scan of [human]")
+		ui.open()
+		ui.set_autoupdate(FALSE)
 
+/obj/structure/closet/bodybag/cryobag/ui_data(mob/user)
+	if(ishuman(stasis_mob))
+		var/mob/living/carbon/human/H = stasis_mob
+		var/stasis_ref = WEAKREF(H)
+		for(var/datum/data/record/R as anything in GLOB.data_core.medical)
+			if(R.fields["ref"] == stasis_ref)
+				if(R.fields["last_tgui_scan_result"])
+					return R.fields["last_tgui_scan_result"]
+
+/obj/structure/closet/bodybag/cryobag/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
 
 /obj/item/trash/used_stasis_bag
 	name = "used stasis bag"

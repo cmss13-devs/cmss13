@@ -31,6 +31,13 @@
 	..()
 	icon_state = null
 
+/obj/structure/blocker/invisible_wall/water
+	desc = "You cannot wade out any further"
+	icon_state = "map_blocker"
+
+/obj/structure/blocker/invisible_wall/water/Collided(atom/movable/AM)
+	to_chat(AM, SPAN_WARNING("You cannot wade out any further."))
+
 
 /obj/structure/blocker/fog
 	name = "dense fog"
@@ -93,6 +100,9 @@
 
 /obj/structure/blocker/forcefield/vehicles
 	types = list(/obj/vehicle/)
+
+/obj/structure/blocker/forcefield/multitile_vehicles
+	types = list(/obj/vehicle/multitile/)
 
 /obj/structure/blocker/forcefield/human
 	types = list(/mob/living/carbon/human)

@@ -38,3 +38,8 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	xeno_cooldown = 100
+
+/datum/action/xeno_action/activable/tail_stab/slam
+	name = "Tail Slam"
+	ability_name = "tail slam"
+	blunt_stab = TRUE

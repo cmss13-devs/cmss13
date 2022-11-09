@@ -1,0 +1,452 @@
+2021-10-01:
+  Geeves:
+  - tweak: Replaced old M56D sprites with new ones made by Triiodine.
+  - tweak: The M56D Support Kit has been renamed to M56D Defense Gunner Kit and given
+      a new box that matches the other kits.
+  - rscadd: M56D Defense Gunner Kit now comes with a M804 heavygunner storage rig,
+      which can now hold additional items, such as the M56Ds ammo drums, a wrench,
+      a screwdriver, a crowbar, a fire extinguisher, and claymores.
+  - rscadd: The M56D Defense Gunner kit additionally comes with a technician helmet,
+      two claymores, and a machinegunner pamphlet, which boosts your basic engineering
+      level.
+  - tweak: The M56D now retains its label during its various construction states,
+      but the name now actively reflects which state it's in.
+  - rscadd: You now properly mount the M56D while firing it, and you are considered
+      to be on the same tile as it when mounting it, same as the M2C.
+  - rscadd: Mounting a non-scoped M56D now shifts your vision two tiles in front of
+      the gun.
+  - tweak: Crushers now do 20% of the HMG's (M56D and M2C) max health as damage on
+      a successful charge, and knock the person operating it off the gun, stunning
+      them.
+  - bugfix: M2Cs no longer cause the server to explode.
+  - rscadd: The manifest datacore now primarily operates off mob reference rather
+      than mob name, meaning two marines with the same name won't get their records
+      crossed.
+  - bugfix: Transferring someone into a squad through the Squad Distribution Computer
+      will now properly update their manifest entry.
+  Segrain:
+  - bugfix: Sentences started with ellipsis can be said once again.
+  - bugfix: Speaking in tongues works once again.
+  - tweak: Echo squad radio channel is now :e. Engineering radio channel is now :n.
+  - tweak: Using multibroadcast system is now done by starting your message with a
+      comma (e.g. ",abcd Echo squad is not real.").
+2021-10-04:
+  Firartix:
+  - tweak: Create-Humans search is now case insensitive
+  Geeves:
+  - rscadd: The spec type the specialist chooses will now be shown on the crew manifest
+      and on their IDs.
+  - rscadd: Added two new Macros, warcry and medic. These will call their respective
+      emotes for humans, but will also call *roar and *needhelp for Xenomorphs, and
+      *roar and *click for Yautjas.
+  - rscadd: 'Added the ability for the icon on your taskbar to flash if you''re tabbed
+      out. This will occur: When the roundstart tip of the round is displayed with
+      40 seconds remaining before the round begins, when the round ends and the victory
+      screen appears, when your corpse gets revived by a defib, or when you receive
+      an adminPM.'
+  Stagda:
+  - rscadd: Adds the ability for the Medevac System to be used in the Transport flight
+      mode.
+  TotalEpicness:
+  - rscadd: Admins can now see player playtimes via a button in Player Panel.
+  - rscadd: View playtimes verb is now in the OOC section and is accessible in-game.
+  Vanagandr:
+  - rscadd: Predators can now scalp people while flaying them.
+  ihatethisengine2:
+  - bugfix: Xenos in crit now correctly display wound overlay.
+2021-10-05:
+  Firartix:
+  - bugfix: Removed decal image caching, as it was causing issues with visually cleaning
+      them (eg. blood)
+  - bugfix: Fix mortar targeting accuracy incorrectly accounting for pre-selected
+      offset in distance when aiming it initially (making targeting deviation incorrect
+      up to about a turf maximum in most extreme cases, but rarely more than .1 or
+      .2)
+  Geeves:
+  - rscadd: You can now enable fullscreen mode by going to the Preferences tab and
+      hitting Toggle Fullscreen Preference.
+2021-10-06:
+  GoldenDarkness55:
+  - rscadd: Added a 2s slow to punch.
+  - tweak: Increased base punch damage by 5 against humans.
+  - rscdel: Removed all hard coded punch bone break chances.
+  Jeser:
+  - maptweak: Several vehicle-friendly tweaks at and near Landing Zones on Trijent
+      (Desert Dam), Solaris Ridge (Big Red) and Kutjevo Refinery.
+  Kaga:
+  - rscadd: Added the Wall-Penetrating trait to the PMC Specialist's M42C Anti-Tank
+      Sniper Rifle. It can now go through up to 6 mobs or non-indestructible walls.
+  - tweak: Increased the M42C's damage from 95 to 125, compared to the Sniper Spec's
+      70 from Marksman Ammo (210 when Aimed).
+  - tweak: Increased the M42C's projectile speed by 2 tiers, so that it finally lives
+      up to its unique 'supersonic' projectile name.
+  - rscadd: Added the M42C Special Operations Sight, and replaced the PMC Sniper's
+      M42 Scout Sight with it. These goggles operate as both a normal M42 Scout Sight
+      and as thermals, to synergize with the M42C anti-tank rifle.
+  Segrain:
+  - tweak: Flash powder reaction (aluminium, potassium, sulfur) now produces lasting
+      light instead of blinding flash.
+  - rscadd: Ordnance technicians now have access to custom mortar shells with integrated
+      cameras. They are slightly more expensive and limited to 180cl of reagents instead
+      of 240 for regular custom shells.
+  ihatethisengine2:
+  - tweak: Folding barricades can be stacked up to 3 cades in a stack.
+  - tweak: 'HPR and miniengie kits now contain 3 folding barricades. Cades spawn in
+      vendors in stacks. Price of a folding barricades crate in req is now PRICY instead
+      of VERY_PRICY but crate contains 3 cades instead of 4. '
+  - tweak: 'Folding barricades now deploy and fold 1 second faster. '
+  - bugfix: Folding barricade now correctly displays damage after deployment.
+2021-10-07:
+  Geeves:
+  - rscadd: Fullscreen users can now access the Options and Messages menu under the
+      File tab.
+  - rscadd: Ghosts can now follow the Queen Eye by pressing the E next to her name
+      when she speaks.
+  - tweak: Changed the observer tracking word "(Follow)" to "(F)" to conserve space.
+  - tweak: Xeno Construction Placement is now allowed to everyone at roundstart, as
+      is unnesting. Queens can still modify it as they wish.
+  - rscadd: Added a UPP Doctor role for Faction Clash.
+  - rscadd: Smartgunners can now set their M56 head mounted sight to Far Sight mode,
+      which slowly drains powerpack battery while active, but provides an extra tile
+      of vision.
+  - rscadd: View range modifying items will now return your max view range to the
+      largest possible view range when removing themselves. In other words, using
+      a set of binoculars while in far sight mode won't disable far sight mode once
+      you lower the binoculars.
+  - bugfix: Swapping ckeys with a mob will now reset your view range.
+  - rscadd: Added freed human mob spawner landmarks, capable of spawning human mobs
+      with preset jobs. Ideally to be used when mapping DMMs and spawning them midround.
+  - bugfix: You can now follow people who speak on the radio again.
+  Stan_albatross:
+  - rscadd: Added a new synth tool - the compact nailgun. Works like a small sized
+      normal nailgun, but can only repair - can't attack. Comes with 2 magazines.
+      Can be carried in the toolbelt and construction pouch.
+2021-10-08:
+  Firartix:
+  - bugfix: Fixed an issue with shuttle ignition in Shuttle Manipulator
+  - rscadd: Ported space transit automatic icon detection from /tg/ for use with newer
+      shuttle backend transits
+  - rscadd: Lifeboats are now proper, flying shuttles using the new /tg/ shuttle backend
+      with barebone functionality. They're currently only usable through shuttle manipulator
+      by admins. Mind that doing a switcharoo with the shuttle docks @ Almayer is
+      not advised because lifeboats only have doors on either side.
+  Geeves:
+  - rscadd: Staff now have the ability to toggle whether the area near the LZ can
+      be weeded or not.
+  - rscadd: 'Added the Eggsac Carrier strain, it cannot store huggers, but it can
+      generate an egg every 30 seconds, at the cost of its entire plasma reserve.
+      Its list of abilities includes: Special Construction, Moderate Pheremones, Plant
+      Weeds, Retrieve Egg, Generate Egg.'
+2021-10-09:
+  Benbot16:
+  - rscadd: Resin fruits can now be picked by xenos. This is done by click-dragging
+      the fruit to yourself. These fruits can then be fed to other xenos.
+  Geeves:
+  - bugfix: Yautja alloy spikes now has proper shrapnel and no longer runtimes each
+      time it tries to embed.
+  - rscadd: Improved smartgunner ammo's base accuracy, smartgun bullets being Tier
+      4, up from Tier 3, and armor-piercing rounds being Tier 2, up from Tier 1. Additionally
+      increased the accuracy multiplier for setting the accuracy improvement setting
+      to Tier 3, up from Tier 2. You should be able to land a few more shots at the
+      edge of your screen now.
+2021-10-10:
+  Firartix:
+  - rscadd: Added more words to be used for the operation name.
+  - bugfix: Newly built autolathes now properly start with empty material storage.
+  Flpfs:
+  - rscadd: Surgical closets have been added to the Almayer. They require medical-level
+      access.
+  GoldenDarkness55:
+  - tweak: Updated description for warding and frenzy pheromones
+  ihatethisengine2:
+  - bugfix: Evac cancellation no longer allows new players to join.
+2021-10-11:
+  Geeves:
+  - tweak: Eggsac Carriers now have egg plasma instead of purple plasma.
+  - tweak: Eggsac Carriers now have 500 plasma, up from 400. They also have stronger
+      pheromones, going from Drone level to Praetorian level, like a Healer Drone.
+  - rscadd: Setting your predator role to High now shows you your predator character
+      in the character creation screen.
+  GoldenDarkness55:
+  - rscdel: Warden no longer heals itself based on internal reserves.
+  - rscadd: 'Warden now receives 50% of the shields and heals it applies on other
+      xenos. '
+  - tweak: Renamed "Health Reserves" to "Energy Reserves".
+  - tweak: Increased maximum reserves from 325 to 350
+  - tweak: Decreased reserve gain per spit/slash from 75 to 50.
+  ghostsheet:
+  - bugfix: Defenders dying while fortified will now unfortify their bodies, allowing
+      them to be moved around.
+2021-10-12:
+  Benbot16:
+  - bugfix: Fixes a couple of bugs related to feeding/picking resin fruits.
+  - tweak: Xenos can now only feed resin fruit to allied humans.
+  Firartix:
+  - bugfix: Disabled lighting updates for shuttle areas by default due to backend
+      interactions
+  - bugfix: Made the lifeboat are a proper shuttle area to fix doors & flight sounds
+  - bugfix: Minor backend fix to doubly ensure you can't turn on dynamic lighting
+      accidentally (geez)
+  Geeves:
+  - rscadd: Clan Bracers now come with an embedded ID chip. You can toggle it under
+      the Yautja tab to deploy it, which allows your name to appear when hovered over
+      even while wearing the clan mask.
+  - rscadd: While wearing Clan Bracers, fellow Yautja that examine you will be able
+      to see your real name. This can be toggled on and off via the Toggle Bracer
+      Name verb in the Yautja tab.
+  - rscadd: Alt-clicking an explosive casing or a warhead now toggles the blast dampening.
+      Clicking on a reagent container or a assembly with a casing or warhead now inserts
+      it.
+  - tweak: The max reagent storage value of the M40 casing is now 90u.
+  - rscadd: Replaced one of the OT welding fuel tanks with an ethanol tank. The spare
+      welding fuel tank has been moved to the back of maintenance.
+  - rscadd: Industrial chemistry mixers can now make vials.
+  - rscadd: Replaced one of the OT EOD suit closets with a closet containing two rocketbags,
+      two grenade satchels, and two mortar backpacks.
+  GoldenDarkness55:
+  - tweak: Increased bone shrapnel duration for both runner and ravager by 1.
+  - bugfix: Fixed bone shrapnel stacking slow duration several times.
+  Segrain:
+  - bugfix: Repeatedly extinguishing the same flare no longer incinerates you to death.
+  - bugfix: Repeatedly activating the same signal flare no longer produces ghost signals.
+  SpartanBobby:
+  - maptweak: Major Edits to big reds filtration to restore it to it's (mostly) original
+      look
+  - maptweak: Added padlocks to big reds filtration cave entrance along with SW caves
+      LZ2 entrance
+  - maptweak: edits to big reds nightmares to conform with new changes
+  - maptweak: ETA caves now connects to SW caves as it used to (3 years ago)
+  - maptweak: Adds prespawn tunnels to bigred
+  - rscdel: Removed "Lambda_Cavein" nightmare
+  Triiodine:
+  - imageadd: Redid Vehicle Crewman armor to be more in line with current M10 and
+      M3 equivalents.
+  - imageadd: Restored ridged medium armor to its former glory.
+  Vanagandr:
+  - rscadd: Added a system for showing ticking text messages on the HUD based on modified
+      Nebula code.
+  - rscadd: Added a message for marines on Distress Signal gamemode, triggered during
+      first drop and shown to marines who're not on the ground map. Tweaked based
+      on your role.
+  ihatethisengine2:
+  - bugfix: Fixed missing knockdown on shuttle move with tg shuttle backend
+2021-10-13:
+  Geeves:
+  - rscadd: Added discord-style chat markup. You can use it in most communication
+      avenues, like speaking, emoting, OOC, LOOC. Etc. Asterisks are bolding, Forward-slashes
+      are italics, tildes are strike-throughs, underscores are underlines.
+  - rscadd: Links posted to OOC and LOOC are now clickable and direct you to the correct
+      website. Failure to be a responsible human being may lead to punishment.
+  - tweak: Custom emotes are no longer automatically italicized.
+  - bugfix: Roundstart Predators now spawn into the proper ship.
+2021-10-14:
+  CM13 Maintainers + Annoyed Devs:
+  - tweak: Changelog tool can now generate multiple changelogs (distinct authors)
+      from a single MR
+  Changelog "Awesome" Bot:
+  - tweak: I now gladly accept author names up to 64 chars (prev 40) and with some
+      special characters!
+  Firartix:
+  - tweak: Updated some aspects of Changelog generation tools
+  Geeves:
+  - bugfix: Spawning Echo Squad marines manually now adds them to the crew manifest
+      and correctly assigns them to a squad.
+  Nivrak:
+  - rscadd: Added a preference to toggle seeing other ghosts
+2021-10-15:
+  Nivrak:
+  - tweak: Ghosts now have their dead mobs icon again
+  SpartanBobby:
+  - maptweak: adds more random bigred tunnels
+  - bugfix: Makes hivetunnels consistant
+  - bugfix: Fixes Area problems with filt padlocks
+  naut:
+  - imageadd: Resprited a lot of legacy items to be up-to-speed with CMs artstyle.
+  - rscadd: Synthetics now have white limb stumps when being dismembered.
+  - rscadd: Changed the brit cup to a standard coffee cup and added new USCM and W-Y
+      variations.
+  - bugfix: MREs no longer start out opened.
+2021-10-16:
+  50RemAndCounting:
+  - rscadd: Added the tan USCM beret as a loadout choice for Commanding Officers in
+      the automated uniform closets.
+  - rscadd: Adds the 2x scope as a possible attachment to spawn on the M46C pulse
+      rifle roundstart.
+  - tweak: Redid the Commanding Officer gloves sprites to look more like actual gloves.
+  - rscdel: Removed the 4x scope purchase option from the Commanding Officer Gear
+      Vendor.
+  - rscdel: Removed the USCM Combat Synthetic Smartgunner preset from the admin-only
+      Select Equipment menu.
+  - bugfix: Fixed the Shotgun Shell Pouch in the Commanding Officer Gear Vendor not
+      being the large variant, as was intended.
+  Geeves:
+  - bugfix: Predators now have their proper sprites in the character creation screen
+      and when roundstart joining.
+  - bugfix: Predator Bracer IDs no longer identify them as Privates.
+  - rscadd: Healer Strain drones now get 100HP more HP, going from 500HP to 600HP.
+  - tweak: Healer Strain drones now deal lower damage, going from (20-25) to (10-15)
+      on the RNG damage scale, they also have a lower tackle chance, going from 35%
+      to 25%.
+  - tweak: 'Healer strain drones now transfer 30 health per heal (up from 25), do
+      it in 2.5 seconds (down from 5 seconds), can do it at a two-tile range rather
+      than only one tile (they still need to remain stationary), takes 36 damage per
+      health transfer (down from 37.5). '
+  - rscadd: Added new ammunition for the Heavy Pulse Rifle, holo-targeting rounds.
+      Each time a mob gets hit by this round, it starts taking 1% extra damage from
+      all sources, up to a maximum of 10%. After five seconds of not getting hit by
+      one of these rounds, this bonus starts wearing off. The magazines spawn in the
+      HPR kits, and Req can order a crate of two. Each magazine holds 200 rounds.
+      Each round does 30 damage instead of the normal 40. Magazine sprites by Triiodine.
+  - rscadd: The Heavy Pulse Rifle now has IFF when deployed on a bipod. If this proves
+      to be too powerful, this change will be reverted.
+  naut:
+  - rscadd: Added more fortune cookie fortunes.
+  - rscadd: Prefilled fortune cookies can now be made with 1 dough slice, 5 sugar,
+      and 1 piece of paper to make a fortune cookie with a fortune already inside
+      it. Magic.
+  - tweak: Tweaked the recipe for (unfilled) fortune cookies to only require 1 dough
+      slice and 5 sugar to make a blank one.
+  - tweak: Fortune cookies no longer swap hands upon breaking open.
+2021-10-18:
+  Benbot16:
+  - bugfix: Fixes resin fruits getting picked by the same xeno multiple times and
+      being picked while lying down.
+  Segrain:
+  - bugfix: Preview dummy in character setup once again correctly displays equipment
+      for squad roles.
+2021-10-19:
+  Geeves:
+  - bugfix: Fixed a typo where transfer health for healer drones mentioned that they're
+      at full health, rather than the xeno they're healing.
+2021-10-20:
+  Benbot16:
+  - rscadd: Examining a Xeno will now show what they're holding in their hands if
+      they're holding anything.
+  Firartix:
+  - bugfix: fix issues with single quotes in changelogs
+  - bugfix: Game server now properly requires BYOND 513.1532 for building (previously
+      513.1514)
+  - tweak: Bump supported BYOND server version to 513.1542 (from 513.1539)
+  - tweak: Gitlab CI pipeline now only builds in testing mode and doesn't produce
+      binaries/container/dmdoc anymore
+  - tweak: Default-Branch (dev) Gitlab CI pipeline still builds docs/artifacts/containers,
+      and now in release mode
+  - bugfix: Gitlab CI pipeline now check maps per legacy SS13 method (notably invalid
+      paths)
+  - tweak: Increased artifacts retention for Gitlab CI pipeline, map renders are now
+      kept 30 days
+  GoldenDarkness55:
+  - tweak: Burrower armor reduced from 30 to 25.
+  KatherineSmith:
+  - tweak: Increased reagent tank transfer values to include 200 and 300
+  Nivrak:
+  - bugfix: Queen can now unlock DS2s doors
+  Stan_albatross:
+  - tweak: Ceilings now tell you in chat what kinds of fire support they block.
+  - tweak: screwdrivers now fit in ear slots
+  - tweak: individual cigarettes and cigars now fit in ear slots
+2021-10-21:
+  naut, Frans_Feiffer:
+  - imageadd: Resprited the existing service uniforms and jackets, by Frans_Feiffer.
+  - rscadd: Added formal uniforms and jacket combinations to the CO dress vendor.
+  - rscadd: Added service dress blue jacket and shirt combo to the CO dress vendor,
+      for that suit-and-tie look.
+  - rscadd: Added a black and white naval combination cover (peaked cap) to the vendor.
+  - rscadd: Added the tactical waistcoat to the commanding officers closet, which
+      functions as a (far more stylish) webbing vest.
+  - tweak: Service jackets can now be buttoned and unbuttoned.
+  - tweak: Commanding officer berets now have MP-level armor (and decap) protection.
+  - rscdel: Removed legacy and style-mismatching items from the CO dress vendor. Many
+      of them are still in the code though.
+2021-10-22:
+  Geeves:
+  - rscadd: Re-did the UI for the parts fabricator, it should now be easier to interact
+      with, especially for newer players.
+  - rscadd: Added a launch bay and area denial sentry drop ammo for it. When used,
+      will send a droppod containing a omni-directional sentry down onto the field.
+      It will stay in position until its ammo runs out, at which point it deconstructs
+      into stacks of plasteel and metal.
+2021-10-26:
+  Geeves:
+  - rscadd: Xenos now get a message when a new tunnel is created, if there is a living
+      queen to relay it.
+  - rscadd: PO sentry deployment is now pinpoint accurate when launched, but cannot
+      be launched next to or on top of another deployed defenses structure, and cannot
+      be deployed on walls anymore.
+  - tweak: Omni-directional sentries now have 1500 rounds, down from 2500.
+  - tweak: The turf range calculation for CAS has been rewritten, inaccuracy might
+      appear a little different now.
+  - bugfix: Launch bays now have proper hitboxes.
+  - bugfix: Chat Markup now works over the radio as well.
+  - rscadd: Links posted in announcements now automatically linkify, meaning you can
+      click those tac-map announcements now.
+  GoldenDarkness55:
+  - bugfix: Warden Praetorian properly gains Energy Reserves per tick.
+  Silencer_pl:
+  - maptweak: Added squad-colored accents to the floor around the tables in the briefing
+      room mess on the Almayer.
+  Stan_Albatross:
+  - bugfix: Removed a stray pixel from the broken light tube sprite
+  - bugfix: Aligned the north-facing left-hand snow backpack sprite properly with
+      the holder
+  Stan_albatross:
+  - maptweak: Fixes LZs on Shiva's Snowball being weedable.
+  - bugfix: The armoury backpack that the \"Ivans\" get no longer spawns with guns
+      that they cannot use.
+  forest2001:
+  - rscadd: MP Overhaul Stage 1
+  - rscadd: Added MP Cadet, a role required to play the heads of department and CIC
+      roles to ensure Marine Law is known by the chain of command.
+  - tweak: Increased Warden and CMP timelocks.
+  - tweak: Changed the beanbag fire sound.
+  - rscadd: Blue Mk221 for beanbags only in riot lockers.
+  - rscadd: Added a new default mode for the disabler, it will now only hit targetted
+      criminals unless chaged to free mode (unique_action)
+  - tweak: Warden and CMP given level 1 medical skill to help look after prisoners,
+      and recognise chemicals.
+  - tweak: Warden and CMP given construction and engineering skills to repair walls.
+  - tweak: Changed security records to require brig access, and report access denied
+      if not present.
+  - bugfix: Fixes places in code where Warden, Nurse and other roles are missing.
+  - bugfix: Fixed improvised prod.
+  - bugfix: The beanbag tactical shotgun now has a sprite. Cursed icon conflicts.
+  lunarflu:
+  - spellcheck: Fixed spelling of \"beakeris\" and \"glassis\"
+2021-10-27:
+  Geeves:
+  - bugfix: Changing a humanoid's species will now correctly strip its underwear,
+      if the species it changes to doesn't wear underwear.
+  - rscadd: Flare Guns can now launch signal flares.
+  - tweak: Flares launched by a Flare Gun now burn brighter. How? Magic.
+  - bugfix: Using a wrench on an M56D to rotate it will no longer shift your view,
+      unless you're its operator.
+  Nivrak:
+  - rscadd: Once berserker reaches max rage they will now have a black glowing effect
+      which weakens after half the duration (like base rav)
+  Segrain:
+  - tweak: Chemical smoke/fire/explosions no longer occur inside mobs.
+  - bugfix: Certain reagents no longer prevent reactions from occuring within living
+      mobs.
+  Stan_albatross:
+  - maptweak: 'LV-624 : fixed a double fence tile south of internal affairs.'
+2021-10-29:
+  Firartix:
+  - bugfix: fix an internal error with handling of tackle counters
+  - bugfix: removed a nonsensical operation with preds and medical huds causing errors
+  - bugfix: fix internal error wth item actions and character setup test dummies
+  - bugfix: fix an error preventing explosion hits without a source from being logged
+  - bugfix: fixed getFlatIcon crashing when rendering non-AM objects, this matters
+      notably for areas, which carry lightning overlays
+  - bugfix: fixed ranging implementation of hand-held cameras being a decade old portable
+      hellscape, causing various performance problems and bugs
+  - bugfix: fix an internal timer error in loorker slash reset
+  - bugfix: fix an error when bumping objects into platforms
+2021-10-31:
+  50RemAndCounting:
+  - rscadd: Added the Command Pouch, a special pouch available only to Commanding
+      Officers. Can only hold a sidearm, binoculars and the command tablet. COs spawn
+      with the pouch already equipped and is otherwise not obtainable.
+  Warfan1815:
+  - rscadd: Added Haunted_House_V2 to map_config as well as map jsons
+  - bugfix: Fixes event dynamic areas so they actually use dynamic light
+  - maptweak: Added Haunted_House_V2 as a Human Vs Simple Mob EVENT map

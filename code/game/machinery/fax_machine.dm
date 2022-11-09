@@ -1,6 +1,10 @@
 var/list/obj/structure/machinery/faxmachine/allfaxes = list()
 var/list/alldepartments = list()
 
+#define DEPARTMENT_WY		"Weyland-Yutani"
+#define DEPARTMENT_HC		"USCM High Command"
+#define DEPARTMENT_PROVOST	"USCM Provost Office"
+
 //This fax machine will become a colonial one after I have mapped it onto the Almayer.
 /obj/structure/machinery/faxmachine
 	name = "General Purpose Fax Machine"
@@ -14,19 +18,22 @@ var/list/alldepartments = list()
 	power_channel = POWER_CHANNEL_EQUIP
 
 	var/obj/item/card/id/scan = null // identification
-	var/authenticated = 0
+	var/authenticated = FALSE
 
 	var/obj/item/paper/tofax = null // what we're sending
-	var/sendcooldown = 0 // to avoid spamming fax messages
 
 	///Our department
 	var/department = "General Public"
 
 	///Target department
-	var/dpt = "Weyland-Yutani"
+	var/target_department = DEPARTMENT_WY
 
 	///Fluff network shown by fax machine when logged in
 	var/network = "Weyland-Yutani Public Network"
+
+	///storer var for cooldown on sending faxes
+	var/fax_cooldown = 300
+	COOLDOWN_DECLARE(send_cooldown)
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
@@ -34,12 +41,12 @@ var/list/alldepartments = list()
 
 	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
 		alldepartments += department
-	if(!("Weyland-Yutani" in alldepartments))
-		alldepartments += "Weyland-Yutani"
-	if(!("USCM High Command" in alldepartments))
-		alldepartments += "USCM High Command"
-	if(!("USCM Provost Office" in alldepartments))
-		alldepartments += "USCM Provost Office"
+	if(!(DEPARTMENT_WY in alldepartments))
+		alldepartments += DEPARTMENT_WY
+	if(!(DEPARTMENT_HC in alldepartments))
+		alldepartments += DEPARTMENT_HC
+	if(!(DEPARTMENT_PROVOST in alldepartments))
+		alldepartments += DEPARTMENT_PROVOST
 
 /obj/structure/machinery/faxmachine/Destroy()
 	allfaxes -= src
@@ -54,128 +61,10 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/faxmachine/attack_hand(mob/user as mob)
-	user.set_interaction(src)
-
-	var/dat
-
-	var/scan_name
-	if(scan)
-		scan_name = scan.name
-	else
-		scan_name = "--------"
-
-	dat += "Confirm Identity: <a href='byond://?src=\ref[src];scan=1'>[scan_name]</a><br>"
-
-	if(authenticated)
-		dat += "<a href='byond://?src=\ref[src];logout=1'>Log Out</a>"
-	else
-		dat += "<a href='byond://?src=\ref[src];auth=1'>Log In</a>"
-
-	dat += "<hr>"
-
-	if(authenticated)
-		dat += "<b>Logged in to:</b> [network]<br><br>"
-
-		if(tofax)
-			dat += "<a href='byond://?src=\ref[src];remove=1'>Remove Paper</a><br><br>"
-
-			if(sendcooldown)
-				dat += "<b>Transmitter arrays realigning. Please stand by.</b><br>"
-
-			else
-				dat += "<a href='byond://?src=\ref[src];send=1'>Send</a><br>"
-				dat += "<b>Currently sending:</b> [tofax.name]<br>"
-				dat += "<b>Sending to:</b> <a href='byond://?src=\ref[src];dept=1'>[dpt]</a><br>"
-
-		else
-			if(sendcooldown)
-				dat += "Please insert paper to send via secure connection.<br><br>"
-				dat += "<b>Transmitter arrays realigning. Please stand by.</b><br>"
-			else
-				dat += "Please insert paper to send via secure connection.<br><br>"
-
-	else
-		dat += "Proper authentication is required to use this device.<br><br>"
-
-		if(tofax)
-			dat += "<a href ='byond://?src=\ref[src];remove=1'>Remove Paper</a><br>"
-
-	show_browser(user, dat, "Fax Machine", "fax")
-	return
-
-/obj/structure/machinery/faxmachine/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(href_list["send"])
-		if(tofax)
-
-			if(dpt == "USCM High Command")
-				highcom_fax(src, tofax.info, tofax.name, usr)
-				sendcooldown = 600
-
-			else if(dpt == "USCM Provost Office")
-				provost_fax(src, tofax.info, tofax.name, usr)
-				sendcooldown = 600
-
-			else if(dpt == "Weyland-Yutani")
-				company_fax(src, tofax.info, tofax.name, usr)
-				sendcooldown = 600
-			else
-				general_fax(src, tofax.info, tofax.name, usr)
-				sendcooldown = 300
-
-			SendFax(tofax.info, tofax.name, usr, dpt, network, src)
-			to_chat(usr, "Message transmitted successfully.")
-
-			spawn(sendcooldown) // cooldown time
-				sendcooldown = 0
-
-	if(href_list["remove"])
-		if(tofax)
-			if(!ishuman(usr))
-				to_chat(usr, SPAN_WARNING("You can't do it."))
-			else
-				tofax.forceMove(usr.loc)
-				usr.put_in_hands(tofax)
-				to_chat(usr, SPAN_NOTICE("You take the paper out of \the [src]."))
-				tofax = null
-
-	if(href_list["scan"])
-		if (scan)
-			if(ishuman(usr))
-				scan.forceMove(usr.loc)
-				if(!usr.get_active_hand())
-					usr.put_in_hands(scan)
-				scan = null
-			else
-				scan.forceMove(src.loc)
-				scan = null
-		else
-			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/card/id))
-				usr.drop_inv_item_to_loc(I, src)
-				scan = I
-		authenticated = 0
-
-	if(href_list["dept"])
-		var/lastdpt = dpt
-		dpt = tgui_input_list(usr, "Which department?", "Choose a department", alldepartments)
-		if(!dpt) dpt = lastdpt
-
-	if(href_list["auth"])
-		if ( (!( authenticated ) && (scan)) )
-			if (check_access(scan))
-				authenticated = 1
-
-	if(href_list["logout"])
-		authenticated = 0
-
-	updateUsrDialog()
+/obj/structure/machinery/faxmachine/attack_hand(mob/user)
+	tgui_interact(user)
 
 /obj/structure/machinery/faxmachine/attackby(obj/item/O as obj, mob/user as mob)
-
 	if(istype(O, /obj/item/paper))
 		if(!tofax)
 			user.drop_inv_item_to_loc(O, src)
@@ -192,6 +81,8 @@ var/list/alldepartments = list()
 		if(!scan)
 			user.drop_inv_item_to_loc(idcard, src)
 			scan = idcard
+			to_chat(usr, SPAN_NOTICE("You put \the [scan] into \the [src]."))
+			playsound(src, 'sound/machines/pda_button1.ogg', 15, TRUE)
 
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -208,6 +99,7 @@ var/list/alldepartments = list()
 
 	if(ishuman(usr) && scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
+		playsound(src, 'sound/machines/terminal_eject.ogg', 15, TRUE)
 		scan.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
@@ -217,27 +109,150 @@ var/list/alldepartments = list()
 		to_chat(usr, "There is nothing to remove from \the [src].")
 	return
 
+// TGUI SHIT \\
+
+/obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "FaxMachine", "[src.name]")
+		ui.open()
+
+/obj/structure/machinery/faxmachine/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
+/obj/structure/machinery/faxmachine/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+
+/obj/structure/machinery/faxmachine/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["department"] = department
+	data["network"] = network
+
+	return data
+
+/obj/structure/machinery/faxmachine/ui_data(mob/user)
+	var/list/data = list()
+
+	data["idcard"] = scan
+	data["paper"] = tofax
+	if(tofax)
+		data["paper_name"] = tofax.name
+
+	data["authenticated"] = authenticated
+	data["target_department"] = target_department
+
+	data["worldtime"] = world.time
+	data["nextfaxtime"] = send_cooldown
+	data["faxcooldown"] = fax_cooldown
+
+	return data
+
+/obj/structure/machinery/faxmachine/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("send")
+			if(tofax)
+				if(target_department == DEPARTMENT_HC)
+					highcom_fax(src, tofax.info, tofax.name, usr)
+					fax_cooldown = 600
+
+				else if(target_department == DEPARTMENT_PROVOST)
+					provost_fax(src, tofax.info, tofax.name, usr)
+					fax_cooldown = 600
+
+				else if(target_department == DEPARTMENT_WY)
+					company_fax(src, tofax.info, tofax.name, usr)
+					fax_cooldown = 600
+
+				else
+					general_fax(src, tofax.info, tofax.name, usr)
+					fax_cooldown = 600
+
+				COOLDOWN_START(src, send_cooldown, fax_cooldown)
+				SendFax(tofax.info, tofax.name, usr, target_department, network, src)
+				to_chat(usr, "Message transmitted successfully.")
+				. = TRUE
+
+		if("ejectpaper")
+			if(tofax)
+				if(!ishuman(usr))
+					to_chat(usr, SPAN_WARNING("You can't do it."))
+				else
+					tofax.forceMove(usr.loc)
+					usr.put_in_hands(tofax)
+					to_chat(usr, SPAN_NOTICE("You take \the [tofax] out of \the [src]."))
+					tofax = null
+				. = TRUE
+
+		if("insertpaper")
+			var/obj/item/I = usr.get_active_hand()
+			if(istype(I, /obj/item/paper))
+				usr.drop_inv_item_to_loc(I, src)
+				tofax = I
+				to_chat(usr, SPAN_NOTICE("You put \the [tofax] into \the [src]."))
+			. = TRUE
+
+		if("ejectid")
+			if(scan)
+				if(ishuman(usr))
+					scan.forceMove(usr.loc)
+					if(!usr.get_active_hand())
+						usr.put_in_hands(scan)
+					scan = null
+				else
+					scan.forceMove(src.loc)
+					scan = null
+				to_chat(usr, SPAN_NOTICE("You take \the [scan] out of \the [src]."))
+				authenticated = FALSE
+				playsound(src, 'sound/machines/terminal_eject.ogg', 15, TRUE)
+				. = TRUE
+
+		if("select")
+			var/last_target_department = target_department
+			target_department = tgui_input_list(usr, "Which department?", "Choose a department", alldepartments)
+			if(!target_department) target_department = last_target_department
+			. = TRUE
+
+		if("auth")
+			if ( (!( authenticated ) && (scan)) )
+				if (check_access(scan))
+					authenticated = TRUE
+					playsound(src, 'sound/machines/terminal_on.ogg', 20, FALSE)
+				. = TRUE
+
+		if("logout")
+			authenticated = FALSE
+			. = TRUE
+
+	add_fingerprint(usr)
+
 /obj/structure/machinery/faxmachine/get_vv_options()
 	. = ..()
 	. += "<option value>-----FAX-----</option>"
-	. += "<option value='?_src_=admin_holder;USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
-	. += "<option value='?_src_=admin_holder;CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
 
 /proc/highcom_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
 
 	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font>[key_name(Sender, 1)] ")
-	msg_admin += "(<A HREF='?_src_=admin_holder;ahelp=mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[Sender]'>PP</A>) "
-	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) "
-	msg_admin += "(<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) "
-	msg_admin += "(<a href='?_src_=admin_holder;USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) "
+	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[Sender]'>SM</A>) "
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[Sender]'>JMP</A>) "
+	msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
 	msg_admin += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font></b>")
 	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
-	GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
+	GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
 /proc/provost_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
@@ -245,16 +260,16 @@ var/list/alldepartments = list()
 	GLOB.fax_contents += faxcontents
 
 	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>PROVOST FAX: </font>[key_name(Sender, 1)] ")
-	msg_admin += "(<A HREF='?_src_=admin_holder;ahelp=mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[Sender]'>PP</A>) "
-	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) "
-	msg_admin += "(<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) "
-	msg_admin += "(<a href='?_src_=admin_holder;USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) "
+	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[Sender]'>SM</A>) "
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[Sender]'>JMP</A>) "
+	msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
 	msg_admin += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font></b>")
 	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
-	GLOB.ProvostFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
+	GLOB.ProvostFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
 
@@ -262,14 +277,14 @@ var/list/alldepartments = list()
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
 	var/msg_admin = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font>[key_name(Sender, 1)] ")
-	msg_admin += "(<A HREF='?_src_=admin_holder;ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[Sender]'>PP</A>) "
-	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) "
-	msg_admin += "(<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) "
-	msg_admin += "(<a href='?_src_=admin_holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) "
+	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[Sender]'>SM</A>) "
+	msg_admin += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[Sender]'>JMP</A>) "
+	msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
 	msg_admin += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font></b>")
 	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
-	GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
+	GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
 /proc/announce_fax(var/msg_admin, var/msg_ghost)
@@ -296,11 +311,11 @@ var/list/alldepartments = list()
 /proc/general_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
-	GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
+	GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 
-/proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt, var/network, var/obj/structure/machinery/faxmachine/origin)
+/proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/target_department, var/network, var/obj/structure/machinery/faxmachine/origin)
 	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
-		if(F != origin && F.department == dpt)
+		if(F != origin && F.department == target_department)
 			if(! (F.inoperable() ) )
 
 				flick("faxreceive", F)
@@ -342,15 +357,15 @@ var/list/alldepartments = list()
 	department = "W-Y Liaison"
 
 /obj/structure/machinery/faxmachine/corporate/highcom
-	department = "Weyland-Yutani"
-	dpt = "W-Y Liaison"
+	department = DEPARTMENT_WY
+	target_department = "W-Y Liaison"
 	network = "Weyland-Yutani Quantum Relay"
 
 /obj/structure/machinery/faxmachine/uscm
 	name = "USCM Military Fax Machine"
 	department = "USCM Local Operations"
 	network = "USCM Encrypted Network"
-	dpt = "USCM High Command"
+	target_department = DEPARTMENT_HC
 
 /obj/structure/machinery/faxmachine/uscm/command
 	department = "CIC"
@@ -359,19 +374,19 @@ var/list/alldepartments = list()
 	department = "Commanding Officer"
 
 /obj/structure/machinery/faxmachine/uscm/command/highcom
-	department = "USCM High Command"
-	dpt = "Commanding Officer"
+	department = DEPARTMENT_HC
+	target_department = "Commanding Officer"
 	network = "USCM High Command Quantum Relay"
 
 /obj/structure/machinery/faxmachine/uscm/brig
 	name = "USCM Provost Fax Machine"
 	department = "Brig"
-	dpt = "USCM Provost Office"
+	target_department = DEPARTMENT_PROVOST
 
 /obj/structure/machinery/faxmachine/uscm/brig/chief
 	department = "Chief MP"
 
 /obj/structure/machinery/faxmachine/uscm/brig/provost
-	department = "USCM Provost Office"
-	dpt = "Brig"
+	department = DEPARTMENT_PROVOST
+	target_department = "Brig"
 	network = "USCM High Command Quantum Relay"

@@ -17,7 +17,7 @@
 			continue
 
 		var/obj/limb/L = H.get_limb(limb)
-		L.droplimb(cause = user.key)
+		L.droplimb(create_cause_data("adminbus"))
 
 	playsound(target, "bone_break", 45, TRUE)
 	target.emote("scream")
@@ -102,7 +102,7 @@
 
 	//Delete them from datacore.
 	var/target_ref = WEAKREF(target)
-	for(var/datum/data/record/R in GLOB.data_core.medical)
+	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 		if((R.fields["ref"] == target_ref))
 			GLOB.data_core.medical -= R
 			qdel(R)
@@ -187,4 +187,23 @@
 			qdel(I)
 
 	message_staff("[key_name_admin(user)] stripped [target] of their items.")
+	return TRUE
+
+/datum/player_action/set_squad
+	action_tag = "set_squad"
+	name = "Set Squad"
+	permissions_required = R_VAREDIT
+
+/datum/player_action/set_squad/act(var/client/user, var/mob/living/carbon/human/target, var/list/params)
+	var/list/squads = list()
+	for(var/datum/squad/S in RoleAuthority.squads)
+		squads[S.name] = S
+
+	var/selected_squad = tgui_input_list(user, "Select a squad.", "Squad Selection", squads)
+	if(!selected_squad)
+		return
+
+	var/success = transfer_marine_to_squad(target, squads[selected_squad], target.assigned_squad, target.get_idcard())
+
+	message_staff("[key_name_admin(user)][success ? "" : " failed to"] set [key_name_admin(target)]'s squad to [selected_squad].")
 	return TRUE

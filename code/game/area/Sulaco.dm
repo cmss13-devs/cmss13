@@ -186,3 +186,19 @@
 /area/shuttle/distress/arrive_s_hangar
 	name = "\improper Distress Shuttle"
 	icon_state = "away3"
+
+/area/shuttle/distress/start_small
+	name = "\improper VIP Shuttle"
+	icon_state = "away3"
+
+/area/shuttle/distress/transit_small
+	name = "\improper VIP Shuttle Transit"
+	icon_state = "away2"
+
+/area/shuttle/distress/arrive_n_engi
+	name = "\improper VIP Shuttle"
+	icon_state = "away"
+
+/area/shuttle/distress/arrive_s_engi
+	name = "\improper VIP Shuttle"
+	icon_state = "away2"

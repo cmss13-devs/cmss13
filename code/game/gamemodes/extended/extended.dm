@@ -4,6 +4,9 @@
 	required_players = 0
 	latejoin_larva_drop = 0
 	votable = FALSE
+	var/research_allocation_interval = 10 MINUTES
+	var/next_research_allocation = 0
+	taskbar_icon = 'icons/taskbar/gml_colonyrp.png'
 
 /datum/game_mode/announce()
 	to_world("<B>The current game mode is - Extended!</B>")
@@ -19,6 +22,12 @@
 		np.new_player_panel_proc()
 	round_time_lobby = world.time
 	return ..()
+
+/datum/game_mode/extended/process()
+	. = ..()
+	if(next_research_allocation < world.time)
+		chemical_data.update_credits(chemical_data.research_allocation_amount)
+		next_research_allocation = world.time + research_allocation_interval
 
 /datum/game_mode/extended/check_finished()
 	if(round_finished)

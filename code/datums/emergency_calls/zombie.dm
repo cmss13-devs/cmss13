@@ -8,9 +8,9 @@
 	hostility = TRUE
 
 
-/datum/emergency_call/zombie/create_member(datum/mind/M)
+/datum/emergency_call/zombie/create_member(datum/mind/M, var/turf/override_spawn_loc)
 	set waitfor = 0
-	var/turf/T = get_spawn_point()
+	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(T))
 		return FALSE

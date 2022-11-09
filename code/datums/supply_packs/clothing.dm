@@ -94,17 +94,6 @@
 	containername = "Lightweight IMP Backpack Crate"
 	group = "Clothing"
 
-/datum/supply_packs/backpack/logi
-	name = "Logistics IMP Backpack Crate (x4)"
-	contains = list(
-		/obj/item/storage/backpack/marine/satchel/big,
-		/obj/item/storage/backpack/marine/satchel/big,
-		/obj/item/storage/backpack/marine/satchel/big,
-		/obj/item/storage/backpack/marine/satchel/big
-	)
-	cost = RO_PRICE_NORMAL
-	containername = "Logistics IMP Backpack Crate"
-
 /datum/supply_packs/backpack/satchels
 	name = "Marine Satchel Crate (x4)"
 	contains = list(
@@ -170,17 +159,6 @@
 	containername = "Drop Pouch Crate"
 	group = "Clothing"
 
-/datum/supply_packs/webbing_surgical
-	name = "Surgical Webbing Crate (x3)"
-	contains = list(
-		/obj/item/clothing/accessory/storage/surg_vest,
-		/obj/item/clothing/accessory/storage/surg_vest,
-		/obj/item/clothing/accessory/storage/surg_vest,
-	)
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate/green
-	containername = "Surgical Webbing Crate"
-	group = "Clothing"
 
 /datum/supply_packs/webbing_knives//for the lulz
 	name = "Knife Vest Crate (x3)"
@@ -197,10 +175,10 @@
 /datum/supply_packs/webbing_holster
 	name = "Shoulder Holster Crate (x4)"
 	contains = list(
-		/obj/item/clothing/accessory/holster,
-		/obj/item/clothing/accessory/holster,
-		/obj/item/clothing/accessory/holster,
-		/obj/item/clothing/accessory/holster
+		/obj/item/clothing/accessory/storage/holster,
+		/obj/item/clothing/accessory/storage/holster,
+		/obj/item/clothing/accessory/storage/holster,
+		/obj/item/clothing/accessory/storage/holster
 	)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/green
@@ -217,6 +195,18 @@
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate
 	containername = "M39 Belt Holster Crate"
+	group = "Clothing"
+
+/datum/supply_packs/gunslinger_holster
+	contains = list(
+					/obj/item/storage/belt/gun/m44/gunslinger,
+					/obj/item/storage/belt/gun/m44/gunslinger
+					)
+	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
+	cost = RO_PRICE_VERY_CHEAP
+	contraband = 1
+	containertype = /obj/structure/closet/crate
+	containername = "Cowboy Costume Crate"
 	group = "Clothing"
 
 /datum/supply_packs/gun_holster/m44

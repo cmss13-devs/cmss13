@@ -3,11 +3,13 @@
 #define GET_DEFAULT_ROLE(title) (RoleAuthority?.default_roles[title] ? RoleAuthority.default_roles[title] : title)
 
 // Squad name defines
-#define SQUAD_NAME_1					"Alpha"
-#define SQUAD_NAME_2					"Bravo"
-#define SQUAD_NAME_3					"Charlie"
-#define SQUAD_NAME_4					"Delta"
-#define SQUAD_NAME_5					"Echo"
+#define SQUAD_MARINE_1					"Alpha"
+#define SQUAD_MARINE_2					"Bravo"
+#define SQUAD_MARINE_3					"Charlie"
+#define SQUAD_MARINE_4					"Delta"
+#define SQUAD_MARINE_5					"Echo"
+#define SQUAD_MARINE_CRYO				"Foxtrot"
+#define SQUAD_SOF					"SOF"
 
 // Job name defines
 #define JOB_SQUAD_MARINE				"Squad Rifleman"
@@ -49,6 +51,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PILOT						"Pilot Officer"
 #define JOB_DROPSHIP_CREW_CHIEF			"Dropship Crew Chief"
 #define JOB_CREWMAN						"Vehicle Crewman"
+#define JOB_INTEL						"Intelligence Officer"
 
 #define JOB_POLICE_CADET				"MP Cadet"
 #define JOB_POLICE						"Military Police"
@@ -70,16 +73,18 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_REQUISITION_ROLES           /datum/timelock/requisition
 #define JOB_REQUISITION_ROLES_LIST      list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
 
-#define JOB_MARSOC						"MARSOC Operator"
+#define JOB_MARINE_RAIDER						"Marine Raider"
+#define JOB_MARINE_RAIDER_SL					"Marine Raider Team Lead"
+#define JOB_MARINE_RAIDER_CMD					"Marine Raider Platoon Lead"
+#define JOB_MARINE_RAIDER_ROLES_LIST			list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
 
 #define JOB_HUMAN_ROLES                 /datum/timelock/human
 #define JOB_XENO_ROLES                  /datum/timelock/xeno
 
 #define JOB_STOWAWAY					"Stowaway"
 
-#define JOB_ADMIRAL						"USCM Admiral"
+#define JOB_COLONEL						"USCM Colonel"
 #define JOB_GENERAL						"USCM General"
-#define JOB_B_GENERAL					"USCM Brigadier General"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \
@@ -144,6 +149,27 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_LEADER					"PMC Leader"
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR				"PMC Site Director"
+#define JOB_PMC_SYNTH                   "PMC Support Synthetic"
+
+//-------- WY Goons --------//
+#define JOB_WY_GOON						"WY Corporate Security"
+#define JOB_WY_GOON_LEAD				"WY Corporate Security Lead"
+
+//---- Contractors ----//
+#define JOB_CONTRACTOR						"VAIPO Mercenary"
+#define JOB_CONTRACTOR_ST					"VAIPO Mercenary"
+#define JOB_CONTRACTOR_MEDIC				"VAIMS Medical Specialist"
+#define JOB_CONTRACTOR_ENGI					"VAIPO Engineering Specialist"
+#define JOB_CONTRACTOR_MG					"VAIPO Automatic Rifleman"
+#define JOB_CONTRACTOR_TL					"VAIPO Team Leader"
+#define JOB_CONTRACTOR_SYN					"VAIPO Support Synthetic"
+#define JOB_CONTRACTOR_COV					"VAISO Mercenary"
+#define JOB_CONTRACTOR_COVST				"VAISO Mercenary"
+#define JOB_CONTRACTOR_COVMED				"VAIMS Medical Specialist"
+#define JOB_CONTRACTOR_COVENG				"VAISO Engineering Specialist"
+#define JOB_CONTRACTOR_COVMG				"VAISO Automatic Rifleman"
+#define JOB_CONTRACTOR_COVTL            	"VAISO Team Leader"
+#define JOB_CONTRACTOR_COVSYN				"VAISO Support Synthetic"
 
 //-------- UPP --------//
 #define JOB_UPP							"UPP Private"
@@ -207,7 +233,6 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define RESS_OFFICER_JOB_LIST			list(JOB_RESS_SEAMAN, JOB_RESS_LSEAMAN, JOB_RESS_SO, JOB_RESS_WO, JOB_RESS_CPT, JOB_RESS_ADM, JOB_RESS_GADM, JOB_RESS_ER)
 
 //-------- PROVOST --------//
-#define JOB_PROVOST_OFFICER				"Provost Officer"
 #define JOB_PROVOST_ENFORCER			"Provost Enforcer"
 #define JOB_PROVOST_TML					"Provost Team Leader"
 #define JOB_PROVOST_ADVISOR				"Provost Advisor"
@@ -216,10 +241,22 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PROVOST_SMARSHAL			"Provost Sector Marshal"
 #define JOB_PROVOST_CMARSHAL			"Provost Chief Marshal"
 
-#define PROVOST_JOB_LIST				list(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
+#define PROVOST_JOB_LIST				list(JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
 
-//antag jobs supported by adaptive antag vendors
-#define VENDOR_ANTAG_JOBS				list(JOB_UPP_COMMANDO, JOB_UPP_COMMANDO_MEDIC, JOB_UPP_COMMANDO_LEADER, JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER)
+//-------- UAAC --------//
+#define JOB_TIS_IO						"UAAC-TIS Intelligence Officer"
+#define JOB_TIS_SA						"UAAC-TIS Special Agent"
+
+#define TIS_JOB_LIST					list(JOB_TIS_SA, JOB_TIS_IO)
+
+//-------- DUTCH'S DOZEN --------//
+#define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
+#define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"
+#define JOB_DUTCH_MINIGUNNER "Dutch's Dozen - Minigunner"
+#define JOB_DUTCH_FLAMETHROWER "Dutch's Dozen - Flamethrower"
+#define JOB_DUTCH_MEDIC "Dutch's Dozen - Medic"
+
+#define DUTCH_JOB_LIST					list(JOB_DUTCH_ARNOLD, JOB_DUTCH_RIFLEMAN, JOB_DUTCH_MINIGUNNER, JOB_DUTCH_FLAMETHROWER, JOB_DUTCH_MEDIC)
 
 #define JOB_PREDATOR                    "Predator"
 #define JOB_XENOMORPH                   "Xenomorph"

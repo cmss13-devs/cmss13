@@ -7,7 +7,7 @@
 #define M2C_HIGH_COOLDOWN_ROLL 0.45
 #define M2C_PASSIVE_COOLDOWN_AMOUNT 4
 #define M2C_OVERHEAT_OVERLAY 14
-#define M2C_CRUSHER_STUN 3 SECONDS
+#define M2C_CRUSHER_STUN 3 //amount in ticks (roughly 3 seconds)
 
 //////////////////////////////////////////////////////////////
 //Mounted MG, Replacment for the current jury rig code.
@@ -15,7 +15,7 @@
 //Adds a coin for engi vendors
 /obj/item/coin/marine/engineer
 	name = "marine engineer support token"
-	desc = "Insert this into a engineer vendor in order to access a support weapon."
+	desc = "Insert this into an engineer vendor in order to access a support weapon."
 	icon_state = "coin_adamantine"
 
 // First thing we need is the ammo drum for this thing.
@@ -67,12 +67,12 @@
 
 	update_icon()
 
-/obj/item/device/m56d_gun/examine(mob/user as mob) //Let us see how much ammo we got in this thing.
-	..()
+/obj/item/device/m56d_gun/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
+	. = ..()
 	if(rounds)
-		to_chat(usr, "It has [rounds] out of 700 rounds.")
+		. += "It has [rounds] out of 700 rounds."
 	else
-		to_chat(usr, "It seems to be lacking a ammo drum.")
+		. += "It seems to be lacking a ammo drum."
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
 	var/icon_name = "M56D_gun"
@@ -110,6 +110,32 @@
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
+	var/turf/T = get_turf(usr)
+	var/fail = FALSE
+	if(T.density)
+		fail = TRUE
+	else
+		for(var/obj/X in T.contents - src)
+			if(X.density && !(X.flags_atom & ON_BORDER))
+				fail = TRUE
+				break
+			if(istype(X, /obj/structure/machinery/defenses))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/window))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/windoor_assembly))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/machinery/door))
+				fail = TRUE
+				break
+	if(fail)
+		to_chat(usr, SPAN_WARNING("You can't deploy \the [src] here, something is in the way."))
+		return
+
+
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 
@@ -120,7 +146,7 @@
 	M.anchored = TRUE
 	M.update_icon()
 	M.set_name_label(name_label)
-	to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	qdel(src)
 
 
@@ -137,7 +163,10 @@
 	icon_state = "folded_mount_frame"
 
 /obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/tool/weldingtool))
+	if (iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 
 		if(WT.remove_fuel(1, user))
@@ -165,7 +194,32 @@
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
-	to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	var/turf/T = get_turf(user)
+	var/fail = FALSE
+	if(T.density)
+		fail = TRUE
+	else
+		for(var/obj/X in T.contents)
+			if(X.density && !(X.flags_atom & ON_BORDER))
+				fail = TRUE
+				break
+			if(istype(X, /obj/structure/machinery/defenses))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/window))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/windoor_assembly))
+				fail = TRUE
+				break
+			else if(istype(X, /obj/structure/machinery/door))
+				fail = TRUE
+				break
+	if(fail)
+		to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
+		return
+
+	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
 	M.set_name_label(name_label)
 	qdel(src)
@@ -212,14 +266,14 @@
 		icon_name += "_mount"
 	icon_state = icon_name
 
-/obj/structure/machinery/m56d_post/examine(mob/user)
-	..()
+/obj/structure/machinery/m56d_post/get_examine_text(mob/user)
+	. = ..()
 	if(!anchored)
-		to_chat(user, "It must be <B>screwed</b> to the floor.")
+		. += "It must be <B>screwed</b> to the floor."
 	else if(!gun_mounted)
-		to_chat(user, "The <b>M56D heavy machine gun</b> is not yet mounted.")
+		. += "The <b>M56D heavy machine gun</b> is not yet mounted."
 	else
-		to_chat(user, "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job.")
+		. += "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job."
 
 /obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M))
@@ -238,8 +292,11 @@
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
-		if(anchored)
-			to_chat(user, SPAN_WARNING("[src] can't be folded while screwed to the floor. Unscrew it first."))
+		if(anchored && gun_mounted)
+			to_chat(user, SPAN_WARNING("\The [src] can't be folded while there's an unsecured gun mounted on it. Either complete the assembly or take the gun off with a crowbar."))
+			return
+		else if(anchored)
+			to_chat(user, SPAN_WARNING("\The [src] can't be folded while screwed to the floor. Unscrew it first."))
 			return
 		to_chat(user, SPAN_NOTICE("You fold [src]."))
 		var/obj/item/device/m56d_post/P = new(loc)
@@ -299,6 +356,15 @@
 					fail = TRUE
 					break
 				if(istype(X, /obj/structure/machinery/defenses))
+					fail = TRUE
+					break
+				else if(istype(X, /obj/structure/window))
+					fail = TRUE
+					break
+				else if(istype(X, /obj/structure/windoor_assembly))
+					fail = TRUE
+					break
+				else if(istype(X, /obj/structure/machinery/door))
 					fail = TRUE
 					break
 		if(fail)
@@ -419,18 +485,18 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/structure/machinery/m56d_hmg/examine(mob/user) //Let us see how much ammo we got in this thing.
-	..()
+/obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
+	. = ..()
 	if(ishuman(user))
 		if(rounds)
-			to_chat(user, SPAN_NOTICE("It has [rounds] round\s out of [rounds_max]."))
+			. += SPAN_NOTICE("It has [rounds] round\s out of [rounds_max].")
 		else
-			to_chat(user, SPAN_WARNING("It seems to be lacking ammo."))
+			. += SPAN_WARNING("It seems to be lacking ammo.")
 		switch(damage_state)
-			if(M56D_DMG_NONE) to_chat(user, SPAN_INFO("It looks like it's in good shape."))
-			if(M56D_DMG_SLIGHT) to_chat(user, SPAN_WARNING("It has sustained some damage, but still fires very steadily."))
-			if(M56D_DMG_MODERATE) to_chat(user, SPAN_WARNING("It's damaged, but holding, rattling with each shot fired."))
-			if(M56D_DMG_HEAVY) to_chat(user, SPAN_WARNING("It's falling apart, barely able to handle the force of its own shots."))
+			if(M56D_DMG_NONE) . += SPAN_INFO("It looks like it's in good shape.")
+			if(M56D_DMG_SLIGHT) . += SPAN_WARNING("It has sustained some damage, but still fires very steadily.")
+			if(M56D_DMG_MODERATE) . += SPAN_WARNING("It's damaged, but holding, rattling with each shot fired.")
+			if(M56D_DMG_HEAVY) . += SPAN_WARNING("It's falling apart, barely able to handle the force of its own shots.")
 
 /obj/structure/machinery/m56d_hmg/update_icon() //Lets generate the icon based on how much ammo it has.
 	if(!rounds)
@@ -452,7 +518,7 @@
 			return
 		else
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("[user] rotates the [src].","You rotate the [src].")
+			user.visible_message("[user] rotates \the [src].","You rotate \the [src].")
 			setDir(turn(dir, -90))
 			if(operator)
 				update_pixels(operator)
@@ -493,13 +559,16 @@
 		if(rounds)
 			var/obj/item/ammo_magazine/m56d/D = new(user.loc)
 			D.current_rounds = rounds
-		rounds = min(rounds + M.current_rounds, rounds_max)
+		rounds = M.current_rounds
 		update_icon()
 		user.temp_drop_inv_item(O)
 		qdel(O)
 		return
 
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 
@@ -669,15 +738,15 @@
 		return HANDLE_CLICK_UNHANDLED
 	if(operator != user)
 		return HANDLE_CLICK_UNHANDLED
-	if(istype(A,/obj/screen))
+	if(istype(A,/atom/movable/screen))
 		return HANDLE_CLICK_UNHANDLED
 	if(is_bursting)
 		return HANDLE_CLICK_UNHANDLED
 	if(user.lying || get_dist(user,src) > 1 || user.is_mob_incapacitated())
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
-	if(user.get_active_hand())
-		to_chat(usr, SPAN_WARNING("You need a free hand to shoot the [src]."))
+	if(user.get_active_hand() || user.get_inactive_hand())
+		to_chat(usr, SPAN_WARNING("You need two free hands to shoot \the [src]."))
 		return HANDLE_CLICK_UNHANDLED
 	if(!user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
@@ -777,7 +846,7 @@
 				to_chat(user, "You're already manning something!")
 				return
 			if(user.get_active_hand() != null)
-				to_chat(user, SPAN_WARNING("You need a free hand to man the [src]."))
+				to_chat(user, SPAN_WARNING("You need a free hand to man \the [src]."))
 
 			if(!user.allow_gun_usage)
 				to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
@@ -905,12 +974,13 @@
 /obj/item/ammo_magazine/m2c
 	name = "M2C Ammunition Box (10x28mm tungsten rounds)"
 	desc = "A box of 125, 10x28mm tungsten rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
+	caliber = "10x28mm"
 	w_class = SIZE_LARGE
 	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	icon_state = "m56de"
 	item_state = "m56de"
 	max_rounds = 125
-	default_ammo = /datum/ammo/bullet/smartgun
+	default_ammo = /datum/ammo/bullet/machinegun/auto
 	gun_type = null
 
 //STORAGE BOX FOR THE MACHINEGUN
@@ -962,34 +1032,59 @@
 
 	icon_state = icon_name
 
-/obj/item/device/m2c_gun/attack_self(mob/user)
-	..()
-
+/obj/item/device/m2c_gun/proc/check_can_setup(mob/user, var/turf/rotate_check, var/turf/open/OT, var/list/ACR)
 	if(!ishuman(user))
-		return
+		return FALSE
+	if(broken_gun)
+		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
+		return FALSE
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
-		return
+		return FALSE
+	if(OT.density || !isturf(OT))
+		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
+		return FALSE
+	if(rotate_check.density)
+		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
+		return FALSE
+	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR) || (locate(/obj/structure/window) in ACR) || (locate(/obj/structure/windoor_assembly) in ACR))
+		to_chat(user, SPAN_WARNING("There are barriers nearby, you can't set up \the [src] here!"))
+		return FALSE
+	var/fail = FALSE
+	for(var/obj/X in OT.contents - src)
+		if(istype(X, /obj/structure/machinery/defenses))
+			fail = TRUE
+			break
+		else if(istype(X, /obj/structure/machinery/door))
+			fail = TRUE
+			break
+		else if(istype(X, /obj/structure/machinery/m56d_hmg))
+			fail = TRUE
+			break
+	if(fail)
+		to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
+		return FALSE
 
+
+	if(!(user.alpha > 60))
+		to_chat(user, SPAN_WARNING("You can't set this up while cloaked!"))
+		return FALSE
+	return TRUE
+
+
+/obj/item/device/m2c_gun/attack_self(mob/user)
+	..()
 	var/turf/rotate_check = get_step(user.loc, turn(user.dir, 180))
 	var/turf/open/OT = usr.loc
 	var/list/ACR = range(anti_cadehugger_range, user.loc)
-	if(OT.density)
-		to_chat(user, SPAN_WARNING("You can't set up [src] here."))
+
+	if(!check_can_setup(user, rotate_check, OT, ACR))
 		return
-	if(rotate_check.density)
-		to_chat(user, SPAN_WARNING("You can't set up [src] that way, there's a wall behind you!"))
-		return
-	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR))
-		to_chat(user, SPAN_WARNING("There's barriers nearby, you can't set up here!"))
-		return
-	if(broken_gun)
-		to_chat(user, SPAN_WARNING("You can't set up [src], it's completely broken!"))
-		return
-	if(!(user.alpha > 60))
-		to_chat(user, SPAN_WARNING("You can't set this up while cloaked!"))
-		return
+
 	if(!do_after(user, M2C_SETUP_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		return
+
+	if(!check_can_setup(user, rotate_check, OT, ACR))
 		return
 
 	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
@@ -997,7 +1092,7 @@
 	M.setDir(user.dir) // Make sure we face the right direction
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
-	to_chat(user, SPAN_NOTICE("You deploy [M]."))
+	to_chat(user, SPAN_NOTICE("You deploy \the [M]."))
 	if((rounds > 0) && !user.get_inactive_hand())
 		user.set_interaction(M)
 	M.rounds = rounds
@@ -1013,31 +1108,35 @@
 	if(!iswelder(O) || user.action_busy)
 		return
 
+	if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
+
 	if(!broken_gun)
-		to_chat(user, SPAN_WARNING("[src] isn't critically broken, no need for field recovery operations."))
+		to_chat(user, SPAN_WARNING("\The [src] isn't critically broken, no need for field recovery operations."))
 		return
 
 	var/obj/item/tool/weldingtool/WT = O
 
 	if(WT.remove_fuel(2, user))
-		user.visible_message(SPAN_NOTICE("[user] begins field recovering [src]."), \
-			SPAN_NOTICE("You begin repairing the severe damages on the [src] in an effort to restore its functions."))
+		user.visible_message(SPAN_NOTICE("[user] begins field recovering \the [src]."), \
+			SPAN_NOTICE("You begin repairing the severe damages on \the [src] in an effort to restore its functions."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		if(!do_after(user, field_recovery * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			return
-		user.visible_message(SPAN_NOTICE("[user] field recovers [src], restoring it back to its original state."), \
-			SPAN_NOTICE("You repair [src] back to a functional state."))
+		user.visible_message(SPAN_NOTICE("[user] field recovers \the [src], restoring it back to its original state."), \
+			SPAN_NOTICE("You repair \the [src] back to a functional state."))
 		broken_gun = FALSE
 		health = 110
 		update_icon()
 		return
 	else
-		to_chat(user, SPAN_WARNING("You need more fuel in [WT] to start field recovery on [src]."))
+		to_chat(user, SPAN_WARNING("You need more fuel in \the [WT] to start field recovery on [src]."))
 
 // MACHINEGUN, AUTOMATIC
 /obj/structure/machinery/m56d_hmg/auto
 	name = "\improper M2C Heavy Machinegun"
-	desc = "A deployable, heavy machine gun. The M2C 'Chimp' HB is a modified M2 HB recongifured to fire 10x28 Caseless Tungsten rounds for USCM use. It is capable of recoiless fire and fast-rotating. However it has a debilitating overheating issue due to the poor quality of metals used in the parts, forcing it to be used in decisive, crushing engagements as a squad support weapon. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
+	desc = "A deployable, heavy machine gun. The M2C 'Chimp' HB is a modified M2 HB reconfigured to fire 10x28 Caseless Tungsten rounds for USCM use. It is capable of recoilless fire and fast-rotating. However it has a debilitating overheating issue due to the poor quality of metals used in the parts, forcing it to be used in decisive, crushing engagements as a squad support weapon. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56DE"
 	icon_full = "M56DE"
@@ -1132,7 +1231,12 @@
 /obj/structure/blocker/anti_cade/BlockedPassDirs(atom/movable/AM, target_dir)
 	if(istype(AM, /obj/structure/barricade))
 		return BLOCKED_MOVEMENT
-
+	else if(istype(AM, /obj/structure/window))
+		return BLOCKED_MOVEMENT
+	else if(istype(AM, /obj/structure/windoor_assembly))
+		return BLOCKED_MOVEMENT
+	else if(istype(AM, /obj/structure/machinery/door))
+		return BLOCKED_MOVEMENT
 	return ..()
 
 /obj/structure/blocker/anti_cade/Destroy()
@@ -1198,6 +1302,9 @@
 
 	// WELDER REPAIR
 	if(iswelder(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(user.action_busy)
 			return
 
@@ -1208,8 +1315,8 @@
 			return
 
 		if(WT.remove_fuel(2, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on [src]."), \
-				SPAN_NOTICE("You begin repairing the damage on the [src]."))
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on \the [src]."), \
+				SPAN_NOTICE("You begin repairing the damage on \the [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(!do_after(user, repair_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				return
@@ -1240,7 +1347,7 @@
 	if(params["shift"] || params["ctrl"] || params["alt"])
 		return
 
-	if(istype(A, /obj/screen))
+	if(istype(A, /atom/movable/screen))
 		return
 
 	if(user.get_active_hand() || user.get_inactive_hand())
@@ -1268,7 +1375,7 @@
 		return
 	var/mob/user = operator
 
-	if(istype(hovered, /obj/screen))
+	if(istype(hovered, /atom/movable/screen))
 		return
 
 	if(get_turf(hovered) == get_turf(user))
@@ -1448,7 +1555,7 @@
 		var/diff_x = 0
 		var/diff_y = 0
 		var/tilesize = 32
-		var/viewoffset = tilesize * 5
+		var/viewoffset = tilesize * 1
 
 		user.reset_view(src)
 		if(dir == EAST)

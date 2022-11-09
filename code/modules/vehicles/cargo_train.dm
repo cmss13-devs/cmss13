@@ -35,7 +35,6 @@
 /obj/vehicle/train/cargo/engine/Initialize()
 	. = ..()
 	cell = new /obj/item/cell/apc
-	verbs -= /atom/movable/verb/pull
 	key = new()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	overlays += I
@@ -122,13 +121,13 @@
 			return 0
 	return ..()
 
-/obj/vehicle/train/cargo/engine/examine(mob/user)
-	..()
+/obj/vehicle/train/cargo/engine/get_examine_text(mob/user)
+	. = ..()
 	if(!ishuman(user))
 		return
 	if(get_dist(user,src) <= 1)
-		to_chat(user, "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition.")
-		to_chat(user, "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%")
+		. += "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
+		. += "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
 
 /obj/vehicle/train/cargo/engine/verb/start_engine()
 	set name = "Start engine"
@@ -213,10 +212,5 @@
 
 	if(!lead && !tow)
 		anchored = 0
-		if(verbs.Find(/atom/movable/verb/pull))
-			return
-		else
-			verbs += /atom/movable/verb/pull
 	else
 		anchored = 1
-		verbs -= /atom/movable/verb/pull

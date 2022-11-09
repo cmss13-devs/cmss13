@@ -21,6 +21,7 @@
 	desc = "These treads are made of a tougher material and are more durable. However, the extra weight slows the tank down slightly."
 
 	health = 750
+	acid_resistant = TRUE
 
 	move_max_momentum = 5	//same top speed, but takes 5 tiles to reach it
 

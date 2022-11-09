@@ -5,8 +5,6 @@
 	This applies to for example interior entrances and hardpoint origins
 */
 
-GLOBAL_LIST_EMPTY(all_multi_vehicles)
-
 /obj/vehicle/multitile
 	name = "multitile vehicle"
 	desc = "Get inside to operate the vehicle."
@@ -35,7 +33,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	// List of verbs to give when a mob is seated in each seat type
 	var/list/seat_verbs
 
-	move_delay = VEHICLE_SPEED_SLOW
+	move_delay = VEHICLE_SPEED_STATIC
 	// The next world.time when the vehicle can move
 	var/next_move = 0
 	// How much momentum the vehicle has. Increases by 1 each move
@@ -118,8 +116,9 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	//Amount of seconds spent on entering/leaving. Always the same when dragging stuff (2 seconds) and for xenos (1 second)
 	var/entrance_speed = 1
 
-	// Whether or not entering the vehicle is ID restricted to crewmen only. Toggleable by the driver
-	var/door_locked = TRUE
+	//Whether or not entering the vehicle is ID restricted to those with crewman, command or MP access only. Toggleable by the driver.
+	//Having command/MP/Crewmen access won't matter if the faction of the vehicle is not yours, so you can't infiltrate the vehicle.
+	var/door_locked = FALSE
 	req_one_access = list(
 		ACCESS_MARINE_CREWMAN,
 		// Officers always have access
@@ -177,17 +176,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
 
-	// Hardpoint rotation is handled by add_hardpoint
-	load_hardpoints()
-
-	load_damage()
-
 	healthcheck()
 	update_icon()
-
-	initialize_cameras()
-
-	load_role_reserved_slots()
 
 	GLOB.all_multi_vehicles += src
 
@@ -249,20 +239,19 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		overlays += J
 
 //Normal examine() but tells the player what is installed and if it's broken
-/obj/vehicle/multitile/examine(var/mob/user)
-	..()
-
+/obj/vehicle/multitile/get_examine_text(var/mob/user)
+	. = ..()
 	for(var/obj/item/hardpoint/H in hardpoints)
-		to_chat(user, "There is \a [H] module installed.")
+		. += "There is \a [H] module installed."
 		H.examine(user, TRUE)
 	if(clamped)
-		to_chat(user, "There is a vehicle clamp attached.")
+		. += "There is a vehicle clamp attached."
 	if(isXeno(user) && interior)
 		var/passengers_amount = interior.passengers_taken_slots
 		for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
 			passengers_amount += RRS.taken
 		if(passengers_amount > 0)
-			to_chat(user, "You can sense approximately [passengers_amount] hosts inside.")
+			. += "You can sense approximately [passengers_amount] hosts inside."
 
 /obj/vehicle/multitile/proc/load_hardpoints()
 	return
@@ -288,23 +277,25 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		// Health check is done before the hardpoint takes damage
 		// This way, the frame won't take damage at the same time hardpoints break
 		if(H.can_take_damage())
-			H.take_damage(damage * get_dmg_multi(type))
+			H.take_damage(round(damage * get_dmg_multi(type)))
 			all_broken = FALSE
 
-	// If all hardpoints are broken, the vehicle frame begins taking damage
+	// If all hardpoints are broken, the vehicle frame begins taking full damage
 	if(all_broken)
 		health = max(0, health - damage * get_dmg_multi(type))
-		update_icon()
+	else //otherwise, 1/10th of damage lands on the hull
+		health = max(0, health - round(damage * get_dmg_multi(type) / 10))
 
-	if(istype(attacker, /mob))
+	if(ismob(attacker))
 		var/mob/M = attacker
 		log_attack("[src] took [damage] [type] damage from [M] ([M.client ? M.client.ckey : "disconnected"]).")
 	else
 		log_attack("[src] took [damage] [type] damage from [attacker].")
+	update_icon()
 
 /obj/vehicle/multitile/Entered(var/atom/movable/A)
 	if(istype(A, /obj) && !istype(A, /obj/item/ammo_magazine/hardpoint) && !istype(A, /obj/item/hardpoint))
-		A.forceMove(src.loc)
+		A.forceMove(loc)
 		return
 	return ..()
 
@@ -331,7 +322,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 
 	M.set_interaction(src)
 	M.reset_view(src)
-	give_action(M, /datum/action/human_action/cancel_view)
+	give_action(M, /datum/action/human_action/vehicle_unbuckle)
 
 /obj/vehicle/multitile/proc/get_seat_mob(var/seat)
 	return seats[seat]
@@ -368,3 +359,57 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	if(health <= 0 && luminosity)
 		SetLuminosity(0)
 	update_icon()
+
+/*
+** PRESETS SPAWNERS
+*/
+//These help spawning vehicles that don't end up as subtypes, causing problems later with various checks
+//as well as allowing customizations, like properly turning on mapped in direction and so on.
+
+/obj/effect/vehicle_spawner
+	name = "Vehicle Spawner"
+
+//Main proc which handles spawning and adding hardpoints/damaging the vehicle
+/obj/effect/vehicle_spawner/proc/spawn_vehicle()
+	return
+
+//Installation of modules kit
+/obj/effect/vehicle_spawner/proc/load_hardpoints(var/obj/vehicle/multitile/V)
+	return
+
+//Miscellaneous additions
+/obj/effect/vehicle_spawner/proc/load_misc(var/obj/vehicle/multitile/V)
+
+	V.load_role_reserved_slots()
+	V.initialize_cameras()
+	//transfer mapped in edits
+	if(color)
+		V.color = color
+	if(name != initial(name))
+		V.name = name
+	if(desc)
+		V.desc = desc
+
+//Dealing enough damage to destroy the vehicle
+/obj/effect/vehicle_spawner/proc/load_damage(var/obj/vehicle/multitile/V)
+	V.take_damage_type(1e8, "abstract")
+	V.take_damage_type(1e8, "abstract")
+	V.healthcheck()
+
+/obj/effect/vehicle_spawner/proc/handle_direction(var/obj/vehicle/multitile/M)
+	switch(dir)
+		if(EAST)
+			M.try_rotate(90)
+		if(WEST)
+			M.try_rotate(-90)
+		if(NORTH)
+			M.try_rotate(90)
+			M.try_rotate(90)
+
+/obj/vehicle/multitile/get_applying_acid_time()
+	return 3 SECONDS
+
+//handling dangerous acidic environment, like acidic spray or toxic waters, maybe toxic vapor in future
+/obj/vehicle/multitile/proc/handle_acidic_environment(var/atom/A)
+	for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
+		Loco.handle_acid_damage(A)

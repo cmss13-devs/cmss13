@@ -27,6 +27,8 @@
 	total_health = 150 //more health than regular humans, makes up for hardcrit reintroduction
 	timed_hug = FALSE
 
+	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
+
 	heat_level_1 = 500
 	heat_level_2 = 700
 	heat_level_3 = 1000
@@ -49,6 +51,8 @@
 
 	knock_down_reduction = 4
 	stun_reduction = 4
+
+	acid_blood_dodge_chance = 70
 
 		//Set their special slot priority
 
@@ -106,7 +110,7 @@
 		hive.hive_structures_limit[XENO_STRUCTURE_NEST] = 0
 
 	hive.hive_structure_types[XENO_STRUCTURE_NEST] = /datum/construction_template/xenomorph/nest
-	hive.hive_structures_limit[XENO_STRUCTURE_NEST] += 1
+	hive.hive_structures_limit[XENO_STRUCTURE_NEST]++
 
 /datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
 	if(gibbed)
@@ -161,6 +165,7 @@
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.add_to_hud(H)
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
+	H.h_style = "Bald"
 	GLOB.yautja_mob_list -= H
 	for(var/obj/limb/L in H.limbs)
 		switch(L.name)
@@ -183,6 +188,7 @@
 	H.universal_understand = 1
 
 	H.blood_type = "Y*"
+	H.h_style = "Standard"
 	GLOB.yautja_mob_list += H
 	for(var/obj/limb/L in H.limbs)
 		switch(L.name)
@@ -205,3 +211,10 @@
 
 	H.set_languages(list(LANGUAGE_YAUTJA))
 	return ..()
+
+/datum/species/yautja/get_hairstyle(var/style)
+	return GLOB.yautja_hair_styles_list[style]
+
+/datum/species/yautja/handle_on_fire(humanoidmob)
+	. = ..()
+	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))

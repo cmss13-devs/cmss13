@@ -32,7 +32,7 @@
 				tank_two = item
 				item.forceMove(src)
 				to_chat(user, SPAN_NOTICE("You attach the tank to the transfer valve."))
-				message_staff("[key_name_admin(user)] attached both tanks to a transfer valve. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+				message_staff("[key_name_admin(user)] attached both tanks to a transfer valve. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 				log_game("[key_name_admin(user)] attached both tanks to a transfer valve.")
 
 		update_icon()
@@ -53,7 +53,7 @@
 		A.holder = src
 		A.toggle_secure()	//this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).
 
-		message_staff("[key_name_admin(user)] attached a [item] to a transfer valve. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+		message_staff("[key_name_admin(user)] attached a [item] to a transfer valve. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(user)] attached a [item] to a transfer valve.")
 		attacher = user
 		nanomanager.update_uis(src) // update all UIs attached to src
@@ -164,16 +164,16 @@
 		else
 			attacher_name = "[attacher.name]([attacher.ckey])"
 
-		var/log_str = "Bomb valve opened in <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[bombturf.x];Y=[bombturf.y];Z=[bombturf.z]'>[A.name]</a> "
+		var/log_str = "Bomb valve opened in <A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[bombturf.x];Y=[bombturf.y];Z=[bombturf.z]'>[A.name]</a> "
 		log_str += "with [attached_device ? attached_device : "no device"] attacher: [attacher_name]"
 
 		if(attacher)
-			log_str += "(<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[attacher]'>?</A>)"
+			log_str += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[attacher]'>?</A>)"
 
 		var/mob/mob = GLOB.directory[fingerprintslast]
 		var/last_touch_info = ""
 		if(mob)
-			last_touch_info = "(<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[mob]'>?</A>)"
+			last_touch_info = "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[mob]'>?</A>)"
 
 		log_str += " Last touched by: [src.fingerprintslast][last_touch_info]"
 		message_staff(log_str, 0, 1)

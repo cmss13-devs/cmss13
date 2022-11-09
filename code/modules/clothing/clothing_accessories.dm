@@ -91,10 +91,10 @@
 	. = ..()
 
 
-/obj/item/clothing/examine(var/mob/user)
-	. = ..(user)
+/obj/item/clothing/get_examine_text(var/mob/user)
+	. = ..()
 	for(var/obj/item/clothing/accessory/A in accessories)
-		to_chat(user, "[icon2html(A, user)] \A [A] is attached to it[A.additional_examine_text()]") //The spacing of the examine text proc is deliberate. By default it returns ".".
+		. += "[icon2html(A, user)] \A [A] is attached to it[A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
 
 /**
  *  Attach accessory A to src
@@ -124,8 +124,10 @@
 	set name = "Remove Accessory"
 	set category = "Object"
 	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(!isliving(usr))
+		return
+	if(usr.stat)
+		return
 	if(!LAZYLEN(accessories))
 		return
 	var/obj/item/clothing/accessory/A
@@ -137,6 +139,9 @@
 		A = tgui_input_list(usr, "Select an accessory to remove from [src]", "Remove accessory", removables)
 	else
 		A = LAZYACCESS(accessories, 1)
+	if(!usr.Adjacent(src))
+		to_chat(usr, SPAN_WARNING("You're too far away!"))
+		return
 	src.remove_accessory(usr,A)
 	removables -= A
 	if(!removables.len)

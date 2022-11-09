@@ -52,7 +52,13 @@ explosion resistance exactly as much as their health
 
 //the start of the explosion
 /obj/effect/explosion/proc/initiate_explosion(turf/epicenter, power0, falloff0 = 20, var/datum/cause_data/new_explosion_cause_data)
-
+	if(!istype(new_explosion_cause_data))
+		if(new_explosion_cause_data)
+			stack_trace("initiate_explosion called with string cause ([new_explosion_cause_data]) instead of datum")
+			new_explosion_cause_data = create_cause_data(new_explosion_cause_data)
+		else
+			stack_trace("initiate_explosion called without cause_data.")
+			new_explosion_cause_data = create_cause_data("Explosion")
 	explosion_cause_data = new_explosion_cause_data
 
 	if(power0 <= 1) return
@@ -66,7 +72,7 @@ explosion resistance exactly as much as their health
 	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
-	playsound(epicenter, "explosion", 75, 1, max(round(power,1),7) )
+	playsound(epicenter, "explosion", 90, 1, max(round(power,1),7) )
 
 	explosion_in_progress = 1
 	explosion_turfs = list()
@@ -258,7 +264,7 @@ explosion resistance exactly as much as their health
 						else if(ishuman(firingMob) && ishuman(M) && M.faction == firingMob.faction && !thearea?.statistic_exempt) //One human blew up another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 							M.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
 							firingMob:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
-							var/ff_msg = "[firingMob] ([firingMob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP</a>) (<a href='?priv_msg=\ref[firingMob.client]'>PM</a>)"
+							var/ff_msg = "[firingMob] ([firingMob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP</a>) ([firingMob.client ? "<a href='?priv_msg=[firingMob.client.ckey]'>PM</a>" : "NO CLIENT"])"
 							var/ff_living = TRUE
 							if(M.stat == DEAD)
 								ff_living = FALSE

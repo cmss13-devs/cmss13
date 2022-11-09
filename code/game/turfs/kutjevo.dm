@@ -6,6 +6,7 @@
 /turf/open/floor/kutjevo //Instance based on icon_states
 	icon = 'icons/turf/floors/kutjevo/kutjevo_floor.dmi'
 	icon_state = "floor"
+	plating_type = /turf/open/floor/plating/kutjevo
 
 /turf/open/floor/kutjevo/tiles
 	icon_state = "floor2"

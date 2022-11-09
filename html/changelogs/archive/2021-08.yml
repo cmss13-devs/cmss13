@@ -1,0 +1,331 @@
+2021-08-01:
+  Geeves:
+  - tweak: The message displayed to marines when they spawn in will now have proper
+      spacing and punctuation.
+  TheFlyingFlail:
+  - tweak: Tweaked the way in which survivor gear presets are generated to a standardized
+      template.
+  - tweak: Tweaked lv-614 priest to use priest robes instead of holiday robes.
+  - bugfix: Fixed survivor gear duplication
+  - bugfix: Fixed engineer survivor not spawning with welder googles
+  - bugfix: Fixed survivors not spawning with winter gear on Shivas Snowball
+  - rscadd: Added new survivor types for the Shivas Snowball map
+  - rscadd: Added new spritework for the Shivas Snowball Survivors courtesy of Hulaabeo
+      | Jan Rota on the cm13 discord
+2021-08-02:
+  Mercadier:
+  - maptweak: Buffed the CL's office - now has a 20% bonus to fashion, wealth, and
+      embezzlement stats.
+  - maptweak: Cleaned up the kitchen and added an alcoholic beverages vendor. Please
+      drink responsibly.
+2021-08-06:
+  naut:
+  - rscadd: Fortune cookies now have fortunes in them.
+  - rscadd: Freshly-baked/spawned empty fortune cookies can have paper slipped inside
+      them to create your own fortunes.
+  - rscadd: Added fortunes.txt to the strings file containing the list of premade
+      fortunes available.
+  - tweak: Fortune cookie recipe was changed to use two dough slices and 5 sugar.
+      Previous recipe was 1 dough slice, 1 piece of paper, and 5 sugar.
+  - tweak: Fortune cookies can now be cracked open by using it (press Z or click on
+      it) with it in your hand.
+  - tweak: MREs now have a 1 in 3 chance of being packaged with a fortune cookie inside.
+  - imageadd: Resprited the fortune cookie, added a cracked-open variant, and added
+      a fortune paper slip.
+2021-08-07:
+  Jeser:
+  - tweak: Tweaked PMC Gunner loadout. Belt now has 4 M56D drums instead of 2 drums
+      and 2 VP78 magazines. Empty medium pouch is replaced with pistol magazine pouch
+      with VP78 magazines.
+  - rscadd: Added PMC Vehicle Crewman loadout.
+  - rscadd: Added Vehicle Crewman Trainee loadout for Vehicle Crewman training camp.
+  - bugfix: Fixed PMC gloves not visible on mob.
+  - bugfix: Fixed USCM Sniper Specialist loadout not getting M42A and made some tweaks.
+2021-08-08:
+  Vanagandr:
+  - bugfix: 'Humans with no skills are no longer immune to fractures. Examples: adminspawned
+      naked people, surgery practice dummy.'
+  - bugfix: Rejuvenate()/aheal now fixes larva infection.
+  - rscadd: Complete surgery system rework. This was originally TG surgery ported
+      and modified for CM by Foolosopher and updated by Optimyst. I then modified
+      it heavily to make it behave like the smooth and drape-free Baycode surgeries
+      we've grown accustomed to. Adding new surgeries and steps is easy.
+  - tweak: 'Specific surgery changes: LARVA SURGERY must be performed on a proper
+      surgical table. Use the PICT or else.  Removing the severed larva is fastest
+      with a haemostat, middling with bare hands, and improvised tools are slow but
+      don''t hurt. Attaching PROSTHETICS is a multiple-step process and the limb must
+      be calibrated (hand or haemostat twice) before it will work. The stump of a
+      BROKEN PROSTHETIC must be sawn away before a new one can be attached. AMPUTATION
+      is a multiple-step process and begins with a scalpel in an opened incision.
+      If you begin one by accident and it isn''t too late, you can stitch the muscles
+      back together. ORGAN REPAIR loops, treating one organ at a time. REATTACHING
+      SYNTH HEADS involves attaching the head, then fully reconnecting it. Make sure
+      you''re aiming for the head, not eye or mouth. If the head can talk, the job
+      isn''t done.'
+  - rscadd: People with surgical skills now have an ability toggle for surgery mode.
+      This also temporarily sets help intent safety on or off if you didn't already
+      have it, and means you'll attempt to perform surgeries when on on help or disarm
+      intent and clicking people with valid items or an empty hand. Also added a keybind
+      for switching it on the fly, though it's not set by default.
+  - tweak: Medics and POs now have basic surgery skills. Added surgical line to medic
+      essentials kit as wound tending is the only useful surgery they can do currently.
+  - tweak: Surgical trays no longer have incision management systems. Instead, they
+      have the PICT system.
+  - rscadd: 'Added new surgical tools: drapes, which do nothing in this revision but
+      may come in handy, the PICT system, which is a specialised scalpel used by larva
+      surgery, and surgical line, used for sewing flesh together. Surgical line can
+      substitute for fixovein, fixovein can substitute for surgical line, and cable
+      coil and headbands can be used (in extremis) in place of either. The specialised
+      tools are the best in their niche, though. At present, surgical line is only
+      in the medic field surgery kit.'
+  - rscadd: Added a new surgery for tending wounds, using the new surgical line tool
+      or its substitutes. This is a no- or shallow-incision surgery with one looping
+      step, healing 10 points of brute and burn damage on the target limb per iteration.
+      It can be performed on a patient who's standing up, or yourself.
+  - rscadd: Surgeries no longer require a surgery table or rollerbed to perform. Surgeries
+      that require the patient to be lying down have a time multiplier depending on
+      what surface you're using.
+  - rscadd: Some surgeries can be performed on a patient who's standing up. These
+      specific surgeries can also be performed on yourself. Standing surgeries don't
+      care about the surface they're performed on, and standing vs lying makes no
+      difference to their speed.
+  - tweak: 'Tweaked skill effects on surgery times: all else the same, a medic/nurse/PO
+      will be 20% slower than a doctor, and a synth 40% faster.'
+  - rscadd: Aside from pain, the success chance/rng failure system is gone. Improvised
+      tools now use time multipliers, causing the step to take longer.
+  - rscadd: Once you finish the first step in a surgery, you must finish the surgery
+      before you can attempt any others. If you don't complete the first step, the
+      surgery is cancelled. Failing the first step doesn't hurt the patient, unless
+      it happens because of pain or you did it deliberately.
+  - rscadd: You can deliberately fail a step by starting it on disarm intent, if you're
+      sure of what you're doing. This will automatically switch you back to help intent
+      afterwards.
+  - rscadd: Examining yourself or other people now tells you where any incisions or
+      surgeries are.
+  - rscadd: If surgery conditions aren't ideal, it will message the reasons why. Attempting
+      surgery with the wrong tool lists possible steps or surgeries.
+  - tweak: Updated the Autodoc to keep it functional, but didn't touch its step times.
+      This means that for most operations an autodoc is likely to take much longer
+      than an actual doctor. Do your job.
+  - rscadd: Ported typecache check from TG. This is much faster than istype(), especially
+      for comparing an atom to a black- or whitelist.
+  - bugfix: Admin-editing a human's species now properly deletes their old limbs,
+      instead of simply making a new limb list.
+  - tweak: Removed some duplicate checks from unarmed attack code.
+  - imageadd: New sprites for surgical pump, surgical line, and laser scalpels courtesy
+      of Triiodine. Tweaked sprites for surgical drills, circular saw, cautery to
+      animate them while doing surgery.
+2021-08-09:
+  forest2001:
+  - rscdel: Disables clan ships. This is a temporary patch to reduce server load and
+      not a long-term solution.
+2021-08-10:
+  Backsea:
+  - bugfix: Fragmentation mortar rounds generate shrapnel again.
+  Flpfs:
+  - tweak: Wey-Yu armor vest has been buffed and it's slowdown has been removed.
+  - tweak: UA-M1, the fiorina riot vest, has had it's slowdown lowered by one tier.
+  - tweak: Detective vest has had it's slowdown removed.
+  Geeves:
+  - tweak: The various HMGs' muzzle flash offsets have been adjusted to line up with
+      the end of the barrel.
+  - bugfix: Fixed a typo with getting rammed off an HMG by removing the offending
+      text.
+  - bugfix: The "You feel faint" messages that pop up when you suffer from blood loss
+      now has proper punctuation at the end.
+  Pigeon352:
+  - maptweak: Made dorms on Big Red more combat friendly
+  Segrain:
+  - bugfix: All floodlights on LV now properly respond to their switch.
+  - bugfix: Mortars can once again be offset in any direction.
+  - bugfix: Fixed an exploit with placement of hive structures.
+  - tweak: Hive core and pylons no longer prevent building next to them.
+  Stan_Albatross:
+  - tweak: Added storage slots to the external webbing as well as expanding its suit
+      storage to fit crew monitors and binoculars.
+  Vanagandr:
+  - bugfix: Fixed adminheal not removing bleeding/IB properly.
+  - bugfix: Fixed a bug where a bandaged wound could widen and start bleeding again,
+      but still count as bandaged and be un-treatable.
+  - tweak: Removes surgical drape spawns. At present they do nothing at all and simply
+      cause confusion.
+  - bugfix: Fixed not being able to dig shrapnel from other people when not on surgery
+      mode.
+  forest2001:
+  - tweak: Staff ERT log now flags Deathsquad as hostile.
+  - tweak: The last remaining xeno bioscan now only triggers for the Default Hive
+  - tweak: Examining the plasma caster now says what it's set to fire.
+  - tweak: Renamed LPC projectile to 'Low Power Stun Bolts'.
+  - tweak: '''Plasma Immobilizer'' no longer stuns Xenos longer than humans.'
+  - tweak: "\u2018Plasma Immobilizer\u2019 range reduced from 32 to 20"
+  - rscadd: Added 'High Power Stun Bolts', these stun Xenos for roughly 2 seconds
+      and stun Humans for 3. It is ineffective against Abominations.
+  - tweak: Plasma Caster stun shots now passthrough glass again.
+  - rscadd: Added Plasma Caster Lethal Mode. This allows for the caster to damage
+      mobs, including the return of the original HPC, 'Plasma Eradicator' (Range 8)
+      and a lethal version of the 'High Power Stun Bolt', 'Plasma Bolt'. It is toggled
+      with Unique-Action
+  - tweak: Plasma rifle projectiles now renamed to 'Plasma Rifle Bolt' and 'Plasma
+      Shatterer'.
+  - bugfix: '''Plasma Shatterer'' now explodes on impact with a mob again, detonating
+      an explosion roughly half the size of a ''Plasma Eradicator''.'
+  - rscdel: Removed plasma rifle inbuilt zoom. (This may be temporary)
+  - tweak: Using Hunter Ranged Weaponry now checks for the relevant trait, and not
+      species.
+2021-08-12:
+  ghostsheet:
+  - tweak: Flaregun has been buffed to be faster and have less wield delay, similiar
+      to a pistol.
+2021-08-16:
+  Segrain:
+  - bugfix: MARSOC ERT now spawns properly (still admincalls only).
+  Vanagandr:
+  - tweak: Removed a missed heal in bone-repair surgery code.
+2021-08-17:
+  TheFlyingFlail:
+  - rscadd: Added gear and weapons vendor for SEA
+  - rscadd: Added gear vendor For MPs, Warden, and CMP
+  - rscadd: Added proper lethal injections in brig execution room storage
+  - rscadd: Added privacy shutters to the front of the brig and cells to ward off
+      pesky loiters
+  - rscadd: Added L42A and M39 to the brig armory
+  - rscadd: Added brig cryo room since It lacked one
+  - rscadd: Added dress uniform changing room near brig (mainly to fill the void)
+  - tweak: Gave MPs access to all channels to better monitor the ship
+  - tweak: Tweaked brig layout to be more functional at the request of Nanu
+  - bugfix: Fixed null error involving gloves
+2021-08-19:
+  monkeysfist:
+  - tweak: M41A Mk1 UGL now holds 5 grenades.
+  - tweak: M41A Mk2 UGL now holds 3 grenades.
+  - tweak: Buffed fire rate of M41A Mk1.
+  - tweak: Nerfed fire rate of M41A Mk1 UGL.
+  - tweak: Nerfed damage of M41A Mk1.
+2021-08-22:
+  Foolosopher:
+  - rscadd: Added a second ear to all humans
+  - rscadd: Added a trait that makes an item unequippable to the ear slot if there's
+      already an item with said trait in one of the ear slots
+  - tweak: Added the above trait to headsets
+2021-08-23:
+  Jeser:
+  - experiment: General vehicle changes.
+  - rscadd: Added vehicle interior cameras.
+  - rscadd: Added unique behaviour for fences being bumped by vehicles.
+  - tweak: Updated Vehicle Controls Guide.
+  - tweak: Vehicle doors cannot fit barricades and vendors anymore.
+  - tweak: Armored vehicles passenger seats now can be stacked up to 2 on the tile.
+      If there are 2 seats on same tile, they will become dense only if both seats
+      taken.
+  - imageadd: Made armored vehicles passenger seats slightly slimmer to fit on same
+      tile better.
+  - imageadd: Modified armored vehicles crewmen seats.
+  - rscadd: 'Added new special M56 Firing Port Weapon hardpoint which cannot be destroyed
+      or removed. 2 of these come inbuilt into transport APC. '
+  - imageadd: Added M56 FPW prop sprites.
+  - tweak: Increased time for xenomorphs to enter vehicles to 3 seconds. In exchange,
+      this speed is constant for any additional circumstances that slow down humans.
+      Xenomorphs still can enter vehicles with doors locked.
+  - maptweak: Transport, CMD APCs and tank interiors have Vehicle Nanomeds and extinguisher
+      lockers now.
+  - spellcheck: All APC types got their descriptions re-written to give more information
+      about their unique features.
+  - experiment: APC transport type changes.
+  - tweak: Transport APC passenger capacity was increased from 12 to 15. Added 1 Synthetic
+      unit reserved role slot.
+  - rscadd: Transport APC now has 3 tiles wide rear hatch in the back.
+  - rscadd: Transport APC now has an inbuilt M56 Firing Port Weapons on left and right
+      side of the vehicle. They are operated from Support Gunner seats located near
+      side doors. M56 FPWs have IFF support, 45 rounds magazine, 3-rounds burst, 120
+      degrees arc of fire and automatic ammo reload that takes 90 seconds to complete.
+      They cannot be operated when vehicle's hull integrity is below 50%. FPWs are
+      used to provide a covering fire for infantry deploying or entering APC. Any
+      marine can use FPWs, however, due to poor visibility through the viewport, person
+      manning an FPW has only 6 tiles radius view range. Requires an empty active
+      hand. Support gunners have access to Vehicle Status Info, Vehicle Controls Guide
+      and Reload Firing Port Weapon verbs in the Vehicle verbs tab.
+  - maptweak: Reworked rear part of transport APC interior, incorporating newest changes,
+      which include 2 new support gunner seats near doors, additional passenger seats
+      and rear hatch.
+  - imageadd: Transport APC sprites now include Firing Port Weapons barrels on the
+      sides.
+  - experiment: APC MED type changes.
+  - tweak: Synths are now included in MED APC's support personnel reserved slot roles.
+      They also can access wall-mounted surgery kit storage now.
+  - rscadd: MED APC has an additional 4 slots for revivable corpses now. This means,
+      that even at full capacity (1 support role, 2 VCs, 4 passengers) you can push
+      on help intent up to 4 revivable corpses into MED APC for triage. As soon as
+      human gets defibbed or goes perma, he is added to passengers slots. As soon
+      as passenger slots reach 8 (combined amount of passenger and revivable dead
+      slots), you cannot utilize this feature until amount of passengers goes below
+      8.
+  - tweak: MED APC vendors cannot be unwrenched or destroyed and they do not have
+      access restrictions anymore now.
+  - maptweak: A lot of adjustments to APC MED interior.
+  - experiment: APC CMD type changes.
+  - tweak: Added 1 Synthetic unit reserved role slot.
+  - rscadd: CMD APC now has an inbuilt techpod vendor on the back of the exterior,
+      which can be accessed from the middle tile behind APC. Works for as long as
+      vehicle's hull integrity is above 50%.
+  - imageadd: CMD APC now has noticeable comms and sensor equipment on it's roof,
+      allowing easier identification. Also includes techpod vendor machinery at the
+      rear.
+  - maptweak: A lot of adjustments to APC CMD interior.
+  - experiment: Tank changes.
+  - rscadd: Tank has 2 revivable dead slots now to allow one attempt in recovering
+      revivable VCs inside of the tank.
+  - imageadd: Added sprites for tank version of vehicle locker.
+2021-08-27:
+  CaptainCamo:
+  - maptweak: Adds handheld medical scanners to every ERT shuttle and 2 to ERT station.
+  - maptweak: Changes the medical rigs in UPP and unmarked ERT shuttle to better represent
+      the shuttle's owner.
+  - maptweak: Changes the toolbox and multitool in ERT shuttles to a single toolbox
+      with the items of both.
+  - maptweak: Replaces the Souto-vendor in the ERT station to an Recreation vendor.
+  NeroCavalier:
+  - rscadd: Adds grenade belt, autoinjector pouch, shotgun shell pouch to Req.
+  - rscadd: Adds shotgun shell pouch to squad prep vendors.
+  lcarapaica:
+  - tweak: Adds medbay comms to the RO (disabled roundstart) and req comms to the
+      CMP (enabled roundstart)
+  - bugfix: Fixes the order of the CMP headset keys to match command / synth ones
+      (engineering before medbay)
+2021-08-30:
+  Nanu:
+  - experiment: Techwebs have been disabled for the foreseeable future until it can
+      return in a more finished and balanced state.
+  - experiment: The USS Almayer spawns with 2 additional OB's now, with a total of
+      4.
+  Segrain:
+  - bugfix: Space heaters no longer become invisible when turned on.
+  forest2001:
+  - tweak: Changed forced decloak timer on predator cloak to 10 seconds.
+2021-08-31:
+  AGasCanister:
+  - rscadd: Jackets now provide protection against the cold (Useful in Shivas Snowball)
+  Geeves:
+  - tweak: Optimized human life processing a little bit, everything should still work
+      as expected.
+  Nivrak:
+  - bugfix: You can no longer vend APC parts twice.
+  - bugfix: Dead xenos no longer get shielded by shield pillar.
+  - bugfix: Burrower can no longer be flamed when burrowed nor do they take damage
+      from being burrowed under fire while burrowed.
+  Segrain:
+  - bugfix: Contestants in Hunter Games no longer spawn missing all their bodyparts.
+  - bugfix: Predators' scythe no longer cuts off connection to hivemind forever.
+  - bugfix: OTs now spawn properly on extended gamemode.
+  - bugfix: Training grenades can once again be used on the ship.
+  - bugfix: Blastwave dampener once again can be toggled.
+  - bugfix: Doctor survivors now properly get their tool pouch.
+  - bugfix: Gear vendors once again actually give products for your points.
+  - bugfix: APC parts are once again properly vended.
+  alardun:
+  - tweak: Significantly increased amount of repair done via nailgun.
+  - bugfix: Nailgun on-hit bonus now applies to larger xenos once again. This bonus
+      (and the one below) only applies if the nail hit a mob while they're in front
+      of an obstacle.
+  - tweak: Nailgun on-hit superslowdown is drastically cut down on larger xenos.
+  - tweak: Yautja and other mobs with the SUPER_STRONG trait are now treated as larger
+      Xenomorph for nailgun-related resistance.

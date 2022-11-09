@@ -1,3 +1,7 @@
+#define BLOCK_NOTHING 				0
+#define BLOCK_SPECIAL_STRUCTURES	1
+#define BLOCK_ALL_STRUCTURES		2
+
 /obj/effect/alien/weeds
 	name = "weeds"
 	desc = "Weird black weeds..."
@@ -7,6 +11,7 @@
 	anchored = TRUE
 	density = FALSE
 	layer = WEED_LAYER
+	plane = FLOOR_PLANE
 	unacidable = TRUE
 	health = WEED_HEALTH_STANDARD
 	var/weed_strength = WEED_LEVEL_STANDARD
@@ -14,6 +19,10 @@
 	var/secreting = FALSE
 
 	var/hibernate = FALSE
+
+	var/fruit_growth_multiplier = 1
+	var/spread_on_semiweedable = FALSE
+	var/block_structures = BLOCK_NOTHING
 
 	var/datum/hive_status/linked_hive = null
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -33,10 +42,25 @@
 			health = WEED_HEALTH_HIVE
 		node.add_child(src)
 		hivenumber = linked_hive.hivenumber
+		spread_on_semiweedable = node.spread_on_semiweedable
+		if(weed_strength < WEED_LEVEL_HIVE && spread_on_semiweedable)
+			name = "hardy [name]"
+			health = WEED_HEALTH_HARDY
+		block_structures = node.block_structures
+		fruit_growth_multiplier = node.fruit_growth_multiplier
 	else
 		linked_hive = GLOB.hive_datum[hivenumber]
 
 	set_hive_data(src, hivenumber)
+	if(spread_on_semiweedable)
+		if(color)
+			var/list/RGB = ReadRGB(color)
+			RGB[1] = Clamp(RGB[1] + 35, 0, 255)
+			RGB[2] = Clamp(RGB[2] + 35, 0, 255)
+			RGB[3] = Clamp(RGB[3] + 35, 0, 255)
+			color = rgb(RGB[1], RGB[2], RGB[3])
+		else
+			color = "#a1a1a1"
 
 	update_icon()
 	update_neighbours()
@@ -120,11 +144,13 @@
 	. = ..()
 	update_neighbours(oldloc)
 
-/obj/effect/alien/weeds/examine(mob/user)
-	..()
+/obj/effect/alien/weeds/get_examine_text(mob/user)
+	. = ..()
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/open))
-		T.ceiling_desc(user)
+		var/ceiling_info = T.ceiling_desc(user)
+		if(ceiling_info)
+			. += ceiling_info
 
 
 /obj/effect/alien/weeds/Crossed(atom/movable/AM)
@@ -164,7 +190,12 @@
 	var/list/weeds = list()
 	for(var/dirn in cardinal)
 		var/turf/T = get_step(src, dirn)
-		if(!istype(T) || !T.is_weedable())
+		if(!istype(T))
+			continue
+		var/is_weedable = T.is_weedable()
+		if(!is_weedable)
+			continue
+		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 			continue
 
 		var/obj/effect/alien/weeds/W = locate() in T
@@ -199,10 +230,18 @@
 	for(var/obj/structure/platform/P in src.loc)
 		if(P.dir == reverse_direction(direction))
 			return FALSE
+	for(var/obj/structure/barricade/from_blocking_cade in loc) //cades on tile we're coming from
+		if(from_blocking_cade.density && from_blocking_cade.dir == direction && from_blocking_cade.health >= (from_blocking_cade.maxhealth / 4))
+			return FALSE
 
 	for(var/obj/O in T)
 		if(istype(O, /obj/structure/platform))
 			if(O.dir == direction)
+				return FALSE
+
+		if(istype(O, /obj/structure/barricade)) //cades on tile we're trying to expand to
+			var/obj/structure/barricade/to_blocking_cade = O
+			if(to_blocking_cade.density && to_blocking_cade.dir == reverse_dir[direction] && to_blocking_cade.health >= (to_blocking_cade.maxhealth / 4))
 				return FALSE
 
 		if(istype(O, /obj/structure/window/framed))
@@ -213,7 +252,6 @@
 			return FALSE
 		else if(istype(O, /obj/structure/machinery/door) && O.density && (!(O.flags_atom & ON_BORDER) || O.dir != direction))
 			return FALSE
-
 	return TRUE
 
 /obj/effect/alien/weeds/proc/update_neighbours(turf/U)
@@ -341,6 +379,7 @@
 
 /obj/effect/alien/weeds/weedwall
 	layer = RESIN_STRUCTURE_LAYER
+	plane = GAME_PLANE
 	icon_state = "weedwall"
 	var/list/wall_connections = list("0", "0", "0", "0")
 	hibernate = TRUE
@@ -380,6 +419,7 @@
 	health = NODE_HEALTH_GROWING
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
+	plane = FLOOR_PLANE
 	var/static/staticnode
 	var/overlay_node = TRUE
 
@@ -525,5 +565,24 @@
 /obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
 	var/obj/effect/alien/resin/special/cluster/parent_cluster = resin_parent
 	parent_cluster.damaged = TRUE
+
+/obj/effect/resin_construct
+	mouse_opacity = 0
+	icon = 'icons/mob/hostiles/Effects.dmi'
+
+/obj/effect/resin_construct/door
+	icon_state = "DoorConstruct"
+
+/obj/effect/resin_construct/thick
+	icon_state = "ThickConstruct"
+
+/obj/effect/resin_construct/weak
+	icon_state = "WeakConstruct"
+
+/obj/effect/resin_construct/transparent/thick
+	icon_state = "ThickTransparentConstruct"
+
+/obj/effect/resin_construct/transparent/weak
+	icon_state = "WeakTransparentConstruct"
 
 #undef WEED_BASE_GROW_SPEED

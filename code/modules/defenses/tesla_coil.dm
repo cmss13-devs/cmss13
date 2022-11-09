@@ -6,7 +6,7 @@
 /obj/structure/machinery/defenses/tesla_coil
 	name = "\improper 21S tesla coil"
 	icon = 'icons/obj/structures/machinery/defenses/tesla.dmi'
-	desc = "A perfected way of producing high-voltage, low-current and high frquency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock."
+	desc = "A perfected way of producing high-voltage, low-current and high-frequency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock."
 	var/list/targets
 	var/last_fired = 0
 	var/tesla_range = TESLA_COIL_RANGE
@@ -63,6 +63,9 @@
 	for(var/mob/living/M in oview(tesla_range, src))
 		if(M.stat == DEAD || isrobot(M))
 			continue
+		if(HAS_TRAIT(M, TRAIT_CHARGING))
+			to_chat(M, SPAN_WARNING("You ignore some weird noises as you charge."))
+			continue
 
 		if(M.get_target_lock(faction_group))
 			continue
@@ -99,7 +102,7 @@
 		S.start()
 		qdel(S)
 
-		Beam(A, "electric", 'icons/effects/beam.dmi', 5, 5)
+		beam(A, "electric", 'icons/effects/beam.dmi', 5, 5)
 		track_shot()
 
 	targets = null
@@ -124,6 +127,10 @@
 			if(S.opacity)
 				blocked = TRUE
 				break
+			if(S.layer >= DOOR_CLOSED_LAYER || istype(S, /obj/structure/window))
+				if(S.density)
+					blocked = TRUE
+					break
 
 		for(var/obj/effect/particle_effect/smoke/S in T)
 			blocked = TRUE
@@ -145,7 +152,7 @@
 #define TESLA_COIL_STUN_EFFECT 1
 /obj/structure/machinery/defenses/tesla_coil/stun
 	name = "21S overclocked tesla coil"
-	desc = "A perfected way of producing high-voltage, low-current and high frquency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock. This one is significantly overclocked, providing a lot more voltage at the cost of speed."
+	desc = "A perfected way of producing high-voltage, low-current and high-frequency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock. This one is significantly overclocked, providing a lot more voltage at the cost of speed."
 	fire_delay = TESLA_COIL_STUN_FIRE_DELAY
 	handheld_type = /obj/item/defenses/handheld/tesla_coil/stun
 	defense_type = "Stun"
@@ -162,7 +169,7 @@
 #define TESLA_COIL_MICRO_FIRE_DELAY 10
 /obj/structure/machinery/defenses/tesla_coil/micro
 	name = "\improper 25S micro tesla coil"
-	desc = "A perfected way of producing high-voltage, low-current and high frquency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock. This one is smaller and more lightweight."
+	desc = "A perfected way of producing high-voltage, low-current and high-frequency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock. This one is smaller and more lightweight."
 	handheld_type = /obj/item/defenses/handheld/tesla_coil/micro
 	disassemble_time = 0.5 SECONDS
 	density = FALSE

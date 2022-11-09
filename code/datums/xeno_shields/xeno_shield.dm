@@ -88,3 +88,7 @@
 	overlay_shields()
 	return new_shield
 
+
+/mob/living/carbon/Xenomorph/proc/remove_xeno_shield()
+	for (var/datum/xeno_shield/curr_shield as anything in xeno_shields)
+		qdel(curr_shield)

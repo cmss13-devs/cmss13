@@ -102,4 +102,44 @@
 
 	return scrambled_text
 
+/datum/language/generated/scramble(input)
+	// If the input is cached already, move it to the end of the cache and return it
+	var/lookup = check_cache(input)
+	if(lookup)
+		return lookup
+
+	var/input_size = length_char(input)
+	var/scrambled_text = ""
+	var/capitalize = TRUE
+
+	while(length_char(scrambled_text) < input_size)
+		var/next
+		switch(name)
+			if(LANGUAGE_JAPANESE)
+				next = randomly_generate_japanese_word()
+			if(LANGUAGE_CHINESE)
+				next = randomly_generate_chinese_word()
+		if(capitalize)
+			next = capitalize(next)
+			capitalize = FALSE
+		scrambled_text += next
+		var/chance = rand(100)
+		if(chance <= sentence_chance)
+			scrambled_text += ". "
+			capitalize = TRUE
+		else if(chance > sentence_chance && chance <= space_chance)
+			scrambled_text += " "
+
+	scrambled_text = trim(scrambled_text)
+	var/ending = copytext_char(scrambled_text, -1)
+	if(ending == ".")
+		scrambled_text = copytext_char(scrambled_text, 1, -2)
+	var/input_ending = copytext_char(input, -1)
+	if(input_ending in list("!","?","."))
+		scrambled_text += input_ending
+
+	add_to_cache(input, scrambled_text)
+
+	return scrambled_text
+
 #undef SCRAMBLE_CACHE_LEN

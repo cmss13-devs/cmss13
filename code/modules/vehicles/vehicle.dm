@@ -62,7 +62,10 @@
 
 	else if(istype(W, /obj/item/cell) && !cell && open)
 		insert_cell(W, user)
-	else if(istype(W, /obj/item/tool/weldingtool))
+	else if(iswelder(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
 			if(health < maxhealth)
@@ -261,7 +264,6 @@
 	. = ..()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "soutomobile_overlay", layer = ABOVE_MOB_LAYER) //over mobs
 	overlays += I
-	verbs -= /atom/movable/verb/pull
 
 /obj/vehicle/souto/manual_unbuckle(mob/user)
 	if(buckled_mob && buckled_mob != user)
@@ -283,12 +285,12 @@
 	indestructible = TRUE
 
 /obj/vehicle/souto/super/explode()
-	for(var/mob/M in viewers(7, src))
+	for(var/mob/M as anything in viewers(7, src))
 		M.show_message("Somehow, [src] still looks as bright and shiny as a new can of Souto Classic.")
 	health = initial(health) //Souto Man never dies, and neither does his bike.
 
 /obj/vehicle/souto/super/buckle_mob(mob/M, mob/user)
-	if(!locked) //Vehicle is unlocked until first being mounted, since the Soutomobile is faction-locked and otherwise Souto Man cannot automatically buckle in on spawn as his equipment is spawned before his ID.	
+	if(!locked) //Vehicle is unlocked until first being mounted, since the Soutomobile is faction-locked and otherwise Souto Man cannot automatically buckle in on spawn as his equipment is spawned before his ID.
 		locked = TRUE
 	else if(M == user && M.faction != FACTION_SOUTO && locked == TRUE) //Are you a cool enough dude to drive this bike? Nah, nobody's THAT cool.
 		to_chat(user, SPAN_WARNING("Somehow, as you take hold of the handlebars, [src] manages to glare at you. You back off. We didn't sign up for haunted motorbikes, man."))

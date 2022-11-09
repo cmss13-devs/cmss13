@@ -13,9 +13,9 @@
 	var/playsleepseconds = 0.0
 	var/list/storedinfo = list()
 	var/list/timestamp = list()
-	var/list/known_languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH)
+	var/list/known_languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
 	var/canprint = 1
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|USES_HEARING
 	throwforce = 2
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20

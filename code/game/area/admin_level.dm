@@ -1,6 +1,9 @@
 // Bunker01
 // Areas
 
+/area/adminlevel
+	ceiling = CEILING_METAL
+
 /area/adminlevel/bunker01
 	icon_state = "thunder"
 	requires_power = FALSE
@@ -109,6 +112,11 @@
 	icon_state = "green"
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
+
+/area/adminlevel/ert_station/shuttle_dispatch
+	name = "Shuttle Dispatch Station"
+	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
+	icon_state = "yellow"
 
 //Simulation area
 /area/adminlevel/simulation

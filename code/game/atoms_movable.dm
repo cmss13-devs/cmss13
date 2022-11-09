@@ -16,6 +16,8 @@
 
 	var/move_intentionally = FALSE // this is for some deep stuff optimization. This means that it is regular movement that can only be NSWE and you don't need to perform checks on diagonals. ALWAYS reset it back to FALSE when done
 
+	var/datum/component/orbiter/orbiting
+
 //===========================================================================
 /atom/movable/Destroy()
 	for(var/atom/movable/I in contents)
@@ -26,6 +28,9 @@
 
 	if(loc)
 		loc.on_stored_atom_del(src) //things that container need to do when a movable atom inside it is deleted
+	if(orbiting)
+		orbiting.end_orbit(src)
+		orbiting = null
 	vis_contents.Cut()
 	. = ..()
 	moveToNullspace() //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
@@ -138,6 +143,16 @@
 		setDir(turn(dir, spin_degree))
 
 
+/**
+ * meant for movement with zero side effects. only use for objects that are supposed to move "invisibly" (like camera mobs or ghosts)
+ * if you want something to move onto a tile with a beartrap or recycler or tripmine or mouse without that object knowing about it at all, use this
+ * most of the time you want forceMove()
+ */
+/atom/movable/proc/abstract_move(atom/new_loc)
+	var/atom/old_loc = loc
+	loc = new_loc
+	Moved(old_loc)
+
 //called when a mob tries to breathe while inside us.
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)
 	. = return_air()
@@ -168,8 +183,8 @@
 /atom/movable/clone/attackby(obj/item/I, mob/living/user)
 	return src.mstr.attackby(I, user)
 
-/atom/movable/clone/examine(mob/user)
-	return src.mstr.examine(user)
+/atom/movable/clone/get_examine_text(mob/user)
+	return src.mstr.get_examine_text(user)
 
 /atom/movable/clone/bullet_act(obj/item/projectile/P)
 	return src.mstr.bullet_act(P)

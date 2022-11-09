@@ -21,11 +21,11 @@
 	if(!l_hand)
 		if(W.loc == src && !(W.flags_item & DELONDROP))
 			W.dropped(src)
-
+		W.pickup(src)
 		W.forceMove(src)
 		l_hand = W
 		W.layer = ABOVE_HUD_LAYER
-		W.pickup(src)
+		W.plane = ABOVE_HUD_PLANE
 		W.equipped(src,WEAR_L_HAND)
 		update_inv_l_hand()
 		return TRUE
@@ -40,11 +40,11 @@
 	if(!r_hand)
 		if(W.loc == src && !(W.flags_item & DELONDROP))
 			W.dropped(src)
-
+		W.pickup(src)
 		W.forceMove(src)
 		r_hand = W
 		W.layer = ABOVE_HUD_LAYER
-		W.pickup(src)
+		W.plane = ABOVE_HUD_PLANE
 		W.equipped(src,WEAR_R_HAND)
 		update_inv_r_hand()
 		return TRUE
@@ -140,6 +140,7 @@
 	if (client)
 		client.screen -= I
 	I.layer = initial(I.layer)
+	I.plane = initial(I.plane)
 	if(newloc)
 		if(!nomoveupdate)
 			I.forceMove(newloc)
@@ -222,7 +223,7 @@
 				src.belt = W
 				equipped = 1
 		if(WEAR_ID)
-			if(!src.wear_id /* && src.w_uniform */)
+			if(!src.wear_id)
 				src.wear_id = W
 				equipped = 1
 		if(WEAR_L_EAR)
@@ -335,6 +336,7 @@
 	if(equipped)
 		recalculate_move_delay = TRUE
 		W.layer = ABOVE_HUD_LAYER
+		W.plane = ABOVE_HUD_PLANE
 		if(src.back && W.loc != src.back)
 			W.forceMove(src)
 	else

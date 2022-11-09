@@ -27,3 +27,7 @@
 //Size checks for carbon to use instead of typechecks. (Hellhounds are deprecated)
 #define isCarbonSizeXeno(A) (A.mob_size >= MOB_SIZE_XENO_SMALL)
 #define isCarbonSizeHuman(A) (A.mob_size <= MOB_SIZE_HUMAN)
+
+//job/role helpers
+#define ismarinejob(J) (istype(J, /datum/job/marine))
+#define issurvivorjob(J) (J == JOB_SURVIVOR)

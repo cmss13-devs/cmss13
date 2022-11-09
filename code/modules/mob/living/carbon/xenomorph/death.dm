@@ -74,7 +74,7 @@
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
 		if(hive && hive.living_xeno_queen)
-			xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", 3, hivenumber)
+			xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
 
 	if(hive && IS_XENO_LEADER(src))	//Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
@@ -83,13 +83,16 @@
 
 	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
 
+	if(behavior_delegate)
+		behavior_delegate.handle_death(src)
+
 	for(var/atom/movable/A in stomach_contents)
 		stomach_contents.Remove(A)
 		A.acid_damage = 0 //Reset the acid damage
 		A.forceMove(loc)
 
 	// Banished xeno provide a pooled larva on death to compensate
-	if(banished)
+	if(banished && refunds_larva_if_banished)
 		GLOB.hive_datum[hivenumber].stored_larva++
 		GLOB.hive_datum[hivenumber].hive_ui.update_pooled_larva()
 
@@ -105,13 +108,10 @@
 			// Tell the xeno she is the last one.
 			if(X.client)
 				to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
+			announce_dchat("There is only one Xenomorph left: [X.name].", X)
 
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)
-
-	for(var/i in built_structures)
-		var/list/L = built_structures[i]
-		QDEL_NULL_LIST(L)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 
@@ -160,3 +160,7 @@
 
 /mob/living/carbon/Xenomorph/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-a")
+
+/mob/living/carbon/Xenomorph/revive()
+	SEND_SIGNAL(src, COMSIG_XENO_REVIVED)
+	..()

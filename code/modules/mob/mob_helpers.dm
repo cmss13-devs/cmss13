@@ -18,7 +18,11 @@
 /mob/proc/get_gender()
 	return gender
 
-
+/proc/is_blind(A)
+	if(isliving(A))
+		var/mob/living/M = A
+		return M.eye_blind
+	return FALSE
 
 
 /*
@@ -304,10 +308,10 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	set name = "a-select-zone"
 	set hidden = 1
 
-	var/obj/screen/zone_sel/zone
+	var/atom/movable/screen/zone_sel/zone
 
 	for(var/A in usr.client.screen)
-		if(istype(A, /obj/screen/zone_sel))
+		if(istype(A, /atom/movable/screen/zone_sel))
 			zone = A
 
 	if(!zone)
@@ -415,14 +419,91 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 				return 1
 			else if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
 				return 1.2 //Medic/nurse.
+
+		if(SKILL_INTEL)
+			if(skillcheck(src, SKILL_INTEL, SKILL_INTEL_EXPERT))
+				return DURATION_MULTIPLIER_TIER_2
+			if(skillcheck(src, SKILL_INTEL, SKILL_INTEL_TRAINED))
+				return DURATION_MULTIPLIER_TIER_1
 		//if(SKILL_RESEARCH)
 		//if(SKILL_PILOT)
 		//if(SKILL_POLICE)
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
+		if(SKILL_DOMESTIC)
+			if(skillcheck(src, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
+				return 0.5
+			if(skillcheck(src, SKILL_DOMESTIC, SKILL_DOMESTIC_TRAINED))
+				return 1
+			else
+				return 2
 
 /mob/proc/check_view_change(var/new_size, var/atom/source)
 	return new_size
 
 /mob/proc/can_be_pulled_by(var/mob/M)
 	return TRUE
+
+/mob/proc/can_see_reagents()
+	return stat == DEAD || isSynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
+
+/**
+ * Examine a mob
+ *
+ * mob verbs are faster than object verbs. See
+ * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
+ * for why this isn't atom/verb/examine()
+ */
+/mob/verb/examinate(atom/examinify as mob|obj|turf in view())
+	set name = "Examine"
+	set category = "IC"
+
+	examinify.examine(src)
+
+/mob/verb/pickup_item(obj/item/pickupify in oview(1, usr))
+	set name = "Pick Up"
+	set category = "Object"
+
+	if(!canmove || stat || is_mob_restrained() || !Adjacent(pickupify))
+		return
+
+	if(world.time <= next_move)
+		return
+
+	if(!hand && r_hand)
+		to_chat(usr, SPAN_DANGER("Your right hand is full."))
+		return
+	if(hand && l_hand)
+		to_chat(usr, SPAN_DANGER("Your left hand is full."))
+		return
+
+	if(pickupify.anchored)
+		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
+		return
+	if(!isturf(pickupify.loc))
+		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
+		return
+
+	next_move += 6 // stop insane pickup speed
+	UnarmedAttack(pickupify)
+
+/mob/verb/pull_item(atom/movable/pullify in view(1, usr))
+	set name = "Pull"
+	set category = "Object"
+
+	if(Adjacent(pullify))
+		start_pulling(pullify)
+
+/mob/proc/handle_blood_splatter(var/splatter_dir)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
+
+/proc/get_mobs_in_z_level_range(var/turf/starting_turf, var/range)
+	var/list/mobs_in_range = list()
+	var/z_level = starting_turf.z
+	for(var/mob/mob as anything in GLOB.mob_list)
+		if(mob.z != z_level)
+			continue
+		if(range && get_dist(starting_turf, mob) > range)
+			continue
+		mobs_in_range += mob
+	return mobs_in_range

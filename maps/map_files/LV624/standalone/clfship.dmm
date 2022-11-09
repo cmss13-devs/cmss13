@@ -89,6 +89,10 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_7_1"
 	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 1;
+	faction_group = list("CLF")
+	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ca" = (
@@ -294,7 +298,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "iF" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
@@ -362,6 +366,7 @@
 /area/lv624/lazarus/crashed_ship)
 "jR" = (
 /obj/item/stack/rods,
+/obj/effect/landmark/corpsespawner/clf,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "jS" = (
@@ -550,6 +555,14 @@
 	tag = "icon-green (NORTHWEST)"
 	},
 /area/lv624/lazarus/crashed_ship)
+"oI" = (
+/obj/item/stack/rods,
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
 "oO" = (
 /obj/structure/barricade/plasteel/wired{
 	icon_state = "plasteel_3"
@@ -659,7 +672,7 @@
 "sO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "sT" = (
@@ -819,6 +832,10 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_9_1"
 	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -832,7 +849,7 @@
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "xs" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
 "xu" = (
@@ -940,7 +957,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Aa" = (
-/obj/vehicle/multitile/van/fixed{
+/obj/effect/vehicle_spawner/van/fixed{
 	color = "#4a9eed";
 	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides. This one seems to be used by the CLF";
 	name = "CLF Van"
@@ -1433,7 +1450,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "LV" = (
-/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "Mm" = (
@@ -1549,7 +1566,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "Oc" = (
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer{
 	dir = 8;
@@ -1581,6 +1598,10 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "cartridge_2_1"
 	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -1600,6 +1621,12 @@
 /obj/structure/machinery/floodlight,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
+"Pu" = (
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
 "Px" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -2681,7 +2708,7 @@ lr
 lr
 lr
 dN
-Qf
+Pu
 JC
 GQ
 hw
@@ -2916,7 +2943,7 @@ NI
 jr
 vO
 dN
-Xx
+oI
 rX
 mS
 oO
@@ -3105,7 +3132,7 @@ jr
 zb
 dN
 ok
-Qf
+Pu
 qU
 Bc
 yK
@@ -3155,7 +3182,7 @@ Qf
 Ya
 Bc
 BY
-Qf
+Pu
 lC
 Dm
 VX

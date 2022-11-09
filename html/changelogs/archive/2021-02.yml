@@ -1,0 +1,320 @@
+2021-02-01:
+  Firartix:
+  - bugfix: UPP racks now have the correct kind of Automag magazines
+  - tweak: add missing qdel hints to various objects
+  Segrain:
+  - bugfix: The rate of spawning free larvas on hijack now actually slowly grows from
+      1 per 90 seconds to 1 per 30 seconds at intended rate of acceleration.
+  TheDonkified:
+  - bugfix: Fixes deleting default highlight settings causing a runtime.
+  - tweak: Default highlight settings no longer delete, instead they clear. Default
+      highlight settings should take up the first highlight setting slot for tgchat.
+  - bugfix: Fixed a very niche bug that causes your stat panel to crash. Note that
+      for some people, modifying stat panel settings will not persist across rounds.
+      You will have to modify the font sizes (and any future settings) every round.
+  Vanagandr:
+  - bugfix: Outdated DEBUG_HIT_CHANCE notifications now work. No effect on gameplay
+      but very handy for testing.
+  forest2001:
+  - bugfix: CO has their mateba back
+  - bugfix: Provost Inspector and USCM Admiral have their headsets updated correctly
+2021-02-02:
+  Carlarc:
+  - bugfix: M43 no longer has weird unwielded sprites, and now has good wielded sprites.
+  - bugfix: PMC FP9K no longer has an unused item_state.
+  Firartix:
+  - bugfix: fix some incorrect inherits in callbacks - this has side-effects
+  TheDonkified:
+  - bugfix: Changing fontsize will properly update your stat panel window.
+  - bugfix: The options button in the stat panel will now stay in position when scrolling.
+  TotalEpicness:
+  - bugfix: Adds a wee bit of tolerance to OT chems. This will assure that when some
+      floating point fuckery happens, the OT lab won't explode.
+2021-02-03:
+  Segrain:
+  - tweak: Smartgun's armourpiercing bullets now have a distinct name.
+  - bugfix: Reloading a smartgun no longer resets it out of armourpiercing mode.
+  - tweak: Calculations for smartgun's recoil brought in line with intended values.
+2021-02-04:
+  Firartix:
+  - tweak: updated rust-g
+  - bugfix: removed override for rust-g library name, allowing it to be autodetected
+      on non-windows systems
+  Segrain:
+  - bugfix: Firing M56D now makes bullets come out of the machinegun and not out of
+      the user.
+  - bugfix: Deaths by projectile are once again properly attributed to original gun.
+  - bugfix: CTs receive their own welcoming message upon joining the round and not
+      that of OTs.
+  Waltermeldron:
+  - bugfix: Fixed the sound when playing VOX sound files to yourself.
+2021-02-06:
+  Segrain:
+  - bugfix: Promoted SLs now properly receive extended comms access even in case of
+      headset being already full of keys.
+  - bugfix: Acting SL's radio key no longer can be duplicated by removal.
+  - rscadd: Headsets of all squad roles once again have access to general Almayer
+      comms.
+  - bugfix: Demoted SLs (acting or otherwise) no longer keep bolded abovehead chat.
+  TheDonkified:
+  - bugfix: Fixes runtime with bloody feet element.
+  Vanagandr:
+  - bugfix: Toggling an M10 technician helmet no longer resets its sprite to the default
+      green LV skin.
+2021-02-07:
+  TheDonkified:
+  - bugfix: Fixes ghosts teleporting into empty space triggering a never-ending loop
+      of qdels and message spam.
+  Waltermeldron:
+  - bugfix: Fixed automated gamemode votes not working by moving it to start at the
+      end of the round.
+2021-02-08:
+  TheDonkified:
+  - bugfix: Trapper can no longer ignore LOS if a target is over 10 tiles away.
+  Triiodine:
+  - experiment: Renamed Prison Station to Fiorina - Cellblocks.
+  - rscadd: 'Added a new map: Fiorina - Science Annex to rotation.'
+  - rscadd: 'Added numerous map props including but not limited to: Candelabras, emergency
+      tripod lamps (in two colors!), HEFA bibles (batteries not included), structural
+      lattice, resin coated objects, HEFA cult decals (credit Bongosz), double tube
+      light fixtures, a 4th and somewhat needless hydroponics tray variant, prison
+      station maintenance hatches, manually placeable carpet variants, and church
+      pews (credit Monkeysfist101)'
+  - imageadd: 'Resprited some legacy content, including but not limited to: Minecarts,
+      trashcarts, M16 rifle, MP5 Submachine gun, food processors, gibber machines,
+      and DEFCON spawn markers.'
+  - rscadd: Added United American Riot Control corpse presets.
+2021-02-09:
+  Nanu:
+  - maptweak: New Prison - Fixes the north walls by inflateable area. Can no longer
+      be breached.
+  - maptweak: New Prison - Changed Doors by Hannibal to be invincible Structures.
+  Segrain:
+  - bugfix: Synthesis simulator no longer breaks upon selecting "Cancel" when setting
+      creation's OD level.
+  Triiodine:
+  - bugfix: Added missing damage states for carpets on Fiorina - Science Annex
+  - bugfix: Removed a space exploit at the Chapel to Yard hallway.
+  - bugfix: Space on Fiorina - Science Annex is now blue tinted, like the rest of
+      the map.
+2021-02-10:
+  Firartix:
+  - tweak: Refactored DEFCON corpse landmarks usage
+  - bugfix: Corpse landmarks are now properly removed when deleted
+  - bugfix: Objects placed on surfaces (tables, racks) now retain their color instead
+      of using surface's.
+  - bugfix: Xenos slashing APCs may now complete Agents objectives.
+  - bugfix: remove invalid Van hardpoint assignment preventing its deletion
+  - tweak: Removed some things.
+  Segrain:
+  - bugfix: MPs once again can use riot grenade launcher.
+  Waltermeldron:
+  - tweak: Removed suggestions from out gitlab issue templates. Replaced with tasks.
+2021-02-11:
+  Firartix:
+  - tweak: minor perf tweak regarding airlocks
+  - tweak: add flag to bypass map config for testing
+  - bugfix: minor logging typo with laser designator
+  - tweak: added missing button to view TGUI logs
+  - tweak: Can contents do not awkwardly double-react double-drink anymore. The amount
+      per sip was increased to compensate.
+  - tweak: Added an internal `/datum/reagents/vessel` that can be used to transfer
+      reagents internally without an atom.
+  - tweak: Modified Reagents code to allow partial operation with datums rather than
+      only atoms.
+  - bugfix: Reagent Holder, Reagents, and Chem Properties now properly clear references,
+      allowing their deletion.
+  - bugfix: Reagents code change subsequently means that deleting pills or bottles
+      allow them to be garbaged by solving the circular reference.
+  - bugfix: Ingesting things does not create a time-traveling invisible botomless
+      beaker anymore.
+  - bugfix: The ubiquitous napalm on every human (???) will now delete with them instead
+      of clinging them into this hellish reality.
+2021-02-12:
+  Firartix:
+  - bugfix: fix minor logging issue with ERT calling
+  Segrain:
+  - bugfix: Autoresponses for mentorhelp once again work.
+  Shikareth:
+  - bugfix: Ingame maps now are displayed correctly.
+  forest2001:
+  - tweak: Fixed up the back end formatting for ERT calls
+2021-02-13:
+  Carlarc:
+  - bugfix: Added respawn timer to pooled larvae. You now have to wait the usual 5
+      minutes before respawning into pooled larva.
+  - bugfix: Admins with attack logs turned on now hear 'X has died to Y' deadchat
+      messages.
+  Firartix:
+  - bugfix: Blood created during map laoding now instantly dries to circumvent deletion
+      issues
+  - bugfix: Effects scheduled on deleted objects now delete too
+  TheDonkified:
+  - tweak: Some minor optimizations as well as formatting changes to lighting code.
+2021-02-15:
+  Firartix:
+  - bugfix: Fix improper deletion with tgui_list_input and tgui_alert
+  - bugfix: Added QDEL_REF_IN to del by timer using weakreferences, allowing GC'ing
+      during long running timers
+  TheDonkified:
+  - bugfix: Fixed a chat-breaking PMC ERT message.
+  - tweak: Added a to_chat sanity check to prevent issues in the future with bad message
+      types.
+  Waltermeldron:
+  - rscdel: Disables voting on XvX as it is currently broken.
+2021-02-16:
+  Firartix:
+  - bugfix: Fixed revolver catch trick being more of a meme than it should be
+  - tweak: Fix agents destroy logic
+  - bugfix: Agents objective related objects won't delete with them anymore
+  Firatix:
+  - bugfix: fixed destroy logic for storages regarding mobs observing them
+  Segrain:
+  - spellcheck: Berserker's apprehend ability no longer gets called "enrage".
+  - bugfix: Berserker locked at maximum rage no longer loses it when using clothesline
+      ability.
+  - bugfix: Berserker's eviscerate ability now correctly calculates its variable attributes
+      when used below maximum rage level.
+  Shikareth:
+  - bugfix: Fixed Prison_Station_Science_Annex wiki link
+  TheDonkified:
+  - tweak: Refactored facehugger code to use timers and a processing subsystem.
+  - tweak: Active huggers will try to infect someone every 2 seconds instead of every
+      5 seconds.
+  - bugfix: Huggers no longer die while infecting people.
+  - bugfix: Huggers that have infected people will show the proper sprite.
+  - bugfix: The hive status subsystem uses the property priority.
+  - bugfix: The throw speed for the carrier "Use/Throw Facehugger" ability properly
+      fits with the speed system we have now.
+  TobiNerd:
+  - bugfix: ALT clicking surfaces (tables and racks) now show contents in statpanel
+      again.
+  - bugfix: Intercoms are no longer added to surfaces.
+2021-02-17:
+  Firartix:
+  - bugfix: Changed default project MR template comments so stupid changelog parser
+      doesn't entirely ignore changelog entries
+2021-02-18:
+  Firartix:
+  - tweak: Regenerated Changelog from 26-01-2020 to account for missing entries
+  - tweak: Changelog tools now account for comment close tags, and MR merging date,
+      rather than using current day
+  - bugfix: Changelog generation utility now properly paginates by last update date
+      when reading MRs
+2021-02-19:
+  TheDonkified:
+  - bugfix: The "Fix Interfaces" verb will no longer close everyone's UIs.
+  Triiodine:
+  - bugfix: Replaced some reinforced walls with hull walls on Prison that allowed
+      access to internal space areas.
+  - bugfix: Re-added the HEFA tome sprite.
+  - bugfix: Fixed the medibot's O2 kit overlay referencing the original bay12 version.
+  - bugfix: Fixed some impassable telephone booths on Science Annex.
+  - bugfix: Non-decal plants no longer have 60% chance to catch bullets passing over
+      them, lowered to 0%.
+2021-02-22:
+  naut:
+  - rscadd: 'Resprited a few more things:'
+  - imageadd: Hydroponics trays.
+  - imageadd: Matchboxes and matches.
+  - imageadd: Drink and booze dispensers.
+2021-02-23:
+  BIgboyyo:
+  - bugfix: George no longer disappears when you scoop him up
+  Firartix:
+  - tweak: base OOC Colors now use the config system
+  - tweak: removed get_staff_by_categories and AHOLD_IS_ONLY_MENTOR
+  - tweak: added CLIENT_IS_STAFF (in practice R_MOD|R_ADMIN)
+  - tweak: only client distinction other than individual rights should now be staff/non-staff
+  - tweak: Defer overwatch officer handling and messaging back to squads from the
+      puny console
+  - tweak: Normalize deletion from overwatch in the ongoing war against stale references
+  - tweak: added a standard way to request early game start in ticker backend
+  - tweak: remove ticker 'start_immediately' bypassing lobby phase as unused and not
+      properly accounted for
+  - bugfix: Fixed attempting to edit a 0 offset in a Fire Mission breaking it
+  Segrain:
+  - bugfix: Cancelling upgrading a metal barricade no longer consumes metal.
+  Shikareth:
+  - tweak: Activating signal flare enables throw mode.
+  Vanagandr:
+  - bugfix: Fixes runtimes with vehicle lockers, including one which meant things
+      could not be inserted into them at all.
+  forest2001:
+  - rscadd: Added logs to ID modifications.
+  - rscadd: Added an internal log on individual IDs that records any changes to them.
+2021-02-24:
+  BIgboyyo:
+  - bugfix: Synthetics now spawn in their closet as intended.
+  Firartix:
+  - tweak: Tweaked wrongly intended changes to mentorhelp messaging
+  - bugfix: Fix a mistake in the mhelp message sending that would result in mentor
+      also seeing each others messages
+  Vanagandr:
+  - bugfix: 'Smartgun autofire mode now works. Specifically: if the gun is wielded
+      and autofire toggled, it will take shots at targets that are in range and within
+      a 135 degree arc in the direction you''re facing. These aren''t free bonus shots
+      -- it respects fire delays.'
+  - bugfix: Attaching or removing a smartgun attachment no longer resets the gun's
+      stats to initial values. This fixes some bugs relating to recoil comp.
+  - bugfix: Toggling recoil comp on and off on a Terminator smartgun no longer increases
+      its base scatter.
+  - bugfix: Unwielding a gun that can only be fired while wielded in the middle of
+      a burst (ex. HPR, M4RA, smartgun) now stops the burst.
+  - tweak: Autofire scan range reduced to 7 tiles.
+  - tweak: Tidied SG code a bit.
+2021-02-25:
+  Firartix:
+  - bugfix: Fix conveyor switches invalid init preventing them from controlling conveyors.
+  Jeser:
+  - bugfix: Fixed van's wall and doors transparency and offsets issues.
+  Segrain:
+  - bugfix: ID cards (and dogtags) once again list the bearer's bloodtype.
+  TheDonkified:
+  - bugfix: The "Legacy" stylesheet should work now.
+  - bugfix: The traits var and gear var for character preferences should no longer
+      be able to get null elements.
+  Waltermeldron:
+  - bugfix: Fixed an exploit with unicode characters.
+2021-02-26:
+  Firartix:
+  - bugfix: Gun I1 error has been bandaid'ed so it is not as much a pain to players
+      as it is to people reading code
+  Nanu:
+  - maptweak: Fixed walls being broken could lead to space on Prison Annex
+  TheDonkified:
+  - bugfix: Fixed bug with browser links having purple text for no reason.
+2021-02-27:
+  Firartix:
+  - tweak: CI - overhauled CM GitLab CI process to hopefully be more flexible and
+      generic
+  - rscadd: CI - pipeline now runs SpacemanDMM tooling for maps related tasks
+  - rscadd: CI - added artifact exports to most of build process
+  - experiment: CI - added game-running docker container task to pipeline
+  TheDonkified:
+  - tweak: After clicking a link for a legacy stylesheet, it should change color to
+      have purple text.
+  - bugfix: The rainbow-colored gib spawner should no longer appear when mobs are
+      being gibbed (or machinery is being destroyed).
+  Waltermeldron:
+  - bugfix: Fixed acid runners being able to suicide whilst in containment.
+2021-02-28:
+  Firartix:
+  - bugfix: fix potential issue with midnight rollover and brig timers
+  - bugfix: brig incident reports won't appear blank anymore
+  - bugfix: Fixed an issue with usage of config values for lobby music
+  - bugfix: fix random visual error with forsaken hallucination code.
+  Nanu:
+  - maptweak: Fixes LZ on SciAnnex being weedable.
+  TheDonkified:
+  - tweak: Ported tg's getFlatIcon proc and modified it a bit to compensate for how
+      we use planes and how we handle human overlays.
+  - bugfix: Alt-click panel should now update the icon for humans when they put on
+      new items and should display their bodies properly now.
+  Vanagandr:
+  - tweak: Tidied my old hypospray code. Main things are that tactical-reloads only
+      swap hands if moving an old vial into the inactive hand, and there's text for
+      starting to load a vial into an empty hypo.
+  - bugfix: Ghosts and xenos and unconscious people can no longer toggle hypospray
+      injection amounts, fixed hypospray tactical-reloading vials out of inventory
+      not properly updating the storage screen.

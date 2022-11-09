@@ -165,61 +165,101 @@
 	return TRUE
 
 /*
-** PRESETS
+** PRESETS SPAWNERS
 */
+/obj/effect/vehicle_spawner/tank
+	name = "Tank Spawner"
+	icon = 'icons/obj/vehicles/tank.dmi'
+	icon_state = "tank_base"
+	pixel_x = -48
+	pixel_y = -48
 
-//Tank spawner that spawns in a tank that's NOT eight kinds of awful, mostly for testing purposes
-/obj/vehicle/multitile/tank/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
-	..()
+/obj/effect/vehicle_spawner/tank/Initialize()
+	. = ..()
+	spawn_vehicle()
+	qdel(src)
 
-	add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer)
-	add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
+//PRESET: turret, no hardpoints (not the one without turret for convenience, you still expect to have turret when you spawn "no hardpoints tank")
+/obj/effect/vehicle_spawner/tank/spawn_vehicle()
+	var/obj/vehicle/multitile/tank/TANK = new (loc)
 
-	var/obj/item/hardpoint/holder/tank_turret/T = locate() in hardpoints
-	if(!T)
-		return
+	load_misc(TANK)
+	load_hardpoints(TANK)
+	handle_direction(TANK)
+	TANK.update_icon()
 
-	T.add_hardpoint(new /obj/item/hardpoint/primary/cannon)
-	T.add_hardpoint(new /obj/item/hardpoint/secondary/m56cupola)
+/obj/effect/vehicle_spawner/tank/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
 
-//Tank spawner that spawns in a tank that's NOT eight kinds of awful, mostly for testing purposes
-/obj/vehicle/multitile/tank/fixed_minigun/load_hardpoints(var/obj/vehicle/multitile/R)
-	..()
+//PRESET: turret, treads installed
+/obj/effect/vehicle_spawner/tank/plain/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
 
-	add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer)
-	add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
+//PRESET: no hardpoints
+/obj/effect/vehicle_spawner/tank/hull/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+	return
 
-	var/obj/item/hardpoint/holder/tank_turret/T = locate() in hardpoints
-	if(!T)
-		return
+//PRESET: default hardpoints, destroyed
+/obj/effect/vehicle_spawner/tank/decrepit/spawn_vehicle()
+	var/obj/vehicle/multitile/tank/TANK = new (loc)
 
-	T.add_hardpoint(new /obj/item/hardpoint/primary/minigun)
-	T.add_hardpoint(new /obj/item/hardpoint/secondary/grenade_launcher)
+	load_misc(TANK)
+	handle_direction(TANK)
+	load_hardpoints(TANK)
+	load_damage(TANK)
+	TANK.update_icon()
 
-/obj/vehicle/multitile/tank/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
-	..()
+/obj/effect/vehicle_spawner/tank/decrepit/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+	V.add_hardpoint(new /obj/item/hardpoint/support/artillery_module)
+	V.add_hardpoint(new /obj/item/hardpoint/armor/paladin)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
+	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
+	for(var/obj/item/hardpoint/holder/tank_turret/TT in V.hardpoints)
+		TT.add_hardpoint(new /obj/item/hardpoint/primary/cannon)
+		TT.add_hardpoint(new /obj/item/hardpoint/secondary/m56cupola)
+		break
 
-	add_hardpoint(new /obj/item/hardpoint/support/artillery_module)
-	add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
+//PRESET: default hardpoints
+/obj/effect/vehicle_spawner/tank/fixed/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+	V.add_hardpoint(new /obj/item/hardpoint/support/artillery_module)
+	V.add_hardpoint(new /obj/item/hardpoint/armor/paladin)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
+	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
+	for(var/obj/item/hardpoint/holder/tank_turret/TT in V.hardpoints)
+		TT.add_hardpoint(new /obj/item/hardpoint/primary/cannon)
+		TT.add_hardpoint(new /obj/item/hardpoint/secondary/m56cupola)
+		break
 
-	var/obj/item/hardpoint/holder/tank_turret/T = locate() in hardpoints
-	if(!T)
-		return
+//PRESET: minigun kit
+/obj/effect/vehicle_spawner/tank/fixed/minigun/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+	V.add_hardpoint(new /obj/item/hardpoint/support/weapons_sensor)
+	V.add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
+	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
+	for(var/obj/item/hardpoint/holder/tank_turret/TT in V.hardpoints)
+		TT.add_hardpoint(new /obj/item/hardpoint/primary/minigun)
+		TT.add_hardpoint(new /obj/item/hardpoint/secondary/small_flamer)
+		break
 
-	T.add_hardpoint(new /obj/item/hardpoint/primary/cannon)
-	T.add_hardpoint(new /obj/item/hardpoint/secondary/m56cupola)
+//PRESET: dragon flamer kit
+/obj/effect/vehicle_spawner/tank/fixed/flamer/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+	V.add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer)
+	V.add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
+	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
+	for(var/obj/item/hardpoint/holder/tank_turret/TT in V.hardpoints)
+		TT.add_hardpoint(new /obj/item/hardpoint/primary/flamer)
+		TT.add_hardpoint(new /obj/item/hardpoint/secondary/grenade_launcher)
+		break
 
-/obj/vehicle/multitile/tank/decrepit/load_damage(var/obj/vehicle/multitile/R)
-	// once to break the hardpoints
-	take_damage_type(1e8, "abstract")
-	// once more to break the frame
-	take_damage_type(1e8, "abstract")
-	healthcheck()
-
-/obj/vehicle/multitile/tank/plain/load_hardpoints(var/obj/vehicle/multitile/R)
-	..()
-
-	add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
+//PRESET: autocannon kit
+/obj/effect/vehicle_spawner/tank/fixed/autocannon/load_hardpoints(var/obj/vehicle/multitile/tank/V)
+	V.add_hardpoint(new /obj/item/hardpoint/support/artillery_module)
+	V.add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
+	V.add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
+	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
+	for(var/obj/item/hardpoint/holder/tank_turret/TT in V.hardpoints)
+		TT.add_hardpoint(new /obj/item/hardpoint/primary/autocannon)
+		TT.add_hardpoint(new /obj/item/hardpoint/secondary/towlauncher)
+		break

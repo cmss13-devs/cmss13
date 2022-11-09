@@ -114,10 +114,10 @@
 	if (!X.check_state())
 		return
 
-
-	X.add_movement_handler(new /datum/event_handler/boiler_acid_onmovement(X, buffs_duration))
+	RegisterSignal(X, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
 	addtimer(CALLBACK(src, .proc/remove_speed_buff), buffs_duration)
 	X.speed_modifier -= speed_buff_amount
+	movespeed_buff_applied = TRUE
 	X.recalculate_speed()
 
 	to_chat(X, SPAN_XENOHIGHDANGER("You dump your acid, disabling your offensive abilities to escape!"))
@@ -134,50 +134,26 @@
 	return
 
 /datum/action/xeno_action/onclick/dump_acid/proc/remove_speed_buff()
-	if (isXeno(owner))
-		var/mob/living/carbon/Xenomorph/X = owner
-		X.speed_modifier += speed_buff_amount
-		X.recalculate_speed()
+	if (movespeed_buff_applied && isXeno(owner))
+		var/mob/living/carbon/Xenomorph/xeno = owner
+		xeno.speed_modifier += speed_buff_amount
+		xeno.recalculate_speed()
+		movespeed_buff_applied = FALSE
+		UnregisterSignal(owner, COMSIG_MOB_MOVE_OR_LOOK)
 
-/datum/event_handler/boiler_acid_onmovement
-	flags_handler = NO_FLAGS
-	var/mob/living/carbon/Xenomorph/X = null
-	var/smoke_duration = 3
-	var/spread_speed = 1000000
+/datum/action/xeno_action/onclick/dump_acid/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+	SIGNAL_HANDLER
 
-/datum/event_handler/boiler_acid_onmovement/New(mob/living/carbon/Xenomorph/X, duration = 70)
-	if (!isXeno(X))
-		qdel(src)
-		return
-	src.X = X
-	addtimer(CALLBACK(src, .proc/cancel_effect, src), duration)
-
-/datum/event_handler/boiler_acid_onmovement/Destroy()
-	X = null
-	. = ..()
-	return
-
-/datum/event_handler/boiler_acid_onmovement/handle(sender, datum/event_args/ev_args)
-	var/datum/event_args/mob_movement/event_args = ev_args
-	var/isMoving = event_args.moving
-
-	if (!isMoving)
+	if(!actually_moving)
 		return
 
-	if (X && !QDELETED(X))
-		var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(X), 1, create_cause_data(initial(X.caste_type), X))
-		S.time_to_live = smoke_duration
-		S.spread_speed = spread_speed
-	else
-		qdel(src)
+	var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(mover), 1, create_cause_data(initial(mover.caste_type), mover))
+	S.time_to_live = 3
+	S.spread_speed = 1000000
 
-/datum/event_handler/boiler_acid_onmovement/proc/cancel_effect()
-	if (!istype(X) || QDELETED(X))
-		qdel(src)
-		return
-
-	X.event_movement.remove_handler(src)
-	qdel(src)
+/datum/action/xeno_action/onclick/dump_acid/remove_from()
+	remove_speed_buff()
+	..()
 
 /////////////////////////////// Trapper boiler powers
 
@@ -341,3 +317,9 @@
 	scatter = SCATTER_AMOUNT_TIER_1
 	bonus_projectiles_amount = 0
 	max_range = 4
+
+/datum/action/xeno_action/activable/tail_stab/boiler/use_ability(atom/A)
+	var/target = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		carbon_target.reagents.add_reagent("molecularacid", 10)

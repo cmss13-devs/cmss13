@@ -38,6 +38,7 @@
 	name = "M56 FPW handle"
 	desc = "A control handle for a modified M56B Smartgun installed on the sides of M577 Armored Personnel Carrier as a Firing Port Weapon. \
 	Used by support gunners to cover friendly infantry entering or exiting APC via side doors. \
+	For ease of use, firing ports are marked with green (right side) and red (left side) marks. \
 	Do not be mistaken however, this is not a piece of an actual weapon, but a joystick made in a familiar to marines form."
 
 	icon = 'icons/obj/vehicles/interiors/apc.dmi'
@@ -45,19 +46,40 @@
 
 	density = FALSE
 
-/obj/structure/prop/vehicle/firing_port_weapon/examine(var/mob/user)
+	var/obj/structure/bed/chair/comfy/vehicle/support_gunner/SG_seat
+
+/obj/structure/prop/vehicle/firing_port_weapon/get_examine_text(mob/user)
 	. = ..()
-	if(ishuman(user))
-		to_chat(SPAN_HELPFUL("Clicking on the [name] while standing on top of support gunner seat will buckle you in and give you the control of the M56 FPW."))
+	if(!ishuman(user))
+		return
+	if(!SG_seat)
+		SG_seat = locate() in get_turf(src)
+		if(!SG_seat)
+			. += SPAN_WARNING("ERROR HAS OCCURED! NO SEAT FOUND, TELL A DEV!")
+			return
+	for(var/obj/item/hardpoint/special/firing_port_weapon/FPW in SG_seat.vehicle.hardpoints)
+		if(FPW.allowed_seat == SG_seat.seat)
+			if(FPW.ammo)
+				. += SPAN_NOTICE("The [FPW.name]'s ammo count is: [SPAN_HELPFUL(FPW.ammo.current_rounds)]/[SPAN_WARNING(FPW.ammo.max_rounds)].")
+				break
+	. += SPAN_HELPFUL("Clicking on the [name] while being adjacent to support gunner seat will buckle you in and give you the control of the M56 FPW.")
 
 /obj/structure/prop/vehicle/firing_port_weapon/attack_hand(var/mob/living/carbon/human/H)
 	if(!istype(H))
 		return
-	var/obj/structure/bed/chair/comfy/vehicle/support_gunner/SG_seat = locate() in get_turf(H)
-	if(!SG_seat.buckled_mob)
+	if(!SG_seat)
+		SG_seat = locate() in get_turf(src)
+		if(!SG_seat)
+			to_chat(H, SPAN_WARNING("ERROR HAS OCCURED! NO SEAT FOUND, TELL A DEV!"))
+			return
+	if(!SG_seat.buckled_mob && !H.buckled)
 		SG_seat.do_buckle(H, H)
+		for(var/obj/item/hardpoint/special/firing_port_weapon/FPW in SG_seat.vehicle.hardpoints)
+			if(FPW.allowed_seat == SG_seat.seat)
+				if(FPW.ammo)
+					to_chat(H, SPAN_NOTICE("The [FPW.name]'s ammo count is: [SPAN_HELPFUL(FPW.ammo.current_rounds)]/[SPAN_WARNING(FPW.ammo.max_rounds)]."))
+					break
 		return
-
 
 /obj/structure/prop/vehicle/sensor_equipment
 	name = "Data Analyzing Nexus"

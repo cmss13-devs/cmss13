@@ -47,16 +47,17 @@
 #define XENO_PRIMARY_ACTION_2 1          // Second primary action
 #define XENO_PRIMARY_ACTION_3 2          // Tertiary primary action
 #define XENO_PRIMARY_ACTION_4 3          // 4th primary action (rarely used)
+#define XENO_PRIMARY_ACTION_5 4          // ability creep is real
 
-#define XENO_CORROSIVE_ACID 4 //Macro for covering things in acid, universal ability
 #define XENO_TECH_SECRETE_RESIN 5 //Macro for T1 build distrib secreting macro
+#define XENO_CORROSIVE_ACID 6 //Macro for covering things in acid, universal ability
+#define XENO_SCREECH 7 //Macro for queen screech
+#define XENO_TAIL_STAB 8 //macro for tail stabs
 
 #define NO_ACTION_CHARGES -1	// This ability does not have a limit to how many times it can be used
 
 #define ACID_SPRAY_LINE 0
 #define ACID_SPRAY_CONE 1
-
-#define XENOZOOM_NO_MOVEMENT_HANDLER 69420
 
 #define WARDEN_HEAL_SHIELD 0
 #define WARDEN_HEAL_HP 1
@@ -114,9 +115,9 @@
 
 #define XVX_UNIVERSAL_DAMAGEMULT 1.5 // Use to unilaterally buff every caste's DAMAGE against other xenos.
 
-#define XVX_SLASH_DAMAGEMULT 1.5 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that uses brute damage or slash damage
-#define XVX_ACID_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that apply acid damage (not including projectiles)
-#define XVX_PROJECTILE_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that use projectiles
+#define XVX_SLASH_DAMAGEMULT 1 * XVX_UNIVERSAL_DAMAGEMULT // 1.5 | Applies to any abilities that uses brute damage or slash damage
+#define XVX_ACID_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // 2.625 | Applies to any abilities that apply acid damage (not including projectiles)
+#define XVX_PROJECTILE_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // 2.625 | Applies to any abilities that use projectiles
 
 #define XVX_STUN_LENGTHMULT 1.25
 
@@ -140,6 +141,7 @@
 #define WEED_XENO_SPEED_MULT 1
 
 #define WEED_HEALTH_STANDARD 5
+#define WEED_HEALTH_HARDY    10
 #define WEED_HEALTH_HIVE     15
 
 #define NODE_HEALTH_GROWING  5
@@ -262,18 +264,19 @@
 #define XENO_EVASION_HIGH 20
 
 // Speeds
-#define XENO_SPEED_QUEEN 	0.6
-#define XENO_SPEED_TIER_1 	0.4
-#define XENO_SPEED_TIER_2 	0.2
-#define XENO_SPEED_TIER_3 	0.0
-#define XENO_SPEED_TIER_4 	-0.2
-#define XENO_SPEED_TIER_5 	-0.4
-#define XENO_SPEED_TIER_6 	-0.6
-#define XENO_SPEED_TIER_7 	-0.8
-#define XENO_SPEED_TIER_8 	-1.4
-#define XENO_SPEED_TIER_9 	-1.6
-#define XENO_SPEED_TIER_10 	-1.8
-#define XENO_SPEED_RUNNER 	-2.0
+#define XENO_SPEED_QUEEN		0.6
+#define XENO_SPEED_TIER_1		0.4
+#define XENO_SPEED_TIER_2		0.2
+#define XENO_SPEED_TIER_3		0.0
+#define XENO_SPEED_TIER_4		-0.2
+#define XENO_SPEED_TIER_5		-0.4
+#define XENO_SPEED_TIER_6		-0.6
+#define XENO_SPEED_TIER_7		-0.8
+#define XENO_SPEED_HELLHOUND	-1.0
+#define XENO_SPEED_TIER_8		-1.4
+#define XENO_SPEED_TIER_9		-1.6
+#define XENO_SPEED_TIER_10		-1.8
+#define XENO_SPEED_RUNNER		-2.0
 
 // Xeno damage categories
 #define XENO_DAMAGE_TIER_1 20 * XENO_UNIVERSAL_DAMAGEMULT
@@ -283,16 +286,21 @@
 #define XENO_DAMAGE_TIER_5 40 * XENO_UNIVERSAL_DAMAGEMULT
 #define XENO_DAMAGE_TIER_6 45 * XENO_UNIVERSAL_DAMAGEMULT
 #define XENO_DAMAGE_TIER_7 50 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_TIER_8 55 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_TIER_9 60 * XENO_UNIVERSAL_DAMAGEMULT
 
 // Cost to make things, add +XENO_RESIN_BASE_COST to them all for actual cost
 #define XENO_RESIN_BASE_COST 25
 #define XENO_RESIN_WALL_COST 95
+#define XENO_RESIN_WALL_QUEEN_COST 120
 #define XENO_RESIN_WALL_THICK_COST 145
 #define XENO_RESIN_WALL_REFLECT_COST 145
 #define XENO_RESIN_WALL_MOVABLE_COST 145
 #define XENO_RESIN_DOOR_COST 95
+#define XENO_RESIN_DOOR_QUEEN_COST 100
 #define XENO_RESIN_DOOR_THICK_COST 120
 #define XENO_RESIN_MEMBRANE_COST 70
+#define XENO_RESIN_MEMBRANE_QUEEN_COST 80
 #define XENO_RESIN_MEMBRANE_THICK_COST 95
 #define XENO_RESIN_NEST_COST 70
 #define XENO_RESIN_STICKY_COST 30
@@ -549,6 +557,12 @@
 #define RESIN_TRAP_ACID2 4
 #define RESIN_TRAP_ACID3 5
 
+// HIVECORE COOLDOWN TIME
+#define HIVECORE_COOLDOWN 5 MINUTES
+
+// The round time where the xenos will no longer be able to move hivecore without cooldowns
+#define HIVECORE_COOLDOWN_CUTOFF 20 MINUTES
+
 // Xeno shield HUD scale factor (1.5x so its easier to see, most times)
 #define XENO_SHIELD_HUD_SCALE_FACTOR 1.5
 
@@ -568,7 +582,8 @@
 //XENO CASTES
 #define XENO_CASTE_LARVA             "Bloody Larva"
 #define XENO_CASTE_PREDALIEN_LARVA   "Predalien Larva"
-#define XENO_T0_CASTES               list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
+#define XENO_CASTE_FACEHUGGER        "Facehugger"
+#define XENO_T0_CASTES               list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER)
 
 //t1
 #define XENO_CASTE_DRONE             "Drone"
@@ -593,9 +608,10 @@
 //special
 #define XENO_CASTE_QUEEN             "Queen"
 #define XENO_CASTE_PREDALIEN         "Predalien"
-#define XENO_SPECIAL_CASTES          list(XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN)
+#define XENO_CASTE_HELLHOUND         "Hellhound"
+#define XENO_SPECIAL_CASTES          list(XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND)
 
-#define ALL_XENO_CASTES list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER, XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN)
+#define ALL_XENO_CASTES list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER, XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER, XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND)
 
 // Checks if two hives are allied to each other.
 // PARAMETERS:
@@ -615,3 +631,34 @@
 #define SECRETE_RESIN_INTERRUPT -1
 #define SECRETE_RESIN_FAIL 0
 #define SECRETE_RESIN_SUCCESS 1
+
+#define XENO_CHARGE_TRY_MOVE 0
+
+//preferences-related defines
+
+#define XENO_VISION_LEVEL_NO_NVG		"No Night Vision"
+#define XENO_VISION_LEVEL_MID_NVG		"Half Night Vision"
+#define XENO_VISION_LEVEL_FULL_NVG		"Full Night Vision"
+
+
+// drone fruits
+
+#define XENO_FRUIT_LESSER "Lesser Resin Fruit"
+#define XENO_FRUIT_GREATER "Greater Resin Fruit"
+#define XENO_FRUIT_UNSTABLE "Unstable Resin Fruit"
+#define XENO_FRUIT_SPORE "Spore Resin Fruit"
+#define XENO_FRUIT_SPEED "Alacrit Resin Fruit"
+#define XENO_FRUIT_PLASMA "Cruor Resin Fruit"
+
+
+// turf weedable states
+#define NOT_WEEDABLE 0
+#define SEMI_WEEDABLE 1
+#define FULLY_WEEDABLE 2
+
+#define TAILSTAB_COOLDOWN_NONE 0
+#define TAILSTAB_COOLDOWN_VERY_LOW 0.1
+#define TAILSTAB_COOLDOWN_LOW 0.5
+#define TAILSTAB_COOLDOWN_NORMAL 1
+#define TAILSTAB_COOLDOWN_HIGH 1.5
+#define TAILSTAB_COOLDOWN_VERY_HIGH 2

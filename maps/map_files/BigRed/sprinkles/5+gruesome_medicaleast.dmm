@@ -6,7 +6,7 @@
 /turf/template_noop,
 /area/template_noop)
 "d" = (
-/obj/item/clothing/head/helmet/marine/fluff/DingleDangle{
+/obj/item/clothing/head/soft/blue{
 	pixel_x = 5
 	},
 /turf/template_noop,

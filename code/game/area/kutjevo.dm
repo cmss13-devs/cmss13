@@ -10,13 +10,6 @@
 	temperature = 308.7 //kelvin, 35c, 95f
 	lighting_use_dynamic = 1
 
-/area/kutjevo/Initialize()
-	. = ..()
-	if(SSticker.current_state > GAME_STATE_SETTING_UP)
-		add_thunder()
-	else
-		LAZYADD(GLOB.thunder_setup_areas, src)
-
 /area/shuttle/drop1/kutjevo
 	name = "Kutjevo - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
@@ -129,6 +122,26 @@
 	name = "Kutjevo Complex - Water Tank Cave"
 	icon_state = "construction2"
 
+//telecomms areas
+/area/kutjevo/exterior/telecomm
+	name = "Kutjevo - Communications Relay"
+	icon_state = "ass_line"
+	is_resin_allowed = FALSE
+	ceiling_muffle = FALSE
+	base_muffle = MUFFLE_LOW
+
+/area/kutjevo/exterior/telecomm/lz1_north
+	name = "Kutjevo - North LZ1 Communications Relay"
+
+/area/kutjevo/exterior/telecomm/lz1_south
+	name = "Kutjevo - South LZ1 Communications Relay"
+
+/area/kutjevo/exterior/telecomm/lz2_north
+	name = "Kutjevo - North LZ2 Communications Relay"
+
+/area/kutjevo/exterior/telecomm/lz2_south
+	name = "Kutjevo - South LZ2 Communications Relay"
+
 //interior areas + caves
 
 //Primary Colony Buildings
@@ -202,6 +215,11 @@
 //Out buildings + foremans
 /area/kutjevo/interior/power
 	name = "Kutjevo - Hydroelectric Dam Substation"
+	ceiling = CEILING_METAL
+	icon_state = "power"
+
+/area/kutjevo/interior/power/comms
+	name = "Kutjevo - Hydroelectric Dam Comms Relay"
 	ceiling = CEILING_METAL
 	icon_state = "power"
 

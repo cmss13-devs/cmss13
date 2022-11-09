@@ -33,8 +33,25 @@
 
 	var/dat
 
-	for(var/datum/language/L in languages)
-		dat += "<b>[L.name] (:[L.key])</b><br/>[L.desc]<br/><br/>"
+	var/index = 1
+	for(var/datum/language/L as anything in languages)
+		dat += "<b>[L.name] (:[L.key])</b> ([index  == 1 ? "<b>Default Language</b>" : "<A href='?src=\ref[src];set_default_language=[L.key]'>Set As Default</A>"])<br/>[L.desc]<br/><br/>"
+		index++
 
 	show_browser(src, dat, "Known Languages", "checklanguage")
-	return
+
+/mob/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
+	if(href_list["set_default_language"])
+		var/index = 1
+		for(var/datum/language/L as anything in languages)
+			if(L.key == href_list["set_default_language"])
+				var/language_holder = languages[1]
+				languages[1] = L
+				languages[index] = language_holder
+				break
+			index++
+		to_chat(src, SPAN_NOTICE("Your default language is now: <b>[languages[1].name]</b>"))
+		check_languages()

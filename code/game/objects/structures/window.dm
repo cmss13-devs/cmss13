@@ -105,7 +105,7 @@
 			if(is_mainship_level(z))
 				SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
 		if(make_shatter_sound)
-			playsound(src, "shatter", 50, 1)
+			playsound(src, "windowshatter", 50, 1)
 		shatter_window(create_debris)
 	else
 		if(make_hit_sound)
@@ -136,7 +136,7 @@
 
 	if(health >= -2000)
 		var/location = get_turf(src)
-		playsound(src, "shatter", 50, 1)
+		playsound(src, "windowshatter", 50, 1)
 		create_shrapnel(location, rand(1,5), explosion_direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light/glass, cause_data = cause_data)
 
 	if(M)
@@ -185,7 +185,7 @@
 		if(windowknock_cooldown > world.time)
 			return
 
-		playsound(loc, 'sound/effects/glassknock.ogg', 25, 1)
+		playsound(loc, 'sound/effects/glassbash.ogg', 25, 1)
 		user.visible_message(SPAN_WARNING("[user] bangs against [src]!"),
 		SPAN_WARNING("You bang against [src]!"),
 		SPAN_WARNING("You hear a banging sound."))
@@ -249,9 +249,14 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && !not_deconstructable)
 		if(!anchored)
 			var/turf/open/T = loc
+			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in T // for M2C HMG, look at smartgun_mount.dm
 			if(!(istype(T) && T.allow_construction))
-				to_chat(user, SPAN_WARNING("[src] must be fastened on a proper surface!"))
+				to_chat(user, SPAN_WARNING("\The [src] must be fastened on a proper surface!"))
 				return
+			if(AC)
+				to_chat(usr, SPAN_WARNING("\The [src] cannot be fastened here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
+				return
+
 		if(reinf && state >= 1)
 			state = 3 - state
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -300,6 +305,12 @@
 		handle_debris()
 	qdel(src)
 
+/obj/structure/window/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		revrotate(user)
+		return TRUE
+
+	return ..()
 
 /obj/structure/window/verb/rotate()
 	set name = "Rotate Window Counter-Clockwise"
@@ -368,7 +379,7 @@
 
 /obj/structure/window/phoronreinforced
 	name = "reinforced phoron window"
-	desc = "A phoron-glass alloy window with a rod matrice. It looks hopelessly tough to break. It also looks completely fireproof, considering how basic phoron windows are insanely fireproof."
+	desc = "A phoron-glass alloy window with a rod matrix. It looks hopelessly tough to break. It also looks completely fireproof, considering how basic phoron windows are insanely fireproof."
 	icon_state = "phoronrwindow0"
 	shardtype = /obj/item/shard/phoron
 	reinf = 1
@@ -411,7 +422,7 @@
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "privacy window"
-	desc = "A glass privacy window. Looks like it might take a few less hits then a normal reinforced window."
+	desc = "A glass privacy window. Looks like it might take a few less hits than a normal reinforced window."
 	icon_state = "fwindow"
 	basestate = "fwindow"
 	health = 30
@@ -442,7 +453,7 @@
 
 /obj/structure/window/shuttle
 	name = "shuttle window"
-	desc = "A shuttle glass window with a rod matrice specialised for heat resistance. It looks rather strong. Might take a few good hits to shatter it."
+	desc = "A shuttle glass window with a rod matrix specialised for heat resistance. It looks rather strong. Might take a few good hits to shatter it."
 	icon = 'icons/turf/podwindows.dmi'
 	icon_state = "window"
 	basestate = "window"
@@ -513,7 +524,7 @@
 
 	if(health >= -3000)
 		var/location = get_turf(src)
-		playsound(src, "shatter", 50, 1)
+		playsound(src, "windowshatter", 50, 1)
 		handle_debris(severity, explosion_direction)
 		shatter_window(0)
 		create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass, cause_data)
@@ -546,7 +557,7 @@
 
 /obj/structure/window/framed/almayer
 	name = "reinforced window"
-	desc = "A glass window with a special rod matrice inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
 	icon_state = "alm_rwindow0"
 	basestate = "alm_rwindow"
 	health = 100 //Was 600
@@ -556,7 +567,7 @@
 
 /obj/structure/window/framed/almayer/hull
 	name = "hull window"
-	desc = "A glass window with a special rod matrice inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
 	not_damageable = 1
 	not_deconstructable = 1
@@ -597,19 +608,19 @@
 	name = "reinforced window"
 	icon_state = "col_rwindow0"
 	basestate = "col_rwindow"
-	desc = "A glass window with a special rod matrice inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
 	reinf = 1
 	window_frame = /obj/structure/window_frame/colony/reinforced
 
 /obj/structure/window/framed/colony/reinforced/tinted
 	name =  "tinted reinforced window"
-	desc = "A glass window with a special rod matrice inside a wall frame. It looks rather strong. Might take a few good hits to shatter it. This one is opaque. You have an uneasy feeling someone might be watching from the other side."
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it. This one is opaque. You have an uneasy feeling someone might be watching from the other side."
 	opacity = 1
 
 /obj/structure/window/framed/colony/reinforced/hull
 	name = "hull window"
-	desc = "A glass window with a special rod matrice inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
 	not_damageable = 1
 	not_deconstructable = 1
@@ -625,7 +636,7 @@
 	name = "reinforced window"
 	icon_state = "chig_rwindow0"
 	basestate = "chig_rwindow"
-	desc = "A glass window with a special rod matrice inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
 	reinf = 1
 	window_frame = /obj/structure/window_frame/chigusa
@@ -645,7 +656,7 @@
 	name = "reinforced window"
 	icon_state = "hngr_rwindow0"
 	basestate = "hngr_rwindow"
-	desc = "A glass window with a special rod matrice inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
 	reinf = 1
 	window_frame = /obj/structure/window_frame/hangar/reinforced
@@ -662,7 +673,7 @@
 	name = "reinforced window"
 	icon_state = "bnkr_rwindow0"
 	basestate = "bnkr_rwindow"
-	desc = "A glass window with a special rod matrice inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
 	reinf = 1
 	window_frame = /obj/structure/window_frame/bunker/reinforced
@@ -676,7 +687,7 @@
 
 /obj/structure/window/framed/wood/reinforced
 	name = "reinforced window"
-	desc = "A glass window with a special rod matrice inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
 	reinf = 1
 	icon_state = "wood_rwindow0"
@@ -725,7 +736,7 @@
 
 /obj/structure/window/framed/kutjevo/reinforced/hull
 	icon_state = "kutjevo_window_hull"
-	desc = "A glass window. Something tells you this one is somehow indestructable."
+	desc = "A glass window. Something tells you this one is somehow indestructible."
 	not_damageable = 1
 	not_deconstructable = 1
 	unslashable = TRUE
@@ -737,7 +748,7 @@
 	icon = 'icons/turf/walls/ice_colony/shiva_windows.dmi'
 	icon_state = "shiva_window0"
 	basestate = "shiva_window"
-	desc = "A semi transparent (not entirely opaque) pane of material set into a poly-kevlon frame. Very smashable."
+	desc = "A semi-transparent (not entirely opaque) pane of material set into a poly-kevlon frame. Very smashable."
 	health = 40
 	window_frame = /obj/structure/window_frame/shiva
 
@@ -762,12 +773,16 @@
 	window_frame = /obj/structure/window_frame/solaris/reinforced
 
 /obj/structure/window/framed/solaris/reinforced/hull
-	desc = "A glass window. Something tells you this one is somehow indestructable."
+	desc = "A glass window. Something tells you this one is somehow indestructible."
 	not_damageable = 1
 	not_deconstructable = 1
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
+
+/obj/structure/window/framed/solaris/reinforced/tinted
+	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
+	opacity = 1
 
 //GREYBOX DEV WINDOWS
 
@@ -790,7 +805,7 @@
 	window_frame = /obj/structure/window_frame/dev/reinforced
 
 /obj/structure/window/framed/dev/reinforced/hull
-	desc = "A glass window. Something tells you this one is somehow indestructable."
+	desc = "A glass window. Something tells you this one is somehow indestructible."
 	not_damageable = 1
 	not_deconstructable = 1
 	unslashable = TRUE
@@ -809,7 +824,7 @@
 
 /obj/structure/window/framed/prison/reinforced
 	name = "reinforced window"
-	desc = "A glass window with a special rod matrice inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
 	reinf = 1
 	icon_state = "prison_rwindow0"
@@ -818,7 +833,7 @@
 
 /obj/structure/window/framed/prison/reinforced/hull
 	name = "hull window"
-	desc = "A glass window with a special rod matrice inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
+	desc = "A glass window with a special rod matrix inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
 	health = 200
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
 	var/triggered = 0 //indicates if the shutters have already been triggered
@@ -849,13 +864,13 @@
 	name = "cell window"
 	icon_state = "prison_cellwindow0"
 	basestate = "prison_cellwindow"
-	desc = "A glass window with a special rod matrice inside a wall frame."
+	desc = "A glass window with a special rod matrix inside a wall frame."
 
 //Biodome windows
 
 /obj/structure/window/framed/corsat
 	name = "reinforced window"
-	desc = "A glass window with a special rod matrice inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
 	health = 100
 	reinf = TRUE
 	icon = 'icons/turf/walls/windows_corsat.dmi'
@@ -864,14 +879,14 @@
 	window_frame = /obj/structure/window_frame/corsat
 
 /obj/structure/window/framed/corsat/research
-	desc = "A purple tinted glass window with a special rod matrice inside a wall frame. It looks quite strong. Might take some good hits to shatter it."
+	desc = "A purple tinted glass window with a special rod matrix inside a wall frame. It looks quite strong. Might take some good hits to shatter it."
 	health = 200
 	icon_state = "paddedresearch_rwindow0"
 	basestate = "paddedresearch_rwindow"
 	window_frame = /obj/structure/window_frame/corsat/research
 
 /obj/structure/window/framed/corsat/security
-	desc = "A red tinted glass window with a special rod matrice inside a wall frame. It looks very strong."
+	desc = "A red tinted glass window with a special rod matrix inside a wall frame. It looks very strong."
 	health = 300
 	icon_state = "paddedsec_rwindow0"
 	basestate = "paddedsec_rwindow"
@@ -881,7 +896,7 @@
 	name = "cell window"
 	icon_state = "padded_cellwindow0"
 	basestate = "padded_cellwindow"
-	desc = "A glass window with a special rod matrice inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	not_damageable = 1
 	not_deconstructable = 1
 	unacidable = TRUE
@@ -897,7 +912,7 @@
 
 /obj/structure/window/framed/corsat/hull
 	name = "hull window"
-	desc = "A glass window with a special rod matrice inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
+	desc = "A glass window with a special rod matrix inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
 	health = 200
 	var/triggered = FALSE //indicates if the shutters have already been triggered
 

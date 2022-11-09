@@ -1,0 +1,383 @@
+2022-05-01:
+  Geeves, monkeysfist101:
+  - rscadd: Yautja now have a falcon drone, a surveillance gadget that lets them scout
+      the hunting grounds.
+  - expansion: You can now examine when your vision is detached from your body (queen
+      eye, falcon drone, etc.)
+  Joooks:
+  - spellcheck: fixed typos in req vend AMG=AGM
+  Shad0vvs:
+  - bugfix: Allows those with 1 engineering skill to examine vehicles for damage.
+  - qol: Allowed evolving, strain purchasing, and the xeno mark system to be used
+      while resting.
+  stanalbatross:
+  - rscadd: 'Almayer: added a secondary prep room for latejoin POs and TCs north of
+      cryo, next to the alpha-bravo canteen.'
+  - tweak: 'Almayer: removed a duplicate officer vendor from the RO''s bedroom. They
+      already had one in their main office.'
+  - tweak: 'Almayer: shuffled around the spawn landmarks in cryo, generally adding
+      more variation and adding more spots for latejoins'
+  - bugfix: added back latejoin landmarks to cryo
+  - expansion: Cats will now meow at random intervals while not dead.
+  - qol: reduced the frequency of the queen ASMR breathing
+2022-05-02:
+  50RemAndCounting:
+  - qol: You can now examine medical storage rigs and lifesaver belts to check which
+      belt mode they're currently toggled to.
+  Git-Nivrak:
+  - bugfix: Fixed omni-sentries being un-activatable after being repaired
+  Shad0vvs:
+  - expansion: Adds a new ATM ability.
+  - soundadd: Added a cat meow sound.
+  VarenRoth:
+  - qol: CPR can only be performed by one person at a time, avoiding multiple people
+      causing CPR to fail.
+  stanalbatross:
+  - bugfix: fixed the garage on BR not having an APC, fixed the north storage dome
+      on LV not having an APC, fixed the hangar deployment workshop on the Almayer
+      not having an APC
+  - bugfix: making a blank mhelp will no longer qdel your client
+  - qol: mhelps can now be made from a big window rather than a small one
+  - qol: you can now cancel the making of mhelps
+  - qol: added a ghost darkness level preference, can be configured in the settings
+      tab of the character menu.
+  - qol: your ghost darkness level preference will now save when you change it as
+      a ghost.
+  - qol: your ghost darkness level preference will load automatically when you ghost
+      or observe.
+  - qol: when switching darkness level as a ghost, you are told what mode you're switching
+      to.
+2022-05-03:
+  Spircen:
+  - rscdel: VC no longer has the same size of voice to CIC personal.
+  stanalbatross:
+  - bugfix: fixed CLF survivors having marine IFF (and by extension fixed them being
+      shot by their own sentries)
+2022-05-04:
+  50RemAndCounting:
+  - balance: Rebalanced the USCM Service Jacket and some of the Commanding Officer-exclusive
+      jackets to not have the exact same protection stats as the M3 light armour.
+      These jackets can now hold a machete scabbard in their exosuit slot as well.
+  ChainsawMullet:
+  - balance: Hunter Chainwhip attack speed increased by 20% (from 1.0 to .8)
+  - balance: Hunter Clansword attack speed reduced by 10% (from .9 to 1.0), parry
+      duration reduced by 50% (from 3 seconds to 1.5 seconds)
+  - balance: Hunter Glaive throw damage reduced by 50% (from 30 to 15)
+  Triiodine, Monkeysfist101:
+  - rscadd: Re-added Sorokyne Strata to rotation. Applied a bunch of much needed fixes
+      and also new unique turfs.
+  monkeysfist:
+  - imageadd: Tweaked ballcap sprites
+2022-05-05:
+  PhantomEpicness:
+  - bugfix: Fixed flare gun storage. They should now be able to be put in shoulder
+      holsters and other weapon storage.
+  Segrain:
+  - bugfix: Acting squad leaders once again get loud radio voice and advanced pointing
+      skills.
+  - bugfix: Thrown items now properly attribute their damage in tracking statistics.
+2022-05-06:
+  Diegoflores31:
+  - bugfix: Fixed MedHUD to match its On_mob state
+  Git-Nivrak:
+  - bugfix: Fixed a few bugs with warrior lunge and grab
+  forest2001:
+  - rscadd: Falcon Drone can now fly over most dense objects provided they are not
+      walls. Also changed Falcon's hologram description.
+  - code_imp: Yautja and Thrall gear selects now mostly use defines so there is less
+      duplication of long name strings.
+2022-05-07:
+  50RemAndCounting:
+  - qol: Helmetless marines on Squad Overwatch Consoles now have a special status
+      message indicating they're not wearing a helmet. Players no longer have to manually
+      click on every marine's name to check if they're wearing a helmet or not.
+  Segrain:
+  - bugfix: Predators recalling combisticks and smartdiscs no longer get phantom duplicates.
+  Spircen:
+  - bugfix: MRE Matchbook and Cigarrete now can be store on helmets
+  - bugfix: MRE Matchbook weight its now tiny
+2022-05-08:
+  Geevies:
+  - rscdel: Yautja no longer have a Queen Stomp emote.
+  Git-Nivrak:
+  - rscadd: Adds missing vehicle blockers in shivas around research and Med-Sec-Sci
+      megastructure
+  TotalEpicness:
+  - spellcheck: Fixed several typos. Immersion restored.
+  stanalbatross:
+  - balance: the medilathe can now print medevac stretchers, fixovein, and bone gel.
+  - bugfix: onmob sprites for glasses with huds will no longer "stick" on your eyes
+      when you take them off.
+  - qol: when you are un-nested and can return to your body, a loud sound will play
+      and your taskbar icon will flash (can be toggled off in preferences)
+2022-05-09:
+  Geeves, Frans_Feiffer, Triiodine:
+  - rscadd: Added pred hairstyles, sprited by Frans.
+  - rscadd: Added colorable pred capes, sprited by Frans.
+  - rscadd: Added plasma caster materials (retro still available), sprited by Frans.
+  - imageadd: Fixed various pred weapons not being aligned correctly, body mesh on-mob
+      and inventory state being mixed up, ceremonial dagger not having in-hand state,
+      sprites by Geeves.
+  - imageadd: Resprited the yautja ceremonial cape, sprites by Triiodine.
+  Geevies:
+  - admin: Admin PMs will now probably always go to the right person.
+  - rscadd: When you're on fire, you will now scream in pain every now and then.
+  - refactor: 'Re-did a lot of card-handling code, check Github PR #233 for more info.
+      In general, it should be a lot easier to play now.'
+  Shad0vvs:
+  - bugfix: Fixed the semiotics signs at engineering on LV.
+  - bugfix: Fixed the Normandy landing lights on LV to properly sync.
+  TotalEpicness:
+  - rscadd: Added the ES-11 small pressure tank! A robust little pressurized canister
+      that is small enough to fit in most bags and made for use with welding fuel.
+      Thanks to Triiodine for the sprite for this one.
+  - expansion: Backpack Welding tanks are no longer bulletproof. They will explode
+      upon enough penetrating force
+  - rscadd: Added the MS-11, just like the ES-11 but for medical usage. The MS-11
+      is able to refill most, if not all standard autoinjectors (no emergency/custom)
+      and can fill multiple different types as long as it has enough reagents to fill
+      them completely. Cannot partially refill autoinjectors.
+  harryob:
+  - spellcheck: You are now properly chelated in an autodoc
+  joookschad:
+  - spellcheck: You are now properly told that you CAN make an egg as Eggsac Carrier.
+2022-05-11:
+  Waseemq1235:
+  - balance: Dutch's Dozen leader thermals are now EMP proof. They will no longer
+      blind themselves with their own grenades.
+  stanalbatross:
+  - bugfix: your xeno night vision level will now switch according to preference when
+      spawning in via chestbursting and via the spawn pool.
+2022-05-12:
+  50RemAndCounting:
+  - balance: The M46C pulse rifle is now able to be melted by xenomorphs again. The
+      Command Tablet is now unmeltable.
+  CocaColaTastesGood:
+  - bugfix: Fixes an exploit that allowed players to arbitrarily spawn items using
+      the dress vendor.
+  GabeGnuwall:
+  - spellcheck: Updated the follow link from "follow" to "F" on dchat messages to
+      be consistent with others.
+  Geevies:
+  - balance: Bipods can now fire in a near-180 degree arc rather than a 90 degree
+      one.
+  - refactor: Changed the movement handler code to use signals rather than a looping
+      proc with a lot of datums. Some stuff may be broken, so make a Github Issue
+      if you see one.
+  - rscadd: Synths now have synthskin limbs, have white blood splatters when struck,
+      and have unique damage descriptors.
+  - rscadd: You can now do surgery on synths. You can repair their robotic organs
+      with nanopaste or cable coil. You don't have to clamp their bleeders, either.
+  - balance: Increased xeno acid blood damage from 12 to 25.
+  - balance: Increased Heavy armor bio resistance from CLOTHING_ARMOR_MEDIUMLOW (15)
+      to CLOTHING_ARMOR_HIGH (30).
+  - rscadd: Gardener drones can now designate and build special structures like hive
+      clusters and evo pods.
+  - rscadd: Added an Alacrit fruit to Gardener drones that slightly speeds up the
+      xeno that eats it for 15 seconds.
+  - balance: Resin surge now strengthens structures for 15 seconds rather than 3.
+  - balance: Gardener drones can now plant 4 fruits rather than 3.
+  - balance: Ovi'd queens can now only build thick walls/doors/membrane on hiveweeds,
+      otherwise it'll just be normal. Building them costs an amount of plasma roughly
+      in the middle of the two. The queen can build thick structures on normal weeds
+      while her building is boosted (first 30 minutes of the round).
+  - balance: Ovi'd queens can no longer be fed plasma by drones.
+  Shad0vvs:
+  - bugfix: Examining vehicles as a xenomorph now tells you the correct amount of
+      hosts inside.
+  - bugfix: Properly fixes an unnesting bug and now also logs the unnest on the unnesting
+      mob as well.
+  Triiodine:
+  - bugfix: bad offsets in the kitchen.
+  Waseemq1235:
+  - bugfix: Shoulder holsters can fit tasers now.
+  fira:
+  - bugfix: Resolved issues with Reboot SFX hanging up reboot, and failing to play
+      in docker container
+  stanalbatross:
+  - rscadd: Japanese-language text will now sound much more Japanese, as the entire
+      system of generating it was reworked to make it consistent 100% with real Japanese.
+  - rscadd: added a 50% chance for CLF characters to get a randomly generated Japanese
+      name.
+2022-05-13:
+  ghostsheet:
+  - rscadd: Added a survival cabinet to the Lifeboats.
+2022-05-14:
+  Segrain:
+  - bugfix: Human limbs are robotic no longer.
+  Spircen:
+  - bugfix: Added Caps on some areas to keep consistency on the format for the Sensor
+      Computer
+  nanu308, stan_albatross:
+  - balance: being direction locked and not moving in the direction your character
+      is facing will now slow you down a bit.
+  silencer_pl:
+  - bugfix: M56 head mounted sights now properly spawn for Whiskey Outpost Smartgunners.
+  stanalbatross:
+  - bugfix: when evolving/deevolving as a xeno, your life kills and life damage will
+      now carry over between bodies
+2022-05-15:
+  Geevies:
+  - rscadd: Items held in the mouth like knives or cigarettes now fall out when you
+      get knocked over.
+  - rscadd: You can now light and extinguish cigarettes on the ground, as well as
+      cigarettes held on someone's person by extinguishing them. Getting lit on fire
+      while holding an unlit cigarette will now light it.
+  - bugfix: You will no longer spam scream when you get lit on fire while already
+      lit on fire.
+  Hatterhat:
+  - rscadd: Marines can now style their hair in the fashion historically designated
+      "Short Hair 3".
+  Morrow:
+  - rscadd: Slight change to CAS deployed turrets description.
+  nauticall:
+  - admin: Admins can now modify requisitions points via a button in the Event Panel.
+2022-05-16:
+  Morrow:
+  - rscadd: You can now engrave your zippo lighter with a bayonet.
+  TotalEpicness:
+  - bugfix: MS-11 can now be named with the hand labler
+  ghostsheet:
+  - bugfix: M240 Flamethrower crate now contains Pyrotechnician G4-1 fueltank instead
+      of Broiler-T flexible refueling system.
+2022-05-17:
+  Geevies:
+  - refactor: Refactored Yautja item tracking code to be more robust, everything should
+      still work as expected. You can add or remove any item from the tracking system
+      by holding it in your active hand and using the Add Item or Remove Item in the
+      tracker tab.
+  - bugfix: Fixed up the jobs for Dutch's Dozen, they should appear correctly in-game
+      now.
+  Morrow:
+  - bugfix: Portable comms should now update its description correctly while building.
+  silencer_pl:
+  - rscadd: Whiskey Outpost CO's now spawn in with their unique command pouch like
+      their regular counterparts.
+  - rscadd: Whiskey Outpost CO's now have access to the same cosmetic gear options
+      as their regular counterparts.
+2022-05-18:
+  Geevies:
+  - rscadd: Gave synths dead, DNR, dead but disconnected MedHUD states.
+  Git-Nivrak:
+  - bugfix: Fixed a bug with warrior which would make you reset the stun timer on
+      mobs you stop pulling that weren't lunged.
+  Youtubeboy139:
+  - imageadd: New Coffee/Tea sprites
+  - imageadd: New water cup sprites
+  - imageadd: New canned soda sprites
+  - rscadd: New BODA can
+  - imageadd: New Changeling Sting sprite
+  - imageadd: New OG flask sprites (bar flask and detective flask)
+  - imageadd: New coffee mug sprites
+  - imageadd: New reagent carton sprites (cream, lime juice, etc.)
+  - rscadd: New WY flask
+  - rscadd: New Classic Cola drink (for future map development and admin use)
+  - rscadd: Fruit Beer reagent (better separate Classic Cola and WY Fruit Beer)
+  - rscadd: Changed name of Beer bottle and Ale Bottle as both are now a canned beverage
+  - code_imp: Organized the Canned Drink code to better separate it by type
+  - imageadd: New colored jumpsuit sprites
+  stanalbatross:
+  - balance: removed the surgical webbing vest from doctor and CMO vendors.
+2022-05-19:
+  Segrain:
+  - bugfix: Some edge case attack messages are now displayed under proper chat filters.
+  harryob:
+  - qol: Observers can now look at the current page of a paper bundle.
+  stanalbatross:
+  - rscadd: added a preference to show your country flag by your name in ooc chat,
+      turned off by default. If turned on it will show a flag based on where your
+      IP is connecting from in OOC chat before your name.
+  - config: added a config option to disable the above, turned on by default.
+2022-05-21:
+  Geevies:
+  - refactor: Tweaked how the Examine, Pickup, and Pull verbs work, they should still
+      function as normal however.
+  - rscdel: Removed the move to top object verb.
+  Youtubeboy139:
+  - imageadd: New static siphon sprites
+  - imageadd: New static scrubber sprites
+  - imageadd: New `-open` and `-connector` sprites for portable scrubber and portable
+      siphon
+  - imageadd: New `-open` and `-connector` sprites for cans
+  - imageadd: New `sheater` default sprite (no more perpetually glowing space heater)
+  stanalbatross:
+  - rscdel: removed and replaced all visible references to bluespace.
+2022-05-22:
+  CocaColaTastesGood:
+  - bugfix: Sanitizes the Anti-Air controller.
+  - bugfix: Fixes an exploit that allowed items to be spawned in null space.
+  Git-Nivrak:
+  - bugfix: Fixes an unintended behavior removal as a side effect from the previous
+      MR regarding this
+  Morrow:
+  - bugfix: You will no longer be permanently slow if you field strip a deployed bipod.
+  ghostsheet:
+  - bugfix: Canister Pouch's Pressuzied canister can now be filled from bottles again.
+2022-05-23:
+  Youtubeboy139:
+  - imageadd: New Shoulder Holster item sprite
+  - imageadd: New Shoulder Holster onmob sprite
+  stanalbatross:
+  - bugfix: fixed paper from photocopiers not looking like it was written on when
+      coming out.
+2022-05-25:
+  Geevies:
+  - rscadd: Added a general shotgun fire delay group, while rewriting fire delay code
+      to only factor in remaining fire delays. This'll prevent the infamous double
+      chung playstyle by making it useless to carry two of the same kind of shotgun
+      loaded with the same ammo.
+  stanalbatross:
+  - balance: widened BR viro entrances and made the external walls breachable
+2022-05-26:
+  Git-Nivrak:
+  - bugfix: Fixed an exploit with CL briefcase
+  harryob:
+  - bugfix: autopsy scanners now give the correct date of death, and date of injury
+  silencer_pl:
+  - bugfix: Whiskey Outpost Smartgun using roles (HG Team Leader and Smartgunner)
+      now properly spawn with M56 visors equipped (for real this time)
+  stanalbatross:
+  - qol: added action buttons for the "word of the queen" and "view xeno tacmap" verbs
+      to the queen.
+2022-05-27:
+  Youtubeboy139:
+  - imageadd: New goggle sprites
+  - code_imp: Changes the legacy Night Vision goggles into CM style NVGs
+2022-05-28:
+  Shad0vvs:
+  - bugfix: Fixed OOC flag pref's modifying other prefs.
+  spartanbobby:
+  - bugfix: Almayer, Replaced hull windows in the execution room with reinforced windows
+      at nanus request
+  - rscadd: Almayer, Added reinforced glass to brig maint
+  - rscdel: Almayer, Removed a coffee sign that was in the glass and was two tiles
+      west of another coffee sign
+  - rscadd: Almayer, Did some tiling around the Almayer to make it look a little bit
+      more pretty
+2022-05-29:
+  Geevies:
+  - rscadd: Added a domestics skill, buffed mops. They now work faster, hold more
+      water, and have visual feedback to its operation.
+  - rscadd: Having a higher domestics skill now lets you operate microwaves and gibbers
+      faster.
+  - rscadd: You can now strike matches against your boots. Matches are also easier
+      to click now.
+  Shad0vvs:
+  - bugfix: Prevents Xeno abilities in tunnels.
+2022-05-30:
+  Git-Nivrak:
+  - refactor: refactored collapsible stock code to make it more modular
+2022-05-31:
+  CocaColaTastesGood:
+  - bugfix: Fixes an exploit
+  PurpleCIoud:
+  - imageadd: Replaced sprites of stew and fish fingers to better ones
+  Youtubeboy139:
+  - imageadd: New Powerloader clamp sprites
+  - imageadd: New pest spray sprite
+  - imageadd: New weed spray sprite
+  - imageadd: New plant-b-gone sprite
+  - imageadd: New chem sprayer sprite
+  - imageadd: New generic spray bottle
+  - imageadd: New cleaner bottle
+  - imageadd: New hydrospray bottle

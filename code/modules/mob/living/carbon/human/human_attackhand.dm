@@ -1,4 +1,5 @@
 /mob/living/carbon/human/var/cpr_cooldown
+/mob/living/carbon/human/var/cpr_attempt_timer
 /mob/living/carbon/human/attack_hand(mob/living/carbon/human/M)
 	if(..())
 		return TRUE
@@ -26,10 +27,13 @@
 				return 1
 
 			if(M.head && (M.head.flags_inventory & COVERMOUTH) || M.wear_mask && (M.wear_mask.flags_inventory & COVERMOUTH) && !(M.wear_mask.flags_inventory & ALLOWCPR))
-				to_chat(M, SPAN_NOTICE(" <B>Remove your mask!</B>"))
+				to_chat(M, SPAN_NOTICE("<B>Remove your mask!</B>"))
 				return 0
 			if(head && (head.flags_inventory & COVERMOUTH) || wear_mask && (wear_mask.flags_inventory & COVERMOUTH) && !(wear_mask.flags_inventory & ALLOWCPR))
-				to_chat(M, SPAN_NOTICE(" <B>Remove [src.gender==MALE?"his":"her"] mask!</B>"))
+				to_chat(M, SPAN_NOTICE("<B>Remove [src.gender==MALE?"his":"her"] mask!</B>"))
+				return 0
+			if(cpr_attempt_timer >= world.time)
+				to_chat(M, SPAN_NOTICE("<B>CPR is already being performed on [src]!</B>"))
 				return 0
 
 			//CPR
@@ -39,6 +43,7 @@
 			M.visible_message(SPAN_NOTICE("<b>[M]</b> starts performing <b>CPR</b> on <b>[src]</b>."),
 				SPAN_HELPFUL("You start <b>performing CPR</b> on <b>[src]</b>."))
 
+			cpr_attempt_timer = world.time + HUMAN_STRIP_DELAY * M.get_skill_duration_multiplier(SKILL_MEDICAL)
 			if(do_after(M, HUMAN_STRIP_DELAY * M.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				if(stat != DEAD)
 					var/suff = min(getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dieing.
@@ -57,7 +62,7 @@
 						M.visible_message(SPAN_NOTICE("<b>[M]</b> fails to perform CPR on <b>[src]</b>."),
 							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
 					cpr_cooldown = world.time + 7 SECONDS
-
+			cpr_attempt_timer = 0
 			return 1
 
 		if(INTENT_GRAB)
@@ -231,13 +236,14 @@
 	visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."), \
 	SPAN_NOTICE("You check yourself for injuries."), null, 3)
 
+	var/list/limb_message = list()
 	for(var/obj/limb/org in limbs)
 		var/list/status = list()
 		var/brutedamage = org.brute_dam
 		var/burndamage = org.burn_dam
 		if(org.status & LIMB_DESTROYED)
 			status += "MISSING!"
-		else if(org.status & LIMB_ROBOT)
+		else if(org.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			switch(brutedamage)
 				if(1 to 20)
 					status += "dented"
@@ -300,6 +306,7 @@
 			postscript += " <b>(SPLINTED)</b>"
 
 		if(postscript)
-			to_chat(src, "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]")
+			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"
 		else
-			to_chat(src, "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]")
+			limb_message += "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]"
+	to_chat(src, examine_block(limb_message.Join("\n")))

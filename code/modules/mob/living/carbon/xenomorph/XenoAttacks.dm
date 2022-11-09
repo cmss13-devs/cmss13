@@ -134,15 +134,15 @@
 				SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
 
-			M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
-			SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			M.visible_message(SPAN_DANGER("\The [M] [slashes_verb] [src]!"), \
+			SPAN_DANGER("You [slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			last_damage_data = create_cause_data(initial(M.name), M)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)]</font>")
-			M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
-			log_attack("[key_name(M)] slashed [key_name(src)]")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was [slash_verb]ed by [key_name(M)]</font>")
+			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[slash_verb]ed [key_name(src)]</font>")
+			log_attack("[key_name(M)] [slash_verb]ed [key_name(src)]")
 
 			M.flick_attack_overlay(src, "slash")
-			playsound(loc, "alien_claw_flesh", 25, 1)
+			playsound(loc, slash_sound, 25, 1)
 			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
 
 			if(M.behavior_delegate)
@@ -155,17 +155,18 @@
 		if(INTENT_DISARM)
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "disarm")
-			if(!(isXenoQueen(M)) || M.hivenumber != src.hivenumber)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
-				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \
-				SPAN_WARNING("You shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				if(ismonkey(src))
-					KnockDown(8)
-			else
+			var/is_shover_queen = isXenoQueen(M)
+			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isXenoQueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
+			var/can_mega_shove = is_shover_queen || IS_XENO_LEADER(M)
+			if(can_mega_shove && !can_resist_shove)
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
 				SPAN_WARNING("You shove \the [src] out of your way!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				src.KnockDown(1)
+			else
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
+				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \
+				SPAN_WARNING("You shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
 /mob/living/carbon/Xenomorph/proc/attempt_headbutt(var/mob/living/carbon/Xenomorph/target)

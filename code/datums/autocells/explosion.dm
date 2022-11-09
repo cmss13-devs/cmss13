@@ -253,12 +253,24 @@
 	if(!epicenter)
 		return
 
+	if(!istype(explosion_cause_data))
+		if(explosion_cause_data)
+			stack_trace("cell_explosion called with string cause ([explosion_cause_data]) instead of datum")
+			explosion_cause_data = create_cause_data(explosion_cause_data)
+		else
+			stack_trace("cell_explosion called without cause_data.")
+			explosion_cause_data = create_cause_data("Explosion")
+
 	falloff = max(falloff, power/100)
 
 	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff], Shape: [falloff_shape] in [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", epicenter.x, epicenter.y, epicenter.z)
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
-	playsound(epicenter, "explosion", 75, 1, max(round(power,1),7))
+
+	if(power >= 300) //Make BIG BOOMS
+		playsound(epicenter, "bigboom", 80, 1, max(round(power,1),7))
+	else
+		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
 
 	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
 
@@ -307,7 +319,7 @@
 				M.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
 
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
-				var/ff_msg = "[key_name(firing_mob)] blew up [key_name(M)] with \a [explosion_source] in [get_area(T)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP LOC</a>) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP SRC</a>) (<a href='?priv_msg=\ref[firing_mob.client]'>PM</a>)"
+				var/ff_msg = "[key_name(firing_mob)] blew up [key_name(M)] with \a [explosion_source] in [get_area(T)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP LOC</a>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP SRC</a>) ([firing_mob.client ? "<a href='?priv_msg=[firing_mob.client.ckey]'>PM</a>" : "NO CLIENT"])"
 				var/ff_living = TRUE
 				if(M.stat == DEAD)
 					ff_living = FALSE

@@ -251,9 +251,9 @@
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/ice)
 "dS" = (
-/turf/open/floor/corsat,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
 /area/corsat/sigma/biodome/ice)
 "dT" = (
 /obj/vehicle/train/cargo/engine,
@@ -348,13 +348,10 @@
 /turf/open/floor/plating,
 /area/corsat/inaccessible)
 "fT" = (
-
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
-"fX" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/corsat,
-/area/corsat/emergency_access)
 "gd" = (
 /obj/item/tool/shovel,
 /turf/open/auto_turf/snow/layer4,
@@ -473,13 +470,13 @@
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
 "ih" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/corsat/sigma/biodome/ice)
+/area/corsat/sigma/biodome/gunrange)
 "io" = (
 /obj/effect/alien/weeds/node,
 /turf/open/ice,
@@ -500,7 +497,6 @@
 "iL" = (
 /obj/structure/surface/table/almayer,
 /obj/item/folder/black_random,
-
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -542,7 +538,6 @@
 /area/corsat/sigma/biodome/ice)
 "jy" = (
 /obj/effect/decal/cleanable/blood/splatter,
-
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -707,7 +702,6 @@
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
 "mU" = (
-
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/snow_suit,
 /obj/item/clothing/suit/storage/snow_suit,
@@ -772,10 +766,10 @@
 /turf/template_noop,
 /area/template_noop)
 "nB" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/ice,
-/area/corsat/sigma/biodome/ice)
+/area/corsat/sigma/biodome/scrapyard)
 "nI" = (
 /obj/structure/bed/nest,
 /obj/effect/landmark/corpsespawner/scientist,
@@ -828,9 +822,6 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/ice)
-"oM" = (
-/turf/open/auto_turf/snow/layer2,
-/area/corsat/sigma/biodome/scrapyard)
 "oS" = (
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/snow/layer1,
@@ -854,7 +845,6 @@
 /area/corsat/sigma/biodome/ice)
 "pC" = (
 /obj/structure/filingcabinet/filingcabinet,
-
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -976,15 +966,6 @@
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
-"sS" = (
-/obj/effect/landmark/corpsespawner/PMC,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/corsat/sigma/biodome/gunrange)
 "sT" = (
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/sigma/biodome/gunrange)
@@ -1079,7 +1060,6 @@
 "us" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight,
-
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "red"
@@ -1485,6 +1465,7 @@
 "AJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -1495,7 +1476,7 @@
 /obj/structure/largecrate/supply/ammo/m39{
 	desc = "An ammunition case containing eight M39 magazines. This one has already been opened.";
 	name = "\improper M39 magazine case (x8)";
-	supplies = list(/obj/item/ammo_magazine/smg/m39 = 3)
+	supplies = list(/obj/item/ammo_magazine/smg/m39=3)
 	},
 /turf/open/floor{
 	icon_state = "asteroidplating";
@@ -1594,7 +1575,7 @@
 /obj/structure/largecrate/supply/ammo/pistol{
 	desc = "An ammunition case containing six M44 speedloaders, and eight M4A3 magazines.";
 	name = "sidearm ammunition case (x14)";
-	supplies = list(/obj/item/ammo_magazine/revolver = 6, /obj/item/ammo_magazine/pistol = 8)
+	supplies = list(/obj/item/ammo_magazine/revolver=6,/obj/item/ammo_magazine/pistol=8)
 	},
 /turf/open/floor{
 	icon_state = "asteroidplating";
@@ -1605,7 +1586,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/explosive/grenade/incendiary,
 /obj/item/explosive/grenade/incendiary,
-
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -1615,7 +1595,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/explosive/grenade/smokebomb,
 /obj/item/explosive/grenade/smokebomb,
-
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -1664,7 +1643,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/explosive/grenade/HE,
 /obj/item/explosive/grenade/HE,
-
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -1680,7 +1658,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/explosive/grenade/HE/training,
 /obj/item/explosive/grenade/HE/training,
-
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -1703,14 +1680,12 @@
 /area/corsat/sigma/biodome/gunrange)
 "Dp" = (
 /obj/structure/closet/wardrobe/atmospherics_yellow,
-
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "yellow"
 	},
 /area/corsat/sigma/airlock/control)
 "Ds" = (
-
 /obj/structure/surface/rack,
 /obj/item/clothing/shoes/snow,
 /obj/item/clothing/shoes/snow,
@@ -1773,7 +1748,7 @@
 /obj/structure/largecrate/supply/ammo/m41a{
 	desc = "An ammunition case containing 10 M41A magazines.";
 	name = "\improper M41A magazine case (x10)";
-	supplies = list(/obj/item/ammo_magazine/rifle = 10)
+	supplies = list(/obj/item/ammo_magazine/rifle=10)
 	},
 /turf/open/floor{
 	icon_state = "asteroidplating";
@@ -1813,7 +1788,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/explosive/grenade/flashbang,
 /obj/item/explosive/grenade/flashbang,
-
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -1822,7 +1796,6 @@
 "Fu" = (
 /obj/structure/surface/table/almayer,
 /obj/item/explosive/grenade/HE/training,
-
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -1889,7 +1862,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/explosive/grenade/HE/frag,
 /obj/item/explosive/grenade/HE/frag,
-
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -1918,7 +1890,6 @@
 	start_charge = 0
 	},
 /obj/structure/closet/wardrobe/atmospherics_yellow,
-
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "yellow"
@@ -1938,7 +1909,6 @@
 "GW" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
-
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -2026,7 +1996,6 @@
 	},
 /area/corsat/sigma/airlock/control)
 "Iw" = (
-
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
 "ID" = (
@@ -2137,7 +2106,6 @@
 "Ku" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp,
-
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -2145,13 +2113,11 @@
 "Kw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/folder/black_random,
-
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
 /area/corsat/sigma/airlock/control)
 "KA" = (
-
 /obj/structure/surface/rack,
 /obj/item/tool/shovel,
 /obj/item/tool/shovel,
@@ -2163,7 +2129,6 @@
 /area/corsat/sigma/biodome/ice)
 "KF" = (
 /obj/structure/surface/table/almayer,
-
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -2214,7 +2179,6 @@
 "Lr" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp,
-
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "blue"
@@ -2270,6 +2234,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -2304,7 +2269,6 @@
 "Ns" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/item_pool_spawner/corsat_bio_lock,
-
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "blue"
@@ -2413,7 +2377,6 @@
 	pixel_y = 5;
 	use_power = 0
 	},
-
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "blue"
@@ -2456,7 +2419,6 @@
 	pixel_x = -5;
 	use_power = 0
 	},
-
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -2468,7 +2430,6 @@
 "PZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight,
-
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -2483,7 +2444,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /obj/item/tool/pen/red,
-
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "red"
@@ -2511,7 +2471,6 @@
 /obj/item/clipboard,
 /obj/item/paper,
 /obj/item/tool/pen/red,
-
 /turf/open/floor/corsat{
 	icon_state = "blue"
 	},
@@ -2531,7 +2490,6 @@
 "QU" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/camera,
-
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "blue"
@@ -2546,7 +2504,6 @@
 	dir = 8
 	},
 /obj/structure/closet/firecloset,
-
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -2607,7 +2564,6 @@
 	pixel_x = 5;
 	use_power = 0
 	},
-
 /turf/open/floor/corsat{
 	icon_state = "blue"
 	},
@@ -2615,7 +2571,6 @@
 "RD" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
-
 /turf/open/floor/corsat{
 	icon_state = "blue"
 	},
@@ -2661,7 +2616,6 @@
 /area/corsat/sigma/biodome/ice)
 "Sm" = (
 /obj/structure/closet/emcloset,
-
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -2680,7 +2634,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "Sy" = (
-/obj/effect/landmark/survivor_spawn,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -2766,7 +2720,6 @@
 	},
 /area/corsat/sigma/airlock/control)
 "Uu" = (
-
 /obj/structure/closet/athletic_mixed,
 /turf/open/floor{
 	dir = 1;
@@ -2783,7 +2736,6 @@
 /area/corsat/sigma/biodome/ice)
 "UF" = (
 /obj/effect/decal/mecha_wreckage/hoverpod,
-
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "UW" = (
@@ -2860,7 +2812,6 @@
 /area/corsat/inaccessible)
 "VL" = (
 /obj/structure/closet/secure_closet/security,
-
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -2878,7 +2829,6 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft,
 /obj/structure/machinery/door/window/brigdoor/eastleft,
-
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -2921,7 +2871,6 @@
 "WW" = (
 /obj/item/folder/black_random,
 /obj/structure/surface/table/reinforced,
-
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -2964,7 +2913,6 @@
 /area/corsat/sigma/biodome/ice)
 "XG" = (
 /obj/structure/closet/emcloset,
-
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -2972,7 +2920,6 @@
 "XK" = (
 /obj/structure/machinery/light,
 /obj/structure/closet/firecloset,
-
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -3030,8 +2977,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "YC" = (
-/obj/effect/landmark/survivor_spawn,
-
+/obj/effect/landmark/survivor_spawner,
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "YF" = (
@@ -3076,12 +3022,10 @@
 /area/corsat/sigma/airlock/control)
 "YX" = (
 /obj/effect/decal/cleanable/dirt,
-
 /turf/open/floor/corsat,
 /area/corsat/emergency_access)
 "Zd" = (
 /obj/structure/machinery/photocopier,
-
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -3121,7 +3065,6 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/donut_box,
 /obj/item/tool/lighter/random,
-
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "red"
@@ -4429,7 +4372,7 @@ TX
 cf
 TX
 TX
-Bf
+fT
 RM
 TX
 nq
@@ -4589,7 +4532,7 @@ RM
 TX
 TX
 TX
-fT
+TX
 TX
 sA
 TX
@@ -4993,7 +4936,7 @@ cI
 TX
 TX
 cf
-fT
+TX
 TX
 yY
 RM
@@ -5078,7 +5021,7 @@ aO
 TX
 YC
 TX
-Bf
+nB
 TX
 nq
 Zf
@@ -5094,7 +5037,7 @@ Zf
 Dw
 UX
 yh
-fX
+YX
 "}
 (25,1,1) = {"
 yX
@@ -5359,7 +5302,7 @@ YN
 Zr
 Zr
 lr
-nB
+gr
 Wk
 Wk
 Wk
@@ -5395,15 +5338,15 @@ Zf
 np
 ol
 TX
-fT
+TX
 RM
 TX
 TX
 bz
 ol
 oK
-oM
-oM
+Iw
+Iw
 np
 pz
 bs
@@ -5476,7 +5419,7 @@ Zf
 nq
 oK
 oK
-oM
+Iw
 QD
 TX
 LS
@@ -5484,7 +5427,7 @@ TX
 oS
 TB
 cA
-oM
+Iw
 nq
 pz
 bs
@@ -5557,15 +5500,15 @@ Zf
 nq
 yL
 oK
-oM
+Iw
 cH
 TX
 yT
 TX
 oi
 oS
-oM
-oM
+Iw
+Iw
 nq
 pz
 bs
@@ -5638,13 +5581,13 @@ Zf
 nq
 oK
 oS
-oM
+Iw
 hZ
 TX
 TX
 TX
-oM
-oM
+Iw
+Iw
 oK
 nP
 nq
@@ -5717,16 +5660,16 @@ Zf
 be
 be
 np
-oM
-oM
-oM
+Iw
+Iw
+Iw
 Iw
 cA
 oK
-oM
-oM
+Iw
+Iw
 cA
-oM
+Iw
 cA
 np
 Zf
@@ -6344,7 +6287,7 @@ ZL
 bN
 cJ
 bN
-bN
+ih
 At
 bN
 bN
@@ -6365,9 +6308,9 @@ hH
 hH
 hH
 hH
-ih
-ih
-ih
+jy
+jy
+jy
 jy
 hH
 hH
@@ -6430,7 +6373,7 @@ bN
 bN
 bN
 Db
-ih
+jy
 hH
 kl
 hH
@@ -6446,7 +6389,7 @@ hH
 hH
 hH
 eV
-ih
+jy
 hH
 hH
 hH
@@ -6512,7 +6455,7 @@ bN
 bN
 fs
 hH
-ih
+jy
 kl
 hH
 hH
@@ -6526,7 +6469,7 @@ mY
 mY
 mY
 mY
-ih
+jy
 hH
 hH
 hH
@@ -6908,7 +6851,7 @@ oW
 ar
 rP
 bN
-sS
+sx
 cJ
 Xm
 Xm
@@ -6989,7 +6932,7 @@ aI
 ar
 rP
 bN
-bN
+ih
 cJ
 Xm
 Xm

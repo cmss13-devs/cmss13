@@ -24,6 +24,14 @@
 
 #define CLAN_RANK_ADMIN         "Ancient" // Must be given by someone with CLAN_PERMISSION_ADMIN_MODIFY
 
+#define CLAN_RANK_UNBLOODED_INT 1
+#define CLAN_RANK_YOUNG_INT 2
+#define CLAN_RANK_BLOODED_INT 3
+#define CLAN_RANK_ELITE_INT 4
+#define CLAN_RANK_ELDER_INT 5
+#define CLAN_RANK_LEADER_INT 6
+#define CLAN_RANK_ADMIN_INT 7
+
 #define CLAN_LIMIT_NUMBER 1 // Hard limit
 #define CLAN_LIMIT_SIZE 2 // Scales with clan size
 
@@ -38,13 +46,13 @@ var/global/list/datum/rank/clan_ranks = list(
 )
 
 var/global/list/clan_ranks_ordered = list(
-    CLAN_RANK_UNBLOODED = 1,
-    CLAN_RANK_YOUNG = 2,
-    CLAN_RANK_BLOODED = 3,
-    CLAN_RANK_ELITE = 4,
-    CLAN_RANK_ELDER = 5,
-    CLAN_RANK_LEADER = 6,
-    CLAN_RANK_ADMIN = 7
+    CLAN_RANK_UNBLOODED = CLAN_RANK_UNBLOODED_INT,
+    CLAN_RANK_YOUNG = CLAN_RANK_YOUNG_INT,
+    CLAN_RANK_BLOODED = CLAN_RANK_BLOODED_INT,
+    CLAN_RANK_ELITE = CLAN_RANK_ELITE_INT,
+    CLAN_RANK_ELDER = CLAN_RANK_ELDER_INT,
+    CLAN_RANK_LEADER = CLAN_RANK_LEADER_INT,
+    CLAN_RANK_ADMIN = CLAN_RANK_ADMIN_INT
 )
 
 #define CLAN_HREF "clan_href"

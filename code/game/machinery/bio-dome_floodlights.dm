@@ -5,7 +5,7 @@
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
 	density = 0
 	anchored = 1
-	var/ispowered = 0
+	var/ispowered = FALSE
 	var/turned_on = 0 //has to be toggled in engineering
 	use_power = 1
 	unslashable = TRUE
@@ -40,11 +40,11 @@
 	if((stat & NOPOWER))
 		if(ispowered && turned_on)
 			toggle_lights()
-		ispowered = 0
+		ispowered = FALSE
 		turned_on = 0
 		update_icon()
 	else
-		ispowered = 1
+		ispowered = TRUE
 		update_icon()
 
 /obj/structure/machinery/hydro_floodlight_switch/proc/toggle_lights()
@@ -106,6 +106,9 @@
 	var/obj/item/tool/weldingtool/WT = W
 	if(istype(WT))
 		if(!damaged) return
+		if(!HAS_TRAIT(WT, TRAIT_TOOL_BLOWTORCH))
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			return
 		if(WT.remove_fuel(0, user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
 			user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s damage."), \

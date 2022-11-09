@@ -95,7 +95,6 @@
 "aq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 4;
 	name = "\improper Office Complex"
 	},
 /turf/open/floor/plating{
@@ -156,12 +155,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/radio/intercom{
-	anyai = 1;
 	freerange = 1;
 	frequency = 1469;
 	name = "General Listening Channel";
-	pixel_x = 30;
-	pixel_y = 0
+	pixel_x = 30
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -266,7 +263,6 @@
 /area/bigredv2/outside/office_complex)
 "aR" = (
 /turf/open/floor{
-	dir = 2;
 	icon_state = "warnwhite"
 	},
 /area/bigredv2/outside/office_complex)
@@ -297,7 +293,6 @@
 "aW" = (
 /obj/structure/bed/chair/dropship/pilot{
 	tag = "icon-pilot_chair (NORTH)";
-	icon_state = "pilot_chair";
 	dir = 1
 	},
 /turf/open/shuttle/dropship{
@@ -452,8 +447,7 @@
 /area/bigredv2/outside/office_complex)
 "bt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -508,7 +502,6 @@
 "bB" = (
 /obj/item/clothing/head/welding,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "warnwhite"
 	},
 /area/bigredv2/outside/office_complex)
@@ -696,8 +689,7 @@
 /area/bigredv2/outside/office_complex)
 "ce" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Office Complex Storage"
@@ -718,13 +710,11 @@
 "cg" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/office_complex)
 "ch" = (
 /turf/open/floor{
-	dir = 2;
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/office_complex)
@@ -750,8 +740,7 @@
 "cl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -773,7 +762,6 @@
 /area/bigredv2/outside/office_complex)
 "co" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 4;
 	name = "\improper Office Complex Janitor Room"
 	},
 /turf/open/floor{
@@ -901,8 +889,7 @@
 /obj/structure/surface/table,
 /obj/item/clothing/mask/cigarette,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/item/device/healthanalyzer,
 /turf/open/floor{
@@ -1085,7 +1072,6 @@
 /area/bigredv2/outside/office_complex)
 "dk" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 4;
 	name = "\improper Office Complex Janitor Room"
 	},
 /turf/open/floor,
@@ -1242,7 +1228,8 @@
 /area/bigredv2/outside/office_complex)
 "dH" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-rasputin7"
@@ -1250,7 +1237,11 @@
 /area/bigredv2/outside/office_complex)
 "dI" = (
 /obj/structure/surface/rack,
-
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1461,6 +1452,7 @@
 "ej" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/syndi_cakes,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -1488,20 +1480,23 @@
 /area/bigredv2/outside/office_complex)
 "qX" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/PMC,
-
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"
 	},
 /area/bigredv2/outside/office_complex)
 "rF" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/PMC,
-
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship{
-	tag = "icon-rasputin3";
-	icon_state = "rasputin3"
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
 	},
 /area/bigredv2/outside/office_complex)
 "yS" = (
@@ -1509,6 +1504,18 @@
 	dir = 4
 	},
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"AB" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/pmc,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1539,6 +1546,20 @@
 	icon_state = "rasputin15"
 	},
 /area/bigredv2/outside/office_complex)
+"Vg" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/shuttle/dropship{
+	icon_state = "floor8";
+	tag = "icon-rasputin7"
+	},
+/area/bigredv2/outside/office_complex)
+"ZG" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_4";
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/e)
 
 (1,1,1) = {"
 aa
@@ -1819,7 +1840,7 @@ ao
 by
 aN
 bk
-cu
+AB
 bk
 aV
 bv
@@ -1854,7 +1875,7 @@ bc
 bc
 bc
 bc
-rF
+qX
 dF
 bk
 cu
@@ -1899,7 +1920,7 @@ aC
 aO
 aV
 aV
-bm
+Vg
 bk
 bk
 yS
@@ -1927,7 +1948,7 @@ aP
 aW
 bc
 bn
-qX
+rF
 dE
 dE
 dE
@@ -1973,7 +1994,7 @@ dm
 dv
 "}
 (17,1,1) = {"
-ag
+ZG
 ap
 az
 bu
@@ -2035,7 +2056,7 @@ dX
 dY
 aN
 bp
-dA
+rF
 bp
 aV
 dM
@@ -2207,7 +2228,7 @@ bY
 aS
 cp
 aS
-cA
+qX
 cA
 cW
 de

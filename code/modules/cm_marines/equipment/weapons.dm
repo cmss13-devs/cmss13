@@ -27,6 +27,35 @@
 	else
 		icon_state = "kit_case_e"
 
+/obj/item/storage/box/m56c_system
+	name = "\improper M56C smartgun system case"
+	desc = "A large case containing an M56C Smartgun, M56 combat harness, head mounted sight, M280 Smartgunner Drum Belt and powerpack.\nDrag this sprite into you to open it up! NOTE: You cannot put items back inside this case."
+	icon = 'icons/obj/items/storage.dmi'
+	icon_state = "kit_case"
+	w_class = SIZE_HUGE
+	storage_slots = 5
+	slowdown = 1
+	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
+	foldable = null
+
+/obj/item/storage/box/m56c_system/Initialize()
+	. = ..()
+	new /obj/item/clothing/glasses/night/m56_goggles(src)
+	new /obj/item/weapon/gun/smartgun/co(src)
+	new /obj/item/smartgun_powerpack(src)
+	new /obj/item/clothing/suit/storage/marine/smartgunner(src)
+	new /obj/item/storage/belt/marine/smartgunner(src)
+	update_icon()
+
+/obj/item/storage/box/m56c_system/update_icon()
+	if(overlays.len)
+		overlays.Cut()
+	if(contents.len)
+		icon_state = "kit_case"
+		overlays += image(icon, "smartgun")
+	else
+		icon_state = "kit_case_e"
+
 /obj/item/smartgun_powerpack
 	name = "\improper M56 powerpack"
 	desc = "A heavy reinforced backpack with support equipment and power cells for the M56 Smartgun System."
@@ -64,11 +93,10 @@
 	else
 		..()
 
-/obj/item/smartgun_powerpack/examine(mob/user)
-	..()
-	if (get_dist(user, src) <= 1)
-		if(pcell)
-			to_chat(user, "A small gauge in the corner reads: Power: [pcell.charge] / [pcell.maxcharge].")
+/obj/item/smartgun_powerpack/get_examine_text(mob/user)
+	. = ..()
+	if (pcell && get_dist(user, src) <= 1)
+		. += "A small gauge in the corner reads: Power: [pcell.charge] / [pcell.maxcharge]."
 
 /obj/item/smartgun_powerpack/proc/drain_powerpack(var/drain = 0, var/obj/item/cell/c)
 	var/actual_drain = (rand(drain/2,drain)/25)

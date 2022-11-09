@@ -65,24 +65,31 @@
 	if (usr.stat || !(ishuman(usr)))
 		return
 	if (src.occupant)
-		to_chat(usr, SPAN_NOTICE(" <B>The scanner is already occupied!</B>"))
+		to_chat(usr, SPAN_BOLDNOTICE("The scanner is already occupied!"))
 		return
 	if (usr.abiotic())
-		to_chat(usr, SPAN_NOTICE(" <B>Subject cannot have abiotic items on.</B>"))
+		to_chat(usr, SPAN_BOLDNOTICE("Subject cannot have abiotic items on."))
 		return
 	go_in_bodyscanner(usr)
 	add_fingerprint(usr)
 
 
 /obj/structure/machinery/bodyscanner/proc/go_in_bodyscanner(mob/M)
-	M.forceMove(src)
-	occupant = M
-	update_use_power(2)
-	icon_state = "body_scanner_1"
-	//prevents occupant's belonging from landing inside the machine
-	for(var/obj/O in src)
-		O.forceMove(loc)
-	playsound(src, 'sound/machines/scanning_pod1.ogg')
+	if(isXeno(M))
+		return
+	if(do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		if(occupant)
+			to_chat(usr, SPAN_BOLDNOTICE("The scanner is already occupied!"))
+			return
+		to_chat(usr, SPAN_NOTICE("You move [M.name] inside \the [src]."))
+		M.forceMove(src)
+		occupant = M
+		update_use_power(2)
+		icon_state = "body_scanner_1"
+		//prevents occupant's belonging from landing inside the machine
+		for(var/obj/O in src)
+			O.forceMove(loc)
+		playsound(src, 'sound/machines/scanning_pod1.ogg')
 
 /obj/structure/machinery/bodyscanner/proc/go_out()
 	if ((!( src.occupant ) || src.locked))
@@ -133,9 +140,11 @@
 	if (M.abiotic())
 		to_chat(user, SPAN_WARNING("Subject cannot have abiotic items on."))
 		return
+	if (isXeno(M))
+		to_chat(user, SPAN_WARNING("An unsupported lifeform was detected, aborting!"))
+		return
 
 	go_in_bodyscanner(M)
-
 	add_fingerprint(user)
 	//G = null
 
@@ -179,6 +188,7 @@
 	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 	var/delete
 	var/temphtml
+	var/datum/health_scan/last_health_display
 
 /obj/structure/machinery/body_scanconsole/Initialize()
 	. = ..()
@@ -197,6 +207,7 @@
 
 
 /obj/structure/machinery/body_scanconsole/Destroy()
+	QDEL_NULL(last_health_display)
 	if(connected)
 		if(connected.occupant)
 			connected.go_out()
@@ -252,54 +263,38 @@
 		to_chat(user, SPAN_WARNING("This device can only scan compatible lifeforms."))
 		return
 
+	var/mob/living/carbon/human/H = connected.occupant
+	var/datum/data/record/N = null
+	var/human_ref = WEAKREF(H)
+	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
+		if (R.fields["ref"] == human_ref)
+			N = R
+	if(isnull(N))
+		N = create_medical_record(H)
+	var/list/od = connected.get_occupant_data()
 	var/dat
-	if (delete && temphtml) //Window in buffer but its just simple message, so nothing
-		delete = delete
-	else if (!delete && temphtml) //Window in buffer - its a menu, dont add clear message
-		dat = "[temphtml]<BR><BR><A href='?src=\ref[src];clear=1'>Main Menu</A>"
-	else if (connected) //Is something connected?
-		var/mob/living/carbon/human/H = connected.occupant
-		var/datum/data/record/N = null
-		var/human_ref = WEAKREF(H)
-		for(var/datum/data/record/R in GLOB.data_core.medical)
-			if (R.fields["ref"] == human_ref)
-				N = R
-		if(isnull(N))
-			N = create_medical_record(H)
-		var/list/od = connected.get_occupant_data()
-		dat = format_occupant_data(od)
-		N.fields["last_scan_time"] = od["stationtime"]
-		N.fields["last_scan_result"] = dat
-		N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
-		visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [connected.occupant.real_name]"))
-		playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)
+	dat = format_occupant_data(od)
+	N.fields["last_scan_time"] = od["stationtime"]
+	// I am sure you are wondering why this is still here. And indeed why the rest of the autodoc html shit is here.
+	// The answer is : it is used in the medical records computer to print out the results of their last scan data
+	// Do I want to make it so that data from a tgui static data proc can go into a piece of paper? no
+	// Do I want to remove the feature from medical records computers? no
+	// and so here we are.
+	N.fields["last_scan_result"] = dat
+
+	if (!last_health_display)
+		last_health_display = new(H)
 	else
-		dat = SET_CLASS("Error: No Body Scanner connected.", INTERFACE_RED)
+		last_health_display.target_mob = H
 
-	dat += "<BR><A href='?src=\ref[user];mach_close=scanconsole'>Close</A>"
-	show_browser(user, dat, name, "scanconsole")
+	N.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, DETAIL_LEVEL_BODYSCAN)
+	N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
+	visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [H.real_name]"))
+	playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)
+
+	last_health_display.look_at(user, DETAIL_LEVEL_BODYSCAN, bypass_checks = TRUE)
+
 	return
-
-
-/obj/structure/machinery/body_scanconsole/Topic(href, href_list)
-	if (..())
-		return
-
-	if (href_list["print"])
-		if (!src.connected)
-			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error: No body scanner connected.")]")
-			return
-		var/mob/living/carbon/human/occupant = src.connected.occupant
-		if (!src.connected.occupant)
-			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The body scanner is empty.")]")
-			return
-		if (!istype(occupant,/mob/living/carbon/human))
-			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The body scanner cannot scan that lifeform.")]")
-			return
-		var/obj/item/paper/R = new(src.loc)
-		R.name = "Body scan report -[src.connected.occupant.real_name]-"
-		R.info = format_occupant_data(src.connected.get_occupant_data())
-
 
 /obj/structure/machinery/bodyscanner/proc/get_occupant_data()
 	if (!occupant || !istype(occupant, /mob/living/carbon/human))
@@ -323,6 +318,7 @@
 		"dermaline_amount" = H.reagents.get_reagent_amount("dermaline"),
 		"meralyne_amount" = H.reagents.get_reagent_amount("meralyne"),
 		"blood_amount" = H.blood_volume,
+		"max_blood" = H.max_blood,
 		"disabilities" = H.sdisabilities,
 		"tg_diseases_list" = H.viruses.Copy(),
 		"lung_ruptured" = H.is_lung_ruptured(),
@@ -377,7 +373,7 @@
 	dat += "[SET_CLASS("Body Temperature:", "#40628a")] [occ["bodytemp"]-T0C]&deg;C ([occ["bodytemp"]*1.8-459.67]&deg;F)<br><HR>"
 
 	s_class = occ["blood_amount"] > 448 ? INTERFACE_OKAY : INTERFACE_BAD
-	dat += "[SET_CLASS("Blood Level:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["blood_amount"]*100 / 560]% ([occ["blood_amount"]] units)", s_class)]<br><br>"
+	dat += "[SET_CLASS("Blood Level:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["blood_amount"]*100 / occ["max_blood"]]% ([occ["blood_amount"]] units)", s_class)]<br><br>"
 
 	dat += "[SET_CLASS("Inaprovaline:", INTERFACE_HEADER_COLOR)] [occ["inaprovaline_amount"]] units<BR>"
 
@@ -437,6 +433,8 @@
 				robot = "Nonfunctional prosthetic<br>"
 			else
 				robot = "Prosthetic<br>"
+		else if(e.status & LIMB_SYNTHSKIN)
+			robot = "Synthskin"
 		if(e.get_incision_depth())
 			open = "Open<br>"
 

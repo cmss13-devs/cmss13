@@ -39,8 +39,8 @@
 	contains = list(
 					/obj/item/storage/box/guncase/flamer,
 					/obj/item/storage/box/guncase/flamer,
-					/obj/item/storage/large_holster/fuelpack,
-					/obj/item/storage/large_holster/fuelpack
+					/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit,
+					/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
@@ -179,6 +179,17 @@
 	containername = "\improper M41AE2 HPR crate"
 	group = "Weapons"
 
+/datum/supply_packs/gun/xm88
+	contains = list(
+					/obj/item/storage/box/guncase/xm88,
+					/obj/item/storage/box/guncase/xm88
+					)
+	name = "XM88 Heavy Rifle crate (XM88 x2)"
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper XM88 Heavy Rifle crate"
+	group = "Weapons"
+
 /datum/supply_packs/gun/merc
 	contains = list()
 	name = "black market firearms (x1)"
@@ -246,6 +257,18 @@
 	containername = "\improper plastic explosives crate (WARNING)"
 	group = "Weapons"
 
+/datum/supply_packs/explosives_breaching_charge
+	name = "breaching charge crate (x4)"
+	contains = list(
+					/obj/item/explosive/plastic/breaching_charge,
+					/obj/item/explosive/plastic/breaching_charge,
+					/obj/item/explosive/plastic/breaching_charge,
+					/obj/item/explosive/plastic/breaching_charge
+	)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper plastic explosives crate (WARNING)"
+	group = "Weapons"
 
 /datum/supply_packs/explosives_incendiary
 	name = "M40 HIDP incendiary grenades crate (x6)"
@@ -353,7 +376,18 @@
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper explosive M74 AGM-I  grenades crate (WARNING)"
+	containername = "\improper explosive M74 AGM-I grenades crate (WARNING)"
+	group = "Weapons"
+
+/datum/supply_packs/explosives_airburst_smoke
+	name = "M74 Airburst Grenade Munition smoke grenades crate (x6)"
+	contains = list(
+					/obj/item/storage/box/packet/airburst_smoke,
+					/obj/item/storage/box/packet/airburst_smoke
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper explosive M74 AGM-S grenades crate"
 	group = "Weapons"
 
 /datum/supply_packs/explosives_m74_hornet

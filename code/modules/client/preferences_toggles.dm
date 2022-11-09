@@ -1,8 +1,8 @@
 //toggles
 /client/proc/toggle_hear_radio()
-	set name = "Show/Hide RadioChatter"
+	set name = "Show/Hide Radio Chatter"
 	set category = "Preferences.Chat"
-	set desc = "Toggle seeing radiochatter from radios and speakers"
+	set desc = "Toggle seeing radio chatter from radios and speakers"
 	if(!admin_holder) return
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
@@ -11,7 +11,7 @@
 /client/proc/toggleadminhelpsound()
 	set name = "Hear/Silence Adminhelps"
 	set category = "Preferences.Sound"
-	set desc = "Toggle hearing a notification when admin PMs are recieved"
+	set desc = "Toggle hearing a notification when admin PMs are received"
 	if(!admin_holder)	return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
@@ -38,6 +38,14 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE("You will no longer hear music in the game lobby."))
 		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // stop the jamsz
+
+/client/verb/togglerebootsound()
+	set name = "Hear/Silence Reboot Sound"
+	set category = "Preferences.Sound"
+	set desc = "Toggles hearing the server reboot sound effect."
+	prefs.toggles_sound ^= SOUND_REBOOT
+	prefs.save_preferences()
+	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
 
 /client/verb/togglemidis()
 	set name = "Silence Current Midi"
@@ -68,6 +76,15 @@
 	prefs.lang_chat_disabled = ~prefs.lang_chat_disabled
 	prefs.save_preferences()
 	to_chat(src,SPAN_BOLDNOTICE( "You will [(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head."))
+
+/client/verb/togglechatemotes()
+	set name = "Toggle Abovehead Chat Emotes"
+	set category = "Preferences.Chat"
+	set desc = "Toggles seeing emotes in abovehead chat"
+
+	prefs.toggles_langchat ^= LANGCHAT_SEE_EMOTES
+	prefs.save_preferences()
+	to_chat(src,SPAN_BOLDNOTICE( "You will [(prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) ? "now" : "no longer"] see emotes in abovehead chat."))
 
 /client/verb/toggle_permission_errors()
 	set name = "Toggle Permission Errors"
@@ -104,7 +121,7 @@
 	if(prefs.toggles_sound & SOUND_AMBIENCE)
 		to_chat(src,SPAN_BOLDNOTICE( "You will now hear ambient sounds."))
 		if(soundOutput)
-			soundOutput.update_ambience(null, TRUE)
+			soundOutput.update_ambience(null, null, TRUE)
 	else
 		to_chat(src,SPAN_BOLDNOTICE( "You will no longer hear ambient sounds."))
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_AMBIENCE)
@@ -146,6 +163,31 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when your corpse gets revived."))
 
+/client/verb/toggle_unnest_flash()
+	set name = "Toggle Unnest Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when you get unnested and can reenter your body."
+
+	prefs.toggles_flashing ^= FLASH_UNNEST
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_UNNEST)
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get unnested and can reenter your body."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get unnested and can reenter your body."))
+
+/client/verb/toggle_newlarva_flash()
+	set name = "Toggle Larva Unpool Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when you get spawned in as a xeno larva from the spawn pool."
+
+	prefs.toggles_flashing ^= FLASH_POOLSPAWN
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_POOLSPAWN)
+		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get spawned as a pooled larva."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get spawned as a pooled larva."))
+
+
 /client/verb/toggle_adminpm_flash()
 	set name = "Toggle Admin PM Flash"
 	set category = "Preferences.TaskbarFlashing"
@@ -179,14 +221,39 @@
 	prefs.save_preferences()
 	toggle_fullscreen(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
 
+/client/verb/toggle_ambient_occlusion()
+	set name = "Toggle Ambient Occlusion"
+	set category = "Preferences"
+	set desc = "Toggles whether the game will have ambient occlusion on."
+
+	prefs.toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION
+	prefs.save_preferences()
+	var/atom/movable/screen/plane_master/game_world/plane_master = locate() in src.screen
+	if (!plane_master)
+		return
+	plane_master.backdrop(src.mob)
+
 /client/verb/toggle_member_publicity()
 	set name = "Toggle Membership Publicity"
 	set category = "Preferences"
 	set desc = "Toggles if other players can see that you are a BYOND member (OOC logo)."
 
-	prefs.toggle_prefs ^= MEMBER_PUBLIC
+	prefs.toggle_prefs ^= TOGGLE_MEMBER_PUBLIC
 	prefs.save_preferences()
-	to_chat(src, SPAN_BOLDNOTICE("Others can[(prefs.toggle_prefs & MEMBER_PUBLIC) ? "" : "'t"] see if you are a BYOND member."))
+	to_chat(src, SPAN_BOLDNOTICE("Others can[(prefs.toggle_prefs & TOGGLE_MEMBER_PUBLIC) ? "" : "'t"] now see if you are a BYOND member."))
+
+/client/verb/toggle_ooc_country_flag()
+	set name = "Toggle Country Flag"
+	set category = "Preferences"
+	set desc = "Toggles if your country flag (based on what country your IP is connecting from) is displayed in OOC chat."
+
+	if(!(CONFIG_GET(flag/ooc_country_flags)))
+		to_chat(src, SPAN_WARNING("Country Flags in OOC are disabled in the current server configuration!"))
+		return
+
+	prefs.toggle_prefs ^= TOGGLE_OOC_FLAG
+	prefs.save_preferences()
+	to_chat(src, SPAN_BOLDNOTICE("Your country flag [(prefs.toggle_prefs & TOGGLE_OOC_FLAG) ? "will now" : "will now not"] appear before your name in OOC chat."))
 
 /client/verb/toggle_prefs() // Toggle whether anything will happen when you click yourself in non-help intent
 	set name = "Toggle Preferences"
@@ -202,7 +269,9 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>"
 	)
 
 	var/dat = ""
@@ -292,6 +361,31 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
 	prefs.save_preferences()
+
+/client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
+	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
+	to_chat(src, SPAN_BOLDNOTICE("Middle Click [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
+	prefs.save_preferences()
+
+/client/proc/switch_item_animations() //Switches tg-style item animations on, not-on-same-tile, and off
+	switch(prefs.item_animation_pref_level)
+		if(SHOW_ITEM_ANIMATIONS_NONE)
+			prefs.item_animation_pref_level = SHOW_ITEM_ANIMATIONS_HALF
+			to_chat(src, SPAN_BOLDNOTICE("You will now see all item animations, except for those that occur on their own tile."))
+			prefs.save_preferences()
+			return "On"
+
+		if(SHOW_ITEM_ANIMATIONS_HALF)
+			prefs.item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
+			to_chat(src, SPAN_BOLDNOTICE("You will now see all item animations."))
+			prefs.save_preferences()
+			return "Not Same Tile"
+
+		if(SHOW_ITEM_ANIMATIONS_ALL)
+			prefs.item_animation_pref_level = SHOW_ITEM_ANIMATIONS_NONE
+			to_chat(src, SPAN_BOLDNOTICE("You will no longer see item animations."))
+			prefs.save_preferences()
+			return "Off"
 
 //------------ GHOST PREFERENCES ---------------------------------
 
@@ -396,6 +490,40 @@
 	else
 		H.remove_hud_from(O)
 
+/client/proc/toggle_ghost_health_scan()
+	set name = "Toggle Health Scan"
+	set category = "Preferences.Ghost"
+
+	prefs.toggles_ghost ^= GHOST_HEALTH_SCAN
+	prefs.save_preferences()
+	to_chat(usr, "As a ghost, you will [prefs.toggles_ghost & GHOST_HEALTH_SCAN ? "now" : "no longer"] be able to scan health of living mobs via right click menu.")
+	if(isobserver(usr))
+		if(prefs.toggles_ghost & GHOST_HEALTH_SCAN)
+			add_verb(usr, /mob/dead/observer/proc/scan_health)
+		else
+			remove_verb(usr, /mob/dead/observer/proc/scan_health)
+
+GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GHOST_ORBIT_SQUARE, GHOST_ORBIT_HEXAGON, GHOST_ORBIT_PENTAGON))
+
+/client/proc/pick_ghost_orbit()
+	set name = "Pick Ghost Orbit Shape"
+	set category = "Preferences.Ghost"
+	set desc = "Toggle in what manner you orbit mobs while a ghost"
+	var/new_orbit = tgui_input_list(src, "Choose your ghostly orbit:", "Ghost Customization", GLOB.ghost_orbits)
+	if(!new_orbit)
+		return
+
+	prefs.ghost_orbit = new_orbit
+	prefs.save_preferences()
+
+	to_chat(src, SPAN_NOTICE("You will now orbit in a [new_orbit] shape as a ghost."))
+
+	if(!isobserver(mob))
+		return
+
+	var/mob/dead/observer/O = mob
+	O.ghost_orbit = new_orbit
+
 //------------ COMBAT CHAT MESSAGES PREFERENCES ---------------------
 
 //Made all chat combat-related logs added by Neth and several others to be hidden by default and shown when clicked respected verb. Reason: too cluttered preferences.
@@ -479,4 +607,6 @@ var/list/ghost_prefs_verbs = list(
 	/client/proc/toggle_ghost_hivemind,
 	/client/proc/deadchat,
 	/client/proc/toggle_ghost_hud,
+	/client/proc/toggle_ghost_health_scan,
+	/client/proc/pick_ghost_orbit,
 	/client/proc/hide_ghost_preferences)

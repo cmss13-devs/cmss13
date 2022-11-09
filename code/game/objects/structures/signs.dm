@@ -113,7 +113,7 @@
 
 /obj/structure/sign/safety
 	name = "sign"
-	icon = 'icons/obj/structures/props/Semiotic_Standard.dmi'
+	icon = 'icons/obj/structures/props/semiotic_standard.dmi'
 	desc = "A sign denoting Semiotic Standard. The Interstellar Commerce Commission requires that these symbols be placed pretty much everywhere for your safety."
 	anchored = 1
 	opacity = 0
@@ -126,7 +126,7 @@
 
 /obj/structure/sign/safety/ammunition
 	name = "ammunition storage semiotic"
-	desc = "Semiotic Standard denoting the nearby storage of ammunition."
+	desc = "Semiotic Standard denoting the nearby presence of an ammunition storage."
 	icon_state = "ammo"
 
 /obj/structure/sign/safety/analysis_lab
@@ -251,7 +251,7 @@
 
 /obj/structure/sign/safety/food_storage
 	name = "organic storage (foodstuffs) semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of unrefriderated food storage."
+	desc = "Semiotic Standard denoting the nearby presence of unrefrigerated food storage."
 	icon_state = "foodstorage"
 
 /obj/structure/sign/safety/galley
@@ -261,12 +261,12 @@
 
 /obj/structure/sign/safety/hazard
 	name = "hazard semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of a hazard. Watch out."
+	desc = "Semiotic Standard denoting the nearby presence of a hazard. Watch out!"
 	icon_state = "hazard"
 
 /obj/structure/sign/safety/high_rad
 	name = "high radioactivity semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of an area of high radioactivity."
+	desc = "Semiotic Standard denoting the nearby presence of a highly radioactive area."
 	icon_state = "highrad"
 
 /obj/structure/sign/safety/high_voltage
@@ -400,13 +400,13 @@
 	icon_state = "reduction"
 
 /obj/structure/sign/safety/ref_bio_storage
-	name = "refridgerated biological storage semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of refridgerated biological storage."
+	name = "refrigerated biological storage semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of refrigerated biological storage."
 	icon_state = "refbiostorage"
 
 /obj/structure/sign/safety/ref_chem_storage
-	name = "refridgerated chemical storage semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of refridgerated chemical storage."
+	name = "refrigerated chemical storage semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of refrigerated chemical storage."
 	icon_state = "refchemstorage"
 
 /obj/structure/sign/safety/restrictedarea
@@ -415,13 +415,13 @@
 	icon_state = "restrictedarea"
 
 /obj/structure/sign/safety/fridge
-	name = "refridgerated storage (organic foodstuffs) semiotic"
+	name = "refrigerated storage (organic foodstuffs) semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a fridge."
 	icon_state = "fridge"
 
 /obj/structure/sign/safety/refridgeration
-	name = "refridgeration semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of non-food refridgeration."
+	name = "refrigeration semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of non-food refrigeration."
 	icon_state = "refridgeration"
 
 /obj/structure/sign/safety/rewire
@@ -431,7 +431,7 @@
 
 /obj/structure/sign/safety/security
 	name = "security semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of law enforcement."
+	desc = "Semiotic Standard denoting the nearby presence of law enforcement or a security force."
 	icon_state = "security"
 
 /obj/structure/sign/safety/south
@@ -456,7 +456,7 @@
 
 /obj/structure/sign/safety/synth_storage
 	name = "synthetic storage semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of a synthetic storage room."
+	desc = "Semiotic Standard denoting the nearby presence of a synthetic unit storage room."
 	icon_state = "synthstorage"
 
 /obj/structure/sign/safety/terminal

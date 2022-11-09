@@ -1,0 +1,485 @@
+2020-08-01:
+  Waltermeldron:
+  - bugfix: Fixed the range on the Cult SL's abilities.
+  - rscadd: Added a new option for whitelist councils to choose in their setup menu,
+      where they can decide whether they want to play with their council preset whilst
+      playing as their job (e.g. commodore, yautja councillor).
+  - rscadd: Added a new corporate rank system for W-Y, with 7 different divisions
+      and 10 rankings.
+2020-08-02:
+  Waltermeldron:
+  - tweak: Tunnels are now hive-specific.
+  - rscdel: You can no longer build tunnels on any non-surface zlevels.
+  - bugfix: Fixed Change Hivenumber opening twice.
+2020-08-03:
+  DingleFlop:
+  - tweak: Mortar now has a Nano UI for targeting and dialing.
+  - tweak: 'Mortar UI (legacy/Nano UI) can be toggled using screwdriver. '
+  - tweak: Mortar UI now has selection hotkeys on the numpad.
+  TheDonkified:
+  - bugfix: Fixed logic bug with hedgehog shield and cooldown.
+  Vampmare:
+  - tweak: Updated xeno slashes needed to destroy walls from 10->20
+  Vicacrov:
+  - bugfix: '"Fixed a bug where Souto man was not dispensing diet souto."'
+  - rscadd: '"ARES now greets marines when they wake up! At roundstart only."'
+  - tweak: '"ARES snitching on Xenomorphs on the dropship now also has an audio cue."'
+  - bugfix: '"Fixed the Queen''s Gut skill applying the 15 minutes of cooldown at
+      the start of the gibbing, not upon finishing it."'
+  - rscdel: '"Evacuation is now possible pre-13:00."'
+  Waltermeldron:
+  - rscadd: Xenos can now pry open unpowered shutters. The Queen can pry open research
+      containment cell shutters.
+  - tweak: Xenos open unpowered doors much faster than powered doors.
+  - bugfix: Containment walls, lights and cameras can no longer be slashed.
+  - bugfix: You can plant weeds on the divider walls again.
+  - bugfix: Burrowers can no longer burrow out of containment cells.
+  - bugfix: Standard PMC no longer spawns with no equipment.
+  - bugfix: Boiler can no longer shoot through unacidable glass
+  - rscadd: The W-Y Director now gets an admiral revolver instead of a VP78 as their
+      secondary, to showcase their status.
+  - tweak: Changed the description of the admiral revolver and the admiral belt.
+2020-08-04:
+  Jeser:
+  - bugfix: Removed DEBUG messages from antag equipment rack.
+  - bugfix: Fixed UPP engineer loadout not having gear.
+  - bugfix: Fixed Requisition vendors on Whiskey Outpost having wrong access requirements.
+  - bugfix: Fixed missing M39 Incendiary magazines in Req vendors on WO.
+  - bugfix: Fixed Dust Raiders squad marines on WO spawning without proper headsets.
+  - bugfix: Fixed Crew Manifest not showing WO-specific jobs.
+  - tweak: Slightly increased width of Crew Manifest window. Should prevent most of
+      double lining due to long names and job titles.
+  - tweak: 'Set Marine Role Preferences window now will show actual WO job titles
+      if opened on WO map and won''t show regular jobs that don''t have respective
+      WO counterparts (SEA and Intelligence Officers currently). IMPORTANT: for preference
+      saving system, these jobs are viewed as their regular counterparts, so saving
+      character during WO will alter your regular job preferences accordingly.'
+  - tweak: Lifted restriction on selecting strains on WO for xenomorphs.
+  - maptweak: Replaced two Type71 AP magazine boxes and SMG incendiary ammunition
+      box with SMG extended magazine and SMG AP ammunition boxes.
+  Waltermeldron:
+  - bugfix: Weeds are no longer immune to fire.
+2020-08-06:
+  Frans_Feiffer:
+  - imageadd: Resprited the CMOs labcoat, and the Researchers science jacket.
+  - tweak: North sprite on the researchers uniform was off of the human sprite by
+      a pixel, whoops!
+  - imageadd: Resprited Detective1-2 jackets, as well as the CMB jacket.
+  - imageadd: Resprited the COs jacket and cap; changed palettes to be inline with
+      the COs beret, fixed shading, and made the sides accurate.
+  - imageadd: Gave the Predator mob sprites a facelift.
+  - imageadd: Resprited pred armor sets, as well as the mesh shirt.
+  - imageadd: Glaive sprites done by Bongosz.
+  - imageadd: Gave Bracers an onmob sprite.
+  Jeser:
+  - spellcheck: Changed description and options in Adminhelp selection window to better
+      describe purpose of each option.
+  - tweak: Updated and fixed some Adminhelp and Mentorhelp autoresponses.
+  - bugfix: Fixed closing mentorhelp window or leaving it blank still opening a new
+      mentorhelp.
+  NethIafins:
+  - tweak: Removed screenshake from Boxer Warrior Jab and Punch abilities.
+  Vicacrov:
+  - rscdel: '"Survivors no longer spawn with the overpowered sawn-off (oops) or the
+      M41A MK1 (reported to be underperforming)."'
+  - rscdel: '"There are no more random M41A MK1 ammo spawns, only boxes of buckshot."'
+  - tweak: '"The boosted early game evolution for Xenomorphs to combat the early marine
+      deathball vs young T3s was halved (x4 -> x2) as the T3s evolve with full strength
+      now. Xenos get T3s in about roundstart + 14 minutes. (1218 under normal circumstances.)"'
+  - tweak: '"The Almayer dropships'' and the monorail''s first deployment lockdown
+      timer was changed from 1215 to roundstart + 15 minutes. (1219 under normal circumstances.)"'
+  - tweak: '"The boosted early game evolution now lasts for 15 minutes instead of
+      10 minutes. (Compensation for the above.)"'
+  - rscadd: '"Survivors now spawn with the HG 37-12 pump shotgun with a 100% chance.
+      Their secondary weapon is still randomized."'
+  - bugfix: '"Corpsespawners with survivor presets no longer spawn guns, resulting
+      in ten gorillon sawn-offs in xeno starting zones (bigger oops). Only survivors
+      with an active client get guns now."'
+  - tweak: '"The survivors'' (and the ERT''s) HG pump shotgun now starts with buckshot
+      instead of slugs."'
+  Waltermeldron:
+  - bugfix: Boilers can bombard past resin membranes again.
+  - tweak: Boilers can no longer bombard past resin membrane that doesn't belong to
+      their hive.
+  - bugfix: Fixed harpoon damage being too high to be used honourably.
+  - rscadd: Yautja weapons can now be used more effectively by humans.
+  - tweak: Chainwhip no longer has a unique check to stun.
+  - rscadd: Reworked minigun. No longer stuck in burst fire, recoil now builds up
+      on the minigun the more you fire.
+  - rscadd: Full-auto has been given to the minigun.
+  - rscadd: Added empty fuel tanks into the game. OTs spawn with 3, with several others
+      being scattered around the Almayer.
+  - bugfix: Fixed igniters not detonating fuel tanks properly
+2020-08-07:
+  NethIafin:
+  - rscadd: Added new strain to Runner - Acider. They lose all standard runner abilities
+      and are a bit slower than standard runners (about lurker speed)
+  - rscadd: Acider Passive - Acid Storage. Every time Acider Runner is hit, they gain
+      Acid equal to amount of health lost. Acid is also gained (although very slowly)
+      with time. Max amount of acid is 1000
+  - rscadd: Acider Passive - Acid Slashes. Any Acider melee attack applies an acid
+      on their target and if target was already covered with acid, some amount of
+      acid will be added to acid storage while acid stack on enemy will be regained.
+      This acid can be used by Spitters to activate their acid wave explosion.
+  - rscadd: Acider Active 1 - Corrosive Acid. Spend 100 acid to cover barricade, item
+      or vehicle with boiler acid. The application of acid is 4 times faster than
+      usual.
+  - rscadd: Acider Active 2 - FOR THE HIVE! Prepare yourself to sacrifice for the
+      hive. Can only be activated when above 200 acid is stored. This changes color
+      of the runner and initiates a sound loop that notifies surrounding hostiles.
+      After 20 seconds Acider Runner will explode covering all barricades in area
+      (acid/100) with normal acid (won't melt reinforced barricades, usual barricades
+      will survive only if repaired at the same time), all enemies with acid stacks,
+      and deal up to 200 burn damage to all enemies in the radius (damage tapers off
+      at max range). If Acider Runner gets killed during this ability, nothing will
+      happen and explosion will be cancelled. If Acider Runner survives and ability
+      activates, after 3 seconds Acider Runner player will get a free (at no cost
+      to the hive) larva if hive has spawning pool. Acider runner can cancel this
+      ability by using it again, but this will set Stored Acid to 0
+  - tweak: Acider Runner no longer gains Acid by taking damage. The only way to gain
+      acid now is waiting and slashing someone with acid on them.
+  - tweak: Acider Runner speed increased (still less than normal strain runner).
+  - tweak: Acider Runner For The Hive! max acid spread reduced to 5 tiles. Burn damage
+      spread is same.
+  - tweak: Acider Runner For The Hive! now is superslowed instead of being slowed
+      (0.75 delay increase to 1.5 delay increase).
+  - bugfix: For The Hive! is now bound to action 3.
+  - bugfix: For The Hive! cannot be activated while resting or knocked down.
+  - bugfix: For The Hive! should now properly put you into new larva
+2020-08-08:
+  NethIafin:
+  - bugfix: Fixed acider runner corrosive acid acid cost to be 100.
+  - bugfix: Fixed acider runner occasionally not respawning.
+  - tweak: Acider Runner observe time before respawn increased to 5 seconds (from
+      3).
+  - tweak: Acider Runner For The Hive! acid coverage radius fixed to intended 5 tiles
+      (instead of 10).
+  - tweak: Acider Runner Acid Slashes acid recovery buffed from 5 to 10 per slash.
+  Waltermeldron:
+  - tweak: Decreased Queen defuse timer for nukes from 15 seconds to 5 seconds
+  - rscadd: Changed the Big Red CL spawn to spawn in as an R&D Assistant Manager.
+      They outrank the CL, but belong to a separate division; they cannot and should
+      not give orders to the CL.
+  - rscadd: Assistant Managers and above can increase the clearance to 5-X with no
+      purchase required.
+  - experiment: Corporate Liaisons can now get a rank up to Executive Specialist depending
+      on their playtime as a CL. See below for the playtimes.
+  - rscadd: (0 hours) Junior Executive. (16 hours) Executive. (32 hours) Senior Executive.
+      (64 hours) Executive Specialist.
+2020-08-09:
+  TobiNerd:
+  - rscadd: Added a chem mixer to the OT workshop that can not make pills. Sprite
+      by Bongosz.
+  - maptweak: Added medical railings outside the medbay chemlab. Sprites by Bongosz.
+  - tweak: Increased the chem master UI size slightly.
+  Vicacrov:
+  - maptweak: LV - The medbay and hydroponics domes on LV got a makeover to make it
+      less chokehold-y and more holdable.
+  - maptweak: LV - The hydro overgrown nightmare insert is temporarily disabled.
+  - rscdel: LV - The hydro road missing nightmare insert was removed.
+2020-08-10:
+  Jeser:
+  - bugfix: Fixed CLF engineer spawning with random belt instead of toolbelt.
+  - bugfix: Fixed antag fuelpacks invisible sprite bug.
+  Vampmare:
+  - tweak: Xenos now have a 1.5 multiplier when damaged by melee again (Reverted).
+      Marine weapons force has been reduced with 1.5. This might get reworked in the
+      future, but to the benefit of Yautja as well.
+  Waltermeldron:
+  - bugfix: Fixed the lack of gliding on LV (instant movement between tiles).
+  - rscadd: Made fire damage less RNG
+  - rscadd: Fuel tanks now use reagents instead of regular ammo.
+  - tweak: Napalm B now has an extended range but a narrower cone.
+  - bugfix: Fixed ravagers not emoting properly when walking on fire.
+2020-08-11:
+  NethIafin:
+  - bugfix: Removed ability from Acider Runner to enter pipes while in For The Hive!
+  - tweak: Acider Runner cancelling For The Hive! now loses 250 acid instead of all
+      acid.
+  - rscadd: Added separate sprites to Boxer Warrior (courtesy of Bongosz)
+  TobiNerd:
+  - tweak: Gave humans higher alcohol tolerance. Please stop passing out.
+  - tweak: Tweaked the Chem ERT objective description.
+  - bugfix: If Chem ERT doesn't get a name for the chemical they need to retrieve
+      they will instead be told to find chemicals with the DNA Disintegrating property.
+  - bugfix: Fixed the Queen not being able to pry open the CL cell shutter.
+2020-08-12:
+  NethIafin:
+  - bugfix: fixed issues with entity deletion and detaching.
+  - bugfix: fixed entity not syncing when trying to get it first time.
+  - tweak: explicitly added MIT headers to all NDatabase files.
+  Waltermeldron:
+  - bugfix: Fixed WP rockets and tank flamer.
+2020-08-13:
+  Waltermeldron:
+  - tweak: Added a minimum build speed to buildable barricades. Skills cannot cause
+      the build speed to go below these values.
+  - tweak: (Metal Barricade) 1 second. (Plasteel Barricade) 2 seconds.
+  - bugfix: Fixed WP rockets/primary flamer from doing an incredibly large amount
+      of damage.
+2020-08-14:
+  Waltermeldron:
+  - bugfix: Fixed runtime with flameshapes
+  - bugfix: Fixed flamers not reflaming fires that they pass through
+  - tweak: Humans will now no longer be the larva from which they burst from if they
+      arent nested.
+  - bugfix: Fixed cancel option not appearing on some clan input menus
+  - bugfix: Fixed not being able to target players as a clan leader
+2020-08-15:
+  Jeser:
+  - bugfix: Fixed bad check for magazine types when trying to put magazine into magazine
+      box.
+  - rscadd: Added misc and non-standard boxes to cardboard build list. Fixed naming
+      of other boxes.
+  - rscadd: 'Changes to ammunition boxes: transferring rounds is now a series of timed
+      actions where 40 rounds are transferred every 1.5 seconds. That means extended
+      and big magazines like M41AE2 will take longer to refill than before. Clicking
+      ammunition box with appropriate magazine on HARM intent will start transferring
+      rounds from magazine to the ammo box.'
+  - soundadd: 'Interactions with magazines and bullets such as: taking bullets out,
+      filling magazines manually and from ammunition boxes are now accompanied by
+      new sounds.'
+  Tobinerd:
+  - bugfix: Fixed fire chems stacking their base values with their modifiers, making
+      them either super powerful or super weak in different areas. Things are normalized
+      again now.
+  - tweak: Several fire chems has been slightly tweaked compared to how they were
+      before the flame update. Numbers will be on the wiki.
+  - tweak: The synthesis simulator will now force 3 components if the recipe was less
+      than 3.
+2020-08-16:
+  Jeser and Vampmare:
+  - bugfix: Fixed roundstart initializations and survivor spawning being delayed by
+      Queens choosing Hive location.
+  Waltermeldron:
+  - bugfix: Fixed underbarrel flamer doing more damage than it should.
+  - bugfix: Fixed inhand sprite for flamer tanks.
+2020-08-17:
+  Jeser:
+  - bugfix: Fixed issue with Whiskey Outpost's XO role, Lieutenant Commander, not
+      spawning.
+  - bugfix: Fixed bugged magazine box spawning at North-East mini-pillbox in main
+      bunker perimeter by replacing it with M41A magazine box instead.
+  - bugfix: Fixed SL tracker not appearing automatically for squad marines upon roundstart.
+  - rscadd: M10 Technician Helmet now has same functionality as welding mask.
+  - tweak: 'Welding goggles were moved from basic mandatory equipment in Squad Engineer
+      Equipment Rack to Engineering Supplies in Squad Engineer Gear Rack. Cost: 5
+      points.'
+  - imageadd: New M10 Technician Helmet sprites by Frans_Feiffer.
+  - bugfix: Fixed unintended sound changes for reloading shotguns and revolvers.
+  NethIafin:
+  - tweak: Added custom icon source system that allows us to have copyrighted content
+      (like lobby images) that are given to us, while not having them in repository
+      (under future AGPL).
+  - rscadd: Added per-armor drilldown to weapon codex so now you know what weapon
+      does what to what amount of armor.
+  TobiNerd:
+  - tweak: Made the greyscale sprites for fire brighter so they contrast with reddish
+      turfs more and made the burncolor of UT-Napthal Fuel a bit brighter.
+  - tweak: There's now a hard limit for how many corpses that can spawn per map at
+      round start. This should decrease lag on maps that had a high amount of corpse
+      spawns.
+  Triiodine:
+  - experiment: Shuffled corpse placement on Sorokyne, and replaced a few with gib
+      spawners instead.
+  - experiment: Put Sorokyne Strata back into normal map rotation.
+  - bugfix: Added survivor buckshot spawn locations to Sorokyne.
+  - rscadd: Added some landmark icons for the Hive Spawn and Monkey spawners for use
+      by mappers.
+  - imageadd: Redrew all squad uniforms and map variants, including snow versions.
+  - imageadd: Added inhands for all squad uniforms, as well as new object sprites.
+  - rscadd: You can now cut off the sleeves of your uniforms for the original rolled
+      look, though you can't get them back once you do! Only works for standard Squad
+      Marine uniforms.
+  Waltermeldron:
+  - rscadd: Fueltanks can now be reinforced with 5 metal sheets. Using crowbars will
+      take off this metal shielding. Reinforced fueltanks cannot blow up at all except
+      through intense explosions.
+  - tweak: Acid runners do more damage to xenos when they kabloom now.
+2020-08-18:
+  Jeser:
+  - tweak: Security Cameras Console's list of cameras is now sorted in alphabetical
+      order.
+  - tweak: A 2 seconds delay was added to Cameras Console interactions to prevent
+      performance drops due to sorting.
+  Waltermeldron:
+  - bugfix: Fixed flamers being ranged further than they should be
+  - bugfix: Fixed the damage of Napalm X.
+2020-08-19:
+  Jeser:
+  - bugfix: Fixed double sounds playing when reloading shotguns.
+  Neth:
+  - rscadd: All vended items are now saved in the database, so I can make even more
+      charts, without bugging you guys with questionnaires. (This was 95% done by
+      Neth, love you, boss).
+  Triiodine:
+  - experiment: Greatly reduced the degree to which snow tiles slow down humans and
+      aliens.
+  - experiment: You can now only get stuck in snow that has rocks in it.
+  - maptweak: Replaced all snow turfs on Ice Colony and Sorokyne Strata with auto
+      turfs.
+  - maptweak: Removed all rock decals on Sorokyne Strata in order to improve performance.
+  - maptweak: Added some patches of snowy rocks to Ice Colony.
+  Vampmare:
+  - tweak: Ravagers now get stunned from explosives and take 20% less explosive damage
+      compared to before. Rav directly hit by a HEDP is a 0.6 second stun.
+  Vicacrov:
+  - tweak: Unified structure climbing timers. Climbing tables no longer takes 5 seconds.
+  - tweak: The following climbing values were changed (for the sake of unification).
+      Window frame climbing was changed from 1.5 seconds to 2 seconds. Handrails were
+      changed from 0.5 seconds to 1 second. Non-specified structures were changed
+      from 5 seconds (tables...) to 2 seconds.
+  - tweak: 'The following nanoUI windows no longer autoupdate: dress vendor, autolathe,
+      storage briefcase, escape pod panels, old vending machines.'
+  Waltermeldron:
+  - bugfix: Fixed the zombie species, as well as the presets.
+  - tweak: Biohazard suit has a high chance of preventing you from getting infected
+      if a zombie attacks you. It covers most limbs
+  unwaveringgrey:
+  - bugfix: Custom OT rockets no longer break when unloaded from an M5 RPG.
+2020-08-20:
+  Neth:
+  - rscadd: Attachments are now tracked when you attach them to weapons in addition
+      to what is vended.
+  TheDonkified:
+  - bugfix: Fixed a bug where you would get the message for not utilizing lurker crit
+      slash even after using it.
+  - bugfix: Can rest while stunned/knocked down again as xeno.
+  - tweak: Drastically reduced organ damage chance, but made it scale with existing
+      brute damage slightly.
+  - tweak: There is now a minor stun after getting regurgitated via the regurgitate
+      verb.
+  - tweak: Adjusted numbers related to fire stacks. Extinguishers still work the same.
+      Custom flames will work differently.
+  - tweak: DURATION = how long fire lasts and how many fire stacks you get when lit
+      on fire, INTENSITY = how much damage you get on direct hit and plays a role
+      in damage from being on fire.
+  - tweak: 'Note: fire stacks are capped out at 45, so you cannot have higher than
+      45 fire stacks at a given time.'
+  - tweak: 'Pyro greenflame: DURATION = 60, INTENSITY = 15 (INTENSITY was nerfed from
+      20)'
+  - tweak: 'Pyro blueflame: DURATION = 40, INTENSITY = 40'
+  - tweak: 'Napalm: DURATION = 20, INTENSITY = 30 (INTENSITY was buffed from 20)'
+  - tweak: 'Gel: DURATION = 1, INTENSITY = 15'
+  - tweak: Alien resists remove 10 stacks. Alien extinguishing pats remove 5 stacks.
+  - tweak: Hunters resists remove 25 stacks. Extinguishing pats remove 10 stacks.
+  - tweak: Human resists remove 10 stacks. Extinguishing pats remove 10 stacks.
+  - tweak: Lowered passive fire stack removal to 0.5.
+  - tweak: 'Damage from being on fire as xeno: [80% of INTENSITY] + [20% of INTENSITY]*[%
+      of fire_stacks relative to DURATION]'
+  - tweak: Damage from being direct hit by a flame has only been changed for napalm
+      and pyro greenflame.
+  Vicacrov:
+  - rscdel: Ice Colony was temporarily removed from the map rotation.
+2020-08-21:
+  Bongosz:
+  - imageadd: Updated the smartpack sprite.
+  Jeser:
+  - bugfix: Fixed approved requests in Req showing their author as approver.
+  TheDonkified:
+  - tweak: Tackles on knocked down people use the same min-max system for when people
+      are standing up (before you had a flat 80% chance to miss on knocked down humans
+      and 95% chance to miss on knocked down hunters).
+  - tweak: When trying to tackle a Hunter, the min and max tackles are increased by
+      2 for each caste.
+  ThePiachu:
+  - tweak: Added some more clothing items for the Synth Snowflake vendor as per Synth
+      Council request.
+  Waltermeldron:
+  - tweak: Tweaked larva timer from 10 seconds to 60 seconds.
+  - bugfix: Fixed synthesis simulator retaining properties after relating.
+2020-08-22:
+  TobiNerd:
+  - bugfix: Fixed the relate function of the Synthesis Simulator (again).
+  Waltermeldron:
+  - rscadd: Fully implemented a mutiny system that admins can use to more easily identify
+      who is a mutiny and who is not, as well as any other players.
+  - rscadd: Two new abilities for the mutiny leader, Convert, which'll invite someone
+      to be a mutineer and Begin Mutiny, which'll start the mutiny, and make the mutineers
+      more visible.
+  - rscadd: Clans now have their own ships.
+  - rscadd: Predators now span with their clan rank.
+  - rscadd: Small HUD icon for predators, to signify which clan they belong to.
+  - bugfix: Fixed queen screech being inconsistent sometimes.
+  - bugfix: Predship now loads in at compile time
+2020-08-26:
+  Lengord:
+  - imageadd: Added full and half full states for backpacks, coding by Vampmare.
+  Vampmare:
+  - tweak: Reworked the IFF backend. IFF is now based on the shooters faction and
+      the ID on the human hit/not-hit. For performance reasons, the IFF faction is
+      reset once a magazine is loaded instead of each shot, so if you pick up a random
+      gun with IFF, reload the same magazine to make sure it matches your faction.
+  - rscadd: The ID computer can now add and remove IFF for factions. You can only
+      add and remove factions the authorized ID has.
+  - tweak: Survivors spawn with survivor and marine IFF.
+  - bugfix: You now have to be an observer to return to your nested body when it is
+      freed, no more being forced out of xenos back in your dead body.
+  - bugfix: Xeno structures now follow the same rules as weeds/walls about being placed
+      near LZs.
+  - bugfix: Bashing your helmet with magazines now has a cooldown.
+  - bugfix: Primed nades can no longer be put in bags.
+  - bugfix: Xeno corpses no longer cover eggmorphers.
+  - bugfix: Cluster OB will no longer overlap over Hive Core covered turfs.
+  - bugfix: Deaf people can no longer see above head chat.
+  - tweak: Warden Prae no longer gets self-heal when on fire.
+  - bugfix: Staff will no longer break MapDaemon by manually delaying the round.
+  Vicacrov:
+  - tweak: Added a check to hijacking. The Queen can no longer hijack without at least
+      half of her hive being onboard.
+  - tweak: Raised the specialists' armor storage slots from 2 to 3, to be in line
+      with regular (light, medium, heavy) armors.
+2020-08-27:
+  TobiNerd:
+  - maptweak: Replaced snow tiles on Corsat with the less laggy autoturf variant.
+  - maptweak: The airlocks into Omega from Gamma and Theta are now 4 tiles wide and
+      the walls surrounding them are now destructible given there's no space between.
+      The ceiling is too low for vehicles to enter Omega through the Gamma and Theta
+      airlocks.
+  Vampmare:
+  - bugfix: Fixed Flak not behaving correctly. The bullet will now have IFF as usual.
+  - bugfix: Fixed corpses not showing up permadead.
+2020-08-28:
+  TobiNerd:
+  - experiment: Decreased the number of items physically located on maps by merging
+      them into tables and racks.
+  - experiment: Placing most items on tables or racks will now merge the item into
+      it. However, the items should remain as interactable as usual. Holding CTRL
+      while clicking a table or rack with an item will force the item to be placed
+      on the table, rather than trying to click an item on the table.
+  - bugfix: Fixed pixel accurate item placement on tables (yes, apparently we had
+      this but never noticed because it was bugged).
+  - tweak: You can now open storage containers with middle clicks as an alternative
+      to drag and drop. Opening a storage container on a table or rack MUST be done
+      using middle click.
+  - tweak: If you want items on a table listed you should use ALT click.
+  - tweak: To prevent people from accidentally flipping tables from muscle memory,
+      you now need to be on harm intent to flip a table.
+2020-08-29:
+  Jeser:
+  - bugfix: Fixed new ammunition sounds playing for shotgun ammo boxes.
+  - tweak: Undeployed ammo boxes sprites now have small offsets.
+  - rscadd: Added ammo boxes path option for Quick Create Object.
+  Vampmare:
+  - tweak: Adjusted all the spec armour stats. They're now medium armour, but better
+      in two stats. Grenadier remains the same. Demo, faster and more bomb resistance.
+      Scout, faster and melee resistance. Pyro, acid resistance and internal damage
+      resistance. Ghillie, faster and acid resistance.
+  - tweak: Demo armour is no longer restricted to only hold RPG.
+  - tweak: Reduced Lurker slash damage from 45->35.
+  - tweak: Hedgehog Ravager is now immune to small explosion stuns. Oppressor is also
+      immune again.
+  Waltermeldron:
+  - rscadd: Pointing now has an animation.
+2020-08-30:
+  Vicacrov:
+  - maptweak: The Almayer's kitchen and R&R area was expanded with its own hydroponics
+      area. It has the same access requirement as the Kitchen and it has its own set
+      of shutters.
+2020-08-31:
+  TobiNerd:
+  - bugfix: Intel detector now detects vial boxes on tables again.
+  Vicacrov:
+  - bugfix: The kitchen hydroponics' seed vendor's access requirement was removed.
+  Waltermeldron:
+  - tweak: Drag'n'drop now works on containers on tables

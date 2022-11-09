@@ -8,7 +8,7 @@
 
 //Used for logging people entering cryosleep and important items they are carrying.
 GLOBAL_LIST_EMPTY(frozen_crew)
-GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list(), SQUAD_NAME_3 = list(), SQUAD_NAME_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
+GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
 
 //Main cryopod console.
 
@@ -23,6 +23,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	unacidable = TRUE
 	var/cryotype = "REQ"
 	var/mode = null
+	var/z_restricted = TRUE
 
 /obj/structure/machinery/computer/cryopod/medical
 	cryotype = "Med"
@@ -34,25 +35,30 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	cryotype = "Eng"
 
 /obj/structure/machinery/computer/cryopod/alpha
-	cryotype = SQUAD_NAME_1
+	cryotype = SQUAD_MARINE_1
 
 /obj/structure/machinery/computer/cryopod/bravo
-	cryotype = SQUAD_NAME_2
+	cryotype = SQUAD_MARINE_2
 
 /obj/structure/machinery/computer/cryopod/charlie
-	cryotype = SQUAD_NAME_3
+	cryotype = SQUAD_MARINE_3
 
 /obj/structure/machinery/computer/cryopod/delta
-	cryotype = SQUAD_NAME_4
+	cryotype = SQUAD_MARINE_4
 
 /obj/structure/machinery/computer/cryopod/yautja
 	cryotype = "Yautja"
+	z_restricted = FALSE
 
 /obj/structure/machinery/computer/cryopod/attack_remote()
 	src.attack_hand()
 
 /obj/structure/machinery/computer/cryopod/attack_hand(mob/user = usr)
 	if(inoperable())
+		return
+
+	if(z_restricted && !is_mainship_level(z))
+		to_chat(user, SPAN_WARNING("\The [src] cannot connect to the cryo bay system off the [MAIN_SHIP_NAME]!"))
 		return
 
 	user.set_interaction(src)
@@ -174,6 +180,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	var/orient_right = null // Flips the sprite.
 	var/time_till_despawn = 10 MINUTES //10 minutes-ish safe period before being despawned.
 	var/time_entered = 0 //Used to keep track of the safe period.
+	var/silent_exit = FALSE
 	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements
 
 /obj/structure/machinery/cryopod/right
@@ -318,7 +325,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		var/mob/living/carbon/human/H = occupant
 		if(H.assigned_squad)
 			var/datum/squad/S = H.assigned_squad
-			if(GET_MAPPED_ROLE(H.job) == JOB_SQUAD_SPECIALIST)
+			S.forget_marine_in_squad(H)
+			var/datum/job/J = GET_MAPPED_ROLE(H.job)
+			if(istype(J, /datum/job/marine/specialist))
 				//we make the set this specialist took if any available again
 				if(H.skills)
 					var/set_name
@@ -336,7 +345,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 					if(set_name && !available_specialist_sets.Find(set_name))
 						available_specialist_sets += set_name
-			S.forget_marine_in_squad(H)
 
 	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 
@@ -345,7 +353,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 	var/occupant_ref = WEAKREF(occupant)
 	//Delete them from datacore.
-	for(var/datum/data/record/R in GLOB.data_core.medical)
+	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 		if((R.fields["ref"] == occupant_ref))
 			GLOB.data_core.medical -= R
 			qdel(R)
@@ -364,9 +372,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		occupant.ghostize(0)
 
 	//Make an announcement and log the person entering storage.
-	GLOB.frozen_crew += "[occupant.real_name]"
+	GLOB.frozen_crew += "[occupant.real_name] ([occupant.job])"
+
 	if(!isYautja(occupant))
-		ai_silent_announcement("[occupant.real_name] has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.")
+		ai_silent_announcement("[occupant.real_name], [occupant.job], has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.")
 	visible_message(SPAN_NOTICE("[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage."))
 
 	//Delete the mob.
@@ -424,8 +433,12 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 			//Despawning occurs when process() is called with an occupant without a client.
 			add_fingerprint(user)
 
-/obj/structure/machinery/cryopod/verb/eject()
+/obj/structure/machinery/cryopod/relaymove(mob/user)
+	if(user.is_mob_incapacitated(TRUE))
+		return
+	eject()
 
+/obj/structure/machinery/cryopod/verb/eject()
 	set name = "Eject Pod"
 	set category = "Object"
 	set src in oview(1)
@@ -436,25 +449,25 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		to_chat(usr, SPAN_WARNING("You can't drag people out of hypersleep!"))
 		return
 
-	if (alert(usr, "Would you like eject out of the hypersleep chamber?", "Confirm", "Yes", "No") == "Yes")
-		visible_message(SPAN_WARNING ("The hypersleep chamber's casket starts moving!"))
-		to_chat(usr, SPAN_NOTICE ("You get out of the hypersleep chamber."))
-		go_out() //Not adding a delay for this because for some reason it refuses to work. Not a big deal imo
-		add_fingerprint(usr)
+	if(!silent_exit && alert(usr, "Would you like eject out of the hypersleep chamber?", "Confirm", "Yes", "No") == "No")
+		return
 
+	go_out() //Not adding a delay for this because for some reason it refuses to work. Not a big deal imo
+	add_fingerprint(usr)
+
+	to_chat(usr, SPAN_NOTICE("You get out of \the [src] chamber."))
+	if(!silent_exit)
+		visible_message(SPAN_WARNING("\The [src]'s casket starts moving!"))
 		var/mob/living/M = usr
 		var/area/location = get_area(src) //Logs the exit
 		message_staff("[key_name_admin(M)], [M.job], has left [src] at [location].")
 
-		var/list/items = src.contents //-Removes items from the chamber
-		if(occupant) items -= occupant
-		if(announce) items -= announce
+	var/list/items = src.contents //-Removes items from the chamber
+	if(occupant) items -= occupant
+	if(announce) items -= announce
 
-		for(var/obj/item/W in items)
-			W.forceMove(get_turf(src))
-
-	else
-		return
+	for(var/obj/item/W in items)
+		W.forceMove(get_turf(src))
 
 /obj/structure/machinery/cryopod/verb/move_inside()
 	set name = "Enter Pod"
@@ -488,22 +501,24 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		add_fingerprint(usr)
 
 
-/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/M)
+/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/M, var/silent = FALSE)
 	if(occupant)
 		return
 	M.forceMove(src)
 	occupant = M
 	icon_state = "body_scanner_1"
-	if(M.client)
-		to_chat(M, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
-		to_chat(M, SPAN_BOLDNOTICE("If you log out or close your client now, your character will permanently removed from the round in 10 minutes. If you ghost, timer will be decreased to 2 minutes."))
 	time_entered = world.time
 	start_processing()
-	var/area/location = get_area(src)
-	if(M.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
-		message_staff("[key_name_admin(M)], [M.job], has entered a [src] at [location] after playing for [duration2text(world.time - M.life_time_start)].")
 
-	playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
+	if(!silent)
+		if(M.client)
+			to_chat(M, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
+			to_chat(M, SPAN_BOLDNOTICE("If you log out or close your client now, your character will permanently removed from the round in 10 minutes. If you ghost, timer will be decreased to 2 minutes."))
+		var/area/location = get_area(src)
+		if(M.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
+			message_staff("[key_name_admin(M)], [M.job], has entered \a [src] at [location] after playing for [duration2text(world.time - M.life_time_start)].")
+		playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
+	silent_exit = silent
 
 /obj/structure/machinery/cryopod/proc/go_out()
 	if(!occupant)

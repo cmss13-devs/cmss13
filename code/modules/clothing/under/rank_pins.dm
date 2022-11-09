@@ -135,6 +135,11 @@
 	rank_short = "O10C"
 	icon_state = "ranks_flagofficer"
 
+/obj/item/clothing/accessory/ranks/marine/o10s
+	name = "rank boards"
+	rank_short = "O10S"
+	icon_state = "ranks_flagofficer"
+
 /*################################################
 ################    NAVY     #####################
 ################################################*/
@@ -161,7 +166,7 @@
 	icon_state = "ranks_nco"
 
 /obj/item/clothing/accessory/ranks/navy/e7
-	rank_short = "NE6"
+	rank_short = "NE7"
 	icon_state = "ranks_snco"
 
 /obj/item/clothing/accessory/ranks/navy/e7/pvst
@@ -265,6 +270,7 @@
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o10c/pvst
+	rank_short = "PvCM"
 	icon_state = "ranks_pvstofficer"
 
 /*################################################

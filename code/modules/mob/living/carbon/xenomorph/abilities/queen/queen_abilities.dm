@@ -1,5 +1,5 @@
 /datum/action/xeno_action/onclick/deevolve
-	name = "De-Evolve a Xenomorph"
+	name = "De-Evolve a Xenomorph (500)"
 	action_icon_state = "xeno_deevolve"
 	plasma_cost = 500
 
@@ -8,18 +8,19 @@
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 0
 
-
 /datum/action/xeno_action/onclick/grow_ovipositor
 	name = "Grow Ovipositor (500)"
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 500
+	xeno_cooldown = 5 MINUTES
+	cooldown_message = "You are ready to grow an ovipositor again."
+	no_cooldown_msg = FALSE // Needed for onclick actions
 
 /datum/action/xeno_action/onclick/set_xeno_lead
 	name = "Choose/Follow Xenomorph Leaders"
 	action_icon_state = "xeno_lead"
 	plasma_cost = 0
 	xeno_cooldown = 3 SECONDS
-
 
 /datum/action/xeno_action/activable/queen_heal
 	name = "Heal Xenomorph (600)"
@@ -32,7 +33,7 @@
 	xeno_cooldown = 8 SECONDS
 
 /datum/action/xeno_action/activable/expand_weeds
-	name = "Expand Weeds"
+	name = "Expand Weeds (50)"
 	action_icon_state = "plant_weeds"
 	ability_name = "weed expansion"
 	plasma_cost = 50
@@ -42,17 +43,15 @@
 
 	var/node_plant_cooldown = 7 SECONDS
 	var/node_plant_plasma_cost = 300
-
 	var/turf_build_cooldown = 7 SECONDS
 
 /datum/action/xeno_action/onclick/banish
-	name = "Banish a Xenomorph"
+	name = "Banish a Xenomorph (500)"
 	action_icon_state = "xeno_banish"
 	plasma_cost = 500
 
-
 /datum/action/xeno_action/onclick/readmit
-	name = "Readmit a Xenomorph"
+	name = "Readmit a Xenomorph (100)"
 	action_icon_state = "xeno_readmit"
 	plasma_cost = 100
 
@@ -62,18 +61,15 @@
 	ability_name = "projected resin"
 	plasma_cost = 100
 	xeno_cooldown = 2 SECONDS
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 	care_about_adjacency = FALSE
 	build_speed_mod = 1
 
 	var/boosted = FALSE
 
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/New(Target, override_icon_state)
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
 	. = ..()
-	RegisterSignal(src, COMSIG_ACTION_GIVEN, .proc/on_give)
-
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/on_give(datum/source, mob/living/L)
 	SSticker.OnRoundstart(CALLBACK(src, .proc/apply_queen_build_boost))
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/apply_queen_build_boost()
@@ -85,20 +81,20 @@
 		boosted = TRUE
 		xeno_cooldown = 0
 		plasma_cost = 0
+		RegisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS, .proc/override_secrete_thick_resin)
 		addtimer(CALLBACK(src, .proc/disable_boost), boost_duration)
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/disable_boost()
 	xeno_cooldown = 2 SECONDS
 	plasma_cost = 100
 	boosted = FALSE
+	UnregisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS)
 
 	if(owner)
 		to_chat(owner, SPAN_XENODANGER("Your boosted building has been disabled!"))
 
-/datum/action/xeno_action/onclick/eye
-	name = "Enter Eye Form"
-	action_icon_state = "queen_eye"
-	plasma_cost = 0
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/override_secrete_thick_resin()
+	return COMPONENT_THICK_BYPASS
 
 /datum/action/xeno_action/activable/bombard/queen
 	// Range and other config

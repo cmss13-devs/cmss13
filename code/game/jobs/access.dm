@@ -1,16 +1,18 @@
-//returns 1 if this mob has sufficient access to use this object
+//returns TRUE if this mob has sufficient access to use this object
+//returns FALSE otherwise
 /obj/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
-	if(check_access()) return 1
-	if(isRemoteControlling(M)) return 1 //AI can do whatever he wants
+	if(check_access()) return TRUE
+	if(isRemoteControlling(M)) return TRUE //AI can do whatever he wants
 
 	else if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		//if they are holding or wearing a card that has access, that works
-		if(check_access(H.get_active_hand()) || check_access(H.wear_id)) return 1
+		if(check_access(H.get_active_hand()) || check_access(H.wear_id)) return TRUE
 	else if(istype(M, /mob/living/carbon/Xenomorph))
 		var/mob/living/carbon/C = M
-		if(check_access(C.get_active_hand())) return 1
+		if(check_access(C.get_active_hand())) return TRUE
+	return FALSE
 
 /obj/item/proc/GetAccess() return list()
 
@@ -131,7 +133,8 @@
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT,
 		ACCESS_MARINE_PILOT,
-		ACCESS_MARINE_RO
+		ACCESS_MARINE_RO,
+		ACCESS_MARINE_SYNTH
 	)
 
 /proc/get_all_centcom_access()
@@ -162,7 +165,7 @@
 		if(4)
 			return list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING) // Engineering
 		if(5)
-			return list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_CARGO, ACCESS_MARINE_SEA) // Command
+			return list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_CARGO, ACCESS_MARINE_SEA, ACCESS_MARINE_SYNTH) // Command
 		if(6)
 			return list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP)//spess mahreens
 		if(7)
@@ -233,6 +236,7 @@
 		if(ACCESS_CIVILIAN_PUBLIC) 		return "Civilian"
 		if(ACCESS_MARINE_SEA)			return "SEA's Office"
 		if(ACCESS_MARINE_KITCHEN)		return "Kitchen"
+		if(ACCESS_MARINE_SYNTH)			return "Synthetic Storage"
 
 /proc/get_centcom_access_desc(A)
 	switch(A)

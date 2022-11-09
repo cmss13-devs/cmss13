@@ -31,6 +31,8 @@ SUBSYSTEM_DEF(atoms)
 
 	initialized = INITIALIZATION_INNEW_MAPLOAD
 
+	fix_atoms_locs(atoms)
+
 	var/count
 	var/list/mapload_arg = list(TRUE)
 	if(atoms)
@@ -105,6 +107,17 @@ SUBSYSTEM_DEF(atoms)
 	for(var/atom/A as anything in roundstart_loaders)
 		A.LateInitialize()
 	roundstart_loaders.Cut()
+
+/// Force reset atoms loc, as map expansion can botch turf contents for multitiles
+/// This is obviously a bandaid fix, see CM MR !2797, /tg/ PR #65638,
+/// and the BYOND Bug Report: http://www.byond.com/forum/post/2777527
+/datum/controller/subsystem/atoms/proc/fix_atoms_locs(list/atoms)
+	if(atoms)
+		for(var/atom/movable/A in atoms)
+			A.loc = A.loc
+	else
+		for(var/atom/movable/A in world)
+			A.loc = A.loc
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
 	old_initialized = initialized

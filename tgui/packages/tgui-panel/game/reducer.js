@@ -18,7 +18,6 @@ const initialState = {
 export const gameReducer = (state = initialState, action) => {
   const { type, payload, meta } = action;
   if (type === 'roundrestart') {
-    setTimeout(() => { Byond.command('.reconnect'); }, Math.floor((1 + Math.random()) * 6000));
     return {
       ...state,
       roundRestartedAt: meta.now,

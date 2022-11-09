@@ -24,6 +24,8 @@
 
 	var/list/listed_products = list()
 
+	var/special_prod_time_lock //needs to be a time define
+	var/list/special_prods //list of typepaths
 
 /obj/item/device/portable_vendor/attack_hand(mob/user)
 	if(loc == user)
@@ -146,6 +148,7 @@
 
 			if(use_points && points < cost)
 				to_chat(H, SPAN_WARNING("Not enough points."))
+				return
 
 
 			var/turf/T = get_turf(loc)
@@ -153,6 +156,11 @@
 				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
 				return
 
+			if(special_prod_time_lock)
+				if(L[3] in special_prods)
+					if(world.time < SSticker.mode.round_time_lobby + special_prod_time_lock)
+						to_chat(usr, SPAN_WARNING("\The [src] is still fabricating \the [L[1]]. Please wait another [round((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
+						return
 
 			if(use_points)
 				points -= cost
@@ -165,7 +173,6 @@
 			spawn(30)
 				var/type_p = L[3]
 				var/obj/IT = new type_p(get_turf(src))
-				vending_stat_bump(type_p, src.type)
 				H.put_in_any_hand_if_possible(IT)
 				fabricating = 0
 				update_overlays()
@@ -236,28 +243,36 @@
 	name = "\improper Weyland-Yutani Automated Storage Briefcase"
 	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items. This one has the Weyland-Yutani logo stamped on its side."
 
+	special_prod_time_lock = CL_BRIEFCASE_TIME_LOCK
+	special_prods = list(/obj/item/implanter/neurostim, /obj/item/storage/pill_bottle/ultrazine)
+
 	req_access = list(ACCESS_WY_CORPORATE)
-	req_role = "Corporate Liaison"
+	req_role = JOB_CORPORATE_LIAISON
 	listed_products = list(
 		list("INCENTIVES", 0, null, null, null),
-		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disoritentation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
-		list("Ultrazine Pills", 20, /obj/item/storage/pill_bottle/ultrazine, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per pill. More than two pills at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
+		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
+		list("Ultrazine Pills", 25, /obj/item/storage/pill_bottle/ultrazine, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per pill. More than two pills at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
+		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
 		list("Cash", 5, /obj/item/spacecash/c1000, "white", "$1000 USD, unmarked bills"),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
 
+		list("SMOKABLES", 0, null, null, null),
 		list("Cigars", 5, /obj/item/storage/fancy/cigar, "white", "Case of premium cigars, untampered."),
 		list("Cigarettes", 5, /obj/item/storage/fancy/cigarettes/wypacket, "white", "Weyland-Yutani Gold packet, for the more sophisticated taste."),
 		list("Zippo", 5, /obj/item/tool/lighter/zippo, "white", "A Zippo lighter, for those smoking in style."),
 
+		list("DRINKABLES", 0, null, null, null),
 		list("Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weyland-Yutani Sake, for a proper business dinner."),
 		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland-Yutani Aspen Beer, for a more casual night."),
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
 
-		list("SATIONARY", 0, null, null, null),
+		list("STATIONERY", 0, null, null, null),
 		list("WY pen, black", 1, /obj/item/tool/pen/clicky, "white", "A WY pen, for writing formally on the go."),
 		list("WY pen, blue", 1, /obj/item/tool/pen/blue/clicky, "white", "A WY pen, for writing with a flourish on the go."),
 		list("WY pen, red", 1, /obj/item/tool/pen/red/clicky, "white", "A WY pen, for writing angrily on the go."),
+		list("WY pen, green", 1, /obj/item/tool/pen/green/clicky, "white", "A WY pen, for writing angrily on the go."),
 		list("Paper", 1, /obj/item/paper, "white", "A fresh piece of paper, for writing on."),
+		list("WY Paper", 1, /obj/item/paper/wy, "white", "A fresh piece of WY-branded paper, for writing important things on."),
 		list("Carbon Paper", 1, /obj/item/paper/carbon, "white", "A piece of carbon paper, to double the writing output."),
 		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
 	)

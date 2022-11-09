@@ -46,6 +46,8 @@
 
 /obj/structure/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(user.action_busy)
+			return TRUE
 		toggle_anchored(W, user)
 		return TRUE
 	..()
@@ -220,3 +222,9 @@
 			else
 				user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
 			return TRUE
+
+/obj/structure/get_applying_acid_time()
+	if(unacidable)
+		return -1
+
+	return 4 SECONDS

@@ -2,7 +2,7 @@
 
 /*
 	The broadcaster sends processed messages to all radio devices in the game. They
-	do not have to be headsets; intercoms and station-bounced radios suffice.
+	do not have to be headsets; intercoms and shortwave radios suffice.
 
 	They receive their message from a server after the message has been logged.
 */
@@ -63,7 +63,7 @@
 	@param data:
 		If specified:
 				1 -- Will only broadcast to intercoms
-				2 -- Will only broadcast to intercoms and station-bounced radios
+				2 -- Will only broadcast to intercoms and shortwave radios
 				3 -- Broadcast to syndicate frequency
 				4 -- AI can't track down this person. Useful for imitation broadcasts where you can't find the actual mob
 
@@ -99,7 +99,7 @@
 			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
 
-	// --- Broadcast only to intercoms and station-bounced radios ---
+	// --- Broadcast only to intercoms and shortwave radios ---
 	else if(data == RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER)
 		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
 			if(istype(R, /obj/item/device/radio/headset))
@@ -145,7 +145,7 @@
 			var/mob/living/carbon/human/H = M
 			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
 				volume = max(volume, RADIO_VOLUME_CRITICAL)
-			else if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+			else if(HAS_TRAIT(M, TRAIT_LEADERSHIP))
 				volume = max(volume, RADIO_VOLUME_IMPORTANT)
 
 			comm_title = H.comm_title //Set up [CO] and stuff after frequency

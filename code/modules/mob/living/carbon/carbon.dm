@@ -8,6 +8,8 @@
 	..()
 
 	handle_fire() //Check if we're on fire
+	if(SSweather.is_weather_event)
+		handle_weather(delta_time)
 
 /mob/living/carbon/Destroy()
 	QDEL_NULL_LIST(internal_organs)
@@ -53,7 +55,7 @@
 				H.updatehealth()
 			else
 				src.take_limb_damage(d)
-			for(var/mob/M in viewers(user, null))
+			for(var/mob/M as anything in viewers(user, null))
 				if(M.client)
 					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), 2)
 			user.track_hit(initial(I.name))
@@ -74,10 +76,10 @@
 	if(severity >= 30)
 		flash_eyes()
 
-	last_damage_data = cause_data
+	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
 	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
-		gib(cause_data)
+		gib(last_damage_data)
 		return
 
 	apply_damage(severity, BRUTE)
@@ -107,7 +109,6 @@
 				O.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
 
 	. = ..(cause)
-
 
 /mob/living/carbon/revive()
 	if(handcuffed && !initial(handcuffed))
@@ -321,7 +322,7 @@
 	if(!istype(loc, /turf)) // In some mob/object (i.e. devoured or tank)
 		to_chat(src, SPAN_WARNING("You cannot throw anything while inside of \the [loc.name]."))
 		return
-	if(target.type == /obj/screen)
+	if(target.type == /atom/movable/screen)
 		return
 
 	var/atom/movable/thrown_thing
@@ -493,22 +494,22 @@
 	else
 		buckled.manual_unbuckle(src)
 
-/mob/living/carbon/examine(mob/user)
+/mob/living/carbon/get_examine_text(mob/user)
 	. = ..()
 	if(isYautja(user))
-		to_chat(user, SPAN_BLUE("[src] is worth [max(life_kills_total, 1)] honor."))
+		. += SPAN_BLUE("[src] is worth [max(life_kills_total, default_honor_value)] honor.")
 		if(src.hunter_data.hunted)
-			to_chat(user, SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name]."))
+			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")
 
 		if(src.hunter_data.dishonored)
-			to_chat(user, SPAN_RED("[src] was marked as dishonorable for '[src.hunter_data.dishonored_reason]'."))
+			. += SPAN_RED("[src] was marked as dishonorable for '[src.hunter_data.dishonored_reason]'.")
 		else if(src.hunter_data.honored)
-			to_chat(user, SPAN_GREEN("[src] was honored for '[src.hunter_data.honored_reason]'."))
+			. += SPAN_GREEN("[src] was honored for '[src.hunter_data.honored_reason]'.")
 
 		if(src.hunter_data.thralled)
-			to_chat(user, SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'."))
+			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
-			to_chat(user, SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set]."))
+			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
 
 /mob/living/carbon/get_vv_options()
 	. = ..()

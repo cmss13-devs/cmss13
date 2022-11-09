@@ -100,7 +100,7 @@
 				SPAN_NOTICE("[user] starts to clean the microwave."), \
 				SPAN_NOTICE("You start to clean the microwave.") \
 			)
-			if (do_after(user,20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			if (do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				user.visible_message( \
 					SPAN_NOTICE("[user]  has cleaned  the microwave."), \
 					SPAN_NOTICE("You have cleaned the microwave.") \
@@ -225,12 +225,12 @@
 //*   Microwave Menu Handling/Cooking
 //************************************/
 
-/obj/structure/machinery/microwave/proc/cook()
+/obj/structure/machinery/microwave/proc/cook(var/time_multiplier = 1)
 	if(inoperable())
 		return
 	start()
 	if (reagents.total_volume==0 && !(locate(/obj) in contents)) //dry run
-		if (!wzhzhzh(10))
+		if (!wzhzhzh(10 * time_multiplier))
 			abort()
 			return
 		stop()
@@ -239,9 +239,9 @@
 	var/datum/recipe/recipe = select_recipe(available_recipes,src)
 	var/obj/cooked
 	if (!recipe)
-		dirty += 1
+		dirty++
 		if (prob(max(10,dirty*5)))
-			if (!wzhzhzh(4))
+			if (!wzhzhzh(4 * time_multiplier))
 				abort()
 				return
 			muck_start()
@@ -251,7 +251,7 @@
 			cooked.forceMove(src.loc)
 			return
 		else if (has_extra_item())
-			if (!wzhzhzh(4))
+			if (!wzhzhzh(4 * time_multiplier))
 				abort()
 				return
 			broke()
@@ -259,7 +259,7 @@
 			cooked.forceMove(src.loc)
 			return
 		else
-			if (!wzhzhzh(10))
+			if (!wzhzhzh(10 * time_multiplier))
 				abort()
 				return
 			stop()
@@ -268,10 +268,10 @@
 			return
 	else
 		var/halftime = round(recipe.time/10/2)
-		if (!wzhzhzh(halftime))
+		if (!wzhzhzh(halftime * time_multiplier))
 			abort()
 			return
-		if (!wzhzhzh(halftime))
+		if (!wzhzhzh(halftime * time_multiplier))
 			abort()
 			cooked = fail()
 			cooked.forceMove(src.loc)
@@ -376,7 +376,7 @@
 
 	switch(href_list["action"])
 		if ("cook")
-			cook()
+			cook(usr.get_skill_duration_multiplier(SKILL_DOMESTIC)) // picking the right microwave setting for the right food. when's the last time you used the special setting on the microwave? i bet you just slam the 30 second increment. Do you know how much programming went into putting the Pizza setting into a microwave emitter?
 
 		if ("dispose")
 			dispose()

@@ -45,6 +45,46 @@
 	qdel(internal_camera)
 	return ..()
 
+/obj/structure/mortar/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_OVER
+
+/obj/structure/mortar/get_projectile_hit_boolean(obj/item/projectile/P)
+	if(P.original == src)
+		return TRUE
+	else
+		return FALSE
+
+/obj/structure/mortar/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(isXenoLarva(M))
+		return XENO_NO_DELAY_ACTION
+
+	if(fixed)
+		to_chat(M, SPAN_XENOWARNING("\The [src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there."))
+		return XENO_NO_DELAY_ACTION
+
+	if(firing)
+		M.animation_attack_on(src)
+		M.flick_attack_overlay(src, "slash")
+		playsound(src, "acid_hit", 25, 1)
+		playsound(M, "alien_help", 25, 1)
+		M.apply_damage(10, BURN)
+		M.visible_message(SPAN_DANGER("[M] tried to knock the steaming hot [src] over, but burned itself and pulled away!"),
+		SPAN_XENOWARNING("\The [src] is burning hot! Wait a few seconds."))
+		return XENO_ATTACK_ACTION
+
+	M.visible_message(SPAN_DANGER("[M] lashes at \the [src] and knocks it over!"),
+	SPAN_DANGER("You knock \the [src] over!"))
+	M.animation_attack_on(src)
+	M.flick_attack_overlay(src, "slash")
+	playsound(loc, 'sound/effects/metalhit.ogg', 25)
+	var/obj/item/mortar_kit/MK = new /obj/item/mortar_kit(loc)
+	MK.name = name
+	qdel(src)
+
+	return XENO_ATTACK_ACTION
+
 /obj/structure/mortar/attack_hand(mob/user)
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You kick [src] but nothing happens."))
@@ -108,8 +148,8 @@
 
 /obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, manual = FALSE)
 	if(manual)
-		temp_targ_x = input("Input the longitude of the target.") as num
-		temp_targ_y = input("Input the latitude of the target.") as num
+		temp_targ_x = tgui_input_real_number(user, "Input the longitude of the target.")
+		temp_targ_y = tgui_input_real_number(user, "Input the latitude of the target.")
 
 	if(!can_fire_at(user, test_targ_x = deobfuscate_x(temp_targ_x), test_targ_y = deobfuscate_y(temp_targ_y)))
 		return
@@ -140,8 +180,8 @@
 
 /obj/structure/mortar/proc/handle_dial(mob/user, temp_dial_x = 0, temp_dial_y = 0, manual = FALSE)
 	if(manual)
-		temp_dial_x = input("Set longitude adjustement from -10 to 10.") as num
-		temp_dial_y = input("Set latitude adjustement from -10 to 10.") as num
+		temp_dial_x = tgui_input_number(user, "Set longitude adjustement from -10 to 10.", "Longitude", 0, 10, -10)
+		temp_dial_y = tgui_input_number(user, "Set latitude adjustement from -10 to 10.", "Latitude", 0, 10, -10)
 
 	if(!can_fire_at(user, test_dial_x = temp_dial_x, test_dial_y = temp_dial_y))
 		return
@@ -216,7 +256,7 @@
 			busy = FALSE
 			firing = TRUE
 			flick(icon_state + "_fire", src)
-			mortar_shell.source_mob = user
+			mortar_shell.cause_data = create_cause_data(initial(mortar_shell.name), user, src)
 			mortar_shell.forceMove(src)
 
 			var/turf/G = get_turf(src)
@@ -271,17 +311,23 @@
 	playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
 	var/relative_dir
 	for(var/mob/M in range(15, target))
-		relative_dir = get_dir(M, target)
+		if(get_turf(M) == target)
+			relative_dir = 0
+		else
+			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_DANGER("A SHELL IS COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
-			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+			SPAN_DANGER("A SHELL IS COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
+			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
 		)
 	sleep(2.5 SECONDS) // Sleep a bit to give a message
 	for(var/mob/M in range(10, target))
-		relative_dir = get_dir(M, target)
+		if(get_turf(M) == target)
+			relative_dir = 0
+		else
+			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
 		)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)
@@ -310,7 +356,7 @@
 	return TRUE
 
 /obj/structure/mortar/fixed
-	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses manual targetting dials. Insert round to fire. This one is bolted and welded into the ground."
+	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses manual targeting dials. Insert round to fire. This one is bolted and welded into the ground."
 	fixed = TRUE
 
 /obj/structure/mortar/wo

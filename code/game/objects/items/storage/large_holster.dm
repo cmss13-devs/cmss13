@@ -89,22 +89,9 @@
 /obj/item/storage/large_holster/machete/arnold/full/fill_preset_inventory()
 	new /obj/item/weapon/melee/claymore/mercsword/machete/arnold(src)
 
-/obj/item/storage/large_holster/macheteB
-	name = "\improper H6B pattern M2132 machete scabbard"
-	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."
-	base_icon = "macheteB_holster"
-	icon_state = "macheteB_holster"
-	item_state = "machete_holster"
-	flags_equip_slot = SLOT_STORE
-	storage_flags = STORAGE_FLAGS_POUCH
-	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
-
-/obj/item/storage/large_holster/macheteB/full/fill_preset_inventory()
-	new /obj/item/weapon/melee/claymore/mercsword/machete(src)
-
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
-	desc = "A large, vibrantly colored katana scabbard used to carry a japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
+	desc = "A large, vibrantly colored katana scabbard used to carry a Japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
 	icon_state = "katana_holster"
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
@@ -134,8 +121,8 @@
 	max_w_class = 5
 	can_hold = list(
 		/obj/item/weapon/gun/smg/m39,
-		/obj/item/weapon/gun/smg/mp7,
-		/obj/item/weapon/gun/smg/uzi,
+		/obj/item/weapon/gun/smg/mp27,
+		/obj/item/weapon/gun/smg/mac15,
 		/obj/item/weapon/gun/pistol/skorpion
 		)
 	///Guns have a hud offset that throws the vis_contents alignment off.
@@ -184,6 +171,10 @@
 
 /obj/item/storage/large_holster/m39/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39())
+
+/obj/item/storage/large_holster/m39/full/elite/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite())
+
 
 /obj/item/storage/large_holster/fuelpack
 	name = "\improper Broiler-T flexible refueling system"
@@ -331,17 +322,17 @@
 		active_fuel = new_fuel
 
 
-/obj/item/storage/large_holster/fuelpack/examine(mob/user)
-	..()
+/obj/item/storage/large_holster/fuelpack/get_examine_text(mob/user)
+	. = ..()
 	if(contents.len)
-		to_chat(user, "It is storing \a M240-T incinerator unit.")
+		. += "It is storing \a M240-T incinerator unit."
 	if (get_dist(user, src) <= 1)
 		if(fuel)
-			to_chat(user, "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel.")
+			. += "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel."
 		if(fuelB)
-			to_chat(user, "The [fuelB.caliber] currently contains: [round(fuelB.get_ammo_percent())]% fuel.")
+			. += "The [fuelB.caliber] currently contains: [round(fuelB.get_ammo_percent())]% fuel."
 		if(fuelX)
-			to_chat(user, "The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel.")
+			. += "The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel."
 
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1

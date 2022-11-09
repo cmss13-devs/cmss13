@@ -141,8 +141,9 @@
 		addtimer(CALLBACK(bound_xeno.hive, /datum/hive_status.proc/free_respawn, bound_xeno.client), 5 SECONDS)
 	bound_xeno.gib()
 
-/mob/living/carbon/Xenomorph/Runner/can_ventcrawl()
+/mob/living/carbon/Xenomorph/Runner/ventcrawl_carry()
 	var/datum/behavior_delegate/runner_acider/BD = behavior_delegate
-	if (!istype(BD) || !BD.caboom_trigger)
-		return ..()
-	return FALSE
+	if(istype(BD) && BD.caboom_trigger)
+		to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl when you are about to explode!"))
+		return FALSE
+	return ..()

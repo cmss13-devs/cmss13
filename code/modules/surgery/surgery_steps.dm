@@ -1,5 +1,3 @@
-#define DEBUG_SURGERY_STEP FALSE
-
 /datum/surgery_step
 	var/name
 	/**Description of the surgery used for need-different-tool messages,
@@ -54,11 +52,28 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 			return tools_cache[tool.type]
 	return FALSE
 
+///does any extra checks that is is SUBTYPED to perform
+/datum/surgery_step/proc/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
+	return TRUE
+
 ///The proc that actually performs the step.
 /datum/surgery_step/proc/attempt_step(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	var/tool_type = tool_check(user, tool, surgery) //A boolean, a key to the tools list for duration multipliers, and a faster method than istype() for steps to test tools.
 	if(!tool_type) //Can't perform the step.
 		return FALSE
+
+	var/turf/open/T = get_turf(target)
+	if(!istype(user.loc, /turf/open))
+		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
+		return FALSE
+	else
+		if(!T.supports_surgery)
+			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
+				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
+			return FALSE
+
+	if(!extra_checks(user, target, target_zone, tool, surgery, repeating, skipped))
+		return FALSE // you must put the failure to_chat inside the checks
 
 	surgery.step_in_progress = TRUE
 
@@ -68,57 +83,29 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 	var/surface_modifier
 
 	//Skill speed modifier.
-	#if DEBUG_SURGERY_STEP
-	message_staff("Unmodified step duration = [step_duration * 0.1] seconds.")
-	#endif
 	step_duration *= user.get_skill_duration_multiplier(SKILL_SURGERY)
-	#if DEBUG_SURGERY_STEP
-	message_staff("Skill modifier = [user.get_skill_duration_multiplier(SKILL_SURGERY)], new step duration = [step_duration * 0.1] seconds.")
-	#endif
 
 	if(user == target) //Self-surgery speed modifier.
 		self_surgery = TRUE
 		step_duration *= SELF_SURGERY_SLOWDOWN
-		#if DEBUG_SURGERY_STEP
-		message_staff("Performing surgery on self, new duration = [step_duration * 0.1] seconds.")
-		#endif
 
 	if(ispath(tool_type)) //Tool speed modifier. This means hand & any item are 100% efficient as surgical tools.
-		#if DEBUG_SURGERY_STEP
-		message_staff("Tooltype is path [tool_type] with mod [tools[tool_type]].")
-		#endif
 		tool_modifier = tools[tool_type]
 		step_duration *= tool_modifier
-		#if DEBUG_SURGERY_STEP
-		message_staff("New duration = [step_duration * 0.1] seconds.")
-		#endif		
 
 	if(surgery.lying_required) //Surgery surface modifier.
 		surface_modifier = target.buckled?.surgery_duration_multiplier //If they're buckled, use the surface modifier of the thing they're buckled to.
-		#if DEBUG_SURGERY_STEP
-		message_staff("surface mod = [surface_modifier]")
-		#endif
 		if(!surface_modifier)
 			surface_modifier = SURGERY_SURFACE_MULT_AWFUL //Surgery on a completely unsuitable surface takes twice as long.
 			for(var/obj/surface in get_turf(target)) //Otherwise, get the lowest surface modifier of objects on their turf.
-				#if DEBUG_SURGERY_STEP
-				message_staff("surface [surface]")
-				message_staff("surface mod = [surface_modifier]")
-				#endif
 				if(surface_modifier > surface.surgery_duration_multiplier)
 					surface_modifier = surface.surgery_duration_multiplier
-				#if DEBUG_SURGERY_STEP
-				message_staff("new surface mod = [surface_modifier]")
-				#endif
 
 		step_duration *= surface_modifier
-		#if DEBUG_SURGERY_STEP
-		message_staff("Surface multiplier = [surface_modifier]x, final duration is [step_duration * 0.1] seconds.")
-		#endif
 
 	var/try_to_fail
 	if(user.a_intent != INTENT_HELP)
-		try_to_fail = TRUE 
+		try_to_fail = TRUE
 		user.a_intent_change(INTENT_HELP) //So that stabbing your patient to death takes deliberate malice.
 	else if(!repeating) //Looping steps only play the start message on the first iteration; deliberate failure only plays the failure message.
 		preop(user, target, target_zone, tool, tool_type, surgery)
@@ -149,12 +136,6 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 	var/advance //Whether to continue to the next step afterwards.
 	var/pain_failure_chance = max(0, target.pain?.feels_pain ? surgery.pain_reduction_required - target.pain.reduction_pain : 0) * 2 //Each extra pain unit increases the chance by 2
 
-	#if DEBUG_SURGERY_STEP
-	if(pain_failure_chance)
-		message_staff("Target feels pain and surgery requires painkillers of [surgery.pain_reduction_required] \
-			while patient has only [target.pain.reduction_pain], pain failure chance = [pain_failure_chance]%")
-	#endif
-
 	if(tool?.flags_item & ANIMATED_SURGICAL_TOOL) //If we have an animated tool sprite, run it while we do any do_afters.
 		tool.icon_state += "_on"
 
@@ -164,7 +145,7 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 
 	else if(target.stat == CONSCIOUS && prob(pain_failure_chance)) //Pain can cause a step to fail.
 		do_after(user, max(rand(step_duration * 0.1, step_duration * 0.5), 0.5), INTERRUPT_ALL|INTERRUPT_DIFF_INTENT,
-				BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL) //Brief do_after so that the pain interrupt doesn't happen instantly. 
+				BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL) //Brief do_after so that the pain interrupt doesn't happen instantly.
 		to_chat(user, SPAN_DANGER("[target] moved during the surgery! Use anesthetics or painkillers!"))
 		to_chat(target, SPAN_DANGER("The pain was too much, you couldn't hold still!"))
 		if(failure(user, target, target_zone, tool, tool_type, surgery)) //Failure returns TRUE if the step should complete anyway.
@@ -177,9 +158,6 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 			advance = TRUE
 			if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery))
 				surgery.step_in_progress = FALSE
-				#if DEBUG_SURGERY_STEP
-				message_staff("Repeat criteria met, repeating step.")
-				#endif
 				INVOKE_ASYNC(surgery, /datum/surgery.proc/attempt_next_step, user, tool, TRUE)
 				return TRUE
 		else if(surgery.status != 1 && failure(user, target, target_zone, tool, tool_type, surgery)) //Failing the first step while on help intent doesn't risk harming the patient.
@@ -187,6 +165,7 @@ datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target,
 
 	if(tool?.flags_item & ANIMATED_SURGICAL_TOOL) //Don't want to reset sprites on things like lighters, welding torches etc.
 		tool.icon_state = initial(tool.icon_state)
+		tool.update_icon() // in order to not reset shit too far.
 
 	if(advance)
 		if(skipped) //Skipped previous step.
@@ -221,9 +200,4 @@ tool_type may be a typepath or simply '1'. Note that a first step done on help-i
 
 ///Finishes the surgery and removes it from the target's lists.
 /datum/surgery_step/proc/complete(mob/living/carbon/target, datum/surgery/surgery, cancelled)
-	#if DEBUG_SURGERY_STEP
-	message_staff("Surgery procedure [surgery] [cancelled ? "cancelled" : "complete."]")
-	#endif
 	target.active_surgeries[surgery.location] = null
-
-#undef DEBUG_SURGERY_STEP

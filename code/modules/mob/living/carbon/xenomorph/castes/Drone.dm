@@ -3,6 +3,7 @@
 	tier = 1
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
+	melee_vehicle_damage = XENO_DAMAGE_TIER_2
 	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_10
@@ -15,8 +16,8 @@
 	build_time_mult = BUILD_TIME_MULT_BUILDER
 
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
-	evolves_to = list(XENO_CASTE_QUEEN, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD) //Add more here seperated by commas
-	deevolves_to = "Larva"
+	evolves_to = list(XENO_CASTE_QUEEN, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD) //Add more here separated by commas
+	deevolves_to = list("Larva")
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 1
@@ -50,6 +51,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/place_construction,

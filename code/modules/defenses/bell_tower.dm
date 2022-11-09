@@ -1,5 +1,9 @@
 #define BELL_TOWER_RANGE 4
 #define BELL_TOWER_EFFECT 6
+#define BELL_TOWER_COOLDOWN 1.5 SECONDS
+#define BELL_TOWER_CLOAKER_ALPHA 10
+
+#define IMP_SLOWDOWN_TIME 3
 
 /obj/structure/machinery/defenses/bell_tower
 	name = "\improper R-1NG bell tower"
@@ -47,28 +51,27 @@
 /obj/structure/machinery/defenses/bell_tower/proc/setup_tripwires()
 	clear_tripwires()
 	for(var/turf/T in orange(BELL_TOWER_RANGE, loc))
-		if(T.density)
-			continue
-
 		var/obj/effect/bell_tripwire/FE = new /obj/effect/bell_tripwire(T, faction_group)
 		FE.linked_bell = src
 		tripwires_placed += FE
+
+/obj/structure/machinery/defenses/bell_tower/proc/clear_last_mob_activated()
+	last_mob_activated = null
 
 /obj/structure/machinery/defenses/bell_tower/proc/mob_crossed(var/mob/M)
 	playsound(loc, 'sound/misc/bell.ogg', 50, 0, 50)
 
 /obj/structure/machinery/defenses/bell_tower/Destroy()
-	. = ..()
-
 	if(last_mob_activated)
 		last_mob_activated = null
 	if(flick_image)
 		flick_image = null
 	clear_tripwires()
+	return ..()
 
 
 /obj/effect/bell_tripwire
-	name = "flag effect"
+	name = "bell tripwire"
 	anchored = TRUE
 	mouse_opacity = 0
 	invisibility = 101
@@ -99,20 +102,37 @@
 	if(M.get_target_lock(faction))
 		return
 
+	var/list/turf/path = getline2(src, linked_bell, include_from_atom = TRUE)
+	for(var/turf/PT in path)
+		if(PT.density)
+			return
+
 	if(linked_bell.last_mob_activated == M)
+		return
+	if(HAS_TRAIT(M, TRAIT_CHARGING))
+		to_chat(M, SPAN_WARNING("You ignore some weird noises as you charge."))
 		return
 
 	if(linked_bell.bell_cooldown > world.time)
 		return
 
 	linked_bell.last_mob_activated = M
+
+	// Clear last mob after 4 times the length of the cooldown timer, about 6 seconds
+	addtimer(CALLBACK(linked_bell, /obj/structure/machinery/defenses/bell_tower.proc/clear_last_mob_activated), 4 * BELL_TOWER_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
+
 	if(!linked_bell.flick_image)
 		linked_bell.flick_image = image(linked_bell.icon, icon_state = "[linked_bell.defense_type] bell_tower_alert")
 	linked_bell.flick_image.flick_overlay(linked_bell, 11)
 	linked_bell.mob_crossed(M)
 	M.AdjustSuperslowed(BELL_TOWER_EFFECT)
 	to_chat(M, SPAN_DANGER("The frequency of the noise slows you down!"))
-	linked_bell.bell_cooldown = world.time + 15 //1.5s cooldown between RINGS
+	linked_bell.bell_cooldown = world.time + BELL_TOWER_COOLDOWN //1.5s cooldown between RINGS
+
+	// checks if cloaked bell, if it is, then it reduces the cloaked bells alpha
+	if(istype(linked_bell, /obj/structure/machinery/defenses/bell_tower/cloaker))
+		var/obj/structure/machinery/defenses/bell_tower/cloaker/cloakedbell = linked_bell
+		cloakedbell.cloaker_fade_in()
 
 /obj/item/device/motiondetector/internal
 	name = "internal motion detector"
@@ -122,7 +142,9 @@
 
 /obj/item/device/motiondetector/internal/apply_debuff(mob/target)
 	var/mob/living/to_apply = target
-
+	if(HAS_TRAIT(to_apply, TRAIT_CHARGING))
+		to_chat(to_apply, SPAN_WARNING("You ignore some weird noises as you charge."))
+		return
 	if(istype(to_apply))
 		to_apply.SetSuperslowed(2)
 		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))
@@ -150,29 +172,47 @@
 		QDEL_NULL(md)
 
 
-#define BELL_TOWER_CLOAKER_ALPHA 10
+
 /obj/structure/machinery/defenses/bell_tower/cloaker
 	name = "camouflaged R-1NG bell tower"
 	desc = "A tactical advanced version of a normal alarm. Designed to trigger an old instinct ingrained in humans when they hear a wake-up alarm, for fast response. This one is camouflaged and reinforced."
 	handheld_type = /obj/item/defenses/handheld/bell_tower/cloaker
-	var/cloak_alpha = BELL_TOWER_CLOAKER_ALPHA
+	var/cloak_alpha_max = BELL_TOWER_CLOAKER_ALPHA
+	var/cloak_alpha_current = BELL_TOWER_CLOAKER_ALPHA
+	var/incremental_ring_camo_penalty = 40
+	var/camouflage_break = 5 SECONDS
 	density = FALSE
 	health = 250
 	health_max = 250
 	defense_type = "Cloaker"
 
-/obj/structure/machinery/defenses/bell_tower/cloaker/Initialize()
+/obj/structure/machinery/defenses/bell_tower/cloaker/power_on_action()
 	. = ..()
-	animate(src, alpha = cloak_alpha, time = 2 SECONDS, easing = LINEAR_EASING)
+	// For cloaker bell, cloaks them when turned on
+	animate(src, alpha = cloak_alpha_max, time = camouflage_break, easing = LINEAR_EASING, ANIMATION_END_NOW)
 
-/obj/structure/machinery/defenses/bell_tower/cloaker/mob_crossed(var/turf/location)
-	/// PLACEHOLDER
-	return
+/obj/structure/machinery/defenses/bell_tower/cloaker/power_off_action()
+	. = ..()
+	// For cloaker bell, uncloaks them when turned off
+	animate(src, alpha = initial(src.alpha), flags = ANIMATION_END_NOW)
 
+/obj/structure/machinery/defenses/bell_tower/cloaker/proc/cloaker_fade_in()
+	// This is activated whenever the bell is rang, makes the cloaked tower visible a bit
+	var/obj/structure/machinery/defenses/bell_tower/cloaker/cloakebelltower = src
+	if(turned_on)
+		if(cloak_alpha_current < cloak_alpha_max)
+			cloak_alpha_current = cloak_alpha_max
+		cloak_alpha_current = Clamp(cloak_alpha_current + incremental_ring_camo_penalty, cloak_alpha_max, 255)
+		cloakebelltower.alpha = cloak_alpha_current
+		addtimer(CALLBACK(src, .proc/cloaker_fade_out_finish, cloakebelltower), camouflage_break, TIMER_OVERRIDE|TIMER_UNIQUE)
+		animate(cloakebelltower, alpha = cloak_alpha_max, time = camouflage_break, easing = LINEAR_EASING, flags = ANIMATION_END_NOW)
 
-#undef BELL_TOWER_CLOAKER_ALPHA
+/obj/structure/machinery/defenses/bell_tower/cloaker/proc/cloaker_fade_out_finish()
+	// Resets the cloak to its max invisibility
+	if(turned_on)
+		animate(src, alpha = cloak_alpha_max)
+		cloak_alpha_current = cloak_alpha_max
 
-#define IMP_SLOWDOWN_TIME 3
 /obj/item/storage/backpack/imp
 	name = "IMP frame mount"
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
@@ -189,6 +229,10 @@
 	. = ..()
 	if(slot == WEAR_BACK)
 		START_PROCESSING(SSobj, src)
+
+/obj/item/storage/backpack/imp/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/storage/backpack/imp/process()
 	if(!ismob(loc))
@@ -212,8 +256,10 @@
 	for(var/mob/living/carbon/Xenomorph/X in targets)
 		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
 		X.SetSuperslowed(slowdown_amount)
-		playsound(X, 'sound/misc/bell.ogg', 50, 0, 50)
+		playsound(X, 'sound/misc/bell.ogg', 25, 0, 13)
 
 #undef IMP_SLOWDOWN_TIME
 #undef BELL_TOWER_RANGE
 #undef BELL_TOWER_EFFECT
+#undef BELL_TOWER_COOLDOWN
+#undef BELL_TOWER_CLOAKER_ALPHA

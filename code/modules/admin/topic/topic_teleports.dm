@@ -22,23 +22,23 @@
 			owner.jumptomob(choice)
 
 		if("jump_to_coord")
-			var/targ_x = input("Jump to x from 0 to [world.maxx].") as num
+			var/targ_x = tgui_input_number(owner, "Jump to x from 0 to [world.maxx].", "Jump to X", 0, world.maxx, 0)
 			if(!targ_x || targ_x < 0)
 				return
-			var/targ_y = input("Jump to y from 0 to [world.maxy].") as num
+			var/targ_y = tgui_input_number(owner, "Jump to y from 0 to [world.maxy].", "Jump to Y", 0, world.maxy, 0)
 			if(!targ_y || targ_y < 0)
 				return
-			var/targ_z = input("Jump to z from 0 to [world.maxz].") as num
+			var/targ_z = tgui_input_number(owner, "Jump to z from 0 to [world.maxz].", "Jump to Z", 0, world.maxz, 0)
 			if(!targ_z || targ_z < 0)
 				return
 
 			owner.jumptocoord(targ_x, targ_y, targ_z)
 
 		if("jump_to_offset_coord")
-			var/targ_x = input("Jump to X coordinate.") as num
+			var/targ_x = tgui_input_real_number(owner, "Jump to X coordinate.")
 			if(!targ_x)
 				return
-			var/targ_y = input("Jump to Y coordinate.") as num
+			var/targ_y = tgui_input_real_number(owner, "Jump to Y coordinate.")
 			if(!targ_y)
 				return
 
@@ -72,7 +72,7 @@
 			owner.sendmob(choice)
 
 		if("teleport_mobs_in_range")
-			var/collect_range = input(owner, "Enter range from 0 to 7 tiles. All alive /living mobs within selected range will be marked for teleportation.", "Mass-teleportation", "") as num
+			var/collect_range = tgui_input_number(owner, "Enter range from 0 to 7 tiles. All alive /living mobs within selected range will be marked for teleportation.", "Mass-teleportation", 0, 7, 0)
 			if(collect_range < 0 || collect_range > 7)
 				to_chat(owner, SPAN_ALERT("Incorrect range. Aborting."))
 				return
@@ -155,3 +155,64 @@
 			else
 				to_chat(owner, SPAN_ALERT("Mobs choice error. Aborting."))
 				return
+
+		if("teleport_corpses")
+			if(GLOB.dead_mob_list.len < 0)
+				to_chat(owner, SPAN_ALERT("No corpses found. Aborting."))
+				return
+
+			if(alert(owner, "[GLOB.dead_mob_list.len] corpses are marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+				return
+			for(var/mob/M in GLOB.dead_mob_list)
+				if(!M)
+					continue
+				M.on_mob_jump()
+				M.forceMove(get_turf(owner.mob))
+			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [GLOB.dead_mob_list.len] corpses to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+		
+		if("teleport_items_by_type")
+			var/item = input(owner,"What item?", "Item Fetcher","") as text|null
+			if(!item)
+				return
+
+			var/list/types = typesof(/obj)
+			var/list/matches = new()
+
+			//Figure out which object they might be trying to fetch
+			for(var/path in types)
+				if(findtext("[path]", item))
+					matches += path
+
+			if(matches.len==0)
+				return
+
+			var/chosen
+			if(matches.len==1)
+				chosen = matches[1]
+			else
+				//If we have multiple options, let them select which one they meant
+				chosen = tgui_input_list(usr, "Select an object type", "Find Object", matches)
+
+			if(!chosen)
+				return
+
+			//Find all items in the world
+			var/list/targets = list()
+			for(var/obj/item/M in GLOB.item_list)
+				if(istype(M, chosen))
+					targets += M
+
+			if(targets.len < 1)
+				to_chat(owner, SPAN_ALERT("No items of type [chosen] were found. Aborting."))
+				return
+
+			if(alert(owner, "[targets.len] items are marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+				return
+
+			//Fetch the items
+			for(var/obj/item/M in targets)
+				if(!M)
+					continue
+				M.forceMove(get_turf(owner.mob))
+
+			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] items of type [chosen] to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)

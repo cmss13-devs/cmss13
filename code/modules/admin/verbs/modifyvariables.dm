@@ -25,7 +25,7 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = input("Enter new text:","Text") as null|text
 
 		if("num")
-			var_value = input("Enter new number:","Num") as null|num
+			var_value = tgui_input_real_number(src, "Enter new number:","Num")
 
 		if("type")
 			var_value = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
@@ -89,7 +89,7 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = input("Enter new text:","Text") as text
 
 		if("num")
-			var_value = input("Enter new number:","Num") as num
+			var_value = tgui_input_real_number(usr, "Enter new number:","Num")
 
 		if("type")
 			var_value = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
@@ -260,7 +260,7 @@ var/list/forbidden_varedit_object_types = list(
 			L[L.Find(variable)] = input("Enter new text:","Text") as text
 
 		if("num")
-			L[L.Find(variable)] = input("Enter new number:","Num") as num
+			L[L.Find(variable)] = tgui_input_real_number(usr, "Enter new number:","Num")
 
 		if("type")
 			L[L.Find(variable)] = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
@@ -498,11 +498,11 @@ var/list/forbidden_varedit_object_types = list(
 
 		if("num")
 			if(variable=="luminosity")
-				var/var_new = input("Enter new number:","Num",O.vars[variable]) as null|num
+				var/var_new = tgui_input_real_number(src, "Enter new number:","Num", O.vars[variable])
 				if(var_new == null) return
 				O.SetLuminosity(var_new)
 			else if(variable=="stat")
-				var/var_new = input("Enter new number:","Num",O.vars[variable]) as null|num
+				var/var_new = tgui_input_real_number(src, "Enter new number:","Num", O.vars[variable])
 				if(var_new == null) return
 				if((O.vars[variable] == 2) && (var_new < 2))//Bringing the dead back to life
 					GLOB.dead_mob_list -= O
@@ -512,7 +512,7 @@ var/list/forbidden_varedit_object_types = list(
 					GLOB.dead_mob_list += O
 				O.vars[variable] = var_new
 			else
-				var/var_new =  input("Enter new number:","Num",O.vars[variable]) as null|num
+				var/var_new =  tgui_input_real_number(src, "Enter new number:","Num", O.vars[variable])
 				if(var_new==null) return
 				O.vars[variable] = var_new
 

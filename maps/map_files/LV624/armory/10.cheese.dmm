@@ -114,6 +114,7 @@
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -240,6 +241,12 @@
 	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
+"M" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	icon_state = "cult"
+	},
+/area/lv624/lazarus/armory)
 "Q" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/crap_item,
@@ -300,7 +307,7 @@ i
 k
 p
 p
-p
+M
 A
 i
 "}

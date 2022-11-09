@@ -4,6 +4,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_3
+	melee_vehicle_damage = XENO_DAMAGE_TIER_3
 	max_health = XENO_HEALTH_TIER_7
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_6
@@ -14,8 +15,8 @@
 
 	caste_desc = "Ptui!"
 	spit_types = list(/datum/ammo/xeno/acid/medium)
-	evolves_to = list(XENO_CASTE_BOILER)
-	deevolves_to = XENO_CASTE_SENTINEL
+	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER)
+	deevolves_to = list(XENO_CASTE_SENTINEL)
 	acid_level = 2
 
 	behavior_delegate_type = /datum/behavior_delegate/spitter_base
@@ -43,6 +44,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/onclick/spitter_frenzy,

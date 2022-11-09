@@ -1,0 +1,294 @@
+2019-01-04:
+  Alexshreds:
+  - tweak: All Marine armors now covers the arms.
+  - tweak: Bulletproof armor now covers the lower torso.
+  - tweak: UPP heavy armor now covers the legs.
+  - tweak: CLF armor now covers the arms.
+  - tweak: Freelancer armor now covers the legs.
+  Awan:
+  - bugfix: Re-added the briefing flasher.
+  - tweak: Added a sink and curtains to the brig medical room.
+  ThePiachu:
+  - bugfix: Fixed mutator stacking exploit.
+2019-01-05:
+  Alexshreds:
+  - tweak: Med/lifesaver belts now have a direct pill taking mode.
+  - tweak: Body and stasis bags can be folded when open.
+  - tweak: Lifesavers can hold analyzers and body/stasis bags.
+  - bugfix: Fixed liquid dexalin bottle typo.
+  Cakey:
+  - tweak: Bah humbug, Christmas is over.
+  ThePiachu:
+  - experiment: Major backend refactoring / overhaul on how starting equipment is
+      spawned. Staff should see a LOT more option in Select Equipment to cover every
+      spawning equipment set.
+2019-01-07:
+  ThePiachu:
+  - bugfix: Fixed a few bugs around gear items - you shouldn't be able to access other
+      squad's prep, Tank Crew should have their gear load properly, and PMCs should
+      be able to use their PMC guns.
+  - bugfix: Gear presets should properly spawn guns in back storage items. Certain
+      UPP spies might come in better equipped than usual...
+2019-01-08:
+  ThePiachu:
+  - bugfix: Admin status should persist if you de-admin yourself and restart your
+      client.
+  - bugfix: Staff re-admining themselves should not re-admin all staff.
+2019-01-09:
+  Awan:
+  - rscadd: You can neither buckle a handcuffed person to a rollerbed nor handcuff
+      a person buckled to a rollerbed, anymore.
+  Neth Iafin:
+  - bugfix: Pointblanking should now spawn correct amount of additional projectiles.
+  ThePiachu:
+  - tweak: Carrier has been reverted to T2. It felt underpowered as a T3, and it should
+      shine in the T2 spot.
+  - tweak: Xeno traps of all sorts now let the entire Hive know when they've been
+      triggered because Hivemind.
+  - tweak: Standardised Xeno evolution and upgrade thresholds across the board. All
+      Castes of the same Tier should upgrade and evolve at the same speed now.
+  - tweak: Fixed some minor typos for Carrier storage and Xeno evoluion.
+  - tweak: Admins can now easily turn people into some special Xenos. Beware...
+  - experiment: Added an option to spawn "ERTs" straight in the Cryo room for future
+      use. At the moment admins can spawn a Squad or Platoon of Marines all geared
+      up this way. Localised Pizza Delivery is also an option...
+  - experiment: Added a Cryo ERT consisting of medics, engineers and PFCs for Admins.
+      They will be distributed among the existing squads.
+  - tweak: A number of lights on the Almayer have been added or changed. The ship
+      should be more uniformly lit and Requisitions should see one fewer floating
+      light.
+  - tweak: ERT list is now sorted for Admins' enjoyment.
+  - tweak: Fixed
+  - tweak: MP belts now come with pepper spray by default.
+  - experiment: Added anti-riot ERT. It can only be spawned by admins. It essentially
+      consists of a group of MPs in riot gear that can be sent to deal with issues
+      that are important enough to warrant an intervention, but don't justify sending
+      in a Deathsquad.
+  - tweak: Tweaked a few things around certain unnerving things in the universe. Expect
+      to see a lot more blood splatters if you come across one of them...
+  - tweak: The Company now has a special task force they may dispatch to secure, contain
+      and protect some assets they wish to study.
+  - tweak: Admins can now force-emote from Player Panel.
+  - tweak: Survivors have been converted over to new equipment spawning procedure
+      (and are now available as a gear option under Select Equipment for admins).
+  - tweak: More end of round statistics have been added. This will help us devs tweak
+      the game even further for your optimal enjoyment.
+2019-01-10:
+  ThePiachu:
+  - tweak: Labcoats can now hold flashlights.
+  - bugfix: Fixed a mutator typo.
+  - bugfix: Dead xenos shouldn't be able to purchase Mutators anymore.
+  - tweak: The Corporate Liaison should have a few more creature comforts in their
+      briefcase now.
+  - tweak: You can now refill mini flamers with the Welderpack.
+  - tweak: Engineers can now get mini flamers from their vendor.
+  - tweak: Requisitions now stocks a limited number of Welderpacks, Brown Webbing
+      and G8 pouches.
+  - bugfix: SCP gear presets should be able to properly use the merc guns.
+  - bugfix: Survivors and other such individuals should not appear in the Crew Manifest
+      anymore.
+  - bugfix: Medbay staff now start with a Medkit Pouch instead of a Syringe Pouch
+      by default.
+2019-01-11:
+  ThePiachu:
+  - bugfix: Default name for ERT members should not be "David" anymore.
+  - tweak: Simplemake humans preserve client preferences.
+  - tweak: Cryo ERTs should appear in the crew manifest, while colonists shouldn't.
+  - bugfix: Armpit holster should not bork quick equip anymore.
+2019-01-12:
+  ThePiachu:
+  - bugfix: Miners and/or salesmen survivors should not spawn without gear anymore.
+  - tweak: Admins have an option of removing all gear from humans with a new Select
+      Equipment option.
+  - bugfix: Select Equipment should handle null skills.
+  - bugfix: Select Equipment should not try giving Yautja presets ID cards.
+2019-01-14:
+  ThePiachu:
+  - bugfix: Defenders and Praetorians should not be able to gain unfair speed advantage
+      anymore.
+  - bugfix: Insanely weak pheromones should not have infinite range.
+  - tweak: Xenos can heal regardless of Queen Z level, but Queen's pheromones and
+      healing abilities still don't reach beyond her Z level.
+  - bugfix: Ghosts should now be able to view faxes properly.
+  - bugfix: Whiskey Outpost gear presets should be fixed now.
+  - bugfix: Whiskey Outpost mortar should hopefully maybe work properly now.
+  - bugfix: Hopefully fixed the cause of endless runtime log errors relating to yautja
+      wristblades, ammo handfuls and others.
+  - bugfix: Hopefully that also fixes some infrequent zoom issues.
+  - rscadd: Added some event gear presets - Gladiators. One of them even comes with
+      a powerful holy grenade...
+  - rscadd: Added event ERT using that preset - Deus Vult!
+  - tweak: Command Council Commodores should have their own gear preset now. Fingers
+      crossed it spawns correctly.
+  - tweak: Admins now have an option of infecting players with Zombie virus via the
+      Player Panel.
+  - experiment: A new system around objectives has been added - DEFCON.
+  - experiment: As objectives are completed, the Threat Assessment Level will increase,
+      and at specific intervals, the ship DEFCON level will drop. With each drop,
+      the Command staff will be able to purchase new assets to bring into the round.
+  - experiment: Currently, DEFCONS are lowered when you complete 10%, 30%, 50% and
+      70% of available objectives.
+  - experiment: You can buy a few different assets with DEFCON - 200 Supply Points,
+      1600 Dropship Fabricator Points, additional OB ammo, and additional reinforcements
+      (including the Tank Crew). Some more powerful assets are locked behind lower
+      DEFCON tiers, so get on those objectives!
+  Triiodine:
+  - rscadd: Added revamped ID card sprites for some jobs.
+2019-01-15:
+  ThePiachu:
+  - tweak: Gladiator presets now come with some light, extra crowbars, and stylised
+      names. Higher rank gladiators also come with extra armour.
+  - tweak: Prison Station Xenos shouldn't spawn off weeds anymore.
+  - tweak: Smartgunners and SOs had their comms and titles changed slightly to focus
+      on their job rather than their rank.
+  - bugfix: PMC Smartgunners will spawn with the SG sights.
+2019-01-18:
+  Alexshreds:
+  - tweak: Evolving no longer needs full plasma, plasma ratio is preserved. (Drone
+      -> Queen not changed)
+  - rscadd: Queens get a message when leaders die.
+  - tweak: Reworked tunnels quite a bit, they are now a single network and up to 3
+      xenos can stay inside of a single tunnel at a time.
+  - rscadd: Xenos recieve messages when T2+ slots become open.
+  ThePiachu:
+  - rscdel: The "Minimise Marine Losses" objective has been removed. You still receive
+      points for retrieving marine & colonist corpses and depositing them in the Morgue
+      (do not even think about powergaming this with FF).
+  - rscadd: New objective has been added - "Recover Xeno corpse specimens". It's a
+      placeholder until we flesh it out further with Research. You get points for
+      retrieving xeno corpses and depositing them in the Research Lab.
+2019-01-20:
+  ThePiachu:
+  - rscdel: Removed legacy SS13 factions.
+  - rscdel: Removed some WIP stuff that was never used.
+  - rscdel: Removed some game mode thingy that wasn't used.
+  - rscdel: Removed legacy away missions.
+  - rscdel: Removed legacy syndicate uplinks.
+  - rscdel: Removed legacy jobs that caused a lot of startup logs about being missing.
+  - rscdel: Removed legacy news and events.
+  - tweak: As soon as the dropships crash into Almayer, mobs on the surface shouldn't
+      count for round-end.
+  - bugfix: Peeking up ladders should work properly now and not hog your view forever.
+  - bugfix: Less runtime exceptions when looking up wonky ladders.
+  - bugfix: Can actually delete the wonky ladders.
+  - bugfix: You can't drag people out of the autodoc by holding them while they climb
+      in anymore.
+  - bugfix: A bunch of other random runtime exception fixes.
+  - tweak: Gear presets should load name into mind correctly, so expect less unknowns
+      in deadchat.
+2019-01-24:
+  ThePiachu:
+  - bugfix: ERTs should not delete old mobs anymore.
+  - bugfix: Force-regurgitating humans while inside of a tunnel should spawn them
+      outside of a tunnel now.
+  - bugfix: Xenos can't remotely teleport into a tunnel anymore.
+  - bugfix: Fixed an error while trying to load ammo into arty module (which doesn't
+      take ammo!).
+  - bugfix: Fixed some runtime errors.
+2019-01-25:
+  RavingManaic:
+  - rscadd: Aliens can build transparent resin membranes again. Resin membranes have
+      the same strength as walls, and can be thickened the same way.
+  - rscadd: Nested human hosts will incubate slightly faster for every other nested
+      human host within line-of-sight.
+  - tweak: On a spaceship, mass is at a premium. The Almayer's internal walls are
+      no longer made of depleted super-uranium, and have the same strength as regular
+      walls.
+  - tweak: m39 burst delay decreased, base spread increased.
+  - bugfix: Fixed bug where barricades would sometimes fail to protect mobs on the
+      same tile.
+  ThePiachu:
+  - tweak: Boiler gas radius has been tweaked. It starts at the old level (3/4 tiles).
+      Gas range mutator is still in place.
+  - tweak: Faster weed Mutator has been bumped up by an extra notch.
+  - bugfix: Faster weed spread is correctly calculated for the initial node now.
+  - rscadd: New Keystone Mutator - "Regenerate off weeds". It allows a xeno to heal
+      and regenerate plasma as if they were on weeds even if they aren't.
+  - rscadd: New Crusher Keystone Mutator - "Faster charge buildup". Crusher's charge
+      will start building up 1 tile sooner and will build up a bit faster.
+  - tweak: Corrupted Hive can toggle slashing permissions like a normal Hive. You
+      should still listen to your human overlords though...
+  - rscadd: SCPs can now be contained. As to how - it's up to the playerbase to discover!
+  - tweak: Made SCP-173 harder to contain.
+  - tweak: Improper handling of an SCP can result in unexpected consequences.
+  monkeysfist101:
+  - rscadd: All cigarette sprites have been redone with two new cigarette brands added.
+      New helmet garb sprites have been added and existing helmet garb sprites have
+      been tweaked. Added support for different types of cigarettes.
+  - tweak: Adjusted vendor inventories to add new smokes. Reorganized cigarette pathing
+      for sanity.
+  - rscadd: Added five new Souto brands. Added new Souto to vendors.
+  ribbonflex:
+  - tweak: Trijent Dam camera networks.
+  - tweak: Trijent Dam Alternate Fitlration machine sprites.
+  - bugfix: Trijent Dam turf should be diggable and borrowable now.
+2019-01-28:
+  MattAtlas:
+  - rscdel: Knockouts on Predators have been removed.
+2019-01-29:
+  MattAtlas:
+  - rscadd: The Yautja combi-stick can now be called back via the Yank Combistick
+      verb.
+  - rsctweak: The combi-stick now does more melee damage.
+  - rsctweak: Wrist scimitar damage has been nerfed to be on the Chainwhip's level.
+  - rsctweak: The double war scythe does very slightly less damage.
+  - rsctweak: Predators can now adjust their self destruct size to either small or
+      big.
+  - rscadd: Self-splinting is now a guaranteed chance, although the process is longer.
+  - rscadd: Light general pouches in the Marine vendor have been replaced with medium
+      ones. You can also buy large pouches instead of medium ones.
+  - rscadd: You can now choose which type of armour style you want from the uniform
+      vendors. They are not mechanically different.
+  - rscadd: Specialist weapons are now unacidable.
+  - rscadd: Squad Marines and others with equal medical skill can now use full autoinjectors
+      with a small delay.
+  - rscadd: Smartgun wield delay has been considerably reduced.
+  - rscadd: All pump shotguns now lock the pumping mechanism if they've already been
+      pumped.
+  - rscadd: Pilot Officers now have SL-level medical skill.
+  ThePiachu:
+  - rscadd: Mods can now change mobs' names (to be used when someone spawns with an
+      inappropriate name).
+  - rscadd: Admins now can add xeno larvas to human mobs via the Player Panel. Beware
+      of xeno trojan horses!
+  - tweak: Corrupted Hives should be able to set Hive Orders correctly now.
+  - bugfix: Fixed some runtime errors.
+2019-01-30:
+  MattAtlas:
+  - rscdel: The T3/T4 anti-bodyblock mechanic has been removed.
+  - rsctweak: Synthetics can no longer wear armour unless their programming is overridden.
+  - rsctweak: Synthetic gun usage is now a variable instead of a global toggle.
+  Triiodine:
+  - tweak: Changed the description of windows and windoors.
+  - tweak: Changed how window layering works. No more standing above glass in the
+      briefing box.
+  - imageadd: Implemented NicBoone's lovely window & windoor sprites from long ago.
+2019-01-31:
+  ThePiachu:
+  - rscadd: Added a new Keystone Mutator for Boiler - Lingering Gas. It makes their
+      gas linger for longer before dissipating.
+  - tweak: Queen has stronger weeds by default.
+  - bugfix: Burrowers can't burrow on a dropship or into space anymore.
+  - tweak: Burrowers now have acid.
+  - tweak: Every acid-producing caste can arm acid traps.
+  - tweak: Acid traps come in different potencies based on acid used to arm them.
+  - bugfix: Predator gear tracker should work correctly now.
+  - tweak: Predator gear tracker now displays the name of the location the tracked
+      item is in.
+  - tweak: Predator armour now has uniform defence values and protection areas across
+      all looks.
+  - tweak: By the grace of the Predator Council, previously restricted armour and
+      mask variants have been unlocked for all Yautja to enjoy. Elder items still
+      remain event-only.
+  - tweak: Synths now spawn with MP channel in their radio.
+  - tweak: Gear presets should dictate what faction you belong to in terms of FF.
+  - rscadd: Added a few more colonist gear presets for admins - engineer, security
+      and doctor.
+  - rscadd: Added a few more fun gear presets for admins - pirate, pirate captain.
+  - rscadd: Added ERTs based on those presets for admins.
+  - tweak: Speed has been refactored - it's no longer black magic that devs had issue
+      handling for awhile.
+  - tweak: Speed mutators have been refactored to multiply xeno's speed after everything
+      else has been taken into consideration. Expect fastest castes to be a bit slower,
+      but slowest castes to be a touch faster. Overall, xenos shouldn't break the
+      speed barrier of the game anymore.

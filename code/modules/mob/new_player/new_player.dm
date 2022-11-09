@@ -52,6 +52,7 @@
 
 	else
 		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"
+		output += "<a href='byond://?src=\ref[src];lobby_choice=hiveleaders'>View Hive Leaders</A><br><br>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join'>Join the USCM!</A></p>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
 		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
@@ -62,7 +63,7 @@
 	output += "</div>"
 	if (refresh)
 		close_browser(src, "playersetup")
-	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 380];can_close=0;can_minimize=0")
+	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 460];can_close=0;can_minimize=0")
 	return
 
 /mob/new_player/Topic(href, href_list[])
@@ -118,6 +119,7 @@
 				if(!client)
 					return TRUE
 				var/mob/dead/observer/observer = new()
+				observer.set_lighting_alpha_from_pref(client)
 				spawning = TRUE
 				observer.started_as_observer = TRUE
 
@@ -198,6 +200,9 @@
 		if("manifest")
 			ViewManifest()
 
+		if("hiveleaders")
+			ViewHiveLeaders()
+
 		if("SelectedJob")
 
 			if(!enter_allowed)
@@ -218,9 +223,7 @@
 			return
 
 		else
-			if(!ready && href_list["preference"])
-				if(client) client.prefs.process_link(src, href_list)
-			else new_player_panel()
+			new_player_panel()
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
 	if (src != usr)
@@ -238,12 +241,13 @@
 	spawning = TRUE
 	close_spawn_windows()
 
-	var/turf/T
-	T = get_turf(pick(GLOB.latejoin))
-
 	var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
-	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], T)
+	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], late_join = TRUE)
 	EquipCustomItems(character)
+
+	if(security_level > SEC_LEVEL_BLUE || EvacuationAuthority.evac_status)
+		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[EvacuationAuthority.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
+		character.put_in_hands(new /obj/item/storage/box/kit/cryo_self_defense(character.loc))
 
 	GLOB.data_core.manifest_inject(character)
 	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
@@ -266,7 +270,13 @@
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity
 		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)
-			msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[character]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
+			msg_admin_niche("NEW JOIN: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[character]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
+		if(character.client)
+			var/client/C = character.client
+			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
+				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[C]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
+			if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
+				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)] has less than 5 hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
 	character.client.init_statbrowser() // init verbs for the late join
 
@@ -396,6 +406,41 @@
 	dat += GLOB.data_core.get_manifest(FALSE, TRUE)
 
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
+
+/mob/new_player/proc/ViewHiveLeaders()
+	if(!GLOB.hive_leaders_tgui)
+		GLOB.hive_leaders_tgui = new /datum/hive_leaders()
+	GLOB.hive_leaders_tgui.tgui_interact(src)
+
+/datum/hive_leaders/Destroy(force, ...)
+	SStgui.close_uis(src)
+	return ..()
+
+/datum/hive_leaders/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "HiveLeaders", "Hive Leaders")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
+// Player panel
+/datum/hive_leaders/ui_data(mob/user)
+	var/list/data = list()
+
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	var/list/queens = list()
+	if(main_hive.living_xeno_queen)
+		queens += list(list("designation" = main_hive.living_xeno_queen.full_designation, "caste_type" = main_hive.living_xeno_queen.name))
+	data["queens"] = queens
+	var/list/leaders = list()
+	for(var/mob/living/carbon/Xenomorph/xeno_leader in main_hive.xeno_leader_list)
+		leaders += list(list("designation" = xeno_leader.full_designation, "caste_type" = xeno_leader.caste_type))
+	data["leaders"] = leaders
+	return data
+
+
+/datum/hive_leaders/ui_state(mob/user)
+	return GLOB.always_state
 
 /mob/new_player/Move()
 	return 0

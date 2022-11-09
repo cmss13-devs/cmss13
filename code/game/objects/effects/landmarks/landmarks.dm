@@ -5,15 +5,17 @@
 	anchored = 1.0
 	unacidable = TRUE
 
+	var/invisibility_value = INVISIBILITY_MAXIMUM
+
 /obj/effect/landmark/New()
 	..()
 	tag = "landmark*[name]"
-	invisibility = 101
+	invisibility = invisibility_value
 	return 1
 
 /obj/effect/landmark/Initialize(mapload, ...)
 	. = ..()
-	invisibility = 101
+	invisibility = invisibility_value
 
 /obj/effect/landmark/newplayer_start
 	name = "New player start"
@@ -405,3 +407,47 @@
 /obj/effect/landmark/static_comms/net_two/Destroy()
 	GLOB.comm_tower_landmarks_net_two -= src
 	return ..()
+
+
+// zombie spawn
+/obj/effect/landmark/zombie
+	name = "zombie spawnpoint"
+	desc = "The spot a zombie spawns in. Players in-game can't see this."
+	icon_state = "corpse_spawner"
+	invisibility_value = INVISIBILITY_OBSERVER
+	var/spawns_left = 1
+	var/infinite_spawns = FALSE
+
+/obj/effect/landmark/zombie/Initialize(mapload, ...)
+	. = ..()
+	GLOB.zombie_landmarks += src
+
+/obj/effect/landmark/zombie/Destroy()
+	GLOB.zombie_landmarks -= src
+	return ..()
+
+/obj/effect/landmark/zombie/proc/spawn_zombie(var/mob/dead/observer/observer)
+	if(!infinite_spawns)
+		spawns_left--
+	if(spawns_left <= 0)
+		GLOB.zombie_landmarks -= src
+	anim(loc, loc, 'icons/mob/mob.dmi', null, "zombie_rise", 12, SOUTH)
+	observer.see_invisible = SEE_INVISIBLE_LIVING
+	observer.client.eye = src // gives the player a second to orient themselves to the spawn zone
+	addtimer(CALLBACK(src, .proc/handle_zombie_spawn, observer), 1 SECONDS)
+
+/obj/effect/landmark/zombie/proc/handle_zombie_spawn(var/mob/dead/observer/observer)
+	var/mob/living/carbon/human/zombie = new /mob/living/carbon/human(loc)
+	if(!zombie.hud_used)
+		zombie.create_hud()
+	arm_equipment(zombie, /datum/equipment_preset/other/zombie, randomise = TRUE, count_participant = TRUE, mob_client = observer.client, show_job_gear = TRUE)
+	observer.client.eye = zombie
+	observer.mind.transfer_to(zombie)
+	if(spawns_left <= 0)
+		qdel(src)
+
+/obj/effect/landmark/zombie/three
+	spawns_left = 3
+
+/obj/effect/landmark/zombie/infinite
+	infinite_spawns = TRUE

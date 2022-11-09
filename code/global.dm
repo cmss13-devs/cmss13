@@ -98,6 +98,7 @@ var/Debug = 0	// global debug switch
 var/datum/moduletypes/mods = new()
 
 var/join_motd = null
+var/current_tms
 
 // nanomanager, the manager for Nano UIs
 var/datum/nanomanager/nanomanager = new()

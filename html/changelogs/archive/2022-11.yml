@@ -79,6 +79,11 @@
       cleaner, etc
   - rscadd: Adds a no smoking sign to OB chambering room. Probably shouldn't have
       an open flame in there...
+  Geevies:
+  - rscadd: Made fun facts show more fun facts, fun!
+  - rscadd: Commissioned officers (CIC staff, IOs, DPs) can now have prosthetic limbs,
+      selected via Character Traits in character setup.
+  - admin: Added zombie spawnpoints for events.
   John_Rico:
   - bugfix: OT claymore no longer blows up in random directions
   Mistfrag:
@@ -87,6 +92,8 @@
   Morrow:
   - bugfix: Removes an extra APC at the crashed ship on sorokyne and also offsets
       correctly off of plating.
+  Segrain:
+  - admin: Object Narrate verb is back under proper permissions.
   SpartanBobby:
   - rscadd: Added two new issues of "Boots!" magazine to the Almayer
   - rscadd: Slightly extended the evidence room of the brig
@@ -95,9 +102,12 @@
   - bugfix: fixed inconsistent floor tiling on the USS Almayer by replacing all the
       floor tiles under doors with appropriate warning stripes so you don't hurt your
       toes
+  fira:
+  - bugfix: Half fixed statpanel failing to load. It might still behave erratically.
   harryob:
   - bugfix: afk players are now correctly flagged by the server, and can be cleaned
       up (eg, afk larvae)
+  - bugfix: tgui's autoclose correctly, now, and not every 3.5 seconds
   stanalbatross:
   - qol: you can now toggle off item pickup animations or selectively toggle off item
       animations of objects being moved around in inventory
@@ -105,3 +115,14 @@
   - bugfix: Mini-Flamer sentries no longer deal unintended damage to queens/ravagers/fire
       immune xenos
   - bugfix: Mini-Flamer sentries actually use the correct flame type.
+2022-11-07:
+  Geeves, Frans_Feiffer:
+  - rscadd: Added Weyland-Yutani Corporate Security Goons, which replaces the PMC
+      survivor. Also has a distress beacon which admins can spawn them with.
+2022-11-09:
+  harryob:
+  - server: testmerges facilitated by TGS will be shown in the new player join message
+  kugamo:
+  - rscadd: Spawn pool now harms humans if entered, and spills acid when destroyed.
+  - bugfix: Fixed spawn pool visual bug were it had stopped making things appear to
+      be inside the liquid.

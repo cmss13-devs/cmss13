@@ -159,6 +159,7 @@
 	if(customizable && assembly_stage == ASSEMBLY_LOCKED)
 		if(isigniter(detonator.a_right) && isigniter(detonator.a_left))
 			set_tripwire()
+			use_dir = TRUE
 			return
 		else
 			..()

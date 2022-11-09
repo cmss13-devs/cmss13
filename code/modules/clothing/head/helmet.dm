@@ -557,6 +557,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "med_helmet"
 	specialty = "M10 pattern medic"
 
+/obj/item/clothing/head/helmet/marine/covert
+	name = "\improper M10 covert helmet"
+	desc = "An M10 marine helmet version designed for use in darkened enviroments. It is coated with a special anti-reflective paint."
+	icon_state = "marsoc_helmet"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	specialty = "M10 pattern covert"
+
 /obj/item/clothing/head/helmet/marine/leader
 	name = "\improper M11 pattern helmet"
 	desc = "A variant of the standard M10 pattern. The front plate is reinforced. This one contains a small built-in camera and has cushioning to project your fragile brain."
@@ -694,15 +707,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "pvmarshalhat"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
-/obj/item/clothing/head/helmet/marine/marsoc
-	name = "\improper MARSOC Operator Helmet"
-	desc = "A special variant of the M10 Pattern Helmet worn by MARSOC operators. Fitted for quad NODs."
+/obj/item/clothing/head/helmet/marine/sof
+	name = "\improper SOF Operator Helmet"
+	desc = "A special variant of the M10 Pattern Helmet worn by USCM SOF."
 	icon_state = "marsoc_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	specialty = "M10 pattern MARSOC"
+	specialty = "M10 pattern SOF"
 	flags_atom = NO_SNOW_TYPE
 
 
@@ -772,6 +785,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
 	unacidable = TRUE
+
+/obj/item/clothing/head/helmet/marine/veteran/PMC/corporate
+	name = "\improper WY corporate security helmet"
+	desc = "A basic skull-helm worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	icon = 'icons/mob/humans/onmob/contained/wy_goons.dmi'
+	icon_state = "helmet"
+	item_state = "helmet"
+	contained_sprite = TRUE
+
+/obj/item/clothing/head/helmet/marine/veteran/PMC/corporate/lead
+	desc = "A basic skull-helm worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
+	icon_state = "lead_helmet"
+	item_state = "lead_helmet"
 
 //FIORINA / UA RIOT CONTROL HELMET//
 

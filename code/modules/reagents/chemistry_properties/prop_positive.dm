@@ -80,7 +80,7 @@
 	var/mob/living/carbon/human/C = M
 	var/obj/limb/L = pick(C.limbs)
 	if(L && (L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
-		L.heal_damage(POTENCY_MULTIPLIER_MEDIUM * potency, POTENCY_MULTIPLIER_MEDIUM * potency,0,1)
+		L.heal_damage(POTENCY_MULTIPLIER_MEDIUM * potency, POTENCY_MULTIPLIER_MEDIUM * potency, robo_repair = TRUE)
 
 /datum/chem_property/positive/repairing/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, TOX)
@@ -91,11 +91,11 @@
 /datum/chem_property/positive/repairing/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
 	if(!ishuman(M) || method != TOUCH) //heals when sprayed on limbs
 		return
-	var/mob/living/carbon/human/H
+	var/mob/living/carbon/human/H = M
 	for(var/obj/limb/T in H.limbs)
 		if(!(T.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			continue
-		T.heal_damage(potency * volume,potency * volume,0,1)
+		T.heal_damage(potency * volume,potency * volume, robo_repair = TRUE)
 
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC
@@ -750,6 +750,30 @@
 	holder.power += level
 	holder.falloff_modifier += -3 / level
 	..()
+
+//properties for CAS matrixes
+/datum/chem_property/positive/photosensetive
+	name = PROPERTY_PHOTOSENSETIVE
+	code = "PTS"
+	description = "Reacts with any amount of light. Probably could be usefull to create light-sensetive objects. Not safe to adminster."
+	rarity = PROPERTY_UNCOMMON
+	category = PROPERTY_TYPE_TOXICANT
+
+/datum/chem_property/positive/photosensetive/process(mob/living/M, var/potency = 1)
+	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
+	M.apply_internal_damage(potency, "brain")
+
+/datum/chem_property/positive/crystallization
+	name = PROPERTY_CRYSTALLIZATION
+	code = "CRS"
+	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to adminster"
+	rarity = PROPERTY_UNCOMMON
+	category = PROPERTY_TYPE_TOXICANT
+
+/datum/chem_property/positive/crystallization/process(mob/living/M, var/potency = 1)
+	to_chat(M, SPAN_WARNING("You feel like many razor sharp blades cut through your insides!"))
+	M.take_limb_damage(brute = 0.5 * potency)
+	M.apply_internal_damage(potency, "liver")
 
 //properties with combat uses
 /datum/chem_property/positive/disrupting

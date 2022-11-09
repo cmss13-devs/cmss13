@@ -304,11 +304,12 @@
 // Used by M4A3, M4A3 Custom and B92FS
 /datum/ammo/bullet/pistol
 	name = "pistol bullet"
-
-	damage = 35
-	accuracy = HIT_ACCURACY_TIER_2
-	effective_range_max = 4
-	damage_falloff = DAMAGE_FALLOFF_TIER_4 //should be useful in close-range mostly
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
+	accuracy = -HIT_ACCURACY_TIER_3
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	damage = 40
+	penetration= ARMOR_PENETRATION_TIER_2
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/tiny
 	name = "light pistol bullet"
@@ -399,8 +400,8 @@
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	damage = 40
-	penetration= ARMOR_PENETRATION_TIER_2
+	damage = 55
+	penetration= ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/heavy/cluster
@@ -413,7 +414,7 @@
 
 /datum/ammo/bullet/pistol/heavy/super //Commander's variant
 	name = ".50 heavy pistol bullet"
-	damage = 50
+	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_4
@@ -2956,7 +2957,7 @@
 	flamer_reagent_type = /datum/reagent/napalm/blue
 
 /datum/ammo/flamethrower/sentry_flamer
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
 	flamer_reagent_type = /datum/reagent/napalm/blue
 
 	accuracy = HIT_ACCURACY_TIER_8
@@ -2995,7 +2996,7 @@
 /datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
 		return
-	var/datum/reagent/napalm/R = new()
+	var/datum/reagent/napalm/ut/R = new()
 	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
 

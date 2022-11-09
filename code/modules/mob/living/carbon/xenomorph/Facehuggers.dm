@@ -14,7 +14,7 @@
 	flags_inventory = COVEREYES|ALLOWINTERNALS|COVERMOUTH|ALLOWREBREATH|CANTSTRIP
 	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_atom = NO_FLAGS
-	flags_item = NOBLUDGEON
+	flags_item = NOBLUDGEON|NOTABLEMERGE
 	throw_range = 1
 	layer = FACEHUGGER_LAYER
 
@@ -38,7 +38,7 @@
 	var/jumps_left = 2
 
 	var/icon_xeno = 'icons/mob/hostiles/Effects.dmi'
-	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
+	var/icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()

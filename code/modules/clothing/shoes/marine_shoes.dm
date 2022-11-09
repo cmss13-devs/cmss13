@@ -20,6 +20,13 @@
 	siemens_coefficient = 0.7
 	var/armor_stage = 0
 	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol, /obj/item/tool/screwdriver)
+	var/knife_type
+
+/obj/item/clothing/shoes/marine/Initialize(mapload, ...)
+	. = ..()
+	if(knife_type)
+		stored_item = new knife_type(src)
+	update_icon()
 
 /obj/item/clothing/shoes/marine/update_icon()
 	if(stored_item && !armor_stage)
@@ -28,31 +35,22 @@
 		if(!armor_stage)
 			icon_state = initial(icon_state)
 
-/obj/item/clothing/shoes/marine/knife/New()
-	..()
-	stored_item = new /obj/item/attachable/bayonet(src)
-	update_icon()
+/obj/item/clothing/shoes/marine/knife
+	knife_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/jungle
 	icon_state = "marine_jungle"
 	desc = "Don't go walkin' slow, the devil's on the loose."
 
-/obj/item/clothing/shoes/marine/jungle/knife/New()
-	..()
-	stored_item = new /obj/item/attachable/bayonet(src)
-	update_icon()
+/obj/item/clothing/shoes/marine/jungle/knife
+	knife_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/monkey
 	name = "monkey combat boots"
 	desc = "A sturdy pair of combat boots, the reflection of the polished leather reflects your true self."
 	icon_state = "monkey_shoes"
 	item_state = "monkey_shoes"
-
-// a monkey knife for a good monkey life
-/obj/item/clothing/shoes/marine/monkey/Initialize(mapload, ...)
-	. = ..()
-	stored_item = new /obj/item/attachable/bayonet(src)
-	update_icon()
+	knife_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/upp
 	name = "military combat boots"
@@ -60,17 +58,10 @@
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	knife_type = /obj/item/attachable/bayonet/upp
 
-/obj/item/clothing/shoes/marine/upp/New()
-	..()
-	stored_item = new /obj/item/attachable/bayonet/upp(src)
-	update_icon()
-
-/obj/item/clothing/shoes/marine/upp_knife/New()
-	..()
-	stored_item = new /obj/item/attachable/bayonet/upp(src)
-	update_icon()
-
+/obj/item/clothing/shoes/marine/upp_knife
+	knife_type = /obj/item/attachable/bayonet/upp
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
@@ -118,8 +109,8 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/clothing/shoes/veteran/PMC/knife/New()
-	..()
+/obj/item/clothing/shoes/veteran/PMC/knife/Initialize(mapload, ...)
+	. = ..()
 	stored_item = new /obj/item/attachable/bayonet(src)
 	update_icon()
 
@@ -131,8 +122,8 @@
 	siemens_coefficient = 0.2
 	unacidable = TRUE
 
-/obj/item/clothing/shoes/veteran/PMC/commando/knife/New()
-	..()
+/obj/item/clothing/shoes/veteran/PMC/commando/knife/Initialize(mapload, ...)
+	. = ..()
 	stored_item = new /obj/item/attachable/bayonet(src)
 	update_icon()
 
@@ -147,6 +138,11 @@
 	knife.desc = "This isn't for dressing game or performing camp chores. It's almost certainly not an original. Almost."
 	stored_item = knife
 	update_icon()
+
+/obj/item/clothing/shoes/marine/corporate
+	name = "rugged boots"
+	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
+	knife_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/ress
 	name = "armoured sandals"

@@ -1,6 +1,6 @@
 /datum/xeno_mutator/shaman
 	name = "STRAIN: Carrier - Shaman"
-	description = "In exchange for your ability to store huggers, you can cheat the adrenaline mechanism of nearby xenos by violently killing little ones while they are still in a small egg form."
+	description = "In exchange for your ability to store facehuggers, you can cheat the adrenaline mechanism of nearby xenos by violently killing little ones while they are still in a small egg form."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_CARRIER)

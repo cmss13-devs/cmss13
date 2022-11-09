@@ -305,6 +305,12 @@
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
 
+	if(istype(W, /obj/item/explosive/grenade))
+		var/obj/item/explosive/grenade/detonating_grenade = W
+		if(detonating_grenade.active)
+			to_chat(user, SPAN_WARNING("It's too late for that!"))
+			return
+
 	//clicking the table
 	if(flipped)
 		return

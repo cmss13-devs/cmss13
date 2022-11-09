@@ -8,6 +8,9 @@
 
 var/datum/controller/supply/supply_controller = new()
 
+/area/supply
+	ceiling = CEILING_METAL
+
 /area/supply/station //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
@@ -395,13 +398,12 @@ var/datum/controller/supply/supply_controller = new()
 
 //Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
 /datum/controller/supply/process()
-	for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs - /datum/supply_packs/asrs))
+	for(var/typepath in subtypesof(/datum/supply_packs))
 		var/datum/supply_packs/P = new typepath()
-		supply_packs[P.name] = P
-	for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs - /datum/supply_packs/asrs))
-		var/datum/supply_packs/P = new typepath()
-		if(P.cost > 1 && P.buyable == 0)
-			random_supply_packs[P.name] = P
+		if(P.group == "ASRS")
+			random_supply_packs += P
+		else
+			supply_packs[P.name] = P
 	spawn(0)
 		set background = 1
 		while(1)
@@ -432,26 +434,10 @@ var/datum/controller/supply/supply_controller = new()
 	return crate_amount
 
 //Here we pick what crate type to send to the marines.
-/datum/controller/supply/proc/add_random_crate()
-	var/randpick = rand(1,100)
-	switch(randpick)
-		if(1 to 40)
-			pickcrate("Munition")
-		if(41 to 81)
-			pickcrate("Utility")
-		if(81 to 100)
-			pickcrate("Everything")
-
-//Here we pick the exact crate from the crate types to send to the marines.
 //This is a weighted pick based upon their cost.
 //Their cost will go up if the crate is picked
-/datum/controller/supply/proc/pickcrate(var/T = "Everything")
-	var/list/pickfrom = list()
-	for(var/supply_name in supply_controller.random_supply_packs)
-		var/datum/supply_packs/N = supply_controller.random_supply_packs[supply_name]
-		if((T == "Everything" || N.group == T)  && !N.buyable)
-			pickfrom += N
-	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(pickfrom)
+/datum/controller/supply/proc/add_random_crate()
+	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(random_supply_packs)
 	if(C == null)
 		return
 	C.cost = round(C.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight

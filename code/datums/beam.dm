@@ -133,8 +133,8 @@
 			X.y += a
 			Pixel_y %= 32
 
-		X.pixel_x = Pixel_x
-		X.pixel_y = Pixel_y
+		X.pixel_x = Pixel_x + origin.pixel_x
+		X.pixel_y = Pixel_y + origin.pixel_y
 		CHECK_TICK
 
 /obj/effect/ebeam

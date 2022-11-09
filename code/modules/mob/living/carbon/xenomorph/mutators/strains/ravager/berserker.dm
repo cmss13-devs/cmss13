@@ -11,7 +11,7 @@
 		/datum/action/xeno_action/activable/scissor_cut,
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/apprehend,
+		/datum/action/xeno_action/onclick/apprehend,
 		/datum/action/xeno_action/activable/clothesline,
 		/datum/action/xeno_action/activable/eviscerate
 	)
@@ -51,8 +51,8 @@
 	var/movement_speed_buff_per_rage = 0.1
 
 	// Eviscerate config
-	var/rage_lock_duration = 100      // 10 seconds of max rage
-	var/rage_cooldown_duration = 100  // 10 seconds of NO rage.
+	var/rage_lock_duration = 10 SECONDS      // 10 seconds of max rage
+	var/rage_cooldown_duration = 6 SECONDS  // 6 seconds of NO rage.
 
 	// State for tracking rage
 	var/rage = 0
@@ -62,6 +62,9 @@
 	var/rage_lock_start_time = 0
 	var/rage_cooldown_start_time = 0
 
+	// State
+	var/next_slash_buffed = FALSE
+	var/slash_slow_duration = 3.5 SECONDS
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_additional_effects_self()
 	..()
@@ -76,6 +79,7 @@
 		last_slash_time = world.time
 
 		if (rage == max_rage)
+			bound_xeno.add_filter("berserker_rage", 1, list("type" = "outline", "color" = "#000000ff", "size" = 1))
 			rage_lock()
 			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel a euphoric rush as you reach max rage! You are LOCKED at max Rage!"))
 
@@ -126,9 +130,24 @@
 	rage_lock_start_time = 0
 	rage_cooldown_start_time = world.time
 	decrement_rage(rage)
+	bound_xeno.remove_filter("berserker_rage")
 	to_chat(bound_xeno, SPAN_XENOWARNING("Your adrenal glands spasm. You cannot gain any rage for [rage_cooldown_duration/10] seconds."))
 	addtimer(CALLBACK(src, .proc/rage_cooldown_callback), rage_cooldown_duration)
+	bound_xeno.add_filter("berserker_lockdown", 1, list("type" = "outline", "color" = "#fcfcfcff", "size" = 1))
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_cooldown_callback()
+	bound_xeno.remove_filter("berserker_lockdown")
 	rage_cooldown_start_time = 0
 	return
+
+/datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
+	if (!isXenoOrHuman(A))
+		return original_damage
+
+	if (next_slash_buffed)
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [A]!"))
+		to_chat(A, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		A.SetSuperslowed(get_xeno_stun_duration(A, 6))
+		next_slash_buffed = FALSE
+
+	return original_damage

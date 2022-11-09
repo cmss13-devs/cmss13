@@ -9,7 +9,7 @@
 #define SQUAD_MARINE_4					"Delta"
 #define SQUAD_MARINE_5					"Echo"
 #define SQUAD_MARINE_CRYO				"Foxtrot"
-#define SQUAD_MARSOC					"MARSOC"
+#define SQUAD_SOF					"SOF"
 
 // Job name defines
 #define JOB_SQUAD_MARINE				"Squad Rifleman"
@@ -73,10 +73,10 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_REQUISITION_ROLES           /datum/timelock/requisition
 #define JOB_REQUISITION_ROLES_LIST      list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
 
-#define JOB_MARSOC						"MARSOC Operator"
-#define JOB_MARSOC_SL					"MARSOC Team Leader"
-#define JOB_MARSOC_CMD					"MARSOC Officer"
-#define JOB_MARSOC_ROLES_LIST			list(JOB_MARSOC, JOB_MARSOC_SL, JOB_MARSOC_CMD)
+#define JOB_MARINE_RAIDER						"Marine Raider"
+#define JOB_MARINE_RAIDER_SL					"Marine Raider Team Lead"
+#define JOB_MARINE_RAIDER_CMD					"Marine Raider Platoon Lead"
+#define JOB_MARINE_RAIDER_ROLES_LIST			list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
 
 #define JOB_HUMAN_ROLES                 /datum/timelock/human
 #define JOB_XENO_ROLES                  /datum/timelock/xeno
@@ -149,6 +149,27 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_LEADER					"PMC Leader"
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR				"PMC Site Director"
+#define JOB_PMC_SYNTH                   "PMC Support Synthetic"
+
+//-------- WY Goons --------//
+#define JOB_WY_GOON						"WY Corporate Security"
+#define JOB_WY_GOON_LEAD				"WY Corporate Security Lead"
+
+//---- Contractors ----//
+#define JOB_CONTRACTOR						"VAIPO Mercenary"
+#define JOB_CONTRACTOR_ST					"VAIPO Mercenary"
+#define JOB_CONTRACTOR_MEDIC				"VAIMS Medical Specialist"
+#define JOB_CONTRACTOR_ENGI					"VAIPO Engineering Specialist"
+#define JOB_CONTRACTOR_MG					"VAIPO Automatic Rifleman"
+#define JOB_CONTRACTOR_TL					"VAIPO Team Leader"
+#define JOB_CONTRACTOR_SYN					"VAIPO Support Synthetic"
+#define JOB_CONTRACTOR_COV					"VAISO Mercenary"
+#define JOB_CONTRACTOR_COVST				"VAISO Mercenary"
+#define JOB_CONTRACTOR_COVMED				"VAIMS Medical Specialist"
+#define JOB_CONTRACTOR_COVENG				"VAISO Engineering Specialist"
+#define JOB_CONTRACTOR_COVMG				"VAISO Automatic Rifleman"
+#define JOB_CONTRACTOR_COVTL            	"VAISO Team Leader"
+#define JOB_CONTRACTOR_COVSYN				"VAISO Support Synthetic"
 
 //-------- UPP --------//
 #define JOB_UPP							"UPP Private"
@@ -212,7 +233,6 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define RESS_OFFICER_JOB_LIST			list(JOB_RESS_SEAMAN, JOB_RESS_LSEAMAN, JOB_RESS_SO, JOB_RESS_WO, JOB_RESS_CPT, JOB_RESS_ADM, JOB_RESS_GADM, JOB_RESS_ER)
 
 //-------- PROVOST --------//
-#define JOB_PROVOST_OFFICER				"Provost Officer"
 #define JOB_PROVOST_ENFORCER			"Provost Enforcer"
 #define JOB_PROVOST_TML					"Provost Team Leader"
 #define JOB_PROVOST_ADVISOR				"Provost Advisor"
@@ -221,7 +241,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PROVOST_SMARSHAL			"Provost Sector Marshal"
 #define JOB_PROVOST_CMARSHAL			"Provost Chief Marshal"
 
-#define PROVOST_JOB_LIST				list(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
+#define PROVOST_JOB_LIST				list(JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
 
 //-------- UAAC --------//
 #define JOB_TIS_IO						"UAAC-TIS Intelligence Officer"

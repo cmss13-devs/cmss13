@@ -257,7 +257,7 @@
 /area/shiva/interior/caves/left_spiders)
 "aaQ" = (
 /obj/effect/spider/stickyweb,
-/obj/item/clothing/head/helmet/marine/marsoc,
+/obj/item/clothing/head/helmet/marine/sof,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "aaR" = (
@@ -2958,7 +2958,7 @@
 /area/shiva/interior/colony/n_admin)
 "anY" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"

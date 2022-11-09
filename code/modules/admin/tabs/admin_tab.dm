@@ -410,6 +410,8 @@
 	if(!(admin_holder.rights & R_POSSESS))
 		remove_verb(src, /client/proc/release)
 		remove_verb(src, /client/proc/possess)
+	if(!(admin_holder.rights & R_EVENT))
+		remove_verb(src, /client/proc/cmd_admin_object_narrate)
 
 /client/proc/hide_admin_verbs()
 	set name = "Admin Verbs - Hide"
@@ -516,6 +518,8 @@
 		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_corpses'>Mass Teleport Corpses to You</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_items_by_type'>Mass Teleport Items to You by Type</A><BR>
 		<BR>
 		"}
 

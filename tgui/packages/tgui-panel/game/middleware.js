@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { pingSuccess } from '../ping/actions';
+import { pingSoft, pingSuccess } from '../ping/actions';
 import { connectionLost, connectionRestored, roundRestarted } from './actions';
 import { selectGame } from './selectors';
 import { CONNECTION_LOST_AFTER } from './constants';
@@ -35,9 +35,9 @@ export const gameMiddleware = (store) => {
     }
   }, 1000);
   return (next) => (action) => {
-    const { type, payload, meta } = action;
-    if (type === pingSuccess.type) {
-      lastPingedAt = meta.now;
+    const { type } = action;
+    if (type === pingSuccess.type || type === pingSoft.type) {
+      lastPingedAt = Date.now();
       return next(action);
     }
     if (type === roundRestarted.type) {

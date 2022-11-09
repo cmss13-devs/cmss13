@@ -182,7 +182,7 @@
 	channels = list(SQUAD_MARINE_CRYO = 1)
 
 /obj/item/device/encryptionkey/soc
-	name = "\improper MARSOC Radio Encryption Key"
+	name = "\improper SOF Radio Encryption Key"
 	icon_state = "binary_key"
 	channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_REQ = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_INTEL = 1, RADIO_CHANNEL_JTAC = 1, SQUAD_MARINE_1 = 0, SQUAD_MARINE_2 = 0, SQUAD_MARINE_3 = 0, SQUAD_MARINE_4 = 0, SQUAD_MARINE_5 = 0, SQUAD_MARINE_CRYO = 0)
 
@@ -223,7 +223,7 @@
 /obj/item/device/encryptionkey/highcom
 	name = "\improper USCM High Command Radio Encryption Key"
 	icon_state = "binary_key"
-	channels = list(RADIO_CHANNEL_HIGHCOM = 1, SQUAD_MARSOC = 1, RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 1, RADIO_CHANNEL_JTAC = 1, RADIO_CHANNEL_INTEL = 1)
+	channels = list(RADIO_CHANNEL_HIGHCOM = 1, SQUAD_SOF = 1, RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 1, RADIO_CHANNEL_JTAC = 1, RADIO_CHANNEL_INTEL = 1)
 
 /obj/item/device/encryptionkey/contractor
 	name = "\improper Vanguard's Arrow Incorporated Radio Encryption Key"

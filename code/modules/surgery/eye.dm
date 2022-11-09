@@ -166,7 +166,7 @@
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.disabilities &= ~NEARSIGHTED
 	target.sdisabilities &= ~DISABILITY_BLIND
-	surgery.target_eyes.damage = 0
+	surgery.target_eyes.heal_damage(surgery.target_eyes.damage)
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_EYE)
 	target.pain.recalculate_pain()
 

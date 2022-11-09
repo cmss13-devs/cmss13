@@ -387,15 +387,15 @@
 	flags_jumpsuit = FALSE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 
-//=========================//MARSOC\\================================\\
+//=========================//Marine Raiders\\================================\\
 
 /obj/item/clothing/under/marine/veteran/marsoc
-	name = "MARSOC tactical operator uniform"
-	desc = "A black uniform for elite Marine operators. So this is where all their money goes."
+	name = "SOF Uniform"
+	desc = "A black uniform for elite Marine personnel. Designed to be comfortable and help blend into dark enviorments."
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	icon_state = "marsoc"
 	worn_state = "marsoc"
-	specialty = "marsoc uniform"
+	specialty = "sof uniform"
 	flags_item = NO_SNOW_TYPE
 
 //=========================//PMC\\================================\\
@@ -423,6 +423,23 @@
 	desc = "An armored uniform worn by Weyland-Yutani elite commandos. It is well protected while remaining light and comfortable."
 	icon_state = "commando_jumpsuit"
 	worn_state = "commando_jumpsuit"
+
+/obj/item/clothing/under/marine/veteran/PMC/corporate
+	name = "\improper WY corporate security uniform"
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."
+	icon = 'icons/mob/humans/onmob/contained/wy_goons.dmi'
+	icon_state = "uniform"
+	item_state = "uniform"
+	worn_state = "uniform"
+	contained_sprite = TRUE
+	item_state_slots = null
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/marine/veteran/PMC/corporate/lead
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
+	icon_state = "lead_uniform"
+	item_state = "lead_uniform"
+	worn_state = "lead_uniform"
 
 //=========================//UPP\\================================\\
 

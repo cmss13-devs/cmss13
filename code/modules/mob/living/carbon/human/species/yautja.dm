@@ -112,6 +112,10 @@
 	hive.hive_structure_types[XENO_STRUCTURE_NEST] = /datum/construction_template/xenomorph/nest
 	hive.hive_structures_limit[XENO_STRUCTURE_NEST]++
 
+	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+		if(X.hive == hive)
+			to_chat(X, SPAN_XENOANNOUNCE("The hive senses that a headhunter has been infected! The thick resin nest is now available in the special structures list!"))
+
 /datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
 	if(gibbed)
 		GLOB.yautja_mob_list -= H

@@ -69,8 +69,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 // MARINE STORAGE ARMOR
 
 /obj/item/clothing/suit/storage/marine
-	name = "\improper M3 pattern marine armor"
-	desc = "A standard Colonial Marines M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	name = "\improper M3 Personal Body Armor"
+	desc = "The standard configuration M3 Pattern Body Armor. What else do you need to know about it? Well, since you asked - With design inspiration drawn off the French cuirasse, the M3 is built out of a light-weight titanium alloy, with several layers to account for spalling. Robust, and designed to function as the perfect armor for the shock-and-awe of the Colonial Marines. A TNR-Shoulder Lamp rests off its side, illuminating the way forward for you. Scratches and dents litter the armor, it's served many a marine before it's come to you. Oorah."
 	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	icon_state = "1"
 	item_state = "marine_armor" //Make unique states for Officer & Intel armors.
@@ -433,7 +433,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/smartgunner
 	name = "M56 combat harness"
-	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
+	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. It has specially designed straps and reinforcement to carry the Smartgun and accessories."
 	icon_state = "8"
 	item_state = "armor"
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -501,8 +501,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 2
 
 /obj/item/clothing/suit/storage/marine/light/vest
-	name = "\improper M3-VL pattern ballistics vest"
-	desc = "Up until 2189 USCM non-combat personnel were issued non-standardized ballistics vests, though the lack of IMP compatibility and suit lamps proved time and time again inefficient. This modified M3-L shell is the result of a 6-year R&D program; It provides utility, protection, AND comfort to all USCM non-combat personnel."
+	name = "\improper M3-RB Ballistics Pattern Vest"
+	desc = "Up until 2189 USCM non-combat personnel were issued non-standardized ballistics vests, though the lack of IMP compatibility and suit lamps proved time and time again inefficient. This modified M3-R shell is the result of a 6-year R&D program; It provides utility, protection, AND comfort to all USCM non-combat personnel, while serving to protect all vital organs."
 	icon_state = "VL"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY //No squad colors when wearing this since it'd look funny.
@@ -520,8 +520,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/marine/light/vest/dcc
-	name = "\improper M3-VL pattern flak vest"
-	desc = "A combination of the standard non-combat M3-VL ballistics vest and M70 flak jacket, this piece of armor has been distributed to dropship crew to keep them safe from threats external and internal..."
+	name = "\improper M3-VL Flak Vest"
+	desc = "A combination of the standard non-combat M3-RB Ballistics Vest and the dated V70 Flak Jacket, the M3-VL Flak Jacket is the pinnacle of both designs. A development that's only just hit the fleet - It borrows the lightweight, titanium-alloy from the M3 Pattern Armor to protect it's wearers, alongside the TNR-Shoulder Lamp and several features unique to the V70 to serve it's wearers. The M3-VL is meant, in tandem with the pilot's bodysuit to protect against the high Gs encountered piloting a Cheyenne, as well as that, a more complex sensor system is built into the armor directly."
 	icon_state = "VL_FLAK"
 	storage_slots = 2
 
@@ -549,9 +549,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/suit/storage/marine/heavy
-	name = "\improper M3-H pattern heavy armor"
-	desc = "A heavier version of the standard M3 pattern armor, cladded with additional plates. It sacrifices speed for more durability."
-	specialty = "\improper M3-H pattern heavy"
+	name = "\improper M3-EOD Pattern Armor"
+	desc = "A heavier version of the standard M3 pattern armor, this configuration of the iconic armor was developed during the Canton War in 2160 between the UPP and USCM - Designed in response to a need for higher protection for ComTechs assigned as EODs during the conflict, this is the pinnacle of protection for your average marine. The shoulders and kneepads have both been expanded upon heavily, covering up the arteries on each limb. A special spall liner was developed for this suit, with the same technology being used in the M70 Flak Jacket being developed at the same time."
+	specialty = "\improper M3-EOD Pattern Armor"
 	icon_state = "H1"
 	armor_variation = 6
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH

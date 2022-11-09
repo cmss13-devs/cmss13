@@ -1,7 +1,6 @@
 GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 /datum/datacore
-	name = "datacore"
 	var/medical[] = list()
 	var/general[] = list()
 	var/security[] = list()

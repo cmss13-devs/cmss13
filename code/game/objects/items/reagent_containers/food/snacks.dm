@@ -209,7 +209,6 @@
 		var/obj/slice = new slice_path (src.loc)
 		reagents.trans_to(slice,reagents_per_slice)
 	qdel(src)
-
 	return
 
 /obj/item/reagent_container/food/snacks/attack_animal(var/mob/M)
@@ -236,45 +235,38 @@
 /// FOOD END
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////
-////////////////////////////////////////////Snacks
-//////////////////////////////////////////////////
-//Items in the "Snacks" subcategory are food items that people actually eat. The key points are that they are created
-//	already filled with reagents and are destroyed when empty. Additionally, they make a "munching" noise when eaten.
-
-//Notes by Darem: Food in the "snacks" subtype can hold a maximum of 50 units Generally speaking, you don't want to go over 40
-//	total for the item because you want to leave space for extra condiments. If you want effect besides healing, add a reagent for
-//	it. Try to stick to existing reagents when possible (so if you want a stronger healing effect, just use Tricordrazine). On use
-//	effect (such as the old officer eating a donut code) requires a unique reagent (unless you can figure out a better way).
-
-//The nutriment reagent and bitesize variable replace the old heal_amt and amount variables. Each unit of nutriment is equal to
-//	2 of the old heal_amt variable. Bitesize is the rate at which the reagents are consumed. So if you have 6 nutriment and a
-//	bitesize of 2, then it'll take 3 bites to eat. Unlike the old system, the contained reagents are evenly spread among all
-//	the bites. No more contained reagents = no more bites.
-
-//Here is an example of the new formatting for anyone who wants to add more food items.
-///obj/item/reagent_container/food/snacks/xenoburger			//Identification path for the object.
-//	name = "Xenoburger"													//Name that displays in the UI.
-//	desc = "Smells caustic. Tastes like heresy."						//Duh
-//	icon_state = "xburger"												//Refers to an icon in food.dmi
-//	/Initialize()																//Don't mess with this.
-//		..()															//Same here.
-//		reagents.add_reagent("xenomicrobes", 10)						//This is what is in the food item. you may copy/paste
-//		reagents.add_reagent("nutriment", 2)							//	this line of code for all the contents.
-//		bitesize = 3													//This is the amount each bite consumes.
-
-
-
+/**
+*	SNACKS
+*	Comment on what items in subcategory snacks need to behave:
+*	Items in the "Snacks" subcategory are food items that people actually eat.
+*	The key points are that they are created already filled with reagents and are destroyed when empty.
+*	Additionally, they make a "munching" noise when eaten.
+*
+*	Notes by Darem:
+*	Food in the "snacks" subtype can hold a maximum of 50 units Generally speaking.
+*	You don't want to go over 40 total for the item because you want to leave space for extra condiments.
+*	If you want effect besides healing, add a reagent for it.
+*	Try to stick to existing reagents when possible (so if you want a stronger healing effect, just use Tricordrazine).
+*	On use effect (such as the old officer eating a donut code) requires a unique reagent (unless you can figure out a better way).
+*
+*	Comment on how the old and new system compare?:
+*	The nutriment reagent and bitesize variable replace the old heal_amt and amount variables.
+*	Each unit of nutriment is equal to 2 of the old heal_amt variable. Bitesize is the rate at which the reagents are consumed.
+*	So if you have 6 nutriment and a bitesize of 2, then it'll take 3 bites to eat.
+*	Unlike the old system, the contained reagents are evenly spread among all the bites. No more contained reagents = no more bites.
+*
+*	Example on how to add a new snack item:
+*	here is an example of the new formatting for anyone who wants to add more food items.
+*	/obj/item/reagent_container/food/snacks/xenoburger				///Identification path for the object.
+*	name = "Xenoburger"												///Name that displays in the UI.
+*	desc = "Smells caustic. Tastes like heresy."					///Duh
+*	icon_state = "xburger"											///Refers to an icon in food.dmi
+*	/obj/item/reagent_container/food/snacks/xenoburger/Initialize()	///Don't mess with this.
+*	. = ..()														///Same here.
+*	reagents.add_reagent("xenomicrobes", 10)						///This is what is in the food item. you may copy/paste
+*	reagents.add_reagent("nutriment", 2)							///	this line of code for all the contents.
+*	bitesize = 3													///This is the amount each bite consumes.
+*/
 
 /obj/item/reagent_container/food/snacks/aesirsalad
 	name = "Aesir salad"
@@ -451,7 +443,6 @@
 		src.overlay_state = "box-donut2"
 		src.name = "Frosted Chaos Donut"
 		reagents.add_reagent("sprinkles", 2)
-
 
 /obj/item/reagent_container/food/snacks/donut/jelly
 	name = "Jelly Donut"
@@ -1001,7 +992,6 @@
 	reagents.add_reagent("bread", 10)
 	bitesize = 2
 
-
 /obj/item/reagent_container/food/snacks/meatpie
 	name = "Meat-pie"
 	icon_state = "meatpie"
@@ -1089,7 +1079,6 @@
 	reagents.add_reagent("xenoblood", 4)
 	bitesize = 2
 
-
 /obj/item/reagent_container/food/snacks/human/kabob
 	name = "kabob"
 	icon_state = "kabob"
@@ -1160,7 +1149,6 @@
 		unpopped = max(0, unpopped-1)
 	..()
 
-
 /obj/item/reagent_container/food/snacks/sosjerky
 	name = "Scaredy's Private Reserve Beef Jerky"
 	icon_state = "sosjerky"
@@ -1213,7 +1201,6 @@
 	icon_state = "syndi_cakes"
 	desc = "An extremely moist snack cake that tastes just as good after being nuked."
 	filling_color = "#FF5D05"
-
 	trash = /obj/item/trash/syndi_cakes
 
 /obj/item/reagent_container/food/snacks/syndicake/Initialize()
@@ -1348,7 +1335,6 @@
 	reagents.add_reagent("plantmatter", 1)
 	reagents.add_reagent("bread", 4)
 	bitesize = 2
-
 
 /obj/item/reagent_container/food/snacks/meatballsoup
 	name = "Meatball soup"
@@ -1489,7 +1475,6 @@
 	reagents.add_reagent("tomatojuice", 2)
 	bitesize = 5
 
-
 /obj/item/reagent_container/food/snacks/coldchili
 	name = "Cold Chili"
 	desc = "This slush is barely a liquid!"
@@ -1595,7 +1580,6 @@
 	icon_state = "monkeycubewrap"
 	package = 1
 
-
 /obj/item/reagent_container/food/snacks/monkeycube/farwacube
 	name = "farwa cube"
 	monkey_type = /mob/living/carbon/human/farwa
@@ -1603,14 +1587,12 @@
 	name = "farwa cube"
 	monkey_type =/mob/living/carbon/human/farwa
 
-
 /obj/item/reagent_container/food/snacks/monkeycube/stokcube
 	name = "stok cube"
 	monkey_type = /mob/living/carbon/human/stok
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube
 	name = "stok cube"
 	monkey_type =/mob/living/carbon/human/stok
-
 
 /obj/item/reagent_container/food/snacks/monkeycube/neaeracube
 	name = "neaera cube"
@@ -2140,10 +2122,11 @@
 	reagents.add_reagent("gold", 5)
 	bitesize = 3
 
-/////////////////////////////////////////////////Sliceable////////////////////////////////////////
-// All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
-
-// sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
+/**
+*Sliceable
+*	All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
+*	sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
+*/
 
 /obj/item/reagent_container/food/snacks/sliceable/meatbread
 	name = "meatbread loaf"
@@ -2237,7 +2220,6 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#F7FFE0"
 	bitesize = 2
-
 
 /obj/item/reagent_container/food/snacks/sliceable/carrotcake
 	name = "Carrot Cake"
@@ -2549,7 +2531,6 @@
 	filling_color = "#D27332"
 	bitesize = 2
 
-
 /obj/item/reagent_container/food/snacks/sliceable/creamcheesebread
 	name = "Cream Cheese Bread"
 	desc = "Yum yum yum!"
@@ -2572,14 +2553,12 @@
 	filling_color = "#FFF896"
 	bitesize = 2
 
-
 /obj/item/reagent_container/food/snacks/watermelonslice
 	name = "Watermelon Slice"
 	desc = "A slice of watery goodness."
 	icon_state = "watermelonslice"
 	filling_color = "#FF3867"
 	bitesize = 2
-
 
 /obj/item/reagent_container/food/snacks/sliceable/applecake
 	name = "Apple Cake"
@@ -2635,10 +2614,15 @@
 	. = ..()
 	reagents.add_reagent("bread", 1)
 	reagents.add_reagent("sodiumchloride", 1)
-
-
-
-/////////////////////////////////////////////////PIZZA////////////////////////////////////////
+	
+/**
+*PIZZA.
+*object parent for all the object pizza give the number of slice produce and the filling color.
+*example of how it work for each pizza.
+*object 1 here is the first item : the pizza it give him name description icon and where to find the corresponding slice object.
+*object 2 child to pizza to initialize corresponding pizza and fill it with reagent and define the number of bite to eat it.
+*object 3 here is the second item : the pizza slice it give him name description icon filling color and number of bites.
+*/
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza
 	slices_num = 6
@@ -2649,7 +2633,6 @@
 	desc = "The golden standard of pizzas."
 	icon_state = "pizzamargherita"
 	slice_path = /obj/item/reagent_container/food/snacks/margheritaslice
-	slices_num = 6
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/margherita/Initialize()
 	. = ..()
@@ -2670,7 +2653,6 @@
 	desc = "A pizza with meat topping."
 	icon_state = "meatpizza"
 	slice_path = /obj/item/reagent_container/food/snacks/meatpizzaslice
-	slices_num = 6
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza/Initialize()
 	. = ..()
@@ -2692,7 +2674,6 @@
 	desc = "Very special pizza"
 	icon_state = "mushroompizza"
 	slice_path = /obj/item/reagent_container/food/snacks/mushroompizzaslice
-	slices_num = 6
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza/Initialize()
 	. = ..()
@@ -2712,7 +2693,6 @@
 	desc = "No one of Tomato Sapiens were harmed during making this pizza"
 	icon_state = "vegetablepizza"
 	slice_path = /obj/item/reagent_container/food/snacks/vegetablepizzaslice
-	slices_num = 6
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza/Initialize()
 	. = ..()
@@ -2728,6 +2708,8 @@
 	icon_state = "vegetablepizzaslice"
 	filling_color = "#BAA14C"
 	bitesize = 2
+
+//pizzabox
 
 /obj/item/pizzabox
 	name = "pizza box"

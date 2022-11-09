@@ -55,6 +55,11 @@ IN_USE						used for vending/denying
 
 //------------GENERAL PROCS---------------
 
+
+/obj/structure/machinery/cm_vending/Initialize()
+	. = ..()
+	cm_build_inventory(get_listed_products(), 1, 3)
+
 /obj/structure/machinery/power_change(var/area/master_area = null)
 	..()
 	update_icon()
@@ -519,10 +524,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/gear/Initialize()
-	. = ..()
-	cm_build_inventory(get_listed_products(), 1, 3)
-
 /obj/structure/machinery/cm_vending/gear/ui_static_data(mob/user)
 	var/list/data = ..(user)
 	data["vendor_type"] = "gear"
@@ -767,10 +768,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
 	show_points = FALSE
-
-/obj/structure/machinery/cm_vending/clothing/Initialize()
-	. = ..()
-	cm_build_inventory(get_listed_products(), 1, 3)
 
 /obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
 	if(!(vending_human.marine_buy_flags & listed_products[4]))
@@ -1108,7 +1105,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
 	populate_product_list(1.2)
-	cm_build_inventory(get_listed_products())
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
@@ -1370,6 +1366,103 @@ GLOBAL_LIST_EMPTY(vending_products)
 		add_fingerprint(usr)
 		ui_interact(usr)
 
+/obj/structure/machinery/cm_vending/own_points/ui_static_data(mob/user)
+	var/list/data = ..(user)
+	data["vendor_type"] = "gear"
+	// list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+	var/list/ui_listed_products = get_listed_products(user)
+
+	var/list/ui_categories = list()
+	var/show_points = FALSE
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+
+		var/p_name = myprod[1]					//taking it's name
+		var/p_cost = myprod[2]
+		var/item_ref = myprod[3]
+		var/priority = myprod[5]
+
+		var/result = list()
+		var/obj/item/I = item_ref
+
+		var/is_category = item_ref == null
+
+		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
+		//forming new list with index, name, amount, available or not, color and add it to display_list
+
+		var/display_item = list(
+			"prod_index" = i,
+			"prod_name" = p_name,
+			"prod_available" = TRUE,
+			"prod_color" = priority,
+			"prod_initial" = 0,
+			"prod_icon" = result,
+			"prod_desc" = initial(I.desc),
+			"prod_cost" = p_cost,
+			"image" = imgid
+		)
+
+		show_points = show_points ? show_points : p_cost > 0
+
+		if (is_category == 1)
+			ui_categories += list(list(
+				"name" = p_name,
+				"items" = list()
+			))
+			continue
+
+		if (!LAZYLEN(ui_categories))
+			ui_categories += list(list(
+				"name" = "",
+				"items" = list()
+			))
+		var/last_index = LAZYLEN(ui_categories)
+		var/last_category = ui_categories[last_index]
+		last_category["items"] += list(display_item)
+	data["displayed_categories"] = ui_categories
+	data["show_points"] = show_points
+	return data
+
+/obj/structure/machinery/cm_vending/own_points/ui_data(mob/user)
+	var/list/data = list()
+
+	var/list/ui_listed_products = get_listed_products(user)
+	// list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+
+	var/list/stock_values = list()
+
+	var/mob/living/carbon/human/H = user
+	var/buy_flags = NO_FLAGS
+	buy_flags = H.marine_buy_flags
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/prod_available = FALSE
+		var/p_cost = myprod[2]
+		var/avail_flag = myprod[4]
+		if(available_points >= p_cost && (!avail_flag || buy_flags & avail_flag))
+			prod_available = TRUE
+		stock_values += list(prod_available)
+
+
+	data["stock_listing"] = stock_values
+	data["current_m_points"] = available_points
+	return data
+
 /obj/structure/machinery/cm_vending/own_points/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
 		return
@@ -1391,6 +1484,53 @@ GLOBAL_LIST_EMPTY(vending_products)
 	stat &= ~IN_USE
 	update_icon()
 	return
+
+/obj/structure/machinery/cm_vending/own_points/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/H = usr
+	switch (action)
+		if ("vend")
+			if(stat & IN_USE)
+				return
+			var/has_access = can_access_to_vend(usr)
+			if (!has_access)
+				return TRUE
+
+			var/idx=params["prod_index"]
+			var/list/topic_listed_products = get_listed_products(usr)
+			var/list/L = topic_listed_products[idx]
+
+			var/turf/T = get_appropriate_vend_turf(H)
+			var/cost = L[2]
+			if(T.contents.len > 25)
+				to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
+				vend_fail()
+				return TRUE
+
+			if(L[2] <= 0)	//to avoid dropping more than one product when there's
+				to_chat(usr, SPAN_WARNING("[L[1]] is out of stock."))
+				vend_fail()
+				return TRUE		// one left and the player spam click during a lagspike.
+
+			if(available_points < cost)
+				to_chat(H, SPAN_WARNING("Not enough points."))
+				vend_fail()
+				return
+			else
+				available_points -= cost
+				available_points_to_display = available_points
+
+			vend_succesfully(L, H, T)
+		if ("cancel")
+			SStgui.close_uis(src)
+			return TRUE
+
+	add_fingerprint(usr)
+	return TRUE
+
 
 //------------ESSENTIALS SETS AND RANDOM GEAR SPAWNER---------------
 

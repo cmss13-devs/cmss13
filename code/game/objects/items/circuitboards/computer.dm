@@ -61,6 +61,10 @@
 	name = "Circuit board (ID Computer)"
 	build_path = /obj/structure/machinery/computer/card
 
+/obj/item/circuitboard/computer/pmc_transfer
+	name = "Circuit board (PMC Transfer)"
+	build_path = /obj/structure/machinery/computer/pmc_transfer
+
 /obj/item/circuitboard/computer/teleporter
 	name = "Circuit board (Teleporter)"
 	build_path = /obj/structure/machinery/computer/teleporter

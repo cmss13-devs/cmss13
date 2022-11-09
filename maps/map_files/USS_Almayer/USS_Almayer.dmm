@@ -41608,6 +41608,11 @@
 	pixel_x = -5;
 	pixel_y = 5
 	},
+/obj/item/tool/stamp{
+	name = "Corporate Liaison's stamp";
+	pixel_x = -6;
+	pixel_y = 6
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "fqu" = (
@@ -48123,14 +48128,8 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "ilv" = (
 /obj/structure/surface/table/almayer,
-/obj/item/folder/black_random{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/tool/stamp{
-	name = "Corporate Liaison's stamp";
-	pixel_x = -8;
-	pixel_y = 6
+/obj/structure/machinery/computer/pmc_transfer{
+	pixel_y = 2
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)

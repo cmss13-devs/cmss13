@@ -150,6 +150,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR				"PMC Site Director"
 #define JOB_PMC_SYNTH                   "PMC Support Synthetic"
+#define JOB_PMC_RECRUIT					"PMC Recruit" // Somewhat part of the PMC, these are PFCs recurited by the CL
 
 //---- Contractors ----//
 #define JOB_CONTRACTOR						"VAIPO Mercenary"

@@ -872,7 +872,7 @@
 		\[br\]
 		\[list\]Location of transfer: \[b\]USS Almayer\[/b\]
 		\[br\]
-		\[list\]\[i\]I, \[field\], willingly enter into this contract and agree to all written terms and conditions. I understand that once I have signed and adhered to the conditions of this contract, I will be binded to such as is written until the term agreed upon expires or is deemed void by the appropriate personnel.\[/i\]\[/list\]\[/list\]
+		\[list\]\[i\]I, &nbsp;, willingly enter into this contract and agree to all written terms and conditions. I understand that once I have signed and adhered to the conditions of this contract, I will be binded to such as is written until the term agreed upon expires or is deemed void by the appropriate personnel.\[/i\]\[/list\]\[/list\]
 		\[hr\]\[hr\]
 
 		\[list\]\[*\]The signatory herein agrees to act as a Private Military Contractor for the company of Weyland-Yutani for at least four (4) years before they are eligible to opt out of the position and pursue different employment.\[br\]

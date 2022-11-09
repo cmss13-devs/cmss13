@@ -479,6 +479,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M3 pattern tanker"
 	storage_slots = 2
 
+/obj/item/clothing/suit/storage/marine/pmc_recruit
+	name = "\improper M3-WY pattern light armor"
+	desc = "A standard Colonial Marines M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage. This one is in a Weyland-Yutani PMC paintjob."
+	specialty = "\improper M3-WY pattern light"
+	icon_state = "wy_4"
+	armor_variation = 6
+
 //===========================//PFC ARMOR CLASSES\\================================\\
 //=================================================================================\\
 
@@ -499,6 +506,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 2
+
+/obj/item/clothing/suit/storage/marine/light/pmc_recruit
+	name = "\improper M3-L-WY pattern light armor"
+	desc = "A lighter, cut down version of the standard M3 pattern armor. It sacrifices durability for more speed. This one is in a Weyland-Yutani PMC paintjob."
+	specialty = "\improper M3-L-WY pattern light"
+	icon_state = "wy_L4"
+	armor_variation = 0
 
 /obj/item/clothing/suit/storage/marine/light/vest
 	name = "\improper M3-VL pattern ballistics vest"
@@ -563,6 +577,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
+
+/obj/item/clothing/suit/storage/marine/heavy/pmc_recruit
+	name = "\improper M3-H-WY pattern heavy armor"
+	desc = "A heavier version of the standard M3 pattern armor, cladded with additional plates. It sacrifices speed for more durability. This one is in a Weyland-Yutani PMC paintjob."
+	specialty = "\improper M3-H-WY pattern heavy"
+	icon_state = "wy_H4"
+	armor_variation = 6
 
 //===========================//SPECIALIST\\================================\\
 //=======================================================================\\

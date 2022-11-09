@@ -424,6 +424,10 @@
 	icon_state = "commando_jumpsuit"
 	worn_state = "commando_jumpsuit"
 
+// For recruited PMCs from the CL
+/obj/item/clothing/under/marine/veteran/PMC/recruit
+	suit_restricted = null
+
 //=========================//UPP\\================================\\
 
 /obj/item/clothing/under/marine/veteran/bear

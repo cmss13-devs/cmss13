@@ -255,6 +255,8 @@
 		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
 		list("Cash", 5, /obj/item/spacecash/c1000, "white", "$1000 USD, unmarked bills"),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
+		list("PMC Transfer Form - Immediate", 4, /obj/item/paper/wy_recruit_immediate, "white", "A form to be signed and filed for a PFC being transfered to the Weyland-Yutani PMC corps, effective immediately."),
+		list("PMC Transfer Form - Future", 4, /obj/item/paper/wy_recruit_future, "white", "A form to be signed and filed for a PFC being transfered to the Weyland-Yutani PMC corps, effective once their tour of duty has ended."),
 
 		list("SMOKABLES", 0, null, null, null),
 		list("Cigars", 5, /obj/item/storage/fancy/cigar, "white", "Case of premium cigars, untampered."),

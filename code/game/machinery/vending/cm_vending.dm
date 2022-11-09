@@ -239,7 +239,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return
 
 	if(user.client && user.client.remote_control)
-		ui_interact(user)
+		tgui_interact(user)
 		return
 
 	if(!ishuman(user))
@@ -251,7 +251,24 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return
 
 	user.set_interaction(src)
-	ui_interact(user)
+	tgui_interact(user)
+
+/obj/structure/machinery/cm_vending/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "VendingSorted", name)
+		ui.open()
+
+/obj/structure/machinery/cm_vending/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+	if(!can_access_to_vend(user, FALSE))
+		return UI_CLOSE
+
+/obj/structure/machinery/cm_vending/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
 
 /obj/structure/machinery/cm_vending/attackby(obj/item/W, mob/user)
 	// Repairing process
@@ -502,30 +519,129 @@ GLOBAL_LIST_EMPTY(vending_products)
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/gear/Topic(href, href_list)
+/obj/structure/machinery/cm_vending/gear/Initialize()
+	. = ..()
+	cm_build_inventory(get_listed_products(), 1, 3)
+
+/obj/structure/machinery/cm_vending/gear/ui_static_data(mob/user)
+	var/list/data = ..(user)
+	data["vendor_type"] = "gear"
+	// list format
+	//	(
+	// 		name: str
+	//		cost: number
+	//		item reference: path
+	//		allowed to buy flag: ?
+	//		item priority (mandatory/recommended/regular): 0|1|2
+	//	)
+	var/list/ui_listed_products = get_listed_products(user)
+
+	var/list/ui_categories = list()
+	var/show_points = FALSE
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+
+		var/p_name = myprod[1]					//taking it's name
+		var/p_cost = myprod[2]
+		var/item_ref = myprod[3]
+		var/priority = myprod[5]
+
+		var/result = list()
+		var/obj/item/I = item_ref
+
+		var/is_category = item_ref == null
+
+		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
+		//forming new list with index, name, amount, available or not, color and add it to display_list
+
+		var/display_item = list(
+			"prod_index" = i,
+			"prod_name" = p_name,
+			"prod_available" = TRUE,
+			"prod_color" = priority,
+			"prod_initial" = 0,
+			"prod_icon" = result,
+			"prod_desc" = initial(I.desc),
+			"prod_cost" = p_cost,
+			"image" = imgid
+		)
+
+		show_points = show_points ? show_points : p_cost > 0
+
+		if (is_category == 1)
+			ui_categories += list(list(
+				"name" = p_name,
+				"items" = list()
+			))
+			continue
+
+		if (!LAZYLEN(ui_categories))
+			ui_categories += list(list(
+				"name" = "",
+				"items" = list()
+			))
+		var/last_index = LAZYLEN(ui_categories)
+		var/last_category = ui_categories[last_index]
+		last_category["items"] += list(display_item)
+	data["displayed_categories"] = ui_categories
+	data["show_points"] = show_points
+	return data
+
+/obj/structure/machinery/cm_vending/gear/ui_data(mob/user)
+	var/list/data = list()
+
+	var/list/ui_listed_products = get_listed_products(user)
+	// list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+
+	var/list/stock_values = list()
+
+	var/mob/living/carbon/human/H = user
+	var/buy_flags = NO_FLAGS
+	if(use_snowflake_points)
+		available_points_to_display = H.marine_snowflake_points
+	else if(use_points)
+		available_points_to_display = H.marine_points
+	buy_flags = H.marine_buy_flags
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/prod_available = FALSE
+		var/p_cost = myprod[2]
+		var/avail_flag = myprod[4]
+		if(available_points_to_display >= p_cost && (!avail_flag || buy_flags & avail_flag))
+			prod_available = TRUE
+		stock_values += list(prod_available)
+
+
+	data["stock_listing"] = stock_values
+	data["current_m_points"] = available_points_to_display
+	return data
+
+/obj/structure/machinery/cm_vending/gear/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
-		return TRUE
+		return
 
-	handle_topic(usr, href, href_list)
-
-/obj/structure/machinery/cm_vending/gear/handle_topic(mob/user, href, href_list)
-	if(in_range(src, user) && isturf(loc) && ishuman(user))
-		user.set_interaction(src)
-		if(href_list["vend"])
-
+	var/mob/living/carbon/human/H = usr
+	switch (action)
+		if ("vend")
 			if(stat & IN_USE)
 				return
 
-			var/mob/living/carbon/human/H = user
-
-			var/list/has_access = can_access_to_vend(user)
+			var/list/has_access = can_access_to_vend(usr)
 			if (!has_access)
 				return
 
-			var/idx=text2num(href_list["vend"])
+			var/idx=params["prod_index"]
 
-			var/list/topic_listed_products = get_listed_products(user)
+			var/list/topic_listed_products = get_listed_products(usr)
 			var/list/L = topic_listed_products[idx]
 
 			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
@@ -556,8 +672,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 						vend_fail()
 						return
 					var/obj/item/card/id/ID = H.wear_id
-					if(!istype(ID) || ID.registered_ref != WEAKREF(user))
-						to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
+					if(!istype(ID) || ID.registered_ref != WEAKREF(usr))
+						to_chat(usr, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
 						return
 					var/specialist_assignment
 					switch(p_name)
@@ -590,8 +706,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 			vend_succesfully(L, H, T)
 
-		add_fingerprint(user)
-		ui_interact(user) //updates the nanoUI window
+	add_fingerprint(usr)
 
 /obj/structure/machinery/cm_vending/gear/proc/handle_points(var/mob/living/carbon/human/H, var/list/L)
 	. = TRUE
@@ -724,16 +839,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	stat &= ~IN_USE
 	update_icon()
 	return
-
-/obj/structure/machinery/cm_vending/clothing/ui_state(mob/user)
-	return GLOB.not_incapacitated_and_adjacent_strict_state
-
-/obj/structure/machinery/cm_vending/clothing/ui_status(mob/user, datum/ui_state/state)
-	. = ..()
-	if(inoperable())
-		return UI_CLOSE
-	if(!can_access_to_vend(user, FALSE))
-		return UI_CLOSE
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
 	var/list/data = ..(user)
@@ -899,40 +1004,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	add_fingerprint(usr)
 
-/obj/structure/machinery/cm_vending/clothing/tgui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
-		ui = new(user, src, "VendingSorted", name)
-		ui.open()
-
-/obj/structure/machinery/cm_vending/clothing/attack_hand(mob/user)
-	if(stat & TIPPED_OVER)
-		if(user.action_busy)
-			return
-		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
-		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
-			flip_back()
-		return
-
-	if(inoperable())
-		return
-
-	if(user.client && user.client.remote_control)
-		tgui_interact(user)
-		return
-
-	if(!ishuman(user))
-		vend_fail()
-		return
-
-	var/has_access = can_access_to_vend(user)
-	if (!has_access)
-		return
-
-	tgui_interact(user)
-
-
 //------------SORTED VENDORS---------------
 //22.06.2019 Modified ex-"marine_selector" system that doesn't use points by Jeser. In theory, should replace all vendors.
 //Hacking can be added if we need it. Do we need it, tho?
@@ -1043,42 +1114,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
 	return
 
-/obj/structure/machinery/cm_vending/sorted/ui_state(mob/user)
-	return GLOB.not_incapacitated_and_adjacent_strict_state
-
-/obj/structure/machinery/cm_vending/sorted/ui_status(mob/user, datum/ui_state/state)
-	. = ..()
-	if(inoperable())
-		return UI_CLOSE
-	if(!can_access_to_vend(user, FALSE))
-		return UI_CLOSE
-
-/obj/structure/machinery/cm_vending/sorted/attack_hand(mob/user)
-	if(stat & TIPPED_OVER)
-		if(user.action_busy)
-			return
-		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
-		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
-			flip_back()
-		return
-
-	if(inoperable())
-		return
-
-	if(user.client && user.client.remote_control)
-		tgui_interact(user)
-		return
-
-	if(!ishuman(user))
-		vend_fail()
-		return
-
-	var/list/has_access = can_access_to_vend(user)
-	if (!has_access)
-		return
-	tgui_interact(user)
-
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	var/list/data = ..(user)
 	data["vendor_type"] = "sorted"
@@ -1148,12 +1183,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		ui_categories += list(p_amount)
 	data["stock_listing"] = ui_categories
 	return data
-
-/obj/structure/machinery/cm_vending/sorted/tgui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
-		ui = new(user, src, "VendingSorted", name)
-		ui.open()
 
 /obj/structure/machinery/cm_vending/sorted/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

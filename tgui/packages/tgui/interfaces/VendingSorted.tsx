@@ -260,6 +260,7 @@ const ItemDescriptionViewer = (props: DescriptionProps, _) => {
   );
 };
 
+
 export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
   const { data } = useBackend<VendingData>(context);
   const { vendor_type } = data;
@@ -293,7 +294,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
                 ])}
               >
                 {vendor_type === "sorted" && <VendableItem record={record} />}
-                {vendor_type === "clothing" && <VendableClothingItem record={record} />}
+                {(vendor_type === "clothing" || vendor_type === "gear") && <VendableClothingItem record={record} />}
               </Stack.Item>
             );
           })}

@@ -56,10 +56,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 	icon_state = "guns"
 	use_snowflake_points = TRUE
 
-/obj/structure/machinery/cm_vending/gear/commanding_officer/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_gear_commanding_officer
-
+/obj/structure/machinery/cm_vending/gear/commanding_officer/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_gear_commanding_officer
 
 //------------CLOTHING VENDOR---------------
 

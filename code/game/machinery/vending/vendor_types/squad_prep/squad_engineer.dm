@@ -89,9 +89,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 	vendor_role = list(JOB_SQUAD_ENGI)
 	req_access = list(ACCESS_MARINE_ENGPREP)
 
-/obj/structure/machinery/cm_vending/gear/engi/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_gear_engi
+/obj/structure/machinery/cm_vending/gear/engi/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_gear_engi
 
 //------------CLOTHING VENDOR---------------
 

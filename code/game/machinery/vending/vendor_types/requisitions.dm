@@ -20,6 +20,9 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/vend_fail()
 	return
 
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/populate_product_list(var/scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
@@ -300,6 +303,9 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/vend_fail()
 	return
 
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
 	listed_products = list(
 		list("REGULAR AMMUNITION", -1, null, null),
@@ -503,6 +509,9 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return
 
+/obj/structure/machinery/cm_vending/sorted/attachments/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
+
 /obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
 	listed_products = list(
 		list("BARREL", -1, null, null),
@@ -670,6 +679,9 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/stock(obj/item/item_to_stock, mob/user)
 	var/list/R

@@ -49,6 +49,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	jobban_loadbanfile()
 	LoadBans()
 	load_motd()
+	load_tm_message()
 	load_mode()
 	loadShuttleInfoDatums()
 	populate_gear_list()
@@ -247,6 +248,11 @@ var/world_topic_spam_protect_time = world.timeofday
 
 /world/proc/load_motd()
 	join_motd = file2text("config/motd.txt")
+
+/world/proc/load_tm_message()
+	var/datum/getrev/revdata = GLOB.revdata
+	if(revdata.testmerge.len)
+		current_tms = revdata.GetTestMergeInfo()
 
 /world/proc/update_status()
 	//Note: Hub content is limited to 254 characters, including limited HTML/CSS.

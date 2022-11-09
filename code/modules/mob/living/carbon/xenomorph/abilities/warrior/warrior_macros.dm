@@ -40,3 +40,26 @@
 	set hidden = 1
 	var/action_name = "Toggle Agility"
 	handle_xeno_macro(src, action_name)
+
+
+/datum/action/xeno_action/verb/verb_pike()
+	set category = "Alien"
+	set name = "Pike"
+	set hidden = 1
+	var/action_name = "Pike"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/verb_bulwark()
+	set category = "Alien"
+	set name = "Bulwark"
+	set hidden = 1
+	var/action_name = "Bulwark"
+	handle_xeno_macro(src, action_name)
+
+
+/datum/action/xeno_action/verb/verb_knight_leap()
+	set category = "Alien"
+	set name = "Leap"
+	set hidden = 1
+	var/action_name = "Leap"
+	handle_xeno_macro(src, action_name)

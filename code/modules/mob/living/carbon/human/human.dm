@@ -136,10 +136,10 @@
 	if(knockdown_value > 0)
 		var/obj/item/Item1 = get_active_hand()
 		var/obj/item/Item2 = get_inactive_hand()
-		KnockDown(knockdown_value)
+		apply_effect(knockdown_value, WEAKEN)
 		var/knockout_value = min( round( damage*0.1  ,1) ,10)
-		KnockOut( knockout_value )
-		Daze( knockout_value*2 )
+		apply_effect( knockout_value , PARALYZE)
+		apply_effect( knockout_value*2 , DAZE)
 		explosion_throw(severity, direction)
 
 		if(Item1 && isturf(Item1.loc))
@@ -934,7 +934,7 @@
 		addtimer(CALLBACK(src, .proc/do_vomit), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
-	Stun(5)
+	apply_effect(5, STUN)
 	if(stat == 2) //One last corpse check
 		return
 	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
@@ -1520,13 +1520,13 @@
 /mob/living/carbon/human/resist_fire()
 	if(isYautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		KnockDown(1, TRUE) // actually 0.5
+		apply_effect(1, TRUE, WEAKEN) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		KnockDown(4, TRUE)
+		apply_effect(4, TRUE, WEAKEN)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
@@ -1543,12 +1543,12 @@
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
 	if(isYautja(src))
-		KnockDown(1, TRUE)
+		apply_effect(1, TRUE, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
 	else
-		KnockDown(1.5, TRUE)
+		apply_effect(1.5, TRUE, WEAKEN)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)

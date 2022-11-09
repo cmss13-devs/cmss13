@@ -1324,6 +1324,7 @@ and you're good to go.
 
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		SEND_SIGNAL(user, COMSIG_DIRECT_BULLET_HIT, M)
+		projectile_to_fire.ammo.flags_ammo_behavior |= AMMO_DIRECT_HIT
 		simulate_recoil(1, user)
 
 		if(projectile_to_fire.ammo.bonus_projectiles_amount)

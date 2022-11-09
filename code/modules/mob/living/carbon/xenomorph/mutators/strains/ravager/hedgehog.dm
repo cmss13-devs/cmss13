@@ -31,7 +31,7 @@
 	R.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
 	R.speed_modifier += XENO_SPEED_SLOWMOD_TIER_8
 
-	apply_behavior_holder(R)
+	apply_behavior_delegate(R)
 
 	mutator_update_actions(R)
 	MS.recalculate_actions(description, flavor_description)

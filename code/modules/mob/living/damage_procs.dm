@@ -58,8 +58,12 @@
 /mob/living/proc/apply_internal_damage(var/damage = 0, var/organ)
 	return
 
+/mob/proc/apply_effect(var/effect = 0,var/effecttype = STUN)
+	return
 
-/mob/living/proc/apply_effect(var/effect = 0,var/effecttype = STUN)
+/mob/living/apply_effect(var/effect = 0,var/effecttype = STUN, var/forced)
+	if(SEND_SIGNAL(src, COMSIG_MOB_APPLY_EFFECT, effect, effecttype, forced) & COMPONENT_CANCEL_EFFECT)
+		return FALSE
 	if(!effect)
 		return FALSE
 	switch(effecttype)
@@ -87,6 +91,71 @@
 	updatehealth()
 	return 1
 
+/mob/proc/adjust_effect(var/effect = 0,var/effecttype = STUN)
+	return
+
+/mob/living/adjust_effect(var/effect = 0,var/effecttype = STUN)
+	if(SEND_SIGNAL(src, COMSIG_MOB_ADJUST_EFFECT, effect, effecttype) & COMPONENT_CANCEL_EFFECT)
+		return FALSE
+	if(!effect)
+		return FALSE
+	switch(effecttype)
+		if(STUN)
+			AdjustStunned(effect)
+		if(WEAKEN)
+			AdjustKnockeddown(effect)
+		if(PARALYZE)
+			AdjustKnockedout(effect)
+		if(DAZE)
+			AdjustDazed(effect)
+		if(SLOW)
+			AdjustSlowed(effect)
+		if(SUPERSLOW)
+			AdjustSuperslowed(effect)
+		if(AGONY)
+			halloss += effect // Useful for objects that cause "subdual" damage. PAIN!
+		if(STUTTER)
+			if(status_flags & CANSTUN) // stun is usually associated with stutter
+				stuttering += effect
+		if(EYE_BLUR)
+			eye_blurry += effect
+		if(DROWSY)
+			drowsyness += effect
+	updatehealth()
+	return 1
+
+/mob/proc/set_effect(var/effect = 0,var/effecttype = STUN)
+	return
+
+/mob/living/set_effect(var/effect = 0,var/effecttype = STUN)
+	if(SEND_SIGNAL(src, COMSIG_MOB_SET_EFFECT, effect, effecttype) & COMPONENT_CANCEL_EFFECT)
+		return FALSE
+	if(!effect)
+		return FALSE
+	switch(effecttype)
+		if(STUN)
+			SetStunned(effect)
+		if(WEAKEN)
+			SetKnockeddown(effect)
+		if(PARALYZE)
+			SetKnockedout(effect)
+		if(DAZE)
+			SetDazed(effect)
+		if(SLOW)
+			SetSlowed(effect)
+		if(SUPERSLOW)
+			SetSuperslowed(effect)
+		if(AGONY)
+			halloss = effect // Useful for objects that cause "subdual" damage. PAIN!
+		if(STUTTER)
+			if(status_flags & CANSTUN) // stun is usually associated with stutter
+				stuttering = effect
+		if(EYE_BLUR)
+			eye_blurry = effect
+		if(DROWSY)
+			drowsyness = effect
+	updatehealth()
+	return 1
 
 /mob/living/proc/apply_effects(var/stun = 0, var/weaken = 0, var/paralyze = 0, var/irradiate = 0, var/stutter = 0, var/eyeblur = 0, var/drowsy = 0, var/agony = 0)
 	if(stun)		apply_effect(stun, STUN)

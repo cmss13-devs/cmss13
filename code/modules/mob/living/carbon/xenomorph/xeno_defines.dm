@@ -232,6 +232,7 @@
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_EVOPOD = 2,
 		XENO_STRUCTURE_RECOVERY = 6,
+		XENO_STRUCTURE_HOLDFAST = 0, //infinite
 	)
 
 	var/global/list/hive_structure_types = list(
@@ -736,7 +737,7 @@
 	var/name_ref = initial(S.name)
 	if(!hive_structures[name_ref])
 		hive_structures[name_ref] = list()
-	if(hive_structures[name_ref].len >= hive_structures_limit[name_ref])
+	if(hive_structures[name_ref].len >= hive_structures_limit[name_ref] && hive_structures_limit[name_ref] != 0)
 		return FALSE
 	hive_structures[name_ref] += S
 	return TRUE

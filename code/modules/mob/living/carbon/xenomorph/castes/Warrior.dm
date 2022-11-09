@@ -17,7 +17,7 @@
 
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
 	deevolves_to = list(XENO_CASTE_DEFENDER)
-	caste_desc = "A powerful front line combatant."
+	caste_desc = "A powerful sideline combatant and zoner."
 	can_vent_crawl = 0
 
 	tackle_min = 2
@@ -30,7 +30,7 @@
 /mob/living/carbon/Xenomorph/Warrior
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
-	desc = "A beefy, alien with an armored carapace."
+	desc = "A beefy alien with an armored carapace."
 	icon = 'icons/mob/hostiles/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
@@ -63,8 +63,8 @@
 	if(isliving(pulling) && lunging)
 		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
 		var/mob/living/lunged = pulling
-		lunged.SetStunned(0)
-		lunged.SetKnockeddown(0)
+		lunged.adjust_effect(0, STUN)
+		lunged.adjust_effect(0, WEAKEN)
 	return ..()
 
 /mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
@@ -90,7 +90,7 @@
 
 		if(should_neckgrab && L.mob_size < MOB_SIZE_BIG)
 			L.drop_held_items()
-			L.KnockDown(get_xeno_stun_duration(L, 2))
+			L.apply_effect(get_xeno_stun_duration(L, 2), WEAKEN)
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))

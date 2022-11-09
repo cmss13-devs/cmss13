@@ -75,11 +75,11 @@
 				holdfast_node.buff_fx()
 			passed_dist_check = TRUE // no matter what at this point we know the check passed
 			break
+		else
+			holdfast_node.debuff_fx()
 
 	if(passed_dist_check == FALSE && abilities_enhanced == TRUE) //if they werent near ANY nodes... remove the buff (if applicable)
 		debuff()
-		if(!isnull(bound_node)) //this happens cuz it's sent inmediately afted destroy override nulls it FIX IT!!
-			holdfast_node.debuff_fx()
 
 /datum/behavior_delegate/warrior_knight // caste color - cyan? find smth that matches woyer purple?
 	name = "Warrior Knight Behavior Delegate"
@@ -87,8 +87,11 @@
 	 /// If the Knight has chess-leaped onto a victim - they have been owned and will be stomped on. This var is jank meant to bypass bad pounce code.
 	var/owned = FALSE
 
-	 /// If the Knight is near a holdfast node, and thus has had its abilities enhanced.
+	 /// If the Knight is near a holdfast node, and thus has its abilities enhanced.
 	var/abilities_enhanced = FALSE
+
+	 /// Clarity stacks, gained with Bulwark.
+	var/clarity_stacks = 0
 
 	 /// The Knight's placed holdfast node, variable is used to make sure it can only place one.
 	var/obj/effect/alien/resin/special/recovery/holdfast/bound_node

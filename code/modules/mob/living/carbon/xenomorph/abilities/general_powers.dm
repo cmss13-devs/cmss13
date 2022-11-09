@@ -404,7 +404,7 @@
 			X.update_canmove()
 		pre_windup_effects()
 
-		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if (!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(X, SPAN_XENODANGER("You cancel your [ability_name]!"))
 			if (!windup_interruptable)
 				X.frozen = FALSE
@@ -432,7 +432,7 @@
 
 	X.launch_towards(LM)
 
-	additional_effects_always()
+	pounce_additional_effects_always()
 	..()
 
 	return TRUE
@@ -849,7 +849,7 @@
 		return FALSE
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
-	if(distance > 2)
+	if(distance > src.max_stab_dist)
 		return FALSE
 
 	var/list/turf/path = getline2(stabbing_xeno, targetted_atom, include_from_atom = FALSE)
@@ -902,6 +902,10 @@
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
+	return custom_tail_attack(stabbing_xeno, target, limb)
+
+/datum/action/xeno_action/activable/tail_stab/proc/custom_tail_attack(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/mob/living/carbon/target, var/obj/limb/limb)
+
 	if(blunt_stab)
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("You swipe your tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
 		playsound(target, "punch", 50, TRUE)
@@ -913,9 +917,9 @@
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, "tail")
 
-	var/damage = stabbing_xeno.melee_damage_upper * 1.2
+	var/damage = stabbing_xeno.melee_damage_upper * dmg_mult
 	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
-	target.Daze(3)
+	target.apply_effect(3, DAZE)
 	shake_camera(target, 2, 1)
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
@@ -923,5 +927,26 @@
 	apply_cooldown()
 	xeno_attack_delay(stabbing_xeno)
 
-	..()
+	return target
+
+/datum/action/xeno_action/activable/tail_stab/tail_trip/custom_tail_attack(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/mob/living/carbon/target)
+
+	stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] sweeps [target] off \his feet with its tail!"), SPAN_XENOWARNING("You sweep [target] off its feet with your tail!"))
+	stabbing_xeno.spin_circle()
+	stabbing_xeno.emote("tail")
+
+	if(target.mob_size > stabbing_xeno.mob_size) //we xvx proofin
+		shake_camera(target, 10, 1)
+		target.apply_effect(trip_dur, SLOW)
+	else
+		target.apply_effect(trip_dur, WEAKEN)
+		shake_camera(target, 2, 1)
+
+	stabbing_xeno.flick_attack_overlay(target, "disarm")
+
+	target.apply_effect(trip_dur, DAZE)
+
+	apply_cooldown()
+	xeno_attack_delay(stabbing_xeno)
+
 	return target

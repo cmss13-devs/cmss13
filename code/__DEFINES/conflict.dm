@@ -37,6 +37,8 @@
 #define AMMO_MP					(1<<21)
 /// Can BE people with it
 #define AMMO_HIGHIMPACT			(1<<22)
+/// Self explanatory.
+#define AMMO_DIRECT_HIT			(1<<23)
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)

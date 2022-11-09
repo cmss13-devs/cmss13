@@ -27,7 +27,7 @@
 	R.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	R.armor_modifier += XENO_ARMOR_MOD_MED
 	R.health_modifier += XENO_HEALTH_MOD_ACIDER
-	apply_behavior_holder(R)
+	apply_behavior_delegate(R)
 	mutator_update_actions(R)
 	R.recalculate_everything()
 	MS.recalculate_actions(description, flavor_description)

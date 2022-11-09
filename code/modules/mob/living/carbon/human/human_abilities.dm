@@ -422,7 +422,7 @@ CULT
 
 	xeno_message("[chosen] has been converted into a cultist!", 2, hive.hivenumber)
 
-	chosen.KnockOut(5)
+	chosen.apply_effect(5, PARALYZE)
 	chosen.make_jittery(105)
 
 	if(chosen.client)
@@ -472,7 +472,7 @@ CULT
 
 	unroot_human(chosen)
 
-	chosen.KnockOut(10)
+	chosen.apply_effect(10, PARALYZE)
 	chosen.make_jittery(105)
 
 	to_chat(chosen, SPAN_HIGHDANGER("An immense psychic wave passes through you, causing you to pass out!"))

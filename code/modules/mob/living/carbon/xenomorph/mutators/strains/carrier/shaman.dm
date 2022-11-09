@@ -47,7 +47,7 @@
 		return FALSE
 	C.mutation_type = CARRIER_SHAMAN
 	C.ignores_pheromones = TRUE
-	apply_behavior_holder(C)
+	apply_behavior_delegate(C)
 	mutator_update_actions(C)
 	MS.recalculate_actions(description, flavor_description)
 	C.phero_modifier = -C.caste.aura_strength
@@ -189,9 +189,9 @@
 			X.gain_armor_percent(to_armor)
 
 		// lift them up from any state
-		X.SetStunned(0)
-		X.SetDazed(0)
-		X.SetKnockeddown(0)
+		X.adjust_effect(0, STUN)
+		X.adjust_effect(0, DAZE)
+		X.adjust_effect(0, WEAKEN)
 
 		shield_overlay.flick_overlay(X, 20)
 
@@ -293,7 +293,7 @@
 
 		if(istype(X))
 			to_chat(X, SPAN_XENODANGER("A wave of madness passes through and completely overwhelms you. How could they do this to their own little ones!?"))
-			X.KnockDown(action_def.stun_timer)
+			X.apply_effect(action_def.stun_timer, WEAKEN)
 			X.emote("needhelp")
 			X.scream_stun_timeout = world.time + action_def.stun_timeout
 			continue
@@ -301,7 +301,7 @@
 		if(istype(H))
 			if(isYautja(H))
 				continue
-			H.KnockDown(action_def.stun_timer)
+			H.apply_effect(action_def.stun_timer, WEAKEN)
 			H.emote("scream")
 			H.adjust_fire_stacks(-10, min_stacks = 0)
 			H.spin(25, 2)

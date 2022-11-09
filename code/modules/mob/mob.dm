@@ -853,6 +853,8 @@ mob/proc/yank_out_object()
 	handle_slowed()
 	handle_superslowed()
 
+//not touching this.
+
 /mob/living/proc/handle_stunned()
 	if(stunned)
 		AdjustStunned(-1)

@@ -44,7 +44,7 @@
 	//                   You should probably also call recalculate_everything() on the host Xeno to make sure you don't end up with any
 	//  				 strange transient values.
 	//          THEN:    Set the mutation_type var on the host xeno to "name" the strain.
-	//          FINALLY: Call apply_behavior_holder() to add the behavior datum to the new Xeno.
+	//          FINALLY: Call apply_behavior_delegate() to add the behavior datum to the new Xeno.
 	//
 	//	You're done!
 
@@ -89,11 +89,11 @@
 			give_action(X, action_path)
 
 // Substitutes the existing behavior delegate for the strain-defined one.
-/datum/xeno_mutator/proc/apply_behavior_holder(mob/living/carbon/Xenomorph/X)
+/datum/xeno_mutator/proc/apply_behavior_delegate(mob/living/carbon/Xenomorph/X)
 	if (!istype(X))
-		log_debug("Null mob handed to apply_behavior_holder. Tell the devs.")
-		log_admin("Null mob handed to apply_behavior_holder. Tell the devs.")
-		message_admins("Null mob handed to apply_behavior_holder. Tell the devs.")
+		log_debug("Null mob handed to apply_behavior_delegate. Tell the devs.")
+		log_admin("Null mob handed to apply_behavior_delegate. Tell the devs.")
+		message_admins("Null mob handed to apply_behavior_delegate. Tell the devs.")
 
 	if (behavior_delegate_type)
 		if(X.behavior_delegate)

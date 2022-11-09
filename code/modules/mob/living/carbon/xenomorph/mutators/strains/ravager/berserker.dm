@@ -33,7 +33,7 @@
 	mutator_update_actions(R)
 	MS.recalculate_actions(description, flavor_description)
 
-	apply_behavior_holder(R)
+	apply_behavior_delegate(R)
 
 	R.recalculate_everything()
 

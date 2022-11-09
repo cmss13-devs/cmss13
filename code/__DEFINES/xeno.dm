@@ -549,6 +549,7 @@
 #define XENO_STRUCTURE_EVOPOD               "evolution pod"
 #define XENO_STRUCTURE_RECOVERY             "recovery node"
 #define XENO_STRUCTURE_NEST                 "thick resin nest"
+#define XENO_STRUCTURE_HOLDFAST             "holdfast node"
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1
@@ -578,6 +579,7 @@
 #define XENO_SHIELD_SOURCE_GARDENER 8
 #define XENO_SHIELD_SOURCE_SHIELD_PILLAR 9
 #define XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC 10
+#define XENO_SHIELD_SOURCE_KNIGHT_WARRIOR 11
 
 //XENO CASTES
 #define XENO_CASTE_LARVA             "Bloody Larva"

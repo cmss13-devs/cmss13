@@ -13,8 +13,7 @@
 	knockdown_duration = 2
 	slash = FALSE
 	freeze_self = FALSE
-	windup = TRUE
-	windup_duration = 12
+	windup = 1.2 SECONDS
 	windup_interruptable = FALSE
 	should_destroy_objects = TRUE
 	throw_speed = SPEED_FAST
@@ -272,9 +271,9 @@
 	if(ishuman(Mob))
 		var/mob/living/carbon/human/Human = Mob
 		xeno_throw_human(Human, Xeno, get_dir(Xeno, Human), 1)
-		Human.KnockDown(1)
+		Human.apply_effect(1, WEAKEN)
 	else
-		Mob.KnockDown(1)
+		Mob.apply_effect(1, WEAKEN)
 	if(!LinkBlocked(Xeno, get_turf(Xeno), target_turf))
 		Xeno.forceMove(target_turf)
 

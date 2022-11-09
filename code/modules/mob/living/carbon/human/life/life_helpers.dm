@@ -224,7 +224,7 @@
 
 /mob/living/carbon/human/handle_stunned()
 	if(stunned)
-		AdjustStunned(-species.stun_reduction)
+		adjust_effect(-species.stun_reduction, STUN)
 		speech_problem_flag = 1
 	return stunned
 
@@ -233,7 +233,7 @@
 		var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
 
 		var/final_reduction = skill_resistance + 1
-		AdjustDazed(-final_reduction)
+		adjust_effect(-final_reduction, DAZE)
 	if(dazed)
 		speech_problem_flag = 1
 	return dazed

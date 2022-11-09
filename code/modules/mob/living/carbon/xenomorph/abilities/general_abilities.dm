@@ -205,8 +205,7 @@
 	var/freeze_time = 5					// 5 for runners, 15 for lurkers
 	var/freeze_timer_id = TIMER_ID_NULL	// Timer to cancel the end freeze if it can be cancelled earlier
 
-	var/windup = FALSE					// Is there a do_after before we pounce?
-	var/windup_duration = 20			// How long to wind up, if applicable
+	var/windup = FALSE					// Is there a do_after before we pounce? If so, how long to wind up
 	var/windup_interruptable = TRUE		// Can the windup be interrupted?
 
 	var/can_be_shield_blocked = FALSE	// Some legacy stuff, self explanatory
@@ -233,11 +232,15 @@
  * Any additional effects to apply to the target
  * is called if and only if we actually hit a human target
  */
-/datum/action/xeno_action/activable/pounce/proc/additional_effects(mob/living/L)
+/datum/action/xeno_action/activable/pounce/proc/post_pounce_additional_effects(mob/living/L)
+	return
+
+ // Called inmediately before checking for knockdown on a target.
+/datum/action/xeno_action/activable/pounce/proc/pre_pounce_additional_effects(mob/living/L)
 	return
 
 /// Additional effects to apply even if we don't hit anything
-/datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
+/datum/action/xeno_action/activable/pounce/proc/pounce_additional_effects_always()
 	return
 
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
@@ -424,5 +427,12 @@
 	charge_time = 1 SECONDS
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
+
+	// Config
+
 	 /// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
+	 /// How many tiles the tail stab can reach.
+	var/max_stab_dist = 2
+	 /// Damage multiplier applied to the stab's damage.
+	var/dmg_mult = 1.2

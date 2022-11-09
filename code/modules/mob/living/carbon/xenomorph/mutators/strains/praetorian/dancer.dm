@@ -36,7 +36,7 @@
 
 	P.recalculate_everything()
 
-	apply_behavior_holder(P)
+	apply_behavior_delegate(P)
 	P.mutation_type = PRAETORIAN_DANCER
 
 /datum/behavior_delegate/praetorian_dancer

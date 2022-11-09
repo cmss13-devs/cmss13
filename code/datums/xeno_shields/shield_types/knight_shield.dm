@@ -13,6 +13,6 @@
 /datum/xeno_shield/knight_shield/on_removal(broken)
 	if(broken)
 		linked_xeno.visible_message(SPAN_XENODANGER("[linked_xeno]'s defensive shell shatters on itself, dazing it!"), SPAN_XENODANGER("Your defensive shell collapses on itself and dazes you!"))
-		linked_xeno.KnockDown(2.5)//SECONDS
+		linked_xeno.apply_effect(2.5, WEAKEN)//SECONDS
 		playsound(linked_xeno, "punch", 50, FALSE)
 	. = ..()

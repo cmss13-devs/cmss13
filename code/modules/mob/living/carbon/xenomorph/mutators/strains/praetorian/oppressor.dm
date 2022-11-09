@@ -39,7 +39,7 @@
 
 	MS.recalculate_actions(description, flavor_description)
 
-	apply_behavior_holder(P)
+	apply_behavior_delegate(P)
 
 	P.recalculate_everything()
 	P.mutation_type = PRAETORIAN_OPPRESSOR

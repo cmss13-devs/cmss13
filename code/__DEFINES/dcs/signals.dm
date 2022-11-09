@@ -133,6 +133,12 @@
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
 
+/// From /mob/living/apply_effect(), adjust_effect() and set_effect()
+#define COMSIG_MOB_APPLY_EFFECT "mob_apply_effect"
+#define COMSIG_MOB_ADJUST_EFFECT "mob_adjust_effect"
+#define COMSIG_MOB_SET_EFFECT "mob_set_effect"
+	#define COMPONENT_CANCEL_EFFECT	(1<<0)
+
 /// From /obj/item/proc/unequipped()
 #define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
 
@@ -483,3 +489,5 @@
 // Checks whether the xeno can build a thick structure regardless of hive weeds
 #define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
 	#define COMPONENT_THICK_BYPASS (1<<0)
+
+#define COMSIG_HOLDFAST_NODE_PULSE "xeno_holdfast_node_destroyed"

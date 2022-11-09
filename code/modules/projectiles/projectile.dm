@@ -461,11 +461,13 @@
 	if(hit_chance) // Calculated from combination of both ammo accuracy and gun accuracy
 
 		var/hit_roll = rand(1,100)
+		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 		if(original != L || hit_roll > hit_chance-base_miss_chance[def_zone]-20)	// If hit roll is high or the firer wasn't aiming at this mob, we still hit but now we might hit the wrong body part
 			def_zone = rand_zone()
 		else
 			SEND_SIGNAL(firer, COMSIG_DIRECT_BULLET_HIT, L)
+			ammo.flags_ammo_behavior |= AMMO_DIRECT_HIT
 		hit_chance -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
 
 		#if DEBUG_HIT_CHANCE
@@ -476,7 +478,6 @@
 			#if DEBUG_HIT_CHANCE
 			to_world(SPAN_DEBUG("([L]) Hit."))
 			#endif
-			var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 			// If the ammo should hit the surface of the target and there is a mob blocking
 			// The current turf is the "surface" of the target
@@ -1007,9 +1008,10 @@
 	bullet_message(P) //Message us about the bullet, since damage was inflicted.
 
 
-
-	if(SEND_SIGNAL(src, COMSIG_XENO_BULLET_ACT, damage_result, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
+	var/list/projectiledata = list("damage_result" = damage_result, "ammo_flags" = ammo_flags)
+	if(SEND_SIGNAL(src, COMSIG_XENO_BULLET_ACT, projectiledata, P) & COMPONENT_CANCEL_BULLET_ACT)
 		return
+	damage_result = projectiledata["damage_result"]
 
 	if(damage)
 		//only apply the blood splatter if we do damage

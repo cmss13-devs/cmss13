@@ -165,14 +165,14 @@
 		if(ishuman(H))
 			H.emote("pain")
 			if(should_stun)
-				H.KnockDown(stun_duration)
+				H.apply_effect(stun_duration, WEAKEN)
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
 		else if (isXeno(H))
 			var/mob/living/carbon/Xenomorph/X = H
 			if (X.mob_size < MOB_SIZE_BIG && should_stun)
-				X.KnockDown(stun_duration)
+				X.apply_effect(stun_duration, WEAKEN)
 			X.emote("hiss")
 			H.apply_armoured_damage(damage_amount * 0.4 * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
 
@@ -227,7 +227,7 @@
 		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 		H.emote("pain")
 		if (should_stun && !H.lying)
-			H.KnockDown(stun_duration)
+			H.apply_effect(stun_duration, WEAKEN)
 		H.last_damage_data = cause_data
 		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
 		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
@@ -441,13 +441,19 @@
 	QDEL_IN(src, ttl)
 
 /obj/effect/xenomorph/xeno_telegraph/red
-	icon_state = "xeno_telegraph_red"
+	icon_state = "xeno_telegraph_red_anim"
 
 /obj/effect/xenomorph/xeno_telegraph/brown
-	icon_state = "xeno_telegraph_brown"
+	icon_state = "xeno_telegraph_brown_anim"
 
 /obj/effect/xenomorph/xeno_telegraph/green
-	icon_state = "xeno_telegraph_green"
+	icon_state = "xeno_telegraph_green_anim"
+
+	// As this is a silver-colored telegraph, it's easy to make it look like any color.
+	// Instance it and set its color variable to whatever you may prefer (Look at how Knight's Pike does it if necessary)
+	// As it just alters the whole sprite, it's a lot less customizable, but a lot easier to implement than a new sprite's color.
+/obj/effect/xenomorph/xeno_telegraph/silver
+	icon_state = "xeno_telegraph_silver_anim"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook"

@@ -36,7 +36,7 @@
 
 	P.mutation_type = PRAETORIAN_VANGUARD
 
-	apply_behavior_holder(P)
+	apply_behavior_delegate(P)
 
 /datum/behavior_delegate/praetorian_vanguard
 	name = "Praetorian Vanguard Behavior Delegate"

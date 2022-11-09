@@ -35,6 +35,8 @@
 	block_range = 1
 
 	var/datum/hive_status/linked_hive
+	 /// If the structure can be broken by all members of its hive.
+	var/all_breakable = FALSE
 
 /obj/effect/alien/resin/special/Initialize(mapload, var/hive_ref)
 	. = ..()
@@ -64,5 +66,6 @@
 	. = ..()
 
 /obj/effect/alien/resin/special/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.can_destroy_special() || M.hivenumber != linked_hive.hivenumber)
+	// if the xeno can break structures, the structure is designed as breakable by anyone in the hive, or they're a xeno from a different hive, then pass
+	if(M.can_destroy_special() || all_breakable == TRUE || M.hivenumber != linked_hive.hivenumber)
 		return ..()

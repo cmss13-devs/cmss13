@@ -78,21 +78,21 @@
 		var/powerfactor_value = round( damage * 0.05 ,1)
 		powerfactor_value = min(powerfactor_value,20)
 		if(powerfactor_value > 0 && small_explosives_stun)
-			KnockOut(powerfactor_value/5)
+			apply_effect(powerfactor_value/5, PARALYZE)
 			if(mob_size < MOB_SIZE_BIG)
-				Slow(powerfactor_value)
-				Superslow(powerfactor_value/2)
+				apply_effect(powerfactor_value, SLOW)
+				apply_effect(powerfactor_value/2, SUPERSLOW)
 			else
-				Slow(powerfactor_value/3)
+				apply_effect(powerfactor_value/3, SLOW)
 			explosion_throw(severity, direction)
 		else if(powerfactor_value > 10)
 			powerfactor_value /= 5
-			KnockOut(powerfactor_value/5)
+			apply_effect(powerfactor_value/5, PARALYZE)
 			if(mob_size < MOB_SIZE_BIG)
-				Slow(powerfactor_value)
-				Superslow(powerfactor_value/2)
+				apply_effect(powerfactor_value, SLOW)
+				apply_effect(powerfactor_value/2, SUPERSLOW)
 			else
-				Slow(powerfactor_value/3)
+				apply_effect(powerfactor_value/3, SLOW)
 
 /mob/living/carbon/Xenomorph/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0, var/effectiveness_mult = 1)
 	if(damage <= 0)
@@ -156,23 +156,18 @@
 	if(damage > 0 && stat == DEAD)
 		return
 
-	var/shielded = FALSE
 	if(xeno_shields.len != 0 && damage > 0)
-		shielded = TRUE
 		for(var/datum/xeno_shield/XS in xeno_shields)
 			damage = XS.on_hit(damage)
 
 			if(damage > 0)
-				XS.on_removal()
+				XS.on_removal(TRUE)
 				QDEL_NULL(XS)
 
 			if(damage == 0)
 				return
 
 		overlay_shields()
-
-	if(shielded) // We were shielded, but damage went through.
-		playsound(src, "shield_shatter", 50, 1)
 
 	switch(damagetype)
 		if(BRUTE)

@@ -13,7 +13,7 @@
 	freeze_time = 15
 	can_be_shield_blocked = TRUE
 
-/datum/action/xeno_action/activable/pounce/lurker/additional_effects_always()
+/datum/action/xeno_action/activable/pounce/lurker/pounce_additional_effects_always()
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (!istype(X))
 		return
@@ -29,7 +29,7 @@
 			if (istype(LIA))
 				LIA.invisibility_off()
 
-/datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/L)
+/datum/action/xeno_action/activable/pounce/lurker/post_pounce_additional_effects(mob/living/L)
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (!istype(X))
 		return

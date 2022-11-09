@@ -47,7 +47,7 @@
 	var/mob/living/L = .
 	if(istype(L))
 		if(prob(15))
-			L.KnockDown(3)
+			L.apply_effect(3, WEAKEN)
 			L.visible_message(SPAN_DANGER("\the [src] knocks down \the [L]!"))
 
 /mob/living/simple_animal/hostile/tree/death()

@@ -68,7 +68,7 @@
 
 	// Config values
 	var/max_distance = 6 // 5 tiles between
-	var/windup_duration = 10
+	var/windup = 1 SECONDS
 
 
 /datum/action/xeno_action/activable/clothesline

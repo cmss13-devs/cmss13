@@ -169,10 +169,21 @@
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
 
-/mob/living/carbon/Xenomorph/proc/create_shield(var/duration = 10)
+/mob/living/carbon/Xenomorph/proc/create_shield_image(var/duration = 10)
 	remove_suit_layer()
 
 	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "shield2")
+	apply_overlay(X_SUIT_LAYER)
+	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), duration)
+
+/mob/living/carbon/Xenomorph/proc/create_custom_shield_image(var/duration = 10, var/img_color, var/alpha_mult)
+	remove_suit_layer()
+
+	var/image/shield_image = new("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "shield_greyscale")
+	if(img_color)
+		shield_image.color = img_color
+	shield_image.alpha *= alpha_mult
+	overlays_standing[X_SUIT_LAYER] = shield_image
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), duration)
 

@@ -117,7 +117,7 @@
 		return FALSE
 
 // Supplemental behavior for our charge
-/datum/action/xeno_action/activable/pounce/charge/additional_effects(mob/living/L)
+/datum/action/xeno_action/activable/pounce/charge/post_pounce_additional_effects(mob/living/L)
 
 	var/mob/living/carbon/human/H = L
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -127,7 +127,7 @@
 	if(BD.empower_targets < BD.super_empower_threshold)
 		return
 	X.visible_message(SPAN_XENODANGER("The [X] uses its shield to bash [H] as it charges at them!"), SPAN_XENODANGER("You use your shield to bash [H] as you charge at them!"))
-	H.KnockDown(BD.knockdown_amount)
+	H.apply_effect(BD.knockdown_amount, WEAKEN)
 	H.attack_alien(X, rand(X.melee_damage_lower, X.melee_damage_upper))
 
 	var/facing = get_dir(X, H)
@@ -250,7 +250,7 @@
 
 	apply_cooldown()
 
-	to_chat(H, SPAN_XENOHIGHDANGER("You feel [X] fire bone spurs that dig into your skin! You have [windup_duration/10] seconds to move away or it will pull itself to you!"))
+	to_chat(H, SPAN_XENOHIGHDANGER("You feel [X] fire bone spurs that dig into your skin! You have [windup/10] seconds to move away or it will pull itself to you!"))
 	to_chat(X, SPAN_XENOHIGHDANGER("Stay close to [H] to be pulled to it!"))
 
 	H.targeted_by = X
@@ -258,7 +258,7 @@
 	new /datum/effects/xeno_slow(H, X, null, null, get_xeno_stun_duration(H, 20))
 	H.update_targeted()
 
-	if (!do_after(X, windup_duration, INTERRUPT_ALL & ~INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+	if (!do_after(X, windup, INTERRUPT_ALL & ~INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		H.targeted_by = null
 		H.target_locked = null
 		H.update_targeted()
@@ -409,7 +409,7 @@
 				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [human]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [human]!"))
 				human.spawn_gibs()
 				playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, 1)
-				human.KnockDown(get_xeno_stun_duration(human, 1))
+				human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
 			else
 				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("You claw [human]!"))
 				playsound(get_turf(human), "alien_claw_flesh", 30, 1)
@@ -451,7 +451,7 @@
 		shield.shrapnel_amount = shield_shrapnel_amount
 		xeno.overlay_shields()
 
-	xeno.create_shield(shield_duration)
+	xeno.create_shield_image(shield_duration)
 	shield_active = TRUE
 	button.icon_state = "template_active"
 	addtimer(CALLBACK(src, .proc/remove_shield), shield_duration)

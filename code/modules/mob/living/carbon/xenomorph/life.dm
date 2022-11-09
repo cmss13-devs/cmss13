@@ -507,7 +507,7 @@ Make sure their actual health updates immediately.*/
 
 /mob/living/carbon/Xenomorph/handle_stunned()
 	if(stunned)
-		stunned = max(stunned-1.5,0)
+		stunned = max(stunned-stun_reduction,0)
 		stun_callback_check()
 
 	return stunned
@@ -523,28 +523,28 @@ Make sure their actual health updates immediately.*/
 
 /mob/living/carbon/Xenomorph/handle_dazed()
 	if(dazed)
-		dazed = max(dazed-1.5,0)
+		dazed = max(dazed-stun_reduction,0)
 	return dazed
 
 /mob/living/carbon/Xenomorph/handle_slowed()
 	if(slowed)
-		slowed = max(slowed-1.5,0)
+		slowed = max(slowed-stun_reduction,0)
 	return slowed
 
 /mob/living/carbon/Xenomorph/handle_superslowed()
 	if(superslowed)
-		superslowed = max(superslowed-1.5,0)
+		superslowed = max(superslowed-stun_reduction,0)
 	return superslowed
 
 /mob/living/carbon/Xenomorph/handle_knocked_down()
 	if(knocked_down)
-		knocked_down = max(knocked_down-1.5,0)
+		knocked_down = max(knocked_down-stun_reduction,0)
 		knocked_down_callback_check()
 	return knocked_down
 
 /mob/living/carbon/Xenomorph/handle_knocked_out()
 	if(knocked_out)
-		knocked_out = max(knocked_out - 1.5, 0)
+		knocked_out = max(knocked_out-stun_reduction, 0)
 		knocked_out_callback_check()
 	return knocked_out
 

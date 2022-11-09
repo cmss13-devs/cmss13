@@ -12,6 +12,7 @@ import { ButtonCheckbox, Button } from '../components/Button';
 import { Window } from '../layouts';
 
 const ARMOR_TYPES = ['Light Armor', 'Medium Armor', 'Heavy Armor'];
+const HEAD_TYPES = ['Helmet', 'Beret', 'Tactical Cap'];
 
 export const PmcTransfer = (props, context) => {
   const { act, data } = useBackend(context);
@@ -63,24 +64,38 @@ const PMCArmorSelect = (props, context) => {
     'selected_armor',
     Object.values(ARMOR_TYPES)[0]
   );
+  const [selected_head, setHead] = useLocalState(
+    context,
+    'selected_head',
+    Object.values(HEAD_TYPES)[0]
+  );
   const { possible_verifications } = data;
 
   return (
     <Section textAlign="center" flexGrow="1" fill>
       <Flex height="100%">
         <Flex.Item grow="1" align="center">
-          Please select an armor type for the recruit.
+          Please select an armor type and headwear for the recruit.
           <Dropdown
             width={12}
             selected={selected_armor}
             options={ARMOR_TYPES}
             onSelected={(value) => setArmor(value)}
           />
+          <Dropdown
+            width={12}
+            selected={selected_head}
+            options={HEAD_TYPES}
+            onSelected={(value) => setHead(value)}
+          />
           <Button
             icon="check"
             content="Confirm Armor"
             onClick={() =>
-              act('selectArmor', { selected_armor: selected_armor })
+              act('selectArmor', {
+                selected_armor: selected_armor,
+                selected_head: selected_head,
+              })
             }
           />
         </Flex.Item>
@@ -106,7 +121,8 @@ const PMCVerification = (props, context) => {
     <Section title="Squad Transfer" fill>
       By checking the box, you are confirming that you have followed company
       procedure for the vetting and recruitment of PMC units from USMC ranks,
-      and that the appropriate paperwork has been filed.
+      and that the appropriate paperwork has been filed, namely record form
+      268-C and any paperwork the recruit's former employer may require.
       <ButtonCheckbox
         checked={verification}
         disabled={is_loading || !!(possible_verifications <= 0)}

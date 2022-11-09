@@ -791,6 +791,21 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "A standard M10 Pattern Helmet. The inside label, along with washing information, reads, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'. There is a built-in camera on the right side. This one is in a Weyland-Yutani PMC paintjob."
 	icon_state = "wy_helmet"
 
+/obj/item/clothing/head/helmet/marine/veteran/PMC/recruit
+	name = "\improper PMC recruit tactical cap"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/head/helmet/marine/veteran/PMC/recruit/beret
+	name = "\improper PMC recruit beret"
+	desc = "The pinnacle of fashion, even when you're green."
+	icon_state = "officer_hat"
+
 //FIORINA / UA RIOT CONTROL HELMET//
 
 /obj/item/clothing/head/helmet/marine/veteran/ua_riot

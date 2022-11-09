@@ -43,3 +43,11 @@
 	icon_state = "suitcase"
 	item_state = "suitcase"
 	force = 8.0
+
+/obj/item/storage/briefcase/pmc_recruit
+
+/obj/item/storage/briefcase/pmc_recruit/Initialize()
+	. = ..()
+	new /obj/item/device/encryptionkey/WY(src)
+	new /obj/item/clothing/mask/rebreather/scarf(src)
+	new /obj/item/clothing/under/marine/veteran/PMC/recruit(src)

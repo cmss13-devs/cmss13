@@ -50,7 +50,7 @@
 				return FALSE
 
 			// All the equipment here is just a reskin of marine equipment, no different stat wise
-			var/obj/item/storage/briefcase/armor_case = new(get_turf(src))
+			var/obj/item/storage/briefcase/pmc_recruit/armor_case = new(get_turf(src))
 
 			switch(params["selected_armor"])
 				if("Light Armor")
@@ -60,10 +60,13 @@
 				if("Heavy Armor")
 					new /obj/item/clothing/suit/storage/marine/heavy/pmc_recruit(armor_case)
 
-			new	/obj/item/clothing/head/helmet/marine/pmc_recruit(armor_case)
-			new /obj/item/device/encryptionkey/WY(armor_case)
-			new /obj/item/clothing/mask/rebreather/scarf(armor_case)
-			new /obj/item/clothing/under/marine/veteran/PMC/recruit(armor_case)
+			switch(params["selected_head"])
+				if("Helmet")
+					new	/obj/item/clothing/head/helmet/marine/pmc_recruit(armor_case)
+				if("Beret")
+					new /obj/item/clothing/head/helmet/marine/veteran/PMC/recruit/beret(armor_case)
+				if("Tactical Cap")
+					new /obj/item/clothing/head/helmet/marine/veteran/PMC/recruit(armor_case)
 
 			visible_message("<span class='bold'>[src]</span> states, \"Equipment vended. As part of the Weyland-Yutani corporation, you are required to be in uniform at all times while on duty.\"")
 			verified = FALSE

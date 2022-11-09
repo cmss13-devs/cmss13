@@ -691,5 +691,6 @@
 			to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
 		else
 			to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
-	tracked_marker.xenos_tracking -= src
+	if(tracked_marker)
+		tracked_marker.xenos_tracking -= src
 	tracked_marker = null

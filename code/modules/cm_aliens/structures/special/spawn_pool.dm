@@ -102,8 +102,6 @@
 
 	linked_hive.hive_ui.update_pooled_larva()
 
-	update_icon()
-
 	melt_body()
 
 /obj/effect/alien/resin/special/pool/process()
@@ -115,7 +113,6 @@
 			visible_message(SPAN_XENODANGER("[L] quickly dives into the pool."))
 			linked_hive.stored_larva++
 			linked_hive.hive_ui.update_pooled_larva()
-			update_icon()
 			qdel(L)
 
 	if((last_larva_time + spawn_cooldown) < world.time && can_spawn_larva()) // every minute
@@ -127,7 +124,6 @@
 	if(linked_hive.hijack_pooled_surge && (last_surge_time + surge_cooldown) < world.time)
 		last_surge_time = world.time
 		linked_hive.stored_larva++
-		update_icon()
 		announce_dchat("The hive has gained another pooled larva! Use the Join As Xeno verb to take it.", src)
 		if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 			surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
@@ -179,7 +175,6 @@
 
 		linked_hive.stored_larva--
 		linked_hive.hive_ui.update_pooled_larva()
-		update_icon()
 
 		return TRUE
 	return FALSE

@@ -1286,7 +1286,7 @@
 
 /obj/item/weapon/gun/rifle/m4radmr
 	name = "\improper M4RA Battle Rifle"
-	desc = "The M4RA is a designated marksmen rifle fielded by the USCM. A recent adoption, it was caught in a fierce competition with the L4 Battle Rifle, before ultimately winning out. Featuring bullpup ergonomics and utilising a higher velocity round than the M41, this is the perfect pick for any marine who prefers to keep a distance."
+	desc = "The M4RA is a designated marksman rifle fielded by the USCM. A recent adoption, it was caught in a fierce competition with the L4 Battle Rifle, before ultimately winning out. Featuring bullpup ergonomics and utilising a higher velocity round than the M41, this is the perfect pick for any marine who prefers to keep a distance."
 	icon_state = "m41b"
 	item_state = "m4ra" //PLACEHOLDER
 	fire_sound = 'sound/weapons/gun_m4ra.ogg'
@@ -1306,11 +1306,11 @@
 						/obj/item/attachable/reflex
 						)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_SLOW
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
 
-	flags_item = TWOHANDED|NO_CRYO_STORE
+	flags_item = TWOHANDED
 
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()

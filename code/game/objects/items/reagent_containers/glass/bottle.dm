@@ -352,7 +352,7 @@
 		return ..()
 	var/mob/living/carbon/human/H = user
 	if(H.religion == "Atheism")
-		desc = "A small bottle. Contains the liquid essence of the sciences."
+		desc = "A small bottle. Contains the liquid essence of the science."
 		..()
 		desc = initial(desc)
 	else

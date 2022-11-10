@@ -668,7 +668,7 @@
 		return ..()
 	var/mob/living/carbon/human/H = user
 	if(H.religion == "Atheism")
-		desc = "It cannot be destroyed by any means you have available. Perhaps praying to the sciences may help."
+		desc = "It cannot be destroyed by any means you have available. Perhaps praying to science may help."
 		..()
 		desc = initial(desc)
 	else

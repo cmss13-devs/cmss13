@@ -150,6 +150,7 @@
 /datum/equipment_preset/uscm_event/dress/officer/general/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues/general(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(H), WEAR_L_EAR)
+	. = ..()
 
 
 /datum/equipment_preset/uscm_event/dress/officer/general/ltgen

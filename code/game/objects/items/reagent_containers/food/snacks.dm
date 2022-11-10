@@ -1,4 +1,9 @@
-//Food items that are eaten normally and don't leave anything behind.
+/*	SNACK
+*	snack are food items that after being consume destroy themself.
+*	some snack are slice able.
+*	some produce trash after being consume/destroyed.
+*/
+
 /obj/item/reagent_container/food/snacks
 	name = "snack"
 	desc = "yummy"
@@ -235,7 +240,7 @@
 /// FOOD END
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
+/*
 *	SNACKS
 *	Comment on what items in subcategory snacks need to behave:
 *	Items in the "Snacks" subcategory are food items that people actually eat.
@@ -749,7 +754,6 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 2)
 	bitesize = 2
-
 
 /obj/item/reagent_container/food/snacks/human
 	filling_color = "#D63C3C"
@@ -2122,18 +2126,21 @@
 	reagents.add_reagent("gold", 5)
 	bitesize = 3
 
-/**
+/*
 *Sliceable
 *	All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
 *	sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
+*	Make it that every big items are cut down into six smaller slice as a standart.
 */
+
+/obj/item/reagent_container/food/snacks/sliceable
+	slices_num = 6
 
 /obj/item/reagent_container/food/snacks/sliceable/meatbread
 	name = "meatbread loaf"
 	desc = "The culinary base of every self-respecting eloquen/tg/entleman."
 	icon_state = "meatbread"
 	slice_path = /obj/item/reagent_container/food/snacks/meatbreadslice
-	slices_num = 5
 	filling_color = "#FF7575"
 
 /obj/item/reagent_container/food/snacks/sliceable/meatbread/Initialize()
@@ -2156,7 +2163,6 @@
 	desc = "The culinary base of every self-respecting eloquent gentleman. Extra Heretical."
 	icon_state = "xenomeatbread"
 	slice_path = /obj/item/reagent_container/food/snacks/xenomeatbreadslice
-	slices_num = 5
 	filling_color = "#8AFF75"
 
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread/Initialize()
@@ -2180,7 +2186,6 @@
 	desc = "A heavenly and filling treat."
 	icon_state = "bananabread"
 	slice_path = /obj/item/reagent_container/food/snacks/bananabreadslice
-	slices_num = 5
 	filling_color = "#EDE5AD"
 
 /obj/item/reagent_container/food/snacks/sliceable/bananabread/Initialize()
@@ -2203,7 +2208,6 @@
 	icon_state = "Like meatbread but for vegetarians. Not guaranteed to give superpowers."
 	icon_state = "tofubread"
 	slice_path = /obj/item/reagent_container/food/snacks/tofubreadslice
-	slices_num = 5
 	filling_color = "#F7FFE0"
 
 /obj/item/reagent_container/food/snacks/sliceable/tofubread/Initialize()
@@ -2226,7 +2230,6 @@
 	desc = "A favorite desert of a certain wascally wabbit. Not a lie."
 	icon_state = "carrotcake"
 	slice_path = /obj/item/reagent_container/food/snacks/carrotcakeslice
-	slices_num = 5
 	filling_color = "#FFD675"
 
 /obj/item/reagent_container/food/snacks/sliceable/carrotcake/Initialize()
@@ -2250,7 +2253,6 @@
 	desc = "A squishy cake-thing."
 	icon_state = "braincake"
 	slice_path = /obj/item/reagent_container/food/snacks/braincakeslice
-	slices_num = 5
 	filling_color = "#E6AEDB"
 
 /obj/item/reagent_container/food/snacks/sliceable/braincake/Initialize()
@@ -2273,7 +2275,6 @@
 	desc = "DANGEROUSLY cheesy."
 	icon_state = "cheesecake"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesecakeslice
-	slices_num = 5
 	filling_color = "#FAF7AF"
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesecake/Initialize()
@@ -2295,7 +2296,6 @@
 	desc = "A plain cake, not a lie."
 	icon_state = "plaincake"
 	slice_path = /obj/item/reagent_container/food/snacks/plaincakeslice
-	slices_num = 5
 	filling_color = "#F7EDD5"
 
 /obj/item/reagent_container/food/snacks/sliceable/plaincake/Initialize()
@@ -2316,7 +2316,6 @@
 	desc = "A cake with added orange."
 	icon_state = "orangecake"
 	slice_path = /obj/item/reagent_container/food/snacks/orangecakeslice
-	slices_num = 5
 	filling_color = "#FADA8E"
 
 /obj/item/reagent_container/food/snacks/sliceable/orangecake/Initialize()
@@ -2339,7 +2338,6 @@
 	desc = "A cake with added lime."
 	icon_state = "limecake"
 	slice_path = /obj/item/reagent_container/food/snacks/limecakeslice
-	slices_num = 5
 	filling_color = "#CBFA8E"
 
 /obj/item/reagent_container/food/snacks/sliceable/limecake/Initialize()
@@ -2362,7 +2360,6 @@
 	desc = "A cake with added lemon."
 	icon_state = "lemoncake"
 	slice_path = /obj/item/reagent_container/food/snacks/lemoncakeslice
-	slices_num = 5
 	filling_color = "#FAFA8E"
 
 /obj/item/reagent_container/food/snacks/sliceable/lemoncake/Initialize()
@@ -2385,7 +2382,6 @@
 	desc = "A cake with added chocolate"
 	icon_state = "chocolatecake"
 	slice_path = /obj/item/reagent_container/food/snacks/chocolatecakeslice
-	slices_num = 5
 	filling_color = "#805930"
 
 /obj/item/reagent_container/food/snacks/sliceable/chocolatecake/Initialize()
@@ -2407,7 +2403,6 @@
 	desc = "A big wheel of delicious Cheddar."
 	icon_state = "cheesewheel"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge
-	slices_num = 5
 	filling_color = "#FFF700"
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/Initialize()
@@ -2492,7 +2487,6 @@
 	desc = "Happy Birthday..."
 	icon_state = "birthdaycake"
 	slice_path = /obj/item/reagent_container/food/snacks/birthdaycakeslice
-	slices_num = 5
 	filling_color = "#FFD6D6"
 
 /obj/item/reagent_container/food/snacks/sliceable/birthdaycake/Initialize()
@@ -2515,7 +2509,6 @@
 	icon_state = "Some plain old Earthen bread."
 	icon_state = "bread"
 	slice_path = /obj/item/reagent_container/food/snacks/breadslice
-	slices_num = 5
 	filling_color = "#FFE396"
 
 /obj/item/reagent_container/food/snacks/sliceable/bread/Initialize()
@@ -2536,7 +2529,6 @@
 	desc = "Yum yum yum!"
 	icon_state = "creamcheesebread"
 	slice_path = /obj/item/reagent_container/food/snacks/creamcheesebreadslice
-	slices_num = 5
 	filling_color = "#FFF896"
 
 /obj/item/reagent_container/food/snacks/sliceable/creamcheesebread/Initialize()
@@ -2565,7 +2557,6 @@
 	desc = "A cake centred with Apple"
 	icon_state = "applecake"
 	slice_path = /obj/item/reagent_container/food/snacks/applecakeslice
-	slices_num = 5
 	filling_color = "#EBF5B8"
 
 /obj/item/reagent_container/food/snacks/sliceable/applecake/Initialize()
@@ -2587,7 +2578,6 @@
 	desc = "A delicious treat for the autumn months."
 	icon_state = "pumpkinpie"
 	slice_path = /obj/item/reagent_container/food/snacks/pumpkinpieslice
-	slices_num = 5
 	filling_color = "#F5B951"
 
 /obj/item/reagent_container/food/snacks/sliceable/pumpkinpie/Initialize()
@@ -2615,7 +2605,7 @@
 	reagents.add_reagent("bread", 1)
 	reagents.add_reagent("sodiumchloride", 1)
 	
-/**
+/*
 *PIZZA.
 *object parent for all the object pizza give the number of slice produce and the filling color.
 *example of how it work for each pizza.
@@ -2625,7 +2615,6 @@
 */
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza
-	slices_num = 6
 	filling_color = "#BAA14C"
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/margherita
@@ -2933,7 +2922,6 @@
 	icon = 'icons/obj/items/food_ingredients.dmi'
 	icon_state = "flat dough"
 	slice_path = /obj/item/reagent_container/food/snacks/doughslice
-	slices_num = 3
 
 /obj/item/reagent_container/food/snacks/sliceable/flatdough/Initialize()
 	. = ..()

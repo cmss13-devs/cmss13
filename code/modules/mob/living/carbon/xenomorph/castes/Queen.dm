@@ -726,20 +726,20 @@
 	if(action_busy)
 		return FALSE
 
-	if(!check_plasma(200))
+	if(!check_plasma(400))
 		return FALSE
 
 	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."), \
 	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
-	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
+	if(do_after(src, 200, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
 			return FALSE
 		if(victim.loc != cur_loc)
 			return FALSE
-		if(!check_plasma(200))
+		if(!check_plasma(400))
 			return FALSE
 
-		use_plasma(200)
+		use_plasma(400)
 
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))

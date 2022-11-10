@@ -149,13 +149,12 @@
 	..()
 
 /datum/action/xeno_action/activable/gut
-	name = "Gut (200)"
+	name = "Gut (400)"
 	action_icon_state = "gut"
 	ability_name = "gut"
 	macro_path = /datum/action/xeno_action/verb/verb_gut
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 15 MINUTES
-	plasma_cost = 200
+	plasma_cost = 400
 	cooldown_message = "You feel your anger return. You are ready to gut again."
 
 /datum/action/xeno_action/activable/gut/use_ability(atom/target)

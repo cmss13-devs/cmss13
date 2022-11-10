@@ -335,7 +335,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("blackpepper", 1)
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/wy_chips/pepper
 	name = "Weyland-Yutani Pepper Chips"
@@ -349,7 +348,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("blackpepper", 1)
-	bitesize = 1
+
 /obj/item/reagent_container/food/snacks/cookie
 	name = "cookie"
 	desc = "COOKIE!!!"
@@ -360,7 +359,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("sugar", 1)
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/chocolatebar
 	name = "Chocolate Bar"
@@ -562,7 +560,6 @@
 	reagents.add_reagent("egg", 2)
 	reagents.add_reagent("sodiumchloride", 1)
 	reagents.add_reagent("blackpepper", 1)
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/boiledegg
 	name = "Boiled egg"
@@ -630,7 +627,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 2)
 	reagents.add_reagent("blackpepper",1)
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/carpmeat
 	name = "carp fillet"
@@ -900,7 +896,6 @@
 	. = ..()
 	reagents.add_reagent("egg", 4)
 	reagents.add_reagent("cheese", 4)
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/muffin
 	name = "Muffin"
@@ -1259,7 +1254,6 @@
 /obj/item/reagent_container/food/snacks/spagetti/Initialize()
 	. = ..()
 	reagents.add_reagent("dough", 1)
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/cheesyfries
 	name = "Cheesy Fries"
@@ -2012,7 +2006,6 @@
 /obj/item/reagent_container/food/snacks/mint/Initialize()
 	. = ..()
 	reagents.add_reagent("minttoxin", 1)
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/mushroomsoup
 	name = "chantrelle soup"
@@ -2059,7 +2052,6 @@
 	reagents.add_reagent("egg", 2)
 	reagents.add_reagent("mushroom", 2)
 	reagents.add_reagent("soysauce", 1)
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/beetsoup
 	name = "beet soup"
@@ -2475,12 +2467,10 @@
 	reagents.add_reagent("sugar", 1)
 	reagents.add_reagent("sodiumchloride", 1)
 	reagents.add_reagent("universal enzyme", 1)
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/cheesewedge/extramature
 	name = "primordial cheese wedge"
 	desc = "A wedge of extra mature Cheddar. So strong you can barely put more than a few grammes in your mouth at a time. The cheese wheel it was cut from can't have gone far."
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/sliceable/birthdaycake
 	name = "Birthday Cake"
@@ -3008,7 +2998,6 @@
 	desc = "A thin piece of raw meat."
 	icon = 'icons/obj/items/food_ingredients.dmi'
 	icon_state = "rawcutlet"
-	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/rawcutlet/Initialize()
 	. = ..()
@@ -3223,7 +3212,6 @@
 	name = "Boonie Bars"
 	desc = "Two delicious bars of minty chocolate. <i>\"Sometimes things are just... out of reach.\"</i>"
 	icon_state = "boonie"
-	bitesize = 1 //Two bars
 	wrapper = /obj/item/trash/boonie
 
 /obj/item/reagent_container/food/snacks/wrapped/booniebars/Initialize()

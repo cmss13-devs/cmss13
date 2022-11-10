@@ -505,7 +505,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	new /obj/effect/alien/weeds(T, node, FALSE)
+	new /obj/effect/alien/weeds(T, node, use_node_strength=FALSE)
 	playsound(T, "alien_resin_build", 35)
 
 	recently_built_turfs += T

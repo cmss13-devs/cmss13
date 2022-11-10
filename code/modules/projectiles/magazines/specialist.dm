@@ -62,27 +62,27 @@
 
 /obj/item/ammo_magazine/rifle/m4ra
 	name = "\improper A19 high velocity magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
+	desc = "A magazine of A19 high velocity rounds for use in the M4RA Custom Battle Rifle. The M4RA Custom Battle Rifle is the only gun that can chamber these high quality rounds."
 	icon_state = "m4ra"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra
+	gun_type = /obj/item/weapon/gun/rifle/m4rac
 
 /obj/item/ammo_magazine/rifle/m4ra/incendiary
 	name = "\improper A19 high velocity incendiary magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity incendiary rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
+	desc = "A magazine of A19 high velocity incendiary rounds for use in the M4RA Custom Battle Rifle. The M4RA Custom Battle Rifle is the only gun that can chamber these high quality rounds."
 	icon_state = "m4ra_incendiary"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/incendiary
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra
+	gun_type = /obj/item/weapon/gun/rifle/m4rac
 
 /obj/item/ammo_magazine/rifle/m4ra/impact
 	name = "\improper A19 high velocity impact magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity impact rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
+	desc = "A magazine of A19 high velocity impact rounds for use in the M4RA Custom Battle Rifle. The M4RA Custom Battle Rifle is the only gun that can chamber these high quality rounds."
 	icon_state = "m4ra_impact"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/impact
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4ra
+	gun_type = /obj/item/weapon/gun/rifle/m4rac
 
 
 

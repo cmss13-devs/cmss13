@@ -942,7 +942,7 @@
 
 /obj/item/weapon/gun/rifle/lmg
 	name = "\improper M41AE2 heavy pulse rifle"
-	desc = "A large squad support weapon capable of laying down sustained suppressing fire from a mounted position. While unstable and less accurate, it can be lugged and shot with two hands. Like it's smaller brothers, the M41A MK2 and L42 MK1, the M41AE2 is chambered in 10mm."
+	desc = "A large squad support weapon capable of laying down sustained suppressing fire from a mounted position. While unstable and less accurate, it can be lugged and shot with two hands. Like it's smaller brothers, the M41A MK2 & MK1, the M41AE2 is chambered in 10mm."
 	icon_state = "m41ae2"
 	item_state = "m41ae2"
 
@@ -1224,11 +1224,11 @@
 
 //-------------------------------------------------------
 
-//L42A Battle Rifle
+//L42A Battle Rifle | CLF | SURV
 
 /obj/item/weapon/gun/rifle/l42a
 	name = "\improper L42A battle rifle"
-	desc = "A L42A battle rifle. A non-standard alternative to the standard issue M41A-MK2 available to the jarheads of the USCM. Renowned for its high accuracy and superior stopping power compared to other pulse rifles. Chambered in 10x24mm caseless."
+	desc = "The L42A Battle Rifle, found commonly around the frontiers of the Galaxy. It's commonly used by colonists for self defense, as well as many colonial militias, whomever they serve due to it's rugged reliability and ease of use without much training. This rifle was put up for adoption by the USCM and tested for a time, but ultimately lost to the M4RA."
 	icon_state = "l42mk1"
 	item_state = "l42mk1"
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
@@ -1278,6 +1278,55 @@
 
 /obj/item/weapon/gun/rifle/l42a/training
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
+
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+//  M4RA Designated Marksmen Rifle
+
+/obj/item/weapon/gun/rifle/m4radmr
+	name = "\improper M4RA Battle Rifle"
+	desc = "The M4RA is a designated marksmen rifle fielded by the USCM. A recent adoption, it was caught in a fierce competition with the L4 Battle Rifle, before ultimately winning out. Featuring bullpup ergonomics and utilising a higher velocity round than the M41, this is the perfect pick for any marine who prefers to keep a distance."
+	icon_state = "m41b"
+	item_state = "m4ra" //PLACEHOLDER
+	fire_sound = 'sound/weapons/gun_m4ra.ogg'
+	current_mag = /obj/item/weapon/gun/rifle/m4radmr
+	force = 16
+	attachable_allowed = list(
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/flashlight/grip,
+						/obj/item/attachable/bipod,
+						/obj/item/attachable/compensator,
+						/obj/item/attachable/attached_gun/shotgun,
+						/obj/item/attachable/scope,
+						/obj/item/attachable/scope/mini,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex
+						)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_SLOW
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
+
+	flags_item = TWOHANDED|NO_CRYO_STORE
+
+
+/obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+
+/obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_6
+	burst_amount = BURST_AMOUNT_TIER_2
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
+	damage_falloff_mult = 0
 
 //-------------------------------------------------------
 //-------------------------------------------------------

@@ -110,29 +110,7 @@
 	containername = "\improper M39 extended magazines crate"
 	group = "Ammo"
 
-//------------------------For L42A----------------
-
-/datum/supply_packs/ammo_l42_mag_box
-	name = "Magazine box (L42A, 16x mags)"
-	contains = list(
-					/obj/item/ammo_box/magazine/l42a
-					)
-	cost = 20
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper L42A magazines crate"
-	group = "Ammo"
-
-/datum/supply_packs/ammo_l42_mag_box_ap
-	name = "Magazine box (L42A, 16x AP mags)"
-	contains = list(
-					/obj/item/ammo_box/magazine/l42a/ap
-					)
-	cost = 40
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper L42A AP magazines crate"
-	group = "Ammo"
-
-//------------------------For  M44----------------
+//------------------------For M44----------------
 
 /datum/supply_packs/ammo_m44_mag_box
 	name = "Speed loaders box (M44, 16x)"
@@ -227,7 +205,7 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper shotgun flechette crate"
 	group = "Ammo"
-		
+
 //------------------------For 88M4 ----------------
 
 /datum/supply_packs/ammo_mod88_mag_box_ap
@@ -283,7 +261,7 @@
 	containertype = /obj/structure/closet/crate
 	containername = "\improper M41AE2 HPR holo-target magazines crate"
 	group = "Ammo"
-	
+
 //------------------------Smartgunner stuff----------------
 
 /datum/supply_packs/ammo_smartgun_powerpack
@@ -307,7 +285,7 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper smartgun drums crate"
 	group = "Ammo"
-	
+
 //------------------------Sentries Ammo----------------
 
 /datum/supply_packs/ammo_sentry
@@ -342,7 +320,7 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper sentry shotgun ammo crate"
 	group = "Ammo"
-	
+
 //------------------------M240 flamer tanks----------------
 
 /datum/supply_packs/ammo_napalm
@@ -392,7 +370,6 @@
 					/obj/item/ammo_magazine/rifle/extended,
 					/obj/item/ammo_magazine/rifle/ap,
 					/obj/item/ammo_magazine/rifle/incendiary,
-					/obj/item/ammo_magazine/rifle/l42a/incendiary,
 					/obj/item/ammo_magazine/rifle/m41aMK1,
 					/obj/item/ammo_magazine/rifle/m41aMK1/ap,
 					/obj/item/ammo_magazine/rifle/m4ra,
@@ -416,9 +393,7 @@
 					/obj/item/ammo_magazine/shotgun,
 					/obj/item/ammo_magazine/shotgun/buckshot,
 					/obj/item/ammo_magazine/shotgun/buckshot,
-					/obj/item/ammo_magazine/shotgun/incendiary,
-					/obj/item/ammo_magazine/rifle/l42a/ap,
-					/obj/item/ammo_magazine/rifle/l42a
+					/obj/item/ammo_magazine/shotgun/incendiary
 					)
 	cost = 60
 	containertype = /obj/structure/closet/crate/ammo
@@ -471,7 +446,7 @@
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar flare shells crate"
 	group = "Ammo"
-	
+
 //------------------------Contraband----------------
 
 /datum/supply_packs/merc/ammo

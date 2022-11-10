@@ -375,11 +375,6 @@
 	weapon_type = /obj/item/weapon/gun/rifle/m41a/training
 	ammo_type = /obj/item/ammo_magazine/rifle/rubber
 
-/obj/structure/closet/crate/weapon/training/l42a
-	name = "training L42A crate"
-	desc = "A crate with an L42A battle rifle and nonlethal ammunition for it. Intended for use in combat exercises."
-	weapon_type = /obj/item/weapon/gun/rifle/l42a/training
-	ammo_type = /obj/item/ammo_magazine/rifle/l42a/rubber
 
 /obj/structure/closet/crate/weapon/training/m39
 	name = "training M39 crate"

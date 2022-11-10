@@ -455,6 +455,16 @@
 /obj/item/ammo_box/magazine/l42a/incen/empty
 	empty = TRUE
 
+//-----------------------L42A Battle Rifle Mag Boxes-----------------------
+
+/obj/item/ammo_box/magazine/m4ra
+	name = "magazine box (M4RA x 16)"
+	icon_state = "base_l42"
+	flags_equip_slot = SLOT_BACK
+	overlay_gun_type = "_l42"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/rifle/m4radmr
+
 //-----------------------M16 Rifle Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/M16

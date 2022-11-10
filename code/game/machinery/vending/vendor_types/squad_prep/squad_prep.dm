@@ -142,6 +142,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("SU-6 Smart Pistol", 15, /obj/item/storage/box/guncase/smartpistol, null, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Heavy Pulse Rifle", 30, /obj/item/storage/box/guncase/lmg, null, VENDOR_ITEM_REGULAR),
 		list("M79 Grenade Launcher", 30, /obj/item/storage/box/guncase/m79, null, VENDOR_ITEM_REGULAR),
+		list("M240 Incinerator Unit", 30, /obj/item/storage/box/guncase/flamer, null, VENDOR_ITEM_REGULAR),
+
 
 		list("EXPLOSIVES", 0, null, null, null),
 		list("M40 HEDP High Explosive Packet (x3 grenades)", 20, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),

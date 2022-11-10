@@ -137,6 +137,7 @@
 	desc = "A pair of fashionable white gloves, worn by marines in dress."
 	icon_state = "white"
 	item_state = "white"
+	var/adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran/souto
 	name = "\improper Souto Man gloves"

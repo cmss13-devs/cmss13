@@ -341,6 +341,13 @@
 	name = "EMT armband"
 	desc = "An armband, worn by the crew to display which department they're assigned to. This one is white and green."
 	icon_state = "medgreen"
+//MP Brassards
+/obj/item/clothing/accessory/armband/mp
+	name = "MP brassard"
+	desc = "A fancy red armband!"
+	icon_state = "red"
+	slot = ACCESSORY_SLOT_ARMBAND
+	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 //patches
 /obj/item/clothing/accessory/patch

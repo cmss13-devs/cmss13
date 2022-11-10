@@ -305,7 +305,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	flags_atom = NO_SNOW_TYPE
+	//flags_atom = NO_SNOW_TYPE
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
@@ -323,9 +323,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/weapon/melee/claymore/mercsword/ceremonial,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman)
-	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
+	//uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 	specialty = "M2 pattern MP"
-	item_state_slots = list(WEAR_JACKET = "mp")
+	//item_state_slots = list(WEAR_JACKET = "mp")
+
 
 /obj/item/clothing/suit/storage/marine/MP/padless
 	name = "\improper M2 pattern padless MP armor"
@@ -348,7 +349,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
 	specialty = "M3 pattern warden MP"
-	item_state_slots = list(WEAR_JACKET = "warden")
+	//item_state_slots = list(WEAR_JACKET = "warden")
 
 /obj/item/clothing/suit/storage/marine/MP/warden/padless
 	name = "\improper M3 pattern padless warden MP armor"
@@ -369,7 +370,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs. Useful for letting your men know who is in charge."
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
 	specialty = "M3 pattern chief MP"
-	item_state_slots = list(WEAR_JACKET = "warrant_officer")
+	//item_state_slots = list(WEAR_JACKET = "warrant_officer")
 
 /obj/item/clothing/suit/storage/marine/MP/WO/padless
 	name = "\improper M3 pattern padless chief MP armor"

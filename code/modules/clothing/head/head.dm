@@ -351,7 +351,7 @@
 
 /obj/item/clothing/head/helmet/beret/marine/mp
 	name = "\improper USCM MP beret"
-	icon_state = "beretred"
+	icon_state = "beretmp"
 	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_LOW

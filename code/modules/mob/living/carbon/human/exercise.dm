@@ -73,7 +73,7 @@ Verbs related to getting fucking jacked, bro
 	if(is_mob_incapacitated())
 		return FALSE
 
-	if(!resting)
+	if(!resting || buckled)
 		to_chat(src, SPAN_WARNING("How do you think you'll be able to do a pushup standing up? Get down to the floor!"))
 		return FALSE
 
@@ -91,6 +91,10 @@ Verbs related to getting fucking jacked, bro
 		to_chat(src, SPAN_WARNING("You feel far too weak to do a pushup!"))
 		return FALSE
 	return TRUE
+
+	if(!isturf(loc))
+		to_chat(src, SPAN_WARNING("You cannot do that here!"))
+		return FALSE
 
 /mob/living/carbon/human/proc/calculate_stamina_loss_per_pushup(var/on_knees = FALSE)
 	//humans have 100 stamina

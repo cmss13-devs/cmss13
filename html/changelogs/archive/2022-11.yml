@@ -129,6 +129,8 @@
   - bugfix: Fixed spawn pool visual bug were it had stopped making things appear to
       be inside the liquid.
 2022-11-10:
+  Shad0vvs:
+  - bugfix: Allows Xenos to now properly firepat snow tiles.
   nauticall:
   - rscadd: Added Marine dress blue uniforms, available thru admin spawn.
   - rscadd: Added equipment presets to use for said dress uniforms.

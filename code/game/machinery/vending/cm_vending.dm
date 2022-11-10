@@ -509,6 +509,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	data["vendor_name"] = name
 	data["vendor_type"] = "base"
 	data["theme"] = vendor_theme
+	data["show_points"] = show_points
 	return data
 
 /obj/structure/machinery/cm_vending/ui_assets(mob/user)
@@ -585,7 +586,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/last_category = ui_categories[last_index]
 		last_category["items"] += list(display_item)
 	data["displayed_categories"] = ui_categories
-	data["show_points"] = show_points
 	return data
 
 /obj/structure/machinery/cm_vending/gear/ui_data(mob/user)
@@ -851,7 +851,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/list/ui_listed_products = get_listed_products(user)
 
 	var/list/ui_categories = list()
-	var/show_points = FALSE
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
 
@@ -880,8 +879,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 			"image" = imgid
 		)
 
-		show_points = show_points ? show_points : p_cost > 0
-
 		if (is_category == 1)
 			ui_categories += list(list(
 				"name" = p_name,
@@ -898,7 +895,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/last_category = ui_categories[last_index]
 		last_category["items"] += list(display_item)
 	data["displayed_categories"] = ui_categories
-	data["show_points"] = show_points
 	return data
 
 /obj/structure/machinery/cm_vending/clothing/ui_data(mob/user)
@@ -1316,56 +1312,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/available_points = MARINE_TOTAL_BUY_POINTS
 	available_points_to_display = MARINE_TOTAL_BUY_POINTS
 
-/obj/structure/machinery/cm_vending/own_points/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(stat & (BROKEN|NOPOWER))
-		return
-	if(usr.is_mob_incapacitated())
-		return
-
-	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
-		usr.set_interaction(src)
-		if(href_list["vend"])
-			if(stat & IN_USE)
-				return
-
-			var/list/has_access = can_access_to_vend(usr)
-			if (!has_access)
-				return
-
-			var/idx=text2num(href_list["vend"])
-			var/list/topic_listed_products = get_listed_products(usr)
-			var/list/L = topic_listed_products[idx]
-			var/cost = L[2]
-
-			var/mob/living/carbon/human/H = usr
-
-			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
-				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
-				vend_fail()
-				return
-
-			var/turf/T = get_appropriate_vend_turf()
-			if(T.contents.len > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
-				vend_fail()
-				return
-
-			if(available_points < cost)
-				to_chat(H, SPAN_WARNING("Not enough points."))
-				vend_fail()
-				return
-			else
-				available_points -= cost
-				available_points_to_display = available_points
-
-			vend_succesfully(L, H, T)
-
-		add_fingerprint(usr)
-		ui_interact(usr)
-
 /obj/structure/machinery/cm_vending/own_points/ui_static_data(mob/user)
 	var/list/data = ..(user)
 	data["vendor_type"] = "gear"
@@ -1380,7 +1326,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/list/ui_listed_products = get_listed_products(user)
 
 	var/list/ui_categories = list()
-	var/show_points = FALSE
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
 
@@ -1409,8 +1354,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 			"image" = imgid
 		)
 
-		show_points = show_points ? show_points : p_cost > 0
-
 		if (is_category == 1)
 			ui_categories += list(list(
 				"name" = p_name,
@@ -1427,7 +1370,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/last_category = ui_categories[last_index]
 		last_category["items"] += list(display_item)
 	data["displayed_categories"] = ui_categories
-	data["show_points"] = show_points
 	return data
 
 /obj/structure/machinery/cm_vending/own_points/ui_data(mob/user)

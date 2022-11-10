@@ -253,7 +253,7 @@
 	item_state = "nco_jacket"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer
-	name = "marine NCO dress blues jacket"
+	name = "marine officer dress blues jacket"
 	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. Features the sleek dark design of the uniform worn by a commissioned officer."
 	icon_state = "o_jacket"
 	item_state = "o_jacket"

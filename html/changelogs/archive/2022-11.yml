@@ -128,3 +128,8 @@
   - rscadd: Spawn pool now harms humans if entered, and spills acid when destroyed.
   - bugfix: Fixed spawn pool visual bug were it had stopped making things appear to
       be inside the liquid.
+2022-11-10:
+  nauticall:
+  - rscadd: Added Marine dress blue uniforms, available thru admin spawn.
+  - rscadd: Added equipment presets to use for said dress uniforms.
+  - rscadd: Resprited latex gloves and added a new, more shiny white gloves variant.

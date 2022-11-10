@@ -575,10 +575,10 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight
 	name = "rail flashlight"
-	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights."
+	desc = "A flashlight, for rails, on guns. Can be toggled on and off."
 	icon_state = "flashlight"
 	attach_icon = "flashlight_a"
-	light_mod = 7
+	light_mod = 5
 	slot = "rail"
 	matter = list("metal" = 50,"glass" = 20)
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION

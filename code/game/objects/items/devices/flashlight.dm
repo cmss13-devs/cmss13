@@ -243,7 +243,7 @@
 	item_state = "flare"
 	actions = list()	//just pull it manually, neckbeard.
 	raillight_compatible = 0
-	var/flare_time = 1 MINUTES
+	var/flare_time = 3 MINUTES
 	var/flare_variance = 15 SECONDS // 15 seconds one way, 15 seconds the other way
 	var/burned_out = FALSE
 	var/burnout_timer_id

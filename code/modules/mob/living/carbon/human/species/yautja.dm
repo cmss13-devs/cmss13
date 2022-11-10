@@ -2,8 +2,11 @@
 	group = SPECIES_YAUTJA
 	name = "Yautja"
 	name_plural = "Yautja"
+
 	brute_mod = 0.33 //Beefy!
 	burn_mod = 0.65
+	minimum_bonebreak_limb_damage = 70
+
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT

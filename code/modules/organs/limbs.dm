@@ -1054,18 +1054,19 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		else
 			return FALSE
 
-/obj/limb/proc/fracture(var/bonebreak_probability)
+/obj/limb/proc/fracture(var/bonebreak_probability) // failure scenarios set it to zero instead of returning to show the 'withstand' message at the end.
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT|LIMB_SYNTHSKIN))
 		if (knitting_time != -1)
 			knitting_time = -1
 			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
-		return
+		bonebreak_probability = 0
+
+	// If the limb's damage is lesser than the owner's species' minimum bonebreak damage and said var isn't null.
+	if(owner.species?.minimum_bonebreak_limb_damage > src.brute_dam || isnull(owner.species?.minimum_bonebreak_limb_damage))
+		bonebreak_probability = 0
 
 	if(owner.status_flags & NO_PERMANENT_DAMAGE)
-		owner.visible_message(\
-			SPAN_WARNING("[owner] withstands the blow!"),
-			SPAN_WARNING("Your [display_name] withstands the blow!"))
-		return
+		bonebreak_probability = 0
 
 	if((owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE) || owner.species.flags & SPECIAL_BONEBREAK) //stops division by zero
 		bonebreak_probability = 0
@@ -1094,10 +1095,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		owner.pain.apply_pain(PAIN_BONE_BREAK)
 		broken_description = pick("broken","fracture","hairline fracture")
 		perma_injury = min_broken_damage
+		return TRUE
 	else
 		owner.visible_message(\
 			SPAN_WARNING("[owner] seems to withstand the blow!"),
 			SPAN_WARNING("Your [display_name] manages to withstand the blow!"))
+		return FALSE
 
 /obj/limb/proc/robotize(surgery_in_progress, uncalibrated, var/synth_skin)
 	if(synth_skin)

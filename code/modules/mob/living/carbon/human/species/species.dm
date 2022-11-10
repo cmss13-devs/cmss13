@@ -67,6 +67,9 @@
 	var/brute_mod = null    // Physical damage reduction/malus.
 	var/burn_mod = null     // Burn damage reduction/malus.
 
+	 /// Minimum damage a limb needs before it's eligible for ANY bonebreak. Does not guarantee a bonebreak at that number. Nulled
+	var/minimum_bonebreak_limb_damage = 0
+
 	var/flags = 0       // Various specific features.
 
 	var/list/abilities = list()	// For species-derived or admin-given powers

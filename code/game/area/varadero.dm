@@ -11,13 +11,6 @@
 	temperature = TROPICAL_TEMP
 	lighting_use_dynamic = TRUE
 
-/area/varadero/Initialize()
-	. = ..()
-	if(SSticker.current_state > GAME_STATE_SETTING_UP)
-		add_thunder()
-	else
-		LAZYADD(GLOB.thunder_setup_areas, src)
-
 //shuttle stuff
 
 /area/shuttle/drop1/varadero

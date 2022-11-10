@@ -250,6 +250,10 @@
 	var/on_damage = 7
 	var/ammo_datum = /datum/ammo/flare
 
+/obj/item/device/flashlight/flare/Destroy()
+	deltimer(burnout_timer_id)
+	return ..()
+
 /obj/item/device/flashlight/flare/dropped(mob/user)
 	. = ..()
 	if(iscarbon(user) && on)

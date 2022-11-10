@@ -267,6 +267,7 @@
 		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
+		hive.stored_larva++
 
 // Squeeze thru dense objects as a larva, as airlocks
 /mob/living/carbon/Xenomorph/Larva/proc/scuttle(var/obj/structure/S)

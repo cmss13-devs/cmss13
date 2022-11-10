@@ -9,8 +9,6 @@
 	var/spawn_cooldown = 30 SECONDS
 	var/surge_cooldown = 90 SECONDS
 	var/surge_incremental_reduction = 3 SECONDS
-	var/mob/melting_body
-
 	var/damage_amount = 20
 
 	luminosity = 3
@@ -43,66 +41,28 @@
 	var/larva_amount = 0 // The amount of larva they get
 
 	var/obj/item/grab/G = I
-	if(!iscarbon(G.grabbed_thing))
+	var/mob/living/carbon/Xenomorph/X = G.grabbed_thing
+	if(!linked_hive || X.stat != DEAD)
 		return
-	var/mob/living/carbon/M = G.grabbed_thing
-	if(M.buckled)
-		to_chat(user, SPAN_XENOWARNING("Unbuckle first!"))
-		return
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
 
-		if(H.is_revivable())
-			to_chat(user, SPAN_XENOWARNING("This one is not suitable yet!"))
-			return
-		if(H.chestburst && H.stat != DEAD) // This isn't covered in H.is_revivable() as it returns FALSE if chestburst is TRUE
-			to_chat(user, SPAN_XENOWARNING("Let this one burst first!"))
-			return
-		if(H.spawned_corpse)
-			to_chat(user, SPAN_XENOWARNING("This one does not look suitable!"))
-			return
-		user.stop_pulling() // disrupt any grabs
-		larva_amount++
-	if(isXeno(M))
-		if(!linked_hive || M.stat != DEAD)
-			return
+	if(SSticker.mode && !(SSticker.mode.flags_round_type & MODE_XVX))
+		return // For now, disabled on gamemodes that don't support it (primarily distress signal)
 
-		if(SSticker.mode && !(SSticker.mode.flags_round_type & MODE_XVX))
-			return // For now, disabled on gamemodes that don't support it (primarily distress signal)
+	// Will probably allow for hives to slowly gain larva by killing hostile xenos and taking them to the spawnpool
+	// A self sustaining cycle until one hive kills more of the other hive to tip the balance
 
-		// Will probably allow for hives to slowly gain larva by killing hostile xenos and taking them to the spawnpool
-		// A self sustaining cycle until one hive kills more of the other hive to tip the balance
-
-		// Makes attacking hives very profitable if they can successfully wipe them out without suffering any significant losses
-		var/mob/living/carbon/Xenomorph/X = M
-		if(X.hivenumber != linked_hive.hivenumber)
-			if(isXenoQueen(X))
-				larva_amount = 5
-			else
-				larva_amount += max(X.tier, 1) // Now you always gain larva.
+	// Makes attacking hives very profitable if they can successfully wipe them out without suffering any significant losses
+	if(X.hivenumber != linked_hive.hivenumber)
+		if(isXenoQueen(X))
+			larva_amount = 5
 		else
-			return
-	if(melting_body)
-		to_chat(user, SPAN_XENOWARNING("\The [src] is already processing a host! Using this one now would be a waste..."))
+			larva_amount += max(X.tier, 1) // Now you always gain larva.
+	else
 		return
-	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
-		return
-	visible_message(SPAN_DANGER("\The [src] splashes loudly as \the [M] is tossed in, bubbling uncontrollably!"))
-	melting_body = M
-	melting_body.setDir(SOUTH)
-	melting_body.moveToNullspace()
-	melting_body.pixel_x = 16
-	melting_body.pixel_y = 19
-	vis_contents += melting_body
-	update_icon()
-	new /obj/effect/overlay/temp/acid_pool_splash(loc)
-	playsound(src, 'sound/effects/acidpool.ogg', 25, 1)
 
 	linked_hive.stored_larva += larva_amount
 
 	linked_hive.hive_ui.update_pooled_larva()
-
-	melt_body()
 
 /obj/effect/alien/resin/special/pool/process()
 	if(!linked_hive)
@@ -127,26 +87,6 @@
 		announce_dchat("The hive has gained another pooled larva! Use the Join As Xeno verb to take it.", src)
 		if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 			surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
-
-/obj/effect/alien/resin/special/pool/proc/melt_body(var/iterations = 3)
-	if(!melting_body)
-		return
-
-	melting_body.pixel_y--
-	playsound(src, 'sound/bullets/acid_impact1.ogg', 25)
-	iterations--
-	if(!iterations)
-		vis_contents.Cut()
-
-		for(var/atom/movable/A in melting_body.contents_recursive()) // Get rid of any unacidable objects so we don't delete them
-			if(isitem(A))
-				var/obj/item/item = A
-				if(item.is_objective && item.unacidable)
-					item.forceMove(get_step(loc, pick(alldirs)))
-
-		QDEL_NULL(melting_body)
-	else
-		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool.proc/melt_body, iterations), 2 SECONDS)
 
 /obj/effect/alien/resin/special/pool/proc/can_spawn_larva()
 	if(linked_hive.hardcore)
@@ -181,8 +121,6 @@
 
 /obj/effect/alien/resin/special/pool/Destroy()
 	linked_hive.spawn_pool = null
-	vis_contents.Cut()
-	QDEL_NULL(melting_body)
 	if(linked_hive.hijack_pooled_surge)
 		visible_message(SPAN_XENODANGER("You hear something resembling a scream from [src] as it's destroyed!"))
 		xeno_message(SPAN_XENOANNOUNCE("Psychic pain storms throughout the hive as the spawn pool is destroyed! You will no longer gain pooled larva over time."), 3, linked_hive.hivenumber)

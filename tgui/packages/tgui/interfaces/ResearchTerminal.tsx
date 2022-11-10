@@ -386,10 +386,8 @@ const ImproveClearanceConfirmation = (props, context) => {
             onCancel={() => setConfirm(undefined)}
           >
             <span>
-              The CL can swipe their ID card on the console to increase
-              clearance for free, given enough DEFCON. Are you sure you want to
-              spend <u>{data.broker_cost}</u> research credits to increase the
-              clearance immediately?
+              Are you sure you want to spend <u>{data.broker_cost}</u> research 
+              credits to increase the clearance immediately?
             </span>
           </ConfirmationDialogue>
         </Stack.Item>

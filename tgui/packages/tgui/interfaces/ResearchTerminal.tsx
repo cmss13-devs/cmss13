@@ -542,7 +542,7 @@ const ClearanceImproveButton = (_, context) => {
               setConfirm("broker_clearance");
             }}
           >
-            Improve {data.broker_cost}
+            Improve {data.broker_cost}CR
           </Button>)}
       {(clearance_level === 5 && x_access === 0)
           && (

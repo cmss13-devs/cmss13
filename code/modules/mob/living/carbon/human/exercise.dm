@@ -90,11 +90,13 @@ Verbs related to getting fucking jacked, bro
 	if(stamina.current_stamina < (stamina.max_stamina / 10))
 		to_chat(src, SPAN_WARNING("You feel far too weak to do a pushup!"))
 		return FALSE
-	return TRUE
 
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You cannot do that here!"))
 		return FALSE
+
+	return TRUE
+
 
 /mob/living/carbon/human/proc/calculate_stamina_loss_per_pushup(var/on_knees = FALSE)
 	//humans have 100 stamina

@@ -129,6 +129,16 @@
   - bugfix: Fixed spawn pool visual bug were it had stopped making things appear to
       be inside the liquid.
 2022-11-10:
+  Kivts:
+  - rscadd: Adds custom camera matrices for dropships which can be found in autolathes,
+      in order for one to work, it needs a vial with a chemical which has any of the
+      two new properties which provide upgrades to the camera system, dependant on
+      their property level.
+  - rscadd: Added two new chemical properties which are used for the new feature,
+      Crystallization and Photosensitive, which per order, increase the camera view
+      of the dropship cam system and grants night vision to it.
+  - spellcheck: Fixes grammar mistakes of the aforementioned new additions in the
+      code.
   Shad0vvs:
   - bugfix: Allows Xenos to now properly firepat snow tiles.
   nauticall:

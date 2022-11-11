@@ -146,6 +146,8 @@
   - rscadd: Added equipment presets to use for said dress uniforms.
   - rscadd: Resprited latex gloves and added a new, more shiny white gloves variant.
 2022-11-11:
+  SpartanBobby:
+  - bugfix: fixed a fire alarm that was on a window in the Almayer gym hallway
   Zonespace27:
   - code_imp: Added a define, BYOND_TRACY, for byond-tracy profiling support
   - refactor: The datacore now is a /datum, not /obj/effect

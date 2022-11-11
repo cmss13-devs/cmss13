@@ -239,7 +239,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		new/datum/stack_recipe("empty magazine box (L42A Incen)", /obj/item/ammo_box/magazine/l42a/incen/empty), \
 		new/datum/stack_recipe("empty magazine box (L42A LE)", /obj/item/ammo_box/magazine/l42a/le/empty), \
 		null, \
-		new/datum/stack_recipe("empty magazine box (M4RA Standard", /obj/item/ammo_box/magazine/m4ra,), \
+		new/datum/stack_recipe("empty magazine box (M4RA Standard", /obj/item/ammo_box/magazine/m4ra/empty,), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (M41A)", /obj/item/ammo_box/magazine/empty), \
 		new/datum/stack_recipe("empty magazine box (M41A AP)", /obj/item/ammo_box/magazine/ap/empty), \

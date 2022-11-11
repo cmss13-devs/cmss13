@@ -440,16 +440,16 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/rifle/m4ra/custom/handle_starting_attachment()
-	var/obj/item/attachable/stock/S = new /obj/item/attachable/stock/m4ra_custom(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+	var/obj/item/attachable/stock/scout = new /obj/item/attachable/stock/m4ra_custom(src)
+	scout.flags_attach_features &= ~ATTACH_REMOVABLE
+	scout.Attach(src)
+	update_attachable(scout.slot)
 
 /obj/item/weapon/gun/rifle/m4ra/custom/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
-			to_chat(user, SPAN_WARNING("The ID locks prevents you from using \the [src]..."))
+			to_chat(user, SPAN_WARNING("You don't know how to use this \the [src]..."))
 			return FALSE
 
 //-------------------------------------------------------

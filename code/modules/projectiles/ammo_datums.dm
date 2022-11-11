@@ -1041,7 +1041,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/rifle/dmr
-	name = "M252C bullet"
+	name = "m252C bullet"
 	shrapnel_chance = 0
 	damage_falloff = 0
 

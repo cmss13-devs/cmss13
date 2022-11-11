@@ -44,12 +44,12 @@
 	containername = "\improper .458 bullets crate"
 	group = "Ammo"
 
-/datum/supply_packs/ammo_rounds_box_xm88
-	name = "m252c cartridge crate (x300 rounds)"
+/datum/supply_packs/ammo_rounds_box_m252c
+	name = "m252c round crate (x300 rounds)"
 	contains = list(/obj/item/ammo_box/rounds/m4ra)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper m252c cartridge crate"
+	containername = "\improper m252c round crate"
 	group = "Ammo"
 //------------------------Magazine Boxes crates----------------
 

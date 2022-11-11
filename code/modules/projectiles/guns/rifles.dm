@@ -1313,10 +1313,6 @@
 						/obj/item/attachable/stock/m4ra
 						)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_SLOW
-
-	flags_item = TWOHANDED
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()

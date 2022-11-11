@@ -360,6 +360,7 @@
 		list("Rifle Ammunition Box (10x24mm AP)", round(scale * 0.75), /obj/item/ammo_box/rounds/ap, VENDOR_ITEM_REGULAR),
 		list("SMG Ammunition Box (10x20mm HV)", round(scale * 0.9), /obj/item/ammo_box/rounds/smg, VENDOR_ITEM_REGULAR),
 		list("SMG Ammunition Box (10x20mm AP)", round(scale * 0.75), /obj/item/ammo_box/rounds/smg/ap, VENDOR_ITEM_REGULAR),
+		list("M4RA Ammunition Box (M252C Standard)", round(scale * 0.9), /obj/item/ammo_box/rounds/m4ra, VENDOR_ITEM_REGULAR),
 		list(".458 Bullets Box", round(scale * 0.5), /obj/item/ammo_box/magazine/lever_action/xm88, VENDOR_ITEM_REGULAR),
 
 		list("MAGAZINE BOXES", -1, null, null),

@@ -399,17 +399,21 @@
 	force = 16
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
 						/obj/item/attachable/flashlight/grip,
 						/obj/item/attachable/bipod,
 						/obj/item/attachable/compensator,
-						/obj/item/attachable/bayonet,
+						/obj/item/attachable/attached_gun/grenade,
+						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/shotgun,
+						/obj/item/attachable/attached_gun/extinguisher,
 						/obj/item/attachable/scope,
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex
+						/obj/item/attachable/reflex,
 						)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -433,7 +437,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 
-/obj/item/weapon/gun/rifle/m4ra/able_to_fire(mob/living/user)
+/obj/item/weapon/gun/rifle/m4ra/custom/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)

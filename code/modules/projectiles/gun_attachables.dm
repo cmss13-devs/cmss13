@@ -1162,7 +1162,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/m4ra
 	name = "\improper M4RA barrel"
-	desc = "If you can see this, tell a coder."
+	desc = "An M4RA barrel, specially designed for the M4RA. It can withstand the higher pressure cartridge and is designed to maximize velocity coming out of the gun."
 	icon_state = "m4ra_barrel_a"
 
 /obj/item/attachable/stock/m4ra_custom/New()
@@ -1171,7 +1171,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/m4ra_custom
 	name = "\improper M4RA custom barrel"
-	desc = "If you can see this, tell a coder."
+	desc = "A custom barrel specifically designed for the M4RA Custom, made on Chinook. These are only installed on the M4RA and are made specially to withstand the A19's velocity and PSI."
 	icon_state = "m4ra_custom_barrel_a"
 
 /obj/item/attachable/stock/m4ra_custom/New()

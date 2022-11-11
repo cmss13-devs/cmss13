@@ -304,6 +304,13 @@
 	name = "platinum service medal"
 	desc = "The highest service medal that can be awarded to a marine; such medals are hand-given by USCM Generals to a marine. It signifies the sheer amount of time a marine has spent in the line of duty."
 	icon_state = "platinum"
+
+//MP Badge
+/obj/item/clothing/accessory/medal/mp
+	name = "mp badge"
+	desc = "A gold MP badge."
+	icon_state = "mp_badge"
+
 //Armbands
 /obj/item/clothing/accessory/armband
 	name = "red armband"
@@ -344,8 +351,8 @@
 //MP Brassards
 /obj/item/clothing/accessory/armband/mp
 	name = "MP brassard"
-	desc = "A fancy red armband!"
-	icon_state = "red"
+	desc = "A black brassard worn by members of the USCM Military Police."
+	icon_state = "mp"
 	slot = ACCESSORY_SLOT_ARMBAND
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
@@ -372,6 +379,12 @@
 	select_gamemode_skin(type)
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
 	update_icon()
+
+//MP Badge
+/obj/item/clothing/accessory/patch/mp
+	name = "mp badge"
+	desc = "A gold MP badge."
+	icon_state = "mpbadge"
 
 //Ties that can store stuff
 

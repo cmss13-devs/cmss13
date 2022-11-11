@@ -35,7 +35,7 @@
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
-	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/mp)
+	//service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/mp)
 
 /datum/equipment_preset/uscm_ship/uscm_police/mp/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -56,6 +56,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/patch/mp(H), WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/armband/mp(H), WEAR_ACCESSORY)
 
 //*****************************************************************************************************/
@@ -90,7 +91,7 @@
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
-	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/mp)
+	//service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/mp)
 
 /datum/equipment_preset/uscm_ship/uscm_police/mp_cadet/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -98,7 +99,7 @@
 		backItem = /obj/item/storage/backpack/security
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mmpo(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/cadet(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
@@ -107,10 +108,11 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/armband/mp(H), WEAR_ACCESSORY)
 
 
 
@@ -145,11 +147,11 @@
 	role_comm_title = "MW"
 	skills = /datum/skills/MW
 
-	utility_under = list(/obj/item/clothing/under/marine/warden)
+	utility_under = list(/obj/item/clothing/under/marine/officer/bridge)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/warden)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
-	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/warden)
+	//service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/warden)
 
 /datum/equipment_preset/uscm_ship/uscm_police/warden/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -157,7 +159,7 @@
 		backItem = /obj/item/storage/backpack/security
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/warden(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
@@ -170,6 +172,8 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/patch/mp(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/armband/mp(H), WEAR_ACCESSORY)
 
 //*****************************************************************************************************/
 
@@ -207,7 +211,7 @@
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
-	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/cmp)
+	//service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/cmp)
 
 /datum/equipment_preset/uscm_ship/uscm_police/cmp/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -215,7 +219,7 @@
 		backItem = /obj/item/storage/backpack/security
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/warrant(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
@@ -228,6 +232,8 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/patch/mp(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/armband/mp(H), WEAR_ACCESSORY)
 
 //*****************************************************************************************************/
 
@@ -255,7 +261,7 @@
 	//TODO: add backpacks and satchels
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/warrant(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/riot/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/riot(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
@@ -274,6 +280,8 @@
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/riot(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/riot(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/patch/mp(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/armband/mp(H), WEAR_ACCESSORY)
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else

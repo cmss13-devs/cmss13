@@ -347,7 +347,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
+	//uniform_restricted = list(/obj/item/clothing/under/marine/warden)
 	specialty = "M3 pattern warden MP"
 	//item_state_slots = list(WEAR_JACKET = "warden")
 

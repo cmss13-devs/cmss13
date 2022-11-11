@@ -148,3 +148,5 @@
 2022-11-11:
   fira:
   - code_imp: got rid of massive global lists for items and objects
+  - bugfix: fixed drinks being drank twice, once instantly then after a delay
+  - bugfix: fixed inability to feed someone else a drink

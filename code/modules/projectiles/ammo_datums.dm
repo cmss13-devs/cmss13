@@ -1043,16 +1043,17 @@
 /datum/ammo/bullet/rifle/dmr
 	name = "M252C bullet"
 	shrapnel_chance = 0
-	damage_falloff = DAMAGE_FALLOFF_TIER_5
-	effective_range_max = 6
+	damage_falloff = 0
 
 
 	flags_ammo_behavior = AMMO_BALLISTIC
-	accurate_range_min = 4
+	effective_range_min = 5
+	accurate_range_min = 5
+	damage_buildup = DAMAGE_BUILDUP_TIER_3
 
 	damage = 45
 	scatter = -SCATTER_AMOUNT_TIER_8
-	penetration= ARMOR_PENETRATION_TIER_7
+	penetration= ARMOR_PENETRATION_TIER_5
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/rifle/m4ra/incendiary

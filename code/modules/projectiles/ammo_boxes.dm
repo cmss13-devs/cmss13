@@ -455,7 +455,7 @@
 /obj/item/ammo_box/magazine/l42a/incen/empty
 	empty = TRUE
 
-//-----------------------L42A Battle Rifle Mag Boxes-----------------------
+//-----------------------M4RA Battle Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m4ra
 	name = "magazine box (M4RA x 16)"

@@ -52,7 +52,7 @@ const PMCTransferWindow = (props, context) => {
           Possible Transfers Left: {possible_verifications}
         </Stack.Item>
       </Stack>
-      {possible_verifications <= 0 && <NoRecruitsDimmer />)}
+      {possible_verifications <= 0 && <NoRecruitsDimmer />}
     </Section>
   );
 };
@@ -132,7 +132,7 @@ const PMCVerification = (props, context) => {
         Confirm
       </ButtonCheckbox>
       {(is_loading && <LoadingScreenDimmer />)}
-      {possible_verifications <= 0 && <NoRecruitsDimmer />)}
+      {possible_verifications <= 0 && <NoRecruitsDimmer />}
     </Section>
   );
 };

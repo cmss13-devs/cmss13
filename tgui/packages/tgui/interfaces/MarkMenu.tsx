@@ -225,7 +225,7 @@ export const MarkMenu = (props, context) => {
       resizable
       width={560}
       height={680}>
-      <Window.Content scrollable>
+      <Window.Content scrollable className="MarkMenu">
         <Stack vertical>
           <Stack.Item>
             <MarkHistory />

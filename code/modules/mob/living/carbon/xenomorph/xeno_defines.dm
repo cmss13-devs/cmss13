@@ -826,6 +826,8 @@
 	return allies[faction]
 
 /datum/hive_status/proc/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	if(HAS_TRAIT(src, TRAIT_NO_HIVE_DELAY))
+		return FALSE
 	return TRUE
 
 /datum/hive_status/corrupted
@@ -917,7 +919,7 @@
 	return FALSE
 
 /datum/hive_status/yautja
-	name = "Yautja Hive"
+	name = "Hellhound Pack"
 	hivenumber = XENO_HIVE_YAUTJA
 	internal_faction = FACTION_YAUTJA
 
@@ -938,7 +940,7 @@
 	color = "#6abd99"
 	ui_color = "#6abd99"
 
-	hive_inherant_traits = list(TRAIT_XENONID)
+	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"

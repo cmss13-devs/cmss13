@@ -145,3 +145,6 @@
   - rscadd: Added Marine dress blue uniforms, available thru admin spawn.
   - rscadd: Added equipment presets to use for said dress uniforms.
   - rscadd: Resprited latex gloves and added a new, more shiny white gloves variant.
+2022-11-11:
+  fira:
+  - code_imp: got rid of massive global lists for items and objects

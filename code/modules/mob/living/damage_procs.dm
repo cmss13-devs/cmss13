@@ -58,10 +58,9 @@
 /mob/living/proc/apply_internal_damage(var/damage = 0, var/organ)
 	return
 
-#define POSITIVE(val) max(val, 0)
-
 #define EFFECT_FLAG_LIFE (1>>0)
 #define EFFECT_FLAG_DEFAULT (1>>1)
+//Examples for future usage!
 //#define EFFECT_FLAG_EXPLOSIVE
 //#define EFFECT_FLAG_XENOMORPH
 //#define EFFECT_FLAG_CHEMICAL

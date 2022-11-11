@@ -30,7 +30,6 @@
  *
  *  /datum/recipe/proc/check_items(var/obj/container as obj)
  *    //1=precisely, 0=insufficiently, -1=superfluous
- *
  * */
 
 /datum/recipe

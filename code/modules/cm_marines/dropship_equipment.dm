@@ -887,7 +887,7 @@
 		linked_stretcher = null
 		return
 
-	to_chat(user, SPAN_NOTICE("You move your dropship above the selected stretcher's beacon. You can now manually activate the medevac system to hoist the patient up."))
+	to_chat(user, SPAN_NOTICE("You move your dropship above the selected stretcher's beacon."))
 
 	if(linked_stretcher)
 		linked_stretcher.linked_medevac = null
@@ -897,6 +897,7 @@
 	linked_stretcher.linked_medevac = src
 	linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship overhead."))
 
+	activate_winch(user)
 
 
 
@@ -912,37 +913,11 @@
 		return
 	if(!ship_base) //not installed
 		return
-	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
 		to_chat(user, SPAN_WARNING(" You don't know how to use [src]."))
 		return
 
-	if(!linked_shuttle)
-		return
-
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
-		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
-		return
-
-	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
-		return
-
-	if(!linked_stretcher)
-		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
-		return
-
-	if(!is_ground_level(linked_stretcher.z))
-		linked_stretcher.linked_medevac = null
-		linked_stretcher = null
-		to_chat(user, SPAN_WARNING(" There seems to be no medevac stretcher connected to [src]."))
-		return
-
-	if(world.time < medevac_cooldown)
-		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
-		return
-
-	activate_winch(user)
-
+	equipment_interact(user)
 
 /obj/structure/dropship_equipment/medevac_system/proc/activate_winch(mob/user)
 	set waitfor = 0
@@ -991,7 +966,7 @@
 	flick("winched_stretcher", linked_stretcher)
 	linked_stretcher.visible_message(SPAN_NOTICE("A winch hook falls from the sky and starts lifting [linked_stretcher] up."))
 
-	medevac_cooldown = world.time + 600
+	medevac_cooldown = world.time + DROPSHIP_MEDEVAC_COOLDOWN
 	linked_stretcher.linked_medevac = null
 	linked_stretcher = null
 

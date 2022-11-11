@@ -1,6 +1,5 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////::
 
-//Dropship equipments
+/// Dropship equipments, mainly weaponry but also utility implements
 /obj/structure/dropship_equipment
 	density = TRUE
 	anchored = TRUE
@@ -141,8 +140,7 @@
 
 
 
-//////////////////////////////////// turret holders //////////////////////////////////////
-
+/// Turret holder for dropship automated sentries
 /obj/structure/dropship_equipment/sentry_holder
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	name = "sentry deployment system"
@@ -263,7 +261,7 @@
 
 
 
-
+/// Holder for the dropship mannable machinegun system
 /obj/structure/dropship_equipment/mg_holder
 	name = "machine gun deployment system"
 	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
@@ -379,7 +377,7 @@
 		icon_state = "mg_system_installed"
 
 
-////////////////////////////////// FUEL EQUIPMENT /////////////////////////////////
+//================= FUEL EQUIPMENT =================//
 
 /obj/structure/dropship_equipment/fuel
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
@@ -412,7 +410,7 @@
 	point_cost = 800
 
 
-///////////////////////////////////// ELECTRONICS /////////////////////////////////////////
+//================= ELECTRONICS =================//
 
 /obj/structure/dropship_equipment/electronics
 	equip_categories = list(DROPSHIP_ELECTRONICS)
@@ -548,8 +546,7 @@
 	point_cost = 0
 
 
-////////////////////////////////////// WEAPONS ///////////////////////////////////////
-
+/// CAS Dropship weaponry, used for aerial bombardment
 /obj/structure/dropship_equipment/weapon
 	name = "abstract weapon"
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
@@ -561,10 +558,13 @@
 	screen_mode = 1
 	is_interactable = TRUE
 	skill_required = SKILL_PILOT_EXPERT
-	var/last_fired //used for weapon cooldown after use.
+	/// Time last fired, for weapon firing cooldown
+	var/last_fired
 	var/firing_sound
-	var/firing_delay = 20 //delay between firing. 2 seconds by default
-	var/fire_mission_only = TRUE //whether the weapon can only be fire in fly-by mode (sic).
+	/// Delay between firing, in deciseconds
+	var/firing_delay = 20
+	/// True if this weapon can only be fired in Fire Missions (not Direct)
+	var/fire_mission_only = TRUE
 
 /obj/structure/dropship_equipment/weapon/update_equipment()
 	if(ship_base)
@@ -759,7 +759,7 @@
 	else
 		icon_state = "launch_bay"
 
-//////////////// OTHER EQUIPMENT /////////////////
+//================= OTHER EQUIPMENT =================//
 
 
 

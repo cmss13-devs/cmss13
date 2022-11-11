@@ -774,7 +774,7 @@
 			icon_state = "paper_wy_partial_report"
 	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
-			icon_state = "paper_wy_partial_report"
+		icon_state = "paper_wy_partial_report"
 	else if(S.description)
 		info += "<font size = \"2.5\">[S.description]\n"
 		info += "<BR>Overdoses at: [S.overdose] units\n"

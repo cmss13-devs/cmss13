@@ -1228,7 +1228,7 @@
 
 /obj/item/weapon/gun/rifle/l42a
 	name = "\improper L42A battle rifle"
-	desc = "The L42A Battle Rifle, found commonly around the frontiers of the Galaxy. It's commonly used by colonists for self defense, as well as many colonial militias, whomever they serve due to it's rugged reliability and ease of use without much training. This rifle was put up for adoption by the USCM and tested for a time, but ultimately lost to the M4RA."
+	desc = "The L42A Battle Rifle, found commonly around the frontiers of the Galaxy. It's commonly used by colonists for self defense, as well as many colonial militias, whomever they serve due to it's rugged reliability and ease of use without much training. This rifle was put up for adoption by the USCM and tested for a time, but ultimately lost to the M4RA already in serivce."
 	icon_state = "l42mk1"
 	item_state = "l42mk1"
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
@@ -1286,7 +1286,7 @@
 
 /obj/item/weapon/gun/rifle/m4ra
 	name = "\improper M4RA Battle Rifle"
-	desc = "The M4RA is a designated marksman rifle fielded by the USCM. A recent adoption, it was caught in a fierce competition with the L4 Battle Rifle, before ultimately winning out. Featuring bullpup ergonomics and utilising a higher velocity round than the M41, this is the perfect pick for any marine who prefers to keep a distance."
+	desc = "The M4RA is a designated marksman rifle fielded by the USCM. It was recently caught in a fierce competition with the L4 Battle Rifle, but ultimately the Colonial Marine Corps deemed the L4 too expensive to adopt and continued using the M4RA. Featuring bullpup ergonomics and utilising a higher velocity round than the M41, this is the perfect pick for any marine who prefers to keep a distance."
 	icon_state = "m4ra"
 	item_state = "m4ra" //PLACEHOLDER
 	fire_sound = 'sound/weapons/gun_m4ra.ogg'
@@ -1319,7 +1319,7 @@
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 51, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 45, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 20, "under_x" = 30, "under_y" = 13, "stock_x" = 51, "stock_y" = 14)
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()

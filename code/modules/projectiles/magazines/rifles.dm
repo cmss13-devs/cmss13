@@ -126,7 +126,7 @@
 //MR4A. It's a Designated Marksmen Rifle, picture the Marine SCAR-H.
 /obj/item/ammo_magazine/rifle/m4radmr
 	name = "\improper M4RA Standard"
-	desc = "Made in the same 10x24 as the Mark One & Kit, the M4RA uses a distinct M252C round. This round has a higher velocity and pressure than the standard cartridge used by the M41, dealing more damage per round, at the expense of more recoil. Not as high quality as the A19, but it works."
+	desc = "Made in the same 10x24 as the Mark One & HPR, the M4RA uses a distinct M252C round. This round has a higher velocity and pressure than the standard cartridge used by the M41, dealing more damage per round, at the expense of more recoil. Not as high quality as the A19, but it works."
 	icon_state = "m4ra"
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra

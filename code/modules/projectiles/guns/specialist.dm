@@ -390,7 +390,7 @@
 	name = "\improper M4RA Custom Battle Rifle"
 	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armourers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made M252C and A19 rounds."
 	icon_state = "m4ra_custom"
-	item_state = "m4ra_custom" //PLACEHOLDER
+	item_state = "m4ra_custom"
 	unacidable = TRUE
 	indestructible = 1
 
@@ -425,7 +425,7 @@
 
 
 /obj/item/weapon/gun/rifle/m4ra/custom/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 51, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 45, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 20, "under_x" = 30, "under_y" = 13, "stock_x" = 51, "stock_y" = 14)
 
 /obj/item/weapon/gun/rifle/m4ra/custom/set_gun_config_values()
 	..()

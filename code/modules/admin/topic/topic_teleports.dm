@@ -201,7 +201,7 @@
 
 			//Find all items in the world
 			var/list/targets = list()
-			for(var/obj/item/M in GLOB.item_list)
+			for(var/obj/item/M in world)
 				if(istype(M, chosen))
 					targets += M
 

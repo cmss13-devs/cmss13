@@ -50,6 +50,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/be_special = 0				// Special role selection
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION // flags in #define/mode.dm
 	var/UI_style = "midnight"
+	var/toggles_admin = TOGGLES_ADMIN_DEFAULT
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
 	var/toggles_langchat = TOGGLES_LANGCHAT_DEFAULT

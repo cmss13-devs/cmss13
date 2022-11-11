@@ -516,6 +516,11 @@ var/list/roundstart_mod_verbs = list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get debug log messages."))
 
+// TODO Port this to Statpanel Options Window probably
+/client/proc/togglestatpanelsplit()
+	set name = "Toggle Split Tabs"
+	set category = "Preferences"
+	prefs.toggles_admin ^= SPLIT_ADMIN_TABS
 
 /client/proc/togglenichelogs()
 	set name = "Toggle Niche Log Messages"

@@ -7,11 +7,7 @@
 import { KEY_BACKSPACE, KEY_F10, KEY_F11, KEY_F12 } from 'common/keycodes';
 import { globalEvents } from '../events';
 import { acquireHotKey } from '../hotkeys';
-import {
-  openExternalBrowser,
-  toggleDebugLayout,
-  toggleKitchenSink,
-} from './actions';
+import { openExternalBrowser, toggleDebugLayout, toggleKitchenSink } from './actions';
 
 // prettier-ignore
 const relayedTypes = [
@@ -50,7 +46,7 @@ export const relayMiddleware = (store) => {
   if (externalBrowser) {
     devServer.subscribe((msg) => {
       const { type, payload } = msg;
-      if (type === 'relay' && payload.windowId === window.__windowId__) {
+      if (type === 'relay' && payload.windowId === Byond.windowId) {
         store.dispatch({
           ...payload.action,
           relayed: true,
@@ -75,7 +71,7 @@ export const relayMiddleware = (store) => {
       devServer.sendMessage({
         type: 'relay',
         payload: {
-          windowId: window.__windowId__,
+          windowId: Byond.windowId,
           action,
         },
       });

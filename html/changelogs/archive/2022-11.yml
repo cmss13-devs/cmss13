@@ -155,3 +155,5 @@
   - code_imp: got rid of massive global lists for items and objects
   - bugfix: fixed drinks being drank twice, once instantly then after a delay
   - bugfix: fixed inability to feed someone else a drink
+  kugamo:
+  - bugfix: Fixed spawn pools sizzling dead corpses when crossed.

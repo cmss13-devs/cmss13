@@ -15,9 +15,12 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_admin_change_their_name,
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
+	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
+	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
+	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
 	/client/proc/invismin,
 	/client/proc/set_explosive_antigrief,
@@ -49,11 +52,15 @@ var/list/admin_verbs_default = list(
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
 	/datum/admins/proc/wakeall,
+	/client/proc/toggle_lz_protection,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/cmd_admin_check_contents,
-	/client/proc/clear_mutineers
+	/client/proc/clear_mutineers,
+	/datum/admins/proc/directnarrateall,
+	/datum/admins/proc/subtlemessageall,
+	/datum/admins/proc/alertall
 	)
 
 var/list/admin_verbs_admin = list(
@@ -261,76 +268,6 @@ var/list/admin_verbs_teleport = list(
 	/client/proc/Getmob,
 	/client/proc/Getkey,
 	/client/proc/toggle_noclip
-)
-
-var/list/admin_verbs_mod = list(
-	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
-	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
-	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game.*/
-	/client/proc/debug_global_variables,
-	/client/proc/toggledebuglogs,
-	/client/proc/togglenichelogs,
-	/datum/admins/proc/player_notes_show,
-	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
-	/client/proc/invismin,
-	/client/proc/cmd_mod_say,
-	/client/proc/dsay,
-	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
-	/client/proc/vehicle_panel,
-	/client/proc/in_view_panel,
-	/client/proc/toggle_lz_resin,
-	/client/proc/toggle_ob_spawn,
-	/client/proc/toggle_sniper_upgrade,
-	/client/proc/toggle_attack_dead,
-	/client/proc/toggle_strip_drag,
-	/client/proc/toggle_uniform_strip,
-	/client/proc/toggle_strong_defibs,
-	/client/proc/toggle_blood_optimization,
-	/client/proc/toggle_combat_cas,
-	/client/proc/toggle_lz_protection,
-	/client/proc/rejuvenate_all_in_view,
-	/client/proc/rejuvenate_all_humans_in_view,
-	/client/proc/rejuvenate_all_revivable_humans_in_view,
-	/client/proc/rejuvenate_all_xenos_in_view,
-	/datum/admins/proc/togglesleep,
-	/datum/admins/proc/sleepall,
-	/datum/admins/proc/wakeall,
-	/datum/admins/proc/directnarrateall,
-	/datum/admins/proc/subtlemessageall,
-	/datum/admins/proc/alertall,
-	/datum/admins/proc/togglejoin,
-	/client/proc/jump_to_object,
-	/client/proc/jumptomob,
-	/client/proc/toggle_own_ghost_vis,
-	/client/proc/check_antagonists,
-	/client/proc/check_round_status,
-	/client/proc/toggleattacklogs,
-	/client/proc/toggleffattacklogs,
-	/client/proc/xooc,					// Xeno OOC
-	/client/proc/mooc,					// Marine OOC
-	/client/proc/yooc,					// Yautja OOC
-	/datum/admins/proc/view_txt_log,
-	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
-	/datum/admins/proc/togglelooc,		/*toggles ooc on/off for everyone*/
-	/datum/admins/proc/toggledsay,		/*toggles dsay on/off for everyone*/
-	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
-	/client/proc/view_faxes,
-	/client/proc/create_custom_paper,
-	/client/proc/cmd_admin_change_their_name,
-	/client/proc/cmd_admin_changekey,
-	/client/proc/cmd_admin_subtle_message,
-	/client/proc/cmd_admin_object_narrate,
-	/client/proc/cmd_admin_pm_context,
-	/client/proc/cmd_admin_check_contents,
-	/datum/admins/proc/show_player_panel,
-	/client/proc/hide_admin_verbs,
-	/client/proc/clear_mutineers,
-	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
-	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
-	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
-	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions
-	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
-	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
 )
 
 var/list/roundstart_mod_verbs = list(

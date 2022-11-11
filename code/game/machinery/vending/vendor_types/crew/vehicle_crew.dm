@@ -72,17 +72,20 @@
 			display_list = GLOB.cm_vending_vehicle_crew_apc_spare
 	return display_list
 
-/obj/structure/machinery/cm_vending/gear/ui_data(mob/user)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/ui_data(mob/user)
 	. = ..()
 
 	if(supply_controller.tank_points)		//we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
-		available_points = supply_controller.tank_points
+		available_points_to_display = supply_controller.tank_points
 		supply_controller.tank_points = 0
-	.["current_m_points"] = available_points
+	.["current_m_points"] = available_points_to_display
 	/*
 	if(budget_points >= p_cost && (!avail_flag || available_categories & avail_flag))
 				prod_available = TRUE
 	*/
+
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/handle_points(var/mob/living/carbon/human/H, var/list/L)
 	. = TRUE
@@ -93,7 +96,7 @@
 			return FALSE
 		available_categories &= ~L[4]
 	else
-		if(available_points < L[2])
+		if(available_points_to_display < L[2])
 			to_chat(H, SPAN_WARNING("Not enough points."))
 			vend_fail()
 			return FALSE

@@ -32,7 +32,7 @@
 		return
 	if (seed.roundstart)
 		to_chat(usr, SPAN_WARNING("You can't rename basic seeds!"))
-		//return
+		return
 	var/new_name = copytext(reject_bad_text(input(user,"Rename seed variety?", "Set new seed variety name", "")), 1, MAX_NAME_LEN)
 	if (!new_name)
 		return
@@ -43,6 +43,7 @@
 	for (var/obj/item/seeds/SS in GLOB.seed_list)
 		if (SS.seed.uid == S.seed.uid)
 			SS.update_appearance() //updates the name
+
 	to_chat(usr, SPAN_INFO("Variety #[seed.uid] renamed to \"[new_name]\""))
 
 

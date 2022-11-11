@@ -194,10 +194,10 @@
 
 	. = ..()
 
-/obj/effect/alien/resin/special/pool/Crossed(var/atom/movable/AM)
+/obj/effect/alien/resin/special/pool/Crossed(mob/AM)
 	. = ..()
 
-	if(!ishuman(AM))
+	if(!ishuman(AM) || AM.stat == DEAD)
 		return
 
 	var/mob/living/carbon/human/H = AM

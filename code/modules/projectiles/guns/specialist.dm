@@ -414,6 +414,7 @@
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
+						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/stock/m4ra_custom
 						)
 

@@ -1043,7 +1043,10 @@
 /datum/ammo/bullet/rifle/dmr
 	name = "M252C bullet"
 	shrapnel_chance = 0
-	damage_falloff = 0
+	damage_falloff = DAMAGE_FALLOFF_TIER_5
+	effective_range_max = 6
+
+
 	flags_ammo_behavior = AMMO_BALLISTIC
 	accurate_range_min = 4
 

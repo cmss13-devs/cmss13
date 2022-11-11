@@ -1285,7 +1285,7 @@
 //  M4RA Designated Marksmen Rifle
 
 /obj/item/weapon/gun/rifle/m4ra
-	name = "\improper M4RA Battle Rifle"
+	name = "\improper M4RA Designated Marksman Rifle"
 	desc = "The M4RA is a designated marksman rifle fielded by the USCM. It was recently caught in a fierce competition with the L4 Battle Rifle, but ultimately the Colonial Marine Corps deemed the L4 too expensive to adopt and continued using the M4RA. Featuring bullpup ergonomics and utilising a higher velocity round than the M41, this is the perfect pick for any marine who prefers to keep a distance."
 	icon_state = "m4ra"
 	item_state = "m4ra" //PLACEHOLDER
@@ -1309,6 +1309,7 @@
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
+						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/stock/m4ra
 						)
 

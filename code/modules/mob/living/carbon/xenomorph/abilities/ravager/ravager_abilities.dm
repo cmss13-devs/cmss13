@@ -68,7 +68,7 @@
 	xeno_cooldown = 15 SECONDS
 
 	// Config values
-	var/speed_buff = 0.6
+	var/speed_buff = 0.7
 	var/buff_duration = 6 SECONDS
 
 

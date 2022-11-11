@@ -45,7 +45,10 @@
 			owner.jumptooffsetcoord(targ_x, targ_y)
 
 		if("jump_to_obj")
-			var/obj/choice = tgui_input_list(owner, "Pick an object to jump to:", "Jump", GLOB.object_list)
+			var/list/obj/targets = list()
+			for(var/obj/O in world)
+				targets += O
+			var/obj/choice = tgui_input_list(owner, "Pick an object to jump to:", "Jump", targets)
 			if(QDELETED(choice))
 				return
 

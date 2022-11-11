@@ -20,6 +20,32 @@
 	GLOB.seed_list -= src
 	return ..()
 
+/obj/item/seeds/verb/rename_seeds() //set amount_per_transfer_from_this
+	set name = "Rename Seeds"
+	set category = "Object"
+	set src in usr
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+	var/obj/item/seeds/S = user.get_active_hand()
+	if(!istype(S))
+		return
+	if (seed.roundstart)
+		to_chat(usr, SPAN_WARNING("You can't rename basic seeds!"))
+		//return
+	var/new_name = copytext(reject_bad_text(input(user,"Rename seed variety?", "Set new seed variety name", "")), 1, MAX_NAME_LEN)
+	if (!new_name)
+		return
+	S.seed.seed_name = new_name
+	//Sure, the various seed types have different names for the plant thing but honestly it's too much work changing that for what it's worth...
+	//So generic name instead!
+	S.seed.display_name = "[new_name] plant"
+	for (var/obj/item/seeds/SS in GLOB.seed_list)
+		if (SS.seed.uid == S.seed.uid)
+			SS.update_appearance() //updates the name
+	to_chat(usr, SPAN_INFO("Variety #[seed.uid] renamed to \"[new_name]\""))
+
+
 //Grabs the appropriate seed datum from the global list.
 /obj/item/seeds/proc/update_seed()
 	if(!seed && seed_type && !isnull(seed_types) && seed_types[seed_type])

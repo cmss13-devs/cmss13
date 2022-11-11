@@ -31,6 +31,7 @@
 /obj/item/reagent_container/food/snacks/grown/proc/update_from_seed()// Fill the object up with the appropriate reagents.
 	if(!isnull(plantname))
 		var/datum/seed/S = seed_types[plantname]
+		name = S.seed_name //Copies the name from the seed, important for renamed plants
 		if(!S || !S.chems)
 			return
 

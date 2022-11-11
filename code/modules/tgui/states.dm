@@ -72,11 +72,13 @@
 		return UI_UPDATE
 	return UI_INTERACTIVE
 
+/* Not sure why this is here, it just breaks interactibility on inventory_state
 /mob/living/shared_ui_interaction(src_object)
 	. = ..()
 	//if(!(mobility_flags & MOBILITY_UI) && . == UI_INTERACTIVE)
 	if(. == UI_INTERACTIVE)
 		return UI_UPDATE
+*/
 
 /mob/living/silicon/robot/shared_ui_interaction(src_object)
 	// Disable UIs if the object isn't installed in the borg AND the borg is either locked, has a dead cell, or no cell.

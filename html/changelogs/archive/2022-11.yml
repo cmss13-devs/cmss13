@@ -146,6 +146,8 @@
   - rscadd: Added equipment presets to use for said dress uniforms.
   - rscadd: Resprited latex gloves and added a new, more shiny white gloves variant.
 2022-11-11:
+  Zonespace27:
+  - code_imp: Added a define, BYOND_TRACY, for byond-tracy profiling support
   fira:
   - code_imp: got rid of massive global lists for items and objects
   - bugfix: fixed drinks being drank twice, once instantly then after a delay

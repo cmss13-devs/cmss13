@@ -20,14 +20,13 @@
 				all_equipment += equipment
 			qdel(eq)
 		return all_equipment
-	if(user)
-		var/mob/living/carbon/human/human = user
-		if(human.assigned_equipment_preset)
-			var/list/gear = human.assigned_equipment_preset.get_antag_gear_equipment()
-			return gear
-		else
-			var/datum/equipment_preset/default = new /datum/equipment_preset/clf
-			return default.get_antag_gear_equipment()
+	var/mob/living/carbon/human/human = user
+	if(human.assigned_equipment_preset)
+		var/list/gear = human.assigned_equipment_preset.get_antag_gear_equipment()
+		return gear
+	else
+		var/datum/equipment_preset/default = new /datum/equipment_preset/clf
+		return default.get_antag_gear_equipment()
 
 /obj/structure/machinery/cm_vending/gear/antag/ui_static_data(mob/user)
 	. = ..()

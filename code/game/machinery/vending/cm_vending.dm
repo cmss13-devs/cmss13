@@ -392,55 +392,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/proc/get_listed_products(var/mob/user)
 	return listed_products
 
-/obj/structure/machinery/cm_vending/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
-
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/H = user
-
-	var/list/display_list = list()
-
-	var/buy_flags = NO_FLAGS
-	if(use_snowflake_points)
-		available_points_to_display = H.marine_snowflake_points
-	else if(use_points)
-		available_points_to_display = H.marine_points
-
-	buy_flags = H.marine_buy_flags
-
-	var/list/ui_listed_products = get_listed_products(user)
-	if(length(ui_listed_products))
-		for(var/i in 1 to length(ui_listed_products))
-			var/list/myprod = ui_listed_products[i]
-			var/p_name = myprod[1]
-			var/p_cost = myprod[2]
-			if(p_cost > 0)
-				p_name += " ([p_cost] points)"
-
-			var/prod_available = FALSE
-			var/avail_flag = myprod[4]
-			if(available_points_to_display >= p_cost && (!avail_flag || buy_flags & avail_flag))
-				prod_available = TRUE
-
-			//place in main list, name, cost, available or not, color.
-			display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_available" = prod_available, "prod_color" = myprod[5]))
-
-	var/list/data = list(
-		"vendor_name" = name,
-		"show_points" = show_points,
-		"current_m_points" = available_points_to_display,
-		"displayed_records" = display_list,
-	)
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "cm_vending.tmpl", name , 600, 700)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(0)	//we don't really need autoupdate for gear/clothing vendors as they ghave infinite
-
-
 /obj/structure/machinery/cm_vending/Topic(href, href_list)
 	. = ..()
 	if(.)

@@ -1284,13 +1284,13 @@
 
 //  M4RA Designated Marksmen Rifle
 
-/obj/item/weapon/gun/rifle/m4ra/dmr
+/obj/item/weapon/gun/rifle/m4ra
 	name = "\improper M4RA Battle Rifle"
 	desc = "The M4RA is a designated marksman rifle fielded by the USCM. A recent adoption, it was caught in a fierce competition with the L4 Battle Rifle, before ultimately winning out. Featuring bullpup ergonomics and utilising a higher velocity round than the M41, this is the perfect pick for any marine who prefers to keep a distance."
-	icon_state = "m41b"
+	icon_state = "m4ra"
 	item_state = "m4ra" //PLACEHOLDER
 	fire_sound = 'sound/weapons/gun_m4ra.ogg'
-	current_mag = /obj/item/weapon/gun/rifle/m4ra
+	current_mag = /obj/item/ammo_magazine/rifle/m4radmr
 	force = 16
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -1309,18 +1309,17 @@
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
-
+						/obj/item/attachable/stock/m4ra
 						)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_SLOW
-	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
 
 	flags_item = TWOHANDED
-
+	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 51, "stock_y" = 14)
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
@@ -1333,6 +1332,12 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	damage_falloff_mult = 0
+
+/obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
+	var/obj/item/attachable/stock/S = new /obj/item/attachable/stock/m4ra(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
 
 //-------------------------------------------------------
 //-------------------------------------------------------

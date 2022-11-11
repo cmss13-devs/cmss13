@@ -1160,6 +1160,24 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
 
+/obj/item/attachable/stock/m4ra
+	name = "\improper M4RA barrel"
+	desc = "If you can see this, tell a coder."
+	icon_state = "m4ra_barrel_a"
+
+/obj/item/attachable/stock/m4ra_custom/New()
+	..()
+	select_gamemode_skin(type)
+
+/obj/item/attachable/stock/m4ra_custom
+	name = "\improper M4RA custom barrel"
+	desc = "If you can see this, tell a coder."
+	icon_state = "m4ra_custom_barrel_a"
+
+/obj/item/attachable/stock/m4ra_custom/New()
+	..()
+	select_gamemode_skin(type)
+
 /obj/item/attachable/stock/xm88
 	name = "\improper XM88 padded stock"
 	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88 Heavy Rifle."
@@ -1428,18 +1446,6 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
-
-/obj/item/attachable/stock/carbine
-	name = "\improper L42 synthetic stock"
-	desc = "A special issue stock made of sturdy, yet lightweight materials. Attaches to the L42A Battle Rifle. Not effective as a blunt force weapon."
-	slot = "stock"
-	size_mod = 1
-	icon_state = "l42stock"
-	attach_icon = "l42stock_a"
-	pixel_shift_x = 37
-	pixel_shift_y = 8
-	wield_delay_mod = WIELD_DELAY_NORMAL
-	hud_offset_mod = 2
 
 /obj/item/attachable/stock/carbine/New()
 	..()

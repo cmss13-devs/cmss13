@@ -389,8 +389,8 @@
 /obj/item/weapon/gun/rifle/m4ra/custom
 	name = "\improper M4RA Custom Battle Rifle"
 	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armourers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made M252C and A19 rounds."
-	icon_state = "m41b"
-	item_state = "m4ra" //PLACEHOLDER
+	icon_state = "m4ra_custom"
+	item_state = "m4ra_custom" //PLACEHOLDER
 	unacidable = TRUE
 	indestructible = 1
 
@@ -414,19 +414,20 @@
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
+						/obj/item/attachable/stock/m4ra_custom
 						)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_FAST
-	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
+	map_specific_decoration = TRUE
 
 
-/obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+/obj/item/weapon/gun/rifle/m4ra/custom/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 51, "stock_y" = 14)
 
-/obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
+/obj/item/weapon/gun/rifle/m4ra/custom/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_6
 	burst_amount = BURST_AMOUNT_TIER_2
@@ -436,6 +437,12 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
+
+/obj/item/weapon/gun/rifle/m4ra/custom/handle_starting_attachment()
+	var/obj/item/attachable/stock/S = new /obj/item/attachable/stock/m4ra_custom(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
 
 /obj/item/weapon/gun/rifle/m4ra/custom/able_to_fire(mob/living/user)
 	. = ..()

@@ -400,7 +400,7 @@
 /obj/effect/alien/weeds/weedwall/window/update_icon()
 	var/obj/structure/window/framed/F = locate() in loc
 	if(F && F.junction)
-		icon_state = "weedwall[F.junction]"
+		icon_state = "weedwindow[F.junction]"
 
 /obj/effect/alien/weeds/weedwall/frame
 	layer = ABOVE_TABLE_LAYER

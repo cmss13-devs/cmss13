@@ -321,7 +321,7 @@
 		list("Box Of Buckshot Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
 		list("Box Of Flechette Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
 		list("Box Of Shotgun Slugs", round(scale * 2), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
-		list("M4RA Standard Magazine", round(scale * 8), /obj/item/ammo_magazine/rifle/m4radmr, VENDOR_ITEM_REGULAR),
+		list("M4RA Standard Magazine", round(scale * 10), /obj/item/ammo_magazine/rifle/m4radmr, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Magazine (10x24mm", round(scale * 10), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
 		list("M39 HV Magazine (10x20mm)", round(scale * 7.5), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M44 Speed Loader (.44)", round(scale * 5.3), /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),

@@ -47,7 +47,7 @@
 /datum/supply_packs/ammo_rounds_box_xm88
 	name = "m252c cartridge crate (x300 rounds)"
 	contains = list(/obj/item/ammo_box/rounds/m4ra)
-	cost = RO_PRICE_NORMAL
+	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper m252c cartridge crate"
 	group = "Ammo"

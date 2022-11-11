@@ -267,7 +267,7 @@ export const SquadInfo = (_, context) => {
 
   return (
     <Window theme="usmc" width={680} height={675}>
-      <Window.Content>
+      <Window.Content className="SquadInfo">
         <Flex fill justify="space-around" direction="column">
           <Flex.Item>
             <Section title={`${data.squad} Squad Leader: ${data.sl?.name ?? 'None'}`}>

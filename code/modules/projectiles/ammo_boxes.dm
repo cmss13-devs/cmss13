@@ -465,6 +465,9 @@
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/m4radmr
 
+/obj/item/ammo_box/magazine/m4ra/empty
+	empty = TRUE
+
 //-----------------------M16 Rifle Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/M16
@@ -1107,6 +1110,14 @@
 	max_bullet_amount = 400
 
 /obj/item/ammo_box/rounds/incen/empty
+	empty = TRUE
+/obj/item/ammo_box/rounds/m4ra
+	name = "rifle ammunition box (M252C)"
+	desc = "A box used to refill the M4RA Standard Magazines. Due to the higher pressure and intensity of the M252C cartridge, despite sharing dimensions, these rounds cannot be slotted into other 10x24mm rifles without causing barrel warping."
+	default_ammo = /datum/ammo/bullet/rifle/dmr
+	bullet_amount = 450
+
+/obj/item/ammo_box/rounds/m4ra/empty
 	empty = TRUE
 
 //----------------10x20mm Ammunition Boxes (for M39 SMG)------------------

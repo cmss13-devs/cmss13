@@ -1284,26 +1284,32 @@
 
 //  M4RA Designated Marksmen Rifle
 
-/obj/item/weapon/gun/rifle/m4radmr
+/obj/item/weapon/gun/rifle/m4ra/dmr
 	name = "\improper M4RA Battle Rifle"
 	desc = "The M4RA is a designated marksman rifle fielded by the USCM. A recent adoption, it was caught in a fierce competition with the L4 Battle Rifle, before ultimately winning out. Featuring bullpup ergonomics and utilising a higher velocity round than the M41, this is the perfect pick for any marine who prefers to keep a distance."
 	icon_state = "m41b"
 	item_state = "m4ra" //PLACEHOLDER
 	fire_sound = 'sound/weapons/gun_m4ra.ogg'
-	current_mag = /obj/item/weapon/gun/rifle/m4radmr
+	current_mag = /obj/item/weapon/gun/rifle/m4ra
 	force = 16
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
 						/obj/item/attachable/flashlight/grip,
 						/obj/item/attachable/bipod,
 						/obj/item/attachable/compensator,
+						/obj/item/attachable/attached_gun/grenade,
+						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/shotgun,
+						/obj/item/attachable/attached_gun/extinguisher,
 						/obj/item/attachable/scope,
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex
+						/obj/item/attachable/reflex,
+
 						)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER

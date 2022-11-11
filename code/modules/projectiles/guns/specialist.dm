@@ -386,7 +386,7 @@
 
 //M4RA marksman rifle
 
-/obj/item/weapon/gun/rifle/m4rac
+/obj/item/weapon/gun/rifle/m4ra/custom
 	name = "\improper M4RA Custom Battle Rifle"
 	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armourers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made M252C and A19 rounds."
 	icon_state = "m41b"

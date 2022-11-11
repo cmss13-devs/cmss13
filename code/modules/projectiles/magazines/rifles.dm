@@ -129,7 +129,7 @@
 	desc = "Made in the same 10x24 as the Mark One & Kit, the M4RA uses a distinct M252C round. This round has a higher velocity and pressure than the standard cartridge used by the M41, dealing more damage per round, at the expense of more recoil. Not as high quality as the A19, but it works."
 	icon_state = "m4ra"
 	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/rifle/m4radmr
+	gun_type = /obj/item/weapon/gun/rifle/m4ra
 	default_ammo = /datum/ammo/bullet/rifle/dmr
 //-------------------------------------------------------
 //MAR-40 AK CLONE //AK47 and FN FAL together as one.

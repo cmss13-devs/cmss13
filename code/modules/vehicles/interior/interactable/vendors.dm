@@ -214,7 +214,7 @@
 		list("M37A2 Pump Shotgun", round(scale * 3), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
 		list("M39 Submachinegun", round(scale * 2.5), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK2", round(scale * 4), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
-		list("M4RA Designated Marksmen Rifle", round(scale * 2), /obj/item/weapon/gun/rifle/m4radmr, VENDOR_ITEM_REGULAR),
+		list("M4RA Designated Marksmen Rifle", round(scale * 2), /obj/item/weapon/gun/rifle/m4ra/dmr, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
 		list("88 Mod 4 Combat Pistol", round(scale * 2), /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),

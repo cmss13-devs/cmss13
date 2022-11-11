@@ -386,7 +386,7 @@ const ImproveClearanceConfirmation = (props, context) => {
             onCancel={() => setConfirm(undefined)}
           >
             <span>
-              Are you sure you want to spend <u>{data.broker_cost}</u> research 
+              Are you sure you want to spend <u>{data.broker_cost}</u> research
               credits to increase the clearance immediately?
             </span>
           </ConfirmationDialogue>
@@ -574,7 +574,7 @@ export const ResearchTerminal = (_, context) => {
       height={320 * 2}
       theme="crtyellow"
     >
-      <Window.Content scrollable>
+      <Window.Content scrollable className="ResearchTerminal">
         <Section
           title={`Clearance Level ${data.clearance_level}`}
           buttons={<ClearanceImproveButton />}

@@ -56,7 +56,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/patch/mp(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/badge(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/armband/mp(H), WEAR_ACCESSORY)
 
 //*****************************************************************************************************/
@@ -172,7 +172,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/patch/mp(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/badge(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/armband/mp(H), WEAR_ACCESSORY)
 
 //*****************************************************************************************************/
@@ -207,7 +207,7 @@
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
 
-	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
+	utility_under = list(/obj/item/clothing/under/marine/officer/bridge)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
@@ -232,7 +232,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/patch/mp(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/badge(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/armband/mp(H), WEAR_ACCESSORY)
 
 //*****************************************************************************************************/
@@ -249,7 +249,7 @@
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
 
-	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
+	utility_under = list(/obj/item/clothing/under/marine/officer/bridge)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
@@ -280,7 +280,7 @@
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/riot(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/riot(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/patch/mp(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/badge(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new 	/obj/item/clothing/accessory/armband/mp(H), WEAR_ACCESSORY)
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)

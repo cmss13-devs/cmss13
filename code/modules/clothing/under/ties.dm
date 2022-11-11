@@ -306,10 +306,13 @@
 	icon_state = "platinum"
 
 //MP Badge
-/obj/item/clothing/accessory/medal/mp
+/obj/item/clothing/accessory/badge
 	name = "mp badge"
 	desc = "A gold MP badge."
-	icon_state = "mp_badge"
+	icon_state = "mpbadge"
+	slot = ACCESSORY_SLOT_MEDAL
+	high_visibility = TRUE
+	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
 
 //Armbands
 /obj/item/clothing/accessory/armband
@@ -379,12 +382,6 @@
 	select_gamemode_skin(type)
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
 	update_icon()
-
-//MP Badge
-/obj/item/clothing/accessory/patch/mp
-	name = "mp badge"
-	desc = "A gold MP badge."
-	icon_state = "mpbadge"
 
 //Ties that can store stuff
 

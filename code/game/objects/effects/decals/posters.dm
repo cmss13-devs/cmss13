@@ -121,7 +121,6 @@
 	var/desc=""
 	var/icon_state=""
 
-///For ease of mapping
 /obj/structure/sign/poster/ad
 	icon_state = "poster7"
 

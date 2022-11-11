@@ -42,7 +42,7 @@
 		if(TYPE_MOB_REFERENCE)
 			selected_value = input(usr,"Enter variable value:" ,"Value") as mob in GLOB.mob_list
 		if(TYPE_OBJ_REFERENCE)
-			selected_value = input(usr,"Enter variable value:" ,"Value") as obj in GLOB.object_list
+			selected_value = input(usr,"Enter variable value:" ,"Value") as obj in world
 		if(TYPE_TURF_REFERENCE)
 			selected_value = input(usr,"Enter variable value:" ,"Value") as turf in turfs
 

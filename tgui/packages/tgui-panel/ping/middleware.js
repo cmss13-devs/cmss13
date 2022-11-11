@@ -5,13 +5,12 @@
  */
 
 import { sendMessage } from 'tgui/backend';
-import { pingFail, pingSuccess } from './actions';
-import { PING_INTERVAL, PING_QUEUE_SIZE, PING_TIMEOUT } from './constants';
+import { pingFail, pingReply, pingSoft, pingSuccess } from './actions';
+import { PING_QUEUE_SIZE, PING_TIMEOUT } from './constants';
 
 export const pingMiddleware = (store) => {
   let initialized = false;
   let index = 0;
-  let interval;
   const pings = [];
   const sendPing = () => {
     for (let i = 0; i < PING_QUEUE_SIZE; i++) {
@@ -33,16 +32,20 @@ export const pingMiddleware = (store) => {
     const { type, payload } = action;
     if (!initialized) {
       initialized = true;
-      interval = setInterval(sendPing, PING_INTERVAL);
       sendPing();
     }
-    if (type === 'roundrestart') {
-      // Stop pinging because dreamseeker is currently reconnecting.
-      // Topic calls in the middle of reconnect will crash the connection.
-      clearInterval(interval);
+
+    if (type === pingSoft.type) {
+      const { afk } = payload;
+      // On each soft ping where client is not flagged as afk,
+      // initiate a new ping.
+      if (!afk) {
+        sendPing();
+      }
       return next(action);
     }
-    if (type === 'pingReply') {
+
+    if (type === pingReply.type) {
       const { index } = payload;
       const ping = pings[index];
       // Received a timed out ping
@@ -52,6 +55,7 @@ export const pingMiddleware = (store) => {
       pings[index] = null;
       return next(pingSuccess(ping));
     }
+
     return next(action);
   };
 };

@@ -123,6 +123,11 @@
 #define ASSEMBLY_UNLOCKED	1
 #define ASSEMBLY_LOCKED		2
 
+// Matrix CAS Upgrades
+#define MATRIX_DEFAULT 	0
+#define MATRIX_NVG 		1
+#define MATRIX_WIDE 	2
+
 // Statistics defines
 #define STATISTIC_XENO "xeno"
 #define STATISTIC_HUMAN "human"

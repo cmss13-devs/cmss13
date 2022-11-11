@@ -251,7 +251,6 @@
 /obj/vehicle/proc/update_stats()
 	return
 
-///Soutomobile
 /obj/vehicle/souto
 	name = "\improper Soutomobile"
 	icon_state = "soutomobile"

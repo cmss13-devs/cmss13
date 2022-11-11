@@ -475,6 +475,9 @@
 	else
 		return ..()
 
+/obj/item/storage/pouch/magazine/pulse_rifle/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -580,6 +583,10 @@
 /obj/item/storage/pouch/shotgun/large/slug/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
+
+/obj/item/storage/pouch/shotgun/large/buckshot/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
@@ -842,10 +849,16 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
 	. = ..()
-	inner.reagents.add_reagent("adrenaline", inner.volume/2.5)
-	inner.reagents.add_reagent("inaprovaline", inner.volume/2.5)
-	inner.reagents.add_reagent("peridaxon", inner.volume/5)
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
+	. = ..()
+	inner.reagents.add_reagent("tricordrazine", inner.volume)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)

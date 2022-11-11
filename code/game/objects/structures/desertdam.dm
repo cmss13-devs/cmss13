@@ -9,6 +9,7 @@
 	unslashable = TRUE
 	unacidable = TRUE // can toggle it off anyway
 	layer = ABOVE_MOB_LAYER
+	plane = FLOOR_PLANE
 //loose sand overlay
 /obj/structure/desertdam/decals/loose_sand_overlay
 	name = "loose sand"

@@ -63,5 +63,6 @@ INITIALIZE_IMMEDIATE(/obj/plane_master_controller)
 	controlled_planes = list(
 		GAME_PLANE,
 		LIGHTING_PLANE,
+		EXTERIOR_LIGHTING_PLANE
 	)
 

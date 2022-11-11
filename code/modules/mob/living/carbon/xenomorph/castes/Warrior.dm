@@ -5,7 +5,7 @@
 	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_5
 	melee_vehicle_damage = XENO_DAMAGE_TIER_5
-	max_health = XENO_HEALTH_TIER_5
+	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_NO_PLASMA
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
@@ -108,29 +108,59 @@
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"
 
-	var/stored_shield_max = 100
-	var/stored_shield_per_slash = 25
-	var/datum/component/shield_component
+	var/slash_charge_cdr = 0.30 SECONDS // Amount to reduce charge cooldown by per slash
+	var/lifesteal_percent = 7
+	var/max_lifesteal = 9
+	var/lifesteal_range =  3
+	var/lifesteal_lock_duration = 20
+	var/color = "#6c6f24"
+	var/emote_cooldown = 0
 
-/datum/behavior_delegate/warrior_base/New()
-	. = ..()
+/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_self()
+	..()
 
-/datum/behavior_delegate/warrior_base/add_to_xeno()
-	. = ..()
-	if(!shield_component)
-		shield_component = bound_xeno.AddComponent(\
-			/datum/component/shield_slash,\
-			stored_shield_max,\
-			stored_shield_per_slash,\
-			"Warrior Shield")
-	else
-		bound_xeno.TakeComponent(shield_component)
+	var/datum/action/xeno_action/activable/lunge/cAction1 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/lunge)
+	if (!cAction1.action_cooldown_check())
+		cAction1.reduce_cooldown(slash_charge_cdr)
 
-/datum/behavior_delegate/warrior_base/remove_from_xeno()
-	bound_xeno.remove_xeno_shield()
-	shield_component.RemoveComponent()
-	return ..()
+	var/datum/action/xeno_action/activable/fling/cAction2 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/fling)
+	if (!cAction2.action_cooldown_check())
+		cAction2.reduce_cooldown(slash_charge_cdr)
 
-/datum/behavior_delegate/warrior_base/Destroy(force, ...)
-	qdel(shield_component)
-	return ..()
+	var/datum/action/xeno_action/activable/warrior_punch/cAction3 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/warrior_punch)
+	if (!cAction3.action_cooldown_check())
+		cAction3.reduce_cooldown(slash_charge_cdr)
+
+/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
+	..()
+
+	var/final_lifesteal = lifesteal_percent
+	var/list/mobs_in_range = oviewers(lifesteal_range, bound_xeno)
+
+	for(var/mob/mob as anything in mobs_in_range)
+		if(final_lifesteal >= max_lifesteal)
+			break
+
+		if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
+			continue
+
+		if(bound_xeno.can_not_harm(mob))
+			continue
+
+		final_lifesteal++
+
+// This part is then outside the for loop
+		if(final_lifesteal >= max_lifesteal)
+			bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 90))
+			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name] glows as it heals even more from its injuries!."), SPAN_XENODANGER("You glow as you heal even more from your injuries!"))
+			bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
+		if(istype(bound_xeno) && world.time > emote_cooldown && bound_xeno)
+			bound_xeno.emote("roar")
+			bound_xeno.xeno_jitter(1 SECONDS)
+			emote_cooldown = world.time + 5 SECONDS
+		addtimer(CALLBACK(src, .proc/lifesteal_lock), lifesteal_lock_duration/2)
+
+	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 20, 40))
+
+/datum/behavior_delegate/warrior_base/proc/lifesteal_lock()
+	bound_xeno.remove_filter("empower_rage")

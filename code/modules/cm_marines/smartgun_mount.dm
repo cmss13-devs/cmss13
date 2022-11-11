@@ -7,7 +7,7 @@
 #define M2C_HIGH_COOLDOWN_ROLL 0.45
 #define M2C_PASSIVE_COOLDOWN_AMOUNT 4
 #define M2C_OVERHEAT_OVERLAY 14
-#define M2C_CRUSHER_STUN 3 SECONDS
+#define M2C_CRUSHER_STUN 3 //amount in ticks (roughly 3 seconds)
 
 //////////////////////////////////////////////////////////////
 //Mounted MG, Replacment for the current jury rig code.
@@ -745,8 +745,8 @@
 	if(user.lying || get_dist(user,src) > 1 || user.is_mob_incapacitated())
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
-	if(user.get_active_hand())
-		to_chat(usr, SPAN_WARNING("You need a free hand to shoot \the [src]."))
+	if(user.get_active_hand() || user.get_inactive_hand())
+		to_chat(usr, SPAN_WARNING("You need two free hands to shoot \the [src]."))
 		return HANDLE_CLICK_UNHANDLED
 	if(!user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))

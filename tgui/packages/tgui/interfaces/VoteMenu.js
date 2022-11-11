@@ -5,22 +5,22 @@ const PAGES = [
   {
     title: 'Vote',
     component: () => MainMenu,
-    color: "white",
-    icon: "square",
-    canAccess: data => !!data.vote_in_progress,
+    color: 'white',
+    icon: 'square',
+    canAccess: (data) => !!data.vote_in_progress,
   },
   {
     title: 'Start a vote',
     component: () => StartVote,
-    color: "red",
-    icon: "gavel",
+    color: 'red',
+    icon: 'gavel',
   },
   {
     title: 'Settings',
     component: () => SettingsMenu,
-    color: "orange",
-    icon: "cog",
-    canAccess: data => !!data.is_admin,
+    color: 'orange',
+    icon: 'cog',
+    canAccess: (data) => !!data.is_admin,
   },
 ];
 
@@ -32,10 +32,7 @@ export const VoteMenu = (props, context) => {
   const PageComponent = PAGES[pageIndex].component();
 
   return (
-    <Window
-      width={400}
-      height={350}
-    >
+    <Window width={400} height={350}>
       <Window.Content scrollable>
         <Tabs>
           {PAGES.map((page, i) => {
@@ -64,19 +61,20 @@ export const VoteMenu = (props, context) => {
 const MainMenu = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    vote_in_progress, vote_choices,
-    vote_title, is_admin, vote_has_voted,
+    vote_in_progress,
+    vote_choices,
+    vote_title,
+    is_admin,
+    vote_has_voted,
   } = data;
 
   return (
     <Flex direction="column">
       <Flex.Item grow={1}>
         <Section title={vote_title} fill>
-          {!!vote_in_progress && (
-            <Flex
-              wrap="wrap"
-            >
-              {Object.keys(vote_choices).map(key => (
+          {(!!vote_in_progress && (
+            <Flex wrap="wrap">
+              {Object.keys(vote_choices).map((key) => (
                 <Flex.Item basis="100%" mt={1} key={key}>
                   <Flex align="center">
                     <Flex.Item grow={1}>
@@ -84,8 +82,7 @@ const MainMenu = (props, context) => {
                         height="100%"
                         fontSize="110%"
                         textAlign="center"
-                        className="VoteMenu__Textbox"
-                      >
+                        className="VoteMenu__Textbox">
                         {key}
                       </Box>
                     </Flex.Item>
@@ -94,17 +91,12 @@ const MainMenu = (props, context) => {
                         content="Vote"
                         color="good"
                         textAlign="center"
-                        onClick={() => act("vote", { voted_for: key })}
+                        onClick={() => act('vote', { voted_for: key })}
                       />
                     </Flex.Item>
                     {!!(vote_has_voted || is_admin) && (
                       <Flex.Item>
-                        <Box
-                          height="100%"
-                          pl={1}
-                          fontSize="110%"
-                          nowrap
-                        >
+                        <Box height="100%" pl={1} fontSize="110%" nowrap>
                           {vote_choices[key]} votes
                         </Box>
                       </Flex.Item>
@@ -119,16 +111,12 @@ const MainMenu = (props, context) => {
                   color="teal"
                   content="Cancel Current Vote"
                   mt={1}
-                  onClick={() => act("cancel")}
+                  onClick={() => act('cancel')}
                 />
               )}
             </Flex>
-          ) || (
-            <Box
-              fontSize="150%"
-              textAlign="center"
-              height="100%"
-            >
+          )) || (
+            <Box fontSize="150%" textAlign="center" height="100%">
               No vote in progress
             </Box>
           )}
@@ -144,23 +132,17 @@ const StartVote = (props, context) => {
 
   return (
     <Section>
-      <Flex
-        wrap="wrap"
-        justify="space-evenly"
-      >
-        {Object.keys(possible_vote_types).map(key => {
+      <Flex wrap="wrap" justify="space-evenly">
+        {Object.keys(possible_vote_types).map((key) => {
           const element = possible_vote_types[key];
-          const canUseElement = !vote_in_progress && (is_admin
-            || (!element.admin_only
-              && (!element.variable_required
-                || data[element.variable_required])));
+          const canUseElement =
+            !vote_in_progress &&
+            (is_admin ||
+              (!element.admin_only &&
+                (!element.variable_required ||
+                  data[element.variable_required])));
           return (
-            <Flex.Item
-              key={key}
-              basis="100%"
-              mb="1%"
-              height="30px"
-            >
+            <Flex.Item key={key} basis="100%" mb="1%" height="30px">
               <Button
                 content={element.name}
                 pt={1}
@@ -171,7 +153,7 @@ const StartVote = (props, context) => {
                 icon={element.icon}
                 color={element.color}
                 disabled={!canUseElement}
-                onClick={() => act("initiate_vote", { vote_type: key })}
+                onClick={() => act('initiate_vote', { vote_type: key })}
               />
             </Flex.Item>
           );
@@ -188,26 +170,30 @@ const SettingsMenu = (props, context) => {
   return (
     <Section>
       <Flex>
-        <Flex.Item color="label" grow={1}>Restart Votes:</Flex.Item>
+        <Flex.Item color="label" grow={1}>
+          Restart Votes:
+        </Flex.Item>
         <Flex.Item align="right">
           <Button
-            content={can_restart_vote? "Unlocked" : "Locked"}
-            icon={can_restart_vote? "lock-open" : "lock"}
-            color={can_restart_vote? "good" : "bad"}
-            onClick={() => act("toggle_restart")}
+            content={can_restart_vote ? 'Unlocked' : 'Locked'}
+            icon={can_restart_vote ? 'lock-open' : 'lock'}
+            color={can_restart_vote ? 'good' : 'bad'}
+            onClick={() => act('toggle_restart')}
             tooltip="Controls whether players can make restart votes."
             tooltipPosition="left"
           />
         </Flex.Item>
       </Flex>
       <Flex mt={1}>
-        <Flex.Item color="label" grow={1}>Gamemode Votes:</Flex.Item>
+        <Flex.Item color="label" grow={1}>
+          Gamemode Votes:
+        </Flex.Item>
         <Flex.Item>
           <Button
-            content={can_gamemode_vote? "Unlocked" : "Locked"}
-            icon={can_gamemode_vote? "lock-open" : "lock"}
-            color={can_gamemode_vote? "good" : "bad"}
-            onClick={() => act("toggle_gamemode")}
+            content={can_gamemode_vote ? 'Unlocked' : 'Locked'}
+            icon={can_gamemode_vote ? 'lock-open' : 'lock'}
+            color={can_gamemode_vote ? 'good' : 'bad'}
+            onClick={() => act('toggle_gamemode')}
             tooltip="Controls whether players can make gamemode votes."
             tooltipPosition="left"
           />

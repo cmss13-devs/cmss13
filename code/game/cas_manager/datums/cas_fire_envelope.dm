@@ -178,18 +178,54 @@
 	var/mob/M = user
 	if(istype(M) && M.client)
 		M.reset_view(guidance)
+		apply_upgrade(user)
 		if(!(user in guidance.users))
 			guidance.users += user
+			RegisterSignal(usr, COMSIG_MOB_RESISTED, .proc/exit_cam_resist)
+
+
+/datum/cas_fire_envelope/proc/apply_upgrade(user)
+	var/mob/M = user
+	if(linked_console.upgraded == MATRIX_NVG)
+		if(linked_console.power <= 8)
+			M.add_client_color_matrix("matrix_nvg", 99, color_matrix_multiply(color_matrix_saturation(1), color_matrix_rotate_x(-1*(20.8571-1.57143*linked_console.power)), color_matrix_from_string(linked_console.matrixcol))) // (20.8571-1.57143*linked_console.power) is an equation so we can make low level properties look bad
+			M.overlay_fullscreen("matrix_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
+		M.overlay_fullscreen("matrix", /atom/movable/screen/fullscreen/flash/noise/nvg)
+		M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		M.sync_lighting_plane_alpha()
+	else if (linked_console.upgraded == MATRIX_WIDE)
+		M.client?.change_view(linked_console.power + 5, M)
+
+
+/datum/cas_fire_envelope/proc/remove_upgrades(user)
+	var/mob/M = user
+	if(linked_console.upgraded == MATRIX_NVG)
+		M.remove_client_color_matrix("matrix_nvg")
+		M.clear_fullscreen("matrix")
+		M.clear_fullscreen("matrix_blur")
+		M.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+		M.sync_lighting_plane_alpha()
+	if(linked_console.upgraded == MATRIX_WIDE)
+		M.client?.change_view(7, M)
+	else
+		return
 
 
 /datum/cas_fire_envelope/proc/remove_user_from_tracking(user)
 	if(!guidance)
 		return
+	var/mob/M = user
 	if(user && (user in guidance.users))
-		guidance.users -= user
-		var/mob/M = user
 		if(istype(M) && M.client)
 			M.reset_view()
+			remove_upgrades(user)
+		guidance.users -= user
+
+/datum/cas_fire_envelope/proc/exit_cam_resist(mob/user)
+	SIGNAL_HANDLER
+
+	remove_user_from_tracking(user)
+
 
 /datum/cas_fire_envelope/proc/check_firemission_loc(datum/cas_signal/target_turf)
 	return TRUE //redefined in child class

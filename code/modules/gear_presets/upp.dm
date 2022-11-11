@@ -3,6 +3,7 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH)
 	faction = FACTION_UPP
 	idtype = /obj/item/card/id/dogtag
+	origin_override = ORIGIN_UPP
 
 /datum/equipment_preset/upp/New()
 	. = ..()
@@ -1784,6 +1785,8 @@
 	name = "UPP Combat Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+
 	skills = /datum/skills/synthetic
 	assignment = JOB_UPP_COMBAT_SYNTH
 	rank = JOB_UPP_COMBAT_SYNTH
@@ -1795,8 +1798,8 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
-	if(prob(20))
-		random_name = "[capitalize(randomly_generate_chinese_word(1))]"
+	if(prob(10))
+		random_name = "[capitalize(randomly_generate_chinese_word(2))]"
 	else if(H.gender == MALE)
 		random_name = "[pick(first_names_male_upp)]"
 	else

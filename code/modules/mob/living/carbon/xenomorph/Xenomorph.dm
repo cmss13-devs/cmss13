@@ -87,7 +87,14 @@
 	var/plasma_gain = 5
 	var/cooldown_reduction_percentage = 0 // By what % cooldown are reduced by. 1 => No cooldown. Should normally be clamped at 50%
 
+	var/death_fontsize = 3
+
 	var/small_explosives_stun = TRUE // Have to put this here, otherwise it can't be strain specific
+	var/counts_for_slots = TRUE
+	var/counts_for_roundend = TRUE
+	var/refunds_larva_if_banished = TRUE
+	var/shaman_interactive = TRUE // whether shaman abilities affect this xeno
+	var/can_hivemind_speak = TRUE
 
 	// Tackles
 	var/tackle_min = 2
@@ -136,11 +143,12 @@
 	// Progression-related
 	var/age_prefix = ""
 	var/age = 0  //This will track their age level. -1 means cannot age
-	var/max_grown = 200
+	var/show_age_prefix = TRUE
+	var/show_name_numbers = TRUE
+	var/show_only_numbers = FALSE
 	var/evolution_stored = 0 //How much evolution they have stored
 	var/evolution_threshold = 200
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
-	var/amount_grown = 0 // for some fucking reason larva use their own variable here, who knows why
 	var/time_of_birth
 
 	var/pslash_delay = 0
@@ -227,6 +235,8 @@
 	var/acid_blood_damage = 25
 	var/nocrit = FALSE
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
+
+	var/pounce_distance = 0
 
 
 	//////////////////////////////////////////////////////////////////
@@ -533,10 +543,9 @@
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
 
-	//Larvas have their own, very weird naming conventions, let's not kick a beehive, not yet
-	if(isXenoLarva(src))
-		return
+	handle_name(in_hive)
 
+/mob/living/carbon/Xenomorph/proc/handle_name(var/datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
@@ -547,11 +556,11 @@
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 	color = in_hive.color
 
-	//Queens have weird, hardcoded naming conventions based on age levels. They also never get nicknumbers
-	if(isXenoPredalien(src))
-		name = "[name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
-	else if(caste)
-		name = "[name_prefix][age_prefix][caste.caste_type] ([name_client_prefix][nicknumber][name_client_postfix])"
+	var/age_display = show_age_prefix ? age_prefix : ""
+	var/name_display = ""
+	if(show_name_numbers)
+		name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
+	name = "[name_prefix][age_display][caste.display_name || caste.caste_type][name_display]"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -671,10 +680,6 @@
 
 	QDEL_NULL(mutators)
 	QDEL_NULL(behavior_delegate)
-
-	for(var/i in built_structures)
-		var/list/L = built_structures[i]
-		QDEL_NULL_LIST(L)
 
 	built_structures = null
 

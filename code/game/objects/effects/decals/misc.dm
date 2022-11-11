@@ -1,3 +1,5 @@
+/obj/effect/decal
+	plane = FLOOR_PLANE
 
 // Used for spray that you spray at walls, tables, hydrovats etc
 /obj/effect/decal/spraystill

@@ -30,6 +30,8 @@
 			reagents.trans_to_ingest(M, gulp_size)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		return TRUE
+	else if(istype(M, /mob/living/carbon/human))
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),

@@ -1,7 +1,6 @@
 GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 
 /obj/effect/decal/cleanable
-	plane = FLOOR_PLANE
 	var/list/random_icon_states = list()
 	/// Used so cleanbots can't claim a mess.
 	var/obj/structure/machinery/bot/cleanbot/targeted_by = null

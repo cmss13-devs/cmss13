@@ -11,6 +11,7 @@
 	anchored = TRUE
 	density = FALSE
 	layer = WEED_LAYER
+	plane = FLOOR_PLANE
 	unacidable = TRUE
 	health = WEED_HEALTH_STANDARD
 	var/weed_strength = WEED_LEVEL_STANDARD
@@ -378,6 +379,7 @@
 
 /obj/effect/alien/weeds/weedwall
 	layer = RESIN_STRUCTURE_LAYER
+	plane = GAME_PLANE
 	icon_state = "weedwall"
 	var/list/wall_connections = list("0", "0", "0", "0")
 	hibernate = TRUE
@@ -417,6 +419,7 @@
 	health = NODE_HEALTH_GROWING
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
+	plane = FLOOR_PLANE
 	var/static/staticnode
 	var/overlay_node = TRUE
 
@@ -562,5 +565,24 @@
 /obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
 	var/obj/effect/alien/resin/special/cluster/parent_cluster = resin_parent
 	parent_cluster.damaged = TRUE
+
+/obj/effect/resin_construct
+	mouse_opacity = 0
+	icon = 'icons/mob/hostiles/Effects.dmi'
+
+/obj/effect/resin_construct/door
+	icon_state = "DoorConstruct"
+
+/obj/effect/resin_construct/thick
+	icon_state = "ThickConstruct"
+
+/obj/effect/resin_construct/weak
+	icon_state = "WeakConstruct"
+
+/obj/effect/resin_construct/transparent/thick
+	icon_state = "ThickTransparentConstruct"
+
+/obj/effect/resin_construct/transparent/weak
+	icon_state = "WeakTransparentConstruct"
 
 #undef WEED_BASE_GROW_SPEED

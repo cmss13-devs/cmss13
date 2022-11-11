@@ -59,7 +59,7 @@ const setupApp = () => {
   store.subscribe(renderApp);
 
   // Dispatch incoming messages
-  window.update = msg => store.dispatch(Byond.parseJson(msg));
+  window.update = (msg) => store.dispatch(Byond.parseJson(msg));
 
   // Process the early update queue
   while (true) {
@@ -73,6 +73,7 @@ const setupApp = () => {
   // Enable hot module reloading
   if (module.hot) {
     setupHotReloading();
+    // prettier-ignore
     module.hot.accept([
       './components',
       './debug',

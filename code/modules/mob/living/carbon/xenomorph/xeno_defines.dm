@@ -6,7 +6,6 @@
 	var/tier = 0
 	var/dead_icon = "Drone Dead"
 	var/language = LANGUAGE_XENOMORPH
-
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
 	var/melee_vehicle_damage = 10	//allows fine tuning melee damage to vehicles per caste.
@@ -23,6 +22,7 @@
 
 	var/evolution_allowed = 1 //Are they allowed to evolve (and have their evolution progress group)
 	var/evolution_threshold = 0 //Threshold to next evolution
+	var/evolve_without_queen = FALSE // whether they can get evo points without needing an ovi queen
 
 	var/list/evolves_to = list() //This is where you add castes to evolve into. "Separated", "by", "commas"
 	var/list/deevolves_to = list()  // what caste or castes to de-evolve to.
@@ -117,6 +117,8 @@
 	evolution_threshold = 0
 	if(evolution_allowed)
 		switch(tier)
+			if(0)
+				evolution_threshold = 60
 			if(1)
 				evolution_threshold = 200
 			if(2)
@@ -479,7 +481,7 @@
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		if(X.caste)
+		if(X.caste && X.counts_for_slots)
 			xeno_counts[X.caste.tier+1][X.caste.caste_type]++
 
 	return xeno_counts
@@ -668,10 +670,15 @@
 			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
 			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
 
-	var/effective_total = length(totalXenos) + pooled_factor
+	var/total_xenos = 0
+	var/effective_total = pooled_factor
+	for(var/mob/living/carbon/Xenomorph/xeno as anything in totalXenos)
+		if(xeno.counts_for_slots)
+			total_xenos++
+			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*length(totalXenos)/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*total_xenos/tier_slot_multiplier) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
 	slots[TIER_2][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
@@ -996,72 +1003,65 @@
 	return ..()
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
+//Defines at the bottom of this list here will show up at the top in the mark menu
 /datum/xeno_mark_define
 	var/name = "xeno_declare"
 	var/icon_state = "empty"
 	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
 
-/datum/xeno_mark_define/attack
-	name = "Attack"
-	desc = "Attack the enemy here!"
-	icon_state = "attack"
-
-/datum/xeno_mark_define/defend
-	name = "Defend"
-	desc = "Defend the hive here!"
-	icon_state = "defend"
-
-/datum/xeno_mark_define/flank
-	name = "Flank"
-	desc = "Flank the enemy here!"
-	icon_state = "flank"
+/datum/xeno_mark_define/fortify
+	name = "Fortify"
+	desc = "Fortify this area!"
+	icon_state = "fortify"
 
 /datum/xeno_mark_define/weeds
 	name = "Need Weeds"
 	desc = "Need weeds here!"
 	icon_state = "weed"
 
-/datum/xeno_mark_define/hold
-	name = "Hold"
-	desc = "Hold this area!"
-	icon_state = "hold"
-
 /datum/xeno_mark_define/nest
 	name = "Nest"
 	desc = "Nest enemies here!"
 	icon_state = "nest"
 
-/datum/xeno_mark_define/rally
-	name = "Rally"
-	desc = "Group up here!"
-	icon_state = "rally"
+/datum/xeno_mark_define/hosts
+	name = "Hosts"
+	desc = "Hosts here!"
+	icon_state = "hosts"
 
-/datum/xeno_mark_define/help
-	name = "Help"
-	desc = "Need help here!"
-	icon_state = "help"
+/datum/xeno_mark_define/aide
+	name = "Aide"
+	desc = "Aide here!"
+	icon_state = "aide"
 
-/datum/xeno_mark_define/missing
-	name = "Missing Enemy"
-	desc = "The enemy is missing!"
-	icon_state = "enemy_missing"
+/datum/xeno_mark_define/defend
+	name = "Defend"
+	desc = "Defend the hive here!"
+	icon_state = "defend"
 
 /datum/xeno_mark_define/danger
 	name = "Danger Warning"
 	desc = "Caution, danger here!"
 	icon_state = "danger"
 
-/datum/xeno_mark_define/fire
-	name = "Fire Warning"
-	desc = "Caution, fire here!"
-	icon_state = "warn_fire"
+/datum/xeno_mark_define/rally
+	name = "Rally"
+	desc = "Group up here!"
+	icon_state = "rally"
 
-/datum/xeno_mark_define/explosive
-	name = "Explosives Warning"
-	desc = "Caution, explosives here!"
-	icon_state = "warn_explosive"
+/datum/xeno_mark_define/hold
+	name = "Hold"
+	desc = "Hold this area!"
+	icon_state = "hold"
 
-/datum/xeno_mark_define/structure
-	name = "Structures Warning"
-	desc = "Caution, structures here!"
-	icon_state = "warn_structure"
+/datum/xeno_mark_define/ambush
+	name = "Ambush"
+	desc = "Ambush the enemy here!"
+	icon_state = "ambush"
+/datum/xeno_mark_define/attack
+	name = "Attack"
+	desc = "Attack the enemy here!"
+	icon_state = "attack"
+
+
+

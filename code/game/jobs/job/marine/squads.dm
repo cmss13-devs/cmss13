@@ -140,10 +140,10 @@
 	roundstart = FALSE
 	locked = TRUE
 
-/datum/squad/marine/marsoc
-	name = SQUAD_MARSOC
+/datum/squad/marine/sof
+	name = SQUAD_SOF
 	color = 7
-	radio_freq = MARSOC_FREQ
+	radio_freq = SOF_FREQ
 	squad_type = "Team"
 	lead_icon = "soctl"
 
@@ -380,14 +380,14 @@
 			if(GET_DEFAULT_ROLE(M.job) == JOB_SQUAD_LEADER) //field promoted SL don't count as real ones
 				num_leaders++
 
-		if(JOB_MARSOC)
-			assignment = JOB_MARSOC
-			if(name == SQUAD_MARSOC)
+		if(JOB_MARINE_RAIDER)
+			assignment = JOB_MARINE_RAIDER
+			if(name == JOB_MARINE_RAIDER)
 				assignment = "Special Operator"
-		if(JOB_MARSOC_SL)
-			assignment = JOB_MARSOC_SL
-			if(name == SQUAD_MARSOC)
-				if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_MARSOC_SL) //field promoted SL
+		if(JOB_MARINE_RAIDER_SL)
+			assignment = JOB_MARINE_RAIDER_SL
+			if(name == JOB_MARINE_RAIDER)
+				if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_MARINE_RAIDER_SL) //field promoted SL
 					var/old_lead = squad_leader
 					demote_squad_leader()	//replaced by the real one
 					SStracking.start_tracking(tracking_id, old_lead)
@@ -395,11 +395,11 @@
 				squad_leader = M
 				SStracking.set_leader(tracking_id, M)
 				SStracking.start_tracking("marine_sl", M)
-				if(GET_DEFAULT_ROLE(M.job) == JOB_MARSOC_SL) //field promoted SL don't count as real ones
+				if(GET_DEFAULT_ROLE(M.job) == JOB_MARINE_RAIDER_SL) //field promoted SL don't count as real ones
 					num_leaders++
-		if(JOB_MARSOC_CMD)
-			assignment = JOB_MARSOC_CMD
-			if(name == SQUAD_MARSOC)
+		if(JOB_MARINE_RAIDER_CMD)
+			assignment = JOB_MARINE_RAIDER_CMD
+			if(name == JOB_MARINE_RAIDER)
 				assignment = "Officer"
 
 	RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/personnel_deleted, override = TRUE)
@@ -504,11 +504,11 @@
 		if(JOB_SQUAD_LEADER)
 			if(!leader_killed)
 				old_lead.comm_title = "Sgt"
-		if(JOB_MARSOC)
+		if(JOB_MARINE_RAIDER)
 			old_lead.comm_title = "Op."
-		if(JOB_MARSOC_SL)
+		if(JOB_MARINE_RAIDER_SL)
 			old_lead.comm_title = "TL."
-		if(JOB_MARSOC_CMD)
+		if(JOB_MARINE_RAIDER_CMD)
 			old_lead.comm_title = "CMD."
 		else
 			old_lead.comm_title = "RFN"

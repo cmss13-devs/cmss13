@@ -397,7 +397,7 @@
 		if(LinkBlocked(src, cur_turf, target_turf))
 			X.emote("roar")
 			X.visible_message(SPAN_DANGER("[X] flings [src] over to the side!"),SPAN_DANGER( "You fling [src] out of the way!"))
-			to_chat(src,SPAN_XENOHIGHDANGER("[src] flings you out of its way! Move it!"))
+			to_chat(src, SPAN_XENOHIGHDANGER("[X] flings you out of its way! Move it!"))
 			KnockDown(1) // brief flicker stun
 			src.throw_atom(src.loc,1,3,X,TRUE)
 		step(src, ram_dir, CCA.momentum * 0.5)

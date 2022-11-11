@@ -508,6 +508,8 @@
 		.["client_rank"] = targetClient.admin_holder ? targetClient.admin_holder.rank : "Player"
 		.["client_muted"] = targetClient.prefs.muted
 
+		.["client_name_banned_status"] = targetClient.human_name_ban
+
 /datum/player_panel/ui_state(mob/user)
 	return GLOB.admin_state
 

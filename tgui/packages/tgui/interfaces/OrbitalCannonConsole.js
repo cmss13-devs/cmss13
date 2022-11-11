@@ -1,11 +1,21 @@
 import { useBackend } from '../backend';
-import { Button, Section, ProgressBar, Dimmer, Icon, NoticeBox, Box, Collapsible, Divider } from '../components';
+import {
+  Button,
+  Section,
+  ProgressBar,
+  Dimmer,
+  Icon,
+  NoticeBox,
+  Box,
+  Collapsible,
+  Divider,
+} from '../components';
 import { Window } from '../layouts';
 
 export const OrbitalCannonConsole = (_props, context) => {
   const { act, data } = useBackend(context);
 
-  const timeLeft = (data.nextchambertime - data.worldtime);
+  const timeLeft = data.nextchambertime - data.worldtime;
   const timeLeftPct = timeLeft / data.chamber_cooldown;
 
   const cantChamber = timeLeft > 0 || !data.loadedtray;
@@ -14,25 +24,16 @@ export const OrbitalCannonConsole = (_props, context) => {
 
   const fuelLoadedPct = data.fuel / 6;
 
-
   return (
-    <Window
-      width={500}
-      height={500}>
+    <Window width={500} height={500}>
       <Window.Content scrollable>
         <Section title="Warhead status">
-          {!!data.warhead && (
-            <NoticeBox info>
-              {data.warhead} loaded!
-            </NoticeBox>
-          ) || (
-            <NoticeBox danger>
-              No warhead loaded!
-            </NoticeBox>
-          )}
+          {(!!data.warhead && (
+            <NoticeBox info>{data.warhead} loaded!</NoticeBox>
+          )) || <NoticeBox danger>No warhead loaded!</NoticeBox>}
         </Section>
         <Section title="Fuel status">
-          <Box textAlign="center" >
+          <Box textAlign="center">
             <ProgressBar
               width="100%"
               value={fuelLoadedPct}
@@ -40,24 +41,22 @@ export const OrbitalCannonConsole = (_props, context) => {
                 bad: [-Infinity, 0.51],
                 good: [0.51, Infinity],
               }}>
-              <Box textAlign="center">
-                {data.fuel} Fuel Blocks loaded
-              </Box>
+              <Box textAlign="center">{data.fuel} Fuel Blocks loaded</Box>
             </ProgressBar>
           </Box>
           <Divider />
           <Collapsible title="Fuel Requirements">
             <Box>
-              Warhead Fuel Requirements:<br />
+              Warhead Fuel Requirements:
+              <br />
               HE Orbital Warhead:
-              <b> {data.hefuel} Solid Fuel blocks.
-              </b><br />
+              <b> {data.hefuel} Solid Fuel blocks.</b>
+              <br />
               Incendiary Orbital Warhead:
-              <b> {data.incfuel} Solid Fuel blocks.
-              </b><br />
+              <b> {data.incfuel} Solid Fuel blocks.</b>
+              <br />
               Cluster Orbital Warhead:
-              <b> {data.clusterfuel} Solid Fuel blocks.
-              </b>
+              <b> {data.clusterfuel} Solid Fuel blocks.</b>
             </Box>
           </Collapsible>
         </Section>
@@ -72,12 +71,12 @@ export const OrbitalCannonConsole = (_props, context) => {
                 bad: [0.67, Infinity],
               }}>
               <Box textAlign="center">
-                {Math.ceil(timeLeft / 10)} seconds
-                until the cannon can be chambered!
+                {Math.ceil(timeLeft / 10)} seconds until the cannon can be
+                chambered!
               </Box>
             </ProgressBar>
           )}
-          {!data.loadedtray && (
+          {(!data.loadedtray && (
             <Button
               fontSize="20px"
               textAlign="center"
@@ -88,9 +87,9 @@ export const OrbitalCannonConsole = (_props, context) => {
               content="Load tray"
               onClick={() => act('load_tray')}
             />
-          ) || (
+          )) || (
             <Box>
-              {!data.chamberedtray && (
+              {(!data.chamberedtray && (
                 <Button
                   fontSize="20px"
                   textAlign="center"
@@ -100,19 +99,14 @@ export const OrbitalCannonConsole = (_props, context) => {
                   content="Unload tray"
                   onClick={() => act('unload_tray')}
                 />
-              ) || (
-                <NoticeBox
-                  fontSize="15px"
-                  textAlign="center"
-                  fluid={1}
-                  danger
-                >
+              )) || (
+                <NoticeBox fontSize="15px" textAlign="center" fluid={1} danger>
                   The tray is chambered, you cannot unchamber it.
                 </NoticeBox>
               )}
             </Box>
           )}
-          {(!data.chamberedtray && !!data.loadedtray) && (
+          {!data.chamberedtray && !!data.loadedtray && (
             <Button.Confirm
               fontSize="20px"
               textAlign="center"
@@ -129,9 +123,9 @@ export const OrbitalCannonConsole = (_props, context) => {
         {(!data.linkedtray || !data.linkedcannon || !!data.disabled) && (
           <Dimmer fontSize="32px">
             <Icon name="exclamation-triangle" />
-            {(!data.linkedtray) && (' No tray linked to console!')}
-            {(!data.linkedcannon) && (' No cannon linked to console!')}
-            {(!!data.disabled) && ('  Cannon disabled!')}
+            {!data.linkedtray && ' No tray linked to console!'}
+            {!data.linkedcannon && ' No cannon linked to console!'}
+            {!!data.disabled && '  Cannon disabled!'}
           </Dimmer>
         )}
       </Window.Content>

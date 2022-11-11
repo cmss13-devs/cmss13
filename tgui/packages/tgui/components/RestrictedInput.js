@@ -15,7 +15,7 @@ const DEFAULT_MAX = 16777216;
 const getClampedNumber = (value, minValue, maxValue) => {
   const minimum = minValue || DEFAULT_MIN;
   const maximum = maxValue || maxValue === 0 ? maxValue : DEFAULT_MAX;
-  const defaultValue = maximum < 0 ? minimum : (minimum > 0 ? minimum : 0);
+  const defaultValue = maximum < 0 ? minimum : minimum > 0 ? minimum : 0;
   if (!value || !value.length) {
     return String(defaultValue);
   }

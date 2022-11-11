@@ -301,12 +301,15 @@ proc/strip_improper(input_text)
 // Returns the location of the atom as a string in the following format:
 // "Area Name (X, Y, Z)"
 // Mainly used for logging
-/proc/get_location_in_text(atom/A)
+/proc/get_location_in_text(atom/A, var/include_jmp_link = TRUE)
 	var/message
 	if(!A.loc)
 		message = "Invalid location"
 	else
-		message = "[get_area(A)] ([A.x], [A.y], [A.z])"
+		if(include_jmp_link)
+			message = "<a HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[A.x];Y=[A.y];Z=[A.z]'>[get_area(A)]</a> ([A.x], [A.y], [A.z])"
+		else
+			message = "[get_area(A)] ([A.x], [A.y], [A.z])"
 	return message
 
 //Adds 'char' ahead of 'text' until there are 'count' characters total

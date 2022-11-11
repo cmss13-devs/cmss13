@@ -68,11 +68,9 @@
 
 	var/evolve_progress
 
-	if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
-		evolve_progress = "[round(amount_grown)]/[max_grown]"
-	else if(caste && caste.evolution_allowed)
+	if(caste && caste.evolution_allowed)
 		evolve_progress = "[round(evolution_stored)]/[evolution_threshold]"
-		if(hive && !hive.allow_no_queen_actions)
+		if(hive && !hive.allow_no_queen_actions && !caste?.evolve_without_queen)
 			if(!hive.living_xeno_queen)
 				evolve_progress += " (NO QUEEN)"
 			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
@@ -313,7 +311,8 @@
 		step_to(src, M)
 
 	if (pounceAction.freeze_self)
-		playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
+		if(pounceAction.freeze_play_sound)
+			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		canmove = FALSE
 		frozen = TRUE
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, .proc/unfreeze), pounceAction.freeze_time, TIMER_STOPPABLE)
@@ -400,7 +399,7 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
 
-/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE)
+/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE, var/check_doors = TRUE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
@@ -408,6 +407,11 @@
 			if(!silent)
 				to_chat(src, SPAN_WARNING("This is too close to a [bb.linked_structure]!"))
 			return
+		if(check_doors)
+			if(istype(O, /obj/structure/machinery/door))
+				if(!silent)
+					to_chat(src, SPAN_WARNING("\The [O] is blocking the resin! There's not enough space to build that here."))
+				return
 		if(istype(O, /obj/item/clothing/mask/facehugger))
 			if(!silent)
 				to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))

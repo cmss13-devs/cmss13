@@ -123,6 +123,11 @@
 #define ASSEMBLY_UNLOCKED	1
 #define ASSEMBLY_LOCKED		2
 
+// Matrix CAS Upgrades
+#define MATRIX_DEFAULT 	0
+#define MATRIX_NVG 		1
+#define MATRIX_WIDE 	2
+
 // Statistics defines
 #define STATISTIC_XENO "xeno"
 #define STATISTIC_HUMAN "human"
@@ -193,13 +198,13 @@
  */
 #define get_area(A) (isarea(A) ? A : get_step(A, 0)?.loc)
 
-//Misc text define. Does 4 spaces. Used as a makeshift tabulator.
-#define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
-
 //https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
 #define MOUSE_OPACITY_TRANSPARENT 0
 #define MOUSE_OPACITY_ICON 1
 #define MOUSE_OPACITY_OPAQUE 2
+
+//Misc text define. Does 4 spaces. Used as a makeshift tabulator.
+#define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
 
 #define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
 

@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(statpanels)
 			set_status_tab(target)
 		if(!CLIENT_IS_STAFF(target))
 			target.stat_panel.send_message("remove_admin_tabs")
-		else // Disabled pending porting of /tg/ prefs or integration in our own prefs
+		else
 			target.stat_panel.send_message("update_split_admin_tabs", !!(target.prefs.toggles_admin & SPLIT_ADMIN_TABS))
 
 			if(!("MC" in target.panel_tabs) || !("Tickets" in target.panel_tabs))

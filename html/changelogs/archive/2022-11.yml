@@ -148,6 +148,7 @@
 2022-11-11:
   Zonespace27:
   - code_imp: Added a define, BYOND_TRACY, for byond-tracy profiling support
+  - refactor: The datacore now is a /datum, not /obj/effect
   fira:
   - code_imp: got rid of massive global lists for items and objects
   - bugfix: fixed drinks being drank twice, once instantly then after a delay

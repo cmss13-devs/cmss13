@@ -164,26 +164,52 @@
 	apply_cooldown()
 	..()
 
-/datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/H, obj/limb/L)
+/datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(var/mob/living/carbon/target_carbone, var/obj/limb/limb)
 	var/mob/living/carbon/Xenomorph/X = owner
-	var/damage = rand(base_damage, base_damage + damage_variance)
 
-	if(ishuman(H))
-		if((L.status & LIMB_SPLINTED) && !(L.status & LIMB_SPLINTED_INDESTRUCTIBLE)) //If they have it splinted, the splint won't hold.
-			L.status &= ~LIMB_SPLINTED
-			playsound(get_turf(H), 'sound/items/splintbreaks.ogg')
-			to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
-			H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+	//here to slow xenos as well
+	var/broken_bone
 
-		if(isHumanStrict(H))
-			H.Slow(3)
-		if(isYautja(H))
-			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
-		else if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
+	if(ishuman(target_carbone))
+		if(CHECK_BITFIELD(limb.status, LIMB_SPLINTED) && !CHECK_BITFIELD(limb.status, LIMB_SPLINTED_INDESTRUCTIBLE)) //If they have it splinted, the splint won't hold.
+			DISABLE_BITFIELD(limb.status, LIMB_SPLINTED)
+			playsound(get_turf(target_carbone), 'sound/items/splintbreaks.ogg')
+			to_chat(target_carbone, SPAN_DANGER("The splint on your [limb.display_name] comes apart!"))
+			target_carbone.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
+		var/fracture_chance = 100
+		switch(limb.body_part)
+			if(BODY_FLAG_HEAD)
+				fracture_chance = 20
+			if(BODY_FLAG_CHEST)
+				fracture_chance = 30
+			if(BODY_FLAG_GROIN)
+				fracture_chance = 40
 
-	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
+		if(prob(fracture_chance))
+			broken_bone = limb.fracture() //frac chance not used in params as it'd override the endurance check inside.
 
-	shake_camera(H, 2, 1)
-	step_away(H, X, 2)
+	// if it doesn't break their bones, it slows instead. this will apply to yautja, synths, and xenos as well.
+	if(!broken_bone)
+		var/slowdur
+		switch(target_carbone.mob_size)
+			//monkeys, humans, runners
+			if(MOB_SIZE_SMALL to MOB_SIZE_XENO_SMALL)
+				slowdur = 3 SECONDS
+			//most xenos.
+			if(MOB_SIZE_XENO_SMALL to MOB_SIZE_XENO)
+				slowdur = 2 SECONDS
+			//t3s.
+			if(MOB_SIZE_XENO to MOB_SIZE_BIG)
+				slowdur = 1 SECONDS
+			//queen and crusher
+			if(MOB_SIZE_BIG to MOB_SIZE_IMMOBILE)
+				slowdur = 0 SECONDS
+
+		if(slowdur)
+			new /datum/effects/xeno_slow(target_carbone, owner, slowdur)
+
+	target_carbone.apply_armoured_damage(get_xeno_damage_slash(target_carbone, base_damage), ARMOR_MELEE, BRUTE, limb? limb.name : "chest")
+
+	shake_camera(target_carbone, 2, 1)
+	step_away(target_carbone, X, 2)

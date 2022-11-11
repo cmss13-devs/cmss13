@@ -18,6 +18,8 @@
 	brute_mod = 0.5
 	burn_mod = 1
 
+	minimum_bonebreak_limb_damage = null //can't ever happen
+
 	cold_level_1 = -1
 	cold_level_2 = -1
 	cold_level_3 = -1

@@ -539,10 +539,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 	data["displayed_categories"] = ui_categories
 	return data
 
-/obj/structure/machinery/cm_vending/gear/ui_data(mob/user)
+proc/vendor_user_ui_data(var/vendor, mob/user)
+	var/obj/structure/machinery/cm_vending/vending_machine = vendor
 	var/list/data = list()
-
-	var/list/ui_listed_products = get_listed_products(user)
+	var/list/ui_listed_products = vending_machine.get_listed_products(user)
 	// list format
 	//	(
 	// 		name: str
@@ -555,12 +555,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/list/stock_values = list()
 
 	var/mob/living/carbon/human/H = user
-	var/buy_flags = NO_FLAGS
-	if(use_snowflake_points)
+	var/buy_flags = H.marine_buy_flags
+	var/available_points_to_display = 0
+	if(vending_machine.use_snowflake_points)
 		available_points_to_display = H.marine_snowflake_points
-	else if(use_points)
+	else if(vending_machine.use_points)
 		available_points_to_display = H.marine_points
-	buy_flags = H.marine_buy_flags
 
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
@@ -571,10 +571,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 			prod_available = TRUE
 		stock_values += list(prod_available)
 
-
 	data["stock_listing"] = stock_values
 	data["current_m_points"] = available_points_to_display
 	return data
+
+/obj/structure/machinery/cm_vending/gear/ui_data(mob/user)
+	return vendor_user_ui_data(src, user)
 
 /obj/structure/machinery/cm_vending/gear/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -849,41 +851,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	return data
 
 /obj/structure/machinery/cm_vending/clothing/ui_data(mob/user)
-	var/list/data = list()
-
-	var/list/ui_listed_products = get_listed_products(user)
-	// list format
-	//	(
-	// 		name: str
-	//		cost
-	//		item reference
-	//		allowed to buy flag
-	//		item priority (mandatory/recommended/regular)
-	//	)
-
-	var/list/stock_values = list()
-
-	var/mob/living/carbon/human/H = user
-	var/buy_flags = NO_FLAGS
-	if(use_snowflake_points)
-		available_points_to_display = H.marine_snowflake_points
-	else if(use_points)
-		available_points_to_display = H.marine_points
-	buy_flags = H.marine_buy_flags
-
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-		var/prod_available = FALSE
-		var/p_cost = myprod[2]
-		var/avail_flag = myprod[4]
-		if(available_points_to_display >= p_cost && (!avail_flag || buy_flags & avail_flag))
-			prod_available = TRUE
-		stock_values += list(prod_available)
-
-
-	data["stock_listing"] = stock_values
-	data["current_m_points"] = available_points_to_display
-	return data
+	return vendor_user_ui_data(src, user)
 
 /obj/structure/machinery/cm_vending/clothing/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

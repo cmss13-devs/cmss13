@@ -83,7 +83,7 @@
                                                    // MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE
 #define TOGGLE_EJECT_MAGAZINE_TO_HAND		(1<<6) // This toggles whether manuallyejecting magazines from guns will cause you to unwield your gun
                                                    // and put the empty magazine in your hand
-#define TOGGLE_AUTOMATIC_PUNCTUATION		(1<<7) // Whether your sentences will automatically be punctuated with a period
+#define FREE_TOGGLE_SPACE_HERE_USE_THIS_INSTEAD_OF_MAKING_A_NEW_ONE		(1<<7) // Formerly known as toggle automatic punctuation, this has been converted to a free space to avoid messing up prefs, keep in mind if you reuse this, some people might have this set, some might not, so you'll have to deal with that too
 #define TOGGLE_COMBAT_CLICKDRAG_OVERRIDE	(1<<8) // Whether disarm/harm intents cause clicks to trigger immediately when the mouse button is depressed.
 #define TOGGLE_ALTERNATING_DUAL_WIELD		(1<<9) // Whether dual-wielding fires both guns at once or swaps between them.
 #define TOGGLE_FULLSCREEN					(1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm

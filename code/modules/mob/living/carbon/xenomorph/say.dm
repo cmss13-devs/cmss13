@@ -67,9 +67,8 @@
 		return
 
 	// Automatic punctuation
-	if(client && client.prefs && client.prefs.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
-		if(!(copytext(message, -1) in ENDING_PUNCT))
-			message += "."
+	if(!(copytext(message, -1) in ENDING_PUNCT))
+		message += "."
 
 	if(forced)
 		if(speaking_noise)

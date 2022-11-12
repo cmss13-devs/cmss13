@@ -164,3 +164,10 @@
   - rscadd: Added hair gradients to character creation.
   - bugfix: Picking a color in character creation will now default to the pre-selected
       color, so it doesn't default to black each time.
+  ThePiachu:
+  - rscadd: Added a missing Electronics Pouch to Requisitions vendor
+  - rscadd: Added a few High-Capacity Power Cells to Requisitions so Smartgunners
+      can get some spares easier
+  - rscadd: Added a few clipboards around Requisitions to help keep all the papers
+      organised
+  - bugfix: Full Electronics Pouch is now actually full

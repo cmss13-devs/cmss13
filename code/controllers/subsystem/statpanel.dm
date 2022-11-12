@@ -52,9 +52,11 @@ SUBSYSTEM_DEF(statpanels)
 		else
 			target.stat_panel.send_message("update_split_admin_tabs", !!(target.prefs.toggles_admin & SPLIT_ADMIN_TABS))
 
-			if(!("MC" in target.panel_tabs) || !("Tickets" in target.panel_tabs))
-				//target.stat_panel.send_message("add_admin_tabs", target.holder.href_token)
-				target.stat_panel.send_message("add_admin_tabs", "")
+			if(!("Tickets" in target.panel_tabs))
+				target.stat_panel.send_message("add_admin_tabs", target.admin_holder.href_token)
+
+			if(!("MC" in target.panel_tabs) && target.admin_holder.rights & R_DEBUG)
+				target.stat_panel.send_message("add_debug_tabs", target.admin_holder.href_token)
 
 			if(target.stat_tab == "MC" && ((num_fires % mc_wait == 0))) // || target?.prefs.read_preference(/datum/preference/toggle/fast_mc_refresh)))
 				set_MC_tab(target)

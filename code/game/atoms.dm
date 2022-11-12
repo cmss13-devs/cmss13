@@ -330,7 +330,7 @@ Parameters are passed from New.
 /atom/process()
 	return
 
-///---CLONE---///
+//---CLONE---//
 
 /atom/clone
 	var/proj_x = 0
@@ -350,10 +350,6 @@ Parameters are passed from New.
 /atom/proc/extinguish_acid()
 	for(var/datum/effects/acid/A in effects_list)
 		qdel(A)
-
-/atom/proc/remove_weather_effects()
-	for(var/datum/effects/weather/W in effects_list)
-		qdel(W)
 
 // Movement
 /atom/proc/add_temp_pass_flags(flags_to_add)

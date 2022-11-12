@@ -330,3 +330,60 @@
   kugamo:
   - bugfix: Fixed Carriers getting xenoid sprites when carrying huggers.
   - bugfix: Fixed bad shading around resin traps, fast/sticky resin, eggs, and tunnels.
+2022-10-28:
+  Aceroy:
+  - bugfix: No more zoom glitches with binoculars and mounted turrets.
+  Morrow:
+  - bugfix: Stops the ability to grab or grab-throw simple animals with C4 on them.
+  Segrain:
+  - bugfix: Requisitions once again can properly order all ammunition boxes and mortar
+      shells.
+  - bugfix: ASRS should no longer randomly deliver crate of components for communications
+      tower.
+  Shad0vvs:
+  - bugfix: Fixes Ravagers being able to use scissor cuts though corners that are
+      walled off.
+  Unknownity:
+  - bugfix: The property Repairing now works again and also on synthetics via TOUCH
+  carlarctg:
+  - bugfix: Fixed resin spikes deleting on evolution, allowing drones who evolve into
+      hivelord (or vice versa) to keep them.
+  - bugfix: Tail stab now has a msg if you aim for a nonexistent limb
+  harryob:
+  - server: new round alert lives again, via tgs
+  - bugfix: autoreconnect now works
+  stanalbatross:
+  - bugfix: xenos can no longer build most structures on the same tile as open doors
+2022-10-29:
+  Joe lampost:
+  - bugfix: Stops duplication of smart discs
+  - bugfix: Stops the skinning of synths
+  Shad0vvs:
+  - bugfix: Now displays the first letter of areas properly on the Xeno death alert
+      message.
+  usnpeepoo:
+  - balance: Berserkers apprehend now has an actual cooldown, its speed increased
+      very slightly.
+  - balance: Berserkers eviscerates life steal gain and max has been lowered
+2022-10-30:
+  Geevies:
+  - admin: The ghost verb alert component now allows Aghosting as well as regular
+      ghosting.
+  - qol: Added a revive timer for zombies, as well as an alert for ghosts when their
+      bodies revive.
+  - balance: Zombie claws now apply a slowdown even if the slashed target is already
+      infected. Synths only get a regular slowdown, not a super slowdown.
+  - balance: You can now permanently kill zombies by decapitating them.
+  - bugfix: Fixes zombie eyes rendering incorrectly.
+  - bugfix: Zombies that zombify while lying down now get their equipment correctly.
+  - spellcheck: Zombie claw attacks now have sensical attack names.
+  Mister-moon1:
+  - code_imp: removed unused antihug code for the welding helmet
+  TotalEpicness:
+  - bugfix: Putting bodies in the pool now disrupts grab.
+  harryob:
+  - server: the server no longer allows graceful server restarts, and forcefully dies
+      at the end of every round
+2022-10-31:
+  Morrow:
+  - rscadd: Added suit slot sprites for mateba belts

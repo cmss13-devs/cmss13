@@ -749,6 +749,12 @@
 	desc = "A standard headset used by colonists."
 	frequency = COLONY_FREQ
 
+/obj/item/device/radio/headset/distress/goon
+	name = "WY corporate security headset"
+	desc = "A headset commonly worn by WY corporate security."
+	frequency = WY_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY)
+
 /obj/item/device/radio/headset/distress/dutch
 	name = "Dutch's Dozen headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the colony channel, use :h."
@@ -835,11 +841,11 @@
 	volume = RADIO_VOLUME_CRITICAL
 	ignore_z = TRUE
 
-/obj/item/device/radio/headset/almayer/marsoc
-	name = "USCM MARSOC headset"
-	desc = "Issued exclusively to members of the Marines Special Operations Command."
+/obj/item/device/radio/headset/almayer/sof
+	name = "USCM SOF headset"
+	desc = "Issued exclusively to Marine Raiders and members of the USCM's Force Reconnaissance."
 	icon_state = "soc_headset"
-	frequency = MARSOC_FREQ
+	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc)
 	volume = RADIO_VOLUME_IMPORTANT
 	ignore_z = TRUE

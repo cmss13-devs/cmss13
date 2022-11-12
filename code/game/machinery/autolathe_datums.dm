@@ -250,6 +250,13 @@
 	name = "camera assembly"
 	path = /obj/item/frame/camera
 	category = "Engineering"
+
+/datum/autolathe/recipe/matrix
+	name = "matrix assembly"
+	path = /obj/item/frame/matrix
+	category = "Engineering"
+
+
 /datum/autolathe/recipe/electropack
 	name = "electropack"
 	path = /obj/item/device/radio/electropack

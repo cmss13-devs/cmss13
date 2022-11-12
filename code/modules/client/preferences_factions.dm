@@ -1,12 +1,3 @@
-
-var/global/list/citizenship_choices = list(
-	CITIZENSHIP_US,
-	CITIZENSHIP_LUNA,
-	CITIZENSHIP_OTHER,
-	CITIZENSHIP_COLONY,
-	CITIZENSHIP_FOREIGN
-	)
-
 var/global/list/religion_choices = list(
     RELIGION_PROTESTANT,
     RELIGION_CATHOLIC,

@@ -34131,7 +34131,7 @@
 /area/desert_dam/building/security/armory)
 "bYr" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
 "bYs" = (

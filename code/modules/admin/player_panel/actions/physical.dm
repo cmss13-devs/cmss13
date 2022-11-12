@@ -17,7 +17,7 @@
 			continue
 
 		var/obj/limb/L = H.get_limb(limb)
-		L.droplimb(cause = user.key)
+		L.droplimb(create_cause_data("adminbus"))
 
 	playsound(target, "bone_break", 45, TRUE)
 	target.emote("scream")

@@ -230,11 +230,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dropship_crew_chief, list(
 	req_access = list(ACCESS_MARINE_PILOT)
 	vendor_role = list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF)
 
-/obj/structure/machinery/cm_vending/clothing/pilot_officer/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_clothing_pilot_officer
-
 /obj/structure/machinery/cm_vending/clothing/pilot_officer/get_listed_products(mob/user)
+	if(!user)
+		var/list/combined = list()
+		combined += GLOB.cm_vending_clothing_dropship_crew_chief
+		combined += GLOB.cm_vending_clothing_pilot_officer
+		return combined
 	if(user.job == JOB_DROPSHIP_CREW_CHIEF)
 		return GLOB.cm_vending_clothing_dropship_crew_chief
+	if(user.job == JOB_PILOT)
+		return GLOB.cm_vending_clothing_pilot_officer
 	return ..()

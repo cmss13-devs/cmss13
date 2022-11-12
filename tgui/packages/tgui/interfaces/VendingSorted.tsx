@@ -330,6 +330,7 @@ export const VendingSorted = (_, context) => {
       theme={getTheme(data.theme)}
     >
       <Window.Content scrollable
+        className="Vendor"
         onKeyDown={(event: any) => {
           const keyCode = window.event ? event.which : event.keyCode;
           if (keyCode === KEY_ESCAPE) {

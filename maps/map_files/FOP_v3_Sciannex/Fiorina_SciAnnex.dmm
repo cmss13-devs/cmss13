@@ -8380,6 +8380,13 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/lz/near_lzI)
+"eXC" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/fiorina/station/research_cells)
 "eXP" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
@@ -10083,6 +10090,13 @@
 	icon_state = "bluefull"
 	},
 /area/fiorina/station/power_ring)
+"fWD" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "darkbrown2"
+	},
+/area/fiorina/maintenance)
 "fWL" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -39916,6 +39930,13 @@
 	icon_state = "greenblue"
 	},
 /area/fiorina/station/botany)
+"xTe" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "blue"
+	},
+/area/fiorina/station/power_ring)
 "xTi" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -64008,7 +64029,7 @@ eLu
 cME
 cME
 eLu
-cEB
+fWD
 uJM
 gfo
 goz
@@ -82317,7 +82338,7 @@ cAW
 cAW
 jmG
 cKa
-ikq
+eXC
 vII
 vII
 vII
@@ -83035,7 +83056,7 @@ lAS
 qvL
 xcJ
 jjg
-xoF
+xTe
 beV
 rQP
 rev

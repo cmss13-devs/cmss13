@@ -922,6 +922,7 @@
 	C.visible_message(SPAN_WARNING("\The [C] loads into a launch tube. Stand clear!"))
 	C.anchored = TRUE //To avoid accidental pushes
 	current_squad.send_message("'[C.name]' supply drop incoming. Heads up!")
+	current_squad.send_maptext(C.name, "Incoming Supply Drop:")
 	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
 	COOLDOWN_START(S, next_supplydrop, 500 SECONDS)
 	if(ismob(usr))

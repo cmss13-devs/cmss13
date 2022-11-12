@@ -57,7 +57,7 @@
 	X.set_interaction(vehicle)
 	X.reset_view(vehicle)
 	X.client.change_view(viewport_view_buff, vehicle)
-	to_chat(X, SPAN_XENONOTICE("You peer into the device's screen, observing vehicle's surroundings."))
+	to_chat(X, SPAN_XENONOTICE("You peer into the device's screen, observing the vehicle's surroundings."))
 
 	RegisterSignal(X, COMSIG_MOVABLE_MOVED, .proc/stop_use_for_xeno)
 
@@ -106,7 +106,7 @@
 	M.set_interaction(vehicle)
 	handle_eyewear(M)
 
-	to_chat(M, SPAN_NOTICE("You look into \the [src]'s screen, viewing the vehicle surroundings with an overlaid medical HUD."))
+	to_chat(M, SPAN_NOTICE("You look into \the [src]'s screen, viewing the vehicle's surroundings with an overlaid medical HUD."))
 	enable_hud_for(M)
 
 	RegisterSignal(M, COMSIG_MOVABLE_MOVED, .proc/stop_use_for)

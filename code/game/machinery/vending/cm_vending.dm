@@ -477,20 +477,22 @@ GLOBAL_LIST_EMPTY(vending_products)
 	vendor_theme = VENDOR_THEME_USCM
 
 /obj/structure/machinery/cm_vending/gear/ui_static_data(mob/user)
-	var/list/data = ..(user)
-	data["vendor_type"] = "gear"
+	. = ..(user)
+	.["vendor_type"] = "gear"
+	.["displayed_categories"] = vendor_user_inventory_list(src, user)
+
+proc/vendor_user_inventory_list(var/vendor, mob/user)
 	// list format
 	//	(
 	// 		name: str
-	//		cost: number
-	//		item reference: path
-	//		allowed to buy flag: ?
-	//		item priority (mandatory/recommended/regular): 0|1|2
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
 	//	)
-	var/list/ui_listed_products = get_listed_products(user)
-
+	var/obj/structure/machinery/cm_vending/vending_machine = vendor
+	var/list/ui_listed_products = vending_machine.get_listed_products(user)
 	var/list/ui_categories = list()
-	var/show_points = FALSE
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
 
@@ -519,8 +521,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 			"image" = imgid
 		)
 
-		show_points = show_points ? show_points : p_cost > 0
-
 		if (is_category == 1)
 			ui_categories += list(list(
 				"name" = p_name,
@@ -536,12 +536,23 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/last_index = LAZYLEN(ui_categories)
 		var/last_category = ui_categories[last_index]
 		last_category["items"] += list(display_item)
-	data["displayed_categories"] = ui_categories
-	return data
+	return ui_categories
+
+proc/vendor_inventory_ui_data(var/vendor, mob/user)
+	. = list()
+	var/obj/structure/machinery/cm_vending/vending_machine = vendor
+	var/list/ui_listed_products = vending_machine.get_listed_products(user)
+	var/list/ui_categories = list()
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/p_amount = myprod[2]				//amount left
+		ui_categories += list(p_amount)
+	.["stock_listing"] = ui_categories
 
 proc/vendor_user_ui_data(var/vendor, mob/user)
+	. = list()
 	var/obj/structure/machinery/cm_vending/vending_machine = vendor
-	var/list/data = list()
 	var/list/ui_listed_products = vending_machine.get_listed_products(user)
 	// list format
 	//	(
@@ -571,9 +582,30 @@ proc/vendor_user_ui_data(var/vendor, mob/user)
 			prod_available = TRUE
 		stock_values += list(prod_available)
 
-	data["stock_listing"] = stock_values
-	data["current_m_points"] = available_points_to_display
-	return data
+	.["stock_listing"] = stock_values
+	.["current_m_points"] = available_points_to_display
+
+proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/itemspec, var/mob/living/carbon/human/user)
+	if(vendor.stat & IN_USE)
+		return
+	vendor.stat |= IN_USE
+	var/turf/target_turf = vendor.get_appropriate_vend_turf(user)
+	if(LAZYLEN(itemspec))	//making sure it's not empty
+		if(vendor.vend_delay)
+			vendor.overlays.Cut()
+			vendor.icon_state = "[initial(vendor.icon_state)]_vend"
+			if(vendor.vend_sound)
+				playsound(vendor.loc, vendor.vend_sound, 25, 1, 2)	//heard only near vendor
+			sleep(vendor.vend_delay)
+
+		var/prod_type = itemspec[3]
+		new prod_type(target_turf)
+	else
+		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
+		sleep(15)
+
+	vendor.stat &= ~IN_USE
+	vendor.update_icon()
 
 /obj/structure/machinery/cm_vending/gear/ui_data(mob/user)
 	return vendor_user_ui_data(src, user)
@@ -791,64 +823,9 @@ proc/vendor_user_ui_data(var/vendor, mob/user)
 	return
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
-	var/list/data = ..(user)
-	data["vendor_type"] = "clothing"
-	// list format
-	//	(
-	// 		name: str
-	//		cost
-	//		item reference
-	//		allowed to buy flag
-	//		item priority (mandatory/recommended/regular)
-	//	)
-	var/list/ui_listed_products = get_listed_products(user)
-
-	var/list/ui_categories = list()
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-
-		var/p_name = myprod[1]					//taking it's name
-		var/p_cost = myprod[2]
-		var/item_ref = myprod[3]
-		var/priority = myprod[5]
-
-		var/result = list()
-		var/obj/item/I = item_ref
-
-		var/is_category = item_ref == null
-
-		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
-		//forming new list with index, name, amount, available or not, color and add it to display_list
-
-		var/display_item = list(
-			"prod_index" = i,
-			"prod_name" = p_name,
-			"prod_available" = TRUE,
-			"prod_color" = priority,
-			"prod_initial" = 0,
-			"prod_icon" = result,
-			"prod_desc" = initial(I.desc),
-			"prod_cost" = p_cost,
-			"image" = imgid
-		)
-
-		if (is_category == 1)
-			ui_categories += list(list(
-				"name" = p_name,
-				"items" = list()
-			))
-			continue
-
-		if (!LAZYLEN(ui_categories))
-			ui_categories += list(list(
-				"name" = "",
-				"items" = list()
-			))
-		var/last_index = LAZYLEN(ui_categories)
-		var/last_category = ui_categories[last_index]
-		last_category["items"] += list(display_item)
-	data["displayed_categories"] = ui_categories
-	return data
+	. = ..(user)
+	.["vendor_type"] = "clothing"
+	.["displayed_categories"] = vendor_user_inventory_list(src, user)
 
 /obj/structure/machinery/cm_vending/clothing/ui_data(mob/user)
 	return vendor_user_ui_data(src, user)
@@ -1082,18 +1059,7 @@ proc/vendor_user_ui_data(var/vendor, mob/user)
 	return data
 
 /obj/structure/machinery/cm_vending/sorted/ui_data(mob/user)
-	var/list/data = list()
-
-	var/list/ui_listed_products = get_listed_products(user)
-
-	var/list/ui_categories = list()
-
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-		var/p_amount = myprod[2]				//amount left
-		ui_categories += list(p_amount)
-	data["stock_listing"] = ui_categories
-	return data
+	return vendor_inventory_ui_data(src, user)
 
 /obj/structure/machinery/cm_vending/sorted/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -1232,119 +1198,15 @@ proc/vendor_user_ui_data(var/vendor, mob/user)
 	available_points_to_display = MARINE_TOTAL_BUY_POINTS
 
 /obj/structure/machinery/cm_vending/own_points/ui_static_data(mob/user)
-	var/list/data = ..(user)
-	data["vendor_type"] = "gear"
-	// list format
-	//	(
-	// 		name: str
-	//		cost
-	//		item reference
-	//		allowed to buy flag
-	//		item priority (mandatory/recommended/regular)
-	//	)
-	var/list/ui_listed_products = get_listed_products(user)
-
-	var/list/ui_categories = list()
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-
-		var/p_name = myprod[1]					//taking it's name
-		var/p_cost = myprod[2]
-		var/item_ref = myprod[3]
-		var/priority = myprod[5]
-
-		var/result = list()
-		var/obj/item/I = item_ref
-
-		var/is_category = item_ref == null
-
-		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
-		//forming new list with index, name, amount, available or not, color and add it to display_list
-
-		var/display_item = list(
-			"prod_index" = i,
-			"prod_name" = p_name,
-			"prod_available" = TRUE,
-			"prod_color" = priority,
-			"prod_initial" = 0,
-			"prod_icon" = result,
-			"prod_desc" = initial(I.desc),
-			"prod_cost" = p_cost,
-			"image" = imgid
-		)
-
-		if (is_category == 1)
-			ui_categories += list(list(
-				"name" = p_name,
-				"items" = list()
-			))
-			continue
-
-		if (!LAZYLEN(ui_categories))
-			ui_categories += list(list(
-				"name" = "",
-				"items" = list()
-			))
-		var/last_index = LAZYLEN(ui_categories)
-		var/last_category = ui_categories[last_index]
-		last_category["items"] += list(display_item)
-	data["displayed_categories"] = ui_categories
-	return data
+	. = ..(user)
+	.["vendor_type"] = "gear"
+	.["displayed_categories"] = vendor_user_inventory_list(src, user)
 
 /obj/structure/machinery/cm_vending/own_points/ui_data(mob/user)
-	var/list/data = list()
-
-	var/list/ui_listed_products = get_listed_products(user)
-	// list format
-	//	(
-	// 		name: str
-	//		cost
-	//		item reference
-	//		allowed to buy flag
-	//		item priority (mandatory/recommended/regular)
-	//	)
-
-	var/list/stock_values = list()
-
-	var/mob/living/carbon/human/H = user
-	var/buy_flags = NO_FLAGS
-	buy_flags = H.marine_buy_flags
-
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-		var/prod_available = FALSE
-		var/p_cost = myprod[2]
-		var/avail_flag = myprod[4]
-		if(available_points >= p_cost && (!avail_flag || buy_flags & avail_flag))
-			prod_available = TRUE
-		stock_values += list(prod_available)
-
-
-	data["stock_listing"] = stock_values
-	data["current_m_points"] = available_points
-	return data
+	return vendor_user_ui_data(src, user)
 
 /obj/structure/machinery/cm_vending/own_points/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
-	if(stat & IN_USE)
-		return
-
-	stat |= IN_USE
-	if(LAZYLEN(L))	//making sure it's not empty
-		if(vend_delay)
-			overlays.Cut()
-			icon_state = "[initial(icon_state)]_vend"
-			if(vend_sound)
-				playsound(loc, vend_sound, 25, 1, 2)	//heard only near vendor
-			sleep(vend_delay)
-		var/prod_type = L[3]
-		new prod_type(T)
-	else
-		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
-		sleep(15)
-
-	stat &= ~IN_USE
-	update_icon()
-	return
+	vendor_successful_vend(src, L, H)
 
 /obj/structure/machinery/cm_vending/own_points/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

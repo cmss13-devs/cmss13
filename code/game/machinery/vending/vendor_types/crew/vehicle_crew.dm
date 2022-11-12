@@ -19,6 +19,8 @@
 	var/budget_points = 0
 	var/available_categories = VEHICLE_ALL_AVAILABLE
 
+	available_points_to_display = 0
+
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, .proc/populate_products)
@@ -73,16 +75,27 @@
 	return display_list
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/ui_data(mob/user)
-	. = ..()
+	. = list()
+	. += ui_static_data(user)
 
 	if(supply_controller.tank_points)		//we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
 		available_points_to_display = supply_controller.tank_points
 		supply_controller.tank_points = 0
 	.["current_m_points"] = available_points_to_display
-	/*
-	if(budget_points >= p_cost && (!avail_flag || available_categories & avail_flag))
-				prod_available = TRUE
-	*/
+
+	var/list/ui_listed_products = get_listed_products(user)
+	var/list/stock_values = list()
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/prod_available = FALSE
+		var/p_cost = myprod[2]
+		var/avail_flag = myprod[4]
+		if(budget_points >= p_cost && (!avail_flag || available_categories & avail_flag))
+			prod_available = TRUE
+		stock_values += list(prod_available)
+
+	.["stock_listing"] = stock_values
+
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

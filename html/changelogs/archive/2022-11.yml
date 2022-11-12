@@ -157,3 +157,6 @@
   - bugfix: fixed inability to feed someone else a drink
   kugamo:
   - bugfix: Fixed spawn pools sizzling dead corpses when crossed.
+2022-11-12:
+  Diegoflores31:
+  - bugfix: Breaching Charge can now be planted on cargo containers

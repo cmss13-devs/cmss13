@@ -125,6 +125,9 @@
 		if(new_xeno.client)
 			new_xeno.client.change_view(world_view_size)
 
+	if(iff_tag)
+		new_xeno.iff_tag = iff_tag
+
 	//Regenerate the new mob's name now that our player is inside
 	new_xeno.generate_name()
 	if(new_xeno.client)
@@ -313,6 +316,9 @@
 			new_xeno.client.change_view(world_view_size)
 			new_xeno.client.pixel_x = 0
 			new_xeno.client.pixel_y = 0
+
+	if(iff_tag)
+		new_xeno.iff_tag = iff_tag
 
 	//Regenerate the new mob's name now that our player is inside
 	new_xeno.generate_name()

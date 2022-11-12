@@ -160,3 +160,7 @@
 2022-11-12:
   Diegoflores31:
   - bugfix: Breaching Charge can now be planted on cargo containers
+  Geevies:
+  - rscadd: Added hair gradients to character creation.
+  - bugfix: Picking a color in character creation will now default to the pre-selected
+      color, so it doesn't default to black each time.

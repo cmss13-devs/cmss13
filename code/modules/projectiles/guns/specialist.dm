@@ -1024,7 +1024,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		to_chat(user, SPAN_WARNING("Augh!! \The [src]'s launch blast resonates extremely loudly in your ears! You probably should have worn some sort of ear protection..."))
 		huser.apply_effect(6, STUTTER)
 		huser.emote("pain")
-		//sorry
 		huser.SetEarDeafness(max(user.ear_deaf,10))
 
 	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))

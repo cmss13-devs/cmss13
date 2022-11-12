@@ -191,12 +191,19 @@ datum/preferences/proc/randomize_skin_color()
 	if(refresh_limb_status)
 		for(var/obj/limb/L in preview_dummy.limbs)
 			L.status = LIMB_ORGANIC
+	if(!preview_dummy.hud_used)
+		preview_dummy.create_hud()
 	preview_dummy.set_species()
 	copy_appearance_to(preview_dummy)
+	copy_information_to(preview_dummy)
+	if(disabilities)
+		preview_dummy.disabilities |= NEARSIGHTED
+	else
+		preview_dummy.disabilities &= ~NEARSIGHTED
 	preview_dummy.update_body()
 	preview_dummy.update_hair()
 
-	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
+	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear, show_vanity_items)
 
 	if(isnull(preview_front))
 		preview_front = new()

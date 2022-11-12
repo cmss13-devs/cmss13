@@ -133,7 +133,7 @@
 /datum/equipment_preset/proc/load_languages(mob/living/carbon/human/H, var/client/mob_client)
 	H.set_languages(languages)
 
-/datum/equipment_preset/proc/load_preset(mob/living/carbon/human/H, var/randomise = FALSE, var/count_participant = FALSE, var/client/mob_client, var/show_job_gear = TRUE)
+/datum/equipment_preset/proc/load_preset(mob/living/carbon/human/H, var/randomise = FALSE, var/count_participant = FALSE, var/client/mob_client, var/show_job_gear = TRUE, var/show_vanity_items = TRUE)
 	load_race(H, mob_client)
 	if(randomise || uses_special_name)
 		load_name(H, randomise, mob_client)
@@ -149,7 +149,8 @@
 		load_gear(H, mob_client)
 	load_id(H, mob_client)
 	load_status(H, mob_client)
-	load_vanity(H, mob_client)
+	if(show_vanity_items)
+		load_vanity(H, mob_client)
 	load_traits(H, mob_client)
 	if(round_statistics && count_participant)
 		round_statistics.track_new_participant(faction)
@@ -166,11 +167,11 @@
 	H.add_to_all_mob_huds()
 
 /datum/equipment_preset/proc/load_vanity(mob/living/carbon/human/H, var/client/mob_client)
-	if(!H.client || !H.client.prefs || !H.client.prefs.gear)
-		return//We want to equip them with custom stuff second, after they are equipped with everything else.
+	var/client/client_to_check = mob_client || H.client
+
 	var/datum/gear/G
 	var/i
-	for(i in H.client.prefs.gear)
+	for(i in client_to_check.prefs.gear)
 		G = gear_datums[i]
 		if(G)
 			if(G.allowed_roles && !(assignment in G.allowed_roles))
@@ -182,7 +183,7 @@
 			if(!H.equip_to_slot_or_del(new G.path, G.slot))
 				H.equip_to_slot_or_del(new G.path, WEAR_IN_BACK)
 
-    //Gives ranks to the ranked
+	//Gives ranks to the ranked
 	var/current_rank = paygrade
 	var/obj/item/card/id/I = H.get_idcard()
 	if(I)
@@ -199,7 +200,7 @@
 				qdel(R)
 
 	if(flags & EQUIPMENT_PRESET_MARINE)
-		var/playtime = get_job_playtime(H.client, assignment)
+		var/playtime = get_job_playtime(client_to_check, assignment)
 		var/medal_type
 
 		switch(playtime)
@@ -212,7 +213,7 @@
 			if(JOB_PLAYTIME_TIER_4 to INFINITY)
 				medal_type = /obj/item/clothing/accessory/medal/platinum/service
 
-		if(!H.client.prefs.playtime_perks)
+		if(!client_to_check.prefs.playtime_perks)
 			medal_type = null
 
 		if(medal_type)
@@ -227,21 +228,22 @@
 			else
 				if(!H.equip_to_slot_if_possible(medal, WEAR_IN_BACK, disable_warning = TRUE))
 					if(!H.equip_to_slot_if_possible(medal, WEAR_L_HAND))
-						if(!H.equip_to_slot_if_possible(medal, WEAR_R_HAND))
+						if(!H.equip_to_slot_if_possible(medal, WEAR_R_HAND) && !istype(H, /mob/living/carbon/human/dummy))
 							medal.forceMove(H.loc)
 
 
 	//Gives glasses to the vision impaired
-	if(H.disabilities & NEARSIGHTED)
+	if(HAS_FLAG(H.disabilities, NEARSIGHTED))
+		if(istype(H.glasses, /obj/item/clothing/glasses))
+			var/obj/item/clothing/glasses/EYES = H.glasses
+			if(EYES.prescription) //if they already have prescription glasses they don't need new ones
+				return
+
 		var/obj/item/clothing/glasses/regular/P = new /obj/item/clothing/glasses/regular()
 		if(!H.equip_to_slot_if_possible(P, WEAR_EYES))
-			if(istype(H.glasses, /obj/item/clothing/glasses))
-				var/obj/item/clothing/glasses/EYES = H.glasses
-				if(EYES.prescription) //if they already have prescription glasses they don't need new ones
-					return
 			if(!H.equip_to_slot_if_possible(P, WEAR_IN_BACK))
 				if(!H.equip_to_slot_if_possible(P, WEAR_L_HAND))
-					if(!H.equip_to_slot_if_possible(P, WEAR_R_HAND))
+					if(!H.equip_to_slot_if_possible(P, WEAR_R_HAND) && !istype(H, /mob/living/carbon/human/dummy))
 						P.forceMove(H.loc)
 
 /datum/equipment_preset/proc/load_traits(mob/living/carbon/human/H, var/client/mob_client)

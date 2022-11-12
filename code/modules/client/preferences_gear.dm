@@ -53,6 +53,7 @@ var/global/list/gear_datums = list()
 	cost = 3
 	slot = WEAR_HEAD
 	allowed_origins = USCM_ORIGINS
+
 /datum/gear/cmberet
 	display_name = "USCM Beret (Green)"
 	path = /obj/item/clothing/head/beret/cm
@@ -394,14 +395,14 @@ var/global/list/gear_datums = list()
 	display_name = "USCM shoulder patch"
 	path = /obj/item/clothing/accessory/patch
 	cost = 1
-	slot = WEAR_IN_ACCESSORY
+	slot = WEAR_ACCESSORY
 	allowed_origins = USCM_ORIGINS
 
 /datum/gear/falconpatch
 	display_name = "Falling Falcons shoulder patch"
 	path = /obj/item/clothing/accessory/patch/falcon
 	cost = 1
-	slot = WEAR_IN_ACCESSORY
+	slot = WEAR_ACCESSORY
 	allowed_origins = USCM_ORIGINS
 
 /datum/gear/gas_mask
@@ -426,61 +427,61 @@ var/global/list/gear_datums = list()
 	display_name = "Gun Oil"
 	path = /obj/item/prop/helmetgarb/gunoil
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/netting
 	display_name = "Helmet Netting"
 	path = /obj/item/prop/helmetgarb/netting
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/spent_buck
 	display_name = "Spent Buckshot"
 	path = /obj/item/prop/helmetgarb/spent_buckshot
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/spent_slugs
 	display_name = "Spent Slugs"
 	path = /obj/item/prop/helmetgarb/spent_slug
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/spent_flechette
 	display_name = "Spent Flechette"
 	path = /obj/item/prop/helmetgarb/spent_flech
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/prescription_bottle
 	display_name = "Prescription Bottle"
 	path = /obj/item/prop/helmetgarb/prescription_bottle
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/raincover
 	display_name = "Helmet Rain Cover"
 	path = /obj/item/prop/helmetgarb/raincover
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/rabbits_foot
 	display_name = "Rabbit's Foot"
 	path = /obj/item/prop/helmetgarb/rabbitsfoot
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/rosary
 	display_name = "Rosary"
-	path = /obj/item/prop/helmetgarb/rosary
+	path = /obj/item/clothing/accessory/rosary
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_ACCESSORY
 
 /datum/gear/lucky_feather
 	display_name = "Lucky Feather - Red"
 	path = /obj/item/prop/helmetgarb/lucky_feather
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/lucky_feather/blue
 	display_name = "Lucky Feather - Blue"
@@ -498,56 +499,56 @@ var/global/list/gear_datums = list()
 	display_name = "M5 integrated gasmask"
 	path = /obj/item/prop/helmetgarb/helmet_gasmask
 	cost = 2
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/trimmed_wire
 	display_name = "Trimmed Barbed Wire"
 	path = /obj/item/prop/helmetgarb/trimmed_wire
 	cost = 2
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/bullet_pipe
 	display_name = "10x99mm XM42B casing pipe"
 	path = /obj/item/prop/helmetgarb/bullet_pipe
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/flair_initech
 	display_name = "Initech Flair"
 	path = /obj/item/prop/helmetgarb/flair_initech
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/flair_io
 	display_name = "Io Flair"
 	path = /obj/item/prop/helmetgarb/flair_io
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/flair_peace
 	display_name = "Peace and Love Flair"
 	path = /obj/item/prop/helmetgarb/flair_peace
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/flair_uscm
 	display_name = "USCM Flair"
 	path = /obj/item/prop/helmetgarb/flair_uscm
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 	allowed_origins = USCM_ORIGINS
 
 /datum/gear/broken_nvgs
 	display_name = "Broken Night Vision Goggles"
 	path = /obj/item/prop/helmetgarb/helmet_nvg/cosmetic
 	cost = 1
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/spacejam_tickets
 	display_name = "Authentic Tickets to Space Jam"
 	path = /obj/item/prop/helmetgarb/spacejam_tickets
 	cost = 4
-	slot = WEAR_IN_BACK
+	slot = WEAR_IN_HELMET
 
 /datum/gear/weyland_booze
 	display_name = "Weyland-Yutani Lite"

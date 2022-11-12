@@ -440,7 +440,7 @@
 	var/mob/living/carbon/human/zombie = new /mob/living/carbon/human(loc)
 	if(!zombie.hud_used)
 		zombie.create_hud()
-	arm_equipment(zombie, /datum/equipment_preset/other/zombie, randomise = TRUE, count_participant = TRUE, mob_client = observer.client, show_job_gear = TRUE)
+	arm_equipment(zombie, /datum/equipment_preset/other/zombie, randomise = TRUE, count_participant = TRUE, mob_client = observer.client, show_job_gear = TRUE, show_vanity_items = TRUE)
 	observer.client.eye = zombie
 	observer.mind.transfer_to(zombie)
 	if(spawns_left <= 0)

@@ -209,8 +209,12 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/no_radials_preference = FALSE
 	var/no_radial_labels_preference = FALSE
 
-	var/bg_state = "blank" // the icon_state of the floortile background displayed behind the mannequin in character creation
-	var/show_job_gear = TRUE // whether the job gear gets equipped to the mannequin in character creation
+	/// the icon_state of the floortile background displayed behind the mannequin in character creation
+	var/bg_state = "blank"
+	/// whether the job gear gets equipped to the mannequin in character creation
+	var/show_job_gear = TRUE
+	/// whether the character's vanity items gets equipped to the mannequin in character creation
+	var/show_vanity_items = TRUE
 
 	//Byond membership status
 
@@ -360,6 +364,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Backpack Type:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</b></a><br>"
 
 			dat += "<b>Show Job Gear:</b> <a href ='?_src_=prefs;preference=toggle_job_gear'><b>[show_job_gear ? "True" : "False"]</b></a><br>"
+			dat += "<b>Show Vanity Items:</b> <a href ='?_src_=prefs;preference=toggle_vanity_items'><b>[show_vanity_items ? "True" : "False"]</b></a><br>"
 			dat += "<b>Background:</b> <a href ='?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a><br>"
 
 			dat += "<b>Custom Loadout:</b> "
@@ -986,6 +991,9 @@ var/const/MAX_SAVE_SLOTS = 10
 
 		if("toggle_job_gear")
 			show_job_gear = !show_job_gear
+
+		if("toggle_vanity_items")
+			show_vanity_items = !show_vanity_items
 
 		if("cycle_bg")
 			bg_state = next_in_list(bg_state, GLOB.bgstate_options)
@@ -1896,12 +1904,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(backbag > 2 || backbag < 1)
 		backbag = 2 //Same as above
 	character.backbag = backbag
-
-	//Debugging report to track down a bug, which randomly assigned the plural gender to people.
-	if(character.gender in list(PLURAL, NEUTER))
-		if(isliving(src)) //Ghosts get neuter by default
-			message_staff("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
-			character.gender = MALE
 
 
 // Transfers the character's information (name, flavor text, records, roundstart clothes, etc.) to the mob

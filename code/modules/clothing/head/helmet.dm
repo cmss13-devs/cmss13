@@ -274,7 +274,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/prescription_bottle = "prescription_bottle",
 	/obj/item/prop/helmetgarb/raincover = "raincover",
 	/obj/item/prop/helmetgarb/rabbitsfoot = "rabbitsfoot",
-	/obj/item/prop/helmetgarb/rosary = "helmet_rosary", // This one was already in the game for some reason, but never had an object
 	/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
 	/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
 	/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
@@ -290,6 +289,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/flair_uscm = "flair_uscm",
 	/obj/item/prop/helmetgarb/bullet_pipe = "bullet_pipe",
 	/obj/item/prop/helmetgarb/spacejam_tickets = "tickets_to_space_jam",
+
+	// ACCESSORIES
+	/obj/item/clothing/accessory/rosary = "helmet_rosary",
 
 	// MISC
 	/obj/item/tool/pen = "helmet_pen_black",

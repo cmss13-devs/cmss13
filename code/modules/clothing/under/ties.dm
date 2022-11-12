@@ -781,3 +781,16 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 		new /obj/item/clothing/accessory/holobadge/cord(src)
 		..()
 		return
+
+/obj/item/clothing/accessory/rosary
+	name = "rosary"
+	desc = "A well-known religious item, this is a necklace carrying a cross. It is a tool commonly used by Catholics to aid in prayer."
+	icon_state = "rosary"
+	flags_equip_slot = SLOT_FACE
+	high_visibility = TRUE
+
+/obj/item/clothing/accessory/rosary/get_examine_location(var/mob/living/carbon/human/wearer, var/mob/examiner, var/slot, var/t_he = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
+	switch(slot)
+		if(WEAR_FACE)
+			return "around [t_his] neck"
+	return ..()

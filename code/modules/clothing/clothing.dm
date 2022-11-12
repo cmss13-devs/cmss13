@@ -23,12 +23,12 @@
 /obj/item/clothing/get_examine_line(mob/user)
 	. = ..()
 	var/list/ties = list()
-	for(var/obj/item/clothing/accessory/accessory in accessories)
+	for(var/obj/item/clothing/accessory/accessory as anything in accessories)
 		if(accessory.high_visibility)
 			ties += "\a [accessory.get_examine_line(user)]"
-	if(ties.len)
+	if(length(ties))
 		.+= " with [english_list(ties)] attached"
-	if(LAZYLEN(accessories) > ties.len)
+	if(LAZYLEN(accessories) > length(ties))
 		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
 
 /obj/item/clothing/Topic(href, href_list)
@@ -99,7 +99,7 @@
 		ret.overlays += bloodsies
 
 	if(LAZYLEN(accessories))
-		for(var/obj/item/clothing/accessory/A in accessories)
+		for(var/obj/item/clothing/accessory/A as anything in accessories)
 			ret.overlays |= A.get_mob_overlay(user_mob, slot)
 	return ret
 

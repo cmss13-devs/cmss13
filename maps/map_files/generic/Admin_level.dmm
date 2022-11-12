@@ -4940,7 +4940,7 @@
 	},
 /area/adminlevel/ert_station)
 "Qz" = (
-/obj/item/prop/helmetgarb/rosary,
+/obj/item/clothing/accessory/rosary,
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"

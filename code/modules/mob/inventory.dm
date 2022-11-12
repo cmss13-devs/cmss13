@@ -196,7 +196,8 @@
 
 /mob/living/carbon/human/proc/equip_if_possible(obj/item/W, slot, del_on_fail = 1) // since byond doesn't seem to have pointers, this seems like the best way to do this :/
 	//warning: icky code
-	var/equipped = 0
+	var/equipped = FALSE
+	var/move_from_loc = TRUE
 	switch(slot)
 		if(WEAR_BACK)
 			if(!src.back)
@@ -331,13 +332,18 @@
 				if(P.contents.len < P.storage_slots && W.w_class <= P.max_w_class)
 					W.forceMove(P)
 					equipped = 1
-
+		if(WEAR_ACCESSORY)
+			for(var/obj/item/clothing/C in contents)
+				if(C.attach_accessory(src, W, TRUE))
+					equipped = TRUE
+					move_from_loc = FALSE
+					break
 
 	if(equipped)
 		recalculate_move_delay = TRUE
 		W.layer = ABOVE_HUD_LAYER
 		W.plane = ABOVE_HUD_PLANE
-		if(src.back && W.loc != src.back)
+		if(move_from_loc && src.back && W.loc != src.back)
 			W.forceMove(src)
 	else
 		if (del_on_fail)

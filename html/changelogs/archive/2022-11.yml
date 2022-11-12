@@ -171,3 +171,5 @@
   - rscadd: Added a few clipboards around Requisitions to help keep all the papers
       organised
   - bugfix: Full Electronics Pouch is now actually full
+  kugamo:
+  - bugfix: Removed ability to do pushups while in a xeno or while buckled.

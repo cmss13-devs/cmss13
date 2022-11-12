@@ -923,7 +923,7 @@
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, "tail")
 
-	var/damage = stabbing_xeno.melee_damage_upper * 1.2
+	var/damage = (stabbing_xeno.melee_damage_upper + frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * 1.2
 
 	if(stabbing_xeno.behavior_delegate)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)

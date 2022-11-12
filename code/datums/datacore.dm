@@ -326,7 +326,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	locked += L
 
 /// Remove an entry from the manifest
-/obj/effect/datacore/proc/manifest_remove(ref, name)
+/datum/datacore/proc/manifest_remove(ref, name)
 	var/use_name = isnull(ref)
 	for(var/datum/data/record/data_record as anything in GLOB.data_core.general)
 		if(use_name)

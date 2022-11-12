@@ -290,10 +290,13 @@ SUBSYSTEM_DEF(statpanels)
 		var/atom/thing = to_make[index]
 
 		var/generated_string
+		/* We're cheap and won't render all overlays. It's expensive and updates with onmob changes!
 		if(ismob(thing) || length(thing.overlays) > 2)
 			generated_string = costly_icon2html(thing, parent, sourceonly=TRUE)
 		else
 			generated_string = icon2html(thing, parent, sourceonly=TRUE)
+		*/
+		generated_string = icon2html(thing, parent, sourceonly=TRUE)
 
 		newly_seen[thing] = generated_string
 		if(TICK_CHECK)

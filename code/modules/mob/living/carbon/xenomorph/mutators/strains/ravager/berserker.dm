@@ -29,8 +29,7 @@
 	R.health_modifier -= XENO_HEALTH_MOD_MED
 	R.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
 	R.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	R.ignore_aura = "frenzy" // Berserker should only rely on its own speed from slashes, also fucks with apprehend
-
+	R.received_phero_caps["frenzy"] = 2.9 // Moderate
 	mutator_update_actions(R)
 	MS.recalculate_actions(description, flavor_description)
 

@@ -197,6 +197,7 @@
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
+	var/received_phero_caps = list()
 	var/acid_modifier = 0
 	var/weed_modifier = 0
 	var/evasion_modifier = 0
@@ -293,7 +294,6 @@
 	var/warding_aura = 0
 	var/recovery_aura = 0
 	var/ignore_aura = FALSE // ignore a specific pherom, input type
-
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -943,6 +943,15 @@
 		current_aura = null
 		to_chat(src, SPAN_XENOWARNING("You lose your pheromones."))
 
+	// Also recalculate received pheros now
+	for(var/capped_aura in received_phero_caps)
+		switch(capped_aura)
+			if("frenzy")
+				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
+			if("warding")
+				warding_new = min(warding_new, received_phero_caps[capped_aura])
+			if("recovery")
+				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	evolution_threshold =  caste.evolution_threshold

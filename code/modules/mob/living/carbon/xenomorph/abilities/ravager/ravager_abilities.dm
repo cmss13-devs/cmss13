@@ -65,11 +65,11 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 0
-	xeno_cooldown = 15 SECONDS
+	xeno_cooldown = 16 SECONDS
 
 	// Config values
 	var/speed_buff = 0.7
-	var/buff_duration = 6 SECONDS
+	var/buff_duration = 7 SECONDS
 
 
 /datum/action/xeno_action/activable/clothesline

@@ -215,6 +215,12 @@
   ThePiachu:
   - rscadd: Added a small visual offset to ammo, mortar shells and grenades on the
       ground to make piles of ammunitions and explosive more visually distinct.
+  Unknownity:
+  - balance: The thick resin nest's space for construction requirements has been removed.
+  - balance: The hive is now notified that the thick resin nest is now available whenever
+      a predator is infected.
+  - bugfix: The thick resin nest's construction template has been fixed to actually
+      appear now so xenomorphs know where it is to fill it with plasma.
   fira:
   - rscadd: You can now order randomized pizza at ASRS, for special occasions or reqsreation.
   - bugfix: Added a bandaid for the broken ASRS lift animation

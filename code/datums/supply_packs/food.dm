@@ -165,7 +165,7 @@
 	containername = "\improper USCM MRE crate(x2)"
 	group = "Food"
 	
-	/datum/supply_packs/funfood
+/datum/supply_packs/funfood
 	name = "special ingredients crate (x6)"
 	randomised_num_contained = 6
 	contains = list(
@@ -204,6 +204,16 @@
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Special ingredients crate"
+	group = "Food"
+	
+/datum/supply_packs/pizzas
+	name = "pizza ready-to-eat (x3)"
+	contains = list(
+		/obj/item/pizzabox/mystery/stack
+	)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/freezer
+	containername = "\improper Pizza crate"
 	group = "Food"
 
 //kind of is own sub category with the happy pill in it

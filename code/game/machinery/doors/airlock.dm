@@ -830,7 +830,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	for(var/x in things_to_shmush)
 		for(var/i in GLOB.resin_door_shmushereds)
 			if(istype(x,i)) 								//I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
-				playsound(loc, "alien_resin_break", 25)		//what??? contstruct the global list with a function that does all that automatically? who do you think I am ; a dev?
+				playsound(loc, "alien_resin_break", 25)
 				visible_message(SPAN_WARNING("The [src.name] closes on the [x], shmushing it!"))
 				if(isturf(x))
 					var/turf/closed/wall/resin_wall_to_destroy = x

@@ -199,7 +199,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	name = "\improper ColMarTech Automated Marine Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Marine Rifleman standard-issue equipment."
 	icon_state = "mar_rack"
-	use_points = TRUE
 	show_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
 

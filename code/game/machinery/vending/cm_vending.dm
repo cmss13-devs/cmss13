@@ -367,19 +367,18 @@ GLOBAL_LIST_EMPTY(vending_products)
 						vend_fail()
 						return FALSE
 
-			// if vendor has no costs and is inventory limited
-			if(!(use_points|use_snowflake_points))
-				var/inventory_count = itemspec[2]
-				if(inventory_count <= 0)	//to avoid dropping more than one product when there's
-					to_chat(usr, SPAN_WARNING("[itemspec[1]] is out of stock."))
-					vend_fail()
-					return TRUE		// one left and the player spam click during a lagspike.
-
 			if(use_points|use_snowflake_points)
 				if(!handle_points(user, itemspec))
 					to_chat(user, SPAN_WARNING("Not enough points."))
 					vend_fail()
 					return FALSE
+			else
+				// if vendor has no costs and is inventory limited
+				var/inventory_count = itemspec[2]
+				if(inventory_count <= 0)	//to avoid dropping more than one product when there's
+					to_chat(usr, SPAN_WARNING("[itemspec[1]] is out of stock."))
+					vend_fail()
+					return TRUE		// one left and the player spam click during a lagspike.
 
 			vendor_successful_vend(src, itemspec, user)
 	add_fingerprint(user)

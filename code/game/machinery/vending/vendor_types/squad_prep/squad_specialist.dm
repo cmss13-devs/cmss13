@@ -65,7 +65,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 	desc = "An automated gear rack for Squad Weapons Specialists."
 	icon_state = "spec_gear"
 	show_points = TRUE
-	use_points = TRUE
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 	req_access = list(ACCESS_MARINE_SPECPREP)
 

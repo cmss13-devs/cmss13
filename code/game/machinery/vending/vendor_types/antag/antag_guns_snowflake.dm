@@ -6,7 +6,6 @@
 	icon_state = "antag_guns"
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 
-	use_points = TRUE
 	use_snowflake_points = TRUE
 
 	listed_products = list()

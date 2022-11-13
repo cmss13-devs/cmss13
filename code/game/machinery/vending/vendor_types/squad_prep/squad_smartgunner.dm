@@ -54,7 +54,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 	desc = "An automated gear rack for Squad Smartgunners."
 	icon_state = "sg_gear"
 	show_points = TRUE
-	use_points = TRUE
 	vendor_role = list(JOB_SQUAD_SMARTGUN)
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 

@@ -61,7 +61,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 	desc = "An automated gear rack for RTOs."
 	icon_state = "intel_gear"
 	show_points = TRUE
-	use_points = TRUE
 	req_access = list(ACCESS_MARINE_RTO_PREP)
 	vendor_role = list(JOB_SQUAD_RTO)
 

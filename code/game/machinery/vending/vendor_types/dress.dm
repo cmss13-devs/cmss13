@@ -2,7 +2,6 @@
 	name = "ColMarTech Automated Personal Uniform Closet"
 	desc = "An automated closet hooked up to a colossal storage of standard-issue dress uniform variants."
 	icon_state = "dress"
-	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
 
 /obj/structure/machinery/cm_vending/clothing/dress/proc/get_listed_products_for_role(list/role_specific_uniforms)

@@ -252,7 +252,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	name = "\improper W-Y Synthetic Conformity Unit"
 	desc = "A vendor with a large snowflake on it. Provided by Wey-Yu Fashion Division(TM)."
 	icon_state = "snowflake"
-	use_points = TRUE
 	show_points = TRUE
 	use_snowflake_points = TRUE
 	vendor_theme = VENDOR_THEME_COMPANY

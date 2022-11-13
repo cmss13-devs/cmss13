@@ -771,18 +771,18 @@
 		qdel(src)
 
 /obj/structure/magazine_box/get_examine_text(mob/user)
-	..()
+	. = ..()
 	if(get_dist(src,user) > 2 && !isobserver(user))
 		return
-	to_chat(user, SPAN_INFO("[SPAN_HELPFUL("Click")] on the box with an empty hand to take a magazine out. [SPAN_HELPFUL("Drag")] it onto yourself to pick it up."))
+	. += SPAN_INFO("[SPAN_HELPFUL("Click")] on the box with an empty hand to take a magazine out. [SPAN_HELPFUL("Drag")] it onto yourself to pick it up.")
 	if(item_box.handfuls)
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 		if(AM)
-			to_chat(user, SPAN_INFO("It has roughly [round(AM.current_rounds/5)] handfuls remaining."))
+			. +=  SPAN_INFO("It has roughly [round(AM.current_rounds/5)] handfuls remaining.")
 	else
-		to_chat(user, SPAN_INFO("It has [item_box.contents.len] magazines out of [item_box.num_of_magazines]."))
+		. +=  SPAN_INFO("It has [item_box.contents.len] magazines out of [item_box.num_of_magazines].")
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		. +=  SPAN_DANGER("It's on fire and might explode!")
 
 /obj/structure/magazine_box/attack_hand(mob/living/user)
 	if(burning)

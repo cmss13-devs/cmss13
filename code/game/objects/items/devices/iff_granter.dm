@@ -37,6 +37,15 @@
 		to_chat(user, SPAN_NOTICE("There needs to be an inserted ID card to use this!"))
 		return
 
+	if(!ishuman(user))
+		return
+
+	var/mob/living/carbon/human/human_user = user
+
+	if(!check_access(human_user.wear_id))
+		to_chat(user, SPAN_WARNING("The screen shows an error about \"INSUFFICIENT ACCESS\"."))
+		return
+
 	var/removing = TRUE
 	for(var/faction in iff_faction) // We prioritize adding over removing
 		if(!(faction in inserted_id.faction_group))

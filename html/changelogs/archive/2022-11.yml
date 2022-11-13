@@ -189,6 +189,10 @@
       maps.
   - spellcheck: Fixes some left-behind lore-bits in contractor synthetic flavor-text
   - bugfix: WeYu secguard corpse preset should now spawn with shoes
+  Git-Nivrak:
+  - bugfix: Tail stab now properly applies all melee attack additional effects and
+      damage
+  - bugfix: Tail stab's damage is now increased by frenzy damage buff
   Morrow:
   - bugfix: Fixed mechanical battlefield executions.
   - rscdel: Deletes unused silenced ammo flag.

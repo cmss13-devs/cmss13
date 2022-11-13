@@ -47,9 +47,9 @@
 	new /obj/item/storage/belt/security(src)
 	new /obj/item/clothing/shoes/jackboots(src)
 
-/obj/structure/closet/secure_closet/security
+/obj/structure/closet/secure_closet/security/standard
 	name = "Security Officer's Locker"
-	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_police"
 	icon_closed = "secure_closed_police"
 	icon_locked = "secure_locked_police"
@@ -57,7 +57,7 @@
 	icon_broken = "secure_broken_police"
 	icon_off = "secure_closed_police"
 
-/obj/structure/closet/secure_closet/security/Initialize()
+/obj/structure/closet/secure_closet/security/standard/Initialize()
 	. = ..()
 	if(prob(50))
 		new /obj/item/storage/backpack/security(src)
@@ -77,7 +77,7 @@
 	new /obj/item/clothing/head/soft/sec/corp(src)
 	new /obj/item/clothing/under/rank/security/corp(src)
 
-/obj/structure/closet/secure_closet/soro/security
+/obj/structure/closet/secure_closet/security/soro
 	name = "Security Officer's Locker"
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_police"
@@ -87,7 +87,7 @@
 	icon_broken = "secure_broken_police"
 	icon_off = "secure_closed_police"
 
-/obj/structure/closet/secure_closet/soro/security/Initialize()
+/obj/structure/closet/secure_closet/security/soro/Initialize()
 	. = ..()
 	if(prob(50))
 		new /obj/item/storage/backpack/security(src)

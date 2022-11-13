@@ -193,6 +193,11 @@
   - bugfix: Tail stab now properly applies all melee attack additional effects and
       damage
   - bugfix: Tail stab's damage is now increased by frenzy damage buff
+  Mistfrag:
+  - bugfix: Removed some police skills where it was documented to have only been given
+      for carry.
+  - code_imp: Added a new define/datum SKILL_FIREMAN
+  - refactor: Refactored skills and human to include fireman carrying as its own skill.
   Morrow:
   - bugfix: Fixed mechanical battlefield executions.
   - rscdel: Deletes unused silenced ammo flag.

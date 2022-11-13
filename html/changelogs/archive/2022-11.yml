@@ -199,6 +199,7 @@
   - bugfix: Removes an unused variable
   fira:
   - rscadd: You can now order randomized pizza at ASRS, for special occasions or reqsreation.
+  - bugfix: Added a bandaid for the broken ASRS lift animation
   kugamo:
   - bugfix: Fixed tripod lights and candelabras not starting as on, fixed not being
       able to break these items and flashlights as xeno.

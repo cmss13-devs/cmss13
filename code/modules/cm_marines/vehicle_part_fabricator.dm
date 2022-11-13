@@ -213,7 +213,8 @@
 	PC.update_icon()
 
 
-/// WARNING: IF YOU DECIDE TO READD THIS, GIVE THE HARDPOINTS POINT COSTS
+// WARNING: IF YOU DECIDE TO READD THIS, GIVE THE HARDPOINTS POINT COSTS
+/// Fabricator for individual tank parts
 /obj/structure/machinery/part_fabricator/tank
 	name = "vehicle part fabricator"
 	desc = "A large automated 3D printer for producing vehicle parts."

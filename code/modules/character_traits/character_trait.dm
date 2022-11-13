@@ -42,6 +42,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 	var/datum/character_trait_group/trait_group = /datum/character_trait_group
 	/// The point cost for the preferences menu
 	var/cost = 0
+	/// Refreshes the character creation menu when picked
+	var/refresh_choices = FALSE
+	var/refresh_mannequin = FALSE
 
 /datum/character_trait/New()
 	trait_group = GLOB.character_trait_groups[trait_group]

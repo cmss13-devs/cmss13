@@ -19,6 +19,7 @@ const withTimestamp = (action) => ({
 
 export const gameMiddleware = (store) => {
   let lastPingedAt;
+
   setInterval(() => {
     const state = store.getState();
     if (!state) {
@@ -34,15 +35,19 @@ export const gameMiddleware = (store) => {
       store.dispatch(withTimestamp(connectionRestored()));
     }
   }, 1000);
+
   return (next) => (action) => {
     const { type } = action;
+
     if (type === pingSuccess.type || type === pingSoft.type) {
       lastPingedAt = Date.now();
       return next(action);
     }
+
     if (type === roundRestarted.type) {
       return next(withTimestamp(action));
     }
+
     return next(action);
   };
 };

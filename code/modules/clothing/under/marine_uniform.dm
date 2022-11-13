@@ -283,7 +283,7 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/dress
-	name = "marine dress uniform"
+	name = "old marine dress uniform"
 	desc = "A dress uniform typically worn marines of the USCM. The Sergeant Major would kill you if you got this dirty."
 	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
 	armor_bio = CLOTHING_ARMOR_LOW
@@ -294,6 +294,33 @@
 	specialty = "marine dress"
 	flags_atom = NO_SNOW_TYPE
 	flags_jumpsuit = FALSE
+
+//=========================//DRESS BLUES\\================================\\
+//=======================================================================\\
+
+/obj/item/clothing/under/marine/dress/blues
+	name = "marine enlisted dress blues uniform"
+	desc = "The undershirt and trousers of the legendary Marine dress blues, virtually unchanged since the 19th century. This unadorned variant is for enlisted personnel, E-1 thru E-3."
+	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
+	icon_state = "enlisted"
+	item_state = "enlisted"
+	worn_state = "enlisted"
+	contained_sprite = TRUE
+	item_state_slots = null
+
+/obj/item/clothing/under/marine/dress/blues/senior
+	name = "marine senior dress blues uniform"
+	desc = "The undershirt and trousers of the legendary Marine dress blues, virtually unchanged since the 19th century. This variant features the iconic Blood Stripe, worn by NCOs and officers."
+	icon_state = "senior"
+	item_state = "senior"
+	worn_state = "senior"
+
+/obj/item/clothing/under/marine/dress/blues/general
+	name = "marine senior dress blues uniform"
+	desc = "The undershirt and trousers of the legendary Marine dress blues, virtually unchanged since the 19th century. This variant features black trousers and a large Blood Stripe, worn by general officers."
+	icon_state = "general"
+	item_state = "general"
+	worn_state = "general"
 
 //=========================//PROVOST\\================================\\
 //=======================================================================\\

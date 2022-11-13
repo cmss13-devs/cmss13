@@ -752,10 +752,10 @@
 	..()
 
 //properties for CAS matrixes
-/datum/chem_property/positive/photosensetive
-	name = PROPERTY_PHOTOSENSETIVE
+/datum/chem_property/positive/photosensitive
+	name = PROPERTY_PHOTOSENSITIVE
 	code = "PTS"
-	description = "Reacts with any amount of light. Probably could be usefull to create light-sensetive objects. Not safe to adminster."
+	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 
@@ -765,8 +765,8 @@
 
 /datum/chem_property/positive/crystallization
 	name = PROPERTY_CRYSTALLIZATION
-	code = "CRS"
-	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to adminster"
+	code = "CRL"
+	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to administer"
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 

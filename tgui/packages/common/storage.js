@@ -110,7 +110,7 @@ class IndexedDbBackend {
 
   getStore(mode) {
     // prettier-ignore
-    return this.dbPromise.then(db => db
+    return this.dbPromise.then((db) => db
       .transaction(INDEXED_DB_STORE_NAME, mode)
       .objectStore(INDEXED_DB_STORE_NAME));
   }

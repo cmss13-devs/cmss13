@@ -65,7 +65,7 @@
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
-	desc = "Only a small amount of monkeys, kittens, and orphans were killed in making this."
+	desc = "Pre-polished fancy dress shoes. You can see your reflection in them."
 	icon_state = "laceups"
 	flags_inventory = NOSLIPPING
 	siemens_coefficient = 0.6

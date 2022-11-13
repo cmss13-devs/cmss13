@@ -9200,6 +9200,10 @@
 	icon_state = "kitchen"
 	},
 /area/lv522/indoors/b_block/bar)
+"eEx" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/closed/wall/mineral/bone_resin,
+/area/lv522/atmos/outdoor)
 "eEH" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -12552,10 +12556,14 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "ghw" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/cargo_container{
+	health = 5000;
+	icon_state = "WY 0,0";
+	tag = "icon-WY 0,0";
+	unacidable = 1
+	},
 /turf/open/auto_turf/shale/layer0,
-/area/lv522/outdoors/nw_rockies)
+/area/lv522/outdoors/p_w_rockies)
 "ghy" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -13017,6 +13025,15 @@
 	icon_state = "26"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
+"guZ" = (
+/obj/structure/cargo_container{
+	health = 5000;
+	icon_state = "WY 0,0";
+	tag = "icon-WY 0,0";
+	unacidable = 1
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/w_rockies)
 "gvr" = (
 /obj/structure/closet/bodybag,
 /obj/structure/curtain/medical,
@@ -13537,7 +13554,15 @@
 	},
 /area/lv522/indoors/b_block/hydro)
 "gHz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/structure/cargo_container{
+	health = 5000;
+	icon_state = "WY 1,0";
+	tag = "icon-WY 1,0";
+	unacidable = 1
+	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/p_w_rockies)
 "gHF" = (
@@ -14441,6 +14466,15 @@
 	icon_state = "greenfull"
 	},
 /area/lv522/indoors/b_block/hydro)
+"gZJ" = (
+/obj/structure/cargo_container{
+	health = 5000;
+	icon_state = "WY 1,0";
+	tag = "icon-WY 1,0";
+	unacidable = 1
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/w_rockies)
 "gZL" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -22592,15 +22626,15 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/mining)
 "kjk" = (
-/obj/structure/machinery/conveyor{
-	dir = 8;
-	id = "cargo_container"
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
-/obj/structure/plasticflaps,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/obj/structure/cargo_container{
+	icon_state = "WY 2,0";
+	tag = "icon-WY 2,0"
 	},
-/area/lv522/atmos/cargo_intake)
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/p_w_rockies)
 "kjp" = (
 /turf/open/asphalt/cement{
 	icon_state = "cement2"
@@ -23049,6 +23083,13 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/corsat,
 /area/lv522/atmos/cargo_intake)
+"kqJ" = (
+/obj/structure/cargo_container/horizontal{
+	icon_state = "0,2";
+	tag = "icon-0,2"
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/w_rockies)
 "kqX" = (
 /obj/structure/cargo_container{
 	icon_state = "gorg 0,0";
@@ -26956,7 +26997,11 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_2)
 "lSP" = (
-/turf/closed/wall/mineral/bone_resin,
+/obj/structure/cargo_container/horizontal{
+	icon_state = "0,2";
+	tag = "icon-0,2"
+	},
+/turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/p_w_rockies)
 "lTj" = (
 /obj/structure/prop/invuln/minecart_tracks,
@@ -32110,18 +32155,10 @@
 	},
 /area/lv522/indoors/c_block/t_comm)
 "obw" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/structure/fence,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
+/turf/closed/wall/mineral/bone_resin,
 /area/lv522/atmos/outdoor)
 "oce" = (
 /obj/item/stack/sheet/metal,
@@ -32615,6 +32652,13 @@
 	tag = "icon-floor_marked (SOUTHWEST)"
 	},
 /area/lv522/atmos/outdoor)
+"ojQ" = (
+/obj/structure/cargo_container{
+	icon_state = "WY 2,0";
+	tag = "icon-WY 2,0"
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/p_w_rockies)
 "ojW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -32651,6 +32695,13 @@
 	icon_state = "blue_plate"
 	},
 /area/lv522/indoors/a_block/hallway)
+"okW" = (
+/obj/structure/cargo_container/horizontal{
+	icon_state = "0,0";
+	tag = "icon-0,0"
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/w_rockies)
 "ols" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -33382,12 +33433,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/fence,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
+/turf/closed/wall/mineral/bone_resin,
 /area/lv522/atmos/outdoor)
 "oBx" = (
 /obj/item/clothing/mask/facehugger{
@@ -35082,9 +35129,14 @@
 	},
 /area/lv522/outdoors/n_rockies)
 "pkH" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/turf/open/auto_turf/shale/layer2,
-/area/lv522/outdoors/w_rockies)
+/obj/structure/cargo_container{
+	health = 5000;
+	icon_state = "WY 1,0";
+	tag = "icon-WY 1,0";
+	unacidable = 1
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/p_w_rockies)
 "plb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
@@ -36385,6 +36437,14 @@
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
+"pLL" = (
+/obj/structure/cargo_container/horizontal{
+	icon_state = "0,1";
+	layer = 3.1;
+	tag = "icon-0,1"
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/w_rockies)
 "pLN" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
@@ -41334,6 +41394,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/spaceport)
+"rzB" = (
+/obj/structure/cargo_container/horizontal{
+	icon_state = "0,1";
+	layer = 3.1;
+	tag = "icon-0,1"
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/p_w_rockies)
 "rzG" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/station_alert{
@@ -42909,6 +42977,12 @@
 	tag = "icon-floor_plate"
 	},
 /area/lv522/outdoors/colony_streets/south_west_street)
+"sht" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/closed/wall/mineral/bone_resin,
+/area/lv522/atmos/outdoor)
 "shK" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/toy,
@@ -46560,6 +46634,13 @@
 "tFx" = (
 /turf/closed/wall/strata_outpost,
 /area/lv522/landing_zone_1/ceiling)
+"tFz" = (
+/obj/structure/cargo_container{
+	icon_state = "WY 2,0";
+	tag = "icon-WY 2,0"
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/w_rockies)
 "tFB" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp/green{
@@ -54503,6 +54584,13 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/b_block/bar)
+"wDQ" = (
+/obj/structure/cargo_container/horizontal{
+	icon_state = "0,0";
+	tag = "icon-0,0"
+	},
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/p_w_rockies)
 "wDZ" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -55479,6 +55567,10 @@
 	tag = "icon-floor_plate"
 	},
 /area/lv522/indoors/a_block/admin)
+"xam" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/auto_turf/shale/layer2,
+/area/lv522/outdoors/w_rockies)
 "xay" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -60272,9 +60364,9 @@ vtc
 cpy
 cpy
 cpy
-cpy
-cpy
-cpy
+vtc
+vtc
+vtc
 vtc
 vtc
 vtc
@@ -60498,9 +60590,9 @@ vtc
 vtc
 vtc
 cpy
-cpy
-cpy
-cpy
+vtc
+vtc
+vtc
 vtc
 vtc
 vtc
@@ -60515,7 +60607,7 @@ vtc
 vtc
 vtc
 vtc
-vtc
+ghw
 vtc
 vtc
 cpy
@@ -60724,9 +60816,9 @@ vtc
 vtc
 vtc
 vtc
-cpy
-cpy
-cpy
+vtc
+vtc
+vtc
 vtc
 vtc
 vtc
@@ -60742,11 +60834,11 @@ vtc
 vtc
 umK
 vtc
+pkH
 vtc
 vtc
 vtc
-vtc
-cpy
+efH
 cpy
 cpy
 cpy
@@ -60969,12 +61061,12 @@ vtc
 vtc
 vtc
 vtc
+ojQ
 vtc
 vtc
 vtc
-vtc
-cpy
-cpy
+efH
+efH
 cpy
 cpy
 cpy
@@ -61194,14 +61286,14 @@ cpy
 cpy
 cpy
 vtc
+ghw
 vtc
 vtc
 vtc
 vtc
 vtc
-vtc
-cpy
-cpy
+efH
+efH
 cpy
 cpy
 cpy
@@ -61416,21 +61508,21 @@ hIZ
 hIZ
 hIZ
 hIZ
-ooe
-ooe
 hIZ
 hIZ
 hIZ
-vxY
+hIZ
+hIZ
+gHz
 vtc
 vtc
 vtc
 vtc
 vtc
-cpy
-cpy
-cpy
-cpy
+efH
+efH
+efH
+efH
 cpy
 cpy
 cpy
@@ -61626,11 +61718,11 @@ cpy
 vtc
 vtc
 vtc
-cpy
 vtc
 vtc
 vtc
-cpy
+vtc
+vtc
 cpy
 lQS
 vtc
@@ -61648,16 +61740,16 @@ vtc
 vtc
 vtc
 vtc
-vzV
+kjk
+lSP
+rzB
+wDQ
 vtc
 vtc
-vtc
-vtc
-vtc
-cpy
-cpy
-cpy
-cpy
+efH
+efH
+efH
+efH
 cpy
 cpy
 cpy
@@ -61852,12 +61944,12 @@ cpy
 cpy
 vtc
 vtc
-cpy
-cpy
-cpy
 vtc
 vtc
-cpy
+vtc
+vtc
+vtc
+vtc
 cpy
 vtc
 mgJ
@@ -61881,11 +61973,11 @@ vtc
 vtc
 vtc
 vtc
-cpy
-cpy
-cpy
-cpy
-cpy
+efH
+efH
+efH
+efH
+guZ
 cpy
 cpy
 pps
@@ -62078,10 +62170,10 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-cpy
-cpy
+vtc
+vtc
+vtc
+vtc
 vtc
 vtc
 vtc
@@ -62108,11 +62200,11 @@ vtc
 cpy
 vtc
 vtc
-cpy
-cpy
-cpy
-cpy
-cpy
+efH
+efH
+efH
+efH
+gZJ
 cpy
 cpy
 ppF
@@ -62304,11 +62396,6 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-cpy
-cpy
-cpy
 vtc
 vtc
 vtc
@@ -62318,9 +62405,7 @@ vtc
 vtc
 vtc
 vtc
-cpy
-cpy
-cpy
+vtc
 vtc
 vtc
 vtc
@@ -62328,6 +62413,13 @@ vtc
 cpy
 cpy
 cpy
+vtc
+vtc
+vtc
+vtc
+cpy
+cpy
+vtc
 umK
 vtc
 vzV
@@ -62335,12 +62427,12 @@ cpy
 cpy
 cpy
 vtc
-cpy
-cpy
-cpy
-cpy
-cpy
-cpy
+efH
+efH
+efH
+efH
+tFz
+efH
 cpy
 pqZ
 pyO
@@ -62531,10 +62623,6 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-cpy
-cpy
 vtc
 vtc
 vtc
@@ -62546,31 +62634,35 @@ vtc
 vtc
 vtc
 vtc
-cpy
-cpy
 vtc
 vtc
 vtc
 vtc
 cpy
 cpy
+vtc
+vtc
+vtc
+vtc
+vtc
 cpy
-cpy
+vtc
+vtc
 vtc
 vaZ
 cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-cpy
-cpy
-cpy
-cpy
-cpy
-cpy
-cpy
+efH
+kqJ
+pLL
+okW
+efH
+efH
+efH
+efH
+efH
 efH
 pUc
 qrj
@@ -62759,14 +62851,8 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
 vtc
 vtc
-vtc
-lfS
-xXV
-lKG
 vtc
 vtc
 vtc
@@ -62780,24 +62866,30 @@ lfS
 xXV
 lKG
 vtc
-cpy
-cpy
-cpy
+vtc
+vtc
+lfS
+xXV
+lKG
+vtc
+vtc
+vtc
+vtc
 vtc
 vaZ
 cpy
 cpy
 cpy
-vtc
 cpy
 cpy
-cpy
-cpy
-cpy
-cpy
-cpy
-cpy
-cpy
+efH
+efH
+efH
+efH
+efH
+efH
+efH
+efH
 efH
 pUc
 qst
@@ -62986,7 +63078,7 @@ cpy
 cpy
 cpy
 cpy
-cpy
+vtc
 kfX
 xXV
 xXV
@@ -62994,7 +63086,7 @@ xXV
 kfX
 qYG
 kfX
-lSP
+oJS
 xXV
 xXV
 kfX
@@ -63008,22 +63100,22 @@ qYG
 nGJ
 vtc
 vtc
-cpy
+vtc
 vtc
 vtc
 vzV
 cpy
 cpy
 cpy
-vtc
 cpy
 cpy
-cpy
-cpy
-cpy
-cpy
-cpy
-cpy
+efH
+efH
+efH
+efH
+efH
+efH
+efH
 efH
 efH
 efH
@@ -63242,13 +63334,13 @@ vzV
 cpy
 cpy
 cpy
-vtc
 cpy
 cpy
 cpy
-cpy
-cpy
-cpy
+efH
+efH
+efH
+efH
 efH
 efH
 efH
@@ -63466,16 +63558,16 @@ vtc
 vtc
 vtc
 vzV
-vtc
-vtc
-cpy
-vtc
 cpy
 cpy
 cpy
 cpy
 cpy
 cpy
+efH
+efH
+efH
+efH
 efH
 efH
 rWS
@@ -63693,17 +63785,17 @@ lKG
 vtc
 vtc
 vzV
-vtc
-vtc
-vtc
-vtc
-gHz
 cpy
 cpy
 cpy
 cpy
 cpy
-pkH
+cpy
+cpy
+efH
+efH
+efH
+efH
 efH
 efH
 rWS
@@ -63920,18 +64012,18 @@ kfX
 xXV
 lKG
 vzV
-vtc
-vtc
-vtc
-vtc
-gHz
-gHz
 cpy
 cpy
 cpy
 cpy
 cpy
 cpy
+cpy
+efH
+efH
+efH
+efH
+efH
 sRA
 cpy
 cpy
@@ -64147,18 +64239,18 @@ qYG
 qYG
 kfX
 obb
-xXV
-xXV
-xXV
-lKG
-vtc
-vtc
-vtc
 cpy
 cpy
 cpy
 cpy
 cpy
+cpy
+cpy
+efH
+efH
+efH
+efH
+efH
 sRA
 cpy
 cpy
@@ -64373,18 +64465,18 @@ oJS
 qYG
 qYG
 qYG
-obw
-oaG
+odT
+xNq
 llZ
 llZ
-nQz
-uWO
-uWO
-uWO
 cpy
 cpy
 cpy
 cpy
+xam
+efH
+efH
+efH
 efH
 efH
 sRA
@@ -64599,19 +64691,19 @@ oJS
 oJS
 oJS
 qYG
-vlu
-sQN
-xzn
-xzn
-llZ
-nQz
-uWO
-uWO
-uWO
+xNq
+odT
+xNq
+xNq
+xNq
+saC
 cpy
 cpy
 cpy
 cpy
+cpy
+efH
+efH
 efH
 efH
 efH
@@ -64826,19 +64918,19 @@ oJS
 oJS
 oJS
 oJS
-xED
-qiC
-jxI
-jxI
+xNq
+obw
+eEx
+eEx
 oBq
-oJQ
-oPs
-ghw
+wxb
 ooe
 ooe
 ooe
 ooe
 ooe
+uiK
+uiK
 prT
 uiK
 pMg
@@ -65039,9 +65131,9 @@ irx
 oJS
 fTS
 xeG
-jtf
-jTb
-kjU
+xZw
+xZw
+xZw
 uHn
 xZw
 xZw
@@ -65054,18 +65146,18 @@ oJS
 oJS
 oJS
 xNq
-sQN
+odT
 xNq
-xzn
-xPY
-nQz
-uWO
-uWO
+xNq
+sht
 cpy
 cpy
 cpy
 cpy
 cpy
+cpy
+cpy
+efH
 efH
 efH
 efH
@@ -65287,12 +65379,12 @@ xNq
 xPY
 nQz
 uWO
-uWO
 cpy
 cpy
 cpy
 cpy
 cpy
+efH
 cpy
 efH
 efH
@@ -66846,10 +66938,10 @@ qNl
 wYo
 wYo
 qYG
-kjk
+isu
 irx
 irx
-kjk
+isu
 qYG
 qYG
 oJS
@@ -72527,8 +72619,8 @@ rTh
 kUs
 nCX
 irx
-oJS
-oJS
+fTS
+fTS
 fTS
 fTS
 fTS
@@ -72755,8 +72847,8 @@ hkT
 qYG
 qYG
 qYG
-oJS
-oJS
+fTS
+fTS
 fTS
 fTS
 fTS

@@ -203,6 +203,8 @@
   - bugfix: Fixed mechanical battlefield executions.
   - rscdel: Deletes unused silenced ammo flag.
   - bugfix: Removes an unused variable
+  Segrain:
+  - bugfix: Paygrades once again yield correct ranks and rank pins.
   SpartanBobby:
   - rscadd: Renamed and gave a new description to "Sunglasses" now called "cheap sunglasses"
   - rscadd: Renamed and gave a new description to "Shades" now called "bimex personal

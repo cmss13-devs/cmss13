@@ -203,6 +203,9 @@
   - bugfix: Fixed mechanical battlefield executions.
   - rscdel: Deletes unused silenced ammo flag.
   - bugfix: Removes an unused variable
+  ThePiachu:
+  - rscadd: Added a small visual offset to ammo, mortar shells and grenades on the
+      ground to make piles of ammunitions and explosive more visually distinct.
   fira:
   - rscadd: You can now order randomized pizza at ASRS, for special occasions or reqsreation.
   - bugfix: Added a bandaid for the broken ASRS lift animation

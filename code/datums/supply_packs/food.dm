@@ -26,7 +26,7 @@
 					/obj/item/reagent_container/food/snacks/grown/potato,
 					/obj/item/reagent_container/food/snacks/grown/potato,
 					)
-	RO_PRICE_WORTHLESS
+	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Potato crate"
 	group = "Food"
@@ -55,7 +55,7 @@
 					/obj/item/reagent_container/food/snacks/grown/tomato,
 					/obj/item/reagent_container/food/snacks/grown/tomato,
 					)
-	RO_PRICE_WORTHLESS
+	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Tomato crate"
 	group = "Food"
@@ -84,7 +84,7 @@
 					/obj/item/reagent_container/food/snacks/grown/wheat
 					/obj/item/reagent_container/food/snacks/grown/wheat
 					)
-	RO_PRICE_WORTHLESS
+	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Wheat crate"
 	group = "Food"
@@ -100,7 +100,7 @@
 					/obj/item/reagent_container/food/snacks/meat
 					/obj/item/reagent_container/food/snacks/meat
 					)
-	RO_PRICE_WORTHLESS
+	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper meat crate"
 	group = "Food"
@@ -114,7 +114,7 @@
 					/obj/item/reagent_container/food/snacks/carpmeat
 					/obj/item/reagent_container/food/snacks/carpmeat
 					)
-	RO_PRICE_WORTHLESS
+	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper carp filet crate"
 	group = "Food"
@@ -133,7 +133,7 @@
 					/obj/item/reagent_container/food/condiment/hotsauce/sriracha,
 					/obj/item/reagent_container/food/condiment/hotsauce/tabasco,
 					)
-	RO_PRICE_WORTHLESS
+	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\crate of condiment"
 	group = "Food"
@@ -149,7 +149,7 @@
 					/obj/item/storage/donut_box,
 					/obj/item/storage/donut_box,
 					)
-	RO_PRICE_WORTHLESS
+	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\boxe of donut (x5)"
 	group = "Food"
@@ -160,7 +160,7 @@
 					/obj/item/ammo_box/magazine/misc/mre,
 					/obj/item/ammo_box/magazine/misc/mre,
 					)
-	RO_PRICE_WORTHLESS
+	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\USCM MRE crate(x2)"
 	group = "Food"
@@ -201,7 +201,7 @@
 					/obj/item/reagent_container/food/drinks/bottle/wine,
 					/obj/item/reagent_container/food/drinks/bottle/wine
 					)
-	RO_PRICE_WORTHLESS
+	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Special ingredients crate"
 	group = "Food"

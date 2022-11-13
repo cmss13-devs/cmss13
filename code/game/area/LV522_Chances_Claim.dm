@@ -404,6 +404,9 @@
 	name = "Atmospheric Processor - Outer East Reactor - south"
 	icon_state = "red"
 
+/area/lv522/atmos/east_reactor/south/cas
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
 /area/lv522/atmos/east_reactor/east
 	name = "Atmospheric Processor - Outer East Reactor - east"
 	icon_state = "green"
@@ -418,10 +421,12 @@
 /area/lv522/atmos/cargo_intake
 	name = "Atmospheric Processor - Cargo Intake"
 	icon_state = "yellow"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/lv522/atmos/command_centre
 	name = "Atmospheric Processor - Central Command"
 	icon_state = "red"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/lv522/atmos/north_command_centre
 	name = "Atmospheric Processor - North Command Centre Checkpoint"
@@ -430,3 +435,4 @@
 /area/lv522/atmos/filt
 	name = "Atmospheric Processor - Filtration System"
 	icon_state = "mechbay"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS

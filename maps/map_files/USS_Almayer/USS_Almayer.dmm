@@ -31921,6 +31921,7 @@
 	eftpos_name = "Weyland-Yutani EFTPOS scanner"
 	},
 /obj/item/device/portable_vendor/corporate,
+/obj/item/device/iff_granter/weyland,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "cer" = (

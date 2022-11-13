@@ -157,7 +157,6 @@
 	person_to_modify.faction = FACTION_PMC_RECRUIT
 	GLOB.data_core.manifest_remove(WEAKREF(person_to_modify), person_to_modify.name)
 	pmc_transfers_left -= 1
-	visible_message("<span class='bold'>[src]</span> states, \"Recruitment finalized, [person_to_modify]'s employment has been transferred to the Weyland-Yutani corporation.\"")
-	playsound(person_to_modify, 'sound/machines/screen_output1.ogg', 25, 1)
+	visible_message("<span class='bold'>[src]</span> states, \"Recruitment finalized, [person_to_modify]'s employment has been transferred to the Weyland-Yutani corporation. IFF addition recommended.\"")
 	playsound(user, 'sound/machines/screen_output1.ogg', 25, 1)
 	ui_interact(user)

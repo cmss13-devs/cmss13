@@ -1,13 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import {
-  Stack,
-  Section,
-  NoticeBox,
-  Flex,
-  Dropdown,
-  Dimmer,
-  Icon,
-} from '../components';
+import { Stack, Section, NoticeBox, Flex, Dropdown, Dimmer, Icon } from '../components';
 import { ButtonCheckbox, Button } from '../components/Button';
 import { Window } from '../layouts';
 
@@ -52,7 +44,7 @@ const PMCTransferWindow = (props, context) => {
           Possible Transfers Left: {possible_verifications}
         </Stack.Item>
       </Stack>
-      {possible_verifications <= 0 && <NoRecruitsDimmer />}
+      {(possible_verifications <= 0 && <NoRecruitsDimmer />) || <></>}
     </Section>
   );
 };
@@ -100,7 +92,7 @@ const PMCArmorSelect = (props, context) => {
           />
         </Flex.Item>
       </Flex>
-      {possible_verifications <= 0 && <NoRecruitsDimmer />}
+      {(possible_verifications <= 0 && <NoRecruitsDimmer />) || <></>}
     </Section>
   );
 };
@@ -125,8 +117,8 @@ const PMCVerification = (props, context) => {
         onClick={() => act('startLoading')}>
         Confirm
       </ButtonCheckbox>
-      {is_loading && <LoadingScreenDimmer />}
-      {possible_verifications <= 0 && <NoRecruitsDimmer />}
+      {(is_loading && <LoadingScreenDimmer />) || <></>}
+      {(possible_verifications <= 0 && <NoRecruitsDimmer />) || <></>}
     </Section>
   );
 };

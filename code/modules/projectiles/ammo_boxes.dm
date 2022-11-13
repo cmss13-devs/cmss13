@@ -17,6 +17,10 @@
 	SetLuminosity(0)
 	. = ..()
 
+/obj/item/ammo_box/proc/unfold_box(turf/T)
+	new /obj/item/stack/sheet/cardboard(T)
+	qdel(src)
+
 //---------------------FIRE HANDLING PROCS
 /obj/item/ammo_box/flamer_fire_act(var/severity, var/datum/cause_data/flame_cause_data)
 	if(burning)
@@ -136,10 +140,6 @@
 				deploy_ammo_box(user, user.loc)
 				return
 	unfold_box(user.loc)
-
-/obj/item/ammo_box/magazine/proc/unfold_box(turf/T)
-	new /obj/item/stack/sheet/cardboard(T)
-	qdel(src)
 
 /obj/item/ammo_box/magazine/proc/deploy_ammo_box(var/mob/living/user, var/turf/T)
 	if(burning)
@@ -949,10 +949,6 @@
 	..()
 	if(bullet_amount < 1)
 		unfold_box(user.loc)
-
-/obj/item/ammo_box/rounds/proc/unfold_box(turf/T)
-	new /obj/item/stack/sheet/cardboard(T)
-	qdel(src)
 
 /obj/item/ammo_box/rounds/attackby(obj/item/I, mob/user)
 	if(burning)

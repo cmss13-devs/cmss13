@@ -486,13 +486,42 @@
 
 	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
 
-	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
-	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
+	sleep(5 SECONDS)
 
-	sleep(85)
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_LOWORBIT, ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_incoming.ogg')
+
+	sleep(7 SECONDS)
 
 	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
 		return FALSE //If a nuke finished, don't land.
+
+	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_LOWORBIT, ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_crash.ogg')
+
+	for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list) //knock down mobs
+		if(human.z != T_trg.z)
+			continue
+		if(human.buckled && !human.buckled.anchored)
+			human.buckled.unbuckle()
+		if(human.buckled)
+			to_chat(human, SPAN_WARNING("You are jolted against [human.buckled]!"))
+			shake_camera(human, 3, 1)
+		else
+			to_chat(human, SPAN_WARNING("You are thrown into the air by the force of the impact!"))
+			shake_camera(human, 10, 1)
+			human.KnockDown(3)
+
+			var/throw_dir = pick(alldirs)
+			var/turf/thrown_turf = human.loc
+			var/turf/temp = human.loc
+
+			var/throw_distance = rand(2, 3)
+			for(var/x in 0 to throw_distance)
+				temp = get_step(thrown_turf, throw_dir)
+				if (!temp)
+					break
+				thrown_turf = temp
+
+			human.throw_atom(thrown_turf, throw_distance, SPEED_FAST, null, TRUE)
 
 	if(security_level < SEC_LEVEL_RED) //automatically set security level to red.
 		set_security_level(SEC_LEVEL_RED, TRUE)
@@ -536,17 +565,6 @@
 				explosion_alive = TRUE
 				break
 		sleep(1)
-
-	for(var/i in GLOB.alive_human_list) //knock down mobs
-		var/mob/living/carbon/human/M = i
-		if(M.z != T_trg.z) continue
-		if(M.buckled)
-			to_chat(M, SPAN_WARNING("You are jolted against [M.buckled]!"))
-			shake_camera(M, 3, 1)
-		else
-			to_chat(M, SPAN_WARNING("The floor jolts under your feet!"))
-			shake_camera(M, 10, 1)
-			M.KnockDown(3)
 
 	addtimer(CALLBACK(src, .proc/disable_latejoin), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
 

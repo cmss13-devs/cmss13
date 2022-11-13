@@ -82,6 +82,15 @@
 	explosion_power = 100
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
+/obj/item/explosive/grenade/HE/bursting_pipe
+	name = "bursting pipe"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/item/explosive/grenade/HE/bursting_pipe/Initialize()
+	. = ..()
+	cause_data = create_cause_data("bursting pipe")
+	prime()
 
 /*
 //================================================
@@ -252,6 +261,21 @@
 /obj/item/explosive/grenade/incendiary/molotov/prime()
 	playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 35, 1, 4)
 	..()
+
+/obj/item/explosive/grenade/incendiary/bursting_pipe
+	name = "bursting pipe"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	flame_level = BURN_TIME_TIER_3
+	burn_level = BURN_LEVEL_TIER_3
+	radius = 2
+	fire_type = FIRE_VARIANT_DEFAULT
+
+/obj/item/explosive/grenade/incendiary/bursting_pipe/Initialize()
+	. = ..()
+	cause_data = create_cause_data("bursting pipe")
+	prime()
 
 /*
 //================================================

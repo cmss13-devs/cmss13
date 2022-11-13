@@ -13,6 +13,8 @@
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 
+	var/hijack_explosive_immune = FALSE
+
 /area/shuttle/almayer/elevator_maintenance/upperdeck
 	name = "\improper Maintenance Elevator"
 	icon_state = "shuttle"
@@ -690,6 +692,7 @@
 	name = "\improper Lifeboat Docking Port"
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
+	hijack_explosive_immune = TRUE
 
 /area/space/almayer/lifeboat_dock
 	name = "\improper Lifeboat Docking Port"
@@ -703,6 +706,7 @@
 	icon_state = "shuttle2"
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
+	hijack_explosive_immune = TRUE
 
 //Placeholder.
 /area/almayer/evacuation/pod1

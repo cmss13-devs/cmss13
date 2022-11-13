@@ -12,6 +12,9 @@
 	var/research_allocation_interval = 10 MINUTES
 	var/next_research_allocation = 0
 
+	COOLDOWN_DECLARE(last_hijack_explosive_barrage)
+	var/time_between_hijack_explosive_barrages = 5 SECONDS
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -157,6 +160,26 @@
 	. = ..()
 	if(--round_started > 0)
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
+
+	if(is_in_endgame && COOLDOWN_FINISHED(src, last_hijack_explosive_barrage))
+		var/list/almayer_areas = list()
+		for(var/area/almayer/almayer_area in all_areas)
+			if(!almayer_area.hijack_explosive_immune && (locate(/turf/open) in almayer_area.contents))
+				almayer_areas += almayer_area
+		var/list/chosen_almayer_areas = list()
+		for(var/i = 1 to 5)
+			chosen_almayer_areas += pick_n_take(almayer_areas)
+		var/list/exploding_turfs = list()
+		for(var/area/almayer/almayer_area as anything in chosen_almayer_areas)
+			var/list/possible_explosion_locations = list()
+			for(var/turf/open/explodable_turf in almayer_area)
+				possible_explosion_locations += explodable_turf
+			exploding_turfs += pick(possible_explosion_locations)
+		for(var/turf/open/exploding_turf as anything in exploding_turfs)
+			exploding_turf.visible_message(SPAN_HIGHDANGER("The piping beneath \the [exploding_turf] begins hissing violently!"))
+			new /obj/effect/warning/explosive(exploding_turf)
+
+		COOLDOWN_START(src, last_hijack_explosive_barrage, time_between_hijack_explosive_barrages)
 
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(chemical_data.research_allocation_amount)

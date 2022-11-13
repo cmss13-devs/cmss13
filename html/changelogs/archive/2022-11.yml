@@ -189,6 +189,9 @@
       maps.
   - spellcheck: Fixes some left-behind lore-bits in contractor synthetic flavor-text
   - bugfix: WeYu secguard corpse preset should now spawn with shoes
+  Fira, harryob:
+  - refactor: ported new /tg/ tgui and statpanel. this should fix statpanel loading
+      and hopefully not break everything else.
   Git-Nivrak:
   - bugfix: Tail stab now properly applies all melee attack additional effects and
       damage

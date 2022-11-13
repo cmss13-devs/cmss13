@@ -214,7 +214,7 @@
 
 	//Frenzy bonus
 	if(X.frenzy_aura > 0)
-		damage += (X.frenzy_aura * 2)
+		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 	X.animation_attack_on(src)
 

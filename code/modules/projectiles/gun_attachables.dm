@@ -238,7 +238,7 @@ Defined in conflicts.dm of the #defines folder.
 	return "It has a [icon2html(src)] [name] attached.<br>"
 
 
-/////////// Muzzle Attachments /////////////////////////////////
+// ======== Muzzle Attachments ======== //
 
 /obj/item/attachable/suppressor
 	name = "suppressor"
@@ -542,7 +542,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/mateba/short/dark
 	icon_state = "mateba_short_a"
 
-///////////// Rail attachments ////////////////////////
+// ======== Rail attachments ======== //
 
 /obj/item/attachable/reddot
 	name = "S5 red-dot sight"
@@ -1031,7 +1031,7 @@ Defined in conflicts.dm of the #defines folder.
 
 
 
-//////////// Stock attachments ////////////////////////////
+// ======== Stock attachments ======== //
 
 
 /obj/item/attachable/stock //Generic stock parent and related things.
@@ -1723,13 +1723,14 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 20
 	hud_offset_mod = 2
 
-////////////// Underbarrel Attachments ////////////////////////////////////
+// ======== Underbarrel Attachments ======== //
 
 
 /obj/item/attachable/attached_gun
 	attachment_action_type = /datum/action/item_action/toggle
-	//Some attachments may be fired. So here are the variables related to that.
-	var/datum/ammo/ammo = null //If it has a default bullet-like ammo.
+	// Some attachments may be fired. So here are the variables related to that.
+	/// Ammo to fire the attachment with
+	var/datum/ammo/ammo = null
 	var/max_range 		= 0 //Determines # of tiles distance the attachable can fire, if it's not a projectile.
 	var/last_fired 	//When the attachment was last fired.
 	var/attachment_firing_delay = 0 //the delay between shots, for attachments that fires stuff

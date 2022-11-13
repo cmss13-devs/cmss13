@@ -355,6 +355,9 @@
 	S["hair_red"]			>> r_hair
 	S["hair_green"]			>> g_hair
 	S["hair_blue"]			>> b_hair
+	S["grad_red"]			>> r_gradient
+	S["grad_green"]			>> g_gradient
+	S["grad_blue"]			>> b_gradient
 	S["facial_red"]			>> r_facial
 	S["facial_green"]		>> g_facial
 	S["facial_blue"]		>> b_facial
@@ -362,6 +365,7 @@
 	S["skin_green"]			>> g_skin
 	S["skin_blue"]			>> b_skin
 	S["hair_style_name"]	>> h_style
+	S["hair_gradient_name"]	>> grad_style
 	S["facial_style_name"]	>> f_style
 	S["eyes_red"]			>> r_eyes
 	S["eyes_green"]			>> g_eyes
@@ -430,6 +434,10 @@
 	g_skin			= sanitize_integer(g_skin, 0, 255, initial(g_skin))
 	b_skin			= sanitize_integer(b_skin, 0, 255, initial(b_skin))
 	h_style			= sanitize_inlist(h_style, GLOB.hair_styles_list, initial(h_style))
+	r_gradient		= sanitize_integer(r_gradient, 0, 255, initial(r_gradient))
+	g_gradient		= sanitize_integer(g_gradient, 0, 255, initial(g_gradient))
+	b_gradient		= sanitize_integer(b_gradient, 0, 255, initial(b_gradient))
+	grad_style		= sanitize_inlist(grad_style, GLOB.hair_gradient_list, initial(grad_style))
 	var/datum/sprite_accessory/HS = GLOB.hair_styles_list[h_style]
 	if(!HS.selectable)	// delete this
 		h_style = random_hair_style(gender, species)
@@ -491,6 +499,9 @@
 	S["hair_red"]			<< r_hair
 	S["hair_green"]			<< g_hair
 	S["hair_blue"]			<< b_hair
+	S["grad_red"]			<< r_gradient
+	S["grad_green"]			<< g_gradient
+	S["grad_blue"]			<< b_gradient
 	S["facial_red"]			<< r_facial
 	S["facial_green"]		<< g_facial
 	S["facial_blue"]		<< b_facial
@@ -498,6 +509,7 @@
 	S["skin_green"]			<< g_skin
 	S["skin_blue"]			<< b_skin
 	S["hair_style_name"]	<< h_style
+	S["hair_gradient_name"]	<< grad_style
 	S["facial_style_name"]	<< f_style
 	S["eyes_red"]			<< r_eyes
 	S["eyes_green"]			<< g_eyes

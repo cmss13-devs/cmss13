@@ -82,5 +82,7 @@
 			JOB_NURSE,
 			JOB_POLICE,
 			JOB_CHIEF_POLICE,
-			JOB_SEA
+			JOB_SEA,
+
+			JOB_MARINE
 			)

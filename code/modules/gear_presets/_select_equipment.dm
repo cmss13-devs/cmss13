@@ -245,12 +245,13 @@
 						P.forceMove(H.loc)
 
 /datum/equipment_preset/proc/load_traits(mob/living/carbon/human/H, var/client/mob_client)
-	if(!H.client || !H.client.prefs || !H.client.prefs.traits)
+	var/client/real_client = mob_client || H.client
+	if(!real_client?.prefs?.traits)
 		return
 
-	for(var/trait in H.client.prefs.traits)
+	for(var/trait in real_client.prefs.traits)
 		var/datum/character_trait/CT = GLOB.character_traits[trait]
-		CT.apply_trait(H)
+		CT.apply_trait(H, src)
 
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"

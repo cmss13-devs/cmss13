@@ -103,12 +103,19 @@ of predators), but can be added to include variant game modes (like humans vs. h
 				dat += "<br><b>[recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]a <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " ([recipient_award.giver_name[i]])" : ""]."
 		to_world(dat)
 
-/datum/game_mode/proc/declare_random_fact()
+/datum/game_mode/proc/declare_fun_facts()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	var/fact_type = pick(subtypesof(/datum/random_fact))
-	var/datum/random_fact/fact = new fact_type()
-	fact.announce()
+	to_chat_spaced(world, margin_bottom = 0, html = SPAN_ROLE_BODY("|______________________|"))
+	to_world(SPAN_ROLE_HEADER("FUN FACTS"))
+	var/list/fact_types = subtypesof(/datum/random_fact)
+	for(var/fact_type as anything in fact_types)
+		var/datum/random_fact/fact_human = new fact_type(set_check_human = TRUE, set_check_xeno = FALSE)
+		fact_human.announce()
+	for(var/fact_type as anything in fact_types)
+		var/datum/random_fact/fact_xeno = new fact_type(set_check_human = FALSE, set_check_xeno = TRUE)
+		fact_xeno.announce()
+	to_chat_spaced(world, margin_top = 0, html = SPAN_ROLE_BODY("|______________________|"))
 
 //===================================================\\
 

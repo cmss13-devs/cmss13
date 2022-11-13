@@ -71,9 +71,9 @@
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
-				damage += (M.frenzy_aura * 2)
+				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 				if(acid_damage)
-					acid_damage += (M.frenzy_aura * 2)
+					acid_damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 			M.animation_attack_on(src)
 
@@ -245,7 +245,7 @@
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
-				damage += (M.frenzy_aura * 2)
+				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 			//Somehow we will deal no damage on this attack
 			if(!damage)
@@ -912,7 +912,7 @@
 	if(M.a_intent == INTENT_HARM) //Missed slash.
 		return
 	if(M.a_intent == INTENT_HELP || !bleed_layer)
-		return XENO_NO_DELAY_ACTION
+		return ..()
 
 	M.visible_message(SPAN_NOTICE("[M] starts clearing out \the [src]..."), SPAN_NOTICE("You start \the clearing out [src]..."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)

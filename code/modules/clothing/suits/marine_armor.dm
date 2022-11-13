@@ -986,6 +986,26 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	item_state_slots = list(WEAR_JACKET = "pmc_sniper")
 
+/obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate
+	name = "\improper M1 pattern corporate security armor"
+	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This is commonly worn by low-level guards protecting Weyland-Yutani facilities."
+	icon = 'icons/mob/humans/onmob/contained/wy_goons.dmi'
+	icon_state = "armor"
+	item_state = "armor"
+	item_state_slots = null
+	contained_sprite = TRUE
+
+	flags_armor_protection = BODY_FLAG_CHEST
+	flags_cold_protection = BODY_FLAG_CHEST
+	flags_heat_protection = BODY_FLAG_CHEST
+
+	slowdown = SLOWDOWN_ARMOR_NONE // only protects chest, but enables rapid movement
+
+/obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate/lead
+	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant is worn by low-level guards that have elevated in rank due to 'good conduct in the field', also known as corporate bootlicking."
+	icon_state = "lead_armor"
+	item_state = "lead_armor"
+
 /obj/item/clothing/suit/storage/marine/veteran/PMC/leader
 	name = "\improper M4 pattern PMC leader armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."

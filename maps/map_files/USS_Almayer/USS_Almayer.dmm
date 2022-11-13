@@ -27284,6 +27284,7 @@
 /obj/item/storage/box/wy_mre,
 /obj/effect/spawner/random/tool,
 /obj/item/tool/hand_labeler,
+/obj/item/clipboard,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -42619,6 +42620,7 @@
 "fKT" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/hand_labeler,
+/obj/item/clipboard,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "green";
@@ -44153,6 +44155,7 @@
 "gwD" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/regular,
+/obj/item/clipboard,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -55524,6 +55527,7 @@
 "lBF" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/toolbox,
+/obj/item/clipboard,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green";
@@ -83362,6 +83366,7 @@
 "xAB" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
+/obj/item/clipboard,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "green";
@@ -111453,7 +111458,7 @@ wFR
 soA
 xbk
 wfE
-aLG
+kEb
 pUO
 cOM
 baZ
@@ -111859,7 +111864,7 @@ esM
 jpt
 xbk
 aWw
-kEb
+aLG
 avX
 awI
 noI

@@ -262,7 +262,7 @@
 	for(var/t in M.attack_log)
 		to_chat(usr, t)
 
-/client/proc/possess(obj/O as obj in GLOB.object_list)
+/client/proc/possess(obj/O as obj in world)
 	set name = "Possess Obj"
 	set category = null
 
@@ -286,7 +286,7 @@
 	usr.client.eye = O
 	usr.control_object = O
 
-/client/proc/release(obj/O as obj in GLOB.object_list)
+/client/proc/release(obj/O as obj in world)
 	set name = "Release Obj"
 	set category = null
 

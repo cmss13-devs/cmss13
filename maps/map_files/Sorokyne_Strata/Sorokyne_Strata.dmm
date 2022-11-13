@@ -4750,6 +4750,10 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "anB" = (
+<<<<<<< HEAD
+=======
+/obj/structure/closet/secure_closet/soro/security,
+>>>>>>> soro_corpsefix
 /obj/item/reagent_container/food/snacks/carpmeat,
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/closet/secure_closet/security/soro,
@@ -5875,6 +5879,10 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "arb" = (
+<<<<<<< HEAD
+=======
+/obj/structure/closet/secure_closet/soro/security,
+>>>>>>> soro_corpsefix
 /obj/item/storage/belt/security,
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -7627,6 +7635,10 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "avY" = (
+<<<<<<< HEAD
+=======
+/obj/structure/closet/secure_closet/soro/security,
+>>>>>>> soro_corpsefix
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -8153,7 +8165,11 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "axu" = (
+<<<<<<< HEAD
 /obj/structure/closet/secure_closet/security/soro,
+=======
+/obj/structure/closet/secure_closet/soro/security,
+>>>>>>> soro_corpsefix
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -12548,6 +12564,10 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aLc" = (
+<<<<<<< HEAD
+=======
+/obj/structure/closet/secure_closet/soro/security,
+>>>>>>> soro_corpsefix
 /obj/structure/window/reinforced/tinted,
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -18210,6 +18230,10 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/river)
 "bdU" = (
+<<<<<<< HEAD
+=======
+/obj/structure/closet/secure_closet/soro/security,
+>>>>>>> soro_corpsefix
 /obj/item/book/manual/security_space_law,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -24999,6 +25023,15 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/canteen)
+<<<<<<< HEAD
+=======
+"bFA" = (
+/obj/structure/closet/secure_closet/soro/security,
+/turf/open/floor/strata{
+	icon_state = "red1"
+	},
+/area/strata/ag/interior/administration)
+>>>>>>> soro_corpsefix
 "bFB" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/structure/machinery/alarm{
@@ -29778,6 +29811,10 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "cpi" = (
+<<<<<<< HEAD
+=======
+/obj/structure/closet/secure_closet/soro/security,
+>>>>>>> soro_corpsefix
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
 /obj/structure/machinery/light/small{
@@ -36191,6 +36228,10 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "lPk" = (
+<<<<<<< HEAD
+=======
+/obj/structure/closet/secure_closet/soro/security,
+>>>>>>> soro_corpsefix
 /obj/effect/landmark/objective_landmark/medium,
 /obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
@@ -36367,6 +36408,10 @@
 	},
 /area/strata/ag/interior/tcomms)
 "mdK" = (
+<<<<<<< HEAD
+=======
+/obj/structure/closet/secure_closet/soro/security,
+>>>>>>> soro_corpsefix
 /obj/item/storage/belt/security,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
@@ -39507,6 +39552,10 @@
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "rkb" = (
 /obj/item/clothing/glasses/thermal/syndi,
+<<<<<<< HEAD
+=======
+/obj/structure/closet/secure_closet/soro/security,
+>>>>>>> soro_corpsefix
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 8;

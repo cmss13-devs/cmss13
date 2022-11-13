@@ -31,8 +31,6 @@
 		if(istype(turf_to_check,/turf/open))
 			turf_to_check.overlays += image('icons/turf/walls/walls.dmi', "rock_side_[direction]", 2.99) //Really high since it's an overhead turf and it shouldn't collide with anything else
 
-
-
 //Ground map dense jungle
 /turf/closed/gm
 	name = "dense jungle"
@@ -224,11 +222,6 @@
 	icon = 'icons/turf/dropship.dmi'
 	icon_state = "1"
 
-/turf/closed/shuttle/dropship1/Initialize(mapload)
-	. = ..()
-
-	underlays += mutable_appearance('icons/turf/floors/floors.dmi', "plating", TURF_LAYER, FLOOR_PLANE)
-
 /turf/closed/shuttle/dropship1/transparent
 	opacity = 0
 
@@ -236,11 +229,6 @@
 	name = "\improper Normandy"
 	icon = 'icons/turf/dropship2.dmi'
 	icon_state = "1"
-
-/turf/closed/shuttle/dropship2/Initialize(mapload)
-	. = ..()
-
-	underlays += mutable_appearance('icons/turf/floors/floors.dmi', "plating", TURF_LAYER, FLOOR_PLANE)
 
 /turf/closed/shuttle/dropship2/transparent
 	opacity = 0

@@ -396,6 +396,13 @@ qdel(src)
 	// This dumps the turfs of marine_src into each DS's docking locs
 	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_dock)
 
+	// This underlays the walls of the dropship with the icon of the landmark turf (purely visual; its for the parts of the dropship sprite that have holes).
+	var/turf/T_src = pick(S.locs_dock)
+	var/list/turfs_to_init = get_shuttle_turfs(T_src, S.info_datums)
+	for(var/turf/T in turfs_to_init)
+		if(istype(T, /turf/closed/shuttle))
+			T.underlays += mutable_appearance(T_src.icon, T_src.icon_state, TURF_LAYER, FLOOR_PLANE)
+
 /obj/effect/landmark/shuttle_loc/marine_src/evacuation
 
 /obj/effect/landmark/shuttle_loc/marine_src/evacuation/link_loc()

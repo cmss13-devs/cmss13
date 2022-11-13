@@ -583,6 +583,10 @@ qdel(src)
 		target.icon_state = old_icon_state
 		target.icon = old_icon
 
+		if(istype(target, /turf/closed/shuttle)) //better than underlaying everyturf, just need the parts that have see through parts. Which are all closed turfs
+			target.underlays.Cut()
+			target.underlays += mutable_appearance(reference.icon, reference.icon_state, TURF_LAYER, FLOOR_PLANE)
+
 		for (var/atom/movable/A in T)
 			// fix for multitile stuff like vehicles drifting on jump
 			if(A.loc != T)

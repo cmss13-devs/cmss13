@@ -224,6 +224,11 @@
 	icon = 'icons/turf/dropship.dmi'
 	icon_state = "1"
 
+/turf/closed/shuttle/dropship1/Initialize(mapload)
+	. = ..()
+
+	underlays += mutable_appearance('icons/turf/floors/floors.dmi', "plating", TURF_LAYER, FLOOR_PLANE)
+
 /turf/closed/shuttle/dropship1/transparent
 	opacity = 0
 
@@ -231,6 +236,11 @@
 	name = "\improper Normandy"
 	icon = 'icons/turf/dropship2.dmi'
 	icon_state = "1"
+
+/turf/closed/shuttle/dropship2/Initialize(mapload)
+	. = ..()
+
+	underlays += mutable_appearance('icons/turf/floors/floors.dmi', "plating", TURF_LAYER, FLOOR_PLANE)
 
 /turf/closed/shuttle/dropship2/transparent
 	opacity = 0

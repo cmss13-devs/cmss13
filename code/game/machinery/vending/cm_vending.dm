@@ -41,7 +41,9 @@
 	var/vend_y_offset = 0
 
 	var/list/listed_products = list()
-	var/list/initial_product_count = list()
+
+	// Are points associated with this vendor tied to its instance?
+	var/instanced_vendor_points = FALSE
 
 /*
 Explanation on stat flags:
@@ -411,9 +413,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/proc/handle_topic(mob/user, href, href_list)
 	return
 
-/obj/structure/machinery/cm_vending/proc/vend_succesfully()
-	return
-
 /obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, var/display=TRUE)
 	if(!hacked)
 		if(!allowed(user))
@@ -481,8 +480,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 	.["vendor_type"] = "gear"
 	.["displayed_categories"] = vendor_user_inventory_list(src, user)
 
-proc/vendor_user_inventory_list(var/vendor, mob/user)
-	// list format
+proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/priority_index=5)
+	. = list()
+	// default list format
 	//	(
 	// 		name: str
 	//		cost
@@ -492,16 +492,15 @@ proc/vendor_user_inventory_list(var/vendor, mob/user)
 	//	)
 	var/obj/structure/machinery/cm_vending/vending_machine = vendor
 	var/list/ui_listed_products = vending_machine.get_listed_products(user)
-	var/list/ui_categories = list()
+
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
 
 		var/p_name = myprod[1]					//taking it's name
-		var/p_cost = myprod[2]
+		var/p_cost = cost_index == null ? 0 : myprod[cost_index]
 		var/item_ref = myprod[3]
-		var/priority = myprod[5]
+		var/priority = myprod[priority_index]
 
-		var/result = list()
 		var/obj/item/I = item_ref
 
 		var/is_category = item_ref == null
@@ -512,31 +511,27 @@ proc/vendor_user_inventory_list(var/vendor, mob/user)
 		var/display_item = list(
 			"prod_index" = i,
 			"prod_name" = p_name,
-			"prod_available" = TRUE,
 			"prod_color" = priority,
-			"prod_initial" = 0,
-			"prod_icon" = result,
 			"prod_desc" = initial(I.desc),
 			"prod_cost" = p_cost,
 			"image" = imgid
 		)
 
 		if (is_category == 1)
-			ui_categories += list(list(
+			. += list(list(
 				"name" = p_name,
 				"items" = list()
 			))
 			continue
 
-		if (!LAZYLEN(ui_categories))
-			ui_categories += list(list(
+		if (!LAZYLEN(.))
+			. += list(list(
 				"name" = "",
 				"items" = list()
 			))
-		var/last_index = LAZYLEN(ui_categories)
-		var/last_category = ui_categories[last_index]
+		var/last_index = LAZYLEN(.)
+		var/last_category = .[last_index]
 		last_category["items"] += list(display_item)
-	return ui_categories
 
 proc/vendor_inventory_ui_data(var/vendor, mob/user)
 	. = list()
@@ -550,9 +545,8 @@ proc/vendor_inventory_ui_data(var/vendor, mob/user)
 		ui_categories += list(p_amount)
 	.["stock_listing"] = ui_categories
 
-proc/vendor_user_ui_data(var/vendor, mob/user)
+proc/vendor_user_ui_data(var/obj/structure/machinery/cm_vending/vending_machine, mob/user)
 	. = list()
-	var/obj/structure/machinery/cm_vending/vending_machine = vendor
 	var/list/ui_listed_products = vending_machine.get_listed_products(user)
 	// list format
 	//	(
@@ -567,25 +561,34 @@ proc/vendor_user_ui_data(var/vendor, mob/user)
 
 	var/mob/living/carbon/human/H = user
 	var/buy_flags = H.marine_buy_flags
-	var/available_points_to_display = 0
-	if(vending_machine.use_snowflake_points)
-		available_points_to_display = H.marine_snowflake_points
-	else if(vending_machine.use_points)
-		available_points_to_display = H.marine_points
+	var/points = 0
+
+	if(vending_machine.instanced_vendor_points)
+		points = vending_machine.available_points_to_display
+	else
+		if(vending_machine.use_snowflake_points)
+			points = H.marine_snowflake_points
+		else if(vending_machine.use_points)
+			points = H.marine_points
 
 	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
 		var/prod_available = FALSE
 		var/p_cost = myprod[2]
 		var/avail_flag = myprod[4]
-		if(available_points_to_display >= p_cost && (!avail_flag || buy_flags & avail_flag))
+		if(points >= p_cost && (!avail_flag || buy_flags & avail_flag))
 			prod_available = TRUE
 		stock_values += list(prod_available)
 
 	.["stock_listing"] = stock_values
-	.["current_m_points"] = available_points_to_display
+	.["current_m_points"] = points
 
-proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/itemspec, var/mob/living/carbon/human/user)
+#define VEND_TO_HAND (1<<0)
+#define VEND_UNIFORM_RANKS (1<<1)
+#define VEND_UNIFORM_AUTOEQUIP (1<<2)
+#define VEND_LIMITED_INVENTORY (1<<3)
+
+proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/itemspec, var/mob/living/carbon/human/user, var/vend_flags=0)
 	if(vendor.stat & IN_USE)
 		return
 	vendor.stat |= IN_USE
@@ -599,7 +602,46 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 			sleep(vendor.vend_delay)
 
 		var/prod_type = itemspec[3]
-		new prod_type(target_turf)
+
+		var/obj/item/new_item
+		if(ispath(prod_type, /obj/item))
+			if(ispath(prod_type, /obj/item/weapon/gun))
+				new_item = new prod_type(target_turf, TRUE)
+			else
+				new_item = new prod_type(target_turf)
+			new_item.add_fingerprint(user)
+		else
+			new_item = new prod_type(target_turf)
+
+		if(vend_flags & VEND_LIMITED_INVENTORY)
+			itemspec[2]--
+
+		if(vend_flags & VEND_UNIFORM_RANKS)
+			// apply ranks to clothing
+			var/bitf = itemspec[4]
+			if(bitf)
+				if(bitf == MARINE_CAN_BUY_UNIFORM)
+					var/obj/item/clothing/under/underclothes = new_item
+					//Gives ranks to the ranked
+					if(user.wear_id && user.wear_id.paygrade)
+						var/rankpath = get_rank_pins(user.wear_id.paygrade)
+						if(rankpath)
+							var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
+							underclothes.attach_accessory(user, rank_insignia)
+
+		if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
+			// autoequip
+			if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS)	//auto-equipping feature here
+				if(new_item.flags_equip_slot == SLOT_ACCESSORY)
+					if(user.w_uniform)
+						var/obj/item/clothing/clothing = user.w_uniform
+						if(clothing.can_attach_accessory(new_item))
+							clothing.attach_accessory(user, new_item)
+				else
+					user.equip_to_appropriate_slot(new_item)
+
+		if(vend_flags & VEND_TO_HAND)
+			user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
 	else
 		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
 		sleep(15)
@@ -690,8 +732,7 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 			if(!handle_points(H, L))
 				return
 
-			vend_succesfully(L, H, T)
-
+			vendor_successful_vend(src, L, H, VEND_TO_HAND)
 	add_fingerprint(usr)
 
 /obj/structure/machinery/cm_vending/gear/proc/handle_points(var/mob/living/carbon/human/H, var/list/L)
@@ -719,29 +760,6 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 			to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
 			vend_fail()
 			return FALSE
-
-/obj/structure/machinery/cm_vending/gear/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
-	if(stat & IN_USE)
-		return
-
-	stat |= IN_USE
-	if(LAZYLEN(L))	//making sure it's not empty
-		if(vend_delay)
-			overlays.Cut()
-			icon_state = "[initial(icon_state)]_vend"
-			if(vend_sound)
-				playsound(loc, vend_sound, 25, 1, 2)	//heard only near vendor
-			sleep(vend_delay)
-		var/prod_type = L[3]
-		var/obj/our_item = new prod_type(T)
-		H.put_in_any_hand_if_possible(our_item, disable_warning = TRUE)
-	else
-		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
-		sleep(15)
-
-	stat &= ~IN_USE
-	update_icon()
-	return
 
 //------------CLOTHING VENDORS---------------
 //clothing vendors automatically put item on user. QoL at it's finest.
@@ -773,54 +791,6 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 
 	vending_human.marine_buy_flags &= ~listed_products[4]
 	return TRUE
-
-/obj/structure/machinery/cm_vending/clothing/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
-	if(stat & IN_USE)
-		return
-
-	stat |= IN_USE
-	if(LAZYLEN(L))
-		if(vend_delay)
-			overlays.Cut()
-			icon_state = "[initial(icon_state)]_vend"
-			if(vend_sound)
-				playsound(loc, vend_sound, 25, 1, 2)	//heard only near vendor
-			sleep(vend_delay)
-
-		var/prod_type = L[3]
-		if(prod_type == /obj/item/device/radio/headset/almayer/marine)
-			prod_type = headset_type
-		else if(prod_type == /obj/item/clothing/gloves/marine)
-			prod_type = gloves_type
-
-		var/obj/item/O = new prod_type(loc)
-
-		var/bitf = L[4]
-		if(bitf)
-			if(bitf == MARINE_CAN_BUY_UNIFORM)
-				var/obj/item/clothing/under/U = O
-				//Gives ranks to the ranked
-				if(H.wear_id && H.wear_id.paygrade)
-					var/rankpath = get_rank_pins(H.wear_id.paygrade)
-					if(rankpath)
-						var/obj/item/clothing/accessory/ranks/R = new rankpath()
-						U.attach_accessory(H, R)
-
-		if(istype(O, /obj/item) && O.flags_equip_slot != NO_FLAGS)	//auto-equipping feature here
-			if(O.flags_equip_slot == SLOT_ACCESSORY)
-				if(H.w_uniform)
-					var/obj/item/clothing/C = H.w_uniform
-					if(C.can_attach_accessory(O))
-						C.attach_accessory(H, O)
-			else
-				H.equip_to_appropriate_slot(O)
-
-	else
-		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
-		sleep(15)
-	stat &= ~IN_USE
-	update_icon()
-	return
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
 	. = ..(user)
@@ -886,7 +856,7 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 					vend_fail()
 					return
 
-			vend_succesfully(L, H, T)
+			vendor_successful_vend(src, L, H, VEND_UNIFORM_RANKS|VEND_UNIFORM_AUTOEQUIP)
 		if("cancel")
 			SStgui.close_uis(src)
 			return TRUE
@@ -1003,60 +973,9 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	return
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
-	var/list/data = ..(user)
-	data["vendor_type"] = "sorted"
-
-	var/list/ui_listed_products = get_listed_products(user)
-
-	var/list/ui_categories = list()
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-
-		var/p_name = myprod[1]					//taking it's name
-		var/p_amount = myprod[2]				//amount left
-		var/item_ref = myprod[3]
-		var/prod_available = p_amount > 0		//checking if it's available
-		var/list/initial_vals = initial_product_count
-
-		var/result = list()
-
-		var/initial_amount = initial_vals[p_name]
-		var/is_category = p_amount < 0
-
-		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
-
-
-		//forming new list with index, name, amount, available or not, color and add it to display_list
-		var/obj/item/I = item_ref
-		var/display_item = list(
-			"prod_index" = i,
-			"prod_name" = p_name,
-			"prod_available" = prod_available,
-			"prod_color" = myprod[4],
-			"prod_initial" = initial_amount,
-			"prod_icon" = result,
-			"prod_desc" = initial(I.desc),
-			"prod_cost" = 0,
-			"image" = imgid
-		)
-
-		if (is_category == 1)
-			ui_categories += list(list(
-				"name" = p_name,
-				"items" = list()
-			))
-			continue
-
-		if (!LAZYLEN(ui_categories))
-			ui_categories += list(list(
-				"name" = "",
-				"items" = list()
-			))
-		var/last_index = LAZYLEN(ui_categories)
-		var/last_category = ui_categories[last_index]
-		last_category["items"] += list(display_item)
-	data["displayed_categories"] = ui_categories
-	return data
+	. = ..(user)
+	.["vendor_type"] = "sorted"
+	.["displayed_categories"] = vendor_user_inventory_list(src, user, null, 4)
 
 /obj/structure/machinery/cm_vending/sorted/ui_data(mob/user)
 	return vendor_inventory_ui_data(src, user)
@@ -1090,39 +1009,13 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 				vend_fail()
 				return TRUE		// one left and the player spam click during a lagspike.
 
-			vend_succesfully(L, H, T)
+			vendor_successful_vend(src, L, H, VEND_LIMITED_INVENTORY)
 		if ("cancel")
 			SStgui.close_uis(src)
 			return TRUE
 
 	add_fingerprint(usr)
 	return TRUE
-
-/obj/structure/machinery/cm_vending/sorted/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
-	if(stat & IN_USE)
-		return
-
-	stat |= IN_USE
-	if(LAZYLEN(L))
-		if(vend_delay)
-			overlays.Cut()
-			icon_state = "[initial(icon_state)]_vend"
-			if(vend_sound)
-				playsound(loc, vend_sound, 25, 1, 2)	//heard only near vendor
-			sleep(vend_delay)
-		var/prod_path = L[3]
-		if(ispath(prod_path, /obj/item/weapon/gun))
-			new prod_path(T, TRUE)
-		else
-			new prod_path(T)
-		L[2]--		//taking 1 from amount of products in vendor
-
-	else
-		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
-		sleep(15)
-	stat &= ~IN_USE
-	update_icon()
-	return
 
 /obj/structure/machinery/cm_vending/sorted/MouseDrop_T(var/atom/movable/A, mob/user)
 
@@ -1196,6 +1089,7 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 
 	var/available_points = MARINE_TOTAL_BUY_POINTS
 	available_points_to_display = MARINE_TOTAL_BUY_POINTS
+	instanced_vendor_points = TRUE
 
 /obj/structure/machinery/cm_vending/own_points/ui_static_data(mob/user)
 	. = ..(user)
@@ -1204,9 +1098,6 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 
 /obj/structure/machinery/cm_vending/own_points/ui_data(mob/user)
 	return vendor_user_ui_data(src, user)
-
-/obj/structure/machinery/cm_vending/own_points/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
-	vendor_successful_vend(src, L, H)
 
 /obj/structure/machinery/cm_vending/own_points/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -1246,7 +1137,7 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 				available_points -= cost
 				available_points_to_display = available_points
 
-			vend_succesfully(L, H, T)
+			vendor_successful_vend(src, L, H)
 		if ("cancel")
 			SStgui.close_uis(src)
 			return TRUE

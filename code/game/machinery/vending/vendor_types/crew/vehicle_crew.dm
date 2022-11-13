@@ -96,10 +96,6 @@
 
 	.["stock_listing"] = stock_values
 
-
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/handle_points(var/mob/living/carbon/human/H, var/list/L)
 	. = TRUE
 	if(available_categories)
@@ -119,29 +115,6 @@
 	var/turf/T = get_turf(src)
 	T = get_step(T, SOUTH)
 	return T
-
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
-	if(stat & IN_USE)
-		return
-
-	stat |= IN_USE
-	if(LAZYLEN(L))
-		if(vend_delay)
-			overlays.Cut()
-			icon_state = "[initial(icon_state)]_vend"
-			if(vend_sound)
-				playsound(loc, vend_sound, 75, 1, 2)	//heard only near vendor
-			sleep(vend_delay)
-		var/prod_type = L[3]
-		new prod_type(T)
-	else
-		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
-		sleep(5)
-
-	stat &= ~IN_USE
-	update_icon()
-	return
-
 
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),

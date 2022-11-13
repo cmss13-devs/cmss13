@@ -17,8 +17,6 @@ const VENDOR_ITEM_RECOMMENDED = 3;
 interface VendingRecord {
   prod_index: number;
   prod_name: string;
-  prod_available: number;
-  prod_initial: number;
   prod_color?: number;
   prod_desc?: string;
   prod_cost: number;
@@ -274,8 +272,10 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
     return null;
   }
 
+  const displayName = category.name ?? "";
+
   return (
-    <Section title={category.name ?? ""}>
+    <Section title={displayName}>
       <Stack
         vertical
         fill

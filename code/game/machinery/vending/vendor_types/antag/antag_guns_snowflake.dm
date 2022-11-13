@@ -40,35 +40,6 @@
 		if(FACTION_CLF)
 			.["theme"] = VENDOR_THEME_CLF
 
-/obj/structure/machinery/cm_vending/gear/antag_guns/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
-	if(stat & IN_USE)
-		return
-
-	stat |= IN_USE
-	if(LAZYLEN(L))
-
-		var/prod_type = L[3]
-		var/obj/item/O
-		if(ispath(prod_type, /obj/effect/essentials_set/random))
-			new prod_type(src)
-			for(var/obj/item/IT in contents)
-				O = IT
-				O.forceMove(T)
-		else
-			if(ispath(prod_type, /obj/item/weapon/gun))
-				O = new prod_type(T, TRUE)
-			else
-				O = new prod_type(T)
-		O.add_fingerprint(usr)
-
-	else
-		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
-		overlays += image(icon, "[icon_state]_deny")
-		sleep(5)
-	stat &= ~IN_USE
-	update_icon()
-	return
-
 //--------------ESSENTIALS------------------------
 
 /obj/effect/essentials_set/medic/upp

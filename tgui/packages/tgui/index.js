@@ -18,6 +18,10 @@ import './styles/themes/retro.scss';
 import './styles/themes/syndicate.scss';
 import './styles/themes/wizard.scss';
 import './styles/themes/admin.scss';
+import './styles/themes/weyland.scss';
+import './styles/themes/uscm.scss';
+import './styles/themes/xeno.scss';
+import './styles/themes/hive_status.scss';
 
 import { perf } from 'common/perf';
 import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';

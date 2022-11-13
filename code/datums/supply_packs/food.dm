@@ -63,26 +63,26 @@
 /datum/supply_packs/wheat
 	name = "wheat (x20)"
 	contains = list(
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
-					/obj/item/reagent_container/food/snacks/grown/wheat
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
+					/obj/item/reagent_container/food/snacks/grown/wheat,
 					)
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
@@ -94,11 +94,11 @@
 /datum/supply_packs/meat
 	name = "meat(*5)"
 	contains = list(
-					/obj/item/reagent_container/food/snacks/meat
-					/obj/item/reagent_container/food/snacks/meat
-					/obj/item/reagent_container/food/snacks/meat
-					/obj/item/reagent_container/food/snacks/meat
-					/obj/item/reagent_container/food/snacks/meat
+					/obj/item/reagent_container/food/snacks/meat,
+					/obj/item/reagent_container/food/snacks/meat,
+					/obj/item/reagent_container/food/snacks/meat,
+					/obj/item/reagent_container/food/snacks/meat,
+					/obj/item/reagent_container/food/snacks/meat,
 					)
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
@@ -108,11 +108,11 @@
 /datum/supply_packs/carp_fillet
 	name = "carp fillet (x5)"
 	contains = list(
-					/obj/item/reagent_container/food/snacks/carpmeat
-					/obj/item/reagent_container/food/snacks/carpmeat
-					/obj/item/reagent_container/food/snacks/carpmeat
-					/obj/item/reagent_container/food/snacks/carpmeat
-					/obj/item/reagent_container/food/snacks/carpmeat
+					/obj/item/reagent_container/food/snacks/carpmeat,
+					/obj/item/reagent_container/food/snacks/carpmeat,
+					/obj/item/reagent_container/food/snacks/carpmeat,
+					/obj/item/reagent_container/food/snacks/carpmeat,
+					/obj/item/reagent_container/food/snacks/carpmeat,
 					)
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
@@ -199,7 +199,7 @@
 					/obj/item/reagent_container/food/drinks/bottle/rum,
 					/obj/item/reagent_container/food/drinks/bottle/wine,
 					/obj/item/reagent_container/food/drinks/bottle/wine,
-					/obj/item/reagent_container/food/drinks/bottle/wine
+					/obj/item/reagent_container/food/drinks/bottle/wine,
 					)
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
@@ -212,7 +212,7 @@
 	contains = list(
 					/obj/item/seeds/bloodtomatoseed,
 					/obj/item/storage/pill_bottle/happy,
-					/obj/item/reagent_container/food/drinks/bottle/pwine
+					/obj/item/reagent_container/food/drinks/bottle/pwine,
 					)
 
 	name = "contraband crate"

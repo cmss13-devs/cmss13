@@ -1,3 +1,11 @@
+#define VEND_TO_HAND (1<<0)
+#define VEND_UNIFORM_RANKS (1<<1)
+#define VEND_UNIFORM_AUTOEQUIP (1<<2)
+#define VEND_LIMITED_INVENTORY (1<<3)
+#define VEND_CLUTTER_PROTECTION (1<<4)
+#define VEND_CATEGORY_CHECK (1<<5)
+#define VEND_INSTANCED_CATEGORY (1<<6)
+
 /obj/structure/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
 
@@ -44,6 +52,7 @@
 
 	// Are points associated with this vendor tied to its instance?
 	var/instanced_vendor_points = FALSE
+	var/vend_flags = VEND_CLUTTER_PROTECTION
 
 /*
 Explanation on stat flags:
@@ -260,6 +269,141 @@ GLOBAL_LIST_EMPTY(vending_products)
 	user.set_interaction(src)
 	tgui_interact(user)
 
+//------------TGUI PROCS---------------
+
+/obj/structure/machinery/cm_vending/ui_data(mob/user)
+	return vendor_user_ui_data(src, user)
+
+/obj/structure/machinery/cm_vending/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/user = usr
+	switch (action)
+		if ("cancel")
+			SStgui.close_uis(src)
+			return TRUE
+		if ("vend")
+			if(stat & IN_USE)
+				return
+			var/has_access = can_access_to_vend(usr)
+			if (!has_access)
+				vend_fail()
+				return TRUE
+
+			var/index=params["prod_index"]
+			var/list/topic_listed_products = get_listed_products(user)
+			var/list/itemspec = topic_listed_products[index]
+
+			var/turf/target_turf = get_appropriate_vend_turf(user)
+			if(vend_flags & VEND_CLUTTER_PROTECTION)
+				if(target_turf.contents.len > 25)
+					to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
+					vend_fail()
+					return FALSE
+
+			if((!user.assigned_squad && squad_tag) || (!user.assigned_squad?.omni_squad_vendor && (squad_tag && user.assigned_squad.name != squad_tag)))
+				to_chat(user, SPAN_WARNING("This machine isn't for your squad."))
+				vend_fail()
+				return FALSE
+
+			if(vend_flags & VEND_CATEGORY_CHECK)
+				// if the vendor uses flags to control availability
+				var/can_buy_flags = itemspec[4]
+				if(can_buy_flags)
+					if(can_buy_flags == MARINE_CAN_BUY_ESSENTIALS)
+						if(vendor_role.Find(JOB_SQUAD_SPECIALIST))
+							// handle specalist essential gear assignment
+							if(user.job != JOB_SQUAD_SPECIALIST)
+								to_chat(user, SPAN_WARNING("Only specialists can take specialist sets."))
+								vend_fail()
+								return FALSE
+							else if(!user.skills || user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ALL)
+								to_chat(user, SPAN_WARNING("You already have a specialization."))
+								vend_fail()
+								return FALSE
+							var/p_name = itemspec[1]
+							if(!available_specialist_sets.Find(p_name))
+								to_chat(user, SPAN_WARNING("That set is already taken."))
+								vend_fail()
+								return FALSE
+							var/obj/item/card/id/ID = user.wear_id
+							if(!istype(ID) || ID.registered_ref != WEAKREF(usr))
+								to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
+								return FALSE
+							var/specialist_assignment
+							switch(p_name)
+								if("Scout Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
+									specialist_assignment = "Scout"
+								if("Sniper Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+									specialist_assignment = "Sniper"
+								if("Demolitionist Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
+									specialist_assignment = "Demo"
+								if("Heavy Grenadier Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
+									specialist_assignment = "Grenadier"
+								if("Pyro Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
+									specialist_assignment = "Pyro"
+								else
+									to_chat(user, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
+									vend_fail()
+									return FALSE
+							ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+							GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
+							available_specialist_sets -= p_name
+						else if(vendor_role.Find(JOB_SYNTH))
+							if(user.job != JOB_SYNTH)
+								to_chat(user, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
+								vend_fail()
+								return FALSE
+
+					if(!handle_vend(itemspec, user))
+						to_chat(user, SPAN_WARNING("You can't buy things from this category anymore."))
+						vend_fail()
+						return FALSE
+
+			// if vendor has no costs and is inventory limited
+			if(!(use_points|use_snowflake_points))
+				var/inventory_count = itemspec[2]
+				if(inventory_count <= 0)	//to avoid dropping more than one product when there's
+					to_chat(usr, SPAN_WARNING("[itemspec[1]] is out of stock."))
+					vend_fail()
+					return TRUE		// one left and the player spam click during a lagspike.
+
+			if(use_points|use_snowflake_points)
+				if(!handle_points(user, itemspec))
+					to_chat(user, SPAN_WARNING("Not enough points."))
+					vend_fail()
+					return FALSE
+
+			vendor_successful_vend(src, itemspec, user)
+	add_fingerprint(user)
+
+/obj/structure/machinery/cm_vending/proc/handle_points(var/mob/living/carbon/human/user, var/list/itemspec)
+	. = TRUE
+	var/cost = itemspec[2]
+	if(instanced_vendor_points)
+		if(available_points_to_display < cost)
+			return FALSE
+		else
+			available_points_to_display -= cost
+	else
+		if(use_snowflake_points)
+			if(user.marine_snowflake_points < cost)
+				return FALSE
+			else
+				user.marine_snowflake_points -= cost
+		else
+			if(user.marine_points < cost)
+				return FALSE
+			else
+				user.marine_points -= cost
+
 /obj/structure/machinery/cm_vending/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
@@ -455,12 +599,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //-----------TGUI PROCS------------------------
 /obj/structure/machinery/cm_vending/ui_static_data(mob/user)
-	var/list/data = list()
-	data["vendor_name"] = name
-	data["vendor_type"] = "base"
-	data["theme"] = vendor_theme
-	data["show_points"] = show_points
-	return data
+	. = list()
+	.["vendor_name"] = name
+	.["vendor_type"] = "base"
+	.["theme"] = vendor_theme
+	.["show_points"] = show_points | use_snowflake_points
 
 /obj/structure/machinery/cm_vending/ui_assets(mob/user)
 	return list(get_asset_datum(/datum/asset/spritesheet/vending_products))
@@ -474,292 +617,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 	icon_state = "gear_rack"
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
+	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND
 
 /obj/structure/machinery/cm_vending/gear/ui_static_data(mob/user)
 	. = ..(user)
 	.["vendor_type"] = "gear"
 	.["displayed_categories"] = vendor_user_inventory_list(src, user)
-
-proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/priority_index=5)
-	. = list()
-	// default list format
-	//	(
-	// 		name: str
-	//		cost
-	//		item reference
-	//		allowed to buy flag
-	//		item priority (mandatory/recommended/regular)
-	//	)
-	var/obj/structure/machinery/cm_vending/vending_machine = vendor
-	var/list/ui_listed_products = vending_machine.get_listed_products(user)
-
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-
-		var/p_name = myprod[1]					//taking it's name
-		var/p_cost = cost_index == null ? 0 : myprod[cost_index]
-		var/item_ref = myprod[3]
-		var/priority = myprod[priority_index]
-
-		var/obj/item/I = item_ref
-
-		var/is_category = item_ref == null
-
-		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
-		//forming new list with index, name, amount, available or not, color and add it to display_list
-
-		var/display_item = list(
-			"prod_index" = i,
-			"prod_name" = p_name,
-			"prod_color" = priority,
-			"prod_desc" = initial(I.desc),
-			"prod_cost" = p_cost,
-			"image" = imgid
-		)
-
-		if (is_category == 1)
-			. += list(list(
-				"name" = p_name,
-				"items" = list()
-			))
-			continue
-
-		if (!LAZYLEN(.))
-			. += list(list(
-				"name" = "",
-				"items" = list()
-			))
-		var/last_index = LAZYLEN(.)
-		var/last_category = .[last_index]
-		last_category["items"] += list(display_item)
-
-proc/vendor_inventory_ui_data(var/vendor, mob/user)
-	. = list()
-	var/obj/structure/machinery/cm_vending/vending_machine = vendor
-	var/list/ui_listed_products = vending_machine.get_listed_products(user)
-	var/list/ui_categories = list()
-
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-		var/p_amount = myprod[2]				//amount left
-		ui_categories += list(p_amount)
-	.["stock_listing"] = ui_categories
-
-proc/vendor_user_ui_data(var/obj/structure/machinery/cm_vending/vending_machine, mob/user)
-	. = list()
-	var/list/ui_listed_products = vending_machine.get_listed_products(user)
-	// list format
-	//	(
-	// 		name: str
-	//		cost
-	//		item reference
-	//		allowed to buy flag
-	//		item priority (mandatory/recommended/regular)
-	//	)
-
-	var/list/stock_values = list()
-
-	var/mob/living/carbon/human/H = user
-	var/buy_flags = H.marine_buy_flags
-	var/points = 0
-
-	if(vending_machine.instanced_vendor_points)
-		points = vending_machine.available_points_to_display
-	else
-		if(vending_machine.use_snowflake_points)
-			points = H.marine_snowflake_points
-		else if(vending_machine.use_points)
-			points = H.marine_points
-
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-		var/prod_available = FALSE
-		var/p_cost = myprod[2]
-		var/avail_flag = myprod[4]
-		if(points >= p_cost && (!avail_flag || buy_flags & avail_flag))
-			prod_available = TRUE
-		stock_values += list(prod_available)
-
-	.["stock_listing"] = stock_values
-	.["current_m_points"] = points
-
-#define VEND_TO_HAND (1<<0)
-#define VEND_UNIFORM_RANKS (1<<1)
-#define VEND_UNIFORM_AUTOEQUIP (1<<2)
-#define VEND_LIMITED_INVENTORY (1<<3)
-
-proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/itemspec, var/mob/living/carbon/human/user, var/vend_flags=0)
-	if(vendor.stat & IN_USE)
-		return
-	vendor.stat |= IN_USE
-	var/turf/target_turf = vendor.get_appropriate_vend_turf(user)
-	if(LAZYLEN(itemspec))	//making sure it's not empty
-		if(vendor.vend_delay)
-			vendor.overlays.Cut()
-			vendor.icon_state = "[initial(vendor.icon_state)]_vend"
-			if(vendor.vend_sound)
-				playsound(vendor.loc, vendor.vend_sound, 25, 1, 2)	//heard only near vendor
-			sleep(vendor.vend_delay)
-
-		var/prod_type = itemspec[3]
-
-		var/obj/item/new_item
-		if(ispath(prod_type, /obj/item))
-			if(ispath(prod_type, /obj/item/weapon/gun))
-				new_item = new prod_type(target_turf, TRUE)
-			else
-				new_item = new prod_type(target_turf)
-			new_item.add_fingerprint(user)
-		else
-			new_item = new prod_type(target_turf)
-
-		if(vend_flags & VEND_LIMITED_INVENTORY)
-			itemspec[2]--
-
-		if(vend_flags & VEND_UNIFORM_RANKS)
-			// apply ranks to clothing
-			var/bitf = itemspec[4]
-			if(bitf)
-				if(bitf == MARINE_CAN_BUY_UNIFORM)
-					var/obj/item/clothing/under/underclothes = new_item
-					//Gives ranks to the ranked
-					if(user.wear_id && user.wear_id.paygrade)
-						var/rankpath = get_rank_pins(user.wear_id.paygrade)
-						if(rankpath)
-							var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
-							underclothes.attach_accessory(user, rank_insignia)
-
-		if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
-			// autoequip
-			if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS)	//auto-equipping feature here
-				if(new_item.flags_equip_slot == SLOT_ACCESSORY)
-					if(user.w_uniform)
-						var/obj/item/clothing/clothing = user.w_uniform
-						if(clothing.can_attach_accessory(new_item))
-							clothing.attach_accessory(user, new_item)
-				else
-					user.equip_to_appropriate_slot(new_item)
-
-		if(vend_flags & VEND_TO_HAND)
-			user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
-	else
-		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
-		sleep(15)
-
-	vendor.stat &= ~IN_USE
-	vendor.update_icon()
-
-/obj/structure/machinery/cm_vending/gear/ui_data(mob/user)
-	return vendor_user_ui_data(src, user)
-
-/obj/structure/machinery/cm_vending/gear/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-
-	var/mob/living/carbon/human/H = usr
-	switch (action)
-		if ("vend")
-			if(stat & IN_USE)
-				return
-
-			var/list/has_access = can_access_to_vend(usr)
-			if (!has_access)
-				return
-
-			var/idx=params["prod_index"]
-
-			var/list/topic_listed_products = get_listed_products(usr)
-			var/list/L = topic_listed_products[idx]
-
-			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
-				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
-				vend_fail()
-				return
-
-			var/turf/T = get_appropriate_vend_turf()
-			if(T.contents.len > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
-				vend_fail()
-				return
-
-			var/bitf = L[4]
-			if(bitf)
-				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SQUAD_SPECIALIST))
-					if(H.job != JOB_SQUAD_SPECIALIST)
-						to_chat(H, SPAN_WARNING("Only specialists can take specialist sets."))
-						vend_fail()
-						return
-					else if(!H.skills || H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ALL)
-						to_chat(H, SPAN_WARNING("You already have a specialization."))
-						vend_fail()
-						return
-					var/p_name = L[1]
-					if(!available_specialist_sets.Find(p_name))
-						to_chat(H, SPAN_WARNING("That set is already taken."))
-						vend_fail()
-						return
-					var/obj/item/card/id/ID = H.wear_id
-					if(!istype(ID) || ID.registered_ref != WEAKREF(usr))
-						to_chat(usr, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
-						return
-					var/specialist_assignment
-					switch(p_name)
-						if("Scout Set")
-							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
-							specialist_assignment = "Scout"
-						if("Sniper Set")
-							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
-							specialist_assignment = "Sniper"
-						if("Demolitionist Set")
-							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
-							specialist_assignment = "Demo"
-						if("Heavy Grenadier Set")
-							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
-							specialist_assignment = "Grenadier"
-						if("Pyro Set")
-							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
-							specialist_assignment = "Pyro"
-						else
-							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
-							vend_fail()
-							return
-					ID.set_assignment((H.assigned_squad ? (H.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
-					GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
-					available_specialist_sets -= p_name
-
-
-			if(!handle_points(H, L))
-				return
-
-			vendor_successful_vend(src, L, H, VEND_TO_HAND)
-	add_fingerprint(usr)
-
-/obj/structure/machinery/cm_vending/gear/proc/handle_points(var/mob/living/carbon/human/H, var/list/L)
-	. = TRUE
-	var/cost = L[2]
-	if(use_points)
-		if(use_snowflake_points)
-			if(H.marine_snowflake_points < cost)
-				to_chat(H, SPAN_WARNING("Not enough points."))
-				vend_fail()
-				return FALSE
-			else
-				H.marine_snowflake_points -= cost
-		else
-			if(H.marine_points < cost)
-				to_chat(H, SPAN_WARNING("Not enough points."))
-				vend_fail()
-				return FALSE
-			else
-				H.marine_points -= cost
-	if(L[4])
-		if(H.marine_buy_flags & L[4])
-			H.marine_buy_flags &= ~L[4]
-		else
-			to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
-			vend_fail()
-			return FALSE
 
 //------------CLOTHING VENDORS---------------
 //clothing vendors automatically put item on user. QoL at it's finest.
@@ -771,97 +634,12 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
 	show_points = FALSE
-
-/obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
-	if(!(vending_human.marine_buy_flags & listed_products[4]))
-		return FALSE
-
-	if(listed_products[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
-		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
-		else
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
-		return TRUE
-	if(listed_products[4] == (MARINE_CAN_BUY_COMBAT_R_POUCH|MARINE_CAN_BUY_COMBAT_L_POUCH))
-		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_COMBAT_R_POUCH)
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_R_POUCH
-		else
-			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
-		return TRUE
-
-	vending_human.marine_buy_flags &= ~listed_products[4]
-	return TRUE
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_UNIFORM_RANKS | VEND_UNIFORM_AUTOEQUIP | VEND_CATEGORY_CHECK
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
 	. = ..(user)
 	.["vendor_type"] = "clothing"
 	.["displayed_categories"] = vendor_user_inventory_list(src, user)
-
-/obj/structure/machinery/cm_vending/clothing/ui_data(mob/user)
-	return vendor_user_ui_data(src, user)
-
-/obj/structure/machinery/cm_vending/clothing/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-
-	var/mob/living/carbon/human/H = usr
-	switch (action)
-		if ("vend")
-			if(stat & IN_USE)
-				return
-
-			var/idx=params["prod_index"]
-
-			var/list/topic_listed_products = get_listed_products(usr)
-			var/list/L = topic_listed_products[idx]
-			var/cost = L[2]
-
-			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
-				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
-				vend_fail()
-				return
-			var/turf/T = get_appropriate_vend_turf(H)
-			if(T.contents.len > 25)
-				to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
-				vend_fail()
-				return TRUE
-			var/bitf = L[4]
-			if(bitf)
-				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SYNTH))
-					if(H.job != JOB_SYNTH)
-						to_chat(H, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
-						vend_fail()
-						return
-
-			if(use_points)
-				if(use_snowflake_points)
-					if(H.marine_snowflake_points < cost)
-						to_chat(H, SPAN_WARNING("Not enough points."))
-						vend_fail()
-						return
-					else
-						H.marine_snowflake_points -= cost
-				else
-					if(H.marine_points < cost)
-						to_chat(H, SPAN_WARNING("Not enough points."))
-						vend_fail()
-						return
-					else
-						H.marine_points -= cost
-
-			if(L[4])
-				if(!handle_vend(L, H))
-					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
-					vend_fail()
-					return
-
-			vendor_successful_vend(src, L, H, VEND_UNIFORM_RANKS|VEND_UNIFORM_AUTOEQUIP)
-		if("cancel")
-			SStgui.close_uis(src)
-			return TRUE
-
-	add_fingerprint(usr)
 
 //------------SORTED VENDORS---------------
 //22.06.2019 Modified ex-"marine_selector" system that doesn't use points by Jeser. In theory, should replace all vendors.
@@ -872,6 +650,7 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	desc = "This is pure vendor without points system."
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list = list(
@@ -977,46 +756,6 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	.["vendor_type"] = "sorted"
 	.["displayed_categories"] = vendor_user_inventory_list(src, user, null, 4)
 
-/obj/structure/machinery/cm_vending/sorted/ui_data(mob/user)
-	return vendor_inventory_ui_data(src, user)
-
-/obj/structure/machinery/cm_vending/sorted/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-
-	var/mob/living/carbon/human/H = usr
-	switch (action)
-		if ("vend")
-			if(stat & IN_USE)
-				return
-			var/has_access = can_access_to_vend(usr)
-			if (!has_access)
-				return TRUE
-
-			var/idx=params["prod_index"]
-			var/list/topic_listed_products = get_listed_products(usr)
-			var/list/L = topic_listed_products[idx]
-
-			var/turf/T = get_appropriate_vend_turf(H)
-			if(T.contents.len > 25)
-				to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
-				vend_fail()
-				return TRUE
-
-			if(L[2] <= 0)	//to avoid dropping more than one product when there's
-				to_chat(usr, SPAN_WARNING("[L[1]] is out of stock."))
-				vend_fail()
-				return TRUE		// one left and the player spam click during a lagspike.
-
-			vendor_successful_vend(src, L, H, VEND_LIMITED_INVENTORY)
-		if ("cancel")
-			SStgui.close_uis(src)
-			return TRUE
-
-	add_fingerprint(usr)
-	return TRUE
-
 /obj/structure/machinery/cm_vending/sorted/MouseDrop_T(var/atom/movable/A, mob/user)
 
 	if(inoperable())
@@ -1084,7 +823,7 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	desc = "This is a vendor with its own points system."
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
-	use_points = FALSE
+	use_points = TRUE
 	use_snowflake_points = FALSE
 
 	var/available_points = MARINE_TOTAL_BUY_POINTS
@@ -1095,56 +834,6 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	. = ..(user)
 	.["vendor_type"] = "gear"
 	.["displayed_categories"] = vendor_user_inventory_list(src, user)
-
-/obj/structure/machinery/cm_vending/own_points/ui_data(mob/user)
-	return vendor_user_ui_data(src, user)
-
-/obj/structure/machinery/cm_vending/own_points/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-
-	var/mob/living/carbon/human/H = usr
-	switch (action)
-		if ("vend")
-			if(stat & IN_USE)
-				return
-			var/has_access = can_access_to_vend(usr)
-			if (!has_access)
-				return TRUE
-
-			var/idx=params["prod_index"]
-			var/list/topic_listed_products = get_listed_products(usr)
-			var/list/L = topic_listed_products[idx]
-
-			var/turf/T = get_appropriate_vend_turf(H)
-			var/cost = L[2]
-			if(T.contents.len > 25)
-				to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
-				vend_fail()
-				return TRUE
-
-			if(L[2] <= 0)	//to avoid dropping more than one product when there's
-				to_chat(usr, SPAN_WARNING("[L[1]] is out of stock."))
-				vend_fail()
-				return TRUE		// one left and the player spam click during a lagspike.
-
-			if(available_points < cost)
-				to_chat(H, SPAN_WARNING("Not enough points."))
-				vend_fail()
-				return
-			else
-				available_points -= cost
-				available_points_to_display = available_points
-
-			vendor_successful_vend(src, L, H)
-		if ("cancel")
-			SStgui.close_uis(src)
-			return TRUE
-
-	add_fingerprint(usr)
-	return TRUE
-
 
 //------------ESSENTIALS SETS AND RANDOM GEAR SPAWNER---------------
 
@@ -1168,6 +857,200 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	else
 		new typepath(loc)
 	qdel(src)
+
+//---helper procs
+
+proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/priority_index=5)
+	. = list()
+	// default list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+	var/obj/structure/machinery/cm_vending/vending_machine = vendor
+	var/list/ui_listed_products = vending_machine.get_listed_products(user)
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+
+		var/p_name = myprod[1]					//taking it's name
+		var/p_cost = cost_index == null ? 0 : myprod[cost_index]
+		var/item_ref = myprod[3]
+		var/priority = myprod[priority_index]
+
+		var/obj/item/I = item_ref
+
+		var/is_category = item_ref == null
+
+		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
+		//forming new list with index, name, amount, available or not, color and add it to display_list
+
+		var/display_item = list(
+			"prod_index" = i,
+			"prod_name" = p_name,
+			"prod_color" = priority,
+			"prod_desc" = initial(I.desc),
+			"prod_cost" = p_cost,
+			"image" = imgid
+		)
+
+		if (is_category == 1)
+			. += list(list(
+				"name" = p_name,
+				"items" = list()
+			))
+			continue
+
+		if (!LAZYLEN(.))
+			. += list(list(
+				"name" = "",
+				"items" = list()
+			))
+		var/last_index = LAZYLEN(.)
+		var/last_category = .[last_index]
+		last_category["items"] += list(display_item)
+
+proc/vendor_inventory_ui_data(var/vendor, mob/user)
+	. = list()
+	var/obj/structure/machinery/cm_vending/vending_machine = vendor
+	var/list/ui_listed_products = vending_machine.get_listed_products(user)
+	var/list/ui_categories = list()
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/p_amount = myprod[2]				//amount left
+		ui_categories += list(p_amount)
+	.["stock_listing"] = ui_categories
+
+proc/vendor_user_ui_data(var/obj/structure/machinery/cm_vending/vending_machine, mob/user)
+	if(vending_machine.vend_flags & VEND_LIMITED_INVENTORY)
+		return vendor_inventory_ui_data(vending_machine, user)
+
+	. = list()
+	var/list/ui_listed_products = vending_machine.get_listed_products(user)
+	// list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+
+	var/list/stock_values = list()
+
+	var/mob/living/carbon/human/H = user
+	var/buy_flags = H.marine_buy_flags
+	var/points = 0
+
+	if(vending_machine.instanced_vendor_points)
+		points = vending_machine.available_points_to_display
+	else
+		if(vending_machine.use_snowflake_points)
+			points = H.marine_snowflake_points
+		else if(vending_machine.use_points)
+			points = H.marine_points
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/prod_available = FALSE
+		var/p_cost = myprod[2]
+		var/avail_flag = myprod[4]
+		if(points >= p_cost && (!avail_flag || buy_flags & avail_flag))
+			prod_available = TRUE
+		stock_values += list(prod_available)
+
+	.["stock_listing"] = stock_values
+	.["current_m_points"] = points
+
+proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/itemspec, var/mob/living/carbon/human/user)
+	if(vendor.stat & IN_USE)
+		return
+	vendor.stat |= IN_USE
+
+	var/vend_flags = vendor.vend_flags
+
+	var/turf/target_turf = vendor.get_appropriate_vend_turf(user)
+	if(LAZYLEN(itemspec))	//making sure it's not empty
+		if(vendor.vend_delay)
+			vendor.overlays.Cut()
+			vendor.icon_state = "[initial(vendor.icon_state)]_vend"
+			if(vendor.vend_sound)
+				playsound(vendor.loc, vendor.vend_sound, 25, 1, 2)	//heard only near vendor
+			sleep(vendor.vend_delay)
+
+		var/prod_type = itemspec[3]
+
+		var/obj/item/new_item
+		if(ispath(prod_type, /obj/item))
+			if(ispath(prod_type, /obj/item/weapon/gun))
+				new_item = new prod_type(target_turf, TRUE)
+			else
+				new_item = new prod_type(target_turf)
+			new_item.add_fingerprint(user)
+		else
+			new_item = new prod_type(target_turf)
+
+		if(vend_flags & VEND_LIMITED_INVENTORY)
+			itemspec[2]--
+
+		if(vend_flags & VEND_UNIFORM_RANKS)
+			// apply ranks to clothing
+			var/bitf = itemspec[4]
+			if(bitf)
+				if(bitf == MARINE_CAN_BUY_UNIFORM)
+					var/obj/item/clothing/under/underclothes = new_item
+					//Gives ranks to the ranked
+					if(user.wear_id && user.wear_id.paygrade)
+						var/rankpath = get_rank_pins(user.wear_id.paygrade)
+						if(rankpath)
+							var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
+							underclothes.attach_accessory(user, rank_insignia)
+
+		if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
+			// autoequip
+			if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS)	//auto-equipping feature here
+				if(new_item.flags_equip_slot == SLOT_ACCESSORY)
+					if(user.w_uniform)
+						var/obj/item/clothing/clothing = user.w_uniform
+						if(clothing.can_attach_accessory(new_item))
+							clothing.attach_accessory(user, new_item)
+				else
+					user.equip_to_appropriate_slot(new_item)
+
+		if(vend_flags & VEND_TO_HAND)
+			user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
+	else
+		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
+		sleep(15)
+
+	vendor.stat &= ~IN_USE
+	vendor.update_icon()
+
+proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
+	var/can_buy_flags = listed_products[4]
+	if(!(vending_human.marine_buy_flags & can_buy_flags))
+		return FALSE
+
+	if(can_buy_flags == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
+		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
+		else
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
+		return TRUE
+	if(can_buy_flags == (MARINE_CAN_BUY_COMBAT_R_POUCH|MARINE_CAN_BUY_COMBAT_L_POUCH))
+		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_COMBAT_R_POUCH)
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_R_POUCH
+		else
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
+		return TRUE
+
+	vending_human.marine_buy_flags &= ~can_buy_flags
+	return TRUE
+
 
 //------------HACKING---------------
 

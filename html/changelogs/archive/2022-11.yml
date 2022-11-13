@@ -177,3 +177,4 @@
   Morrow:
   - bugfix: Fixed mechanical battlefield executions.
   - rscdel: Deletes unused silenced ammo flag.
+  - bugfix: Removes an unused variable

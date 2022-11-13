@@ -1562,9 +1562,13 @@
 
 	sleep(sleep_amount)
 
-	visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
-			SPAN_NOTICE("You get rid of the acid."), null, 5)
-	extinguish_acid()
+	if( extinguish_acid() )
+		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
+				SPAN_NOTICE("You get rid of the acid."), null, 5)
+	else
+		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"), \
+				SPAN_NOTICE("You manage to get rid of some of the acid... but it's still melting you!"), null, 5)
+
 	return
 
 /mob/living/carbon/human/resist_restraints()

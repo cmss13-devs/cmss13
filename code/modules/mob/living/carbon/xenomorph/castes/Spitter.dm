@@ -14,14 +14,14 @@
 	speed = XENO_SPEED_TIER_5
 
 	caste_desc = "Ptui!"
-	spit_types = list(/datum/ammo/xeno/acid/medium)
+	spit_types = list(/datum/ammo/xeno/acid, /datum/ammo/xeno/acid/spatter)
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER)
 	deevolves_to = list(XENO_CASTE_SENTINEL)
 	acid_level = 2
 
 	behavior_delegate_type = /datum/behavior_delegate/spitter_base
 
-	spit_delay = 40
+	spit_delay = 2.5 SECONDS
 
 	tackle_min = 2
 	tackle_max = 6
@@ -47,7 +47,7 @@
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/xeno_spit,
-		/datum/action/xeno_action/onclick/spitter_frenzy,
+		/datum/action/xeno_action/onclick/charge_spit,
 		/datum/action/xeno_action/activable/spray_acid/spitter,
 	)
 	inherent_verbs = list(
@@ -63,7 +63,7 @@
 
 /datum/behavior_delegate/spitter_base
 	name = "Base Spitter Behavior Delegate"
-
+/*
 	// list of atoms that we cannot apply a DoT effect to
 	var/list/dot_cooldown_atoms = list()
 	var/dot_cooldown_duration = 120 // every 12 seconds
@@ -84,7 +84,7 @@
 	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_type))
 
 	if (ismob(A))
-		var/datum/action/xeno_action/onclick/spitter_frenzy/SFA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spitter_frenzy)
+		var/datum/action/xeno_action/onclick/charge_spit/SFA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/charge_spit)
 		if (istype(SFA) && !SFA.action_cooldown_check())
 			SFA.end_cooldown()
 
@@ -93,3 +93,4 @@
 		dot_cooldown_atoms -= A
 		if (istype(bound_xeno))
 			to_chat(bound_xeno, SPAN_XENOWARNING("You can soak [A] in acid again!"))
+*/

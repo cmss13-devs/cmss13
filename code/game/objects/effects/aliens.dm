@@ -193,7 +193,42 @@
 	fire_level_to_extinguish = 6
 	time_to_live = 6
 
-	var/bonus_damage = 5
+	var/bonus_damage = 25
+
+/obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/M)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+
+		var/damage = damage_amount
+
+		var/buffed_splash = FALSE
+		var/datum/effects/acid/A = locate() in H.effects_list
+		if(A && A.acid_enhanced == FALSE) // can't stack the bonus every splash. thatd be nuts!
+			buffed_splash = TRUE
+			damage += bonus_damage
+
+			A.enhance_acid()
+
+		var/datum/effects/weak_spray_stack/spray_stack = locate() in H.effects_list
+		if(!spray_stack)
+			spray_stack = new /datum/effects/weak_spray_stack(H)
+		spray_stack.hit_count++
+		damage /= spray_stack.hit_count //less damage every hit
+
+		to_chat(H, SPAN_DANGER("Your legs scald and burn! Argh!"))
+		H.emote(pick("scream", "pain"))
+		if (buffed_splash)
+			H.KnockDown(stun_duration)
+			to_chat(H, SPAN_HIGHDANGER("The acid coating on you starts bubbling and sizzling wildly!"))
+		H.last_damage_data = cause_data
+		H.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_foot", 20)
+		H.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_foot", 20)
+		H.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_leg", 20)
+		H.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_leg", 20)
+		H.UpdateDamageIcon()
+		H.updatehealth()
+	else if (isXeno(M))
+		..(M, FALSE)
 
 /obj/effect/xenomorph/spray/strong
 	name = "strong splatter"
@@ -209,32 +244,6 @@
 /obj/effect/xenomorph/spray/strong/no_stun
 	stun_duration = 0
 
-/obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-
-		var/damage = damage_amount
-
-		var/should_stun = FALSE
-		for (var/datum/effects/acid/A in H.effects_list)
-			should_stun = TRUE
-			damage += (-1*(A.duration - A.original_duration))*(A.damage_in_total_human/A.original_duration)
-			damage += bonus_damage
-
-			qdel(A)
-			break
-
-		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
-		H.emote("pain")
-		if (should_stun && !H.lying)
-			H.KnockDown(stun_duration)
-		H.last_damage_data = cause_data
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
-		H.UpdateDamageIcon()
-		H.updatehealth()
-	else if (isXeno(M))
-		..(M, FALSE)
 
 /obj/effect/xenomorph/spray/praetorian
 	name = "splatter"

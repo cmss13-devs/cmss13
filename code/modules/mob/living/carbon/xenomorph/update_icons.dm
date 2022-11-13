@@ -169,6 +169,20 @@
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
 
+/mob/living/carbon/Xenomorph/proc/create_custom_empower(var/icolor, var/ialpha = 255, var/small_xeno = FALSE)
+	remove_suit_layer()
+
+	var/image/empower_image = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "empower_custom")
+	empower_image.color = icolor
+	empower_image.alpha = ialpha
+	if(small_xeno == TRUE) // 48x48
+		empower_image.pixel_x = -8
+		empower_image.pixel_y = -8
+
+	overlays_standing[X_SUIT_LAYER] = empower_image
+	apply_overlay(X_SUIT_LAYER)
+	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 2 SECONDS)
+
 /mob/living/carbon/Xenomorph/proc/create_shield(var/duration = 10)
 	remove_suit_layer()
 

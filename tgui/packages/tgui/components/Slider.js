@@ -98,9 +98,9 @@ export const Slider = (props) => {
             <div
               className="ProgressBar__fill"
               style={{
-                width:
-                  clamp01(Math.min(scaledFillValue, scaledDisplayValue)) * 100 +
-                  '%',
+                // prettier-ignore
+                width: clamp01(Math.min(scaledFillValue, scaledDisplayValue))
+                  * 100 + '%',
               }}
             />
             <div

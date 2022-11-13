@@ -607,7 +607,7 @@
 /turf/open/space/transit/east/shuttlespace_ew7,
 /area/space)
 "ej" = (
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/bare_catwalk,
 /area/supply/dock)
 "eu" = (
 /obj/effect/decal/warning_stripes{

@@ -3,6 +3,11 @@
 	customizable = TRUE
 	allowed_sensors = list() //We only need a detonator
 
+/obj/item/explosive/warhead/Initialize(mapload, ...)
+	. = ..()
+	pixel_y = rand(-6, 6)
+	pixel_x = rand(-7, 7)
+
 /obj/item/explosive/warhead/rocket
 	name = "84mm rocket warhead"
 	desc = "A custom warhead meant for 84mm rocket shells."

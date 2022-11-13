@@ -189,7 +189,42 @@
       maps.
   - spellcheck: Fixes some left-behind lore-bits in contractor synthetic flavor-text
   - bugfix: WeYu secguard corpse preset should now spawn with shoes
+  Fira, harryob:
+  - refactor: ported new /tg/ tgui and statpanel. this should fix statpanel loading
+      and hopefully not break everything else.
+  Git-Nivrak:
+  - bugfix: Tail stab now properly applies all melee attack additional effects and
+      damage
+  - bugfix: Tail stab's damage is now increased by frenzy damage buff
+  - balance: Allows Queen to expand hive weeds into normal weeds.
+  Mistfrag:
+  - bugfix: Removed some police skills where it was documented to have only been given
+      for carry.
+  - code_imp: Added a new define/datum SKILL_FIREMAN
+  - refactor: Refactored skills and human to include fireman carrying as its own skill.
   Morrow:
   - bugfix: Fixed mechanical battlefield executions.
   - rscdel: Deletes unused silenced ammo flag.
   - bugfix: Removes an unused variable
+  Segrain:
+  - bugfix: Paygrades once again yield correct ranks and rank pins.
+  SpartanBobby:
+  - rscadd: Renamed and gave a new description to "Sunglasses" now called "cheap sunglasses"
+  - rscadd: Renamed and gave a new description to "Shades" now called "bimex personal
+      shades" from the Alien RPG rulebook
+  ThePiachu:
+  - rscadd: Added a small visual offset to ammo, mortar shells and grenades on the
+      ground to make piles of ammunitions and explosive more visually distinct.
+  Unknownity:
+  - balance: The thick resin nest's space for construction requirements has been removed.
+  - balance: The hive is now notified that the thick resin nest is now available whenever
+      a predator is infected.
+  - bugfix: The thick resin nest's construction template has been fixed to actually
+      appear now so xenomorphs know where it is to fill it with plasma.
+  fira:
+  - rscadd: You can now order randomized pizza at ASRS, for special occasions or reqsreation.
+  - bugfix: Added a bandaid for the broken ASRS lift animation
+  kugamo:
+  - bugfix: Fixed tripod lights and candelabras not starting as on, fixed not being
+      able to break these items and flashlights as xeno.
+  - bugfix: Fixed visual bug with weeds on windows.

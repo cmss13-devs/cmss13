@@ -174,6 +174,20 @@
   kugamo:
   - bugfix: Removed ability to do pushups while in a xeno or while buckled.
 2022-11-13:
+  CapCamIII:
+  - rscadd: Contractors now have their own faction and IFF, instead of sharing with
+      USCM
+  - rscadd: Contractors now have proper hairstyles
+  - rscadd: Contractors now speak english, spanish, and russian by default
+  - rscadd: Contractor IFF version of motion detector
+  - bugfix: Contractor synthetics should now speak all languages, like other synthetic
+      presets
+  - bugfix: Contractors should now show up in the correct section of the follow menu
+      now
+  - bugfix: Contractor synthetic can no longer shoot guns
+  - bugfix: Contractor covert helmets should now appropriately have a sprite on all
+      maps.
+  - spellcheck: Fixes some left-behind lore-bits in contractor synthetic flavor-text
   Morrow:
   - bugfix: Fixed mechanical battlefield executions.
   - rscdel: Deletes unused silenced ammo flag.

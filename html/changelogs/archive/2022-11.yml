@@ -173,3 +173,7 @@
   - bugfix: Full Electronics Pouch is now actually full
   kugamo:
   - bugfix: Removed ability to do pushups while in a xeno or while buckled.
+2022-11-13:
+  Morrow:
+  - bugfix: Fixed mechanical battlefield executions.
+  - rscdel: Deletes unused silenced ammo flag.

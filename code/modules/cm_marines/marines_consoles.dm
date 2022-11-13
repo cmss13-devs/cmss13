@@ -552,6 +552,9 @@
 				var/datum/squad/selected = get_squad_by_name(params["name"])
 				if(!selected)
 					return
+				if(RoleAuthority.check_squad_capacity(person_to_modify, selected))
+					visible_message("<span class='bold'>[src]</span> states, \"CAPACITY ERROR: [selected] can't have another [person_to_modify.job].\"")
+					return TRUE
 				if(transfer_marine_to_squad(person_to_modify, selected, person_to_modify.assigned_squad, ID_to_modify))
 					visible_message("<span class='bold'>[src]</span> states, \"DATABASE LOG: [person_to_modify] was assigned to [selected] Squad.\"")
 					return TRUE
@@ -940,9 +943,9 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// 200-229: Centcom
 				JOB_COLONEL = 200,
 				JOB_GENERAL = 200,
-				JOB_MARSOC_CMD = 210,
-				JOB_MARSOC_SL = 210,
-				JOB_MARSOC = 211,
+				JOB_MARINE_RAIDER_CMD = 210,
+				JOB_MARINE_RAIDER_SL = 210,
+				JOB_MARINE_RAIDER = 211,
 				JOB_PMC_LEADER = 220,
 				JOB_PMC_ELITE = 221,
 				JOB_PMC_GUNNER = 222,

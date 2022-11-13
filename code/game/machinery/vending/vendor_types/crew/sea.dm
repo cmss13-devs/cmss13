@@ -79,7 +79,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 	req_access = list(ACCESS_MARINE_SEA)
 	vendor_role = list(JOB_SEA)
 
-/obj/structure/machinery/cm_vending/clothing/sea/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_clothing_sea
-
+/obj/structure/machinery/cm_vending/clothing/sea/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_clothing_sea

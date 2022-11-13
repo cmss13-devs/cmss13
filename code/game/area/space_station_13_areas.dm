@@ -34,6 +34,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/admin
 	name = "\improper Admin room"
 	icon_state = "start"
+	ceiling = CEILING_METAL
 
 /area/admin/droppod
 	lighting_use_dynamic = FALSE
@@ -52,6 +53,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/start            // will be unused once kurper gets his login interface patch done
 	name = "start area"
 	icon_state = "start"
+	ceiling = CEILING_MAX
 	requires_power = 0
 	luminosity = 1
 	lighting_use_dynamic = 0
@@ -66,6 +68,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "centcom"
 	requires_power = 0
 	statistic_exempt = TRUE
+	ceiling = CEILING_METAL
 
 /area/centcom/control
 	name = "\improper abandoned  Centcom Control"
@@ -79,6 +82,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
 	statistic_exempt = TRUE
+	ceiling = CEILING_METAL
 
 /area/tdome/tdome1
 	name = "\improper abandoned  Thunderdome (Team 1)"

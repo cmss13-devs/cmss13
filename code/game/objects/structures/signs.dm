@@ -51,9 +51,9 @@
 		qdel(src)
 	else ..()
 
-/////////////////////////
-///Miscellaneous Signs///
-/////////////////////////
+  //=====================//
+ // Miscellaneous Signs //
+//=====================//
 
 /obj/structure/sign/nosmoking_1
 	name = "\improper NO SMOKING"
@@ -90,9 +90,9 @@
 /obj/structure/sign/double/maltesefalcon/right
 	icon_state = "maltesefalcon-right"
 
-/////////////
-///Banners///
-/////////////
+//============//
+//  Banners  //
+//==========//
 
 /obj/structure/sign/banners
 	icon = 'icons/obj/structures/props/banners.dmi'
@@ -107,9 +107,9 @@
 	desc = "This banner depicts Delta Squad's motto. The Marines of Delta Squad adopted it after picking an old bomber movie for movie night a while back."
 	icon_state = "maximumeffort"
 
-///////////////////////
-///SEMIOTIC STANDARD///
-///////////////////////
+//=====================//
+// SEMIOTIC STANDARD  //
+//===================//
 
 /obj/structure/sign/safety
 	name = "sign"
@@ -544,9 +544,9 @@
 	desc = "Semiotic Standard denoting the number nine."
 	icon_state = "9"
 
-//////////////////
-///Marine signs///
-//////////////////
+//===================//
+//   Marine signs   //
+//=================//
 
 /obj/structure/sign/ROsign
 	name = "\improper USCM Requisitions Office Guidelines"
@@ -568,9 +568,7 @@
 	desc = "An old recruitment poster for the USCM. Looking at it floods you with a mixture of pride and sincere regret."
 	icon_state = "prop3"
 
-///////////////
-///Cat Clock///
-///////////////
+
 /obj/structure/sign/catclock
 	name = "cat clock"
 	desc = "An unbelievably creepy cat clock that surveys the room with every tick and every tock."

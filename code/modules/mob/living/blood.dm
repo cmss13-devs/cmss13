@@ -259,7 +259,7 @@
 		return "greenblood"
 	if(species.flags & IS_SYNTHETIC)
 		return "whiteblood"
-	if(species.name == "Zombie")
+	if(species.name == SPECIES_ZOMBIE)
 		return "greyblood"
 	return "blood"
 

@@ -330,7 +330,7 @@ Parameters are passed from New.
 /atom/process()
 	return
 
-///---CLONE---///
+//---CLONE---//
 
 /atom/clone
 	var/proj_x = 0
@@ -350,10 +350,6 @@ Parameters are passed from New.
 /atom/proc/extinguish_acid()
 	for(var/datum/effects/acid/A in effects_list)
 		qdel(A)
-
-/atom/proc/remove_weather_effects()
-	for(var/datum/effects/weather/W in effects_list)
-		qdel(W)
 
 // Movement
 /atom/proc/add_temp_pass_flags(flags_to_add)
@@ -534,3 +530,9 @@ Parameters are passed from New.
 // returning a 0 makes it do nothing
 /atom/proc/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
 	return TAILSTAB_COOLDOWN_NONE
+
+/atom/proc/handle_flamer_fire(var/obj/flamer_fire/fire, var/damage, var/delta_time)
+	return
+
+/atom/proc/handle_flamer_fire_crossed(var/obj/flamer_fire/fire)
+	return

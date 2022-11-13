@@ -96,7 +96,11 @@
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
 	if(stun_power)
 		H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
-	H.apply_effect(weaken_power, WEAKEN)
+	if(weaken_power)
+		H.apply_effect(weaken_power, WEAKEN)
+	if(slowdown)
+		if(H.slowed < slowdown)
+			H.Slow(slowdown)
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 	shake_camera(H, 2, 1)
 

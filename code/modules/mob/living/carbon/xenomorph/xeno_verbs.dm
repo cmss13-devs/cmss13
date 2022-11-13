@@ -59,6 +59,7 @@
 	var/cleared_amount = 0
 	for(var/i in built_structures[type])
 		cleared_amount++
+		built_structures[type] -= i
 		if(isturf(i))
 			var/turf/T = i
 			T.ScrapeAway()

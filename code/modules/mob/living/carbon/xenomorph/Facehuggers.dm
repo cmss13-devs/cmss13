@@ -14,7 +14,7 @@
 	flags_inventory = COVEREYES|ALLOWINTERNALS|COVERMOUTH|ALLOWREBREATH|CANTSTRIP
 	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_atom = NO_FLAGS
-	flags_item = NOBLUDGEON
+	flags_item = NOBLUDGEON|NOTABLEMERGE
 	throw_range = 1
 	layer = FACEHUGGER_LAYER
 
@@ -38,7 +38,7 @@
 	var/jumps_left = 2
 
 	var/icon_xeno = 'icons/mob/hostiles/Effects.dmi'
-	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
+	var/icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
@@ -238,14 +238,15 @@
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M)
+/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M, var/silent = FALSE, var/knockout_mod = 1)
 	if(attached || !can_hug(M, hivenumber))
-		return
+		return FALSE
 
 	// This is always going to be valid because of the can_hug check above
 	var/mob/living/carbon/human/H = M
 	attached = TRUE
-	H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
+	if(!silent)
+		H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
 
 	if(isXeno(loc)) //Being carried? Drop it
 		var/mob/living/carbon/Xenomorph/X = loc
@@ -255,7 +256,7 @@
 		forceMove(H.loc)//Just checkin
 
 	if(!H.handle_hugger_attachment(src))
-		return
+		return FALSE
 
 	forceMove(H)
 	icon_state = initial(icon_state)
@@ -267,9 +268,11 @@
 		playsound(loc, H.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
 	if(!sterile)
 		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
-			H.KnockOut(MIN_IMPREGNATION_TIME * 0.5, TRUE) //THIS MIGHT NEED TWEAKS
+			H.KnockOut(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, TRUE) //THIS MIGHT NEED TWEAKS
 
 	addtimer(CALLBACK(src, .proc/impregnate, H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
+
+	return TRUE
 
 /obj/item/clothing/mask/facehugger/proc/impregnate(mob/living/carbon/human/target)
 	if(!target || target.wear_mask != src) //Was taken off or something

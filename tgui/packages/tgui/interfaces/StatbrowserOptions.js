@@ -5,14 +5,14 @@ import { Window } from '../layouts';
 export const StatbrowserOptions = (props, context) => {
   const { act, data } = useBackend(context);
   const { current_fontsize } = data;
-  const [fontsize, setFontsize] = useLocalState(context, "fontsize", current_fontsize);
+  const [fontsize, setFontsize] = useLocalState(
+    context,
+    'fontsize',
+    current_fontsize
+  );
 
   return (
-    <Window
-      title="Statbrowser Options"
-      width={300}
-      height={120}
-    >
+    <Window title="Statbrowser Options" width={300} height={120}>
       <Window.Content>
         <Options>
           <NumberOption
@@ -21,10 +21,10 @@ export const StatbrowserOptions = (props, context) => {
             minValue={10}
             maxValue={30}
             step={0.5}
-            format={value => value + "px"}
+            format={(value) => value + 'px'}
             onChange={(_, value) => {
               setFontsize(value);
-              act("change_fontsize", { new_fontsize: value });
+              act('change_fontsize', { new_fontsize: value });
             }}
           />
         </Options>
@@ -38,15 +38,12 @@ const Options = (props, context) => {
 
   return (
     <Section title="Options">
-      <Flex
-        spacing={16*2}
-      >
-        {!Array.isArray(children) ? children
+      <Flex spacing={16 * 2}>
+        {!Array.isArray(children)
+          ? children
           : children.map((option, i) => (
-            <Flex.Item key={i}>
-              {option}
-            </Flex.Item>
-          ))}
+              <Flex.Item key={i}>{option}</Flex.Item>
+            ))}
       </Flex>
     </Section>
   );
@@ -57,12 +54,8 @@ const Option = (props, context) => {
 
   return (
     <Flex>
-      <Flex.Item mr="5px">
-        {category}
-      </Flex.Item>
-      <Flex.Item>
-        {input}
-      </Flex.Item>
+      <Flex.Item mr="5px">{category}</Flex.Item>
+      <Flex.Item>{input}</Flex.Item>
     </Flex>
   );
 };
@@ -70,10 +63,5 @@ const Option = (props, context) => {
 const NumberOption = (props, context) => {
   const { category, ...rest } = props;
 
-  return (
-    <Option
-      category={category}
-      input={<NumberInput {...rest} />}
-    />
-  );
+  return <Option category={category} input={<NumberInput {...rest} />} />;
 };

@@ -216,10 +216,10 @@
 				if(current_squad.squad_leader)
 					if(H == current_squad.squad_leader)
 						dist = "<b>N/A</b>"
-						if(current_squad.name == SQUAD_MARSOC)
-							if(H.job == JOB_MARSOC_CMD)
+						if(current_squad.name == SQUAD_SOF)
+							if(H.job == JOB_MARINE_RAIDER_CMD)
 								act_sl = " (direct command)"
-							else if(H.job != JOB_MARSOC_SL)
+							else if(H.job != JOB_MARINE_RAIDER_SL)
 								act_sl = " (acting TL)"
 						else if(H.job != JOB_SQUAD_LEADER)
 							act_sl = " (acting SL)"
@@ -840,28 +840,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is already in [new_squad]!")]")
 		return
 
-	var/no_place = FALSE
-	switch(transfer_marine.job)
-		if(JOB_SQUAD_LEADER)
-			if(new_squad.num_leaders == new_squad.max_leaders)
-				no_place = TRUE
-		if(JOB_SQUAD_SPECIALIST)
-			if(new_squad.num_specialists == new_squad.max_specialists)
-				no_place = TRUE
-		if(JOB_SQUAD_ENGI)
-			if(new_squad.num_engineers >= new_squad.max_engineers)
-				no_place = TRUE
-		if(JOB_SQUAD_MEDIC)
-			if(new_squad.num_medics >= new_squad.max_medics)
-				no_place = TRUE
-		if(JOB_SQUAD_SMARTGUN)
-			if(new_squad.num_smartgun == new_squad.max_smartgun)
-				no_place = TRUE
-		if(JOB_SQUAD_RTO)
-			if(new_squad.num_rto >= new_squad.max_rto)
-				no_place = TRUE
-
-	if(no_place)
+	if(RoleAuthority.check_squad_capacity(transfer_marine, new_squad))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [new_squad] can't have another [transfer_marine.job].")]")
 		return
 

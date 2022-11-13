@@ -132,7 +132,7 @@
 
 		new effect_type_base(Human, Xeno, , , get_xeno_stun_duration(Human, effect_duration))
 		to_chat(Human, SPAN_XENOHIGHDANGER("You are BRUTALLY crushed and stomped on by [Xeno]!!!"))
-
+		shake_camera(Human, 10, 2)
 		if(Human.mob_size < MOB_SIZE_BIG)
 			Human.KnockDown(get_xeno_stun_duration(Human, 0.2))
 
@@ -145,7 +145,7 @@
 		if (Human.stat == DEAD || Xeno.can_not_harm(Human))
 			continue
 		if(Human.client)
-			shake_camera(Human, 2, 2)
+			shake_camera(Human, 10, 2)
 		if(Targeted)
 			to_chat(Human, SPAN_XENOHIGHDANGER("You watch as [Targeted] gets crushed by [Xeno]!"))
 		to_chat(Human, SPAN_XENOHIGHDANGER("You are shaken as [Xeno] quakes the earth!"))

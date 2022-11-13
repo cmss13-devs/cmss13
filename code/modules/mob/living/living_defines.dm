@@ -55,7 +55,8 @@
 
 	var/image/attack_icon = null //the image used as overlay on the things we attack.
 
-	var/zoom_cooldown = 0 //Cooldown on using zooming items, to limit spam
+	COOLDOWN_DECLARE(zoom_cooldown) //Cooldown on using zooming items, to limit spam
+
 	var/do_bump_delay = 0	// Flag to tell us to delay movement because of being bumped
 
 	var/reagent_move_delay_modifier = 0 //negative values increase movement speed
@@ -87,3 +88,5 @@
 	var/list/active_surgeries = DEFENSE_ZONES_LIVING
 	///Assoc. list - incision depths, by aim zone. Set by initialize_incision_depths().
 	var/list/incision_depths = DEFENSE_ZONES_LIVING
+
+	var/current_weather_effect_type

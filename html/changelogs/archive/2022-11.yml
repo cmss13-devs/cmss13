@@ -193,6 +193,7 @@
   - bugfix: Tail stab now properly applies all melee attack additional effects and
       damage
   - bugfix: Tail stab's damage is now increased by frenzy damage buff
+  - balance: Allows Queen to expand hive weeds into normal weeds.
   Mistfrag:
   - bugfix: Removed some police skills where it was documented to have only been given
       for carry.

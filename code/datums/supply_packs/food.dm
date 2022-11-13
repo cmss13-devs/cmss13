@@ -135,7 +135,7 @@
 					)
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
-	containername = "\crate of condiment"
+	containername = "\improper crate of condiment"
 	group = "Food"
 	
 	//all the finish snacks.
@@ -151,7 +151,7 @@
 					)
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/supply
-	containername = "\boxe of donut (x5)"
+	containername = "\improper boxe of donut (x5)"
 	group = "Food"
 	
 /datum/supply_packs/uscm_mre
@@ -162,7 +162,7 @@
 					)
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/supply
-	containername = "\USCM MRE crate(x2)"
+	containername = "\improper USCM MRE crate(x2)"
 	group = "Food"
 	
 	/datum/supply_packs/funfood

@@ -200,3 +200,4 @@
   kugamo:
   - bugfix: Fixed tripod lights and candelabras not starting as on, fixed not being
       able to break these items and flashlights as xeno.
+  - bugfix: Fixed visual bug with weeds on windows.

@@ -936,14 +936,14 @@
 //---------------------INTERACTION PROCS
 
 /obj/item/ammo_box/rounds/get_examine_text(mob/user)
-	..()
-	to_chat(user, SPAN_INFO("To refill a magazine click on the box with it in your hand. Being on [SPAN_HELPFUL("HARM")] intent will fill box from the magazine."))
+	. = ..()
+	. += SPAN_INFO("To refill a magazine click on the box with it in your hand. Being on [SPAN_HELPFUL("HARM")] intent will fill box from the magazine.")
 	if(bullet_amount)
-		to_chat(user, "It contains [bullet_amount] round\s.")
+		. +=  "It contains [bullet_amount] round\s."
 	else
-		to_chat(user, "It's empty.")
+		. +=  "It's empty."
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		. += SPAN_DANGER("It's on fire and might explode!")
 
 /obj/item/ammo_box/rounds/attack_self(mob/living/user)
 	..()

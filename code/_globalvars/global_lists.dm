@@ -63,6 +63,19 @@ GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
 	/datum/resin_construction/resin_obj/resin_spike
 ))
 
+//Resin constructions that will be SMUSHED by closing doors
+GLOBAL_LIST_INIT(resin_door_shmushereds, list(
+	/obj/effect/resin_construct/door,
+	/obj/structure/mineral_door/resin,
+	/obj/structure/bed/nest,
+	/obj/effect/alien/resin/spike,
+	/obj/effect/alien/resin/acid_pillar,
+	/obj/effect/alien/resin/shield_pillar,
+	/obj/item/explosive/grenade/alien/acid,
+	/obj/structure/alien/movable_wall,
+	/turf/closed/wall/resin,
+))
+
 //Xeno Leader Mark Meanings
 GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin_mark_meanings())
 

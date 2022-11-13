@@ -203,6 +203,10 @@
   - bugfix: Fixed mechanical battlefield executions.
   - rscdel: Deletes unused silenced ammo flag.
   - bugfix: Removes an unused variable
+  SpartanBobby:
+  - rscadd: Renamed and gave a new description to "Sunglasses" now called "cheap sunglasses"
+  - rscadd: Renamed and gave a new description to "Shades" now called "bimex personal
+      shades" from the Alien RPG rulebook
   ThePiachu:
   - rscadd: Added a small visual offset to ammo, mortar shells and grenades on the
       ground to make piles of ammunitions and explosive more visually distinct.

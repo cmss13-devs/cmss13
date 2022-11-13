@@ -102,6 +102,8 @@
 	update_clothing_icon(src) //Update the on-mob icon.
 
 
+/obj/item/clothing/mask/rebreather/scarf/conceal_face
+	flags_inv_hide = HIDEALLHAIR|HIDEEARS|HIDEFACE
 
 /obj/item/clothing/mask/rebreather/scarf/green
 	name = "Green Balaclava"

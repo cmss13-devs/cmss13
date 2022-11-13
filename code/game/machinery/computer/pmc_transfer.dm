@@ -8,7 +8,7 @@
 	var/mob/living/carbon/human/person_to_modify
 	/// If we're at the stage where we've recruited a guy, but they haven't gotten armor yet
 	var/verified = FALSE
-	/// How many more PFCs can be made into PMCs this shift
+	/// How many more PFCs/Survivors can be made into PMCs this shift
 	var/static/pmc_transfers_left = 4
 	/// If the UI is at a loading bar
 	var/is_loading = FALSE
@@ -68,7 +68,7 @@
 				if("Tactical Cap")
 					new /obj/item/clothing/head/helmet/marine/veteran/PMC/recruit(armor_case)
 
-			visible_message("<span class='bold'>[src]</span> states, \"Equipment vended. As part of the Weyland-Yutani corporation, you are required to be in uniform at all times while on duty.\"")
+			visible_message("<span class='bold'>[src]</span> states, \"Equipment vended. For any questions, please ask the Weyland-Yutani Corporate Liason.\"")
 			verified = FALSE
 			person_to_modify = null
 			return TRUE
@@ -129,11 +129,8 @@
 	if(!ishuman(to_modify))
 		return FALSE
 	var/mob/living/carbon/human/human_to_modify = to_modify
-	if(SSticker?.mode?.flags_round_type & MODE_DS_LANDED)
-		visible_message("<span class='bold'>[src]</span> states, \"DESIGNATION ERROR: Due to USCM regulations, the transfer of personnel once an operation has started is not permitted.\"")
-		return FALSE
-	if(human_to_modify.job != JOB_SQUAD_MARINE)
-		visible_message("<span class='bold'>[src]</span> states, \"DESIGNATION ERROR: Target must be a rifleman to continue.\"")
+	if((human_to_modify.job != JOB_SQUAD_MARINE) && (human_to_modify.job != JOB_SURVIVOR))
+		visible_message("<span class='bold'>[src]</span> states, \"DESIGNATION ERROR: Target must be a rifleman or non-USCM personnel to continue.\"")
 		return FALSE
 	var/obj/item/card/id/ID = human_to_modify.wear_id
 	if(!istype(ID)) //not wearing an ID

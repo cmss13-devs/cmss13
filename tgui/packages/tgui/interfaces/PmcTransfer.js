@@ -16,7 +16,7 @@ const HEAD_TYPES = ['Helmet', 'Beret', 'Tactical Cap'];
 
 export const PmcTransfer = (props, context) => {
   const { act, data } = useBackend(context);
-  const { verification, possible_verifications, human } = data;
+  const { verification, human } = data;
   let primary;
   if (verification) {
     primary = <PMCArmorSelect />;
@@ -105,15 +105,6 @@ const PMCArmorSelect = (props, context) => {
   );
 };
 
-const PMCNoRecruits = (props, context) => {
-  return (
-    <NoticeBox>
-      You have reached the company-authorized limit of PMC recruits, please
-      contact via fax should more be required.
-    </NoticeBox>
-  );
-};
-
 const PMCVerification = (props, context) => {
   const { act, data } = useBackend(context);
   const { verification, is_loading, possible_verifications } = data;
@@ -121,8 +112,11 @@ const PMCVerification = (props, context) => {
     <Section title="Squad Transfer" fill>
       By checking the box, you are confirming that you have followed company
       procedure for the vetting and recruitment of PMC units from USMC ranks,
-      and that the appropriate paperwork has been filed, namely record form
-      268-C and any paperwork the recruit&apos;s former employer may require.
+      and that the appropriate paperwork has been filed. Notably, record form
+      268-C and any paperwork the recruit&apos;s former employer may require,
+      else you recognize the risks involved to you and the recruit in
+      discharging potential military personnel without authorization from their
+      Commanding Officer.
       <ButtonCheckbox
         checked={verification}
         disabled={is_loading || !!(possible_verifications <= 0)}
@@ -131,7 +125,7 @@ const PMCVerification = (props, context) => {
         onClick={() => act('startLoading')}>
         Confirm
       </ButtonCheckbox>
-      {(is_loading && <LoadingScreenDimmer />)}
+      {is_loading && <LoadingScreenDimmer />}
       {possible_verifications <= 0 && <NoRecruitsDimmer />}
     </Section>
   );

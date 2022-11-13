@@ -552,10 +552,12 @@
 		return
 
 	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
-		to_chat(X, SPAN_NOTICE("You start uprooting the node so you can put the resin hole in its place."))
+		to_chat(X, SPAN_NOTICE("You start uprooting the node so you can put the resin hole in its place..."))
 		if(!do_after(X, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
 			return
-		new /obj/effect/alien/weeds(alien_weeds.loc)
+		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(alien_weeds.loc)
+		the_replacer.hivenumber = X.hivenumber
+		the_replacer.linked_hive = X.hive
 		qdel(alien_weeds)
 
 	X.use_plasma(plasma_cost)

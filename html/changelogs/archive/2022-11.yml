@@ -188,6 +188,7 @@
   - bugfix: Contractor covert helmets should now appropriately have a sprite on all
       maps.
   - spellcheck: Fixes some left-behind lore-bits in contractor synthetic flavor-text
+  - bugfix: WeYu secguard corpse preset should now spawn with shoes
   Morrow:
   - bugfix: Fixed mechanical battlefield executions.
   - rscdel: Deletes unused silenced ammo flag.

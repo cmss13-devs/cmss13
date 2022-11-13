@@ -154,7 +154,7 @@
 	containername = "\improper boxe of donut (x5)"
 	group = "Food"
 	
-/datum/supply_packs/uscm_mre
+/datum/supply_packs/mre
 	name = "USCM MRE crate(x2)"
 	contains = list(
 					/obj/item/ammo_box/magazine/misc/mre,

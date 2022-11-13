@@ -251,3 +251,32 @@
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper wrapping supplies crate"
 	group = "Supplies"
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

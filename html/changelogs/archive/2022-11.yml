@@ -249,3 +249,6 @@
   fira:
   - qol: Ghosts now have a timer displaying time left to hijack end in Statpanel.
   - bugfix: Evac timer in Status pane will now display as such.
+  kugamo:
+  - bugfix: 'Fixed visual bug with dropships: having plating underneath in space and
+      on lzs.'

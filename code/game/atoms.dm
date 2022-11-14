@@ -396,23 +396,33 @@ Parameters are passed from New.
 		return
 	var/client/usr_client = usr.client
 	var/list/paramslist = list()
-	if(href_list["statpanel_item_middleclick"])
-		paramslist["middle"] = "1"
-	if(href_list["statpanel_item_shiftclick"])
-		paramslist["shift"] = "1"
-	if(href_list["statpanel_item_ctrlclick"])
-		paramslist["ctrl"] = "1"
-	if(href_list["statpanel_item_altclick"])
-		paramslist["alt"] = "1"
-	if(href_list["desc_lore"])
-		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
-		onclose(usr, "[name]")
+
 	if(href_list["statpanel_item_click"])
-		// first of all make sure we valid
+		switch(href_list["statpanel_item_click"])
+			if("left")
+				paramslist[LEFT_CLICK] = "1"
+			if("right")
+				paramslist[RIGHT_CLICK] = "1"
+			if("middle")
+				paramslist[MIDDLE_CLICK] = "1"
+			else
+				return
+
+		if(href_list["statpanel_item_shiftclick"])
+			paramslist[SHIFT_CLICK] = "1"
+		if(href_list["statpanel_item_ctrlclick"])
+			paramslist[CTRL_CLICK] = "1"
+		if(href_list["statpanel_item_altclick"])
+			paramslist[ALT_CLICK] = "1"
+
 		var/mouseparams = list2params(paramslist)
 		usr_client.ignore_next_click = FALSE
 		usr_client.Click(src, loc, TRUE, mouseparams)
 		return TRUE
+
+	if(href_list["desc_lore"])
+		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
+		onclose(usr, "[name]")
 
 ///This proc is called on atoms when they are loaded into a shuttle
 /atom/proc/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)

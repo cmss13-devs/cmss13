@@ -558,6 +558,7 @@
 		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(alien_weeds.loc)
 		the_replacer.hivenumber = X.hivenumber
 		the_replacer.linked_hive = X.hive
+		set_hive_data(the_replacer, X.hivenumber)
 		qdel(alien_weeds)
 
 	X.use_plasma(plasma_cost)

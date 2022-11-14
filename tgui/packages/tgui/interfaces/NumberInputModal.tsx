@@ -1,9 +1,9 @@
-import { KEY_ENTER, KEY_ESCAPE } from 'common/keycodes';
+import { Loader } from './common/Loader';
+import { InputButtons } from './common/InputButtons';
+import { KEY_ENTER, KEY_ESCAPE } from '../../common/keycodes';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, RestrictedInput, Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { Loader } from './common/Loader';
-import { InputButtons } from './common/InputButtons';
 
 type NumberInputData = {
   init_value: number;
@@ -15,7 +15,7 @@ type NumberInputData = {
   title: string;
 };
 
-export const NumberInputModal = (_, context) => {
+export const NumberInputModal = (props, context) => {
   const { act, data } = useBackend<NumberInputData>(context);
   const { init_value, large_buttons, message = '', timeout, title } = data;
   const [input, setInput] = useLocalState(context, 'input', init_value);

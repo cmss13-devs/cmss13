@@ -555,6 +555,16 @@
 		to_chat(X, SPAN_XENOWARNING("This is too close to a fruit!"))
 		return
 
+	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
+		to_chat(X, SPAN_NOTICE("You start uprooting the node so you can put the resin hole in its place..."))
+		if(!do_after(X, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
+			return
+		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(alien_weeds.loc)
+		the_replacer.hivenumber = X.hivenumber
+		the_replacer.linked_hive = X.hive
+		set_hive_data(the_replacer, X.hivenumber)
+		qdel(alien_weeds)
+
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, "alien_resin_build", 25)
 	new /obj/effect/alien/resin/trap(X.loc, X)
@@ -910,10 +920,6 @@
 	if(!check_and_use_plasma_owner())
 		return FALSE
 
-	if(stabbing_xeno.behavior_delegate)
-		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
-		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
-
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
 	if(blunt_stab)
@@ -927,7 +933,13 @@
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, "tail")
 
-	var/damage = stabbing_xeno.melee_damage_upper * 1.2
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * 1.2
+
+	if(stabbing_xeno.behavior_delegate)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
+		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
+
 	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
 	target.Daze(3)
 	shake_camera(target, 2, 1)

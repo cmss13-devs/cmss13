@@ -31,6 +31,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
 	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
 	/client/proc/toggledebuglogs,
+	/client/proc/togglestatpanelsplit,
 	/client/proc/togglenichelogs,
 	/datum/admins/proc/player_notes_show,
 	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
@@ -345,7 +346,7 @@ var/list/roundstart_mod_verbs = list(
 
 /client/proc/game_panel()
 	set name = "Game Panel"
-	set category = "Admin.Game"
+	set category = "Admin.Panels"
 	if(admin_holder)
 		admin_holder.Game()
 	return
@@ -516,6 +517,15 @@ var/list/roundstart_mod_verbs = list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get debug log messages."))
 
+// TODO Port this to Statpanel Options Window probably
+/client/proc/togglestatpanelsplit()
+	set name = "Toggle Split Tabs"
+	set category = "Preferences"
+	prefs.toggles_admin ^= SPLIT_ADMIN_TABS
+	if(prefs.toggles_chat & SPLIT_ADMIN_TABS)
+		to_chat(usr, SPAN_BOLDNOTICE("You enabled split admin tabs in Statpanel."))
+	else
+		to_chat(usr, SPAN_BOLDNOTICE("You disabled split admin tabs in Statpanel."))
 
 /client/proc/togglenichelogs()
 	set name = "Toggle Niche Log Messages"

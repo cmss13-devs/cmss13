@@ -86,7 +86,7 @@
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)
-			stat(null, eta_status)
+			stat(null, "Evacuation: [eta_status]")
 
 
 // this function displays the stations manifest in a separate window

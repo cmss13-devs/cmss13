@@ -349,6 +349,8 @@ var/list/datum/mob_hud/huds = list(
 
 	if(species && species.flags & IS_SYNTHETIC)
 		holder3.icon_state = "hudsynth" // xenos have less awareness of synth status
+		if(HAS_TRAIT(src, TRAIT_INFILTRATOR_SYNTH))
+			return FALSE
 		if(stat != DEAD)
 			holder.icon_state = "hudsynth"
 			holder2.icon_state = "hudsynth"

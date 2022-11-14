@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			return
 
 	var/stl = CONFIG_GET(number/second_topic_limit)
-	if (!admin_holder && stl)
+	if (!admin_holder && stl && href_list["window_id"] != "statbrowser")
 		var/second = round(world.time, 10)
 		if (!topiclimiter)
 			topiclimiter = new(LIMITER_SIZE)

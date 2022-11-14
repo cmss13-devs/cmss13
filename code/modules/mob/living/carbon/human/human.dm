@@ -322,12 +322,12 @@
 		return ""
 
 	switch(species.name)
-		if("Human","Human Hero")
+		if("Horror","Yautja")
+			return ""
+		else
 			var/obj/item/card/id/id = wear_id
 			if(istype(id))
 				. = get_paygrades(id.paygrade, size, gender)
-		else
-			return ""
 
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere

@@ -72,3 +72,92 @@
 		PROPERTY_HYPERDENSIFICATING = 1,
 		PROPERTY_ORGANSTABILIZE = 1,
 	)
+
+///////////////////////////////////////////Xeno stims////////////////////////////////////////////////////////////
+
+/datum/reagent/stimulant/purple_plasma_stim
+	name = "Purple Plasma Stim"
+	id = "purple_plasma_stim"
+	description = "An experimental xeno-stim taken from the Drone strains. It simulates the properties of xeno resin by gently soothing and repairing damage suffered."
+	color = "#a65d7f"
+	properties = list(
+		PROPERTY_MUSCLESTIMULATING = 5,
+		PROPERTY_PAINKILLING = 5, //Tramadol
+		PROPERTY_REPAIRING = 2,
+		PROPERTY_ANTITOXIC = 2, //Dylovane
+		PROPERTY_ANTICORROSIVE = 2, //Kelotane
+		PROPERTY_NEOGENETIC = 2, //Bicaridine
+		PROPERTY_HEMOGENIC = 2,
+	)
+
+/datum/reagent/stimulant/pheromone_plasma_stim
+	name = "Pheromone Plasma Stim"
+	id = "pheromone_plasma_stim"
+	description = "An experimental xeno-stim taken from the strong pheromone-producing castes. It simulates the properties of xeno pheromones."
+	color = "#a2e7d6"
+	properties = list(
+		PROPERTY_MUSCLESTIMULATING = 5,
+		PROPERTY_PAINKILLING = 8,
+		PROPERTY_ANTITOXIC = 5,
+		PROPERTY_ANTICORROSIVE = 5,
+		PROPERTY_NEOGENETIC = 5,
+		PROPERTY_HEMOGENIC = 2,
+		PROPERTY_HYPERDENSIFICATING = 1,
+	)
+
+/datum/reagent/stimulant/chitin_plasma_stim
+	name = "Chitin Plasma Stim"
+	id = "chitin_plasma_stim"
+	description = "An experimental xeno-stim taken from the Defender strains. It heals broken bones and prevents new internal damage from forming."
+	color = "#6d7694"
+	properties = list(
+		PROPERTY_BONEMENDING = 5,
+		PROPERTY_HYPERDENSIFICATING = 1,
+		PROPERTY_ORGANSTABILIZE = 1,
+	)
+
+/datum/reagent/stimulant/catecholamine_plasma_stim
+	name = "Catecholamine Plasma Stim"
+	id = "catecholamine_plasma_stim"
+	description = "An experimental xeno-stim taken from the Runner strains. It speeds up user's reflexes."
+	color = "#cf7551"
+	properties = list(
+		PROPERTY_MUSCLESTIMULATING = 20,
+		PROPERTY_NERVESTIMULATING = 10,
+	)
+
+/datum/reagent/stimulant/egg_plasma_stim
+	name = "Egg Plasma Stim"
+	id = "egg_plasma_stim"
+	description = "An experimental xeno-stim taken from the eggs. It repairs user's organs."
+	color = "#c3c371"
+	properties = list(
+		PROPERTY_ORGAN_HEALING = 1,
+	)
+
+/datum/reagent/stimulant/neurotoxin_plasma_stim
+	name = "Neurotoxin Plasma Stim"
+	id = "neurotoxin_plasma_stim"
+	description = "An experimental xeno-stim taken from the Sentinel strains. It speeds up and regenerates neural pathways in the brain and eyes."
+	color = "#ba8216"
+	properties = list(
+		PROPERTY_NERVESTIMULATING = 20,
+		PROPERTY_NEUROPEUTIC = 1,
+		PROPERTY_OCULOPEUTIC = 1,
+		PROPERTY_NEUROSHIELDING = 1,
+	)
+
+/datum/reagent/stimulant/royal_plasma_stim
+	name = "Royal Plasma Stim"
+	id = "royal_plasma_stim"
+	description = "An experimental xeno-stim taken from the Queen's blood. It is very potent and makes its users feel invincible."
+	color = "#ffeb9c"
+	properties = list(
+		PROPERTY_NERVESTIMULATING = 10,
+		PROPERTY_MUSCLESTIMULATING = 10,
+		PROPERTY_PAINKILLING = 100,
+		PROPERTY_BONEMENDING = 10,
+		PROPERTY_ORGAN_HEALING = 10,
+		PROPERTY_HYPERDENSIFICATING = 1,
+		PROPERTY_ORGANSTABILIZE = 1,
+	)

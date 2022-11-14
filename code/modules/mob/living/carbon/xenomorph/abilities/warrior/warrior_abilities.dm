@@ -26,6 +26,7 @@
 	var/fling_distance = 4
 	var/stun_power = 1
 	var/weaken_power = 1
+	var/click_miss_cooldown = 6
 	var/slowdown = FALSE
 
 

@@ -537,25 +537,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/proc/get_listed_products(var/mob/user)
 	return listed_products
 
-/obj/structure/machinery/cm_vending/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(inoperable())
-		return
-	if(usr.is_mob_incapacitated())
-		return
-
-	if (in_range(src, usr) && isturf(loc) && ishuman(usr))
-		usr.set_interaction(src)
-		if(href_list["vend"])
-			return
-		add_fingerprint(usr)
-		ui_interact(usr) //updates the nanoUI window
-
-/obj/structure/machinery/cm_vending/proc/handle_topic(mob/user, href, href_list)
-	return
-
 /obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, var/display=TRUE)
 	if(!hacked)
 		if(!allowed(user))
@@ -652,11 +633,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
-	var/list/corresponding_types_list = GLOB.cm_vending_gear_corresponding_types_list
+	var/list/corresponding_types_list
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
 	populate_product_list(1.2)
+	corresponding_types_list = GLOB.cm_vending_gear_corresponding_types_list
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)

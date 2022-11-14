@@ -4,14 +4,14 @@
 /datum/keybinding/client/communication/say
 	hotkey_keys = list("T")
 	classic_keys = list("F3")
-	name = "Say"
+	name = SAY_CHANNEL
 	full_name = "IC Say"
 	keybind_signal = COMSIG_KB_CLIENT_SAY_DOWN
 
 /datum/keybinding/client/communication/ooc
 	hotkey_keys = list("O")
 	classic_keys = list("F2")
-	name = "OOC"
+	name = OOC_CHANNEL
 	full_name = "Out Of Character Say (OOC)"
 	keybind_signal = COMSIG_KB_CLIENT_OOC_DOWN
 
@@ -25,7 +25,7 @@
 /datum/keybinding/client/communication/me
 	hotkey_keys = list("M")
 	classic_keys = list("F4")
-	name = "Me"
+	name = ME_CHANNEL
 	full_name = "Custom Emote (/Me)"
 	keybind_signal = COMSIG_KB_CLIENT_ME_DOWN
 
@@ -36,3 +36,8 @@
 	full_name = "IC Whisper"
 	keybind_signal = COMSIG_KB_CLIENT_WHISPER_DOWN
 
+/datum/keybinding/client/communication/radiochannels
+	hotkey_keys = list("Y")
+	name = COMMS_CHANNEL
+	full_name = "IC Comms (;)"
+	keybind_signal = COMSIG_KG_CLIENT_RADIO_DOWN

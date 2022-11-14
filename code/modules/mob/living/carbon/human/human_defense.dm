@@ -257,6 +257,11 @@ Contains most of the procs that are called when a mob is attacked by something
 		if (weapon_sharp && prob(3) && !isYautja(user)) // make yautja less likely to get their weapon stuck
 			affecting.embed(I)
 
+	if(damage > 10)
+		if(ishuman(user))
+			var/mob/living/carbon/human/human = user
+			human.force_say(user)
+
 	return TRUE
 
 //this proc handles being hit by a thrown atom

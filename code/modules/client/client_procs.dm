@@ -281,6 +281,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
+	tgui_say = new(src, "tgui_say")
 
 	// Change the way they should download resources.
 	var/static/next_external_rsc = 0
@@ -371,6 +372,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	addtimer(CALLBACK(src, .proc/check_panel_loaded), 30 SECONDS)
 
 	tgui_panel.initialize()
+	tgui_say.initialize()
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
 	CEI.show_player_event_info(src)
@@ -651,8 +653,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if(SAY_CHANNEL)
 					var/say = tgui_say_create_open_command(SAY_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
-				if(RADIO_CHANNEL)
-					var/radio = tgui_say_create_open_command(RADIO_CHANNEL)
+				if(COMMS_CHANNEL)
+					var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
 				if(ME_CHANNEL)
 					var/me = tgui_say_create_open_command(ME_CHANNEL)

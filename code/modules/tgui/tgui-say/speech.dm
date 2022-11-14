@@ -35,7 +35,7 @@
 		if(SAY_CHANNEL)
 			client.mob.say_verb(entry)
 			return TRUE
-		if(RADIO_CHANNEL)
+		if(COMMS_CHANNEL)
 			client.mob.say_verb(";" + entry)
 			return TRUE
 		if(ME_CHANNEL)

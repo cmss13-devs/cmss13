@@ -1,18 +1,18 @@
 /** Radio channels */
-export const CHANNELS = ['Say', 'Radio', 'Me', 'OOC'] as const;
+export const CHANNELS = ['Say', 'Comms', 'Me', 'OOC'] as const;
 
 /** Window sizes in pixels */
 export enum WINDOW_SIZES {
   small = 30,
   medium = 50,
   large = 70,
-  width = 231,
+  width = 331,
 }
 
 /** Line lengths for autoexpand */
 export enum LINE_LENGTHS {
-  small = 20,
-  medium = 35,
+  small = 30,
+  medium = 60,
 }
 
 /**
@@ -23,51 +23,79 @@ export enum LINE_LENGTHS {
  */
 export const RADIO_PREFIXES = {
   ':a ': {
-    id: 'hive',
-    label: 'Hive',
+    id: 'alpha',
+    label: 'Alpha',
   },
   ':b ': {
-    id: 'binary',
-    label: '0101',
+    id: 'bravo',
+    label: 'Bravo',
   },
   ':c ': {
-    id: 'command',
-    label: 'Cmd',
+    id: 'charlie',
+    label: 'Charlie',
+  },
+  ':d ': {
+    id: 'delta',
+    label: 'Delta',
   },
   ':e ': {
+    id: 'echo',
+    label: 'Echo',
+  },
+  ':m ': {
+    id: 'medsci',
+    label: 'MedSci',
+  },
+  ':f ': {
+    id: 'foxtrot',
+    label: 'Foxtrot',
+  },
+  ':o ': {
+    id: 'cct',
+    label: 'CCT',
+  },
+  ':n ': {
     id: 'engi',
     label: 'Engi',
   },
-  ':m ': {
-    id: 'medical',
-    label: 'Med',
+  ':g ': {
+    id: 'ship',
+    label: 'Ship',
   },
-  ':n ': {
-    id: 'science',
-    label: 'Sci',
-  },
-  ':o ': {
-    id: 'ai',
-    label: 'AI',
-  },
-  ':s ': {
+  ':p ': {
     id: 'security',
-    label: 'Sec',
-  },
-  ':t ': {
-    id: 'syndicate',
-    label: 'Syndi',
+    label: 'MP',
   },
   ':u ': {
-    id: 'supply',
-    label: 'Supp',
+    id: 'req',
+    label: 'Req',
   },
-  ':v ': {
-    id: 'service',
-    label: 'Svc',
+  ':j ': {
+    id: 'jtac',
+    label: 'JTAC',
+  },
+  ':t ': {
+    id: 'intel',
+    label: 'Int',
   },
   ':y ': {
-    id: 'centcom',
-    label: 'CCom',
+    id: 'wy',
+    label: 'W-Y',
+  },
+  ':v ': {
+    id: 'command',
+    label: 'Comm.',
+  },
+  ':z ': {
+    id: 'highcom',
+    label: 'HC',
+  },
+  ':q ': {
+    id: 'hive',
+    label: 'Hive',
+  },
+  ':k ': {
+    id: 'sof',
+    label: 'SOF',
   },
 } as const;

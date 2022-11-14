@@ -652,95 +652,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
-	var/list/corresponding_types_list = list(
-		/obj/item/ammo_box/magazine/mod88/empty = /obj/item/ammo_box/magazine/mod88,
-		/obj/item/ammo_box/magazine/m4a3/empty = /obj/item/ammo_box/magazine/m4a3,
-		/obj/item/ammo_box/magazine/m4a3/ap/empty = /obj/item/ammo_box/magazine/m4a3/ap,
-		/obj/item/ammo_box/magazine/m4a3/hp/empty = /obj/item/ammo_box/magazine/m4a3/hp,
-		/obj/item/ammo_box/magazine/su6/empty = /obj/item/ammo_box/magazine/su6,
-		/obj/item/ammo_box/magazine/vp78/empty = /obj/item/ammo_box/magazine/vp78,
-
-		/obj/item/ammo_box/magazine/m44/empty = /obj/item/ammo_box/magazine/m44,
-		/obj/item/ammo_box/magazine/m44/heavy/empty = /obj/item/ammo_box/magazine/m44/heavy,
-		/obj/item/ammo_box/magazine/m44/marksman/empty = /obj/item/ammo_box/magazine/m44/marksman,
-
-		/obj/item/ammo_box/magazine/m39/empty = /obj/item/ammo_box/magazine/m39,
-		/obj/item/ammo_box/magazine/m39/ext/empty = /obj/item/ammo_box/magazine/m39/ext,
-		/obj/item/ammo_box/magazine/m39/ap/empty = /obj/item/ammo_box/magazine/m39/ap,
-		/obj/item/ammo_box/magazine/m39/incen/empty = /obj/item/ammo_box/magazine/m39/incen,
-		/obj/item/ammo_box/magazine/m39/le/empty = /obj/item/ammo_box/magazine/m39/le,
-
-		/obj/item/ammo_box/magazine/l42a/empty = /obj/item/ammo_box/magazine/l42a,
-		/obj/item/ammo_box/magazine/l42a/ap/empty = /obj/item/ammo_box/magazine/l42a/ap,
-		/obj/item/ammo_box/magazine/l42a/ext/empty = /obj/item/ammo_box/magazine/l42a/ext,
-		/obj/item/ammo_box/magazine/l42a/incen/empty = /obj/item/ammo_box/magazine/l42a/incen,
-		/obj/item/ammo_box/magazine/l42a/le/empty = /obj/item/ammo_box/magazine/l42a/le,
-
-		/obj/item/ammo_box/magazine/empty = /obj/item/ammo_box/magazine,
-		/obj/item/ammo_box/magazine/ap/empty = /obj/item/ammo_box/magazine/ap,
-		/obj/item/ammo_box/magazine/explosive/empty = /obj/item/ammo_box/magazine/explosive,
-		/obj/item/ammo_box/magazine/ext/empty = /obj/item/ammo_box/magazine/ext,
-		/obj/item/ammo_box/magazine/incen/empty = /obj/item/ammo_box/magazine/incen,
-		/obj/item/ammo_box/magazine/le/empty = /obj/item/ammo_box/magazine/le,
-
-		/obj/item/ammo_box/magazine/shotgun/beanbag/empty = /obj/item/ammo_box/magazine/shotgun/beanbag,
-		/obj/item/ammo_box/magazine/shotgun/buckshot/empty = /obj/item/ammo_box/magazine/shotgun/buckshot,
-		/obj/item/ammo_box/magazine/shotgun/flechette/empty = /obj/item/ammo_box/magazine/shotgun/flechette,
-		/obj/item/ammo_box/magazine/shotgun/incendiary/empty = /obj/item/ammo_box/magazine/shotgun/incendiary,
-		/obj/item/ammo_box/magazine/shotgun/empty = /obj/item/ammo_box/magazine/shotgun,
-
-		/obj/item/ammo_box/magazine/lever_action/empty = /obj/item/ammo_box/magazine/lever_action,
-		/obj/item/ammo_box/magazine/lever_action/training/empty = /obj/item/ammo_box/magazine/lever_action/training,
-		/obj/item/ammo_box/magazine/lever_action/tracker/empty = /obj/item/ammo_box/magazine/lever_action/tracker,
-		/obj/item/ammo_box/magazine/lever_action/marksman/empty = /obj/item/ammo_box/magazine/lever_action/marksman,
-
-		/obj/item/ammo_box/rounds/smg/empty = /obj/item/ammo_box/rounds/smg,
-		/obj/item/ammo_box/rounds/smg/ap/empty = /obj/item/ammo_box/rounds/smg/ap,
-		/obj/item/ammo_box/rounds/smg/incen/empty = /obj/item/ammo_box/rounds/smg/incen,
-		/obj/item/ammo_box/rounds/smg/le/empty = /obj/item/ammo_box/rounds/smg/le,
-
-		/obj/item/ammo_box/rounds/empty = /obj/item/ammo_box/rounds,
-		/obj/item/ammo_box/rounds/ap/empty = /obj/item/ammo_box/rounds/ap,
-		/obj/item/ammo_box/rounds/incen/empty = /obj/item/ammo_box/rounds/incen,
-		/obj/item/ammo_box/rounds/le/empty = /obj/item/ammo_box/rounds/le,
-
-		/obj/item/ammo_box/magazine/M16/empty = /obj/item/ammo_box/magazine/M16,
-		/obj/item/ammo_box/magazine/M16/ap/empty = /obj/item/ammo_box/magazine/M16/ap,
-
-		/obj/item/ammo_box/magazine/misc/mre/empty = /obj/item/ammo_box/magazine/misc/mre,
-		/obj/item/ammo_box/magazine/misc/flares/empty = /obj/item/ammo_box/magazine/misc/flares,
-
-		/obj/item/stack/folding_barricade = /obj/item/stack/folding_barricade/three,
-
-		/obj/item/stack/sheet/cardboard = /obj/item/stack/sheet/cardboard/small_stack,
-		/obj/item/stack/sheet/cardboard/medium_stack = /obj/item/stack/sheet/cardboard/small_stack,
-		/obj/item/stack/sheet/cardboard/full_stack = /obj/item/stack/sheet/cardboard/small_stack,
-
-		/obj/item/stack/barbed_wire = /obj/item/stack/barbed_wire/small_stack,
-		/obj/item/stack/barbed_wire/full_stack = /obj/item/stack/barbed_wire/small_stack,
-
-		/obj/item/stack/sheet/metal = /obj/item/stack/sheet/metal/small_stack,
-		/obj/item/stack/sheet/metal/med_small_stack = /obj/item/stack/sheet/metal/small_stack,
-		/obj/item/stack/sheet/metal/medium_stack = /obj/item/stack/sheet/metal/small_stack,
-		/obj/item/stack/sheet/metal/med_large_stack = /obj/item/stack/sheet/metal/small_stack,
-		/obj/item/stack/sheet/metal/large_stack = /obj/item/stack/sheet/metal/small_stack,
-
-		/obj/item/stack/sheet/plasteel = /obj/item/stack/sheet/plasteel/small_stack,
-		/obj/item/stack/sheet/plasteel/med_small_stack = /obj/item/stack/sheet/plasteel/small_stack,
-		/obj/item/stack/sheet/plasteel/medium_stack = /obj/item/stack/sheet/plasteel/small_stack,
-		/obj/item/stack/sheet/plasteel/med_large_stack = /obj/item/stack/sheet/plasteel/small_stack,
-		/obj/item/stack/sheet/plasteel/large_stack = /obj/item/stack/sheet/plasteel/small_stack,
-
-		/obj/item/stack/sandbags_empty = /obj/item/stack/sandbags_empty/small_stack,
-		/obj/item/stack/sandbags_empty/half = /obj/item/stack/sandbags_empty/small_stack,
-		/obj/item/stack/sandbags_empty/full = /obj/item/stack/sandbags_empty/small_stack,
-
-		/obj/item/stack/sandbags = /obj/item/stack/sandbags/small_stack,
-		/obj/item/stack/sandbags/large_stack = /obj/item/stack/sandbags/small_stack,
-
-		/obj/item/storage/large_holster/machete = /obj/item/storage/large_holster/machete/full,
-
-	)
+	var/list/corresponding_types_list = GLOB.cm_vending_gear_corresponding_types_list
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
@@ -856,6 +768,98 @@ GLOBAL_LIST_EMPTY(vending_products)
 	else
 		new typepath(loc)
 	qdel(src)
+
+
+//---helper glob data
+GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
+		/obj/item/ammo_box/magazine/mod88/empty = /obj/item/ammo_box/magazine/mod88,
+		/obj/item/ammo_box/magazine/m4a3/empty = /obj/item/ammo_box/magazine/m4a3,
+		/obj/item/ammo_box/magazine/m4a3/ap/empty = /obj/item/ammo_box/magazine/m4a3/ap,
+		/obj/item/ammo_box/magazine/m4a3/hp/empty = /obj/item/ammo_box/magazine/m4a3/hp,
+		/obj/item/ammo_box/magazine/su6/empty = /obj/item/ammo_box/magazine/su6,
+		/obj/item/ammo_box/magazine/vp78/empty = /obj/item/ammo_box/magazine/vp78,
+
+		/obj/item/ammo_box/magazine/m44/empty = /obj/item/ammo_box/magazine/m44,
+		/obj/item/ammo_box/magazine/m44/heavy/empty = /obj/item/ammo_box/magazine/m44/heavy,
+		/obj/item/ammo_box/magazine/m44/marksman/empty = /obj/item/ammo_box/magazine/m44/marksman,
+
+		/obj/item/ammo_box/magazine/m39/empty = /obj/item/ammo_box/magazine/m39,
+		/obj/item/ammo_box/magazine/m39/ext/empty = /obj/item/ammo_box/magazine/m39/ext,
+		/obj/item/ammo_box/magazine/m39/ap/empty = /obj/item/ammo_box/magazine/m39/ap,
+		/obj/item/ammo_box/magazine/m39/incen/empty = /obj/item/ammo_box/magazine/m39/incen,
+		/obj/item/ammo_box/magazine/m39/le/empty = /obj/item/ammo_box/magazine/m39/le,
+
+		/obj/item/ammo_box/magazine/l42a/empty = /obj/item/ammo_box/magazine/l42a,
+		/obj/item/ammo_box/magazine/l42a/ap/empty = /obj/item/ammo_box/magazine/l42a/ap,
+		/obj/item/ammo_box/magazine/l42a/ext/empty = /obj/item/ammo_box/magazine/l42a/ext,
+		/obj/item/ammo_box/magazine/l42a/incen/empty = /obj/item/ammo_box/magazine/l42a/incen,
+		/obj/item/ammo_box/magazine/l42a/le/empty = /obj/item/ammo_box/magazine/l42a/le,
+
+		/obj/item/ammo_box/magazine/empty = /obj/item/ammo_box/magazine,
+		/obj/item/ammo_box/magazine/ap/empty = /obj/item/ammo_box/magazine/ap,
+		/obj/item/ammo_box/magazine/explosive/empty = /obj/item/ammo_box/magazine/explosive,
+		/obj/item/ammo_box/magazine/ext/empty = /obj/item/ammo_box/magazine/ext,
+		/obj/item/ammo_box/magazine/incen/empty = /obj/item/ammo_box/magazine/incen,
+		/obj/item/ammo_box/magazine/le/empty = /obj/item/ammo_box/magazine/le,
+
+		/obj/item/ammo_box/magazine/shotgun/beanbag/empty = /obj/item/ammo_box/magazine/shotgun/beanbag,
+		/obj/item/ammo_box/magazine/shotgun/buckshot/empty = /obj/item/ammo_box/magazine/shotgun/buckshot,
+		/obj/item/ammo_box/magazine/shotgun/flechette/empty = /obj/item/ammo_box/magazine/shotgun/flechette,
+		/obj/item/ammo_box/magazine/shotgun/incendiary/empty = /obj/item/ammo_box/magazine/shotgun/incendiary,
+		/obj/item/ammo_box/magazine/shotgun/empty = /obj/item/ammo_box/magazine/shotgun,
+
+		/obj/item/ammo_box/magazine/lever_action/empty = /obj/item/ammo_box/magazine/lever_action,
+		/obj/item/ammo_box/magazine/lever_action/training/empty = /obj/item/ammo_box/magazine/lever_action/training,
+		/obj/item/ammo_box/magazine/lever_action/tracker/empty = /obj/item/ammo_box/magazine/lever_action/tracker,
+		/obj/item/ammo_box/magazine/lever_action/marksman/empty = /obj/item/ammo_box/magazine/lever_action/marksman,
+
+		/obj/item/ammo_box/rounds/smg/empty = /obj/item/ammo_box/rounds/smg,
+		/obj/item/ammo_box/rounds/smg/ap/empty = /obj/item/ammo_box/rounds/smg/ap,
+		/obj/item/ammo_box/rounds/smg/incen/empty = /obj/item/ammo_box/rounds/smg/incen,
+		/obj/item/ammo_box/rounds/smg/le/empty = /obj/item/ammo_box/rounds/smg/le,
+
+		/obj/item/ammo_box/rounds/empty = /obj/item/ammo_box/rounds,
+		/obj/item/ammo_box/rounds/ap/empty = /obj/item/ammo_box/rounds/ap,
+		/obj/item/ammo_box/rounds/incen/empty = /obj/item/ammo_box/rounds/incen,
+		/obj/item/ammo_box/rounds/le/empty = /obj/item/ammo_box/rounds/le,
+
+		/obj/item/ammo_box/magazine/M16/empty = /obj/item/ammo_box/magazine/M16,
+		/obj/item/ammo_box/magazine/M16/ap/empty = /obj/item/ammo_box/magazine/M16/ap,
+
+		/obj/item/ammo_box/magazine/misc/mre/empty = /obj/item/ammo_box/magazine/misc/mre,
+		/obj/item/ammo_box/magazine/misc/flares/empty = /obj/item/ammo_box/magazine/misc/flares,
+
+		/obj/item/stack/folding_barricade = /obj/item/stack/folding_barricade/three,
+
+		/obj/item/stack/sheet/cardboard = /obj/item/stack/sheet/cardboard/small_stack,
+		/obj/item/stack/sheet/cardboard/medium_stack = /obj/item/stack/sheet/cardboard/small_stack,
+		/obj/item/stack/sheet/cardboard/full_stack = /obj/item/stack/sheet/cardboard/small_stack,
+
+		/obj/item/stack/barbed_wire = /obj/item/stack/barbed_wire/small_stack,
+		/obj/item/stack/barbed_wire/full_stack = /obj/item/stack/barbed_wire/small_stack,
+
+		/obj/item/stack/sheet/metal = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/med_small_stack = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/medium_stack = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/med_large_stack = /obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/large_stack = /obj/item/stack/sheet/metal/small_stack,
+
+		/obj/item/stack/sheet/plasteel = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/med_small_stack = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/medium_stack = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/med_large_stack = /obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/large_stack = /obj/item/stack/sheet/plasteel/small_stack,
+
+		/obj/item/stack/sandbags_empty = /obj/item/stack/sandbags_empty/small_stack,
+		/obj/item/stack/sandbags_empty/half = /obj/item/stack/sandbags_empty/small_stack,
+		/obj/item/stack/sandbags_empty/full = /obj/item/stack/sandbags_empty/small_stack,
+
+		/obj/item/stack/sandbags = /obj/item/stack/sandbags/small_stack,
+		/obj/item/stack/sandbags/large_stack = /obj/item/stack/sandbags/small_stack,
+
+		/obj/item/storage/large_holster/machete = /obj/item/storage/large_holster/machete/full,
+
+	))
 
 //---helper procs
 

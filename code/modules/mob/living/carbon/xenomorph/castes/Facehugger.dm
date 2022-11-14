@@ -140,6 +140,10 @@
 	var/did_hug = hugger.attach(human, TRUE, 0.5)
 	if(client)
 		client?.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+	if(src)
+		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[loc.loc.name]</b>"))
+	for(var/mob/dead/observer/g in GLOB.observer_list)
+		to_chat(g, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[loc.loc.name]</b>" + " (<a href='?src=\ref[g];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
 	qdel(src)
 	return did_hug
 

@@ -37,6 +37,12 @@
 	update()
 	start_processing()
 
+/obj/structure/machinery/disposal/Destroy()
+	if(contents.len)
+		eject()
+	trunk = null
+	return ..()
+
 /obj/structure/machinery/disposal/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -301,11 +307,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 			return
-
-/obj/structure/machinery/disposal/Destroy()
-	if(contents.len)
-		eject()
-	. = ..()
 
 //Update the icon & overlays to reflect mode & status
 /obj/structure/machinery/disposal/proc/update()
@@ -1245,6 +1246,10 @@
 /obj/structure/disposalpipe/trunk/LateInitialize()
 	. = ..()
 	getlinked()
+
+/obj/structure/disposalpipe/trunk/Destroy()
+	linked = null
+	return ..()
 
 /obj/structure/disposalpipe/trunk/proc/getlinked()
 	linked = null

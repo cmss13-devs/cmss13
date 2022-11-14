@@ -240,6 +240,13 @@
       (bottles, beakers, etc.). This should make chemistry work a bit more enjoyable.
   - qol: Added extra transfer amounts for Bluespace Beakers - 20, 40, 80, for those
       transfer edge cases.
+  - bugfix: Crates can no longer pick up decals.
+  - spellcheck: Fixed two small typos in Requisitions (lacking closing brackets on
+      ammo descriptions).
+  - bugfix: Placed ammo boxes now give a proper description within a neat rectangle
+      like all the other items.
+  - refactor: Tiny code refactor around ammo boxes unfolding into cardboard.
+  - qol: Empty shotgun shell boxes now unfold into cardboard when clicked.
   Unknownity:
   - rscadd: Added Infiltrator Synthetics that can be used for events, these guys are
       almost indistinguishable to humans, better watch your back in the future..

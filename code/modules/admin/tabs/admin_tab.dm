@@ -518,6 +518,8 @@
 		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_corpses'>Mass Teleport Corpses to You</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_items_by_type'>Mass Teleport Items to You by Type</A><BR>
 		<BR>
 		"}
 

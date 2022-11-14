@@ -29,7 +29,7 @@
 
 
 
-//////////////ITEMS YOU CAN MAKE THAT ARE BADASS////////////////////
+// ======== ITEMS YOU CAN MAKE THAT ARE BADASS ======== //
 
 /obj/item/XenoItem
 	name = "Strange Item"

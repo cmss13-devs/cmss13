@@ -13,7 +13,7 @@ export const Layout = (props) => {
   return (
     <div className={'theme-' + theme}>
       <div
-        className={classes(['Layout', className, ...computeBoxClassName(rest)])}
+        className={classes(['Layout', className, computeBoxClassName(rest)])}
         {...computeBoxProps(rest)}>
         {children}
       </div>
@@ -29,7 +29,7 @@ const LayoutContent = (props) => {
         'Layout__content',
         scrollable && 'Layout__content--scrollable',
         className,
-        ...computeBoxClassName(rest),
+        computeBoxClassName(rest),
       ])}
       {...computeBoxProps(rest)}>
       {children}

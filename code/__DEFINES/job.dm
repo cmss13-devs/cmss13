@@ -83,6 +83,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_STOWAWAY					"Stowaway"
 
+#define JOB_MARINE						"USCM Marine" //generic marine
 #define JOB_COLONEL						"USCM Colonel"
 #define JOB_GENERAL						"USCM General"
 
@@ -150,6 +151,10 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR				"PMC Site Director"
 #define JOB_PMC_SYNTH                   "PMC Support Synthetic"
+
+//-------- WY Goons --------//
+#define JOB_WY_GOON						"WY Corporate Security"
+#define JOB_WY_GOON_LEAD				"WY Corporate Security Lead"
 
 //---- Contractors ----//
 #define JOB_CONTRACTOR						"VAIPO Mercenary"

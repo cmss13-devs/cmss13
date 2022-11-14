@@ -910,10 +910,6 @@
 	if(!check_and_use_plasma_owner())
 		return FALSE
 
-	if(stabbing_xeno.behavior_delegate)
-		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
-		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
-
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
 	if(blunt_stab)
@@ -927,7 +923,13 @@
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, "tail")
 
-	var/damage = stabbing_xeno.melee_damage_upper * 1.2
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * 1.2
+
+	if(stabbing_xeno.behavior_delegate)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
+		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
+
 	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
 	target.Daze(3)
 	shake_camera(target, 2, 1)

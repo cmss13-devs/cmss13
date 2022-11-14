@@ -1,11 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  AnimatedNumber,
-  Button,
-  LabeledList,
-  ProgressBar,
-  Section,
-} from '../components';
+import { AnimatedNumber, Button, LabeledList, ProgressBar, Section } from '../components';
 import { BeakerContents } from './common/BeakerContents';
 import { Window } from '../layouts';
 

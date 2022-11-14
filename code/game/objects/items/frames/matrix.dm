@@ -1,6 +1,6 @@
 /obj/item/frame/matrix
 	name = "Matrix frame"
-	desc = "Assembly for dropship camera matrix, installed into weapons console. Has complex series of lenses to pass light through fluid. \nBecause fluids of the vial is spread evenly inside, it cant be removed after its been inserted. "
+	desc = "An assembly for the dropship camera matrix, installed into the weapons console. Has a complex series of lenses which allow light to pass through the fluid. \nBecause the fluids of the vial are spread evenly inside, it cannot be removed after it has been inserted. "
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "matrix"
 	matter = list("metal" = 7500)
@@ -9,10 +9,10 @@
 	var/power //power of the property
 	var/matrixcol // related to the upgrade color and zoom amount
 	var/matrixsize
-//Upgrades types
-//Matrix default - nothing, basicly what you get roundstart in CAS
-//Matrix NVG - guidance camera gets NVG filter depended on potency of the property
-//Matrix wide - gives a wider view which depends on potency of the proeprty.
+//Upgrade types
+//Matrix default - the default dropship camera system you start with
+//Matrix NVG - guidance camera gets NVG filter depending on the potency of the property
+//Matrix wide - gives a wider view which depends on the potency of the proeprty
 /obj/item/frame/matrix/attackby(var/obj/item/W, mob/user as mob)
 	switch(state)
 		if(ASSEMBLY_EMPTY)
@@ -23,8 +23,8 @@
 				to_chat(user, SPAN_NOTICE("You add the vial to the matrix, and the testing indicator lights up with green"))
 				desc = initial(desc) + "\nThe vial is installed but is not screwed."
 				var/datum/reagent/S = W.reagents.reagent_list[1]
-				if(S.get_property(PROPERTY_PHOTOSENSETIVE) && !S.get_property(PROPERTY_CRYSTALLIZATION))
-					var/datum/chem_property/G = S.get_property(PROPERTY_PHOTOSENSETIVE)
+				if(S.get_property(PROPERTY_PHOTOSENSITIVE) && !S.get_property(PROPERTY_CRYSTALLIZATION))
+					var/datum/chem_property/G = S.get_property(PROPERTY_PHOTOSENSITIVE)
 					power = G.level
 					if(power <= 3)
 						matrixcol = "#19c519"
@@ -41,10 +41,10 @@
 					upgrade = MATRIX_DEFAULT
 					return
 			else if(W.reagents.total_volume < 30)
-				to_chat(user, SPAN_WARNING("The testing indicator lights up with red! Use a full container for effectivness!"))
+				to_chat(user, SPAN_WARNING("The testing indicator lights up with red! The container requires to be fully filled!"))
 				return
 			else if (W.reagents.reagent_list.len > 1)
-				to_chat(user, SPAN_WARNING("The testing indicator lights up with red! Use pure sample."))
+				to_chat(user, SPAN_WARNING("The testing indicator lights up with red! The container requires a pure sample!"))
 
 		if(ASSEMBLY_UNLOCKED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))

@@ -11,6 +11,8 @@
 	var/surge_incremental_reduction = 3 SECONDS
 	var/mob/melting_body
 
+	var/damage_amount = 20
+
 	luminosity = 3
 
 /obj/effect/alien/resin/special/pool/update_icon()
@@ -18,9 +20,9 @@
 	overlays.Cut()
 	underlays.Cut()
 	underlays += "[icon_state]_underlay"
-	overlays += image(icon, "[icon_state]_overlay", layer = ABOVE_MOB_LAYER)
+	overlays += mutable_appearance(icon, "[icon_state]_overlay", layer = ABOVE_MOB_LAYER, plane = GAME_PLANE)
 	if(linked_hive.stored_larva)
-		overlays += "[icon_state]_bubbling"
+		overlays += mutable_appearance(icon,"[icon_state]_bubbling", layer = ABOVE_MOB_LAYER + 0.1, plane = GAME_PLANE)
 
 /obj/effect/alien/resin/special/pool/New(loc, var/hive_ref)
 	last_larva_time = world.time
@@ -185,4 +187,41 @@
 		visible_message(SPAN_XENODANGER("You hear something resembling a scream from [src] as it's destroyed!"))
 		xeno_message(SPAN_XENOANNOUNCE("Psychic pain storms throughout the hive as the spawn pool is destroyed! You will no longer gain pooled larva over time."), 3, linked_hive.hivenumber)
 		linked_hive.hijack_pooled_surge = FALSE
+
+	for(var/turf/T in range(1, src))
+		var/obj/effect/xenomorph/spray/spray = new /obj/effect/xenomorph/spray(T)
+		spray.cause_data = create_cause_data(src.name)
+
 	. = ..()
+
+/obj/effect/alien/resin/special/pool/Crossed(mob/AM)
+	. = ..()
+
+	if(!ishuman(AM) || AM.stat == DEAD)
+		return
+
+	var/mob/living/carbon/human/H = AM
+
+	H.emote("pain")
+	if(prob(20))
+		to_chat(H, SPAN_DANGER("You trip into the pool!"))
+		H.KnockDown(5)
+	do_human_damage(H)
+
+/obj/effect/alien/resin/special/pool/proc/do_human_damage(var/mob/living/carbon/human/H)
+	if(H.loc != loc)
+		return
+
+	playsound(H, get_sfx("acid_sizzle"), 30)
+	addtimer(CALLBACK(src, .proc/do_human_damage, H), 3 SECONDS, TIMER_UNIQUE)
+
+	if(H.lying)
+		for(var/i in DEFENSE_ZONES_LIVING)
+			H.apply_armoured_damage(damage_amount * 0.35, ARMOR_BIO, BURN, i)
+		return
+	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
+	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
+	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_leg")
+	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_leg")
+
+

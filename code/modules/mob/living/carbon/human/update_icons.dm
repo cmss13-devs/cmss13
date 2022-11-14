@@ -164,6 +164,7 @@ There are several things that need to be remembered:
 
 //HAIR OVERLAY
 /mob/living/carbon/human/proc/update_hair()
+	remove_overlay(HAIR_GRADIENT_LAYER)
 	remove_overlay(HAIR_LAYER)
 	remove_overlay(FACIAL_LAYER)
 
@@ -191,6 +192,20 @@ There are several things that need to be remembered:
 			hair_s.layer = -HAIR_LAYER
 			if(hair_style.do_colouration)
 				hair_s.color = list(null, null, null, null, rgb(r_hair, g_hair, b_hair))
+
+			if(grad_style)
+				var/datum/sprite_accessory/hair_gradient_style = GLOB.hair_gradient_list[grad_style]
+				if(hair_gradient_style?.icon_state && (species.name in hair_gradient_style.species_allowed))
+					var/image/gradient_overlay = new/image("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
+					var/icon/temp = icon(hair_gradient_style.icon, hair_gradient_style.icon_state)
+					var/icon/temp_hair = icon(hair_style.icon, "[hair_style.icon_state]_s")
+					temp_hair.Blend(temp, ICON_SUBTRACT)
+					gradient_overlay.icon = temp_hair
+					gradient_overlay.layer = -HAIR_GRADIENT_LAYER
+					gradient_overlay.color = list(null, null, null, null, rgb(r_gradient, g_gradient, b_gradient))
+					overlays_standing[HAIR_GRADIENT_LAYER] = gradient_overlay
+					apply_overlay(HAIR_GRADIENT_LAYER)
+
 			overlays_standing[HAIR_LAYER] = hair_s
 			apply_overlay(HAIR_LAYER)
 

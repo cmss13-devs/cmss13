@@ -317,13 +317,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/weapon/melee/claymore/mercsword/ceremonial,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman)
-	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 	specialty = "M3 Peacekeeping Pattern Armor"
 	item_state_slots = list(WEAR_JACKET = "mp")
 
 /obj/item/clothing/suit/storage/marine/MP/jacket
 	name = "\improper M3 Ceremonial Pattern Armor"
-	desc = "This ceremonial pattern is rarely seen - There's not much to it. It's the same M3-Peacekeeping armor found ontop of normal military police men and women. Nothing's changed about the armor, it's uncomfortable atop the black service jacket. This configuration is only ever seen being worn atop honor guards or for MPs providing security at formal events for the United Americas."
+	desc = "It's the same M3-Peacekeeping armor found ontop of normal military police men and women. Nothing's changed about the actual M3-P itself, it's uncomfortable while worn atop the black service jacket. This configuration is only ever seen being worn on honor guards or for MPs providing security at formal events for the United Americas."
 	icon_state = "mp_jacket"
 	specialty = "M3 Ceremonial Pattern Armor"
 	item_state_slots = list(WEAR_JACKET = "mp_jacket")
@@ -355,8 +354,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 
 /obj/item/clothing/suit/storage/marine/smartgunner
-	name = "M56 combat harness"
-	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. It has specially designed straps and reinforcement to carry the Smartgun and accessories."
+	name = "M56 Combat Harness"
+	desc = "Drawing the line between a set of armor and weapon system, the M56 Combat Harness is a truly fascinating piece of equipment within the expansive arsenal of the USCM. It was the first among USCM equipment to use a special mash, in order to maximize protection and minimize further weight with the already hefty smartgun. With a power supply built into the armor for it's sight, this connects seamlessly to a powerpack. Besides that, of note is a 'arm' attached to the front of the system meant to attach the M56A2 Smartgun. Since it's design, several other weapon systems have been conceptualized that use this same system."
 	icon_state = "8"
 	item_state = "armor"
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -385,8 +384,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 
 /obj/item/clothing/suit/storage/marine/leader
-	name = "\improper B12 pattern marine armor"
-	desc = "A lightweight suit of carbon fiber body armor built for quick movement. Designed in a lovely forest green. Use it to toggle the built-in flashlight."
+	name = "\improper B12 Pattern Armor"
+	desc = "Coming from the same program that resulted in the XM4 Pattern Armor, the B12 Pattern Armor takes a different design philosophy than that of the XM4 pattern armor - Rather than optimizing to increase vision and stowage capacity to try and increase the average survival rate, B12 takes a simple approach to how to increase marine life expectancy by simply slapping more armor atop them. Despite that, it's been carefully made out of the expensive smartgunner mesh in order to keep marines from being too encumbered after complaints from the M3-EOD armor."
 	icon_state = "7"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
@@ -395,8 +394,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "B12 pattern marine"
 
 /obj/item/clothing/suit/storage/marine/tanker
-	name = "\improper M3 pattern tanker armor"
-	desc = "A modified and refashioned suit of M3 Pattern armor designed to be worn by the loader of a USCM vehicle crew. While the suit is a bit more encumbering to wear with the crewman uniform, it offers the loader a degree of protection that would otherwise not be enjoyed."
+	name = "\improper M3 Tanker Pattern Armor"
+	desc = "A modified and refashioned suit of M3 Pattern armor designed to be worn by vehicle crewmen throughout the USCM. Many reports have come back about the discomfort caused by wearing the M3 Tanker Pattern Armor in vehicles like the Longstreet, leading to many crewmen to unofficially ditch it for their tanker jackets in the field. Nonetheless, for the crews that do keep it, there's not much of a difference from standard M3 configuration armor; other than some armor being shaved in order to allow crewmen more flexibility while manning their vehicles.
 	icon_state = "tanker"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/tanker)
 	specialty = "M3 pattern tanker"
@@ -450,7 +449,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/light/synvest
 	name = "\improper M3A1 Synthetic Utility Vest"
-	desc = "This variant of the ubiquitous M3 pattern ballistics vest has been extensively modified, providing no protection in exchange for maximum mobility and storage space. Synthetic programming compliant."
+	desc = "This variant of the ubiquitous M3 pattern ballistics vest has been extensively modified, providing no protection in exchange for maximum mobility and storage space. There's not much that's different from the standard M3-VL in this suit, other than it being compliant with synthetic programming and the rules of war."
 	icon_state = "VL_syn_camo"
 	flags_atom = NO_NAME_OVERRIDE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY|SYNTH_ALLOWED //No squad colors + can be worn by synths.
@@ -490,52 +489,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 //===========================//SPECIALIST\\================================\\
 //=======================================================================\\
 
-/obj/item/clothing/suit/storage/marine/specialist
-	name = "\improper B18 defensive armor"
-	desc = "A heavy, rugged set of armor plates for when you really, really need to not die horribly. Slows you down though.\nComes with two tricord injectors in each arm guard."
-	icon_state = "xarmor"
-	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_bomb = CLOTHING_ARMOR_VERYHIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	storage_slots = 2
-	flags_inventory = BLOCK_KNOCKDOWN
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
-	slowdown = SLOWDOWN_ARMOR_HEAVY
-	specialty = "B18 defensive"
-	unacidable = TRUE
-	var/injections = 4
-
-/obj/item/clothing/suit/storage/marine/specialist/verb/inject()
-	set name = "Create Injector"
-	set category = "Object"
-	set src in usr
-
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
-		return 0
-
-	if(!injections)
-		to_chat(usr, "Your armor is all out of injectors.")
-		return 0
-
-	if(usr.get_active_hand())
-		to_chat(usr, "Your active hand must be empty.")
-		return 0
-
-	to_chat(usr, "You feel a faint hiss and an injector drops into your hand.")
-	var/obj/item/reagent_container/hypospray/autoinjector/skillless/O = new(usr)
-	usr.put_in_active_hand(O)
-	injections--
-	playsound(src,'sound/machines/click.ogg', 15, 1)
-	return
-
 /obj/item/clothing/suit/storage/marine/M3G
 	name = "\improper M3-G4 grenadier armor"
-	desc = "A custom set of M3 armor packed to the brim with padding, plating, and every form of ballistic protection under the sun. Used exclusively by USCM Grenadiers."
+	desc = "A further development upon the already bulky set of armor made during the Canton war for EODs. This armor is not meant for EOD techs, rather, but for grenadiers operating across the many frontiers of the Americas. It expands across the significant coverage with a neck guard, meant to protect the vital carotid arteries. While bulky, it'll defintely save your life from shrapnel, bullets, you name it, really."
 	icon_state = "grenadier"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -553,7 +509,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/M3T
 	name = "\improper M3-T light armor"
-	desc = "A custom set of M3 armor designed for users of long-ranged explosive weaponry."
+	desc = "One of the many, many offshoots that've come off M3-R Recce Armor, the M3-T was designed for hunter-killer units of the USMC. These teams are meant to take out enemy armor, and were a revisiting of a 21st century concept, brought into relevance once again by the Canton war. It's lightweight, and honestly, doesn't seem like what you'd expect for a rocketeer's armor. More magnets have been designed into the armor to overall better disperse the weight of a SADAR upon an operator."
 	icon_state = "demolitionist"
 	armor_bomb = CLOTHING_ARMOR_HIGH
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -563,7 +519,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/M3S
 	name = "\improper M3-S light armor"
-	desc = "A custom set of M3 armor designed for USCM Scouts."
+	desc = "M3-S, an interesting design, if any marine designs are. Rumors say it's been reverse engineered from UPP Special Operating Forces, who allegedly all using stealthing techonlogy. Whatever the case, it's made out of a mix of smartgunner mesh, and a classified alloy in order to keep it lightweight while protecting the wearer. This armor is meant to be worn with their issued out cloaks, and allegedly limits their signature heavily on infared. "
 	icon_state = "scout_armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -575,7 +531,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/M35
 	name = "\improper M35 pyrotechnician armor"
-	desc = "A custom set of M35 armor designed for use by USCM Pyrotechnicians."
+	desc = "With the discovery of the XX-121 specimen, 'Xenomorphs', pyrotechnicians have held a revitalized role within the USCM. These technicians are often called upon to clear the thick resin hives created by Xenomorphs. Their armor is made out of a mesh that protects the body from flames, this nomex-fiber protecting them from their flames. Like a compression suit, funnily enough, the M35 has complete temperature regulation within the suit."
 	icon_state = "pyro_armor"
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
@@ -726,7 +682,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/ghillie
 	name = "\improper M45 pattern ghillie armor"
-	desc = "A lightweight ghillie camouflage suit, used by USCM snipers on recon missions. Very lightweight, but doesn't protect much."
+	desc = "A rite of passage for all scout-snipers within the USCM, one that's been going on for longer than the USCM itself has. Each ghillie suit is custom made by the sniper themselves, with usually several being made for the different enviorments they may find themselves within. Beneath the suit, is a military made fiber made to reduce it's signature on radar. A heat sink is connected into the armor, though is not integral for functionality."
 	icon_state = "ghillie_armor"
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -890,7 +846,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/sof
 	name = "\improper SOF Armor"
-	desc = "A heavily customized suit of M3 armor. Used by Marine Raiders."
+	desc = "A heavily customized suit of M3 armor. Used by Marine Raiders. This uses many techonologies spearheaded by USCM scout-snipers in order to enhance the performance of marine special forces. A temperature regulator is built into the armor in order to keep the wearer matching their surrounding temperature, and provide extra comfort levels in their extreme enviorments. While unknown publicly, whatever material this is made out of is surely worth the hefty price tag - As M3 SOF is able to protect from a massive amount of trauma. A pinnacle of USCM design."
 	icon_state = "marsoc"
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH

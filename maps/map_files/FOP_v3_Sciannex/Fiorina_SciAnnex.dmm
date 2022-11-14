@@ -855,10 +855,6 @@
 	tag = "icon-darkbrownfull2"
 	},
 /area/fiorina/tumor/aux_engi)
-"axb" = (
-/obj/item/clothing/suit/storage/marine/specialist,
-/turf/open/floor/plating/prison,
-/area/fiorina/oob)
 "axi" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -74433,7 +74429,7 @@ bQM
 bQM
 bQM
 bQM
-axb
+fiq
 bQM
 rOa
 bQM

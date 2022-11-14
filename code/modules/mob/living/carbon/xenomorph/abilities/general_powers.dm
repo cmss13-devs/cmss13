@@ -540,10 +540,6 @@
 		to_chat(X, SPAN_WARNING("These weeds don't belong to your hive!"))
 		return
 
-	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
-		to_chat(X, SPAN_WARNING("You can't place a resin hole on a resin node!"))
-		return
-
 	if(!X.check_alien_construction(T,check_doors=TRUE))
 		return
 

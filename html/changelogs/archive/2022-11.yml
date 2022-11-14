@@ -259,3 +259,4 @@
   kugamo:
   - bugfix: 'Fixed visual bug with dropships: having plating underneath in space and
       on lzs.'
+  - qol: Resin holes can now be placed ontop of weed nodes; replacing them.

@@ -1008,3 +1008,44 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
+
+/datum/reagent/acidic_blood_fuel
+	name = "Acidic Blood Fuel"
+	id = "acidic_blood_fuel"
+	description = "An experimental chemical made from basic xeno blood."
+	color = "#dffc00"
+	burncolor = "#dffc00"
+	burn_sprite = "dynamic"
+	properties = list()
+
+/datum/reagent/acidic_blood_fuel/New()
+	properties = list(
+		PROPERTY_INTENSITY 			= BURN_LEVEL_TIER_5,
+		PROPERTY_DURATION 			= BURN_TIME_TIER_5,
+		PROPERTY_RADIUS 			= 6,
+		PROPERTY_OXIDIZING			= 6,
+		PROPERTY_FUELING			= 7,
+		PROPERTY_FLOWING			= 2,
+	)
+	. = ..()
+
+/datum/reagent/royal_blood_fuel
+	name = "Royal Blood Fuel"
+	id = "royal_blood_fuel"
+	description = "An experimental chemical made from the royal xeno strains."
+	color = "#bbb900"
+	burncolor = "#bbb900"
+	burn_sprite = "dynamic"
+	properties = list()
+	explosive = TRUE
+	power = 0.5
+
+/datum/reagent/royal_blood_fuel/New()
+	properties = list(
+		PROPERTY_INTENSITY 			= BURN_LEVEL_TIER_5,
+		PROPERTY_DURATION 			= BURN_TIME_TIER_5,
+		PROPERTY_RADIUS 			= 6,
+		PROPERTY_FIRE_PENETRATING	= 1,
+		PROPERTY_OXIDIZING			= 10,
+	)
+	. = ..()

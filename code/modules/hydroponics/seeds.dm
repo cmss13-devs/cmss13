@@ -34,7 +34,7 @@
 	if (seed.roundstart)
 		to_chat(user, SPAN_WARNING("You can't rename basic seeds!"))
 		return
-	var/new_name = copytext(reject_bad_text(input(user,"Rename seed variety?", "Set new seed variety name", "")), 1, MAX_NAME_LEN)
+	var/new_name = copytext(reject_bad_text(tgui_input_text(user,"Rename seed variety?", "Set new seed variety name", "")), 1, MAX_NAME_LEN)
 	if (!new_name)
 		return
 	S.seed.seed_name = new_name

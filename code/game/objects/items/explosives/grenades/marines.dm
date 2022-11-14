@@ -198,7 +198,7 @@
 
 /obj/item/explosive/grenade/incendiary
 	name = "\improper M40 HIDP incendiary grenade"
-	desc = "The M40 HIDP is a small, but deceptively strong incendiary grenade designed to disrupt enemy mobility with long-lasting Type B napalm. It is set to detonate in 4 seconds."
+	desc = "The M40 High Incendiary Dual-Purpose (HIDP) is a small, but deceptively strong incendiary grenade designed to disrupt enemy mobility with long-lasting Type B napalm. It is set to detonate in 4 seconds."
 	icon_state = "grenade_fire"
 	det_time = 40
 	item_state = "grenade_fire"
@@ -305,8 +305,8 @@
 */
 
 /obj/item/explosive/grenade/smokebomb
-	name = "\improper M40 HSDP smoke grenade"
-	desc = "The M40 HSDP is a small, but powerful smoke grenade. Based off the same platform as the M40 HEDP. It is set to detonate in 2 seconds."
+	name = "\improper M40 TSDP smoke grenade"
+	desc = "The M40 Tactical Smoke Dual-Purpose (TSDP) is a small, but powerful smoke grenade. Based off the same platform as the M40 HEDP. It is set to detonate in 2 seconds."
 	icon_state = "grenade_smoke"
 	det_time = 20
 	item_state = "grenade_smoke"
@@ -328,8 +328,8 @@
 	qdel(src)
 
 /obj/item/explosive/grenade/phosphorus
-	name = "\improper M40 HPDP grenade"
-	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. It is set to detonate in 2 seconds."
+	name = "\improper M40 WPDP grenade"
+	desc = "The M40 White-Phospherous Dual-Purpose (WPDP) is a small, but powerful phosphorus grenade. It is set to detonate in 2 seconds."
 	icon_state = "grenade_phos"
 	det_time = 20
 	item_state = "grenade_phos"
@@ -340,7 +340,7 @@
 	var/smoke_radius = 3
 
 /obj/item/explosive/grenade/phosphorus/weak
-	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. Word on the block says that the HPDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
+	desc = "The M40 White-Phospherous Dual-Purpose (WPDP) is a small, but powerful phosphorus grenade. This one appears to be the newer version. Word on the block says that these doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
 
 /obj/item/explosive/grenade/phosphorus/Initialize()
 	..()

@@ -231,3 +231,7 @@
   - bugfix: Fixed tripod lights and candelabras not starting as on, fixed not being
       able to break these items and flashlights as xeno.
   - bugfix: Fixed visual bug with weeds on windows.
+2022-11-14:
+  NoKohi:
+  - admin: moved game panels from the game category to the panels category in the
+      admin tab

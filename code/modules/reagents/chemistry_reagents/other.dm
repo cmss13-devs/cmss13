@@ -1012,7 +1012,7 @@
 /datum/reagent/acidic_blood_fuel
 	name = "Acidic Blood Fuel"
 	id = "acidic_blood_fuel"
-	description = "An experimental chemical made from basic xeno blood."
+	description = "An experimental chemical made from basic xeno blood. Very thin and flammable."
 	color = "#dffc00"
 	burncolor = "#dffc00"
 	burn_sprite = "dynamic"
@@ -1030,9 +1030,9 @@
 	. = ..()
 
 /datum/reagent/royal_blood_fuel
-	name = "Royal Blood Fuel"
+	name = "Dark Acidic Blood Fuel"
 	id = "royal_blood_fuel"
-	description = "An experimental chemical made from the royal xeno strains."
+	description = "An experimental chemical made from the royal xeno strains. Will set even the fire resistant xenos ablaze!"
 	color = "#bbb900"
 	burncolor = "#bbb900"
 	burn_sprite = "dynamic"

@@ -129,10 +129,11 @@
 /datum/reagent/stimulant/egg_plasma_stim
 	name = "Egg Plasma Stim"
 	id = "egg_plasma_stim"
-	description = "An experimental xeno-stim taken from the eggs. It repairs user's organs."
+	description = "An experimental xeno-stim taken from the eggs. It repairs user's organs and stops further organ damage."
 	color = "#c3c371"
 	properties = list(
 		PROPERTY_ORGAN_HEALING = 1,
+		PROPERTY_ORGANSTABILIZE = 1,
 	)
 
 /datum/reagent/stimulant/neurotoxin_plasma_stim

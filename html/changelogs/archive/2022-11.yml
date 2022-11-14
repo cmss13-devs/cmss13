@@ -246,3 +246,6 @@
   - admin: Added a simpler way for admins to change a mob's faction, it's found in
       the player panel alongside set squad.
   - bugfix: Fixed CLF Synths visually appearing as Gen 3 synthetics
+  fira:
+  - qol: Ghosts now have a timer displaying time left to hijack end in Statpanel.
+  - bugfix: Evac timer in Status pane will now display as such.

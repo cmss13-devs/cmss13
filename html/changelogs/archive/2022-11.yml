@@ -240,3 +240,9 @@
       (bottles, beakers, etc.). This should make chemistry work a bit more enjoyable.
   - qol: Added extra transfer amounts for Bluespace Beakers - 20, 40, 80, for those
       transfer edge cases.
+  Unknownity:
+  - rscadd: Added Infiltrator Synthetics that can be used for events, these guys are
+      almost indistinguishable to humans, better watch your back in the future..
+  - admin: Added a simpler way for admins to change a mob's faction, it's found in
+      the player panel alongside set squad.
+  - bugfix: Fixed CLF Synths visually appearing as Gen 3 synthetics

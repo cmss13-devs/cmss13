@@ -2606,12 +2606,13 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza
 	filling_color = "#BAA14C"
+	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery
 	name = "Mystery Pizza"
 	desc = "Edible looking, hunger inducing, mysterious pizza."
 	slice_path = /obj/item/reagent_container/food/snacks/mysteryslice
-	bitesize = 2
+	
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery/Initialize()
 	. = ..()
 	reagents.add_reagent("bread", 15)
@@ -2627,6 +2628,7 @@
 	desc = "You go first."
 	filling_color = "#BAA14C"
 	bitesize = 2
+	
 /obj/item/reagent_container/food/snacks/mysteryslice/Initialize()
 	. = ..() // I'm not rewriting a chunk of cooking backend for this, so this just slices into random icons. Intriguing!
 	icon_state = pick("pizzamargheritaslice","meatpizzaslice","mushroompizzaslice","vegetablepizzaslice")
@@ -2642,7 +2644,6 @@
 	reagents.add_reagent("bread", 20)
 	reagents.add_reagent("cheese", 20)
 	reagents.add_reagent("tomatojuice", 6)
-	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/margheritaslice
 	name = "Margherita slice"
@@ -2663,7 +2664,6 @@
 	reagents.add_reagent("cheese", 20)
 	reagents.add_reagent("meatprotein", 10)
 	reagents.add_reagent("tomatojuice", 6)
-	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/meatpizzaslice
 	name = "Meatpizza slice"
@@ -2682,7 +2682,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 15)
 	reagents.add_reagent("mushroom", 20)
-	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/mushroompizzaslice
 	name = "Mushroompizza slice"
@@ -2703,7 +2702,6 @@
 	reagents.add_reagent("vegetable", 15)
 	reagents.add_reagent("tomatojuice", 6)
 	reagents.add_reagent("imidazoline", 12)
-	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/vegetablepizzaslice
 	name = "Vegetable pizza slice"

@@ -235,3 +235,8 @@
   NoKohi:
   - admin: moved game panels from the game category to the panels category in the
       admin tab
+  ThePiachu:
+  - rscadd: Added UI buttons that will let you Set Transfer Amounts all reagent containers
+      (bottles, beakers, etc.). This should make chemistry work a bit more enjoyable.
+  - qol: Added extra transfer amounts for Bluespace Beakers - 20, 40, 80, for those
+      transfer edge cases.

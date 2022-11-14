@@ -8,6 +8,10 @@
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 	listed_products = list()
 
+/obj/structure/machinery/cm_vending/gear/antag/Initialize()
+	. = ..()
+	vend_flags |= VEND_FACTION_THEMES
+
 /obj/structure/machinery/cm_vending/gear/antag/get_listed_products(var/mob/user)
 	. = list()
 	if(!user)
@@ -20,23 +24,15 @@
 				all_equipment += equipment
 			qdel(eq)
 		return all_equipment
+
 	var/mob/living/carbon/human/human = user
 	if(human.assigned_equipment_preset)
-		var/list/gear = human.assigned_equipment_preset.get_antag_gear_equipment()
-		return gear
+		return human.assigned_equipment_preset.get_antag_gear_equipment()
 	else
 		var/datum/equipment_preset/default = new /datum/equipment_preset/clf
-		return default.get_antag_gear_equipment()
-
-/obj/structure/machinery/cm_vending/gear/antag/ui_static_data(mob/user)
-	. = ..()
-	.["theme"] = VENDOR_THEME_COMPANY	//for potential future PMC version
-	var/mob/living/carbon/human/human = user
-	switch(human.faction)
-		if(FACTION_UPP)
-			.["theme"] = VENDOR_THEME_UPP
-		if(FACTION_CLF)
-			.["theme"] = VENDOR_THEME_CLF
+		var/list/gear = default.get_antag_gear_equipment()
+		qdel(default)
+		return gear
 
 //--------------ESSENTIALS------------------------
 

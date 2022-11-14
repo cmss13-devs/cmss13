@@ -10,6 +10,10 @@
 
 	listed_products = list()
 
+/obj/structure/machinery/cm_vending/gear/antag_guns/Initialize()
+	. = ..()
+	vend_flags |= VEND_FACTION_THEMES
+
 /obj/structure/machinery/cm_vending/gear/antag_guns/antag_guns/get_listed_products(var/mob/user)
 	var/list/factions = GLOB.faction_datums
 	if(!user)
@@ -28,17 +32,6 @@
 		listed_products[faction] = F.get_antag_guns_snowflake_equipment()
 
 	return listed_products[faction]
-
-
-/obj/structure/machinery/cm_vending/gear/antag_guns/ui_static_data(mob/user)
-	. = ..()
-	.["theme"] = VENDOR_THEME_COMPANY	//for potential future PMC version
-	var/mob/living/carbon/human/human = user
-	switch(human.faction)
-		if(FACTION_UPP)
-			.["theme"] = VENDOR_THEME_UPP
-		if(FACTION_CLF)
-			.["theme"] = VENDOR_THEME_CLF
 
 //--------------ESSENTIALS------------------------
 

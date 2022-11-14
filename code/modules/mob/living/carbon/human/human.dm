@@ -106,7 +106,7 @@
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)
-			. += eta_status
+			. += "Evacuation: [eta_status]"
 
 /mob/living/carbon/human/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
 	if(lying)

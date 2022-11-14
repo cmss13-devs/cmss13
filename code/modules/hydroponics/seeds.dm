@@ -29,9 +29,10 @@
 	var/mob/living/carbon/human/user = usr
 	var/obj/item/seeds/S = user.get_active_hand()
 	if(!istype(S))
+		to_chat(user, SPAN_WARNING("Where did you put those seeds you wanted to rename?"))
 		return
 	if (seed.roundstart)
-		to_chat(usr, SPAN_WARNING("You can't rename basic seeds!"))
+		to_chat(user, SPAN_WARNING("You can't rename basic seeds!"))
 		return
 	var/new_name = copytext(reject_bad_text(input(user,"Rename seed variety?", "Set new seed variety name", "")), 1, MAX_NAME_LEN)
 	if (!new_name)
@@ -44,7 +45,8 @@
 		if (SS.seed.uid == S.seed.uid)
 			SS.update_appearance() //updates the name
 
-	to_chat(usr, SPAN_INFO("Variety #[seed.uid] renamed to \"[new_name]\""))
+	to_chat(user, SPAN_INFO("Variety #[seed.uid] renamed to \"[new_name]\""))
+	msg_admin_niche("[user] renamed seed variety #[seed.uid] to \"[new_name]\"")
 
 
 //Grabs the appropriate seed datum from the global list.

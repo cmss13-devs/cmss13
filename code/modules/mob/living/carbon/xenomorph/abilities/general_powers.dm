@@ -540,10 +540,6 @@
 		to_chat(X, SPAN_WARNING("These weeds don't belong to your hive!"))
 		return
 
-	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
-		to_chat(X, SPAN_WARNING("You can't place a resin hole on a resin node!"))
-		return
-
 	if(!X.check_alien_construction(T))
 		return
 
@@ -554,6 +550,16 @@
 	if(locate(/obj/effect/alien/resin/fruit) in orange(1, T))
 		to_chat(X, SPAN_XENOWARNING("This is too close to a fruit!"))
 		return
+
+	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
+		to_chat(X, SPAN_NOTICE("You start uprooting the node so you can put the resin hole in its place..."))
+		if(!do_after(X, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
+			return
+		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(alien_weeds.loc)
+		the_replacer.hivenumber = X.hivenumber
+		the_replacer.linked_hive = X.hive
+		set_hive_data(the_replacer, X.hivenumber)
+		qdel(alien_weeds)
 
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, "alien_resin_build", 25)

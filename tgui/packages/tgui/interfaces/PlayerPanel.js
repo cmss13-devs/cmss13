@@ -851,6 +851,14 @@ const PhysicalActions = (props, context) => {
               disabled={!hasPermission(data, 'set_squad')}
               onClick={() => act('set_squad')}
             />
+            <Button.Confirm
+                content="Set Faction"
+                icon="clipboard-list"
+                width="100%"
+                height="100%"
+                disabled={!hasPermission(data, 'set_faction')}
+                onClick={() => act('set_faction')}
+            />
           </Stack>
         )}
         <Stack mt={1}>

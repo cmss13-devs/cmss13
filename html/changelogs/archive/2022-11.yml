@@ -189,6 +189,9 @@
       maps.
   - spellcheck: Fixes some left-behind lore-bits in contractor synthetic flavor-text
   - bugfix: WeYu secguard corpse preset should now spawn with shoes
+  Fira, harryob:
+  - refactor: ported new /tg/ tgui and statpanel. this should fix statpanel loading
+      and hopefully not break everything else.
   Git-Nivrak:
   - bugfix: Tail stab now properly applies all melee attack additional effects and
       damage
@@ -203,6 +206,8 @@
   - bugfix: Fixed mechanical battlefield executions.
   - rscdel: Deletes unused silenced ammo flag.
   - bugfix: Removes an unused variable
+  Segrain:
+  - bugfix: Paygrades once again yield correct ranks and rank pins.
   SpartanBobby:
   - rscadd: Renamed and gave a new description to "Sunglasses" now called "cheap sunglasses"
   - rscadd: Renamed and gave a new description to "Shades" now called "bimex personal
@@ -210,6 +215,15 @@
   ThePiachu:
   - rscadd: Added a small visual offset to ammo, mortar shells and grenades on the
       ground to make piles of ammunitions and explosive more visually distinct.
+  - spellcheck: WY PMC ERTs' starting text now correctly refer to the Commanding Officer
+      rather than Captain.
+  - spellcheck: Techweb for Incendiary OBs now has a comma at the end.
+  Unknownity:
+  - balance: The thick resin nest's space for construction requirements has been removed.
+  - balance: The hive is now notified that the thick resin nest is now available whenever
+      a predator is infected.
+  - bugfix: The thick resin nest's construction template has been fixed to actually
+      appear now so xenomorphs know where it is to fill it with plasma.
   fira:
   - rscadd: You can now order randomized pizza at ASRS, for special occasions or reqsreation.
   - bugfix: Added a bandaid for the broken ASRS lift animation
@@ -217,3 +231,31 @@
   - bugfix: Fixed tripod lights and candelabras not starting as on, fixed not being
       able to break these items and flashlights as xeno.
   - bugfix: Fixed visual bug with weeds on windows.
+2022-11-14:
+  NoKohi:
+  - admin: moved game panels from the game category to the panels category in the
+      admin tab
+  ThePiachu:
+  - rscadd: Added UI buttons that will let you Set Transfer Amounts all reagent containers
+      (bottles, beakers, etc.). This should make chemistry work a bit more enjoyable.
+  - qol: Added extra transfer amounts for Bluespace Beakers - 20, 40, 80, for those
+      transfer edge cases.
+  - bugfix: Crates can no longer pick up decals.
+  - spellcheck: Fixed two small typos in Requisitions (lacking closing brackets on
+      ammo descriptions).
+  - bugfix: Placed ammo boxes now give a proper description within a neat rectangle
+      like all the other items.
+  - refactor: Tiny code refactor around ammo boxes unfolding into cardboard.
+  - qol: Empty shotgun shell boxes now unfold into cardboard when clicked.
+  Unknownity:
+  - rscadd: Added Infiltrator Synthetics that can be used for events, these guys are
+      almost indistinguishable to humans, better watch your back in the future..
+  - admin: Added a simpler way for admins to change a mob's faction, it's found in
+      the player panel alongside set squad.
+  - bugfix: Fixed CLF Synths visually appearing as Gen 3 synthetics
+  fira:
+  - qol: Ghosts now have a timer displaying time left to hijack end in Statpanel.
+  - bugfix: Evac timer in Status pane will now display as such.
+  kugamo:
+  - bugfix: 'Fixed visual bug with dropships: having plating underneath in space and
+      on lzs.'

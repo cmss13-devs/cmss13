@@ -107,7 +107,7 @@
 
 /datum/equipment_preset/contractor/duty/standard
 	name = "Military Contractor (Standard)"
-	paygrade = "VAI-MERC "
+	paygrade = "VAI"
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -200,7 +200,7 @@
 
 /datum/equipment_preset/contractor/duty/heavy
 	name = "Military Contractor (Machinegunner)"
-	paygrade = "VAI-MG "
+	paygrade = "VAI-G"
 	role_comm_title = "MG"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -250,7 +250,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/duty/engi
 	name = "Military Contractor (Engineer)"
-	paygrade = "VAI-ENG "
+	paygrade = "VAI-E"
 
 	role_comm_title = "Eng"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -302,7 +302,7 @@
 
 /datum/equipment_preset/contractor/duty/medic
 	name = "Military Contractor (Medic)"
-	paygrade = "VAI-MED "
+	paygrade = "VAI-M"
 	role_comm_title = "Med"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -353,7 +353,7 @@
 
 /datum/equipment_preset/contractor/duty/leader
 	name = "Military Contractor (Leader)"
-	paygrade = "VAI-TL "
+	paygrade = "VAI-L"
 	role_comm_title = "TL"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -408,7 +408,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/duty/synth
 	name = "Military Contractor (Synthetic)"
-	paygrade = "VAI-SYN "
+	paygrade = "VAI-S"
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -501,7 +501,7 @@
 
 /datum/equipment_preset/contractor/covert/standard
 	name = "Military Contractor (Covert Standard)"
-	paygrade = "VAI-MERC "
+	paygrade = "VAI"
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -595,7 +595,7 @@
 
 /datum/equipment_preset/contractor/covert/heavy
 	name = "Military Contractor (Covert Machinegunner)"
-	paygrade = "VAI-MG "
+	paygrade = "VAI-G"
 	role_comm_title = "MG"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -648,7 +648,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/covert/engi
 	name = "Military Contractor (Covert Engineer)"
-	paygrade = "VAI-ENG "
+	paygrade = "VAI-E"
 
 	role_comm_title = "Eng"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -702,7 +702,7 @@
 
 /datum/equipment_preset/contractor/covert/medic
 	name = "Military Contractor (Covert Medic)"
-	paygrade = "VAI-MED "
+	paygrade = "VAI-M"
 	role_comm_title = "Med"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -755,7 +755,7 @@
 
 /datum/equipment_preset/contractor/covert/leader
 	name = "Military Contractor (Covert Leader)"
-	paygrade = "VAI-TL "
+	paygrade = "VAI-L"
 	role_comm_title = "TL"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -811,7 +811,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/covert/synth
 	name = "Military Contractor (Covert Synthetic)"
-	paygrade = "VAI-SYN "
+	paygrade = "VAI-S"
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 

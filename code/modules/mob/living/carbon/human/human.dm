@@ -1517,6 +1517,9 @@
 /mob/living/carbon/human/synthetic/combat/Initialize(mapload)
 	. = ..(mapload, SYNTH_COMBAT)
 
+/mob/living/carbon/human/synthetic/infiltrator/Initialize(mapload)
+	. = ..(mapload, SYNTH_INFILTRATOR)
+
 /mob/living/carbon/human/synthetic/first/Initialize(mapload)
 	. = ..(mapload, SYNTH_GEN_ONE)
 

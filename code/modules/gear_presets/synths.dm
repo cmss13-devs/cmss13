@@ -234,3 +234,72 @@
 		else
 			final_name = "Midwife [H.real_name]"
 	H.change_real_name(H, final_name)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/synth/infiltrator
+	name = "Infiltrator Synthetic"
+	flags = EQUIPMENT_PRESET_EXTRA
+	faction = FACTION_NEUTRAL
+	assignment = JOB_COLONIST
+	rank = JOB_COLONIST
+	skills = /datum/skills/infiltrator_synthetic
+	idtype = /obj/item/card/id/lanyard
+
+/datum/equipment_preset/synth/infiltrator/New()
+	. = ..()
+	access = get_all_accesses()
+
+/datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = pick(MALE,FEMALE)
+	var/random_name
+	var/first_name
+	var/last_name
+	var/datum/preferences/A = new()
+	A.randomize_appearance(H)
+	if(H.gender == MALE)
+		first_name = "[pick(first_names_male_colonist)]"
+	else
+		first_name ="[pick(first_names_female_colonist)]"
+		
+	last_name ="[pick(last_names_colonist)]"
+	random_name = "[first_name] [last_name]"
+	H.change_real_name(H, random_name)
+	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
+	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
+	var/hair_color = pick(hair_colors)
+	H.r_hair = hair_colors[hair_color][1]
+	H.g_hair = hair_colors[hair_color][2]
+	H.b_hair = hair_colors[hair_color][3]
+	H.r_facial = hair_colors[hair_color][1]
+	H.g_facial = hair_colors[hair_color][2]
+	H.b_facial = hair_colors[hair_color][3]
+	var/eye_color = pick(colors)
+	H.r_eyes = colors[eye_color][1]
+	H.g_eyes = colors[eye_color][2]
+	H.b_eyes = colors[eye_color][3]
+
+/datum/equipment_preset/synth/infiltrator/load_race(mob/living/carbon/human/H)
+	H.set_species(SYNTH_INFILTRATOR)
+
+/datum/equipment_preset/synth/infiltrator/load_skills(mob/living/carbon/human/H)
+		H.set_skills(/datum/skills/infiltrator_synthetic)
+		H.allow_gun_usage = TRUE
+
+/datum/equipment_preset/synth/infiltrator/load_gear(mob/living/carbon/human/H)
+	add_random_synth_infiltrator_equipment(H)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/nanopaste(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/nanopaste(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/nanopaste(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/handcuffs/zip(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/tranquilizer(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/butterfly(H), WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/chloroform(H), WEAR_IN_L_STORE)
+
+//*****************************************************************************************************/

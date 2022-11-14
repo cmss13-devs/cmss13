@@ -137,3 +137,14 @@
 	stun_reduction = 5.0
 
 	inherent_verbs = null
+
+// Synth used for synths posing as humans
+/datum/species/synthetic/infiltrator
+	name = SYNTH_INFILTRATOR
+	name_plural = "Infiltrator Synthetics"
+	uses_ethnicity = TRUE
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INFILTRATOR_SYNTH)
+
+	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
+
+	blood_color = "#A10808"

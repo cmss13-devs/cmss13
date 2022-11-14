@@ -395,7 +395,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 Tanker Pattern Armor"
-	desc = "A modified and refashioned suit of M3 Pattern armor designed to be worn by vehicle crewmen throughout the USCM. Many reports have come back about the discomfort caused by wearing the M3 Tanker Pattern Armor in vehicles like the Longstreet, leading to many crewmen to unofficially ditch it for their tanker jackets in the field. Nonetheless, for the crews that do keep it, there's not much of a difference from standard M3 configuration armor; other than some armor being shaved in order to allow crewmen more flexibility while manning their vehicles.
+	desc = "A modified and refashioned suit of M3 Pattern armor designed to be worn by vehicle crewmen throughout the USCM. Many reports have come back about the discomfort caused by wearing the M3 Tanker Pattern Armor in vehicles like the Longstreet, leading to many crewmen to unofficially ditch it for their tanker jackets in the field. Nonetheless, for the crews that do keep it, there's not much of a difference from standard M3 configuration armor; other than some armor being shaved in order to allow crewmen more flexibility while manning their vehicles."
 	icon_state = "tanker"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/tanker)
 	specialty = "M3 pattern tanker"

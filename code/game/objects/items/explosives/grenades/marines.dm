@@ -560,3 +560,69 @@
 	s.set_up(12, get_turf(src), metal_foam = foam_metal_type) //Metalfoam 1 for aluminum foam, 2 for iron foam (Stronger), 12 amt = 2 tiles radius (5 tile length diamond)
 	s.start()
 	qdel(src)
+
+
+
+
+/*
+//================================================
+					Special
+//================================================
+*/
+/obj/item/explosive/grenade/sebb
+	name = "\improper G2 Electroshock grenade"
+	desc = "An Armat battlefield systems G2 Electroshock grenade, otherwise known as the 'Sonic Electric Bouncing Betty' or imformally as the 'Sonic Electric Ball Breakers'. As it's name implies it can be used as a landmine or a grenade. When triggered it propels to a height of around one meter and near instantly releases a 1.2 GigaVolts sonic payload that seizes up the central nervous system while causing mild to moderate energy damage."
+	icon_state = "grenade_sebb"
+	item_state = "grenade_sebb"
+	det_time = 40
+	var/range = 5
+	var/damage = 120 // Generic Energy damage from 1.2 GV. Distance scaled
+	var/dam_range_mult = 15 // Range is multiplied by this, then damage is subracted by this
+
+/obj/item/explosive/grenade/sebb/prime()
+	//flick('icons/effects/sebb.dmi',src)
+
+	new /obj/effect/overlay/sebb(src.loc)
+	for(var/atom/thing in oview(range,src)) // special effect funnies
+		if(prob(25))
+			var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+			spark.set_up(2, 1, thing)
+			spark.start()
+	for(var/mob/living/Mob in oview(range,src))
+		var/mob_range = get_dist(src,Mob)
+		to_chat(world,mob_range)
+		var/dam_factor = mob_range * dam_range_mult
+		to_chat(world,dam_factor)
+		var/damage_applied = damage - dam_factor  //divides damage
+		if(ishuman(Mob))
+			var/mob/living/carbon/human/shockedH = Mob
+			shockedH.take_overall_armored_damage(damage_applied ,ARMOR_ENERGY,BURN, 90) // 90% chance to be on additional limbs
+			shockedH.make_dizzy(damage_applied*3)
+			shockedH.make_jittery(damage_applied*3)
+			shockedH.emote("pain")
+		else
+			Mob.apply_damage(damage_applied, BURN)
+		//Mob.KnockDown(5)  /// REMOVETHIS REMOVETHIS
+		if(!(Mob.client))	continue
+		if(mob_range < 1) // they are probably dead if human so no unique human stuff.
+			Mob.KnockDown(2)
+			Mob.Superslow(3)
+			Mob.eye_blurry = damage_applied/4
+		else
+			Mob.Slow(damage_applied/mob_range)
+			to_chat(Mob,SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))
+
+	qdel(src)
+
+/obj/effect/overlay/sebb
+	name = "Danger"
+	icon = 'icons/effects/sebb.dmi'
+	icon_state = "sebb_explode"
+	layer = ABOVE_LIGHTING_PLANE
+	var/time_to_live = 1 SECONDS
+
+	appearance_flags = RESET_COLOR|KEEP_APART
+
+
+/obj/effect/overlay/sebb/New()
+	addtimer(CALLBACK(GLOBAL_PROC,.proc/qdel,src),time_to_live)

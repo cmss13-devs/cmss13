@@ -215,6 +215,9 @@
   ThePiachu:
   - rscadd: Added a small visual offset to ammo, mortar shells and grenades on the
       ground to make piles of ammunitions and explosive more visually distinct.
+  - spellcheck: WY PMC ERTs' starting text now correctly refer to the Commanding Officer
+      rather than Captain.
+  - spellcheck: Techweb for Incendiary OBs now has a comma at the end.
   Unknownity:
   - balance: The thick resin nest's space for construction requirements has been removed.
   - balance: The hive is now notified that the thick resin nest is now available whenever
@@ -228,3 +231,7 @@
   - bugfix: Fixed tripod lights and candelabras not starting as on, fixed not being
       able to break these items and flashlights as xeno.
   - bugfix: Fixed visual bug with weeds on windows.
+2022-11-14:
+  NoKohi:
+  - admin: moved game panels from the game category to the panels category in the
+      admin tab

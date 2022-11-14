@@ -222,4 +222,3 @@
 
 	message_staff("[key_name_admin(user)][new_faction ? "" : " failed to"] set [key_name_admin(target)]'s faction to [new_faction].")
 	return TRUE
-	

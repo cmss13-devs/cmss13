@@ -61,6 +61,19 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	var/announce_hacked = TRUE
 
+	//Resin constructions that will be SMUSHED by closing doors
+	var/static/list/resin_door_shmushereds = list(
+		/obj/effect/resin_construct/door,
+		/obj/structure/mineral_door/resin,
+		/obj/structure/bed/nest,
+		/obj/effect/alien/resin/spike,
+		/obj/effect/alien/resin/acid_pillar,
+		/obj/effect/alien/resin/shield_pillar,
+		/obj/item/explosive/grenade/alien/acid,
+		/obj/structure/alien/movable_wall,
+		/turf/closed/wall/resin,
+	)
+
 /obj/structure/machinery/door/airlock/Destroy()
 	QDEL_NULL_LIST(attached_signallers)
 	return ..()
@@ -828,7 +841,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	for(var/turf/i in things_to_shmush)
 		things_to_shmush |= i.contents
 	for(var/x in things_to_shmush)
-		for(var/i in GLOB.resin_door_shmushereds)
+		for(var/i in resin_door_shmushereds)
 			if(istype(x,i)) 								//I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
 				playsound(loc, "alien_resin_break", 25)
 				visible_message(SPAN_WARNING("The [src.name] closes on the [x], shmushing it!"))

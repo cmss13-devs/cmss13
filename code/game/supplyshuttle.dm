@@ -175,7 +175,6 @@ var/datum/controller/supply/supply_controller = new()
 	data["worldtime"] = world.time
 	data["x_offset"] = x_supply
 	data["y_offset"] = y_supply
-	data["active"] = FALSE
 	data["loaded"] = loaded_crate
 	if(loaded_crate)
 		data["crate_name"] = loaded_crate.name

@@ -7714,11 +7714,7 @@
 /area/whiskey_outpost/inside/supply)
 "yG" = (
 /obj/structure/closet/secure_closet/req_officer,
-<<<<<<< Updated upstream
-/obj/item/clothing/suit/storage/marine,
-=======
 /obj/item/clothing/suit/storage/marine/faction,
->>>>>>> Stashed changes
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1

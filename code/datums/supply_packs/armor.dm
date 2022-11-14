@@ -69,7 +69,7 @@
 /datum/supply_packs/armor_rto
 	name = "M4 pattern marine armor crate (x1 helmet, x1 armor)"
 	contains = list(/obj/item/clothing/head/helmet/marine/rto,
-					/obj/item/clothing/suit/storage/marine/rto)
+					/obj/item/clothing/suit/storage/marine/xm4)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate
 	containername = "M4 pattern marine armor crate"

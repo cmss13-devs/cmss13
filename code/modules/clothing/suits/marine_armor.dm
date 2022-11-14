@@ -276,25 +276,19 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	icon_state = "6"
 	specialty = "M3 pattern smooth marine"
 
-/obj/item/clothing/suit/storage/marine/rto
+/obj/item/clothing/suit/storage/marine/xm4
 	icon_state = "io"
-	name = "\improper M4 pattern marine armor"
-	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches. Required for carrying a Radio Telephone Pack."
+	name = "\improper XM4 Pattern Armor"
+	desc = "The XM4 Pattern Armor is one of the newer armors to hit the fleet, it's being field tested nowadays by units on the edge of UA space. Developed alongside the B-Pattern Armors, the XM4 bolsters a different philosophy for increasing survival rates among the Colonial Marines. A further development on the concept started with Recon-configuration armor, XM4 is made out of the same mesh used in smartgunner-rigs in order to provide higher protection to marines while increasing flexibility. At request of FORECON, more thought has been put into a better designed storage system on the XM4 - Featuring a more expansive leather pouch attached to the armor."
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 4
 	brightness_on = 7 //slightly higher
 	specialty = "M4 pattern marine"
 
-/obj/item/clothing/suit/storage/marine/rto/intel
-	name = "\improper XM4 pattern intelligence officer armor"
-	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches."
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit, /obj/item/clothing/under/marine/officer/intel)
-	specialty = "XM4 pattern intel"
-
 /obj/item/clothing/suit/storage/marine/MP
-	name = "\improper M2 pattern MP armor"
-	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	name = "\improper M3 Peacekeeping Pattern Armor"
+	desc = "Produced in 2173, this variant of M3 armor is made for general use by marines tasked with peacekeeping duties. Being utilised both byshore patrol catching up with rowdy marines on Arcturus, or military policemen enforcing order on standard USCM vessels. It differs little from the standard M3 configuration armor, other than having a mesh, similar to that of a stab-vest being built into the armor to protect from puncturing weapons alongside the hefty ballistic protection."
 	icon_state = "mp"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -324,90 +318,19 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
-	specialty = "M2 pattern MP"
+	specialty = "M3 Peacekeeping Pattern Armor"
 	item_state_slots = list(WEAR_JACKET = "mp")
 
-/obj/item/clothing/suit/storage/marine/MP/padless
-	name = "\improper M2 pattern padless MP armor"
-	icon_state = "mp_2"
-	specialty = "M2 pattern padless MP"
-	item_state_slots = list(WEAR_JACKET = "mp_2")
-
 /obj/item/clothing/suit/storage/marine/MP/jacket
-	name = "\improper MP service jacket over M2 pattern MP armor"
-	desc = "A standard Colonial Marines M2 Pattern Chestplate with an MP service jacket worn on top. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage. Arresting Marines for breaking windows has never felt so stylish."
+	name = "\improper M3 Ceremonial Pattern Armor"
+	desc = "This ceremonial pattern is rarely seen - There's not much to it. It's the same M3-Peacekeeping armor found ontop of normal military police men and women. Nothing's changed about the armor, it's uncomfortable atop the black service jacket. This configuration is only ever seen being worn atop honor guards or for MPs providing security at formal events for the United Americas."
 	icon_state = "mp_jacket"
-	specialty = "service jacket over M2 pattern MP"
+	specialty = "M3 Ceremonial Pattern Armor"
 	item_state_slots = list(WEAR_JACKET = "mp_jacket")
-
-/obj/item/clothing/suit/storage/marine/MP/warden
-	icon_state = "warden"
-	name = "\improper M3 pattern warden MP armor"
-	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
-	specialty = "M3 pattern warden MP"
-	item_state_slots = list(WEAR_JACKET = "warden")
-
-/obj/item/clothing/suit/storage/marine/MP/warden/padless
-	name = "\improper M3 pattern padless warden MP armor"
-	icon_state = "warden_2"
-	specialty = "M3 pattern padless warden MP"
-	item_state_slots = list(WEAR_JACKET = "warden_2")
-
-/obj/item/clothing/suit/storage/marine/MP/warden/jacket
-	name = "\improper warden service jacket over M3 pattern warden MP armor"
-	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens, with a Warden service jacket worn on top. Look your best while you're escorting prisoners to their execution."
-	icon_state = "warden_jacket"
-	specialty = "warden service jacket over M3 pattern warden MP"
-	item_state_slots = list(WEAR_JACKET = "warden_jacket")
-
-/obj/item/clothing/suit/storage/marine/MP/WO
-	icon_state = "warrant_officer"
-	name = "\improper M3 pattern chief MP armor"
-	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs. Useful for letting your men know who is in charge."
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
-	specialty = "M3 pattern chief MP"
-	item_state_slots = list(WEAR_JACKET = "warrant_officer")
-
-/obj/item/clothing/suit/storage/marine/MP/WO/padless
-	name = "\improper M3 pattern padless chief MP armor"
-	icon_state = "warrant_officer_2"
-	specialty = "M3 pattern padless chief MP"
-	item_state_slots = list(WEAR_JACKET = "warrant_officer_2")
-
-/obj/item/clothing/suit/storage/marine/MP/WO/jacket
-	name = "\improper CMP service jacket over M3 pattern chief MP armor"
-	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs, with a CMP service jacket on top. Resonates with the strength of a thousand arguments with and arrests of superior officers."
-	icon_state = "warrant_officer_jacket"
-	specialty = "CMP service jacket over M3 pattern chief MP"
-	item_state_slots = list(WEAR_JACKET = "warrant_officer_jacket")
-
-/obj/item/clothing/suit/storage/marine/MP/general
-	name = "\improper M3 pattern general officer armor"
-	desc = "A well-crafted suit of M3 Pattern Armor with a gold shine. It looks very expensive, but shockingly fairly easy to carry and wear."
-	icon_state = "general"
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer/general)
-	specialty = "M3 pattern general"
-	item_state_slots = list(WEAR_JACKET = "general")
-	w_class = SIZE_MEDIUM
-
-/obj/item/clothing/suit/storage/marine/MP/SO
-	name = "\improper M3 pattern officer armor"
-	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field."
-	icon_state = "officer"
-	storage_slots = 3
-	flags_atom = null
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit, /obj/item/clothing/under/rank/chief_medical_officer)
-	specialty = "M2 pattern officer"
-	item_state_slots = list(WEAR_JACKET = "officer")
 
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.
-/obj/item/clothing/suit/storage/marine/MP/CO
+/obj/item/clothing/suit/storage/marine/CO
 	name = "\improper M3 pattern captain armor"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge."
 	icon_state = "co_officer"
@@ -422,7 +345,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
 
 
-/obj/item/clothing/suit/storage/marine/MP/CO/jacket
+/obj/item/clothing/suit/storage/marine/CO/jacket
 	name = "\improper M3 pattern captain armored coat"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge. This one has a coat over it for added warmth."
 	icon_state = "bridge_coat_armored"

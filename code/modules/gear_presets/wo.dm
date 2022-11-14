@@ -75,7 +75,7 @@
 	//uniform
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(H), WEAR_BODY)
 	//jacket
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/SO(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/CO(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/mercsword/ceremonial(H), WEAR_J_STORE)
 	//waist
 	H.equip_to_slot_or_del(new sidearmpath(H), WEAR_WAIST)
@@ -120,7 +120,7 @@
 	//uniform
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/exec(H), WEAR_BODY)
 	//jacket
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/SO(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
 	//limbs

@@ -9,14 +9,6 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/vend_fail()
 	return
 
@@ -292,14 +284,6 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/vend_fail()
 	return
 
@@ -497,14 +481,6 @@
 	icon_state = "req_attach"
 
 	vend_delay = 3
-
-/obj/structure/machinery/cm_vending/sorted/attachments/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/attachments/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
 
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return

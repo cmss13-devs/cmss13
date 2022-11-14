@@ -648,6 +648,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 	. = ..()
 	populate_product_list(1.2)
 	corresponding_types_list = GLOB.cm_vending_gear_corresponding_types_list
+	GLOB.cm_vending_vendors += src
+
+/obj/structure/machinery/cm_vending/sorted/Destroy()
+	GLOB.cm_vending_vendors -= src
+	return ..()
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)

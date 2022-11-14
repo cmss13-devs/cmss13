@@ -1062,6 +1062,10 @@
 /obj/item/storage/pouch/electronics/full/fill_preset_inventory()
 	new /obj/item/circuitboard/apc(src)
 	new /obj/item/cell/high(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)
 
 /obj/item/storage/pouch/construction
 	name = "construction pouch"

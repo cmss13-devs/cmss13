@@ -13,12 +13,7 @@ import { Icon } from '../components';
 import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from '../constants';
 import { useDebug } from '../debug';
 import { toggleKitchenSink } from '../debug/actions';
-import {
-  dragStartHandler,
-  recallWindowGeometry,
-  resizeStartHandler,
-  setWindowKey,
-} from '../drag';
+import { dragStartHandler, recallWindowGeometry, resizeStartHandler, setWindowKey } from '../drag';
 import { createLogger } from '../logging';
 import { Layout } from './Layout';
 
@@ -29,9 +24,13 @@ const DEFAULT_SIZE = [400, 600];
 export class Window extends Component {
   componentDidMount() {
     const { suspended } = useBackend(this.context);
+    const { canClose = true } = this.props;
     if (suspended) {
       return;
     }
+    Byond.winset(Byond.windowId, {
+      'can-close': Boolean(canClose),
+    });
     logger.log('mounting');
     this.updateGeometry();
   }
@@ -63,7 +62,7 @@ export class Window extends Component {
   }
 
   render() {
-    const { noClose, theme, title, children } = this.props;
+    const { canClose = true, theme, title, children, buttons } = this.props;
     const { config, suspended } = useBackend(this.context);
     const { debugLayout } = useDebug(this.context);
     const dispatch = useDispatch(this.context);
@@ -73,7 +72,8 @@ export class Window extends Component {
     const showDimmer = config.user && (
       config.user.observer
         ? config.status < UI_DISABLED
-        : config.status < UI_INTERACTIVE);
+        : config.status < UI_INTERACTIVE
+    );
     return (
       <Layout className="Window" theme={theme}>
         <TitleBar
@@ -86,8 +86,9 @@ export class Window extends Component {
             logger.log('pressed close');
             dispatch(backendSuspendStart());
           }}
-          noClose={noClose}
-        />
+          canClose={canClose}>
+          {buttons}
+        </TitleBar>
         <div
           className={classes(['Window__rest', debugLayout && 'debug-layout'])}>
           {!suspended && children}
@@ -142,9 +143,24 @@ const statusToColor = (status) => {
 };
 
 const TitleBar = (props, context) => {
-  const { className, title, status, noClose, fancy, onDragStart, onClose } =
-    props;
+  const {
+    className,
+    title,
+    status,
+    canClose,
+    fancy,
+    onDragStart,
+    onClose,
+    children,
+  } = props;
   const dispatch = useDispatch(context);
+  // prettier-ignore
+  const finalTitle = (
+    typeof title === 'string'
+    && title === title.toLowerCase()
+    && toTitleCase(title)
+    || title
+  );
   return (
     <div className={classes(['TitleBar', className])}>
       {(status === undefined && (
@@ -156,16 +172,14 @@ const TitleBar = (props, context) => {
           name="eye"
         />
       )}
-      <div className="TitleBar__title">
-        {(typeof title === 'string' &&
-          title === title.toLowerCase() &&
-          toTitleCase(title)) ||
-          title}
-      </div>
       <div
         className="TitleBar__dragZone"
         onMousedown={(e) => fancy && onDragStart(e)}
       />
+      <div className="TitleBar__title">
+        {finalTitle}
+        {!!children && <div className="TitleBar__buttons">{children}</div>}
+      </div>
       {process.env.NODE_ENV !== 'production' && (
         <div
           className="TitleBar__devBuildIndicator"
@@ -173,7 +187,7 @@ const TitleBar = (props, context) => {
           <Icon name="bug" />
         </div>
       )}
-      {!!fancy && !noClose && (
+      {Boolean(fancy && canClose) && (
         <div
           className="TitleBar__close TitleBar__clickable"
           // IE8: Synthetic onClick event doesn't work on IE8.

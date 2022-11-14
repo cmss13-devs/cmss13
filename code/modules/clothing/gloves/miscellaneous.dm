@@ -119,5 +119,5 @@
 /obj/item/clothing/gloves/white
 	name = "white gloves"
 	desc = "These look pretty fancy."
-	icon_state = "latex"
-	item_state = "lgloves"
+	icon_state = "white"
+	item_state = "white"

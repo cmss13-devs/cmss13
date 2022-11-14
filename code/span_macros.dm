@@ -64,6 +64,7 @@
 #define SPAN_INFO(X) "<span class='info'>[X]</span>"
 
 #define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+#define SPAN_USERDANGER(X) "<span class='userdanger'>[X]</span>"
 #define SPAN_HIGHDANGER(X) "<span class='highdanger'>[X]</span>"
 
 #define SPAN_CENTERBOLD(X) "<span class='centerbold'>[X]</span>"

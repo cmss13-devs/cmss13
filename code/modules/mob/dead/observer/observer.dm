@@ -321,7 +321,7 @@ Works together with spawning an observer, noted above.
 	mind = null
 
 	if(ghost.client)
-		ghost.client.init_statbrowser()
+		ghost.client.init_verbs()
 		ghost.client.change_view(world_view_size) //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0

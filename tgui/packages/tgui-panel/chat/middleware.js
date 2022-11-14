@@ -8,17 +8,7 @@ import DOMPurify from 'dompurify';
 import { storage } from 'common/storage';
 import { loadSettings, updateSettings } from '../settings/actions';
 import { selectSettings } from '../settings/selectors';
-import {
-  addChatPage,
-  changeChatPage,
-  changeScrollTracking,
-  loadChat,
-  rebuildChat,
-  removeChatPage,
-  saveChatToDisk,
-  toggleAcceptedType,
-  updateMessageCount,
-} from './actions';
+import { addChatPage, changeChatPage, changeScrollTracking, loadChat, rebuildChat, removeChatPage, saveChatToDisk, toggleAcceptedType, updateMessageCount } from './actions';
 import { MAX_PERSISTED_MESSAGES, MESSAGE_SAVE_INTERVAL } from './constants';
 import { createMessage, serializeMessage } from './model';
 import { chatRenderer } from './renderer';
@@ -85,7 +75,9 @@ export const chatMiddleware = (store) => {
   chatRenderer.events.on('scrollTrackingChanged', (scrollTracking) => {
     store.dispatch(changeScrollTracking(scrollTracking));
   });
-  setInterval(() => saveChatToStorage(store), MESSAGE_SAVE_INTERVAL);
+  setInterval(() => {
+    saveChatToStorage(store);
+  }, MESSAGE_SAVE_INTERVAL);
   return (next) => (action) => {
     const { type, payload } = action;
     if (!initialized) {

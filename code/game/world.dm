@@ -21,6 +21,11 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	internal_tick_usage = 0.2 * world.tick_lag
 	hub_password = "kMZy3U5jJHSiBQjr"
 
+#ifdef BYOND_TRACY
+	#warn BYOND_TRACY is enabled
+	prof_init()
+#endif
+
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 	var/year_string = time2text(world.realtime, "YYYY")
@@ -329,3 +334,21 @@ proc/setup_database_connection()
 /world/proc/incrementMaxZ()
 	maxz++
 	//SSmobs.MaxZChanged()
+
+/** For initializing and starting byond-tracy when BYOND_TRACY is defined
+ *	byond-tracy is a useful profiling tool that allows the user to view the CPU usage and execution time of procs as they run.
+*/
+/world/proc/prof_init()
+	var/lib
+
+	switch(world.system_type)
+		if(MS_WINDOWS)
+			lib = "prof.dll"
+		if(UNIX)
+			lib = "libprof.so"
+		else
+			CRASH("unsupported platform")
+
+	var/init = call(lib, "init")()
+	if("0" != init)
+		CRASH("[lib] init error: [init]")

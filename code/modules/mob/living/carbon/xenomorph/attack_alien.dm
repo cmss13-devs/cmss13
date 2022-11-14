@@ -71,9 +71,9 @@
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
-				damage += (M.frenzy_aura * 2)
+				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 				if(acid_damage)
-					acid_damage += (M.frenzy_aura * 2)
+					acid_damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 			M.animation_attack_on(src)
 
@@ -245,7 +245,7 @@
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
-				damage += (M.frenzy_aura * 2)
+				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 			//Somehow we will deal no damage on this attack
 			if(!damage)

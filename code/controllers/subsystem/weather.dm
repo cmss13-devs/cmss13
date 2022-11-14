@@ -147,6 +147,7 @@ SUBSYSTEM_DEF(weather)
 				subarea.overlays += curr_master_turf_overlay
 
 	update_mobs_weather()
+	update_fire_weather()
 	controller_state_lock = FALSE
 
 // Adjust our state to indicate that the weather event that WAS running is over
@@ -180,6 +181,7 @@ SUBSYSTEM_DEF(weather)
 
 	is_weather_event = FALSE
 	update_mobs_weather()
+	update_fire_weather()
 	controller_state_lock = FALSE
 	COOLDOWN_START(src, last_event_end_time, map_holder.min_time_between_events)
 
@@ -188,6 +190,21 @@ SUBSYSTEM_DEF(weather)
 		mob?.client?.soundOutput?.update_ambience(null, null, TRUE)
 		if(!is_weather_event)
 			mob.clear_fullscreen("weather")
+
+/datum/controller/subsystem/weather/proc/update_fire_weather()
+	//find all the flamer_fire objects and set their weather_smothering_strength variable so they extinguish quicker
+	var/list/weather_turfs
+	for(var/area/area as anything in weather_areas)
+		for(var/area/subarea as anything in area.related)
+			weather_turfs = get_area_turfs(subarea)
+	for(var/turf/T in weather_turfs)
+		for(var/obj/O as anything in T.contents)
+			if(istype(O, /obj/flamer_fire))
+				var/obj/flamer_fire/FF = O
+				if(is_weather_event)
+					FF.weather_smothering_strength = weather_event_instance.fire_smothering_strength
+				else
+					FF.weather_smothering_strength = FALSE
 
 /obj/effect/weather_vfx_holder
 	name = "weather vfx holder"

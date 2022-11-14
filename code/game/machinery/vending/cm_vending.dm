@@ -5,6 +5,7 @@
 #define VEND_CLUTTER_PROTECTION (1<<4)
 #define VEND_CATEGORY_CHECK (1<<5)
 #define VEND_INSTANCED_CATEGORY (1<<6)
+#define VEND_FACTION_THEMES (1<<7)
 
 /obj/structure/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
@@ -583,6 +584,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 	.["vendor_name"] = name
 	.["vendor_type"] = "base"
 	.["theme"] = vendor_theme
+	if(vend_flags & VEND_FACTION_THEMES)
+		.["theme"] = VENDOR_THEME_COMPANY	//for potential future PMC version
+		var/mob/living/carbon/human/human = user
+		switch(human.faction)
+			if(FACTION_UPP)
+				.["theme"] = VENDOR_THEME_UPP
+			if(FACTION_CLF)
+				.["theme"] = VENDOR_THEME_CLF
 	.["show_points"] = show_points | use_snowflake_points
 
 /obj/structure/machinery/cm_vending/ui_assets(mob/user)

@@ -7,6 +7,9 @@
 		//Chemicals in the body
 		handle_chemicals_in_body(delta_time)
 
+	if(stat != CONSCIOUS)
+		remove_all_indicators()
+
 	//Apparently, the person who wrote this code designed it so that
 	//blinded get reset each cycle and then get activated later in the
 	//code. Very ugly. I dont care. Moving this stuff here so its easy

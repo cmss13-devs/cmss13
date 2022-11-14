@@ -136,6 +136,8 @@
 
 #define CINEMATIC_LAYER 21
 
+#define TYPING_LAYER 500
+
 #define AREAS_LAYER 999 //for areas, so they appear above everything else on map file.
 
 /*=============================*\

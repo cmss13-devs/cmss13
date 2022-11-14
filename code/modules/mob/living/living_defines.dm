@@ -90,3 +90,6 @@
 	var/list/incision_depths = DEFENSE_ZONES_LIVING
 
 	var/current_weather_effect_type
+
+	///what icon the mob uses for speechbubbles
+	var/bubble_icon = "default"

@@ -40,7 +40,6 @@
 		usr.chatWarn++
 		return
 
-	set_typing_indicator(0)
 	usr.say(message)
 	usr.talked = 1
 	addtimer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_SAY_DELAY, TIMER_UNIQUE)
@@ -66,7 +65,6 @@
 
 	message = trim(strip_html(message, MAX_EMOTE_LEN))
 
-	set_typing_indicator(0)
 	if(use_me)
 		usr.emote("me",usr.emote_type,message, TRUE)
 	else

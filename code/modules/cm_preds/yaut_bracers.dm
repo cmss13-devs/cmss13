@@ -959,9 +959,9 @@
 	if(.)
 		return
 
-	caller.set_typing_indicator(TRUE, "translator")
+	caller.create_typing_indicator()
 	var/msg = sanitize(input(caller, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
-	caller.set_typing_indicator(FALSE, "translator")
+	caller.remove_typing_indicator()
 	if(!msg || !caller.client)
 		return
 

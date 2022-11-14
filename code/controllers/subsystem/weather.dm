@@ -197,7 +197,7 @@ SUBSYSTEM_DEF(weather)
 	for(var/area/area as anything in weather_areas)
 		for(var/area/subarea as anything in area.related)
 			weather_turfs = get_area_turfs(subarea)
-	for(var/turf/T in weather_turfs)
+	for(var/turf/T as anything in weather_turfs)
 		for(var/obj/O as anything in T.contents)
 			if(istype(O, /obj/flamer_fire))
 				var/obj/flamer_fire/FF = O

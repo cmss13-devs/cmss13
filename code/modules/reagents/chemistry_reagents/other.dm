@@ -694,15 +694,11 @@
 	id = "utnapthal"
 	description = "Known as Ultra Thick Napthal Fuel, a sticky combustible liquid chemical, typically used with flamethrowers."
 	burncolor = "#EE6515"
-	properties = list()
-
-/datum/reagent/napalm/ut/New()
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_5,
 		PROPERTY_DURATION 	= BURN_TIME_TIER_2,
 		PROPERTY_RADIUS 	= 5
 	)
-	. = ..()
 
 // This is gellie fuel. Green Flames.
 /datum/reagent/napalm/gel
@@ -713,16 +709,12 @@
 	color = "#00ff00"
 	burncolor = "#00ff00"
 	burn_sprite = "green"
-	properties = list()
-	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
-
-/datum/reagent/napalm/gel/New()
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION 	= BURN_TIME_TIER_5,
 		PROPERTY_RADIUS 	= 7
 	)
-	. = ..()
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 // This is the blue flamer fuel for the pyro.
 /datum/reagent/napalm/blue
@@ -732,15 +724,11 @@
 	color = "#00b8ff"
 	burncolor = "#00b8ff"
 	burn_sprite = "blue"
-	properties = list()
-
-/datum/reagent/napalm/blue/New()
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_7,
 		PROPERTY_DURATION 	= BURN_TIME_TIER_4,
 		PROPERTY_RADIUS 	= 6
 	)
-	. = ..()
 
 // This is the green flamer fuel for the pyro.
 /datum/reagent/napalm/green
@@ -751,16 +739,12 @@
 	color = "#00ff00"
 	burncolor = "#00ff00"
 	burn_sprite = "green"
-	properties = list()
-	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
-
-/datum/reagent/napalm/green/New()
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION 	= BURN_TIME_TIER_5,
 		PROPERTY_RADIUS 	= 6
 	)
-	. = ..()
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /datum/reagent/napalm/penetrating
 	name = "Napalm EX"
@@ -769,16 +753,12 @@
 	color = "#800080"
 	burncolor = "#800080"
 	burn_sprite = "dynamic"
-	properties = list()
-
-/datum/reagent/napalm/penetrating/New()
 	properties = list(
 		PROPERTY_INTENSITY 			= BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION 			= BURN_TIME_TIER_5,
 		PROPERTY_RADIUS 			= 6,
 		PROPERTY_FIRE_PENETRATING	= 1
 	)
-	. = ..()
 
 /datum/reagent/chlorinetrifluoride
 	name = "Chlorine Trifluoride"

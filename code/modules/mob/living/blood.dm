@@ -12,7 +12,7 @@
 
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
 		//Blood regeneration if there is some space
-		if(blood_volume < BLOOD_VOLUME_NORMAL)
+		if(blood_volume < max_blood)
 			blood_volume += 0.1 // regenerate blood VERY slowly
 
 		var/b_volume = blood_volume
@@ -70,8 +70,8 @@
 /mob/living/carbon/Xenomorph/handle_blood()
 	if(stat != DEAD) //Only living xenos regenerate blood
 		//Blood regeneration if there is some space
-		if(blood_volume < BLOOD_VOLUME_NORMAL)
-			blood_volume = min(blood_volume + 1, BLOOD_VOLUME_NORMAL)
+		if(blood_volume < max_blood)
+			blood_volume = min(blood_volume + 1, max_blood)
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/proc/drip(amt)

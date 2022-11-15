@@ -781,9 +781,9 @@
 	for(var/i in 1 to W.hold.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
 	//jacket
-	var/obj/item/clothing/suit/storage/marine/sof = new()
-	H.equip_to_slot_or_del(sof, WEAR_JACKET)
-	for(var/i in 1 to sof.storage_slots)
+	var/obj/item/clothing/suit/storage/marine/sof/armor = new()
+	H.equip_to_slot_or_del(armor, WEAR_JACKET)
+	for(var/i in 1 to armor.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/m40_sd, WEAR_J_STORE)
 	//waist

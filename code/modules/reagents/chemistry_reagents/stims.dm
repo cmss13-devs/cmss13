@@ -15,11 +15,10 @@
 	// Stimulants drain faster for each stimulant in the drug.
 	// Having 2 stimulants means the duration will be 2x shorter, having 3 will be 3x shorter, etc
 	if(holder)
-		for(var/i in holder.reagent_list)
-			if(i == src)
+		for(var/datum/reagent/R in holder.reagent_list)
+			if(R == src)
 				continue
 
-			var/datum/reagent/R = i
 			if(R.flags & REAGENT_TYPE_STIMULANT)
 				holder.remove_reagent(R, custom_metabolism)
 

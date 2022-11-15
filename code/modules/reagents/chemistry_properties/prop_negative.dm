@@ -432,7 +432,7 @@
 		var/mob/living/carbon/human/H = M
 		H.apply_damage(potency, BRAIN)
 	to_chat(M, SPAN_WARNING("You start to go numb."))
-	M.Daze(potency * volume * POTENCY_MULTIPLIER_LOW)
+	M.apply_effect(potency * volume * POTENCY_MULTIPLIER_LOW, DAZE)
 
 /datum/chem_property/negative/hypermetabolic
 	name = PROPERTY_HYPERMETABOLIC

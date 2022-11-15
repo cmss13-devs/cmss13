@@ -4,7 +4,6 @@
  * @license MIT
  */
 
-import { sendMessage } from 'tgui/backend';
 import { pingFail, pingReply, pingSoft, pingSuccess } from './actions';
 import { PING_QUEUE_SIZE, PING_TIMEOUT } from './constants';
 
@@ -12,6 +11,7 @@ export const pingMiddleware = (store) => {
   let initialized = false;
   let index = 0;
   const pings = [];
+
   const sendPing = () => {
     for (let i = 0; i < PING_QUEUE_SIZE; i++) {
       const ping = pings[i];
@@ -22,14 +22,13 @@ export const pingMiddleware = (store) => {
     }
     const ping = { index, sentAt: Date.now() };
     pings[index] = ping;
-    sendMessage({
-      type: 'ping',
-      payload: { index },
-    });
+    Byond.sendMessage('ping', { index });
     index = (index + 1) % PING_QUEUE_SIZE;
   };
+
   return (next) => (action) => {
     const { type, payload } = action;
+
     if (!initialized) {
       initialized = true;
       sendPing();

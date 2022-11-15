@@ -164,8 +164,8 @@
 				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
 				victim.eye_blurry = max(M.eye_blurry, 25)
 				victim.eye_blind = max(M.eye_blind, 10)
-				victim.Stun(3)
-				victim.KnockDown(3)
+				victim.apply_effect(3, STUN)
+				victim.apply_effect(3, WEAKEN)
 
 /datum/reagent/frostoil
 	name = "Frost Oil"

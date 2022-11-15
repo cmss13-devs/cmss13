@@ -377,13 +377,13 @@
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 	if(prob(10))
 		to_chat(M, SPAN_HIGHDANGER("You stumble!"))
-		step(M,pick(CARDINAL_ALL_DIRS))
-		M.Daze(5) // Unable to talk and weldervision
+		step(M, pick(CARDINAL_ALL_DIRS))
+		M.apply_effect(1, DAZE) // Unable to talk and weldervision
 		M.make_jittery(25)
 		M.make_dizzy(55)
 		M.emote("pain")
-		M.apply_damage(5,TOX) // Blood toxicity
-	to_chat(M, SPAN_DANGER(pick("Your body is going numb, almost as if it is paralyzed!","Your limbs start seizing up!","You feel lightheaded!")))
+		M.apply_damage(5, TOX) // Blood toxicity
+	to_chat(M, SPAN_DANGER(pick("Your body is going numb, almost as if it is paralyzed!", "Your limbs start seizing up!", "You feel lightheaded!")))
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire
 	time_to_live = 16
@@ -427,7 +427,7 @@
 			M.emote("gasp")
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 	if (prob(20))
-		M.KnockDown(1)
+		M.apply_effect(1, WEAKEN)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))

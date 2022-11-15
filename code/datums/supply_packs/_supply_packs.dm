@@ -16,7 +16,7 @@
 #define RO_PRICE_VERY_PRICY	100
 
 //new defin for price level(Will work on replace every mention of old RO PRICE little by little.)this comment will be remove before merge is request.
-/*
+
 #define ASRS_PRICE_ZERO		0///could be remove?
 #define ASRS_PRICE_FREE		7/// processing back down the crate should give back what was spend at start.
 #define ASRS_PRICE_TEN		10
@@ -30,7 +30,6 @@
 #define ASRS_PRICE_NINTY	90
 #define ASRS_PRICE_HUNDRED	100
 
-*/
 var/list/all_supply_groups = list(
 	"Operations",
 	"Weapons",

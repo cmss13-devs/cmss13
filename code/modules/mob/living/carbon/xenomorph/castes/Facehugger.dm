@@ -143,6 +143,9 @@
 	to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[loc.loc.name]</b>"))
 	for(var/mob/dead/observer/g in GLOB.observer_list)
 		to_chat(g, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[loc.loc.name]</b>" + " (<a href='?src=\ref[g];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
+	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+		if(X.hivenumber == src.hivenumber)
+			to_chat(X, SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host at [loc.loc.name]!"))
 	qdel(src)
 	return did_hug
 

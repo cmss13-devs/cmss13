@@ -60,6 +60,7 @@
 
 #define EFFECT_FLAG_LIFE (1<<0)
 #define EFFECT_FLAG_DEFAULT (1<<1)
+#define EFFECT_FLAG_FORCE_KNOCKDOWN (1<<2)
 //Examples for future usage!
 //#define EFFECT_FLAG_EXPLOSIVE
 //#define EFFECT_FLAG_XENOMORPH
@@ -80,7 +81,7 @@
 		if(STUN)
 			Stun(effect)
 		if(WEAKEN)
-			KnockDown(effect)
+			KnockDown(effect (effect_flag & EFFECT_FLAG_FORCE_KNOCKDOWN) ? TRUE : FALSE)
 		if(PARALYZE)
 			KnockOut(effect)
 		if(DAZE)

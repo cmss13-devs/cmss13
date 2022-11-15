@@ -29,7 +29,7 @@
 		update_canmove()
 	return
 
-/mob/proc/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
+/mob/proc/SetStun(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
 	if(status_flags & CANSTUN)
 		stunned = max(amount,0)
 		stun_clock_adjustment()
@@ -37,9 +37,9 @@
 		update_canmove()
 	return
 
-/mob/proc/AdjustStunned(amount)
+/mob/proc/AdjustStun(amount)
 	if(status_flags & CANSTUN)
-		stunned = max(stunned + amount,0)		
+		stunned = max(stunned + amount,0)
 		stun_callback_check()
 		update_canmove()
 	return
@@ -49,13 +49,13 @@
 		dazed = max(max(dazed,amount),0)
 	return
 
-/mob/proc/SetDazed(amount)
+/mob/proc/SetDaze(amount)
 	if(status_flags & CANDAZE)
 		dazed = max(amount,0)
 	return
 
-/mob/proc/AdjustDazed(amount)
-	if(status_flags & CANDAZE)		
+/mob/proc/AdjustDaze(amount)
+	if(status_flags & CANDAZE)
 		dazed = max(dazed + amount,0)
 	return
 
@@ -64,13 +64,13 @@
 		slowed = max(slowed, amount, 0)
 	return
 
-/mob/proc/SetSlowed(amount)
+/mob/proc/SetSlow(amount)
 	if(status_flags & CANSLOW)
 		slowed = max(amount,0)
 	return
 
-/mob/proc/AdjustSlowed(amount)
-	SetSlowed(amount + slowed)
+/mob/proc/AdjustSlow(amount)
+	SetSlow(amount + slowed)
 	return
 
 /mob/proc/Superslow(amount)
@@ -78,13 +78,13 @@
 		superslowed = max(superslowed, amount, 0)
 	return
 
-/mob/proc/SetSuperslowed(amount)
+/mob/proc/SetSuperslow(amount)
 	if(status_flags & CANSLOW)
 		superslowed = max(amount,0)
 	return
 
-/mob/proc/AdjustSuperslowed(amount)
-	SetSuperslowed(superslowed + amount)
+/mob/proc/AdjustSuperslow(amount)
+	SetSuperslow(superslowed + amount)
 	return
 
 /mob/var/knocked_down_timer
@@ -136,7 +136,7 @@
 		update_canmove()	//updates lying, canmove and icons
 	return
 
-/mob/proc/SetKnockeddown(amount)
+/mob/proc/SetKnockDown(amount)
 	if(status_flags & CANKNOCKDOWN)
 		knocked_down = max(amount,0)
 		knockdown_clock_adjustment()
@@ -144,7 +144,7 @@
 		update_canmove()	//updates lying, canmove and icons
 	return
 
-/mob/proc/AdjustKnockeddown(amount)
+/mob/proc/AdjustKnockDown(amount)
 	if(status_flags & CANKNOCKDOWN)
 		knocked_down = max(knocked_down + amount,0)
 		knocked_down_callback_check()
@@ -162,7 +162,7 @@
 		update_canmove()	//updates lying, canmove and icons
 	return
 
-/mob/proc/SetKnockedout(amount)
+/mob/proc/SetKnockOut(amount)
 	if(status_flags & CANKNOCKOUT)
 		knocked_out = max(amount,0)
 		knockout_clock_adjustment()
@@ -170,7 +170,7 @@
 		update_canmove()	//updates lying, canmove and icons
 	return
 
-/mob/proc/AdjustKnockedout(amount)
+/mob/proc/AdjustKnockOut(amount)
 	if(status_flags & CANKNOCKOUT)
 		knocked_out = max(knocked_out + amount,0)
 		knocked_out_callback_check()

@@ -265,3 +265,10 @@
   - bugfix: 'Fixed visual bug with dropships: having plating underneath in space and
       on lzs.'
   - qol: Resin holes can now be placed ontop of weed nodes; replacing them.
+2022-11-15:
+  QuickLoad:
+  - balance: synthetic unarmed damage increased to disincentivize carrying weapons.
+  - balance: synthetics are more resistant against burns
+  carlarctg:
+  - refactor: refactored how stuns/knockdowns/etc are handled in code to allow for
+      manual cancellation without shitcode.

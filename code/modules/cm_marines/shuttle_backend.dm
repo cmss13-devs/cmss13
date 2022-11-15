@@ -628,7 +628,7 @@ qdel(src)
 	shuttle.already_moving = 0
 	// Do this after because it's expensive.
 	for (var/mob/living/L in knocked_down_mobs)
-		L.KnockDown(3)
+		L.apply_effect(3, WEAKEN)
 
 	/*
 	Commented out since it doesn't do anything with shuttle walls and the like yet.

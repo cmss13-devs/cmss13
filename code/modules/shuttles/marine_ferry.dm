@@ -546,7 +546,7 @@
 		else
 			to_chat(M, SPAN_WARNING("The floor jolts under your feet!"))
 			shake_camera(M, 10, 1)
-			M.KnockDown(3)
+			M.apply_effect(3, WEAKEN)
 
 	addtimer(CALLBACK(src, .proc/disable_latejoin), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
 
@@ -660,7 +660,7 @@
 		for(var/mob/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
 			if(isliving(M))
 				to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
-				M.KnockDown(4)
+				M.apply_effect(4, WEAKEN)
 				for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
 					if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
 						M.forceMove(T)

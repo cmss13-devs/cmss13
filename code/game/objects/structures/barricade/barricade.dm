@@ -112,7 +112,7 @@
 				C.visible_message(SPAN_DANGER("The barbed wire slices into [C]!"),
 				SPAN_DANGER("The barbed wire slices into you!"))
 				C.apply_damage(10)
-				C.KnockDown(2) //Leaping into barbed wire is VERY bad
+				C.apply_effect(2, WEAKEN) //Leaping into barbed wire is VERY bad
 				playsound(C, "bonk", 75, FALSE)
 	..()
 

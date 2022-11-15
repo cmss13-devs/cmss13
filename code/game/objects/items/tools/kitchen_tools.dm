@@ -213,7 +213,7 @@
 
 /obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
 	to_chat(user, SPAN_WARNING("You accidentally slam yourself with the [src]!"))
-	user.KnockDown(1)
+	user.apply_effect(1, WEAKEN)
 	user.take_limb_damage(2)
 
 	playsound(M, 'sound/items/trayhit2.ogg', 25, 1) //sound playin'

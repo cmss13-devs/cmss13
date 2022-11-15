@@ -295,7 +295,7 @@
 	for (var/mob/living/carbon/H in targets)
 		to_chat(H, SPAN_XENOHIGHDANGER("You are pulled toward [X]!"))
 
-		H.KnockDown(0.2)
+		H.apply_effect(0.2, WEAKEN)
 
 		if (LAZYLEN(targets) == 1)
 			new /datum/effects/xeno_slow(H, X, , ,25)
@@ -309,9 +309,9 @@
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, 25))
 			to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 
-			H.SetDazed(2)
+			H.set_effect(2, DAZE)
 		else if (LAZYLEN(targets) >= 3)
-			H.KnockDown(get_xeno_stun_duration(H, 1.3))
+			H.apply_effect(get_xeno_stun_duration(H, 1.3), WEAKEN)
 			to_chat(H, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [X]!"))
 
 
@@ -469,7 +469,7 @@
 
 			xeno_throw_human(H, X, facing, fling_dist)
 
-			H.KnockDown(get_xeno_stun_duration(H, 0.5))
+			H.apply_effect(get_xeno_stun_duration(H, 0.5), WEAKEN)
 			new /datum/effects/xeno_slow(H, X, ttl = get_xeno_stun_duration(H, 25))
 
 	..()
@@ -686,14 +686,14 @@
 
 	if(!xeno_smashed)
 		if (stun_duration > 0)
-			T.KnockDown(stun_duration)
+			T.apply_effect(stun_duration, WEAKEN)
 		X.visible_message(SPAN_XENODANGER("[X] trips [A] with it's tail!"), SPAN_XENODANGER("You trip [A] with your tail!"))
 		X.spin_circle()
 		X.emote("tail")
 		to_chat(T, SPAN_XENOHIGHDANGER("You are swept off your feet by [X]!"))
 
 	if (daze_duration > 0)
-		T.Daze(daze_duration)
+		T.apply_effect(daze_duration, DAZE)
 
 	apply_cooldown()
 	..()
@@ -856,12 +856,12 @@
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!"))	//marines probably should know if a xeno gets rejuvenated
 		targetXeno.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
 		targetXeno.flick_heal_overlay(3 SECONDS, "#F5007A") //therefore making the Praetorian a priority target
-		targetXeno.SetKnockedout(0)
-		targetXeno.SetStunned(0)
-		targetXeno.SetKnockeddown(0)
-		targetXeno.SetDazed(0)
-		targetXeno.SetSlowed(0)
-		targetXeno.SetSuperslowed(0)
+		targetXeno.set_effect(0, PARALYZE)
+		targetXeno.set_effect(0, STUN)
+		targetXeno.set_effect(0, WEAKEN)
+		targetXeno.set_effect(0, DAZE)
+		targetXeno.set_effect(0, SLOW)
+		targetXeno.set_effect(0, SUPERSLOW)
 		use_plasma = TRUE
 	if (use_plasma)
 		use_plasma_owner()

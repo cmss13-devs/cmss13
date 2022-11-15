@@ -399,7 +399,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	var/fire_variant = FIRE_VARIANT_DEFAULT
 
-	var/weather_smothering_strength = FALSE
+	var/weather_smothering_strength = 0
 
 /obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C, var/fuel_pressure = 1, var/fire_type = FIRE_VARIANT_DEFAULT)
 	. = ..()
@@ -663,6 +663,14 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.
 
 	firelevel -= 2 + weather_smothering_strength //reduce the intensity by 2 as default or more if in weather ---- weather_smothering_strength is set as /datum/weather_event's fire_smothering_strength
+
+	if(SSweather.is_weather_event)
+		var/area/A = get_area(src)
+		if(A in SSweather.weather_areas)
+			weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
+	else if(weather_smothering_strength)
+		weather_smothering_strength = 0
+
 	return
 
 /proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", var/aerial_flame_level)

@@ -50,6 +50,11 @@ SUBSYSTEM_DEF(weather)
 	for(var/area/A in all_areas)
 		if(A == A.master && A.weather_enabled && map_holder.should_affect_area(A))
 			weather_areas += A
+	var/list/related_weather_areas
+	for(var/area/A in weather_areas)
+		for(var/area/AA in A.related)
+			related_weather_areas |= AA
+	weather_areas |= related_weather_areas
 
 	curr_master_turf_overlay = new /obj/effect/weather_vfx_holder
 	if (map_holder.no_weather_turf_icon_state)
@@ -143,11 +148,9 @@ SUBSYSTEM_DEF(weather)
 	curr_master_turf_overlay.alpha = weather_event_instance.turf_overlay_alpha
 	for(var/area/area as anything in weather_areas)
 		if(area.weather_enabled)
-			for(var/area/subarea as anything in area.related)
-				subarea.overlays += curr_master_turf_overlay
+			area.overlays += curr_master_turf_overlay
 
 	update_mobs_weather()
-	update_fire_weather()
 	controller_state_lock = FALSE
 
 // Adjust our state to indicate that the weather event that WAS running is over
@@ -166,8 +169,7 @@ SUBSYSTEM_DEF(weather)
 		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] ending after [weather_event_instance.length] ds."))
 
 	for(var/area/area as anything in weather_areas)
-		for(var/area/subarea as anything in area.related)
-			subarea.overlays -= curr_master_turf_overlay
+		area.overlays -= curr_master_turf_overlay
 
 	if (map_holder.no_weather_turf_icon_state)
 		curr_master_turf_overlay.icon_state = map_holder.no_weather_turf_icon_state
@@ -181,7 +183,6 @@ SUBSYSTEM_DEF(weather)
 
 	is_weather_event = FALSE
 	update_mobs_weather()
-	update_fire_weather()
 	controller_state_lock = FALSE
 	COOLDOWN_START(src, last_event_end_time, map_holder.min_time_between_events)
 
@@ -190,21 +191,6 @@ SUBSYSTEM_DEF(weather)
 		mob?.client?.soundOutput?.update_ambience(null, null, TRUE)
 		if(!is_weather_event)
 			mob.clear_fullscreen("weather")
-
-/datum/controller/subsystem/weather/proc/update_fire_weather()
-	//find all the flamer_fire objects and set their weather_smothering_strength variable so they extinguish quicker
-	var/list/weather_turfs
-	for(var/area/area as anything in weather_areas)
-		for(var/area/subarea as anything in area.related)
-			weather_turfs = get_area_turfs(subarea)
-	for(var/turf/T as anything in weather_turfs)
-		for(var/obj/O as anything in T.contents)
-			if(istype(O, /obj/flamer_fire))
-				var/obj/flamer_fire/FF = O
-				if(is_weather_event)
-					FF.weather_smothering_strength = weather_event_instance.fire_smothering_strength
-				else
-					FF.weather_smothering_strength = FALSE
 
 /obj/effect/weather_vfx_holder
 	name = "weather vfx holder"

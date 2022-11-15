@@ -81,7 +81,7 @@
 		if(STUN)
 			Stun(effect)
 		if(WEAKEN)
-			KnockDown(effect (effect_flag & EFFECT_FLAG_FORCE_KNOCKDOWN) ? TRUE : FALSE)
+			KnockDown(effect, (effect_flags & EFFECT_FLAG_FORCE_KNOCKDOWN) ? TRUE : FALSE)
 		if(PARALYZE)
 			KnockOut(effect)
 		if(DAZE)

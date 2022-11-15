@@ -670,7 +670,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 /obj/flamer_fire/proc/update_in_weather_status()
 	var/area/A = get_area(src)
-	if(SSweather.is_weather_event && A in SSweather.weather_areas)
+	if(SSweather.is_weather_event && locate(A) in SSweather.weather_areas)
 		weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
 	else
 		weather_smothering_strength = 0

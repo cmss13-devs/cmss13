@@ -378,7 +378,7 @@
 	if(prob(10))
 		to_chat(M, SPAN_HIGHDANGER("You stumble!"))
 		step(M, pick(CARDINAL_ALL_DIRS))
-		M.apply_effect(1, DAZE) // Unable to talk and weldervision
+		M.apply_effect(5, DAZE) // Unable to talk and weldervision
 		M.make_jittery(25)
 		M.make_dizzy(55)
 		M.emote("pain")

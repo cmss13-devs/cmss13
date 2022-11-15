@@ -5,7 +5,7 @@
 	plasma_max = 10
 	melee_damage_lower = 5
 	melee_damage_upper = 5
-	max_health = XENO_HEALTH_LARVA
+	max_health = XENO_HEALTH_FACEHUGGER
 	caste_desc = "Ewwww, that's disgusting!"
 	speed = XENO_SPEED_TIER_8
 
@@ -26,7 +26,7 @@
 	crit_health = 0
 	crit_grace_time = 0
 	gib_chance = 75
-	mob_size = 0
+	mob_size = MOB_SIZE_SMALL
 	death_fontsize = 2
 	life_value = 0
 	default_honor_value = 0

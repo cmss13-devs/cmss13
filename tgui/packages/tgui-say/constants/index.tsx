@@ -32,7 +32,7 @@ export const RADIO_PREFIXES = {
   },
   ':c ': {
     id: 'charlie',
-    label: 'Charlie',
+    label: 'Charl.',
   },
   ':d ': {
     id: 'delta',
@@ -48,7 +48,7 @@ export const RADIO_PREFIXES = {
   },
   ':f ': {
     id: 'foxtrot',
-    label: 'Foxtrot',
+    label: 'Foxtr.',
   },
   ':o ': {
     id: 'cct',

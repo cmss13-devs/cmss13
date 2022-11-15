@@ -340,6 +340,8 @@
 	var/queen_aged = FALSE
 	var/queen_age_timer_id = TIMER_ID_NULL
 
+	bubble_icon = "alienroyal"
+
 /mob/living/carbon/Xenomorph/Queen/can_destroy_special()
 	return TRUE
 

@@ -126,4 +126,4 @@
 	var/list/atom/movable/screen/text/screen_text/screen_texts
 
 	/// Does this client have typing indicators enabled?
-	var/typing_indicators = FALSE
+	var/typing_indicators = TRUE

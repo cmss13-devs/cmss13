@@ -31,9 +31,9 @@
 	to_chat(src, "You will [(prefs.toggles_chat & SHOW_TYPING) ? "no longer" : "now"] display a typing indicator.")
 
 	if(prefs.toggles_chat & SHOW_TYPING)
-		typing_indicators = TRUE
-	else
 		typing_indicators = FALSE
+	else
+		typing_indicators = TRUE
 
 /** Sets the mob as "thinking" - with indicator and variable thinking_IC */
 /datum/tgui_say/proc/start_thinking()

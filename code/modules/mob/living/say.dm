@@ -65,10 +65,10 @@ var/list/department_radio_keys = list(
 	return FALSE
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
-/mob/living/proc/show_speech_bubble(var/bubble_name)
+/mob/living/proc/show_speech_bubble(var/bubble_name, bubble_type = bubble_icon)
 	var/list/hear = hearers()
 
-	var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"[bubble_name]")
+	var/image/speech_bubble = image('icons/mob/effects/talk.dmi',src,"[bubble_type][bubble_name]")
 
 	speech_bubble.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 
@@ -92,7 +92,7 @@ var/list/department_radio_keys = list(
 	speech_bubble = null
 
 
-/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world_view_size, var/sound/speech_sound, var/sound_vol, var/nolog = 0, var/message_mode = null)
+/mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
 	var/turf/T
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
@@ -144,8 +144,8 @@ var/list/department_radio_keys = list(
 					listening |= M
 
 		var/speech_bubble_test = say_test(message)
-		var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"h[speech_bubble_test]")
-		speech_bubble.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
+		var/image/speech_bubble = image(icon = 'icons/mob/effects/talk.dmi', loc = src, icon_state = "[bubble_type][speech_bubble_test]")
+		speech_bubble.plane = ABOVE_GAME_PLANE
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)

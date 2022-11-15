@@ -151,6 +151,7 @@
 
 #define FLOOR_PLANE -7
 #define GAME_PLANE -6
+#define ABOVE_GAME_PLANE -5
 
 #define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
 

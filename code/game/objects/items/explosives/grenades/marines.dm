@@ -571,7 +571,7 @@
 */
 /obj/item/explosive/grenade/sebb
 	name = "\improper G2 Electroshock grenade"
-	desc = "An Armat battlefield systems G2 Electroshock grenade, otherwise known as the 'Sonic Electric Bouncing Betty' or imformally as the 'Sonic Electric Ball Breakers'. As it's name implies it can be used as a landmine or a grenade. When triggered it propels to a height of around one meter and near instantly releases a 1.2 GigaVolts sonic payload that seizes up the central nervous system while causing mild to moderate energy damage."
+	desc = "This is a G2 Electroshock Grenade. Produced by Armat Battlefield Systems, it's sometimes referred to as the Sonic Electric Ball Breaker, after a rash of incidents where the intense 1.2 gV sonic payload caused... Rupturing. A bounding landmine mode is available for this weapon.""
 	icon_state = "grenade_sebb"
 	item_state = "grenade_sebb"
 	det_time = 40
@@ -590,9 +590,9 @@
 			spark.start()
 	for(var/mob/living/Mob in oview(range,src))
 		var/mob_range = get_dist(src,Mob)
-		to_chat(world,mob_range)
+		to_chat(world,mob_range)  /// REMOVETHIS REMOVETHIS
 		var/dam_factor = mob_range * dam_range_mult
-		to_chat(world,dam_factor)
+		to_chat(world,dam_factor)  /// REMOVETHIS REMOVETHIS
 		var/damage_applied = damage - dam_factor  //divides damage
 		if(ishuman(Mob))
 			var/mob/living/carbon/human/shockedH = Mob
@@ -621,7 +621,7 @@
 	layer = ABOVE_LIGHTING_PLANE
 	var/time_to_live = 1 SECONDS
 
-	appearance_flags = RESET_COLOR|KEEP_APART
+	appearance_flags = RESET_COLOR
 
 
 /obj/effect/overlay/sebb/New()

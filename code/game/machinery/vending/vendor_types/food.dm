@@ -11,7 +11,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/marine_food/get_listed_products(mob/user)
 	. = list()
-	. += GLOB.cm_vending_boozemat
+	. += GLOB.cm_vending_marine_food
 	//. += GLOB.cm_vending_marine_food_christmas
 	. += GLOB.cm_vending_marine_food_flasks
 

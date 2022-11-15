@@ -11,9 +11,6 @@
 	. = ..()
 	vend_flags |= VEND_FACTION_THEMES
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/populate_product_list(var/scale)
-	return
-
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/get_listed_products(var/mob/user)
 	var/list/factions = GLOB.faction_datums
 	if(!user)

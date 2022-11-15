@@ -474,6 +474,12 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			S.bleed_layer--
 			S.update_icon(1, 0)
 
+	//scorch mah grass HNNGGG
+	if (istype(loc, /turf/open))
+		var/turf/open/scorch_turf_target = loc
+		if(scorch_turf_target.scorchable)
+			scorch_turf_target.scorch(burnlevel)
+
 	if (istype(loc, /turf/open/auto_turf/snow))
 		var/turf/open/auto_turf/snow/S = loc
 		if(S.bleed_layer > 0)

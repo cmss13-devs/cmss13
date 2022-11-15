@@ -35,7 +35,7 @@
 	if(opacity)
 		SetOpacity(0)
 	active_smoke_effects -= src
-	QDEL_NULL(cause_data)
+	cause_data = null
 
 /obj/effect/particle_effect/smoke/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

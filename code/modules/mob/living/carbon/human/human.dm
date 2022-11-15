@@ -67,6 +67,22 @@
 
 	overlays_standing = null
 	selected_ability = null
+	assigned_squad = null
+
+	//Equipment slots
+	wear_suit = null
+	w_uniform = null
+	shoes = null
+	belt = null
+	gloves = null
+	glasses = null
+	head = null
+	wear_l_ear = null
+	wear_r_ear = null
+	wear_id = null
+	r_store = null
+	l_store = null
+	s_store = null
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()

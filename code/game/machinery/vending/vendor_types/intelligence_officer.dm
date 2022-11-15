@@ -120,7 +120,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	vendor_role = list(JOB_INTEL)
 
-	listed_products = list(
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/intelligence_officer/get_listed_products(mob/user)
+	return GLOB.cm_vending_guns_intelligence_officer
+
+GLOBAL_LIST_INIT(cm_vending_guns_intelligence_officer, list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("L42A Battle Rifle", 4, /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
 		list("M39 Submachine Gun", 4, /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
@@ -157,11 +160,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 		list("M5 Bayonet", 4, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", 2, /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare pack", 20, /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
-	)
-
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/intelligence_officer/populate_product_list(var/scale)
-	return
-
+	))
 
 //------------ESSENTIAL SETS---------------
 

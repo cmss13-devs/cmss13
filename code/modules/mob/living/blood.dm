@@ -66,6 +66,12 @@
 			else if(nutrition >= 200)
 				nutrition -= 3
 
+// Xeno blood regeneration
+/mob/living/carbon/Xenomorph/handle_blood()
+	if(stat != DEAD) //Only living xenos regenerate blood
+		//Blood regeneration if there is some space
+		if(blood_volume < BLOOD_VOLUME_NORMAL)
+			blood_volume = min(blood_volume + 1, BLOOD_VOLUME_NORMAL)
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/proc/drip(amt)

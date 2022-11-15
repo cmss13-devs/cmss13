@@ -8,6 +8,16 @@ $button-bg-opacity: 0.25;
 $recommended-color: #3a9b52;
 $mandatory-color: rgb(128, 83, 0);
 
+.theme-weyland {
+  .Vendor{
+    .VendingSorted__VendButton {
+      .Button__content {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
 .Vendor {
   .VendingSorted__Description {
     position: absolute;
@@ -83,8 +93,6 @@ $mandatory-color: rgb(128, 83, 0);
       transition: none;
       .Button__content {
         color: #ffffff;
-        mix-blend-mode: difference;
-        text-shadow: 2px 2px #444444;
       }
     }
   }

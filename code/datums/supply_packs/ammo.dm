@@ -110,7 +110,7 @@
 	containername = "\improper M39 extended magazines crate"
 	group = "Ammo"
 
-//------------------------For  L42A----------------
+//------------------------For L42A----------------
 
 /datum/supply_packs/ammo_l42_mag_box
 	name = "Magazine box (L42A, 16x mags)"

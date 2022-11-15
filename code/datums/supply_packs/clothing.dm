@@ -10,7 +10,7 @@
 		/obj/item/storage/backpack/marine/mortarpack,
 		/obj/item/storage/backpack/marine/mortarpack
 	)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containername = "Mortar Shell Backpack Crate"
 
 //---------------------------------------------
@@ -25,7 +25,7 @@
 		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/accessory/storage/black_vest
 	)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = ASRS_PRICE_TWENTY
 	containertype = /obj/structure/closet/crate/green
 	containername = "Brown And Black Webbing Crate"
 	group = "Clothing"
@@ -38,7 +38,7 @@
 		/obj/item/clothing/accessory/storage/webbing,
 		/obj/item/clothing/accessory/storage/webbing
 	)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = ASRS_PRICE_TWENTY
 	containertype = /obj/structure/closet/crate/green
 	containername = "Webbing Crate"
 	group = "Clothing"
@@ -51,7 +51,7 @@
 		/obj/item/clothing/accessory/storage/droppouch,
 		/obj/item/clothing/accessory/storage/droppouch,
 	)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = ASRS_PRICE_TWENTY
 	containertype = /obj/structure/closet/crate/green
 	containername = "Drop Pouch Crate"
 	group = "Clothing"
@@ -64,7 +64,7 @@
 		/obj/item/clothing/accessory/storage/knifeharness,
 		/obj/item/clothing/accessory/storage/knifeharness
 	)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containertype = /obj/structure/closet/crate/green
 	containername = "Knife Vest Crate"
 	group = "Clothing"
@@ -77,7 +77,7 @@
 		/obj/item/clothing/accessory/storage/holster,
 		/obj/item/clothing/accessory/storage/holster
 	)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = ASRS_PRICE_TWENTY
 	containertype = /obj/structure/closet/crate/green
 	containername = "Shoulder Holster Crate"
 	group = "Clothing"
@@ -88,7 +88,7 @@
 					/obj/item/storage/belt/gun/m44/gunslinger
 					)
 	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
-	cost = RO_PRICE_VERY_CHEAP
+	cost = ASRS_PRICE_TWENTY
 	contraband = 1
 	containertype = /obj/structure/closet/crate
 	containername = "Cowboy Costume Crate"

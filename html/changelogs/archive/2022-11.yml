@@ -269,6 +269,9 @@
   QuickLoad:
   - balance: synthetic unarmed damage increased to disincentivize carrying weapons.
   - balance: synthetics are more resistant against burns
+  Segrain:
+  - bugfix: Status effects (slow, knockdown, etc) once again can come to an end for
+      xenos instead of lasting forever.
   carlarctg:
   - refactor: refactored how stuns/knockdowns/etc are handled in code to allow for
       manual cancellation without shitcode.

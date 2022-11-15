@@ -446,9 +446,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	burnlevel = R.intensityfire
 
 	//are we in weather??
-	var/area/A = get_area(src)
-	if(SSweather.is_weather_event && locate(A) in SSweather.weather_areas)
-		weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
+	update_in_weather_status()
 
 	update_flame()
 
@@ -669,6 +667,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	return
 
 /obj/flamer_fire/proc/update_in_weather_status()
+	SIGNAL_HANDLER
 	var/area/A = get_area(src)
 	if(SSweather.is_weather_event && locate(A) in SSweather.weather_areas)
 		weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength

@@ -146,7 +146,7 @@ SUBSYSTEM_DEF(weather)
 			subarea.overlays += curr_master_turf_overlay
 
 	update_mobs_weather()
-	SEND_SIGNAL(src, COMSIG_GLOB_WEATHER_CHANGE)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_WEATHER_CHANGE)
 	controller_state_lock = FALSE
 
 // Adjust our state to indicate that the weather event that WAS running is over
@@ -180,7 +180,7 @@ SUBSYSTEM_DEF(weather)
 
 	is_weather_event = FALSE
 	update_mobs_weather()
-	SEND_SIGNAL(src, COMSIG_GLOB_WEATHER_CHANGE)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_WEATHER_CHANGE)
 	controller_state_lock = FALSE
 	COOLDOWN_START(src, last_event_end_time, map_holder.min_time_between_events)
 

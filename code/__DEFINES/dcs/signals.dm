@@ -483,8 +483,10 @@
 // Sent to remove all sutures.
 #define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"
 
-
 // Used in resin_constructions.dm
 // Checks whether the xeno can build a thick structure regardless of hive weeds
 #define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
 	#define COMPONENT_THICK_BYPASS (1<<0)
+
+// Used for smothering fires upon weather event start/stop
+#define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"

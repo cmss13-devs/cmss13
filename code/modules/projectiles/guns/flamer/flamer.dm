@@ -546,6 +546,8 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			if(istype(SM))
 				SM.track_shot_hit(weapon_cause_data.cause_name)
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, .proc/update_in_weather_status)
+
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
@@ -664,14 +666,14 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	firelevel -= 2 + weather_smothering_strength //reduce the intensity by 2 as default or more if in weather ---- weather_smothering_strength is set as /datum/weather_event's fire_smothering_strength
 
-	if(SSweather.is_weather_event)
-		var/area/A = get_area(src)
-		if(A in SSweather.weather_areas)
-			weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
-	else if(weather_smothering_strength)
-		weather_smothering_strength = 0
-
 	return
+
+/obj/flamer_fire/proc/update_in_weather_status()
+	var/area/A = get_area(src)
+	if(SSweather.is_weather_event && A in SSweather.weather_areas)
+		weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
+	else
+		weather_smothering_strength = 0
 
 /proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", var/aerial_flame_level)
 	var/direction_angle = dir2angle(direction)

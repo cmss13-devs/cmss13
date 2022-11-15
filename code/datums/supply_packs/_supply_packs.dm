@@ -15,6 +15,22 @@
 #define RO_PRICE_PRICY_MID	80//god this naming schema is fucking stupid
 #define RO_PRICE_VERY_PRICY	100
 
+//new defin for price level(Will work on replace every mention of old RO PRICE little by little.)this comment will be remove before merge is request.
+/*
+#define ASRS_PRICE_LEVEL_ZERO	0///could be remove?
+#define ASRS_PRICE_LEVEL_FREE	7/// processing back down the crate should give back what was spend at start.
+#define ASRS_PRICE_LEVEL_ONE	10
+#define ASRS_PRICE_LEVEL_TWO	20
+#define ASRS_PRICE_LEVEL_THREE	30
+#define ASRS_PRICE_LEVEL_FOUR	40
+#define ASRS_PRICE_LEVEL_FIVE	50
+#define ASRS_PRICE_LEVEL_SIX	60
+#define ASRS_PRICE_LEVEL_SEVEN	70
+#define ASRS_PRICE_LEVEL_EIGHT	80
+#define ASRS_PRICE_LEVEL_NINE	90
+#define ASRS_PRICE_LEVEL_TEN	100
+
+*/
 var/list/all_supply_groups = list(
 	"Operations",
 	"Weapons",

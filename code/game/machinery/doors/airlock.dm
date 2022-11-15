@@ -747,8 +747,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-				M.SetStunned(5)
-				M.SetKnockeddown(5)
+				M.set_effect(5, STUN)
+				M.set_effect(5, WEAKEN)
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
 					if(H.pain.feels_pain)

@@ -125,7 +125,7 @@
 		linked_bell.flick_image = image(linked_bell.icon, icon_state = "[linked_bell.defense_type] bell_tower_alert")
 	linked_bell.flick_image.flick_overlay(linked_bell, 11)
 	linked_bell.mob_crossed(M)
-	M.AdjustSuperslowed(BELL_TOWER_EFFECT)
+	M.adjust_effect(BELL_TOWER_EFFECT, SUPERSLOW)
 	to_chat(M, SPAN_DANGER("The frequency of the noise slows you down!"))
 	linked_bell.bell_cooldown = world.time + BELL_TOWER_COOLDOWN //1.5s cooldown between RINGS
 
@@ -146,7 +146,7 @@
 		to_chat(to_apply, SPAN_WARNING("You ignore some weird noises as you charge."))
 		return
 	if(istype(to_apply))
-		to_apply.SetSuperslowed(2)
+		to_apply.set_effect(2, SUPERSLOW)
 		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))
 		sound_to(to_apply, 'sound/items/detector.ogg')
 
@@ -255,7 +255,7 @@
 
 	for(var/mob/living/carbon/Xenomorph/X in targets)
 		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
-		X.SetSuperslowed(slowdown_amount)
+		X.set_effect(slowdown_amount, SUPERSLOW)
 		playsound(X, 'sound/misc/bell.ogg', 25, 0, 13)
 
 #undef IMP_SLOWDOWN_TIME

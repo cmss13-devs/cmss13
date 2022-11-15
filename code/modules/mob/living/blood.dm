@@ -136,7 +136,7 @@
 		return
 
 	if(blood_volume < amount)
-		return
+		amount = blood_volume
 
 	var/b_id = get_blood_id()
 	if(!b_id)
@@ -160,6 +160,9 @@
 	if(!O.reagents)
 		return
 
+	if(blood_volume < amount)
+		amount = blood_volume
+
 	var/b_id = get_blood_id()
 	if(!b_id)
 		return
@@ -171,6 +174,7 @@
 	for(var/plasma in plasmas)
 		O.reagents.add_reagent(plasma,amount / plasmas.len) //An even amount of each plasma and blood type
 
+	blood_volume = max(0, blood_volume - amount) // Removes blood if human
 	return 1
 
 

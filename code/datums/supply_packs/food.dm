@@ -92,7 +92,7 @@
 //All the meats
 	
 /datum/supply_packs/meat
-	name = "meat(*5)"
+	name = "meat(x5)"
 	contains = list(
 					/obj/item/reagent_container/food/snacks/meat,
 					/obj/item/reagent_container/food/snacks/meat,
@@ -122,7 +122,7 @@
 //all the condiment type items 
 
 /datum/supply_packs/condiment
-	name = "crate of condiment (enzyme,sugar,saltshaker,peppermill,four type of hot sauce)"
+	name = "crate of condiments"
 	contains = list(
 					/obj/item/reagent_container/food/condiment/enzyme,
 					/obj/item/reagent_container/food/condiment/sugar,

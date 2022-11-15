@@ -239,11 +239,11 @@
 	var/pounce_distance = 0
 
 	// Life reduction variables.
-	var/life_stun_reduction = 1.5
-	var/life_knockdown_reduction = 1.5
-	var/life_knockout_reduction = 1.5
-	var/life_daze_reduction = 1.5
-	var/life_slow_reduction = 1.5
+	var/life_stun_reduction = -1.5
+	var/life_knockdown_reduction = -1.5
+	var/life_knockout_reduction = -1.5
+	var/life_daze_reduction = -1.5
+	var/life_slow_reduction = -1.5
 
 
 	//////////////////////////////////////////////////////////////////

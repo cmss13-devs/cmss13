@@ -20,7 +20,7 @@
 //		   state variables	<- used to store all strain-unique state associated with THIS xeno.
 //
 //
-///////////////////////////////////
+//
 /datum/behavior_delegate
 
 	/// Userfriendly name of the mutator

@@ -1,4 +1,3 @@
-////////////////////HOLOSIGN///////////////////////////////////////
 /obj/structure/machinery/holosign
 	name = "holosign"
 	desc = "Small wall-mounted holographic projector"
@@ -31,7 +30,6 @@
 	name = "surgery holosign"
 	desc = "Small wall-mounted holographic projector. This one reads SURGERY."
 	on_icon = "surgery"
-////////////////////SWITCH///////////////////////////////////////
 
 /obj/structure/machinery/holosign_switch
 	name = "holosign switch"

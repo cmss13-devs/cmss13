@@ -4,6 +4,7 @@
 	assignment = JOB_CLF
 	rank = FACTION_CLF
 	faction = FACTION_CLF
+	origin_override = ORIGIN_CIVILIAN
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/New()
@@ -727,6 +728,8 @@
 	name = "CLF Multipurpose Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	languages = list(LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH
 	rank = JOB_CLF_SYNTH
@@ -738,8 +741,8 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
-	if(prob(20))
-		random_name = "[capitalize(randomly_generate_japanese_word(pick(1, 2)))]"
+	if(prob(10))
+		random_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
 	else if(H.gender == MALE)
 		random_name = "[pick(first_names_male_clf)]"
 	else
@@ -758,7 +761,7 @@
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/synth/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_COLONY)
+	H.set_species(SYNTH_COLONY_GEN_ONE)
 
 /datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/colonist/clf/CLF = new()

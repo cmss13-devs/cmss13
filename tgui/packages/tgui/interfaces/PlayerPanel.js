@@ -425,6 +425,30 @@ const PunishmentActions = (props, context) => {
         </Stack>
       </Section>
 
+      <Section level={2} title="Human Name">
+        <Stack
+          align="right"
+          grow={1}
+        >
+          <Button
+            width="100%"
+            icon="clipboard-list"
+            color="average"
+            content="Human name reset"
+            disabled={!hasPermission(data, "reset_human_name")}
+            onClick={() => act("reset_human_name")}
+          />
+          <Button
+            width="100%"
+            height="100%"
+            icon="clipboard-list"
+            color="bad"
+            content={!data?.client_name_banned_status ? ("Human name ban") : ("Human name unban")}
+            disabled={!hasPermission(data, "ban_human_name")}
+            onClick={() => act("ban_human_name")}
+          />
+        </Stack>
+      </Section>
       <Section level={2} title="Xenomorph Name">
         <Stack align="right" grow={1}>
           <Button
@@ -826,6 +850,14 @@ const PhysicalActions = (props, context) => {
               height="100%"
               disabled={!hasPermission(data, 'set_squad')}
               onClick={() => act('set_squad')}
+            />
+            <Button.Confirm
+                content="Set Faction"
+                icon="clipboard-list"
+                width="100%"
+                height="100%"
+                disabled={!hasPermission(data, 'set_faction')}
+                onClick={() => act('set_faction')}
             />
           </Stack>
         )}

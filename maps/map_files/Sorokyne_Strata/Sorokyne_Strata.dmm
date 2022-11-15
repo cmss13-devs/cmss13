@@ -22467,11 +22467,6 @@
 /obj/structure/platform/strata{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_x = -29;
-	start_charge = 0
-	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "bsU" = (
@@ -33284,6 +33279,9 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/tcomms)
 "gSz" = (
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/center)
 "gSR" = (
@@ -33423,10 +33421,10 @@
 "haU" = (
 /obj/structure/machinery/power/apc{
 	dir = 4;
-	pixel_x = 28;
+	pixel_x = -28;
 	start_charge = 0
 	},
-/turf/open/auto_turf/snow/brown_base/layer1,
+/turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/crash)
 "haZ" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -39916,14 +39914,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata,
 /area/strata/ag/interior/tcomms)
-"rXQ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_x = 29;
-	start_charge = 0
-	},
-/turf/open/auto_turf/snow/brown_base/layer2,
-/area/strata/ag/exterior/marsh/center)
 "sau" = (
 /obj/structure/machinery/power/terminal{
 	dir = 8;
@@ -47298,7 +47288,7 @@ aVq
 aVq
 bgS
 bgS
-haU
+bgS
 bgS
 bgS
 bhO
@@ -47688,7 +47678,7 @@ aVq
 aVq
 bgS
 bgS
-xzR
+haU
 xzR
 bgS
 bhN
@@ -54329,7 +54319,7 @@ aac
 aac
 aac
 bnj
-rXQ
+bnj
 bnj
 ble
 ble

@@ -24,6 +24,10 @@ var/list/first_names_male_upp = list("Badai","Mongkeemur","Alexei","Andrei","Art
 var/list/first_names_female_upp = list("Altani","Cirina","Anastasiya","Saran","Wei","Oksana","Ren","Svena","Tatyana","Yaroslava", "Izabella", "Kata", "Krisztina", "Miruna", "Flori", "Lucia", "Anica", "Li", "Yimu", "Alona", "Hsiau-Li", "Xiaoling", "Erhong", "Baśka", "Angela", "Angelina", "Angja", "Ankica", "Biljana", "Bisera", "Bistra", "Blaga", "Blagica", "Blagorodna", "Verka", "Vladica", "Denica", "Živka", "Zlata", "Jagoda", "Letka", "Ljupka", "Mila", "Mirjana", "Mirka", "Rada", "Radmila", "Slavica", "Slavka", "Snežana", "Stojna", "Ubavka", "Jaromir", "Mscëwòj", "Subisłôw", "Swiãtopôłk", "Ji-Sun", "Chaeyong", "Chaewon", "Saerom", "Seoyeong", "Jiheon", "Hayoung")
 var/list/last_names_upp = list("Azarov","Bogdanov","Barsukov","Golovin","Davydov","Khan","Noica","Barbu","Zhukov","Ivanov","Mihai","Kasputin","Belov", "Belova","Melnikov", "Vasilevsky", "Aleksander", "Halkovich", "Stanislaw", "Proca", "Zaituc", "Arcos", "Kubat", "Kral", "Volf", "Xun", "Jia", "Bachoń", "Wang", "Ji", "Xiang", "Zhang", "Mei", "Ma", "Kim", "Yi", "Ri", "Pak", "Chong", "Baek", "Kwon", "Hwang", "Roh", "Lee", "Song")
 
+var/list/first_names_male_pmc = list("Owen","Luka","Nelson","Branson", "Tyson", "Leo", "Bryant", "Kobe", "Rohan", "Riley", "Aidan", "Watase","Egawa", "Hisakawa", "Koide", "Remy", "Martial", "Magnus", "Heiko", "Lennard")
+var/list/first_names_female_pmc = list("Madison","Jessica","Anna","Juliet", "Olivia", "Lea", "Diane", "Kaori", "Beatrice", "Riley", "Amy", "Natsue","Yumi", "Aiko", "Fujiko", "Jennifer", "Ashley", "Mary", "Hitomi", "Lisa")
+var/list/last_names_pmc = list("Bates","Shaw","Hansen","Black", "Chambers", "Hall", "Gibson", "Weiss", "Waller", "Burton", "Bakin", "Rohan", "Naomichi", "Yakumo", "Yosai", "Gallagher", "Hiles", "Bourdon", "Strassman", "Palau")
+
 var/list/first_names_male_gladiator = list("Augustus", "Maximus", "Octavius", "Septimus", "Titus", "Brutus", "Caesar", "Justinian")
 var/list/first_names_female_gladiator = list("Aelia", "Aquila", "Caecilia", "Camilla", "Claudia", "Flavia", "Martina", "Theodora")
 
@@ -31,3 +35,5 @@ var/list/first_names_male_dutch = list("Raymond", "Jesse", "Jack", "John", "Sam"
 var/list/first_names_female_dutch = list("Chelsea", "Mira", "Jessica", "Catherine", "Eliza", "Emma", "Ashley", "Annie", "Alicia", "Miranda", "Ellen")
 
 var/list/monkey_names = list("Abu", "Aldo", "Bear", "Bingo", "Clyde", "Crystal", "Gordo", "George", "Koko", "Marcel", "Nim", "Geeves", "Nanu", "Rafiki", "Spike", "Banana", "Boots", "Bubbles", "Smiley", "Winston")
+
+var/list/weapon_surnames = list("Adze", "Axe", "Bagh Nakha", "Bo", "Bola", "Bow", "Bowman", "Cannon", "Carbine", "Cestus", "Club", "Culverin", "Dagger", "Dao", "Derringer", "Dha", "Dussack", "Emeici", "Falchion", "Fan", "Flyssa", "Gauntlet", "Hammer", "Halberd", "Harquebus", "Hatchet", "Hwando", "Katar", "Kampilan", "Knuckles", "Lance", "Lancer", "Larim", "Maduvu", "Mace", "Maru", "Mauser", "Messer", "Mine", "Mubucae", "Nyepel", "Onager", "Pata", "Pike", "Ram", "Saber", "Seax", "Shamsir", "Sickle", "Sling", "Spear", "Spears", "Staff", "Sword", "Tekko")

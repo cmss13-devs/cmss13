@@ -2,6 +2,7 @@
     "map_name": "LV-624",
     "map_path": "map_files/LV624",
     "map_file": "LV624.dmm",
+    "weather_holder": "/datum/weather_ss_map_holder/lv624",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",
@@ -10,7 +11,7 @@
         "/datum/equipment_preset/survivor/corporate",
         "/datum/equipment_preset/survivor/trucker/lv",
         "/datum/equipment_preset/survivor/security/lv",
-        "/datum/equipment_preset/survivor/pmc"
+        "/datum/equipment_preset/survivor/goon"
     ],
     "map_item_type": "/obj/item/map/lazarus_landing_map",
     "announce_text": "An automated distress signal has been received from archaeology site Lazarus Landing, on border world LV-624. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",

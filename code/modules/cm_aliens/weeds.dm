@@ -31,11 +31,12 @@
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
-/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node)
+/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength=TRUE)
 	. = ..()
 	if(node)
 		linked_hive = node.linked_hive
-		weed_strength = node.weed_strength
+		if(use_node_strength)
+			weed_strength = node.weed_strength
 		node_range = node.node_range
 		if(weed_strength >= WEED_LEVEL_HIVE)
 			name = "hive [name]"
@@ -400,7 +401,7 @@
 /obj/effect/alien/weeds/weedwall/window/update_icon()
 	var/obj/structure/window/framed/F = locate() in loc
 	if(F && F.junction)
-		icon_state = "weedwall[F.junction]"
+		icon_state = "weedwindow[F.junction]"
 
 /obj/effect/alien/weeds/weedwall/frame
 	layer = ABOVE_TABLE_LAYER
@@ -419,7 +420,7 @@
 	health = NODE_HEALTH_GROWING
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
-	plane = GAME_PLANE
+	plane = FLOOR_PLANE
 	var/static/staticnode
 	var/overlay_node = TRUE
 
@@ -565,5 +566,24 @@
 /obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
 	var/obj/effect/alien/resin/special/cluster/parent_cluster = resin_parent
 	parent_cluster.damaged = TRUE
+
+/obj/effect/resin_construct
+	mouse_opacity = 0
+	icon = 'icons/mob/hostiles/Effects.dmi'
+
+/obj/effect/resin_construct/door
+	icon_state = "DoorConstruct"
+
+/obj/effect/resin_construct/thick
+	icon_state = "ThickConstruct"
+
+/obj/effect/resin_construct/weak
+	icon_state = "WeakConstruct"
+
+/obj/effect/resin_construct/transparent/thick
+	icon_state = "ThickTransparentConstruct"
+
+/obj/effect/resin_construct/transparent/weak
+	icon_state = "WeakTransparentConstruct"
 
 #undef WEED_BASE_GROW_SPEED

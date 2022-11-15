@@ -139,12 +139,16 @@
 	else
 		new_xeno.plasma_stored = new_xeno.plasma_max*(plasma_stored/plasma_max) //preserve the ratio of plasma
 
+	new_xeno.built_structures = built_structures.Copy()
+
+	built_structures = null
+
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You emerge in a greater form from the husk of your old body. For the hive!"))
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
-		
+
 	src.transfer_observers_to(new_xeno)
 
 	qdel(src)
@@ -290,6 +294,10 @@
 
 	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 
+	new_xeno.built_structures = built_structures.Copy()
+
+	built_structures = null
+
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
@@ -316,9 +324,9 @@
 	if(round_statistics && !new_xeno.statistic_exempt)
 		round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
-	
+
 	src.transfer_observers_to(new_xeno)
-	
+
 	qdel(src)
 
 /mob/living/carbon/Xenomorph/proc/can_evolve(castepick, potential_queens)

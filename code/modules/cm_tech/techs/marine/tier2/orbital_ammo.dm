@@ -48,7 +48,7 @@
 
 /datum/tech/repeatable/ob/incend
 	name = "Additional OB projectiles - Incendiary"
-	desc = "Highly flammable bombardment ammo, to be loaded into the orbital cannon"
+	desc = "Highly flammable bombardment ammo, to be loaded into the orbital cannon."
 	icon_state = "ob_incend"
 
 	announce_message = "Additional Orbital Bombardment warheads (Incendiary) have been delivered to Requisitions' ASRS."

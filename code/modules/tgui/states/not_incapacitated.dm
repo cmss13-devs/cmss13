@@ -1,10 +1,12 @@
+/*!
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
+ */
+
 /**
  * tgui state: not_incapacitated_state
  *
  * Checks that the user isn't incapacitated
- *
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
  */
 
 GLOBAL_DATUM_INIT(not_incapacitated_state, /datum/ui_state/not_incapacitated_state, new)
@@ -27,6 +29,6 @@ GLOBAL_DATUM_INIT(not_incapacitated_turf_state, /datum/ui_state/not_incapacitate
 /datum/ui_state/not_incapacitated_state/can_use_topic(src_object, mob/user)
 	if(user.stat != CONSCIOUS)
 		return UI_CLOSE
-	if(user.is_mob_incapacitated(TRUE) || (turf_check && !isturf(user.loc)))
+	if(user.is_mob_incapacitated(TRUE) || (turf_check && !isturf(user.loc))) // HAS_TRAIT(src, TRAIT_UI_BLOCKED) ||
 		return UI_DISABLED
 	return UI_INTERACTIVE

@@ -961,6 +961,10 @@
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
+	if((ammo_flags & AMMO_FLAME) && (src.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE))
+		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
+		return
+
 	if(isXeno(P.firer))
 		var/mob/living/carbon/Xenomorph/X = P.firer
 		if(X.can_not_harm(src))
@@ -1132,13 +1136,8 @@
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P)
 		return
-	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & AMMO_IS_SILENCED)
-		var/hit_msg = "You've been shot in the [parse_zone(P.def_zone)] by [P.name]!"
-		to_chat(src, isXeno(src) ? SPAN_XENODANGER("[hit_msg]"):SPAN_HIGHDANGER("[hit_msg]"))
-	else
-		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
-						SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
+		SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 
 	last_damage_data = P.weapon_cause_data
 	if(P.firer && ismob(P.firer))

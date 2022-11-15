@@ -172,12 +172,12 @@
 	setOxyLoss(0)
 	setCloneLoss(0)
 	setBrainLoss(0)
-	SetKnockedout(0)
-	SetStunned(0)
-	SetDazed(0)
-	SetSlowed(0)
-	SetSuperslowed(0)
-	SetKnockeddown(0)
+	set_effect(0, PARALYZE)
+	set_effect(0, STUN)
+	set_effect(0, DAZE)
+	set_effect(0, SLOW)
+	set_effect(0, SUPERSLOW)
+	set_effect(0, WEAKEN)
 	ExtinguishMob()
 	fire_stacks = 0
 

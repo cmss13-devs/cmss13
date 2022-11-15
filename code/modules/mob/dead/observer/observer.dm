@@ -61,10 +61,7 @@
 		life_kills_total = body.life_kills_total //kills also copy over
 
 		appearance = body.appearance
-
-		if(ishuman(body))
-			vis_contents = body.vis_contents
-			apply_transform(matrix())
+		body.alter_ghost(src)
 
 		desc = initial(desc)
 

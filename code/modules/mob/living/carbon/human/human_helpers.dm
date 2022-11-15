@@ -445,3 +445,7 @@
 
 /mob/living/carbon/human/handle_blood_splatter(var/splatter_dir)
 	species.handle_blood_splatter(src, splatter_dir)
+
+/mob/living/carbon/human/alter_ghost(var/mob/dead/observer/ghost)
+	ghost.vis_contents = vis_contents
+	ghost.apply_transform(matrix())

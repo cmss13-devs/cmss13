@@ -448,4 +448,3 @@
 
 /mob/living/carbon/human/alter_ghost(var/mob/dead/observer/ghost)
 	ghost.vis_contents = vis_contents
-	ghost.apply_transform(matrix())

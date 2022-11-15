@@ -272,3 +272,5 @@
   carlarctg:
   - refactor: refactored how stuns/knockdowns/etc are handled in code to allow for
       manual cancellation without shitcode.
+  realforest2001:
+  - rscadd: Paygrades now display on non Yautja or Xeno mobs.

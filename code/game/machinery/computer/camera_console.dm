@@ -338,6 +338,9 @@
 	network = list(CAMERA_NET_MORTAR)
 	exproof = TRUE
 	colony_camera_mapload = FALSE
+	
+/obj/structure/machinery/computer/security/mortar/inoperable(var/additional_flags)
+	return (stat & (BROKEN|additional_flags)) //this ensures we can use the mortar's camera console in an unpowered area
 
 /obj/structure/machinery/computer/security/mortar/emp_act(severity)
 	return FALSE

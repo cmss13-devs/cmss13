@@ -42,8 +42,8 @@
 	if(. && (world.time > last_attack + cooldown_time))
 		last_attack = world.time
 		M.throw_atom(get_step(M, user.dir), 1, SPEED_AVERAGE, user, FALSE)
-		M.apply_effect(3, DAZE)
-		M.apply_effect(5, SLOW)
+		M.Daze(3)
+		M.Slow(5)
 
 /obj/item/weapon/shield/riot/yautja/attackby(obj/item/I, mob/user)
 	if(cooldown < world.time - 25)

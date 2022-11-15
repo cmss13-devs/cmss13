@@ -937,7 +937,7 @@
 		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
 
 	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
-	target.apply_effect(3, DAZE)
+	target.Daze(3)
 	shake_camera(target, 2, 1)
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))

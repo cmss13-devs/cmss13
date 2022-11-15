@@ -168,4 +168,4 @@
 
 /datum/ammo/bullet/sniper/railgun/on_hit_mob(mob/M, _unused)
 	if (isXeno(M))
-		M.apply_effect(1, SLOW)
+		M.Slow(1)

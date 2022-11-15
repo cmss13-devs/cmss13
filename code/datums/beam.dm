@@ -187,5 +187,5 @@
 		if(living in blacklistmobs)
 			continue
 		source.beam(living, icon_state="lightning[rand(1,12)]", time = 3, maxdistance = zap_range + 2)
-		living.set_effect(2, SLOW)
+		living.SetSlowed(2)
 		log_attack("[living] was zapped by [source]")

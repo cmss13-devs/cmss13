@@ -6,7 +6,7 @@
 		if((prob(1) && knocked_out < 1))
 			visible_message(SPAN_DANGER("\The [src] starts having a seizure!"), \
 			SPAN_DANGER("You start having a seizure!"), null, 5)
-			apply_effect(10, PARALYZE)
+			KnockOut(10)
 			make_jittery(1000)
 			return
 
@@ -19,7 +19,7 @@
 	if(disabilities & TOURETTES)
 		speech_problem_flag = 1
 		if((prob(10) && knocked_out <= 1))
-			apply_effect(10, STUN)
+			Stun(10)
 			spawn()
 				switch(rand(1, 3))
 					if(1)

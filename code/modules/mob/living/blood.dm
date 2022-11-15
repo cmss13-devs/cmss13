@@ -47,7 +47,7 @@
 					oxyloss += 10
 				oxyloss += 2
 				if(prob(15))
-					apply_effect(rand(1,3), PARALYZE)
+					KnockOut(rand(1,3))
 					var/word = pick("dizzy","woozy","faint")
 					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)

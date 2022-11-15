@@ -100,7 +100,7 @@
 				return
 
 		if("collapse")
-			apply_effect(2, PARALYZE)
+			KnockOut(2)
 			message = "<B>[comm_paygrade][src]</B> collapses!"
 			m_type = 2
 

@@ -77,7 +77,7 @@ Bonus
 
 /datum/symptom/vomit/blood/Vomit(var/mob/living/M)
 
-	M.apply_effect(1, STUN)
+	M.Stun(1)
 	M.visible_message("<B>[M]</B> vomits on the floor!")
 
 	// They lose blood and health.

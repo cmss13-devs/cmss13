@@ -212,7 +212,7 @@ All ShuttleMove procs go here
 
 	var/knockdown = movement_force["KNOCKDOWN"]
 	if(knockdown)
-		apply_effect(knockdown, WEAKEN)
+		KnockDown(knockdown)
 
 
 /* ***********************************Structure move procs************************************/

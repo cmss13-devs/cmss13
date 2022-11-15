@@ -87,7 +87,7 @@
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)
 	if(knock_value > 0)
-		apply_effect(knock_value, PARALYZE)
+		KnockOut(knock_value)
 		explosion_throw(severity, direction)
 
 /mob/living/carbon/gib(var/cause = "gibbing")
@@ -193,11 +193,11 @@
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
 		if(isXeno(src) && mob_size >= MOB_SIZE_BIG)
-			apply_effect(1, STUN)//Sadly, something has to stop them from bumping them 10 times in a second
-			apply_effect(1, WEAKEN)
+			Stun(1)//Sadly, something has to stop them from bumping them 10 times in a second
+			KnockDown(1)
 		else
-			apply_effect(6, STUN)//This should work for now, more is really silly and makes you lay there forever
-			apply_effect(6, WEAKEN)
+			Stun(6)//This should work for now, more is really silly and makes you lay there forever
+			KnockDown(6)
 
 		count_niche_stat(STATISTICS_NICHE_SHOCK)
 
@@ -275,9 +275,9 @@
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
-	adjust_effect(-3, PARALYZE)
-	adjust_effect(-3, STUN)
-	adjust_effect(-3, WEAKEN)
+	AdjustKnockedout(-3)
+	AdjustStunned(-3)
+	AdjustKnockeddown(-3)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 
@@ -448,8 +448,8 @@
 	stop_pulling()
 	to_chat(src, SPAN_WARNING("You slipped on \the [slip_source_name? slip_source_name : "floor"]!"))
 	playsound(src.loc, 'sound/misc/slip.ogg', 25, 1)
-	apply_effect(stun_level, STUN)
-	apply_effect(weaken_level, WEAKEN)
+	Stun(stun_level)
+	KnockDown(weaken_level)
 	. = TRUE
 	if(slide_steps && lying)//lying check to make sure we downed the mob
 		var/slide_dir = dir

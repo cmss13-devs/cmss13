@@ -127,8 +127,8 @@
 	if(istype(AM, /mob/living) && stacked_size)
 		var/mob/living/M = AM
 		stack_collapse()
-		M.apply_effect(2, STUN)
-		M.apply_effect(2, WEAKEN)
+		M.Stun(2)
+		M.KnockDown(2)
 	else if(stacked_size > 8 && prob(50))
 		stack_collapse()
 

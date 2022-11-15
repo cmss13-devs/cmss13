@@ -264,9 +264,9 @@
 	M.sdisabilities = 0
 	M.eye_blurry = 0
 	M.eye_blind = 0
-	M.set_effect(0, WEAKEN)
-	M.set_effect(0, STUN)
-	M.set_effect(0, PARALYZE)
+	M.SetKnockeddown(0)
+	M.SetStunned(0)
+	M.SetKnockedout(0)
 	M.silent = 0
 	M.dizziness = 0
 	M.drowsyness = 0

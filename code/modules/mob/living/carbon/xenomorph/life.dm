@@ -511,7 +511,7 @@ Make sure their actual health updates immediately.*/
 
 /mob/living/carbon/Xenomorph/handle_stunned()
 	if(stunned)
-		adjust_effect(life_stun_reduction, STUN, EFFECT_FLAG_LIFE)
+		stunned = max(stunned-1.5,0)
 		stun_callback_check()
 
 	return stunned
@@ -527,28 +527,28 @@ Make sure their actual health updates immediately.*/
 
 /mob/living/carbon/Xenomorph/handle_dazed()
 	if(dazed)
-		adjust_effect(life_daze_reduction, DAZE, EFFECT_FLAG_LIFE)
+		dazed = max(dazed-1.5,0)
 	return dazed
 
 /mob/living/carbon/Xenomorph/handle_slowed()
 	if(slowed)
-		adjust_effect(life_slow_reduction, SLOW, EFFECT_FLAG_LIFE)
+		slowed = max(slowed-1.5,0)
 	return slowed
 
 /mob/living/carbon/Xenomorph/handle_superslowed()
 	if(superslowed)
-		adjust_effect(life_slow_reduction, SUPERSLOW, EFFECT_FLAG_LIFE)
+		superslowed = max(superslowed-1.5,0)
 	return superslowed
 
 /mob/living/carbon/Xenomorph/handle_knocked_down()
 	if(knocked_down)
-		adjust_effect(life_knockdown_reduction, WEAKEN, EFFECT_FLAG_LIFE)
+		knocked_down = max(knocked_down-1.5,0)
 		knocked_down_callback_check()
 	return knocked_down
 
 /mob/living/carbon/Xenomorph/handle_knocked_out()
 	if(knocked_out)
-		adjust_effect(life_knockout_reduction, PARALYZE, EFFECT_FLAG_LIFE)
+		knocked_out = max(knocked_out - 1.5, 0)
 		knocked_out_callback_check()
 	return knocked_out
 
@@ -568,7 +568,7 @@ Make sure their actual health updates immediately.*/
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!
 
 
-#define XENO_TIMER_TO_EFFECT_CONVERSION (0.075) // (1.5/20) //once per 2 seconds, with 1.5 effect per that once
+#define XENO_TIMER_TO_EFFECT_CONVERSION 1.5/20 //once per 2 seconds, with 1.5 effect per that once
 
 // This is here because sometimes our stun comes too early and tick is about to start, so we need to compensate
 // this is the best place to do it, tho name might be a bit misleading I guess

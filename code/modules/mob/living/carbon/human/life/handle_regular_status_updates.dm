@@ -37,12 +37,12 @@
 				if(halloss > 100)
 					visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."), \
 					SPAN_WARNING("You slump to the ground, you're in too much pain to keep going."))
-					apply_effect(10, PARALYZE)
+					KnockOut(10)
 					setHalLoss(99)
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if(regular_update && ((getOxyLoss() > 50)))
-			apply_effect(3, PARALYZE)
+			KnockOut(3)
 
 		if((src.species.flags & HAS_HARDCRIT) && HEALTH_THRESHOLD_CRIT > health)
 			var/already_in_crit = FALSE
@@ -123,7 +123,7 @@
 
 		if(paralyzed)
 			speech_problem_flag = 1
-			apply_effect(1, WEAKEN)
+			KnockDown(1)
 			silent = 1
 			blinded = 1
 			use_me = 0
@@ -135,7 +135,7 @@
 			eye_blurry = max(2, eye_blurry)
 			if(drowsyness > 10 && prob(5))
 				sleeping++
-				apply_effect(5, PARALYZE)
+				KnockOut(5)
 
 		confused = max(0, confused - 1)
 

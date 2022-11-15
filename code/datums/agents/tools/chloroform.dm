@@ -39,7 +39,7 @@
         return
 
     to_chat(M, SPAN_HIGHDANGER("[user] knocks you out!"))
-    M.apply_effect(knockout_strength, PARALYZE)
+    M.KnockOut(knockout_strength)
 
     remove_stun(M)
 

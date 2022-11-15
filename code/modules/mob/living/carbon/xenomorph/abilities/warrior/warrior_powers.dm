@@ -100,7 +100,7 @@
 		H.apply_effect(weaken_power, WEAKEN)
 	if(slowdown)
 		if(H.slowed < slowdown)
-			H.apply_effect(slowdown, SLOW)
+			H.Slow(slowdown)
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 	shake_camera(H, 2, 1)
 
@@ -176,7 +176,7 @@
 			H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
 		if(isHumanStrict(H))
-			H.apply_effect(3, SLOW)
+			H.Slow(3)
 		if(isYautja(H))
 			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
 		else if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))

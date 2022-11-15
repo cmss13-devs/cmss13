@@ -99,7 +99,7 @@
 	set waitfor = 0
 	zombie_transforming = TRUE
 	human.vomit_on_floor()
-	human.adjust_effect(5, STUN)
+	human.AdjustStunned(5)
 	sleep(20)
 	human.make_jittery(500)
 	sleep(30)
@@ -147,9 +147,9 @@
 				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
 
 	if(isSynth(target))
-		target.apply_effect(2, SLOW)
+		target.Slow(2)
 	else
-		target.apply_effect(2, SUPERSLOW)
+		target.Superslow(2) // Make them slower
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(get_dist(src, O) > 1)

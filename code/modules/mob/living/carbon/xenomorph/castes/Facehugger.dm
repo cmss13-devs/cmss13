@@ -186,8 +186,8 @@
 
 /mob/living/carbon/Xenomorph/Facehugger/handle_queen_screech(var/mob/living/carbon/Xenomorph/Queen/queen)
 	to_chat(src, SPAN_DANGER("The mighty roar of the queen makes you tremble and fall over!"))
-	adjust_effect(6, STUN)
-	apply_effect(6, WEAKEN)
+	AdjustStunned(6)
+	KnockDown(6)
 
 /mob/living/carbon/Xenomorph/Facehugger/add_xeno_shield(added_amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1, add_shield_on = FALSE, max_shield = 200)
 	return

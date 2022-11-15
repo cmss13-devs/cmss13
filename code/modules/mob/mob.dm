@@ -863,22 +863,22 @@ mob/proc/yank_out_object()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
-		adjust_effect(-1, STUN)
+		AdjustStunned(-1)
 	return stunned
 
 /mob/living/proc/handle_dazed()
 	if(dazed)
-		adjust_effect(-1, DAZE)
+		AdjustDazed(-1)
 	return dazed
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
-		adjust_effect(-1, SLOW)
+		AdjustSlowed(-1)
 	return slowed
 
 /mob/living/proc/handle_superslowed()
 	if(superslowed)
-		adjust_effect(-1, SUPERSLOW)
+		AdjustSuperslowed(-1)
 	return superslowed
 
 

@@ -433,8 +433,8 @@
 		var/mob/living/carbon/human/H = M
 		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
 			return
-		H.adjust_effect(5, STUN)
-		H.adjust_effect(5, WEAKEN)
+		H.AdjustStunned(5)
+		H.AdjustKnockeddown(5)
 
 	to_chat(M, "Gravity!")
 

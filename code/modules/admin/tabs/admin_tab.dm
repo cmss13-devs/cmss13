@@ -196,7 +196,7 @@
 	if(alert("This will sleep ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 	for(var/mob/living/M in view(usr.client))
-		M.apply_effect(3, PARALYZE) // prevents them from exiting the screen range
+		M.KnockOut(3) // prevents them from exiting the screen range
 		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
 		M.AddSleepingIcon()
 

@@ -805,7 +805,7 @@
 	if(!L || L == P.firer || L.lying)
 		return
 
-	L.adjust_effect(1, SLOW) //Slow on hit.
+	L.AdjustSlowed(1) //Slow on hit.
 	L.recalculate_move_delay = TRUE
 	var/super_slowdown_duration = 3
 	//If there's an obstacle on the far side, superslow and do extra damage.
@@ -821,7 +821,7 @@
 		return
 
 	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
-	L.adjust_effect(super_slowdown_duration, SUPERSLOW)
+	L.AdjustSuperslowed(super_slowdown_duration)
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
@@ -1531,7 +1531,7 @@
 			var/mob/living/carbon/Xenomorph/target = M
 			if(target.mob_size >= MOB_SIZE_BIG)
 				slow_duration = 4
-		M.adjust_effect(slow_duration, SUPERSLOW)
+		M.AdjustSuperslowed(slow_duration)
 		L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 	else
@@ -1879,8 +1879,8 @@
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/turf/T = get_turf(M)
 	M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-	M.apply_effect(2, WEAKEN)
-	M.apply_effect(2, PARALYZE)
+	M.KnockDown(2)
+	M.KnockOut(2)
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(300, P.dir, P.weapon_cause_data, 100)
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
@@ -1898,8 +1898,8 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-		M.apply_effect(4, WEAKEN)
-		M.apply_effect(4, PARALYZE)
+		M.KnockDown(4)
+		M.KnockOut(4)
 		hit_something = 1
 		continue
 	if(!hit_something)
@@ -1920,8 +1920,8 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(250, P.dir, P.weapon_cause_data, 100)
-		M.apply_effect(2, WEAKEN)
-		M.apply_effect(2, PARALYZE)
+		M.KnockDown(2)
+		M.KnockOut(2)
 		hit_something = 1
 		continue
 	if(!hit_something)
@@ -2199,11 +2199,11 @@
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			stun_time++
-			H.apply_effect(stun_time, WEAKEN)
+			H.KnockDown(stun_time)
 		else
-			M.apply_effect(stun_time, 1, WEAKEN)
+			M.KnockDown(stun_time, 1)
 
-		C.apply_effect(stun_time, STUN)
+		C.Stun(stun_time)
 	..()
 
 /datum/ammo/energy/yautja/caster/sphere
@@ -2272,13 +2272,13 @@
 		if(isXenoPredalien(M))
 			continue
 		to_chat(M, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
-		M.apply_effect(stun_time, STUN)
+		M.Stun(stun_time)
 
 		if (ishuman(M))
 			var/mob/living/carbon/human/H = M
-			H.apply_effect(stun_time, WEAKEN)
+			H.KnockDown(stun_time)
 		else
-			M.apply_effect(stun_time, 1, WEAKEN)
+			M.KnockDown(stun_time, 1)
 
 
 
@@ -2363,11 +2363,11 @@
 	if(!isXeno(M))
 		if(insta_neuro)
 			if(M.knocked_down < 3)
-				M.adjust_effect(1 * power, WEAKEN)
+				M.AdjustKnockeddown(1 * power)
 			return
 
 		if(ishuman(M))
-			M.apply_effect(2.5, SUPERSLOW)
+			M.Superslow(2.5)
 			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
@@ -2379,7 +2379,7 @@
 
 		if(no_clothes_neuro)
 			if(M.knocked_down < 5)
-				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
+				M.AdjustKnockeddown(1 * power) // KD them a bit more
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /proc/apply_scatter_neuro(mob/M)
@@ -2393,7 +2393,7 @@
 			return
 
 		if(M.knocked_down < 0.7) // apply knockdown only if current knockdown is less than 0.7 second
-			M.apply_effect(0.7, WEAKEN)
+			M.KnockDown(0.7)
 			M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -2715,7 +2715,7 @@
 	if(isHumanStrict(M) || isXeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
 		if(M.slowed < 8)
-			M.apply_effect(8, SLOW)
+			M.Slow(8)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"
@@ -2745,7 +2745,7 @@
     if(isHumanStrict(M) || isXeno(M))
         playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
         if(M.slowed < 6)
-            M.apply_effect(6, SLOW)
+            M.Slow(6)
 
 /*
 //======
@@ -2881,7 +2881,7 @@
 
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M))
-		M.apply_effect(0.4, SLOW)
+		M.Slow(0.4)
 
 /*
 //========

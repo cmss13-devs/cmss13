@@ -162,7 +162,7 @@
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
 				SPAN_WARNING("You shove \the [src] out of your way!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				src.apply_effect(1, WEAKEN)
+				src.KnockDown(1)
 			else
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \

@@ -58,25 +58,11 @@
 /mob/living/proc/apply_internal_damage(var/damage = 0, var/organ)
 	return
 
-#define EFFECT_FLAG_LIFE (1<<0)
-#define EFFECT_FLAG_DEFAULT (1<<1)
-//Examples for future usage!
-//#define EFFECT_FLAG_EXPLOSIVE
-//#define EFFECT_FLAG_XENOMORPH
-//#define EFFECT_FLAG_CHEMICAL
 
-/mob/proc/apply_effect()
-	return FALSE
-
-/mob/living/apply_effect(var/effect = 0,var/effect_type = STUN, var/effect_flags = EFFECT_FLAG_DEFAULT)
-
-	if(SEND_SIGNAL(src, COMSIG_LIVING_APPLY_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
-		return
-
+/mob/living/proc/apply_effect(var/effect = 0,var/effecttype = STUN)
 	if(!effect)
 		return FALSE
-
-	switch(effect_type)
+	switch(effecttype)
 		if(STUN)
 			Stun(effect)
 		if(WEAKEN)
@@ -99,79 +85,8 @@
 		if(DROWSY)
 			drowsyness = max(drowsyness, effect)
 	updatehealth()
-	return TRUE
+	return 1
 
-/mob/proc/adjust_effect()
-	return FALSE
-
-/mob/living/adjust_effect(var/effect = 0,var/effect_type = STUN, var/effect_flags = EFFECT_FLAG_DEFAULT)
-
-	if(SEND_SIGNAL(src, COMSIG_LIVING_ADJUST_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
-		return
-
-	if(!effect)
-		return FALSE
-
-	switch(effect_type)
-		if(STUN)
-			AdjustStun(effect)
-		if(WEAKEN)
-			AdjustKnockDown(effect)
-		if(PARALYZE)
-			AdjustKnockOut(effect)
-		if(DAZE)
-			AdjustDaze(effect)
-		if(SLOW)
-			AdjustSlow(effect)
-		if(SUPERSLOW)
-			AdjustSuperslow(effect)
-		if(AGONY)
-			halloss += effect // Useful for objects that cause "subdual" damage. PAIN!
-		if(STUTTER)
-			if(status_flags & CANSTUN) // stun is usually associated with stutter
-				stuttering = POSITIVE(stuttering + effect)
-		if(EYE_BLUR)
-			eye_blurry = POSITIVE(eye_blurry + effect)
-		if(DROWSY)
-			drowsyness = POSITIVE(drowsyness + effect)
-	updatehealth()
-	return TRUE
-
-/mob/proc/set_effect()
-	return FALSE
-
-/mob/living/set_effect(var/effect = 0,var/effect_type = STUN, var/effect_flags = EFFECT_FLAG_DEFAULT)
-
-	if(SEND_SIGNAL(src, COMSIG_LIVING_SET_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
-		return
-
-	if(!effect)
-		return FALSE
-
-	switch(effect_type)
-		if(STUN)
-			SetStun(effect)
-		if(WEAKEN)
-			SetKnockDown(effect)
-		if(PARALYZE)
-			SetKnockOut(effect)
-		if(DAZE)
-			SetDaze(effect)
-		if(SLOW)
-			SetSlow(effect)
-		if(SUPERSLOW)
-			SetSuperslow(effect)
-		if(AGONY)
-			halloss += effect // Useful for objects that cause "subdual" damage. PAIN!
-		if(STUTTER)
-			if(status_flags & CANSTUN) // stun is usually associated with stutter
-				stuttering = POSITIVE(effect)
-		if(EYE_BLUR)
-			eye_blurry = POSITIVE(effect)
-		if(DROWSY)
-			drowsyness = POSITIVE(effect)
-	updatehealth()
-	return TRUE
 
 /mob/living/proc/apply_effects(var/stun = 0, var/weaken = 0, var/paralyze = 0, var/irradiate = 0, var/stutter = 0, var/eyeblur = 0, var/drowsy = 0, var/agony = 0)
 	if(stun)		apply_effect(stun, STUN)

@@ -97,8 +97,8 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 
 /obj/item/snowball/attack(mob/living/M, mob/living/user)
 	. = ..()
-	M.apply_effect(2, SLOW)
-	M.apply_effect(2, DAZE)
+	M.Slow(2)
+	M.Daze(2)
 	qdel(src)
 
 /obj/item/snowball/launch_impact(atom/hit_atom)
@@ -107,5 +107,5 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 
 /obj/item/snowball/mob_launch_collision(mob/living/L)
 	. = ..()
-	L.apply_effect(2, SLOW)
-	L.apply_effect(2, DAZE)
+	L.Slow(2)
+	L.Daze(2)

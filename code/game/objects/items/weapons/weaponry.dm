@@ -236,8 +236,8 @@
 		M.animation_attack_on(user)
 		M.flick_attack_overlay(user, "punch")
 		spawn(5)
-			user.apply_effect((kill_delay-5)/15, STUN)
-			M.apply_effect((kill_delay-5)/15, STUN)
+			user.Stun((kill_delay-5)/15)
+			M.Stun((kill_delay-5)/15)
 
 	else //No katana
 
@@ -257,7 +257,7 @@
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")
 
-		M.apply_effect(kill_delay/15, STUN)
+		M.Stun(kill_delay/15)
 
 
 	for (var/mob/O in hearers(world_view_size, M))

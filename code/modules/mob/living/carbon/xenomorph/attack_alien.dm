@@ -199,7 +199,7 @@
 
 			if(M.attempt_tackle(src, tackle_mult, tackle_min_offset, tackle_max_offset))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-				apply_effect(rand(M.tacklestrength_min, M.tacklestrength_max), WEAKEN)
+				KnockDown(rand(M.tacklestrength_min, M.tacklestrength_max))
 				M.visible_message(SPAN_DANGER("[M] tackles down [src]!"), \
 				SPAN_DANGER("You tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			else
@@ -271,7 +271,7 @@
 			M.visible_message(SPAN_WARNING("[M] shoves [src]!"), \
 			SPAN_WARNING("You shove [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			if(ismonkey(src))
-				apply_effect(8, WEAKEN)
+				KnockDown(8)
 	return XENO_ATTACK_ACTION
 
 /mob/living/attack_larva(mob/living/carbon/Xenomorph/Larva/M)

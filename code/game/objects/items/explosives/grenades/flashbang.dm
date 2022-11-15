@@ -94,16 +94,16 @@
 			return
 
 	if(M.flash_eyes())
-		M.apply_effect(2, STUN)
-		M.apply_effect(10, WEAKEN)
+		M.Stun(2)
+		M.KnockDown(10)
 
 	if((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
 		if(trained_human)
-			M.apply_effect(2, STUN)
-			M.apply_effect(1, WEAKEN)
+			M.Stun(2)
+			M.KnockDown(1)
 		else
-			M.apply_effect(10, STUN)
-			M.apply_effect(3, WEAKEN)
+			M.Stun(10)
+			M.KnockDown(3)
 			M.SetEarDeafness(max(M.ear_deaf,15))
 			if(!no_damage)
 				if((prob(14) || (M == src.loc && prob(70))))
@@ -113,13 +113,13 @@
 
 	else if(get_dist(M, T) <= 5)
 		if(!trained_human)
-			M.apply_effect(8, STUN)
+			M.Stun(8)
 			M.SetEarDeafness(max(M.ear_deaf,10))
 			if(!no_damage)
 				M.ear_damage += rand(0, 3)
 
 	else if(!trained_human)
-		M.apply_effect(4, STUN)
+		M.Stun(4)
 		M.SetEarDeafness(max(M.ear_deaf,5))
 		if(!no_damage)
 			M.ear_damage += rand(0, 1)
@@ -227,11 +227,11 @@
 		if(isXeno(M))
 			if(get_dist(M, T) <= 4)
 				var/mob/living/carbon/Xenomorph/X = M
-				X.apply_effect(2, DAZE)
+				X.Daze(2)
 				X.SetEarDeafness(max(X.ear_deaf, 3))
 		else	//simple mobs?
-			M.apply_effect(5, STUN)
-			M.apply_effect(1, WEAKEN)
+			M.Stun(5)
+			M.KnockDown(1)
 
 	var/mob/living/carbon/human/H = M
 
@@ -279,21 +279,21 @@
 		if(1)
 			M.SetEarDeafness(max(M.ear_deaf, 2))
 		if(2)
-			M.apply_effect(2, DAZE)
+			M.Daze(2)
 			M.SetEarDeafness(max(M.ear_deaf, 3))
 		if(3)
 			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 10)
-			M.apply_effect(5, DAZE)
+			M.Daze(5)
 			M.SetEarDeafness(max(M.ear_deaf, 5))
 		if(4)
 			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 20)
-			M.apply_effect(5, DAZE)
+			M.Daze(5)
 			M.SetEarDeafness(max(M.ear_deaf, 7))
 			M.ear_damage += rand(1, 5)
 		if(5)
 			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 50)
-			M.apply_effect(10, DAZE)
-			M.apply_effect(5, WEAKEN)
+			M.Daze(10)
+			M.KnockDown(5)
 			M.SetEarDeafness(max(M.ear_deaf, 10))
 			M.ear_damage += rand(1, 10)
 

@@ -89,7 +89,7 @@
 				var/mob/living/L = AM
 				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),\
 								SPAN_DANGER("You trip on [src]!"))
-				L.apply_effect(1, WEAKEN)
+				L.KnockDown(1)
 				trigger_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			if(ishuman(AM))

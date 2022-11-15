@@ -74,6 +74,13 @@
 		icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
 
 /turf/open/proc/scorch(var/heat_level)
+	// All scorched icons should be in the dmi that their unscorched bases are
+	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3
+	// 0 being no scorch, and 3 the most scorched
+	// level 1 should appear dried version of the base sprite so singeing works well
+	// depending on the heat_level either will singe or progressively increase the scorchedness up to level 3
+	// heat_level's logic has been written to scale with /obj/flamer_fire's burnlevel --- greenfire=15,orangefire=30,bluefire=40,whitefire=80
+
 	if(scorchedness == 3)					//already scorched to hell, no point in doing anything more
 		return
 
@@ -86,14 +93,14 @@
 				scorchedness = 1
 
 		if(2 to 30)
-			scorchedness = Clamp(scorchedness + 1, 0, 3)
+			scorchedness = Clamp(scorchedness + 1, 0, 3)	//increase scorch by 1 (not that hot of a fire)
 
 		if(31 to 60)
-			scorchedness = Clamp(scorchedness + 2, 0, 3)
+			scorchedness = Clamp(scorchedness + 2, 0, 3)	//increase scorch by 2 (hotter fire)
 
 		if(61 to INFINITY)
-			scorchedness = 3
-			var/turf/open/singe_target 			//super heats singe the surrounding singeables
+			scorchedness = 3								//max out the scorchedness (hottest fire)
+			var/turf/open/singe_target 						//super heats singe the surrounding singeables
 			for(var/i in GLOB.cardinals)
 				singe_target = get_step(src, i)
 				if(istype(singe_target, /turf/open))

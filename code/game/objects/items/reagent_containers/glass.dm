@@ -308,6 +308,7 @@
 		filling.icon_state = "[icon_state][round_percent]"
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
+
 /obj/item/reagent_container/glass/beaker/large
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units."
@@ -521,11 +522,15 @@
 	icon_state = "pressurized_reagent_container"
 	item_state = "anesthetic"
 	amount_per_transfer_from_this = 0
-	possible_transfer_amounts = list(0)
+	possible_transfer_amounts = null
 	volume = 480
 	splashable = FALSE
 	w_class = SIZE_MASSIVE
 	flags_atom = CAN_BE_DISPENSED_INTO|OPENCONTAINER
+
+/obj/item/reagent_container/glass/pressurized_canister/Initialize()
+	. = ..()
+	update_icon()
 
 /obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)
 	return
@@ -538,6 +543,15 @@
 /obj/item/reagent_container/glass/pressurized_canister/set_APTFT()
 	to_chat(usr, SPAN_WARNING("[src] has no transfer control valve! Use a dispenser to fill it!"))
 	return
+
+/obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
+	update_icon()
+
+/obj/item/reagent_container/glass/pressurized_canister/update_icon()
+	to_world("/obj/item/storage/pouch/pressurized_reagent_canister/update_icon()")
+	if(reagents)
+		color = mix_color_from_reagents(reagents.reagent_list)
+		to_world("color = [color]")
 
 /obj/item/reagent_container/glass/bucket
 	desc = "It's a bucket. Holds 120 units."

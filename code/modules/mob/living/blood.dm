@@ -163,7 +163,7 @@
 	. = ..()
 
 /mob/living/carbon/Xenomorph/take_blood(obj/O, var/amount)
-	if(!O.reagents || amount <= 0)
+	if(!O.reagents || amount <= 0 || blood_volume <= 0)
 		return
 
 	if(blood_volume < amount)

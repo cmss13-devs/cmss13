@@ -389,54 +389,76 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		return
 	switch(skill)
 		if(SKILL_CQC)
-			if(skillcheck(src, SKILL_CQC, SKILL_CQC_MASTER))
-				return DURATION_MULTIPLIER_TIER_3
-			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_SKILLED))
-				return DURATION_MULTIPLIER_TIER_2
-			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_TRAINED))
+			if(skillcheck(src, SKILL_CQC, SKILL_CQC_TRAINED))
 				return DURATION_MULTIPLIER_TIER_1
+			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_MASTER))
+				return DURATION_MULTIPLIER_TIER_2
+			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_MASTER))
+				return DURATION_MULTIPLIER_TIER_3
 		//if(SKILL_MELEE_WEAPONS)
 		//if(SKILL_FIREARMS)
 		//if(SKILL_SPEC_WEAPONS)
 		//if(SKILL_ENDURANCE)
 		if(SKILL_ENGINEER)
+			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				return DURATION_MULTIPLIER_TIER_1
+			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				return DURATION_MULTIPLIER_TIER_2
 			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
 		if(SKILL_CONSTRUCTION)
+			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
+				return DURATION_MULTIPLIER_TIER_1
+			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
+				return DURATION_MULTIPLIER_TIER_2
 			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
 		//if(SKILL_LEADERSHIP)
 		if(SKILL_MEDICAL)
-			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_MASTER))
-				return DURATION_MULTIPLIER_TIER_3
-			else if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
+			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 				return DURATION_MULTIPLIER_TIER_1
-
-		if(SKILL_SURGERY) //Surgeons are the baseline.
-			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
-				return 0.6 //Synths are 40% faster. In the same conditions they work almost twice as quickly, and can perform surgeries in rough conditions or with improvised tools at full speed.
+			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
+				return DURATION_MULTIPLIER_TIER_2
+			else if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_MASTER))
+				return DURATION_MULTIPLIER_TIER_3
+// Surgeon
+		if(SKILL_SURGERY)
+			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
+				return 1.2
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_TRAINED))
 				return 1
-			else if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-				return 1.2 //Medic/nurse.
-
+			else if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
+				return 0.6
+// Intel
 		if(SKILL_INTEL)
-			if(skillcheck(src, SKILL_INTEL, SKILL_INTEL_EXPERT))
-				return DURATION_MULTIPLIER_TIER_2
 			if(skillcheck(src, SKILL_INTEL, SKILL_INTEL_TRAINED))
 				return DURATION_MULTIPLIER_TIER_1
+			if(skillcheck(src, SKILL_INTEL, SKILL_INTEL_EXPERT))
+				return DURATION_MULTIPLIER_TIER_2
 		//if(SKILL_RESEARCH)
 		//if(SKILL_PILOT)
 		//if(SKILL_POLICE)
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
 		if(SKILL_DOMESTIC)
-			if(skillcheck(src, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
-				return 0.5
 			if(skillcheck(src, SKILL_DOMESTIC, SKILL_DOMESTIC_TRAINED))
 				return 1
+			if(skillcheck(src, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
+				return 0.5
 			else
 				return 2
+// Fireman
+			if(SKILL_FIREMAN)
+				if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_SKILLED))
+					return DURATION_MULTIPLIER_TIER_1
+				if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_EXPERT))
+					return DURATION_MULTIPLIER_TIER_2
+				if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_MASTER))
+					return DURATION_MULTIPLIER_TIER_3
+				if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_MAX))
+					return 0.10
+
+
 
 /mob/proc/check_view_change(var/new_size, var/atom/source)
 	return new_size

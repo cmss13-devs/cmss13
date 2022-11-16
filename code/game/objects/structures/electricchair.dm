@@ -39,7 +39,7 @@
 		to_chat(buckled_mob, SPAN_DANGER("You feel a deep shock course through your body!"))
 		sleep(1)
 		buckled_mob.burn_skin(85)
-		buckled_mob.Stun(600)
+		buckled_mob.apply_effect(600, STUN)
 	visible_message(SPAN_DANGER("The electric chair went off!"), SPAN_DANGER("You hear a deep sharp shock!"))
 
 	A.power_light = light

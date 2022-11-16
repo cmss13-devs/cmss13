@@ -501,7 +501,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 			L.visible_message(SPAN_DANGER("The sentry's steel tusks impale [L]!"),
 			SPAN_DANGER("The sentry's steel tusks impale you!"))
 			if(L.mob_size <= MOB_SIZE_XENO_SMALL)
-				L.KnockDown(1)
+				L.apply_effect(1, WEAKEN)
 
 /obj/structure/machinery/defenses/sentry/mini
 	name = "UA 512-M mini sentry"

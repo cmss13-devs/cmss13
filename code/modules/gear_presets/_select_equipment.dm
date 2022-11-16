@@ -788,6 +788,26 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/toxin(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H.back), WEAR_IN_BACK)
 
+/datum/equipment_preset/proc/add_random_synth_infiltrator_equipment(var/mob/living/carbon/human/H) //To mitigate people metaing infiltrators on the spot
+	var/random_gear = rand(0,4)
+	switch(random_gear)
+		if(0)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
+		if(1)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
+		if(2)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+		if(3)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/trainee(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
+		if(4)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+
 /datum/equipment_preset/proc/add_random_survivor_medical_gear(var/mob/living/carbon/human/H) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
 	var/random_gear = rand(0,4)
 	switch(random_gear)

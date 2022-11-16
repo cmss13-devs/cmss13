@@ -31,8 +31,6 @@
 		if(istype(turf_to_check,/turf/open))
 			turf_to_check.overlays += image('icons/turf/walls/walls.dmi', "rock_side_[direction]", 2.99) //Really high since it's an overhead turf and it shouldn't collide with anything else
 
-
-
 //Ground map dense jungle
 /turf/closed/gm
 	name = "dense jungle"
@@ -234,6 +232,13 @@
 
 /turf/closed/shuttle/dropship2/transparent
 	opacity = 0
+
+/turf/closed/shuttle/dropship2/tornado
+	name = "\improper Tornado"
+	icon = 'icons/turf/dropship3.dmi'
+
+/turf/closed/shuttle/dropship2/tornado/typhoon
+	name = "\improper Typhoon"
 
 /turf/closed/shuttle/escapepod
 	name = "wall"

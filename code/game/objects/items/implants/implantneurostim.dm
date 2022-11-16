@@ -64,7 +64,7 @@
 		M.visible_message(SPAN_DANGER("[M] convulses in pain!"), SPAN_DANGER(mob_pain_msg))
 		M.flash_eyes(1, TRUE)
 		M.stunned += 10
-		M.KnockDown(10)
+		M.apply_effect(10, WEAKEN)
 		M.apply_damage(100, HALLOSS, part)
 		M.apply_damage(5, BURN, part, 0, 0, src)
 

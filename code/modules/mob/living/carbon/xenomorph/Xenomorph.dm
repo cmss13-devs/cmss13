@@ -239,6 +239,13 @@
 	var/got_evolution_message = FALSE
 	var/pounce_distance = 0
 
+	// Life reduction variables.
+	var/life_stun_reduction = -1.5
+	var/life_knockdown_reduction = -1.5
+	var/life_knockout_reduction = -1.5
+	var/life_daze_reduction = -1.5
+	var/life_slow_reduction = -1.5
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -730,7 +737,7 @@
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
-		puller.KnockDown(rand(caste.tacklestrength_min,caste.tacklestrength_max))
+		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
 		return FALSE
@@ -967,7 +974,7 @@
 
 /mob/living/carbon/Xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
-	KnockDown(4, TRUE)
+	apply_effect(4, WEAKEN)
 	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 

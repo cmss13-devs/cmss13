@@ -231,3 +231,49 @@
   - bugfix: Fixed tripod lights and candelabras not starting as on, fixed not being
       able to break these items and flashlights as xeno.
   - bugfix: Fixed visual bug with weeds on windows.
+2022-11-14:
+  NoKohi:
+  - admin: moved game panels from the game category to the panels category in the
+      admin tab
+  ThePiachu:
+  - rscadd: Added UI buttons that will let you Set Transfer Amounts all reagent containers
+      (bottles, beakers, etc.). This should make chemistry work a bit more enjoyable.
+  - qol: Added extra transfer amounts for Bluespace Beakers - 20, 40, 80, for those
+      transfer edge cases.
+  - bugfix: Crates can no longer pick up decals.
+  - spellcheck: Fixed two small typos in Requisitions (lacking closing brackets on
+      ammo descriptions).
+  - bugfix: Placed ammo boxes now give a proper description within a neat rectangle
+      like all the other items.
+  - refactor: Tiny code refactor around ammo boxes unfolding into cardboard.
+  - qol: Empty shotgun shell boxes now unfold into cardboard when clicked.
+  Unknownity:
+  - rscadd: Added Infiltrator Synthetics that can be used for events, these guys are
+      almost indistinguishable to humans, better watch your back in the future..
+  - admin: Added a simpler way for admins to change a mob's faction, it's found in
+      the player panel alongside set squad.
+  - bugfix: Fixed CLF Synths visually appearing as Gen 3 synthetics
+  fira:
+  - qol: Ghosts now have a timer displaying time left to hijack end in Statpanel.
+  - bugfix: Evac timer in Status pane will now display as such.
+  - rscadd: Supply drops now use drop pods. USCM advises personnel not to stand below
+      them.
+  - qol: Squads will now get a text notification if a supply pad is launched for them,
+      on top of just the chat one.
+  - refactor: Refactored message sending code in squads/overwatch.
+  kugamo:
+  - bugfix: 'Fixed visual bug with dropships: having plating underneath in space and
+      on lzs.'
+  - qol: Resin holes can now be placed ontop of weed nodes; replacing them.
+2022-11-15:
+  QuickLoad:
+  - balance: synthetic unarmed damage increased to disincentivize carrying weapons.
+  - balance: synthetics are more resistant against burns
+  Segrain:
+  - bugfix: Status effects (slow, knockdown, etc) once again can come to an end for
+      xenos instead of lasting forever.
+  carlarctg:
+  - refactor: refactored how stuns/knockdowns/etc are handled in code to allow for
+      manual cancellation without shitcode.
+  realforest2001:
+  - rscadd: Paygrades now display on non Yautja or Xeno mobs.

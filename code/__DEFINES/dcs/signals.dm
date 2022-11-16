@@ -209,6 +209,11 @@
 #define COMSIG_LIVING_SPEAK "living_speak"
 	#define COMPONENT_OVERRIDE_SPEAK (1<<0)
 
+#define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
+#define COMSIG_LIVING_ADJUST_EFFECT "living_adjust_effect"
+#define COMSIG_LIVING_SET_EFFECT "living_set_effect"
+	#define COMPONENT_CANCEL_EFFECT (1<<0)
+
 /// From /obj/item/device/defibrillator/attack
 #define COMSIG_HUMAN_REVIVED "human_revived"
 /// From /mob/living/carbon/human/bullet_act

@@ -230,13 +230,13 @@
 				if(GRAB_AGGRESSIVE)
 					M.visible_message(SPAN_DANGER("[user] bashes [M] against \the [src]!"))
 					if(prob(50))
-						M.KnockDown(1)
+						M.apply_effect(1, WEAKEN)
 					M.apply_damage(10)
 					if(!not_damageable) //Impossible to destroy
 						health -= 25
 				if(GRAB_CHOKE)
 					M.visible_message(SPAN_DANGER("[user] crushes [M] against \the [src]!"))
-					M.KnockDown(5)
+					M.apply_effect(5, WEAKEN)
 					M.apply_damage(20)
 					if(!not_damageable) //Impossible to destroy
 						health -= 50

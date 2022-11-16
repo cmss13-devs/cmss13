@@ -1433,6 +1433,7 @@
 #include "code\modules\cm_tech\droppod\gear_access_point.dm"
 #include "code\modules\cm_tech\droppod\lz_effect.dm"
 #include "code\modules\cm_tech\droppod\marine.dm"
+#include "code\modules\cm_tech\droppod\supply.dm"
 #include "code\modules\cm_tech\implements\adv_weapon.dm"
 #include "code\modules\cm_tech\implements\ammo_kits.dm"
 #include "code\modules\cm_tech\implements\armor.dm"

@@ -38,7 +38,7 @@
 /// Clear all running status effects assuming deletion
 /mob/living/proc/cleanup_status_effects()
 	PROTECTED_PROC(TRUE)
-	if(LAZYLEN(status_effects))
+	if(length(status_effects))
 		for(var/datum/status_effect/S as anything in status_effects)
 			if(S?.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
 				qdel(S)

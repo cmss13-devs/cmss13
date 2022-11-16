@@ -278,6 +278,8 @@
   realforest2001:
   - rscadd: Paygrades now display on non Yautja or Xeno mobs.
 2022-11-16:
+  Bilary:
+  - spellcheck: Removed a redundant 'the' in the BR roundstart message.
   NoKohi:
   - bugfix: fixed facehuggers not stunning when applied
   - bugfix: fixed resisting flame + acid stun not applying

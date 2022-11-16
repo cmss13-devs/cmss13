@@ -1,16 +1,6 @@
 import { KEY_ESCAPE } from 'common/keycodes';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Button,
-  Section,
-  Stack,
-  Flex,
-  Box,
-  Tooltip,
-  Input,
-  NoticeBox,
-  Icon,
-} from '../components';
+import { Button, Section, Stack, Flex, Box, Tooltip, Input, NoticeBox, Icon } from '../components';
 import { Window } from '../layouts';
 import { classes } from 'common/react';
 import { BoxProps } from '../components/Box';
@@ -64,12 +54,12 @@ const DescriptionTooltip = (props: RecordNameProps, context) => {
   return (
     <Tooltip
       position="bottom-start"
-      className={classes(['VendingSorted__Tooltip', props.className])}
+      className={classes(['Tooltip', props.className])}
       content={
         <NoticeBox
           info
           className={classes([
-            'VendingSorted__Description',
+            'Description',
             isRecommended && 'VendingSorted_RecommendedDescription',
             isMandatory && 'VendingSorted_MandatoryDescription',
           ])}>
@@ -97,9 +87,9 @@ const VendButton = (props: VendButtonProps, _) => {
   return (
     <Button
       className={classes([
-        'VendingSorted__VendButton',
-        props.isRecommended && 'VendingSorted__RecommendedVendButton',
-        props.isMandatory && 'VendingSorted__MandatoryVendButton',
+        'VendButton',
+        props.isRecommended && 'RecommendedVendButton',
+        props.isMandatory && 'MandatoryVendButton',
       ])}
       preserveWhitespace
       icon={props.text ? undefined : props.available ? 'circle-down' : 'xmark'}
@@ -129,24 +119,16 @@ const VendableItem = (props: VenableItem, context) => {
     <Flex align="center" justify="space-between" align-items="center">
       <Flex.Item>
         <span
-          className={classes([
-            `VendingSorted__Icon`,
-            `vending32x32`,
-            `${props.record.image}`,
-          ])}
+          className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
         />
       </Flex.Item>
 
       <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
+        <Box className="Spacer" />
       </Flex.Item>
 
       <Flex.Item width={2}>
-        <span
-          className={classes([
-            'VendingSorted__Text',
-            !available && 'VendingSorted__Failure',
-          ])}>
+        <span className={classes(['Text', !available && 'Failure'])}>
           {quantity}
         </span>
       </Flex.Item>
@@ -162,15 +144,12 @@ const VendableItem = (props: VenableItem, context) => {
       </Flex.Item>
 
       <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
+        <Box className="Spacer" />
       </Flex.Item>
 
       <Flex.Item>
         <DescriptionTooltip record={record}>
-          <Icon
-            name="circle-info"
-            className={classes(['VendingSorted__RegularItemText'])}
-          />
+          <Icon name="circle-info" className={classes(['RegularItemText'])} />
         </DescriptionTooltip>
       </Flex.Item>
     </Flex>
@@ -191,21 +170,17 @@ const VendableClothingItem = (props: VenableItem, context) => {
     <Flex align="center" justify="space-between" align-items="center">
       <Flex.Item>
         <span
-          className={classes([
-            `VendingSorted__Icon`,
-            `vending32x32`,
-            `${props.record.image}`,
-          ])}
+          className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
         />
       </Flex.Item>
 
       <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
+        <Box className="Spacer" />
       </Flex.Item>
 
       {cost !== 0 && (
-        <Flex.Item className="VendingSorted__Cost">
-          <span className={classes(['VendingSorted__Text'])}>
+        <Flex.Item className="Cost">
+          <span className={classes(['Text'])}>
             {cost === 0 ? undefined : `${cost}P`}
           </span>
         </Flex.Item>
@@ -222,23 +197,20 @@ const VendableClothingItem = (props: VenableItem, context) => {
       </Flex.Item>
 
       <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
+        <Box className="Spacer" />
       </Flex.Item>
 
       <Flex.Item>
         <DescriptionTooltip record={record}>
           <Icon
             name="circle-info"
-            className={classes([
-              'VendingSorted__ShowDesc',
-              'VendingSorted__RegularItemText',
-            ])}
+            className={classes(['ShowDesc', 'RegularItemText'])}
           />
         </DescriptionTooltip>
       </Flex.Item>
 
       <Flex.Item>
-        <Box className="VendingSorted__Spacer" />
+        <Box className="Spacer" />
       </Flex.Item>
     </Flex>
   );
@@ -291,7 +263,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
 
   return (
     <Section title={displayName}>
-      <Stack vertical fill className="VendingSorted__CategorySection">
+      <Stack vertical fill className="CategorySection">
         {filteredCategories
           .sort(
             data.vendor_type === 'clothing'
@@ -350,7 +322,7 @@ export const VendingSorted = (_, context) => {
           }
         }}>
         {!isEmpty && !show_points && (
-          <Box className={classes(['VendingSorted__SearchBox'])}>
+          <Box className={classes(['SearchBox'])}>
             <Flex
               align="center"
               justify="space-between"
@@ -371,7 +343,7 @@ export const VendingSorted = (_, context) => {
         )}
 
         {!isEmpty && show_points && (
-          <Box className={classes(['VendingSorted__SearchBox'])}>
+          <Box className={classes(['SearchBox'])}>
             <Flex
               align="center"
               justify="space-between"
@@ -388,17 +360,17 @@ export const VendingSorted = (_, context) => {
         )}
 
         {isEmpty && (
-          <NoticeBox danger className="VendingSorted__ItemContainer">
+          <NoticeBox danger className="ItemContainer">
             Nothing in here seems to be for you. If this is a mistake contact
             your local administrator.
           </NoticeBox>
         )}
 
         {!isEmpty && (
-          <Box className="VendingSorted__ItemContainer">
+          <Box className="ItemContainer">
             <Flex direction="column" fill>
               {categories.map((category, i) => (
-                <Flex.Item key={i} className="VendingSorted__Category">
+                <Flex.Item key={i} className="Category">
                   <ViewVendingCategory category={category} />
                 </Flex.Item>
               ))}

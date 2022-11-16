@@ -393,7 +393,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		if(SKILL_CQC)
 			if(skillcheck(src, SKILL_CQC, SKILL_CQC_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
-			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_MASTER))
+			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_EXPERT))
 				return DURATION_MULTIPLIER_TIER_2
 			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_TRAINED))
 				return DURATION_MULTIPLIER_TIER_1

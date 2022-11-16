@@ -143,7 +143,7 @@
 
 			M.flick_attack_overlay(src, "slash")
 			playsound(loc, slash_sound, 25, 1)
-			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
+			apply_armored_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
 
 			if(M.behavior_delegate)
 				var/datum/behavior_delegate/MD = M.behavior_delegate

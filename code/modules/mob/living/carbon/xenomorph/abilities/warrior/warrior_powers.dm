@@ -183,7 +183,7 @@
 			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
 
 
-	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
+	H.apply_armored_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
 
 	shake_camera(H, 2, 1)
 	step_away(H, X, 2)

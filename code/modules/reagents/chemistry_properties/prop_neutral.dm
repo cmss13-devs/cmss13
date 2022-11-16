@@ -293,7 +293,7 @@
 /datum/chem_property/neutral/fluffing/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time))
 		to_chat(M, SPAN_WARNING("You feel itchy all over!"))
-		M.take_limb_damage(potency) //Hair growing inside your body
+		M.apply_limb_damage(potency) //Hair growing inside your body
 
 /datum/chem_property/neutral/fluffing/process_critical(mob/living/M, var/potency = 1, delta_time)
 	to_chat(M, SPAN_WARNING("You feel like something is penetrating your skull!"))

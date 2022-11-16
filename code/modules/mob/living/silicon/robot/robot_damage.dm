@@ -22,13 +22,13 @@
 
 /mob/living/silicon/robot/adjustBruteLoss(var/amount)
 	if(amount > 0)
-		take_overall_damage(amount, 0)
+		apply_overall_damage(amount, 0)
 	else
 		heal_overall_damage(-amount, 0)
 
 /mob/living/silicon/robot/adjustFireLoss(var/amount)
 	if(amount > 0)
-		take_overall_damage(0, amount)
+		apply_overall_damage(0, amount)
 	else
 		heal_overall_damage(0, -amount)
 
@@ -62,7 +62,7 @@
 	var/datum/robot_component/picked = pick(parts)
 	picked.heal_damage(brute,burn)
 
-/mob/living/silicon/robot/take_limb_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0)
+/mob/living/silicon/robot/apply_limb_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0)
 	var/list/components = get_damageable_components()
 	if(!components.len)
 		return
@@ -108,7 +108,7 @@
 
 		parts -= picked
 
-/mob/living/silicon/robot/take_overall_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/used_weapon = null)
+/mob/living/silicon/robot/apply_overall_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/used_weapon = null)
 	if(status_flags & GODMODE)	return	//godmode
 	var/list/datum/robot_component/parts = get_damageable_components()
 

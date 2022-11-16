@@ -211,7 +211,7 @@
 			if(X.can_not_harm(C))
 				continue
 			X.flick_attack_overlay(C, "slash")
-			C.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+			C.apply_armored_damage(damage, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(C), "alien_claw_flesh", 30, TRUE)
 
 			if(should_sslow)
@@ -322,9 +322,9 @@
 	// Damage
 	var/obj/limb/head/head = H.get_limb("head")
 	if(ishuman(H) && head)
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
+		H.apply_armored_damage(damage, ARMOR_MELEE, BRUTE, "head")
 	else
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE) // just for consistency
+		H.apply_armored_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE) // just for consistency
 
 	// Heal
 	X.gain_health(heal_amount)
@@ -412,7 +412,7 @@
 				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("You claw [human]!"))
 				playsound(get_turf(human), "alien_claw_flesh", 30, 1)
 
-			human.apply_armoured_damage(get_xeno_damage_slash(human, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+			human.apply_armored_damage(get_xeno_damage_slash(human, damage), ARMOR_MELEE, BRUTE, "chest", 20)
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)

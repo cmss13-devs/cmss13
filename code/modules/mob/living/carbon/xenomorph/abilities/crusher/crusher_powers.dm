@@ -27,7 +27,7 @@
 	L.KnockDown(2)
 	X.visible_message(SPAN_XENODANGER("[X] overruns [H], brutally trampling them underfoot!"), SPAN_XENODANGER("You brutalize [H] as you crush them underfoot!"))
 
-	H.apply_armoured_damage(get_xeno_damage_slash(H, direct_hit_damage), ARMOR_MELEE, BRUTE)
+	H.apply_armored_damage(get_xeno_damage_slash(H, direct_hit_damage), ARMOR_MELEE, BRUTE)
 	xeno_throw_human(H, X, X.dir, 3)
 
 	H.last_damage_data = create_cause_data(X.caste_type, X)
@@ -91,7 +91,7 @@
 		if(H.mob_size < MOB_SIZE_BIG)
 			H.KnockDown(get_xeno_stun_duration(H, 0.2))
 
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
+		H.apply_armored_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		H.last_damage_data = create_cause_data(X.caste_type, X)
 
 	for (var/mob/living/carbon/H in orange(distance, get_turf(X)))
@@ -136,8 +136,8 @@
 		if(Human.mob_size < MOB_SIZE_BIG)
 			Human.KnockDown(get_xeno_stun_duration(Human, 0.2))
 
-		Human.apply_armoured_damage(get_xeno_damage_slash(Human, damage), ARMOR_MELEE, BRUTE,"chest", 3)
-		Human.apply_armoured_damage(15, BRUTE) // random
+		Human.apply_armored_damage(get_xeno_damage_slash(Human, damage), ARMOR_MELEE, BRUTE,"chest", 3)
+		Human.apply_armored_damage(15, BRUTE) // random
 		Human.last_damage_data = create_cause_data(Xeno.caste_type, Xeno)
 		Human.emote("pain")
 		Targeted = Human

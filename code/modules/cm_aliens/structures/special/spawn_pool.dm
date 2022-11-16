@@ -217,11 +217,11 @@
 
 	if(H.lying)
 		for(var/i in DEFENSE_ZONES_LIVING)
-			H.apply_armoured_damage(damage_amount * 0.35, ARMOR_BIO, BURN, i)
+			H.apply_armored_damage(damage_amount * 0.35, ARMOR_BIO, BURN, i)
 		return
-	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
-	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
-	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_leg")
-	H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_leg")
+	H.apply_armored_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
+	H.apply_armored_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
+	H.apply_armored_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_leg")
+	H.apply_armored_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_leg")
 
 

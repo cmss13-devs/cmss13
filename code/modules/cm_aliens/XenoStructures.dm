@@ -204,7 +204,7 @@
 	if(H.ally_of_hivenumber(hivenumber))
 		return
 
-	H.apply_armoured_damage(damage, penetration = penetration, def_zone = pick(target_limbs))
+	H.apply_armored_damage(damage, penetration = penetration, def_zone = pick(target_limbs))
 	H.last_damage_data = construction_data
 
 // Praetorian Sticky Resin spit uses this.

@@ -103,7 +103,7 @@
 			amount *= brute_mod
 
 	if(amount > 0)
-		take_overall_damage(amount, 0)
+		apply_overall_damage(amount, 0)
 	else
 		heal_overall_damage(-amount, 0)
 
@@ -115,7 +115,7 @@
 			amount *= burn_mod
 
 	if(amount > 0)
-		take_overall_damage(0, amount)
+		apply_overall_damage(0, amount)
 	else
 		heal_overall_damage(0, -amount)
 
@@ -280,7 +280,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 //Damages ONE external organ, organ gets randomly selected from damagable ones.
 //It automatically updates damage overlays if necesary
 //It automatically updates health status
-/mob/living/carbon/human/take_limb_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0)
+/mob/living/carbon/human/apply_limb_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0)
 	var/list/obj/limb/parts = get_damageable_limbs()
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
@@ -315,7 +315,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	if(update)	UpdateDamageIcon()
 
 // damage MANY limbs, in random order
-/mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null)
+/mob/living/carbon/human/apply_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null)
     if(status_flags & GODMODE)
         return    //godmode
     var/list/obj/limb/parts = get_damageable_limbs(80)
@@ -326,7 +326,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
     UpdateDamageIcon()
 
 // damage MANY LIMBS, in random order
-/mob/living/carbon/human/proc/take_overall_armored_damage(var/damage, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/limb_damage_chance = 80, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
+/mob/living/carbon/human/proc/apply_overall_armored_damage(var/damage, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/limb_damage_chance = 80, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
 	if(status_flags & GODMODE)
 		return    //godmode
 	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
@@ -378,7 +378,7 @@ This function restores all limbs.
 	return (locate(limb_types_by_name[zone]) in limbs)
 
 
-/mob/living/carbon/human/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
+/mob/living/carbon/human/apply_armored_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
 	if(damage <= 0)
 		return ..(damage, armour_type, damage_type, def_zone)
 

@@ -53,7 +53,7 @@
 			SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
 			if(prob(60) && !victim.stat && victim.pain.feels_pain)
 				INVOKE_ASYNC(victim, /mob.proc/emote, "scream") //Topkek
-			victim.take_limb_damage(0, 12) //Sizzledam! This automagically burns a random existing body part.
+			victim.apply_limb_damage(0, 12) //Sizzledam! This automagically burns a random existing body part.
 			victim.add_blood("#dffc00", BLOOD_BODY)
 
 /datum/surgery_step/cut_larval_pseudoroots/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

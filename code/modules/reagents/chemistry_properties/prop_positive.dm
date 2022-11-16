@@ -109,7 +109,7 @@
 	var/mob/living/carbon/C = M
 	C.blood_volume = min(C.blood_volume+potency,BLOOD_VOLUME_MAXIMUM+100)
 	if(potency > POTENCY_MAX_TIER_1 && C.blood_volume > BLOOD_VOLUME_MAXIMUM && !isYautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
-		M.take_limb_damage(potency)
+		M.apply_limb_damage(potency)
 		M.apply_damage(POTENCY_MULTIPLIER_MEDIUM*potency, OXY)
 		M.reagent_move_delay_modifier += potency
 		M.recalculate_move_delay = TRUE
@@ -173,7 +173,7 @@
 	M.apply_internal_damage(0.5 * potency * delta_time, "heart")
 
 /datum/chem_property/positive/musclestimulating/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.take_limb_damage(0.5 * potency * delta_time)
+	M.apply_limb_damage(0.5 * potency * delta_time)
 
 /datum/chem_property/positive/musclestimulating/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
 	if(!isXenoOrHuman(M))
@@ -368,7 +368,7 @@
 				to_chat(M, SPAN_NOTICE("You feel the bones in your [L.display_name] starting to knit together."))
 
 /datum/chem_property/positive/bonemending/process_overdose(mob/living/M, var/potency = 1)
-	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM*potency)
+	M.apply_limb_damage(POTENCY_MULTIPLIER_MEDIUM*potency)
 
 /datum/chem_property/positive/bonemending/process_critical(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
@@ -451,12 +451,12 @@
 		if(A && istype(A))
 			if(A.counter > 0)
 				A.counter = A.counter - potency
-				H.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
+				H.apply_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
 			else
 				A.stage--
 				if(A.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
 					qdel(A)
-					H.take_limb_damage(0,rand(20,40))
+					H.apply_limb_damage(0,rand(20,40))
 					H.vomit()
 				else
 					A.counter = 90
@@ -575,7 +575,7 @@
 		to_chat(M, SPAN_NOTICE("It is really hard to move your body."))
 
 /datum/chem_property/positive/hyperdensificating/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.take_limb_damage(1.5 * potency * delta_time)
+	M.apply_limb_damage(1.5 * potency * delta_time)
 
 /datum/chem_property/positive/neuroshielding
 	name = PROPERTY_NEUROSHIELDING
@@ -772,7 +772,7 @@
 
 /datum/chem_property/positive/crystallization/process(mob/living/M, var/potency = 1)
 	to_chat(M, SPAN_WARNING("You feel like many razor sharp blades cut through your insides!"))
-	M.take_limb_damage(brute = 0.5 * potency)
+	M.apply_limb_damage(brute = 0.5 * potency)
 	M.apply_internal_damage(potency, "liver")
 
 //properties with combat uses
@@ -938,4 +938,4 @@
 	M.apply_damage(potency, TOX)
 
 /datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
+	M.apply_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis

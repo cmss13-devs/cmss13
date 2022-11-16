@@ -115,7 +115,7 @@
 					continue
 
 				apply_spray(M)
-				M.apply_armoured_damage(damage_amount, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				M.apply_armored_damage(damage_amount, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 
@@ -166,21 +166,21 @@
 			H.emote("pain")
 			if(should_stun)
 				H.KnockDown(stun_duration)
-			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
-			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
+			H.apply_armored_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
+			H.apply_armored_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
 		else if (isXeno(H))
 			var/mob/living/carbon/Xenomorph/X = H
 			if (X.mob_size < MOB_SIZE_BIG && should_stun)
 				X.KnockDown(stun_duration)
 			X.emote("hiss")
-			H.apply_armoured_damage(damage_amount * 0.4 * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
+			H.apply_armored_damage(damage_amount * 0.4 * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
 
 		H.last_damage_data = cause_data
 		H.UpdateDamageIcon()
 		H.updatehealth()
 	else
-		H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
+		H.apply_armored_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
 		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 
 /obj/effect/xenomorph/spray/weak
@@ -229,8 +229,8 @@
 		if (should_stun && !H.lying)
 			H.KnockDown(stun_duration)
 		H.last_damage_data = cause_data
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
+		H.apply_armored_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
+		H.apply_armored_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
 		H.UpdateDamageIcon()
 		H.updatehealth()
 	else if (isXeno(M))
@@ -259,12 +259,12 @@
 			to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 			H.emote("pain")
 			H.last_damage_data = cause_data
-			H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
-			H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
+			H.apply_armored_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
+			H.apply_armored_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
 			H.UpdateDamageIcon()
 			H.updatehealth()
 		else
-			H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
+			H.apply_armored_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
 			to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 	else if (isXeno(M))
 		..(M)
@@ -417,7 +417,7 @@
 		if (!H.stat)
 			if(source_xeno.can_not_harm(H))
 				continue
-			H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
+			H.apply_armored_damage(damage, ARMOR_BIO, BURN)
 			animation_flash_color(H)
 			to_chat(H, SPAN_XENODANGER("You are scalded by acid as a massive glob explodes nearby!"))
 
@@ -497,7 +497,7 @@
 		animation_flash_color(H)
 
 		if(isXeno(H))
-			H.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT * xeno_empower_modifier, ARMOR_BIO, BURN)
+			H.apply_armored_damage(damage * XVX_ACID_DAMAGEMULT * xeno_empower_modifier, ARMOR_BIO, BURN)
 		else
 			if(empowered)
 				new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
@@ -507,9 +507,9 @@
 					found = F
 					break
 			if(found)
-				H.apply_armoured_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
+				H.apply_armored_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
 			else
-				H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
+				H.apply_armored_damage(damage, ARMOR_BIO, BURN)
 
 		if (message)
 			to_chat(H, SPAN_XENODANGER(message))

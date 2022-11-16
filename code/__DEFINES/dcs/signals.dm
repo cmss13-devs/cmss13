@@ -256,8 +256,8 @@
 #define COMSIG_XENO_ON_HEAL "xeno_on_heal"
 #define COMSIG_XENO_ON_HEAL_WOUNDS "xeno_on_heal_wounds"
 
-/// from /mob/living/carbon/Xenomorph/apply_armoured_damage(): (list/damagedata)
-#define COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE "xeno_pre_apply_armoured_damage"
+/// from /mob/living/carbon/Xenomorph/apply_armored_damage(): (list/damagedata)
+#define COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE "xeno_pre_apply_armored_damage"
 
 /// From /mob/living/carbon/Xenomorph/bullet_act
 #define COMSIG_XENO_BULLET_ACT "xeno_bullet_act"

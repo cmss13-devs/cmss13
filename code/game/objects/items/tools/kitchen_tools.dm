@@ -214,7 +214,7 @@
 /obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
 	to_chat(user, SPAN_WARNING("You accidentally slam yourself with the [src]!"))
 	user.KnockDown(1)
-	user.take_limb_damage(2)
+	user.apply_limb_damage(2)
 
 	playsound(M, 'sound/items/trayhit2.ogg', 25, 1) //sound playin'
 	return //it always returns, but I feel like adding an extra return just for safety's sakes. EDIT; Oh well I won't :3

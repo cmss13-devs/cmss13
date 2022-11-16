@@ -820,7 +820,7 @@
 	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
 		return
 
-	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
+	L.apply_armored_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
 	L.AdjustSuperslowed(super_slowdown_duration)
 
 /datum/ammo/bullet/smg/incendiary
@@ -1481,7 +1481,7 @@
 /datum/ammo/bullet/sniper/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P.homing_target && M == P.homing_target)
 		var/mob/living/L = M
-		L.apply_armoured_damage(damage*2, ARMOR_BULLET, BRUTE, null, penetration)
+		L.apply_armored_damage(damage*2, ARMOR_BULLET, BRUTE, null, penetration)
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/incendiary
@@ -1532,7 +1532,7 @@
 			if(target.mob_size >= MOB_SIZE_BIG)
 				slow_duration = 4
 		M.AdjustSuperslowed(slow_duration)
-		L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
+		L.apply_armored_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 	else
 		burst(get_turf(M),P,damage_type, 2 , 2)
@@ -1633,7 +1633,7 @@
 				size_damage_mod += 0.6
 			if(target.mob_size >= MOB_SIZE_BIG)
 				size_damage_mod += 0.6
-		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
+		L.apply_armored_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
 		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
@@ -1661,9 +1661,9 @@
 				size_damage_mod += 0.5
 			if(target.mob_size >= MOB_SIZE_BIG)
 				size_damage_mod += 1
-			L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
+			L.apply_armored_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
 		else
-			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
+			L.apply_armored_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
 		// 150% damage to runners (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 

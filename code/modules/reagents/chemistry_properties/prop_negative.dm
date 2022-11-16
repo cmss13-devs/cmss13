@@ -87,13 +87,13 @@
 
 /datum/chem_property/negative/corrosive/process(mob/living/M, var/potency = 1, delta_time)
 	..()
-	M.take_limb_damage(0, 0.5 * potency * delta_time)
+	M.apply_limb_damage(0, 0.5 * potency * delta_time)
 
 /datum/chem_property/negative/corrosive/process_overdose(mob/living/M, var/potency = 1)
-	M.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
+	M.apply_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
 
 /datum/chem_property/negative/corrosive/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(0,POTENCY_MULTIPLIER_VHIGH*potency)
+	M.apply_limb_damage(0,POTENCY_MULTIPLIER_VHIGH*potency)
 
 /datum/chem_property/negative/corrosive/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume, var/potency) //from sacid
 	var/meltprob = potency * POTENCY_MULTIPLIER_HIGH
@@ -142,11 +142,11 @@
 						H.status_flags |= DISFIGURED
 						H.name = H.get_visible_name()
 			else
-				M.take_limb_damage(min(6, volume))
+				M.apply_limb_damage(min(6, volume))
 			return
 	else
 		if(!M.unacidable)
-			M.take_limb_damage(min(6, volume))
+			M.apply_limb_damage(min(6, volume))
 	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
 		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
@@ -173,13 +173,13 @@
 
 /datum/chem_property/negative/biocidic/process(mob/living/M, var/potency = 1, delta_time)
 	..()
-	M.take_limb_damage(0.5 * potency * delta_time)
+	M.apply_limb_damage(0.5 * potency * delta_time)
 
 /datum/chem_property/negative/biocidic/process_overdose(mob/living/M, var/potency = 1)
-	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)
+	M.apply_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/negative/biocidic/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(POTENCY_MULTIPLIER_VHIGH * potency)
+	M.apply_limb_damage(POTENCY_MULTIPLIER_VHIGH * potency)
 
 /datum/chem_property/negative/paining
 	name = PROPERTY_PAINING
@@ -205,10 +205,10 @@
 		return
 
 	M.pain.apply_pain(PROPERTY_PAINING_PAIN_OD * potency)
-	M.take_limb_damage(0.5 * potency * delta_time)
+	M.apply_limb_damage(0.5 * potency * delta_time)
 
 /datum/chem_property/negative/paining/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)
+	M.apply_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/negative/hemolytic
 	name = PROPERTY_HEMOLYTIC
@@ -294,7 +294,7 @@
 	M.adjustCloneLoss(POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/negative/carcinogenic/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
+	M.apply_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
 
 /datum/chem_property/negative/hepatotoxic
 	name = PROPERTY_HEPATOTOXIC

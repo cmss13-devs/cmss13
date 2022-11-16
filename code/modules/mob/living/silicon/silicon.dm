@@ -38,10 +38,10 @@
 /mob/living/silicon/emp_act(severity)
 	switch(severity)
 		if(1)
-			src.take_limb_damage(20)
+			src.apply_limb_damage(20)
 			Stun(rand(5,10))
 		if(2)
-			src.take_limb_damage(10)
+			src.apply_limb_damage(10)
 			Stun(rand(1,5))
 	flash_eyes(1, TRUE, type = /atom/movable/screen/fullscreen/flash/noise)
 

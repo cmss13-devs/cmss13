@@ -56,7 +56,7 @@
 	if(!(H.knocked_down || H.frozen || H.slowed))
 		return
 
-	H.apply_armoured_damage(get_xeno_damage_slash(H, tearing_damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected ? bound_xeno.zone_selected : "chest")
+	H.apply_armored_damage(get_xeno_damage_slash(H, tearing_damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected ? bound_xeno.zone_selected : "chest")
 	H.visible_message(SPAN_DANGER("[bound_xeno] tears into [H]!"))
 	playsound(bound_xeno, 'sound/weapons/alien_tail_attack.ogg', 25, TRUE)
 	return

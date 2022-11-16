@@ -185,7 +185,7 @@
 			if(momentum == max_momentum)
 				dist = momentum * 0.25
 			step(Mob, ram_dir, dist)
-			Mob.take_overall_armored_damage(momentum * 6)
+			Mob.apply_overall_armored_damage(momentum * 6)
 			INVOKE_ASYNC(Mob, /mob/living/carbon/human.proc/emote,"pain")
 			shake_camera(Mob, 7,3)
 			animation_flash_color(Mob)

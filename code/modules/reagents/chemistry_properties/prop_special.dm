@@ -48,7 +48,7 @@
 	M.adjustCloneLoss(potency * delta_time)
 
 /datum/chem_property/special/hypergenetic/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.take_limb_damage(1.5 * potency * delta_time, 1.5 * potency * delta_time)
+	M.apply_limb_damage(1.5 * potency * delta_time, 1.5 * potency * delta_time)
 
 /datum/chem_property/special/hypergenetic/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
 	if(!isXenoOrHuman(M))
@@ -79,7 +79,7 @@
 	M.adjustCloneLoss(POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/special/organhealing/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)
+	M.apply_limb_damage(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)
 
 /datum/chem_property/special/DNA_Disintegrating
 	name = PROPERTY_DNA_DISINTEGRATING

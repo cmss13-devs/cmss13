@@ -343,8 +343,8 @@
 	var/momentum_mult = 5
 	if(CCA.momentum == CCA.max_momentum)
 		momentum_mult = 8
-	take_overall_armored_damage(CCA.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 60, 13) // Giving AP because this spreads damage out and then applies armor to them
-	apply_armoured_damage(CCA.momentum * momentum_mult/4,ARMOR_MELEE, BRUTE,"chest")
+	apply_overall_armored_damage(CCA.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 60, 13) // Giving AP because this spreads damage out and then applies armor to them
+	apply_armored_damage(CCA.momentum * momentum_mult/4,ARMOR_MELEE, BRUTE,"chest")
 	X.visible_message(
 		SPAN_DANGER("[X] rams \the [src]!"),
 		SPAN_XENODANGER("You ram \the [src]!")
@@ -415,7 +415,7 @@
 	var/momentum_mult = 5
 	if(CCA.momentum == CCA.max_momentum)
 		momentum_mult = 8
-	take_overall_damage(CCA.momentum * momentum_mult)
+	apply_overall_damage(CCA.momentum * momentum_mult)
 	X.visible_message(
 		SPAN_DANGER("[X] rams \the [src]!"),
 		SPAN_XENODANGER("You ram \the [src]!")

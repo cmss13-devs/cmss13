@@ -597,7 +597,7 @@ Additional game mode variables.
 			return
 	if(spawner.roundstart_damage_max>0)
 		while(spawner.roundstart_damage_times>0)
-			H.take_limb_damage(rand(spawner.roundstart_damage_min,spawner.roundstart_damage_max), 0)
+			H.apply_limb_damage(rand(spawner.roundstart_damage_min,spawner.roundstart_damage_max), 0)
 			spawner.roundstart_damage_times--
 	H.name = H.get_visible_name()
 

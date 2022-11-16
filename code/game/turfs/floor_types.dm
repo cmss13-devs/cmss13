@@ -238,10 +238,10 @@
 			sleep(10)
 			H.forceMove(R)
 			for(var/mob/living/M in H)
-				M.take_overall_damage(100, 0, "Blunt Trauma")
+				M.apply_overall_damage(100, 0, "Blunt Trauma")
 			sleep(20)
 			for(var/mob/living/M in H)
-				M.take_overall_damage(20, 0, "Blunt Trauma")
+				M.apply_overall_damage(20, 0, "Blunt Trauma")
 			for(var/obj/effect/decal/cleanable/C in contents) //get rid of blood
 				qdel(C)
 			R.expel(H)

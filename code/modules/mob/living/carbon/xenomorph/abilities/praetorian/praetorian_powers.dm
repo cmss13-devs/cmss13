@@ -64,7 +64,7 @@
 			continue
 
 		X.flick_attack_overlay(H, "slash")
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20)
+		H.apply_armored_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20)
 
 	if (target_mobs.len >= shield_regen_threshold)
 		if (X.mutation_type == PRAETORIAN_VANGUARD)
@@ -126,7 +126,7 @@
 
 
 		X.flick_attack_overlay(H, "slash")
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
+		H.apply_armored_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
 	if (target_mobs.len >= shield_regen_threshold)
@@ -375,7 +375,7 @@
 		if(SFB && SFB.action_cooldown_check())
 			SFB.reduce_cooldown(50)
 	else
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
+		H.apply_armored_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
 		step_away(H, X, 2)
 
 
@@ -535,7 +535,7 @@
 		X.flick_attack_overlay(A, "slash")
 		X.emote("roar") // Feedback for the player that we got the magic double impale
 
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+		H.apply_armored_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 		playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 
 		// Reroll damage
@@ -547,7 +547,7 @@
 	X.flick_attack_overlay(A, "slash")
 
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
-	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+	H.apply_armored_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 	playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 	..()
 	return

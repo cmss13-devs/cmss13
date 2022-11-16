@@ -247,7 +247,7 @@
 		log_attack("[key_name(bound_xeno)] slashed [key_name(H)]")
 
 
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
+		H.apply_armored_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
 
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (!cAction.action_cooldown_check())

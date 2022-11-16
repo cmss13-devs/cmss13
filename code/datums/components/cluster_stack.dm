@@ -84,7 +84,7 @@
 		damage_counter = 0
 		to_chat(L, SPAN_DANGER("You feel a cluster of explosions inside your body!"))
 		L.visible_message(SPAN_DANGER("You hear an explosion from the insides of [L]!"))
-		L.apply_armoured_damage(old_dmg_cont * 0.3, ARMOR_BOMB, BRUTE)
+		L.apply_armored_damage(old_dmg_cont * 0.3, ARMOR_BOMB, BRUTE)
 		var/datum/cause_data/cause_data = create_cause_data("cluster explosion", P.firer)
 		INVOKE_ASYNC(GLOBAL_PROC, /atom.proc/cell_explosion, get_turf(L), 50, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, cause_data)
 

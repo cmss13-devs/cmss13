@@ -29,7 +29,6 @@
 	H.forceMove(get_turf(picked_spawner))
 
 	handle_equip_gear(H, picked_spawner)
-
 	if(picked_spawner.roundstart_damage_max > 0)
 		if(istype(picked_spawner) && picked_spawner.roundstart_damage_max > 0)
 			for(var/i in 0 to picked_spawner.roundstart_damage_times)

@@ -284,6 +284,8 @@
   - bugfix: fixed facehuggers not stunning when applied
   - bugfix: fixed resisting flame + acid stun not applying
   - bugfix: fixed stuns for tail swipes, plasma casters and vehicle ramming
+  Segrain:
+  - bugfix: Warden's rejuvenation ability once again works.
   SpartanBobby:
   - rscadd: M4A3 Custom added to custom loadout for 4 points
   - rscadd: M44 Custom added to custom loadout for 7 points

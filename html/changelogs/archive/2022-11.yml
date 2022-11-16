@@ -281,3 +281,13 @@
   NoKohi:
   - bugfix: fixed facehuggers not stunning when applied
   - bugfix: fixed resisting flame + acid stun not applying
+  SpartanBobby, Triodine, Geeves, Stan_Albatross, Legacy Spriters, Quickload,Morrow:
+  - rscadd: added LV_522 Chances claim a new map
+  - rscadd: added USCM Force recon survivors and the special Force recon major for
+      WL'd COs (exclusive to LV522)
+  - rscadd: gave special battle-damaged uniforms to members of force recon generously
+      made by Quickload
+  - rscadd: added a bunch of wind and rain sounds for LV522 chances claim
+  - rscadd: added a bunch of props for LV522 chances claim
+  - rscadd: added some new autoturfs for LV522 chances claim
+  - balance: buffed the damage of the M1911 Service pistol

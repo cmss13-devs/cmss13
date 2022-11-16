@@ -148,6 +148,7 @@
 
 /obj/item/ex_act(severity, explosion_direction)
 	var/msg = pick(" is destroyed by the blast!", " is obliterated by the blast!", " shatters as the explosion englufs it!", " disentegrates in the blast!", " perishes in the blast!", " is mangled into uselessness from the blast!")
+	explosion_throw(severity, explosion_direction)
 	if(indestructible)
 		return
 	switch(severity)
@@ -155,14 +156,10 @@
 			if(prob(5))
 				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src][msg]")))
 				qdel(src)
-			else
-				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src][msg]")))
 				qdel(src)
-			else
-				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src][msg]")))
 			qdel(src)

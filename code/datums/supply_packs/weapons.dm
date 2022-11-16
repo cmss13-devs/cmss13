@@ -1,9 +1,3 @@
-//*******************************************************************************
-//WEAPONS
-//*******************************************************************************/
-
-//restricted firearms past this line!
-
 /datum/supply_packs/m56b_smartgun
 	name = "M56B Smartgun System Package (x1)"
 	contains = list(
@@ -91,70 +85,6 @@
 	containername = "VP-78 Hand Cannon Crate"
 	group = "Weapons"
 
-//Standard firearms past this line!
-
-/datum/supply_packs/gun/pistols
-	contains = list(
-					/obj/item/weapon/gun/pistol/m4a3,
-					/obj/item/weapon/gun/pistol/m4a3,
-					/obj/item/ammo_magazine/pistol,
-					/obj/item/ammo_magazine/pistol,
-					/obj/item/weapon/gun/revolver/m44,
-					/obj/item/weapon/gun/revolver/m44,
-					/obj/item/ammo_magazine/revolver,
-					/obj/item/ammo_magazine/revolver,
-					/obj/item/weapon/gun/pistol/mod88,
-					/obj/item/weapon/gun/pistol/mod88,
-					/obj/item/ammo_magazine/pistol/mod88,
-					/obj/item/ammo_magazine/pistol/mod88
-					)
-	name = "surplus sidearms crate (M4A3 x2, M44 x2, 88 Mod 4 x2, ammunition x2 each)" //speedloader and magazine
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate
-	containername = "\improper sidearms crate"
-	group = "Weapons"
-
-/datum/supply_packs/gun/shotguns
-	contains = list(
-					/obj/item/weapon/gun/shotgun/pump,
-					/obj/item/weapon/gun/shotgun/pump,
-					/obj/item/ammo_magazine/shotgun,
-					/obj/item/ammo_magazine/shotgun,
-					/obj/item/ammo_magazine/shotgun/buckshot,
-					/obj/item/ammo_magazine/shotgun/buckshot
-					)
-	name = "surplus shotguns crate (M37A2 x2, 12g slug box x2, 12g buckshot box x2)"
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate
-	containername = "\improper shotguns crate"
-	group = "Weapons"
-
-/datum/supply_packs/gun/smgs
-	contains = list(
-					/obj/item/weapon/gun/smg/m39,
-					/obj/item/weapon/gun/smg/m39,
-					/obj/item/ammo_magazine/smg/m39,
-					/obj/item/ammo_magazine/smg/m39
-					)
-	name = "M39 SMG Crate (x2 M39, x2 magazines)"
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate/weapon
-	containername = "M39 SMG Crate"
-	group = "Weapons"
-
-/datum/supply_packs/gun/rifles
-	contains = list(
-					/obj/item/weapon/gun/rifle/m41a,
-					/obj/item/weapon/gun/rifle/m41a,
-					/obj/item/ammo_magazine/rifle,
-					/obj/item/ammo_magazine/rifle
-					)
-	name = "M41A MK2 Crate (x2 MK2, x2 magazines)"
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate/weapon
-	containername = "M41A MK2 Crate"
-	group = "Weapons"
-
 /datum/supply_packs/gun
 	contains = list(
 					/obj/item/weapon/gun/rifle/m41aMK1,
@@ -199,7 +129,6 @@
 	containername = "\improper black market firearms crate"
 	group = "Weapons"
 
-
 // explosives past this line!
 
 /datum/supply_packs/explosives
@@ -232,7 +161,6 @@
 	containername = "\improper explosive mine boxes crate (WARNING)"
 	group = "Weapons"
 
-
 /datum/supply_packs/explosives_m15
 	name = "M15 fragmentation grenades crate (x6)"
 	contains = list(
@@ -243,7 +171,6 @@
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M15 grenades crate (WARNING)"
 	group = "Weapons"
-
 
 /datum/supply_packs/explosives_plastic
 	name = "plastic explosives crate (x3)"

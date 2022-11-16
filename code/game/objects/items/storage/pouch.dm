@@ -822,7 +822,7 @@
 	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser."
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
-	matter = list("plastic" = 3000)
+	matter = list("plastic" = 2000, "glass" = 2000)
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()

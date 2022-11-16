@@ -529,6 +529,7 @@
 	splashable = FALSE
 	w_class = SIZE_MASSIVE
 	flags_atom = CAN_BE_DISPENSED_INTO
+	matter = list("glass" = 2000)
 
 /obj/item/reagent_container/glass/pressurized_canister/Initialize()
 	. = ..()

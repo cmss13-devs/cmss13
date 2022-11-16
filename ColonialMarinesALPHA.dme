@@ -510,7 +510,7 @@
 #include "code\datums\statistics\random_facts\damage_fact.dm"
 #include "code\datums\statistics\random_facts\kills_fact.dm"
 #include "code\datums\statistics\random_facts\random_fact.dm"
-#include "code\datums\status_effects\status_effect.dm"
+#include "code\datums\status_effects\_status_effect.dm"
 #include "code\datums\supply_packs\_supply_packs.dm"
 #include "code\datums\supply_packs\ammo.dm"
 #include "code\datums\supply_packs\armor.dm"

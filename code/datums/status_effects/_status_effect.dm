@@ -59,7 +59,7 @@
 	if(duration > 0 || initial(tick_interval) > 0) //don't process if we don't care
 		switch(processing_speed)
 			if(STATUS_EFFECT_FAST_PROCESS)
-				START_PROCESSING(SSfastprocess, src)
+				START_PROCESSING(SSfasteffects, src)
 			if (STATUS_EFFECT_NORMAL_PROCESS)
 				START_PROCESSING(SSeffects, src)
 
@@ -68,7 +68,7 @@
 /datum/status_effect/Destroy()
 	switch(processing_speed)
 		if(STATUS_EFFECT_FAST_PROCESS)
-			STOP_PROCESSING(SSfastprocess, src)
+			STOP_PROCESSING(SSfasteffects, src)
 		if (STATUS_EFFECT_NORMAL_PROCESS)
 			STOP_PROCESSING(SSeffects, src)
 	if(owner)

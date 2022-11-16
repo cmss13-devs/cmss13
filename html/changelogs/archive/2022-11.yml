@@ -325,3 +325,5 @@
       events.
   - refactor: Predator rounds are now rolled by Nightmare. As a side-effect, they
       can now be toggled before round start.
+  harryob:
+  - bugfix: fixes the topic limit message popping up on connect

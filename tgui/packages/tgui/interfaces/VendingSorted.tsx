@@ -41,7 +41,6 @@ interface VendingData {
 
 interface VenableItem {
   record: VendingRecord;
-  hasCost: boolean;
 }
 
 interface RecordNameProps extends BoxProps {
@@ -150,7 +149,10 @@ const VendableItemRow = (props: VenableItem, context) => {
   );
 };
 
-const VendableClothingItemRow = (props: VenableItem, context) => {
+const VendableClothingItemRow = (
+  props: { record: VendingRecord; hasCost: boolean },
+  context
+) => {
   const { data, act } = useBackend<VendingData>(context);
   const { record, hasCost } = props;
 
@@ -265,7 +267,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
                   i % 2 ? 'VendingFlexAlt' : undefined,
                 ])}>
                 {vendor_type === 'sorted' && (
-                  <VendableItemRow record={record} hasCost={displayCost} />
+                  <VendableItemRow record={record} />
                 )}
                 {(vendor_type === 'clothing' || vendor_type === 'gear') && (
                   <VendableClothingItemRow

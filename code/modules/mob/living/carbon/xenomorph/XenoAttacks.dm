@@ -125,7 +125,7 @@
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
-				damage += (M.frenzy_aura * 2)
+				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 			//Somehow we will deal no damage on this attack
 			if(!damage)
@@ -162,7 +162,7 @@
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
 				SPAN_WARNING("You shove \the [src] out of your way!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				src.KnockDown(1)
+				src.apply_effect(1, WEAKEN)
 			else
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \

@@ -472,3 +472,6 @@
 
 /datum/species/proc/handle_head_loss(var/mob/living/carbon/human/human)
 	return
+
+/datum/species/proc/handle_paygrades(var/paygrade, var/size, var/gender)
+	return get_paygrades(paygrade, size, gender)

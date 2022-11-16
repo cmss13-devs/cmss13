@@ -667,3 +667,20 @@ D
 	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/drillhat)
 #undef HAT_GARB_RELAY_ICON_STATE
+
+//==========================//DRESS BLUES\\===============================\\
+//=======================================================================\\
+
+/obj/item/clothing/head/marine/dress_cover
+	name = "marine dress blues cover"
+	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. The polished logo sits proudly on the white cloth."
+	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
+	icon_state = "e_cap"
+	item_state = "e_cap"
+	contained_sprite = TRUE
+
+/obj/item/clothing/head/marine/dress_cover/officer
+	name = "marine dress blues officer cover"
+	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. Features a gold stripe and silvered logo, emblematic of an officer."
+	icon_state = "o_cap"
+	item_state = "o_cap"

@@ -330,7 +330,7 @@ Parameters are passed from New.
 /atom/process()
 	return
 
-///---CLONE---///
+//---CLONE---//
 
 /atom/clone
 	var/proj_x = 0

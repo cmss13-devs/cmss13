@@ -78,3 +78,6 @@
 /datum/species/human/spook/handle_post_spawn(mob/living/carbon/human/H)
 	H.set_languages(list("Drrrrrrr"))
 	return ..()
+
+/datum/species/human/spook/handle_paygrades()
+	return ""

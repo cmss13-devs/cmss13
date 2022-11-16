@@ -11,6 +11,7 @@ import { ChatPanel, ChatTabs } from './chat';
 import { useGame } from './game';
 import { Notifications } from './Notifications';
 import { PingIndicator } from './ping';
+import { ReconnectButton } from './reconnect';
 import { SettingsPanel, useSettings } from './settings';
 
 export const Panel = (props, context) => {
@@ -83,14 +84,7 @@ export const Panel = (props, context) => {
             </Pane.Content>
             <Notifications>
               {game.connectionLostAt && (
-                <Notifications.Item
-                  rightSlot={
-                    <Button
-                      color="white"
-                      onClick={() => Byond.command('.reconnect')}>
-                      Reconnect
-                    </Button>
-                  }>
+                <Notifications.Item rightSlot={<ReconnectButton />}>
                   You are either AFK, experiencing lag or the connection has
                   closed.
                 </Notifications.Item>

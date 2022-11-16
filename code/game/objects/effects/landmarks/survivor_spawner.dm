@@ -33,7 +33,8 @@
 	roundstart_damage_times = 3
 
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf
-	equipment = /datum/equipment_preset/survivor/clf
+	equipment = /datum/equipment_preset/survivor/
+	synth_equipment = /datum/equipment_preset/clf/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -44,6 +45,7 @@
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
 	equipment = /datum/equipment_preset/survivor/pmc
+	synth_equipment = /datum/equipment_preset/pmc/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -54,6 +56,7 @@
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl
 	equipment = /datum/equipment_preset/survivor/wy/manager
+	ynth_equipment = /datum/equipment_preset/pmc/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")

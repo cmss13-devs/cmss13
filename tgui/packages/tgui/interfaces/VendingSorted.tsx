@@ -1,9 +1,10 @@
 import { KEY_ESCAPE } from 'common/keycodes';
 import { useBackend, useLocalState } from '../backend';
-import { Button, Section, Stack, Flex, Box, Tooltip, Input, NoticeBox, Icon } from '../components';
+import { Button, Section, Flex, Box, Tooltip, Input, NoticeBox, Icon } from '../components';
 import { Window } from '../layouts';
 import { classes } from 'common/react';
 import { BoxProps } from '../components/Box';
+import { Table, TableCell, TableRow } from '../components/Table';
 
 const THEME_COMP = 0;
 const THEME_USCM = 1;
@@ -40,6 +41,7 @@ interface VendingData {
 
 interface VenableItem {
   record: VendingRecord;
+  hasCost: boolean;
 }
 
 interface RecordNameProps extends BoxProps {
@@ -106,7 +108,7 @@ const VendButton = (props: VendButtonProps, _) => {
   );
 };
 
-const VendableItem = (props: VenableItem, context) => {
+const VendableItemRow = (props: VenableItem, context) => {
   const { data, act } = useBackend<VendingData>(context);
   const { record } = props;
 
@@ -116,24 +118,20 @@ const VendableItem = (props: VenableItem, context) => {
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
 
   return (
-    <Flex align="center" justify="space-between" align-items="center">
-      <Flex.Item>
+    <>
+      <TableCell className="IconCell">
         <span
           className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
         />
-      </Flex.Item>
+      </TableCell>
 
-      <Flex.Item>
-        <Box className="Spacer" />
-      </Flex.Item>
-
-      <Flex.Item width={2}>
+      <TableCell>
         <span className={classes(['Text', !available && 'Failure'])}>
           {quantity}
         </span>
-      </Flex.Item>
+      </TableCell>
 
-      <Flex.Item grow={1}>
+      <TableCell className="ButtonCell">
         <VendButton
           isRecommended={isRecommended}
           isMandatory={isMandatory}
@@ -141,24 +139,20 @@ const VendableItem = (props: VenableItem, context) => {
           onClick={() => act('vend', record)}>
           {record.prod_name}
         </VendButton>
-      </Flex.Item>
+      </TableCell>
 
-      <Flex.Item>
-        <Box className="Spacer" />
-      </Flex.Item>
-
-      <Flex.Item>
+      <TableCell>
         <DescriptionTooltip record={record}>
           <Icon name="circle-info" className={classes(['RegularItemText'])} />
         </DescriptionTooltip>
-      </Flex.Item>
-    </Flex>
+      </TableCell>
+    </>
   );
 };
 
-const VendableClothingItem = (props: VenableItem, context) => {
+const VendableClothingItemRow = (props: VenableItem, context) => {
   const { data, act } = useBackend<VendingData>(context);
-  const { record } = props;
+  const { record, hasCost } = props;
 
   const quantity = data.stock_listing[record.prod_index - 1];
   const available = quantity > 0;
@@ -167,26 +161,22 @@ const VendableClothingItem = (props: VenableItem, context) => {
   const cost = record.prod_cost;
 
   return (
-    <Flex align="center" justify="space-between" align-items="center">
-      <Flex.Item>
+    <>
+      <TableCell className="IconCell">
         <span
           className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
         />
-      </Flex.Item>
+      </TableCell>
 
-      <Flex.Item>
-        <Box className="Spacer" />
-      </Flex.Item>
-
-      {cost !== 0 && (
-        <Flex.Item className="Cost">
+      {hasCost && (
+        <TableCell className="Cost">
           <span className={classes(['Text'])}>
-            {cost === 0 ? undefined : `${cost}P`}
+            {cost === 0 ? 'no cost' : `${cost}P`}
           </span>
-        </Flex.Item>
+        </TableCell>
       )}
 
-      <Flex.Item grow={1}>
+      <TableCell>
         <VendButton
           isRecommended={isRecommended}
           isMandatory={isMandatory}
@@ -194,25 +184,17 @@ const VendableClothingItem = (props: VenableItem, context) => {
           onClick={() => act('vend', record)}>
           {record.prod_name}
         </VendButton>
-      </Flex.Item>
+      </TableCell>
 
-      <Flex.Item>
-        <Box className="Spacer" />
-      </Flex.Item>
-
-      <Flex.Item>
+      <TableCell className="IconCell">
         <DescriptionTooltip record={record}>
           <Icon
             name="circle-info"
             className={classes(['ShowDesc', 'RegularItemText'])}
           />
         </DescriptionTooltip>
-      </Flex.Item>
-
-      <Flex.Item>
-        <Box className="Spacer" />
-      </Flex.Item>
-    </Flex>
+      </TableCell>
+    </>
   );
 };
 
@@ -260,10 +242,14 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
   }
 
   const displayName = category.name ?? '';
+  const displayCost =
+    vendor_type === 'clothing' || vendor_type === 'gear'
+      ? filteredCategories.find((x) => x.prod_cost !== 0) !== undefined
+      : true;
 
   return (
     <Section title={displayName}>
-      <Stack vertical fill className="CategorySection">
+      <Table className="ItemTable">
         {filteredCategories
           .sort(
             data.vendor_type === 'clothing'
@@ -272,20 +258,25 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
           )
           .map((record, i) => {
             return (
-              <Stack.Item
+              <TableRow
                 key={record.prod_index}
                 className={classes([
                   'VendingItem',
                   i % 2 ? 'VendingFlexAlt' : undefined,
                 ])}>
-                {vendor_type === 'sorted' && <VendableItem record={record} />}
-                {(vendor_type === 'clothing' || vendor_type === 'gear') && (
-                  <VendableClothingItem record={record} />
+                {vendor_type === 'sorted' && (
+                  <VendableItemRow record={record} hasCost={displayCost} />
                 )}
-              </Stack.Item>
+                {(vendor_type === 'clothing' || vendor_type === 'gear') && (
+                  <VendableClothingItemRow
+                    record={record}
+                    hasCost={displayCost}
+                  />
+                )}
+              </TableRow>
             );
           })}
-      </Stack>
+      </Table>
     </Section>
   );
 };

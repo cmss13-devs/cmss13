@@ -133,7 +133,7 @@
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
 
-	if(!get_type_in_ears(/obj/item/clothing/ears/earmuffs))
+	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 

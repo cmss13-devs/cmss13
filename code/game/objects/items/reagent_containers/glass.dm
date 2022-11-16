@@ -69,7 +69,6 @@
 		update_icon()
 
 /obj/item/reagent_container/glass/afterattack(obj/target, mob/user , flag)
-
 	if(!reagents)
 		create_reagents(volume)
 
@@ -525,7 +524,7 @@
 	volume = 480
 	splashable = FALSE
 	w_class = SIZE_MASSIVE
-	flags_atom = CAN_BE_DISPENSED_INTO|OPENCONTAINER
+	flags_atom = CAN_BE_DISPENSED_INTO
 	matter = list("glass" = 2000)
 
 /obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)

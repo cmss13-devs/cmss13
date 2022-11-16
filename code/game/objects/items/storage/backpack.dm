@@ -40,6 +40,8 @@
 		return ..()
 	if(!isXeno(target_mob))
 		return ..()
+	if(HAS_TRAIT(target_mob, TRAIT_XENONID))
+		return ..() // We don't have backpack sprites for xenoids (yet?)
 	var/mob/living/carbon/Xenomorph/xeno = target_mob
 	if(target_mob.stat != DEAD) // If the Xeno is alive, fight back
 		var/mob/living/carbon/carbon_user = user

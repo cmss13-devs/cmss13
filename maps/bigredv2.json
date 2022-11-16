@@ -7,6 +7,8 @@
         "/datum/equipment_preset/survivor/scientist/solaris",
         "/datum/equipment_preset/survivor/doctor/solaris",
         "/datum/equipment_preset/survivor/chaplain/solaris",
+        "/datum/equipment_preset/survivor/civilian",
+        "/datum/equipment_preset/survivor/clf",
         "/datum/equipment_preset/survivor/engineer/solaris",
         "/datum/equipment_preset/survivor/trucker/solaris",
         "/datum/equipment_preset/survivor/security/solaris",

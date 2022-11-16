@@ -10,6 +10,8 @@
         "/datum/equipment_preset/survivor/prisoner",
         "/datum/equipment_preset/survivor/prisoner",
         "/datum/equipment_preset/survivor/gangleader",
+        "/datum/equipment_preset/survivor/civilian",
+        "/datum/equipment_preset/survivor/clf",
         "/datum/equipment_preset/survivor/engineer/florina"
     ],
     "defcon_triggers": [

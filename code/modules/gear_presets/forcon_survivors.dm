@@ -35,7 +35,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(H)
 
-/datum/equipment_preset/survivor/forecon/add_survivor_weapon(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/forecon/add_survivor_weapon_security(mob/living/carbon/human/H)
 	return
 
 /datum/equipment_preset/survivor/forecon/proc/add_forecon_weapon(mob/living/carbon/human/H)

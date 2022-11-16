@@ -548,10 +548,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/pressurized_canister/update_icon()
-	to_world("/obj/item/storage/pouch/pressurized_reagent_canister/update_icon()")
 	if(reagents)
 		color = mix_color_from_reagents(reagents.reagent_list)
-		to_world("color = [color]")
 
 /obj/item/reagent_container/glass/bucket
 	desc = "It's a bucket. Holds 120 units."

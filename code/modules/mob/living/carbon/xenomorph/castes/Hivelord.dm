@@ -32,6 +32,8 @@
 
 	aura_strength = 2.5
 
+	minimum_evolve_time = 3 MINUTES
+
 /datum/caste_datum/hivelord/New()
 	. = ..()
 

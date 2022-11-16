@@ -88,6 +88,9 @@
 	item_state = "nun"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDESHOES|HIDEJUMPSUIT
+	allowed = list(
+		/obj/item/weapon/gun,
+	)
 
 //Chef
 /obj/item/clothing/suit/chef

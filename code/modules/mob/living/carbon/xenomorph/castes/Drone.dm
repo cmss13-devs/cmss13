@@ -31,6 +31,8 @@
 
 	aura_strength = 2
 
+	minimum_evolve_time = 1 MINUTES
+
 /datum/caste_datum/drone/New()
 	. = ..()
 

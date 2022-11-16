@@ -138,7 +138,7 @@
 
 //Gets blood from mob to the container, preserving all data in it.
 /mob/living/carbon/proc/take_blood(obj/O, amount)
-	if(!O.reagents || amount <= 0)
+	if(!O.reagents || amount <= 0 || blood_volume <= 0)
 		return
 
 	if(blood_volume < amount)

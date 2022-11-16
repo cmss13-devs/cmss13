@@ -318,3 +318,8 @@
       you and stutter your messages.
   - rscadd: Earmuffs, the M3T helmet, and the MG-34 helmet now come with inbuilt ear
       protection.
+  fira:
+  - refactor: Reimplemented Nightmare system, now with support for ship maps and round-wide
+      events.
+  - refactor: Predator rounds are now rolled by Nightmare. As a side-effect, they
+      can now be toggled before round start.

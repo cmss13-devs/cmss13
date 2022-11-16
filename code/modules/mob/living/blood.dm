@@ -180,7 +180,7 @@
 	for(var/plasma in plasmas)
 		O.reagents.add_reagent(plasma,amount / plasmas.len) //An even amount of each plasma and blood type
 
-	blood_volume = max(0, blood_volume - amount) // Removes blood if human
+	blood_volume = max(0, blood_volume - amount)
 	return 1
 
 

@@ -11,7 +11,7 @@
 	health = 400
 	var/obj/structure/bed/nest/structure/pred_nest
 
-	block_range = 2
+	block_range = 0
 
 /obj/effect/alien/resin/special/nest/get_examine_text(mob/user)
 	. = ..()

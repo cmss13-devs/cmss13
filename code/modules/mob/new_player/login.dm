@@ -34,3 +34,5 @@
 			to_chat(src, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
 	if(join_motd)
 		to_chat(src, "<div class=\"motd\">[join_motd]</div>")
+	if(current_tms)
+		to_chat(src, SPAN_BOLDANNOUNCE(current_tms))

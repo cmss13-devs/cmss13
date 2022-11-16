@@ -51,9 +51,9 @@
 		qdel(src)
 	else ..()
 
-/////////////////////////
-///Miscellaneous Signs///
-/////////////////////////
+  //=====================//
+ // Miscellaneous Signs //
+//=====================//
 
 /obj/structure/sign/nosmoking_1
 	name = "\improper NO SMOKING"
@@ -90,9 +90,9 @@
 /obj/structure/sign/double/maltesefalcon/right
 	icon_state = "maltesefalcon-right"
 
-/////////////
-///Banners///
-/////////////
+//============//
+//  Banners  //
+//==========//
 
 /obj/structure/sign/banners
 	icon = 'icons/obj/structures/props/banners.dmi'
@@ -107,9 +107,9 @@
 	desc = "This banner depicts Delta Squad's motto. The Marines of Delta Squad adopted it after picking an old bomber movie for movie night a while back."
 	icon_state = "maximumeffort"
 
-///////////////////////
-///SEMIOTIC STANDARD///
-///////////////////////
+//=====================//
+// SEMIOTIC STANDARD  //
+//===================//
 
 /obj/structure/sign/safety
 	name = "sign"
@@ -494,6 +494,26 @@
 	desc = "Semiotic Standard denoting the nearby lack of artificial gravity."
 	icon_state = "zerog"
 
+/obj/structure/sign/safety/flightcontrol
+	name = "\improper flight control semiotic"
+	desc = "Semiotic Standard denoting an area used by or for flight control systems."
+	icon_state = "flightcontrol"
+
+/obj/structure/sign/safety/airtraffictower
+	name = "\improper air traffic tower semiotic"
+	desc = "Semiotic Standard denoting an air traffic tower nearby."
+	icon_state = "airtraffictower"
+
+/obj/structure/sign/safety/luggageclaim
+	name = "\improper luggage claim semiotic"
+	desc = "Semiotic Standard denoting the presecense of a luggage claim area nearby."
+	icon_state = "luggageclaim"
+
+/obj/structure/sign/safety/landingzone
+	name = "\improper landing zone semiotic"
+	desc = "Semiotic Standard denoting the presecense of a landing zone nearby."
+	icon_state = "landingzone"
+
 /obj/structure/sign/safety/zero
 	name = "zero semiotic"
 	desc = "Semiotic Standard denoting the number zero."
@@ -544,9 +564,9 @@
 	desc = "Semiotic Standard denoting the number nine."
 	icon_state = "9"
 
-//////////////////
-///Marine signs///
-//////////////////
+//===================//
+//   Marine signs   //
+//=================//
 
 /obj/structure/sign/ROsign
 	name = "\improper USCM Requisitions Office Guidelines"
@@ -568,9 +588,7 @@
 	desc = "An old recruitment poster for the USCM. Looking at it floods you with a mixture of pride and sincere regret."
 	icon_state = "prop3"
 
-///////////////
-///Cat Clock///
-///////////////
+
 /obj/structure/sign/catclock
 	name = "cat clock"
 	desc = "An unbelievably creepy cat clock that surveys the room with every tick and every tock."

@@ -63,8 +63,8 @@
 	if(isliving(pulling) && lunging)
 		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
 		var/mob/living/lunged = pulling
-		lunged.SetStunned(0)
-		lunged.SetKnockeddown(0)
+		lunged.set_effect(0, STUN)
+		lunged.set_effect(0, WEAKEN)
 	return ..()
 
 /mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
@@ -90,7 +90,7 @@
 
 		if(should_neckgrab && L.mob_size < MOB_SIZE_BIG)
 			L.drop_held_items()
-			L.KnockDown(get_xeno_stun_duration(L, 2))
+			L.apply_effect(get_xeno_stun_duration(L, 2), WEAKEN)
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))

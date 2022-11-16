@@ -126,12 +126,14 @@
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
 	icon_state = "shore1"
-///turf/open/desert/desert_shore/desert_shore2
-//	name = "shore"
-//	icon_state = "shore2"
-///turf/open/desert/desert_shore/desert_shore3
-//	name = "shore"
-//	icon_state = "shore3"
+/*
+/turf/open/desert/desert_shore/desert_shore2
+	name = "shore"
+	icon_state = "shore2"
+/turf/open/desert/desert_shore/desert_shore3
+	name = "shore"
+	icon_state = "shore3"
+*/
 
 
 /turf/open/desert/desert_shore/shore_edge1

@@ -760,7 +760,7 @@
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/synth/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_COLONY)
+	H.set_species(SYNTH_COLONY_GEN_ONE)
 
 /datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/colonist/clf/CLF = new()

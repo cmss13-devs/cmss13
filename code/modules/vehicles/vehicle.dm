@@ -169,7 +169,7 @@
 
 	if(buckled_mob)
 		buckled_mob.apply_effect(5, STUN)
-		buckled_mob.apply_effect(5, WEAKEN)
+		buckled_mob.Knockdown(5)
 		unbuckle()
 
 	new /obj/effect/spawner/gibspawner/robot(Tsec)

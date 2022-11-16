@@ -165,14 +165,14 @@
 		if(ishuman(H))
 			H.emote("pain")
 			if(should_stun)
-				H.apply_effect(stun_duration, WEAKEN)
+				H.Knockdown(stun_duration)
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
 		else if (isXeno(H))
 			var/mob/living/carbon/Xenomorph/X = H
 			if (X.mob_size < MOB_SIZE_BIG && should_stun)
-				X.apply_effect(stun_duration, WEAKEN)
+				X.Knockdown(stun_duration)
 			X.emote("hiss")
 			H.apply_armoured_damage(damage_amount * 0.4 * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
 
@@ -227,7 +227,7 @@
 		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 		H.emote("pain")
 		if (should_stun && !H.lying)
-			H.apply_effect(stun_duration, WEAKEN)
+			H.Knockdown(stun_duration)
 		H.last_damage_data = cause_data
 		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
 		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)

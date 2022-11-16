@@ -68,6 +68,12 @@
 /mob/proc/apply_effect()
 	return FALSE
 
+
+// IMPORTANT NOTE:
+// Status effect backend is under migration
+// do NOT use apply_effect/adjust_effect for KNOCKDOWN (WEAKEN)
+// instead you should use Knockdown() and other procs defined in status_procs.dm
+
 /mob/living/apply_effect(var/effect = 0,var/effect_type = STUN, var/effect_flags = EFFECT_FLAG_DEFAULT)
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_APPLY_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
@@ -79,8 +85,6 @@
 	switch(effect_type)
 		if(STUN)
 			Stun(effect)
-		if(WEAKEN)
-			KnockDown(effect)
 		if(PARALYZE)
 			KnockOut(effect)
 		if(DAZE)
@@ -104,6 +108,11 @@
 /mob/proc/adjust_effect()
 	return FALSE
 
+// IMPORTANT NOTE:
+// Status effect backend is under migration
+// do NOT use apply_effect/adjust_effect for KNOCKDOWN (WEAKEN)
+// instead you should use Knockdown() and other procs defined in status_procs.dm
+
 /mob/living/adjust_effect(var/effect = 0,var/effect_type = STUN, var/effect_flags = EFFECT_FLAG_DEFAULT)
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_ADJUST_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
@@ -115,8 +124,6 @@
 	switch(effect_type)
 		if(STUN)
 			AdjustStun(effect)
-		if(WEAKEN)
-			AdjustKnockDown(effect)
 		if(PARALYZE)
 			AdjustKnockOut(effect)
 		if(DAZE)
@@ -151,8 +158,6 @@
 	switch(effect_type)
 		if(STUN)
 			SetStun(effect)
-		if(WEAKEN)
-			SetKnockDown(effect)
 		if(PARALYZE)
 			SetKnockOut(effect)
 		if(DAZE)
@@ -175,7 +180,7 @@
 
 /mob/living/proc/apply_effects(var/stun = 0, var/weaken = 0, var/paralyze = 0, var/irradiate = 0, var/stutter = 0, var/eyeblur = 0, var/drowsy = 0, var/agony = 0)
 	if(stun)		apply_effect(stun, STUN)
-	if(weaken)		apply_effect(weaken, WEAKEN)
+	if(weaken)		Knockdown(weaken)
 	if(paralyze)	apply_effect(paralyze, PARALYZE)
 	if(stutter)		apply_effect(stutter, STUTTER)
 	if(eyeblur)		apply_effect(eyeblur, EYE_BLUR)

@@ -205,7 +205,7 @@
 	H.emote("pain")
 	if(prob(20))
 		to_chat(H, SPAN_DANGER("You trip into the pool!"))
-		H.KnockDown(5)
+		H.Knockdown(5)
 	do_human_damage(H)
 
 /obj/effect/alien/resin/special/pool/proc/do_human_damage(var/mob/living/carbon/human/H)

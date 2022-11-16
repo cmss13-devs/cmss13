@@ -265,9 +265,9 @@
 	for(var/turf/self_turf as anything in locs)
 		var/turf/projected = get_ranged_target_turf(self_turf, throw_dir, 1)
 		for(var/atom/movable/atom_movable in self_turf)
-			if(ismob(atom_movable) && !isobserver(atom_movable))
-				var/mob/mob = atom_movable
-				mob.apply_effect(5, WEAKEN)
+			if(isliving(atom_movable) && !isobserver(atom_movable))
+				var/mob/living/mob = atom_movable
+				mob.Knockdown(5)
 				to_chat(mob, SPAN_HIGHDANGER("\The [src] shoves you out!"))
 			else if(isobj(atom_movable))
 				var/obj/object = atom_movable

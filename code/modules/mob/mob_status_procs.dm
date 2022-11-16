@@ -87,23 +87,6 @@
 	SetSuperslow(superslowed + amount)
 	return
 
-/mob/var/knocked_down_timer
-
-/mob/proc/knocked_down_callback()
-	knocked_down = 0
-	handle_regular_status_updates(FALSE)
-	update_canmove()
-	knocked_down_timer = null
-
-/mob/proc/knocked_down_callback_check()
-	if(knocked_down && knocked_down < recovery_constant)
-		knocked_down_timer = addtimer(CALLBACK(src, .proc/knocked_down_callback), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
-		return
-
-	if(knocked_down_timer)
-		deltimer(knocked_down_timer)
-	knocked_down_timer = null
-
 /mob/var/knocked_out_timer
 
 /mob/proc/knocked_out_callback()
@@ -123,33 +106,6 @@
 	if(knocked_out_timer)
 		deltimer(knocked_out_timer)
 	knocked_out_timer = null
-
-// adjust knockdown if needed, do not call it in adjust knockdown
-/mob/proc/knockdown_clock_adjustment()
-	return
-
-/mob/proc/KnockDown(amount, force)
-	if((status_flags & CANKNOCKDOWN) || force)
-		knocked_down = max(max(knocked_down,amount),0)
-		knockdown_clock_adjustment()
-		knocked_down_callback_check()
-		update_canmove()	//updates lying, canmove and icons
-	return
-
-/mob/proc/SetKnockDown(amount)
-	if(status_flags & CANKNOCKDOWN)
-		knocked_down = max(amount,0)
-		knockdown_clock_adjustment()
-		knocked_down_callback_check()
-		update_canmove()	//updates lying, canmove and icons
-	return
-
-/mob/proc/AdjustKnockDown(amount)
-	if(status_flags & CANKNOCKDOWN)
-		knocked_down = max(knocked_down + amount,0)
-		knocked_down_callback_check()
-		update_canmove()	//updates lying, canmove and icons
-	return
 
 /mob/proc/knockout_clock_adjustment()
 	return
@@ -187,18 +143,6 @@
 
 /mob/proc/AdjustSleeping(amount)
 	sleeping = max(sleeping + amount,0)
-	return
-
-/mob/proc/Resting(amount)
-	resting = max(max(resting,amount),0)
-	return
-
-/mob/proc/SetResting(amount)
-	resting = max(amount,0)
-	return
-
-/mob/proc/AdjustResting(amount)
-	resting = max(resting + amount,0)
 	return
 
 /mob/proc/EyeBlur(amount)

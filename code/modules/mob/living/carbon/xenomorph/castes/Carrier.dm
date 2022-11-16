@@ -93,7 +93,7 @@
 		if(stat == DEAD)
 			hugger_overlays_icon.overlays += icon(icon, "clinger_[i] Knocked Down")
 		else if(lying)
-			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+			if((resting || sleeping) && (!is_mob_incapacitated(TRUE) && health > 0))
 				hugger_overlays_icon.overlays += icon(icon, "clinger_[i] Sleeping")
 			else
 				hugger_overlays_icon.overlays +=icon(icon, "clinger_[i] Knocked Down")

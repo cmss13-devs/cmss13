@@ -157,7 +157,7 @@
 			return
 
 	//breaking out of handcuffs & putting out fires
-	if(canmove && !knocked_down)
+	if(canmove && (mobility_flags & MOBILITY_STAND))
 		if(on_fire)
 			resist_fire()
 

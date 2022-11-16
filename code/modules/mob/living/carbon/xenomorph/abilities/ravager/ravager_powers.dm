@@ -127,7 +127,7 @@
 	if(BD.empower_targets < BD.super_empower_threshold)
 		return
 	X.visible_message(SPAN_XENODANGER("The [X] uses its shield to bash [H] as it charges at them!"), SPAN_XENODANGER("You use your shield to bash [H] as you charge at them!"))
-	H.apply_effect(BD.knockdown_amount, WEAKEN)
+	H.Knockdown(BD.knockdown_amount)
 	H.attack_alien(X, rand(X.melee_damage_lower, X.melee_damage_upper))
 
 	var/facing = get_dir(X, H)
@@ -407,7 +407,7 @@
 				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [human]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [human]!"))
 				human.spawn_gibs()
 				playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, 1)
-				human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
+				human.Knockdown(get_xeno_stun_duration(human, 1))
 			else
 				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("You claw [human]!"))
 				playsound(get_turf(human), "alien_claw_flesh", 30, 1)

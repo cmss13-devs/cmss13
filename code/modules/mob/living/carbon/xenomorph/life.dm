@@ -188,7 +188,7 @@
 			else
 				clear_fullscreen("eye_blurry")
 
-			handle_statuses()//natural decrease of stunned, knocked_down, etc...
+			handle_statuses()//natural decrease of stunned, etc...
 			handle_interference()
 
 	return TRUE
@@ -540,12 +540,6 @@ Make sure their actual health updates immediately.*/
 		adjust_effect(life_slow_reduction, SUPERSLOW, EFFECT_FLAG_LIFE)
 	return superslowed
 
-/mob/living/carbon/Xenomorph/handle_knocked_down()
-	if(knocked_down)
-		adjust_effect(life_knockdown_reduction, WEAKEN, EFFECT_FLAG_LIFE)
-		knocked_down_callback_check()
-	return knocked_down
-
 /mob/living/carbon/Xenomorph/handle_knocked_out()
 	if(knocked_out)
 		adjust_effect(life_knockout_reduction, PARALYZE, EFFECT_FLAG_LIFE)
@@ -576,11 +570,6 @@ Make sure their actual health updates immediately.*/
 	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
 	if(stunned > shift_left)
 		stunned += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
-
-/mob/living/carbon/Xenomorph/knockdown_clock_adjustment()
-	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
-	if(knocked_down > shift_left)
-		knocked_down += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
 
 /mob/living/carbon/Xenomorph/knockout_clock_adjustment()
 	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION

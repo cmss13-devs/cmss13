@@ -73,19 +73,17 @@
 		src.sleeping--
 
 	if(regular_update && src.resting)
-		apply_effect(5, WEAKEN)
+		Knockdown(5)
 
 	if(health < HEALTH_THRESHOLD_DEAD && stat != DEAD) //die only once
 		death()
 
 	if (stat != DEAD) //Alive.
-		if (knocked_out || stunned || knocked_down || !has_power) //Stunned etc.
+		if (is_mob_incapacitated(TRUE) || !has_power) //Stunned etc.
 			stat = UNCONSCIOUS
 			if(regular_update)
 				if (src.stunned > 0)
 					adjust_effect(-1, STUN)
-				if (src.knocked_down > 0)
-					adjust_effect(-1, WEAKEN)
 				if (src.knocked_out > 0)
 					adjust_effect(-1, PARALYZE)
 					src.blinded = 1
@@ -279,6 +277,6 @@
 			weaponlock_time = 120
 
 /mob/living/silicon/robot/update_canmove()
-	if(knocked_out || stunned || knocked_down || buckled || lockcharge || !is_component_functioning("actuator")) canmove = 0
+	if(knocked_out || stunned || !(mobility_flags & MOBILITY_STAND) || buckled || lockcharge || !is_component_functioning("actuator")) canmove = 0
 	else canmove = 1
 	return canmove

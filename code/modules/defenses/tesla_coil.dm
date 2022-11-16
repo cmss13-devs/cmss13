@@ -161,7 +161,7 @@
 	if(M.mob_size >= MOB_SIZE_BIG)
 		M.set_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW)
 	else
-		M.set_effect(TESLA_COIL_STUN_EFFECT, WEAKEN)
+		M.SetKnockdown(TESLA_COIL_STUN_EFFECT)
 
 	M.set_effect(TESLA_COIL_DAZE_EFFECT * 1.5, DAZE) // 1.5x as effective as normal tesla
 

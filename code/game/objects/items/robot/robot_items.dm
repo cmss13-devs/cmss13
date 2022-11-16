@@ -7,7 +7,7 @@
 	icon = 'icons/obj/structures/props/decals.dmi'
 	icon_state = "shock"
 
-	attack(mob/M as mob, mob/living/silicon/robot/user as mob)
+	attack(mob/living/M as mob, mob/living/silicon/robot/user as mob)
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
 		msg_admin_attack("[user.name] ([user.ckey]) used the [src.name] to attack [M.name] ([M.ckey])  in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
@@ -15,7 +15,7 @@
 		user.cell.charge -= 30
 
 		playsound(M.loc, 'sound/weapons/Egloves.ogg', 25, 1, 4)
-		M.apply_effect(5, WEAKEN)
+		M.Knockdown(5)
 		if (M.stuttering < 5)
 			M.stuttering = 5
 		M.apply_effect(5, STUN)

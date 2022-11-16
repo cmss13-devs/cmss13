@@ -88,7 +88,7 @@
 			return
 
 		updatehealth()
-		if(stat || stunned || dazed || knocked_down || lying || health < 0 || !client || !ventcrawl_carry())
+		if(stat || stunned || dazed || lying || health < 0 || !client || !ventcrawl_carry())
 			vent_found.animate_ventcrawl_reset()
 			return
 

@@ -888,7 +888,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	user.drop_inv_item_on_ground(src)
 	throw_atom(throw_turf, throw_strength, SPEED_AVERAGE, src, TRUE)
 
-	user.apply_effect(2, WEAKEN)
+	user.Knockdown(2)
 	user.apply_effect(3, DAZE)
 	if(!suicide && !step(user, behind_angle))
 		user.animation_attack_on(behind_turf)

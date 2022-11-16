@@ -4,6 +4,6 @@
 	//Handle side effects from stasis
 	switch(in_stasis)
 		if(STASIS_IN_BAG)
-			knocked_down = knocked_down? --knocked_down : knocked_down + 10 //knocked_down set.
+			Knockdown(1 SECONDS)
 		if(STASIS_IN_CRYO_CELL)
 			if(sleeping < 10) sleeping += 10 //Puts the mob to sleep indefinitely.

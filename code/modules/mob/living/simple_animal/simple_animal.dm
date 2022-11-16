@@ -92,7 +92,6 @@
 		health = maxHealth
 
 	handle_stunned()
-	handle_knocked_down(TRUE)
 	handle_knocked_out(TRUE)
 	update_canmove()
 
@@ -332,7 +331,7 @@
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)
 	if(knock_value > 0)
-		apply_effect(knock_value, WEAKEN)
+		Knockdown(knock_value)
 		apply_effect(knock_value, PARALYZE)
 		explosion_throw(severity, direction)
 

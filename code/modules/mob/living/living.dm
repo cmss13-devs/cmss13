@@ -11,6 +11,7 @@
 
 /mob/living/Initialize()
 	. = ..()
+	register_init_signals()
 
 	fire_reagent = new /datum/reagent/napalm/ut()
 
@@ -476,4 +477,9 @@
 	..()
 	for(var/h in src.hud_possible)
 		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
+
+/// Called on [/mob/living/Initialize(mapload)], for the mob to register to relevant signals.
+/mob/living/proc/register_init_signals()
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_FLOORED), .proc/on_floored_trait_gain)
+	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_FLOORED), .proc/on_floored_trait_loss)
 

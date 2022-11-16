@@ -104,7 +104,7 @@
 
 	if(isCarbonSizeXeno(L))
 		var/mob/living/carbon/Xenomorph/target = L
-		target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
+		target.Knockdown(0.7)
 		target.apply_effect(1, SUPERSLOW)
 		target.apply_effect(2, SLOW)
 		to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
@@ -134,7 +134,7 @@
 	if(isCarbonSizeXeno(L))
 		var/mob/living/carbon/Xenomorph/target = L
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.apply_effect(0.5, WEAKEN)
+		target.Knockdown(0.5)
 		target.apply_effect(2, SUPERSLOW)
 		target.apply_effect(5, SLOW)
 	else
@@ -1380,7 +1380,7 @@
 		return
 
 	shake_camera(M, 3, 4)
-	M.apply_effect(2, WEAKEN)
+	M.Knockdown(2)
 	M.apply_effect(4, SLOW)
 	if(isCarbonSizeXeno(M))
 		to_chat(M, SPAN_XENODANGER("The impact knocks you off your feet!"))
@@ -1876,10 +1876,10 @@
 	damage = 10
 	penetration= ARMOR_PENETRATION_TIER_10
 
-/datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/rocket/ap/on_hit_mob(mob/living/M, obj/item/projectile/P)
 	var/turf/T = get_turf(M)
 	M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-	M.apply_effect(2, WEAKEN)
+	M.Knockdown(2)
 	M.apply_effect(2, PARALYZE)
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(300, P.dir, P.weapon_cause_data, 100)
@@ -1896,9 +1896,9 @@
 
 /datum/ammo/rocket/ap/on_hit_turf(turf/T, obj/item/projectile/P)
 	var/hit_something = 0
-	for(var/mob/M in T)
+	for(var/mob/living/M in T)
 		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-		M.apply_effect(4, WEAKEN)
+		M.Knockdown(4)
 		M.apply_effect(4, PARALYZE)
 		hit_something = 1
 		continue
@@ -1918,9 +1918,9 @@
 /datum/ammo/rocket/ap/do_at_max_range(obj/item/projectile/P)
 	var/turf/T = get_turf(P)
 	var/hit_something = 0
-	for(var/mob/M in T)
+	for(var/mob/living/M in T)
 		M.ex_act(250, P.dir, P.weapon_cause_data, 100)
-		M.apply_effect(2, WEAKEN)
+		M.Knockdown(2)
 		M.apply_effect(2, PARALYZE)
 		hit_something = 1
 		continue
@@ -2199,9 +2199,9 @@
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			stun_time++
-			H.apply_effect(stun_time, WEAKEN)
+			H.Knockdown(stun_time)
 		else
-			M.apply_effect(stun_time, WEAKEN)
+			C.Knockdown(stun_time)
 
 		C.apply_effect(stun_time, STUN)
 	..()
@@ -2276,9 +2276,9 @@
 
 		if (ishuman(M))
 			var/mob/living/carbon/human/H = M
-			H.apply_effect(stun_time, WEAKEN)
+			H.Knockdown(stun_time)
 		else
-			M.apply_effect(stun_time, WEAKEN)
+			M.Knockdown(stun_time)
 
 
 
@@ -2350,7 +2350,7 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, .proc/apply_neuro)
 
-/proc/apply_neuro(mob/M, power, insta_neuro)
+/proc/apply_neuro(mob/living/M, power, insta_neuro)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
@@ -2362,8 +2362,7 @@
 
 	if(!isXeno(M))
 		if(insta_neuro)
-			if(M.knocked_down < 3)
-				M.adjust_effect(1 * power, WEAKEN)
+			M.Knockdown(power)
 			return
 
 		if(ishuman(M))
@@ -2378,9 +2377,9 @@
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.knocked_down < 5)
-				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
+			if(!M.lying)
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
+			M.Knockdown(power)
 
 /proc/apply_scatter_neuro(mob/M)
 	if(ishuman(M))
@@ -2392,9 +2391,9 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		if(M.knocked_down < 0.7) // apply knockdown only if current knockdown is less than 0.7 second
-			M.apply_effect(0.7, WEAKEN)
+		if(!M.lying)
 			M.visible_message(SPAN_DANGER("[M] falls prone."))
+		H.Knockdown(0.7)
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(ishuman(M))
@@ -3100,7 +3099,7 @@
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human") //no effect on synths or preds.
 			H.apply_effect(6, STUN)
-			H.apply_effect(8, WEAKEN)
+			H.Knockdown(8)
 			H.apply_effect(15, DAZE)
 			H.apply_effect(15, SLOW)
 		shake_camera(H, 2, 1)

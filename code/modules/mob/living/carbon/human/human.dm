@@ -141,7 +141,7 @@
 	if(knockdown_value > 0)
 		var/obj/item/Item1 = get_active_hand()
 		var/obj/item/Item2 = get_inactive_hand()
-		apply_effect(knockdown_value, WEAKEN)
+		Knockdown(knockdown_value)
 		var/knockout_value = min( round( damage*0.1  ,1) ,10)
 		apply_effect( knockout_value , PARALYZE)
 		apply_effect( knockout_value*2 , DAZE)
@@ -1524,13 +1524,13 @@
 /mob/living/carbon/human/resist_fire()
 	if(isYautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		apply_effect(1, WEAKEN) // actually 0.5
+		Knockdown(1) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		apply_effect(4, WEAKEN)
+		Knockdown(4)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
@@ -1547,12 +1547,12 @@
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
 	if(isYautja(src))
-		apply_effect(1, WEAKEN)
+		Knockdown(1)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
 	else
-		apply_effect(1.5, WEAKEN)
+		Knockdown(1.5)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)

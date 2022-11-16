@@ -554,7 +554,7 @@
 	on_mob_life(mob/living/carbon/M)
 		. = ..()
 		if(!.) return
-		M.knocked_down = max(M.knocked_down, 3)
+		M.Knockdown(3)
 		if(!data) data = 1
 		data++
 		M.dizziness +=6

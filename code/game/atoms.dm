@@ -110,14 +110,18 @@ directive is properly returned.
 		return loc.return_gas()
 
 // Updates the atom's transform
-/atom/proc/apply_transform(var/matrix/M)
+/atom/proc/apply_transform(var/matrix/M, animate_time = 0, easing = EASE_IN|EASE_OUT)
 	if(!base_transform)
 		transform = M
 		return
 
 	var/matrix/base_copy = matrix(base_transform)
 	// Compose the base and applied transform in that order
-	transform = base_copy.Multiply(M)
+	var/effective_transform = base_copy.Multiply(M)
+	if(!animate_time)
+		transform = effective_transform
+	else
+		animate(src, transform = effective_transform, time = animate_time, easing = easing)
 
 /atom/proc/on_reagent_change()
 	return

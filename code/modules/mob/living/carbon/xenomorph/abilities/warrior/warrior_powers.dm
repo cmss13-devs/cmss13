@@ -97,7 +97,7 @@
 	if(stun_power)
 		H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
 	if(weaken_power)
-		H.apply_effect(weaken_power, WEAKEN)
+		H.Knockdown(weaken_power)
 	if(slowdown)
 		if(H.slowed < slowdown)
 			H.apply_effect(slowdown, SLOW)

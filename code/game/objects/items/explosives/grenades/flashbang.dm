@@ -95,15 +95,15 @@
 
 	if(M.flash_eyes())
 		M.apply_effect(2, STUN)
-		M.apply_effect(10, WEAKEN)
+		M.Knockdown(10)
 
 	if((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
 		if(trained_human)
 			M.apply_effect(2, STUN)
-			M.apply_effect(1, WEAKEN)
+			M.Knockdown(1)
 		else
 			M.apply_effect(10, STUN)
-			M.apply_effect(3, WEAKEN)
+			M.Knockdown(3)
 			M.SetEarDeafness(max(M.ear_deaf,15))
 			if(!no_damage)
 				if((prob(14) || (M == src.loc && prob(70))))
@@ -231,7 +231,7 @@
 				X.SetEarDeafness(max(X.ear_deaf, 3))
 		else	//simple mobs?
 			M.apply_effect(5, STUN)
-			M.apply_effect(1, WEAKEN)
+			M.Knockdown(1)
 
 	var/mob/living/carbon/human/H = M
 
@@ -293,7 +293,7 @@
 		if(5)
 			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 50)
 			M.apply_effect(10, DAZE)
-			M.apply_effect(5, WEAKEN)
+			M.Knockdown(5)
 			M.SetEarDeafness(max(M.ear_deaf, 10))
 			M.ear_damage += rand(1, 10)
 

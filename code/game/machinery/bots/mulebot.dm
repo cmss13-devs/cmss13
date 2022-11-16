@@ -747,15 +747,15 @@
 // called when bot bumps into anything
 /obj/structure/machinery/bot/mulebot/Collide(atom/A)
 	if(!(wires & WIRE_MOBAVOID))		//usually just bumps, but if avoidance disabled knock over mobs
-		var/mob/M = A
-		if(ismob(M))
+		var/mob/living/M = A
+		if(istype(M))
 			if(isborg(M))
 				src.visible_message(SPAN_DANGER("[src] bumps into [M]!"))
 			else
 				src.visible_message(SPAN_DANGER("[src] knocks over [M]!"))
 				M.stop_pulling()
 				M.apply_effect(8, STUN)
-				M.apply_effect(5, WEAKEN)
+				M.Knockdown(5)
 				M.lying = 1
 	..()
 

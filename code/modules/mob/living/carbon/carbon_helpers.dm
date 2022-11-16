@@ -62,7 +62,7 @@
 	if(dist <= 4)
 		to_chat(src, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
 		adjust_effect(4, STUN)
-		apply_effect(4, WEAKEN)
+		Knockdown(4)
 		if(!ear_deaf)
 			AdjustEarDeafness(5) //Deafens them temporarily
 	else if(dist >= 5 && dist < 7)

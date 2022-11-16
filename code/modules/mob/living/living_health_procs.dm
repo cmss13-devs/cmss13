@@ -177,7 +177,7 @@
 	set_effect(0, DAZE)
 	set_effect(0, SLOW)
 	set_effect(0, SUPERSLOW)
-	set_effect(0, WEAKEN)
+	SetKnockdown(0)
 	ExtinguishMob()
 	fire_stacks = 0
 

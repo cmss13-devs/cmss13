@@ -165,7 +165,7 @@
 				victim.eye_blurry = max(M.eye_blurry, 25)
 				victim.eye_blind = max(M.eye_blind, 10)
 				victim.apply_effect(3, STUN)
-				victim.apply_effect(3, WEAKEN)
+				victim.Knockdown(3)
 
 /datum/reagent/frostoil
 	name = "Frost Oil"

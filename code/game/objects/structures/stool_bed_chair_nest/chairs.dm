@@ -128,7 +128,7 @@
 		var/mob/living/M = AM
 		stack_collapse()
 		M.apply_effect(2, STUN)
-		M.apply_effect(2, WEAKEN)
+		M.Knockdown(2)
 	else if(stacked_size > 8 && prob(50))
 		stack_collapse()
 
@@ -299,7 +299,7 @@
 		var/def_zone = rand_zone()
 		occupant.throw_atom(A, 3, propelled)
 		occupant.apply_effect(6, STUN)
-		occupant.apply_effect(6, WEAKEN)
+		occupant.Knockdown(6)
 		occupant.apply_effect(6, STUTTER)
 		occupant.apply_damage(10, BRUTE, def_zone)
 		playsound(src.loc, 'sound/weapons/punch1.ogg', 25, 1)
@@ -307,7 +307,7 @@
 			var/mob/living/victim = A
 			def_zone = rand_zone()
 			victim.apply_effect(6, STUN)
-			victim.apply_effect(6, WEAKEN)
+			victim.Knockdown(6)
 			victim.apply_effect(6, STUTTER)
 			victim.apply_damage(10, BRUTE, def_zone)
 		occupant.visible_message(SPAN_DANGER("[occupant] crashed into \the [A]!"))

@@ -60,16 +60,16 @@
 	return // HOLOTABLE DOES NOT GIVE A FUCK
 
 
-/obj/structure/surface/table/holotable/attackby(obj/item/W, mob/user)
+/obj/structure/surface/table/holotable/attackby(obj/item/W, mob/living/user)
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
 		var/obj/item/grab/G = W
-		if(ismob(G.grabbed_thing))
-			var/mob/M = G.grabbed_thing
+		if(isliving(G.grabbed_thing))
+			var/mob/living/M = G.grabbed_thing
 			if(user.grab_level < GRAB_AGGRESSIVE)
 				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 				return
 			M.forceMove(loc)
-			M.apply_effect(5, WEAKEN)
+			M.Knockdown(5)
 			user.visible_message(SPAN_DANGER("[user] puts [M] on the table."))
 		return
 
@@ -138,16 +138,16 @@
 	var/side = ""
 	var/id = ""
 
-/obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/holohoop/attackby(obj/item/W as obj, mob/living/user as mob)
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
 		var/obj/item/grab/G = W
-		if(ismob(G.grabbed_thing))
-			var/mob/M = G.grabbed_thing
+		if(isliving(G.grabbed_thing))
+			var/mob/living/M = G.grabbed_thing
 			if(user.grab_level < GRAB_AGGRESSIVE)
 				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 				return
 			M.forceMove(loc)
-			M.apply_effect(5, WEAKEN)
+			M.Knockdown(5)
 			for(var/obj/structure/machinery/scoreboard/X in machines)
 				if(X.id == id)
 					X.score(side, 3)// 3 points for dunking a mob

@@ -53,7 +53,7 @@
 	if(H.stat == DEAD)
 		return
 
-	if(!(H.knocked_down || H.frozen || H.slowed))
+	if(!(!(H.mobility_flags & MOBILITY_STAND) || H.frozen || H.slowed))
 		return
 
 	H.apply_armoured_damage(get_xeno_damage_slash(H, tearing_damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected ? bound_xeno.zone_selected : "chest")

@@ -272,9 +272,9 @@
 	if(ishuman(Mob))
 		var/mob/living/carbon/human/Human = Mob
 		xeno_throw_human(Human, Xeno, get_dir(Xeno, Human), 1)
-		Human.apply_effect(1, WEAKEN)
+		Human.Knockdown(1)
 	else
-		Mob.apply_effect(1, WEAKEN)
+		Mob.Knockdown(1)
 	if(!LinkBlocked(Xeno, get_turf(Xeno), target_turf))
 		Xeno.forceMove(target_turf)
 

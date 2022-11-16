@@ -27,10 +27,10 @@
 
 			for(var/mob/M as anything in viewers(5, location))
 				to_chat(M, SPAN_WARNING("The solution violently explodes."))
-			for(var/mob/M as anything in viewers(1, location))
+			for(var/mob/living/M as anything in viewers(1, location))
 				if (prob (50 * amount))
 					to_chat(M, SPAN_WARNING("The explosion knocks you down."))
-					M.apply_effect(rand(1,5), WEAKEN)
+					M.Knockdown(rand(1,5))
 			return
 		else
 			var/light = -1

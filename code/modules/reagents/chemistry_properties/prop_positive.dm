@@ -147,9 +147,9 @@
 /datum/chem_property/positive/nervestimulating/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damages(potency, potency, POTENCY_MULTIPLIER_HIGH*potency)
 
-/datum/chem_property/positive/nervestimulating/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
+/datum/chem_property/positive/nervestimulating/reaction_mob(mob/living/M, var/method=TOUCH, var/volume, var/potency)
 	if(isXenoOrHuman(M) && potency > POTENCY_MAX_TIER_1) //can stim on touch at level 7+
-		M.set_effect(0, WEAKEN)
+		M.SetKnockdown(0)
 		M.set_effect(0, STUN)
 		M.set_effect(0, DAZE)
 

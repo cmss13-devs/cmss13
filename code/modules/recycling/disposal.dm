@@ -172,7 +172,7 @@
 
 //Attempt to move while inside
 /obj/structure/machinery/disposal/relaymove(mob/user)
-	if(user.stat || user.stunned || user.knocked_down || flushing)
+	if(user.stat || user.stunned || user.is_mob_incapacitated() || flushing)
 		return
 	if(user.loc == src)
 		go_out(user)

@@ -91,7 +91,7 @@
 	if (!isXenoOrHuman(target_carbon))
 		return
 
-	if (target_carbon.knocked_down)
+	if (!(target_carbon.mobility_flags & MOBILITY_STAND))
 		new /datum/effects/xeno_slow(target_carbon, bound_xeno, null, null, get_xeno_stun_duration(target_carbon, slash_slow_duration))
 
 	return

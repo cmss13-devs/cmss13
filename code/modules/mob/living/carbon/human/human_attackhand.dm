@@ -163,7 +163,7 @@
 
 
 			if (randn <= 25)
-				apply_effect(3, WEAKEN)
+				Knockdown(3)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				visible_message(SPAN_DANGER("<B>[M] has pushed [src]!</B>"), null, null, 5)
 				return
@@ -228,7 +228,7 @@
 
 	adjust_effect(-3, PARALYZE)
 	adjust_effect(-3, STUN)
-	adjust_effect(-3, WEAKEN)
+	AdjustKnockdown(-3, WEAKEN)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 

@@ -458,7 +458,7 @@
 		M.apply_effect(dazed_time * 1.5, DAZE)
 		return
 
-	M.apply_effect(knockout_time, WEAKEN)//but little xenos and humans are
+	M.Knockdown(knockout_time)//but little xenos and humans are
 	M.apply_effect(slowdown_time, SLOW)
 	M.apply_effect(dazed_time, DAZE)
 	return

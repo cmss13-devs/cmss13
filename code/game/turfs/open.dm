@@ -609,7 +609,7 @@
 		if(prob(50))
 			to_chat(M, pick(SPAN_NOTICE("You slip on something slimy."),SPAN_NOTICE("You fall over into the murk.")))
 			M.apply_effect(2, STUN)
-			M.apply_effect(1, WEAKEN)
+			M.Knockdown(1)
 
 		//piranhas - 25% chance to be an omnipresent risk, although they do practically no damage
 		if(prob(25))

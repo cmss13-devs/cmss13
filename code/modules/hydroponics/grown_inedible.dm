@@ -160,7 +160,7 @@
 		M.eye_blurry += force/7
 		if(prob(20))
 			M.apply_effect(force/6, PARALYZE)
-			M.apply_effect(force/15, WEAKEN)
+			M.Knockdown(force/15, WEAKEN)
 		M.drop_held_item()
 
 /obj/item/corncob

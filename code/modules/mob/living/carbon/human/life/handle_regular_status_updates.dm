@@ -123,7 +123,7 @@
 
 		if(paralyzed)
 			speech_problem_flag = 1
-			apply_effect(1, WEAKEN)
+			Knockdown(1)
 			silent = 1
 			blinded = 1
 			use_me = 0

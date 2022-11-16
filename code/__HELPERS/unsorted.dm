@@ -1090,8 +1090,8 @@ var/global/image/action_purple_power_up
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_KNOCKED_DOWN && L.knocked_down || \
-			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && T.knocked_down)
+		if(user_flags & INTERRUPT_KNOCKED_DOWN && !(L.mobility_flags & MOBILITY_STAND) || \
+			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && !(T.mobility_flags & MOBILITY_STAND))
 		)
 			. = FALSE
 			break

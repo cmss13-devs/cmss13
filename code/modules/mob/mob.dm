@@ -656,7 +656,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
-	var/laid_down = (stat || knocked_down || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE))
+	var/laid_down = (stat || !(mobility_flags & MOBILITY_STAND) || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE))
+	// NOTE: (mobility_flags & MOBILITY_STAND) is meant to replace lying eventually
+	// but this requires integrating the other conditions above into it first
 
 	if(laid_down)
 		lying = TRUE
@@ -851,7 +853,6 @@ mob/proc/yank_out_object()
 
 /mob/living/proc/handle_statuses()
 	handle_stunned()
-	handle_knocked_down()
 	handle_knocked_out()
 	handle_stuttering()
 	handle_silent()
@@ -880,13 +881,6 @@ mob/proc/yank_out_object()
 	if(superslowed)
 		adjust_effect(-1, SUPERSLOW)
 	return superslowed
-
-
-/mob/living/proc/handle_knocked_down(var/bypass_client_check = FALSE)
-	if(knocked_down && (bypass_client_check || client))
-		knocked_down = max(knocked_down-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
-		knocked_down_callback_check()
-	return knocked_down
 
 /mob/living/proc/handle_knocked_out(var/bypass_client_check = FALSE)
 	if(knocked_out && (bypass_client_check || client))

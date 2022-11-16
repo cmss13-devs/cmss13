@@ -141,7 +141,7 @@
 		for(var/mob/living/M in turf)
 			M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			M.set_effect(5, STUN)
-			M.set_effect(5, WEAKEN)
+			M.SetKnockdown(5)
 			M.emote("pain")
 			var/turf/location = loc
 			if(istype(location, /turf))

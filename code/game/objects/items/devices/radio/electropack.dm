@@ -64,8 +64,8 @@
 	if(!signal || signal.encryption != code)
 		return
 
-	if(ismob(loc) && on)
-		var/mob/M = loc
+	if(isliving(loc) && on)
+		var/mob/living/M = loc
 		var/turf/T = M.loc
 		if(istype(T, /turf))
 			if( (world.time - mob_move_time) >= (5 SECONDS) && M.last_move_dir)
@@ -76,7 +76,7 @@
 		s.set_up(3, 1, M)
 		s.start()
 
-		M.apply_effect(10, WEAKEN)
+		M.Knockdown(10)
 
 	if(master && wires & 1)
 		master.receive_signal()

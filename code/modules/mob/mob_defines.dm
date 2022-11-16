@@ -118,7 +118,6 @@
 	var/knocked_out = 0.0
 	var/stunned = 0.0
 	var/frozen = 0.0
-	var/knocked_down = 0.0
 	var/losebreath = 0.0//Carbon
 	var/dazed = 0.0
 	var/slowed = 0.0 // X_SLOW_AMOUNT
@@ -163,6 +162,10 @@
 	var/obj/item/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
 
 	var/list/viruses = list() //List of active diseases
+
+	/// Flags that determine the potential of a mob to perform certain actions. Do not change this directly.
+	/// NOT FULLY IMPLEMENTED, TREAD CAREFULLY
+	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
 
 //Monkey/infected mode
 	var/list/resistances = list()

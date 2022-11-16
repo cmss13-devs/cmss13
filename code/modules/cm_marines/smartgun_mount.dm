@@ -942,7 +942,7 @@
 	if(operator)
 		to_chat(operator, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram!"))
 		operator.unset_interaction()
-		operator.apply_effect(M2C_CRUSHER_STUN, WEAKEN)
+		operator.Knockdown(M2C_CRUSHER_STUN)
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"

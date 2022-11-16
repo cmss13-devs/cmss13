@@ -69,7 +69,7 @@
 	if(stat == DEAD)
 		icon_state = "Normal [caste_name] Dead"
 	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+		if((resting || sleeping) && (!is_mob_incapacitated(TRUE) && health > 0))
 			icon_state = "Normal [caste_name] Sleeping"
 		else
 			icon_state = "Normal [caste_name] Knocked Down"
@@ -89,12 +89,12 @@
 	if(hive.is_ally(target))
 		return FALSE
 
-/mob/living/simple_animal/hostile/alien/pull_response(mob/puller)
+/mob/living/simple_animal/hostile/alien/pull_response(mob/living/puller)
 	if(stat != DEAD && has_species(puller, "Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
-		puller.apply_effect(2, WEAKEN)
+		puller.Knockdown(2)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
 		return FALSE
@@ -115,7 +115,7 @@
 		if(health_threshold > 3)
 			wound_icon_carrier.icon_state = "none"
 		else if(lying)
-			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+			if((resting || sleeping) && (!is_mob_incapacitated(TRUE) && health > 0))
 				wound_icon_carrier.icon_state = "[caste_name]_rest_[health_threshold]"
 			else
 				wound_icon_carrier.icon_state = "[caste_name]_downed_[health_threshold]"

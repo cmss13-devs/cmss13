@@ -54,7 +54,7 @@
 	if(stat == DEAD)
 		icon_state = "[mutation_type] [caste.caste_type] Dead"
 	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+		if((resting || sleeping) && (!is_mob_incapacitated(TRUE) && health > 0))
 			icon_state = "[mutation_type] [caste.caste_type] Sleeping"
 		else
 			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"
@@ -223,7 +223,7 @@
 		if(health_threshold > 3)
 			wound_icon_carrier.icon_state = "none"
 		else if(lying)
-			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+			if((resting || sleeping) && (!is_mob_incapacitated(TRUE) && health > 0))
 				wound_icon_carrier.icon_state = "[caste.caste_type]_rest_[health_threshold]"
 			else
 				wound_icon_carrier.icon_state = "[caste.caste_type]_downed_[health_threshold]"

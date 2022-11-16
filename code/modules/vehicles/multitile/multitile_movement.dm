@@ -275,7 +275,7 @@
 				shake_camera(M, 2, Ceiling(move_momentum/move_max_momentum) * 1)
 				if(!M.buckled)
 					M.apply_effect(1, STUN)
-					M.apply_effect(2, WEAKEN)
+					M.Knockdown(2)
 
 			// YOU'RE LIKE A CAR CRASH IN SLOW MOTION!
 			// IT'S LIKE I'M WATCHIN' YA FLY THROUGH A WINDSHIELD!

@@ -108,7 +108,7 @@
 				to_chat(usr, SPAN_DANGER("It's already fully loaded."))
 
 
-	afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
+	afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob, flag)
 		if(!isturf(target.loc) || target == user) return
 		if(flag) return
 
@@ -151,12 +151,12 @@
 
 			return
 		else if (bullets == 0)
-			user.apply_effect(5, WEAKEN)
+			user.Knockdown(5)
 			for(var/mob/O in viewers(world_view_size, user))
 				O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), 1)
 
 
-	attack(mob/M as mob, mob/user as mob)
+	attack(mob/living/M as mob, mob/living/user as mob)
 		src.add_fingerprint(user)
 
 // ******* Check
@@ -175,7 +175,7 @@
 			for(var/mob/O in viewers(M, null))
 				if (O.client)
 					O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), 1, SPAN_DANGER("You hear someone fall"), 2)
-			user.apply_effect(5, WEAKEN)
+			user.Knockdown(5)
 		return
 
 /obj/item/toy/crossbow_ammo

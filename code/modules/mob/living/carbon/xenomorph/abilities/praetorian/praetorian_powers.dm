@@ -295,7 +295,7 @@
 	for (var/mob/living/carbon/H in targets)
 		to_chat(H, SPAN_XENOHIGHDANGER("You are pulled toward [X]!"))
 
-		H.apply_effect(0.2, WEAKEN)
+		H.Knockdown(0.2)
 
 		if (LAZYLEN(targets) == 1)
 			new /datum/effects/xeno_slow(H, X, , ,25)
@@ -311,7 +311,7 @@
 
 			H.set_effect(2, DAZE)
 		else if (LAZYLEN(targets) >= 3)
-			H.apply_effect(get_xeno_stun_duration(H, 1.3), WEAKEN)
+			H.Knockdown(get_xeno_stun_duration(H, 1.3))
 			to_chat(H, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [X]!"))
 
 
@@ -356,7 +356,7 @@
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(H,S, 50, 1)
 
-	if (H.frozen || H.slowed || H.knocked_down)
+	if (H.frozen || H.slowed || !(H.mobility_flags & MOBILITY_STAND))
 		H.apply_damage(get_xeno_damage_slash(H, damage), BRUTE, L? L.name : "chest")
 		H.frozen = TRUE
 		H.update_canmove()
@@ -469,7 +469,7 @@
 
 			xeno_throw_human(H, X, facing, fling_dist)
 
-			H.apply_effect(get_xeno_stun_duration(H, 0.5), WEAKEN)
+			H.Knockdown(get_xeno_stun_duration(H, 0.5))
 			new /datum/effects/xeno_slow(H, X, ttl = get_xeno_stun_duration(H, 25))
 
 	..()
@@ -686,7 +686,7 @@
 
 	if(!xeno_smashed)
 		if (stun_duration > 0)
-			T.apply_effect(stun_duration, WEAKEN)
+			T.Knockdown(stun_duration)
 		X.visible_message(SPAN_XENODANGER("[X] trips [A] with it's tail!"), SPAN_XENODANGER("You trip [A] with your tail!"))
 		X.spin_circle()
 		X.emote("tail")
@@ -858,7 +858,7 @@
 		targetXeno.flick_heal_overlay(3 SECONDS, "#F5007A") //therefore making the Praetorian a priority target
 		targetXeno.set_effect(0, PARALYZE)
 		targetXeno.set_effect(0, STUN)
-		targetXeno.set_effect(0, WEAKEN)
+		targetXeno.SetKnockdown(0)
 		targetXeno.set_effect(0, DAZE)
 		targetXeno.set_effect(0, SLOW)
 		targetXeno.set_effect(0, SUPERSLOW)

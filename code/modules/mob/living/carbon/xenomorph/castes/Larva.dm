@@ -125,7 +125,7 @@
 		icon_state = "[state_override || state]Larva Cuff"
 
 	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+		if((resting || sleeping) && (!is_mob_incapacitated(TRUE) && health > 0))
 			icon_state = "[state_override || state]Larva Sleeping"
 		else
 			icon_state = "[state_override || state]Larva Stunned"

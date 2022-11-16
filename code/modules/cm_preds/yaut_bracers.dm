@@ -118,7 +118,7 @@
 		M.visible_message(SPAN_WARNING("[src] beeps and sends a shock through [M]'s body!"))
 		//Stun and knock out, scream in pain
 		M.apply_effect(2, STUN)
-		M.apply_effect(2, WEAKEN)
+		M.Knockdown(2)
 		if(M.pain.feels_pain)
 			M.emote("scream")
 		//Apply a bit of burn damage

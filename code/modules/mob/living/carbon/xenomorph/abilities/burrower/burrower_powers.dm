@@ -67,7 +67,7 @@
 	anchored = FALSE
 	density = TRUE
 	for(var/mob/living/carbon/human/H in loc)
-		H.apply_effect(2, WEAKEN)
+		H.Knockdown(2)
 	addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_canmove()
 	update_icons()
@@ -201,7 +201,7 @@
 
 	for(var/mob/living/carbon/human/H in range(3, loc))
 		to_chat(H, SPAN_WARNING("The violent tremors make you lose your footing!"))
-		H.apply_effect(1, WEAKEN)
+		H.Knockdown(1)
 
 	spawn(caste.tremor_cooldown)
 		used_tremor = 0

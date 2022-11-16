@@ -483,7 +483,7 @@
 		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."))
 
 
-/obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/sink/attackby(obj/item/O as obj, mob/living/user)
 	if(busy)
 		to_chat(user, SPAN_DANGER("Someone's already washing here."))
 		return
@@ -501,7 +501,7 @@
 				flick("baton_active", src)
 				user.apply_effect(10, STUN)
 				user.stuttering = 10
-				user.apply_effect(10, WEAKEN)
+				user.Knockdown(10)
 				if(isrobot(user))
 					var/mob/living/silicon/robot/R = user
 					R.cell.charge -= 20

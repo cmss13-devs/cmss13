@@ -32,7 +32,7 @@
 			if("feet")
 				if(!H.shoes)
 					affecting = H.get_limb(pick("l_leg", "r_leg"))
-					H.apply_effect(3, WEAKEN)
+					H.Knockdown(3)
 			if("l_hand", "r_hand")
 				if(!H.gloves)
 					affecting = H.get_limb(type)

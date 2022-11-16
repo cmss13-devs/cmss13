@@ -117,6 +117,12 @@
 // #define TRAIT_X "t_x"
 //-- mob traits --
 // SPECIES TRAITS
+/// Forces the user to stay unconscious.
+#define TRAIT_KNOCKEDOUT "knockedout"
+/// Prevents voluntary movement.
+#define TRAIT_IMMOBILIZED "immobilized"
+/// Prevents voluntary standing or staying up on its own.
+#define TRAIT_FLOORED "floored"
  /// Knowledge of Yautja technology
 #define TRAIT_YAUTJA_TECH "t_yautja_tech"
  /// Absolutely RIPPED. Can do misc. heavyweight stuff others can't. (Yautja, Synths)

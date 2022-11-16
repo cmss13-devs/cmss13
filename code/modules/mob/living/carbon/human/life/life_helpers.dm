@@ -238,15 +238,11 @@
 		speech_problem_flag = 1
 	return dazed
 
-/mob/living/carbon/human/handle_knocked_down()
-	if(knocked_down)
-		var/species_resistance = species.knock_down_reduction
-		var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
-
-		var/final_reduction = species_resistance + skill_resistance
-		adjust_effect(-final_reduction, WEAKEN, EFFECT_FLAG_LIFE)
-		knocked_down_callback_check()
-	return knocked_down
+/mob/living/carbon/human/get_knockdown_duration(amount)
+	var/species_resistance = species.knock_down_reduction
+	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
+	var/effective_value = amount / (species_resistance + skill_resistance)
+	return effective_value * 10
 
 /mob/living/carbon/human/handle_knocked_out()
 	if(knocked_out)
@@ -275,18 +271,6 @@
 	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction
 	if(stunned > shift_left)
 		stunned += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction - shift_left
-
-/mob/living/carbon/human/knockdown_clock_adjustment()
-	if(!species)
-		return FALSE
-
-	var/species_resistance = species.knock_down_reduction
-	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
-
-	var/final_reduction = species_resistance + skill_resistance
-	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction
-	if(knocked_down > shift_left)
-		knocked_down += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction - shift_left
 
 /mob/living/carbon/human/knockout_clock_adjustment()
 	if(!species)

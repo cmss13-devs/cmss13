@@ -71,7 +71,7 @@
 	if(stat == DEAD)
 		icon_state = "[mutation_type] [caste.caste_type] Dead"
 	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+		if((resting || sleeping) && (!is_mob_incapacitated(TRUE) && health > 0))
 			icon_state = "[mutation_type] [caste.caste_type] Sleeping"
 		else
 			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"
@@ -187,7 +187,7 @@
 /mob/living/carbon/Xenomorph/Facehugger/handle_queen_screech(var/mob/living/carbon/Xenomorph/Queen/queen)
 	to_chat(src, SPAN_DANGER("The mighty roar of the queen makes you tremble and fall over!"))
 	adjust_effect(6, STUN)
-	apply_effect(6, WEAKEN)
+	Knockdown(6)
 
 /mob/living/carbon/Xenomorph/Facehugger/add_xeno_shield(added_amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1, add_shield_on = FALSE, max_shield = 200)
 	return

@@ -31,7 +31,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] is out of charge."))
 	add_fingerprint(user)
 
-/obj/item/weapon/stunprod/attack(mob/M, mob/user)
+/obj/item/weapon/stunprod/attack(mob/living/M, mob/living/user)
 	if(isrobot(M))
 		..()
 		return
@@ -43,7 +43,7 @@
 		return
 
 	if(status)
-		M.apply_effect(6, WEAKEN)
+		M.Knockdown(6)
 		charges -= 2
 		M.visible_message(SPAN_DANGER("[M] has been prodded with the [src] by [user]!"))
 
@@ -76,9 +76,9 @@
 	desc = "A specialised prod designed for incapacitating xenomorphic lifeforms with. This one seems to be much more effective than its predecessor."
 	color = "#FF6666"
 
-/obj/item/weapon/stunprod/improved/attack(mob/M, mob/user)
+/obj/item/weapon/stunprod/improved/attack(mob/living/M, mob/living/user)
 	..()
-	M.apply_effect(14, WEAKEN)
+	M.Knockdown(14)
 
 /obj/item/weapon/stunprod/improved/get_examine_text(mob/user)
 	. = ..()

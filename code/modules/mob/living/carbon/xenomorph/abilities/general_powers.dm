@@ -736,6 +736,7 @@
 	plasma_cost = X.ammo.spit_cost
 
 	if(!check_and_use_plasma_owner())
+		spitting = FALSE
 		return
 
 	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay

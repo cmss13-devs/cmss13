@@ -654,7 +654,7 @@
 	if(seed && !dead)
 		info += "[src] has " + SPAN_HELPFUL("[seed.display_name]") +" planted.\n"
 		if(plant_health <= (seed.endurance / 2))
-			info += "The plant looks \red unhealthy.\n"
+			info += "The plant looks " + SPAN_RED("unhealthy") + ".\n"
 	else
 		info += "[src] is empty.\n"
 	info += "Water: [round(waterlevel,0.1)]/100\n"

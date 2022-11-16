@@ -36,6 +36,7 @@
 	var/mob/observetarget = null	//The target mob that the ghost is observing. Used as a reference in logout()
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
+	var/own_orbit_size = 0
 	alpha = 127
 
 /mob/dead/observer/verb/toggle_ghostsee()
@@ -65,6 +66,8 @@
 		body.alter_ghost(src)
 		apply_transform(matrix())
 
+		own_orbit_size = body.get_orbit_size()
+
 		desc = initial(desc)
 
 		alpha = 127
@@ -77,6 +80,9 @@
 		see_in_dark = 100
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
+
+	if(!own_orbit_size)
+		own_orbit_size = 32
 
 	if(!isturf(spawn_turf)) spawn_turf = get_turf(pick(GLOB.latejoin))			//Safety in case we cannot find the body's position
 	forceMove(spawn_turf)
@@ -479,13 +485,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!istype(target))
 		return
 
-	var/orbitsize
-	if(ishuman(target))
-		var/mob/living/carbon/human/human_target = target
-		orbitsize = human_target.langchat_height
-	else
-		var/icon/I = icon(target.icon, target.icon_state, target.dir)
-		orbitsize = (I.Width() + I.Height()) * 0.5
+	var/orbitsize = target.get_orbit_size()
 	orbitsize -= (orbitsize / world.icon_size) * (world.icon_size * 0.25)
 
 	var/rot_seg
@@ -503,6 +503,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			rot_seg = 36
 
 	orbit(target, orbitsize, FALSE, 20, rot_seg)
+
+/mob/dead/observer/get_orbit_size()
+	return own_orbit_size
 
 /mob/dead/observer/orbit()
 	setDir(SOUTH)//reset dir so the right directional sprites show up //might tweak this for xenos, stan_albatross orbitshit

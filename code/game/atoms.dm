@@ -536,3 +536,7 @@ Parameters are passed from New.
 
 /atom/proc/handle_flamer_fire_crossed(var/obj/flamer_fire/fire)
 	return
+
+/atom/proc/get_orbit_size()
+	var/icon/I = icon(icon, icon_state, dir)
+	return (I.Width() + I.Height()) * 0.5

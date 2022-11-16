@@ -277,3 +277,7 @@
       manual cancellation without shitcode.
   realforest2001:
   - rscadd: Paygrades now display on non Yautja or Xeno mobs.
+2022-11-16:
+  NoKohi:
+  - bugfix: fixed facehuggers not stunning when applied
+  - bugfix: fixed resisting flame + acid stun not applying

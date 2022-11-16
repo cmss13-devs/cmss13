@@ -382,6 +382,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 #define DURATION_MULTIPLIER_TIER_1 0.75
 #define DURATION_MULTIPLIER_TIER_2 0.5
 #define DURATION_MULTIPLIER_TIER_3 0.25
+#define DURATION_MULTIPLIER_TIER_4 0.10
 /mob/proc/get_skill_duration_multiplier(var/skill)
 	//Gets a multiplier for various tasks, based on the skill
 	. = 1.0
@@ -448,15 +449,15 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			else
 				return 2
 // Fireman
-			if(SKILL_FIREMAN)
-				if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_SKILLED))
-					return DURATION_MULTIPLIER_TIER_1
-				if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_EXPERT))
-					return DURATION_MULTIPLIER_TIER_2
-				if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_MASTER))
-					return DURATION_MULTIPLIER_TIER_3
-				if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_MAX))
-					return 0.10
+		if(SKILL_FIREMAN)
+			if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_SKILLED))
+				return DURATION_MULTIPLIER_TIER_1
+			if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_EXPERT))
+				return DURATION_MULTIPLIER_TIER_2
+			if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_MASTER))
+				return DURATION_MULTIPLIER_TIER_3
+			if(skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_MAX))
+				return DURATION_MULTIPLIER_TIER_4
 
 
 

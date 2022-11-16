@@ -237,7 +237,7 @@
 
 	if(json["perf_mode"])
 		perf_mode = json["perf_mode"]
-		
+
 	if(json["vote_cycle"])
 		vote_cycle = json["vote_cycle"]
 

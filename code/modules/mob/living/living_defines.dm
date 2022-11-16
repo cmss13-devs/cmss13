@@ -90,3 +90,6 @@
 	var/list/incision_depths = DEFENSE_ZONES_LIVING
 
 	var/current_weather_effect_type
+
+	/// A list of all status effects the mob has
+	var/list/datum/status_effect/status_effects

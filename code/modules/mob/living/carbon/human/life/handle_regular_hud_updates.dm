@@ -160,6 +160,7 @@
 	return TRUE
 
 
+// NOTE, THIS USES THE OLD EFFECT SYSTEM, NOT /datum/status_effect or /mob/living's status_effects
 /mob/living/carbon/human/proc/check_status_effects()
 	var/status_effect_placement = 1
 

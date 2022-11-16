@@ -10,7 +10,7 @@
 
 /obj/item/explosive/grenade/HE
 	name = "\improper M40 HEDP grenade"
-	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has been phasing out the M15 HE grenades alongside the M40 HEFA. Capable of being loaded in the M92 Launcher, or thrown by hand."
+	desc = "High-Explosive Dual-Purpose. A small, but powerful blast grenade that has been phasing out the M15 HE grenades alongside the M40 HEFA. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "grenade"
 	det_time = 40
 	item_state = "grenade_hedp"
@@ -197,8 +197,8 @@
 */
 
 /obj/item/explosive/grenade/incendiary
-	name = "\improper M40 HIDP incendiary grenade"
-	desc = "The M40 High Incendiary Dual-Purpose (HIDP) is a small, but deceptively strong incendiary grenade designed to disrupt enemy mobility with long-lasting Type B napalm. It is set to detonate in 4 seconds."
+	name = "\improper U4-B incendiary grenade"
+	desc = "The U4-B firebomb is an incendiary grenade designed to disrupt enemy mobility with a long-lasting Type B napalm, based on the same platform as the M40 HEDP. It is set to detonate in 4 seconds."
 	icon_state = "grenade_fire"
 	det_time = 40
 	item_state = "grenade_fire"
@@ -305,8 +305,8 @@
 */
 
 /obj/item/explosive/grenade/smokebomb
-	name = "\improper M40 TSDP smoke grenade"
-	desc = "The M40 Tactical Smoke Dual-Purpose (TSDP) is a small, but powerful smoke grenade. Based off the same platform as the M40 HEDP. It is set to detonate in 2 seconds."
+	name = "\improper M48 TSDP smoke grenade"
+	desc = "The M48 Tactical Smoke Dual-Purpose (TSDP) is a small, but powerful smoke grenade based on the same platform as the M40 HEDP. It is set to detonate in 2 seconds."
 	icon_state = "grenade_smoke"
 	det_time = 20
 	item_state = "grenade_smoke"
@@ -328,8 +328,8 @@
 	qdel(src)
 
 /obj/item/explosive/grenade/phosphorus
-	name = "\improper M40 WPDP grenade"
-	desc = "The M40 White-Phospherous Dual-Purpose (WPDP) is a small, but powerful phosphorus grenade. It is set to detonate in 2 seconds."
+	name = "\improper M60 WPI grenade"
+	desc = "The M60 White Phosphorus Incendiary (WPI) is a small, but powerful phosphorus grenade based on the same platform as the M40 HEDP. It is set to detonate in 2 seconds."
 	icon_state = "grenade_phos"
 	det_time = 20
 	item_state = "grenade_phos"
@@ -340,7 +340,7 @@
 	var/smoke_radius = 3
 
 /obj/item/explosive/grenade/phosphorus/weak
-	desc = "The M40 White-Phospherous Dual-Purpose (WPDP) is a small, but powerful phosphorus grenade. This one appears to be the newer version. Word on the block says that these doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
+	desc = "The M60 White Phosphorus Incendiary (WPI) is a small, but powerful phosphorus grenade based on the same platform as the M40 HEDP. This one has a bit of a hollower sound to it. May not actually release white phosphorus, but some other, unknown chemical. Use at your own risk."
 
 /obj/item/explosive/grenade/phosphorus/Initialize()
 	..()

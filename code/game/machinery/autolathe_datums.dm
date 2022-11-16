@@ -17,6 +17,11 @@
 	path = /obj/item/reagent_container/glass/bucket/mopbucket
 	category = "General"
 
+/datum/autolathe/recipe/mopbucket
+	name = "janitorial bucket"
+	path = /obj/item/reagent_container/glass/bucket/janibucket
+	category = "General"
+
 /datum/autolathe/recipe/flashlight
 	name = "flashlight"
 	path = /obj/item/device/flashlight

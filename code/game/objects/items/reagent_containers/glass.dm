@@ -636,6 +636,7 @@
 	name = "janitorial bucket"
 	desc = "It's a large bucket that fits in a janitorial cart. Holds 500 units."
 	icon_state = "janibucket"
+	matter = list("metal" = 8000)
 	volume = 500
 
 

@@ -14,12 +14,12 @@
 #define AMMO_EXPLOSIVE 			(1<<0)
 #define AMMO_XENO_ACID 			(1<<1)
 #define AMMO_XENO_TOX			(1<<2)
-#define AMMO_ENERGY 			(1<<3)
-#define AMMO_ROCKET				(1<<4)
-#define AMMO_SNIPER				(1<<5)
-#define AMMO_ANTISTRUCT			(1<<6) // Primarily for railgun but can be implemented for other projectiles that are for antitank and antistructure (wall/machine)
-#define AMMO_SKIPS_ALIENS 		(1<<7)
-#define AMMO_IS_SILENCED 		(1<<8) //Unused right now.
+#define AMMO_XENO_BONE			(1<<3) // Needed for some boneshards based abilities
+#define AMMO_ENERGY 			(1<<4)
+#define AMMO_ROCKET				(1<<5)
+#define AMMO_SNIPER				(1<<6)
+#define AMMO_ANTISTRUCT			(1<<7) // Primarily for railgun but can be implemented for other projectiles that are for antitank and antistructure (wall/machine)
+#define AMMO_SKIPS_ALIENS 		(1<<8)
 #define AMMO_IGNORE_ARMOR		(1<<9)
 #define AMMO_IGNORE_RESIST		(1<<10)
 #define AMMO_BALLISTIC			(1<<11)
@@ -35,8 +35,10 @@
 #define AMMO_NO_DEFLECT			(1<<20)
 ///Can only hit people with criminal status
 #define AMMO_MP					(1<<21)
+#define AMMO_FLAME				(1<<22) // Handles sentry flamers glob
 /// Can BE people with it
-#define AMMO_HIGHIMPACT			(1<<22)
+#define AMMO_HIGHIMPACT			(1<<23)
+
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)

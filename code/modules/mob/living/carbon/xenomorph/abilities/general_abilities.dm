@@ -204,6 +204,7 @@
 	var/freeze_self = TRUE				// Should we freeze ourselves after the lunge?
 	var/freeze_time = 5					// 5 for runners, 15 for lurkers
 	var/freeze_timer_id = TIMER_ID_NULL	// Timer to cancel the end freeze if it can be cancelled earlier
+	var/freeze_play_sound = TRUE
 
 	var/windup = FALSE					// Is there a do_after before we pounce?
 	var/windup_duration = 20			// How long to wind up, if applicable

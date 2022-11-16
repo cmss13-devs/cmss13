@@ -38,8 +38,6 @@
 	//visual layer of hardpoint when on vehicle
 	var/hdpt_layer = HDPT_LAYER_WHEELS
 
-	// Whether or not to make a muzzle flash when the gun is fired
-	var/use_muzzle_flash = FALSE
 	// List of offsets for where to place the muzzle flash for each direction
 	var/list/muzzle_flash_pos = list(
 		"1" = list(0, 0),
@@ -85,6 +83,11 @@
 	// The firing arc of this hardpoint
 	var/firing_arc = 0	//in degrees. 0 skips whole arc of fire check
 
+	// Muzzleflash
+	var/use_muzzle_flash = FALSE
+	var/muzzleflash_icon_state = "muzzle_flash"
+	var/underlayer_north_muzzleflash = FALSE
+	var/angle_muzzleflash = TRUE
 
 	//------AMMUNITION VARS----------
 
@@ -544,7 +547,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	P.fire_at(A, user, src, P.ammo.max_range, P.ammo.shell_speed)
 
 	if(use_muzzle_flash)
-		muzzle_flash(Get_Angle(owner, A))
+		muzzle_flash(Get_Angle(origin_turf, A))
 
 	ammo.current_rounds--
 
@@ -609,8 +612,13 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 			muzzle_flash_y += H.px_offsets["[H.loc.dir]"][2]
 
 	var/image_layer = owner.layer + 0.1
+	if(underlayer_north_muzzleflash && dir == NORTH)
+		image_layer = owner.layer - 0.1
 
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
+	if(!angle_muzzleflash)
+		angle = dir2angle(dir)
+
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,muzzleflash_icon_state,image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
 	rotate.Turn(angle)
 	rotate.Translate(muzzle_flash_x, muzzle_flash_y)

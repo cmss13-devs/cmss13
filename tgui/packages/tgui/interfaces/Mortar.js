@@ -6,23 +6,24 @@ export const Mortar = (props, context) => {
   const { act, data } = useBackend(context);
   const { data_target_x, data_target_y, data_dial_x, data_dial_y } = data;
 
-  const [target_x, setTargetX]
-    = useLocalState(context, "target_x", data_target_x);
+  const [target_x, setTargetX] = useLocalState(
+    context,
+    'target_x',
+    data_target_x
+  );
 
-  const [target_y, setTargetY]
-    = useLocalState(context, "target_y", data_target_y);
+  const [target_y, setTargetY] = useLocalState(
+    context,
+    'target_y',
+    data_target_y
+  );
 
-  const [dial_x, setDialX]
-    = useLocalState(context, "dial_x", data_dial_x);
+  const [dial_x, setDialX] = useLocalState(context, 'dial_x', data_dial_x);
 
-  const [dial_y, setDialY]
-    = useLocalState(context, "dial_y", data_dial_y);
+  const [dial_y, setDialY] = useLocalState(context, 'dial_y', data_dial_y);
 
   return (
-    <Window
-      width={245}
-      height={220}
-    >
+    <Window width={245} height={220}>
       <Window.Content>
         <Section>
           <LabeledList>
@@ -51,30 +52,34 @@ export const Mortar = (props, context) => {
             content="Set Target"
             icon="crosshairs"
             style={{
-              "margin-top": "5px",
-              "margin-left": "10px",
+              'margin-top': '5px',
+              'margin-left': '10px',
             }}
-            onClick={() => act('set_target', {
-              target_x: target_x,
-              target_y: target_y,
-            })}
+            onClick={() =>
+              act('set_target', {
+                target_x: target_x,
+                target_y: target_y,
+              })
+            }
           />
           <Button
             content="View Camera"
             style={{
-              "display": "flex",
-              "position": "absolute",
-              "top": "10px",
-              "right": "15px",
-              "height": "65px",
-              "width": "80px",
-              "white-space": "normal",
-              "text-align": "center",
-              "align-items": "center",
+              'display': 'flex',
+              'position': 'absolute',
+              'top': '10px',
+              'right': '15px',
+              'height': '65px',
+              'width': '80px',
+              'white-space': 'normal',
+              'text-align': 'center',
+              'align-items': 'center',
             }}
-            onClick={() => act('operate_cam', {
-              camera: 1,
-            })}
+            onClick={() =>
+              act('operate_cam', {
+                camera: 1,
+              })
+            }
           />
         </Section>
         <Section>
@@ -106,13 +111,16 @@ export const Mortar = (props, context) => {
             content="Dial Offset"
             icon="wrench"
             style={{
-              "margin-top": "5px",
-              "margin-left": "10px",
+              'margin-top': '5px',
+              'margin-left': '10px',
             }}
-            onClick={() => act('set_offset', {
-              dial_x: dial_x,
-              dial_y: dial_y,
-            })} />
+            onClick={() =>
+              act('set_offset', {
+                dial_x: dial_x,
+                dial_y: dial_y,
+              })
+            }
+          />
         </Section>
       </Window.Content>
     </Window>

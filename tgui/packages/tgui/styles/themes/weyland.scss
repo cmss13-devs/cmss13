@@ -24,29 +24,34 @@ $weyland: #af7f38;
   @include meta.load-css('../atomic/color.scss');
 
   // Components
-  @include meta.load-css('../components/Button.scss', $with: (
-    'color-default': $weyland,
-    'color-selected': #9d0808,
-    'color-caution': #be6209,
-    'color-danger': #9a9d00,
-    'color-transparent-text': color.scale($weyland, $lightness: 30%),
-  ));
-  @include meta.load-css('../components/ProgressBar.scss', $with: (
-    'background-color': #252832,
-  ));
+  @include meta.load-css(
+    '../components/Button.scss',
+    $with: (
+      'color-default': $weyland,
+      'color-selected': #9d0808,
+      'color-caution': #be6209,
+      'color-danger': #9a9d00,
+      'color-transparent-text': color.scale($weyland, $lightness: 30%)
+    )
+  );
+  @include meta.load-css(
+    '../components/ProgressBar.scss',
+    $with: ('background-color': #252832)
+  );
   @include meta.load-css('../components/Section.scss');
 
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: (
-    'background-color': color.scale(#252832, $lightness: -25%),
-  ));
+  @include meta.load-css(
+    '../layouts/TitleBar.scss',
+    $with: ('background-color': color.scale(#252832, $lightness: -25%))
+  );
 
   .Button {
     font-family: consolas;
     color: #161613;
-    border: base.em(2px) outset #E8E4C9;
+    border: base.em(2px) outset #e8e4c9;
     outline: base.em(1px) solid #161613;
   }
 
@@ -63,5 +68,4 @@ $weyland: #af7f38;
     background-position: right 40px top 50%;
     background-repeat: no-repeat;
   }
-
 }

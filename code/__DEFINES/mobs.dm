@@ -177,6 +177,7 @@
 #define SURGERY_MODE_ON			(1<<3)  // Mob on surgery mode, will attempt surgery when using relevant items on harm/disarm intent.
 #define MUTINEER				(1<<4)  // Part of the Mutiny Gang
 #define GIVING					(1<<5)	// Is currently trying to give an item to someone
+#define NOBIOSCAN				(1<<6)
 
 //=================================================
 
@@ -391,6 +392,7 @@ var/list/default_onmob_icons = list(
 #define SPECIES_YAUTJA "Yautja"
 #define SPECIES_SYNTHETIC "Synthetic"
 #define SPECIES_MONKEY "Monkey"
+#define SPECIES_ZOMBIE "Zombie"
 
 #define ALL_LIMBS list("head","chest","groin","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 #define MOVEMENT_LIMBS list("l_leg", "l_foot", "r_leg", "r_foot")

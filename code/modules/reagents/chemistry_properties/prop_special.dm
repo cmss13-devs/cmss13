@@ -227,7 +227,7 @@
 	max_level = 4
 
 /datum/chem_property/special/curing/process(mob/living/M, var/potency = 1, delta_time)
-	var/datum/species/zombie/zs = GLOB.all_species["Zombie"]
+	var/datum/species/zombie/zs = GLOB.all_species[SPECIES_ZOMBIE]
 
 	if(!ishuman(M))
 		return
@@ -264,9 +264,9 @@
 	M.sdisabilities = 0
 	M.eye_blurry = 0
 	M.eye_blind = 0
-	M.SetKnockeddown(0)
-	M.SetStunned(0)
-	M.SetKnockedout(0)
+	M.set_effect(0, WEAKEN)
+	M.set_effect(0, STUN)
+	M.set_effect(0, PARALYZE)
 	M.silent = 0
 	M.dizziness = 0
 	M.drowsyness = 0

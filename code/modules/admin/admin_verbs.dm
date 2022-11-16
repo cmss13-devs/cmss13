@@ -6,39 +6,84 @@ var/list/admin_verbs_default = list(
 	/client/proc/deadmin_self,			/*destroys our own admin datum so we can play as a regular player*/
 	/client/proc/open_STUI, 			// This proc can be used by all admins but depending on your rank you see diffrent stuff.
 	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
-	/client/proc/debug_global_variables
+	/client/proc/debug_global_variables,
+	/client/proc/xooc,					// Xeno OOC
+	/client/proc/mooc,					// Marine OOC
+	/client/proc/yooc,					// Yautja OOC
+	/client/proc/view_faxes,
+	/client/proc/create_custom_paper,
+	/client/proc/cmd_admin_change_their_name,
+	/client/proc/cmd_admin_changekey,
+	/client/proc/cmd_admin_subtle_message,
+	/client/proc/cmd_admin_object_narrate,
+	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
+	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
+	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
+	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
+	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
+	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
+	/client/proc/invismin,
+	/client/proc/set_explosive_antigrief,
+	/client/proc/check_explosive_antigrief,
+	/client/proc/cmd_mod_say,
+	/client/proc/dsay,
+	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
+	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
+	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
+	/client/proc/toggledebuglogs,
+	/client/proc/togglestatpanelsplit,
+	/client/proc/togglenichelogs,
+	/datum/admins/proc/player_notes_show,
+	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
+	/datum/admins/proc/togglelooc,		/*toggles ooc on/off for everyone*/
+	/datum/admins/proc/toggledsay,		/*toggles dsay on/off for everyone*/
+	/client/proc/check_antagonists,
+	/client/proc/check_round_status,
+	/client/proc/toggleattacklogs,
+	/client/proc/toggleffattacklogs,
+	/datum/admins/proc/show_player_panel,
+	/client/proc/hide_admin_verbs,
+	/client/proc/vehicle_panel,
+	/client/proc/in_view_panel,			/*allows application of aheal/sleep in an AOE*/
+	/client/proc/toggle_lz_resin,
+	/client/proc/rejuvenate_all_in_view,
+	/client/proc/rejuvenate_all_humans_in_view,
+	/client/proc/rejuvenate_all_revivable_humans_in_view,
+	/client/proc/rejuvenate_all_xenos_in_view,
+	/datum/admins/proc/togglesleep,
+	/datum/admins/proc/sleepall,
+	/datum/admins/proc/wakeall,
+	/client/proc/toggle_lz_protection,
+	/client/proc/jump_to_object,
+	/client/proc/jumptomob,
+	/client/proc/toggle_own_ghost_vis,
+	/client/proc/cmd_admin_check_contents,
+	/client/proc/clear_mutineers,
+	/datum/admins/proc/directnarrateall,
+	/datum/admins/proc/subtlemessageall,
+	/datum/admins/proc/alertall
 	)
 
 var/list/admin_verbs_admin = list(
 	/datum/admins/proc/togglejoin,		/*toggles whether people can join the current game*/
 	/datum/admins/proc/announce,		/*priority announce something to all clients.*/
 	/datum/admins/proc/view_txt_log,	/*shows the server log (diary) for today*/
-	/client/proc/cmd_stickyban,
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
 	/client/proc/giveruntimelog,		/*allows us to give access to runtime logs to somebody*/
 	/client/proc/getserverlog,			/*allows us to fetch server logs (diary) for other days*/
-	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
-	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command.
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio,		/*toggles whether we hear the radio*/
 	/client/proc/event_panel,
 	/client/proc/cmd_admin_say,			/*admin-only ooc chat*/
 	/client/proc/free_slot,				/*frees slot for chosen job*/
 	/client/proc/modify_slot,
-	/client/proc/adjust_predator_round,
-	/client/proc/cmd_admin_change_custom_event,
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/cmd_admin_remove_clamp,
 	/client/proc/cmd_admin_repair_multitile,
-	/datum/admins/proc/admin_force_distress,
-	/datum/admins/proc/admin_force_ERT_shuttle,
 	/datum/admins/proc/admin_force_selfdestruct,
-	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/check_round_statistics,
-	/client/proc/force_shuttle,
 	/client/proc/force_ground_shuttle,
 	/client/proc/force_teleporter,
-	/client/proc/toggle_explosive_antigrief,
 	/client/proc/matrix_editor,
 	/datum/admins/proc/open_shuttlepanel
 )
@@ -53,7 +98,29 @@ var/list/admin_verbs_sounds = list(
 	/client/proc/stop_sound,
 	/client/proc/cmd_admin_vox_panel
 )
-var/list/admin_verbs_fun = list(
+var/list/admin_verbs_minor_event = list(
+	/client/proc/cmd_admin_change_custom_event,
+	/datum/admins/proc/admin_force_distress,
+	/datum/admins/proc/admin_force_ERT_shuttle,
+	/client/proc/force_shuttle,
+	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
+	/client/proc/adjust_predator_round,
+	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
+	/client/proc/cmd_admin_object_narrate,
+	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
+	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
+	/client/proc/toggle_ob_spawn,
+	/client/proc/toggle_sniper_upgrade,
+	/client/proc/toggle_attack_dead,
+	/client/proc/toggle_strip_drag,
+	/client/proc/toggle_uniform_strip,
+	/client/proc/toggle_strong_defibs,
+	/client/proc/toggle_blood_optimization,
+	/client/proc/toggle_combat_cas,
+	/client/proc/toggle_lz_protection, //Mortar hitting LZ
+	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
+)
+var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/cmd_admin_dress_all,
 	/client/proc/free_all_mobs_in_view,
@@ -88,6 +155,8 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/vote_ground_map,
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
+	/datum/admins/proc/togglejoin,
+	/datum/admins/proc/view_txt_log
 )
 var/list/admin_verbs_debug = list(
     /client/proc/getruntimelog,                     /*allows us to access runtime logs to somebody*/
@@ -202,73 +271,6 @@ var/list/admin_verbs_teleport = list(
 	/client/proc/toggle_noclip
 )
 
-var/list/admin_verbs_mod = list(
-	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
-	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
-	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game.*/
-	/client/proc/debug_global_variables,
-	/client/proc/toggledebuglogs,
-	/client/proc/togglenichelogs,
-	/datum/admins/proc/player_notes_show,
-	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
-	/client/proc/invismin,
-	/client/proc/cmd_mod_say,
-	/client/proc/dsay,
-	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
-	/client/proc/vehicle_panel,
-	/client/proc/in_view_panel,
-	/client/proc/toggle_lz_resin,
-	/client/proc/toggle_ob_spawn,
-	/client/proc/toggle_sniper_upgrade,
-	/client/proc/toggle_attack_dead,
-	/client/proc/toggle_strip_drag,
-	/client/proc/toggle_uniform_strip,
-	/client/proc/toggle_strong_defibs,
-	/client/proc/toggle_blood_optimization,
-	/client/proc/toggle_combat_cas,
-	/client/proc/toggle_lz_protection,
-	/client/proc/rejuvenate_all_in_view,
-	/client/proc/rejuvenate_all_humans_in_view,
-	/client/proc/rejuvenate_all_revivable_humans_in_view,
-	/client/proc/rejuvenate_all_xenos_in_view,
-	/datum/admins/proc/togglesleep,
-	/datum/admins/proc/sleepall,
-	/datum/admins/proc/wakeall,
-	/datum/admins/proc/togglejoin,
-	/client/proc/jump_to_object,
-	/client/proc/jumptomob,
-	/client/proc/toggle_own_ghost_vis,
-	/client/proc/check_antagonists,
-	/client/proc/check_round_status,
-	/client/proc/toggleattacklogs,
-	/client/proc/toggleffattacklogs,
-	/client/proc/xooc,					// Xeno OOC
-	/client/proc/mooc,					// Marine OOC
-	/client/proc/yooc,					// Yautja OOC
-	/datum/admins/proc/view_txt_log,
-	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
-	/datum/admins/proc/togglelooc,		/*toggles ooc on/off for everyone*/
-	/datum/admins/proc/toggledsay,		/*toggles dsay on/off for everyone*/
-	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
-	/client/proc/view_faxes,
-	/client/proc/create_custom_paper,
-	/client/proc/cmd_admin_change_their_name,
-	/client/proc/cmd_admin_changekey,
-	/client/proc/cmd_admin_subtle_message,
-	/client/proc/cmd_admin_object_narrate,
-	/client/proc/cmd_admin_pm_context,
-	/client/proc/cmd_admin_check_contents,
-	/datum/admins/proc/show_player_panel,
-	/client/proc/hide_admin_verbs,
-	/client/proc/clear_mutineers,
-	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
-	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
-	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
-	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions
-	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
-	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
-)
-
 var/list/roundstart_mod_verbs = list(
 	/client/proc/toggle_ob_spawn
 )
@@ -279,17 +281,17 @@ var/list/roundstart_mod_verbs = list(
 	if(CLIENT_IS_STAFF(src))
 		add_verb(src, admin_verbs_default)
 	if(CLIENT_HAS_RIGHTS(src, R_MOD))
-		add_verb(src, admin_verbs_mod)
+		add_verb(src, admin_verbs_ban)
+		add_verb(src, admin_verbs_teleport)
+	if(CLIENT_HAS_RIGHTS(src, R_EVENT))
+		add_verb(src, admin_verbs_minor_event)
 	if(CLIENT_HAS_RIGHTS(src, R_ADMIN))
 		add_verb(src, admin_verbs_admin)
-		add_verb(src, admin_verbs_fun)
+		add_verb(src, admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		add_verb(src, /client/proc/cmd_mentor_say)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
-	if(CLIENT_HAS_RIGHTS(src, R_BAN))
-		add_verb(src, admin_verbs_ban)
-		add_verb(src, admin_verbs_teleport) // ???
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
 		add_verb(src, admin_verbs_server)
 	if(CLIENT_HAS_RIGHTS(src, R_DEBUG))
@@ -318,9 +320,9 @@ var/list/roundstart_mod_verbs = list(
 		admin_verbs_default,
 		/client/proc/togglebuildmodeself,
 		admin_verbs_admin,
-		admin_verbs_mod,
 		admin_verbs_ban,
-		admin_verbs_fun,
+		admin_verbs_minor_event,
+		admin_verbs_major_event,
 		admin_verbs_server,
 		admin_verbs_debug,
 		admin_verbs_debug_advanced,
@@ -344,7 +346,7 @@ var/list/roundstart_mod_verbs = list(
 
 /client/proc/game_panel()
 	set name = "Game Panel"
-	set category = "Admin.Game"
+	set category = "Admin.Panels"
 	if(admin_holder)
 		admin_holder.Game()
 	return
@@ -515,6 +517,15 @@ var/list/roundstart_mod_verbs = list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get debug log messages."))
 
+// TODO Port this to Statpanel Options Window probably
+/client/proc/togglestatpanelsplit()
+	set name = "Toggle Split Tabs"
+	set category = "Preferences"
+	prefs.toggles_admin ^= SPLIT_ADMIN_TABS
+	if(prefs.toggles_chat & SPLIT_ADMIN_TABS)
+		to_chat(usr, SPAN_BOLDNOTICE("You enabled split admin tabs in Statpanel."))
+	else
+		to_chat(usr, SPAN_BOLDNOTICE("You disabled split admin tabs in Statpanel."))
 
 /client/proc/togglenichelogs()
 	set name = "Toggle Niche Log Messages"
@@ -533,7 +544,7 @@ var/list/roundstart_mod_verbs = list(
 	set category = "OOC"
 
 	message_staff("[key_name(usr)] announced a random fact.")
-	SSticker.mode?.declare_random_fact()
+	SSticker.mode?.declare_fun_facts()
 
 
 #undef MAX_WARNS

@@ -19,6 +19,8 @@
 	var/reload_time = 10 SECONDS
 	var/reload_time_started = 0
 
+	use_muzzle_flash = TRUE
+
 	allowed_seat = VEHICLE_SUPPORT_GUNNER_ONE
 
 	origins = list(0, 0)
@@ -26,12 +28,7 @@
 	ammo = new /obj/item/ammo_magazine/hardpoint/firing_port_weapon
 	max_clips = 1
 
-	muzzle_flash_pos = list(
-		"1" = list(10, -10),
-		"2" = list(-5, -15),
-		"4" = list(6, -10),
-		"8" = list(-5, 7)
-	)
+	underlayer_north_muzzleflash = TRUE
 
 /obj/item/hardpoint/special/firing_port_weapon/set_bullet_traits()
 	..()

@@ -136,7 +136,7 @@ SUBSYSTEM_DEF(ticker)
 
 	for(var/client/C in GLOB.admins)
 		remove_verb(C, roundstart_mod_verbs)
-	admin_verbs_mod -= roundstart_mod_verbs
+	admin_verbs_minor_event -= roundstart_mod_verbs
 
 	return TRUE
 

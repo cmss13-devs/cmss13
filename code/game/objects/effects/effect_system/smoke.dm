@@ -371,7 +371,7 @@
 			M.emote("gasp")
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 	if (prob(20))
-		M.KnockDown(1)
+		M.apply_effect(1, WEAKEN)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
@@ -423,7 +423,7 @@
 			M.emote("gasp")
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 	if (prob(20))
-		M.KnockDown(1)
+		M.apply_effect(1, WEAKEN)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))

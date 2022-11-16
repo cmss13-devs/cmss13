@@ -498,10 +498,6 @@
 		to_chat(X, SPAN_XENOWARNING("You can only plant weeds near weeds with a connected node!"))
 		return
 
-	if(node.weed_strength >= WEED_LEVEL_HIVE)
-		to_chat(X, SPAN_XENOWARNING("You cannot expand hive weeds!"))
-		return
-
 	if(T in recently_built_turfs)
 		to_chat(X, SPAN_XENOWARNING("You've recently built here already!"))
 		return
@@ -509,7 +505,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	new /obj/effect/alien/weeds(T, node)
+	new /obj/effect/alien/weeds(T, node, FALSE)
 	playsound(T, "alien_resin_build", 35)
 
 	recently_built_turfs += T

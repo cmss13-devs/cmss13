@@ -762,6 +762,8 @@ var/global/players_preassigned = 0
 			M = /mob/living/carbon/Xenomorph/Larva
 		if(XENO_CASTE_PREDALIEN_LARVA)
 			M = /mob/living/carbon/Xenomorph/Larva/predalien
+		if(XENO_CASTE_FACEHUGGER)
+			M = /mob/living/carbon/Xenomorph/Facehugger
 		if(XENO_CASTE_RUNNER)
 			M = /mob/living/carbon/Xenomorph/Runner
 		if(XENO_CASTE_DRONE)

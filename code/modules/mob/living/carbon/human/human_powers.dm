@@ -35,14 +35,14 @@
 
 	var/failed
 	if(prob(75))
-		T.KnockDown(rand(0.5,3))
+		T.apply_effect(rand(0.5,3), WEAKEN)
 	else
-		KnockDown(rand(2,4))
+		apply_effect(rand(2,4), WEAKEN)
 		failed = 1
 
 	playsound(loc, 'sound/weapons/pierce.ogg', 25, 1)
 	if(failed)
-		KnockDown(rand(2,4))
+		apply_effect(rand(2,4), WEAKEN)
 
 	for(var/mob/O in viewers(src, null))
 		if((O.client && !( O.blinded )))
@@ -95,7 +95,7 @@
 		to_chat(src, SPAN_DANGER("You miss!"))
 		return
 
-	T.KnockDown(5)
+	T.apply_effect(5, WEAKEN)
 
 	if(T == src || T.anchored)
 		return FALSE
@@ -308,7 +308,7 @@
 	set category = "IC"
 
 	if(!resting)
-		KnockDown(1) //so that the mob immediately falls over
+		apply_effect(1, WEAKEN) //so that the mob immediately falls over
 
 	resting = !resting
 

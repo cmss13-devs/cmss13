@@ -1,23 +1,35 @@
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
-import { Fragment } from "inferno";
+import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Input, Button, Flex, Divider, Collapsible, Icon, NumberInput, Table } from '../components';
+import {
+  Input,
+  Button,
+  Flex,
+  Divider,
+  Collapsible,
+  Icon,
+  NumberInput,
+  Table,
+} from '../components';
 import { Window } from '../layouts';
 
 const redFont = {
-  color: "red",
+  color: 'red',
 };
 
 /**
  * Filters the list of xenos and returns a set of rows that will be used in the
  * xeno list table
  */
-const filterXenos = data => {
+const filterXenos = (data) => {
   const {
-    searchKey, searchFilters,
-    maxHealth, xeno_keys,
-    xeno_vitals, xeno_info,
+    searchKey,
+    searchFilters,
+    maxHealth,
+    xeno_keys,
+    xeno_vitals,
+    xeno_info,
   } = data;
   const xeno_entries = [];
 
@@ -51,13 +63,11 @@ const filterXenos = data => {
  * Creates a filter function based on the search key (passed to the search bar),
  * the categories selected to be searched through, and the max health filter
  */
-const getFilter = data => {
-  const {
-    searchKey, searchFilters, maxHealth,
-  } = data;
+const getFilter = (data) => {
+  const { searchKey, searchFilters, maxHealth } = data;
   const textSearch = createSearch(searchKey);
 
-  return entry => {
+  return (entry) => {
     if (entry.health > maxHealth) {
       return false;
     }
@@ -82,28 +92,21 @@ export const HiveStatus = (props, context) => {
 
   return (
     <Window
-      title={hive_name + " Status"}
+      title={hive_name + ' Status'}
       theme="hive_status"
       resizable
       width={600}
-      height={680}
-    >
+      height={680}>
       <Window.Content scrollable>
-        <XenoCollapsible
-          title="General Hive Information"
-        >
+        <XenoCollapsible title="General Hive Information">
           <GeneralInformation />
         </XenoCollapsible>
         <Divider />
-        <XenoCollapsible
-          title="Hive Counts"
-        >
+        <XenoCollapsible title="Hive Counts">
           <XenoCounts />
         </XenoCollapsible>
         <Divider />
-        <XenoCollapsible
-          title="Hive Xenomorph List"
-        >
+        <XenoCollapsible title="Hive Xenomorph List">
           <XenoList />
         </XenoCollapsible>
       </Window.Content>
@@ -114,34 +117,26 @@ export const HiveStatus = (props, context) => {
 const GeneralInformation = (props, context) => {
   const { data } = useBackend(context);
   const {
-    queen_location, hive_location,
-    total_xenos, pooled_larva,
+    queen_location,
+    hive_location,
+    total_xenos,
+    pooled_larva,
     evilution_level,
   } = data;
 
   return (
-    <Flex
-      direction="column"
-      align="center"
-    >
-      <Flex.Item
-        textAlign="center"
-      >
+    <Flex direction="column" align="center">
+      <Flex.Item textAlign="center">
         <h3 className="whiteTitle">The Queen is in:</h3>
         <h1 className="whiteTitle">{queen_location}</h1>
       </Flex.Item>
       {!!hive_location && (
-        <Flex.Item
-          textAlign="center"
-          mt={2}
-        >
+        <Flex.Item textAlign="center" mt={2}>
           <h3 className="whiteTitle">The Hive location is:</h3>
           <h1 className="whiteTitle">{hive_location}</h1>
         </Flex.Item>
       )}
-      <Flex.Item
-        mt={1}
-      >
+      <Flex.Item mt={1}>
         <i>Total sisters: {total_xenos}</i>
       </Flex.Item>
       <Flex.Item>
@@ -159,70 +154,59 @@ const XenoCounts = (props, context) => {
   const { xeno_counts, tier_slots, hive_color } = data;
 
   return (
-    <Flex
-      direction="column-reverse"
-    >
+    <Flex direction="column-reverse">
       {xeno_counts.map((counts, tier) => {
         let tier_str = tier.toString();
         let guaranteed_slots;
         // Check if there are guaranteed slots available for a given tier
         if (tier_slots[tier_str]) {
-          guaranteed_slots = Object.keys(
-            tier_slots[tier_str].guaranteed_slots);
+          guaranteed_slots = Object.keys(tier_slots[tier_str].guaranteed_slots);
           if (guaranteed_slots.length === 0) {
             guaranteed_slots = null;
           }
         }
         return (
-          <Flex.Item
-            key={tier}
-            mb={tier !== 0 ? 2 : 0}
-          >
-            <Flex
-              direction="column"
-            >
+          <Flex.Item key={tier} mb={tier !== 0 ? 2 : 0}>
+            <Flex direction="column">
               <Flex.Item>
                 <center>
                   <h1 className="whiteTitle">Tier {tier}</h1>
-                  {tier >= 2
-                    && (
-                      <i>
+                  {tier >= 2 && (
+                    <i>
+                      <div>
+                        <span
+                          style={{
+                            'margin-right': '4px',
+                          }}>
+                          {tier_slots[tier_str].open_slots}
+                        </span>
+                        remaining slot
+                        {tier_slots[tier_str].open_slots !== 1 && 's'}
+                      </div>
+                      {guaranteed_slots && (
                         <div>
-                          <span
-                            style={{
-                              "margin-right": "4px",
-                            }}
-                          >
-                            {tier_slots[tier_str].open_slots}
-                          </span>
-                          remaining slot
-                          {tier_slots[tier_str].open_slots !== 1 && "s"}
+                          Guaranteed slots:{' '}
+                          {guaranteed_slots.map((caste_type, i) => (
+                            <Fragment key={i}>
+                              <span
+                                style={{
+                                  'margin-right': '4px',
+                                }}>
+                                {
+                                  tier_slots[tier_str].guaranteed_slots[
+                                    caste_type
+                                  ]
+                                }
+                              </span>
+                              {caste_type}
+                              {/* No comma at the end of the list*/}
+                              {i === guaranteed_slots.length - 1 ? '' : ', '}
+                            </Fragment>
+                          ))}
                         </div>
-                        {guaranteed_slots && (
-                          <div>
-                            Guaranteed slots: {
-                              guaranteed_slots.map((caste_type, i) => (
-                                <Fragment key={i}>
-                                  <span
-                                    style={{
-                                      "margin-right": "4px",
-                                    }}
-                                  >
-                                    {tier_slots[tier_str]
-                                      .guaranteed_slots[caste_type]}
-                                  </span>
-                                  {caste_type}
-                                  {/* No comma at the end of the list*/}
-                                  {i === guaranteed_slots.length-1
-                                    ? ""
-                                    : ", "}
-                                </Fragment>
-                              ))
-                            }
-                          </div>
-                        )}
-                      </i>
-                    )}
+                      )}
+                    </i>
+                  )}
                 </center>
               </Flex.Item>
               <Flex.Item>
@@ -230,23 +214,19 @@ const XenoCounts = (props, context) => {
                   <Table className="xenoCountTable" collapsing>
                     <Table.Row header>
                       {Object.keys(counts).map((caste, i) => (
-                        <Table.Cell
-                          key={i}
-                          className="underlineCell"
-                          width={7}
-                        >
+                        <Table.Cell key={i} className="underlineCell" width={7}>
                           {caste === 'Bloody Larva' ? 'Larva' : caste}
                         </Table.Cell>
                       ))}
                     </Table.Row>
                     <Table.Row className="xenoCountRow">
                       {Object.keys(counts).map((caste, i) => (
-                        <Table.Cell key={i}
+                        <Table.Cell
+                          key={i}
                           className="xenoCountCell"
                           backgroundColor={!!hive_color && hive_color}
                           textAlign="center"
-                          width={7}
-                        >
+                          width={7}>
                           {counts[caste]}
                         </Table.Cell>
                       ))}
@@ -256,7 +236,8 @@ const XenoCounts = (props, context) => {
               </Flex.Item>
             </Flex>
           </Flex.Item>
-        ); })}
+        );
+      })}
     </Flex>
   );
 };
@@ -264,13 +245,14 @@ const XenoCounts = (props, context) => {
 const XenoList = (props, context) => {
   const { act, data } = useBackend(context);
   const [searchKey, setSearchKey] = useLocalState(context, 'searchKey', '');
-  const [searchFilters, setSearchFilters] = useLocalState(context, 'searchFilters', { name: true, strain: true, location: true });
+  const [searchFilters, setSearchFilters] = useLocalState(
+    context,
+    'searchFilters',
+    { name: true, strain: true, location: true }
+  );
   const [maxHealth, setMaxHealth] = useLocalState(context, 'maxHealth', 100);
-  const {
-    xeno_keys, xeno_vitals,
-    xeno_info, user_ref,
-    is_in_ovi, hive_color,
-  } = data;
+  const { xeno_keys, xeno_vitals, xeno_info, user_ref, is_in_ovi, hive_color } =
+    data;
   const xeno_entries = filterXenos({
     searchKey: searchKey,
     searchFilters: searchFilters,
@@ -281,57 +263,53 @@ const XenoList = (props, context) => {
   });
 
   return (
-    <Flex
-      direction="column"
-    >
+    <Flex direction="column">
       <Flex.Item mb={1}>
-        <Flex
-          align="baseline"
-        >
-          <Flex.Item width="100px">
-            Search Filters:
-          </Flex.Item>
+        <Flex align="baseline">
+          <Flex.Item width="100px">Search Filters:</Flex.Item>
           <Flex.Item>
             <Button.Checkbox
               inline
               content="Name"
               checked={searchFilters.name}
               backgroundColor={searchFilters.name && hive_color}
-              onClick={() => setSearchFilters({
-                ...searchFilters,
-                name: !searchFilters.name,
-              })}
+              onClick={() =>
+                setSearchFilters({
+                  ...searchFilters,
+                  name: !searchFilters.name,
+                })
+              }
             />
             <Button.Checkbox
               inline
               content="Strain"
               checked={searchFilters.strain}
               backgroundColor={searchFilters.strain && hive_color}
-              onClick={() => setSearchFilters({
-                ...searchFilters,
-                strain: !searchFilters.strain,
-              })}
+              onClick={() =>
+                setSearchFilters({
+                  ...searchFilters,
+                  strain: !searchFilters.strain,
+                })
+              }
             />
             <Button.Checkbox
               inline
               content="Location"
               checked={searchFilters.location}
               backgroundColor={searchFilters.location && hive_color}
-              onClick={() => setSearchFilters({
-                ...searchFilters,
-                location: !searchFilters.location,
-              })}
+              onClick={() =>
+                setSearchFilters({
+                  ...searchFilters,
+                  location: !searchFilters.location,
+                })
+              }
             />
           </Flex.Item>
         </Flex>
       </Flex.Item>
       <Flex.Item mb={1}>
-        <Flex
-          align="baseline"
-        >
-          <Flex.Item width="100px">
-            Max Health:
-          </Flex.Item>
+        <Flex align="baseline">
+          <Flex.Item width="100px">Max Health:</Flex.Item>
           <Flex.Item>
             <NumberInput
               animated
@@ -367,11 +345,7 @@ const XenoList = (props, context) => {
         {xeno_entries.map((entry, i) => (
           <Table.Row
             key={i}
-            className={classes([
-              entry.is_ssd ? "ssdRow" : "",
-              "xenoListRow",
-            ])}
-          >
+            className={classes([entry.is_ssd ? 'ssdRow' : '', 'xenoListRow'])}>
             {/*
               Leader/SSD icon
               You might think using an image for rounded corners is stupid,
@@ -385,9 +359,11 @@ const XenoList = (props, context) => {
             <Table.Cell>{entry.strain}</Table.Cell>
             <Table.Cell>{entry.location}</Table.Cell>
             <Table.Cell>
-              {entry.health < 30
-                ? <b style={redFont}>{entry.health}%</b>
-                : <Fragment>{entry.health}%</Fragment>}
+              {entry.health < 30 ? (
+                <b style={redFont}>{entry.health}%</b>
+              ) : (
+                <Fragment>{entry.health}%</Fragment>
+              )}
             </Table.Cell>
             <Table.Cell className="noPadCell" textAlign="center">
               {entry.ref !== user_ref && (
@@ -397,22 +373,19 @@ const XenoList = (props, context) => {
                   className="actionButton"
                   align="center"
                   justify="space-around"
-                  inline
-                >
+                  inline>
                   <Flex.Item>
                     <Button
                       content="Watch"
                       color="xeno"
-                      onClick={
-                        () => act("overwatch", {
+                      onClick={() =>
+                        act('overwatch', {
                           target_ref: entry.ref,
                         })
                       }
                     />
                   </Flex.Item>
-                  {!!is_in_ovi && (
-                    <QueenOviButtons target_ref={entry.ref} />
-                  )}
+                  {!!is_in_ovi && <QueenOviButtons target_ref={entry.ref} />}
                 </Flex>
               )}
             </Table.Cell>
@@ -447,9 +420,8 @@ const XenoCollapsible = (props, context) => {
     <Collapsible
       title={title}
       backgroundColor={!!hive_color && hive_color}
-      color={!hive_color && "xeno"}
-      open
-    >
+      color={!hive_color && 'xeno'}
+      open>
       {children}
     </Collapsible>
   );
@@ -465,8 +437,8 @@ const QueenOviButtons = (props, context) => {
         <Button
           content="Heal"
           color="green"
-          onClick={
-            () => act("heal", {
+          onClick={() =>
+            act('heal', {
               target_ref: target_ref,
             })
           }
@@ -476,8 +448,8 @@ const QueenOviButtons = (props, context) => {
         <Button
           content="Give Plasma"
           color="blue"
-          onClick={
-            () => act("give_plasma", {
+          onClick={() =>
+            act('give_plasma', {
               target_ref: target_ref,
             })
           }

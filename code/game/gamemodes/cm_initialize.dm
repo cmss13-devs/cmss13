@@ -572,9 +572,7 @@ Additional game mode variables.
 	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 
 	if(is_synth)
-		survivor_types = list(
-			/datum/equipment_preset/synth/survivor, //to be expanded later
-		)
+		survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)

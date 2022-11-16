@@ -8,6 +8,9 @@
 
 var/datum/controller/supply/supply_controller = new()
 
+/area/supply
+	ceiling = CEILING_METAL
+
 /area/supply/station //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
@@ -125,7 +128,6 @@ var/datum/controller/supply/supply_controller = new()
 	var/x_supply = 0
 	var/y_supply = 0
 	var/datum/squad/current_squad = null
-	var/busy = FALSE //The computer is busy launching a drop, lock controls
 	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
 	var/faction = FACTION_MARINE
@@ -173,7 +175,6 @@ var/datum/controller/supply/supply_controller = new()
 	data["worldtime"] = world.time
 	data["x_offset"] = x_supply
 	data["y_offset"] = y_supply
-	data["active"] = busy
 	data["loaded"] = loaded_crate
 	if(loaded_crate)
 		data["crate_name"] = loaded_crate.name
@@ -248,10 +249,7 @@ var/datum/controller/supply/supply_controller = new()
 		return FALSE
 
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
-	if(busy)
-		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("\The [name] is busy processing another action!")]")
-		return
-
+	SHOULD_NOT_SLEEP(TRUE)
 	var/obj/structure/closet/crate/C = check_pad()
 	if(!C)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
@@ -279,57 +277,19 @@ var/datum/controller/supply/supply_controller = new()
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
-	busy = TRUE
+	C.visible_message(SPAN_WARNING("\The [C] loads into a launch tube. Stand clear!"))
+	current_squad.send_message("'[C.name]' supply drop incoming. Heads up!")
+	current_squad.send_maptext(C.name, "Incoming Supply Drop:")
+	COOLDOWN_START(src, next_fire, drop_cooldown)
+	if(ismob(usr))
+		var/mob/M = usr
+		M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
-	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop is now loading into the launch tube! Stand by!")]")
-	C.visible_message(SPAN_WARNING("\The [C] begins to load into a launch tube. Stand clear!"))
-	C.anchored = TRUE //To avoid accidental pushes
-	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
-	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
-	spawn(100)
-		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
-			if(C)
-				C.anchored = FALSE
-			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
-			return
-		COOLDOWN_START(src, next_fire, drop_cooldown)
-		if(ismob(usr))
-			var/mob/M = usr
-			M.count_niche_stat(STATISTICS_NICHE_CRATES)
-
-		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-		C.anchored = FALSE
-		C.forceMove(T)
-		var/turf/TC = get_turf(C)
-		TC.ceiling_debris_check(3)
-		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
-		C.visible_message("[icon2html(C, viewers(src))] [SPAN_BOLDNOTICE("The '[C.name]' supply drop falls from the sky!")]")
-		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
-		busy = FALSE
-
-
-//Sends a string to our currently selected squad.
-/obj/structure/machinery/computer/supply_drop_console/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
-	if(txt == "" || !current_squad) return //Logic
-
-	var/text = strip_html(txt)
-	var/nametext = ""
-	if(plus_name)
-		nametext = "[usr.name] transmits: "
-		text = "<font size='3'><b>[text]<b></font>"
-
-	for(var/mob/living/carbon/human/M in current_squad.marines_list)
-		if(!M.stat && M.client) //Only living and connected people in our squad
-			if(!only_leader)
-				if(plus_name)
-					M << sound('sound/effects/radiostatic.ogg')
-				to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>\[Overwatch\]:</b> [nametext][text]")]")
-			else
-				if(current_squad.squad_leader == M)
-					if(plus_name)
-						M << sound('sound/effects/radiostatic.ogg')
-					to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>\[SL Overwatch\]:</b> [nametext][text]</font>")]")
-					return
+	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
+	var/obj/structure/droppod/supply/pod = new()
+	C.forceMove(pod)
+	pod.launch(T)
+	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
 
 //A limited version of the above console
 //Can't pick squads, drops less often
@@ -395,13 +355,12 @@ var/datum/controller/supply/supply_controller = new()
 
 //Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
 /datum/controller/supply/process()
-	for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs - /datum/supply_packs/asrs))
+	for(var/typepath in subtypesof(/datum/supply_packs))
 		var/datum/supply_packs/P = new typepath()
-		supply_packs[P.name] = P
-	for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs - /datum/supply_packs/asrs))
-		var/datum/supply_packs/P = new typepath()
-		if(P.cost > 1 && P.buyable == 0)
-			random_supply_packs[P.name] = P
+		if(P.group == "ASRS")
+			random_supply_packs += P
+		else
+			supply_packs[P.name] = P
 	spawn(0)
 		set background = 1
 		while(1)
@@ -432,26 +391,10 @@ var/datum/controller/supply/supply_controller = new()
 	return crate_amount
 
 //Here we pick what crate type to send to the marines.
-/datum/controller/supply/proc/add_random_crate()
-	var/randpick = rand(1,100)
-	switch(randpick)
-		if(1 to 40)
-			pickcrate("Munition")
-		if(41 to 81)
-			pickcrate("Utility")
-		if(81 to 100)
-			pickcrate("Everything")
-
-//Here we pick the exact crate from the crate types to send to the marines.
 //This is a weighted pick based upon their cost.
 //Their cost will go up if the crate is picked
-/datum/controller/supply/proc/pickcrate(var/T = "Everything")
-	var/list/pickfrom = list()
-	for(var/supply_name in supply_controller.random_supply_packs)
-		var/datum/supply_packs/N = supply_controller.random_supply_packs[supply_name]
-		if((T == "Everything" || N.group == T)  && !N.buyable)
-			pickfrom += N
-	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(pickfrom)
+/datum/controller/supply/proc/add_random_crate()
+	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(random_supply_packs)
 	if(C == null)
 		return
 	C.cost = round(C.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight

@@ -8,6 +8,8 @@
 	..()
 
 	handle_fire() //Check if we're on fire
+	if(SSweather.is_weather_event)
+		handle_weather(delta_time)
 
 /mob/living/carbon/Destroy()
 	QDEL_NULL_LIST(internal_organs)
@@ -85,7 +87,7 @@
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)
 	if(knock_value > 0)
-		KnockOut(knock_value)
+		apply_effect(knock_value, PARALYZE)
 		explosion_throw(severity, direction)
 
 /mob/living/carbon/gib(var/cause = "gibbing")
@@ -191,11 +193,11 @@
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
 		if(isXeno(src) && mob_size >= MOB_SIZE_BIG)
-			Stun(1)//Sadly, something has to stop them from bumping them 10 times in a second
-			KnockDown(1)
+			apply_effect(1, STUN)//Sadly, something has to stop them from bumping them 10 times in a second
+			apply_effect(1, WEAKEN)
 		else
-			Stun(6)//This should work for now, more is really silly and makes you lay there forever
-			KnockDown(6)
+			apply_effect(6, STUN)//This should work for now, more is really silly and makes you lay there forever
+			apply_effect(6, WEAKEN)
 
 		count_niche_stat(STATISTICS_NICHE_SHOCK)
 
@@ -273,9 +275,9 @@
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
-	AdjustKnockedout(-3)
-	AdjustStunned(-3)
-	AdjustKnockeddown(-3)
+	adjust_effect(-3, PARALYZE)
+	adjust_effect(-3, STUN)
+	adjust_effect(-3, WEAKEN)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 
@@ -446,8 +448,8 @@
 	stop_pulling()
 	to_chat(src, SPAN_WARNING("You slipped on \the [slip_source_name? slip_source_name : "floor"]!"))
 	playsound(src.loc, 'sound/misc/slip.ogg', 25, 1)
-	Stun(stun_level)
-	KnockDown(weaken_level)
+	apply_effect(stun_level, STUN)
+	apply_effect(weaken_level, WEAKEN)
 	. = TRUE
 	if(slide_steps && lying)//lying check to make sure we downed the mob
 		var/slide_dir = dir
@@ -495,7 +497,7 @@
 /mob/living/carbon/get_examine_text(mob/user)
 	. = ..()
 	if(isYautja(user))
-		. += SPAN_BLUE("[src] is worth [max(life_kills_total, 1)] honor.")
+		. += SPAN_BLUE("[src] is worth [max(life_kills_total, default_honor_value)] honor.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")
 

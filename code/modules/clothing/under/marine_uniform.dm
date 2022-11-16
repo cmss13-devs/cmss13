@@ -283,7 +283,7 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/dress
-	name = "marine dress uniform"
+	name = "old marine dress uniform"
 	desc = "A dress uniform typically worn marines of the USCM. The Sergeant Major would kill you if you got this dirty."
 	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
 	armor_bio = CLOTHING_ARMOR_LOW
@@ -294,6 +294,33 @@
 	specialty = "marine dress"
 	flags_atom = NO_SNOW_TYPE
 	flags_jumpsuit = FALSE
+
+//=========================//DRESS BLUES\\================================\\
+//=======================================================================\\
+
+/obj/item/clothing/under/marine/dress/blues
+	name = "marine enlisted dress blues uniform"
+	desc = "The undershirt and trousers of the legendary Marine dress blues, virtually unchanged since the 19th century. This unadorned variant is for enlisted personnel, E-1 thru E-3."
+	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
+	icon_state = "enlisted"
+	item_state = "enlisted"
+	worn_state = "enlisted"
+	contained_sprite = TRUE
+	item_state_slots = null
+
+/obj/item/clothing/under/marine/dress/blues/senior
+	name = "marine senior dress blues uniform"
+	desc = "The undershirt and trousers of the legendary Marine dress blues, virtually unchanged since the 19th century. This variant features the iconic Blood Stripe, worn by NCOs and officers."
+	icon_state = "senior"
+	item_state = "senior"
+	worn_state = "senior"
+
+/obj/item/clothing/under/marine/dress/blues/general
+	name = "marine senior dress blues uniform"
+	desc = "The undershirt and trousers of the legendary Marine dress blues, virtually unchanged since the 19th century. This variant features black trousers and a large Blood Stripe, worn by general officers."
+	icon_state = "general"
+	item_state = "general"
+	worn_state = "general"
 
 //=========================//PROVOST\\================================\\
 //=======================================================================\\
@@ -379,6 +406,27 @@
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+//=========================//USCM Survivors\\================================\\
+//=======================================================================\\
+
+/obj/item/clothing/under/marine/reconnaissance
+	name = "USCM reconnaissance uniform"
+	desc = "Primarily used during reconnaissance."
+	icon_state = "recon_marine"
+	worn_state = "recon_marine"
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/reconnaissance/Initialize(mapload)
+	. = ..()
+	var/R = rand(1,4)
+	switch(R) //this is no longer shitcode, courtesy of stan_albatross
+		if(1)
+			roll_suit_sleeves(FALSE)
+		if(2)
+			roll_suit_jacket(FALSE)
+		if(3)
+			cut_suit_jacket(FALSE)
+
 
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\
@@ -387,15 +435,15 @@
 	flags_jumpsuit = FALSE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 
-//=========================//MARSOC\\================================\\
+//=========================//Marine Raiders\\================================\\
 
 /obj/item/clothing/under/marine/veteran/marsoc
-	name = "MARSOC tactical operator uniform"
-	desc = "A black uniform for elite Marine operators. So this is where all their money goes."
+	name = "SOF Uniform"
+	desc = "A black uniform for elite Marine personnel. Designed to be comfortable and help blend into dark enviorments."
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	icon_state = "marsoc"
 	worn_state = "marsoc"
-	specialty = "marsoc uniform"
+	specialty = "sof uniform"
 	flags_item = NO_SNOW_TYPE
 
 //=========================//PMC\\================================\\
@@ -423,6 +471,23 @@
 	desc = "An armored uniform worn by Weyland-Yutani elite commandos. It is well protected while remaining light and comfortable."
 	icon_state = "commando_jumpsuit"
 	worn_state = "commando_jumpsuit"
+
+/obj/item/clothing/under/marine/veteran/PMC/corporate
+	name = "\improper WY corporate security uniform"
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."
+	icon = 'icons/mob/humans/onmob/contained/wy_goons.dmi'
+	icon_state = "uniform"
+	item_state = "uniform"
+	worn_state = "uniform"
+	contained_sprite = TRUE
+	item_state_slots = null
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/marine/veteran/PMC/corporate/lead
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
+	icon_state = "lead_uniform"
+	item_state = "lead_uniform"
+	worn_state = "lead_uniform"
 
 //=========================//UPP\\================================\\
 

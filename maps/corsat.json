@@ -9,7 +9,7 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/corsat",
         "/datum/equipment_preset/survivor/scientist/corsat",
-        "/datum/equipment_preset/survivor/pmc",
+        "/datum/equipment_preset/survivor/goon",
         "/datum/equipment_preset/survivor/doctor/corsat",
         "/datum/equipment_preset/survivor/security/corsat",
         "/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/corsat",

@@ -355,4 +355,12 @@
 	containername = "\improper donuts crate"
 	group = "Supplies"
 
-
+/datum/supply_packs/pizzas
+	name = "pizza ready-to-eat (x3)"
+	contains = list(
+		/obj/item/pizzabox/mystery/stack
+	)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/freezer
+	containername = "\improper Pizza crate"
+	group = "Supplies"

@@ -131,6 +131,15 @@
 	else
 		. += SPAN_NOTICE("\The [src] was bitten multiple times!")
 
+/obj/item/reagent_container/food/snacks/set_name_label(var/new_label)
+	name_label = new_label
+	name = made_from_player + initial(name)
+	if(name_label)
+		name += " ([name_label])"
+
+/obj/item/reagent_container/food/snacks/set_origin_name_prefix(var/name_prefix)
+	made_from_player = name_prefix
+
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
 		..() // -> item/attackby()
@@ -2635,6 +2644,30 @@
 	slices_num = 6
 	filling_color = "#BAA14C"
 
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mystery
+	name = "Mystery Pizza"
+	desc = "Edible looking, hunger inducing, mysterious pizza."
+	slice_path = /obj/item/reagent_container/food/snacks/mysteryslice
+	bitesize = 2
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mystery/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 15)
+	icon_state = pick("pizzamargherita","meatpizza","mushroompizza","vegetablepizza")
+	if(prob(60))
+		reagents.add_reagent("tomatojuice", 6)
+	for(var/i in 1 to 3)
+		var/ingredient = pick(200;"vegetable", 150;"meatprotein", "mushroom", "fish", "cheese", 80;"potato", 80;"egg", 50;"coco", 50;"fruit", 50;"soysauce", 50;"ketchup", 50;"tofu", 30;"noodles", 30;"honey", 30;"banana")
+		reagents.add_reagent(ingredient, rand(6,12))
+
+/obj/item/reagent_container/food/snacks/mysteryslice
+	name = "Mysterious pizza slice"
+	desc = "You go first."
+	filling_color = "#BAA14C"
+	bitesize = 2
+/obj/item/reagent_container/food/snacks/mysteryslice/Initialize()
+	. = ..() // I'm not rewriting a chunk of cooking backend for this, so this just slices into random icons. Intriguing!
+	icon_state = pick("pizzamargheritaslice","meatpizzaslice","mushroompizzaslice","vegetablepizzaslice")
+
 /obj/item/reagent_container/food/snacks/sliceable/pizza/margherita
 	name = "Margherita"
 	desc = "The golden standard of pizzas."
@@ -2896,6 +2929,20 @@
 	. = ..()
 	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza(src)
 	boxtag = "Meatlover's Supreme"
+
+/// Mystery Pizza, made with random ingredients!
+/obj/item/pizzabox/mystery/Initialize(mapload, ...)
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery(src)
+	boxtag = "Mystery Pizza"
+
+// Pre-stacked boxes for reqs
+/obj/item/pizzabox/mystery/stack/Initialize(mapload, ...)
+	. = ..()
+	for(var/i in 1 to 2)
+		var/obj/item/pizzabox/mystery/extra = new(src)
+		boxes += extra
+	update_icon()
 
 ///////////////////////////////////////////
 // new old food stuff from bs12

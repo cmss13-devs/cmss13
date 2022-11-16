@@ -1,6 +1,6 @@
 /datum/xeno_mutator/shaman
 	name = "STRAIN: Carrier - Shaman"
-	description = "In exchange for your ability to store huggers, you can cheat the adrenaline mechanism of nearby xenos by violently killing little ones while they are still in a small egg form."
+	description = "In exchange for your ability to store facehuggers, you can cheat the adrenaline mechanism of nearby xenos by violently killing little ones while they are still in a small egg form."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_CARRIER)
@@ -46,6 +46,7 @@
 	if(!istype(C))
 		return FALSE
 	C.mutation_type = CARRIER_SHAMAN
+	C.shaman_interactive = FALSE
 	C.ignores_pheromones = TRUE
 	apply_behavior_holder(C)
 	mutator_update_actions(C)
@@ -154,7 +155,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue
@@ -189,9 +190,9 @@
 			X.gain_armor_percent(to_armor)
 
 		// lift them up from any state
-		X.SetStunned(0)
-		X.SetDazed(0)
-		X.SetKnockeddown(0)
+		X.set_effect(0, STUN)
+		X.set_effect(0, DAZE)
+		X.set_effect(0, WEAKEN)
 
 		shield_overlay.flick_overlay(X, 20)
 
@@ -254,7 +255,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue
@@ -293,7 +294,7 @@
 
 		if(istype(X))
 			to_chat(X, SPAN_XENODANGER("A wave of madness passes through and completely overwhelms you. How could they do this to their own little ones!?"))
-			X.KnockDown(action_def.stun_timer)
+			X.apply_effect(action_def.stun_timer, WEAKEN)
 			X.emote("needhelp")
 			X.scream_stun_timeout = world.time + action_def.stun_timeout
 			continue
@@ -301,7 +302,7 @@
 		if(istype(H))
 			if(isYautja(H))
 				continue
-			H.KnockDown(action_def.stun_timer)
+			H.apply_effect(action_def.stun_timer, WEAKEN)
 			H.emote("scream")
 			H.adjust_fire_stacks(-10, min_stacks = 0)
 			H.spin(25, 2)
@@ -370,7 +371,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue
@@ -462,7 +463,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(7, src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue

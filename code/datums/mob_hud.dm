@@ -80,7 +80,7 @@ var/list/datum/mob_hud/huds = list(
 
 
 
-/////// MOB HUD TYPES //////////////////////////////////:
+// MOB HUD TYPES //////////////////////////////////:
 
 
 //Medical
@@ -270,7 +270,8 @@ var/list/datum/mob_hud/huds = list(
 	else
 		var/amount = health > 0 ? round(health * 100 / maxHealth, 10) : CEILING(health, 10)
 		if(health < 0)
-			amount = round((health / (crit_health - warding_aura * 20)) * -100, 10)
+			var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
+			amount = round((health / (crit_health - warding_health)) * -100, 10)
 		else
 			amount = CEILING((health / maxHealth) * 100, 10)
 		if(!amount)
@@ -348,6 +349,8 @@ var/list/datum/mob_hud/huds = list(
 
 	if(species && species.flags & IS_SYNTHETIC)
 		holder3.icon_state = "hudsynth" // xenos have less awareness of synth status
+		if(HAS_TRAIT(src, TRAIT_INFILTRATOR_SYNTH))
+			return FALSE
 		if(stat != DEAD)
 			holder.icon_state = "hudsynth"
 			holder2.icon_state = "hudsynth"

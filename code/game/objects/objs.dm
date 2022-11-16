@@ -29,7 +29,6 @@
 
 /obj/Initialize(mapload, ...)
 	. = ..()
-	GLOB.object_list += src
 	if(garbage)
 		add_to_garbage(src)
 
@@ -38,7 +37,6 @@
 		unbuckle()
 	. = ..()
 	remove_from_garbage(src)
-	GLOB.object_list -= src
 
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
@@ -331,6 +329,8 @@
 	else if(use_spritesheet(bodytype, slot, mob_state))
 		spritesheet = TRUE
 		mob_icon = sprite_sheets[bodytype]
+	else if(contained_sprite)
+		mob_icon = icon
 	else if(LAZYISIN(item_icons, slot))
 		mob_icon = item_icons[slot]
 	else
@@ -381,3 +381,6 @@
 		return 4 SECONDS
 
 	return 1 SECONDS
+
+/obj/proc/set_origin_name_prefix(var/name_prefix)
+	return

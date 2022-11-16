@@ -7,6 +7,8 @@
 	var/mob_name
 	var/area_name
 
+	var/is_xeno
+
 	var/cause_name
 	var/cause_player_id
 	var/cause_role_name
@@ -79,6 +81,8 @@
 	new_death.mob_name = real_name
 	new_death.faction_name = faction
 
+	new_death.is_xeno = FALSE
+
 	var/area/A = get_area(death_loc)
 	new_death.area_name = A.name
 
@@ -91,7 +95,7 @@
 
 	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob)
-		cause_mob.life_kills_total++
+		cause_mob.life_kills_total += life_value
 
 	if(getBruteLoss())
 		new_death.total_brute = round(getBruteLoss())
@@ -131,12 +135,13 @@
 		human_stats.death_list.Insert(1, .)
 
 /mob/living/carbon/Xenomorph/track_mob_death(var/cause, var/cause_mob)
-	. = ..(cause, cause_mob, caste_type)
+	var/datum/entity/statistic/death/new_death = ..(cause, cause_mob, caste_type)
 	if(statistic_exempt || !mind)
 		return
+	new_death.is_xeno = TRUE // beneath the if, because new_death isn't generated if there's no mind
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
 	if(xeno_stats && xeno_stats.death_list)
-		xeno_stats.death_list.Insert(1, .)
+		xeno_stats.death_list.Insert(1, new_death)
 
 /mob/proc/handle_observer_message(var/datum/cause_data/cause_data, var/mob/cause_mob, var/turf/death_loc, var/area/death_area)
 	var/observer_message = "<b>[real_name]</b> has died"

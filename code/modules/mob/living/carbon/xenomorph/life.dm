@@ -41,12 +41,15 @@
 	var/progress_amount = 1
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || caste?.evolve_without_queen)
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
-		if(evolution_stored > evolution_threshold - 1)
-			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
-			src << sound('sound/effects/xeno_evolveready.ogg')
+		if(evolution_stored >= evolution_threshold)
+			evolve_message()
+
+/mob/living/carbon/Xenomorph/proc/evolve_message()
+	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
+	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has
 #define PASSIVE_BURN_DAM_CALC(intensity, duration, fire_stacks) intensity*(fire_stacks/duration*0.2 + 0.8)
@@ -464,7 +467,8 @@ Make sure their actual health updates immediately.*/
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
 	if(stat != DEAD && !gibbing)
-		if(health <= crit_health - warding_aura * 20) //dead
+		var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
+		if(health <= crit_health - warding_health) //dead
 			if(prob(gib_chance + 0.5*(crit_health - health)))
 				async_gib(last_damage_data)
 			else
@@ -507,7 +511,7 @@ Make sure their actual health updates immediately.*/
 
 /mob/living/carbon/Xenomorph/handle_stunned()
 	if(stunned)
-		stunned = max(stunned-1.5,0)
+		adjust_effect(life_stun_reduction, STUN, EFFECT_FLAG_LIFE)
 		stun_callback_check()
 
 	return stunned
@@ -523,28 +527,28 @@ Make sure their actual health updates immediately.*/
 
 /mob/living/carbon/Xenomorph/handle_dazed()
 	if(dazed)
-		dazed = max(dazed-1.5,0)
+		adjust_effect(life_daze_reduction, DAZE, EFFECT_FLAG_LIFE)
 	return dazed
 
 /mob/living/carbon/Xenomorph/handle_slowed()
 	if(slowed)
-		slowed = max(slowed-1.5,0)
+		adjust_effect(life_slow_reduction, SLOW, EFFECT_FLAG_LIFE)
 	return slowed
 
 /mob/living/carbon/Xenomorph/handle_superslowed()
 	if(superslowed)
-		superslowed = max(superslowed-1.5,0)
+		adjust_effect(life_slow_reduction, SUPERSLOW, EFFECT_FLAG_LIFE)
 	return superslowed
 
 /mob/living/carbon/Xenomorph/handle_knocked_down()
 	if(knocked_down)
-		knocked_down = max(knocked_down-1.5,0)
+		adjust_effect(life_knockdown_reduction, WEAKEN, EFFECT_FLAG_LIFE)
 		knocked_down_callback_check()
 	return knocked_down
 
 /mob/living/carbon/Xenomorph/handle_knocked_out()
 	if(knocked_out)
-		knocked_out = max(knocked_out - 1.5, 0)
+		adjust_effect(life_knockout_reduction, PARALYZE, EFFECT_FLAG_LIFE)
 		knocked_out_callback_check()
 	return knocked_out
 
@@ -564,7 +568,7 @@ Make sure their actual health updates immediately.*/
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!
 
 
-#define XENO_TIMER_TO_EFFECT_CONVERSION 1.5/20 //once per 2 seconds, with 1.5 effect per that once
+#define XENO_TIMER_TO_EFFECT_CONVERSION (0.075) // (1.5/20) //once per 2 seconds, with 1.5 effect per that once
 
 // This is here because sometimes our stun comes too early and tick is about to start, so we need to compensate
 // this is the best place to do it, tho name might be a bit misleading I guess

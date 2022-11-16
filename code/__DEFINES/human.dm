@@ -97,25 +97,26 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define UNDERWEAR_LAYER			40
-#define UNDERSHIRT_LAYER		39
-#define MUTANTRACE_LAYER		38
-#define FLAY_LAYER 				37 //For use by Hunter Flay
-#define DAMAGE_LAYER			36
-#define UNIFORM_LAYER			35
-#define TAIL_LAYER				34	//bs12 specific. this hack is probably gonna come back to haunt me
-#define ID_LAYER				33
-#define SHOES_LAYER				32
-#define GLOVES_LAYER			31
-#define MEDICAL_LAYER			30	//For splint and gauze overlays
-#define SUIT_LAYER				29
-#define SUIT_GARB_LAYER			28
-#define SUIT_SQUAD_LAYER		27
-#define GLASSES_LAYER			26
-#define BELT_LAYER				25
-#define SUIT_STORE_LAYER		24
-#define BACK_LAYER				23
-#define HAIR_LAYER				22
+#define UNDERWEAR_LAYER			41
+#define UNDERSHIRT_LAYER		40
+#define MUTANTRACE_LAYER		39
+#define FLAY_LAYER 				38 //For use by Hunter Flay
+#define DAMAGE_LAYER			37
+#define UNIFORM_LAYER			36
+#define TAIL_LAYER				35	//bs12 specific. this hack is probably gonna come back to haunt me
+#define ID_LAYER				34
+#define SHOES_LAYER				33
+#define GLOVES_LAYER			32
+#define MEDICAL_LAYER			31	//For splint and gauze overlays
+#define SUIT_LAYER				30
+#define SUIT_GARB_LAYER			29
+#define SUIT_SQUAD_LAYER		28
+#define GLASSES_LAYER			27
+#define BELT_LAYER				26
+#define SUIT_STORE_LAYER		25
+#define BACK_LAYER				24
+#define HAIR_LAYER				23
+#define HAIR_GRADIENT_LAYER		22
 #define FACIAL_LAYER			21
 #define EARS_LAYER				20
 #define FACEMASK_LAYER			19
@@ -137,7 +138,7 @@
 #define TARGETED_LAYER			3	//for target sprites when held at gun point, and holo cards.
 #define FIRE_LAYER				2	//If you're on fire		//BS12: Layer for the target overlay from weapon targeting system
 #define EFFECTS_LAYER			1  //If you're hit by an acid DoT
-#define TOTAL_LAYERS			40
+#define TOTAL_LAYERS			41
 //////////////////////////////////
 
 //Synthetic Defines
@@ -145,21 +146,14 @@
 #define SYNTH_COLONY_GEN_TWO	"First Generation Colonial Synthetic"
 #define SYNTH_COLONY_GEN_ONE	"Second Generation Colonial Synthetic"
 #define SYNTH_COMBAT	"Combat Synthetic"
+#define SYNTH_INFILTRATOR	"Infiltrator Synthetic"
 #define SYNTH_WORKING_JOE	"Working Joe"
 #define SYNTH_GEN_ONE	"First Generation Synthetic"
 #define SYNTH_GEN_TWO	"Second Generation Synthetic"
 #define SYNTH_GEN_THREE	"Third Generation Synthetic"
 
 #define PLAYER_SYNTHS list(SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
-#define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COMBAT, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
-
-// Human citizenship defines
-#define CITIZENSHIP_US			"United Americas (United States)"
-#define CITIZENSHIP_LUNA		"United Americas (Luna)"
-#define CITIZENSHIP_OTHER		"United Americas (Other)"
-#define CITIZENSHIP_COLONY		"Limited Service (Colony)"
-#define CITIZENSHIP_FOREIGN		"Green Card (Foreign)"
-
+#define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
 
 // Human religion defines
 #define RELIGION_PROTESTANT		 		"Christianity (Protestant)"

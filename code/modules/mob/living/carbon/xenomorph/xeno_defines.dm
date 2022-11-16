@@ -6,7 +6,6 @@
 	var/tier = 0
 	var/dead_icon = "Drone Dead"
 	var/language = LANGUAGE_XENOMORPH
-
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
 	var/melee_vehicle_damage = 10	//allows fine tuning melee damage to vehicles per caste.
@@ -23,6 +22,7 @@
 
 	var/evolution_allowed = 1 //Are they allowed to evolve (and have their evolution progress group)
 	var/evolution_threshold = 0 //Threshold to next evolution
+	var/evolve_without_queen = FALSE // whether they can get evo points without needing an ovi queen
 
 	var/list/evolves_to = list() //This is where you add castes to evolve into. "Separated", "by", "commas"
 	var/list/deevolves_to = list()  // what caste or castes to de-evolve to.
@@ -117,6 +117,8 @@
 	evolution_threshold = 0
 	if(evolution_allowed)
 		switch(tier)
+			if(0)
+				evolution_threshold = 60
 			if(1)
 				evolution_threshold = 200
 			if(2)
@@ -479,7 +481,7 @@
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		if(X.caste)
+		if(X.caste && X.counts_for_slots)
 			xeno_counts[X.caste.tier+1][X.caste.caste_type]++
 
 	return xeno_counts
@@ -668,10 +670,15 @@
 			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
 			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
 
-	var/effective_total = length(totalXenos) + pooled_factor
+	var/total_xenos = 0
+	var/effective_total = pooled_factor
+	for(var/mob/living/carbon/Xenomorph/xeno as anything in totalXenos)
+		if(xeno.counts_for_slots)
+			total_xenos++
+			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*length(totalXenos)/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*total_xenos/tier_slot_multiplier) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
 	slots[TIER_2][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)

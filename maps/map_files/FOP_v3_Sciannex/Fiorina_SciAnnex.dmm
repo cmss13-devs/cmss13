@@ -8188,13 +8188,6 @@
 /obj/item/prop/helmetgarb/riot_shield,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
-"eSH" = (
-/obj/effect/spawner/random/sentry/midchance,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/lowsec)
 "eSZ" = (
 /obj/structure/bed/roller,
 /turf/open/floor/prison{
@@ -8714,7 +8707,6 @@
 /area/fiorina/station/park)
 "fgU" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/sentry/midchance,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "fhc" = (
@@ -15673,6 +15665,9 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
+/obj/item/clothing/head/soft/ferret{
+	pixel_y = 7
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -23410,7 +23405,6 @@
 /area/fiorina/tumor/ice_lab)
 "nNJ" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/sentry/midchance,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "nOw" = (
@@ -27008,17 +27002,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/security/wardens)
-"qet" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = 13
-	},
-/obj/effect/spawner/random/sentry/midchance,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/fiorina/station/flight_deck)
 "qeu" = (
 /obj/structure/toilet{
 	pixel_y = 4
@@ -34913,6 +34896,16 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/civres)
+"uSY" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/vehicle/powerloader/ft,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/power_ring)
 "uTi" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -76039,7 +76032,7 @@ mcc
 avl
 kqC
 avl
-eSH
+iUy
 kqC
 ggp
 xri
@@ -82213,7 +82206,7 @@ puE
 kmB
 sOp
 mxQ
-uLr
+uSY
 tUs
 jYd
 cNn
@@ -85309,7 +85302,7 @@ roY
 roY
 mPW
 vvM
-qet
+tet
 eyz
 qGn
 tet

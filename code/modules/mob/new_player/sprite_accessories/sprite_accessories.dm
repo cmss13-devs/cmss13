@@ -39,7 +39,8 @@
 		SYNTH_GEN_ONE,
 		SYNTH_GEN_TWO,
 		SYNTH_GEN_THREE,
-		SYNTH_WORKING_JOE
+		SYNTH_WORKING_JOE,
+		SYNTH_INFILTRATOR
 		)
 
 	// Whether or not the accessory can be affected by colouration

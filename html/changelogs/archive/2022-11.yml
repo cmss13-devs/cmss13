@@ -301,3 +301,20 @@
   - rscadd: added a bunch of props for LV522 chances claim
   - rscadd: added some new autoturfs for LV522 chances claim
   - balance: buffed the damage of the M1911 Service pistol
+  carlarctg:
+  - <!-- Both: 'cl:''s are required for the changelog to work! You can put your name
+      to the right of the first :cl: if you want to overwrite your GitHub username
+      as author ingame. -->'
+  - Soul (Translator's note: '''Soul'' means adding depth and breadth, a little flavor
+      that makes the game feel a little more rich) Encourage helmet usage by trolling
+      those who dont, add verisimilitude by having firing a literal RPG without protection
+      hurt you. This will also block sources of deafness, like screech **ONLY THE
+      DEAFENING, NOT THE STUN** and flashbangs. I tried to only have it affect the
+      deafening parts of flashbangs, I really did, but flashbang code is god-awful..
+      I couldn''t do it.'
+  - ? ''
+    : 'cl:'
+  - rscadd: Firing any kind of RPG without the requisite ear protection will now deafen
+      you and stutter your messages.
+  - rscadd: Earmuffs, the M3T helmet, and the MG-34 helmet now come with inbuilt ear
+      protection.

@@ -3,7 +3,7 @@
 	contains = list(
 		/obj/item/storage/box/m56_system
 	)
-	cost = RO_PRICE_VERY_PRICY
+	cost = ASRS_PRICE_HUNDRED
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "M56B Smartgun System Package"
 	group = "Weapons"
@@ -13,7 +13,7 @@
 	contains = list(
 		/obj/item/storage/box/guncase/m56d
 	)
-	cost = RO_PRICE_PRICY
+	cost = ASRS_PRICE_SIXTY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "M56D Machine Gun Crate"
 	group = "Weapons"
@@ -23,7 +23,7 @@
 	contains = list(
 		/obj/item/storage/box/guncase/m2c
 	)
-	cost = RO_PRICE_PRICY
+	cost = ASRS_PRICE_SIXTY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "M2C Machine Gun Crate"
 	group = "Weapons"
@@ -36,7 +36,7 @@
 					/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit,
 					/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit
 					)
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "M240 Incinerator crate"
 	group = "Weapons"
@@ -47,7 +47,7 @@
 					/obj/item/storage/box/guncase/m79,
 					/obj/item/storage/box/guncase/m79,
 					)
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "M79 grenade launcher crate"
 	group = "Weapons"
@@ -58,7 +58,7 @@
 		/obj/item/storage/box/guncase/mou53,
 		/obj/item/storage/box/guncase/mou53
 	)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "MOU-53 Breack Action Shotgun Crate"
 	group = "Weapons"
@@ -69,7 +69,7 @@
 		/obj/item/storage/box/guncase/smartpistol,
 		/obj/item/storage/box/guncase/smartpistol,
 	)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "SU-6 Smart Pistol Crate"
 	group = "Weapons"
@@ -80,7 +80,7 @@
 		/obj/item/storage/box/guncase/vp78,
 		/obj/item/storage/box/guncase/vp78,
 	)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "VP-78 Hand Cannon Crate"
 	group = "Weapons"
@@ -93,7 +93,7 @@
 					/obj/item/ammo_magazine/rifle/m41aMK1
 					)
 	name = "M41A MK1 Rifle Crate (x2 MK1, x2 magazines)"
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "M41A MK1 Rifle Crate"
 	group = "Weapons"
@@ -104,7 +104,7 @@
 					/obj/item/storage/box/guncase/lmg
 					)
 	name = "M41AE2 HPR crate (HPR x2, HPR ammo box x2)"
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper M41AE2 HPR crate"
 	group = "Weapons"
@@ -115,7 +115,7 @@
 					/obj/item/storage/box/guncase/xm88
 					)
 	name = "XM88 Heavy Rifle crate (XM88 x2)"
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper XM88 Heavy Rifle crate"
 	group = "Weapons"
@@ -123,7 +123,7 @@
 /datum/supply_packs/gun/merc
 	contains = list()
 	name = "black market firearms (x1)"
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	contraband = 1
 	containertype = /obj/structure/largecrate/guns/merc
 	containername = "\improper black market firearms crate"
@@ -144,11 +144,10 @@
 					/obj/item/explosive/grenade/HE/PMC,
 					/obj/item/explosive/grenade/HE/PMC
 					)
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosives crate (WARNING)"
 	group = "Weapons"
-
 
 /datum/supply_packs/explosives_mines
 	name = "claymore mines crate (x10)"
@@ -156,7 +155,7 @@
 					/obj/item/storage/box/explosive_mines,
 					/obj/item/storage/box/explosive_mines
 					)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive mine boxes crate (WARNING)"
 	group = "Weapons"
@@ -167,7 +166,7 @@
 					/obj/item/storage/box/packet/m15,
 					/obj/item/storage/box/packet/m15
 					)
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M15 grenades crate (WARNING)"
 	group = "Weapons"
@@ -179,7 +178,7 @@
 					/obj/item/explosive/plastic,
 					/obj/item/explosive/plastic
 					)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper plastic explosives crate (WARNING)"
 	group = "Weapons"
@@ -192,7 +191,7 @@
 					/obj/item/explosive/plastic/breaching_charge,
 					/obj/item/explosive/plastic/breaching_charge
 	)
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper plastic explosives crate (WARNING)"
 	group = "Weapons"
@@ -203,11 +202,10 @@
 					/obj/item/storage/box/packet/incendiary,
 					/obj/item/storage/box/packet/incendiary
 					)
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HIDP incendiary grenades crate (WARNING)"
 	group = "Weapons"
-
 
 /datum/supply_packs/explosives_M40_HEDP
 	name = "M40 HEDP blast grenades crate (x6)"
@@ -215,18 +213,17 @@
 					/obj/item/storage/box/packet/high_explosive,
 					/obj/item/storage/box/packet/high_explosive
 					)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HEDP grenades crate (WARNING)"
 	group = "Weapons"
-
 
 /datum/supply_packs/explosives_hedp
 	name = "M40 HEDP blast grenade box crate (x25)"
 	contains = list(
 					/obj/item/storage/box/nade_box
 					)
-	cost = RO_PRICE_VERY_PRICY
+	cost = ASRS_PRICE_HUNDRED
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive HEDP grenade crate (WARNING)"
 	group = "Weapons"
@@ -237,7 +234,7 @@
 					/obj/item/storage/box/packet/phosphorus,
 					/obj/item/storage/box/packet/phosphorus
 	)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper M40 HPDP grenade crate (WARNING)"
 	group = "Weapons"
@@ -247,7 +244,7 @@
 	contains = list(
 					/obj/item/storage/box/nade_box/phophorus
 					)
-	cost = RO_PRICE_VERY_PRICY
+	cost = ASRS_PRICE_HUNDRED
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper HPDP grenade crate (WARNING)"
 	group = "Weapons"
@@ -258,7 +255,7 @@
 					/obj/item/storage/box/packet/hefa,
 					/obj/item/storage/box/packet/hefa
 					)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HEFA grenades crate (WARNING)"
 	group = "Weapons"
@@ -269,7 +266,7 @@
 	contains = list(
 					/obj/item/storage/box/nade_box/frag
 					)
-	cost = RO_PRICE_VERY_PRICY
+	cost = ASRS_PRICE_HUNDRED
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive HEFA grenade crate (WARNING)"
 	group = "Weapons"
@@ -280,7 +277,7 @@
 					/obj/item/storage/box/packet/airburst_he,
 					/obj/item/storage/box/packet/airburst_he
 					)
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M74 AGM-F grenades crate (WARNING)"
 	group = "Weapons"
@@ -290,7 +287,7 @@
 	contains = list(
 					/obj/item/storage/box/nade_box/airburst
 					)
-	cost = RO_PRICE_VERY_PRICY
+	cost = ASRS_PRICE_HUNDRED
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper  explosive M74 AGM-F grenades crate (WARNING)"
 	group = "Weapons"
@@ -301,7 +298,7 @@
 					/obj/item/storage/box/packet/airburst_incen,
 					/obj/item/storage/box/packet/airburst_incen
 					)
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M74 AGM-I grenades crate (WARNING)"
 	group = "Weapons"
@@ -312,7 +309,7 @@
 					/obj/item/storage/box/packet/airburst_smoke,
 					/obj/item/storage/box/packet/airburst_smoke
 					)
-	cost = RO_PRICE_CHEAP
+	cost = ASRS_PRICE_THIRTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M74 AGM-S grenades crate"
 	group = "Weapons"
@@ -323,7 +320,7 @@
 		/obj/item/storage/box/packet/hornet,
 		/obj/item/storage/box/packet/hornet
 	)
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "M74 AGM-Hornet Grenade Crate"
 	group = "Weapons"
@@ -334,7 +331,7 @@
 		/obj/item/storage/box/packet/flare,
 		/obj/item/storage/box/packet/flare
 	)
-	cost = RO_PRICE_NORMAL
+	cost = ASRS_PRICE_FORTY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "M74 AGM-Star Shell Grenade Crate"
 	group = "Weapons"
@@ -345,7 +342,7 @@
 		/obj/item/storage/box/packet/baton_slug,
 		/obj/item/storage/box/packet/baton_slug
 	)
-	cost = RO_PRICE_WORTHLESS
+	cost = ASRS_PRICE_TEN
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "M40 HIRR Baton Slug Crate"
 	group = "Weapons"
@@ -356,7 +353,7 @@
 					/obj/item/storage/backpack/marine/mortarpack,
 					/obj/item/mortar_kit
 					)
-	cost = RO_PRICE_PRICY
+	cost = ASRS_PRICE_SIXTY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper M402 mortar crate"
 	group = "Weapons"

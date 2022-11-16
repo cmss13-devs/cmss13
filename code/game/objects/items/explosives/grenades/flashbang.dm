@@ -129,8 +129,8 @@
 			M.ear_damage += rand(0, 1)
 
 	if(HAS_TRAIT(M, TRAIT_EAR_PROTECTION))
-		weaken_amount *= 0.5
-		paralyze_amount *= 0.5
+		weaken_amount *= 0.79
+		paralyze_amount *= 0.79
 		deafen_amount = 0
 		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
 
@@ -319,8 +319,8 @@
 			M.ear_damage += rand(1, 10)
 
 	if(HAS_TRAIT(M, TRAIT_EAR_PROTECTION))
-		daze_amount *= 0.5
-		paralyze_amount *= 0.5
+		daze_amount *= 0.79
+		paralyze_amount *= 0.79
 		deafen_amount = 0
 		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
 

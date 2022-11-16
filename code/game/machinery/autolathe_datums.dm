@@ -488,3 +488,8 @@ datum/autolathe/recipe/medilathe/autoinjector/s30x6
 	name = "Pressurized Reagent Container"
 	path = /obj/item/storage/pouch/pressurized_reagent_canister
 	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/pressurized_canister
+	name = "Pressurized canister"
+	path = /obj/item/reagent_container/glass/pressurized_canister
+	category = "Medical Containers"

@@ -479,6 +479,7 @@
 	name = "thick resin door"
 	health = HEALTH_DOOR_XENO_THICK
 	hardness = 2.0
+	mineralType = "r_resin"
 
 /obj/effect/alien/resin/acid_pillar
 	name = "acid pillar"

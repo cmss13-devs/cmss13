@@ -346,7 +346,7 @@ var/list/roundstart_mod_verbs = list(
 
 /client/proc/game_panel()
 	set name = "Game Panel"
-	set category = "Admin.Game"
+	set category = "Admin.Panels"
 	if(admin_holder)
 		admin_holder.Game()
 	return

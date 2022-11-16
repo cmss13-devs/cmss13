@@ -533,25 +533,25 @@
 				playsound(V, 'sound/effects/metal_crash.ogg', 35)
 				return FALSE
 		else if(driver && get_target_lock(driver.faction))
-			KnockDown(0.5, 1)
+			apply_effect(0.5, WEAKEN)
 		else
-			KnockDown(1, 1)
+			apply_effect(1, WEAKEN)
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
 		if(get_target_lock(driver.faction))
-			KnockDown(0.5, 1)
+			apply_effect(0.5, WEAKEN)
 		else
-			KnockDown(2, 1)
+			apply_effect(2, WEAKEN)
 			apply_damage(5 + rand(0, 10), BRUTE)
 			dmg = TRUE
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM)
-		KnockDown(3, 1)
+		apply_effect(3, WEAKEN)
 		apply_damage(10 + rand(0, 10), BRUTE)
 		dmg = TRUE
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_HEAVY)
-		KnockDown(5, 1)
+		apply_effect(5, WEAKEN)
 		apply_damage(15 + rand(0, 10), BRUTE)
 		dmg = TRUE
 
@@ -562,7 +562,7 @@
 			continue
 		H.livingmob_interact(src)
 
-	KnockDown(3, 1)
+	apply_effect(3, WEAKEN)
 	apply_damage(7 + rand(0, 5), BRUTE)
 	var/mob_moved = step(src, V.last_move_dir)
 
@@ -586,26 +586,26 @@
 
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		if(driver && get_target_lock(driver.faction))
-			KnockDown(0.5, 1)
+			apply_effect(0.5, WEAKEN)
 		else
-			KnockDown(1, 1)
+			apply_effect(1, WEAKEN)
 	else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
 		dmg = TRUE
 		if(get_target_lock(driver.faction))
-			KnockDown(0.5, 1)
+			apply_effect(0.5, WEAKEN)
 			apply_damage(5 + rand(0, 5), BRUTE, no_limb_loss = TRUE)
 			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING(SPAN_BOLD("*YOU RAMMED AN ALLY AND HURT THEM!*")))
 		else
-			KnockDown(2, 1)
+			apply_effect(2, WEAKEN)
 			apply_damage(10 + rand(0, 10), BRUTE)
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM)
-		KnockDown(3, 1)
+		apply_effect(3, WEAKEN)
 		apply_damage(10 + rand(0, 10), BRUTE)
 		dmg = TRUE
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_HEAVY)
-		KnockDown(5, 1)
+		apply_effect(5, WEAKEN)
 		apply_damage(15 + rand(0, 10), BRUTE)
 		dmg = TRUE
 
@@ -679,7 +679,7 @@
 
 	visible_message(SPAN_DANGER("\The [V] rams \the [src]!"), SPAN_DANGER("\The [V] rams you! Get out of the way!"))
 	if(is_knocked_down)
-		KnockDown(3, 1)
+		apply_effect(3, WEAKEN)
 
 	var/mob_moved = FALSE
 	var/mob_knocked_down = is_mob_incapacitated()

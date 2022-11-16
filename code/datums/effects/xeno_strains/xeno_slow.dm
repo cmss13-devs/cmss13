@@ -38,7 +38,7 @@
 		return FALSE
 
 	var/mob/living/carbon/affected_mob = affected_atom
-	affected_mob.AdjustSlowed(1.1) // Prevent you from getting 'unslowed'
+	affected_mob.adjust_effect(1.1, SLOW) // Prevent you from getting 'unslowed'
 	return TRUE
 
 /datum/effects/xeno_slow/Destroy()
@@ -58,5 +58,5 @@
 		return FALSE
 
 	var/mob/living/carbon/affected_mob = affected_atom
-	affected_mob.AdjustSuperslowed(1.1) // Prevent you from getting 'unslowed'
+	affected_mob.adjust_effect(1.1, SUPERSLOW) // Prevent you from getting 'unslowed'
 	return TRUE

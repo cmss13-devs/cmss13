@@ -928,6 +928,10 @@
 	if(!check_rights(R_EVENT))
 		return
 
+	if(!SSweather.map_holder)
+		to_chat(src, SPAN_WARNING("This map has no weather data."))
+		return
+
 	if(SSweather.is_weather_event_starting)
 		to_chat(src, SPAN_WARNING("A weather event is already starting. Please wait."))
 		return

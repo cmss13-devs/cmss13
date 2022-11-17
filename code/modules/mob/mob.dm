@@ -355,10 +355,10 @@
 	//Squad Leaders and above have reduced cooldown and get a bigger arrow
 	if(check_improved_pointing())
 		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src)
+		new /obj/effect/overlay/temp/point/big(T, src, A)
 	else
 		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T, src)
+		new /obj/effect/overlay/temp/point(T, src, A)
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
 	return TRUE
 
@@ -863,22 +863,22 @@ mob/proc/yank_out_object()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
-		AdjustStunned(-1)
+		adjust_effect(-1, STUN)
 	return stunned
 
 /mob/living/proc/handle_dazed()
 	if(dazed)
-		AdjustDazed(-1)
+		adjust_effect(-1, DAZE)
 	return dazed
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
-		AdjustSlowed(-1)
+		adjust_effect(-1, SLOW)
 	return slowed
 
 /mob/living/proc/handle_superslowed()
 	if(superslowed)
-		AdjustSuperslowed(-1)
+		adjust_effect(-1, SUPERSLOW)
 	return superslowed
 
 

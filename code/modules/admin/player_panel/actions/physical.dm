@@ -207,3 +207,18 @@
 
 	message_staff("[key_name_admin(user)][success ? "" : " failed to"] set [key_name_admin(target)]'s squad to [selected_squad].")
 	return TRUE
+
+/datum/player_action/set_faction
+	action_tag = "set_faction"
+	name = "Set Faction"
+	permissions_required = R_VAREDIT
+
+/datum/player_action/set_faction/act(var/client/user, var/mob/living/carbon/human/target, var/list/params)
+	var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", FACTION_LIST_HUMANOID)
+	if(!new_faction)
+		new_faction = FACTION_NEUTRAL
+	target.faction = new_faction
+	target.faction_group = list(new_faction)
+
+	message_staff("[key_name_admin(user)][new_faction ? "" : " failed to"] set [key_name_admin(target)]'s faction to [new_faction].")
+	return TRUE

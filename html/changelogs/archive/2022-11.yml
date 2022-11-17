@@ -235,3 +235,99 @@
   NoKohi:
   - admin: moved game panels from the game category to the panels category in the
       admin tab
+  ThePiachu:
+  - rscadd: Added UI buttons that will let you Set Transfer Amounts all reagent containers
+      (bottles, beakers, etc.). This should make chemistry work a bit more enjoyable.
+  - qol: Added extra transfer amounts for Bluespace Beakers - 20, 40, 80, for those
+      transfer edge cases.
+  - bugfix: Crates can no longer pick up decals.
+  - spellcheck: Fixed two small typos in Requisitions (lacking closing brackets on
+      ammo descriptions).
+  - bugfix: Placed ammo boxes now give a proper description within a neat rectangle
+      like all the other items.
+  - refactor: Tiny code refactor around ammo boxes unfolding into cardboard.
+  - qol: Empty shotgun shell boxes now unfold into cardboard when clicked.
+  Unknownity:
+  - rscadd: Added Infiltrator Synthetics that can be used for events, these guys are
+      almost indistinguishable to humans, better watch your back in the future..
+  - admin: Added a simpler way for admins to change a mob's faction, it's found in
+      the player panel alongside set squad.
+  - bugfix: Fixed CLF Synths visually appearing as Gen 3 synthetics
+  fira:
+  - qol: Ghosts now have a timer displaying time left to hijack end in Statpanel.
+  - bugfix: Evac timer in Status pane will now display as such.
+  - rscadd: Supply drops now use drop pods. USCM advises personnel not to stand below
+      them.
+  - qol: Squads will now get a text notification if a supply pad is launched for them,
+      on top of just the chat one.
+  - refactor: Refactored message sending code in squads/overwatch.
+  kugamo:
+  - bugfix: 'Fixed visual bug with dropships: having plating underneath in space and
+      on lzs.'
+  - qol: Resin holes can now be placed ontop of weed nodes; replacing them.
+2022-11-15:
+  QuickLoad:
+  - balance: synthetic unarmed damage increased to disincentivize carrying weapons.
+  - balance: synthetics are more resistant against burns
+  Segrain:
+  - bugfix: Status effects (slow, knockdown, etc) once again can come to an end for
+      xenos instead of lasting forever.
+  carlarctg:
+  - refactor: refactored how stuns/knockdowns/etc are handled in code to allow for
+      manual cancellation without shitcode.
+  realforest2001:
+  - rscadd: Paygrades now display on non Yautja or Xeno mobs.
+2022-11-16:
+  Bilary:
+  - spellcheck: Removed a redundant 'the' in the BR roundstart message.
+  NoKohi:
+  - bugfix: fixed facehuggers not stunning when applied
+  - bugfix: fixed resisting flame + acid stun not applying
+  - bugfix: fixed stuns for tail swipes, plasma casters and vehicle ramming
+  Segrain:
+  - bugfix: Warden's rejuvenation ability once again works.
+  SpartanBobby:
+  - rscadd: M4A3 Custom added to custom loadout for 4 points
+  - rscadd: M44 Custom added to custom loadout for 7 points
+  - rscdel: Removed M4A3 and M44 Custom from areas not custom loadout, replaced with
+      regular counterparts or 88 Mod 4 Combat Pistol
+  - balance: M4A3 and M44 Custom pistols now share the same stats as their regular
+      counterparts
+  SpartanBobby, Triodine, Geeves, Stan_Albatross, Legacy Spriters, Quickload,Morrow:
+  - rscadd: added LV_522 Chances claim a new map
+  - rscadd: added USCM Force recon survivors and the special Force recon major for
+      WL'd COs (exclusive to LV522)
+  - rscadd: gave special battle-damaged uniforms to members of force recon generously
+      made by Quickload
+  - rscadd: added a bunch of wind and rain sounds for LV522 chances claim
+  - rscadd: added a bunch of props for LV522 chances claim
+  - rscadd: added some new autoturfs for LV522 chances claim
+  - balance: buffed the damage of the M1911 Service pistol
+  carlarctg:
+  - <!-- Both: 'cl:''s are required for the changelog to work! You can put your name
+      to the right of the first :cl: if you want to overwrite your GitHub username
+      as author ingame. -->'
+  - Soul (Translator's note: '''Soul'' means adding depth and breadth, a little flavor
+      that makes the game feel a little more rich) Encourage helmet usage by trolling
+      those who dont, add verisimilitude by having firing a literal RPG without protection
+      hurt you. This will also block sources of deafness, like screech **ONLY THE
+      DEAFENING, NOT THE STUN** and flashbangs. I tried to only have it affect the
+      deafening parts of flashbangs, I really did, but flashbang code is god-awful..
+      I couldn''t do it.'
+  - ? ''
+    : 'cl:'
+  - rscadd: Firing any kind of RPG without the requisite ear protection will now deafen
+      you and stutter your messages.
+  - rscadd: Earmuffs, the M3T helmet, and the MG-34 helmet now come with inbuilt ear
+      protection.
+  fira:
+  - refactor: Reimplemented Nightmare system, now with support for ship maps and round-wide
+      events.
+  - refactor: Predator rounds are now rolled by Nightmare. As a side-effect, they
+      can now be toggled before round start.
+  harryob:
+  - bugfix: fixes the topic limit message popping up on connect
+2022-11-17:
+  Huffie56:
+  - bugfix: Raider aka marsoc will spawn with their armor now
+  - code_imp: add back /armor at the end of gear preset for raider.

@@ -59,7 +59,7 @@
 				to_chat(affected_mob, SPAN_DANGER("You lose consciousness..."))
 				for(var/mob/O in viewers(affected_mob, null))
 					O.show_message("[affected_mob] suddenly collapses", 1)
-				affected_mob.KnockOut(rand(5,10))
+				affected_mob.apply_effect(rand(5,10), PARALYZE)
 				if(prob(1))
 					affected_mob.emote("snore")
 			if(prob(15))

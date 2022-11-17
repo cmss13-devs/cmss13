@@ -73,27 +73,6 @@
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
 
-
-	var/nametext = ""
-	if(plus_name)
-		nametext = "[usr.name] transmits: "
-		text = "[FONT_SIZE_LARGE("<b>[text]<b>")]"
-
-	if(only_leader)
-		if(current_squad.squad_leader)
-			var/mob/living/carbon/human/SL = current_squad.squad_leader
-			if(!SL.stat && SL.client)
-				if(plus_name)
-					SL << sound('sound/effects/tech_notification.ogg')
-				to_chat(SL, "[icon2html(src, SL)] [SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]")
-				return
-	else
-		for(var/mob/living/carbon/human/M in current_squad.marines_list)
-			if(!M.stat && M.client) //Only living and connected people in our squad
-				if(plus_name)
-					M << sound('sound/effects/tech_notification.ogg')
-				to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]")
-
 // Alerts all groundside marines about the incoming OB
 /obj/structure/machinery/computer/overwatch/proc/alert_ob(var/turf/target)
 	var/area/ob_area = get_area(target)

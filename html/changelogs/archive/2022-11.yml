@@ -327,3 +327,7 @@
       can now be toggled before round start.
   harryob:
   - bugfix: fixes the topic limit message popping up on connect
+2022-11-17:
+  Huffie56:
+  - bugfix: Raider aka marsoc will spawn with their armor now
+  - code_imp: add back /armor at the end of gear preset for raider.

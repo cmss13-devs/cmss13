@@ -412,7 +412,7 @@
 /obj/structure/machinery/light/proc/has_power()
 	var/area/A = src.loc.loc
 	if(!src.needs_power)
-		return A.lightswitch
+		return A.master.lightswitch
 	return A.master.lightswitch && A.master.power_light
 
 /obj/structure/machinery/light/proc/flicker(var/amount = rand(10, 20))

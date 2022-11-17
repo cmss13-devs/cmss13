@@ -411,6 +411,8 @@
 // true if area has power and lightswitch is on
 /obj/structure/machinery/light/proc/has_power()
 	var/area/A = src.loc.loc
+	if(!src.needs_power)
+		return A.lightswitch && TRUE
 	return A.master.lightswitch && A.master.power_light
 
 /obj/structure/machinery/light/proc/flicker(var/amount = rand(10, 20))
@@ -563,6 +565,8 @@
 		if(loc)
 			var/area/A = src.loc.loc
 			A = A.master
+			if(!src.needs_power)
+				return seton(A.lightswitch && TRUE)
 			seton(A.lightswitch && A.power_light)
 
 // called when on fire

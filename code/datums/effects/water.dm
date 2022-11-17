@@ -21,3 +21,7 @@
 		H.update_effects()
 
 	return ..()
+
+/datum/effects/water/process()
+	. = ..()
+	STOP_PROCESSING(SSeffects, src)

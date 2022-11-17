@@ -189,7 +189,7 @@
 		occupant.stat = 1
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(10)
-			occupant.KnockOut(10)
+			occupant.apply_effect(10, PARALYZE)
 
 			if(occupant.getOxyLoss())
 				occupant.apply_damage(-1, OXY)

@@ -122,6 +122,7 @@
 	icon_state = "earmuffs"
 	item_state = "earmuffs"
 	flags_equip_slot = SLOT_EAR
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
 
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()

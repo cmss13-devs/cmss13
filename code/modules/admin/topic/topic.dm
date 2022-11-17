@@ -901,7 +901,7 @@
 		for(var/obj/item/I in M)
 			M.drop_inv_item_on_ground(I)
 
-		M.KnockOut(5)
+		M.apply_effect(5, PARALYZE)
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_one)))
 		spawn(50)
@@ -925,7 +925,7 @@
 		for(var/obj/item/I in M)
 			M.drop_inv_item_on_ground(I)
 
-		M.KnockOut(5)
+		M.apply_effect(5, PARALYZE)
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_two)))
 		spawn(50)
@@ -946,7 +946,7 @@
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
-		M.KnockOut(5)
+		M.apply_effect(5, PARALYZE)
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_admin)))
 		spawn(50)
@@ -974,7 +974,7 @@
 			var/mob/living/carbon/human/observer = M
 			observer.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(observer), WEAR_BODY)
 			observer.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(observer), WEAR_FEET)
-		M.KnockOut(5)
+		M.apply_effect(5, PARALYZE)
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_observer)))
 		spawn(50)

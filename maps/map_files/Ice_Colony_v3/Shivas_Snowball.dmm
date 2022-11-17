@@ -8121,7 +8121,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "bUX" = (
-/obj/item/storage/belt/gun/m44/custom,
+/obj/item/storage/belt/gun/m44,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "green"

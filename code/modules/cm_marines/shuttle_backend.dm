@@ -396,6 +396,13 @@ qdel(src)
 	// This dumps the turfs of marine_src into each DS's docking locs
 	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_dock)
 
+	// This underlays the walls of the dropship with the icon of the landmark turf (purely visual; its for the parts of the dropship sprite that have holes).
+	var/turf/T_src = pick(S.locs_dock)
+	var/list/turfs_to_init = get_shuttle_turfs(T_src, S.info_datums)
+	for(var/turf/T in turfs_to_init)
+		if(istype(T, /turf/closed/shuttle))
+			T.underlays += mutable_appearance(T_src.icon, T_src.icon_state, TURF_LAYER, FLOOR_PLANE)
+
 /obj/effect/landmark/shuttle_loc/marine_src/evacuation
 
 /obj/effect/landmark/shuttle_loc/marine_src/evacuation/link_loc()
@@ -583,6 +590,10 @@ qdel(src)
 		target.icon_state = old_icon_state
 		target.icon = old_icon
 
+		if(istype(target, /turf/closed/shuttle)) //better than underlaying everyturf, just need the parts that have see through parts. Which are all closed turfs
+			target.underlays.Cut()
+			target.underlays += mutable_appearance(reference.icon, reference.icon_state, TURF_LAYER, FLOOR_PLANE)
+
 		for (var/atom/movable/A in T)
 			// fix for multitile stuff like vehicles drifting on jump
 			if(A.loc != T)
@@ -617,7 +628,7 @@ qdel(src)
 	shuttle.already_moving = 0
 	// Do this after because it's expensive.
 	for (var/mob/living/L in knocked_down_mobs)
-		L.KnockDown(3)
+		L.apply_effect(3, WEAKEN)
 
 	/*
 	Commented out since it doesn't do anything with shuttle walls and the like yet.

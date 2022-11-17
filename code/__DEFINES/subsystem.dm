@@ -55,7 +55,7 @@
 #define SS_INIT_GARBAGE            24
 #define SS_INIT_JOB                23
 #define SS_INIT_MAPPING            22
-#define SS_INIT_PLANT              21.5
+#define SS_INIT_NIGHTMARE          21.5
 #define SS_INIT_HUMANS             21
 #define SS_INIT_MAP                20
 #define SS_INIT_COMPONENT          19.5

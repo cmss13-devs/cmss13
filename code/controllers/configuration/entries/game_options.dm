@@ -109,3 +109,8 @@
 	min_val = ANTIGRIEF_DISABLED
 	max_val = ANTIGRIEF_ENABLED
 	config_entry_value = ANTIGRIEF_NEW_PLAYERS
+
+/// Relative inclusion path for nightmare configuration files
+/datum/config_entry/string/nightmare_path
+	config_entry_value = "maps/Nightmare/"
+

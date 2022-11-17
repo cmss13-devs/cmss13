@@ -330,6 +330,8 @@
 
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = AM
+			if(!locate(/datum/effects/water) in H.effects_list)
+				new /datum/effects/water(H)
 			cleanup(H)
 			if(H.gloves && rand(0,100) < 60)
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
@@ -350,6 +352,15 @@
 		var/mob/living/carbon/human/H = AM
 		if(H.bloody_footsteps)
 			SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
+
+/turf/open/gm/river/Exited(Obj, newloc)
+	. = ..()
+	if(!ishuman(Obj))
+		return
+	var/mob/living/carbon/human/H = Obj
+	if(!istype(newloc, type))
+		for(var/datum/effects/water/W in H.effects_list)
+			qdel(W)
 
 
 /turf/open/gm/river/proc/cleanup(var/mob/living/carbon/human/M)

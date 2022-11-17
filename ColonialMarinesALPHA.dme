@@ -368,6 +368,7 @@
 #include "code\datums\effects\pain\monkey_pain.dm"
 #include "code\datums\effects\pain\pain.dm"
 #include "code\datums\effects\stamina\stamina_human.dm"
+#include "code\datums\effects\water.dm"
 #include "code\datums\effects\xeno_strains\boiler_trap.dm"
 #include "code\datums\effects\xeno_strains\dancer_tag.dm"
 #include "code\datums\effects\xeno_strains\gain_xeno_cooldown_reduction_on_slash.dm"

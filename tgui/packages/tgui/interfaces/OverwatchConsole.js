@@ -2,25 +2,9 @@ import { sortBy, uniqBy } from 'common/collections';
 import { useBackend, useLocalState } from '../backend';
 import { createSearch } from 'common/string';
 import { round } from 'common/math';
-import {
-  Button,
-  Section,
-  NoticeBox,
-  Stack,
-  Flex,
-  Icon,
-  NumberInput,
-  LabeledList,
-  ProgressBar,
-  Divider,
-  Table,
-  Box,
-  Dropdown,
-  ColorBox,
-  Dimmer,
-  Input,
-} from '../components';
+import { Button, Section, NoticeBox, Stack, Flex, Icon, NumberInput, LabeledList, ProgressBar, Divider, Table, Box, Dropdown, ColorBox, Dimmer, Input } from '../components';
 import { Window } from '../layouts';
+import { createLogger } from '../logging';
 
 export const searchFor = (searchText) => {
   return createSearch(searchText, (thing) => thing.name);
@@ -200,21 +184,26 @@ export const OverwatchSquad = (props, context) => {
             }
             disabled={!squad_data.current_squad_leader_name}
             onClick={() =>
-              act('use_cam', { cam_target: squad_data.current_squad_leader })}
+              act('use_cam', { cam_target: squad_data.current_squad_leader })
+            }
           />
         </Stack.Item>
-        <Stack.Item width="15%">
-          <Button.Input
-            fluid
-            textAlign="center"
-            content={'Message'}
-            onCommit={(e, value) =>
-              act('message', {
-                message: value,
-              })}
-          />
-        </Stack.Item>
-        <Stack.Item width="25%">
+        {squad_data.current_squad_leader_name && (
+          <Stack.Item width="15%">
+            <Button.Input
+              fluid
+              textAlign="center"
+              content={'Message'}
+              onCommit={(e, value) =>
+                act('sl_message', {
+                  message: value,
+                })
+              }
+            />
+          </Stack.Item>
+        )}
+        <Stack.Item
+          width={squad_data.current_squad_leader_name ? '25%' : '40%'}>
           <Dropdown
             options={squad_data.sl_candidates}
             displayText={
@@ -223,7 +212,8 @@ export const OverwatchSquad = (props, context) => {
                 : 'Assign Squad Leader'
             }
             onSelected={(value) =>
-              act('change_lead', { marine_picked: marine_list[value].ref })}
+              act('change_lead', { marine_picked: marine_list[value].ref })
+            }
             selected="Select"
             noscroll
             lineHeight="1.5em"
@@ -250,7 +240,8 @@ export const OverwatchSquad = (props, context) => {
                 onCommit={(e, value) =>
                   act('set_primary', {
                     objective: value,
-                  })}
+                  })
+                }
               />
             </Stack.Item>
             <Stack.Item width="20%">
@@ -279,7 +270,8 @@ export const OverwatchSquad = (props, context) => {
                 onCommit={(e, value) =>
                   act('set_secondary', {
                     objective: value,
-                  })}
+                  })
+                }
               />
             </Stack.Item>
             <Stack.Item width="20%">
@@ -300,7 +292,8 @@ export const OverwatchSquad = (props, context) => {
             onCommit={(e, value) =>
               act('message', {
                 message: value,
-              })}
+              })
+            }
           />
         </Stack.Item>
         <Stack.Item width="25%">
@@ -319,7 +312,8 @@ export const OverwatchSquad = (props, context) => {
                 onSelected={(value) =>
                   act('insubordination', {
                     marine_picked: marine_list[value].ref,
-                  })}
+                  })
+                }
                 noscroll
               />
             </Stack.Item>
@@ -337,7 +331,8 @@ export const OverwatchSquad = (props, context) => {
                 onSelected={(value) =>
                   act('squad_transfer', {
                     marine_picked: marine_list[value].ref,
-                  })}
+                  })
+                }
                 noscroll
               />
             </Stack.Item>
@@ -476,9 +471,9 @@ export const OverwatchMonitor = (props, context) => {
                   .filter(searchFor(searchText))
                   .filter(
                     (marine) =>
-                      marine?.role === selectedJob
-                      || selectedJob === null
-                      || !selectedJob
+                      marine?.role === selectedJob ||
+                      selectedJob === null ||
+                      !selectedJob
                   )
                   .map((marine_data) => (
                     <Table.Row key={marine_data}>
@@ -489,7 +484,8 @@ export const OverwatchMonitor = (props, context) => {
                           onClick={() =>
                             act('filter_marine', {
                               squaddie: marine_data['ref'],
-                            })}
+                            })
+                          }
                         />
                       </Table.Cell>
                       <Table.Cell>
@@ -500,15 +496,16 @@ export const OverwatchMonitor = (props, context) => {
                           onClick={() =>
                             act('use_cam', {
                               cam_target: marine_data['ref'],
-                            })}
+                            })
+                          }
                         />
                       </Table.Cell>
                       <Table.Cell>
-                        {marine_data['role']
-                          + (marine_data['act_sl'] === true
+                        {marine_data['role'] +
+                          (marine_data['act_sl'] === true
                             ? marine_data['act_sl']
-                            : '')
-                          + (marine_data['fteam']
+                            : '') +
+                          (marine_data['fteam']
                             ? ' (' + marine_data['fteam'] + ')'
                             : '')}
                       </Table.Cell>
@@ -600,10 +597,15 @@ export const OverwatchMonitor = (props, context) => {
 
 export const OverwatchSupplies = (props, context) => {
   const { act, data } = useBackend(context);
-  const { x_supply, y_supply, supply_cooldown, supply_ready, world_time }
-    = data;
+  const { x_supply, y_supply, supply_cooldown, supply_pad_ready, world_time } =
+    data;
 
-  const cooldown = round(supply_cooldown - world_time * 0.1);
+  const logger = createLogger('ow');
+  logger.warn(data);
+  const cooldown = round((supply_cooldown - world_time) * 0.1);
+
+  const supply_ready =
+    supply_pad_ready && (!supply_cooldown || supply_cooldown < world_time);
 
   const [target_x, setTargetX] = useLocalState(context, 'target_x', x_supply);
   const [target_y, setTargetY] = useLocalState(context, 'target_y', y_supply);
@@ -619,11 +621,11 @@ export const OverwatchSupplies = (props, context) => {
         ranges={{
           good: [-Infinity, lower_cooldown_seconds],
           average: [lower_cooldown_seconds, upper_cooldown_seconds],
-          bad: [Infinity, upper_cooldown_seconds],
+          bad: [upper_cooldown_seconds, Infinity],
         }}
         minValue={0}
-        maxValue={data.supply_cooldown_time}
-        value={cooldown_seconds}>
+        maxValue={cooldown_seconds}
+        value={cooldown}>
         {cooldown > 0 ? cooldown + ' second cooldown' : 'Ready to Fire'}
       </ProgressBar>
       <Divider />
@@ -666,7 +668,8 @@ export const OverwatchSupplies = (props, context) => {
               act('set_supply', {
                 target_x: target_x,
                 target_y: target_y,
-              })}
+              })
+            }
           />
         </Stack.Item>
       </Stack>
@@ -724,13 +727,18 @@ export const OverwatchBomb = (props, context) => {
     world_time,
   } = data;
 
-  const bombardment = round((bombardment_cooldown - world_time) / 10);
+  const bombardment = round((bombardment_cooldown - world_time) * 0.1);
 
   const [bomb_x, setTargetX] = useLocalState(context, 'bomb_x', x_bomb);
   const [bomb_y, setTargetY] = useLocalState(context, 'bomb_y', y_bomb);
 
-  const bombardment_enabled
-    = bombardment <= 0 && !almayer_cannon_disabled && almayer_cannon_ready;
+  const bombardment_enabled =
+    (!bombardment_cooldown || bombardment_cooldown < world_time) &&
+    !almayer_cannon_disabled &&
+    almayer_cannon_ready;
+
+  const logger = createLogger('ow');
+  logger.warn(data);
 
   const cooldown_seconds = data.max_bombardment_cooldown * 0.1;
   const lower_cooldown_seconds = cooldown_seconds * 0.4;
@@ -743,7 +751,7 @@ export const OverwatchBomb = (props, context) => {
         ranges={{
           good: [-Infinity, lower_cooldown_seconds],
           average: [lower_cooldown_seconds, upper_cooldown_seconds],
-          bad: [Infinity, upper_cooldown_seconds],
+          bad: [upper_cooldown_seconds, Infinity],
         }}
         minValue={0}
         maxValue={cooldown_seconds}
@@ -790,7 +798,8 @@ export const OverwatchBomb = (props, context) => {
               act('set_bomb', {
                 target_x: bomb_x,
                 target_y: bomb_y,
-              })}
+              })
+            }
           />
         </Stack.Item>
       </Stack>

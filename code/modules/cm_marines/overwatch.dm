@@ -530,7 +530,8 @@
 			squad_list += squad.name
 	data["squad_list"] = squad_list
 
-	data["almayer_cannon_ready"] = almayer_orbital_cannon?.loaded_tray
+	data["bombardment_cooldown"] = almayer_orbital_cannon?.ob_firing_cooldown
+	data["almayer_cannon_ready"] = almayer_orbital_cannon?.tray.warhead
 	data["almayer_cannon_disabled"] = almayer_orbital_cannon?.is_disabled
 
 	data["supply_cooldown"] = current_squad?.next_supplydrop
@@ -538,7 +539,7 @@
 	data["squad_data"] = current_squad ? get_squad_data(current_squad) : FALSE
 
 	var/obj/structure/closet/crate/drop_closet = locate() in current_squad?.drop_pad.loc
-	data["supply_ready"] = drop_closet ? TRUE : FALSE
+	data["supply_pad_ready"] = drop_closet ? TRUE : FALSE
 
 	return(data)
 
@@ -546,8 +547,8 @@
 
 	var/list/data = list()
 
-	data["max_supply_cooldown"] = almayer_orbital_cannon?.ob_firing_cooldown
-	data["max_bombardment_cooldown"] = supply_cooldown_time
+	data["max_supply_cooldown"] = supply_cooldown_time
+	data["max_bombardment_cooldown"] = almayer_orbital_cannon?.fire_cooldown_time
 
 	return(data)
 
@@ -660,13 +661,13 @@
 		if("set_supply")
 			x_supply = params["target_x"]
 			y_supply = params["target_y"]
-			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Latitude is now [y_supply], longitude is now [x_supply].")]")
+			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Longitude is now [x_supply], latitude is now [y_supply].")]")
 			return TRUE
 
 		if("set_bomb")
 			x_bomb = params["target_x"]
 			y_bomb = params["target_y"]
-			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Latitude is now [y_bomb], longitude is now [x_bomb].")]")
+			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Longitude is now [x_bomb], latitude is now [y_bomb].")]")
 			return TRUE
 
 		if("hide_dead")

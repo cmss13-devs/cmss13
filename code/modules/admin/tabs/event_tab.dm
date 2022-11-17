@@ -935,7 +935,8 @@
 	if(SSweather.is_weather_event)
 		if(tgui_alert(src, "A weather event is already in progress! End it?", "Confirm", list("End", "Continue"), 10 SECONDS) == "Continue")
 			return
-		SSweather.end_weather_event()
+		if(SSweather.is_weather_event)
+			SSweather.end_weather_event()
 
 	var/list/mappings = list()
 	for(var/datum/weather_event/typepath as anything in subtypesof(/datum/weather_event))

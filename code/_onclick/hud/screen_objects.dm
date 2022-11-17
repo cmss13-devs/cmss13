@@ -464,6 +464,48 @@
 		L.resist()
 		return 1
 
+/atom/movable/screen/mov_intent
+	name = "run/walk toggle"
+	icon = 'icons/mob/hud/human_midnight.dmi'
+	icon_state = "running"
+
+/atom/movable/screen/mov_intent/clicked(mob/living/user)
+	. = ..()
+	if(.)
+		return TRUE
+	user.toggle_mov_intent()
+
+/mob/living/proc/set_movement_intent(var/new_intent)
+	m_intent = new_intent
+	if(hud_used?.move_intent)
+		hud_used.move_intent.set_movement_intent_icon(m_intent)
+	recalculate_move_delay = TRUE
+
+/mob/living/proc/toggle_mov_intent()
+	if(legcuffed)
+		to_chat(src, SPAN_NOTICE("You are legcuffed! You cannot run until you get \the [legcuffed] removed!"))
+		set_movement_intent(MOVE_INTENT_WALK)
+		return FALSE
+	switch(m_intent)
+		if(MOVE_INTENT_RUN)
+			set_movement_intent(MOVE_INTENT_WALK)
+		if(MOVE_INTENT_WALK)
+			set_movement_intent(MOVE_INTENT_RUN)
+	return TRUE
+
+/atom/movable/screen/mov_intent/proc/set_movement_intent_icon(var/new_intent)
+	switch(new_intent)
+		if(MOVE_INTENT_WALK)
+			icon_state = "walking"
+		if(MOVE_INTENT_RUN)
+			icon_state = "running"
+
+/mob/living/carbon/Xenomorph/toggle_mov_intent()
+	. = ..()
+	if(.)
+		update_icons()
+		return TRUE
+
 /atom/movable/screen/act_intent
 	name = "intent"
 	icon_state = "intent_help"

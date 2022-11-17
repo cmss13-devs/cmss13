@@ -1,6 +1,3 @@
-#define MOVE_INTENT_WALK 1
-#define MOVE_INTENT_RUN 2
-
 /mob/dead
 	var/voted_this_drop = 0
 	can_block_movement = FALSE
@@ -19,7 +16,6 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	plane = GHOST_PLANE
 	layer = ABOVE_FLY_LAYER
-	var/m_intent = MOVE_INTENT_WALK
 	stat = DEAD
 	var/adminlarva = 0
 	var/ghostvision = 1
@@ -957,10 +953,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)
 			. += "Evacuation: [eta_status]"
-
-
-#undef MOVE_INTENT_WALK
-#undef MOVE_INTENT_RUN
 
 /proc/message_ghosts(var/message)
 	for(var/mob/dead/observer/O as anything in GLOB.observer_list)

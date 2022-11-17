@@ -57,6 +57,9 @@
 
 	var/obj/item/iff_tag/iff_tag = null
 
+	var/static/list/walking_state_cache = list()
+	var/has_walking_icon_state = FALSE
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Core Stats
@@ -341,6 +344,7 @@
 	vis_contents += wound_icon_carrier
 
 	if(oldXeno)
+		set_movement_intent(oldXeno.m_intent)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
 		life_kills_total = oldXeno.life_kills_total
@@ -368,13 +372,13 @@
 
 	mutators.xeno = src
 
-	update_icon_source()
-
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	else
 		to_world("something went very wrong")
 		return
+
+	update_icon_source()
 
 	acid_splash_cooldown = caste.acid_splash_cooldown
 

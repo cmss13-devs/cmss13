@@ -39,6 +39,15 @@
 			Q.queen_standing_icon = icon_xeno
 			Q.queen_ovipositor_icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
 
+	var/mutation_caste_state = "[mutation_type] [caste.caste_type]"
+	if(!walking_state_cache[mutation_caste_state])
+		var/cache_walking_state = FALSE
+		for(var/state in icon_states(icon))
+			if(findtext(state, "Walking"))
+				cache_walking_state = TRUE
+				break
+		walking_state_cache[mutation_caste_state] = cache_walking_state
+	has_walking_icon_state = walking_state_cache[mutation_caste_state]
 	update_icons()
 
 /mob/living/carbon/Xenomorph/update_icons()
@@ -51,15 +60,16 @@
 	if(behavior_delegate?.on_update_icons())
 		return
 
+	var/mutation_caste_state = "[mutation_type] [caste.caste_type]"
 	if(stat == DEAD)
-		icon_state = "[mutation_type] [caste.caste_type] Dead"
+		icon_state = "[mutation_caste_state] Dead"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] [caste.caste_type] Sleeping"
+			icon_state = "[mutation_caste_state] Sleeping"
 		else
-			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"
+			icon_state = "[mutation_caste_state] Knocked Down"
 	else
-		icon_state = "[mutation_type] [caste.caste_type] Running"
+		icon_state = "[mutation_caste_state] [m_intent != MOVE_INTENT_RUN && has_walking_icon_state ? "Walking" : "Running"]"
 
 /mob/living/carbon/Xenomorph/regenerate_icons()
 	..()

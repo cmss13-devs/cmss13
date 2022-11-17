@@ -125,6 +125,8 @@
 #define TRAIT_FOREIGN_BIO "t_foreign_bio"
  /// Eye color changes on intent. (G1 Synths)
 #define TRAIT_INTENT_EYES "t_intent_eyes"
+ /// Masked synthetic biology. Basic medHUDs will percieve the mob as human. (Infiltrator Synths)
+#define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
 
 // HIVE TRAITS
  /// If the Hive is a Xenonid Hive
@@ -151,6 +153,8 @@
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
  /// If the mob is being lazed by a sniper spotter
 #define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
+ /// If the mob has ear protection. Protects from external ear damage effects. Includes explosions, firing the RPG, screeching DEAFNESS only, and flashbangs.
+#define TRAIT_EAR_PROTECTION "t_ear_protection"
 
 // -- ability traits --
  /// Xenos with this trait cannot have plasma transfered to them

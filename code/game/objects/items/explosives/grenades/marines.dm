@@ -160,7 +160,7 @@
 		if(ismob(hit_atom))
 			var/mob/M = hit_atom
 			create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
-			M.Superslow(3.0)
+			M.apply_effect(3.0, SUPERSLOW)
 			shrapnel_count -= direct_hit_shrapnel
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 0)
@@ -450,17 +450,17 @@
 	M.apply_damage(impact_damage, BRUTE)
 
 	if(isYautja(M)|| isSynth(M))
-		M.Slow(slowdown_time * 0.5)
-		M.Daze(dazed_time * 0.5)
+		M.apply_effect(slowdown_time * 0.5, SLOW)
+		M.apply_effect(dazed_time * 0.5, DAZE)
 
 	if(M.mob_size >= MOB_SIZE_BIG)//big xenos not KO'ed
-		M.Slow(slowdown_time * 1.5)//They are slowed more :trol:
-		M.Daze(dazed_time * 1.5)
+		M.apply_effect(slowdown_time * 1.5, SLOW)//They are slowed more :trol:
+		M.apply_effect(dazed_time * 1.5, DAZE)
 		return
 
-	M.KnockDown(knockout_time)//but little xenos and humans are
-	M.Slow(slowdown_time)
-	M.Daze(dazed_time)
+	M.apply_effect(knockout_time, WEAKEN)//but little xenos and humans are
+	M.apply_effect(slowdown_time, SLOW)
+	M.apply_effect(dazed_time, DAZE)
 	return
 
 /obj/item/explosive/grenade/slug/baton

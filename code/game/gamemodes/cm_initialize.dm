@@ -59,7 +59,6 @@ Additional game mode variables.
 	var/pred_start_count	= 4 //The initial count of predators
 
 	var/pred_additional_max = 0
-	var/pred_round_chance 	= 20 //%
 	var/pred_leader_count 	= 0 //How many Leader preds are active
 	var/pred_leader_max 	= 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
 
@@ -572,9 +571,7 @@ Additional game mode variables.
 	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 
 	if(is_synth)
-		survivor_types = list(
-			/datum/equipment_preset/synth/survivor, //to be expanded later
-		)
+		survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)

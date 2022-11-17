@@ -74,7 +74,7 @@
 
     var/mob/living/carbon/affected_mob = affected_atom
     if(do_once)
-        affected_mob.Daze(3)
+        affected_mob.apply_effect(3, DAZE)
         do_once = FALSE
 
     affected_mob.EyeBlur(2)
@@ -97,6 +97,6 @@
     affected_mob.EyeBlur(2)
 
     affected_mob.TalkStutter(2)
-    affected_mob.KnockOut(2)
+    affected_mob.apply_effect(2, PARALYZE)
 
     return TRUE

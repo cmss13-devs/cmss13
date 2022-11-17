@@ -2652,7 +2652,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_4
 	accuracy = HIT_ACCURACY_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_4
-	max_range = 16
+	max_range = 12
 	var/smokerange = 4
 	var/lifetime_mult = 1.0
 

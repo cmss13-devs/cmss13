@@ -331,3 +331,5 @@
   Huffie56:
   - bugfix: Raider aka marsoc will spawn with their armor now
   - code_imp: add back /armor at the end of gear preset for raider.
+  fira:
+  - bugfix: Fixed use of Right/Middle click in Statpanel atoms list.

@@ -328,6 +328,9 @@
   harryob:
   - bugfix: fixes the topic limit message popping up on connect
 2022-11-17:
+  BeagleGaming1:
+  - spellcheck: "corrected \u201Ctighly\u201D in metal and plasteel barricades to\
+      \ \u201Ctightly\u201D"
   Geevies:
   - rscadd: When you observe, your ghost will now look like your character creation
       preview mob.

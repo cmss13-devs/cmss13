@@ -1,8 +1,3 @@
-//*******************************************************************************
-//SCIENCE
-//*******************************************************************************/
-
-
 /datum/supply_packs/assembly
 	name = "assembly crate"
 	contains = list(
@@ -22,7 +17,7 @@
 					/obj/item/device/assembly/timer,
 					/obj/item/device/assembly/timer
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "assembly crate"
 	access = ACCESS_MARINE_ENGINEERING
@@ -47,7 +42,7 @@
 					/obj/item/reagent_container/glass/beaker/large/potassiumchloride,
 					/obj/item/reagent_container/glass/beaker/large/potassiumchloride
 					)
-	cost = RO_PRICE_WORTHLESS
+	cost = 10
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "pyrotechnics crate"
 	access = ACCESS_MARINE_ENGINEERING
@@ -59,7 +54,7 @@
 					/obj/item/stack/sheet/mineral/phoron/medium_stack,
 					/obj/item/stack/sheet/mineral/phoron/medium_stack
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "phoron crate"
 	access = ACCESS_MARINE_ENGINEERING
@@ -71,7 +66,7 @@
 					/obj/item/stack/sheet/mineral/plastic/small_stack,
 					/obj/item/stack/sheet/mineral/plastic/small_stack
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "plastic crate"
 	access = ACCESS_MARINE_ENGINEERING
@@ -84,7 +79,7 @@
 					/obj/item/stack/sheet/mineral/silver/small_stack,
 					/obj/item/stack/sheet/mineral/uranium/small_stack
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "precious metals crate"
 	access = ACCESS_MARINE_ENGINEERING
@@ -104,7 +99,7 @@
 					/obj/item/reagent_container/glass/canister/pacid,
 					/obj/item/reagent_container/glass/canister/pacid
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "explosives production crate"
 	access = ACCESS_MARINE_ENGINEERING
@@ -121,7 +116,7 @@
 					/obj/item/ammo_box/magazine/misc/mre,
 					/obj/item/ammo_box/magazine/misc/mre,
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper MRE crate"
 	group = "Supplies"
@@ -155,7 +150,7 @@
 					/obj/item/storage/fancy/egg_box,
 					/obj/item/reagent_container/food/condiment/sugar
 					)
-	cost = RO_PRICE_WORTHLESS
+	cost = 20
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Ingredients crate"
 	group = "Supplies"
@@ -197,7 +192,7 @@
 					/obj/item/reagent_container/food/drinks/bottle/wine,
 					/obj/item/reagent_container/food/drinks/bottle/wine
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Special ingredients crate"
 	group = "Supplies"
@@ -212,7 +207,7 @@
 					/obj/item/tank/air,
 					/obj/item/tank/air
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/internals
 	containername = "internals crate"
 	group = "Supplies"
@@ -235,7 +230,7 @@
 					/obj/item/clothing/mask/gas,
 					/obj/item/clothing/mask/gas
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/internals
 	containername = "emergency crate"
 	group = "Supplies"
@@ -254,7 +249,7 @@
 					/obj/item/storage/box,
 					/obj/item/storage/box
 					)
-	cost = RO_PRICE_WORTHLESS
+	cost = 10
 	containertype = /obj/structure/closet/crate/supply
 	containername = "empty box crate"
 	group = "Supplies"
@@ -278,7 +273,7 @@
 					/obj/item/reagent_container/glass/bucket/mopbucket,
 					/obj/item/paper/janitor
 					)
-	cost = RO_PRICE_WORTHLESS
+	cost = 10
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper Janitorial supplies crate"
 	group = "Supplies"
@@ -292,7 +287,7 @@
 					/obj/item/poster,
 					/obj/item/poster
 					)
-	cost = RO_PRICE_WORTHLESS
+	cost = 10
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper posters crate"
 	group = "Supplies"
@@ -306,7 +301,7 @@
 					/obj/item/storage/fancy/crayons,
 					/obj/item/storage/fancy/crayons
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper crayons crate"
 	group = "Supplies"
@@ -320,7 +315,7 @@
 					/obj/item/a_gift,
 					/obj/item/a_gift
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper crate of presents"
 	group = "Supplies"
@@ -335,7 +330,7 @@
 					/obj/item/tool/wirecutters,
 					/obj/item/tool/wirecutters
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper wrapping supplies crate"
 	group = "Supplies"
@@ -350,7 +345,7 @@
 					/obj/item/storage/donut_box,
 					/obj/item/storage/donut_box
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper donuts crate"
 	group = "Supplies"
@@ -360,7 +355,7 @@
 	contains = list(
 		/obj/item/pizzabox/mystery/stack
 	)
-	cost = RO_PRICE_NORMAL
+	cost = 40
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Pizza crate"
 	group = "Supplies"

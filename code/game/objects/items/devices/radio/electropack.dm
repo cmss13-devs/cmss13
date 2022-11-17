@@ -76,7 +76,7 @@
 		s.set_up(3, 1, M)
 		s.start()
 
-		M.KnockDown(10)
+		M.apply_effect(10, WEAKEN)
 
 	if(master && wires & 1)
 		master.receive_signal()

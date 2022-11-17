@@ -1,14 +1,13 @@
-GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
+GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
-/obj/effect/datacore
-	name = "datacore"
+/datum/datacore
 	var/medical[] = list()
 	var/general[] = list()
 	var/security[] = list()
 	//This list tracks characters spawned in the world and cannot be modified in-game. Currently referenced by respawn_character().
 	var/locked[] = list()
 
-/obj/effect/datacore/proc/get_manifest(monochrome, OOC, nonHTML)
+/datum/datacore/proc/get_manifest(monochrome, OOC, nonHTML)
 	var/list/cic = ROLES_CIC.Copy()
 	var/list/auxil = ROLES_AUXIL_SUPPORT.Copy()
 	var/list/misc = ROLES_MISC.Copy()
@@ -198,7 +197,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	dat = replacetext(dat, "\t", "")
 	return dat
 
-/obj/effect/datacore/proc/manifest(var/nosleep = 0)
+/datum/datacore/proc/manifest(var/nosleep = 0)
 	spawn()
 		if(!nosleep)
 			sleep(40)
@@ -210,7 +209,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 			if(H.job in jobs_to_check)
 				manifest_inject(H)
 
-/obj/effect/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat)
+/datum/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat)
 	var/datum/data/record/foundrecord
 
 	var/use_name = isnull(ref)
@@ -234,7 +233,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 		return TRUE
 	return FALSE
 
-/obj/effect/datacore/proc/manifest_inject(var/mob/living/carbon/human/H)
+/datum/datacore/proc/manifest_inject(var/mob/living/carbon/human/H)
 	var/assignment
 	if(H.job)
 		assignment = H.job

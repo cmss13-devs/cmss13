@@ -31,4 +31,4 @@
 		if("change_fontsize")
 			var/new_fontsize = text2num(params["new_fontsize"])
 			current_fontsize = new_fontsize
-			client << output("[url_encode(json_encode(new_fontsize))];", "statbrowser:change_fontsize")
+			client.stat_panel.send_message("change_fontsize", new_fontsize)

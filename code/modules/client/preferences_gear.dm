@@ -135,13 +135,13 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/thugshades
-	display_name = "Shades"
+	display_name = "BiMex Personal Shades"
 	path = /obj/item/clothing/glasses/sunglasses/big
 	cost = 2
 	slot = WEAR_EYES
 
 /datum/gear/sunglasses
-	display_name = "Sunglasses"
+	display_name = "Cheap Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses
 	cost = 2
 	slot = WEAR_EYES
@@ -335,6 +335,20 @@ var/global/list/gear_datums = list()
 	path = /obj/item/storage/box/m43
 	slot = WEAR_IN_BACK
 	cost = 4
+
+/datum/gear/m4a3_custom
+	display_name = "M4A3 Custom Pistol"
+	path = /obj/item/weapon/gun/pistol/m4a3/custom
+	slot = WEAR_IN_BACK
+	cost = 4
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/m44_custom_revolver
+	display_name = "M44 Custom Revolver"
+	path = /obj/item/weapon/gun/revolver/m44/custom
+	slot = WEAR_IN_BACK
+	cost = 7
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/jungle_boots
 	display_name = "Jungle Pattern Combat Boots"

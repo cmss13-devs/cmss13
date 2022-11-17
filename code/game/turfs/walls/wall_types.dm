@@ -563,6 +563,9 @@
 /turf/closed/wall/solaris/reinforced/hull
 	hull = 1
 
+/turf/closed/wall/solaris/reinforced/hull/lv522
+	name = "Colony Windbreaker"
+
 /turf/closed/wall/solaris/rock
 	name = "solaris ridge rock wall"
 	icon_state = "solaris_rock"

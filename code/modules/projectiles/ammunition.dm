@@ -41,6 +41,8 @@ They're all essentially identical when it comes to getting the job done.
 		if(0)
 			icon_state += "_e" //In case it spawns empty instead.
 			item_state += "_e"
+	pixel_y = rand(-6, 6)
+	pixel_x = rand(-7, 7)
 
 /obj/item/ammo_magazine/Destroy()
 	GLOB.ammo_magazine_list -= src

@@ -27,3 +27,7 @@ maps/**/backup
 __pycache__
 test_environment.txt
 .cache
+
+# byond-tracy backend, not shipped with the codebase so it shouldn't be maintained
+prof.dll
+libprof.so

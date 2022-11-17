@@ -297,6 +297,8 @@ datum/preferences/proc/randomize_skin_color()
 				return pick(SSmapping.configs[GROUND_MAP].survivor_types)
 			return /datum/equipment_preset/survivor
 		if(JOB_SYNTH_SURVIVOR)
+			if(length(SSmapping.configs[GROUND_MAP].synth_survivor_types))
+				return pick(SSmapping.configs[GROUND_MAP].synth_survivor_types)
 			return /datum/equipment_preset/synth/survivor
 		if(JOB_PREDATOR)
 			if(length(RoleAuthority.roles_whitelist))

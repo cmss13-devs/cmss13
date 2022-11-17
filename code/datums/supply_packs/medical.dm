@@ -6,7 +6,7 @@
 			/obj/item/storage/box/bodybags,
 			/obj/item/storage/box/bodybags
 			)
-	cost = ASRS_PRICE_TWENTY
+	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "body bag crate"
 	group = "Medical"
@@ -18,7 +18,7 @@
 			/obj/item/bodybag/cryobag,
 			/obj/item/bodybag/cryobag
 			)
-	cost = ASRS_PRICE_FORTY
+	cost = 40
 	containertype = /obj/structure/closet/crate/medical
 	containername = "stasis bag crate"
 	group = "Medical"
@@ -33,7 +33,7 @@
 					/obj/item/storage/box/masks,
 					/obj/item/storage/box/gloves
 					)
-	cost = ASRS_PRICE_THIRTY
+	cost = 30
 	containertype = /obj/structure/closet/crate/secure/surgery
 	containername = "surgery crate"
 	access = ACCESS_MARINE_MEDBAY

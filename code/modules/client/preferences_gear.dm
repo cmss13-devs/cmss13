@@ -336,6 +336,20 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 4
 
+/datum/gear/m4a3_custom
+	display_name = "M4A3 Custom Pistol"
+	path = /obj/item/weapon/gun/pistol/m4a3/custom
+	slot = WEAR_IN_BACK
+	cost = 4
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/m44_custom_revolver
+	display_name = "M44 Custom Revolver"
+	path = /obj/item/weapon/gun/revolver/m44/custom
+	slot = WEAR_IN_BACK
+	cost = 7
+	allowed_origins = USCM_ORIGINS
+
 /datum/gear/jungle_boots
 	display_name = "Jungle Pattern Combat Boots"
 	path = /obj/item/clothing/shoes/marine/jungle

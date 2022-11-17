@@ -944,10 +944,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(client.admin_holder)
 			. += "Players Ready: [SSticker.totalPlayersReady]"
 
+	. += ""
+
+	if(SSticker.mode?.force_end_at)
+		var/time_left = SSticker.mode.force_end_at - world.time
+		if(time_left >= 0)
+			. += "Hijack Time Left: [DisplayTimeText(time_left, 1)]"
+		else
+			. += "Hijack Over"
+
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)
-			. += eta_status
+			. += "Evacuation: [eta_status]"
+
 
 #undef MOVE_INTENT_WALK
 #undef MOVE_INTENT_RUN

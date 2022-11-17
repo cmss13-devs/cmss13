@@ -128,7 +128,6 @@ var/datum/controller/supply/supply_controller = new()
 	var/x_supply = 0
 	var/y_supply = 0
 	var/datum/squad/current_squad = null
-	var/busy = FALSE //The computer is busy launching a drop, lock controls
 	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
 	var/faction = FACTION_MARINE
@@ -176,7 +175,6 @@ var/datum/controller/supply/supply_controller = new()
 	data["worldtime"] = world.time
 	data["x_offset"] = x_supply
 	data["y_offset"] = y_supply
-	data["active"] = busy
 	data["loaded"] = loaded_crate
 	if(loaded_crate)
 		data["crate_name"] = loaded_crate.name
@@ -251,10 +249,7 @@ var/datum/controller/supply/supply_controller = new()
 		return FALSE
 
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
-	if(busy)
-		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("\The [name] is busy processing another action!")]")
-		return
-
+	SHOULD_NOT_SLEEP(TRUE)
 	var/obj/structure/closet/crate/C = check_pad()
 	if(!C)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
@@ -282,57 +277,19 @@ var/datum/controller/supply/supply_controller = new()
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
-	busy = TRUE
+	C.visible_message(SPAN_WARNING("\The [C] loads into a launch tube. Stand clear!"))
+	current_squad.send_message("'[C.name]' supply drop incoming. Heads up!")
+	current_squad.send_maptext(C.name, "Incoming Supply Drop:")
+	COOLDOWN_START(src, next_fire, drop_cooldown)
+	if(ismob(usr))
+		var/mob/M = usr
+		M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
-	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop is now loading into the launch tube! Stand by!")]")
-	C.visible_message(SPAN_WARNING("\The [C] begins to load into a launch tube. Stand clear!"))
-	C.anchored = TRUE //To avoid accidental pushes
-	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
-	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
-	spawn(100)
-		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
-			if(C)
-				C.anchored = FALSE
-			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
-			return
-		COOLDOWN_START(src, next_fire, drop_cooldown)
-		if(ismob(usr))
-			var/mob/M = usr
-			M.count_niche_stat(STATISTICS_NICHE_CRATES)
-
-		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-		C.anchored = FALSE
-		C.forceMove(T)
-		var/turf/TC = get_turf(C)
-		TC.ceiling_debris_check(3)
-		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
-		C.visible_message("[icon2html(C, viewers(src))] [SPAN_BOLDNOTICE("The '[C.name]' supply drop falls from the sky!")]")
-		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
-		busy = FALSE
-
-
-//Sends a string to our currently selected squad.
-/obj/structure/machinery/computer/supply_drop_console/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
-	if(txt == "" || !current_squad) return //Logic
-
-	var/text = strip_html(txt)
-	var/nametext = ""
-	if(plus_name)
-		nametext = "[usr.name] transmits: "
-		text = "<font size='3'><b>[text]<b></font>"
-
-	for(var/mob/living/carbon/human/M in current_squad.marines_list)
-		if(!M.stat && M.client) //Only living and connected people in our squad
-			if(!only_leader)
-				if(plus_name)
-					M << sound('sound/effects/radiostatic.ogg')
-				to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>\[Overwatch\]:</b> [nametext][text]")]")
-			else
-				if(current_squad.squad_leader == M)
-					if(plus_name)
-						M << sound('sound/effects/radiostatic.ogg')
-					to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>\[SL Overwatch\]:</b> [nametext][text]</font>")]")
-					return
+	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
+	var/obj/structure/droppod/supply/pod = new()
+	C.forceMove(pod)
+	pod.launch(T)
+	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
 
 //A limited version of the above console
 //Can't pick squads, drops less often

@@ -499,9 +499,9 @@
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
 				flick("baton_active", src)
-				user.Stun(10)
+				user.apply_effect(10, STUN)
 				user.stuttering = 10
-				user.KnockDown(10)
+				user.apply_effect(10, WEAKEN)
 				if(isrobot(user))
 					var/mob/living/silicon/robot/R = user
 					R.cell.charge -= 20

@@ -566,7 +566,8 @@
 			var/area/A = src.loc.loc
 			A = A.master
 			if(!src.needs_power)
-				return seton(A.lightswitch)
+				seton(A.lightswitch)
+				return
 			seton(A.lightswitch && A.power_light)
 
 // called when on fire

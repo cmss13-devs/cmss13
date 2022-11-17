@@ -20,12 +20,17 @@ SUBSYSTEM_DEF(playtime)
 		var/datum/entity/player/P = C.player_data
 
 		var/effective_job
-		if(!M || !P || !P.playtime_loaded || M.statistic_exempt)
+
+		// skip if player invalid
+		if(!M || !P || !P.playtime_loaded)
 			effective_job = null
-		else if(isobserver(M))
+		// assign as observer if ghost or dead
+		else if(isobserver(M) || ((M.stat == DEAD) && isliving(M)))
 			effective_job = JOB_OBSERVER
-		else if(M.job && M.stat != DEAD)
+		// assign the mob job if it's applicable
+		else if(M.job && M.stat != DEAD && !M.statistic_exempt)
 			effective_job = M.job
+		// else, invalid job or statistic exempt
 
 		if(!effective_job)
 			if(MC_TICK_CHECK)

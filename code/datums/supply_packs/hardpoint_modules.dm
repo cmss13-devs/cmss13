@@ -11,7 +11,7 @@
 					/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 					/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 					/obj/item/ammo_magazine/hardpoint/ltb_cannon)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "LTB cannon ammo crate"
 	group = "Vehicle Modules and Ammo"
@@ -22,7 +22,7 @@
 					/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
 					/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
 					/obj/item/ammo_magazine/hardpoint/ltaaap_minigun)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "LTAA minigun ammo crate"
 	group = "Vehicle Modules and Ammo"
@@ -35,7 +35,7 @@
 					/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 					/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 					/obj/item/ammo_magazine/hardpoint/ace_autocannon)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "AC3-E autocannon ammo crate"
 	group = "Vehicle Modules and Ammo"
@@ -46,7 +46,7 @@
 					/obj/item/ammo_magazine/hardpoint/primary_flamer,
 					/obj/item/ammo_magazine/hardpoint/primary_flamer,
 					/obj/item/ammo_magazine/hardpoint/primary_flamer)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "Primary Flamer fuel tanks crate"
 	group = "Vehicle Modules and Ammo"
@@ -59,7 +59,7 @@
 					/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 					/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 					/obj/item/ammo_magazine/hardpoint/boyars_dualcannon)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "PARS-159 Boyars Dualcannon ammo crate"
 	group = "Vehicle Modules and Ammo"
@@ -72,7 +72,7 @@
 					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 					/obj/item/ammo_magazine/hardpoint/tank_glauncher)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "grenade launcher ammo crate"
 	group = "Vehicle Modules and Ammo"
@@ -83,7 +83,7 @@
 					/obj/item/ammo_magazine/hardpoint/turret_smoke,
 					/obj/item/ammo_magazine/hardpoint/turret_smoke,
 					/obj/item/ammo_magazine/hardpoint/turret_smoke)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "smoke launcher ammo crate"
 	group = "Vehicle Modules and Ammo"
@@ -94,7 +94,7 @@
 					/obj/item/ammo_magazine/hardpoint/towlauncher,
 					/obj/item/ammo_magazine/hardpoint/towlauncher,
 					/obj/item/ammo_magazine/hardpoint/towlauncher)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "TOW launcher ammo crate"
 	group = "Vehicle Modules and Ammo"
@@ -104,7 +104,7 @@
 	contains = list(
 					/obj/item/ammo_magazine/hardpoint/m56_cupola,
 					/obj/item/ammo_magazine/hardpoint/m56_cupola)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M56 Cupola ammo crate"
 	group = "Vehicle Modules and Ammo"
@@ -114,7 +114,7 @@
 	contains = list(
 					/obj/item/ammo_magazine/hardpoint/secondary_flamer,
 					/obj/item/ammo_magazine/hardpoint/secondary_flamer)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "secondary flamer fuel tanks crate"
 	group = "Vehicle Modules and Ammo"
@@ -124,7 +124,7 @@
 	contains = list(
 					/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
 					/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "frontal cannon ammo crate"
 	group = "Vehicle Modules and Ammo"
@@ -136,7 +136,7 @@
 					/obj/item/ammo_magazine/hardpoint/flare_launcher,
 					/obj/item/ammo_magazine/hardpoint/flare_launcher,
 					/obj/item/ammo_magazine/hardpoint/flare_launcher)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "flare launcher ammo crate"
 	group = "Vehicle Modules and Ammo"

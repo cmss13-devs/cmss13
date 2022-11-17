@@ -20,6 +20,7 @@
 	var/minimum_age
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
+	var/origin_override
 
 	//Uniform data
 	var/utility_under = null
@@ -136,6 +137,11 @@
 	load_race(H, mob_client)
 	if(randomise || uses_special_name)
 		load_name(H, randomise, mob_client)
+	else if(origin_override)
+		var/datum/origin/origin = GLOB.origins[origin_override]
+		H.name = origin.correct_name(H.name, H.gender)
+	if(origin_override)
+		H.origin = origin_override
 	load_skills(H, mob_client) //skills are set before equipment because of skill restrictions on certain clothes.
 	load_languages(H, mob_client)
 	load_age(H, mob_client)
@@ -167,6 +173,12 @@
 	for(i in H.client.prefs.gear)
 		G = gear_datums[i]
 		if(G)
+			if(G.allowed_roles && !(assignment in G.allowed_roles))
+				to_chat(H, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Role"))
+				return
+			if(G.allowed_origins && !(H.origin in G.allowed_origins))
+				to_chat(H, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Origin"))
+				return
 			if(!H.equip_to_slot_or_del(new G.path, G.slot))
 				H.equip_to_slot_or_del(new G.path, WEAR_IN_BACK)
 
@@ -233,12 +245,13 @@
 						P.forceMove(H.loc)
 
 /datum/equipment_preset/proc/load_traits(mob/living/carbon/human/H, var/client/mob_client)
-	if(!H.client || !H.client.prefs || !H.client.prefs.traits)
+	var/client/real_client = mob_client || H.client
+	if(!real_client?.prefs?.traits)
 		return
 
-	for(var/trait in H.client.prefs.traits)
+	for(var/trait in real_client.prefs.traits)
 		var/datum/character_trait/CT = GLOB.character_traits[trait]
-		CT.apply_trait(H)
+		CT.apply_trait(H, src)
 
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"
@@ -774,6 +787,26 @@ var/list/rebel_rifles = list(
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/toxin(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/device/motiondetector(H.back), WEAR_IN_BACK)
+
+/datum/equipment_preset/proc/add_random_synth_infiltrator_equipment(var/mob/living/carbon/human/H) //To mitigate people metaing infiltrators on the spot
+	var/random_gear = rand(0,4)
+	switch(random_gear)
+		if(0)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
+		if(1)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
+		if(2)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+		if(3)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/trainee(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
+		if(4)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 /datum/equipment_preset/proc/add_random_survivor_medical_gear(var/mob/living/carbon/human/H) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
 	var/random_gear = rand(0,4)

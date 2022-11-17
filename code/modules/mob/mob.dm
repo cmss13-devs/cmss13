@@ -89,6 +89,11 @@
 	hud_list = new
 	for(var/hud in hud_possible)
 		var/image/I = image('icons/mob/hud/hud.dmi', src, "")
+		switch(hud)
+			if(ID_HUD,WANTED_HUD)
+				I = image('icons/mob/hud/sec_hud.dmi', src, "")
+			if(HUNTER_CLAN,HUNTER_HUD)
+				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
@@ -290,6 +295,9 @@
 		var/atom/movable/screen/plane_master/lighting/lighting = hud_used.plane_masters["[LIGHTING_PLANE]"]
 		if (lighting)
 			lighting.alpha = lighting_alpha
+		var/atom/movable/screen/plane_master/lighting/exterior_lighting = hud_used.plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
+		if (exterior_lighting)
+			exterior_lighting.alpha = min(GLOB.minimum_exterior_lighting_alpha, lighting_alpha)
 
 
 //puts the item "W" into an appropriate slot in a human's inventory
@@ -347,10 +355,10 @@
 	//Squad Leaders and above have reduced cooldown and get a bigger arrow
 	if(check_improved_pointing())
 		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src)
+		new /obj/effect/overlay/temp/point/big(T, src, A)
 	else
 		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T, src)
+		new /obj/effect/overlay/temp/point(T, src, A)
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
 	return TRUE
 
@@ -855,22 +863,22 @@ mob/proc/yank_out_object()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
-		AdjustStunned(-1)
+		adjust_effect(-1, STUN)
 	return stunned
 
 /mob/living/proc/handle_dazed()
 	if(dazed)
-		AdjustDazed(-1)
+		adjust_effect(-1, DAZE)
 	return dazed
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
-		AdjustSlowed(-1)
+		adjust_effect(-1, SLOW)
 	return slowed
 
 /mob/living/proc/handle_superslowed()
 	if(superslowed)
-		AdjustSuperslowed(-1)
+		adjust_effect(-1, SUPERSLOW)
 	return superslowed
 
 

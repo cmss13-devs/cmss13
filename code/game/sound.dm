@@ -11,10 +11,12 @@
 	var/falloff = 1
 	var/volume_cat = VOLUME_SFX
 	var/range = 0
+	var/list/echo
 	var/x //Map coordinates, not sound coordinates
 	var/y
 	var/z
-
+	var/y_s_offset // Vertical sound offset
+	var/x_s_offset // Horizontal sound offset
 /proc/get_free_channel()
 	var/static/cur_chan = 1
 	. = cur_chan++
@@ -32,7 +34,7 @@
 //status: the regular 4 sound flags
 //falloff: max range till sound volume starts dropping as distance increases
 
-/proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1)
+/proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1, echo, y_s_offset,x_s_offset)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return FALSE
@@ -50,7 +52,9 @@
 	S.falloff = falloff
 	S.volume = vol
 	S.volume_cat = vol_cat
-
+	S.echo = echo
+	S.y_s_offset = y_s_offset
+	S.x_s_offset = x_s_offset
 	if(vary != FALSE)
 		if(vary > 1)
 			S.frequency = vary
@@ -95,7 +99,7 @@
 
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
-/proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status)
+/proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
 	if(!istype(C) || !C.soundOutput) return FALSE
 	var/datum/sound_template/S = new()
 	if(origin)
@@ -118,10 +122,13 @@
 	S.volume_cat = vol_cat
 	S.channel = channel
 	S.status = status
+	S.echo = echo
+	S.y_s_offset = y_s_offset
+	S.x_s_offset = x_s_offset
 	SSsound.queue(S, list(C))
 
-//Self explanatory
-/proc/playsound_area(area/A, soundin, vol = 100, channel, status, vol_cat = VOLUME_SFX)
+/// Plays sound to all mobs that are map-level contents of an area
+/proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)
 	if(!isarea(A))
 		return FALSE
 	var/datum/sound_template/S = new()
@@ -145,15 +152,19 @@
 		playsound_client(src, SSticker.login_music, null, 70, 0, VOLUME_LOBBY, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
 
 
-/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX) // Play sound for all online mobs on a given Z-level. Good for ambient sounds.
+/// Play sound for all on-map clients on a given Z-level. Good for ambient sounds.
+/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, echo, y_s_offset, x_s_offset)
 	var/datum/sound_template/S = new()
 	S.file = soundin
 	S.volume = volume
 	S.channel = SOUND_CHANNEL_Z
 	S.volume_cat = vol_cat
+	S.echo = echo
+	S.y_s_offset = y_s_offset
+	S.x_s_offset = x_s_offset
 	var/list/hearers = list()
 	for(var/mob/M in GLOB.player_list)
-		if (M.z in z && M.client.soundOutput)
+		if((M.z in z) && M.client.soundOutput)
 			hearers += M.client
 	SSsound.queue(S, hearers)
 

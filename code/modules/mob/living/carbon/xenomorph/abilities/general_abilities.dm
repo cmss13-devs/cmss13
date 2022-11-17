@@ -204,6 +204,7 @@
 	var/freeze_self = TRUE				// Should we freeze ourselves after the lunge?
 	var/freeze_time = 5					// 5 for runners, 15 for lurkers
 	var/freeze_timer_id = TIMER_ID_NULL	// Timer to cancel the end freeze if it can be cancelled earlier
+	var/freeze_play_sound = TRUE
 
 	var/windup = FALSE					// Is there a do_after before we pounce?
 	var/windup_duration = 20			// How long to wind up, if applicable
@@ -420,8 +421,9 @@
 	name = "Tail Stab"
 	action_icon_state = "tail_attack"
 	ability_name = "tail stab"
-	macro_path = /datum/action/xeno_action/verb/verb_tail_stab
 	action_type = XENO_ACTION_CLICK
 	charge_time = 1 SECONDS
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
+	 /// Used for defender's tail 'stab'.
+	var/blunt_stab = FALSE

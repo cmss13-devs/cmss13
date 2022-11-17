@@ -190,8 +190,7 @@
 
 	if(ispowerclamp(O))
 		var/obj/item/powerloader_clamp/PC = O
-		PC.grab_object(old, "vehicle_module")
-		to_chat(user, SPAN_NOTICE("You uninstall the \the [PC.loaded] from \the [src] with \the [PC]."))
+		PC.grab_object(user, old, "vehicle_module")
 		PC.loaded.update_icon()
 
 	if(old.slot == HDPT_TREADS && clamped)

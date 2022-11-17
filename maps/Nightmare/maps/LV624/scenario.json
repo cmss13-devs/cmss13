@@ -9,12 +9,11 @@
 },
 {
 	"type": "pick", "name": "LV624 Global Event",
-	"weights": [ 2, 4, 2, 2 ],
 	"choices": [
-		{ "type": "def", "values": { "lvevent": "none"       } },
-		{ "type": "def", "values": { "lvevent": "last_stand" } },
-		{ "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "bridge"  } },
-		{ "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "right" } }
+		{ "weight": 2, "type": "def", "values": { "lvevent": "none"       } },
+		{ "weight": 4, "type": "def", "values": { "lvevent": "last_stand" } },
+		{ "weight": 2, "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "bridge"  } },
+		{ "weight": 2, "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "right" } }
 	]
 }
 ]

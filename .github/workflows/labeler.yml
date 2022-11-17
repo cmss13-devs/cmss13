@@ -20,7 +20,7 @@ jobs:
           wget "https://raw.githubusercontent.com/${{ github.repository }}/master/.github/add_labels.py"
       - name: Set up Python
         if: steps.value_holder.outputs.ACTIONS_ENABLED
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v3
         with:
           python-version: 3.8
       - name: Install dependencies

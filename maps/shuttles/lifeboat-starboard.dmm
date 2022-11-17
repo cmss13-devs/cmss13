@@ -44,7 +44,7 @@
 /area/shuttle/lifeboat)
 "hb" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/prop/almayer/computer{
+/obj/structure/machinery/computer/shuttle/lifeboat{
 	dir = 8
 	},
 /turf/open/shuttle/lifeboat,
@@ -102,7 +102,8 @@
 /area/shuttle/lifeboat)
 "lS" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat1-D2"
+	id = "Boat2-D2";
+	throw_dir = 2
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
@@ -235,7 +236,8 @@
 /area/shuttle/lifeboat)
 "Ep" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat1-D1"
+	id = "Boat2-D1";
+	throw_dir = 2
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
@@ -296,9 +298,8 @@
 /area/shuttle/lifeboat)
 "Lk" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network{
-	dir = 8;
-	network = list("almayer","vehicle")
+/obj/structure/machinery/computer/security/almayer/vehicle{
+	dir = 8
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)

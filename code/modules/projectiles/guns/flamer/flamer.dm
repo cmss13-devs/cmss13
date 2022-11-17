@@ -350,10 +350,29 @@
 		return TRUE
 	return FALSE
 
+GLOBAL_LIST_EMPTY(flamer_particles)
+/particles/flamer_fire
+	icon = 'icons/effects/particles/fire.dmi'
+	icon_state = "bonfire"
+	width = 100
+	height = 100
+	count = 1000
+	spawning = 8
+	lifespan = 0.7 SECONDS
+	fade = 1 SECONDS
+	grow = -0.01
+	velocity = list(0, 0)
+	position = generator("box", list(-16, -16), list(16, 16), NORMAL_RAND)
+	drift = generator("vector", list(0, -0.2), list(0, 0.2))
+	gravity = list(0, 0.95)
+	scale = generator("vector", list(0.3, 0.3), list(1,1), NORMAL_RAND)
+	rotation = 30
+	spin = generator("num", -20, 20)
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
-//Time to redo part of abby's code.
-//Create a flame sprite object. Doesn't work like regular fire, ie. does not affect atmos or heat
+/particles/flamer_fire/New(var/set_color)
+	..()
+	color = set_color
+
 /obj/flamer_fire
 	name = "fire"
 	desc = "Ouch!"
@@ -399,6 +418,10 @@
 		color = R.burncolor
 	else
 		flame_icon = R.burn_sprite
+
+	if(!GLOB.flamer_particles[R.burncolor])
+		GLOB.flamer_particles[R.burncolor] = new /particles/flamer_fire(R.burncolor)
+	particles = GLOB.flamer_particles[R.burncolor]
 
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
@@ -526,26 +549,8 @@
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_FLAME
 
-/obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliably do it when you walk into it.
-	var/resist_modifier = 1
-	set_on_fire(M)
-	switch(fire_variant)
-		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				if (HAS_TRAIT(M, TRAIT_SUPER_STRONG))
-					resist_modifier = 0.25
-				H.next_move_slowdown = H.next_move_slowdown + (3 * resist_modifier)
-				to_chat(H, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
-			else if(isXeno(M))
-				var/mob/living/carbon/Xenomorph/X = M
-				if(!X.armor_deflection_debuff) //Only applies the xeno armor shred reset when the debuff isn't present or was recently removed.
-					X.reset_xeno_armor_debuff_after_time(X, 20)
-					//type_b_debuff_xeno_armor(X)
-				resist_modifier = type_b_debuff_xeno_armor(X)
-				set_on_fire(X) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
-				X.next_move_slowdown = X.next_move_slowdown + (3 * resist_modifier)
-				to_chat(X, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))
+/obj/flamer_fire/Crossed(atom/movable/atom_movable)
+	atom_movable.handle_flamer_fire_crossed(src)
 
 /obj/flamer_fire/proc/type_b_debuff_xeno_armor(var/mob/living/carbon/Xenomorph/X)
 	var/sig_result = SEND_SIGNAL(X, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
@@ -645,21 +650,8 @@
 		qdel(src)
 		return
 
-	var/j = 0
-	for(var/i in loc)
-		if(++j >= 11) break
-		if(isliving(i))
-			switch(fire_variant)
-				if(FIRE_VARIANT_TYPE_B)
-					if(isXeno(i))
-						var/mob/living/carbon/Xenomorph/X = i
-						if(!X.armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
-							X.reset_xeno_armor_debuff_after_time(X, delta_time*10)
-						type_b_debuff_xeno_armor(i) //Always reapplies debuff each time to minimize gap.
-			set_on_fire(i)
-		else if(isobj(i))
-			var/obj/O = i
-			O.flamer_fire_act(damage, weapon_cause_data)
+	for(var/atom/thing in loc)
+		thing.handle_flamer_fire(src, damage, delta_time)
 
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.
 	firelevel -= 2 //reduce the intensity by 2 per tick

@@ -238,7 +238,7 @@ Defined in conflicts.dm of the #defines folder.
 	return "It has a [icon2html(src)] [name] attached.<br>"
 
 
-/////////// Muzzle Attachments /////////////////////////////////
+// ======== Muzzle Attachments ======== //
 
 /obj/item/attachable/suppressor
 	name = "suppressor"
@@ -542,7 +542,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/mateba/short/dark
 	icon_state = "mateba_short_a"
 
-///////////// Rail attachments ////////////////////////
+// ======== Rail attachments ======== //
 
 /obj/item/attachable/reddot
 	name = "S5 red-dot sight"
@@ -1031,7 +1031,7 @@ Defined in conflicts.dm of the #defines folder.
 
 
 
-//////////// Stock attachments ////////////////////////////
+// ======== Stock attachments ======== //
 
 
 /obj/item/attachable/stock //Generic stock parent and related things.
@@ -1161,7 +1161,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper XM88 padded stock"
 	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88 Heavy Rifle."
 	icon_state = "boomslang-stock"
-	wield_delay_mod = WIELD_DELAY_SLOW
+	wield_delay_mod = WIELD_DELAY_NORMAL
 	hud_offset_mod = 6
 
 /obj/item/attachable/stock/xm88/New()
@@ -1723,13 +1723,14 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 20
 	hud_offset_mod = 2
 
-////////////// Underbarrel Attachments ////////////////////////////////////
+// ======== Underbarrel Attachments ======== //
 
 
 /obj/item/attachable/attached_gun
 	attachment_action_type = /datum/action/item_action/toggle
-	//Some attachments may be fired. So here are the variables related to that.
-	var/datum/ammo/ammo = null //If it has a default bullet-like ammo.
+	// Some attachments may be fired. So here are the variables related to that.
+	/// Ammo to fire the attachment with
+	var/datum/ammo/ammo = null
 	var/max_range 		= 0 //Determines # of tiles distance the attachable can fire, if it's not a projectile.
 	var/last_fired 	//When the attachment was last fired.
 	var/attachment_firing_delay = 0 //the delay between shots, for attachments that fires stuff
@@ -1907,13 +1908,16 @@ Defined in conflicts.dm of the #defines folder.
 	if(breech_open)
 		if(user)
 			to_chat(user, SPAN_WARNING("You must close the breech to fire \the [src]!"))
+			playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
 		return
 	if(!cocked)
 		if(user)
 			to_chat(user, SPAN_WARNING("You must cock \the [src] to fire it! (open and close the breech)"))
+			playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
 		return
 	if(get_dist(user,target) > max_range)
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
+		playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
 		return
 
 	if(current_rounds > 0 && ..())
@@ -1923,7 +1927,7 @@ Defined in conflicts.dm of the #defines folder.
 	set waitfor = 0
 	var/obj/item/explosive/grenade/G = loaded_grenades[1]
 
-	if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_grief_check(G))
+	if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
 		msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
@@ -1946,7 +1950,7 @@ Defined in conflicts.dm of the #defines folder.
 //For the Mk1
 /obj/item/attachable/attached_gun/grenade/mk1
 	name = "\improper MK1 underslung grenade launcher"
-	desc = "An older version of the classic underslung grenade launcher. Can store five grenades, but fires them slower."
+	desc = "An older version of the classic underslung grenade launcher. Can store five grenades, and fire them farther, but fires them slower."
 	icon_state = "grenade-mk1"
 	attach_icon = "grenade-mk1_a"
 	current_rounds = 0

@@ -15,10 +15,10 @@
 		user.cell.charge -= 30
 
 		playsound(M.loc, 'sound/weapons/Egloves.ogg', 25, 1, 4)
-		M.KnockDown(5)
+		M.apply_effect(5, WEAKEN)
 		if (M.stuttering < 5)
 			M.stuttering = 5
-		M.Stun(5)
+		M.apply_effect(5, STUN)
 
 		for(var/mob/O in viewers(M, null))
 			if (O.client)

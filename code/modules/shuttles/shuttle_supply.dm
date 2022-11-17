@@ -96,13 +96,26 @@
 			SE.forceMove(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
 			NW.forceMove(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
 			NE.forceMove(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
+			SW.icon_state = "supply_elevator_lowering"
+			SE.icon_state = "supply_elevator_lowering"
+			NW.icon_state = "supply_elevator_lowering"
+			NE.icon_state = "supply_elevator_lowering"
 			animate(elevator_animation, pixel_x = 160, pixel_y = -80, time = 2 SECONDS)
 			start_gears(SOUTH)
-			sleep(91)
+			sleep(21)
+			SW.icon_state = "supply_elevator_lowered"
+			SE.icon_state = "supply_elevator_lowered"
+			NW.icon_state = "supply_elevator_lowered"
+			NE.icon_state = "supply_elevator_lowered"
+			sleep(70)
 		else
 			playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_raising.ogg', 50, 0)
 			start_gears(NORTH)
 			sleep(70)
+			SW.icon_state = "supply_elevator_raising"
+			SE.icon_state = "supply_elevator_raising"
+			NW.icon_state = "supply_elevator_raising"
+			NE.icon_state = "supply_elevator_raising"
 			animate(elevator_animation, pixel_x = 0, pixel_y = 0, time = 2 SECONDS)
 			sleep(2 SECONDS)
 			SW.moveToNullspace()

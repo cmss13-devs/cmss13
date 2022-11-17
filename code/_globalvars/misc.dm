@@ -16,3 +16,5 @@ GLOBAL_VAR(ooc_color_override)
 
 /// List of roles that can be setup for each gamemode
 GLOBAL_LIST_INIT(gamemode_roles, list())
+
+GLOBAL_VAR_INIT(minimum_exterior_lighting_alpha, 255)

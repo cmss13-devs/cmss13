@@ -72,18 +72,20 @@
 	var/shield_amount = 200
 
 /datum/action/xeno_action/activable/fling/charger
-	name = "Ram"
+	name = "Headbutt"
 	action_icon_state = "ram"
-	ability_name = "Ram"
+	ability_name = "Headbutt"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	xeno_cooldown = 10 SECONDS
-
+	plasma_cost = 10
 	// Configurables
 	fling_distance = 3
 	stun_power = 0
-	weaken_power = 1
+	weaken_power = 0
+	slowdown = 8
+
 
 /datum/action/xeno_action/onclick/charger_charge
 	name = "Toggle Charging"
@@ -178,8 +180,14 @@
 			Xeno.visible_message(SPAN_DANGER("[Xeno] runs [Mob] over!"),
 				SPAN_DANGER("You run [Mob] over!")
 			)
-
-			Mob.apply_damage(momentum * 10)
+			var/ram_dir = pick(get_perpen_dir(Xeno.dir))
+			var/dist = 1
+			if(momentum == max_momentum)
+				dist = momentum * 0.25
+			step(Mob, ram_dir, dist)
+			Mob.take_overall_armored_damage(momentum * 6)
+			INVOKE_ASYNC(Mob, /mob/living/carbon/human.proc/emote,"pain")
+			shake_camera(Mob, 7,3)
 			animation_flash_color(Mob)
 
 	Xeno.recalculate_speed()
@@ -264,9 +272,9 @@
 	if(ishuman(Mob))
 		var/mob/living/carbon/human/Human = Mob
 		xeno_throw_human(Human, Xeno, get_dir(Xeno, Human), 1)
-		Human.KnockDown(1)
+		Human.apply_effect(1, WEAKEN)
 	else
-		Mob.KnockDown(1)
+		Mob.apply_effect(1, WEAKEN)
 	if(!LinkBlocked(Xeno, get_turf(Xeno), target_turf))
 		Xeno.forceMove(target_turf)
 

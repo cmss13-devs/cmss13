@@ -19,6 +19,7 @@
 	var/list/notify_list = list() // list of xeno mobs to notify on trigger
 	var/datum/effect_system/smoke_spread/smoke_system
 	var/datum/cause_data/cause_data
+	plane = FLOOR_PLANE
 
 /obj/effect/alien/resin/trap/Initialize(mapload, mob/living/carbon/Xenomorph/X)
 	. = ..()
@@ -88,7 +89,7 @@
 				var/mob/living/L = AM
 				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),\
 								SPAN_DANGER("You trip on [src]!"))
-				L.KnockDown(1)
+				L.apply_effect(1, WEAKEN)
 				trigger_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			if(ishuman(AM))
@@ -134,7 +135,7 @@
 	clear_tripwires()
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
-			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's hugger traps at [A.name] has been burnt!"))
+			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's facehugger traps at [A.name] has been burnt!"))
 
 /obj/effect/alien/resin/trap/proc/get_spray_type(var/level)
 	switch(level)

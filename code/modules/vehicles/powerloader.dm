@@ -304,17 +304,19 @@
 
 	if(!load_target_tag)
 		return
-	grab_object(target, load_target_tag)
-	user.visible_message(SPAN_NOTICE("[user] grabs \the [loaded] with \the [src]."),
-	SPAN_NOTICE("You grab \the [loaded] with \the [src]."))
+	grab_object(user, target, load_target_tag)
 
 //a bit unsafe proc
-/obj/item/powerloader_clamp/proc/grab_object(var/obj/target, var/target_tag = "", var/sound = 'sound/machines/hydraulics_2.ogg')
+/obj/item/powerloader_clamp/proc/grab_object(var/mob/user, var/obj/target, var/target_tag = "", var/sound = 'sound/machines/hydraulics_2.ogg')
+	if(loaded)
+		to_chat(user, SPAN_WARNING("\The [src] must be empty in order to grab \the [target]!"))
+		return
 	if(!linked_powerloader)
 		qdel(src)
 		return
 	loaded = target
 	loaded.forceMove(src)
+	to_chat(user, SPAN_NOTICE("You grab \the [target] with \the [src]."))
 	playsound(src, sound, 40, 1)
 	update_icon(target_tag)
 	target.update_icon()
@@ -343,10 +345,22 @@
 
 /obj/vehicle/powerloader/jd
 	name = "\improper John Deere 4300 Power Loader"
-	desc = "John Deere 4300 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has a signature green and yellow livery."
+	desc = "The John Deere 4300 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has a signature green and yellow livery."
 	icon_state = "powerloader_open_jd"
 	base_state = "powerloader_jd"
 	open_state = "powerloader_open_jd"
 	overlay_state = "powerloader_overlay_jd"
 	wreckage = /obj/structure/powerloader_wreckage/jd
 
+/obj/structure/powerloader_wreckage/ft
+	name = "\improper Ferret Heavy Industries Mk4 Power Loader wreckage"
+	icon_state = "wreck_ft"
+
+/obj/vehicle/powerloader/ft
+	name = "\improper Ferret Heavy Industries Mk4 Power Loader"
+	desc = "The Ferret Heavy Industries Mk4 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has the signature blue and white livery of the now defunct Ferret Heavy Industries that went bankrupt two years ago.."
+	icon_state = "powerloader_open_ft"
+	base_state = "powerloader_ft"
+	open_state = "powerloader_open_ft"
+	overlay_state = "powerloader_overlay_ft"
+	wreckage = /obj/structure/powerloader_wreckage/ft

@@ -44,8 +44,9 @@
 	C.mutation_type = CRUSHER_CHARGER
 	C.small_explosives_stun = FALSE
 	C.health_modifier += XENO_HEALTH_MOD_LARGE
-	C.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
+	C.speed_modifier +=	XENO_SPEED_FASTMOD_TIER_3
 	C.armor_modifier -= XENO_ARMOR_MOD_SMALL
+	C.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	C.ignore_aura = "frenzy" // no funny crushers going 7 morbillion kilometers per second
 	C.phero_modifier = -C.caste.aura_strength
 	C.recalculate_pheromones()
@@ -342,7 +343,7 @@
 	var/momentum_mult = 5
 	if(CCA.momentum == CCA.max_momentum)
 		momentum_mult = 8
-	take_overall_armored_damage(CCA.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 50, 13) // Giving AP because this spreads damage out and then applies armor to them
+	take_overall_armored_damage(CCA.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 60, 13) // Giving AP because this spreads damage out and then applies armor to them
 	apply_armoured_damage(CCA.momentum * momentum_mult/4,ARMOR_MELEE, BRUTE,"chest")
 	X.visible_message(
 		SPAN_DANGER("[X] rams \the [src]!"),
@@ -351,7 +352,7 @@
 	var/knockdown = 1
 	if(CCA.momentum == CCA.max_momentum)
 		knockdown = 2
-	KnockDown(knockdown)
+	apply_effect(knockdown, WEAKEN)
 	animation_flash_color(src)
 	if(client)
 		shake_camera(src, 1, 3)
@@ -378,9 +379,12 @@
 		if(anchored) //Ovipositor queen can't be pushed
 			CCA.stop_momentum()
 			return
+		if(isXenoQueen(src) || IS_XENO_LEADER(src) ||  isXenoBoiler(src)) // boilers because they have long c/d and warmups, get griefed hard if stunned
+			CCA.stop_momentum() // antigrief
+			return
 		if(HAS_TRAIT(src, TRAIT_CHARGING))
-			KnockDown(2)
-			X.KnockDown(2)
+			apply_effect(2, WEAKEN)
+			X.apply_effect(2, WEAKEN)
 			src.throw_atom(pick(cardinal),1,3,X,TRUE)
 			X.throw_atom(pick(cardinal),1,3,X,TRUE)
 			CCA.stop_momentum() // We assume the other crusher's handle_charge_collision() kicks in and stuns us too.
@@ -393,8 +397,8 @@
 		if(LinkBlocked(src, cur_turf, target_turf))
 			X.emote("roar")
 			X.visible_message(SPAN_DANGER("[X] flings [src] over to the side!"),SPAN_DANGER( "You fling [src] out of the way!"))
-			to_chat(src,SPAN_XENOHIGHDANGER("[src] flings you out of its way! Move it!"))
-			KnockDown(1) // brief flicker stun
+			to_chat(src, SPAN_XENOHIGHDANGER("[X] flings you out of its way! Move it!"))
+			apply_effect(1, WEAKEN) // brief flicker stun
 			src.throw_atom(src.loc,1,3,X,TRUE)
 		step(src, ram_dir, CCA.momentum * 0.5)
 		CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
@@ -419,7 +423,7 @@
 	var/knockdown = 1
 	if(CCA.momentum == CCA.max_momentum)
 		knockdown = 2
-	KnockDown(knockdown)
+	apply_effect(knockdown, WEAKEN)
 	animation_flash_color(src)
 	if(client)
 		shake_camera(src, 1, 3)
@@ -432,24 +436,6 @@
 	step(src, ram_dir, CCA.momentum * 0.5)
 	CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
 	return XENO_CHARGE_TRY_MOVE
-
-/*
-notes
-
-new collision procs for:
-rollerbeds,	[d]
-fences,	[d]
-, computers [d] (handled with /obj/machinery )
-, filecabinets, [d]
-m56 & m2c 	[d] ( find better solution )
-
-buff health a bit [d]
-
-change the proc pushing xenos to something that pushes them in a random direction rather than away [d]
-
-bell immunity [d]
-
-*/
 
 // Walls
 
@@ -516,7 +502,6 @@ bell immunity [d]
 		playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
 		if(istype(src,/obj/structure/machinery/m56d_hmg/auto)) // we don't want to charge it to the point of downgrading it (:
 			var/obj/item/device/m2c_gun/HMG = new(src.loc)
-			HMG = new(src.loc)
 			HMG.health = src.health
 			HMG.set_name_label(name_label)
 			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
@@ -524,7 +509,6 @@ bell immunity [d]
 			qdel(src)
 		else
 			var/obj/item/device/m56d_gun/HMG = new(src.loc) // note: find a better way than a copy pasted else statement
-			HMG = new(src.loc)
 			HMG.health = src.health
 			HMG.set_name_label(name_label)
 			HMG.rounds = src.rounds //Inherent the amount of ammo we had.

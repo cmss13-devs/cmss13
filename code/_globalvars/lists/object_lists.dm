@@ -1,5 +1,3 @@
-GLOBAL_LIST_EMPTY_TYPED(object_list, /obj)
-GLOBAL_LIST_EMPTY_TYPED(item_list, /obj/item)
 GLOBAL_LIST_EMPTY_TYPED(cm_vending_vendors, /obj/structure/machinery/cm_vending/sorted) //Used by our gamemode code
 
 GLOBAL_LIST_EMPTY_TYPED(gun_list, /obj/item/weapon/gun)
@@ -30,3 +28,6 @@ GLOBAL_LIST_EMPTY_TYPED(hijack_deletable_windows, /obj/structure/machinery/door/
 GLOBAL_LIST_EMPTY_TYPED(hijack_bustable_ladders, /obj/structure/ladder/fragile_almayer)
 
 GLOBAL_LIST_EMPTY_TYPED(all_multi_vehicles, /obj/vehicle/multitile)
+
+GLOBAL_LIST_EMPTY_TYPED(lifeboat_almayer_docks, /obj/docking_port/stationary/lifeboat_dock)
+GLOBAL_LIST_EMPTY_TYPED(lifeboat_doors, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor)

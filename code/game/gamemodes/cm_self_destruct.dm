@@ -103,6 +103,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
 			P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
 			P.toggle_ready()
+		activate_lifeboats()
 		process_evacuation()
 		return TRUE
 
@@ -110,6 +111,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(evac_status == EVACUATION_STATUS_INITIATING)
 		evac_time = null
 		evac_status = EVACUATION_STATUS_STANDING_BY
+		deactivate_lifeboats()
 		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
 		var/datum/shuttle/ferry/marine/evacuation_pod/P
 		if(get_security_level() == "red")
@@ -126,6 +128,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		evac_status = EVACUATION_STATUS_IN_PROGRESS //Cannot cancel at this point. All shuttles are off.
 		spawn() //One of the few times spawn() is appropriate. No need for a new proc.
 			ai_announcement("WARNING: Evacuation order confirmed. Launching escape pods.", 'sound/AI/evacuation_confirmed.ogg')
+			addtimer(CALLBACK(src, .proc/launch_lifeboats), 10 SECONDS) // giving some time to board lifeboats
 			var/datum/shuttle/ferry/marine/evacuation_pod/P
 			var/L[] = new
 			var/i
@@ -137,7 +140,15 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				L -= i
 				sleep(50) //Sleeps 5 seconds each launch.
 			sleep(300) //Sleep 30 more seconds to make sure everyone had a chance to leave.
-			ai_announcement("ATTENTION: Evacuation complete. Outbound lifesigns detected: [P.passengers ? P.passengers  : "none"].", 'sound/AI/evacuation_complete.ogg')
+			var/lifesigns = 0
+			lifesigns += P.passengers
+			var/obj/docking_port/mobile/lifeboat/lifeboat1 = SSshuttle.getShuttle("lifeboat1")
+			lifeboat1.check_for_survivors()
+			lifesigns += lifeboat1.survivors
+			var/obj/docking_port/mobile/lifeboat/lifeboat2 = SSshuttle.getShuttle("lifeboat2")
+			lifeboat2.check_for_survivors()
+			lifesigns += lifeboat2.survivors
+			ai_announcement("ATTENTION: Evacuation complete. Outbound lifesigns detected: [lifesigns ? lifesigns  : "none"].", 'sound/AI/evacuation_complete.ogg')
 			evac_status = EVACUATION_STATUS_COMPLETE
 		return TRUE
 
@@ -154,6 +165,27 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			var/eta = EVACUATION_ESTIMATE_DEPARTURE
 			. = "[(eta / 60) % 60]:[add_zero(num2text(eta % 60), 2)]"
 		if(EVACUATION_STATUS_IN_PROGRESS) . = "NOW"
+
+// LIFEBOATS CORNER
+/datum/authority/branch/evacuation/proc/activate_lifeboats()
+	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
+		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		if(lifeboat && lifeboat.available)
+			lifeboat.status = LIFEBOAT_ACTIVE
+			lifeboat_dock.open_dock()
+
+
+/datum/authority/branch/evacuation/proc/deactivate_lifeboats()
+	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
+		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		if(lifeboat && lifeboat.available)
+			lifeboat.status = LIFEBOAT_INACTIVE
+
+/datum/authority/branch/evacuation/proc/launch_lifeboats()
+	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
+		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		if(lifeboat && lifeboat.available)
+			lifeboat.send_to_infinite_transit()
 
 //=========================================================================================
 //=========================================================================================

@@ -7,6 +7,9 @@
 /datum/config_entry/string/alien_hunter_embryo
 	config_entry_value = "icons/mob/xenos_old/1x1_Xenos.dmi"
 
+/datum/config_entry/string/alien_hugger
+	config_entry_value = "icons/mob/hostiles/facehugger.dmi"
+
 /datum/config_entry/string/alien_carrier
 	config_entry_value = "icons/mob/hostiles/carrier.dmi"
 

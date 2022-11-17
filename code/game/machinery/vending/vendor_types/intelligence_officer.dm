@@ -109,11 +109,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	vendor_role = list(JOB_INTEL)
 
-
-/obj/structure/machinery/cm_vending/clothing/intelligence_officer/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_clothing_intelligence_officer
-
+/obj/structure/machinery/cm_vending/clothing/intelligence_officer/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_clothing_intelligence_officer
 
 //------------GUNS VENDOR---------------
 

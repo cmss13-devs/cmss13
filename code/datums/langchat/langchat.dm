@@ -1,6 +1,6 @@
-/mob/var/langchat_height = 32 // abovetile usually
-/mob/var/langchat_color = "#FFFFFF"
-/mob/var/langchat_styles = ""
+/atom/var/langchat_height = 32 // abovetile usually
+/atom/var/langchat_color = "#FFFFFF"
+/atom/var/langchat_styles = ""
 
 /mob/living/carbon/Xenomorph/langchat_color = "#b491c8"
 /mob/living/carbon/Xenomorph/Carrier/langchat_height = 64
@@ -37,11 +37,11 @@
 
 #define langchat_client_enabled(M) (M && M.client && M.client.prefs && !M.client.prefs.lang_chat_disabled)
 
-/mob/var/image/langchat_image
-/mob/var/list/mob/langchat_listeners
+/atom/var/image/langchat_image
+/atom/var/list/mob/langchat_listeners
 
 ///Hides the image, if one exists. Do not null the langchat image; it is rotated when the mob is buckled or proned to maintain text orientation.
-/mob/proc/langchat_drop_image()
+/atom/proc/langchat_drop_image()
 	if(langchat_listeners)
 		for(var/mob/M in langchat_listeners)
 			if(M.client)
@@ -49,7 +49,7 @@
 	langchat_listeners = null
 
 ///Creates the image if one does not exist, resets settings that are modified by speech procs.
-/mob/proc/langchat_make_image(var/override_color = null)
+/atom/proc/langchat_make_image(var/override_color = null)
 	if(!langchat_image)
 		langchat_image = image(null, src)
 		langchat_image.layer = 20
@@ -66,7 +66,7 @@
 	if(appearance_flags & PIXEL_SCALE)
 		langchat_image.appearance_flags |= PIXEL_SCALE
 
-/mob/proc/langchat_speech(message, var/list/listeners, language, var/override_color, var/skip_language_check = FALSE, var/animation_style = LANGCHAT_DEFAULT_POP, var/list/additional_styles = list("langchat"))
+/atom/proc/langchat_speech(message, var/list/listeners, language, var/override_color, var/skip_language_check = FALSE, var/animation_style = LANGCHAT_DEFAULT_POP, var/list/additional_styles = list("langchat"))
 	langchat_drop_image()
 	langchat_make_image(override_color)
 	var/image/r_icon
@@ -115,9 +115,9 @@
 			langchat_image.alpha = 0
 			animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_FAST_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_FAST_POP_TIME)
 
-	addtimer(CALLBACK(src, /mob.proc/langchat_drop_image, language), timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, /atom.proc/langchat_drop_image, language), timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
-/mob/proc/langchat_long_speech(message, var/list/listeners, language)
+/atom/proc/langchat_long_speech(message, var/list/listeners, language)
 	langchat_drop_image()
 	langchat_make_image()
 
@@ -147,13 +147,13 @@
 
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
 	if(text_left)
-		addtimer(CALLBACK(src, /mob.proc/langchat_long_speech, text_left, listeners, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, /atom.proc/langchat_long_speech, text_left, listeners, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 	else
-		addtimer(CALLBACK(src, /mob.proc/langchat_drop_image, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, /atom.proc/langchat_drop_image, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /** Displays image to a single listener after it was built above eg. for chaining different game logic than speech code
 This does just that, doesn't check deafness or language! Do what you will in that regard **/
-/mob/proc/langchat_display_image(var/mob/M)
+/atom/proc/langchat_display_image(var/mob/M)
 	if(langchat_image)
 		if(!langchat_client_enabled(M))
 			return

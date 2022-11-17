@@ -1835,7 +1835,7 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/obj/item/weapon/gun/revolver/m44/custom,
+/obj/item/weapon/gun/revolver/m44,
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4
 	},
@@ -11324,7 +11324,7 @@
 	},
 /area/event/metal/dynamic)
 "Jj" = (
-/obj/item/weapon/gun/revolver/m44/custom,
+/obj/item/weapon/gun/revolver/m44,
 /turf/open/floor/prison{
 	icon_state = "cell_stripe";
 	tag = "icon-cell_stripe"

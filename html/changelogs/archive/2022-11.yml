@@ -340,3 +340,5 @@
   - code_imp: add back /armor at the end of gear preset for raider.
   fira:
   - bugfix: Fixed use of Right/Middle click in Statpanel atoms list.
+  ihatethisengine:
+  - bugfix: fixed mortar camera not working in unpowered areas

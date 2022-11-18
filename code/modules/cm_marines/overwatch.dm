@@ -330,6 +330,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
+	to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The supply drop is now loading into the launch tube.")]")
 	busy = TRUE
 	C.visible_message(SPAN_WARNING("\The [C] loads into a launch tube. Stand clear!"))
 	C.anchored = TRUE //To avoid accidental pushes

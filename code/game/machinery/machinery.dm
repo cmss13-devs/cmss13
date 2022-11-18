@@ -14,7 +14,6 @@ Class Variables:
 
 	needs_power (num)
 	  is this thing affected by an area being unpowered
-	  if manually modified in-game via VV call the proc power_change
 	  Possible Values:
 	     0 -- machine will process as if though in a powered area
 	     1 -- machine will function normally

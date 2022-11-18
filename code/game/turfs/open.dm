@@ -80,7 +80,7 @@
 
 /turf/open/Exited(atom/movable/A, newloc)
 	. = ..()
-	if(does_give_mob_overlays)
+	if(does_give_mob_overlays && istype(newloc, type))
 		SEND_SIGNAL(A, COMSIG_UPDATE_MOB_EFFECTS_FROM_TURF, src, FALSE)
 
 // Black & invisible to the mouse. used by vehicle interiors

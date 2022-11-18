@@ -328,6 +328,21 @@
   harryob:
   - bugfix: fixes the topic limit message popping up on connect
 2022-11-17:
+  BeagleGaming1:
+  - spellcheck: "corrected \u201Ctighly\u201D in metal and plasteel barricades to\
+      \ \u201Ctightly\u201D"
+  Geevies:
+  - rscadd: When you observe, your ghost will now look like your character creation
+      preview mob.
+  - refactor: Tweaked ghost code a little bit to copy the appearance of the mob better.
   Huffie56:
   - bugfix: Raider aka marsoc will spawn with their armor now
   - code_imp: add back /armor at the end of gear preset for raider.
+  fira:
+  - bugfix: Fixed use of Right/Middle click in Statpanel atoms list.
+  ihatethisengine:
+  - bugfix: fixed mortar camera not working in unpowered areas
+2022-11-18:
+  ChainsawMullet:
+  - bugfix: Fixed Abduct's slow not being properly applied & accounted for when using
+      Dislocate on the slowed target.

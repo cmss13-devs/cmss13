@@ -162,7 +162,7 @@
 
 /datum/skills/Destroy()
 	owner = null
-	QDEL_NULL_LIST(skills)
+	skills = null // Don't need to delete, /datum/skill should softdel
 	return ..()
 
 // Checks if the given skill is contained in this skillset at all

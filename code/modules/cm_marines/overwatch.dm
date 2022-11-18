@@ -488,7 +488,7 @@
 			"ref" = ref(current_squaddie),
 			"name" = current_squaddie.real_name,
 			"mob_state" = marine_status,
-			"role" = current_squaddie.job ? current_squaddie.job : current_squaddie?.wear_id.rank,
+			"role" = current_squaddie.job ? current_squaddie?.job : current_squaddie?.wear_id?.rank,
 			"act_sl" = current_squaddie.job != JOB_SQUAD_LEADER && squad.squad_leader == current_squaddie,
 			"fteam" = current_squaddie?.assigned_fireteam,
 			"dist" = squad.squad_leader ? current_squaddie != squad.squad_leader ? get_dist(current_squaddie, current_squad.squad_leader) : null : null,

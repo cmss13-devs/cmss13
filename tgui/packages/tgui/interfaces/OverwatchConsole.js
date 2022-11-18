@@ -355,10 +355,10 @@ export const OverwatchMonitor = (props, context) => {
     user,
   } = data;
 
-  const marine_data = sortBy((marine) => marine.role)(
+  const marine_data = sortBy((marine) => marine?.role)(
     Object.values(marine_list) ?? []
   );
-  const unique_jobs = uniqBy((marine) => marine.role)(
+  const unique_jobs = uniqBy((marine) => marine?.role)(
     Object.values(marine_list) ?? []
   );
 
@@ -389,7 +389,7 @@ export const OverwatchMonitor = (props, context) => {
             )}
             <Stack.Item>
               <Dropdown
-                options={unique_jobs.map((marine) => marine.role)}
+                options={unique_jobs.map((marine) => marine?.role)}
                 disabled={operator !== user}
                 displayText={'Select Role'}
                 onSelected={(value) => setSelectedJob(value)}

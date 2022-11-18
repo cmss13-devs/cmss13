@@ -187,20 +187,16 @@
 
 		var/pull_dir = get_dir(src, pulling)
 
-		if(grab_level >= GRAB_CARRY)
-			switch(grab_level)
-				if(GRAB_CARRY)
-					var/direction_to_face = EAST
+		if(grab_level == GRAB_CARRY)
+			var/direction_to_face = EAST
 
-					if(direct & WEST)
-						direction_to_face = WEST
+			if(direct & WEST)
+				direction_to_face = WEST
 
-					pulling.Move(NewLoc, direction_to_face)
-					var/mob/living/pmob = pulling
-					if(istype(pmob))
-						SEND_SIGNAL(pmob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direction_to_face, direction_to_face)
-				else
-					pulling.Move(NewLoc, direct)
+			pulling.Move(NewLoc, direction_to_face)
+			var/mob/living/pmob = pulling
+			if(istype(pmob))
+				SEND_SIGNAL(pmob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direction_to_face, direction_to_face)
 		else if(get_dist(src, pulling) > 1 || ((pull_dir - 1) & pull_dir)) //puller and pullee more than one tile away or in diagonal position
 			var/pulling_dir = get_dir(pulling, T)
 			pulling.Move(T, pulling_dir) //the pullee tries to reach our previous position
@@ -235,7 +231,7 @@
 	if(!pulledby)
 		return
 	if(pulledby.grab_level)
-		if(prob(50))
+		if(prob((50/pulledby.grab_level)))
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 			pulledby.stop_pulling()
@@ -265,6 +261,8 @@
 		switch(grab_level)
 			if(GRAB_AGGRESSIVE)
 				grab_level_delay = 6
+			if(GRAB_NECK)
+				grab_level_delay = 10 // Upped move delay for Warriors if have a target lunged
 			if(GRAB_CHOKE)
 				grab_level_delay = 9
 

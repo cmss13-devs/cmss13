@@ -158,7 +158,7 @@
 	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if (!isYautja(H) && !H.ally_of_hivenumber(linked_hive.hivenumber)) // predators are immune to weed slowdown effect
-			H.next_move_slowdown = H.next_move_slowdown + weed_strength
+			H.next_move_slowdown = H.next_move_slowdown + WEED_LEVEL_STANDARD
 	else if (isXeno(AM))
 		var/mob/living/carbon/Xenomorph/X = AM
 		if (!linked_hive.is_ally(X))
@@ -501,16 +501,6 @@
 	), .proc/complete_growth)
 
 	update_icon()
-
-/obj/effect/alien/weeds/node/Destroy()
-	// When the node is removed, weeds should start dying out
-	// Make all the children look for a new parent node
-	for(var/X in children)
-		var/obj/effect/alien/weeds/W = X
-		remove_child(W)
-		addtimer(CALLBACK(W, .proc/avoid_orphanage), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
-
-	. = ..()
 
 /obj/effect/alien/weeds/node/proc/complete_growth()
 	SIGNAL_HANDLER

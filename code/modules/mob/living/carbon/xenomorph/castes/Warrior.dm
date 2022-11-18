@@ -89,6 +89,7 @@
 				return .
 
 		if(should_neckgrab && L.mob_size < MOB_SIZE_BIG)
+			grab_level = GRAB_NECK
 			L.drop_held_items()
 			L.apply_effect(get_xeno_stun_duration(L, 2), WEAKEN)
 			L.pulledby = src

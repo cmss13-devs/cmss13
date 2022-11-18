@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
 		list("Super-Capacity Power Cell", 10, /obj/item/cell/super, null, VENDOR_ITEM_REGULAR),
-		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_MANDATORY),
+		list("Technician Helmet", 5, /obj/item/clothing/head/helmet/marine/tech, null, VENDOR_ITEM_MANDATORY),
 		list("ES-11 Mobile Fuel Canister", 4, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", 0, null, null, null),
@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		list("Uniform", 0, /obj/item/clothing/under/marine/engineer, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
-		list("Helmet", 0, /obj/item/clothing/head/helmet/marine/tech, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Helmet", 0, /obj/item/clothing/head/helmet/marine/, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
@@ -192,6 +192,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 
 /obj/effect/essentials_set/engi
 	spawned_gear_list = list(
+		/obj/item/clothing/glasses/welding,
 		/obj/item/explosive/plastic,
 		/obj/item/stack/sandbags_empty = 25,
 		/obj/item/stack/sheet/metal/large_stack,

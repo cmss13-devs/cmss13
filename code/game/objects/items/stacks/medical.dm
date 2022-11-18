@@ -70,7 +70,7 @@
 
 		if(user.skills)
 			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-				if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+				if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 					return 1
 
 
@@ -116,7 +116,7 @@
 
 		if(user.skills)
 			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-				if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+				if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 					return 1
 
 		if(affecting.get_incision_depth())
@@ -161,7 +161,7 @@
 		if(user.skills)
 			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC)) //untrained marines have a hard time using it
 				to_chat(user, SPAN_WARNING("You start fumbling with [src]."))
-				if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 					return
 				heal_amt = 3 //non optimal application means less healing
 
@@ -228,7 +228,7 @@
 		if(user.skills)
 			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC)) //untrained marines have a hard time using it
 				to_chat(user, SPAN_WARNING("You start fumbling with [src]."))
-				if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 					return
 				heal_amt = 3 //non optimal application means less healing
 

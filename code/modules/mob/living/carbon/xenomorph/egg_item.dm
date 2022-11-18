@@ -79,24 +79,24 @@
 	if(!user.check_plasma(30))
 		return
 
-	var/obj/effect/alien/weeds/hive_weeds = null
+	var/obj/effect/alien/weeds/ = null
 	for(var/obj/effect/alien/weeds/W in T)
 		if(W.weed_strength >= WEED_LEVEL_HIVE && W.linked_hive.hivenumber == hivenumber)
-			hive_weeds = W
+			weeds = W
 			break
 
-	if(!hive_weeds)
+	if(!weeds)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 
 	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)
 
-	var/plant_time = 35
+	var/plant_time = 80
 	if(isXenoDrone(user))
-		plant_time = 25
+		plant_time = 60
 	if(isXenoCarrier(user))
-		plant_time = 10
+		plant_time = 30
 	if(!do_after(user, plant_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(!user.check_alien_construction(T))

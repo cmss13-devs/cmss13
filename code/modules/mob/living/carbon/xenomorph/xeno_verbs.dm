@@ -1,4 +1,57 @@
 //// Holds Xeno verbs that don't belong anywhere else.
+/mob/living/carbon/Xenomorph/verb/consume(atom/target)
+	set name = "Consume"
+	set desc = "Feed on a chestbursted host for evolution and recovery."
+	set category = "Alien"
+	var/mob/living/carbon/human/victim = target
+
+	if(action_busy) //Prevents spam
+		return
+
+	if(!ishuman(target))
+		to_chat(src, SPAN_WARNING("Why would you want to eat that?"))
+		return
+
+	if(get_dist(src, victim) > 1)
+		to_chat(src, SPAN_WARNING("Get closer."))
+		return
+
+	if(victim.chestburst < 2)
+		to_chat(src, SPAN_WARNING("This host isn't chestbursted."))
+		return
+
+	var/turf/cur_loc = victim.loc
+	if(!istype(cur_loc))
+		return
+
+	visible_message(SPAN_XENOWARNING("[src] begins to viciously bite down on [victim]'s body."), \
+	SPAN_XENOWARNING("You begin to viciously bite down on [victim]'s body."))
+	xeno_jitter(15)
+	playsound(loc, 'sound/weapons/alien_bite1.ogg', 25)
+	if(do_after(src, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
+		if(!victim)
+			return
+		if(victim.loc != cur_loc)
+			return
+
+		visible_message(SPAN_XENODANGER("[src] viciously gorges on [victim], ripping away at the chunks of flesh on \him!"), \
+		SPAN_XENODANGER("You viciously bite down on [victim], gorging on the chunks of flesh on \him!"))
+		xeno_jitter(15)
+		playsound(loc, 'sound/weapons/alien_bite2.ogg', 25)
+		victim.apply_damage(100, BRUTE, pick("r_leg", "l_leg", "r_arm", "l_arm"), FALSE, TRUE) //Basically just rips off a random limb.
+		emote("roar")
+
+		gain_health(250)
+		evolution_stored = evolution_stored + 30
+		stop_pulling()
+		if(victim.chestburst >=5)
+			attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed by consumption [key_name(victim)]</font>")
+			victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>was gibbed from consumption by [key_name(src)]</font>")
+			victim.gib(create_cause_data("Xenomorph Consumption", src)) //Splut
+		else
+			victim.chestburst++
+	return
+
 /mob/living/carbon/Xenomorph/verb/hive_status()
 	set name = "Hive Status"
 	set desc = "Check the status of your current hive."

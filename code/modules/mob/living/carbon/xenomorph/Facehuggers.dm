@@ -287,14 +287,16 @@
 			else
 				qdel(embryo)
 		if(!embryos)
-			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
-			embryo.hivenumber = hivenumber
+			var/embryos_to_implant = get_impregnation_amount(target)
+			for(var/i=0, i < embryos_to_implant, i++)
+				var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
+				embryo.hivenumber = hivenumber
 
-			embryo.flags_embryo = flags_embryo
-			flags_embryo = NO_FLAGS
+				embryo.flags_embryo = flags_embryo
+				flags_embryo = NO_FLAGS
 
-			if(target.species)
-				target.species.larva_impregnated(embryo)
+				if(target.species)
+					target.species.larva_impregnated(embryo)
 
 			icon_state = "[initial(icon_state)]_impregnated"
 			impregnated = TRUE
@@ -305,6 +307,24 @@
 
 	if(round_statistics && ishuman(target))
 		round_statistics.total_huggers_applied++
+
+/obj/item/clothing/mask/facehugger/proc/get_impregnation_amount(mob/living/carbon/target)
+
+	var/impregnation_amount
+
+	if(isYautja(target))
+		return 1 //Only one Abomination larva per burst
+	if(!ishuman(target))
+		impregnation_amount = 1
+	else
+		impregnation_amount = pick(
+			prob(45); 1,
+			prob(45); 2,
+			prob(9); 3,
+			prob(1); 4, //Far less chances for more multi-burst. Max of 3 instead of 4 as it was
+		)
+
+	return impregnation_amount
 
 /obj/item/clothing/mask/facehugger/proc/go_active()
 	if(stat == DEAD)

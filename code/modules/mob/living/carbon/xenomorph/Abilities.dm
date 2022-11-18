@@ -154,7 +154,6 @@
 	ability_name = "gut"
 	macro_path = /datum/action/xeno_action/verb/verb_gut
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 15 MINUTES
 	plasma_cost = 200
 	cooldown_message = "You feel your anger return. You are ready to gut again."
 

@@ -3,6 +3,9 @@
 #define GRAB_AGGRESSIVE	1
 #define GRAB_CARRY      2
 #define GRAB_CHOKE      3
+#define GRAB_CARRY		1.5
+#define GRAB_NECK		3.3
+#define GRAB_CHOKE      4
 
 //Ammo defines for gun/projectile related things.
 

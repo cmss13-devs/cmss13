@@ -274,25 +274,25 @@ var/global/list/gear_datums = list()
 	display_name = "Green Facepaint"
 	path = /obj/item/facepaint/green
 	slot = WEAR_IN_BACK
-	cost = 2
+	cost = 1
 
 /datum/gear/brownfacepaint
 	display_name = "Brown Facepaint"
 	path = /obj/item/facepaint/brown
 	slot = WEAR_IN_BACK
-	cost = 2
+	cost = 1
 
 /datum/gear/blackfacepaint
 	display_name = "Black Facepaint"
 	path = /obj/item/facepaint/black
 	slot = WEAR_IN_BACK
-	cost = 2
+	cost = 1
 
 /datum/gear/skullfacepaint
 	display_name = "Skull Facepaint"
 	path = /obj/item/facepaint/skull
 	slot = WEAR_IN_BACK
-	cost = 4 //there needs to be some reason to NOT use this badass facepaint or every marine will have it
+	cost = 3 //there needs to be some reason to NOT use this badass facepaint or every marine will have it
 
 /datum/gear/aceofspades
 	display_name = "Ace of Spades"

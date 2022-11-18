@@ -252,7 +252,7 @@
 		qdel(AE)
 
 	var/datum/cause_data/cause = create_cause_data("chestbursting", src)
-	if(burstcount >= 4)
+	if(burstcount >= 3) // Last 2 groups of rare multi-burst results in gibbing
 		victim.gib(cause)
 	else
 		if(ishuman(victim))

@@ -365,7 +365,7 @@
 			&& CONFIG_GET(flag/limbs_can_break)\
 			&& brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier)\
 		)
-			var/cut_prob = brute/max_damage * 5
+			var/cut_prob = brute/max_damage * 12 //Slightly higher delimb chances than pre-2020 but unlike those times, need to be heavily damaged first so the extra 2% is to account for it
 			if(prob(cut_prob))
 				droplimb(0, 0, damage_source)
 				return
@@ -1196,7 +1196,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			user.visible_message(SPAN_WARNING("[user] fumbles with [S]"), SPAN_WARNING("You fumble with [S]..."))
 			time_to_take = 15 SECONDS
 
-		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			var/possessive = "[user == target ? "your" : "\the [target]'s"]"
 			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\the [target]'s"]"
 			user.affected_message(target,

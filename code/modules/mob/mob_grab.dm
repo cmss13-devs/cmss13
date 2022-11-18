@@ -34,7 +34,7 @@
 	if(!user)
 		return
 	if(user.pulling == user.buckled) return //can't move the thing you're sitting on.
-	if(user.grab_level >= GRAB_CARRY)
+	if(user.grab_level == GRAB_CARRY)
 		return
 	if(istype(target, /obj/effect))//if you click a blood splatter with a grab instead of the turf,
 		target = get_turf(target)	//we still try to move the grabbed thing to the turf.
@@ -86,7 +86,6 @@
 	user.grab_level = GRAB_CHOKE
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"), null, null, 5)
-	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
 
 	victim.update_canmove()

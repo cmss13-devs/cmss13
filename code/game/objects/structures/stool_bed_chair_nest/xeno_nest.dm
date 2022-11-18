@@ -88,48 +88,75 @@
 	healthcheck()
 
 /obj/structure/bed/nest/manual_unbuckle(mob/living/user)
-	if(!(buckled_mob && buckled_mob.buckled == src && buckled_mob != user))
-		return
+	if(buckled_mob)
+		if(buckled_mob.buckled == src)
+			if(buckled_mob != user)
+				if(user.stat || user.lying || user.is_mob_restrained())
+					return
+				if(isXeno(user))
+					var/mob/living/carbon/Xenomorph/X = user
+					if(!X.hive.unnesting_allowed && !isXenoBuilder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
+						to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
+						return
+				else if(iscarbon(user))
+					var/mob/living/carbon/H = user
+					if(HIVE_ALLIED_TO_HIVE(H.hivenumber, hivenumber))
+						to_chat(H, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
+						return
 
-	if(user.stat || user.lying || user.is_mob_restrained())
-		return
+				if(ishuman(buckled_mob) && isXeno(user))
+					var/mob/living/carbon/human/H = buckled_mob
+					if(H.recently_nested)
+						to_chat(user, SPAN_WARNING("[H] was nested recently. Wait a bit."))
+						return
+					if(H.stat != DEAD)
+						if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") == "No")
+							return
+						if(!buckled_mob || !user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
+							return
 
-	if(isXeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
-		if(!X.hive.unnesting_allowed && !isXenoBuilder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
-			to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
-			return
-	else if(iscarbon(user))
-		var/mob/living/carbon/H = user
-		if(HIVE_ALLIED_TO_HIVE(H.hivenumber, hivenumber))
-			to_chat(H, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
-			return
+				if(ishuman(user))
+					user.visible_message(SPAN_NOTICE("\The [user] starts pulling \the [buckled_mob] free from the resin binding them in place..."), SPAN_NOTICE("You start pulling \the [buckled_mob] free from the resin binding them in place..."))
+					if(!do_after(user, 8 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+						return
+				buckled_mob.visible_message("<span class='notice'>\The [user] pulls \the [buckled_mob] free from \the [src]!</span>",\
+				"<span class='notice'>\The [user] pulls you free from \the [src].</span>",\
+				"<span class='notice'>You hear squelching.</span>")
+				playsound(loc, "alien_resin_move", 50)
 
-	if(ishuman(buckled_mob) && isXeno(user))
-		var/mob/living/carbon/human/H = buckled_mob
-		if(H.recently_nested)
-			to_chat(user, SPAN_WARNING("[H] was nested recently. Wait a bit."))
-			return
-		if(H.stat != DEAD)
-			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") == "No")
+				if(ishuman(buckled_mob))
+					var/mob/living/carbon/human/H = buckled_mob
+					user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
+					H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
+				unbuckle()
 				return
-			if(!buckled_mob || !user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
-				return
-
-	if(ishuman(user))
-		user.visible_message(SPAN_NOTICE("\The [user] starts pulling \the [buckled_mob] free from the resin binding them in place..."), SPAN_NOTICE("You start pulling \the [buckled_mob] free from the resin binding them in place..."))
-		if(!do_after(user, 8 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-			return
-	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
-	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
-	SPAN_NOTICE("You hear squelching."))
-	playsound(loc, "alien_resin_move", 50)
-	if(ishuman(buckled_mob))
-		var/mob/living/carbon/human/H = buckled_mob
-		user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
-		H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
-	unbuckle()
-	return
+			else
+				if(buckled_mob.stat)
+					buckled_mob.visible_message("<span class='warning'>You're a little too unconscious to try that.</span>")
+					return
+				if(resisting_ready && buckled_mob == user && buckled_mob.stat != DEAD)
+					buckled_mob.visible_message("<span class='danger'>\The [buckled_mob] breaks free from \the [src]!</span>",\
+					"<span class='danger'>You pull yourself free from \the [src]!</span>",\
+					"<span class='notice'>You hear squelching.</span>")
+					unbuckle()
+					return
+				if(resisting)
+					buckled_mob.visible_message("<span class='warning'>You're already trying to free yourself. Give it some time.</span>")
+					return
+				if(buckled_mob && buckled_mob.name)
+					buckled_mob.visible_message("<span class='warning'>\The [buckled_mob] struggles to break free of \the [src].</span>",\
+					"<span class='warning'>You struggle to break free from \the [src].</span>",\
+					"<span class='notice'>You hear squelching.</span>")
+				resisting = 1
+				var/mob/oldbuckled = buckled_mob
+				nest_resist_time = rand(4800,8400)
+				spawn(nest_resist_time)
+					if(resisting && buckled_mob == oldbuckled && buckled_mob.stat != DEAD) //Must be alive and conscious
+						resisting = 0
+						resisting_ready = 1
+						if(ishuman(usr))
+							buckled_mob.visible_message("<span class='warning'>\The [buckled_mob] looks ready to break free of \the [src].</span>",\
+							"<span class='warning'>You are ready to break free! Resist once more to free yourself!.</span>",)
 
 /mob/living/carbon/human/proc/start_nesting_cooldown()
 	recently_nested = TRUE
@@ -205,7 +232,7 @@
 	H.disable_special_items()
 
 	if(H.mind)
-		var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
+		var/choice = alert(M, "You have little possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
 		if(choice == "Ghost")
 			// Ask to ghostize() so they can reenter, to leave mind and such intact
 			ghost_of_buckled_mob = M.ghostize(can_reenter_corpse = TRUE)

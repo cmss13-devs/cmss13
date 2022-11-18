@@ -7,5 +7,5 @@
 		drop_held_items()
 
 	if(pulledby.grab_level >= GRAB_CHOKE)
-		apply_damage(3, OXY)
+		apply_damage(2, OXY)
 		apply_stamina_damage(5)

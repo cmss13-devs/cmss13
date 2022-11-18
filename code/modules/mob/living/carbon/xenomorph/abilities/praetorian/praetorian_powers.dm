@@ -299,6 +299,7 @@
 
 		if (LAZYLEN(targets) == 1)
 			new /datum/effects/xeno_slow(H, X, , ,25)
+			H.apply_effect(1, SLOW)
 		else if (LAZYLEN(targets) == 2)
 
 			H.frozen = TRUE

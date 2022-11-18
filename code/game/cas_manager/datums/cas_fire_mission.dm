@@ -1,10 +1,10 @@
 /obj/effect/firemission_guidance
 	invisibility = 101
-	var/list/users = list()
+	var/list/users
 
-/obj/effect/firemission_guidance/Destroy()
-	. = ..()
-	users = null
+/obj/effect/firemission_guidance/New()
+	..()
+	users = list()
 
 /datum/cas_fire_mission
 	var/mission_length = 3 //can be 3,4,6 or 12

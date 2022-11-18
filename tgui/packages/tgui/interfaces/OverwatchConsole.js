@@ -480,59 +480,59 @@ export const OverwatchMonitor = (props, context) => {
                       <Table.Cell textAlign="center">
                         <Button
                           icon={'eye'}
-                          selected={marine_data?.['manually_filtered']}
+                          selected={marine_data?.manually_filtered}
                           tooltip={'Hide'}
                           onClick={() =>
                             act('filter_marine', {
-                              squaddie: marine_data['ref'],
+                              squaddie: marine_data?.ref,
                             })
                           }
                         />
                       </Table.Cell>
                       <Table.Cell>
                         <Button
-                          content={marine_data['name']}
-                          disabled={!marine_data['helmet']}
+                          content={marine_data?.name}
+                          disabled={!marine_data?.helmet}
                           fluid
                           onClick={() =>
                             act('use_cam', {
-                              cam_target: marine_data['ref'],
+                              cam_target: marine_data?.ref,
                             })
                           }
                         />
                       </Table.Cell>
                       <Table.Cell>
-                        {marine_data['role'] +
-                          (marine_data['act_sl'] === true
-                            ? marine_data['act_sl']
+                        {marine_data?.role +
+                          (marine_data?.act_sl === true
+                            ? marine_data?.act_sl
                             : '') +
-                          (marine_data['fteam']
-                            ? ' (' + marine_data['fteam'] + ')'
+                          (marine_data?.fteam
+                            ? ' (' + marine_data?.fteam + ')'
                             : '')}
                       </Table.Cell>
                       <Table.Cell>
                         <ColorBox
                           color={
-                            marine_data['mob_state'] === 'Conscious'
+                            marine_data?.mob_state === 'Conscious'
                               ? 'green'
-                              : marine_data['mob_state'] === 'Unconscious'
+                              : marine_data?.mob_state === 'Unconscious'
                                 ? 'yellow'
                                 : 'red'
                           }
                         />
-                        {' ' + marine_data['mob_state']}{' '}
-                        {!marine_data['helmet'] ? ' (no helmet)' : null}
+                        {' ' + marine_data?.mob_state}{' '}
+                        {!marine_data?.helmet ? ' (no helmet)' : null}
                         {marine_data.SSD ? ' (SSD)' : null}
                       </Table.Cell>
                       <Table.Cell>
-                        {marine_data['area_name']
-                          ? marine_data['area_name']
+                        {marine_data?.area_name
+                          ? marine_data?.area_name
                           : 'N/A'}
                       </Table.Cell>
                       <Table.Cell>
-                        {marine_data['dist'] ? marine_data['dist'] : 'N/A'}
-                        {marine_data['dir']
-                          ? ' (' + marine_data['dir'] + ')'
+                        {marine_data?.dist ? marine_data?.dist : 'N/A'}
+                        {marine_data?.dir
+                          ? ' (' + marine_data?.dir + ')'
                           : ' (N/A)'}
                       </Table.Cell>
                     </Table.Row>
@@ -748,6 +748,8 @@ export const OverwatchBomb = (props, context) => {
 
   const [bomb_x, setTargetX] = useLocalState(context, 'bomb_x', x_bomb);
   const [bomb_y, setTargetY] = useLocalState(context, 'bomb_y', y_bomb);
+
+  const setTargetXBomb<value> = setTargetX(value)
 
   const bombardment_enabled =
     (!bombardment_cooldown || bombardment_cooldown < world_time) &&

@@ -15,8 +15,8 @@ Class Variables:
 	needs_power (num)
 	  is this thing affected by an area being unpowered
 	  Possible Values:
-	     0 -- machine will process as if though in a powered area
-	     1 -- machine will function normally
+	     FALSE -- machine will process as if though in a powered area
+	     TRUE -- machine will function normally
 
    active_power_usage (num)
       Value for the amount of power to use when in active power mode
@@ -92,7 +92,6 @@ Class Procs:
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	var/stat = 0
 	var/use_power = 1
-	var/needs_power = 1
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
 	var/needs_power = TRUE

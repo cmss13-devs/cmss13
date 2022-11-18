@@ -15611,11 +15611,14 @@
 /area/almayer/engineering/lower_engineering)
 "aVr" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/item/reagent_container/food/snacks/tofupie,
-/obj/item/reagent_container/food/snacks/tofuburger,
 /obj/structure/sign/safety/fridge{
 	pixel_x = 32
 	},
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/reagent_container/food/snacks/carpmeat,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -54651,6 +54654,7 @@
 /area/almayer/squads/bravo)
 "ljG" = (
 /obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/condiment/coldsauce,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -66080,7 +66084,8 @@
 /obj/structure/machinery/chem_dispenser/soda{
 	density = 0;
 	pixel_x = 1;
-	pixel_y = 14
+	pixel_y = 14;
+	wrenchable = 0
 	},
 /obj/structure/sign/safety/coffee{
 	pixel_y = 32

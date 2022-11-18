@@ -67,12 +67,28 @@
 		/area/almayer,
 	)
 
+/datum/cm_objective/retrieve_item/fulton/New(var/T)
+	..()
+	RegisterSignal(target_item, list(
+		COMSIG_GLOB_MARINE_DEATH,
+		COMSIG_GLOB_XENO_DEATH
+	), .proc/handle_mob_deaths)
+
 /datum/cm_objective/retrieve_item/fulton/proc/clean_up_fulton()
 	SIGNAL_HANDLER
 	state = OBJECTIVE_COMPLETE
 	GLOB.failed_fultons -= target_item
 	qdel(src)
 	return
+
+/datum/cm_objective/retrieve_item/fulton/proc/handle_mob_deaths(datum/source, mob/living/carbon/dead_mob, gibbed)
+	SIGNAL_HANDLER
+
+	//We only care about gibbed corpses to clean up the fulton recovery objective.
+	if(!gibbed)
+		return
+
+	clean_up_fulton()
 
 /datum/cm_objective/retrieve_item/fulton/New()
 	. = ..()

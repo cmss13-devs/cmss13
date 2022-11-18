@@ -524,6 +524,7 @@
 	data["operator"] = operator?.name
 	data["world_time"] = world.time
 	data["user"] = user
+	data["busy"] = busy
 
 	var/list/squad_list = list()
 	for(var/datum/squad/squad in RoleAuthority.squads)

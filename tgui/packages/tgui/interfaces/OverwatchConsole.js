@@ -617,6 +617,7 @@ export const OverwatchSupplies = (props, context) => {
   return (
     <Section title="Supply Drop">
       <OverwatchAuthenticated />
+      <OverwatchBusy />
       <ProgressBar
         ranges={{
           good: [-Infinity, lower_cooldown_seconds],
@@ -716,6 +717,21 @@ export const OverwatchAuthenticated = (props, context) => {
   );
 };
 
+export const OverwatchBusy = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { busy } = data;
+  return (
+    <Box>
+      {busy !== 0 && (
+        <Dimmer fontSize="32px">
+          <Icon name="cog" spin />
+          {' Processing...'}
+        </Dimmer>
+      )}
+    </Box>
+  );
+};
+
 export const OverwatchBomb = (props, context) => {
   const { act, data } = useBackend(context);
   const {
@@ -747,6 +763,7 @@ export const OverwatchBomb = (props, context) => {
   return (
     <Section title="Orbital Bombardment">
       <OverwatchAuthenticated />
+      <OverwatchBusy />
       <ProgressBar
         ranges={{
           good: [-Infinity, lower_cooldown_seconds],

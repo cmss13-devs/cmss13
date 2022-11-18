@@ -7,6 +7,7 @@
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
+	var/does_give_mob_overlays = FALSE //used to determine if to give mobs that cross it overlay effecst
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
@@ -71,6 +72,16 @@
 	var/ceiling_info = ceiling_desc(user)
 	if(ceiling_info)
 		. += ceiling_info
+
+/turf/open/Entered(atom/movable/A)
+	. = ..()
+	if(does_give_mob_overlays)
+		SEND_SIGNAL(A, COMSIG_UPDATE_MOB_EFFECTS_FROM_TURF, src, TRUE)
+
+/turf/open/Exited(atom/movable/A, newloc)
+	. = ..()
+	if(does_give_mob_overlays)
+		SEND_SIGNAL(A, COMSIG_UPDATE_MOB_EFFECTS_FROM_TURF, src, FALSE)
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void
@@ -283,6 +294,7 @@
 	var/no_overlay = FALSE
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
+	does_give_mob_overlays = TRUE
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -327,11 +339,8 @@
 	if(!covered)
 		var/mob/living/carbon/C = AM
 		var/river_slowdown = 1.75
-
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = AM
-			if(!locate(/datum/effects/water) in H.effects_list)
-				new /datum/effects/water(H)
 			cleanup(H)
 			if(H.gloves && rand(0,100) < 60)
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
@@ -352,16 +361,6 @@
 		var/mob/living/carbon/human/H = AM
 		if(H.bloody_footsteps)
 			SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
-
-/turf/open/gm/river/Exited(Obj, newloc)
-	. = ..()
-	if(!ishuman(Obj))
-		return
-	var/mob/living/carbon/human/H = Obj
-	if(!istype(newloc, type))
-		for(var/datum/effects/water/W in H.effects_list)
-			qdel(W)
-
 
 /turf/open/gm/river/proc/cleanup(var/mob/living/carbon/human/M)
 	if(!M || !istype(M)) return

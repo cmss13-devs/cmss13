@@ -493,3 +493,6 @@
 // Checks whether the xeno can build a thick structure regardless of hive weeds
 #define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
 	#define COMPONENT_THICK_BYPASS (1<<0)
+
+// Used by turfs that overlay effects onto mobs when moved in/out of
+#define COMSIG_UPDATE_MOB_EFFECTS_FROM_TURF "update_mob_effects_from_turf"

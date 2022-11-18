@@ -36,12 +36,14 @@
 	var/obj_icon_state_path = null			//The icon_state path for objs
 	var/mob_icon_state_path = null			//The icon_state path for mobs
 	var/datum/cause_data/cause_data = null	//Cause data for statistics
+	var/do_proccess = TRUE					//Should the effect process?
 
 /datum/effects/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
 	if(!validate_atom(A) || QDELETED(A))
 		qdel(src)
 		return
-	START_PROCESSING(SSeffects, src)
+	if(do_proccess)
+		START_PROCESSING(SSeffects, src)
 
 	affected_atom = A
 	LAZYADD(affected_atom.effects_list, src)

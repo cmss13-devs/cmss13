@@ -7,7 +7,7 @@ import { Window } from '../layouts';
 import { createLogger } from '../logging';
 
 export const searchFor = (searchText) => {
-  return createSearch(searchText, (thing) => thing.name);
+  return createSearch(searchText, (thing) => thing?.name);
 };
 
 export const OverwatchConsole = (_props, context) => {

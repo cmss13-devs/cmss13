@@ -120,6 +120,8 @@
 				var/message = pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")
 				message = SPAN_WARNING("[message].")
 				to_chat(affected_mob, message)
+				if(prob(50))
+					affected_mob.emote("scream")
 		if(5)
 			become_larva()
 		if(6)
@@ -181,9 +183,16 @@
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
 		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
 		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
-		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
 	stage = 6
+
+/mob/living/carbon/Xenomorph/Larva/proc/cause_unbearable_pain()
+	if(loc != affected_mob)
+		return
+	affected_mob.emote("scream")
+	to_chat(affected_mob, SPAN_HIGHDANGER(pick("ITS IN YOUR INSIDES!", "THE GNAWING!", "MAKE IT STOP!", "YOUR INSIDES!", "YOU ARE GOING TO DIE!", "ITS TEARING YOU APART!")))
+	addtimer(CALLBACK(src, .proc/cause_unbearable_pain), rand(1,3) SECONDS, TIMER_UNIQUE)
 
 /mob/living/carbon/Xenomorph/Larva/proc/chest_burst(mob/living/carbon/victim)
 	set waitfor = 0
@@ -191,8 +200,9 @@
 		return
 	victim.chestburst = TRUE
 	to_chat(src, SPAN_DANGER("You start bursting out of [victim]'s chest!"))
+	cause_unbearable_pain()
 	if(victim.knocked_out < 1)
-		victim.apply_effect(20, PARALYZE)
+		victim.apply_effect(20, DAZE)
 	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \
 								 SPAN_DANGER("You feel something ripping up your insides!"))
 	victim.make_jittery(300)

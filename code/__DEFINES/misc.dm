@@ -250,3 +250,6 @@
 
 // filters
 #define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-2, size=4, border=4, color="#04080FAA")
+
+// magic value to use for indicating a proc slept
+#define PROC_RETURN_SLEEP "wake up"

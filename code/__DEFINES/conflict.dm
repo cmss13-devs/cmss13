@@ -24,7 +24,7 @@
 #define AMMO_IGNORE_RESIST		(1<<10)
 #define AMMO_BALLISTIC			(1<<11)
 #define AMMO_IGNORE_COVER		(1<<12)
-#define AMMO_SCANS_NEARBY		(1<<13) //ammo that is scanning stuff nearby - VERY resource intensive
+//                              (1<<13) unused, previously was AMMO_SCANS_NEARBY
 #define AMMO_STOPPED_BY_COVER	(1<<14)
 #define AMMO_SPECIAL_EMBED		(1<<15)
 #define AMMO_STRIKES_SURFACE	(1<<16) // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself

@@ -1121,12 +1121,26 @@ and you're good to go.
 
 		var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
 
-		if(params)
-			var/list/mouse_control = params2list(params)
-			if(mouse_control["icon-x"])
-				projectile_to_fire.p_x = text2num(mouse_control["icon-x"])
-			if(mouse_control["icon-y"])
-				projectile_to_fire.p_y = text2num(mouse_control["icon-y"])
+		if(params) // Apply relative clicked position from the mouse info to offset projectile
+			if(!params["click_catcher"])
+				if(params["vis-x"])
+					projectile_to_fire.p_x = text2num(params["vis-x"])
+				else if(params["icon-x"])
+					projectile_to_fire.p_x = text2num(params["icon-x"])
+				if(params["vis-y"])
+					projectile_to_fire.p_y = text2num(params["vis-y"])
+				else if(params["icon-y"])
+					projectile_to_fire.p_y = text2num(params["icon-y"])
+				var/atom/movable/clicked_target = original_target
+				if(istype(clicked_target))
+					projectile_to_fire.p_x -= clicked_target.bound_width / 2
+					projectile_to_fire.p_y -= clicked_target.bound_height / 2
+				else
+					projectile_to_fire.p_x -= world.icon_size / 2
+					projectile_to_fire.p_y -= world.icon_size / 2
+			else
+				projectile_to_fire.p_x -= world.icon_size / 2
+				projectile_to_fire.p_y -= world.icon_size / 2
 
 		//Finally, make with the pew pew!
 		if(QDELETED(projectile_to_fire) || !isobj(projectile_to_fire))
@@ -1142,7 +1156,8 @@ and you're good to go.
 
 			//This is where the projectile leaves the barrel and deals with projectile code only.
 			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-			projectile_to_fire.fire_at(target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target, FALSE)
+			in_chamber = null
+			INVOKE_ASYNC(projectile_to_fire, /obj/item/projectile.proc/fire_at, target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target, FALSE)
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 			if(check_for_attachment_fire)
@@ -1150,6 +1165,7 @@ and you're good to go.
 			else
 				last_fired = world.time
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
+			projectile_to_fire = null
 			. = TRUE
 
 			if(flags_gun_features & GUN_FULL_AUTO_ON)

@@ -67,9 +67,6 @@
 		/area/almayer,
 	)
 
-/datum/cm_objective/retrieve_item/fulton/New(var/T)
-	..()
-
 /datum/cm_objective/retrieve_item/fulton/proc/clean_up_fulton()
 	SIGNAL_HANDLER
 	state = OBJECTIVE_COMPLETE

@@ -81,7 +81,7 @@
 
 	var/obj/effect/alien/weeds/ = null
 	for(var/obj/effect/alien/weeds/W in T)
-		if(W.weed_strength >= WEED_LEVEL_HIVE && W.linked_hive.hivenumber == hivenumber)
+		if(W.weed_strength >= WEED_LEVEL_STANDARD && W.linked_hive.hivenumber == hivenumber)
 			weeds = W
 			break
 

@@ -95,6 +95,7 @@ Class Procs:
 	var/needs_power = 1
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
+	var/needs_power = TRUE
 	var/power_channel = POWER_CHANNEL_EQUIP
 	var/mob/living/carbon/human/operator = null //Had no idea where to put this so I put this here. Used for operating machines with RELAY_CLICK
 		//EQUIP,ENVIRON or LIGHT
@@ -201,7 +202,9 @@ Class Procs:
 	return !inoperable(additional_flags)
 
 /obj/structure/machinery/proc/inoperable(var/additional_flags = 0)
-	return (stat & (NOPOWER|BROKEN|additional_flags))
+	if (needs_power)
+		return (stat & (NOPOWER|BROKEN|additional_flags))
+	return (stat & (BROKEN|additional_flags))
 
 /obj/structure/machinery/Topic(href, href_list)
 	..()

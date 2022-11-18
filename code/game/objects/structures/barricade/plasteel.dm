@@ -51,7 +51,7 @@
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED)
-			. += SPAN_INFO("The protection panel is still tighly screwed in place.")
+			. += SPAN_INFO("The protection panel is still tightly screwed in place.")
 		if(BARRICADE_BSTATE_UNSECURED)
 			. += SPAN_INFO("The protection panel has been removed, you can see the anchor bolts.")
 		if(BARRICADE_BSTATE_MOVABLE)

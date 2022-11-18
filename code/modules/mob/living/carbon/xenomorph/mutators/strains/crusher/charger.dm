@@ -352,7 +352,7 @@
 	var/knockdown = 1
 	if(CCA.momentum == CCA.max_momentum)
 		knockdown = 2
-	KnockDown(knockdown)
+	apply_effect(knockdown, WEAKEN)
 	animation_flash_color(src)
 	if(client)
 		shake_camera(src, 1, 3)
@@ -383,8 +383,8 @@
 			CCA.stop_momentum() // antigrief
 			return
 		if(HAS_TRAIT(src, TRAIT_CHARGING))
-			KnockDown(2)
-			X.KnockDown(2)
+			apply_effect(2, WEAKEN)
+			X.apply_effect(2, WEAKEN)
 			src.throw_atom(pick(cardinal),1,3,X,TRUE)
 			X.throw_atom(pick(cardinal),1,3,X,TRUE)
 			CCA.stop_momentum() // We assume the other crusher's handle_charge_collision() kicks in and stuns us too.
@@ -398,7 +398,7 @@
 			X.emote("roar")
 			X.visible_message(SPAN_DANGER("[X] flings [src] over to the side!"),SPAN_DANGER( "You fling [src] out of the way!"))
 			to_chat(src, SPAN_XENOHIGHDANGER("[X] flings you out of its way! Move it!"))
-			KnockDown(1) // brief flicker stun
+			apply_effect(1, WEAKEN) // brief flicker stun
 			src.throw_atom(src.loc,1,3,X,TRUE)
 		step(src, ram_dir, CCA.momentum * 0.5)
 		CCA.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
@@ -423,7 +423,7 @@
 	var/knockdown = 1
 	if(CCA.momentum == CCA.max_momentum)
 		knockdown = 2
-	KnockDown(knockdown)
+	apply_effect(knockdown, WEAKEN)
 	animation_flash_color(src)
 	if(client)
 		shake_camera(src, 1, 3)

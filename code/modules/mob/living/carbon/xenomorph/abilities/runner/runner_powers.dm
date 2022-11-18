@@ -189,7 +189,7 @@
 	BD.caboom_trigger = TRUE
 	BD.caboom_left = BD.caboom_timer
 	BD.caboom_last_proc = 0
-	X.SetSuperslowed(BD.caboom_timer*2)
+	X.set_effect(BD.caboom_timer*2, SUPERSLOW)
 
 	X.say(";FOR THE HIVE!!!")
 

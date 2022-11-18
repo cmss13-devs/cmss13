@@ -117,6 +117,11 @@
 	html_link = "images/0/0d/Kutjevo_a1.jpg"
 	color = "red"
 
+/obj/item/map/lv522_map
+	name = "\improper LV-522 Map"
+	desc = "An overview of LV-522 schematics."
+	html_link = "images/b/bb/C_claim.png"
+	color = "cyan"
 
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map
@@ -174,6 +179,11 @@
 			desc = "An orbital scan of Kutjevo Refinery"
 			html_link = "images/0/0d/Kutjevo_a1.jpg"
 			color = "red"
+		if (MAP_LV522_CHANCES_CLAIM)
+			name = "\improper LV-522 Map"
+			desc = "An overview of LV-522 schematics."
+			html_link = "images/b/bb/C_claim.png"
+			color = "cyan"
 		else
 			return INITIALIZE_HINT_QDEL
 

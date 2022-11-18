@@ -704,13 +704,14 @@
 
 		if("filter_marine")
 			if(current_squad)
-				var/mob/squaddie = params["squaddie"]
+				var/squaddie = params["squaddie"]
+				var/mob/selected = locate(squaddie)
 				if(!(squaddie in marine_filter))
 					marine_filter += squaddie
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("[squaddie.real_name] now hidden.")]")
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("[selected.real_name] now hidden.")]")
 				else
 					marine_filter -= squaddie
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("[squaddie.real_name] will now be shown.")]")
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("[selected.real_name] will now be shown.")]")
 			return TRUE
 
 		if("change_lead")

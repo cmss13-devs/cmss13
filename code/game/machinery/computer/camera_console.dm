@@ -339,7 +339,7 @@
 	network = list(CAMERA_NET_MORTAR)
 	exproof = TRUE
 	colony_camera_mapload = FALSE
-	
+
 /obj/structure/machinery/computer/security/mortar/emp_act(severity)
 	return FALSE
 

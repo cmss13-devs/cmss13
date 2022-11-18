@@ -6840,6 +6840,15 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/east_reactor/west)
+"dDD" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/lv522/atmos/east_reactor/north)
 "dDS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13320,6 +13329,14 @@
 	tag = "icon-darkpurplefull2"
 	},
 /area/lv522/indoors/a_block/dorms)
+"gBF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/prison{
+	icon_state = "darkbrownfull2";
+	tag = "icon-darkbrownfull2"
+	},
+/area/lv522/indoors/c_block/mining)
 "gCE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/meat,
@@ -32993,6 +33010,7 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)
 "ort" = (
@@ -35520,6 +35538,7 @@
 "ptp" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -36110,6 +36129,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -79841,7 +79861,7 @@ cpy
 cpy
 cpy
 yeQ
-wvV
+dDD
 bgg
 tDR
 tDR
@@ -86399,7 +86419,7 @@ aRi
 ozw
 xFv
 vbV
-ozw
+gBF
 jas
 nHT
 fYw

@@ -201,9 +201,7 @@ Class Procs:
 	return !inoperable(additional_flags)
 
 /obj/structure/machinery/proc/inoperable(var/additional_flags = 0)
-	if (needs_power)
-		return (stat & (NOPOWER|BROKEN|additional_flags))
-	return (stat & (BROKEN|additional_flags))
+	return (stat & (NOPOWER|BROKEN|additional_flags))
 
 /obj/structure/machinery/Topic(href, href_list)
 	..()

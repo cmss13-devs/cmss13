@@ -1,3 +1,6 @@
+#define GLOBAL_MOVEMENT_MODIFIER 1.10
+#define NEXT_MOVEMENT(input) next_movement = world.time + ((input) * GLOBAL_MOVEMENT_MODIFIER)
+
 /client/North()
 	..()
 
@@ -101,13 +104,13 @@
 	next_move_dir_add = 0
 	next_move_dir_sub = 0
 
-	next_movement = world.time + world.tick_lag
+	NEXT_MOVEMENT(world.tick_lag)
 
 	if(!direct)
 		return FALSE
 
 	if(mob.control_object)
-		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+		NEXT_MOVEMENT(MINIMAL_MOVEMENT_INTERVAL)
 		return Move_object(direct)
 
 	if(mob.noclip)
@@ -120,15 +123,15 @@
 				mob.x++
 			if(WEST)
 				mob.x--
-		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+		NEXT_MOVEMENT(MINIMAL_MOVEMENT_INTERVAL)
 		return
 
 	if(isobserver(mob)) //Ghosts are snowflakes unfortunately
-		next_movement = world.time + move_delay
+		NEXT_MOVEMENT(move_delay)
 		return mob.Move(n, direct)
 
 	if(SEND_SIGNAL(mob, COMSIG_CLIENT_MOB_MOVE, n, direct) & COMPONENT_OVERRIDE_MOVE)
-		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+		NEXT_MOVEMENT(MINIMAL_MOVEMENT_INTERVAL)
 		return
 
 	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || (mob.lying && !mob.can_crawl))
@@ -187,7 +190,7 @@
 			mob.crawling = TRUE
 			if(!do_after(mob, 3 SECONDS, INTERRUPT_MOVED|INTERRUPT_UNCONSCIOUS|INTERRUPT_STUNNED|INTERRUPT_RESIST|INTERRUPT_CHANGED_LYING, BUSY_ICON_GENERIC))
 				mob.crawling = FALSE
-				next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+				NEXT_MOVEMENT(MINIMAL_MOVEMENT_INTERVAL)
 				mob.move_intentionally = FALSE
 				moving = FALSE
 				return
@@ -206,7 +209,7 @@
 				mob.update_clone()
 		mob.move_intentionally = FALSE
 		moving = FALSE
-		next_movement = world.time + move_delay
+		NEXT_MOVEMENT(move_delay)
 	return
 
 ///Process_Spacemove
@@ -292,3 +295,5 @@
 
 	prob_slip = round(prob_slip)
 	return(prob_slip)
+
+#undef GLOBAL_MOVEMENT_MODIFIER

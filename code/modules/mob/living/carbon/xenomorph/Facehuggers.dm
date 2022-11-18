@@ -318,9 +318,9 @@
 		impregnation_amount = 1
 	else
 		impregnation_amount = pick(
-			prob(45); 1,
-			prob(44); 2,
-			prob(10); 3,
+			prob(50); 1,
+			prob(40); 2,
+			prob(9); 3,
 			prob(1); 4 //Far less chances for more multi-burst. Max of 3 instead of 4 as it was
 		)
 

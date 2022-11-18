@@ -481,6 +481,7 @@ export const OverwatchMonitor = (props, context) => {
                         <Button
                           icon={'eye'}
                           selected={marine_data?.['manually_filtered']}
+                          tooltip={'Hide'}
                           onClick={() =>
                             act('filter_marine', {
                               squaddie: marine_data['ref'],

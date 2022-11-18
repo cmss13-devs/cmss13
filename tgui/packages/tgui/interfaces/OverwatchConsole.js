@@ -749,8 +749,6 @@ export const OverwatchBomb = (props, context) => {
   const [bomb_x, setTargetX] = useLocalState(context, 'bomb_x', x_bomb);
   const [bomb_y, setTargetY] = useLocalState(context, 'bomb_y', y_bomb);
 
-  const setTargetXBomb<value> = setTargetX(value)
-
   const bombardment_enabled =
     (!bombardment_cooldown || bombardment_cooldown < world_time) &&
     !almayer_cannon_disabled &&

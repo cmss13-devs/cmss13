@@ -342,3 +342,7 @@
   - bugfix: Fixed use of Right/Middle click in Statpanel atoms list.
   ihatethisengine:
   - bugfix: fixed mortar camera not working in unpowered areas
+2022-11-18:
+  ChainsawMullet:
+  - bugfix: Fixed Abduct's slow not being properly applied & accounted for when using
+      Dislocate on the slowed target.

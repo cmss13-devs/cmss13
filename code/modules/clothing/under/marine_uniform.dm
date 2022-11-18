@@ -635,6 +635,13 @@
 	flags_jumpsuit = FALSE
 	suit_restricted = null
 
+/obj/item/clothing/under/marine/ucf_clown
+	name = "\improper UCF uniform"
+	desc = "A Unified Clown Federation combat uniform. Features the latest in anti-mime technology."
+	icon_state = "clown"
+	worn_state = "clown"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
+
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"
 	desc = "An ill-fitting, slightly stained uniform for a pizza delivery pilot. Smells of cheese."

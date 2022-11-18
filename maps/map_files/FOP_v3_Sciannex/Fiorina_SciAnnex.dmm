@@ -13297,13 +13297,9 @@
 /area/fiorina/station/flight_deck)
 "hTr" = (
 /obj/structure/closet,
-/obj/item/clothing/under/marine{
-	desc = "A Unified Clown Federation combat uniform. Features the latest in anti-mime technology.";
-	icon_state = "clown";
-	name = "\improper UCF uniform"
-	},
 /obj/item/clothing/mask/gas/clown_hat,
 /obj/effect/spawner/random/gun/shotgun/midchance,
+/obj/item/clothing/under/marine/ucf_clown,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "hTs" = (

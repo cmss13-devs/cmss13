@@ -326,6 +326,7 @@
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/onclick/charger_charge/queen
 	)
 
 	// Abilities they get when they've successfully aged.
@@ -333,6 +334,7 @@
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/onclick/charger_charge/queen
 	)
 	mutation_type = QUEEN_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
@@ -915,3 +917,9 @@
 
 	// Switch icon back and then let normal icon behavior happen
 	Queen.icon = Queen.queen_standing_icon
+
+	if(HAS_TRAIT(Queen, TRAIT_CHARGING) && !Queen.lying)
+		var/datum/action/xeno_action/onclick/charger_charge/charge_ability = locate() in Queen.actions
+		if(charge_ability && charge_ability.momentum >= charge_ability.max_momentum - 1)
+			Queen.icon_state = "[Queen.mutation_type] Queen Charging"
+			return TRUE

@@ -346,3 +346,6 @@
   ChainsawMullet:
   - bugfix: Fixed Abduct's slow not being properly applied & accounted for when using
       Dislocate on the slowed target.
+2022-11-19:
+  totalepicness:
+  - soundadd: Fixes no sound when hitting metal foam

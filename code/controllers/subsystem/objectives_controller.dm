@@ -42,6 +42,9 @@ SUBSYSTEM_DEF(objectives)
 	statistics["miscellaneous_total_instances"] = 0
 	statistics["miscellaneous_total_points_earned"] = 0
 
+	statistics["survivors_rescued"] = 0
+	statistics["survivors_rescued_total_points_earned"] = 0
+
 	statistics["corpses_recovered"] = 0
 	statistics["corpses_total_points_earned"] = 0
 

@@ -153,7 +153,6 @@
 
 
 /datum/cm_objective/move_mob/New(var/mob/living/H)
-	to_world("/datum/cm_objective/move_mob/New(var/mob/living/H)")
 	if(istype(H, /mob/living))
 		target = H
 		RegisterSignal(H, COMSIG_MOB_DEATH, .proc/handle_death)
@@ -162,7 +161,6 @@
 	. = ..()
 
 /datum/cm_objective/move_mob/Destroy()
-	to_world("/datum/cm_objective/move_mob/Destroy()")
 	UnregisterSignal(target, list(
 		COMSIG_MOB_DEATH,
 		COMSIG_PARENT_QDELETING,
@@ -179,13 +177,11 @@
 /datum/cm_objective/move_mob/proc/handle_corpse_deletion(mob/living/carbon/deleted_mob)
 	SIGNAL_HANDLER
 
-	to_world("/datum/cm_objective/move_mob/proc/handle_corpse_deletion(mob/living/carbon/deleted_mob)")
 	qdel(src)
 
 /datum/cm_objective/move_mob/proc/handle_death(mob/living/carbon/dead_mob)
 	SIGNAL_HANDLER
 
-	to_world("/datum/cm_objective/move_mob/proc/handle_death(mob/living/carbon/dead_mob)")
 	if(mob_can_die == MOB_FAILS_ON_DEATH)
 		deactivate()
 		if (isXeno(dead_mob))
@@ -197,7 +193,6 @@
 /datum/cm_objective/move_mob/proc/handle_mob_revival(mob/living/carbon/revived_mob)
 	SIGNAL_HANDLER
 
-	to_world("/datum/cm_objective/move_mob/proc/handle_mob_revival(mob/living/carbon/revived_mob)")
 	UnregisterSignal(revived_mob, list(COMSIG_LIVING_REJUVENATED))
 
 	if (isXeno(revived_mob))
@@ -211,7 +206,6 @@
 	if(istype(get_area(target),destination))
 		if(target.stat != DEAD || mob_can_die & MOB_CAN_COMPLETE_AFTER_DEATH)
 			complete()
-			to_world("COMPLETE!")
 			return TRUE
 
 /datum/cm_objective/move_mob/complete()
@@ -227,13 +221,11 @@
 	name = "Rescue the Survivor"
 	mob_can_die = MOB_FAILS_ON_DEATH
 	value = OBJECTIVE_EXTREME_VALUE
-	//display_category = "Rescue the Survivors"
 
 /datum/cm_objective/move_mob/almayer/vip
 	name = "Rescue the VIP"
 	mob_can_die = MOB_FAILS_ON_DEATH
 	value = OBJECTIVE_ABSOLUTE_VALUE
-	//display_category = "Rescue the VIP"
 	objective_flags = OBJECTIVE_DO_NOT_TREE
 
 //Easy mobs for testing

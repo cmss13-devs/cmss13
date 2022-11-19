@@ -20,7 +20,7 @@
 
 	var/def_zone = "chest"	//So we're not getting empty strings.
 	var/p_x = 0
-	var/p_y = 0 // the pixel location of the tile that the player clicked. Default is the center
+	var/p_y = 0 // the pixel location of the clicked/aimed location in target turf
 
 	var/current 		 = null
 	var/atom/shot_from 	 = null // the object which shot us
@@ -37,10 +37,12 @@
 	var/time_carry = 0
 	/// How many turfs per 1ds the projectile travels
 	var/speed = 1
-	/// Range to target based on firing, used to adjust visual offsets
-	var/target_range = 0
 	/// Direct angle at firing time, in degrees from BYOND NORTH, used for visual updates and path extension
 	var/angle = 0
+	/// Turfs traveled so far, for use in visual updates, in conjunction with angle for projection
+	var/vis_travelled = 0
+	/// Origin point for tracing and visual updates
+	var/turf/vis_source
 
 	var/damage = 0
 	var/accuracy = 85 //Base projectile accuracy. Can maybe be later taken from the mob if desired.
@@ -193,8 +195,9 @@
 		ammo.fire_bonus_projectiles(src)
 
 	path = getline2(starting, target_turf)
-	target_range = get_dist(starting, target_turf)
-	update_visual_angle(p_x, p_y) // we retain click location information
+	p_x += Clamp((rand()-0.5)*scatter*3, -8, 8)
+	p_y += Clamp((rand()-0.5)*scatter*3, -8, 8)
+	update_angle(starting, target_turf)
 
 	var/homing_projectile = homing_target && ammo_flags & AMMO_HOMING
 	if(homing_projectile)
@@ -226,17 +229,17 @@
 	// Finally queue it to Subsystem for further processing
 	SSprojectiles.queue_projectile(src)
 
-/obj/item/projectile/proc/update_visual_angle(x_offset = 0, y_offset = 0)
-	p_x = x_offset // base value. on init this will be click location
-	p_y = y_offset
-	p_x += Clamp((rand()-0.5)*scatter*4, -12, 12) // scatter offset
-	p_y += Clamp((rand()-0.5)*scatter*4, -12, 12)
-	p_x = Clamp(p_x, -24, 24)
-	p_y = Clamp(p_y, -24, 24)
+/obj/item/projectile/proc/update_angle(turf/source_turf, turf/aim_turf)
+	p_x = Clamp(p_x, -16, 16)
+	p_y = Clamp(p_y, -16, 16)
+
+	if(source_turf != vis_source)
+		vis_travelled = 0
+	vis_source = source_turf
 
 	angle = 0 // Stolen from Get_Angle() basically
-	var/dx = p_x + target_turf.x * 32 - starting.x * 32 // todo account for firer offsets. useless for now.
-	var/dy = p_y + target_turf.y * 32 - starting.y * 32
+	var/dx = p_x + aim_turf.x * 32 - source_turf.x * 32 // todo account for firer offsets
+	var/dy = p_y + aim_turf.y * 32 - source_turf.y * 32
 	if(!dy)
 		if(dx >= 0)
 			angle = 90
@@ -290,6 +293,7 @@
 	// Actually move
 	forceMove(next_turf)
 	distance_travelled++
+	vis_travelled++
 	if(distance_travelled > 1)
 		invisibility = 0
 
@@ -321,8 +325,8 @@
 		path = getline2(current_turf, homing_turf)
 		path.Cut(1, 2) // pop current
 		speed *= 2
+		update_angle(loc, homing_turf) // Bullet "bends" but goes dead on
 		homing_target = null
-		update_visual_angle() //dead on
 
 	// Adjust computed path if we just missed our intended target
 	if(!length(path))
@@ -332,14 +336,25 @@
 			return TRUE
 		path = getline2(current_turf, aim_turf)
 		path.Cut(1, 2) // pop current
-		update_visual_angle()
-		target_range = ammo.max_range // Technically 'breaks' line, but to make sense for bullet pings
+		// Retrace from firing position. The bullet will warp laterally a bit but it shouldnt be noticeable
+		p_x *= 2 // clamped in update_angle
+		p_y *= 2
+		update_angle(starting, aim_turf)
 
-	// Update the visual offsets to glide the bullet toward pixel target
-	if(!target_range)
-		target_range = 1
-	pixel_x = p_x * Clamp(distance_travelled / target_range, 0, 1)
-	pixel_y = p_y * Clamp(distance_travelled / target_range, 0, 1)
+	// Nowe we update visual offset by tracing the bullet predicted location against real one
+	//
+	// Travelled real distance so far
+	var/dist = vis_travelled * 32 + speed * (time_carry*10)
+	// Compute where we should be
+	var/vis_x = vis_source.x * 32 + sin(angle) * dist
+	var/vis_y = vis_source.y * 32 + cos(angle) * dist
+	// Get the difference with where we actually are
+	var/dx = vis_x - loc.x * 32
+	var/dy = vis_y - loc.y * 32
+	// Clamp and set this as pixel offsets
+	pixel_x = Clamp(dx, -16, 16)
+	pixel_y = Clamp(dy, -16, 16)
+
 
 /obj/item/projectile/proc/scan_a_turf(turf/T, proj_dir)
 	//Not actually flying? Should not be hitting anything.
@@ -1111,16 +1126,16 @@
 
 
 //This is where the bullet bounces off.
-/atom/proc/bullet_ping(obj/item/projectile/P, var/pixel_x_offset, var/pixel_y_offset)
+/atom/proc/bullet_ping(obj/item/projectile/P, pixel_x_offset = 0, pixel_y_offset = 0)
 	if(!P || !P.ammo.ping)
 		return
 
 	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,P.ammo.ping,10, pixel_x = pixel_x_offset, pixel_y = pixel_y_offset)
-	var/offset_x = (P.p_x) * 0.5 * Clamp(P.distance_travelled / P.ammo.max_range, 0, 1)
-	var/offset_y = (P.p_y) * 0.5 * Clamp(P.distance_travelled / P.ammo.max_range, 0, 1)
-	I.pixel_x += round(rand(-6,6) + offset_x, 1)
-	I.pixel_y += round(rand(-6,6) + offset_y, 1)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, P.ammo.ping, 10)
+	var/offset_x = Clamp(P.pixel_x + pixel_x_offset, -10, 10)
+	var/offset_y = Clamp(P.pixel_y + pixel_y_offset, -10, 10)
+	I.pixel_x += round(rand(-4,4) + offset_x, 1)
+	I.pixel_y += round(rand(-4,4) + offset_y, 1)
 
 	var/matrix/rotate = matrix()
 	rotate.Turn(P.angle)

@@ -17,7 +17,11 @@
 	caste_type = XENO_CASTE_FACEHUGGER
 	speak_emote = list("hisses")
 	icon_state = "Facehugger"
-	icon_size = 32
+	icon_size = 48
+	pixel_x = -8
+	pixel_y = -10
+	old_x = -10
+	old_y = -10
 	layer = MOB_LAYER
 	mob_flags = NOBIOSCAN
 	see_in_dark = 8
@@ -61,7 +65,7 @@
 		adjustBruteLoss(1)
 	return ..()
 
-/mob/living/carbon/Xenomorph/Facehugger/update_icons()
+/mob/living/carbon/Xenomorph/Facehugger/update_icons(is_pouncing)
 	if(!caste)
 		return
 
@@ -72,7 +76,7 @@
 			icon_state = "[mutation_type] [caste.caste_type] Sleeping"
 		else
 			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"
-	else if(throwing)
+	else if(is_pouncing)
 		icon_state = "[mutation_type] [caste.caste_type] Thrown"
 	else
 		icon_state = "[mutation_type] [caste.caste_type] Running"
@@ -201,3 +205,22 @@
 
 /mob/living/carbon/Xenomorph/Facehugger/add_xeno_shield(added_amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1, add_shield_on = FALSE, max_shield = 200)
 	return
+
+/mob/living/carbon/Xenomorph/Facehugger/proc/scuttle(var/obj/structure/S)
+	var/move_dir = get_dir(src, loc)
+	for(var/atom/movable/AM in get_turf(S))
+		if(AM != S && AM.density && AM.BlockedPassDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("\The [AM] prevents you from squeezing under \the [S]!"))
+			return
+	// Is it an airlock?
+	if(istype(S, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/A = S
+		if(A.locked || A.welded) //Can't pass through airlocks that have been bolted down or welded
+			to_chat(src, SPAN_WARNING("\The [A] is locked down tight. You can't squeeze underneath!"))
+			return
+	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [S]!"), \
+	SPAN_WARNING("You squeeze and scuttle underneath \the [S]."), null, 5)
+	forceMove(S.loc)
+
+/mob/living/carbon/Xenomorph/Facehugger/launch_impact()
+	update_icons()

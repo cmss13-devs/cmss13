@@ -1,10 +1,10 @@
-/datum/action/xeno_action/activable/pounce/facehugger/additional_effects_always()
+/datum/action/xeno_action/activable/pounce/facehugger/post_windup_effects(interrupted)
 	..()
 
 	var/mob/living/carbon/Xenomorph/facehugger = owner
-	if(!istype(facehugger))
+	if(!istype(facehugger) || interrupted)
 		return
-	facehugger.update_icons()
+	facehugger.update_icons(TRUE)
 
 /datum/action/xeno_action/activable/pounce/facehugger/additional_effects(mob/living/L)
 	if(!ishuman(L))

@@ -1008,9 +1008,6 @@ var/datum/controller/supply/supply_controller = new()
 	name = "M34A2 Longstreet Light Tank"
 	ordered_vehicle = /obj/effect/vehicle_spawner/tank/decrepit
 
-/datum/vehicle_order/tank/has_vehicle_lock()
-	return
-
 /datum/vehicle_order/apc
 	name = "M577 Armored Personnel Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit
@@ -1027,9 +1024,7 @@ var/datum/controller/supply/supply_controller = new()
 	. = ..()
 
 	vehicles = list(
-		new/datum/vehicle_order/apc(),
-		new/datum/vehicle_order/apc/med(),
-		new/datum/vehicle_order/apc/cmd()
+		new /datum/vehicle_order/tank
 	)
 
 	if(!VehicleElevatorConsole)

@@ -1,10 +1,12 @@
 /datum/supply_packs/pouches_ammo
-	name = "Large Pounch 2x(pistol,magazine)"
+	name = "Large Pouch 2x(pistol,magazine,general)"
 	contains = list(
 					/obj/item/storage/pouch/magazine/large,
 					/obj/item/storage/pouch/magazine/large,
 					/obj/item/storage/pouch/magazine/pistol/large,
 					/obj/item/storage/pouch/magazine/pistol/large,
+					/obj/item/storage/pouch/general,
+					/obj/item/storage/pouch/general,
 					)
 	cost = 20
 	containertype = /obj/structure/closet/crate

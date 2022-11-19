@@ -565,7 +565,10 @@
 	if(QDELETED(src))
 		return FALSE
 
-	if(info.distance_travelled > range || info.current_turf == info.target_turf)
+	if(info.distance_travelled > range)
+		return FALSE
+
+	if(info.distance_travelled && info.current_turf == info.target_turf )
 		return FALSE
 
 	var/turf/next_turf = get_step_towards(info.current_turf, info.target_turf)

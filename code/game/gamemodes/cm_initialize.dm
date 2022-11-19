@@ -561,7 +561,10 @@ Additional game mode variables.
 	if(istype(ghost.current, /mob/living) && ghost.current.first_xeno)
 		picked_spawn = xeno_turf
 	else
-		picked_spawn = pick(GLOB.survivor_spawns)
+		for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
+			if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
+				picked_spawn = pick(GLOB.survivor_spawns_by_priority["[priority]"])
+				break
 	if(istype(picked_spawn, /obj/effect/landmark/survivor_spawner))
 		return survivor_event_transform(ghost.current, picked_spawn, is_synth)
 	else

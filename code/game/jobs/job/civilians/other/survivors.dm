@@ -22,9 +22,13 @@
 	var/mob/living/carbon/human/H = .
 
 	var/list/potential_spawners = list()
-	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns)
-		if(spawner.check_can_spawn(H))
-			potential_spawners += spawner
+	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
+		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
+			for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns_by_priority["[priority]"])
+				if(spawner.check_can_spawn(H))
+					potential_spawners += spawner
+			if(length(potential_spawners))
+				break
 	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
 	H.forceMove(get_turf(picked_spawner))
 

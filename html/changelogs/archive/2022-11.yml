@@ -381,5 +381,6 @@
   harryob:
   - bugfix: crew console now shows ground/ship colours again
   - refactor: the code for deconstruction is now (somewhat) neater
+  - bugfix: girders now deconstruct
   totalepicness:
   - soundadd: Fixes no sound when hitting metal foam

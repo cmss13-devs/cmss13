@@ -135,7 +135,7 @@ const ContentItem = (
         </Button>
       </TableCell>
       <TableCell>
-        {props.isLocal && <Button icon="upload">Send to Network</Button>}
+        {props.isLocal && <Button icon="upload" />}
         {!props.isLocal && <Button icon="download">Get from Network</Button>}
       </TableCell>
       <TableCell>
@@ -155,12 +155,16 @@ const ElectricalPanelClosed = (props: BoxProps, context) => {
         props.className,
       ])}>
       <Flex
-        direction="column"
+        direction="row"
         justify="space-between"
         fill
         className="ElectricalSafetySign">
-        <Flex.Item>
-          <Flex justify="space-between">
+        <Flex.Item grow>
+          <Flex
+            justify="space-between"
+            direction="column"
+            fill
+            className={classes(['ElectricalSafetySign'])}>
             <Flex.Item>
               <Icon name="circle-xmark" />
             </Flex.Item>
@@ -169,21 +173,33 @@ const ElectricalPanelClosed = (props: BoxProps, context) => {
             </Flex.Item>
           </Flex>
         </Flex.Item>
-        <Flex.Item className="WarningIcon">
-          <Flex justify="space-around">
+        <Flex.Item fill>
+          <Flex
+            justify="space-around"
+            align="center"
+            inline
+            fill
+            wrap
+            className="WarningIcon"
+            direction="column">
             <Flex.Item>
-              <Icon name="bolt" />
+              <Icon name="bolt" size={2} />
             </Flex.Item>
             <Flex.Item>
-              <span>Electrical hazard authorised personnel only</span>
-            </Flex.Item>
-            <Flex.Item>
-              <Icon name="bolt" />
+              <span>
+                Electrical hazard authorised <br />
+                personnel only
+              </span>
             </Flex.Item>
           </Flex>
         </Flex.Item>
-        <Flex.Item>
-          <Flex justify="space-between">
+        <Flex.Item grow>
+          <Flex
+            justify="space-between"
+            align="flex-end"
+            direction="column"
+            fill
+            className={classes(['ElectricalSafetySign'])}>
             <Flex.Item>
               <Icon name="circle-xmark" />
             </Flex.Item>
@@ -200,7 +216,7 @@ const ElectricalPanelClosed = (props: BoxProps, context) => {
 const WireControl = (props: { wire: WireSpec }, context) => {
   return (
     <>
-      <TableCell className="Test">{props.wire.desc}</TableCell>
+      <TableCell>{props.wire.desc}</TableCell>
       <TableCell>
         {props.wire.cut === 0 && <Button icon="scissors">cut</Button>}
         {props.wire.cut === 1 && <Button icon="wrench">fix</Button>}
@@ -221,7 +237,7 @@ const ElectricalPanelOpen = (props: BoxProps, context) => {
         <Flex.Item>
           <Table vertical className="WirePanel">
             {data.electrical.wires.map((x) => (
-              <TableRow key={x.desc} className="Test">
+              <TableRow key={x.desc}>
                 <WireControl wire={x} />
               </TableRow>
             ))}

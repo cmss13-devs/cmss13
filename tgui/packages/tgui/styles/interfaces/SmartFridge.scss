@@ -57,12 +57,15 @@ $electrical-width: 300px;
       height: 100%;
     }
     span {
+      display: flex;
       text-align: center;
     }
     .WarningIcon {
       border: 2px solid black;
       padding: 3px;
       font-weight: bold;
+      width: 200px;
+      height: 100%;
     }
     .OpenSafetySign {
       border-top: 1px solid black;
@@ -77,6 +80,7 @@ $electrical-width: 300px;
     }
     .WirePanel {
       display: inline-table;
+      margin-bottom: 6px;
       span {
         border: 2px solid black;
       }
@@ -90,4 +94,8 @@ $electrical-width: 300px;
       width: 2px;
     }
   }
+}
+
+.Test {
+  border: 4px solid red;
 }

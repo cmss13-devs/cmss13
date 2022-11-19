@@ -183,7 +183,7 @@
 
 	var/list/local_items = list()
 	for (var/i=1 to length(item_quants))
-		var/obj/item_index = item_quants[i]
+		var/item_index = item_quants[i]
 		var/list/item_list = item_quants[item_index]
 		var/count = length(item_list)
 		if(count < 1)
@@ -254,20 +254,20 @@
 			var/index=params["index"]
 			var/amount=params["amount"]
 
-			var/K = quantity_holder[index]
-			var/count = length(quantity_holder[K])
+			var/item_index = item_quants[index]
+			var/list/item_list = item_quants[item_index]
+			var/count = length(item_list)
 
-			if(count > 0)
-				quantity_holder[K] = max(count - amount, 0)
-				var/i = amount
-				if(!transfer_mode)
-					for(var/obj/O in source)
-						if(O.name == K)
-							source.Remove(O)
-							O.forceMove(loc)
-							i--
-							if (i <= 0)
-								return TRUE
+			if(count <= 0)
+				return FALSE
+
+			var/i = amount
+			for(var/obj/item in item_list)
+				item_list.Remove(item)
+				item.forceMove(loc)
+				i--
+				if (i <= 0)
+					return TRUE
 
 /obj/structure/machinery/smartfridge/Topic(href, href_list)
 	if (..()) return 0

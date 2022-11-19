@@ -206,7 +206,7 @@ ICE GRASS
 
 /obj/structure/flora/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
-		qdel(src)
+		deconstruct(FALSE)
 
 // MAP VARIANTS //
 // PARENT FOR COLOR, CORNERS AND CENTERS, BASED ON DIRECTIONS //

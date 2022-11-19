@@ -89,12 +89,12 @@
 
 						// Drop a circuit board too
 						C.forceMove(user.loc)
+					deconstruct()
 
-					// Create a machine frame and delete the current machine
-					var/obj/structure/machinery/constructable_frame/F = new
-					F.forceMove(src.loc)
-					qdel(src)
-
+/obj/structure/machinery/telecomms/deconstruct(disassembled = TRUE)
+	if(disassembled) // Create a machine frame and delete the current machine
+		new /obj/structure/machinery/constructable_frame(src)
+	return ..()
 
 /obj/structure/machinery/telecomms/attack_remote(var/mob/user as mob)
 	attack_hand(user)

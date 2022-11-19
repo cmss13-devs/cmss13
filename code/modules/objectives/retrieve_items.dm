@@ -24,7 +24,7 @@
 /datum/cm_objective/retrieve_item/Destroy()
 	target_item = null
 	target_areas = null
-	initial_area= null
+	initial_area = null
 	return ..()
 
 /datum/cm_objective/retrieve_item/proc/clean_up_ref()

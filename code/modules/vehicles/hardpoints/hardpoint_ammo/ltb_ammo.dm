@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/ltb_cannon
-	name = "LTB Cannon Magazine"
-	desc = "A primary armament cannon magazine"
+	name = "LTB cannon magazine"
+	desc = "A primary armament cannon magazine."
 	caliber = "86mm" //Making this unique on purpose
 	icon_state = "ltbcannon_4"
 	w_class = SIZE_LARGE //Heavy fucker

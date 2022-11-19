@@ -552,10 +552,10 @@
 	return NOT_WEEDABLE
 
 /turf/open/auto_turf/shale/layer1/is_weedable()
-	return FALSE 
+	return FALSE
 
 /turf/open/auto_turf/shale/layer2/is_weedable()
-	return FALSE 
+	return FALSE
 
 /turf/closed/wall/is_weedable()
 	return FULLY_WEEDABLE //so we can spawn weeds on the walls
@@ -762,3 +762,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
+
+/turf/proc/handle_snowplow()
+	return

@@ -98,6 +98,9 @@
 //#define MOB_LAYER 4
 
 #define ABOVE_MOB_LAYER 4.1
+#define VEHICLE_HARDPOINT_BOTTOM_LAYER 4.101
+#define VEHICLE_HARDPOINT_MIDDLE_LAYER 4.102
+#define VEHICLE_HARDPOINT_TOP_LAYER    4.103
 
 #define BIG_XENO_LAYER 4.11	//above ABOVE_MOB_LAYER because it's used for shallow river overlays
 							//which clips with the top of large xeno sprites.

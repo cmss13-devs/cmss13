@@ -1,5 +1,5 @@
 /obj/item/ammo_magazine/hardpoint/secondary_flamer
-	name = "LZR-N Flamer Unit Fuel Tank"
+	name = "LZR-N flamer unit fuel tank"
 	desc = "A secondary armament flamethrower magazine."
 	caliber = "UT-Napthal Fuel" //correlates to flamer mags
 	icon_state = "flametank_large"

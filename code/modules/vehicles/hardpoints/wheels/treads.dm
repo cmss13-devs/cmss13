@@ -1,5 +1,5 @@
 /obj/item/hardpoint/locomotion/treads
-	name = "Treads"
+	name = "treads"
 	desc = "Integral to the movement of the vehicle."
 
 	icon_state = "treads"
@@ -11,13 +11,13 @@
 	health = 500
 
 	//with this settings, takes 3 tiles to reach top speed
-	move_delay = 3.8
+	move_delay = 6.8
 	move_max_momentum = 3
 	move_momentum_build_factor = 1.8
 	move_turn_momentum_loss_factor = 0.6
 
 /obj/item/hardpoint/locomotion/treads/robust
-	name = "Reinforced Treads"
+	name = "reinforced treads"
 	desc = "These treads are made of a tougher material and are more durable. However, the extra weight slows the tank down slightly."
 
 	health = 750

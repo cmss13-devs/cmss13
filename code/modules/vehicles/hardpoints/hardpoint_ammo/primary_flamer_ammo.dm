@@ -1,5 +1,5 @@
 /obj/item/ammo_magazine/hardpoint/primary_flamer
-	name = "DRG-N Offensive Flamer Unit Fuel Tank"
+	name = "DRG-N offensive flamer unit fuel tank"
 	desc = "A primary armament flamethrower magazine."
 	caliber = "Napalm X" //correlates to flamer mags
 	icon_state = "drgn_flametank"

@@ -3,7 +3,7 @@
 
 //Vehicle version of NanoMed
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle
-	name = "Vehicle NanoMed"
+	name = "vehicle NanoMed"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "nanomed"
 	desc = "A wall-mounted vendor containing medical supplies vital to survival. It has bigger stock than a regular NanoMed and can restock most common autoinjectors."
@@ -56,7 +56,7 @@
 
 //MED APC version of WY Med, provides resupply for basic stuff. Provides a decent amount of cryobags for evacuating hugged marines.
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle
-	name = "\improper Wey-Med Resupply Station"
+	name = "\improper Wey-Med resupply station"
 	desc = "A more compact vehicle version of the widely known Wey-Med Plus Medical Pharmaceutical dispenser. Designed to be a field resupply station for medical personnel. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "med"
@@ -129,7 +129,7 @@
 
 //MED APC version of Blood Dispenser
 /obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle
-	name = "\improper MM Blood Dispenser"
+	name = "\improper MM blood dispenser"
 	desc = "A Marine Med brand Blood Pack Dispenser for vehicles."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 
@@ -146,7 +146,7 @@
 
 //Combined vehicle version of req guns and ammo vendors. Starts, basically, empty, but can become a resupply point if marines bother to stock it with ammo and weapons.
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply
-	name = "\improper ColMarTech Automated Supply Vendor"
+	name = "\improper ColMarTech automated supply vendor"
 	desc = "An automated supply rack hooked up to a vehicle storage of various firearms, explosives and ammunition types. Used for storing and transporting supplies between forward operating bases and the frontline."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "supply"

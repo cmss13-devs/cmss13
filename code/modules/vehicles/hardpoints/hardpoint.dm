@@ -35,9 +35,6 @@
 	// List of pixel offsets for each direction
 	var/list/px_offsets
 
-	//visual layer of hardpoint when on vehicle
-	var/hdpt_layer = HDPT_LAYER_WHEELS
-
 	// List of offsets for where to place the muzzle flash for each direction
 	var/list/muzzle_flash_pos = list(
 		"1" = list(0, 0),
@@ -101,6 +98,8 @@
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	/// that will be given to a projectile fired from the hardpoint
 	var/list/list/traits_to_give
+
+	var/hardpoint_layer = VEHICLE_HARDPOINT_MIDDLE_LAYER
 
 //-----------------------------
 //------GENERAL PROCS----------
@@ -521,7 +520,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 
 //doing last preparation before actually firing gun
 /obj/item/hardpoint/proc/fire(var/mob/user, var/atom/A)
-	if(ammo.current_rounds <= 0)
+	if(ammo?.current_rounds <= 0)
 		return
 
 	next_use = world.time + cooldown * owner.misc_multipliers["cooldown"]
@@ -570,7 +569,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 //Returns the image object to overlay onto the root object
 /obj/item/hardpoint/proc/get_icon_image(var/x_offset, var/y_offset, var/new_dir)
 	var/is_broken = health <= 0
-	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir, layer = hardpoint_layer)
 	switch(round((health / initial(health)) * 100))
 		if(0 to 20)
 			I.color = "#4e4e4e"

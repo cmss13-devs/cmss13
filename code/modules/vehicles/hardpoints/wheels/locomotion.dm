@@ -2,6 +2,8 @@
 	name = "locomotive aid hardpoint"
 	desc = "i help the vehicle move :)"
 
+	hardpoint_layer = VEHICLE_HARDPOINT_BOTTOM_LAYER
+
 	damage_multiplier = 0.15
 	var/acid_resistant = FALSE	//reduces damage dealt by acid spray
 

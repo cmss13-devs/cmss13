@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/ace_autocannon
-	name = "Tank Autocannon Magazine"
-	desc = "A primary armament autocannon magazine"
+	name = "tank autocannon magazine"
+	desc = "A primary armament autocannon magazine."
 	caliber = "20mm"
 	icon_state = "ace_autocannon"
 	w_class = SIZE_LARGE

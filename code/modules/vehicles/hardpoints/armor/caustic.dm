@@ -1,6 +1,6 @@
 /obj/item/hardpoint/armor/caustic
-	name = "Caustic Armor"
-	desc = "Protects vehicles from most types of acid"
+	name = "caustic armor"
+	desc = "Protects vehicles from most types of acid."
 
 	icon_state = "caustic_armor"
 	disp_icon = "tank"

@@ -1,6 +1,6 @@
 /obj/item/hardpoint/support/weapons_sensor
-	name = "Integrated Weapons Sensor Array"
-	desc = "Improves the accuracy and fire rate of all onboard weapons"
+	name = "integrated weapons sensor array"
+	desc = "Improves the accuracy and fire rate of all onboard weapons."
 
 	icon_state = "warray"
 	disp_icon = "tank"

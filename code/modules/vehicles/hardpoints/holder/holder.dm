@@ -166,12 +166,13 @@
 /obj/item/hardpoint/holder/get_hardpoint_image()
 	var/image/I = ..()
 	var/list/images = list(I)
-	for(var/obj/item/hardpoint/H in hardpoints)
-		var/image/HI = H.get_hardpoint_image()
-		if(LAZYLEN(px_offsets) && loc && HI)
-			HI.pixel_x += px_offsets["[loc.dir]"][1]
-			HI.pixel_y += px_offsets["[loc.dir]"][2]
-		images += HI
+	for(var/obj/item/hardpoint/hardpoint as anything in hardpoints)
+		var/image/hardpoint_image = hardpoint.get_hardpoint_image()
+		if(LAZYLEN(px_offsets) && loc && hardpoint_image)
+			hardpoint_image.pixel_x += px_offsets["[loc.dir]"][1]
+			hardpoint_image.pixel_y += px_offsets["[loc.dir]"][2]
+		hardpoint_image.layer = hardpoint_layer + 0.0001
+		images += hardpoint_image
 	return images
 
 /obj/item/hardpoint/holder/rotate(var/deg)

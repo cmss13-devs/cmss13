@@ -228,6 +228,12 @@
 			C.next_move_slowdown = new_slowdown
 	..()
 
+/turf/open/auto_turf/snow/handle_snowplow()
+	if(!bleed_layer)
+		return
+	new /obj/item/stack/snow(src, bleed_layer)
+	changing_layer(0)
+
 /turf/open/auto_turf/snow/layer0 //still have to manually define the layers for the editor
 	icon_state = "snow_0"
 	bleed_layer = 0

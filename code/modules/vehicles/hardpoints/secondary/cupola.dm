@@ -1,6 +1,6 @@
 /obj/item/hardpoint/secondary/m56cupola
-	name = "M56 Cupola"
-	desc = "A secondary weapon for tanks that shoots bullets"
+	name = "M56 cupola"
+	desc = "A secondary weapon for tanks that shoots bullets."
 
 	icon_state = "m56_cupola"
 	disp_icon = "tank"

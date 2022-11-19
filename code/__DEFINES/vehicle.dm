@@ -7,12 +7,6 @@
 #define HDPT_TURRET                 "turret"
 #define HDPT_SPECIAL                "special"	//special pre-installed hardpoints with unique behaviour
 
-#define HDPT_LAYER_WHEELS   1
-#define HDPT_LAYER_SUPPORT  2
-#define HDPT_LAYER_ARMOR    3
-#define HDPT_LAYER_TURRET   4
-#define HDPT_LAYER_MAX      4
-
 #define VEHICLE_DRIVER              "driver"
 #define VEHICLE_GUNNER      		"primary gunner"
 #define VEHICLE_SUPPORT_GUNNER_ONE  "1st support gunner"

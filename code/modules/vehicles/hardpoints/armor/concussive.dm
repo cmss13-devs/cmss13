@@ -1,6 +1,6 @@
 /obj/item/hardpoint/armor/concussive
-	name = "Concussive Armor"
-	desc = "Protects the vehicle from high-impact weapons"
+	name = "concussive armor"
+	desc = "Protects the vehicle from high-impact weapons."
 
 	icon_state = "concussive_armor"
 	disp_icon = "tank"

@@ -132,6 +132,13 @@
 				bleed_layer = 0
 				update_icon(1, 0)
 
+/turf/open/snow/handle_snowplow()
+	if(!bleed_layer)
+		return
+	new /obj/item/stack/snow(src, bleed_layer)
+	bleed_layer = 0
+	update_icon(TRUE, FALSE)
+
 //SNOW LAYERS-----------------------------------//
 /turf/open/snow/layer0
 	icon_state = "snow_0"

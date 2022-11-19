@@ -1,5 +1,5 @@
 /obj/item/hardpoint/holder/tank_turret
-	name = "M34A2-A Multipurpose Turret"
+	name = "M34A2-A multipurpose turret"
 	desc = "The centerpiece of the tank. Designed to support quick installation and deinstallation of various tank weapon modules. Has inbuilt smoke screen deployment system."
 
 	icon = 'icons/obj/vehicles/tank.dmi'
@@ -45,7 +45,7 @@
 		/obj/item/hardpoint/secondary/grenade_launcher
 	)
 
-	hdpt_layer = HDPT_LAYER_TURRET
+	hardpoint_layer = VEHICLE_HARDPOINT_TOP_LAYER
 	px_offsets = list(
 		"1" = list(0, -10),
 		"2" = list(0, 10),
@@ -76,7 +76,7 @@
 	if(health <= 0)
 		icon_state_suffix = "1"
 
-	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[icon_state_suffix]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[icon_state_suffix]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir, layer = hardpoint_layer)
 
 	if(health <= initial(health))
 		var/image/damage_overlay = image(icon, icon_state = "damaged_turret")

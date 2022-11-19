@@ -1,6 +1,6 @@
 /obj/item/hardpoint/primary/minigun
-	name = "LTAA-AP Minigun"
-	desc = "A primary weapon for tanks that spews bullets"
+	name = "LTAA-AP minigun"
+	desc = "A primary weapon for tanks that spews bullets."
 
 	icon_state = "ltaaap_minigun"
 	disp_icon = "tank"

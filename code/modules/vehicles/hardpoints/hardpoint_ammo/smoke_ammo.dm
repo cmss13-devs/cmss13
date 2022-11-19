@@ -1,5 +1,5 @@
 /obj/item/ammo_magazine/hardpoint/turret_smoke
-	name = "Turret Smoke Screen Magazine"
+	name = "turret smoke screen magazine"
 	desc = "A smoke grenades magazine used by tank turret."
 	caliber = "grenade"
 	icon_state = "slauncher_1"

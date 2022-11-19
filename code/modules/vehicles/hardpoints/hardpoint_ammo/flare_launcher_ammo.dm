@@ -1,5 +1,5 @@
 /obj/item/ammo_magazine/hardpoint/flare_launcher
-	name = "M-87F Flare Launcher Magazine"
+	name = "M-87F flare launcher magazine"
 	desc = "A support armament grenade magazine. This one is loaded with flares packaged in expendable shells."
 	caliber = "flare"
 	icon_state = "slauncher_1"

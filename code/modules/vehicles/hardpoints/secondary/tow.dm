@@ -1,6 +1,6 @@
 /obj/item/hardpoint/secondary/towlauncher
-	name = "TOW Launcher"
-	desc = "A secondary weapon for tanks that shoots rockets"
+	name = "TOW launcher"
+	desc = "A secondary weapon for tanks that shoots rockets."
 
 	icon_state = "tow_launcher"
 	disp_icon = "tank"

@@ -71,8 +71,8 @@
 	var/turf/old_turf = get_turf(src)
 	forceMove(get_step(src, direction))
 
-	for(var/obj/item/hardpoint/H in hardpoints)
-		H.on_move(old_turf, get_turf(src), direction)
+	for(var/obj/item/hardpoint/hardpoint as anything in hardpoints)
+		hardpoint.on_move(old_turf, get_turf(src), direction)
 
 	if(movement_sound && world.time > move_next_sound_play)
 		playsound(src, movement_sound, vol = 20, sound_range = 30)

@@ -1,5 +1,5 @@
 /obj/item/hardpoint/secondary/small_flamer
-	name = "LZR-N Flamer Unit"
+	name = "LZR-N flamer unit"
 	desc = "A secondary weapon for tanks that spews hot fire."
 
 	icon_state = "flamer"

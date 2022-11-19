@@ -1,5 +1,5 @@
 /obj/item/ammo_magazine/hardpoint/towlauncher
-	name = "TOW Launcher Magazine"
+	name = "TOW launcher magazine"
 	desc = "A secondary armament rocket magazine"
 	caliber = "rocket" //correlates to any rocket mags
 	icon_state = "quad_rocket"

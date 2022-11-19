@@ -3,7 +3,7 @@
 	desc = "primary armor source"
 
 	slot = HDPT_ARMOR
-	hdpt_layer = HDPT_LAYER_ARMOR
+	hardpoint_layer = VEHICLE_HARDPOINT_BOTTOM_LAYER
 
 	damage_multiplier = 0.5
 

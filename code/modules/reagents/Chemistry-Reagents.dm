@@ -262,9 +262,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	result = C.result
 	result_amount = C.result_amount
 
-/datum/reagent/proc/save_chemclass() //Called from /datum/reagents/New()
+/datum/reagent/proc/save_chemclass()
 	//Store all classed reagents so we can easily access chem IDs based on class. Doesn't store flagged reagents.
-	if(chemclass && !(flags && REAGENT_NO_GENERATION))
+	if(chemclass && !(flags & REAGENT_NO_GENERATION))
 		switch(chemclass)
 			if(CHEM_CLASS_BASIC)
 				chemical_gen_classes_list["C1"] += id

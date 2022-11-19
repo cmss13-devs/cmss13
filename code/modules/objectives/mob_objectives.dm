@@ -138,3 +138,112 @@
 				UnregisterSignal(target, COMSIG_XENO_REVIVED)
 			else
 				UnregisterSignal(target, COMSIG_HUMAN_REVIVED)
+
+// --------------------------------------------
+// *** Get a mob to an area/level ***
+// --------------------------------------------
+#define MOB_CAN_COMPLETE_AFTER_DEATH 1
+#define MOB_FAILS_ON_DEATH 2
+
+/datum/cm_objective/move_mob
+	var/area/destination
+	var/mob/living/target
+	var/mob_can_die = MOB_CAN_COMPLETE_AFTER_DEATH
+	objective_flags = OBJECTIVE_DO_NOT_TREE
+
+
+/datum/cm_objective/move_mob/New(var/mob/living/H)
+	to_world("/datum/cm_objective/move_mob/New(var/mob/living/H)")
+	if(istype(H, /mob/living))
+		target = H
+		RegisterSignal(H, COMSIG_MOB_DEATH, .proc/handle_death)
+		RegisterSignal(H, COMSIG_PARENT_QDELETING, .proc/handle_corpse_deletion)
+	activate()
+	. = ..()
+
+/datum/cm_objective/move_mob/Destroy()
+	to_world("/datum/cm_objective/move_mob/Destroy()")
+	UnregisterSignal(target, list(
+		COMSIG_MOB_DEATH,
+		COMSIG_PARENT_QDELETING,
+		COMSIG_LIVING_REJUVENATED,
+	))
+	if (isXeno(target))
+		UnregisterSignal(target, COMSIG_XENO_REVIVED)
+	else
+		UnregisterSignal(target, COMSIG_HUMAN_REVIVED)
+	destination = null
+	target = null
+	return ..()
+
+/datum/cm_objective/move_mob/proc/handle_corpse_deletion(mob/living/carbon/deleted_mob)
+	SIGNAL_HANDLER
+
+	to_world("/datum/cm_objective/move_mob/proc/handle_corpse_deletion(mob/living/carbon/deleted_mob)")
+	qdel(src)
+
+/datum/cm_objective/move_mob/proc/handle_death(mob/living/carbon/dead_mob)
+	SIGNAL_HANDLER
+
+	to_world("/datum/cm_objective/move_mob/proc/handle_death(mob/living/carbon/dead_mob)")
+	if(mob_can_die == MOB_FAILS_ON_DEATH)
+		deactivate()
+		if (isXeno(dead_mob))
+			RegisterSignal(dead_mob, COMSIG_XENO_REVIVED, .proc/handle_mob_revival)
+		else
+			RegisterSignal(dead_mob, COMSIG_HUMAN_REVIVED, .proc/handle_mob_revival)
+		RegisterSignal(dead_mob, COMSIG_LIVING_REJUVENATED, .proc/handle_mob_revival)
+
+/datum/cm_objective/move_mob/proc/handle_mob_revival(mob/living/carbon/revived_mob)
+	SIGNAL_HANDLER
+
+	to_world("/datum/cm_objective/move_mob/proc/handle_mob_revival(mob/living/carbon/revived_mob)")
+	UnregisterSignal(revived_mob, list(COMSIG_LIVING_REJUVENATED))
+
+	if (isXeno(revived_mob))
+		UnregisterSignal(revived_mob, COMSIG_XENO_REVIVED)
+	else
+		UnregisterSignal(revived_mob, COMSIG_HUMAN_REVIVED)
+	activate()
+
+/datum/cm_objective/move_mob/check_completion()
+	. = ..()
+	if(istype(get_area(target),destination))
+		if(target.stat != DEAD || mob_can_die & MOB_CAN_COMPLETE_AFTER_DEATH)
+			complete()
+			to_world("COMPLETE!")
+			return TRUE
+
+/datum/cm_objective/move_mob/complete()
+	SSobjectives.statistics["survivors_rescued"]++
+	SSobjectives.statistics["survivors_rescued_total_points_earned"] += value
+	award_points()
+	deactivate()
+
+/datum/cm_objective/move_mob/almayer
+	destination = /area/almayer
+
+/datum/cm_objective/move_mob/almayer/survivor
+	name = "Rescue the Survivor"
+	mob_can_die = MOB_FAILS_ON_DEATH
+	value = OBJECTIVE_EXTREME_VALUE
+	//display_category = "Rescue the Survivors"
+
+/datum/cm_objective/move_mob/almayer/vip
+	name = "Rescue the VIP"
+	mob_can_die = MOB_FAILS_ON_DEATH
+	value = OBJECTIVE_ABSOLUTE_VALUE
+	//display_category = "Rescue the VIP"
+	objective_flags = OBJECTIVE_DO_NOT_TREE
+
+/mob/living/carbon/human/vip
+
+/mob/living/carbon/human/vip/Initialize(mapload, new_species)
+	. = ..()
+	new /datum/cm_objective/move_mob/almayer/vip(src)
+
+/mob/living/carbon/human/survivor
+
+/mob/living/carbon/human/survivor/Initialize(mapload, new_species)
+	. = ..()
+	new /datum/cm_objective/move_mob/almayer/survivor(src)

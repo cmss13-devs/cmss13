@@ -3,7 +3,7 @@
 /obj/item/alien_embryo
 	name = "alien embryo"
 	desc = "All slimy and yucky."
-	icon_state = "Larva Dead"
+	icon_state = "Embryo"
 	var/mob/living/affected_mob
 	var/stage = 0
 	var/counter = 0 //How developed the embryo is, if it ages up highly enough it has a chance to burst
@@ -92,6 +92,9 @@
 			if(iscarbon(affected_mob))
 				var/mob/living/carbon/C = affected_mob
 				C.med_hud_set_status()
+	for(var/i in affected_mob.effects_list)
+		if(istype(i, /datum/effects/pain))
+			message_admins("pain: -->[i]")
 
 	switch(stage)
 		if(2)
@@ -111,12 +114,14 @@
 		if(4)
 			if(prob(1))
 				if(affected_mob.knocked_out < 1)
+					affected_mob.pain.apply_pain(PAIN_BONE_BREAK)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
 												 SPAN_DANGER("You start shaking uncontrollably!"))
 					affected_mob.apply_effect(10, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
 			if(prob(2))
+				affected_mob.pain.apply_pain(PAIN_BONE_BREAK)
 				var/message = pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")
 				message = SPAN_WARNING("[message].")
 				to_chat(affected_mob, message)
@@ -171,6 +176,8 @@
 
 	new_xeno.update_icons()
 
+	new_xeno.cause_unbearable_pain(affected_mob) //the embryo is now a larva!! its so painful, ow!
+
 	// If we have a candidate, transfer it over
 	if(picked)
 		new_xeno.key = picked.key
@@ -187,12 +194,14 @@
 
 	stage = 6
 
-/mob/living/carbon/Xenomorph/Larva/proc/cause_unbearable_pain()
-	if(loc != affected_mob)
+/mob/living/carbon/Xenomorph/Larva/proc/cause_unbearable_pain(mob/living/carbon/victim)
+	if(loc != victim)
 		return
-	affected_mob.emote("scream")
-	to_chat(affected_mob, SPAN_HIGHDANGER(pick("ITS IN YOUR INSIDES!", "THE GNAWING!", "MAKE IT STOP!", "YOUR INSIDES!", "YOU ARE GOING TO DIE!", "ITS TEARING YOU APART!")))
-	addtimer(CALLBACK(src, .proc/cause_unbearable_pain), rand(1,3) SECONDS, TIMER_UNIQUE)
+	victim.emote("scream")
+	victim.pain.apply_pain(100)  //ow that really hurts larvie!
+	var/message = SPAN_HIGHDANGER( pick("ITS IN YOUR INSIDES!", "ITS GNAWING YOU!", "MAKE IT STOP!", "YOU ARE GOING TO DIE!", "ITS TEARING YOU APART!"))
+	to_chat(victim, message)
+	addtimer(CALLBACK(src, .proc/cause_unbearable_pain, victim), rand(1, 3) SECONDS, TIMER_UNIQUE)
 
 /mob/living/carbon/Xenomorph/Larva/proc/chest_burst(mob/living/carbon/victim)
 	set waitfor = 0
@@ -200,7 +209,6 @@
 		return
 	victim.chestburst = TRUE
 	to_chat(src, SPAN_DANGER("You start bursting out of [victim]'s chest!"))
-	cause_unbearable_pain()
 	if(victim.knocked_out < 1)
 		victim.apply_effect(20, DAZE)
 	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \

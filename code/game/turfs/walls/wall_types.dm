@@ -94,8 +94,6 @@
 
 	. = ..()
 
-
-
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
 	if(isXeno(M))
 		return
@@ -946,7 +944,7 @@
 /obj/structure/alien/movable_wall/proc/take_damage(var/damage)
 	health -= damage
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 	else
 		update_icon()
 

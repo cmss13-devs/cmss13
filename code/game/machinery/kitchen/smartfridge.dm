@@ -34,6 +34,11 @@
 	var/networked = FALSE
 	var/transfer_mode = FALSE
 
+/obj/structure/machinery/smartfridge/Initialize(mapload, ...)
+	. = ..()
+	GLOB.vending_products[/obj/item/reagent_container/glass/bottle] = 1
+	GLOB.vending_products[/obj/item/storage/pill_bottle] = 1
+
 /obj/structure/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
 		return 1
@@ -90,8 +95,6 @@
 			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
 								 SPAN_NOTICE("You add \the [O] to \the [src]."))
 
-		nanomanager.update_uis(src)
-
 	else if(istype(O, /obj/item/storage/bag/plants))
 		var/obj/item/storage/bag/plants/P = O
 		var/plants_loaded = 0
@@ -99,9 +102,9 @@
 			if(accept_check(G))
 				P.remove_from_storage(G,src)
 				if(item_quants[G.name])
-					item_quants[G.name]++
+					item_quants[G.name] += G
 				else
-					item_quants[G.name] = 1
+					item_quants[G.name] = list(G)
 				plants_loaded++
 		if(plants_loaded)
 
@@ -110,8 +113,6 @@
 				SPAN_NOTICE("You load \the [src] with \the [P]."))
 			if(P.contents.len > 0)
 				to_chat(user, SPAN_NOTICE("Some items are refused."))
-
-		nanomanager.update_uis(src)
 
 	else if(!(O.flags_item & NOBLUDGEON)) //so we can spray, scan, c4 the machine.
 		to_chat(user, SPAN_NOTICE("\The [src] smartly refuses [O]."))
@@ -128,15 +129,14 @@
 		if(shock(user, 100))
 			return
 
-	ui_interact(user)
+	tgui_interact(user)
 
 /obj/structure/machinery/smartfridge/proc/add_item(var/obj/item/O)
 	O.forceMove(src)
-
 	if(item_quants[O.name])
-		item_quants[O.name]++
+		item_quants[O.name] += O
 	else
-		item_quants[O.name] = 1
+		item_quants[O.name] = list(O)
 
 /obj/structure/machinery/smartfridge/proc/add_network_item(var/obj/item/O)
 	if(is_in_network())
@@ -153,54 +153,121 @@
 //*   SmartFridge Menu
 //********************/
 
-/obj/structure/machinery/smartfridge/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	user.set_interaction(src)
+/obj/structure/machinery/smartfridge/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SmartFridge", name)
+		ui.open()
 
-	var/data[0]
-	data["contents"] = null
-	data["wires"] = null
-	data["panel_open"] = panel_open
-	data["electrified"] = seconds_electrified > 0
-	data["shoot_inventory"] = shoot_inventory
-	data["locked"] = locked
-	data["secure"] = is_secure_fridge
-	data["networked"] = is_in_network()
-	data["transfer_mode"] = transfer_mode
+/obj/structure/machinery/smartfridge/ui_static_data(mob/user)
+	. = ..(user)
+	.["networked"] = is_in_network()
 
-	var/list/items[0]
-	for (var/i=1 to length(item_quants))
-		var/K = item_quants[i]
-		var/count = item_quants[K]
-		if (count > 0)
-			items.Add(list(list("display_name" = html_encode(capitalize(K)), "vend" = i, "quantity" = count)))
-
-	if (length(items) > 0)
-		data["contents"] = items
-
-	if(is_in_network())
-		var/list/networked_items = list()
-		for (var/i=1 to length(chemical_data.shared_item_quantity))
-			var/K = chemical_data.shared_item_quantity[i]
-			var/count = chemical_data.shared_item_quantity[K]
-			if (count > 0)
-				networked_items.Add(list(list("display_name" = html_encode(capitalize(K)), "vend" = i, "quantity" = count)))
-
-		if (length(networked_items) > 0)
-			data["networked_contents"] = networked_items
+/obj/structure/machinery/smartfridge/ui_data(mob/user)
+	. = list()
+	.["secure"] = is_secure_fridge
+	.["transfer_mode"] = transfer_mode
+	.["locked"] = locked
 
 	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
 	for(var/wire = 1 to wire_descriptions.len)
 		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
-	if (panel_wires)
-		data["wires"] = panel_wires
+	.["electrical"] = list(
+		"electrified" = seconds_electrified > 0,
+		"panel_open" = panel_open,
+		"wires" = panel_wires,
+		"shoot_inventory" = shoot_inventory,
+	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "smartfridge.tmpl", src.name, 420, 500)
-		ui.set_initial_data(data)
-		ui.open()
+	var/list/local_items = list()
+	for (var/i=1 to length(item_quants))
+		var/obj/item_index = item_quants[i]
+		var/list/item_list = item_quants[item_index]
+		var/count = length(item_list)
+		if(count < 1)
+			continue
+
+		var/item_name = item_list[1].name
+		var/item_path = item_list[1].type
+		var/item_desc = item_list[1].desc
+
+		var/imgid = replacetext(replacetext("[item_path]", "/obj/item/", ""), "/", "-")
+
+		var/item_type = "other"
+		if(ispath(item_path, /obj/item/reagent_container/glass/bottle/))
+			item_type = "bottle"
+		else if(ispath(item_path, /obj/item/storage/pill_bottle/))
+			item_type = "pills"
+
+		if (count > 0)
+			var/list/local_item = list(
+				"display_name" = capitalize(item_name),
+				"item" = item_path,
+				"index" = i,
+				"quantity" = count,
+				"image" = imgid,
+				"category" = item_type,
+				"desc" = item_desc,
+			)
+			local_items += list(local_item)
+
+	var/list/networked_items = list()
+	if(is_in_network())
+		for (var/i=1 to length(chemical_data.shared_item_quantity))
+			var/item_name = chemical_data.shared_item_quantity[i]
+			var/count = chemical_data.shared_item_quantity[item_name]
+			if (count > 0)
+				var/list/networked_item = list("display_name" = capitalize(item_name), "index" = i, "quantity" = count)
+				networked_items += list(networked_item)
+
+	.["storage"] = list(
+		"contents" = local_items,
+		"networked" = networked_items,
+	)
+
+/obj/structure/machinery/smartfridge/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/vending_products))
+
+/obj/structure/machinery/smartfridge/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	var/mob/user = usr
+	src.add_fingerprint(user)
+
+	switch(action)
+		if("vend")
+			if(!ispowered)
+				to_chat(user, SPAN_WARNING("[src] has no power."))
+				return FALSE
+			if (!in_range(src, usr))
+				return FALSE
+			if(is_secure_fridge)
+				if(locked == FRIDGE_LOCK_COMPLETE)
+					to_chat(usr, SPAN_DANGER("Access denied."))
+					return FALSE
+				if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
+					to_chat(usr, SPAN_DANGER("Access denied."))
+					return FALSE
+			var/index=params["index"]
+			var/amount=params["amount"]
+
+			var/K = quantity_holder[index]
+			var/count = length(quantity_holder[K])
+
+			if(count > 0)
+				quantity_holder[K] = max(count - amount, 0)
+				var/i = amount
+				if(!transfer_mode)
+					for(var/obj/O in source)
+						if(O.name == K)
+							source.Remove(O)
+							O.forceMove(loc)
+							i--
+							if (i <= 0)
+								return TRUE
 
 /obj/structure/machinery/smartfridge/Topic(href, href_list)
 	if (..()) return 0
@@ -381,10 +448,11 @@
 		return 0
 
 	for (var/O in item_quants)
-		if(item_quants[O] <= 0) //Try to use a record that actually has something to dump.
+		var/list/item_list = item_quants[O]
+		if(length(item_list) <= 0) //Try to use a record that actually has something to dump.
 			continue
-
-		item_quants[O]--
+		var/obj/target_item = item_quants[1]
+		item_list.Remove(target_item)
 		for(var/obj/T in contents)
 			if(T.name == O)
 				T.forceMove(src.loc)

@@ -18,7 +18,7 @@
 var/list/all_supply_groups = list(
 	"Operations",
 	"Weapons",
-	"Vehicle Modules and Ammo",
+	"Vehicle Ammo",
 	"Attachments",
 	"Ammo",
 	"Weapons Specialist Ammo",

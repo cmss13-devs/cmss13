@@ -346,3 +346,22 @@
   ChainsawMullet:
   - bugfix: Fixed Abduct's slow not being properly applied & accounted for when using
       Dislocate on the slowed target.
+2022-11-19:
+  Diegoflores31:
+  - bugfix: Acid Pillar now properly spits acid to Enemies or xenos on fire that are
+      located on top of it .
+  ThePiachu:
+  - bugfix: Political Prisoner Survivor on Sorokyne can now wear the Survivor Snow
+      Uniform with their UPP undercoat, and they spawn with the Snow Uniform correctly.
+  - bugfix: Clown corpse now spawns their clown gear first before spawning snow gear.
+      This means they will have their full getup no matter the weather.
+  - balance: Survivors with Civilian Engineering access can now access Engineering
+      vendors without hacking them first.
+  Tisx:
+  - soundadd: Added in new firing sounds for the CAS rocket pods and mini-rocketpods.
+  - sounddel: removed and replaced the incoming fire warning sound (the sound you
+      hear when the see the flashing green dot) to be louder and much more terrifying.
+  harryob:
+  - bugfix: crew console now shows ground/ship colours again
+  totalepicness:
+  - soundadd: Fixes no sound when hitting metal foam

@@ -8,95 +8,14 @@
 		ui.set_autoupdate(TRUE)
 
 /datum/research_objective_memory_interface/proc/get_clues(mob/user)
-	var/datum/objective_memory_storage/memories = user.mind.objective_memory
 	var/list/clue_categories = list()
-
-	//
-
 
 	var/list/clue_category = list()
 	clue_category["name"] = "Analyze Chemicals"
 	clue_category["icon"] = "scroll"
 	clue_category["clues"] = list()
-	for (var/chemid in chemical_data.chemical_objective_list)
-
-		//if (report.state == OBJECTIVE_ACTIVE)
-			//clue_category["clues"] += list(report.get_tgui_data())
-	clue_categories += list(clue_category)
-
-	// Progress reports
-	clue_category = list()
-	clue_category["name"] = "Reports"
-	clue_category["icon"] = "scroll"
-	clue_category["clues"] = list()
-	for (var/datum/cm_objective/document/progress_report/report in memories.progress_reports)
-		if (report.state == OBJECTIVE_ACTIVE)
-			clue_category["clues"] += list(report.get_tgui_data())
-	clue_categories += list(clue_category)
-
-
-	// Folders
-	clue_category = list()
-	clue_category["name"] = "Folders"
-	clue_category["icon"] = "folder"
-	clue_category["clues"] = list()
-	for (var/datum/cm_objective/document/folder/folder in memories.folders)
-		if (folder.state == OBJECTIVE_ACTIVE)
-			clue_category["clues"] += list(folder.get_tgui_data())
-	clue_categories += list(clue_category)
-
-
-	// Technical manuals
-	clue_category = list()
-	clue_category["name"] = "Manuals"
-	clue_category["icon"] = "book"
-	clue_category["clues"] = list()
-	for (var/datum/cm_objective/document/technical_manual/manual in memories.technical_manuals)
-		if (manual.state == OBJECTIVE_ACTIVE)
-			clue_category["clues"] += list(manual.get_tgui_data())
-	clue_categories += list(clue_category)
-
-
-	// Data (disks + terminals)
-	clue_category = list()
-	clue_category["name"] = "Data"
-	clue_category["icon"] = "save"
-	clue_category["clues"] = list()
-	for (var/datum/cm_objective/retrieve_data/disk/disk in memories.disks)
-		if (disk.state == OBJECTIVE_ACTIVE)
-			clue_category["clues"] += list(disk.get_tgui_data())
-	for (var/datum/cm_objective/retrieve_data/terminal/terminal in memories.terminals)
-		if (terminal.state == OBJECTIVE_ACTIVE)
-			clue_category["clues"] += list(terminal.get_tgui_data())
-	clue_categories += list(clue_category)
-
-
-	// Retrieve items (devices + documents)
-	clue_category = list()
-	clue_category["name"] = "Retrieve"
-	clue_category["icon"] = "box"
-	clue_category["compact"] = TRUE
-	clue_category["clues"] = list()
-	for (var/datum/cm_objective/retrieve_item/objective in memories.retrieve_items)
-		if (objective.state == OBJECTIVE_ACTIVE)
-			clue_category["clues"] += list(objective.get_tgui_data())
-	clue_categories += list(clue_category)
-
-
-	// Other (safes)
-	clue_category = list()
-	clue_category["name"] = "Other"
-	clue_category["icon"] = "ellipsis-h"
-	clue_category["clues"] = list()
-	for (var/datum/cm_objective/objective in memories.other)
-
-		// Safes
-		if(istype(objective, /datum/cm_objective/crack_safe))
-			var/datum/cm_objective/crack_safe/safe = objective
-			if (safe.state == OBJECTIVE_ACTIVE)
-				clue_category["clues"] += list(safe.get_tgui_data())
-			continue
-
+	for (var/chemid in chemical_data.chemical_not_completed_objective_list)
+		clue_category["clues"] += list(chemical_data.get_tgui_data(chemid))
 	clue_categories += list(clue_category)
 
 	return clue_categories

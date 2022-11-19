@@ -1156,16 +1156,16 @@ and you're good to go.
 
 			//This is where the projectile leaves the barrel and deals with projectile code only.
 			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-			in_chamber = null
+			in_chamber = null // It's not in the gun anymore
 			INVOKE_ASYNC(projectile_to_fire, /obj/item/projectile.proc/fire_at, target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target, FALSE)
+			projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 			if(check_for_attachment_fire)
 				active_attachable.last_fired = world.time
 			else
 				last_fired = world.time
-			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
-			projectile_to_fire = null
+			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 			. = TRUE
 
 			if(flags_gun_features & GUN_FULL_AUTO_ON)
@@ -1259,12 +1259,12 @@ and you're good to go.
 			M.last_damage_data = cause_data
 			user.attack_log += t //Apply the attack log.
 			last_fired = world.time //This is incorrect if firing an attached undershotgun, but the user is too dead to care.
-			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
+			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
 			projectile_to_fire.play_damage_effect(user)
-			if(!delete_bullet(projectile_to_fire))
-				qdel(projectile_to_fire) //If this proc DIDN'T delete the bullet, we're going to do so here.
-
+			// No projectile code to handhold us, we do the cleaning ourselves:
+			QDEL_NULL(projectile_to_fire)
+			in_chamber = null
 			reload_into_chamber(user) //Reload the sucker.
 		else
 			click_empty(user)//If there's no projectile, we can't do much.
@@ -1382,15 +1382,15 @@ and you're good to go.
 		else
 			last_fired = world.time
 
-		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
+		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [M] with [src]!"), SPAN_DANGER("You have executed [M] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
 			M.death()
 			bullets_to_fire = bullets_fired //Giant bursts are not compatible with precision killshots.
-
-		if(!delete_bullet(projectile_to_fire))
-			qdel(projectile_to_fire)
+		// No projectile code to handhold us, we do the cleaning ourselves:
+		QDEL_NULL(projectile_to_fire)
+		in_chamber = null
 
 		//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
 		if(!check_for_attachment_fire && !reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.

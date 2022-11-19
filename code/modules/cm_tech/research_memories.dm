@@ -46,89 +46,13 @@
 /datum/research_objective_memory_interface/proc/get_objectives()
 	var/list/objectives = list()
 
-	// Documents (papers + reports + folders + manuals)
-	objectives += list(get_objective(
-		"Documents",
-		SSobjectives.statistics["documents_completed"],
-		SSobjectives.statistics["documents_total_instances"],
-		SSobjectives.statistics["documents_total_points_earned"]
-	))
-
-	// Data (disks + terminals)
-	objectives += list(get_objective(
-		"Upload data",
-		SSobjectives.statistics["data_retrieval_completed"],
-		SSobjectives.statistics["data_retrieval_total_instances"],
-		SSobjectives.statistics["data_retrieval_total_points_earned"]
-	))
-
-	// Retrieve items (devices + documents + fultons)
-	objectives += list(get_objective(
-		"Retrieve items",
-		SSobjectives.statistics["item_retrieval_completed"],
-		SSobjectives.statistics["item_retrieval_total_instances"],
-		SSobjectives.statistics["item_retrieval_total_points_earned"]
-	))
-
-	// Miscellaneous (safes)
-	objectives += list(get_objective(
-		"Miscellaneous",
-		SSobjectives.statistics["miscellaneous_completed"],
-		SSobjectives.statistics["miscellaneous_total_instances"],
-		SSobjectives.statistics["miscellaneous_total_points_earned"]
-	))
-
 	// Chemicals
 	objectives += list(get_objective(
-		"Analyze chemicals",
+		"Analyze Chemicals",
 		SSobjectives.statistics["chemicals_completed"],
 		FALSE,
-		SSobjectives.statistics["chemicals_total_points_earned"],
+		chemical_data.rsc_credits,
 		"white"
-	))
-
-	// Corpses (human + xeno)
-	objectives += list(get_objective(
-		"Recover corpses",
-		SSobjectives.statistics["corpses_recovered"],
-		FALSE,
-		SSobjectives.statistics["corpses_total_points_earned"],
-		"white"
-	))
-
-	// Communications
-	objectives += list(get_objective(
-		"Colony communications",
-		FALSE,
-		FALSE,
-		(SSobjectives.comms.state == OBJECTIVE_COMPLETE ? SSobjectives.comms.value : FALSE),
-		(SSobjectives.comms.state == OBJECTIVE_COMPLETE ? "green" : "red"),
-		(SSobjectives.comms.state == OBJECTIVE_COMPLETE ? "Online" : "Offline"),
-	))
-
-	// Power (smes)
-	var/message
-	var/color
-	if (!SSobjectives.first_drop_complete)
-		message = "Unable to remotely interface with powernet"
-		color = "white"
-	else if (SSobjectives.power.state == OBJECTIVE_COMPLETE)
-		message = "Online"
-		color = "green"
-	else if (SSobjectives.power.last_power_output)
-		message = "[SSobjectives.power.last_power_output]W, [SSobjectives.power.minimum_power_required]W required"
-		color = "orange"
-	else
-		message = "Offline"
-		color = "red"
-
-	objectives += list(get_objective(
-		"Colony power",
-		FALSE,
-		FALSE,
-		(SSobjectives.power.state == OBJECTIVE_COMPLETE ? SSobjectives.power.value : FALSE),
-		color,
-		message,
 	))
 
 	return objectives
@@ -136,14 +60,11 @@
 /datum/research_objective_memory_interface/ui_data(mob/user)
 	. = list()
 
-	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
-
 	.["research_credits"] = chemical_data.rsc_credits
 	var/clearance = "[chemical_data.clearance_level]"
 	if(chemical_data.clearance_x_access)
 		clearance +="X"
 	.["clearance"] = clearance
-	.["total_tech_points"] = tree.total_points
 	.["objectives"] = get_objectives(user)
 	.["clue_categories"] = get_clues(user)
 

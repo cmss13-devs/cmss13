@@ -70,27 +70,8 @@ const CluesAdvanced = (props, context) => {
               px="1rem"
               py=".5rem">
               <Flex.Item>
-                {!!clue.color && (
-                  <Box inline preserveWhitespace color={clue.color_name}>
-                    {clue.color + ' '}
-                  </Box>
-                )}
                 {clue.text}
-                {!!clue.itemID && (
-                  <Box inline bold preserveWhitespace>
-                    {' ' + clue.itemID}
-                  </Box>
-                )}
-                {!!clue.key && (
-                  <Fragment>
-                    {clue.key_text}
-                    <Box inline bold>
-                      {clue.key}
-                    </Box>
-                  </Fragment>
-                )}
               </Flex.Item>
-              <Flex.Item>{clue.location}</Flex.Item>
             </Flex>
           );
         })}
@@ -105,11 +86,6 @@ const Objectives = (props, context) => {
   return (
     <Section
       title="Objectives"
-      buttons={
-        <Button
-          content={'Total earned credits: ' + data.total_tech_points}
-          backgroundColor="transparent"
-        />
       }>
       <LabeledList>
         {data.objectives.map((page) => {

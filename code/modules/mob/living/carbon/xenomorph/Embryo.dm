@@ -92,9 +92,6 @@
 			if(iscarbon(affected_mob))
 				var/mob/living/carbon/C = affected_mob
 				C.med_hud_set_status()
-	for(var/i in affected_mob.effects_list)
-		if(istype(i, /datum/effects/pain))
-			message_admins("pain: -->[i]")
 
 	switch(stage)
 		if(2)
@@ -114,14 +111,14 @@
 		if(4)
 			if(prob(1))
 				if(affected_mob.knocked_out < 1)
-					affected_mob.pain.apply_pain(PAIN_BONE_BREAK)
+					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
 												 SPAN_DANGER("You start shaking uncontrollably!"))
 					affected_mob.apply_effect(10, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
 			if(prob(2))
-				affected_mob.pain.apply_pain(PAIN_BONE_BREAK)
+				affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 				var/message = pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")
 				message = SPAN_WARNING("[message].")
 				to_chat(affected_mob, message)
@@ -198,7 +195,8 @@
 	if(loc != victim)
 		return
 	victim.emote("scream")
-	victim.pain.apply_pain(100)  //ow that really hurts larvie!
+	if(prob(50)) //dont want them passing out too quick D:
+		victim.pain.apply_pain(PAIN_CHESTBURST_STRONG)  //ow that really hurts larvie!
 	var/message = SPAN_HIGHDANGER( pick("ITS IN YOUR INSIDES!", "ITS GNAWING YOU!", "MAKE IT STOP!", "YOU ARE GOING TO DIE!", "ITS TEARING YOU APART!"))
 	to_chat(victim, message)
 	addtimer(CALLBACK(src, .proc/cause_unbearable_pain, victim), rand(1, 3) SECONDS, TIMER_UNIQUE)
@@ -236,10 +234,13 @@
 
 	var/burstcount = 0
 
+	victim.spawn_gibs()
+
 	for(var/mob/living/carbon/Xenomorph/Larva/L in victim)
 		var/datum/hive_status/hive = GLOB.hive_datum[L.hivenumber]
 		L.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		playsound(L, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
+
 		if(L.client)
 			L.set_lighting_alpha_from_prefs(L.client)
 

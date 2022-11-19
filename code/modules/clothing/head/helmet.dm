@@ -617,6 +617,68 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
 	specialty = "XM12 pattern intel"
 
+/obj/item/clothing/head/helmet/marine/heavy_assault
+	name = "\improper B15 pattern assault helmet"
+	desc = "The B15 pattern assault helmet is visually similar to the standard issue M10 helmet, on closer inspection though it seems to have a robust metal lining and has a visor built into the helmet which is able to slide down to further protect the wearer."
+	icon_state = "heavyassault"
+	item_state = "heavyassault"
+	flags_atom = FPRINT|CONDUCT
+	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
+	siemens_coefficient = 0.9
+	force = 20
+	specialty = "B15 pattern assault"
+	var/protection_on = FALSE
+	var/base_icon_state
+
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/head/helmet/marine/heavy_assault/Initialize()
+	. = ..()
+	base_icon_state = icon_state
+
+/obj/item/clothing/head/helmet/marine/heavy_assault/attack_self(mob/user)
+	..()
+
+	if(protection_on)
+		vision_impair = VISION_IMPAIR_NONE
+		flags_inventory &= ~(COVEREYES|COVERMOUTH)
+		flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
+		icon_state = base_icon_state
+		eye_protection = FALSE
+		to_chat(user, SPAN_NOTICE("You push the visor out of your face."))
+		armor_melee = initial(armor_melee)
+		armor_bullet = initial(armor_bullet)
+		armor_bomb = initial(armor_bomb)
+		armor_bio = initial(armor_bio)
+		armor_rad = initial(armor_rad)
+		armor_internaldamage = initial(armor_internaldamage)
+	else
+		vision_impair = VISION_IMPAIR_HIGH
+		flags_inventory |= COVEREYES|COVERMOUTH
+		flags_inv_hide |= HIDEEYES|HIDEFACE
+		icon_state = "[base_icon_state]_down"
+		eye_protection = TRUE
+		to_chat(user, SPAN_NOTICE("You slide the visor down to protect your face."))
+		armor_melee = CLOTHING_ARMOR_HIGH
+		armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+		armor_bomb = CLOTHING_ARMOR_HIGH
+		armor_bio = CLOTHING_ARMOR_HIGH
+		armor_rad = CLOTHING_ARMOR_VERYHIGH
+		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	protection_on = !protection_on
+
+	if(user.update_tint(loc))
+		var/mob/living/carbon/human/H = loc
+		if(H.head == src)
+			H.update_tint()
+
+	update_clothing_icon()
+
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
+
+
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"
 	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."

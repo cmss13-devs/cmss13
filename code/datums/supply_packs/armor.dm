@@ -75,3 +75,10 @@
 	containername = "M4 pattern marine armor crate"
 	group = "Armor"
 
+/datum/supply_packs/armor_heavy_assault
+	name = "B15 heavy assault armor crate (x1 helmet, x1 armor)"
+	contains = list(/obj/item/clothing/suit/storage/marine/heavy_assault, /obj/item/clothing/head/helmet/marine/heavy_assault)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate
+	containername = "B15 heavy assault armor crate"
+	group = "Armor"

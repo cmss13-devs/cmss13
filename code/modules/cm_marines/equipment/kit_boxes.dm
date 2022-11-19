@@ -521,3 +521,11 @@
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)
+
+/obj/item/storage/box/kit/heavy_assault
+	name = "\improper B15 Heavy Assault Armor kit"
+	pro_case_overlay = "engi"
+
+/obj/item/storage/box/kit/heavy_assault/fill_preset_inventory()
+	new /obj/item/clothing/suit/storage/marine/heavy_assault(src)
+	new /obj/item/clothing/head/helmet/marine/heavy_assault(src)

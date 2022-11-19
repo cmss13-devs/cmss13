@@ -564,6 +564,22 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
 
+/obj/item/clothing/suit/storage/marine/heavy_assault
+	name = "\improper B15 heavy assault armor"
+	desc = "The predecessor to the B18 defensive armor, it consists of many heavy plates of armor interlocked to eachother with a thin biohazard suit as the frame, although restrictive in movement, anyone wearing one of these is a force to be reckoned with."
+	icon_state = "heavyassault"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_VERYHIGH
+	armor_rad = CLOTHING_ARMOR_VERYHIGH
+	storage_slots = 2
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_HANDS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_HANDS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_HANDS
+	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
+	specialty = "B15 heavy assault"
+
 //===========================//SPECIALIST\\================================\\
 //=======================================================================\\
 

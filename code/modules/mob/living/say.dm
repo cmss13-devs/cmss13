@@ -21,7 +21,7 @@ var/list/department_radio_keys = list(
 	  ":y" = RADIO_CHANNEL_WY,			".y" = RADIO_CHANNEL_WY,			"#y" = RADIO_CHANNEL_WY,
 	  ":o" = RADIO_CHANNEL_COLONY,		".o" = RADIO_CHANNEL_COLONY,		"#o" = RADIO_CHANNEL_PMC_CCT,
 	  ":z" = RADIO_CHANNEL_HIGHCOM,		".z" = RADIO_CHANNEL_HIGHCOM,		"#z" = RADIO_CHANNEL_PMC_CMD,
-	  ":k" = SQUAD_MARSOC,				".k" = SQUAD_MARSOC,				"#k" = RADIO_CHANNEL_WY_WO,
+	  ":k" = SQUAD_SOF,					".k" = SQUAD_SOF,					"#k" = RADIO_CHANNEL_WY_WO,
 
 	  ":R" = RADIO_EAR_RIGHT,			".R" = RADIO_EAR_RIGHT,				"#R" = RADIO_EAR_RIGHT,
 	  ":L" = RADIO_EAR_LEFT ,			".L" = RADIO_EAR_LEFT ,				"#L" = RADIO_EAR_LEFT ,
@@ -46,7 +46,7 @@ var/list/department_radio_keys = list(
 	  ":Y" = RADIO_CHANNEL_WY,			".Y" = RADIO_CHANNEL_WY,			"#Y" = RADIO_CHANNEL_WY,
 	  ":O" = RADIO_CHANNEL_COLONY,		".O" = RADIO_CHANNEL_COLONY,		"#O" = RADIO_CHANNEL_PMC_CCT,
 	  ":Z" = RADIO_CHANNEL_HIGHCOM,		".Z" = RADIO_CHANNEL_HIGHCOM,		"#Z" = RADIO_CHANNEL_PMC_CMD,
-	  ":K" = SQUAD_MARSOC,				".K" = SQUAD_MARSOC,				"#K" = RADIO_CHANNEL_WY_WO,
+	  ":K" = SQUAD_SOF,					".K" = SQUAD_SOF,					"#K" = RADIO_CHANNEL_WY_WO,
 
 	  //kinda localization -- rastaf0
 	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.

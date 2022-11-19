@@ -103,7 +103,7 @@ var/const/CCT_FREQ		= 1350//TEMP FOR USE IN MAKING SURE THE OTHERS ARE IN THE RI
 
 //USCM High Command (USCM 1470-1499)
 var/const/HC_FREQ		= 1471
-var/const/MARSOC_FREQ	= 1472
+var/const/SOF_FREQ		= 1472
 
 //Ship department channels
 var/const/COMM_FREQ 	= 1481

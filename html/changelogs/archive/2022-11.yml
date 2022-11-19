@@ -357,6 +357,10 @@
       This means they will have their full getup no matter the weather.
   - balance: Survivors with Civilian Engineering access can now access Engineering
       vendors without hacking them first.
+  Tisx:
+  - soundadd: Added in new firing sounds for the CAS rocket pods and mini-rocketpods.
+  - sounddel: removed and replaced the incoming fire warning sound (the sound you
+      hear when the see the flashing green dot) to be louder and much more terrifying.
   harryob:
   - bugfix: crew console now shows ground/ship colours again
   totalepicness:

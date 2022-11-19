@@ -350,6 +350,9 @@
   Diegoflores31:
   - bugfix: Acid Pillar now properly spits acid to Enemies or xenos on fire that are
       located on top of it .
+  Geeves, Frans_Feiffer:
+  - rscadd: Added squad-colored scarves and headbands.
+  - rscadd: Added a third slot to helmets that only takes fluff helmet garb.
   ThePiachu:
   - bugfix: Political Prisoner Survivor on Sorokyne can now wear the Survivor Snow
       Uniform with their UPP undercoat, and they spawn with the Snow Uniform correctly.

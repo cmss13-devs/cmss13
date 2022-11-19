@@ -53,7 +53,7 @@
 	faction_group = FACTION_LIST_ERT
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
 	var/human_versus_human = FALSE
-	var/headset_type = /obj/item/device/radio/headset/distress/PMC
+	var/headset_type = /obj/item/device/radio/headset/distress/contractor
 
 /datum/equipment_preset/contractor/New()
 	. = ..()

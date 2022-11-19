@@ -347,6 +347,9 @@
   - bugfix: Fixed Abduct's slow not being properly applied & accounted for when using
       Dislocate on the slowed target.
 2022-11-19:
+  Diegoflores31:
+  - bugfix: Acid Pillar now properly spits acid to Enemies or xenos on fire that are
+      located on top of it .
   ThePiachu:
   - bugfix: Political Prisoner Survivor on Sorokyne can now wear the Survivor Snow
       Uniform with their UPP undercoat, and they spawn with the Snow Uniform correctly.

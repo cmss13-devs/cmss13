@@ -276,10 +276,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				chemical_gen_classes_list["C4"] += id
 			if(CHEM_CLASS_SPECIAL)
 				chemical_gen_classes_list["C5"] += id
-				chemical_objective_list[id] = objective_value
+				chemical_data.chemical_objective_list[id] = objective_value
 			if(CHEM_CLASS_ULTRA)
 				chemical_gen_classes_list["C6"] += id
-				chemical_objective_list[id] = objective_value
+				chemical_data.chemical_objective_list[id] = objective_value
 		chemical_gen_classes_list["C"] += id
 	if(gen_tier)
 		switch(gen_tier)

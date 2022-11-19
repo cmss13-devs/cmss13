@@ -92,7 +92,7 @@
 		chemical_data.save_document(report, "XRF Scans", "[sample_number] - [report.name]")
 		if(S.chemclass < CHEM_CLASS_SPECIAL || (S.chemclass >= CHEM_CLASS_SPECIAL && report.completed))
 			chemical_data.save_new_properties(S.properties)
-		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
+		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[S.id])
 			if(last_used)
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
 			var/datum/chem_property/P = S.get_property(PROPERTY_DNA_DISINTEGRATING)
@@ -103,7 +103,7 @@
 					return
 
 			chemical_data.update_credits(2)
-			chemical_identified_list[S.id] = S.objective_value
+			chemical_data.chemical_identified_list[S.id] = S.objective_value
 			SSobjectives.statistics["chemicals_completed"]++
 			SSobjectives.statistics["chemicals_total_points_earned"] += S.objective_value
 

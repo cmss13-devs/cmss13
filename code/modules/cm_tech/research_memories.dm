@@ -18,7 +18,7 @@
 	clue_category["name"] = "Analyze Chemicals"
 	clue_category["icon"] = "scroll"
 	clue_category["clues"] = list()
-	for (var/chemid in chemical_objective_list)
+	for (var/chemid in chemical_data.chemical_objective_list)
 
 		//if (report.state == OBJECTIVE_ACTIVE)
 			//clue_category["clues"] += list(report.get_tgui_data())

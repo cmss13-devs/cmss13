@@ -1,3 +1,16 @@
+/datum/supply_packs/pouches_ammo
+	name = "Large Pounch 2x(pistol,magazine)"
+	contains = list(
+					/obj/item/storage/pouch/magazine/large,
+					/obj/item/storage/pouch/magazine/large,
+					/obj/item/storage/pouch/magazine/pistol/large,
+					/obj/item/storage/pouch/magazine/pistol/large,
+					)
+	cost = RO_PRICE_VERY_CHEAP
+	containertype = /obj/structure/closet/crate
+	containername = "Large Pounch"
+	group = "Clothing"
+
 //---------------------------------------------
 //Backpacks
 //---------------------------------------------

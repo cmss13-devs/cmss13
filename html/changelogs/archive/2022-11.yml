@@ -347,5 +347,12 @@
   - bugfix: Fixed Abduct's slow not being properly applied & accounted for when using
       Dislocate on the slowed target.
 2022-11-19:
+  ThePiachu:
+  - bugfix: Political Prisoner Survivor on Sorokyne can now wear the Survivor Snow
+      Uniform with their UPP undercoat, and they spawn with the Snow Uniform correctly.
+  - bugfix: Clown corpse now spawns their clown gear first before spawning snow gear.
+      This means they will have their full getup no matter the weather.
+  - balance: Survivors with Civilian Engineering access can now access Engineering
+      vendors without hacking them first.
   totalepicness:
   - soundadd: Fixes no sound when hitting metal foam

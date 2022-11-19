@@ -624,6 +624,7 @@ Additional game mode variables.
 				H.mind.memory += temp_story
 				//remove ourselves, so we don't get stuff generated for us
 				survivors -= H.mind
+		new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 /datum/game_mode/proc/survivor_non_event_transform(mob/living/carbon/human/H, obj/effect/landmark/spawn_point, is_synth = FALSE, is_CO = FALSE)
 	H.forceMove(get_turf(spawn_point))
@@ -632,6 +633,7 @@ Additional game mode variables.
 
 	//Give them some information
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
+		new /datum/cm_objective/move_mob/almayer/survivor(H)
 		spawn(4)
 			to_chat(H, "<h2>You are a survivor!</h2>")
 			to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))

@@ -29307,6 +29307,16 @@
 	icon_state = "darkredfull2"
 	},
 /area/lv522/indoors/a_block/security)
+"mQm" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/security/wooden_tv{
+	pixel_y = 6
+	},
+/turf/open/floor/prison{
+	icon_state = "darkbrownfull2";
+	tag = "icon-darkbrownfull2"
+	},
+/area/lv522/landing_zone_2/ceiling)
 "mQo" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison,
@@ -96158,7 +96168,7 @@ cpy
 uwT
 ewf
 vpp
-nat
+mQm
 kow
 lHH
 eSQ

@@ -48,13 +48,7 @@
 /obj/item/weapon/gun/proc/full_auto_stop(client/source, atom/A, params)
 	SIGNAL_HANDLER
 	fa_target = null
-	fa_params = params2list(params)
-
-	// Strip exact click location
-	fa_params -= "vis-x"
-	fa_params -= "vis-y"
-	fa_params -= "icon-x"
-	fa_params -= "icon-y"
+	fa_params = null
 
 /obj/item/weapon/gun/proc/full_auto_new_target(client/source, atom/start, atom/hovered, params)
 	SIGNAL_HANDLER

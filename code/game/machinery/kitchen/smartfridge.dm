@@ -91,7 +91,7 @@
 
 	if(accept_check(O))
 		if(user.drop_held_item())
-			add_item(O)
+			add_item(item_quants, O)
 			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
 								 SPAN_NOTICE("You add \the [O] to \the [src]."))
 
@@ -131,21 +131,16 @@
 
 	tgui_interact(user)
 
-/obj/structure/machinery/smartfridge/proc/add_item(var/obj/item/O)
+/obj/structure/machinery/smartfridge/proc/add_item(var/list/target, var/obj/item/O)
 	O.forceMove(src)
-	if(item_quants[O.name])
-		item_quants[O.name] += O
+	if(target[O.name])
+		target[O.name] += O
 	else
-		item_quants[O.name] = list(O)
+		target[O.name] = list(O)
 
 /obj/structure/machinery/smartfridge/proc/add_network_item(var/obj/item/O)
 	if(is_in_network())
-		chemical_data.shared_item_storage.Add(O)
-
-		if(chemical_data.shared_item_quantity[O.name])
-			chemical_data.shared_item_quantity[O.name]++
-		else
-			chemical_data.shared_item_quantity[O.name] = 1
+		add_item(chemical_data.shared_item_storage, O)
 		return TRUE
 	return FALSE
 
@@ -158,6 +153,14 @@
 	if (!ui)
 		ui = new(user, src, "SmartFridge", name)
 		ui.open()
+
+/obj/structure/machinery/smartfridge/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/smartfridge/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
 
 /obj/structure/machinery/smartfridge/ui_static_data(mob/user)
 	. = ..(user)
@@ -179,6 +182,7 @@
 		"panel_open" = panel_open,
 		"wires" = panel_wires,
 		"shoot_inventory" = shoot_inventory,
+		"powered" = ispowered,
 	)
 
 	var/list/local_items = list()
@@ -215,11 +219,34 @@
 
 	var/list/networked_items = list()
 	if(is_in_network())
-		for (var/i=1 to length(chemical_data.shared_item_quantity))
-			var/item_name = chemical_data.shared_item_quantity[i]
-			var/count = chemical_data.shared_item_quantity[item_name]
+		for (var/i=1 to length(chemical_data.shared_item_storage))
+			var/item_index = chemical_data.shared_item_storage[i]
+			var/list/item_list = chemical_data.shared_item_storage[item_index]
+			var/count = length(item_list)
+			if(count < 1)
+				continue
+			var/item_name = item_list[1].name
+			var/item_path = item_list[1].type
+			var/item_desc = item_list[1].desc
+
+			var/imgid = replacetext(replacetext("[item_path]", "/obj/item/", ""), "/", "-")
+
+			var/item_type = "other"
+			if(ispath(item_path, /obj/item/reagent_container/glass/bottle/))
+				item_type = "bottle"
+			else if(ispath(item_path, /obj/item/storage/pill_bottle/))
+				item_type = "pills"
+
 			if (count > 0)
-				var/list/networked_item = list("display_name" = capitalize(item_name), "index" = i, "quantity" = count)
+				var/list/networked_item = list(
+					"display_name" = capitalize(item_name),
+					"item" = item_path,
+					"index" = i,
+					"quantity" = count,
+					"image" = imgid,
+					"category" = item_type,
+					"desc" = item_desc,
+				)
 				networked_items += list(networked_item)
 
 	.["storage"] = list(
@@ -254,8 +281,13 @@
 			var/index=params["index"]
 			var/amount=params["amount"]
 
-			var/item_index = item_quants[index]
-			var/list/item_list = item_quants[item_index]
+			var/list/target_list = item_quants
+			if(params["isLocal"] == 0)
+				target_list = chemical_data.shared_item_storage
+
+			var/item_index = target_list[index]
+			var/list/item_list = target_list[item_index]
+
 			var/count = length(item_list)
 
 			if(count <= 0)
@@ -265,124 +297,80 @@
 			for(var/obj/item in item_list)
 				item_list.Remove(item)
 				item.forceMove(loc)
+				user.put_in_any_hand_if_possible(item, disable_warning = TRUE)
 				i--
 				if (i <= 0)
 					return TRUE
-
-/obj/structure/machinery/smartfridge/Topic(href, href_list)
-	if (..()) return 0
-
-	var/mob/user = usr
-	var/datum/nanoui/ui = nanomanager.get_open_ui(user, src, "main")
-
-	src.add_fingerprint(user)
-
-	if (href_list["close"])
-		user.unset_interaction()
-		ui.close()
-		return FALSE
-
-	if (href_list["toggletransfer"])
-		if(is_secure_fridge)
-			if(locked == FRIDGE_LOCK_COMPLETE)
-				to_chat(usr, SPAN_DANGER("Access denied."))
+		if("transfer")
+			if(!ispowered)
+				to_chat(user, SPAN_WARNING("[src] has no power."))
 				return FALSE
-			if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
-				to_chat(usr, SPAN_DANGER("Access denied."))
+			if (!in_range(src, usr))
 				return FALSE
-		if(is_in_network() && !transfer_mode)
-			transfer_mode = TRUE
-		else
-			transfer_mode = FALSE
-		return TRUE
+			if(is_secure_fridge)
+				if(locked == FRIDGE_LOCK_COMPLETE)
+					to_chat(usr, SPAN_DANGER("Access denied."))
+					return FALSE
+				if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
+					to_chat(usr, SPAN_DANGER("Access denied."))
+					return FALSE
+			var/index=params["index"]
+			var/amount=params["amount"]
 
-	if (href_list["vend"])
-		if(!ispowered)
-			to_chat(usr, SPAN_WARNING("[src] has no power."))
-			return FALSE
-		if (!in_range(src, usr))
-			return FALSE
-		if(is_secure_fridge)
-			if(locked == FRIDGE_LOCK_COMPLETE)
-				to_chat(usr, SPAN_DANGER("Access denied."))
+			var/source = item_quants
+			var/target = chemical_data.shared_item_storage
+			if(params["isLocal"] == 0)
+				source = chemical_data.shared_item_storage
+				target = item_quants
+
+			var/item_index = source[index]
+			var/list/item_list = source[item_index]
+			var/count = length(item_list)
+
+			if(count <= 0)
 				return FALSE
-			if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
-				to_chat(usr, SPAN_DANGER("Access denied."))
-				return FALSE
-		var/index = text2num(href_list["vend"])
-		var/amount = text2num(href_list["amount"])
-		var/from_network = text2num(href_list["network"])
 
-
-		// Sanity check, there are probably ways to press the button when it shouldn't be possible.
-		var/list/source = contents
-		var/list/quantity_holder = item_quants
-		// Validate we can reach the shared network.
-		transfer_mode = transfer_mode && is_in_network()
-
-		if(is_in_network() && from_network)
-			source = chemical_data.shared_item_storage
-			quantity_holder = chemical_data.shared_item_quantity
-
-		var/K = quantity_holder[index]
-		var/count = quantity_holder[K]
-
-		if(count > 0)
-			quantity_holder[K] = max(count - amount, 0)
 			var/i = amount
-			if(!transfer_mode)
-				for(var/obj/O in source)
-					if(O.name == K)
-						source.Remove(O)
-						O.forceMove(loc)
-						i--
-						if (i <= 0)
-							return TRUE
-			else
-				for(var/obj/O in source)
-					if(O.name == K)
-						if(from_network)
-							contents.Add(O)
-							item_quants[K]++
-							source.Remove(O)
-						else
-							chemical_data.shared_item_storage.Add(O)
-							chemical_data.shared_item_quantity[K]++
-							source.Remove(O)
-						i--
-						if(i <= 0)
-							return TRUE
-
-		return TRUE
-
-	if (panel_open)
-		if (href_list["cutwire"])
-			var/obj/item/held_item = usr.get_held_item()
+			for(var/obj/item in item_list)
+				item_list.Remove(item)
+				add_item(target, item)
+				i--
+				if (i <= 0)
+					return TRUE
+		if("cutwire")
+			if(!panel_open)
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 				to_chat(user, "You need wirecutters!")
 				return TRUE
 
-			var/wire = text2num(href_list["cutwire"])
-			if (isWireCut(wire))
-				mend(wire)
-			else
-				cut(wire)
+			var/wire = params["wire"]
+			cut(wire)
 			return TRUE
-
-		if (href_list["pulsewire"])
-			var/obj/item/held_item = usr.get_held_item()
-			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, "You need a multitool!")
+		if("fixwire")
+			if(!panel_open)
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+				to_chat(user, "You need wirecutters!")
 				return TRUE
-
-			var/wire = text2num(href_list["pulsewire"])
+			var/wire = params["wire"]
+			mend(wire)
+			return TRUE
+		if("pulsewire")
+			if(!panel_open)
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
+				to_chat(user, "You need multitool!")
+				return TRUE
+			var/wire = params["wire"]
 			if (isWireCut(wire))
 				to_chat(usr, "You can't pulse a cut wire.")
 				return TRUE
-
 			pulse(wire)
 			return TRUE
-
 	return FALSE
 
 //*************

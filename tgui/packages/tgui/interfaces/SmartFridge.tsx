@@ -1,26 +1,14 @@
 import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Icon, Flex, NoticeBox, Section, Stack, Tabs } from '../components';
-import { BoxProps } from '../components/Box';
+import { Button, Icon, NoticeBox, Section, Stack, Tabs } from '../components';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
-
-interface MachineElectrical {
-  electrified: number;
-  panel_open: number;
-  wires: WireSpec[];
-}
-
-interface WireSpec {
-  desc: string;
-  cut: number;
-}
+import { ElectricalPanel } from './common/ElectricalPanel';
 
 interface SmartFridgeData {
   secure: number;
   transfer_mode: number;
   locked: number;
-  electrical: MachineElectrical;
   storage: {
     contents: StorageItem[];
     networked: StorageItem[];
@@ -116,6 +104,7 @@ const ContentItem = (
 ) => {
   const { data, act } = useBackend<SmartFridgeData>(context);
   const { item } = props;
+  const itemref = { 'index': item.index, 'amount': 1, isLocal: props.isLocal };
   return (
     <>
       <TableCell className="ItemIconCell">
@@ -130,153 +119,22 @@ const ContentItem = (
           preserveWhitespace
           textAlign="center"
           icon="circle-down"
-          onClick={() => act('vend', { 'index': item.index, 'amount': 1 })}>
+          onClick={() => act('vend', itemref)}>
           {item.display_name}
         </Button>
       </TableCell>
-      <TableCell>
-        {props.isLocal && <Button icon="upload" />}
-        {!props.isLocal && <Button icon="download">Get from Network</Button>}
-      </TableCell>
+      {data.networked === 1 && (
+        <TableCell>
+          <Button
+            icon={props.isLocal ? 'upload' : 'download'}
+            onClick={() => act('transfer', itemref)}
+          />
+        </TableCell>
+      )}
       <TableCell>
         <Icon name="circle-info" />
       </TableCell>
     </>
-  );
-};
-
-const ElectricalPanelClosed = (props: BoxProps, context) => {
-  const { data } = useBackend<SmartFridgeData>(context);
-  return (
-    <NoticeBox
-      className={classes([
-        'PanelClosed',
-        'ElectricalSafetySign',
-        props.className,
-      ])}>
-      <Flex
-        direction="row"
-        justify="space-between"
-        fill
-        className="ElectricalSafetySign">
-        <Flex.Item grow>
-          <Flex
-            justify="space-between"
-            direction="column"
-            fill
-            className={classes(['ElectricalSafetySign'])}>
-            <Flex.Item>
-              <Icon name="circle-xmark" />
-            </Flex.Item>
-            <Flex.Item>
-              <Icon name="circle-xmark" />
-            </Flex.Item>
-          </Flex>
-        </Flex.Item>
-        <Flex.Item fill>
-          <Flex
-            justify="space-around"
-            align="center"
-            inline
-            fill
-            wrap
-            className="WarningIcon"
-            direction="column">
-            <Flex.Item>
-              <Icon name="bolt" size={2} />
-            </Flex.Item>
-            <Flex.Item>
-              <span>
-                Electrical hazard authorised <br />
-                personnel only
-              </span>
-            </Flex.Item>
-          </Flex>
-        </Flex.Item>
-        <Flex.Item grow>
-          <Flex
-            justify="space-between"
-            align="flex-end"
-            direction="column"
-            fill
-            className={classes(['ElectricalSafetySign'])}>
-            <Flex.Item>
-              <Icon name="circle-xmark" />
-            </Flex.Item>
-            <Flex.Item>
-              <Icon name="circle-xmark" />
-            </Flex.Item>
-          </Flex>
-        </Flex.Item>
-      </Flex>
-    </NoticeBox>
-  );
-};
-
-const WireControl = (props: { wire: WireSpec }, context) => {
-  return (
-    <>
-      <TableCell>{props.wire.desc}</TableCell>
-      <TableCell>
-        {props.wire.cut === 0 && <Button icon="scissors">cut</Button>}
-        {props.wire.cut === 1 && <Button icon="wrench">fix</Button>}
-      </TableCell>
-    </>
-  );
-};
-
-const ElectricalPanelOpen = (props: BoxProps, context) => {
-  const { data } = useBackend<SmartFridgeData>(context);
-  return (
-    <Box className={classes(['PanelOpen', props.className])}>
-      <Flex
-        direction="column"
-        justify="space-between"
-        fill
-        className="ElectricalSafetySign">
-        <Flex.Item>
-          <Table vertical className="WirePanel">
-            {data.electrical.wires.map((x) => (
-              <TableRow key={x.desc}>
-                <WireControl wire={x} />
-              </TableRow>
-            ))}
-          </Table>
-        </Flex.Item>
-        <Flex.Item>
-          <NoticeBox className="OpenSafetySign" />
-        </Flex.Item>
-      </Flex>
-    </Box>
-  );
-};
-
-const ElectricalPanel = (props, context) => {
-  const { data } = useBackend<SmartFridgeData>(context);
-  const isOpen = data.electrical.panel_open === 1;
-  return (
-    <div className={classes(['ElectricalAccessPanel'])}>
-      {!isOpen && (
-        <>
-          <div>
-            <ElectricalPanelClosed />
-          </div>
-          <div>
-            <ElectricalPanelOpen />
-          </div>
-        </>
-      )}
-      {isOpen && (
-        <>
-          <div>
-            <ElectricalPanelOpen />
-          </div>
-          <div>
-            <ElectricalPanelClosed />
-          </div>
-        </>
-      )}
-    </div>
   );
 };
 

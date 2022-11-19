@@ -215,7 +215,7 @@
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return TRUE
 		to_chat(user, SPAN_NOTICE("You wrenched it apart!"))
-		deconstruct()
+		deconstruct(TRUE)
 
 		return TRUE
 	return FALSE

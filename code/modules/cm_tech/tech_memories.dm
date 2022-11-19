@@ -159,7 +159,7 @@
 
 	// Rescue survivors
 	objectives += list(get_objective(
-		"Rescue Survivors",
+		"Rescue survivors",
 		SSobjectives.statistics["survivors_rescued"],
 		FALSE,
 		SSobjectives.statistics["survivors_rescued_total_points_earned"],

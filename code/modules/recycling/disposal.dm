@@ -293,13 +293,13 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
-				qdel(src)
+				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(60))
-				qdel(src)
+				deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 
 /obj/structure/machinery/disposal/Destroy()
@@ -724,8 +724,8 @@
 
 //Call to break the pipe, will expel any holder inside at the time then delete the pipe
 //Remains : set to leave broken pipe pieces in place
-/obj/structure/disposalpipe/proc/broken(var/remains = 0)
-	if(remains)
+/obj/structure/disposalpipe/deconstruct(disassembled = TRUE)
+	if(disassembled)
 		for(var/D in cardinal)
 			if(D & dpdir)
 				var/obj/structure/disposalpipe/broken/P = new(loc)
@@ -750,7 +750,7 @@
 		if(H && H.loc)
 			expel(H, T, 0)
 
-	QDEL_IN(src, 2)
+	QDEL_IN(src, 2) // doesn't call parent because of all this snowflakery
 
 //Pipe affected by explosion
 /obj/structure/disposalpipe/ex_act(severity)
@@ -765,7 +765,7 @@
 			healthcheck()
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			broken(0)
+			deconstruct(FALSE)
 			return
 
 //Test health for brokenness
@@ -773,9 +773,9 @@
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		return
 	if(health < -2)
-		broken(0)
+		deconstruct(FALSE)
 	else if(health < 1)
-		broken(1)
+		deconstruct(TRUE)
 
 //Attack by item. Weldingtool: unfasten and convert to obj/disposalconstruct
 /obj/structure/disposalpipe/attackby(var/obj/item/I, var/mob/user)

@@ -54,7 +54,7 @@
 	apply_smoke_effect(get_turf(src))
 
 /obj/effect/particle_effect/smoke/ex_act(severity)
-	if( prob(severity/EXPLOSION_THRESHOLD_LOW * 100) )
+	if(prob(severity/EXPLOSION_THRESHOLD_LOW * 100))
 		qdel(src)
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/M)

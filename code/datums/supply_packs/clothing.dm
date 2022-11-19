@@ -6,7 +6,7 @@
 					/obj/item/storage/pouch/magazine/pistol/large,
 					/obj/item/storage/pouch/magazine/pistol/large,
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "Large Pounch"
 	group = "Clothing"

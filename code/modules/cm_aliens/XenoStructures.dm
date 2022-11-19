@@ -44,8 +44,7 @@
 
 /obj/effect/alien/resin/proc/healthcheck()
 	if(health <= 0)
-		density = 0
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/effect/alien/resin/flamer_fire_act()
 	health -= 50

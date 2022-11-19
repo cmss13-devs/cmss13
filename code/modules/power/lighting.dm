@@ -38,6 +38,10 @@
 		if(3)
 			. += "The casing is closed."
 
+/obj/structure/machinery/light_construct/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/sheet/metal(get_turf(src.loc), sheets_refunded)
+	return ..()
 
 /obj/structure/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -47,15 +51,13 @@
 			to_chat(usr, "You begin deconstructing [src].")
 			if (!do_after(usr, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
-			new /obj/item/stack/sheet/metal( get_turf(src.loc), sheets_refunded )
 			user.visible_message("[user.name] deconstructs [src].", \
 				"You deconstruct [src].", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-			qdel(src)
+			deconstruct()
 		if (src.stage == 2)
 			to_chat(usr, "You have to remove the wires first.")
 			return
-
 		if (src.stage == 3)
 			to_chat(usr, "You have to unscrew the case first.")
 			return
@@ -543,7 +545,7 @@
 			if (prob(75))
 				broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 	return
 

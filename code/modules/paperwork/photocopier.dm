@@ -185,13 +185,13 @@
 						toner = 0
 			if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 				if(prob(50))
-					qdel(src)
+					deconstruct(FALSE)
 				else
 					if(toner > 0)
 						new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
 						toner = 0
 			if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-				qdel(src)
+				deconstruct(FALSE)
 		return
 
 /obj/structure/machinery/photocopier/proc/copy(obj/item/paper/original)

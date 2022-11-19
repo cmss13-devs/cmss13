@@ -95,12 +95,12 @@
 				set_broken()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
-				qdel(src)
+				deconstruct(FALSE)
 				return
 			if (prob(50))
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 		else
 			return
@@ -122,97 +122,18 @@
 		icon_state = initial(icon_state)
 		icon_state += "0"
 
-/obj/structure/machinery/prop/almayer/NavCon
+/obj/structure/machinery/prop/almayer/computer/NavCon
 	name = "NavCon"
 	desc = "Navigational console for plotting course and heading of the ship. Since the AI calculates all long-range navigation, this is only used for in-system course corrections and orbital maneuvers. Don't touch it!"
 
-	density = 0
-	anchored = 1
-	use_power = 1
-	idle_power_usage = 200
-
-	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "retro"
 
-/obj/structure/machinery/prop/almayer/NavCon/ex_act(severity)
-	switch(severity)
-		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(25))
-				set_broken()
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(25))
-				qdel(src)
-				return
-			if (prob(50))
-				set_broken()
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
-			return
-		else
-			return
-
-/obj/structure/machinery/prop/almayer/NavCon/proc/set_broken()
-	stat |= BROKEN
-	update_icon()
-
-/obj/structure/machinery/prop/almayer/NavCon/power_change()
-	..()
-	update_icon()
-
-/obj/structure/machinery/prop/almayer/NavCon/update_icon()
-	..()
-	icon_state = initial(icon_state)
-	if(stat & BROKEN)
-		icon_state += "b"
-	if(stat & NOPOWER)
-		icon_state = initial(icon_state)
-		icon_state += "0"
-
-/obj/structure/machinery/prop/almayer/NavCon2
+/obj/structure/machinery/prop/almayer/computer/NavCon2
 	name = "NavCon 2"
 	desc = "Navigational console for plotting course and heading of the ship. Since the AI calculates all long-range navigation, this is only used for in-system course corrections and orbital maneuvers. Don't touch it!"
 
-	density = 0
-	anchored = 1
-	use_power = 1
-	idle_power_usage = 200
-
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "retro2"
-
-/obj/structure/machinery/prop/almayer/NavCon2/ex_act(severity)
-	switch(severity)
-		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(25))
-				set_broken()
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(25))
-				qdel(src)
-				return
-			if (prob(50))
-				set_broken()
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
-			return
-		else
-			return
-
-/obj/structure/machinery/prop/almayer/NavCon2/proc/set_broken()
-	stat |= BROKEN
-	update_icon()
-
-/obj/structure/machinery/prop/almayer/NavCon2/power_change()
-	..()
-	update_icon()
-
-/obj/structure/machinery/prop/almayer/NavCon2/update_icon()
-	..()
-	icon_state = initial(icon_state)
-	if(stat & BROKEN)
-		icon_state += "b"
-	if(stat & NOPOWER)
-		icon_state = initial(icon_state)
-		icon_state += "0"
 
 /obj/structure/machinery/prop/almayer/CICmap
 	name = "map table"

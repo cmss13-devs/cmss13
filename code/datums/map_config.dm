@@ -33,8 +33,10 @@
 	var/weather_holder
 
 	var/list/survivor_types
+	var/list/survivor_types_by_variant
 
 	var/list/synth_survivor_types
+	var/list/synth_survivor_types_by_variant
 
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 
@@ -67,9 +69,7 @@
 		/datum/equipment_preset/survivor/engineer
 	)
 
-	synth_survivor_types = list(
-		/datum/equipment_preset/synth/survivor
-	)
+	synth_survivor_types = typesof(/datum/equipment_preset/synth/survivor)
 
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config = new
@@ -174,6 +174,13 @@
 		pathed_survivor_types += survivor_typepath
 	survivor_types = pathed_survivor_types.Copy()
 
+	survivor_types_by_variant = list()
+	for(var/surv_type in survivor_types)
+		var/datum/equipment_preset/survivor/surv_equipment = surv_type
+		var/survivor_variant = initial(surv_equipment.survivor_variant)
+		if(!survivor_types_by_variant[survivor_variant]) survivor_types_by_variant[survivor_variant] = list()
+		survivor_types_by_variant[survivor_variant] += surv_type
+
 	if(islist(json["synth_survivor_types"]))
 		synth_survivor_types = json["synth_survivor_types"]
 	else if ("synth_survivor_types" in json)
@@ -190,6 +197,13 @@
 				continue
 		pathed_synth_survivor_types += synth_survivor_typepath
 	synth_survivor_types = pathed_synth_survivor_types.Copy()
+
+	synth_survivor_types_by_variant = list()
+	for(var/surv_type in synth_survivor_types)
+		var/datum/equipment_preset/synth/survivor/surv_equipment = surv_type
+		var/survivor_variant = initial(surv_equipment.survivor_variant)
+		if(!synth_survivor_types_by_variant[survivor_variant]) synth_survivor_types_by_variant[survivor_variant] = list()
+		synth_survivor_types_by_variant[survivor_variant] += surv_type
 
 	if (islist(json["monkey_types"]))
 		monkey_types = list()

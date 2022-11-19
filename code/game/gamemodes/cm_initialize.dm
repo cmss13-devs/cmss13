@@ -567,18 +567,19 @@ Additional game mode variables.
 	else
 		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth)
 
-/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/H, var/is_synth = FALSE)
-	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
-
+/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/equipping_human, var/is_synth = FALSE)
+	var/list/survivor_types
 	if(is_synth)
-		survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
+		survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+	else
+		survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].survivor_types
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)
 	var/not_a_xenomorph = TRUE
-	if(H.first_xeno)
+	if(equipping_human.first_xeno)
 		not_a_xenomorph = FALSE
-	arm_equipment(H, randjob, FALSE, not_a_xenomorph)
+	arm_equipment(equipping_human, randjob, FALSE, not_a_xenomorph)
 
 
 /datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner, var/is_synth = FALSE)

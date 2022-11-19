@@ -29,6 +29,15 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_SURVIVOR					"Survivor"
 #define JOB_SYNTH_SURVIVOR				"Synth Survivor"
 
+#define ANY_SURVIVOR					"Any Survivor"
+#define CIVILIAN_SURVIVOR				"Civilian Survivor"
+#define SECURITY_SURVIVOR				"Security Survivor"
+#define SCIENTIST_SURVIVOR				"Scientist Survivor"
+#define MEDICAL_SURVIVOR				"Medical Survivor"
+#define ENGINEERING_SURVIVOR			"Engineering Survivor"
+#define CORPORATE_SURVIVOR				"Corporate Survivor"
+#define SURVIVOR_VARIANT_LIST			list(ANY_SURVIVOR, CIVILIAN_SURVIVOR, SECURITY_SURVIVOR, SCIENTIST_SURVIVOR, MEDICAL_SURVIVOR, ENGINEERING_SURVIVOR, CORPORATE_SURVIVOR)
+
 #define JOB_CMO							"Chief Medical Officer"
 #define JOB_DOCTOR						"Doctor"
 #define JOB_NURSE						"Nurse"

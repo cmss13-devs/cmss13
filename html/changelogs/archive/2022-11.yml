@@ -353,6 +353,11 @@
   Geeves, Frans_Feiffer:
   - rscadd: Added squad-colored scarves and headbands.
   - rscadd: Added a third slot to helmets that only takes fluff helmet garb.
+  Huffie56:
+  - rscadd: 'Added a new category for ASRS : food.'
+  - rscadd: new crates with (potato wheat tomato)*20 meat and fish  *5 and a crate
+      with every type of condiment.
+  - qol: regrouping all the food crate related item in the food category
   ThePiachu:
   - bugfix: Political Prisoner Survivor on Sorokyne can now wear the Survivor Snow
       Uniform with their UPP undercoat, and they spawn with the Snow Uniform correctly.

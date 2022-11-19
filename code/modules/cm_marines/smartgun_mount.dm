@@ -7,7 +7,7 @@
 #define M2C_HIGH_COOLDOWN_ROLL 0.45
 #define M2C_PASSIVE_COOLDOWN_AMOUNT 4
 #define M2C_OVERHEAT_OVERLAY 14
-#define M2C_CRUSHER_STUN 3 SECONDS
+#define M2C_CRUSHER_STUN 3 //amount in ticks (roughly 3 seconds)
 
 //////////////////////////////////////////////////////////////
 //Mounted MG, Replacment for the current jury rig code.
@@ -942,7 +942,7 @@
 	if(operator)
 		to_chat(operator, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram!"))
 		operator.unset_interaction()
-		operator.KnockDown(M2C_CRUSHER_STUN)
+		operator.apply_effect(M2C_CRUSHER_STUN, WEAKEN)
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"

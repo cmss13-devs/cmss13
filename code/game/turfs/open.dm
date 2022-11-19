@@ -608,8 +608,8 @@
 		//slip in the murky water if we try to run through it
 		if(prob(50))
 			to_chat(M, pick(SPAN_NOTICE("You slip on something slimy."),SPAN_NOTICE("You fall over into the murk.")))
-			M.Stun(2)
-			M.KnockDown(1)
+			M.apply_effect(2, STUN)
+			M.apply_effect(1, WEAKEN)
 
 		//piranhas - 25% chance to be an omnipresent risk, although they do practically no damage
 		if(prob(25))
@@ -663,6 +663,11 @@
 	name = "floor"
 	icon_state = "rasputin1"
 
+/turf/open/shuttle/predship
+	name = "ship floor"
+	icon_state = "floor6"
+	supports_surgery = TRUE
+	allow_construction = TRUE
 
 //not really plating, just the look
 /turf/open/shuttle/plating

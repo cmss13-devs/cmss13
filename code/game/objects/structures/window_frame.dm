@@ -126,7 +126,7 @@
 					var/oldloc = loc
 					if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC, M) || loc != oldloc)
 						return
-					M.KnockDown(2)
+					M.apply_effect(2, WEAKEN)
 					user.visible_message(SPAN_WARNING("[user] pulls [M] onto [src]."),
 					SPAN_NOTICE("You pull [M] onto [src]."))
 					M.forceMove(loc)

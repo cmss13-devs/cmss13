@@ -4,6 +4,7 @@
 	assignment = JOB_CLF
 	rank = FACTION_CLF
 	faction = FACTION_CLF
+	origin_override = ORIGIN_CIVILIAN
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/New()
@@ -484,6 +485,7 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	//specialist backpack stuff
 	H.equip_to_slot_or_del(new /obj/item/prop/folded_anti_tank_sadar(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs(H), WEAR_IN_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
 	//storage items
@@ -759,7 +761,7 @@
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/synth/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_COLONY)
+	H.set_species(SYNTH_COLONY_GEN_ONE)
 
 /datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/colonist/clf/CLF = new()

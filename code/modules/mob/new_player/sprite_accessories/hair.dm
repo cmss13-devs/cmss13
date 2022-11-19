@@ -680,6 +680,11 @@
 	icon_state = "hair_flair2"
 	gender = FEMALE
 
+/datum/sprite_accessory/hair/scully2
+	name = "Scully 2"
+	icon_state = "hair_scully2"
+	gender = FEMALE
+
 /datum/sprite_accessory/hair/chelsea
 	name = "Punk Shave, Chelsea"
 	icon_state = "hair_punk_chelsea"

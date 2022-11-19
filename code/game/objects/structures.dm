@@ -153,7 +153,7 @@
 
 		if(M.lying) return //No spamming this on people.
 
-		M.KnockDown(5)
+		M.apply_effect(5, WEAKEN)
 		to_chat(M, SPAN_WARNING("You topple as \the [src] moves under you!"))
 
 		if(prob(25))

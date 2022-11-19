@@ -47,7 +47,7 @@
 					oxyloss += 10
 				oxyloss += 2
 				if(prob(15))
-					KnockOut(rand(1,3))
+					apply_effect(rand(1,3), PARALYZE)
 					var/word = pick("dizzy","woozy","faint")
 					to_chat(src, SPAN_DANGER("You feel extremely [word]."))
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
@@ -259,7 +259,7 @@
 		return "greenblood"
 	if(species.flags & IS_SYNTHETIC)
 		return "whiteblood"
-	if(species.name == "Zombie")
+	if(species.name == SPECIES_ZOMBIE)
 		return "greyblood"
 	return "blood"
 

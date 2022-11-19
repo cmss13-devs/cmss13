@@ -31,7 +31,7 @@
 	// Pass it on
 	return shuttle.get_sound_ambience()
 
-////////////////////////////Single-area shuttles////////////////////////////
+//========== Single-area shuttles ============//
 
 /area/shuttle/transit
 	name = "Hyperspace"

@@ -332,17 +332,12 @@
 /obj/item/weapon/gun/revolver/m44/mp //No differences (yet) beside spawning with marksman ammo loaded
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman
 
-/obj/item/weapon/gun/revolver/m44/custom //accuracy and damage bonus
+/obj/item/weapon/gun/revolver/m44/custom //loadout
 	name = "\improper M44 custom combat revolver"
 	desc = "A bulky combat revolver. The handle has been polished to a pearly perfection, and the body is silver plated. Fires .44 Magnum rounds."
-	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman
+	current_mag = /obj/item/ammo_magazine/internal/revolver/m44
 	icon_state = "m44rc"
 	item_state = "m44rc"
-
-/obj/item/weapon/gun/revolver/m44/custom/set_gun_config_values()
-	..()
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 
 //----------------------------------------------
 // Blade Runner Blasters.
@@ -426,6 +421,12 @@
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp)
+
+/obj/item/weapon/gun/revolver/m44/custom/webley/set_gun_config_values()
+	..()
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+
 
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.

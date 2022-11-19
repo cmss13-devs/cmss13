@@ -80,6 +80,11 @@
 	. += ""
 	. += "Security Level: [uppertext(get_security_level())]"
 
+	if(species?.has_species_tab_items)
+		var/list/species_tab_items = species.get_status_tab_items(src)
+		for(var/tab_item in species_tab_items)
+			. += tab_item
+
 	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
 
@@ -101,7 +106,7 @@
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)
-			. += eta_status
+			. += "Evacuation: [eta_status]"
 
 /mob/living/carbon/human/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
 	if(lying)
@@ -128,7 +133,7 @@
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
 
-	if(!get_type_in_ears(/obj/item/clothing/ears/earmuffs))
+	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
@@ -136,10 +141,10 @@
 	if(knockdown_value > 0)
 		var/obj/item/Item1 = get_active_hand()
 		var/obj/item/Item2 = get_inactive_hand()
-		KnockDown(knockdown_value)
+		apply_effect(knockdown_value, WEAKEN)
 		var/knockout_value = min( round( damage*0.1  ,1) ,10)
-		KnockOut( knockout_value )
-		Daze( knockout_value*2 )
+		apply_effect( knockout_value , PARALYZE)
+		apply_effect( knockout_value*2 , DAZE)
 		explosion_throw(severity, direction)
 
 		if(Item1 && isturf(Item1.loc))
@@ -313,16 +318,10 @@
 //gets paygrade from ID
 //paygrade is a user's actual rank, as defined on their ID.  size 1 returns an abbreviation, size 0 returns the full rank name, the third input is used to override what is returned if no paygrade is assigned.
 /mob/living/carbon/human/proc/get_paygrade(size = 1)
-	if(!species)
+	var/obj/item/card/id/id = wear_id
+	if(!species || !istype(id))
 		return ""
-
-	switch(species.name)
-		if("Human","Human Hero")
-			var/obj/item/card/id/id = wear_id
-			if(istype(id))
-				. = get_paygrades(id.paygrade, size, gender)
-		else
-			return ""
+	return species.handle_paygrades(id.paygrade, size, gender)
 
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
@@ -934,7 +933,7 @@
 		addtimer(CALLBACK(src, .proc/do_vomit), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
-	Stun(5)
+	apply_effect(5, STUN)
 	if(stat == 2) //One last corpse check
 		return
 	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
@@ -1223,6 +1222,8 @@
 
 
 /mob/living/carbon/human/proc/vomit_on_floor()
+	if(stat)
+		return
 	var/turf/T = get_turf(src)
 	visible_message(SPAN_DANGER("[src] vomits on the floor!"), null, null, 5)
 	nutrition -= 20
@@ -1510,6 +1511,9 @@
 /mob/living/carbon/human/synthetic/combat/Initialize(mapload)
 	. = ..(mapload, SYNTH_COMBAT)
 
+/mob/living/carbon/human/synthetic/infiltrator/Initialize(mapload)
+	. = ..(mapload, SYNTH_INFILTRATOR)
+
 /mob/living/carbon/human/synthetic/first/Initialize(mapload)
 	. = ..(mapload, SYNTH_GEN_ONE)
 
@@ -1520,13 +1524,13 @@
 /mob/living/carbon/human/resist_fire()
 	if(isYautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		KnockDown(1, TRUE) // actually 0.5
+		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		KnockDown(4, TRUE)
+		apply_effect(4, WEAKEN)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
@@ -1543,12 +1547,12 @@
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
 	if(isYautja(src))
-		KnockDown(1, TRUE)
+		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
 	else
-		KnockDown(1.5, TRUE)
+		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)

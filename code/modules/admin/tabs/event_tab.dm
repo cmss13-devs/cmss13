@@ -142,7 +142,7 @@
 
 	if (!SSticker.mode)
 		return
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_EVENT))
 		return
 
 	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big", "Distress_Small"))
@@ -199,7 +199,7 @@
 	if (!SSticker.mode)
 		return
 
-	if(!check_rights(R_SPAWN)) // Seems more like an event thing than an admin thing
+	if(!check_rights(R_EVENT)) // Seems more like an event thing than an admin thing
 		return
 
 	var/list/list_of_calls = list()

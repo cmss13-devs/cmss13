@@ -41,6 +41,7 @@
 	var/vend_y_offset = 0
 
 	var/list/listed_products = list()
+	var/list/initial_product_count = list()
 
 /*
 Explanation on stat flags:
@@ -94,6 +95,22 @@ IN_USE						used for vending/denying
 			qdel(src)
 			return
 	return
+
+// Vendor Icon Procs
+
+
+GLOBAL_LIST_EMPTY(vending_products)
+
+/obj/structure/machinery/cm_vending/proc/cm_build_inventory(var/list/items, var/name_index=1, var/type_index=3)
+	for (var/list/item in items)
+		// initial item count setup
+		var/item_name = item[name_index]
+		// icon setup
+		var/typepath = item[type_index]
+		if (!item_name || item_name == "" || !typepath)
+			continue
+
+		GLOB.vending_products[typepath] = 1
 
 //get which turf the vendor will dispense its products on.
 /obj/structure/machinery/cm_vending/proc/get_appropriate_vend_turf()
@@ -214,7 +231,7 @@ IN_USE						used for vending/denying
 			return
 		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
 			flip_back()
 		return
 
@@ -388,7 +405,6 @@ IN_USE						used for vending/denying
 
 	var/list/data = list(
 		"vendor_name" = name,
-		"theme" = vendor_theme,
 		"show_points" = show_points,
 		"current_m_points" = available_points_to_display,
 		"displayed_records" = display_list,
@@ -464,6 +480,17 @@ IN_USE						used for vending/denying
 	stat &= ~IN_USE
 	update_icon()
 	return
+
+//-----------TGUI PROCS------------------------
+/obj/structure/machinery/cm_vending/ui_static_data(mob/user)
+	var/list/data = list()
+	data["vendor_name"] = name
+	data["vendor_type"] = "base"
+	data["theme"] = vendor_theme
+	return data
+
+/obj/structure/machinery/cm_vending/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/vending_products))
 
 //------------GEAR VENDORS---------------
 //for special role-related gear
@@ -626,77 +653,9 @@ IN_USE						used for vending/denying
 	vendor_theme = VENDOR_THEME_USCM
 	show_points = FALSE
 
-/obj/structure/machinery/cm_vending/clothing/Topic(href, href_list)
+/obj/structure/machinery/cm_vending/clothing/Initialize()
 	. = ..()
-	if(.)
-		return
-
-	handle_topic(usr, href, href_list)
-
-/obj/structure/machinery/cm_vending/clothing/handle_topic(mob/user, href, href_list)
-	if(in_range(src, user) && isturf(loc) && ishuman(user))
-		user.set_interaction(src)
-		if(href_list["vend"])
-
-			if(stat & IN_USE)
-				return
-
-			var/mob/living/carbon/human/H = user
-
-			var/list/has_access = can_access_to_vend(user)
-			if (!has_access)
-				return
-
-			var/idx=text2num(href_list["vend"])
-			var/list/topic_listed_products = get_listed_products(user)
-			var/list/L = topic_listed_products[idx]
-			var/cost = L[2]
-
-			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
-				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
-				vend_fail()
-				return
-
-			var/turf/T = get_appropriate_vend_turf()
-			if(T.contents.len > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
-				vend_fail()
-				return
-
-			var/bitf = L[4]
-			if(bitf)
-				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SYNTH))
-					if(H.job != JOB_SYNTH)
-						to_chat(H, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
-						vend_fail()
-						return
-
-			if(use_points)
-				if(use_snowflake_points)
-					if(H.marine_snowflake_points < cost)
-						to_chat(H, SPAN_WARNING("Not enough points."))
-						vend_fail()
-						return
-					else
-						H.marine_snowflake_points -= cost
-				else
-					if(H.marine_points < cost)
-						to_chat(H, SPAN_WARNING("Not enough points."))
-						vend_fail()
-						return
-					else
-						H.marine_points -= cost
-
-			if(L[4])
-				if(!handle_vend(L, H))
-					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
-					vend_fail()
-					return
-
-			vend_succesfully(L, H, T)
-
-		add_fingerprint(user)
-		ui_interact(user) //updates the nanoUI window
+	cm_build_inventory(get_listed_products(), 1, 3)
 
 /obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
 	if(!(vending_human.marine_buy_flags & listed_products[4]))
@@ -766,6 +725,214 @@ IN_USE						used for vending/denying
 	update_icon()
 	return
 
+/obj/structure/machinery/cm_vending/clothing/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/cm_vending/clothing/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+	if(!can_access_to_vend(user, FALSE))
+		return UI_CLOSE
+
+/obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
+	var/list/data = ..(user)
+	data["vendor_type"] = "clothing"
+	// list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+	var/list/ui_listed_products = get_listed_products(user)
+
+	var/list/ui_categories = list()
+	var/show_points = FALSE
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+
+		var/p_name = myprod[1]					//taking it's name
+		var/p_cost = myprod[2]
+		var/item_ref = myprod[3]
+		var/priority = myprod[5]
+
+		var/result = list()
+		var/obj/item/I = item_ref
+
+		var/is_category = item_ref == null
+
+		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
+		//forming new list with index, name, amount, available or not, color and add it to display_list
+
+		var/display_item = list(
+			"prod_index" = i,
+			"prod_name" = p_name,
+			"prod_available" = TRUE,
+			"prod_color" = priority,
+			"prod_initial" = 0,
+			"prod_icon" = result,
+			"prod_desc" = initial(I.desc),
+			"prod_cost" = p_cost,
+			"image" = imgid
+		)
+
+		show_points = show_points ? show_points : p_cost > 0
+
+		if (is_category == 1)
+			ui_categories += list(list(
+				"name" = p_name,
+				"items" = list()
+			))
+			continue
+
+		if (!LAZYLEN(ui_categories))
+			ui_categories += list(list(
+				"name" = "",
+				"items" = list()
+			))
+		var/last_index = LAZYLEN(ui_categories)
+		var/last_category = ui_categories[last_index]
+		last_category["items"] += list(display_item)
+	data["displayed_categories"] = ui_categories
+	data["show_points"] = show_points
+	return data
+
+/obj/structure/machinery/cm_vending/clothing/ui_data(mob/user)
+	var/list/data = list()
+
+	var/list/ui_listed_products = get_listed_products(user)
+	// list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+
+	var/list/stock_values = list()
+
+	var/mob/living/carbon/human/H = user
+	var/buy_flags = NO_FLAGS
+	if(use_snowflake_points)
+		available_points_to_display = H.marine_snowflake_points
+	else if(use_points)
+		available_points_to_display = H.marine_points
+	buy_flags = H.marine_buy_flags
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/prod_available = FALSE
+		var/p_cost = myprod[2]
+		var/avail_flag = myprod[4]
+		if(available_points_to_display >= p_cost && (!avail_flag || buy_flags & avail_flag))
+			prod_available = TRUE
+		stock_values += list(prod_available)
+
+
+	data["stock_listing"] = stock_values
+	data["current_m_points"] = available_points_to_display
+	return data
+
+/obj/structure/machinery/cm_vending/clothing/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/H = usr
+	switch (action)
+		if ("vend")
+			if(stat & IN_USE)
+				return
+
+			var/idx=params["prod_index"]
+
+			var/list/topic_listed_products = get_listed_products(usr)
+			var/list/L = topic_listed_products[idx]
+			var/cost = L[2]
+
+			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
+				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
+				vend_fail()
+				return
+			var/turf/T = get_appropriate_vend_turf(H)
+			if(T.contents.len > 25)
+				to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
+				vend_fail()
+				return TRUE
+			var/bitf = L[4]
+			if(bitf)
+				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SYNTH))
+					if(H.job != JOB_SYNTH)
+						to_chat(H, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
+						vend_fail()
+						return
+
+			if(use_points)
+				if(use_snowflake_points)
+					if(H.marine_snowflake_points < cost)
+						to_chat(H, SPAN_WARNING("Not enough points."))
+						vend_fail()
+						return
+					else
+						H.marine_snowflake_points -= cost
+				else
+					if(H.marine_points < cost)
+						to_chat(H, SPAN_WARNING("Not enough points."))
+						vend_fail()
+						return
+					else
+						H.marine_points -= cost
+
+			if(L[4])
+				if(!handle_vend(L, H))
+					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
+					vend_fail()
+					return
+
+			vend_succesfully(L, H, T)
+		if("cancel")
+			SStgui.close_uis(src)
+			return TRUE
+
+	add_fingerprint(usr)
+
+/obj/structure/machinery/cm_vending/clothing/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "VendingSorted", name)
+		ui.open()
+
+/obj/structure/machinery/cm_vending/clothing/attack_hand(mob/user)
+	if(stat & TIPPED_OVER)
+		if(user.action_busy)
+			return
+		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
+		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
+			flip_back()
+		return
+
+	if(inoperable())
+		return
+
+	if(user.client && user.client.remote_control)
+		tgui_interact(user)
+		return
+
+	if(!ishuman(user))
+		vend_fail()
+		return
+
+	var/has_access = can_access_to_vend(user)
+	if (!has_access)
+		return
+
+	tgui_interact(user)
+
+
 //------------SORTED VENDORS---------------
 //22.06.2019 Modified ex-"marine_selector" system that doesn't use points by Jeser. In theory, should replace all vendors.
 //Hacking can be added if we need it. Do we need it, tho?
@@ -775,9 +942,6 @@ IN_USE						used for vending/denying
 	desc = "This is pure vendor without points system."
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
-
-	var/list/initial_product_count = list()
-	var/list/product_icon_list = list()
 
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list = list(
@@ -873,79 +1037,14 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
 	populate_product_list(1.2)
-	build_icons(listed_products)
-	preload_assets()
-
-/obj/structure/machinery/cm_vending/sorted/proc/preload_assets()
-	var/datum/asset/simple/dynamic_icons/dyn = get_asset_datum(/datum/asset/simple/dynamic_icons)
-	for (var/list/i in product_icon_list)
-		var/filename = i["href"]
-		if(filename)
-			dyn.update(filename)
-
-/obj/structure/machinery/cm_vending/sorted/proc/build_icons(var/list/items)
-	for (var/list/item in items)
-		// initial item count setup
-		var/item_name = item[1]
-		var/initial_count = item[2]
-		initial_product_count[item_name] = initial_count
-		// icon setup
-		var/typepath = item[3]
-		if (item_name == null || item_name == "" || typepath == null)
-			continue
-
-		var/icon_ref = null
-		var/icon_state = null
-		var/desc = ""
-		var/icon/r = null
-
-		if (ispath(typepath, /obj/effect/essentials_set))
-			var/obj/effect/essentials_set/I = new typepath()
-			var/list/spawned_list = I.spawned_gear_list
-			if(LAZYLEN(spawned_list))
-				var/obj/item/target = spawned_list[1]
-				icon_ref = initial(target.icon)
-				icon_state = initial(target.icon_state)
-				desc = initial(target.desc)
-				var/target_obj = new target()
-				r = getFlatIcon(target_obj)
-				qdel(target_obj)
-		else if (ispath(typepath, /obj/item))
-			var/obj/item/I = typepath
-			desc = initial(I.desc)
-			var/map_decor = initial(I.map_specific_decoration)
-			if (map_decor)
-				icon_state = initial(I.icon_state)
-				icon_ref = "icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi"
-				r = icon(icon_ref, icon_state, SOUTH, 1)
-			else
-				var/target_obj = new I()
-				r = getFlatIcon(target_obj)
-				qdel(target_obj)
-		if(!(item_name in product_icon_list))
-			product_icon_list[item_name] = list(
-				"href" = "",
-				"desc" = ""
-			)
-		if(!r)
-			continue
-		var/asset_name = generate_asset_name(r)
-		var/key = "[asset_name].png"
-		if(asset_name != null && asset_name != "" && r != null)
-			if(!SSassets.cache[key])
-				SSassets.transport.register_asset(key, r)
-		if(asset_name != null)
-			product_icon_list[item_name] = list(
-				"href"=SSassets.transport.get_asset_url(key),
-				"desc"=desc
-			)
+	cm_build_inventory(get_listed_products())
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
 	return
 
 /obj/structure/machinery/cm_vending/sorted/ui_state(mob/user)
-	return GLOB.not_incapacitated_and_adjacent_state
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -960,7 +1059,7 @@ IN_USE						used for vending/denying
 			return
 		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
 			flip_back()
 		return
 
@@ -981,9 +1080,8 @@ IN_USE						used for vending/denying
 	tgui_interact(user)
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
-	var/list/data = list()
-	data["vendor_name"] = name
-	data["theme"] = vendor_theme
+	var/list/data = ..(user)
+	data["vendor_type"] = "sorted"
 
 	var/list/ui_listed_products = get_listed_products(user)
 
@@ -993,19 +1091,20 @@ IN_USE						used for vending/denying
 
 		var/p_name = myprod[1]					//taking it's name
 		var/p_amount = myprod[2]				//amount left
+		var/item_ref = myprod[3]
 		var/prod_available = p_amount > 0		//checking if it's available
 		var/list/initial_vals = initial_product_count
 
 		var/result = list()
-		result["href"] = ""
-		result["desc"] = ""
-		if (p_name in product_icon_list)
-			result = product_icon_list[p_name]
 
 		var/initial_amount = initial_vals[p_name]
 		var/is_category = p_amount < 0
 
+		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
+
+
 		//forming new list with index, name, amount, available or not, color and add it to display_list
+		var/obj/item/I = item_ref
 		var/display_item = list(
 			"prod_index" = i,
 			"prod_name" = p_name,
@@ -1013,7 +1112,9 @@ IN_USE						used for vending/denying
 			"prod_color" = myprod[4],
 			"prod_initial" = initial_amount,
 			"prod_icon" = result,
-			"prod_desc" = result["desc"]
+			"prod_desc" = initial(I.desc),
+			"prod_cost" = 0,
+			"image" = imgid
 		)
 
 		if (is_category == 1)
@@ -1084,8 +1185,12 @@ IN_USE						used for vending/denying
 				return TRUE		// one left and the player spam click during a lagspike.
 
 			vend_succesfully(L, H, T)
+		if ("cancel")
+			SStgui.close_uis(src)
+			return TRUE
 
 	add_fingerprint(usr)
+	return TRUE
 
 /obj/structure/machinery/cm_vending/sorted/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)

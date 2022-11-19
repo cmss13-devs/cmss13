@@ -198,7 +198,7 @@
 //=======================================================================\\
 
 GLOBAL_LIST_INIT(allowed_helmet_items, list(
-	///// TOBACCO-RELATED
+	// TOBACCO-RELATED
 	/obj/item/tool/lighter/random = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/tool/lighter/zippo = "helmet_lighter_zippo",
 	/obj/item/storage/box/matches = "helmet_matches",
@@ -212,7 +212,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/storage/fancy/cigarettes/lucky_strikes_4 = "hat_cig_ls_mre",
 	/obj/item/storage/fancy/cigar/matchbook = "helmet_matches_mre",
 
-	///// CARDS
+	// CARDS
 	/obj/item/toy/deck = "helmet_card_deck",
 	/obj/item/toy/deck/uno = "helmet_card_uno",
 	/obj/item/toy/handcard = "helmet_card_card",
@@ -222,7 +222,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/toy/handcard/uno_reverse_yellow = "yellow_reverse",
 	/obj/item/toy/handcard/uno_reverse_purple = "purple_reverse",
 
-	///// FOOD AND SNACKS
+	// FOOD AND SNACKS
 	/obj/item/reagent_container/food/drinks/flask = "helmet_flask",
 	/obj/item/reagent_container/food/drinks/flask/marine = "helmet_flask",
 	/obj/item/reagent_container/food/snacks/eat_bar = "helmet_snack_eat",
@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/reagent_container/food/snacks/wrapped/barcardine = "barcardine-bars",
 
 
-	///// EYEWEAR
+	// EYEWEAR
 	/obj/item/clothing/glasses/mgoggles = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/prescription = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/clothing/glasses/mgoggles/black = HELMET_GARB_RELAY_ICON_STATE,
@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/glasses/eyepatch = "eyepatch",
 	/obj/item/clothing/glasses/regular/hipster = "persc-glasses",
 
-	///// WALKMAN AND CASSETTES
+	// WALKMAN AND CASSETTES
 	/obj/item/device/walkman = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/device/cassette_tape/pop1 = "cassette_blue",
 	/obj/item/device/cassette_tape/pop2 = "cassette_rainbow",
@@ -265,7 +265,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/device/cassette_tape/ocean = "cassette_ocean",
 	/obj/item/storage/pouch/cassette = "cassette_pouch",
 
-	///// PREFERENCES GEAR
+	// PREFERENCES GEAR
 	/obj/item/prop/helmetgarb/gunoil = "gunoil",
 	/obj/item/prop/helmetgarb/netting = "netting",
 	/obj/item/prop/helmetgarb/spent_buckshot = "spent_buckshot",
@@ -291,7 +291,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/bullet_pipe = "bullet_pipe",
 	/obj/item/prop/helmetgarb/spacejam_tickets = "tickets_to_space_jam",
 
-	///// MISC
+	// MISC
 	/obj/item/tool/pen = "helmet_pen_black",
 	/obj/item/tool/pen/blue = "helmet_pen_blue",
 	/obj/item/tool/pen/red = "helmet_pen_red",
@@ -320,7 +320,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/riot_shield = "helmet_riot_shield",
 	/obj/item/attachable/flashlight = HELMET_GARB_RELAY_ICON_STATE,
 
-	///// MEDICAL
+	// MEDICAL
 	/obj/item/stack/medical/bruise_pack ="brutepack (bandages)",
 	/obj/item/stack/medical/ointment = "ointment",
 	/obj/item/tool/surgery/scalpel = "scalpel",
@@ -594,6 +594,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	specialty = "M10 pattern covert"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/helmet/marine/leader
 	name = "\improper M11 pattern helmet"
@@ -634,7 +635,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/grenadier
 	name = "\improper M3-G4 grenadier helmet"
-	desc = "Pairs with the M3-G4 heavy grenadier plating. A distant cousin of the experimental B18 defensive helmet."
+	desc = "Pairs with the M3-G4 heavy grenadier plating. A distant cousin of the experimental B18 defensive helmet. Comes with inbuilt ear blast protection."
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -643,6 +644,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	unacidable = TRUE
 	anti_hug = 6
 	specialty = "M3-G4 grenadier"
@@ -664,6 +666,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
 	specialty = "M35 pyrotechnician"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+
+/obj/item/clothing/head/helmet/marine/M3T
+	name = "\improper M3-T bombardier helmet"
+	icon_state = "sadar_helmet"
+	desc = "A custom-built helmet for explosive weaponry users. Comes with inbuilt ear blast protection, firing a rocket launcher without this is not recommended."
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	specialty = "M3-T bombardier"
+	flags_inventory = BLOCKSHARPOBJ
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	unacidable = TRUE
 
 /obj/item/clothing/head/helmet/marine/pilot
 	name = "\improper M30 tactical helmet"
@@ -732,15 +745,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "pvmarshalhat"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
-/obj/item/clothing/head/helmet/marine/marsoc
-	name = "\improper MARSOC Operator Helmet"
-	desc = "A special variant of the M10 Pattern Helmet worn by MARSOC operators. Fitted for quad NODs."
+/obj/item/clothing/head/helmet/marine/sof
+	name = "\improper SOF Operator Helmet"
+	desc = "A special variant of the M10 Pattern Helmet worn by USCM SOF."
 	icon_state = "marsoc_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	specialty = "M10 pattern MARSOC"
+	specialty = "M10 pattern SOF"
 	flags_atom = NO_SNOW_TYPE
 
 
@@ -810,6 +823,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
 	unacidable = TRUE
+
+/obj/item/clothing/head/helmet/marine/veteran/PMC/corporate
+	name = "\improper WY corporate security helmet"
+	desc = "A basic skull-helm worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	icon = 'icons/mob/humans/onmob/contained/wy_goons.dmi'
+	icon_state = "helmet"
+	item_state = "helmet"
+	contained_sprite = TRUE
+
+/obj/item/clothing/head/helmet/marine/veteran/PMC/corporate/lead
+	desc = "A basic skull-helm worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
+	icon_state = "lead_helmet"
+	item_state = "lead_helmet"
 
 //FIORINA / UA RIOT CONTROL HELMET//
 

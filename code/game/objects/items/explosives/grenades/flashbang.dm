@@ -93,18 +93,22 @@
 			to_chat(M, SPAN_HELPFUL("Your gear protects you from \the [src]."))
 			return
 
+	var/weaken_amount
+	var/paralyze_amount
+	var/deafen_amount
+
 	if(M.flash_eyes())
-		M.Stun(2)
-		M.KnockDown(10)
+		weaken_amount += 2
+		paralyze_amount += 10
 
 	if((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
 		if(trained_human)
-			M.Stun(2)
-			M.KnockDown(1)
+			weaken_amount += 2
+			paralyze_amount += 1
 		else
-			M.Stun(10)
-			M.KnockDown(3)
-			M.SetEarDeafness(max(M.ear_deaf,15))
+			weaken_amount += 10
+			paralyze_amount += 3
+			deafen_amount += 15
 			if(!no_damage)
 				if((prob(14) || (M == src.loc && prob(70))))
 					M.ear_damage += rand(1, 10)
@@ -113,16 +117,27 @@
 
 	else if(get_dist(M, T) <= 5)
 		if(!trained_human)
-			M.Stun(8)
-			M.SetEarDeafness(max(M.ear_deaf,10))
+			weaken_amount += 8
+			deafen_amount += 10
 			if(!no_damage)
 				M.ear_damage += rand(0, 3)
 
 	else if(!trained_human)
-		M.Stun(4)
-		M.SetEarDeafness(max(M.ear_deaf,5))
+		weaken_amount += 4
+		deafen_amount += 5
 		if(!no_damage)
 			M.ear_damage += rand(0, 1)
+
+	if(HAS_TRAIT(M, TRAIT_EAR_PROTECTION))
+		weaken_amount *= 0.85
+		paralyze_amount *= 0.85
+		deafen_amount = 0
+		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
+
+	M.apply_effect(weaken_amount, WEAKEN)
+	M.apply_effect(paralyze_amount, PARALYZE)
+	if(deafen_amount)
+		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
 
 //This really should be in mob not every check
 	if(ishuman(M))
@@ -244,7 +259,7 @@
 	//flashbang effect depends on eye protection only, so we will process this case first
 	//A bit dumb, but headsets don't have ear protection and even earmuffs are a fluff now
 	if(H.get_eye_protection() > 0)
-		to_chat(H, SPAN_HELPFUL("Your gear protects your eyes from \the [src]."))
+		to_chat(H, SPAN_HELPFUL("Your gear protects you from \the [src]."))
 		if((get_dist(H, T) <= 1 || src.loc == H.loc || src.loc == H))
 			H.apply_damage(5, BRUTE)
 			H.apply_damage(5, BURN)
@@ -275,27 +290,47 @@
 	else
 		bang_effect = 2
 
+
+	var/flash_amount
+	var/daze_amount
+	var/paralyze_amount
+	var/deafen_amount
+
 	switch(bang_effect)
 		if(1)
-			M.SetEarDeafness(max(M.ear_deaf, 2))
+			deafen_amount = 2
 		if(2)
-			M.Daze(2)
-			M.SetEarDeafness(max(M.ear_deaf, 3))
+			daze_amount = 2
+			deafen_amount = 3
 		if(3)
-			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 10)
-			M.Daze(5)
-			M.SetEarDeafness(max(M.ear_deaf, 5))
+			flash_amount = 10
+			daze_amount = 5
+			deafen_amount = 5
 		if(4)
-			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 20)
-			M.Daze(5)
-			M.SetEarDeafness(max(M.ear_deaf, 7))
+			flash_amount = 20
+			daze_amount = 5
+			deafen_amount = 7
 			M.ear_damage += rand(1, 5)
 		if(5)
-			M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, 50)
-			M.Daze(10)
-			M.KnockDown(5)
-			M.SetEarDeafness(max(M.ear_deaf, 10))
+			flash_amount = 50
+			daze_amount = 10
+			paralyze_amount = 5
+			deafen_amount = 10
 			M.ear_damage += rand(1, 10)
+
+	if(HAS_TRAIT(M, TRAIT_EAR_PROTECTION))
+		daze_amount *= 0.85
+		paralyze_amount *= 0.85
+		deafen_amount = 0
+		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
+
+	M.apply_effect(daze_amount, DAZE)
+	M.apply_effect(paralyze_amount, PARALYZE)
+
+	if(flash_amount)
+		M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, flash_amount)
+	if(deafen_amount)
+		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
 
 	var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
 	if(E && E.damage >= E.min_bruised_damage)

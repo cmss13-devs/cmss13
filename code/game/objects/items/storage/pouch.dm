@@ -475,6 +475,9 @@
 	else
 		return ..()
 
+/obj/item/storage/pouch/magazine/pulse_rifle/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -1057,6 +1060,10 @@
 	)
 
 /obj/item/storage/pouch/electronics/full/fill_preset_inventory()
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)
 	new /obj/item/circuitboard/apc(src)
 	new /obj/item/cell/high(src)
 

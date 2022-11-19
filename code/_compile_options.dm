@@ -12,3 +12,7 @@
 #error Your version of BYOND is too out-of-date to compile this project. Go to https://secure.byond.com/download and update.
 #error You need version 514.1556 or higher
 #endif
+
+// If this is uncommented, will attempt to load prof.dll (windows) or libprof.so (unix)
+// byond-tracy is not shipped with CM code. Build it yourself here: https://github.com/mafemergency/byond-tracy/
+//#define BYOND_TRACY

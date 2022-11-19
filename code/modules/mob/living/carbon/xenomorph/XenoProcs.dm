@@ -339,7 +339,7 @@
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
 			var/obj/structure/S = O
 			visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
-			S.destroy() //We want to continue moving, so we do not reset throwing.
+			S.deconstruct() //We want to continue moving, so we do not reset throwing.
 		else
 			O.hitby(src) //This resets throwing.
 	else

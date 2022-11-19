@@ -363,5 +363,6 @@
       hear when the see the flashing green dot) to be louder and much more terrifying.
   harryob:
   - bugfix: crew console now shows ground/ship colours again
+  - refactor: the code for deconstruction is now (somewhat) neater
   totalepicness:
   - soundadd: Fixes no sound when hitting metal foam

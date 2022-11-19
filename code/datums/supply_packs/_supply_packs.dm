@@ -28,6 +28,7 @@ var/list/all_supply_groups = list(
 	"Engineering",
 	"Science",
 	"Supplies",
+	"Food",
 )
 
 /datum/supply_packs

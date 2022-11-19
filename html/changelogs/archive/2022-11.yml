@@ -371,6 +371,9 @@
       contents
   - spellcheck: Fixed spelling on TAA-AP Minigun magazine crate
   - bugfix: Made some vehicle crates a bit more accurate as to their content description
+  - bugfix: Gibbing a mob that had a fulton attached to them won't create a null reference
+      error in View Objectives window any more.
+  - refactor: Removed the old, unused Objective Controller code.
   Tisx:
   - soundadd: Added in new firing sounds for the CAS rocket pods and mini-rocketpods.
   - sounddel: removed and replaced the incoming fire warning sound (the sound you

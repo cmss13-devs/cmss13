@@ -354,5 +354,7 @@
       This means they will have their full getup no matter the weather.
   - balance: Survivors with Civilian Engineering access can now access Engineering
       vendors without hacking them first.
+  harryob:
+  - bugfix: crew console now shows ground/ship colours again
   totalepicness:
   - soundadd: Fixes no sound when hitting metal foam

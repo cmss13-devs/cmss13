@@ -740,6 +740,11 @@
 				m_type = 1
 				playsound(src.loc, 'sound/voice/joe_awful.ogg', 75, 0)
 				say("Tut, tut. What an awful mess.")
+		if("mes") //Since the parser trims the final s...
+			if(Joe && src.loc)
+				m_type = 1
+				playsound(src.loc, 'sound/voice/joe_awful.ogg', 75, 0)
+				say("Tut, tut. What an awful mess.")
 		if("damage")
 			if(Joe && src.loc)
 				m_type = 1

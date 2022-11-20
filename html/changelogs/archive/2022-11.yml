@@ -385,6 +385,8 @@
   totalepicness:
   - soundadd: Fixes no sound when hitting metal foam
 2022-11-20:
+  NoKohi:
+  - bugfix: fixed a xeno fun fact showing up in human fun facts
   ThePiachu:
   - rscdel: Removed old, unused radio bindings
   - rscdel: Removed old radio bindings for cyrylic keyboards that were way outdated

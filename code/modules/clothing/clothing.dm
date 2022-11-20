@@ -368,7 +368,7 @@
 				break
 
 /obj/item/clothing/equipped(mob/user, slot, silent)
-	if(is_valid_slot(slot, TRUE)) //is it going to an actual clothing slot rather than a pocket, hand, or backpack?
+	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?
 		if(!silent && LAZYLEN(equip_sounds))
 			playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 		if(clothing_traits_active)

@@ -140,12 +140,10 @@
 	var/did_hug = hugger.attach(human, TRUE, 0.5)
 	if(client)
 		client?.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+	xeno_message(SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host at [loc.loc.name]!"), 1, src.hivenumber)
+	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+		to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[loc.loc.name]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
 	to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[loc.loc.name]</b>"))
-	for(var/mob/dead/observer/g in GLOB.observer_list)
-		to_chat(g, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[loc.loc.name]</b>" + " (<a href='?src=\ref[g];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
-		if(X.hivenumber == src.hivenumber)
-			to_chat(X, SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host at [loc.loc.name]!"))
 	qdel(src)
 	return did_hug
 

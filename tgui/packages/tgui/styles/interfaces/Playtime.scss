@@ -1,0 +1,32 @@
+.PlaytimeInterface {
+  td {
+    padding: 0;
+    height: 32px;
+  }
+  table {
+    border: 1px solid white;
+    border-radius: 4px;
+  }
+  tr {
+    border-bottom: 1px solid white;
+  }
+  .PlaytimeRow {
+    height: 32px;
+  }
+  .AwardIcon {
+    max-height: 32px;
+    width: 32px;
+    margin-bottom: -12px;
+  }
+  span {
+    height: 32px;
+    line-height: 32px;
+  }
+  .LabelSpan {
+    margin-left: 6px;
+  }
+  .AwardCell {
+    width: 32px;
+    height: 32px;
+  }
+}

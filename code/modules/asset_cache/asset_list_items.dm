@@ -198,6 +198,39 @@
 	return ..()
 
 
+/datum/asset/spritesheet/playtime_rank
+	name = "playtimerank"
+
+/datum/asset/spritesheet/playtime_rank/register()
+	var/icon_file = 'icons/mob/hud/hud.dmi'
+	var/tier1_state = "hudxenoupgrade1"
+	var/tier2_state = "hudxenoupgrade2"
+	var/tier3_state = "hudxenoupgrade3"
+	var/tier4_state = "hudxenoupgrade4"
+
+	var/icon/tier1_icon = icon(icon_file, tier1_state, SOUTH)
+	var/icon/tier2_icon = icon(icon_file, tier2_state, SOUTH)
+	var/icon/tier3_icon = icon(icon_file, tier3_state, SOUTH)
+	var/icon/tier4_icon = icon(icon_file, tier4_state, SOUTH)
+
+
+	tier1_icon.Crop(6,26,18,14)
+	tier1_icon.Scale(32, 32)
+	Insert("tier1_big", tier1_icon)
+
+	tier2_icon.Crop(6,28,18,16)
+	tier2_icon.Scale(32, 32)
+	Insert("tier2_big", tier2_icon)
+
+	tier3_icon.Crop(6,30,18,18)
+	tier3_icon.Scale(32, 32)
+	Insert("tier3_big", tier3_icon)
+
+	tier4_icon.Crop(6,30,18,18)
+	tier4_icon.Scale(32, 32)
+	Insert("tier4_big", tier4_icon)
+	return ..()
+
 /datum/asset/spritesheet/choose_mark
 	name = "choosemark"
 

@@ -406,6 +406,9 @@
   harryob:
   - bugfix: some changelog entries would fail to generate previously - this should
       now be resolved.
+  kugamo:
+  - balance: Building resin constructions in doors is possible again, but will break
+      if closed on them.
   mullenpaul:
   - refactor: reworked xeno mark menu
   - refactor: xenos can see which mark they are tracking

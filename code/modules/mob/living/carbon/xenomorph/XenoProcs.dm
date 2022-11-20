@@ -555,10 +555,10 @@
 	if(!L || L.body_part == BODY_FLAG_CHEST || L.body_part == BODY_FLAG_GROIN || (L.status & LIMB_DESTROYED)) //Only limbs and head.
 		to_chat(src, SPAN_XENOWARNING("You can't rip off that limb."))
 		return FALSE
-	var/limb_time = rand(60,90)
+	var/limb_time = rand(40,60)
 
 	if(L.body_part == BODY_FLAG_HEAD)
-		limb_time = rand(120,150)
+		limb_time = rand(90,110)
 
 	visible_message(SPAN_XENOWARNING("[src] begins pulling on [M]'s [L.display_name] with incredible strength!"), \
 	SPAN_XENOWARNING("You begin to pull on [M]'s [L.display_name] with incredible strength!"))

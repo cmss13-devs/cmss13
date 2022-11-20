@@ -34,7 +34,7 @@
 	if(!user)
 		return
 	if(user.pulling == user.buckled) return //can't move the thing you're sitting on.
-	if(user.grab_level == GRAB_CARRY)
+	if(user.grab_level == GRAB_CARRY || GRAB_NECK)
 		return
 	if(istype(target, /obj/effect))//if you click a blood splatter with a grab instead of the turf,
 		target = get_turf(target)	//we still try to move the grabbed thing to the turf.

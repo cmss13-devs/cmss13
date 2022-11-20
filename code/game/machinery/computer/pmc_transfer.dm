@@ -1,6 +1,6 @@
 /obj/structure/machinery/computer/pmc_transfer
 	name = "PMC Transfer Processing Terminal"
-	desc = "A terminal for recruiting PMCs from the ranks of the USMC."
+	desc = "A terminal for recruiting PMCs from the ranks of the USCM."
 	icon_state = "wy_transfer"
 	circuit = /obj/item/circuitboard/computer/pmc_transfer
 	req_access = list(ACCESS_WY_CORPORATE)
@@ -23,6 +23,11 @@
 	if (!ui)
 		ui = new(user, src, "PmcTransfer", name)
 		ui.open()
+
+/obj/structure/machinery/computer/pmc_transfer/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_DISABLED
 
 /obj/structure/machinery/computer/pmc_transfer/ui_act(action, params)
 	. = ..()
@@ -68,7 +73,7 @@
 				if("Tactical Cap")
 					new /obj/item/clothing/head/helmet/marine/veteran/PMC/recruit(armor_case)
 
-			visible_message("<span class='bold'>[src]</span> states, \"Equipment vended. For any questions, please ask the Weyland-Yutani Corporate Liason.\"")
+			visible_message("[SPAN_BOLD(src)] states, \"Equipment vended. For any questions, please ask the Weyland-Yutani Corporate Liason.\"")
 			verified = FALSE
 			person_to_modify = null
 			return TRUE
@@ -130,23 +135,23 @@
 		return FALSE
 	var/mob/living/carbon/human/human_to_modify = to_modify
 	if((human_to_modify.job != JOB_SQUAD_MARINE) && (human_to_modify.job != JOB_SURVIVOR))
-		visible_message("<span class='bold'>[src]</span> states, \"DESIGNATION ERROR: Target must be a rifleman or non-USCM personnel to continue.\"")
+		visible_message("[SPAN_BOLD(src)] states, \"DESIGNATION ERROR: Target must be a rifleman or non-USCM personnel to continue.\"")
 		return FALSE
 	var/obj/item/card/id/ID = human_to_modify.wear_id
 	if(!istype(ID)) //not wearing an ID
-		visible_message("<span class='bold'>[src]</span> states, \"ACCESS ERROR: Target not wearing identification.\"")
+		visible_message("[SPAN_BOLD(src)] states, \"ACCESS ERROR: Target not wearing identification.\"")
 		return FALSE
 	if(ID.registered_ref != WEAKREF(to_modify))
-		visible_message("<span class='bold'>[src]</span> states, \"ACCESS ERROR: Target not wearing correct identification.\"")
+		visible_message("[SPAN_BOLD(src)] states, \"ACCESS ERROR: Target not wearing correct identification.\"")
 		return FALSE
-	visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: Scanned, please stay close until operation's end.\"")
+	visible_message("[SPAN_BOLD(src)] states, \"SCAN ENTRY: Scanned, please stay close until operation's end.\"")
 	person_to_modify = to_modify
 	return TRUE
 
 /// Transfer a person to the PMC corps, changing their ID and removing them from the manifest
 /obj/structure/machinery/computer/pmc_transfer/proc/transfer_person(mob/user)
 	if(!is_loading)
-		visible_message("<span class='bold'>[src]</span> states, \"ERROR: Subject must continue applying hand to sensor.\"")
+		visible_message("[SPAN_BOLD(src)] states, \"ERROR: Subject must continue applying hand to sensor.\"")
 		return
 	verified = TRUE
 	is_loading = FALSE
@@ -157,6 +162,6 @@
 	person_to_modify.faction = FACTION_PMC_RECRUIT
 	GLOB.data_core.manifest_remove(WEAKREF(person_to_modify), person_to_modify.name)
 	pmc_transfers_left -= 1
-	visible_message("<span class='bold'>[src]</span> states, \"Recruitment finalized, [person_to_modify]'s employment has been transferred to the Weyland-Yutani corporation. IFF addition recommended.\"")
+	visible_message("[SPAN_BOLD(src)] states, \"Recruitment finalized, [person_to_modify]'s employment has been transferred to the Weyland-Yutani corporation. IFF addition recommended.\"")
 	playsound(user, 'sound/machines/screen_output1.ogg', 25, 1)
 	ui_interact(user)

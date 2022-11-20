@@ -103,7 +103,7 @@ const PMCVerification = (props, context) => {
   return (
     <Section title="Squad Transfer" fill>
       By checking the box, you are confirming that you have followed company
-      procedure for the vetting and recruitment of PMC units from USMC ranks,
+      procedure for the vetting and recruitment of PMC units from USCM ranks,
       and that the appropriate paperwork has been filed. Notably, record form
       268-C and any paperwork the recruit&apos;s former employer may require,
       else you recognize the risks involved to you and the recruit in

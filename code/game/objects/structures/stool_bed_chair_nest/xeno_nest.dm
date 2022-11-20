@@ -278,7 +278,7 @@
 
 /obj/structure/bed/nest/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/structure/bed/nest/update_icon()
 	overlays.Cut()
@@ -291,7 +291,7 @@
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)
 		density = 0
-		qdel(src)
+		deconstruct()
 
 /obj/structure/bed/nest/fire_act()
 	on_fire = TRUE
@@ -323,7 +323,7 @@
 	healthcheck()
 
 /obj/structure/bed/nest/flamer_fire_act()
-	qdel(src)
+	deconstruct()
 
 /obj/structure/bed/nest/Destroy()
 	unbuckle()

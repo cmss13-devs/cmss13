@@ -47,7 +47,11 @@ const Contents = (
   props: { isLocal: boolean; items: StorageItem[]; title: string },
   context
 ) => {
-  const [tabIndex, setTabIndex] = useLocalState(context, 'contentsTab', 'all');
+  const [tabIndex, setTabIndex] = useLocalState(
+    context,
+    `contentsTab_${props.isLocal}`,
+    'all'
+  );
   const allItems = props.items;
 
   if (allItems.length === 0) {
@@ -141,7 +145,7 @@ const ContentItem = (
 export const SmartFridge = (_, context) => {
   const { data } = useBackend<SmartFridgeData>(context);
   return (
-    <Window theme="weyland">
+    <Window theme="weyland" width={400} height={600}>
       <Window.Content className="SmartFridge" scrollable>
         <Stack vertical>
           {data.secure && (

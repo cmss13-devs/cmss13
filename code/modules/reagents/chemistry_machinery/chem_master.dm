@@ -276,7 +276,7 @@
 				P.update_icon()
 
 				if(href_list["store"])
-					connected.add_item(P)
+					connected.add_local_item(P)
 				else if(!Adjacent(usr) || !usr.put_in_hands(P))
 					P.forceMove(loc)
 
@@ -321,7 +321,7 @@
 			attack_hand(user)
 			return
 
-		connected.add_item(loaded_pill_bottle)
+		connected.add_local_item(loaded_pill_bottle)
 		loaded_pill_bottle = null
 
 	// Connecting a smartfridge

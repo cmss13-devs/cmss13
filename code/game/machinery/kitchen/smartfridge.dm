@@ -91,7 +91,7 @@
 
 	if(accept_check(O))
 		if(user.drop_held_item())
-			add_item(item_quants, O)
+			add_local_item(O)
 			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
 								 SPAN_NOTICE("You add \the [O] to \the [src]."))
 
@@ -101,10 +101,7 @@
 		for(var/obj/G in P.contents)
 			if(accept_check(G))
 				P.remove_from_storage(G,src)
-				if(item_quants[G.name])
-					item_quants[G.name] += G
-				else
-					item_quants[G.name] = list(G)
+				add_local_item(G)
 				plants_loaded++
 		if(plants_loaded)
 
@@ -130,6 +127,9 @@
 			return
 
 	tgui_interact(user)
+
+/obj/structure/machinery/smartfridge/proc/add_local_item(var/obj/item/O)
+	add_item(item_quants, O)
 
 /obj/structure/machinery/smartfridge/proc/add_item(var/list/target, var/obj/item/O)
 	O.forceMove(src)
@@ -193,9 +193,10 @@
 		if(count < 1)
 			continue
 
-		var/item_name = item_list[1].name
-		var/item_path = item_list[1].type
-		var/item_desc = item_list[1].desc
+		var/obj/example = item_list[1]
+		var/item_name = example.name
+		var/item_path = example.type
+		var/item_desc = example.desc
 
 		var/imgid = replacetext(replacetext("[item_path]", "/obj/item/", ""), "/", "-")
 
@@ -225,9 +226,10 @@
 			var/count = length(item_list)
 			if(count < 1)
 				continue
-			var/item_name = item_list[1].name
-			var/item_path = item_list[1].type
-			var/item_desc = item_list[1].desc
+			var/obj/example = item_list[1]
+			var/item_name = example.name
+			var/item_path = example.type
+			var/item_desc = example.desc
 
 			var/imgid = replacetext(replacetext("[item_path]", "/obj/item/", ""), "/", "-")
 
@@ -441,11 +443,8 @@
 			continue
 		var/obj/target_item = item_quants[1]
 		item_list.Remove(target_item)
-		for(var/obj/T in contents)
-			if(T.name == O)
-				T.forceMove(src.loc)
-				throw_item = T
-				break
+		target_item.forceMove(src.loc)
+		throw_item = target_item
 		break
 	if(!throw_item)
 		return 0

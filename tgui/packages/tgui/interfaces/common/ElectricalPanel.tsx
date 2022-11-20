@@ -154,11 +154,11 @@ const ElectricalPanelOpen = (props: BoxProps, context) => {
   );
 };
 
-export const ElectricalPanel = (props, context) => {
+export const ElectricalPanel = (props: BoxProps, context) => {
   const { data } = useBackend<ElectricalData>(context);
   const isOpen = data.electrical.panel_open === 1;
   return (
-    <div className={classes(['ElectricalAccessPanel'])}>
+    <div className={classes(['ElectricalAccessPanel', props.className])}>
       {!isOpen && (
         <>
           <div>

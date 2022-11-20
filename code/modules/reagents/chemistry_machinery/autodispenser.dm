@@ -383,7 +383,7 @@
 			P.amount_per_transfer_from_this = 60
 			reagents.trans_to(P, 60)
 			if(!linked_storage.add_network_item(P)) // Prefer network to avoid recursion (create bottle, then consume from bottle)
-				linked_storage.add_item(P)
+				linked_storage.add_local_item(P)
 
 
 

@@ -397,6 +397,9 @@
   - rscdel: Removed old, unused radio bindings
   - rscdel: Removed old radio bindings for cyrylic keyboards that were way outdated
   - code_imp: Small refactor of code around whisper / intercom radio channels
+  - bugfix: Xeno blood is now a finite resource.
+  - rscadd: Living xenos now regenerate blood just in case some unga has the idea
+      to attack one with a syringe.
   harryob:
   - bugfix: some changelog entries would fail to generate previously - this should
       now be resolved.

@@ -33160,6 +33160,9 @@
 /obj/structure/platform/strata/metal,
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
+"gFN" = (
+,
+/turf/open/space/basic)
 "gFT" = (
 /obj/structure/largecrate/random,
 /obj/structure/barricade/handrail/strata,
@@ -47568,8 +47571,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+gFN
+gFN
 "}
 (21,1,1) = {"
 aaa

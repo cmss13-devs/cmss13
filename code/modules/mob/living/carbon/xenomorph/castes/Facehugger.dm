@@ -19,9 +19,9 @@
 	icon_state = "Facehugger"
 	icon_size = 48
 	pixel_x = -8
-	pixel_y = -10
-	old_x = -10
-	old_y = -10
+	pixel_y = -6
+	old_x = -8
+	old_y = -6
 	layer = MOB_LAYER
 	mob_flags = NOBIOSCAN
 	see_in_dark = 8
@@ -221,6 +221,3 @@
 	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [S]!"), \
 	SPAN_WARNING("You squeeze and scuttle underneath \the [S]."), null, 5)
 	forceMove(S.loc)
-
-/mob/living/carbon/Xenomorph/Facehugger/launch_impact()
-	update_icons()

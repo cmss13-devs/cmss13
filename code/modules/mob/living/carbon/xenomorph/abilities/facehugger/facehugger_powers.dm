@@ -19,3 +19,10 @@
 	if(facehugger.pounce_distance <= 1 && can_hug(L, facehugger.hivenumber))
 		did_hug = facehugger.handle_hug(L)
 	log_attack("[key_name] [did_hug ? "successfully hugged" : "tried to hug"] [key_name(L)] (Pounce Distance: [facehugger.pounce_distance]) at [get_location_in_text(L)]")
+
+/datum/action/xeno_action/activable/pounce/facehugger/use_ability()
+	for(var/obj/structure/machinery/door/airlock/A in get_turf(owner))
+		if(A.density) //if its CLOSED YOU"RE SCUTTLING AND CANNOT POUNCE!!!
+			to_chat(owner, SPAN_WARNING("You cannot do that while squeezing and scuttling!"))
+			return FALSE
+	..()

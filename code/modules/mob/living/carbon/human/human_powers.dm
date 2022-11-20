@@ -240,7 +240,15 @@
 	// 1min cooldown on orders
 	addtimer(CALLBACK(src, .proc/make_aura_available), COMMAND_ORDER_COOLDOWN)
 
-	visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
+	var/message = ""
+	switch(order)
+		if(COMMAND_ORDER_MOVE)
+			message = pick(";GET MOVING!", ";GO, GO, GO!", ";WE ARE ON THE MOVE!", ";MOVE IT!", ";DOUBLE TIME!")
+		if(COMMAND_ORDER_HOLD)
+			message = pick(";DUCK AND COVER!", ";HOLD THE LINE!", ";HOLD POSITION!", ";STAND YOUR GROUND!", ";STAND AND FIGHT!")
+		if(COMMAND_ORDER_FOCUS)
+			message = pick(";FOCUS FIRE!", ";PICK YOUR TARGETS!", ";CENTER MASS!", ";CONTROLLED BURSTS!", ";AIM YOUR SHOTS!")
+	say(message)
 
 /mob/living/carbon/human/proc/make_aura_available()
 	to_chat(src, SPAN_NOTICE("You can issue an order again."))

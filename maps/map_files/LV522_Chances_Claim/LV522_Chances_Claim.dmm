@@ -707,7 +707,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "25"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "aut" = (
 /turf/open/floor/corsat{
 	dir = 5;
@@ -2107,7 +2107,7 @@
 	icon_state = "rasputin6";
 	tag = "icon-rasputin6"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "bkQ" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/atmos/east_reactor/south/cas)
@@ -2195,7 +2195,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "68"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "bow" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison,
@@ -2746,7 +2746,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "27"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "bIh" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin{
@@ -4121,7 +4121,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "cte" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -4984,7 +4984,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "cMt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -5160,7 +5160,7 @@
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "cQS" = (
 /turf/closed/shuttle/dropship2/tornado,
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "cQW" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -6009,7 +6009,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "dgO" = (
 /obj/structure/tunnel,
 /turf/open/floor/corsat{
@@ -7962,7 +7962,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "24"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "eaG" = (
 /obj/structure/ore_box,
 /turf/open/floor/prison{
@@ -8698,7 +8698,7 @@
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "eqM" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -9339,7 +9339,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "19"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "eGs" = (
 /obj/structure/cargo_container{
 	icon_state = "red 2,0";
@@ -9425,7 +9425,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "48"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "eIk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -10423,7 +10423,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "33"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "fib" = (
 /obj/structure/barricade/handrail,
 /turf/open/floor/corsat{
@@ -14920,7 +14920,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "hfU" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat,
@@ -15595,7 +15595,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "53"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "htN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -16277,7 +16277,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "33"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "hKJ" = (
 /turf/open/floor/prison{
 	dir = 5;
@@ -16448,7 +16448,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "100"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "hOl" = (
 /obj/structure/bed{
 	dir = 1;
@@ -16529,8 +16529,9 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	indestructible = 1
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "hPq" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -16571,7 +16572,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "hPT" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
@@ -16626,7 +16627,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "hRd" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat{
@@ -17292,12 +17293,12 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "101"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "iff" = (
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "102"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "ifh" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
 	dir = 1;
@@ -17669,7 +17670,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "95"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "inA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
@@ -18953,7 +18954,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "iOl" = (
 /turf/open/floor/corsat{
 	dir = 4;
@@ -18989,7 +18990,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "iPb" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison{
@@ -19191,7 +19192,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "97"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "iUk" = (
 /obj/structure/prop/dam/drill{
 	layer = 3.1;
@@ -19939,7 +19940,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "9"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "jjo" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/suit/storage/hazardvest{
@@ -20193,7 +20194,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "99"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "jnb" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -20528,7 +20529,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "86"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "juw" = (
 /obj/item/prop{
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'.";
@@ -20896,12 +20897,12 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "jCc" = (
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "89"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "jCq" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
@@ -21239,7 +21240,7 @@
 	icon_state = "rasputin8";
 	tag = "icon-rasputin8"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "jIQ" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -21818,7 +21819,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "30"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "jUy" = (
 /obj/structure/machinery/power/port_gen/pacman/super,
 /turf/open/floor/prison{
@@ -21979,7 +21980,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "jYj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/xeno_spawn,
@@ -22012,7 +22013,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "28"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "jYv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/xeno_spawn,
@@ -23251,7 +23252,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "32"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "ksk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -24528,7 +24529,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "61"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "kQW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -26801,7 +26802,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "5"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "lML" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison{
@@ -31048,7 +31049,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "2"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "nFQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/corsat{
@@ -32271,7 +32272,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "75"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "obb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
@@ -32283,8 +32284,8 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "obe" = (
-/turf/closed/shuttle/dropship2/tornado{
-	icon_state = "45"
+/turf/closed/shuttle/dropship2/tornado/typhoon{
+	icon_state = "40"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "obt" = (
@@ -32397,7 +32398,7 @@
 	icon_state = "rasputin4";
 	tag = "icon-rasputin4"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "oet" = (
 /obj/structure/prop/dam/crane/cargo{
 	dir = 1
@@ -34217,7 +34218,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "18"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "oOh" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "West LZ Storage";
@@ -34966,7 +34967,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "pez" = (
 /obj/structure/cargo_container{
 	icon_state = "gorg 0,0";
@@ -36406,7 +36407,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "65"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "pFQ" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -37371,7 +37372,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "pYO" = (
 /obj/structure{
 	health = 150;
@@ -37677,7 +37678,7 @@
 	icon_state = "rasputin7";
 	tag = "icon-rasputin7"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "qgj" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -37932,7 +37933,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "76"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "qnk" = (
 /obj/structure/surface/table/almayer,
 /obj/structure{
@@ -38135,7 +38136,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "qqR" = (
 /obj/structure/platform,
 /obj/structure/stairs/perspective{
@@ -38472,7 +38473,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "69"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "qxD" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1;
@@ -39299,7 +39300,7 @@
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "qME" = (
 /obj/effect/decal{
 	color = "#FF7700";
@@ -40087,7 +40088,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "17"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "qYc" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/door/window/eastleft,
@@ -40231,11 +40232,12 @@
 	dir = 4;
 	indestructible = 1
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "rad" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -40377,7 +40379,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "83"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "rcI" = (
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -40555,7 +40557,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "62"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "rfk" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
@@ -40642,7 +40644,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "47"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "rgG" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -41497,7 +41499,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "4"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "rxu" = (
 /obj/structure/stairs/perspective{
 	dir = 5;
@@ -41658,7 +41660,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "22"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "rAf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -42085,7 +42087,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "16"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "rJz" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/corsat{
@@ -42991,7 +42993,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "77"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "scv" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
@@ -43415,7 +43417,7 @@
 	icon_state = "floor8";
 	tag = "icon-floor8"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "slO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -43722,7 +43724,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "23"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "stG" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
@@ -43922,7 +43924,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "67"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "szo" = (
 /obj/structure/bed/sofa/vert/grey,
 /obj/effect/decal/cleanable/dirt,
@@ -44101,7 +44103,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "70"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "sCr" = (
 /obj/structure/bed/chair/wood/normal{
 	can_buckle = 0
@@ -45166,7 +45168,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "73"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "sYk" = (
 /obj/structure/platform,
 /turf/open/floor/prison{
@@ -45311,7 +45313,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "66"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "tcz" = (
 /turf/closed/shuttle/dropship2/tornado/typhoon{
 	icon_state = "17"
@@ -45553,7 +45555,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "26"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "thd" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/foamed_metal,
@@ -45567,7 +45569,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "31"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "thi" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/strata{
@@ -46687,8 +46689,9 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	indestructible = 1
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "tDq" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1
@@ -47943,7 +47946,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "29"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "ucM" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -48182,7 +48185,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "74"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "ugo" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -48443,7 +48446,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "40"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "ukp" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ammo_box/magazine/smg/nailgun/empty{
@@ -48712,7 +48715,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "64"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "urv" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window{
@@ -49186,7 +49189,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "71"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "uDP" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -49635,8 +49638,9 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	indestructible = 1
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "uKR" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -50352,7 +50356,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "72"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "uXu" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin{
@@ -50901,7 +50905,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "vjv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -54608,7 +54612,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "17"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "wAi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -55624,7 +55628,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "wYa" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -56612,7 +56616,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "63"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "xpN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -57539,7 +57543,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "6"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "xJI" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison{
@@ -58084,7 +58088,7 @@
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "3"
 	},
-/area/lv522/landing_zone_forecon/UD6_Tornado)
+/area/lv522/oob)
 "xRQ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/recharger{
@@ -61914,7 +61918,7 @@ cpy
 cpy
 cpy
 cpy
-ujF
+obe
 pRM
 qnk
 qHA
@@ -96186,7 +96190,7 @@ tcv
 kQS
 xzP
 xzP
-obe
+rCi
 ucD
 ssU
 qXY
@@ -96417,7 +96421,7 @@ oOe
 jUq
 eaE
 jjg
-obe
+rCi
 ucD
 ssU
 qXY
@@ -98006,7 +98010,7 @@ ujF
 ksf
 thc
 rJr
-obe
+rCi
 hKG
 bIe
 wAf
@@ -98229,7 +98233,7 @@ cpy
 cpy
 cpy
 cpy
-obe
+rCi
 fhY
 bIe
 qXY

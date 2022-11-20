@@ -87,7 +87,7 @@
 
 	if(!weeds)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
+		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)] weeds."))
 		return
 
 	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)

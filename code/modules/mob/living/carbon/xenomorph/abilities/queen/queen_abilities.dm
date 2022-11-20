@@ -210,4 +210,4 @@
 	max_momentum = 6
 	steps_to_charge = 2
 	speed_per_momentum = XENO_SPEED_FASTMOD_TIER_5 + XENO_SPEED_FASTMOD_TIER_3
-	plasma_per_step = 2
+	plasma_per_step = 25

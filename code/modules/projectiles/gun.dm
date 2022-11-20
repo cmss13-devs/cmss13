@@ -838,7 +838,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
 		new_handful.generate_handful(in_chamber.ammo.type, caliber, 8, 1, type)
 
-	in_chamber = null
+	QDEL_NULL(in_chamber)
 
 //Manually cock the gun
 //This only works on weapons NOT marked with UNUSUAL_DESIGN or INTERNAL_MAG
@@ -961,6 +961,7 @@ and you're good to go.
 			P.apply_bullet_trait(L)
 
 /obj/item/weapon/gun/proc/ready_in_chamber()
+	QDEL_NULL(in_chamber)
 	if(current_mag && current_mag.current_rounds > 0)
 		in_chamber = create_bullet(ammo, initial(name))
 		apply_traits(in_chamber)

@@ -46,9 +46,12 @@ SUBSYSTEM_DEF(projectiles)
 
 /datum/controller/subsystem/projectiles/proc/handle_projectile_flight(obj/item/projectile/projectile, delta_time)
 	set waitfor = FALSE
-	. = projectile.process(delta_time)
-	if(. == PROC_RETURN_SLEEP)
-		log_debug("SSprojectiles: projectile '[projectile.name]' found sleeping despite all the sleep prevention. Discarding it.")
+	if(QDELETED(projectile)) // We're in double-check land here because there ARE rulebreakers.
+		log_debug("SSprojectiles: projectile '[projectile.name]' shot by '[projectile.firer]' is scheduled despite being deleted.")
+	else
+		. = projectile.process(delta_time)
+	if(. == PROC_RETURN_SLEEP) // Same. Believe it or not, it happens
+		log_debug("SSprojectiles: projectile '[projectile.name]' shot by '[projectile.firer]' found sleeping despite all the sleep prevention. Discarding it.")
 	if(.) // PROCESS_KILL basically
 		projectiles -= projectile
 		qdel(projectile)

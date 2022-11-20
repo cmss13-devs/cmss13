@@ -67,21 +67,25 @@
 	return FALSE
 
 /datum/ammo/proc/do_at_half_range(obj/item/projectile/P)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /datum/ammo/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
 	return
 
 /datum/ammo/proc/do_at_max_range(obj/item/projectile/P)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /datum/ammo/proc/on_shield_block(mob/M, obj/item/projectile/P) //Does it do something special when shield blocked? Ie. a flare or grenade that still blows up.
 	return
 
 /datum/ammo/proc/on_hit_turf(turf/T, obj/item/projectile/P) //Special effects when hitting dense turfs.
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /datum/ammo/proc/on_hit_mob(mob/M, obj/item/projectile/P, mob/user) //Special effects when hitting mobs.
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 ///Special effects when pointblanking mobs. Ultimately called from /living/attackby(). Return TRUE to end the PB attempt.
@@ -89,6 +93,7 @@
 	return
 
 /datum/ammo/proc/on_hit_obj(obj/O, obj/item/projectile/P) //Special effects when hitting objects.
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /datum/ammo/proc/on_near_target(turf/T, obj/item/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
@@ -3270,4 +3275,4 @@
 /datum/ammo/hugger_container/proc/spawn_hugger(var/turf/T)
 	var/obj/item/clothing/mask/facehugger/child = new(T)
 	child.hivenumber = hugger_hive
-	child.leap_at_nearest_target()
+	INVOKE_ASYNC(child, /obj/item/clothing/mask/facehugger.proc/leap_at_nearest_target)

@@ -36,7 +36,7 @@
 	/// How much time has the projectile carried for fractional movement, in seconds (delta_time format)
 	var/time_carry = 0
 	/// How many turfs per 1ds the projectile travels
-	var/speed = 1
+	var/speed = 0
 	/// Direct angle at firing time, in degrees from BYOND NORTH, used for visual updates and path extension
 	var/angle = 0
 	/// Turfs traveled so far, for use in visual updates, in conjunction with angle for projection
@@ -105,6 +105,10 @@
 		scan_a_turf(AM.loc)
 
 /obj/item/projectile/Crossed(atom/movable/AM)
+	/* Fun fact: Crossed is called for any contents involving operations.
+	 * This notably means, inserting a magazing in a gun Crossed() it with the bullets in the gun. */
+	if(!loc.z)
+		return // Not on the map. Don't scan a turf. Don't shoot the poor guy reloading his gun.
 	if(AM && !(AM in permutated))
 		scan_a_turf(get_turf(AM))
 
@@ -213,12 +217,11 @@
 				homing_target = null
 				homing_projectile = FALSE
 
-	//follow_flightpath(speed,change_x,change_y,range, homing_projectile) //pyew!
-
 	src.speed = speed
 	// Randomize speed by a small factor to help bullet animations look okay
 	// Otherwise you get a   s   t   r   e   a   m of warping bullets in same positions
 	src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
+	src.speed = Clamp(src.speed, 0.1, 100) // Safety to avoid loop hazards
 
 	// Also give it some headstart, flying it now ahead of tick
 	var/delta_time = world.tick_lag * rand() * 0.4
@@ -314,9 +317,9 @@
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 	if(ammo_flags & AMMO_ROCKET)
 		if(speed < 3 && distance_travelled > 8)
-			speed += 1
+			speed = 3 	//Need for speed.
 		else if(speed < 2 && distance_travelled > 2)
-			speed += 1
+			speed = 2
 
 	// Track homing target if we can't reach it by adjusting - it should connect next tick
 	if(homing_target && distance_travelled * 2 >= length(path))

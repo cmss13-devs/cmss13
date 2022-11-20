@@ -269,6 +269,7 @@
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
 /atom/movable/vis_obj
 	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
+	appearance_flags = RESET_COLOR
 
 /atom/movable/vis_obj/xeno_wounds
 	icon = 'icons/mob/hostiles/wounds.dmi'

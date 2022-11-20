@@ -39,7 +39,7 @@
 		list("MAC-15 Submachinegun", 20, /obj/item/weapon/gun/smg/mac15, null, VENDOR_ITEM_REGULAR),
 		list("MP27 Submachinegun", 20, /obj/item/weapon/gun/smg/mp27, null, VENDOR_ITEM_REGULAR),
 		list("MP5 Submachinegun", 20, /obj/item/weapon/gun/smg/mp5, null, VENDOR_ITEM_REGULAR),
-		list("Sawn-Off Shotgun", 30, /obj/item/weapon/gun/shotgun/pump/cmb, null, VENDOR_ITEM_REGULAR),
+		list("Sawn-Off Shotgun", 30, /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("Basira-Armstrong Magazine (6.5mm)", 5, /obj/item/ammo_magazine/rifle/hunting, null, VENDOR_ITEM_REGULAR),
@@ -104,7 +104,7 @@
 		list("MAR-40 Battle Rifle", 20, /obj/item/weapon/gun/rifle/mar40, VENDOR_ITEM_REGULAR),
 		list("MP27 Submachinegun", 20, /obj/item/weapon/gun/smg/mp27, VENDOR_ITEM_REGULAR),
 		list("MP5 Submachinegun", 20, /obj/item/weapon/gun/smg/mp5, VENDOR_ITEM_REGULAR),
-		list("Sawn-Off Shotgun", 20, /obj/item/weapon/gun/shotgun/pump/cmb, VENDOR_ITEM_REGULAR),
+		list("Sawn-Off Shotgun", 20, /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", -1, null, null),
 		list("Basira-Armstrong Magazine (6.5mm)", 60, /obj/item/ammo_magazine/rifle/hunting, VENDOR_ITEM_REGULAR),

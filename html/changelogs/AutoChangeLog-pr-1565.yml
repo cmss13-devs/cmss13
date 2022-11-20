@@ -1,5 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Xeno blood is now a finite resource."
-  - rscadd: "Living xenos now regenerate blood just in case some unga has the idea to attack one with a syringe."

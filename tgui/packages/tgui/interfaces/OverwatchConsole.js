@@ -787,7 +787,13 @@ export const OverwatchBomb = (props, context) => {
                 maxValue="1000"
                 stepPixelSize="20"
                 value={bomb_x}
-                onChange={(_, value) => setTargetX(value)}
+                onChange={(_, value) => {
+                  setTargetX(value);
+                  act('set_bomb', {
+                    target_x: value,
+                    target_y: bomb_y,
+                  });
+                }}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Target Y">
@@ -797,7 +803,13 @@ export const OverwatchBomb = (props, context) => {
                 maxValue="1000"
                 stepPixelSize="20"
                 value={bomb_y}
-                onChange={(_, value) => setTargetY(value)}
+                onChange={(_, value) => {
+                  setTargetY(value);
+                  act('set_bomb', {
+                    target_x: bomb_x,
+                    target_y: value,
+                  });
+                }}
               />
             </LabeledList.Item>
           </LabeledList>
@@ -806,33 +818,19 @@ export const OverwatchBomb = (props, context) => {
           <Box p="0.2em" />
         </Stack.Item>
         <Stack.Item grow>
-          <Button
+          <Button.Confirm
             fluid
             textAlign="center"
-            content="Dial Target"
-            icon="crosshairs"
+            content="Bombardment"
             lineHeight="3.5em"
-            onClick={() =>
-              act('set_bomb', {
-                target_x: bomb_x,
-                target_y: bomb_y,
-              })
-            }
+            color="red"
+            icon="burst"
+            disabled={!bombardment_enabled}
+            onClick={() => act('dropbomb')}
+            confirmContent={'Fire at ' + x_bomb + ', ' + y_bomb + '?'}
           />
         </Stack.Item>
       </Stack>
-      <Divider />
-      <Button.Confirm
-        fluid
-        textAlign="center"
-        content="Bombardment"
-        lineHeight="3.5em"
-        color="red"
-        icon="burst"
-        disabled={!bombardment_enabled}
-        onClick={() => act('dropbomb')}
-        confirmContent={'Fire at ' + x_bomb + ', ' + y_bomb + '?'}
-      />
       <Divider />
       {!bombardment_enabled ? (
         <NoticeBox warning textAlign="center">

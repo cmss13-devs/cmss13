@@ -232,6 +232,7 @@
 		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)
 
 	remove_from_all_mob_huds()
+	is_watching = null
 
 	return ..()
 

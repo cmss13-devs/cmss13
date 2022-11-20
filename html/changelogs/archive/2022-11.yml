@@ -385,6 +385,8 @@
   totalepicness:
   - soundadd: Fixes no sound when hitting metal foam
 2022-11-20:
+  Molto:
+  - bugfix: fixed M4A3 belt spawning empty
   NoKohi:
   - bugfix: fixed a xeno fun fact showing up in human fun facts
   ThePiachu:

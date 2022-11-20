@@ -1,24 +1,20 @@
-$electrical-width: 300px;
-
 .ElectricalAccessPanel {
   border-bottom: 2px solid #606060;
   border-left: 2px solid #606060;
   border-right: 2px solid grey;
   border-top: 2px solid grey;
-  width: $electrical-width;
-  display: flex;
-  flex-direction: row;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  display: relative;
+  width: 100%;
 
   .PanelClosed {
-    width: $electrical-width;
     height: 100%;
+    margin-bottom: -2px;
   }
   .PanelOpen {
-    width: $electrical-width;
-    height: 100%;
     padding: 6px;
+  }
+  .Hide {
+    visibility: hidden;
   }
   .ElectricalSafetySign {
     height: 100%;

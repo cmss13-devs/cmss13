@@ -150,7 +150,7 @@ export const SmartFridge = (_, context) => {
         <Stack vertical>
           {data.secure && (
             <Stack.Item>
-              <NoticeBox>Smart fridge is secure</NoticeBox>
+              <NoticeBox>Smart Fridge is in secure mode</NoticeBox>
             </Stack.Item>
           )}
           <Stack.Item>

@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { useBackend } from '../../backend';
-import { Box, Button, Icon, Flex, NoticeBox } from '../../components';
+import { Box, Button, Icon, Flex, NoticeBox, Stack } from '../../components';
 import { BoxProps } from '../../components/Box';
 import { Table, TableCell, TableRow } from '../../components/Table';
 
@@ -61,8 +61,8 @@ const ElectricalPanelClosed = (props: BoxProps, context) => {
             </Flex.Item>
             <Flex.Item>
               <span>
-                Electrical hazard authorised <br />
-                personnel only
+                Electrical hazard <br />
+                Authorised personnel only
               </span>
             </Flex.Item>
           </Flex>
@@ -159,26 +159,8 @@ export const ElectricalPanel = (props: BoxProps, context) => {
   const isOpen = data.electrical.panel_open === 1;
   return (
     <div className={classes(['ElectricalAccessPanel', props.className])}>
-      {!isOpen && (
-        <>
-          <div>
-            <ElectricalPanelClosed />
-          </div>
-          <div>
-            <ElectricalPanelOpen />
-          </div>
-        </>
-      )}
-      {isOpen && (
-        <>
-          <div>
-            <ElectricalPanelOpen />
-          </div>
-          <div>
-            <ElectricalPanelClosed />
-          </div>
-        </>
-      )}
+      {!isOpen && <ElectricalPanelClosed />}
+      {isOpen && <ElectricalPanelOpen />}
     </div>
   );
 };

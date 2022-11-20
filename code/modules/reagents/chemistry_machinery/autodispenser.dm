@@ -261,6 +261,8 @@
 		if(smartlink && linked_storage)
 			var/skip
 			for(var/obj/item/reagent_container/C in linked_storage.contents)
+				if(!C.reagents)
+					continue
 				var/O = C.reagents.get_reagent_amount(R.id)
 				if(O)
 					//Check if there's enough and note if there isn't, then transfer

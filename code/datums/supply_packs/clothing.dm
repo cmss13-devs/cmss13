@@ -10,7 +10,7 @@
 					)
 	cost = 20
 	containertype = /obj/structure/closet/crate
-	containername = "Large Pounch"
+	containername = "Large Pouch"
 	group = "Clothing"
 
 /datum/supply_packs/pouches_medical

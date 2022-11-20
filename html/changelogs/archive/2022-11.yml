@@ -393,6 +393,9 @@
   - rscdel: Removed old, unused radio bindings
   - rscdel: Removed old radio bindings for cyrylic keyboards that were way outdated
   - code_imp: Small refactor of code around whisper / intercom radio channels
+  harryob:
+  - bugfix: some changelog entries would fail to generate previously - this should
+      now be resolved.
   mullenpaul:
   - refactor: reworked xeno mark menu
   - refactor: xenos can see which mark they are tracking

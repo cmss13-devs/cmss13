@@ -64,8 +64,6 @@ $border-color: rgba(base.$color-fg, 0.6);
     }
     td:first-child {
       border-left: 0;
-
-
     }
     td:last-child {
       border-right: 0;
@@ -92,7 +90,7 @@ $border-color: rgba(base.$color-fg, 0.6);
 
   .Button {
     width: 100%;
-    display:block;
+    display: block;
     font-size: base.em(14px);
     font-weight: bold;
     background-color: rgba(colors.$primary, 0.25);

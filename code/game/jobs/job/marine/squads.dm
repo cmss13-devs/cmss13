@@ -63,7 +63,6 @@
 							"FT3" = list()
 							)			//3 FTs where references to marines stored.
 	var/list/squad_info_data = list()
-	var/list/squad_info_uis = list()		//list of opened UIs
 
 	var/num_engineers = 0
 	var/num_medics = 0
@@ -626,6 +625,7 @@
 			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was assigned to your fireteam.")))
 		if(H.stat == CONSCIOUS)
 			to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam].")))
+	H.hud_set_squad()
 
 /datum/squad/proc/unassign_fireteam(mob/living/carbon/human/H, upd_ui = TRUE)
 	fireteams[H.assigned_fireteam].Remove(H)
@@ -639,6 +639,7 @@
 		to_chat(fireteam_leaders[ft], FONT_SIZE_HUGE(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was unassigned from your fireteam.")))
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned from [ft].")))
+	H.hud_set_squad()
 
 /datum/squad/proc/assign_ft_leader(fireteam, mob/living/carbon/human/H, upd_ui = TRUE)
 	if(fireteam_leaders[fireteam])

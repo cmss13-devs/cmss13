@@ -96,7 +96,7 @@
 		if (W.unacidable)
 			. = FALSE
 		else
-			W.shatter_window(1)
+			W.deconstruct(FALSE)
 			. =  TRUE // Continue throw
 
 	else if (istype(target, /obj/structure/machinery/door/airlock))
@@ -105,7 +105,7 @@
 		if (A.unacidable)
 			. = FALSE
 		else
-			A.destroy_airlock()
+			A.deconstruct()
 
 	else if (istype(target, /obj/structure/grille))
 		var/obj/structure/grille/G = target

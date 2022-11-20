@@ -18,7 +18,7 @@
 				playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 				if(istype(O,/mob/living/carbon/Xenomorph))
 					if(prob(40))
-						qdel(src)
+						deconstruct(FALSE)
 					else
 						anchored = 0
 						icon_state = "lightstick_[s_color][anchored]"

@@ -512,6 +512,7 @@
 #include "code\datums\supply_packs\attachments.dm"
 #include "code\datums\supply_packs\clothing.dm"
 #include "code\datums\supply_packs\engineering.dm"
+#include "code\datums\supply_packs\food.dm"
 #include "code\datums\supply_packs\hardpoint_modules.dm"
 #include "code\datums\supply_packs\medical.dm"
 #include "code\datums\supply_packs\misc.dm"

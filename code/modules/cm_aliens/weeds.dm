@@ -361,7 +361,7 @@
 
 	health -= damage
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/effect/alien/weeds/flamer_fire_act(dam)
 	if(indestructible)

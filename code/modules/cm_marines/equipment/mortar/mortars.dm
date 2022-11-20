@@ -375,7 +375,7 @@
 /obj/item/mortar_kit/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 
 /obj/item/mortar_kit/attack_self(mob/user)
 	..()

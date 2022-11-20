@@ -2,7 +2,7 @@
 	name = "robot recharge station"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
-	desc = "A recharge and repair stations for robots and synthetics. Simply put the synthetic in need of repair in here and they will be fixed up in no time!"
+	desc = "A recharge and repair station for robots and synthetics. Simply put the synthetic in need of repair in here and they will be fixed up in no time!"
 	density = TRUE
 	anchored = TRUE
 	use_power = 1

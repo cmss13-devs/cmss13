@@ -584,9 +584,11 @@
 			if(Joe)
 				to_chat(src, "<br><b>As a Working Joe, you have the following additional emotes.<br><br>\
 				<span style='color: green;'>alwaysknow</span>, \
+				<span style='color: green;'>workingjoe</span>, \
 				<span style='color: green;'>hysterical</span>, \
 				<span style='color: green;'>safety</span>, \
 				<span style='color: green;'>awful</span>, \
+				<span style='color: green;'>mess</span>, \
 				<span style='color: green;'>damage</span>, \
 				<span style='color: green;'>firearm</span></b><br>")
 

@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { useBackend } from '../../backend';
-import { Box, Button, Icon, Flex, NoticeBox, Stack } from '../../components';
+import { Box, Button, Icon, Flex, NoticeBox } from '../../components';
 import { BoxProps } from '../../components/Box';
 import { Table, TableCell, TableRow } from '../../components/Table';
 

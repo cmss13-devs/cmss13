@@ -189,7 +189,7 @@
 /obj/item/device/m56d_post/attack_self(mob/user)
 	..()
 
-	if(!ishuman(usr))
+	if(!ishuman(user))
 		return
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
@@ -288,9 +288,9 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/m56d_post/MouseDrop(over_object, src_location, over_location) //Drag the tripod onto you to fold it.
-	if(!ishuman(usr))
+	if(!ishuman(usr) || !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
-	var/mob/living/carbon/human/user = usr //this is us
+	var/mob/living/carbon/user = usr //this is us
 	if(over_object == user && in_range(src, user))
 		if(anchored && gun_mounted)
 			to_chat(user, SPAN_WARNING("\The [src] can't be folded while there's an unsecured gun mounted on it. Either complete the assembly or take the gun off with a crowbar."))
@@ -304,7 +304,7 @@
 		qdel(src)
 
 /obj/structure/machinery/m56d_post/attackby(obj/item/O, mob/user)
-	if(!ishuman(user)) //first make sure theres no funkiness
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)) //first make sure theres no funkiness
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) //rotate the mount
@@ -506,7 +506,7 @@
 	return
 
 /obj/structure/machinery/m56d_hmg/attackby(var/obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return ..()
 
 	if(QDELETED(O))
@@ -733,11 +733,16 @@
 	update_icon() //final safeguard.
 
 // New proc for MGs and stuff replaced handle_manual_fire(). Same arguements though, so alls good.
-/obj/structure/machinery/m56d_hmg/handle_click(mob/living/carbon/human/user, atom/A, var/list/mods)
+/obj/structure/machinery/m56d_hmg/handle_click(mob/living/carbon/user, atom/A, var/list/mods)
 	if(!operator)
 		return HANDLE_CLICK_UNHANDLED
 	if(operator != user)
 		return HANDLE_CLICK_UNHANDLED
+	if(ishuman(user))
+		var/mob/living/carbon/human/human = user
+		if(!human.allow_gun_usage)
+			to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+			return HANDLE_CLICK_UNHANDLED
 	if(istype(A,/atom/movable/screen))
 		return HANDLE_CLICK_UNHANDLED
 	if(is_bursting)
@@ -747,9 +752,6 @@
 		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand() || user.get_inactive_hand())
 		to_chat(usr, SPAN_WARNING("You need two free hands to shoot \the [src]."))
-		return HANDLE_CLICK_UNHANDLED
-	if(!user.allow_gun_usage)
-		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 		return HANDLE_CLICK_UNHANDLED
 
 	target = A
@@ -776,17 +778,17 @@
 			return HANDLE_CLICK_HANDLED
 	return HANDLE_CLICK_UNHANDLED
 
-/obj/structure/machinery/m56d_hmg/proc/try_fire(mob/living/carbon/human/user)
+/obj/structure/machinery/m56d_hmg/proc/try_fire(mob/living/carbon/user)
 	if(!rounds)
 		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 	else
 		process_shot(user)
 
-/obj/structure/machinery/m56d_hmg/proc/handle_outside_cone(mob/living/carbon/human/user)
+/obj/structure/machinery/m56d_hmg/proc/handle_outside_cone(mob/living/carbon/user)
 	return FALSE
 
-/obj/structure/machinery/m56d_hmg/proc/handle_modded_clicks(mob/living/carbon/human/user, var/list/mods)
+/obj/structure/machinery/m56d_hmg/proc/handle_modded_clicks(mob/living/carbon/user, var/list/mods)
 	return HANDLE_CLICK_PASS_THRU
 
 /obj/structure/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
@@ -823,10 +825,10 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
-	if(!ishuman(usr))
+	var/mob/living/carbon/user = usr
+	if(!ishuman(user) || !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat_immediate(world,"a")
 		return
-	var/mob/living/carbon/human/user = usr //this is us
-
 	if(!Adjacent(user))
 		return
 	src.add_fingerprint(usr)
@@ -847,10 +849,11 @@
 				return
 			if(user.get_active_hand() != null)
 				to_chat(user, SPAN_WARNING("You need a free hand to man \the [src]."))
-
-			if(!user.allow_gun_usage)
-				to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
-				return
+			if(ishuman(user))
+				var/mob/living/carbon/human/human = user
+				if(!human.allow_gun_usage)
+					to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+					return
 
 			else
 				user.set_interaction(src)
@@ -1033,7 +1036,8 @@
 	icon_state = icon_name
 
 /obj/item/device/m2c_gun/proc/check_can_setup(mob/user, var/turf/rotate_check, var/turf/open/OT, var/list/ACR)
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		to_chat_immediate(world,"a2")
 		return FALSE
 	if(broken_gun)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
@@ -1102,7 +1106,8 @@
 	qdel(src)
 
 /obj/item/device/m2c_gun/attackby(var/obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		to_chat_immediate(world,"a3")
 		return
 
 	if(!iswelder(O) || user.action_busy)
@@ -1283,7 +1288,8 @@
 	update_icon()
 
 /obj/structure/machinery/m56d_hmg/auto/attackby(var/obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		to_chat_immediate(world,"a4")
 		return
 	// RELOADING
 	if(istype(O, /obj/item/ammo_magazine/m2c))
@@ -1329,7 +1335,7 @@
 		return
 	return
 
-/obj/structure/machinery/m56d_hmg/auto/handle_modded_clicks(mob/living/carbon/human/user, var/list/mods)
+/obj/structure/machinery/m56d_hmg/auto/handle_modded_clicks(mob/living/carbon/user, var/list/mods)
 	if(mods["middle"])
 		handle_rotating_gun(user)
 
@@ -1341,7 +1347,7 @@
 	SIGNAL_HANDLER
 	if(!(source.mob == operator) || !A)
 		return
-	var/mob/living/carbon/human/user = operator
+	var/mob/living/carbon/user = operator
 	target = A
 
 	if(params["shift"] || params["ctrl"] || params["alt"])
@@ -1385,7 +1391,7 @@
 
 	handle_rotating_gun(user)
 
-/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/living/carbon/human/user, var/atom/A)
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/living/carbon/user, var/atom/A)
 	if(!target)
 		return
 	if(operator != user)
@@ -1395,9 +1401,11 @@
 	if(user.get_active_hand() || user.get_inactive_hand())
 		to_chat(usr, SPAN_WARNING("You need both your hands free to shoot [src]."))
 		return
-	if(!user.allow_gun_usage)
-		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
-		return
+	if(ishuman(user))
+		var/mob/living/carbon/human/human = user
+		if(!human.allow_gun_usage)
+			to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+			return
 
 	var/angle = get_dir(src,target)
 	if((dir & angle) && target.loc != src.loc && target.loc != operator.loc)
@@ -1496,8 +1504,10 @@
 // DISASSEMBLY
 
 /obj/structure/machinery/m56d_hmg/auto/MouseDrop(over_object, src_location, over_location)
-	if(!ishuman(usr)) return
-	var/mob/living/carbon/human/user = usr
+	if(!HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat_immediate(world,"b")
+		return
+	var/mob/living/carbon/user = usr
 
 	if(over_object == user && in_range(src, user))
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))

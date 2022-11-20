@@ -112,7 +112,7 @@
 				C.visible_message(SPAN_DANGER("The barbed wire slices into [C]!"),
 				SPAN_DANGER("The barbed wire slices into you!"))
 				C.apply_damage(10)
-				C.KnockDown(2) //Leaping into barbed wire is VERY bad
+				C.apply_effect(2, WEAKEN) //Leaping into barbed wire is VERY bad
 				playsound(C, "bonk", 75, FALSE)
 	..()
 
@@ -132,7 +132,7 @@
 
 		else if(!C.stat)
 			visible_message(SPAN_DANGER("[C] smashes through [src]!"))
-			destroy()
+			deconstruct()
 			playsound(src, barricade_hitsound, 25, TRUE)
 
 /*
@@ -262,21 +262,21 @@
 
 	return TRUE
 
-/obj/structure/barricade/destroy(deconstruct)
-	if(deconstruct && is_wired)
-		new /obj/item/stack/barbed_wire(loc)
-	if(stack_type)
-		var/stack_amt
-		if(!deconstruct && destroyed_stack_amount)
-			stack_amt = destroyed_stack_amount
-		else
+/obj/structure/barricade/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		if(is_wired)
+			new /obj/item/stack/barbed_wire(loc)
+		if(stack_type)
+			var/stack_amt
 			stack_amt = round(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
-		if(upgraded)
-			stack_amt += round(2 * (health/starting_maxhealth))
-
-		if(stack_amt)
-			new stack_type (loc, stack_amt)
-	qdel(src)
+			if(upgraded)
+				stack_amt += round(2 * (health/starting_maxhealth))
+			if(stack_amt)
+				new stack_type(loc, stack_amt)
+	else
+		if(destroyed_stack_amount)
+			new stack_type(loc, destroyed_stack_amount)
+	return ..()
 
 
 /obj/structure/barricade/ex_act(severity, direction, cause_data)
@@ -290,7 +290,7 @@
 		handle_debris(severity, direction)
 		if(prob(50)) // no message spam pls
 			visible_message(SPAN_WARNING("[src] blows apart in the explosion, sending shards flying!"))
-		qdel(src)
+		deconstruct(FALSE)
 		create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 	else
 		update_health(round(severity * explosive_multiplier))
@@ -341,7 +341,7 @@
 	if(!health)
 		if(!nomessage)
 			visible_message(SPAN_DANGER("[src] falls apart!"))
-		destroy()
+		deconstruct()
 		return
 
 	update_damage_state()

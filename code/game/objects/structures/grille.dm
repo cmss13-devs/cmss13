@@ -55,7 +55,7 @@
 
 /obj/structure/grille/ex_act(severity,direction)
 	handle_debris(severity, direction)
-	qdel(src)
+	deconstruct(FALSE)
 
 /obj/structure/grille/Collided(atom/user)
 	if(ismob(user)) shock(user, 70)

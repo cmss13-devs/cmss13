@@ -107,31 +107,28 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
 			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
-		destroy_airlock()
+		to_chat(loc, SPAN_DANGER("[src] blows apart!"))
+		deconstruct(FALSE)
+		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 		return TRUE
 
 	return FALSE
 
-/obj/structure/machinery/door/airlock/proc/destroy_airlock()
-	if(!src || unacidable)
-		return
-	var/turf/T = get_turf(src)
-
-	to_chat(loc, SPAN_DANGER("[src] blows apart!"))
-	if(width == 1)
-		new /obj/item/stack/rods(T)
-		new /obj/item/stack/cable_coil/cut(T)
-		new /obj/effect/spawner/gibspawner/robot(T)
-		new /obj/effect/decal/cleanable/blood/oil(T)
-	else // big airlock, big debris
-		for(var/turf/DT in locs) // locs = covered by airlock bounding box
-			new /obj/item/stack/rods(DT)
-			new /obj/item/stack/cable_coil/cut(DT)
-			new /obj/effect/spawner/gibspawner/robot(DT)
-			new /obj/effect/decal/cleanable/blood/oil(DT)
-
-	playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
-	qdel(src)
+// no, i don't know why this provides stuff if you shoot it apart vs disassembling
+/obj/structure/machinery/door/airlock/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		if(width == 1)
+			new /obj/item/stack/rods(loc)
+			new /obj/item/stack/cable_coil/cut(loc)
+			new /obj/effect/spawner/gibspawner/robot(loc)
+			new /obj/effect/decal/cleanable/blood/oil(loc)
+		else // big airlock, big debris
+			for(var/turf/DT in locs) // locs = covered by airlock bounding box
+				new /obj/item/stack/rods(DT)
+				new /obj/item/stack/cable_coil/cut(DT)
+				new /obj/effect/spawner/gibspawner/robot(DT)
+				new /obj/effect/decal/cleanable/blood/oil(DT)
+	return ..()
 
 /obj/structure/machinery/door/airlock/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_DOOR
@@ -680,7 +677,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_AIRLOCK, src)
-				qdel(src)
+				deconstruct()
 				return
 
 		else if(arePowerSystemsOn() && C.pry_capable != IS_PRY_CAPABLE_FORCE)
@@ -747,8 +744,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-				M.SetStunned(5)
-				M.SetKnockeddown(5)
+				M.set_effect(5, STUN)
+				M.set_effect(5, WEAKEN)
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
 					if(H.pain.feels_pain)

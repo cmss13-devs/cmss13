@@ -112,7 +112,7 @@
 	if(!.) return
 	M.status_flags |= FAKEDEATH
 	M.apply_damage(0.5*REM, OXY)
-	M.KnockDown(10)
+	M.apply_effect(10, WEAKEN)
 	M.silent = max(M.silent, 10)
 	M.tod = worldtime2text()
 

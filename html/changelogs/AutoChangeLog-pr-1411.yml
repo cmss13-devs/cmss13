@@ -1,0 +1,6 @@
+author: "John_Rico"
+delete-after: True
+changes:
+  - rscadd: "Added a UI button to exit a MG or you can resist"
+  - rscadd: "Added an animation \"exiting\" an M2c or m56d w/ variant"
+  - bugfix: "Can no long vault over cades or man a MG on the other side of a barricade"

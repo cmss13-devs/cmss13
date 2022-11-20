@@ -31,11 +31,12 @@
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
-/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node)
+/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength=TRUE)
 	. = ..()
 	if(node)
 		linked_hive = node.linked_hive
-		weed_strength = node.weed_strength
+		if(use_node_strength)
+			weed_strength = node.weed_strength
 		node_range = node.node_range
 		if(weed_strength >= WEED_LEVEL_HIVE)
 			name = "hive [name]"
@@ -360,7 +361,7 @@
 
 	health -= damage
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/effect/alien/weeds/flamer_fire_act(dam)
 	if(indestructible)
@@ -400,7 +401,7 @@
 /obj/effect/alien/weeds/weedwall/window/update_icon()
 	var/obj/structure/window/framed/F = locate() in loc
 	if(F && F.junction)
-		icon_state = "weedwall[F.junction]"
+		icon_state = "weedwindow[F.junction]"
 
 /obj/effect/alien/weeds/weedwall/frame
 	layer = ABOVE_TABLE_LAYER

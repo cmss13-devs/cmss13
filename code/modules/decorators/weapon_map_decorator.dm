@@ -33,7 +33,7 @@
 	r_icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_righthand.dmi'
 	b_icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/back.dmi'
 	j_icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/suit_slot.dmi'
-	map_array = list(MAP_PRISON_STATION, MAP_PRISON_STATION_V3)
+	map_array = list(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 
 /datum/decorator/weapon_map_decorator/desert
 	c_icon = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_obj.dmi'

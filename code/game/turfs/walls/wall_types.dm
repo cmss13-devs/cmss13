@@ -94,8 +94,6 @@
 
 	. = ..()
 
-
-
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
 	if(isXeno(M))
 		return
@@ -563,6 +561,9 @@
 /turf/closed/wall/solaris/reinforced/hull
 	hull = 1
 
+/turf/closed/wall/solaris/reinforced/hull/lv522
+	name = "Colony Windbreaker"
+
 /turf/closed/wall/solaris/rock
 	name = "solaris ridge rock wall"
 	icon_state = "solaris_rock"
@@ -943,7 +944,7 @@
 /obj/structure/alien/movable_wall/proc/take_damage(var/damage)
 	health -= damage
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 	else
 		update_icon()
 

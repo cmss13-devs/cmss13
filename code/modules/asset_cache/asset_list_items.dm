@@ -1,29 +1,5 @@
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-/datum/asset/simple/tgui
-	keep_local_name = TRUE
-	assets = list(
-		"tgui.bundle.js" = file("tgui/public/tgui.bundle.js"),
-		"tgui.bundle.css" = file("tgui/public/tgui.bundle.css"),
-	)
-
-/datum/asset/simple/tgui_panel
-	keep_local_name = TRUE
-	assets = list(
-		"tgui-panel.bundle.js" = file("tgui/public/tgui-panel.bundle.js"),
-		"tgui-panel.bundle.css" = file("tgui/public/tgui-panel.bundle.css"),
-	)
-
-/datum/asset/simple/fontawesome
-	keep_local_name = TRUE
-	assets = list(
-		"fa-regular-400.ttf" = 'html/font-awesome/webfonts/fa-regular-400.ttf',
-		"fa-solid-900.ttf" = 'html/font-awesome/webfonts/fa-solid-900.ttf',
-		"fa-v4compatibility.ttf" = 'html/font-awesome/webfonts/fa-v4compatibility.ttf',
-		"font-awesome.css" = 'html/font-awesome/css/all.min.css',
-		"v4shim.css" = 'html/font-awesome/css/v4-shims.min.css',
-	)
-
 /datum/asset/simple/common
 	assets = list(
 		"common.css" = 'html/browser/common.css',

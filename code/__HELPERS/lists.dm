@@ -280,6 +280,7 @@ proc/listclearnulls(list/list)
 	return res
 
 //Mergesort: any value in a list
+// /!\ doesnt seem to work for assoc lists. use sort_list instead
 /proc/sortList(var/list/L)
 	RETURN_TYPE(/list)
 	if(!istype(L))
@@ -309,6 +310,14 @@ proc/listclearnulls(list/list)
 	if(Li <= L.len)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
+
+/// Sums values in two associative lists, from mergee into result, in place
+/proc/mergeListsSum(list/result, list/mergee)
+	for(var/key as anything in mergee)
+		if(result[key] == null)
+			result[key] = 0
+		result[key] += mergee[key]
+	return result
 
 
 // List of lists, sorts by element[key] - for things like crew monitoring computer sorting records by name.

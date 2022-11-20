@@ -114,6 +114,7 @@
 	S["toggle_prefs"]		>> toggle_prefs
 	S["toggles_flashing"]	>> toggles_flashing
 	S["toggles_ert"]		>> toggles_ert
+	S["toggles_admin"]		>> toggles_admin
 	S["UI_style"]			>> UI_style
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
@@ -184,6 +185,7 @@
 	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, 65535, initial(toggles_flashing))
 	toggles_ert		= sanitize_integer(toggles_ert, 0, 65535, initial(toggles_ert))
+	toggles_admin	= sanitize_integer(toggles_admin, 0, 65535, initial(toggles_admin))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	item_animation_pref_level = sanitize_integer(item_animation_pref_level, SHOW_ITEM_ANIMATIONS_NONE, SHOW_ITEM_ANIMATIONS_ALL, SHOW_ITEM_ANIMATIONS_ALL)
@@ -273,6 +275,7 @@
 	S["toggle_prefs"]		<< toggle_prefs
 	S["toggles_flashing"]	<< toggles_flashing
 	S["toggles_ert"]		<< toggles_ert
+	S["toggles_admin"]		<< toggles_admin
 	S["window_skin"]		<< window_skin
 	S["fps"]				<< fps
 	S["ghost_vision_pref"]	<< ghost_vision_pref
@@ -355,6 +358,9 @@
 	S["hair_red"]			>> r_hair
 	S["hair_green"]			>> g_hair
 	S["hair_blue"]			>> b_hair
+	S["grad_red"]			>> r_gradient
+	S["grad_green"]			>> g_gradient
+	S["grad_blue"]			>> b_gradient
 	S["facial_red"]			>> r_facial
 	S["facial_green"]		>> g_facial
 	S["facial_blue"]		>> b_facial
@@ -362,6 +368,7 @@
 	S["skin_green"]			>> g_skin
 	S["skin_blue"]			>> b_skin
 	S["hair_style_name"]	>> h_style
+	S["hair_gradient_name"]	>> grad_style
 	S["facial_style_name"]	>> f_style
 	S["eyes_red"]			>> r_eyes
 	S["eyes_green"]			>> g_eyes
@@ -430,6 +437,10 @@
 	g_skin			= sanitize_integer(g_skin, 0, 255, initial(g_skin))
 	b_skin			= sanitize_integer(b_skin, 0, 255, initial(b_skin))
 	h_style			= sanitize_inlist(h_style, GLOB.hair_styles_list, initial(h_style))
+	r_gradient		= sanitize_integer(r_gradient, 0, 255, initial(r_gradient))
+	g_gradient		= sanitize_integer(g_gradient, 0, 255, initial(g_gradient))
+	b_gradient		= sanitize_integer(b_gradient, 0, 255, initial(b_gradient))
+	grad_style		= sanitize_inlist(grad_style, GLOB.hair_gradient_list, initial(grad_style))
 	var/datum/sprite_accessory/HS = GLOB.hair_styles_list[h_style]
 	if(!HS.selectable)	// delete this
 		h_style = random_hair_style(gender, species)
@@ -491,6 +502,9 @@
 	S["hair_red"]			<< r_hair
 	S["hair_green"]			<< g_hair
 	S["hair_blue"]			<< b_hair
+	S["grad_red"]			<< r_gradient
+	S["grad_green"]			<< g_gradient
+	S["grad_blue"]			<< b_gradient
 	S["facial_red"]			<< r_facial
 	S["facial_green"]		<< g_facial
 	S["facial_blue"]		<< b_facial
@@ -498,6 +512,7 @@
 	S["skin_green"]			<< g_skin
 	S["skin_blue"]			<< b_skin
 	S["hair_style_name"]	<< h_style
+	S["hair_gradient_name"]	<< grad_style
 	S["facial_style_name"]	<< f_style
 	S["eyes_red"]			<< r_eyes
 	S["eyes_green"]			<< g_eyes

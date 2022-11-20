@@ -253,6 +253,10 @@ var/global/players_preassigned = 0
 	if(istype(SJ))
 		SJ.set_spawn_positions(players_preassigned)
 
+	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
+	if(istype(CO_surv_job))
+		CO_surv_job.set_spawn_positions(players_preassigned)
+
 	if(SSnightmare.get_scenario_value("predator_round"))
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned

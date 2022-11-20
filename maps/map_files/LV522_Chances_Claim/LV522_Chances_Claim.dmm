@@ -26033,7 +26033,6 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj/effect/landmark/survivor_spawner/lv522_forecon_major,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "lyg" = (

@@ -106,6 +106,12 @@
 		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
 		return
 
+AddTimelock(/datum/job/civilian/survivor, list(
+	JOB_SQUAD_ROLES = 5 HOURS,
+	JOB_ENGINEER_ROLES = 5 HOURS,
+	JOB_MEDIC_ROLES = 5 HOURS
+))
+
 /datum/job/civilian/survivor/synth
 	title = JOB_SYNTH_SURVIVOR
 	selection_class = "job_synth"
@@ -126,8 +132,34 @@
 		arm_equipment(equipping_human, pick(synth_survivor_types), FALSE, TRUE)
 		return
 
-AddTimelock(/datum/job/civilian/survivor, list(
-	JOB_SQUAD_ROLES = 5 HOURS,
-	JOB_ENGINEER_ROLES = 5 HOURS,
-	JOB_MEDIC_ROLES = 5 HOURS
-))
+/datum/job/civilian/survivor/commanding_officer
+	title = JOB_CO_SURVIVOR
+	selection_class = "job_commanding_officer"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
+	flags_whitelist = WHITELIST_COMMANDER
+	total_positions = 0
+	spawn_positions = 0
+
+/datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
+	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+	if(CO_survivor_types)
+		total_positions = 1
+		spawn_positions = 1
+	return spawn_positions
+
+/datum/job/civilian/survivor/commanding_officer/handle_equip_gear(var/mob/living/carbon/human/equipping_human, var/obj/effect/landmark/survivor_spawner/picked_spawner)
+	if(picked_spawner.CO_equipment)
+		arm_equipment(equipping_human, picked_spawner.CO_equipment, FALSE, TRUE)
+		return
+	else
+		var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+		arm_equipment(equipping_human, pick(CO_survivor_types), FALSE, TRUE)
+		return
+
+/datum/job/civilian/survivor/commanding_officer/generate_entry_message(var/mob/living/carbon/human/H)
+	/*
+	intro_text = list("<h2>You are the commanding officer of the USS Hanyut.</h2>",\
+	"<span class='notice'>You are VERY aware of the Xenomorph threat.</span>")
+	story_text = "This entire operation went shits up when your team investigated the atmospheric processor two weeks ago, from that point on you've been surviving by the skin of your teeth waiting your ship's automated distress beacon to be picked up... until now."
+
+	*/

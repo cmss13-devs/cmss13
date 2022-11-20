@@ -131,10 +131,10 @@ also doesn't really matter. You can only reload them with handfuls.
 
 /obj/item/ammo_magazine/internal/shotgun/cmb
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
-	max_rounds = 8
+	max_rounds = 4
 
 /obj/item/ammo_magazine/internal/shotgun/cmb/m3717
-	max_rounds = 10
+	max_rounds = 5
 
 //-------------------------------------------------------
 

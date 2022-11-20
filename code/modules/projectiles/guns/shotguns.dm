@@ -1034,6 +1034,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	item_state = "hg3712"
 	fire_sound = 'sound/weapons/gun_shotgun_small.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb
+	var/obj/item/ammo_magazine/internal/shotgun/cmb/primary_tube
+	var/obj/item/ammo_magazine/internal/shotgun/cmb/secondary_tube
+	var/obj/item/ammo_magazine/internal/shotgun/cmb/active_tube
+	actions_types = list(/datum/action/item_action/shotgun/act_toggle_tube)
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
@@ -1049,8 +1053,38 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/cmb/Initialize(mapload, spawn_empty)
 	. = ..()
+	primary_tube = current_mag
+	secondary_tube = new current_mag.type
+	current_mag = secondary_tube
+	replace_tube(secondary_tube.current_rounds)
+	active_tube = current_mag
 	pump_delay = FIRE_DELAY_TIER_5*2
 
+/obj/item/weapon/gun/shotgun/pump/cmb/proc/do_toggle_tube(var/mob/user)
+	if(!ishuman(user) || user.is_mob_incapacitated())
+		return FALSE
+	var/obj/item/weapon/gun/shotgun/pump/cmb/shotgun = user.get_active_hand()
+	if(!istype(shotgun))
+		to_chat(usr, "You must be holding [src] to change the internal tube magazine")
+		return
+	if(!active_tube)
+		return
+	if(active_tube == primary_tube)
+		active_tube = secondary_tube
+	else
+		active_tube = primary_tube
+	to_chat(user, "You switch the internal tube magazine.")
+	playsound(src, 'sound/machines/click.ogg', 20, 1)
+	shotgun.current_mag = active_tube
+
+	return TRUE
+
+/obj/item/weapon/gun/shotgun/pump/cmb/verb/toggle_tube()
+	set name = "Toggle Internal Tube"
+	set desc = "Toggle between the tube magazines."
+	set category = "Weapons"
+	set src in usr
+	do_toggle_tube(usr)
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 21, "under_x" = 22, "under_y" = 15, "stock_x" = 24, "stock_y" = 10)
@@ -1067,6 +1101,21 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
+/datum/action/item_action/shotgun/act_toggle_tube/New(var/mob/living/user, var/obj/item/holder)
+	. = ..()
+	name = "Toggle Internal Tube Magazine"
+	var/obj/item/weapon/gun/shotgun/pump/cmb/shotgun = holder_item
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/obj/items/weapons/guns/gun.dmi', button, shotgun.icon_state)
+	
+/datum/action/item_action/shotgun/act_toggle_tube/action_activate()
+	var/obj/item/weapon/gun/shotgun/pump/cmb/shotgun = holder_item
+	if(!istype(shotgun))
+		return
+	shotgun.toggle_tube()
+
 
 /obj/item/weapon/gun/shotgun/pump/cmb/m3717
 	name = "\improper M37-17 pump shotgun"

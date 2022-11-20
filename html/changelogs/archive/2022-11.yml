@@ -381,5 +381,13 @@
   harryob:
   - bugfix: crew console now shows ground/ship colours again
   - refactor: the code for deconstruction is now (somewhat) neater
+  - bugfix: girders now deconstruct
   totalepicness:
   - soundadd: Fixes no sound when hitting metal foam
+2022-11-20:
+  NoKohi:
+  - bugfix: fixed a xeno fun fact showing up in human fun facts
+  ThePiachu:
+  - rscdel: Removed old, unused radio bindings
+  - rscdel: Removed old radio bindings for cyrylic keyboards that were way outdated
+  - code_imp: Small refactor of code around whisper / intercom radio channels

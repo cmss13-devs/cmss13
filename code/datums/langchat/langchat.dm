@@ -185,8 +185,14 @@
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
 	if(text_left)
 		addtimer(CALLBACK(src, /atom.proc/langchat_long_speech, text_left, listeners, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, /mob.proc/restore_maptext_offset), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 	else
 		addtimer(CALLBACK(src, /atom.proc/langchat_drop_image, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, /mob.proc/restore_maptext_offset), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+
+//negates mob's maptext offset done in vehicle broadcasting
+/mob/proc/restore_maptext_offset()
+	langchat_image.maptext_y -= 32
 
 /** Displays image to a single listener after it was built above eg. for chaining different game logic than speech code
 This does just that, doesn't check deafness or language! Do what you will in that regard **/

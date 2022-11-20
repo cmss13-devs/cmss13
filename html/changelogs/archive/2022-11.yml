@@ -384,3 +384,8 @@
   - bugfix: girders now deconstruct
   totalepicness:
   - soundadd: Fixes no sound when hitting metal foam
+2022-11-20:
+  ThePiachu:
+  - rscdel: Removed old, unused radio bindings
+  - rscdel: Removed old radio bindings for cyrylic keyboards that were way outdated
+  - code_imp: Small refactor of code around whisper / intercom radio channels

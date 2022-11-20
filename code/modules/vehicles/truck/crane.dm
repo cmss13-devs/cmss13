@@ -1,6 +1,6 @@
 /obj/vehicle/multitile/crane
 	name = "Crane"
-	desc = "A rather cheep hunk of metal with some treads, you know what to do. Entrance on the left side. Additional exit on the back"
+	desc = "A rather cheep hunk of metal with some treads, you know what to do. Entrance on the left side."
 
 	layer = ABOVE_XENO_LAYER
 	vehicle_flags = VEHICLE_CLASS_WEAK

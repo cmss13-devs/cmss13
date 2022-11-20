@@ -160,7 +160,7 @@
 			if(!M)
 				return
 
-			var/deg = tgui_input_number(src, "Enter how much to rotate the matrix by. The angle is clockwise rotation in degrees.", "Matrix rotation", 0, 360, -360)
+			var/deg = input("Enter how much to rotate the matrix by. The angle is clockwise rotation in degrees.", "Matrix rotation") as null|num
 			if(isnull(deg))
 				return
 
@@ -174,11 +174,11 @@
 			if(!M)
 				return
 
-			var/sx = tgui_input_number(src, "Enter how much to scale the matrix by in the X direction.", "Matrix scaling")
+			var/sx = input("Enter how much to scale the matrix by in the X direction.", "Matrix scaling") as null|num
 			if(isnull(sx))
 				return
 
-			var/sy = tgui_input_number(src, "Enter how much to scale the matrix by in the Y direction.", "Matrix scaling")
+			var/sy = input("Enter how much to scale the matrix by in the Y direction.", "Matrix scaling") as null|num
 			if(isnull(sy))
 				return
 
@@ -192,11 +192,11 @@
 			if(!M)
 				return
 
-			var/tx = tgui_input_number(src, "Enter how much to translate the matrix by in the X direction.", "Matrix scaling")
+			var/tx = input("Enter how much to translate the matrix by in the X direction.", "Matrix translation") as null|num
 			if(isnull(tx))
 				return
 
-			var/ty = tgui_input_number(src, "Enter how much to translate the matrix by in the Y direction.", "Matrix scaling")
+			var/ty = input("Enter how much to translate the matrix by in the Y direction.", "Matrix translation") as null|num
 			if(isnull(ty))
 				return
 

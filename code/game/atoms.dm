@@ -55,6 +55,11 @@
 	///Reference to atom being orbited
 	var/atom/orbit_target
 
+	///Default pixel x shifting for the atom's icon.
+	var/base_pixel_x = 0
+	///Default pixel y shifting for the atom's icon.
+	var/base_pixel_y = 0
+
 /atom/New(loc, ...)
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
@@ -179,19 +184,28 @@ directive is properly returned.
 	return found
 
 /atom/proc/examine(mob/user)
-	to_chat(user, "[icon2html(src, user)] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
+	var/list/examine_strings = get_examine_text(user)
+	to_chat(user, examine_block(examine_strings.Join("\n")))
+
+/atom/proc/get_examine_text(mob/user)
+	. = list()
+	. += "[icon2html(src, user)] That's \a [src]." //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	if(desc)
-		to_chat(user, desc)
+		. += desc
 	if(desc_lore)
-		to_chat(user, SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>."))
+		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
 /atom/proc/relaymove()
 	return
 
-/atom/proc/ex_act()
-	return
+/atom/proc/contents_explosion(severity)
+	for(var/atom/A in contents)
+		A.ex_act(severity)
+
+/atom/proc/ex_act(severity)
+	contents_explosion(severity)
 
 /atom/proc/fire_act()
 	return
@@ -320,7 +334,7 @@ Parameters are passed from New.
 /atom/process()
 	return
 
-///---CLONE---///
+//---CLONE---//
 
 /atom/clone
 	var/proj_x = 0
@@ -341,10 +355,6 @@ Parameters are passed from New.
 	for(var/datum/effects/acid/A in effects_list)
 		qdel(A)
 
-/atom/proc/remove_weather_effects()
-	for(var/datum/effects/weather/W in effects_list)
-		qdel(W)
-
 // Movement
 /atom/proc/add_temp_pass_flags(flags_to_add)
 	if (isnull(temp_flag_counter))
@@ -355,7 +365,7 @@ Parameters are passed from New.
 			continue
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
-			temp_flag_counter[flag_str] += 1
+			temp_flag_counter[flag_str]++
 		else
 			temp_flag_counter[flag_str] = 1
 			flags_pass_temp |= flag
@@ -369,7 +379,7 @@ Parameters are passed from New.
 			continue
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
-			temp_flag_counter[flag_str] -= 1
+			temp_flag_counter[flag_str]--
 			if (temp_flag_counter[flag_str] == 0)
 				temp_flag_counter -= flag_str
 				flags_pass_temp &= ~flag
@@ -390,23 +400,33 @@ Parameters are passed from New.
 		return
 	var/client/usr_client = usr.client
 	var/list/paramslist = list()
-	if(href_list["statpanel_item_middleclick"])
-		paramslist["middle"] = "1"
-	if(href_list["statpanel_item_shiftclick"])
-		paramslist["shift"] = "1"
-	if(href_list["statpanel_item_ctrlclick"])
-		paramslist["ctrl"] = "1"
-	if(href_list["statpanel_item_altclick"])
-		paramslist["alt"] = "1"
-	if(href_list["desc_lore"])
-		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
-		onclose(usr, "[name]")
+
 	if(href_list["statpanel_item_click"])
-		// first of all make sure we valid
+		switch(href_list["statpanel_item_click"])
+			if("left")
+				paramslist[LEFT_CLICK] = "1"
+			if("right")
+				paramslist[RIGHT_CLICK] = "1"
+			if("middle")
+				paramslist[MIDDLE_CLICK] = "1"
+			else
+				return
+
+		if(href_list["statpanel_item_shiftclick"])
+			paramslist[SHIFT_CLICK] = "1"
+		if(href_list["statpanel_item_ctrlclick"])
+			paramslist[CTRL_CLICK] = "1"
+		if(href_list["statpanel_item_altclick"])
+			paramslist[ALT_CLICK] = "1"
+
 		var/mouseparams = list2params(paramslist)
 		usr_client.ignore_next_click = FALSE
 		usr_client.Click(src, loc, TRUE, mouseparams)
 		return TRUE
+
+	if(href_list["desc_lore"])
+		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
+		onclose(usr, "[name]")
 
 ///This proc is called on atoms when they are loaded into a shuttle
 /atom/proc/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
@@ -519,3 +539,18 @@ Parameters are passed from New.
 	for(var/atom/atom_orbiter as anything in orbiters?.orbiters)
 		output += atom_orbiter.get_all_orbiters(processed, source = FALSE)
 	return output
+
+// returns a modifier for how much the tail stab should be cooldowned by
+// returning a 0 makes it do nothing
+/atom/proc/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
+/atom/proc/handle_flamer_fire(var/obj/flamer_fire/fire, var/damage, var/delta_time)
+	return
+
+/atom/proc/handle_flamer_fire_crossed(var/obj/flamer_fire/fire)
+	return
+
+/atom/proc/get_orbit_size()
+	var/icon/I = icon(icon, icon_state, dir)
+	return (I.Width() + I.Height()) * 0.5

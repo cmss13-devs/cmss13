@@ -117,7 +117,7 @@
 			death_list += list(list(
 				"mob_name" = sanitize(S.mob_name),
 				"job_name" = S.role_name,
-				"area_name" = sanitize(S.area_name),
+				"area_name" = sanitize_area(S.area_name),
 				"cause_name" = sanitize(S.cause_name),
 				"total_kills" = S.total_kills,
 				"total_damage" = damage_list,
@@ -199,7 +199,7 @@
 				death_list += list(list(
 					"mob_name" = sanitize(DS.mob_name),
 					"job_name" = DS.role_name,
-					"area_name" = sanitize(DS.area_name),
+					"area_name" = sanitize_area(DS.area_name),
 					"cause_name" = sanitize(DS.cause_name),
 					"total_kills" = DS.total_kills,
 					"total_damage" = damage_list,
@@ -311,7 +311,7 @@
 			death_list += list(list(
 				"mob_name" = sanitize(S.mob_name),
 				"job_name" = S.role_name,
-				"area_name" = sanitize(S.area_name),
+				"area_name" = sanitize_area(S.area_name),
 				"cause_name" = sanitize(S.cause_name),
 				"total_kills" = S.total_kills,
 				"total_damage" = damage_list,
@@ -366,7 +366,7 @@
 				death_list += list(list(
 					"mob_name" = sanitize(DS.mob_name),
 					"job_name" = DS.role_name,
-					"area_name" = sanitize(DS.area_name),
+					"area_name" = sanitize_area(DS.area_name),
 					"cause_name" = sanitize(DS.cause_name),
 					"total_kills" = DS.total_kills,
 					"total_damage" = damage_list,
@@ -468,7 +468,7 @@
 		var/death = list(list(
 			"mob_name" = sanitize(S.mob_name),
 			"job_name" = S.role_name,
-			"area_name" = sanitize(S.area_name),
+			"area_name" = sanitize_area(S.area_name),
 			"cause_name" = sanitize(S.cause_name),
 			"total_kills" = S.total_kills,
 			"total_damage" = damage_list,
@@ -572,7 +572,7 @@
 			job_death_list += list(list(
 				"mob_name" = sanitize(DS.mob_name),
 				"job_name" = DS.role_name,
-				"area_name" = sanitize(DS.area_name),
+				"area_name" = sanitize_area(DS.area_name),
 				"cause_name" = sanitize(DS.cause_name),
 				"total_kills" = DS.total_kills,
 				"total_damage" = damage_list,
@@ -663,7 +663,7 @@
 			caste_death_list += list(list(
 				"mob_name" = sanitize(DS.mob_name),
 				"job_name" = DS.role_name,
-				"area_name" = sanitize(DS.area_name),
+				"area_name" = sanitize_area(DS.area_name),
 				"cause_name" = sanitize(DS.cause_name),
 				"total_kills" = DS.total_kills,
 				"total_damage" = damage_list,

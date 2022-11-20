@@ -77,13 +77,13 @@
 	if(master)
 		master.update_icon()
 
-/obj/item/device/assembly_holder/examine(mob/user)
-	..()
+/obj/item/device/assembly_holder/get_examine_text(mob/user)
+	. = ..()
 	if (in_range(src, user) || loc == user)
 		if (secured)
-			to_chat(user, "[src] is ready!")
+			. += "[src] is ready!"
 		else
-			to_chat(user, "[src] can be attached!")
+			. += "[src] can be attached!"
 
 /obj/item/device/assembly_holder/HasProximity(atom/movable/AM as mob|obj)
 	if(a_left)

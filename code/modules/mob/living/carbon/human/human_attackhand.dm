@@ -226,9 +226,9 @@
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
-	AdjustKnockedout(-3)
-	AdjustStunned(-3)
-	AdjustKnockeddown(-3)
+	adjust_effect(-3, PARALYZE)
+	adjust_effect(-3, STUN)
+	adjust_effect(-3, WEAKEN)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
@@ -236,6 +236,7 @@
 	visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."), \
 	SPAN_NOTICE("You check yourself for injuries."), null, 3)
 
+	var/list/limb_message = list()
 	for(var/obj/limb/org in limbs)
 		var/list/status = list()
 		var/brutedamage = org.brute_dam
@@ -305,6 +306,7 @@
 			postscript += " <b>(SPLINTED)</b>"
 
 		if(postscript)
-			to_chat(src, "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]")
+			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"
 		else
-			to_chat(src, "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]")
+			limb_message += "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]"
+	to_chat(src, examine_block(limb_message.Join("\n")))

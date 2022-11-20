@@ -2,7 +2,7 @@
 	name = "security camera"
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
-	icon_state = "camera"
+	icon_state = "autocam_editor"
 	use_power = 2
 	idle_power_usage = 5
 	active_power_usage = 10
@@ -53,6 +53,12 @@
 		ASSERT(src.network.len > 0)
 
 	set_pixel_location()
+	update_icon()
+
+/obj/structure/machinery/camera/update_icon()
+	. = ..()
+	if(icon_state == "autocam_editor")
+		icon_state = "camera"
 
 /obj/structure/machinery/camera/set_pixel_location()
 	switch(dir)
@@ -313,12 +319,9 @@
 	viewing_users += user
 	user.client?.eye = get_turf(src)
 	user.client?.perspective = EYE_PERSPECTIVE
-	give_action(user, /datum/action/human_action/cancel_view)
-	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from_view)
 
 /obj/structure/machinery/camera/cas/proc/remove_from_view(var/mob/living/carbon/human/user)
 	viewing_users -= user
-	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
 
 /obj/structure/machinery/camera/cas/isXRay()
 	return TRUE

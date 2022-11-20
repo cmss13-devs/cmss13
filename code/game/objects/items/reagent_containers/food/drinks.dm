@@ -30,6 +30,8 @@
 			reagents.trans_to_ingest(M, gulp_size)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		return TRUE
+	else if(istype(M, /mob/living/carbon/human))
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
@@ -120,19 +122,20 @@
 
 	return ..()
 
-/obj/item/reagent_container/food/drinks/examine(mob/user)
-	..()
-	if (get_dist(user, src) > 1 && user != loc) return
+/obj/item/reagent_container/food/drinks/get_examine_text(mob/user)
+	. = ..()
+	if (get_dist(user, src) > 1 && user != loc)
+		return
 	if(!reagents || reagents.total_volume==0)
-		to_chat(user, SPAN_NOTICE(" \The [src] is empty!"))
+		. += SPAN_NOTICE("\The [src] is empty!")
 	else if (reagents.total_volume<=src.volume/4)
-		to_chat(user, SPAN_NOTICE(" \The [src] is almost empty!"))
+		. += SPAN_NOTICE("\The [src] is almost empty!")
 	else if (reagents.total_volume<=src.volume*0.66)
-		to_chat(user, SPAN_NOTICE(" \The [src] is half full!"))
+		. += SPAN_NOTICE("\The [src] is half full!")
 	else if (reagents.total_volume<=src.volume*0.90)
-		to_chat(user, SPAN_NOTICE(" \The [src] is almost full!"))
+		. += SPAN_NOTICE("\The [src] is almost full!")
 	else
-		to_chat(user, SPAN_NOTICE(" \The [src] is full!"))
+		. += SPAN_NOTICE("\The [src] is full!")
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -153,7 +156,7 @@
 	flags_atom = FPRINT|CONDUCT|OPENCONTAINER
 
 /obj/item/reagent_container/food/drinks/golden_cup/tournament_26_06_2011
-	desc = "A golden cup. It will be presented to a winner of tournament 26 june and name of the winner will be graved on it."
+	desc = "A golden cup. It will be presented to a winner of tournament 26 June and name of the winner will be graved on it."
 
 
 ///////////////////////////////////////////////Drinks
@@ -243,7 +246,7 @@
 
 /obj/item/reagent_container/food/drinks/dry_ramen
 	name = "cup ramen"
-	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
+	desc = "Just add 10ml water, self-heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 	center_of_mass = "x=16;y=11"
 

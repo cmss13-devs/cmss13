@@ -57,10 +57,10 @@
 		else
 			. = "It is in pristine condition."
 
-/obj/item/clothing/accessory/health/examine(mob/user)
+/obj/item/clothing/accessory/health/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, "To use it, attach it to your uniform.")
-	to_chat(user, SPAN_NOTICE(get_damage_status()))
+	. += "To use it, attach it to your uniform."
+	. += SPAN_NOTICE(get_damage_status())
 
 /obj/item/clothing/accessory/health/additional_examine_text()
 	return ". [get_damage_status()]"

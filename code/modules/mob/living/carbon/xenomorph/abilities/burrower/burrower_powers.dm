@@ -67,7 +67,7 @@
 	anchored = FALSE
 	density = TRUE
 	for(var/mob/living/carbon/human/H in loc)
-		H.KnockDown(2)
+		H.apply_effect(2, WEAKEN)
 	addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_canmove()
 	update_icons()
@@ -170,9 +170,9 @@
 		T.tunnel_desc = "[new_name]"
 	return
 
-/datum/action/xeno_action/activable/tremor/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.used_tremor
+/datum/action/xeno_action/onclick/tremor/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	return !xeno.used_tremor
 
 /mob/living/carbon/Xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
 	if(burrow || is_ventcrawling)
@@ -201,7 +201,7 @@
 
 	for(var/mob/living/carbon/human/H in range(3, loc))
 		to_chat(H, SPAN_WARNING("The violent tremors make you lose your footing!"))
-		H.KnockDown(1)
+		H.apply_effect(1, WEAKEN)
 
 	spawn(caste.tremor_cooldown)
 		used_tremor = 0

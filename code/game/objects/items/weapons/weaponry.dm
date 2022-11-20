@@ -12,7 +12,7 @@
 
 /obj/item/weapon/melee/nullrod
 	name = "null rod"
-	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomenae."
+	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomena."
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	flags_equip_slot = SLOT_WAIST
@@ -236,8 +236,8 @@
 		M.animation_attack_on(user)
 		M.flick_attack_overlay(user, "punch")
 		spawn(5)
-			user.Stun((kill_delay-5)/15)
-			M.Stun((kill_delay-5)/15)
+			user.apply_effect((kill_delay-5)/15, STUN)
+			M.apply_effect((kill_delay-5)/15, STUN)
 
 	else //No katana
 
@@ -257,7 +257,7 @@
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")
 
-		M.Stun(kill_delay/15)
+		M.apply_effect(kill_delay/15, STUN)
 
 
 	for (var/mob/O in hearers(world_view_size, M))

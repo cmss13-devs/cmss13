@@ -14,7 +14,7 @@
  * * min_value - Specifies a minimum value. Often 0.
  * * timeout - The timeout of the number input, after which the modal will close and qdel itself. Set to zero for no timeout.
  */
-/proc/tgui_input_number(mob/user, message, title = "Number Input", default = 0, max_value = 10000, min_value = 0, timeout = 0)
+/proc/tgui_input_number(mob/user, message, title = "Number Input", default = 0, max_value = 10000, min_value = 0, timeout = 0, integer_only = TRUE)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -23,13 +23,16 @@
 			user = client.mob
 		else
 			return
-	var/datum/tgui_input_number/number_input = new(user, message, title, default, max_value, min_value, timeout)
+	var/datum/tgui_input_number/number_input = new(user, message, title, default, max_value, min_value, timeout, integer_only)
 	number_input.tgui_interact(user)
 	number_input.wait()
 	if (number_input)
 		. = number_input.entry
 		qdel(number_input)
 
+///A clone of tgui_input_number that defaults to accepting negative inputs too.
+/proc/tgui_input_real_number(mob/user, message, title = "Number Input", default = 0, max_value = 16777216, min_value = -16777216, timeout = 0, integer_only = FALSE)
+	return tgui_input_number(user, message, title, default, max_value, min_value, timeout, integer_only)
 /**
  * Creates an asynchronous TGUI number input window with an associated callback.
  *
@@ -82,14 +85,17 @@
 	var/timeout
 	/// The title of the TGUI window
 	var/title
+	/// If the final value will be rounded
+	var/integer_only
 
 
-/datum/tgui_input_number/New(mob/user, message, title, default, max_value, min_value, timeout)
+/datum/tgui_input_number/New(mob/user, message, title, default, max_value, min_value, timeout, integer_only)
 	src.default = default
 	src.max_value = max_value
 	src.message = message
 	src.min_value = min_value
 	src.title = title
+	src.integer_only = integer_only
 	if (timeout)
 		src.timeout = timeout
 		start_time = world.time
@@ -154,7 +160,9 @@
 		if("submit")
 			if(!isnum(params["entry"]))
 				CRASH("A non number was input into tgui input number by [usr]")
-			var/choice = round(params["entry"])
+			var/choice = params["entry"]
+			if(integer_only)
+				choice = round(params["entry"])
 			if(choice > max_value)
 				CRASH("A number greater than the max value was input into tgui input number by [usr]")
 			if(choice < min_value)

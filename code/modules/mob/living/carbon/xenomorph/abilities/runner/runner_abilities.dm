@@ -39,7 +39,7 @@
 	ability_name = "acider acid"
 	var/acid_type = /obj/effect/xenomorph/acid/strong
 	macro_path = /datum/action/xeno_action/verb/verb_acider_acid
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
 	var/acid_cost = 100
 
@@ -49,5 +49,5 @@
 	ability_name = "for the hive"
 	macro_path = /datum/action/xeno_action/verb/verb_acider_sacrifice
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	var/minimal_acid = 200

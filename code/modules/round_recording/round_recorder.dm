@@ -123,7 +123,7 @@
 
 // Mostly a bookkeeping proc for keeping track of the amount of snapshots and the time between them
 /datum/round_recorder/proc/snapshot()
-	snapshots += 1
+	snapshots++
 	LAZYADD(snapshot_deltas, world.time - last_snapshot)
 	last_snapshot = world.time
 

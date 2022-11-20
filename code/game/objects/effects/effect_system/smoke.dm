@@ -54,7 +54,7 @@
 	apply_smoke_effect(get_turf(src))
 
 /obj/effect/particle_effect/smoke/ex_act(severity)
-	if( prob(severity/EXPLOSION_THRESHOLD_LOW * 100) )
+	if(prob(severity/EXPLOSION_THRESHOLD_LOW * 100))
 		qdel(src)
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/M)
@@ -156,7 +156,7 @@
 		return 0
 
 	M.drop_held_item()
-	M:sleeping += 1
+	M:sleeping++
 	if(M.coughedtime != 1)
 		M.coughedtime = 1
 		if(ishuman(M)) //Humans only to avoid issues
@@ -265,9 +265,9 @@
 	var/gas_damage = 20
 
 /obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
-	var/mob/living/carbon/Xenomorph/X = cause_data.resolve_mob()
-	if (istype(X) && X.hivenumber)
-		hivenumber = X.hivenumber
+	var/mob/living/carbon/Xenomorph/xeno = cause_data?.resolve_mob()
+	if (istype(xeno) && xeno.hivenumber)
+		hivenumber = xeno.hivenumber
 
 		set_hive_data(src, hivenumber)
 
@@ -371,7 +371,7 @@
 			M.emote("gasp")
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 	if (prob(20))
-		M.KnockDown(1)
+		M.apply_effect(1, WEAKEN)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
@@ -423,7 +423,7 @@
 			M.emote("gasp")
 		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 	if (prob(20))
-		M.KnockDown(1)
+		M.apply_effect(1, WEAKEN)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
@@ -493,8 +493,7 @@
 		lifetime = smoke_time
 	radius = min(radius, 10)
 	amount = radius
-	if(new_cause_data)
-		cause_data = new_cause_data
+	cause_data = istype(new_cause_data) ? new_cause_data : create_cause_data(new_cause_data)
 
 /datum/effect_system/smoke_spread/start()
 	if(holder)

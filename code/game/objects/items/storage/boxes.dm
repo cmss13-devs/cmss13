@@ -504,7 +504,7 @@
 
 /obj/item/storage/box/explosive_mines
 	name = "\improper M20 mine box"
-	desc = "A secure box holding five M20 anti-personel proximity mines."
+	desc = "A secure box holding five M20 anti-personnel proximity mines."
 	icon_state = "minebox"
 	w_class = SIZE_MEDIUM
 	max_storage_space = 8
@@ -682,7 +682,7 @@
 
 /obj/item/storage/box/MRE
 	name = "\improper USCM MRE"
-	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day's of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
+	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
 	icon_state = "mealpack"
 	w_class = SIZE_SMALL
 	can_hold = list()

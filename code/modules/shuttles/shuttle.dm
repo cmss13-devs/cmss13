@@ -195,10 +195,10 @@
 		T.ScrapeAway()
 
 	for(var/mob/living/carbon/bug in destination)
-		bug.gib(initial(origin.name))
+		bug.gib(create_cause_data(initial(origin.name)))
 
 	for(var/mob/living/simple_animal/pest in destination)
-		pest.gib(initial(origin.name))
+		pest.gib(create_cause_data(initial(origin.name)))
 
 	origin.move_contents_to(destination, direction=direction)
 
@@ -215,7 +215,7 @@
 					shake_camera(M, iselevator? 2 : 10, 1)
 		if(istype(M, /mob/living/carbon) && !iselevator)
 			if(!M.buckled)
-				M.KnockDown(3)
+				M.apply_effect(3, WEAKEN)
 
 	for(var/turf/T in origin) // WOW so hacky - who cares. Abby
 		if(iselevator)

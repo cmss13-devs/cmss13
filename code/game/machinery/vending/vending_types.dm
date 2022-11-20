@@ -211,7 +211,7 @@
 
 /obj/structure/machinery/vending/sea
 	name = "SeaTech"
-	desc = "A equipment vendor designed to save lives"
+	desc = "An equipment vendor designed to save lives"
 	product_ads = "Semper Fi!;First to Fight!;Ooh Rah.;Leathernecks!;The Few. The Proud.;Esprit de Corps;Jarhead.;Devil Dogs."
 	icon_state = "sec"
 	icon_deny = "sec-deny"

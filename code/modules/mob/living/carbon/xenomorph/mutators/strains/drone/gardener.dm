@@ -18,19 +18,24 @@
 	)
 	keystone = TRUE
 
-/datum/xeno_mutator/gardener/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/gardener/apply_mutator(datum/mutator_set/individual_mutators/mutator)
 	. = ..()
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
-	D.mutation_type = DRONE_GARDENER
-	D.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed, /obj/effect/alien/resin/fruit/plasma)
-	D.selected_fruit = /obj/effect/alien/resin/fruit/greater
-	D.max_placeable = 6
-	mutator_update_actions(D)
-	MS.recalculate_actions(description, flavor_description)
-	D.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
+	var/mob/living/carbon/Xenomorph/Drone/drone = mutator.xeno
+	drone.mutation_type = DRONE_GARDENER
+	drone.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed, /obj/effect/alien/resin/fruit/plasma)
+	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
+	drone.max_placeable = 6
+	mutator_update_actions(drone)
+	// Also change the primacy value for our place construction ability (because we want it in the same place but have another primacy ability)
+	for(var/datum/action/xeno_action/action in drone.actions)
+		if(istype(action, /datum/action/xeno_action/activable/place_construction))
+			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
+			break // Don't need to keep looking
+	mutator.recalculate_actions(description, flavor_description)
+	drone.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
 	name = "Plant Resin Fruit (50)"
@@ -124,6 +129,7 @@
 	xeno_cooldown = 0
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/onclick/change_fruit/give_to(mob/living/carbon/Xenomorph/xeno)
 	. = ..()

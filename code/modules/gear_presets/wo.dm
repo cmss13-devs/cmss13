@@ -53,9 +53,9 @@
 			if("Mateba")
 				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 				kit = /obj/item/storage/mateba_case/captain
-			if("Commodore's Mateba")
-				sidearmpath = /obj/item/storage/belt/gun/mateba/commodore/full
-				kit = /obj/item/storage/mateba_case/captain/commodore
+			if("Colonel's Mateba")
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
+				kit = /obj/item/storage/mateba_case/captain/council
 			if("Desert Eagle")
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
 			if("Golden Desert Eagle")
@@ -101,6 +101,8 @@
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
 
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
+
 /datum/equipment_preset/wo/xo/New()
 	. = ..()
 	access = get_all_marine_access()
@@ -126,7 +128,6 @@
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
-
 
 //*****************************************************************************************************/
 
@@ -330,7 +331,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/techofficer(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/custom(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/req(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)

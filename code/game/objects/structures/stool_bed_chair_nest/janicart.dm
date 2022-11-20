@@ -22,10 +22,11 @@
 	create_reagents(100)
 
 
-/obj/structure/bed/chair/janicart/examine(mob/user)
-	to_chat(user, "[icon2html(src, usr)] This [callme] contains [reagents.total_volume] unit\s of water!")
+/obj/structure/bed/chair/janicart/get_examine_text(mob/user)
+	. = list()
+	. += "[icon2html(src, usr)] This [callme] contains [reagents.total_volume] unit\s of water!"
 	if(mybag)
-		to_chat(user, "\A [mybag] is hanging on the [callme].")
+		. += "\A [mybag] is hanging on the [callme]."
 
 
 /obj/structure/bed/chair/janicart/attackby(obj/item/I, mob/user)

@@ -30,39 +30,39 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 
-/obj/structure/girder/examine(mob/user)
-	..()
+/obj/structure/girder/get_examine_text(mob/user)
+	. = ..()
 	if (health <= 0)
-		to_chat(user, "It's broken, but can be mended by welding it.")
+		. += "It's broken, but can be mended by welding it."
 		return
 
 	switch(state)
 		if(STATE_STANDARD)
 			if(step_state == STATE_STANDARD)
-				to_chat(user, SPAN_NOTICE("It looks ready for a [SPAN_HELPFUL("screwdriver")] to dismantle, [SPAN_HELPFUL("metal")] to create a wall or [SPAN_HELPFUL("plasteel")] to create a reinforced wall."))
+				. += SPAN_NOTICE("It looks ready for a [SPAN_HELPFUL("screwdriver")] to dismantle, [SPAN_HELPFUL("metal")] to create a wall or [SPAN_HELPFUL("plasteel")] to create a reinforced wall.")
 				return
 		if(STATE_DISMANTLING)
 			if(step_state == STATE_SCREWDRIVER)
-				to_chat(user, SPAN_NOTICE("Support struts are unsecured. [SPAN_HELPFUL("Wirecutters")] to remove."))
+				. += SPAN_NOTICE("Support struts are unsecured. [SPAN_HELPFUL("Wirecutters")] to remove.")
 			else if(step_state == STATE_WIRECUTTER)
-				to_chat(user, SPAN_NOTICE("Support struts are removed. [SPAN_HELPFUL("Crowbar")] to dislodge, [SPAN_HELPFUL("wrench")] to dismantle."))
+				. += SPAN_NOTICE("Support struts are removed. [SPAN_HELPFUL("Crowbar")] to dislodge, [SPAN_HELPFUL("wrench")] to dismantle.")
 			return
 		if(STATE_WALL)
 			if(step_state == STATE_METAL)
-				to_chat(user, SPAN_NOTICE("Metal added. [SPAN_HELPFUL("Screwdrivers")] to attach."))
+				. += SPAN_NOTICE("Metal added. [SPAN_HELPFUL("Screwdrivers")] to attach.")
 			else if(step_state == STATE_SCREWDRIVER)
-				to_chat(user, SPAN_NOTICE("Metal attached. [SPAN_HELPFUL("Weld")] to finish."))
+				. += SPAN_NOTICE("Metal attached. [SPAN_HELPFUL("Weld")] to finish.")
 			return
 		if(STATE_REINFORCED_WALL)
 			if(step_state == STATE_PLASTEEL)
-				to_chat(user, SPAN_NOTICE("Plasteel added. Add [SPAN_HELPFUL("metal rods")] to stengthen."))
+				. += SPAN_NOTICE("Plasteel added. Add [SPAN_HELPFUL("metal rods")] to stengthen.")
 			else if(step_state == STATE_RODS)
-				to_chat(user, SPAN_NOTICE("Metal rods added. [SPAN_HELPFUL("Screwdrivers")] to attach."))
+				. += SPAN_NOTICE("Metal rods added. [SPAN_HELPFUL("Screwdrivers")] to attach.")
 			else if(step_state == STATE_SCREWDRIVER)
-				to_chat(user, SPAN_NOTICE("Plasteel attached. [SPAN_HELPFUL("Weld")] to finish."))
+				. += SPAN_NOTICE("Plasteel attached. [SPAN_HELPFUL("Weld")] to finish.")
 			return
 		if(STATE_DISPLACED)
-			to_chat(user, SPAN_NOTICE("It looks dislodged. [SPAN_HELPFUL("Crowbar")] to secure it."))
+			. += SPAN_NOTICE("It looks dislodged. [SPAN_HELPFUL("Crowbar")] to secure it.")
 
 /obj/structure/girder/update_icon()
 	. = ..()
@@ -215,10 +215,15 @@
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return TRUE
 		to_chat(user, SPAN_NOTICE("You wrenched it apart!"))
-		new /obj/item/stack/sheet/metal(loc, 2)
-		qdel(src)
+		deconstruct(TRUE)
+
 		return TRUE
 	return FALSE
+
+/obj/structure/girder/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/sheet/metal(loc, 2)
+	return ..()
 
 /obj/structure/girder/proc/do_wall(var/obj/item/W, var/mob/user)
 	if(!(state == STATE_WALL))
@@ -321,10 +326,17 @@
 		dmg = round(P.damage * 0.5)
 	if(dmg)
 		health -= dmg
+		take_damage(dmg)
 		bullet_ping(P)
 	if(health <= 0)
 		update_state()
 	return TRUE
+
+/obj/structure/girder/proc/take_damage(damage)
+	health = max(health - damage, 0)
+	if(health <= 0)
+		update_state()
+
 
 /obj/structure/girder/proc/dismantle()
 	health = 0
@@ -356,7 +368,7 @@
 	if(health <= 0)
 		var/location = get_turf(src)
 		handle_debris(severity, direction)
-		qdel(src)
+		deconstruct(FALSE)
 		create_shrapnel(location, rand(2,5), direction, 45, /datum/ammo/bullet/shrapnel/light, cause_data) // Shards go flying
 	else
 		update_state()

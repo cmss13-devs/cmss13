@@ -88,6 +88,7 @@ Class Procs:
 	var/use_power = 1
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
+	var/needs_power = TRUE
 	var/power_channel = POWER_CHANNEL_EQUIP
 	var/mob/living/carbon/human/operator = null //Had no idea where to put this so I put this here. Used for operating machines with RELAY_CLICK
 		//EQUIP,ENVIRON or LIGHT
@@ -137,15 +138,15 @@ Class Procs:
 /obj/structure/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL
 
-/obj/structure/machinery/examine(mob/user)
-	..()
+/obj/structure/machinery/get_examine_text(mob/user)
+	. = ..()
 	if(!stat)
 		return
 
-	to_chat(user, "It does not appear to be working.")
+	. += "It does not appear to be working."
 	var/msg = get_repair_move_text(FALSE)
 	if(msg && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-		to_chat(user, SPAN_WARNING("[msg]"))
+		. += SPAN_WARNING("[msg]")
 
 /obj/structure/machinery/emp_act(severity)
 	if(use_power && stat == 0)
@@ -158,14 +159,14 @@ Class Procs:
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				qdel(src)
+				deconstruct()
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				deconstruct()
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct()
 			return
 	return
 
@@ -194,7 +195,9 @@ Class Procs:
 	return !inoperable(additional_flags)
 
 /obj/structure/machinery/proc/inoperable(var/additional_flags = 0)
-	return (stat & (NOPOWER|BROKEN|additional_flags))
+	if (needs_power)
+		return (stat & (NOPOWER|BROKEN|additional_flags))
+	return (stat & (BROKEN|additional_flags))
 
 /obj/structure/machinery/Topic(href, href_list)
 	..()
@@ -223,12 +226,12 @@ Class Procs:
 
 /obj/structure/machinery/attack_hand(mob/user as mob)
 	if(inoperable(MAINT))
-		return 1
+		return TRUE
 	if(user.lying || user.stat)
-		return 1
+		return TRUE
 	if(!(istype(user, /mob/living/carbon/human) || isRemoteControlling(user) || istype(user, /mob/living/carbon/Xenomorph)))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
-		return 1
+		return TRUE
 /*
 	//distance checks are made by atom/proc/clicked()
 	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !isRemoteControlling(user))
@@ -238,14 +241,14 @@ Class Procs:
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= 60)
 			visible_message(SPAN_DANGER("[H] stares cluelessly at [src] and drools."))
-			return 1
+			return TRUE
 		else if(prob(H.getBrainLoss()))
 			to_chat(user, SPAN_DANGER("You momentarily forget how to use [src]."))
-			return 1
+			return TRUE
 
 	src.add_fingerprint(user)
 
-	return 0
+	return FALSE
 
 /obj/structure/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return

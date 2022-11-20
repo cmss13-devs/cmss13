@@ -1,6 +1,3 @@
-#define MOVE_INTENT_WALK 1
-#define MOVE_INTENT_RUN 2
-
 /mob/dead
 	var/voted_this_drop = 0
 	can_block_movement = FALSE
@@ -19,11 +16,9 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	plane = GHOST_PLANE
 	layer = ABOVE_FLY_LAYER
-	var/m_intent = MOVE_INTENT_WALK
 	stat = DEAD
 	var/adminlarva = 0
 	var/ghostvision = 1
-	var/image/ghostimage_default = null
 	var/can_reenter_corpse
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
 							//If you died in the game and are a ghost - this will remain as null.
@@ -39,7 +34,9 @@
 	var/atom/movable/following = null
 	var/datum/orbit_menu/orbit_menu
 	var/mob/observetarget = null	//The target mob that the ghost is observing. Used as a reference in logout()
+	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
+	var/own_orbit_size = 0
 	alpha = 127
 
 /mob/dead/observer/verb/toggle_ghostsee()
@@ -48,71 +45,55 @@
 	set category = "Ghost.Settings"
 	ghostvision = !ghostvision
 	if(hud_used)
-		var/obj/screen/plane_master/lighting/lighting = hud_used.plane_masters["[GHOST_PLANE]"]
+		var/atom/movable/screen/plane_master/lighting/lighting = hud_used.plane_masters["[GHOST_PLANE]"]
 		if (lighting)
 			lighting.alpha = ghostvision? 255 : 0
 	to_chat(usr, SPAN_NOTICE("You [(ghostvision?"now":"no longer")] have ghost vision."))
 
-/mob/dead/observer/New(mob/body)
-	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
-	see_invisible = INVISIBILITY_OBSERVER
-	see_in_dark = 100
+/mob/dead/observer/Initialize(mapload, mob/body)
+	. = ..()
+
 	GLOB.observer_list += src
 
-	var/turf/T
+	var/turf/spawn_turf
 	if(ismob(body))
-		T = get_turf(body)				//Where is the body located?
+		spawn_turf = get_turf(body)				//Where is the body located?
 		attack_log = body.attack_log	//preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
 
-		if(isHumanSynthStrict(body))
-			var/mob/living/carbon/human/H = body
-			icon = 'icons/mob/humans/species/r_human.dmi'
-			icon_state = "anglo_example"
-			overlays += H.overlays
-		else if(isYautja(body))
-			icon = get_icon_from_source(CONFIG_GET(string/species_hunter))
-			icon_state = "yautja_example"
-			overlays += body.overlays
-		else if(ismonkey(body))
-			icon = 'icons/mob/humans/species/monkeys/monkey.dmi'
-			icon_state = "monkey1"
-			overlays += body.overlays
-		else
-			icon = body.icon
-			icon_state = body.icon_state
+		appearance = body.appearance
+		base_transform = matrix(body.base_transform)
+		body.alter_ghost(src)
+		apply_transform(matrix())
 
-		gender = body.gender
-		if(body.mind && body.mind.name)
-			name = body.mind.name
-		else
-			if(body.real_name)
-				name = body.real_name
-			else
-				if(gender == MALE)
-					name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
-				else
-					name = capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
+		own_orbit_size = body.get_orbit_size()
+
+		desc = initial(desc)
+
+		alpha = 127
+		invisibility = INVISIBILITY_OBSERVER
+		plane = GHOST_PLANE
+		layer = ABOVE_FLY_LAYER
+
+		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
+		see_invisible = INVISIBILITY_OBSERVER
+		see_in_dark = 100
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
-	ghostimage_default = image(src.icon,src,src.icon_state)
-	ghostimage_default.override = TRUE
-	ghostimage_default.overlays = overlays
+	if(!own_orbit_size)
+		own_orbit_size = 32
 
-	if(!T)	T = get_turf(pick(GLOB.latejoin))			//Safety in case we cannot find the body's position
-	forceMove(T)
+	if(!isturf(spawn_turf)) spawn_turf = get_turf(pick(GLOB.latejoin))			//Safety in case we cannot find the body's position
+	forceMove(spawn_turf)
 
 	if(!name)							//To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 	change_real_name(src, name)
 
-	..()
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
 
-/mob/dead/observer/Initialize()
-	. = ..()
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
 
@@ -187,6 +168,7 @@
 
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)
+	QDEL_NULL(last_health_display)
 	GLOB.observer_list -= src
 	following = null
 	return ..()
@@ -292,7 +274,7 @@ Works together with spawning an observer, noted above.
 		return
 	if(aghosted)
 		src.aghosted = TRUE
-	var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.
+	var/mob/dead/observer/ghost = new(loc, src)	//Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
 	SStgui.on_transfer(src, ghost)
@@ -319,7 +301,7 @@ Works together with spawning an observer, noted above.
 	mind = null
 
 	if(ghost.client)
-		ghost.client.init_statbrowser()
+		ghost.client.init_verbs()
 		ghost.client.change_view(world_view_size) //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0
@@ -349,7 +331,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			mind.player_entity.update_panel_data(round_statistics)
 		ghostize(TRUE)
 	else
-		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)","Are you sure you want to ghost?","Ghost","Stay in body")
+		var/list/options = list("Ghost", "Stay in body")
+		if(check_rights(R_MOD))
+			options = list("Aghost") + options
+		var/response = tgui_alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", options)
+		if(response == "Aghost")
+			client.admin_ghost()
+			return
 		if(response != "Ghost")	return	//didn't want to ghost after-all
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
@@ -393,8 +381,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/obj/effect/step_trigger/S in new_turf)	//<-- this is dumb
 		S.Crossed(src)
 
-/mob/dead/observer/examine(mob/user)
-	to_chat(user, desc)
+/mob/dead/observer/get_examine_text(mob/user)
+	return list(desc)
 
 /mob/dead/observer/can_use_hands()
 	return 0
@@ -469,7 +457,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(!istype(target))
 		return
-	target.health_scan(src, do_checks = FALSE)
+
+	if (!last_health_display)
+		last_health_display = new(target)
+	else
+		last_health_display.target_mob = target
+	last_health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE)
 
 /mob/dead/observer/verb/follow_local(var/mob/target)
 	set category = "Ghost.Follow"
@@ -485,20 +478,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(!orbit_menu)
 		orbit_menu = new(src)
-	orbit_menu.ui_interact(src)
+	orbit_menu.tgui_interact(src)
 
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(var/atom/movable/target)
 	if(!istype(target))
 		return
 
-	var/orbitsize
-	if(ishuman(target))
-		var/mob/living/carbon/human/human_target = target
-		orbitsize = human_target.langchat_height
-	else
-		var/icon/I = icon(target.icon, target.icon_state, target.dir)
-		orbitsize = (I.Width() + I.Height()) * 0.5
+	var/orbitsize = target.get_orbit_size()
 	orbitsize -= (orbitsize / world.icon_size) * (world.icon_size * 0.25)
 
 	var/rot_seg
@@ -516,6 +503,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			rot_seg = 36
 
 	orbit(target, orbitsize, FALSE, 20, rot_seg)
+
+/mob/dead/observer/get_orbit_size()
+	return own_orbit_size
 
 /mob/dead/observer/orbit()
 	setDir(SOUTH)//reset dir so the right directional sprites show up //might tweak this for xenos, stan_albatross orbitshit
@@ -705,13 +695,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/zombie_list = list()
-
+	if(length(GLOB.zombie_landmarks))
+		zombie_list += list("Underground Zombie" = "Underground Zombie")
 	for(var/mob/living/carbon/human/A in GLOB.zombie_list)
 		if(!A.client && A.stat != DEAD) // Only living zombies
 			zombie_list += list(A.real_name = A)
 
-
-	if(zombie_list.len == 0)
+	if(!length(zombie_list))
 		to_chat(src, SPAN_DANGER("There are no available zombies."))
 		return
 
@@ -719,15 +709,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!choice)
 		return
 
-	if(!client)
+	if(!client || !mind)
+		return
+
+	if(choice == "Underground Zombie")
+		if(!length(GLOB.zombie_landmarks))
+			to_chat(src, SPAN_WARNING("Sorry, the last underground zombie just got taken."))
+			return
+		var/obj/effect/landmark/zombie/spawn_point = pick(GLOB.zombie_landmarks)
+		spawn_point.spawn_zombie(src)
 		return
 
 	var/mob/living/carbon/human/Z = zombie_list[choice]
 
-	if(!Z || !mind)
-		return
-
-	if(QDELETED(Z)) //should never occur,just to be sure.
+	if(!Z || QDELETED(Z))
 		return
 
 	if(Z.stat == DEAD)
@@ -900,41 +895,38 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(round_statistics)
 		round_statistics.show_kill_feed(src)
 
-/mob/dead/observer/verb/toggle_fast_ghost_move()
-	set category = "Ghost.Settings"
-	set name = "Toggle Observer Speed"
-	set desc = "Switch between fast and regular ghost movement"
-
-	m_intent ^= MOVE_INTENT_RUN | MOVE_INTENT_WALK //The one already active is turned off, the other is turned on
-	to_chat(src, SPAN_NOTICE("Observer movement changed"))
-
 /mob/dead/observer/get_status_tab_items()
 	. = ..()
 	. += ""
 	. += "Game Mode: [GLOB.master_mode]"
 
-	if(SSticker.HasRoundStarted())
-		return
+	if(!SSticker.HasRoundStarted())
+		var/time_remaining = SSticker.GetTimeLeft()
+		if(time_remaining > 0)
+			. += "Time To Start: [round(time_remaining)]s"
+		else if(time_remaining == -10)
+			. += "Time To Start: DELAYED"
+		else
+			. += "Time To Start: SOON"
 
-	var/time_remaining = SSticker.GetTimeLeft()
-	if(time_remaining > 0)
-		. += "Time To Start: [round(time_remaining)]s"
-	else if(time_remaining == -10)
-		. += "Time To Start: DELAYED"
-	else
-		. += "Time To Start: SOON"
+		. += "Players: [SSticker.totalPlayers]"
+		if(client.admin_holder)
+			. += "Players Ready: [SSticker.totalPlayersReady]"
 
-	. += "Players: [SSticker.totalPlayers]"
-	if(client.admin_holder)
-		. += "Players Ready: [SSticker.totalPlayersReady]"
+	. += ""
+
+	if(SSticker.mode?.force_end_at)
+		var/time_left = SSticker.mode.force_end_at - world.time
+		if(time_left >= 0)
+			. += "Hijack Time Left: [DisplayTimeText(time_left, 1)]"
+		else
+			. += "Hijack Over"
 
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)
-			. += eta_status
+			. += "Evacuation: [eta_status]"
 
-#undef MOVE_INTENT_WALK
-#undef MOVE_INTENT_RUN
 
 /proc/message_ghosts(var/message)
 	for(var/mob/dead/observer/O as anything in GLOB.observer_list)

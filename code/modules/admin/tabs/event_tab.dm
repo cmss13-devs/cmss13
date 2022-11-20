@@ -118,7 +118,7 @@
 	set name = "EM Pulse"
 	set category = "Admin.Fun"
 
-	if(!check_rights(R_DEBUG|R_FUN))
+	if(!check_rights(R_DEBUG|R_ADMIN))
 		return
 
 	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
@@ -142,7 +142,7 @@
 
 	if (!SSticker.mode)
 		return
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_EVENT))
 		return
 
 	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big", "Distress_Small"))
@@ -199,7 +199,7 @@
 	if (!SSticker.mode)
 		return
 
-	if(!check_rights(R_FUN)) // Seems more like an event thing than an admin thing
+	if(!check_rights(R_EVENT)) // Seems more like an event thing than an admin thing
 		return
 
 	var/list/list_of_calls = list()
@@ -292,7 +292,7 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 
-	var/points_to_add = tgui_input_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
+	var/points_to_add = tgui_input_real_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
 	if(points_to_add == 0)
 		return
 	else if((supply_controller.points + points_to_add) < 0)
@@ -308,8 +308,8 @@
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
 
 /datum/admins/proc/admin_force_selfdestruct()
-	set name = "Self Destruct"
-	set desc = "Trigger self destruct countdown. This should not be done if the self destruct has already been called."
+	set name = "Self-Destruct"
+	set desc = "Trigger self-destruct countdown. This should not be done if the self-destruct has already been called."
 	set category = "Admin.Events"
 
 	if(!SSticker.mode || !check_rights(R_ADMIN) || get_security_level() == "delta")
@@ -320,7 +320,7 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	message_staff("[key_name_admin(usr)] admin-started self destruct system.")
+	message_staff("[key_name_admin(usr)] admin-started self-destruct system.")
 
 /client/proc/view_faxes()
 	set name = "View Faxes"
@@ -517,7 +517,7 @@
 
 /client/proc/cmd_admin_xeno_report()
 	set name = "Report: Queen Mother"
-	set desc = "Basically a command announcement, but only for selected Xenos Hive"
+	set desc = "Basically a command announcement, but only for selected Xeno's Hive"
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
@@ -641,7 +641,7 @@
 	set name = "Toggle Remote Control"
 	set category = "Admin.Events"
 
-	if(!check_rights(R_FUN))
+	if(!check_rights(R_SPAWN))
 		return
 
 	remote_control = !remote_control
@@ -666,7 +666,7 @@
 // ----------------------------
 
 /datum/admins/proc/event_panel()
-	if(!check_rights(R_FUN,0))
+	if(!check_rights(R_ADMIN,0))
 		return
 
 	var/dat = {"
@@ -730,7 +730,7 @@
 		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
 				<A href='?src=\ref[src];[HrefToken()];chem_panel=make_report'>Make Chem Report</A><br>
 				<br>"}
-	if(check_rights(R_FUN,0))
+	if(check_rights(R_ADMIN,0))
 		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=create_random_reagent'>Generate Reagent</A><br>
 				<br>
 				<A href='?src=\ref[src];[HrefToken()];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>

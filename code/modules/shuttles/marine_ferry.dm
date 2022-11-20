@@ -517,11 +517,11 @@
 	// Break the briefing windows.
 	for(var/i in GLOB.hijack_bustable_windows)
 		var/obj/structure/window/H = i
-		H.shatter_window(1)
+		H.deconstruct(FALSE)
 
 	for(var/k in GLOB.hijack_bustable_ladders)
 		var/obj/structure/ladder/fragile_almayer/L = k
-		L.break_and_replace()
+		L.deconstruct()
 
 	// Delete the briefing door(s).
 	for(var/D in GLOB.hijack_deletable_windows)
@@ -546,9 +546,9 @@
 		else
 			to_chat(M, SPAN_WARNING("The floor jolts under your feet!"))
 			shake_camera(M, 10, 1)
-			M.KnockDown(3)
+			M.apply_effect(3, WEAKEN)
 
-	enter_allowed = 0 //No joining after dropship crash
+	addtimer(CALLBACK(src, .proc/disable_latejoin), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
 
 	var/list/turfs_trg = get_shuttle_turfs(T_trg, info_datums) //Final destination turfs <insert bad jokey reference here>
 
@@ -594,6 +594,9 @@
 	if(SSticker.mode)
 		SSticker.mode.is_in_endgame = TRUE
 		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
+
+/datum/shuttle/ferry/marine/proc/disable_latejoin()
+	enter_allowed = FALSE
 
 
 /datum/shuttle/ferry/marine/short_jump()
@@ -657,7 +660,7 @@
 		for(var/mob/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
 			if(isliving(M))
 				to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
-				M.KnockDown(4)
+				M.apply_effect(4, WEAKEN)
 				for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
 					if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
 						M.forceMove(T)

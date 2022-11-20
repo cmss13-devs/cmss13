@@ -413,7 +413,7 @@ body
 		href_list["datumrefresh"] = href_list["mob_player_panel"]
 
 	else if(href_list["give_disease"])
-		if(!check_rights(R_ADMIN|R_FUN))
+		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["give_disease"])
@@ -425,7 +425,7 @@ body
 		href_list["datumrefresh"] = href_list["give_disease"]
 
 	else if(href_list["build_mode"])
-		if(!check_rights(R_ADMIN|R_FUN))
+		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["build_mode"])
@@ -501,7 +501,7 @@ body
 		switch(action_type)
 			if("Strict type")
 				var/i = 0
-				for(var/obj/Obj in GLOB.object_list)
+				for(var/obj/Obj in world)
 					if(Obj.type == O_type)
 						i++
 						qdel(Obj)
@@ -511,7 +511,7 @@ body
 				message_staff("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
 			if("Type and subtypes")
 				var/i = 0
-				for(var/obj/Obj in GLOB.object_list)
+				for(var/obj/Obj in world)
 					if(istype(Obj,O_type))
 						i++
 						qdel(Obj)
@@ -531,7 +531,7 @@ body
 		A.enable_pixel_scaling()
 
 	else if(href_list["explode"])
-		if(!check_rights(R_DEBUG|R_FUN))
+		if(!check_rights(R_DEBUG))
 			return
 
 		var/atom/A = locate(href_list["explode"])
@@ -544,7 +544,7 @@ body
 		href_list["datumrefresh"] = href_list["explode"]
 
 	else if(href_list["emp"])
-		if(!check_rights(R_DEBUG|R_FUN))
+		if(!check_rights(R_DEBUG))
 			return
 
 		var/atom/A = locate(href_list["emp"])
@@ -992,7 +992,7 @@ body
 		M.regenerate_icons()
 
 	else if(href_list["adjustDamage"] && href_list["mobToDamage"])
-		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN))
+		if(!check_rights(R_DEBUG|R_ADMIN))
 			return
 
 		var/mob/living/L = locate(href_list["mobToDamage"])
@@ -1001,7 +1001,7 @@ body
 
 		var/Text = href_list["adjustDamage"]
 
-		var/amount = tgui_input_number(usr, "Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0)
+		var/amount = tgui_input_real_number(usr, "Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0)
 
 		if(!L)
 			to_chat(usr, "Mob doesn't exist anymore")
@@ -1059,7 +1059,7 @@ body
 		message_staff("TRAIT: [key_name(usr)] removed trait '[trait_old]' from [key_name(C)]")
 
 	else if(href_list["setmatrix"])
-		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN|R_VAREDIT))
+		if(!check_rights(R_DEBUG|R_ADMIN|R_VAREDIT))
 			return
 
 		var/atom/A = locate(href_list["setmatrix"])

@@ -12,9 +12,9 @@
 	var/scanning = FALSE
 	var/newlyfound
 
-/obj/item/device/clue_scanner/examine(mob/user)
-	..()
-	to_chat(user, SPAN_INFO("Print sets stored: [length(print_list)]"))
+/obj/item/device/clue_scanner/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_INFO("Print sets stored: [length(print_list)]")
 
 /obj/item/device/clue_scanner/update_icon()
 	overlays.Cut()

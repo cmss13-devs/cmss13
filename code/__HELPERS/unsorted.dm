@@ -39,7 +39,7 @@
 #define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level)))
 #define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level, TRUE)))
 
-// Ensure the frequency is within bounds of what it should be sending/recieving at
+// Ensure the frequency is within bounds of what it should be sending/receiving at
 // Sets f within bounds via `Clamp(round(f), 1441, 1489)`
 // If f is even, adds 1 to its value to make it odd
 #define sanitize_frequency(f) 	((Clamp(round(f), 1441, 1489) % 2) == 0 ? \
@@ -890,6 +890,10 @@ var/global/image/emote_indicator_highfive
 var/global/image/emote_indicator_fistbump
 var/global/image/emote_indicator_headbutt
 var/global/image/emote_indicator_tailswipe
+var/global/image/emote_indicator_rock_paper_scissors
+var/global/image/emote_indicator_rock
+var/global/image/emote_indicator_paper
+var/global/image/emote_indicator_scissors
 var/global/image/action_red_power_up
 var/global/image/action_green_power_up
 var/global/image/action_blue_power_up
@@ -931,6 +935,26 @@ var/global/image/action_purple_power_up
 			emote_indicator_fistbump = image('icons/mob/mob.dmi', null, "emote_fistbump", "pixel_y" = 22)
 			emote_indicator_fistbump.layer = FLY_LAYER
 		return emote_indicator_fistbump
+	else if(busy_type == EMOTE_ICON_ROCK_PAPER_SCISSORS)
+		if(!emote_indicator_rock_paper_scissors)
+			emote_indicator_rock_paper_scissors = image('icons/mob/mob.dmi', null, "emote_rps", "pixel_y" = 22)
+			emote_indicator_rock_paper_scissors.layer = FLY_LAYER
+		return emote_indicator_rock_paper_scissors
+	else if(busy_type == EMOTE_ICON_ROCK)
+		if(!emote_indicator_rock)
+			emote_indicator_rock = image('icons/mob/mob.dmi', null, "emote_rock", "pixel_y" = 22)
+			emote_indicator_rock.layer = FLY_LAYER
+		return emote_indicator_rock
+	else if(busy_type == EMOTE_ICON_PAPER)
+		if(!emote_indicator_paper)
+			emote_indicator_paper = image('icons/mob/mob.dmi', null, "emote_paper", "pixel_y" = 22)
+			emote_indicator_paper.layer = FLY_LAYER
+		return emote_indicator_paper
+	else if(busy_type == EMOTE_ICON_SCISSORS)
+		if(!emote_indicator_scissors)
+			emote_indicator_scissors = image('icons/mob/mob.dmi', null, "emote_scissors", "pixel_y" = 22)
+			emote_indicator_scissors.layer = FLY_LAYER
+		return emote_indicator_scissors
 	else if(busy_type == EMOTE_ICON_HEADBUTT)
 		if(!emote_indicator_headbutt)
 			emote_indicator_headbutt = image('icons/mob/mob.dmi', null, "emote_headbutt", "pixel_y" = 22)
@@ -1362,11 +1386,13 @@ var/global/image/action_purple_power_up
 
 
 //Returns the 2 dirs perpendicular to the arg
-proc/get_perpen_dir(var/dir)
-	if(dir & (dir-1)) return 0 //diagonals
-	if(dir in list(EAST, WEST))
+/proc/get_perpen_dir(var/dir)
+	if(dir & (dir-1))
+		return 0 //diagonals
+	if(dir & (EAST|WEST))
 		return list(SOUTH, NORTH)
-	else return list(EAST, WEST)
+	else
+		return list(EAST, WEST)
 
 
 /proc/parse_zone(zone)
@@ -1608,12 +1634,19 @@ var/list/WALLITEMS = list(
 // * The dropship crash hasn't happened yet
 // * An admin hasn't disabled explosive antigrief
 // Certain areas may be exempt from this check. Look up explosive_antigrief_exempt_areas
-/proc/explosive_grief_check(var/obj/item/explosive/E)
-	var/turf/T = get_turf(E)
-	if(!(T.loc.type in GLOB.explosive_antigrief_exempt_areas))
+/proc/explosive_antigrief_check(var/obj/item/explosive/explosive, var/mob/user)
+	var/turf/Turf = get_turf(explosive)
+	if(!(Turf.loc.type in GLOB.explosive_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if((T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && explosive_antigrief_on)
-			return TRUE
+		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured)
+			switch(CONFIG_GET(number/explosive_antigrief))
+				if(ANTIGRIEF_DISABLED)
+					return FALSE
+				if(ANTIGRIEF_NEW_PLAYERS) //if they have less than 10 hours, dont let them prime nades
+					if(user.client && user.client.get_total_human_playtime() < JOB_PLAYTIME_TIER_1)
+						return TRUE
+				else //ANTIGRIEF_ENABLED
+					return TRUE
 	return FALSE
 
 // Returns only the perimeter of the block given by the min and max turfs
@@ -1722,7 +1755,7 @@ var/list/WALLITEMS = list(
 	if(isRemoteControlling(user))
 		return TRUE
 	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
-	if(user.client.prefs && !(user.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
+	if(user.client?.prefs && !(user.client?.prefs?.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
 		if(isXeno(user))
 			var/mob/living/carbon/Xenomorph/X = user
 			if(X.selected_ability)

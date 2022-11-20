@@ -13,7 +13,7 @@
 	invisa_view = 2
 	eye_protection = -1
 	deactive_state = "goggles_off"
-	fullscreen_vision = /obj/screen/fullscreen/thermal
+	fullscreen_vision = /atom/movable/screen/fullscreen/thermal
 	var/blinds_on_emp = TRUE
 
 /obj/item/clothing/glasses/thermal/emp_act(severity)

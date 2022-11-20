@@ -179,6 +179,17 @@
 	containername = "\improper M41AE2 HPR crate"
 	group = "Weapons"
 
+/datum/supply_packs/gun/xm88
+	contains = list(
+					/obj/item/storage/box/guncase/xm88,
+					/obj/item/storage/box/guncase/xm88
+					)
+	name = "XM88 Heavy Rifle crate (XM88 x2)"
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper XM88 Heavy Rifle crate"
+	group = "Weapons"
+
 /datum/supply_packs/gun/merc
 	contains = list()
 	name = "black market firearms (x1)"

@@ -29,7 +29,6 @@
 
 /obj/Initialize(mapload, ...)
 	. = ..()
-	GLOB.object_list += src
 	if(garbage)
 		add_to_garbage(src)
 
@@ -38,8 +37,11 @@
 		unbuckle()
 	. = ..()
 	remove_from_garbage(src)
-	GLOB.object_list -= src
 
+// object is being physically reduced into parts
+/obj/proc/deconstruct(disassembled = TRUE)
+	density = 0
+	qdel(src)
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
 
@@ -50,13 +52,13 @@
 /obj/proc/set_pixel_location()
 	return
 
-/obj/item/proc/get_examine_line()
+/obj/item/proc/get_examine_line(mob/user)
 	if(blood_color)
-		. = SPAN_WARNING("[icon2html(src)] [gender==PLURAL?"some":"a"] <font color='[blood_color]'>stained</font> [src]")
+		. = SPAN_WARNING("[icon2html(src, user)] [gender==PLURAL?"some":"a"] <font color='[blood_color]'>stained</font> [src]")
 	else
-		. = "[icon2html(src)] \a [src]"
+		. = "[icon2html(src, user)] \a [src]"
 
-/obj/item/proc/get_examine_location(var/mob/living/carbon/human/wearer, var/slot, var/t_He = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
+/obj/item/proc/get_examine_location(var/mob/living/carbon/human/wearer, var/mob/examiner, var/slot, var/t_He = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
 	switch(slot)
 		if(WEAR_HEAD)
 			return "on [t_his] head"
@@ -69,13 +71,13 @@
 		if(WEAR_FACE)
 			return "on [t_his] face"
 		if(WEAR_BODY)
-			return "wearing [get_examine_line()]"
+			return "wearing [get_examine_line(examiner)]"
 		if(WEAR_JACKET)
-			return "wearing [get_examine_line()]"
+			return "wearing [get_examine_line(examiner)]"
 		if(WEAR_WAIST)
 			return "about [t_his] waist"
 		if(WEAR_ID)
-			return "wearing [get_examine_line()]"
+			return "wearing [get_examine_line(examiner)]"
 		if(WEAR_BACK)
 			return "on [t_his] back"
 		if(WEAR_J_STORE)
@@ -210,7 +212,7 @@
 
 //trying to buckle a mob
 /obj/proc/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled)
+	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
 		return
 
 	if (isXeno(user))
@@ -331,6 +333,8 @@
 	else if(use_spritesheet(bodytype, slot, mob_state))
 		spritesheet = TRUE
 		mob_icon = sprite_sheets[bodytype]
+	else if(contained_sprite)
+		mob_icon = icon
 	else if(LAZYISIN(item_icons, slot))
 		mob_icon = item_icons[slot]
 	else
@@ -368,7 +372,11 @@
 /obj/proc/extinguish()
 	return
 
-//returns time or -1 if unmeltable
+/obj/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+	. = ..()
+	flamer_fire_act(damage, fire.weapon_cause_data)
+
+///returns time or -1 if unmeltable
 /obj/proc/get_applying_acid_time()
 	if(unacidable)
 		return -1
@@ -377,3 +385,6 @@
 		return 4 SECONDS
 
 	return 1 SECONDS
+
+/obj/proc/set_origin_name_prefix(var/name_prefix)
+	return

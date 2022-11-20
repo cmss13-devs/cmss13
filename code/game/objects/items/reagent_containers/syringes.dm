@@ -25,9 +25,11 @@
 /obj/item/reagent_container/syringe/on_reagent_change()
 	update_icon()
 
-/obj/item/reagent_container/syringe/examine(mob/user)
+/obj/item/reagent_container/syringe/get_examine_text(mob/user)
 	. = ..()
-	display_contents(user)
+	var/pill_info = display_contents(user)
+	if(pill_info)
+		. += pill_info
 
 
 /obj/item/reagent_container/syringe/pickup(mob/user)
@@ -68,7 +70,7 @@
 	if (user.a_intent == INTENT_HARM && ismob(target))
 		var/mob/M = target
 		if(M != user && M.stat != DEAD && M.a_intent != INTENT_HELP && !M.is_mob_incapacitated() && (skillcheck(M, SKILL_CQC, SKILL_CQC_SKILLED) || isYautja(M))) // preds have null skills
-			user.KnockDown(3)
+			user.apply_effect(3, WEAKEN)
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used CQC skill to stop [key_name(user)] injecting them.</font>")
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [key_name(M)] by their cqc skill.</font>")
 			msg_admin_attack("[key_name(user)] got robusted by the CQC of [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)

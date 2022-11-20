@@ -5,7 +5,7 @@
 		chemclass 						Determines how often a chemical will show up in the generation process
 			CHEM_CLASS_NONE             0 Default. Chemicals not used in the generator
 			CHEM_CLASS_BASIC            1 Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
-			CHEM_CLASS_COMMON           2 Chemicals that can be vended directly or have a very simple recipe (bicardine, ammonia, table salt)
+			CHEM_CLASS_COMMON           2 Chemicals that can be vended directly or have a very simple recipe (bicaridine, ammonia, table salt)
 			CHEM_CLASS_UNCOMMON         3 Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 			CHEM_CLASS_RARE             4 Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
 			CHEM_CLASS_SPECIAL          5 Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
@@ -176,14 +176,15 @@
 		var/gen_value
 		for(var/i=0;i<gen_tier+1;i++)
 			if(i == 0) //The first property is random to offset the value balance
-				if(gen_tier > 3 || (gen_tier == 3 && prob(50)))
+				if(gen_tier > 2)
 					gen_value = add_property(null,null,0,TRUE) //Give rare property
 				else
-					gen_value = add_property()
+					gen_value = add_property(null,null,0,FALSE,TRUE)
 			else if(gen_value == gen_tier * 2 - 1) //If we are balanced, don't add any more
 				break
-			else
-				gen_value += add_property(0,0, gen_tier - gen_value - 1) //add property based on our offset from the prefered balance
+			else if(gen_tier < 3)
+				gen_value += add_property(0,0, gen_tier - gen_value - 1,FALSE,TRUE) //add property based on our offset from the prefered balance
+			else gen_value += add_property(0,0, gen_tier - gen_value - 1)
 		while(LAZYLEN(properties) < gen_tier + 1) //We lost properties somewhere to conflicts, so add a random one until we're full
 			add_property()
 
@@ -205,7 +206,7 @@
 	generate_description()
 	return TRUE
 
-/datum/reagent/proc/add_property(var/my_property, var/my_level, var/value_offset = 0, var/make_rare = FALSE)
+/datum/reagent/proc/add_property(var/my_property, var/my_level, var/value_offset = 0, var/make_rare = FALSE, var/track_added_properties = FALSE)
 	//Determine level modifier
 	var/level
 	if(my_level)
@@ -250,9 +251,9 @@
 	else
 		switch(gen_tier)
 			if(1)
-				if(roll<=30)
+				if(roll<=20)
 					property = pick(chemical_properties_list["negative"])
-				else if (roll<=60)
+				else if (roll<=50)
 					property = pick(chemical_properties_list["neutral"])
 				else
 					property = pick(chemical_properties_list["positive"])
@@ -278,7 +279,19 @@
 				else
 					property = pick(chemical_properties_list["positive"])
 
+	if(track_added_properties) //Generated effects are more unique for lower-tier chemicals, but not higher-tier ones
+		var/property_checks = 0
+		while(!check_generated_properties(property) && property_checks < 4)
+			property_checks++
+			if(LAZYISIN(chemical_properties_list["negative"], property))
+				property = pick(chemical_properties_list["negative"])
+			else if(LAZYISIN(chemical_properties_list["neutral"], property))
+				property = pick(chemical_properties_list["neutral"])
+			else
+				property = pick(chemical_properties_list["positive"])
+
 	var/datum/chem_property/P = chemical_properties_list[property]
+
 	//Calculate what our chemical value is with our level
 	var/new_value
 	if(isNegativeProperty(P))
@@ -403,3 +416,20 @@
 	chemical_reactions_list[C.id] = C
 	C.add_to_filtered_list()
 	return C
+
+//Returns false if a property has been generated in a previous reagent and all properties of that category haven't been generated yet.
+/datum/reagent/proc/check_generated_properties(var/datum/chem_property/P)
+	if(LAZYISIN(chemical_properties_list["positive"], P))
+		if(LAZYISIN(GLOB.generated_properties["positive"], P) && LAZYLEN(GLOB.generated_properties["positive"]) < LAZYLEN(chemical_properties_list["positive"]))
+			return FALSE
+		GLOB.generated_properties["positive"] += P
+	else if(LAZYISIN(chemical_properties_list["negative"], P))
+		if(LAZYISIN(GLOB.generated_properties["negative"], P) && LAZYLEN(GLOB.generated_properties["negative"]) < LAZYLEN(chemical_properties_list["negative"]))
+			return FALSE
+		GLOB.generated_properties["negative"] += P
+	else if(LAZYISIN(chemical_properties_list["neutral"], P))
+		if(LAZYISIN(GLOB.generated_properties["neutral"], P) && LAZYLEN(GLOB.generated_properties["neutral"]) < LAZYLEN(chemical_properties_list["neutral"]))
+			return FALSE
+		GLOB.generated_properties["neutral"] += P
+	return TRUE
+	

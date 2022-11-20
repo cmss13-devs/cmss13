@@ -84,11 +84,16 @@
 		to_chat(src, SPAN_WARNING("You cannot rest while burrowed!"))
 		return
 
+	if(crest_defense)
+		to_chat(src, SPAN_WARNING("You cannot rest while your crest is down!"))
+		return
+
 	return ..()
 
-/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.lay_down()
+/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	xeno.lay_down()
+	button.icon_state = xeno.resting ? "template_active" : "template"
 
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
@@ -198,24 +203,29 @@
 			var/selected_type = text2path(params["type"])
 			if(!(selected_type in X.resin_build_order))
 				return
-
-			var/datum/resin_construction/RC = GLOB.resin_constructions_list[selected_type]
-			to_chat(X, SPAN_NOTICE("You will now build <b>[RC.construction_name]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
-			button.overlays.Cut()
-			button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, RC.construction_name)
+			update_button_icon(selected_type, to_chat=TRUE)
 			X.selected_resin = selected_type
 			. = TRUE
 		if("refresh_ui")
 			. = TRUE
 
+/datum/action/xeno_action/onclick/choose_resin/update_button_icon(var/selected_type, var/to_chat = FALSE)
+	. = ..()
+	if(!selected_type)
+		return
+	var/datum/resin_construction/resin_construction = GLOB.resin_constructions_list[selected_type]
+	if(to_chat)
+		to_chat(usr, SPAN_NOTICE("You will now build <b>[resin_construction.construction_name]\s</b> when secreting resin."))
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
 
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 	if(A.z != X.z)
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
@@ -251,7 +261,7 @@
 		to_chat(X, SPAN_XENOWARNING("You can't place resin markers on living things!"))
 		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 	var/turf/target_turf = get_turf(A)
 
 	if(target_turf.z != X.z)
@@ -329,7 +339,7 @@
 					return
 			else
 				var/static/list/phero_selections = list("Help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "Frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "Warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "Recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
-				pheromone = lowertext(show_radial_menu(src, src, phero_selections))
+				pheromone = lowertext(show_radial_menu(src, src.client?.eye, phero_selections))
 				if(pheromone == "help")
 					to_chat(src, SPAN_XENONOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy (Red)</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding (Green)</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery (Blue)</B> - Increased plasma and health regeneration.<br>"))
 					return
@@ -358,7 +368,8 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!A) return
+	if(!A)
+		return
 
 	if(A.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
 		return
@@ -412,12 +423,10 @@
 			X.update_canmove()
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
 
-	// ok so basically the way this code works is godawful
-	// what happens next is if we hit anything
-	// a callback occurs to either the mob_launch_collision or obj_launch_collision procs.
-	// those procs poll our action to see if we are 'pouncing'
+	X.pounce_distance = get_dist(X, A)
+
 	var/datum/launch_metadata/LM = new()
 	LM.target = A
 	LM.range = distance
@@ -427,7 +436,9 @@
 	LM.pass_flags = pounce_pass_flags
 	LM.collision_callbacks = pounce_callbacks
 
-	X.launch_towards(LM) //Victim, distance, speed
+	X.launch_towards(LM)
+
+	X.update_icons()
 
 	additional_effects_always()
 	..()
@@ -482,18 +493,19 @@
 	..()
 	return
 
-/datum/action/xeno_action/onclick/xenohide/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state(1))
+/datum/action/xeno_action/onclick/xenohide/use_ability(atom/target)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(!xeno.check_state(1))
 		return
-	if(X.layer != XENO_HIDING_LAYER)
-		X.layer = XENO_HIDING_LAYER
-		to_chat(X, SPAN_NOTICE("You are now hiding."))
+	if(xeno.layer != XENO_HIDING_LAYER)
+		xeno.layer = XENO_HIDING_LAYER
+		to_chat(xeno, SPAN_NOTICE("You are now hiding."))
+		button.icon_state = "template_active"
 	else
-		X.layer = initial(X.layer)
-		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
-	X.update_wounds()
-
+		xeno.layer = initial(xeno.layer)
+		to_chat(xeno, SPAN_NOTICE("You have stopped hiding."))
+		button.icon_state = "template"
+	xeno.update_wounds()
 
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -528,10 +540,6 @@
 		to_chat(X, SPAN_WARNING("These weeds don't belong to your hive!"))
 		return
 
-	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
-		to_chat(X, SPAN_WARNING("You can't place a resin hole on a resin node!"))
-		return
-
 	if(!X.check_alien_construction(T))
 		return
 
@@ -543,6 +551,16 @@
 		to_chat(X, SPAN_XENOWARNING("This is too close to a fruit!"))
 		return
 
+	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
+		to_chat(X, SPAN_NOTICE("You start uprooting the node so you can put the resin hole in its place..."))
+		if(!do_after(X, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
+			return
+		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(alien_weeds.loc)
+		the_replacer.hivenumber = X.hivenumber
+		the_replacer.linked_hive = X.hive
+		set_hive_data(the_replacer, X.hivenumber)
+		qdel(alien_weeds)
+
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, "alien_resin_build", 25)
 	new /obj/effect/alien/resin/trap(X.loc, X)
@@ -553,7 +571,7 @@
 	if(!X.check_state())
 		return FALSE
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /obj/screen)) return FALSE
+	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 
 	//Make sure construction is unrestricted
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)
@@ -831,3 +849,101 @@
 			return
 
 		current = get_step_towards(current, target_turf)
+
+/datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
+	var/mob/living/carbon/Xenomorph/stabbing_xeno = owner
+
+	if(!action_cooldown_check())
+		return FALSE
+
+	if(!stabbing_xeno.check_state())
+		return FALSE
+
+	if (world.time <= stabbing_xeno.next_move)
+		return FALSE
+
+	var/distance = get_dist(stabbing_xeno, targetted_atom)
+	if(distance > 2)
+		return FALSE
+
+	var/list/turf/path = getline2(stabbing_xeno, targetted_atom, include_from_atom = FALSE)
+	for(var/turf/path_turf as anything in path)
+		if(path_turf.density)
+			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))
+			return FALSE
+		for(var/obj/path_contents in path_turf.contents)
+			if(path_contents != targetted_atom && path_contents.density && !path_contents.throwpass)
+				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))
+				return FALSE
+
+		var/atom/barrier = path_turf.handle_barriers(stabbing_xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		if(barrier != path_turf)
+			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno)
+			if(!tail_stab_cooldown_multiplier)
+				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking your strike!"))
+			else
+				apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
+				xeno_attack_delay(stabbing_xeno)
+			return FALSE
+
+	var/tail_stab_cooldown_multiplier = targetted_atom.handle_tail_stab(stabbing_xeno)
+	if(tail_stab_cooldown_multiplier)
+		stabbing_xeno.animation_attack_on(targetted_atom)
+		apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
+		xeno_attack_delay(stabbing_xeno)
+		return ..()
+
+	if(!isXenoOrHuman(targetted_atom))
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
+		apply_cooldown(cooldown_modifier = 0.1)
+		xeno_attack_delay(stabbing_xeno)
+		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
+		return FALSE
+
+	if(stabbing_xeno.can_not_harm(targetted_atom))
+		return FALSE
+
+	var/mob/living/carbon/target = targetted_atom
+
+	if(target.stat == DEAD || HAS_TRAIT(target, TRAIT_NESTED))
+		return FALSE
+
+	var/obj/limb/limb = target.get_limb(check_zone(stabbing_xeno.zone_selected))
+	if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
+		to_chat(stabbing_xeno, (SPAN_WARNING("What [limb.display_name]?")))
+		return FALSE
+
+	if(!check_and_use_plasma_owner())
+		return FALSE
+
+	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
+
+	if(blunt_stab)
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("You swipe your tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
+		playsound(target, "punch", 50, TRUE)
+		stabbing_xeno.emote("tail")
+	else
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("You skewer [target] through the [limb? limb.display_name : "chest"] with your razor sharp tail!"))
+		playsound(target, "alien_bite", 50, TRUE)
+
+	stabbing_xeno.animation_attack_on(target)
+	stabbing_xeno.flick_attack_overlay(target, "tail")
+
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * 1.2
+
+	if(stabbing_xeno.behavior_delegate)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
+		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
+
+	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
+	target.apply_effect(3, DAZE)
+	shake_camera(target, 2, 1)
+
+	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
+
+	apply_cooldown()
+	xeno_attack_delay(stabbing_xeno)
+
+	..()
+	return target

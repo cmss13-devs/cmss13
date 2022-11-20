@@ -37,7 +37,7 @@
 
 /obj/item/storage/bible/hefa
 	name = "Holy texts of the High Explosive Fragmenting Anti-personnel hand grenade."
-	desc = "Praise be he, reverand Clearsmire who has brought us into the light of the shrapnel! Sworn to the holy service of the HEFA lord are we, and while few, we are the voices of the silent many! Printed in the RESS."
+	desc = "Praise be he, reverend Clearsmire who has brought us into the light of the shrapnel! Sworn to the holy service of the HEFA lord are we, and while few, we are the voices of the silent many! Printed in the RESS."
 	icon_state ="tome_hefa"
 
 /obj/item/storage/bible/hefa/Initialize()

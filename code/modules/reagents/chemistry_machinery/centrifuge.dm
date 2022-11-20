@@ -1,5 +1,5 @@
-#define INPUT_CONTAINER	1
-#define INPUT_TURING	2
+#define INPUT_CONTAINER	0
+#define INPUT_TURING	1
 
 #define MODE_SPLIT 		0
 #define MODE_DISTRIBUTE 1
@@ -86,7 +86,7 @@
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
 	if(!input_container && !output_container)
-		ui_interact(user)
+		tgui_interact(user)
 		return
 	if(output_container)
 		to_chat(user, SPAN_NOTICE("You remove the [output_container] from the [src]."))
@@ -103,45 +103,55 @@
 		icon_state = "centrifuge_empty_open"
 	return
 
-/obj/structure/machinery/centrifuge/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
-	var/list/data = list(
-		"mode" = centrifuge_mode,
-		"input_source" = input_source,
-		"label" = autolabel
-	)
+// TGUI SHIT \\
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+/obj/structure/machinery/centrifuge/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "centrifuge.tmpl", "Centrifuge Settings", 480, 200)
-		ui.set_initial_data(data)
+		ui = new(user, src, "Centrifuge", "[src.name]")
 		ui.open()
+/obj/structure/machinery/centrifuge/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
-/obj/structure/machinery/centrifuge/Topic(href, href_list)
+/obj/structure/machinery/centrifuge/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+
+/obj/structure/machinery/centrifuge/ui_data(mob/user)
+	var/list/data = list()
+
+	data["mode"] = centrifuge_mode
+	data["input_source"] = input_source
+	data["label"] = autolabel
+	data["turing"] = connected_turing
+
+	return data
+
+/obj/structure/machinery/centrifuge/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
-	if(inoperable() || !ishuman(usr))
-		return
-	var/mob/living/carbon/human/user = usr
-	if(user.stat || user.is_mob_restrained() || !in_range(src, user))
-		return
 
-	if(href_list["togglemode"])
-		centrifuge_mode = !centrifuge_mode
-	if(href_list["togglesource"])
-		if(input_source == INPUT_CONTAINER)
-			input_source = INPUT_TURING
-			if(!connected_turing)
-				connect_turing()
-		else if(input_source == INPUT_TURING)
-			input_source = INPUT_CONTAINER
-	if(href_list["setlabel"])
-		autolabel = reject_bad_text(input(user,"Label:","Enter label!", null) as text|null)
+	switch(action)
+		if("togglemode")
+			centrifuge_mode = !centrifuge_mode
+			. = TRUE
 
-	nanomanager.update_uis(src) // update all UIs attached to src
-	add_fingerprint(user)
-	attack_hand(usr)
-	return TRUE
+		if("togglesource")
+			if(input_source == INPUT_CONTAINER)
+				input_source = INPUT_TURING
+			else if(input_source == INPUT_TURING)
+				input_source = INPUT_CONTAINER
+			. = TRUE
+
+		if("setlabel")
+			autolabel = reject_bad_text(params["name"])
+			. = TRUE
+
+		if("attempt_connection")
+			connect_turing()
+			. = TRUE
 
 /obj/structure/machinery/centrifuge/process()
 	if(turing_ready() && (connected_turing.reagents.total_volume == 0 || connected_turing.status > 1))

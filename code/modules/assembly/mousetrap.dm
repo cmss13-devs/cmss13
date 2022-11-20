@@ -9,10 +9,10 @@
 /obj/item/device/assembly/mousetrap/attackby()
 	return
 
-/obj/item/device/assembly/mousetrap/examine(mob/user)
-	..()
+/obj/item/device/assembly/mousetrap/get_examine_text(mob/user)
+	. = ..()
 	if(armed)
-		to_chat(user, "It looks like it's armed.")
+		. += "It looks like it's armed."
 
 /obj/item/device/assembly/mousetrap/update_icon()
 	if(armed)
@@ -32,11 +32,11 @@
 			if("feet")
 				if(!H.shoes)
 					affecting = H.get_limb(pick("l_leg", "r_leg"))
-					H.KnockDown(3)
+					H.apply_effect(3, WEAKEN)
 			if("l_hand", "r_hand")
 				if(!H.gloves)
 					affecting = H.get_limb(type)
-					H.Stun(3)
+					H.apply_effect(3, STUN)
 		if(affecting)
 			if(affecting.take_damage(1, 0))
 				H.UpdateDamageIcon()

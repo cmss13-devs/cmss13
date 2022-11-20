@@ -346,7 +346,7 @@
 /obj/item/device/cassette_tape/pop2
 	name = "rainbow cassette"
 	id = 3
-	desc = "A plastic cassette tape with a rainbow colored sticker."
+	desc = "A plastic cassette tape with a rainbow-colored sticker."
 	icon_state = "cassette_rainbow"
 	side1_icon = "cassette_rainbow"
 	songs = list("side1" = list("sound/music/walkman/pop2/2-1-1.ogg",\
@@ -474,7 +474,7 @@
 /obj/item/device/cassette_tape/cargocrate
 	name = "weyland yutani cassette"
 	id = 13
-	desc = "A blue metalic cassette with a weyland yutani logo."
+	desc = "A blue metallic cassette with a weyland yutani logo."
 	icon_state = "cassette_wy"
 	side1_icon = "cassette_wy"
 
@@ -511,6 +511,6 @@
 /obj/item/device/cassette_tape/prison
 	name = "broken cassette"
 	id = 18
-	desc = "The shell on this casette is broken, it still looks like it'll work, though!"
+	desc = "The shell on this cassette is broken, it still looks like it'll work, though!"
 	icon_state = "cassette_worstmap"
 	side1_icon = "cassette_worstmap"

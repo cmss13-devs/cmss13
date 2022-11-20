@@ -5,13 +5,6 @@
 	powernet_name = "ground"
 	ambience_exterior = AMBIENCE_JUNGLE
 
-/area/lv624/Initialize()
-	. = ..()
-	if(SSticker.current_state > GAME_STATE_SETTING_UP)
-		add_thunder()
-	else
-		LAZYADD(GLOB.thunder_setup_areas, src)
-
 /area/lv624/ground
 	name = "Ground"
 	icon_state = "green"
@@ -168,6 +161,34 @@
 /area/lv624/ground/colony/west_tcomms_road
 	name = "\improper West T-Comms Road"
 	icon_state = "west"
+
+/area/lv624/ground/colony/telecomm
+	name = "\improper LZ1 Communications Relay"
+	icon_state = "ass_line"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	is_resin_allowed = FALSE
+	ceiling_muffle = FALSE
+	base_muffle = MUFFLE_LOW
+	always_unpowered = FALSE
+
+/area/lv624/ground/colony/telecomm/cargo
+	name = "\improper Far North Storage Dome Communications Relay"
+
+
+/area/lv624/ground/colony/telecomm/sw_lz1
+	name = "\improper South-West LZ1 Communications Relay"
+	ceiling = CEILING_NONE
+
+/area/lv624/ground/colony/telecomm/tcommdome
+	name = "\improper Telecomms Dome Communications Relay"
+
+/area/lv624/ground/colony/telecomm/tcommdome/south
+	name = "\improper South Telecomms Dome Communications Relay"
+	ceiling = CEILING_NONE
+
+/area/lv624/ground/colony/telecomm/sw_lz2
+	name = "\improper South-West LZ2 Communications Relay"
+	ceiling = CEILING_NONE
 
 //	ambience = list('sound/ambience/jungle_amb1.ogg')
 
@@ -331,6 +352,7 @@
 	icon_state = "purple"
 	ceiling = CEILING_NONE
 	is_resin_allowed = FALSE
+	always_unpowered = TRUE
 
 /area/lv624/lazarus/engineering
 	name = "\improper Engineering"

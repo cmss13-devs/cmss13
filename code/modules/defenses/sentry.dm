@@ -105,12 +105,12 @@
 
 	return TRUE
 
-/obj/structure/machinery/defenses/sentry/examine(mob/user)
+/obj/structure/machinery/defenses/sentry/get_examine_text(mob/user)
 	. = ..()
 	if(ammo)
-		to_chat(user, SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded."))
+		. += SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded.")
 	else
-		to_chat(user, SPAN_NOTICE("[src] is empty and needs to be refilled with ammo."))
+		. += SPAN_NOTICE("[src] is empty and needs to be refilled with ammo.")
 
 /obj/structure/machinery/defenses/sentry/power_on_action()
 	target = null
@@ -389,9 +389,9 @@
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 
-/obj/structure/machinery/defenses/sentry/premade/examine(mob/user)
+/obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it."))
+	. += SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it.")
 
 /obj/structure/machinery/defenses/sentry/premade/attackby(var/obj/item/O, var/mob/user)
 	return
@@ -414,7 +414,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 //the turret inside a static sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/deployable
 	name = "UA-633 Static Gauss Turret"
-	desc = "An fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
+	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
 	fire_delay = 1
@@ -435,7 +435,6 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
 	omni_directional = TRUE
-	damage_mult = 0.7
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
@@ -499,7 +498,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 			L.visible_message(SPAN_DANGER("The sentry's steel tusks impale [L]!"),
 			SPAN_DANGER("The sentry's steel tusks impale you!"))
 			if(L.mob_size <= MOB_SIZE_XENO_SMALL)
-				L.KnockDown(1)
+				L.apply_effect(1, WEAKEN)
 
 /obj/structure/machinery/defenses/sentry/mini
 	name = "UA 512-M mini sentry"
@@ -549,9 +548,13 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 /obj/structure/machinery/defenses/sentry/launchable/handle_empty()
 	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!</span>")
 	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
-	new /obj/item/stack/sheet/metal/medium_stack(loc)
-	new /obj/item/stack/sheet/plasteel/medium_stack(loc)
-	qdel(src)
+	deconstruct()
+
+/obj/structure/machinery/defenses/sentry/launchable/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/sheet/metal/medium_stack(loc)
+		new /obj/item/stack/sheet/plasteel/medium_stack(loc)
+	return ..()
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

@@ -21,12 +21,12 @@
 	if(broken)
 		icon_state = "[icon_state]_burnt"
 
-/obj/item/device/flash/examine(mob/user)
+/obj/item/device/flash/get_examine_text(mob/user)
 	. = ..()
 	if(broken)
-		to_chat(user, "This one's bulb has popped. Oh well.")
+		. += "This one's bulb has popped. Oh well."
 	else
-		to_chat(user, SPAN_NOTICE("[flashes_stored] / [max_flashes_stored] flashes remaining."))
+		. += SPAN_NOTICE("[flashes_stored] / [max_flashes_stored] flashes remaining.")
 
 /obj/item/device/flash/proc/add_charge()
 	if(broken)
@@ -93,10 +93,10 @@
 		if(iscarbon(M))
 			flashfail = !M.flash_eyes()
 			if(!flashfail)
-				M.KnockDown(10)
+				M.apply_effect(10, WEAKEN)
 
 		else if(isSilicon(M))
-			M.KnockDown(rand(5,10))
+			M.apply_effect(rand(5,10), WEAKEN)
 
 		else //if not carbon or sillicn
 			flashfail = TRUE
@@ -165,7 +165,7 @@
 			if(istype(loc, /mob/living/carbon))
 				var/mob/living/carbon/M = loc
 				if(M.flash_eyes())
-					M.KnockDown(10)
+					M.apply_effect(10, WEAKEN)
 					M.visible_message("<span class='disarm'>[M] is blinded by \the [src]!</span>")
 	..()
 

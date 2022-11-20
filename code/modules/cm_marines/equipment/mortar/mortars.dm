@@ -148,8 +148,8 @@
 
 /obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, manual = FALSE)
 	if(manual)
-		temp_targ_x = tgui_input_number(user, "Input the longitude of the target.")
-		temp_targ_y = tgui_input_number(user, "Input the latitude of the target.")
+		temp_targ_x = tgui_input_real_number(user, "Input the longitude of the target.")
+		temp_targ_y = tgui_input_real_number(user, "Input the latitude of the target.")
 
 	if(!can_fire_at(user, test_targ_x = deobfuscate_x(temp_targ_x), test_targ_y = deobfuscate_y(temp_targ_y)))
 		return
@@ -356,7 +356,7 @@
 	return TRUE
 
 /obj/structure/mortar/fixed
-	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses manual targetting dials. Insert round to fire. This one is bolted and welded into the ground."
+	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses manual targeting dials. Insert round to fire. This one is bolted and welded into the ground."
 	fixed = TRUE
 
 /obj/structure/mortar/wo
@@ -375,7 +375,7 @@
 /obj/item/mortar_kit/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 
 /obj/item/mortar_kit/attack_self(mob/user)
 	..()

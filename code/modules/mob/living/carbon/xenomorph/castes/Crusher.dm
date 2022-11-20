@@ -49,6 +49,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/pounce/crusher_charge,
 		/datum/action/xeno_action/onclick/crusher_stomp,
 		/datum/action/xeno_action/onclick/crusher_shield,
@@ -95,7 +96,7 @@
 		if (W.unacidable)
 			. = FALSE
 		else
-			W.shatter_window(1)
+			W.deconstruct(FALSE)
 			. =  TRUE // Continue throw
 
 	else if (istype(target, /obj/structure/machinery/door/airlock))
@@ -104,7 +105,7 @@
 		if (A.unacidable)
 			. = FALSE
 		else
-			A.destroy_airlock()
+			A.deconstruct()
 
 	else if (istype(target, /obj/structure/grille))
 		var/obj/structure/grille/G = target
@@ -199,23 +200,6 @@
 	if (!.)
 		update_icons()
 
-/mob/living/carbon/Xenomorph/Crusher/update_icons()
-	if(stat == DEAD)
-		icon_state = "[mutation_type] Crusher Dead"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] Crusher Sleeping"
-		else
-			icon_state = "[mutation_type] Crusher Knocked Down"
-	else
-		if(throwing) //Let it build up a bit so we're not changing icons every single turf
-			icon_state = "[mutation_type] Crusher Charging"
-		else
-			icon_state = "[mutation_type] Crusher Running"
-
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
-
 // Mutator delegate for base ravager
 /datum/behavior_delegate/crusher_base
 	name = "Base Crusher Behavior Delegate"
@@ -281,3 +265,8 @@
 			shield_total += XS.amount
 
 	. += "Shield: [shield_total]"
+
+/datum/behavior_delegate/crusher_base/on_update_icons()
+	if(bound_xeno.throwing) //Let it build up a bit so we're not changing icons every single turf
+		bound_xeno.icon_state = "[bound_xeno.mutation_type] Crusher Charging"
+		return TRUE

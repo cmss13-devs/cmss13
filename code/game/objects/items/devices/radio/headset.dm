@@ -19,6 +19,13 @@
 	var/list/keys //Actual objects.
 	maxf = 1489
 
+	var/list/inbuilt_tracking_options = list(
+		"Squad Leader" = TRACKER_SL,
+		"Fireteam Leader" = TRACKER_FTL,
+		"Landing Zone" = TRACKER_LZ
+	)
+	var/list/tracking_options = list()
+
 	var/list/volume_settings
 
 	var/last_multi_broadcast = -999
@@ -29,6 +36,7 @@
 	var/locate_setting = TRACKER_SL
 	var/misc_tracking = FALSE
 	var/hud_type = MOB_HUD_FACTION_USCM
+	var/default_freq
 
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
@@ -44,6 +52,11 @@
 		headset_hud_on = TRUE
 		verbs += /obj/item/device/radio/headset/proc/toggle_squadhud
 		verbs += /obj/item/device/radio/headset/proc/switch_tracker_target
+
+	if(frequency)
+		for(var/cycled_channel in radiochannels)
+			if(radiochannels[cycled_channel] == frequency)
+				default_freq = cycled_channel
 
 /obj/item/device/radio/headset/proc/set_volume_setting()
 	set name = "Set Headset Volume"
@@ -73,6 +86,9 @@
 			hivemind.broadcast(M, message)
 		return null
 
+	if(default_freq && channel == default_freq)
+		return radio_connection
+
 	return ..()
 
 /obj/item/device/radio/headset/attack_self(mob/user as mob)
@@ -100,7 +116,7 @@
 /obj/item/device/radio/headset/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
 		return ..()
-	if(!istype(over_object, /obj/screen))
+	if(!istype(over_object, /atom/movable/screen))
 		return ..()
 	if(loc != usr) //Makes sure that the headset is equipped, so that we can't drag it into our hand from miles away.
 		return ..()
@@ -164,6 +180,7 @@
 	translate_hive = FALSE
 	syndie = FALSE
 
+	tracking_options = length(inbuilt_tracking_options) ? inbuilt_tracking_options.Copy() : list()
 	for(var/i in keys)
 		var/obj/item/device/encryptionkey/key = i
 		for(var/ch_name in key.channels)
@@ -171,6 +188,8 @@
 				continue
 			channels += ch_name
 			channels[ch_name] = key.channels[ch_name]
+		for(var/tracking_option in key.tracking_options)
+			tracking_options[tracking_option] = key.tracking_options[tracking_option]
 		if(key.translate_binary)
 			translate_binary = TRUE
 		if(key.translate_hive)
@@ -178,9 +197,25 @@
 		if(key.syndie)
 			syndie = TRUE
 
+	if(length(tracking_options))
+		var/list/tracking_stuff = list()
+		for(var/tracking_fluff in tracking_options)
+			tracking_stuff += tracking_options[tracking_fluff]
+		if(!(locate_setting in tracking_stuff))
+			locate_setting = tracking_stuff[1]
+	else
+		locate_setting = initial(locate_setting)
+
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 	SStgui.update_uis(src)
+
+/obj/item/device/radio/headset/set_frequency(new_frequency)
+	..()
+	if(frequency)
+		for(var/cycled_channel in radiochannels)
+			if(radiochannels[cycled_channel] == frequency)
+				default_freq = cycled_channel
 
 /obj/item/device/radio/headset/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
@@ -262,18 +297,12 @@
 
 	handle_switching_tracker_target(usr)
 
-/obj/item/device/radio/headset/proc/handle_switching_tracker_target(var/mob/living/carbon/human/user)
-	//Cycles through SL > LZ > FTL
-	if(locate_setting == TRACKER_SL)
-		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the LZ tracking beacon."))
-		locate_setting = TRACKER_LZ
+/obj/item/device/radio/headset/proc/handle_switching_tracker_target(mob/living/carbon/human/user)
+	var/new_track = tgui_input_list(user, "Choose a new tracking target.", "Tracking Selection", tracking_options)
+	if(!new_track)
 		return
-	if(locate_setting == TRACKER_LZ && user.assigned_fireteam) //Only set it to FTL if they have a fireteam
-		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your FTL's tracking beacon."))
-		locate_setting = TRACKER_FTL
-		return
-	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your SL's tracking beacon."))
-	locate_setting = TRACKER_SL
+	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to <b>[new_track]</b>."))
+	locate_setting = tracking_options[new_track]
 
 /obj/item/device/radio/headset/binary
 	initial_keys = list(/obj/item/device/encryptionkey/binary)
@@ -383,14 +412,10 @@
 	locate_setting = TRACKER_CO
 	misc_tracking = TRUE
 
-/obj/item/device/radio/headset/almayer/marine/mp_honor/handle_switching_tracker_target(mob/living/carbon/human/user)
-	switch(locate_setting)
-		if(TRACKER_CO)
-			to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the XO's tracking beacon."))
-			locate_setting = TRACKER_XO
-		if(TRACKER_XO)
-			to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the CO's tracking beacon."))
-			locate_setting = TRACKER_CO
+	inbuilt_tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO
+	)
 
 /obj/item/device/radio/headset/almayer/cmpcom
 	name = "marine chief MP radio headset"
@@ -453,8 +478,7 @@
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CO
 
-/obj/item/device/radio/headset/almayer/mcom/synth/handle_switching_tracker_target(mob/living/carbon/human/user)
-	var/list/tracking_options = list(
+	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
 		"Executive Officer" = TRACKER_XO,
 		"Landing Zone" = TRACKER_LZ,
@@ -464,11 +488,6 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL
 	)
-	var/new_track = tgui_input_list(user, "Choose a new tracking target.", "Tracking Selection", tracking_options)
-	if(!new_track)
-		return
-	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to <b>[new_track]</b>."))
-	locate_setting = tracking_options[new_track]
 
 /obj/item/device/radio/headset/almayer/mcom/ai
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/ai)
@@ -625,31 +644,31 @@
 
 //############################## CRYO ###############################
 /obj/item/device/radio/headset/almayer/marine/cryo
-	name = "marine reserves radio headset"
-	desc = "This is used by Reserve squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	name = "marine foxtrot radio headset"
+	desc = "This is used by Foxtrot squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	icon_state = "cryo_headset"
 	frequency = CRYO_FREQ
 
 /obj/item/device/radio/headset/almayer/marine/cryo/lead
-	name = "marine reserves leader radio headset"
-	desc = "This is used by the marine Reserve squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	name = "marine foxtrot leader radio headset"
+	desc = "This is used by the marine Foxtrot squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine/cryo/rto
-	name = "marine reserves RTO radio headset"
-	desc = "This is used by the marine Reserve RTO. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	name = "marine foxtrot RTO radio headset"
+	desc = "This is used by the marine Foxtrot RTO. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
 	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/cryo/engi
-	name = "marine reserves engineer radio headset"
-	desc = "This is used by the marine Reserve combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	name = "marine foxtrot engineer radio headset"
+	desc = "This is used by the marine Foxtrot combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/cryo/med
-	name = "marine reserves corpsman radio headset"
-	desc = "This is used by the marine Reserve combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	name = "marine foxtrot corpsman radio headset"
+	desc = "This is used by the marine Foxtrot combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
 /obj/item/device/radio/headset/almayer/marine/mortar
@@ -730,6 +749,12 @@
 	desc = "A standard headset used by colonists."
 	frequency = COLONY_FREQ
 
+/obj/item/device/radio/headset/distress/goon
+	name = "WY corporate security headset"
+	desc = "A headset commonly worn by WY corporate security."
+	frequency = WY_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY)
+
 /obj/item/device/radio/headset/distress/dutch
 	name = "Dutch's Dozen headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the colony channel, use :h."
@@ -746,9 +771,16 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_PMC
 
+	misc_tracking = TRUE
+	locate_setting = TRACKER_CL
+	inbuilt_tracking_options = list(
+		"Corporate Liaison" = TRACKER_CL
+	)
+
 /obj/item/device/radio/headset/distress/PMC/hvh
 	desc = "A special headset used by corporate personnel. Channels are as follows: :h - public."
 	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	misc_tracking = FALSE
 
 /obj/item/device/radio/headset/distress/PMC/hvh/cct
 	name = "PMC-CCT headset"
@@ -793,6 +825,14 @@
 	icon_state = "pmc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
 
+/obj/item/device/radio/headset/distress/contractor
+	name = "VAI Headset"
+	desc = "A special headset used by Vanguard's Arrow Incorporated mercenaries, features a non-standard brace. Channels are as follows: :g - public, :v - marine command, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
+	frequency = VAI_FREQ
+	icon_state = "vai_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/contractor)
+	has_hud = TRUE
+
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
 	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom"
@@ -801,11 +841,11 @@
 	volume = RADIO_VOLUME_CRITICAL
 	ignore_z = TRUE
 
-/obj/item/device/radio/headset/almayer/marsoc
-	name = "USCM MARSOC headset"
-	desc = "Issued exclusively to members of the Marines Special Operations Command."
+/obj/item/device/radio/headset/almayer/sof
+	name = "USCM SOF headset"
+	desc = "Issued exclusively to Marine Raiders and members of the USCM's Force Reconnaissance."
 	icon_state = "soc_headset"
-	frequency = MARSOC_FREQ
+	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc)
 	volume = RADIO_VOLUME_IMPORTANT
 	ignore_z = TRUE

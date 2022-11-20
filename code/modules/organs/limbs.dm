@@ -4,7 +4,7 @@
 /obj/limb
 	name = "limb"
 	appearance_flags = KEEP_TOGETHER | TILE_BOUND
-	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_DIR
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_DIR | VIS_INHERIT_PLANE
 	var/icon_name = null
 	var/body_part = null
 	var/icon_position = 0
@@ -155,7 +155,7 @@
 		W.weapon = used_weapon
 		autopsy_data[used_weapon] = W
 
-	W.hits += 1
+	W.hits++
 	W.damage += damage
 	W.time_inflicted = world.time
 
@@ -570,9 +570,8 @@ This function completely restores a damaged organ to perfect condition.
 	if(brute_dam || burn_dam)
 		return TRUE
 	if(knitting_time > 0)
-		return TRUE
-	update_wounds()
-	return FALSE
+		return 1
+	return 0
 
 /obj/limb/process()
 
@@ -865,9 +864,10 @@ This function completely restores a damaged organ to perfect condition.
 				owner.drop_inv_item_on_ground(owner.wear_r_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
 				owner.update_hair()
+				if(owner.species) owner.species.handle_head_loss(owner)
 			if(BODY_FLAG_ARM_RIGHT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-					organ = new /obj/item/robot_parts/r_arm(owner.loc)
+					organ = new /obj/item/robot_parts/arm/r_arm(owner.loc)
 				else
 					organ = new /obj/item/limb/arm/r_arm(owner.loc, owner)
 				if(owner.w_uniform && !amputation)
@@ -876,7 +876,7 @@ This function completely restores a damaged organ to perfect condition.
 					owner.update_inv_w_uniform()
 			if(BODY_FLAG_ARM_LEFT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-					organ = new /obj/item/robot_parts/l_arm(owner.loc)
+					organ = new /obj/item/robot_parts/arm/l_arm(owner.loc)
 				else
 					organ = new /obj/item/limb/arm/l_arm(owner.loc, owner)
 				if(owner.w_uniform && !amputation)
@@ -885,7 +885,7 @@ This function completely restores a damaged organ to perfect condition.
 					owner.update_inv_w_uniform()
 			if(BODY_FLAG_LEG_RIGHT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-					organ = new /obj/item/robot_parts/r_leg(owner.loc)
+					organ = new /obj/item/robot_parts/leg/r_leg(owner.loc)
 				else
 					organ = new /obj/item/limb/leg/r_leg(owner.loc, owner)
 				if(owner.w_uniform && !amputation)
@@ -894,7 +894,7 @@ This function completely restores a damaged organ to perfect condition.
 					owner.update_inv_w_uniform()
 			if(BODY_FLAG_LEG_LEFT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-					organ = new /obj/item/robot_parts/l_leg(owner.loc)
+					organ = new /obj/item/robot_parts/leg/l_leg(owner.loc)
 				else
 					organ = new /obj/item/limb/leg/l_leg(owner.loc, owner)
 				if(owner.w_uniform && !amputation)
@@ -902,21 +902,29 @@ This function completely restores a damaged organ to perfect condition.
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
 			if(BODY_FLAG_HAND_RIGHT)
-				if(!(status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
-					organ= new /obj/item/limb/hand/r_hand(owner.loc, owner)
+				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
+					organ = new /obj/item/robot_parts/hand/r_hand(owner.loc)
+				else
+					organ = new /obj/item/limb/hand/r_hand(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.gloves, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.r_hand, null, TRUE)
 			if(BODY_FLAG_HAND_LEFT)
-				if(!(status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
-					organ= new /obj/item/limb/hand/l_hand(owner.loc, owner)
+				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
+					organ = new /obj/item/robot_parts/hand/l_hand(owner.loc)
+				else
+					organ = new /obj/item/limb/hand/l_hand(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.gloves, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.l_hand, null, TRUE)
 			if(BODY_FLAG_FOOT_RIGHT)
-				if(!(status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
-					organ= new /obj/item/limb/foot/r_foot/(owner.loc, owner)
+				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
+					organ = new /obj/item/robot_parts/foot/r_foot(owner.loc)
+				else
+					organ = new /obj/item/limb/foot/r_foot(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.shoes, null, TRUE)
 			if(BODY_FLAG_FOOT_LEFT)
-				if(!(status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
+				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
+					organ = new /obj/item/robot_parts/foot/l_foot(owner.loc)
+				else
 					organ = new /obj/item/limb/foot/l_foot(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.shoes, null, TRUE)
 

@@ -122,6 +122,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/head/headband/Initialize(mapload, ...)
 	. = ..()
@@ -133,9 +134,60 @@
 /obj/item/clothing/head/headband/tan
 	icon_state = "headbandtan"
 
+/obj/item/clothing/head/headband/brown
+	icon_state = "headbandbrown"
+
+/obj/item/clothing/head/headband/gray
+	icon_state = "headbandgray"
+
 /obj/item/clothing/head/headband/rebel
 	desc = "A headband made from a simple strip of cloth. The words \"DOWN WITH TYRANTS\" are emblazoned on the front."
 	icon_state = "rebelband"
+
+/obj/item/clothing/head/headband/squad
+	icon_state = "headband%SQUAD%"
+
+	var/static/list/valid_icon_states
+
+/obj/item/clothing/head/headband/squad/Initialize(mapload, ...)
+	. = ..()
+	if(!valid_icon_states)
+		valid_icon_states = icon_states(icon)
+	adapt_to_squad()
+
+/obj/item/clothing/head/headband/squad/proc/update_clothing_wrapper(var/mob/living/carbon/human/wearer)
+	SIGNAL_HANDLER
+
+	var/is_worn_by_wearer = recursive_holder_check(src) == wearer
+	if(is_worn_by_wearer)
+		update_clothing_icon()
+	else
+		UnregisterSignal(wearer, COMSIG_SET_SQUAD) // we can't set this in dropped, because dropping into a helmet unsets it and then it never updates
+
+/obj/item/clothing/head/headband/squad/update_clothing_icon()
+	adapt_to_squad()
+	if(istype(loc, /obj/item/storage/internal) && istype(loc.loc, /obj/item/clothing/head/helmet))
+		var/obj/item/clothing/head/helmet/headwear = loc.loc
+		headwear.update_icon()
+	return ..()
+
+/obj/item/clothing/head/headband/squad/pickup(mob/user, silent)
+	. = ..()
+	adapt_to_squad()
+
+/obj/item/clothing/head/headband/squad/equipped(mob/user, slot, silent)
+	RegisterSignal(user, COMSIG_SET_SQUAD, .proc/update_clothing_wrapper, TRUE)
+	adapt_to_squad()
+	return ..()
+
+/obj/item/clothing/head/headband/squad/proc/adapt_to_squad()
+	var/squad_color = "gray"
+	var/mob/living/carbon/human/wearer = recursive_holder_check(src)
+	if(istype(wearer) && wearer.assigned_squad)
+		var/squad_name = lowertext(wearer.assigned_squad.name)
+		if("headband[squad_name]" in valid_icon_states)
+			squad_color = squad_name
+	icon_state = replacetext(initial(icon_state), "%SQUAD%", squad_color)
 
 /obj/item/clothing/head/headband/rambo
 	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."
@@ -182,12 +234,17 @@
 						/obj/item/clothing/glasses/welding = "welding-c",
 						/obj/item/clothing/glasses/mgoggles = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/prescription = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/black = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/orange = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg/marsoc = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/head/headband = "hat_headbandgreen",
 						/obj/item/clothing/head/headband/tan = "hat_headbandtan",
 						/obj/item/clothing/head/headband/red = "hat_headbandred",
+						/obj/item/clothing/head/headband/brown = "hat_headbandbrown",
+						/obj/item/clothing/head/headband/gray = "hat_headbandgray",
+						/obj/item/clothing/head/headband/squad = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
 						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
 						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
@@ -323,7 +380,7 @@
 
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical Officer's Peaked Cap"
-	desc = "A peaked cap given to high ranking civilian medical officers. Looks just a touch silly."
+	desc = "A peaked cap given to high-ranking civilian medical officers. Looks just a touch silly."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "cmohat"
 	item_icons = list(
@@ -367,7 +424,7 @@
 /obj/item/clothing/head/helmet/beret/marine/mp/warden
 	name = "\improper USCM MP warden peaked cap"
 	icon_state = "warden"
-	desc = "A Kevlar reinforced peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, and is typicaly used by Wardens on USCM ships."
+	desc = "A Kevlar reinforced peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, and is typically used by Wardens on USCM ships."
 
 /obj/item/clothing/head/helmet/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
@@ -394,6 +451,10 @@
 	icon_state = "coblackberet"
 	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package."
 
+/obj/item/clothing/head/helmet/beret/marine/mp/tis
+	name = "\improper UAAC-TIS Special Agent Beret"
+	icon_state = "berettis"
+	desc = "A Kevlar reinforced beret with the UAAC-TIS insignia emblazoned on it. A mark of a TIS Special Agent, these berets are one of the only pieces of equipment that the TIS actually manufactures for itself and earning one is one of the rare signs of achievement the Three Eyes allows."
 
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine captain beret"
@@ -413,23 +474,23 @@
 	)
 
 /obj/item/clothing/head/beret/marine/commander/dress
-	name = "marine captain white beret"
+	name = "marine major white beret"
 	icon_state = "codressberet"
-	desc = "An armored white beret with the captain insignia emblazoned on it. Its dazzling white color commands power and exudes class."
+	desc = "An armored white beret with the Major insignia emblazoned on it. Its dazzling white color commands power and exudes class."
 
 /obj/item/clothing/head/beret/marine/commander/black
-	name = "marine captain black beret"
+	name = "marine major black beret"
 	icon_state = "coblackberet"
-	desc = "An armored black beret with the captain insignia emblazoned on it. Its sleek black color commands power and exudes class."
+	desc = "An armored black beret with the Major insignia emblazoned on it. Its sleek black color commands power and exudes class."
 
-/obj/item/clothing/head/beret/marine/commander/cdre
-	name = "marine commodore beret"
-	desc = "An armored blue beret with the commodore's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Commodore."
+/obj/item/clothing/head/beret/marine/commander/council
+	name = "marine colonel beret"
+	desc = "An armored blue beret with the Lieutenant Colonel's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Colonel."
 	icon_state = "cdreberet"
 
-/obj/item/clothing/head/beret/marine/commander/cdrechief
-	name = "marine commodore-in-chief beret"
-	desc = "A dark blue, custom-tailored armored beret signifying the Chief of all Commodores. Definitely not an alias for an General."
+/obj/item/clothing/head/beret/marine/commander/councilchief
+	name = "marine colonel beret"
+	desc = "A dark blue, custom-tailored armored beret signifying The Colonel. Definitely not an alias for a General."
 	icon_state = "cdrechiefberet"
 
 /obj/item/clothing/head/marine/peaked
@@ -630,7 +691,7 @@ D
 
 /obj/item/clothing/head/durag
 	name = "durag"
-	desc = "An improvised head wrap made out of a standard issue neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
+	desc = "An improvised head wrap made out of a standard issue neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
 	icon_state = "durag"
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	flags_inv_hide = HIDETOPHAIR
@@ -640,7 +701,7 @@ D
 
 /obj/item/clothing/head/durag/black
 	icon_state = "duragblack"
-	desc = "An improvised head wrap made out of a black neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
+	desc = "An improvised head wrap made out of a black neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	flags_atom = NO_SNOW_TYPE
 
@@ -661,3 +722,20 @@ D
 	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/drillhat)
 #undef HAT_GARB_RELAY_ICON_STATE
+
+//==========================//DRESS BLUES\\===============================\\
+//=======================================================================\\
+
+/obj/item/clothing/head/marine/dress_cover
+	name = "marine dress blues cover"
+	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. The polished logo sits proudly on the white cloth."
+	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
+	icon_state = "e_cap"
+	item_state = "e_cap"
+	contained_sprite = TRUE
+
+/obj/item/clothing/head/marine/dress_cover/officer
+	name = "marine dress blues officer cover"
+	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. Features a gold stripe and silvered logo, emblematic of an officer."
+	icon_state = "o_cap"
+	item_state = "o_cap"

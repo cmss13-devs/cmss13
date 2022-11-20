@@ -37,7 +37,7 @@
 	if(length(A.name) + length(label) > 64)
 		to_chat(user, SPAN_NOTICE("Label too big."))
 		return
-	if(isliving(A))
+	if(isliving(A) || istype(A, /obj/item/holder))
 		to_chat(user, SPAN_NOTICE("You can't label living beings."))
 		return
 	if((istype(A, /obj/item/reagent_container/glass)) && (!(istype(A, /obj/item/reagent_container/glass/minitank))))
@@ -129,10 +129,10 @@
     Instead of updating labels_left to user every label used,
     Have the user examine it to show them.
 */
-/obj/item/tool/hand_labeler/examine(mob/user)
+/obj/item/tool/hand_labeler/get_examine_text(mob/user)
     . = ..()
-    to_chat(user, SPAN_NOTICE("It has [labels_left] out of [initial(labels_left)] labels left."))
-    to_chat(user, SPAN_HELPFUL("Use paper to refill it."))
+    . += SPAN_NOTICE("It has [labels_left] out of [initial(labels_left)] labels left.")
+    . += SPAN_HELPFUL("Use paper to refill it.")
 
 
 /*
@@ -204,7 +204,7 @@
 	clicky = TRUE
 
 /obj/item/tool/pen/invisible
-	desc = "It's an invisble pen marker."
+	desc = "It's an invisible pen marker."
 	pen_colour = "white"
 
 
@@ -326,3 +326,7 @@
 /obj/item/tool/stamp/ro
 	name = "requisitions officer's rubber stamp"
 	icon_state = "stamp-ro"
+/obj/item/tool/barricade_hammer//doesn't do anything, yet
+	name = "carpenter's hammer"
+	icon_state = "carpenters_hammer"
+	desc = "Can be used to thwack nails or wooden objects to hammer or even repair them."

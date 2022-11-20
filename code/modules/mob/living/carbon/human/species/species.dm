@@ -109,6 +109,8 @@
 
 	var/ignores_stripdrag_flag = FALSE
 
+	var/has_species_tab_items = FALSE
+
 /datum/species/New()
 	if(unarmed_type)
 		unarmed = new unarmed_type()
@@ -175,7 +177,10 @@
 		if(FEMALE)
 			t_him = "her"
 
-	if(target_zone in list("l_arm", "r_arm"))
+	if(target_zone == "head")
+		attempt_rock_paper_scissors(H, target)
+		return
+	else if(target_zone in list("l_arm", "r_arm"))
 		attempt_high_five(H, target)
 		return
 	else if(target_zone in list("l_hand", "r_hand"))
@@ -188,6 +193,70 @@
 		H.visible_message(SPAN_NOTICE("[H] pats [target] on the back to make [t_him] feel better!"), \
 			SPAN_NOTICE("You pat [target] on the back to make [t_him] feel better!"), null, 4)
 	playsound(target, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
+
+/datum/species/proc/attempt_rock_paper_scissors(var/mob/living/carbon/human/H, var/mob/living/carbon/human/target)
+	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
+		to_chat(H, SPAN_WARNING("You have no hands!"))
+		return
+
+	if(!target.get_limb("r_hand") && !target.get_limb("l_hand"))
+		to_chat(H, SPAN_WARNING("They have no hands!"))
+		return
+
+	//Responding to a raised hand
+	if(target.flags_emote & EMOTING_ROCK_PAPER_SCISSORS && do_after(H, 5, INTERRUPT_MOVED, EMOTE_ICON_ROCK_PAPER_SCISSORS))
+		if(!(target.flags_emote & EMOTING_ROCK_PAPER_SCISSORS)) //Additional check for if the target moved or was already high fived.
+			to_chat(H, SPAN_WARNING("Too slow!"))
+			return
+		target.flags_emote &= ~EMOTING_ROCK_PAPER_SCISSORS
+		var/static/list/game_quips = list("Rock...", "Paper...", "Scissors...", "Shoot!")
+		for(var/quip in game_quips)
+			if(!H.Adjacent(target))
+				to_chat(list(H, target), SPAN_WARNING("You need to be standing next to each other to play!"))
+				return
+			to_chat(list(H, target), SPAN_NOTICE(quip))
+			sleep(5)
+		var/static/list/intent_to_play = list(
+			"[INTENT_HELP]" = "random",
+			"[INTENT_DISARM]" = "scissors",
+			"[INTENT_GRAB]" = "paper",
+			"[INTENT_HARM]" = "rock"
+		)
+		var/static/list/play_to_emote = list(
+			"rock" = EMOTE_ICON_ROCK,
+			"paper" = EMOTE_ICON_PAPER,
+			"scissors" = EMOTE_ICON_SCISSORS
+		)
+		var/protagonist_plays = intent_to_play["[H.a_intent]"] == "random" ? pick("rock", "paper", "scissors") : intent_to_play["[H.a_intent]"]
+		var/antagonist_plays = intent_to_play["[target.a_intent]"] == "random" ? pick("rock", "paper", "scissors") : intent_to_play["[target.a_intent]"]
+		var/winner_text = " It's a draw!"
+		if(protagonist_plays != antagonist_plays)
+			var/static/list/what_beats_what = list("rock" = "scissors", "scissors" = "paper", "paper" = "rock")
+			if(antagonist_plays == what_beats_what[protagonist_plays])
+				winner_text = " [H] wins!"
+			else
+				winner_text = " [target] wins!"
+		H.visible_message(SPAN_NOTICE("[H] plays <b>[protagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[protagonist_plays]</b>![winner_text]"), max_distance = 5)
+		target.visible_message(SPAN_NOTICE("[target] plays <b>[antagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[antagonist_plays]</b>![winner_text]"), max_distance = 5)
+		playsound(target, "clownstep", 35, TRUE)
+		INVOKE_ASYNC(GLOBAL_PROC, .proc/do_after, H, 8, INTERRUPT_NONE, play_to_emote[protagonist_plays])
+		INVOKE_ASYNC(GLOBAL_PROC, .proc/do_after, target, 8, INTERRUPT_NONE, play_to_emote[antagonist_plays])
+		H.animation_attack_on(target)
+		target.animation_attack_on(H)
+		H.start_audio_emote_cooldown(5 SECONDS)
+		target.start_audio_emote_cooldown(5 SECONDS)
+		return
+
+	//Initiate high five
+	if(H.recent_audio_emote)
+		to_chat(H, "You just did an audible emote. Wait a while.")
+		return
+
+	H.visible_message(SPAN_NOTICE("[H] challenges [target] to a game of rock paper scissors!"), SPAN_NOTICE("You challenge [target] to a game of rock paper scissors!"), null, 4)
+	H.flags_emote |= EMOTING_ROCK_PAPER_SCISSORS
+	if(do_after(H, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_ROCK_PAPER_SCISSORS) && H.flags_emote & EMOTING_ROCK_PAPER_SCISSORS)
+		to_chat(H, SPAN_NOTICE("You were left hanging!"))
+	H.flags_emote &= ~EMOTING_ROCK_PAPER_SCISSORS
 
 /datum/species/proc/attempt_high_five(var/mob/living/carbon/human/H, var/mob/living/carbon/human/target)
 	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
@@ -356,7 +425,7 @@
 /datum/species/proc/build_hud(var/mob/living/carbon/human/H)
 	return
 
-// Grabs the window recieved when you click-drag someone onto you.
+// Grabs the window received when you click-drag someone onto you.
 /datum/species/proc/get_inventory_dialogue(var/mob/living/carbon/human/H)
 	return
 
@@ -397,3 +466,12 @@
 /datum/species/proc/handle_blood_splatter(var/mob/living/carbon/human/human, var/splatter_dir)
 	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir)
 	return bloodsplatter
+
+/datum/species/proc/get_status_tab_items()
+	return list()
+
+/datum/species/proc/handle_head_loss(var/mob/living/carbon/human/human)
+	return
+
+/datum/species/proc/handle_paygrades(var/paygrade, var/size, var/gender)
+	return get_paygrades(paygrade, size, gender)

@@ -90,7 +90,7 @@
 
 /obj/item/map/FOP_map_v3
 	name = "\improper Fiorina Orbital Civilian Annex Map"
-	desc = "A scan produced by the the Almayer's sensor array of the Fiorina Orbital Penitentiary Civilian Annex. It appears to have broken off from the rest of the station and is now in free geo-sync orbit around the planet."
+	desc = "A scan produced by the Almayer's sensor array of the Fiorina Orbital Penitentiary Civilian Annex. It appears to have broken off from the rest of the station and is now in free geo-sync orbit around the planet."
 	html_link = "images/e/e0/Prison_Station_Science_Annex.png"
 	color = "#e88a10"
 
@@ -117,6 +117,11 @@
 	html_link = "images/0/0d/Kutjevo_a1.jpg"
 	color = "red"
 
+/obj/item/map/lv522_map
+	name = "\improper LV-522 Map"
+	desc = "An overview of LV-522 schematics."
+	html_link = "images/b/bb/C_claim.png"
+	color = "cyan"
 
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map
@@ -150,7 +155,7 @@
 			color = "#e88a10"
 		if(MAP_PRISON_STATION_V3)
 			name = "\improper Fiorina Orbital Penitentiary Map"
-			desc = "A scan produced by the the Almayer's sensor array of the Fiorina Orbital Penitentiary Civilian Annex. It appears to have broken off from the rest of the station and is now in free geo-sync orbit around the planet."
+			desc = "A scan produced by the Almayer's sensor array of the Fiorina Orbital Penitentiary Civilian Annex. It appears to have broken off from the rest of the station and is now in free geo-sync orbit around the planet."
 			html_link = "images/e/e0/Prison_Station_Science_Annex.png"
 			color = "#e88a10"
 		if(MAP_DESERT_DAM)
@@ -174,6 +179,11 @@
 			desc = "An orbital scan of Kutjevo Refinery"
 			html_link = "images/0/0d/Kutjevo_a1.jpg"
 			color = "red"
+		if (MAP_LV522_CHANCES_CLAIM)
+			name = "\improper LV-522 Map"
+			desc = "An overview of LV-522 schematics."
+			html_link = "images/b/bb/C_claim.png"
+			color = "cyan"
 		else
 			return INITIALIZE_HINT_QDEL
 

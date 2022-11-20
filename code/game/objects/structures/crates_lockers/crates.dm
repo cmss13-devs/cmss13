@@ -71,7 +71,7 @@
 	for(var/obj/O in get_turf(src))
 		if(itemcount >= storage_capacity)
 			break
-		if(O.density || O.anchored || istype(O, /obj/structure/closet))
+		if(O.density || O.anchored || istype(O, /obj/structure/closet) || istype(O, /obj/effect))
 			continue
 		if(istype(O, /obj/structure/bed)) //This is only necessary because of rollerbeds and swivel chairs.
 			var/obj/structure/bed/B = O
@@ -119,19 +119,16 @@
 /obj/structure/closet/crate/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(50))
-				qdel(src)
+			if(prob(50))
+				deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			for(var/obj/O in src.contents)
-				if(prob(50))
-					qdel(O)
-			qdel(src)
+			contents_explosion(severity)
+			deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			for(var/obj/O in src.contents)
-				qdel(O)
-			qdel(src)
+			contents_explosion(severity)
+			deconstruct(FALSE)
 			return
 		else
 	return
@@ -159,7 +156,7 @@
 
 /obj/structure/closet/crate/ammo/alt/flame
 	name = "ammunitions crate"
-	desc = "An black crate. Warning, contents are flammable!"
+	desc = "A black crate. Warning, contents are flammable!"
 	icon_state = "closed_ammo_alt2"
 	icon_opened = "open_ammo_alt"//does not have its own unique icon
 	icon_closed = "closed_ammo_alt2"
@@ -201,7 +198,7 @@
 
 /obj/structure/closet/crate/explosives
 	name = "explosives crate"
-	desc = "A explosives crate"
+	desc = "An explosives crate"
 	icon_state = "closed_explosives"
 	icon_opened = "open_explosives"
 	icon_closed = "closed_explosives"
@@ -247,7 +244,7 @@
 
 /obj/structure/closet/crate/internals
 	name = "internals crate"
-	desc = "A internals crate."
+	desc = "An internals crate."
 	icon_state = "closed_oxygen"
 	icon_opened = "open_oxygen"
 	icon_closed = "closed_oxygen"

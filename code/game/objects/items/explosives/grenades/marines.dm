@@ -133,7 +133,7 @@
 // M74 are the launcher-only variant. Flag with hand_throwable = FALSE.
 /obj/item/explosive/grenade/HE/airburst
 	name = "\improper M74 AGM-F 40mm Grenade"
-	desc = "M74 - Airburst Grenade Munition - Fragmentation. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. It disperse jagged shrapnel in a cone in front of itself, tearing through sinews and armor alike. Dispersion pattern is optimized against large target. Suffers from overpenetration on a direct hit."
+	desc = "M74 - Airburst Grenade Munition - Fragmentation. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. It disperses jagged shrapnel in a cone in front of itself, tearing through sinews and armor alike. Dispersion pattern is optimized against large target. Suffers from overpenetration on a direct hit."
 	icon_state = "grenade_m74_airburst_f"
 	item_state = "grenade_m74_airburst_f_active"
 	explosion_power = 0
@@ -144,7 +144,7 @@
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	shrapnel_type = /datum/ammo/bullet/shrapnel/jagged
 	var/direct_hit_shrapnel = 5
-	var/dispersion_angle = 60
+	var/dispersion_angle = 40
 
 /obj/item/explosive/grenade/HE/airburst/prime()
 // We don't prime, we use launch_impact.
@@ -160,7 +160,7 @@
 		if(ismob(hit_atom))
 			var/mob/M = hit_atom
 			create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
-			M.Superslow(3.0)
+			M.apply_effect(3.0, SUPERSLOW)
 			shrapnel_count -= direct_hit_shrapnel
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 0)
@@ -172,7 +172,7 @@
 
 /obj/item/explosive/grenade/HE/airburst/hornet_shell
 	name = "\improper M74 AGM-H 40mm Hornet Shell"
-	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the hornet shell shoots off holo-targetting .22lr rounds. The equivalent to buckshot at-range."
+	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the hornet shell shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
 	icon_state = "grenade_hornet"
 	item_state = "grenade_hornet_active"
 	shrapnel_count = 5
@@ -261,7 +261,7 @@
 // M74 are the launcher-only variant. Flag with hand_throwable = FALSE.
 /obj/item/explosive/grenade/incendiary/airburst
 	name = "\improper M74 AGM-I 40mm Grenade"
-	desc = "M74 - Airburst Grenade Munition - Incendiary. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. It disperse a cone of lingering flames in a small area in front of it. The warped pieces of the grenade can also set fire as they fly away."
+	desc = "M74 - Airburst Grenade Munition - Incendiary. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. It disperses a cone of lingering flames in a small area in front of it. The warped pieces of the grenade can also set fire as they fly away."
 	icon_state = "grenade_m74_airburst_i"
 	item_state = "grenade_m74_airburst_i_active"
 	det_time = 0 // Unused, because we don't use prime.
@@ -360,13 +360,13 @@
 
 /obj/item/explosive/grenade/phosphorus/upp
 	name = "\improper Type 8 WP grenade"
-	desc = "A deadly gas grenade found within the ranks of the UPP. Designed to spill white phosporus on the target. It explodes 2 seconds after the pin has been pulled."
+	desc = "A deadly gas grenade found within the ranks of the UPP. Designed to spill white phosphorus on the target. It explodes 2 seconds after the pin has been pulled."
 	icon_state = "grenade_upp_wp"
 	item_state = "grenade_upp_wp"
 
 /obj/item/explosive/grenade/phosphorus/clf
 	name = "\improper improvised phosphorus bomb"
-	desc = "An improvised version of gas grenade designed to spill white phosporus on the target. It explodes 2 seconds after the pin has been pulled."
+	desc = "An improvised version of gas grenade designed to spill white phosphorus on the target. It explodes 2 seconds after the pin has been pulled."
 	icon_state = "grenade_phos_clf"
 	item_state = "grenade_phos_clf"
 
@@ -450,17 +450,17 @@
 	M.apply_damage(impact_damage, BRUTE)
 
 	if(isYautja(M)|| isSynth(M))
-		M.Slow(slowdown_time * 0.5)
-		M.Daze(dazed_time * 0.5)
+		M.apply_effect(slowdown_time * 0.5, SLOW)
+		M.apply_effect(dazed_time * 0.5, DAZE)
 
 	if(M.mob_size >= MOB_SIZE_BIG)//big xenos not KO'ed
-		M.Slow(slowdown_time * 1.5)//They are slowed more :trol:
-		M.Daze(dazed_time * 1.5)
+		M.apply_effect(slowdown_time * 1.5, SLOW)//They are slowed more :trol:
+		M.apply_effect(dazed_time * 1.5, DAZE)
 		return
 
-	M.KnockDown(knockout_time)//but little xenos and humans are
-	M.Slow(slowdown_time)
-	M.Daze(dazed_time)
+	M.apply_effect(knockout_time, WEAKEN)//but little xenos and humans are
+	M.apply_effect(slowdown_time, SLOW)
+	M.apply_effect(dazed_time, DAZE)
 	return
 
 /obj/item/explosive/grenade/slug/baton

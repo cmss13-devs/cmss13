@@ -91,10 +91,10 @@
 	else
 		..()
 
-/obj/item/hoverpack/examine(mob/user)
+/obj/item/hoverpack/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("A meter next to the tank intake indicates it has [round(reservoir.reagents.total_volume/reservoir.reagents.maximum_volume * 100, 0.1)]% propellant left. You see on a readout:"))
-	to_chat(user, SPAN_BOLDNOTICE(" DISTANCE: [max_distance] METERS <br/> SPEED: [speed] METERS PER SECOND <br/> USAGE: [fuel_multiplier * 100]% PROPELLANT USAGE <br/> COOLDOWN: [hover_cooldown * 0.1] SECONDS"))
+	. += SPAN_NOTICE("A meter next to the tank intake indicates it has [round(reservoir.reagents.total_volume/reservoir.reagents.maximum_volume * 100, 0.1)]% propellant left. You see on a readout:")
+	. += SPAN_BOLDNOTICE(" DISTANCE: [max_distance] METERS <br/> SPEED: [speed] METERS PER SECOND <br/> USAGE: [fuel_multiplier * 100]% PROPELLANT USAGE <br/> COOLDOWN: [hover_cooldown * 0.1] SECONDS")
 
 /obj/item/hoverpack/proc/expend_fuel(var/mob/user) //jesus
 	if(!reservoir.reagents.total_volume)

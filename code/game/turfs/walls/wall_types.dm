@@ -4,7 +4,7 @@
 
 /turf/closed/wall/almayer
 	name = "hull"
-	desc = "A metal wall used to seperate rooms and make up the ship."
+	desc = "A metal wall used to separate rooms and make up the ship."
 	icon = 'icons/turf/walls/almayer.dmi'
 	icon_state = "testwall"
 	walltype = WALL_HULL
@@ -47,13 +47,13 @@
 
 /turf/closed/wall/almayer/reinforced
 	name = "reinforced hull"
-	desc = "A reinforced metal wall used to seperate rooms and make up the ship."
+	desc = "A reinforced metal wall used to separate rooms and make up the ship."
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
 
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
-	desc = "A metal wall used to seperate space from the ship"
+	desc = "A metal wall used to separate space from the ship"
 	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	walltype = WALL_HULL
@@ -93,8 +93,6 @@
 		return
 
 	. = ..()
-
-
 
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
 	if(isXeno(M))
@@ -381,7 +379,7 @@
 
 /turf/closed/wall/mineral/phoron
 	name = "phoron wall"
-	desc = "A wall with phoron plating. This is definately a bad idea."
+	desc = "A wall with phoron plating. This is definitely a bad idea."
 	mineral = "phoron"
 	color = "#9635aa"
 
@@ -563,6 +561,9 @@
 /turf/closed/wall/solaris/reinforced/hull
 	hull = 1
 
+/turf/closed/wall/solaris/reinforced/hull/lv522
+	name = "Colony Windbreaker"
+
 /turf/closed/wall/solaris/rock
 	name = "solaris ridge rock wall"
 	icon_state = "solaris_rock"
@@ -590,7 +591,7 @@
 
 /turf/closed/wall/dev/reinforced/hull
 	name = "greybox hull wall"
-	desc = "Just like in the orange box! This one is indestructable."
+	desc = "Just like in the orange box! This one is indestructible."
 	hull = 1
 
 //KUTJEVO DESERT WALLS / SHARED TRIJENT TILESET
@@ -625,7 +626,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced/hull
 	icon_state = "colonyh"
 	name = "reinforced colony wall"
-	desc = "Dusty worn down walls that were once built to last. This one is indestructable."
+	desc = "Dusty worn down walls that were once built to last. This one is indestructible."
 	hull = 1
 
 //ICE COLONY, AKA SHIVA'S SNOWBALL TOBLERONE WALLS
@@ -635,7 +636,7 @@
 /turf/closed/wall/shiva/ice
 	name = "black ice sabs"
 	icon_state = "shiva_ice"
-	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The perma frost fluctuates between 20in and 12in during the Summer months."
+	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
 
@@ -943,7 +944,7 @@
 /obj/structure/alien/movable_wall/proc/take_damage(var/damage)
 	health -= damage
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 	else
 		update_icon()
 

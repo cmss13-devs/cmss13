@@ -89,7 +89,14 @@
 	var/plasma_gain = 5
 	var/cooldown_reduction_percentage = 0 // By what % cooldown are reduced by. 1 => No cooldown. Should normally be clamped at 50%
 
+	var/death_fontsize = 3
+
 	var/small_explosives_stun = TRUE // Have to put this here, otherwise it can't be strain specific
+	var/counts_for_slots = TRUE
+	var/counts_for_roundend = TRUE
+	var/refunds_larva_if_banished = TRUE
+	var/shaman_interactive = TRUE // whether shaman abilities affect this xeno
+	var/can_hivemind_speak = TRUE
 
 	// Tackles
 	var/tackle_min = 2
@@ -138,11 +145,12 @@
 	// Progression-related
 	var/age_prefix = ""
 	var/age = 0  //This will track their age level. -1 means cannot age
-	var/max_grown = 200
+	var/show_age_prefix = TRUE
+	var/show_name_numbers = TRUE
+	var/show_only_numbers = FALSE
 	var/evolution_stored = 0 //How much evolution they have stored
 	var/evolution_threshold = 200
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
-	var/amount_grown = 0 // for some fucking reason larva use their own variable here, who knows why
 	var/time_of_birth
 
 	var/pslash_delay = 0
@@ -152,6 +160,7 @@
 	//Naming variables
 	var/caste_type = "Drone"
 	var/nicknumber = 0 //The number after the name. Saved right here so it transfers between castes.
+	var/full_designation = ""
 
 	//This list of inherent verbs lets us take any proc basically anywhere and add them.
 	//If they're not a xeno subtype it might crash or do weird things, like using human verb procs
@@ -215,16 +224,8 @@
 	var/mob/living/carbon/Xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision
 	var/need_weeds = TRUE // Do we need weeds to regen HP?
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
-	var/current_aura = null //"claw", "armor", "regen", "speed"
-	var/frenzy_new = 0 // Tally vars used in Xeno Life() for Pheromones
-	var/warding_new = 0
-	var/recovery_new = 0
-	var/frenzy_aura = 0 //Strength of aura we are affected by. NOT THE ONE WE ARE EMITTING
-	var/warding_aura = 0
-	var/recovery_aura = 0
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
-	var/ignores_pheromones = FALSE // title
 	var/is_zoomed = FALSE
 	var/tileoffset = 0 // Zooming-out related vars
 	var/viewsize = 0
@@ -235,6 +236,16 @@
 	/// The damage dealt by a xeno whenever they take damage near someone
 	var/acid_blood_damage = 25
 	var/nocrit = FALSE
+	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
+
+	var/pounce_distance = 0
+
+	// Life reduction variables.
+	var/life_stun_reduction = -1.5
+	var/life_knockdown_reduction = -1.5
+	var/life_knockout_reduction = -1.5
+	var/life_daze_reduction = -1.5
+	var/life_slow_reduction = -1.5
 
 
 	//////////////////////////////////////////////////////////////////
@@ -276,6 +287,22 @@
 
 	var/icon_xeno
 	var/icon_xenonid
+
+	/////////////////////////////////////////////////////////////////////
+	//
+	//		Phero related vars
+	//
+	//////////////////////////////////////////////////////////////////
+	var/ignores_pheromones = FALSE // title, ignores ALL pheros
+	var/current_aura = null //"claw", "armor", "regen", "speed"
+	var/frenzy_new = 0 // Tally vars used in Xeno Life() for Pheromones
+	var/warding_new = 0
+	var/recovery_new = 0
+	var/frenzy_aura = 0 //Strength of aura we are affected by. NOT THE ONE WE ARE EMITTING
+	var/warding_aura = 0
+	var/recovery_aura = 0
+	var/ignore_aura = FALSE // ignore a specific pherom, input type
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -410,6 +437,14 @@
 		M.Scale(caste.adjust_size_x, caste.adjust_size_y)
 		apply_transform(M)
 
+	if(caste)
+		behavior_delegate = new caste.behavior_delegate_type()
+		behavior_delegate.bound_xeno = src
+		behavior_delegate.add_to_xeno()
+		resin_build_order = caste.resin_build_order
+	else
+		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
+
 	regenerate_icons()
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
 	toggle_xeno_hostilehud()
@@ -422,6 +457,7 @@
 			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
 				if(istype(hide))
 					layer = XENO_HIDING_LAYER
+					hide.button.icon_state = "template_active"
 
 		for(var/obj/item/W in oldXeno.contents) //Drop stuff
 			oldXeno.drop_inv_item_on_ground(W)
@@ -431,20 +467,12 @@
 		if(IS_XENO_LEADER(oldXeno))
 			hive.replace_hive_leader(oldXeno, src)
 
-	if (caste)
-		behavior_delegate = new caste.behavior_delegate_type()
-		behavior_delegate.bound_xeno = src
-		behavior_delegate.add_to_xeno()
-		resin_build_order = caste.resin_build_order
-	else
-		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
-
 	// Only handle free slots if the xeno is not in tdome
 	if(!is_admin_level(z))
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		var/free_slots = LAZYACCESS(hive.free_slots, selected_caste)
 		if(free_slots)
-			hive.free_slots[selected_caste] -= 1
+			hive.free_slots[selected_caste]--
 			var/new_val = LAZYACCESS(hive.used_free_slots, selected_caste) + 1
 			LAZYSET(hive.used_free_slots, selected_caste, new_val)
 
@@ -525,25 +553,24 @@
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
 
-	//Larvas have their own, very weird naming conventions, let's not kick a beehive, not yet
-	if(isXenoLarva(src))
-		return
+	handle_name(in_hive)
 
+/mob/living/carbon/Xenomorph/proc/handle_name(var/datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
-
 		age_xeno()
+	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 	color = in_hive.color
 
-	//Queens have weird, hardcoded naming conventions based on age levels. They also never get nicknumbers
-	if(isXenoPredalien(src))
-		name = "[name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
-	else if(caste)
-		name = "[name_prefix][age_prefix][caste.caste_type] ([name_client_prefix][nicknumber][name_client_postfix])"
+	var/age_display = show_age_prefix ? age_prefix : ""
+	var/name_display = ""
+	if(show_name_numbers)
+		name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
+	name = "[name_prefix][age_display][caste.display_name || caste.caste_type][name_display]"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -562,7 +589,7 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
 	if(hud_used)
-		var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+		var/atom/movable/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
 		screenobj.update_icon(src)
 
 /mob/living/carbon/Xenomorph/proc/set_lighting_alpha(var/level)
@@ -574,7 +601,7 @@
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
-	var/obj/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
+	var/atom/movable/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
 	screenobj.update_icon(src)
 
 /mob/living/carbon/Xenomorph/proc/get_vision_level()
@@ -586,52 +613,49 @@
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)
 			return XENO_VISION_LEVEL_NO_NVG
 
-/mob/living/carbon/Xenomorph/examine(mob/user)
-	..()
+/mob/living/carbon/Xenomorph/get_examine_text(mob/user)
+	. = ..()
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
-		to_chat(user, desc)
-		return
+		return list(desc)
 
 	if(isXeno(user) && caste && caste.caste_desc)
-		to_chat(user, caste.caste_desc)
+		. += caste.caste_desc
 
 	if(l_hand)
-		to_chat(user, "It's holding[l_hand.get_examine_line()] in its left hand.")
+		. += "It's holding[l_hand.get_examine_line(user)] in its left hand."
 
 	if(r_hand)
-		to_chat(user, "It's holding[r_hand.get_examine_line()] in its right hand.")
+		. += "It's holding[r_hand.get_examine_line(user)] in its right hand."
 
 	if(stat == DEAD)
-		to_chat(user, "It is DEAD. Kicked the bucket. Off to that great hive in the sky.")
+		. += "It is DEAD. Kicked the bucket. Off to that great hive in the sky."
 	else if(stat == UNCONSCIOUS)
-		to_chat(user, "It quivers a bit, but barely moves.")
+		. += "It quivers a bit, but barely moves."
 	else
 		var/percent = (health / maxHealth * 100)
 		switch(percent)
 			if(95 to 101)
-				to_chat(user, "It looks quite healthy.")
+				. += "It looks quite healthy."
 			if(75 to 94)
-				to_chat(user, "It looks slightly injured.")
+				. += "It looks slightly injured."
 			if(50 to 74)
-				to_chat(user, "It looks injured.")
+				. += "It looks injured."
 			if(25 to 49)
-				to_chat(user, "It bleeds with sizzling wounds.")
+				. += "It bleeds with sizzling wounds."
 			if(1 to 24)
-				to_chat(user, "It is heavily injured and limping badly.")
+				. += "It is heavily injured and limping badly."
 
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/xeno = user
 		if(hivenumber != xeno.hivenumber)
-			to_chat(user, "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive.")
+			. += "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive."
 
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
-			to_chat(user, "It has specialized into a [mutation_type].")
+			. += "It has specialized into a [mutation_type]."
 
 	if(iff_tag)
-		to_chat(user, SPAN_NOTICE("It has an IFF tag sticking out of its carapace."))
-
-	return
+		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
 
 /mob/living/carbon/Xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
@@ -648,7 +672,7 @@
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		var/used_slots = LAZYACCESS(hive.used_free_slots, selected_caste)
 		if(used_slots)
-			hive.used_free_slots[selected_caste] -= 1
+			hive.used_free_slots[selected_caste]--
 			var/new_val = LAZYACCESS(hive.free_slots, selected_caste) + 1
 			LAZYSET(hive.free_slots, selected_caste, new_val)
 
@@ -666,10 +690,6 @@
 
 	QDEL_NULL(mutators)
 	QDEL_NULL(behavior_delegate)
-
-	for(var/i in built_structures)
-		var/list/L = built_structures[i]
-		QDEL_NULL_LIST(L)
 
 	built_structures = null
 
@@ -718,7 +738,7 @@
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
-		puller.KnockDown(rand(caste.tacklestrength_min,caste.tacklestrength_max))
+		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
 		return FALSE
@@ -865,6 +885,7 @@
 	speed = speed_modifier
 	if(caste)
 		speed += caste.speed
+	SEND_SIGNAL(src, COMSIG_XENO_RECALCULATE_SPEED)
 
 /mob/living/carbon/Xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
@@ -954,7 +975,7 @@
 
 /mob/living/carbon/Xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
-	KnockDown(4, TRUE)
+	apply_effect(4, WEAKEN)
 	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 

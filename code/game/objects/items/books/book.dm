@@ -9,6 +9,8 @@
 	throw_range = 5
 	w_class = SIZE_MEDIUM		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
 	attack_verb = list("bashed", "whacked", "educated")
+	pickupsound = "sound/handling/book_pickup.ogg"
+	dropsound = "sound/handling/book_pickup.ogg"
 	var/dat			 // Actual page content
 	var/due_date = 0 // Game time in 1/10th seconds
 	var/author		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned

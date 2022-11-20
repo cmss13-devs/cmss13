@@ -141,7 +141,7 @@
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
 		M.visible_message(SPAN_WARNING("[M] tips over [src]."), \
 			SPAN_NOTICE("You tip over [src]."))
-		KnockDown(30)
+		apply_effect(30, WEAKEN)
 		icon_state = icon_dead
 		spawn(rand(20,50))
 			if(!stat && M)
@@ -232,7 +232,7 @@ var/global/chicken_count = 0
 	icon_dead = "chicken_[body_color]_dead"
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
-	chicken_count += 1
+	chicken_count++
 
 /mob/living/simple_animal/chicken/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -241,7 +241,7 @@ var/global/chicken_count = 0
 
 /mob/living/simple_animal/chicken/death()
 	..()
-	chicken_count -= 1
+	chicken_count--
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)

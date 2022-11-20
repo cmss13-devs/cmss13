@@ -23,7 +23,7 @@
 
 	else
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
+			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
 			return 0
 
 	switch(construct_op)
@@ -89,12 +89,12 @@
 
 						// Drop a circuit board too
 						C.forceMove(user.loc)
+					deconstruct()
 
-					// Create a machine frame and delete the current machine
-					var/obj/structure/machinery/constructable_frame/F = new
-					F.forceMove(src.loc)
-					qdel(src)
-
+/obj/structure/machinery/telecomms/deconstruct(disassembled = TRUE)
+	if(disassembled) // Create a machine frame and delete the current machine
+		new /obj/structure/machinery/constructable_frame(src)
+	return ..()
 
 /obj/structure/machinery/telecomms/attack_remote(var/mob/user as mob)
 	attack_hand(user)
@@ -104,7 +104,7 @@
 	// You need a multitool to use this, or be silicon
 	if(!ishighersilicon(user))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
+			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
 			return
 		// istype returns false if the value is null
 		var/obj/item/held_item = user.get_active_hand()

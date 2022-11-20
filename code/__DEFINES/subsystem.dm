@@ -55,7 +55,7 @@
 #define SS_INIT_GARBAGE            24
 #define SS_INIT_JOB                23
 #define SS_INIT_MAPPING            22
-#define SS_INIT_PLANT              21.5
+#define SS_INIT_NIGHTMARE          21.5
 #define SS_INIT_HUMANS             21
 #define SS_INIT_MAP                20
 #define SS_INIT_COMPONENT          19.5
@@ -155,6 +155,24 @@
 #define INITIALIZE_HINT_LATELOAD   1  //Call LateInitialize
 #define INITIALIZE_HINT_QDEL       2  //Call qdel on the atom
 #define INITIALIZE_HINT_ROUNDSTART 3  //Call LateInitialize on roundstart
+
+//! ### SS initialization hints
+/**
+ * Negative values incidate a failure or warning of some kind, positive are good.
+ * 0 and 1 are unused so that TRUE and FALSE are guarenteed to be invalid values.
+ */
+
+/// Subsystem failed to initialize entirely. Print a warning, log, and disable firing.
+#define SS_INIT_FAILURE -2
+
+/// The default return value which must be overriden. Will succeed with a warning.
+#define SS_INIT_NONE -1
+
+/// Subsystem initialized sucessfully.
+#define SS_INIT_SUCCESS 2
+
+/// Successful, but don't print anything. Useful if subsystem was disabled.
+#define SS_INIT_NO_NEED 3
 
 // SS runlevels
 

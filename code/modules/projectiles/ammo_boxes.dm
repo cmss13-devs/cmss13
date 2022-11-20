@@ -17,6 +17,10 @@
 	SetLuminosity(0)
 	. = ..()
 
+/obj/item/ammo_box/proc/unfold_box(turf/T)
+	new /obj/item/stack/sheet/cardboard(T)
+	qdel(src)
+
 //---------------------FIRE HANDLING PROCS
 /obj/item/ammo_box/flamer_fire_act(var/severity, var/datum/cause_data/flame_cause_data)
 	if(burning)
@@ -89,35 +93,36 @@
 		overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
 	if(overlay_ammo_type)
 		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]")	//adding base color stripes
+	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank")
 		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	//adding base color stripes
 
 //---------------------INTERACTION PROCS
 
-/obj/item/ammo_box/magazine/examine(mob/living/user)
-	..()
-	to_chat(user, SPAN_INFO("[SPAN_HELPFUL("Activate")] box in hand or [SPAN_HELPFUL("click")] with it on the ground to deploy it. Activating it while empty will fold it into cardboard sheet."))
+/obj/item/ammo_box/magazine/get_examine_text(mob/living/user)
+	. = ..()
+	. += SPAN_INFO("[SPAN_HELPFUL("Activate")] box in hand or [SPAN_HELPFUL("click")] with it on the ground to deploy it. Activating it while empty will fold it into cardboard sheet.")
 	if(src.loc != user)		//feeling box weight in a distance is unnatural and bad
 		return
 	if(!handfuls)
 		if(contents.len < (num_of_magazines/3))
-			to_chat(user, SPAN_INFO("It feels almost empty."))
+			. += SPAN_INFO("It feels almost empty.")
 			return
 		if(contents.len < ((num_of_magazines*2)/3))
-			to_chat(user, SPAN_INFO("It feels about half full."))
+			. += SPAN_INFO("It feels about half full.")
 			return
-		to_chat(user, SPAN_INFO("It feels almost full."))
+		. += SPAN_INFO("It feels almost full.")
 	else
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 		if(AM)
 			if(AM.current_rounds < (AM.max_rounds/3))
-				to_chat(user, SPAN_INFO("It feels almost empty."))
+				. += SPAN_INFO("It feels almost empty.")
 				return
 			if(AM.current_rounds < ((AM.max_rounds*2)/3))
-				to_chat(user, SPAN_INFO("It feels about half full."))
+				. += SPAN_INFO("It feels about half full.")
 				return
-			to_chat(user, SPAN_INFO("It feels almost full."))
+			. += SPAN_INFO("It feels almost full.")
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		. += SPAN_DANGER("It's on fire and might explode!")
 
 /obj/item/ammo_box/magazine/attack_self(mob/living/user)
 	..()
@@ -135,10 +140,6 @@
 				deploy_ammo_box(user, user.loc)
 				return
 	unfold_box(user.loc)
-
-/obj/item/ammo_box/magazine/proc/unfold_box(turf/T)
-	new /obj/item/stack/sheet/cardboard(T)
-	qdel(src)
 
 /obj/item/ammo_box/magazine/proc/deploy_ammo_box(var/mob/living/user, var/turf/T)
 	if(burning)
@@ -769,19 +770,19 @@
 		item_box = null
 		qdel(src)
 
-/obj/structure/magazine_box/examine(mob/user)
-	..()
+/obj/structure/magazine_box/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(src,user) > 2 && !isobserver(user))
 		return
-	to_chat(user, SPAN_INFO("[SPAN_HELPFUL("Click")] on the box with an empty hand to take a magazine out. [SPAN_HELPFUL("Drag")] it onto yourself to pick it up."))
+	. += SPAN_INFO("[SPAN_HELPFUL("Click")] on the box with an empty hand to take a magazine out. [SPAN_HELPFUL("Drag")] it onto yourself to pick it up.")
 	if(item_box.handfuls)
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 		if(AM)
-			to_chat(user, SPAN_INFO("It has roughly [round(AM.current_rounds/5)] handfuls remaining."))
+			. +=  SPAN_INFO("It has roughly [round(AM.current_rounds/5)] handfuls remaining.")
 	else
-		to_chat(user, SPAN_INFO("It has [item_box.contents.len] magazines out of [item_box.num_of_magazines]."))
+		. +=  SPAN_INFO("It has [item_box.contents.len] magazines out of [item_box.num_of_magazines].")
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		. +=  SPAN_DANGER("It's on fire and might explode!")
 
 /obj/structure/magazine_box/attack_hand(mob/living/user)
 	if(burning)
@@ -934,24 +935,20 @@
 
 //---------------------INTERACTION PROCS
 
-/obj/item/ammo_box/rounds/examine(mob/user)
-	..()
-	to_chat(user, SPAN_INFO("To refill a magazine click on the box with it in your hand. Being on [SPAN_HELPFUL("HARM")] intent will fill box from the magazine."))
+/obj/item/ammo_box/rounds/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_INFO("To refill a magazine click on the box with it in your hand. Being on [SPAN_HELPFUL("HARM")] intent will fill box from the magazine.")
 	if(bullet_amount)
-		to_chat(user, "It contains [bullet_amount] round\s.")
+		. +=  "It contains [bullet_amount] round\s."
 	else
-		to_chat(user, "It's empty.")
+		. +=  "It's empty."
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		. += SPAN_DANGER("It's on fire and might explode!")
 
 /obj/item/ammo_box/rounds/attack_self(mob/living/user)
 	..()
 	if(bullet_amount < 1)
 		unfold_box(user.loc)
-
-/obj/item/ammo_box/rounds/proc/unfold_box(turf/T)
-	new /obj/item/stack/sheet/cardboard(T)
-	qdel(src)
 
 /obj/item/ammo_box/rounds/attackby(obj/item/I, mob/user)
 	if(burning)

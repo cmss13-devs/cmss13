@@ -32,9 +32,6 @@
 
 #define COMSIG_GLOB_MOB_LOGIN "!mob_login"
 
-///from /datum/nmcontext/proc/run_steps
-#define COMSIG_GLOB_NIGHTMARE_SETUP_DONE "!nightmare_setup_done"
-
 ///from /datum/controller/subsystem/ticker/PostSetup
 #define COMSIG_GLOB_POST_SETUP "!post_setup"
 
@@ -68,6 +65,8 @@
 #define COMSIG_PARENT_QDELETING "parent_qdeleting"
 /// generic topic handler (usr, href_list)
 #define COMSIG_TOPIC "handle_topic"
+/// from datum ui_act (usr, action)
+#define COMSIG_UI_ACT "COMSIG_UI_ACT"
 
 /// fires on the target datum when an element is attached to it (/datum/element)
 #define COMSIG_ELEMENT_ATTACH "element_attach"
@@ -78,6 +77,10 @@
 
 ///from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
+
+/// generally called before temporary non-parallel animate()s on the atom (animation_duration)
+#define COMSIG_ATOM_TEMPORARY_ANIMATION_START "atom_temp_animate_start"
+
 //from base of atom/movable/onTransitZ(): (old_z, new_z)
 #define COMSIG_MOVABLE_Z_CHANGED "movable_ztransit"
 
@@ -135,10 +138,12 @@
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
 	#define COMPONENT_CANCEL_DEVOUR	(1<<0)
-
 // Reserved for tech trees
 #define COMSIG_MOB_ENTER_TREE "mob_enter_tree"
 	#define COMPONENT_CANCEL_TREE_ENTRY (1<<0)
+/// From base of /mob/proc/set_face_dir(): (newdir)
+#define COMSIG_MOB_SET_FACE_DIR "mob_set_face_dir"
+	#define COMPONENT_CANCEL_SET_FACE_DIR (1<<0)
 
 #define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"
 #define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
@@ -173,7 +178,10 @@
 #define COMSIG_DBLCLICK_ALT "dblclick_alt"
 #define COMSIG_DBLCLICK_CTRL "dblclick_ctrl"
 
+///from base of /mob/Login(): ()
 #define COMSIG_MOB_LOGIN "mob_login"
+///from base of /mob/Logout(): ()
+#define COMSIG_MOB_LOGOUT "mob_logout"
 
 /// From /mob/living/rejuvenate
 #define COMSIG_LIVING_REJUVENATED "living_rejuvenated"
@@ -197,6 +205,11 @@
 
 #define COMSIG_LIVING_SPEAK "living_speak"
 	#define COMPONENT_OVERRIDE_SPEAK (1<<0)
+
+#define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
+#define COMSIG_LIVING_ADJUST_EFFECT "living_adjust_effect"
+#define COMSIG_LIVING_SET_EFFECT "living_set_effect"
+	#define COMPONENT_CANCEL_EFFECT (1<<0)
 
 /// From /obj/item/device/defibrillator/attack
 #define COMSIG_HUMAN_REVIVED "human_revived"
@@ -240,6 +253,11 @@
 
 /// from /mob/living/carbon/Xenomorph/bullet_act(): (list/damagedata)
 #define COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE "xeno_pre_calculate_armoured_damage_projectile"
+
+// from /mob/living/carbon/Xenomorph/proc/gain_health()
+#define COMSIG_XENO_ON_HEAL "xeno_on_heal"
+#define COMSIG_XENO_ON_HEAL_WOUNDS "xeno_on_heal_wounds"
+
 /// from /mob/living/carbon/Xenomorph/apply_armoured_damage(): (list/damagedata)
 #define COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE "xeno_pre_apply_armoured_damage"
 
@@ -300,6 +318,8 @@
 /// From /atom/movable/Move(): (atom/NewLoc)
 #define COMSIG_MOVABLE_PRE_MOVE "movable_pre_move"
 	#define COMPONENT_CANCEL_MOVE (1<<0)
+/// From /turf/open/gm/river/Entered(): (turf/open/gm/river/river, covered)
+#define COMSIG_MOVABLE_ENTERED_RIVER "movable_entered_river"
 
 ///from /obj/item/reagent_container/food/snacks/proc/On_Consume
 #define COMSIG_SNACK_EATEN "snack_eaten"
@@ -401,6 +421,10 @@
 
 /// From /obj/structure/proc/do_climb(var/mob/living/user, mods)
 #define COMSIG_LIVING_CLIMB_STRUCTURE "climb_over_structure"
+/// From /mob/living/Collide(): (atom/A)
+#define COMSIG_LIVING_PRE_COLLIDE "living_pre_collide"
+	#define COMPONENT_LIVING_COLLIDE_HANDLED (1<<0)
+
 /// From /mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)
 //this is a jank way to use signals, but you would need to rework the entire proc otherwise
 #define COMSIG_HUMAN_CARRY "fireman_carry"
@@ -410,9 +434,11 @@
 
 /// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
 #define COMSIG_XENO_ACTION_USED "xeno_action_used"
-
 /// From /mob/living/carbon/Xenomorph/proc/check_blood_splash()
 #define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"
+/// From /mob/living/carbon/Xenomorph/proc/recalculate_speed()
+#define COMSIG_XENO_RECALCULATE_SPEED "xeno_recalculate_speed"
+
 // shuttle
 /// shuttle mode change
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
@@ -440,6 +466,10 @@
 ///from /datum/component/bonus_damage_stack
 #define COMSIG_BONUS_DAMAGE "bonus_damage"
 
+/// Called whenever xeno should stop momentum (when charging)
+#define COMSIG_XENO_STOP_MOMENTUM "xeno_stop_momentum"
+/// Called whenever xeno should resume charge
+#define COMSIG_XENO_START_CHARGING "xeno_start_charging"
 /// from /datum/squad/proc/put_marine_in_squad
 #define COMSIG_SET_SQUAD "set_squad"
 
@@ -455,6 +485,11 @@
 // Sent to remove all sutures.
 #define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"
 
+//from /datum/nmtask/mapload/proc/initialize_boundary_contents()
+#define COMSIG_NIGHTMARE_TAINTED_BOUNDS "nightmare_tainted_bounds"
+//from /datum/nmnode/
+#define COMSIG_NIGHTMARE_APPLYING_NODE "nightmare_applying_node"
+	#define COMPONENT_ABORT_NMNODE (1<<0)
 
 // Used in resin_constructions.dm
 // Checks whether the xeno can build a thick structure regardless of hive weeds

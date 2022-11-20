@@ -41,6 +41,7 @@
 	var/vend_y_offset = 0
 
 	var/list/listed_products = list()
+	var/list/initial_product_count = list()
 
 /*
 Explanation on stat flags:
@@ -95,6 +96,22 @@ IN_USE						used for vending/denying
 			return
 	return
 
+// Vendor Icon Procs
+
+
+GLOBAL_LIST_EMPTY(vending_products)
+
+/obj/structure/machinery/cm_vending/proc/cm_build_inventory(var/list/items, var/name_index=1, var/type_index=3)
+	for (var/list/item in items)
+		// initial item count setup
+		var/item_name = item[name_index]
+		// icon setup
+		var/typepath = item[type_index]
+		if (!item_name || item_name == "" || !typepath)
+			continue
+
+		GLOB.vending_products[typepath] = 1
+
 //get which turf the vendor will dispense its products on.
 /obj/structure/machinery/cm_vending/proc/get_appropriate_vend_turf()
 	var/turf/T = loc
@@ -102,12 +119,11 @@ IN_USE						used for vending/denying
 		T = locate(x + vend_x_offset, y + vend_y_offset, z)
 	return T
 
-/obj/structure/machinery/cm_vending/examine(mob/living/carbon/human/user)
-	..()
+/obj/structure/machinery/cm_vending/get_examine_text(mob/living/carbon/human/user)
+	. = ..()
 
 	if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && hackable)
-		to_chat(user, SPAN_NOTICE("You believe you can hack this one to remove access requirements."))
-		return FALSE
+		. += SPAN_NOTICE("You believe you can hack this one to remove the access requirements.")
 
 /obj/structure/machinery/cm_vending/proc/hack_access(var/mob/user)
 	if(!hackable)
@@ -215,7 +231,7 @@ IN_USE						used for vending/denying
 			return
 		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
+			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
 			flip_back()
 		return
 
@@ -230,29 +246,9 @@ IN_USE						used for vending/denying
 		vend_fail()
 		return
 
-	var/mob/living/carbon/human/H = user
-
-	if(!hacked)
-		if(!allowed(user))
-			to_chat(user, SPAN_WARNING("Access denied."))
-			vend_fail()
-			return
-
-		var/obj/item/card/id/I = H.wear_id
-		if(!istype(I)) //not wearing an ID
-			to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-			vend_fail()
-			return
-
-		if(I.registered_name != H.real_name)
-			to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-			vend_fail()
-			return
-
-		if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-			to_chat(H, SPAN_WARNING("This machine isn't for you."))
-			vend_fail()
-			return
+	var/has_access = can_access_to_vend(user)
+	if (!has_access)
+		return
 
 	user.set_interaction(src)
 	ui_interact(user)
@@ -409,7 +405,6 @@ IN_USE						used for vending/denying
 
 	var/list/data = list(
 		"vendor_name" = name,
-		"theme" = vendor_theme,
 		"show_points" = show_points,
 		"current_m_points" = available_points_to_display,
 		"displayed_records" = display_list,
@@ -446,6 +441,35 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/proc/vend_succesfully()
 	return
 
+/obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, var/display=TRUE)
+	if(!hacked)
+		if(!allowed(user))
+			if(display)
+				to_chat(user, SPAN_WARNING("Access denied."))
+				vend_fail()
+			return FALSE
+
+		var/mob/living/carbon/human/H = user
+		var/obj/item/card/id/I = H.wear_id
+		if(!istype(I))
+			if(display)
+				to_chat(user, SPAN_WARNING("Access denied. No ID card detected"))
+				vend_fail()
+			return FALSE
+
+		if(I.registered_name != user.real_name)
+			if(display)
+				to_chat(user, SPAN_WARNING("Wrong ID card owner detected."))
+				vend_fail()
+			return FALSE
+
+		if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
+			if(display)
+				to_chat(user, SPAN_WARNING("This machine isn't for you."))
+				vend_fail()
+			return FALSE
+	return TRUE
+
 /obj/structure/machinery/cm_vending/proc/vend_fail()
 	stat |= IN_USE
 	if(vend_delay)
@@ -456,6 +480,17 @@ IN_USE						used for vending/denying
 	stat &= ~IN_USE
 	update_icon()
 	return
+
+//-----------TGUI PROCS------------------------
+/obj/structure/machinery/cm_vending/ui_static_data(mob/user)
+	var/list/data = list()
+	data["vendor_name"] = name
+	data["vendor_type"] = "base"
+	data["theme"] = vendor_theme
+	return data
+
+/obj/structure/machinery/cm_vending/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/vending_products))
 
 //------------GEAR VENDORS---------------
 //for special role-related gear
@@ -484,27 +519,9 @@ IN_USE						used for vending/denying
 
 			var/mob/living/carbon/human/H = user
 
-			if(!hacked)
-				if(!allowed(H))
-					to_chat(H, SPAN_WARNING("Access denied."))
-					vend_fail()
-					return
-
-				var/obj/item/card/id/I = H.wear_id
-				if(!istype(I)) //not wearing an ID
-					to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-					vend_fail()
-					return
-
-				if(I.registered_name != H.real_name)
-					to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-					vend_fail()
-					return
-
-				if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-					to_chat(H, SPAN_WARNING("This machine isn't for you."))
-					vend_fail()
-					return
+			var/list/has_access = can_access_to_vend(user)
+			if (!has_access)
+				return
 
 			var/idx=text2num(href_list["vend"])
 
@@ -617,7 +634,6 @@ IN_USE						used for vending/denying
 		var/prod_type = L[3]
 		var/obj/our_item = new prod_type(T)
 		H.put_in_any_hand_if_possible(our_item, disable_warning = TRUE)
-		vending_stat_bump(prod_type, src.type)
 	else
 		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
 		sleep(15)
@@ -637,104 +653,29 @@ IN_USE						used for vending/denying
 	vendor_theme = VENDOR_THEME_USCM
 	show_points = FALSE
 
-/obj/structure/machinery/cm_vending/clothing/Topic(href, href_list)
+/obj/structure/machinery/cm_vending/clothing/Initialize()
 	. = ..()
-	if(.)
-		return
+	cm_build_inventory(get_listed_products(), 1, 3)
 
-	handle_topic(usr, href, href_list)
+/obj/structure/machinery/cm_vending/clothing/proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
+	if(!(vending_human.marine_buy_flags & listed_products[4]))
+		return FALSE
 
-/obj/structure/machinery/cm_vending/clothing/handle_topic(mob/user, href, href_list)
-	if(in_range(src, user) && isturf(loc) && ishuman(user))
-		user.set_interaction(src)
-		if(href_list["vend"])
+	if(listed_products[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
+		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
+		else
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
+		return TRUE
+	if(listed_products[4] == (MARINE_CAN_BUY_COMBAT_R_POUCH|MARINE_CAN_BUY_COMBAT_L_POUCH))
+		if(vending_human.marine_buy_flags & MARINE_CAN_BUY_COMBAT_R_POUCH)
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_R_POUCH
+		else
+			vending_human.marine_buy_flags &= ~MARINE_CAN_BUY_COMBAT_L_POUCH
+		return TRUE
 
-			if(stat & IN_USE)
-				return
-
-			var/mob/living/carbon/human/H = user
-
-			if(!hacked)
-
-				if(!allowed(H))
-					to_chat(H, SPAN_WARNING("Access denied."))
-					vend_fail()
-					return
-
-				var/obj/item/card/id/I = H.wear_id
-				if(!istype(I)) //not wearing an ID
-					to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-					vend_fail()
-					return
-
-				if(I.registered_name != H.real_name)
-					to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-					vend_fail()
-					return
-
-				if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-					to_chat(H, SPAN_WARNING("This machine isn't for you."))
-					vend_fail()
-					return
-
-			var/idx=text2num(href_list["vend"])
-			var/list/topic_listed_products = get_listed_products(user)
-			var/list/L = topic_listed_products[idx]
-			var/cost = L[2]
-
-			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
-				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
-				vend_fail()
-				return
-
-			var/turf/T = get_appropriate_vend_turf()
-			if(T.contents.len > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
-				vend_fail()
-				return
-
-			var/bitf = L[4]
-			if(bitf)
-				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SYNTH))
-					if(H.job != JOB_SYNTH)
-						to_chat(H, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
-						vend_fail()
-						return
-
-			if(use_points)
-				if(use_snowflake_points)
-					if(H.marine_snowflake_points < cost)
-						to_chat(H, SPAN_WARNING("Not enough points."))
-						vend_fail()
-						return
-					else
-						H.marine_snowflake_points -= cost
-				else
-					if(H.marine_points < cost)
-						to_chat(H, SPAN_WARNING("Not enough points."))
-						vend_fail()
-						return
-					else
-						H.marine_points -= cost
-
-			if(L[4])
-				if(H.marine_buy_flags & L[4])
-					if(L[4] == (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH))
-						if(H.marine_buy_flags & MARINE_CAN_BUY_R_POUCH)
-							H.marine_buy_flags &= ~MARINE_CAN_BUY_R_POUCH
-						else
-							H.marine_buy_flags &= ~MARINE_CAN_BUY_L_POUCH
-					else
-						H.marine_buy_flags &= ~L[4]
-				else
-					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
-					vend_fail()
-					return
-
-			vend_succesfully(L, H, T)
-
-		add_fingerprint(user)
-		ui_interact(user) //updates the nanoUI window
+	vending_human.marine_buy_flags &= ~listed_products[4]
+	return TRUE
 
 /obj/structure/machinery/cm_vending/clothing/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
@@ -756,7 +697,6 @@ IN_USE						used for vending/denying
 			prod_type = gloves_type
 
 		var/obj/item/O = new prod_type(loc)
-		vending_stat_bump(prod_type, src.type)
 
 		var/bitf = L[4]
 		if(bitf)
@@ -784,6 +724,214 @@ IN_USE						used for vending/denying
 	stat &= ~IN_USE
 	update_icon()
 	return
+
+/obj/structure/machinery/cm_vending/clothing/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/cm_vending/clothing/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+	if(!can_access_to_vend(user, FALSE))
+		return UI_CLOSE
+
+/obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
+	var/list/data = ..(user)
+	data["vendor_type"] = "clothing"
+	// list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+	var/list/ui_listed_products = get_listed_products(user)
+
+	var/list/ui_categories = list()
+	var/show_points = FALSE
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+
+		var/p_name = myprod[1]					//taking it's name
+		var/p_cost = myprod[2]
+		var/item_ref = myprod[3]
+		var/priority = myprod[5]
+
+		var/result = list()
+		var/obj/item/I = item_ref
+
+		var/is_category = item_ref == null
+
+		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
+		//forming new list with index, name, amount, available or not, color and add it to display_list
+
+		var/display_item = list(
+			"prod_index" = i,
+			"prod_name" = p_name,
+			"prod_available" = TRUE,
+			"prod_color" = priority,
+			"prod_initial" = 0,
+			"prod_icon" = result,
+			"prod_desc" = initial(I.desc),
+			"prod_cost" = p_cost,
+			"image" = imgid
+		)
+
+		show_points = show_points ? show_points : p_cost > 0
+
+		if (is_category == 1)
+			ui_categories += list(list(
+				"name" = p_name,
+				"items" = list()
+			))
+			continue
+
+		if (!LAZYLEN(ui_categories))
+			ui_categories += list(list(
+				"name" = "",
+				"items" = list()
+			))
+		var/last_index = LAZYLEN(ui_categories)
+		var/last_category = ui_categories[last_index]
+		last_category["items"] += list(display_item)
+	data["displayed_categories"] = ui_categories
+	data["show_points"] = show_points
+	return data
+
+/obj/structure/machinery/cm_vending/clothing/ui_data(mob/user)
+	var/list/data = list()
+
+	var/list/ui_listed_products = get_listed_products(user)
+	// list format
+	//	(
+	// 		name: str
+	//		cost
+	//		item reference
+	//		allowed to buy flag
+	//		item priority (mandatory/recommended/regular)
+	//	)
+
+	var/list/stock_values = list()
+
+	var/mob/living/carbon/human/H = user
+	var/buy_flags = NO_FLAGS
+	if(use_snowflake_points)
+		available_points_to_display = H.marine_snowflake_points
+	else if(use_points)
+		available_points_to_display = H.marine_points
+	buy_flags = H.marine_buy_flags
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/prod_available = FALSE
+		var/p_cost = myprod[2]
+		var/avail_flag = myprod[4]
+		if(available_points_to_display >= p_cost && (!avail_flag || buy_flags & avail_flag))
+			prod_available = TRUE
+		stock_values += list(prod_available)
+
+
+	data["stock_listing"] = stock_values
+	data["current_m_points"] = available_points_to_display
+	return data
+
+/obj/structure/machinery/cm_vending/clothing/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/H = usr
+	switch (action)
+		if ("vend")
+			if(stat & IN_USE)
+				return
+
+			var/idx=params["prod_index"]
+
+			var/list/topic_listed_products = get_listed_products(usr)
+			var/list/L = topic_listed_products[idx]
+			var/cost = L[2]
+
+			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
+				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
+				vend_fail()
+				return
+			var/turf/T = get_appropriate_vend_turf(H)
+			if(T.contents.len > 25)
+				to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
+				vend_fail()
+				return TRUE
+			var/bitf = L[4]
+			if(bitf)
+				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SYNTH))
+					if(H.job != JOB_SYNTH)
+						to_chat(H, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
+						vend_fail()
+						return
+
+			if(use_points)
+				if(use_snowflake_points)
+					if(H.marine_snowflake_points < cost)
+						to_chat(H, SPAN_WARNING("Not enough points."))
+						vend_fail()
+						return
+					else
+						H.marine_snowflake_points -= cost
+				else
+					if(H.marine_points < cost)
+						to_chat(H, SPAN_WARNING("Not enough points."))
+						vend_fail()
+						return
+					else
+						H.marine_points -= cost
+
+			if(L[4])
+				if(!handle_vend(L, H))
+					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
+					vend_fail()
+					return
+
+			vend_succesfully(L, H, T)
+		if("cancel")
+			SStgui.close_uis(src)
+			return TRUE
+
+	add_fingerprint(usr)
+
+/obj/structure/machinery/cm_vending/clothing/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "VendingSorted", name)
+		ui.open()
+
+/obj/structure/machinery/cm_vending/clothing/attack_hand(mob/user)
+	if(stat & TIPPED_OVER)
+		if(user.action_busy)
+			return
+		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
+		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
+			flip_back()
+		return
+
+	if(inoperable())
+		return
+
+	if(user.client && user.client.remote_control)
+		tgui_interact(user)
+		return
+
+	if(!ishuman(user))
+		vend_fail()
+		return
+
+	var/has_access = can_access_to_vend(user)
+	if (!has_access)
+		return
+
+	tgui_interact(user)
+
 
 //------------SORTED VENDORS---------------
 //22.06.2019 Modified ex-"marine_selector" system that doesn't use points by Jeser. In theory, should replace all vendors.
@@ -889,109 +1037,160 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
 	populate_product_list(1.2)
+	cm_build_inventory(get_listed_products())
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
 	return
 
-/obj/structure/machinery/cm_vending/sorted/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/cm_vending/sorted/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/cm_vending/sorted/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+	if(!can_access_to_vend(user, FALSE))
+		return UI_CLOSE
+
+/obj/structure/machinery/cm_vending/sorted/attack_hand(mob/user)
+	if(stat & TIPPED_OVER)
+		if(user.action_busy)
+			return
+		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place."))
+		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			user.visible_message(SPAN_NOTICE("[user] rights \the [src]!"),SPAN_NOTICE("You right \the [src]!"))
+			flip_back()
+		return
+
+	if(inoperable())
+		return
+
+	if(user.client && user.client.remote_control)
+		tgui_interact(user)
+		return
 
 	if(!ishuman(user))
+		vend_fail()
 		return
-	var/list/display_list = list()
+
+	var/list/has_access = can_access_to_vend(user)
+	if (!has_access)
+		return
+	tgui_interact(user)
+
+/obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
+	var/list/data = ..(user)
+	data["vendor_type"] = "sorted"
 
 	var/list/ui_listed_products = get_listed_products(user)
-	if(!LAZYLEN(ui_listed_products))	//runtimed for vendors without goods in them
-		to_chat(user, SPAN_WARNING("Vendor wasn't properly initialized, tell an admin!"))
-		return
 
-	for(var/i in 1 to length(ui_listed_products))
+	var/list/ui_categories = list()
+	for (var/i in 1 to length(ui_listed_products))
 		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
 
 		var/p_name = myprod[1]					//taking it's name
 		var/p_amount = myprod[2]				//amount left
-		var/prod_available = FALSE				//checking if it's available
-		if(p_amount > 0)						//checking availability
-			p_name += ": [p_amount]"			//and adding amount to product name so it will appear in "button" in UI
-			prod_available = TRUE
-		else if(p_amount == 0)
-			p_name += ": SOLD OUT"				//Negative numbers (-1) used for categories.
+		var/item_ref = myprod[3]
+		var/prod_available = p_amount > 0		//checking if it's available
+		var/list/initial_vals = initial_product_count
+
+		var/result = list()
+
+		var/initial_amount = initial_vals[p_name]
+		var/is_category = p_amount < 0
+
+		var/imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
+
 
 		//forming new list with index, name, amount, available or not, color and add it to display_list
-		display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_amount" = p_amount, "prod_available" = prod_available, "prod_color" = myprod[4]))
+		var/obj/item/I = item_ref
+		var/display_item = list(
+			"prod_index" = i,
+			"prod_name" = p_name,
+			"prod_available" = prod_available,
+			"prod_color" = myprod[4],
+			"prod_initial" = initial_amount,
+			"prod_icon" = result,
+			"prod_desc" = initial(I.desc),
+			"prod_cost" = 0,
+			"image" = imgid
+		)
 
+		if (is_category == 1)
+			ui_categories += list(list(
+				"name" = p_name,
+				"items" = list()
+			))
+			continue
 
-	var/list/data = list(
-		"vendor_name" = name,
-		"theme" = vendor_theme,
-		"displayed_records" = display_list,
-	)
+		if (!LAZYLEN(ui_categories))
+			ui_categories += list(list(
+				"name" = "",
+				"items" = list()
+			))
+		var/last_index = LAZYLEN(ui_categories)
+		var/last_category = ui_categories[last_index]
+		last_category["items"] += list(display_item)
+	data["displayed_categories"] = ui_categories
+	return data
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+/obj/structure/machinery/cm_vending/sorted/ui_data(mob/user)
+	var/list/data = list()
 
+	var/list/ui_listed_products = get_listed_products(user)
+
+	var/list/ui_categories = list()
+
+	for (var/i in 1 to length(ui_listed_products))
+		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/p_amount = myprod[2]				//amount left
+		ui_categories += list(p_amount)
+	data["stock_listing"] = ui_categories
+	return data
+
+/obj/structure/machinery/cm_vending/sorted/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, ui_key, "cm_vending_sorted.tmpl", name , 600, 700)
-		ui.set_initial_data(data)
+		ui = new(user, src, "VendingSorted", name)
 		ui.open()
-		ui.set_auto_update(0)		//here we need autoupdate because items can be vended by others and are limited
 
-/obj/structure/machinery/cm_vending/sorted/Topic(href, href_list)
+/obj/structure/machinery/cm_vending/sorted/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	if(.)
+		return
 
-	handle_topic(usr, href, href_list)
-
-/obj/structure/machinery/cm_vending/sorted/handle_topic(mob/user, href, href_list)
-	if(in_range(src, user) && isturf(loc) && ishuman(user))
-		user.set_interaction(src)
-		if(href_list["vend"])
-
+	var/mob/living/carbon/human/H = usr
+	switch (action)
+		if ("vend")
 			if(stat & IN_USE)
 				return
+			var/has_access = can_access_to_vend(usr)
+			if (!has_access)
+				return TRUE
 
-			var/mob/living/carbon/human/H = user
-
-			if(!hacked)
-
-				if(!allowed(H))
-					to_chat(H, SPAN_WARNING("Access denied."))
-					vend_fail()
-					return
-
-				var/obj/item/card/id/I = H.wear_id
-				if(!istype(I))
-					to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-					vend_fail()
-					return
-
-				if(I.registered_name != H.real_name)
-					to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-					vend_fail()
-					return
-
-				if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-					to_chat(H, SPAN_WARNING("This machine isn't for you."))
-					vend_fail()
-					return
-
-			var/idx=text2num(href_list["vend"])
-			var/list/topic_listed_products = get_listed_products(user)
+			var/idx=params["prod_index"]
+			var/list/topic_listed_products = get_listed_products(usr)
 			var/list/L = topic_listed_products[idx]
 
 			var/turf/T = get_appropriate_vend_turf(H)
 			if(T.contents.len > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
+				to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
 				vend_fail()
-				return
+				return TRUE
 
 			if(L[2] <= 0)	//to avoid dropping more than one product when there's
-				to_chat(H, SPAN_WARNING("[L[1]] is out of stock."))
+				to_chat(usr, SPAN_WARNING("[L[1]] is out of stock."))
 				vend_fail()
-				return		// one left and the player spam click during a lagspike.
+				return TRUE		// one left and the player spam click during a lagspike.
 
 			vend_succesfully(L, H, T)
+		if ("cancel")
+			SStgui.close_uis(src)
+			return TRUE
 
-		add_fingerprint(user)
-		ui_interact(user) //updates the nanoUI window
+	add_fingerprint(usr)
+	return TRUE
 
 /obj/structure/machinery/cm_vending/sorted/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
@@ -1010,7 +1209,6 @@ IN_USE						used for vending/denying
 			new prod_path(T, TRUE)
 		else
 			new prod_path(T)
-		vending_stat_bump(prod_path, src.type)
 		L[2]--		//taking 1 from amount of products in vendor
 
 	else
@@ -1108,34 +1306,16 @@ IN_USE						used for vending/denying
 			if(stat & IN_USE)
 				return
 
-			var/mob/living/carbon/human/H = usr
-
-			if(!hacked)
-				if(!allowed(H))
-					to_chat(H, SPAN_WARNING("Access denied."))
-					vend_fail()
-					return
-
-				var/obj/item/card/id/I = H.wear_id
-				if(!istype(I)) //not wearing an ID
-					to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-					vend_fail()
-					return
-
-				if(I.registered_name != H.real_name)
-					to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-					vend_fail()
-					return
-
-				if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-					to_chat(H, SPAN_WARNING("This machine isn't for you."))
-					vend_fail()
-					return
+			var/list/has_access = can_access_to_vend(usr)
+			if (!has_access)
+				return
 
 			var/idx=text2num(href_list["vend"])
 			var/list/topic_listed_products = get_listed_products(usr)
 			var/list/L = topic_listed_products[idx]
 			var/cost = L[2]
+
+			var/mob/living/carbon/human/H = usr
 
 			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
 				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
@@ -1175,7 +1355,6 @@ IN_USE						used for vending/denying
 			sleep(vend_delay)
 		var/prod_type = L[3]
 		new prod_type(T)
-		vending_stat_bump(prod_type, src.type)
 	else
 		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
 		sleep(15)

@@ -80,6 +80,11 @@
 	. += ""
 	. += "Security Level: [uppertext(get_security_level())]"
 
+	if(species?.has_species_tab_items)
+		var/list/species_tab_items = species.get_status_tab_items(src)
+		for(var/tab_item in species_tab_items)
+			. += tab_item
+
 	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
 
@@ -101,7 +106,7 @@
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)
-			. += eta_status
+			. += "Evacuation: [eta_status]"
 
 /mob/living/carbon/human/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
 	if(lying)
@@ -117,18 +122,18 @@
 
 	damage = armor_damage_reduction(GLOB.marine_explosive, damage, getarmor(null, ARMOR_BOMB))
 
-	last_damage_data = cause_data
+	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
 	if(damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
-		gib(cause_data)
-		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, cause_data)
+		gib(last_damage_data)
+		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, last_damage_data)
 		sleep(1)
-		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, cause_data)
-		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, cause_data)
+		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, last_damage_data)
+		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
 
-	if(!get_type_in_ears(/obj/item/clothing/ears/earmuffs))
+	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
@@ -136,10 +141,10 @@
 	if(knockdown_value > 0)
 		var/obj/item/Item1 = get_active_hand()
 		var/obj/item/Item2 = get_inactive_hand()
-		KnockDown(knockdown_value)
+		apply_effect(knockdown_value, WEAKEN)
 		var/knockout_value = min( round( damage*0.1  ,1) ,10)
-		KnockOut( knockout_value )
-		Daze( knockout_value*2 )
+		apply_effect( knockout_value , PARALYZE)
+		apply_effect( knockout_value*2 , DAZE)
 		explosion_throw(severity, direction)
 
 		if(Item1 && isturf(Item1.loc))
@@ -156,8 +161,9 @@
 	var/update = 0
 
 	//Focus half the blast on one organ
+	var/mob/attack_source = last_damage_data?.resolve_mob()
 	var/obj/limb/take_blast = pick(limbs)
-	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = cause_data.resolve_mob())
+	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
 	pain.apply_pain(b_loss * 0.5, BRUTE)
 	pain.apply_pain(f_loss * 0.5, BURN)
 
@@ -189,7 +195,7 @@
 				limb_multiplier = 0.05
 			if("l_arm")
 				limb_multiplier = 0.05
-		update |= temp.take_damage(b_loss * limb_multiplier, f_loss * limb_multiplier, used_weapon = weapon_message, attack_source = cause_data.resolve_mob())
+		update |= temp.take_damage(b_loss * limb_multiplier, f_loss * limb_multiplier, used_weapon = weapon_message, attack_source = attack_source)
 		pain.apply_pain(b_loss * limb_multiplier, BRUTE)
 		pain.apply_pain(f_loss * limb_multiplier, BURN)
 	if(update)
@@ -312,19 +318,13 @@
 //gets paygrade from ID
 //paygrade is a user's actual rank, as defined on their ID.  size 1 returns an abbreviation, size 0 returns the full rank name, the third input is used to override what is returned if no paygrade is assigned.
 /mob/living/carbon/human/proc/get_paygrade(size = 1)
-	if(!species)
+	var/obj/item/card/id/id = wear_id
+	if(!species || !istype(id))
 		return ""
-
-	switch(species.name)
-		if("Human","Human Hero")
-			var/obj/item/card/id/id = wear_id
-			if(istype(id))
-				. = get_paygrades(id.paygrade, size, gender)
-		else
-			return ""
+	return species.handle_paygrades(id.paygrade, size, gender)
 
 
-//repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere
+//repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
 /mob/living/carbon/human/proc/get_visible_name()
 	if(wear_mask && (wear_mask.flags_inv_hide & HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
 		return get_id_name("Unknown")
@@ -716,7 +716,7 @@
 			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
-						for(var/datum/data/record/R in GLOB.data_core.medical)
+						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
 									to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
@@ -744,7 +744,7 @@
 			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
-						for(var/datum/data/record/R in GLOB.data_core.medical)
+						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
 									read = 1
@@ -770,7 +770,7 @@
 			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
-						for(var/datum/data/record/R in GLOB.data_core.medical)
+						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
 									var/t1 = strip_html(input("Add Comment:", "Med. records", null, null)  as message)
@@ -807,25 +807,6 @@
 			to_chat(usr, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
 		update_targeted()
 
-	if(href_list["scanreport"])
-		if(hasHUD(usr,"medical"))
-			if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
-				return
-			if(!has_species(src, "Human"))
-				to_chat(usr, SPAN_WARNING("This only works on humans."))
-				return
-			if(get_dist(usr, src) > 7)
-				to_chat(usr, SPAN_WARNING("[src] is too far away."))
-				return
-
-			var/me_ref = WEAKREF(src)
-			for(var/datum/data/record/R in GLOB.data_core.medical)
-				if(R.fields["ref"] == me_ref)
-					if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
-						show_browser(usr, R.fields["last_scan_result"], "Medical Scan Report", "scanresults", "size=430x600")
-					break
-
 	if(href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
 		if(istype(I))
@@ -854,8 +835,45 @@
 				flavor_texts[href_list["flavor_change"]] = msg
 				set_flavor()
 				return
+
+	if(href_list["scanreport"])
+		if(hasHUD(usr,"medical"))
+			if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
+				return
+			if(!has_species(src, "Human"))
+				to_chat(usr, SPAN_WARNING("This only works on humans."))
+				return
+			if(get_dist(usr, src) > 7)
+				to_chat(usr, SPAN_WARNING("[src] is too far away."))
+				return
+
+			var/me_ref = WEAKREF(src)
+			for(var/datum/data/record/R as anything in GLOB.data_core.medical)
+				if(R.fields["ref"] == me_ref)
+					if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
+						tgui_interact(usr)
+					break
 	..()
 	return
+
+/mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui) // I'M SORRY, SO FUCKING SORRY
+	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "HealthScan", "Last Medical Scan of [src]")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
+/mob/living/carbon/human/ui_data(mob/user)
+	var/me_ref = WEAKREF(src)
+	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
+		if(R.fields["ref"] == me_ref)
+			if(R.fields["last_tgui_scan_result"])
+				return R.fields["last_tgui_scan_result"]
+
+/mob/living/carbon/human/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
 
 ///get_eye_protection()
 ///Returns a number between -1 to 2
@@ -915,7 +933,7 @@
 		addtimer(CALLBACK(src, .proc/do_vomit), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
-	Stun(5)
+	apply_effect(5, STUN)
 	if(stat == 2) //One last corpse check
 		return
 	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
@@ -979,12 +997,12 @@
 
 /mob/living/carbon/human/proc/is_lung_ruptured()
 	var/datum/internal_organ/lungs/L = internal_organs_by_name["lungs"]
-	return L && L.is_bruised()
+	return L && L.organ_status >= ORGAN_BRUISED
 
 /mob/living/carbon/human/proc/rupture_lung()
 	var/datum/internal_organ/lungs/L = internal_organs_by_name["lungs"]
 
-	if(L && !L.is_bruised())
+	if(L && !L.organ_status >= ORGAN_BRUISED)
 		src.custom_pain("You feel a stabbing pain in your chest!", 1)
 		L.damage = L.min_bruised_damage
 
@@ -1204,6 +1222,8 @@
 
 
 /mob/living/carbon/human/proc/vomit_on_floor()
+	if(stat)
+		return
 	var/turf/T = get_turf(src)
 	visible_message(SPAN_DANGER("[src] vomits on the floor!"), null, null, 5)
 	nutrition -= 20
@@ -1260,13 +1280,18 @@
 		if(TRACKER_XO)
 			H = GLOB.marine_leaders[JOB_XO]
 			tracking_suffix = "_xo"
+		if(TRACKER_CL)
+			var/datum/job/civilian/liaison/liaison_job = RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
+			if(liaison_job?.active_liaison)
+				H = liaison_job.active_liaison
+			tracking_suffix = "_cl"
 		else
 			if(tracker_setting in squad_leader_trackers)
 				var/datum/squad/S = RoleAuthority.squads_by_type[squad_leader_trackers[tracker_setting]]
 				H = S.squad_leader
 				tracking_suffix = tracker_setting
 
-	if(!H)
+	if(!H || H.w_uniform?.sensor_mode != SENSOR_MODE_LOCATION)
 		return
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
@@ -1331,7 +1356,7 @@
 		tint_level = VISION_IMPAIR_STRONG
 
 	if(tint_level)
-		overlay_fullscreen("tint", /obj/screen/fullscreen/impaired, tint_level)
+		overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, tint_level)
 		return TRUE
 	else
 		clear_fullscreen("tint", 0)
@@ -1433,7 +1458,7 @@
 					W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
 					W.add_fingerprint(HS)
 					for(var/obj/limb/l in to_splint)
-						amount_removed += 1
+						amount_removed++
 						l.status &= ~LIMB_SPLINTED
 						pain.recalculate_pain()
 						if(l.status & LIMB_SPLINTED_INDESTRUCTIBLE)
@@ -1486,6 +1511,9 @@
 /mob/living/carbon/human/synthetic/combat/Initialize(mapload)
 	. = ..(mapload, SYNTH_COMBAT)
 
+/mob/living/carbon/human/synthetic/infiltrator/Initialize(mapload)
+	. = ..(mapload, SYNTH_INFILTRATOR)
+
 /mob/living/carbon/human/synthetic/first/Initialize(mapload)
 	. = ..(mapload, SYNTH_GEN_ONE)
 
@@ -1496,13 +1524,13 @@
 /mob/living/carbon/human/resist_fire()
 	if(isYautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		KnockDown(1, TRUE) // actually 0.5
+		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		KnockDown(4, TRUE)
+		apply_effect(4, WEAKEN)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
@@ -1519,12 +1547,12 @@
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
 	if(isYautja(src))
-		KnockDown(1, TRUE)
+		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
 	else
-		KnockDown(1.5, TRUE)
+		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)

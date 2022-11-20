@@ -57,7 +57,7 @@
 
 	start_on_spawn = FALSE
 
-/obj/effect/overlay/temp/point/Initialize(mapload, var/mob/M)
+/obj/effect/overlay/temp/point/Initialize(mapload, var/mob/M, atom/actual_pointed_atom)
 	. = ..()
 	var/turf/T1 = loc
 	var/turf/T2 = M.loc
@@ -69,7 +69,10 @@
 		pixel_x = dist_x * 32
 		pixel_y = dist_y * 32
 
-		animate(src, pixel_x = 0, pixel_y = 0, time = glide_time, easing = QUAD_EASING)
+		var/offset_x = actual_pointed_atom?.pixel_x || 0
+		var/offset_y = actual_pointed_atom?.pixel_y || 0
+
+		animate(src, pixel_x = offset_x, pixel_y = offset_y, time = glide_time, easing = QUAD_EASING)
 
 	QDEL_IN(src, effect_duration + glide_time)
 
@@ -191,10 +194,10 @@
 /obj/effect/overlay/temp/laser_target/ex_act(severity) //immune to explosions
 	return
 
-/obj/effect/overlay/temp/laser_target/examine()
-	..()
-	if(ishuman(usr))
-		to_chat(usr, SPAN_DANGER("It's a laser to designate artillery targets, get away from it!"))
+/obj/effect/overlay/temp/laser_target/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += SPAN_DANGER("It's a laser to designate artillery targets, get away from it!")
 
 
 //used to show where dropship ordnance will impact.

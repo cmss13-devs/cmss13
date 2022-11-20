@@ -139,9 +139,9 @@
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 
-/obj/item/clothing/glasses/science/examine(mob/user)
+/obj/item/clothing/glasses/science/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_INFO("While wearing them, you can examine items to see their reagent contents."))
+	. += SPAN_INFO("While wearing them, you can examine items to see their reagent contents.")
 
 /obj/item/clothing/glasses/kutjevo
 	name = "kutjevo goggles"
@@ -190,7 +190,7 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/threedglasses
-	desc = "A long time ago, people used these glasses to makes images from screens threedimensional."
+	desc = "A long time ago, people used these glasses to makes images from screens three-dimensional."
 	name = "3D glasses"
 	icon_state = "3d"
 	item_state = "3d"
@@ -383,7 +383,20 @@
 	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
 	icon_state = "mgoggles"
 	prescription = TRUE
-	flags_equip_slot = SLOT_EYES|SLOT_FACE
+
+/obj/item/clothing/glasses/mgoggles/black
+	name = "black marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has black tinted lenses."
+	icon_state = "mgogglesblk"
+	active_icon_state = "mgogglesblk_down"
+	inactive_icon_state = "mgogglesblk"
+
+/obj/item/clothing/glasses/mgoggles/orange
+	name = "orange marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
+	icon_state = "mgogglesorg"
+	active_icon_state = "mgogglesorg_down"
+	inactive_icon_state = "mgogglesorg"
 
 /obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
 	..()
@@ -518,8 +531,8 @@
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
-	name = "sunglasses"
+	desc = "Generic off-brand eyewear, used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
+	name = "cheap sunglasses"
 	icon_state = "sun"
 	item_state = "sunglasses"
 	darkness_view = -1
@@ -539,8 +552,8 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/sunglasses/big
-	name = "shades"
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks many flashes."
+	name = "\improper BiMex personal shades"
+	desc = "These are an expensive pair of BiMex sunglasses. This brand is popular with USCM foot sloggers because its patented mirror refraction has been said to offer protection from atomic flash, solar radiation, and targeting lasers. To top it all off, everyone seems to know a guy who knows a guy who knows a guy that had a laser pistol reflect off of his shades. BiMex came into popularity with the Marines after its 'Save the Colonies and Look Cool Doing It' ad campaign."
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE

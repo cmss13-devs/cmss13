@@ -65,21 +65,6 @@
 	containername = "M2 Night Vission Goggles Crate"
 	group = "Operations"
 
-/datum/supply_packs/contraband
-	randomised_num_contained = 5
-	contains = list(
-					/obj/item/seeds/bloodtomatoseed,
-					/obj/item/storage/pill_bottle/happy,
-					/obj/item/reagent_container/food/drinks/bottle/pwine
-					)
-
-	name = "contraband crate"
-	cost = RO_PRICE_NORMAL
-	containertype = /obj/structure/closet/crate/supply
-	containername = "unlabeled crate"
-	contraband = 1
-	group = "Operations"
-
 /datum/supply_packs/ob_incendiary
 	contains = list(
 		/obj/structure/ob_ammo/ob_fuel,
@@ -167,6 +152,7 @@
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/supply
+	buyable = 0
 	containername = "replacement telecommunications crate"
 	group = "Operations"
 

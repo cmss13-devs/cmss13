@@ -23,7 +23,7 @@
 
 /obj/item/clothing/head/that
 	name = "top-hat"
-	desc = "It's an amish looking hat."
+	desc = "It's an Amish-looking hat."
 	icon_state = "tophat"
 	item_state = "that"
 	siemens_coefficient = 0.9

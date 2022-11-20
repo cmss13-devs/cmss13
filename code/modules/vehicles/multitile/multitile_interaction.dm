@@ -20,9 +20,6 @@
 
 	// Are we trying to repair the frame?
 	if(iswelder(O) || HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
 		handle_repairs(O, user)
 		return
 
@@ -264,7 +261,7 @@
 
 	//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 	if(X.frenzy_aura > 0)
-		damage += (X.frenzy_aura * 2)
+		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 	X.animation_attack_on(src)
 
@@ -341,7 +338,7 @@
 			seat = vehicle_seat
 			break
 
-	if(istype(A, /obj/screen) || !seat)
+	if(istype(A, /atom/movable/screen) || !seat)
 		return
 
 	if(seat == VEHICLE_DRIVER)

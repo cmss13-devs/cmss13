@@ -3,12 +3,12 @@
 
 /datum/hud/robot/New(mob/living/silicon/robot/owner)
 	..()
-	var/obj/screen/using
+	var/atom/movable/screen/using
 
 	ui_robot_datum = GLOB.custom_huds_list[HUD_ROBOT]
 
 //Radio
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "radio"
 	using.setDir(SOUTHWEST)
 	using.icon = ui_robot_datum.ui_style_icon
@@ -20,7 +20,7 @@
 
 //Module select
 
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "module1"
 	using.setDir(SOUTHWEST)
 	using.icon = ui_robot_datum.ui_style_icon
@@ -31,7 +31,7 @@
 	owner.inv1 = using
 	static_inventory += using
 
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "module2"
 	using.setDir(SOUTHWEST)
 	using.icon = ui_robot_datum.ui_style_icon
@@ -42,7 +42,7 @@
 	owner.inv2 = using
 	static_inventory += using
 
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "module3"
 	using.setDir(SOUTHWEST)
 	using.icon = ui_robot_datum.ui_style_icon
@@ -56,14 +56,14 @@
 //End of module select
 
 //Intent
-	using = new /obj/screen/act_intent()
+	using = new /atom/movable/screen/act_intent()
 	using.icon = ui_robot_datum.ui_style_icon
 	using.icon_state = "intent_"+ intent_text(owner.a_intent)
 	static_inventory += using
 	action_intent = using
 
 //Cell
-	owner.cells = new /obj/screen()
+	owner.cells = new /atom/movable/screen()
 	owner.cells.icon = ui_robot_datum.ui_style_icon
 	owner.cells.icon_state = "charge-empty"
 	owner.cells.name = "cell"
@@ -71,13 +71,13 @@
 	infodisplay += owner.cells
 
 //Health
-	healths = new /obj/screen/healths()
+	healths = new /atom/movable/screen/healths()
 	healths.icon = ui_robot_datum.ui_style_icon
 	healths.screen_loc = ui_robot_datum.ui_borg_health
 	infodisplay += healths
 
 //Installed Module
-	owner.hands = new /obj/screen()
+	owner.hands = new /atom/movable/screen()
 	owner.hands.icon = ui_robot_datum.ui_style_icon
 	owner.hands.icon_state = "nomod"
 	owner.hands.name = "module"
@@ -85,7 +85,7 @@
 	static_inventory += owner.hands
 
 //Module Panel
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "panel"
 	using.icon = ui_robot_datum.ui_style_icon
 	using.icon_state = "panel"
@@ -94,7 +94,7 @@
 	static_inventory += using
 
 //Store
-	module_store_icon = new /obj/screen()
+	module_store_icon = new /atom/movable/screen()
 	module_store_icon.icon = ui_robot_datum.ui_style_icon
 	module_store_icon.icon_state = "store"
 	module_store_icon.name = "store"
@@ -102,42 +102,42 @@
 	static_inventory += module_store_icon
 
 //Temp
-	bodytemp_icon = new /obj/screen/bodytemp()
+	bodytemp_icon = new /atom/movable/screen/bodytemp()
 	bodytemp_icon.screen_loc = ui_robot_datum.ui_borg_temp
 	infodisplay += bodytemp_icon
 
-	oxygen_icon = new /obj/screen/oxygen()
+	oxygen_icon = new /atom/movable/screen/oxygen()
 	oxygen_icon.icon = ui_robot_datum.ui_style_icon
 	oxygen_icon.screen_loc = ui_robot_datum.UI_OXYGEN_LOC
 	infodisplay += oxygen_icon
 
-	pull_icon = new /obj/screen/pull()
+	pull_icon = new /atom/movable/screen/pull()
 	pull_icon.icon = ui_robot_datum.ui_style_icon
 	pull_icon.screen_loc = ui_robot_datum.ui_borg_pull
 	static_inventory += pull_icon
 
-	zone_sel = new /obj/screen/zone_sel/robot()
+	zone_sel = new /atom/movable/screen/zone_sel/robot()
 	zone_sel.screen_loc = ui_robot_datum.ui_zonesel
 	zone_sel.update_icon(owner)
 	static_inventory += zone_sel
 
 	//Handle the gun settings buttons
-	gun_setting_icon = new /obj/screen/gun/mode()
+	gun_setting_icon = new /atom/movable/screen/gun/mode()
 	gun_setting_icon.screen_loc = ui_robot_datum.ui_gun_select
 	gun_setting_icon.update_icon(owner)
 	static_inventory += gun_setting_icon
 
-	gun_item_use_icon = new /obj/screen/gun/item()
+	gun_item_use_icon = new /atom/movable/screen/gun/item()
 	gun_item_use_icon.screen_loc = ui_robot_datum.ui_gun1
 	gun_item_use_icon.update_icon(owner)
 	static_inventory += gun_item_use_icon
 
-	gun_move_icon = new /obj/screen/gun/move()
+	gun_move_icon = new /atom/movable/screen/gun/move()
 	gun_move_icon.screen_loc = ui_robot_datum.ui_gun2
 	gun_move_icon.update_icon(owner)
 	static_inventory +=	gun_move_icon
 
-	gun_run_icon = new /obj/screen/gun/run()
+	gun_run_icon = new /atom/movable/screen/gun/run()
 	gun_run_icon.screen_loc = ui_robot_datum.ui_gun3
 	gun_run_icon.update_icon(owner)
 	static_inventory +=	gun_run_icon

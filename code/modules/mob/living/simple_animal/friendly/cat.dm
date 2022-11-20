@@ -1,6 +1,7 @@
 //Cat
 /mob/living/simple_animal/cat
 	name = "cat"
+	real_name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
 	icon_state = "cat2"
 	icon_living = "cat2"
@@ -113,6 +114,7 @@
 
 /mob/living/simple_animal/cat/Jones
 	name = "Jones"
+	real_name = "Jones"
 	desc = "A tough, old stray whose origin no one seems to know."
 	icon_state = "cat2"
 	icon_living = "cat2"

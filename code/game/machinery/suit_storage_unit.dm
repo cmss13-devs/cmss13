@@ -5,7 +5,7 @@
 
 /obj/structure/machinery/suit_storage_unit
 	name = "Suit Storage Unit"
-	desc = "An industrial U-Stor-It Storage unit designed to accomodate all kinds of space suits. Its on-board equipment also allows the user to decontaminate the contents through a UV-ray purging cycle. There's a warning label dangling from the control pad, reading \"STRICTLY NO BIOLOGICALS IN THE CONFINES OF THE UNIT\"."
+	desc = "An industrial U-Stor-It Storage unit designed to accommodate all kinds of space suits. Its on-board equipment also allows the user to decontaminate the contents through a UV-ray purging cycle. There's a warning label dangling from the control pad, reading \"STRICTLY NO BIOLOGICALS IN THE CONFINES OF THE UNIT\"."
 	icon = 'icons/obj/structures/machinery/suitstorage.dmi'
 	icon_state = "closed" //order is: [has helmet][has suit][has human][is open][is locked][is UV cycling][is powered][is dirty/broken] [is superUVcycling]
 	anchored = TRUE
@@ -73,11 +73,11 @@
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				dump_everything()
-				qdel(src)
+				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(prob(50))
 				dump_everything() //So suits dont survive all the time
-			qdel(src)
+			deconstruct(FALSE)
 
 
 /obj/structure/machinery/suit_storage_unit/attack_hand(mob/user)

@@ -58,7 +58,8 @@
 
 	var/cleared_amount = 0
 	for(var/i in built_structures[type])
-		cleared_amount += 1
+		cleared_amount++
+		built_structures[type] -= i
 		if(isturf(i))
 			var/turf/T = i
 			T.ScrapeAway()
@@ -97,7 +98,7 @@
 
 /mob/living/carbon/Xenomorph/verb/middle_mouse_toggle()
 	set name = "Toggle Middle/Shift Clicking"
-	set desc = "Toggles between using middle mouse click and shift click for selected abilitiy use."
+	set desc = "Toggles between using middle mouse click and shift click for selected ability use."
 	set category = "Alien"
 
 	if (!client || !client.prefs)

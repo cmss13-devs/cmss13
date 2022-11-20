@@ -125,6 +125,8 @@
 #define TRAIT_FOREIGN_BIO "t_foreign_bio"
  /// Eye color changes on intent. (G1 Synths)
 #define TRAIT_INTENT_EYES "t_intent_eyes"
+ /// Masked synthetic biology. Basic medHUDs will percieve the mob as human. (Infiltrator Synths)
+#define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
 
 // HIVE TRAITS
  /// If the Hive is a Xenonid Hive
@@ -145,10 +147,16 @@
 #define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
  /// If the mob is affected by drag delay.area
 #define TRAIT_DEXTROUS "t_dextrous"
+ /// If the mob is currently charging (xeno only)
+#define TRAIT_CHARGING "t_charging"
  /// If the mob has leadership abilities (giving orders).
 #define TRAIT_LEADERSHIP "t_leadership"
  /// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
+ /// If the mob is being lazed by a sniper spotter
+#define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
+ /// If the mob has ear protection. Protects from external ear damage effects. Includes explosions, firing the RPG, screeching DEAFNESS only, and flashbangs.
+#define TRAIT_EAR_PROTECTION "t_ear_protection"
 
 // -- ability traits --
  /// Xenos with this trait cannot have plasma transfered to them
@@ -213,3 +221,5 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_ATTACHMENT(slot) "t_s_attachment_[slot]"
  ///Status trait coming from ability
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
+ ///Status trait forced by the xeno action charge
+#define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"

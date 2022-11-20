@@ -20,7 +20,7 @@
 
 /obj/item/stock_parts/console_screen
 	name = "console screen"
-	desc = "Used in the construction of computers and other devices with a interactive console."
+	desc = "Used in the construction of computers and other devices with an interactive console."
 	icon_state = "screen"
 
 	matter = list("glass" = 200)
@@ -105,7 +105,7 @@
 
 /obj/item/stock_parts/capacitor/super
 	name = "super capacitor"
-	desc = "A super-high capacity capacitor used in the construction of a variety of devices."
+	desc = "A super-high-capacity capacitor used in the construction of a variety of devices."
 
 	rating = 3
 	matter = list("metal" = 50,"glass" = 50)
@@ -153,7 +153,7 @@
 /obj/item/stock_parts/subspace/filter
 	name = "hyperwave filter"
 	icon_state = "hyperwave_filter"
-	desc = "A tiny device capable of filtering and converting super-intense radiowaves."
+	desc = "A tiny device capable of filtering and converting super-intense radio waves."
 
 	matter = list("metal" = 30,"glass" = 10)
 
@@ -181,7 +181,7 @@
 /obj/item/stock_parts/subspace/crystal
 	name = "ansible crystal"
 	icon_state = "ansible_crystal"
-	desc = "A crystal made from pure glass used to transmit laser databursts to subspace."
+	desc = "A crystal made from pure glass used to transmit laser data bursts to subspace."
 
 	matter = list("glass" = 50)
 
@@ -197,7 +197,7 @@
 //Construction Item for the SMES
 /obj/item/stock_parts/smes_coil
 	name = "Superconducting Magnetic Coil"
-	desc = "Heavy duty superconducting magnetic coil, mainly used in construction of SMES units."
+	desc = "Heavy-duty superconducting magnetic coil, mainly used in construction of SMES units."
 	icon_state = "smes_coil"			// Just few icons patched together. If someone wants to make better icon, feel free to do so!
 	w_class = SIZE_LARGE 						// It's LARGE (backpack size)
 	var/ChargeCapacity = 5000000

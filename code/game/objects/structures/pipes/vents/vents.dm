@@ -28,14 +28,14 @@
 	uid = gl_uid
 	gl_uid++
 
-/obj/structure/pipes/vents/examine(mob/user)
-	..()
+/obj/structure/pipes/vents/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(user, src) <= 1)
-		to_chat(user, SPAN_INFO("A small gauge in the corner reads 0.1 L/s; 0W."))
+		. += SPAN_INFO("A small gauge in the corner reads 0.1 L/s; 0W.")
 	else
-		to_chat(user, SPAN_INFO("You are too far away to read the gauge."))
+		. += SPAN_INFO("You are too far away to read the gauge.")
 	if(welded)
-		to_chat(user, SPAN_INFO("It seems welded shut."))
+		. += SPAN_INFO("It seems welded shut.")
 
 /obj/structure/pipes/vents/update_icon(var/safety = 0)
 	if(!check_icon_cache())

@@ -27,9 +27,9 @@
 	max_storage_space = 14
 	storage_flags = STORAGE_FLAGS_DEFAULT^STORAGE_ALLOW_EMPTY
 
-/obj/item/storage/secure/examine(mob/user)
-	..()
-	to_chat(user, "The service panel is [src.open ? "open" : "closed"].")
+/obj/item/storage/secure/get_examine_text(mob/user)
+	. = ..()
+	. += "The service panel is [src.open ? "open" : "closed"]."
 
 /obj/item/storage/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(locked)
@@ -112,7 +112,7 @@
 				if (length(code) > 5)
 					code = "ERROR"
 		add_fingerprint(usr)
-		for(var/mob/M in viewers(1, loc))
+		for(var/mob/M as anything in viewers(1, loc))
 			if ((M.client && M.interactee == src))
 				attack_self(M)
 			return

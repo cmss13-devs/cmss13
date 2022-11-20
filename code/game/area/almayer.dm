@@ -99,7 +99,7 @@
 	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/corporateliason
-	name = "\improper Corporate Liason Office"
+	name = "\improper Corporate Liaison Office"
 	icon_state = "corporatespace"
 	fake_zlevel = 1 // upperdeck
 
@@ -513,7 +513,7 @@
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/living/chapel
-	name = "\improper Chapel"
+	name = "\improper Almayer Chapel"
 	icon_state = "officerrnr"
 	fake_zlevel = 1 // upperdeck
 

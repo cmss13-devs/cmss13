@@ -110,7 +110,9 @@
 		hive.hive_structures_limit[XENO_STRUCTURE_NEST] = 0
 
 	hive.hive_structure_types[XENO_STRUCTURE_NEST] = /datum/construction_template/xenomorph/nest
-	hive.hive_structures_limit[XENO_STRUCTURE_NEST] += 1
+	hive.hive_structures_limit[XENO_STRUCTURE_NEST]++
+
+	xeno_message(SPAN_XENOANNOUNCE("The hive senses that a headhunter has been infected! The thick resin nest is now available in the special structures list!"),hivenumber = hive.hivenumber)
 
 /datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
 	if(gibbed)
@@ -218,3 +220,6 @@
 /datum/species/yautja/handle_on_fire(humanoidmob)
 	. = ..()
 	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))
+
+/datum/species/yautja/handle_paygrades()
+	return ""

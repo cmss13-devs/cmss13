@@ -133,8 +133,8 @@
 			X.y += a
 			Pixel_y %= 32
 
-		X.pixel_x = Pixel_x
-		X.pixel_y = Pixel_y
+		X.pixel_x = Pixel_x + origin.pixel_x
+		X.pixel_y = Pixel_y + origin.pixel_y
 		CHECK_TICK
 
 /obj/effect/ebeam
@@ -187,5 +187,5 @@
 		if(living in blacklistmobs)
 			continue
 		source.beam(living, icon_state="lightning[rand(1,12)]", time = 3, maxdistance = zap_range + 2)
-		living.SetSlowed(2)
+		living.set_effect(2, SLOW)
 		log_attack("[living] was zapped by [source]")

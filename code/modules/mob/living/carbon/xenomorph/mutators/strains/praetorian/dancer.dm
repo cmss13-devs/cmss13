@@ -14,7 +14,7 @@
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/prae_impale,
-		/datum/action/xeno_action/activable/prae_dodge,
+		/datum/action/xeno_action/onclick/prae_dodge,
 		/datum/action/xeno_action/activable/prae_tail_trip,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_dancer

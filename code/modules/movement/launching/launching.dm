@@ -13,7 +13,10 @@
 	// These should only be for CUSTOM procs to invoke when an atom of a specific type is collided with, otherwise will default to using
 	// the appropriate mob/obj/turf collision procs
 	// The callbacks can be standard or dynamic, though dynamic callbacks can only be called by the atom being thrown
-	var/list/collision_callbacks = null
+	var/list/collision_callbacks
+
+	/// A list of callbacks to invoke when the throw completes successfully
+	var/list/end_throw_callbacks
 
 	// Tracked information
 	var/dist = 0
@@ -55,7 +58,7 @@
 
 	var/list/collision_callbacks = launch_metadata.get_collision_callbacks(hit_atom)
 	if (islist(collision_callbacks))
-		for(var/datum/callback/CB in collision_callbacks)
+		for(var/datum/callback/CB as anything in collision_callbacks)
 			if(istype(CB, /datum/callback/dynamic))
 				CB.Invoke(src, hit_atom)
 			else
@@ -198,3 +201,9 @@
 		rebounding = FALSE
 		cur_speed = old_speed
 		remove_temp_pass_flags(pass_flags)
+		if(length(LM.end_throw_callbacks))
+			for(var/datum/callback/CB as anything in LM.end_throw_callbacks)
+				if(istype(CB, /datum/callback/dynamic))
+					CB.Invoke(src)
+				else
+					CB.Invoke()

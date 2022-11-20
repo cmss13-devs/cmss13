@@ -53,20 +53,20 @@
 				src.density = 0
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 		else
 	return
 
-/obj/structure/machinery/optable/examine(mob/user)
-	..()
+/obj/structure/machinery/optable/get_examine_text(mob/user)
+	. = ..()
 	if(get_dist(user, src) > 2 && !isobserver(user))
 		return
 	if(anes_tank)
-		to_chat(user, SPAN_INFO("It has an [anes_tank] connected with the gauge showing [round(anes_tank.pressure,0.1)] kPa."))
+		. += SPAN_INFO("It has an [anes_tank] connected with the gauge showing [round(anes_tank.pressure,0.1)] kPa.")
 
 /obj/structure/machinery/optable/attack_hand(mob/living/user)
 	if(buckled_mob)

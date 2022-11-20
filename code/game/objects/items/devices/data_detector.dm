@@ -18,10 +18,9 @@
 		/obj/item/limb/head/synth,
 	)
 
-/obj/item/device/motiondetector/examine()
+/obj/item/device/motiondetector/get_examine_text(mob/user)
 	. = ..()
-	var/msg = "Green indicators on your HUD will show the location of intelligence objects detected by the scanner. Has two modes: slow long-range [SPAN_HELPFUL("14 tiles)")] and fast short-range [SPAN_HELPFUL("(7 tiles)")]."
-	to_chat(usr, SPAN_INFO(msg))
+	. += SPAN_INFO("Green indicators on your HUD will show the location of intelligence objects detected by the scanner. Has two modes: slow long-range [SPAN_HELPFUL("(14 tiles)")] and fast short-range [SPAN_HELPFUL("(7 tiles)")].")
 
 /obj/item/device/motiondetector/intel/update_icon()
 	if (active)

@@ -4,7 +4,7 @@
 	var/list/soundscape_playlist 	= list() //Updated on changing areas
 	var/ambience 					= null //The file currently being played as ambience
 	var/status_flags 				= 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
-
+	var/list/echo
 /datum/soundOutput/New(client/C)
 	if(!C)
 		qdel(src)
@@ -22,7 +22,7 @@
 	S.frequency = T.frequency
 	S.falloff = T.falloff
 	S.status = T.status
-
+	S.echo = T.echo
 	if(T.x && T.y && T.z)
 		var/turf/owner_turf = get_turf(owner.mob)
 		if(owner_turf)
@@ -31,7 +31,7 @@
 				var/datum/interior/VI = GLOB.interior_manager.get_interior_by_coords(owner_turf.x, owner_turf.y)
 				if(VI && VI.exterior)
 					var/turf/candidate = get_turf(VI.exterior)
-					if(!(candidate.z == T.z))
+					if(candidate.z != T.z)
 						return // Invalid location
 					S.falloff /= 2
 					owner_turf = candidate
@@ -39,7 +39,9 @@
 			S.y = 0
 			S.z = T.y - owner_turf.y
 			var/area/A = owner_turf.loc
-			S.environment = owner_turf == owner.mob.loc ? A.sound_environment : SOUND_ENVIRONMENT_BATHROOM
+			S.environment = A.sound_environment
+		S.y += T.y_s_offset
+		S.x += T.x_s_offset
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 

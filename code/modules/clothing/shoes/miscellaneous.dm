@@ -149,7 +149,7 @@
 
 /obj/item/clothing/shoes/snow
 	name = "snow boots"
-	desc = "When you feet are as cold as your heart"
+	desc = "When your feet are as cold as your heart"
 	icon_state = "swat"
 	siemens_coefficient = 0.6
 	flags_cold_protection = BODY_FLAG_FEET

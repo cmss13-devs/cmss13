@@ -303,7 +303,7 @@ SUBSYSTEM_DEF(vote)
 					return FALSE
 				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, .proc/carry_over_callback))
 
-				if(CONFIG_GET(flag/vote_adjustment_callback))
+				if(CONFIG_GET(flag/allow_vote_adjustment_callback))
 					vote_adjustment_callback = CALLBACK(src, .proc/map_vote_adjustment)
 			if("shipmap")
 				question = "Ship map vote"

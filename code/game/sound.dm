@@ -11,10 +11,12 @@
 	var/falloff = 1
 	var/volume_cat = VOLUME_SFX
 	var/range = 0
+	var/list/echo
 	var/x //Map coordinates, not sound coordinates
 	var/y
 	var/z
-
+	var/y_s_offset // Vertical sound offset
+	var/x_s_offset // Horizontal sound offset
 /proc/get_free_channel()
 	var/static/cur_chan = 1
 	. = cur_chan++
@@ -28,11 +30,11 @@
 //freq: the frequency of the sound. Setting it to 1 will assign it a random frequency
 //sound_range: the maximum theoretical range (in tiles) of the sound, by default is equal to the volume.
 //vol_cat: the category of this sound, used in client volume. There are 3 volume categories: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes) and VOLUME_ADM (Admin sounds and some other stuff)
-//channel: use this only when you want to force the sound to play on an specific channel
+//channel: use this only when you want to force the sound to play on a specific channel
 //status: the regular 4 sound flags
 //falloff: max range till sound volume starts dropping as distance increases
 
-/proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1)
+/proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1, echo, y_s_offset,x_s_offset)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return FALSE
@@ -50,7 +52,9 @@
 	S.falloff = falloff
 	S.volume = vol
 	S.volume_cat = vol_cat
-
+	S.echo = echo
+	S.y_s_offset = y_s_offset
+	S.x_s_offset = x_s_offset
 	if(vary != FALSE)
 		if(vary > 1)
 			S.frequency = vary
@@ -95,7 +99,7 @@
 
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
-/proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status)
+/proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
 	if(!istype(C) || !C.soundOutput) return FALSE
 	var/datum/sound_template/S = new()
 	if(origin)
@@ -118,10 +122,13 @@
 	S.volume_cat = vol_cat
 	S.channel = channel
 	S.status = status
+	S.echo = echo
+	S.y_s_offset = y_s_offset
+	S.x_s_offset = x_s_offset
 	SSsound.queue(S, list(C))
 
-//Self explanatory
-/proc/playsound_area(area/A, soundin, vol = 100, channel, status, vol_cat = VOLUME_SFX)
+/// Plays sound to all mobs that are map-level contents of an area
+/proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)
 	if(!isarea(A))
 		return FALSE
 	var/datum/sound_template/S = new()
@@ -145,15 +152,19 @@
 		playsound_client(src, SSticker.login_music, null, 70, 0, VOLUME_LOBBY, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
 
 
-/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX) // Play sound for all online mobs on a given Z-level. Good for ambient sounds.
+/// Play sound for all on-map clients on a given Z-level. Good for ambient sounds.
+/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, echo, y_s_offset, x_s_offset)
 	var/datum/sound_template/S = new()
 	S.file = soundin
 	S.volume = volume
 	S.channel = SOUND_CHANNEL_Z
 	S.volume_cat = vol_cat
+	S.echo = echo
+	S.y_s_offset = y_s_offset
+	S.x_s_offset = x_s_offset
 	var/list/hearers = list()
 	for(var/mob/M in GLOB.player_list)
-		if (M.z in z && M.client.soundOutput)
+		if((M.z in z) && M.client.soundOutput)
 			hearers += M.client
 	SSsound.queue(S, hearers)
 
@@ -164,8 +175,14 @@
 			// General effects
 			if("shatter")
 				S = pick('sound/effects/Glassbr1.ogg','sound/effects/Glassbr2.ogg','sound/effects/Glassbr3.ogg')
+			if("windowshatter") //meaty window shattering sound
+				S = pick('sound/effects/window_shatter1.ogg','sound/effects/window_shatter2.ogg','sound/effects/window_shatter3.ogg')
+			if("glassbreak") //small breaks for bottles/etc.
+				S = pick('sound/effects/glassbreak1.ogg','sound/effects/glassbreak2.ogg','sound/effects/glassbreak3.ogg','sound/effects/glassbreak4.ogg')
 			if("explosion")
-				S = pick('sound/effects/Explosion1.ogg','sound/effects/Explosion2.ogg')
+				S = pick('sound/effects/explosion1.ogg','sound/effects/explosion2.ogg','sound/effects/explosion3.ogg','sound/effects/explosion4.ogg','sound/effects/explosion5.ogg')
+			if("bigboom")
+				S = pick('sound/effects/bigboom1.ogg','sound/effects/bigboom2.ogg','sound/effects/bigboom3.ogg','sound/effects/bigboom4.ogg')
 			if("sparks")
 				S = pick('sound/effects/sparks1.ogg','sound/effects/sparks2.ogg','sound/effects/sparks3.ogg','sound/effects/sparks4.ogg')
 			if("rustle")
@@ -190,9 +207,33 @@
 				S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 			if("swing_hit")
 				S = pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg')
+			if("slam")
+				S = pick('sound/effects/slam1.ogg','sound/effects/slam2.ogg','sound/effects/slam3.ogg')
 			if("pageturn")
 				S = pick('sound/effects/pageturn1.ogg', 'sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg')
+			if("terminal_button")
+				S = pick('sound/machines/terminal_button01.ogg', 'sound/machines/terminal_button02.ogg', 'sound/machines/terminal_button03.ogg','sound/machines/terminal_button04.ogg', 'sound/machines/terminal_button05.ogg', 'sound/machines/terminal_button06.ogg', 'sound/machines/terminal_button07.ogg', 'sound/machines/terminal_button08.ogg')
+			if("keyboard")
+				S = pick('sound/machines/keyboard1.ogg', 'sound/machines/keyboard2.ogg','sound/machines/keyboard3.ogg')
+			if("keyboard_alt")
+				S = pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg')
+			if("gunrustle")
+				S = pick('sound/effects/gunrustle1.ogg', 'sound/effects/gunrustle2.ogg','sound/effects/gunrustle3.ogg')
+			if("gunequip")
+				S = pick('sound/handling/gunequip1.ogg','sound/handling/gunequip2.ogg','sound/handling/gunequip3.ogg')
+			if("shotgunpump")
+				S = pick('sound/weapons/shotgunpump1.ogg','sound/weapons/shotgunpump2.ogg')
+			if("clothingrustle")
+				S = pick('sound/handling/clothingrustle1.ogg', 'sound/handling/clothingrustle2.ogg','sound/handling/clothingrustle3.ogg','sound/handling/clothingrustle4.ogg','sound/handling/clothingrustle5.ogg')
+			if("armorequip")
+				S = pick('sound/handling/armorequip_1.ogg','sound/handling/armorequip_2.ogg')
+			if("pry")
+				S = pick('sound/effects/pry1.ogg', 'sound/effects/pry2.ogg','sound/effects/pry3.ogg','sound/effects/pry4.ogg')
+			if("metalbang")
+				S = pick('sound/effects/thud1.ogg','sound/effects/thud2.ogg','sound/effects/thud3.ogg')
 			// Weapons/bullets
+			if("shell_load")
+				S = pick('sound/weapons/shell_load1.ogg','sound/weapons/shell_load2.ogg','sound/weapons/shell_load3.ogg','sound/weapons/shell_load4.ogg')
 			if("ballistic_hit")
 				S = pick('sound/bullets/bullet_impact1.ogg','sound/bullets/bullet_impact2.ogg','sound/bullets/bullet_impact1.ogg','sound/bullets/impact_flesh_1.ogg','sound/bullets/impact_flesh_2.ogg','sound/bullets/impact_flesh_3.ogg','sound/bullets/impact_flesh_4.ogg')
 			if("ballistic_armor")
@@ -227,6 +268,13 @@
 				S = pick('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
 			if("gun_smartgun_rattle")
 				S = pick('sound/weapons/gun_smartgun1_rattle.ogg', 'sound/weapons/gun_smartgun2_rattle.ogg', 'sound/weapons/gun_smartgun3_rattle.ogg', 'sound/weapons/gun_smartgun4_rattle.ogg')
+			//A:CM gun sounds
+			if("gun_shotgun_tactical")
+				S = pick('sound/weapons/gun_shotgun_tactical_1.ogg','sound/weapons/gun_shotgun_tactical_2.ogg','sound/weapons/gun_shotgun_tactical_3.ogg','sound/weapons/gun_shotgun_tactical_4.ogg')
+			if("m4a3")
+				S = pick('sound/weapons/gun_m4a3_1.ogg','sound/weapons/gun_m4a3_2.ogg','sound/weapons/gun_m4a3_3.ogg','sound/weapons/gun_m4a3_4.ogg','sound/weapons/gun_m4a3_5.ogg')
+			if("88m4")
+				S = pick('sound/weapons/gun_88m4_v7.ogg')
 			if("gun_casing_shotgun")
 				S = pick ('sound/bullets/bulletcasing_shotgun_fall1.ogg')
 			if("gun_nsg23")
@@ -237,10 +285,16 @@
 			// Xeno
 			if("acid_hit")
 				S = pick('sound/bullets/acid_impact1.ogg')
+			if("acid_strike")
+				S = pick('sound/weapons/alien_acidstrike1.ogg','sound/weapons/alien_acidstrike2.ogg')
+			if("acid_sizzle")
+				S = pick('sound/effects/acid_sizzle1.ogg','sound/effects/acid_sizzle2.ogg','sound/effects/acid_sizzle3.ogg','sound/effects/acid_sizzle4.ogg')
+			if("alien_doorpry")
+				S = pick('sound/effects/alien_doorpry1.ogg','sound/effects/alien_doorpry2.ogg')
 			if("acid_bounce")
 				S = pick('sound/bullets/acid_impact1.ogg')
 			if("alien_claw_flesh")
-				S = pick('sound/weapons/alien_claw_flesh1.ogg','sound/weapons/alien_claw_flesh2.ogg','sound/weapons/alien_claw_flesh3.ogg')
+				S = pick('sound/weapons/alien_claw_flesh1.ogg','sound/weapons/alien_claw_flesh2.ogg','sound/weapons/alien_claw_flesh3.ogg','sound/weapons/alien_claw_flesh4.ogg','sound/weapons/alien_claw_flesh5.ogg','sound/weapons/alien_claw_flesh6.ogg')
 			if("alien_claw_metal")
 				S = pick('sound/weapons/alien_claw_metal1.ogg','sound/weapons/alien_claw_metal2.ogg','sound/weapons/alien_claw_metal3.ogg')
 			if("alien_bite")
@@ -268,7 +322,7 @@
 			if("alien_tail_swipe")
 				S = pick('sound/effects/alien_tail_swipe1.ogg','sound/effects/alien_tail_swipe2.ogg','sound/effects/alien_tail_swipe3.ogg')
 			if("alien_help")
-				S = pick('sound/voice/alien_help1.ogg','sound/voice/alien_help2.ogg')
+				S = pick('sound/voice/alien_help1.ogg','sound/voice/alien_help2.ogg','sound/voice/alien_help3.ogg')
 			if("alien_drool")
 				S = pick('sound/voice/alien_drool1.ogg','sound/voice/alien_drool2.ogg')
 			if("alien_roar")
@@ -303,6 +357,8 @@
 				S = pick('sound/voice/cat_meow_1.ogg','sound/voice/cat_meow_2.ogg','sound/voice/cat_meow_3.ogg','sound/voice/cat_meow_4.ogg','sound/voice/cat_meow_5.ogg','sound/voice/cat_meow_6.ogg','sound/voice/cat_meow_7.ogg')
 			if("pred_pain")
 				S = pick('sound/voice/pred_pain1.ogg','sound/voice/pred_pain2.ogg','sound/voice/pred_pain3.ogg','sound/voice/pred_pain4.ogg','sound/voice/pred_pain5.ogg',5;'sound/voice/pred_pain_rare1.ogg')
+			if("clownstep")
+				S = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
 	return S
 
 /client/proc/generate_sound_queues()

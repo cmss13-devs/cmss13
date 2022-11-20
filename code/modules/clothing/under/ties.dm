@@ -229,14 +229,14 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/accessory/medal/examine(mob/user)
-	..()
+/obj/item/clothing/accessory/medal/get_examine_text(mob/user)
+	. = ..()
 
 	var/citation_to_read = ""
 	if(medal_citation)
 		citation_to_read = "The citation reads \'[medal_citation]\'."
 
-	to_chat(user, "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]")
+	. += "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]"
 
 /obj/item/clothing/accessory/medal/bronze
 	name = "bronze medal"
@@ -280,7 +280,7 @@
 
 /obj/item/clothing/accessory/medal/gold/heroism
 	name = MARINE_HEROISM_MEDAL
-	desc = "An extremely rare golden medal awarded only by the USCM. To recieve such a medal is the highest honor and as such, very few exist."
+	desc = "An extremely rare golden medal awarded only by the USCM. To receive such a medal is the highest honor and as such, very few exist."
 
 /obj/item/clothing/accessory/medal/platinum
 	name = "platinum medal"
@@ -345,14 +345,26 @@
 //patches
 /obj/item/clothing/accessory/patch
 	name = "\improper USCM patch"
-	desc = "A fire resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_ROLLED|UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "\improper Falling Falcons patch"
-	desc = "A fire resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
+
+/obj/item/clothing/accessory/poncho
+	name = "USCM Poncho"
+	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."
+	icon_state = "poncho"
+	slot = ACCESSORY_SLOT_PONCHO
+
+/obj/item/clothing/accessory/poncho/Initialize()
+	. = ..()
+	select_gamemode_skin(type)
+	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
+	update_icon()
 
 //Ties that can store stuff
 
@@ -676,7 +688,7 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
 			var/ammo_stored = length(contents)
 			if(current_gun)
-				ammo_stored -= 1
+				ammo_stored--
 			if(ammo_stored >= ammo_slots)
 				if(!stop_messages)
 					to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))

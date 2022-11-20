@@ -10,6 +10,7 @@
 	attack_speed = 3
 	var/heal_brute = 0
 	var/heal_burn = 0
+	var/alien = FALSE
 
 /obj/item/stack/medical/attack_self(mob/user)
 	..()
@@ -26,6 +27,10 @@
 
 	var/mob/living/carbon/human/H = M
 	var/obj/limb/affecting = H.get_limb(user.zone_selected)
+
+	if(HAS_TRAIT(H, TRAIT_FOREIGN_BIO) && !alien)
+		to_chat(user, SPAN_WARNING("\The [src] is incompatible with the biology of [H]!"))
+		return TRUE
 
 	if(!affecting)
 		to_chat(user, SPAN_WARNING("[H] has no [parse_zone(user.zone_selected)]!"))
@@ -192,7 +197,7 @@
 	icon_state = "brute_herbs"
 	heal_brute = 15
 	stack_id = "mending herbs"
-
+	alien = TRUE
 /obj/item/stack/medical/advanced/ointment/predator
 	name = "soothing herbs"
 	singular_name = "soothing herb"
@@ -201,7 +206,7 @@
 	icon_state = "burn_herbs"
 	heal_burn = 15
 	stack_id = "soothing herbs"
-
+	alien = TRUE
 /obj/item/stack/medical/advanced/ointment
 	name = "advanced burn kit"
 	singular_name = "advanced burn kit"

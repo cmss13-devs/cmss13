@@ -30,12 +30,12 @@
 
 
 /turf/open/floor/plating/attackby(obj/item/C, mob/user)
-	if(istype(C, /obj/item/stack/rods))
+	if(istypestrict(C, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = C
 		if(R.get_amount() < 2)
 			to_chat(user, SPAN_WARNING("You need more rods."))
 			return
-		to_chat(user, SPAN_NOTICE("Reinforcing the floor."))
+		to_chat(user, SPAN_NOTICE("You start reinforcing the floor."))
 		var/current_type = type
 		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && current_type == type)
 			if(!R)
@@ -111,6 +111,13 @@
 /turf/open/floor/plating/icefloor/Initialize(mapload, ...)
 	. = ..()
 	name = "plating"
+
+/// Visually like plating+catwalks but without overlaying or interactions - mainly for Reqs Elevator
+/turf/open/floor/plating/bare_catwalk
+	name = "catwalk"
+	desc = "Cats really don't like these things."
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "plating_catwalk"
 
 /turf/open/floor/plating/plating_catwalk
 	name = "catwalk"
@@ -206,7 +213,7 @@
 /turf/open/floor/almayer/empty/is_weedable()
 	return NOT_WEEDABLE
 
-/turf/open/floor/almayer/empty/ex_act(severity) //Should make it indestructable
+/turf/open/floor/almayer/empty/ex_act(severity) //Should make it indestructible
 	return
 
 /turf/open/floor/almayer/empty/fire_act(exposed_temperature, exposed_volume)
@@ -341,7 +348,7 @@
 
 /turf/open/floor/wood/ship
 	name = "fake wooden floor"
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know."
+	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high-pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know."
 	tile_type = /obj/item/stack/tile/wood/fake
 
 /turf/open/floor/vault
@@ -538,7 +545,7 @@
 	icon = 'icons/turf/floors/carpet_manual.dmi'//I dunno man, CM-ified carpet sprites are placed manually and I can't be bothered to write a new system for 'em.
 	icon_state = "single"
 
-////// Mechbay /////////////////:
+// Mechbay
 /turf/open/floor/mech_bay_recharge_floor
 	name = "Mech Bay Recharge Station"
 	icon = 'icons/obj/structures/props/mech.dmi'
@@ -567,7 +574,7 @@
 
 /turf/open/floor/interior/tatami
 	name = "tatami flooring"
-	desc = "A type of flooring often used in traditional japanese-style housing."
+	desc = "A type of flooring often used in traditional Japanese-style housing."
 	icon_state = "tatami"
 
 /turf/open/floor/interior/plastic

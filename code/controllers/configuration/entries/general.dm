@@ -13,6 +13,10 @@ Basics, the most important.
 
 /datum/config_entry/string/resource_url
 
+/datum/config_entry/string/new_round_alert_channel
+
+/datum/config_entry/string/new_round_alert_role_id
+
 /datum/config_entry/flag/hub	// if the game appears on the hub or not
 
 /datum/config_entry/string/wikiurl
@@ -28,10 +32,6 @@ Basics, the most important.
 /datum/config_entry/string/banappeals
 
 /datum/config_entry/string/dburl
-
-/// Shutdown server instead of actually restarting when using /world/Reboot()
-/datum/config_entry/flag/no_restarts
-	config_entry_value = TRUE
 
 /// Server to notify of game events
 /datum/config_entry/string/manager_url
@@ -125,7 +125,7 @@ Administrative related.
 
 /datum/config_entry/flag/allow_admin_ooccolor // Allows admins to customize their OOC color.
 
-/datum/config_entry/flag/vote_adjustment_callback
+/datum/config_entry/flag/allow_vote_adjustment_callback
 
 /datum/config_entry/number/vote_adjustment_callback
 	config_entry_value = 0.1
@@ -184,6 +184,12 @@ Administrative related.
 	config_entry_value = TRUE
 
 /datum/config_entry/flag/show_mods
+	config_entry_value = TRUE
+
+/datum/config_entry/flag/show_devs
+	config_entry_value = TRUE
+
+/datum/config_entry/flag/show_manager
 	config_entry_value = TRUE
 
 /datum/config_entry/flag/looc_enabled

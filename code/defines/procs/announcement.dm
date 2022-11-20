@@ -95,10 +95,6 @@
 		return
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
-		if(!bypass_cooldown && AI.silent_announcement_cooldown >= world.time)
-			continue
-
-		AI.silent_announcement_cooldown = world.time + 10 SECONDS
 		if(channel_prefix)
 			message = "[channel_prefix][message]"
 		INVOKE_ASYNC(AI, /mob/living/silicon/decoy/ship_ai.proc/say, message)

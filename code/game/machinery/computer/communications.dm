@@ -204,7 +204,7 @@
 					return FALSE
 
 				if(security_level == SEC_LEVEL_DELTA)
-					to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
+					to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 					return FALSE
 
 				for(var/client/C in GLOB.admins)
@@ -223,7 +223,7 @@
 
 				//Comment to test
 				if(world.time < DISTRESS_TIME_LOCK)
-					to_chat(usr, SPAN_WARNING("The self destruct cannot be activated this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
+					to_chat(usr, SPAN_WARNING("The self-destruct cannot be activated this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 					return FALSE
 
 				if(!SSticker.mode)
@@ -234,18 +234,18 @@
 					return FALSE
 
 				if(world.time < cooldown_destruct + COOLDOWN_COMM_DESTRUCT)
-					to_chat(usr, SPAN_WARNING("A self destruct request has already been sent to high command. Please wait."))
+					to_chat(usr, SPAN_WARNING("A self-destruct request has already been sent to high command. Please wait."))
 					return FALSE
 
 				if(get_security_level() == "delta")
-					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self destruct is already activated."))
+					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self-destruct is already activated."))
 					return FALSE
 
 				for(var/client/C in GLOB.admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
-				message_staff("[key_name(usr)] has requested Self Destruct! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
-				to_chat(usr, SPAN_NOTICE("A self destruct request has been sent to USCM Central Command."))
+				message_staff("[key_name(usr)] has requested Self-Destruct! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
+				to_chat(usr, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
 				cooldown_destruct = world.time
 				return TRUE
 
@@ -359,7 +359,7 @@
 					dat += GLOB.admins.len > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
 					dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
-					dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self Destruct</A>"
+					dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self-Destruct</A>"
 					switch(EvacuationAuthority.evac_status)
 						if(EVACUATION_STATUS_STANDING_BY) dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
 						if(EVACUATION_STATUS_INITIATING) dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A>"
@@ -377,7 +377,7 @@
 			dat += "Are you sure you want to trigger a distress signal? The signal can be picked up by anyone listening, friendly or not. <A HREF='?src=\ref[src];operation=distress'>Confirm</A>"
 
 		if(STATE_DESTROY)
-			dat += "Are you sure you want to trigger the self destruct? This would mean abandoning ship. <A HREF='?src=\ref[src];operation=destroy'>Confirm</A>"
+			dat += "Are you sure you want to trigger the self-destruct? This would mean abandoning ship. <A HREF='?src=\ref[src];operation=destroy'>Confirm</A>"
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"

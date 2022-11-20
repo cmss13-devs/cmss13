@@ -86,7 +86,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 
 /obj/structure/flora/tree/joshua
 	name = "joshua tree"
-	desc = "A tall tree covered in spiky-like needles, covering it's trunk."
+	desc = "A tall tree covered in spiky-like needles, covering its trunk."
 	icon = 'icons/obj/structures/props/joshuatree.dmi'
 	icon_state = "joshua_1"
 	pixel_x = 0
@@ -206,12 +206,12 @@ ICE GRASS
 
 /obj/structure/flora/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
-		qdel(src)
+		deconstruct(FALSE)
 
-///MAP VARIANTS///
-///PARENT FOR COLOR, CORNERS AND CENTERS, BASED ON DIRECTIONS///
+// MAP VARIANTS //
+// PARENT FOR COLOR, CORNERS AND CENTERS, BASED ON DIRECTIONS //
 
-///TRIJENT - WHISKEY OUTPOST///
+//TRIJENT - WHISKEY OUTPOST//
 /obj/structure/flora/grass/tallgrass/desert
 	//color = COLOR_G_DES
 	icon = 'icons/obj/structures/props/dam.dmi' //Override since the greyscale can't match
@@ -223,7 +223,7 @@ ICE GRASS
 	overlay_type = "tallgrass_overlay_corner"
 	center = FALSE
 
-///ICE COLONY - SOROKYNE///
+//ICE COLONY - SOROKYNE//
 /obj/structure/flora/grass/tallgrass/ice
 	color = COLOR_G_ICE
 	icon_state = "tallgrass"
@@ -234,7 +234,7 @@ ICE GRASS
 	overlay_type = "tallgrass_overlay_corner"
 	center = FALSE
 
-///LV - JUNGLE MAPS///
+//LV - JUNGLE MAPS//
 
 /obj/structure/flora/grass/tallgrass/jungle
 	color = COLOR_G_JUNG

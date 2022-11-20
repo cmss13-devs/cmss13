@@ -338,7 +338,7 @@ What a mess.*/
 
 					if ("Delete Record (ALL) Execute")
 						if (active1)
-							for(var/datum/data/record/R in GLOB.data_core.medical)
+							for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 								if ((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
 									GLOB.data_core.medical -= R
 									qdel(R)

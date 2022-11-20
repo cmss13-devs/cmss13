@@ -97,14 +97,14 @@
 						to_chat(src, SPAN_DANGER("Major electrical distruption detected: System rebooting."))
 						alert = 1
 					if(prob(75))
-						emp_damage -= 1
+						emp_damage--
 				if(20)
 					alert = 0
 					blinded = 0
 					eye_blind = 0
 					SetEarDeafness(0)
 					silent = 0
-					emp_damage -= 1
+					emp_damage--
 				if(11 to 19)//Moderate level of EMP damage, resulting in nearsightedness and ear damage
 					eye_blurry = 1
 					ear_damage = 1
@@ -113,23 +113,23 @@
 						to_chat(src, SPAN_DANGER("Primary systems are now online."))
 						alert = 1
 					if(prob(50))
-						emp_damage -= 1
+						emp_damage--
 				if(10)
 					alert = 0
 					eye_blurry = 0
 					ear_damage = 0
-					emp_damage -= 1
+					emp_damage--
 				if(2 to 9)//Low level of EMP damage, has few effects(handled elsewhere)
 					if(!alert)
 						INVOKE_ASYNC(src, .proc/emote, "notice")
 						to_chat(src, SPAN_DANGER("System reboot nearly complete."))
 						alert = 1
 					if(prob(25))
-						emp_damage -= 1
+						emp_damage--
 				if(1)
 					alert = 0
 					to_chat(src, SPAN_DANGER("All systems restored."))
-					emp_damage -= 1
+					emp_damage--
 
 		//Other
 		if(regular_update)
@@ -161,17 +161,17 @@
 
 	if(stat != DEAD) //the dead get zero fullscreens
 		if(blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 		else
 			clear_fullscreen("blind")
 
 			if(eye_blurry)
-				overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
+				overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
 			else
 				clear_fullscreen("eye_blurry")
 
 			if(druggy)
-				overlay_fullscreen("high", /obj/screen/fullscreen/high)
+				overlay_fullscreen("high", /atom/movable/screen/fullscreen/high)
 			else
 				clear_fullscreen("high")
 

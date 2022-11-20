@@ -89,6 +89,11 @@
 	hud_list = new
 	for(var/hud in hud_possible)
 		var/image/I = image('icons/mob/hud/hud.dmi', src, "")
+		switch(hud)
+			if(ID_HUD,WANTED_HUD)
+				I = image('icons/mob/hud/sec_hud.dmi', src, "")
+			if(HUNTER_CLAN,HUNTER_HUD)
+				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
@@ -133,7 +138,7 @@
 	var/view_dist = 7
 	var/flags = message_flags
 	if(max_distance) view_dist = max_distance
-	for(var/mob/M in viewers(view_dist, src))
+	for(var/mob/M as anything in viewers(view_dist, src))
 		var/msg = message
 		if(self_message && M==src)
 			msg = self_message
@@ -172,7 +177,7 @@
 /atom/proc/visible_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
-	for(var/mob/M in viewers(view_dist, src))
+	for(var/mob/M as anything in viewers(view_dist, src))
 		M.show_message(message, 1, blind_message, 2, message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
@@ -238,10 +243,10 @@
 	var/start_loc = W.loc
 
 	if(W.time_to_equip && !ignore_delay)
-		INVOKE_ASYNC(src, .proc/equip_to_slot_timed, W, slot, redraw_mob, permanent, start_loc)
+		INVOKE_ASYNC(src, .proc/equip_to_slot_timed, W, slot, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
 		return TRUE
 
-	equip_to_slot(W, slot) //This proc should not ever fail.
+	equip_to_slot(W, slot, disable_warning) //This proc should not ever fail.
 	if(permanent)
 		W.flags_inventory |= CANTSTRIP
 		W.flags_item |= NODROP
@@ -254,9 +259,15 @@
 	return TRUE
 
 //This is an UNSAFE proc. It handles situations of timed equips.
-/mob/proc/equip_to_slot_timed(obj/item/W, slot, redraw_mob = 1, permanent = 0, start_loc)
+/mob/proc/equip_to_slot_timed(obj/item/W, slot, redraw_mob = 1, permanent = 0, start_loc, del_on_fail = 0, disable_warning = 0)
 	if(!do_after(src, W.time_to_equip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(src, SPAN_WARNING("You stop putting on \the [W]!"))
+		return
+	if(!W.mob_can_equip(src, slot, disable_warning)) // we have to do these checks again as circumstances may have changed during the do_after
+		if(del_on_fail)
+			qdel(W)
+		else if(!disable_warning)
+			to_chat(src, SPAN_WARNING("You are unable to equip that.")) //Only print if del_on_fail is false
 		return
 	equip_to_slot(W, slot) //This proc should not ever fail.
 	if(permanent)
@@ -271,7 +282,7 @@
 
 //This is an UNSAFE proc. It merely handles the actual job of equipping. All the checks on whether you can or can't eqip need to be done before! Use mob_can_equip() for that task.
 //In most cases you will want to use equip_to_slot_if_possible()
-/mob/proc/equip_to_slot(obj/item/W as obj, slot)
+/mob/proc/equip_to_slot(obj/item/W as obj, slot, disable_warning = FALSE)
 	return
 
 //This is just a commonly used configuration for the equip_to_slot_if_possible() proc, used to equip people when the rounds tarts and when events happen and such.
@@ -281,9 +292,12 @@
 ///Set the lighting plane hud alpha to the mobs lighting_alpha var
 /mob/proc/sync_lighting_plane_alpha()
 	if(hud_used)
-		var/obj/screen/plane_master/lighting/lighting = hud_used.plane_masters["[LIGHTING_PLANE]"]
+		var/atom/movable/screen/plane_master/lighting/lighting = hud_used.plane_masters["[LIGHTING_PLANE]"]
 		if (lighting)
 			lighting.alpha = lighting_alpha
+		var/atom/movable/screen/plane_master/lighting/exterior_lighting = hud_used.plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
+		if (exterior_lighting)
+			exterior_lighting.alpha = min(GLOB.minimum_exterior_lighting_alpha, lighting_alpha)
 
 
 //puts the item "W" into an appropriate slot in a human's inventory
@@ -341,10 +355,10 @@
 	//Squad Leaders and above have reduced cooldown and get a bigger arrow
 	if(check_improved_pointing())
 		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src)
+		new /obj/effect/overlay/temp/point/big(T, src, A)
 	else
 		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T, src)
+		new /obj/effect/overlay/temp/point(T, src, A)
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
 	return TRUE
 
@@ -377,7 +391,6 @@
 			return SPAN_NOTICE("[msg]")
 		else
 			return SPAN_NOTICE("[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
-
 
 /mob/Topic(href, href_list)
 	. = ..()
@@ -518,7 +531,7 @@
 
 
 /mob/proc/show_viewers(message)
-	for(var/mob/M in viewers())
+	for(var/mob/M as anything in viewers())
 		if(!M.stat)
 			to_chat(src, message)
 
@@ -658,6 +671,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 			lying = FALSE
 
 	canmove = !(stunned || frozen)
+	if(!can_crawl && lying)
+		canmove = FALSE
 
 	if(lying_prev != lying)
 		if(lying)
@@ -704,9 +719,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return TRUE
 
 /mob/proc/set_face_dir(var/newdir)
+	if(SEND_SIGNAL(src, COMSIG_MOB_SET_FACE_DIR, newdir) & COMPONENT_CANCEL_SET_FACE_DIR)
+		facedir(newdir)
+		return
+
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if(facedir(newdir))
+	else if (facedir(newdir))
 		flags_atom |= DIRLOCK
 
 
@@ -734,7 +753,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return TRUE
 
 /mob/proc/flash_weak_pain()
-	overlay_fullscreen("pain", /obj/screen/fullscreen/pain, 1)
+	overlay_fullscreen("pain", /atom/movable/screen/fullscreen/pain, 1)
 	clear_fullscreen("pain")
 
 /mob/proc/get_visible_implants(var/class = 0)
@@ -844,33 +863,33 @@ mob/proc/yank_out_object()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
-		AdjustStunned(-1)
+		adjust_effect(-1, STUN)
 	return stunned
 
 /mob/living/proc/handle_dazed()
 	if(dazed)
-		AdjustDazed(-1)
+		adjust_effect(-1, DAZE)
 	return dazed
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
-		AdjustSlowed(-1)
+		adjust_effect(-1, SLOW)
 	return slowed
 
 /mob/living/proc/handle_superslowed()
 	if(superslowed)
-		AdjustSuperslowed(-1)
+		adjust_effect(-1, SUPERSLOW)
 	return superslowed
 
 
-/mob/living/proc/handle_knocked_down()
-	if(knocked_down && client)
+/mob/living/proc/handle_knocked_down(var/bypass_client_check = FALSE)
+	if(knocked_down && (bypass_client_check || client))
 		knocked_down = max(knocked_down-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_down_callback_check()
 	return knocked_down
 
-/mob/living/proc/handle_knocked_out()
-	if(knocked_out && client)
+/mob/living/proc/handle_knocked_out(var/bypass_client_check = FALSE)
+	if(knocked_out && (bypass_client_check || client))
 		knocked_out = max(knocked_out-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_out_callback_check()
 	return knocked_out
@@ -1048,7 +1067,7 @@ mob/proc/yank_out_object()
 
 	if(A)
 		if(ismovableatom(A))
-			//Set the the thing unless it's us
+			//Set the thing unless it's us
 			if(A != src)
 				client.perspective = EYE_PERSPECTIVE
 				client.eye = A

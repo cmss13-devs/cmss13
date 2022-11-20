@@ -7,6 +7,11 @@
 	flags_atom = FPRINT|CONDUCT
 	var/datum/cause_data/cause_data
 
+/obj/item/mortar_shell/Initialize(mapload, ...)
+	. = ..()
+	pixel_y = rand(-6, 6)
+	pixel_x = rand(-7, 7)
+
 /obj/item/mortar_shell/proc/detonate(var/turf/T)
 	forceMove(T)
 
@@ -70,12 +75,12 @@
 	var/fuel_type = "hydrogen"
 	var/locked = FALSE
 
-/obj/item/mortar_shell/custom/examine()
+/obj/item/mortar_shell/custom/get_examine_text(mob/user)
 	. = ..()
 	if(fuel)
-		to_chat(usr, SPAN_NOTICE("Contains fuel."))
+		. += SPAN_NOTICE("Contains fuel.")
 	if(warhead)
-		to_chat(usr, SPAN_NOTICE("Contains a warhead[warhead.has_camera ? " with integrated camera drone." : ""]."))
+		. += SPAN_NOTICE("Contains a warhead[warhead.has_camera ? " with integrated camera drone." : ""].")
 
 /obj/item/mortar_shell/custom/detonate(var/turf/T)
 	if(fuel)

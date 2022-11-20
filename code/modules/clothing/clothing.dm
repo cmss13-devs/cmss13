@@ -1,5 +1,7 @@
 /obj/item/clothing
 	name = "clothing"
+	pickupvol = 40
+	dropvol = 40
 	var/eye_protection = 0 //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
 	var/armor_melee = 0
 	var/armor_bullet = 0
@@ -18,12 +20,12 @@
 	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
 	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
 
-/obj/item/clothing/get_examine_line()
+/obj/item/clothing/get_examine_line(mob/user)
 	. = ..()
 	var/list/ties = list()
 	for(var/obj/item/clothing/accessory/accessory in accessories)
 		if(accessory.high_visibility)
-			ties += "\a [accessory.get_examine_line()]"
+			ties += "\a [accessory.get_examine_line(user)]"
 	if(ties.len)
 		.+= " with [english_list(ties)] attached"
 	if(LAZYLEN(accessories) > ties.len)
@@ -120,6 +122,7 @@
 	icon_state = "earmuffs"
 	item_state = "earmuffs"
 	flags_equip_slot = SLOT_EAR
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
 
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()
@@ -364,9 +367,9 @@
 				desc = initial(desc) + "\nIt is storing \a [stored_item]."
 				break
 
-/obj/item/clothing/equipped(mob/user, slot)
+/obj/item/clothing/equipped(mob/user, slot, silent)
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && slot != WEAR_L_STORE && slot != WEAR_R_STORE  && slot != WEAR_J_STORE) //is it going to an actual clothing slot rather than a pocket, hand, or backpack?
-		if(LAZYLEN(equip_sounds))
+		if(!silent && LAZYLEN(equip_sounds))
 			playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 		if(clothing_traits_active)
 			for(var/trait in clothing_traits)

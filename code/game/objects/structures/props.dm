@@ -18,6 +18,31 @@
 	icon = 'icons/obj/structures/props/drill.dmi'
 	icon_state = "drill"
 	bound_height = 96
+	var/on = FALSE//if this is set to on by default, the drill will start on, doi
+
+/obj/structure/prop/dam/drill/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(isXeno(user))
+		return
+	else if (ishuman(user) && istype(W, /obj/item/tool/wrench))
+		on = !on
+		visible_message("You wrench the controls of \the [src]. The drill jumps to life." , "[user] wrenches the controls of \the [src]. The drill jumps to life.")
+
+		update()
+
+/obj/structure/prop/dam/drill/proc/update()
+	icon_state = "thumper[on ? "-on" : ""]"
+	if(on)
+		SetLuminosity(3)
+		playsound(src, 'sound/machines/turbine_on.ogg')
+	else
+		SetLuminosity(0)
+		playsound(src, 'sound/machines/turbine_off.ogg')
+	return
+
+/obj/structure/prop/dam/drill/Initialize()
+	. = ..()
+	update()
 
 /obj/structure/prop/dam/truck
 	name = "truck"
@@ -72,7 +97,7 @@
 
 /obj/structure/prop/dam/torii
 	name = "torii arch"
-	desc = "A traditional japanese archway, made out of wood, and adorned with lanterns."
+	desc = "A traditional Japanese archway, made out of wood, and adorned with lanterns."
 	icon = 'icons/obj/structures/props/torii.dmi'
 	icon_state = "torii"
 	density = 0
@@ -164,7 +189,7 @@
 
 /obj/structure/prop/dam/gravestone
 	name = "grave marker"
-	desc = "A grave marker, in the traditional japanese style."
+	desc = "A grave marker, in the traditional Japanese style."
 	icon = 'icons/obj/structures/props/props.dmi'
 	icon_state = "gravestone1"
 
@@ -661,7 +686,7 @@
 
 /obj/structure/prop/ice_colony/surveying_device/measuring_device
 	name = "measuring device"
-	desc = "Some sort of doohicky that measures stuff."
+	desc = "Some sort of doohickey that measures stuff."
 	icon_state = "measuring_device"
 
 /obj/structure/prop/ice_colony/dense
@@ -738,6 +763,36 @@
 	name = "M1 pattern festive needle torus"
 	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
 	icon_state = "wreath"
+/obj/structure/prop/vehicles
+	name = "van"
+	desc = "An old van, seems to be broken down."
+	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon_state = "van"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/vehicles/crawler
+	name = "colony crawler"
+	desc = "It is a tread bound crawler used in harsh conditions. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
+	icon_state = "crawler"
+	density = 1
+
+//overhead prop sets
+
+/obj/structure/prop/invuln/overhead
+	layer = ABOVE_FLY_LAYER
+	icon = 'icons/obj/structures/props/overhead_ducting.dmi'
+	icon_state = "flammable_pipe_1"
+
+/obj/structure/prop/invuln/overhead/flammable_pipe
+	name = "dense fuel line"
+	desc = "Likely to be incredibly flammable."
+	density = TRUE
+
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly
+	density = FALSE
 
 
 /obj/structure/prop/static_tank
@@ -748,7 +803,7 @@
 	density = 1
 
 /obj/structure/prop/static_tank/fuel
-	desc = "It contains Decatuxole-Hypospaldirol. A non volatile liquid fuel type that tastes like oranges. Can't really be used for anything outside of atmos-rocket boosters."
+	desc = "It contains Decatuxole-Hypospaldirol. A non-volatile liquid fuel type that tastes like oranges. Can't really be used for anything outside of atmos-rocket boosters."
 	icon_state = "weldtank_old"
 
 /obj/structure/prop/static_tank/water
@@ -894,9 +949,9 @@
 			else
 				inscription = message
 
-/obj/structure/prop/wooden_cross/examine(mob/user)
-	..()
-	to_chat(user, "\"[inscription]\"")
+/obj/structure/prop/wooden_cross/get_examine_text(mob/user)
+	. = ..()
+	. += "There's something carved into it. It reads: \"[inscription]\""
 
 /obj/structure/prop/wooden_cross/attack_hand(mob/user)
 	if(helmet)

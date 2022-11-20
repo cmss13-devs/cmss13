@@ -842,7 +842,7 @@ table tr:first-child th:first-child { border: none;}
 					var/threshold = text2num(href_list["var"])
 					var/list/selected = TLV[env]
 					var/list/thresholds = list("lower bound", "low warning", "high warning", "upper bound")
-					var/newval = tgui_input_number(usr, "Enter [thresholds[threshold]] for [env]", "Alarm triggers", selected[threshold])
+					var/newval = tgui_input_real_number(usr, "Enter [thresholds[threshold]] for [env]", "Alarm triggers", selected[threshold])
 					if (isnull(newval) || ..() || (locked && !isRemoteControlling(usr)))
 						return
 					if (newval<0)
@@ -1019,12 +1019,12 @@ table tr:first-child th:first-child { border: none;}
 	..()
 	update_icon()
 
-/obj/structure/machinery/alarm/examine(mob/user)
-	..()
+/obj/structure/machinery/alarm/get_examine_text(mob/user)
+	. = ..()
 	if (buildstage < 2)
-		to_chat(user, "It is not wired.")
+		. += "It is not wired."
 	if (buildstage < 1)
-		to_chat(user, "The circuit is missing.")
+		. += "The circuit is missing."
 
 
 

@@ -66,7 +66,6 @@
 	busy = FALSE
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	new part_type(get_step(src, SOUTHEAST))
-	vending_stat_bump(part_type, src.type)
 	icon_state = "drone_fab_idle"
 
 /obj/structure/machinery/part_fabricator/ui_act(action, params)
@@ -214,7 +213,8 @@
 	PC.update_icon()
 
 
-/// WARNING: IF YOU DECIDE TO READD THIS, GIVE THE HARDPOINTS POINT COSTS
+// WARNING: IF YOU DECIDE TO READD THIS, GIVE THE HARDPOINTS POINT COSTS
+/// Fabricator for individual tank parts
 /obj/structure/machinery/part_fabricator/tank
 	name = "vehicle part fabricator"
 	desc = "A large automated 3D printer for producing vehicle parts."

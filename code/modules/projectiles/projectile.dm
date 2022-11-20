@@ -65,7 +65,7 @@
 	. = ..(mapload)
 	path = list()
 	permutated = list()
-	weapon_cause_data = cause_data
+	weapon_cause_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 	firer = cause_data?.resolve_mob()
 
 /obj/item/projectile/Destroy()
@@ -178,7 +178,7 @@
 		var/mob/M = firer
 		M.track_shot(weapon_cause_data.cause_name)
 
-	//If we have the the right kind of ammo, we can fire several projectiles at once.
+	//If we have the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		ammo.fire_bonus_projectiles(src)
 
@@ -330,15 +330,12 @@
 	if(firer && T == firer.loc && !is_shrapnel)
 		return FALSE
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
+
+	var/hit_turf = FALSE
 	// Explosive ammo always explodes on the turf of the clicked target
 	// So does ammo that's flagged to always hit the target
 	if(((ammo_flags & AMMO_EXPLOSIVE) || (ammo_flags & AMMO_HITS_TARGET_TURF)) && T == target_turf)
-		ammo.on_hit_turf(T,src)
-
-		if(T && T.loc)
-			T.bullet_act(src)
-
-		return TRUE
+		hit_turf = TRUE
 
 	if(ammo_flags & AMMO_SCANS_NEARBY && proj_dir)
 		//this thing scans depending on dir
@@ -383,7 +380,7 @@
 			return TRUE
 
 	// Empty turf, keep moving
-	if(!T.contents.len)
+	if(!T.contents.len && !hit_turf)
 		return FALSE
 
 	for(var/atom/movable/clone/C in T) //Handle clones if there are any
@@ -402,6 +399,14 @@
 	for(var/mob/living/L in T)
 		if(handle_mob(L))
 			return TRUE
+
+	if(hit_turf)
+		ammo.on_hit_turf(T, src)
+
+		if(T && T.loc)
+			T.bullet_act(src)
+
+		return TRUE
 
 /obj/item/projectile/proc/handle_object(obj/O)
 	// If we've already handled this atom, don't do it again
@@ -448,7 +453,7 @@
 	if((MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && L.stat == DEAD) || (L in permutated))
 		return FALSE
 	permutated |= L
-	if((ammo.flags_ammo_behavior & (AMMO_XENO_ACID|AMMO_XENO_TOX)) && L.stat == DEAD) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
+	if((ammo.flags_ammo_behavior & (AMMO_XENO_ACID|AMMO_XENO_TOX|AMMO_XENO_BONE)) && L.stat == DEAD) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
 		return FALSE
 
 	var/hit_chance = L.get_projectile_hit_chance(src)
@@ -957,6 +962,11 @@
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
 	if(isXeno(P.firer) && ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX)) //Xenomorph shooting spit. Xenos with thumbs and guns can fully FF.
+	if((ammo_flags & AMMO_FLAME) && (src.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE))
+		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
+		return
+
+	if(isXeno(P.firer))
 		var/mob/living/carbon/Xenomorph/X = P.firer
 		if(X.can_not_harm(src))
 			bullet_ping(P)
@@ -1095,7 +1105,7 @@
 	health -= round(P.damage/2)
 	if(health < 0)
 		visible_message(SPAN_WARNING("[src] breaks down!"))
-		destroy()
+		deconstruct()
 	return TRUE
 
 
@@ -1127,13 +1137,8 @@
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P)
 		return
-	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & AMMO_IS_SILENCED)
-		var/hit_msg = "You've been shot in the [parse_zone(P.def_zone)] by [P.name]!"
-		to_chat(src, isXeno(src) ? SPAN_XENODANGER("[hit_msg]"):SPAN_HIGHDANGER("[hit_msg]"))
-	else
-		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
-						SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
+		SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 
 	last_damage_data = P.weapon_cause_data
 	if(P.firer && ismob(P.firer))

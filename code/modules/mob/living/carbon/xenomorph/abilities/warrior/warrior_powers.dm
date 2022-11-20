@@ -94,8 +94,13 @@
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] effortlessly flings [H] to the side!"), SPAN_XENOWARNING("You effortlessly fling [H] to the side!"))
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
-	H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
-	H.apply_effect(weaken_power, WEAKEN)
+	if(stun_power)
+		H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
+	if(weaken_power)
+		H.apply_effect(weaken_power, WEAKEN)
+	if(slowdown)
+		if(H.slowed < slowdown)
+			H.apply_effect(slowdown, SLOW)
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 	shake_camera(H, 2, 1)
 
@@ -171,7 +176,7 @@
 			H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
 		if(isHumanStrict(H))
-			H.Slow(3)
+			H.apply_effect(3, SLOW)
 		if(isYautja(H))
 			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
 		else if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))

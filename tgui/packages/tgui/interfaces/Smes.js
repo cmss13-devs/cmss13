@@ -23,10 +23,10 @@ export const Smes = (props, context) => {
     outputLevelMax,
     outputUsed,
   } = data;
-  const inputState
-    = (capacityPercent >= 100 && 'good') || (inputting && 'average') || 'bad';
-  const outputState
-    = (outputting && 'good') || (charge > 0 && 'average') || 'bad';
+  const inputState =
+    (capacityPercent >= 100 && 'good') || (inputting && 'average') || 'bad';
+  const outputState =
+    (outputting && 'good') || (charge > 0 && 'average') || 'bad';
   return (
     <Window width={340} height={350}>
       <Window.Content>
@@ -53,9 +53,9 @@ export const Smes = (props, context) => {
                 </Button>
               }>
               <Box color={inputState}>
-                {(capacityPercent >= 100 && 'Fully Charged')
-                  || (inputting && 'Charging')
-                  || 'Not Charging'}
+                {(capacityPercent >= 100 && 'Fully Charged') ||
+                  (inputting && 'Charging') ||
+                  'Not Charging'}
               </Box>
             </LabeledList.Item>
             <LabeledList.Item label="Target Input">
@@ -67,7 +67,8 @@ export const Smes = (props, context) => {
                     onClick={() =>
                       act('input', {
                         target: 'min',
-                      })}
+                      })
+                    }
                   />
                   <Button
                     icon="backward"
@@ -75,7 +76,8 @@ export const Smes = (props, context) => {
                     onClick={() =>
                       act('input', {
                         adjust: -10000,
-                      })}
+                      })
+                    }
                   />
                 </Flex.Item>
                 <Flex.Item grow={1} mx={1}>
@@ -90,7 +92,8 @@ export const Smes = (props, context) => {
                     onDrag={(e, value) =>
                       act('input', {
                         target: value * POWER_MUL,
-                      })}
+                      })
+                    }
                   />
                 </Flex.Item>
                 <Flex.Item>
@@ -100,7 +103,8 @@ export const Smes = (props, context) => {
                     onClick={() =>
                       act('input', {
                         adjust: 10000,
-                      })}
+                      })
+                    }
                   />
                   <Button
                     icon="fast-forward"
@@ -108,7 +112,8 @@ export const Smes = (props, context) => {
                     onClick={() =>
                       act('input', {
                         target: 'max',
-                      })}
+                      })
+                    }
                   />
                 </Flex.Item>
               </Flex>
@@ -147,7 +152,8 @@ export const Smes = (props, context) => {
                     onClick={() =>
                       act('output', {
                         target: 'min',
-                      })}
+                      })
+                    }
                   />
                   <Button
                     icon="backward"
@@ -155,7 +161,8 @@ export const Smes = (props, context) => {
                     onClick={() =>
                       act('output', {
                         adjust: -10000,
-                      })}
+                      })
+                    }
                   />
                 </Flex.Item>
                 <Flex.Item grow={1} mx={1}>
@@ -169,7 +176,8 @@ export const Smes = (props, context) => {
                     onDrag={(e, value) =>
                       act('output', {
                         target: value * POWER_MUL,
-                      })}
+                      })
+                    }
                   />
                 </Flex.Item>
                 <Flex.Item>
@@ -179,7 +187,8 @@ export const Smes = (props, context) => {
                     onClick={() =>
                       act('output', {
                         adjust: 10000,
-                      })}
+                      })
+                    }
                   />
                   <Button
                     icon="fast-forward"
@@ -187,7 +196,8 @@ export const Smes = (props, context) => {
                     onClick={() =>
                       act('output', {
                         target: 'max',
-                      })}
+                      })
+                    }
                   />
                 </Flex.Item>
               </Flex>

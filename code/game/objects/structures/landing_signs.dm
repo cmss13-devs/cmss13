@@ -33,7 +33,7 @@
 
 /obj/structure/lz_sign/dam_sign
 	name = "Trijent landing sign"
-	desc = "A large sign that reads 'Trijent mining colony', with half the sign written in japanese.."
+	desc = "A large sign that reads 'Trijent mining colony', with half the sign written in Japanese.."
 	icon = 'icons/obj/structures/props/landing_signs.dmi'
 	icon_state = "dam_sign"
 

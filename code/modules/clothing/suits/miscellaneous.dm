@@ -277,25 +277,22 @@
 	icon_state = "webbing"
 	item_state = "webbing"
 	allowed = list(
-		/obj/item/device/analyzer,
-		/obj/item/device/multitool,
-		/obj/item/device/pipe_painter,
-		/obj/item/device/t_scanner,
-		/obj/item/tool/screwdriver,
-		/obj/item/tool/weldingtool,
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/wrench,
-		/obj/item/clothing/mask/gas,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
-		/obj/item/tool/pen,
-		/obj/item/device/binoculars,
 		/obj/item/tool/crew_monitor,
-		/obj/item/reagent_container/hypospray,
+		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/device/motiondetector,
 	)
 
 //Blue suit jacket toggle
@@ -382,31 +379,31 @@
 
 /obj/item/clothing/under/swimsuit/black
 	name = "black swimsuit"
-	desc = "An oldfashioned black swimsuit."
+	desc = "An old-fashioned black swimsuit."
 	icon_state = "swim_black"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/blue
 	name = "blue swimsuit"
-	desc = "An oldfashioned blue swimsuit."
+	desc = "An old-fashioned blue swimsuit."
 	icon_state = "swim_blue"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/purple
 	name = "purple swimsuit"
-	desc = "An oldfashioned purple swimsuit."
+	desc = "An old-fashioned purple swimsuit."
 	icon_state = "swim_purp"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/green
 	name = "green swimsuit"
-	desc = "An oldfashioned green swimsuit."
+	desc = "An old-fashioned green swimsuit."
 	icon_state = "swim_green"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/red
 	name = "red swimsuit"
-	desc = "An oldfashioned red swimsuit."
+	desc = "An old-fashioned red swimsuit."
 	icon_state = "swim_red"
 	siemens_coefficient = 1
 
@@ -432,25 +429,23 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	allowed = list (
-		/obj/item/device/analyzer,
-		/obj/item/device/multitool,
-		/obj/item/device/pipe_painter,
-		/obj/item/device/t_scanner,
-		/obj/item/tool/screwdriver,
-		/obj/item/tool/weldingtool,
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/wrench,
-		/obj/item/clothing/mask/gas,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
-		/obj/item/tool/pen,
-		/obj/item/device/binoculars,
 		/obj/item/tool/crew_monitor,
-		/obj/item/reagent_container/hypospray,
+		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/device/motiondetector,
 	)
 	min_cold_protection_temperature = T0C
 	siemens_coefficient = 0.7

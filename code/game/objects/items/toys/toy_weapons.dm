@@ -22,51 +22,49 @@
 	attack_verb = list("struck", "pistol whipped", "hit", "bashed")
 	var/bullets = 7.0
 
-	examine(mob/user)
-		desc = "There are [bullets] caps\s left. Looks almost like the real thing! Ages 8 and up."
-		..()
+/obj/item/toy/gun/get_examine_text(mob/user)
+	desc = "There are [bullets] caps\s left. Looks almost like the real thing! Ages 8 and up."
+	return ..()
 
-	attackby(obj/item/toy/gun_ammo/A as obj, mob/user as mob)
-
-		if (istype(A, /obj/item/toy/gun_ammo))
-			if (src.bullets >= 7)
-				to_chat(user, SPAN_NOTICE(" It's already fully loaded!"))
-				return 1
-			if (A.amount_left <= 0)
-				to_chat(user, SPAN_DANGER("There is no more caps!"))
-				return 1
-			if (A.amount_left < (7 - bullets))
-				src.bullets += A.amount_left
-				to_chat(user, SPAN_DANGER("You reload [A.amount_left] caps\s!"))
-				A.amount_left = 0
-			else
-				to_chat(user, SPAN_DANGER("You reload [7 - bullets] caps\s!"))
-				A.amount_left -= 7 - bullets
-				bullets = 7
-			A.update_icon()
-			A.desc = "There are [A.amount_left] caps\s left! Make sure to recycle the box in an autolathe when it gets empty."
+/obj/item/toy/gun/attackby(obj/item/toy/gun_ammo/A as obj, mob/user as mob)
+	if (istype(A, /obj/item/toy/gun_ammo))
+		if (src.bullets >= 7)
+			to_chat(user, SPAN_NOTICE(" It's already fully loaded!"))
 			return 1
-		return
+		if (A.amount_left <= 0)
+			to_chat(user, SPAN_DANGER("There is no more caps!"))
+			return 1
+		if (A.amount_left < (7 - bullets))
+			src.bullets += A.amount_left
+			to_chat(user, SPAN_DANGER("You reload [A.amount_left] caps\s!"))
+			A.amount_left = 0
+		else
+			to_chat(user, SPAN_DANGER("You reload [7 - bullets] caps\s!"))
+			A.amount_left -= 7 - bullets
+			bullets = 7
+		A.update_icon()
+		A.desc = "There are [A.amount_left] caps\s left! Make sure to recycle the box in an autolathe when it gets empty."
+		return 1
 
-	afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-		if (flag)
-			return
-		if (!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
-			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
-			return
-		src.add_fingerprint(user)
-		if (src.bullets < 1)
-			user.show_message(SPAN_DANGER("*click* *click*"), 2)
-			playsound(user, 'sound/weapons/gun_empty.ogg', 15, 1)
-			return
-		playsound(user, 'sound/weapons/Gunshot.ogg', 15, 1)
-		src.bullets--
-		for(var/mob/O in viewers(user, null))
-			O.show_message(SPAN_DANGER("<B>[user] fires a cap gun at [target]!</B>"), 1, SPAN_DANGER("You hear a gunshot"), 2)
+/obj/item/toy/gun/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
+	if (flag)
+		return
+	if (!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
+		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		return
+	src.add_fingerprint(user)
+	if (src.bullets < 1)
+		user.show_message(SPAN_DANGER("*click* *click*"), 2)
+		playsound(user, 'sound/weapons/gun_empty.ogg', 15, 1)
+		return
+	playsound(user, 'sound/weapons/Gunshot.ogg', 15, 1)
+	src.bullets--
+	for(var/mob/O in viewers(user, null))
+		O.show_message(SPAN_DANGER("<B>[user] fires a cap gun at [target]!</B>"), 1, SPAN_DANGER("You hear a gunshot"), 2)
 
 /obj/item/toy/gun_ammo
 	name = "ammo-caps"
-	desc = "There are 7 caps left! Make sure to recyle the box in an autolathe when it gets empty."
+	desc = "There are 7 caps left! Make sure to recycle the box in an autolathe when it gets empty."
 	icon_state = "cap_ammo"
 	w_class = SIZE_TINY
 
@@ -153,7 +151,7 @@
 
 			return
 		else if (bullets == 0)
-			user.KnockDown(5)
+			user.apply_effect(5, WEAKEN)
 			for(var/mob/O in viewers(world_view_size, user))
 				O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), 1)
 
@@ -177,7 +175,7 @@
 			for(var/mob/O in viewers(M, null))
 				if (O.client)
 					O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), 1, SPAN_DANGER("You hear someone fall"), 2)
-			user.KnockDown(5)
+			user.apply_effect(5, WEAKEN)
 		return
 
 /obj/item/toy/crossbow_ammo

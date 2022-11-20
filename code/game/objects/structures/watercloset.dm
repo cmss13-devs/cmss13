@@ -291,12 +291,12 @@
 	..()
 	wash(O)
 	if(ismob(O))
-		mobpresent += 1
+		mobpresent++
 		check_heat(O)
 
 /obj/structure/machinery/shower/Uncrossed(atom/movable/O)
 	if(ismob(O))
-		mobpresent -= 1
+		mobpresent--
 	..()
 
 //Yes, showers are super powerful as far as washing goes.
@@ -499,9 +499,9 @@
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
 				flick("baton_active", src)
-				user.Stun(10)
+				user.apply_effect(10, STUN)
 				user.stuttering = 10
-				user.KnockDown(10)
+				user.apply_effect(10, WEAKEN)
 				if(isrobot(user))
 					var/mob/living/silicon/robot/R = user
 					R.cell.charge -= 20

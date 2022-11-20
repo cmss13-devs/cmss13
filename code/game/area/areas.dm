@@ -10,6 +10,7 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	layer = AREAS_LAYER
+	plane = BLACKNESS_PLANE
 	mouse_opacity = 0
 	invisibility = INVISIBILITY_LIGHTING
 	var/lightswitch = 1
@@ -115,6 +116,8 @@
 
 /// Returns the correct ambience sound track for a client in this area
 /area/proc/get_sound_ambience(client/target)
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src))
+		return SSweather.weather_event_instance.ambience
 	return ambience_exterior
 
 /area/proc/poweralert(var/state, var/obj/source as obj)
@@ -377,9 +380,6 @@
 		var/area/old_area = get_area(OldLoc)
 		if(old_area.master == master)
 			return
-		if(isliving(M))
-			var/mob/living/L = M
-			L.update_weather()
 		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
 	else if(istype(A, /obj/structure/machinery))
 		add_machine(A)
@@ -387,6 +387,9 @@
 /area/Exited(A)
 	if(istype(A, /obj/structure/machinery))
 		remove_machine(A)
+	else if(ismob(A))
+		var/mob/exiting_mob = A
+		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
 /area/proc/add_machine(var/obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)
@@ -430,8 +433,8 @@
 		var/mob/living/carbon/human/H = M
 		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
 			return
-		H.AdjustStunned(5)
-		H.AdjustKnockeddown(5)
+		H.adjust_effect(5, STUN)
+		H.adjust_effect(5, WEAKEN)
 
 	to_chat(M, "Gravity!")
 

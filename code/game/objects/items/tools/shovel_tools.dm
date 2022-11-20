@@ -30,6 +30,7 @@
 		if(DIRT_TYPE_MARS) I.color = "#FF5500"
 		if(DIRT_TYPE_SNOW) I.color = "#EBEBEB"
 		if(DIRT_TYPE_SAND) I.color = "#ab804b"
+		if(DIRT_TYPE_SHALE) I.color = "#1c2142"
 	overlays -= I
 	if(dirt_amt)
 		overlays += I
@@ -38,11 +39,11 @@
 
 
 
-/obj/item/tool/shovel/examine(mob/user)
-	..()
+/obj/item/tool/shovel/get_examine_text(mob/user)
+	. = ..()
 	if(dirt_amt)
 		var/dirt_name = dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"
-		to_chat(user, "It holds [dirt_amt] layer\s of [dirt_name].")
+		. += "It holds [dirt_amt] layer\s of [dirt_name]."
 
 /obj/item/tool/shovel/attack_self(mob/user)
 	..()
@@ -120,6 +121,9 @@
 
 				if(SB.amount < 0) // check if sandbag is used by someone else
 					SB = null
+					continue
+
+				if(dirt_amt <= 0) // check if the user has already used all the dirt
 					continue
 
 				var/dirttransfer_amount = min(SB.amount, dirt_amt)

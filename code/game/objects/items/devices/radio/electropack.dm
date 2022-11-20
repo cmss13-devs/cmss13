@@ -45,14 +45,14 @@
 			if(istype(loc, /mob))
 				attack_self(loc)
 			else
-				for(var/mob/M in viewers(1, src))
+				for(var/mob/M as anything in viewers(1, src))
 					if(M.client)
 						attack_self(M)
 		else
 			if(istype(master.loc, /mob))
 				attack_self(master.loc)
 			else
-				for(var/mob/M in viewers(1, master))
+				for(var/mob/M as anything in viewers(1, master))
 					if(M.client)
 						attack_self(M)
 	else
@@ -76,7 +76,7 @@
 		s.set_up(3, 1, M)
 		s.start()
 
-		M.KnockDown(10)
+		M.apply_effect(10, WEAKEN)
 
 	if(master && wires & 1)
 		master.receive_signal()

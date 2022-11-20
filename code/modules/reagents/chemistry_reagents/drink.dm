@@ -375,7 +375,7 @@
 		if(volume > overdose_critical)
 			M.apply_damage(2, TOX) //Overdose starts getting bad
 			M.make_jittery(10)
-			M.KnockOut(20)
+			M.apply_effect(20, PARALYZE)
 			var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
 			if(prob(10) && E)
 				E.damage += 0.5
@@ -516,9 +516,9 @@
 		data++
 		switch(data)
 			if(51 to 200)
-				M.sleeping += 1
+				M.sleeping++
 			if(201 to INFINITY)
-				M.sleeping += 1
+				M.sleeping++
 				M.apply_damage(2, TOX)
 
 /datum/reagent/gargle_blaster
@@ -609,7 +609,7 @@
 
 /datum/reagent/drink/cold/rewriter
 	name = "Rewriter"
-	description = "The secret of the sanctuary of the Libarian..."
+	description = "The secret of the sanctuary of the Librarian..."
 	id = "rewriter"
 	color = "#485000" // rgb:72, 080, 0
 

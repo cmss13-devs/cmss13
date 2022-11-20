@@ -1,6 +1,6 @@
 /turf/closed/wall/r_wall
 	name = "reinforced wall"
-	desc = "A huge chunk of reinforced metal used to seperate rooms."
+	desc = "A huge chunk of reinforced metal used to separate rooms."
 	icon_state = "r_wall"
 	opacity = 1
 	density = 1
@@ -193,7 +193,7 @@
 
 /turf/closed/wall/r_wall/unmeltable
 	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
+	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	icon_state = "r_wall"
 	walltype = WALL_REINFORCED
 	hull = 1
@@ -241,13 +241,13 @@
 
 /turf/closed/wall/r_wall/prison_unmeltable
 	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
+	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	icon = 'icons/turf/walls/prison.dmi'
 	icon_state = "rwall"
 	walltype = WALL_REINFORCED
 	hull = 1
 
-/turf/closed/wall/r_wall/prison_unmeltable/ex_act(severity) //Should make it indestructable
+/turf/closed/wall/r_wall/prison_unmeltable/ex_act(severity) //Should make it indestructible
 		return
 
 /turf/closed/wall/r_wall/prison_unmeltable/fire_act(exposed_temperature, exposed_volume)
@@ -266,10 +266,10 @@
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable
 	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
+	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	hull = 1
 
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable/ex_act(severity) //Should make it indestructable
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable/ex_act(severity) //Should make it indestructible
 		return
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable/fire_act(exposed_temperature, exposed_volume)

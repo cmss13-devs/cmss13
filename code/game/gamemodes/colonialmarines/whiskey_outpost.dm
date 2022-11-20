@@ -135,7 +135,7 @@
 		if(1)
 			marine_announcement("Our scouts report increased activity in the area and given our intel, we're already preparing for the worst. We're setting up a comms relay to send out a distress call, but we're going to need time while our engineers get everything ready. All other stations should prepare accordingly and maximize combat readiness, effective immediately.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(2)
-			marine_announcement("Captian Naiche here. We've tracked the bulk of enemy forces on the move and [SSmapping.configs[GROUND_MAP].map_name] is likely to be hit before they reach the base. We need you to hold them off while we finish sending the distress call. Expect incoming within a few minutes. Godspeed, [SSmapping.configs[GROUND_MAP].map_name].", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("Captain Naiche here. We've tracked the bulk of enemy forces on the move and [SSmapping.configs[GROUND_MAP].map_name] is likely to be hit before they reach the base. We need you to hold them off while we finish sending the distress call. Expect incoming within a few minutes. Godspeed, [SSmapping.configs[GROUND_MAP].map_name].", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 	if(time <= 2)
 		addtimer(CALLBACK(src, .proc/story_announce, time+1), 3 MINUTES)
@@ -143,7 +143,7 @@
 /datum/game_mode/whiskey_outpost/proc/update_controllers()
 	//Update controllers while we're on this mode
 	if(SSitem_cleanup)
-		//Cleaning stuff more aggresively
+		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
 		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
 		SSitem_cleanup.wait = 1 MINUTES
@@ -268,8 +268,8 @@
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_X_MAJOR
 			if(round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories += 1
-				round_statistics.current_map.total_xeno_majors += 1
+				round_statistics.current_map.total_xeno_victories++
+				round_statistics.current_map.total_xeno_majors++
 
 	else if(finished == 2)
 		log_game("Round end result - marines won")
@@ -281,8 +281,8 @@
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_M_MAJOR
 			if(round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories += 1
-				round_statistics.current_map.total_marine_majors += 1
+				round_statistics.current_map.total_marine_victories++
+				round_statistics.current_map.total_marine_majors++
 
 	else
 		log_game("Round end result - no winners")

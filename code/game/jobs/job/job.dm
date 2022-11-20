@@ -223,29 +223,15 @@
 	if(!istype(M))
 		return
 
-	var/atom/start
-	for(var/i in GLOB.spawns_by_job[type])
-		var/obj/effect/landmark/L = i
-		if(!locate(/mob/living) in L.loc)
-			start = L
-			break
-	if(!start)
-		start = pick(GLOB.latejoin)
-
-	if(!start)
-		CRASH("Something went wrong and theres no unoccupied job spawns for [type] and somehow no latejoin landmarks")
-
-	M.forceMove(get_turf(start))
-
 	if(ishuman(M))
-		var/mob/living/carbon/H = M
-		H.job = title
+		var/mob/living/carbon/human/human = M
+		human.job = title
 
 		var/datum/money_account/A
 		//Give them an account in the database.
 		if(!(flags_startup_parameters & ROLE_NO_ACCOUNT))
-			A = create_account(H.real_name, rand(50,500)*10, null)
-			if(H.mind)
+			A = create_account(human.real_name, rand(50,500)*10, null)
+			if(human.mind)
 				var/remembered_info = ""
 				remembered_info += "<b>Your account number is:</b> #[A.account_number]<br>"
 				remembered_info += "<b>Your account pin is:</b> [A.remote_access_pin]<br>"
@@ -254,34 +240,55 @@
 				if(A.transaction_log.len)
 					var/datum/transaction/T = A.transaction_log[1]
 					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
-				H.mind.store_memory(remembered_info)
-				H.mind.initial_account = A
+				human.mind.store_memory(remembered_info)
+				human.mind.initial_account = A
 
 		var/job_whitelist = title
-		var/whitelist_status = get_whitelist_status(RoleAuthority.roles_whitelist, H.client)
+		var/whitelist_status = get_whitelist_status(RoleAuthority.roles_whitelist, human.client)
 
 		if(whitelist_status)
 			job_whitelist = "[title][whitelist_status]"
 
 		if(gear_preset_whitelist[job_whitelist])
-			arm_equipment(H, gear_preset_whitelist[job_whitelist], FALSE, TRUE)
-			announce_entry_message(H, A, whitelist_status) //Tell them their spawn info.
-			generate_entry_conditions(H, whitelist_status) //Do any other thing that relates to their spawn.
+			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)
+			announce_entry_message(human, A, whitelist_status) //Tell them their spawn info.
+			generate_entry_conditions(human, whitelist_status) //Do any other thing that relates to their spawn.
 		else
-			arm_equipment(H, gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
-			announce_entry_message(H, A) //Tell them their spawn info.
-			generate_entry_conditions(H) //Do any other thing that relates to their spawn.
+			arm_equipment(human, gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
+			announce_entry_message(human, A) //Tell them their spawn info.
+			generate_entry_conditions(human) //Do any other thing that relates to their spawn.
 
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
-			RoleAuthority.randomize_squad(H)
+			RoleAuthority.randomize_squad(human)
 
-		if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(H.job)))	//activates self setting proc for marine headsets for WO
+		if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(human.job)))	//activates self setting proc for marine headsets for WO
 			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
-			WO.self_set_headset(H)
+			WO.self_set_headset(human)
 
-		H.sec_hud_set_ID()
-		H.hud_set_squad()
+		var/assigned_squad
+		if(human.assigned_squad)
+			assigned_squad = human.assigned_squad.name
 
-		SSround_recording.recorder.track_player(H)
+		var/turf/join_turf
+		if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][type])
+			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][type]))
+		else if(GLOB.spawns_by_job[type])
+			join_turf = get_turf(pick(GLOB.spawns_by_job[type]))
+		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
+			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else
+			join_turf = get_turf(pick(GLOB.latejoin))
+		human.forceMove(join_turf)
+
+		for(var/cardinal in GLOB.cardinals)
+			var/obj/structure/machinery/cryopod/pod = locate() in get_step(human, cardinal)
+			if(pod)
+				pod.go_in_cryopod(human, TRUE)
+				break
+
+		human.sec_hud_set_ID()
+		human.hud_set_squad()
+
+		SSround_recording.recorder.track_player(human)
 
 	return TRUE

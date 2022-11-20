@@ -22,7 +22,7 @@
 
 /obj/structure/machinery/door/window/Destroy()
 	density = 0
-	playsound(src, "shatter", 50, 1)
+	playsound(src, "windowshatter", 50, 1)
 	. = ..()
 
 /obj/structure/machinery/door/window/initialize_pass_flags(var/datum/pass_flags_container/PF)

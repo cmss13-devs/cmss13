@@ -78,6 +78,8 @@ var/global/list/chemical_objective_list	 = list()	//List of all objective reagen
 var/global/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau" = list())
+//properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
+GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
 
 GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo())					//List of all ammo types. Used by guns to tell the projectile how to act.
 GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title)					//List of all jobstypes, minus borg and AI
@@ -124,6 +126,9 @@ GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
 GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)
 GLOBAL_LIST_INIT(language_keys, setup_language_keys())					//table of say codes for all languages
 
+// Origins
+GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
+GLOBAL_LIST_INIT(player_origins, list(ORIGIN_USCM, ORIGIN_USCM_LUNA, ORIGIN_USCM_OTHER, ORIGIN_USCM_COLONY, ORIGIN_USCM_FOREIGN, ORIGIN_USCM_AW))
 
 //Xeno mutators
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
@@ -156,6 +161,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(body_types_list, /datum/body_type, name)			// Stor
 	//Hairstyles
 GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, name)			//stores /datum/sprite_accessory/hair indexed by name
 GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name)	//stores /datum/sprite_accessory/facial_hair indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(hair_gradient_list, /datum/sprite_accessory/hair_gradient, name)
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
 	//Backpacks

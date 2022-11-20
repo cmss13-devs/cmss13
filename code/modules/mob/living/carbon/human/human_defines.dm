@@ -5,6 +5,13 @@
 	var/b_hair = 0
 	var/h_style = "Crewcut"
 
+	//Hair gradient colour and style
+	var/r_gradient = 0
+	var/g_gradient = 0
+	var/b_gradient = 0
+	///Style used for the hair gradient.
+	var/grad_style = "None"
+
 	//Facial hair colour and style
 	var/r_facial = 0
 	var/g_facial = 0
@@ -36,8 +43,7 @@
 	var/datum/species/species //Contains icon generation and language information, set during New().
 
 	// General information
-	var/home_system = ""
-	var/citizenship = ""
+	var/origin = ""
 	var/personal_faction = ""
 	var/religion = ""
 
@@ -110,6 +116,7 @@
 	var/shield_slowdown = 0 // Slowdown from readying shields
 
 	var/datum/equipment_preset/assigned_equipment_preset
+	var/rank_fallback
 
 	var/datum/squad/assigned_squad	//the squad this human is assigned to
 	var/assigned_fireteam = 0		//the fireteam this human is assigned to

@@ -7,8 +7,12 @@
 	macro_path = /datum/action/xeno_action/verb/verb_watch_xeno
 
 /datum/action/xeno_action/watch_xeno/can_use_action()
+	if(!owner)
+		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (X.is_mob_incapacitated() || X.buckled || X.burrow)
+	if(!istype(X))
+		return FALSE
+	if(X.is_mob_incapacitated() || X.buckled || X.burrow)
 		return FALSE
 	else
 		return TRUE

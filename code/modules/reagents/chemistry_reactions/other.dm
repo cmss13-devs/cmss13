@@ -23,7 +23,7 @@
 	name = "nitroglycerin"
 	id = "nitroglycerin"
 	result = "nitroglycerin"
-	required_reagents = list("glycerol" = 1, "pacid" = 1, "sacid" = 1)
+	required_reagents = list("glycerol" = 1, "pacid" = 1, "sulphuric acid" = 1)
 	result_amount = 2
 	sensitivity_threshold = 5.001
 
@@ -72,8 +72,8 @@
 
 /datum/chemical_reaction/sacid
 	name = "Sulfuric acid"
-	id = "sacid"
-	result = "sacid"
+	id = "sulphuric acid"
+	result = "sulphuric acid"
 	required_reagents = list("hydrogen" = 2, "sulfur" = 1, "oxygen" = 4)
 	result_amount = 1
 
@@ -118,7 +118,7 @@
 	name = "Polytrinic acid"
 	id = "pacid"
 	result = "pacid"
-	required_reagents = list("sacid" = 1, "chlorine" = 1, "potassium" = 1)
+	required_reagents = list("sulphuric acid" = 1, "chlorine" = 1, "potassium" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/impedrezene
@@ -139,7 +139,7 @@
 	name = "Glycerol"
 	id = "glycerol"
 	result = "glycerol"
-	required_reagents = list("cornoil" = 3, "sacid" = 1)
+	required_reagents = list("cornoil" = 3, "sulphuric acid" = 1)
 	result_amount = 1
 
 /datum/chemical_reaction/flash_powder
@@ -160,7 +160,7 @@
 	name = "Napalm"
 	id = "napalm"
 	result = "napalm"
-	required_reagents = list("aluminum" = 1, "phoron" = 1, "sacid" = 1 )
+	required_reagents = list("aluminum" = 1, "phoron" = 1, "sulphuric acid" = 1 )
 	result_amount = 1
 
 /datum/chemical_reaction/chemfire/on_reaction(var/datum/reagents/holder, var/created_volume)
@@ -334,7 +334,7 @@
 	name = "Foam surfactant"
 	id = "foam surfactant"
 	result = "fluorosurfactant"
-	required_reagents = list("fluorine" = 2, "carbon" = 2, "sacid" = 1)
+	required_reagents = list("fluorine" = 2, "carbon" = 2, "sulphuric acid" = 1)
 	result_amount = 5
 
 
@@ -348,12 +348,12 @@
 	on_reaction(var/datum/reagents/holder, var/created_volume)
 
 		var/location = get_turf(holder.my_atom)
-		for(var/mob/M in viewers(5, location))
+		for(var/mob/M as anything in viewers(5, location))
 			to_chat(M, SPAN_WARNING("The solution violently bubbles!"))
 
 		location = get_turf(holder.my_atom)
 
-		for(var/mob/M in viewers(5, location))
+		for(var/mob/M as anything in viewers(5, location))
 			to_chat(M, SPAN_WARNING("The solution spews out foam!"))
 		//for(var/datum/reagent/R in holder.reagent_list)
 
@@ -374,7 +374,7 @@
 
 		var/location = get_turf(holder.my_atom)
 
-		for(var/mob/M in viewers(5, location))
+		for(var/mob/M as anything in viewers(5, location))
 			to_chat(M, SPAN_WARNING("The solution spews out a metallic shiny foam!"))
 
 		var/datum/effect_system/foam_spread/s = new()
@@ -393,7 +393,7 @@
 
 		var/location = get_turf(holder.my_atom)
 
-		for(var/mob/M in viewers(5, location))
+		for(var/mob/M as anything in viewers(5, location))
 			to_chat(M, SPAN_WARNING("The solution spews out a metallic dull foam!"))
 
 		var/datum/effect_system/foam_spread/s = new()
@@ -433,7 +433,7 @@
 	name = "Dinitroaniline"
 	id = "dinitroaniline"
 	result = "dinitroaniline"
-	required_reagents = list("ammonia" = 1, "sacid" = 1, "nitrogen" = 1)
+	required_reagents = list("ammonia" = 1, "sulphuric acid" = 1, "nitrogen" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/plantbgone

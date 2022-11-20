@@ -209,17 +209,17 @@
 
 /obj/structure/largecrate/supply/explosives/mortar_he
 	name = "80mm HE mortar shell case (x25)"
-	desc = "A case containing twenty five 80mm HE mortar shells."
+	desc = "A case containing twenty-five 80mm HE mortar shells."
 	supplies = list(/obj/item/mortar_shell/he = 25)
 
 /obj/structure/largecrate/supply/explosives/mortar_incend
 	name = "80mm incendiary mortar shell case (x25)"
-	desc = "A case containing twenty five 80mm incendiary mortar shells."
+	desc = "A case containing twenty-five 80mm incendiary mortar shells."
 	supplies = list(/obj/item/mortar_shell/incendiary = 25)
 
 /obj/structure/largecrate/supply/explosives/mortar_flare
 	name = "80mm flare mortar shell case (x25)"
-	desc = "A case containing twenty five 80mm flare mortar shells."
+	desc = "A case containing twenty-five 80mm flare mortar shells."
 	supplies = list(/obj/item/mortar_shell/flare = 25)
 
 
@@ -310,7 +310,7 @@
 
 /obj/structure/largecrate/supply/medicine/optable
 	name = "medical operation crate (x1)"
-	desc = "A crate containing an operating table, two tanks of anasthetic, a surgery kit, some anasthetic injectors, and some space cleaner."
+	desc = "A crate containing an operating table, two tanks of anesthetic, a surgery kit, some anesthetic injectors, and some space cleaner."
 	supplies = list(/obj/structure/machinery/optable = 1, /obj/item/storage/surgical_tray = 1, /obj/item/tank/anesthetic = 2, /obj/item/reagent_container/spray/cleaner = 1)
 
 /obj/structure/largecrate/supply/medicine/medivend
@@ -326,10 +326,10 @@
 	var/dir_needed = EAST //If set to anything but 0, will check that space before spawning in.
 	var/unmovable = 1 //If set to 1, then on examine, the user will see a warning that states the contents cannot be moved after opened.
 
-/obj/structure/largecrate/machine/examine(mob/user)
-	..()
+/obj/structure/largecrate/machine/get_examine_text(mob/user)
+	. = ..()
 	if(unmovable)
-		to_chat(user, SPAN_DANGER("!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!"))
+		. += SPAN_DANGER("!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!")
 
 /obj/structure/largecrate/machine/unpack(var/forced)
 	if(parts_type)

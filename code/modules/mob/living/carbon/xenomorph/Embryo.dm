@@ -113,7 +113,7 @@
 				if(affected_mob.knocked_out < 1)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
 												 SPAN_DANGER("You start shaking uncontrollably!"))
-					affected_mob.KnockOut(10)
+					affected_mob.apply_effect(10, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
 			if(prob(2))
@@ -192,7 +192,7 @@
 	victim.chestburst = TRUE
 	to_chat(src, SPAN_DANGER("You start bursting out of [victim]'s chest!"))
 	if(victim.knocked_out < 1)
-		victim.KnockOut(20)
+		victim.apply_effect(20, PARALYZE)
 	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \
 								 SPAN_DANGER("You feel something ripping up your insides!"))
 	victim.make_jittery(300)
@@ -251,19 +251,20 @@
 	for(var/obj/item/alien_embryo/AE in victim)
 		qdel(AE)
 
+	var/datum/cause_data/cause = create_cause_data("chestbursting", src)
 	if(burstcount >= 4)
-		victim.gib("chestbursting")
+		victim.gib(cause)
 	else
 		if(ishuman(victim))
 			var/mob/living/carbon/human/H = victim
-			H.last_damage_data = create_cause_data("chestbursting", null)
+			H.last_damage_data = cause
 			var/datum/internal_organ/O
 			var/i
 			for(i in list("heart","lungs")) //This removes (and later garbage collects) both organs. No heart means instant death.
 				O = H.internal_organs_by_name[i]
 				H.internal_organs_by_name -= i
 				H.internal_organs -= O
-		victim.death(create_cause_data("chestbursting", src)) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
+		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
 

@@ -185,7 +185,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 			class = tgui_input_list(usr, "Proc owned by...","Owner", options)
 			switch(class)
 				if("Obj")
-					target = input("Enter target:","Target",usr) as obj in GLOB.object_list
+					target = input("Enter target:","Target",usr) as obj in world
 				if("Mob")
 					target = input("Enter target:","Target",usr) as mob in GLOB.mob_list
 				if("Area or Turf")
@@ -236,7 +236,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 				lst[i] = input("Enter new text:","Text",null) as text
 
 			if("num")
-				lst[i] = tgui_input_number(usr, "Enter new number:","Num",0)
+				lst[i] = tgui_input_real_number(usr, "Enter new number:","Num",0)
 
 			if("type")
 				lst[i] = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))

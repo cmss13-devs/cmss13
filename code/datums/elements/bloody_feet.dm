@@ -46,7 +46,8 @@
 		LAZYREMOVE(target_shoes, target)
 
 	var/mob/living/carbon/human/H = target
-	H.bloody_footsteps = 0
+	if(ishuman(H))
+		H.bloody_footsteps = 0
 
 	return ..()
 

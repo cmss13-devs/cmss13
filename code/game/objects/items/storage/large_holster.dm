@@ -91,7 +91,7 @@
 
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
-	desc = "A large, vibrantly colored katana scabbard used to carry a japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
+	desc = "A large, vibrantly colored katana scabbard used to carry a Japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
 	icon_state = "katana_holster"
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
@@ -322,17 +322,17 @@
 		active_fuel = new_fuel
 
 
-/obj/item/storage/large_holster/fuelpack/examine(mob/user)
-	..()
+/obj/item/storage/large_holster/fuelpack/get_examine_text(mob/user)
+	. = ..()
 	if(contents.len)
-		to_chat(user, "It is storing \a M240-T incinerator unit.")
+		. += "It is storing \a M240-T incinerator unit."
 	if (get_dist(user, src) <= 1)
 		if(fuel)
-			to_chat(user, "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel.")
+			. += "The [fuel.caliber] currently contains: [round(fuel.get_ammo_percent())]% fuel."
 		if(fuelB)
-			to_chat(user, "The [fuelB.caliber] currently contains: [round(fuelB.get_ammo_percent())]% fuel.")
+			. += "The [fuelB.caliber] currently contains: [round(fuelB.get_ammo_percent())]% fuel."
 		if(fuelX)
-			to_chat(user, "The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel.")
+			. += "The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel."
 
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1

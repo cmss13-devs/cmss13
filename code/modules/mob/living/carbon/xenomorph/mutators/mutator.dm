@@ -100,3 +100,4 @@
 			qdel(X.behavior_delegate)
 		X.behavior_delegate = new behavior_delegate_type()
 		X.behavior_delegate.bound_xeno = X
+		X.behavior_delegate.add_to_xeno()

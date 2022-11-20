@@ -8,7 +8,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun
 	w_class = SIZE_LARGE
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
-	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
+	reload_sound = "shell_load"
 	cocked_sound = 'sound/weapons/gun_shotgun_reload.ogg'
 	var/break_sound = 'sound/weapons/handling/gun_mou_open.ogg'
 	var/seal_sound = 'sound/weapons/handling/gun_mou_close.ogg'
@@ -27,11 +27,11 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(current_mag)
 		replace_tube(current_mag.current_rounds) //Populate the chamber.
 
-/obj/item/weapon/gun/shotgun/examine(mob/user)
+/obj/item/weapon/gun/shotgun/get_examine_text(mob/user)
 	. = ..()
 	if(flags_gun_features & GUN_AMMO_COUNTER && user)
 		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(user, "It has [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] rounds remaining.")
+		. += "It has [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] rounds remaining."
 
 /obj/item/weapon/gun/shotgun/set_gun_config_values()
 	..()
@@ -208,9 +208,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
-/obj/item/weapon/gun/shotgun/merc/examine(mob/user)
-	..()
-	if(in_chamber) to_chat(user, "It has a chambered round.")
+/obj/item/weapon/gun/shotgun/merc/get_examine_text(mob/user)
+	. = ..()
+	if(in_chamber) . += "It has a chambered round."
 
 //-------------------------------------------------------
 //TACTICAL SHOTGUN
@@ -221,7 +221,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "mk221"
 	item_state = "mk221"
 
-	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
+	fire_sound = "gun_shotgun_tactical"
+	firesound_volume = 20
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
@@ -266,9 +267,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
-/obj/item/weapon/gun/shotgun/combat/examine(mob/user)
-	..()
-	if(in_chamber) to_chat(user, "It has a chambered round.")
+/obj/item/weapon/gun/shotgun/combat/get_examine_text(mob/user)
+	. = ..()
+	if(in_chamber) . += "It has a chambered round."
 
 
 /obj/item/weapon/gun/shotgun/combat/riot
@@ -286,14 +287,17 @@ can cause issues with ammo types getting mixed up during the burst.
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/bayonet)
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
-//MARSOC MK210, an earlier developmental variant of the MK211 tactical used by the USCM MARSOC.
+/obj/item/weapon/gun/shotgun/combat/covert
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/extended_barrel)
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
+
+//SOF MK210, an earlier developmental variant of the MK211 tactical used by USCM SOF.
 /obj/item/weapon/gun/shotgun/combat/marsoc
 	name = "\improper MK210 tactical shotgun"
-	desc = "Way back in 2168, Wey-Yu began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM MARSOC division wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic, made of stamped medal, and keeps the UGL. Truly an engineering marvel."
+	desc = "Way back in 2168, Wey-Yu began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM Special Operations Forces wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic, made of stamped medal, and keeps the UGL. Truly an engineering marvel."
 	icon_state = "mk210"
 	item_state = "mk210"
 
-	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
@@ -479,12 +483,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/shotgun/double/examine(mob/user)
-	..()
+/obj/item/weapon/gun/shotgun/double/get_examine_text(mob/user)
+	. = ..()
 	if(!current_mag)
 		return
-	if(current_mag.chamber_closed) to_chat(user, "It's closed.")
-	else to_chat(user, "It's open with [current_mag.current_rounds] shell\s loaded.")
+	if(current_mag.chamber_closed) . += "It's closed."
+	else . += "It's open with [current_mag.current_rounds] shell\s loaded."
 
 /obj/item/weapon/gun/shotgun/double/unique_action(mob/user)
 	if(flags_item & WIELDED)
@@ -911,7 +915,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	flags_equip_slot = SLOT_BACK
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
-	var/pump_sound = 'sound/weapons/gun_shotgun_pump.ogg'
+	firesound_volume = 60
+	var/pump_sound = "shotgunpump"
 	var/pump_delay //Higher means longer delay.
 	var/recent_pump //world.time to see when they last pumped it.
 	var/pumped = FALSE //Used to see if the shotgun has already been pumped.
@@ -995,7 +1000,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	ready_shotgun_tube()
 
-	playsound(user, pump_sound, 25, 1)
+	playsound(user, pump_sound, 10, 1)
 	recent_pump = world.time
 	if (in_chamber)
 		pumped = TRUE

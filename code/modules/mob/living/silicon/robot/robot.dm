@@ -22,10 +22,10 @@ var/list/robot_verbs_default = list(
 
 //Hud stuff
 
-	var/obj/screen/cells = null
-	var/obj/screen/inv1 = null
-	var/obj/screen/inv2 = null
-	var/obj/screen/inv3 = null
+	var/atom/movable/screen/cells = null
+	var/atom/movable/screen/inv1 = null
+	var/atom/movable/screen/inv2 = null
+	var/atom/movable/screen/inv3 = null
 
 //3 Modules can be activated at any one time.
 	var/obj/item/circuitboard/robot_module/module = null
@@ -498,10 +498,10 @@ var/list/robot_verbs_default = list(
 				sleep(30)
 				to_chat(user, "You damage some parts of the chassis, but eventually manage to rip out [mmi]!")
 				var/obj/item/robot_parts/robot_suit/C = new/obj/item/robot_parts/robot_suit(loc)
-				C.l_leg = new/obj/item/robot_parts/l_leg(C)
-				C.r_leg = new/obj/item/robot_parts/r_leg(C)
-				C.l_arm = new/obj/item/robot_parts/l_arm(C)
-				C.r_arm = new/obj/item/robot_parts/r_arm(C)
+				C.l_leg = new/obj/item/robot_parts/leg/l_leg(C)
+				C.r_leg = new/obj/item/robot_parts/leg/r_leg(C)
+				C.l_arm = new/obj/item/robot_parts/arm/l_arm(C)
+				C.r_arm = new/obj/item/robot_parts/arm/r_arm(C)
 				C.updateicon()
 				new/obj/item/robot_parts/chest(loc)
 				qdel(src)
@@ -873,7 +873,7 @@ var/list/robot_verbs_default = list(
 /mob/living/silicon/robot/proc/ResetSecurityCodes()
 	set category = "Robot Commands"
 	set name = "Reset Identity Codes"
-	set desc = "Scrambles your security and identification codes and resets your current buffers.  Unlocks you and but permenantly severs you from your AI and the robotics console and will deactivate your camera system."
+	set desc = "Scrambles your security and identification codes and resets your current buffers.  Unlocks you and but permanently severs you from your AI and the robotics console and will deactivate your camera system."
 
 	var/mob/living/silicon/robot/R = src
 

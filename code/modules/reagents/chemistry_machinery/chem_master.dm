@@ -46,10 +46,10 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 
 
@@ -215,7 +215,7 @@
 				return
 
 			if(href_list["createpill_multiple"])
-				count = Clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", 10, pillamount, 1), 0, max_pill_count)
+				count = Clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
 				if(!count)
 					return
 

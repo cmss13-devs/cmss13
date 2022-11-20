@@ -272,7 +272,7 @@
 	icon_state = "garden"
 
 /area/bigred/uground/lambda_labs/fridge
-	name = "\improper Lambda Labs Refridgeration"
+	name = "\improper Lambda Labs Refrigeration"
 	icon_state = "kitchen"
 
 /area/bigred/uground/lambda_labs/maintenance
@@ -300,13 +300,6 @@
 	flags_area = AREA_NOTUNNEL
 	can_build_special = FALSE
 	soundscape_interval = 0
-
-/area/bigredv2/Initialize()
-	. = ..()
-	if(SSticker.current_state > GAME_STATE_SETTING_UP)
-		add_thunder()
-	else
-		LAZYADD(GLOB.thunder_setup_areas, src)
 
 /area/bigredv2/outside
 	name = "\improper Colony Grounds"
@@ -493,12 +486,34 @@
 
 
 /area/bigredv2/outside/telecomm
-	name = "\improper Telecommunications"
+	name = "\improper LZ1 Communications Relay"
 	icon_state = "ass_line"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	is_resin_allowed = FALSE
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_LOW
+
+/area/bigredv2/outside/telecomm/lz2_cave
+	name = "\improper Central Grounds Communications Relay"
+
+/area/bigredv2/outside/telecomm/n_cave
+	name = "\improper North Cave Communications Relay"
+
+/area/bigredv2/outside/telecomm/warehouse
+	name = "\improper Warehouse Communications Relay"
+
+/area/bigredv2/outside/telecomm/security
+	name = "\improper Security Communications Relay"
+
+/area/bigredv2/outside/telecomm/store
+	name = "\improper General Store Communications Relay"
+
+/area/bigredv2/outside/telecomm/admin
+	name = "\improper Administrative Communications Relay"
+
+/area/bigredv2/outside/telecomm/engi
+	name = "\improper Engineering Communications Relay"
+
 
 /area/bigredv2/outside/engineering
 	name = "\improper Engineering Complex"

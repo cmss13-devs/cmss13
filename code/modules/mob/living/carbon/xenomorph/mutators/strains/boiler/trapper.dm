@@ -87,8 +87,8 @@
 		H.apply_armoured_damage(bonus_damage_shotgun_trapped, ARMOR_BIO, BURN)
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 	else
-		H.AdjustSlowed(2)
-		trap_ability.empowering_charge_counter += 1
+		H.adjust_effect(2, SLOW)
+		trap_ability.empowering_charge_counter++
 
 	if(!trap_ability.empowered && trap_ability.empowering_charge_counter >= trap_ability.empower_charge_max)
 		trap_ability.empowered = TRUE

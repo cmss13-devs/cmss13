@@ -141,18 +141,18 @@
 	if(!check_rights(0))	return
 
 	var/dat = {"
-		<A href='?src=\ref[src];[HrefToken()];c_mode=1'>Change Game Mode</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
 		"}
 	if(master_mode == "secret")
-		dat += "<A href='?src=\ref[src];[HrefToken()];f_secret=1'>(Force Secret Mode)</A><br>"
+		dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];f_secret=1'>(Force Secret Mode)</A><br>"
 
 	dat += {"
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];create_object=1'>Create Object</A><br>
-		<A href='?src=\ref[src];[HrefToken()];quick_create_object=1'>Quick Create Object</A><br>
-		<A href='?src=\ref[src];[HrefToken()];create_turf=1'>Create Turf</A><br>
-		<A href='?src=\ref[src];[HrefToken()];create_mob=1'>Create Mob</A><br>
-		<A href='?src=\ref[src];[HrefToken()];send_tip=1'>Inmediately Send Tip</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_object=1'>Create Object</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];quick_create_object=1'>Quick Create Object</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_turf=1'>Create Turf</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];create_mob=1'>Create Mob</A><br>
+		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Inmediately Send Tip</A><br>
 		"}
 
 	show_browser(usr, dat, "Game Panel", "admin2", "size=210x280")

@@ -42,11 +42,11 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 	movement_onehanded_acc_penalty_mult = 3
 
-/obj/item/weapon/gun/revolver/examine(mob/user)
-	..()
+/obj/item/weapon/gun/revolver/get_examine_text(mob/user)
+	. = ..()
 	if(current_mag)
 		var/message = "[current_mag.chamber_closed? "It's closed.": "It's open with [current_mag.current_rounds] round\s loaded."]"
-		to_chat(user, message)
+		. += message
 
 /obj/item/weapon/gun/revolver/display_ammo(mob/user) // revolvers don't *really* have a chamber, at least in a way that matters for ammo displaying
 	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
@@ -214,7 +214,7 @@
 
 	invisibility = 100
 	var/list/client/displayed_for = list()
-	for(var/mob/M in viewers(user))
+	for(var/mob/M as anything in viewers(user))
 		var/client/C = M.client
 		if(C)
 			C.images += trick
@@ -332,17 +332,12 @@
 /obj/item/weapon/gun/revolver/m44/mp //No differences (yet) beside spawning with marksman ammo loaded
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman
 
-/obj/item/weapon/gun/revolver/m44/custom //accuracy and damage bonus
+/obj/item/weapon/gun/revolver/m44/custom //loadout
 	name = "\improper M44 custom combat revolver"
 	desc = "A bulky combat revolver. The handle has been polished to a pearly perfection, and the body is silver plated. Fires .44 Magnum rounds."
-	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman
+	current_mag = /obj/item/ammo_magazine/internal/revolver/m44
 	icon_state = "m44rc"
 	item_state = "m44rc"
-
-/obj/item/weapon/gun/revolver/m44/custom/set_gun_config_values()
-	..()
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 
 //----------------------------------------------
 // Blade Runner Blasters.
@@ -379,7 +374,7 @@
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049
 	name = "\improper M2049 Blaster"
-	desc = "In service since 2049, the LAPD 2049 .44 special has been used to retire more replicants than there are colonists in the American Corridor. The top mounted picatinny rail allows this revised version to mount a wide variety of optics for the aspiring detective. Although replicants aren't permitted past the the outer core systems, this piece occasionally finds its way to the rim in the hand of defects, collectors, and thieves."
+	desc = "In service since 2049, the LAPD 2049 .44 special has been used to retire more replicants than there are colonists in the American Corridor. The top mounted picatinny rail allows this revised version to mount a wide variety of optics for the aspiring detective. Although replicants aren't permitted past the outer core systems, this piece occasionally finds its way to the rim in the hand of defects, collectors, and thieves."
 	icon_state = "lapd_2049"
 
 	attachable_allowed = list(
@@ -426,6 +421,12 @@
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp)
+
+/obj/item/weapon/gun/revolver/m44/custom/webley/set_gun_config_values()
+	..()
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+
 
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
@@ -595,7 +596,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/general
 	name = "\improper engraved Mateba autorevolver custom"
-	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Mateba revolver's pretentious design rivals only the power of its wielder. Fit for a king. Or an general."
+	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Mateba revolver's pretentious design rivals only the power of its wielder. Fit for a king. Or a general."
 	icon_state = "amateba"
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact

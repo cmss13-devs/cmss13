@@ -276,11 +276,11 @@
 					if(O.name == K)
 						if(from_network)
 							contents.Add(O)
-							item_quants[K] += 1
+							item_quants[K]++
 							source.Remove(O)
 						else
 							chemical_data.shared_item_storage.Add(O)
-							chemical_data.shared_item_quantity[K] += 1
+							chemical_data.shared_item_quantity[K]++
 							source.Remove(O)
 						i--
 						if(i <= 0)

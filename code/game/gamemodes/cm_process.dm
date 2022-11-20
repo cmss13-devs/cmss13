@@ -103,12 +103,19 @@ of predators), but can be added to include variant game modes (like humans vs. h
 				dat += "<br><b>[recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]a <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " ([recipient_award.giver_name[i]])" : ""]."
 		to_world(dat)
 
-/datum/game_mode/proc/declare_random_fact()
+/datum/game_mode/proc/declare_fun_facts()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	var/fact_type = pick(subtypesof(/datum/random_fact))
-	var/datum/random_fact/fact = new fact_type()
-	fact.announce()
+	to_chat_spaced(world, margin_bottom = 0, html = SPAN_ROLE_BODY("|______________________|"))
+	to_world(SPAN_ROLE_HEADER("FUN FACTS"))
+	var/list/fact_types = subtypesof(/datum/random_fact)
+	for(var/fact_type as anything in fact_types)
+		var/datum/random_fact/fact_human = new fact_type(set_check_human = TRUE, set_check_xeno = FALSE)
+		fact_human.announce()
+	for(var/fact_type as anything in fact_types)
+		var/datum/random_fact/fact_xeno = new fact_type(set_check_human = FALSE, set_check_xeno = TRUE)
+		fact_xeno.announce()
+	to_chat_spaced(world, margin_top = 0, html = SPAN_ROLE_BODY("|______________________|"))
 
 //===================================================\\
 
@@ -187,12 +194,14 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		peakXenos = length(GLOB.living_xeno_list)
 
 	for(var/mob/M in GLOB.living_xeno_list)
+		if(M.mob_flags & NOBIOSCAN)
+			continue
 		var/area/A = get_area(M)
 		if(A?.flags_area & AREA_AVOID_BIOSCAN)
 			numXenosShip++
 			continue
 		var/atom/where = M
-		if (where == 0 && M.loc)
+		if (where.z == 0 && M.loc)
 			where = M.loc
 		if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
 			numXenosPlanet++
@@ -205,9 +214,11 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 	for (var/i in GLOB.alive_human_list)
 		var/mob/living/carbon/human/H = i
+		if(H.mob_flags & NOBIOSCAN)
+			continue
 		var/atom/where = H
 		if(isSpeciesHuman(H))
-			if (where == 0 && H.loc)
+			if (where.z == 0 && H.loc)
 				where = H.loc
 			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
 				numHostsPlanet++
@@ -314,6 +325,8 @@ Only checks living mobs with a client attached.
 				var/area/A = get_area(M)
 				if(isXeno(M))
 					var/mob/living/carbon/Xenomorph/xeno = M
+					if(!xeno.counts_for_roundend)
+						continue
 					var/datum/hive_status/xeno_hive = GLOB.hive_datum[xeno.hivenumber]
 					if(!xeno_hive || (xeno_hive.need_round_end_check && !xeno_hive.can_delay_round_end(xeno)))
 						continue

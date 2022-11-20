@@ -60,7 +60,7 @@
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			deflate(1)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 
 /obj/structure/inflatable/attack_hand(mob/user as mob)
 	add_fingerprint(user)
@@ -112,18 +112,22 @@
 		visible_message("[src] rapidly deflates!")
 		flick("wall_popping", src)
 		sleep(10)
-		new /obj/structure/inflatable/popped(loc)
-		//var/obj/item/inflatable/torn/R = new /obj/item/inflatable/torn(loc)
-		//src.transfer_fingerprints_to(R)
-		qdel(src)
+		deconstruct(TRUE)
 	else
-		//to_chat(user, SPAN_NOTICE(" You slowly deflate the inflatable wall."))
 		visible_message("[src] slowly deflates.")
 		flick("wall_deflating", src)
 		spawn(50)
-			var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
-			src.transfer_fingerprints_to(R)
-			qdel(src)
+			deconstruct(FALSE)
+
+
+/obj/structure/inflatable/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		new /obj/structure/inflatable/popped(loc)
+	else
+		var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
+		src.transfer_fingerprints_to(R)
+	return ..()
+
 
 /obj/structure/inflatable/verb/hand_deflate()
 	set name = "Deflate"

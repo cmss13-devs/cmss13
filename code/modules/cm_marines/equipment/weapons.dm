@@ -93,11 +93,10 @@
 	else
 		..()
 
-/obj/item/smartgun_powerpack/examine(mob/user)
-	..()
-	if (get_dist(user, src) <= 1)
-		if(pcell)
-			to_chat(user, "A small gauge in the corner reads: Power: [pcell.charge] / [pcell.maxcharge].")
+/obj/item/smartgun_powerpack/get_examine_text(mob/user)
+	. = ..()
+	if (pcell && get_dist(user, src) <= 1)
+		. += "A small gauge in the corner reads: Power: [pcell.charge] / [pcell.maxcharge]."
 
 /obj/item/smartgun_powerpack/proc/drain_powerpack(var/drain = 0, var/obj/item/cell/c)
 	var/actual_drain = (rand(drain/2,drain)/25)

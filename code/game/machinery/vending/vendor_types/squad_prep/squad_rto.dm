@@ -130,10 +130,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 	req_access = list(ACCESS_MARINE_RTO_PREP)
 	vendor_role = list(JOB_SQUAD_RTO)
 
-
-/obj/structure/machinery/cm_vending/clothing/rto/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_clothing_rto
+/obj/structure/machinery/cm_vending/clothing/rto/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_clothing_rto
 
 /obj/structure/machinery/cm_vending/clothing/rto/alpha
 	squad_tag = SQUAD_MARINE_1
@@ -174,16 +172,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 		/obj/item/storage/belt/gun/m4a3
 	)
 
-/obj/effect/essentials_set/rto/m4a3c
+/obj/effect/essentials_set/rto/mod
 	spawned_gear_list = list(
-		/obj/item/weapon/gun/pistol/m4a3/custom,
+		/obj/item/weapon/gun/pistol/mod88,
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/storage/box/m94/signal,
 		/obj/item/storage/box/m94/signal,
-		/obj/item/ammo_magazine/pistol/hp,
-		/obj/item/ammo_magazine/pistol/hp,
-		/obj/item/ammo_magazine/pistol/ap,
-		/obj/item/ammo_magazine/pistol/ap,
+		/obj/item/ammo_magazine/pistol/mod88,
+		/obj/item/ammo_magazine/pistol/mod88,
+		/obj/item/ammo_magazine/pistol/mod88,
+		/obj/item/ammo_magazine/pistol/mod88,
 		/obj/item/storage/belt/gun/m4a3
 	)
 

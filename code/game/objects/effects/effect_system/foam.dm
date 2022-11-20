@@ -179,9 +179,10 @@
 
 /obj/structure/foamed_metal/proc/take_damage(var/damage)
 	health -= damage
-
+	playsound(src,'sound/weapons/Genhit.ogg', 25, 1)
 	if(health <= 0)
 		visible_message(SPAN_WARNING("[src] crumbles into pieces!"))
+		playsound(src, 'sound/effects/meteorimpact.ogg', 25, 1)
 		qdel(src)
 
 /obj/structure/foamed_metal/ex_act(severity)
@@ -214,7 +215,7 @@
 
 	//Frenzy bonus
 	if(X.frenzy_aura > 0)
-		damage += (X.frenzy_aura * 2)
+		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 	X.animation_attack_on(src)
 

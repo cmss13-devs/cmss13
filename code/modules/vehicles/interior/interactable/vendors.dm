@@ -173,11 +173,10 @@
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/vend_fail()
 	return
 
-/obj/structure/machinery/cm_vending/sorted/vehicle_supply/examine(mob/living/carbon/human/user)
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/get_examine_text(mob/living/carbon/human/user)
 	. = ..()
 	if(ishuman(user))
-		to_chat(user, SPAN_INFO("[SPAN_HELPFUL("CTRL + Click")] \the [src] to start re-stocking it with supplies near vendor."))
-		return FALSE
+		. += SPAN_INFO("[SPAN_HELPFUL("CTRL + Click")] \the [src] to start re-stocking it with supplies near vendor.")
 
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/clicked(var/mob/user, var/list/mods)
 	if(mods["ctrl"])
@@ -252,7 +251,7 @@
 		list("Box Of Flechette Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
 		list("Box Of Shotgun Slugs", round(scale * 4), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
 		list("L42A Magazine (10x24mm)", round(scale * 5), /obj/item/ammo_magazine/rifle/l42a, VENDOR_ITEM_REGULAR),
-		list("M41A MK2 Magazine (10x24mm", round(scale * 10), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
+		list("M41A MK2 Magazine (10x24mm)", round(scale * 10), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
 		list("M39 HV Magazine (10x20mm)", round(scale * 6), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M44 Speed Loader (.44)", round(scale * 4), /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
 		list("M4A3 Magazine (9mm)", round(scale * 10), /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),

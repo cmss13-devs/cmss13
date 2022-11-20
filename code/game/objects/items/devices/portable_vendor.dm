@@ -173,7 +173,6 @@
 			spawn(30)
 				var/type_p = L[3]
 				var/obj/IT = new type_p(get_turf(src))
-				vending_stat_bump(type_p, src.type)
 				H.put_in_any_hand_if_possible(IT)
 				fabricating = 0
 				update_overlays()
@@ -231,12 +230,12 @@
 				malfunction()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				qdel(src)
+				deconstruct(FALSE)
 				return
 			else
 				malfunction()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 
 
@@ -251,7 +250,7 @@
 	req_role = JOB_CORPORATE_LIAISON
 	listed_products = list(
 		list("INCENTIVES", 0, null, null, null),
-		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disoritentation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
+		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
 		list("Ultrazine Pills", 25, /obj/item/storage/pill_bottle/ultrazine, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per pill. More than two pills at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
 		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
 		list("Cash", 5, /obj/item/spacecash/c1000, "white", "$1000 USD, unmarked bills"),

@@ -26,9 +26,9 @@
 			if(JOB_INTEL) marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF) marine_rk = "dcc"
 			if(JOB_CREWMAN) marine_rk = "tc"
-			if(JOB_MARSOC) marine_rk = "soc"
-			if(JOB_MARSOC_SL) marine_rk = "soctl"
-			if(JOB_MARSOC_CMD) marine_rk = "soccmd"
+			if(JOB_MARINE_RAIDER) marine_rk = "soc"
+			if(JOB_MARINE_RAIDER_SL) marine_rk = "soctl"
+			if(JOB_MARINE_RAIDER_CMD) marine_rk = "soccmd"
 		if(squad.squad_leader == H)
 			switch(squad.squad_type)
 				if("Squad") marine_rk = "leader_a"
@@ -40,6 +40,7 @@
 
 		H.langchat_color = squad_colors_chat[H.assigned_squad.color]
 
+		if(!marine_rk) marine_rk = H.rank_fallback
 		if(marine_rk)
 			var/image/IMG = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
 			if(squad_clr)
@@ -75,7 +76,7 @@
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
-			if(JOB_GENERAL)
+			if(JOB_GENERAL, JOB_COLONEL)
 				marine_rk = "general"
 				border_rk = "command"
 			if(JOB_INTEL)
@@ -86,19 +87,6 @@
 				marine_rk = "dcc"
 			if(JOB_CREWMAN)
 				marine_rk = "tc"
-			if(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER)
-				marine_rk = "pvo"
-			if(JOB_PROVOST_TML)
-				marine_rk = "pvtml"
-			if(JOB_PROVOST_INSPECTOR)
-				marine_rk = "pvi"
-				border_rk = "command"
-			if(JOB_PROVOST_ADVISOR)
-				marine_rk = "pva"
-				border_rk = "command"
-			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
-				marine_rk = "pvm"
-				border_rk = "command"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 				border_rk = "command"
@@ -133,6 +121,28 @@
 				marine_rk = "nurse"
 			if(JOB_SEA)
 				marine_rk = "sea"
+				border_rk = "command"
+			if(JOB_SYNTH)
+				marine_rk = "syn"
+			if(JOB_MESS_SERGEANT)
+				marine_rk = "messtech"
+			if(JOB_PROVOST_ENFORCER)
+				marine_rk = "pve"
+			if(JOB_PROVOST_TML)
+				marine_rk = "pvtml"
+			if(JOB_PROVOST_INSPECTOR)
+				marine_rk = "pvi"
+				border_rk = "command"
+			if(JOB_PROVOST_ADVISOR)
+				marine_rk = "pva"
+				border_rk = "command"
+			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
+				marine_rk = "pvm"
+				border_rk = "command"
+			if(JOB_TIS_IO)
+				marine_rk = "tisio"
+			if(JOB_TIS_SA)
+				marine_rk = "tissa"
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
 			I.color = "#5A934A"

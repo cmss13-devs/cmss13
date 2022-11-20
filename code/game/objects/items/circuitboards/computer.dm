@@ -22,7 +22,7 @@
 	if (..(C))
 		C.network = network
 
-/obj/item/circuitboard/computer/security/deconstruct(var/obj/structure/machinery/computer/security/C)
+/obj/item/circuitboard/computer/security/disassemble(var/obj/structure/machinery/computer/security/C)
 	if (..(C))
 		network = C.network
 
@@ -164,7 +164,7 @@
 	if (..(SC))
 		SC.can_order_contraband = contraband_enabled
 
-/obj/item/circuitboard/computer/supplycomp/deconstruct(var/obj/structure/machinery/computer/supplycomp/SC)
+/obj/item/circuitboard/computer/supplycomp/disassemble(var/obj/structure/machinery/computer/supplycomp/SC)
 	if (..(SC))
 		contraband_enabled = SC.can_order_contraband
 
@@ -179,7 +179,7 @@
 		SCV.spent = spent
 		SCV.tank_unlocked = tank_unlocked
 
-/obj/item/circuitboard/computer/supplycomp/vehicle/deconstruct(var/obj/structure/machinery/computer/supplycomp/vehicle/SCV)
+/obj/item/circuitboard/computer/supplycomp/vehicle/disassemble(var/obj/structure/machinery/computer/supplycomp/vehicle/SCV)
 	if (..(SCV))
 		spent = SCV.spent
 		tank_unlocked = SCV.tank_unlocked
@@ -249,7 +249,7 @@
 			to_chat(user, SPAN_DANGER("Circuit controls are locked."))
 			return
 		var/existing_networks = jointext(network,",")
-		var/input = strip_html(input(usr, "Which networks would you like to connect this camera console circuit to? Seperate networks with a comma. No Spaces!\nFor example: military,Security,Secret ", "Multitool-Circuitboard interface", existing_networks))
+		var/input = strip_html(input(usr, "Which networks would you like to connect this camera console circuit to? Separate networks with a comma. No Spaces!\nFor example: military,Security,Secret ", "Multitool-Circuitboard interface", existing_networks))
 		if(!input)
 			to_chat(usr, "No input found please hang up and try your call again.")
 			return

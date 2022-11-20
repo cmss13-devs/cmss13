@@ -5,20 +5,16 @@ import { Window } from '../layouts';
 export const TechControl = (props, context) => {
   const { act, data } = useBackend(context);
   data.leader_data = data.leader_data || {
-    "name": "Unassigned",
-    "job": "N/A",
-    "paygrade": "N/A",
-    "rank": 0,
+    'name': 'Unassigned',
+    'job': 'N/A',
+    'paygrade': 'N/A',
+    'rank': 0,
   };
 
   const { leader_data, user_data } = data;
 
   return (
-    <Window
-      width={500}
-      height={250}
-      resizable
-    >
+    <Window width={500} height={250} resizable>
       <Window.Content>
         <Flex height="100%" justify="space-between">
           <Flex.Item grow={1}>
@@ -45,10 +41,13 @@ export const TechControl = (props, context) => {
                       <Label label="Name" content={user_data.name} />
                     </Flex.Item>
                     <Flex.Item mt={1}>
-                      <Label label="Job" content={user_data.job || "N/A"} />
+                      <Label label="Job" content={user_data.job || 'N/A'} />
                     </Flex.Item>
                     <Flex.Item mt={1}>
-                      <Label label="Paygrade" content={user_data.paygrade || "N/A"} />
+                      <Label
+                        label="Paygrade"
+                        content={user_data.paygrade || 'N/A'}
+                      />
                     </Flex.Item>
                   </Flex>
                 </Section>
@@ -61,11 +60,13 @@ export const TechControl = (props, context) => {
                 <Flex.Item>
                   <Button
                     content="Take Command"
-                    disabled={(user_data.rank || 0) < leader_data.rank
-                      || user_data.is_leader}
+                    disabled={
+                      (user_data.rank || 0) < leader_data.rank ||
+                      user_data.is_leader
+                    }
                     textAlign="center"
                     width="100%"
-                    onClick={() => act("override_leader")}
+                    onClick={() => act('override_leader')}
                   />
                 </Flex.Item>
                 <Flex.Item mt={1}>
@@ -75,7 +76,7 @@ export const TechControl = (props, context) => {
                     color="red"
                     textAlign="center"
                     width="100%"
-                    onClick={() => act("giveup_control")}
+                    onClick={() => act('giveup_control')}
                   />
                 </Flex.Item>
               </Flex>

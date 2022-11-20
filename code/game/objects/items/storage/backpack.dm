@@ -39,10 +39,10 @@
 			to_chat(H, SPAN_NOTICE("The ID lock rejects your ID"))
 	update_icon()
 
-/obj/item/storage/backpack/equipped(mob/user, slot)
+/obj/item/storage/backpack/equipped(mob/user, slot, silent)
 	if(slot == WEAR_BACK)
 		mouse_opacity = 2 //so it's easier to click when properly equipped.
-		if(use_sound)
+		if(use_sound && !silent)
 			playsound(loc, use_sound, 15, TRUE, 6)
 		if(!worn_accessible) //closes it if it's open.
 			storage_close(user)
@@ -123,12 +123,12 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	else
 		overlays += "+[icon_state]_full"
 
-/obj/item/storage/backpack/examine(mob/user)
-	..()
+/obj/item/storage/backpack/get_examine_text(mob/user)
+	. = ..()
 	if(is_id_lockable)
-		to_chat(user, "Features an ID lock. Swipe your ID card to lock or unlock it.")
+		. += "Features an ID lock. Swipe your ID card to lock or unlock it."
 		if(lock_overridable)
-			to_chat(user, "This lock can be overridden with command-level access.")
+			. += "This lock can be overridden with command-level access."
 
 /*
  * Backpack Types
@@ -475,13 +475,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	else
 		. = ..()
 
-/obj/item/storage/backpack/marine/satchel/rto/proc/new_droppod_tech_unlocked(name)
-	playsound(get_turf(loc), 'sound/machines/techpod/techpod_rto_notif.ogg', 100, FALSE, 1, 4)
-
-	if(ismob(loc))
-		var/mob/M = loc
-		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] New droppod available ([name])."))
-
 /obj/item/storage/backpack/marine/satchel/rto/small
 	name = "\improper USCM Small Radio Telephone Pack"
 	max_storage_space = 10
@@ -499,7 +492,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 
 /obj/item/storage/backpack/marine/marsoc
-	name = "\improper USCM MARSOC IMP tactical rucksack"
+	name = "\improper USCM SOF IMP tactical rucksack"
 	icon_state = "tacrucksack"
 	desc = "With a backpack like this, you'll forget you're on a hell march designed to kill you."
 	worn_accessible = TRUE
@@ -564,7 +557,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak
 	name = "\improper M68 Thermal Cloak"
-	desc = "The lightweight thermal dampeners and optical camouflage provided by this cloak are weaker than those found in standard USCM ghillie suits. In exchange, the cloak can be worn over combat armor and offers the wearer high manueverability and adaptability to many environments."
+	desc = "The lightweight thermal dampeners and optical camouflage provided by this cloak are weaker than those found in standard USCM ghillie suits. In exchange, the cloak can be worn over combat armor and offers the wearer high maneuverability and adaptability to many environments."
 	icon_state = "scout_cloak"
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S) //Need to wear Scout armor and helmet to equip this.
 	has_gamemode_skin = FALSE //same sprite for all gamemode.
@@ -777,9 +770,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return
 	..()
 
-/obj/item/storage/backpack/marine/engineerpack/examine(mob/user)
-	..()
-	to_chat(user, "[reagents.total_volume] units of fuel left!")
+/obj/item/storage/backpack/marine/engineerpack/get_examine_text(mob/user)
+	. = ..()
+	. += "[reagents.total_volume] units of fuel left!"
 
 /obj/item/storage/backpack/marine/engineerpack/satchel
 	name = "\improper USCM technician welder-satchel"
@@ -922,7 +915,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp
 	name = "\improper V86 Thermal Cloak"
-	desc = "A thermo-optic camoflage cloak commonly used by UPP commando units."
+	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units."
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
 
 	max_storage_space = 21

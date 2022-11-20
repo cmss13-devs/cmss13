@@ -396,3 +396,13 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/list/overlap = id_group & access_to_check
 	return length(overlap)
+
+/mob/living/carbon/human/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+	. = ..()
+	switch(fire.fire_variant)
+		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire
+			var/resist_modifier = 1
+			if(HAS_TRAIT(src, TRAIT_SUPER_STRONG))
+				resist_modifier = 0.25
+			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
+			to_chat(src, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))

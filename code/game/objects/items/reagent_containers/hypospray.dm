@@ -151,14 +151,14 @@
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
 	. = ..()
 
-/obj/item/reagent_container/hypospray/examine(mob/user)
-	..()
+/obj/item/reagent_container/hypospray/get_examine_text(mob/user)
+	. = ..()
 	if(magfed)
 		if(mag)
-			to_chat(user, SPAN_INFO("It is loaded with \a [mag], containing [reagents.total_volume] units."))
+			. += SPAN_INFO("It is loaded with \a [mag], containing [reagents.total_volume] units.")
 		else
-			to_chat(user, SPAN_INFO("It is unloaded."))
-		to_chat(user, SPAN_INFO("It is set to administer [amount_per_transfer_from_this] units per dose."))
+			. += SPAN_INFO("It is unloaded.")
+		. += SPAN_INFO("It is set to administer [amount_per_transfer_from_this] units per dose.")
 
 /obj/item/reagent_container/hypospray/attack(mob/living/M, mob/living/user)
 	if(magfed && !mag)
@@ -192,7 +192,7 @@
 		if(!M.Adjacent(user))
 			return 0
 	if(M != user && M.stat != DEAD && M.a_intent != INTENT_HELP && !M.is_mob_incapacitated() && (skillcheck(M, SKILL_CQC, SKILL_CQC_SKILLED) || isYautja(M))) // preds have null skills
-		user.KnockDown(3)
+		user.apply_effect(3, WEAKEN)
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used CQC skill to stop [key_name(user)] injecting them.</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [key_name(M)] by their cqc skill.</font>")
 		msg_admin_attack("[key_name(user)] got robusted by the CQC of [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)

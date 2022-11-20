@@ -8,8 +8,8 @@
 	flash_pain()
 
 	if (stun_amount)
-		Stun(stun_amount)
-		KnockDown(stun_amount)
+		apply_effect(stun_amount, STUN)
+		apply_effect(stun_amount, WEAKEN)
 		apply_effect(STUTTER, stun_amount)
 		apply_effect(EYE_BLUR, stun_amount)
 
@@ -89,8 +89,7 @@
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [O]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
-		var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-		playsound(O,S, 50, 1)
+		playsound(O,"slam", 50, 1)
 	..()
 
 //This is called when the mob or human is thrown into a dense turf or wall
@@ -102,8 +101,7 @@
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [T]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
-		var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-		playsound(T,S, 50, 1)
+		playsound(T,"slam", 50, 1)
 	..()
 
 /mob/living/proc/near_wall(var/direction,var/distance=1)
@@ -200,29 +198,26 @@
 
 //Mobs on Fire end
 
-/mob/living/proc/update_weather(check_area = TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
-	// Only player mobs are affected by weather.
-	if(!client)
-		return
-
-	// Do this always
-	clear_fullscreen("weather")
-	remove_weather_effects()
-
+/mob/living/proc/handle_weather(var/delta_time = 1)
+	var/starting_weather_type = current_weather_effect_type
 	var/area/area = get_area(src)
 	// Check if we're supposed to be something affected by weather
-	if(!SSweather.is_weather_event || !SSweather.weather_event_instance)
-		return
-	if(check_area && !SSweather.map_holder.should_affect_area(area))
-		return
-
-	// Fullscreens
-	if(SSweather.weather_event_instance.fullscreen_type)
-		overlay_fullscreen("weather", SSweather.weather_event_instance.fullscreen_type)
+	if(!SSweather.weather_event_instance || !SSweather.map_holder.should_affect_area(area))
+		current_weather_effect_type = null
 	else
-		clear_fullscreen("weather")
+		current_weather_effect_type = SSweather.weather_event_type
+		SSweather.weather_event_instance.process_mob_effect(src, delta_time)
 
-	// Effects
-	if(SSweather.weather_event_instance.effect_type)
-		new SSweather.weather_event_instance.effect_type(src)
+	if(current_weather_effect_type != starting_weather_type)
+		if(current_weather_effect_type)
+			overlay_fullscreen("weather", SSweather.weather_event_instance.fullscreen_type)
+		else
+			clear_fullscreen("weather")
+
+/mob/living/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+	. = ..()
+	fire.set_on_fire(src)
+
+/mob/living/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+	. = ..()
+	fire.set_on_fire(src)

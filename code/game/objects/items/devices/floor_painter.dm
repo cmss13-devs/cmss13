@@ -204,6 +204,6 @@
 				if("P (OP)")
 					mode = "white_halfp"
 
-/obj/item/device/floor_painter/examine(mob/user)
-	..()
-	to_chat(user, "It is in [mode_nice] mode.")
+/obj/item/device/floor_painter/get_examine_text(mob/user)
+	. = ..()
+	. += "It is in [mode_nice] mode."

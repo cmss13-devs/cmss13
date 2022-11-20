@@ -43,6 +43,16 @@
 	H.sec_hud_set_ID()
 	H.hud_set_squad()
 
+	if(H.wear_l_ear)
+		if(istype(H.wear_l_ear, /obj/item/device/radio/headset/almayer/marine))
+			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = H.wear_l_ear
+			equipped_headset.add_hud_tracker(H)
+	else if(H.wear_r_ear)
+		if(istype(H.wear_r_ear, /obj/item/device/radio/headset/almayer/marine))
+			var/obj/item/device/radio/headset/almayer/marine/equipped_headset = H.wear_r_ear
+			equipped_headset.add_hud_tracker(H)
+
+
 //*****************************************************************************************************/
 /datum/equipment_preset/uscm/pfc
 	name = "USCM Squad Rifleman"
@@ -154,6 +164,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_JACKET)
 
 /datum/equipment_preset/uscm/tank/load_status()
 	return
@@ -171,12 +182,12 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/commander(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/tanker(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/tool/weldpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tanker(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech/tanker(H), WEAR_HEAD)
 
 	spawn_weapon(/obj/item/weapon/gun/smg/m39, /obj/item/ammo_magazine/smg/m39/extended, H, 0, 3)
 
@@ -213,6 +224,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/intel(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/tanker, WEAR_JACKET)
 
 /datum/equipment_preset/uscm/intel/load_status()
 	return //No cryo munchies
@@ -234,8 +246,8 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/intel(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/intel(src), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto/intel(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/rto/intel(src), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(src), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/intel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -726,17 +738,17 @@
 	name = "USCM Cryo Squad Radio Telephone Operator (Equipped)"
 	auto_squad_name = SQUAD_MARINE_CRYO
 
-//############ MARSOC #############
+//############ Marine Raiders #############
 //Operator
 /datum/equipment_preset/uscm/marsoc
-	name = "MARSOC Operator"
+	name = "Marine Raider"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "MARSOC Operator"
-	rank = JOB_MARSOC
+	assignment = "Marine Raider"
+	rank = JOB_MARINE_RAIDER
 	role_comm_title = "Op."
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_TSL)
 	skills = /datum/skills/commando/deathsquad
-	auto_squad_name = SQUAD_MARSOC
+	auto_squad_name = SQUAD_SOF
 	paygrade = "ME6"
 
 /datum/equipment_preset/uscm/marsoc/New()
@@ -755,10 +767,10 @@
 	H.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK)
 	//face
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marsoc, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/marsoc, WEAR_FACE)
 	//head
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/marsoc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_nvg/marsoc, WEAR_IN_HELMET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_HELMET)
 	//uniform
@@ -769,7 +781,7 @@
 	for(var/i in 1 to W.hold.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
 	//jacket
-	var/obj/item/clothing/suit/storage/marine/marsoc/armor = new()
+	var/obj/item/clothing/suit/storage/marine/sof/armor = new()
 	H.equip_to_slot_or_del(armor, WEAR_JACKET)
 	for(var/i in 1 to armor.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd, WEAR_IN_JACKET)
@@ -789,9 +801,9 @@
 			return "ME7"
 	return paygrade
 
-//Codenamed Operator
+//Covert Raiders
 /datum/equipment_preset/uscm/marsoc/covert
-	name = "MARSOC Operator (Covert)"
+	name = "Marine Raiders (Covert)"
 	uses_special_name = TRUE
 /datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = MALE
@@ -802,9 +814,9 @@
 
 //Team Leader
 /datum/equipment_preset/uscm/marsoc/sl
-	name = "MARSOC Team Leader"
-	assignment = JOB_MARSOC_SL
-	rank = JOB_MARSOC_SL
+	name = "Marine Raider Team Leader"
+	assignment = JOB_MARINE_RAIDER_SL
+	rank = JOB_MARINE_RAIDER_SL
 	role_comm_title = "TL."
 	paygrade = "MO1"
 	skills = /datum/skills/commando/deathsquad/leader
@@ -817,7 +829,7 @@
 
 //Codenamed Team Leader
 /datum/equipment_preset/uscm/marsoc/sl/covert
-	name = "MARSOC Team Leader (Covert)"
+	name = "Marine Raider Team Leader (Covert)"
 	uses_special_name = TRUE
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = MALE
@@ -827,9 +839,9 @@
 	return "O"
 //Officer
 /datum/equipment_preset/uscm/marsoc/cmd
-	name = "MARSOC Officer"
-	assignment = JOB_MARSOC_CMD
-	rank = JOB_MARSOC_CMD
+	name = "Marine Raider Officer"
+	assignment = JOB_MARINE_RAIDER_CMD
+	rank = JOB_MARINE_RAIDER_CMD
 	role_comm_title = "CMD."
 	paygrade = "MO3"
 	skills = /datum/skills/commando/deathsquad/officer

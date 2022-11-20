@@ -14,8 +14,8 @@
 
 	// Stuff needed to render the map
 	var/map_name
-	var/obj/screen/map_view/cam_screen
-	var/obj/screen/background/cam_background
+	var/atom/movable/screen/map_view/cam_screen
+	var/atom/movable/screen/background/cam_background
 
 	/// All turfs within range of the currently active camera
 	var/list/range_turfs = list()
@@ -255,7 +255,7 @@
 
 /obj/structure/machinery/computer/security/wooden_tv
 	name = "Security Cameras"
-	desc = "An old TV hooked into the stations camera network."
+	desc = "An old TV hooked into the station's camera network."
 	icon_state = "security_det"
 	circuit = null
 
@@ -335,6 +335,7 @@
 	use_power = 0
 	idle_power_usage = 0
 	active_power_usage = 0
+	needs_power = FALSE
 	network = list(CAMERA_NET_MORTAR)
 	exproof = TRUE
 	colony_camera_mapload = FALSE

@@ -1,4 +1,4 @@
-/obj/screen/plane_master
+/atom/movable/screen/plane_master
 	screen_loc = "CENTER"
 	icon_state = "blank"
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
@@ -17,27 +17,39 @@
 	///reference: current relay this plane is utilizing to render
 	var/obj/render_plane_relay/relay
 
-/obj/screen/plane_master/proc/Show(override)
+/atom/movable/screen/plane_master/proc/Show(override)
 	alpha = override || show_alpha
 
-/obj/screen/plane_master/proc/Hide(override)
+/atom/movable/screen/plane_master/proc/Hide(override)
 	alpha = override || hide_alpha
 
 //Why do plane masters need a backdrop sometimes? Read https://secure.byond.com/forum/?post=2141928
 //Trust me, you need one. Period. If you don't think you do, you're doing something extremely wrong.
-/obj/screen/plane_master/proc/backdrop(mob/mymob)
+/atom/movable/screen/plane_master/proc/backdrop(mob/mymob)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!isnull(render_relay_plane))
 		relay_render_to_plane(mymob, render_relay_plane)
 
+/atom/movable/screen/plane_master/floor
+	name = "floor plane master"
+	plane = FLOOR_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
 ///Contains most things in the game world
-/obj/screen/plane_master/game_world
+/atom/movable/screen/plane_master/game_world
 	name = "game world plane master"
 	plane = GAME_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
 
-/obj/screen/plane_master/ghost
+/atom/movable/screen/plane_master/game_world/backdrop(mob/mymob)
+	. = ..()
+	remove_filter("AO")
+	if(istype(mymob) && mymob?.client?.prefs?.toggle_prefs & TOGGLE_AMBIENT_OCCLUSION)
+		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
+
+/atom/movable/screen/plane_master/ghost
 	name = "ghost plane master"
 	plane = GHOST_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
@@ -49,51 +61,54 @@
  * vars are set as to replicate behavior when rendering to other planes
  * do not touch this unless you know what you are doing
  */
-/obj/screen/plane_master/blackness
+/atom/movable/screen/plane_master/blackness
 	name = "darkness plane master"
 	plane = BLACKNESS_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	color = list(null, null, null, "#0000", "#000f")
 	blend_mode = BLEND_MULTIPLY
 	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR | PIXEL_SCALE
 //byond internal end
 
 ///Contains all lighting objects
-/obj/screen/plane_master/lighting
+/atom/movable/screen/plane_master/lighting
 	name = "lighting plane master"
 	plane = LIGHTING_PLANE
 	blend_mode_override = BLEND_MULTIPLY
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/screen/plane_master/runechat
+/atom/movable/screen/plane_master/lighting/exterior
+	name = "exterior lighting plane master"
+	plane = EXTERIOR_LIGHTING_PLANE
+
+/atom/movable/screen/plane_master/runechat
 	name = "runechat plane master"
 	plane = RUNECHAT_PLANE
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 	render_relay_plane = RENDER_PLANE_NON_GAME
 
-/obj/screen/plane_master/runechat/backdrop(mob/mymob)
+/atom/movable/screen/plane_master/runechat/backdrop(mob/mymob)
 	. = ..()
 	remove_filter("AO")
 	add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
 
-/obj/screen/plane_master/fullscreen
+/atom/movable/screen/plane_master/fullscreen
 	name = "fullscreen alert plane"
 	plane = FULLSCREEN_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/screen/plane_master/hud
+/atom/movable/screen/plane_master/hud
 	name = "HUD plane"
 	plane = HUD_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
 
-/obj/screen/plane_master/above_hud
+/atom/movable/screen/plane_master/above_hud
 	name = "above HUD plane"
 	plane = ABOVE_HUD_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
 
-/obj/screen/plane_master/cinematic
+/atom/movable/screen/plane_master/cinematic
 	name = "cinematic plane"
 	plane = CINEMATIC_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME

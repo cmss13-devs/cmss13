@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "some changelog entries would fail to generate previously - this should now be resolved."

@@ -1,0 +1,117 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/void/vehicle,
+/area/space)
+"c" = (
+/obj/structure/interior_wall/van{
+	icon_state = "front_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"k" = (
+/obj/structure/interior_wall/van{
+	icon_state = "front_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"v" = (
+/obj/structure/interior_wall/van{
+	icon_state = "back_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"w" = (
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
+	dir = 4
+	},
+/obj/effect/vehicle_roof/van{
+	icon_state = "front_roof_2"
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/van/left;
+	name = "left entrance marker";
+	pixel_y = 32;
+	tag = "left"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_11"
+	},
+/area/vehicle/van)
+"A" = (
+/obj/structure/interior_wall/van{
+	alpha = 50;
+	icon_state = "exterior_door";
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"D" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	icon_state = "comfychair"
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/van/right;
+	name = "right entrance marker";
+	tag = "right"
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	alpha = 100;
+	pixel_y = -2
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_12"
+	},
+/area/vehicle/van)
+"G" = (
+/obj/structure/interior_wall/van{
+	icon_state = "back_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"J" = (
+/obj/structure/interior_wall/van{
+	icon_state = "back_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"S" = (
+/obj/structure/interior_wall/van{
+	icon_state = "interior_door"
+	},
+/obj/effect/vehicle_roof/van{
+	icon_state = "front_roof_1"
+	},
+/turf/open/space/basic,
+/area/space)
+"T" = (
+/obj/structure/interior_wall/van{
+	icon_state = "front_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+
+(1,1,1) = {"
+a
+v
+G
+J
+a
+"}
+(2,1,1) = {"
+a
+S
+w
+D
+A
+"}
+(3,1,1) = {"
+a
+c
+k
+T
+a
+"}

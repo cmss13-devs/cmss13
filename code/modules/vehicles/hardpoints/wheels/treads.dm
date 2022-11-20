@@ -25,6 +25,21 @@
 
 	move_max_momentum = 5	//same top speed, but takes 5 tiles to reach it
 
+
+/obj/item/hardpoint/locomotion/treads/miltruck
+	name = "Light treads"
+	desc = "Integral to the movement of the military vehicle."
+	disp_icon = "tank"
+	disp_icon_state = "miltrucktreads"
+	slot = HDPT_WHEELS
+
+/obj/item/hardpoint/locomotion/treads/crane
+	name = "Crane treads"
+	desc = "Integral to the movement of the crane."
+	disp_icon = "tank"
+	disp_icon_state = "cranetreads"
+	slot = HDPT_WHEELS
+
 /obj/item/hardpoint/locomotion/treads/on_install(var/obj/vehicle/multitile/V)
 	for(var/obj/item/hardpoint/support/overdrive_enhancer/OD in V.hardpoints)
 		if(OD.health > 0)

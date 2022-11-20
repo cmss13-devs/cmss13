@@ -37,8 +37,10 @@
 	if(!SSentity_manager.ready)
 		to_chat(src, "DB is still starting up, please wait")
 		return
+	world.log << "view stats"
 	if(client && client.player_entity)
-		client.player_data.ui_interact(src)
+		world.log << "client check good"
+		client.player_data.tgui_interact(src)
 
 /mob/verb/toggle_high_toss()
 	set name = "Toggle High Toss"

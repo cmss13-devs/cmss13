@@ -219,7 +219,7 @@
 	name = "Access Playtimes"
 
 /datum/player_action/access_playtimes/act(var/client/user, var/mob/target, var/list/params)
-	target?.client?.player_data.ui_interact(user.mob)
+	target?.client?.player_data.tgui_interact(user.mob)
 
 	return TRUE
 

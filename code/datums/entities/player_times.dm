@@ -58,17 +58,30 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 			if(JOB_PLAYTIME_TIER_4 to INFINITY)
 				icon_display = "Tier4"
 
-	if(icon_display)
-		icon_display = SSassets.transport.get_asset_url("uiPlaytime[icon_display].png")
+    if(icon_display)
+        icon_display = SSassets.transport.get_asset_url("uiPlaytime[icon_display].png")
 
-	var/playtime_percentage = min((total_minutes MINUTES_TO_DECISECOND) / JOB_PLAYTIME_TIER_4, 1)
-	return list(
-		"job" = role_id,
-		"playtime" = round(total_minutes MINUTES_TO_HOURS, 0.1),
-		"bgcolor" = "rgb(0, [Floor(128 * playtime_percentage)], [Floor(255 * playtime_percentage)])",
-		"textcolor" = "#FFFFFF",
-		"icondisplay" = icon_display
-	)
+    var/playtime_percentage = min((total_minutes MINUTES_TO_DECISECOND) / JOB_PLAYTIME_TIER_4, 1)
+    return list(
+        "job" = role_id,
+        "playtime" = round(total_minutes MINUTES_TO_HOURS, 0.1),
+        "bgcolor" = "rgb(0, [Floor(128 * playtime_percentage)], [Floor(255 * playtime_percentage)])",
+        "textcolor" = "#FFFFFF",
+        "icondisplay" = icon_display
+    )
+
+/datum/entity/player/tgui_interact(mob/user, datum/tgui/ui)
+	world.log << "tgui player"
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		world.log << "no existing ui, creating new"
+		ui = new(user, src, "Playtime")
+		ui.open()
+
+/datum/entity/player/ui_data(mob/user)
+	if(!LAZYACCESS(playtime_data, "loaded"))
+		load_timestat_data()
+	return playtime_data
 
 /datum/entity/player/proc/ui_interact(mob/user, ui_key = "playtime", var/datum/nanoui/ui = null, force_open = FALSE)
 	if(!user.client || !playtime_loaded || LAZYACCESS(playtime_data, "loading"))
@@ -89,8 +102,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 	var/mob/user = usr
 	user.set_interaction(src)
 
-	if(href_list["switchCategory"])
-		LAZYSET(playtime_data, "category", href_list["switchCategory"])
+    if(href_list["switchCategory"])
+        LAZYSET(playtime_data, "category", href_list["switchCategory"])
+
 
 
 	nanomanager.update_uis(src)
@@ -146,5 +160,5 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		else
 			LAZYADD(marine_playtimes, list(PT.get_nanoui_data()))
 
-	LAZYSET(playtime_data, "loading", FALSE)
-	LAZYSET(playtime_data, "loaded", TRUE)
+    LAZYSET(playtime_data, "loading", FALSE)
+    LAZYSET(playtime_data, "loaded", TRUE)

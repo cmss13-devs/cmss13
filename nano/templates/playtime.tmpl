@@ -54,19 +54,5 @@
             <td style="color: {{:value.textcolor}}">{{:value.playtime}} HOURS</td>
         </tr>
     {{/for}}
-{{else data.category == 2}}
-	{{:helper.USCMMode()}}
-
-    {{for data.stored_other_playtime}}
-        <tr class="playtime_row" style="background-color: {{:value.bgcolor}}">
-            {{if value.icondisplay}}
-                <td unselectable="on" style="padding: 2px;"><img src="{{:value.icondisplay}}" style="margin: 0 auto; display: block;"></img></td>
-            {{else}}
-                <td unselectable="on" style="padding: 2px; height: 27px;"></td>
-            {{/if}}
-            <td style="color: {{:value.textcolor}}">{{:value.job}}</td>
-            <td style="color: {{:value.textcolor}}">{{:value.playtime}} HOURS</td>
-        </tr>
-    {{/for}}
 {{/if}}
 </table>

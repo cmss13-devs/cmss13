@@ -112,7 +112,7 @@
 
 /mob/living/carbon/Xenomorph/update_inv_back()
 	if(!backpack_icon_carrier)
-		return
+		return // Xenos will only have a vis_obj if they've been equipped with a pack before
 
 	var/obj/item/storage/backpack/backpack = back
 	if(!backpack?.xeno_icon_state)

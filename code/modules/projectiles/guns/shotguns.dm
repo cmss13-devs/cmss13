@@ -1061,6 +1061,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	active_tube = current_mag
 	pump_delay = FIRE_DELAY_TIER_5*2
 
+/obj/item/weapon/gun/shotgun/pump/cmb/Destroy()
+	QDEL_NULL(primary_tube)
+	QDEL_NULL(secondary_tube)
+	QDEL_NULL(active_tube)
+	. = ..()
+
 /obj/item/weapon/gun/shotgun/pump/cmb/proc/do_toggle_tube(var/mob/user)
 	if(!ishuman(user) || user.is_mob_incapacitated())
 		return FALSE

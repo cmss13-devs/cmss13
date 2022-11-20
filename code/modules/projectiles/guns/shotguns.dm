@@ -1054,9 +1054,10 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/pump/cmb/Initialize(mapload, spawn_empty)
 	. = ..()
 	primary_tube = current_mag
-	secondary_tube = new current_mag.type
+	secondary_tube = new current_mag.type(src, spawn_empty? 1:0)
+	// secondary_tube = new secondary_tube(src, spawn_empty? 1:0)
 	current_mag = secondary_tube
-	replace_tube(secondary_tube.current_rounds)
+	replace_tube(current_mag.current_rounds)
 	active_tube = current_mag
 	pump_delay = FIRE_DELAY_TIER_5*2
 

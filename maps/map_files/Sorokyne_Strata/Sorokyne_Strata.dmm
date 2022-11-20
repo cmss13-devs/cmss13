@@ -19650,8 +19650,6 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/admin)
-"biM" = (
-)
 "biN" = (
 /obj/structure/platform/strata,
 /obj/structure/platform/strata{
@@ -33160,9 +33158,6 @@
 /obj/structure/platform/strata/metal,
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
-"gFN" = (
-,
-/turf/open/space/basic)
 "gFT" = (
 /obj/structure/largecrate/random,
 /obj/structure/barricade/handrail/strata,
@@ -43866,8 +43861,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (2,1,1) = {"
 aaa
@@ -44061,8 +44056,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (3,1,1) = {"
 aaa
@@ -44256,8 +44251,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (4,1,1) = {"
 aaa
@@ -44451,8 +44446,8 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}
 (5,1,1) = {"
 aaa
@@ -44646,8 +44641,8 @@ aac
 aac
 aac
 aac
-biM
-biM
+aac
+aac
 "}
 (6,1,1) = {"
 aaa
@@ -44841,8 +44836,8 @@ ttQ
 ttQ
 ttQ
 ttQ
-biM
-biM
+ttQ
+ttQ
 "}
 (7,1,1) = {"
 aaa
@@ -45036,8 +45031,8 @@ eOI
 eOI
 eOI
 eOI
-biM
-biM
+eOI
+eOI
 "}
 (8,1,1) = {"
 aaa
@@ -45231,8 +45226,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (9,1,1) = {"
 aaa
@@ -45426,8 +45421,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (10,1,1) = {"
 aaa
@@ -45621,8 +45616,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (11,1,1) = {"
 aaa
@@ -45816,8 +45811,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (12,1,1) = {"
 aaa
@@ -46011,8 +46006,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (13,1,1) = {"
 aaa
@@ -46206,8 +46201,8 @@ wdN
 wdN
 wdN
 wdN
-biM
-biM
+wdN
+wdN
 "}
 (14,1,1) = {"
 aaa
@@ -46401,8 +46396,8 @@ ttQ
 ttQ
 ttQ
 ttQ
-biM
-biM
+ttQ
+ttQ
 "}
 (15,1,1) = {"
 aaa
@@ -46596,8 +46591,8 @@ aac
 aac
 aac
 aac
-biM
-biM
+aac
+aac
 "}
 (16,1,1) = {"
 aaa
@@ -46791,8 +46786,8 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}
 (17,1,1) = {"
 aaa
@@ -46986,8 +46981,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (18,1,1) = {"
 aaa
@@ -47181,8 +47176,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (19,1,1) = {"
 aaa
@@ -47376,8 +47371,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (20,1,1) = {"
 aaa
@@ -47571,8 +47566,8 @@ aaa
 aaa
 aaa
 aaa
-gFN
-gFN
+aaa
+aaa
 "}
 (21,1,1) = {"
 aaa
@@ -47766,8 +47761,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (22,1,1) = {"
 aaa
@@ -47961,8 +47956,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (23,1,1) = {"
 aaa
@@ -48156,8 +48151,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (24,1,1) = {"
 aaa
@@ -48351,8 +48346,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (25,1,1) = {"
 aaa
@@ -48546,8 +48541,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (26,1,1) = {"
 aaa
@@ -48741,8 +48736,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (27,1,1) = {"
 aaa
@@ -48936,8 +48931,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (28,1,1) = {"
 aaa
@@ -49131,8 +49126,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (29,1,1) = {"
 aaa
@@ -49326,8 +49321,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (30,1,1) = {"
 aaa
@@ -49521,8 +49516,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (31,1,1) = {"
 aaa
@@ -49716,8 +49711,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (32,1,1) = {"
 aaa
@@ -49911,8 +49906,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (33,1,1) = {"
 aaa
@@ -50106,8 +50101,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (34,1,1) = {"
 aaa
@@ -50301,8 +50296,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (35,1,1) = {"
 aaa
@@ -50496,8 +50491,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (36,1,1) = {"
 aaa
@@ -50691,8 +50686,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (37,1,1) = {"
 aaa
@@ -50886,8 +50881,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (38,1,1) = {"
 aaa
@@ -51081,8 +51076,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (39,1,1) = {"
 aaa
@@ -51276,8 +51271,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (40,1,1) = {"
 aaa
@@ -51471,8 +51466,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (41,1,1) = {"
 aaa
@@ -51666,8 +51661,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (42,1,1) = {"
 aaa
@@ -51861,8 +51856,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (43,1,1) = {"
 aaa
@@ -52056,8 +52051,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (44,1,1) = {"
 aaa
@@ -52251,8 +52246,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (45,1,1) = {"
 aaa
@@ -52446,8 +52441,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (46,1,1) = {"
 aaa
@@ -52641,8 +52636,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (47,1,1) = {"
 aaa
@@ -52836,8 +52831,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (48,1,1) = {"
 aaa
@@ -53031,8 +53026,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (49,1,1) = {"
 aaa
@@ -53226,8 +53221,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (50,1,1) = {"
 aaa
@@ -53421,8 +53416,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (51,1,1) = {"
 aaa
@@ -53616,8 +53611,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (52,1,1) = {"
 aaa
@@ -53811,8 +53806,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (53,1,1) = {"
 aaa
@@ -54006,8 +54001,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (54,1,1) = {"
 aaa
@@ -54201,8 +54196,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (55,1,1) = {"
 aaa
@@ -54396,8 +54391,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (56,1,1) = {"
 aaa
@@ -54591,8 +54586,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (57,1,1) = {"
 aaa
@@ -54786,8 +54781,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (58,1,1) = {"
 aaa
@@ -54981,8 +54976,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (59,1,1) = {"
 aaa
@@ -55176,8 +55171,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (60,1,1) = {"
 aaa
@@ -55371,8 +55366,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (61,1,1) = {"
 aaa
@@ -55566,8 +55561,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (62,1,1) = {"
 aaa
@@ -55761,8 +55756,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (63,1,1) = {"
 aaa
@@ -55956,8 +55951,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (64,1,1) = {"
 aaa
@@ -56151,8 +56146,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (65,1,1) = {"
 aaa
@@ -56346,8 +56341,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (66,1,1) = {"
 aaa
@@ -56541,8 +56536,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (67,1,1) = {"
 aaa
@@ -56736,8 +56731,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (68,1,1) = {"
 aaa
@@ -56931,8 +56926,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (69,1,1) = {"
 aaa
@@ -57126,8 +57121,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (70,1,1) = {"
 aaa
@@ -57321,8 +57316,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (71,1,1) = {"
 aaa
@@ -57516,8 +57511,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (72,1,1) = {"
 aaa
@@ -57711,8 +57706,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (73,1,1) = {"
 aaa
@@ -57906,8 +57901,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (74,1,1) = {"
 aaa
@@ -58101,8 +58096,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (75,1,1) = {"
 aaa
@@ -58296,8 +58291,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (76,1,1) = {"
 aaa
@@ -58491,8 +58486,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (77,1,1) = {"
 aaa
@@ -58686,8 +58681,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (78,1,1) = {"
 aaa
@@ -58881,8 +58876,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (79,1,1) = {"
 aaa
@@ -59076,8 +59071,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (80,1,1) = {"
 aaa
@@ -59271,8 +59266,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (81,1,1) = {"
 aaa
@@ -59466,8 +59461,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (82,1,1) = {"
 aaa
@@ -59661,8 +59656,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (83,1,1) = {"
 aaa
@@ -59856,8 +59851,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (84,1,1) = {"
 aaa
@@ -60051,8 +60046,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (85,1,1) = {"
 aaa
@@ -60246,8 +60241,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (86,1,1) = {"
 aaa
@@ -60441,8 +60436,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (87,1,1) = {"
 aaa
@@ -60636,8 +60631,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (88,1,1) = {"
 aaa
@@ -60831,8 +60826,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (89,1,1) = {"
 aaa
@@ -61026,8 +61021,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (90,1,1) = {"
 aaa
@@ -61221,8 +61216,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (91,1,1) = {"
 aaa
@@ -61416,8 +61411,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (92,1,1) = {"
 aaa
@@ -61611,8 +61606,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (93,1,1) = {"
 aaa
@@ -61806,8 +61801,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (94,1,1) = {"
 aaa
@@ -62001,8 +61996,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (95,1,1) = {"
 aaa
@@ -62196,8 +62191,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (96,1,1) = {"
 aaa
@@ -62391,8 +62386,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (97,1,1) = {"
 aab
@@ -62586,8 +62581,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (98,1,1) = {"
 aab
@@ -62781,8 +62776,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (99,1,1) = {"
 aab
@@ -62976,8 +62971,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (100,1,1) = {"
 aab
@@ -63171,8 +63166,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (101,1,1) = {"
 aab
@@ -63366,8 +63361,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (102,1,1) = {"
 aab
@@ -63561,8 +63556,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (103,1,1) = {"
 aab
@@ -63756,8 +63751,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (104,1,1) = {"
 aab
@@ -63951,8 +63946,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (105,1,1) = {"
 aab
@@ -64146,8 +64141,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (106,1,1) = {"
 aab
@@ -64341,8 +64336,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (107,1,1) = {"
 aab
@@ -64536,8 +64531,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (108,1,1) = {"
 aab
@@ -64731,8 +64726,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (109,1,1) = {"
 aab
@@ -64926,8 +64921,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (110,1,1) = {"
 aab
@@ -65121,8 +65116,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (111,1,1) = {"
 aab
@@ -65316,8 +65311,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (112,1,1) = {"
 aab
@@ -65511,8 +65506,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (113,1,1) = {"
 aab
@@ -65706,8 +65701,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (114,1,1) = {"
 aab
@@ -65901,8 +65896,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (115,1,1) = {"
 aab
@@ -66096,8 +66091,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (116,1,1) = {"
 aab
@@ -66291,8 +66286,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (117,1,1) = {"
 aab
@@ -66486,8 +66481,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (118,1,1) = {"
 aab
@@ -66681,8 +66676,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (119,1,1) = {"
 aab
@@ -66876,8 +66871,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (120,1,1) = {"
 aab
@@ -67071,8 +67066,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (121,1,1) = {"
 aab
@@ -67266,8 +67261,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (122,1,1) = {"
 aab
@@ -67461,8 +67456,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (123,1,1) = {"
 aab
@@ -67656,8 +67651,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (124,1,1) = {"
 aab
@@ -67851,8 +67846,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (125,1,1) = {"
 aab
@@ -68046,8 +68041,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (126,1,1) = {"
 aab
@@ -68241,8 +68236,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (127,1,1) = {"
 aab
@@ -68436,8 +68431,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (128,1,1) = {"
 aab
@@ -68631,8 +68626,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (129,1,1) = {"
 aab
@@ -68826,8 +68821,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (130,1,1) = {"
 aab
@@ -69021,8 +69016,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (131,1,1) = {"
 aab
@@ -69216,8 +69211,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (132,1,1) = {"
 aab
@@ -69411,8 +69406,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (133,1,1) = {"
 aab
@@ -69606,8 +69601,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (134,1,1) = {"
 aab
@@ -69801,8 +69796,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (135,1,1) = {"
 aab
@@ -69996,8 +69991,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (136,1,1) = {"
 aab
@@ -70191,8 +70186,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (137,1,1) = {"
 aab
@@ -70386,8 +70381,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (138,1,1) = {"
 aab
@@ -70581,8 +70576,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (139,1,1) = {"
 aab
@@ -70776,8 +70771,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (140,1,1) = {"
 aab
@@ -70971,8 +70966,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (141,1,1) = {"
 aab
@@ -71166,8 +71161,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (142,1,1) = {"
 aab
@@ -71361,8 +71356,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (143,1,1) = {"
 aab
@@ -71556,8 +71551,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (144,1,1) = {"
 aab
@@ -71751,8 +71746,8 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}
 (145,1,1) = {"
 aab
@@ -71945,9 +71940,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (146,1,1) = {"
 aab
@@ -72140,9 +72135,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (147,1,1) = {"
 aab
@@ -72335,9 +72330,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (148,1,1) = {"
 aab
@@ -72530,9 +72525,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (149,1,1) = {"
 aab
@@ -72725,9 +72720,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (150,1,1) = {"
 aab
@@ -72920,9 +72915,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (151,1,1) = {"
 aab
@@ -73115,9 +73110,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (152,1,1) = {"
 aab
@@ -73310,9 +73305,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (153,1,1) = {"
 aab
@@ -73505,9 +73500,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (154,1,1) = {"
 aab
@@ -73700,9 +73695,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (155,1,1) = {"
 aab
@@ -73895,9 +73890,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (156,1,1) = {"
 aab
@@ -74090,9 +74085,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (157,1,1) = {"
 aab
@@ -74285,9 +74280,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (158,1,1) = {"
 aab
@@ -74480,9 +74475,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (159,1,1) = {"
 aab
@@ -74675,9 +74670,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (160,1,1) = {"
 aab
@@ -74870,9 +74865,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (161,1,1) = {"
 aab
@@ -75065,9 +75060,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (162,1,1) = {"
 aab
@@ -75260,9 +75255,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (163,1,1) = {"
 aab
@@ -75455,9 +75450,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (164,1,1) = {"
 aab
@@ -75650,9 +75645,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (165,1,1) = {"
 aab
@@ -75845,9 +75840,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (166,1,1) = {"
 aab
@@ -76040,9 +76035,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (167,1,1) = {"
 aab
@@ -76235,9 +76230,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (168,1,1) = {"
 aab
@@ -76430,9 +76425,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (169,1,1) = {"
 aab
@@ -76625,9 +76620,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (170,1,1) = {"
 aab
@@ -76820,9 +76815,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (171,1,1) = {"
 aab
@@ -77015,9 +77010,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (172,1,1) = {"
 aab
@@ -77210,9 +77205,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (173,1,1) = {"
 aab
@@ -77405,9 +77400,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (174,1,1) = {"
 aab
@@ -77600,9 +77595,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (175,1,1) = {"
 aab
@@ -77795,9 +77790,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (176,1,1) = {"
 aab
@@ -77990,9 +77985,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (177,1,1) = {"
 aab
@@ -78185,9 +78180,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (178,1,1) = {"
 aab
@@ -78380,9 +78375,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (179,1,1) = {"
 aab
@@ -78575,9 +78570,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (180,1,1) = {"
 aab
@@ -78770,9 +78765,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (181,1,1) = {"
 aab
@@ -78965,9 +78960,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (182,1,1) = {"
 aab
@@ -79160,9 +79155,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (183,1,1) = {"
 aab
@@ -79355,9 +79350,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (184,1,1) = {"
 aab
@@ -79550,9 +79545,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (185,1,1) = {"
 aab
@@ -79745,9 +79740,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (186,1,1) = {"
 aab
@@ -79940,9 +79935,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (187,1,1) = {"
 aab
@@ -80135,9 +80130,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (188,1,1) = {"
 aab
@@ -80330,9 +80325,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (189,1,1) = {"
 aab
@@ -80525,9 +80520,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (190,1,1) = {"
 aab
@@ -80720,9 +80715,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (191,1,1) = {"
 aab
@@ -80915,9 +80910,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (192,1,1) = {"
 aab
@@ -81110,9 +81105,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (193,1,1) = {"
 aab
@@ -81305,9 +81300,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (194,1,1) = {"
 aab
@@ -81500,9 +81495,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (195,1,1) = {"
 aab
@@ -81695,9 +81690,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (196,1,1) = {"
 aab
@@ -81890,9 +81885,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (197,1,1) = {"
 aab
@@ -82085,9 +82080,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (198,1,1) = {"
 aab
@@ -82280,9 +82275,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (199,1,1) = {"
 aab
@@ -82475,9 +82470,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (200,1,1) = {"
 aab
@@ -82670,9 +82665,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (201,1,1) = {"
 aab
@@ -82865,9 +82860,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (202,1,1) = {"
 aab
@@ -83060,9 +83055,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (203,1,1) = {"
 aab
@@ -83255,9 +83250,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (204,1,1) = {"
 aab
@@ -83450,9 +83445,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (205,1,1) = {"
 aab
@@ -83645,9 +83640,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (206,1,1) = {"
 aab
@@ -83840,9 +83835,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (207,1,1) = {"
 aab
@@ -84035,9 +84030,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (208,1,1) = {"
 aab
@@ -84230,9 +84225,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (209,1,1) = {"
 aab
@@ -84425,9 +84420,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (210,1,1) = {"
 aab
@@ -84620,9 +84615,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (211,1,1) = {"
 aab
@@ -84815,9 +84810,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (212,1,1) = {"
 aab
@@ -85010,9 +85005,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (213,1,1) = {"
 aab
@@ -85205,9 +85200,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (214,1,1) = {"
 aab
@@ -85400,9 +85395,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (215,1,1) = {"
 aab
@@ -85595,9 +85590,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (216,1,1) = {"
 aab
@@ -85790,9 +85785,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (217,1,1) = {"
 aab
@@ -85985,9 +85980,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (218,1,1) = {"
 aab
@@ -86180,9 +86175,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (219,1,1) = {"
 aab
@@ -86375,9 +86370,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (220,1,1) = {"
 aab
@@ -86570,9 +86565,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (221,1,1) = {"
 aab
@@ -86765,9 +86760,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (222,1,1) = {"
 aab
@@ -86960,9 +86955,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (223,1,1) = {"
 aab
@@ -87155,9 +87150,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (224,1,1) = {"
 aab
@@ -87350,9 +87345,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (225,1,1) = {"
 aab
@@ -87545,9 +87540,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (226,1,1) = {"
 aab
@@ -87740,9 +87735,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (227,1,1) = {"
 aab
@@ -87935,9 +87930,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (228,1,1) = {"
 aab
@@ -88130,9 +88125,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (229,1,1) = {"
 aab
@@ -88325,9 +88320,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (230,1,1) = {"
 aab
@@ -88520,9 +88515,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (231,1,1) = {"
 aab
@@ -88715,9 +88710,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (232,1,1) = {"
 aab
@@ -88910,9 +88905,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (233,1,1) = {"
 aab
@@ -89105,9 +89100,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (234,1,1) = {"
 aab
@@ -89300,9 +89295,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (235,1,1) = {"
 aab
@@ -89495,9 +89490,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (236,1,1) = {"
 aab
@@ -89690,9 +89685,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (237,1,1) = {"
 aab
@@ -89885,9 +89880,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (238,1,1) = {"
 aab
@@ -90080,9 +90075,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (239,1,1) = {"
 aab
@@ -90275,9 +90270,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (240,1,1) = {"
 aab
@@ -90470,9 +90465,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (241,1,1) = {"
 aab
@@ -90665,9 +90660,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (242,1,1) = {"
 aab
@@ -90860,9 +90855,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (243,1,1) = {"
 aab
@@ -91055,9 +91050,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (244,1,1) = {"
 aab
@@ -91250,9 +91245,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (245,1,1) = {"
 aab
@@ -91445,9 +91440,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (246,1,1) = {"
 aab
@@ -91640,9 +91635,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (247,1,1) = {"
 aab
@@ -91835,9 +91830,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (248,1,1) = {"
 aab
@@ -92030,9 +92025,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (249,1,1) = {"
 aab
@@ -92225,9 +92220,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (250,1,1) = {"
 aab
@@ -92420,9 +92415,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (251,1,1) = {"
 aab
@@ -92615,9 +92610,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (252,1,1) = {"
 aab
@@ -92810,9 +92805,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (253,1,1) = {"
 aab
@@ -93005,9 +93000,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (254,1,1) = {"
 aab
@@ -93200,9 +93195,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (255,1,1) = {"
 aab
@@ -93395,9 +93390,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (256,1,1) = {"
 aab
@@ -93591,6 +93586,6 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}

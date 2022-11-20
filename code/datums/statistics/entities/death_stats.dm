@@ -136,6 +136,8 @@
 
 /mob/living/carbon/Xenomorph/track_mob_death(var/cause, var/cause_mob)
 	var/datum/entity/statistic/death/new_death = ..(cause, cause_mob, caste_type)
+	if(!new_death)
+		return
 	new_death.is_xeno = TRUE // this was placed beneath the if below, which meant gibbing as a xeno wouldn't track properly in stats
 	if(statistic_exempt || !mind)
 		return

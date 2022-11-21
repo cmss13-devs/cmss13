@@ -1267,7 +1267,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(!item_to_box_mapping)
 		return
 	var/list/topic_listed_products = get_listed_products(usr)
-	for(var/list/datum/item_box_pairing/item_box_pairing as anything in item_to_box_mapping.item_box_pairings)
+	for(var/datum/item_box_pairing/item_box_pairing as anything in item_to_box_mapping.item_box_pairings)
 		for(var/list/product in topic_listed_products)
 			if(product[3] == item_box_pairing.box)
 				//We recalculate the amount of boxes we ought to have based on how many magazines we have

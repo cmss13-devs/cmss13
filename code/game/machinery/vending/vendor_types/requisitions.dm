@@ -8,6 +8,7 @@
 	icon_state = "req_guns"
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
+	load_ammo_boxes = TRUE
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/Initialize()
 	. = ..()
@@ -229,6 +230,7 @@
 
 	vend_x_offset = 2
 	vend_y_offset = 1
+	load_ammo_boxes = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/populate_product_list(var/scale)
 	listed_products = list(

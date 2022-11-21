@@ -271,6 +271,7 @@
 	icon_state = "guns"
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	vendor_role = list(JOB_CREWMAN)
+	load_ammo_boxes = FALSE
 
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),

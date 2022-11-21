@@ -120,6 +120,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 	icon_state = "guns"
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	vendor_role = list(JOB_INTEL)
+	load_ammo_boxes = FALSE
 
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),

@@ -321,7 +321,7 @@
 			prob(40); 1,
 			prob(35); 2,
 			prob(20); 3,
-			prob(5); 4 //Far less chances for more multi-burst. Max of 3 instead of 4 as it was
+			prob(5); 4 //Far less chances for more multi-burst.
 		)
 
 	return impregnation_amount

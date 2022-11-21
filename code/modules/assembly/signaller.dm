@@ -142,5 +142,6 @@
 	radio_connection = SSradio.add_object(src, frequency, RADIO_CHAT)
 
 /obj/item/device/assembly/signaller/Destroy()
+	SSradio.remove_object(src, frequency)
 	radio_connection = null
 	return ..()

@@ -12,6 +12,10 @@
 	pixel_y = rand(-6, 6)
 	pixel_x = rand(-7, 7)
 
+/obj/item/mortar_shell/Destroy()
+	. = ..()
+	cause_data = null
+
 /obj/item/mortar_shell/proc/detonate(var/turf/T)
 	forceMove(T)
 

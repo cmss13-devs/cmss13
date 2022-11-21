@@ -1057,7 +1057,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(var/scale)
-	populate_product_list(scale * 100)
+	populate_product_list(scale * 20)
 	if(load_ammo_boxes)
 		populate_ammo_boxes()
 	return
@@ -1233,7 +1233,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 		else
 			new prod_path(T)
 		L[2]--		//taking 1 from amount of products in vendor
-		update_derived_ammo_and_boxes(L)
+		if(load_ammo_boxes)
+			update_derived_ammo_and_boxes(L)
 
 	else
 		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
@@ -1266,7 +1267,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/list/topic_listed_products = get_listed_products(usr)
 		for(var/list/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
 			for(var/list/P in topic_listed_products)
-				if(P[3] == IBP.item)
+				if(P[3] == IBP.box)
 					//We recalculate the amount of boxes we ought to have based on how many magazines we have
 					P[2] = round(L[2] / IBP.items_in_box)
 					break

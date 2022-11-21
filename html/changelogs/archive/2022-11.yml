@@ -385,6 +385,10 @@
   totalepicness:
   - soundadd: Fixes no sound when hitting metal foam
 2022-11-20:
+  John_Rico:
+  - rscadd: Added a UI button to exit a MG or you can resist
+  - rscadd: Added an animation "exiting" an M2c or m56d w/ variant
+  - bugfix: Can no long vault over cades or man a MG on the other side of a barricade
   Molto:
   - bugfix: fixed M4A3 belt spawning empty
   NoKohi:
@@ -393,10 +397,23 @@
   - rscdel: Removed old, unused radio bindings
   - rscdel: Removed old radio bindings for cyrylic keyboards that were way outdated
   - code_imp: Small refactor of code around whisper / intercom radio channels
+  - bugfix: Xeno blood is now a finite resource.
+  - rscadd: Living xenos now regenerate blood just in case some unga has the idea
+      to attack one with a syringe.
+  fira:
+  - code_imp: Fixed a number of improper deletions across the game. This is mostly
+      a performance change.
   harryob:
   - bugfix: some changelog entries would fail to generate previously - this should
       now be resolved.
+  kugamo:
+  - balance: Building resin constructions in doors is possible again, but will break
+      if closed on them.
   mullenpaul:
   - refactor: reworked xeno mark menu
   - refactor: xenos can see which mark they are tracking
   - refactor: xenos can see who is tracking what mark
+2022-11-21:
+  kugamo:
+  - balance: Building resin constructions in doors is possible again, but will break
+      if closed on them.

@@ -171,6 +171,7 @@
 	QDEL_NULL(last_health_display)
 	GLOB.observer_list -= src
 	following = null
+	observetarget = null
 	return ..()
 
 /mob/dead/observer/MouseDrop(atom/A)

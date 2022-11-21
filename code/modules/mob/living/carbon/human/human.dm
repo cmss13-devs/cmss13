@@ -51,28 +51,38 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-	if(internal_organs_by_name)
-		for(var/name in internal_organs_by_name)
-			var/datum/internal_organ/I = internal_organs_by_name[name]
-			if(I)
-				I.owner = null
-			internal_organs_by_name[name] = null
-		internal_organs_by_name = null
-
-	if(limbs)
-		for(var/obj/limb/L in limbs)
-			L.owner = null
-			qdel(L)
-		limbs = null
-
-	assigned_equipment_preset = null
 
 	remove_from_all_mob_huds()
+	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src
 	SShuman.processable_human_list -= src
 
+	QDEL_NULL_LIST(embedded_items)
+	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
+	QDEL_NULL_LIST(limbs)
+	remove_from_all_mob_huds()
+
 	. = ..()
+
+	overlays_standing = null
+	selected_ability = null
+	assigned_squad = null
+
+	//Equipment slots
+	wear_suit = null
+	w_uniform = null
+	shoes = null
+	belt = null
+	gloves = null
+	glasses = null
+	head = null
+	wear_l_ear = null
+	wear_r_ear = null
+	wear_id = null
+	r_store = null
+	l_store = null
+	s_store = null
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()

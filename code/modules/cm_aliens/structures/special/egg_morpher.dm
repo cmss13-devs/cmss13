@@ -41,6 +41,7 @@
 
 	vis_contents.Cut()
 	QDEL_NULL(captured_mob)
+	range_bounds = null
 
 	. = ..()
 

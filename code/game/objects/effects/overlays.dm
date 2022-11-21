@@ -255,7 +255,7 @@
 
 
 /obj/effect/overlay/temp/gib_animation/xeno
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	effect_duration = 10
 
 /obj/effect/overlay/temp/gib_animation/xeno/Initialize(mapload, mob/source_mob, gib_icon, new_icon)
@@ -279,6 +279,6 @@
 
 /obj/effect/overlay/temp/acid_pool_splash
 	name = "acid splash"
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "acidpoolsplash"
 	effect_duration = 10 SECONDS

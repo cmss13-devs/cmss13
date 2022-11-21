@@ -357,7 +357,7 @@
 /obj/structure/machinery/defenses/Destroy()
 	if(owner_mob)
 		owner_mob = null
-
+	HD = null // FIXME: Might also need to delete. Unsure.
 	. = ..()
 
 /obj/structure/machinery/defenses/verb/toggle_turret_locks_verb()

@@ -42,7 +42,7 @@
 	internal_camera = new(loc)
 
 /obj/structure/mortar/Destroy()
-	qdel(internal_camera)
+	QDEL_NULL(internal_camera)
 	return ..()
 
 /obj/structure/mortar/initialize_pass_flags(var/datum/pass_flags_container/PF)

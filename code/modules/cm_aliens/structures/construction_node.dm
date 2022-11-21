@@ -5,7 +5,7 @@
 /obj/effect/alien/resin/construction
 	name = "construction node"
 	desc = "A strange wriggling lump. Looks like a marker for something."
-	icon = 'icons/mob/hostiles/weeds.dmi'
+	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "constructionnode"
 	density = 0
 	anchored = 1

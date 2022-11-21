@@ -11,8 +11,8 @@
 
 //A set of lists that tracks items and their equivalent boxes and vice versa
 /datum/item_to_box_mapping
-	var/list/item_to_box_list = list()
-	var/list/box_to_item_list = list()
+	var/list/datum/item_to_multiple_box_pairing/item_to_box_list = list()
+	var/list/datum/item_box_pairing/box_to_item_list = list()
 
 //Adding an item-box pairing
 /datum/item_to_box_mapping/proc/add_pairing(var/datum/item_box_pairing/item_box_pairing)

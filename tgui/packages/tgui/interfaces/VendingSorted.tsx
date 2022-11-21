@@ -133,7 +133,7 @@ const VendableItem = (props: VenableItem, context) => {
         <Box className="VendingSorted__Spacer" />
       </Flex.Item>
 
-      <Flex.Item width={2}>
+      <Flex.Item width={3}>
         <span className={classes(['VendingSorted__Text', !available && 'VendingSorted__Failure'])}>
           {quantity}
         </span>

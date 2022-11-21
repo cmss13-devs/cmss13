@@ -1261,7 +1261,7 @@
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 6, "rail_y" = 20, "under_x" = 18, "under_y" = 16, "stock_x" = 22, "stock_y" = 10)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 18, "under_y" = 15, "stock_x" = 22, "stock_y" = 10)
 
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_config_values()

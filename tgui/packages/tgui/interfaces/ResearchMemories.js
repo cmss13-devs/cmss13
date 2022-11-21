@@ -22,8 +22,9 @@ export const ResearchMemories = (props, context) => {
     <Window width={650} height={700} theme={theme}>
       <Window.Content scrollable>
         <Section title={'Clearance: ' + clearance}>
-        </Section>
-        <Section title={'Research Credits: ' + research_credits}>
+          <Flex.Item>
+            {'Research Credits: ' + research_credits}
+          </Flex.Item>
         </Section>
 
         <Objectives />

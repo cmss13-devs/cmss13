@@ -382,7 +382,7 @@
 
 		if("Toggle burst fire")
 			var/obj/item/weapon/gun/G = user.get_held_item()
-			if(istype(G)) G.toggle_burst()
+			if(istype(G)) G.use_toggle_burst()
 			return 1
 
 		if("Use unique action")

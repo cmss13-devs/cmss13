@@ -600,7 +600,7 @@
 	last_regen = world.time
 	update_icon()
 	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
+	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
@@ -693,7 +693,7 @@
 	update_icon()
 
 	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
+	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
@@ -780,7 +780,7 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
+	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 
 
@@ -887,7 +887,7 @@
 	. = ..()
 	source = loc
 	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
+	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Destroy()

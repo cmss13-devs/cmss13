@@ -658,20 +658,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	playsound(src, 'sound/handling/attachment_remove.ogg', 15, 1, 4)
 	update_icon()
 
-/obj/item/weapon/gun/verb/toggle_burst()
-	set category = "Weapons"
-	set name = "Toggle Burst Fire Mode"
-	set desc = "Toggle on or off your weapon burst mode, if it has one. Greatly reduces accuracy."
-	set src = usr.contents
-
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
-	if(!G) return
-	src = G
-
+/obj/item/weapon/gun/proc/toggle_burst(var/mob/user)
 	//Burst of 1 doesn't mean anything. The weapon will only fire once regardless.
 	//Just a good safety to have all weapons that can equip a scope with 1 burst_amount.
 	if(burst_amount < 2 && !(flags_gun_features & GUN_HAS_FULL_AUTO))
-		to_chat(usr, SPAN_WARNING("This weapon does not have a burst fire mode!"))
+		to_chat(user, SPAN_WARNING("This weapon does not have a burst fire mode!"))
 		return
 
 	if(flags_gun_features & GUN_BURST_FIRING)//can't toggle mid burst
@@ -683,22 +674,22 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			flags_gun_features |= GUN_BURST_ON
 			return
 
-		to_chat(usr, SPAN_NOTICE("\The [src] can only be fired in bursts!"))
+		to_chat(user, SPAN_NOTICE("\The [src] can only be fired in bursts!"))
 		return
 
 	if(flags_gun_features & GUN_FULL_AUTO_ONLY)
 		if(!(flags_gun_features & GUN_FULL_AUTO_ON))
 			stack_trace("[src] has GUN_FULL_AUTO_ONLY flag but not GUN_FULL_AUTO_ON.")
 			flags_gun_features |= GUN_FULL_AUTO_ON
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
 			return
 
-		to_chat(usr, SPAN_NOTICE("\The [src] can only be fired in full auto mode!"))
+		to_chat(user, SPAN_NOTICE("\The [src] can only be fired in full auto mode!"))
 		return
 
-	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
+	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(flags_gun_features & GUN_HAS_FULL_AUTO)
 		if((flags_gun_features & GUN_BURST_ON) || (burst_amount < 2 && !(flags_gun_features & GUN_FULL_AUTO_ON)))
@@ -706,28 +697,39 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			flags_gun_features |= GUN_FULL_AUTO_ON
 
 			// Register the full auto click listeners
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
-			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
 
-			to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You set [src] to full auto mode."))
+			to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You set [src] to full auto mode."))
 			return
 		else if(flags_gun_features & GUN_FULL_AUTO_ON)
 			flags_gun_features &= ~GUN_FULL_AUTO_ON
 			full_auto_stop() // If the LMBUP hasn't been called for any reason.
-			UnregisterSignal(usr.client, list(
+			UnregisterSignal(user.client, list(
 				COMSIG_CLIENT_LMB_DOWN,
 				COMSIG_CLIENT_LMB_UP,
 				COMSIG_CLIENT_LMB_DRAG,
 			))
 
-			to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You set [src] to single fire mode."))
+			to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You set [src] to single fire mode."))
 			return
 
 
 	flags_gun_features ^= GUN_BURST_ON
-	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
 
+/obj/item/weapon/gun/verb/use_toggle_burst()
+	set category = "Weapons"
+	set name = "Toggle Burst Fire Mode"
+	set desc = "Toggle on or off your weapon burst mode, if it has one. Greatly reduces accuracy."
+	set src = usr.contents
+
+	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	if(!G) return
+	src = G
+
+	toggle_burst(usr)
 
 /obj/item/weapon/gun/verb/empty_mag()
 	set category = "Weapons"

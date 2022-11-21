@@ -39,7 +39,7 @@
 		return
 	var/mob/living/carbon/human/H = user.mob
 	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_burst()
+	G.use_toggle_burst()
 	return TRUE
 
 /datum/keybinding/human/combat/stock_attachment

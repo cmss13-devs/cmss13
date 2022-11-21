@@ -1058,7 +1058,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		current_mag = secondary_tube
 	else
 		current_mag = primary_tube
-	to_chat(user, "You switch the internal tube magazine.")
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch \the [src]'s active magazine to the [(current_mag == primary_tube) ? "<b>first</b>" : "<b>second</b>"] magazine."))
 	playsound(src, 'sound/machines/click.ogg', 20, TRUE)
 	return TRUE
 
@@ -1071,7 +1071,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb
 	name = "\improper HG 37-12 pump shotgun"
-	desc = "A eight-round pump action shotgun with dual internal tube magazine allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals. You can switch the active internal magazine by toggling burst fire mode."
+	desc = "A eight-round pump action shotgun with four-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals. You can switch the active internal magazine by toggling burst fire mode."
 	icon_state = "hg3712"
 	item_state = "hg3712"
 	fire_sound = 'sound/weapons/gun_shotgun_small.ogg'
@@ -1111,7 +1111,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717
 	name = "\improper M37-17 pump shotgun"
-	desc = "A ten-round pump action shotgun with dual internal tube magazine allowing for quick reloading and highly accurate fire. Issued to select USCM vessels out on the rim. You can switch the active internal magazine by toggling burst fire mode."
+	desc = "A ten-round pump action shotgun with five-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. Issued to select USCM vessels out on the rim. You can switch the active internal magazine by toggling burst fire mode."
 	icon_state = "m3717"
 	item_state = "m3717"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb/m3717

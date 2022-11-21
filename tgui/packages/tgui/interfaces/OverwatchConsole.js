@@ -641,7 +641,13 @@ export const OverwatchSupplies = (props, context) => {
                 maxValue="1000"
                 stepPixelSize="20"
                 value={target_x}
-                onChange={(_, value) => setTargetX(value)}
+                onChange={(_, value) => {
+                  setTargetY(value);
+                  act('set_supply', {
+                    target_x: value,
+                    target_y: target_y,
+                  });
+                }}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Target Y">
@@ -651,7 +657,13 @@ export const OverwatchSupplies = (props, context) => {
                 maxValue="1000"
                 stepPixelSize="20"
                 value={target_y}
-                onChange={(_, value) => setTargetY(value)}
+                onChange={(_, value) => {
+                  setTargetY(value);
+                  act('set_supply', {
+                    target_x: target_x,
+                    target_y: value,
+                  });
+                }}
               />
             </LabeledList.Item>
           </LabeledList>
@@ -660,32 +672,18 @@ export const OverwatchSupplies = (props, context) => {
           <Box p="0.2em" />
         </Stack.Item>
         <Stack.Item grow>
-          <Button
+          <Button.Confirm
             fluid
-            textAlign="center"
-            content="Dial Target"
-            icon="crosshairs"
+            icon="box-open"
+            content="Fire Supply Drop"
             lineHeight="3.5em"
-            onClick={() =>
-              act('set_supply', {
-                target_x: target_x,
-                target_y: target_y,
-              })
-            }
+            textAlign="center"
+            disabled={!supply_ready}
+            confirmContent={'Fire at ' + x_supply + ', ' + y_supply + '?'}
+            onClick={() => act('dropsupply')}
           />
         </Stack.Item>
       </Stack>
-      <Divider />
-      <Button.Confirm
-        fluid
-        icon="box-open"
-        content="Drop Supply"
-        lineHeight="3.5em"
-        textAlign="center"
-        disabled={!supply_ready}
-        confirmContent={'Fire at ' + x_supply + ', ' + y_supply + '?'}
-        onClick={() => act('dropsupply')}
-      />
       <Divider />
       {supply_ready ? (
         <NoticeBox success textAlign="center">
@@ -821,7 +819,7 @@ export const OverwatchBomb = (props, context) => {
           <Button.Confirm
             fluid
             textAlign="center"
-            content="Bombardment"
+            content="Fire Orbital Bombardment"
             lineHeight="3.5em"
             color="red"
             icon="burst"

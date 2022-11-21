@@ -21,8 +21,7 @@
 		item_to_box_list[item_box_pairing.item].item = item_box_pairing.item
 	item_to_box_list[item_box_pairing.item].item_box_pairings += item_box_pairing
 
-
-/datum/item_to_box_mapping/proc/Init()
+/datum/item_to_box_mapping/New()
 	//Ammo magazine boxes, minus loose ammo boxes
 	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine))
 		if(initial(ammo_box.empty))
@@ -75,7 +74,7 @@
 	item_box_pairing.item = /obj/item/explosive/mine
 	item_box_pairing.items_in_box = 5
 	add_pairing(item_box_pairing)
-	
+
 	..()
 
 /datum/item_to_box_mapping/proc/get_item_to_box_mapping(var/I)
@@ -87,19 +86,4 @@
 
 /proc/init_item_to_box_mapping()
 	var/datum/item_to_box_mapping/I = new()
-	I.Init()
 	return I
-
-
-/client/verb/debug_verb()
-	set name = "DEBUG"
-	set category = "DEBUG"
-
-	to_world("[GLOB.item_to_box_mapping.item_to_box_list.len]")
-	var/datum/item_to_multiple_box_pairing/IBP = GLOB.item_to_box_mapping.get_item_to_box_mapping(/obj/item/ammo_magazine/rifle)
-
-	to_world("IBP - [IBP]")
-	if(IBP)
-		to_world("[IBP.item], [IBP.item_box_pairings.len]")
-		for(var/datum/item_box_pairing/I in IBP.item_box_pairings)
-			to_world("[I.item], [I.box], [I.items_in_box]")

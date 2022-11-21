@@ -1057,7 +1057,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(var/scale)
-	populate_product_list(scale * 20)
+	populate_product_list(scale)
 	if(load_ammo_boxes)
 		populate_ammo_boxes()
 	return

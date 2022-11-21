@@ -14,67 +14,67 @@
 	var/list/item_to_box_list = list()
 	var/list/box_to_item_list = list()
 
-/datum/item_to_box_mapping/proc/add_pairing(var/datum/item_box_pairing/ibp)
-	box_to_item_list[ibp.box] = ibp
-	if(!item_to_box_list[ibp.item])
-		item_to_box_list[ibp.item] = new /datum/item_to_multiple_box_pairing()
-		item_to_box_list[ibp.item].item = ibp.item
-	item_to_box_list[ibp.item].item_box_pairings += ibp
+/datum/item_to_box_mapping/proc/add_pairing(var/datum/item_box_pairing/item_box_pairing)
+	box_to_item_list[item_box_pairing.box] = item_box_pairing
+	if(!item_to_box_list[item_box_pairing.item])
+		item_to_box_list[item_box_pairing.item] = new /datum/item_to_multiple_box_pairing()
+		item_to_box_list[item_box_pairing.item].item = item_box_pairing.item
+	item_to_box_list[item_box_pairing.item].item_box_pairings += item_box_pairing
 
 
 /datum/item_to_box_mapping/proc/Init()
 	//Ammo magazine boxes, minus loose ammo boxes
-	for(var/obj/item/ammo_box/magazine/AB as anything in typesof(/obj/item/ammo_box/magazine))
-		if(initial(AB.empty))
+	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine))
+		if(initial(ammo_box.empty))
 			//Ignore all the empty boxes
 			continue
-		if(initial(AB.handfuls))
+		if(initial(ammo_box.handfuls))
 			//Ignore all the loose ammo boxes because they map with really bad numbers
 			continue
-		var/datum/item_box_pairing/ibp = new()
-		ibp.box = AB
-		ibp.item = initial(AB.magazine_type)
-		if(!ibp.item)
+		var/datum/item_box_pairing/item_box_pairing = new()
+		item_box_pairing.box = ammo_box
+		item_box_pairing.item = initial(ammo_box.magazine_type)
+		if(!item_box_pairing.item)
 			//if the item is null somehow
 			continue
-		ibp.items_in_box = initial(AB.num_of_magazines)
-		add_pairing(ibp)
+		item_box_pairing.items_in_box = initial(ammo_box.num_of_magazines)
+		add_pairing(item_box_pairing)
 
 	//Grenade packets
-	for(var/obj/item/storage/box/packet/AB as anything in typesof(/obj/item/storage/box/packet))
-		if(!initial(AB.content_type))
+	for(var/obj/item/storage/box/packet/ammo_box as anything in typesof(/obj/item/storage/box/packet))
+		if(!initial(ammo_box.content_type))
 			//Ignore all the empty boxes
 			continue
-		var/datum/item_box_pairing/ibp = new()
-		ibp.box = AB
-		ibp.item = initial(AB.content_type)
-		if(!ibp.item)
+		var/datum/item_box_pairing/item_box_pairing = new()
+		item_box_pairing.box = ammo_box
+		item_box_pairing.item = initial(ammo_box.content_type)
+		if(!item_box_pairing.item)
 			//if the item is null somehow
 			continue
-		ibp.items_in_box = initial(AB.storage_slots)
-		add_pairing(ibp)
+		item_box_pairing.items_in_box = initial(ammo_box.storage_slots)
+		add_pairing(item_box_pairing)
 
 	//Big grenade boxes
-	for(var/obj/item/storage/box/nade_box/AB as anything in typesof(/obj/item/storage/box/nade_box))
-		if(!initial(AB.grenade_type))
+	for(var/obj/item/storage/box/nade_box/ammo_box as anything in typesof(/obj/item/storage/box/nade_box))
+		if(!initial(ammo_box.grenade_type))
 			//Ignore all the empty boxes
 			continue
-		var/datum/item_box_pairing/ibp = new()
-		ibp.box = AB
-		ibp.item = initial(AB.grenade_type)
-		if(!ibp.item)
+		var/datum/item_box_pairing/item_box_pairing = new()
+		item_box_pairing.box = ammo_box
+		item_box_pairing.item = initial(ammo_box.grenade_type)
+		if(!item_box_pairing.item)
 			//if the item is null somehow
 			continue
-		ibp.items_in_box = initial(AB.storage_slots)
-		add_pairing(ibp)
+		item_box_pairing.items_in_box = initial(ammo_box.storage_slots)
+		add_pairing(item_box_pairing)
 
 	//*******Snowflakes*******//
 	//Mine box
-	var/datum/item_box_pairing/ibp = new()
-	ibp.box = /obj/item/storage/box/explosive_mines
-	ibp.item = /obj/item/explosive/mine
-	ibp.items_in_box = 5
-	add_pairing(ibp)
+	var/datum/item_box_pairing/item_box_pairing = new()
+	item_box_pairing.box = /obj/item/storage/box/explosive_mines
+	item_box_pairing.item = /obj/item/explosive/mine
+	item_box_pairing.items_in_box = 5
+	add_pairing(item_box_pairing)
 	
 	..()
 

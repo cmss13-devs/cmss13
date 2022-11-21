@@ -19,6 +19,9 @@
 		if(initial(AB.empty))
 			//Ignore all the empty boxes
 			continue
+		if(initial(AB.handfuls))
+			//Ignore all the loose ammo boxes because they map with really bad numbers
+			continue
 		var/datum/item_box_pairing/ibp = new()
 		ibp.box = AB
 		ibp.item = initial(AB.magazine_type)

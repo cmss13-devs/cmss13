@@ -49,7 +49,7 @@
 		list("EXPLOSIVES", -1, null, null),
 		list("M15 Fragmentation Grenade", round(scale * 2), /obj/item/explosive/grenade/HE/m15, VENDOR_ITEM_REGULAR),
 		list("M20 Claymore Anti-Personnel Mine", round(scale * 4), /obj/item/explosive/mine, VENDOR_ITEM_REGULAR),
-		list("M40 HEDP Grenade Box", round(scale * 1), /obj/item/storage/box/nade_box, VENDOR_ITEM_REGULAR),
+		list("M40 HEDP Grenade", round(scale * 25), /obj/item/explosive/grenade/HE, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Incendiary Grenade", round(scale * 4), /obj/item/explosive/grenade/incendiary, VENDOR_ITEM_REGULAR),
 		list("M40 HPDP White Phosphorus Smoke Grenade", round(scale * 4), /obj/item/explosive/grenade/phosphorus, VENDOR_ITEM_REGULAR),
 		list("M40 HSDP Smoke Grenade", round(scale * 5), /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),

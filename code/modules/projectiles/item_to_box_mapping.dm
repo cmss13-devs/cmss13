@@ -14,7 +14,16 @@
 	var/list/item_to_box_list = list()
 	var/list/box_to_item_list = list()
 
+/datum/item_to_box_mapping/proc/add_pairing(var/datum/item_box_pairing/ibp)
+	box_to_item_list[ibp.box] = ibp
+	if(!item_to_box_list[ibp.item])
+		item_to_box_list[ibp.item] = new /datum/item_to_multiple_box_pairing()
+		item_to_box_list[ibp.item].item = ibp.item
+	item_to_box_list[ibp.item].item_box_pairings += ibp
+
+
 /datum/item_to_box_mapping/proc/Init()
+	//Ammo magazine boxes, minus loose ammo boxes
 	for(var/obj/item/ammo_box/magazine/AB as anything in typesof(/obj/item/ammo_box/magazine))
 		if(initial(AB.empty))
 			//Ignore all the empty boxes
@@ -29,11 +38,36 @@
 			//if the item is null somehow
 			continue
 		ibp.items_in_box = initial(AB.num_of_magazines)
-		box_to_item_list[ibp.box] = ibp
-		if(!item_to_box_list[ibp.item])
-			item_to_box_list[ibp.item] = new /datum/item_to_multiple_box_pairing()
-			item_to_box_list[ibp.item].item = ibp.item
-		item_to_box_list[ibp.item].item_box_pairings += ibp
+		add_pairing(ibp)
+
+	//Grenade packets
+	for(var/obj/item/storage/box/packet/AB as anything in typesof(/obj/item/storage/box/packet))
+		if(!initial(AB.content_type))
+			//Ignore all the empty boxes
+			continue
+		var/datum/item_box_pairing/ibp = new()
+		ibp.box = AB
+		ibp.item = initial(AB.content_type)
+		if(!ibp.item)
+			//if the item is null somehow
+			continue
+		ibp.items_in_box = initial(AB.storage_slots)
+		add_pairing(ibp)
+
+	//Big grenade boxes
+	for(var/obj/item/storage/box/nade_box/AB as anything in typesof(/obj/item/storage/box/nade_box))
+		if(!initial(AB.grenade_type))
+			//Ignore all the empty boxes
+			continue
+		var/datum/item_box_pairing/ibp = new()
+		ibp.box = AB
+		ibp.item = initial(AB.grenade_type)
+		if(!ibp.item)
+			//if the item is null somehow
+			continue
+		ibp.items_in_box = initial(AB.storage_slots)
+		add_pairing(ibp)
+
 	..()
 
 /datum/item_to_box_mapping/proc/get_item_to_box_mapping(var/I)

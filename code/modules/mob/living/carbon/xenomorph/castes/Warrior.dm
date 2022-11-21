@@ -91,7 +91,8 @@
 		if(should_neckgrab && L.mob_size < MOB_SIZE_BIG)
 			grab_level = GRAB_NECK
 			L.drop_held_items()
-			L.apply_effect(get_xeno_stun_duration(L, 2), WEAKEN)
+			if(!isYautja(L))
+				L.apply_effect(get_xeno_stun_duration(L, 2), WEAKEN)
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))

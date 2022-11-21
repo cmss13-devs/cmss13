@@ -230,8 +230,11 @@
 /mob/living/resist_grab(moving_resist)
 	if(!pulledby)
 		return
+
+	var/resist_skill = skills.get_skill_level(SKILL_CQC)
+
 	if(pulledby.grab_level)
-		if(prob((50/pulledby.grab_level)))
+		if(prob(4*pulledby.grab_level*(resist_skill+1)))
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 			pulledby.stop_pulling()

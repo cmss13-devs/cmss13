@@ -253,6 +253,8 @@
 						rank = "SL"
 					else
 						rank = ""
+				if(H.rank_fallback)
+					rank = H.rank_fallback
 				mar[H.real_name] += list("rank" = rank)
 			else
 				mar[H.real_name] += list("paygrade" = "N/A")

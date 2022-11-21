@@ -135,7 +135,7 @@ const FireTeam = (props: { ft: string }, context) => {
       fireteam?.tl?.name === 'Not assigned' ||
       fireteam?.tl?.name === 'Unassigned' ||
       fireteam?.tl?.name === undefined);
-  const rankList = ['Mar', 'Med', 'Eng', 'SG', 'Spc', 'RTO', 'SL'];
+  const rankList = ['Mar', 'ass', 'Med', 'Eng', 'SG', 'Spc', 'RTO', 'SL'];
   const rankSort = (a: SquadMarineEntry, b: SquadMarineEntry) => {
     if (a.rank === 'Mar' && b.rank === 'Mar') {
       return a.paygrade === 'PFC' ? -1 : 1;

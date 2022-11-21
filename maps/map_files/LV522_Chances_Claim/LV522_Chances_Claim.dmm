@@ -11979,7 +11979,7 @@
 /area/lv522/atmos/cargo_intake)
 "fUf" = (
 /obj/effect/decal{
-	icon = 'icons/mob/hostiles/Effects.dmi';
+	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
 	layer = 2;
 	name = "weak acid"
@@ -15488,7 +15488,7 @@
 	pixel_y = 24
 	},
 /obj/effect/decal{
-	icon = 'icons/mob/hostiles/Effects.dmi';
+	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
 	layer = 2;
 	name = "weak acid"
@@ -16309,7 +16309,7 @@
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "hME" = (
 /obj/effect/decal{
-	icon = 'icons/mob/hostiles/Effects.dmi';
+	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
 	layer = 2;
 	name = "weak acid"
@@ -16383,7 +16383,7 @@
 /area/lv522/indoors/a_block/admin)
 "hOy" = (
 /obj/effect/decal{
-	icon = 'icons/mob/hostiles/Effects.dmi';
+	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
 	layer = 2;
 	name = "weak acid"
@@ -16910,7 +16910,7 @@
 	dir = 8
 	},
 /obj/effect/decal{
-	icon = 'icons/mob/hostiles/Effects.dmi';
+	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
 	layer = 2;
 	name = "weak acid"
@@ -24989,7 +24989,7 @@
 "kZX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal{
-	icon = 'icons/mob/hostiles/Effects.dmi';
+	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
 	layer = 2;
 	name = "weak acid";
@@ -33926,7 +33926,7 @@
 	dir = 4
 	},
 /obj/effect/decal{
-	icon = 'icons/mob/hostiles/Effects.dmi';
+	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
 	layer = 2;
 	name = "weak acid";
@@ -47484,7 +47484,7 @@
 	pixel_y = -15
 	},
 /obj/effect/decal{
-	icon = 'icons/mob/hostiles/Effects.dmi';
+	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
 	layer = 2;
 	name = "weak acid"
@@ -47906,7 +47906,7 @@
 /area/lv522/indoors/a_block/corpo/glass)
 "ueX" = (
 /obj/effect/decal{
-	icon = 'icons/mob/hostiles/Effects.dmi';
+	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
 	layer = 2;
 	name = "weak acid"
@@ -49226,7 +49226,7 @@
 	pixel_y = 24
 	},
 /obj/effect/decal{
-	icon = 'icons/mob/hostiles/Effects.dmi';
+	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
 	layer = 2;
 	name = "weak acid"

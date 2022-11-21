@@ -42,11 +42,21 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	return shuttle
 
+/obj/structure/machinery/computer/shuttle_control/is_valid_user(mob/user)
+	if(isXenoQueen(user))
+		return TRUE
+	return ..()
+
+/obj/structure/machinery/computer/shuttle_control/allowed(mob/M)
+	if(isXenoQueen(M))
+		return TRUE
+	return ..()
+
 /obj/structure/machinery/computer/shuttle_control/attack_hand(mob/user)
 	if(..(user))
 		return
-	//src.add_fingerprint(user)	//shouldn't need fingerprints just for looking at it.
-	if((!allowed(user) || ismaintdrone(user)) && !isXeno(user))
+
+	if(!allowed(user) || ismaintdrone(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 

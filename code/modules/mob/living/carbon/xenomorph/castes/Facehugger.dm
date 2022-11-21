@@ -206,18 +206,18 @@
 /mob/living/carbon/Xenomorph/Facehugger/add_xeno_shield(added_amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1, add_shield_on = FALSE, max_shield = 200)
 	return
 
-/mob/living/carbon/Xenomorph/Facehugger/proc/scuttle(var/obj/structure/S)
+/mob/living/carbon/Xenomorph/Facehugger/proc/scuttle(var/obj/structure/current_structure)
 	var/move_dir = get_dir(src, loc)
-	for(var/atom/movable/AM in get_turf(S))
-		if(AM != S && AM.density && AM.BlockedPassDirs(src, move_dir))
-			to_chat(src, SPAN_WARNING("\The [AM] prevents you from squeezing under \the [S]!"))
+	for(var/atom/movable/atom in get_turf(current_structure))
+		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("\The [atom] prevents you from squeezing under \the [current_structure]!"))
 			return
 	// Is it an airlock?
-	if(istype(S, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/A = S
-		if(A.locked || A.welded) //Can't pass through airlocks that have been bolted down or welded
-			to_chat(src, SPAN_WARNING("\The [A] is locked down tight. You can't squeeze underneath!"))
+	if(istype(current_structure, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
+		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
+			to_chat(src, SPAN_WARNING("\The [airlock] is locked down tight. You can't squeeze underneath!"))
 			return
-	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [S]!"), \
-	SPAN_WARNING("You squeeze and scuttle underneath \the [S]."), null, 5)
-	forceMove(S.loc)
+	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [current_structure]!"), \
+	SPAN_WARNING("You squeeze and scuttle underneath \the [current_structure]."), null, 5)
+	forceMove(current_structure.loc)

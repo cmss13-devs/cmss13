@@ -16,6 +16,9 @@
 
 /datum/item_to_box_mapping/proc/Init()
 	for(var/obj/item/ammo_box/magazine/AB as anything in typesof(/obj/item/ammo_box/magazine))
+		if(initial(AB.empty))
+			//Ignore all the empty boxes
+			continue
 		var/datum/item_box_pairing/ibp = new()
 		ibp.box = AB
 		ibp.item = initial(AB.magazine_type)
@@ -32,6 +35,9 @@
 
 /datum/item_to_box_mapping/proc/get_item_to_box_mapping(var/I)
 	return item_to_box_list[I]
+
+/datum/item_to_box_mapping/proc/get_box_to_item_mapping(var/I)
+	return box_to_item_list[I]
 
 
 /proc/init_item_to_box_mapping()

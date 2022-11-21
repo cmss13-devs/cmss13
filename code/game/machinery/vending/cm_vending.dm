@@ -943,6 +943,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
 
+	//Whether or not to load ammo boxes depending on ammo loaded into the vendor
+	//Only relevant in big vendors, like Requisitions or Squad Prep
+	var/load_ammo_boxes = FALSE
+
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list = list(
 		/obj/item/ammo_box/magazine/mod88/empty = /obj/item/ammo_box/magazine/mod88,
@@ -1031,13 +1035,32 @@ GLOBAL_LIST_EMPTY(vending_products)
 		/obj/item/stack/sandbags/large_stack = /obj/item/stack/sandbags/small_stack,
 
 		/obj/item/storage/large_holster/machete = /obj/item/storage/large_holster/machete/full,
-
 	)
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
-	populate_product_list(1.2)
+	populate_product_list_and_boxes(1.2)
 	cm_build_inventory(get_listed_products())
+
+/obj/structure/machinery/cm_vending/sorted/proc/populate_ammo_boxes()
+	var/list/tmp_list = list()
+	for(var/list/L as anything in listed_products)
+		tmp_list += list(L)
+		if(!L[3])
+			continue
+		var/datum/item_to_multiple_box_pairing/IMBP = GLOB.item_to_box_mapping.get_item_to_box_mapping(L[3])
+		if(!IMBP)
+			continue
+		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
+			tmp_list += list(list(initial(IBP.box.name), round(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
+	listed_products = tmp_list
+
+//this proc, well, populates product list based on roundstart amount of players
+/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(var/scale)
+	populate_product_list(scale * 100)
+	if(load_ammo_boxes)
+		populate_ammo_boxes()
+	return
 
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
@@ -1210,6 +1233,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		else
 			new prod_path(T)
 		L[2]--		//taking 1 from amount of products in vendor
+		update_derived_ammo_and_boxes(L)
 
 	else
 		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
@@ -1217,6 +1241,35 @@ GLOBAL_LIST_EMPTY(vending_products)
 	stat &= ~IN_USE
 	update_icon()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/proc/update_derived_ammo_and_boxes(var/list/L)
+	if(!LAZYLEN(L))
+		return
+	var/datum/item_box_pairing/IBP = GLOB.item_to_box_mapping.get_box_to_item_mapping(L[3])
+	if(IBP)
+		//Item is a vented box, update base ammo count
+		//and then update all the relevant boxes based on the new item count by calling this function again with the ammo parameter
+		var/list/topic_listed_products = get_listed_products(usr)
+		for(var/list/P in topic_listed_products)
+			if(P[3] == IBP.item)
+				//We lower the amount of available magazines based on how many magazines we vended in a box
+				P[2] = max(P[2] - IBP.items_in_box, 0) //Just in case some shenanigans happen
+				//We are calling this function again, but this time with the MAGAZINE, instead of the box, so it would populate box amounts
+				//Just in case we have a small ammo box and a big ammo box (like say, grenades do)
+				update_derived_ammo_and_boxes(P)
+				return
+	else
+		//Item is a vented magazine / grenade / whatever, update all dependent boxes
+		var/datum/item_to_multiple_box_pairing/IMBP = GLOB.item_to_box_mapping.get_item_to_box_mapping(L[3])
+		if(!IMBP)
+			return
+		var/list/topic_listed_products = get_listed_products(usr)
+		for(var/list/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
+			for(var/list/P in topic_listed_products)
+				if(P[3] == IBP.item)
+					//We recalculate the amount of boxes we ought to have based on how many magazines we have
+					P[2] = round(L[2] / IBP.items_in_box)
+					break
 
 /obj/structure/machinery/cm_vending/sorted/MouseDrop_T(var/atom/movable/A, mob/user)
 

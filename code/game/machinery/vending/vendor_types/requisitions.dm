@@ -290,6 +290,7 @@
 	icon_state = "req_ammo"
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
+	load_ammo_boxes = TRUE
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/Initialize()
 	. = ..()

@@ -17,6 +17,7 @@
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_QUEEN
+	upgrade_allowed = FALSE
 
 	build_time_mult = BUILD_TIME_MULT_BUILDER
 

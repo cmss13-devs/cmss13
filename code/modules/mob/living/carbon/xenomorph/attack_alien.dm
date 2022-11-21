@@ -135,6 +135,9 @@
 			M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
 			SPAN_DANGER("You [M.slash_verb] [src]!"), null, null, CHAT_TYPE_XENO_COMBAT)
 
+			if(M.upgrade < 4)
+				M.upgrade_stored = min(M.upgrade_stored + 15, M.upgrade_threshold - 1) //Leaving life.dm to handle maxing out maturation will avoid a lot of issues.
+
 			handle_blood_splatter(get_dir(M.loc, src.loc))
 
 			last_damage_data = create_cause_data(initial(M.name), M)

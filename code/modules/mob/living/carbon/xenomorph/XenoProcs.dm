@@ -79,6 +79,14 @@
 	if(evolve_progress)
 		. += "Evolve Progress: [evolve_progress]"
 
+	var/upgrade_progress
+
+	if(caste && upgrade < 4)
+		upgrade_progress = "[round(upgrade_stored)]/[upgrade_threshold]"
+
+	if(upgrade_progress)
+		. += "Maturation: [upgrade_progress]"
+
 	. += ""
 
 	if (behavior_delegate)
@@ -172,6 +180,9 @@
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
+	var/plasma_use_maturation = value / 5
+	if(upgrade < 4)
+		upgrade_stored = min(upgrade_stored + plasma_use_maturation, upgrade_threshold - 1) //Leaving life.dm to handle maxing out maturation will avoid a lot of issues.
 
 /mob/living/carbon/Xenomorph/proc/gain_plasma(value)
 	plasma_stored = min(plasma_stored + value, plasma_max)
@@ -255,6 +266,8 @@
 
 	move_delay = .
 
+	if(upgrade < 4)
+		upgrade_stored = min(upgrade_stored + 1, upgrade_threshold - 1) //Leaving life.dm to handle maxing out maturation will avoid a lot of issues.
 
 /mob/living/carbon/Xenomorph/show_inv(mob/user)
 	return

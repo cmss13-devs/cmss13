@@ -24,6 +24,10 @@
 	var/evolution_threshold = 0 //Threshold to next evolution
 	var/evolve_without_queen = FALSE // whether they can get evo points without needing an ovi queen
 
+	var/upgrade_allowed = TRUE
+	var/upgrade = 1
+	var/upgrade_threshold = 0
+
 	var/list/evolves_to = list() //This is where you add castes to evolve into. "Separated", "by", "commas"
 	var/list/deevolves_to = list()  // what caste or castes to de-evolve to.
 	var/is_intelligent = 0 //If they can use consoles, etc. Set on Queen
@@ -124,6 +128,12 @@
 			if(2)
 				evolution_threshold = 500
 			//Other tiers (T3, Queen, etc.) can't evolve anyway
+
+	//Maturation
+	upgrade_threshold = 0
+
+	if(upgrade_allowed)
+		upgrade_threshold = 800
 
 	resin_build_order = GLOB.resin_build_order_drone
 

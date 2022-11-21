@@ -47,6 +47,11 @@
 		if(evolution_stored >= evolution_threshold)
 			evolve_message()
 
+	if(caste && upgrade < 4 && upgrade_stored < upgrade_threshold) //upgrade possible
+		upgrade_stored = min(upgrade_stored + progress_amount, upgrade_threshold)
+		if(upgrade_stored >= upgrade_threshold)
+			upgrade_xeno()
+
 /mob/living/carbon/Xenomorph/proc/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))

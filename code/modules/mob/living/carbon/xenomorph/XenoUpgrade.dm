@@ -33,5 +33,32 @@
 
 	hud_update() //update the age level insignia on our xeno hud.
 
-	//One last shake for the sake of it
+/mob/living/carbon/Xenomorph/proc/upgrade_xeno()
+	upgrade++
+	upgrade_stored = 0
+	upgrade_threshold = caste.upgrade_threshold
+	visible_message("<span class='xenonotice'>\The [src] begins to twist and contort.</span>", \
+	"<span class='xenonotice'>You begin to twist and contort.</span>")
 	xeno_jitter(25)
+	sleep(25)
+
+	switch(upgrade)
+		if(1)
+			matured_prefix = "Young "
+			maturation_health_bonus = XENO_SCALAR_HEALTH_YOUNG
+		if(2)
+			matured_prefix = ""
+			maturation_health_bonus = XENO_SCALAR_HEALTH_NONE
+		if(3)
+			matured_prefix = "Aged "
+			maturation_health_bonus = XENO_SCALAR_HEALTH_LOW
+			maturation_plasma_bonus = XENO_MULTIPLIER_PLASMA_MATURE
+			maturation_damage_bonus = XENO_MULTIPLIER_DAMAGE_MATURE
+			maturation_speed_bonus = XENO_SPEED_FASTMOD_TIER_6
+		if(4)
+			matured_prefix = "Hardened "
+			maturation_health_bonus = XENO_SCALAR_HEALTH_MED
+			maturation_speed_bonus = XENO_SPEED_FASTMOD_TIER_9
+
+	generate_name() //Give them a new name now
+	recalculate_everything()

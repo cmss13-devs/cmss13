@@ -493,6 +493,7 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////////////
 
+#define XENO_SCALAR_HEALTH_YOUNG			0.8
 #define XENO_SCALAR_HEALTH_NONE				1.0
 #define XENO_SCALAR_HEALTH_LOW  			1.1
 #define XENO_SCALAR_HEALTH_LOWMED			1.15

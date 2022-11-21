@@ -142,12 +142,20 @@
 
 	// Progression-related
 	var/age_prefix = ""
+	var/matured_prefix = "Young "
 	var/age = 0  //This will track their age level. -1 means cannot age
 	var/show_age_prefix = TRUE
 	var/show_name_numbers = TRUE
 	var/show_only_numbers = FALSE
+	var/maturation_health_bonus = XENO_SCALAR_HEALTH_YOUNG
+	var/maturation_plasma_bonus = XENO_SCALAR_PLASMA_NONE
+	var/maturation_damage_bonus = XENO_SCALAR_DAMAGE_NONE
+	var/maturation_speed_bonus = 0
 	var/evolution_stored = 0 //How much evolution they have stored
 	var/evolution_threshold = 200
+	var/upgrade = 1
+	var/upgrade_stored = 0 //Same as evo but for maturation
+	var/upgrade_threshold = 0
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
 	var/time_of_birth
 
@@ -554,6 +562,7 @@
 
 /mob/living/carbon/Xenomorph/proc/handle_name(var/datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
+	var/matured_display = matured_prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
 	if(client)
@@ -567,7 +576,7 @@
 	var/name_display = ""
 	if(show_name_numbers)
 		name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
-	name = "[name_prefix][age_display][caste.display_name || caste.caste_type][name_display]"
+	name = "[name_prefix][matured_display][age_display][caste.display_name || caste.caste_type][name_display]"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -848,12 +857,12 @@
 
 /mob/living/carbon/Xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
-	if (new_max_health == maxHealth)
-		return
 	var/currentHealthRatio = 1
 	if(health < maxHealth)
 		currentHealthRatio = health / maxHealth
 	maxHealth = new_max_health
+	if (caste_type != XENO_CASTE_QUEEN)
+		maxHealth *= maturation_health_bonus
 	health = round(maxHealth * currentHealthRatio + 0.5)//Restore our health ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(health > maxHealth)
 		health = maxHealth
@@ -864,10 +873,10 @@
 
 	var/new_plasma_max = plasmapool_modifier * caste.plasma_max
 	plasma_gain = plasmagain_modifier + caste.plasma_gain
-	if (new_plasma_max == plasma_max)
-		return
 	var/plasma_ratio = plasma_stored / plasma_max
 	plasma_max = new_plasma_max
+	if (caste_type != XENO_CASTE_QUEEN)
+		plasma_max *= maturation_plasma_bonus
 	plasma_stored = round(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
@@ -881,7 +890,7 @@
 	recalculate_move_delay = TRUE
 	speed = speed_modifier
 	if(caste)
-		speed += caste.speed
+		speed = speed + caste.speed + maturation_speed_bonus
 	SEND_SIGNAL(src, COMSIG_XENO_RECALCULATE_SPEED)
 
 /mob/living/carbon/Xenomorph/proc/recalculate_armor()
@@ -896,6 +905,8 @@
 	if(caste)
 		melee_damage_lower += caste.melee_damage_lower
 		melee_damage_upper += caste.melee_damage_upper
+		melee_damage_lower *= maturation_damage_bonus
+		melee_damage_upper *= maturation_damage_bonus
 		melee_vehicle_damage += caste.melee_vehicle_damage
 
 /mob/living/carbon/Xenomorph/proc/recalculate_evasion()
@@ -952,7 +963,8 @@
 
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
-	evolution_threshold =  caste.evolution_threshold
+	evolution_threshold = caste.evolution_threshold
+	upgrade_threshold = caste.upgrade_threshold * upgrade
 
 /mob/living/carbon/Xenomorph/rejuvenate()
 	if(stat == DEAD && !QDELETED(src))

@@ -167,72 +167,64 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 10
 	var/list/items
+	var/obj/item_type
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/get_listed_products(mob/user)
+	//If we don't have an object type, we ask the user to supply it
+	if(!item_type)
+		var/item = tgui_input_text(usr,"What item to stock?", "Stock Vendor","")
+		if(!item)
+			return
+		var/list/types = typesof(/obj)
+		var/list/matches = new()
+
+		//Figure out which object they might be trying to fetch
+		for(var/path in types)
+			if(findtext("[path]", item))
+				matches += path
+
+		if(matches.len==0)
+			return
+
+		var/chosen
+		if(matches.len==1)
+			chosen = matches[1]
+		else
+			//If we have multiple options, let them select which one they meant
+			chosen = tgui_input_list(usr, "Select an object type", "Select Object", matches)
+
+		if(!chosen)
+			return
+
+		item_type = chosen
+
+	if(!items)
+		items = list()
+		for(var/obj/item/I as anything in typesof(item_type))
+			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+
 	return items
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
 	name = "\improper Super Snowflake Vendor, Uniforms"
-
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform/get_listed_products(mob/user)
-	if(!items)
-		items = list()
-		items += list(list("UNIFORM", 0, null, null, null))
-		for(var/obj/item/I as anything in typesof(/obj/item/clothing/under))
-			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
-	return ..()
+	item_type = /obj/item/clothing/under
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/glasses
 	name = "\improper Super Snowflake Vendor, Glasses"
-
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/glasses/get_listed_products(mob/user)
-	if(!items)
-		items = list()
-		items += list(list("GLASSES", 0, null, null, null))
-		for(var/obj/item/I as anything in typesof(/obj/item/clothing/glasses))
-			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
-	return ..()
+	item_type = /obj/item/clothing/glasses
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes
 	name = "\improper Super Snowflake Vendor, Shoes"
-
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes/get_listed_products(mob/user)
-	if(!items)
-		items = list()
-		items += list(list("SHOES", 0, null, null, null))
-		for(var/obj/item/I as anything in typesof(/obj/item/clothing/shoes))
-			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
-	return ..()
+	item_type = /obj/item/clothing/shoes
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/helmet
 	name = "\improper Super Snowflake Vendor, Helmets"
-
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/helmet/get_listed_products(mob/user)
-	if(!items)
-		items = list()
-		items += list(list("HELMET", 0, null, null, null))
-		for(var/obj/item/I as anything in typesof(/obj/item/clothing/head))
-			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
-	return ..()
+	item_type = /obj/item/clothing/head
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/suit
 	name = "\improper Super Snowflake Vendor, Suits"
-
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/suit/get_listed_products(mob/user)
-	if(!items)
-		items = list()
-		items += list(list("SUIT", 0, null, null, null))
-		for(var/obj/item/I as anything in typesof(/obj/item/clothing/suit))
-			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
-	return ..()
+	item_type = /obj/item/clothing/suit
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack
 	name = "\improper Super Snowflake Vendor, Backpacks"
-
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack/get_listed_products(mob/user)
-	if(!items)
-		items = list()
-		items += list(list("BACKPACKS", 0, null, null, null))
-		for(var/obj/item/I as anything in typesof(/obj/item/storage/backpack))
-			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
-	return ..()
+	item_type = /obj/item/storage/backpack

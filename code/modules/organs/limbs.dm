@@ -19,7 +19,7 @@
 
 	var/display_name
 
-	var/list/datum/wound/wounds = list()
+	var/list/wounds = list()
 	var/number_wounds = 0 // cache the number of wounds, which is NOT wounds.len!
 
 	var/tmp/perma_injury = 0
@@ -108,10 +108,20 @@
 			L.parent = null
 		children = null
 
-	QDEL_NULL(hidden)
-	QDEL_NULL_LIST(internal_organs)
-	QDEL_NULL_LIST(implants)
-	QDEL_NULL_LIST(autopsy_data)
+	if(hidden)
+		qdel(hidden)
+		hidden = null
+
+	if(internal_organs)
+		for(var/datum/internal_organ/IO in internal_organs)
+			IO.owner = null
+			qdel(IO)
+		internal_organs = null
+
+	if(implants)
+		for(var/I in implants)
+			qdel(I)
+		implants = null
 
 	if(bleeding_effects_list)
 		for(var/datum/effects/bleeding/B in bleeding_effects_list)
@@ -125,8 +135,6 @@
 		owner.limbs_to_process -= src
 		owner.update_body()
 	owner = null
-
-	QDEL_NULL_LIST(wounds)
 
 	return ..()
 
@@ -357,7 +365,7 @@
 			&& CONFIG_GET(flag/limbs_can_break)\
 			&& brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier)\
 		)
-			var/cut_prob = brute/max_damage * 12 //Slightly higher delimb chances than pre-2020 but unlike those times, need to be heavily damaged first so the extra 2% is to account for it
+			var/cut_prob = brute/max_damage * 10 //Slightly higher delimb chances than pre-2020 but unlike those times, need to be heavily damaged first so the extra 2% is to account for it
 			if(prob(cut_prob))
 				droplimb(0, 0, damage_source)
 				return

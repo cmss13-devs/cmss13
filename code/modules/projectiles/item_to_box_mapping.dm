@@ -68,6 +68,14 @@
 		ibp.items_in_box = initial(AB.storage_slots)
 		add_pairing(ibp)
 
+	//*******Snowflakes*******//
+	//Mine box
+	var/datum/item_box_pairing/ibp = new()
+	ibp.box = /obj/item/storage/box/explosive_mines
+	ibp.item = /obj/item/explosive/mine
+	ibp.items_in_box = 5
+	add_pairing(ibp)
+	
 	..()
 
 /datum/item_to_box_mapping/proc/get_item_to_box_mapping(var/I)

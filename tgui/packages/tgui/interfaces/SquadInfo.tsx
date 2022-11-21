@@ -135,6 +135,15 @@ const FireTeam = (props: { ft: string }, context) => {
       fireteam?.tl?.name === 'Not assigned' ||
       fireteam?.tl?.name === 'Unassigned' ||
       fireteam?.tl?.name === undefined);
+  const rankList = ['Mar', 'Med', 'Eng', 'SG', 'Spc', 'RTO', 'SL'];
+  const rankSort = (a: SquadMarineEntry, b: SquadMarineEntry) => {
+    if (a.rank === 'Mar' && b.rank === 'Mar') {
+      return a.paygrade === 'PFC' ? -1 : 1;
+    }
+    const a_index = rankList.findIndex((str) => a.rank === str);
+    const b_index = rankList.findIndex((str) => b.rank === str);
+    return a_index > b_index ? -1 : 1;
+  };
 
   if (isEmpty) {
     return null;
@@ -162,7 +171,7 @@ const FireTeam = (props: { ft: string }, context) => {
                     </TableCell>
                   )}
                 </TableRow>
-                {members.map((x) => (
+                {members.sort(rankSort).map((x) => (
                   <TableRow key={x.name}>
                     <FireTeamMember
                       member={x}

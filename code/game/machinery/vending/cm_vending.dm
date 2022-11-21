@@ -1243,34 +1243,58 @@ GLOBAL_LIST_EMPTY(vending_products)
 	update_icon()
 	return
 
+//Called when we vend something
 /obj/structure/machinery/cm_vending/sorted/proc/update_derived_ammo_and_boxes(var/list/L)
 	if(!LAZYLEN(L))
 		return
-	var/datum/item_box_pairing/IBP = GLOB.item_to_box_mapping.get_box_to_item_mapping(L[3])
-	if(IBP)
-		//Item is a vented box, update base ammo count
-		//and then update all the relevant boxes based on the new item count by calling this function again with the ammo parameter
-		var/list/topic_listed_products = get_listed_products(usr)
+
+	update_derived_ammo(L)
+	update_derived_boxes(L[3])
+
+//Called when we add something in
+/obj/structure/machinery/cm_vending/sorted/proc/update_derived_ammo_and_boxes_on_add(var/list/L)
+	if(!LAZYLEN(L))
+		return
+	update_derived_ammo(L)
+	//We are ADDING a box, so need to INCREASE the number of magazines rather than subtracting it
+	update_derived_boxes(L[3], TRUE)
+
+/obj/structure/machinery/cm_vending/sorted/proc/update_derived_ammo(var/list/L, var/add_box = FALSE)
+	if(!LAZYLEN(L))
+		return
+	//Item is a vented magazine / grenade / whatever, update all dependent boxes
+	var/datum/item_to_multiple_box_pairing/IMBP = GLOB.item_to_box_mapping.get_item_to_box_mapping(L[3])
+	if(!IMBP)
+		return
+	var/list/topic_listed_products = get_listed_products(usr)
+	for(var/list/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
 		for(var/list/P in topic_listed_products)
-			if(P[3] == IBP.item)
+			if(P[3] == IBP.box)
+				//We recalculate the amount of boxes we ought to have based on how many magazines we have
+				P[2] = round(L[2] / IBP.items_in_box)
+				break
+
+/obj/structure/machinery/cm_vending/sorted/proc/update_derived_boxes(var/obj/item/I, var/add_box = FALSE)
+	var/datum/item_box_pairing/IBP = GLOB.item_to_box_mapping.get_box_to_item_mapping(I)
+	if(!IBP)
+		return
+	//Item is a vented box, update base ammo count
+	//and then update all the relevant boxes based on the new item count by calling this function again with the ammo parameter
+	var/list/topic_listed_products = get_listed_products(usr)
+	for(var/list/P in topic_listed_products)
+		if(P[3] == IBP.item)
+			if(add_box)
+				//We increase the amount of available magazines based on how many magazines we vended in a box
+				P[2] = P[2] + IBP.items_in_box
+			else
 				//We lower the amount of available magazines based on how many magazines we vended in a box
 				P[2] = max(P[2] - IBP.items_in_box, 0) //Just in case some shenanigans happen
-				//We are calling this function again, but this time with the MAGAZINE, instead of the box, so it would populate box amounts
-				//Just in case we have a small ammo box and a big ammo box (like say, grenades do)
-				update_derived_ammo_and_boxes(P)
-				return
-	else
-		//Item is a vented magazine / grenade / whatever, update all dependent boxes
-		var/datum/item_to_multiple_box_pairing/IMBP = GLOB.item_to_box_mapping.get_item_to_box_mapping(L[3])
-		if(!IMBP)
+			
+			//After we update the magazines, we update the connected boxes
+			//Just in case we have a small ammo box and a big ammo box (like say, grenades do)
+			update_derived_ammo(P[3])
 			return
-		var/list/topic_listed_products = get_listed_products(usr)
-		for(var/list/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
-			for(var/list/P in topic_listed_products)
-				if(P[3] == IBP.box)
-					//We recalculate the amount of boxes we ought to have based on how many magazines we have
-					P[2] = round(L[2] / IBP.items_in_box)
-					break
+
 
 /obj/structure/machinery/cm_vending/sorted/MouseDrop_T(var/atom/movable/A, mob/user)
 
@@ -1321,6 +1345,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
 			R[2]++
+			if(load_ammo_boxes)
+				update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 

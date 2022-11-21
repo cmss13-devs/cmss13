@@ -211,6 +211,8 @@
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
 			R[2]++
+			if(load_ammo_boxes)
+				update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
@@ -423,6 +425,8 @@
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
 			R[2]++
+			if(load_ammo_boxes)
+				update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
@@ -691,5 +695,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 			user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
 			R[2]++
+			if(load_ammo_boxes)
+				update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.

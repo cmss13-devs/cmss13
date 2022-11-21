@@ -365,7 +365,7 @@
 			&& CONFIG_GET(flag/limbs_can_break)\
 			&& brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier)\
 		)
-			var/cut_prob = brute/max_damage * 10 //Same as pre-2020 but unlike those times no insta delimb on first hits, need to be damaged first as explained above.
+			var/cut_prob = brute/max_damage * 12 //Similar to pre-2020 but 2% higher to account for the fact that those times had insta delimb on first hits, otherwise now needs to be damaged first as explained above. Change to 10% otherwise
 			if(prob(cut_prob))
 				droplimb(0, 0, damage_source)
 				return

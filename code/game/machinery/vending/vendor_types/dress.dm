@@ -155,3 +155,84 @@
 			IT.add_fingerprint(usr)
 			LAZYADD(id_card.vended_items, item_path)
 			return TRUE
+
+//A clothing vendor for admins and devs to test all the clothes in the game
+/obj/structure/machinery/cm_vending/clothing/super_snowflake
+	name = "\improper Super Snowflake Vendor"
+	desc = "WARNING: The quantity of clothes contained within can slow down reality."
+	icon_state = "snowflake"
+	use_points = FALSE
+	show_points = FALSE
+	use_snowflake_points = FALSE
+	vendor_theme = VENDOR_THEME_COMPANY
+	vend_delay = 10
+	var/list/items
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/get_listed_products(mob/user)
+	return items
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
+	name = "\improper Super Snowflake Vendor, Uniforms"
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform/get_listed_products(mob/user)
+	if(!items)
+		items = list()
+		items += list(list("UNIFORM", 0, null, null, null))
+		for(var/obj/item/I as anything in typesof(/obj/item/clothing/under))
+			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+	return ..()
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/glasses
+	name = "\improper Super Snowflake Vendor, Glasses"
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/glasses/get_listed_products(mob/user)
+	if(!items)
+		items = list()
+		items += list(list("GLASSES", 0, null, null, null))
+		for(var/obj/item/I as anything in typesof(/obj/item/clothing/glasses))
+			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+	return ..()
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes
+	name = "\improper Super Snowflake Vendor, Shoes"
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes/get_listed_products(mob/user)
+	if(!items)
+		items = list()
+		items += list(list("SHOES", 0, null, null, null))
+		for(var/obj/item/I as anything in typesof(/obj/item/clothing/shoes))
+			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+	return ..()
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/helmet
+	name = "\improper Super Snowflake Vendor, Helmets"
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/helmet/get_listed_products(mob/user)
+	if(!items)
+		items = list()
+		items += list(list("HELMET", 0, null, null, null))
+		for(var/obj/item/I as anything in typesof(/obj/item/clothing/head))
+			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+	return ..()
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/suit
+	name = "\improper Super Snowflake Vendor, Suits"
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/suit/get_listed_products(mob/user)
+	if(!items)
+		items = list()
+		items += list(list("SUIT", 0, null, null, null))
+		for(var/obj/item/I as anything in typesof(/obj/item/clothing/suit))
+			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+	return ..()
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack
+	name = "\improper Super Snowflake Vendor, Backpacks"
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack/get_listed_products(mob/user)
+	if(!items)
+		items = list()
+		items += list(list("BACKPACKS", 0, null, null, null))
+		for(var/obj/item/I as anything in typesof(/obj/item/storage/backpack))
+			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+	return ..()

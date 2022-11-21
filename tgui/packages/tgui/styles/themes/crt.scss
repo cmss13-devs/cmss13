@@ -16,78 +16,101 @@ $small-text: 2vw;
 $large-text: 3vw;
 
 %theme-crt {
-  @include meta.load-css('../components/Divider.scss', $with: (
-    'color': base.$color-fg,
-  ));
+  @include meta.load-css(
+    '../components/Divider.scss',
+    $with: ('color': base.$color-fg)
+  );
   @include meta.load-css('../components/Stack.scss');
 
-  @include meta.load-css('../components/Slider.scss', $with: (
-    'cursor-color': darken(base.$color-fg, 0.2),
-    'popup-background-color': base.$color-bg,
-    'popup-text-color': base.$color-fg
-  ));
+  @include meta.load-css(
+    '../components/Slider.scss',
+    $with: (
+      'cursor-color': darken(base.$color-fg, 0.2),
+      'popup-background-color': base.$color-bg,
+      'popup-text-color': base.$color-fg
+    )
+  );
 
-  @include meta.load-css('../components/Input.scss', $with: (
-    'text-color': base.$color-fg,
-    'background-color': base.$color-bg,
-    'border-color': base.$color-fg,
-  ));
+  @include meta.load-css(
+    '../components/Input.scss',
+    $with: (
+      'text-color': base.$color-fg,
+      'background-color': base.$color-bg,
+      'border-color': base.$color-fg
+    )
+  );
 
-  @include meta.load-css('../components/NumberInput.scss', $with: (
-    'text-color': base.$color-fg,
-    'background-color': base.$color-bg,
-    'border-color': base.$color-fg
-  ));
+  @include meta.load-css(
+    '../components/NumberInput.scss',
+    $with: (
+      'text-color': base.$color-fg,
+      'background-color': base.$color-bg,
+      'border-color': base.$color-fg
+    )
+  );
 
-  @include meta.load-css('../components/Knob.scss', $with: (
-    'ring-color': base.$color-fg,
-    'knob-color': base.$color-bg,
-    'popup-background-color': base.$color-bg,
-    'popup-text-color': base.$color-fg
-  ));
+  @include meta.load-css(
+    '../components/Knob.scss',
+    $with: (
+      'ring-color': base.$color-fg,
+      'knob-color': base.$color-bg,
+      'popup-background-color': base.$color-bg,
+      'popup-text-color': base.$color-fg
+    )
+  );
 
-  @include meta.load-css('../components/ProgressBar.scss', $with: (
-    'color-default-fill': base.$color-fg
-  ));
+  @include meta.load-css(
+    '../components/ProgressBar.scss',
+    $with: ('color-default-fill': base.$color-fg)
+  );
 
-  @include meta.load-css('../components/BlockQuote.scss', $with: (
-    'color-default': base.$color-fg
-  ));
+  @include meta.load-css(
+    '../components/BlockQuote.scss',
+    $with: ('color-default': base.$color-fg)
+  );
 
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: (
-    'background-color': base.$color-bg,
-    'text-color': base.$color-fg
-  ));
-  @include meta.load-css('../layouts/Layout.scss', $with: (
-    'scrollbar-color-multiplier': 0.5
-  ));
-  @include meta.load-css('../components/Section.scss', $with: (
-    'title-text-color': base.$color-fg,
-  ));
-  @include meta.load-css('../components/Button.scss', $with: (
-    'color-default': base.$color-fg,
-    'color-disabled': darken(base.$color-fg, 30)
-  ));
+  @include meta.load-css(
+    '../layouts/TitleBar.scss',
+    $with: ('background-color': base.$color-bg, 'text-color': base.$color-fg)
+  );
+  @include meta.load-css(
+    '../layouts/Layout.scss',
+    $with: ('scrollbar-color-multiplier': 0.5)
+  );
+  @include meta.load-css(
+    '../components/Section.scss',
+    $with: ('title-text-color': base.$color-fg)
+  );
+  @include meta.load-css(
+    '../components/Button.scss',
+    $with: (
+      'color-default': base.$color-fg,
+      'color-disabled': darken(base.$color-fg, 30)
+    )
+  );
 
-  @include meta.load-css('../components/Tabs.scss', $with: (
-    'tab-color': base.$color-bg,
-    'tab-color-selected': base.$color-fg,
-    'text-color': base.$color-fg,
-    'text-color-selected': base.$color-bg,
-    'tab-color-hovered': rgba(base.$color-fg, 0.3),
-  ));
+  @include meta.load-css(
+    '../components/Tabs.scss',
+    $with: (
+      'tab-color': base.$color-bg,
+      'tab-color-selected': base.$color-fg,
+      'text-color': base.$color-fg,
+      'text-color-selected': base.$color-bg,
+      'tab-color-hovered': rgba(base.$color-fg, 0.3)
+    )
+  );
 
   .Layout__content {
-
     background-image: none;
     background: radial-gradient(
       rgba(colors.$primary, $background-radial-opacity),
-      rgba(colors.$primary, math.div($background-radial-opacity, 5)));
+      rgba(colors.$primary, math.div($background-radial-opacity, 5))
+    );
   }
 
   .Layout__content::after {
-    content: " ";
+    content: ' ';
     display: block;
     position: absolute;
     top: 0;
@@ -98,19 +121,25 @@ $large-text: 3vw;
     opacity: 0;
     z-index: 2;
     pointer-events: none;
-    animation: flicker 0.15s infinite;
-    animation-name: flicker;
-    animation-duration: 1s;
   }
   .Layout__content::before {
-    content: " ";
+    content: ' ';
     display: block;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.06),
+        rgba(0, 255, 0, 0.02),
+        rgba(0, 0, 255, 0.06)
+      );
     z-index: 2;
     background-size: 100% 2px, 3px 100%;
     pointer-events: none;
@@ -275,4 +304,3 @@ $large-text: 3vw;
     opacity: 0.24387;
   }
 }
-

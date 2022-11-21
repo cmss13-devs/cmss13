@@ -413,3 +413,7 @@
   - refactor: reworked xeno mark menu
   - refactor: xenos can see which mark they are tracking
   - refactor: xenos can see who is tracking what mark
+2022-11-21:
+  kugamo:
+  - balance: Building resin constructions in doors is possible again, but will break
+      if closed on them.

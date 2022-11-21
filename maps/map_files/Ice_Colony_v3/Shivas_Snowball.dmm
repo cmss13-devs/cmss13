@@ -1633,7 +1633,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "agM" = (
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "agR" = (

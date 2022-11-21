@@ -284,8 +284,8 @@
 					combined_refs |= query.select_refs
 					running -= query
 					if(!(query.options & SDQL2_OPTION_DO_NOT_AUTOGC))
-						QDEL_IN(query, 50)
-					if(sequential && waiting_queue.len)
+						QDEL_IN(query, 5 SECONDS)
+					if(sequential && length(waiting_queue))
 						finished = FALSE
 						var/datum/sdql2_query/next_query = popleft(waiting_queue)
 						running += next_query
@@ -306,7 +306,7 @@
 		SPAN_ADMIN("SDQL combined querys took [DisplayTimeText(end_time_total)] to complete.")) + combined_refs
 
 GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
-//GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null, "VIEW VARIABLES (all)", null))
+GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/statclick/sdql2_vv_all, new(null, "VIEW VARIABLES (all)", null))
 
 /datum/sdql2_query
 	var/list/query_tree
@@ -336,8 +336,8 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 	var/obj_count_finished
 
 	//Statclick
-	//var/obj/effect/statclick/SDQL2_delete/delete_click
-	//var/obj/effect/statclick/SDQL2_action/action_click
+	var/obj/statclick/SDQL2_delete/delete_click
+	var/obj/statclick/SDQL2_action/action_click
 
 /datum/sdql2_query/New(list/tree, SU = FALSE, admin_interact = TRUE, _options = SDQL2_OPTIONS_DEFAULT, finished_qdel = FALSE)
 	if(IsAdminAdvancedProcCall() || !LAZYLEN(tree))
@@ -369,8 +369,8 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 
 /proc/recursive_list_print(list/output = list(), list/input, datum/callback/datum_handler, datum/callback/atom_handler)
 	output += "\[ "
-	for(var/i in 1 to input.len)
-		var/final = i == input.len
+	for(var/i in 1 to lenght(input))
+		var/final = i == length(input)
 		var/key = input[i]
 
 		//print the key
@@ -419,7 +419,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 			return "SWITCHING"
 		if(SDQL2_STATE_HALTING)
 			return "##HALTING"
-/*
+
 /datum/sdql2_query/proc/generate_stat()
 	if(!allow_admin_interact)
 		return
@@ -433,7 +433,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 	[islist(obj_count_eligible)? length(obj_count_eligible) : (isnull(obj_count_eligible)? "0" : obj_count_eligible)]/\
 	[islist(obj_count_finished)? length(obj_count_finished) : (isnull(obj_count_finished)? "0" : obj_count_finished)] - [get_query_text()]")]", REF(delete_click))
 	L[++L.len] = list(" ", "[action_click.update("[SDQL2_IS_RUNNING? "HALT" : "RUN"]")]", REF(action_click))
-	return L*/
+	return L
 
 /datum/sdql2_query/proc/delete_click()
 	admin_del(usr)
@@ -570,7 +570,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 		var/list/expression = tree[i++]
 		switch (key)
 			if ("map")
-				for(var/j = 1 to objs.len)
+				for(var/j = 1 to length(objs))
 					var/x = objs[j]
 					objs[j] = SDQL_expression(x, expression)
 					SDQL2_TICK_CHECK
@@ -587,7 +587,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 					SDQL2_HALT_CHECK
 				objs = out
 	if(islist(obj_count_eligible))
-		obj_count_eligible = objs.len
+		obj_count_eligible = length(objs)
 	else
 		obj_count_eligible = obj_count_all
 	. = objs
@@ -727,10 +727,10 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 		if(istype(object, /atom))
 			var/atom/A = object
 			var/turf/T = A.loc
-			var/area/a
+			var/area/gotten_area
 			if(istype(T))
 				text_list += " <font color='gray'>at</font> [T] [ADMIN_COORDJMP(T)]"
-				a = T.loc
+				gotten_area = T.loc
 			else
 				var/turf/final = get_turf(T) //Recursive, hopefully?
 				if(istype(final))
@@ -738,23 +738,23 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 					a = final.loc
 				else
 					text_list += " <font color='gray'>at</font> nonexistent location"
-			if(a)
-				text_list += " <font color='gray'>in</font> area [a]"
-				if(T.loc != a)
+			if(gotten_area)
+				text_list += " <font color='gray'>in</font> area [gotten_area]"
+				if(T.loc != gotten_area)
 					text_list += " <font color='gray'>inside</font> [T]"
 		text_list += "<br>"
 	else if(islist(object))
-		var/list/L = object
+		var/list/obj_list = object
 		var/first = TRUE
 		text_list += "\["
-		for (var/x in L)
+		for (var/x in obj_list)
 			if (!first)
 				text_list += ", "
 			first = FALSE
 			SDQL_print(x, text_list)
-			if (!isnull(x) && !isnum(x) && L[x] != null)
+			if (!isnull(x) && !isnum(x) && obj_list[x] != null)
 				text_list += " -> "
-				SDQL_print(L[L[x]])
+				SDQL_print(obj_list[obj_list[x]])
 		text_list += "]<br>"
 	else
 		if(isnull(object))
@@ -783,7 +783,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 			if(v == "#null")
 				SDQL_expression(d, set_list[sets])
 				break
-			if(++i == sets.len)
+			if(++i == length(sets))
 				if(superuser)
 					if(temp.vars.Find(v))
 						temp.vars[v] = SDQL_expression(d, set_list[sets])
@@ -811,7 +811,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 	var/result = 0
 	var/val
 
-	for(var/i = start, i <= expression.len, i++)
+	for(var/i = start, i <= length(expression), i++) // Needs to stay a C++ loop
 		var/op = ""
 
 		if(i > start)
@@ -868,7 +868,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 	var/i = start
 	var/val = null
 
-	if(i > expression.len)
+	if(i > length(expression))
 		return list("val" = null, "i" = i)
 
 	if(istype(expression[i], /list))
@@ -939,7 +939,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 
 	else
 		val = world.SDQL_var(object, expression, i, object, superuser, src)
-		i = expression.len
+		i = length(expression)
 
 	return list("val" = val, "i" = i)
 
@@ -962,7 +962,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 			parser.query = query_tree
 			var/list/parsed_tree
 			parsed_tree = parser.parse()
-			if(parsed_tree.len > 0)
+			if(length(parsed_tree) > 0)
 				querys.len = querys_pos
 				querys[querys_pos] = parsed_tree
 				querys_pos++
@@ -1008,7 +1008,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 /world/proc/SDQL_var(object, list/expression, start = 1, source, superuser, datum/sdql2_query/query)
 	var/v
 	var/static/list/exclude = list("usr", "src", "marked", "global", "MC", "FS", "CFG")
-	var/long = start < expression.len
+	var/long = start < length(expression)
 	var/datum/D
 	if(isdatum(object))
 		D = object
@@ -1030,11 +1030,11 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 			return null
 		v = located
 		start++
-		long = start < expression.len
+		long = start < length(expression)
 	else if(expression[start] == "(" && long)
 		v = query.SDQL_expression(source, expression[start + 1])
 		start++
-		long = start < expression.len
+		long = start < length(expression)
 	else if(D != null && (!long || expression[start + 1] == ".") && (expression[start] in D.vars))
 		if(D.can_vv_get(expression[start]) || superuser)
 			v = D.vars[expression[start]]
@@ -1192,7 +1192,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 					word += char
 
 			if(i > len)
-				to_chat(usr, "\red SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.", confidential = TRUE)
+				to_chat(usr, SPAN_RED("SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again."))
 				return null
 
 			query_list += "[word]\""
@@ -1204,8 +1204,9 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 	if(word != "")
 		query_list += word
 	return query_list
-/*
-/obj/effect/statclick/SDQL2_delete/Click()
+
+
+/obj/statclick/SDQL2_delete/Click()
 	if(!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-staff clicked on a statclick! ([src])")
 		log_admin("non-staff clicked on a statclick! ([src])")
@@ -1213,7 +1214,7 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 	var/datum/sdql2_query/Q = target
 	Q.delete_click()
 
-/obj/effect/statclick/SDQL2_action/Click()
+/obj/statclick/SDQL2_action/Click()
 	if(!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-staff clicked on a statclick! ([src])")
 		log_admin("non-staff clicked on a statclick! ([src])")
@@ -1221,13 +1222,13 @@ GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
 	var/datum/sdql2_query/Q = target
 	Q.action_click()
 
-/obj/effect/statclick/sdql2_vv_all
+/obj/statclick/sdql2_vv_all
 	name = "VIEW VARIABLES"
 
-/obj/effect/statclick/sdql2_vv_all/Click()
+/obj/statclick/sdql2_vv_all/Click()
 	if(!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-staff clicked on a statclick! ([src])")
 		log_admin("non-staff clicked on a statclick! ([src])")
 		return
 	usr.client.debug_variables(GLOB.sdql2_queries)
-*/
+

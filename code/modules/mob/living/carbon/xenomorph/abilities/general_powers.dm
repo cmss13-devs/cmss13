@@ -540,7 +540,7 @@
 		to_chat(X, SPAN_WARNING("These weeds don't belong to your hive!"))
 		return
 
-	if(!X.check_alien_construction(T))
+	if(!X.check_alien_construction(T,check_doors=TRUE))
 		return
 
 	if(locate(/obj/effect/alien/resin/trap) in orange(1, T)) // obj/effect/alien/resin presence is checked on turf by check_alien_construction, so we just check orange.

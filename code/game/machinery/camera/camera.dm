@@ -55,6 +55,10 @@
 	set_pixel_location()
 	update_icon()
 
+/obj/structure/machinery/camera/Destroy()
+	. = ..()
+	QDEL_NULL(assembly)
+
 /obj/structure/machinery/camera/update_icon()
 	. = ..()
 	if(icon_state == "autocam_editor")

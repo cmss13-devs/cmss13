@@ -163,6 +163,10 @@
 
 #define COMSIG_MOB_POST_CLICK "mob_post_click"
 
+
+//Machine Guns (m56D, M2C)
+#define COMSIG_MOB_MG_EXIT "mob_mg_exit"
+
 // Return a nonzero value to cancel these actions
 #define COMSIG_BINOCULAR_ATTACK_SELF "binocular_attack_self"
 #define COMSIG_BINOCULAR_HANDLE_CLICK "binocular_handle_click"

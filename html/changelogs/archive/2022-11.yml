@@ -346,3 +346,81 @@
   ChainsawMullet:
   - bugfix: Fixed Abduct's slow not being properly applied & accounted for when using
       Dislocate on the slowed target.
+2022-11-19:
+  Diegoflores31:
+  - bugfix: Acid Pillar now properly spits acid to Enemies or xenos on fire that are
+      located on top of it .
+  Geeves, Frans_Feiffer:
+  - rscadd: Added squad-colored scarves and headbands.
+  - rscadd: Added a third slot to helmets that only takes fluff helmet garb.
+  Huffie56:
+  - rscadd: 'Added a new category for ASRS : food.'
+  - rscadd: new crates with (potato wheat tomato)*20 meat and fish  *5 and a crate
+      with every type of condiment.
+  - qol: regrouping all the food crate related item in the food category
+  ThePiachu:
+  - bugfix: Political Prisoner Survivor on Sorokyne can now wear the Survivor Snow
+      Uniform with their UPP undercoat, and they spawn with the Snow Uniform correctly.
+  - bugfix: Clown corpse now spawns their clown gear first before spawning snow gear.
+      This means they will have their full getup no matter the weather.
+  - balance: Survivors with Civilian Engineering access can now access Engineering
+      vendors without hacking them first.
+  - bugfix: Renamed the "Vehicle Modules and Ammo" category to "Vehicle Ammo" (since
+      it doesn't contain actual Vehicle Modules) to avoid confusion.
+  - bugfix: Vehicle flamethrower ammo now comes in crates designated for flamable
+      contents
+  - spellcheck: Fixed spelling on TAA-AP Minigun magazine crate
+  - bugfix: Made some vehicle crates a bit more accurate as to their content description
+  - bugfix: Gibbing a mob that had a fulton attached to them won't create a null reference
+      error in View Objectives window any more.
+  - refactor: Removed the old, unused Objective Controller code.
+  Tisx:
+  - soundadd: Added in new firing sounds for the CAS rocket pods and mini-rocketpods.
+  - sounddel: removed and replaced the incoming fire warning sound (the sound you
+      hear when the see the flashing green dot) to be louder and much more terrifying.
+  harryob:
+  - bugfix: crew console now shows ground/ship colours again
+  - refactor: the code for deconstruction is now (somewhat) neater
+  - bugfix: girders now deconstruct
+  totalepicness:
+  - soundadd: Fixes no sound when hitting metal foam
+2022-11-20:
+  John_Rico:
+  - rscadd: Added a UI button to exit a MG or you can resist
+  - rscadd: Added an animation "exiting" an M2c or m56d w/ variant
+  - bugfix: Can no long vault over cades or man a MG on the other side of a barricade
+  Molto:
+  - bugfix: fixed M4A3 belt spawning empty
+  NoKohi:
+  - bugfix: fixed a xeno fun fact showing up in human fun facts
+  ThePiachu:
+  - rscdel: Removed old, unused radio bindings
+  - rscdel: Removed old radio bindings for cyrylic keyboards that were way outdated
+  - code_imp: Small refactor of code around whisper / intercom radio channels
+  - bugfix: Xeno blood is now a finite resource.
+  - rscadd: Living xenos now regenerate blood just in case some unga has the idea
+      to attack one with a syringe.
+  fira:
+  - code_imp: Fixed a number of improper deletions across the game. This is mostly
+      a performance change.
+  harryob:
+  - bugfix: some changelog entries would fail to generate previously - this should
+      now be resolved.
+  kugamo:
+  - balance: Building resin constructions in doors is possible again, but will break
+      if closed on them.
+  mullenpaul:
+  - refactor: reworked xeno mark menu
+  - refactor: xenos can see which mark they are tracking
+  - refactor: xenos can see who is tracking what mark
+2022-11-21:
+  kugamo:
+  - balance: Building resin constructions in doors is possible again, but will break
+      if closed on them.
+2022-11-22:
+  NoKohi:
+  - rscadd: added a dchat and hive notification for when player facehuggers facehug
+      somebody
+  fira:
+  - bugfix: Fixes issues with clothing traits resulting in, eg, RPG spec losing ear
+      protection by manipulating their spare helmet.

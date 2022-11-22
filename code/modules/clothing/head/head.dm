@@ -122,6 +122,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/head/headband/Initialize(mapload, ...)
 	. = ..()
@@ -133,9 +134,60 @@
 /obj/item/clothing/head/headband/tan
 	icon_state = "headbandtan"
 
+/obj/item/clothing/head/headband/brown
+	icon_state = "headbandbrown"
+
+/obj/item/clothing/head/headband/gray
+	icon_state = "headbandgray"
+
 /obj/item/clothing/head/headband/rebel
 	desc = "A headband made from a simple strip of cloth. The words \"DOWN WITH TYRANTS\" are emblazoned on the front."
 	icon_state = "rebelband"
+
+/obj/item/clothing/head/headband/squad
+	icon_state = "headband%SQUAD%"
+
+	var/static/list/valid_icon_states
+
+/obj/item/clothing/head/headband/squad/Initialize(mapload, ...)
+	. = ..()
+	if(!valid_icon_states)
+		valid_icon_states = icon_states(icon)
+	adapt_to_squad()
+
+/obj/item/clothing/head/headband/squad/proc/update_clothing_wrapper(var/mob/living/carbon/human/wearer)
+	SIGNAL_HANDLER
+
+	var/is_worn_by_wearer = recursive_holder_check(src) == wearer
+	if(is_worn_by_wearer)
+		update_clothing_icon()
+	else
+		UnregisterSignal(wearer, COMSIG_SET_SQUAD) // we can't set this in dropped, because dropping into a helmet unsets it and then it never updates
+
+/obj/item/clothing/head/headband/squad/update_clothing_icon()
+	adapt_to_squad()
+	if(istype(loc, /obj/item/storage/internal) && istype(loc.loc, /obj/item/clothing/head/helmet))
+		var/obj/item/clothing/head/helmet/headwear = loc.loc
+		headwear.update_icon()
+	return ..()
+
+/obj/item/clothing/head/headband/squad/pickup(mob/user, silent)
+	. = ..()
+	adapt_to_squad()
+
+/obj/item/clothing/head/headband/squad/equipped(mob/user, slot, silent)
+	RegisterSignal(user, COMSIG_SET_SQUAD, .proc/update_clothing_wrapper, TRUE)
+	adapt_to_squad()
+	return ..()
+
+/obj/item/clothing/head/headband/squad/proc/adapt_to_squad()
+	var/squad_color = "gray"
+	var/mob/living/carbon/human/wearer = recursive_holder_check(src)
+	if(istype(wearer) && wearer.assigned_squad)
+		var/squad_name = lowertext(wearer.assigned_squad.name)
+		if("headband[squad_name]" in valid_icon_states)
+			squad_color = squad_name
+	icon_state = replacetext(initial(icon_state), "%SQUAD%", squad_color)
 
 /obj/item/clothing/head/headband/rambo
 	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."
@@ -190,6 +242,9 @@
 						/obj/item/clothing/head/headband = "hat_headbandgreen",
 						/obj/item/clothing/head/headband/tan = "hat_headbandtan",
 						/obj/item/clothing/head/headband/red = "hat_headbandred",
+						/obj/item/clothing/head/headband/brown = "hat_headbandbrown",
+						/obj/item/clothing/head/headband/gray = "hat_headbandgray",
+						/obj/item/clothing/head/headband/squad = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
 						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
 						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
@@ -373,7 +428,7 @@
 
 /obj/item/clothing/head/helmet/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
-	desc = "A Kevlar reinforced beret with the USCM Military Police Lieutenant Commander insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
+	desc = "A Kevlar reinforced beret with the USCM Military Police First Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
 
 /obj/item/clothing/head/helmet/beret/marine/mp/mppeaked

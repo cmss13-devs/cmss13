@@ -2201,7 +2201,7 @@
 			stun_time++
 			H.apply_effect(stun_time, WEAKEN)
 		else
-			M.apply_effect(stun_time, 1, WEAKEN)
+			M.apply_effect(stun_time, WEAKEN)
 
 		C.apply_effect(stun_time, STUN)
 	..()
@@ -2278,7 +2278,7 @@
 			var/mob/living/carbon/human/H = M
 			H.apply_effect(stun_time, WEAKEN)
 		else
-			M.apply_effect(stun_time, 1, WEAKEN)
+			M.apply_effect(stun_time, WEAKEN)
 
 
 

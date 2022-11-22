@@ -268,7 +268,7 @@
 		playsound(loc, H.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
 	if(!sterile)
 		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
-			H.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, TRUE, PARALYZE) //THIS MIGHT NEED TWEAKS
+			H.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
 
 	addtimer(CALLBACK(src, .proc/impregnate, H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 

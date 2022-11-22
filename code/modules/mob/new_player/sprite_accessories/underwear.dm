@@ -33,7 +33,7 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 	var/selected_icon_state = icon_state
 	if(camo_conforming)
 		switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3)
+			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 				selected_icon_state = "c_" + selected_icon_state
 			if(MAP_LV_624, MAP_HAUNTED_HOUSE_V2, MAP_RUNTIME)
 				selected_icon_state = "j_" + selected_icon_state

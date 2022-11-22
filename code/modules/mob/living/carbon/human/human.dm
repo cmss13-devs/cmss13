@@ -133,7 +133,7 @@
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
 
-	if(!get_type_in_ears(/obj/item/clothing/ears/earmuffs))
+	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
@@ -1524,13 +1524,13 @@
 /mob/living/carbon/human/resist_fire()
 	if(isYautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		apply_effect(1, TRUE, WEAKEN) // actually 0.5
+		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		apply_effect(4, TRUE, WEAKEN)
+		apply_effect(4, WEAKEN)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
@@ -1547,12 +1547,12 @@
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
 	if(isYautja(src))
-		apply_effect(1, TRUE, WEAKEN)
+		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
 	else
-		apply_effect(1.5, TRUE, WEAKEN)
+		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)

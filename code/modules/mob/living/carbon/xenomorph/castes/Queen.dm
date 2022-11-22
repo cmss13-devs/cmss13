@@ -188,7 +188,7 @@
 			if(X == Q) continue
 			to_chat(X, message)
 
-		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src)
+		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src, A)
 		point.color = color
 
 		return COMPONENT_INTERRUPT_CLICK

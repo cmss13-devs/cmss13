@@ -172,7 +172,7 @@
 /mob/living/carbon/Xenomorph/proc/create_custom_empower(var/icolor, var/ialpha = 255, var/small_xeno = FALSE)
 	remove_suit_layer()
 
-	var/image/empower_image = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "empower_custom")
+	var/image/empower_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "empower_custom")
 	empower_image.color = icolor
 	empower_image.alpha = ialpha
 	if(small_xeno == TRUE) // 48x48

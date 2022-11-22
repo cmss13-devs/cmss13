@@ -369,7 +369,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/statclick/sdql2_vv_all, new(null, "VIEW
 
 /proc/recursive_list_print(list/output = list(), list/input, datum/callback/datum_handler, datum/callback/atom_handler)
 	output += "\[ "
-	for(var/i in 1 to lenght(input))
+	for(var/i in 1 to length(input))
 		var/final = i == length(input)
 		var/key = input[i]
 

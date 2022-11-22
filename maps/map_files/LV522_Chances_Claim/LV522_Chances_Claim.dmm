@@ -7689,7 +7689,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Westlock";
-	welded = null
+	welded = 1
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -12401,14 +12401,13 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/a_block/executive)
 "gcZ" = (
-/obj/item/shard{
-	icon_state = "medium"
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out"
 	},
-/turf/open/floor/prison{
-	icon_state = "darkpurplefull2";
-	tag = "icon-darkpurplefull2"
-	},
-/area/lv522/outdoors/colony_streets/central_streets)
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/colony_streets/north_west_street)
 "gdk" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/outdoors/n_rockies)
@@ -14300,13 +14299,9 @@
 /turf/closed/wall/solaris/reinforced/hull/lv522,
 /area/lv522/landing_zone_2/ceiling)
 "gVG" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	pixel_x = 6;
-	tag = "icon-0,1"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
@@ -17339,14 +17334,12 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/cargo)
 "ifX" = (
-/obj/structure/window_frame/strata,
-/obj/item/shard{
-	icon_state = "medium"
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	tag = "icon-SW-out"
 	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/indoors/a_block/dorms)
+/turf/open/auto_turf/shale/layer0,
+/area/lv522/outdoors/colony_streets/north_west_street)
 "igg" = (
 /obj/structure/largecrate/random/mini{
 	pixel_x = 9;
@@ -21461,7 +21454,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Westlock";
-	welded = 1
+	welded = null
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -25928,8 +25921,10 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "ltI" = (
-/obj/structure/window_frame/strata,
-/obj/item/stack/sheet/metal,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Westlock";
+	welded = null
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -31653,12 +31648,12 @@
 /area/lv522/indoors/c_block/mining)
 "nQM" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
+	icon_state = "blue 0,0";
+	tag = "icon-blue 0,0"
 	},
 /turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
+	icon_state = "darkpurplefull2";
+	tag = "icon-darkpurplefull2"
 	},
 /area/lv522/outdoors/colony_streets/north_west_street)
 "nQQ" = (
@@ -39608,10 +39603,9 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/c_block/garage)
 "qQh" = (
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	pixel_x = 6;
-	tag = "icon-0,0"
+/obj/structure/cargo_container{
+	icon_state = "blue 2,0";
+	tag = "icon-blue 2,0"
 	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -40097,13 +40091,15 @@
 	},
 /area/lv522/indoors/a_block/fitness/glass)
 "qYl" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1;
-	tag = "icon-SE-out"
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
-/turf/open/auto_turf/shale/layer0,
-/area/lv522/outdoors/colony_streets/north_west_street)
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/lv522/indoors/a_block/dorms)
 "qYo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -41912,12 +41908,12 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/w_rockies)
 "rGm" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+/obj/item/tool/weldingtool,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
 	},
-/turf/open/auto_turf/shale/layer0,
-/area/lv522/outdoors/colony_streets/north_west_street)
+/area/lv522/indoors/a_block/dorms)
 "rGr" = (
 /obj/structure/platform,
 /obj/structure/platform{
@@ -41966,13 +41962,6 @@
 	tag = "icon-darkpurplefull2"
 	},
 /area/lv522/indoors/a_block/dorms)
-"rHx" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
-	},
-/turf/open/auto_turf/shale/layer0,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "rHM" = (
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1)
@@ -45347,12 +45336,6 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv522/outdoors/colony_streets/central_streets)
-"tcZ" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "tdi" = (
 /obj/structure/prop/dam/crane,
@@ -55066,16 +55049,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"wKt" = (
-/obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/lv522/outdoors/colony_streets/north_west_street)
 "wKD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
@@ -56605,7 +56578,6 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/ceiling)
 "xpu" = (
-/obj/item/tool/weldingtool,
 /obj/structure/platform,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -57421,12 +57393,6 @@
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 13;
 	pixel_y = 29
-	},
-/obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	layer = 3.1;
-	pixel_x = 6;
-	tag = "icon-0,2"
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
@@ -66736,7 +66702,7 @@ tHJ
 jfZ
 ftA
 nLm
-gcZ
+srS
 ruU
 ruU
 ruU
@@ -66953,8 +66919,8 @@ clY
 sjY
 sjY
 ydA
-pMd
-tsv
+ltI
+vJT
 uOs
 tUM
 eAm
@@ -66964,8 +66930,8 @@ uOs
 kcS
 ltI
 srS
-tcZ
-tcZ
+ruU
+ruU
 ruU
 ruU
 srS
@@ -67180,8 +67146,8 @@ ydA
 ydA
 ydA
 ydA
-pMd
-tsv
+kwo
+vJT
 oPu
 uOs
 lAj
@@ -67189,7 +67155,7 @@ oTg
 fjP
 uOs
 avp
-ifX
+kwo
 srS
 srS
 srS
@@ -67600,9 +67566,9 @@ clY
 clY
 slO
 hJZ
-qYl
-hlm
-hlm
+hJZ
+hJZ
+gcZ
 hlm
 hlm
 hlm
@@ -67616,8 +67582,8 @@ prd
 hiK
 hJZ
 xGk
-gVG
-qQh
+slO
+ydA
 nLm
 nLm
 oAJ
@@ -67827,9 +67793,9 @@ clY
 clY
 slO
 hJZ
-rGm
-xkO
-xkO
+hJZ
+hJZ
+gVG
 xkO
 xkO
 xkO
@@ -67839,7 +67805,7 @@ kCJ
 jgv
 jgv
 sON
-wKt
+sON
 xhd
 hJZ
 tPv
@@ -67865,8 +67831,8 @@ xXz
 pMd
 pfe
 qxZ
-fps
-oTg
+qYl
+rGm
 kcS
 rVW
 pMd
@@ -68054,9 +68020,9 @@ hJZ
 clY
 slO
 hJZ
-rGm
-xkO
-sKj
+hJZ
+hJZ
+gVG
 xkO
 sKj
 xkO
@@ -68066,7 +68032,7 @@ ahP
 sON
 xRE
 xRE
-nQM
+sON
 xhd
 hJZ
 tPv
@@ -68281,9 +68247,9 @@ hJZ
 clY
 eUt
 hJZ
-rGm
-xkO
-xWx
+hJZ
+hJZ
+gVG
 xkO
 xWx
 xkO
@@ -68508,9 +68474,9 @@ hJZ
 clY
 eUt
 clY
-rHx
-sek
-oKN
+hJZ
+hJZ
+ifX
 sek
 oKN
 sek
@@ -68525,7 +68491,7 @@ xhd
 hJZ
 kfq
 slO
-ydA
+nQM
 nLm
 nrd
 bXo
@@ -68752,7 +68718,7 @@ xfT
 hJZ
 hJZ
 slO
-ydA
+qQh
 nLm
 nLm
 nLm

@@ -67,9 +67,13 @@
 	var/obj/item/cell/pcell = null
 	var/reloading = 0
 
-/obj/item/smartgun_powerpack/New()
-	..()
+/obj/item/smartgun_powerpack/Initialize(mapload, ...)
+	. = ..()
 	pcell = new /obj/item/cell/high(src)
+
+/obj/item/smartgun_powerpack/Destroy()
+	. = ..()
+	QDEL_NULL(pcell)
 
 /obj/item/smartgun_powerpack/dropped(mob/living/user) // called on unequip
 	if(ishuman(user))

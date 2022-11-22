@@ -253,7 +253,7 @@ var/global/players_preassigned = 0
 	if(istype(SJ))
 		SJ.set_spawn_positions(players_preassigned)
 
-	if(prob(SSticker.mode.pred_round_chance))
+	if(SSnightmare.get_scenario_value("predator_round"))
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
@@ -762,6 +762,8 @@ var/global/players_preassigned = 0
 			M = /mob/living/carbon/Xenomorph/Larva
 		if(XENO_CASTE_PREDALIEN_LARVA)
 			M = /mob/living/carbon/Xenomorph/Larva/predalien
+		if(XENO_CASTE_FACEHUGGER)
+			M = /mob/living/carbon/Xenomorph/Facehugger
 		if(XENO_CASTE_RUNNER)
 			M = /mob/living/carbon/Xenomorph/Runner
 		if(XENO_CASTE_DRONE)

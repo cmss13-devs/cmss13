@@ -21,5 +21,7 @@
 			hud_icon_state = "ct"
 		if(JOB_PMC_MEDIC, JOB_PMC_INVESTIGATOR)
 			hud_icon_state = "md"
+		if(JOB_PMC_SYNTH)
+			hud_icon_state = "syn"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "pmc_[hud_icon_state]")

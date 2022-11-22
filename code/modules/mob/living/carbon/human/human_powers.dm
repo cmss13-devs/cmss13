@@ -308,7 +308,7 @@
 	set category = "IC"
 
 	if(!resting)
-		apply_effect(1, WEAKEN, TRUE) //so that the mob immediately falls over
+		apply_effect(1, WEAKEN) //so that the mob immediately falls over
 
 	resting = !resting
 

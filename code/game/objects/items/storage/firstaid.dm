@@ -658,7 +658,7 @@ obj/item/storage/pill_bottle/packet
 
 /obj/item/storage/pill_bottle/packet/bicaridine
     name = "Bicaridine pill packet"
-    icon_state = "bicardine_packet"
+    icon_state = "bicaridine_packet"
     desc = "This packet contains Bicaridine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
     pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 

@@ -74,6 +74,7 @@ var/const/PMC_FREQ 		= 1235
 var/const/WY_FREQ 		= 1236
 var/const/DUT_FREQ 		= 1340
 var/const/ERT_FREQ 		= 1342
+var/const/VAI_FREQ		= 1218
 var/const/RUS_FREQ		= 1338
 var/const/CLF_FREQ		= 1339
 var/const/DTH_FREQ 		= 1344
@@ -100,7 +101,7 @@ var/const/CHARLIE_FREQ 	= 1453
 var/const/DELTA_FREQ 	= 1455
 var/const/ECHO_FREQ 	= 1456
 var/const/CRYO_FREQ		= 1457
-var/const/MARSOC_FREQ	= 1241
+var/const/SOF_FREQ	= 1241
 
 var/const/MIN_FREQ 		= 1460 // ------------------------------------------------------
 
@@ -118,6 +119,7 @@ var/list/radiochannels = list(
 	RADIO_CHANNEL_YAUTJA		= YAUT_FREQ,
 	RADIO_CHANNEL_WY			= WY_FREQ,
 	RADIO_CHANNEL_WY_PMC		= PMC_FREQ,
+	RADIO_CHANNEL_VAI			= VAI_FREQ,
 	RADIO_CHANNEL_SPECOPS		= DTH_FREQ,
 	RADIO_CHANNEL_UPP			= RUS_FREQ,
 	RADIO_CHANNEL_CLF			= CLF_FREQ,
@@ -140,7 +142,7 @@ var/list/radiochannels = list(
 	SQUAD_MARINE_4				= DELTA_FREQ,
 	SQUAD_MARINE_5				= ECHO_FREQ,
 	SQUAD_MARINE_CRYO			= CRYO_FREQ,
-	SQUAD_MARSOC				= MARSOC_FREQ,
+	SQUAD_SOF				= SOF_FREQ,
 
 	SQUAD_MARINE_1				= ALPHA_FREQ,
 	SQUAD_MARINE_2				= BRAVO_FREQ,
@@ -148,7 +150,7 @@ var/list/radiochannels = list(
 	SQUAD_MARINE_4				= DELTA_FREQ,
 	SQUAD_MARINE_5				= ECHO_FREQ,
 	SQUAD_MARINE_CRYO			= CRYO_FREQ,
-	SQUAD_MARSOC				= MARSOC_FREQ,
+	SQUAD_SOF				= SOF_FREQ,
 
 	RADIO_CHANNEL_ALAMO			= DS1_FREQ,
 	RADIO_CHANNEL_NORMANDY 		= DS2_FREQ,
@@ -157,7 +159,7 @@ var/list/radiochannels = list(
 )
 
 // central command channels, i.e deathsquid & response teams
-#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, MARSOC_FREQ)
+#define CENT_FREQS list(ERT_FREQ, DTH_FREQ, PMC_FREQ, VAI_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, SOF_FREQ)
 
 // Antag channels, i.e. Syndicate
 #define ANTAG_FREQS list()
@@ -209,6 +211,7 @@ SUBSYSTEM_DEF(radio)
 		"[JTAC_FREQ]" = "jtacradio",
 		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
+		"[VAI_FREQ]" = "vairadio",
 		"[RUS_FREQ]" = "syndradio",
 		"[CLF_FREQ]" = "clfradio",
 		"[CCT_FREQ]" = "cctradio",
@@ -218,7 +221,7 @@ SUBSYSTEM_DEF(radio)
 		"[DELTA_FREQ]" = "deltaradio",
 		"[ECHO_FREQ]" = "echoradio",
 		"[CRYO_FREQ]" = "cryoradio",
-		"[MARSOC_FREQ]" = "hcradio",
+		"[SOF_FREQ]" = "hcradio",
 		"[HC_FREQ]" = "hcradio",
 		"[COLONY_FREQ]" = "deptradio",
 	)

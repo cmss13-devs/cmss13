@@ -1,4 +1,4 @@
-import { classes } from "common/react";
+import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
 import { Tabs, Box, Section, Stack, Button } from '../components';
 import { Window } from '../layouts';
@@ -9,7 +9,11 @@ export const ChooseResin = (props, context) => {
   const { act, data } = useBackend(context);
   const { constructions, selected_resin } = data;
 
-  const [compact, setCompact] = useLocalState(context, "chooseresin_compact", false);
+  const [compact, setCompact] = useLocalState(
+    context,
+    'chooseresin_compact',
+    false
+  );
 
   let heightScale = 80;
   if (compact) heightScale = 45;
@@ -18,12 +22,11 @@ export const ChooseResin = (props, context) => {
     <Window
       width={350}
       height={15 + constructions.length * heightScale}
-      theme="hive_status"
-    >
+      theme="hive_status">
       <Window.Content>
         <Section
           title="Structures"
-          buttons={(
+          buttons={
             <Button
               color="transparent"
               tooltip="Compact Mode"
@@ -35,32 +38,30 @@ export const ChooseResin = (props, context) => {
               }}
               icon="compress-arrows-alt"
             />
-          )}
+          }
           scrollable
-          fill
-        >
+          fill>
           <Tabs vertical fluid fill>
             {constructions.map((val, index) => (
               <Tabs.Tab
                 key={index}
                 selected={val.id === selected_resin}
-                onClick={() => act("choose_resin", { type: val.id })}
-              >
+                onClick={() => act('choose_resin', { type: val.id })}>
                 <Stack align="center">
                   <Stack.Item>
                     <span
                       className={classes([
-                        `chooseresin${compact? "32x32" : "64x64"}`,
-                        `${val.image}${compact? "" : "_big"}`,
-                        "ChooseResin__BuildIcon",
+                        `chooseresin${compact ? '32x32' : '64x64'}`,
+                        `${val.image}${compact ? '' : '_big'}`,
+                        'ChooseResin__BuildIcon',
                       ])}
                     />
                   </Stack.Item>
                   <Stack.Item grow>
                     <Box fontSiz>
                       {val.name}
-                      {val.max_per_xeno !== INFINITE_BUILD_AMOUNT
-                        && ` (${val.max_per_xeno} Max)`}
+                      {val.max_per_xeno !== INFINITE_BUILD_AMOUNT &&
+                        ` (${val.max_per_xeno} Max)`}
                     </Box>
                   </Stack.Item>
                 </Stack>

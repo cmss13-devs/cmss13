@@ -31,7 +31,7 @@
 			if(istype(S, /obj/structure/window/framed))
 				var/obj/structure/window/framed/W = S
 				if(!W.unslashable)
-					W.shatter_window(TRUE)
+					W.deconstruct(disassembled = FALSE)
 
 			if(S.opacity)
 				blocked = TRUE
@@ -299,6 +299,7 @@
 
 		if (LAZYLEN(targets) == 1)
 			new /datum/effects/xeno_slow(H, X, , ,25)
+			H.apply_effect(1, SLOW)
 		else if (LAZYLEN(targets) == 2)
 
 			H.frozen = TRUE
@@ -309,7 +310,7 @@
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, 25))
 			to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 
-			H.adjust_effect(2, DAZE)
+			H.set_effect(2, DAZE)
 		else if (LAZYLEN(targets) >= 3)
 			H.apply_effect(get_xeno_stun_duration(H, 1.3), WEAKEN)
 			to_chat(H, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [X]!"))
@@ -856,12 +857,12 @@
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!"))	//marines probably should know if a xeno gets rejuvenated
 		targetXeno.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
 		targetXeno.flick_heal_overlay(3 SECONDS, "#F5007A") //therefore making the Praetorian a priority target
-		targetXeno.adjust_effect(0, PARALYZE)
-		targetXeno.adjust_effect(0, STUN)
-		targetXeno.adjust_effect(0, WEAKEN)
-		targetXeno.adjust_effect(0, DAZE)
-		targetXeno.adjust_effect(0, SLOW)
-		targetXeno.adjust_effect(0, SUPERSLOW)
+		targetXeno.set_effect(0, PARALYZE)
+		targetXeno.set_effect(0, STUN)
+		targetXeno.set_effect(0, WEAKEN)
+		targetXeno.set_effect(0, DAZE)
+		targetXeno.set_effect(0, SLOW)
+		targetXeno.set_effect(0, SUPERSLOW)
 		use_plasma = TRUE
 	if (use_plasma)
 		use_plasma_owner()

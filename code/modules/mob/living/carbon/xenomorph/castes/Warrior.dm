@@ -17,7 +17,7 @@
 
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
 	deevolves_to = list(XENO_CASTE_DEFENDER)
-	caste_desc = "A powerful sideline combatant and zoner."
+	caste_desc = "A powerful front line combatant."
 	can_vent_crawl = 0
 
 	tackle_min = 2
@@ -30,8 +30,8 @@
 /mob/living/carbon/Xenomorph/Warrior
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
-	desc = "A beefy alien with an armored carapace."
-	icon = 'icons/mob/hostiles/warrior.dmi'
+	desc = "A beefy, alien with an armored carapace."
+	icon = 'icons/mob/xenos/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -52,7 +52,7 @@
 
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
-	icon_xeno = 'icons/mob/hostiles/warrior.dmi'
+	icon_xeno = 'icons/mob/xenos/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
@@ -63,8 +63,8 @@
 	if(isliving(pulling) && lunging)
 		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
 		var/mob/living/lunged = pulling
-		lunged.adjust_effect(0, STUN)
-		lunged.adjust_effect(0, WEAKEN)
+		lunged.set_effect(0, STUN)
+		lunged.set_effect(0, WEAKEN)
 	return ..()
 
 /mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)

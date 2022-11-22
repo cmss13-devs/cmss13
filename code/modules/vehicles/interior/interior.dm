@@ -70,7 +70,7 @@
 	exterior = null
 
 	GLOB.interior_manager.unload_chunk(chunk_id)
-
+	entrance_markers = null
 	QDEL_NULL(interior_data)
 
 	return ..()

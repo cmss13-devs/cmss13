@@ -1,6 +1,6 @@
 /datum/xeno_mutator/shaman
 	name = "STRAIN: Carrier - Shaman"
-	description = "In exchange for your ability to store huggers, you can cheat the adrenaline mechanism of nearby xenos by violently killing little ones while they are still in a small egg form."
+	description = "In exchange for your ability to store facehuggers, you can cheat the adrenaline mechanism of nearby xenos by violently killing little ones while they are still in a small egg form."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_CARRIER)
@@ -46,8 +46,9 @@
 	if(!istype(C))
 		return FALSE
 	C.mutation_type = CARRIER_SHAMAN
+	C.shaman_interactive = FALSE
 	C.ignores_pheromones = TRUE
-	apply_behavior_delegate(C)
+	apply_behavior_holder(C)
 	mutator_update_actions(C)
 	MS.recalculate_actions(description, flavor_description)
 	C.phero_modifier = -C.caste.aura_strength
@@ -154,7 +155,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue
@@ -189,9 +190,9 @@
 			X.gain_armor_percent(to_armor)
 
 		// lift them up from any state
-		X.adjust_effect(0, STUN)
-		X.adjust_effect(0, DAZE)
-		X.adjust_effect(0, WEAKEN)
+		X.set_effect(0, STUN)
+		X.set_effect(0, DAZE)
+		X.set_effect(0, WEAKEN)
 
 		shield_overlay.flick_overlay(X, 20)
 
@@ -254,7 +255,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue
@@ -370,7 +371,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue
@@ -462,7 +463,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in range(7, src) - src)
 		if(X.stat == DEAD)
 			continue
-		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+		if(!X.shaman_interactive) // Shamans are disconnected from the effect
 			continue
 		if(!hive.is_ally(X))
 			continue

@@ -47,7 +47,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_automatic_punctuation,
 	/client/proc/toggle_middle_mouse_click,
 	/client/proc/toggle_clickdrag_override,
-	/client/proc/toggle_dualwield
+	/client/proc/toggle_dualwield,
+	/client/proc/toggle_middle_mouse_swap_hands,
+	/client/proc/switch_item_animations
 ))
 
 /client/Topic(href, href_list, hsrc)
@@ -82,7 +84,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			return
 
 	var/stl = CONFIG_GET(number/second_topic_limit)
-	if (!admin_holder && stl)
+	if (!admin_holder && stl && href_list["window_id"] != "statbrowser")
 		var/second = round(world.time, 10)
 		if (!topiclimiter)
 			topiclimiter = new(LIMITER_SIZE)
@@ -100,7 +102,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(href_list["reload_tguipanel"])
 		nuke_chat()
 	if(href_list["reload_statbrowser"])
-		src << browse(file('html/statbrowser.html'), "window=statbrowser")
+		stat_panel.reinitialize()
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
@@ -273,8 +275,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	// Instantiate stat panel
+	stat_panel = new(src, "statbrowser")
+	stat_panel.subscribe(src, .proc/on_stat_panel_message)
+
 	// Instantiate tgui panel
-	tgui_panel = new(src)
+	tgui_panel = new(src, "browseroutput")
 
 	// Change the way they should download resources.
 	var/static/next_external_rsc = 0
@@ -314,6 +320,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		xeno_prefix = "XX"
 	if(!xeno_postfix || xeno_name_ban)
 		xeno_postfix = ""
+
+	human_name_ban = prefs.human_name_ban
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 
@@ -355,8 +363,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		to_chat(src, FONT_SIZE_HUGE(SPAN_BOLDNOTICE("YOUR BYOND VERSION IS NOT WELL SUITED FOR THIS SERVER. Download latest BETA build or you may suffer random crashes or disconnects.")))
 
 	// Initialize tgui panel
-	src << browse(file('html/statbrowser.html'), "window=statbrowser")
+	stat_panel.initialize(
+		inline_html = file("html/statbrowser.html"),
+		inline_js = file("html/statbrowser.js"),
+		inline_css = file("html/statbrowser.css"),
+	)
 	addtimer(CALLBACK(src, .proc/check_panel_loaded), 30 SECONDS)
+
 	tgui_panel.initialize()
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
@@ -425,6 +438,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		GLOB.admins -= src
 	GLOB.directory -= ckey
 	GLOB.clients -= src
+	SSping.currentrun -= src
 
 	unansweredAhelps?.Remove(computer_id)
 	log_access("Logout: [key_name(src)]")
@@ -434,6 +448,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	. = ..()
 
 /client/Destroy()
+	QDEL_NULL(obj_window)
 	. = ..()
 
 	return QDEL_HINT_HARDDEL_NOW
@@ -564,19 +579,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
   * Compiles a full list of verbs to be sent to the browser
   * Sends the 2D verbs vector of (verb category, verb name)
   */
-/client/proc/init_statbrowser()
+/client/proc/init_verbs()
 	if(IsAdminAdvancedProcCall())
 		return
 	var/list/verblist = list()
 	var/list/verbstoprocess = verbs.Copy()
 	if(mob)
 		verbstoprocess += mob.verbs
-		for(var/AM in mob.contents)
-			var/atom/movable/thing = AM
+		for(var/atom/movable/thing as anything in mob.contents)
 			verbstoprocess += thing.verbs
-	panel_tabs.Cut() // panel_tabs get reset in init_statbrowser on JS side anyway
-	for(var/thing in verbstoprocess)
-		var/procpath/verb_to_init = thing
+	panel_tabs.Cut() // panel_tabs get reset in init_verbs on JS side anyway
+	for(var/procpath/verb_to_init as anything in verbstoprocess)
 		if(!verb_to_init)
 			continue
 		if(verb_to_init.hidden)
@@ -585,19 +598,29 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			continue
 		panel_tabs |= verb_to_init.category
 		verblist[++verblist.len] = list(verb_to_init.category, verb_to_init.name)
-	src << output("[url_encode(json_encode(panel_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_statbrowser")
-
-
-/client/verb/fix_stat_panel()
-	set name = "Fix Stat Panel"
-	set hidden = TRUE
-
-	init_statbrowser()
+	src.stat_panel.send_message("init_verbs", list(panel_tabs = panel_tabs, verblist = verblist))
 
 /client/proc/check_panel_loaded()
-	if(statbrowser_ready)
+	if(stat_panel.is_ready())
 		return
-	to_chat(src, "<span class='userdanger'>Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel </span>")
+	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel "))
+
+/**
+ * Handles incoming messages from the stat-panel TGUI.
+ */
+/client/proc/on_stat_panel_message(type, payload)
+	switch(type)
+		if("Update-Verbs")
+			init_verbs()
+		if("Remove-Tabs")
+			panel_tabs -= payload["tab"]
+		if("Send-Tabs")
+			panel_tabs |= payload["tab"]
+		if("Reset-Tabs")
+			panel_tabs = list()
+		if("Set-Tab")
+			stat_tab = payload["tab"]
+			SSstatpanels.immediate_send_stat_data(src)
 
 
 /**
@@ -666,3 +689,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return TRUE
 	return FALSE
 
+/client/verb/fix_stat_panel()
+	set name = "Fix Stat Panel"
+	set hidden = TRUE
+
+	init_verbs()

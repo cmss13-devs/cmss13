@@ -160,7 +160,9 @@
 		if(W.hull)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
-	var/obj/effect/alien/weeds/W = locate() in T
+	var/list/turf_area = range(3, T)
+
+	var/obj/effect/alien/weeds/W = locate() in turf_area
 	if(W && HIVE_ALLIED_TO_HIVE(W.hivenumber, hivenumber))
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 
@@ -186,7 +188,7 @@
 			if(X == Q) continue
 			to_chat(X, message)
 
-		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src)
+		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src, A)
 		point.color = color
 
 		return COMPONENT_INTERRUPT_CLICK
@@ -230,6 +232,7 @@
 		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)
 
 	remove_from_all_mob_huds()
+	is_watching = null
 
 	return ..()
 
@@ -244,8 +247,6 @@
 	attack_sound = null
 	friendly = "nuzzles"
 	wall_smash = 0
-	amount_grown = 0
-	max_grown = 10
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_IMMOBILE
@@ -257,6 +258,7 @@
 	small_explosives_stun = FALSE
 	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
+	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
 
 	var/breathing_counter = 0
@@ -372,7 +374,6 @@
 	queen_aged = TRUE
 
 /mob/living/carbon/Xenomorph/Queen/Initialize()
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
 	. = ..()
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
@@ -393,15 +394,10 @@
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 
-/mob/living/carbon/Xenomorph/Queen/generate_name()
-	. = ..()
-
-	var/datum/hive_status/in_hive = hive
-	if(!in_hive)
-		in_hive = GLOB.hive_datum[hivenumber]
-
+/mob/living/carbon/Xenomorph/Queen/handle_name(var/datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	if(queen_aged)
+		age_xeno()
 		switch(age)
 			if(XENO_NORMAL) name = "[name_prefix]Queen"			 //Young
 			if(XENO_MATURE) name = "[name_prefix]Elder Queen"	 //Mature
@@ -414,6 +410,16 @@
 			hud_update()
 
 		name = "[name_prefix]Young Queen"
+
+	var/name_client_prefix = ""
+	var/name_client_postfix = ""
+	if(client)
+		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
+		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
+	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
+
+	//Update linked data so they show up properly
+	change_real_name(src, name)
 
 /mob/living/carbon/Xenomorph/Queen/proc/make_combat_effective()
 	queen_aged = TRUE

@@ -1,19 +1,28 @@
 @use 'sass:meta';
+@use '../base.scss';
+@use '../colors.scss' with (
+   $primary: #52375c,
+ );
 
 .theme-hive_status {
   // Components
   @include meta.load-css('../components/BlockQuote.scss');
-  @include meta.load-css('../components/Button.scss', $with: (
-    'color-selected': #52375C,
-  ));
+  @include meta.load-css(
+    '../components/Button.scss',
+    $with: ('color-selected': #52375c)
+  );
   @include meta.load-css('../components/Table.scss');
 
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/TitleBar.scss');
 
+  hr {
+    color: #52375c;
+  }
+
   .Layout__content {
-    background-color: #1B1E25;
+    background-color: #1b1e25;
     background-image: url('../../assets/bg-xeno.png');
     background-position: top;
     background-size: contain;
@@ -43,7 +52,7 @@
   }
 
   .xenoCountRow {
-    background-color: #52375C;
+    background-color: #52375c;
   }
 
   .xenoCountCell {
@@ -61,7 +70,7 @@
   }
 
   .ssdRow {
-    background-color: #1D2128;
+    background-color: #1d2128;
     font-style: italic;
   }
 

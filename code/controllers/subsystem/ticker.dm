@@ -46,16 +46,9 @@ SUBSYSTEM_DEF(ticker)
 
 	var/totalPlayers = 0					//used for pregame stats on statpanel
 	var/totalPlayersReady = 0				//used for pregame stats on statpanel
-	var/datum/nmcontext/NM
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
-
-	if(CONFIG_GET(flag/nightmare_enabled))
-		NM = new
-		if(!NM.init_config() || !NM.init_scenario())
-			QDEL_NULL(NM)
-			log_debug("TICKER: Error during Nightmare Init, aborting")
 
 	var/all_music = CONFIG_GET(keyed_list/lobby_music)
 	var/key = SAFEPICK(all_music)
@@ -120,46 +113,31 @@ SUBSYSTEM_DEF(ticker)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
 /// Attempt to start game asynchronously if applicable
-/datum/controller/subsystem/ticker/proc/request_start(skip_nightmare = FALSE)
+/datum/controller/subsystem/ticker/proc/request_start()
+	if(current_state == GAME_STATE_PREGAME)
+		time_left = 0
+
+	// Killswitch if hanging or interrupted
+	if(SSnightmare.stat != NIGHTMARE_STATUS_DONE)
+		if(SSnightmare.start_time && (world.time - SSnightmare.start_time) > 30 SECONDS)
+			SSnightmare.stat = NIGHTMARE_STATUS_DONE
+			log_admin("Nightmare setup was cancelled as it took more than 30 seconds! Game might be inconsistent!")
+		else
+			var/ret = INVOKE_ASYNC(SSnightmare, /datum/controller/subsystem/nightmare.proc/prepare_game)
+			if(!ret)
+				return // Wait for completion
+			log_debug("Nightmare setup finished")
+
 	if(current_state != GAME_STATE_PREGAME)
-		return FALSE
-
-	if(!CONFIG_GET(flag/nightmare_enabled))
-		skip_nightmare = TRUE
-		QDEL_NULL(NM)
-
+		return
 	current_state = GAME_STATE_SETTING_UP
-	if(!skip_nightmare)
-		setup_nightmare()
-	else
-		INVOKE_ASYNC(src, .proc/setup_start)
+	INVOKE_ASYNC(src, .proc/setup_start)
 
 	for(var/client/C in GLOB.admins)
 		remove_verb(C, roundstart_mod_verbs)
-	admin_verbs_mod -= roundstart_mod_verbs
+	admin_verbs_minor_event -= roundstart_mod_verbs
 
 	return TRUE
-
-/// Request to start nightmare setup before moving on to regular setup
-/datum/controller/subsystem/ticker/proc/setup_nightmare()
-	PRIVATE_PROC(TRUE)
-	if(NM && !NM.done)
-		RegisterSignal(SSdcs, COMSIG_GLOB_NIGHTMARE_SETUP_DONE, .proc/nightmare_setup_done)
-		if(!NM.start_setup())
-			QDEL_NULL(NM)
-			INVOKE_ASYNC(src, .proc/setup_start)
-		return
-	INVOKE_ASYNC(src, .proc/setup_start)
-
-/// Catches nightmare result to proceed to game start
-/datum/controller/subsystem/ticker/proc/nightmare_setup_done(_, datum/nmcontext/ctx, retval)
-	SIGNAL_HANDLER
-	PRIVATE_PROC(TRUE)
-	if(ctx != NM)
-		return
-	if(retval != NM_TASK_OK)
-		QDEL_NULL(NM)
-	INVOKE_ASYNC(src, .proc/setup_start)
 
 /// Try to effectively setup gamemode and start now
 /datum/controller/subsystem/ticker/proc/setup_start()

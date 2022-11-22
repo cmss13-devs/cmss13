@@ -5,7 +5,7 @@
 /obj/structure/tunnel
 	name = "tunnel"
 	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "hole"
 
 	density = 0
@@ -14,6 +14,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = RESIN_STRUCTURE_LAYER
+	plane = FLOOR_PLANE
 
 	var/tunnel_desc = "" //description added by the hivelord.
 

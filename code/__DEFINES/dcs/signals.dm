@@ -32,9 +32,6 @@
 
 #define COMSIG_GLOB_MOB_LOGIN "!mob_login"
 
-///from /datum/nmcontext/proc/run_steps
-#define COMSIG_GLOB_NIGHTMARE_SETUP_DONE "!nightmare_setup_done"
-
 ///from /datum/controller/subsystem/ticker/PostSetup
 #define COMSIG_GLOB_POST_SETUP "!post_setup"
 
@@ -68,6 +65,8 @@
 #define COMSIG_PARENT_QDELETING "parent_qdeleting"
 /// generic topic handler (usr, href_list)
 #define COMSIG_TOPIC "handle_topic"
+/// from datum ui_act (usr, action)
+#define COMSIG_UI_ACT "COMSIG_UI_ACT"
 
 /// fires on the target datum when an element is attached to it (/datum/element)
 #define COMSIG_ELEMENT_ATTACH "element_attach"
@@ -170,6 +169,10 @@
 
 #define COMSIG_MOB_POST_CLICK "mob_post_click"
 
+
+//Machine Guns (m56D, M2C)
+#define COMSIG_MOB_MG_EXIT "mob_mg_exit"
+
 // Return a nonzero value to cancel these actions
 #define COMSIG_BINOCULAR_ATTACK_SELF "binocular_attack_self"
 #define COMSIG_BINOCULAR_HANDLE_CLICK "binocular_handle_click"
@@ -185,7 +188,10 @@
 #define COMSIG_DBLCLICK_ALT "dblclick_alt"
 #define COMSIG_DBLCLICK_CTRL "dblclick_ctrl"
 
+///from base of /mob/Login(): ()
 #define COMSIG_MOB_LOGIN "mob_login"
+///from base of /mob/Logout(): ()
+#define COMSIG_MOB_LOGOUT "mob_logout"
 
 /// From /mob/living/rejuvenate
 #define COMSIG_LIVING_REJUVENATED "living_rejuvenated"
@@ -209,6 +215,11 @@
 
 #define COMSIG_LIVING_SPEAK "living_speak"
 	#define COMPONENT_OVERRIDE_SPEAK (1<<0)
+
+#define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
+#define COMSIG_LIVING_ADJUST_EFFECT "living_adjust_effect"
+#define COMSIG_LIVING_SET_EFFECT "living_set_effect"
+	#define COMPONENT_CANCEL_EFFECT (1<<0)
 
 /// From /obj/item/device/defibrillator/attack
 #define COMSIG_HUMAN_REVIVED "human_revived"
@@ -484,6 +495,11 @@
 // Sent to remove all sutures.
 #define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"
 
+//from /datum/nmtask/mapload/proc/initialize_boundary_contents()
+#define COMSIG_NIGHTMARE_TAINTED_BOUNDS "nightmare_tainted_bounds"
+//from /datum/nmnode/
+#define COMSIG_NIGHTMARE_APPLYING_NODE "nightmare_applying_node"
+	#define COMPONENT_ABORT_NMNODE (1<<0)
 
 // Used in resin_constructions.dm
 // Checks whether the xeno can build a thick structure regardless of hive weeds

@@ -885,7 +885,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return FALSE
 	if(!user || !user.client || !user.client.prefs)
 		return FALSE
-	else if(user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP)
+	else if(user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (user.a_intent == INTENT_HELP))
 		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			//Absolutely SCREAM this at people so they don't get killed by it
 			to_chat(user, SPAN_WARNING("Help intent safety is on! Switch to another intent to fire your weapon."))
@@ -997,11 +997,11 @@ and you're good to go.
 
 			// This is where the magazine is auto-ejected
 			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
-				if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
+				if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
 					update_icon()
 				else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
 					var/drop_to_ground = TRUE
-					if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+					if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
 						drop_to_ground = FALSE
 						unwield(user)
 						user.swap_hand()

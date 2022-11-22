@@ -68,11 +68,9 @@
 
 	var/evolve_progress
 
-	if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
-		evolve_progress = "[round(amount_grown)]/[max_grown]"
-	else if(caste && caste.evolution_allowed)
+	if(caste && caste.evolution_allowed)
 		evolve_progress = "[round(evolution_stored)]/[evolution_threshold]"
-		if(hive && !hive.allow_no_queen_actions)
+		if(hive && !hive.allow_no_queen_actions && !caste?.evolve_without_queen)
 			if(!hive.living_xeno_queen)
 				evolve_progress += " (NO QUEEN)"
 			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
@@ -306,21 +304,20 @@
 				return
 
 
-
-	pounceAction.pre_pounce_additional_effects(M)
+	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("You [pounceAction.ability_name] onto [M]!"), null, 5)
 
 	if (pounceAction.knockdown)
-		visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("You [pounceAction.ability_name] onto [M]!"), null, 5)
 		M.apply_effect(pounceAction.knockdown_duration, WEAKEN)
 		step_to(src, M)
 
 	if (pounceAction.freeze_self)
-		playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
+		if(pounceAction.freeze_play_sound)
+			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		canmove = FALSE
 		frozen = TRUE
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, .proc/unfreeze), pounceAction.freeze_time, TIMER_STOPPABLE)
 
-	pounceAction.post_pounce_additional_effects(M)
+	pounceAction.additional_effects(M)
 
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)
@@ -342,7 +339,7 @@
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
 			var/obj/structure/S = O
 			visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
-			S.destroy() //We want to continue moving, so we do not reset throwing.
+			S.deconstruct() //We want to continue moving, so we do not reset throwing.
 		else
 			O.hitby(src) //This resets throwing.
 	else
@@ -402,7 +399,7 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
 
-/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE)
+/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE, var/check_doors = TRUE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
@@ -410,6 +407,11 @@
 			if(!silent)
 				to_chat(src, SPAN_WARNING("This is too close to a [bb.linked_structure]!"))
 			return
+		if(check_doors)
+			if(istype(O, /obj/structure/machinery/door))
+				if(!silent)
+					to_chat(src, SPAN_WARNING("\The [O] is blocking the resin! There's not enough space to build that here."))
+				return
 		if(istype(O, /obj/item/clothing/mask/facehugger))
 			if(!silent)
 				to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))
@@ -681,12 +683,14 @@
 	to_chat(src, SPAN_XENONOTICE("You start tracking the [target.mark_meaning.name] resin mark."))
 	to_chat(src, SPAN_INFO("shift click the compass to watch the mark, alt click to stop tracking"))
 
-/mob/living/carbon/Xenomorph/proc/stop_tracking_resin_mark(destroyed) //tracked_marker shouldnt be nulled outside this PROC!! >:C
+/mob/living/carbon/Xenomorph/proc/stop_tracking_resin_mark(destroyed, var/silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.overlays.Cut()
-	if(destroyed)
-		to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
-	else
-		to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
-	tracked_marker.xenos_tracking -= src
+	if(!silent)
+		if(destroyed)
+			to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
+		else
+			to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+	if(tracked_marker)
+		tracked_marker.xenos_tracking -= src
 	tracked_marker = null

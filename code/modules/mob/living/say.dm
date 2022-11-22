@@ -1,8 +1,8 @@
 var/list/department_radio_keys = list(
 	  ":i" = RADIO_CHANNEL_INTERCOM,	"#i" = RADIO_CHANNEL_INTERCOM,		".i" = RADIO_CHANNEL_INTERCOM,
 	  ":h" = RADIO_CHANNEL_DEPARTMENT,	"#h" = RADIO_CHANNEL_DEPARTMENT,	".h" = RADIO_CHANNEL_DEPARTMENT,
-	  ":+" = RADIO_CHANNEL_SPECIAL,		"#+" = RADIO_CHANNEL_SPECIAL,		".+" = RADIO_CHANNEL_SPECIAL, //activate radio-specific special functions
 	  ":w" = RADIO_MODE_WHISPER,		"#w" = RADIO_MODE_WHISPER,			".w" = RADIO_MODE_WHISPER,
+	  ":+" = RADIO_CHANNEL_SPECIAL,		"#+" = RADIO_CHANNEL_SPECIAL,		".+" = RADIO_CHANNEL_SPECIAL, //activate radio-specific special functions
 
 	  ":m" = RADIO_CHANNEL_MEDSCI,		"#m" = RADIO_CHANNEL_MEDSCI,		".m" = RADIO_CHANNEL_MEDSCI,
 	  ":n" = RADIO_CHANNEL_ENGI, 		"#n" = RADIO_CHANNEL_ENGI,			".n" = RADIO_CHANNEL_ENGI,
@@ -21,10 +21,8 @@ var/list/department_radio_keys = list(
 	  ":y" = RADIO_CHANNEL_WY,			"#y" = RADIO_CHANNEL_WY,			".y" = RADIO_CHANNEL_WY,
 	  ":o" = RADIO_CHANNEL_CCT,			"#o" = RADIO_CHANNEL_CCT,			".o" = RADIO_CHANNEL_CCT,
 	  ":z" = RADIO_CHANNEL_HIGHCOM,		"#z" = RADIO_CHANNEL_HIGHCOM,		".z" = RADIO_CHANNEL_HIGHCOM,
-	  ":k" = SQUAD_MARSOC,				"#k" = SQUAD_MARSOC,				".k" = SQUAD_MARSOC,
+	  ":k" = SQUAD_SOF,					"#k" = SQUAD_SOF,					".k" = SQUAD_SOF,
 
-	  ":R" = RADIO_EAR_RIGHT,			"#R" = RADIO_EAR_RIGHT,				".R" = RADIO_EAR_RIGHT,
-	  ":L" = RADIO_EAR_LEFT ,			"#L" = RADIO_EAR_LEFT ,				".L" = RADIO_EAR_LEFT ,
 	  ":I" = RADIO_CHANNEL_INTERCOM,	"#I" = RADIO_CHANNEL_INTERCOM,		".I" = RADIO_CHANNEL_INTERCOM,
 	  ":H" = RADIO_CHANNEL_DEPARTMENT,	"#H" = RADIO_CHANNEL_DEPARTMENT,	".H" = RADIO_CHANNEL_DEPARTMENT,
 	  ":W" = RADIO_MODE_WHISPER,		"#W" = RADIO_MODE_WHISPER,			".W" = RADIO_MODE_WHISPER,
@@ -46,19 +44,7 @@ var/list/department_radio_keys = list(
 	  ":Y" = RADIO_CHANNEL_WY,			"#Y" = RADIO_CHANNEL_WY,			".Y" = RADIO_CHANNEL_WY,
 	  ":O" = RADIO_CHANNEL_CCT,			"#O" = RADIO_CHANNEL_CCT,			".O" = RADIO_CHANNEL_CCT,
 	  ":Z" = RADIO_CHANNEL_HIGHCOM,		"#Z" = RADIO_CHANNEL_HIGHCOM,		".Z" = RADIO_CHANNEL_HIGHCOM,
-	  ":K" = SQUAD_MARSOC,				"#K" = SQUAD_MARSOC,				".K" = SQUAD_MARSOC,
-
-	  //kinda localization -- rastaf0
-	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
-	  ":�" = RADIO_EAR_RIGHT,	"#�" = RADIO_EAR_RIGHT,		".�" = RADIO_EAR_RIGHT,
-	  ":�" = RADIO_EAR_LEFT ,	"#�" = RADIO_EAR_LEFT ,		".�" = RADIO_EAR_LEFT ,
-	  ":�" = RADIO_CHANNEL_INTERCOM,	"#�" = RADIO_CHANNEL_INTERCOM,		".�" = RADIO_CHANNEL_INTERCOM,
-	  ":�" = RADIO_CHANNEL_DEPARTMENT,	"#�" = RADIO_CHANNEL_DEPARTMENT,	".�" = RADIO_CHANNEL_DEPARTMENT,
-	  ":�" = RADIO_CHANNEL_COMMAND,		"#�" = RADIO_CHANNEL_COMMAND,		".�" = RADIO_CHANNEL_COMMAND,
-	  ":�" = RADIO_CHANNEL_MEDSCI,		"#�" = RADIO_CHANNEL_MEDSCI,		".�" = RADIO_CHANNEL_MEDSCI,
-	  ":�" = RADIO_CHANNEL_ENGI,	"#�" = RADIO_CHANNEL_ENGI,	".�" = RADIO_CHANNEL_ENGI,
-	  ":�" = RADIO_MODE_WHISPER,		"#�" = RADIO_MODE_WHISPER,		".�" = RADIO_MODE_WHISPER,
-	  ":�" = RADIO_CHANNEL_SYNDICATE,	"#�" = RADIO_CHANNEL_SYNDICATE,		".�" = RADIO_CHANNEL_SYNDICATE,
+	  ":K" = SQUAD_SOF,					"#K" = SQUAD_SOF,					".K" = SQUAD_SOF,
 )
 
 /mob/living/proc/binarycheck()

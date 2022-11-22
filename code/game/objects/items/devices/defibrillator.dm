@@ -92,7 +92,7 @@
 
 /mob/living/carbon/human/proc/get_ghost(var/check_client = TRUE, var/check_can_reenter = TRUE)
 	if(client)
-		return FALSE
+		return null
 
 	for(var/mob/dead/observer/G in GLOB.observer_list)
 		if(G.mind && G.mind.original == src)

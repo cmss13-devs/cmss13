@@ -159,11 +159,11 @@
 
 /obj/structure/machinery/defenses/tesla_coil/stun/apply_debuff(var/mob/living/M)
 	if(M.mob_size >= MOB_SIZE_BIG)
-		M.adjust_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW)
+		M.set_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW)
 	else
-		M.adjust_effect(TESLA_COIL_STUN_EFFECT, WEAKEN)
+		M.set_effect(TESLA_COIL_STUN_EFFECT, WEAKEN)
 
-	M.adjust_effect(TESLA_COIL_DAZE_EFFECT * 1.5, DAZE) // 1.5x as effective as normal tesla
+	M.set_effect(TESLA_COIL_DAZE_EFFECT * 1.5, DAZE) // 1.5x as effective as normal tesla
 
 #undef TESLA_COIL_STUN_FIRE_DELAY
 #define TESLA_COIL_MICRO_FIRE_DELAY 10
@@ -176,7 +176,7 @@
 	defense_type = "Micro"
 
 /obj/structure/machinery/defenses/tesla_coil/micro/apply_debuff(var/mob/living/M)
-	M.adjust_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW) // Only applies slowness
+	M.set_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW) // Only applies slowness
 
 #undef TESLA_COIL_MICRO_FIRE_DELAY
 #undef TESLA_COIL_FIREDELAY

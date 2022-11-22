@@ -50,6 +50,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/be_special = 0				// Special role selection
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION // flags in #define/mode.dm
 	var/UI_style = "midnight"
+	var/toggles_admin = TOGGLES_ADMIN_DEFAULT
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_ghost = TOGGLES_GHOST_DEFAULT
 	var/toggles_langchat = TOGGLES_LANGCHAT_DEFAULT
@@ -57,6 +58,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL
+	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
@@ -101,7 +103,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	//character preferences
 	var/real_name						//our character's name
-	var/be_random_name = 0				//whether we are a random name every round
+	var/be_random_name = FALSE				//whether we are a random name every round
+	var/human_name_ban = FALSE
+
+
 	var/be_random_body = 0				//whether we have a random appearance every round
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 19						//age of character
@@ -109,10 +114,17 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/underwear = "Boxers (Camo Conforming)"			//underwear type
 	var/undershirt = "Undershirt"					//undershirt type
 	var/backbag = 2						//backpack type
+
 	var/h_style = "Crewcut"				//Hair type
 	var/r_hair = 0						//Hair color
 	var/g_hair = 0						//Hair color
 	var/b_hair = 0						//Hair color
+
+	var/grad_style = "None"				//Hair Gradient type
+	var/r_gradient = 0					//Hair Gradient color
+	var/g_gradient = 0					//Hair Gradient color
+	var/b_gradient = 0					//Hair Gradient color
+
 	var/f_style = "Shaved"				//Face hair type
 	var/r_facial = 0					//Face hair color
 	var/g_facial = 0					//Face hair color
@@ -132,8 +144,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/preferred_squad = "None"
 
 		//Some faction information.
-	var/home_system = "Unset"           	//System of birth.
-	var/citizenship = CITIZENSHIP_US 		//Current home system.
+	var/origin = ORIGIN_USCM
 	var/faction = "None"                	//Antag faction/general associated faction.
 	var/religion = RELIGION_AGNOSTICISM     //Religious association.
 
@@ -320,6 +331,15 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "</a>"
 			dat += "<br>"
 
+			if(/datum/character_trait/hair_dye in traits)
+				dat += "<b>Hair Gradient:</b> "
+				dat += "<a href='?_src_=prefs;preference=grad_style;task=input'><b>[grad_style]</b></a>"
+				dat += " | "
+				dat += "<a href='?_src_=prefs;preference=grad;task=input'>"
+				dat += "<b>Color</b> <span class='square' style='background-color: #[num2hex(r_gradient, 2)][num2hex(g_gradient, 2)][num2hex(b_gradient)];'></span>"
+				dat += "</a>"
+				dat += "<br>"
+
 			dat += "<b>Facial Hair:</b> "
 			dat += "<a href='?_src_=prefs;preference=f_style;task=input'><b>[f_style]</b></a>"
 			dat += " | "
@@ -370,7 +390,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 			dat += "<div id='column3'>"
 			dat += "<h2><b><u>Background Information:</u></b></h2>"
-			dat += "<b>Citizenship:</b> <a href='?_src_=prefs;preference=citizenship;task=input'><b>[citizenship]</b></a><br/>"
+			dat += "<b>Origin:</b> <a href='?_src_=prefs;preference=origin;task=input'><b>[origin]</b></a><br/>"
 			dat += "<b>Religion:</b> <a href='?_src_=prefs;preference=religion;task=input'><b>[religion]</b></a><br/>"
 
 			dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
@@ -570,8 +590,8 @@ var/const/MAX_SAVE_SLOTS = 10
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ALTERNATING_DUAL_WIELD]'><b>[toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_SWAP_HANDS]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS ? "On" : "Off"]</b></a><br>"
-			dat += "</div>"
-		if(MENU_ERT)
+			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
+		if(MENU_ERT) //wart
 			dat += "<div id='column1'>"
 			dat += "<h2><b><u>ERT Settings:</u></b></h2>"
 			dat += "<b>Spawn as Leader:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_LEADER]'><b>[toggles_ert & PLAY_LEADER ? "Yes" : "No"]</b></a><br>"
@@ -677,7 +697,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	HTML += "</td></tr></table>"
 	HTML += "</center></table>"
 
-	if(user.client.prefs) //Just makin sure
+	if(user.client?.prefs) //Just makin sure
 		var/b_color = "green"
 		var/msg = "Get random job if preferences unavailable"
 
@@ -943,18 +963,26 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!GLOB.character_trait_groups[trait_group])
 						trait_group = null
 					var/trait = text2path(href_list["trait"])
-					var/datum/character_trait/CT = GLOB.character_traits[trait]
-					CT?.try_give_trait(src)
+					var/datum/character_trait/character_trait = GLOB.character_traits[trait]
+					character_trait?.try_give_trait(src)
 					open_character_traits(user, trait_group)
+					if(character_trait.refresh_choices)
+						ShowChoices(user)
+					if(character_trait.refresh_mannequin)
+						update_preview_icon()
 					return TRUE
 				if("remove_trait")
 					var/trait_group = text2path(href_list["trait_group"])
 					if(!GLOB.character_trait_groups[trait_group])
 						trait_group = null
 					var/trait = text2path(href_list["trait"])
-					var/datum/character_trait/CT = GLOB.character_traits[trait]
-					CT?.try_remove_trait(src)
+					var/datum/character_trait/character_trait = GLOB.character_traits[trait]
+					character_trait?.try_remove_trait(src)
 					open_character_traits(user, trait_group)
+					if(character_trait.refresh_choices)
+						ShowChoices(user)
+					if(character_trait.refresh_mannequin)
+						update_preview_icon()
 					return TRUE
 
 		if("toggle_job_gear")
@@ -967,7 +995,8 @@ var/const/MAX_SAVE_SLOTS = 10
 		if ("random")
 			switch (href_list["preference"])
 				if ("name")
-					real_name = random_name(gender)
+					var/datum/origin/character_origin = GLOB.origins[origin]
+					real_name = character_origin.generate_human_name(gender)
 				if ("age")
 					age = rand(AGE_MIN, AGE_MAX)
 				if ("ethnicity")
@@ -1009,6 +1038,9 @@ var/const/MAX_SAVE_SLOTS = 10
 		if("input")
 			switch(href_list["preference"])
 				if("name")
+					if(human_name_ban)
+						to_chat(user, SPAN_NOTICE("You are banned from custom human names."))
+						return
 					var/raw_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if (!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
@@ -1099,7 +1131,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					predator_cape_type = options[new_cape]
 				if("pred_cape_color")
-					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color") as color|null
+					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as color|null
 					if(!new_cape_color)
 						return
 					predator_cape_color = new_cape_color
@@ -1281,7 +1313,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("hair")
 					if(species == "Human")
-						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference") as color|null
+						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference", rgb(r_hair, g_hair, b_hair)) as color|null
 						if(new_hair)
 							r_hair = hex2num(copytext(new_hair, 2, 4))
 							g_hair = hex2num(copytext(new_hair, 4, 6))
@@ -1290,10 +1322,10 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("h_style")
 					var/list/valid_hairstyles = list()
 					for(var/hairstyle in GLOB.hair_styles_list)
-						var/datum/sprite_accessory/S = GLOB.hair_styles_list[hairstyle]
-						if( !(species in S.species_allowed))
+						var/datum/sprite_accessory/sprite_accessory = GLOB.hair_styles_list[hairstyle]
+						if( !(species in sprite_accessory.species_allowed))
 							continue
-						if(!S.selectable)
+						if(!sprite_accessory.selectable)
 							continue
 
 						valid_hairstyles[hairstyle] = GLOB.hair_styles_list[hairstyle]
@@ -1302,6 +1334,29 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in valid_hairstyles
 					if(new_h_style)
 						h_style = new_h_style
+
+				if("grad")
+					if(species == "Human")
+						var/new_hair_grad = input(user, "Choose your character's hair gradient colour:", "Character Preference", rgb(r_gradient, g_gradient, b_gradient)) as color|null
+						if(new_hair_grad)
+							r_gradient = hex2num(copytext(new_hair_grad, 2, 4))
+							g_gradient = hex2num(copytext(new_hair_grad, 4, 6))
+							b_gradient = hex2num(copytext(new_hair_grad, 6, 8))
+
+				if("grad_style")
+					var/list/valid_hair_gradients = list()
+					for(var/hair_gradient in GLOB.hair_gradient_list)
+						var/datum/sprite_accessory/sprite_accessory = GLOB.hair_gradient_list[hair_gradient]
+						if(!(species in sprite_accessory.species_allowed))
+							continue
+						if(!sprite_accessory.selectable)
+							continue
+						valid_hair_gradients[hair_gradient] = GLOB.hair_gradient_list[hair_gradient]
+					valid_hair_gradients = sortList(valid_hair_gradients)
+
+					var/new_h_gradient_style = input(user, "Choose your character's hair gradient style:", "Character Preference")  as null|anything in valid_hair_gradients
+					if(new_h_gradient_style)
+						grad_style = new_h_gradient_style
 
 				if ("ethnicity")
 					var/new_ethnicity = tgui_input_list(user, "Choose your character's ethnicity:", "Character Preferences", GLOB.ethnicities_list)
@@ -1316,7 +1371,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						body_type = new_body_type
 
 				if("facial")
-					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference") as color|null
+					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference", rgb(r_facial, g_facial, b_facial)) as color|null
 					if(new_facial)
 						r_facial = hex2num(copytext(new_facial, 2, 4))
 						g_facial = hex2num(copytext(new_facial, 4, 6))
@@ -1325,14 +1380,14 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("f_style")
 					var/list/valid_facialhairstyles = list()
 					for(var/facialhairstyle in GLOB.facial_hair_styles_list)
-						var/datum/sprite_accessory/S = GLOB.facial_hair_styles_list[facialhairstyle]
-						if(gender == MALE && S.gender == FEMALE)
+						var/datum/sprite_accessory/sprite_accessory = GLOB.facial_hair_styles_list[facialhairstyle]
+						if(gender == MALE && sprite_accessory.gender == FEMALE)
 							continue
-						if(gender == FEMALE && S.gender == MALE)
+						if(gender == FEMALE && sprite_accessory.gender == MALE)
 							continue
-						if( !(species in S.species_allowed))
+						if( !(species in sprite_accessory.species_allowed))
 							continue
-						if(!S.selectable)
+						if(!sprite_accessory.selectable)
 							continue
 
 						valid_facialhairstyles[facialhairstyle] = GLOB.facial_hair_styles_list[facialhairstyle]
@@ -1363,7 +1418,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					ShowChoices(user)
 
 				if("eyes")
-					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference") as color|null
+					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes)) as color|null
 					if(new_eyes)
 						r_eyes = hex2num(copytext(new_eyes, 2, 4))
 						g_eyes = hex2num(copytext(new_eyes, 4, 6))
@@ -1371,7 +1426,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 
 				if("ooccolor")
-					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference") as color|null
+					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference", ooccolor) as color|null
 					if(new_ooccolor)
 						ooccolor = new_ooccolor
 
@@ -1463,10 +1518,10 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/skin_style_name = tgui_input_list(user, "Select a new skin style", "Skin style", list("default1", "default2", "default3"))
 					if(!skin_style_name) return
 
-				if("citizenship")
-					var/choice = tgui_input_list(user, "Please choose your current citizenship.", "Citizenship selection", citizenship_choices)
+				if("origin")
+					var/choice = tgui_input_list(user, "Please choose your character's origin.", "Origin Selection", GLOB.player_origins)
 					if(choice)
-						citizenship = choice
+						origin = choice
 
 				if("religion")
 					var/choice = tgui_input_list(user, "Please choose a religion.", "Religion choice", religion_choices + "Other")
@@ -1506,14 +1561,13 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("ui")
 					var/ui_style_choice = tgui_input_list(user, "Choose your UI style", "UI style", GLOB.custom_human_huds)
-					UI_style = ui_style_choice
-					if(!ui_style_choice)
-						UI_style = "midnight"
+					if(ui_style_choice)
+						UI_style = ui_style_choice
 
 				if("UIcolor")
-					var/UI_style_color_new = input(user, "Choose your UI color, dark colors are not recommended!") as color|null
-					if(!UI_style_color_new) return
-					UI_style_color = UI_style_color_new
+					var/UI_style_color_new = input(user, "Choose your UI color, dark colors are not recommended!", UI_style_color) as color|null
+					if(UI_style_color_new)
+						UI_style_color = UI_style_color_new
 
 				if("UIalpha")
 					var/UI_style_alpha_new = tgui_input_number(user, "Select a new alpha (transparency) parameter for your UI, between 50 and 255", "Select alpha", 255, 255, 50)
@@ -1597,6 +1651,16 @@ var/const/MAX_SAVE_SLOTS = 10
 					if (toggle_prefs & flag && toggle_prefs & flag_undo)
 						toggle_prefs ^= flag_undo
 
+				if("switch_prefs") //wart
+					var/list/pref_list = list(text2num(href_list["flag1"]), text2num(href_list["flag2"]), text2num(href_list["flag3"]))
+					var/pref_new = tgui_input_list(user, "Select the preference tier you need", "Select preference tier", pref_list)
+					for(var/flag in pref_list)
+						//remove all flags in list
+						if(CHECK_BITFIELD(toggle_prefs, flag))
+							DISABLE_BITFIELD(toggle_prefs, flag)
+					//add the new flag
+					ENABLE_BITFIELD(toggle_prefs, pref_new)
+
 				if("toggles_ert")
 					var/flag = text2num(href_list["flag"])
 					toggles_ert ^= flag
@@ -1611,6 +1675,11 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("save")
 					if(save_cooldown > world.time)
 						to_chat(user, SPAN_WARNING("You need to wait [round((save_cooldown-world.time)/10)] seconds before you can do that again."))
+						return
+					var/datum/origin/character_origin = GLOB.origins[origin]
+					var/name_error = character_origin.validate_name(real_name)
+					if(name_error)
+						tgui_alert(user, name_error, "Invalid Name", list("OK"))
 						return
 					save_preferences()
 					save_character()
@@ -1701,6 +1770,17 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.g_hair = g_hair
 	character.b_hair = b_hair
 
+	if(/datum/character_trait/hair_dye in traits)
+		character.r_gradient = r_gradient
+		character.g_gradient = g_gradient
+		character.b_gradient = b_gradient
+		character.grad_style = grad_style
+	else
+		character.r_gradient = initial(character.r_gradient)
+		character.g_gradient = initial(character.g_gradient)
+		character.b_gradient = initial(character.b_gradient)
+		character.grad_style = initial(character.grad_style)
+
 	character.r_facial = r_facial
 	character.g_facial = g_facial
 	character.b_facial = b_facial
@@ -1712,8 +1792,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.h_style = h_style
 	character.f_style = f_style
 
-	character.home_system = home_system
-	character.citizenship = citizenship
+	character.origin = origin
 	character.personal_faction = faction
 	character.religion = religion
 
@@ -1770,6 +1849,17 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.r_hair = r_hair
 	character.g_hair = g_hair
 	character.b_hair = b_hair
+
+	if(/datum/character_trait/hair_dye in traits)
+		character.r_gradient = r_gradient
+		character.g_gradient = g_gradient
+		character.b_gradient = b_gradient
+		character.grad_style = grad_style
+	else
+		character.r_gradient = initial(character.r_gradient)
+		character.g_gradient = initial(character.g_gradient)
+		character.b_gradient = initial(character.b_gradient)
+		character.grad_style = initial(character.grad_style)
 
 	character.r_facial = r_facial
 	character.g_facial = g_facial
@@ -1850,8 +1940,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.gen_record = gen_record
 	character.exploit_record = exploit_record
 
-	character.home_system = home_system
-	character.citizenship = citizenship
+	character.origin = origin
 	character.personal_faction = faction
 	character.religion = religion
 
@@ -1934,8 +2023,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(!read_traits)
 		read_traits = TRUE
 		for(var/trait in traits)
-			var/datum/character_trait/CT = GLOB.character_traits[trait]
-			trait_points -= CT.cost
+			var/datum/character_trait/character_trait = GLOB.character_traits[trait]
+			trait_points -= character_trait.cost
 	var/dat = "<body onselectstart='return false;'>"
 	dat += "<center>"
 	var/datum/character_trait_group/current_trait_group
@@ -1955,25 +2044,26 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "</center>"
 	dat += "<table>"
 	for(var/trait in current_trait_group.traits)
-		var/datum/character_trait/CT = trait
-		if(!CT.applyable)
+		var/datum/character_trait/character_trait = trait
+		if(!character_trait.applyable)
 			continue
-		var/has_trait = (CT.type in traits)
+		var/has_trait = (character_trait.type in traits)
 		var/task = has_trait ? "remove_trait" : "give_trait"
 		var/button_class = has_trait ? "class='linkOn'" : ""
 		dat += "<tr><td width='40%'>"
-		if(has_trait || CT.can_give_trait(src))
-			dat += "<a href='?_src_=prefs;preference=traits;task=[task];trait=[CT.type];trait_group=[current_trait_group.type]' [button_class]>"
-			dat += "[CT.trait_name]"
+		if(has_trait || character_trait.can_give_trait(src))
+			dat += "<a href='?_src_=prefs;preference=traits;task=[task];trait=[character_trait.type];trait_group=[current_trait_group.type]' [button_class]>"
+			dat += "[character_trait.trait_name]"
 			dat += "</a>"
 		else
-			dat += "<i>[CT.trait_name]</i>"
-		var/cost_text = CT.cost ? " ([CT.cost] points)" : ""
-		dat += "</td><td>[CT.trait_desc][cost_text]</td></tr>"
+			dat += "<i>[character_trait.trait_name]</i>"
+		var/cost_text = character_trait.cost ? " ([character_trait.cost] points)" : ""
+		dat += "</td><td>[character_trait.trait_desc][cost_text]</td></tr>"
 		dat += ""
 	dat += "</table>"
 	dat += "</body>"
 	show_browser(user, dat, "Character Traits", "character_traits")
+	update_preview_icon(TRUE)
 
 #undef MENU_MARINE
 #undef MENU_XENOMORPH

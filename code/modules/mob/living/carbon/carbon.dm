@@ -8,19 +8,21 @@
 	..()
 
 	handle_fire() //Check if we're on fire
+	if(SSweather.is_weather_event)
+		handle_weather(delta_time)
 
 /mob/living/carbon/Destroy()
-	QDEL_NULL_LIST(internal_organs)
+	stomach_contents?.Cut()
 
 	. = ..()
 
+	QDEL_NULL_LIST(internal_organs)
 	QDEL_NULL(handcuffed)
 	QDEL_NULL(legcuffed)
 	QDEL_NULL(halitem)
 
 	hunter_data?.clean_data()
 	hunter_data = null
-	stomach_contents?.Cut()
 	halimage = null
 	halbody = null
 
@@ -495,7 +497,7 @@
 /mob/living/carbon/get_examine_text(mob/user)
 	. = ..()
 	if(isYautja(user))
-		. += SPAN_BLUE("[src] is worth [max(life_kills_total, 1)] honor.")
+		. += SPAN_BLUE("[src] is worth [max(life_kills_total, default_honor_value)] honor.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")
 

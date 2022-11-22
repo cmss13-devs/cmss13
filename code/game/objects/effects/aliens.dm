@@ -7,7 +7,7 @@
 	name = "alien thing"
 	desc = "You shouldn't be seeing this."
 	unacidable = TRUE
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	layer = FLY_LAYER
 
 /obj/effect/xenomorph/splatter
@@ -345,7 +345,7 @@
 			G.dismantle()
 		else if(istype(acid_t, /obj/structure/window/framed))
 			var/obj/structure/window/framed/WF = acid_t
-			WF.drop_window_frame()
+			WF.deconstruct(disassembled = FALSE)
 		else if(istype(acid_t,/obj/item/explosive/plastic))
 			qdel(acid_t)
 

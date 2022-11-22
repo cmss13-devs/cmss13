@@ -336,6 +336,7 @@
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
+	mutation_icon_state = QUEEN_NORMAL
 	mutation_type = QUEEN_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
@@ -911,7 +912,7 @@
 	var/mob/living/carbon/Xenomorph/Queen/Queen = bound_xeno
 	if(Queen.ovipositor)
 		Queen.icon = Queen.queen_ovipositor_icon
-		Queen.icon_state = "[Queen.mutation_type] Queen Ovipositor"
+		Queen.icon_state = "[Queen.mutation_icon_state || Queen.mutation_type] Queen Ovipositor"
 		return TRUE
 
 	// Switch icon back and then let normal icon behavior happen

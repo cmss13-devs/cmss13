@@ -3,6 +3,7 @@
 /obj/item/alien_embryo
 	name = "alien embryo"
 	desc = "All slimy and yucky."
+	icon = 'icons/mob/xenos/larva.dmi'
 	icon_state = "Embryo"
 	var/mob/living/affected_mob
 	var/stage = 0
@@ -14,7 +15,6 @@
 
 /obj/item/alien_embryo/Initialize(mapload, ...)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_embryo))
 	if(istype(loc, /mob/living))
 		affected_mob = loc
 		affected_mob.status_flags |= XENO_HOST

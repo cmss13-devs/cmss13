@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixes issues with clothing traits resulting in, eg, RPG spec losing ear protection by manipulating their spare helmet."

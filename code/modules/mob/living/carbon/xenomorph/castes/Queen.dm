@@ -232,6 +232,7 @@
 		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)
 
 	remove_from_all_mob_huds()
+	is_watching = null
 
 	return ..()
 
@@ -257,6 +258,7 @@
 	small_explosives_stun = FALSE
 	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
+	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
 
 	var/breathing_counter = 0
@@ -372,7 +374,6 @@
 	queen_aged = TRUE
 
 /mob/living/carbon/Xenomorph/Queen/Initialize()
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
 	. = ..()
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)

@@ -279,7 +279,7 @@
 	name = "choosefruit"
 
 /datum/asset/spritesheet/choose_fruit/register()
-	var/icon_file = 'icons/mob/hostiles/fruits.dmi'
+	var/icon_file = 'icons/mob/xenos/fruits.dmi'
 	var/icon_states_list = icon_states(icon_file)
 	for(var/obj/effect/alien/resin/fruit/fruit as anything in typesof(/obj/effect/alien/resin/fruit))
 		var/icon_state = initial(fruit.mature_icon_state)

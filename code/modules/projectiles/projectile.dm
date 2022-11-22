@@ -1104,7 +1104,7 @@
 	health -= round(P.damage/2)
 	if(health < 0)
 		visible_message(SPAN_WARNING("[src] breaks down!"))
-		destroy()
+		deconstruct()
 	return TRUE
 
 

@@ -58,11 +58,8 @@
 	mutation_type = CRUSHER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
+	icon_xeno = 'icons/mob/xenos/crusher.dmi'
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
-
-/mob/living/carbon/Xenomorph/Crusher/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_crusher))
-	. = ..()
 
 // Refactored to handle all of crusher's interactions with object during charge.
 /mob/living/carbon/Xenomorph/proc/handle_collision(atom/target)
@@ -96,7 +93,7 @@
 		if (W.unacidable)
 			. = FALSE
 		else
-			W.shatter_window(1)
+			W.deconstruct(FALSE)
 			. =  TRUE // Continue throw
 
 	else if (istype(target, /obj/structure/machinery/door/airlock))
@@ -105,7 +102,7 @@
 		if (A.unacidable)
 			. = FALSE
 		else
-			A.destroy_airlock()
+			A.deconstruct()
 
 	else if (istype(target, /obj/structure/grille))
 		var/obj/structure/grille/G = target

@@ -99,7 +99,7 @@
 			dismantle()
 			return
 
-	if (stat)
+	if (inoperable())
 		return
 
 	//Resources are being loaded.
@@ -166,12 +166,10 @@
 		stop_processing()
 
 /obj/structure/machinery/autolathe/attack_hand(var/mob/user)
-	if (stat)
+	if(..())
 		return
-
 	if (seconds_electrified != 0)
 		shock(user, 50)
-
 	user.set_interaction(src)
 	ui_interact(user)
 

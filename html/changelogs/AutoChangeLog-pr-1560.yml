@@ -1,0 +1,6 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - code_imp: "Moved stim reagent code in with the other reagents. Fixed an unnecesary variable casting."
+  - code_imp: "Fixed old style of comments in reagent files."
+  - refactor: "Removed snowflake initialize code for various napalms."

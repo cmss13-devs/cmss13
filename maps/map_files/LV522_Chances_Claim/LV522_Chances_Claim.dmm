@@ -43631,18 +43631,6 @@
 	tag = "icon-darkbrownfull2"
 	},
 /area/lv522/indoors/c_block/cargo)
-"srv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1;
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "srJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -66683,7 +66671,7 @@ ydA
 ydA
 wMe
 ydA
-srv
+lAf
 ydA
 sjY
 clY

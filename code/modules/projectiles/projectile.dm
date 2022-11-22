@@ -33,6 +33,11 @@
 	var/turf/path[]  	 = null
 	var/permutated[] 	 = null // we've passed through these atoms, don't try to hit them again
 
+	/// Additional ammo flags applied to the projectile
+	var/projectile_override_flags = NONE
+	/// Flags for behaviors of the projectile itself
+	var/projectile_flags = NONE
+
 	/// How much time has the projectile carried for fractional movement, in seconds (delta_time format)
 	var/time_carry = 0
 	/// How many turfs per 1ds the projectile travels
@@ -54,17 +59,9 @@
 	var/effective_range_max	= 0	//What maximum range the projectile deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Set by the weapon.
 
 	var/scatter = 0
-
 	var/distance_travelled = 0
 
-	var/projectile_override_flags = 0
-
-	var/is_shrapnel
-
 	var/datum/cause_data/weapon_cause_data
-
-	var/mob/living/homing_target = null
-
 	var/list/bullet_traits
 
 	 /// The beam linked to the projectile. Can be utilized for things like grappling hooks, harpoon guns, tripwire guns, etc..
@@ -88,7 +85,6 @@
 	path = null
 	weapon_cause_data = null
 	firer = null
-	homing_target = null
 	QDEL_NULL(bound_beam)
 	SSprojectiles.stop_projectile(src)
 	return ..()
@@ -157,13 +153,12 @@
 		return max(0, damage - round((distance_travelled - effective_range_max) * damage_falloff))
 	return damage
 
-// Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards), is_shrapnel (whether it should miss the firer or not)
-/obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, is_shrapnel = FALSE)
+// Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
+/obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override)
 	SHOULD_NOT_SLEEP(TRUE)
 	original = original || original_override || target
-	src.is_shrapnel = is_shrapnel
 	if(!loc)
-		if (!is_shrapnel)
+		if (projectile_flags & PROJECTILE_SHRAPNEL)
 			var/move_turf = get_turf(F)
 			if(move_turf)
 				forceMove(move_turf)
@@ -181,9 +176,9 @@
 		return
 	firer = F
 
-	if(F && !is_shrapnel)
+	if(F && !(projectile_flags & PROJECTILE_SHRAPNEL))
 		permutated |= F //Don't hit the shooter (firer)
-	else if (S && is_shrapnel)
+	else if (S && (projectile_flags & PROJECTILE_SHRAPNEL))
 		permutated |= S
 
 	permutated |= src //Don't try to hit self.
@@ -209,19 +204,16 @@
 	p_y += Clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
 
-	var/homing_projectile = homing_target && ammo_flags & AMMO_HOMING
-	if(homing_projectile)
-		var/mob/living/ht = homing_target //Dead or friendly target can't get it, so the homing get stucks.
-		if(ht.is_dead())
-			homing_target = null
-			homing_projectile = FALSE
-		if(ishuman(ht))
-			var/mob/living/carbon/human/H = ht
+	if(projectile_flags & PROJECTILE_HOMING)
+		var/mob/living/homing_target = original //Dead or friendly target can't get it, so the homing get stucks.
+		if(homing_target.is_dead())
+			projectile_flags &= ~PROJECTILE_HOMING
+		else if(ishuman(homing_target))
+			var/mob/living/carbon/human/H = homing_target
 			if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_MOB_SKIPPING, H) & COMPONENT_SKIP_MOB\
 				|| runtime_iff_group && H.get_target_lock(runtime_iff_group)\
 			)
-				homing_target = null
-				homing_projectile = FALSE
+			projectile_flags &= ~PROJECTILE_HOMING
 
 	src.speed = speed
 	// Randomize speed by a small factor to help bullet animations look okay
@@ -267,8 +259,6 @@
 
 /obj/item/projectile/process(delta_time)
 	. = PROC_RETURN_SLEEP
-	var/orig_x = x * 32 + pixel_x
-	var/orig_y = y * 32 + pixel_y
 
 	// Keep going as long as we got speed and time
 	while(speed > 0 && (speed * ((delta_time + time_carry)/10) >= 1))
@@ -330,14 +320,15 @@
 			speed = 2
 
 	// Track homing target if we can't reach it by adjusting - it should connect next tick
-	if(homing_target && distance_travelled * 2 >= length(path))
+	if((projectile_flags & PROJECTILE_HOMING) && distance_travelled * 2 >= length(path))
 		current_turf = get_turf(src)
-		var/turf/homing_turf = get_turf(homing_target)
-		path = getline2(current_turf, homing_turf)
-		path.Cut(1, 2) // pop current
-		speed *= 2
-		update_angle(loc, homing_turf) // Bullet "bends" but goes dead on
-		homing_target = null
+		var/turf/homing_turf = get_turf(original)
+		if(homing_turf)
+			path = getline2(current_turf, original)
+			path.Cut(1, 2) // pop current
+			speed *= 2
+			update_angle(loc, homing_turf) // Bullet "bends" but goes dead on
+		projectile_flags &= ~PROJECTILE_HOMING // disable further homing
 
 	// Adjust computed path if we just missed our intended target
 	if(!length(path))
@@ -399,7 +390,7 @@
 		return TRUE
 
 	// Firer's turf, keep moving
-	if(firer && T == firer.loc && !is_shrapnel)
+	if(firer && T == firer.loc && !(projectile_flags & PROJECTILE_SHRAPNEL))
 		return FALSE
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 

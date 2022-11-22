@@ -30,13 +30,18 @@
 #define AMMO_STRIKES_SURFACE	(1<<16) // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
 #define AMMO_HITS_TARGET_TURF	(1<<17) // Whether or not the bullet hits the target that was clicked or if it keeps travelling
 #define AMMO_ALWAYS_FF			(1<<18)
-#define AMMO_HOMING				(1<<19) // If the bullet target is a mob, it will correct its trajectory toward the mob.
+//                              (1<<19) unused, previously was AMMO_HOMING
 /// Can't be deflected
 #define AMMO_NO_DEFLECT			(1<<20)
 ///Can only hit people with criminal status
 #define AMMO_MP					(1<<21)
 #define AMMO_FLAME				(1<<22) // Handles sentry flamers glob
+// NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
+/// Projectile is shrpanel which allow it to skip some collisions
+#define PROJECTILE_SHRAPNEL     (1<<0)
+/// Projectile is actively homing its primary target.
+#define PROJECTILE_HOMING       (1<<1)
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)
@@ -62,6 +67,7 @@
 #define GUN_SUPPORT_PLATFORM	(1<<19) /// support weapon, bipod will grant IFF
 #define GUN_BURST_ONLY			(1<<20)
 #define GUN_FULL_AUTO_ONLY		(1<<21)
+// NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1

@@ -1158,7 +1158,7 @@ and you're good to go.
 			//This is where the projectile leaves the barrel and deals with projectile code only.
 			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 			in_chamber = null // It's not in the gun anymore
-			INVOKE_ASYNC(projectile_to_fire, /obj/item/projectile.proc/fire_at, target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target, FALSE)
+			INVOKE_ASYNC(projectile_to_fire, /obj/item/projectile.proc/fire_at, target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
 			projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

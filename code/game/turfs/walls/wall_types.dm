@@ -1099,9 +1099,10 @@
 		return
 
 	var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
-	new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING)
+	new_proj.generate_bullet(P.ammo)
 	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
 	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
+	new_proj.projectile_flags |= PROJECTILE_HOMING
 
 	// Move back to who fired you.
 	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, .proc/bullet_ignore_turf)
@@ -1109,7 +1110,8 @@
 
 	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
 	var/atom/target = get_angle_target_turf(src, angle, get_dist(src, P.firer))
-	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed, is_shrapnel = TRUE)
+	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
+	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed)
 
 	return TRUE
 

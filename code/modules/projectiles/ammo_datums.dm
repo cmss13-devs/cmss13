@@ -1512,7 +1512,7 @@
 	damage_falloff = 0
 
 /datum/ammo/bullet/sniper/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.homing_target && M == P.homing_target)
+	if(M == P.original)
 		var/mob/living/L = M
 		L.apply_armoured_damage(damage*2, ARMOR_BULLET, BRUTE, null, penetration)
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
@@ -1534,7 +1534,7 @@
 	))
 
 /datum/ammo/bullet/sniper/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.homing_target && M == P.homing_target)
+	if(M == P.original)
 		var/mob/living/L = M
 		var/blind_duration = 5
 		if(isXeno(M))
@@ -1557,7 +1557,7 @@
 	penetration = 0
 
 /datum/ammo/bullet/sniper/flak/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.homing_target && M == P.homing_target)
+	if(M == P.original)
 		var/slow_duration = 7
 		var/mob/living/L = M
 		if(isXeno(M))
@@ -1657,7 +1657,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.homing_target && M == P.homing_target)
+	if(M == P.original)
 		var/mob/living/L = M
 		var/size_damage_mod = 0.8
 		if(isXeno(M))
@@ -1685,7 +1685,7 @@
 	))
 
 /datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.homing_target && M == P.homing_target)
+	if(M == P.original)
 		var/mob/living/L = M
 		var/size_damage_mod = 0.5
 		if(isXeno(M))

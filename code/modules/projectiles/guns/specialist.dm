@@ -107,8 +107,7 @@
 		return
 
 	var/obj/item/projectile/P = sniper_rifle.in_chamber
-	P.homing_target = M
-	P.projectile_override_flags |= AMMO_HOMING
+	P.projectile_flags |= PROJECTILE_HOMING
 	sniper_rifle.Fire(M, H)
 
 /datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M, var/cover_lose_focus)

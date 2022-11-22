@@ -40,10 +40,10 @@
 	objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, SPAN_BOLD("You started off in Tychon's Rift system as a colonist seeking work at one of the established colonies."))
+	to_chat(H, SPAN_BOLD("You started off in the Neroid Sector as a colonist seeking work at one of the established colonies."))
 	to_chat(H, SPAN_BOLD("The withdrawl of United American forces in the early 2180s, the system fell into disarray."))
 	to_chat(H, SPAN_BOLD("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
-	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in Tychon's Rift."))
+	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
 	if(hostility)
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Despite this, you have been tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.")))
@@ -121,10 +121,10 @@
 	objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/heavy_mercs/print_backstory(mob/living/carbon/human/H)
-	to_chat(H, SPAN_BOLD("You started off in Tychon's Rift system as an experienced miner seeking work at one of the established colonies."))
+	to_chat(H, SPAN_BOLD("You started off in the Neroid Sector as an experienced miner seeking work at one of the established colonies."))
 	to_chat(H, SPAN_BOLD("The withdrawl of United American forces in the early 2180s, the system fell into disarray."))
 	to_chat(H, SPAN_BOLD("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
-	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in Tychon's Rift."))
+	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
 	if(hostility)
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Despite this, you have been specially tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.")))

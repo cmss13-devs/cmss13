@@ -45,29 +45,25 @@ SUBSYSTEM_DEF(projectiles)
 			return
 
 /datum/controller/subsystem/projectiles/proc/handle_projectile_flight(obj/item/projectile/projectile, delta_time)
+	PRIVATE_PROC(TRUE)
 	set waitfor = FALSE
-	if(QDELETED(projectile)) // We're in double-check land here because there ARE rulebreakers.
+	. = TRUE
+	// We're in double-check land here because there ARE rulebreakers.
+	if(QDELETED(projectile))
 		log_debug("SSprojectiles: projectile '[projectile.name]' shot by '[projectile.firer]' is scheduled despite being deleted.")
-	else
+	else if(projectile.speed > 0)
 		. = projectile.process(delta_time)
-	if(. == PROC_RETURN_SLEEP) // Same. Believe it or not, it happens
+	else
+		log_debug("SSprojectiles: projectile '[projectile.name]' shot by '[projectile.firer]' discarded due to invalid speed.")
+	if(. == PROC_RETURN_SLEEP)
 		log_debug("SSprojectiles: projectile '[projectile.name]' shot by '[projectile.firer]' found sleeping despite all the sleep prevention. Discarding it.")
-	if(.) // PROCESS_KILL basically
-		projectiles -= projectile
+	if(.)
+		stop_projectile(projectile) // Ideally this was already done thru process()
 		qdel(projectile)
-
-/// Helper proc for direct projectile encounters
-/datum/controller/subsystem/projectiles/proc/handle_projectile_hit(obj/item/projectile/projectile, atom/affected)
-	SHOULD_NOT_SLEEP(TRUE)
-	if(!projectile?.speed)
-		return
-	if(isobj(affected))
-		return projectile.handle_object(affected)
-	if(isliving(affected))
-		return projectile.handle_mob(affected)
 
 /datum/controller/subsystem/projectiles/proc/queue_projectile(obj/item/projectile/projectile)
 	projectiles |= projectile
 /datum/controller/subsystem/projectiles/proc/stop_projectile(obj/item/projectile/projectile)
 	projectiles -= projectile
 	flying -= projectile // avoids problems with deleted projs
+	projectile.speed = 0

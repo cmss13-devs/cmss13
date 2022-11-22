@@ -88,7 +88,9 @@
 	path = null
 	weapon_cause_data = null
 	firer = null
+	homing_target = null
 	QDEL_NULL(bound_beam)
+	SSprojectiles.stop_projectile(src)
 	return ..()
 
 /obj/item/projectile/proc/apply_bullet_trait(list/entry)
@@ -102,7 +104,9 @@
 
 /obj/item/projectile/Collided(atom/movable/AM)
 	if(AM && !(AM in permutated))
-		scan_a_turf(AM.loc)
+		if(scan_a_turf(AM.loc))
+			SSprojectiles.stop_projectile(src)
+			qdel(src)
 
 /obj/item/projectile/Crossed(atom/movable/AM)
 	/* Fun fact: Crossed is called for any contents involving operations.
@@ -110,7 +114,9 @@
 	if(!loc.z)
 		return // Not on the map. Don't scan a turf. Don't shoot the poor guy reloading his gun.
 	if(AM && !(AM in permutated))
-		scan_a_turf(get_turf(AM))
+		if(scan_a_turf(get_turf(AM)))
+			SSprojectiles.stop_projectile(src)
+			qdel(src)
 
 
 /obj/item/projectile/ex_act()
@@ -261,6 +267,9 @@
 
 /obj/item/projectile/process(delta_time)
 	. = PROC_RETURN_SLEEP
+	var/orig_x = x * 32 + pixel_x
+	var/orig_y = y * 32 + pixel_y
+
 	// Keep going as long as we got speed and time
 	while(speed > 0 && (speed * ((delta_time + time_carry)/10) >= 1))
 		time_carry -= 1/speed*10
@@ -268,7 +277,6 @@
 			delta_time += time_carry
 			time_carry = 0
 		if(fly())
-			speed = 0
 			qdel(src)
 			return PROCESS_KILL
 
@@ -358,8 +366,9 @@
 	pixel_x = Clamp(dx, -16, 16)
 	pixel_y = Clamp(dy, -16, 16)
 
-
 /obj/item/projectile/proc/scan_a_turf(turf/T, proj_dir)
+	. = TRUE // Sleep safeguard: stop the bullet
+
 	//Not actually flying? Should not be hitting anything.
 	if(!speed)
 		return FALSE

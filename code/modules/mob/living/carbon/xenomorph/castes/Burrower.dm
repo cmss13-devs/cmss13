@@ -38,7 +38,7 @@
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
 	desc = "A beefy, alien with sharp claws."
-	icon = 'icons/mob/hostiles/burrower.dmi'
+	icon = 'icons/mob/xenos/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
 	layer = MOB_LAYER
@@ -66,7 +66,7 @@
 		)
 	mutation_type = BURROWER_NORMAL
 
-	icon_xeno = 'icons/mob/hostiles/burrower.dmi'
+	icon_xeno = 'icons/mob/xenos/burrower.dmi'
 	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
 
 /mob/living/carbon/Xenomorph/Burrower/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)

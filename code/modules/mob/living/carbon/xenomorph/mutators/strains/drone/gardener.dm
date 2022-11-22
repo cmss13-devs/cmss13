@@ -136,7 +136,7 @@
 
 	button.overlays.Cut()
 	button.overlays += image(icon_file, button, action_icon_state)
-	button.overlays += image('icons/mob/hostiles/fruits.dmi', button, initial(xeno.selected_fruit.mature_icon_state))
+	button.overlays += image('icons/mob/xenos/fruits.dmi', button, initial(xeno.selected_fruit.mature_icon_state))
 
 /datum/action/xeno_action/onclick/change_fruit/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -211,7 +211,7 @@
 			//update the button's overlay with new choice
 			button.overlays.Cut()
 			button.overlays += image(icon_file, button, action_icon_state)
-			button.overlays += image('icons/mob/hostiles/fruits.dmi', button, initial(fruit.mature_icon_state))
+			button.overlays += image('icons/mob/xenos/fruits.dmi', button, initial(fruit.mature_icon_state))
 			X.selected_fruit = selected_type
 			. = TRUE
 		if("refresh_ui")

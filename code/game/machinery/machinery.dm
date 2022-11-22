@@ -12,6 +12,12 @@ Class Variables:
          1 -- machine is using power at its idle power level
          2 -- machine is using power at its active power level
 
+	needs_power (num)
+	  is this thing affected by an area being unpowered
+	  Possible Values:
+	     FALSE -- machine will process as if though in a powered area
+	     TRUE -- machine will function normally
+
    active_power_usage (num)
       Value for the amount of power to use when in active power mode
 
@@ -88,6 +94,7 @@ Class Procs:
 	var/use_power = 1
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
+	var/needs_power = TRUE
 	var/power_channel = POWER_CHANNEL_EQUIP
 	var/mob/living/carbon/human/operator = null //Had no idea where to put this so I put this here. Used for operating machines with RELAY_CLICK
 		//EQUIP,ENVIRON or LIGHT
@@ -158,14 +165,14 @@ Class Procs:
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				qdel(src)
+				deconstruct()
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				deconstruct()
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct()
 			return
 	return
 

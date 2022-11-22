@@ -173,8 +173,8 @@
 	/// xenomorph type is given upon spawn
 	var/base_actions
 
-	// Mark tracking --
-	var/obj/effect/alien/resin/marker/tracked_marker = null //this is the resin mark that is currently being tracked by the xeno
+	/// this is the resin mark that is currently being tracked by the xeno
+	var/obj/effect/alien/resin/marker/tracked_marker
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -659,6 +659,10 @@
 /mob/living/carbon/Xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
+
+	if(tracked_marker)
+		tracked_marker.xenos_tracking -= src
+		tracked_marker = null
 
 	if(mind)
 		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.

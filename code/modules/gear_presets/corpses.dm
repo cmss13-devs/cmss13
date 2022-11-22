@@ -225,14 +225,14 @@
 
 /datum/equipment_preset/corpse/clown/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(H), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/toy/bikehorn(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/clown(H), WEAR_BACK)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
+	else
+		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 

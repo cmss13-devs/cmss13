@@ -133,11 +133,13 @@
 	skill_name = SKILL_FIREMAN
 	skill_level = SKILL_FIREMAN_DEFAULT
 
-// Skill with an extra S at the end is a collection of multiple skills. Basically a skillSET
-// This is to organize and provide a common interface to the huge heap of skills there are
+/// Skill with an extra S at the end is a collection of multiple skills. Basically a skillSET
+/// This is to organize and provide a common interface to the huge heap of skills there are
 /datum/skills
-	var/name //the name of the skillset
-	var/mob/owner = null // the mind that has this skillset
+	/// The name of the skillset
+	var/name
+	// The mob that has this skillset
+	var/mob/owner
 
 	// List of skill datums.
 	// Also, if this is populated when the datum is created, it will set the skill levels automagically
@@ -162,11 +164,7 @@
 
 /datum/skills/Destroy()
 	owner = null
-
-	for(var/datum/skill/S in skills)
-		qdel(S)
-		skills -= S
-
+	skills = null // Don't need to delete, /datum/skill should softdel
 	return ..()
 
 // Checks if the given skill is contained in this skillset at all

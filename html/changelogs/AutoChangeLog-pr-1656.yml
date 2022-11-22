@@ -1,0 +1,4 @@
+author: "NoKohi"
+delete-after: True
+changes:
+  - bugfix: "fixed stained clothing having an extra \"the\""

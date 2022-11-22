@@ -26,6 +26,7 @@
 		update_canmove()
 		update_icons()
 		handle_luminosity()
+		handle_blood()
 
 		if(behavior_delegate)
 			behavior_delegate.on_life()

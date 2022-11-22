@@ -401,7 +401,7 @@
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	damage = 55
-	penetration= ARMOR_PENETRATION_TIER_3
+	penetration = ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/heavy/cluster
@@ -428,6 +428,18 @@
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
 
+/datum/ammo/bullet/pistol/deagle
+	name = ".50 caliber bullet"
+	damage = 70
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	accuracy = -HIT_ACCURACY_TIER_3
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_10
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
+
+/datum/ammo/bullet/pistol/deagle/on_hit_mob(mob/M, obj/item/projectile/P)
+	knockback(M, P, 2)
+
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
 	damage_type = BURN
@@ -442,6 +454,20 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
+
+// Used by the hipower
+// I know that the 'high power' in the name is supposed to mean its 'impressive' magazine capacity
+// but this is CM, half our guns have baffling misconceptions and mistakes (how do you grab the type-71?) so it's on-brand.
+// maybe in the far flung future of 2280 someone screwed up the design.
+
+/datum/ammo/bullet/pistol/highpower
+	name = "high power pistol bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
+
+	accuracy = HIT_ACCURACY_TIER_3
+	damage = 50
+	penetration = ARMOR_PENETRATION_TIER_5
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
 
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
@@ -644,6 +670,7 @@
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shrapnel_chance = 100
 	shrapnel_type = /obj/item/shard/shrapnel/nagant
+	handful_state = "shrapnel"
 	//roughly 35 or so damage
 
 /datum/ammo/bullet/revolver/nagant/shrapnel/on_hit_mob(mob/M, obj/item/projectile/P)
@@ -664,7 +691,17 @@
 	name = "small revolver bullet"
 	headshot_state	= HEADSHOT_OVERLAY_LIGHT
 
-	damage = 30
+	damage = 45
+
+	penetration = ARMOR_PENETRATION_TIER_3
+
+/datum/ammo/bullet/revolver/small/hollowpoint
+	name = "small hollowpoint revolver bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
+
+	damage = 75 // way too strong because it's hard to make a good balance between HP and normal with this system, but the damage falloff is really strong
+	penetration = 0
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
 /datum/ammo/bullet/revolver/mateba
 	name = ".454 heavy revolver bullet"
@@ -880,6 +917,28 @@
 	stamina_damage = 10
 	shrapnel_chance = 0
 
+/datum/ammo/bullet/smg/mp27
+	name = "simple submachinegun bullet"
+	damage = 50
+	accurate_range = 5
+	effective_range_max = 6
+	penetration = 0
+	shell_speed = AMMO_SPEED_TIER_6
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
+	accuracy = HIT_ACCURACY_TIER_2
+
+// less damage than the m39, but better falloff, range, and AP
+
+/datum/ammo/bullet/smg/ppsh
+	name = "crude submachinegun bullet"
+	damage = 28
+	accurate_range = 7
+	effective_range_max = 7
+	penetration = ARMOR_PENETRATION_TIER_2
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_5
+
 /*
 //======
 					Rifle Ammo
@@ -906,7 +965,7 @@
 
 /datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
+	M.AddComponent(/datum/component/bonus_damage_stack, 50, world.time)
 
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
@@ -1069,6 +1128,41 @@
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_10
 
+/datum/ammo/bullet/rifle/svd
+	name = "crude marksman bullet" //designated marksman rifles are still rifles
+	shrapnel_chance = 0
+	damage_falloff = 0
+
+	effective_range_min = 2
+	accurate_range_min = 2
+	damage_buildup = DAMAGE_BUILDUP_TIER_3
+
+	damage = 45
+	scatter = -SCATTER_AMOUNT_TIER_5
+	penetration= ARMOR_PENETRATION_TIER_4
+	shell_speed = AMMO_SPEED_TIER_6
+
+/datum/ammo/bullet/rifle/hunting
+	name = "hunting rifle bullet"
+	headshot_state	= HEADSHOT_OVERLAY_HEAVY
+
+	damage = 65
+	penetration = ARMOR_PENETRATION_TIER_1
+	accurate_range = 16
+	accuracy = HIT_ACCURACY_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_7
+	shell_speed = AMMO_SPEED_TIER_6
+	effective_range_max = 16
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
+
+/datum/ammo/bullet/rifle/hunting/holo_target
+	name = "holo-targeting rifle bullet"
+	damage = 45
+
+/datum/ammo/bullet/rifle/hunting/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/bonus_damage_stack, 5, world.time)
+
 /*
 //======
 					Shotgun Ammo
@@ -1135,7 +1229,7 @@
 
 /datum/ammo/bullet/shotgun/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
 	burst(get_turf(M),P,damage_type)
-	knockback(M,P)
+	knockback(M,P, 4)
 
 /datum/ammo/bullet/shotgun/incendiary/on_hit_obj(obj/O,obj/item/projectile/P)
 	burst(get_turf(P),P,damage_type)
@@ -1256,13 +1350,37 @@
 	pen_armor_punch = 0
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
-	knockback(M,P)
+	knockback(M, P, 2)
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/knockback(mob/living/target, obj/item/projectile/P, max_range = 2)
+	if(!target)
+		return
+	if(P.distance_travelled > max_range)
+		return
+
+	if(target.mob_size >= MOB_SIZE_BIG)
+		return //Big xenos are not affected.
+
+	target.apply_effect(1, WEAKEN)
+	target.apply_effect(2, SLOW)
+	target.visible_message(target, SPAN_DANGER("The massive impact sends [target] flying!"), SPAN_HIGHDANGER("The massive impact sends you flying!"))
+
+	var/direction
+	if(target == P.firer)
+		direction = turn(P.dir, 180) //they fly backawards
+	else
+		direction = P.dir
+	target.fling_mob(P.firer, direction, 2)
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/spread
 	name = "additional heavy buckshot"
 	max_range = 4
 	scatter = SCATTER_AMOUNT_TIER_1
+	shell_speed = AMMO_SPEED_TIER_3 // so they hit before the main shell stuns
 	bonus_projectiles_amount = 0
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/spread/on_hit_mob(mob/M,obj/item/projectile/P)
+	return
 
 //basically the same
 /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
@@ -1272,7 +1390,7 @@
 	damage_type = BURN
 	damage = 60
 	accurate_range = 3
-	max_range = 4
+	max_range = 4 //intentionally longer ranged
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/set_bullet_traits()
@@ -1611,9 +1729,6 @@
 	for(var/mob/living/carbon/L in T)
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
-
-/datum/ammo/bullet/sniper/svd
-	name = "crude sniper bullet"
 
 /datum/ammo/bullet/sniper/anti_materiel
 	name = "anti-materiel sniper bullet"
@@ -2121,18 +2236,24 @@
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_MP
 
 /datum/ammo/energy/rxfm_eva
-	name = "focused energy bolt"
-	icon_state = "cm_laser"
-	flags_ammo_behavior = AMMO_ENERGY
-	accurate_range = 7
-	max_range = 14
-	damage = 25
-	shell_speed = AMMO_SPEED_TIER_2
+	name = "laser blast"
+	icon_state = "laser_new"
+	flags_ammo_behavior = AMMO_LASER
+	accurate_range = 14
+	max_range = 22
+	damage = 45
+	stamina_damage = 25 //why not
+	shell_speed = AMMO_SPEED_TIER_3
+
+/datum/ammo/energy/rxfm_eva/on_hit_mob(mob/living/M, obj/item/projectile/P)
+	..()
+	if(prob(10)) //small chance for one to ignite on hit
+		M.fire_act()
 
 /datum/ammo/energy/laz_uzi
 	name = "laser bolt"
 	icon_state = "laser_new"
-	flags_ammo_behavior = AMMO_ENERGY
+	flags_ammo_behavior = AMMO_LASER
 	damage = 40
 	accurate_range = 5
 	effective_range_max = 7
@@ -2327,7 +2448,7 @@
 	icon_state = "neurotoxin"
 	ping = "ping_x"
 	damage_type = TOX
-	flags_ammo_behavior = AMMO_XENO_ACID
+	flags_ammo_behavior = AMMO_ACIDIC
 	var/added_spit_delay = 0 //used to make cooldown of the different spits vary.
 	var/spit_cost
 
@@ -2337,7 +2458,7 @@
 /datum/ammo/xeno/toxin
 	name = "neurotoxic spit"
 	damage_falloff = 0
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
 	spit_cost = 25
 	var/effect_power = XENO_NEURO_TIER_4
 	var/datum/callback/neuro_callback
@@ -2425,7 +2546,7 @@
 
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
 	bonus_projectiles_type = /datum/ammo/xeno/toxin/shotgun/additional
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -2467,7 +2588,7 @@
 	name = "neurotoxic air splash"
 	effect_power = XENO_NEURO_TIER_1
 	spit_cost = 50
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
 
 /datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M) && isXeno(P.firer) && M:hivenumber == P.firer:hivenumber)
@@ -2595,7 +2716,7 @@
 	name = "blob of acid"
 	icon_state = "boiler_gas2"
 	ping = "ping_x"
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
 
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32
@@ -2642,7 +2763,7 @@
 	icon_state = "boiler_gas2"
 	ping = "ping_x"
 	debilitate = list(19,21,0,0,11,12,0,0)
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
 	var/datum/effect_system/smoke_spread/smoke_system
 
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
@@ -2694,7 +2815,7 @@
 	name = "bone chips"
 	icon_state = "shrapnel_light"
 	ping = null
-	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
 	damage_type = BRUTE
 	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
 

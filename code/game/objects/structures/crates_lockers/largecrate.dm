@@ -300,7 +300,7 @@
 					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 					/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40/extended,
-					/obj/item/weapon/gun/rifle/sniper/svd = /obj/item/ammo_magazine/sniper/svd,
+					/obj/item/weapon/gun/rifle/svd = /obj/item/ammo_magazine/rifle/svd,
 					/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh
 				)
 

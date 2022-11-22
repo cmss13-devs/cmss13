@@ -1046,19 +1046,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	starting_attachment_types = list(/obj/item/attachable/stock/hg3712)
 	map_specific_decoration = FALSE
 
-
-/obj/item/weapon/gun/shotgun/pump/cmb/Initialize(mapload, spawn_empty)
-	. = ..()
-	pump_delay = FIRE_DELAY_TIER_5*2
-
-
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 21, "under_x" = 22, "under_y" = 15, "stock_x" = 24, "stock_y" = 10)
 
-
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7*4
+	fire_delay = 1.6 SECONDS
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -1075,7 +1068,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	item_state = "m3717"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb/m3717
 	starting_attachment_types = list(/obj/item/attachable/stock/hg3712/m3717)
-	unacidable = TRUE
-	damage_mult = 1.1
+	//unacidable = FALSE
+
+/obj/item/weapon/gun/shotgun/pump/cmb/m3717/set_gun_config_values()
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
 
 //-------------------------------------------------------

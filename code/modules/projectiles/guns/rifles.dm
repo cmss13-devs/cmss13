@@ -736,6 +736,82 @@
 	desc = "A cheap, reliable LMG chambered in 7.62x39mm. Commonly found in the hands of slightly better funded criminals. This one has been equipped with an after-market ammo-counter."
 	starting_attachment_types = list(/obj/item/attachable/mar50barrel, /obj/item/attachable/bipod, /obj/item/attachable/magnetic_harness)
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
+
+//SVD //Based on the actual Dragunov sniper rifle.
+//IT'S NOT A FUCKING SNIPER RIFLE
+
+/obj/item/weapon/gun/rifle/svd
+	name = "\improper SVD Dragunov-05xB designated marskman rifle"
+	desc = "A wannabe replica of an SVD, constructed from a MAR-40 by someone probably illiterate that thought the original SVD was built from an AK pattern. Fires 7.62x54mmR rounds."
+	icon_state = "svd003"
+	item_state = "svd003" //NEEDS A ONE HANDED STATE
+
+	fire_sound = 'sound/weapons/gun_kt42.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/svd
+	attachable_allowed = list(
+						//Muzzle
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp_replica,
+						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/heavy_barrel,
+						//Barrel
+						/obj/item/attachable/slavicbarrel,
+						//Rail
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/scope,
+						/obj/item/attachable/scope/variable_zoom,
+						/obj/item/attachable/scope/variable_zoom/slavic,
+						/obj/item/attachable/scope/mini,
+						/obj/item/attachable/scope/slavic,
+						//Under
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/gyro,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/bipod,
+						//Stock
+						/obj/item/attachable/stock/slavic
+						)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
+
+/obj/item/weapon/gun/rifle/svd/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+
+/obj/item/weapon/gun/rifle/svd/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_6
+	burst_amount = BURST_AMOUNT_TIER_2
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT * 2
+	recoil = RECOIL_AMOUNT_TIER_5
+	damage_falloff_mult = 0
+
+/obj/item/weapon/gun/rifle/svd/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/scope/scope = new /obj/item/attachable/scope/variable_zoom/slavic(src)
+	//scope.flags_attach_features &= ~ATTACH_REMOVABLE
+	scope.ignore_clash_fog = TRUE
+	scope.Attach(src)
+	update_attachable(scope.slot)
+
+	var/obj/item/attachable/barrel = new /obj/item/attachable/slavicbarrel(src)
+	barrel.flags_attach_features &= ~ATTACH_REMOVABLE
+	barrel.Attach(src)
+	update_attachable(barrel.slot)
+
+	var/obj/item/attachable/stock = new /obj/item/attachable/stock/slavic(src)
+	stock.flags_attach_features &= ~ATTACH_REMOVABLE
+	stock.Attach(src)
+	update_attachable(stock.slot)
+
 //-------------------------------------------------------
 //M16 RIFLE
 
@@ -1309,8 +1385,8 @@
 						/obj/item/attachable/stock/hunting,
 						)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_VERY_FAST
-	aim_slowdown = SLOWDOWN_ADS_QUICK
+	wield_delay = WIELD_DELAY_FAST
+	aim_slowdown = SLOWDOWN_ADS_RIFLE
 	starting_attachment_types = list(/obj/item/attachable/scope/mini/hunting,/obj/item/attachable/stock/hunting)
 
 /obj/item/weapon/gun/rifle/hunting/set_gun_attachment_offsets()
@@ -1323,6 +1399,6 @@
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_10
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0

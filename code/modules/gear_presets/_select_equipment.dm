@@ -424,7 +424,7 @@
 	var/list/rebel_gunner_firearms = list(
 		/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
-		/obj/item/weapon/gun/rifle/sniper/svd = /obj/item/ammo_magazine/sniper/svd
+		/obj/item/weapon/gun/rifle/svd = /obj/item/ammo_magazine/rifle/svd
 		)
 
 	var/gunpath = pick(rebel_gunner_firearms)

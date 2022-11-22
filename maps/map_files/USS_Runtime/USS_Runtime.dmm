@@ -1,484 +1,1006 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/closed/wall/r_wall/bunker,
-/area/event)
-"b" = (
-/obj/effect/landmark/start/tank_crew,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"c" = (
-/obj/effect/landmark/start/engineering,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"d" = (
-/obj/effect/landmark/start/working_joe,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"e" = (
-/obj/effect/landmark/start/requisition,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"g" = (
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"h" = (
-/obj/effect/landmark/start/police,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"k" = (
+"ai" = (
 /obj/effect/landmark/start/liaison,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
 /area/event)
-"l" = (
-/obj/effect/landmark/start/marine/medic,
+"aC" = (
+/obj/item/weapon/gun/pistol/highpower,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
 /area/event)
-"n" = (
-/obj/effect/landmark/start/professor,
+"cN" = (
+/mob/living/carbon/Xenomorph/Warrior,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
 /area/event)
-"q" = (
-/obj/effect/landmark/start/warden,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"r" = (
-/obj/effect/landmark/start/maint,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"s" = (
-/obj/effect/landmark/late_join,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"t" = (
-/obj/effect/landmark/start/marine/engineer,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"u" = (
-/obj/effect/landmark/start/tech,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"v" = (
+"dM" = (
 /obj/effect/landmark/start/marine,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
 /area/event)
-"x" = (
-/obj/effect/landmark/start/captain,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"z" = (
-/obj/effect/landmark/start/pilot,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"A" = (
-/obj/effect/landmark/start/cargo,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"C" = (
-/obj/effect/landmark/start/bridge,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"D" = (
-/obj/effect/landmark/start/warrant,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"F" = (
-/obj/effect/landmark/start/marine/rto,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"G" = (
-/obj/effect/landmark/start/marine/spec,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"I" = (
-/obj/effect/landmark/start/synthetic,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"J" = (
-/obj/effect/landmark/start/executive,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"L" = (
-/obj/effect/landmark/start/researcher,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"N" = (
-/obj/effect/landmark/start/nurse,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
-"P" = (
+"ep" = (
 /obj/effect/landmark/start/doctor,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
 /area/event)
-"Q" = (
-/obj/effect/landmark/start/senior,
+"eO" = (
+/obj/effect/landmark/start/warrant,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
 /area/event)
-"R" = (
-/obj/effect/landmark/start/marine/smartgunner,
+"eV" = (
+/obj/item/weapon/gun/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
+/obj/item/ammo_magazine/rifle/ar10,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
 /area/event)
-"T" = (
-/obj/effect/landmark/start/marine/leader,
+"hP" = (
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
 /area/event)
-"V" = (
+"jC" = (
+/obj/effect/landmark/start/captain,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"km" = (
+/obj/item/weapon/gun/rifle/svd,
+/obj/item/ammo_magazine/rifle/svd,
+/obj/item/ammo_magazine/rifle/svd,
+/obj/item/ammo_magazine/rifle/svd,
+/obj/item/ammo_magazine/rifle/svd,
+/obj/item/ammo_magazine/rifle/svd,
+/obj/item/ammo_magazine/rifle/svd,
+/obj/item/ammo_magazine/rifle/svd,
+/obj/item/ammo_magazine/rifle/svd,
+/obj/item/ammo_magazine/rifle/svd,
+/obj/item/ammo_magazine/rifle/svd,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"li" = (
+/obj/item/weapon/gun/pistol/holdout/flashlight,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/obj/item/ammo_magazine/pistol/kt42,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"ly" = (
+/obj/effect/landmark/start/maint,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"lA" = (
+/obj/item/weapon/gun/smg/uzi,
+/obj/item/ammo_magazine/smg/uzi,
+/obj/item/ammo_magazine/smg/uzi/extended,
+/obj/item/ammo_magazine/smg/uzi/extended,
+/obj/item/ammo_magazine/smg/uzi/extended,
+/obj/item/ammo_magazine/smg/uzi/extended,
+/obj/item/ammo_magazine/smg/uzi/extended,
+/obj/item/ammo_magazine/smg/uzi/extended,
+/obj/item/ammo_magazine/smg/uzi/extended,
+/obj/item/ammo_magazine/smg/uzi/extended,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"mv" = (
+/obj/item/weapon/gun/energy/rxfm5_eva,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"pj" = (
+/obj/effect/landmark/start/tech,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"pu" = (
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"pz" = (
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"pJ" = (
 /obj/effect/landmark/start/crew_chief,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
 /area/event)
-"W" = (
+"ql" = (
 /obj/effect/landmark/start/chef,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"rE" = (
+/obj/effect/landmark/start/warden,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"ta" = (
+/mob/living/carbon/Xenomorph/Sentinel,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"vk" = (
+/obj/item/weapon/gun/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/obj/item/ammo_magazine/rifle/hunting,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"vs" = (
+/obj/effect/landmark/start/marine/smartgunner,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"vA" = (
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"vI" = (
+/turf/closed/wall/r_wall/bunker,
+/area/event)
+"wn" = (
+/obj/effect/landmark/start/marine/engineer,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"xO" = (
+/obj/effect/landmark/start/marine/spec,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"yG" = (
+/obj/item/weapon/gun/energy/laz_uzi,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"yW" = (
+/obj/item/weapon/gun/revolver/cmb,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"zb" = (
+/obj/item/weapon/gun/pistol/c99,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"zJ" = (
+/obj/effect/landmark/start/nurse,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Ah" = (
+/obj/effect/landmark/start/marine/medic,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Ap" = (
+/obj/effect/landmark/start/synthetic,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Aq" = (
+/obj/effect/landmark/start/working_joe,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"AJ" = (
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Bj" = (
+/obj/item/weapon/gun/pistol/m1911/socom,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"BC" = (
+/obj/item/ammo_magazine/handful/shotgun/twobore,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"BP" = (
+/obj/effect/landmark/start/marine/rto,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"DX" = (
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"EU" = (
+/obj/item/weapon/gun/pistol/kt42,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"FO" = (
+/mob/living/carbon/Xenomorph/Runner,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Gw" = (
+/obj/effect/landmark/start/bridge,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"HH" = (
+/obj/effect/landmark/start/police,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"HP" = (
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"IY" = (
+/obj/item/weapon/gun/revolver/small,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Je" = (
+/obj/effect/landmark/start/requisition,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Jw" = (
+/obj/item/ammo_magazine/revolver/cmb/normalpoint,
+/obj/item/ammo_magazine/revolver/cmb/normalpoint,
+/obj/item/ammo_magazine/revolver/cmb/normalpoint,
+/obj/item/ammo_magazine/revolver/cmb/normalpoint,
+/obj/item/ammo_magazine/revolver/cmb/normalpoint,
+/obj/item/ammo_magazine/revolver/cmb/normalpoint,
+/obj/item/ammo_magazine/revolver/cmb/normalpoint,
+/obj/item/ammo_magazine/revolver/cmb/normalpoint,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"JL" = (
+/obj/effect/landmark/late_join,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"JO" = (
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/obj/item/ammo_magazine/pistol/c99,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"JV" = (
+/obj/item/weapon/gun/shotgun/type23/breacher,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Kd" = (
+/obj/item/ammo_magazine/revolver/pkd,
+/turf/closed/wall/r_wall/bunker,
+/area/event)
+"Lp" = (
+/obj/effect/landmark/start/executive,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"LS" = (
+/mob/living/carbon/Xenomorph/Spitter,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"MD" = (
+/obj/effect/landmark/start/researcher,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"MJ" = (
+/obj/effect/landmark/start/pilot,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Nb" = (
+/obj/item/weapon/gun/revolver/m44/custom/webley,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Nf" = (
+/obj/item/weapon/gun/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Nm" = (
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Oi" = (
+/obj/item/weapon/gun/smg/fp9000/pmc,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"PT" = (
+/obj/effect/landmark/start/engineering,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Rl" = (
+/obj/effect/landmark/start/senior,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Rq" = (
+/obj/effect/landmark/start/cargo,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"SE" = (
+/obj/item/weapon/gun/smg/ppsh,
+/obj/item/ammo_magazine/smg/ppsh,
+/obj/item/ammo_magazine/smg/ppsh,
+/obj/item/ammo_magazine/smg/ppsh,
+/obj/item/ammo_magazine/smg/ppsh,
+/obj/item/ammo_magazine/smg/ppsh,
+/obj/item/ammo_magazine/smg/ppsh,
+/obj/item/ammo_magazine/smg/ppsh,
+/obj/item/ammo_magazine/smg/ppsh,
+/obj/item/ammo_magazine/smg/ppsh,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"To" = (
+/obj/effect/landmark/start/professor,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"UL" = (
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"UQ" = (
+/obj/item/clothing/mask/gas/yautja/hunter,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"UV" = (
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/cmb,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"UW" = (
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Vf" = (
+/mob/living/carbon/Xenomorph/Lurker,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Wh" = (
+/obj/item/weapon/gun/pistol/heavy,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"WA" = (
+/obj/effect/landmark/start/marine/leader,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"XE" = (
+/mob/living/carbon/Xenomorph/Defender,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Yh" = (
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Yq" = (
+/obj/effect/landmark/start/tank_crew,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"Yz" = (
+/obj/item/weapon/gun/smg/mac15,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15/extended,
+/obj/item/ammo_magazine/smg/mac15,
+/obj/item/ammo_magazine/smg/mac15,
+/obj/item/ammo_magazine/smg/mac15,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"YS" = (
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/obj/item/ammo_magazine/revolver/small,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
+"ZP" = (
+/mob/living/carbon/Xenomorph/Drone,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
 /area/event)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
 "}
 (2,1,1) = {"
-a
-s
-k
-z
-q
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+JL
+ai
+MJ
+rE
+FO
+HP
+HP
+ZP
+HP
+cN
+HP
+HP
+HP
+HP
+vI
 "}
 (3,1,1) = {"
-a
-x
-v
-h
-D
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+jC
+dM
+HH
+eO
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+vI
 "}
 (4,1,1) = {"
-a
-J
-t
-n
-d
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+Lp
+wn
+To
+Aq
+HP
+HP
+HP
+ta
+HP
+HP
+HP
+HP
+HP
+HP
+vI
 "}
 (5,1,1) = {"
-a
-C
-T
-e
-V
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+Gw
+WA
+Je
+pJ
+Vf
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+vI
 "}
 (6,1,1) = {"
-a
-A
-l
-L
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+Rq
+Ah
+MD
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+vI
 "}
 (7,1,1) = {"
-a
-W
-F
-Q
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+ql
+BP
+Rl
+HP
+XE
+HP
+HP
+LS
+HP
+HP
+HP
+HP
+HP
+HP
+vI
 "}
 (8,1,1) = {"
-a
-P
-R
-I
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+ep
+vs
+Ap
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+YS
+vI
 "}
 (9,1,1) = {"
-a
-c
-G
-b
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+PT
+xO
+Yq
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+UQ
+Jw
+UV
+hP
+vI
 "}
 (10,1,1) = {"
-a
-r
-N
-u
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+ly
+zJ
+pj
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+vI
 "}
 (11,1,1) = {"
-a
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+HP
+HP
+HP
+HP
+HP
+JV
+JV
+km
+UW
+Nm
+Bj
+eV
+vk
+HP
+vI
 "}
 (12,1,1) = {"
-a
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+HP
+HP
+HP
+HP
+pz
+JV
+JV
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+vI
 "}
 (13,1,1) = {"
-a
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+HP
+HP
+HP
+HP
+HP
+HP
+HP
+lA
+SE
+Yh
+Nf
+Yz
+Oi
+AJ
+vI
 "}
 (14,1,1) = {"
-a
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+HP
+HP
+HP
+HP
+HP
+mv
+yG
+DX
+zb
+Wh
+aC
+EU
+yW
+IY
+vI
 "}
 (15,1,1) = {"
-a
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-g
-a
+vI
+HP
+HP
+HP
+BC
+HP
+HP
+HP
+UL
+JO
+pu
+vA
+li
+Nb
+HP
+vI
 "}
 (16,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+Kd
+vI
 "}

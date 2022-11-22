@@ -17,3 +17,18 @@
 
 /mob/living/proc/check_fire_intensity_resistance()
 	return 0
+
+/mob/living/proc/fling_mob(var/atom/throwing_atom, direction, distance)
+	if (!istype(src) || !istype(throwing_atom) ||  !direction || !distance)
+		return
+
+	var/turf/T = get_turf(src)
+	var/turf/temp = get_turf(src)
+	for (var/x in 0 to distance)
+		temp = get_step(T, direction)
+		if (!temp)
+			break
+		T = temp
+
+	src.throw_atom(T, distance, SPEED_VERY_FAST, throwing_atom, TRUE)
+	shake_camera(src, 10, 1)

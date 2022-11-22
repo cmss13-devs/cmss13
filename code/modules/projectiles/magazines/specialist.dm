@@ -44,20 +44,6 @@
 	icon_state = "m42c"
 	max_rounds = 6
 
-
-//SVD //Based on the actual Dragunov sniper rifle.
-
-/obj/item/ammo_magazine/sniper/svd
-	name = "\improper SVD magazine (7.62x54mmR)"
-	desc = "A large caliber magazine for the SVD sniper rifle."
-	caliber = "7.62x54mmR"
-	icon_state = "svd"
-	default_ammo = /datum/ammo/bullet/sniper/svd
-	max_rounds = 10
-	gun_type = /obj/item/weapon/gun/rifle/sniper/svd
-
-
-
 //M4RA magazines
 
 /obj/item/ammo_magazine/rifle/m4ra

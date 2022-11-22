@@ -155,19 +155,29 @@
 	item_state = "b92fs"
 	current_mag = /obj/item/ammo_magazine/pistol/b92fs
 
+/obj/item/weapon/gun/pistol/b92fs/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(prob(10))
+		name = "\improper Beretta 93FR burst pistol"
+		desc += " This specific pistol is a burst-fire, limited availability, police-issue 93FR type Beretta. Not too accurate, aftermarket modififcations are recommended."
+		var/obj/item/attachable/burstfire_assembly/BFA = new(src)
+		BFA.flags_attach_features &= ~ATTACH_REMOVABLE
+		BFA.Attach(src)
+		update_attachable(BFA.slot)
+		flags_gun_features |= GUN_BURST_ON
 
 /obj/item/weapon/gun/pistol/b92fs/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/b92fs/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
-	accuracy_mult = BASE_ACCURACY_MULT
+	fire_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_6
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT
+	scatter = SCATTER_AMOUNT_TIER_7
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_5
+	scatter_unwielded = SCATTER_AMOUNT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
 
 
 //-------------------------------------------------------
@@ -191,13 +201,6 @@
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/compensator)
-
-// /obj/item/weapon/gun/pistol/heavy/Initialize(mapload, spawn_empty)
-//	. = ..()
-//	var/skin = pick("","c_","g_")
-//	icon_state = skin + icon_state
-//	item_state = skin + item_state
-//	base_gun_icon = skin + base_gun_icon
 
 
 /obj/item/weapon/gun/pistol/heavy/set_gun_attachment_offsets()
@@ -258,11 +261,11 @@
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
 
 /obj/item/weapon/gun/pistol/c99/upp
 	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design is strongly inspired by the classic ancient Makarov pistol. This version has been refitted for military usage by the UPP."
@@ -292,6 +295,7 @@
 
 //-------------------------------------------------------
 //KT-42 //Inspired by the .44 Auto Mag pistol
+// rebalanced - slightly worse stats than the 88 mod, but uses heavy pistol bullets.
 
 /obj/item/weapon/gun/pistol/kt42
 	name = "\improper KT-42 automag"
@@ -301,22 +305,17 @@
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/kt42
 
-
 /obj/item/weapon/gun/pistol/kt42/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20,"rail_x" = 8, "rail_y" = 22, "under_x" = 22, "under_y" = 17, "stock_x" = 22, "stock_y" = 17)
 
-
 /obj/item/weapon/gun/pistol/kt42/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*2
-	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	fire_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_6
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_5
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_5
-	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 
 //-------------------------------------------------------
@@ -391,34 +390,51 @@
 
 //-------------------------------------------------------
 //.45 MARSHALS PISTOL //Inspired by the Browning Hipower
+// rebalanced - singlefire, very strong bullets but slow to fire and heavy recoil
 
 /obj/item/weapon/gun/pistol/highpower
 	name = "\improper Highpower automag"
-	desc = "A Colonial Marshals issued, powerful semi-automatic pistol chambered in armor piercing 9mm caliber rounds. Used for centuries by law enforcement and criminals alike, recently recreated with this new model."
+	desc = "A Colonial Marshals issued, powerful semi-automatic pistol chambered in high power .45 rounds. Used for centuries by law enforcement and criminals alike, recently recreated with this official new model after a sudden burst in popularity."
 	icon_state = "highpower"
 	item_state = "highpower"
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/highpower
 	force = 10
-
+	attachable_allowed = list(
+						//Barrel
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp_replica,
+						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/heavy_barrel,
+						/obj/item/attachable/compensator,
+						//Rail
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/scope,
+						/obj/item/attachable/scope/mini,
+						//Under
+						/obj/item/attachable/gyro,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/burstfire_assembly
+	)
 
 /obj/item/weapon/gun/pistol/highpower/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 20,"rail_x" = 8, "rail_y" = 22, "under_x" = 16, "under_y" = 15, "stock_x" = 16, "stock_y" = 15)
 
-
 /obj/item/weapon/gun/pistol/highpower/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_5
-	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_6
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	recoil = RECOIL_AMOUNT_TIER_5
-	recoil_unwielded = RECOIL_AMOUNT_TIER_3
-
-
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 //-------------------------------------------------------
 //mod88 based off VP70 - Counterpart to M1911, offers burst and capacity ine exchange of low accuracy and damage.
@@ -636,7 +652,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 	fire_sound = 'sound/weapons/gun_skorpion.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/skorpion
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
 	attachable_allowed = list(
 						//Rail
 						/obj/item/attachable/reddot,
@@ -657,18 +673,13 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	burst_delay = FIRE_DELAY_TIER_10
-	burst_amount = BURST_AMOUNT_TIER_3
-
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1
-	scatter = SCATTER_AMOUNT_TIER_6
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
-	damage_mult = BASE_BULLET_DAMAGE_MULT
-
 	fa_delay = FIRE_DELAY_TIER_9
 	fa_scatter_peak = 15 //shots
-	fa_max_scatter = SCATTER_AMOUNT_TIER_6
+	fa_max_scatter = SCATTER_AMOUNT_TIER_4
+
+	accuracy_mult = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/pistol/skorpion/upp
 	desc = "A robust, 20th century firearm modernized for the 23rd century. Fires .32ACP caliber rounds from a 20-round magazine."
@@ -690,3 +701,10 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	random_spawn_under = list(
 							/obj/item/attachable/lasersight,
 							)
+
+/obj/item/weapon/gun/pistol/skorpion/set_gun_config_values()
+	..()
+	fa_max_scatter = SCATTER_AMOUNT_TIER_5
+
+	scatter = SCATTER_AMOUNT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2

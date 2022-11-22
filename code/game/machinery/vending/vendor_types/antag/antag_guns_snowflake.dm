@@ -197,11 +197,11 @@
 
 /obj/effect/essentials_set/kit/svd
 	spawned_gear_list = list(
-		/obj/item/weapon/gun/rifle/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd
+		/obj/item/weapon/gun/rifle/svd,
+		/obj/item/ammo_magazine/rifle/svd,
+		/obj/item/ammo_magazine/rifle/svd,
+		/obj/item/ammo_magazine/rifle/svd,
+		/obj/item/ammo_magazine/rifle/svd
 	)
 
 /obj/effect/essentials_set/kit/custom_shotgun

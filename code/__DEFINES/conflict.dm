@@ -12,9 +12,9 @@
 #define HEADSHOT_OVERLAY_HEAVY "heavy_headshot"
 
 #define AMMO_EXPLOSIVE 			(1<<0)
-#define AMMO_XENO_ACID 			(1<<1)
-#define AMMO_XENO_TOX			(1<<2)
-#define AMMO_XENO_BONE			(1<<3) // Needed for some boneshards based abilities
+#define AMMO_ACIDIC 			(1<<1)
+#define AMMO_XENO	 			(1<<2)
+#define AMMO_LASER 				(1<<3)
 #define AMMO_ENERGY 			(1<<4)
 #define AMMO_ROCKET				(1<<5)
 #define AMMO_SNIPER				(1<<6)
@@ -91,6 +91,7 @@
 #define SLOWDOWN_ARMOR_VERY_HEAVY	1.15
 
 #define SLOWDOWN_ADS_NONE				0
+#define SLOWDOWN_ADS_QUICK_MINUS		0.15 // this is so stupid.
 #define SLOWDOWN_ADS_QUICK				0.35
 #define SLOWDOWN_ADS_VERSATILE			0.50
 #define SLOWDOWN_ADS_SHOTGUN			0.75

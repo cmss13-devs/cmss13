@@ -332,58 +332,6 @@
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.apply_effect(5, WEAKEN)
 
-//SVD //Based on the actual Dragunov sniper rifle.
-
-/obj/item/weapon/gun/rifle/sniper/svd
-	name = "\improper SVD Dragunov-033 sniper rifle"
-	desc = "A sniper variant of the MAR-40 rifle, with a new stock, barrel, and scope. It doesn't have the punch of modern sniper rifles, but it's finely crafted in 2133 by someone probably illiterate. Fires 7.62x54mmR rounds."
-	icon_state = "svd003"
-	item_state = "svd003" //NEEDS A ONE HANDED STATE
-
-	fire_sound = 'sound/weapons/gun_kt42.ogg'
-	current_mag = /obj/item/ammo_magazine/sniper/svd
-	attachable_allowed = list(
-						/obj/item/attachable/verticalgrip,
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/bipod,
-						/obj/item/attachable/scope/variable_zoom/slavic)
-
-	has_aimed_shot = FALSE
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
-
-
-/obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/scope/S = new /obj/item/attachable/scope/variable_zoom/slavic(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.ignore_clash_fog = TRUE
-	S.Attach(src)
-	update_attachable(S.slot)
-	S = new /obj/item/attachable/slavicbarrel(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
-	S = new /obj/item/attachable/stock/slavic(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
-
-
-/obj/item/weapon/gun/rifle/sniper/svd/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
-
-
-/obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_5*2
-	burst_amount = BURST_AMOUNT_TIER_2
-	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
-	scatter = SCATTER_AMOUNT_TIER_8
-	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_5
-
-
-
 //M4RA marksman rifle
 
 /obj/item/weapon/gun/rifle/m4ra

@@ -69,13 +69,12 @@ var/list/datum/mob_hud/huds = list(
 // makes the client able to 'see' them whenever they're offscreen
 // somewhat confusingly
 /datum/mob_hud/proc/add_to_single_hud(mob/user, mob/target)
-	if(!user.client)
-		return
-	for(var/i in hud_icons)
-		if(i in target.hud_list)
-			user.client.images |= target.hud_list[i]
-			if(target.clone)
-				user.client.images |= target.clone.hud_list[i]
+	if(user?.client)
+		for(var/i in hud_icons)
+			if(i in target.hud_list)
+				user.client.images |= target.hud_list[i]
+				if(target.clone)
+					user.client.images |= target.clone.hud_list[i]
 
 
 

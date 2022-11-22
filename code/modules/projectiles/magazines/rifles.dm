@@ -150,6 +150,18 @@
 	max_rounds = 100
 	gun_type = /obj/item/weapon/gun/rifle/mar40/lmg
 
+//SVD //Based on the actual Dragunov sniper rifle.
+//IT'S NOT A SNIPER RIFLE!
+
+/obj/item/ammo_magazine/rifle/svd
+	name = "\improper SVD magazine (7.62x54mmR)"
+	desc = "A large caliber magazine for the SVD sniper rifle."
+	caliber = "7.62x54mmR"
+	icon_state = "svd"
+	default_ammo = /datum/ammo/bullet/rifle/svd
+	max_rounds = 10
+	gun_type = /obj/item/weapon/gun/rifle/svd
+
 //-------------------------------------------------------
 //M16 RIFLE
 
@@ -326,10 +338,17 @@
 	desc = "A magazine for the Basira-Armstrong rifle. Compliant with the 10-cartridge limit on civilian semi-automatic rifles."
 	caliber = "6.5mm"
 	icon_state = "hunting"
-	default_ammo = /datum/ammo/bullet/rifle
+	default_ammo = /datum/ammo/bullet/rifle/hunting
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/rifle/hunting
 	w_class = SIZE_SMALL
+
+/obj/item/ammo_magazine/rifle/hunting/holo_target
+	name = "\improper Basira-Armstrong holotargeting magazine (6.5mm)"
+	desc = "A special magazine for the Basira-Armstrong rifle, used to highlight hunting targets for easier target capture."
+	icon_state = "hunting_ht"
+	default_ammo = /datum/ammo/bullet/rifle/hunting/holo_target
+	max_rounds = 10
 
 //--------------------------------------------------------
 //Bolt action rifle ammo

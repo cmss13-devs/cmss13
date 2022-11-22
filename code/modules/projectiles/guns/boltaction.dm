@@ -105,7 +105,7 @@
 		playsound(user, reload_sound, 25, 1, 5)
 
 /obj/item/weapon/gun/boltaction/colony
-	name = "Model 12 Bolt-Action Rifle"
+	name = "Model 12 bolt-action rifle"
 	desc = "Produced by Weyland-Yutani Colonial Supplies, the Model 12 is a bolt-action hunting rifle suited for dispatching xenofauna of medium to large size. Designed in the early 2120s for securing the frontiers of more exotic colony planets, the Model 12 has served all manner of colonists well since then. Chambered in 8mm W-Y."
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction/colony

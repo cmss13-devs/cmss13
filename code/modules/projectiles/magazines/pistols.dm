@@ -149,7 +149,7 @@
 /obj/item/ammo_magazine/pistol/heavy
 	name = "\improper Desert Eagle magazine (.50)"
 
-	default_ammo = /datum/ammo/bullet/pistol/heavy
+	default_ammo = /datum/ammo/bullet/pistol/deagle
 	caliber = ".50"
 	icon_state = "deagle"
 	max_rounds = 7
@@ -194,9 +194,8 @@
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".44"
 	icon_state = "kt42"
-	max_rounds = 7
+	max_rounds = 16
 	gun_type = /obj/item/weapon/gun/pistol/kt42
-
 
 //-------------------------------------------------------
 //PIZZACHIMP PROTECTION
@@ -228,9 +227,9 @@
 //.45 MARSHALS PISTOL //Inspired by the Browning Hipower
 
 /obj/item/ammo_magazine/pistol/highpower
-	name = "\improper Highpower magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/ap
-	caliber = "9mm"
+	name = "\improper Highpower magazine (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/highpower
+	caliber = ".45"
 	icon_state = "m4a3" //PLACEHOLDER
 	max_rounds = 13
 	gun_type = /obj/item/weapon/gun/pistol/highpower

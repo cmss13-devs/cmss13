@@ -31,6 +31,9 @@
 	caste_type = XENO_CASTE_PREDALIEN
 	name = "Abomination" //snowflake name
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
+	icon = 'icons/mob/xenos/predalien.dmi'
+	icon_xeno = 'icons/mob/xenos/predalien.dmi'
+	icon_xenonid = 'icons/mob/xenos/predalien.dmi'
 	icon_state = "Predalien Walking"
 	speaking_noise = 'sound/voice/predalien_click.ogg'
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -42,6 +45,7 @@
 	mob_size = MOB_SIZE_BIG
 	tier = 1
 	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
+	show_age_prefix = FALSE
 	small_explosives_stun = FALSE
 
 	base_actions = list(
@@ -61,9 +65,6 @@
 
 /mob/living/carbon/Xenomorph/Predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_predalien))
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_predalien))
-	icon_xenonid = get_icon_from_source(CONFIG_GET(string/alien_predalien))
 	addtimer(CALLBACK(src, .proc/announce_spawn), 3 SECONDS)
 	hunter_data.dishonored = TRUE
 	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"

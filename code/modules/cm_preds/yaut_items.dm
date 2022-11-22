@@ -166,8 +166,8 @@
 	..()
 
 /obj/item/clothing/yautja_cape/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
+	. = ..()
+	remove_from_missing_pred_gear(src) // after due to item handling calling dropped()
 
 /obj/item/clothing/yautja_cape/ceremonial
 	name = PRED_YAUTJA_CEREMONIAL_CAPE

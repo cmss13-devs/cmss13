@@ -42,7 +42,7 @@
 	internal_camera = new(loc)
 
 /obj/structure/mortar/Destroy()
-	qdel(internal_camera)
+	QDEL_NULL(internal_camera)
 	return ..()
 
 /obj/structure/mortar/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -375,7 +375,7 @@
 /obj/item/mortar_kit/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 
 /obj/item/mortar_kit/attack_self(mob/user)
 	..()

@@ -24,7 +24,7 @@
 		return
 
 	X.emote("roar")
-	L.KnockDown(2)
+	L.apply_effect(2, WEAKEN)
 	X.visible_message(SPAN_XENODANGER("[X] overruns [H], brutally trampling them underfoot!"), SPAN_XENODANGER("You brutalize [H] as you crush them underfoot!"))
 
 	H.apply_armoured_damage(get_xeno_damage_slash(H, direct_hit_damage), ARMOR_MELEE, BRUTE)
@@ -89,7 +89,7 @@
 		to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
 
 		if(H.mob_size < MOB_SIZE_BIG)
-			H.KnockDown(get_xeno_stun_duration(H, 0.2))
+			H.apply_effect(get_xeno_stun_duration(H, 0.2), WEAKEN)
 
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		H.last_damage_data = create_cause_data(X.caste_type, X)
@@ -100,7 +100,7 @@
 
 		new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))
 		if(H.mob_size < MOB_SIZE_BIG)
-			H.KnockDown(get_xeno_stun_duration(H, 0.2))
+			H.apply_effect(get_xeno_stun_duration(H, 0.2), WEAKEN)
 		to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
 
 	apply_cooldown()
@@ -132,9 +132,9 @@
 
 		new effect_type_base(Human, Xeno, , , get_xeno_stun_duration(Human, effect_duration))
 		to_chat(Human, SPAN_XENOHIGHDANGER("You are BRUTALLY crushed and stomped on by [Xeno]!!!"))
-
+		shake_camera(Human, 10, 2)
 		if(Human.mob_size < MOB_SIZE_BIG)
-			Human.KnockDown(get_xeno_stun_duration(Human, 0.2))
+			Human.apply_effect(get_xeno_stun_duration(Human, 0.2), WEAKEN)
 
 		Human.apply_armoured_damage(get_xeno_damage_slash(Human, damage), ARMOR_MELEE, BRUTE,"chest", 3)
 		Human.apply_armoured_damage(15, BRUTE) // random
@@ -145,7 +145,7 @@
 		if (Human.stat == DEAD || Xeno.can_not_harm(Human))
 			continue
 		if(Human.client)
-			shake_camera(Human, 2, 2)
+			shake_camera(Human, 10, 2)
 		if(Targeted)
 			to_chat(Human, SPAN_XENOHIGHDANGER("You watch as [Targeted] gets crushed by [Xeno]!"))
 		to_chat(Human, SPAN_XENOHIGHDANGER("You are shaken as [Xeno] quakes the earth!"))

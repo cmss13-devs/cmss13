@@ -7,7 +7,7 @@
 	name = "alien thing"
 	desc = "You shouldn't be seeing this."
 	unacidable = TRUE
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	layer = FLY_LAYER
 
 /obj/effect/xenomorph/splatter
@@ -83,8 +83,8 @@
 			else
 				switch(FF.fire_variant)
 					if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, extinguishes faster.
-						if(FF.firelevel > 2*fire_level_to_extinguish)
-							FF.firelevel -= 2*fire_level_to_extinguish
+						if(FF.firelevel > 3*fire_level_to_extinguish)
+							FF.firelevel -= 3*fire_level_to_extinguish
 							FF.update_flame()
 						else qdel(atm)
 					else
@@ -165,14 +165,14 @@
 		if(ishuman(H))
 			H.emote("pain")
 			if(should_stun)
-				H.KnockDown(stun_duration)
+				H.apply_effect(stun_duration, WEAKEN)
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
 		else if (isXeno(H))
 			var/mob/living/carbon/Xenomorph/X = H
 			if (X.mob_size < MOB_SIZE_BIG && should_stun)
-				X.KnockDown(stun_duration)
+				X.apply_effect(stun_duration, WEAKEN)
 			X.emote("hiss")
 			H.apply_armoured_damage(damage_amount * 0.4 * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
 
@@ -227,7 +227,7 @@
 		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 		H.emote("pain")
 		if (should_stun && !H.lying)
-			H.KnockDown(stun_duration)
+			H.apply_effect(stun_duration, WEAKEN)
 		H.last_damage_data = cause_data
 		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
 		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
@@ -345,7 +345,7 @@
 			G.dismantle()
 		else if(istype(acid_t, /obj/structure/window/framed))
 			var/obj/structure/window/framed/WF = acid_t
-			WF.drop_window_frame()
+			WF.deconstruct(disassembled = FALSE)
 		else if(istype(acid_t,/obj/item/explosive/plastic))
 			qdel(acid_t)
 

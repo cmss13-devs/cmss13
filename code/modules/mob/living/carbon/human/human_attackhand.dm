@@ -208,6 +208,7 @@
 	if (w_uniform)
 		w_uniform.add_fingerprint(M)
 
+
 	if(lying || sleeping)
 		if(client)
 			sleeping = max(0,src.sleeping-5)
@@ -216,6 +217,9 @@
 			update_canmove()
 		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
 			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+	else if(stunned)
+		M.visible_message(SPAN_NOTICE("[M] shakes [src], trying to shake [t_him] out of his stupor!"), \
+			SPAN_NOTICE("You shake [src], trying to shake [t_him] out of his stupor!"), null, 4)
 	else
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
@@ -226,9 +230,9 @@
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
-	AdjustKnockedout(-3)
-	AdjustStunned(-3)
-	AdjustKnockeddown(-3)
+	adjust_effect(-3, PARALYZE)
+	adjust_effect(-3, STUN)
+	adjust_effect(-3, WEAKEN)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 

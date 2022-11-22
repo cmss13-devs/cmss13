@@ -8,12 +8,10 @@ export const FiltrationControl = (_props, context) => {
   const FiltOn = data.filt_on;
 
   return (
-    <Window
-      width={350}
-      height={150}>
+    <Window width={350} height={150}>
       <Window.Content scrollable>
         <Section>
-          {!FiltOn && (
+          {(!FiltOn && (
             <Button.Confirm
               textAlign="center"
               fluid={1}
@@ -21,11 +19,13 @@ export const FiltrationControl = (_props, context) => {
               content="Start Filtration"
               fontSize="20px"
               color="good"
-              onClick={() => act('activate_filt')} />
-          ) || (
+              onClick={() => act('activate_filt')}
+            />
+          )) || (
             <NoticeBox textAlign="center" success={1} fontSize="20px">
               Filtration is online
-            </NoticeBox>)}
+            </NoticeBox>
+          )}
         </Section>
       </Window.Content>
     </Window>

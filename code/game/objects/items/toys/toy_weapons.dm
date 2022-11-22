@@ -151,7 +151,7 @@
 
 			return
 		else if (bullets == 0)
-			user.KnockDown(5)
+			user.apply_effect(5, WEAKEN)
 			for(var/mob/O in viewers(world_view_size, user))
 				O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), 1)
 
@@ -175,7 +175,7 @@
 			for(var/mob/O in viewers(M, null))
 				if (O.client)
 					O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), 1, SPAN_DANGER("You hear someone fall"), 2)
-			user.KnockDown(5)
+			user.apply_effect(5, WEAKEN)
 		return
 
 /obj/item/toy/crossbow_ammo

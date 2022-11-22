@@ -3,6 +3,7 @@
 /obj/item/alien_embryo
 	name = "alien embryo"
 	desc = "All slimy and yucky."
+	icon = 'icons/mob/xenos/larva.dmi'
 	icon_state = "Larva Dead"
 	var/mob/living/affected_mob
 	var/stage = 0
@@ -14,7 +15,6 @@
 
 /obj/item/alien_embryo/Initialize(mapload, ...)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_embryo))
 	if(istype(loc, /mob/living))
 		affected_mob = loc
 		affected_mob.status_flags |= XENO_HOST
@@ -113,7 +113,7 @@
 				if(affected_mob.knocked_out < 1)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
 												 SPAN_DANGER("You start shaking uncontrollably!"))
-					affected_mob.KnockOut(10)
+					affected_mob.apply_effect(10, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
 			if(prob(2))
@@ -192,7 +192,7 @@
 	victim.chestburst = TRUE
 	to_chat(src, SPAN_DANGER("You start bursting out of [victim]'s chest!"))
 	if(victim.knocked_out < 1)
-		victim.KnockOut(20)
+		victim.apply_effect(20, PARALYZE)
 	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \
 								 SPAN_DANGER("You feel something ripping up your insides!"))
 	victim.make_jittery(300)

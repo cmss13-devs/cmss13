@@ -4,8 +4,8 @@ import { Component, createRef } from 'inferno';
 import { Box } from './Box';
 import { KEY_ESCAPE, KEY_ENTER } from 'common/keycodes';
 
-const DEFAULT_MIN = -16777216;
-const DEFAULT_MAX = 16777216;
+const DEFAULT_MIN = 0;
+const DEFAULT_MAX = 10000;
 
 /**
  * Takes a string input and parses integers from it.
@@ -15,13 +15,12 @@ const DEFAULT_MAX = 16777216;
 const getClampedNumber = (value, minValue, maxValue) => {
   const minimum = minValue || DEFAULT_MIN;
   const maximum = maxValue || maxValue === 0 ? maxValue : DEFAULT_MAX;
-  const defaultValue = maximum < 0 ? minimum : (minimum > 0 ? minimum : 0);
   if (!value || !value.length) {
-    return String(defaultValue);
+    return String(minimum);
   }
-  let parsedValue = parseFloat(value.replace(/[^\-.\d]/g, ''), 10);
+  let parsedValue = parseInt(value.replace(/[^\-\d]/g, ''), 10);
   if (isNaN(parsedValue)) {
-    return String(defaultValue);
+    return String(minimum);
   } else {
     return String(clamp(parsedValue, minimum, maximum));
   }

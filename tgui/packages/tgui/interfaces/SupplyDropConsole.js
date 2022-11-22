@@ -1,35 +1,34 @@
 import { useBackend } from '../backend';
-import { Button, Section, LabeledList, ProgressBar, Divider, NumberInput, Dimmer, Icon, NoticeBox, Box, Tabs } from '../components';
+import {
+  Button,
+  Section,
+  LabeledList,
+  ProgressBar,
+  Divider,
+  NumberInput,
+  NoticeBox,
+  Box,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
 
 export const SupplyDropConsole = (_props, context) => {
   const { act, data } = useBackend(context);
 
-  const active = data.active;
-
   const can_pick_squad = data.can_pick_squad;
 
-  const timeLeft = (data.nextfiretime - data.worldtime);
+  const timeLeft = data.nextfiretime - data.worldtime;
   const timeLeftPct = timeLeft / data.launch_cooldown;
 
-  const cantFire = (
-    timeLeft < 0,
-    data.loaded === null);
+  const cantFire = (timeLeft < 0, data.loaded === null);
 
   const squads = data.squad_list;
 
-
   return (
-    <Window
-      width={350}
-      height={350}>
+    <Window width={350} height={350}>
       <Window.Content scrollable>
         {!!can_pick_squad && (
-          <NoticeBox
-            info={1}
-            fluid={1}
-            textAlign="center"
-          >
+          <NoticeBox info={1} fluid={1} textAlign="center">
             {data.current_squad
               ? `Current squad is :
                 ${data.current_squad}`
@@ -38,15 +37,14 @@ export const SupplyDropConsole = (_props, context) => {
         )}
         {!!can_pick_squad && (
           <Tabs horizontal textAlign="center" fluid>
-            { squads.map(val => {
+            {squads.map((val) => {
               return (
                 <Tabs.Tab
-                  onClick={() => { act("pick_squad", { squad_name: val.squad_name }); }}
-                  key={val.squad_name}
-                >
-                  <Box color={val.squad_color}>
-                    {val.squad_name}
-                  </Box>
+                  onClick={() => {
+                    act('pick_squad', { squad_name: val.squad_name });
+                  }}
+                  key={val.squad_name}>
+                  <Box color={val.squad_color}>{val.squad_name}</Box>
                 </Tabs.Tab>
               );
             })}
@@ -85,17 +83,17 @@ export const SupplyDropConsole = (_props, context) => {
                 onClick={() => act('refresh_pad')}
               />
             }>
-            <NoticeBox info={1} textAlign="center" >
+            <NoticeBox info={1} textAlign="center">
               {data.loaded
                 ? `Supply Pad Status :
                   ${data.crate_name} loaded.`
                 : 'No crate loaded.'}
             </NoticeBox>
-            {timeLeft < 0 && (
-              <NoticeBox success={1} textAlign="center" >
+            {(timeLeft < 0 && (
+              <NoticeBox success={1} textAlign="center">
                 Ready to fire!
               </NoticeBox>
-            ) || (
+            )) || (
               <ProgressBar
                 width="100%"
                 value={timeLeftPct}
@@ -119,12 +117,6 @@ export const SupplyDropConsole = (_props, context) => {
               content="Launch Supply Drop"
               onClick={() => act('send_beacon')}
             />
-            {active === 1 && (
-              <Dimmer fontSize="32px">
-                <Icon name="cog" spin />
-                {'Launching...'}
-              </Dimmer>
-            )}
           </Section>
         </Section>
       </Window.Content>

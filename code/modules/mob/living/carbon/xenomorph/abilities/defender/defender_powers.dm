@@ -139,7 +139,7 @@
 		shake_camera(H, 2, 1)
 
 		if(H.mob_size < MOB_SIZE_BIG)
-			H.KnockDown(get_xeno_stun_duration(H, 1), 1)
+			H.apply_effect(get_xeno_stun_duration(H, 1), WEAKEN)
 
 		to_chat(H, SPAN_XENOWARNING("You are struck by [src]'s tail sweep!"))
 		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)

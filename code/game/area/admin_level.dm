@@ -1,6 +1,9 @@
 // Bunker01
 // Areas
 
+/area/adminlevel
+	ceiling = CEILING_METAL
+
 /area/adminlevel/bunker01
 	icon_state = "thunder"
 	requires_power = FALSE

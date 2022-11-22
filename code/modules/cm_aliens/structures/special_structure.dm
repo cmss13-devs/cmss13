@@ -23,7 +23,7 @@
 
 /obj/effect/alien/resin/special
 	name = "Special Resin Structure"
-	icon = 'icons/mob/hostiles/structures64x64.dmi'
+	icon = 'icons/mob/xenos/structures64x64.dmi'
 	pixel_x = -16
 	pixel_y = -16
 	health = 200
@@ -35,6 +35,8 @@
 	block_range = 1
 
 	var/datum/hive_status/linked_hive
+
+	plane = FLOOR_PLANE
 
 /obj/effect/alien/resin/special/Initialize(mapload, var/hive_ref)
 	. = ..()

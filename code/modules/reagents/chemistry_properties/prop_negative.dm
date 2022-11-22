@@ -73,9 +73,9 @@
 	if(!iscarbon(M))
 		return
 	var/mob/living/carbon/C = M
-	if(!C.wear_mask) // If not wearing a mask
+	if(C.wear_mask) // Wearing a mask
 		return
-	C.apply_damage(potency, TOX) // applies potency toxin damage
+	C.apply_damage(potency, TOX)  // applies potency toxin damage
 
 /datum/chem_property/negative/corrosive
 	name = PROPERTY_CORROSIVE
@@ -432,7 +432,7 @@
 		var/mob/living/carbon/human/H = M
 		H.apply_damage(potency, BRAIN)
 	to_chat(M, SPAN_WARNING("You start to go numb."))
-	M.Daze(potency * volume * POTENCY_MULTIPLIER_LOW)
+	M.apply_effect(potency * volume * POTENCY_MULTIPLIER_LOW, DAZE)
 
 /datum/chem_property/negative/hypermetabolic
 	name = PROPERTY_HYPERMETABOLIC

@@ -51,7 +51,7 @@
 	flags_equip_slot = SLOT_FACE
 
 /obj/item/clothing/mask/gas/PMC/marsoc
-	name = "\improper MARSOC armored balaclava"
+	name = "\improper SOF armored balaclava"
 	desc = "Designed for maximum protection -- and badassery. Provides protection against facial attacks, filters toxins, and conceals the wearer's identity."
 	icon_state = "balaclava"
 

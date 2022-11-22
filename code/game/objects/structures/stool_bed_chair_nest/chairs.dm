@@ -108,9 +108,6 @@
 		if(!PC.linked_powerloader)
 			qdel(PC)
 			return TRUE
-		if(PC.loaded)
-			to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
-			return TRUE
 		if(!stacked_size)
 			to_chat(user, SPAN_WARNING("\The [PC] can only grab stacks of chairs."))
 			return TRUE
@@ -119,8 +116,7 @@
 			stack_collapse()
 			return TRUE
 
-		to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
-		PC.grab_object(src, "chairs", 'sound/machines/hydraulics_2.ogg')
+		PC.grab_object(user, src, "chairs", 'sound/machines/hydraulics_2.ogg')
 		update_icon()
 		return TRUE
 
@@ -131,8 +127,8 @@
 	if(istype(AM, /mob/living) && stacked_size)
 		var/mob/living/M = AM
 		stack_collapse()
-		M.Stun(2)
-		M.KnockDown(2)
+		M.apply_effect(2, STUN)
+		M.apply_effect(2, WEAKEN)
 	else if(stacked_size > 8 && prob(50))
 		stack_collapse()
 

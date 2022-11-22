@@ -35,3 +35,29 @@
 			list("Gas Mask", 15, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 			list("Heat Absorbent Coif", 15, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR)
 			)
+
+/obj/structure/machinery/cm_vending/sorted/supplies/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
+	if(stat & IN_USE)
+		return
+
+	stat |= IN_USE
+	if(LAZYLEN(L))
+		if(vend_delay)
+			overlays += image(icon, icon_state + "_vend")
+			if(vend_sound)
+				playsound(loc, vend_sound, 25, 1, 2)
+			sleep(vend_delay)
+		var/prod_path = L[3]
+		var/obj/item/IT
+		IT = new prod_path(T)
+
+		IT.add_fingerprint(usr)
+
+		L[2]--
+	else
+		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
+		overlays += image(icon, icon_state + "_deny")
+		sleep(15)
+	update_icon()
+	stat &= ~IN_USE
+	return

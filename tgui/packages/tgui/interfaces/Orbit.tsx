@@ -7,13 +7,10 @@ import { Window } from '../layouts';
 const PATTERN_NUMBER = / \(([0-9]+)\)$/;
 
 const searchFor = (searchText: string) => {
-  return createSearch(searchText, (thing: { name: string}) => thing.name);
+  return createSearch(searchText, (thing: { name: string }) => thing.name);
 };
 
-const compareNumberedText = (
-  a: { name: string },
-  b: { name: string },
-) => {
+const compareNumberedText = (a: { name: string }, b: { name: string }) => {
   const aName = a.name;
   const bName = b.name;
 
@@ -22,9 +19,10 @@ const compareNumberedText = (
   const aNumberMatch = aName.match(PATTERN_NUMBER);
   const bNumberMatch = bName.match(PATTERN_NUMBER);
 
-  if (aNumberMatch
-    && bNumberMatch
-    && aName.replace(PATTERN_NUMBER, "") === bName.replace(PATTERN_NUMBER, "")
+  if (
+    aNumberMatch &&
+    bNumberMatch &&
+    aName.replace(PATTERN_NUMBER, '') === bName.replace(PATTERN_NUMBER, '')
   ) {
     const aNumber = parseInt(aNumberMatch[1], 10);
     const bNumber = parseInt(bNumberMatch[1], 10);
@@ -36,36 +34,36 @@ const compareNumberedText = (
 };
 
 type OrbitList = {
-  name: string,
-  ref: string,
-  orbiters: number,
-}
+  name: string;
+  ref: string;
+  orbiters: number;
+};
 
 type OrbitData = {
-  humans: OrbitList[],
-  marines: OrbitList[],
-  survivors: OrbitList[],
-  xenos: OrbitList[],
-  ert_members: OrbitList[],
-  synthetics: OrbitList[],
-  predators: OrbitList[],
-  dead: OrbitList[],
-  ghosts: OrbitList[],
-  misc: OrbitList[],
-  npcs: OrbitList[],
-  vehicles: OrbitList[],
-}
+  humans: OrbitList[];
+  marines: OrbitList[];
+  survivors: OrbitList[];
+  xenos: OrbitList[];
+  ert_members: OrbitList[];
+  synthetics: OrbitList[];
+  predators: OrbitList[];
+  dead: OrbitList[];
+  ghosts: OrbitList[];
+  misc: OrbitList[];
+  npcs: OrbitList[];
+  vehicles: OrbitList[];
+};
 
 type BasicSectionProps = {
-  searchText: string,
-  source: OrbitList[],
-  title: string,
-}
+  searchText: string;
+  source: OrbitList[];
+  title: string;
+};
 
 type OrbitedButtonProps = {
-  color: string,
-  thing: OrbitList,
-}
+  color: string;
+  thing: OrbitList;
+};
 
 const BasicSection = (props: BasicSectionProps, context: any) => {
   const { act } = useBackend(context);
@@ -81,9 +79,12 @@ const BasicSection = (props: BasicSectionProps, context: any) => {
         <Button
           key={thing.name}
           content={thing.name}
-          onClick={() => act("orbit", {
-            ref: thing.ref,
-          })} />
+          onClick={() =>
+            act('orbit', {
+              ref: thing.ref,
+            })
+          }
+        />
       ))}
     </Section>
   );
@@ -96,19 +97,18 @@ const OrbitedButton = (props: OrbitedButtonProps, context: any) => {
   return (
     <Button
       color={color}
-      onClick={() => act("orbit", {
-        ref: thing.ref,
-      })}>
+      onClick={() =>
+        act('orbit', {
+          ref: thing.ref,
+        })
+      }>
       {thing.name}
       {thing.orbiters && (
         <Box inline ml={1}>
-          {"("}{thing.orbiters}{" "}
-          <Box
-            as="img"
-            src={resolveAsset('ghost.png')}
-            opacity={0.7}
-          />
-          {")"}
+          {'('}
+          {thing.orbiters}{' '}
+          <Box as="img" src={resolveAsset('ghost.png')} opacity={0.7} />
+          {')'}
         </Box>
       )}
     </Button>
@@ -132,37 +132,27 @@ export const Orbit = (props: any, context: any) => {
     vehicles,
   } = data;
 
-  const [searchText, setSearchText] = useLocalState(context, "searchText", "");
+  const [searchText, setSearchText] = useLocalState(context, 'searchText', '');
 
   const orbitMostRelevant = (searchText: string) => {
-    for (const source of [
-      humans,
-      marines,
-      survivors,
-      xenos,
-    ]) {
+    for (const source of [humans, marines, survivors, xenos]) {
       const member = source
         .filter(searchFor(searchText))
         .sort(compareNumberedText)[0];
       if (member !== undefined) {
-        act("orbit", { ref: member.ref });
+        act('orbit', { ref: member.ref });
         break;
       }
     }
   };
 
   return (
-    <Window
-      title="Orbit"
-      width={500}
-      height={700}>
+    <Window title="Orbit" width={500} height={700}>
       <Window.Content scrollable>
         <Section>
           <Flex>
             <Flex.Item>
-              <Icon
-                name="search"
-                mr={1} />
+              <Icon name="search" mr={1} />
             </Flex.Item>
             <Flex.Item grow={1}>
               <Input
@@ -171,7 +161,8 @@ export const Orbit = (props: any, context: any) => {
                 fluid
                 value={searchText}
                 onInput={(_: any, value: string) => setSearchText(value)}
-                onEnter={(_: any, value: string) => orbitMostRelevant(value)} />
+                onEnter={(_: any, value: string) => orbitMostRelevant(value)}
+              />
             </Flex.Item>
             <Flex.Item>
               <Button
@@ -191,11 +182,8 @@ export const Orbit = (props: any, context: any) => {
             {marines
               .filter(searchFor(searchText))
               .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="good"
-                  thing={thing} />
+              .map((thing) => (
+                <OrbitedButton key={thing.name} color="good" thing={thing} />
               ))}
           </Section>
         )}
@@ -205,11 +193,8 @@ export const Orbit = (props: any, context: any) => {
             {xenos
               .filter(searchFor(searchText))
               .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="good"
-                  thing={thing} />
+              .map((thing) => (
+                <OrbitedButton key={thing.name} color="good" thing={thing} />
               ))}
           </Section>
         )}
@@ -219,11 +204,8 @@ export const Orbit = (props: any, context: any) => {
             {survivors
               .filter(searchFor(searchText))
               .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="good"
-                  thing={thing} />
+              .map((thing) => (
+                <OrbitedButton key={thing.name} color="good" thing={thing} />
               ))}
           </Section>
         )}
@@ -233,11 +215,8 @@ export const Orbit = (props: any, context: any) => {
             {ert_members
               .filter(searchFor(searchText))
               .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="good"
-                  thing={thing} />
+              .map((thing) => (
+                <OrbitedButton key={thing.name} color="good" thing={thing} />
               ))}
           </Section>
         )}
@@ -247,11 +226,8 @@ export const Orbit = (props: any, context: any) => {
             {synthetics
               .filter(searchFor(searchText))
               .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="good"
-                  thing={thing} />
+              .map((thing) => (
+                <OrbitedButton key={thing.name} color="good" thing={thing} />
               ))}
           </Section>
         )}
@@ -261,11 +237,8 @@ export const Orbit = (props: any, context: any) => {
             {predators
               .filter(searchFor(searchText))
               .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="good"
-                  thing={thing} />
+              .map((thing) => (
+                <OrbitedButton key={thing.name} color="good" thing={thing} />
               ))}
           </Section>
         )}
@@ -275,11 +248,8 @@ export const Orbit = (props: any, context: any) => {
             {humans
               .filter(searchFor(searchText))
               .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="good"
-                  thing={thing} />
+              .map((thing) => (
+                <OrbitedButton key={thing.name} color="good" thing={thing} />
               ))}
           </Section>
         )}
@@ -289,11 +259,8 @@ export const Orbit = (props: any, context: any) => {
             {vehicles
               .filter(searchFor(searchText))
               .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="blue"
-                  thing={thing} />
+              .map((thing) => (
+                <OrbitedButton key={thing.name} color="blue" thing={thing} />
               ))}
           </Section>
         )}
@@ -303,39 +270,23 @@ export const Orbit = (props: any, context: any) => {
             {ghosts
               .filter(searchFor(searchText))
               .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="grey"
-                  thing={thing} />
+              .map((thing) => (
+                <OrbitedButton key={thing.name} color="grey" thing={thing} />
               ))}
           </Section>
         )}
 
         {!!npcs.length && (
-          <BasicSection
-            title="NPCs"
-            source={npcs}
-            searchText={searchText}
-          />
+          <BasicSection title="NPCs" source={npcs} searchText={searchText} />
         )}
 
         {!!dead.length && (
-          <BasicSection
-            title="Dead"
-            source={dead}
-            searchText={searchText}
-          />
+          <BasicSection title="Dead" source={dead} searchText={searchText} />
         )}
 
         {!!misc.length && (
-          <BasicSection
-            title="Misc"
-            source={misc}
-            searchText={searchText}
-          />
+          <BasicSection title="Misc" source={misc} searchText={searchText} />
         )}
-
       </Window.Content>
     </Window>
   );

@@ -388,7 +388,7 @@
 			if(istype(S, /obj/structure/window/framed) && smash_windows)
 				var/obj/structure/window/framed/W = S
 				if(!W.unslashable)
-					W.shatter_window(TRUE)
+					W.deconstruct(disassembled = FALSE)
 
 			if(S.opacity)
 				return FALSE

@@ -257,7 +257,7 @@
 /area/shiva/interior/caves/left_spiders)
 "aaQ" = (
 /obj/effect/spider/stickyweb,
-/obj/item/clothing/head/helmet/marine/marsoc,
+/obj/item/clothing/head/helmet/marine/sof,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "aaR" = (
@@ -765,7 +765,7 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/queen.dmi';
+	icon = 'icons/mob/xenos/queen.dmi';
 	icon_state = "Normal Queen Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -2958,7 +2958,7 @@
 /area/shiva/interior/colony/n_admin)
 "anY" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -8121,7 +8121,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "bUX" = (
-/obj/item/storage/belt/gun/m44/custom,
+/obj/item/storage/belt/gun/m44,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "green"
@@ -10492,6 +10492,16 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/central)
+"eMh" = (
+/obj/structure/prop/ice_colony/flamingo{
+	dir = 9
+	},
+/obj/item/clothing/head/soft/ferret{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/cp_lz2)
 "eMx" = (
 /obj/structure/surface/rack,
 /obj/item/tool/lighter/zippo,
@@ -28116,6 +28126,16 @@
 	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
+"xCW" = (
+/obj/structure/prop/ice_colony/flamingo{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/flamingo/festive{
+	pixel_x = -9;
+	pixel_y = 18
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/cp_lz2)
 "xDq" = (
 /obj/structure/closet/radiation,
 /obj/effect/spawner/random/technology_scanner,
@@ -39634,7 +39654,7 @@ cgd
 qta
 ntc
 kOV
-eni
+eMh
 kOV
 toD
 pWf
@@ -39957,7 +39977,7 @@ ayc
 qta
 ntc
 kOV
-eni
+xCW
 kOV
 cRq
 pWf

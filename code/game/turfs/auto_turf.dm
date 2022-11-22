@@ -191,23 +191,23 @@
 	if(M.a_intent == INTENT_HARM) //Missed slash.
 		return
 	if(M.a_intent == INTENT_HELP || !bleed_layer)
-		return XENO_NO_DELAY_ACTION
+		return ..()
 
-	M.visible_message(SPAN_NOTICE("[M] starts clearing out the [name]."), SPAN_NOTICE("You start clearing out the [name]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	M.visible_message(SPAN_NOTICE("[M] starts clearing out \the [src]..."), SPAN_NOTICE("You start clearing out \the [src]..."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-	xeno_attack_delay(M)
-	if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		return XENO_NO_DELAY_ACTION
 
-	if(!bleed_layer)
-		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
-		return XENO_NO_DELAY_ACTION
+	while(bleed_layer > 0)
+		xeno_attack_delay(M)
+		if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			return XENO_NO_DELAY_ACTION
 
-	M.visible_message(SPAN_NOTICE("[M] clears out [src]."), \
-	SPAN_NOTICE("You clear out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+		if(!bleed_layer)
+			to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
+			return XENO_NO_DELAY_ACTION
 
-	var/new_layer = bleed_layer - 1
-	changing_layer(new_layer)
+		var/new_layer = bleed_layer - 1
+		changing_layer(new_layer)
+
 	return XENO_NO_DELAY_ACTION
 
 /turf/open/auto_turf/snow/Entered(atom/movable/AM)
@@ -308,3 +308,34 @@
 /turf/open/auto_turf/strata_grass/layer1
 	icon_state = "grass_1"
 	bleed_layer = 1
+
+//Chance's Claim / Hadley Shale dirt
+
+/turf/open/auto_turf/shale
+	layer_name = list("wind blown dirt", "volcanic plate rock", "volcanic plate and rock", "this layer does not exist")
+	icon = 'icons/turf/floors/auto_shale.dmi'
+	icon_prefix = "shale"
+
+/turf/open/auto_turf/shale/get_dirt_type()
+	return DIRT_TYPE_SHALE
+
+/turf/open/auto_turf/shale/layer0
+	icon_state = "shale_0"
+	bleed_layer = 0
+	color = "#6699CC"
+
+/turf/open/auto_turf/shale/layer0_puddle
+	icon_state = "shale_0_puddle"
+	bleed_layer = 0
+
+/turf/open/auto_turf/shale/layer0_plate //for inner plate shenanigans
+	icon_state = "shale_1_alt"
+	bleed_layer = 0
+
+/turf/open/auto_turf/shale/layer1
+	icon_state = "shale_1"
+	bleed_layer = 1
+
+/turf/open/auto_turf/shale/layer2
+	icon_state = "shale_2"
+	bleed_layer = 2

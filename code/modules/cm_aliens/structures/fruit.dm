@@ -56,7 +56,7 @@
 	timer_id = addtimer(CALLBACK(src, .proc/mature), time_to_mature * W.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
 	. = ..()
 	// Need to do it here because baseline initialize override the icon through config.
-	icon = 'icons/mob/hostiles/fruits.dmi'
+	icon = 'icons/mob/xenos/fruits.dmi'
 
 /obj/effect/alien/resin/fruit/proc/on_weed_expire()
 	SIGNAL_HANDLER
@@ -321,7 +321,7 @@
 /obj/item/reagent_container/food/snacks/resin_fruit
 	name = XENO_FRUIT_LESSER
 	desc = "A strange fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
-	icon = 'icons/mob/hostiles/fruits.dmi'
+	icon = 'icons/mob/xenos/fruits.dmi'
 	icon_state = "fruit_lesser_item"
 	w_class = SIZE_MEDIUM
 	storage_cost = SIZE_LARGE
@@ -434,6 +434,10 @@
 	qdel(F)
 
 /mob/living/carbon/Xenomorph/Larva/pickup_fruit(obj/effect/alien/resin/fruit/F)
+	to_chat(src, SPAN_XENODANGER("You are too small to pick up \the [F]!"))
+	return
+
+/mob/living/carbon/Xenomorph/Facehugger/pickup_fruit(obj/effect/alien/resin/fruit/F)
 	to_chat(src, SPAN_XENODANGER("You are too small to pick up \the [F]!"))
 	return
 

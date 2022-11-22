@@ -52,6 +52,9 @@
 	knock_down_reduction = 4
 	stun_reduction = 4
 
+	icobase = 'icons/mob/humans/species/r_predator.dmi'
+	deform = 'icons/mob/humans/species/r_predator.dmi'
+
 	acid_blood_dodge_chance = 70
 
 		//Set their special slot priority
@@ -85,17 +88,6 @@
 
 	ignores_stripdrag_flag = TRUE
 
-/datum/species/yautja/New()
-	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PREGAME_LOBBY, .proc/setup_yautja_icons)
-
-/datum/species/yautja/proc/setup_yautja_icons()
-	SIGNAL_HANDLER
-
-	icobase_source = CONFIG_GET(string/species_hunter)
-	deform_source = CONFIG_GET(string/species_hunter)
-	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PREGAME_LOBBY, .proc/setup_yautja_icons)
-
 /datum/species/yautja/larva_impregnated(var/obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = GLOB.hive_datum[embryo.hivenumber]
 
@@ -111,6 +103,8 @@
 
 	hive.hive_structure_types[XENO_STRUCTURE_NEST] = /datum/construction_template/xenomorph/nest
 	hive.hive_structures_limit[XENO_STRUCTURE_NEST]++
+
+	xeno_message(SPAN_XENOANNOUNCE("The hive senses that a headhunter has been infected! The thick resin nest is now available in the special structures list!"),hivenumber = hive.hivenumber)
 
 /datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
 	if(gibbed)
@@ -218,3 +212,6 @@
 /datum/species/yautja/handle_on_fire(humanoidmob)
 	. = ..()
 	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))
+
+/datum/species/yautja/handle_paygrades()
+	return ""

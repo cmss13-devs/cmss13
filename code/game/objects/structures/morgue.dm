@@ -20,6 +20,8 @@
 	connected = new tray_path(src)
 
 /obj/structure/morgue/Destroy()
+	for(var/atom/movable/object in contents)
+		object.forceMove(loc)
 	. = ..()
 	QDEL_NULL(connected)
 
@@ -40,10 +42,8 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(95))
 				return
-	for(var/atom/movable/A in src)
-		A.forceMove(loc)
-		ex_act(severity)
-	qdel(src)
+	contents_explosion(severity)
+	deconstruct(FALSE)
 
 /obj/structure/morgue/attack_hand(mob/user)
 	toggle_morgue(user)

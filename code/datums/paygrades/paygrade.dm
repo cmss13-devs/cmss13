@@ -14,8 +14,12 @@ GLOBAL_LIST_INIT_TYPED(paygrades, /datum/paygrade, setup_paygrades())
 	. = list()
 	for(var/I in subtypesof(/datum/paygrade))
 		var/datum/paygrade/PG = I
-		if(initial(PG.paygrade))
-			.[initial(PG.paygrade)] += new PG
+		var/pg_id = initial(PG.paygrade)
+		if(pg_id)
+			if(pg_id in .)
+				log_debug("Duplicate paygrade: '[pg_id]'.")
+			else
+				.[pg_id] = new PG
 
 GLOBAL_LIST_INIT(highcom_paygrades, list(
 	"NO7",

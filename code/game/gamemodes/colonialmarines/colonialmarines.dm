@@ -186,18 +186,21 @@
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
 			if(flags_round_type & MODE_FOG_ACTIVATED && SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG] && world.time >= (FOG_DELAY_INTERVAL + SSticker.round_start_time))
 				disperse_fog() //Some RNG thrown in.
-			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN) && SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_LOCKDOWN] && world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
-				round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN
+			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN))
+				if(SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_LOCKDOWN])
+					if(world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
 
-				var/input = "Security lockdown will be lifting in 30 seconds per automated lockdown protocol."
-				var/name = "Automated Security Authority Announcement"
-				marine_announcement(input, name, 'sound/AI/commandreport.ogg')
-				for(var/i in GLOB.living_xeno_list)
-					var/mob/M = i
-					sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
-					to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
-					to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
-				addtimer(CALLBACK(src, .proc/open_podlocks, "map_lockdown"), 300)
+						round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN
+
+						var/input = "Security lockdown will be lifting in 30 seconds per automated lockdown protocol."
+						var/name = "Automated Security Authority Announcement"
+						marine_announcement(input, name, 'sound/AI/commandreport.ogg')
+						for(var/i in GLOB.living_xeno_list)
+							var/mob/M = i
+							sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
+							to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
+							to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
+						addtimer(CALLBACK(src, .proc/open_podlocks, "map_lockdown"), 300)
 
 			if(round_should_check_for_win)
 				check_win()
@@ -327,7 +330,7 @@
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
-	declare_random_fact()
+	declare_fun_facts()
 
 	return 1
 

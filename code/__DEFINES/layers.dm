@@ -147,6 +147,7 @@
 //NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -200
 
+#define FLOOR_PLANE -7
 #define GAME_PLANE -6
 
 #define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
@@ -155,6 +156,7 @@
 
 //---------- LIGHTING -------------
 #define LIGHTING_PLANE 100
+#define EXTERIOR_LIGHTING_PLANE 101
 
 ///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
 ///Popup Chat Messages

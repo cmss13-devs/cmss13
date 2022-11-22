@@ -111,7 +111,7 @@
 		var/mob/cause_mob = cause_data.resolve_mob()
 		if(cause_mob)
 			if(isYautja(cause_mob) && cause_mob.client && cause_mob != src)
-				INVOKE_ASYNC(cause_mob.client, /client.proc/add_honor, max(life_kills_total, 1))
+				INVOKE_ASYNC(cause_mob.client, /client.proc/add_honor, max(life_kills_total, default_honor_value))
 
 			if(isXeno(cause_mob))
 				var/mob/living/carbon/Xenomorph/X = cause_mob

@@ -19,7 +19,7 @@ jobs:
         echo "::set-output name=ACTIONS_ENABLED::$SECRET_EXISTS"
     - name: Set up Python
       if: steps.value_holder.outputs.ACTIONS_ENABLED
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v3
       with:
         python-version: 3.8
     - name: Install dependencies
@@ -30,7 +30,7 @@ jobs:
         sudo apt-get install dos2unix
     - name: Checkout
       if: steps.value_holder.outputs.ACTIONS_ENABLED
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Fetch Changelog
       if: steps.value_holder.outputs.ACTIONS_ENABLED
       run: |

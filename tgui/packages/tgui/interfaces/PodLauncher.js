@@ -5,10 +5,17 @@ import { createUuid } from 'common/uuid';
 import { Component, Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import {
-  Box, Button, ByondUi,
-  Divider, Input, Knob,
-  LabeledControls, NumberInput,
-  Section, Flex, Slider,
+  Box,
+  Button,
+  ByondUi,
+  Divider,
+  Input,
+  Knob,
+  LabeledControls,
+  NumberInput,
+  Section,
+  Flex,
+  Slider,
 } from '../components';
 import { Window } from '../layouts';
 
@@ -18,11 +25,7 @@ const pod_grey = {
 
 export const PodLauncher = (props, context) => {
   return (
-    <Window
-      title="Supply Pod Menu"
-      width={730}
-      height={500}
-      resizable>
+    <Window title="Supply Pod Menu" width={730} height={500} resizable>
       <PodLauncherContent />
     </Window>
   );
@@ -96,22 +99,22 @@ const TABPAGES = [
 const DELAYS = [
   {
     title: 'Pre',
-    id: "drop_time",
+    id: 'drop_time',
     tooltip: 'Time until pod gets to station',
   },
   {
     title: 'Fall',
-    id: "dropping_time",
+    id: 'dropping_time',
     tooltip: 'Duration of pods\nfalling animation',
   },
   {
     title: 'Open',
-    id: "open_time",
+    id: 'open_time',
     tooltip: 'Time it takes pod to open after landing',
   },
   {
     title: 'Recall',
-    id: "return_time",
+    id: 'return_time',
     tooltip: 'Time for pod to\nleave after opening',
   },
 ];
@@ -119,17 +122,17 @@ const DELAYS = [
 const reverse_delays = [
   {
     title: 'Pre',
-    id: "drop_time",
+    id: 'drop_time',
     tooltip: 'Time until pod gets to station',
   },
   {
     title: 'Fall',
-    id: "dropping_time",
+    id: 'dropping_time',
     tooltip: 'Duration of pods\nfalling animation',
   },
   {
     title: 'Open',
-    id: "open_time",
+    id: 'open_time',
     tooltip: 'Time it takes pod to open after landing',
   },
 ];
@@ -138,23 +141,23 @@ const EFFECTS_LOAD = [
   {
     title: 'Launch All Turfs',
     icon: 'globe',
-    selected: data => {
-      return data["launch_choice"] === data.glob_launch_options.LAUNCH_ALL;
+    selected: (data) => {
+      return data['launch_choice'] === data.glob_launch_options.LAUNCH_ALL;
     },
-    onClick: context => {
+    onClick: (context) => {
       const { act, data } = useBackend(context);
-      act("set_launch_option", { launch_option: "LAUNCH_ALL" });
+      act('set_launch_option', { launch_option: 'LAUNCH_ALL' });
     },
   },
   {
     title: 'Pick Random Turf',
     icon: 'dice',
-    selected: data => {
-      return data["launch_choice"] === data.glob_launch_options.LAUNCH_RANDOM;
+    selected: (data) => {
+      return data['launch_choice'] === data.glob_launch_options.LAUNCH_RANDOM;
     },
-    onClick: context => {
+    onClick: (context) => {
       const { act, data } = useBackend(context);
-      act("set_launch_option", { launch_option: "LAUNCH_RANDOM" });
+      act('set_launch_option', { launch_option: 'LAUNCH_RANDOM' });
     },
   },
   {
@@ -163,23 +166,23 @@ const EFFECTS_LOAD = [
   {
     title: 'Launch Whole Turf',
     icon: 'expand',
-    selected: data => {
-      return !data["launch_random_item"];
+    selected: (data) => {
+      return !data['launch_random_item'];
     },
-    onClick: context => {
+    onClick: (context) => {
       const { act, data } = useBackend(context);
-      act("launch_random_item", { should_do: false });
+      act('launch_random_item', { should_do: false });
     },
   },
   {
     title: 'Pick Random Item',
     icon: 'dice',
-    selected: data => {
-      return data["launch_random_item"];
+    selected: (data) => {
+      return data['launch_random_item'];
     },
-    onClick: context => {
+    onClick: (context) => {
       const { act, data } = useBackend(context);
-      act("launch_random_item", { should_do: true });
+      act('launch_random_item', { should_do: true });
     },
   },
   {
@@ -188,55 +191,55 @@ const EFFECTS_LOAD = [
   {
     title: 'Clone',
     icon: 'clone',
-    selected: data => data["launch_clone"],
-    onClick: context => {
+    selected: (data) => data['launch_clone'],
+    onClick: (context) => {
       const { act, data } = useBackend(context);
-      act("launch_clone", { should_do: !data["launch_clone"] });
+      act('launch_clone', { should_do: !data['launch_clone'] });
     },
   },
   {
     title: 'Recall',
     icon: 'redo',
-    selected: data => data["should_recall"],
-    onClick: context => {
+    selected: (data) => data['should_recall'],
+    onClick: (context) => {
       const { act, data } = useBackend(context);
-      act("set_should_recall", { should_do: !data["should_recall"] });
+      act('set_should_recall', { should_do: !data['should_recall'] });
     },
   },
 ];
 
-const EFFECTS_NORMAL =[
+const EFFECTS_NORMAL = [
   {
     title: 'Gib',
     icon: 'skull-crossbones',
-    selected: data => {
-      return data["gib_on_land"];
+    selected: (data) => {
+      return data['gib_on_land'];
     },
-    onClick: context => {
+    onClick: (context) => {
       const { act, data } = useBackend(context);
-      act("set_gib_on_land", { should_do: !data["gib_on_land"] });
+      act('set_gib_on_land', { should_do: !data['gib_on_land'] });
     },
   },
   {
     title: 'Stealthy',
     icon: 'eye-slash',
-    selected: data => {
-      return data["stealth"];
+    selected: (data) => {
+      return data['stealth'];
     },
-    onClick: context => {
+    onClick: (context) => {
       const { act, data } = useBackend(context);
-      act("set_stealth", { should_do: !data["stealth"] });
+      act('set_stealth', { should_do: !data['stealth'] });
     },
   },
   {
     title: 'Can Be Opened',
     icon: 'lock-open',
-    selected: data => {
-      return data["can_be_opened"];
+    selected: (data) => {
+      return data['can_be_opened'];
     },
-    onClick: context => {
+    onClick: (context) => {
       const { act, data } = useBackend(context);
-      act("set_can_be_opened", { should_do: !data["can_be_opened"] });
+      act('set_can_be_opened', { should_do: !data['can_be_opened'] });
     },
   },
 ];
@@ -244,86 +247,94 @@ const EFFECTS_NORMAL =[
 const EFFECTS_ALL = [
   {
     list: EFFECTS_LOAD,
-    label: "Load From",
-    alt_label: "Load",
-    tooltipPosition: "right",
+    label: 'Load From',
+    alt_label: 'Load',
+    tooltipPosition: 'right',
   },
   {
     list: EFFECTS_NORMAL,
-    label: "General Effects",
-    tooltipPosition: "bottom",
+    label: 'General Effects',
+    tooltipPosition: 'bottom',
   },
 ];
 
 const ViewTabHolder = (props, context) => {
   const { act, data } = useBackend(context);
-  const [
-    tabPageIndex,
-    setTabPageIndex,
-  ] = useLocalState(context, 'tabPageIndex', 1);
+  const [tabPageIndex, setTabPageIndex] = useLocalState(
+    context,
+    'tabPageIndex',
+    1
+  );
   const { glob_tab_indexes, custom_dropoff, map_ref } = data;
   const TabPageComponent = TABPAGES[tabPageIndex].component();
   return (
-    <Section fill title="View" buttons={(
-      <>
-        {!!custom_dropoff && (
+    <Section
+      fill
+      title="View"
+      buttons={
+        <>
+          {!!custom_dropoff && (
+            <Button
+              inline
+              color="transparent"
+              tooltip="View Dropoff Location"
+              icon="arrow-circle-down"
+              selected={glob_tab_indexes.TAB_DROPOFF === tabPageIndex}
+              onClick={() => {
+                setTabPageIndex(glob_tab_indexes.TAB_DROPOFF);
+                act('set_tab_index', {
+                  tab_index: glob_tab_indexes.TAB_DROPOFF,
+                });
+              }}
+            />
+          )}
           <Button
             inline
             color="transparent"
-            tooltip="View Dropoff Location"
-            icon="arrow-circle-down"
-            selected={glob_tab_indexes.TAB_DROPOFF === tabPageIndex}
+            tooltip="View Pod"
+            tooltipPosition="top"
+            icon="rocket"
+            selected={glob_tab_indexes.TAB_POD === tabPageIndex}
             onClick={() => {
-              setTabPageIndex(glob_tab_indexes.TAB_DROPOFF);
-              act('set_tab_index', { tab_index: glob_tab_indexes.TAB_DROPOFF });
-            }} />
-        )}
-        <Button
-          inline
-          color="transparent"
-          tooltip="View Pod"
-          tooltipPosition="top"
-          icon="rocket"
-          selected={glob_tab_indexes.TAB_POD === tabPageIndex}
-          onClick={() => {
-            setTabPageIndex(glob_tab_indexes.TAB_POD);
-            act('set_tab_index', { tab_index: glob_tab_indexes.TAB_POD });
-          }} />
-        <Button
-          inline
-          color="transparent"
-          tooltip="View Source Bay"
-          tooltipPosition="top"
-          icon="th"
-          selected={glob_tab_indexes.TAB_BAY === tabPageIndex}
-          onClick={() => {
-            setTabPageIndex(glob_tab_indexes.TAB_BAY);
-            act('set_tab_index', { tab_index: glob_tab_indexes.TAB_BAY });
-          }} />
-        <Button
-          inline
-          color="transparent"
-          icon="sync-alt"
-          tooltip="Refresh view window in case it breaks"
-          tooltipPosition="top"
-          onClick={() => {
-            setTabPageIndex(tabPageIndex);
-            act('refresh_view');
-          }}
-
-        />
-        <Button
-          icon="trash"
-          color="transparent"
-          tooltip={multiline`
+              setTabPageIndex(glob_tab_indexes.TAB_POD);
+              act('set_tab_index', { tab_index: glob_tab_indexes.TAB_POD });
+            }}
+          />
+          <Button
+            inline
+            color="transparent"
+            tooltip="View Source Bay"
+            tooltipPosition="top"
+            icon="th"
+            selected={glob_tab_indexes.TAB_BAY === tabPageIndex}
+            onClick={() => {
+              setTabPageIndex(glob_tab_indexes.TAB_BAY);
+              act('set_tab_index', { tab_index: glob_tab_indexes.TAB_BAY });
+            }}
+          />
+          <Button
+            inline
+            color="transparent"
+            icon="sync-alt"
+            tooltip="Refresh view window in case it breaks"
+            tooltipPosition="top"
+            onClick={() => {
+              setTabPageIndex(tabPageIndex);
+              act('refresh_view');
+            }}
+          />
+          <Button
+            icon="trash"
+            color="transparent"
+            tooltip={multiline`
             Clears everything
             from the bay`}
-          tooltipOverrideLong
-          tooltipPosition="top"
-          onClick={() => act('clear_bay')}
-        />
-      </>
-    )}>
+            tooltipOverrideLong
+            tooltipPosition="top"
+            onClick={() => act('clear_bay')}
+          />
+        </>
+      }>
       <Flex direction="column" height="100%">
         <Flex.Item>
           <TabPageComponent />
@@ -335,7 +346,8 @@ const ViewTabHolder = (props, context) => {
               zoom: 0,
               id: map_ref,
               type: 'map',
-            }} />
+            }}
+          />
         </Flex.Item>
       </Flex>
     </Section>
@@ -359,12 +371,14 @@ const TabBay = (props, context) => {
       <Button
         content="Teleport"
         icon="street-view"
-        onClick={() => act('goto_bay')} />
+        onClick={() => act('goto_bay')}
+      />
       <Button
         content={data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
         disabled={!data.old_area}
         icon="undo-alt"
-        onClick={() => act('goto_prev_turf')} />
+        onClick={() => act('goto_prev_turf')}
+      />
     </>
   );
 };
@@ -376,12 +390,14 @@ const TabDrop = (props, context) => {
       <Button
         content="Teleport"
         icon="street-view"
-        onClick={() => act('goto_dropoff')} />
+        onClick={() => act('goto_dropoff')}
+      />
       <Button
         content={data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
         disabled={!data.old_area}
         icon="undo-alt"
-        onClick={() => act('goto_prev_turf')} />
+        onClick={() => act('goto_prev_turf')}
+      />
     </>
   );
 };
@@ -402,18 +418,20 @@ const PodStatusPage = (props, context) => {
                   {list.list.map((effect, j) => (
                     <Flex.Item key={j}>
                       {effect.divider && (
-                        <span style={pod_grey}><b>|</b></span>
+                        <span style={pod_grey}>
+                          <b>|</b>
+                        </span>
                       )}
-                      {!effect.divider &&(
+                      {!effect.divider && (
                         <Button
                           tooltip={effect.title}
                           tooltipPosition={list.tooltipPosition}
                           tooltipOverrideLong
                           icon={effect.icon}
                           content={effect.content}
-                          selected={effect.selected
-                            ? effect.selected(data)
-                            : false}
+                          selected={
+                            effect.selected ? effect.selected(data) : false
+                          }
                           onClick={() => {
                             if (effect.onClick) {
                               effect.onClick(context);
@@ -421,12 +439,12 @@ const PodStatusPage = (props, context) => {
                           }}
                           style={{
                             'vertical-align': 'middle',
-                            'margin-left': (j !== 0 ? '1px' : '0px'),
-                            'margin-right': (
-                              j !== list.list.length-1 ? '1px' : '0px'
-                            ),
+                            'margin-left': j !== 0 ? '1px' : '0px',
+                            'margin-right':
+                              j !== list.list.length - 1 ? '1px' : '0px',
                             'border-radius': '5px',
-                          }} />
+                          }}
+                        />
                       )}
                     </Flex.Item>
                   ))}
@@ -442,21 +460,15 @@ const PodStatusPage = (props, context) => {
 
 const ReverseMenu = (props, context) => {
   const { act, data } = useBackend(context);
-  const [
-    tabPageIndex,
-    setTabPageIndex,
-  ] = useLocalState(context, 'tabPageIndex', 1);
+  const [tabPageIndex, setTabPageIndex] = useLocalState(
+    context,
+    'tabPageIndex',
+    1
+  );
   const { glob_tab_indexes, target_mode } = data;
-  const {
-    TARGET_MODE_DROPOFF,
-    TARGET_MODE_NONE,
-  } = data.glob_target_mode;
+  const { TARGET_MODE_DROPOFF, TARGET_MODE_NONE } = data.glob_target_mode;
   return (
-    <Section
-      fill
-      height="100%"
-      title="Reverse"
-    >
+    <Section fill height="100%" title="Reverse">
       <Flex fill direction="column">
         <Flex.Item maxHeight="20px">
           <Button
@@ -469,7 +481,7 @@ const ReverseMenu = (props, context) => {
             tooltipPosition="bottom"
             onClick={() => {
               if (data.target_mode === TARGET_MODE_DROPOFF) {
-                act("set_target_mode", {
+                act('set_target_mode', {
                   target_mode: TARGET_MODE_NONE,
                 });
               } else {
@@ -477,7 +489,8 @@ const ReverseMenu = (props, context) => {
                   target_mode: TARGET_MODE_DROPOFF,
                 });
               }
-            }} />
+            }}
+          />
           <Button
             inline
             icon="trash"
@@ -493,10 +506,10 @@ const ReverseMenu = (props, context) => {
                 setTabPageIndex(glob_tab_indexes.TAB_POD);
                 act('set_tab_index', { tab_index: glob_tab_indexes.TAB_POD });
               }
-            }} />
+            }}
+          />
         </Flex.Item>
       </Flex>
-
     </Section>
   );
 };
@@ -518,13 +531,13 @@ class PresetsPage extends Component {
   }
 
   saveDataToPreset(id, data) {
-    storage.set("cm_podlauncher_preset_" + id, data);
+    storage.set('cm_podlauncher_preset_' + id, data);
   }
 
   async loadDataFromPreset(id, context) {
     const { act } = useBackend(this.context);
-    act("load_preset", {
-      payload: await storage.get("cm_podlauncher_preset_" + id),
+    act('load_preset', {
+      payload: await storage.get('cm_podlauncher_preset_' + id),
     });
   }
 
@@ -532,17 +545,17 @@ class PresetsPage extends Component {
     let { presets } = this.state;
     if (!presets) {
       presets = [];
-      presets.push("hi!");
+      presets.push('hi!');
     }
     const id = createUuid();
     const thing = { id, title: presetName, hue };
     presets.push(thing);
-    storage.set("cm_podlauncher_presetlist", presets);
+    storage.set('cm_podlauncher_presetlist', presets);
     this.saveDataToPreset(id, data);
   }
 
   async getPresets() {
-    let thing = await storage.get("cm_podlauncher_presetlist");
+    let thing = await storage.get('cm_podlauncher_presetlist');
     if (thing === undefined) {
       thing = [];
     }
@@ -556,33 +569,41 @@ class PresetsPage extends Component {
         presets.splice(i, 1);
       }
     }
-    storage.set("cm_podlauncher_presetlist", presets);
+    storage.set('cm_podlauncher_presetlist', presets);
   }
   render() {
     const { presets } = this.state;
     const { act, data } = useBackend(this.context);
-    const [
-      presetIndex,
-      setSelectedPreset,
-    ] = useLocalState(this.context, 'presetIndex', 0);
-    const [
-      settingName,
-      setEditingNameStatus,
-    ] = useLocalState(this.context, 'settingName', 0);
-    const [newNameText, setText] = useLocalState(this.context, 'newNameText', "");
+    const [presetIndex, setSelectedPreset] = useLocalState(
+      this.context,
+      'presetIndex',
+      0
+    );
+    const [settingName, setEditingNameStatus] = useLocalState(
+      this.context,
+      'settingName',
+      0
+    );
+    const [newNameText, setText] = useLocalState(
+      this.context,
+      'newNameText',
+      ''
+    );
     const [hue, setHue] = useLocalState(this.context, 'hue', 0);
     return (
-      <Section scrollable
+      <Section
+        scrollable
         fill
         title="Presets"
-        buttons={(
+        buttons={
           <>
             {settingName === 0 && (
               <Button
                 color="transparent"
                 icon="plus"
                 tooltip="New Preset"
-                onClick={() => setEditingNameStatus(1)} />
+                onClick={() => setEditingNameStatus(1)}
+              />
             )}
             <Button
               inline
@@ -592,7 +613,8 @@ class PresetsPage extends Component {
               tooltip="Saves preset"
               tooltipOverrideLong
               tooltipPosition="bottom"
-              onClick={() => this.saveDataToPreset(presetIndex, data)} />
+              onClick={() => this.saveDataToPreset(presetIndex, data)}
+            />
             <Button
               inline
               color="transparent"
@@ -601,16 +623,18 @@ class PresetsPage extends Component {
               tooltip="Loads preset"
               onClick={() => {
                 this.loadDataFromPreset(presetIndex);
-              }} />
+              }}
+            />
             <Button
               inline
               color="transparent"
               icon="trash"
               tooltip="Deletes the selected preset"
               tooltipPosition="bottom"
-              onClick={() => this.deletePreset(presetIndex)} />
+              onClick={() => this.deletePreset(presetIndex)}
+            />
           </>
-        )}>
+        }>
         {settingName === 1 && (
           <>
             <Button
@@ -621,15 +645,17 @@ class PresetsPage extends Component {
               onClick={() => {
                 this.newPreset(newNameText, hue, data);
                 setEditingNameStatus(0);
-              }} />
+              }}
+            />
             <Button
               inline
               icon="window-close"
               tooltip="Cancel"
               onClick={() => {
-                setText("");
+                setText('');
                 setEditingNameStatus(0);
-              }} />
+              }}
+            />
             <span color="label"> Hue: </span>
             <NumberInput
               inline
@@ -640,34 +666,43 @@ class PresetsPage extends Component {
               value={hue}
               minValue={0}
               maxValue={360}
-              onChange={(e, value) => setHue(value)} />
+              onChange={(e, value) => setHue(value)}
+            />
             <Input
               inline
               autofocus
               placeholder="Preset Name"
-              onChange={(e, value) => setText(value)} />
+              onChange={(e, value) => setText(value)}
+            />
             <Divider horizontal />
           </>
         )}
         {(!presets || presets.length === 0) && (
           <span style={pod_grey}>
-            Click [+] to define a new preset.
-            They are persistent across rounds/servers!
+            Click [+] to define a new preset. They are persistent across
+            rounds/servers!
           </span>
         )}
-        {presets ? presets.map((preset, i) => (
-          <Button
-            key={i}
-            width="100%"
-            backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
-            onClick={() => setSelectedPreset(preset.id)}
-            content={preset.title}
-            style={presetIndex === preset.id ? {
-              'border-width': '1px',
-              'border-style': 'solid',
-              'border-color': `hsl(${preset.hue}, 80%, 80%)`,
-            } : ''} />
-        )) : ""}
+        {presets
+          ? presets.map((preset, i) => (
+              <Button
+                key={i}
+                width="100%"
+                backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
+                onClick={() => setSelectedPreset(preset.id)}
+                content={preset.title}
+                style={
+                  presetIndex === preset.id
+                    ? {
+                        'border-width': '1px',
+                        'border-style': 'solid',
+                        'border-color': `hsl(${preset.hue}, 80%, 80%)`,
+                      }
+                    : ''
+                }
+              />
+            ))
+          : ''}
       </Section>
     );
   }
@@ -675,10 +710,7 @@ class PresetsPage extends Component {
 
 const LaunchPage = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    TARGET_MODE_LAUNCH,
-    TARGET_MODE_NONE,
-  } = data.glob_target_mode;
+  const { TARGET_MODE_LAUNCH, TARGET_MODE_NONE } = data.glob_target_mode;
   return (
     <Button
       fluid
@@ -688,21 +720,17 @@ const LaunchPage = (props, context) => {
       tooltipOverrideLong
       selected={data.target_mode === TARGET_MODE_LAUNCH}
       tooltipPosition="top"
-      content={(
-        <Box
-          bold
-          fontSize="1.4em"
-          lineHeight={3}>
+      content={
+        <Box bold fontSize="1.4em" lineHeight={3}>
           LAUNCH
         </Box>
-      )}
+      }
       onClick={() => {
         if (data.target_mode === TARGET_MODE_LAUNCH) {
-          act("set_target_mode", {
+          act('set_target_mode', {
             target_mode: TARGET_MODE_NONE,
           });
-        }
-        else {
+        } else {
           act('set_target_mode', {
             target_mode: TARGET_MODE_LAUNCH,
           });
@@ -718,7 +746,7 @@ const Timing = (props, context) => {
     <Section
       fill
       title="Time"
-      buttons={(
+      buttons={
         <Button
           icon="undo"
           color="transparent"
@@ -729,22 +757,20 @@ const Timing = (props, context) => {
           tooltipPosition="top"
           onClick={() => {
             act('set_delays', {
-              "drop_time": 0,
-              "dropping_time": 35,
-              "open_time": 30,
-              "return_time": 300,
+              'drop_time': 0,
+              'dropping_time': 35,
+              'open_time': 30,
+              'return_time': 300,
             });
             act('set_reverse_delays', {
-              "drop_time": 0,
-              "dropping_time": 35,
-              "open_time": 30,
+              'drop_time': 0,
+              'dropping_time': 35,
+              'open_time': 30,
             });
-          }} />
-      )}>
-      <DelayHelper
-        delay_list={DELAYS}
-        title="Normal Timers"
-      />
+          }}
+        />
+      }>
+      <DelayHelper delay_list={DELAYS} title="Normal Timers" />
       {!!data.should_recall && (
         <>
           <Divider horizontal />
@@ -761,11 +787,7 @@ const Timing = (props, context) => {
 
 const DelayHelper = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    delay_list,
-    reverse = false,
-    title,
-  } = props;
+  const { delay_list, reverse = false, title } = props;
   return (
     <>
       <Box color="label" mb={1} width="100%" textAlign="center">
@@ -773,25 +795,30 @@ const DelayHelper = (props, context) => {
       </Box>
       <LabeledControls wrap>
         {delay_list.map((delay, i) => (
-          <LabeledControls.Item
-            key={i}
-            label={delay.title}>
+          <LabeledControls.Item key={i} label={delay.title}>
             <Knob
               inline
               step={0.02}
               size={0.75}
-              value={(reverse
-                ? data.reverse_delays[delay.id]
-                : data.delays[delay.id]) / 10}
+              value={
+                (reverse
+                  ? data.reverse_delays[delay.id]
+                  : data.delays[delay.id]) / 10
+              }
               unclamped
               minValue={0}
-              unit={"s"}
-              format={value => toFixed(value, 2)}
+              unit={'s'}
+              format={(value) => toFixed(value, 2)}
               maxValue={30}
-              color={((reverse
-                ? data.reverse_delays[delay.id]
-                : data.delays[delay.id]) / 10)
-                > 10 ? "orange" : "default"}
+              color={
+                (reverse
+                  ? data.reverse_delays[delay.id]
+                  : data.delays[delay.id]) /
+                  10 >
+                10
+                  ? 'orange'
+                  : 'default'
+              }
               onDrag={(e, value) => {
                 const delay_data = { [delay.id]: Math.max(value * 10, 0) };
                 if (reverse) {
@@ -799,7 +826,8 @@ const DelayHelper = (props, context) => {
                 } else {
                   act('set_delays', delay_data);
                 }
-              }} />
+              }}
+            />
           </LabeledControls.Item>
         ))}
       </LabeledControls>
@@ -813,7 +841,7 @@ const Damage = (props, context) => {
     <Section
       fill
       title="Damage"
-      buttons={(
+      buttons={
         <Button
           icon="undo"
           color="transparent"
@@ -822,10 +850,11 @@ const Damage = (props, context) => {
           tooltipPosition="top"
           onClick={() => {
             act('set_damage', {
-              "damage": 0,
+              'damage': 0,
             });
-          }} />
-      )}>
+          }}
+        />
+      }>
       <Slider
         value={data.land_damage}
         ranges={{
@@ -837,7 +866,7 @@ const Damage = (props, context) => {
         stepPixelSize={3}
         minValue={0}
         maxValue={500}
-        onChange={(e, value) => act("set_damage", { damage: value })}
+        onChange={(e, value) => act('set_damage', { damage: value })}
       />
     </Section>
   );
@@ -845,12 +874,16 @@ const Damage = (props, context) => {
 
 const Explosion = (props, context) => {
   const { act, data } = useBackend(context);
-  const [enabled, setEnabled] = useLocalState(context, "explosion_enabled", false);
+  const [enabled, setEnabled] = useLocalState(
+    context,
+    'explosion_enabled',
+    false
+  );
   return (
     <Section
       fill
       title="Explosion"
-      buttons={(
+      buttons={
         <Button
           icon="bomb"
           selected={enabled}
@@ -862,18 +895,19 @@ const Explosion = (props, context) => {
             if (enabled) {
               setEnabled(false);
               act('set_explosive_parameters', {
-                "power": 0,
-                "falloff": 75,
+                'power': 0,
+                'falloff': 75,
               });
             } else {
               setEnabled(true);
               act('set_explosive_parameters', {
-                "power": 50,
-                "falloff": 75,
+                'power': 50,
+                'falloff': 75,
               });
             }
-          }} />
-      )}>
+          }}
+        />
+      }>
       {!!enabled && (
         <>
           <Slider
@@ -888,7 +922,9 @@ const Explosion = (props, context) => {
             stepPixelSize={3}
             minValue={0}
             maxValue={500}
-            onChange={(e, value) => act("set_explosive_parameters", { power: value })}
+            onChange={(e, value) =>
+              act('set_explosive_parameters', { power: value })
+            }
           />
           <Slider
             mt={1}
@@ -903,7 +939,9 @@ const Explosion = (props, context) => {
             stepPixelSize={3}
             minValue={0}
             maxValue={200}
-            onChange={(e, value) => act("set_explosive_parameters", { falloff: value })}
+            onChange={(e, value) =>
+              act('set_explosive_parameters', { falloff: value })
+            }
           />
         </>
       )}
@@ -914,10 +952,7 @@ const Explosion = (props, context) => {
 const Container = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <Section
-      fill
-      title="Container"
-    >
+    <Section fill title="Container">
       <Slider
         value={data.max_hold_items}
         ranges={{
@@ -930,7 +965,9 @@ const Container = (props, context) => {
         stepPixelSize={3}
         minValue={0}
         maxValue={50}
-        onChange={(e, value) => act("set_max_hold_items", { max_hold_items: value })}
+        onChange={(e, value) =>
+          act('set_max_hold_items', { max_hold_items: value })
+        }
       />
     </Section>
   );

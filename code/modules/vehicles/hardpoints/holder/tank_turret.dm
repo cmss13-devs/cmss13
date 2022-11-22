@@ -96,17 +96,12 @@
 			qdel(PC)
 			return TRUE
 
-		if(PC.loaded)
-			to_chat(user, SPAN_WARNING("\The [PC] must be empty in order to grab \the [src]!"))
-			return TRUE
-
 		if(health < 1)
 			visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered!"))
 			qdel(src)
 			return TRUE
 
-		PC.grab_object(src, "vehicle_module", 'sound/machines/hydraulics_2.ogg')
-		to_chat(user, SPAN_NOTICE("You grab \the [src] with \the [PC]."))
+		PC.grab_object(user, src, "vehicle_module", 'sound/machines/hydraulics_2.ogg')
 		update_icon()
 		return TRUE
 	..()

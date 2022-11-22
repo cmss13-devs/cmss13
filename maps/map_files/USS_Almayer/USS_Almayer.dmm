@@ -3454,7 +3454,9 @@
 /area/almayer/living/offices/flight)
 "ajB" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
-	req_access = list(7,23,27)
+	req_access = null;
+	req_one_access_txt = "7;23;27;102";
+	req_one_access = null
 	},
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -3;
@@ -3530,7 +3532,8 @@
 /obj/structure/machinery/light,
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
 	req_access = null;
-	req_one_access_txt = "7;23;27"
+	req_one_access_txt = "7;23;27";
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -3799,7 +3802,10 @@
 	icon_state = "SW-out";
 	tag = "icon-SW-out"
 	},
-/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
+	req_one_access_txt = "7;23;27;102";
+	req_one_access = null
+	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "silver";

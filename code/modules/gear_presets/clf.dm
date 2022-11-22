@@ -485,6 +485,7 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	//specialist backpack stuff
 	H.equip_to_slot_or_del(new /obj/item/prop/folded_anti_tank_sadar(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs(H), WEAR_IN_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
 	//storage items

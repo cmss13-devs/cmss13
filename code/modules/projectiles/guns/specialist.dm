@@ -967,14 +967,22 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
 /obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
 
+	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
+		var/mob/living/carbon/human/huser = user
+		to_chat(user, SPAN_WARNING("Augh!! \The [src]'s launch blast resonates extremely loudly in your ears! You probably should have worn some sort of ear protection..."))
+		huser.apply_effect(6, STUTTER)
+		huser.emote("pain")
+		huser.SetEarDeafness(max(user.ear_deaf,10))
+
 	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))
 	smoke.set_up(1, 0, backblast_loc, turn(user.dir, 180))
 	smoke.start()
-	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, 1, 7)
+	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
 	for(var/mob/living/carbon/C in backblast_loc)
-		if(!C.lying) //Have to be standing up to get the fun stuff
+		if(!C.lying && !HAS_TRAIT(C, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
 			C.apply_damage(15, BRUTE) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
 			C.apply_effect(4, STUN) //For good measure
+			C.apply_effect(6, STUTTER)
 			C.emote("pain")
 
 		..()

@@ -133,7 +133,7 @@
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
 
-	if(!get_type_in_ears(/obj/item/clothing/ears/earmuffs))
+	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
@@ -318,16 +318,10 @@
 //gets paygrade from ID
 //paygrade is a user's actual rank, as defined on their ID.  size 1 returns an abbreviation, size 0 returns the full rank name, the third input is used to override what is returned if no paygrade is assigned.
 /mob/living/carbon/human/proc/get_paygrade(size = 1)
-	if(!species)
+	var/obj/item/card/id/id = wear_id
+	if(!species || !istype(id))
 		return ""
-
-	switch(species.name)
-		if("Human","Human Hero")
-			var/obj/item/card/id/id = wear_id
-			if(istype(id))
-				. = get_paygrades(id.paygrade, size, gender)
-		else
-			return ""
+	return species.handle_paygrades(id.paygrade, size, gender)
 
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
@@ -1530,13 +1524,13 @@
 /mob/living/carbon/human/resist_fire()
 	if(isYautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		apply_effect(1, TRUE, WEAKEN) // actually 0.5
+		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		apply_effect(4, TRUE, WEAKEN)
+		apply_effect(4, WEAKEN)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
@@ -1553,12 +1547,12 @@
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
 	if(isYautja(src))
-		apply_effect(1, TRUE, WEAKEN)
+		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
 	else
-		apply_effect(1.5, TRUE, WEAKEN)
+		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)

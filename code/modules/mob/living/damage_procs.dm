@@ -145,9 +145,6 @@
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SET_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
 		return
 
-	if(!effect)
-		return FALSE
-
 	switch(effect_type)
 		if(STUN)
 			SetStun(effect)

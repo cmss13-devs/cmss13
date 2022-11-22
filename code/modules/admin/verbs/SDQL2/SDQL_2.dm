@@ -735,7 +735,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/statclick/sdql2_vv_all, new(null, "VIEW
 				var/turf/final = get_turf(T) //Recursive, hopefully?
 				if(istype(final))
 					text_list += " <font color='gray'>at</font> [final] [ADMIN_COORDJMP(final)]"
-					a = final.loc
+					gotten_area = final.loc
 				else
 					text_list += " <font color='gray'>at</font> nonexistent location"
 			if(gotten_area)

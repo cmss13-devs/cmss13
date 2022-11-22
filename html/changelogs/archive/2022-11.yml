@@ -417,3 +417,10 @@
   kugamo:
   - balance: Building resin constructions in doors is possible again, but will break
       if closed on them.
+2022-11-22:
+  NoKohi:
+  - rscadd: added a dchat and hive notification for when player facehuggers facehug
+      somebody
+  fira:
+  - bugfix: Fixes issues with clothing traits resulting in, eg, RPG spec losing ear
+      protection by manipulating their spare helmet.

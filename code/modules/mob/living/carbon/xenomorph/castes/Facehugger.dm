@@ -47,11 +47,8 @@
 	)
 	mutation_type = "Normal"
 
+	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
-
-/mob/living/carbon/Xenomorph/Facehugger/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_hugger))
-	return ..()
 
 /mob/living/carbon/Xenomorph/Facehugger/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -140,7 +137,20 @@
 	var/did_hug = hugger.attach(human, TRUE, 0.5)
 	if(client)
 		client?.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+	var/area/hug_area = get_area(src)
+	if(hug_area)
+		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))	
+		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>"))
+	else
+		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
+		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>"))
 	qdel(src)
+	if(hug_area)
+		xeno_message(SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host at \the [hug_area]!"), 1, src.hivenumber)
+	else
+		xeno_message(SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host!"), 1, src.hivenumber)
 	return did_hug
 
 /mob/living/carbon/Xenomorph/Facehugger/age_xeno()

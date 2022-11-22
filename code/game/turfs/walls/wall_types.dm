@@ -237,6 +237,7 @@
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
+	icon = 'icons/lobby/title.dmi'
 	icon_state = ""
 //	icon_state = "title_holiday"
 	layer = FLY_LAYER
@@ -244,7 +245,6 @@
 
 /turf/closed/wall/indestructible/splashscreen/Initialize()
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/lobby_art))
 	tag = "LOBBYART"
 
 /proc/force_lobby_art(art_id)
@@ -690,7 +690,7 @@
 /turf/closed/wall/resin
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
-	icon = 'icons/mob/hostiles/structures.dmi'
+	icon = 'icons/mob/xenos/structures.dmi'
 	icon_state = "resin"
 	walltype = WALL_RESIN
 	damage_cap = HEALTH_WALL_XENO

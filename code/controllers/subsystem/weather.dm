@@ -100,15 +100,20 @@ SUBSYSTEM_DEF(weather)
 	if (!is_weather_event_starting)
 		COOLDOWN_START(src, last_event_check_time, map_holder.min_time_between_checks)
 		if(map_holder.should_start_event())
-			// Set up controller state
-			is_weather_event_starting = TRUE
-			weather_event_type = map_holder.get_new_event()
+			setup_weather_event(map_holder.get_new_event())
 
-			// Tell the map_holder we're starting
-			map_holder.weather_warning(weather_event_type)
 
-			addtimer(CALLBACK(src, .proc/start_weather_event), map_holder.warn_time)
 
+/// Startup of an arbitrary weather event if none is running. Returns TRUE if successful.
+/datum/controller/subsystem/weather/proc/setup_weather_event(event_typepath)
+	. = FALSE
+	if(!map_holder || is_weather_event || is_weather_event_starting)
+		return
+	is_weather_event_starting = TRUE
+	weather_event_type = event_typepath
+	map_holder.weather_warning(weather_event_type)
+	addtimer(CALLBACK(src, .proc/start_weather_event), map_holder.warn_time)
+	return TRUE
 
 // Adjust our state to indicate that we're starting a new event
 // and tell all the mobs we care about to check back in to realize there's
@@ -135,9 +140,9 @@ SUBSYSTEM_DEF(weather)
 	current_event_start_time = world.time
 
 	if (weather_event_instance.display_name)
-		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] starting with duration of [weather_event_instance.length] ds."))
+		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] starting with duration of [DisplayTimeText(weather_event_instance.length)]."))
 	else
-		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] starting with duration of [weather_event_instance.length] ds."))
+		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] starting with duration of [DisplayTimeText(weather_event_instance.length)]."))
 
 	curr_master_turf_overlay.icon_state = weather_event_instance.turf_overlay_icon_state
 	curr_master_turf_overlay.alpha = weather_event_instance.turf_overlay_alpha
@@ -160,9 +165,9 @@ SUBSYSTEM_DEF(weather)
 	controller_state_lock = TRUE
 
 	if (weather_event_instance.display_name)
-		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] ending after [weather_event_instance.length] ds."))
+		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] ending after [DisplayTimeText(world.time - current_event_start_time)]."))
 	else
-		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] ending after [weather_event_instance.length] ds."))
+		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] ending after [DisplayTimeText(world.time - current_event_start_time)]."))
 
 	for(var/area/area as anything in weather_areas)
 		for(var/area/subarea as anything in area.related)

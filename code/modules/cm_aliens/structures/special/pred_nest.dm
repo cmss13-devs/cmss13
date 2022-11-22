@@ -6,7 +6,7 @@
 
 	mouse_opacity = 1
 
-	icon = 'icons/mob/hostiles/structures48x48.dmi'
+	icon = 'icons/mob/xenos/structures48x48.dmi'
 	icon_state = "reinforced_nest"
 	health = 400
 	var/obj/structure/bed/nest/structure/pred_nest

@@ -1,0 +1,4 @@
+author: "Molto"
+delete-after: True
+changes:
+  - bugfix: "RO, Quartermaster and SEA revolvers can both spawn again"

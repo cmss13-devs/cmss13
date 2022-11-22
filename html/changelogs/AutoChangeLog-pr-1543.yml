@@ -1,0 +1,4 @@
+author: "PalJohnson"
+delete-after: True
+changes:
+  - bugfix: "fixed timer on CL briefcase not dispensing items at 12:25 server time"

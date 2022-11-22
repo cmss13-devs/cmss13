@@ -3532,7 +3532,7 @@
 /obj/structure/machinery/light,
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
 	req_access = null;
-	req_one_access_txt = "7;23;27";
+	req_one_access_txt = "7;23;27;102";
 	req_one_access = null
 	},
 /turf/open/floor/almayer{

@@ -227,14 +227,3 @@
 	mob_can_die = MOB_FAILS_ON_DEATH
 	value = OBJECTIVE_ABSOLUTE_VALUE
 	objective_flags = OBJECTIVE_DO_NOT_TREE
-
-//Easy mobs for testing
-/mob/living/carbon/human/vip
-/mob/living/carbon/human/vip/Initialize(mapload, new_species)
-	. = ..()
-	new /datum/cm_objective/move_mob/almayer/vip(src)
-
-/mob/living/carbon/human/survivor
-/mob/living/carbon/human/survivor/Initialize(mapload, new_species)
-	. = ..()
-	new /datum/cm_objective/move_mob/almayer/survivor(src)

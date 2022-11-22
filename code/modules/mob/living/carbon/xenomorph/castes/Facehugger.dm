@@ -144,7 +144,7 @@
 	var/area/hug_area = get_area(src)
 	if(hug_area)
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))	
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>"))
 	else
 		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
@@ -216,7 +216,7 @@
 	if(istype(current_structure, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
 		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
-			to_chat(src, SPAN_WARNING("\The [airlock] is locked down tight. You can't squeeze underneath!"))
+			to_chat(src, SPAN_WARNING("\The [current_airlock] is locked down tight. You can't squeeze underneath!"))
 			return
 	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [current_structure]!"), \
 	SPAN_WARNING("You squeeze and scuttle underneath \the [current_structure]."), null, 5)

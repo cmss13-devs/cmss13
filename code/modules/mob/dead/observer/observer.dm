@@ -60,11 +60,12 @@
 		spawn_turf = get_turf(body)				//Where is the body located?
 		attack_log = body.attack_log	//preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
-
+    
 		appearance = body.appearance
 		base_transform = matrix(body.base_transform)
 		body.alter_ghost(src)
 		apply_transform(matrix())
+
 
 		own_orbit_size = body.get_orbit_size()
 

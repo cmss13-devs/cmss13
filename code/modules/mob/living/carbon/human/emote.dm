@@ -710,12 +710,7 @@
 				playsound(loc, 'sound/voice/pred_over_there.ogg', 50)
 
 		//working joe emotes
-		if("alwaysknow")
-			if(Joe && src.loc)
-				m_type = 1
-				playsound(src.loc, 'sound/voice/joe_alwaysknow.ogg', 75, 0)
-				say("You always know a Working Joe.")
-		if("workingjoe")
+		if("alwaysknow", "workingjoe")
 			if(Joe && src.loc)
 				m_type = 1
 				playsound(src.loc, 'sound/voice/joe_alwaysknow.ogg', 75, 0)
@@ -730,17 +725,7 @@
 				m_type = 1
 				playsound(src.loc, 'sound/voice/joe_safety.ogg', 75, 0)
 				say("You and I are going to have a talk about safety.")
-		if("awful")
-			if(Joe && src.loc)
-				m_type = 1
-				playsound(src.loc, 'sound/voice/joe_awful.ogg', 75, 0)
-				say("Tut, tut. What an awful mess.")
-		if("mess")
-			if(Joe && src.loc)
-				m_type = 1
-				playsound(src.loc, 'sound/voice/joe_awful.ogg', 75, 0)
-				say("Tut, tut. What an awful mess.")
-		if("mes") //Since the parser trims the final s...
+		if("awful", "mess", "mes") //Since the parser trims the final s...
 			if(Joe && src.loc)
 				m_type = 1
 				playsound(src.loc, 'sound/voice/joe_awful.ogg', 75, 0)

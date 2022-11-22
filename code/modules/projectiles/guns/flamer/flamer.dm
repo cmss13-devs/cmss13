@@ -446,7 +446,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	burnlevel = R.intensityfire
 
 	//are we in weather??
-	update_in_weather_status()
+	addtimer(CALLBACK(src, .proc/update_in_weather_status, 0), 1 SECONDS, TIMER_UNIQUE)
 
 	update_flame()
 
@@ -666,10 +666,14 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	return
 
-/obj/flamer_fire/proc/update_in_weather_status()
+/obj/flamer_fire/proc/update_in_weather_status(times_tried)
 	SIGNAL_HANDLER
 	var/area/A = get_area(src)
-	if(SSweather.is_weather_event && locate(A) in SSweather.weather_areas)
+	if(!A)							//fire spawned by flamers get created without a location and thus without an area, we retry every second for 5 times waiting for LinkBlocked() to run
+		if(times_tried <=5)
+			addtimer(CALLBACK(src, .proc/update_in_weather_status, times_tried++), 1 SECONDS, TIMER_UNIQUE)
+			return
+	if(SSweather.is_weather_event && locate(A.master) in SSweather.weather_areas)
 		weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
 	else
 		weather_smothering_strength = 0

@@ -1,4 +1,0 @@
-author: "aceroy"
-delete-after: True
-changes:
-  - refactor: "Changed xenomorph icon logic to use new var mutation_icon_state and not mutation_type"

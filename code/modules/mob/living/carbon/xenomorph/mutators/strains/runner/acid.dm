@@ -23,6 +23,7 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Runner/R = MS.xeno
+	R.mutation_icon_state = RUNNER_ACIDER
 	R.mutation_type = RUNNER_ACIDER
 	R.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	R.armor_modifier += XENO_ARMOR_MOD_MED

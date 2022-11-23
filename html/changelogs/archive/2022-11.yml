@@ -424,3 +424,52 @@
   fira:
   - bugfix: Fixes issues with clothing traits resulting in, eg, RPG spec losing ear
       protection by manipulating their spare helmet.
+2022-11-23:
+  BeagleGaming1:
+  - bugfix: Xenonid (Mutant) playable Facehuggers are no longer invisible again
+  Huffie56:
+  - refactor: Removed empty lines and change some annotation to fit current standard
+      for it.
+  - code_imp: All the slice able snack items(cake cheese pizza) will now be cut in
+      six instead of random number
+  - refactor: Removed bitesize = 1lines in children object of snack since it's initiate
+      at 1 already.
+  Molto:
+  - bugfix: fixed the CMP beret description
+  - bugfix: RO, Quartermaster and SEA revolvers can both spawn again
+  - bugfix: fixed the really black suit missing icon
+  Morrow:
+  - bugfix: Fixes LV-522 showing up for whiskey outpost.
+  NoKohi:
+  - admin: adds a VV option for "toggle needing power", this toggles a machine needing
+      APC power
+  - bugfix: fixed stained clothing having an extra "the"
+  PalJohnson:
+  - bugfix: fixed timer on CL briefcase not dispensing items at 12:25 server time
+  ThePiachu:
+  - bugfix: Sorokyne Strata should no longer experience a lot of runtime errors caused
+      by empty tiles being present in the map.
+  - bugfix: Mine boxes can now hold all the mines they are supposed to hold.
+  - bugfix: Hydroponics locker now starts with the correct lock indicator.
+  - spellcheck: Ravager's abilities now have proper capitalization.
+  - qol: Some Working Joe emotes have an alternative way of invoking them now to help
+      you embody the character easier.
+  - code_imp: Moved stim reagent code in with the other reagents. Fixed an unnecesary
+      variable casting.
+  - code_imp: Fixed old style of comments in reagent files.
+  - refactor: Removed snowflake initialize code for various napalms.
+  aceroy:
+  - refactor: Changed xenomorph icon logic to use new var mutation_icon_state and
+      not mutation_type
+  carlarctg:
+  - bugfix: Marines can now shake eachother out of their stupor (They can shake stunned
+      players that aren't lying down)
+  fira:
+  - admin: Added "Change Weather" verb (Major Event, Admin panel) that lets you stop
+      and start new weather events manually.
+  - bugfix: Ending a weather event now displays the actual duration elapsed, and not
+      the duration of the event.
+  harryob:
+  - bugfix: corrected the layering for eggs and stairs.
+  kugamo:
+  - bugfix: Fixed Grey wardrobe missing open sprite.

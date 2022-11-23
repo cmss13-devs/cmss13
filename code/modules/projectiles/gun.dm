@@ -1305,6 +1305,10 @@ and you're good to go.
 			click_empty(user)
 			break
 
+		if(SEND_SIGNAL(projectile_to_fire.ammo, COMSIG_AMMO_POINT_BLANK, M, projectile_to_fire, user, src) & COMPONENT_CANCEL_AMMO_POINT_BLANK)
+			flags_gun_features &= ~GUN_BURST_FIRING
+			return TRUE
+
 		//We actually have a projectile, let's move on. We're going to simulate the fire cycle.
 		if(projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire, user, src))
 			flags_gun_features &= ~GUN_BURST_FIRING

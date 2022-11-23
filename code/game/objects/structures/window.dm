@@ -144,7 +144,7 @@
 		SEND_SIGNAL(M, COMSIG_MOB_WINDOW_EXPLODED, src)
 
 	handle_debris(severity, explosion_direction)
-	qdel(src)
+	deconstruct(FALSE)
 	return
 
 /obj/structure/window/get_explosion_resistance(direction)
@@ -536,9 +536,9 @@
 
 /obj/structure/window/framed/deconstruct(disassembled = TRUE)
 	if(window_frame)
-			var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
-			new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
-			new_window_frame.setDir(dir)
+		var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
+		new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
+		new_window_frame.setDir(dir)
 	return ..()
 
 /obj/structure/window/framed/almayer

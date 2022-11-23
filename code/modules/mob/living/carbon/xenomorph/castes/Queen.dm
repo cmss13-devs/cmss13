@@ -418,6 +418,7 @@
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
+	color = in_hive.color
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

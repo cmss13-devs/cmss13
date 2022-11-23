@@ -1,0 +1,6 @@
+author: "Sleepynecrons"
+delete-after: True
+changes:
+  - imageadd: "New icons for cats and the kitten. Added onmob icons for Jones when holding in hands."
+  - imagedel: "Removed old icons for cats and kitten"
+  - code_imp: "Added a holder for the kitten so object sprites and descriptions are consistent when picking one up."

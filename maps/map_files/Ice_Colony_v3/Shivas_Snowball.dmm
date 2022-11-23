@@ -10463,17 +10463,6 @@
 	icon_state = "wred"
 	},
 /area/shiva/interior/colony/medseceng)
-"eIW" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
-	name = "\improper Colony Power Substation";
-	req_access = null;
-	req_one_access = null
-	},
-/turf/open/floor/wood,
-/area/shiva/interior/colony/medseceng)
 "eKp" = (
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 8;
@@ -24893,14 +24882,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
-"tYT" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	desc = "Huh, it doesn't seem to go anywhere.";
-	name = "Architectural oversight";
-	req_access_txt = "100"
-	},
-/turf/open/floor/plating,
-/area/shiva/interior/colony/central)
 "tZs" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -45474,7 +45455,7 @@ puZ
 (105,1,1) = {"
 aad
 aad
-tYT
+aad
 aad
 axz
 axz
@@ -53253,7 +53234,7 @@ acT
 ajO
 ajO
 acT
-eIW
+agA
 akS
 aoK
 aoK

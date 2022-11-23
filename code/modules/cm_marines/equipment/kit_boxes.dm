@@ -528,4 +528,4 @@
 /obj/item/storage/box/kit/engineering_supply_kit/fill_preset_inventory()
 	new /obj/item/storage/pouch/construction/low_grade_full(src)
 	new /obj/item/storage/pouch/electronics/full(src)
-	new /obj/item/tool/weldingtool/simple(src)
+	new /obj/item/clothing/glasses/welding(src)

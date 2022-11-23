@@ -1,0 +1,6 @@
+author: "carlarc, DrMacCool"
+delete-after: True
+changes:
+  - rscadd: "Defenders when tail slamming will have their direction turn to a random side to imply spinning their tail into the target's face."
+  - rscadd: "Other castes will instead look backwards for to show their tail extending out and stabbing."
+  - rscadd: "Defenders also now have a custom on-target slash animation for tail slam."

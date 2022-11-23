@@ -10371,15 +10371,6 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
-"fgA" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Security Checkpoint";
-	req_access = null
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/atmos/north_command_centre)
 "fgB" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 18;
@@ -23062,25 +23053,6 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
-"kpk" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/lv522/atmos/east_reactor/south)
-"kpl" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	layer = 3.1;
-	tag = "icon-WY 0,0"
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/lv522/atmos/east_reactor/south)
 "kpm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure{
@@ -26411,10 +26383,6 @@
 	tag = "icon-floor_marked (SOUTHWEST)"
 	},
 /area/lv522/outdoors/colony_streets/north_west_street)
-"lCX" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/closed/wall/mineral/bone_resin,
-/area/lv522/atmos/east_reactor/south)
 "lDc" = (
 /obj/structure/barricade/deployable{
 	dir = 8
@@ -69087,13 +69055,13 @@ uIW
 uIW
 uIW
 uIW
+uIW
+qNl
 qNl
 uIW
 uIW
 uIW
-qNl
-qNl
-qNl
+uIW
 gmt
 uIW
 uIW
@@ -69313,12 +69281,12 @@ uIW
 uIW
 uIW
 uIW
+uIW
 qNl
 qNl
-qNl
-qNl
-qNl
-qNl
+uIW
+uIW
+uIW
 uIW
 uIW
 gmt
@@ -69541,9 +69509,9 @@ uIW
 uIW
 uIW
 uIW
-qNl
 uIW
-qNl
+uIW
+uIW
 eAg
 eOn
 eOn
@@ -71574,7 +71542,7 @@ cpy
 cpy
 tiQ
 xho
-xho
+yeS
 xho
 yeS
 xho
@@ -78162,7 +78130,7 @@ xho
 xho
 cNV
 cNV
-fgA
+unt
 unt
 unt
 xSM
@@ -81131,8 +81099,8 @@ gnd
 qTE
 xmD
 hna
-vjl
-vjl
+yiu
+yiu
 vjl
 xmD
 xmD
@@ -81358,8 +81326,8 @@ qUQ
 qjG
 xmD
 hna
-vjl
-vjl
+yiu
+yiu
 vIS
 vIS
 vIS
@@ -81369,7 +81337,7 @@ vIS
 gnA
 gwK
 knS
-vjl
+yiu
 vjl
 vjl
 ljQ
@@ -81594,8 +81562,8 @@ mrc
 wXA
 wXA
 mAC
-vjl
-vjl
+yiu
+yiu
 vjl
 vjl
 vjl
@@ -81819,9 +81787,9 @@ wXA
 wXA
 gck
 yiu
-vjl
-vjl
-vjl
+yiu
+yiu
+yiu
 vjl
 vjl
 vjl
@@ -82045,14 +82013,14 @@ yiu
 yiu
 yiu
 nqe
+yiu
+yiu
+yiu
 vjl
 vjl
 vjl
 vjl
-vjl
-vjl
-vjl
-vjl
+yiu
 yiu
 pEm
 xwZ
@@ -82273,9 +82241,9 @@ yiu
 yiu
 nqe
 yiu
-vjl
-vjl
-vjl
+yiu
+yiu
+yiu
 vjl
 vjl
 yiu
@@ -82501,7 +82469,7 @@ yiu
 nqe
 yiu
 yiu
-vjl
+yiu
 vjl
 vjl
 vjl
@@ -82728,7 +82696,7 @@ yiu
 nqe
 yiu
 yiu
-vjl
+yiu
 vjl
 vjl
 vjl
@@ -82954,11 +82922,11 @@ vjl
 yiu
 nqe
 yiu
+yiu
 vjl
 vjl
 vjl
-vjl
-vjl
+yiu
 yiu
 yiu
 xzu
@@ -83182,9 +83150,9 @@ yiu
 nqe
 yiu
 yiu
+yiu
 vjl
-vjl
-vjl
+yiu
 xzu
 yiu
 yiu
@@ -83409,8 +83377,8 @@ yiu
 nqe
 yiu
 yiu
-vjl
-vjl
+yiu
+yiu
 xzu
 mrc
 wXA
@@ -83641,7 +83609,7 @@ wXA
 wXA
 mAC
 yiu
-vjl
+yiu
 yiu
 yiu
 nqe
@@ -83868,9 +83836,9 @@ yiu
 yiu
 yiu
 yiu
-vjl
 yiu
-vjl
+yiu
+yiu
 nqe
 yiu
 pEm
@@ -84095,9 +84063,9 @@ yiu
 yiu
 yiu
 yiu
-vjl
-vjl
-vjl
+yiu
+yiu
+yiu
 mbq
 lXQ
 yiu
@@ -84319,12 +84287,12 @@ vjl
 vjl
 yiu
 yiu
-kpk
 yiu
-vjl
-vjl
-vjl
-lCX
+yiu
+yiu
+yiu
+yiu
+wea
 yiu
 nqe
 xzu
@@ -84546,11 +84514,11 @@ vjl
 vjl
 vjl
 yiu
-kpl
 yiu
 yiu
-vjl
-vjl
+yiu
+yiu
+yiu
 yiu
 yiu
 nqe
@@ -85920,8 +85888,8 @@ mnw
 qjG
 yiu
 yiu
-vjl
-vjl
+yiu
+yiu
 vjl
 vjl
 yaj
@@ -86148,7 +86116,7 @@ pHT
 wXA
 wXA
 lXQ
-vjl
+yiu
 uTf
 hef
 nzj
@@ -87053,9 +87021,9 @@ kFo
 maj
 mqf
 yiu
-vjl
 yiu
-vjl
+yiu
+yiu
 yiu
 hLY
 xmD
@@ -87280,9 +87248,9 @@ vjl
 fkL
 mql
 lcP
-vjl
-vjl
-vjl
+yiu
+yiu
+yiu
 yiu
 hLY
 xmD
@@ -87507,8 +87475,8 @@ vjl
 nqe
 yiu
 lcP
-vjl
-vjl
+yiu
+yiu
 yiu
 yiu
 hLY
@@ -87735,7 +87703,7 @@ nqe
 yiu
 yiu
 yiu
-vjl
+yiu
 yiu
 yiu
 hLY
@@ -88184,8 +88152,8 @@ wea
 yiu
 yiu
 yiu
-vjl
-vjl
+yiu
+yiu
 mbq
 lXQ
 wea
@@ -88411,9 +88379,9 @@ yiu
 yiu
 yiu
 yiu
-vjl
-vjl
-vjl
+yiu
+yiu
+yiu
 nqe
 yiu
 yiu
@@ -88639,7 +88607,7 @@ yaj
 yiu
 yiu
 kEL
-vjl
+yiu
 yiu
 nqe
 yiu

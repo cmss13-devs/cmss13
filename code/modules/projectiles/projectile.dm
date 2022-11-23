@@ -213,7 +213,7 @@
 			if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_MOB_SKIPPING, H) & COMPONENT_SKIP_MOB\
 				|| runtime_iff_group && H.get_target_lock(runtime_iff_group)\
 			)
-			projectile_flags &= ~PROJECTILE_HOMING
+				projectile_flags &= ~PROJECTILE_HOMING
 
 	src.speed = speed
 	// Randomize speed by a small factor to help bullet animations look okay

@@ -91,7 +91,6 @@
 	action_icon_state = "tail_attack"
 	ability_name = "tail trip"
 	charge_time = 0.5 SECONDS
-	xeno_cooldown = 15 SECONDS
 
 	max_stab_dist = 2
 
@@ -104,7 +103,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pike
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 10 //4 SECONDS
+	xeno_cooldown = 4 SECONDS
 
 	//Config
 
@@ -115,12 +114,6 @@
 	 /// Extra damage on every additional enemy hit by the pike.
 	var/bonus_dmg = 15
 
-	// Duration of on-pike effects.
-
-	var/slow_dur = 1.5 SECONDS
-	var/sslow_dur = 2 SECONDS
-	var/paralyze_dur = 2.5 SECONDS
-
 /datum/action/xeno_action/onclick/bulwark
 	name = "Bulwark"
 	action_icon_state = "rav_shard_shield"
@@ -129,7 +122,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 0
-	xeno_cooldown = 10//15 SECONDS
+	xeno_cooldown = 25 SECONDS // effectively 15, starts on activate
 
 	/// Config
 
@@ -145,7 +138,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
-	xeno_cooldown = 10 //9 SECONDS
+	xeno_cooldown = 7 SECONDS
 
 	freeze_self = FALSE
 	distance = 3 //tiles
@@ -170,4 +163,4 @@
 	macro_path = /datum/action/xeno_action/verb/place_construction
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
-	xeno_cooldown = 100 //2 MINUTES
+	xeno_cooldown = 2 MINUTES

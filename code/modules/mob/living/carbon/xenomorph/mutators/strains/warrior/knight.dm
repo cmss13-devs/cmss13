@@ -37,6 +37,7 @@
 	MS.recalculate_actions(description, flavor_description)
 	Knight.recalculate_everything()
 
+	Knight.mutation_icon_state = WARRIOR_KNIGHT
 	Knight.mutation_type = WARRIOR_KNIGHT
 	GLOB.living_knight_list += WEAKREF(Knight)
 

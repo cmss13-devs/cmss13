@@ -385,9 +385,6 @@
 	new_character.name = real_name
 	new_character.voice = real_name
 
-	if(client.prefs.disabilities)
-		new_character.disabilities |= NEARSIGHTED
-
 	// Update the character icons
 	// This is done in set_species when the mob is created as well, but
 	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/regenerate_icons)

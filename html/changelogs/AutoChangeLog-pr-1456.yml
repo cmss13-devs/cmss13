@@ -1,0 +1,6 @@
+author: "mullenpaul"
+delete-after: True
+changes:
+  - refactor: "squad info page is now TGUI"
+  - refactor: "squad info icons are generated and coloured through stylesheet"
+  - refactor: "squad info page now shows primary and secondary objectives"

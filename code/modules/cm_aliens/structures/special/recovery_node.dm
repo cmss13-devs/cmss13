@@ -54,6 +54,7 @@ GLOBAL_LIST_EMPTY_TYPED(existing_holdfast_list, /obj/effect/alien/resin/special/
 	COOLDOWN_DECLARE(noisy_fx) //7 SECONDS
 	var/buff_fx_on = FALSE
 	var/mob/living/carbon/Xenomorph/Warrior/bound_knight
+	var/list/current_buffed_knights
 
 /obj/effect/alien/resin/special/recovery/holdfast/Initialize(mapload, hive_ref)
 	. = ..()
@@ -66,18 +67,18 @@ GLOBAL_LIST_EMPTY_TYPED(existing_holdfast_list, /obj/effect/alien/resin/special/
 /obj/effect/alien/resin/special/recovery/holdfast/Destroy(mapload, hive_ref)
 
 	if(bound_knight)
-		to_chat(bound_knight, SPAN_HIGHDANGER("Your holdfast node breaks! You will have to wait to replace it."))
+		to_chat(bound_knight, SPAN_XENOHIGHDANGER("Your holdfast node breaks! You will have to wait to replace it."))
 		var/datum/behavior_delegate/warrior_knight/bound_knight_delegate = bound_knight.behavior_delegate
+		bound_knight_delegate.apply_node_cooldown()
 		if(bound_knight_delegate.bound_node)
 			bound_knight_delegate.bound_node = null
 
 	//Send a signal to every Knight so their buffs are instantaneously removed if necessary.
-	for(var/datum/weakref/ref as anything in GLOB.living_knight_list)
-		var/mob/living/carbon/Xenomorph/Warrior/list_Knight = ref.resolve()
-		SEND_SIGNAL(list_Knight, COMSIG_HOLDFAST_NODE_PULSE)
+	for(var/mob/living/carbon/Xenomorph/Warrior/buffed_Knight as anything in src.current_buffed_knights)
+		SEND_SIGNAL(buffed_Knight, COMSIG_HOLDFAST_NODE_PULSE)
 
-	//apply_cooldown_override(click_miss_cooldown)
 	bound_knight = null
+	current_buffed_knights = null
 	GLOB.existing_holdfast_list -= WEAKREF(src)
 	. = ..()
 
@@ -95,7 +96,7 @@ GLOBAL_LIST_EMPTY_TYPED(existing_holdfast_list, /obj/effect/alien/resin/special/
 		visible_message(SPAN_HELPFUL("\The [src] shines brightly!"))
 
 /obj/effect/alien/resin/special/recovery/holdfast/proc/debuff_fx()
-	if(buff_fx_on == FALSE)
+	if(buff_fx_on == FALSE || length(current_buffed_knights)) //will not cease glowing if theres currently buffed knights
 		return
 	buff_fx_on = FALSE
 	if(COOLDOWN_FINISHED(src, noisy_fx))

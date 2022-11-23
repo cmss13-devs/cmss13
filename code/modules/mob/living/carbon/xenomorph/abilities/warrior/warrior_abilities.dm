@@ -154,15 +154,13 @@
 	knockdown = FALSE
 	knockdown_duration = 0.5 // i'll be real this is jank bypass (more jank)
 
-	var/leap_knock_dur = 0.5 //SECONDS - already ran as seconds in proc
-	var/leap_slow_dur = 1 SECONDS
+	var/leap_knock_dur = 1 //SECONDS - already ran as seconds in proc
 
 	var/atom/pounce_to
 	var/atom/pounce_from
 
 //todo animate the leap so it looks like a leap. itd go hard
-//todo make anim marker at the target also this doesnt work
-/datum/action/xeno_action/activable/pounce/knight_leap/initialize_pounce_pass_flags()
+/datum/action/xeno_action/activable/pounce/leap/initialize_pounce_pass_flags()
 	pounce_pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB
 
 /datum/action/xeno_action/activable/plant_holdfast
@@ -172,3 +170,4 @@
 	macro_path = /datum/action/xeno_action/verb/place_construction
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
+	xeno_cooldown = 100 //2 MINUTES

@@ -117,7 +117,7 @@
 		return FALSE
 
 // Supplemental behavior for our charge
-/datum/action/xeno_action/activable/pounce/charge/additional_effects(mob/living/L)
+/datum/action/xeno_action/activable/pounce/charge/pre_pounce_additional_effects(mob/living/L)
 
 	var/mob/living/carbon/human/H = L
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -464,7 +464,7 @@
 		shield.shrapnel_amount = shield_shrapnel_amount
 		xeno.overlay_shields()
 
-	xeno.create_shield(shield_duration)
+	xeno.create_shield_image(shield_duration)
 	shield_active = TRUE
 	button.icon_state = "template_active"
 	addtimer(CALLBACK(src, .proc/remove_shield), shield_duration)

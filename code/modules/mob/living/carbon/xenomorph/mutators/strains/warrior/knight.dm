@@ -27,10 +27,12 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Warrior/Knight = MS.xeno
-	Knight.speed_modifier -= XENO_SPEED_FASTMOD_TIER_1
-	Knight.health_modifier += XENO_HEALTH_MOD_SMALL
+	Knight.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
+	Knight.health_modifier += XENO_HEALTH_MOD_MED
 	Knight.armor_modifier += XENO_ARMOR_MOD_SMALL
+	Knight.explosivearmor_modifier += XENO_EXPLOSIVE_ARMOR_TIER_4
 	Knight.claw_type = CLAW_TYPE_SHARP
+	Knight.plasma_types = list(PLASMA_CHITIN)
 	mutator_update_actions(Knight)
 	MS.recalculate_actions(description, flavor_description)
 	Knight.recalculate_everything()
@@ -68,20 +70,25 @@
 			GLOB.existing_holdfast_list -= WEAKREF(holdfast_node)
 			continue
 
+		if(!holdfast_node.linked_hive.is_ally(Knight))
+			break
+
 		// if they're near the holdfast node, stop iterating through the existing nodes as it's meaningless now
 		if(get_dist(Knight, holdfast_node) <= 4)
 			if(abilities_enhanced == FALSE)
 				buff()
+				LAZYADD(holdfast_node.current_buffed_knights, Knight)
 				holdfast_node.buff_fx()
 			passed_dist_check = TRUE // no matter what at this point we know the check passed
 			break
 		else
+			LAZYREMOVE(holdfast_node.current_buffed_knights, Knight)
 			holdfast_node.debuff_fx()
 
 	if(passed_dist_check == FALSE && abilities_enhanced == TRUE) //if they werent near ANY nodes... remove the buff (if applicable)
 		debuff()
 
-/datum/behavior_delegate/warrior_knight // caste color - cyan? find smth that matches woyer purple?
+/datum/behavior_delegate/warrior_knight
 	name = "Warrior Knight Behavior Delegate"
 
 	 /// If the Knight has chess-leaped onto a victim - they have been owned and will be stomped on. This var is jank meant to bypass bad pounce code.
@@ -117,3 +124,13 @@
 		bound_xeno.visible_message(SPAN_DANGER("\The [bound_xeno] ceases glowing."), SPAN_DANGER("Your feeling of ardor dissipates. Your abilities weaken and are no longer enhanced."))
 		COOLDOWN_START(src, toggle_msg_cd, 14 SECONDS)
 	bound_xeno.remove_filter("holdfast_buff")
+
+/datum/behavior_delegate/warrior_knight/proc/apply_node_cooldown()
+	var/mob/living/carbon/Xenomorph/Warrior/Knight = bound_xeno
+
+	var/datum/action/xeno_action/activable/plant_holdfast/node_ability = locate(/datum/action/xeno_action/activable/plant_holdfast) in bound_xeno.actions
+
+	if(!node_ability)
+		CRASH("No holdfast node ability found on bound knight's actions? Delegate:[src] Knight:[Knight]")
+
+	node_ability.apply_cooldown(cooldown_modifier = 0.25)

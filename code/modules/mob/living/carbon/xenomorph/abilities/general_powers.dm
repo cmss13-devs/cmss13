@@ -408,7 +408,7 @@
 			X.update_canmove()
 		pre_windup_effects()
 
-		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if (!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(X, SPAN_XENODANGER("You cancel your [ability_name]!"))
 			if (!windup_interruptable)
 				X.frozen = FALSE
@@ -440,7 +440,7 @@
 
 	X.update_icons()
 
-	additional_effects_always()
+	pounce_additional_effects_always()
 	..()
 
 	return TRUE
@@ -916,6 +916,15 @@
 	if(!check_and_use_plasma_owner())
 		return FALSE
 
+	var/result = ability_act(stabbing_xeno, target, limb)
+
+	apply_cooldown()
+	xeno_attack_delay(stabbing_xeno)
+	..()
+	return result
+
+/datum/action/xeno_action/activable/tail_stab/proc/ability_act(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/mob/living/carbon/target, var/obj/limb/limb)
+
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
 	if(blunt_stab)
@@ -942,8 +951,4 @@
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
 
-	apply_cooldown()
-	xeno_attack_delay(stabbing_xeno)
-
-	..()
 	return target

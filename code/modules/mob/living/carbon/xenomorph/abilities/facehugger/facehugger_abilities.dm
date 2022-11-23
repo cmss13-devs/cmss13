@@ -11,8 +11,7 @@
 	// Config options
 	knockdown = TRUE
 	knockdown_duration = 0.5
-	windup = TRUE
-	windup_duration = 10
+	windup = 10
 	freeze_self = TRUE
 	freeze_time = 5
 	freeze_play_sound = FALSE

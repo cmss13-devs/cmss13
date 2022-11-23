@@ -48,7 +48,7 @@
 	C.mutation_type = CARRIER_SHAMAN
 	C.shaman_interactive = FALSE
 	C.ignores_pheromones = TRUE
-	apply_behavior_holder(C)
+	apply_behavior_delegate(C)
 	mutator_update_actions(C)
 	MS.recalculate_actions(description, flavor_description)
 	C.phero_modifier = -C.caste.aura_strength

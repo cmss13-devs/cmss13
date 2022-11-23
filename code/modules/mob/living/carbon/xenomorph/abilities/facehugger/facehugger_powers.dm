@@ -1,4 +1,4 @@
-/datum/action/xeno_action/activable/pounce/facehugger/additional_effects_always()
+/datum/action/xeno_action/activable/pounce/facehugger/pounce_additional_effects_always()
 	..()
 
 	var/mob/living/carbon/Xenomorph/facehugger = owner
@@ -6,7 +6,7 @@
 		return
 	facehugger.update_icons()
 
-/datum/action/xeno_action/activable/pounce/facehugger/additional_effects(mob/living/L)
+/datum/action/xeno_action/activable/pounce/facehugger/pre_pounce_additional_effects(mob/living/L)
 	if(!ishuman(L))
 		return
 

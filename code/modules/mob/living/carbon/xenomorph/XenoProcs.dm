@@ -303,6 +303,7 @@
 				throwing = FALSE
 				return
 
+	pounceAction.pre_pounce_additional_effects(M)
 
 	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("You [pounceAction.ability_name] onto [M]!"), null, 5)
 
@@ -317,7 +318,7 @@
 		frozen = TRUE
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, .proc/unfreeze), pounceAction.freeze_time, TIMER_STOPPABLE)
 
-	pounceAction.additional_effects(M)
+	pounceAction.post_pounce_additional_effects(M)
 
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)

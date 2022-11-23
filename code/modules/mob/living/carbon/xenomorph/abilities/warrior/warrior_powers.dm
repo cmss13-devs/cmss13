@@ -188,6 +188,22 @@
 	shake_camera(H, 2, 1)
 	step_away(H, X, 2)
 
+/datum/action/xeno_action/activable/tail_stab/tail_trip/ability_act(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/mob/living/carbon/target)
+
+	stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] trips [target] with its tail!"), SPAN_XENOWARNING("You swipe your tail into [target]'s legs, tripping it!"))
+	stabbing_xeno.spin_circle()
+	stabbing_xeno.emote("tail")
+
+	stabbing_xeno.animation_attack_on(target)
+	stabbing_xeno.flick_attack_overlay(target, "disarm")
+
+	target.apply_effect(trip_dur, WEAKEN)
+	new /datum/effects/xeno_slow(target, stabbing_xeno, null, null, trip_dur * 2 SECONDS)
+
+	shake_camera(target, 2, 1)
+
+	return target
+
 /datum/action/xeno_action/activable/pike/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/zenomorf = owner
 
@@ -202,6 +218,8 @@
 
 	var/datum/behavior_delegate/warrior_knight/knight_delegate = zenomorf.behavior_delegate
 
+/*
+/datum/action/xeno_action/activable/pike/coment()
 	// Get line of turfs
 	var/list/turf/target_turfs = list()
 
@@ -229,6 +247,52 @@
 			break
 
 		T = temp
+		target_turfs += T
+		if(x == pike_len && knight_delegate.abilities_enhanced == TRUE) //If we reach the last tile and are enhanced, apply unique effects.
+			telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/silver(T, 0.25 SECONDS)
+		else
+			var/obj/effect/xenomorph/xeno_telegraph/silver/telegraf = new(T, 0.25 SECONDS)
+			telegraf.color = "#4ADBC1"
+			telegraph_atom_list += telegraf
+
+	// Extract our 'optimal' turf, if it exists
+	if (target_turfs.len >= 2)
+		zenomorf.animation_attack_on(target_turfs[target_turfs.len], 15)
+*/
+
+// Get line of turfs
+	var/list/turf/target_turfs = list()
+
+	var/facing = Get_Compass_Dir(zenomorf, A)
+	var/turf/T = zenomorf.loc
+	var/turf/temp = zenomorf.loc
+	var/list/telegraph_atom_list = list()
+
+	for (var/x in 1 to pike_len)
+		temp = get_step(T, facing)
+		if(facing in diagonals) // check if it goes through corners
+			var/reverse_face = reverse_dir[facing]
+			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
+			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
+			if((!back_left || back_left.density) && (!back_right || back_right.density))
+				break
+		if(!temp || temp.density || temp.opacity)
+			break
+
+		var/blocked = FALSE
+		for(var/obj/structure/S in temp)
+			if(S.opacity || (istype(S, /obj/structure/barricade) && S.density))
+				blocked = TRUE
+				break
+		if(blocked)
+			break
+
+		T = temp
+
+		if (T in target_turfs)
+			break
+
+		facing = get_dir(T, A)
 		target_turfs += T
 		if(x == pike_len && knight_delegate.abilities_enhanced == TRUE) //If we reach the last tile and are enhanced, apply unique effects.
 			telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/silver(T, 0.25 SECONDS)
@@ -274,22 +338,6 @@
 			playsound(get_turf(C), "alien_claw_flesh", 30, TRUE)
 		var/extra_dmg = bonus_dmg * max(bonus_max, bonus - 1) // 1 - 0 bonus dmg / 2 - 10 bonus dmg / 3 - 20 bonus dmg / ENHANCED 4 - 30 bonus dmg. I don't expect any of these to be common, but it's soulful and immersive*
 		C.apply_armoured_damage(pike_damage + extra_dmg, ARMOR_MELEE, BRUTE)
-		switch(bonus)
-			if(1)
-				new /datum/effects/xeno_slow(C, zenomorf, ttl = slow_dur)
-			if(2)
-				new /datum/effects/xeno_slow/superslow(C, zenomorf, ttl = sslow_dur)
-//			if(3 to INF)
-//				new /datum/effects/boiler_trap(C, zenomorf, ttl = paralyze_dur) BLUH.
-			if(3 to INFINITY)
-				C.frozen = TRUE
-				C.update_canmove()
-				if (ishuman(C))
-					var/mob/living/carbon/human/Hu = C
-					Hu.update_xeno_hostile_hud()
-
-				addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, C), paralyze_dur)
-
 
 	apply_cooldown(cd_mod)
 	..()
@@ -320,7 +368,7 @@
 		img_color = "#4ADBC1"
 
 	RegisterSignal(xeno, COMSIG_XENO_BULLET_ACT, .proc/reduce_damage)
-	RegisterSignal(xeno, list(COMSIG_MOB_APPLY_EFFECT, COMSIG_MOB_ADJUST_EFFECT, COMSIG_MOB_SET_EFFECT), .proc/reduce_stuns)
+	RegisterSignal(xeno, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT), .proc/reduce_stuns)
 
 	button.icon_state = "template_active"
 	button.color = img_color
@@ -384,7 +432,7 @@
 	button.icon_state = "template"
 
 	UnregisterSignal(xeno, COMSIG_XENO_BULLET_ACT)
-	UnregisterSignal(xeno, list(COMSIG_MOB_APPLY_EFFECT, COMSIG_MOB_ADJUST_EFFECT, COMSIG_MOB_SET_EFFECT))
+	UnregisterSignal(xeno, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT))
 
 	to_chat(xeno, SPAN_XENODANGER("You feel your defensive shell dissipate!"))
 	xeno.overlay_shields()
@@ -429,13 +477,19 @@
 	if(knight_delegate.owned)
 		playsound(get_turf(zenomorf), 'sound/effects/bang.ogg', 25, FALSE)
 		zenomorf.create_stomp()
-		zenomorf.visible_message(SPAN_XENODANGER("The [zenomorf] slams directly on top of [L], stomping on them heavily!"), SPAN_XENODANGER("You use your shield to bash [L] as you charge at them!"))
-		L.apply_armoured_damage(rand(zenomorf.melee_damage_lower, zenomorf.melee_damage_upper) * 2, ARMOR_MELEE, BRUTE)
-		L.apply_effect(3, WEAKEN)
 		knight_delegate.owned = FALSE
-
-		L.apply_effect(leap_knock_dur, WEAKEN)
-		new /datum/effects/xeno_slow(L, zenomorf, ttl = leap_slow_dur)
+		if(knight_delegate.abilities_enhanced)
+			zenomorf.visible_message(SPAN_XENODANGER("The [zenomorf] heavily leaps directly onto [L], stunning and throwing them back!"), SPAN_XENODANGER("You heavily leap directly onto [L], stunning and throwing them back!"))
+			L.apply_effect(leap_knock_dur, WEAKEN)
+			L.apply_armoured_damage(rand(zenomorf.melee_damage_lower, zenomorf.melee_damage_upper) * 2, ARMOR_MELEE, BRUTE)
+		else
+			zenomorf.visible_message(SPAN_XENODANGER("The [zenomorf] leaps directly onto [L], throwing them back!"), SPAN_XENODANGER("You leap directly onto [L], throwing them back!"))
+			L.apply_armoured_damage(rand(zenomorf.melee_damage_lower, zenomorf.melee_damage_upper), ARMOR_MELEE, BRUTE)
+		if(isXeno(L))
+			L.emote("roar")
+		else
+			L.emote("scream")
+		xeno_throw_human(L, zenomorf, zenomorf.dir, 2)
 		knockdown = FALSE
 	return
 
@@ -453,8 +507,7 @@
 
 	if(knight_delegate.bound_node)
 		to_chat(zenomorf, SPAN_WARNING("You've already placed a holdfast node. Destroy it?"))
-		//var/answer = tgui_input_list(zenomorf, "Destroy your current holdfast node?", "Select", list("Yes", "No"), theme = "hive_status")
-		var/answer = tgui_alert(zenomorf, "This message will self-destruct in three seconds", "Destroy your current holdfast node?", list("Yes", "No"), 3 SECONDS)
+		var/answer = tgui_alert(zenomorf, "This message will self-destruct in three seconds", "Destroy your holdfast node?", list("Yes", "No"), 3 SECONDS)
 		if(answer == "Yes")
 			QDEL_NULL(knight_delegate.bound_node)
 		return

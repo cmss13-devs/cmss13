@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - refactor: "Refactored battlefield executions using a new point blank signal"

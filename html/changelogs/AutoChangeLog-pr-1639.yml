@@ -1,0 +1,5 @@
+author: "kugamo"
+delete-after: True
+changes:
+  - imageadd: "New playable facehugger sprites, now with creepy crawly animations."
+  - code_imp: "Facehuggers can now scuttle under doors, but cannot pounce while doing so; Fixing a runtime."

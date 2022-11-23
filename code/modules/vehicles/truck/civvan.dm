@@ -1,6 +1,6 @@
 /obj/vehicle/multitile/civvan
 	name = "Civilian van"
-	desc = "A rather cheep hunk of metal with some wheels, you know what to do. Entrance on the sides."
+	desc = "A rather cheap hunk of metal with some wheels, you know what to do. Entrance on the sides."
 
 	layer = ABOVE_XENO_LAYER
 	vehicle_flags = VEHICLE_CLASS_WEAK

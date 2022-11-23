@@ -20,8 +20,6 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
-	AddComponent(/datum/component/water_overlay)
-
 /mob/living/carbon/human/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)

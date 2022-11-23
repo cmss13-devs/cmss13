@@ -7,7 +7,7 @@
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
-	var/does_give_mob_overlays = FALSE //used to determine if to give mobs that cross it overlay effecst
+	var/grants_overlay_effect = FALSE //used to determine if to give mobs that cross it overlay effects, set to the icon_state of the effect to add
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
@@ -75,13 +75,11 @@
 
 /turf/open/Entered(atom/movable/A)
 	. = ..()
-	if(does_give_mob_overlays)
-		SEND_SIGNAL(A, COMSIG_UPDATE_MOB_EFFECTS_FROM_TURF, src, TRUE)
-
-/turf/open/Exited(atom/movable/A, newloc)
-	. = ..()
-	if(does_give_mob_overlays && istype(newloc, type))
-		SEND_SIGNAL(A, COMSIG_UPDATE_MOB_EFFECTS_FROM_TURF, src, FALSE)
+	if(grants_overlay_effect)
+		if(ishuman(A))
+			var/datum/component/turf_overlay_effect/found_component = A.GetComponent(/datum/component/turf_overlay_effect)
+			if(!found_component || found_component.parent_turf.type != src.type)
+				A.AddComponent(/datum/component/turf_overlay_effect, src)
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void
@@ -294,7 +292,7 @@
 	var/no_overlay = FALSE
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
-	does_give_mob_overlays = TRUE
+	grants_overlay_effect = "seashallow"
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -402,6 +400,7 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
+	grants_overlay_effect = "beach"
 
 
 /turf/open/gm/riverdeep
@@ -410,6 +409,7 @@
 	can_bloody = FALSE
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
+	grants_overlay_effect = "seadeep"
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)

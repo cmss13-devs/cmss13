@@ -4137,6 +4137,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1/ceiling)
+"cuF" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/lv522/atmos/north_command_centre)
 "cuY" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison{
@@ -5033,6 +5039,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/hallway/damage)
+"cNV" = (
+/turf/closed/wall,
+/area/lv522/atmos/north_command_centre)
 "cOA" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -6678,6 +6687,9 @@
 	icon_state = "kitchen"
 	},
 /area/lv522/indoors/a_block/kitchen)
+"dxU" = (
+/turf/closed/wall,
+/area/lv522/atmos/east_reactor/west)
 "dxY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -69518,7 +69530,7 @@ cpy
 cpy
 cpy
 wYo
-wYo
+vAi
 bXq
 vAi
 vAi
@@ -69744,9 +69756,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-wYo
-wYo
+tiQ
+vAi
+vAi
 uPc
 vAi
 vAi
@@ -69971,9 +69983,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-wYo
+tiQ
+vAi
+vAi
 vAi
 vAi
 vAi
@@ -70198,12 +70210,12 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+cNV
 vSJ
 vSJ
 vSJ
+cNV
 wYo
 qNl
 qNl
@@ -70425,9 +70437,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+xho
 xho
 xho
 xho
@@ -70652,9 +70664,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+yeS
 xho
 yeS
 xho
@@ -70879,9 +70891,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+kwJ
 faZ
 kwJ
 xho
@@ -71106,9 +71118,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+kwJ
 xho
 kwJ
 xho
@@ -71333,9 +71345,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+kwJ
 xho
 kwJ
 xho
@@ -71560,9 +71572,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+xho
 xho
 yeS
 xho
@@ -71787,9 +71799,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+kwJ
 xho
 kwJ
 xho
@@ -72014,9 +72026,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+kwJ
 xho
 kwJ
 faZ
@@ -72241,9 +72253,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+kwJ
 xho
 kwJ
 xho
@@ -72468,9 +72480,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+yeS
 xho
 yeS
 xho
@@ -72695,9 +72707,9 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+xho
+xho
 xho
 xho
 xho
@@ -72922,12 +72934,12 @@ cpy
 cpy
 cpy
 cpy
-cpy
-cpy
-tnm
+tiQ
+cNV
 vSJ
 vSJ
 vSJ
+cNV
 tnm
 dcm
 dtr
@@ -73149,13 +73161,13 @@ cpy
 cpy
 cpy
 cpy
-cpy
-tnm
-tnm
+tiQ
 xho
 xho
 xho
-tnm
+xho
+xho
+cNV
 dyl
 dwG
 otQ
@@ -73377,12 +73389,12 @@ cpy
 cpy
 cpy
 tnm
-tnm
+xho
 xho
 xho
 kwJ
 xho
-tnm
+cNV
 aqI
 uqt
 otQ
@@ -73609,7 +73621,7 @@ xho
 uTj
 cBi
 xho
-tnm
+cNV
 dcB
 uqt
 otQ
@@ -73836,7 +73848,7 @@ uTj
 kkZ
 oML
 xho
-tnm
+cNV
 eGs
 dwG
 otQ
@@ -74063,7 +74075,7 @@ ote
 jJa
 gTw
 xho
-tnm
+cNV
 lxW
 dya
 otQ
@@ -74290,7 +74302,7 @@ yeS
 oML
 xho
 xho
-tnm
+cNV
 fcV
 dya
 otQ
@@ -74516,9 +74528,9 @@ yeS
 yeS
 oML
 xho
-tnm
-tnm
-tnm
+cNV
+cNV
+cNV
 fsj
 xho
 xho
@@ -75651,9 +75663,9 @@ yeS
 yeS
 oML
 xho
-tnm
-tnm
-tnm
+cNV
+cNV
+cNV
 cCC
 xho
 xho
@@ -75879,7 +75891,7 @@ yeS
 oML
 xho
 xho
-tnm
+cNV
 lxW
 dCx
 dtr
@@ -76106,7 +76118,7 @@ yeS
 epI
 cBi
 xho
-tnm
+cNV
 fcV
 dCx
 otQ
@@ -76333,7 +76345,7 @@ yeS
 yeS
 oML
 xho
-tnm
+cNV
 hBg
 otQ
 otQ
@@ -76560,7 +76572,7 @@ yeS
 yeS
 oML
 xho
-tnm
+cNV
 xho
 otQ
 otQ
@@ -76787,7 +76799,7 @@ yeS
 yeS
 oML
 xho
-tnm
+cNV
 xho
 otQ
 otQ
@@ -77922,7 +77934,7 @@ enG
 gTw
 xho
 xho
-tnm
+cNV
 unt
 unt
 unt
@@ -78148,8 +78160,8 @@ jJa
 gTw
 xho
 xho
-tnm
-tnm
+cNV
+cNV
 fgA
 unt
 unt
@@ -78373,9 +78385,9 @@ vDV
 aut
 gTw
 xho
-tnm
-tnm
-cJy
+cNV
+cNV
+dxU
 cSb
 qUQ
 xSM
@@ -78599,10 +78611,10 @@ tnm
 vDV
 xho
 xho
-tnm
-yeQ
-yeQ
-cJy
+cNV
+cNV
+cNV
+dxU
 cSb
 dcD
 dDC
@@ -78824,12 +78836,12 @@ cpy
 cpy
 tnm
 aQU
-yeQ
-yeQ
-yeQ
-yeQ
-yeQ
-cJy
+cuF
+cNV
+cNV
+cNV
+cNV
+dxU
 qUQ
 jth
 kbV
@@ -79052,9 +79064,9 @@ cpy
 yeQ
 wvV
 xLm
-yeQ
+cNV
 enT
-yeQ
+cNV
 enT
 dOa
 jur

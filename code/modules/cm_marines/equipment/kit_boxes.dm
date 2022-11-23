@@ -521,3 +521,11 @@
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)
+
+/obj/item/storage/box/kit/engineering_supply_kit
+	name = "\improper Engineering Supply Kit"
+
+/obj/item/storage/box/kit/spotter/fill_preset_inventory()
+	new /obj/item/storage/pouch/construction/low_grade_full(src)
+	new /obj/item/storage/pouch/electronics/full(src)
+	new /obj/item/tool/weldingtool/simple(src)

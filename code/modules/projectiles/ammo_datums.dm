@@ -1864,7 +1864,7 @@
 	accurate_range = 7
 	max_range = 7
 	damage = 15
-	shell_speed = AMMO_SPEED_TIER_1
+	shell_speed = AMMO_SPEED_TIER_2
 
 /datum/ammo/rocket/New()
 	..()
@@ -2065,6 +2065,7 @@
 
 	damage = 100
 	max_range = 32
+	shell_speed = AMMO_SPEED_TIER_3
 
 /datum/ammo/rocket/wp/quad/on_hit_mob(mob/M, obj/item/projectile/P)
 	drop_flame(get_turf(M), P.weapon_cause_data)

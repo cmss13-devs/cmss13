@@ -311,14 +311,6 @@
 		speed = 0
 		return TRUE
 
-	// Rocket acceleration with distance traveled
-	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
-	if(ammo_flags & AMMO_ROCKET)
-		if(speed < 3 && distance_travelled > 8)
-			speed = 3 	//Need for speed.
-		else if(speed < 2 && distance_travelled > 2)
-			speed = 2
-
 	// Track homing target if we can't reach it by adjusting - it should connect next tick
 	if((projectile_flags & PROJECTILE_HOMING) && distance_travelled * 2 >= length(path))
 		current_turf = get_turf(src)

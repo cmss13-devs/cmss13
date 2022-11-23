@@ -118,7 +118,7 @@
 
 			to_chat(user, SPAN_NOTICE("You fill [src] with [trans] units of the contents of [target]."))
 		else
-			if(is_open_container())
+			if(is_open_container_or_can_be_dispensed_into())
 				if(reagents && !reagents.total_volume)
 					to_chat(user, SPAN_WARNING("[src] is empty."))
 					return
@@ -551,8 +551,10 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/pressurized_canister/update_icon()
+	color = COLOR_WHITE
 	if(reagents)
 		color = mix_color_from_reagents(reagents.reagent_list)
+	..()
 
 /obj/item/reagent_container/glass/bucket
 	desc = "It's a bucket. Holds 120 units."

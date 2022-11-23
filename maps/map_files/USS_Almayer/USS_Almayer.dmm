@@ -64504,6 +64504,14 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
+"pzG" = (
+/obj/docking_port/stationary/emergency_response/port1,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/shipboard/starboard_point_defense)
 "pzO" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 13
@@ -113907,7 +113915,7 @@ aaa
 aab
 aaa
 aKR
-aKS
+pzG
 aKT
 aKT
 aKT

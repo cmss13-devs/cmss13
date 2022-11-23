@@ -525,7 +525,7 @@
 /obj/item/storage/box/kit/engineering_supply_kit
 	name = "\improper Engineering Supply Kit"
 
-/obj/item/storage/box/kit/spotter/fill_preset_inventory()
+/obj/item/storage/box/kit/engineering_supply_kit/fill_preset_inventory()
 	new /obj/item/storage/pouch/construction/low_grade_full(src)
 	new /obj/item/storage/pouch/electronics/full(src)
 	new /obj/item/tool/weldingtool/simple(src)

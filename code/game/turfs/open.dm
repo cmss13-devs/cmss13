@@ -119,9 +119,9 @@
 			if(1)
 				. += "Lightly Toasted."
 			if(2)
-				. += "Medium Roasted"
+				. += "Medium Roasted."
 			if(3)
-				. += "Well Done"
+				. += "Well Done."
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void

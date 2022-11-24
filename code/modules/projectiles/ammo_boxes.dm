@@ -353,6 +353,16 @@
 /obj/item/ammo_box/magazine/explosive/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/heap
+	name = "magazine box (HEAP M41A x 10)"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_expl"
+	overlay_content = "_expl"
+	magazine_type = /obj/item/ammo_magazine/rifle/heap
+
+/obj/item/ammo_box/magazine/heap/empty
+	empty = TRUE
+
 //-----------------------M39 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m39
@@ -385,6 +395,15 @@
 	magazine_type = /obj/item/ammo_magazine/smg/m39/extended
 
 /obj/item/ammo_box/magazine/m39/ext/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m39/heap
+	name = "magazine box (HEAP m39 x 12)"
+	overlay_ammo_type = "_expl"
+	overlay_content = "_expl"
+	magazine_type = /obj/item/ammo_magazine/smg/m39/heap
+
+/obj/item/ammo_box/magazine/m39/heap/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m39/incen
@@ -425,6 +444,15 @@
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/ap
 
 /obj/item/ammo_box/magazine/l42a/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l42a/heap
+	name = "magazine box (HEAP L42A x 16)"
+	overlay_ammo_type = "_expl"
+	overlay_content = "_expl"
+	magazine_type = /obj/item/ammo_magazine/rifle/l42a/heap
+
+/obj/item/ammo_box/magazine/l42a/heap/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l42a/le
@@ -659,6 +687,15 @@
 	magazine_type = /obj/item/ammo_magazine/rifle/type71/ap
 
 /obj/item/ammo_box/magazine/type71/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/type71/heap
+	name = "magazine box (Type71 HEAP x 10)"
+	overlay_ammo_type = "_type71_heap"
+	overlay_content = "_type71_heap"
+	magazine_type = /obj/item/ammo_magazine/rifle/type71/heap
+
+/obj/item/ammo_box/magazine/type71/heap/empty
 	empty = TRUE
 
 //-----------------------Nailgun Mag Box-----------------------
@@ -1099,6 +1136,15 @@
 /obj/item/ammo_box/rounds/incen/empty
 	empty = TRUE
 
+/obj/item/ammo_box/rounds/heap
+	name = "rifle ammunition box (10x24mm HEAP)"
+	desc = "A 10x24mm high-explosive armor-piercing ammunition box. Used to refill magazines. It comes with a leather strap allowing to wear it on the back."
+	overlay_content = "_expl"
+	default_ammo = /datum/ammo/bullet/rifle/heap
+
+/obj/item/ammo_box/rounds/heap/empty
+	empty = TRUE
+
 //----------------10x20mm Ammunition Boxes (for M39 SMG)------------------
 
 /obj/item/ammo_box/rounds/smg
@@ -1132,6 +1178,16 @@
 /obj/item/ammo_box/rounds/smg/le/empty
 	empty = TRUE
 
+/obj/item/ammo_box/rounds/smg/heap
+	name = "SMG ammunition box (10x20mm HEAP)"
+	desc = "A 10x20mm armor-piercing high-explosive ammunition box. Used to refill M39 HEAP magazines. It comes with a leather strap allowing to wear it on the back."
+	caliber = "10x20mm"
+	overlay_content = "_expl"
+	default_ammo = /datum/ammo/bullet/smg/heap
+
+/obj/item/ammo_box/rounds/smg/heap/empty
+	empty = TRUE
+
 /obj/item/ammo_box/rounds/smg/incen
 	name = "SMG ammunition box (10x20mm Incen)"
 	desc = "A 10x20mm incendiary ammunition box. Used to refill M39 incendiary magazines. It comes with a leather strap allowing to wear it on the back."
@@ -1153,7 +1209,7 @@
 	overlay_gun_type = "_rounds_type71"
 	overlay_content = "_type71_reg"
 	caliber = "5.45x39mm"
-	default_ammo = /datum/ammo/bullet/rifle
+	default_ammo = /datum/ammo/bullet/rifle/type71
 
 /obj/item/ammo_box/rounds/type71/empty
 	empty = TRUE
@@ -1164,9 +1220,20 @@
 	icon_state = "base_type71"
 	overlay_gun_type = "_rounds_type71"
 	overlay_content = "_type71_ap"
-	default_ammo = /datum/ammo/bullet/rifle/ap
+	default_ammo = /datum/ammo/bullet/rifle/type71/ap
 
 /obj/item/ammo_box/rounds/type71/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/rounds/type71/heap
+	name = "rifle ammunition box (5.45x39mm HEAP)"
+	desc = "A 5.45x39mm high-explosive armor-piercing ammunition box. Used to refill Type71 HEAP magazines. It comes with a leather strap allowing to wear it on the back."
+	icon_state = "base_type71"
+	overlay_gun_type = "_rounds_type71"
+	overlay_content = "_type71_heap"
+	default_ammo = /datum/ammo/bullet/rifle/type71/heap
+
+/obj/item/ammo_box/rounds/type71/heap/empty
 	empty = TRUE
 
 //-----------------------------------------------------------------------------------

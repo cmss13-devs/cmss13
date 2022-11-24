@@ -745,6 +745,14 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 
+/datum/ammo/bullet/smg/heap
+	name = "high-explosive armor-piercing submachinegun bullet"
+
+	damage = 45
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
+	penetration = ARMOR_PENETRATION_TIER_6
+	shell_speed = AMMO_SPEED_TIER_4
+
 /datum/ammo/bullet/smg/ap/toxin
 	name = "toxic submachinegun bullet"
 	var/acid_per_hit = 5
@@ -986,6 +994,13 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 	pen_armor_punch = 5
 
+/datum/ammo/bullet/rifle/heap
+	name = "high-explosive armor-piercing rifle bullet"
+
+	headshot_state	= HEADSHOT_OVERLAY_HEAVY
+	damage = 55//big damage, doesn't actually blow up because thats stupid.
+	penetration = ARMOR_PENETRATION_TIER_8
+
 /datum/ammo/bullet/rifle/rubber
 	name = "rubber rifle bullet"
 	sound_override = 'sound/weapons/gun_c99.ogg'
@@ -1068,6 +1083,13 @@
 
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/rifle/type71/heap
+	name = "heavy high-explosive armor-piercing rifle bullet"
+
+	headshot_state	= HEADSHOT_OVERLAY_HEAVY
+	damage = 50
+	penetration = ARMOR_PENETRATION_TIER_8
 
 /*
 //======

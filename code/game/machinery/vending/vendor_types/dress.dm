@@ -210,6 +210,10 @@
 
 	return chosen
 
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(var/obj/item/item_type)
+	for(var/obj/item/I as anything in typesof(item_type))
+		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+
 /client/proc/cmd_admin_add_items_to_vendor(var/obj/structure/machinery/cm_vending/clothing/super_snowflake/selected)
 	set name = "Add Items To Vendor"
 	set category = null
@@ -224,10 +228,6 @@
 
 	log_admin("[key_name(src)] added an item [chosen] to [selected].")
 	msg_admin_niche("[key_name(src)] added an item [chosen] to [selected].")
-
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(var/obj/item/item_type)
-	for(var/obj/item/I as anything in typesof(item_type))
-		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
 	name = "\improper Super Snowflake Vendor, Uniforms"

@@ -8,7 +8,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("L42A Sniper Kit", 0, /obj/item/storage/box/kit/mini_sniper, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("M240 Pyrotechnician Support Kit", 0, /obj/item/storage/box/kit/mini_pyro, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("M2C Heavy Machine Gun", 0, /obj/item/storage/box/guncase/m2c, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
-		list("M41A Pulse Rifle MK1", 0, /obj/item/storage/box/guncase/m41aMK1, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Heavy Pulse Rifle", 0, /obj/item/storage/box/guncase/lmg, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("M56D Heavy Machine Gun", 0, /obj/item/storage/box/guncase/m56d, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("M79 Grenade Launcher", 0, /obj/item/storage/box/guncase/m79, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),

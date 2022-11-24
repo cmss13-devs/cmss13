@@ -6,7 +6,7 @@
 		return
 	facehugger.update_icons(TRUE)
 
-/datum/action/xeno_action/activable/pounce/facehugger/additional_effects(mob/living/L)
+/datum/action/xeno_action/activable/pounce/facehugger/post_pounce_additional_effects(mob/living/L)
 	if(!ishuman(L))
 		return
 

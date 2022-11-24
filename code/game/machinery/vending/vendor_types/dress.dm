@@ -167,64 +167,88 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 10
 	var/list/items
-	var/obj/item_type
+	var/list/obj/item/item_types
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/get_listed_products(mob/user)
 	//If we don't have an object type, we ask the user to supply it
-	if(!item_type)
-		var/item = tgui_input_text(usr,"What item to stock?", "Stock Vendor","")
-		if(!item)
-			return
-		var/list/types = typesof(/obj)
-		var/list/matches = new()
-
-		//Figure out which object they might be trying to fetch
-		for(var/path in types)
-			if(findtext("[path]", item))
-				matches += path
-
-		if(matches.len==0)
-			return
-
-		var/chosen
-		if(matches.len==1)
-			chosen = matches[1]
-		else
-			//If we have multiple options, let them select which one they meant
-			chosen = tgui_input_list(usr, "Select an object type", "Select Object", matches)
-
+	if(!item_types)
+		var/obj/item/chosen = get_item_category_from_mob(user)
 		if(!chosen)
 			return
-
-		item_type = chosen
+		item_types = list(chosen)
+		to_world("item_types - [item_types.len]")
 
 	if(!items)
+		to_world("item_types - [item_types.len]")
 		items = list()
-		for(var/obj/item/I as anything in typesof(item_type))
-			items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+		for(var/obj/item/item_type as anything in item_types)
+			add_items(item_type)
 
 	return items
 
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/get_item_category_from_mob(mob/user)
+	var/item = tgui_input_text(usr,"What item to stock?", "Stock Vendor","")
+	if(!item)
+		return
+	var/list/types = typesof(/obj/item)
+	var/list/matches = new()
+
+	//Figure out which object they might be trying to fetch
+	for(var/path in types)
+		if(findtext("[path]", item))
+			matches += path
+
+	if(matches.len==0)
+		return
+
+	var/obj/item/chosen
+	if(matches.len==1)
+		chosen = matches[1]
+	else
+		//If we have multiple options, let them select which one they meant
+		chosen = tgui_input_list(usr, "Select an object type", "Select Object", matches)
+
+	return chosen
+
+/client/proc/cmd_admin_add_items_to_vendor(var/obj/structure/machinery/cm_vending/clothing/super_snowflake/selected)
+	set name = "Add Items To Vendor"
+	set category = null
+
+	if(!check_rights(R_MOD))
+		return
+
+	var/obj/item/chosen = selected.get_item_category_from_mob(mob)
+	if(!chosen)
+		return
+	selected.add_items(chosen)
+
+	log_admin("[key_name(src)] added an item [chosen] to [selected].")
+	msg_admin_niche("[key_name(src)] added an item [chosen] to [selected].")
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(var/obj/item/item_type)
+	for(var/obj/item/I as anything in typesof(item_type))
+		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
 	name = "\improper Super Snowflake Vendor, Uniforms"
-	item_type = /obj/item/clothing/under
+	item_types = list(/obj/item/clothing/under)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/glasses
 	name = "\improper Super Snowflake Vendor, Glasses"
-	item_type = /obj/item/clothing/glasses
+	item_types = list(/obj/item/clothing/glasses)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes
 	name = "\improper Super Snowflake Vendor, Shoes"
-	item_type = /obj/item/clothing/shoes
+	item_types = list(/obj/item/clothing/shoes)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/helmet
 	name = "\improper Super Snowflake Vendor, Helmets"
-	item_type = /obj/item/clothing/head
+	item_types = list(/obj/item/clothing/head)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/suit
 	name = "\improper Super Snowflake Vendor, Suits"
-	item_type = /obj/item/clothing/suit
+	item_types = list(/obj/item/clothing/suit)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack
 	name = "\improper Super Snowflake Vendor, Backpacks"
-	item_type = /obj/item/storage/backpack
+	item_types = list(/obj/item/storage/backpack)

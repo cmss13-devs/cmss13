@@ -1,0 +1,5 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed a bug with machinery mishandling clicks in statpanel."
+  - bugfix: "Machinery now require fine manipulation to be used. As of current this means Humans only (including Yautjas/Synth/Monkeys, but minus Zombies)."

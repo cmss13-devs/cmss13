@@ -158,7 +158,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	original = original || original_override || target
 	if(!loc)
-		if (projectile_flags & PROJECTILE_SHRAPNEL)
+		if (!(projectile_flags & PROJECTILE_SHRAPNEL))
 			var/move_turf = get_turf(F)
 			if(move_turf)
 				forceMove(move_turf)

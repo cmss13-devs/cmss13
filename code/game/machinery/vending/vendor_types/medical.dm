@@ -34,16 +34,8 @@
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless
 
-		/obj/item/reagent_container/glass/bottle/bicaridine,
-		/obj/item/reagent_container/glass/bottle/antitoxin,
-		/obj/item/reagent_container/glass/bottle/dexalin,
-		/obj/item/reagent_container/glass/bottle/inaprovaline,
-		/obj/item/reagent_container/glass/bottle/kelotane,
-		/obj/item/reagent_container/glass/bottle/oxycodone,
-		/obj/item/reagent_container/glass/bottle/peridaxon,
-		/obj/item/reagent_container/glass/bottle/tramadol,
 		)
 	var/list/stack_refill = list(
 		/obj/item/stack/medical/advanced/ointment,
@@ -176,16 +168,6 @@
 		list("Autoinjector (QuickClot)", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/quickclot, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tricord)", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
-
-		list("LIQUID BOTTLES", -1, null, null),
-		list("Bottle (Bicaridine)", round(scale * 5), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
-		list("Bottle (Dylovene)", round(scale * 5), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
-		list("Bottle (Dexalin)", round(scale * 5), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
-		list("Bottle (Inaprovaline)", round(scale * 5), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Bottle (Kelotane)", round(scale * 5), 	/obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
-		list("Bottle (Oxycodone)", round(scale * 5), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
-		list("Bottle (Peridaxon)", round(scale * 5), /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
-		list("Bottle (Tramadol)", round(scale * 5), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("PILL BOTTLES", -1, null, null),
 		list("Pill Bottle (Bicaridine)", round(scale * 3), /obj/item/storage/pill_bottle/bicaridine, VENDOR_ITEM_REGULAR),
@@ -356,16 +338,11 @@
 
 	chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/ointment
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat

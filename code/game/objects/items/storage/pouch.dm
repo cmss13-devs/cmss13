@@ -234,7 +234,7 @@
 	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
-	new /obj/item/storage/pill_bottle/packet/tramadol(src)
+	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 
 /obj/item/storage/pouch/firstaid/ert
 	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
@@ -709,9 +709,9 @@
 
 /obj/item/storage/pouch/first_responder
 	name = "first responder pouch"
-	desc = "A pouch designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
+	desc = "A pouch designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, gauze, stasis bags, and health analysers."
 	icon_state = "frt_med"
-	storage_slots = 4
+	storage_slots = 5
 
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
@@ -728,9 +728,9 @@
 /obj/item/storage/pouch/first_responder/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/roller(src)
-	new /obj/item/tool/extinguisher/mini(src)
+	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/bodybag/cryobag(src)
-
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 
 /obj/item/storage/pouch/vials
 	name = "vial pouch"

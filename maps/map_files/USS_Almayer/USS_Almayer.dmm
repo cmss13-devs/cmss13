@@ -13067,7 +13067,7 @@
 	icon_state = "plating";
 	tag = "icon-blue (NORTHEAST)"
 	},
-/area/shuttle/distress/arrive_1)
+/area/almayer/ert_port)
 "aKU" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -64511,7 +64511,7 @@
 	icon_state = "plating";
 	tag = "icon-blue (NORTHEAST)"
 	},
-/area/almayer/shipboard/starboard_point_defense)
+/area/almayer/ert_port)
 "pzO" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 13
@@ -114118,7 +114118,7 @@ aaa
 aab
 aaa
 aKR
-aKS
+aKT
 aKT
 aKT
 aKT
@@ -114930,7 +114930,7 @@ aaa
 aab
 aaa
 aKR
-aKS
+aKT
 aKT
 aKT
 aKT
@@ -115133,7 +115133,7 @@ aaa
 aab
 aaa
 aKR
-aKS
+aKT
 aKT
 aKT
 aKT

@@ -117,6 +117,20 @@
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/tdome)
+"aF" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/obj/docking_port/stationary/emergency_response/transit,
+/turf/open/space/transit/north/shuttlespace_ns11,
+/area/almayer/ert_port)
 "aG" = (
 /turf/open/space/transit/north/shuttlespace_ns10,
 /area/space)
@@ -206,7 +220,7 @@
 /area/space)
 "ba" = (
 /turf/open/space,
-/area/shuttle/distress/transit)
+/area/almayer/ert_port)
 "be" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -1162,9 +1176,9 @@
 /turf/open/floor/plating,
 /area/space/almayer/lifeboat_dock)
 "hP" = (
-/obj/docking_port/stationary/emergency_response/port1,
+/obj/docking_port/stationary/emergency_response/idle_port1,
 /turf/open/floor/plating,
-/area/adminlevel/ert_station)
+/area/almayer/ert_port)
 "hU" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy18"
@@ -4213,6 +4227,9 @@
 "Ji" = (
 /turf/open/space/transit/east/shuttlespace_ew13,
 /area/space)
+"Jl" = (
+/turf/open/floor/plating,
+/area/almayer/ert_port)
 "Jo" = (
 /obj/structure/machinery/door/poddoor/shutters/transit{
 	id = "s_engi"
@@ -4234,6 +4251,19 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"JH" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/north/shuttlespace_ns11,
+/area/almayer/ert_port)
 "JT" = (
 /obj/structure/sink{
 	dir = 8;
@@ -5222,6 +5252,19 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"Yt" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/north/shuttlespace_ns9,
+/area/almayer/ert_port)
 "Yu" = (
 /obj/structure/bed/sofa/vert/grey,
 /obj/effect/decal/cleanable/dirt,
@@ -6352,19 +6395,19 @@ aa
 wW
 KW
 FB
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 hP
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
 FB
 Fo
 wW
@@ -6504,19 +6547,19 @@ aa
 wW
 KW
 FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -6656,19 +6699,19 @@ aa
 wW
 KW
 FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -6808,19 +6851,19 @@ aa
 wW
 KW
 FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -6960,19 +7003,19 @@ aa
 wW
 KW
 FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -7112,19 +7155,19 @@ aa
 wW
 KW
 FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -7264,19 +7307,19 @@ aa
 wW
 KW
 FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -12510,7 +12553,7 @@ Ou
 aO
 aQ
 aP
-aY
+aF
 ba
 ba
 ba
@@ -12662,7 +12705,7 @@ bS
 aN
 aP
 aT
-aZ
+Yt
 ba
 ba
 ba
@@ -13270,7 +13313,7 @@ bS
 aN
 aP
 aT
-aZ
+Yt
 ba
 ba
 ba
@@ -13422,7 +13465,7 @@ Ou
 aO
 aQ
 aP
-aY
+JH
 ba
 ba
 ba

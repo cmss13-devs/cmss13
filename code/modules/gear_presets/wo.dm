@@ -17,7 +17,7 @@
 
 	assignment = JOB_WO_CO
 	rank = JOB_WO_CO
-	paygrade = "MO4"
+	paygrade = "MO2"
 	role_comm_title = "CO"
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
@@ -96,7 +96,7 @@
 
 	assignment = JOB_WO_XO
 	rank = JOB_WO_XO
-	paygrade = "MO3"
+	paygrade = "MO1"
 	role_comm_title = "XO"
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
@@ -284,7 +284,7 @@
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
 	assignment = JOB_WO_PILOT
 	rank = JOB_WO_PILOT
-	paygrade = "ME2"
+	paygrade = "ME3"
 	role_comm_title = "MC"
 	skills = /datum/skills/mortar_crew
 
@@ -317,7 +317,7 @@
 	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_BRIDGE)
 	assignment = JOB_WO_CHIEF_REQUISITION
 	rank = JOB_WO_CHIEF_REQUISITION
-	paygrade = "MO2"
+	paygrade = "ME7"
 	role_comm_title = "QM"
 	skills = /datum/skills/RO
 	idtype = /obj/item/card/id/silver

@@ -1,5 +1,0 @@
-author: "Sleepynecrons"
-delete-after: True
-changes:
-  - bugfix: "fixed suppressor attachments not lining up with weapon barrels"
-  - bugfix: "fixed L42 rail and underbarrel attachments being too far back/high on the gun"

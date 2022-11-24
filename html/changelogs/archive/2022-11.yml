@@ -473,3 +473,29 @@
   - bugfix: corrected the layering for eggs and stairs.
   kugamo:
   - bugfix: Fixed Grey wardrobe missing open sprite.
+2022-11-24:
+  Morrow:
+  - refactor: Refactored battlefield executions using a new point blank signal
+  Sleepynecrons:
+  - bugfix: fixed suppressor attachments not lining up with weapon barrels
+  - bugfix: fixed L42 rail and underbarrel attachments being too far back/high on
+      the gun
+  - imageadd: New icons for cats and the kitten. Added onmob icons for Jones when
+      holding in hands.
+  - imagedel: Removed old icons for cats and kitten
+  - code_imp: Added a holder for the kitten so object sprites and descriptions are
+      consistent when picking one up.
+  carlarc, DrMacCool:
+  - rscadd: Defenders when tail slamming will have their direction turn to a random
+      side to imply spinning their tail into the target's face.
+  - rscadd: Other castes will instead look backwards for to show their tail extending
+      out and stabbing.
+  - rscadd: Defenders also now have a custom on-target slash animation for tail slam.
+  kugamo:
+  - imageadd: New playable facehugger sprites, now with creepy crawly animations.
+  - code_imp: Facehuggers can now scuttle under doors, but cannot pounce while doing
+      so; Fixing a runtime.
+  mullenpaul:
+  - refactor: squad info page is now TGUI
+  - refactor: squad info icons are generated and coloured through stylesheet
+  - refactor: squad info page now shows primary and secondary objectives

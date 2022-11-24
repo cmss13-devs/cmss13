@@ -16228,10 +16228,6 @@
 "hJZ" = (
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"hKd" = (
-/obj/structure/machinery/door/airlock/almayer/engineering,
-/turf/closed/wall/mineral/bone_resin,
-/area/lv522/atmos/west_reactor)
 "hKj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -17135,10 +17131,6 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/filt)
-"iaC" = (
-/obj/structure/window/framed/corsat,
-/turf/open/floor/corsat,
-/area/lv522/atmos/west_reactor)
 "iaY" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -17459,16 +17451,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/lv522/outdoors/colony_streets/north_west_street)
-"ijp" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	layer = 3.1;
-	tag = "icon-gorg 0,0"
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/lv522/atmos/west_reactor)
 "ijv" = (
 /obj/structure/bed/sofa/vert/grey/bot,
 /obj/effect/decal/cleanable/dirt,
@@ -17530,15 +17512,6 @@
 	},
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
-"iks" = (
-/obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/lv522/atmos/west_reactor)
 "ikw" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison{
@@ -17546,16 +17519,6 @@
 	icon_state = "blue_plate"
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
-"ikB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/prop/almayer/computers/sensor_computer1,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/lv522/oob)
 "ikT" = (
 /obj/structure/window_frame/strata,
 /obj/item/shard{
@@ -17575,15 +17538,6 @@
 "ild" = (
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"ile" = (
-/obj/structure/prop/almayer/computers/sensor_computer2,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/lv522/oob)
 "ily" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -18667,14 +18621,6 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/filt)
-"iIF" = (
-/obj/structure/prop/server_equipment/broken{
-	pixel_y = 16
-	},
-/turf/open/floor/corsat{
-	icon_state = "brown"
-	},
-/area/lv522/oob)
 "iIG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -18701,15 +18647,6 @@
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_2)
-"iIU" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1;
-	tag = "icon-comfychair (NORTH)"
-	},
-/turf/open/floor/corsat{
-	icon_state = "brown"
-	},
-/area/lv522/oob)
 "iIY" = (
 /obj/item/shard{
 	icon_state = "medium"
@@ -18798,16 +18735,6 @@
 	icon_state = "white_cyan1"
 	},
 /area/lv522/indoors/a_block/corpo/glass)
-"iKL" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1;
-	tag = "icon-comfychair (NORTH)"
-	},
-/turf/open/floor/corsat{
-	dir = 8;
-	icon_state = "browncorner"
-	},
-/area/lv522/oob)
 "iKN" = (
 /turf/open/floor/corsat{
 	icon_state = "brown"
@@ -19347,12 +19274,6 @@
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/landing_zone_2)
-"iWR" = (
-/obj/structure/machinery/door/airlock/almayer/engineering,
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/atmos/west_reactor)
 "iWZ" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
@@ -62696,7 +62617,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 uIW
 uIW
 uIW
@@ -62922,8 +62843,6 @@ qNl
 qNl
 qNl
 qNl
-qNl
-qNl
 uIW
 uIW
 uIW
@@ -62931,7 +62850,9 @@ uIW
 uIW
 uIW
 uIW
-qNl
+uIW
+uIW
+uIW
 qNl
 qNl
 qNl
@@ -63148,8 +63069,8 @@ qNl
 qNl
 qNl
 qNl
-qNl
-qNl
+uIW
+uIW
 uIW
 uIW
 uIW
@@ -63158,7 +63079,7 @@ qNl
 uIW
 iJA
 uIW
-qNl
+uIW
 uIW
 qNl
 qNl
@@ -63374,8 +63295,8 @@ qNl
 qNl
 qNl
 qNl
-qNl
-qNl
+uIW
+uIW
 uIW
 uIW
 uIW
@@ -63600,8 +63521,6 @@ qNl
 qNl
 qNl
 qNl
-qNl
-qNl
 uIW
 uIW
 uIW
@@ -63615,11 +63534,13 @@ uIW
 uIW
 uIW
 uIW
-qNl
 uIW
 uIW
 uIW
-qNl
+uIW
+uIW
+uIW
+uIW
 doP
 hnD
 qNl
@@ -63827,8 +63748,8 @@ qNl
 qNl
 qNl
 qNl
-qNl
-qNl
+uIW
+uIW
 uIW
 uIW
 uIW
@@ -64054,7 +63975,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 iJA
 uIW
 dnQ
@@ -64078,7 +63999,7 @@ uIW
 uIW
 hTh
 qNl
-ijp
+qNl
 qNl
 qNl
 qNl
@@ -64281,7 +64202,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 uIW
 uIW
 hTh
@@ -64305,7 +64226,7 @@ uIW
 uIW
 doP
 hnD
-iks
+qNl
 qNl
 qNl
 oJS
@@ -64508,7 +64429,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 uIW
 uIW
 hTh
@@ -64735,7 +64656,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 uIW
 uIW
 hTh
@@ -64759,7 +64680,7 @@ uIW
 uIW
 uIW
 uIW
-qNl
+uIW
 qNl
 qNl
 qYG
@@ -64963,7 +64884,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 uIW
 hTh
 uPc
@@ -64986,7 +64907,7 @@ uIW
 uIW
 uIW
 uIW
-qNl
+uIW
 qNl
 qNl
 qYG
@@ -65189,7 +65110,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 uIW
 uIW
 doC
@@ -65213,9 +65134,9 @@ fzL
 fzL
 fzL
 fzL
-wYo
-wYo
-hKd
+qNl
+qNl
+qNl
 qYG
 jqz
 fTS
@@ -65415,7 +65336,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 uIW
 uIW
 uIW
@@ -65436,12 +65357,12 @@ uIW
 uIW
 uIW
 uIW
+uIW
+uIW
+uIW
+uIW
 qNl
-uIW
-uIW
-wYo
-wYo
-iIF
+qNl
 qNl
 wYo
 wYo
@@ -65641,7 +65562,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 uIW
 uIW
 uIW
@@ -65663,12 +65584,12 @@ giF
 mTd
 mTd
 mTd
-qNl
-qNl
+mTd
 uIW
-iaC
-ikB
-iIU
+uIW
+qNl
+qNl
+qNl
 qNl
 qNl
 qNl
@@ -65868,8 +65789,8 @@ qNl
 qNl
 qNl
 qNl
-qNl
-qNl
+uIW
+uIW
 uIW
 uIW
 uIW
@@ -65891,11 +65812,11 @@ dWT
 vAi
 vAi
 mTd
+uIW
+uIW
 qNl
 qNl
-iaC
-ile
-iKL
+qNl
 qNl
 qNl
 qNl
@@ -66096,7 +66017,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 uIW
 uIW
 uIW
@@ -66119,8 +66040,8 @@ vAi
 vAi
 mTd
 uIW
-qNl
-iaC
+uIW
+uIW
 qNl
 qNl
 qNl
@@ -66322,7 +66243,7 @@ qNl
 qNl
 qNl
 qNl
-qNl
+uIW
 uIW
 uIW
 uIW
@@ -66346,8 +66267,8 @@ bXq
 vAi
 mTd
 uIW
-qNl
-qNl
+uIW
+uIW
 qNl
 qNl
 qNl
@@ -66548,9 +66469,9 @@ qNl
 qNl
 qNl
 qNl
-qNl
-qNl
-qNl
+uIW
+uIW
+uIW
 uIW
 iJA
 uIW
@@ -66572,9 +66493,9 @@ vAi
 vAi
 vAi
 mTd
-qNl
-qNl
-iaC
+uIW
+uIW
+uIW
 qNl
 qNl
 qNl
@@ -66775,9 +66696,9 @@ qNl
 qNl
 qNl
 qNl
-qNl
-qNl
-qNl
+uIW
+uIW
+uIW
 uIW
 uIW
 uIW
@@ -66799,9 +66720,9 @@ mTd
 mTd
 mTd
 mTd
-qNl
 uIW
-iaC
+uIW
+qNl
 qNl
 qNl
 qNl
@@ -67001,11 +66922,11 @@ qNl
 qNl
 qNl
 qNl
-qNl
-qNl
-qNl
-qNl
-qNl
+uIW
+uIW
+uIW
+uIW
+uIW
 uIW
 uIW
 doC
@@ -67227,11 +67148,11 @@ qNl
 qNl
 qNl
 qNl
-qNl
-qNl
-qNl
 uIW
-qNl
+uIW
+uIW
+uIW
+uIW
 uIW
 uIW
 uIW
@@ -67258,7 +67179,7 @@ fTs
 fTs
 wYo
 wYo
-iWR
+qNl
 qYG
 jrT
 qYG
@@ -67453,9 +67374,9 @@ wYo
 qNl
 qNl
 qNl
-qNl
-qNl
-qNl
+uIW
+uIW
+uIW
 uIW
 uIW
 uIW
@@ -67477,7 +67398,7 @@ nDz
 uIW
 uIW
 uIW
-qNl
+uIW
 uIW
 uIW
 uIW
@@ -67485,7 +67406,7 @@ uIW
 uIW
 dnQ
 fGJ
-vAi
+qNl
 qYG
 xZL
 jSR
@@ -67680,8 +67601,8 @@ wYo
 qNl
 qNl
 qNl
-qNl
-qNl
+uIW
+uIW
 uIW
 uIW
 uIW
@@ -67703,7 +67624,7 @@ uPc
 nDz
 uIW
 uIW
-qNl
+uIW
 qNl
 uIW
 iJA
@@ -67907,7 +67828,7 @@ wYo
 qNl
 qNl
 qNl
-qNl
+ssn
 uIW
 iJA
 uIW
@@ -67930,11 +67851,11 @@ wYo
 nDz
 uIW
 uIW
+uIW
 qNl
 qNl
 qNl
-qNl
-qNl
+uIW
 uIW
 dnQ
 fGJ
@@ -68133,8 +68054,8 @@ cpy
 cpy
 qNl
 qNl
-qNl
-qNl
+vAi
+bcP
 ssn
 uIW
 uIW
@@ -68156,11 +68077,11 @@ wYo
 fwo
 nDz
 uIW
+uIW
 qNl
 qNl
 qNl
-qNl
-qNl
+uIW
 uIW
 dnQ
 fGJ
@@ -68360,7 +68281,7 @@ cpy
 cpy
 wYo
 wYo
-qNl
+vAi
 vAi
 bco
 uIW
@@ -68384,9 +68305,9 @@ uPc
 nDz
 uIW
 uIW
+uIW
 qNl
-qNl
-qNl
+uIW
 uIW
 uIW
 hTh
@@ -68612,7 +68533,7 @@ fGH
 uIW
 uIW
 uIW
-qNl
+uIW
 uIW
 uIW
 dnQ
@@ -79273,7 +79194,7 @@ dZA
 dZA
 kbV
 xSM
-xSM
+tjg
 tjg
 gPq
 dFT
@@ -79497,10 +79418,10 @@ tjg
 tjg
 kbV
 kbV
+kbV
 xSM
 xSM
-xSM
-xSM
+tjg
 tjg
 gPq
 tjg
@@ -79723,12 +79644,12 @@ jth
 tjg
 tjg
 kbV
+kbV
 xSM
 xSM
 xSM
-xSM
-xSM
-xSM
+kbV
+kbV
 gPq
 tjg
 tjg
@@ -79949,13 +79870,13 @@ jur
 jth
 fsC
 kbV
+kbV
 xSM
 xSM
 xSM
-xSM
-xSM
-xSM
-xSM
+kbV
+kbV
+kbV
 gPq
 fsC
 kbV
@@ -80175,13 +80096,13 @@ dOa
 qUQ
 jth
 tjg
+tjg
+kbV
+kbV
 xSM
 xSM
 xSM
-xSM
-xSM
-xSM
-xSM
+kbV
 kbV
 gPq
 tjg
@@ -80402,12 +80323,12 @@ dOa
 qUQ
 jth
 tjg
+tjg
+kbV
 xSM
 xSM
 xSM
-xSM
-xSM
-xSM
+kbV
 kbV
 kbV
 gPq
@@ -80629,11 +80550,11 @@ dOa
 qUQ
 jth
 kbV
+kbV
 xSM
 xSM
 xSM
-xSM
-xSM
+kbV
 fsC
 kbV
 kbV
@@ -80856,11 +80777,11 @@ dZs
 jur
 jth
 tjg
+tjg
+kbV
 xSM
 xSM
-xSM
-xSM
-xSM
+kbV
 kbV
 kbV
 kbV
@@ -81083,9 +81004,9 @@ dZs
 qUQ
 ddN
 tjg
-xSM
-xSM
-xSM
+tjg
+kbV
+kbV
 xSM
 xSM
 kbV
@@ -81311,11 +81232,11 @@ qUQ
 jth
 tjg
 tjg
-xSM
-xSM
-xSM
-xSM
-xSM
+kbV
+kbV
+kbV
+kbV
+kbV
 kbV
 kbV
 gPq
@@ -81539,11 +81460,11 @@ jth
 tjg
 dQm
 kbV
-xSM
-xSM
-xSM
-xSM
-xSM
+kbV
+kbV
+kbV
+kbV
+kbV
 fsC
 gPq
 kbV
@@ -81768,8 +81689,8 @@ kbV
 kbV
 tjg
 tjg
-xSM
-xSM
+tjg
+tjg
 eHR
 bVF
 frZ

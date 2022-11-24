@@ -1,5 +1,3 @@
-#define TGS_STATUS_THROTTLE 5
-
 /datum/tgs_chat_command/status
 	name = "status"
 	help_text = "Gets the admincount, playercount, gamemode, and true game mode of the server"
@@ -8,9 +6,19 @@
 /datum/tgs_chat_command/status/Run(datum/tgs_chat_user/sender, params)
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["total"]
-	var/status = "Admins: [allmins.len] (Active: [english_list(adm["present"])] AFK: [english_list(adm["afk"])] Stealth: [english_list(adm["stealth"])] Skipped: [english_list(adm["noflags"])]). "
-	status += "Players: [GLOB.clients.len] (Active: [get_active_player_count(0,1,0)]). Round has [SSticker.HasRoundStarted() ? "" : "not "]started."
-	return status
+	var/gamemode = "Unknown"
+	if(!SSticker.mode) // That'd mean round didn't start yet, usually.
+		gamemode = "Lobby"
+	else
+		gamemode = SSticker.mode.name
+	var/status = "\
+	**Admins:** [allmins.len ? "[allmins.len] (Active: [english_list(adm["present"], nothing_text = "N/A")] AFK: [english_list(adm["afk"], nothing_text = "N/A")] Stealth: [english_list(adm["stealth"], nothing_text = "N/A")] Skipped: [english_list(adm["noflags"], nothing_text = "N/A")])" : "None"].\
+	\n**Players:** [GLOB.clients.len]\
+	\n**Round:** [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] \
+	\n**Round Time**: [DisplayTimeText(world.time - SSticker.round_start_time)]\
+	\n**Current map:** [SSmapping.configs[GROUND_MAP]?.map_name]\
+	\n**Gamemode:** [gamemode]"
+	return(status)
 
 /datum/tgs_chat_command/check
 	name = "check"
@@ -18,7 +26,13 @@
 
 /datum/tgs_chat_command/check/Run(datum/tgs_chat_user/sender, params)
 	var/server = CONFIG_GET(string/server)
-	return "[GLOB.round_id ? "Round #[GLOB.round_id]: " : ""][GLOB.clients.len] players on [SSmapping.config.map_name]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]"
+	var/message = "\
+	**Current map:** [SSmapping.configs[GROUND_MAP]?.map_name]\
+	\n**Players:** [GLOB.clients.len]\
+	\n**Round:** [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] \
+	\n**Round Time:** [DisplayTimeText(world.time - SSticker.round_start_time)]\
+	\n**Connect:** [server ? server : "**<byond://[world.internet_address]:[world.port]>**"]"
+	return(message)
 
 /datum/tgs_chat_command/gameversion
 	name = "gameversion"
@@ -42,6 +56,23 @@
 			msg += "\n"
 			for(var/datum/tgs_revision_information/test_merge/PR as anything in GLOB.revdata.testmerge)
 				msg += "PR #[PR.number] at [copytext_char(PR.head_commit, 1, 9)] [PR.title].\n"
+				if (PR.url)
+					msg += "<[PR.url]>\n"
+	return msg.Join("")
+
+/datum/tgs_chat_command/testmerges
+	name = "testmerges"
+	help_text = "Gets the current TMs"
+
+/datum/tgs_chat_command/gameversion/Run(datum/tgs_chat_user/sender, params)
+	var/list/msg = list("")
+	if(!GLOB.revdata)
+		msg += "No revision information found."
+	else
+		if(GLOB.revdata.testmerge.len)
+			msg += "**Test Merges:**"
+			for(var/datum/tgs_revision_information/test_merge/PR as anything in GLOB.revdata.testmerge)
+				msg += "**PR #[PR.number] at [copytext_char(PR.head_commit, 1, 9)]:** [PR.title]\n"
 				if (PR.url)
 					msg += "<[PR.url]>\n"
 	return msg.Join("")

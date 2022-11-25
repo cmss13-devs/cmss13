@@ -9,7 +9,6 @@
 #define M2C_OVERHEAT_OVERLAY 14
 #define M2C_CRUSHER_STUN 3 //amount in ticks (roughly 3 seconds)
 
-//////////////////////////////////////////////////////////////
 //Mounted MG, Replacment for the current jury rig code.
 
 //Adds a coin for engi vendors
@@ -827,7 +826,6 @@
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
 	var/mob/living/carbon/user = usr
 	if(!ishuman(user) || !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
-		to_chat_immediate(world,"a")
 		return
 	if(!Adjacent(user))
 		return
@@ -1037,7 +1035,6 @@
 
 /obj/item/device/m2c_gun/proc/check_can_setup(mob/user, var/turf/rotate_check, var/turf/open/OT, var/list/ACR)
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-		to_chat_immediate(world,"a2")
 		return FALSE
 	if(broken_gun)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
@@ -1107,7 +1104,6 @@
 
 /obj/item/device/m2c_gun/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-		to_chat_immediate(world,"a3")
 		return
 
 	if(!iswelder(O) || user.action_busy)
@@ -1289,7 +1285,6 @@
 
 /obj/structure/machinery/m56d_hmg/auto/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-		to_chat_immediate(world,"a4")
 		return
 	// RELOADING
 	if(istype(O, /obj/item/ammo_magazine/m2c))
@@ -1505,7 +1500,6 @@
 
 /obj/structure/machinery/m56d_hmg/auto/MouseDrop(over_object, src_location, over_location)
 	if(!HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
-		to_chat_immediate(world,"b")
 		return
 	var/mob/living/carbon/user = usr
 

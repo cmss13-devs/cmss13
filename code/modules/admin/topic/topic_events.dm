@@ -121,7 +121,7 @@
 						handled_xenos += X
 				else if(grant == "Grant")
 					ADD_TRAIT(X, TRAIT_OPPOSABLE_THUMBS, TRAIT_SOURCE_HIVE)
-					to_chat(X, SPAN_XENOANNOUNCE("You suddenly comprehend the magic of opposable thumbs. You could do... <b><i>so much</b></i> with this knowledge."))
+					to_chat(X, SPAN_XENOANNOUNCE("You suddenly comprehend the magic of opposable thumbs along with surprising kinesthetic intelligence. You could do... <b><i>so much</b></i> with this knowledge."))
 					handled_xenos += X
 
 			for(var/datum/hive_status/permit_hive as anything in permit_hives)

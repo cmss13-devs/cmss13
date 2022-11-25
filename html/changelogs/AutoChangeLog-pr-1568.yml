@@ -1,0 +1,15 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - add: fuse multiple crates into a new one for large pouch "Large Pouch 2x(pistol,magazine,general)"
+  - add: fuse multiple crates into a new one for surgery "surgery crate(tray,anesthetic,surgeon gear)"
+  - del: remove M3 Pattern Medium Armor Crate (x5 helmet, x5 armor) and M3 Pattern Light Armor Crate (x3) crates.
+  - del: remove M3 Pattern Heavy Armor Crate (x3) and rail attachments crate (x2 each) crates.
+  - del: remove muzzle attachments crate (x2 each) and bayonet attachment crate (x8) crates.
+  - del: remove underbarrel attachments crate (x2 each) and general pouches crate (2x normal, 1x medium, 1x large) crates.
+  - del: remove weapons pouches crate (1x bayonet, pistol, explosive) and survival pouches crate (1x radio, flare, survival) crates.
+  - del: remove construction pouches crate (1x electronics, tools, construction) and Lightweight IMP Backpack Crate (x4) crates.
+  - del: remove Marine Satchel Crate (x4) and M39 Belt Holster Crate (x2) and M44 Belt Holster Crate (x2) crates.
+  - del: remove M4A3 Belt Holster Crate (x2) and marine outfit crate and anesthetic crate (x4 masks, x4 tanks) crates.
+  - del: remove sterile equipment surplus sidearms and surplus shotguns and M39 SMG and M41A MK2 Crate crates.
+  - del: remove old define RO_PRICE and directly input the cost variable number for crates.

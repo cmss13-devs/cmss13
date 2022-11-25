@@ -8,7 +8,7 @@ Mention if you have tested your changes. If you changed a map, make sure you use
 If this is an Issue Correction, you can type "Fixes Issue #169420" to link the PR to the corresponding Issue number #169420.
 
 Prefix the PR title with [admin] if it involves something admin related.
-Prefix the PR title with [s] if you are fixing an exploit, so that it is not announced on the Yogstation Discord and the server.
+Prefix the PR title with [s] if you are fixing an exploit, so that it is not announced on the CMSS13 Discord and the server.
 
 Remember: something that is self-evident to you might not be to others. Explain your rationale fully, even if you feel it goes without saying.-->
 
@@ -29,8 +29,8 @@ Put screenshots and videos here with an empty line between the screenshots and t
 
 # Changelog
 
-<!-- Edit the changelog below to reflect the changes made by this PR, even if the changes are minor - required for every PR.
-If you add a name after the ':cl', that name will be used in the changelog. Leave it empty to use your GitHub name. Be sure to properly mark your PRs to prevent unnecessary GBP loss. Maintainers freely reserve the right to remove and add tags should they deem it appropriate. -->
+<!-- If your PR modifies aspects of the game that can be concretely observed by players or admins you should add a changelog. If your change does NOT meet this description, remove this section. Be sure to properly mark your PRs to prevent unnecessary GBP loss. Please note that maintainers freely reserve the right to remove and add tags should they deem it appropriate. You can attempt to finagle the system all you want, but it's best to shoot for clear communication right off the bat. -->
+<!-- If you add a name after the ':cl', that name will be used in the changelog. You must add your CKEY after the CL if your GitHub name doesn't match. Be sure to properly mark your PRs to prevent unnecessary GBP loss. Maintainers freely reserve the right to remove and add tags should they deem it appropriate. -->
 
 :cl:
 add: Added something

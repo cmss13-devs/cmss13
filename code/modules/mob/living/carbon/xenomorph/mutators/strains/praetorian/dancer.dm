@@ -37,6 +37,7 @@
 	P.recalculate_everything()
 
 	apply_behavior_holder(P)
+	P.mutation_icon_state = PRAETORIAN_DANCER
 	P.mutation_type = PRAETORIAN_DANCER
 
 /datum/behavior_delegate/praetorian_dancer

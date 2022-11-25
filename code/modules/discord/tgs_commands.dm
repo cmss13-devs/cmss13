@@ -12,8 +12,8 @@
 	else
 		gamemode = SSticker.mode.name
 	var/status = "\
-	**Admins:** [allmins.len ? "[allmins.len] (Active: [english_list(adm["present"], nothing_text = "N/A")] AFK: [english_list(adm["afk"], nothing_text = "N/A")] Stealth: [english_list(adm["stealth"], nothing_text = "N/A")] Skipped: [english_list(adm["noflags"], nothing_text = "N/A")])" : "None"].\
-	\n**Players:** [GLOB.clients.len]\
+	**Admins:** [length(allmins) ? "[length(allmins)] (Active: [english_list(adm["present"], nothing_text = "N/A")] AFK: [english_list(adm["afk"], nothing_text = "N/A")] Stealth: [english_list(adm["stealth"], nothing_text = "N/A")] Skipped: [english_list(adm["noflags"], nothing_text = "N/A")])" : "None"].\
+	\n**Players:** [length(GLOB.clients)]\
 	\n**Round:** [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] \
 	\n**Round Time**: [DisplayTimeText(world.time - SSticker.round_start_time)]\
 	\n**Current map:** [SSmapping.configs[GROUND_MAP]?.map_name]\
@@ -28,7 +28,7 @@
 	var/server = CONFIG_GET(string/server)
 	var/message = "\
 	**Current map:** [SSmapping.configs[GROUND_MAP]?.map_name]\
-	\n**Players:** [GLOB.clients.len]\
+	\n**Players:** [length(GLOB.clients)]\
 	\n**Round:** [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] \
 	\n**Round Time:** [DisplayTimeText(world.time - SSticker.round_start_time)]\
 	\n**Connect:** [server ? server : "**<byond://[world.internet_address]:[world.port]>**"]"
@@ -52,7 +52,7 @@
 		if(GLOB.revdata.originmastercommit)
 			msg += ", from origin commit: <[CONFIG_GET(string/githuburl)]/commit/[GLOB.revdata.originmastercommit]>"
 
-		if(GLOB.revdata.testmerge.len)
+		if(length(GLOB.revdata.testmerge))
 			msg += "\n"
 			for(var/datum/tgs_revision_information/test_merge/PR as anything in GLOB.revdata.testmerge)
 				msg += "PR #[PR.number] at [copytext_char(PR.head_commit, 1, 9)] [PR.title].\n"
@@ -69,7 +69,7 @@
 	if(!GLOB.revdata)
 		msg += "No revision information found."
 	else
-		if(GLOB.revdata.testmerge.len)
+		if(length(GLOB.revdata.testmerge.len))
 			msg += "**Test Merges:**"
 			for(var/datum/tgs_revision_information/test_merge/PR as anything in GLOB.revdata.testmerge)
 				msg += "**PR #[PR.number] at [copytext_char(PR.head_commit, 1, 9)]:** [PR.title]\n"

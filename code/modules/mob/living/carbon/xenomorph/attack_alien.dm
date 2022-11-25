@@ -397,8 +397,8 @@ There is a trait that permits them to handle items.**/
 //If we sent it to monkey we'd get some weird shit happening.
 /obj/structure/attack_alien(mob/living/carbon/xenomorph/M)
 	// fuck off dont destroy my unslashables
-	if(unslashable || health <= 0)
-		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
+	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
 /obj/structure/magazine_box/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -685,9 +685,9 @@ There is a trait that permits them to handle items.**/
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power
+	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 /obj/structure/machinery/attack_alien(mob/living/carbon/xenomorph/M)
-	if(unslashable || health <= 0)
-		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
@@ -704,9 +704,10 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 // Destroying reagent dispensers
+/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 /obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/M)
-	if(unslashable || health <= 0)
-		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)

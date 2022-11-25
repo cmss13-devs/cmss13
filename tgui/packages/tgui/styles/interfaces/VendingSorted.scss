@@ -26,14 +26,14 @@ $mandatory-color: rgb(128, 83, 0);
     margin-top: -36px;
     vertical-align: middle;
   }
-  .VendingSorted_MandatoryDescription {
+  .MandatoryDescription {
     background-color: $mandatory-color;
     .Section__title {
       border-bottom: base.em(2px) solid $mandatory-color;
     }
   }
 
-  .VendingSorted_RecommendedDescription {
+  .RecommendedDescription {
     background-color: $recommended-color;
     .Section__title {
       border-bottom: base.em(2px) solid $recommended-color;
@@ -160,7 +160,7 @@ $mandatory-color: rgb(128, 83, 0);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: block;
+    display: inline block;
     width: inherit;
   }
 

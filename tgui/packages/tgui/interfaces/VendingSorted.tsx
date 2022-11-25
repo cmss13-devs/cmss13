@@ -61,8 +61,8 @@ const DescriptionTooltip = (props: RecordNameProps, context) => {
           info
           className={classes([
             'Description',
-            isRecommended && 'VendingSorted_RecommendedDescription',
-            isMandatory && 'VendingSorted_MandatoryDescription',
+            isRecommended && 'RecommendedDescription',
+            isMandatory && 'MandatoryDescription',
           ])}>
           <ItemDescriptionViewer
             desc={record.prod_desc ?? ''}

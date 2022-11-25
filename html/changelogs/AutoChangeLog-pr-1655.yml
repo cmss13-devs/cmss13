@@ -1,5 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed a mistake during tgui porting making chat subsystem unused, reducing overall performance"
-  - bugfix: "SSgarbage won't visibly spam chat with its garbage report when rebooting anymore"

@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - bugfix: "Fixed armor pickup sounds not working."
-  - bugfix: "Fixed the loadout item cartridge bayonet's feature not working. Try it again!"

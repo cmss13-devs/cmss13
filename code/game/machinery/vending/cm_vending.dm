@@ -282,9 +282,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	var/mob/living/carbon/human/user = usr
 	switch (action)
-		if ("cancel")
-			SStgui.close_uis(src)
-			return TRUE
 		if ("vend")
 			if(stat & IN_USE)
 				return
@@ -368,7 +365,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 						vend_fail()
 						return FALSE
 
-			if(use_points|use_snowflake_points)
+			if(use_points || use_snowflake_points)
 				if(!handle_points(user, itemspec))
 					to_chat(user, SPAN_WARNING("Not enough points."))
 					vend_fail()

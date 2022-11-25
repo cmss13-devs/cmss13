@@ -9,12 +9,10 @@
 	unslashable = FALSE
 	wrenchable = TRUE
 
-/obj/structure/machinery/cm_vending/sorted/marine_food/get_listed_products(mob/user)
-	. = list()
-	. += GLOB.cm_vending_marine_food
-	//. += GLOB.cm_vending_marine_food_christmas
-	. += GLOB.cm_vending_marine_food_flasks
-
+/obj/structure/machinery/cm_vending/sorted/marine_food/populate_product_list(var/scale)
+	listed_products = list()
+	listed_products += GLOB.cm_vending_marine_food
+	listed_products += GLOB.cm_vending_marine_food_flasks
 
 //------------BOOZE-O-MAT VENDOR---------------
 

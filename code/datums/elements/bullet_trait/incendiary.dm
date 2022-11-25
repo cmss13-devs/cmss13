@@ -7,7 +7,7 @@
 	var/burn_stacks
 	var/probability = 100
 
-/datum/element/bullet_trait_incendiary/Attach(datum/target, reagent = /datum/reagent/napalm/ut, stacks = 20, probability = 100)
+/datum/element/bullet_trait_incendiary/Attach(datum/target, reagent = /datum/reagent/napalm/ut, stacks = 20)
 	. = ..()
 	if(!istype(target, /obj/item/projectile))
 		return ELEMENT_INCOMPATIBLE
@@ -20,10 +20,9 @@
 	burn_stacks = stacks
 	probability = src.probability
 
-	if(probability)
-		RegisterSignal(target, COMSIG_BULLET_ACT_LIVING, .proc/ignite_living, override = TRUE)
-		RegisterSignal(target, COMSIG_POST_BULLET_ACT_HUMAN, .proc/ignite_human, override = TRUE)
-		RegisterSignal(target, COMSIG_BULLET_ACT_XENO, .proc/ignite_xeno, override = TRUE)
+	RegisterSignal(target, COMSIG_BULLET_ACT_LIVING, .proc/ignite_living, override = TRUE)
+	RegisterSignal(target, COMSIG_POST_BULLET_ACT_HUMAN, .proc/ignite_human, override = TRUE)
+	RegisterSignal(target, COMSIG_BULLET_ACT_XENO, .proc/ignite_xeno, override = TRUE)
 
 /datum/element/bullet_trait_incendiary/Detach(datum/target)
 	UnregisterSignal(target, list(

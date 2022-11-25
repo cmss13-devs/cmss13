@@ -656,7 +656,7 @@
 
 /obj/item/weapon/gun/revolver/cmb
 	name = "\improper CMB Spearhead autorevolver"
-	desc = "An automatic revolver chambered in .357. Commonly issued to Colonial Marshals. It has two select fire options, single and burst."
+	desc = "An automatic revolver chambered in .357, often loaded with hollowpoint on spaceships to prevent hull damage. Commonly issued to Colonial Marshals. It has two select fire options, single and burst."
 	icon_state = "spearhead"
 	item_state = "spearhead"
 	fire_sound = null

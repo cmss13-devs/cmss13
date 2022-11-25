@@ -441,7 +441,7 @@
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/pistol/deagle
-	name = ".50 caliber bullet"
+	name = ".50 heavy pistol bullet"
 	damage = 70
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	accuracy = -HIT_ACCURACY_TIER_3
@@ -473,7 +473,7 @@
 // maybe in the far flung future of 2280 someone screwed up the design.
 
 /datum/ammo/bullet/pistol/highpower
-	name = "high power pistol bullet"
+	name = "high-powered pistol bullet"
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = HIT_ACCURACY_TIER_3

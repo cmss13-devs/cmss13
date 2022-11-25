@@ -808,7 +808,8 @@
 	reagents = list("water" = 5)
 	items = list(
 		/obj/item/reagent_container/food/snacks/spagetti,
-		/obj/item/reagent_container/food/snacks/meatball
+		/obj/item/reagent_container/food/snacks/meatball,
+		/obj/item/reagent_container/food/snacks/meatball,
 	)
 	result = /obj/item/reagent_container/food/snacks/spesslaw
 

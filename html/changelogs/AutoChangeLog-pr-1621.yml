@@ -1,0 +1,6 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - rscadd: "Added a View Research Objective verb. This will let Researchers be able to view which chems they still need to synthesize and analyze to keep more organized."
+  - bugfix: "Fixed the chem code that saves researchable chems. It used not to save custom chems, now it does."
+  - code_imp: "Cleaned up the code around tracking chems and chem objectives a little. It now actually tracks which chems haven't been researched."

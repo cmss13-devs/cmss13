@@ -152,18 +152,18 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
 				if(!indestructible)
-					qdel(src)
+					deconstruct(FALSE)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				if(!indestructible)
-					qdel(src)
+					deconstruct(FALSE)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(!indestructible)
-				qdel(src)
+				deconstruct(FALSE)
 
 /obj/item/mob_launch_collision(var/mob/living/L)
 	forceMove(L.loc)
@@ -310,7 +310,7 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	if(dropsound && (src.loc.z))
+	if(dropsound && (src.loc?.z))
 		playsound(src, dropsound, dropvol, drop_vary)
 	src.do_drop_animation(user)
 

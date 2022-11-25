@@ -6,7 +6,7 @@
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/sign/ex_act(severity)
-	qdel(src)
+	deconstruct(FALSE)
 	return
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
@@ -16,10 +16,8 @@
 		S.name = name
 		S.desc = desc
 		S.icon_state = icon_state
-		//var/icon/I = icon('icons/obj/structures/props/decals.dmi', icon_state)
-		//S.icon = I.Scale(24, 24)
 		S.sign_state = icon_state
-		qdel(src)
+		deconstruct(FALSE)
 	else ..()
 
 /obj/item/sign

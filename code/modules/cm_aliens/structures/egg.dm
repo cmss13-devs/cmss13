@@ -10,7 +10,7 @@
 	anchored = 1
 	layer = LYING_BETWEEN_MOB_LAYER	//to stop hiding eggs under corpses
 	health = 80
-	plane = FLOOR_PLANE
+	plane = GAME_PLANE
 	var/list/egg_triggers = list()
 	var/status = EGG_GROWING //can be EGG_GROWING, EGG_GROWN, EGG_BURST, EGG_BURSTING, or EGG_DESTROYED; all mutually exclusive
 	var/on_fire = FALSE

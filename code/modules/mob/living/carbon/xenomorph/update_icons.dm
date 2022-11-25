@@ -37,7 +37,7 @@
 		if(isXenoQueen(src))
 			var/mob/living/carbon/Xenomorph/Queen/Q = src
 			Q.queen_standing_icon = icon_xeno
-			Q.queen_ovipositor_icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
+			Q.queen_ovipositor_icon = 'icons/mob/xenos/ovipositor.dmi'
 
 	update_icons()
 
@@ -52,14 +52,23 @@
 		return
 
 	if(stat == DEAD)
-		icon_state = "[mutation_type] [caste.caste_type] Dead"
+		icon_state = "[mutation_icon_state || mutation_type] [caste.caste_type] Dead"
+		if(!(icon_state in icon_states(icon_xeno)))
+			icon_state = "Normal [caste.caste_type] Dead"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] [caste.caste_type] Sleeping"
+			icon_state = "[mutation_icon_state || mutation_type] [caste.caste_type] Sleeping"
+			if(!(icon_state in icon_states(icon_xeno)))
+				icon_state = "Normal [caste.caste_type] Sleeping"
 		else
-			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"
+			icon_state = "[mutation_icon_state || mutation_type] [caste.caste_type] Knocked Down"
+			if(!(icon_state in icon_states(icon_xeno)))
+				icon_state = "Normal [caste.caste_type] Knocked Down"
 	else
-		icon_state = "[mutation_type] [caste.caste_type] Running"
+		icon_state = "[mutation_icon_state || mutation_type] [caste.caste_type] Running"
+		if(!(icon_state in icon_states(icon_xeno)))
+			icon_state = "Normal [caste.caste_type] Running"
+
 
 /mob/living/carbon/Xenomorph/regenerate_icons()
 	..()
@@ -126,7 +135,7 @@
 /mob/living/carbon/Xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)
 	if(legcuffed)
-		overlays_standing[X_LEGCUFF_LAYER]	= image("icon" = 'icons/mob/hostiles/Effects.dmi', "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
+		overlays_standing[X_LEGCUFF_LAYER]	= image("icon" = 'icons/mob/xenos/effects.dmi', "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
 		apply_overlay(X_LEGCUFF_LAYER)
 
 /mob/living/carbon/Xenomorph/proc/create_shriekwave(var/color = null)
@@ -139,10 +148,10 @@
 		offset_y = -10
 
 	if (color)
-		screech_image = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
+		screech_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
 		screech_image.color = color
 	else
-		screech_image = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
+		screech_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
 
 	screech_image.pixel_x = offset_x
 	screech_image.pixel_y = offset_y
@@ -158,21 +167,21 @@
 /mob/living/carbon/Xenomorph/proc/create_stomp()
 	remove_suit_layer()
 
-	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "stomp") //Ehh, suit layer's not being used.
+	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "stomp") //Ehh, suit layer's not being used.
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 12)
 
 /mob/living/carbon/Xenomorph/proc/create_empower()
 	remove_suit_layer()
 
-	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "empower")
+	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "empower")
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
 
 /mob/living/carbon/Xenomorph/proc/create_shield(var/duration = 10)
 	remove_suit_layer()
 
-	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "shield2")
+	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "shield2")
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), duration)
 
@@ -185,11 +194,11 @@
 		var/image/I
 		if(mob_size >= MOB_SIZE_BIG)
 			if((!initial(pixel_y) || lying) && !resting && !sleeping)
-				I = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
+				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 			else
-				I = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)
+				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)
 		else
-			I = image("icon" = 'icons/mob/hostiles/Effects.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
+			I = image("icon" = 'icons/mob/xenos/effects.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 
 		I.appearance_flags |= RESET_COLOR|RESET_ALPHA
 		I.color = fire_reagent.burncolor
@@ -199,7 +208,7 @@
 /mob/living/carbon/Xenomorph/proc/create_crusher_shield()
 	remove_overlay(X_HEAD_LAYER)
 
-	var/image/shield = image("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "empower")
+	var/image/shield = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "empower")
 	shield.color = rgb(87, 73, 144)
 	overlays_standing[X_HEAD_LAYER] = shield
 	apply_overlay(X_HEAD_LAYER)
@@ -235,7 +244,7 @@
 
 ///Used to display the xeno wounds without rapidly switching overlays
 /atom/movable/vis_obj/xeno_wounds
-	icon = 'icons/mob/hostiles/wounds.dmi'
+	icon = 'icons/mob/xenos/wounds.dmi'
 	var/mob/living/carbon/Xenomorph/wound_owner
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 

@@ -552,8 +552,6 @@
 						/obj/item/attachable/mateba/short)
 	starting_attachment_types = list(/obj/item/attachable/mateba)
 	unacidable = TRUE
-
-	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)

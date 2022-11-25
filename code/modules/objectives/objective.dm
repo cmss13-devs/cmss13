@@ -15,6 +15,7 @@
 	SSobjectives.add_objective(src)
 
 /datum/cm_objective/Destroy()
+	SSobjectives.stop_processing_objective(src)
 	SSobjectives.remove_objective(src)
 	for(var/datum/cm_objective/R as anything in required_objectives)
 		LAZYREMOVE(R.enables_objectives, src)

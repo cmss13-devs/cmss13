@@ -247,7 +247,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A small tube with exhaust ports to expel noise and gas.\nDoes not completely silence a weapon, but does make it much quieter and a little more accurate and stable at the cost of slightly reduced damage."
 	icon_state = "suppressor"
 	slot = "muzzle"
-	pixel_shift_y = 16
+	pixel_shift_y = 15
 	attach_icon = "suppressor_a"
 	hud_offset_mod = -3
 	gun_traits = list(TRAIT_GUN_SILENCED)

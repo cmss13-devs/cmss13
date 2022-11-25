@@ -12,6 +12,12 @@ Class Variables:
          1 -- machine is using power at its idle power level
          2 -- machine is using power at its active power level
 
+	needs_power (num)
+	  is this thing affected by an area being unpowered
+	  Possible Values:
+	     FALSE -- machine will process as if though in a powered area
+	     TRUE -- machine will function normally
+
    active_power_usage (num)
       Value for the amount of power to use when in active power mode
 
@@ -159,14 +165,14 @@ Class Procs:
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				qdel(src)
+				deconstruct()
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				deconstruct()
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct()
 			return
 	return
 
@@ -195,9 +201,7 @@ Class Procs:
 	return !inoperable(additional_flags)
 
 /obj/structure/machinery/proc/inoperable(var/additional_flags = 0)
-	if (needs_power)
-		return (stat & (NOPOWER|BROKEN|additional_flags))
-	return (stat & (BROKEN|additional_flags))
+	return (stat & (NOPOWER|BROKEN|additional_flags))
 
 /obj/structure/machinery/Topic(href, href_list)
 	..()

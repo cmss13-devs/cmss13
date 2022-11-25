@@ -106,7 +106,7 @@
 				SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
 		if(make_shatter_sound)
 			playsound(src, "windowshatter", 50, 1)
-		deconstruct(FALSE)
+		shatter_window(create_debris)
 	else
 		if(make_hit_sound)
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
@@ -144,7 +144,7 @@
 		SEND_SIGNAL(M, COMSIG_MOB_WINDOW_EXPLODED, src)
 
 	handle_debris(severity, explosion_direction)
-	qdel(src)
+	deconstruct(FALSE)
 	return
 
 /obj/structure/window/get_explosion_resistance(direction)
@@ -273,7 +273,7 @@
 			to_chat(user, (anchored ? SPAN_NOTICE("You have fastened the window to the floor.") : SPAN_NOTICE("You have unfastened the window.")))
 		else if(static_frame && state == 0)
 			SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_WINDOW, src)
-			deconstruct()
+			deconstruct(TRUE)
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && reinf && state <= 1 && !not_deconstructable)
 		state = 1 - state
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -297,7 +297,7 @@
 		if(reinf)
 			new /obj/item/stack/sheet/glass/reinforced(loc, 2)
 		else
-			new /obj/item/stack/sheet/glass/reinforced(loc, 2)
+			new /obj/item/stack/sheet/glass(loc, 2)
 	return ..()
 
 
@@ -535,17 +535,12 @@
 
 
 /obj/structure/window/framed/deconstruct(disassembled = TRUE)
-	if(disassembled)
-		if(window_frame)
-			var/obj/structure/window_frame/WF = new window_frame(loc)
-			WF.icon_state = "[WF.basestate][junction]_frame"
-			WF.setDir(dir)
-	else
-		if(window_frame)
-			var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
-			new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
-			new_window_frame.setDir(dir)
+	if(window_frame)
+		var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
+		new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
+		new_window_frame.setDir(dir)
 	return ..()
+
 /obj/structure/window/framed/almayer
 	name = "reinforced window"
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."

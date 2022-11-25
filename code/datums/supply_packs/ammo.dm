@@ -472,7 +472,7 @@
 	containername = "\improper M402 mortar flare shells crate"
 	group = "Ammo"
 	
-//------------------------Contreband----------------
+//------------------------Contraband----------------
 
 /datum/supply_packs/merc/ammo
 	name = "Black market ammo crate"

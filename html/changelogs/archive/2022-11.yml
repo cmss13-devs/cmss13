@@ -499,3 +499,20 @@
   - refactor: squad info page is now TGUI
   - refactor: squad info icons are generated and coloured through stylesheet
   - refactor: squad info page now shows primary and secondary objectives
+2022-11-25:
+  AnCopper:
+  - spellcheck: Renamed German and Spanish.
+  Drathek:
+  - bugfix: Queens now receive their hive's color.
+  carlarctg:
+  - bugfix: Fixed armor pickup sounds not working.
+  - bugfix: Fixed the loadout item cartridge bayonet's feature not working. Try it
+      again!
+  fira:
+  - bugfix: Fixed a bug with machinery mishandling clicks in statpanel.
+  - bugfix: Machinery now require fine manipulation to be used. As of current this
+      means Humans only (including Yautjas/Synth/Monkeys, but minus Zombies).
+  - bugfix: Fixed a mistake during tgui porting making chat subsystem unused, reducing
+      overall performance
+  - bugfix: SSgarbage won't visibly spam chat with its garbage report when rebooting
+      anymore

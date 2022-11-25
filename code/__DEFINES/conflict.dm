@@ -40,8 +40,8 @@
 
 /// Projectile is shrpanel which allow it to skip some collisions
 #define PROJECTILE_SHRAPNEL     (1<<0)
-/// Projectile is actively homing its primary target.
-#define PROJECTILE_HOMING       (1<<1)
+/// Apply additional effects upon hitting clicked target
+#define PROJECTILE_BULLSEYE     (1<<1)
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)

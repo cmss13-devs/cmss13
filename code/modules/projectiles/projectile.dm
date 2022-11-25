@@ -204,17 +204,6 @@
 	p_y += Clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
 
-	if(projectile_flags & PROJECTILE_HOMING)
-		var/mob/living/homing_target = original //Dead or friendly target can't get it, so the homing get stucks.
-		if(homing_target.is_dead())
-			projectile_flags &= ~PROJECTILE_HOMING
-		else if(ishuman(homing_target))
-			var/mob/living/carbon/human/H = homing_target
-			if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_MOB_SKIPPING, H) & COMPONENT_SKIP_MOB\
-				|| runtime_iff_group && H.get_target_lock(runtime_iff_group)\
-			)
-				projectile_flags &= ~PROJECTILE_HOMING
-
 	src.speed = speed
 	// Randomize speed by a small factor to help bullet animations look okay
 	// Otherwise you get a   s   t   r   e   a   m of warping bullets in same positions
@@ -280,6 +269,10 @@
 	var/turf/current_turf = get_turf(src)
 	var/turf/next_turf = popleft(path)
 
+	// Terminal projectiles (about to hit) are handled first for retarget logic
+	if((speed * world.tick_lag) >= get_dist(current_turf, target_turf))
+		SEND_SIGNAL(src, COMSIG_BULLET_TERMINAL)
+
 	// Check we can reach the turf at all based on pathed grid
 	var/proj_dir = get_dir(current_turf, next_turf)
 	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf))
@@ -311,29 +304,15 @@
 		speed = 0
 		return TRUE
 
-	// Track homing target if we can't reach it by adjusting - it should connect next tick
-	if((projectile_flags & PROJECTILE_HOMING) && distance_travelled * 2 >= length(path))
-		current_turf = get_turf(src)
-		var/turf/homing_turf = get_turf(original)
-		if(homing_turf)
-			path = getline2(current_turf, original)
-			path.Cut(1, 2) // pop current
-			speed *= 2
-			update_angle(loc, homing_turf) // Bullet "bends" but goes dead on
-		projectile_flags &= ~PROJECTILE_HOMING // disable further homing
-
 	// Adjust computed path if we just missed our intended target
 	if(!length(path))
 		var/turf/aim_turf = get_angle_target_turf(src, angle, distance_travelled * 2 + 1)
 		if(!aim_turf || aim_turf == loc) // Map border safety
 			speed = 0
 			return TRUE
-		path = getline2(current_turf, aim_turf)
-		path.Cut(1, 2) // pop current
-		// Retrace from firing position. The bullet will warp laterally a bit but it shouldnt be noticeable
-		p_x *= 2 // clamped in update_angle
+		p_x *= 2
 		p_y *= 2
-		update_angle(starting, aim_turf)
+		retarget(aim_turf, keep_angle = TRUE)
 
 	// Nowe we update visual offset by tracing the bullet predicted location against real one
 	//
@@ -348,6 +327,13 @@
 	// Clamp and set this as pixel offsets
 	pixel_x = Clamp(dx, -16, 16)
 	pixel_y = Clamp(dy, -16, 16)
+
+/obj/item/projectile/proc/retarget(atom/new_target, keep_angle = FALSE)
+	var/turf/current_turf = get_turf(src)
+	path = getline2(current_turf, new_target)
+	path.Cut(1, 2) // remove the turf we're already on
+	var/atom/source = keep_angle ? original : current_turf
+	update_angle(source, new_target)
 
 /obj/item/projectile/proc/scan_a_turf(turf/T, proj_dir)
 	. = TRUE // Sleep safeguard: stop the bullet

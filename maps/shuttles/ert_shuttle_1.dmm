@@ -45,8 +45,8 @@
 	},
 /area/shuttle/ert)
 "k" = (
-/obj/structure/machinery/computer/shuttle_control/ert,
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/computer/shuttle/ert,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"

@@ -75,6 +75,31 @@
 	if(port && (shuttleId == initial(shuttleId) || override))
 		shuttleId = port.id
 
+/obj/structure/machinery/computer/shuttle/ert
+	name = "transport shuttle"
+	desc = "A transport shuttle flight computer."
+	icon_state = "syndishuttle"
+	req_access = list()
+	breakable = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "NavigationShuttle", name)
+		ui.open()
+
+/obj/structure/machinery/computer/shuttle/ert/ui_data(mob/user)
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+	. = list(
+		"shuttle"=src,
+		"port"=ert,
+		"destinations"=valid_destinations(),
+	)
+
+/obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
+	. = ..()
+	tgui_interact(user)
+
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"
 	desc = "A lifeboat control computer."

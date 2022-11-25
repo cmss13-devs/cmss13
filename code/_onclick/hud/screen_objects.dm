@@ -542,7 +542,7 @@
 	if(user.get_active_hand())
 		return
 	if(user.assigned_squad)
-		user.assigned_squad.ui_interact(user)
+		user.assigned_squad.tgui_interact(user)
 
 /atom/movable/screen/mark_locator
 	name = "mark locator"

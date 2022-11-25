@@ -42,6 +42,7 @@
 	apply_behavior_holder(P)
 
 	P.recalculate_everything()
+	P.mutation_icon_state = PRAETORIAN_OPPRESSOR
 	P.mutation_type = PRAETORIAN_OPPRESSOR
 
 /datum/behavior_delegate/oppressor_praetorian

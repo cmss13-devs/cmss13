@@ -111,6 +111,7 @@
 	icon_state = "cat"
 	icon_living = "cat"
 	icon_dead = "cat_dead"
+	holder_type = /obj/item/holder/blackcat
 
 /mob/living/simple_animal/cat/Jones
 	name = "Jones"
@@ -129,4 +130,5 @@
 	icon_state = "kitten"
 	icon_living = "kitten"
 	icon_dead = "kitten_dead"
+	holder_type = /obj/item/holder/kitten
 	gender = NEUTER

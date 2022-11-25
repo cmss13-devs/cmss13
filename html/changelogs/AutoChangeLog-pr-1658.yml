@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Fixes LV-522 showing up for whiskey outpost."

@@ -47,8 +47,8 @@
 	syllables = list("al", "an", "bi", "vye", "vo", "go", "dye", "yel", "en", "yer", "yet", "ka", "ko", "la", "ly", "lo", "l", "na", "nye", "ny", "no", "ov", "ol", "on", "or", "slog", "ot", "po", "pr", "ra", "rye", "ro", "st", "ta", "tye", "to", "t", "at", "bil", "vyer", "yego", "yeny", "yenn", "yest", "kak", "ln", "ova", "ogo", "oro", "ost", "oto", "pry", "pro", "sta", "stv", "tor", "chto", "eto", "rus", "nar", "arya", "mol")
 
 /datum/language/german
-	name = LANGUAGE_WELTRAUMDEUTSCH
-	desc = "A common dialect consisting of a hybrid between American English and Hochdeutsch developed due to the high immigration and subsequent enlistment of German-Americans into the USCM."
+	name = LANGUAGE_GERMAN
+	desc = "Standard High-German, a language spoken mostly in Central Europe, and by German immigrants elsewhere."
 	speech_verb = "proclaims"
 	ask_verb = "inquires"
 	exclaim_verb = "bellows"
@@ -58,8 +58,8 @@
 	syllables = list("die", "das", "wein", "mir", "und", "wir", "ein", "nein", "gen", "en", "sauen", "bin", "nein", "rhein", "deut", "der", "lieb", "en", "stein", "nein", "ja", "wolle", "sil", "bei", "der", "sie", "sch", "kein", "nur", "ach", "kann", "volk", "vau", "gelb", "grun", "macht", "zwei", "vier", "nacht", "tag")
 
 /datum/language/spanish
-	name = LANGUAGE_NEOSPANISH
-	desc = "The second most common language spoken in the UA, mutated and brought from marines from the Latin American territories and in the former southern USA."
+	name = LANGUAGE_SPANISH
+	desc = "The second most common language spoken in the UA, brought from marines from the Latin American territories and in the former southern USA."
 	speech_verb = "dice"
 	ask_verb = "cuestiona"
 	exclaim_verb = "grita"

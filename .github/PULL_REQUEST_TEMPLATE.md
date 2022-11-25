@@ -1,22 +1,39 @@
 <!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable. -->
 
-## About The Pull Request
+# Document the changes in your pull request.
 
-<!-- Describe The Pull Request. Please be sure every change is documented or this can delay review and even discourage maintainers from merging your PR! -->
+<!-- Remove this text and explain what the purpose of your PR is.
 
-## Why It's Good For The Game
+Mention if you have tested your changes. If you changed a map, make sure you used the mapmerge tool.
+If this is an Issue Correction, you can type "Fixes Issue #169420" to link the PR to the corresponding Issue number #169420.
+
+Prefix the PR title with [admin] if it involves something admin related.
+Prefix the PR title with [s] if you are fixing an exploit, so that it is not announced on the Yogstation Discord and the server.
+
+Remember: something that is self-evident to you might not be to others. Explain your rationale fully, even if you feel it goes without saying.-->
+
+# Explain why it's good for the game.
 
 <!-- Please add a short description of why you think these changes would benefit the game. If you can't justify it in words, it might not be worth adding, and may discourage maintainers from reviewing or merging your PR. This section is not strictly required for (non-controversial) fix PRs or backend PRs. -->
 
-## Changelog
 
-<!-- You can use multiple of the same prefix (they're only used for the icon ingame) and delete the unneeded ones. Despite some of the tags, changelogs should generally represent how a player might be affected by the changes rather than a summary of the PR's contents. -->
+# Testing Photographs and Procedure
+<!-- Include any screenshots/videos/debugging steps of the modified code functioning successfully, ideally including edge cases. -->
+<details>
+<summary>Screenshots&Videos</summary>
 
-<!-- If your PR modifies aspects of the game that can be concretely observed by players or admins you should add a changelog. If your change does NOT meet this description, remove this section. Be sure to properly mark your PRs to prevent unnecessary GBP loss. Please note that maintainers freely reserve the right to remove and add tags should they deem it appropriate. You can attempt to finagle the system all you want, but it's best to shoot for clear communication right off the bat. -->
+Put screenshots and videos here with an empty line between the screenshots and the `<details>` tags.
+
+</details>
+
+
+# Changelog
+
+<!-- Edit the changelog below to reflect the changes made by this PR, even if the changes are minor - required for every PR.
+If you add a name after the ':cl', that name will be used in the changelog. Leave it empty to use your GitHub name. Be sure to properly mark your PRs to prevent unnecessary GBP loss. Maintainers freely reserve the right to remove and add tags should they deem it appropriate. -->
 
 :cl:
-add: Added new mechanics or gameplay changes
-add: Added more things
+add: Added something
 del: Removed old things
 qol: made something easier to use
 balance: rebalanced something
@@ -33,4 +50,4 @@ admin: messed with admin stuff
 server: something server ops should know
 /:cl:
 
-<!-- Both :cl:'s are required for the changelog to work! You can put your name to the right of the first :cl: if you want to overwrite your GitHub username as author ingame. -->
+<!-- Both :cl:'s are required for the changelog to work! -->

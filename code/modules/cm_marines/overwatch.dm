@@ -701,7 +701,6 @@
 	current_squad.squad_leader = H
 	current_squad.update_squad_leader()
 	current_squad.update_free_mar()
-	current_squad.update_squad_ui()
 
 	SStracking.set_leader(current_squad.tracking_id, H)
 	SStracking.start_tracking("marine_sl", H)

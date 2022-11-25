@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - bugfix: "Marines can now shake eachother out of their stupor (They can shake stunned players that aren't lying down)"

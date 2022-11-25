@@ -174,7 +174,7 @@
 
 /datum/recipe/roburger
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough,
+		/obj/item/reagent_container/food/snacks/bun,
 		/obj/item/fake_robot_head
 	)
 	result = /obj/item/reagent_container/food/snacks/roburger
@@ -956,7 +956,7 @@
 /datum/recipe/pumpkinpie
 	reagents = list("milk" = 5, "sugar" = 5)
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough,
+		/obj/item/reagent_container/food/snacks/sliceable/flatdough,
 		/obj/item/reagent_container/food/snacks/grown/pumpkin,
 		/obj/item/reagent_container/food/snacks/egg
 	)

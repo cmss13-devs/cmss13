@@ -5,17 +5,6 @@
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 
-/* this will be remove at a later stage local define that serve no real purpose....
-#define RO_PRICE_FREE		0
-#define RO_PRICE_WORTHLESS	10
-#define RO_PRICE_VERY_CHEAP	20
-#define RO_PRICE_CHEAP		30
-#define RO_PRICE_NORMAL		40
-#define RO_PRICE_NORMAL_PRICY 50//crinmbe
-#define RO_PRICE_PRICY		60
-#define RO_PRICE_PRICY_MID	80//god this naming schema is fucking stupid
-#define RO_PRICE_VERY_PRICY	100
-*/
 var/list/all_supply_groups = list(
 	"Operations",
 	"Weapons",

@@ -329,7 +329,7 @@
 	penetration = 0 //hollowpoint can't pierce armor!
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_3 //hollowpoint causes shrapnel
 
-// Used by M4A3 AP, Highpower and mod88
+// Used by M4A3 AP and mod88
 /datum/ammo/bullet/pistol/ap
 	name = "armor-piercing pistol bullet"
 
@@ -468,6 +468,9 @@
 	damage = 50
 	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
+
+/datum/ammo/bullet/pistol/highpower/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
+	pushback(M, P, 3)
 
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash

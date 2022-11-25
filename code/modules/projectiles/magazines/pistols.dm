@@ -225,15 +225,21 @@
 
 //-------------------------------------------------------
 //.45 MARSHALS PISTOL //Inspired by the Browning Hipower
+// rebalanced - singlefire, very strong bullets but slow to fire and heavy recoil
+// redesigned - now rejected USCM sidearm model, utilized by marshalls and other stray groups.
 
 /obj/item/ammo_magazine/pistol/highpower
-	name = "\improper Highpower magazine (.45)"
+	name = "\improper MK-45 Automagnum magazine (.45)"
 	default_ammo = /datum/ammo/bullet/pistol/highpower
 	caliber = ".45"
-	icon_state = "m4a3" //PLACEHOLDER
+	icon_state = "highpower"
 	max_rounds = 13
 	gun_type = /obj/item/weapon/gun/pistol/highpower
 
+//comes in black, for the black variant of the highpower, better for military usage
+
+/obj/item/ammo_magazine/pistol/highpower/black
+	icon_state = "highpower_b"
 
 //-------------------------------------------------------
 /*

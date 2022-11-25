@@ -1,6 +1,6 @@
 <!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable. -->
 
-# Document the changes in your pull request.
+# About the pull request
 
 <!-- Remove this text and explain what the purpose of your PR is.
 

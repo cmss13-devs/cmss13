@@ -44,8 +44,7 @@
 
 /obj/effect/alien/resin/proc/healthcheck()
 	if(health <= 0)
-		density = 0
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/effect/alien/resin/flamer_fire_act()
 	health -= 50
@@ -247,6 +246,7 @@
 	var/image/seenMeaning //this needs to be a static image because it needs to be dynamically added/removed from xenos' huds as resin marks are created/destroyed
 	var/datum/hivenumber = null
 	var/createdby = null
+	var/createdTime = null
 
 	//scuffed variables so the overwatch code doesnt have a fit
 	var/interference = 0
@@ -265,6 +265,7 @@
 	seenMeaning =  image(icon, src.loc, mark_meaning.icon_state, ABOVE_HUD_LAYER, "pixel_y" = 5)
 	seenMeaning.plane = ABOVE_HUD_PLANE
 	hivenumber = X.hivenumber
+	createdTime = worldtime2text()
 	X.hive.resin_marks += src
 
 	X.hive.mark_ui.update_all_data()
@@ -565,7 +566,10 @@
 	if(QDELETED(src))
 		return FALSE
 
-	if(info.distance_travelled > range || info.current_turf == info.target_turf)
+	if(info.distance_travelled > range)
+		return FALSE
+
+	if(info.distance_travelled && info.current_turf == info.target_turf )
 		return FALSE
 
 	var/turf/next_turf = get_step_towards(info.current_turf, info.target_turf)

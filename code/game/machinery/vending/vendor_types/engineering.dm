@@ -8,7 +8,7 @@
 	unslashable = FALSE
 	wrenchable = TRUE
 	hackable = TRUE
-	req_access = list(ACCESS_MARINE_ENGINEERING)
+	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
 	vendor_theme = VENDOR_THEME_COMPANY
 
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage

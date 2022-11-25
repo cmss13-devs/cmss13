@@ -32,9 +32,6 @@
 
 #define COMSIG_GLOB_MOB_LOGIN "!mob_login"
 
-///from /datum/nmcontext/proc/run_steps
-#define COMSIG_GLOB_NIGHTMARE_SETUP_DONE "!nightmare_setup_done"
-
 ///from /datum/controller/subsystem/ticker/PostSetup
 #define COMSIG_GLOB_POST_SETUP "!post_setup"
 
@@ -165,6 +162,10 @@
 	#define COMPONENT_OVERRIDE_VIEW	(1<<0)
 
 #define COMSIG_MOB_POST_CLICK "mob_post_click"
+
+
+//Machine Guns (m56D, M2C)
+#define COMSIG_MOB_MG_EXIT "mob_mg_exit"
 
 // Return a nonzero value to cancel these actions
 #define COMSIG_BINOCULAR_ATTACK_SELF "binocular_attack_self"
@@ -488,6 +489,11 @@
 // Sent to remove all sutures.
 #define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"
 
+//from /datum/nmtask/mapload/proc/initialize_boundary_contents()
+#define COMSIG_NIGHTMARE_TAINTED_BOUNDS "nightmare_tainted_bounds"
+//from /datum/nmnode/
+#define COMSIG_NIGHTMARE_APPLYING_NODE "nightmare_applying_node"
+	#define COMPONENT_ABORT_NMNODE (1<<0)
 
 // Used in resin_constructions.dm
 // Checks whether the xeno can build a thick structure regardless of hive weeds

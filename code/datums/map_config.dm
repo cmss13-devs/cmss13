@@ -16,8 +16,6 @@
 	var/map_name = "LV624"
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
-	/// Hash of nightmare parser types to config file paths
-	var/list/nightmare
 
 	var/traits = null
 	var/space_empty_levels = 1
@@ -55,6 +53,8 @@
 	var/list/xvx_hives = list(XENO_HIVE_ALPHA = 0, XENO_HIVE_BRAVO = 0)
 
 	var/vote_cycle = 1
+
+	var/nightmare_path
 
 /datum/map_config/New()
 	survivor_types = list(
@@ -282,11 +282,8 @@
 			log_world("map_config map_item_type is not a proper typepath!")
 			return
 
-	if(json["nightmare"])
-		if(!islist(json["nightmare"]))
-			log_world("map_config nightmare is not a list!")
-			return
-		nightmare = json["nightmare"]
+	if(json["nightmare_path"])
+		nightmare_path = json["nightmare_path"]
 
 	if(islist(json["environment_traits"]))
 		environment_traits = json["environment_traits"]

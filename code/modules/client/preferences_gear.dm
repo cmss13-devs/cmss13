@@ -88,6 +88,24 @@ var/global/list/gear_datums = list()
 	slot = WEAR_HEAD
 	allowed_origins = USCM_ORIGINS
 
+/datum/gear/cmheadbandbrown
+	display_name = "USCM Headband (Brown)"
+	path = /obj/item/clothing/head/headband/brown
+	cost = 3
+	slot = WEAR_HEAD
+
+/datum/gear/cmheadbandgray
+	display_name = "USCM Headband (Gray)"
+	path = /obj/item/clothing/head/headband/gray
+	cost = 3
+	slot = WEAR_HEAD
+
+/datum/gear/cmheadbandsquad
+	display_name = "USCM Headband (Squad)"
+	path = /obj/item/clothing/head/headband/squad
+	cost = 3
+	slot = WEAR_HEAD
+
 /datum/gear/cmheadset
 	display_name = "USCM Earpiece"
 	path = /obj/item/clothing/head/headset
@@ -269,6 +287,12 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
 	slot = WEAR_FACE
 	cost = 2
+
+/datum/gear/tacticalmasksquad
+	display_name = "Tactical Mask (Squad)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
+	slot = WEAR_FACE
+	cost = 2
 //
 /datum/gear/greenfacepaint
 	display_name = "Green Facepaint"
@@ -335,6 +359,20 @@ var/global/list/gear_datums = list()
 	path = /obj/item/storage/box/m43
 	slot = WEAR_IN_BACK
 	cost = 4
+
+/datum/gear/m4a3_custom
+	display_name = "M4A3 Custom Pistol"
+	path = /obj/item/weapon/gun/pistol/m4a3/custom
+	slot = WEAR_IN_BACK
+	cost = 4
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/m44_custom_revolver
+	display_name = "M44 Custom Revolver"
+	path = /obj/item/weapon/gun/revolver/m44/custom
+	slot = WEAR_IN_BACK
+	cost = 7
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/jungle_boots
 	display_name = "Jungle Pattern Combat Boots"

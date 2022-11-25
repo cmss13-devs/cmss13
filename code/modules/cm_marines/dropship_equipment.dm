@@ -634,7 +634,7 @@
 	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 	var/turf/impact = pick(possible_turfs)
 	if(ammo_warn_sound)
-		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1)
+		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
 	SA.source_mob = user
@@ -687,7 +687,7 @@
 	name = "missile pod"
 	icon_state = "rocket_pod"
 	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter."
-	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
+	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5
 	point_cost = 600
 
@@ -708,7 +708,7 @@
 	icon_state = "minirocket_pod"
 	desc = "A mini rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
-	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
+	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 10 //1 seconds
 	point_cost = 600
 

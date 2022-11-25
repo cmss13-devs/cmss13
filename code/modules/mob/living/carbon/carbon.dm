@@ -12,17 +12,17 @@
 		handle_weather(delta_time)
 
 /mob/living/carbon/Destroy()
-	QDEL_NULL_LIST(internal_organs)
+	stomach_contents?.Cut()
 
 	. = ..()
 
+	QDEL_NULL_LIST(internal_organs)
 	QDEL_NULL(handcuffed)
 	QDEL_NULL(legcuffed)
 	QDEL_NULL(halitem)
 
 	hunter_data?.clean_data()
 	hunter_data = null
-	stomach_contents?.Cut()
 	halimage = null
 	halbody = null
 

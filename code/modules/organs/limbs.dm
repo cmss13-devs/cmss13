@@ -4,7 +4,7 @@
 /obj/limb
 	name = "limb"
 	appearance_flags = KEEP_TOGETHER | TILE_BOUND
-	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_DIR
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_DIR | VIS_INHERIT_PLANE
 	var/icon_name = null
 	var/body_part = null
 	var/icon_position = 0
@@ -19,7 +19,7 @@
 
 	var/display_name
 
-	var/list/wounds = list()
+	var/list/datum/wound/wounds = list()
 	var/number_wounds = 0 // cache the number of wounds, which is NOT wounds.len!
 
 	var/tmp/perma_injury = 0
@@ -108,20 +108,10 @@
 			L.parent = null
 		children = null
 
-	if(hidden)
-		qdel(hidden)
-		hidden = null
-
-	if(internal_organs)
-		for(var/datum/internal_organ/IO in internal_organs)
-			IO.owner = null
-			qdel(IO)
-		internal_organs = null
-
-	if(implants)
-		for(var/I in implants)
-			qdel(I)
-		implants = null
+	QDEL_NULL(hidden)
+	QDEL_NULL_LIST(internal_organs)
+	QDEL_NULL_LIST(implants)
+	QDEL_NULL_LIST(autopsy_data)
 
 	if(bleeding_effects_list)
 		for(var/datum/effects/bleeding/B in bleeding_effects_list)
@@ -135,6 +125,8 @@
 		owner.limbs_to_process -= src
 		owner.update_body()
 	owner = null
+
+	QDEL_NULL_LIST(wounds)
 
 	return ..()
 

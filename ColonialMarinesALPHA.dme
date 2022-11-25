@@ -1426,6 +1426,7 @@
 #include "code\modules\cm_preds\yaut_shield.dm"
 #include "code\modules\cm_preds\yaut_weapons.dm"
 #include "code\modules\cm_tech\hologram.dm"
+#include "code\modules\cm_tech\research_memories.dm"
 #include "code\modules\cm_tech\tech.dm"
 #include "code\modules\cm_tech\tech_memories.dm"
 #include "code\modules\cm_tech\tech_node.dm"

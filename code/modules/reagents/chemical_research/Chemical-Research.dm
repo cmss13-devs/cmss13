@@ -14,6 +14,11 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	var/list/chemical_networks = list()
 	var/list/shared_item_storage = list()
 	var/list/shared_item_quantity = list()
+	
+	var/list/chemical_objective_list = list()	//List of all objective reagents indexed by ID associated with the objective value
+	var/list/chemical_not_completed_objective_list = list()	//List of not completed objective reagents indexed by ID associated with the objective value
+	var/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
+
 
 /datum/chemical_data/proc/update_credits(var/change)
 	rsc_credits = max(0, rsc_credits + change)
@@ -72,3 +77,32 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	C.max_energy += 50
 	C.energy = C.max_energy
 	return C
+
+
+/datum/chemical_data/proc/complete_chemical(var/datum/reagent/S)
+	update_credits(2)
+	chemical_identified_list[S.id] = S.objective_value
+	chemical_not_completed_objective_list -= S.id
+
+	SSobjectives.statistics["chemicals_completed"]++
+	SSobjectives.statistics["chemicals_total_points_earned"] += S.objective_value
+
+	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
+	tree.add_points(S.objective_value)
+
+
+/datum/chemical_data/proc/add_chemical_objective(var/datum/reagent/S)
+	chemical_objective_list[S.id] = S.objective_value
+	chemical_not_completed_objective_list[S.id] = S.objective_value
+
+/datum/chemical_data/proc/get_tgui_data(var/chemid)
+	var/datum/reagent/S = chemical_reagents_list[chemid]
+	if(!S)
+		error("Invalid chemid [chemid]")
+		return
+	var/list/clue = list()
+
+	clue["text"] = S.name
+
+	return clue
+

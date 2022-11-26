@@ -523,7 +523,7 @@
 	icon_state = "pressurized_reagent_container"
 	item_state = "anesthetic"
 	amount_per_transfer_from_this = 0
-	possible_transfer_amounts = list(0)
+	possible_transfer_amounts = null
 	volume = 480
 	splashable = FALSE
 	w_class = SIZE_MASSIVE

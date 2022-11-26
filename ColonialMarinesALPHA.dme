@@ -519,7 +519,7 @@
 #include "code\datums\supply_packs\spec_equipment.dm"
 #include "code\datums\supply_packs\spec_ammo.dm"
 #include "code\datums\supply_packs\supplies.dm"
-#include "code\datums\supply_packs\Vehicle_ammo.dm"
+#include "code\datums\supply_packs\vehicle_ammo.dm"
 #include "code\datums\supply_packs\weapons.dm"
 #include "code\datums\weather\weather_event.dm"
 #include "code\datums\weather\weather_map_holder.dm"

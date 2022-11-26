@@ -401,26 +401,14 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		if(SKILL_ENGINEER)
 			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
-			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				return DURATION_MULTIPLIER_TIER_2
-			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				return DURATION_MULTIPLIER_TIER_1
 // Construction
 		if(SKILL_CONSTRUCTION)
 			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
-			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
-				return DURATION_MULTIPLIER_TIER_2
-			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-				return DURATION_MULTIPLIER_TIER_1
 // Medical
 		if(SKILL_MEDICAL)
 			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
-			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
-				return DURATION_MULTIPLIER_TIER_2
-			else if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-				return DURATION_MULTIPLIER_TIER_1
 // Surgeon
 		if(SKILL_SURGERY)
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))

@@ -75,7 +75,7 @@
 			return
 
 		if(WEAKREF(A) in dot_cooldown_atoms)
-		return
+			return
 
 	dot_cooldown_atoms += WEAKREF(A)
 	addtimer(CALLBACK(src, .proc/dot_cooldown_up, A), dot_cooldown_duration)

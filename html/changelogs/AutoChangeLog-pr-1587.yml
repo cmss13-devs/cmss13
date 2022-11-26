@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - rscadd: "Observer playtime is now tracked and appears in \"Other\" tab."

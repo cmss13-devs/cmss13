@@ -173,7 +173,7 @@ const VendableClothingItemRow = (
       {hasCost && (
         <TableCell className="Cost">
           <span className={classes(['Text'])}>
-            {cost === 0 ? 'no cost' : `${cost}P`}
+            {cost === 0 ? '' : `${cost}P`}
           </span>
         </TableCell>
       )}
@@ -252,32 +252,24 @@ export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
   return (
     <Section title={displayName}>
       <Table className="ItemTable">
-        {filteredCategories
-          .sort(
-            data.vendor_type === 'clothing'
-              ? undefined
-              : (a, b) => a.prod_name.localeCompare(b.prod_name)
-          )
-          .map((record, i) => {
-            return (
-              <TableRow
-                key={record.prod_index}
-                className={classes([
-                  'VendingItem',
-                  i % 2 ? 'VendingFlexAlt' : undefined,
-                ])}>
-                {vendor_type === 'sorted' && (
-                  <VendableItemRow record={record} />
-                )}
-                {(vendor_type === 'clothing' || vendor_type === 'gear') && (
-                  <VendableClothingItemRow
-                    record={record}
-                    hasCost={displayCost}
-                  />
-                )}
-              </TableRow>
-            );
-          })}
+        {filteredCategories.map((record, i) => {
+          return (
+            <TableRow
+              key={record.prod_index}
+              className={classes([
+                'VendingItem',
+                i % 2 ? 'VendingFlexAlt' : undefined,
+              ])}>
+              {vendor_type === 'sorted' && <VendableItemRow record={record} />}
+              {(vendor_type === 'clothing' || vendor_type === 'gear') && (
+                <VendableClothingItemRow
+                  record={record}
+                  hasCost={displayCost}
+                />
+              )}
+            </TableRow>
+          );
+        })}
       </Table>
     </Section>
   );

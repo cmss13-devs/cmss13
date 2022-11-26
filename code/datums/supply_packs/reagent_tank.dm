@@ -48,7 +48,7 @@
 	containername = "polytrinic acid tank crate"
 	group = "Reagent_tank"
 
-	/datum/supply_packs/ethanol_tank
+/datum/supply_packs/ethanol_tank
 	name = "ethanol tank crate (x1)"
 	contains = list(/obj/structure/reagent_dispensers/ethanoltank)
 	cost = 20

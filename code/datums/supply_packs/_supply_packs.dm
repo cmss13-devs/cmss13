@@ -6,19 +6,22 @@
 //NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 
 var/list/all_supply_groups = list(
-	"Operations",
-	"Weapons",
-	"Vehicle Ammo",
-	"Attachments",
 	"Ammo",
-	"Weapons Specialist Ammo",
-	"Armor",
+	"Attachments",
 	"Clothing",
-	"Medical",
 	"Engineering",
-	"Science",
-	"Supplies",
+	"Explosive",
 	"Food",
+	"Gear",
+	"Medical",
+	"Operations",
+	"Reagent_tank",
+	"Research",
+	"Weapons Specialist Ammo",
+	"Specialist Equipment",
+	"Supplies",
+	"Vehicle Ammo",
+	"Weapons",
 )
 
 /datum/supply_packs

@@ -229,3 +229,16 @@
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "M240-T Type-X Fuel Tank Crate"
 	group = "Weapons Specialist Ammo"
+
+//SG ammo
+
+/datum/supply_packs/ammo_smartgun
+	name = "M56 smartgun drum crate (x2)"
+	contains = list(
+					/obj/item/ammo_magazine/smartgun,
+					/obj/item/ammo_magazine/smartgun
+					)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper smartgun drums crate"
+	group = "Weapons Specialist Ammo"

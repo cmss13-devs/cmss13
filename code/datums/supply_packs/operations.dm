@@ -1,63 +1,105 @@
-/datum/supply_packs/flares
-	name = "flare packs crate (x20)"
-	contains = list(
-					/obj/item/ammo_box/magazine/misc/flares,
-					/obj/item/ammo_box/magazine/misc/flares,
-					)
-	cost = 40
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "flare pack crate"
-	group = "Operations"
+//List of crates that contain heavy or bulky supply that can be requested to support the operation
 
+//add secured crate flare MRE scanner autodoc surgery table?
 
-/datum/supply_packs/motiondetector
-	name = "Motion Detector (x2)"
-	contains = list(
-		/obj/item/device/motiondetector,
-		/obj/item/device/motiondetector
-					)
-	cost = 40
-	containertype = /obj/structure/closet/crate/supply
-	containername = "Motion Detector crate"
-	group = "Operations"
+//Mortar
 
-/datum/supply_packs/signal_flares
-	name = "signal flare packs crate (x4)"
+/datum/supply_packs/mortar
+	name = "M402 mortar crate (Mortar x1, Mortar shell backpack x1)"
 	contains = list(
-					/obj/item/storage/box/m94/signal,
-					/obj/item/storage/box/m94/signal,
-					/obj/item/storage/box/m94/signal,
-					/obj/item/storage/box/m94/signal
+					/obj/item/storage/backpack/marine/mortarpack,
+					/obj/item/mortar_kit
 					)
 	cost = 60
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "signal flare pack crate"
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M402 mortar crate"
 	group = "Operations"
 
-/datum/supply_packs/fulton
-	name = "fulton recovery device crate (x4)"
-	contains = list(
-					/obj/item/stack/fulton,
-					/obj/item/stack/fulton,
-					/obj/item/stack/fulton,
-					/obj/item/stack/fulton
-					)
+//------------------------Mortar ammunition crates----------------
+
+/datum/supply_packs/ammo_mortar_he
+	name = "M402 mortar shells crate (x6 HE)"
 	cost = 20
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "fulton recovery device crate"
+	contains = list(
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/he
+					)
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
+	containername = "\improper M402 mortar HE shells crate"
 	group = "Operations"
 
-/datum/supply_packs/nvg
-	name = "M2 Night Vision Goggles Crate (x3)"
+/datum/supply_packs/ammo_mortar_incend
+	name = "M402 mortar shells crate (x6 Incend)"
+	cost = 20
 	contains = list(
-					/obj/item/prop/helmetgarb/helmet_nvg,
-					/obj/item/prop/helmetgarb/helmet_nvg,
-					/obj/item/prop/helmetgarb/helmet_nvg
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/incendiary
 					)
-	cost = 60
-	containertype = /obj/structure/closet/crate/supply
-	containername = "M2 Night Vission Goggles Crate"
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
+	containername = "\improper M402 mortar incendiary shells crate"
 	group = "Operations"
+
+/datum/supply_packs/ammo_mortar_flare
+	name = "M402 mortar shells crate (x6 Flare/Camera)"
+	cost = 20
+	contains = list(
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/flare
+					)
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
+	containername = "\improper M402 mortar flare shells crate"
+	group = "Operations"
+
+//------------------------Sentries Ammo----------------
+
+/datum/supply_packs/ammo_sentry
+	name = "UA 571-C sentry ammunition (x2)"
+	contains = list(
+					/obj/item/ammo_magazine/sentry,
+					/obj/item/ammo_magazine/sentry
+					)
+	cost = 40
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper sentry ammo crate"
+	group = "Operations"
+
+/datum/supply_packs/ammo_sentry_flamer
+	name = "UA 42-F sentry flamer ammunition (x2)"
+	contains = list(
+					/obj/item/ammo_magazine/sentry_flamer,
+					/obj/item/ammo_magazine/sentry_flamer
+					)
+	cost = 40
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper sentry flamer ammo crate"
+	group = "Operations"
+
+/datum/supply_packs/ammo_sentry_shotgun
+	name = "UA 12-G sentry shotgun ammunition (x2)"
+	contains = list(
+					/obj/item/ammo_magazine/sentry/shotgun,
+					/obj/item/ammo_magazine/sentry/shotgun
+					)
+	cost = 40
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper sentry shotgun ammo crate"
+	group = "Operations"
+
+//Non buyable bellow
+
+//Orbital Bombardement Ammunition
 
 /datum/supply_packs/ob_incendiary
 	contains = list(
@@ -131,6 +173,8 @@
 	group = "Operations"
 	iteration_needed = null
 
+//Telecomunication
+
 /datum/supply_packs/telecommsparts
 	name = "Replacement Telecommunications Parts"
 	contains = list(
@@ -150,6 +194,8 @@
 	containername = "replacement telecommunications crate"
 	group = "Operations"
 
+//Nuclear bomb
+
 /datum/supply_packs/nuclearbomb
 	name = "Operational Nuke"
 	cost = 0
@@ -157,28 +203,3 @@
 	buyable = 0
 	group = "Operations"
 	iteration_needed = null
-
-/datum/supply_packs/spec_kits
-	name = "Weapons Specialist Kits"
-	contains = list(
-		/obj/item/spec_kit/asrs,
-		/obj/item/spec_kit/asrs,
-		/obj/item/spec_kit/asrs,
-		/obj/item/spec_kit/asrs
-	)
-	cost = 0
-	containertype = /obj/structure/closet/crate/supply
-	containername = "weapons specialist kits crate"
-	buyable = 0
-	group = "Operations"
-	iteration_needed = null
-
-/datum/supply_packs/xeno_tags
-	name = "Xenomorph IFF Tag Case (x7 tags)"
-	contains = list(
-		/obj/item/storage/xeno_tag_case/full
-	)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure/weyland
-	containername = "IFF tag crate"
-	group = "Operations"

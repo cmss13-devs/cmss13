@@ -82,6 +82,8 @@
 	access = ACCESS_MARINE_MEDBAY
 	group = "Medical"
 
+// non buyable
+
 /datum/supply_packs/upgraded_medical_kits
 	name = "upgraded medical equipment crate (x4)"
 	contains = list(

@@ -151,7 +151,6 @@
 	for(var/obj/item/grab/grab in list(user.l_hand, user.r_hand))
 		grabbed_things += grab.grabbed_thing
 		grab.grabbed_thing.forceMove(user.loc)
-	user.forceMove(TT)
 	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
 		thing.forceMove(TT)
 

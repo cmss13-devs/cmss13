@@ -20,7 +20,6 @@
 	preferred_direction = NORTH
 	port_direction = NORTH
 
-/*
 // ERT Shuttle 2
 /obj/docking_port/mobile/emergency_response/ert2
 	name = "ERT Shuttle 2"
@@ -34,7 +33,7 @@
 	id = "ert3"
 	preferred_direction = NORTH
 	port_direction = NORTH
-*/
+
 // Generic ERT Dock
 /obj/docking_port/stationary/emergency_response
 	name   = "ERT docking port"
@@ -42,21 +41,21 @@
 	height = 13
 
 /obj/docking_port/stationary/emergency_response/port1
-	name = "Almayer ERT Pad 1"
+	name = "Almayer starboard landing pad"
 	dir = NORTH
 	id = "almayer-ert1"
 
-/*
+
 /obj/docking_port/stationary/emergency_response/port2
-	name = "Almayer ERT2"
+	name = "Almayer port landing pad"
 	dir = NORTH
 	id = "almayer-ert2"
 
 /obj/docking_port/stationary/emergency_response/port3
-	name = "Almayer ERT3"
+	name = "Almayer stern landing pad"
 	dir = NORTH
 	id = "almayer-ert3"
-*/
+
 
 /obj/docking_port/stationary/emergency_response/transit
 	dir = NORTH

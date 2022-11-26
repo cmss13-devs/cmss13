@@ -93,10 +93,13 @@
 	var/list/docks = SSshuttle.stationary
 	var/list/targets = list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
-		targets += list(dock.id)
+		var/list/dockinfo = list(
+			"id"=dock.id,
+			"name"=dock.name,
+		)
+		targets += list(dockinfo)
 	. = list()
 	.["destinations"]=targets
-
 
 /obj/structure/machinery/computer/shuttle/ert/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

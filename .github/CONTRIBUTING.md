@@ -170,7 +170,7 @@ If you are porting features/tools from other codebases, you must give them credi
 Regarding sprites & sounds, you must credit the artist and possibly the codebase.
 
 ## What we want
-“Ultimately, the maintainer team, and its whims overrule that of the players and contributors”, and that applies to what we’ll be more likely to accept into the game via a Pull Request. The following list is non-exhaustive, but should give you a good idea of what the dev team would like to see in Pull Requests.
+The following list is non-exhaustive, but should give you a good idea of what the dev team would like to see in Pull Requests.
 
 ### Spriting
 <details>
@@ -215,7 +215,7 @@ Entirely new maps are generally considered to be stepping stones into the Develo
 </details>
 
 ## What we don't want
-There are things, features, balances, projects, and all other sorts of stuff that we don’t want player contributors touching. Some things are reserved to the Maintainer Team alone. While this list isn’t comprehensive, it’ll give you a good idea of what you should keep your hands off of while working with our codebase. If you make a PR that does one, or some of these things it doesn’t mean it will be automatically denied (and sometimes doing something on the following list is a good thing), but it will very likely drastically reduce your chances of having the PR accepted and merged, so don’t say we didn’t warn you!
+The following list is non-exhaustive, but should give you a good idea of what the dev team don't want to see in Pull Requests.
 
 ### Spriting
 <details>

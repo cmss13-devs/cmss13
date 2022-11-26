@@ -225,6 +225,9 @@
 	vend_x_offset = 2
 	vend_y_offset = 1
 
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/populate_product_list(var/scale)
 	listed_products = list(
 		list("WEBBINGS", -1, null, null),
@@ -444,6 +447,10 @@
 
 	vend_x_offset = 2
 
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(var/scale)
 	listed_products = list(
 
@@ -565,6 +572,9 @@
 
 	vend_y_offset = 1
 
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
 /obj/structure/machinery/cm_vending/sorted/attachments/squad/populate_product_list(var/scale)
 	listed_products = list(
 		list("BARREL", -1, null, null),
@@ -651,6 +661,9 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Gas Mask", 20, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
 		)
+
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/populate_product_list(var/scale)
 	return

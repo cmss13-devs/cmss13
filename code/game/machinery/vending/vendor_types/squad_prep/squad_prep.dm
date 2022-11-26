@@ -8,6 +8,9 @@
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_CARGO)
 	hackable = TRUE
 
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/populate_product_list(var/scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
@@ -236,6 +239,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	req_one_access = list()
 	listed_products = list()
 	hackable = TRUE
+
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/populate_product_list(var/scale)
 	listed_products = list(

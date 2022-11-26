@@ -1,0 +1,4 @@
+author: "Mistfrag"
+delete-after: True
+changes:
+  - refactor: "Spitters no longer use HardRefs for their abilities, now use WeakRefs.\n:cl:"

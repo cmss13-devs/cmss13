@@ -49,13 +49,14 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
-		/datum/action/xeno_action/activable/xeno_spit,
+		/datum/action/xeno_action/activable/xeno_spit/palatine_macro,
 		/datum/action/xeno_action/onclick/shift_spits,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
-		/datum/action/xeno_action/activable/warden_heal,
-		/datum/action/xeno_action/activable/prae_retrieve,
-		/datum/action/xeno_action/onclick/prae_switch_heal_type,
+		/datum/action/xeno_action/activable/warden_heal,//Mac3
+		/datum/action/xeno_action/activable/prae_retrieve,//Mac4
+		/datum/action/xeno_action/onclick/prae_switch_heal_type,//Mac5
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/activable/prae_abduct/palatine_macro,//Mac2
 		/datum/action/xeno_action/onclick/palatine_roar
 	)
 

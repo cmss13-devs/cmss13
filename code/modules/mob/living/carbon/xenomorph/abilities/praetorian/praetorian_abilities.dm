@@ -130,6 +130,9 @@
 	var/max_distance = 7
 	var/windup = 8
 
+/datum/action/xeno_action/activable/prae_abduct/palatine_macro
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
 	action_icon_state = "punch"

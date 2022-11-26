@@ -986,6 +986,10 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 			if(ispath(prod_type, /obj/item/weapon/gun))
 				new_item = new prod_type(target_turf, TRUE)
 			else
+				if(prod_type == /obj/item/device/radio/headset/almayer/marine)
+					prod_type = vendor.headset_type
+				else if(prod_type == /obj/item/clothing/gloves/marine)
+					prod_type = vendor.gloves_type
 				new_item = new prod_type(target_turf)
 			new_item.add_fingerprint(user)
 		else

@@ -118,7 +118,7 @@
 
 			to_chat(user, SPAN_NOTICE("You fill [src] with [trans] units of the contents of [target]."))
 		else
-			if(is_open_container())
+			if(is_open_container_or_can_be_dispensed_into())
 				if(reagents && !reagents.total_volume)
 					to_chat(user, SPAN_WARNING("[src] is empty."))
 					return

@@ -58,6 +58,19 @@
 		return TRUE
 
 
+/obj/item/explosive/mine/sebb
+	icon_state = "grenade_sebb_planted"
+	map_deployed = TRUE
+
+/obj/item/explosive/mine/sebb/disarm()
+	. = ..()
+	new /obj/item/explosive/grenade/sebb(src)
+	qdel(src.loc)
+/obj/item/explosive/mine/sebb/prime()
+	set waitfor = 0
+	new /obj/item/explosive/grenade/sebb/primed(src)
+	if(!QDELETED(src))
+		disarm()
 
 //Arming
 /obj/item/explosive/mine/attack_self(mob/living/user)

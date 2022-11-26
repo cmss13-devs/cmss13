@@ -571,7 +571,7 @@
 */
 /obj/item/explosive/grenade/sebb
 	name = "\improper G2 Electroshock grenade"
-	desc = "This is a G2 Electroshock Grenade. Produced by Armat Battlefield Systems, it's sometimes referred to as the Sonic Electric Ball Breaker, after a rash of incidents where the intense 1.2 gV sonic payload caused... Rupturing. A bounding landmine mode is available for this weapon.""
+	desc = "This is a G2 Electroshock Grenade. Produced by Armat Battlefield Systems, it's sometimes referred to as the Sonic Electric Ball Breaker, after a rash of incidents where the intense 1.2 gV sonic payload caused... Rupturing. A bounding landmine mode is available for this weapon."
 	icon_state = "grenade_sebb"
 	item_state = "grenade_sebb"
 	det_time = 40
@@ -579,14 +579,38 @@
 	var/damage = 120 // Generic Energy damage from 1.2 GV. Distance scaled
 	var/dam_range_mult = 15 // Range is multiplied by this, then damage is subracted by this
 
+
+/obj/item/explosive/grenade/afterattack(atom/target, mob/user, proximity)
+	if(!proximity || active || !isturf(target))
+		return
+
+	if(user.action_busy)
+		return
+
+	var/turf/T = target
+	to_chat(user, SPAN_NOTICE("You switch \the [src] into landmind mode and start burying it..."))
+	playsound(user.loc, 'sound/effects/thud.ogg', 100, 6)
+	if(!do_after(user,20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_NOTICE("You stop digging."))
+		return
+	new /obj/item/explosive/mine/sebb(T.loc)
+	qdel(src)
+
+/obj/item/explosive/grenade/sebb/activate()
+	..()
+	var/soundtime = det_time - 5
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/playsound,src.loc,'sound/effects/sebb_beep.ogg',60,0, 10),soundtime)
+	//playsound(src.loc, 'sound/effects/sebb.ogg', 60, 1, 10)
+
 /obj/item/explosive/grenade/sebb/prime()
 	//flick('icons/effects/sebb.dmi',src)
 
 	new /obj/effect/overlay/sebb(src.loc)
-	for(var/atom/thing in oview(range,src)) // special effect funnies
+	playsound(src.loc, 'sound/effects/sebb_explode.ogg', 100, 0, 10)
+	for(var/turf/turf in oview(range,src)) // special effect funnies
 		if(prob(25))
 			var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
-			spark.set_up(2, 1, thing)
+			spark.set_up(2, 1, turf)
 			spark.start()
 	for(var/mob/living/Mob in oview(range,src))
 		var/mob_range = get_dist(src,Mob)
@@ -614,15 +638,26 @@
 
 	qdel(src)
 
+
+/obj/item/explosive/grenade/sebb/primed
+	name = "\improper G2 Electroshock grenade"
+	desc = "A G2 Electroshock Grenade, looks like its quite angry! Oh shit!"
+	det_time = 10
+
+/obj/item/explosive/grenade/sebb/primed/New()
+	prime()
+
 /obj/effect/overlay/sebb
 	name = "Danger"
 	icon = 'icons/effects/sebb.dmi'
-	icon_state = "sebb_explode"
+	icon_state = "sebb_explode" // testing
 	layer = ABOVE_LIGHTING_PLANE
 	var/time_to_live = 1 SECONDS
-
+	pixel_x = -175
+	pixel_y = -175
 	appearance_flags = RESET_COLOR
 
 
 /obj/effect/overlay/sebb/New()
 	addtimer(CALLBACK(GLOBAL_PROC,.proc/qdel,src),time_to_live)
+

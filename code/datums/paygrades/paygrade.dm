@@ -23,15 +23,15 @@ GLOBAL_LIST_INIT_TYPED(paygrades, /datum/paygrade, setup_paygrades())
 
 GLOBAL_LIST_INIT(highcom_paygrades, list(
 	"NO7",
-	"MO7",
+	"O-7",
 	"NO8",
-	"MO8",
+	"O-8",
 	"NO9",
-	"MO9",
+	"O-9",
 	"NO10",
-	"MO10",
+	"O-10",
 	"NO10C",
-	"MO10C",
+	"O-10C",
 	"PvO8",
 	"PvO9",
 	"PvCM"
@@ -43,9 +43,9 @@ GLOBAL_LIST_INIT(co_paygrades, list(
 	"NO6C",
 	"NO5",
 	"NO4",
-	"MO6",
-	"MO6E",
-	"MO6C",
-	"MO5",
-	"MO4"
+	"O-6",
+	"O-6E",
+	"O-6C",
+	"O-5",
+	"O-4"
 ))

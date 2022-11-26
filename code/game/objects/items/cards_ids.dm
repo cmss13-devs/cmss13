@@ -74,7 +74,7 @@
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
 	var/assignment = null	//can be alt title or the actual job
 	var/rank = null			//actual job
-	var/paygrade = "ME1"  // Marine's paygrade
+	var/paygrade = "E-1"  // Marine's paygrade
 	var/claimedgear = 1 // For medics and engineers to 'claim' a locker
 
 	var/list/uniform_sets = null

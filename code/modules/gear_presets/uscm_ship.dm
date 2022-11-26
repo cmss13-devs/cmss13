@@ -113,7 +113,7 @@
 	)
 	assignment = JOB_CHIEF_ENGINEER
 	rank = JOB_CHIEF_ENGINEER
-	paygrade = "MO2"
+	paygrade = "O-2"
 	role_comm_title = "CE"
 	minimum_age = 27
 	skills = /datum/skills/CE
@@ -146,7 +146,7 @@
 	)
 	assignment = JOB_MAINT_TECH
 	rank = JOB_MAINT_TECH
-	paygrade = "ME2"
+	paygrade = "E-2"
 	role_comm_title = "MT"
 	skills = /datum/skills/MT
 
@@ -183,7 +183,7 @@
 	)
 	assignment = JOB_ORDNANCE_TECH
 	rank = JOB_ORDNANCE_TECH
-	paygrade = "ME2"
+	paygrade = "E-2"
 	role_comm_title = "OT"
 	skills = /datum/skills/OT
 
@@ -225,7 +225,7 @@
 	)
 	assignment = JOB_CHIEF_REQUISITION
 	rank = JOB_CHIEF_REQUISITION
-	paygrade = "MO2"
+	paygrade = "O-2"
 	role_comm_title = "RO"
 	minimum_age = 27
 	skills = /datum/skills/RO
@@ -255,7 +255,7 @@
 	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP)
 	assignment = JOB_CARGO_TECH
 	rank = JOB_CARGO_TECH
-	paygrade = "ME2"
+	paygrade = "E-2"
 	role_comm_title = "CT"
 	skills = /datum/skills/CT
 
@@ -284,7 +284,7 @@
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_CO
 	rank = JOB_CO
-	paygrade = "MO4"
+	paygrade = "O-4"
 	role_comm_title = "CO"
 	minimum_age = 30
 	skills = /datum/skills/commander
@@ -353,7 +353,7 @@
 
 	idtype = /obj/item/card/id/gold/council
 	rank = JOB_CO
-	paygrade = "MO5"
+	paygrade = "O-5"
 	role_comm_title = "CO"
 	minimum_age = 35
 
@@ -365,7 +365,7 @@
 /datum/equipment_preset/uscm_ship/commander/council/plus
 	name = "USCM Commanding Officer (CO++)"
 	idtype = /obj/item/card/id/general
-	paygrade = "MO6"
+	paygrade = "O-6"
 
 /datum/equipment_preset/uscm_ship/commander/council/plus/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/councilchief(H), WEAR_HEAD)
@@ -380,7 +380,7 @@
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_XO
 	rank = JOB_XO
-	paygrade = "MO3"
+	paygrade = "O-3"
 	role_comm_title = "XO"
 	minimum_age = 35
 	skills = /datum/skills/XO
@@ -416,7 +416,7 @@
 	access = list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	assignment = JOB_SO
 	rank = JOB_SO
-	paygrade = "MO1"
+	paygrade = "0-1"
 	role_comm_title = "SO"
 	minimum_age = 25
 	skills = /datum/skills/SO
@@ -446,7 +446,7 @@
 	access
 	assignment = JOB_SEA
 	rank = JOB_SEA
-	paygrade = "ME7"
+	paygrade = "E-7"
 	role_comm_title = "SEA"
 	minimum_age = 40
 	skills = /datum/skills/SEA
@@ -475,14 +475,14 @@
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/H)
 	if(H.client)
-		var/grade8 = "ME8E"
-		var/grade9 = "ME9E"
+		var/grade8 = "E-8E"
+		var/grade9 = "E-9E"
 
 		if(H.client && H.client.prefs)
 			var/path = H.client.prefs.sea_path
 			if(path == "Technical")
-				grade8 = "ME8"
-				grade9 = "ME9"
+				grade8 = "E-8"
+				grade9 = "E-9"
 
 		if(!H.client.prefs.playtime_perks)
 			return paygrade
@@ -502,7 +502,7 @@
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
 	assignment = JOB_PILOT
 	rank = JOB_PILOT
-	paygrade = "MO1"
+	paygrade = "0-1"
 	role_comm_title = "DP"
 	skills = /datum/skills/pilot
 
@@ -550,7 +550,7 @@
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
 	assignment = JOB_DROPSHIP_CREW_CHIEF
 	rank = JOB_DROPSHIP_CREW_CHIEF
-	paygrade = "ME5"
+	paygrade = "E-5"
 	role_comm_title = "DCC"
 	skills = /datum/skills/crew_chief
 
@@ -598,7 +598,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Officer"
 	rank = "USCM Officer"
-	paygrade = "MO3"
+	paygrade = "O-3"
 	role_comm_title = "Cpt"
 	minimum_age = 40
 	skills = /datum/skills/commander
@@ -638,7 +638,7 @@
 	access = list(ACCESS_MARINE_KITCHEN)
 	assignment = JOB_MESS_SERGEANT
 	rank = JOB_MESS_SERGEANT
-	paygrade = "ME2"
+	paygrade = "E-2"
 	role_comm_title = "MST"
 	skills = /datum/skills/mess_technician
 

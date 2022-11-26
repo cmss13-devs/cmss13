@@ -14,7 +14,7 @@
 	)
 	assignment = JOB_CMO
 	rank = JOB_CMO
-	paygrade = "MO2"
+	paygrade = "O-2"
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
 
@@ -68,7 +68,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_DOCTOR
 	rank = JOB_DOCTOR
-	paygrade = "MO1"
+	paygrade = "0-1"
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
 
@@ -121,7 +121,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_NURSE
 	rank = JOB_NURSE
-	paygrade = "ME5"
+	paygrade = "E-5"
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 
@@ -172,7 +172,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER
 	rank = JOB_RESEARCHER
-	paygrade = "MO1"
+	paygrade = "0-1"
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
 

@@ -61,7 +61,7 @@
 	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
-	paygrade = "ME2"
+	paygrade = "E-2"
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
 
@@ -75,7 +75,7 @@
 /datum/equipment_preset/uscm/pfc/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
-			return "ME1"
+			return "E-1"
 	return paygrade
 
 /datum/equipment_preset/uscm/pfc/cryo
@@ -95,7 +95,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
@@ -150,7 +150,7 @@
 	)
 	assignment = JOB_CREWMAN
 	rank = JOB_CREWMAN
-	paygrade = "ME4"
+	paygrade = "E-4"
 	role_comm_title = "CRMN"
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
@@ -210,7 +210,7 @@
 	)
 	assignment = JOB_INTEL
 	rank = JOB_INTEL
-	paygrade = "MO1"
+	paygrade = "0-1"
 	role_comm_title = "IO"
 	skills = /datum/skills/intel
 
@@ -265,7 +265,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
@@ -319,7 +319,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
@@ -349,7 +349,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
 	assignment = JOB_SQUAD_RTO
 	rank = JOB_SQUAD_RTO
-	paygrade = "ME4"
+	paygrade = "E-4"
 	role_comm_title = "RTO"
 	skills = /datum/skills/rto
 
@@ -377,7 +377,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
 
@@ -407,7 +407,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
-	paygrade = "ME5"
+	paygrade = "E-5"
 	role_comm_title = "SL"
 	minimum_age = 27
 	skills = /datum/skills/SL
@@ -438,14 +438,14 @@
 	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
-	paygrade = "ME2"
+	paygrade = "E-2"
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc/crafty
 
 /datum/equipment_preset/uscm/private_equipped/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
-			return "ME1"
+			return "E-1"
 	return paygrade
 
 /datum/equipment_preset/uscm/private_equipped/load_gear(mob/living/carbon/human/H)
@@ -481,7 +481,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
-	paygrade = "ME5"
+	paygrade = "E-5"
 	role_comm_title = "SL"
 	minimum_age = 27
 	skills = /datum/skills/SL
@@ -517,7 +517,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
@@ -553,7 +553,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
 
@@ -597,7 +597,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
@@ -647,7 +647,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
@@ -712,7 +712,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
 	assignment = JOB_SQUAD_RTO
 	rank = JOB_SQUAD_RTO
-	paygrade = "ME4"
+	paygrade = "E-4"
 	role_comm_title = "RTO"
 	skills = /datum/skills/rto
 
@@ -749,7 +749,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_TSL)
 	skills = /datum/skills/commando/deathsquad
 	auto_squad_name = SQUAD_SOF
-	paygrade = "ME6"
+	paygrade = "E-6"
 
 /datum/equipment_preset/uscm/marsoc/New()
 	. = ..()
@@ -798,7 +798,7 @@
 /datum/equipment_preset/uscm/marsoc/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		if(get_job_playtime(H.client, rank) > JOB_PLAYTIME_TIER_2)
-			return "ME7"
+			return "E-7"
 	return paygrade
 
 //Covert Raiders
@@ -818,13 +818,13 @@
 	assignment = JOB_MARINE_RAIDER_SL
 	rank = JOB_MARINE_RAIDER_SL
 	role_comm_title = "TL."
-	paygrade = "MO1"
+	paygrade = "0-1"
 	skills = /datum/skills/commando/deathsquad/leader
 
 /datum/equipment_preset/uscm/marsoc/sl/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		if(get_job_playtime(H.client, rank) > JOB_PLAYTIME_TIER_2)
-			return "MO2"
+			return "O-2"
 	return paygrade
 
 //Codenamed Team Leader
@@ -843,11 +843,11 @@
 	assignment = JOB_MARINE_RAIDER_CMD
 	rank = JOB_MARINE_RAIDER_CMD
 	role_comm_title = "CMD."
-	paygrade = "MO3"
+	paygrade = "O-3"
 	skills = /datum/skills/commando/deathsquad/officer
 
 /datum/equipment_preset/uscm/marsoc/cmd/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		if(get_job_playtime(H.client, rank) > JOB_PLAYTIME_TIER_3)
-			return "MO4"
+			return "O-4"
 	return paygrade

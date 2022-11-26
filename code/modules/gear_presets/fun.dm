@@ -639,7 +639,7 @@
 
 	assignment = "Monkey Marine"
 	rank = "Monkey Marine"
-	paygrade = "ME2"
+	paygrade = "E-2"
 
 /datum/equipment_preset/fun/monkey/marine/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)

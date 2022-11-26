@@ -16,7 +16,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_COLONEL
 	rank = JOB_COLONEL
-	paygrade = "MO6"
+	paygrade = "O-6"
 	role_comm_title = "COL"
 	minimum_age = 40
 	skills = /datum/skills/general
@@ -61,7 +61,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_GENERAL
 	rank = JOB_GENERAL
-	paygrade = "MO7"
+	paygrade = "O-7"
 	role_comm_title = "GEN"
 	minimum_age = 50
 	skills = /datum/skills/general
@@ -102,27 +102,27 @@
 
 /datum/equipment_preset/uscm_event/general/o7
 		name = "USCM O-7 - Brigadier General (High Command)"
-		paygrade = "MO7"
+		paygrade = "O-7"
 
 /datum/equipment_preset/uscm_event/general/o8
 		name = "USCM O-8 - Major General (High Command)"
-		paygrade = "MO8"
+		paygrade = "O-8"
 
 /datum/equipment_preset/uscm_event/general/o9
 		name = "USCM O-9 - Lieutenant General (High Command)"
-		paygrade = "MO9"
+		paygrade = "O-9"
 
 /datum/equipment_preset/uscm_event/general/o10
 		name = "USCM O-10 - General (High Command)"
-		paygrade = "MO10"
+		paygrade = "O-10"
 
 /datum/equipment_preset/uscm_event/general/o10c
 		name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
-		paygrade = "MO10C"
+		paygrade = "O-10C"
 
 /datum/equipment_preset/uscm_event/general/
 		name = "USCM O-10S - Commandant of the Marine Corps (High Command)"
-		paygrade = "MO10S"
+		paygrade = "O-10S"
 
 /*****************************************************************************************************/
 
@@ -134,7 +134,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_ORDNANCE_TECH
 	rank = "UPP"
-	paygrade = "ME5"
+	paygrade = "E-5"
 	role_comm_title = "OT"
 	skills = /datum/skills/spy
 
@@ -196,7 +196,7 @@
 
 	assignment = JOB_PROVOST_ENFORCER
 	rank = "Provost Enforcer"
-	paygrade = "ME5"
+	paygrade = "E-5"
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -238,7 +238,7 @@
 
 	assignment = JOB_PROVOST_TML
 	rank = "Provost Team Leader"
-	paygrade = "ME6"
+	paygrade = "E-6"
 	role_comm_title = "PvTML"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -282,7 +282,7 @@
 
 	assignment = JOB_PROVOST_ADVISOR
 	rank = "Provost Advisor"
-	paygrade = "ME6"
+	paygrade = "E-6"
 	role_comm_title = "PvA"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -352,7 +352,7 @@
 
 	assignment = JOB_PROVOST_MARSHAL
 	rank = "Provost Marshal"
-	paygrade = "MO6"
+	paygrade = "O-6"
 	role_comm_title = "PvM"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -385,7 +385,7 @@
 
 	assignment = JOB_PROVOST_SMARSHAL
 	rank = "Provost Sector Marshal"
-	paygrade = "MO7"
+	paygrade = "O-7"
 	role_comm_title = "PvSM"
 
 /datum/equipment_preset/uscm_event/provost/marshal/sector/load_gear(mob/living/carbon/human/H)

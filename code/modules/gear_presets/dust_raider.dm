@@ -24,7 +24,7 @@
 	access = list(ACCESS_MARINE_PREP)
 	assignment = "Squad Rifleman"
 	rank = "Squad Rifleman"
-	paygrade = "ME2"
+	paygrade = "E-2"
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc/crafty
 
@@ -46,7 +46,7 @@
 	access = list(ACCESS_MARINE_PREP)
 	assignment = "Squad Leader"
 	rank = "Squad Leader"
-	paygrade = "ME5"
+	paygrade = "E-5"
 	role_comm_title = "SL"
 	skills = /datum/skills/SL
 
@@ -75,7 +75,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = "Squad Smartgunner"
 	rank = "Squad Smartgunner"
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
@@ -101,7 +101,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = "Squad Combat Technician"
 	rank = "Squad Combat Technician"
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "Eng"
 	skills = /datum/skills/combat_engineer
 
@@ -130,7 +130,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = "Squad Hospital Corpsman"
 	rank = "Squad Hospital Corpsman"
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
@@ -165,7 +165,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = "Squad Weapons Specialist"
 	rank = "Squad Weapons Specialist"
-	paygrade = "ME3"
+	paygrade = "E-3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 

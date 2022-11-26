@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "windows shatter appropriately, and drop what you'd expect if they are reinforced or not upon deconstruction"

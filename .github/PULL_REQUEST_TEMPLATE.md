@@ -7,12 +7,9 @@
 Mention if you have tested your changes. If you changed a map, make sure you used the mapmerge tool.
 If this is an Issue Correction, you can type "Fixes Issue #169420" to link the PR to the corresponding Issue number #169420.
 
-Prefix the PR title with [admin] if it involves something admin related.
-Prefix the PR title with [s] if you are fixing an exploit, so that it is not announced on the CMSS13 Discord and the server.
-
 Remember: something that is self-evident to you might not be to others. Explain your rationale fully, even if you feel it goes without saying.-->
 
-# Explain why it's good for the game.
+# Explain why it's good for the game
 
 <!-- Please add a short description of why you think these changes would benefit the game. If you can't justify it in words, it might not be worth adding, and may discourage maintainers from reviewing or merging your PR. This section is not strictly required for (non-controversial) fix PRs or backend PRs. -->
 

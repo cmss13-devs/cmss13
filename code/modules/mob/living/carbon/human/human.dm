@@ -156,8 +156,8 @@
 	// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
 	var/knockdown_value = severity * 0.1
 	var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
-	var/obj/item/Item1 = get_active_hand()
-	var/obj/item/Item2 = get_inactive_hand()
+	var/obj/item/item1 = get_active_hand()
+	var/obj/item/item2 = get_inactive_hand()
 	apply_effect(round(knockdown_minus_armor), WEAKEN)
 	var/knockout_value = damage * 0.1
 	var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
@@ -165,10 +165,10 @@
 	apply_effect(round(knockout_minus_armor) * 2, DAZE)
 	explosion_throw(severity, direction)
 
-	if(Item1 && isturf(Item1.loc))
-		Item1.explosion_throw(severity, direction)
-	if(Item2 && isturf(Item2.loc))
-		Item2.explosion_throw(severity, direction)
+	if(item1 && isturf(item1.loc))
+		item1.explosion_throw(severity, direction)
+	if(item2 && isturf(item2.loc))
+		item2.explosion_throw(severity, direction)
 
 	if(damage >= 0)
 		b_loss += damage * 0.5

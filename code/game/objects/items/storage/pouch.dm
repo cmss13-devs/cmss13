@@ -851,7 +851,7 @@
 	fill_with("kelotane")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall/(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small/(src)
 	. = ..()
 	fill_with("oxycodone")
 

@@ -5,7 +5,7 @@
 	req_access = list( )
 // interaction_flags = INTERACT_MACHINE_TGUI
 	var/shuttleId
-	var/possible_destinations = ""
+	var/possible_destinations = list()
 	var/admin_controlled
 
 
@@ -90,11 +90,23 @@
 
 /obj/structure/machinery/computer/shuttle/ert/ui_data(mob/user)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
-	. = list(
-		"shuttle"=src,
-		"port"=ert,
-		"destinations"=valid_destinations(),
-	)
+	var/list/docks = SSshuttle.stationary
+	var/list/targets = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
+		targets += list(dock.id)
+	. = list()
+	.["destinations"]=targets
+
+
+/obj/structure/machinery/computer/shuttle/ert/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = usr
+	switch(action)
+		if("move")
+			SSshuttle.moveShuttle(shuttleId, params["target"], 0)
+
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
 	. = ..()

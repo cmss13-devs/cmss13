@@ -118,18 +118,8 @@
 	},
 /area/tdome)
 "aF" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
 /obj/docking_port/stationary/emergency_response/transit,
-/turf/open/space/transit/north/shuttlespace_ns11,
+/turf/open/space,
 /area/almayer/ert_port)
 "aG" = (
 /turf/open/space/transit/north/shuttlespace_ns10,
@@ -12553,19 +12543,19 @@ Ou
 aO
 aQ
 aP
+JH
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 aF
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
 bT
 aQ
 aU

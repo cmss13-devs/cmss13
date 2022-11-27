@@ -1556,22 +1556,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/south)
-"bnH" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
-	},
-/obj/structure/barricade/handrail/wire,
-/turf/open/floor/wood,
-/area/varadero/interior/court)
 "boI" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /turf/open/floor/prison{
@@ -2448,17 +2432,16 @@
 	},
 /area/varadero/interior/maintenance/research)
 "cbK" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_x = -2
 	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance/security)
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "cbU" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor{
@@ -4177,17 +4160,35 @@
 	},
 /area/varadero/interior_protected/vessel)
 "dHY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_x = -16;
+	pixel_y = -16
 	},
-/obj/effect/decal/warning_stripes,
-/obj/structure/holohoop{
-	dir = 4;
-	tag = "icon-hoop (NORTH)"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_x = -16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = -12
 	},
 /obj/structure/barricade/handrail/wire{
 	dir = 8
+	},
+/obj/structure/holohoop{
+	dir = 4;
+	tag = "icon-hoop (NORTH)"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -4963,13 +4964,6 @@
 	icon_state = "green"
 	},
 /area/varadero/interior/hall_SE)
-"evJ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/court)
 "evV" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -5379,11 +5373,26 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "eMi" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_x = -16;
+	pixel_y = -16
 	},
-/obj/effect/decal/warning_stripes,
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_x = -16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 16;
+	pixel_y = -16
+	},
 /obj/item/toy/beach_ball/holoball,
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -5509,19 +5518,14 @@
 	},
 /area/varadero/interior/medical)
 "eTP" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
 	},
 /obj/structure/barricade/handrail/wire,
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "eTX" = (
@@ -5693,13 +5697,12 @@
 /turf/open/gm/river,
 /area/varadero/interior/maintenance)
 "fbQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 16
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
 	},
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -7902,9 +7905,12 @@
 	},
 /area/varadero/exterior/pontoon_beach)
 "gWd" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 4
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -8140,11 +8146,15 @@
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "hla" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2;
+	pixel_y = -22
 	},
-/obj/effect/decal/warning_stripes,
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "hlp" = (
@@ -8491,14 +8501,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "hAh" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "hBX" = (
@@ -8757,17 +8760,17 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "hOv" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
-	autoname = 0;
-	dir = 1;
-	icon_state = "door_locked";
-	locked = 1;
-	name = "\improper Engine Room"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2;
+	pixel_y = -21
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_x = -2;
+	pixel_y = 4
 	},
-/area/varadero/interior_protected/vessel)
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "hPd" = (
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -8874,6 +8877,18 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/electrical)
+"hTi" = (
+/obj/structure/machinery/door/airlock/strata/autoname{
+	autoname = 0;
+	dir = 1;
+	icon_state = "door_locked";
+	locked = 1;
+	name = "\improper Engine Room"
+	},
+/turf/open/shuttle{
+	icon_state = "floor6"
+	},
+/area/varadero/interior_protected/vessel)
 "hTO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -9073,6 +9088,18 @@
 	dir = 8
 	},
 /area/varadero/interior/oob)
+"iaN" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2;
+	pixel_y = 21
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "iaO" = (
 /turf/closed/shuttle/elevator{
 	dir = 9;
@@ -10007,6 +10034,18 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/south)
+"iKH" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2;
+	pixel_y = 23
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "iLa" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -10353,6 +10392,10 @@
 /area/varadero/interior/oob)
 "iUx" = (
 /obj/structure/machinery/constructable_frame,
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (WEST)"
+	},
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellow"
@@ -10537,13 +10580,12 @@
 /turf/open/floor/plating,
 /area/varadero/interior/cargo)
 "jfn" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = -12
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
 	},
 /obj/structure/barricade/handrail/wire{
 	dir = 8
@@ -10553,6 +10595,18 @@
 	icon_state = "wood-broken3"
 	},
 /area/varadero/interior/court)
+"jfz" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	tag = "icon-bulb1 (NORTH)"
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "jfD" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
@@ -10916,18 +10970,6 @@
 	icon_state = "snow_mat"
 	},
 /area/varadero/interior/maintenance)
-"jzF" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/structure/barricade/handrail/wire,
-/turf/open/floor/wood,
-/area/varadero/interior/court)
 "jzQ" = (
 /obj/structure/surface/table,
 /obj/item/storage/wallet/random{
@@ -13545,13 +13587,15 @@
 	},
 /area/ice_colony/underground/crew/morgue)
 "lQg" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_x = 6;
+	pixel_y = 4
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_x = -9;
+	pixel_y = 4
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -13691,7 +13735,26 @@
 /turf/open/gm/grass/weedable,
 /area/varadero/interior_protected/caves/central)
 "lVW" = (
-/obj/effect/landmark/survivor_spawner,
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_x = -16;
+	pixel_y = -16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_x = -16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 16;
+	pixel_y = -16
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "lWf" = (
@@ -14192,13 +14255,12 @@
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
 "moK" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
 	},
 /obj/structure/barricade/handrail/wire,
 /turf/open/floor/wood,
@@ -14711,6 +14773,16 @@
 	icon_state = "redfull"
 	},
 /area/varadero/interior/medical)
+"mLp" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_x = 2
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "mLt" = (
 /obj/structure/sign/goldenplaque{
 	pixel_y = 32
@@ -16162,9 +16234,9 @@
 	},
 /area/varadero/interior/medical)
 "nZk" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
 	},
 /obj/structure/barricade/handrail/wire,
 /turf/open/floor/wood,
@@ -17599,6 +17671,19 @@
 /obj/structure/window/framed/colony/reinforced/hull,
 /turf/open/floor/plating,
 /area/varadero/interior/cargo)
+"pku" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_x = -9;
+	pixel_y = 4
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "pkG" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -19606,9 +19691,8 @@
 /turf/open/gm/river,
 /area/varadero/interior/oob)
 "qRy" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -20615,7 +20699,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "rIN" = (
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/vents/pump{
 	dir = 4
 	},
 /turf/open/floor/shiva{
@@ -21186,6 +21270,9 @@
 /area/varadero/interior/administration)
 "sfM" = (
 /obj/structure/barricade/handrail/wire,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellow"
@@ -21790,6 +21877,15 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/cargo)
+"sFg" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "sFH" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
@@ -22709,17 +22805,6 @@
 	icon_state = "snow_mat"
 	},
 /area/varadero/interior/maintenance)
-"tDK" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/court)
 "tDR" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/plating/icefloor{
@@ -23599,13 +23684,9 @@
 /turf/open/gm/dirt,
 /area/varadero/interior/oob)
 "urd" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 16
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -24512,8 +24593,13 @@
 	},
 /area/varadero/interior/electrical)
 "vcc" = (
-/obj/structure/pipes/vents/pump{
-	dir = 4
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 4
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 2
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -24584,17 +24670,32 @@
 	},
 /area/varadero/interior/hall_NW)
 "vfj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_x = -16;
+	pixel_y = -16
 	},
-/obj/effect/decal/warning_stripes,
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_x = -16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 16;
+	pixel_y = -16
+	},
 /obj/structure/holohoop{
 	dir = 8;
 	tag = "icon-hoop (NORTH)"
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 16
 	},
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -24657,9 +24758,12 @@
 	},
 /area/varadero/exterior/lz1_near)
 "vio" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = -12
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 4
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -25145,16 +25249,15 @@
 	},
 /area/varadero/interior/administration)
 "vDe" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
 /obj/structure/barricade/handrail/wire{
 	dir = 8
+	},
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = -12
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 16
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -26135,6 +26238,15 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/exterior/lz1_console)
+"wrg" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = -12
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "wrv" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/lamp,
@@ -26147,6 +26259,16 @@
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/plating,
 /area/varadero/interior/hall_SE)
+"wrC" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_x = -2
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "wrQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -26763,10 +26885,26 @@
 	},
 /area/varadero/interior/hall_SE)
 "wYa" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_x = -16;
+	pixel_y = -16
 	},
-/obj/effect/landmark/survivor_spawner,
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_x = -16;
+	pixel_y = 16
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "wYF" = (
@@ -27182,13 +27320,12 @@
 	},
 /area/varadero/exterior/lz1_near)
 "xtZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 16
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -27508,8 +27645,13 @@
 /turf/open/gm/grass/weedable,
 /area/varadero/interior_protected/caves/central)
 "xHt" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_x = -6
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_x = 9
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
@@ -27555,13 +27697,12 @@
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "xKv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 16
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 16
 	},
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -34169,7 +34310,7 @@ eBL
 aBp
 pfR
 ykc
-mIL
+hic
 oJB
 plN
 sGY
@@ -43850,7 +43991,7 @@ khb
 vDe
 vio
 dHY
-vio
+wrg
 jfn
 hPD
 ugi
@@ -44030,9 +44171,9 @@ pVN
 cMf
 khb
 xtZ
-evJ
+cbK
 ara
-ara
+wrC
 eTP
 hPD
 uQH
@@ -44211,11 +44352,11 @@ iad
 keo
 tpL
 khb
-evJ
+urd
 lQg
-hla
-gWd
-jzF
+ara
+xHt
+nZk
 hPD
 uQH
 fkR
@@ -44393,10 +44534,10 @@ iad
 cYT
 tpL
 khb
-evJ
-ara
+urd
+hla
 lVW
-ara
+iKH
 nZk
 hPD
 uQH
@@ -44575,10 +44716,10 @@ iad
 pVN
 cMf
 khb
-evJ
+urd
 fjK
 ara
-ara
+hAh
 nZk
 hPD
 uQH
@@ -44757,7 +44898,7 @@ iad
 pVN
 daA
 khb
-evJ
+urd
 ara
 ara
 ara
@@ -44939,7 +45080,7 @@ eFZ
 riJ
 spP
 fdw
-tDK
+xtZ
 qRy
 eMi
 qRy
@@ -45121,7 +45262,7 @@ iad
 pVN
 cMf
 khb
-evJ
+urd
 ara
 ara
 ara
@@ -45303,9 +45444,9 @@ iad
 pVN
 cMf
 khb
-evJ
+urd
+hAh
 ara
-vcc
 fjK
 nZk
 hPD
@@ -45485,10 +45626,10 @@ iad
 keo
 tpL
 khb
-evJ
-ara
+urd
+hOv
 wYa
-ara
+iaN
 nZk
 hPD
 uQH
@@ -45668,10 +45809,10 @@ cYT
 tpL
 khb
 urd
-xtZ
-hAh
-vio
-bnH
+pku
+ara
+xHt
+nZk
 hPD
 uQH
 fkR
@@ -45849,11 +45990,11 @@ iad
 pVN
 cMf
 khb
-evJ
+xtZ
+vcc
 ara
-xHt
-ara
-nZk
+mLp
+eTP
 hPD
 uQH
 fkR
@@ -46034,7 +46175,7 @@ khb
 xKv
 gWd
 vfj
-gWd
+sFg
 fbQ
 hPD
 uQH
@@ -51720,7 +51861,7 @@ wVf
 wVf
 wVf
 wVf
-cbK
+jfz
 xJZ
 wqb
 eyt
@@ -52994,7 +53135,7 @@ eyt
 eyt
 eyt
 wqb
-cbK
+jfz
 xJZ
 wqb
 eyt
@@ -57389,12 +57530,12 @@ avD
 ilr
 uvd
 smx
-hOv
+hTi
 kjI
 kjI
 kjI
 kjI
-hOv
+hTi
 nzb
 uvd
 uvd

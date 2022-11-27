@@ -580,3 +580,37 @@
       as UI elements.
   realforest2001:
   - code_imp: Maintenance Drones no longer have hardcoded health.
+2022-11-27:
+  Mistfrag:
+  - refactor: 'Spitters no longer use HardRefs for their abilities, now use WeakRefs.
+
+      :cl:'
+  SpartanBobby:
+  - rscadd: Security Cameras to LV522 Chances Claim along with consoles at both LZs
+      marines will be able to observe from
+  - balance: rebalanced A-Block Admin and Colony Fitness on LV522 Chances Claim. The
+      Dorm areas now have maint tunnels people can use to move around. More windows
+      were added to make the areas feel more open and a wall was torn down in fitness
+      opening up a large area
+  - bugfix: fixed pipes being behind unbreakable walls on LV522 Chances Claim
+  - rscadd: Synthetic recharging stations to LV522 Chances Claim, 1 at engineering
+      for LZ1, 1 at mining for LZ1 and one in the middle of the map
+  - balance: Numerous ledges removed from LV522 Chances Claim along with props that
+      were blocking movement
+  - balance: 1x1s in A-Block Security have been widened up with the removal of shutters
+  - balance: NE FORECON Shuttle is no longer accessible
+  - balance: Some cargo container/vehicle blockers have been removed opening up flanks
+      from the get-go
+  - balance: ' Corpo-Fitness dead end removed'
+  - balance: backdoor added to NE dorms area redundant bed area removed
+  - bugfix: spelling error in northern dorms area
+  - balance: LV522 Rain is now 3 minutes of light rain every 30 minutes to account
+      for lag extending the duration during high pop
+  - balance: LV522 West A-Block entrance window frames replaced with doors
+  - balance: LV522 West Fitness portable toilet made smaller and cargo containers
+      moved
+  - bugfix: FORECON Major now has correct rank boards
+  - balance: LV522 Reactor chokes wider more breakable walls
+  - bugfix: Fixed problem on LV522 that allowed Xenos to enter an out of bounds area
+  fira:
+  - rscadd: Observer playtime is now tracked and appears in "Other" tab.

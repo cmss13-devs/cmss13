@@ -9781,7 +9781,8 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal Office";
-	req_access_txt = "100"
+	req_access = null;
+	req_one_access_txt = "104;3"
 	},
 /turf/open/floor,
 /area/lv624/lazarus/security)
@@ -10143,7 +10144,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	locked = 1;
 	name = "\improper Nexus Dome Armory";
-	req_access_txt = "100"
+	req_one_access_txt = "19;106"
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -18335,10 +18336,13 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "mMv" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/explosive/grenade/incendiary/molotov{
 	pixel_x = -5;
 	pixel_y = -1
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 6;
+	pixel_y = -2
 	},
 /turf/open/floor{
 	dir = 8;

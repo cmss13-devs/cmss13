@@ -129,10 +129,10 @@
 	value = 3
 
 /datum/chem_property/positive/nervestimulating/process(mob/living/M, var/potency = 1)
-	M.AdjustKnockedout(potency*-1)
-	M.AdjustStunned(potency*-1)
-	M.AdjustKnockeddown(potency*-1)
-	M.AdjustStunned(-0.5*potency)
+	M.adjust_effect(potency*-1, PARALYZE)
+	M.adjust_effect(potency*-1, STUN)
+	M.adjust_effect(potency*-1, WEAKEN)
+	M.adjust_effect(-0.5*potency, STUN)
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
@@ -149,9 +149,9 @@
 
 /datum/chem_property/positive/nervestimulating/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
 	if(isXenoOrHuman(M) && potency > POTENCY_MAX_TIER_1) //can stim on touch at level 7+
-		M.SetKnockeddown(0)
-		M.SetStunned(0)
-		M.SetDazed(0)
+		M.set_effect(0, WEAKEN)
+		M.set_effect(0, STUN)
+		M.set_effect(0, DAZE)
 
 /datum/chem_property/positive/musclestimulating
 	name = PROPERTY_MUSCLESTIMULATING
@@ -333,7 +333,7 @@
 
 /datum/chem_property/positive/neuropeutic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_HIGH * potency, BRAIN)
-	M.AdjustStunned(potency)
+	M.adjust_effect(potency, STUN)
 
 /datum/chem_property/positive/bonemending
 	name = PROPERTY_BONEMENDING
@@ -415,7 +415,7 @@
 /datum/chem_property/positive/neurocryogenic/process(mob/living/M, var/potency = 1, delta_time)
 	if(prob(10 * delta_time))
 		to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 	M.stunned = max(M.stunned,21)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, var/potency = 1, delta_time)
@@ -489,7 +489,7 @@
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
 	code = "EGN"
-	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrilator. Can not be ingested."
+	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator. Can not be ingested."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 	value = 1
@@ -751,6 +751,30 @@
 	holder.falloff_modifier += -3 / level
 	..()
 
+//properties for CAS matrixes
+/datum/chem_property/positive/photosensitive
+	name = PROPERTY_PHOTOSENSITIVE
+	code = "PTS"
+	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer."
+	rarity = PROPERTY_UNCOMMON
+	category = PROPERTY_TYPE_TOXICANT
+
+/datum/chem_property/positive/photosensetive/process(mob/living/M, var/potency = 1)
+	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
+	M.apply_internal_damage(potency, "brain")
+
+/datum/chem_property/positive/crystallization
+	name = PROPERTY_CRYSTALLIZATION
+	code = "CRL"
+	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to administer"
+	rarity = PROPERTY_UNCOMMON
+	category = PROPERTY_TYPE_TOXICANT
+
+/datum/chem_property/positive/crystallization/process(mob/living/M, var/potency = 1)
+	to_chat(M, SPAN_WARNING("You feel like many razor sharp blades cut through your insides!"))
+	M.take_limb_damage(brute = 0.5 * potency)
+	M.apply_internal_damage(potency, "liver")
+
 //properties with combat uses
 /datum/chem_property/positive/disrupting
 	name = PROPERTY_DISRUPTING
@@ -766,7 +790,7 @@
 	M.apply_internal_damage(potency, "brain")
 
 /datum/chem_property/positive/disrupting/process_critical(mob/living/M, var/potency = 1)
-	M.KnockOut(potency)
+	M.apply_effect(potency, PARALYZE)
 
 /datum/chem_property/positive/disrupting/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
 	if(!isXeno(M))
@@ -832,7 +856,7 @@
 
 /datum/chem_property/positive/cardiostabilizing/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	M.make_jittery(5) //Overdose causes a spasm
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/positive/cardiostabilizing/process_critical(mob/living/M, var/potency = 1, delta_time)
 	M.drowsyness = max(M.drowsyness, 20)
@@ -871,7 +895,7 @@
 	M.apply_damage(0.5 * potency * delta_time, TOX)
 
 /datum/chem_property/positive/aiding/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(20 * potency) //Total DNA collapse // That's some long goddamn stun
+	M.apply_effect(20 * potency, PARALYZE) //Total DNA collapse // That's some long goddamn stun
 	M.apply_damage(0.5 * potency * delta_time, TOX)
 	M.apply_damage(1.5 * potency * delta_time, CLONE)
 

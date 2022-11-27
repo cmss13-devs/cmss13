@@ -485,6 +485,7 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	//specialist backpack stuff
 	H.equip_to_slot_or_del(new /obj/item/prop/folded_anti_tank_sadar(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs(H), WEAR_IN_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
 	//storage items
@@ -727,7 +728,7 @@
 	name = "CLF Multipurpose Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list(LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH
@@ -760,7 +761,7 @@
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/synth/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_COLONY)
+	H.set_species(SYNTH_COLONY_GEN_ONE)
 
 /datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/colonist/clf/CLF = new()

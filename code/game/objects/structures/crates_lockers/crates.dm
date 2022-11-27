@@ -71,7 +71,7 @@
 	for(var/obj/O in get_turf(src))
 		if(itemcount >= storage_capacity)
 			break
-		if(O.density || O.anchored || istype(O, /obj/structure/closet))
+		if(O.density || O.anchored || istype(O, /obj/structure/closet) || istype(O, /obj/effect))
 			continue
 		if(istype(O, /obj/structure/bed)) //This is only necessary because of rollerbeds and swivel chairs.
 			var/obj/structure/bed/B = O
@@ -119,19 +119,16 @@
 /obj/structure/closet/crate/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(50))
-				qdel(src)
+			if(prob(50))
+				deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			for(var/obj/O in src.contents)
-				if(prob(50))
-					qdel(O)
-			qdel(src)
+			contents_explosion(severity)
+			deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			for(var/obj/O in src.contents)
-				qdel(O)
-			qdel(src)
+			contents_explosion(severity)
+			deconstruct(FALSE)
 			return
 		else
 	return

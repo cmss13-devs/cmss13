@@ -540,11 +540,7 @@
 		to_chat(X, SPAN_WARNING("These weeds don't belong to your hive!"))
 		return
 
-	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
-		to_chat(X, SPAN_WARNING("You can't place a resin hole on a resin node!"))
-		return
-
-	if(!X.check_alien_construction(T))
+	if(!X.check_alien_construction(T,check_doors=TRUE))
 		return
 
 	if(locate(/obj/effect/alien/resin/trap) in orange(1, T)) // obj/effect/alien/resin presence is checked on turf by check_alien_construction, so we just check orange.
@@ -554,6 +550,16 @@
 	if(locate(/obj/effect/alien/resin/fruit) in orange(1, T))
 		to_chat(X, SPAN_XENOWARNING("This is too close to a fruit!"))
 		return
+
+	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
+		to_chat(X, SPAN_NOTICE("You start uprooting the node so you can put the resin hole in its place..."))
+		if(!do_after(X, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
+			return
+		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(alien_weeds.loc)
+		the_replacer.hivenumber = X.hivenumber
+		the_replacer.linked_hive = X.hive
+		set_hive_data(the_replacer, X.hivenumber)
+		qdel(alien_weeds)
 
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, "alien_resin_build", 25)
@@ -910,26 +916,48 @@
 	if(!check_and_use_plasma_owner())
 		return FALSE
 
-	if(stabbing_xeno.behavior_delegate)
-		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
-		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
-
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
+
+	 /// To reset the direction if they haven't moved since then in below callback.
+	var/last_dir = stabbing_xeno.dir
+	 /// Direction var to make the tail stab look cool and immersive.
+	var/stab_direction
+
+	var/stab_overlay
 
 	if(blunt_stab)
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("You swipe your tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
 		playsound(target, "punch", 50, TRUE)
-		stabbing_xeno.emote("tail")
+		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
+		stab_direction = turn(stabbing_xeno.dir, pick(90, -90))
+		stab_overlay = "slam"
 	else
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("You skewer [target] through the [limb? limb.display_name : "chest"] with your razor sharp tail!"))
 		playsound(target, "alien_bite", 50, TRUE)
+		// The xeno flips around for a second to impale the target with their tail. These look awsome.
+		stab_direction = turn(get_dir(stabbing_xeno, target), 180)
+		stab_overlay = "tail"
+
+	stabbing_xeno.setDir(stab_direction)
+	stabbing_xeno.emote("tail")
+
+	 /// Ditto.
+	var/new_dir = stabbing_xeno.dir
+
+	addtimer(CALLBACK(src, .proc/reset_direction, stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
 
 	stabbing_xeno.animation_attack_on(target)
-	stabbing_xeno.flick_attack_overlay(target, "tail")
+	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
-	var/damage = stabbing_xeno.melee_damage_upper * 1.2
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * 1.2
+
+	if(stabbing_xeno.behavior_delegate)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
+		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
+
 	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
-	target.Daze(3)
+	target.apply_effect(3, DAZE)
 	shake_camera(target, 2, 1)
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
@@ -939,3 +967,8 @@
 
 	..()
 	return target
+
+/datum/action/xeno_action/activable/tail_stab/proc/reset_direction(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/last_dir, var/new_dir)
+	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
+	if(new_dir == stabbing_xeno.dir)
+		stabbing_xeno.setDir(last_dir)

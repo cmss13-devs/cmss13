@@ -8188,13 +8188,6 @@
 /obj/item/prop/helmetgarb/riot_shield,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
-"eSH" = (
-/obj/effect/spawner/random/sentry/midchance,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/lowsec)
 "eSZ" = (
 /obj/structure/bed/roller,
 /turf/open/floor/prison{
@@ -8714,7 +8707,6 @@
 /area/fiorina/station/park)
 "fgU" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/sentry/midchance,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "fhc" = (
@@ -13305,13 +13297,9 @@
 /area/fiorina/station/flight_deck)
 "hTr" = (
 /obj/structure/closet,
-/obj/item/clothing/under/marine{
-	desc = "A Unified Clown Federation combat uniform. Features the latest in anti-mime technology.";
-	icon_state = "clown";
-	name = "\improper UCF uniform"
-	},
 /obj/item/clothing/mask/gas/clown_hat,
 /obj/effect/spawner/random/gun/shotgun/midchance,
+/obj/item/clothing/under/marine/ucf_clown,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "hTs" = (
@@ -23401,7 +23389,7 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/queen.dmi';
+	icon = 'icons/mob/xenos/queen.dmi';
 	icon_state = "Normal Queen Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -23413,7 +23401,6 @@
 /area/fiorina/tumor/ice_lab)
 "nNJ" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/sentry/midchance,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "nOw" = (
@@ -23565,7 +23552,7 @@
 /obj/structure/prop/invuln{
 	desc = "It is slimy.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/sentinel.dmi';
+	icon = 'icons/mob/xenos/sentinel.dmi';
 	icon_state = "Normal Sentinel Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -23575,7 +23562,7 @@
 /obj/structure/prop/invuln{
 	desc = "He knows something that you don't.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/larva.dmi';
+	icon = 'icons/mob/xenos/larva.dmi';
 	icon_state = "Larva Sleeping";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24043,7 +24030,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24053,7 +24040,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24063,7 +24050,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24073,7 +24060,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -27011,17 +26998,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/security/wardens)
-"qet" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = 13
-	},
-/obj/effect/spawner/random/sentry/midchance,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/fiorina/station/flight_deck)
 "qeu" = (
 /obj/structure/toilet{
 	pixel_y = 4
@@ -76052,7 +76028,7 @@ mcc
 avl
 kqC
 avl
-eSH
+iUy
 kqC
 ggp
 xri
@@ -85322,7 +85298,7 @@ roY
 roY
 mPW
 vvM
-qet
+tet
 eyz
 qGn
 tet

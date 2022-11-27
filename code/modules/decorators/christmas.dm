@@ -64,3 +64,21 @@
 		return
 	barricade.icon = 'icons/obj/structures/barricades_christmas.dmi'
 	barricade.update_icon()
+
+
+/// Replaces marine food dispensers contents with more festive MREs
+/datum/decorator/christmas/food
+/datum/decorator/christmas/food/get_decor_types()
+	return list(/obj/structure/machinery/cm_vending/sorted/marine_food)
+/datum/decorator/christmas/food/decorate(obj/structure/machinery/cm_vending/sorted/marine_food/dispenser)
+	// This happens during atom init before vending init, so we can hotswap the list before it gets processed
+	dispenser.listed_products = list(
+		list("CHRISTMAS MEALS", -1, null, null),		//Jummy Christmas Food
+		list("Xmas Prepared Meal (Fruitcake)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas3, VENDOR_ITEM_REGULAR),
+		list("Xmas Prepared Meal (Gingerbread Cookies)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas2, VENDOR_ITEM_REGULAR),
+		list("Xmas Prepared Meal (Sugar Cookies)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas1, VENDOR_ITEM_REGULAR),
+
+		list("FLASKS", -1, null, null),
+		list("Metal Flask", 10, /obj/item/reagent_container/food/drinks/flask, VENDOR_ITEM_REGULAR),
+		list("USCM Flask", 5, /obj/item/reagent_container/food/drinks/flask/marine, VENDOR_ITEM_REGULAR)
+	)

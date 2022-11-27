@@ -144,7 +144,7 @@
         xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [carbon]!"))
         carbon.spawn_gibs()
         playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 30, 1)
-        carbon.KnockDown(get_xeno_stun_duration(carbon, 0.5))
+        carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
         carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage + damage_scale * behavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 
         xeno.animation_attack_on(carbon)

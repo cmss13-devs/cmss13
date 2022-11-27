@@ -513,12 +513,12 @@
 		if(C)
 			for(var/component in C.required_reagents)
 				var/datum/reagent/R = chemical_reagents_list[component]
-				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED COMPONENTS DETECTED"
 					return FALSE
 			for(var/catalyst in C.required_catalysts)
 				var/datum/reagent/R = chemical_reagents_list[catalyst]
-				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED CATALYSTS DETECTED"
 					return FALSE
 		if(target_property)

@@ -37,6 +37,7 @@
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
 #define MAP_HAUNTED_HOUSE_V2 "Haunted House V2"
 #define MAP_RUNTIME "USS Runtime"
+#define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
@@ -96,20 +97,20 @@
 #define SOUND_REBOOT	32
 
 //toggles_chat
-#define CHAT_OOC			1
-#define CHAT_DEAD			2
-#define CHAT_GHOSTEARS		4
-#define CHAT_GHOSTSIGHT		8
-#define CHAT_PRAYER			16
-#define CHAT_RADIO			32
-#define CHAT_ATTACKLOGS		64
-#define CHAT_DEBUGLOGS		128
-#define CHAT_LOOC			256
-#define CHAT_GHOSTRADIO 	512
-#define SHOW_TYPING 		1024
-#define CHAT_FFATTACKLOGS 	2048
-#define CHAT_GHOSTHIVEMIND	4096
-#define CHAT_NICHELOGS		8192
+#define CHAT_OOC			(1<<0)
+#define CHAT_DEAD			(1<<1)
+#define CHAT_GHOSTEARS		(1<<2)
+#define CHAT_GHOSTSIGHT		(1<<3)
+#define CHAT_PRAYER			(1<<4)
+#define CHAT_RADIO			(1<<5)
+#define CHAT_ATTACKLOGS		(1<<6)
+#define CHAT_DEBUGLOGS		(1<<7)
+#define CHAT_LOOC			(1<<8)
+#define CHAT_GHOSTRADIO 	(1<<9)
+#define SHOW_TYPING 		(1<<10)
+#define CHAT_FFATTACKLOGS 	(1<<11)
+#define CHAT_GHOSTHIVEMIND	(1<<12)
+#define CHAT_NICHELOGS		(1<<13)
 
 //toggles_ghost
 #define GHOST_HEALTH_SCAN  (1<<0)
@@ -134,6 +135,10 @@
 #define PLAY_SYNTH (1<<5)
 #define PLAY_MISC (1<<6)
 
+//toggles_admin
+/// Splits admin tabs in Statpanel
+#define SPLIT_ADMIN_TABS (1<<0)
+
 //=================================================
 
 #define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_ATTACKLOGS|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
@@ -148,6 +153,7 @@
 
 #define TOGGLES_ERT_DEFAULT (PLAY_LEADER|PLAY_MEDIC|PLAY_ENGINEER|PLAY_HEAVY|PLAY_SMARTGUNNER|PLAY_SYNTH|PLAY_MISC)
 
+#define TOGGLES_ADMIN_DEFAULT (NONE)
 
 // Game Intents
 #define INTENT_HELP 1

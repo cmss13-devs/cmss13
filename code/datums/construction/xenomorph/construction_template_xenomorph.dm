@@ -8,7 +8,7 @@
 	var/block_range = 1
 
 /datum/construction_template/xenomorph/set_structure_image()
-	build_icon = 'icons/mob/hostiles/structures64x64.dmi'
+	build_icon = 'icons/mob/xenos/structures64x64.dmi'
 
 /datum/construction_template/xenomorph/complete() //Override because we need to pass the hive ref
 	if(!owner || !get_turf(owner))
@@ -39,7 +39,7 @@
 	block_range = 0
 
 /datum/construction_template/xenomorph/cluster/set_structure_image()
-	build_icon = 'icons/mob/hostiles/structures48x48.dmi'
+	build_icon = 'icons/mob/xenos/structures48x48.dmi'
 
 /datum/construction_template/xenomorph/pylon
 	name = XENO_STRUCTURE_PYLON
@@ -75,10 +75,10 @@
 	build_type = /obj/effect/alien/resin/special/nest
 	build_icon_state = "reinforced_nest"
 
-	block_range = 2
+	block_range = 0
 
 	pixel_y = -8
 	pixel_x = -8
 
 /datum/construction_template/xenomorph/nest/set_structure_image()
-	build_icon = 'icons/mob/hostiles/structures.dmi'
+	build_icon = 'icons/mob/xenos/structures48x48.dmi'

@@ -16,6 +16,9 @@
 	var/raillight_compatible = TRUE //Can this be turned into a rail light ?
 	var/toggleable = TRUE
 
+	var/can_be_broken = TRUE //can xenos swipe at this to break it/turn it off?
+	var/breaking_sound = 'sound/handling/click_2.ogg' //sound used when this happens
+
 /obj/item/device/flashlight/Initialize()
 	. = ..()
 	if(on)
@@ -30,7 +33,6 @@
 		else
 			SetLuminosity(0)
 	. = ..()
-
 
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user = null)
 	if(on)
@@ -129,6 +131,14 @@
 	else
 		return ..()
 
+/obj/item/device/flashlight/attack_alien(mob/living/carbon/Xenomorph/M)
+	. = ..()
+
+	if(on && can_be_broken)
+		if(breaking_sound)
+			playsound(src.loc, breaking_sound, 25, 1)
+		on = FALSE
+		update_brightness()
 
 /obj/item/device/flashlight/pickup(mob/user)
 	if(on)
@@ -176,7 +186,15 @@
 	on = 0
 	raillight_compatible = 0
 
-/obj/item/device/flashlight/lamp/on/Initialize()
+	breaking_sound = 'sound/effects/Glasshit.ogg'
+
+/obj/item/device/flashlight/lamp/Initialize()
+	. = ..()
+
+	if(on)
+		update_brightness()
+
+/obj/item/device/flashlight/lamp/on/Initialize() //unused, but im leaving it here anyways :D
 	. = ..()
 	on = 1
 	update_brightness()
@@ -190,6 +208,7 @@
 	brightness_on = 2
 	w_class = SIZE_LARGE
 	on = 1
+	breaking_sound = null
 
 //Generic Candelabra
 /obj/item/device/flashlight/lamp/candelabra
@@ -197,6 +216,9 @@
 	desc = "A fire hazard that can be used to thwack things with impunity."
 	icon_state = "candelabra"
 	force = 15
+	on = TRUE
+
+	breaking_sound = null
 
 //Green-shaded desk lamp
 /obj/item/device/flashlight/lamp/green
@@ -212,10 +234,6 @@
 	brightness_on = 6//pretty good
 	w_class = SIZE_LARGE
 	on = 1
-
-//obj/item/device/flashlight/lamp/tripod/New() //start all tripod lamps as on.
-//	..()
-//	update_brightness()
 
 /obj/item/device/flashlight/lamp/tripod/grey
 	icon_state = "tripod_lamp_grey"
@@ -243,6 +261,7 @@
 	item_state = "flare"
 	actions = list()	//just pull it manually, neckbeard.
 	raillight_compatible = 0
+	can_be_broken = FALSE
 	var/fuel = 0
 	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
 	var/on_damage = 7
@@ -321,7 +340,7 @@
 		var/mob/living/carbon/U = user
 		if(istype(U) && !U.throw_mode)
 			U.toggle_throw_mode(THROW_MODE_NORMAL)
-			
+
 /obj/item/device/flashlight/flare/proc/activate_signal(mob/living/carbon/human/user)
 	return
 

@@ -5,7 +5,7 @@
 /obj/effect/alien/weeds
 	name = "weeds"
 	desc = "Weird black weeds..."
-	icon = 'icons/mob/hostiles/weeds.dmi'
+	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "base"
 
 	anchored = TRUE
@@ -31,11 +31,12 @@
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
-/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node)
+/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength=TRUE)
 	. = ..()
 	if(node)
 		linked_hive = node.linked_hive
-		weed_strength = node.weed_strength
+		if(use_node_strength)
+			weed_strength = node.weed_strength
 		node_range = node.node_range
 		if(weed_strength >= WEED_LEVEL_HIVE)
 			name = "hive [name]"
@@ -302,11 +303,11 @@
 		var/image/secretion
 
 		if(icon_dir >= 0)
-			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete[icon_dir]")
+			secretion = image('icons/mob/xenos/effects.dmi', "secrete[icon_dir]")
 		else if(icon_dir == -15)
-			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete_base")
+			secretion = image('icons/mob/xenos/effects.dmi', "secrete_base")
 		else
-			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete_dir[-icon_dir]")
+			secretion = image('icons/mob/xenos/effects.dmi', "secrete_dir[-icon_dir]")
 
 		overlays += secretion
 
@@ -360,7 +361,7 @@
 
 	health -= damage
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/effect/alien/weeds/flamer_fire_act(dam)
 	if(indestructible)
@@ -400,7 +401,7 @@
 /obj/effect/alien/weeds/weedwall/window/update_icon()
 	var/obj/structure/window/framed/F = locate() in loc
 	if(F && F.junction)
-		icon_state = "weedwall[F.junction]"
+		icon_state = "weedwindow[F.junction]"
 
 /obj/effect/alien/weeds/weedwall/frame
 	layer = ABOVE_TABLE_LAYER
@@ -473,7 +474,7 @@
 	. = ..(mapload, src)
 
 	if(!staticnode)
-		staticnode = image('icons/mob/hostiles/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
+		staticnode = image('icons/mob/xenos/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
 
 	var/obj/effect/alien/resin/trap/TR = locate() in loc
 	if(TR)
@@ -568,7 +569,7 @@
 
 /obj/effect/resin_construct
 	mouse_opacity = 0
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 
 /obj/effect/resin_construct/door
 	icon_state = "DoorConstruct"

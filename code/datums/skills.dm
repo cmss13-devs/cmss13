@@ -171,11 +171,15 @@
 
 // Returns the skill DATUM for the given skill
 /datum/skills/proc/get_skill(var/skill)
+	if(!skills)
+		return null
 	return skills[skill]
 
 // Returns the skill level for the given skill
 /datum/skills/proc/get_skill_level(var/skill)
 	var/datum/skill/S = get_skill(skill)
+	if(!S)
+		return -1
 	if(QDELETED(S))
 		return -1
 	return S.get_skill_level()

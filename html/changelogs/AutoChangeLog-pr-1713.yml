@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - rscadd: "Added a telephone to IO's room. Now you can call the RTOs on the field to get you your intel!"

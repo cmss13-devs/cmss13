@@ -473,3 +473,144 @@
   - bugfix: corrected the layering for eggs and stairs.
   kugamo:
   - bugfix: Fixed Grey wardrobe missing open sprite.
+2022-11-24:
+  Morrow:
+  - refactor: Refactored battlefield executions using a new point blank signal
+  Sleepynecrons:
+  - bugfix: fixed suppressor attachments not lining up with weapon barrels
+  - bugfix: fixed L42 rail and underbarrel attachments being too far back/high on
+      the gun
+  - imageadd: New icons for cats and the kitten. Added onmob icons for Jones when
+      holding in hands.
+  - imagedel: Removed old icons for cats and kitten
+  - code_imp: Added a holder for the kitten so object sprites and descriptions are
+      consistent when picking one up.
+  carlarc, DrMacCool:
+  - rscadd: Defenders when tail slamming will have their direction turn to a random
+      side to imply spinning their tail into the target's face.
+  - rscadd: Other castes will instead look backwards for to show their tail extending
+      out and stabbing.
+  - rscadd: Defenders also now have a custom on-target slash animation for tail slam.
+  kugamo:
+  - imageadd: New playable facehugger sprites, now with creepy crawly animations.
+  - code_imp: Facehuggers can now scuttle under doors, but cannot pounce while doing
+      so; Fixing a runtime.
+  mullenpaul:
+  - refactor: squad info page is now TGUI
+  - refactor: squad info icons are generated and coloured through stylesheet
+  - refactor: squad info page now shows primary and secondary objectives
+2022-11-25:
+  AnCopper:
+  - spellcheck: Renamed German and Spanish.
+  Drathek:
+  - bugfix: Queens now receive their hive's color.
+  carlarctg:
+  - bugfix: Fixed armor pickup sounds not working.
+  - bugfix: Fixed the loadout item cartridge bayonet's feature not working. Try it
+      again!
+  fira:
+  - bugfix: Fixed a bug with machinery mishandling clicks in statpanel.
+  - bugfix: Machinery now require fine manipulation to be used. As of current this
+      means Humans only (including Yautjas/Synth/Monkeys, but minus Zombies).
+  - bugfix: Fixed a mistake during tgui porting making chat subsystem unused, reducing
+      overall performance
+  - bugfix: SSgarbage won't visibly spam chat with its garbage report when rebooting
+      anymore
+2022-11-26:
+  Huffie56:
+  - rscadd: fuse multiple crates into a new one for large pouch "Large Pouch 2x(pistol,magazine,general)"
+  - rscadd: fuse multiple crates into a new one for surgery "surgery crate(tray,anesthetic,surgeon
+      gear)"
+  - rscdel: remove M3 Pattern Medium Armor Crate (x5 helmet, x5 armor) and M3 Pattern
+      Light Armor Crate (x3) crates.
+  - rscdel: remove M3 Pattern Heavy Armor Crate (x3) and rail attachments crate (x2
+      each) crates.
+  - rscdel: remove muzzle attachments crate (x2 each) and bayonet attachment crate
+      (x8) crates.
+  - rscdel: remove underbarrel attachments crate (x2 each) and general pouches crate
+      (2x normal, 1x medium, 1x large) crates.
+  - rscdel: remove weapons pouches crate (1x bayonet, pistol, explosive) and survival
+      pouches crate (1x radio, flare, survival) crates.
+  - rscdel: remove construction pouches crate (1x electronics, tools, construction)
+      and Lightweight IMP Backpack Crate (x4) crates.
+  - rscdel: remove Marine Satchel Crate (x4) and M39 Belt Holster Crate (x2) and M44
+      Belt Holster Crate (x2) crates.
+  - rscdel: remove M4A3 Belt Holster Crate (x2) and marine outfit crate and anesthetic
+      crate (x4 masks, x4 tanks) crates.
+  - rscdel: remove sterile equipment surplus sidearms and surplus shotguns and M39
+      SMG and M41A MK2 Crate crates.
+  - rscdel: remove old define RO_PRICE and directly input the cost variable number
+      for crates.
+  Sleepynecrons:
+  - imageadd: new sprites for steelcrest defender
+  ThePiachu:
+  - bugfix: Fancy Boxes (cigarettes, etc.) display proper information now when inspected.
+  - bugfix: Marshall and armory doors on LV now have proper civilian access.
+  - bugfix: Solaris Ridge Cargo Lockers now have proper civilian access.
+  - bugfix: Fiora Science Annex's UCF Uniform is no longer honked.
+  - spellcheck: Fixed "defibrilator" to "defibrillator".
+  - bugfix: Recharge Station now properly recharge themselves even if they don't have
+      anyone in them.
+  - bugfix: Recharge Station now can't go below 0% charge.
+  - bugfix: Recharge Station now properly updates its icon when fully charged.
+  - bugfix: You can't repair an APC over 100% anymore.
+  - bugfix: HF2 Health Analyzer now properly clears SSD / Soulless display data between
+      scans.
+  - qol: Buttons now inform you which button you pressed when you press them.
+  - rscadd: Added a View Research Objective verb. This will let Researchers be able
+      to view which chems they still need to synthesize and analyze to keep more organized.
+  - bugfix: Fixed the chem code that saves researchable chems. It used not to save
+      custom chems, now it does.
+  - code_imp: Cleaned up the code around tracking chems and chem objectives a little.
+      It now actually tracks which chems haven't been researched.
+  harryob:
+  - bugfix: windows shatter appropriately, and drop what you'd expect if they are
+      reinforced or not upon deconstruction
+  ihatethisengine:
+  - bugfix: fixed unpowered NVG icon
+  mullenpaul:
+  - refactor: Research terminal now using TGUI
+  - refactor: Medhud published papers now using TGUI
+  - refactor: Added CRT theme in yellow, green and blue
+  - refactor: Reworked research chemicals documents to allow for metadata to be stored
+  - refactor: Improved sorting options for chemicals
+  - refactor: Research paper screen auto-hides olds scans, displaying only the most
+      recent scan. This can be toggled.
+  - refactor: Moved most of the ui_chat messages regarding terminal errors to appear
+      as UI elements.
+  realforest2001:
+  - code_imp: Maintenance Drones no longer have hardcoded health.
+2022-11-27:
+  Mistfrag:
+  - refactor: 'Spitters no longer use HardRefs for their abilities, now use WeakRefs.
+
+      :cl:'
+  SpartanBobby:
+  - rscadd: Security Cameras to LV522 Chances Claim along with consoles at both LZs
+      marines will be able to observe from
+  - balance: rebalanced A-Block Admin and Colony Fitness on LV522 Chances Claim. The
+      Dorm areas now have maint tunnels people can use to move around. More windows
+      were added to make the areas feel more open and a wall was torn down in fitness
+      opening up a large area
+  - bugfix: fixed pipes being behind unbreakable walls on LV522 Chances Claim
+  - rscadd: Synthetic recharging stations to LV522 Chances Claim, 1 at engineering
+      for LZ1, 1 at mining for LZ1 and one in the middle of the map
+  - balance: Numerous ledges removed from LV522 Chances Claim along with props that
+      were blocking movement
+  - balance: 1x1s in A-Block Security have been widened up with the removal of shutters
+  - balance: NE FORECON Shuttle is no longer accessible
+  - balance: Some cargo container/vehicle blockers have been removed opening up flanks
+      from the get-go
+  - balance: ' Corpo-Fitness dead end removed'
+  - balance: backdoor added to NE dorms area redundant bed area removed
+  - bugfix: spelling error in northern dorms area
+  - balance: LV522 Rain is now 3 minutes of light rain every 30 minutes to account
+      for lag extending the duration during high pop
+  - balance: LV522 West A-Block entrance window frames replaced with doors
+  - balance: LV522 West Fitness portable toilet made smaller and cargo containers
+      moved
+  - bugfix: FORECON Major now has correct rank boards
+  - balance: LV522 Reactor chokes wider more breakable walls
+  - bugfix: Fixed problem on LV522 that allowed Xenos to enter an out of bounds area
+  fira:
+  - rscadd: Observer playtime is now tracked and appears in "Other" tab.

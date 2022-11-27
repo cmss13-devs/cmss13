@@ -1240,3 +1240,9 @@
 	icon_state = "metal"//DMI specific name
 	walltype = WALL_HUNTERSHIP
 	hull = 1
+
+/turf/closed/wall/huntership/destructible
+	name = "degraded hunter wall"
+	color = "#c5beb4"
+	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
+	hull = 0

@@ -1,0 +1,8 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - rscadd: "spesslaw require two meatball instead of five."
+  - rscadd: "replace flour with flatbread for pumpkiepie"
+  - rscadd: "Replace Flour for bun in roburger and roburger_unsafe"
+  - rscadd: "Replace Flour for dough in cakes(orange,lemon,lime,chocolate,brain), appletart and creamcheesebread."
+  - balance: "Reduce ingredient require to one of each(example banana bread that cost three dough will only cost one dough)."

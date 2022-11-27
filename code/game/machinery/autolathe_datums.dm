@@ -395,7 +395,7 @@ datum/autolathe/recipe/medilathe/autoinjector/s45x1
 	name = "EZ autoinjector (E-L) (45x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
 
-datum/autolathe/recipe/medilathe/autoinjector/s60x1
+/datum/autolathe/recipe/medilathe/autoinjector/s60x1
 	name = "EZ autoinjector (E-XL) (60x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
 

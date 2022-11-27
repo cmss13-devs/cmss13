@@ -74,8 +74,6 @@ var/global/list/chemical_reactions_filtered_list	//List of all /datum/chemical_r
 var/global/list/chemical_reactions_list		//List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
 var/global/list/chemical_reagents_list		//List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
 var/global/list/chemical_properties_list	//List of all /datum/chem_property datums indexed by property name
-var/global/list/chemical_objective_list	 = list()	//List of all objective reagents indexed by ID associated with the objective value
-var/global/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau" = list())
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times

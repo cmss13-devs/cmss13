@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - bugfix: "Fixed a runtime error around selecting a role with high surgery skill."

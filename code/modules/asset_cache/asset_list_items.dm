@@ -232,6 +232,41 @@
 		Insert("[icon_name]_big", iconBig)
 	return ..()
 
+/datum/asset/spritesheet/ranks
+	name = "squadranks"
+
+/datum/asset/spritesheet/ranks/register()
+	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
+	var/list/squads = list("Alpha", "Bravo", "Charlie", "Delta", "Foxtrot", "Cryo")
+
+	var/list/icon_data = list(
+		list("Mar", null),
+		list("ass", "hudsquad_ass"),
+		list("Eng", "hudsquad_engi"),
+		list("Med", "hudsquad_med"),
+		list("SG", "hudsquad_gun"),
+		list("Spc", "hudsquad_spec"),
+		list("RTO", "hudsquad_rto"),
+		list("SL", "hudsquad_leader"),
+	)
+
+	var/i
+	for(i = 1; i < length(squads); i++)
+		var/squad = squads[i]
+		var/color = squad_colors[i]
+		for(var/iref in icon_data)
+			var/list/iconref = iref
+			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
+			background.Blend(color, ICON_MULTIPLY)
+			if(iconref[2])
+				var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)
+				background.Blend(squad_icon, ICON_OVERLAY)
+			background.Crop(25,25,32,32)
+			background.Scale(16,16)
+
+			Insert("squad-[squad]-hud-[iconref[1]]", background)
+	return ..()
+
 /datum/asset/spritesheet/vending_products
 	name = "vending"
 

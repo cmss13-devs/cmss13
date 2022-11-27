@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Sorokyne Strata should no longer experience a lot of runtime errors caused by empty tiles being present in the map."

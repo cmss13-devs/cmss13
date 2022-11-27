@@ -584,9 +584,11 @@
 			if(Joe)
 				to_chat(src, "<br><b>As a Working Joe, you have the following additional emotes.<br><br>\
 				<span style='color: green;'>alwaysknow</span>, \
+				<span style='color: green;'>workingjoe</span>, \
 				<span style='color: green;'>hysterical</span>, \
 				<span style='color: green;'>safety</span>, \
 				<span style='color: green;'>awful</span>, \
+				<span style='color: green;'>mess</span>, \
 				<span style='color: green;'>damage</span>, \
 				<span style='color: green;'>firearm</span></b><br>")
 
@@ -708,7 +710,7 @@
 				playsound(loc, 'sound/voice/pred_over_there.ogg', 50)
 
 		//working joe emotes
-		if("alwaysknow")
+		if("alwaysknow", "workingjoe")
 			if(Joe && src.loc)
 				m_type = 1
 				playsound(src.loc, 'sound/voice/joe_alwaysknow.ogg', 75, 0)
@@ -723,7 +725,7 @@
 				m_type = 1
 				playsound(src.loc, 'sound/voice/joe_safety.ogg', 75, 0)
 				say("You and I are going to have a talk about safety.")
-		if("awful")
+		if("awful", "mess", "mes") //Since the parser trims the final s...
 			if(Joe && src.loc)
 				m_type = 1
 				playsound(src.loc, 'sound/voice/joe_awful.ogg', 75, 0)

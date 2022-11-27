@@ -108,5 +108,5 @@
 		return
 
 	if(bound_xeno.burrow)
-		bound_xeno.icon_state = "[bound_xeno.mutation_type] Burrower Burrowed"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state] Burrower Burrowed"
 		return TRUE

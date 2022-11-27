@@ -38,6 +38,7 @@
 	P.recalculate_everything()
 
 	apply_behavior_holder(P)
+	P.mutation_icon_state = PRAETORIAN_WARDEN
 	P.mutation_type = PRAETORIAN_WARDEN
 
 /datum/behavior_delegate/praetorian_warden

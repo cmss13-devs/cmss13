@@ -6,6 +6,8 @@ SUBSYSTEM_DEF(projectiles)
 
 	/// List of projectiles handled by the subsystem
 	VAR_PRIVATE/list/obj/item/projectile/projectiles
+	/// List of projectiles on hold due to sleeping
+	VAR_PRIVATE/list/obj/item/projectile/sleepers
 	/// List of projectiles handled this controller firing
 	VAR_PRIVATE/list/obj/item/projectile/flying
 
@@ -31,11 +33,13 @@ SUBSYSTEM_DEF(projectiles)
 /datum/controller/subsystem/projectiles/Initialize(start_timeofday)
 	projectiles = list()
 	flying = list()
+	sleepers = list()
 	return ..()
 
 /datum/controller/subsystem/projectiles/fire(resumed = FALSE)
 	if(!resumed)
 		flying = projectiles.Copy()
+		flying -= sleepers
 	while(flying.len)
 		var/obj/item/projectile/projectile = flying[flying.len]
 		flying.len--
@@ -47,19 +51,25 @@ SUBSYSTEM_DEF(projectiles)
 /datum/controller/subsystem/projectiles/proc/handle_projectile_flight(obj/item/projectile/projectile, delta_time)
 	PRIVATE_PROC(TRUE)
 	set waitfor = FALSE
-	. = TRUE
 	// We're in double-check land here because there ARE rulebreakers.
 	if(QDELETED(projectile))
 		log_debug("SSprojectiles: projectile '[projectile.name]' shot by '[projectile.firer]' is scheduled despite being deleted.")
 	else if(projectile.speed > 0)
-		. = projectile.process(delta_time)
+		. = process_wrapper(projectile, delta_time)
 	else
 		log_debug("SSprojectiles: projectile '[projectile.name]' shot by '[projectile.firer]' discarded due to invalid speed.")
 	if(. == PROC_RETURN_SLEEP)
-		log_debug("SSprojectiles: projectile '[projectile.name]' shot by '[projectile.firer]' found sleeping despite all the sleep prevention. Discarding it.")
-	if(.)
+		log_debug("SSprojectiles: projectile '[projectile.name]' shot by '[projectile.firer]' at ([projectile.x],[projectile.y],[projectile.z]) found sleeping despite all the sleep prevention! Putting on hold.")
+		sleepers += projectile
+	else if(.)
 		stop_projectile(projectile) // Ideally this was already done thru process()
 		qdel(projectile)
+
+/datum/controller/subsystem/projectiles/proc/process_wrapper(obj/item/projectile/projectile, delta_time)
+	// set waitfor=TRUE
+	. = PROC_RETURN_SLEEP
+	. = projectile.process(delta_time)
+	sleepers -= projectile // Recover from sleep
 
 /datum/controller/subsystem/projectiles/proc/queue_projectile(obj/item/projectile/projectile)
 	projectiles |= projectile

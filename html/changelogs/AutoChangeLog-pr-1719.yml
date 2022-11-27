@@ -1,0 +1,5 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - rscadd: "Added the Pressurized Canister to medilathe. The price of the Pressurized Reagent Canister Pouch has been tweaked somewhat to reflect the price of the Pressurized Canister."
+  - rscadd: "Added the janitorial bucket recipe to lathes."

@@ -385,6 +385,11 @@
 	var/list/wall_connections = list("0", "0", "0", "0")
 	hibernate = TRUE
 
+/obj/effect/alien/weeds/weedwall/MouseDrop_T(mob/M, mob/user)
+	if(isXeno(user))
+		var/mob/living/carbon/Xenomorph/X = user
+		X.do_nesting_host(M, src, user)
+
 /obj/effect/alien/weeds/weedwall/update_icon()
 	if(istype(loc, /turf/closed/wall))
 		var/turf/closed/wall/W = loc

@@ -694,3 +694,42 @@
 	if(tracked_marker)
 		tracked_marker.xenos_tracking -= src
 	tracked_marker = null
+
+/mob/living/carbon/Xenomorph/proc/do_nesting_host(mob/M, nest_structural_base, var/mob/living/carbon/Xenomorph/user)
+	var/obj/structure/bed/nest/my_nest
+	var/dir_towards_wall_from_M = get_dir(M,nest_structural_base)
+	var/list/xeno_hands = list(user.get_active_hand(), user.get_inactive_hand())
+
+	if(istype(nest_structural_base, /obj/structure/bed/nest))
+		my_nest = nest_structural_base
+		nest_structural_base = my_nest.structural_base
+
+	if(!locate(dir_towards_wall_from_M) in GLOB.cardinals)
+		to_chat(user, SPAN_XENONOTICE("The host must be directly next to the wall its being nested on!"))
+		return
+
+	if(ismob(M))
+		for(var/i in xeno_hands)
+			if(istype(i, /obj/item/grab))
+				var/obj/item/grab/G = i
+				if(G.grabbed_thing != M)
+					xeno_hands -= i
+
+		if(!length(xeno_hands))
+			to_chat(user, SPAN_XENONOTICE("You must have a surer hold on the host to nest them!"))
+			return
+
+		if(!my_nest)
+			for(var/obj/structure/bed/nest/N in M.loc)
+				my_nest = N
+				break
+			if(!my_nest)
+				my_nest = new /obj/structure/bed/nest(M.loc)
+
+		my_nest.structural_base = nest_structural_base
+		my_nest.dir = dir_towards_wall_from_M
+		my_nest.pixel_x = my_nest.buckling_x["[dir_towards_wall_from_M]"]
+		my_nest.pixel_y = my_nest.buckling_y["[dir_towards_wall_from_M]"]
+
+		if(!my_nest.buckle_mob(M, user))
+			my_nest = qdel(my_nest)

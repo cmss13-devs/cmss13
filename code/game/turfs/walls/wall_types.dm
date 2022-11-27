@@ -703,6 +703,11 @@
 	var/datum/cause_data/construction_data
 	flags_turf = TURF_ORGANIC
 
+/turf/closed/wall/resin/MouseDrop_T(mob/M, mob/user)
+	if(isXeno(user))
+		var/mob/living/carbon/Xenomorph/X = user
+		X.do_nesting_host(M, src, user)
+
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"
 	hull = TRUE

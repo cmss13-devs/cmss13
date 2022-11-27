@@ -5,7 +5,6 @@
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "nest"
-	buckling_y = 6
 	buildstacktype = null //can't be disassembled and doesn't drop anything when destroyed
 	unacidable = TRUE
 	health = 100
@@ -18,6 +17,9 @@
 	layer = RESIN_STRUCTURE_LAYER
 
 	var/force_nest = FALSE
+	var/structural_base
+	buckle_lying = FALSE
+	var/list/buckling_x
 
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
@@ -26,6 +28,22 @@
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)
+
+	buckling_y = list("[NORTH]" = 32, "[SOUTH]" = -32, "[EAST]" = 0, "[WEST]" = 0)
+	buckling_x = list("[NORTH]" = 1, "[SOUTH]" = 4, "[EAST]" = 32, "[WEST]" = -32)
+
+/obj/structure/bed/nest/afterbuckle(mob/M)
+	if(buckled_mob == M)
+		M.pixel_y = buckling_y["[dir]"]
+		M.pixel_x = buckling_x["[dir]"]
+		M.dir = turn(dir, 180)
+		M.density = 0
+	else
+		M.pixel_y = initial(buckled_mob.pixel_y)
+		M.pixel_x = initial(buckled_mob.pixel_x)
+		M.density = 1
+
+	update_icon()
 
 /obj/structure/bed/nest/alpha
 	color = "#ff4040"
@@ -136,6 +154,7 @@
 	addtimer(VARSET_CALLBACK(src, recently_nested, FALSE), 5 SECONDS)
 
 /obj/structure/bed/nest/buckle_mob(mob/M as mob, mob/user as mob)
+	.=FALSE
 	if(!isliving(M) || isXenoLarva(user) || (get_dist(src, user) > 1) || (M.loc != loc) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
 		return
 
@@ -176,7 +195,7 @@
 	user.visible_message(SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."),
 	SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."))
 	var/M_loc = M.loc
-	if(!do_after(user, securing_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(user, securing_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 	if(M.loc != M_loc)
 		return
@@ -210,6 +229,8 @@
 			// Ask to ghostize() so they can reenter, to leave mind and such intact
 			ghost_of_buckled_mob = M.ghostize(can_reenter_corpse = TRUE)
 			ghost_of_buckled_mob?.can_reenter_corpse = FALSE // Just don't for now
+
+	return TRUE
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
 	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"), \

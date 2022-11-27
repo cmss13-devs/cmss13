@@ -243,7 +243,7 @@
 		var/icon/I
 
 		if (!ispath(item, /atom))
-			world.log << "not atom! [item]"
+			log_debug("not atom! [item]")
 			continue
 
 		if (sprites[icon_file])
@@ -264,6 +264,7 @@
 					icon_state = initial(target.icon_state)
 					var/target_obj = new target()
 					I = getFlatIcon(target_obj)
+					I.Scale(32,32)
 					qdel(target_obj)
 			else
 				item = new k()

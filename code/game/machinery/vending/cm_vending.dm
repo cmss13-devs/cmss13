@@ -6,6 +6,7 @@
 #define VEND_CATEGORY_CHECK (1<<5)
 #define VEND_INSTANCED_CATEGORY (1<<6)
 #define VEND_FACTION_THEMES (1<<7)
+#define VEND_USE_VENDOR_FLAGS (1<<8)
 
 /obj/structure/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
@@ -360,7 +361,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 								vend_fail()
 								return FALSE
 
-					if(!handle_vend(itemspec, user))
+					if(!handle_vend(src, itemspec, user))
 						to_chat(user, SPAN_WARNING("You can't buy things from this category anymore."))
 						vend_fail()
 						return FALSE
@@ -1031,7 +1032,9 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	vendor.stat &= ~IN_USE
 	vendor.update_icon()
 
-proc/handle_vend(var/list/listed_products, var/mob/living/carbon/human/vending_human)
+proc/handle_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/listed_products, var/mob/living/carbon/human/vending_human)
+	if(vendor.vend_flags & VEND_USE_VENDOR_FLAGS)
+		return TRUE
 	var/can_buy_flags = listed_products[4]
 	if(!(vending_human.marine_buy_flags & can_buy_flags))
 		return FALSE

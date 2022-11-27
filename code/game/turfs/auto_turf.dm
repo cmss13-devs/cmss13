@@ -1,6 +1,6 @@
 /turf/open/auto_turf
 	name = "auto-sand"
-	icon = 'icons/turf/floors/auto_sand.dmi'
+	icon = 'icons/turf/floors/auto_turfs/auto_sand.dmi'
 	icon_state = "sand_1"//editor icon
 	is_groundmap_turf = TRUE
 	var/icon_prefix = "sand"
@@ -122,7 +122,7 @@
 //Ice Colony permafrost
 /turf/open/auto_turf/ice
 	name = "auto-ice"
-	icon = 'icons/turf/floors/auto_ice.dmi'
+	icon = 'icons/turf/floors/auto_turfs/auto_ice.dmi'
 	icon_state = "ice_0"
 	icon_prefix = "ice"
 	layer_name = list("cracked permafrost","permafrost","glacial permafrost","warn a coder","warn a coder")
@@ -147,7 +147,7 @@
 //Ice colony snow
 /turf/open/auto_turf/snow
 	name = "auto-snow"
-	icon = 'icons/turf/floors/snow2.dmi'
+	icon = 'icons/turf/floors/auto_turfs/snow2.dmi'
 	icon_state = "snow_0"
 	icon_prefix = "snow"
 	layer_name = list("icy dirt", "shallow snow", "deep snow", "very deep snow", "rock filled snow")
@@ -279,7 +279,7 @@
 	bleed_layer = 4
 /turf/open/auto_turf/strata_grass
 	name = "matted grass"
-	icon = 'icons/turf/floors/auto_strata_grass.dmi'
+	icon = 'icons/turf/floors/auto_turfs/auto_strata_grass.dmi'
 	icon_state = "grass_0"
 	icon_prefix = "grass"
 	layer_name = list("ground","lush thick grass")
@@ -338,4 +338,57 @@
 
 /turf/open/auto_turf/shale/layer2
 	icon_state = "shale_2"
+	bleed_layer = 2
+
+//big red sprites
+/turf/open/auto_turf/br_dirt
+	layer_name = list("red dirt", "dried slabs", "rocky slabs", "device ridden slabs")
+	icon = 'icons/turf/floors/auto_turfs/auto_br.dmi'
+	icon_state = "marsdirt_editor"
+	icon_prefix = "marsdirt"
+
+/turf/open/auto_turf/br_dirt/get_dirt_type()
+	return DIRT_TYPE_MARS
+
+/turf/open/auto_turf/br_dirt/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/br_dirt/layer0
+
+/turf/open/auto_turf/br_dirt/layer0
+	icon_state = "marsdirt_0"
+	bleed_layer = 0
+
+/turf/open/auto_turf/br_dirt/layer1
+	icon_state = "marsdirt_1"
+	bleed_layer = 1
+
+/turf/open/auto_turf/br_dirt/layer2
+	icon_state = "marsdirt_1_1"
+	bleed_layer = 1
+	variant = 1
+	variant_prefix_name = "rocky"
+
+/turf/open/auto_turf/br_dirt/layer3
+	icon_state = "marsdirt_1_2"
+	bleed_layer = 1
+	variant = 2
+	variant_prefix_name = "device ridden"
+
+/turf/open/auto_turf/br_caves
+	layer_name = list("rocky slabs","dried rock crust")
+	icon = 'icons/turf/floors/auto_turfs/auto_br.dmi'
+	icon_state = "marscave_editor"
+	icon_prefix = "marscave"
+
+/turf/open/auto_tirf/br_caves/get_dirt_type()
+	return NO_DIRT
+
+/turf/open/auto_turf/br_caves/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/br_caves/layer0
+
+/turf/open/auto_turf/br_caves/layer0
+	icon_state = "marscave_0"
+	bleed_layer = 1
+
+/turf/open/auto_turf/br_caves/layer1
+	icon_state = "marscave_1"
 	bleed_layer = 2

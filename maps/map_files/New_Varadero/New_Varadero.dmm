@@ -271,6 +271,18 @@
 "amu" = (
 /turf/closed/wall/r_wall,
 /area/varadero/exterior/lz1_near)
+"amK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	tag = "icon-bulb1 (NORTH)"
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/maintenance/security)
 "ani" = (
 /obj/structure/machinery/vending/security,
 /turf/open/floor/shiva{
@@ -574,6 +586,18 @@
 	},
 /turf/open/gm/grass/weedable,
 /area/varadero/interior_protected/caves/central)
+"aCl" = (
+/obj/structure/machinery/door/airlock/strata/autoname{
+	autoname = 0;
+	dir = 1;
+	icon_state = "door_locked";
+	locked = 1;
+	name = "\improper Engine Room"
+	},
+/turf/open/shuttle{
+	icon_state = "floor6"
+	},
+/area/varadero/interior_protected/vessel)
 "aCm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -6809,12 +6833,6 @@
 	dir = 1
 	},
 /obj/structure/platform/kutjevo/rock,
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 8
-	},
 /obj/structure{
 	desc = "A lightweight support lattice.";
 	icon = 'icons/obj/structures/props/smoothlattice.dmi';
@@ -7051,6 +7069,16 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/security)
+"gfA" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_x = 2
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "gfG" = (
 /obj/structure/closet/crate/trashcart,
 /turf/open/floor/plating/icefloor{
@@ -7285,6 +7313,18 @@
 	icon_state = "redfull"
 	},
 /area/varadero/interior/medical)
+"god" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2;
+	pixel_y = 21
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "gpd" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -8877,18 +8917,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/electrical)
-"hTi" = (
-/obj/structure/machinery/door/airlock/strata/autoname{
-	autoname = 0;
-	dir = 1;
-	icon_state = "door_locked";
-	locked = 1;
-	name = "\improper Engine Room"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/varadero/interior_protected/vessel)
 "hTO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -9088,18 +9116,6 @@
 	dir = 8
 	},
 /area/varadero/interior/oob)
-"iaN" = (
-/obj/structure/desertdam/decals/road_edge{
-	pixel_x = 2;
-	pixel_y = 21
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal8";
-	pixel_x = -2;
-	pixel_y = -4
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/court)
 "iaO" = (
 /turf/closed/shuttle/elevator{
 	dir = 9;
@@ -10034,18 +10050,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance/south)
-"iKH" = (
-/obj/structure/desertdam/decals/road_edge{
-	pixel_x = 2;
-	pixel_y = 23
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal7";
-	pixel_x = 2;
-	pixel_y = -4
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/court)
 "iLa" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -10595,18 +10599,6 @@
 	icon_state = "wood-broken3"
 	},
 /area/varadero/interior/court)
-"jfz" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/light/small{
-	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
-	},
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
-	},
-/area/varadero/interior/maintenance/security)
 "jfD" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
@@ -13836,6 +13828,18 @@
 	icon_state = "green"
 	},
 /area/varadero/interior/hall_SE)
+"lZh" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2;
+	pixel_y = 23
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "lZR" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -14773,16 +14777,6 @@
 	icon_state = "redfull"
 	},
 /area/varadero/interior/medical)
-"mLp" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal6";
-	pixel_x = 2
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/court)
 "mLt" = (
 /obj/structure/sign/goldenplaque{
 	pixel_y = 32
@@ -15550,6 +15544,19 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/varadero/interior/medical)
+"nxZ" = (
+/obj/item/reagent_container/food/snacks/carpmeat{
+	desc = "This leathery protofish was named the gullible toothfish for the combination of its near identical dentata to that of Homo sapiens sapiens and the fact that if released after being caught, it is not uncommon to catch the same one; it not having learned its lesson. Its meat is said to taste like bitter clove.";
+	icon = 'icons/obj/items/fishing_atoms.dmi';
+	icon_state = "gullible_toothfish_gutted";
+	name = "gullible toothfish";
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/oob)
 "nyj" = (
 /obj/effect/overlay/palmtree_l,
 /turf/open/gm/dirt,
@@ -17199,6 +17206,19 @@
 	icon_state = "desert0"
 	},
 /area/varadero/exterior/pontoon_beach)
+"oRo" = (
+/obj/item/reagent_container/food/snacks/carpmeat{
+	desc = "Revolting beyond description.";
+	icon = 'icons/obj/items/fishing_atoms.dmi';
+	icon_state = "gullible_toothfish_teeth";
+	name = "human-ish teeth";
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/oob)
 "oRB" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32
@@ -19213,6 +19233,15 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior/maintenance)
+"qBy" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/court)
 "qBQ" = (
 /obj/structure/coatrack,
 /obj/item/clothing/suit/armor/bulletproof,
@@ -21877,15 +21906,6 @@
 	icon_state = "floor3"
 	},
 /area/varadero/interior/cargo)
-"sFg" = (
-/obj/structure/desertdam/decals/road_edge{
-	pixel_x = 16
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/court)
 "sFH" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
@@ -33763,8 +33783,8 @@ uQi
 uQi
 uQi
 jRC
-jRC
-jRC
+nxZ
+oRo
 uQi
 pkn
 pkn
@@ -44537,7 +44557,7 @@ khb
 urd
 hla
 lVW
-iKH
+lZh
 nZk
 hPD
 uQH
@@ -45629,7 +45649,7 @@ khb
 urd
 hOv
 wYa
-iaN
+god
 nZk
 hPD
 uQH
@@ -45993,7 +46013,7 @@ khb
 xtZ
 vcc
 ara
-mLp
+gfA
 eTP
 hPD
 uQH
@@ -46175,7 +46195,7 @@ khb
 xKv
 gWd
 vfj
-sFg
+qBy
 fbQ
 hPD
 uQH
@@ -51861,7 +51881,7 @@ wVf
 wVf
 wVf
 wVf
-jfz
+amK
 xJZ
 wqb
 eyt
@@ -53135,7 +53155,7 @@ eyt
 eyt
 eyt
 wqb
-jfz
+amK
 xJZ
 wqb
 eyt
@@ -57530,12 +57550,12 @@ avD
 ilr
 uvd
 smx
-hTi
+aCl
 kjI
 kjI
 kjI
 kjI
-hTi
+aCl
 nzb
 uvd
 uvd

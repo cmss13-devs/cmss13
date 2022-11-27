@@ -39,6 +39,7 @@ endmap
 
 map ice_colony_v2
 	minplayers 100
+	voteweight 0
 	disabled
 endmap
 
@@ -53,7 +54,7 @@ map sorokyne_strata
 endmap
 
 map LV522_Chances_Claim
-	minplayers 130
+	minplayers 100
 endmap
 
 map new_varadero

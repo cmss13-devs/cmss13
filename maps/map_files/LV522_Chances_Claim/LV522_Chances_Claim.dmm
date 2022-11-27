@@ -827,7 +827,7 @@
 	health = 5000;
 	icon_state = "WY 1,0";
 	tag = "icon-WY 1,0";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
@@ -1942,10 +1942,10 @@
 /area/lv522/landing_zone_2/ceiling)
 "bgV" = (
 /obj/structure/cargo_container{
-	health = 5000;
+	health = 200;
 	icon_state = "WY 0,0";
 	tag = "icon-WY 0,0";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -7546,10 +7546,10 @@
 /area/lv522/atmos/east_reactor)
 "dQs" = (
 /obj/structure/cargo_container{
-	health = 5000;
+	health = 200;
 	icon_state = "WY 0,0";
 	tag = "icon-WY 0,0";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1)
@@ -13751,10 +13751,10 @@
 /area/lv522/indoors/b_block/bar)
 "gLa" = (
 /obj/structure/cargo_container{
-	health = 5000;
+	health = 200;
 	icon_state = "WY 0,0";
 	tag = "icon-WY 0,0";
-	unacidable = 1
+	unacidable = 0
 	},
 /obj/structure/prop/invuln/ice_prefab/standalone/trim{
 	icon_state = "white_trim"
@@ -19392,11 +19392,11 @@
 /area/lv522/atmos/east_reactor)
 "iZS" = (
 /obj/structure/cargo_container{
-	health = 5000;
+	health = 200;
 	icon_state = "WY 1,0";
 	layer = 3.3;
 	tag = "icon-WY 1,0";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -21275,10 +21275,10 @@
 /area/lv522/indoors/a_block/admin)
 "jLk" = (
 /obj/structure/cargo_container{
-	health = 5000;
+	health = 200;
 	icon_state = "WY 0,0";
 	tag = "icon-WY 0,0";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
@@ -36884,7 +36884,7 @@
 	health = 5000;
 	icon_state = "WY 1,0";
 	tag = "icon-WY 1,0";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -40245,11 +40245,10 @@
 /area/lv522/indoors/c_block/mining)
 "rbR" = (
 /obj/structure/cargo_container{
-	health = 5000;
+	health = 200;
 	icon_state = "WY 0,0";
 	layer = 3.3;
-	tag = "icon-WY 0,0";
-	unacidable = 1
+	tag = "icon-WY 0,0"
 	},
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -53731,10 +53730,10 @@
 /area/lv522/indoors/a_block/fitness)
 "wms" = (
 /obj/structure/cargo_container{
-	health = 5000;
+	health = 200;
 	icon_state = "WY 0,0";
 	tag = "icon-WY 0,0";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
@@ -53757,10 +53756,8 @@
 /area/lv522/indoors/lone_buildings/engineering)
 "wnl" = (
 /obj/structure/cargo_container{
-	health = 5000;
 	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0";
-	unacidable = 1
+	tag = "icon-WY 1,0"
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
@@ -54697,7 +54694,7 @@
 	health = 5000;
 	icon_state = "WY 1,0";
 	tag = "icon-WY 1,0";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -56926,7 +56923,7 @@
 	health = 5000;
 	icon_state = "WY 1,0";
 	tag = "icon-WY 1,0";
-	unacidable = 1
+	unacidable = 0
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -64378,7 +64375,7 @@ max
 max
 max
 max
-wuK
+pxb
 pxb
 pxb
 fai
@@ -64604,9 +64601,9 @@ max
 max
 max
 max
-xfW
-xfW
-xfW
+max
+wuK
+pxb
 pxb
 pxb
 fai
@@ -64831,9 +64828,9 @@ max
 max
 max
 max
-max
-wuK
-pxb
+xfW
+xfW
+xfW
 pxb
 pxb
 pxb
@@ -65285,9 +65282,9 @@ max
 max
 max
 max
-xfW
-xfW
-xfW
+max
+wuK
+pxb
 pxb
 tFx
 lWj

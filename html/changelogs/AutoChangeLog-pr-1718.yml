@@ -1,0 +1,4 @@
+author: "kugamo"
+delete-after: True
+changes:
+  - qol: "Clicking on acid holes in walls will start you climbing through as xeno if possible."

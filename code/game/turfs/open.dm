@@ -388,6 +388,8 @@
 	if(istype(M)) M.apply_damage(55,TOX)
 
 
+/turf/open/gm/river/ocean
+	color = "#dae3e2"
 
 /turf/open/gm/coast
 	name = "coastline"

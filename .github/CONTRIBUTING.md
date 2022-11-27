@@ -169,7 +169,7 @@ If you are porting features/tools from other codebases, you must give them credi
 
 Regarding sprites & sounds, you must credit the artist and possibly the codebase.
 
-## What we want
+## Things you can work on
 The following list is non-exhaustive, but should give you a good idea of what the dev team would like to see in Pull Requests.
 
 ### Spriting

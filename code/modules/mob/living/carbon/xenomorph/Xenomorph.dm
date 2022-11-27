@@ -129,6 +129,7 @@
 	var/acid_level = 0
 
 	// Mutator-related and other important vars
+	var/mutation_icon_state = null
 	var/mutation_type = null
 	var/datum/mutator_set/individual_mutators/mutators = new
 
@@ -173,8 +174,8 @@
 	/// xenomorph type is given upon spawn
 	var/base_actions
 
-	// Mark tracking --
-	var/obj/effect/alien/resin/marker/tracked_marker = null //this is the resin mark that is currently being tracked by the xeno
+	/// this is the resin mark that is currently being tracked by the xeno
+	var/obj/effect/alien/resin/marker/tracked_marker
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -368,7 +369,7 @@
 
 	mutators.xeno = src
 
-	update_icon_source()
+	update_icon_source() //I'm not sure why this is here. recalculate_everything() calls update_icon_source() later down this proc
 
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
@@ -657,6 +658,10 @@
 /mob/living/carbon/Xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
+
+	if(tracked_marker)
+		tracked_marker.xenos_tracking -= src
+		tracked_marker = null
 
 	if(mind)
 		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.

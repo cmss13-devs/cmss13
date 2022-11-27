@@ -126,6 +126,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	time_to_unequip = 20
 	time_to_equip = 20
+	pickupsound = "armorequip"
+	dropsound = "armorequip"
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
 

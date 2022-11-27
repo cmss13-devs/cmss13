@@ -21,6 +21,8 @@
 	max_heat_protection_temperature = HELMET_max_heat_protection_temperature
 	siemens_coefficient = 0.7
 	w_class = SIZE_MEDIUM
+	pickupsound = "armorequip"
+	dropsound = "armorequip"
 
 /obj/item/clothing/head/helmet/verb/hidehair()
 	set name = "Toggle Hair"

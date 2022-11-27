@@ -195,7 +195,7 @@
 			user.visible_message(SPAN_WARNING("[user] stops [repair_message] on \the [src]."), SPAN_NOTICE("You stop [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 			return
 
-		health += max_hp/100 * (5 / amount_fixed_adjustment)
+		health = min(health + max_hp/100 * (5 / amount_fixed_adjustment), max_hp)
 
 		if(WT)
 			WT.remove_fuel(1, user)

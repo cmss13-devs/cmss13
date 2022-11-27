@@ -63,7 +63,6 @@
 							"FT3" = list()
 							)			//3 FTs where references to marines stored.
 	var/list/squad_info_data = list()
-	var/list/squad_info_uis = list()		//list of opened UIs
 
 	var/num_engineers = 0
 	var/num_medics = 0
@@ -501,7 +500,6 @@
 	personnel_deleted(M, zap = TRUE) // Free all refs and Zap it entierly as this is on purpose
 	clear_ref_tracking(M)
 	update_free_mar()
-	update_squad_ui()
 	M.assigned_squad = null
 
 	switch(GET_DEFAULT_ROLE(M.job))
@@ -605,8 +603,6 @@
 		fireteams[fireteam].Add(H)			//adding to fireteam
 		update_fireteam(ft)
 		update_fireteam(fireteam)
-		if(upd_ui)
-			update_squad_ui()
 		if(fireteam_leaders[fireteam])		//if TL exists -> FT group, otherwise -> SL group
 			SStracking.start_tracking(fireteam, H)
 			if(H.stat == CONSCIOUS)
@@ -621,8 +617,6 @@
 		H.assigned_fireteam = fireteam		//adding to fireteam
 		update_fireteam(fireteam)
 		update_free_mar()
-		if(upd_ui)
-			update_squad_ui()
 		if(fireteam_leaders[fireteam])
 			SStracking.stop_tracking(tracking_id, H)	//remove from previous FT group
 			SStracking.start_tracking(fireteam, H)
@@ -631,6 +625,7 @@
 			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was assigned to your fireteam.")))
 		if(H.stat == CONSCIOUS)
 			to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam].")))
+	H.hud_set_squad()
 
 /datum/squad/proc/unassign_fireteam(mob/living/carbon/human/H, upd_ui = TRUE)
 	fireteams[H.assigned_fireteam].Remove(H)
@@ -638,14 +633,13 @@
 	H.assigned_fireteam = 0
 	update_fireteam(ft)
 	update_free_mar()
-	if(upd_ui)
-		update_squad_ui()
 	if(fireteam_leaders[ft])
 		SStracking.stop_tracking(ft, H)			//remove from FT group
 		SStracking.start_tracking(tracking_id, H)	//add to SL group
 		to_chat(fireteam_leaders[ft], FONT_SIZE_HUGE(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was unassigned from your fireteam.")))
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned from [ft].")))
+	H.hud_set_squad()
 
 /datum/squad/proc/assign_ft_leader(fireteam, mob/living/carbon/human/H, upd_ui = TRUE)
 	if(fireteam_leaders[fireteam])
@@ -653,8 +647,6 @@
 	fireteam_leaders[fireteam] = H
 	H.hud_set_squad()
 	update_fireteam(fireteam)
-	if(upd_ui)
-		update_squad_ui()
 	SStracking.set_leader(H.assigned_fireteam, H)		//Set FT leader as leader of this group
 	SStracking.start_tracking("marine_sl", H)
 	if(H.stat == CONSCIOUS)
@@ -669,8 +661,6 @@
 	if(clear_group_id)
 		reassign_ft_tracker_group(fireteam, H.assigned_fireteam, tracking_id)	//transfer whole FT to SL group
 		update_fireteam(fireteam)
-	if(upd_ui)
-		update_squad_ui()
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned as [fireteam] Team Leader.")))
 
@@ -773,6 +763,5 @@
 		update_fireteam(target.assigned_fireteam)
 	else
 		update_free_mar()
-	update_squad_ui()
 	target.hud_set_squad()
 	return

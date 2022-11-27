@@ -458,6 +458,11 @@
 	var/user_old_x = 0
 	var/user_old_y = 0
 
+/obj/structure/machinery/m56d_hmg/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_THROW_MOB
+
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags

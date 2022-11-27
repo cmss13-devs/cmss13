@@ -56,6 +56,9 @@
 /datum/ammo/New()
 	set_bullet_traits()
 
+/datum/ammo/proc/on_bullet_generation(var/obj/item/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
+	return
+
 /// Populate traits_to_give in this proc
 /datum/ammo/proc/set_bullet_traits()
 	return
@@ -2764,6 +2767,47 @@
         if(M.slowed < 6)
             M.apply_effect(6, SLOW)
 
+/datum/ammo/xeno/oppressor_tail
+	name = "tail hook"
+	icon_state = "none"
+	ping = null
+	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	damage_type = BRUTE
+
+	damage = 0
+	max_range = 4
+	accuracy = HIT_ACCURACY_TIER_MAX
+
+/datum/ammo/xeno/oppressor_tail/on_bullet_generation(var/obj/item/projectile/generated_projectile, var/mob/bullet_generator)
+	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
+	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = BELOW_MOB_LAYER)
+	generated_projectile.overlays += hook_overlay
+	hook_overlay.pixel_y = 16
+
+/datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/M, obj/item/projectile/P)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+			return
+
+	playsound(P.firer, 'sound/weapons/thudswoosh.ogg', 25, TRUE)
+	playsound(P, 'sound/weapons/thudswoosh.ogg', 25, TRUE) // why none of these work!!
+	playsound(M, 'sound/weapons/thudswoosh.ogg', 25, TRUE)
+
+	shake_camera(M, 5, 0.1 SECONDS)
+	var/obj/effect/beam/tail_beam = P.firer.beam(M, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 5)
+	var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
+	M.overlays += tail_image
+
+	new /datum/effects/xeno_slow(M, P.firer, , , 0.5 SECONDS)
+	M.throw_atom(P.firer, get_dist(P.firer, M)-1, SPEED_VERY_FAST)
+
+	qdel(tail_beam)
+	addtimer((CALLBACK(src, .proc/remove_tail_overlay, M, tail_image)), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
+
+/datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(var/mob/overlayed_mob, var/image/tail_image)
+	overlayed_mob.overlays -= tail_image
+
 /*
 //======
 					Shrapnel
@@ -3089,7 +3133,6 @@
 	shrapnel_type = /obj/item/reagent_container/food/drinks/cans/souto/classic
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_IGNORE_RESIST|AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER|AMMO_SPECIAL_EMBED
 	var/obj/item/reagent_container/food/drinks/cans/souto/can_type
-	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "souto_classic"
 
 	max_range = 12

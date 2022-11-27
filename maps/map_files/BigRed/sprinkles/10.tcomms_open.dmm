@@ -155,60 +155,15 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/telecomm)
-"y" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
-/area/bigredv2/outside/lz1_telecomm_cas)
-"z" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
-	},
-/area/bigredv2/outside/lz1_telecomm_cas)
-"A" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/outside/lz1_telecomm_cas)
 "B" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
-	},
-/area/bigredv2/outside/lz1_telecomm_cas)
-"C" = (
-/turf/open/mars_cave,
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/outside/lz1_telecomm_cas)
 "D" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/garage_workshop)
-"E" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave,
-/area/bigredv2/outside/lz1_telecomm_cas)
 "F" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/outside/lz1_telecomm_cas)
-"G" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_23";
-	tag = "icon-mars_cave_23"
-	},
-/area/bigredv2/outside/lz1_telecomm_cas)
-"U" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_5";
-	tag = "icon-mars_cave_5"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/outside/lz1_telecomm_cas)
 
 (1,1,1) = {"
@@ -231,11 +186,11 @@ b
 b
 t
 b
-z
+F
 B
-A
-A
-A
+B
+B
+B
 "}
 (3,1,1) = {"
 j
@@ -244,11 +199,11 @@ j
 n
 q
 w
-y
-A
-A
+F
 B
-G
+B
+B
+B
 "}
 (4,1,1) = {"
 d
@@ -257,11 +212,11 @@ g
 s
 o
 x
-y
-A
-A
-A
-U
+F
+B
+B
+B
+B
 "}
 (5,1,1) = {"
 e
@@ -270,11 +225,11 @@ m
 k
 p
 u
-y
-A
-A
-A
-A
+F
+B
+B
+B
+B
 "}
 (6,1,1) = {"
 e
@@ -283,11 +238,11 @@ h
 l
 q
 b
-y
-A
-A
-A
-A
+F
+B
+B
+B
+B
 "}
 (7,1,1) = {"
 e
@@ -297,10 +252,10 @@ e
 r
 b
 a
-A
-C
-C
-C
+B
+B
+B
+B
 "}
 (8,1,1) = {"
 e
@@ -311,7 +266,7 @@ v
 w
 a
 a
-E
+F
 F
 F
 "}

@@ -77,10 +77,7 @@
 /area/bigred/ground/security)
 "ie" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/outside/filtration_cave_cas)
 "kG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -377,7 +374,7 @@
 	},
 /area/bigred/ground/security)
 "PS" = (
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "Qf" = (
 /obj/effect/decal/cleanable/dirt,

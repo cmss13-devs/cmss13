@@ -1,6 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - refactor: "Removed empty lines and change some annotation to fit current standard for it."
-  - code_imp: "All the slice able snack items(cake cheese pizza) will now be cut in six instead of random number"
-  - refactor: "Removed bitesize = 1lines in children object of snack since it's initiate at 1 already."

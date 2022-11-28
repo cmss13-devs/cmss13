@@ -1,7 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Mine boxes can now hold all the mines they are supposed to hold."
-  - bugfix: "Hydroponics locker now starts with the correct lock indicator."
-  - spellcheck: "Ravager's abilities now have proper capitalization."
-  - qol: "Some Working Joe emotes have an alternative way of invoking them now to help you embody the character easier."

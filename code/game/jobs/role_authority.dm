@@ -253,6 +253,10 @@ var/global/players_preassigned = 0
 	if(istype(SJ))
 		SJ.set_spawn_positions(players_preassigned)
 
+	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
+	if(istype(CO_surv_job))
+		CO_surv_job.set_spawn_positions(players_preassigned)
+
 	if(SSnightmare.get_scenario_value("predator_round"))
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
@@ -828,11 +832,9 @@ var/global/players_preassigned = 0
 			old_squad.unassign_fireteam(transfer_marine, TRUE)	//reset fireteam assignment
 		old_squad.remove_marine_from_squad(transfer_marine, ID)
 		old_squad.update_free_mar()
-		old_squad.update_squad_ui()
 	. = new_squad.put_marine_in_squad(transfer_marine, ID)
 	if(.)
 		new_squad.update_free_mar()
-		new_squad.update_squad_ui()
 
 		var/marine_ref = WEAKREF(transfer_marine)
 		for(var/datum/data/record/t in GLOB.data_core.general) //we update the crew manifest

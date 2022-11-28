@@ -42,6 +42,8 @@
 	pixel_y = -3
 	old_x = -16
 	old_y = -3
+	base_pixel_x = 0
+	base_pixel_y = -16
 
 	rebounds = FALSE // no more fucking pinball crooshers
 
@@ -55,8 +57,9 @@
 		/datum/action/xeno_action/onclick/crusher_shield,
 	)
 
-	mutation_type = CRUSHER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
+	mutation_icon_state = CRUSHER_NORMAL
+	mutation_type = CRUSHER_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/crusher.dmi'
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
@@ -265,5 +268,5 @@
 
 /datum/behavior_delegate/crusher_base/on_update_icons()
 	if(bound_xeno.throwing) //Let it build up a bit so we're not changing icons every single turf
-		bound_xeno.icon_state = "[bound_xeno.mutation_type] Crusher Charging"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
 		return TRUE

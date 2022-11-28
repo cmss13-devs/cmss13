@@ -1108,6 +1108,20 @@
 
     mind.view_objective_memories(src)
 
+/mob/living/carbon/human/verb/view_research_objective_memory()
+    set name = "View research objectives"
+    set category = "IC"
+
+    if(!mind)
+        to_chat(src, "The game appears to have misplaced your mind datum.")
+        return
+
+    if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
+        return
+
+    mind.view_research_objective_memories(src)
+
 /mob/living/carbon/human/verb/purge_objective_memory()
 	set name = "Reset view objectives"
 	set category = "OOC.Fix"

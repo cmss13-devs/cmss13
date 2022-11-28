@@ -1,5 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - admin: "Added \"Change Weather\" verb (Major Event, Admin panel) that lets you stop and start new weather events manually."
-  - bugfix: "Ending a weather event now displays the actual duration elapsed, and not the duration of the event."

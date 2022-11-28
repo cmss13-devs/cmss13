@@ -219,7 +219,7 @@
 /datum/equipment_preset/survivor/forecon/major/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
-	var/obj/item/clothing/accessory/ranks/marine/o5/pin = new()
+	var/obj/item/clothing/accessory/ranks/marine/o4/pin = new()
 	var/obj/item/clothing/accessory/patch/patch = new()
 	uniform.attach_accessory(H,pouch)
 	uniform.attach_accessory(H,patch)

@@ -1,6 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - qol: "Empty Pressurized Reagent Canister Pouch now comes with an empty Autoinjector."
-  - qol: "All Pressurized Reagent Canister Pouches now have their Autoinjectors pre-filled."
-  - code_imp: "Did a small refactor on how pre-filled Pressurized Reagent Canister Pouches initialize their chems."

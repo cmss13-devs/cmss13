@@ -1,4 +1,0 @@
-author: "TotalEpicness5"
-delete-after: True
-changes:
-  - qol: "Items destroyed by explosions now pop up a message saying they were destroyed"

@@ -1,5 +1,0 @@
-author: "Geevies"
-delete-after: True
-changes:
-  - rscadd: "Ballistic goggles now count as helmet garb, so you can put it into the third helmet slot."
-  - bugfix: "Ballistic goggles can now render above headbands."

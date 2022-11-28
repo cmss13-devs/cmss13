@@ -110,25 +110,3 @@
 /datum/supply_packs/ammo_mortar_flare/asrs
 	buyable = 0
 	group = "ASRS"
-
-//===================================
-// Materials
-/datum/supply_packs/sandbags/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/sandbagskit/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/metal/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/plas/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT

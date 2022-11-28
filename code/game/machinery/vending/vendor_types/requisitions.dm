@@ -671,9 +671,6 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/vend_fail()
 	return
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)
-	return GLOB.not_incapacitated_and_adjacent_state
-
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/stock(obj/item/item_to_stock, mob/user)
 	var/list/R
 	for(R in (listed_products))

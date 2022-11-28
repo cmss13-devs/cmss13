@@ -355,6 +355,17 @@ export const OverwatchMonitor = (props, context) => {
     user,
   } = data;
 
+  const rankList = ['Mar', 'ass', 'Med', 'Eng', 'SG', 'Spc', 'RTO', 'SL'];
+
+  const rankSort = (a, b) => {
+    if (a.rank === 'Mar' && b.rank === 'Mar') {
+      return a.paygrade === 'PFC' ? -1 : 1;
+    }
+    const a_index = rankList.findIndex((str) => a.rank === str);
+    const b_index = rankList.findIndex((str) => b.rank === str);
+    return a_index > b_index ? -1 : 1;
+  };
+
   const marine_data = sortBy((marine) => marine?.role)(
     Object.values(marine_list) ?? []
   );

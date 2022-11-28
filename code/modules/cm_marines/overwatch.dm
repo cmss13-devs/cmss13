@@ -455,6 +455,9 @@
 
 	for(var/mob/living/carbon/human/current_squaddie in marines_list)
 
+		if(!ishuman(current_squaddie))
+			break
+
 		var/manually_filtered = FALSE
 		var/marine_status = "Unknown"
 		var/filtered = FALSE

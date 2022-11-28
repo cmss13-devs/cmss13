@@ -1,4 +1,0 @@
-author: "theselfish"
-delete-after: True
-changes:
-  - bugfix: "Ghillie suit no longer has a direction when thrown."

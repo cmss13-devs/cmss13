@@ -1,7 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - rscadd: "Empty Pressurized Reagent Canister Pouches have been added to Nurse, Doctor, CMO and Medic vendors."
-  - rscadd: "Synth vendor now comes with all the Pressurized Reagent Canister Pouch variants."
-  - rscadd: "Synths can now buy empty Autoinjectors (small, medium and large) in their vendor."
-  - rscadd: "Synths can now buy the MS-11 Smart Refill Tank in their vendor."

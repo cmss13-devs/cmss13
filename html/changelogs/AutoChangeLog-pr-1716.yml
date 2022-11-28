@@ -1,0 +1,4 @@
+author: "Sleepynecrons"
+delete-after: True
+changes:
+  - bugfix: "fixed defender sprite not changing to steelcrest when purchased"

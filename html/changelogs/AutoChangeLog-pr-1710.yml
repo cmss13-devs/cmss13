@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Fixed the access to the three vendors in the pilot area of the hangar, they should now be accessible to POs and DCCs as was intended."

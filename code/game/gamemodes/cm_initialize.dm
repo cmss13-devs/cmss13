@@ -43,6 +43,7 @@ Additional game mode variables.
 	var/list/datum/mind/picked_queens = list()
 	var/datum/mind/survivors[] = list()
 	var/datum/mind/synth_survivor = null
+	var/datum/mind/CO_survivor = null
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
 	var/predators = list()
@@ -556,22 +557,24 @@ Additional game mode variables.
 // Used by XvX and Infection
 //Start the Survivor players. This must go post-setup so we already have a body.
 //No need to transfer their mind as they begin as a human.
-/datum/game_mode/proc/transform_survivor(var/datum/mind/ghost, var/is_synth = FALSE, var/turf/xeno_turf)
+/datum/game_mode/proc/transform_survivor(var/datum/mind/ghost, var/is_synth = FALSE, var/is_CO = FALSE, var/turf/xeno_turf)
 	var/picked_spawn = null
 	if(istype(ghost.current, /mob/living) && ghost.current.first_xeno)
 		picked_spawn = xeno_turf
 	else
 		picked_spawn = pick(GLOB.survivor_spawns)
 	if(istype(picked_spawn, /obj/effect/landmark/survivor_spawner))
-		return survivor_event_transform(ghost.current, picked_spawn, is_synth)
+		return survivor_event_transform(ghost.current, picked_spawn, is_synth, is_CO)
 	else
-		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth)
+		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth, is_CO)
 
-/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/H, var/is_synth = FALSE)
+/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/H, var/is_synth = FALSE, var/is_CO = FALSE)
 	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 
 	if(is_synth)
 		survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
+	if(is_CO)
+		survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)
@@ -581,13 +584,13 @@ Additional game mode variables.
 	arm_equipment(H, randjob, FALSE, not_a_xenomorph)
 
 
-/datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner, var/is_synth = FALSE)
+/datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner, var/is_synth = FALSE, var/is_CO = FALSE)
 	H.forceMove(get_turf(spawner))
 	var/not_a_xenomorph = TRUE
 	if(H.first_xeno)
 		not_a_xenomorph = FALSE
-	if(!spawner.equipment || is_synth)
-		survivor_old_equipment(H, is_synth)
+	if(!spawner.equipment || is_synth || is_CO)
+		survivor_old_equipment(H, is_synth = is_synth, is_CO = is_CO)
 	else
 		if(arm_equipment(H, spawner.equipment, FALSE, not_a_xenomorph) == -1)
 			to_chat(H, "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor.")
@@ -618,9 +621,9 @@ Additional game mode variables.
 				//remove ourselves, so we don't get stuff generated for us
 				survivors -= H.mind
 
-/datum/game_mode/proc/survivor_non_event_transform(mob/living/carbon/human/H, obj/effect/landmark/spawn_point, is_synth = FALSE)
+/datum/game_mode/proc/survivor_non_event_transform(mob/living/carbon/human/H, obj/effect/landmark/spawn_point, is_synth = FALSE, is_CO = FALSE)
 	H.forceMove(get_turf(spawn_point))
-	survivor_old_equipment(H, is_synth)
+	survivor_old_equipment(H, is_synth = is_synth, is_CO = is_CO)
 	H.name = H.get_visible_name()
 
 	//Give them some information

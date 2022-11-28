@@ -16,16 +16,6 @@
 	group = "ASRS"
 	cost = ASRS_LOWEST_WEIGHT
 
-/datum/supply_packs/ammo_rounds_box_smg/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_MEDIUM_WEIGHT
-
-/datum/supply_packs/ammo_rounds_box_smg_ap/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_LOW_WEIGHT
-
 /datum/supply_packs/ammo_rounds_box_rifle/asrs
 	buyable = 0
 	group = "ASRS"
@@ -50,15 +40,6 @@
 	buyable = 0
 	group = "ASRS"
 	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/ammo_smg_mag_box/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/ammo_smg_mag_box_ap/asrs
-	buyable = 0
-	group = "ASRS"
 
 /datum/supply_packs/ammo_mag_box/asrs
 	buyable = 0

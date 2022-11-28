@@ -16,17 +16,23 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "uaflag"
 	force = 0.5
-	w_class = ITEM_SIZE_SMALL
+	w_class = SIZE_SMALL
 	desc = "A miniature table flag of the United Americas, representing all of North, South, and Central America."
 
 /obj/item/prop/tableflag/uscm
 	name = "USCM table flag"
 	icon_state = "uscmflag"
-	desc = "A miniature table flag of the United States Colonial Marines, in traditional colors. 'Semper Fi' is written on the flag's bottom."
+	desc = "A miniature table flag of the United States Colonial Marines. 'Semper Fi' is written on the flag's bottom."
+
+/obj/item/prop/tableflag/uscm2
+	name = "USCM historical table flag"
+	icon_state = "uscmflag2"
+	desc = "A miniature historical table flag of the United States Colonial Marines, in traditional scarlet and gold. The USCM logo sits in the center; an eagle is perched atop it and an anchor rests behind it."
 
 /obj/item/prop/flower_vase
 	name = "flower vase"
 	icon_state = "vase"
+	w_class = SIZE_SMALL
 	desc = "An empty glass flower vase."
 
 /obj/item/prop/flower_vase/bluewhiteflowers

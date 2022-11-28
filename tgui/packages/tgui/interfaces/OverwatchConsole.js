@@ -14,7 +14,7 @@ export const OverwatchConsole = (_props, context) => {
   const { act, data } = useBackend(context);
   const { operator } = data;
 
-  const windowWidth = 800;
+  const windowWidth = 825;
   const windowHeight = 480;
 
   return (
@@ -355,14 +355,22 @@ export const OverwatchMonitor = (props, context) => {
     user,
   } = data;
 
-  const rankList = ['Mar', 'ass', 'Med', 'Eng', 'SG', 'Spc', 'RTO', 'SL'];
+  const roleList = [
+    'Squad Rifleman',
+    'Squad Hospital Corpsmen',
+    'Squad Combat Technician',
+    'Squad Smartgunner',
+    'Squad Weapons Specialist',
+    'Squad Radio Telephone Operator',
+    'Squad Leader',
+  ];
 
-  const rankSort = (a, b) => {
-    if (a.rank === 'Mar' && b.rank === 'Mar') {
+  const roleSort = (a, b) => {
+    if (a.role === 'Squad Rifleman' && b.role === 'Squad Rifleman') {
       return a.paygrade === 'PFC' ? -1 : 1;
     }
-    const a_index = rankList.findIndex((str) => a.rank === str);
-    const b_index = rankList.findIndex((str) => b.rank === str);
+    const a_index = roleList.findIndex((str) => a.role === str);
+    const b_index = roleList.findIndex((str) => b.role === str);
     return a_index > b_index ? -1 : 1;
   };
 
@@ -379,6 +387,14 @@ export const OverwatchMonitor = (props, context) => {
     'selectedJob',
     ''
   );
+
+  const marine_data_filtered = marine_data
+    ?.filter((marine) => !marine?.filtered)
+    .filter(searchFor(searchText))
+    .filter(
+      (marine) =>
+        marine?.role === selectedJob || selectedJob === null || !selectedJob
+    );
 
   return (
     <>
@@ -477,77 +493,66 @@ export const OverwatchMonitor = (props, context) => {
                   <Table.Cell bold>Area</Table.Cell>
                   <Table.Cell bold>SL Distance</Table.Cell>
                 </Table.Row>
-                {marine_data
-                  ?.filter((marine) => !marine?.filtered)
-                  .filter(searchFor(searchText))
-                  .filter(
-                    (marine) =>
-                      marine?.role === selectedJob ||
-                      selectedJob === null ||
-                      !selectedJob
-                  )
-                  .map((marine_data) => (
-                    <Table.Row key={marine_data}>
-                      <Table.Cell textAlign="center">
-                        <Button
-                          icon={'eye'}
-                          selected={marine_data?.manually_filtered}
-                          tooltip={'Hide'}
-                          onClick={() =>
-                            act('filter_marine', {
-                              squaddie: marine_data?.ref,
-                            })
-                          }
-                        />
-                      </Table.Cell>
-                      <Table.Cell>
-                        <Button
-                          content={marine_data?.name}
-                          disabled={!marine_data?.helmet}
-                          fluid
-                          onClick={() =>
-                            act('use_cam', {
-                              cam_target: marine_data?.ref,
-                            })
-                          }
-                        />
-                      </Table.Cell>
-                      <Table.Cell>
-                        {marine_data?.role +
-                          (marine_data?.act_sl === true
-                            ? marine_data?.act_sl
-                            : '') +
-                          (marine_data?.fteam
-                            ? ' (' + marine_data?.fteam + ')'
-                            : '')}
-                      </Table.Cell>
-                      <Table.Cell>
-                        <ColorBox
-                          color={
-                            marine_data?.mob_state === 'Conscious'
-                              ? 'green'
-                              : marine_data?.mob_state === 'Unconscious'
-                                ? 'yellow'
-                                : 'red'
-                          }
-                        />
-                        {' ' + marine_data?.mob_state}{' '}
-                        {!marine_data?.helmet ? ' (no helmet)' : null}
-                        {marine_data.SSD ? ' (SSD)' : null}
-                      </Table.Cell>
-                      <Table.Cell>
-                        {marine_data?.area_name
-                          ? marine_data?.area_name
-                          : 'N/A'}
-                      </Table.Cell>
-                      <Table.Cell>
-                        {marine_data?.dist ? marine_data?.dist : 'N/A'}
-                        {marine_data?.dir
-                          ? ' (' + marine_data?.dir + ')'
-                          : ' (N/A)'}
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
+                {marine_data_filtered.sort(roleSort).map((marine_data) => (
+                  <Table.Row key={marine_data}>
+                    <Table.Cell textAlign="center">
+                      <Button
+                        icon={'eye'}
+                        selected={marine_data?.manually_filtered}
+                        tooltip={'Hide'}
+                        onClick={() =>
+                          act('filter_marine', {
+                            squaddie: marine_data?.ref,
+                          })
+                        }
+                      />
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        content={marine_data?.name}
+                        disabled={!marine_data?.helmet}
+                        fluid
+                        onClick={() =>
+                          act('use_cam', {
+                            cam_target: marine_data?.ref,
+                          })
+                        }
+                      />
+                    </Table.Cell>
+                    <Table.Cell>
+                      {marine_data?.role +
+                        (marine_data?.act_sl === true
+                          ? marine_data?.act_sl
+                          : '') +
+                        (marine_data?.fteam
+                          ? ' (' + marine_data?.fteam + ')'
+                          : '')}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <ColorBox
+                        color={
+                          marine_data?.mob_state === 'Conscious'
+                            ? 'green'
+                            : marine_data?.mob_state === 'Unconscious'
+                              ? 'yellow'
+                              : 'red'
+                        }
+                      />
+                      {' ' + marine_data?.mob_state}{' '}
+                      {!marine_data?.helmet ? ' (no helmet)' : null}
+                      {marine_data.SSD ? ' (SSD)' : null}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {marine_data?.area_name ? marine_data?.area_name : 'N/A'}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {marine_data?.dist ? marine_data?.dist : 'N/A'}
+                      {marine_data?.dir
+                        ? ' (' + marine_data?.dir + ')'
+                        : ' (N/A)'}
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
               </Table>
             </Stack.Item>
           </Section>
@@ -653,7 +658,7 @@ export const OverwatchSupplies = (props, context) => {
                 stepPixelSize="20"
                 value={target_x}
                 onChange={(_, value) => {
-                  setTargetY(value);
+                  setTargetX(value);
                   act('set_supply', {
                     target_x: value,
                     target_y: target_y,
@@ -851,6 +856,13 @@ export const OverwatchBomb = (props, context) => {
           Ready to fire!
           <Icon name="skull-crossbones" ml="1em" />
         </NoticeBox>
+      )}
+      {almayer_cannon_disabled ? (
+        <NoticeBox warning textAlign="center">
+          Orbital cannon is disabled!
+        </NoticeBox>
+      ) : (
+        ''
       )}
     </Section>
   );

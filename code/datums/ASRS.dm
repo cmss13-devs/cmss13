@@ -78,16 +78,6 @@
 	buyable = 0
 	group = "ASRS"
 
-/datum/supply_packs/ammo_sentry/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/ammo_sentry_flamer/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT
-
 /datum/supply_packs/ammo_napalm/asrs
 	buyable = 0
 	group = "ASRS"

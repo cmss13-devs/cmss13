@@ -1,25 +1,26 @@
 /datum/action/xeno_action/onclick/palatine_roar
-    name = "Roar"
-    action_icon_state = "screech"
-    ability_name = "roar"
-    action_type = XENO_ACTION_CLICK
-    ability_primacy = XENO_PRIMARY_ACTION_1
-    xeno_cooldown = 60 SECONDS
-    plasma_cost = 50
+	name = "Roar"
+	action_icon_state = "screech"
+	ability_name = "roar"
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	xeno_cooldown = 60 SECONDS
+	plasma_cost = 50
 
 	var/roar_type = "piercing"
-    var/screech_sound_effect = "sound/voice/alien_distantroar_3.ogg"
-    var/bonus_damage_scale = 2.5
-    var/bonus_speed_scale = 0.05
+	var/screech_sound_effect = "sound/voice/alien_distantroar_3.ogg"
+	var/bonus_damage_scale = 2.5
+	var/bonus_speed_scale = 0.05
 
 /datum/action/xeno_action/onclick/change_roar
-    name = "Change Roar"
-    action_icon_state = "screech_shift"
-    ability_name = "change roar"
-    action_type = XENO_ACTION_CLICK
-    ability_primacy = XENO_NOT_PRIMARY_ACTION
-    plasma_cost = 0
+	name = "Change Roar"
+	action_icon_state = "screech_shift"
+	ability_name = "change roar"
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+	plasma_cost = 0
 
+/datum/action/xeno_action/onclick/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	var/action_icon_result
 
@@ -32,8 +33,8 @@
 
 	if (PR.roar_type == "piercing")
 		action_icon_result = "screech_disrupt"
-		roar_type = "thundering"
-		screech_sound_effect = "sound/voice/4_xeno_roars.ogg"
+		PR.roar_type = "thundering"
+		PR.screech_sound_effect = "sound/voice/4_xeno_roars.ogg"
 		to_chat(X, SPAN_XENOWARNING("You will now disrupt dangers to the hive!"))
 
 	else

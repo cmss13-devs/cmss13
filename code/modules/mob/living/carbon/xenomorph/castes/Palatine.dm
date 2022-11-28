@@ -16,7 +16,7 @@
 	evolution_allowed = FALSE
 	deevolves_to = list()
 	caste_desc = "The guard of the Queen Mother"
-	spit_types = list(/datum/ammo/xeno/acid/praetorian)
+	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
 	acid_level = 3
 
 	aura_strength = 3
@@ -35,7 +35,6 @@
 	icon_size = 64
 	icon_state = "Normal Palatine Walking"
 	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
-	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
@@ -83,4 +82,4 @@
 		return
 	var/mob/living/carbon/human/H = A
 
-	return original_damage + kills * 2.5
+	return original_damage + thirst * 2.5

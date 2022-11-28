@@ -1,6 +1,6 @@
 /datum/caste_datum/palatine
 	caste_type = XENO_CASTE_PALATINE
-	tier = 3
+	tier = 0
 
 	melee_damage_lower = XENO_DAMAGE_TIER_7
 	melee_damage_upper = XENO_DAMAGE_TIER_8
@@ -52,6 +52,7 @@
 		/datum/action/xeno_action/onclick/shift_spits,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
 		/datum/action/xeno_action/onclick/palatine_roar,//Mac1
+		/datum/action/xeno_action/onclick/palatine_change_roar,
 		/datum/action/xeno_action/activable/prae_abduct/palatine_macro,//Mac2
 		/datum/action/xeno_action/activable/warden_heal,//Mac3
 		/datum/action/xeno_action/activable/prae_retrieve,//Mac4

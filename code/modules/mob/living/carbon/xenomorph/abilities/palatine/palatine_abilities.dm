@@ -12,7 +12,7 @@
 	var/bonus_damage_scale = 2.5
 	var/bonus_speed_scale = 0.05
 
-/datum/action/xeno_action/onclick/change_roar
+/datum/action/xeno_action/onclick/palatine_change_roar
 	name = "Change Roar"
 	action_icon_state = "screech_shift"
 	ability_name = "change roar"
@@ -20,7 +20,7 @@
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 	plasma_cost = 0
 
-/datum/action/xeno_action/onclick/use_ability(atom/A)
+/datum/action/xeno_action/onclick/palatine_change_roar/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	var/action_icon_result
 
@@ -40,7 +40,8 @@
 	else
 		action_icon_result = "screech_empower"
 		PR.roar_type = "piercing"
+		PR.screech_sound_effect = "sound/voice/alien_distantroar_3.ogg"
 		to_chat(X, SPAN_XENOWARNING("You will now empower your allies with rage!"))
 
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
+	PR.button.overlays.Cut()
+	PR.button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)

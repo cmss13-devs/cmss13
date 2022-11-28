@@ -300,6 +300,10 @@ datum/preferences/proc/randomize_skin_color()
 			if(length(SSmapping.configs[GROUND_MAP].synth_survivor_types))
 				return pick(SSmapping.configs[GROUND_MAP].synth_survivor_types)
 			return /datum/equipment_preset/synth/survivor
+		if(JOB_CO_SURVIVOR)
+			if(length(SSmapping.configs[GROUND_MAP].CO_survivor_types))
+				return pick(SSmapping.configs[GROUND_MAP].CO_survivor_types)
+			return /datum/equipment_preset/uscm_ship/commander
 		if(JOB_PREDATOR)
 			if(length(RoleAuthority.roles_whitelist))
 				var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]

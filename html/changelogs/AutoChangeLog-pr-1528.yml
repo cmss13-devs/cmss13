@@ -1,4 +1,0 @@
-author: "kugamo"
-delete-after: True
-changes:
-  - balance: "Building resin constructions in doors is possible again, but will break if closed on them."

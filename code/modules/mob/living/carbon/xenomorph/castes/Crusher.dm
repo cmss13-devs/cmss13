@@ -55,14 +55,12 @@
 		/datum/action/xeno_action/onclick/crusher_shield,
 	)
 
-	mutation_type = CRUSHER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
+	mutation_icon_state = CRUSHER_NORMAL
+	mutation_type = CRUSHER_NORMAL
 
+	icon_xeno = 'icons/mob/xenos/crusher.dmi'
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
-
-/mob/living/carbon/Xenomorph/Crusher/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_crusher))
-	. = ..()
 
 // Refactored to handle all of crusher's interactions with object during charge.
 /mob/living/carbon/Xenomorph/proc/handle_collision(atom/target)
@@ -268,5 +266,5 @@
 
 /datum/behavior_delegate/crusher_base/on_update_icons()
 	if(bound_xeno.throwing) //Let it build up a bit so we're not changing icons every single turf
-		bound_xeno.icon_state = "[bound_xeno.mutation_type] Crusher Charging"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
 		return TRUE

@@ -507,7 +507,7 @@
 	desc = "A secure box holding five M20 anti-personnel proximity mines."
 	icon_state = "minebox"
 	w_class = SIZE_MEDIUM
-	max_storage_space = 8
+	max_storage_space = 10
 	can_hold = list(/obj/item/explosive/mine)
 
 /obj/item/storage/box/explosive_mines/fill_preset_inventory()

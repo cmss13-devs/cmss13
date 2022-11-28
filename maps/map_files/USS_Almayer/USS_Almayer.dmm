@@ -17094,20 +17094,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
-"bbE" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
-	name = "\improper Exterior Airlock";
-	req_access = null
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "starboardert"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
-	},
-/area/almayer/shipboard/starboard_point_defense)
 "bbI" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -27523,10 +27509,6 @@
 	name = "\improper Exterior Airlock";
 	req_access = null
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "aftert"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -29553,9 +29535,6 @@
 	dir = 2;
 	name = "\improper Exterior Airlock";
 	req_access = null
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "portert"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -83153,10 +83132,6 @@
 	name = "\improper Exterior Airlock";
 	req_access = null
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "aftert"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -114540,7 +114515,7 @@ aKT
 aKT
 aKT
 bbz
-bbE
+bdy
 bbS
 bbS
 bdy

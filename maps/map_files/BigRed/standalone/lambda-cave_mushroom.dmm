@@ -10,25 +10,22 @@
 /area/bigredv2/caves)
 "c" = (
 /obj/effect/glowshroom,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_lambda)
 "g" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/br_caves/layer1,
+/area/bigredv2/caves_lambda)
+"N" = (
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves_lambda)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
+N
+N
+N
+N
+N
 a
 b
 b
@@ -42,9 +39,9 @@ b
 "}
 (2,1,1) = {"
 b
-a
+N
 g
-a
+N
 b
 b
 b
@@ -59,10 +56,10 @@ b
 "}
 (3,1,1) = {"
 b
-a
-a
-a
-a
+N
+N
+N
+N
 b
 b
 b
@@ -72,75 +69,75 @@ b
 b
 b
 b
-a
+N
 "}
 (4,1,1) = {"
 b
-a
-a
-a
+N
+N
+N
 c
-a
-a
-a
+N
+N
+N
 b
 b
 b
 b
 b
-a
-a
+N
+N
 "}
 (5,1,1) = {"
 b
 b
-a
-a
-a
-a
-a
-a
-a
+N
+N
+N
+N
+N
+N
+N
 b
 b
 b
 b
-a
-a
+N
+N
 "}
 (6,1,1) = {"
 b
 b
 b
-a
-a
-a
+N
+N
+N
 g
-a
+N
 c
-a
+N
 b
 b
 a
-a
-a
+N
+N
 "}
 (7,1,1) = {"
 b
 b
 b
 b
-a
-a
-a
-a
-a
-a
-a
+N
+N
+N
+N
+N
+N
+N
 b
-a
+N
 g
-a
+N
 "}
 (8,1,1) = {"
 b
@@ -148,16 +145,16 @@ b
 b
 b
 b
-a
-a
-a
-a
+N
+N
+N
+N
 g
-a
-a
-a
-a
-a
+N
+N
+N
+N
+N
 "}
 (9,1,1) = {"
 b
@@ -165,59 +162,59 @@ b
 c
 c
 b
-a
+N
 c
-a
-a
+N
+N
 c
-a
-a
-a
-a
-a
+N
+N
+N
+N
+N
 "}
 (10,1,1) = {"
 b
 c
-a
-a
+N
+N
 c
-a
-a
+N
+N
 b
 b
 b
 b
 b
-a
-a
-a
+N
+N
+N
 "}
 (11,1,1) = {"
 b
 c
-a
-a
-a
+N
+N
+N
 g
-a
+N
 b
 b
 b
 b
 b
 b
-a
-a
+N
+N
 "}
 (12,1,1) = {"
 b
 c
-a
+N
 c
-a
+N
 c
-a
+N
 c
 b
 b
@@ -225,7 +222,7 @@ b
 b
 b
 b
-a
+N
 "}
 (13,1,1) = {"
 b
@@ -233,9 +230,9 @@ b
 c
 c
 c
-a
+N
 c
-a
+N
 b
 b
 b

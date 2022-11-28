@@ -13,16 +13,7 @@
 	},
 /area/bigredv2/outside/c)
 "ac" = (
-/turf/open/mars_cave{
-	tag = "icon-mars_dirt_4";
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/outside/c)
-"ad" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_3";
-	icon_state = "mars_dirt_3"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/c)
 "ae" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -39,26 +30,11 @@
 	dir = 4
 	},
 /area/bigredv2/outside/c)
-"ag" = (
-/turf/open/mars_cave{
-	tag = "icon-mars_dirt_4";
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/outside/e)
-"ah" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_14";
-	icon_state = "mars_dirt_14"
-	},
-/area/bigredv2/outside/e)
 "ai" = (
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/e)
 "aj" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_11";
-	icon_state = "mars_dirt_11"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/e)
 "ak" = (
 /turf/open/floor{
@@ -74,20 +50,8 @@
 	dir = 4
 	},
 /area/bigredv2/outside/e)
-"am" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_12";
-	icon_state = "mars_dirt_12"
-	},
-/area/bigredv2/outside/e)
-"an" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_9";
-	icon_state = "mars_dirt_9"
-	},
-/area/bigredv2/outside/c)
 "ao" = (
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/c)
 "ap" = (
 /turf/closed/wall/solaris,
@@ -114,15 +78,9 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
-"at" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_10";
-	icon_state = "mars_dirt_10"
-	},
-/area/bigredv2/outside/e)
 "au" = (
 /obj/effect/landmark/crap_item,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/c)
 "av" = (
 /obj/structure/machinery/vending/snack,
@@ -1121,26 +1079,16 @@
 /area/bigredv2/outside/office_complex)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "dt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/outside/se)
 "du" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars{
-	tag = "icon-mars_dirt_8";
-	icon_state = "mars_dirt_8"
-	},
-/area/bigredv2/outside/se)
-"dv" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars{
-	tag = "icon-mars_dirt_3";
-	icon_state = "mars_dirt_3"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/se)
 "dw" = (
 /turf/open/floor{
@@ -1555,15 +1503,12 @@
 /area/bigredv2/outside/office_complex)
 "ZG" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/mars_cave{
-	tag = "icon-mars_dirt_4";
-	icon_state = "mars_dirt_4"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/outside/e)
 
 (1,1,1) = {"
 aa
-ad
+ac
 ao
 aB
 aH
@@ -1590,7 +1535,7 @@ ao
 "}
 (2,1,1) = {"
 aa
-ad
+ac
 ao
 ap
 ap
@@ -1617,7 +1562,7 @@ ap
 "}
 (3,1,1) = {"
 aa
-ad
+ac
 ao
 ap
 aI
@@ -1644,7 +1589,7 @@ ap
 "}
 (4,1,1) = {"
 aa
-ad
+ac
 au
 as
 aJ
@@ -1671,7 +1616,7 @@ ap
 "}
 (5,1,1) = {"
 aa
-ad
+ac
 ao
 as
 aK
@@ -1698,7 +1643,7 @@ ap
 "}
 (6,1,1) = {"
 aa
-ad
+ac
 ao
 as
 aL
@@ -1725,7 +1670,7 @@ ap
 "}
 (7,1,1) = {"
 aa
-ad
+ac
 ao
 ap
 aJ
@@ -1752,7 +1697,7 @@ ap
 "}
 (8,1,1) = {"
 aa
-ad
+ac
 ao
 ap
 aM
@@ -1779,7 +1724,7 @@ ap
 "}
 (9,1,1) = {"
 ab
-ad
+ac
 ao
 ap
 ap
@@ -1806,7 +1751,7 @@ dr
 "}
 (10,1,1) = {"
 ac
-an
+ac
 ao
 ao
 ao
@@ -1832,7 +1777,7 @@ bu
 ar
 "}
 (11,1,1) = {"
-ad
+ac
 ao
 ao
 ao
@@ -1967,7 +1912,7 @@ dp
 du
 "}
 (16,1,1) = {"
-ag
+aj
 ba
 bb
 aE
@@ -1991,7 +1936,7 @@ dS
 bv
 cE
 dm
-dv
+du
 "}
 (17,1,1) = {"
 ZG
@@ -2021,7 +1966,7 @@ dn
 dw
 "}
 (18,1,1) = {"
-ah
+aj
 ap
 ap
 ap
@@ -2049,7 +1994,7 @@ dq
 "}
 (19,1,1) = {"
 ai
-at
+aj
 dW
 dX
 dX
@@ -2076,7 +2021,7 @@ dq
 "}
 (20,1,1) = {"
 aj
-ag
+aj
 aA
 dX
 dX
@@ -2156,8 +2101,8 @@ Ha
 PR
 "}
 (23,1,1) = {"
-am
-ag
+aj
+aj
 aA
 aG
 aG
@@ -2184,7 +2129,7 @@ dq
 "}
 (24,1,1) = {"
 ai
-at
+aj
 aA
 aG
 aG
@@ -2211,7 +2156,7 @@ dq
 "}
 (25,1,1) = {"
 ai
-at
+aj
 aA
 aG
 bx

@@ -38,11 +38,11 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "g" = (
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/caves/eta/xenobiology)
 "h" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/caves/eta/xenobiology)
 "i" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -93,7 +93,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/caves/eta/xenobiology)
 "q" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass{
@@ -144,7 +144,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "w" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/caves/eta/xenobiology)
 "x" = (
 /obj/item/toy/farwadoll,
@@ -162,10 +162,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "z" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_12";
-	tag = "icon-mars_dirt_12"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/caves/eta/xenobiology)
 "A" = (
 /turf/open/floor{
@@ -177,48 +174,18 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_7";
-	tag = "icon-mars_dirt_7"
-	},
+/turf/open/auto_turf/br_dirt/layer2,
 /area/bigredv2/caves/eta/xenobiology)
 "C" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/mars{
-	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
-	},
-/area/bigredv2/caves/eta/xenobiology)
-"D" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
-	},
-/area/bigredv2/caves/eta/xenobiology)
-"E" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6";
-	tag = "icon-mars_dirt_6"
-	},
+/turf/open/auto_turf/br_dirt/layer1,
 /area/bigredv2/caves/eta/xenobiology)
 "F" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_5";
-	tag = "icon-mars_dirt_5"
-	},
+/turf/open/auto_turf/br_dirt/layer2,
 /area/bigredv2/caves/eta/xenobiology)
 "G" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_22";
-	tag = "icon-mars_cave_22"
-	},
-/area/bigredv2/caves/eta/xenobiology)
-"H" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
+/turf/open/auto_turf/br_caves/layer1,
 /area/bigredv2/caves/eta/xenobiology)
 "O" = (
 /obj/effect/decal/cleanable/dirt,
@@ -226,7 +193,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "P" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/mars,
+/turf/open/auto_turf/br_dirt/layer0,
 /area/bigredv2/caves/eta/xenobiology)
 "X" = (
 /turf/open/floor/plating,
@@ -274,7 +241,7 @@ g
 b
 g
 C
-E
+F
 G
 "}
 (4,1,1) = {"
@@ -288,7 +255,7 @@ g
 h
 b
 g
-D
+z
 F
 O
 "}
@@ -320,7 +287,7 @@ c
 j
 r
 O
-H
+G
 "}
 (7,1,1) = {"
 d
@@ -335,7 +302,7 @@ d
 d
 k
 d
-H
+G
 "}
 (8,1,1) = {"
 e

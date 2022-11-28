@@ -4,7 +4,7 @@
 /obj/effect/alien/resin/special/cluster
 	name = XENO_STRUCTURE_CLUSTER
 	desc = "A large clump of gooey mass. It rhythmically pulses, as if its pumping something into the weeds below..."
-	icon = 'icons/mob/hostiles/structures48x48.dmi'
+	icon = 'icons/mob/xenos/structures48x48.dmi'
 	icon_state = "hive_cluster_idle"
 
 	pixel_x = -8

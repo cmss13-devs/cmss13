@@ -31,7 +31,7 @@
 			if(istype(S, /obj/structure/window/framed))
 				var/obj/structure/window/framed/W = S
 				if(!W.unslashable)
-					W.shatter_window(TRUE)
+					W.deconstruct(disassembled = FALSE)
 
 			if(S.opacity)
 				blocked = TRUE
@@ -299,6 +299,7 @@
 
 		if (LAZYLEN(targets) == 1)
 			new /datum/effects/xeno_slow(H, X, , ,25)
+			H.apply_effect(1, SLOW)
 		else if (LAZYLEN(targets) == 2)
 
 			H.frozen = TRUE

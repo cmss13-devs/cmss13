@@ -244,26 +244,27 @@
 	shrapnel_type = /obj/item/shard/shrapnel
 	shell_speed = AMMO_SPEED_TIER_4
 
-/datum/ammo/bullet/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
-	if(!(flags_ammo_behavior & AMMO_HIGHIMPACT))
-		return . = ..()
+/datum/ammo/bullet/proc/handle_battlefield_execution(datum/ammo/firing_ammo, mob/living/hit_mob, obj/item/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
+	SIGNAL_HANDLER
 
-	if(!user)
-		return FALSE
+	if(!user || hit_mob == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(hit_mob))
+		return
 
-	if(L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
-		return ..()
-
-	var/mob/living/carbon/human/execution_target = L
 	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
 		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return FALSE
+		return
+
+	var/mob/living/carbon/human/execution_target = hit_mob
 
 	if(execution_target.status_flags & PERMANENTLY_DEAD)
 		to_chat(user, SPAN_DANGER("[execution_target] has already been executed!"))
-		fired_from.delete_bullet(P, TRUE)
-		return TRUE
+		return
 
+	INVOKE_ASYNC(src, .proc/attempt_battlefield_execution, src, execution_target, firing_projectile, user, fired_from)
+
+	return COMPONENT_CANCEL_AMMO_POINT_BLANK
+
+/datum/ammo/bullet/proc/attempt_battlefield_execution(datum/ammo/firing_ammo, mob/living/carbon/human/execution_target, obj/item/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
 	user.affected_message(execution_target,
 		SPAN_HIGHDANGER("You aim \the [fired_from] at [execution_target]'s head!"),
 		SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
@@ -272,8 +273,15 @@
 	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(execution_target))
-		fired_from.delete_bullet(P, TRUE)
-		return TRUE
+		fired_from.delete_bullet(firing_projectile, TRUE)
+		return
+
+	if(!(fired_from.flags_gun_features & GUN_SILENCED))
+		playsound(user, fired_from.fire_sound, fired_from.firesound_volume, FALSE)
+	else
+		playsound(user, fired_from.fire_sound, 25, FALSE)
+
+	shake_camera(user, 1, 2)
 
 	execution_target.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
 	execution_target.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
@@ -281,10 +289,10 @@
 	shake_camera(execution_target, 3, 4)
 	execution_target.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
 
-	execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
+	execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[execution_target] WAS EXECUTED!")), \
 		SPAN_HIGHDANGER("You WERE EXECUTED!"))
 
-	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
+	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, firing_projectile.weapon_cause_data?.cause_name)
 
 	var/area/execution_area = get_area(execution_target)
 
@@ -293,7 +301,7 @@
 
 	if(flags_ammo_behavior & AMMO_EXPLOSIVE)
 		execution_target.gib()
-	return ..()
+
 
 /*
 //======
@@ -423,7 +431,11 @@
 	name = ".50 high-impact pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_2
 	debilitate = list(0,2,0,0,0,1,0,0)
-	flags_ammo_behavior = AMMO_HIGHIMPACT|AMMO_BALLISTIC
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/pistol/heavy/super/highimpact/New()
+	..()
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
@@ -679,7 +691,12 @@
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
 	penetration = ARMOR_PENETRATION_TIER_2
-	flags_ammo_behavior = AMMO_HIGHIMPACT|AMMO_BALLISTIC
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/revolver/mateba/highimpact/New()
+	..()
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
+
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
@@ -690,7 +707,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_10
 	damage_var_high = PROJECTILE_VARIANCE_TIER_1
 	penetration = ARMOR_PENETRATION_TIER_10
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HIGHIMPACT|AMMO_BALLISTIC
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
 	..()

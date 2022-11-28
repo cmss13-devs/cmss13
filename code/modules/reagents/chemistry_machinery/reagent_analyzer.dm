@@ -92,7 +92,7 @@
 		chemical_data.save_document(report, "XRF Scans", "[sample_number] - [report.name]")
 		if(S.chemclass < CHEM_CLASS_SPECIAL || (S.chemclass >= CHEM_CLASS_SPECIAL && report.completed))
 			chemical_data.save_new_properties(S.properties)
-		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
+		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[S.id])
 			if(last_used)
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
 			var/datum/chem_property/P = S.get_property(PROPERTY_DNA_DISINTEGRATING)
@@ -102,13 +102,7 @@
 				else
 					return
 
-			chemical_data.update_credits(2)
-			chemical_identified_list[S.id] = S.objective_value
-			SSobjectives.statistics["chemicals_completed"]++
-			SSobjectives.statistics["chemicals_total_points_earned"] += S.objective_value
-
-			var/datum/techtree/tree = GET_TREE(TREE_MARINE)
-			tree.add_points(S.objective_value)
+			chemical_data.complete_chemical(S)
 	else
 		report.name = "Analysis of ERROR"
 		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"

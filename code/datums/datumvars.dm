@@ -268,6 +268,10 @@ body
 	. += "<option value='?_src_=vars;setmatrix=\ref[src]'>Set Base Matrix</option>"
 	. += "<option value>-----OBJECT-----</option>"
 	. += "<option value='?_src_=vars;delall=\ref[src]'>Delete all of type</option>"
+	
+/obj/structure/machinery/get_vv_options()
+	. = ..()
+	. += "<option value='?_src_=vars;toggle_needs_power=\ref[src]'>Toggle needing power</option>"
 
 /client/proc/is_safe_variable(name)
 	if(name == "step_x" || name == "step_y" || name == "bound_x" || name == "bound_y" || name == "bound_height" || name == "bound_width" || name == "bounds")
@@ -520,6 +524,19 @@ body
 					return
 				message_staff("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
 
+	else if(href_list["toggle_needs_power"])
+		if(!check_rights(R_VAREDIT))
+			return
+		
+		var/obj/structure/machinery/O = locate(href_list["toggle_needs_power"])
+		if(!istype(O))
+			to_chat(usr, "This can only be used on instances of type /obj/structure/machinery")
+			return
+		
+		O.needs_power = !O.needs_power
+		O.power_change()
+		message_staff("[key_name(src, TRUE)] has toggled needs_power to [O.needs_power] on [O] in [O.loc.loc] ([O.x],[O.y],[O.z]).", O.x, O.y, O.z)
+	
 	else if(href_list["enablepixelscaling"])
 		if(!check_rights(R_DEBUG|R_VAREDIT))
 			return

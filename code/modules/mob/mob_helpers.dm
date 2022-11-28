@@ -507,3 +507,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			continue
 		mobs_in_range += mob
 	return mobs_in_range
+
+/mob/proc/alter_ghost(var/mob/dead/observer/ghost)
+	return

@@ -695,9 +695,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	var/image/standing
 	switch(chestburst)
 		if(1)
-			standing = image("icon" = 'icons/mob/hostiles/Effects.dmi',"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
 		if(2)
-			standing = image("icon" = 'icons/mob/hostiles/Effects.dmi',"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
 		else
 			return
 	overlays_standing[BURST_LAYER] = standing

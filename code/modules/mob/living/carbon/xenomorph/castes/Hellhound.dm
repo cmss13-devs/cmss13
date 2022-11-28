@@ -28,7 +28,7 @@
 	caste_type = XENO_CASTE_HELLHOUND
 	name = XENO_CASTE_HELLHOUND
 	desc = "A disgusting beast from hell, it has four menacing spikes growing from its head."
-	icon = 'icons/mob/hostiles/hellhound.dmi'
+	icon = 'icons/mob/xenos/hellhound.dmi'
 	icon_state = "Hellhound Walking"
 	icon_size = 32
 	layer = MOB_LAYER
@@ -60,8 +60,8 @@
 	)
 	mutation_type = HELLHOUND_NORMAL
 
-	icon_xeno = 'icons/mob/hostiles/hellhound.dmi'
-	icon_xenonid = 'icons/mob/hostiles/hellhound.dmi'
+	icon_xeno = 'icons/mob/xenos/hellhound.dmi'
+	icon_xenonid = 'icons/mob/xenos/hellhound.dmi'
 
 /mob/living/carbon/Xenomorph/Hellhound/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..(mapload, oldXeno, h_number || XENO_HIVE_YAUTJA)

@@ -20161,7 +20161,10 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZo" = (
-/obj/structure/closet/secure_closet/cargotech,
+/obj/structure/closet/secure_closet/cargotech{
+	req_one_access_txt = "21;101";
+	req_access = null
+	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)

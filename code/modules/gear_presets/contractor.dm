@@ -51,7 +51,7 @@
 	idtype = /obj/item/card/id/data
 	faction = FACTION_CONTRACTOR
 	faction_group = FACTION_LIST_ERT
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_NEOSPANISH, LANGUAGE_RUSSIAN)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/PMC
 
@@ -416,7 +416,7 @@
 	assignment = "VAIPO Support Synthetic"
 	rank = JOB_CONTRACTOR_SYN
 	faction = FACTION_CONTRACTOR
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
 /datum/equipment_preset/contractor/duty/synth/load_skills(mob/living/carbon/human/H)
 		H.set_skills(/datum/skills/synthetic)
@@ -820,7 +820,7 @@
 	rank = JOB_CONTRACTOR_COVSYN
 	skills = /datum/skills/synthetic
 	faction = FACTION_CONTRACTOR
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
 /datum/equipment_preset/contractor/covert/synth/load_skills(mob/living/carbon/human/H)
 		H.set_skills(/datum/skills/synthetic)

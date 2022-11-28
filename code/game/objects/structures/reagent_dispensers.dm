@@ -59,7 +59,7 @@
 
 /obj/structure/reagent_dispensers/proc/healthcheck()
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/structure/reagent_dispensers/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
@@ -103,16 +103,14 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
-				new /obj/effect/particle_effect/water(src.loc)
-				qdel(src)
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				new /obj/effect/particle_effect/water(src.loc)
-				qdel(src)
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 		else
 	return
@@ -315,7 +313,7 @@
 /obj/structure/reagent_dispensers/fueltank/proc/explode(var/force)
 	reagents.source_mob = source_mob
 	if(reagents.handle_volatiles() || force)
-		qdel(src)
+		deconstruct(FALSE)
 		return
 
 	exploding = FALSE

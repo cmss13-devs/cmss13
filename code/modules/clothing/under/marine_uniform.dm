@@ -509,7 +509,7 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_UPP
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet, /obj/item/clothing/suit/storage/snow_suit/survivor)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
@@ -634,6 +634,13 @@
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 	flags_jumpsuit = FALSE
 	suit_restricted = null
+
+/obj/item/clothing/under/marine/ucf_clown
+	name = "\improper UCF uniform"
+	desc = "A Unified Clown Federation combat uniform. Features the latest in anti-mime technology."
+	icon_state = "clown"
+	worn_state = "clown"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"

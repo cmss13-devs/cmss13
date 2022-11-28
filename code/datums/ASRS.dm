@@ -11,11 +11,8 @@
 #define ASRS_VERY_LOW_WEIGHT	50
 #define ASRS_LOWEST_WEIGHT		100
 
-/datum/supply_packs/gun/ammo_hpr/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_LOWEST_WEIGHT
-
+//===================================
+// Rounds
 /datum/supply_packs/ammo_rounds_box_rifle/asrs
 	buyable = 0
 	group = "ASRS"
@@ -30,6 +27,13 @@
 	buyable = 0
 	group = "ASRS"
 	cost = ASRS_LOW_WEIGHT
+
+//===================================
+// Magazines
+/datum/supply_packs/gun/ammo_hpr/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_LOWEST_WEIGHT
 
 /datum/supply_packs/ammo_m4a3_mag_box/asrs
 	buyable = 0
@@ -92,7 +96,6 @@
 	buyable = 0
 	group = "ASRS"
 	cost = ASRS_VERY_LOW_WEIGHT
-
 
 //===================================
 // Mortar ammo

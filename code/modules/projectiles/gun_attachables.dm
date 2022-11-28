@@ -169,7 +169,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/Detach(var/mob/user, var/obj/item/weapon/gun/G)
 	if(!istype(G)) return //Guns only
 
-	G.on_detach(src)
+	G.on_detach(user)
 
 	if(flags_attach_features & ATTACH_ACTIVATION)
 		activate_attachment(G, null, TRUE)

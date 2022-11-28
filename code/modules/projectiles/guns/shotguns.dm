@@ -1071,6 +1071,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	//unacidable = FALSE
 
 /obj/item/weapon/gun/shotgun/pump/cmb/m3717/set_gun_config_values()
+	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
 
 //-------------------------------------------------------

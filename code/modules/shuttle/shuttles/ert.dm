@@ -12,6 +12,28 @@
 	area_type = /area/shuttle/ert
 	width = 7
 	height = 13
+	var/list/doors = list()
+
+/obj/docking_port/mobile/emergency_response/on_ignition()
+	..()
+	control_doors("close")
+	control_doors("lock")
+
+/obj/docking_port/mobile/emergency_response/proc/control_doors(var/action)
+	for(var/i in doors)
+		switch(action)
+			if("open")
+				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/open)
+			if("close")
+				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/close)
+			if("lock")
+				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/lock)
+			if("unlock")
+				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/unlock)
+
+/obj/docking_port/mobile/emergency_response/on_prearrival()
+	..()
+	control_doors("unlock")
 
 // ERT Shuttle 1
 /obj/docking_port/mobile/emergency_response/ert1
@@ -56,10 +78,13 @@
 	dir = NORTH
 	id = "almayer-ert3"
 
-
-/obj/docking_port/stationary/emergency_response/transit
+/obj/docking_port/stationary/transit/emergency_response/ert1
 	dir = NORTH
-	id = "transit-ert"
+	id = "transit-ert-1"
+
+/obj/docking_port/stationary/transit/emergency_response/ert2
+	dir = NORTH
+	id = "transit-ert-2"
 
 // These are docking ports not on the almayer
 /obj/docking_port/stationary/emergency_response/idle_port1
@@ -68,26 +93,27 @@
 	id = "base-ert1"
 	roundstart_template = /datum/map_template/shuttle/ert1
 
-/*
 /obj/docking_port/stationary/emergency_response/idle_port2
 	name = "Base ERT2"
 	dir = NORTH
 	id = "base-ert2"
+	roundstart_template = /datum/map_template/shuttle/ert2
 
 /obj/docking_port/stationary/emergency_response/idle_port3
 	name = "Base ERT3"
 	dir = NORTH
 	id = "base-ert3"
-*/
+	roundstart_template = /datum/map_template/shuttle/ert3
+
 /datum/map_template/shuttle/ert1
 	name = "ERT Shuttle 1"
 	shuttle_id = "ert_shuttle_1"
-/*
+
 /datum/map_template/shuttle/ert2
 	name = "ERT Shuttle 2"
-	shuttle_id = "ert-shuttle-2"
+	shuttle_id = "ert_shuttle_2"
 
 /datum/map_template/shuttle/ert3
 	name = "ERT Shuttle 3"
-	shuttle_id = "ert-shuttle-3"
-*/
+	shuttle_id = "ert_shuttle_3"
+

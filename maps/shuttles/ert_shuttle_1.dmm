@@ -22,7 +22,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/shutters/transit,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -103,9 +102,6 @@
 /area/shuttle/ert)
 "y" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	dir = 4
-	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"

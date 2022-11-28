@@ -93,9 +93,12 @@
 	var/list/docks = SSshuttle.stationary
 	var/list/targets = list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
+		var/can_dock = ert.canDock(dock)
 		var/list/dockinfo = list(
 			"id"=dock.id,
 			"name"=dock.name,
+			"available"=can_dock == SHUTTLE_CAN_DOCK,
+			"error"=can_dock,
 		)
 		targets += list(dockinfo)
 	. = list()
@@ -105,11 +108,23 @@
 	. = ..()
 	if(.)
 		return
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 	var/mob/living/carbon/human/H = usr
 	switch(action)
 		if("move")
-			SSshuttle.moveShuttle(shuttleId, params["target"], 0)
-
+			var/dockId = params["target"]
+			// SSshuttle.moveShuttle(shuttleId, params["target"], 0)
+			var/obj/docking_port/stationary/dock = SSshuttle.getDock(dockId)
+			// request
+			ert.request(dock)
+		if("open")
+			ert.control_doors("open")
+		if("close")
+			ert.control_doors("close")
+		if("lock")
+			ert.control_doors("lock")
+		if("unlock")
+			ert.control_doors("unlock")
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
 	. = ..()

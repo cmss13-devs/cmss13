@@ -36,6 +36,8 @@
 	tier = 1
 	pixel_x = -16  //Needed for 2x2
 	old_x = -16
+	base_pixel_x = -4
+	base_pixel_y = -20
 	pull_speed = -0.5
 	viewsize = 9
 

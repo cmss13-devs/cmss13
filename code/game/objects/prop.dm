@@ -13,7 +13,7 @@
 
 /obj/item/prop/tableflag
 	name = "United Americas table flag"
-	icon = 'icons/obj/items.dmi'
+	icon = 'icons/obj/items/items.dmi'
 	icon_state = "uaflag"
 	force = 0.5
 	w_class = SIZE_SMALL

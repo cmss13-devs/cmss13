@@ -927,6 +927,7 @@ mob/proc/yank_out_object()
 /mob/proc/set_skills(skills_path)
 	if(skills)
 		qdel(skills)
+		skills = null
 	if(!skills_path)
 		skills = null
 	else

@@ -374,7 +374,7 @@
 	variant_prefix_name = "device ridden"
 
 /turf/open/auto_turf/br_caves
-	layer_name = list("rocky slabs","dried rock crust")
+	layer_name = list("rocky slabs","dried rock crust", "ROCKROCKROCK")
 	icon = 'icons/turf/floors/auto_turfs/auto_br.dmi'
 	icon_state = "marscave_editor"
 	icon_prefix = "marscave"

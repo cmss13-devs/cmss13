@@ -233,8 +233,9 @@
 //SG ammo
 
 /datum/supply_packs/ammo_smartgun
-	name = "M56 smartgun drum crate (x2)"
+	name = "M56 smartgun drum crate (x3)"
 	contains = list(
+					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun
 					)

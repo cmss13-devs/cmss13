@@ -1657,7 +1657,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(M == P.original)
+	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		var/size_damage_mod = 0.8
 		if(isXeno(M))

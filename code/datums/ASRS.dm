@@ -136,15 +136,3 @@
 /datum/supply_packs/ammo_mortar_flare/asrs
 	buyable = 0
 	group = "ASRS"
-
-//===================================
-//speciality armor
-/datum/supply_packs/armor_leader/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_LOWEST_WEIGHT
-
-/datum/supply_packs/armor_rto/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_LOWEST_WEIGHT

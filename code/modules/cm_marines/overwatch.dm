@@ -482,6 +482,8 @@
 			if(marine_filter_enabled)
 				filtered = TRUE
 
+		var/obj/item/card/id/ID = current_squaddie.get_idcard()
+
 		var/area/current_area = get_area(current_squaddie)
 		marines_list[current_squaddie] = list(
 			"ref" = ref(current_squaddie),
@@ -496,7 +498,8 @@
 			"helmet" = istype(current_squaddie.head, /obj/item/clothing/head/helmet/marine),
 			"filtered" = filtered,
 			"manually_filtered" = manually_filtered,
-			"SSD" = !current_squaddie.key || !current_squaddie.client && current_squaddie.stat != DEAD
+			"SSD" = !current_squaddie.key || !current_squaddie.client && current_squaddie.stat != DEAD,
+			"paygrade" = ID ? get_paygrades(ID.paygrade, 1) : ""
 			)
 
 	return(marines_list)

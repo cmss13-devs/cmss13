@@ -9,16 +9,11 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/populate_product_list(var/scale)
 	listed_products = list(
@@ -230,6 +225,9 @@
 	vend_x_offset = 2
 	vend_y_offset = 1
 
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/populate_product_list(var/scale)
 	listed_products = list(
 		list("WEBBINGS", -1, null, null),
@@ -291,16 +289,11 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
 	listed_products = list(
@@ -454,6 +447,10 @@
 
 	vend_x_offset = 2
 
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(var/scale)
 	listed_products = list(
 
@@ -494,16 +491,11 @@
 
 	vend_delay = 3
 
-/obj/structure/machinery/cm_vending/sorted/attachments/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/attachments/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/attachments/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
 	listed_products = list(
@@ -579,6 +571,9 @@
 	hackable = TRUE
 
 	vend_y_offset = 1
+
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad/populate_product_list(var/scale)
 	listed_products = list(
@@ -666,6 +661,9 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Gas Mask", 20, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
 		)
+
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/populate_product_list(var/scale)
 	return

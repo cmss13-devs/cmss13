@@ -1,0 +1,5 @@
+author: "kugamo"
+delete-after: True
+changes:
+  - rscadd: "Hosts about to chest burst wont play an ethereal sound to everyone, and instead will scream uncontrollably."
+  - imageadd: "Alien and Xenoid embryos now have unique sprites!"

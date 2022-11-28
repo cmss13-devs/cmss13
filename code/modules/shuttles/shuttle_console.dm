@@ -42,11 +42,25 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	return shuttle
 
+/obj/structure/machinery/computer/shuttle_control/is_valid_user(mob/user)
+	if(isXeno(user))
+		var/mob/living/carbon/Xenomorph/xeno_user = user
+		if(xeno_user.caste?.is_intelligent)
+			return TRUE // Allow access by Queen and Predalien
+	return ..()
+
+/obj/structure/machinery/computer/shuttle_control/allowed(mob/M)
+	if(isXeno(M))
+		var/mob/living/carbon/Xenomorph/xeno_user = M
+		if(xeno_user.caste?.is_intelligent)
+			return TRUE // Allow access by Queen and Predalien
+	return ..()
+
 /obj/structure/machinery/computer/shuttle_control/attack_hand(mob/user)
 	if(..(user))
 		return
-	//src.add_fingerprint(user)	//shouldn't need fingerprints just for looking at it.
-	if((!allowed(user) || ismaintdrone(user)) && !isXeno(user))
+
+	if(!allowed(user) || ismaintdrone(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 

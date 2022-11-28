@@ -17,6 +17,7 @@
 <div class="item">
     {{:helper.link('Human', null, {'switchCategory' : 0}, data.category == 0 ? 'selected' : null)}}
     {{:helper.link('Xenomorph', null, {'switchCategory' : 1}, data.category == 1 ? 'selected' : null)}}
+	{{:helper.link('Other', null, {'switchCategory': 2}, data.category == 2 ? 'selected' : null)}}
 </div>
 
 <table class="playtime_table">
@@ -29,7 +30,7 @@
 {{if data.category == 0}}
     {{:helper.USCMMode()}}
     {{for data.stored_human_playtime}}
-        <tr class="playtime_row" style="background-color: {{:value.bgcolor}}"> 
+        <tr class="playtime_row" style="background-color: {{:value.bgcolor}}">
             {{if value.icondisplay}}
                 <td unselectable="on" style="padding: 2px;"><img src="{{:value.icondisplay}}" style="margin: 0 auto; display: block;"></img></td>
             {{else}}
@@ -43,7 +44,21 @@
     {{:helper.xenoMode()}}
 
     {{for data.stored_xeno_playtime}}
-        <tr class="playtime_row" style="background-color: {{:value.bgcolor}}"> 
+        <tr class="playtime_row" style="background-color: {{:value.bgcolor}}">
+            {{if value.icondisplay}}
+                <td unselectable="on" style="padding: 2px;"><img src="{{:value.icondisplay}}" style="margin: 0 auto; display: block;"></img></td>
+            {{else}}
+                <td unselectable="on" style="padding: 2px; height: 27px;"></td>
+            {{/if}}
+            <td style="color: {{:value.textcolor}}">{{:value.job}}</td>
+            <td style="color: {{:value.textcolor}}">{{:value.playtime}} HOURS</td>
+        </tr>
+    {{/for}}
+{{else data.category == 2}}
+	{{:helper.USCMMode()}}
+
+    {{for data.stored_other_playtime}}
+        <tr class="playtime_row" style="background-color: {{:value.bgcolor}}">
             {{if value.icondisplay}}
                 <td unselectable="on" style="padding: 2px;"><img src="{{:value.icondisplay}}" style="margin: 0 auto; display: block;"></img></td>
             {{else}}

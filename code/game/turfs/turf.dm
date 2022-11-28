@@ -52,6 +52,9 @@
 	/// Whether we've broken through the ceiling yet
 	var/ceiling_debrised = FALSE
 
+	// Fishing
+	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
+
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
 	if(flags_atom & INITIALIZED)

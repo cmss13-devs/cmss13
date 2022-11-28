@@ -204,20 +204,23 @@ Class Procs:
 	return (stat & (NOPOWER|BROKEN|additional_flags))
 
 /obj/structure/machinery/Topic(href, href_list)
-	..()
+	. = ..()
+	if(.)
+		return TRUE
 	if(inoperable())
 		return 1
 	if(usr.is_mob_restrained() || usr.lying || usr.stat)
 		return 1
-	if ( ! (istype(usr, /mob/living/carbon/human) || \
-			isRemoteControlling(usr) || \
-			istype(usr, /mob/living/carbon/Xenomorph)))
+	if(!is_valid_user(usr))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 1
 
 	src.add_fingerprint(usr)
 
 	return 0
+
+/obj/structure/machinery/proc/is_valid_user(mob/user)
+	return (user.IsAdvancedToolUser(user) || isRemoteControlling(user))
 
 /obj/structure/machinery/attack_remote(mob/user as mob)
 	if(isrobot(user))
@@ -233,7 +236,7 @@ Class Procs:
 		return TRUE
 	if(user.lying || user.stat)
 		return TRUE
-	if(!(istype(user, /mob/living/carbon/human) || isRemoteControlling(user) || istype(user, /mob/living/carbon/Xenomorph)))
+	if(!is_valid_user(user))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return TRUE
 /*

@@ -608,6 +608,15 @@
 /obj/structure/prop/invuln/ex_act(severity, direction)
 	return
 
+/obj/structure/prop/invuln/static_corpse
+
+/obj/structure/prop/invuln/static_corpse/afric_zimmer
+	name = "Maj. Afric Zimmerman"
+	desc = "What remains of Maj. Afric Zimmerman. Their entire head is missing. Someone shed a tear."
+	icon = 'icons/obj/structures/props/64x64.dmi'
+	icon_state = "afric_zimmerman"
+	density = 0
+
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder
 	density = 0
 	name = "non-functional hatch"

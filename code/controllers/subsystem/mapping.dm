@@ -239,12 +239,11 @@ SUBSYSTEM_DEF(mapping)
 	if(turf_type_override)
 		reserve.turf_type = turf_type_override
 	if(!z)
-		world.log << "z is null"
 		for(var/i in levels_by_trait(ZTRAIT_RESERVED))
 			if(reserve.Reserve(width, height, i))
 				return reserve
 		//If we didn't return at this point, theres a good chance we ran out of room on the exisiting reserved z levels, so lets try a new one
-		world.log << "Ran out of space in existing transit levels, adding a new one"
+		log_debug("Ran out of space in existing transit levels, adding a new one")
 		num_of_res_levels++
 		var/datum/space_level/newReserved = add_new_zlevel("Transit/Reserved [num_of_res_levels]", list(ZTRAIT_RESERVED = TRUE))
 		initialize_reserved_level(newReserved.z_value)
@@ -253,15 +252,14 @@ SUBSYSTEM_DEF(mapping)
 				return reserve
 		CRASH("Despite adding a fresh reserved zlevel still failed to get a reservation")
 	else
-		world.log << "z not null"
 		if(!level_trait(z, ZTRAIT_RESERVED))
-			world.log << "Cannot block reserve on a non-ZTRAIT_RESERVED level"
+			log_debug("Cannot block reserve on a non-ZTRAIT_RESERVED level")
 			qdel(reserve)
 			return
 		else
 			if(reserve.Reserve(width, height, z))
 				return reserve
-	world.log << "unknown reservation failure"
+	log_debug("unknown reservation failure")
 	QDEL_NULL(reserve)
 
 //This is not for wiping reserved levels, use wipe_reservations() for that.

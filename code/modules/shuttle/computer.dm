@@ -113,9 +113,7 @@
 	switch(action)
 		if("move")
 			var/dockId = params["target"]
-			// SSshuttle.moveShuttle(shuttleId, params["target"], 0)
 			var/obj/docking_port/stationary/dock = SSshuttle.getDock(dockId)
-			// request
 			ert.request(dock)
 		if("open")
 			ert.control_doors("open")

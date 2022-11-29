@@ -210,7 +210,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 			//After we update the magazines, we update the connected boxes
 			//Just in case we have a small ammo box and a big ammo box (like say, grenades do)
-			update_derived_from_ammo(product[3])
+			update_derived_from_ammo(product)
 			return
 
 //------------MAINTENANCE PROCS---------------

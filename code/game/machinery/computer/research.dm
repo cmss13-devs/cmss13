@@ -27,6 +27,7 @@
 			chemical_data.update_credits(N.grant)
 			visible_message(SPAN_NOTICE("[user] scans the [N.name] on the [src], collecting the [N.grant] research credits."))
 			N.grant = 0
+			qdel(N)
 			return
 	//Saving to database
 	if(istype(B, /obj/item/paper))

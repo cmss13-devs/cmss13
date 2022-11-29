@@ -639,6 +639,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 
+	//Whether or not to load ammo boxes depending on ammo loaded into the vendor
+	//Only relevant in big vendors, like Requisitions or Squad Prep
+	var/load_ammo_boxes = FALSE
+
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list
 
@@ -654,8 +658,28 @@ GLOBAL_LIST_EMPTY(vending_products)
 	return ..()
 
 //this proc, well, populates product list based on roundstart amount of players
+/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(var/scale)
+	populate_product_list(scale)
+	if(load_ammo_boxes)
+		populate_ammo_boxes()
+	return
+
+//this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
 	return
+
+/obj/structure/machinery/cm_vending/sorted/proc/populate_ammo_boxes()
+	var/list/tmp_list = list()
+	for(var/list/L as anything in listed_products)
+		tmp_list += list(L)
+		if(!L[3])
+			continue
+		var/datum/item_to_multiple_box_pairing/IMBP = GLOB.item_to_box_mapping.get_item_to_box_mapping(L[3])
+		if(!IMBP)
+			continue
+		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
+			tmp_list += list(list(initial(IBP.box.name), round(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
+	listed_products = tmp_list
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	. = ..(user)
@@ -721,6 +745,57 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return corresponding_types_list[unusual_path]
 	return
 
+//Called when we vend something
+/obj/structure/machinery/cm_vending/sorted/proc/update_derived_ammo_and_boxes(var/list/item_being_vended)
+	if(!LAZYLEN(item_being_vended))
+		return
+
+	update_derived_from_ammo(item_being_vended)
+	update_derived_from_boxes(item_being_vended[3])
+
+//Called when we add something in
+/obj/structure/machinery/cm_vending/sorted/proc/update_derived_ammo_and_boxes_on_add(var/list/item_being_added)
+	if(!LAZYLEN(item_being_added))
+		return
+	update_derived_from_ammo(item_being_added)
+	//We are ADDING a box, so need to INCREASE the number of magazines rather than subtracting it
+	update_derived_from_boxes(item_being_added[3], TRUE)
+
+/obj/structure/machinery/cm_vending/sorted/proc/update_derived_from_ammo(var/list/base_ammo_item, var/add_box = FALSE)
+	if(!LAZYLEN(base_ammo_item))
+		return
+	//Item is a vented magazine / grenade / whatever, update all dependent boxes
+	var/datum/item_to_multiple_box_pairing/item_to_box_mapping = GLOB.item_to_box_mapping.get_item_to_box_mapping(base_ammo_item[3])
+	if(!item_to_box_mapping)
+		return
+	var/list/topic_listed_products = get_listed_products(usr)
+	for(var/datum/item_box_pairing/item_box_pairing as anything in item_to_box_mapping.item_box_pairings)
+		for(var/list/product in topic_listed_products)
+			if(product[3] == item_box_pairing.box)
+				//We recalculate the amount of boxes we ought to have based on how many magazines we have
+				product[2] = round(base_ammo_item[2] / item_box_pairing.items_in_box)
+				break
+
+/obj/structure/machinery/cm_vending/sorted/proc/update_derived_from_boxes(var/obj/item/box_being_added_or_removed, var/add_box = FALSE)
+	var/datum/item_box_pairing/item_box_pairing = GLOB.item_to_box_mapping.get_box_to_item_mapping(box_being_added_or_removed)
+	if(!item_box_pairing)
+		return
+	//Item is a vented box, update base ammo count
+	//and then update all the relevant boxes based on the new item count by calling this function again with the ammo parameter
+	var/list/topic_listed_products = get_listed_products(usr)
+	for(var/list/product in topic_listed_products)
+		if(product[3] == item_box_pairing.item)
+			if(add_box)
+				//We increase the amount of available magazines based on how many magazines we vended in a box
+				product[2] = product[2] + item_box_pairing.items_in_box
+			else
+				//We lower the amount of available magazines based on how many magazines we vended in a box
+				product[2] = max(product[2] - item_box_pairing.items_in_box, 0) //Just in case some shenanigans happen
+
+			//After we update the magazines, we update the connected boxes
+			//Just in case we have a small ammo box and a big ammo box (like say, grenades do)
+			update_derived_from_ammo(product[3])
+			return
 
 //------------GEAR VENDORS---------------
 //For vendors with their own points available

@@ -36,6 +36,10 @@ export const NavigationShuttle = (props, context) => {
                   </Button>
                 </Stack.Item>
               ))}
+          </Stack>
+        </Section>
+        <Section title="Door Controls">
+          <Stack>
             <Stack.Item>
               <Button onClick={() => act('open')}>Open</Button>
             </Stack.Item>

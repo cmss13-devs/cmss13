@@ -264,7 +264,7 @@ SUBSYSTEM_DEF(garbage)
 	var/refID = text_ref(D)
 
 	var/tick_usage = TICK_USAGE
-	del(D)
+	//del(D) // Disabled pending more cleanup of deletions due to high performance impact
 	tick_usage = TICK_USAGE_TO_MS(tick_usage)
 
 	var/datum/qdel_item/I = items[type]

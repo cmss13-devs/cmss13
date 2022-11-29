@@ -28169,7 +28169,7 @@
 	},
 /area/almayer/evacuation/pod6)
 "bQS" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo{
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo{
 	icon_state = "req_ammo_wall"
 	},
 /turf/open/floor/almayer{
@@ -30079,7 +30079,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/vehiclehangar)
 "bYa" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns{
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo{
 	icon_state = "req_guns_wall"
 	},
 /turf/open/floor/almayer{

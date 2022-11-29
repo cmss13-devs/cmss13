@@ -208,6 +208,26 @@
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
+//Special cargo-specific vendor with vending offsets
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo
+	
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+	var/turf/T
+	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+		T = locate(x + vend_x_offset, y + vend_y_offset, z)
+	else
+		T = get_turf(get_step(src, NORTH))
+		if(H.loc == T)
+			T = get_turf(get_step(H.loc, WEST))
+		else
+			T = get_turf(get_step(src, SOUTH))
+			if(H.loc == T)
+				T = get_turf(get_step(H.loc, WEST))
+			else
+				T = loc
+	return T
+
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
 	icon_state = "req_guns_wall"
 	tiles_with = list(
@@ -480,6 +500,25 @@
 		list("M74 AGM-S Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/HE/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		)
 
+//Special cargo-specific vendor with vending offsets
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
+	
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+	var/turf/T
+	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+		T = locate(x + vend_x_offset, y + vend_y_offset, z)
+	else
+		T = get_turf(get_step(src, NORTHWEST))
+		if(H.loc == T)
+			T = get_turf(get_step(H.loc, WEST))
+		else
+			T = get_turf(get_step(src, SOUTHWEST))
+			if(H.loc == T)
+				T = get_turf(get_step(H.loc, WEST))
+			else
+				T = loc
+	return T
 //------------ATTACHMENTS VENDOR---------------
 
 /obj/structure/machinery/cm_vending/sorted/attachments
@@ -547,11 +586,11 @@
 	else
 		T = get_turf(get_step(src, NORTHEAST))
 		if(H.loc == T)
-			T = get_turf(get_step(src, NORTH))
+			T = get_turf(get_step(H.loc, WEST))
 		else
 			T = get_turf(get_step(src, SOUTHEAST))
 			if(H.loc == T)
-				T = get_turf(get_step(src, SOUTH))
+				T = get_turf(get_step(H.loc, WEST))
 			else
 				T = loc
 	return T

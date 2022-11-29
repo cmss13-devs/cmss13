@@ -14,7 +14,7 @@
 	caliber = "10x20mm"
 	icon_state = "m39_HV"
 	max_rounds = 48
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	gun_type = /obj/item/weapon/gun/smg/m39
 	default_ammo = /datum/ammo/bullet/smg/m39
 
@@ -70,6 +70,7 @@
 	name = "\improper M39 HV extended magazine (10x20mm)"
 	desc = "A 10x20mm caseless HV extended submachinegun magazine. Powerful propellant allows the bullet increased travel speed and minor penetration capabilities, noticeably improving its efficacy at long ranges, although it still suffers significantly compared to a rifle bullet."
 	max_rounds = 72
+	w_class = SIZE_MEDIUM // big ammo big size DUHH
 	icon_state = "m39_HV_extended"
 	bonus_overlay = "m39_ex"
 

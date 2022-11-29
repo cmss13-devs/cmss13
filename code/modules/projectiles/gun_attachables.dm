@@ -1502,22 +1502,23 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "smgstock_a"
 	pixel_shift_x = 42
 	pixel_shift_y = 11
-	wield_delay_mod = WIELD_DELAY_FAST
 	hud_offset_mod = 5
 
 /obj/item/attachable/stock/smg/New()
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_7
-	recoil_mod = -RECOIL_AMOUNT_TIER_3
-	scatter_mod = -SCATTER_AMOUNT_TIER_6
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	burst_scatter_mod = -2
 	delay_mod = 0
+	wield_delay_mod = WIELD_DELAY_FAST
 	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	aim_speed_mod = CONFIG_GET(number/slowdown_low)
 
 
 /obj/item/attachable/stock/smg/collapsible
 	name = "submachinegun folding stock"
-	desc = "A Kirchner brand K2 M39 folding stock, standard issue in the USCM. The stock, when extended, reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl. This stock can collapse in, removing almost all positive and negative effects, however it slightly increases spread due to weapon being off-balanced by the collapsed stock."
+	desc = "A Kirchner brand K2 M39 folding stock, standard issue in the USCM. The stock, when extended, reduces recoil and improves accuracy, but at a reduction to handling and size. Seemingly a bit more effective in a brawl. This stock can collapse in, removing all positive and negative effects."
 	slot = "stock"
 	melee_mod = 10
 	size_mod = 1
@@ -1534,26 +1535,24 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/smg/collapsible/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	wield_delay_mod = WIELD_DELAY_FAST
+	wield_delay_mod = WIELD_DELAY_VERY_FAST
+	burst_scatter_mod = -1
 	delay_mod = 0
 	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
-	//but at the same time you are slowish when 2 handed
-	aim_speed_mod = CONFIG_GET(number/slowdown_low)
 
 
 /obj/item/attachable/stock/smg/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
 		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 		size_mod = 1
-		aim_speed_mod = CONFIG_GET(number/slowdown_low)
-		wield_delay_mod = WIELD_DELAY_FAST
+		wield_delay_mod = WIELD_DELAY_VERY_FAST
 		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
@@ -1563,12 +1562,13 @@ Defined in conflicts.dm of the #defines folder.
 
 	else
 		scatter_unwielded_mod = 0
+		burst_scatter_mod = 0
 		size_mod = 0
 		aim_speed_mod = 0
 		wield_delay_mod = 0
 		movement_onehanded_acc_penalty_mod = 0
-		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
-		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
 		hud_offset_mod = 3
 		icon_state = "smgstockcc"
 		attach_icon = "smgstockcc_a"

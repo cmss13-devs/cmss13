@@ -1926,6 +1926,7 @@
 #include "code\modules\projectiles\gun.dm"
 #include "code\modules\projectiles\gun_attachables.dm"
 #include "code\modules\projectiles\gun_helpers.dm"
+#include "code\modules\projectiles\item_to_box_mapping.dm"
 #include "code\modules\projectiles\projectile.dm"
 #include "code\modules\projectiles\targeting.dm"
 #include "code\modules\projectiles\guns\boltaction.dm"

@@ -7,6 +7,7 @@
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_CARGO)
 	hackable = TRUE
+	load_ammo_boxes = TRUE
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state

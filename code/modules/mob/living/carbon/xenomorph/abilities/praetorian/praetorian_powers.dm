@@ -358,7 +358,7 @@
 		H.throw_atom(throw_target_turf, get_dist(throw_target_turf, H)-1, SPEED_VERY_FAST)
 
 		qdel(tail_beam) // hook beam catches target, throws them back, is deleted (throw_atom has sleeps), then hook beam catches another target, repeat
-		addtimer((CALLBACK(src, .proc/remove_tail_overlay, H, tail_image)), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
+		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay, H, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
 	apply_cooldown()
 	..()

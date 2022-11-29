@@ -2784,26 +2784,26 @@
 	generated_projectile.overlays += hook_overlay
 	hook_overlay.pixel_y = 16
 
-/datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/M, obj/item/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+/datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/item/projectile/fired_proj)
+	if(iscarbon(target))
+		var/mob/living/carbon/carbone = target
+		if((HAS_FLAG(carbone.status_flags, XENO_HOST) && HAS_TRAIT(carbone, TRAIT_NESTED)) || carbone.stat == DEAD)
 			return
 
-	playsound(P.firer, 'sound/weapons/thudswoosh.ogg', 25, TRUE)
-	playsound(P, 'sound/weapons/thudswoosh.ogg', 25, TRUE) // why none of these work!!
-	playsound(M, 'sound/weapons/thudswoosh.ogg', 25, TRUE)
+	playsound(fired_proj.firer, 'sound/weapons/thudswoosh.ogg', 25, TRUE)
+	playsound(fired_proj, 'sound/weapons/thudswoosh.ogg', 25, TRUE) // why none of these work!!
+	playsound(target, 'sound/weapons/thudswoosh.ogg', 25, TRUE)
 
-	shake_camera(M, 5, 0.1 SECONDS)
-	var/obj/effect/beam/tail_beam = P.firer.beam(M, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 5)
+	shake_camera(target, 5, 0.1 SECONDS)
+	var/obj/effect/beam/tail_beam = fired_proj.firer.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 5)
 	var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
-	M.overlays += tail_image
+	target.overlays += tail_image
 
-	new /datum/effects/xeno_slow(M, P.firer, , , 0.5 SECONDS)
-	M.throw_atom(P.firer, get_dist(P.firer, M)-1, SPEED_VERY_FAST)
+	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
+	target.throw_atom(fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
 
 	qdel(tail_beam)
-	addtimer((CALLBACK(src, .proc/remove_tail_overlay, M, tail_image)), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
+	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
 /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(var/mob/overlayed_mob, var/image/tail_image)
 	overlayed_mob.overlays -= tail_image

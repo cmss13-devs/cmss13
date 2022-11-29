@@ -735,6 +735,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
 			R[2]++
+			update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
@@ -746,7 +747,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	return
 
 //Called when we vend something
-/obj/structure/machinery/cm_vending/sorted/proc/update_derived_ammo_and_boxes(var/list/item_being_vended)
+/obj/structure/machinery/cm_vending/proc/update_derived_ammo_and_boxes(var/list/item_being_vended)
 	if(!LAZYLEN(item_being_vended))
 		return
 
@@ -754,14 +755,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 	update_derived_from_boxes(item_being_vended[3])
 
 //Called when we add something in
-/obj/structure/machinery/cm_vending/sorted/proc/update_derived_ammo_and_boxes_on_add(var/list/item_being_added)
+/obj/structure/machinery/cm_vending/proc/update_derived_ammo_and_boxes_on_add(var/list/item_being_added)
 	if(!LAZYLEN(item_being_added))
 		return
 	update_derived_from_ammo(item_being_added)
 	//We are ADDING a box, so need to INCREASE the number of magazines rather than subtracting it
 	update_derived_from_boxes(item_being_added[3], TRUE)
 
-/obj/structure/machinery/cm_vending/sorted/proc/update_derived_from_ammo(var/list/base_ammo_item, var/add_box = FALSE)
+/obj/structure/machinery/cm_vending/proc/update_derived_from_ammo(var/list/base_ammo_item, var/add_box = FALSE)
 	if(!LAZYLEN(base_ammo_item))
 		return
 	//Item is a vented magazine / grenade / whatever, update all dependent boxes
@@ -776,7 +777,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				product[2] = round(base_ammo_item[2] / item_box_pairing.items_in_box)
 				break
 
-/obj/structure/machinery/cm_vending/sorted/proc/update_derived_from_boxes(var/obj/item/box_being_added_or_removed, var/add_box = FALSE)
+/obj/structure/machinery/cm_vending/proc/update_derived_from_boxes(var/obj/item/box_being_added_or_removed, var/add_box = FALSE)
 	var/datum/item_box_pairing/item_box_pairing = GLOB.item_to_box_mapping.get_box_to_item_mapping(box_being_added_or_removed)
 	if(!item_box_pairing)
 		return
@@ -1073,6 +1074,7 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--
+			vendor.update_derived_ammo_and_boxes(itemspec)
 
 		if(vend_flags & VEND_UNIFORM_RANKS)
 			// apply ranks to clothing

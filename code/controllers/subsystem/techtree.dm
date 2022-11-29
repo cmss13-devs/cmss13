@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(techtree)
 
 /datum/controller/subsystem/techtree/Initialize()
 	if(GLOB.perf_flags & PERF_TOGGLE_TECHWEBS)
-		return SS_INIT_NONE
+		return SS_INIT_NO_NEED
 
 	var/list/tech_trees = subtypesof(/datum/techtree)
 	var/list/tech_nodes = subtypesof(/datum/tech)

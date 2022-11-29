@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(teleporter)
 
 /datum/controller/subsystem/teleporter/Initialize()
     if (SSmapping.configs[GROUND_MAP].map_name != MAP_CORSAT) // Bad style, but I'm leaving it here for now until someone wants to add a teleporter to another map
-        return
+        return SS_INIT_NO_NEED
 
     teleporters_by_id = list()
     teleporters = list()

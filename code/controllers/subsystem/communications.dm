@@ -193,7 +193,7 @@ var/const/RADIO_MAGNETS = "radio_magnet"
 
 SUBSYSTEM_DEF(radio)
 	name = "radio"
-	flags = SS_NO_FIRE
+	flags = SS_NO_FIRE|SS_NO_INIT
 	init_order = SS_INIT_RADIO
 	var/list/datum/radio_frequency/frequencies = list()
 

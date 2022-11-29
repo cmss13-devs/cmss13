@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(mapview)
 
 /datum/controller/subsystem/mapview/Initialize(start_timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/pre_round_start)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/mapview/proc/pre_round_start()
 	SIGNAL_HANDLER

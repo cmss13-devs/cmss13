@@ -1,0 +1,4 @@
+author: "DexterDude"
+delete-after: True
+changes:
+  - balance: "Changes the Senior Enlisted Advisor's endurance skill from 1 to 2"

@@ -1,5 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - refactor: "gear vendors now use tgui"
-  - refactor: "complete rewrite of how vendors operate"

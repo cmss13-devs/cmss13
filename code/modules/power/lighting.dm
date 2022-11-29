@@ -304,7 +304,7 @@
 
 // examine verb
 /obj/structure/machinery/light/get_examine_text(mob/user)
-	..()
+	. = ..()
 	switch(status)
 		if(LIGHT_OK)
 			to_chat(user, "It is turned [on? "on" : "off"].")

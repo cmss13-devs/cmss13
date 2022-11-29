@@ -663,3 +663,30 @@
   - bugfix: Ghillie suit no longer has a direction when thrown.
   totalepicness:
   - bugfix: Fixes rejuvenate not removing jitteriness and dizziness
+2022-11-29:
+  AnCopper:
+  - spellcheck: Fixed some weird capitalisation.
+  Sleepynecrons:
+  - bugfix: fixed defender sprite not changing to steelcrest when purchased
+  ThePiachu:
+  - rscadd: Added more E-Z autoinjector sizes to medilathe. They now come with a single
+      shot each of 1, 5, 10, 15, 30, 45 and 60 units. Perfect for both large mixes
+      of healing chemicals as well as very tiny doses of low OD custom chems.
+  - rscdel: Elite Mercenary's Oxycodone Pressurized Reagent Canister Pouch now comes
+      with a 10x1 autoinjector rather than 10x3 to standardise how those E-Z autoinjectors
+      worked.
+  - code_imp: Refactored Autoinjector lathe recipe paths to be consistent with our
+      code style.
+  fira:
+  - code_imp: Refactored part of pixel placement calculations for beams.
+  - bugfix: Beams from/to xenos in particular should now properly attach to them visually.
+  kugamo:
+  - rscadd: Hosts about to chest burst wont play an ethereal sound to everyone, and
+      instead will scream uncontrollably.
+  - imageadd: Alien and Xenoid embryos now have unique sprites!
+  mullenpaul:
+  - refactor: gear vendors now use tgui
+  - refactor: complete rewrite of how vendors operate
+  theselfish:
+  - bugfix: Fixes various obj sprites (mess tech, provost, armorvest, detective, pilot
+      and some CLF armours) having directions.

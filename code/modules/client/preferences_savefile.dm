@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	18
+#define SAVEFILE_VERSION_MAX	19
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -67,6 +67,12 @@
 		S["toggle_prefs"] >> pref_toggles
 		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
 		S["toggle_prefs"] << pref_toggles
+
+	if(savefile_version < 19) // toggles vending to hand by default
+		var/pref_toggle_vend_item_tohand
+		S["toggle_prefs"] >> pref_toggle_vend_item_tohand
+		pref_toggle_vend_item_tohand |= TOGGLE_VEND_ITEM_TO_HAND
+		S["toggle_prefs"] << pref_toggle_vend_item_tohand
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 

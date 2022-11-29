@@ -1,6 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - rscadd: "Added more E-Z autoinjector sizes to medilathe. They now come with a single shot each of 1, 5, 10, 15, 30, 45 and 60 units. Perfect for both large mixes of healing chemicals as well as very tiny doses of low OD custom chems."
-  - rscdel: "Elite Mercenary's Oxycodone Pressurized Reagent Canister Pouch now comes with a 10x1 autoinjector rather than 10x3 to standardise how those E-Z autoinjectors worked."
-  - code_imp: "Refactored Autoinjector lathe recipe paths to be consistent with our code style."

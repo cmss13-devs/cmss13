@@ -169,7 +169,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/sec_record = ""
 	var/gen_record = ""
 	var/exploit_record = ""
-	var/disabilities = 0
 
 	var/nanotrasen_relation = "Neutral"
 
@@ -312,7 +311,6 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
 			dat += "<b>Ethnicity:</b> <a href='?_src_=prefs;preference=ethnicity;task=input'><b>[ethnicity]</b></a><br>"
 			dat += "<b>Body Type:</b> <a href='?_src_=prefs;preference=body_type;task=input'><b>[body_type]</b></a><br>"
-			dat += "<b>Poor Eyesight:</b> <a href='?_src_=prefs;preference=disabilities'><b>[disabilities == 0 ? "No" : "Yes"]</b></a><br>"
 			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
 			dat += "<br>"
 
@@ -1552,9 +1550,6 @@ var/const/MAX_SAVE_SLOTS = 10
 						gender = MALE
 					underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 					undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
-
-				if("disabilities")				//please note: current code only allows nearsightedness as a disability
-					disabilities = !disabilities//if you want to add actual disabilities, code that selects them should be here
 
 				if("hear_adminhelps")
 					toggles_sound ^= SOUND_ADMINHELP

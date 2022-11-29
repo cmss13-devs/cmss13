@@ -203,9 +203,6 @@
 	new_character.name = NP.real_name
 	new_character.voice = NP.real_name
 
-	if(NP.client.prefs.disabilities)
-		new_character.disabilities |= NEARSIGHTED
-
 	if(NP.mind)
 		NP.mind_initialize()
 		NP.mind.transfer_to(new_character, TRUE)

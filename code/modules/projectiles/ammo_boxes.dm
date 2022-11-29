@@ -663,7 +663,7 @@
 
 //-----------------------Nailgun Mag Box-----------------------
 
-/obj/item/ammo_box/magazine/smg/nailgun
+/obj/item/ammo_box/magazine/nailgun
 	name = "magazine box (Nailgun x 10)"
 	icon_state = "base_nailgun"			//base color of box
 	icon_state_deployed = "base_nailgun_deployed"
@@ -676,7 +676,7 @@
 	can_explode = FALSE
 	limit_per_tile = 1	//this one has unique too big sprite, so not stackable
 
-/obj/item/ammo_box/magazine/smg/nailgun/empty
+/obj/item/ammo_box/magazine/nailgun/empty
 	empty = TRUE
 
 //-----------------------MAG BOX STRUCTURE-----------------------
@@ -886,7 +886,7 @@
 	if(limit_per_tile == 4)	//misc boxes (mre, flares etc)
 		offset_x += 1
 		offset_y += -6
-	else if(istype(src, /obj/item/ammo_box/magazine/smg/nailgun))	//this snowflake again
+	else if(istype(src, /obj/item/ammo_box/magazine/nailgun))	//this snowflake again
 		offset_y += -2
 
 	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
@@ -1182,6 +1182,7 @@
 	overlay_content = ""
 	can_explode = FALSE
 	limit_per_tile = 4
+	magazine_type = null //Nulling it out so it doesn't get indexed by item_to_box_mapping
 
 //---------------------FIRE HANDLING PROCS
 

@@ -155,17 +155,17 @@
 						return W.afterattack(target,src)
 
 			var/randn = rand(1, 100)
-			var/skill_juice = M.skills.get_skill_level(SKILL_CQC)
+			var/skill_level = M.skills.get_skill_level(SKILL_CQC)
 			if(M.skills)
-				randn -= 5 * skill_juice //attacker's martial arts training
+				randn -= 5 * skill_level //attacker's martial arts training
 
 			if(skills)
-				randn += 5 * skill_juice //defender's martial arts training
+				randn += 5 * skill_level //defender's martial arts training
 
 			if (randn <= 25)
-				apply_effect(2 + skill_juice, WEAKEN)
+				apply_effect(2 + skill_level, WEAKEN)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				var/shovetext = skill_juice > 1 ? "tackled" : pick("pushed", "shoved")
+				var/shovetext = skill_level > 1 ? "tackled" : pick("pushed", "shoved")
 				visible_message(SPAN_DANGER("<B>[M] has [shovetext] [src]!</B>"), null, null, 5)
 				return
 

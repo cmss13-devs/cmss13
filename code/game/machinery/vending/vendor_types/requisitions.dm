@@ -8,7 +8,7 @@
 	icon_state = "req_guns"
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
-	load_ammo_boxes = TRUE
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/vend_fail()
 	return
@@ -206,7 +206,7 @@
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
 			R[2]++
-			if(load_ammo_boxes)
+			if(vend_flags & VEND_LOAD_AMMO_BOXES)
 				update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
@@ -227,7 +227,7 @@
 
 	vend_x_offset = 2
 	vend_y_offset = 1
-	load_ammo_boxes = FALSE
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
@@ -292,7 +292,7 @@
 	icon_state = "req_ammo"
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
-	load_ammo_boxes = TRUE
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/vend_fail()
 	return
@@ -418,7 +418,7 @@
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
 			R[2]++
-			if(load_ammo_boxes)
+			if(vend_flags & VEND_LOAD_AMMO_BOXES)
 				update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
@@ -693,7 +693,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 			user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
 			R[2]++
-			if(load_ammo_boxes)
+			if(vend_flags & VEND_LOAD_AMMO_BOXES)
 				update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.

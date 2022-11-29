@@ -6,7 +6,7 @@
 	icon_state = "guns"
 	req_access = list(ACCESS_MARINE_PILOT)
 	vendor_role = list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF)
-	load_ammo_boxes = FALSE
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),

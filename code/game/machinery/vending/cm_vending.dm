@@ -7,6 +7,9 @@
 #define VEND_INSTANCED_CATEGORY (1<<6)
 #define VEND_FACTION_THEMES (1<<7)
 #define VEND_USE_VENDOR_FLAGS (1<<8)
+//Whether or not to load ammo boxes depending on ammo loaded into the vendor
+//Only relevant in big vendors, like Requisitions or Squad Prep
+#define VEND_LOAD_AMMO_BOXES (1<<9)
 
 /obj/structure/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
@@ -692,10 +695,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 
-	//Whether or not to load ammo boxes depending on ammo loaded into the vendor
-	//Only relevant in big vendors, like Requisitions or Squad Prep
-	var/load_ammo_boxes = FALSE
-
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list
 
@@ -713,7 +712,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 //this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(var/scale)
 	populate_product_list(scale)
-	if(load_ammo_boxes)
+	if(vend_flags & VEND_LOAD_AMMO_BOXES)
 		populate_ammo_boxes()
 	return
 

@@ -247,7 +247,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc_spare, list(
 	icon_state = "guns"
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	vendor_role = list(JOB_CREWMAN)
-	load_ammo_boxes = FALSE
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),

@@ -7,6 +7,7 @@
 	// Figure out how much we can say
 	var/max_budget = CHAT_CPM_PERIOD / (60 SECONDS) * CHAT_CPM_ALLOWED
 	var/cost = max(CHAT_CPM_MINIMUM, length(text))
+	src.talked_at = world.time
 	if(src.talked_sum + cost > max_budget)
 		to_chat(src, SPAN_NOTICE("You just said something, take a breath."))
 		return FALSE

@@ -9,6 +9,9 @@
 	var/admin_controlled
 
 
+/obj/structure/machinery/computer/shuttle/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
 /obj/structure/machinery/computer/shuttle/tgui_interact(mob/user)
 	. = ..()
 	var/list/options = valid_destinations()

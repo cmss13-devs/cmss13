@@ -129,10 +129,10 @@
 	icon_state = "30mm_crate"
 	desc = "A crate full of PGU-100 30mm Multi-Purpose ammo designed to penetrate light (non reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti-Tank 30mm ammo is needed."
 	equipment_type = /obj/structure/dropship_equipment/weapon/heavygun
-	ammo_count = 400
-	max_ammo_count = 400
+	ammo_count = 1200
+	max_ammo_count = 1200
 	transferable_ammo = TRUE
-	ammo_used_per_firing = 40
+	ammo_used_per_firing = 120
 	point_cost = 275
 	fire_mission_delay = 2
 	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
@@ -168,7 +168,7 @@
 				AM.ex_act(EXPLOSION_THRESHOLD_VLOW)
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
 			playsound(U, 'sound/effects/gauimpact.ogg',40,1,20)
-			soundplaycooldown = 3
+			soundplaycooldown = 2
 		soundplaycooldown--
 		if(!debriscooldown)
 			U.ceiling_debris_check(1)
@@ -184,9 +184,9 @@
 	icon_state = "30mm_crate_hv"
 	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It's designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any ARMAT store."
 	travelling_time = 60
-	ammo_count = 400
-	max_ammo_count = 400
-	ammo_used_per_firing = 40
+	ammo_count = 1200
+	max_ammo_count = 1200
+	ammo_used_per_firing = 120
 	bullet_spread_range = 4
 	point_cost = 325
 	fire_mission_delay = 2

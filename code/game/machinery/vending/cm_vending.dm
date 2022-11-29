@@ -213,6 +213,91 @@ GLOBAL_LIST_EMPTY(vending_products)
 			update_derived_from_ammo(product)
 			return
 
+//A proc that checks all the items if they can be restocked
+//AKA if a mag is full, an ammo box is full, flamer mags having the correct fluid and so on
+/obj/structure/machinery/cm_vending/proc/check_if_item_is_good_to_restock(obj/item/item_to_stock, mob/user)
+	. = FALSE //Item is NOT good to restock
+
+	//Guns handling
+	if(isgun(item_to_stock))
+		var/obj/item/weapon/gun/G = item_to_stock
+		if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
+			to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))
+			return
+		for(var/obj/item/attachable/A in G.contents) //Search for attachments on the gun. This is the easier method
+			if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
+				to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
+				return
+	//various stacks handling
+	else if(istype(item_to_stock, /obj/item/stack/folding_barricade))
+		var/obj/item/stack/folding_barricade/B = item_to_stock
+		if(B.amount != 3)
+			to_chat(user, SPAN_WARNING("[B]s are being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [B] stack to make it a stack of 3 before restocking."))
+			return
+	//M94 flare packs handling
+	else if(istype(item_to_stock, /obj/item/storage/box/m94))
+		var/obj/item/storage/box/m94/flare_pack = item_to_stock
+		if(flare_pack.contents.len < flare_pack.max_storage_space)
+			to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
+			return
+		var/flare_type
+		if(istype(item_to_stock, /obj/item/storage/box/m94/signal))
+			flare_type = /obj/item/device/flashlight/flare/signal
+		else
+			flare_type = /obj/item/device/flashlight/flare
+		for(var/obj/item/device/flashlight/flare/F in flare_pack.contents)
+			if(F.fuel < 1)
+				to_chat(user, SPAN_WARNING("Some flares in \the [F] are used."))
+				return
+			if(F.type != flare_type)
+				to_chat(user, SPAN_WARNING("Some flares in \the [F] are not of the correct type."))
+				return
+	//Machete holsters handling
+	else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
+		var/obj/item/weapon/melee/claymore/mercsword/machete/Mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
+		if(!Mac)
+			to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
+			return
+	//magazines handling
+	else if(istype(item_to_stock, /obj/item/ammo_magazine))
+		//flamer fuel tanks handling
+		if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
+			var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
+			if(FT.flamer_chem != initial(FT.flamer_chem))
+				to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
+				return
+		var/obj/item/ammo_magazine/A = item_to_stock
+		if(A.current_rounds < A.max_rounds)
+			to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+			return
+	//magazine ammo boxes handling
+	else if(istype(item_to_stock, /obj/item/ammo_box/magazine))
+		var/obj/item/ammo_box/magazine/A = item_to_stock
+		//shotgun shells ammo boxes handling
+		if(A.handfuls)
+			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_to_stock.contents
+			if(!AM)
+				to_chat(user, SPAN_WARNING("Something is wrong with \the [A], tell a coder."))
+				return
+			if(AM.current_rounds != AM.max_rounds)
+				to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+				return
+		else if(A.contents.len < A.num_of_magazines)
+			to_chat(user, SPAN_WARNING("[A] is not full."))
+			return
+		else
+			for(var/obj/item/ammo_magazine/M in A.contents)
+				if(M.current_rounds != M.max_rounds)
+					to_chat(user, SPAN_WARNING("Not all magazines in \the [A] are full."))
+					return
+	//loose rounds ammo box handling
+	else if(istype(item_to_stock, /obj/item/ammo_box/rounds))
+		var/obj/item/ammo_box/rounds/A = item_to_stock
+		if(A.bullet_amount < A.max_bullet_amount)
+			to_chat(user, SPAN_WARNING("[A] is not full."))
+			return
+	return TRUE //Item IS good to restock!
+
 //------------MAINTENANCE PROCS---------------
 
 /obj/structure/machinery/cm_vending/proc/malfunction()	//proper malfunction, that requires MAINTenance

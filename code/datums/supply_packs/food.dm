@@ -88,7 +88,37 @@
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper soybeans crate"
 	group = "Food"
-
+	
+/datum/supply_packs/soybeans
+	name = "cocoapod,sugarcane (x10)"
+	contains = list(
+					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					/obj/item/reagent_container/food/snacks/grown/sugarcane,
+					/obj/item/reagent_container/food/snacks/grown/sugarcane,
+					/obj/item/reagent_container/food/snacks/grown/sugarcane,
+					/obj/item/reagent_container/food/snacks/grown/sugarcane,
+					/obj/item/reagent_container/food/snacks/grown/sugarcane,
+					/obj/item/reagent_container/food/snacks/grown/sugarcane,
+					/obj/item/reagent_container/food/snacks/grown/sugarcane,
+					/obj/item/reagent_container/food/snacks/grown/sugarcane,
+					/obj/item/reagent_container/food/snacks/grown/sugarcane,
+					/obj/item/reagent_container/food/snacks/grown/sugarcane,
+					)
+	cost = 7
+	containertype = /obj/structure/closet/crate/freezer
+	containername = "\improper soybeans crate"
+	group = "Food"
+	
+	
 /datum/supply_packs/vegetables
 	name = "carrot,corn,eggplant,chili,pumpkin,cabbage (x4)"
 	contains = list(

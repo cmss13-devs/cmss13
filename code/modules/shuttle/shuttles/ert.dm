@@ -15,9 +15,8 @@
 	. = ..()
 	RegisterSignal(src, COMSIG_REGISTER_DOOR_TO_SHUTTLE, .proc/register_door)
 
-/obj/docking_port/mobile/emergency_response/proc/register_door(var/obj/structure/machinery/door/airlock/airlock)
+/obj/docking_port/mobile/emergency_response/proc/register_door(var/obj/docking_port/mobile/source, var/obj/structure/machinery/door/airlock/airlock)
 	SIGNAL_HANDLER
-	world.log << "registering [airlock] on [src]"
 	doors += list(airlock)
 
 /obj/docking_port/mobile/emergency_response/on_ignition()

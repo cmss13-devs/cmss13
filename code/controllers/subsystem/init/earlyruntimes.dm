@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(earlyruntimes)
 	init_stage = INITSTAGE_EARLY
 	flags      = SS_NO_FIRE
 
-/datum/controller/subsystem/processing/stat_entry(msg)
+/datum/controller/subsystem/earlyruntimes/stat_entry(msg)
 	msg = " | Init Runtimes: [early_init_runtimes_count]"
 	return ..()
 

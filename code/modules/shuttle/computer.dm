@@ -115,6 +115,15 @@
 	switch(action)
 		if("move")
 			var/dockId = params["target"]
+			var/list/local_data = ui_data(usr)
+			var/found = FALSE
+			for(var/i in local_data["destinations"])
+				if(i["id"] == dockId)
+					found = TRUE
+					break
+			if(!found)
+				log_admin("[key_name(usr)] may be attempting a href dock exploit on [src] with target location \"[dockId]\"")
+				return
 			var/obj/docking_port/stationary/dock = SSshuttle.getDock(dockId)
 			ert.request(dock)
 		if("open")

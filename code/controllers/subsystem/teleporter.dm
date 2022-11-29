@@ -27,4 +27,4 @@ SUBSYSTEM_DEF(teleporter)
 
     teleporters_by_id[teleporter_id] = teleporter
     teleporters += teleporter
-    return ..()
+    return SS_INIT_SUCCESS

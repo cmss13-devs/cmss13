@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(mapview)
 	name          = "Mapview"
 	wait          = 1 MINUTES
-	flags         = SS_POST_FIRE_TIMING | SS_DISABLE_FOR_TESTING
+	flags         = SS_POST_FIRE_TIMING
 	runlevels     = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	priority      = SS_PRIORITY_MAPVIEW
 	init_order    = SS_INIT_MAPVIEW

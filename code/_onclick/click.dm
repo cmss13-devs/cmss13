@@ -58,7 +58,7 @@
 	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
-	if(istype(A, /obj/statclick))
+	if(istype(A, /obj/effect/statclick))
 		A.clicked(src, mods)
 		return
 

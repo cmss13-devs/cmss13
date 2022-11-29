@@ -2,6 +2,7 @@ SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 0.4 SECONDS
 	init_order = SS_INIT_STATPANELS
+	init_stage = INITSTAGE_EARLY
 	priority = SS_PRIORITY_STATPANEL
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 	var/list/currentrun = list()

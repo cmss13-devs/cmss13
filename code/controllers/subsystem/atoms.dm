@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(atoms)
 	// bugging out and not populating with the correct packet names
 	// due to this list not being instantiated.
 	populate_seed_list()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms)
 	if(initialized == INITIALIZATION_INSSATOMS)

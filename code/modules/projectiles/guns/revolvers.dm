@@ -578,17 +578,17 @@
 
 /obj/item/weapon/gun/revolver/mateba/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4
-	burst_amount = BURST_AMOUNT_TIER_2
+	fire_delay = FIRE_DELAY_TIER_2
+	burst_amount = BURST_AMOUNT_TIER_3
 	burst_delay = FIRE_DELAY_TIER_7
-	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
-	scatter = SCATTER_AMOUNT_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_7
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
-	recoil = RECOIL_AMOUNT_TIER_5
-	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10
+	recoil = RECOIL_AMOUNT_TIER_2
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
 

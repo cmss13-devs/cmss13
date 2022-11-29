@@ -97,11 +97,9 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	..(user)
 
 /obj/structure/machinery/door/airlock/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
-	if(!istype(port, /obj/docking_port/mobile/emergency_response))
-		return
+	..()
+	SEND_SIGNAL(port, COMSIG_REGISTER_DOOR_TO_SHUTTLE, src)
 
-	var/obj/docking_port/mobile/emergency_response/ert = port
-	ert.doors += list(src)
 /// DAMAGE CODE
 
 /obj/structure/machinery/door/airlock/get_examine_text(mob/user)

@@ -2,9 +2,6 @@
 	ERT Shuttles
 */
 
-#define ERT_WIDTH 7
-#define ERT_HEIGHT 13
-
 // Base ERT Shuttle
 /obj/docking_port/mobile/emergency_response
 	name = "ERT Shuttle"
@@ -13,6 +10,15 @@
 	width = 7
 	height = 13
 	var/list/doors = list()
+
+/obj/docking_port/mobile/emergency_response/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_REGISTER_DOOR_TO_SHUTTLE, .proc/register_door)
+
+/obj/docking_port/mobile/emergency_response/proc/register_door(var/obj/structure/machinery/door/airlock/airlock)
+	SIGNAL_HANDLER
+	world.log << "registering [airlock] on [src]"
+	doors += list(airlock)
 
 /obj/docking_port/mobile/emergency_response/on_ignition()
 	..()
@@ -77,14 +83,6 @@
 	name = "Almayer stern landing pad"
 	dir = NORTH
 	id = "almayer-ert3"
-
-/obj/docking_port/stationary/transit/emergency_response/ert1
-	dir = NORTH
-	id = "transit-ert-1"
-
-/obj/docking_port/stationary/transit/emergency_response/ert2
-	dir = NORTH
-	id = "transit-ert-2"
 
 // These are docking ports not on the almayer
 /obj/docking_port/stationary/emergency_response/idle_port1

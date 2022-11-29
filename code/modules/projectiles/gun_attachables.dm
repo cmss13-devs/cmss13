@@ -1165,7 +1165,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "An M4RA barrel, specially designed for the M4RA. It can withstand the higher pressure cartridge and is designed to maximize velocity coming out of the gun."
 	icon_state = "m4ra_barrel_a"
 
-/obj/item/attachable/stock/m4ra_custom/New()
+/obj/item/attachable/stock/m4ra_custom/Initialize()
 	..()
 	select_gamemode_skin(type)
 
@@ -1174,7 +1174,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A custom barrel specifically designed for the M4RA Custom, made on Chinook. These are only installed on the M4RA and are made specially to withstand the A19's velocity and PSI."
 	icon_state = "m4ra_custom_barrel_a"
 
-/obj/item/attachable/stock/m4ra_custom/New()
+/obj/item/attachable/stock/m4ra_custom/Initialize()
 	..()
 	select_gamemode_skin(type)
 

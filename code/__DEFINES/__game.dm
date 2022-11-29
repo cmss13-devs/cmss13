@@ -404,6 +404,13 @@
 #define CHAT_OOC_DELAY      5
 #define CHAT_OOC_DELAY_SPAM 10
 
+/// Max characters per minute allowed to speak
+#define CHAT_CPM_ALLOWED  1500
+/// Minimum character length counted for a single message
+#define CHAT_CPM_MINIMUM  50
+/// Buffer period over which speaking budget is considered
+#define CHAT_CPM_PERIOD   5 MINUTES
+
 // Decorator Priorities
 #define DECORATOR_USUAL 0
 #define DECORATOR_MAP_SPECIFIC 5

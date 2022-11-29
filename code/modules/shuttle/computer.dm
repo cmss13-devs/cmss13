@@ -8,10 +8,6 @@
 	var/possible_destinations = list()
 	var/admin_controlled
 
-
-/obj/structure/machinery/computer/shuttle/ui_state(mob/user)
-	return GLOB.not_incapacitated_and_adjacent_strict_state
-
 /obj/structure/machinery/computer/shuttle/tgui_interact(mob/user)
 	. = ..()
 	var/list/options = valid_destinations()
@@ -90,6 +86,9 @@
 	if (!ui)
 		ui = new(user, src, "NavigationShuttle", name)
 		ui.open()
+
+/obj/structure/machinery/computer/shuttle/ert/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/computer/shuttle/ert/ui_data(mob/user)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)

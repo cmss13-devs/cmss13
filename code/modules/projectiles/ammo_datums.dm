@@ -442,6 +442,9 @@
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
 
+/datum/ammo/bullet/pistol/heavy/super/highimpact/ap/New()
+	..()
+
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
 
@@ -706,6 +709,8 @@
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
 
+/datum/ammo/bullet/revolver/mateba/highimpact/ap/New()
+	..()
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)

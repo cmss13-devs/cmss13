@@ -1182,6 +1182,7 @@
 	overlay_content = ""
 	can_explode = FALSE
 	limit_per_tile = 4
+	magazine_type = null //Nulling it out so it doesn't get indexed by item_to_box_mapping
 
 //---------------------FIRE HANDLING PROCS
 

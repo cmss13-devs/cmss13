@@ -1023,8 +1023,8 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 				else
 					user.equip_to_appropriate_slot(new_item)
 
-		if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
-			if(vend_flags & VEND_TO_HAND)
+		if(vend_flags & VEND_TO_HAND)
+			if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
 				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
 	else
 		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))

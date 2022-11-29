@@ -451,62 +451,83 @@
 	return(squad_data)
 
 /obj/structure/machinery/computer/overwatch/proc/get_marine_data(datum/squad/squad)
-	var/list/marines_list = squad.marines_list
+	var/list/current_marines_list = squad.marines_list.Copy()
 
-	for(var/mob/living/carbon/human/current_squaddie in marines_list)
-		if(!ishuman(current_squaddie))
-			break
-		if(QDELETED(current_squaddie))
-			break
+	for(var/current_member in current_marines_list)
+		if(!current_member)
+			continue
 
-		var/manually_filtered = FALSE
-		var/marine_status = "Unknown"
-		var/filtered = FALSE
-		switch(current_squaddie.stat)
-			if(CONSCIOUS)
-				marine_status = "Conscious"
-			if(UNCONSCIOUS)
-				marine_status = "Unconscious"
-			if(DEAD)
-				marine_status = "Dead"
-				if(dead_hidden)
+		if(ishuman(current_member))
+			var/mob/living/carbon/human/current_squaddie = current_member
+
+			if(QDELETED(current_squaddie))
+				continue
+
+			if(!(current_squaddie.stat))
+				continue
+
+			var/manually_filtered = FALSE
+			var/marine_status = "Unknown"
+			var/filtered = FALSE
+			switch(current_squaddie.stat)
+				if(CONSCIOUS)
+					marine_status = "Conscious"
+				if(UNCONSCIOUS)
+					marine_status = "Unconscious"
+				if(DEAD)
+					marine_status = "Dead"
+					if(dead_hidden)
+						filtered = TRUE
+
+			var/turf/current_turf = get_turf(current_squaddie)
+			switch(z_hidden)
+				if(HIDE_ALMAYER)
+					if(is_mainship_level(current_turf?.z))
+						filtered = TRUE
+				if(HIDE_GROUND)
+					if(is_ground_level(current_turf?.z))
+						filtered = TRUE
+
+			if("\ref[current_squaddie]" in marine_filter)
+				manually_filtered = TRUE
+				if(marine_filter_enabled)
 					filtered = TRUE
 
-		var/turf/current_turf = get_turf(current_squaddie)
-		switch(z_hidden)
-			if(HIDE_ALMAYER)
-				if(is_mainship_level(current_turf?.z))
-					filtered = TRUE
-			if(HIDE_GROUND)
-				if(is_ground_level(current_turf?.z))
-					filtered = TRUE
+			var/obj/item/card/id/ID = current_squaddie.get_idcard()
 
-		if("\ref[current_squaddie]" in marine_filter)
-			manually_filtered = TRUE
-			if(marine_filter_enabled)
-				filtered = TRUE
+			var/area/current_area = get_area(current_squaddie)
+			current_marines_list[current_squaddie] = list(
+				"ref" = ref(current_squaddie),
+				"name" = current_squaddie.real_name,
+				"mob_state" = marine_status,
+				"role" = current_squaddie.job ? current_squaddie?.job : current_squaddie?.wear_id?.rank,
+				"act_sl" = current_squaddie.job != JOB_SQUAD_LEADER && squad.squad_leader == current_squaddie,
+				"fteam" = current_squaddie?.assigned_fireteam,
+				"dist" = squad.squad_leader ? current_squaddie != squad.squad_leader ? get_dist(current_squaddie, current_squad.squad_leader) : null : null,
+				"dir" = squad.squad_leader ? current_squaddie != squad.squad_leader ? dir2text_short(get_dir(current_squad.squad_leader, current_squaddie)) : null : null,
+				"area_name" = sanitize_area(current_area?.name),
+				"helmet" = istype(current_squaddie.head, /obj/item/clothing/head/helmet/marine),
+				"filtered" = filtered,
+				"manually_filtered" = manually_filtered,
+				"SSD" = !current_squaddie.key || !current_squaddie.client && current_squaddie.stat != DEAD,
+				"paygrade" = ID ? get_paygrades(ID.paygrade, 1) : ""
+				)
 
-		var/obj/item/card/id/ID = current_squaddie.get_idcard()
+		else
+			var/record_role = "Unknown"
+			for(var/datum/data/record/data_record in GLOB.data_core.general)
+				if(data_record.fields["name"] == current_member)
+					record_role = data_record.fields["real_rank"]
+					break
 
-		var/area/current_area = get_area(current_squaddie)
-		marines_list[current_squaddie] = list(
-			"ref" = ref(current_squaddie),
-			"name" = current_squaddie.real_name,
-			"mob_state" = marine_status,
-			"role" = current_squaddie.job ? current_squaddie?.job : current_squaddie?.wear_id?.rank,
-			"act_sl" = current_squaddie.job != JOB_SQUAD_LEADER && squad.squad_leader == current_squaddie,
-			"fteam" = current_squaddie?.assigned_fireteam,
-			"dist" = squad.squad_leader ? current_squaddie != squad.squad_leader ? get_dist(current_squaddie, current_squad.squad_leader) : null : null,
-			"dir" = squad.squad_leader ? current_squaddie != squad.squad_leader ? dir2text_short(get_dir(current_squad.squad_leader, current_squaddie)) : null : null,
-			"area_name" = sanitize_area(current_area?.name),
-			"helmet" = istype(current_squaddie.head, /obj/item/clothing/head/helmet/marine),
-			"filtered" = filtered,
-			"manually_filtered" = manually_filtered,
-			"SSD" = !current_squaddie.key || !current_squaddie.client && current_squaddie.stat != DEAD,
-			"paygrade" = ID ? get_paygrades(ID.paygrade, 1) : ""
+			current_marines_list[current_member] = list(
+				"name" = current_member,
+				"role" = record_role,
+				"mob_state" = "Dead",
 			)
 
-	return(marines_list)
+
+	return(current_marines_list)
 
 /obj/structure/machinery/computer/overwatch/ui_status(mob/user, datum/ui_state/state)
 	. = ..()

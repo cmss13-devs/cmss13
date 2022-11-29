@@ -1,0 +1,4 @@
+author: "Shad0vvs"
+delete-after: True
+changes:
+  - bugfix: "Consistency mapping fixes on Almayer for some floor markings and doors of bravo and charlie prep."

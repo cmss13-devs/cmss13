@@ -700,7 +700,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
-	populate_product_list(1.2)
+	populate_product_list_and_boxes(1.2)
 	cm_build_inventory(get_listed_products(), 1, 3)
 	corresponding_types_list = GLOB.cm_vending_gear_corresponding_types_list
 	GLOB.cm_vending_vendors += src

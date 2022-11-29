@@ -213,20 +213,20 @@
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
-	var/turf/T
+	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
-		T = locate(x + vend_x_offset, y + vend_y_offset, z)
+		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
-		T = get_turf(get_step(src, NORTH))
-		if(H.loc == T)
-			T = get_turf(get_step(H.loc, WEST))
+		turf_to_vent_to = get_turf(get_step(src, NORTH))
+		if(H.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 		else
-			T = get_turf(get_step(src, SOUTH))
-			if(H.loc == T)
-				T = get_turf(get_step(H.loc, WEST))
+			turf_to_vent_to = get_turf(get_step(src, SOUTH))
+			if(H.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 			else
-				T = loc
-	return T
+				turf_to_vent_to = loc
+	return turf_to_vent_to
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
 	icon_state = "req_guns_wall"
@@ -504,22 +504,22 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
 	
-
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
-	var/turf/T
+	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
-		T = locate(x + vend_x_offset, y + vend_y_offset, z)
+		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
-		T = get_turf(get_step(src, NORTHWEST))
-		if(H.loc == T)
-			T = get_turf(get_step(H.loc, WEST))
+		turf_to_vent_to = get_turf(get_step(src, NORTHWEST))
+		if(H.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 		else
-			T = get_turf(get_step(src, SOUTHWEST))
-			if(H.loc == T)
-				T = get_turf(get_step(H.loc, WEST))
+			turf_to_vent_to = get_turf(get_step(src, SOUTHWEST))
+			if(H.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 			else
-				T = loc
-	return T
+				turf_to_vent_to = loc
+	return turf_to_vent_to
+
 //------------ATTACHMENTS VENDOR---------------
 
 /obj/structure/machinery/cm_vending/sorted/attachments
@@ -581,20 +581,20 @@
 		)
 
 /obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
-	var/turf/T
+	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
-		T = locate(x + vend_x_offset, y + vend_y_offset, z)
+		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
-		T = get_turf(get_step(src, NORTHEAST))
-		if(H.loc == T)
-			T = get_turf(get_step(H.loc, WEST))
+		turf_to_vent_to = get_turf(get_step(src, NORTHEAST))
+		if(H.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 		else
-			T = get_turf(get_step(src, SOUTHEAST))
-			if(H.loc == T)
-				T = get_turf(get_step(H.loc, WEST))
+			turf_to_vent_to = get_turf(get_step(src, SOUTHEAST))
+			if(H.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 			else
-				T = loc
-	return T
+				turf_to_vent_to = loc
+	return turf_to_vent_to
 
 /obj/structure/machinery/cm_vending/sorted/attachments/blend
 	icon_state = "req_attach_wall"

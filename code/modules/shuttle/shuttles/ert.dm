@@ -36,10 +36,6 @@
 			if("unlock")
 				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/unlock)
 
-/obj/docking_port/mobile/emergency_response/initiate_docking()
-	..()
-	control_doors("unlock")
-
 // ERT Shuttle 1
 /obj/docking_port/mobile/emergency_response/ert1
 	name = "ERT Shuttle 1"

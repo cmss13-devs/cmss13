@@ -1,4 +1,0 @@
-author: "theselfish"
-delete-after: True
-changes:
-  - bugfix: "Fixes various obj sprites (mess tech, provost, armorvest, detective, pilot and some CLF armours) having directions."

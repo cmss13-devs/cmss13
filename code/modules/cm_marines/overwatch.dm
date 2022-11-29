@@ -548,8 +548,11 @@
 	data["marine_list"] = current_squad ? get_marine_data(current_squad) : FALSE
 	data["squad_data"] = current_squad ? get_squad_data(current_squad) : FALSE
 
-	var/obj/structure/closet/crate/drop_closet = locate() in current_squad?.drop_pad.loc
-	data["supply_pad_ready"] = drop_closet ? TRUE : FALSE
+	if(current_squad?.drop_pad)
+		var/obj/structure/closet/crate/drop_closet = locate() in current_squad?.drop_pad.loc
+		data["supply_pad_ready"] = drop_closet ? TRUE : FALSE
+	else
+		data["supply_pad_ready"] = FALSE
 
 	return(data)
 

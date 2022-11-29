@@ -454,11 +454,9 @@
 	var/list/marines_list = squad.marines_list
 
 	for(var/mob/living/carbon/human/current_squaddie in marines_list)
-
-		if(!current_squaddie)
-			break
-
 		if(!ishuman(current_squaddie))
+			break
+		if(QDELETED(current_squaddie))
 			break
 
 		var/manually_filtered = FALSE

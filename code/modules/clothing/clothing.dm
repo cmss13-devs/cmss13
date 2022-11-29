@@ -132,6 +132,7 @@
 	icon_state = "earmuffs"
 	item_state = "earmuffs"
 	flags_equip_slot = SLOT_EAR
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
 
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()
@@ -377,17 +378,18 @@
 				break
 
 /obj/item/clothing/equipped(mob/user, slot, silent)
-	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && slot != WEAR_L_STORE && slot != WEAR_R_STORE  && slot != WEAR_J_STORE) //is it going to an actual clothing slot rather than a pocket, hand, or backpack?
+	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?
 		if(!silent && LAZYLEN(equip_sounds))
 			playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 		if(clothing_traits_active)
 			for(var/trait in clothing_traits)
-				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
+				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
 	..()
 
 /obj/item/clothing/unequipped(mob/user, slot)
-	for(var/trait in clothing_traits)
-		REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
+	if(is_valid_slot(slot, TRUE))
+		for(var/trait in clothing_traits)
+			REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
 	. = ..()
 
 /obj/item/clothing/proc/get_pockets()

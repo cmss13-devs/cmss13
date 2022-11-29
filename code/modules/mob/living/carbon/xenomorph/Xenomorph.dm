@@ -129,6 +129,7 @@
 	var/acid_level = 0
 
 	// Mutator-related and other important vars
+	var/mutation_icon_state = null
 	var/mutation_type = null
 	var/datum/mutator_set/individual_mutators/mutators = new
 
@@ -173,8 +174,8 @@
 	/// xenomorph type is given upon spawn
 	var/base_actions
 
-	// Mark tracking --
-	var/obj/effect/alien/resin/marker/tracked_marker = null //this is the resin mark that is currently being tracked by the xeno
+	/// this is the resin mark that is currently being tracked by the xeno
+	var/obj/effect/alien/resin/marker/tracked_marker
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -237,6 +238,13 @@
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
 
 	var/pounce_distance = 0
+
+	// Life reduction variables.
+	var/life_stun_reduction = -1.5
+	var/life_knockdown_reduction = -1.5
+	var/life_knockout_reduction = -1.5
+	var/life_daze_reduction = -1.5
+	var/life_slow_reduction = -1.5
 
 
 	//////////////////////////////////////////////////////////////////
@@ -361,7 +369,7 @@
 
 	mutators.xeno = src
 
-	update_icon_source()
+	update_icon_source() //I'm not sure why this is here. recalculate_everything() calls update_icon_source() later down this proc
 
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
@@ -651,6 +659,10 @@
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
 
+	if(tracked_marker)
+		tracked_marker.xenos_tracking -= src
+		tracked_marker = null
+
 	if(mind)
 		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
 	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
@@ -728,7 +740,7 @@
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
-		puller.KnockDown(rand(caste.tacklestrength_min,caste.tacklestrength_max))
+		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
 		return FALSE
@@ -965,7 +977,7 @@
 
 /mob/living/carbon/Xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
-	KnockDown(4, TRUE)
+	apply_effect(4, WEAKEN)
 	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 

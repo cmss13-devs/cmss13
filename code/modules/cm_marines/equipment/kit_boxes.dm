@@ -27,7 +27,8 @@
 
 /obj/item/storage/box/spec/demolitionist/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3T(src)
-	new /obj/item/clothing/head/helmet/marine(src)
+	new /obj/item/clothing/head/helmet/marine/M3T(src)
+	new /obj/item/clothing/head/helmet/marine/M3T(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/weapon/gun/launcher/rocket(src)

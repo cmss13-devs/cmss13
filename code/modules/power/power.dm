@@ -78,7 +78,7 @@
 	else
 		has_power = powered(power_channel)
 
-	if(has_power)
+	if(has_power || !src.needs_power)
 		if(machine_processing)
 			if(stat & NOPOWER)
 				addToListNoDupe(processing_machines, src) // power interupted us, start processing again

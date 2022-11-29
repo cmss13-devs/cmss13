@@ -501,7 +501,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 			L.visible_message(SPAN_DANGER("The sentry's steel tusks impale [L]!"),
 			SPAN_DANGER("The sentry's steel tusks impale you!"))
 			if(L.mob_size <= MOB_SIZE_XENO_SMALL)
-				L.KnockDown(1)
+				L.apply_effect(1, WEAKEN)
 
 /obj/structure/machinery/defenses/sentry/mini
 	name = "UA 512-M mini sentry"
@@ -551,9 +551,13 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 /obj/structure/machinery/defenses/sentry/launchable/handle_empty()
 	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!</span>")
 	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
-	new /obj/item/stack/sheet/metal/medium_stack(loc)
-	new /obj/item/stack/sheet/plasteel/medium_stack(loc)
-	qdel(src)
+	deconstruct()
+
+/obj/structure/machinery/defenses/sentry/launchable/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/sheet/metal/medium_stack(loc)
+		new /obj/item/stack/sheet/plasteel/medium_stack(loc)
+	return ..()
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

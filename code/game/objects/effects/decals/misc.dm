@@ -76,7 +76,7 @@
 
 /obj/effect/decal/mecha_wreckage/ex_act(severity)
 	if(severity > EXPLOSION_THRESHOLD_MEDIUM)
-		qdel(src)
+		deconstruct(FALSE)
 	return
 
 /obj/effect/decal/mecha_wreckage/bullet_act(var/obj/item/projectile/Proj)
@@ -86,9 +86,13 @@
 	playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"))
-	robogibs(src)
-	qdel(src)
+	deconstruct(TRUE)
 	return XENO_ATTACK_ACTION
+
+/obj/effect/decal/mecha_wreckage/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		robogibs(src)
+	return ..()
 
 /obj/effect/decal/mecha_wreckage/gygax
 	name = "Gygax wreckage"

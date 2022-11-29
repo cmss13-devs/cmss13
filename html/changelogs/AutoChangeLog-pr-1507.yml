@@ -1,0 +1,8 @@
+author: "ThePiachu, Triiodine"
+delete-after: True
+changes:
+  - imageadd: "Made the various Research-related papers a bit more visually distinct from one another."
+  - qol: "Research grants now delete themselves after they are cashed in."
+  - qol: "Hydro trays now display their basic information when examined."
+  - qol: "You can now rename mutated seeds by right-clicking on their packets. Should come in very handy in Research!"
+  - balance: "Plant genes now tell you what they relate to for easier gene splicing (CM isn't a botany-focused game, so we cut our Researchers some slack there!)."

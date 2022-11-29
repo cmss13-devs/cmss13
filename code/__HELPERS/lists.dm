@@ -311,6 +311,14 @@ proc/listclearnulls(list/list)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
 
+/// Sums values in two associative lists, from mergee into result, in place
+/proc/mergeListsSum(list/result, list/mergee)
+	for(var/key as anything in mergee)
+		if(result[key] == null)
+			result[key] = 0
+		result[key] += mergee[key]
+	return result
+
 
 // List of lists, sorts by element[key] - for things like crew monitoring computer sorting records by name.
 /proc/sortByKey(var/list/L, var/key)

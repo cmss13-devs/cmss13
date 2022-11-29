@@ -94,8 +94,6 @@
 
 	. = ..()
 
-
-
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
 	if(isXeno(M))
 		return
@@ -239,6 +237,7 @@
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
+	icon = 'icons/lobby/title.dmi'
 	icon_state = ""
 //	icon_state = "title_holiday"
 	layer = FLY_LAYER
@@ -246,7 +245,6 @@
 
 /turf/closed/wall/indestructible/splashscreen/Initialize()
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/lobby_art))
 	tag = "LOBBYART"
 
 /proc/force_lobby_art(art_id)
@@ -563,6 +561,9 @@
 /turf/closed/wall/solaris/reinforced/hull
 	hull = 1
 
+/turf/closed/wall/solaris/reinforced/hull/lv522
+	name = "Colony Windbreaker"
+
 /turf/closed/wall/solaris/rock
 	name = "solaris ridge rock wall"
 	icon_state = "solaris_rock"
@@ -689,7 +690,7 @@
 /turf/closed/wall/resin
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
-	icon = 'icons/mob/hostiles/structures.dmi'
+	icon = 'icons/mob/xenos/structures.dmi'
 	icon_state = "resin"
 	walltype = WALL_RESIN
 	damage_cap = HEALTH_WALL_XENO
@@ -943,7 +944,7 @@
 /obj/structure/alien/movable_wall/proc/take_damage(var/damage)
 	health -= damage
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 	else
 		update_icon()
 
@@ -1239,3 +1240,9 @@
 	icon_state = "metal"//DMI specific name
 	walltype = WALL_HUNTERSHIP
 	hull = 1
+
+/turf/closed/wall/huntership/destructible
+	name = "degraded hunter wall"
+	color = "#c5beb4"
+	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
+	hull = 0

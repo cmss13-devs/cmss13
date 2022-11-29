@@ -245,7 +245,7 @@ var/waiting_for_drop_votes = 0
 
 	H.skills = null //no restriction on what the contestants can do
 
-	H.KnockDown(15)
+	H.apply_effect(15, WEAKEN)
 	H.nutrition = NUTRITION_NORMAL
 
 	var/randjob = rand(0,10)

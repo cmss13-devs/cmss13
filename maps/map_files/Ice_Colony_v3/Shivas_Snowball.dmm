@@ -765,7 +765,7 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/queen.dmi';
+	icon = 'icons/mob/xenos/queen.dmi';
 	icon_state = "Normal Queen Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -8121,7 +8121,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "bUX" = (
-/obj/item/storage/belt/gun/m44/custom,
+/obj/item/storage/belt/gun/m44,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "green"

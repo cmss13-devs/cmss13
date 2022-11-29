@@ -90,7 +90,7 @@
 		H.vomit()
 
 /datum/chem_property/neutral/ketogenic/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/neuroinhibiting
 	name = PROPERTY_NEUROINHIBITING
@@ -173,7 +173,7 @@
 
 /datum/chem_property/neutral/hallucinogenic/process_critical(mob/living/M, var/potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, BRAIN)
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/relaxing
 	name = PROPERTY_RELAXING
@@ -197,7 +197,7 @@
 /datum/chem_property/neutral/relaxing/process_critical(mob/living/M, var/potency = 1, delta_time)
 	//heart stops beating, lungs stop working
 	if(prob(7.5 * potency * delta_time))
-		M.KnockOut(potency)
+		M.apply_effect(potency, PARALYZE)
 	M.apply_damage(0.5 * potency * delta_time, OXY)
 	if(prob(2.5 * delta_time))
 		to_chat(M, SPAN_WARNING("You can hardly breathe!"))
@@ -226,7 +226,7 @@
 	M.apply_effect(POTENCY_MULTIPLIER_MEDIUM * potency,AGONY,0)
 
 /datum/chem_property/neutral/hyperthermic/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/hypothermic
 	name = PROPERTY_HYPOTHERMIC
@@ -246,7 +246,7 @@
 	M.drowsyness  = max(M.drowsyness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/balding
 	name = PROPERTY_BALDING
@@ -454,7 +454,7 @@
 		M.emote("yawn")
 
 /datum/chem_property/neutral/sedative/process_overdose(mob/living/M, var/potency = 1, delta_time)
-	M.AdjustKnockedout(0.5 * potency * delta_time)
+	M.adjust_effect(0.5 * potency * delta_time, PARALYZE)
 
 /datum/chem_property/neutral/sedative/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
@@ -484,7 +484,7 @@
 	M.apply_damage(1.5 * potency * delta_time, BRAIN)
 
 /datum/chem_property/neutral/hyperthrottling/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(potency * delta_time)
+	M.apply_effect(potency * delta_time, PARALYZE)
 
 /datum/chem_property/neutral/viscous
 	name = PROPERTY_VISCOUS
@@ -521,7 +521,7 @@
 		M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/thermostabilizing/process_overdose(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/thermostabilizing/process_critical(mob/living/M, var/potency = 1, delta_time)
 	M.drowsyness  = max(M.drowsyness, 30)

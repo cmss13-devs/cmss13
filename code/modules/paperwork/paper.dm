@@ -642,6 +642,7 @@
 		if("synthesis")
 			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]
 			name = "Synthesis of [C.name]"
+			icon_state = "paper_wy_partial_report"
 			txt += "[name] </H2></center>"
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in G.required_reagents)
@@ -657,6 +658,7 @@
 			if(full_report)
 				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[C.description]\n"
 				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
+				icon_state = "paper_wy_full_report"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			var/is_volatile = FALSE
@@ -672,12 +674,14 @@
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("test")
 			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
+			icon_state = "paper_wy_synthesis"
 			txt += "Note for [name]</H2></center>"
 			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("grant")
 			if(!grant)
 				grant = rand(2,4)
+			icon_state = "paper_wy_grant"
 			name = "Research Grant"
 			txt += "Weyland-Yutani Research Grant</H2></center>"
 			txt += "Dear valued researcher. Weyland-Yutani has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weyland-Yutani research data terminal to receive the benefits.<BR>\n"
@@ -764,25 +768,30 @@
 			info += "<BR>Overdoses at: [S.overdose] units\n"
 			info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 			completed = TRUE
+			icon_state = "paper_wy_full_report"
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
+			icon_state = "paper_wy_partial_report"
 	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
+		icon_state = "paper_wy_partial_report"
 	else if(S.description)
 		info += "<font size = \"2.5\">[S.description]\n"
 		info += "<BR>Overdoses at: [S.overdose] units\n"
 		info += "<BR>Standard duration multiplier: [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 		completed = TRUE
+		icon_state = "paper_wy_full_report"
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
-	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id] && !info_only)
+		icon_state = "paper_wy_synthesis"
+	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
 	if(chemical_reactions_list[S.id])
 		var/datum/chemical_reaction/C = chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
 			var/datum/reagent/R = chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id] && !info_only)
+			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id] && !info_only)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
 			else
@@ -793,7 +802,7 @@
 				info += "<BR>Reaction would require the following catalysts:<BR>\n"
 				for(var/I in C.required_catalysts)
 					var/datum/reagent/R = chemical_reagents_list["[I]"]
-					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id] && !info_only)
+					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id] && !info_only)
 						info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 						completed = FALSE
 					else

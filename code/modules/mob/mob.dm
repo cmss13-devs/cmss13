@@ -219,10 +219,16 @@
 		equip_to_slot_if_possible(W, slot, 0) // equiphere
 
 /mob/proc/put_in_any_hand_if_possible(obj/item/W as obj, del_on_fail = 0, disable_warning = 1, redraw_mob = 1)
-	if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
-		return 1
-	else if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
-		return 1
+	if(hand)
+		if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+		else if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+	else
+		if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+		else if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
 	return 0
 
 //This is a SAFE proc. Use this instead of equip_to_slot()!
@@ -355,10 +361,10 @@
 	//Squad Leaders and above have reduced cooldown and get a bigger arrow
 	if(check_improved_pointing())
 		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src)
+		new /obj/effect/overlay/temp/point/big(T, src, A)
 	else
 		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T, src)
+		new /obj/effect/overlay/temp/point(T, src, A)
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
 	return TRUE
 
@@ -863,22 +869,22 @@ mob/proc/yank_out_object()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
-		AdjustStunned(-1)
+		adjust_effect(-1, STUN)
 	return stunned
 
 /mob/living/proc/handle_dazed()
 	if(dazed)
-		AdjustDazed(-1)
+		adjust_effect(-1, DAZE)
 	return dazed
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
-		AdjustSlowed(-1)
+		adjust_effect(-1, SLOW)
 	return slowed
 
 /mob/living/proc/handle_superslowed()
 	if(superslowed)
-		AdjustSuperslowed(-1)
+		adjust_effect(-1, SUPERSLOW)
 	return superslowed
 
 
@@ -927,6 +933,7 @@ mob/proc/yank_out_object()
 /mob/proc/set_skills(skills_path)
 	if(skills)
 		qdel(skills)
+		skills = null
 	if(!skills_path)
 		skills = null
 	else

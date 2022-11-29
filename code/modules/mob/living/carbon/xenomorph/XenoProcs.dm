@@ -278,7 +278,7 @@
 			if(H.check_shields(15, "the pounce")) //Human shield block.
 				visible_message(SPAN_DANGER("[src] slams into [H]!"),
 					SPAN_XENODANGER("You slam into [H]!"), null, 5)
-				KnockDown(1)
+				apply_effect(1, WEAKEN)
 				throwing = FALSE //Reset throwing manually.
 				playsound(H, "bonk", 75, FALSE) //bonk
 				return
@@ -286,20 +286,20 @@
 			if(isYautja(H))
 				if(H.check_shields(0, "the pounce", 1))
 					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
-					KnockDown(3)
+					apply_effect(3, WEAKEN)
 					throwing = FALSE
 					playsound(H, "bonk", 75, FALSE)
 					return
 				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
 					visible_message(SPAN_DANGER("[H] body slams [src]!"),
 						SPAN_XENODANGER("[H] body slams you!"), null, 5)
-					KnockDown(3)
+					apply_effect(3, WEAKEN)
 					throwing = FALSE
 					return
 			if(isColonySynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws you down after withstanding the pounce!"), null, 5)
-				KnockDown(1.5)
+				apply_effect(1.5, WEAKEN)
 				throwing = FALSE
 				return
 
@@ -307,7 +307,7 @@
 	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("You [pounceAction.ability_name] onto [M]!"), null, 5)
 
 	if (pounceAction.knockdown)
-		M.KnockDown(pounceAction.knockdown_duration)
+		M.apply_effect(pounceAction.knockdown_duration, WEAKEN)
 		step_to(src, M)
 
 	if (pounceAction.freeze_self)
@@ -339,7 +339,7 @@
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
 			var/obj/structure/S = O
 			visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
-			S.destroy() //We want to continue moving, so we do not reset throwing.
+			S.deconstruct() //We want to continue moving, so we do not reset throwing.
 		else
 			O.hitby(src) //This resets throwing.
 	else
@@ -395,7 +395,7 @@
 			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
 
 			if (stuns)
-				victim.AdjustStunned(2)
+				victim.adjust_effect(2, STUN)
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
 
@@ -683,12 +683,14 @@
 	to_chat(src, SPAN_XENONOTICE("You start tracking the [target.mark_meaning.name] resin mark."))
 	to_chat(src, SPAN_INFO("shift click the compass to watch the mark, alt click to stop tracking"))
 
-/mob/living/carbon/Xenomorph/proc/stop_tracking_resin_mark(destroyed) //tracked_marker shouldnt be nulled outside this PROC!! >:C
+/mob/living/carbon/Xenomorph/proc/stop_tracking_resin_mark(destroyed, var/silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.overlays.Cut()
-	if(destroyed)
-		to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
-	else
-		to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
-	tracked_marker.xenos_tracking -= src
+	if(!silent)
+		if(destroyed)
+			to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
+		else
+			to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+	if(tracked_marker)
+		tracked_marker.xenos_tracking -= src
 	tracked_marker = null

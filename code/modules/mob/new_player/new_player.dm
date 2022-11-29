@@ -20,6 +20,7 @@
 	if(ready)
 		readied_players--
 	GLOB.new_player_list -= src
+	GLOB.dead_mob_list -= src
 	return ..()
 
 /mob/new_player/verb/new_player_panel()
@@ -118,7 +119,9 @@
 			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
 				if(!client)
 					return TRUE
-				var/mob/dead/observer/observer = new()
+				if(!client.prefs?.preview_dummy)
+					client.prefs.update_preview_icon()
+				var/mob/dead/observer/observer = new /mob/dead/observer(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
 				observer.set_lighting_alpha_from_pref(client)
 				spawning = TRUE
 				observer.started_as_observer = TRUE
@@ -381,9 +384,6 @@
 	new_character.job = job
 	new_character.name = real_name
 	new_character.voice = real_name
-
-	if(client.prefs.disabilities)
-		new_character.disabilities |= NEARSIGHTED
 
 	// Update the character icons
 	// This is done in set_species when the mob is created as well, but

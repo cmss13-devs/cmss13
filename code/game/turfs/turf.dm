@@ -52,6 +52,9 @@
 	/// Whether we've broken through the ceiling yet
 	var/ceiling_debrised = FALSE
 
+	// Fishing
+	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
+
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
 	if(flags_atom & INITIALIZED)
@@ -550,6 +553,12 @@
 
 /turf/open/jungle/is_weedable()
 	return NOT_WEEDABLE
+
+/turf/open/auto_turf/shale/layer1/is_weedable()
+	return FALSE 
+
+/turf/open/auto_turf/shale/layer2/is_weedable()
+	return FALSE 
 
 /turf/closed/wall/is_weedable()
 	return FULLY_WEEDABLE //so we can spawn weeds on the walls

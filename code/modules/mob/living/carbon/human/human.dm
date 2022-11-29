@@ -51,28 +51,38 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-	if(internal_organs_by_name)
-		for(var/name in internal_organs_by_name)
-			var/datum/internal_organ/I = internal_organs_by_name[name]
-			if(I)
-				I.owner = null
-			internal_organs_by_name[name] = null
-		internal_organs_by_name = null
-
-	if(limbs)
-		for(var/obj/limb/L in limbs)
-			L.owner = null
-			qdel(L)
-		limbs = null
-
-	assigned_equipment_preset = null
 
 	remove_from_all_mob_huds()
+	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src
 	SShuman.processable_human_list -= src
 
+	QDEL_NULL_LIST(embedded_items)
+	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
+	QDEL_NULL_LIST(limbs)
+	remove_from_all_mob_huds()
+
 	. = ..()
+
+	overlays_standing = null
+	selected_ability = null
+	assigned_squad = null
+
+	//Equipment slots
+	wear_suit = null
+	w_uniform = null
+	shoes = null
+	belt = null
+	gloves = null
+	glasses = null
+	head = null
+	wear_l_ear = null
+	wear_r_ear = null
+	wear_id = null
+	r_store = null
+	l_store = null
+	s_store = null
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
@@ -133,7 +143,7 @@
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
 
-	if(!get_type_in_ears(/obj/item/clothing/ears/earmuffs))
+	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
@@ -141,10 +151,10 @@
 	if(knockdown_value > 0)
 		var/obj/item/Item1 = get_active_hand()
 		var/obj/item/Item2 = get_inactive_hand()
-		KnockDown(knockdown_value)
+		apply_effect(knockdown_value, WEAKEN)
 		var/knockout_value = min( round( damage*0.1  ,1) ,10)
-		KnockOut( knockout_value )
-		Daze( knockout_value*2 )
+		apply_effect( knockout_value , PARALYZE)
+		apply_effect( knockout_value*2 , DAZE)
 		explosion_throw(severity, direction)
 
 		if(Item1 && isturf(Item1.loc))
@@ -318,16 +328,10 @@
 //gets paygrade from ID
 //paygrade is a user's actual rank, as defined on their ID.  size 1 returns an abbreviation, size 0 returns the full rank name, the third input is used to override what is returned if no paygrade is assigned.
 /mob/living/carbon/human/proc/get_paygrade(size = 1)
-	if(!species)
+	var/obj/item/card/id/id = wear_id
+	if(!species || !istype(id))
 		return ""
-
-	switch(species.name)
-		if("Human","Human Hero")
-			var/obj/item/card/id/id = wear_id
-			if(istype(id))
-				. = get_paygrades(id.paygrade, size, gender)
-		else
-			return ""
+	return species.handle_paygrades(id.paygrade, size, gender)
 
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
@@ -939,7 +943,7 @@
 		addtimer(CALLBACK(src, .proc/do_vomit), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
-	Stun(5)
+	apply_effect(5, STUN)
 	if(stat == 2) //One last corpse check
 		return
 	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
@@ -1103,6 +1107,20 @@
         return
 
     mind.view_objective_memories(src)
+
+/mob/living/carbon/human/verb/view_research_objective_memory()
+    set name = "View research objectives"
+    set category = "IC"
+
+    if(!mind)
+        to_chat(src, "The game appears to have misplaced your mind datum.")
+        return
+
+    if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
+        return
+
+    mind.view_research_objective_memories(src)
 
 /mob/living/carbon/human/verb/purge_objective_memory()
 	set name = "Reset view objectives"
@@ -1530,13 +1548,13 @@
 /mob/living/carbon/human/resist_fire()
 	if(isYautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		KnockDown(1, TRUE) // actually 0.5
+		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		KnockDown(4, TRUE)
+		apply_effect(4, WEAKEN)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
@@ -1553,12 +1571,12 @@
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
 	if(isYautja(src))
-		KnockDown(1, TRUE)
+		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
 	else
-		KnockDown(1.5, TRUE)
+		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)

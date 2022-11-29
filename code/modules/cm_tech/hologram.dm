@@ -102,14 +102,11 @@ GLOBAL_LIST_EMPTY(hologram_list)
 	qdel(src)
 
 /datum/action/leave_hologram/Destroy()
-	if(!QDESTROYING(linked_hologram))
-		QDEL_NULL(linked_hologram)
-	else
-		linked_hologram = null
+	QDEL_NULL(linked_hologram)
 	return ..()
 
 /mob/hologram/techtree/Initialize(mapload, mob/M)
-	. = ..(mapload, M)
+	. = ..()
 	RegisterSignal(M, COMSIG_MOB_ENTER_TREE, .proc/disallow_tree_entering)
 
 

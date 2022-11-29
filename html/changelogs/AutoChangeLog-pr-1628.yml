@@ -1,0 +1,5 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscadd: "Altered disarm flavor text depending on CQC skill."
+  - rscadd: "Slightly increased disarm stun depending on CQC skill."

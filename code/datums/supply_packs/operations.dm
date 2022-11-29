@@ -1,16 +1,10 @@
-//*******************************************************************************
-//OPERATIONS
-//*******************************************************************************/
-
-
-
 /datum/supply_packs/flares
 	name = "flare packs crate (x20)"
 	contains = list(
 					/obj/item/ammo_box/magazine/misc/flares,
 					/obj/item/ammo_box/magazine/misc/flares,
 					)
-	cost = RO_PRICE_NORMAL
+	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "flare pack crate"
 	group = "Operations"
@@ -22,7 +16,7 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/motiondetector
 					)
-	cost = RO_PRICE_NORMAL
+	cost = 40
 	containertype = /obj/structure/closet/crate/supply
 	containername = "Motion Detector crate"
 	group = "Operations"
@@ -35,7 +29,7 @@
 					/obj/item/storage/box/m94/signal,
 					/obj/item/storage/box/m94/signal
 					)
-	cost = RO_PRICE_PRICY
+	cost = 60
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "signal flare pack crate"
 	group = "Operations"
@@ -48,7 +42,7 @@
 					/obj/item/stack/fulton,
 					/obj/item/stack/fulton
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "fulton recovery device crate"
 	group = "Operations"
@@ -60,24 +54,9 @@
 					/obj/item/prop/helmetgarb/helmet_nvg,
 					/obj/item/prop/helmetgarb/helmet_nvg
 					)
-	cost = RO_PRICE_PRICY
+	cost = 60
 	containertype = /obj/structure/closet/crate/supply
 	containername = "M2 Night Vission Goggles Crate"
-	group = "Operations"
-
-/datum/supply_packs/contraband
-	randomised_num_contained = 5
-	contains = list(
-					/obj/item/seeds/bloodtomatoseed,
-					/obj/item/storage/pill_bottle/happy,
-					/obj/item/reagent_container/food/drinks/bottle/pwine
-					)
-
-	name = "contraband crate"
-	cost = RO_PRICE_NORMAL
-	containertype = /obj/structure/closet/crate/supply
-	containername = "unlabeled crate"
-	contraband = 1
 	group = "Operations"
 
 /datum/supply_packs/ob_incendiary
@@ -165,7 +144,7 @@
 		/obj/item/stack/cable_coil,
 		/obj/item/stack/cable_coil
 					)
-	cost = RO_PRICE_NORMAL
+	cost = 40
 	containertype = /obj/structure/closet/crate/supply
 	buyable = 0
 	containername = "replacement telecommunications crate"
@@ -199,7 +178,7 @@
 	contains = list(
 		/obj/item/storage/xeno_tag_case/full
 	)
-	cost = RO_PRICE_PRICY
+	cost = 60
 	containertype = /obj/structure/closet/crate/secure/weyland
 	containername = "IFF tag crate"
 	group = "Operations"

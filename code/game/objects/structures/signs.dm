@@ -6,7 +6,7 @@
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/sign/ex_act(severity)
-	qdel(src)
+	deconstruct(FALSE)
 	return
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
@@ -16,10 +16,8 @@
 		S.name = name
 		S.desc = desc
 		S.icon_state = icon_state
-		//var/icon/I = icon('icons/obj/structures/props/decals.dmi', icon_state)
-		//S.icon = I.Scale(24, 24)
 		S.sign_state = icon_state
-		qdel(src)
+		deconstruct(FALSE)
 	else ..()
 
 /obj/item/sign
@@ -493,6 +491,26 @@
 	name = "artificial gravity absent semiotic"
 	desc = "Semiotic Standard denoting the nearby lack of artificial gravity."
 	icon_state = "zerog"
+
+/obj/structure/sign/safety/flightcontrol
+	name = "\improper flight control semiotic"
+	desc = "Semiotic Standard denoting an area used by or for flight control systems."
+	icon_state = "flightcontrol"
+
+/obj/structure/sign/safety/airtraffictower
+	name = "\improper air traffic tower semiotic"
+	desc = "Semiotic Standard denoting an air traffic tower nearby."
+	icon_state = "airtraffictower"
+
+/obj/structure/sign/safety/luggageclaim
+	name = "\improper luggage claim semiotic"
+	desc = "Semiotic Standard denoting the presecense of a luggage claim area nearby."
+	icon_state = "luggageclaim"
+
+/obj/structure/sign/safety/landingzone
+	name = "\improper landing zone semiotic"
+	desc = "Semiotic Standard denoting the presecense of a landing zone nearby."
+	icon_state = "landingzone"
 
 /obj/structure/sign/safety/zero
 	name = "zero semiotic"

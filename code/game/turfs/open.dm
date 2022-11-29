@@ -314,7 +314,9 @@
 					if(AM == AM1)
 						continue
 					AM1.Crossed(AM)
-
+	if(!covered && supports_fishing && prob(5))
+		var/obj/item/caught_item = get_fishing_loot(src, get_area(src), 15, 35, 10, 2)
+		caught_item.sway_jitter(3, 6)
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()
@@ -386,6 +388,8 @@
 	if(istype(M)) M.apply_damage(55,TOX)
 
 
+/turf/open/gm/river/ocean
+	color = "#dae3e2"
 
 /turf/open/gm/coast
 	name = "coastline"
@@ -608,8 +612,8 @@
 		//slip in the murky water if we try to run through it
 		if(prob(50))
 			to_chat(M, pick(SPAN_NOTICE("You slip on something slimy."),SPAN_NOTICE("You fall over into the murk.")))
-			M.Stun(2)
-			M.KnockDown(1)
+			M.apply_effect(2, STUN)
+			M.apply_effect(1, WEAKEN)
 
 		//piranhas - 25% chance to be an omnipresent risk, although they do practically no damage
 		if(prob(25))

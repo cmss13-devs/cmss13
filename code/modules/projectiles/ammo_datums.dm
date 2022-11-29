@@ -2782,7 +2782,7 @@
 	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
 	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = BELOW_MOB_LAYER)
 	generated_projectile.overlays += hook_overlay
-	hook_overlay.pixel_y = 16
+	hook_overlay.pixel_y = 32
 
 /datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/item/projectile/fired_proj)
 	if(iscarbon(target))
@@ -2790,9 +2790,7 @@
 		if((HAS_FLAG(carbone.status_flags, XENO_HOST) && HAS_TRAIT(carbone, TRAIT_NESTED)) || carbone.stat == DEAD)
 			return
 
-	playsound(fired_proj.firer, 'sound/weapons/thudswoosh.ogg', 25, TRUE)
-	playsound(fired_proj, 'sound/weapons/thudswoosh.ogg', 25, TRUE) // why none of these work!!
-	playsound(target, 'sound/weapons/thudswoosh.ogg', 25, TRUE)
+	playsound(fired_proj, 'sound/weapons/thudswoosh.ogg', 75, TRUE) // loud cuz tail sound overrides it otherwise
 
 	shake_camera(target, 5, 0.1 SECONDS)
 	var/obj/effect/beam/tail_beam = fired_proj.firer.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 5)

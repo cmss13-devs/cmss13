@@ -210,7 +210,7 @@
 
 //Special cargo-specific vendor with vending offsets
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo
-	
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/T
@@ -234,7 +234,7 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall/almayer)
-
+ 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
 	desc = "An automated supply rack hooked up to a small storage of various firearms and explosives. Can be accessed by any Marine Rifleman."
@@ -502,6 +502,7 @@
 
 //Special cargo-specific vendor with vending offsets
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 	
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
@@ -601,6 +602,7 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall/almayer)
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
 	name = "\improper Armat Systems Squad Attachments Vendor"

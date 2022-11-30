@@ -503,3 +503,7 @@
 // Checks whether the xeno can build a thick structure regardless of hive weeds
 #define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
 	#define COMPONENT_THICK_BYPASS (1<<0)
+
+/// Called when a radio is getting mobs in range to hear a radio message
+#define COMSIG_RADIO_GET_MOB_IN_RANGE "radio_get_mob_in_range"
+	#define COMPONENT_SKIP_RADIO_CHECK (1<<0)

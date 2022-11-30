@@ -5,30 +5,6 @@
 		.["modes"] += "headset"
 		return
 
-	if(length(message) >= 2 && message[1] == ",")
-		// Radio multibroadcast functionality.
-		// If a message starts with , we assume that up to MULTIBROADCAST_MAX_CHANNELS
-		// next symbols are channel names. If we run into a space we stop looking for more channels.
-		var/i
-		for(i in 2 to 1 + MULTIBROADCAST_MAX_CHANNELS)
-			var/current_channel = message[i]
-			if(current_channel == " " || current_channel == ":" || current_channel == ".")
-				i--
-				break
-			.["modes"] += department_radio_keys[":[current_channel]"]
-		.["message_and_language"] = copytext(message, i+1)
-		var/multibroadcast_cooldown = 0
-		for(var/obj/item/device/radio/headset/headset in list(wear_l_ear, wear_r_ear))
-			if(world.time - headset.last_multi_broadcast < headset.multibroadcast_cooldown)
-				var/cooldown_remaining = (headset.last_multi_broadcast + headset.multibroadcast_cooldown) - world.time
-				if(cooldown_remaining > multibroadcast_cooldown)
-					multibroadcast_cooldown = cooldown_remaining
-			else
-				headset.last_multi_broadcast = world.time
-		if(multibroadcast_cooldown)
-			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [round(multibroadcast_cooldown / 10)] more seconds."
-		return
-
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":"))
 		var/channel_prefix = copytext(message, 1, 3)
 		if(channel_prefix in department_radio_keys)

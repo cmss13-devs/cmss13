@@ -423,6 +423,20 @@
 /obj/item/ammo_box/magazine/mortar/empty
 	empty = TRUE
 
+/obj/item/mortar_shell/frag
+
+/obj/item/ammo_box/magazine/mortar/frag
+	name = "M402 mortar fragmentation shells box (F x6)"
+	//icon_state = ""
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = ""
+	num_of_magazines = 6
+	magazine_type = /obj/item/mortar_shell/frag
+
+/obj/item/ammo_box/magazine/mortar/frag/empty
+	empty = TRUE
+
 /obj/item/ammo_box/magazine/mortar/incend
 	name = "M402 mortar incendiary shells box (I x6)"
 	//icon_state = ""

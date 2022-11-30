@@ -138,3 +138,27 @@
 
 /obj/item/ammo_box/magazine/misc/flares/empty
 	empty = TRUE
+
+//------------------------Flashlight Box--------------------------
+
+/obj/item/ammo_box/magazine/misc/flashlight
+	name = "box of flashlights"
+	desc = "A box of flashlights to brighten your day!"
+	magazine_type = /obj/item/device/flashlight
+	num_of_magazines = 8
+	overlay_content = ""
+
+/obj/item/ammo_box/magazine/misc/flashlight/empty
+	empty = TRUE
+
+//------------------------Radio Box--------------------------
+
+/obj/item/ammo_box/magazine/misc/radio
+	name = "box of handheld radios"
+	desc = "A box of handheld radios, for staying in touch."
+	magazine_type = /obj/item/device/radio/off
+	num_of_magazines = 8
+	overlay_content = ""
+
+/obj/item/ammo_box/magazine/misc/radio/empty
+	empty = TRUE

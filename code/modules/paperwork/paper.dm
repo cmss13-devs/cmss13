@@ -265,7 +265,9 @@
 		if(i==0)
 			break
 		laststart = i+1
-		fields = min(fields+1, 48)
+		for(var/i=1,  i<=min(fields, 15), i++)
+		fields = min(fields+1, 50)
+		//NOTE: The max fields line above yields 2 lower than the number you input.  So 50 here means 48 in game, plus one.  Why? I don't fucking know. Probably the same reason why whoever coded this in the first place decided that single letter VARs was a good fucking idea.
 	return t
 
 

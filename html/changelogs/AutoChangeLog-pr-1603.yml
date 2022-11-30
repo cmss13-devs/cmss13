@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Survivor CLs now use the same rank they'd have on the ship."

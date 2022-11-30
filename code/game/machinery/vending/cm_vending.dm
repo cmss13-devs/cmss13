@@ -808,7 +808,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/sorted/proc/populate_ammo_boxes()
 	var/list/tmp_list = list()
 	for(var/list/L as anything in listed_products)
-		tmp_list += list(L)
 		if(!L[3])
 			continue
 		var/datum/item_to_multiple_box_pairing/IMBP = GLOB.item_to_box_mapping.get_item_to_box_mapping(L[3])
@@ -816,7 +815,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 			continue
 		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
 			tmp_list += list(list(initial(IBP.box.name), round(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
-	listed_products = tmp_list
+
+	//Putting Ammo and other boxes on the bottom of the list as per player preferences
+	if(tmp_list.len > 0)
+		listed_products += list(list("BOXES", -1, null, null))
+		for(var/list/L as anything in tmp_list)
+			listed_products += list(L)
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	. = ..(user)

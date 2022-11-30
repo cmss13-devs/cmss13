@@ -206,6 +206,28 @@
 
 /obj/item/weapon/gun/pistol/heavy/set_gun_config_values()
 	..()
+	fire_delay = FIRE_DELAY_TIER_4
+	burst_amount = BURST_AMOUNT_TIER_2
+	burst_delay = FIRE_DELAY_TIER_7
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	recoil = RECOIL_AMOUNT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+
+/obj/item/weapon/gun/pistol/heavy/co
+	name = "polished vintage Desert Eagle"
+	desc = "The Desert Eagle. Expensive, heavy, and unwieldy, yet immensely powerful. Sporting rosewood grips and a monstrous amount of kick, it's a symbol of power more than anything. But it can kill a bear in its tracks, and you look like a badass in doing so."
+	icon_state = "c_deagle"
+	item_state = "c_deagle"
+	base_gun_icon = "c_deagle"
+	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
+
+/obj/item/weapon/gun/pistol/heavy/co/set_gun_config_values()
+	..()
 	fire_delay = FIRE_DELAY_TIER_5
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
@@ -215,14 +237,6 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-
-/obj/item/weapon/gun/pistol/heavy/co
-	name = "polished vintage Desert Eagle"
-	desc = "The Desert Eagle. Expensive, heavy, and unwieldy, yet immensely powerful. Sporting rosewood grips and a monstrous amount of kick, it's a symbol of power more than anything. But it can kill a bear in its tracks, and you look like a badass in doing so."
-	icon_state = "c_deagle"
-	item_state = "c_deagle"
-	base_gun_icon = "c_deagle"
-	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
 
 /obj/item/weapon/gun/pistol/heavy/co/gold
 	name = "golden vintage Desert Eagle"

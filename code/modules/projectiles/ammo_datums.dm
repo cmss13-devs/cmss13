@@ -434,7 +434,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
-	name = ".50 impact armor piercing pistol bullet"
+	name = ".50 high-impact armor piercing pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
 
@@ -701,7 +701,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/ap
-	name = ".454 high-impact armor piercing revolver bullet"
+	name = ".454 heavy high-impact armor piercing revolver bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
 

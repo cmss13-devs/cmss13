@@ -141,7 +141,8 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "np" = (
-/obj/item/tool/weldingtool,
+/obj/item/tool/weldingtool/simple,
+/obj/item/stack/sheet/wood,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -177,7 +178,6 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/colony/south_medbay_road)
 "tK" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 3;
 	dir = 1;
@@ -188,24 +188,24 @@
 /obj/item/weapon/gun/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
 /area/lv624/lazarus/hydroponics)
 "vm" = (
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/weapon/gun/rifle/m41a/corporate,
+/obj/item/stack/sheet/wood{
+	amount = 16
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/hydroponics)
 "xa" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
+/obj/effect/landmark/corpsespawner/wysec,
+/obj/item/weapon/gun/rifle/m41a/corporate,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -243,6 +243,9 @@
 /area/lv624/lazarus/hydroponics)
 "zj" = (
 /obj/item/stack/folding_barricade,
+/obj/item/ammo_magazine/rifle{
+	current_rounds = 9
+	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "zL" = (
@@ -261,6 +264,9 @@
 /obj/item/weapon/gun/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -319,18 +325,13 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Ha" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 1;
 	dir = 1;
 	health = 245;
 	icon_state = "folding_1"
 	},
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -397,6 +398,9 @@
 	health = 50;
 	icon_state = "folding_3"
 	},
+/obj/item/ammo_magazine/rifle{
+	current_rounds = 19
+	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -460,6 +464,7 @@
 "OO" = (
 /obj/item/ammo_magazine/rifle/nsg23/extended,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/stack/sheet/wood,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -482,6 +487,10 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle{
+	current_rounds = 37
+	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "QR" = (
@@ -507,20 +516,22 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Ul" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 2;
 	dir = 8;
 	health = 140;
 	icon_state = "folding_2"
 	},
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
 /area/lv624/lazarus/hydroponics)
 "UG" = (
 /obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},

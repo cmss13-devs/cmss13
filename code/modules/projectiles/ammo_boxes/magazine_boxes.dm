@@ -324,3 +324,125 @@
 
 /obj/item/ammo_box/magazine/smg/nailgun/empty
 	empty = TRUE
+
+//-----------------------SHOTGUN SHELL BOXES-----------------------
+
+/obj/item/ammo_box/magazine/shotgun_box
+	name = "shotgun shell boxes (Slugs 25x4)"
+	icon_state = "base_slug"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_shells"
+	overlay_content = "_slug"
+	magazine_type = /obj/item/ammo_magazine/shotgun/slugs
+	num_of_magazines = 4
+
+/obj/item/ammo_box/magazine/shotgun_box/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid")				//adding lid
+	overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
+
+/obj/item/ammo_box/magazine/shotgun_box/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun_box/buckshot
+	name = "shotgun shell boxes (Buckshot 25x4)"
+	icon_state = "base_buck"
+	overlay_content = "_buck"
+	magazine_type = /obj/item/ammo_magazine/shotgun/buckshot
+
+/obj/item/ammo_box/magazine/shotgun_box/buckshot/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun_box/flechette
+	name = "shotgun shell boxes (Flechette 25x4)"
+	icon_state = "base_flech"
+	overlay_content = "_flech"
+	magazine_type = /obj/item/ammo_magazine/shotgun/flechette
+
+/obj/item/ammo_box/magazine/shotgun_box/flechette/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun/incendiary
+	name = "shotgun shell boxes (Incendiary slug 25x4)"
+	icon_state = "base_inc"
+	overlay_content = "_incen"
+	magazine_type = /obj/item/ammo_magazine/shotgun/incendiary
+
+/obj/item/ammo_box/magazine/shotgun_box/incendiary/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun_box/beanbag
+	name = "shotgun shell boxes (Beanbag 25x4)"
+	icon_state = "base_bean"
+	overlay_content = "_bean"
+	magazine_type = /obj/item/ammo_magazine/shotgun/beanbag
+	can_explode = FALSE
+
+/obj/item/ammo_box/magazine/shotgun_box/beanbag/empty
+	empty = TRUE
+
+//-----------------------Flamethrower Canister Box-----------------------
+
+/obj/item/ammo_box/magazine/napalm
+	name = "M240 UT-Napthal Fuel (UT x 4)"
+	//icon_state = ""
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = ""
+	num_of_magazines = 4
+	magazine_type = /obj/item/ammo_magazine/flamer_tank
+
+/obj/item/ammo_box/magazine/napalm/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/napalm/b_gel
+	name = "M240 Napthal B-Gel (B x 4)"
+	//icon_state = ""
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = ""
+	num_of_magazines = 4
+	magazine_type = /obj/item/ammo_magazine/flamer_tank/gellied
+
+/obj/item/ammo_box/magazine/napalm/b_gel/empty
+	empty = TRUE
+
+//-----------------------Mortar Shells Box-----------------------
+
+/obj/item/ammo_box/magazine/mortar
+	name = "M402 mortar shells box (HE x6)"
+	//icon_state = ""
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = ""
+	num_of_magazines = 6
+	magazine_type = /obj/item/mortar_shell/he
+
+/obj/item/ammo_box/magazine/mortar/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/mortar/incend
+	name = "M402 mortar incendiary shells box (I x6)"
+	//icon_state = ""
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = ""
+	num_of_magazines = 6
+	magazine_type = /obj/item/mortar_shell/incendiary
+
+/obj/item/ammo_box/magazine/mortar/incend/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/mortar/flare
+	name = "M402 mortar flare-camera shells box (FC x6)"
+	//icon_state = ""
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = ""
+	num_of_magazines = 6
+	magazine_type = /obj/item/mortar_shell/flare
+
+/obj/item/ammo_box/magazine/mortar/flare/empty
+	empty = TRUE

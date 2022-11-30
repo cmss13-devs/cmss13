@@ -183,7 +183,7 @@
 
 /obj/item/paper/proc/updateinfolinks()
 	info_links = info
-	for(var/i=1,  i<=min(fields, 15), i++)
+	for(var/i=1,  i<=min(fields, 50), i++)
 		addtofield(i, "<font face=\"[deffont]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[deffont]\"><A href='?src=\ref[src];write=end'>write</A></font>"
 
@@ -265,7 +265,6 @@
 		if(i==0)
 			break
 		laststart = i+1
-		for(var/i=1,  i<=min(fields, 15), i++)
 		fields = min(fields+1, 50)
 		//NOTE: The max fields line above yields 2 lower than the number you input.  So 50 here means 48 in game, plus one.  Why? I don't fucking know. Probably the same reason why whoever coded this in the first place decided that single letter VARs was a good fucking idea.
 	return t

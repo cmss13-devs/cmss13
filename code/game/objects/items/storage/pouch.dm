@@ -549,7 +549,7 @@
 
 /obj/item/storage/pouch/magazine/large/smg_heap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/smg/m39/ap(src)
+		new /obj/item/ammo_magazine/smg/m39/heap(src)
 
 
 /obj/item/storage/pouch/shotgun

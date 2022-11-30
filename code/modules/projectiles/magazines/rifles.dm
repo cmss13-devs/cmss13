@@ -36,7 +36,7 @@
 
 /obj/item/ammo_magazine/rifle/heap
 	name = "\improper M41A HEAP magazine (10x24mm)"
-	desc = "A 10mm armor piercing high explosive magazine."
+	desc = "A 10mm armor piercing high explosive magazine"
 	icon_state = "m41a_explosive"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 
@@ -288,7 +288,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 
 /obj/item/ammo_magazine/rifle/l42a/heap
-	name = "\improper L42A HEAP magazine (10x24mm)"
+	name = "\improper L42A HEAP (10x24mm)"
 	desc = "A 10mm battle rifle high explosive armor piercing magazine."
 	icon_state = "l42mk1_heap"
 	default_ammo = /datum/ammo/bullet/rifle/heap
@@ -360,7 +360,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
 /obj/item/ammo_magazine/rifle/nsg23/heap
-	name = "\improper NSG 23 high-explosive armor-piercing magazine (10x24mm)"
+	name = "\improper NSG 23 HEAP magazine (10x24mm)"
 	desc = "An NSG 23 assault rifle magazine. This one is loaded with armor-piercing explosive tipped rounds."
 	icon_state = "nsg23_heap"
 	item_state = "nsg23_heap"

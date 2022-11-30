@@ -38,7 +38,7 @@
 
 /obj/item/ammo_magazine/smg/m39/heap
 	name = "\improper M39 HEAP magazine (10x20mm)"
-	desc = "A 10x20mm caseless armor-piercing submachinegun magazine. The bullet tips are made out of a timed explosive, designed to penetrate armor then detonate for maximum soft-tissue damage."
+	desc = "A 10x20mm caseless armor-piercing high-explosive submachinegun magazine. The bullet tips are made out of a special explosive, designed to penetrate armor then detonate for maximum soft-tissue damage."
 	icon_state = "m39_heap"
 	default_ammo = /datum/ammo/bullet/smg/heap
 

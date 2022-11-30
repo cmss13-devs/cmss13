@@ -1163,7 +1163,8 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--
-			vendor.update_derived_ammo_and_boxes(itemspec)
+			if(vend_flags & VEND_LOAD_AMMO_BOXES)
+				vendor.update_derived_ammo_and_boxes(itemspec)
 
 		if(vend_flags & VEND_UNIFORM_RANKS)
 			// apply ranks to clothing

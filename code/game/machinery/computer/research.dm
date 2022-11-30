@@ -175,8 +175,10 @@
 		if("purchase_document")
 			if(!photocopier)
 				return
-			var/purchase_tier = text2num(params["purchase_document"])
+			var/purchase_tier = FLOOR(text2num(params["purchase_document"]), 1)
 			if(purchase_tier <= 0 || purchase_tier > 5)
+				return
+			if(purchase_tier > chemical_data.clearance_level)
 				return
 			var/purchase_cost = base_purchase_cost + purchase_tier * 2
 			if(purchase_cost <= chemical_data.rsc_credits)

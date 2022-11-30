@@ -265,7 +265,7 @@
 		if(i==0)
 			break
 		laststart = i+1
-		fields = min(fields+1, 20)
+		fields = min(fields+1, 48)
 	return t
 
 

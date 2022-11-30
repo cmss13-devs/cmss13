@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "fixed some runtimes that were causing fancy storage items' examine text to break, among other things."

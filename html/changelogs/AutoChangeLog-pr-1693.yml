@@ -1,5 +1,0 @@
-author: "DexterDude"
-delete-after: True
-changes:
-  - rscadd: "Gives Maintenance Technicians, Cargo Technicians, and Mess Technicians the rank of private if they have under 10 hours in the role"
-  - rscadd: "Gives Nurses the rank of Lance Corporal if they have under 10 hours in the role"

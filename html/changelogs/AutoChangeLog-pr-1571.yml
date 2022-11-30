@@ -1,0 +1,5 @@
+author: "QuickLoad"
+delete-after: True
+changes:
+  - spellcheck: "Fixes numerous capitalization errors in ERTs, Contractors are specified from VAIPO"
+  - spellcheck: "UCP MK3 for Sappers"

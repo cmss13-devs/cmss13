@@ -1,0 +1,87 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/void/vehicle,
+/area/space)
+"f" = (
+/obj/structure/interior_wall/van{
+	icon_state = "front_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"j" = (
+/obj/structure/interior_wall/van{
+	alpha = 50;
+	icon_state = "exterior_door";
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"o" = (
+/obj/structure/interior_wall/van{
+	icon_state = "back_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"s" = (
+/obj/structure/interior_wall/van{
+	icon_state = "interior_door"
+	},
+/obj/effect/vehicle_roof/van{
+	icon_state = "front_roof_1"
+	},
+/turf/open/space/basic,
+/area/space)
+"z" = (
+/obj/structure/interior_wall/van{
+	icon_state = "back_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"C" = (
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
+	dir = 4
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/van/left;
+	name = "left entrance marker";
+	pixel_y = 32;
+	tag = "left"
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	exit_type = /obj/structure/interior_exit/vehicle/van/backright;
+	name = "back right entrance marker";
+	pixel_x = -32;
+	tag = "back_right"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_12"
+	},
+/area/vehicle/van)
+"X" = (
+/obj/structure/interior_wall/van{
+	icon_state = "front_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+
+(1,1,1) = {"
+a
+z
+o
+a
+"}
+(2,1,1) = {"
+a
+s
+C
+j
+"}
+(3,1,1) = {"
+a
+X
+f
+a
+"}

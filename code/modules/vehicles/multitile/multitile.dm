@@ -373,6 +373,13 @@
 /obj/effect/vehicle_spawner/proc/spawn_vehicle()
 	return
 
+//Randomise vehicle for spawner
+/obj/effect/vehicle_spawner/proc/random_vehicle()
+	return
+
+/obj/effect/vehicle_spawner/proc/random_hardpoint()
+	return
+
 //Installation of modules kit
 /obj/effect/vehicle_spawner/proc/load_hardpoints(var/obj/vehicle/multitile/V)
 	return

@@ -283,6 +283,22 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 
 	return TRUE
 
+/*
+** PRESETS SPAWNERS
+*/
+//These help spawning hardpoints
+
+/obj/effect/hardpoint_spawner
+	name = "Hardpoint Spawner"
+
+//Main proc which handles spawning hardpoints
+/obj/effect/hardpoint_spawner/proc/spawn_hardpoint()
+	return
+
+//Randomise hardpoint for spawner
+/obj/effect/hardpoint_spawner/proc/choose_hardpoint()
+	return
+
 //-----------------------------
 //------INTERACTION PROCS----------
 //-----------------------------

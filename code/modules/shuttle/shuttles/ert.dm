@@ -13,13 +13,11 @@
 
 /obj/docking_port/mobile/emergency_response/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_REGISTER_DOOR_TO_SHUTTLE, .proc/register_door)
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door/airlock/air in place)
+			doors += list(air)
 
-/obj/docking_port/mobile/emergency_response/proc/register_door(var/obj/docking_port/mobile/source, var/obj/structure/machinery/door/airlock/airlock)
-	SIGNAL_HANDLER
-	doors += list(airlock)
-
-/obj/docking_port/mobile/emergency_response/on_ignition()
+/obj/docking_port/mobile/emergency_response/enterTransit()
 	..()
 	control_doors("close")
 	control_doors("lock")
@@ -54,7 +52,7 @@
 /obj/docking_port/mobile/emergency_response/ert3
 	name = "ERT Shuttle 3"
 	id = "ert3"
-	preferred_direction = NORTH
+	preferred_direction = WEST
 	port_direction = NORTH
 
 // Generic ERT Dock

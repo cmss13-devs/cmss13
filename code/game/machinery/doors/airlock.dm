@@ -96,10 +96,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/bumpopen(mob/living/simple_animal/user as mob)
 	..(user)
 
-/obj/structure/machinery/door/airlock/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
-	..()
-	SEND_SIGNAL(port, COMSIG_REGISTER_DOOR_TO_SHUTTLE, src)
-
 /// DAMAGE CODE
 
 /obj/structure/machinery/door/airlock/get_examine_text(mob/user)

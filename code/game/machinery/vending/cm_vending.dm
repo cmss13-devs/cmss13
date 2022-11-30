@@ -254,10 +254,18 @@ GLOBAL_LIST_EMPTY(vending_products)
 				return
 	//Machete holsters handling
 	else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
-		var/obj/item/weapon/melee/claymore/mercsword/machete/Mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
-		if(!Mac)
-			to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
-			return
+		var/obj/item/weapon/melee/claymore/mercsword/machete/mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
+		if(!mac)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
+			return FALSE
+	//Machete holsters handling
+	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
+		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
+		if(AR.pockets && AR.pockets.contents.len)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
+			return FALSE
 	//magazines handling
 	else if(istype(item_to_stock, /obj/item/ammo_magazine))
 		//flamer fuel tanks handling
@@ -296,6 +304,20 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if(A.bullet_amount < A.max_bullet_amount)
 			to_chat(user, SPAN_WARNING("[A] is not full."))
 			return
+	//Marine armor handling
+	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
+		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
+		if(AR.pockets && AR.pockets.contents.len)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
+			return FALSE
+	//Marine helmet handling
+	else if(istype(item_to_stock, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/H = item_to_stock
+		if(H.pockets && H.pockets.contents.len)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
+			return FALSE
 	return TRUE //Item IS good to restock!
 
 //------------MAINTENANCE PROCS---------------

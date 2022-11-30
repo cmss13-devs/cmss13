@@ -17,6 +17,10 @@
 	var/ignore_z = FALSE
 	var/freerange = 0 // 0 - Sanitize frequencies, 1 - Full range
 	var/list/channels = list() //see communications.dm for full list. First channes is a "default" for :h
+	/// Queue of channels that have been activated in the order they were activated in.
+	var/list/last_activated_channels = list()
+	/// The maximum number of channels you can have at once
+	var/max_channels_on = 2
 	var/subspace_transmission = 0
 	/// If true, subspace_transmission can be toggled at will.
 	var/subspace_switchable = FALSE
@@ -149,8 +153,13 @@
 				return
 			if(channels[channel] & FREQ_LISTENING)
 				channels[channel] &= ~FREQ_LISTENING
+				last_activated_channels -= channel
 			else
 				channels[channel] |= FREQ_LISTENING
+				last_activated_channels += channel
+				ui.user.visible_message(SPAN_NOTICE("[ui.user] fiddles with [src]."), SPAN_NOTICE("You tune [src] into the '[channel]' channel."))
+			while(max_channels_on > 0 && length(last_activated_channels) > max_channels_on)
+				channels[popleft(last_activated_channels)] &= ~FREQ_LISTENING
 			. = TRUE
 		if("command")
 			use_volume = !use_volume

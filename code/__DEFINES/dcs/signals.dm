@@ -506,3 +506,6 @@
 
 // Used for smothering fires upon weather event start/stop
 #define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"
+/// Called when a radio is getting mobs in range to hear a radio message
+#define COMSIG_RADIO_GET_MOB_IN_RANGE "radio_get_mob_in_range"
+	#define COMPONENT_SKIP_RADIO_CHECK (1<<0)

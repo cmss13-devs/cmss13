@@ -28,9 +28,6 @@
 
 	var/list/volume_settings
 
-	var/last_multi_broadcast = -999
-	var/multibroadcast_cooldown = HIGH_MULTIBROADCAST_COOLDOWN
-
 	var/has_hud = FALSE
 	var/headset_hud_on = FALSE
 	var/locate_setting = TRACKER_SL
@@ -57,6 +54,16 @@
 		for(var/cycled_channel in radiochannels)
 			if(radiochannels[cycled_channel] == frequency)
 				default_freq = cycled_channel
+
+	RegisterSignal(src, COMSIG_RADIO_GET_MOB_IN_RANGE, .proc/handle_radio_get_mob_in_range)
+
+/obj/item/device/radio/headset/proc/handle_radio_get_mob_in_range(datum/source, list/mobs_who_heard)
+	SIGNAL_HANDLER
+	if(ishuman(loc))
+		var/mob/living/carbon/human/wearer = loc
+		if(wearer.wear_r_ear == src || wearer.wear_l_ear == src)
+			mobs_who_heard |= loc
+	return COMPONENT_SKIP_RADIO_CHECK
 
 /obj/item/device/radio/headset/proc/set_volume_setting()
 	set name = "Set Headset Volume"
@@ -181,13 +188,18 @@
 	syndie = FALSE
 
 	tracking_options = length(inbuilt_tracking_options) ? inbuilt_tracking_options.Copy() : list()
+	max_channels_on = 0
+	last_activated_channels = list()
 	for(var/i in keys)
 		var/obj/item/device/encryptionkey/key = i
+		max_channels_on = max(max_channels_on, key.max_channels_on)
 		for(var/ch_name in key.channels)
 			if(ch_name in channels)
 				continue
 			channels += ch_name
 			channels[ch_name] = key.channels[ch_name]
+			if(channels[ch_name])
+				last_activated_channels += ch_name
 		for(var/tracking_option in key.tracking_options)
 			tracking_options[tracking_option] = key.tracking_options[tracking_option]
 		if(key.translate_binary)
@@ -196,6 +208,9 @@
 			translate_hive = TRUE
 		if(key.syndie)
 			syndie = TRUE
+
+	while(max_channels_on > 0 && length(last_activated_channels) > max_channels_on)
+		channels[pop(last_activated_channels)] &= ~FREQ_LISTENING
 
 	if(length(tracking_options))
 		var/list/tracking_stuff = list()
@@ -355,7 +370,6 @@
 	icon_state = "ce_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ce)
 	volume = RADIO_VOLUME_CRITICAL
-	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 
 /obj/item/device/radio/headset/almayer/cmo
 	name = "chief medical officer's headset"
@@ -363,7 +377,6 @@
 	icon_state = "cmo_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmo)
 	volume = RADIO_VOLUME_CRITICAL
-	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 
 /obj/item/device/radio/headset/almayer/mt
 	name = "engineering radio headset"
@@ -395,7 +408,6 @@
 	icon_state = "ro_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ro)
 	volume = RADIO_VOLUME_CRITICAL
-	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 
 /obj/item/device/radio/headset/almayer/mmpo
 	name = "marine military police radio headset"
@@ -430,7 +442,6 @@
 	icon_state = "mcom_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mcom)
 	volume = RADIO_VOLUME_CRITICAL
-	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor/com
 	name = "marine honor guard command radio headset"
@@ -443,7 +454,6 @@
 	desc = "Used by Pilot Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :j - JTAC, :t - intel."
 	initial_keys = list(/obj/item/device/encryptionkey/po)
 	volume = RADIO_VOLUME_CRITICAL
-	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 
 /obj/item/device/radio/headset/almayer/intel
 	name = "marine intel radio headset"
@@ -854,4 +864,3 @@
 	name = "marine vehicle crew radio headset"
 	desc = "Used by USCM vehicle crew, features a non-standard brace. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
 	volume = RADIO_VOLUME_RAISED
-	multibroadcast_cooldown = HIGH_MULTIBROADCAST_COOLDOWN

@@ -188,7 +188,7 @@
 	syndie = FALSE
 
 	tracking_options = length(inbuilt_tracking_options) ? inbuilt_tracking_options.Copy() : list()
-	max_channels_on = 0
+	max_channels_on = initial(max_channels_on)
 	last_activated_channels = list()
 	for(var/i in keys)
 		var/obj/item/device/encryptionkey/key = i

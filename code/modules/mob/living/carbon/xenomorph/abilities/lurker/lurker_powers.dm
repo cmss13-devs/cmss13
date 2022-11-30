@@ -106,7 +106,7 @@
 	Xeno.flick_attack_overlay(Target, "slash")   //fake slash to prevent disarm abuse
 	Target.last_damage_data = create_cause_data(Xeno.caste_type, Xeno)
 	Target.apply_armoured_damage(20, ARMOR_MELEE, BRUTE)
-	playsound(get_turf(Target), 'alien_claw_flesh.ogg', 30, TRUE)
+	playsound(get_turf(Target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	shake_camera(Target, 2, 1)
 	apply_cooldown_override(40)
 
@@ -121,7 +121,7 @@
 
 	Xeno.visible_message(SPAN_DANGER("[Xeno] slashes frantically the area in front of it!"), \
 	SPAN_XENOWARNING("You unleash a barrage of slashes!"))
-	playsound(Xeno, 'alien_tail_swipe3.ogg', 30)
+	playsound(Xeno, 'sound/effects/alien_tail_swipe2.ogg', 30)
 	apply_cooldown()
 
 	// Transient turf list
@@ -166,7 +166,7 @@
 			Target.last_damage_data = create_cause_data(Xeno.caste_type, Xeno)
 			log_attack("[key_name(Xeno)] attacked [key_name(Target)] with Flurry")
 			Target.apply_armoured_damage(30, ARMOR_MELEE, BRUTE)
-			playsound(get_turf(Target), 'alien_claw_flesh.ogg', 30, TRUE)
+			playsound(get_turf(Target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
 			Xeno.emote("roar")
 			Xeno.flick_heal_overlay(1 SECONDS, "#00B800")
 			Xeno.gain_health(30)
@@ -207,7 +207,7 @@
 	if(!isXenoOrHuman(Target) || Xeno.can_not_harm(Target))
 		Xeno.visible_message(SPAN_XENOWARNING("\The [Xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
-		playsound(Xeno, 'alien_tail_swipe.ogg', 50, TRUE)
+		playsound(Xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return
 
 	if(distance > 2)

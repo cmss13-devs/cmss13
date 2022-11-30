@@ -411,7 +411,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/proc/attach_to_gun(mob/user, obj/item/attachable/attachment)
 	if(!can_attach_to_gun(user, attachment))
-		return
+		return FALSE
 
 	user.visible_message(SPAN_NOTICE("[user] begins attaching [attachment] to [src]."),
 	SPAN_NOTICE("You begin attaching [attachment] to [src]."), null, 4)
@@ -423,6 +423,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			attachment.Attach(src)
 			update_attachable(attachment.slot)
 			playsound(user, 'sound/handling/attachment_add.ogg', 15, 1, 4)
+			return TRUE
+
+/obj/item/weapon/gun/proc/on_detach(obj/item/attachable/attachment)
+	return
 
 /obj/item/weapon/gun/proc/update_attachables() //Updates everything. You generally don't need to use this.
 	//overlays.Cut()
@@ -493,15 +497,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	var/obj/item/weapon/gun/G = user.get_held_item()
 
-	if(!istype(G)) // if active hand is not a gun
-		if(restrictive) // if restrictive we return right here
-			to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
-			return
-		else // else check inactive hand
-			G = user.get_inactive_hand()
-			if(!istype(G)) // if inactive hand is ALSO not a gun we return
-				to_chat(user, SPAN_WARNING("You need a gun in one of your hands to do that!"))
-				return
+	if(!istype(G) && !restrictive)
+		G = user.get_inactive_hand()
+	if(!istype(G) && G != null)
+		G = user.get_active_hand()
+	if(!istype(G) && restrictive)
+		to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
+		return
 
 	if(G?.flags_gun_features & GUN_BURST_FIRING)
 		return
@@ -655,7 +657,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	usr.visible_message(SPAN_NOTICE("[usr] strips [A] from [src]."),
 	SPAN_NOTICE("You strip [A] from [src]."), null, 4)
-	A.Detach(src)
+	A.Detach(usr, src)
 
 	playsound(src, 'sound/handling/attachment_remove.ogg', 15, 1, 4)
 	update_icon()

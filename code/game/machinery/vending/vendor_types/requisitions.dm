@@ -184,7 +184,7 @@
 			if(H.loc == turf_to_vent_to)
 				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 			else
-				turf_to_vent_to = loc
+				turf_to_vent_to = H.loc
 	return turf_to_vent_to
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
@@ -422,7 +422,7 @@
 			if(H.loc == turf_to_vent_to)
 				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 			else
-				turf_to_vent_to = loc
+				turf_to_vent_to = H.loc
 	return turf_to_vent_to
 
 //------------ATTACHMENTS VENDOR---------------

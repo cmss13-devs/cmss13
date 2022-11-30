@@ -493,13 +493,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	var/obj/item/weapon/gun/G = user.get_held_item()
 
-	if(!istype(G) && !restrictive)
-		G = user.get_inactive_hand()
-	if(!istype(G) && G != null)
-		G = user.get_active_hand()
-	if(!istype(G) && restrictive)
-		to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
-		return
+	if(!istype(G)) // if active hand is not a gun
+		if(restrictive) // if restrictive we return right here
+			to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
+			return
+		else // else check inactive hand
+			G = user.get_inactive_hand()
+			if(!istype(G)) // if inactive hand is ALSO not a gun we return
+				to_chat(user, SPAN_WARNING("You need a gun in one of your hands to do that!"))
+				return
 
 	if(G?.flags_gun_features & GUN_BURST_FIRING)
 		return

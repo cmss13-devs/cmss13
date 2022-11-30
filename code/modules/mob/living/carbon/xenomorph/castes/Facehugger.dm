@@ -17,7 +17,11 @@
 	caste_type = XENO_CASTE_FACEHUGGER
 	speak_emote = list("hisses")
 	icon_state = "Facehugger"
-	icon_size = 32
+	icon_size = 48
+	pixel_x = -8
+	pixel_y = -6
+	old_x = -8
+	old_y = -6
 	layer = MOB_LAYER
 	mob_flags = NOBIOSCAN
 	see_in_dark = 8
@@ -47,11 +51,8 @@
 	)
 	mutation_type = "Normal"
 
-	icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
-
-/mob/living/carbon/Xenomorph/Facehugger/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_hugger))
-	return ..()
+	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
+	icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
 
 /mob/living/carbon/Xenomorph/Facehugger/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -64,7 +65,7 @@
 		adjustBruteLoss(1)
 	return ..()
 
-/mob/living/carbon/Xenomorph/Facehugger/update_icons()
+/mob/living/carbon/Xenomorph/Facehugger/update_icons(is_pouncing)
 	if(!caste)
 		return
 
@@ -75,7 +76,7 @@
 			icon_state = "[mutation_type] [caste.caste_type] Sleeping"
 		else
 			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"
-	else if(throwing)
+	else if(is_pouncing)
 		icon_state = "[mutation_type] [caste.caste_type] Thrown"
 	else
 		icon_state = "[mutation_type] [caste.caste_type] Running"
@@ -140,7 +141,20 @@
 	var/did_hug = hugger.attach(human, TRUE, 0.5)
 	if(client)
 		client?.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+	var/area/hug_area = get_area(src)
+	if(hug_area)
+		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
+		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>"))
+	else
+		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[human.loc.x];Y=[human.loc.y];Z=[human.loc.z]'>JMP</a>)"))
+		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>"))
 	qdel(src)
+	if(hug_area)
+		xeno_message(SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host at \the [hug_area]!"), 1, src.hivenumber)
+	else
+		xeno_message(SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host!"), 1, src.hivenumber)
 	return did_hug
 
 /mob/living/carbon/Xenomorph/Facehugger/age_xeno()
@@ -191,3 +205,19 @@
 
 /mob/living/carbon/Xenomorph/Facehugger/add_xeno_shield(added_amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1, add_shield_on = FALSE, max_shield = 200)
 	return
+
+/mob/living/carbon/Xenomorph/Facehugger/proc/scuttle(var/obj/structure/current_structure)
+	var/move_dir = get_dir(src, loc)
+	for(var/atom/movable/atom in get_turf(current_structure))
+		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("\The [atom] prevents you from squeezing under \the [current_structure]!"))
+			return
+	// Is it an airlock?
+	if(istype(current_structure, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
+		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
+			to_chat(src, SPAN_WARNING("\The [current_airlock] is locked down tight. You can't squeeze underneath!"))
+			return
+	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [current_structure]!"), \
+	SPAN_WARNING("You squeeze and scuttle underneath \the [current_structure]."), null, 5)
+	forceMove(current_structure.loc)

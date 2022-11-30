@@ -143,6 +143,7 @@ obj/structure/xenoautopsy/tank/larva
 	unacidable = TRUE
 	health = null
 	layer = TURF_LAYER
+	plane = FLOOR_PLANE
 	density = 0
 	opacity = 0
 

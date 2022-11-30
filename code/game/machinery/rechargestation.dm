@@ -2,6 +2,7 @@
 	name = "robot recharge station"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
+	desc = "A recharge and repair station for robots and synthetics. Simply put the synthetic in need of repair in here and they will be fixed up in no time!"
 	density = TRUE
 	anchored = TRUE
 	use_power = 1
@@ -33,6 +34,11 @@
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 /obj/structure/machinery/recharge_station/process()
+	if(max_internal_charge < current_internal_charge)
+		current_internal_charge = max_internal_charge// Safety check if varedit adminbus or something screws up
+	if(current_internal_charge < 0)
+		current_internal_charge = 0// Safety check if varedit adminbus or something screws up
+
 	if(stat & (BROKEN))
 		return
 
@@ -40,22 +46,19 @@
 		if(occupant)
 			to_chat(occupant, SPAN_NOTICE(" <B>The [name] is currently out of power. Please come back later!</B>"))
 			go_out()
-		return
 
 	var/chargemode = 0
 	if(src.occupant)
 		process_occupant()
 		chargemode = 1
-	// Power Stuff
+	else if (current_internal_charge < max_internal_charge)
+		chargemode = 1
 
+	// Power Stuff
 	if(stat & NOPOWER)
 		current_internal_charge = max(0, (current_internal_charge - (50 * CELLRATE))) // Internal Circuitry, 50W load. No power - Runs from internal cell
 		return // No external power = No charging
 
-
-
-	if(max_internal_charge < current_internal_charge)
-		current_internal_charge = max_internal_charge// Safety check if varedit adminbus or something screws up
 	// Calculating amount of power to draw
 	var/charge_diff = max_internal_charge - current_internal_charge // OK we have charge differences
 	charge_diff = charge_diff / CELLRATE 							// Deconvert from Charge to Joules
@@ -78,8 +81,15 @@
 	else
 		icon_update_tick++
 
+	//only stop processing the recharge station once it's fully recharged and there is nobody inside
+	if(current_internal_charge == max_internal_charge && !occupant)
+		stop_processing()
+
 	return 1
 
+/obj/structure/machinery/recharge_station/stop_processing()
+	update_icon()
+	..()
 
 /obj/structure/machinery/recharge_station/allow_drop()
 	return 0
@@ -146,7 +156,7 @@
 				var/diff = min(R.cell.maxcharge - R.cell.charge, 500) 	// 500 charge / tick is about 2% every 3 seconds
 				diff = min(diff, current_internal_charge) 				// No over-discharging
 				R.cell.give(diff)
-				current_internal_charge -= diff
+				current_internal_charge = max(current_internal_charge - diff, 0)
 				to_chat(occupant, "Recharging...")
 				doing_stuff = TRUE
 			else
@@ -155,7 +165,7 @@
 			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
 				occupant.heal_overall_damage(10, 10, TRUE)
 				occupant.apply_damage(-10, BRAIN)
-				current_internal_charge -= 500
+				current_internal_charge = max(current_internal_charge - 500, 0)
 				to_chat(occupant, "Repairing...")
 				doing_stuff = TRUE
 				occupant.pain.recalculate_pain()
@@ -179,7 +189,6 @@
 		src.occupant.client.perspective = MOB_PERSPECTIVE
 	src.occupant.forceMove(loc)
 	src.occupant = null
-	stop_processing()
 	build_icon()
 	update_use_power(1)
 	return

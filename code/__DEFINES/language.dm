@@ -2,8 +2,8 @@
 #define LANGUAGE_JAPANESE "Japanese"
 #define LANGUAGE_CHINESE "Chinese"
 #define LANGUAGE_RUSSIAN "Russian"
-#define LANGUAGE_WELTRAUMDEUTSCH "Weltraumdeutsch"
-#define LANGUAGE_NEOSPANISH "Neospanish"
+#define LANGUAGE_GERMAN "German"
+#define LANGUAGE_SPANISH "Spanish"
 #define LANGUAGE_TSL "Tactical Sign Language"
 #define LANGUAGE_YAUTJA "Sainja"
 #define LANGUAGE_MONKEY "Primitive" // nanu

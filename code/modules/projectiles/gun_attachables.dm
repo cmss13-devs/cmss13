@@ -245,7 +245,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A small tube with exhaust ports to expel noise and gas.\nDoes not completely silence a weapon, but does make it much quieter and a little more accurate and stable at the cost of slightly reduced damage."
 	icon_state = "suppressor"
 	slot = "muzzle"
-	pixel_shift_y = 16
+	pixel_shift_y = 15
 	attach_icon = "suppressor_a"
 	hud_offset_mod = -3
 	gun_traits = list(TRAIT_GUN_SILENCED)
@@ -328,7 +328,6 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 7
 	pry_delay = 1 SECONDS
 
-
 /obj/item/attachable/bayonet/c02
 	name = "\improper M8 cartridge bayonet"
 	desc = "A back issue USCM approved exclusive for Boots subscribers found in issue #255 'Inside the Night Raider - morale breaking alternatives with 2nd LT. Juliane Gerd'. A pressurized tube runs along the inside of the blade, and a button allows one to inject compressed CO2 into the stab wound. It feels cheap to the touch. Faulty even."
@@ -339,17 +338,21 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "c02_knife[filled ? "-f" : ""]"
 
 /obj/item/attachable/bayonet/c02/attackby(obj/item/W, mob/user)
-	if(!istype(W, /obj/item/c02_cartridge))
+	if(istype(W, /obj/item/c02_cartridge))
+		if(!filled)
+			filled = TRUE
+			user.visible_message(SPAN_NOTICE("[user] slots a C02 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh C02 cartridge into [src] and snap the slot cover into place. Only then do you realize \the [W]'s valve broke inside \the [src]. Fuck."))
+			playsound(src, 'sound/machines/click.ogg')
+			qdel(W)
+			update_icon()
+			return
+		else
+			user.visible_message(SPAN_WARNING("[user] fiddles with \the [src]. \He looks frustrated."), SPAN_NOTICE("No way man! You can't seem to pry the existing container out of \the [src]... try a screwdriver?"))
+			return
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		user.visible_message(SPAN_WARNING("[user] screws with \the [src], using \a [W]. \He looks very frustrated."), SPAN_NOTICE("You try to pry the cartridge out of the [src], but it's stuck damn deep. Piece of junk..."))
 		return
-	if(filled)
-		return
-	else
-		filled = TRUE
-		visible_message("You slot a fresh C02 cartridge into [src] and snap the slot cover into place. Only then do you realize its budged. Shit." , "[user] slots a C02 cartridge into [src].")
-		playsound(src, 'sound/machines/hydraulics_2.ogg')
-		qdel(W)
-		update_icon()
-		return
+	..()
 
 /obj/item/c02_cartridge //where tf else am I gonna put this?
 	name = "C02 cartridge"

@@ -423,6 +423,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		else
 			data["diseases"] = null // interstingly even if we don't set data at all, re-using UI that had this data still has it
 
+	data["ssd"] = null //clear the data in case we have an old input from a previous scan
 	if(target_mob.getBrainLoss() >= 100 || !target_mob.has_brain())
 		data["ssd"] = "Subject is brain-dead."
 	else if(target_mob.has_brain() && target_mob.stat != DEAD && ishuman(target_mob))

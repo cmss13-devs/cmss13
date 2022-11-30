@@ -304,7 +304,7 @@
 
 // examine verb
 /obj/structure/machinery/light/get_examine_text(mob/user)
-	..()
+	. = ..()
 	switch(status)
 		if(LIGHT_OK)
 			to_chat(user, "It is turned [on? "on" : "off"].")
@@ -413,6 +413,8 @@
 // true if area has power and lightswitch is on
 /obj/structure/machinery/light/proc/has_power()
 	var/area/A = src.loc.loc
+	if(!src.needs_power)
+		return A.master.lightswitch
 	return A.master.lightswitch && A.master.power_light
 
 /obj/structure/machinery/light/proc/flicker(var/amount = rand(10, 20))
@@ -565,6 +567,9 @@
 		if(loc)
 			var/area/A = src.loc.loc
 			A = A.master
+			if(!src.needs_power)
+				seton(A.lightswitch)
+				return
 			seton(A.lightswitch && A.power_light)
 
 // called when on fire

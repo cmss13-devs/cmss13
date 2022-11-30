@@ -31,6 +31,11 @@
 		verbs += /obj/item/storage/pill_bottle/verb/set_maptext
 	update_icon()
 
+/obj/item/reagent_container/hypospray/autoinjector/proc/update_uses_left()
+	var/UL = reagents.total_volume / amount_per_transfer_from_this
+	UL = round(UL) == UL ? UL : round(UL) + 1
+	uses_left = UL
+
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/M, mob/user)
 	if(uses_left <= 0)
 		return
@@ -317,17 +322,38 @@
 	item_state = "empty_ez"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	amount_per_transfer_from_this = 15
+	volume = 15
 	uses_left = 0
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
+	name = "Autoinjector (E-U)"
+	volume = 1
+	amount_per_transfer_from_this = 1
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
 	name = "Autoinjector (E-VS)"
-	volume = 30
-	amount_per_transfer_from_this = 10
+	volume = 5
+	amount_per_transfer_from_this = 5
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
 	name = "Autoinjector (E-S)"
+	volume = 10
+	amount_per_transfer_from_this = 10
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
+	name = "Autoinjector (E-M)"
+	volume = 30
+	amount_per_transfer_from_this = 30
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
+	name = "Autoinjector (E-L)"
 	volume = 45
 	amount_per_transfer_from_this = 45
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
+	name = "Autoinjector (E-XL)"
+	volume = 60
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/
 	name = "Medic Autoinjector (M-M)"

@@ -1,0 +1,4 @@
+author: "kugamo"
+delete-after: True
+changes:
+  - rscadd: "Fire is now affected by the weather, going out quicker in storms!"

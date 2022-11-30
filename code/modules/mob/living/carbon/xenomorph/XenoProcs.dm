@@ -700,7 +700,13 @@
 	var/dir_towards_wall_from_M = get_dir(M,nest_structural_base)
 	var/list/xeno_hands = list(user.get_active_hand(), user.get_inactive_hand())
 
-	if(istype(nest_structural_base, /obj/structure/bed/nest))
+	if(!ishuman(M))
+		to_chat(user, SPAN_XENONOTICE("This is not a host."))
+		return
+
+	var/mob/living/carbon/human/H = M
+
+	if(istype(nest_structural_base, /obj/structure/bed/nest))	//if theres a prexisting nest site it should be given as 'nest_structural_base"
 		my_nest = nest_structural_base
 		nest_structural_base = my_nest.structural_base
 
@@ -719,17 +725,20 @@
 			to_chat(user, SPAN_XENONOTICE("You must have a surer hold on the host to nest them!"))
 			return
 
-		if(!my_nest)
+		if(!my_nest)			//we arent nesting a host to a preexisting nest .. so make one!!
 			for(var/obj/structure/bed/nest/N in M.loc)
-				my_nest = N
-				break
+				if(N.dir == dir_towards_wall_from_M)
+					my_nest = N
+					break
 			if(!my_nest)
-				my_nest = new /obj/structure/bed/nest(M.loc)
+				my_nest = new /obj/structure/bed/nest(H.loc)
 
 		my_nest.structural_base = nest_structural_base
 		my_nest.dir = dir_towards_wall_from_M
 		my_nest.pixel_x = my_nest.buckling_x["[dir_towards_wall_from_M]"]
 		my_nest.pixel_y = my_nest.buckling_y["[dir_towards_wall_from_M]"]
 
-		if(!my_nest.buckle_mob(M, user))
+		if(!my_nest.buckle_mob(H, user))
 			my_nest = qdel(my_nest)
+		else if(dir_towards_wall_from_M == SOUTH)
+			H.update_nested_icon()

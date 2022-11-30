@@ -15,6 +15,7 @@
 	var/mob/dead/observer/ghost_of_buckled_mob =  null
 	var/hivenumber = XENO_HIVE_NORMAL
 	layer = RESIN_STRUCTURE_LAYER
+	plane = GAME_PLANE
 
 	var/force_nest = FALSE
 	var/structural_base
@@ -29,8 +30,8 @@
 
 	set_hive_data(src, hivenumber)
 
-	buckling_y = list("[NORTH]" = 32, "[SOUTH]" = -32, "[EAST]" = 0, "[WEST]" = 0)
-	buckling_x = list("[NORTH]" = 1, "[SOUTH]" = 4, "[EAST]" = 32, "[WEST]" = -32)
+	buckling_y = list("[NORTH]" = 27, "[SOUTH]" = -19, "[EAST]" = 3, "[WEST]" = 3)
+	buckling_x = list("[NORTH]" = 0, "[SOUTH]" = 0, "[EAST]" = 18, "[WEST]" = -17)
 
 /obj/structure/bed/nest/afterbuckle(mob/M)
 	if(buckled_mob == M)

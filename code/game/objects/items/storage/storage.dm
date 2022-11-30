@@ -414,11 +414,18 @@ var/list/global/item_storage_box_cache = list()
 			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
 		return
 
-	var/w_limit_bypassed = 0
+	var/w_limit_bypassed = FALSE
+
+	//can_hold explicidly bypasses w_class limit
+	if(length(can_hold))
+		for(var/A in can_hold)
+			if(istype(W, A))
+				w_limit_bypassed = TRUE
+
 	if(bypass_w_limit.len)
 		for(var/A in bypass_w_limit)
 			if(istype(W, A))
-				w_limit_bypassed = 1
+				w_limit_bypassed = TRUE
 				break
 
 	if (!w_limit_bypassed && W.w_class > max_w_class)

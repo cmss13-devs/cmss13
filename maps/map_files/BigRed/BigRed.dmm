@@ -7367,7 +7367,7 @@
 	tag = "icon-intact-supply (NORTH)"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "darkpurple2";
 	tag = "icon-darkpurple2"
@@ -26819,7 +26819,7 @@
 /area/bigredv2/caves/eta/research)
 "byt" = (
 /obj/structure/bed,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "wood"
 	},

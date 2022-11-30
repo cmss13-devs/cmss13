@@ -227,12 +227,12 @@
 			if(!src) return
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			switch (anchored)
-				if (0)
-					anchored = 1
+				if (FALSE)
+					anchored = TRUE
 					user.visible_message("[user] tightens the bolts securing \the [src] to the surface.", "You tighten the bolts securing \the [src] to the surface.")
-				if (1)
+				if (TRUE)
 					user.visible_message("[user] unfastens the bolts securing \the [src] to the surface.", "You unfasten the bolts securing \the [src] to the surface.")
-					anchored = 0
+					anchored = FALSE
 		return
 
 /obj/structure/machinery/chem_dispenser/beer
@@ -270,10 +270,10 @@
 			if(!src) return
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			switch (anchored)
-				if (0)
-					anchored = 1
+				if (FALSE)
+					anchored = TRUE
 					user.visible_message("[user] tightens the bolts securing \the [src] to the surface.", "You tighten the bolts securing \the [src] to the surface.")
-				if (1)
+				if (TRUE)
 					user.visible_message("[user] unfastens the bolts securing \the [src] to the surface.", "You unfasten the bolts securing \the [src] to the surface.")
-					anchored = 0
+					anchored = FALSE
 		return

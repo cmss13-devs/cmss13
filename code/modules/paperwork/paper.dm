@@ -2,6 +2,8 @@
  * Paper
  * also scraps of paper
  */
+ 
+#define MAX_FIELDS 51
 
 /obj/item/paper
 	name = "paper"
@@ -183,7 +185,7 @@
 
 /obj/item/paper/proc/updateinfolinks()
 	info_links = info
-	for(var/i=1,  i<=min(fields, 51), i++)
+	for(var/i=1,  i<=min(fields, MAX_FIELDS), i++)
 		addtofield(i, "<font face=\"[deffont]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[deffont]\"><A href='?src=\ref[src];write=end'>write</A></font>"
 
@@ -265,7 +267,7 @@
 		if(i==0)
 			break
 		laststart = i+1
-		fields = min(fields+1, 51)
+		fields = min(fields+1, MAX_FIELDS)
 		//NOTE: The max here will include the auto-created field when hitting a paper with a pen. So it should be [your_desired_number]+1.
 	return t
 
@@ -863,3 +865,4 @@
 		\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
+	#undefine MAX_FIELDS

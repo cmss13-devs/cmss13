@@ -26,13 +26,14 @@
 	var/item_quants = list()
 	var/ispowered = TRUE //starts powered
 	var/is_secure_fridge = FALSE
-	var/seconds_electrified = 0;
 	var/shoot_inventory = FALSE
 	var/locked = FRIDGE_LOCK_ID
 	var/panel_open = FALSE //Hacking a smartfridge
 	var/wires = 7
 	var/networked = FALSE
 	var/transfer_mode = FALSE
+
+	COOLDOWN_DECLARE(electrified_cooldown)
 
 /obj/structure/machinery/smartfridge/Initialize(mapload, ...)
 	. = ..()
@@ -47,8 +48,6 @@
 /obj/structure/machinery/smartfridge/process()
 	if(!src.ispowered)
 		return
-	if(src.seconds_electrified > 0)
-		src.seconds_electrified--
 	if(src.shoot_inventory && prob(2))
 		src.throw_item()
 
@@ -122,7 +121,7 @@
 	if(!ispowered)
 		to_chat(user, SPAN_WARNING("[src] has no power."))
 		return
-	if(seconds_electrified != 0)
+	if(!COOLDOWN_FINISHED(src, electrified_cooldown))
 		if(shock(user, 100))
 			return
 
@@ -163,7 +162,6 @@
 		return UI_CLOSE
 
 /obj/structure/machinery/smartfridge/ui_static_data(mob/user)
-	. = ..(user)
 	.["networked"] = is_in_network()
 
 /obj/structure/machinery/smartfridge/ui_data(mob/user)
@@ -178,7 +176,7 @@
 		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
 	.["electrical"] = list(
-		"electrified" = seconds_electrified > 0,
+		"electrified" = !COOLDOWN_FINISHED(src, electrified_cooldown),
 		"panel_open" = panel_open,
 		"wires" = panel_wires,
 		"shoot_inventory" = shoot_inventory,
@@ -269,7 +267,7 @@
 	switch(action)
 		if("vend")
 			if(!ispowered)
-				to_chat(user, SPAN_WARNING("[src] has no power."))
+				to_chat(user, SPAN_WARNING("\The [src] has no power."))
 				return FALSE
 			if (!in_range(src, usr))
 				return FALSE
@@ -391,7 +389,7 @@
 
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
-			seconds_electrified = -1
+			COOLDOWN_START(src, electrified_cooldown, 12 HOURS)
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if (FRIDGE_WIRE_SHOOT_INV)
 			if(!shoot_inventory)
@@ -405,7 +403,7 @@
 	wires |= getWireFlag(wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
-			seconds_electrified = 0
+			COOLDOWN_RESET(src, electrified_cooldown)
 		if (FRIDGE_WIRE_SHOOT_INV)
 			shoot_inventory = FALSE
 			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
@@ -416,7 +414,7 @@
 /obj/structure/machinery/smartfridge/proc/pulse(var/wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
-			seconds_electrified = 30
+			COOLDOWN_START(src, electrified_cooldown, 30 SECONDS)
 			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
 		if(FRIDGE_WIRE_SHOOT_INV)
 			shoot_inventory = !shoot_inventory

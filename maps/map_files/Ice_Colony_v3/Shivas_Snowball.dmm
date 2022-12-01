@@ -10325,6 +10325,9 @@
 /obj/item/reagent_container/food/snacks/bigbiteburger,
 /obj/item/reagent_container/food/snacks/bigbiteburger,
 /obj/item/stack/sheet/metal/medium_stack,
+/obj/item/reagent_container/food/condiment/coldsauce,
+/obj/item/reagent_container/food/condiment/coldsauce,
+/obj/item/reagent_container/food/condiment/coldsauce,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},

@@ -913,7 +913,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 //UPP engineer welderpack
 /obj/item/storage/backpack/marine/engineerpack/upp
 	name = "\improper UCP3-E technician welderpack"
-	desc = "A special version of the Union Combat Pack MK3 featuring a small fueltank for quick blowtorch refueling. Used by UPP combat engineers."
+	desc = "A special version of the Union Combat Pack MK3 featuring a small fueltank for quick blowtorch refueling. Used by UPP Sappers."
 	icon_state = "satchel_upp_welder"
 	has_gamemode_skin = FALSE
 	worn_accessible = TRUE

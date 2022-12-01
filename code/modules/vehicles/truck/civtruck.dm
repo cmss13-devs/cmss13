@@ -48,10 +48,11 @@
 	name = "Civtruck Spawner"
 	icon = 'icons/obj/vehicles/civtruck.dmi'
 	icon_state = "civtruck_1"
-	random_vehicle()
-		return pick(/obj/vehicle/multitile/civtruck,\
-					/obj/vehicle/multitile/civtruck/civtruck_2,\
-					/obj/vehicle/multitile/civtruck/civtruck_3)
+	
+/obj/effect/vehicle_spawner/civtruck/random_vehicle()
+	return pick(/obj/vehicle/multitile/civtruck,\
+				/obj/vehicle/multitile/civtruck/civtruck_2,\
+				/obj/vehicle/multitile/civtruck/civtruck_3)
 
 /obj/effect/vehicle_spawner/civtruck/Initialize()
 	. = ..()

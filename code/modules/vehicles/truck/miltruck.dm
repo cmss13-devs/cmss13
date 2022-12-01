@@ -65,15 +65,15 @@
 	icon_state = "miltruck_1"
 	pixel_x = -16
 	pixel_y = -16
-	random_vehicle()
-		return pick(/obj/vehicle/multitile/miltruck,\
-					/obj/vehicle/multitile/miltruck/miltruck_2,\
-					/obj/vehicle/multitile/miltruck/miltruck_3)
 
-	random_hardpoint()
-		return pick(/obj/item/hardpoint/locomotion/truck/wheels,\
-					/obj/item/hardpoint/locomotion/truck/treads)
+/obj/effect/vehicle_spawner/miltruck/random_vehicle()
+	return pick(/obj/vehicle/multitile/miltruck,\
+				/obj/vehicle/multitile/miltruck/miltruck_2,\
+				/obj/vehicle/multitile/miltruck/miltruck_3)
 
+/obj/effect/vehicle_spawner/miltruck/random_hardpoint()
+	return pick(/obj/item/hardpoint/locomotion/truck/wheels,\
+				/obj/item/hardpoint/locomotion/truck/treads)
 
 /obj/effect/vehicle_spawner/miltruck/Initialize()
 	. = ..()

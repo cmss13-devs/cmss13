@@ -2,6 +2,7 @@
 	icon = 'icons/obj/vehicles/hardpoints/truck.dmi'
 	slot = HDPT_WHEELS
 
+
 	//TRUCK Wheels
 /obj/item/hardpoint/locomotion/truck/wheels
 	name = "Military wheels"

@@ -865,4 +865,4 @@
 		\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
-	#undefine MAX_FIELDS
+	#undef MAX_FIELDS

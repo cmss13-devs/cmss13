@@ -115,13 +115,3 @@
 	buyable = 0
 	group = "Operations"
 	iteration_needed = null
-
-/datum/supply_packs/xeno_tags
-	name = "Xenomorph IFF Tag Case (x7 tags)"
-	contains = list(
-		/obj/item/storage/xeno_tag_case/full
-	)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure/weyland
-	containername = "IFF tag crate"
-	group = "Operations"

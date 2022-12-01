@@ -212,7 +212,7 @@
 	reagents = list("sodiumchloride" = 5, "blackpepper" = 5)
 	items = list(
 		/obj/item/reagent_container/food/snacks/bigbiteburger,
-		/obj/item/reagent_container/food/snacks/dough,
+		/obj/item/reagent_container/food/snacks/bun,
 		/obj/item/reagent_container/food/snacks/meat,
 		/obj/item/reagent_container/food/snacks/grown/tomato,
 		/obj/item/reagent_container/food/snacks/cheesewedge,
@@ -233,7 +233,6 @@
 /datum/recipe/bread
 	items = list(
 		/obj/item/reagent_container/food/snacks/dough,
-		/obj/item/reagent_container/food/snacks/egg
 	)
 	result = /obj/item/reagent_container/food/snacks/sliceable/bread
 
@@ -628,28 +627,28 @@
 /datum/recipe/donut
 	reagents = list("sugar" = 5)
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough
+		/obj/item/reagent_container/food/snacks/doughslice
 	)
 	result = /obj/item/reagent_container/food/snacks/donut/normal
 
 /datum/recipe/chaosdonut
 	reagents = list("frostoil" = 5, "hotsauce" = 5, "sugar" = 5) //frostoil aka coldsauce
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough
+		/obj/item/reagent_container/food/snacks/doughslice
 	)
 	result = /obj/item/reagent_container/food/snacks/donut/chaos
 
 /datum/recipe/jellydonut
 	reagents = list("berryjuice" = 5, "sugar" = 5)
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough
+		/obj/item/reagent_container/food/snacks/doughslice
 	)
 	result = /obj/item/reagent_container/food/snacks/donut/jelly
 
 /datum/recipe/jellydonut/cherry
 	reagents = list("cherryjelly" = 5, "sugar" = 5)
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough
+		/obj/item/reagent_container/food/snacks/doughslice
 	)
 	result = /obj/item/reagent_container/food/snacks/donut/cherryjelly
 

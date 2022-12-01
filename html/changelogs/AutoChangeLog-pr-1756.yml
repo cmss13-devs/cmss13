@@ -1,5 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - rscdel: "Removed a dupe empty Pressurized Reagent Canister Pouch from the Synth vendor."
-  - spellcheck: "Made sure vendors and medilathe properly and consistently referred to Pressurized Reagent Canister Pouches."

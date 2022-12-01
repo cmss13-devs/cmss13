@@ -1,7 +1,0 @@
-author: "Usnpeepoo, Drathek"
-delete-after: True
-changes:
-  - rscadd: "Pheromones can be capped on xenomorphs, and you can cap specific pheromones at specific values"
-  - balance: "Berserkers are capped to Moderate pheromones with frenzy, other pheromones are not capped"
-  - balance: "Berserkers apprehend is now a second shorter."
-  - balance: "Berserkers rage lockout has been increased by a second"

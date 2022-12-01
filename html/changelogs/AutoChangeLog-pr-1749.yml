@@ -1,5 +1,0 @@
-author: "nauticall"
-delete-after: True
-changes:
-  - rscadd: "Adds cloth tables, a few flower vases, and some table flags to game code. Currently only admin spawn."
-  - code_imp: "Added items/prop.dm as a new file for storing prop items inside of."

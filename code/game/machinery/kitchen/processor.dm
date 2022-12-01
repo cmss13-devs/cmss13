@@ -25,7 +25,7 @@
 	/* objs */
 	meat
 		input = /obj/item/reagent_container/food/snacks/meat
-		output = /obj/item/reagent_container/food/snacks/meatball
+		output = /obj/item/reagent_container/food/snacks/rawmeatball
 
 	potato
 		input = /obj/item/reagent_container/food/snacks/grown/potato

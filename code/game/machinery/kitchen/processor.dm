@@ -47,6 +47,14 @@
 		input = /obj/item/reagent_container/food/snacks/flour
 		output = /obj/item/reagent_container/food/snacks/spagetti
 
+	spaghetti
+		input = /obj/item/reagent_container/food/snacks/grown/sugarcane
+		output = /obj/item/reagent_container/food/condiment/sugar
+		
+	spaghetti
+		input = /obj/item/reagent_container/food/snacks/grown/cocoapod
+		output = /obj/item/reagent_container/food/snacks/chocolatebar
+
 	/* mobs */
 	mob
 		process(loc, what)

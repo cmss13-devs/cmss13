@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - refactor: "Refactored the code around ammo boxes to be in a few smaller files rather than one big file."

@@ -1,6 +1,7 @@
 //Packets of spec ammo, for easier Requisitions delivery
 /obj/item/storage/box/packet/spec
 	w_class = SIZE_LARGE //Not very useful in a bag, but good for crate delivery
+	max_w_class = SIZE_LARGE //We don't care about the size of things since we will only hold one type of item
 
 //Sniper
 /obj/item/storage/box/packet/spec/sniper

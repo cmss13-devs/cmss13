@@ -1,5 +1,20 @@
 //group for putting all the items about mortar. mortar/shells/backpack...
 
+//---------------------------------------------
+//Backpacks
+//---------------------------------------------
+
+/datum/supply_packs/backpack/mortar_pack
+	name = "Mortar Shell Backpack Crate (x4)"
+	contains = list(
+		/obj/item/storage/backpack/marine/mortarpack,
+		/obj/item/storage/backpack/marine/mortarpack,
+		/obj/item/storage/backpack/marine/mortarpack,
+		/obj/item/storage/backpack/marine/mortarpack
+	)
+	cost = 30
+	containername = "Mortar Shell Backpack Crate"
+
 /datum/supply_packs/mortar
 	name = "M402 mortar crate (Mortar x1, Mortar shell backpack x1)"
 	contains = list(

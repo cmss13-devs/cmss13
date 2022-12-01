@@ -6,4 +6,4 @@
 	cost = 20
 	containertype = /obj/structure/largecrate
 	containername = "fuel tank crate"
-	group = "Engineering"
+	group = "Reagent tank"

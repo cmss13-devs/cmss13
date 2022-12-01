@@ -161,7 +161,7 @@
 
 /obj/item/storage/belt/medical/verb/toggle_mode() //A verb that can (should) only be used if in hand/equipped
 	set category = "Object"
-	set name = "Toggle Belt Mode"
+	set name = "Toggle belt mode"
 	set src in usr
 	if(src && ishuman(usr))
 		mode = !mode
@@ -515,7 +515,7 @@
 // M56E HMG gunner belt
 /obj/item/storage/belt/marine/m2c
 	name = "\improper M804 heavygunner storage rig"
-	desc = "The M804 heavygunner storage rig is an M276 pattern toolbelt rig modified to carry ammunition for Heavy Machinegun Systems and engineering tools for the gunner."
+	desc = "The M804 heavygunner storage rig is an M276 pattern toolbelt rig modified to carry ammunition for heavy machinegun systems, and engineering tools for the gunner."
 	icon_state = "m2c_ammo_rig"
 	item_state = "m2c_ammo_rig"
 	item_state_slots = list(
@@ -748,7 +748,7 @@
 
 /obj/item/storage/belt/grenade/large
 	name="\improper M276 pattern M40 Grenade rig Mk. II"
-	desc="The M276 Mk. II is is an upgraded version of the M276 Grenade rig, with more storage capacity."
+	desc="The M276 Mk. II is is an upgraded version of the M276 grenade rig, with more storage capacity."
 	storage_slots = 18
 	max_storage_space = 54
 
@@ -1137,7 +1137,7 @@
 
 obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	set category = "Object"
-	set name = "Detach Revolver Holster"
+	set name = "Detach revolver holster"
 	set src in usr
 	if(ishuman(usr))
 		if(contents.len)

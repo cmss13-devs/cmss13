@@ -183,7 +183,7 @@
 			if(istype(S, /obj/structure/window/framed))
 				var/obj/structure/window/framed/W = S
 				if(!W.unslashable)
-					W.shatter_window(TRUE)
+					W.deconstruct(disassembled = FALSE)
 
 			if(S.opacity)
 				blocked = TRUE
@@ -536,8 +536,12 @@
 	return
 
 /datum/action/xeno_action/activable/rav_spikes/action_cooldown_check()
+	if(!owner)
+		return FALSE
 	if (cooldown_timer_id == TIMER_ID_NULL)
 		var/mob/living/carbon/Xenomorph/X = owner
+		if(!istype(X))
+			return FALSE
 		if (X.mutation_type == RAVAGER_HEDGEHOG)
 			var/datum/behavior_delegate/ravager_hedgehog/BD = X.behavior_delegate
 			return BD.check_shards(shard_cost)

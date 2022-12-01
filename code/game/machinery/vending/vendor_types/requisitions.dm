@@ -9,16 +9,11 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/populate_product_list(var/scale)
 	listed_products = list(
@@ -213,13 +208,33 @@
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
+//Special cargo-specific vendor with vending offsets
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+	var/turf/turf_to_vent_to
+	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
+	else
+		turf_to_vent_to = get_turf(get_step(src, NORTH))
+		if(H.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+		else
+			turf_to_vent_to = get_turf(get_step(src, SOUTH))
+			if(H.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+			else
+				turf_to_vent_to = loc
+	return turf_to_vent_to
+
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
 	icon_state = "req_guns_wall"
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall/almayer)
-
+ 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
 	desc = "An automated supply rack hooked up to a small storage of various firearms and explosives. Can be accessed by any Marine Rifleman."
@@ -229,6 +244,9 @@
 
 	vend_x_offset = 2
 	vend_y_offset = 1
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/populate_product_list(var/scale)
 	listed_products = list(
@@ -291,16 +309,11 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
 	listed_products = list(
@@ -454,6 +467,10 @@
 
 	vend_x_offset = 2
 
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(var/scale)
 	listed_products = list(
 
@@ -483,6 +500,26 @@
 		list("M74 AGM-S Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/HE/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		)
 
+//Special cargo-specific vendor with vending offsets
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
+	
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+	var/turf/turf_to_vent_to
+	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
+	else
+		turf_to_vent_to = get_turf(get_step(src, NORTHWEST))
+		if(H.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+		else
+			turf_to_vent_to = get_turf(get_step(src, SOUTHWEST))
+			if(H.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+			else
+				turf_to_vent_to = loc
+	return turf_to_vent_to
+
 //------------ATTACHMENTS VENDOR---------------
 
 /obj/structure/machinery/cm_vending/sorted/attachments
@@ -494,16 +531,11 @@
 
 	vend_delay = 3
 
-/obj/structure/machinery/cm_vending/sorted/attachments/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/attachments/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/attachments/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
 	listed_products = list(
@@ -549,20 +581,20 @@
 		)
 
 /obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
-	var/turf/T
+	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
-		T = locate(x + vend_x_offset, y + vend_y_offset, z)
+		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
-		T = get_turf(get_step(src, NORTHEAST))
-		if(H.loc == T)
-			T = get_turf(get_step(src, NORTH))
+		turf_to_vent_to = get_turf(get_step(src, NORTHEAST))
+		if(H.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 		else
-			T = get_turf(get_step(src, SOUTHEAST))
-			if(H.loc == T)
-				T = get_turf(get_step(src, SOUTH))
+			turf_to_vent_to = get_turf(get_step(src, SOUTHEAST))
+			if(H.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 			else
-				T = loc
-	return T
+				turf_to_vent_to = loc
+	return turf_to_vent_to
 
 /obj/structure/machinery/cm_vending/sorted/attachments/blend
 	icon_state = "req_attach_wall"
@@ -570,6 +602,7 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall/almayer)
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
 	name = "\improper Armat Systems Squad Attachments Vendor"
@@ -579,6 +612,9 @@
 	hackable = TRUE
 
 	vend_y_offset = 1
+
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad/populate_product_list(var/scale)
 	listed_products = list(
@@ -666,6 +702,9 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Gas Mask", 20, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
 		)
+
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/populate_product_list(var/scale)
 	return

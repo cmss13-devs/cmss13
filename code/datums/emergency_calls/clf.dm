@@ -43,26 +43,26 @@
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
-		to_chat(H, SPAN_ROLE_HEADER("You are a leader of the local resistance group, the Colonial Liberation Front!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Cell Leader of the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/leader, TRUE, TRUE)
 	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC)
 		synths++
-		to_chat(H, SPAN_ROLE_HEADER("You are a multi-purpose synthetic for the local resistance group, the Colonial Liberation Front!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Multi-Purpose Synthetic for the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/synth, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		to_chat(H, SPAN_ROLE_HEADER("You are a medic of the local resistance group, the Colonial Liberation Front!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Medic of the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/medic, TRUE, TRUE)
 	else if(engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
-		to_chat(H, SPAN_ROLE_HEADER("You are an engineer of the local resistance group, the Colonial Liberation Front!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are an Engineer of the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/engineer, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(H.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
-		to_chat(H, SPAN_ROLE_HEADER("You are a specialist of the local resistance group, the Colonial Liberation Front!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Specialist of the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/specialist, TRUE, TRUE)
 	else
-		to_chat(H, SPAN_ROLE_HEADER("You are a member of the local resistance group, the Colonial Liberation Front!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Fighter of the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/soldier, TRUE, TRUE)
 	print_backstory(H)
 

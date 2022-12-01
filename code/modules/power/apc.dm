@@ -741,16 +741,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		SPAN_NOTICE("You start welding [src]'s frame."))
 		playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			if(!src || !WT.remove_fuel(3, user)) return
-			if((stat & BROKEN) || opened == 2)
-				new /obj/item/stack/sheet/metal(loc)
-				user.visible_message(SPAN_NOTICE("[user] welds [src]'s frame apart."),
-				SPAN_NOTICE("You weld [src]'s frame apart."))
-			else
-				new /obj/item/frame/apc(loc)
-				user.visible_message(SPAN_NOTICE("[user] welds [src]'s frame off the wall."),
-				SPAN_NOTICE("You weld [src]'s frame off the wall."))
-			qdel(src)
+			if(!src || !WT.remove_fuel(3, user))
+				return
+			user.visible_message(SPAN_NOTICE("[user] welds [src]'s frame apart."), SPAN_NOTICE("You weld [src]'s frame apart."))
+			deconstruct()
 			return
 	else if(istype(W, /obj/item/frame/apc) && opened && (stat & BROKEN))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -784,6 +778,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return attack_hand(user)
 			user.visible_message(SPAN_DANGER("[user] hits [src] with \the [W]!"), \
 			SPAN_DANGER("You hit [src] with \the [W]!"))
+
+/obj/structure/machinery/power/apc/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		if((stat & BROKEN) || opened == 2)
+			new /obj/item/stack/sheet/metal(loc)
+		else
+			new /obj/item/frame/apc(loc)
+	return ..()
 
 //Attack with hand - remove cell (if cover open) or interact with the APC
 /obj/structure/machinery/power/apc/attack_hand(mob/user)
@@ -909,8 +911,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			shorted = 1
 			if(with_message)
 				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
-			SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
-			SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
 
 		if(APC_WIRE_IDSCAN)
 			locked = 0
@@ -1243,7 +1243,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(cell)
 				cell.ex_act(severity) //More lags woohoo
-			qdel(src)
+			deconstruct(FALSE)
 			return
 
 /obj/structure/machinery/power/apc/proc/set_broken()

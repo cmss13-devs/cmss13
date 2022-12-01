@@ -20,6 +20,7 @@
 	if(ready)
 		readied_players--
 	GLOB.new_player_list -= src
+	GLOB.dead_mob_list -= src
 	return ..()
 
 /mob/new_player/verb/new_player_panel()
@@ -383,9 +384,6 @@
 	new_character.job = job
 	new_character.name = real_name
 	new_character.voice = real_name
-
-	if(client.prefs.disabilities)
-		new_character.disabilities |= NEARSIGHTED
 
 	// Update the character icons
 	// This is done in set_species when the mob is created as well, but

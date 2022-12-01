@@ -132,6 +132,7 @@
 	var/acid_level = 0
 
 	// Mutator-related and other important vars
+	var/mutation_icon_state = null
 	var/mutation_type = null
 	var/datum/mutator_set/individual_mutators/mutators = new
 
@@ -176,8 +177,8 @@
 	/// xenomorph type is given upon spawn
 	var/base_actions
 
-	// Mark tracking --
-	var/obj/effect/alien/resin/marker/tracked_marker = null //this is the resin mark that is currently being tracked by the xeno
+	/// this is the resin mark that is currently being tracked by the xeno
+	var/obj/effect/alien/resin/marker/tracked_marker
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -200,6 +201,7 @@
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
+	var/received_phero_caps = list()
 	var/acid_modifier = 0
 	var/weed_modifier = 0
 	var/evasion_modifier = 0
@@ -303,7 +305,6 @@
 	var/warding_aura = 0
 	var/recovery_aura = 0
 	var/ignore_aura = FALSE // ignore a specific pherom, input type
-
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -662,6 +663,10 @@
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
 
+	if(tracked_marker)
+		tracked_marker.xenos_tracking -= src
+		tracked_marker = null
+
 	if(mind)
 		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
 	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
@@ -954,6 +959,15 @@
 		current_aura = null
 		to_chat(src, SPAN_XENOWARNING("You lose your pheromones."))
 
+	// Also recalculate received pheros now
+	for(var/capped_aura in received_phero_caps)
+		switch(capped_aura)
+			if("frenzy")
+				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
+			if("warding")
+				warding_new = min(warding_new, received_phero_caps[capped_aura])
+			if("recovery")
+				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	evolution_threshold =  caste.evolution_threshold

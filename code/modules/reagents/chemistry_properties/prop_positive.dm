@@ -196,20 +196,21 @@
 /datum/chem_property/positive/painkilling/process(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
-
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
 
 /datum/chem_property/positive/painkilling/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
-
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
-	M.hallucination = max(M.hallucination, potency) //Hallucinations and tox damage
-	M.apply_damage(0.5 *  potency * delta_time, TOX)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
+	M.hallucination = max(M.hallucination, effective_potency) //Hallucinations and tox damage
+	M.apply_damage(0.5 *  effective_potency * delta_time, TOX)
 
 /datum/chem_property/positive/painkilling/process_critical(mob/living/M, var/potency = 1)
-	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * potency, "liver")
-	M.apply_damage(potency, BRAIN)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * effective_potency, "liver")
+	M.apply_damage(effective_potency, BRAIN)
 	M.apply_damage(3, OXY)
 
 /datum/chem_property/positive/hepatopeutic
@@ -489,7 +490,7 @@
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
 	code = "EGN"
-	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrilator. Can not be ingested."
+	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator. Can not be ingested."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 	value = 1

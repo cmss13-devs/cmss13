@@ -163,6 +163,10 @@
 
 #define COMSIG_MOB_POST_CLICK "mob_post_click"
 
+
+//Machine Guns (m56D, M2C)
+#define COMSIG_MOB_MG_EXIT "mob_mg_exit"
+
 // Return a nonzero value to cancel these actions
 #define COMSIG_BINOCULAR_ATTACK_SELF "binocular_attack_self"
 #define COMSIG_BINOCULAR_HANDLE_CLICK "binocular_handle_click"
@@ -392,6 +396,10 @@
 #define COMSIG_BULLET_CHECK_MOB_SKIPPING "bullet_check_mob_skipping"
 	#define COMPONENT_SKIP_MOB (1<<0)
 
+/// Called on point blank for ammo effects
+#define COMSIG_AMMO_POINT_BLANK "ammo_point_blank"
+	#define COMPONENT_CANCEL_AMMO_POINT_BLANK (1<<0)
+
 /// From /obj/item/projectile/handle_mob(): (mob/living/target)
 #define COMSIG_BULLET_PRE_HANDLE_MOB "bullet_pre_handle_mob"
 /// From /obj/item/projectile/handle_mob(): (mob/living/target)
@@ -495,3 +503,6 @@
 // Checks whether the xeno can build a thick structure regardless of hive weeds
 #define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
 	#define COMPONENT_THICK_BYPASS (1<<0)
+
+// Used for smothering fires upon weather event start/stop
+#define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"

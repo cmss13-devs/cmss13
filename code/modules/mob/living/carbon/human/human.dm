@@ -51,28 +51,38 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-	if(internal_organs_by_name)
-		for(var/name in internal_organs_by_name)
-			var/datum/internal_organ/I = internal_organs_by_name[name]
-			if(I)
-				I.owner = null
-			internal_organs_by_name[name] = null
-		internal_organs_by_name = null
-
-	if(limbs)
-		for(var/obj/limb/L in limbs)
-			L.owner = null
-			qdel(L)
-		limbs = null
-
-	assigned_equipment_preset = null
 
 	remove_from_all_mob_huds()
+	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src
 	SShuman.processable_human_list -= src
 
+	QDEL_NULL_LIST(embedded_items)
+	QDEL_LIST_ASSOC_VAL(internal_organs_by_name)
+	QDEL_NULL_LIST(limbs)
+	remove_from_all_mob_huds()
+
 	. = ..()
+
+	overlays_standing = null
+	selected_ability = null
+	assigned_squad = null
+
+	//Equipment slots
+	wear_suit = null
+	w_uniform = null
+	shoes = null
+	belt = null
+	gloves = null
+	glasses = null
+	head = null
+	wear_l_ear = null
+	wear_r_ear = null
+	wear_id = null
+	r_store = null
+	l_store = null
+	s_store = null
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
@@ -112,15 +122,15 @@
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
-	if(severity >= 30)
-		flash_eyes()
+
 
 	var/b_loss = 0
 	var/f_loss = 0
 
 	var/damage = severity
+	var/bomb_armor = getarmor(null, ARMOR_BOMB)
 
-	damage = armor_damage_reduction(GLOB.marine_explosive, damage, getarmor(null, ARMOR_BOMB))
+	damage = armor_damage_reduction(GLOB.marine_explosive, damage, bomb_armor)
 
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
@@ -137,20 +147,28 @@
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
-	var/knockdown_value = min( round( severity*0.1  ,1) ,10)
-	if(knockdown_value > 0)
-		var/obj/item/Item1 = get_active_hand()
-		var/obj/item/Item2 = get_inactive_hand()
-		apply_effect(knockdown_value, WEAKEN)
-		var/knockout_value = min( round( damage*0.1  ,1) ,10)
-		apply_effect( knockout_value , PARALYZE)
-		apply_effect( knockout_value*2 , DAZE)
-		explosion_throw(severity, direction)
+	 /// Reduces effects by armor value.
+	var/bomb_armor_mult = ((CLOTHING_ARMOR_HARDCORE - bomb_armor) * 0.01)
 
-		if(Item1 && isturf(Item1.loc))
-			Item1.explosion_throw(severity, direction)
-		if(Item2 && isturf(Item2.loc))
-			Item2.explosion_throw(severity, direction)
+	if(severity >= 30)
+		flash_eyes(flash_timer = 4 SECONDS * bomb_armor_mult)
+
+	// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
+	var/knockdown_value = severity * 0.1
+	var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
+	var/obj/item/item1 = get_active_hand()
+	var/obj/item/item2 = get_inactive_hand()
+	apply_effect(round(knockdown_minus_armor), WEAKEN)
+	var/knockout_value = damage * 0.1
+	var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
+	apply_effect(round(knockout_minus_armor), PARALYZE)
+	apply_effect(round(knockout_minus_armor) * 2, DAZE)
+	explosion_throw(severity, direction)
+
+	if(item1 && isturf(item1.loc))
+		item1.explosion_throw(severity, direction)
+	if(item2 && isturf(item2.loc))
+		item2.explosion_throw(severity, direction)
 
 	if(damage >= 0)
 		b_loss += damage * 0.5
@@ -1097,6 +1115,20 @@
         return
 
     mind.view_objective_memories(src)
+
+/mob/living/carbon/human/verb/view_research_objective_memory()
+    set name = "View research objectives"
+    set category = "IC"
+
+    if(!mind)
+        to_chat(src, "The game appears to have misplaced your mind datum.")
+        return
+
+    if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
+        return
+
+    mind.view_research_objective_memories(src)
 
 /mob/living/carbon/human/verb/purge_objective_memory()
 	set name = "Reset view objectives"

@@ -17,6 +17,7 @@
 
 	var/mob/living/carbon/Xenomorph/Defender/D = MS.xeno
 	D.mutation_type = DEFENDER_STEELCREST
+	D.mutation_icon_state = DEFENDER_STEELCREST
 	D.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
 	D.steelcrest = TRUE
 	if(D.fortify)
@@ -33,8 +34,8 @@
 		return
 
 	if(bound_xeno.fortify)
-		bound_xeno.icon_state = "[bound_xeno.mutation_type] Defender Fortify"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Steelcrest Defender Fortify"
 		return TRUE
 	if(bound_xeno.crest_defense)
-		bound_xeno.icon_state = "[bound_xeno.mutation_type] Defender Crest"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Steelcrest Defender Crest"
 		return TRUE

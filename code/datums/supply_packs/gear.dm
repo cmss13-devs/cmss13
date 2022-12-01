@@ -5,7 +5,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
 	containername = "Mixed Binoculars Crate"
-	group = "Engineering"
+	group = "Gear"
 	contains = list(
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/device/binoculars/range/designator,
@@ -24,7 +24,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "flare pack crate"
-	group = "Operations"
+	group = "Gear"
 
 
 /datum/supply_packs/motiondetector
@@ -36,7 +36,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/supply
 	containername = "Motion Detector crate"
-	group = "Operations"
+	group = "Gear"
 
 /datum/supply_packs/signal_flares
 	name = "signal flare packs crate (x4)"
@@ -49,7 +49,7 @@
 	cost = 60
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "signal flare pack crate"
-	group = "Operations"
+	group = "Gear"
 
 /datum/supply_packs/fulton
 	name = "fulton recovery device crate (x4)"
@@ -62,7 +62,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "fulton recovery device crate"
-	group = "Operations"
+	group = "Gear"
 
 /datum/supply_packs/nvg
 	name = "M2 Night Vision Goggles Crate (x3)"
@@ -74,4 +74,4 @@
 	cost = 60
 	containertype = /obj/structure/closet/crate/supply
 	containername = "M2 Night Vission Goggles Crate"
-	group = "Operations"
+	group = "Gear"

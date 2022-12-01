@@ -521,6 +521,8 @@
 #include "code\datums\supply_packs\operations.dm"
 #include "code\datums\supply_packs\spec_ammo.dm"
 #include "code\datums\supply_packs\weapons.dm"
+#include "code\datums\supply_packs\restricted_equipement.dm"
+
 #include "code\datums\weather\weather_event.dm"
 #include "code\datums\weather\weather_map_holder.dm"
 #include "code\datums\weather\weather_events\big_red.dm"

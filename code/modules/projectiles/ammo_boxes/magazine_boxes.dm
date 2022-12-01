@@ -50,6 +50,70 @@
 /obj/item/ammo_box/magazine/explosive/empty
 	empty = TRUE
 
+//-----------------------M41A MK1 Rifle Mag Boxes-----------------------
+
+/obj/item/ammo_box/magazine/mk1
+	name = "\improper magazine box (M41A MK1 x 10)"
+	flags_equip_slot = SLOT_BACK
+	//icon_state = "base_m41_mk1"
+	//overlay_gun_type = "_m41_mk1"
+	overlay_ammo_type = "_reg"
+	overlay_content = "_reg"
+	magazine_type = /obj/item/ammo_magazine/rifle/m41aMK1
+
+/obj/item/ammo_box/magazine/mk1/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/mk1/ap
+	name = "\improper magazine box (AP M41A MK1 x 10)"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_ap"
+	overlay_content = "_ap"
+	magazine_type = /obj/item/ammo_magazine/rifle/m41aMK1/ap
+
+/obj/item/ammo_box/magazine/mk1/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/mk1/incen
+	name = "\improper magazine box (Incen M41A MK1 x 10)"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_incen"
+	overlay_content = "_incen"
+	magazine_type = /obj/item/ammo_magazine/rifle/m41aMK1/incendiary
+
+/obj/item/ammo_box/magazine/mk1/incen/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/mk1/toxin
+	name = "\improper magazine box (Toxin M41A MK1 x 10)"
+	flags_equip_slot = SLOT_BACK
+	//overlay_ammo_type = "_toxin"
+	//overlay_content = "_toxin"
+	magazine_type = /obj/item/ammo_magazine/rifle/m41aMK1/toxin
+
+/obj/item/ammo_box/magazine/mk1/toxin/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/mk1/penetrating
+	name = "\improper magazine box (Wall-Piercing M41A MK1 x 10)"
+	flags_equip_slot = SLOT_BACK
+	//overlay_ammo_type = "_penetrating"
+	//overlay_content = "_penetrating"
+	magazine_type = /obj/item/ammo_magazine/rifle/m41aMK1/penetrating
+
+/obj/item/ammo_box/magazine/mk1/penetrating/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/mk1/cluster
+	name = "\improper magazine box (Cluster M41A MK1 x 10)"
+	flags_equip_slot = SLOT_BACK
+	//overlay_ammo_type = "_cluster"
+	//overlay_content = "_cluster"
+	magazine_type = /obj/item/ammo_magazine/rifle/m41aMK1/cluster
+
+/obj/item/ammo_box/magazine/mk1/cluster/empty
+	empty = TRUE
+
 //-----------------------M39 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m39

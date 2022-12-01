@@ -160,6 +160,11 @@ var/list/department_radio_keys = list(
 		for(var/obj/O as anything in listening_obj)
 			if(O) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking, italics)
+				
+	var/static/regex/netspeak = regex("\\b(lol|brb|wtf|lmao|sus|kek|idk|omg)\\b", "i")
+	if(findtext(message, netspeak))
+		to_chat(src, "<span class='warning'>Netspeak is not permitted in character!</span>")
+		return
 
 	//used for STUI to stop logging of animal messages and radio
 	//if(!nolog)

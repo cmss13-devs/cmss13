@@ -157,6 +157,7 @@
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/smartfridge/ui_static_data(mob/user)
+	. = list()
 	.["networked"] = is_in_network()
 
 /obj/structure/machinery/smartfridge/ui_data(mob/user)

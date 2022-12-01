@@ -589,6 +589,13 @@
 	required_reagents = list("grapejuice" = 2, "cola" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/mojito
+	name = "Mojito"
+	id = "mojito"
+	result = "mojito"
+	required_reagents = list("rum" = 1, "sugar" = 1, "limejuice" = 1, "sodawater" = 1)
+	result_amount = 4
+
 
 
 ////DRINKS THAT REQUIRED IMPROVED SPRITES BELOW:: -Agouri/////

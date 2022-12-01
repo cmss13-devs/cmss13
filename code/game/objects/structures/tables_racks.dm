@@ -584,6 +584,12 @@
 	table_prefix = "alm"
 	parts = /obj/item/frame/table/almayer
 
+/obj/structure/surface/table/reinforced/cloth
+	name = "cloth table"
+	desc = "A fancy cloth-topped wooden table, bolted to the floor. Fit for formal occasions."
+	icon_state = "cloth"
+	table_prefix = "cloth"
+
 /*
  * Racks
  */

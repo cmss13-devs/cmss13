@@ -397,7 +397,7 @@
 //Cake as a base of a dough, 5milk, 5sugar
 
 /datum/recipe/cake
-	reagents = list("milk" = 5, "sugar" = 5)
+	reagents = list("milk" = 5, "sugar" = 15)
 
 /datum/recipe/cake/plaincake
 	items = list(

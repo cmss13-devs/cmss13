@@ -196,98 +196,36 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 /*
  * Cardboard
  */
-var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
-	new/datum/stack_recipe("box", /obj/item/storage/box), \
-	new/datum/stack_recipe("donut box", /obj/item/storage/donut_box/empty), \
-	new/datum/stack_recipe("egg box", /obj/item/storage/fancy/egg_box), \
-	new/datum/stack_recipe("light tubes", /obj/item/storage/box/lights/tubes), \
-	new/datum/stack_recipe("light bulbs", /obj/item/storage/box/lights/bulbs), \
-	new/datum/stack_recipe("mouse traps", /obj/item/storage/box/mousetraps), \
-	new/datum/stack_recipe("cardborg suit", /obj/item/clothing/suit/cardborg, 3), \
-	new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/cardborg), \
-	new/datum/stack_recipe("pizza box", /obj/item/pizzabox), \
-	null, \
-	new/datum/stack_recipe_list("folders",list( \
-		new/datum/stack_recipe("blue folder", /obj/item/folder/blue), \
-		new/datum/stack_recipe("grey folder", /obj/item/folder), \
-		new/datum/stack_recipe("red folder", /obj/item/folder/red), \
-		new/datum/stack_recipe("white folder", /obj/item/folder/white), \
-		new/datum/stack_recipe("yellow folder", /obj/item/folder/yellow), \
-		)), \
-	null, \
-	new/datum/stack_recipe_list("empty ammo boxes",list( \
-		new/datum/stack_recipe("empty magazine box (88 Mod 4 AP)", /obj/item/ammo_box/magazine/mod88/empty), \
-		new/datum/stack_recipe("empty magazine box (M4A3)", /obj/item/ammo_box/magazine/m4a3/empty), \
-		new/datum/stack_recipe("empty magazine box (M4A3 AP)", /obj/item/ammo_box/magazine/m4a3/ap/empty), \
-		new/datum/stack_recipe("empty magazine box (M4A3 HP)", /obj/item/ammo_box/magazine/m4a3/hp/empty), \
-		new/datum/stack_recipe("empty magazine box (SU-6)", /obj/item/ammo_box/magazine/su6/empty), \
-		new/datum/stack_recipe("empty magazine box (VP78)", /obj/item/ammo_box/magazine/vp78/empty), \
+/proc/generate_cardboard_recipes()
+	var/list/datum/stack_recipe/recipes = list ( \
+		new/datum/stack_recipe("box", /obj/item/storage/box), \
+		new/datum/stack_recipe("donut box", /obj/item/storage/donut_box/empty), \
+		new/datum/stack_recipe("egg box", /obj/item/storage/fancy/egg_box), \
+		new/datum/stack_recipe("light tubes", /obj/item/storage/box/lights/tubes), \
+		new/datum/stack_recipe("light bulbs", /obj/item/storage/box/lights/bulbs), \
+		new/datum/stack_recipe("mouse traps", /obj/item/storage/box/mousetraps), \
+		new/datum/stack_recipe("cardborg suit", /obj/item/clothing/suit/cardborg, 3), \
+		new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/cardborg), \
+		new/datum/stack_recipe("pizza box", /obj/item/pizzabox), \
 		null, \
-		new/datum/stack_recipe("empty speed loader box (M44)", /obj/item/ammo_box/magazine/m44/empty), \
-		new/datum/stack_recipe("empty speed loader box (M44 Heavy)", /obj/item/ammo_box/magazine/m44/heavy/empty), \
-		new/datum/stack_recipe("empty speed loader box (M44 Marksman)", /obj/item/ammo_box/magazine/m44/marksman/empty), \
+		new/datum/stack_recipe_list("folders",list( \
+			new/datum/stack_recipe("blue folder", /obj/item/folder/blue), \
+			new/datum/stack_recipe("grey folder", /obj/item/folder), \
+			new/datum/stack_recipe("red folder", /obj/item/folder/red), \
+			new/datum/stack_recipe("white folder", /obj/item/folder/white), \
+			new/datum/stack_recipe("yellow folder", /obj/item/folder/yellow), \
+			)), \
 		null, \
-		new/datum/stack_recipe("empty magazine box (M39)", /obj/item/ammo_box/magazine/m39/empty), \
-		new/datum/stack_recipe("empty magazine box (M39 AP)", /obj/item/ammo_box/magazine/m39/ap/empty), \
-		new/datum/stack_recipe("empty magazine box (M39 Ext)", /obj/item/ammo_box/magazine/m39/ext/empty), \
-		new/datum/stack_recipe("empty magazine box (M39 Incen)", /obj/item/ammo_box/magazine/m39/incen/empty), \
-		new/datum/stack_recipe("empty magazine box (M39 LE)", /obj/item/ammo_box/magazine/m39/le/empty), \
-		null, \
-		new/datum/stack_recipe("empty magazine box (L42A)", /obj/item/ammo_box/magazine/l42a/empty), \
-		new/datum/stack_recipe("empty magazine box (L42A AP)", /obj/item/ammo_box/magazine/l42a/ap/empty), \
-		new/datum/stack_recipe("empty magazine box (L42A Ext)", /obj/item/ammo_box/magazine/l42a/ext/empty), \
-		new/datum/stack_recipe("empty magazine box (L42A Incen)", /obj/item/ammo_box/magazine/l42a/incen/empty), \
-		new/datum/stack_recipe("empty magazine box (L42A LE)", /obj/item/ammo_box/magazine/l42a/le/empty), \
-		null, \
-		new/datum/stack_recipe("empty magazine box (M41A)", /obj/item/ammo_box/magazine/empty), \
-		new/datum/stack_recipe("empty magazine box (M41A AP)", /obj/item/ammo_box/magazine/ap/empty), \
-		new/datum/stack_recipe("empty magazine box (M41A Explosive)", /obj/item/ammo_box/magazine/explosive/empty), \
-		new/datum/stack_recipe("empty magazine box (M41A Ext)", /obj/item/ammo_box/magazine/ext/empty), \
-		new/datum/stack_recipe("empty magazine box (M41A Incen)", /obj/item/ammo_box/magazine/incen/empty), \
-		new/datum/stack_recipe("empty magazine box (M41A LE)", /obj/item/ammo_box/magazine/le/empty), \
-		null, \
-		new/datum/stack_recipe("empty shotgun shell box (Beanbag)", /obj/item/ammo_box/magazine/shotgun/beanbag/empty), \
-		new/datum/stack_recipe("empty shotgun shell box (Buckshot)", /obj/item/ammo_box/magazine/shotgun/buckshot/empty), \
-		new/datum/stack_recipe("empty shotgun shell box (Flechette)", /obj/item/ammo_box/magazine/shotgun/flechette/empty), \
-		new/datum/stack_recipe("empty shotgun shell box (Incendiary)", /obj/item/ammo_box/magazine/shotgun/incendiary/empty), \
-		new/datum/stack_recipe("empty shotgun shell box (Slugs)", /obj/item/ammo_box/magazine/shotgun/empty), \
-		null, \
-		new/datum/stack_recipe("empty 45-70 bullets box", /obj/item/ammo_box/magazine/lever_action/empty), \
-		new/datum/stack_recipe("empty 45-70 bullets box (Blanks)", /obj/item/ammo_box/magazine/lever_action/training/empty), \
-		new/datum/stack_recipe("empty 45-70 bullets box (Trackers)", /obj/item/ammo_box/magazine/lever_action/tracker/empty), \
-		new/datum/stack_recipe("empty 45-70 bullets box (Marksman)", /obj/item/ammo_box/magazine/lever_action/marksman/empty), \
-		null, \
-		new/datum/stack_recipe("empty .458 bullets box", /obj/item/ammo_box/magazine/lever_action/xm88/empty), \
-		null, \
-		new/datum/stack_recipe("empty smg ammo box (10x20mm)", /obj/item/ammo_box/rounds/smg/empty), \
-		new/datum/stack_recipe("empty smg ammo box (10x20mm AP)", /obj/item/ammo_box/rounds/smg/ap/empty), \
-		new/datum/stack_recipe("empty smg ammo box (10x20mm Incen)", /obj/item/ammo_box/rounds/smg/incen/empty), \
-		new/datum/stack_recipe("empty smg ammo box (10x20mm LE)", /obj/item/ammo_box/rounds/smg/le/empty), \
-		null, \
-		new/datum/stack_recipe("empty rifle ammo box (10x24mm)", /obj/item/ammo_box/rounds/empty), \
-		new/datum/stack_recipe("empty rifle ammo box (10x24mm AP)", /obj/item/ammo_box/rounds/ap/empty), \
-		new/datum/stack_recipe("empty rifle ammo box (10x24mm Incen)", /obj/item/ammo_box/rounds/incen/empty), \
-		new/datum/stack_recipe("empty rifle ammo box (10x24mm LE)", /obj/item/ammo_box/rounds/le/empty), \
-		null, \
-		new/datum/stack_recipe("empty box of MREs", /obj/item/ammo_box/magazine/misc/mre/empty), \
-		new/datum/stack_recipe("empty box of M94 Marking Flare Packs", /obj/item/ammo_box/magazine/misc/flares/empty), \
-		new/datum/stack_recipe("empty box of flashlights", /obj/item/ammo_box/magazine/misc/flashlight/empty), \
-		new/datum/stack_recipe("empty box of High-Capacity Power Cells", /obj/item/ammo_box/magazine/misc/power_cell/empty), \
-		null, \
-		new/datum/stack_recipe("empty magazine box (M16)", /obj/item/ammo_box/magazine/M16/empty), \
-		new/datum/stack_recipe("empty magazine box (M16 AP)", /obj/item/ammo_box/magazine/M16/ap/empty), \
-		null, \
-		new/datum/stack_recipe("empty magazine box (Type71)", /obj/item/ammo_box/magazine/type71/empty), \
-		new/datum/stack_recipe("empty magazine box (Type71 AP)", /obj/item/ammo_box/magazine/type71/ap/empty), \
-		null, \
-		new/datum/stack_recipe("empty rifle ammo box (5.45x39mm)", /obj/item/ammo_box/rounds/type71/empty), \
-		new/datum/stack_recipe("empty rifle ammo box (5.45x39mm AP)", /obj/item/ammo_box/rounds/type71/ap/empty), \
+	)
+	var/list/ammo_box_recipes = list()
+	for(var/obj/item/ammo_box/AB as anything in (subtypesof(/obj/item/ammo_box)))
+		if(initial(AB.empty))
+			ammo_box_recipes += new/datum/stack_recipe(initial(AB.name), AB)
 
+	recipes += new/datum/stack_recipe_list("empty ammo boxes", ammo_box_recipes)
+	return recipes
 
-		)) \
-)
-
-/obj/item/stack/sheet/cardboard //BubbleWrap
+/obj/item/stack/sheet/cardboard	//BubbleWrap
 	name = "cardboard"
 	desc = "Large sheets of card, like boxes folded flat."
 	singular_name = "cardboard sheet"
@@ -296,8 +234,13 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	stack_id = "cardboard"
 
 /obj/item/stack/sheet/cardboard/New(var/loc, var/amount=null)
-	recipes = cardboard_recipes
+	recipes = GLOB.cardboard_recipes
 	return ..()
+
+/obj/item/stack/sheet/cardboard/attack_self(mob/user)
+	if(!recipes)
+		recipes = GLOB.cardboard_recipes
+	..()
 
 /obj/item/stack/sheet/cardboard/small_stack
 	amount = STACK_10

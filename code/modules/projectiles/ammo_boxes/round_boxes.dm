@@ -31,6 +31,15 @@
 /obj/item/ammo_box/rounds/incen/empty
 	empty = TRUE
 
+/obj/item/ammo_box/rounds/heap
+	name = "rifle ammunition box (10x24mm HEAP)"
+	desc = "A 10x24mm high-explosive armor-piercing ammunition box. Used to refill magazines. It comes with a leather strap allowing to wear it on the back."
+	overlay_content = "_expl"
+	default_ammo = /datum/ammo/bullet/rifle/heap
+
+/obj/item/ammo_box/rounds/heap/empty
+	empty = TRUE
+
 //----------------10x20mm Ammunition Boxes (for M39 SMG)------------------
 
 /obj/item/ammo_box/rounds/smg
@@ -76,6 +85,16 @@
 /obj/item/ammo_box/rounds/smg/incen/empty
 	empty = TRUE
 
+/obj/item/ammo_box/rounds/smg/heap
+	name = "SMG ammunition box (10x20mm HEAP)"
+	desc = "A 10x20mm armor-piercing high-explosive ammunition box. Used to refill M39 HEAP magazines. It comes with a leather strap allowing to wear it on the back."
+	caliber = "10x20mm"
+	overlay_content = "_expl"
+	default_ammo = /datum/ammo/bullet/smg/heap
+
+/obj/item/ammo_box/rounds/smg/heap/empty
+	empty = TRUE
+
 //----------------5.45x39mm Ammunition Boxes (for UPP Type71 family)------------------
 
 /obj/item/ammo_box/rounds/type71
@@ -99,4 +118,15 @@
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
 /obj/item/ammo_box/rounds/type71/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/rounds/type71/heap
+	name = "rifle ammunition box (5.45x39mm HEAP)"
+	desc = "A 5.45x39mm high-explosive armor-piercing ammunition box. Used to refill Type71 HEAP magazines. It comes with a leather strap allowing to wear it on the back."
+	icon_state = "base_type71"
+	overlay_gun_type = "_rounds_type71"
+	overlay_content = "_type71_heap"
+	default_ammo = /datum/ammo/bullet/rifle/type71/heap
+
+/obj/item/ammo_box/rounds/type71/heap/empty
 	empty = TRUE

@@ -275,26 +275,27 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/sliceable/meatbread
 
-//Pizza the base is a flatdough and a tomato.
+//Pizza the base is a flatdough and a 5u of tomato.
 
-/datum/recipe/pizzamargherita
+/datum/recipe/pizza
+	reagents = list("tomatojuice" = 5)
+
+/datum/recipe/pizza/pizzamargherita
 	items = list(
 		/obj/item/reagent_container/food/snacks/sliceable/flatdough,
 		/obj/item/reagent_container/food/snacks/cheesewedge,
-		/obj/item/reagent_container/food/snacks/grown/tomato
 	)
 	result = /obj/item/reagent_container/food/snacks/sliceable/pizza/margherita
 
-/datum/recipe/mushroompizza
+/datum/recipe/pizza/mushroompizza
 	items = list(
 		/obj/item/reagent_container/food/snacks/sliceable/flatdough,
 		/obj/item/reagent_container/food/snacks/grown/mushroom,
 		/obj/item/reagent_container/food/snacks/cheesewedge,
-		/obj/item/reagent_container/food/snacks/grown/tomato
 	)
 	result = /obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza
 
-/datum/recipe/vegetablepizza
+/datum/recipe/pizza/vegetablepizza
 	items = list(
 		/obj/item/reagent_container/food/snacks/sliceable/flatdough,
 		/obj/item/reagent_container/food/snacks/grown/eggplant,
@@ -305,12 +306,11 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza
 
-/datum/recipe/meatpizza
+/datum/recipe/pizza/meatpizza
 	items = list(
 		/obj/item/reagent_container/food/snacks/sliceable/flatdough,
 		/obj/item/reagent_container/food/snacks/meat,
 		/obj/item/reagent_container/food/snacks/cheesewedge,
-		/obj/item/reagent_container/food/snacks/grown/tomato
 	)
 	result = /obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza
 

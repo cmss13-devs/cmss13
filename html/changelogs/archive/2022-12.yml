@@ -1,0 +1,42 @@
+2022-12-01:
+  QuickLoad:
+  - spellcheck: Fixes numerous capitalization errors in ERTs, Contractors are specified
+      from VAIPO
+  - spellcheck: UCP MK3 for Sappers
+  ThePiachu:
+  - rscadd: IOs can now pick a radio telephone as their starting gear if they prefer
+      to focus on communication over having extra backpack space.
+  - rscdel: Removed a dupe empty Pressurized Reagent Canister Pouch from the Synth
+      vendor.
+  - spellcheck: Made sure vendors and medilathe properly and consistently referred
+      to Pressurized Reagent Canister Pouches.
+  Unknownity:
+  - rscadd: The Soda and Booze dispensers have obtained additional drinks.
+  - rscadd: The grocery fridge has been filled with more unique fruit and vegetables.
+  - rscadd: The Officer's Mess meat fridge has been filled with carp meat.
+  - rscadd: A new condiment bottle has surfaced from Shivas Snowball, you can find
+      it there and on the USS Almayer inside the main kitchen's freezer crate.
+  - rscadd: Added a new alcoholic drink, the Mojito! The recipe to make it is roughly
+      the same as in real life.
+  - bugfix: Soda and Booze dispensers are now actually wrenchable.
+  - bugfix: Fixed certain drinks not having any sprites.
+  - bugfix: Fixed Primordial Cheese not containing universal enzyme.
+  Usnpeepoo, Drathek:
+  - rscadd: Pheromones can be capped on xenomorphs, and you can cap specific pheromones
+      at specific values
+  - balance: Berserkers are capped to Moderate pheromones with frenzy, other pheromones
+      are not capped
+  - balance: Berserkers apprehend is now a second shorter.
+  - balance: Berserkers rage lockout has been increased by a second
+  harryob:
+  - spellcheck: disentegrates -> disintegrates, englufs -> engulfs
+  - spellcheck: developer -> maintainer
+  - code_imp: added some extra checks to the research data terminal's code
+  kugamo:
+  - rscadd: Fire is now affected by the weather, going out quicker in storms!
+  nauticall:
+  - rscadd: Adds cloth tables, a few flower vases, and some table flags to game code.
+      Currently only admin spawn.
+  - code_imp: Added items/prop.dm as a new file for storing prop items inside of.
+  realforest2001:
+  - rscadd: Survivor CLs now use the same rank they'd have on the ship.

@@ -32,26 +32,26 @@
 
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani squad leader!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Squad Leader!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_leader, TRUE, TRUE)
 	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
 		synths++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani support synthetic!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Support Synthetic!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/synth, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani medic!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Medic!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_medic, TRUE, TRUE)
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
 		smartgunners++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani heavy gunner!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Heavy Gunner!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_gunner, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
 		heavies++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani sniper!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Sniper!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_sniper, TRUE, TRUE)
 	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani mercenary!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Operator!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_standard, TRUE, TRUE)
 
 	print_backstory(mob)
@@ -124,18 +124,18 @@
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))       //First one spawned is always the leader.
 		leader = H
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani squad leader!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Squad Leader!"))
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani medical investigator!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Medical Investigator!"))
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_med_investigator, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		heavies++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani heavy gunner!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Heavy Gunner!"))
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_gunner, TRUE, TRUE)
 	else
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani detainer!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Detainer!"))
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
 
 	print_backstory(H)

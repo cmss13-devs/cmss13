@@ -86,7 +86,7 @@
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
 
 /obj/item/reagent_container/food/condiment/on_reagent_change()
-	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco")
+	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco" || icon_state == "coldsauce_cole")
 		return
 	if(reagents.reagent_list.len > 0)
 		switch(reagents.get_master_reagent_id())
@@ -216,3 +216,12 @@
 	desc = "A bottle of Weyland-Yutani brand Tabasco hot sauce."
 	icon_state = "hotsauce_tabasco"
 	item_state = "hotsauce_tabasco"
+
+/obj/item/reagent_container/food/condiment/coldsauce
+	name = "Cole's Cold bottle"
+	desc = "A bottle of cold sauce locally produced in Shivas Snowball. You probably shouldn't drink this on its own."
+	icon_state = "coldsauce_cole"
+
+/obj/item/reagent_container/food/condiment/coldsauce/Initialize()
+	. = ..()
+	reagents.add_reagent("frostoil", 60)

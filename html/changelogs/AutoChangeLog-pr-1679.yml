@@ -1,7 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "Adds new trait \"opiate receptor deficiency\" which reduces potency of painkilling effects."
-  - rscadd: "Adds a trait point (now at two) for use in character creation."
-  - refactor: "Refactors the poor eyesight preference into the trait system."
-  - spellcheck: "Removes extraneous wording around robotic limb preferences."

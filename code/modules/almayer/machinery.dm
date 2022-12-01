@@ -296,7 +296,7 @@
 
 /obj/structure/prop/almayer/ship_memorial/centcomm
 	name = "slab of remembrance"
-	desc = "A memorial to all Development Team members that have retired from working on CM. No mentor names are present."
+	desc = "A memorial to all Maintainer Team members that have retired from working on CM. No mentor names are present."
 
 
 /obj/structure/prop/almayer/ship_memorial/centcomm/admin

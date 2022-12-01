@@ -1,5 +1,20 @@
 // add all the gear in this group.
 
+/datum/supply_packs/binocs
+	name = "Mixed Binoculars Crate (x2 per, x6 total)"
+	cost = 20
+	containertype = /obj/structure/closet/crate/green
+	containername = "Mixed Binoculars Crate"
+	group = "Engineering"
+	contains = list(
+		/obj/item/device/binoculars/range/designator,
+		/obj/item/device/binoculars/range/designator,
+		/obj/item/device/binoculars/range,
+		/obj/item/device/binoculars/range,
+		/obj/item/device/binoculars,
+		/obj/item/device/binoculars
+	)
+
 /datum/supply_packs/flares
 	name = "flare packs crate (x20)"
 	contains = list(

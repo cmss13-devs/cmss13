@@ -156,11 +156,6 @@
 /obj/structure/machinery/smartfridge/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-/obj/structure/machinery/smartfridge/ui_status(mob/user, datum/ui_state/state)
-	. = ..()
-	if(inoperable())
-		return UI_CLOSE
-
 /obj/structure/machinery/smartfridge/ui_static_data(mob/user)
 	.["networked"] = is_in_network()
 
@@ -266,10 +261,8 @@
 
 	switch(action)
 		if("vend")
-			if(!ispowered)
+			if(inoperable())
 				to_chat(user, SPAN_WARNING("\The [src] has no power."))
-				return FALSE
-			if (!in_range(src, usr))
 				return FALSE
 			if(is_secure_fridge)
 				if(locked == FRIDGE_LOCK_COMPLETE)
@@ -302,10 +295,8 @@
 				if (i <= 0)
 					return TRUE
 		if("transfer")
-			if(!ispowered)
-				to_chat(user, SPAN_WARNING("[src] has no power."))
-				return FALSE
-			if (!in_range(src, usr))
+			if(inoperable())
+				to_chat(user, SPAN_WARNING("\The [src] has no power."))
 				return FALSE
 			if(is_secure_fridge)
 				if(locked == FRIDGE_LOCK_COMPLETE)

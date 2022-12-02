@@ -1,6 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - rscadd: "Explosion knockout is now half that of explosion knockdowns."
-  - rscadd: "Bomb armor now reduces the stun and flash timer on explosions for marines. For grenadier armor, this means it's roughly halved."
-  - rscadd: "Xenomorphs are no longer slept by explosions."

@@ -362,6 +362,46 @@ Defined in conflicts.dm of the #defines folder.
 	item_state = ""
 	w_class = SIZE_TINY
 
+// BOOM, HEADSHOT!
+// https://www.youtube.com/watch?v=olm7xC-gBMY
+/obj/item/attachable/bayonet/combat_knife
+	name = "\improper Combat Knife"
+	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon_state = "fighting_knife"
+	item_state = "combat_knife"
+	desc = "I CAN DANCE ALL DAY, I CAN DANCE ALL DAY! TRY ME, TRY ME, COME ON!"
+	sharp = IS_SHARP_ITEM_ACCURATE
+	force = MELEE_FORCE_VERY_STRONG
+	throwforce = MELEE_FORCE_VERY_STRONG
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 7
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_speed = 6
+	melee_mod = MELEE_FORCE_STRONG
+	 /// You run faster with a knife!
+	var/move_delay_mult = 0.8
+
+/obj/item/attachable/bayonet/combat_knife/pickup(mob/user, silent)
+	. = ..()
+	RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, /obj/item/attachable/bayonet/combat_knife/proc/handle_movedelay)
+
+/obj/item/attachable/bayonet/combat_knife/proc/handle_movedelay(var/mob/user, list/movedata)
+	SIGNAL_HANDLER
+	if(src == user.get_active_hand())
+		movedata["move_delay"] *= move_delay_mult
+		var/rng =  rand(0, 100)
+		switch(rng)
+			if(0 to 1)
+				user.visible_message(SPAN_NOTICE("[user] jumps and swerves in the air!?"), SPAN_NOTICE("You perform tactical evasive maneuvers."))
+			if(1 to 5)
+				user.visible_message(SPAN_NOTICE("[user] starts hopping around for some reason."), SPAN_NOTICE("You perform evasive maneuvers."))
+			if(6 to 10)
+				user.visible_message(SPAN_NOTICE("[user] looks at their [src] with a strange expression."), SPAN_NOTICE("Why doesn't everyone do this? Don't they know you run faster with a knife?"))
+
+/obj/item/attachable/bayonet/combat_knife/dropped(mob/user, silent)
+	. = ..()
+	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, /obj/item/attachable/bayonet/combat_knife/proc/handle_movedelay)
+
 /obj/item/attachable/extended_barrel
 	name = "extended barrel"
 	desc = "The lengthened barrel speeds up and stabilizes the bullet, increasing velocity and accuracy."

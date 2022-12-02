@@ -134,7 +134,7 @@
 	desc = "A bright fluorescent tube light. Looking at it for too long makes your eyes go watery."
 	anchored = 1
 	layer = FLY_LAYER
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
@@ -722,7 +722,7 @@
 	anchored = 1
 	density = 0
 	layer = BELOW_TABLE_LAYER
-	use_power = 2
+	use_power = POWER_USE_ACTIVE_POWER
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list

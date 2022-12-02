@@ -9,7 +9,7 @@
 	var/obj/structure/machinery/sleeper/connected = null
 	anchored = TRUE //About time someone fixed this.
 	density = FALSE
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 40
 
 
@@ -248,7 +248,7 @@
 	var/reagent_removed_per_second = AMOUNT_PER_TIME(3, 1 SECONDS)
 	var/dialysis_started_reagent_vol = null // how many reagents the occupant had in them when we STARTED dialysis
 
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 15
 	active_power_usage = 200 //builtin health analyzer, dialysis machine, injectors.
 

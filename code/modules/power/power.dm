@@ -7,7 +7,7 @@
 	var/datum/powernet/powernet = null
 	var/directwired = 1		// by default, power machines are connected by a cable in a neighbouring turf
 							// if set to 0, requires a 0-X cable on this turf
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	idle_power_usage = 0
 	active_power_usage = 0
 

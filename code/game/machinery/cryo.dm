@@ -12,7 +12,7 @@
 	var/autoeject = FALSE
 	var/release_notice = FALSE
 	var/on = FALSE
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 20
 	active_power_usage = 200
 

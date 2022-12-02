@@ -7,7 +7,7 @@
 	var/metal_amount = 0
 	var/operating = 0
 	var/obj/item/robot_parts/being_built = null
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 40
 	active_power_usage = 10000
 

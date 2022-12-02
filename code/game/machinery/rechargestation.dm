@@ -5,7 +5,7 @@
 	desc = "A recharge and repair station for robots and synthetics. Simply put the synthetic in need of repair in here and they will be fixed up in no time!"
 	density = TRUE
 	anchored = TRUE
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 50
 	active_power_usage = 50
 	var/mob/living/occupant = null

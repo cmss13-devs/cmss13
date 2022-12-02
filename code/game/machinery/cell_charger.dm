@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "ccharger0"
 	anchored = 1
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 5
 	active_power_usage = 40000	//40 kW. (this the power drawn when charging)
 	power_channel = POWER_CHANNEL_EQUIP

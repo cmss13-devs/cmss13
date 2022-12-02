@@ -173,7 +173,7 @@ var/list/ai_verbs_default = list(
 /obj/structure/machinery/ai_powersupply
 	name="Power Supply"
 	active_power_usage=1000
-	use_power = 2
+	use_power = POWER_USE_ACTIVE_POWER
 	power_channel = POWER_CHANNEL_EQUIP
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100

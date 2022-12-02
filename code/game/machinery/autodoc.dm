@@ -21,7 +21,7 @@
 	var/obj/structure/machinery/autodoc_console/connected
 
 	//It uses power
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 15
 	active_power_usage = 450 //Capable of doing various activities
 
@@ -696,7 +696,7 @@
 	anchored = 1 //About time someone fixed this.
 	density = 0
 
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 40
 
 /obj/structure/machinery/autodoc_console/Initialize()

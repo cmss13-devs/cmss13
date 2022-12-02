@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "recharger"
 	anchored = 1
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 4
 	active_power_usage = 15000	//15 kW
 	var/obj/item/charging = null

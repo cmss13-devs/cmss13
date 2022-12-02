@@ -91,7 +91,7 @@ Class Procs:
 	name = "machinery"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	var/stat = 0
-	var/use_power = 1
+	var/use_power = POWER_USE_IDLE_POWER
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
 	var/needs_power = TRUE

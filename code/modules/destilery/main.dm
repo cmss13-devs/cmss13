@@ -21,7 +21,7 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 10
 	active_power_usage = 1000
 
@@ -92,7 +92,7 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 10
 	active_power_usage = 500
 
@@ -161,7 +161,7 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 10
 	active_power_usage = 10000
 
@@ -226,7 +226,7 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 10
 	active_power_usage = 500
 
@@ -250,7 +250,7 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 10
 	active_power_usage = 10000
 

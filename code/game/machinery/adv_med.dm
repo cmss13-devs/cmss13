@@ -8,7 +8,7 @@
 	density = 1
 	anchored = 1
 
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 60
 	active_power_usage = 10000	//10 kW. It's a big all-body scanner.
 	var/mob/living/carbon/occupant

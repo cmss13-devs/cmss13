@@ -557,6 +557,7 @@
 
 	req_access = list(ACCESS_WY_CORPORATE)
 	var/req_role = JOB_CORPORATE_LIAISON
+	black_market_value = BLACK_MARKET_VALUE_EXCELLENT
 
 
 /obj/item/storage/pill_bottle/ultrazine/proc/id_check(mob/user)

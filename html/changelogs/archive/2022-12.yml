@@ -40,3 +40,20 @@
   - code_imp: Added items/prop.dm as a new file for storing prop items inside of.
   realforest2001:
   - rscadd: Survivor CLs now use the same rank they'd have on the ship.
+2022-12-02:
+  BlackDragon:
+  - qol: Increased the maximum number of fields for paper to 50.
+  Misttyy:
+  - bugfix: 'Fixes IFF being broken for WY Goons.
+
+      :cl:'
+  Molto:
+  - spellcheck: fixed cryopod typo
+  ThePiachu:
+  - refactor: Refactored the code around ammo boxes to be in a few smaller files rather
+      than one big file.
+  carlarctg:
+  - rscadd: Explosion knockout is now half that of explosion knockdowns.
+  - rscadd: Bomb armor now reduces the stun and flash timer on explosions for marines.
+      For grenadier armor, this means it's roughly halved.
+  - rscadd: Xenomorphs are no longer slept by explosions.

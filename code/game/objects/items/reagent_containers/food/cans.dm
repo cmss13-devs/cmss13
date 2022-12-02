@@ -120,8 +120,6 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	crushed = TRUE
-	icon_state = "[icon_state]_crushed"
 	var/message
 	var/obj/limb/L
 	L = H.get_limb(H.zone_selected)
@@ -141,6 +139,12 @@
 			message = "under [user.gender == MALE ? "his" : "her"] foot!"
 		else
 			message = "between [user.gender == MALE ? "his" : "her"] hands"
+			to_chat(user, SPAN_NOTICE("You start crushing the [name] between your hands!"))
+			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//crushing with hands takes great effort and might
+				return
+
+	crushed = TRUE
+	icon_state = "[icon_state]_crushed"
 	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]!"), null, null, CHAT_TYPE_FLUFF_ACTION)
 	playsound(src,"sound/items/can_crush.ogg")
 

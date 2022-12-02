@@ -386,11 +386,11 @@
 //-----------------------Flamethrower Canister Box-----------------------
 
 /obj/item/ammo_box/magazine/napalm
-	name = "M240 UT-Napthal Fuel (UT x 4)"
-	//icon_state = ""
+	name = "\improper M240 UT-Napthal Fuel (UT x 4)"
+	//icon_state = "napalm"
 	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = ""
-	overlay_gun_type = ""
+	//overlay_ammo_type = "_ut"
+	//overlay_gun_type = "_ut"
 	num_of_magazines = 4
 	magazine_type = /obj/item/ammo_magazine/flamer_tank
 
@@ -398,11 +398,10 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/napalm/b_gel
-	name = "M240 Napthal B-Gel (B x 4)"
-	//icon_state = ""
+	name = "\improper M240 Napthal B-Gel (B x 4)"
 	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = ""
-	overlay_gun_type = ""
+	//overlay_ammo_type = "_b"
+	//overlay_gun_type = "_b"
 	num_of_magazines = 4
 	magazine_type = /obj/item/ammo_magazine/flamer_tank/gellied
 
@@ -412,11 +411,11 @@
 //-----------------------Mortar Shells Box-----------------------
 
 /obj/item/ammo_box/magazine/mortar
-	name = "M402 mortar shells box (HE x6)"
-	//icon_state = ""
+	name = "\improper M402 mortar shells box (HE x6)"
+	//icon_state = "base_mortar"
 	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = ""
-	overlay_gun_type = ""
+	//overlay_ammo_type = "_he"
+	//overlay_content = "_he"
 	num_of_magazines = 6
 	magazine_type = /obj/item/mortar_shell/he
 
@@ -429,8 +428,8 @@
 	name = "M402 mortar fragmentation shells box (F x6)"
 	//icon_state = ""
 	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = ""
-	overlay_gun_type = ""
+	//overlay_ammo_type = "_frag"
+	//overlay_content = "_frag"
 	num_of_magazines = 6
 	magazine_type = /obj/item/mortar_shell/frag
 
@@ -441,8 +440,8 @@
 	name = "M402 mortar incendiary shells box (I x6)"
 	//icon_state = ""
 	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = ""
-	overlay_gun_type = ""
+	//overlay_ammo_type = "_inc"
+	//overlay_content = "_inc"
 	num_of_magazines = 6
 	magazine_type = /obj/item/mortar_shell/incendiary
 
@@ -453,8 +452,8 @@
 	name = "M402 mortar flare-camera shells box (FC x6)"
 	//icon_state = ""
 	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = ""
-	overlay_gun_type = ""
+	//overlay_ammo_type = "_flare"
+	//overlay_content = "_flare"
 	num_of_magazines = 6
 	magazine_type = /obj/item/mortar_shell/flare
 

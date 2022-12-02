@@ -6,6 +6,7 @@
 /obj/item/storage/box/packet/spec/sniper
 	name = "\improper M42A marksman magazine packet (10x28mm Caseless)"
 	desc = "It contains five M42A marksman magazines."
+	//icon_state = "sniper_basic_packet"
 	storage_slots = 5
 	can_hold = list(/obj/item/ammo_magazine/sniper)
 	content_type = /obj/item/ammo_magazine/sniper
@@ -13,16 +14,19 @@
 /obj/item/storage/box/packet/spec/sniper/incendiary
 	name = "\improper M42A incendiary magazine packet (10x28mm)"
 	desc = "It contains five M42A incendiary magazines."
+	//icon_state = "sniper_incendiary_packet"
 	content_type = /obj/item/ammo_magazine/sniper/incendiary
 
 /obj/item/storage/box/packet/spec/sniper/flak
 	name = "\improper M42A flak magazine packet (10x28mm)"
 	desc = "It contains five M42A flak magazines."
+	//icon_state = "sniper_flak_packet"
 	content_type = /obj/item/ammo_magazine/sniper/flak
 
 /obj/item/storage/box/packet/spec/sniper/mixed
 	name = "\improper M42A mixed magazine packet (10x28mm)"
 	desc = "It contains six mixed M42A magazines."
+	//icon_state = "sniper_mixed_packet"
 	storage_slots = 6
 	content_type = null //Null because we don't want it indexed
 
@@ -38,6 +42,7 @@
 /obj/item/storage/box/packet/spec/scout
 	name = "\improper A19 high velocity magazine packet (10x24mm)"
 	desc = "It contains five A19 high velocity magazines."
+	//icon_state = "scout_basic_packet"
 	storage_slots = 5
 	can_hold = list(/obj/item/ammo_magazine/rifle/m4ra)
 	content_type = /obj/item/ammo_magazine/rifle/m4ra
@@ -45,16 +50,19 @@
 /obj/item/storage/box/packet/spec/scout/incendiary
 	name = "\improper A19 high velocity incendiary magazine packet (10x24mm)"
 	desc = "It contains five A19 high velocity incendiary magazines."
+	//icon_state = "scout_incendiary_packet"
 	content_type = /obj/item/ammo_magazine/rifle/m4ra/incendiary
 
 /obj/item/storage/box/packet/spec/scout/impact
 	name = "\improper A19 high velocity impact magazine packet (10x24mm)"
 	desc = "It contains five A19 high velocity impact magazines."
+	//icon_state = "scout_impact_packet"
 	content_type = /obj/item/ammo_magazine/rifle/m4ra/impact
 
 /obj/item/storage/box/packet/spec/scout/mixed
 	name = "\improper A19 mixed high velocity magazine packet (10x24mm)"
 	desc = "It contains six mixed A19 high velocity impact magazines."
+	//icon_state = "scout_mixed_packet"
 	storage_slots = 6
 	content_type = null //Null because we don't want it indexed
 
@@ -70,6 +78,7 @@
 /obj/item/storage/box/packet/spec/demo
 	name = "\improper M5 RPG Rocket packet (HE)"
 	desc = "It contains three M5 RPG HE rockets."
+	//icon_state = "demo_he_packet"
 	storage_slots = 3
 	can_hold = list(/obj/item/ammo_magazine/rocket)
 	content_type = /obj/item/ammo_magazine/rocket
@@ -77,16 +86,19 @@
 /obj/item/storage/box/packet/spec/demo/ap
 	name = "\improper M5 RPG Rocket packet (AP)"
 	desc = "It contains three M5 RPG AP rockets."
+	//icon_state = "demo_ap_packet"
 	content_type = /obj/item/ammo_magazine/rocket/ap
 
 /obj/item/storage/box/packet/spec/demo/wp
 	name = "\improper M5 RPG Rocket packet (WP)"
 	desc = "It contains three M5 RPG WP rockets."
+	//icon_state = "demo_wp_packet"
 	content_type = /obj/item/ammo_magazine/rocket/wp
 
 /obj/item/storage/box/packet/spec/demo/mixed
 	name = "\improper M5 RPG Rocket packet (Mixed)"
 	desc = "It contains three mixed M5 RPG rockets."
+	//icon_state = "demo_mixed_packet"
 	content_type = null
 
 /obj/item/storage/box/packet/spec/demo/mixed/fill_preset_inventory()
@@ -98,6 +110,7 @@
 /obj/item/storage/box/packet/spec/pyro
 	name = "\improper M240-T Extended Fuel Tank packet"
 	desc = "It contains three M5 RPG HE rockets."
+	//icon_state = "pyro_basic_packet"
 	storage_slots = 3
 	can_hold = list(/obj/item/ammo_magazine/flamer_tank/large)
 	content_type = /obj/item/ammo_magazine/flamer_tank/large
@@ -105,16 +118,19 @@
 /obj/item/storage/box/packet/spec/pyro/B
 	name = "\improper M240-T Type-B Fuel Tank packet"
 	desc = "It contains three M240-T Type-B Fuel Tanks."
+	//icon_state = "pyro_b_packet"
 	content_type = /obj/item/ammo_magazine/flamer_tank/large/B
 
 /obj/item/storage/box/packet/spec/pyro/X
 	name = "\improper M240-T Type-X Fuel Tank packet"
 	desc = "It contains three M240-T Type-X Fuel Tanks."
+	//icon_state = "pyro_x_packet"
 	content_type = /obj/item/ammo_magazine/flamer_tank/large/X
 
 /obj/item/storage/box/packet/spec/pyro/mixed
 	name = "\improper M240-T Mixed Fuel Tank packet"
 	desc = "It contains three mixed M240-T Fuel Tanks."
+	//icon_state = "pyro_mixed_packet"
 	content_type = null
 
 /obj/item/storage/box/packet/spec/pyro/mixed/fill_preset_inventory()
@@ -126,6 +142,7 @@
 /obj/item/storage/box/packet/spec/smartgunner
 	name = "\improper M56 smartgun drum packet"
 	desc = "It contains two M56 smartgun drums."
+	//icon_state = "sg_basic_packet"
 	storage_slots = 2
 	can_hold = list(/obj/item/ammo_magazine/smartgun)
 	content_type = /obj/item/ammo_magazine/smartgun

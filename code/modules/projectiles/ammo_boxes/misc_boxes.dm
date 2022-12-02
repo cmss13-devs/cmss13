@@ -146,7 +146,7 @@
 	desc = "A box of flashlights to brighten your day!"
 	magazine_type = /obj/item/device/flashlight
 	num_of_magazines = 8
-	overlay_content = ""
+	overlay_content = "_flashlight"
 
 /obj/item/ammo_box/magazine/misc/flashlight/empty
 	empty = TRUE
@@ -158,7 +158,7 @@
 	desc = "A box of High-Capacity Power Cell to keep your electronics going all night long!"
 	magazine_type = /obj/item/cell/high
 	num_of_magazines = 8
-	overlay_content = ""
+	overlay_content = "_power_cell"
 
 /obj/item/ammo_box/magazine/misc/power_cell/empty
 	empty = TRUE
@@ -170,7 +170,7 @@
 	desc = "A box of handheld radios, for staying in touch."
 	magazine_type = /obj/item/device/radio/off
 	num_of_magazines = 8
-	overlay_content = ""
+	overlay_content = "_radio"
 
 /obj/item/ammo_box/magazine/misc/radio/empty
 	empty = TRUE

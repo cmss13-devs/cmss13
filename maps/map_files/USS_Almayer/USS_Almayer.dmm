@@ -34726,6 +34726,14 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/shipboard/brig/main_office)
+"cxX" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/hangar)
 "cyE" = (
 /obj/structure/platform_decoration{
 	dir = 8;
@@ -64411,6 +64419,10 @@
 "pCu" = (
 /obj/structure/machinery/computer/secure_data,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -71102,13 +71114,15 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "sxu" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	tag = "icon-intact-supply (EAST)"
+/obj/item/stack/folding_barricade/three,
+/obj/item/stack/folding_barricade/three,
+/obj/item/stack/folding_barricade/three,
+/obj/structure/surface/rack,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
-/obj/effect/attach_point/crew_weapon/dropship1,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/starboard_hallway)
+/area/almayer/hallways/hangar)
 "sxD" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -77191,6 +77205,16 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/engineering/upper_engineering)
+"uYb" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/donut_box{
+	pixel_y = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/gym)
 "uYO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
@@ -110344,7 +110368,7 @@ uNL
 aRu
 aRu
 bcm
-aTc
+sxu
 aTc
 aTc
 iXz
@@ -110547,7 +110571,7 @@ uNL
 aRu
 aRu
 bcm
-rkz
+cxX
 aTc
 rkz
 jJG
@@ -110755,7 +110779,7 @@ qLo
 vgC
 opw
 beB
-sxu
+pUO
 bzY
 bkA
 bcB
@@ -110953,7 +110977,7 @@ wfE
 sGU
 vhY
 wfE
-btr
+uYb
 xQx
 btr
 opw

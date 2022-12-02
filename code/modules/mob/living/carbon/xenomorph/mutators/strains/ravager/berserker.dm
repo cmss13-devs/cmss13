@@ -29,7 +29,7 @@
 	R.health_modifier -= XENO_HEALTH_MOD_MED
 	R.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
 	R.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-
+	R.received_phero_caps["frenzy"] = 2.9 // Moderate
 	mutator_update_actions(R)
 	MS.recalculate_actions(description, flavor_description)
 
@@ -52,7 +52,7 @@
 
 	// Eviscerate config
 	var/rage_lock_duration = 10 SECONDS      // 10 seconds of max rage
-	var/rage_cooldown_duration = 6 SECONDS  // 6 seconds of NO rage.
+	var/rage_cooldown_duration = 7 SECONDS  // 7 seconds of NO rage.
 
 	// State for tracking rage
 	var/rage = 0

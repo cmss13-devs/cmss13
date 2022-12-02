@@ -42,6 +42,8 @@
 	pixel_y = -3
 	old_x = -16
 	old_y = -3
+	base_pixel_x = 0
+	base_pixel_y = -16
 
 	rebounds = FALSE // no more fucking pinball crooshers
 

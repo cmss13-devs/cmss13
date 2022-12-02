@@ -78,7 +78,7 @@
 		var/powerfactor_value = round( damage * 0.05 ,1)
 		powerfactor_value = min(powerfactor_value,20)
 		if(powerfactor_value > 0 && small_explosives_stun)
-			apply_effect(powerfactor_value/5, PARALYZE)
+			apply_effect(powerfactor_value/5, WEAKEN)
 			if(mob_size < MOB_SIZE_BIG)
 				apply_effect(powerfactor_value, SLOW)
 				apply_effect(powerfactor_value/2, SUPERSLOW)
@@ -87,7 +87,7 @@
 			explosion_throw(severity, direction)
 		else if(powerfactor_value > 10)
 			powerfactor_value /= 5
-			apply_effect(powerfactor_value/5, PARALYZE)
+			apply_effect(powerfactor_value/5, WEAKEN)
 			if(mob_size < MOB_SIZE_BIG)
 				apply_effect(powerfactor_value, SLOW)
 				apply_effect(powerfactor_value/2, SUPERSLOW)

@@ -50,6 +50,7 @@
 #define COUGHING		4
 #define TOURETTES		8
 #define NERVOUS			16
+#define OPIATE_RECEPTOR_DEFICIENCY 32
 //=================================================
 
 //sdisabilities

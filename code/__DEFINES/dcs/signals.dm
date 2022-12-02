@@ -503,4 +503,7 @@
 #define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
 	#define COMPONENT_THICK_BYPASS (1<<0)
 
+// Used for smothering fires upon weather event start/stop
+#define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"
+
 #define COMSIG_HOLDFAST_NODE_PULSE "xeno_holdfast_node_destroyed"

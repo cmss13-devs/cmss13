@@ -69,10 +69,10 @@
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/medic, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer medic!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer Medic!"))
 	else
 		arm_equipment(H, /datum/equipment_preset/other/freelancer/standard, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer mercenary!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer Mercenary!"))
 	print_backstory(H)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
@@ -150,15 +150,15 @@
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/medic, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary medic!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary Medic!"))
 	else if(engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/engineer, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary engineer!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary Engineer!"))
 	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		heavies++
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/heavy, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary specialist!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary Specialist!"))
 	else
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/standard, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary!"))

@@ -1,0 +1,43 @@
+@use '../base.scss';
+@use '../colors.scss';
+@use '../functions.scss' as *;
+
+$light: #ffbf00;
+$dark: #111100;
+
+.SentryGun {
+  .SentryBox {
+    border: 2px solid $light;
+  }
+
+  .TitleText {
+    text-align: center;
+  }
+
+  .SelectionFlexItem {
+    flex-basis: 23%;
+  }
+
+  .SelectionMenu {
+    align-content: space-between;
+    .Title {
+      text-align: center;
+    }
+    .Button {
+      background-color: $dark;
+      width: 100%;
+      color: $light;
+    }
+    .Button__content {
+      text-align: center;
+    }
+    .Selected {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+}
+
+.Test {
+  border: 1px solid red;
+}

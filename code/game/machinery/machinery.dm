@@ -8,9 +8,9 @@ Class Variables:
    use_power (num)
       current state of auto power use.
       Possible Values:
-         0 -- no auto power use
-         1 -- machine is using power at its idle power level
-         2 -- machine is using power at its active power level
+         POWER_USE_NO_POWER: 0 -- no auto power use
+         POWER_USE_IDLE_POWER: 1 -- machine is using power at its idle power level
+         POWER_USE_ACTIVE_POWER: 2 -- machine is using power at its active power level
 
 	needs_power (num)
 	  is this thing affected by an area being unpowered

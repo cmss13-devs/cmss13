@@ -84,7 +84,7 @@
 		to_chat(usr, SPAN_NOTICE("You move [M.name] inside \the [src]."))
 		M.forceMove(src)
 		occupant = M
-		update_use_power(2)
+		update_use_power(POWER_USE_ACTIVE_POWER)
 		icon_state = "body_scanner_1"
 		//prevents occupant's belonging from landing inside the machine
 		for(var/obj/O in src)
@@ -99,7 +99,7 @@
 		//Foreach goto(30)
 	occupant.forceMove(loc)
 	occupant = null
-	update_use_power(1)
+	update_use_power(POWER_USE_IDLE_POWER)
 	icon_state = "body_scanner_0"
 	playsound(src, 'sound/machines/hydraulics_3.ogg')
 

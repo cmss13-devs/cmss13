@@ -83,13 +83,13 @@
 			if(stat & NOPOWER)
 				addToListNoDupe(processing_machines, src) // power interupted us, start processing again
 		stat &= ~NOPOWER
-		src.update_use_power(1)
+		src.update_use_power(POWER_USE_IDLE_POWER)
 
 	else
 		if(machine_processing)
 			processing_machines -= src // no power, can't process.
 		stat |= NOPOWER
-		src.update_use_power(0)
+		src.update_use_power(POWER_USE_NO_POWER)
 
 // the powernet datum
 // each contiguous network of cables & nodes

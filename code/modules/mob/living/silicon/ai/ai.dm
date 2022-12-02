@@ -194,9 +194,9 @@ var/list/ai_verbs_default = list(
 		return
 	if(!powered_ai.anchored)
 		forceMove(powered_ai.loc)
-		update_use_power(0)
+		update_use_power(POWER_USE_NO_POWER)
 	if(powered_ai.anchored)
-		update_use_power(2)
+		update_use_power(POWER_USE_ACTIVE_POWER)
 
 /mob/living/silicon/ai/proc/pick_icon()
 	set category = "AI Commands"

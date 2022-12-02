@@ -373,7 +373,7 @@
 
 /obj/structure/machinery/sleeper/proc/go_in_sleeper(mob/M)
 	M.forceMove(src)
-	update_use_power(2)
+	update_use_power(POWER_USE_ACTIVE_POWER)
 	occupant = M
 	START_PROCESSING(SSobj, src)
 	START_PROCESSING(SSobj, connected)
@@ -393,7 +393,7 @@
 	occupant = null
 	STOP_PROCESSING(SSobj, src)
 	STOP_PROCESSING(SSobj, connected)
-	update_use_power(1)
+	update_use_power(POWER_USE_IDLE_POWER)
 	update_icon()
 	playsound(src, 'sound/machines/hydraulics_3.ogg')
 

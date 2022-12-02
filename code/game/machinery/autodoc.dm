@@ -591,7 +591,7 @@
 
 /obj/structure/machinery/autodoc/proc/go_in_autodoc(mob/M)
 	M.forceMove(src)
-	update_use_power(2)
+	update_use_power(POWER_USE_ACTIVE_POWER)
 	occupant = M
 	icon_state = "autodoc_closed"
 	start_processing()
@@ -609,7 +609,7 @@
 	occupant.update_med_icon()
 	occupant = null
 	surgery_todo_list = list()
-	update_use_power(1)
+	update_use_power(POWER_USE_IDLE_POWER)
 	icon_state = "autodoc_open"
 	stop_processing()
 	if(connected)

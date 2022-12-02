@@ -56,7 +56,7 @@
 		else
 			icon_state = "sentry_system_destroyed"
 	else
-		update_use_power(1)
+		update_use_power(POWER_USE_IDLE_POWER)
 		if(!ind)
 			deploy_sentry()
 			ind = TRUE

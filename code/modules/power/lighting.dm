@@ -287,10 +287,10 @@
 					on = 0
 					SetLuminosity(0)
 			else
-				update_use_power(2)
+				update_use_power(POWER_USE_ACTIVE_POWER)
 				SetLuminosity(brightness)
 	else
-		update_use_power(0)
+		update_use_power(POWER_USE_NO_POWER)
 		SetLuminosity(0)
 
 	if(on != on_gs)

@@ -34,13 +34,13 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(POWER_USE_IDLE_POWER)
 		if(input.len)
 			milled_item = input[1]
 			input -= milled_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(POWER_USE_ACTIVE_POWER)
 		return
 
 	progress++
@@ -105,13 +105,13 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(POWER_USE_IDLE_POWER)
 		if(input.len)
 			fermenting_item = input[1]
 			input -= fermenting_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(POWER_USE_ACTIVE_POWER)
 		return
 
 	if(!water_level)
@@ -174,13 +174,13 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(POWER_USE_IDLE_POWER)
 		if(input.len)
 			destilling_item = input[1]
 			input -= destilling_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(POWER_USE_ACTIVE_POWER)
 		return
 
 	progress++
@@ -259,13 +259,13 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(POWER_USE_IDLE_POWER)
 		if(input.len)
 			spinning_item = input[1]
 			input -= spinning_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(POWER_USE_ACTIVE_POWER)
 		return
 
 	progress++

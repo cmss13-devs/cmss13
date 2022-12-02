@@ -89,13 +89,13 @@
 
 /obj/structure/machinery/cell_charger/process()
 	if((inoperable()) || !anchored)
-		update_use_power(0)
+		update_use_power(POWER_USE_NO_POWER)
 		return
 
 	if (charging && !charging.fully_charged())
 		charging.give(active_power_usage*CELLRATE)
-		update_use_power(2)
+		update_use_power(POWER_USE_ACTIVE_POWER)
 
 		updateicon()
 	else
-		update_use_power(1)
+		update_use_power(POWER_USE_IDLE_POWER)

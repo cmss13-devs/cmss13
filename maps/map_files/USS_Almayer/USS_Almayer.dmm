@@ -45814,7 +45814,7 @@
 /area/almayer/engineering/engine_core)
 "hgv" = (
 /turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
+/area/almayer/medical/testlab)
 "hgB" = (
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/almayer{
@@ -60165,12 +60165,6 @@
 	},
 /turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/testlab)
-"nCs" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "nCG" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -75742,6 +75736,12 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
+"uvJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/medical_science)
 "uvS" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -79129,7 +79129,7 @@
 /area/almayer/lifeboat_pumps/north2)
 "vOy" = (
 /turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/testlab)
+/area/almayer/medical/medical_science)
 "vPj" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp{
@@ -116319,7 +116319,7 @@ irA
 pQP
 irA
 irA
-hgv
+vOy
 eNP
 hUR
 ajo
@@ -116928,10 +116928,10 @@ kex
 aoM
 aoM
 aMg
-ajo
+vOy
 aRd
 aIo
-hgv
+vOy
 qLK
 akU
 avj
@@ -117134,7 +117134,7 @@ ayZ
 aCD
 hFC
 qmy
-hgv
+vOy
 ayT
 akU
 avj
@@ -117946,7 +117946,7 @@ qqQ
 qMP
 aoM
 aSl
-hgv
+vOy
 aTL
 aii
 avm
@@ -118149,7 +118149,7 @@ qqQ
 aoM
 aoM
 aSn
-hgv
+vOy
 ayT
 akU
 avj
@@ -118352,7 +118352,7 @@ qqQ
 nPE
 oqZ
 uaI
-hgv
+vOy
 atV
 akU
 avj
@@ -118539,7 +118539,7 @@ aii
 ali
 amD
 cwJ
-hgv
+vOy
 wWm
 mHD
 bkT
@@ -118555,7 +118555,7 @@ aQZ
 dBj
 drT
 aSo
-hgv
+vOy
 vIN
 aii
 avj
@@ -118742,7 +118742,7 @@ aii
 abx
 abx
 avj
-hgv
+vOy
 ecx
 elH
 elH
@@ -118756,9 +118756,9 @@ aLP
 aqR
 krq
 ajo
-hgv
-hgv
-hgv
+vOy
+vOy
+vOy
 ayT
 aii
 avj
@@ -118945,7 +118945,7 @@ xGk
 all
 amK
 avj
-hgv
+vOy
 tvu
 bnL
 bnL
@@ -118959,7 +118959,7 @@ aLP
 aqR
 xOY
 nCc
-hgv
+vOy
 nzA
 amD
 ajr
@@ -119148,7 +119148,7 @@ hee
 aEX
 aii
 avm
-hgv
+vOy
 aml
 anw
 uhV
@@ -119162,7 +119162,7 @@ hqh
 wLy
 eiE
 wuP
-hgv
+vOy
 ayT
 akT
 amC
@@ -119351,7 +119351,7 @@ aNi
 ybf
 ajt
 avj
-hgv
+vOy
 amm
 bnL
 bnL
@@ -119365,7 +119365,7 @@ aPJ
 aqQ
 aOe
 wTM
-hgv
+vOy
 atU
 akU
 abg
@@ -119554,7 +119554,7 @@ egt
 ait
 ani
 avj
-hgv
+vOy
 woh
 avp
 aoJ
@@ -119568,7 +119568,7 @@ aLP
 aqR
 aoM
 kHB
-hgv
+vOy
 aOP
 aii
 aow
@@ -119757,7 +119757,7 @@ bgK
 bYe
 ajt
 avj
-hgv
+vOy
 qxP
 anz
 aoJ
@@ -119771,7 +119771,7 @@ amk
 aoK
 aAr
 xQm
-hgv
+vOy
 asp
 aii
 avj
@@ -119960,9 +119960,9 @@ aNi
 ayT
 amO
 avj
-hgv
-hgv
-hgv
+vOy
+vOy
+vOy
 scl
 vkB
 aqR
@@ -119971,10 +119971,10 @@ oeg
 aOd
 sXd
 amk
-hgv
-hgv
-hgv
-hgv
+vOy
+vOy
+vOy
+vOy
 meJ
 amO
 avj
@@ -120166,7 +120166,7 @@ avj
 alH
 aqG
 ata
-nCs
+uvJ
 apR
 aqS
 kCE
@@ -120174,7 +120174,7 @@ kCE
 vYz
 awR
 uoi
-hgv
+vOy
 aMh
 biB
 alH
@@ -120369,7 +120369,7 @@ bYe
 apI
 aqG
 atb
-nCs
+uvJ
 apS
 avA
 rzN
@@ -120377,7 +120377,7 @@ lto
 aqQ
 avA
 gLc
-hgv
+vOy
 aMi
 biB
 apI
@@ -121381,7 +121381,7 @@ aej
 pSL
 amT
 mIW
-vOy
+hgv
 amn
 anF
 anF
@@ -121584,7 +121584,7 @@ aej
 atL
 akV
 atL
-vOy
+hgv
 mYj
 anF
 anF
@@ -121787,7 +121787,7 @@ aaO
 alp
 aio
 baB
-vOy
+hgv
 wWz
 anF
 gxP
@@ -121990,7 +121990,7 @@ acC
 iWN
 amO
 dLE
-vOy
+hgv
 euB
 cba
 kSc
@@ -122193,13 +122193,13 @@ aaE
 afD
 kaA
 anh
-vOy
-vOy
-vOy
-vOy
-vOy
-vOy
-vOy
+hgv
+hgv
+hgv
+hgv
+hgv
+hgv
+hgv
 qJy
 qJy
 qJy

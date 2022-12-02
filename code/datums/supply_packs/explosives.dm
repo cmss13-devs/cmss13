@@ -16,7 +16,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosives crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_mines
 	name = "claymore mines crate (x10)"
@@ -27,7 +27,7 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive mine boxes crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_m15
 	name = "M15 fragmentation grenades crate (x6)"
@@ -38,7 +38,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M15 grenades crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_plastic
 	name = "plastic explosives crate (x3)"
@@ -50,7 +50,7 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper plastic explosives crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_breaching_charge
 	name = "breaching charge crate (x4)"
@@ -63,7 +63,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper plastic explosives crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_incendiary
 	name = "M40 HIDP incendiary grenades crate (x6)"
@@ -74,7 +74,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HIDP incendiary grenades crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_HEDP
 	name = "M40 HEDP blast grenades crate (x6)"
@@ -85,7 +85,7 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HEDP grenades crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_hedp
 	name = "M40 HEDP blast grenade box crate (x25)"
@@ -95,7 +95,7 @@
 	cost = 100
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive HEDP grenade crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_HPDP
 	name = "M40 HPDP white phosphorus grenades crate (x6)"
@@ -106,7 +106,7 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper M40 HPDP grenade crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_HPDP_crate
 	name = "M40 HPDP white phosphorus grenade box crate (x25)"
@@ -116,7 +116,7 @@
 	cost = 100
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper HPDP grenade crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_HEFA
 	name = "M40 HEFA fragmentation grenades crate (x6)"
@@ -127,7 +127,7 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HEFA grenades crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 
 /datum/supply_packs/explosives_hefa
@@ -138,7 +138,7 @@
 	cost = 100
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive HEFA grenade crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_M74_AGM_F
 	name = "M74 airburst grenades crate (x6)"
@@ -149,7 +149,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M74 AGM-F grenades crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_AGMF
 	name = "M74 Airburst Grenade Munition fragmentation grenade box crate (x25)"
@@ -159,7 +159,7 @@
 	cost = 100
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper  explosive M74 AGM-F grenades crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_incendiary
 	name = "M74 Airburst Grenade Munition incendiary grenades crate (x6)"
@@ -170,7 +170,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M74 AGM-I grenades crate (WARNING)"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_airburst_smoke
 	name = "M74 Airburst Grenade Munition smoke grenades crate (x6)"
@@ -181,7 +181,7 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M74 AGM-S grenades crate"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_m74_hornet
 	name = "M74 AGM-Hornet Grenade Crate (x6)"
@@ -192,7 +192,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "M74 AGM-Hornet Grenade Crate"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_m74_starshell
 	name = "M74 AGM-Star Shell Grenade Crate (x6)"
@@ -203,7 +203,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "M74 AGM-Star Shell Grenade Crate"
-	group = "Explosive"
+	group = "Explosives"
 
 /datum/supply_packs/explosives_baton_slug
 	name = "M40 HIRR Baton Slug Crate (x6)"
@@ -214,4 +214,4 @@
 	cost = 10
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "M40 HIRR Baton Slug Crate"
-	group = "Explosive"
+	group = "Explosives"

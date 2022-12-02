@@ -21,8 +21,8 @@ var/list/all_supply_groups = list(
 	"Food",
 	"Gear",
 	"Mortar",
-	"Explosive",
-	"Reagent tank",
+	"Explosives",
+	"Reagent tanks",
 )
 
 /datum/supply_packs

@@ -1,5 +1,0 @@
-author: "Mistfrag"
-delete-after: True
-changes:
-  - bugfix: "Fixed fireman carry having the same speed to pick someone up with regardless of skill."
-  - refactor: "Made mob_helpers easier to read.\n:cl:"

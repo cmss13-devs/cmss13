@@ -162,14 +162,6 @@
 	density = FALSE
 	var/being_restocked = FALSE
 
-/obj/structure/machinery/cm_vending/sorted/vehicle_supply/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/vehicle_supply/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/vend_fail()
 	return
 

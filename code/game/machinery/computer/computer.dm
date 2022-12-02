@@ -17,9 +17,6 @@
 	. = ..()
 	if(processing)
 		start_processing()
-
-/obj/structure/machinery/computer/Initialize()
-	. = ..()
 	power_change()
 
 /obj/structure/machinery/computer/initialize_pass_flags(var/datum/pass_flags_container/PF)

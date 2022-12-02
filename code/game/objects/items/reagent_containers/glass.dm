@@ -526,6 +526,7 @@
 	splashable = FALSE
 	w_class = SIZE_MASSIVE
 	flags_atom = CAN_BE_DISPENSED_INTO|OPENCONTAINER
+	matter = list("glass" = 2000)
 
 /obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)
 	return
@@ -621,6 +622,7 @@
 	name = "janitorial bucket"
 	desc = "It's a large bucket that fits in a janitorial cart. Holds 500 units."
 	icon_state = "janibucket"
+	matter = list("metal" = 8000)
 	volume = 500
 
 

@@ -219,10 +219,16 @@
 		equip_to_slot_if_possible(W, slot, 0) // equiphere
 
 /mob/proc/put_in_any_hand_if_possible(obj/item/W as obj, del_on_fail = 0, disable_warning = 1, redraw_mob = 1)
-	if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
-		return 1
-	else if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
-		return 1
+	if(hand)
+		if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+		else if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+	else
+		if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+		else if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
 	return 0
 
 //This is a SAFE proc. Use this instead of equip_to_slot()!
@@ -927,6 +933,7 @@ mob/proc/yank_out_object()
 /mob/proc/set_skills(skills_path)
 	if(skills)
 		qdel(skills)
+		skills = null
 	if(!skills_path)
 		skills = null
 	else

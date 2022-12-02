@@ -36,6 +36,8 @@
 
 	var/list/synth_survivor_types
 
+	var/list/CO_survivor_types
+
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 
 	var/survivor_message = "You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks... until now."
@@ -190,6 +192,23 @@
 				continue
 		pathed_synth_survivor_types += synth_survivor_typepath
 	synth_survivor_types = pathed_synth_survivor_types.Copy()
+
+	if(islist(json["CO_survivor_types"]))
+		CO_survivor_types = json["CO_survivor_types"]
+	else if ("CO_survivor_types" in json)
+		log_world("map_config CO_survivor_types is not a list!")
+		return
+
+	var/list/pathed_CO_survivor_types = list()
+	for(var/CO_surv_type in CO_survivor_types)
+		var/CO_survivor_typepath = CO_surv_type
+		if(!ispath(CO_survivor_typepath))
+			CO_survivor_typepath = text2path(CO_surv_type)
+			if(!ispath(CO_survivor_typepath))
+				log_world("[CO_surv_type] isn't a proper typepath, removing from CO_survivor_types list")
+				continue
+		pathed_CO_survivor_types += CO_survivor_typepath
+	CO_survivor_types = pathed_CO_survivor_types.Copy()
 
 	if (islist(json["monkey_types"]))
 		monkey_types = list()

@@ -71,11 +71,10 @@
 		if (H.stat == DEAD)
 			return
 
-	for (var/atom/dotA in dot_cooldown_atoms)
-		if (dotA == A)
+		if(WEAKREF(A) in dot_cooldown_atoms)
 			return
 
-	dot_cooldown_atoms += A
+	dot_cooldown_atoms += WEAKREF(A)
 	addtimer(CALLBACK(src, .proc/dot_cooldown_up, A), dot_cooldown_duration)
 
 	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_type))
@@ -87,6 +86,6 @@
 
 /datum/behavior_delegate/spitter_base/proc/dot_cooldown_up(var/atom/A)
 	if (A != null && !QDELETED(src))
-		dot_cooldown_atoms -= A
+		dot_cooldown_atoms -= WEAKREF(A)
 		if (istype(bound_xeno))
 			to_chat(bound_xeno, SPAN_XENOWARNING("You can soak [A] in acid again!"))

@@ -23,11 +23,9 @@
 		if(user.a_intent == INTENT_HARM)
 			if(isturf(loc))
 				if(user.zone_selected == "r_foot" || user.zone_selected == "l_foot" )
-					to_chat(user, SPAN_NOTICE("You start crushing the can under your foot!"))
 					crush_can(user)
 					return FALSE
 			else if(loc == user && src == user.get_inactive_hand())
-				to_chat(user, SPAN_NOTICE("You start crushing the can between your hands!"))
 				crush_can(user)
 				return FALSE
 	return ..()
@@ -44,7 +42,6 @@
 
 	if(!R.total_volume || !R)
 		if(M == user && M.a_intent == INTENT_HARM && M.zone_selected == "head")
-			to_chat(user, SPAN_NOTICE("You start crushing the can against your head!"))
 			crush_can(M)
 			return
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
@@ -123,28 +120,29 @@
 		return
 
 	var/mob/living/carbon/human/H = user
+	crushed = TRUE
+	icon_state = "[icon_state]_crushed"
+	var/message
+	var/obj/limb/L
+	L = H.get_limb(H.zone_selected)
 
-	if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		crushed = TRUE
-		icon_state = "[icon_state]_crushed"
-		var/message
-		var/obj/limb/L
-
-		switch(user.zone_selected)
-			if("head")
-				message = "against [user.gender == MALE ? "his" : "her"] head!"
-				L = H.get_limb("head")
-				L.take_damage(brute = 1)			//ouch! but you're a tough badass so it barely hurts
-				H.UpdateDamageIcon()
-
-			if("l_foot" , "r_foot")
-				message = "under [user.gender == MALE ? "his" : "her"] foot!"
-
-			else
-				message = "between [user.gender == MALE ? "his" : "her"] hands"
-
-		user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]!"), null, null, CHAT_TYPE_FLUFF_ACTION)
-		playsound(src,"sound/items/can_crush.ogg")
+	switch(user.zone_selected)
+		if("head")
+			if(!L)
+				to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can on nothing!"))
+				return
+			message = "against [user.gender == MALE ? "his" : "her"] head!"
+			L.take_damage(brute = 3)			//ouch! but you're a tough badass so it barely hurts
+			H.UpdateDamageIcon()
+		if("l_foot" , "r_foot")
+			if(!L)
+				to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can under nothing!"))
+				return
+			message = "under [user.gender == MALE ? "his" : "her"] foot!"
+		else
+			message = "between [user.gender == MALE ? "his" : "her"] hands"
+	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]!"), null, null, CHAT_TYPE_FLUFF_ACTION)
+	playsound(src,"sound/items/can_crush.ogg")
 
 //SODA
 

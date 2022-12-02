@@ -309,7 +309,7 @@
 
 //-----------------------Nailgun Mag Box-----------------------
 
-/obj/item/ammo_box/magazine/smg/nailgun
+/obj/item/ammo_box/magazine/nailgun
 	name = "magazine box (Nailgun x 10)"
 	icon_state = "base_nailgun"			//base color of box
 	icon_state_deployed = "base_nailgun_deployed"
@@ -322,5 +322,5 @@
 	can_explode = FALSE
 	limit_per_tile = 1	//this one has unique too big sprite, so not stackable
 
-/obj/item/ammo_box/magazine/smg/nailgun/empty
+/obj/item/ammo_box/magazine/nailgun/empty
 	empty = TRUE

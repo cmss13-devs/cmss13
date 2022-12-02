@@ -223,6 +223,7 @@
 	item_state = "c_deagle"
 	base_gun_icon = "c_deagle"
 	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
+	black_market_value = BLACK_MARKET_VALUE_MAX
 
 /obj/item/weapon/gun/pistol/heavy/co/gold
 	name = "golden vintage Desert Eagle"

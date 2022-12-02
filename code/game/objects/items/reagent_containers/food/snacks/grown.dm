@@ -292,6 +292,7 @@
 	potency = 15
 	filling_color = "#F5CB42"
 	plantname = "goldapple"
+	black_market_value = BLACK_MARKET_VALUE_GREAT
 
 /obj/item/reagent_container/food/snacks/grown/watermelon
 	name = "watermelon"

@@ -129,6 +129,7 @@
 	suit_restricted = null //so most officers can wear whatever suit they want
 	flags_jumpsuit = FALSE
 	specialty = "marine officer"
+	black_market_value = BLACK_MARKET_VALUE_GOOD
 
 /obj/item/clothing/under/marine/officer/intel
 	name = "\improper marine intelligence officer sweatsuit"

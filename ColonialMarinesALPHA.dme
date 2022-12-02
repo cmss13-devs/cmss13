@@ -1492,6 +1492,7 @@
 #include "code\modules\defenses\handheld.dm"
 #include "code\modules\defenses\planted_flag.dm"
 #include "code\modules\defenses\sentry.dm"
+#include "code\modules\defenses\sentry_computer.dm"
 #include "code\modules\defenses\sentry_flamer.dm"
 #include "code\modules\defenses\tesla_coil.dm"
 #include "code\modules\desert_dam\filtration\consoles.dm"

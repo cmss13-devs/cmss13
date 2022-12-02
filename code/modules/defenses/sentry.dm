@@ -26,6 +26,27 @@
 	var/accuracy_mult = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
 
+	// action list is configurable for all subtypes, this is just an example
+	var/list/choice_categories = list(
+		"SYSTEM MODE" = list("AUTO-REMOTE", "MAN_OVERRIDE", "SEMI-AUTO"),
+		"WEAPON STATUS" = list("SAFE", "ARMED"),
+		"IFF STATUS" = list("SEARCH", "TEST", "ENGAGED", "INTERROGATE"),
+		"TEST ROUTINE" = list("AUTO","SELECTIVE"),
+		"TARGET PROFILE" = list("SOFT", "SEMIHARD", "HARD"),
+		"SPECIAL PROFILE" = list("BIO", "INERT"),
+		"TARGET SELECT" = list("MULTI SPEC", "INFRA RED", "UV")
+	)
+
+	var/list/selected_categories = list(
+		"SYSTEM MODE" = "AUTO-REMOTE",
+		"WEAPON STATUS" = "SAFE",
+		"IFF STATUS" = "SEARCH",
+		"TEST ROUTINE" = "AUTO",
+		"TARGET PROFILE" = "SOFT",
+		"SPECIAL PROFILE" = "BIO",
+		"TARGET SELECT" = "MULTI SPEC"
+	)
+
 /obj/structure/machinery/defenses/sentry/Initialize()
 	. = ..()
 	spark_system = new /datum/effect_system/spark_spread
@@ -129,6 +150,16 @@
 
 /obj/structure/machinery/defenses/sentry/attackby(var/obj/item/O, var/mob/user)
 	if(QDELETED(O) || QDELETED(user))
+		return
+
+	if(istype(O, /obj/item/device/sentry_computer))
+		var/obj/item/device/sentry_computer/computer = O
+		if(computer.paired_sentry == null)
+			computer.paired_sentry = src
+			to_chat(user, SPAN_WARNING("You pair the [src] to the sentry laptop."))
+		else
+			computer.paired_sentry = null
+			to_chat(user, SPAN_WARNING("You unpair the [src] to the sentry laptop."))
 		return
 
 	//Securing/Unsecuring

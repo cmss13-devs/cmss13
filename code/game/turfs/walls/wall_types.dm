@@ -50,6 +50,7 @@
 	desc = "A reinforced metal wall used to separate rooms and make up the ship."
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
+	claws_minimum = CLAW_TYPE_VERY_SHARP
 
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
@@ -70,13 +71,20 @@
 	icon = 'icons/turf/walls/almayer_white.dmi'
 	icon_state = "wwall"
 
+/turf/closed/wall/almayer/white/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+	claws_minimum = CLAW_TYPE_VERY_SHARP
+
 /turf/closed/wall/almayer/white/outer_tile
 	tiles_with = list(/turf/closed/wall/almayer/white,/turf/closed/wall/almayer/outer)
 
 /turf/closed/wall/almayer/white/hull
-	name = "research hull"
+	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	hull = 1
+	icon_state = "hull"
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0
@@ -515,6 +523,7 @@
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
+	claws_minimum = CLAW_TYPE_VERY_SHARP
 
 /turf/closed/wall/strata_outpost
 	name = "bare outpost walls"
@@ -530,6 +539,7 @@
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
+	claws_minimum = CLAW_TYPE_VERY_SHARP
 
 /turf/closed/wall/strata_outpost/reinforced/hull
 	hull = 1
@@ -550,6 +560,7 @@
 	walltype = WALL_SOLARISR
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
+	claws_minimum = CLAW_TYPE_VERY_SHARP
 
 /turf/closed/wall/solaris/reinforced/hull
 	hull = 1
@@ -581,6 +592,7 @@
 	walltype = WALL_DEVWALL_R
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
+	claws_minimum = CLAW_TYPE_VERY_SHARP
 
 /turf/closed/wall/dev/reinforced/hull
 	name = "greybox hull wall"
@@ -615,6 +627,7 @@
 	walltype = WALL_KUTJEVO_COLONYR
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
+	claws_minimum = CLAW_TYPE_VERY_SHARP
 
 /turf/closed/wall/kutjevo/colony/reinforced/hull
 	icon_state = "colonyh"

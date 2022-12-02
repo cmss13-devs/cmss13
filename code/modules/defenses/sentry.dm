@@ -26,6 +26,8 @@
 	var/accuracy_mult = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
 
+	var/obj/item/device/sentry_computer/linked_laptop = null
+
 	// action list is configurable for all subtypes, this is just an example
 	var/list/choice_categories = list(
 		"SYSTEM MODE" = list("AUTO-REMOTE", "MAN_OVERRIDE", "SEMI-AUTO"),
@@ -154,12 +156,18 @@
 
 	if(istype(O, /obj/item/device/sentry_computer))
 		var/obj/item/device/sentry_computer/computer = O
-		if(computer.paired_sentry == null)
+		if(linked_laptop == null && computer.paired_sentry == null)
 			computer.paired_sentry = src
+			linked_laptop = computer
 			to_chat(user, SPAN_WARNING("You pair the [src] to the sentry laptop."))
 		else
-			computer.paired_sentry = null
-			to_chat(user, SPAN_WARNING("You unpair the [src] to the sentry laptop."))
+			if(linked_laptop == O)
+				computer.paired_sentry = null
+				linked_laptop = null
+				to_chat(user, SPAN_WARNING("You unpair the [src] to the sentry laptop."))
+			else
+				linked_laptop.attempted_link(user)
+				to_chat(user, SPAN_WARNING("\The [src] is already linked."))
 		return
 
 	//Securing/Unsecuring

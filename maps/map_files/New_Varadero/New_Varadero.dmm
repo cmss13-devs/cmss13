@@ -13351,14 +13351,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior_protected/vessel)
-"lFP" = (
-/obj/structure/surface/table,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/varadero/exterior/lz1_near)
 "lFS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
@@ -18044,7 +18036,6 @@
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "pyk" = (
-/obj/structure/surface/table/holotable,
 /obj/item/reagent_container/food/snacks/wrapped/barcardine{
 	pixel_y = 7
 	},
@@ -18053,6 +18044,7 @@
 	pixel_y = 5
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/surface/table,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -39051,7 +39043,7 @@ lYr
 hOe
 new
 wMw
-lFP
+wMw
 wMw
 wMw
 wMw

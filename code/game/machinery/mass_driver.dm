@@ -6,7 +6,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "mass_driver"
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 50
 

@@ -167,7 +167,7 @@
 	icon_state = "tele0"
 	dir = EAST
 	var/accurate = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
 	var/obj/structure/machinery/computer/teleporter/com
@@ -303,7 +303,7 @@
 	dir = EAST
 	var/active = 0
 	var/engaged = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
 	var/obj/structure/machinery/teleport/hub/com

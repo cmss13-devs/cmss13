@@ -333,7 +333,7 @@
 	alpha = 0
 	mouse_opacity = 0
 	density = FALSE
-	use_power = 0
+	use_power = USE_POWER_NONE
 	idle_power_usage = 0
 	active_power_usage = 0
 	needs_power = FALSE

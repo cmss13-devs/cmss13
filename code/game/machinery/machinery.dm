@@ -87,11 +87,15 @@ Class Procs:
 	Compiled by Aygar
 */
 
+//         NONE -- no auto power use
+//         IDLE -- machine is using power at its idle power level
+//         ACTIVE -- machine is using power at its active power level
+
 /obj/structure/machinery
 	name = "machinery"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	var/stat = 0
-	var/use_power = 1
+	var/use_power = USE_POWER_IDLE
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
 	var/needs_power = TRUE

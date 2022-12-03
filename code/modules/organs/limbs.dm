@@ -111,7 +111,7 @@
 	QDEL_NULL(hidden)
 	QDEL_NULL_LIST(internal_organs)
 	QDEL_NULL_LIST(implants)
-	QDEL_NULL_LIST(autopsy_data)
+	QDEL_NULL_MAP(autopsy_data)
 
 	if(bleeding_effects_list)
 		for(var/datum/effects/bleeding/B in bleeding_effects_list)

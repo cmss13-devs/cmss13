@@ -17,7 +17,7 @@ Remember: something that is self-evident to you might not be to others. Explain 
 # Testing Photographs and Procedure
 <!-- Include any screenshots/videos/debugging steps of the modified code functioning successfully, ideally including edge cases. -->
 <details>
-<summary>Screenshots&Videos</summary>
+<summary>Screenshots & Videos</summary>
 
 Put screenshots and videos here with an empty line between the screenshots and the `<details>` tags.
 

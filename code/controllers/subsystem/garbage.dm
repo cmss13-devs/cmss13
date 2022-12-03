@@ -207,7 +207,7 @@ SUBSYSTEM_DEF(garbage)
 				var/type = D.type
 				var/datum/qdel_item/I = items[type]
 
-				log_world("## TESTING: GC: -- [text_ref(D)] | [type] was unable to be GC'd --")
+				//log_world("## TESTING: GC: -- [text_ref(D)] | [type] was unable to be GC'd --")
 				#ifdef TESTING
 				for(var/c in GLOB.admins) //Using testing() here would fill the logs with ADMIN_VV garbage
 					var/client/admin = c
@@ -257,14 +257,15 @@ SUBSYSTEM_DEF(garbage)
 	queue[++queue.len] = list(gctime, refid) // not += for byond reasons
 
 //this is mainly to separate things profile wise.
-/datum/controller/subsystem/garbage/proc/HardDelete(datum/D)
+/datum/controller/subsystem/garbage/proc/HardDelete(datum/D, force)
 	++delslasttick
 	++totaldels
 	var/type = D.type
 	var/refID = text_ref(D)
 
 	var/tick_usage = TICK_USAGE
-	//del(D) // Disabled pending more cleanup of deletions due to high performance impact
+	if(force)// Disabled pending more cleanup of deletions due to high performance impact
+		del(D)
 	tick_usage = TICK_USAGE_TO_MS(tick_usage)
 
 	var/datum/qdel_item/I = items[type]
@@ -369,7 +370,7 @@ SUBSYSTEM_DEF(garbage)
 			if (QDEL_HINT_HARDDEL) //qdel should assume this object won't gc, and queue a hard delete
 				SSgarbage.Queue(D, GC_QUEUE_HARDDELETE)
 			if (QDEL_HINT_HARDDEL_NOW) //qdel should assume this object won't gc, and hard del it post haste.
-				SSgarbage.HardDelete(D)
+				SSgarbage.HardDelete(D, TRUE)
 			#ifdef REFERENCE_TRACKING
 			if (QDEL_HINT_FINDREFERENCE) //qdel will, if REFERENCE_TRACKING is enabled, display all references to this object, then queue the object for deletion.
 				SSgarbage.Queue(D)

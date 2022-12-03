@@ -1,7 +1,7 @@
 //-----------------------MAG BOX STRUCTURE-----------------------
 
 /obj/structure/magazine_box
-	name = "magazine_box"
+	name = "\improper magazine_box"
 	icon = 'icons/obj/items/weapons/guns/ammo_box.dmi'
 	icon_state = "base_m41"
 	var/obj/item/ammo_box/magazine/item_box

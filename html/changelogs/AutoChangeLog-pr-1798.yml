@@ -1,0 +1,5 @@
+author: "usnpeepoo"
+delete-after: True
+changes:
+  - balance: "Warriors slash cooldown reduction has been reduced by 0.10 seconds"
+  - balance: "Warriors Fling, and Punch have their cooldowns increased by 1 second"

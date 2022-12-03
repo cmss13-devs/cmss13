@@ -2,7 +2,7 @@
 //-----------------------SHOTGUN SHELL BOXES-----------------------
 
 /obj/item/ammo_box/magazine/shotgun
-	name = "shotgun shell box (Slugs x 100)"
+	name = "\improper shotgun shell box (Slugs x 100)"
 	icon_state = "base_slug"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -22,7 +22,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/shotgun/buckshot
-	name = "shotgun shell box (Buckshot x 100)"
+	name = "\improper shotgun shell box (Buckshot x 100)"
 	icon_state = "base_buck"
 	overlay_content = "_buck"
 	magazine_type = /obj/item/ammo_magazine/shotgun/buckshot
@@ -31,7 +31,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/shotgun/flechette
-	name = "shotgun shell box (Flechette x 100)"
+	name = "\improper shotgun shell box (Flechette x 100)"
 	icon_state = "base_flech"
 	overlay_content = "_flech"
 	magazine_type = /obj/item/ammo_magazine/shotgun/flechette
@@ -40,7 +40,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/shotgun/incendiary
-	name = "shotgun shell box (Incendiary slug x 100)"
+	name = "\improper shotgun shell box (Incendiary slug x 100)"
 	icon_state = "base_inc"
 	overlay_content = "_incen"
 	magazine_type = /obj/item/ammo_magazine/shotgun/incendiary
@@ -49,7 +49,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/shotgun/beanbag
-	name = "shotgun shell box (Beanbag x 100)"
+	name = "\improper shotgun shell box (Beanbag x 100)"
 	icon_state = "base_bean"
 	overlay_content = "_bean"
 	magazine_type = /obj/item/ammo_magazine/shotgun/beanbag
@@ -62,7 +62,7 @@
 //-----------------------R4T Lever-action rifle handfuls box-----------------------
 
 /obj/item/ammo_box/magazine/lever_action
-	name = "45-70 bullets box (45-70 x 300)"
+	name = "\improper 45-70 bullets box (45-70 x 300)"
 	icon_state = "base_4570"
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_4570"
@@ -76,7 +76,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/lever_action/training
-	name = "45-70 blank box (45-70 x 300)"
+	name = "\improper 45-70 blank box (45-70 x 300)"
 	icon_state = "base_4570"
 	overlay_ammo_type = "_45_training"
 	overlay_gun_type = "_4570"
@@ -88,7 +88,7 @@
 
 //unused
 /obj/item/ammo_box/magazine/lever_action/tracker
-	name = "45-70 tracker bullets box (45-70 x 300)"
+	name = "\improper 45-70 tracker bullets box (45-70 x 300)"
 	icon_state = "base_4570"
 	overlay_ammo_type = "_45_tracker"
 	overlay_gun_type = "_4570"
@@ -100,7 +100,7 @@
 
 //unused
 /obj/item/ammo_box/magazine/lever_action/marksman
-	name = "45-70 marksman bullets box (45-70 x 300)"
+	name = "\improper 45-70 marksman bullets box (45-70 x 300)"
 	icon_state = "base_4570"
 	overlay_ammo_type = "_45_marksman"
 	overlay_gun_type = "_4570"

@@ -580,6 +580,9 @@
 	else if(X.hive && X.hive.construction_allowed == XENO_QUEEN && !istype(X.caste, /datum/caste_datum/queen))
 		to_chat(X, SPAN_WARNING("Construction is currently restricted to Queen only!"))
 		return FALSE
+	else if(X.hive && X.hive.construction_allowed == XENO_NOBODY)
+		to_chat(X, SPAN_WARNING("The hive is too weak and fragile to have the strength to design constructions."))
+		return FALSE
 
 	var/turf/T = get_turf(A)
 

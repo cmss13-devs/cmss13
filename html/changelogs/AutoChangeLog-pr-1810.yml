@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - bugfix: "Fixed a runtime around vending machines malfunctioning / getting exploded."

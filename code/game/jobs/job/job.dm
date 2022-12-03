@@ -181,7 +181,7 @@
 //This lets you scale max jobs at runtime
 //All you have to do is rewrite the inheritance
 /datum/job/proc/get_total_positions(var/latejoin)
-	return latejoin ? spawn_positions : total_positions
+	return latejoin ? total_positions : spawn_positions
 
 /datum/job/proc/spawn_in_player(var/mob/new_player/NP)
 	if(!istype(NP))

@@ -1,5 +1,5 @@
 /obj/structure/machinery/cell_charger
-	name = "heavy-duty cell charger"
+	name = "\improper heavy-duty cell charger"
 	desc = "A much more powerful version of the standard recharger that is specially designed for charging power cells."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "ccharger0"

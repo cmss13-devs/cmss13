@@ -17888,6 +17888,7 @@
 /area/bigredv2/outside/admin_building)
 "aSZ" = (
 /obj/structure/machinery/power/apc{
+	dir = 1;
 	name = "Control Center APC"
 	},
 /turf/open/floor/plating,
@@ -18328,9 +18329,6 @@
 "aUe" = (
 /obj/structure/machinery/light{
 	dir = 4
-	},
-/obj/structure/machinery/power/terminal{
-	dir = 1
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
@@ -20162,8 +20160,8 @@
 /area/bigredv2/outside/cargo)
 "aZo" = (
 /obj/structure/closet/secure_closet/cargotech{
-	req_one_access_txt = "21;101";
-	req_access = null
+	req_access = null;
+	req_one_access_txt = "21;101"
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,

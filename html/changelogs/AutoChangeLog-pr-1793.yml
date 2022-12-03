@@ -1,5 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - rscadd: "add the ability to process cocoapod into chocolate without removing standard recipe for it."
-  - code_imp: "change output of meat to raw meatball instead of cooked meatball."

@@ -10,13 +10,14 @@
 	var/scorchable = FALSE
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
+	var/overlay_icon	//what icon this turfs edge overlays are stored
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
 
 	update_icon()
 
-/turf/open/update_icon()
+/turf/open/update_icon(should_force_update_neighbors=TRUE)
 	overlays.Cut()
 
 	add_cleanable_overlays()
@@ -71,7 +72,17 @@
 	if(scorchedness)
 		if(!icon_state_before_scorching)				//I hate you mappers, stop var editting turfs
 			icon_state_before_scorching = icon_state
-		icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
+		var/new_icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
+		if(icon_state != new_icon_state)				//no point in updating the icon_state if it would be updated to be the same thing that it was
+			icon_state = new_icon_state
+			for(var/i in GLOB.cardinals)				//but we still check so that we can update our neighbor's overlays if we do
+				var/turf/open/T = get_step(src, i)		//since otherwise they'd be stuck with overlays that were made with
+				T.update_icon()							//the unscorched icon_state of this turf (we need to update them since this turf is being updated)
+		for(var/i in GLOB.cardinals)
+			var/turf/open/T = get_step(src, i)
+			if(istype(T, /turf/open))					//here we handle overlaying edges of surrounding turfs so it doesnt look awful and stinky
+				if(T.scorchable && T.scorchedness < src.scorchedness && T.overlay_icon)
+					overlays += icon(T.overlay_icon, "[T.icon_state]_[T.dir]", get_dir(T, src))
 
 /turf/open/proc/scorch(var/heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
@@ -303,7 +314,8 @@
 	name = "grass"
 	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
-	scorchable =TRUE
+	scorchable = TRUE
+	overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
 
 /turf/open/gm/dirt2
 	name = "dirt"
@@ -315,12 +327,14 @@
 	icon_state = "grassdirt_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder
 	scorchable = TRUE
+	overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"
 	icon_state = "grassdirt2_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder2
 	scorchable = TRUE
+	overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
 
 /turf/open/gm/river
 	name = "river"

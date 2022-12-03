@@ -226,6 +226,14 @@
 	else if(istype(charging, /obj/item/weapon/melee/baton))
 		overlays += "recharger-baton"
 
+/obj/structure/machinery/recharger/get_examine_text(mob/user)
+	. = ..()
+	. += "There's [charging ? "[charging]" : "nothing"] in the charger."
+	if(charging)
+		if(istype(charging, /obj/item/cell))
+			var/obj/item/cell/C = charging
+			. += "Current charge: [C.charge] ([C.percent()]%)"
+
 /*
 obj/structure/machinery/recharger/wallcharger
 	name = "wall recharger"

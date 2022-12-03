@@ -31,7 +31,7 @@
 	. = ..()
 	. += "There's [charging ? "a" : "no"] cell in the charger."
 	if(charging)
-		. += "Current charge: [charging.charge]"
+		. += "Current charge: [charging.charge] ([charging.percent()]%)"
 
 /obj/structure/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)
@@ -68,7 +68,7 @@
 	if(charging)
 		usr.put_in_hands(charging)
 		charging.add_fingerprint(user)
-		charging.updateicon()
+		charging.update_icon()
 
 		src.charging = null
 		user.visible_message("[user] removes the cell from the charger.", "You remove the cell from the charger.")

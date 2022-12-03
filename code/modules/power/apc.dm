@@ -864,7 +864,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return
 			user.put_in_hands(cell)
 			cell.add_fingerprint(user)
-			cell.updateicon()
+			cell.update_icon()
 
 			src.cell = null
 			user.visible_message(SPAN_NOTICE("[user] removes the power cell from [src]!"),

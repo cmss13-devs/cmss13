@@ -1,7 +1,7 @@
 /turf/closed/wall/r_wall
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms."
-	icon_state = "r_wall"
+	icon_state = "r_wall_mapicon"
 	opacity = 1
 	density = 1
 
@@ -194,16 +194,12 @@
 /turf/closed/wall/r_wall/unmeltable
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
-	icon_state = "r_wall"
+	icon_state = "heavy_r_wall_mapicon"
 	walltype = WALL_REINFORCED
 	hull = 1
 
 /turf/closed/wall/r_wall/unmeltable/attackby() //This should fix everything else. No cables, etc
 	return
-
-
-
-
 
 //Chigusa
 

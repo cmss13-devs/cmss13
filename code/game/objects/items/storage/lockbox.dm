@@ -33,7 +33,7 @@
 					to_chat(user, SPAN_DANGER("You unlock the [src.name]!"))
 					return
 			else
-				to_chat(user, SPAN_DANGER("Access Denied"))
+				to_chat(user, SPAN_DANGER("Access denied"))
 		if(!locked)
 			..()
 		else

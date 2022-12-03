@@ -27,7 +27,7 @@
 		oy = pixel_y
 
 /obj/structure/machinery/sentry_holder/get_examine_text(mob/user)
-	..()
+	. = ..()
 	if(!deployed_turret)
 		. += "It's offline."
 

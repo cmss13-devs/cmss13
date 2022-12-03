@@ -610,6 +610,11 @@
 					name = "Glass of Spiked Eggnog"
 					desc = "Just looking at this brings back memories of hugs, family, and present unwrappings."
 					center_of_mass = "x=16;y=5"
+				if("mojito")
+					icon_state = "mojitoglass"
+					name = "Glass of Mojito"
+					desc = "A Cuban classic, this drink will never dissapoint you."
+					center_of_mass = "x=16;y=5"
 				else
 					//a common drinking reagent that makes more than half of the total volume
 					if(istype(R, /datum/reagent/drink) && R.volume >= 0.5*reagents.total_volume)

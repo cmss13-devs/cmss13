@@ -822,44 +822,57 @@
 	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser."
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
-	matter = list("plastic" = 3000)
+	matter = list("plastic" = 2000, "glass" = 2000)
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
 	inner = new /obj/item/reagent_container/glass/pressurized_canister()
+	//Only add an autoinjector if the canister is empty
+	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
+	if(contents.len == 0)
+		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(var/ragent)
+	inner.reagents.add_reagent(ragent, inner.volume)
+	if(contents.len > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent(ragent, A.volume)
+		A.update_uses_left()
+		A.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine/Initialize()
 	. = ..()
-	inner.reagents.add_reagent("bicaridine", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
-	update_icon()
+	fill_with("bicaridine")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/kelotane/Initialize()
 	. = ..()
-	inner.reagents.add_reagent("kelotane", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
-	update_icon()
+	fill_with("kelotane")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small/(src)
 	. = ..()
-	inner.reagents.add_reagent("oxycodone", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall/(src)
-	update_icon()
+	fill_with("oxycodone")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
 	. = ..()
+	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+	if(contents.len > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("adrenaline", A.volume/3)
+		A.reagents.add_reagent("inaprovaline", A.volume/3)
+		A.reagents.add_reagent("tricordrazine", A.volume/3)
+		A.update_uses_left()
+		A.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
 	. = ..()
-	inner.reagents.add_reagent("tricordrazine", inner.volume)
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
-	update_icon()
+	fill_with("tricordrazine")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
@@ -879,9 +892,7 @@
 		max_uses = round(max_uses) == max_uses ? max_uses : round(max_uses) + 1
 		if(inner && inner.reagents.total_volume > 0 && (A.uses_left < max_uses))
 			inner.reagents.trans_to(A, A.volume)
-			var/uses_left = A.reagents.total_volume / A.amount_per_transfer_from_this
-			uses_left = round(uses_left) == uses_left ? uses_left : round(uses_left) + 1
-			A.uses_left = uses_left
+			A.update_uses_left()
 			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 			A.update_icon()
 		return ..()

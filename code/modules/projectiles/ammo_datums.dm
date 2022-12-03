@@ -676,6 +676,7 @@
 	headshot_state	= HEADSHOT_OVERLAY_HEAVY //Gol-dang shotgun blow your fething head off.
 	debilitate = list(0,0,0,0,0,0,0,0)
 	icon_state = "shrapnelshot"
+	handful_state = "shrapnel"
 	bonus_projectiles_type = /datum/ammo/bullet/revolver/nagant/shrapnel_bits
 
 	max_range = 6

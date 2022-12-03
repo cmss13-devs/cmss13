@@ -1,4 +1,4 @@
 author: "Molto"
 delete-after: True
 changes:
-  - spellcheck: "fixed cryopod typo"
+  - bugfix: "fixed light tiles"

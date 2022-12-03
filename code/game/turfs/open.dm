@@ -7,6 +7,9 @@
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
+	var/scorchable = FALSE
+	var/scorchedness = 0 //how scorched is this turf 0 to 3
+	var/icon_state_before_scorching //this is really dumb, blame the mappers...
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
@@ -65,12 +68,60 @@
 			I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
 			overlays += I
 
+	if(scorchedness)
+		if(!icon_state_before_scorching)				//I hate you mappers, stop var editting turfs
+			icon_state_before_scorching = icon_state
+		icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
+
+/turf/open/proc/scorch(var/heat_level)
+	// All scorched icons should be in the dmi that their unscorched bases are
+	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3
+	// 0 being no scorch, and 3 the most scorched
+	// level 1 should appear dried version of the base sprite so singeing works well
+	// depending on the heat_level either will singe or progressively increase the scorchedness up to level 3
+	// heat_level's logic has been written to scale with /obj/flamer_fire's burnlevel --- greenfire=15,orangefire=30,bluefire=40,whitefire=80
+
+	if(scorchedness == 3)					//already scorched to hell, no point in doing anything more
+		return
+
+	switch(heat_level)
+		if(0)
+			return
+
+		if(1) 						// 1 only singes
+			if(!scorchedness)  		// we only singe that which hasnt burned
+				scorchedness = 1
+
+		if(2 to 30)
+			scorchedness = Clamp(scorchedness + 1, 0, 3)	//increase scorch by 1 (not that hot of a fire)
+
+		if(31 to 60)
+			scorchedness = Clamp(scorchedness + 2, 0, 3)	//increase scorch by 2 (hotter fire)
+
+		if(61 to INFINITY)
+			scorchedness = 3								//max out the scorchedness (hottest fire)
+			var/turf/open/singe_target 						//super heats singe the surrounding singeables
+			for(var/i in GLOB.cardinals)
+				singe_target = get_step(src, i)
+				if(istype(singe_target, /turf/open))
+					if(singe_target.scorchable && !singe_target.scorchedness)  //much recurision checking
+						singe_target.scorch(1)
+
+	update_icon()
 
 /turf/open/get_examine_text(mob/user)
 	. = ..()
 	var/ceiling_info = ceiling_desc(user)
 	if(ceiling_info)
 		. += ceiling_info
+	if(scorchedness)
+		switch(scorchedness)
+			if(1)
+				. += "Lightly Toasted."
+			if(2)
+				. += "Medium Roasted."
+			if(3)
+				. += "Well Done."
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void
@@ -252,23 +303,24 @@
 	name = "grass"
 	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
+	scorchable =TRUE
 
 /turf/open/gm/dirt2
 	name = "dirt"
 	icon_state = "dirt"
 	baseturfs = /turf/open/gm/dirt2
 
-
 /turf/open/gm/dirtgrassborder
 	name = "grass"
 	icon_state = "grassdirt_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder
+	scorchable = TRUE
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"
 	icon_state = "grassdirt2_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder2
-
+	scorchable = TRUE
 
 /turf/open/gm/river
 	name = "river"

@@ -195,13 +195,15 @@
 	create_stomp() //Adds the visual effect. Wom wom wom
 	used_tremor = 1
 
-	for(var/mob/living/carbon/M in range(7, loc))
-		to_chat(M, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
-		shake_camera(M, 2, 3)
-
-	for(var/mob/living/carbon/human/H in range(3, loc))
-		to_chat(H, SPAN_WARNING("The violent tremors make you lose your footing!"))
-		H.apply_effect(1, WEAKEN)
+	for(var/mob/living/carbon/carbon_target in range(7, loc))
+		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
+		shake_camera(carbon_target, 2, 3)
+		if(get_dist(loc, carbon_target) <= 3 && !src.can_not_harm(carbon_target))
+			if(carbon_target.mob_size >= MOB_SIZE_BIG)
+				carbon_target.apply_effect(1, SLOW)
+			else
+				carbon_target.apply_effect(1, WEAKEN)
+			to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
 
 	spawn(caste.tremor_cooldown)
 		used_tremor = 0

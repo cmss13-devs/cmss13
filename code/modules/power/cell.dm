@@ -14,22 +14,17 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	var/charge = 0	// note %age conveted to actual charge in New
+	var/charge = 1000	// note %age conveted to actual charge in New
 	var/maxcharge = 1000
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
 	matter = list("metal" = 700, "glass" = 50)
 
 /obj/item/cell/Initialize()
 	. = ..()
-
-	charge = maxcharge
-	updateicon()
+	update_icon()
 
 /obj/item/cell/update_icon()
 	..()
-	updateicon()
-
-/obj/item/cell/proc/updateicon()
 	overlays.Cut()
 
 	if(charge < 0.01)
@@ -119,11 +114,11 @@
 	desc = "Cheap, throwaway batteries provided by the Weyland-Yutani Corporation. The 'rechargeable' feature was added to be more marketable to independent colonists hell-bent on 'using it till it disintegrates', a common sentiment on the frontier."
 	icon_state = "mini-cell"
 
+	charge = 500
 	maxcharge = 500
 	matter = list("metal" = 700, "glass" = 40)
 
-/obj/item/cell/crap/empty/Initialize()
-	. = ..()
+/obj/item/cell/crap/empty
 	charge = 0
 
 /obj/item/cell/secborg
@@ -132,55 +127,56 @@
 	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
 	matter = list("metal" = 700, "glass" = 40)
 
-/obj/item/cell/secborg/empty/Initialize()
-	. = ..()
+/obj/item/cell/secborg/empty
 	charge = 0
 
 /obj/item/cell/apc
 	name = "heavy-duty power cell"
 
+	charge = 5000
 	maxcharge = 5000
 	matter = list("metal" = 700, "glass" = 50)
 
-/obj/item/cell/apc/full
-	charge = 5000
+/obj/item/cell/apc/empty
+	charge = 0
 
 /obj/item/cell/high
 	name = "high-capacity power cell"
 
 	icon_state = "hcell"
+	charge = 10000
 	maxcharge = 10000
 	matter = list("metal" = 700, "glass" = 60)
 
-/obj/item/cell/high/empty/Initialize()
-	. = ..()
+/obj/item/cell/high/empty
 	charge = 0
 
 /obj/item/cell/super
 	name = "super-capacity power cell"
 
 	icon_state = "scell"
+	charge = 20000
 	maxcharge = 20000
 	matter = list("metal" = 700, "glass" = 70)
 
-/obj/item/cell/super/empty/Initialize()
-	. = ..()
+/obj/item/cell/super/empty
 	charge = 0
 
 /obj/item/cell/hyper
 	name = "hyper-capacity power cell"
 
 	icon_state = "hpcell"
+	charge = 30000
 	maxcharge = 30000
 	matter = list("metal" = 700, "glass" = 80)
 
-/obj/item/cell/hyper/empty/Initialize()
-	. = ..()
+/obj/item/cell/hyper/empty
 	charge = 0
 
 /obj/item/cell/infinite
 	name = "infinite-capacity power cell!"
 	icon_state = "icell"
+	charge = 30000
 	maxcharge = 30000
 	matter = list("metal" = 700, "glass" = 80)
 	use()

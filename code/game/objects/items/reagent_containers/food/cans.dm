@@ -1,5 +1,5 @@
 /obj/item/reagent_container/food/drinks/cans
-	var/canopened = 0
+	var/canopened = FALSE
 	var/crushed = FALSE
 	gulp_size = 10
 	icon = 'icons/obj/items/drinkcans.dmi'
@@ -10,7 +10,7 @@
 	if(crushed)
 		return
 
-	if (canopened == FALSE)
+	if (!canopened)
 		playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
 		canopened = TRUE
@@ -19,7 +19,7 @@
 	if(crushed)
 		return ..()
 
-	if (canopened == 1 && !reagents.total_volume)
+	if (canopened && !reagents.total_volume)
 		if(user.a_intent == INTENT_HARM)
 			if(isturf(loc))
 				if(user.zone_selected == "r_foot" || user.zone_selected == "l_foot" )
@@ -34,7 +34,7 @@
 	if(crushed)
 		return
 
-	if (canopened == 0)
+	if(!canopened)
 		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 		return
 	var/datum/reagents/R = src.reagents
@@ -56,7 +56,7 @@
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return 1
 	else if( istype(M, /mob/living/carbon/human) )
-		if (canopened == 0)
+		if (!canopened)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
@@ -124,24 +124,25 @@
 	var/obj/limb/L
 	L = H.get_limb(H.zone_selected)
 
-	switch(user.zone_selected)
-		if("head")
-			if(!L)
-				to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can on nothing!"))
-				return
-			message = "against [user.gender == MALE ? "his" : "her"] head!"
-			L.take_damage(brute = 3)			//ouch! but you're a tough badass so it barely hurts
-			H.UpdateDamageIcon()
-		if("l_foot" , "r_foot")
-			if(!L)
-				to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can under nothing!"))
-				return
-			message = "under [user.gender == MALE ? "his" : "her"] foot!"
-		else
-			message = "between [user.gender == MALE ? "his" : "her"] hands"
-			to_chat(user, SPAN_NOTICE("You start crushing the [name] between your hands!"))
-			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//crushing with hands takes great effort and might
-				return
+	if(src == H.get_inactive_hand())
+		message = "between [user.gender == MALE ? "his" : "her"] hands"
+		to_chat(user, SPAN_NOTICE("You start crushing the [name] between your hands!"))
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//crushing with hands takes great effort and might
+			return
+	else
+		switch(user.zone_selected)
+			if("head")
+				if(!L)
+					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can on nothing!"))
+					return
+				message = "against [user.gender == MALE ? "his" : "her"] head!"
+				L.take_damage(brute = 3)			//ouch! but you're a tough badass so it barely hurts
+				H.UpdateDamageIcon()
+			if("l_foot" , "r_foot")
+				if(!L)
+					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can under nothing!"))
+					return
+				message = "under [user.gender == MALE ? "his" : "her"] foot!"
 
 	crushed = TRUE
 	icon_state = "[icon_state]_crushed"

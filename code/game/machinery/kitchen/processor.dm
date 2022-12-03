@@ -25,7 +25,7 @@
 	/* objs */
 	meat
 		input = /obj/item/reagent_container/food/snacks/meat
-		output = /obj/item/reagent_container/food/snacks/meatball
+		output = /obj/item/reagent_container/food/snacks/rawmeatball
 
 	potato
 		input = /obj/item/reagent_container/food/snacks/grown/potato
@@ -46,6 +46,10 @@
 	spaghetti
 		input = /obj/item/reagent_container/food/snacks/flour
 		output = /obj/item/reagent_container/food/snacks/spagetti
+		
+	chocolatebar
+		input = /obj/item/reagent_container/food/snacks/grown/cocoapod
+		output = /obj/item/reagent_container/food/snacks/chocolatebar
 
 	/* mobs */
 	mob

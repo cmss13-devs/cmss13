@@ -3,7 +3,7 @@
 //----------------10x24mm Ammunition Boxes (for M41 family and L42)------------------
 
 /obj/item/ammo_box/rounds/ap
-	name = "rifle ammunition box (10x24mm AP)"
+	name = "\improper rifle ammunition box (10x24mm AP)"
 	desc = "A 10x24mm armor-piercing ammunition box. Used to refill M41A MK2 and L42A AP magazines. It comes with a leather strap allowing to wear it on the back."
 	overlay_content = "_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
@@ -12,7 +12,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/rounds/le
-	name = "rifle ammunition box (10x24mm LE)"
+	name = "\improper rifle ammunition box (10x24mm LE)"
 	desc = "A 10x24mm armor-shredding ammunition box. Used to refill M41A MK2 and L42A LE magazines. It comes with a leather strap allowing to wear it on the back."
 	overlay_content = "_le"
 	default_ammo = /datum/ammo/bullet/rifle/le
@@ -21,7 +21,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/rounds/incen
-	name = "rifle ammunition box (10x24mm Incen)"
+	name = "\improper rifle ammunition box (10x24mm Incen)"
 	desc = "A 10x24mm incendiary ammunition box. Used to refill M41A MK2 and L42A incendiary magazines. It comes with a leather strap allowing to wear it on the back."
 	overlay_content = "_incen"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
@@ -34,7 +34,7 @@
 //----------------10x20mm Ammunition Boxes (for M39 SMG)------------------
 
 /obj/item/ammo_box/rounds/smg
-	name = "SMG HV ammunition box (10x20mm)"
+	name = "\improper SMG HV ammunition box (10x20mm)"
 	desc = "A 10x20mm ammunition box. Used to refill M39 HV and extended magazines. It comes with a leather strap allowing to wear it on the back."
 	caliber = "10x20mm"
 	icon_state = "base_m39"
@@ -45,7 +45,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/rounds/smg/ap
-	name = "SMG ammunition box (10x20mm AP)"
+	name = "\improper SMG ammunition box (10x20mm AP)"
 	desc = "A 10x20mm armor-piercing ammunition box. Used to refill M39 AP magazines. It comes with a leather strap allowing to wear it on the back."
 	caliber = "10x20mm"
 	overlay_content = "_ap"
@@ -55,7 +55,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/rounds/smg/le
-	name = "SMG ammunition box (10x20mm LE)"
+	name = "\improper SMG ammunition box (10x20mm LE)"
 	desc = "A 10x20mm armor-shredding ammunition box. Used to refill M39 LE magazines. It comes with a leather strap allowing to wear it on the back."
 	caliber = "10x20mm"
 	overlay_content = "_le"
@@ -65,7 +65,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/rounds/smg/incen
-	name = "SMG ammunition box (10x20mm Incen)"
+	name = "\improper SMG ammunition box (10x20mm Incen)"
 	desc = "A 10x20mm incendiary ammunition box. Used to refill M39 incendiary magazines. It comes with a leather strap allowing to wear it on the back."
 	caliber = "10x20mm"
 	overlay_content = "_incen"
@@ -79,7 +79,7 @@
 //----------------5.45x39mm Ammunition Boxes (for UPP Type71 family)------------------
 
 /obj/item/ammo_box/rounds/type71
-	name = "rifle ammunition box (5.45x39mm)"
+	name = "\improper rifle ammunition box (5.45x39mm)"
 	desc = "A 5.45x39mm ammunition box. Used to refill Type71 magazines. It comes with a leather strap allowing to wear it on the back."
 	icon_state = "base_type71"
 	overlay_gun_type = "_rounds_type71"
@@ -91,7 +91,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/rounds/type71/ap
-	name = "rifle ammunition box (5.45x39mm AP)"
+	name = "\improper rifle ammunition box (5.45x39mm AP)"
 	desc = "A 5.45x39mm armor-piercing ammunition box. Used to refill Type71 AP magazines. It comes with a leather strap allowing to wear it on the back."
 	icon_state = "base_type71"
 	overlay_gun_type = "_rounds_type71"

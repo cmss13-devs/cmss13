@@ -133,18 +133,18 @@
 	product_ads = "Real men smoke Lucky Strikes!;Serving the US Armed Forces for over two-hundred years!;Life's short, smoke a Lucky!;L.S./M.F.T.!;Lucky Strike is first again!;You just can't beat a Lucky Strike!;The preferred cigarette of Carlos Hathcock!;First again with tobacco-men!"
 	vend_delay = 14
 	icon_state = "cigs"
-	products = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 50,
-					/obj/item/storage/fancy/cigar/tarbacktube = 20,
-					/obj/item/storage/box/matches = 15,
-					/obj/item/tool/lighter/random = 25,
-					/obj/item/tool/lighter/zippo = 10)
+	products = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 40,
+					/obj/item/storage/fancy/cigar/tarbacktube = 35,
+					/obj/item/storage/box/matches = 1,
+					/obj/item/tool/lighter/random = 10,
+					/obj/item/tool/lighter/zippo = 25)
 
 	premium = list(/obj/item/storage/fancy/cigar = 25)
-	prices = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 15,
-					/obj/item/storage/fancy/cigar/tarbacktube = 5,
+	prices = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 40,
+					/obj/item/storage/fancy/cigar/tarbacktube = 35,
 					/obj/item/storage/box/matches = 1,
 					/obj/item/tool/lighter/random = 2,
-					/obj/item/tool/lighter/zippo = 20)
+					/obj/item/tool/lighter/zippo = 25)
 
 /obj/structure/machinery/vending/cigarette/free
 	product_slogans = ""
@@ -153,7 +153,7 @@
 					/obj/item/storage/fancy/cigar/tarbacktube = 20,
 					/obj/item/storage/box/matches = 15,
 					/obj/item/tool/lighter/random = 25,
-					/obj/item/tool/lighter/zippo = 10)
+					/obj/item/tool/lighter/zippo = 25)
 	premium = list()
 	prices = list()
 
@@ -170,16 +170,16 @@
 					/obj/item/storage/box/matches = 10,
 					/obj/item/tool/lighter/random = 20,
 					/obj/item/tool/lighter/zippo = 5)
-	prices = list(/obj/item/storage/fancy/cigarettes/kpack = 20,
+	prices = list(/obj/item/storage/fancy/cigarettes/kpack = 40,
 					/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
-					/obj/item/storage/fancy/cigarettes/emeraldgreen = 40,
-					/obj/item/storage/fancy/cigarettes/wypacket = 20,
+					/obj/item/storage/fancy/cigarettes/emeraldgreen = 35,
+					/obj/item/storage/fancy/cigarettes/wypacket = 35,
 					/obj/item/storage/fancy/cigarettes/lady_finger = 30,
-					/obj/item/storage/fancy/cigarettes/blackpack = 50,
-					/obj/item/storage/fancy/cigar/tarbacks = 40,
+					/obj/item/storage/fancy/cigarettes/blackpack = 75,
+					/obj/item/storage/fancy/cigar/tarbacks = 35,
 					/obj/item/storage/box/matches = 1,
-					/obj/item/tool/lighter/random = 2,
-					/obj/item/tool/lighter/zippo = 20)
+					/obj/item/tool/lighter/random = 10,
+					/obj/item/tool/lighter/zippo = 25)
 
 /obj/structure/machinery/vending/security
 	name = "SecTech"

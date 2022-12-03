@@ -57,3 +57,21 @@
   - rscadd: Bomb armor now reduces the stun and flash timer on explosions for marines.
       For grenadier armor, this means it's roughly halved.
   - rscadd: Xenomorphs are no longer slept by explosions.
+2022-12-03:
+  CrafticalDecoy:
+  - qol: Shovels are now vended folded.
+  Huffie56:
+  - rscadd: add the ability to process cocoapod into chocolate without removing standard
+      recipe for it.
+  - code_imp: change output of meat to raw meatball instead of cooked meatball.
+  NoKohi:
+  - code_imp: removed redundant behavior in walls
+  - bugfix: fixed power load values
+  carlarctg:
+  - bugfix: Fixed burrower tremor not working on enemy xenos. Only slows large xenos.
+  - rscadd: Ferals get a hive leader now.
+  - bugfix: Fixed an acid ability not having an XVX damage multiplier.
+  kugamo:
+  - rscadd: Fire now scorches grassy turfs!
+  theselfish:
+  - soundadd: Gave the Headbands and Squad Berets clickable OBJ sprites.

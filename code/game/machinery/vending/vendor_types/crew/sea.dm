@@ -4,14 +4,20 @@ GLOBAL_LIST_INIT(cm_vending_gear_sea, list(
 		list("PERSONAL PRIMARY (CHOOSE 1)", 0, null, null, null),
 		list("M41A MK1 Pulse Rifle", 0, /obj/item/weapon/gun/rifle/m41aMK1, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 
-		list("SPARE AMMUNITION", 0, null, null, null),
-		list("M41A MK1 Magazine", 9, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_REGULAR),
+		list("PRIMARY AMMUNITION", 0, null, null, null),
+		list("M41A MK1 Magazine (10x24mm)", 5, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_REGULAR),
 
-		list("GUN ATTACHMENTS (CHOOSE 1)", 0, null, null, null),
-		list("Laser Sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Red-Dot Sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Reflex Sight", 0, /obj/item/attachable/reflex, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Rail Flashlight", 0, /obj/item/attachable/flashlight, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
+		list("M4A3 Custom Pistol", 0, /obj/item/weapon/gun/pistol/m4a3/custom, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("M44 Custom Combat Reolver", 0, /obj/item/weapon/gun/revolver/m44/custom, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("88 Mod 4 Combat Pistol", 0, /obj/item/weapon/gun/pistol/mod88, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("VP78 Pistol", 0, /obj/item/weapon/gun/pistol/vp78, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+
+		list("SIDEARM AMMUNITION", 0, null, null, null),
+		list("M4A3 Magazine (9mm)", 4, /obj/item/ammo_magazine/pistol, null, VENDOR_ITEM_REGULAR),
+		list("M44 Marksman Speed Loader (.44)", 4, /obj/item/ammo_magazine/revolver/marksman, null, VENDOR_ITEM_REGULAR),
+		list("88M4 AP Magazine (9mm)", 4, /obj/item/ammo_magazine/revolver/marksman, null, VENDOR_ITEM_REGULAR),
+		list("VP78 Magazine (9mm)", 4, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 	))
 
 /obj/structure/machinery/cm_vending/gear/sea
@@ -39,6 +45,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Lifesaver Bag (Full)", 0, /obj/item/storage/belt/medical/lifesaver/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("M276 Toolbelt Rig (Full)", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("M276 M44 Holster Rig", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("M276 General Pistol Holster Rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Autoinjector Pouch", 0, /obj/item/storage/pouch/autoinjector/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
@@ -64,11 +72,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("HEADWEAR (CHOOSE 1)", 0, null, null, null),
-		list("Drill Hat", 0, /obj/item/clothing/head/drillhat, MARINE_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
 		list("M10 Helmet", 0, /obj/item/clothing/head/helmet/marine, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Drill Hat", 0, /obj/item/clothing/head/drillhat, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Officer Cap", 0, /obj/item/clothing/head/cmcap/ro, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("USCM Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
 		list("TOOLS OF THE TRADE", 0, null, null, null),
-		list("CPR Dummy", 5, /obj/item/cpr_dummy, null, VENDOR_ITEM_REGULAR)
+		list("CPR Dummy", 0, /obj/item/cpr_dummy, null, VENDOR_ITEM_REGULAR)
 	))
 
 /obj/structure/machinery/cm_vending/clothing/sea

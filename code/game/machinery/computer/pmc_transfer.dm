@@ -92,14 +92,14 @@
 
 	return data
 
-/obj/structure/machinery/computer/pmc_transfer/attackby(obj/O, mob/user)
+/obj/structure/machinery/computer/pmc_transfer/attackby(obj/object, mob/user)
 	add_fingerprint(user)
 
 	if(!ishuman(user))
 		return ..()
 
-	if(istype(O, /obj/item/grab))
-		var/obj/item/grab/grab_obj = O
+	if(istype(object, /obj/item/grab))
+		var/obj/item/grab/grab_obj = object
 		if(ismob(grab_obj.grabbed_thing))
 			if(inoperable())
 				to_chat(usr, SPAN_NOTICE("You place [grab_obj.grabbed_thing]'s hand on scanner but \the [src] remains silent."))

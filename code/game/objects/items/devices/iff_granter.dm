@@ -19,12 +19,12 @@
 	return ..()
 
 
-/obj/item/device/iff_granter/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/card/id))
-		inserted_id = W
-		user.drop_inv_item_on_ground(W)
-		W.forceMove(src)
-		to_chat(user, SPAN_NOTICE("You insert [W] into [src]."))
+/obj/item/device/iff_granter/attackby(obj/item/possible_id, mob/user)
+	if(istype(possible_id, /obj/item/card/id))
+		inserted_id = possible_id
+		user.drop_inv_item_on_ground(possible_id)
+		possible_id.forceMove(src)
+		to_chat(user, SPAN_NOTICE("You insert [possible_id] into [src]."))
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 25, FALSE)
 
 	else
@@ -77,8 +77,6 @@
 	playsound(src, 'sound/machines/terminal_eject.ogg', 25, FALSE)
 	human_user.put_in_hands(inserted_id)
 	inserted_id = null
-
-
 
 /obj/item/device/iff_granter/weyland
 	name = "\improper Weyland-Yutani IFF granter"

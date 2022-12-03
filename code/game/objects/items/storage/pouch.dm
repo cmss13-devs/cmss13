@@ -902,7 +902,7 @@
 		autoinjector.update_uses_left()
 		autoinjector.update_icon()
 		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
-        A.update_icon()
+		autoinjector.update_icon()
 		update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/afterattack(obj/target, mob/user, flag) //refuel at fueltanks & chem dispensers.

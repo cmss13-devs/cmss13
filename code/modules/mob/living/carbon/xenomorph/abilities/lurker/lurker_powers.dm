@@ -1,7 +1,7 @@
-/datum/action/xeno_action/onclick/lurker_invisibility/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+/datum/action/xeno_action/onclick/lurker_invisibility/use_ability(atom/targeted_atom)
+	var/mob/living/carbon/Xenomorph/xeno = owner
 
-	if (!istype(Xeno))
+	if (!istype(xeno))
 		return
 
 	if (!action_cooldown_check())
@@ -10,14 +10,14 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	animate(Xeno, alpha = alpha_amount, time = 0.1 SECONDS, easing = QUAD_EASING)
-	Xeno.update_icons() // callback to make the icon_state indicate invisibility is in lurker/update_icon
+	animate(xeno, alpha = alpha_amount, time = 0.1 SECONDS, easing = QUAD_EASING)
+	xeno.update_icons() // callback to make the icon_state indicate invisibility is in lurker/update_icon
 
-	Xeno.speed_modifier -= speed_buff
-	Xeno.recalculate_speed()
+	xeno.speed_modifier -= speed_buff
+	xeno.recalculate_speed()
 
-	if (Xeno.mutation_type == LURKER_NORMAL)
-		var/datum/behavior_delegate/lurker_base/behavior = Xeno.behavior_delegate
+	if (xeno.mutation_type == LURKER_NORMAL)
+		var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
 		behavior.on_invisibility()
 
 	// if we go off early, this also works fine.
@@ -36,18 +36,18 @@
 		deltimer(invis_timer_id)
 		invis_timer_id = TIMER_ID_NULL
 
-	var/mob/living/carbon/Xenomorph/Xeno = owner
-	if (istype(Xeno))
-		animate(Xeno, alpha = initial(Xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
-		to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel your invisibility end!"))
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if (istype(xeno))
+		animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You feel your invisibility end!"))
 
-		Xeno.update_icons()
+		xeno.update_icons()
 
-		Xeno.speed_modifier += speed_buff
-		Xeno.recalculate_speed()
+		xeno.speed_modifier += speed_buff
+		xeno.recalculate_speed()
 
-		if (Xeno.mutation_type == LURKER_NORMAL)
-			var/datum/behavior_delegate/lurker_base/behavior = Xeno.behavior_delegate
+		if (xeno.mutation_type == LURKER_NORMAL)
+			var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
 			if (istype(behavior))
 				behavior.on_invisibility_off()
 
@@ -55,10 +55,10 @@
 	to_chat(owner, SPAN_XENOHIGHDANGER("You are ready to use your invisibility again!"))
 	..()
 
-/datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+/datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)
+	var/mob/living/carbon/Xenomorph/xeno = owner
 
-	if (!istype(Xeno))
+	if (!istype(xeno))
 		return
 
 	if (!action_cooldown_check())
@@ -67,61 +67,61 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	if (Xeno.mutation_type != LURKER_NORMAL)
+	if (xeno.mutation_type != LURKER_NORMAL)
 		return
 
-	var/datum/behavior_delegate/lurker_base/behavior = Xeno.behavior_delegate
+	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
-	to_chat(Xeno, SPAN_XENOHIGHDANGER("Your next slash will deal increased damage!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("Your next slash will deal increased damage!"))
 
 	addtimer(CALLBACK(src, .proc/unbuff_slash), buff_duration)
-	Xeno.next_move = world.time + 1 // Autoattack reset
+	xeno.next_move = world.time + 1 // Autoattack reset
 
 	apply_cooldown()
 	..()
 	return
 
 /datum/action/xeno_action/onclick/lurker_assassinate/proc/unbuff_slash()
-	var/mob/living/carbon/Xenomorph/Xeno = owner
-	if (!istype(Xeno))
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if (!istype(xeno))
 		return
-	var/datum/behavior_delegate/lurker_base/behavior = Xeno.behavior_delegate
+	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
 	if (istype(behavior))
 		// In case slash has already landed
 		if (!behavior.next_slash_buffed)
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(Xeno, SPAN_XENODANGER("You have waited too long, your slash will no longer deal increased damage!"))
+	to_chat(xeno, SPAN_XENODANGER("You have waited too long, your slash will no longer deal increased damage!"))
 
 
 // VAMPIRE LURKER
 
-/datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/L) //pounce effects
-	var/mob/living/carbon/Target = L
-	var/mob/living/carbon/Xenomorph/Xeno = owner
-	Target.dazed += 5
-	Xeno.flick_attack_overlay(Target, "slash")   //fake slash to prevent disarm abuse
-	Target.last_damage_data = create_cause_data(Xeno.caste_type, Xeno)
-	Target.apply_armoured_damage(20, ARMOR_MELEE, BRUTE)
-	playsound(get_turf(Target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
-	shake_camera(Target, 2, 1)
+/datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
+	var/mob/living/carbon/target = living_target
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	target.dazed += 5
+	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
+	target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+	target.apply_armoured_damage(20, ARMOR_MELEE, BRUTE)
+	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
+	shake_camera(target, 2, 1)
 	apply_cooldown_override(40)
 
-/datum/action/xeno_action/activable/flurry/use_ability(atom/A) //flurry ability
-	var/mob/living/carbon/Xenomorph/Xeno = owner
-	if (!istype(Xeno))
+/datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if (!istype(xeno))
 		return
-	if (!Xeno.check_state())
+	if (!xeno.check_state())
 		return
 	if (!action_cooldown_check())
 		return
 
-	Xeno.visible_message(SPAN_DANGER("[Xeno] slashes frantically the area in front of it!"), \
+	xeno.visible_message(SPAN_DANGER("[xeno] slashes frantically the area in front of it!"), \
 	SPAN_XENOWARNING("You unleash a barrage of slashes!"))
-	playsound(Xeno, 'sound/effects/alien_tail_swipe2.ogg', 30)
+	playsound(xeno, 'sound/effects/alien_tail_swipe2.ogg', 30)
 	apply_cooldown()
 
 	// Transient turf list
@@ -130,8 +130,8 @@
 	var/list/telegraph_atom_list = list()
 
 	// Code to get a 1x3 area of turfs
-	var/turf/root = get_turf(Xeno)
-	var/facing = get_dir(Xeno, A)
+	var/turf/root = get_turf(xeno)
+	var/facing = get_dir(xeno, targeted_atom)
 	var/turf/infront = get_step(root, facing)
 	var/turf/infront_left = get_step(root, turn(facing, 45))
 	var/turf/infront_right = get_step(root, turn(facing, -45))
@@ -141,114 +141,114 @@
 	if (!(!infront || infront.density))
 		temp_turfs += infront_right
 
-	for (var/turf/T in temp_turfs)
+	for (var/turf/current_turfs in temp_turfs)
 
-		if (!istype(T))
+		if (!istype(current_turfs))
 			continue
 
-		if (T.density)
+		if (current_turfs.density)
 			continue
 
-		target_turfs += T
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(T, 2)
+		target_turfs += current_turfs
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(current_turfs, 2)
 
-	for (var/turf/T in target_turfs)
-		for (var/mob/living/carbon/Target in T)
-			if (Target.stat == DEAD)
+	for (var/turf/current_turfs in target_turfs)
+		for (var/mob/living/carbon/target in current_turfs)
+			if (target.stat == DEAD)
 				continue
 
-			if (!isXenoOrHuman(Target) || Xeno.can_not_harm(Target))
+			if (!isXenoOrHuman(target) || xeno.can_not_harm(target))
 				continue
 
-			Xeno.visible_message(SPAN_DANGER("[Xeno] scratches [Target] all around his body!"), \
-			SPAN_XENOWARNING("You slash [Target] multiple times!"))
-			Xeno.flick_attack_overlay(Target, "slash")
-			Target.last_damage_data = create_cause_data(Xeno.caste_type, Xeno)
-			log_attack("[key_name(Xeno)] attacked [key_name(Target)] with Flurry")
-			Target.apply_armoured_damage(30, ARMOR_MELEE, BRUTE)
-			playsound(get_turf(Target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
-			Xeno.emote("roar")
-			Xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-			Xeno.gain_health(30)
+			xeno.visible_message(SPAN_DANGER("[xeno] scratches [target] all around his body!"), \
+			SPAN_XENOWARNING("You slash [target] multiple times!"))
+			xeno.flick_attack_overlay(target, "slash")
+			target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+			log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
+			target.apply_armoured_damage(30, ARMOR_MELEE, BRUTE)
+			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
+			xeno.emote("roar")
+			xeno.flick_heal_overlay(1 SECONDS, "#00B800")
+			xeno.gain_health(30)
 			..()
 			return
 
-/datum/action/xeno_action/activable/tail_Jab/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Xeno = owner
-	var/mob/living/carbon/Target = A
-	var/distance = get_dist(Xeno, Target)
+/datum/action/xeno_action/activable/tail_Jab/use_ability(atom/targeted_atom)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/target = targeted_atom
+	var/distance = get_dist(xeno, target)
 
 	if(!action_cooldown_check())
 		return
 
-	if(!Xeno.check_state())
+	if(!xeno.check_state())
 		return
 
-	var/list/turf/path = getline2(Xeno, Target, include_from_atom = FALSE)
+	var/list/turf/path = getline2(xeno, target, include_from_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
-			to_chat(Xeno, SPAN_WARNING("There's something blocking you from stricking!"))
+			to_chat(xeno, SPAN_WARNING("There's something blocking you from stricking!"))
 			return
-		var/atom/barrier = path_turf.handle_barriers(Xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		var/atom/barrier = path_turf.handle_barriers(xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
 		if(barrier != path_turf)
-			to_chat(Xeno, SPAN_WARNING("There's something blocking you from stricking!"))
+			to_chat(xeno, SPAN_WARNING("There's something blocking you from stricking!"))
 			return
-		for(var/obj/structure/S in path_turf)
-			if(istype(S, /obj/structure/window/framed))
-				var/obj/structure/window/framed/W = S
-				if(W.unslashable)
+		for(var/obj/structure/current_structure in path_turf)
+			if(istype(current_structure, /obj/structure/window/framed))
+				var/obj/structure/window/framed/target_window = current_structure
+				if(target_window.unslashable)
 					return
-				W.shatter_window(TRUE)
+				target_window.shatter_window(TRUE)
 				apply_cooldown(cooldown_modifier = 0.5)
-				Xeno.visible_message(SPAN_XENOWARNING("\The [Xeno] strikes the window with his tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
-				playsound(get_turf(W),'sound/effects/glassbreak3.ogg', 30, TRUE)
+				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with his tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
+				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
 				return
 
-	if(!isXenoOrHuman(Target) || Xeno.can_not_harm(Target))
-		Xeno.visible_message(SPAN_XENOWARNING("\The [Xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
+	if(!isXenoOrHuman(target) || xeno.can_not_harm(target))
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
-		playsound(Xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
+		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return
 
 	if(distance > 2)
 		return
 
-	if(Target.stat == DEAD)
+	if(target.stat == DEAD)
 		return
 
-	if(Target.stat) //execute provides you with a good chuck of health by murdering your victim
-		if(!Xeno.Adjacent(Target))
-			to_chat(Xeno, SPAN_XENONOTICE("You cannot execute [Target] from that far away."))
+	if(target.stat) //execute provides you with a good chuck of health by murdering your victim
+		if(!xeno.Adjacent(target))
+			to_chat(xeno, SPAN_XENONOTICE("You cannot execute [target] from that far away."))
 			return
-		if(Xeno.action_busy)
+		if(xeno.action_busy)
 			return
-		Xeno.visible_message(SPAN_DANGER("[Xeno] Prepares for devastating attack on [Target]."), \
-		SPAN_XENOWARNING("You carefully aim your tail towards [Target] vital organs."), null, 5)
-		if(!do_after(Xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		xeno.visible_message(SPAN_DANGER("[xeno] Prepares for devastating attack on [target]."), \
+		SPAN_XENOWARNING("You carefully aim your tail towards [target] vital organs."), null, 5)
+		if(!do_after(xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
-		if(Target.stat == DEAD)
+		if(target.stat == DEAD)
 			return
-		to_chat(Xeno, SPAN_XENOHIGHDANGER("You brutally pierce [Target] chest with your tail."))
-		Xeno.visible_message(SPAN_DANGER("[Xeno] pierces [Target] chest with his tail."))
-		playsound(Target,'sound/weapons/alien_bite2.ogg', 50, 1)
-		Xeno.flick_attack_overlay(Target, "tail")
-		Target.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, "chest", 5)
-		Xeno.gain_health(150)
-		Xeno.xeno_jitter(1 SECONDS)
-		Xeno.flick_heal_overlay(3 SECONDS, "#00B800")
-		Target.last_damage_data = create_cause_data(Xeno.caste_type, Xeno)
-		log_attack("[key_name(Xeno)] Executed [key_name(Target)] with Tail Jab")
-		Xeno.emote("roar")
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You brutally pierce [target] chest with your tail."))
+		xeno.visible_message(SPAN_DANGER("[xeno] pierces [target] chest with his tail."))
+		playsound(target,'sound/weapons/alien_bite2.ogg', 50, 1)
+		xeno.flick_attack_overlay(target, "tail")
+		target.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, "chest", 5)
+		xeno.gain_health(150)
+		xeno.xeno_jitter(1 SECONDS)
+		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
+		target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+		log_attack("[key_name(xeno)] Executed [key_name(target)] with Tail Jab")
+		xeno.emote("roar")
 		apply_cooldown()
 		return
 
 
-	to_chat(Xeno, SPAN_XENOHIGHDANGER("You stab [Target] with your tail, pushing it backwards."))
-	Xeno.flick_attack_overlay(Target, "tail")
-	playsound(Target,'sound/weapons/alien_claw_block.ogg', 50, 1)
-	Target.apply_armoured_damage(20, ARMOR_MELEE, BRUTE, "chest")
-	Target.KnockDown(0.5, 0.5)
-	Target.last_damage_data = create_cause_data(Xeno.caste_type, Xeno)
-	log_attack("[key_name(Xeno)] attacked [key_name(Target)] with Tail Jab")
-	step_away(Target, Xeno, 2, 2)
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You stab [target] with your tail, pushing it backwards."))
+	xeno.flick_attack_overlay(target, "tail")
+	playsound(target,'sound/weapons/alien_claw_block.ogg', 50, 1)
+	target.apply_armoured_damage(20, ARMOR_MELEE, BRUTE, "chest")
+	target.KnockDown(0.5, 0.5)
+	target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+	log_attack("[key_name(xeno)] attacked [key_name(target)] with Tail Jab")
+	step_away(target, xeno, 2, 2)
 	apply_cooldown() // normal cooldown if you havent executed anyone

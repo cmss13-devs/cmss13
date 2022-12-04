@@ -2,6 +2,7 @@ import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Flex, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
+import { Component } from 'inferno';
 
 type SelectedState = [string, string];
 type SelectionState = [string, string[]];
@@ -19,6 +20,7 @@ interface SentrySpec {
 interface SentryData {
   sentry: SentrySpec[];
   sentry_static: SentrySpec[];
+  screen_state: 0 | 1;
 }
 
 const SelectionGroup = (
@@ -147,8 +149,40 @@ const SentryGunDisplay = (props: { data: SentrySpec }, context) => {
   );
 };
 
+interface TimedCallbackProps {
+  time: number;
+  callback: () => void;
+}
+
+interface TimedCallbackState {
+  timeout?: NodeJS.Timeout;
+}
+
+class CallbackHandler extends Component<
+  TimedCallbackProps,
+  TimedCallbackState
+> {
+  timeout?: NodeJS.Timeout;
+  constructor(props: TimedCallbackProps) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.timeout = setTimeout(() => this.props.callback(), this.props.time);
+  }
+
+  componentWillUnmount() {
+    if (this.state?.timeout) {
+      clearTimeout(this.state.timeout);
+    }
+  }
+  render() {
+    return <div />;
+  }
+}
+
 export const SentryGunUI = (_, context) => {
-  const { data } = useBackend<SentryData>(context);
+  const { data, act } = useBackend<SentryData>(context);
   const sentrykeys =
     data.sentry.length === 0
       ? []
@@ -180,10 +214,17 @@ export const SentryGunUI = (_, context) => {
             </Tabs.Tab>
           ))}
         </Tabs>
-        <div>
-          <div className="TopPanelSlide" />
-          <div className="BottomPanelSlide" />
-        </div>
+
+        {data.screen_state === 0 && (
+          <div>
+            <CallbackHandler
+              time={1.5}
+              callback={() => act('screen-state', { state: 1 })}
+            />
+            <div className="TopPanelSlide" />
+            <div className="BottomPanelSlide" />
+          </div>
+        )}
         {!validSelection && <EmptyDisplay />}
         {validSelection && (
           <SentryGunDisplay data={sentrySpecs[selectedSentry ?? 0]} />

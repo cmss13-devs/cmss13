@@ -12,6 +12,7 @@
 	var/power_consumption = 1
 	w_class = SIZE_SMALL
 	var/state = 0
+	var/screen_state = 0
 
 /obj/item/device/sentry_computer/Initialize()
 	. = ..()
@@ -51,11 +52,11 @@
 
 /obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/sentry/target)
 	paired_sentry +=list(target)
-	update_static_data(usr)
+	update_static_data_for_all_viewers()
 
 /obj/item/device/sentry_computer/proc/unpair_sentry(var/obj/structure/machinery/defenses/sentry/target)
 	paired_sentry -=list(target)
-	update_static_data(usr)
+	update_static_data_for_all_viewers()
 
 /obj/item/device/sentry_computer/verb/use_unique_action()
 	set category = "Misc"
@@ -81,6 +82,7 @@
 	else if(state == 2)
 		icon_state = "sentrycomp_op"
 		on = FALSE
+		screen_state = 0
 		state = 3
 	else if(state == 3)
 		icon_state = "sentrycomp_cl"
@@ -89,6 +91,11 @@
 
 /obj/item/device/sentry_computer/proc/attempted_link(mob/linker)
 	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
+
+/obj/item/device/sentry_computer/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(on == FALSE)
+		return UI_CLOSE
 
 /obj/item/device/sentry_computer/ui_static_data(mob/user)
 	. = list()
@@ -114,6 +121,8 @@
 	if(cell)
 		.["electrical"]["charge"] = cell.charge
 		.["electrical"]["max_charge"] = cell.maxcharge
+	// if screen animation has played
+	.["screen_state"] = screen_state
 
 	for(var/sentry in paired_sentry)
 		var/list/sentry_holder = list()
@@ -142,6 +151,10 @@
 		if(paired_sentry[sentry_index])
 			paired_sentry[sentry_index].update_choice(usr, action, params["selection"])
 		return
+	switch(action)
+		if("screen-state")
+			screen_state = params["state"]
+
 
 	// non sentry related stuff
 

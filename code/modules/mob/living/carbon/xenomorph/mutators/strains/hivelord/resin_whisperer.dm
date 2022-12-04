@@ -30,6 +30,7 @@
 	xeno.client.change_view(10, src)
 
 	xeno.mutation_type = HIVELORD_RESIN_WHISPERER
+	xeno.mutation_icon_state = HIVELORD_RESIN_WHISPERER
 	mutator_update_actions(xeno)
 	mutator_set.recalculate_actions(description, flavor_description)
 	xeno.recalculate_plasma()

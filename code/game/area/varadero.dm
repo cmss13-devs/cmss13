@@ -53,9 +53,11 @@
 
 /area/varadero/interior_protected/comms2
 	name = "New Varadero - Communications Project Site"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior_protected/comms3
 	name = "New Varadero - Fishing Hole"
+	is_resin_allowed = FALSE
 
 /area/varadero/exterior/comms4
 	name = "New Varadero - Walkway Extension"
@@ -72,9 +74,12 @@
 /area/varadero/exterior/lz1_console
 	name = "New Varadero - Pontoon Dock"
 	requires_power = FALSE
+	is_resin_allowed = FALSE
 
 /area/varadero/exterior/lz1_console/two
-	name = "Varadero - Palm Airfield"
+	name = "New Varadero - Palm Airfield"
+	requires_power = FALSE
+	is_resin_allowed = FALSE
 
 //exterior areas
 
@@ -91,16 +96,23 @@
 /area/varadero/exterior/pontoon_beach
 	name = "New Varadero - Rockabilly Beach"
 	icon_state = "varadero0"
+	is_resin_allowed = FALSE
 
 //interior areas
 
 /area/varadero/interior/cargo
 	name = "New Varadero - Cargo"
 	icon_state = "req0"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/hall_NW
 	name = "New Varadero - Hallway NW"
 	icon_state = "hall0"
+
+/area/varadero/interior/hall_N
+	name = "New Varadero - Hallway N"
+	icon_state = "hall2"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/hall_SE
 	name = "New Varadero - Hallway SE"
@@ -109,10 +121,12 @@
 /area/varadero/interior/chapel
 	name = "New Vardero - Chapel"
 	icon_state = "offices1"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/morgue
 	name = "New Varadero - Morgue"
 	icon_state = "offices0"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/medical
 	name = "New Varadero - Medical"
@@ -125,6 +139,7 @@
 /area/varadero/interior/maintenance/north
 	name = "New Varadero - Northern Maintenance"
 	icon_state = "tunnels1"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/maintenance/research
 	name = "New Varadero - Research Maintenance"
@@ -169,6 +184,7 @@
 /area/varadero/interior/library
 	name = "New Varadero - Library"
 	icon_state = "offices0"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/court
 	name = "New Varadero - Basketball Court"

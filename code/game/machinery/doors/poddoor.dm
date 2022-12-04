@@ -244,21 +244,25 @@
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/secure
 	icon = 'icons/obj/structures/doors/1x4blast_hor_secure.dmi'
+	icon_state = "pdoor1"
 	openspeed = 17
 	unslashable = TRUE
 	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/secure/opened
 	density = FALSE
+	icon_state = "pdoor0"
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure
 	icon = 'icons/obj/structures/doors/1x4blast_vert_secure.dmi'
+	icon_state = "pdoor1"
 	openspeed = 17
 	unslashable = TRUE
 	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure/open
 	density = FALSE
+	icon_state = "pdoor0"
 
 /obj/structure/machinery/door/poddoor/two_tile/secure
 	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'

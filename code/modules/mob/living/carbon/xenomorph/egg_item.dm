@@ -34,6 +34,8 @@
 			. += "This one appears to belong to the [hive.prefix]hive"
 
 /obj/item/xeno_egg/afterattack(atom/target, mob/user, proximity)
+	if(istype(target, /obj/effect/alien/resin/special/eggmorph))
+		return //We tried storing the hugger from the egg, no need to try to plant it (we know the turf is occupied!)
 	if(isXeno(user))
 		var/turf/T = get_turf(target)
 		plant_egg(user, T, proximity)

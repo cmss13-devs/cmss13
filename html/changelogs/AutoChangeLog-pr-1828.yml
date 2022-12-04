@@ -1,0 +1,5 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - bugfix: "Fixed an error causing a lot of runtime error logs whenever a mob with autopsy data would get gibbed."
+  - code_imp: "Moved QDEL_NULL_LIST in along with other qdel procs."

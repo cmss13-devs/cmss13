@@ -2782,7 +2782,6 @@
 	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
 	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = BELOW_MOB_LAYER)
 	generated_projectile.overlays += hook_overlay
-	hook_overlay.pixel_y = 32
 
 /datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/item/projectile/fired_proj)
 	if(iscarbon(target))
@@ -2798,7 +2797,16 @@
 	target.overlays += tail_image
 
 	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
+	// we dont mess with preexisting freezes
+	var/prefrozen = target.frozen == TRUE ? TRUE : FALSE
+	//paralyzes target so they don't break the throw by moving...
+	if(!prefrozen)
+		target.frozen = TRUE
+	//sleeps during this proc...
 	target.throw_atom(fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
+	//inmediately after the sleeps, unfreezes so they can wiggle around.
+	if(!prefrozen)
+		target.frozen = FALSE
 
 	qdel(tail_beam)
 	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.

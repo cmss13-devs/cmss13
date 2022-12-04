@@ -17,7 +17,7 @@
 
 	update_icon()
 
-/turf/open/update_icon(should_force_update_neighbors=TRUE)
+/turf/open/update_icon()
 	overlays.Cut()
 
 	add_cleanable_overlays()
@@ -269,6 +269,7 @@
 	name = "ground dirt"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
+	overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
 
 /turf/open/gm/attackby(var/obj/item/I, var/mob/user)
 
@@ -315,7 +316,6 @@
 	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
 	scorchable = TRUE
-	overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
 
 /turf/open/gm/dirt2
 	name = "dirt"
@@ -327,14 +327,12 @@
 	icon_state = "grassdirt_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder
 	scorchable = TRUE
-	overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"
 	icon_state = "grassdirt2_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder2
 	scorchable = TRUE
-	overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
 
 /turf/open/gm/river
 	name = "river"

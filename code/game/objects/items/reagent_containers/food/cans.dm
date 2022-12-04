@@ -97,19 +97,19 @@
 	if(crushed || !proximity) return
 
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-		if (canopened == 0)
+		if (!canopened)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
 
 	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
-		if (canopened == 0)
+		if (!canopened)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
 		if (istype(target, /obj/item/reagent_container/food/drinks/cans))
 			var/obj/item/reagent_container/food/drinks/cans/cantarget = target
-			if(cantarget.canopened == 0)
+			if(!cantarget.canopened)
 				to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))
 				return
 

@@ -222,14 +222,14 @@
 			return
 		if(xeno.action_busy)
 			return
-		xeno.visible_message(SPAN_DANGER("[xeno] Prepares for devastating attack on [target]."), \
+		xeno.visible_message(SPAN_DANGER("[xeno] prepares for devastating attack on [target]."), \
 		SPAN_XENOWARNING("You carefully aim your tail towards [target] vital organs."), null, 5)
 		if(!do_after(xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 		if(target.stat == DEAD)
 			return
-		to_chat(xeno, SPAN_XENOHIGHDANGER("You brutally pierce [target] chest with your tail."))
-		xeno.visible_message(SPAN_DANGER("[xeno] pierces [target] chest with his tail."))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You brutally pierce [target]’s chest with your tail."))
+		xeno.visible_message(SPAN_DANGER("[xeno] pierces [target] chest with their tail."))
 		playsound(target,'sound/weapons/alien_bite2.ogg', 50, 1)
 		xeno.flick_attack_overlay(target, "tail")
 		target.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, "chest", 5)

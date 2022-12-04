@@ -59,3 +59,8 @@
 
 /mob/living/carbon/Xenomorph/alter_ghost(var/mob/dead/observer/ghost)
 	ghost.icon_state = "[mutation_type] [caste.caste_type] Running"
+
+/mob/living/carbon/Xenomorph/set_movement_intent(var/new_intent)
+	. = ..()
+	if(behavior_delegate)
+		behavior_delegate.handle_movement_change(new_intent)

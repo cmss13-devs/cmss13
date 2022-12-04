@@ -100,3 +100,7 @@
 /// Handling the xeno icon state or overlays, return TRUE if icon state should not be changed
 /datum/behavior_delegate/proc/on_update_icons()
 	return
+
+/// Handling move intent changes
+/datum/behavior_delegate/proc/handle_movement_change(var/new_movement_intent)
+	return

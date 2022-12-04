@@ -155,6 +155,9 @@
 #define MOVE_INTENT_WALK        1
 #define MOVE_INTENT_RUN         2
 
+#define DEFAULT_WALK_SPEED      7
+#define DEFAULT_RUN_SPEED       2
+
 /*   INTERNAL ORGAN DEFINES   */
 #define ORGAN_ASSISTED	1
 #define ORGAN_ROBOT		2
@@ -344,6 +347,7 @@
 
 // Lurker strain flags
 #define LURKER_NORMAL		"Normal"
+#define LURKER_CHAMELEON	"Chameleon"
 
 // Ravager strain flags
 #define RAVAGER_NORMAL 		"Normal"

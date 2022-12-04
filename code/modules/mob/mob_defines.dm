@@ -127,6 +127,8 @@
 	var/recovery_constant = 1
 	var/a_intent = INTENT_HELP//Living
 	var/m_intent = MOVE_INTENT_RUN
+	var/run_speed = DEFAULT_RUN_SPEED
+	var/walk_speed = DEFAULT_WALK_SPEED
 	var/lastKnownIP = null
 	var/obj/buckled = null//Living
 	var/obj/item/l_hand = null//Living

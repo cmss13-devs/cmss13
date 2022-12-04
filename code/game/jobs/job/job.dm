@@ -155,10 +155,11 @@
 	//Give them an account in the database.
 	if(!(flags_startup_parameters & ROLE_NO_ACCOUNT))
 		var/obj/item/card/id/card = account_user.wear_id
-		var/has_account = account_user.mind?.initial_account
-		if(card && !has_account)
+		var/user_has_preexisting_account = account_user.mind?.initial_account
+		if(card && !user_has_preexisting_account)
 			var/datum/paygrade/account_paygrade = GLOB.paygrades[card.paygrade]
 			generated_account = create_account(account_user.real_name, rand(30, 50), null, account_paygrade)
+			card.associated_account_number = generated_account.account_number
 			if(account_user.mind)
 				var/remembered_info = ""
 				remembered_info += "<b>Your account number is:</b> #[generated_account.account_number]<br>"

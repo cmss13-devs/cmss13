@@ -236,7 +236,13 @@
 	if(istype(T, /obj/item/xeno_egg))
 		var/obj/item/xeno_egg/E = T
 		if(isturf(E.loc) && Adjacent(E))
+			var/turf/egg_turf = E.loc
 			store_egg(E)
+			//Grab all the eggs from the turf
+			if(eggs_cur < eggs_max)
+				for(E in egg_turf)
+					if(eggs_cur < eggs_max)
+						store_egg(E)
 			return
 
 	var/obj/item/xeno_egg/E = get_active_hand()

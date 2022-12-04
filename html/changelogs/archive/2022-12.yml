@@ -75,3 +75,32 @@
   - rscadd: Fire now scorches grassy turfs!
   theselfish:
   - soundadd: Gave the Headbands and Squad Berets clickable OBJ sprites.
+2022-12-04:
+  Drathek:
+  - bugfix: Fix entering decimals in TGUI number input again.
+  Geevies:
+  - rscadd: Re-added the basics of walking.
+  Huffie56:
+  - code_imp: in ASRS menu change armor to Restricted equipment and change hardpoint_module
+      to vehicle ammo.
+  - code_imp: also added a reagent tank, a gear, a mortar, an explosive and a research
+      supply group.
+  - code_imp: moved all the corresponding code to their group.
+  Molto:
+  - bugfix: fixed light tiles
+  ThePiachu:
+  - bugfix: Fixed a runtime around vending machines malfunctioning / getting exploded.
+  - qol: When you refill a Pressurized Reagent Canister Pouch with a Reagent Tank
+      you now also automatically refill its autoinjector so you will be fully topped
+      up in one click!
+  - code_imp: Simplified a casting of an autoinjector to a too detailed type during
+      Pressurized Reagent Canister Pouch initialisation.
+  - spellcheck: All the ammo boxes and grenade packets are now properly labelled as
+      "\improper".
+  carlarctg:
+  - bugfix: Fixed Adjust-Job-Slots not working.
+  realforest2001:
+  - rscadd: Added a white version of the blended almayer blast door.
+  usnpeepoo:
+  - balance: Warriors slash cooldown reduction has been reduced by 0.10 seconds
+  - balance: Warriors Fling, and Punch have their cooldowns increased by 1 second

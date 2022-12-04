@@ -29,6 +29,10 @@
 		to_chat(X, SPAN_XENOWARNING("You can't do that from there."))
 		return
 
+	if(SSticker?.mode?.hardcore)
+		to_chat(X, SPAN_XENOWARNING("A certain presence is preventing you from digging tunnels here."))
+		return
+
 	if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z))
 		to_chat(X, SPAN_XENOWARNING("You scrape around, but you can't seem to dig through that kind of floor."))
 		return

@@ -149,7 +149,6 @@
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
 
 /datum/job/proc/generate_money_account(mob/living/carbon/human/account_user)
-	account_user.job = title //TODO Why is this a mob variable at all?
 
 	var/datum/money_account/generated_account
 	//Give them an account in the database.
@@ -253,6 +252,8 @@
 
 		if(whitelist_status)
 			job_whitelist = "[title][whitelist_status]"
+
+		human.job = title //TODO Why is this a mob variable at all?
 
 		if(gear_preset_whitelist[job_whitelist])
 			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)

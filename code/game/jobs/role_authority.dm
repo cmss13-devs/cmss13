@@ -512,6 +512,8 @@ var/global/players_preassigned = 0
 	if(whitelist_status)
 		job_whitelist = "[J.title][whitelist_status]"
 
+	H.job = J.title //TODO Why is this a mob variable at all?
+
 	if(J.gear_preset_whitelist[job_whitelist])
 		arm_equipment(H, J.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
 		var/generated_account = J.generate_money_account(H)

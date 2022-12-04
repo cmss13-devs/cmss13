@@ -5,9 +5,95 @@
 $light: #ffbf00;
 $dark: #111100;
 
+$loading_color: #b88a00;
+$animation_load_duration: 1.5s;
+
+.Test {
+  border: 3px solid red;
+}
+
 .SentryGun {
+  span {
+    font-size: 1rem;
+  }
+  .TopPanelSlide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+    animation-duration: $animation_load_duration;
+    animation-name: slideouttop;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    background-color: $dark;
+    border-bottom: 0.5rem solid $light;
+  }
+  .BottomPanelSlide {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+    animation-duration: $animation_load_duration;
+    animation-name: slideoutbot;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    background-color: $dark;
+    border-top: 0.5rem solid $light;
+  }
+
+  @keyframes slideouttop {
+    from {
+      width: 100%;
+      margin-top: 0;
+    }
+
+    to {
+      margin-top: -50%;
+      visibility: hidden;
+    }
+  }
+
+  @keyframes slideoutbot {
+    from {
+      width: 100%;
+      margin-bottom: 0%;
+    }
+
+    to {
+      margin-bottom: -50%;
+      visibility: hidden;
+    }
+  }
+
   .SentryBox {
     border: 2px solid $light;
+  }
+
+  .EmptyDisplay {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/bg-westonyamada.svg');
+    .Stack {
+      .Stack__item {
+        width: 100%;
+      }
+    }
+    span {
+      display: block;
+      font-size: 2rem;
+      text-align: center;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  }
+
+  .TitleContainer {
+    align-content: center;
+    align-items: center;
   }
 
   .TitleText {
@@ -15,7 +101,12 @@ $dark: #111100;
   }
 
   .SelectionFlexItem {
-    flex-basis: 23%;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    min-width: 23%;
+    flex-grow: 1;
   }
 
   .SelectionMenu {
@@ -23,6 +114,11 @@ $dark: #111100;
     .Title {
       text-align: center;
     }
+    .Option {
+      margin-top: 1px;
+      margin-bottom: 1px;
+    }
+
     .Button {
       background-color: $dark;
       width: 100%;

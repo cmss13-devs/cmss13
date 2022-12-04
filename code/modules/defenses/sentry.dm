@@ -63,6 +63,9 @@
 	targets = null
 	other_targets = null
 	target = null
+	if(linked_laptop)
+		linked_laptop.unpair_sentry(src)
+		linked_laptop = null
 	QDEL_NULL(range_bounds)
 	QDEL_NULL(spark_system)
 	QDEL_NULL(ammo)
@@ -128,6 +131,10 @@
 
 	return TRUE
 
+/obj/structure/machinery/defenses/sentry/proc/update_choice(mob/user, var/category, var/selection)
+	selected_categories[category] = selection
+	// do your switch case here to implement action and selection
+
 /obj/structure/machinery/defenses/sentry/get_examine_text(mob/user)
 	. = ..()
 	if(ammo)
@@ -156,13 +163,13 @@
 
 	if(istype(O, /obj/item/device/sentry_computer))
 		var/obj/item/device/sentry_computer/computer = O
-		if(linked_laptop == null && computer.paired_sentry == null)
-			computer.paired_sentry = src
+		if(linked_laptop == null)
+			computer.pair_sentry(src)
 			linked_laptop = computer
 			to_chat(user, SPAN_WARNING("You pair the [src] to the sentry laptop."))
 		else
 			if(linked_laptop == O)
-				computer.paired_sentry = null
+				computer.unpair_sentry(src)
 				linked_laptop = null
 				to_chat(user, SPAN_WARNING("You unpair the [src] to the sentry laptop."))
 			else

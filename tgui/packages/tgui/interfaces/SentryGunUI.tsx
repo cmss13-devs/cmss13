@@ -1,35 +1,45 @@
 import { classes } from 'common/react';
-import { useBackend } from '../backend';
-import { Button, Flex, Stack } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Flex, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 type SelectedState = [string, string];
 type SelectionState = [string, string[]];
 
-interface SentryData {
-  sentry_name: string;
+interface SentrySpec {
   selection_state: SelectedState[];
   selection_menu: SelectionState[];
   rounds: number;
+  name: string;
+  area: string;
+  active: 0 | 1;
+  index: number;
+}
+
+interface SentryData {
+  sentry: SentrySpec[];
+  sentry_static: SentrySpec[];
 }
 
 const SelectionGroup = (
-  props: { data: SelectionState; selected?: string },
+  props: { data: SelectionState; sentry_index: number; selected?: string },
   context
 ) => {
   const { act } = useBackend<SentryData>(context);
   const comparisonstr = props.selected ?? '';
   return (
-    <Flex direction="column" className="SelectionMenu">
+    <Flex direction="column" className="SelectionMenu" fill>
       <Flex.Item className="Title">
         <span>{props.data[0]}</span>
       </Flex.Item>
       {props.data[1].map((x) => {
         const isSelected = comparisonstr.localeCompare(x) === 0;
         return (
-          <Flex.Item key={x}>
+          <Flex.Item key={x} className="Option">
             <Button
-              onClick={() => act(props.data[0], { action: x })}
+              onClick={() =>
+                act(props.data[0], { selection: x, index: props.sentry_index })
+              }
               className={classes([isSelected && 'Selected'])}>
               {x}
             </Button>
@@ -40,70 +50,144 @@ const SelectionGroup = (
   );
 };
 
-const SelectionMenu = (_, context) => {
-  const { data, act } = useBackend<SentryData>(context);
+const SelectionMenu = (props: { data: SentrySpec }, context) => {
   const getSelected = (category: string) => {
-    const output = data.selection_state.find((x) => x[0] === category);
+    const output = props.data.selection_state.find((x) => x[0] === category);
     return output === undefined ? undefined : output[1];
   };
   return (
-    <Flex wrap justify="center">
-      {data.selection_menu.map((x) => (
-        <Flex.Item key={x[0]} className="SelectionFlexItem" flex-grow={1}>
-          <SelectionGroup data={x} selected={getSelected(x[0])} />
+    <Flex wrap justify="center" fill>
+      {props.data.selection_menu.map((x) => (
+        <Flex.Item key={x[0]} className="SelectionFlexItem">
+          <SelectionGroup
+            sentry_index={props.data.index}
+            data={x}
+            selected={getSelected(x[0])}
+          />
         </Flex.Item>
       ))}
     </Flex>
   );
 };
 
-const TurretTitleSection = (_, context) => {
+const TurretTitleSection = (props: { data: SentrySpec }, context) => {
+  const getSanitisedName = (name: string) =>
+    name.substring(0, name.length - 11);
+  const sanitiseArea = (name: string) =>
+    name.substring(name.includes('the') ? 4 : 0).trim();
   return (
-    <Stack vertical>
+    <Stack vertical className="TitleContainer">
       <Stack.Item className="TitleText">
-        <span>UA 571-C</span>
+        <span>
+          {getSanitisedName(props.data.name)}: {sanitiseArea(props.data.area)}
+        </span>
       </Stack.Item>
       <Stack.Item className="TitleText">
-        <span>REMOTE SENTRY WEAPON SYSTEM</span>
+        <Stack>
+          <Stack.Item>
+            <span>{props.data.active === 0 ? 'INACTIVE' : 'ACTIVE'}</span>
+          </Stack.Item>
+          <Stack.Item>
+            <span>REMOTE SENTRY WEAPON SYSTEM</span>
+          </Stack.Item>
+        </Stack>
       </Stack.Item>
     </Stack>
   );
 };
 
-const GunMenu = (_, context) => {
-  const { data, act } = useBackend<SentryData>(context);
+const GunMenu = (props: { data: SentrySpec }, context) => {
   return (
     <Stack vertical>
       <Stack.Item>
         <Stack>
-          <Stack.Item>Rounds Remaining</Stack.Item>
-          <Stack.Item className="SentryBox">{data.rounds}</Stack.Item>
+          <Stack.Item>
+            <span>Rounds Remaining</span>
+          </Stack.Item>
+          <Stack.Item className="SentryBox">
+            <span>{props.data.rounds}</span>
+          </Stack.Item>
         </Stack>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+const EmptyDisplay = (_, context) => {
+  return (
+    <Box className="EmptyDisplay">
+      <Stack vertical>
+        <Stack.Item>
+          <span>No sentry detected</span>
+        </Stack.Item>
+        <Stack.Item>
+          <span>Connect the computer to a sentry gun to continue.</span>
+        </Stack.Item>
+      </Stack>
+    </Box>
+  );
+};
+
+const SentryGunDisplay = (props: { data: SentrySpec }, context) => {
+  return (
+    <Stack vertical>
+      <Stack.Item className="SentryBox">
+        <TurretTitleSection data={props.data} />
+      </Stack.Item>
+      <Stack.Item className="SentryBox">
+        <SelectionMenu data={props.data} />
+      </Stack.Item>
+      <Stack.Item className="SentryBox">
+        <TurretTitleSection data={props.data} />
+      </Stack.Item>
+      <Stack.Item className="SentryBox">
+        <GunMenu data={props.data} />
       </Stack.Item>
     </Stack>
   );
 };
 
 export const SentryGunUI = (_, context) => {
-  const { data, act } = useBackend<SentryData>(context);
+  const { data } = useBackend<SentryData>(context);
+  const sentrykeys =
+    data.sentry.length === 0
+      ? []
+      : Array.from(Array(data.sentry.length).keys());
+  const sentrySpecs: SentrySpec[] = sentrykeys.map((x) => {
+    return { ...data.sentry[x], ...data.sentry_static[x] };
+  });
+  const [selectedSentry, setSelectedSentry] = useLocalState<undefined | number>(
+    context,
+    'selected',
+    sentrySpecs.length > 0 ? 0 : undefined
+  );
+
+  const validSelection =
+    sentrySpecs.length === 0
+      ? false
+      : (selectedSentry ?? 0) < sentrySpecs.length;
 
   return (
     <Window theme="crtyellow">
       <Window.Content className="SentryGun">
-        <Stack vertical>
-          <Stack.Item className="SentryBox">
-            <TurretTitleSection />
-          </Stack.Item>
-          <Stack.Item className="SentryBox">
-            <SelectionMenu />
-          </Stack.Item>
-          <Stack.Item className="SentryBox">
-            <TurretTitleSection />
-          </Stack.Item>
-          <Stack.Item className="SentryBox">
-            <GunMenu />
-          </Stack.Item>
-        </Stack>
+        <Tabs>
+          {sentrykeys.map((x) => (
+            <Tabs.Tab
+              key={x}
+              selected={selectedSentry === x}
+              onClick={() => setSelectedSentry(x)}>
+              {x}
+            </Tabs.Tab>
+          ))}
+        </Tabs>
+        <div>
+          <div className="TopPanelSlide" />
+          <div className="BottomPanelSlide" />
+        </div>
+        {!validSelection && <EmptyDisplay />}
+        {validSelection && (
+          <SentryGunDisplay data={sentrySpecs[selectedSentry ?? 0]} />
+        )}
       </Window.Content>
     </Window>
   );

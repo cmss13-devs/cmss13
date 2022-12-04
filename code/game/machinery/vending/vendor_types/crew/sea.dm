@@ -76,6 +76,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 		list("Drill Hat", 0, /obj/item/clothing/head/drillhat, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Officer Cap", 0, /obj/item/clothing/head/cmcap/ro, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("USCM Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("USCM Beret", 0, /obj/item/clothing/head/beret/cm, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
+		list("Tan USCM Beret", 0, /obj/item/clothing/head/beret/cm/tan, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 
 		list("TOOLS OF THE TRADE", 0, null, null, null),
 		list("CPR Dummy", 0, /obj/item/cpr_dummy, null, VENDOR_ITEM_REGULAR)

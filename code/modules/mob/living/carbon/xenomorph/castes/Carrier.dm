@@ -166,7 +166,7 @@
 		huggers_cur += huggers_to_transfer
 		morpher.stored_huggers -= huggers_to_transfer
 		if(huggers_to_transfer == 1)
-			to_chat(src, SPAN_NOTICE("You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+			to_chat(src, SPAN_NOTICE("You store one facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 		else
 			to_chat(src, SPAN_NOTICE("You store [huggers_to_transfer] facehuggers and carry them for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 		update_icons()
@@ -258,7 +258,6 @@
 			to_chat(src, SPAN_WARNING("This [E.name] looks too unhealthy."))
 	else
 		to_chat(src, SPAN_WARNING("You can't carry more eggs on you."))
-
 
 /mob/living/carbon/Xenomorph/Carrier/proc/retrieve_egg(atom/T)
 	if(!T) return

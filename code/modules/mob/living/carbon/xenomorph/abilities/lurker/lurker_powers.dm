@@ -223,7 +223,7 @@
 		if(xeno.action_busy)
 			return
 		xeno.visible_message(SPAN_DANGER("[xeno] prepares for devastating attack on [target]."), \
-		SPAN_XENOWARNING("You carefully aim your tail towards [target] vital organs."), null, 5)
+		SPAN_XENOWARNING("You carefully aim your tail towards [target]’s vital organs."), null, 5)
 		if(!do_after(xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 		if(target.stat == DEAD)

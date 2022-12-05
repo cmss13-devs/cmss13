@@ -104,11 +104,9 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	if(List.len >= 2)
 		rank = ckeyEx(List[2])
 
-	var/list/sranks = list()
+	var/list/extra_titles = list()
 	if(List.len >= 3)
-		List -= List[2]
-		List -= List[1]
-		sranks = List
+		extra_titles = List.Copy(3)
 
 	if(mentor)
 		if(!(LAZYISIN(MentorRanks, rank)))
@@ -120,7 +118,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	var/rights = admin_ranks[rank]
 
 	//create the admin datum and store it for later use
-	var/datum/admins/D = new /datum/admins(rank, rights, ckey, sranks)
+	var/datum/admins/D = new /datum/admins(rank, rights, ckey, extra_titles)
 
 	//find the client for a ckey if they are connected and associate them with the new admin datum
 	D.associate(GLOB.directory[ckey])

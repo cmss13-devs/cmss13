@@ -194,7 +194,7 @@
 		if(SOUTHWEST)	return 225
 		else			return null
 
-//returns a number to be used to index lists; based off dmi direction ordering: 1:SOUTH (2) 2:NORTH (1) 3:EAST(4) 4:WEST(8) etc...
+//returns a number to be used to index lists; based off dmi direction ordering: 1:SOUTH(2) 2:NORTH(1) 3:EAST(4) 4:WEST(8) etc...
 
 /proc/dir2indexnum(var/D)
 	switch(D)

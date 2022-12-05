@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 	var/scorchable = FALSE	//if TRUE set to be a turf which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
-	var/culling_mask_index
+	var/culling_mask_index //This list should contain a number of states keyed as various possible icon_state this turf could have each containing a GLOB.edgeinfo_X list
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
@@ -368,7 +368,7 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()
 
-	culling_mask_index = list("grass1" = GLOB.edgeinfo_full, "grass2" = GLOB.edgeinfo_full)
+	culling_mask_index = list("grass1" = GLOB.edgeinfo_full, "grass2" = GLOB.edgeinfo_full, "grassbeach" = GLOB.edgeinfo_edge, "gbcorner" = GLOB.edgeinfo_corner)
 
 
 /turf/open/gm/dirt2

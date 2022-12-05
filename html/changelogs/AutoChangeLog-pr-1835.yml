@@ -1,0 +1,4 @@
+author: "Shad0vvs"
+delete-after: True
+changes:
+  - rscadd: "Adds player time to SEA mentor alert message."

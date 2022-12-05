@@ -6,11 +6,14 @@ $light: #ffbf00;
 $dark: #111100;
 
 $loading_color: #b88a00;
-$animation_load_duration: 1.5s;
+$animation_load_duration: 3s;
+
+$small-text: 1rem;
+$large-text: 1.5rem;
 
 .SentryGun {
   span {
-    font-size: 1rem;
+    font-size: $small-text;
   }
   .TopPanelSlide {
     position: absolute;
@@ -69,6 +72,29 @@ $animation_load_duration: 1.5s;
     border: 2px solid $light;
   }
 
+  .TitleBox {
+    @extend .SentryBox;
+    padding: 3px;
+  }
+
+  .Button {
+    font-size: $small-text;
+  }
+
+  .ProgressBar__content {
+    color: $dark;
+  }
+
+  .SentryCard {
+    span {
+      font-size: $large-text;
+      display: block;
+      width: 100%;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  }
+
   .EmptyDisplay {
     width: 100%;
     height: 100%;
@@ -80,7 +106,7 @@ $animation_load_duration: 1.5s;
     }
     span {
       display: block;
-      font-size: 2rem;
+      font-size: $large-text;
       text-align: center;
       white-space: normal;
       word-wrap: break-word;
@@ -90,6 +116,65 @@ $animation_load_duration: 1.5s;
   .TitleContainer {
     align-content: center;
     align-items: center;
+  }
+
+  .Tab__text {
+    font-size: $large-text;
+  }
+
+  .AmmoBoundingBox {
+    @extend .SentryBox;
+    padding: 3px;
+  }
+
+  .EngagedBox {
+    padding: 3px;
+    text-align: center;
+    border: 2px solid $light;
+    span {
+      display: inline-block;
+      font-family: monospace;
+      font-weight: bold;
+      font-size: $large-text;
+    }
+  }
+
+  .EngagedWarningBox {
+    @extend .EngagedBox;
+    animation: warningBoxAnimation 1s infinite;
+    span {
+      animation: warningTextAnimation 1s infinite;
+    }
+  }
+
+  @keyframes warningBoxAnimation {
+    0% {
+      background-color: $dark;
+    }
+    49% {
+      background-color: $dark;
+    }
+    50% {
+      background-color: $light;
+    }
+    100% {
+      background-color: $light;
+    }
+  }
+  @keyframes warningTextAnimation {
+    0% {
+      color: $light;
+    }
+
+    49% {
+      color: $light;
+    }
+    50% {
+      color: $dark;
+    }
+    100% {
+      color: $dark;
+    }
   }
 
   .TitleText {

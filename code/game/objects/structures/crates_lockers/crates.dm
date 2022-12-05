@@ -225,7 +225,6 @@
 	icon_opened = "cooler-oj_open"
 	icon_closed = "cooler-oj_closed"
 
-
 /obj/structure/closet/crate/hydroponics
 	name = "hydroponics crate"
 	desc = "All you need to destroy those pesky weeds and pests."
@@ -330,6 +329,15 @@
 	icon_state = "closed_trashcart"
 	icon_opened = "open_trashcart"
 	icon_closed = "closed_trashcart"
+	drag_delay = 1.5 //Wheels make moving stuff easier
+
+/obj/structure/closet/crate/trashcart/rolling_crate
+	name = "\improper rolling crate"
+	desc = "A crate, with a convenient set of wheels"
+	icon_state = "closed_trashcart"
+	icon_opened = "open_trashcart"
+	icon_closed = "closed_trashcart"
+	drag_delay = 1 //Wheels make moving stuff easier
 
 /obj/structure/closet/crate/weapon
 	name = "weapons crate"

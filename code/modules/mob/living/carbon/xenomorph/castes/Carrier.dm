@@ -17,7 +17,6 @@
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_DRONE)
-	eggs_max = 5
 	throwspeed = SPEED_AVERAGE
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_ONE_HAND

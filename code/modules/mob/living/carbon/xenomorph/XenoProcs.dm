@@ -122,6 +122,8 @@
 			. += "Construction Placement: LEADERS"
 		else if(hive.construction_allowed == NORMAL_XENO)
 			. += "Construction Placement: ANYONE"
+		else if(hive.construction_allowed == XENO_NOBODY)
+			. += "Construction Placement: NOBODY"
 		else
 			. += "Construction Placement: QUEEN"
 
@@ -129,6 +131,8 @@
 			. += "Special Structure Destruction: LEADERS"
 		else if(hive.destruction_allowed == NORMAL_XENO)
 			. += "Special Structure Destruction: BUILDERS and LEADERS"
+		else if(hive.construction_allowed == XENO_NOBODY)
+			. += "Construction Placement: NOBODY"
 		else
 			. += "Special Structure Destruction: QUEEN"
 

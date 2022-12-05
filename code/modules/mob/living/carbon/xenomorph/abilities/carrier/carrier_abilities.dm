@@ -7,8 +7,10 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/throw_hugger/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	return !X.threw_a_hugger
+	if(owner)
+		var/mob/living/carbon/Xenomorph/Carrier/X = owner
+		return !X.threw_a_hugger
+	return TRUE //When we first add the ability we still do this check, but owner is null, so a workaround
 
 /datum/action/xeno_action/activable/retrieve_egg
 	name = "Retrieve Egg"

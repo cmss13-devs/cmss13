@@ -1,4 +1,0 @@
-author: "NoKohi"
-delete-after: True
-changes:
-  - code_imp: "removed redundant behavior in walls"

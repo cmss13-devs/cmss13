@@ -51,3 +51,19 @@
 	if(surgery_action)
 		surgery_action.action_activate()
 		return TRUE
+
+/datum/keybinding/living/mov_intent
+	hotkey_keys = list("/")
+	classic_keys = list()
+	name = "mov_intent"
+	full_name = "Move Intent"
+	description = "Toggles your current move intent."
+	keybind_signal = COMSIG_KB_MOB_MOVINTENT_DOWN
+
+/datum/keybinding/living/mov_intent/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/M = user.mob
+	M.toggle_mov_intent()
+	return TRUE

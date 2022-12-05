@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - code_imp: "Fixed deletion issues with structure spawners."

@@ -1,0 +1,5 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - bugfix: "Fixed a runtime error for new Carriers around checking if they can use their hugger ability."
+  - code_imp: "Removed a double variable initialisation for Carriers."

@@ -85,7 +85,7 @@
 
 /obj/effect/overlay/temp/point/big/observer
 	icon_state = "big_arrow_grey"
-	color = "#5c00e6"
+	color = "#1c00f6"
 	invisibility = INVISIBILITY_OBSERVER
 	plane = GHOST_PLANE
 

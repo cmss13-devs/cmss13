@@ -1,5 +1,11 @@
 
 //turfs with density = FALSE
+
+#define FULL_EDGE 1
+#define HALF_EDGE_RIGHT 2
+#define HALF_EDGE_LEFT 3
+//right and left looking from the turf who makes an overlay towards its neighbor thats it overlays upon
+
 /turf/open
 	plane = FLOOR_PLANE
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.
@@ -7,15 +13,26 @@
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
-	var/scorchable = FALSE
+	var/scorchable = FALSE	//if TRUE set to be a turf which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
-	var/overlay_icon	//what icon this turfs edge overlays are stored
+	var/culling_mask_index
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
 
 	update_icon()
+	if(!culling_mask_index)
+		culling_mask_index = list("[icon_state]"=list(
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
+									null,
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
+									null,
+									null,
+									null,
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE)
+									))
 
 /turf/open/update_icon()
 	overlays.Cut()
@@ -77,12 +94,22 @@
 			icon_state = new_icon_state
 			for(var/i in GLOB.cardinals)				//but we still check so that we can update our neighbor's overlays if we do
 				var/turf/open/T = get_step(src, i)		//since otherwise they'd be stuck with overlays that were made with
-				T.update_icon()							//the unscorched icon_state of this turf (we need to update them since this turf is being updated)
+				T.update_icon()
 		for(var/i in GLOB.cardinals)
 			var/turf/open/T = get_step(src, i)
-			if(istype(T, /turf/open))					//here we handle overlaying edges of surrounding turfs so it doesnt look awful and stinky
-				if(T.scorchable && T.scorchedness < src.scorchedness && T.overlay_icon)
-					overlays += icon(T.overlay_icon, "[T.icon_state]_[T.dir]", get_dir(T, src))
+			if(istype(T, /turf/open) && T.scorchable && T.scorchedness < scorchedness)
+				var/icon/edge_overlay
+				if(T.scorchedness)
+					edge_overlay = icon(T.icon, "[T.scorchable]_scorched[T.scorchedness]")
+				else
+					edge_overlay = icon(T.icon, T.scorchable)
+				if(!T.icon_state_before_scorching)
+					T.icon_state_before_scorching = T.icon_state
+				var/direction_from_nieghbor_towards_src = get_dir(T, src)
+				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[T.culling_mask_index[T.icon_state_before_scorching][T.dir][direction_from_nieghbor_towards_src]]", direction_from_nieghbor_towards_src)
+				edge_overlay.Blend(culling_mask, ICON_OVERLAY)
+				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
+				overlays += edge_overlay
 
 /turf/open/proc/scorch(var/heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
@@ -269,7 +296,7 @@
 	name = "ground dirt"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
-	overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
+	//overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
 
 /turf/open/gm/attackby(var/obj/item/I, var/mob/user)
 
@@ -315,7 +342,26 @@
 	name = "grass"
 	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
-	scorchable = TRUE
+	scorchable = "grass1"
+	culling_mask_index = list("grass1"=list(
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
+									null,
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
+									null,
+									null,
+									null,
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE)),
+								"grass2"=list(
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
+									null,
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
+									null,
+									null,
+									null,
+									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE)
+									))
 
 /turf/open/gm/dirt2
 	name = "dirt"
@@ -326,13 +372,39 @@
 	name = "grass"
 	icon_state = "grassdirt_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder
-	scorchable = TRUE
+	scorchable = "grass1"
+	culling_mask_index = list("grassdirt_edge"=list(
+								list(null, FULL_EDGE, null, HALF_EDGE_RIGHT, null, null, null, HALF_EDGE_LEFT),
+								list(FULL_EDGE, null, null, HALF_EDGE_LEFT, null, null, null, HALF_EDGE_RIGHT),
+								null,
+								list(HALF_EDGE_RIGHT, HALF_EDGE_LEFT, null, null, null, null, null, FULL_EDGE),
+								null,
+								null,
+								null,
+								list(HALF_EDGE_LEFT, HALF_EDGE_RIGHT, null, FULL_EDGE, null, null, null, null)),
+								"grassdirt_corner"=list(
+								list(FULL_EDGE, HALF_EDGE_RIGHT, null, HALF_EDGE_LEFT, null, null, null, FULL_EDGE),
+								list(FULL_EDGE, HALF_EDGE_LEFT, null, FULL_EDGE, null, null, null, HALF_EDGE_RIGHT),
+								null,
+								list(HALF_EDGE_LEFT, FULL_EDGE, null, FULL_EDGE, null, null, null, HALF_EDGE_LEFT),
+								null,
+								null,
+								null,
+								list(HALF_EDGE_RIGHT, FULL_EDGE, null, HALF_EDGE_RIGHT, null, null, null, FULL_EDGE)),
+								"grassdirt_corner2"=list(
+								list(null, HALF_EDGE_RIGHT, null, HALF_EDGE_RIGHT, null, null, null, null),
+								list(HALF_EDGE_LEFT, null, null, null, null, null, null, HALF_EDGE_RIGHT),
+								null,
+								list(HALF_EDGE_RIGHT, null, null, HALF_EDGE_LEFT, null, null, null, null),
+								null,
+								null,
+								null,
+								list(null, HALF_EDGE_LEFT, null, null, null, null, null, HALF_EDGE_LEFT)))
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"
 	icon_state = "grassdirt2_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder2
-	scorchable = TRUE
 
 /turf/open/gm/river
 	name = "river"

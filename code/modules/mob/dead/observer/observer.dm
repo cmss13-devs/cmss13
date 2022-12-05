@@ -60,7 +60,7 @@
 		spawn_turf = get_turf(body)				//Where is the body located?
 		attack_log = body.attack_log	//preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
-    
+
 		appearance = body.appearance
 		base_transform = matrix(body.base_transform)
 		body.alter_ghost(src)
@@ -933,3 +933,33 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /proc/message_ghosts(var/message)
 	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
 		to_chat(O, message)
+
+/// Format text and links to JuMP/FoLloW something
+/mob/dead/observer/proc/format_jump(atom/target, jump_tag)
+	if(ismob(target))
+		if(!jump_tag)
+			jump_tag = "FLW"
+		return "(<a href='?src=\ref[src];track=\ref[target]'>[jump_tag]</a>)"
+	if(!jump_tag)
+		jump_tag = "JMP"
+	var/turf/turf = get_turf(target)
+	return "(<a href='?src=\ref[src];jumptocoord=1;X=[turf.x];Y=[turf.y];Z=[turf.z]'>[jump_tag]</a>)"
+
+/mob/dead/observer/point_to(atom/A in view())
+	if(A?.z != src.z || !A.mouse_opacity || get_dist(src, A) > client.view)
+		return FALSE
+	var/turf/turf = get_turf(A)
+	if(recently_pointed_to > world.time)
+		return FALSE
+	point_to_atom(A, turf)
+	return TRUE
+
+/mob/dead/observer/point_to_atom(atom/A, turf/T)
+	recently_pointed_to = world.time + 4 SECONDS
+	new /obj/effect/overlay/temp/point/big/observer(T, src, A)
+	for(var/mob/dead/observer/nearby_observer as anything in GLOB.observer_list)
+		var/client/observer_client = nearby_observer.client
+		// We check observer view range specifically to also show the message to zoomed out ghosts. Double check Z as get_dist goes thru levels.
+		if(observer_client && src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
+			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
+	return TRUE

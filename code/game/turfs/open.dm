@@ -6,6 +6,35 @@
 #define HALF_EDGE_LEFT 3
 //right and left looking from the turf who makes an overlay towards its neighbor thats it overlays upon
 
+//These are ordered just like sprites are in the dm dmi editor: 2/SOUTH then 1/NORTH then 4/EAST then 8/WEST
+GLOBAL_LIST_INIT(edgeinfo_full, list(
+									list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
+									list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
+									list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
+									list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE)
+									))
+
+GLOBAL_LIST_INIT(edgeinfo_edge, list(
+								list(null, FULL_EDGE, HALF_EDGE_LEFT, HALF_EDGE_RIGHT),
+								list(FULL_EDGE, null, HALF_EDGE_RIGHT, HALF_EDGE_LEFT),
+								list(HALF_EDGE_LEFT, HALF_EDGE_RIGHT, null, FULL_EDGE),
+								list(HALF_EDGE_RIGHT, HALF_EDGE_LEFT, FULL_EDGE, null)
+								))
+
+GLOBAL_LIST_INIT(edgeinfo_corner, list(
+								list( HALF_EDGE_LEFT, FULL_EDGE,FULL_EDGE, HALF_EDGE_RIGHT),
+								list(HALF_EDGE_RIGHT, FULL_EDGE, HALF_EDGE_LEFT, FULL_EDGE),
+								list(FULL_EDGE, HALF_EDGE_LEFT, FULL_EDGE, HALF_EDGE_LEFT),
+								list(FULL_EDGE, HALF_EDGE_RIGHT, HALF_EDGE_RIGHT, FULL_EDGE)
+								))
+
+GLOBAL_LIST_INIT(edgeinfo_corner2, list(
+								list(null, HALF_EDGE_LEFT, null,  HALF_EDGE_RIGHT),
+								list(HALF_EDGE_RIGHT, null, HALF_EDGE_RIGHT, null),
+								list(null, HALF_EDGE_RIGHT, HALF_EDGE_LEFT, null),
+								list(HALF_EDGE_LEFT, null, null, HALF_EDGE_LEFT)
+								))
+
 /turf/open
 	plane = FLOOR_PLANE
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.
@@ -22,17 +51,8 @@
 	. = ..()
 
 	update_icon()
-	if(!culling_mask_index)
-		culling_mask_index = list("[icon_state]"=list(
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
-									null,
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
-									null,
-									null,
-									null,
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE)
-									))
+	if(!culling_mask_index && scorchable)
+		culling_mask_index = list("[icon_state]"=GLOB.edgeinfo_full)
 
 /turf/open/update_icon()
 	overlays.Cut()
@@ -106,7 +126,7 @@
 				if(!T.icon_state_before_scorching)
 					T.icon_state_before_scorching = T.icon_state
 				var/direction_from_nieghbor_towards_src = get_dir(T, src)
-				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[T.culling_mask_index[T.icon_state_before_scorching][T.dir][direction_from_nieghbor_towards_src]]", direction_from_nieghbor_towards_src)
+				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[T.culling_mask_index[T.icon_state_before_scorching][dir2indexnum(T.dir)][dir2indexnum(direction_from_nieghbor_towards_src)]]", direction_from_nieghbor_towards_src)
 				edge_overlay.Blend(culling_mask, ICON_OVERLAY)
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
@@ -343,25 +363,13 @@
 	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
 	scorchable = "grass1"
-	culling_mask_index = list("grass1"=list(
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
-									null,
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
-									null,
-									null,
-									null,
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE)),
-								"grass2"=list(
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
-									null,
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE),
-									null,
-									null,
-									null,
-									list(FULL_EDGE, FULL_EDGE, null, FULL_EDGE, null, null, null, FULL_EDGE)
-									))
+	culling_mask_index = list()
+
+/turf/open/gm/grass/Initialize(mapload, ...)
+	. = ..()
+
+	culling_mask_index = list("grass1" = GLOB.edgeinfo_full, "grass2" = GLOB.edgeinfo_full)
+
 
 /turf/open/gm/dirt2
 	name = "dirt"
@@ -373,33 +381,12 @@
 	icon_state = "grassdirt_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder
 	scorchable = "grass1"
-	culling_mask_index = list("grassdirt_edge"=list(
-								list(null, FULL_EDGE, null, HALF_EDGE_RIGHT, null, null, null, HALF_EDGE_LEFT),
-								list(FULL_EDGE, null, null, HALF_EDGE_LEFT, null, null, null, HALF_EDGE_RIGHT),
-								null,
-								list(HALF_EDGE_RIGHT, HALF_EDGE_LEFT, null, null, null, null, null, FULL_EDGE),
-								null,
-								null,
-								null,
-								list(HALF_EDGE_LEFT, HALF_EDGE_RIGHT, null, FULL_EDGE, null, null, null, null)),
-								"grassdirt_corner"=list(
-								list(FULL_EDGE, HALF_EDGE_RIGHT, null, HALF_EDGE_LEFT, null, null, null, FULL_EDGE),
-								list(FULL_EDGE, HALF_EDGE_LEFT, null, FULL_EDGE, null, null, null, HALF_EDGE_RIGHT),
-								null,
-								list(HALF_EDGE_LEFT, FULL_EDGE, null, FULL_EDGE, null, null, null, HALF_EDGE_LEFT),
-								null,
-								null,
-								null,
-								list(HALF_EDGE_RIGHT, FULL_EDGE, null, HALF_EDGE_RIGHT, null, null, null, FULL_EDGE)),
-								"grassdirt_corner2"=list(
-								list(null, HALF_EDGE_RIGHT, null, HALF_EDGE_RIGHT, null, null, null, null),
-								list(HALF_EDGE_LEFT, null, null, null, null, null, null, HALF_EDGE_RIGHT),
-								null,
-								list(HALF_EDGE_RIGHT, null, null, HALF_EDGE_LEFT, null, null, null, null),
-								null,
-								null,
-								null,
-								list(null, HALF_EDGE_LEFT, null, null, null, null, null, HALF_EDGE_LEFT)))
+	culling_mask_index = list()
+
+/turf/open/gm/dirtgrassborder/Initialize(mapload, ...)
+	. = ..()
+
+	culling_mask_index = list("grassdirt_edge" = GLOB.edgeinfo_edge, "grassdirt_corner" = GLOB.edgeinfo_corner, "grassdirt_corner2" = GLOB.edgeinfo_corner2)
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"

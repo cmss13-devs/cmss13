@@ -46,6 +46,8 @@
 	plasma_types = list(PLASMA_PURPLE)
 	pixel_x = -12
 	old_x = -12
+	base_pixel_x = 0
+	base_pixel_y = -20
 	tier = 2
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

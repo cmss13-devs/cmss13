@@ -359,14 +359,28 @@
 			return
 	var/effect_amt = round(6 + amount*6)
 	M.eye_blurry = max(M.eye_blurry, effect_amt)
+	M.apply_effect(max(M.eye_blurry, effect_amt), EYE_BLUR)
 	M.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
 	M.apply_stamina_damage(18) // Slowdown progressively gets worse until they eventually get stunned
 	M.make_dizzy(30)
-	if(prob(20))
-		M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
-	if(!M.eye_blind && prob(25)) //Eye exposure damage
-		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
-		M.eye_blind = max(M.eye_blind, round(effect_amt/4))
+	if(M.dizziness > 50)
+		switch(prob)
+			if(75)
+				M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
+				to_chat(M, SPAN_HIGHDANGER("Your ears ring terribly! You can't hear!"))
+			if(75)
+				to_chat(M, SPAN_HIGHDANGER("Your eyes sting. You can't see!"))
+				M.eye_blind = max(M.eye_blind, round(effect_amt/4))
+			if(50)
+				M.apply_effect(10,pick(SLUR,STUTTER))
+				M.apply_effect(10,AGONY)  // Fake crit, a good way to induce panic
+				to_chat(M, SPAN_HIGHDANGER("You panic as disorientation overtakes you!"))
+	if(M.dizziness > 60)
+		if(prob(75)) // Blindness now garunteed after 2 ticks in smoke
+			M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
+		if(prob(75)) //Eye exposure damage
+			to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
+			M.eye_blind = max(M.eye_blind, round(effect_amt/4))
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))
@@ -383,7 +397,7 @@
 		M.make_dizzy(55)
 		M.emote("pain")
 		M.apply_damage(5, TOX) // Blood toxicity
-	to_chat(M, SPAN_DANGER(pick("Your body is going numb, almost as if it is paralyzed!", "Your limbs start seizing up!", "You feel lightheaded!")))
+	to_chat(M, SPAN_DANGER(pick("Your body is going numb, almost as if it is paralyzed!", "Your limbs start seizing up!", "You feel lightheaded!","Your skin tingles as the gas consumes you!")))
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire
 	time_to_live = 16

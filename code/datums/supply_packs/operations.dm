@@ -1,6 +1,99 @@
 //the idea is to put all the bulk items scanner secure crate with lot's of flares MRE in it and at the end OB and non buyable.
 
-//non buyable
+//large quantity of metals/sandbags/plasteel.x5 the normal crate and with a 10% discount
+
+/datum/supply_packs/metalsheetbulk
+	name = "metal sheets(x250)"
+	contains = list(
+					/obj/item/stack/sheet/metal/large_stack,
+					/obj/item/stack/sheet/metal/large_stack,
+					/obj/item/stack/sheet/metal/large_stack,
+					/obj/item/stack/sheet/metal/large_stack,
+					/obj/item/stack/sheet/metal/large_stack,
+					)
+	cost = 90
+	containertype = /obj/structure/largecrate
+	containername = "metal sheets crate (x250)"
+	group = "Operations"
+
+/datum/supply_packs/plasteelsheetbulk
+	name = "plasteel sheets (x200)"
+	contains = list(
+					/obj/item/stack/sheet/plasteel/med_large_stack,
+					/obj/item/stack/sheet/plasteel/med_large_stack,
+					/obj/item/stack/sheet/plasteel/med_large_stack,
+					/obj/item/stack/sheet/plasteel/med_large_stack,
+					/obj/item/stack/sheet/plasteel/med_large_stack,
+					)
+	cost = 135
+	containertype = /obj/structure/largecrate
+	containername = "plasteel sheets crate (x200)"
+	group = "Operations"
+
+/datum/supply_packs/sandbagbulk
+	name = "sandbag crate (x250)"
+	contains = list(
+					/obj/item/stack/sandbags_empty/full,
+					/obj/item/stack/sandbags_empty/full,
+					/obj/item/stack/sandbags_empty/full,
+					/obj/item/stack/sandbags_empty/full,
+					/obj/item/stack/sandbags_empty/full,
+					)
+	cost = 135
+	containertype = /obj/structure/largecrate
+	containername = "sandbag crate(x250)"
+	group = "Operations"
+
+//Supplies in large quantity.
+
+/datum/supply_packs/floodlight
+	name = "floodlight crate (x4)"
+	contains = list(
+					/obj/structure/machinery/floodlight,
+					/obj/structure/machinery/floodlight,
+					/obj/structure/machinery/floodlight,
+					/obj/structure/machinery/floodlight,
+					)
+	cost = 20
+	containertype = /obj/structure/largecrate
+	containername = "floodlights crate"
+	group = "Operations"
+
+/datum/supply_packs/powerloader
+	name = "powerloader crate"
+	contains = list(
+					/obj/vehicle/powerloader,
+					/obj/item/pamphlet/skill/powerloader,
+					)
+	cost = 20
+	containertype = /obj/structure/largecrate
+	containername = "powerloader crate"
+	group = "Operations"
+
+/datum/supply_packs/mre
+	name = "USCM MRE crate (x60)"
+	contains = list(
+					/obj/item/ammo_box/magazine/misc/mre,
+					/obj/item/ammo_box/magazine/misc/mre,
+					/obj/item/ammo_box/magazine/misc/mre,
+					/obj/item/ammo_box/magazine/misc/mre,
+					/obj/item/ammo_box/magazine/misc/mre,
+					)
+	cost = 20
+	containertype = /obj/structure/largecrate
+	containername = "\improper USCM MRE crate (x60)"
+	group = "Operations"
+
+/datum/supply_packs/flares
+	name = "Flare supply crate (x200)"
+	contains = list(
+					/obj/item/ammo_box/magazine/misc/flares,
+					/obj/item/ammo_box/magazine/misc/flares,
+					)
+	cost = 20
+	containertype = /obj/structure/largecrate
+	containername = "Flare supply crate (x200)"
+	group = "Operations"
 
 /datum/supply_packs/ob_incendiary
 	contains = list(

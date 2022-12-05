@@ -4882,6 +4882,7 @@
 /obj/structure/sign/safety/storage{
 	pixel_x = -17
 	},
+/obj/structure/closet/crate/trashcart/rolling_crate,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";
@@ -39002,6 +39003,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/closet/crate/trashcart/rolling_crate,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
@@ -41967,6 +41969,14 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"fxq" = (
+/obj/structure/closet/crate/trashcart/rolling_crate,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/almayer/squads/req)
 "fxu" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8
@@ -52410,6 +52420,13 @@
 	tag = "icon-green (WEST)"
 	},
 /area/almayer/hallways/aft_hallway)
+"kiB" = (
+/obj/structure/closet/crate/trashcart/rolling_crate,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/testlab)
 "kiF" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/warning_stripes{
@@ -65434,6 +65451,14 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
+"pYm" = (
+/obj/structure/closet/crate/trashcart/rolling_crate,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "silver";
+	tag = "icon-silver (WEST)"
+	},
+/area/almayer/command/computerlab)
 "pYo" = (
 /obj/structure/machinery/chem_simulator,
 /obj/structure/machinery/light{
@@ -67438,6 +67463,7 @@
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = -17
 	},
+/obj/structure/closet/crate/trashcart/rolling_crate,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -120926,7 +120952,7 @@ eNT
 anF
 anF
 taH
-aBe
+kiB
 cJM
 vHO
 jNc
@@ -124181,7 +124207,7 @@ cck
 jVE
 aGN
 rbB
-cnq
+pYm
 cnS
 aDu
 ajF
@@ -126923,7 +126949,7 @@ bZr
 bKA
 cXR
 bCB
-cal
+fxq
 mCo
 pJJ
 bHc

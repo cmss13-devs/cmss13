@@ -1106,6 +1106,7 @@
 	result = /obj/item/reagent_container/food/snacks/taco
 
 /datum/recipe/bun
+	reagents = list("sodiumchloride" = 1)
 	items = list(
 		/obj/item/reagent_container/food/snacks/dough
 	)

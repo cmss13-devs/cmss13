@@ -216,7 +216,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 
 /obj/item/weapon/gun/rifle/m41a/elite/whiteout
-	current_mag = /obj/item/ammo_magazine/rifle/heap//special version for whiteout that has the HEAP mag, nothing else changed
+	current_mag = /obj/item/ammo_magazine/rifle/heap //special version for whiteout that has the HEAP mag, nothing else changed
 
 /obj/item/weapon/gun/rifle/m41a/corporate
 	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition."

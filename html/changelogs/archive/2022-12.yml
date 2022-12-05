@@ -104,3 +104,12 @@
   usnpeepoo:
   - balance: Warriors slash cooldown reduction has been reduced by 0.10 seconds
   - balance: Warriors Fling, and Punch have their cooldowns increased by 1 second
+2022-12-05:
+  NoKohi:
+  - spellcheck: changed all instances of Tychon's Rift to Neroid Sector
+  ThePiachu:
+  - bugfix: Fixed an error causing a lot of runtime error logs whenever a mob with
+      autopsy data would get gibbed.
+  - code_imp: Moved QDEL_NULL_LIST in along with other qdel procs.
+  carlarctg:
+  - imageadd: Gives GL gloves an unique sprite

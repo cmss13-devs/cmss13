@@ -1,0 +1,4 @@
+author: "CrafticalDecoy"
+delete-after: True
+changes:
+  - bugfix: "Fixed crusher's shield ending before its full duration is covered."

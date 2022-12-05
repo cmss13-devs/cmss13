@@ -207,7 +207,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	if(M.action_busy)
 		return XENO_NO_DELAY_ACTION
-
+	if(M.a_intent == INTENT_HELP)
+		M.set_interaction(src)
+		ui_interact(M)
+		to_chat(world,"help")
+		return XENO_NO_DELAY_ACTION
 	M.visible_message(SPAN_WARNING("[M] begins to lean against [src]."), \
 	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/shove_time = 80

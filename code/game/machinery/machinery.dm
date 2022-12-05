@@ -230,8 +230,10 @@ Class Procs:
 	if(user.lying || user.stat)
 		return TRUE
 	if(!(istype(user, /mob/living/carbon/human) || isRemoteControlling(user) || istype(user, /mob/living/carbon/Xenomorph)))
-		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
-		return TRUE
+		to_chat(world,"thumbcheck")
+		if(!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+			return TRUE
 /*
 	//distance checks are made by atom/proc/clicked()
 	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !isRemoteControlling(user))

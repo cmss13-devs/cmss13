@@ -116,10 +116,13 @@
 			if(!(M?.client?.prefs?.toggles_chat & CHAT_DEAD))
 				continue
 
-			if(M.stat == DEAD || isobserver(M))
+			if(isobserver(M))
+				var/mob/dead/observer/observer = M
 				var/turf/their_turf = get_turf(M)
-				if(my_turf?.z && my_turf.z == their_turf.z && get_dist(my_turf, their_turf) <= M.client.view)
-					langchat_listeners += M
+				if(alpha && observer.ghostvision && my_turf.z == their_turf.z && get_dist(my_turf, their_turf) <= observer.client.view)
+					langchat_listeners += observer
+
+			if(M.stat == DEAD)
 				M.show_message(message, 2)
 
 			else if(M.client.admin_holder && AHOLD_IS_MOD(M.client.admin_holder)) // Show the emote to admins/mods

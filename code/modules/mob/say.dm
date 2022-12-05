@@ -109,11 +109,17 @@
 	for(var/mob/M in GLOB.player_list)
 		if(istype(M, /mob/new_player))
 			continue
-		if(M.client && (M.stat == DEAD || isobserver(M)) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD))
-			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name] (<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>)</span> says, <span class='message'>\"[message]\"</span></span>")
+		if(!(M?.client?.prefs?.toggles_chat & CHAT_DEAD))
+			continue
+
+		if(isobserver(M))
+			var/mob/dead/observer/observer = M
 			var/turf/their_turf = get_turf(M)
-			if(my_turf?.z && my_turf.z == their_turf.z && get_dist(my_turf, their_turf) <= M.client.view)
-				langchat_listeners += M
+			if(alpha && observer.ghostvision && my_turf.z == their_turf.z && get_dist(my_turf, their_turf) <= observer.client.view)
+				langchat_listeners += observer
+
+		if(M.stat == DEAD)
+			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name] (<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>)</span> says, <span class='message'>\"[message]\"</span></span>")
 
 		else if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
 			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span> says, <span class='message'>\"[message]\"</span></span>")	//Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.

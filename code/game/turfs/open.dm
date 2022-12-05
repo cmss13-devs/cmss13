@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(edgeinfo_edge, list(
 								))
 
 GLOBAL_LIST_INIT(edgeinfo_corner, list(
-								list( HALF_EDGE_LEFT, FULL_EDGE,FULL_EDGE, HALF_EDGE_RIGHT),
+								list(HALF_EDGE_LEFT, FULL_EDGE,FULL_EDGE, HALF_EDGE_RIGHT),
 								list(HALF_EDGE_RIGHT, FULL_EDGE, HALF_EDGE_LEFT, FULL_EDGE),
 								list(FULL_EDGE, HALF_EDGE_LEFT, FULL_EDGE, HALF_EDGE_LEFT),
 								list(FULL_EDGE, HALF_EDGE_RIGHT, HALF_EDGE_RIGHT, FULL_EDGE)
@@ -113,8 +113,8 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 		if(icon_state != new_icon_state)				//no point in updating the icon_state if it would be updated to be the same thing that it was
 			icon_state = new_icon_state
 			for(var/i in GLOB.cardinals)				//but we still check so that we can update our neighbor's overlays if we do
-				var/turf/open/T = get_step(src, i)		//since otherwise they'd be stuck with overlays that were made with
-				T.update_icon()
+				var/turf/open/T = get_step(src, i)		//since otherwise they'd be stuck with overlays that were made when
+				T.update_icon()							//we had a different sprite
 		for(var/i in GLOB.cardinals)
 			var/turf/open/T = get_step(src, i)
 			if(istype(T, /turf/open) && T.scorchable && T.scorchedness < scorchedness)
@@ -316,7 +316,6 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 	name = "ground dirt"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
-	//overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
 
 /turf/open/gm/attackby(var/obj/item/I, var/mob/user)
 
@@ -363,12 +362,13 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
 	scorchable = "grass1"
-	culling_mask_index = list()
+	culling_mask_index = TRUE
+	var/static/list/gmgrass_culling_mask_index = list("grass1" = GLOB.edgeinfo_full, "grass2" = GLOB.edgeinfo_full, "grassbeach" = GLOB.edgeinfo_edge, "gbcorner" = GLOB.edgeinfo_corner)
 
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()
 
-	culling_mask_index = list("grass1" = GLOB.edgeinfo_full, "grass2" = GLOB.edgeinfo_full, "grassbeach" = GLOB.edgeinfo_edge, "gbcorner" = GLOB.edgeinfo_corner)
+	culling_mask_index = gmgrass_culling_mask_index
 
 
 /turf/open/gm/dirt2
@@ -381,12 +381,13 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 	icon_state = "grassdirt_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder
 	scorchable = "grass1"
-	culling_mask_index = list()
+	culling_mask_index = TRUE
+	var/static/list/gmdirtgrassborder_culling_mask_index = list("grassdirt_edge" = GLOB.edgeinfo_edge, "grassdirt_corner" = GLOB.edgeinfo_corner, "grassdirt_corner2" = GLOB.edgeinfo_corner2)
 
 /turf/open/gm/dirtgrassborder/Initialize(mapload, ...)
 	. = ..()
 
-	culling_mask_index = list("grassdirt_edge" = GLOB.edgeinfo_edge, "grassdirt_corner" = GLOB.edgeinfo_corner, "grassdirt_corner2" = GLOB.edgeinfo_corner2)
+	culling_mask_index = gmdirtgrassborder_culling_mask_index
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"

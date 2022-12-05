@@ -27,6 +27,7 @@
 	handheld_type = /obj/item/defenses/handheld/sentry
 
 	var/obj/item/device/sentry_computer/linked_laptop = null
+	var/nickname = ""
 
 	// action list is configurable for all subtypes, this is just an example
 	var/list/choice_categories = list(
@@ -132,7 +133,12 @@
 	return TRUE
 
 /obj/structure/machinery/defenses/sentry/proc/update_choice(mob/user, var/category, var/selection)
-	selected_categories[category] = selection
+	if(category in selected_categories)
+		selected_categories[category] = selection
+	else
+		if(category == "nickname")
+			nickname = selection
+
 	// do your switch case here to implement action and selection
 
 /obj/structure/machinery/defenses/sentry/get_examine_text(mob/user)
@@ -272,12 +278,12 @@
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
-	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), owner_mob, src))
-	P.generate_bullet(new ammo.default_ammo)
-	P.damage *= damage_mult
-	P.accuracy *= accuracy_mult
-	GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, faction_group)
-	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null)
+	var/obj/item/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))
+	new_projectile.generate_bullet(new ammo.default_ammo)
+	new_projectile.damage *= damage_mult
+	new_projectile.accuracy *= accuracy_mult
+	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
+	new_projectile.fire_at(A, src, owner_mob, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
 	muzzle_flash(Get_Angle(get_turf(src), A))
 	ammo.current_rounds--
 	track_shot()

@@ -1,11 +1,16 @@
 import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Stack, Tabs } from '../components';
+import { Box, Button, Flex, Icon, Input, ProgressBar, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 import { Component } from 'inferno';
 
 type SelectedState = [string, string];
 type SelectionState = [string, string[]];
+
+interface ElectricalSpec {
+  charge: number;
+  max_charge: number;
+}
 
 interface SentrySpec {
   selection_state: SelectedState[];
@@ -15,12 +20,15 @@ interface SentrySpec {
   area: string;
   active: 0 | 1;
   index: number;
+  engaged: number;
+  nickname: string;
 }
 
 interface SentryData {
   sentry: SentrySpec[];
   sentry_static: SentrySpec[];
   screen_state: 0 | 1;
+  electrical: ElectricalSpec;
 }
 
 const SelectionGroup = (
@@ -72,7 +80,33 @@ const SelectionMenu = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const TurretTitleSection = (props: { data: SentrySpec }, context) => {
+const getSanitisedName = (name: string) => name.substring(0, name.length - 11);
+const sanitiseArea = (name: string) =>
+  name.substring(name.includes('the') ? 4 : 0).trim();
+
+const ConfigurationTitleSection = (props: { data: SentrySpec }, context) => {
+  return (
+    <Stack vertical className="TitleContainer">
+      <Stack.Item className="TitleText">
+        <span>
+          {getSanitisedName(props.data.name)}: {sanitiseArea(props.data.area)}
+        </span>
+      </Stack.Item>
+      <Stack.Item className="TitleText">
+        <Stack>
+          <Stack.Item>
+            <span>{props.data.active === 0 ? 'INACTIVE' : 'ACTIVE'}</span>
+          </Stack.Item>
+          <Stack.Item>
+            <span>REMOTE SENTRY WEAPON SYSTEM</span>
+          </Stack.Item>
+        </Stack>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+const StatusTitleSection = (props: { data: SentrySpec }, context) => {
   const getSanitisedName = (name: string) =>
     name.substring(0, name.length - 11);
   const sanitiseArea = (name: string) =>
@@ -99,19 +133,49 @@ const TurretTitleSection = (props: { data: SentrySpec }, context) => {
 };
 
 const GunMenu = (props: { data: SentrySpec }, context) => {
+  const isEngaged = props.data.engaged > 1;
   return (
-    <Stack vertical>
-      <Stack.Item>
+    <Flex direction="column">
+      <Flex.Item>
+        <Box className="EngagedBox">
+          <Stack>
+            <Stack.Item align="center">
+              <span>Rounds Remaining</span>
+            </Stack.Item>
+            <Stack.Item align="center">
+              <Icon name="play" />
+            </Stack.Item>
+            <Stack.Item align="center" className="AmmoBoundingBox">
+              <span>{props.data.rounds}</span>
+            </Stack.Item>
+          </Stack>
+        </Box>
+      </Flex.Item>
+      <Flex.Item>
+        <Box className="EngagedBox">
+          {props.data.active === 0 && <span>Offline</span>}
+          {props.data.active === 1 && <span>Online</span>}
+        </Box>
+      </Flex.Item>
+      <Flex.Item>
+        <Box
+          height="3rem"
+          className={classes(['EngagedBox', isEngaged && 'EngagedWarningBox'])}>
+          {!isEngaged && <span>Not Engaged</span>}
+          {isEngaged && <span>ENGAGED</span>}
+        </Box>
+      </Flex.Item>
+      <Flex.Item>
         <Stack>
           <Stack.Item>
-            <span>Rounds Remaining</span>
+            <Button icon="video" />
           </Stack.Item>
-          <Stack.Item className="SentryBox">
-            <span>{props.data.rounds}</span>
+          <Stack.Item>
+            <Button icon="bullhorn" />
           </Stack.Item>
         </Stack>
-      </Stack.Item>
-    </Stack>
+      </Flex.Item>
+    </Flex>
   );
 };
 
@@ -130,19 +194,103 @@ const EmptyDisplay = (_, context) => {
   );
 };
 
-const SentryGunDisplay = (props: { data: SentrySpec }, context) => {
+const InputGroup = (
+  props: {
+    index: number;
+    label: string;
+    category: string;
+    startingValue: string;
+  },
+  context
+) => {
+  const { data, act } = useBackend<SentryData>(context);
+  const [categoryValue, setCategoryValue] = useLocalState(
+    context,
+    `${props.index} ${props.category}`,
+    props.startingValue
+  );
+  return (
+    <Stack vertical className="SelectionMenu">
+      <Stack.Item className="Title">
+        <span>{props.label}</span>
+      </Stack.Item>
+      <Stack.Item>
+        <Input
+          value={categoryValue}
+          onInput={(e, value) => setCategoryValue(value)}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <Button
+          className="Selected"
+          onClick={() =>
+            act(props.category, {
+              index: props.index,
+              selection: categoryValue,
+            })
+          }>
+          Commit
+        </Button>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
+  const { data, act } = useBackend<SentryData>(context);
+  const [showConfig, setShowConfig] = useLocalState(context, 'showConf', true);
   return (
     <Stack vertical>
-      <Stack.Item className="SentryBox">
-        <TurretTitleSection data={props.data} />
+      <Stack.Item className="TitleBox">
+        <Flex justify="space-between" align-items="center">
+          <Flex.Item>
+            <Box width={7} />
+          </Flex.Item>
+          <Flex.Item>
+            <ConfigurationTitleSection data={props.data} />
+          </Flex.Item>
+          <Flex.Item align="center">
+            <Button onClick={() => setShowConfig(false)}>Status</Button>
+          </Flex.Item>
+        </Flex>
       </Stack.Item>
-      <Stack.Item className="SentryBox">
+      <Stack.Item className="TitleBox">
         <SelectionMenu data={props.data} />
       </Stack.Item>
-      <Stack.Item className="SentryBox">
-        <TurretTitleSection data={props.data} />
+      <Stack.Item className="TitleBox">
+        <Flex>
+          <Flex.Item>
+            <InputGroup
+              index={props.data.index}
+              label="Name"
+              category="nickname"
+              startingValue={props.data.nickname}
+            />
+          </Flex.Item>
+        </Flex>
       </Stack.Item>
-      <Stack.Item className="SentryBox">
+    </Stack>
+  );
+};
+
+const SentryGunStatus = (props: { data: SentrySpec }, context) => {
+  const [showConfig, setShowConfig] = useLocalState(context, 'showConf', true);
+  return (
+    <Stack vertical>
+      <Stack.Item className="TitleBox">
+        <Flex justify="space-between" align-items="center">
+          <Flex.Item>
+            <Box width={13} />
+          </Flex.Item>
+          <Flex.Item>
+            <StatusTitleSection data={props.data} />
+          </Flex.Item>
+          <Flex.Item align="center">
+            <Button onClick={() => setShowConfig(true)}>Configuration</Button>
+          </Flex.Item>
+        </Flex>
+      </Stack.Item>
+      <Stack.Item className="TitleBox">
         <GunMenu data={props.data} />
       </Stack.Item>
     </Stack>
@@ -181,6 +329,45 @@ class CallbackHandler extends Component<
   }
 }
 
+const ShowSingleSentry = (props: { data: SentrySpec }, context) => {
+  const [showConfig, setShowConfig] = useLocalState(context, 'showConf', true);
+  return (
+    <>
+      {showConfig && <SentryGunConfiguration data={props.data} />}
+      {!showConfig && <SentryGunStatus data={props.data} />}
+    </>
+  );
+};
+
+const ShowSentryCard = (props: { data: SentrySpec }, context) => {
+  const displayName =
+    props.data.nickname.length === 0 ? props.data.index : props.data.nickname;
+  return (
+    <Stack vertical className={classes(['SentryCard', 'SentryBox'])}>
+      <Stack.Item align="center">
+        <span>
+          {displayName}: {sanitiseArea(props.data.area)}
+        </span>
+      </Stack.Item>
+      <Stack.Item align="center">
+        <GunMenu data={props.data} />
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+const ShowAllSentry = (props: { data: SentrySpec[] }, context) => {
+  return (
+    <Flex>
+      {props.data.map((x) => (
+        <Flex.Item key={x.index}>
+          <ShowSentryCard data={x} />
+        </Flex.Item>
+      ))}
+    </Flex>
+  );
+};
+
 export const SentryGunUI = (_, context) => {
   const { data, act } = useBackend<SentryData>(context);
   const sentrykeys =
@@ -190,6 +377,9 @@ export const SentryGunUI = (_, context) => {
   const sentrySpecs: SentrySpec[] = sentrykeys.map((x) => {
     return { ...data.sentry[x], ...data.sentry_static[x] };
   });
+
+  const [showConfig, setShowConfig] = useLocalState(context, 'showConf', true);
+
   const [selectedSentry, setSelectedSentry] = useLocalState<undefined | number>(
     context,
     'selected',
@@ -204,16 +394,37 @@ export const SentryGunUI = (_, context) => {
   return (
     <Window theme="crtyellow">
       <Window.Content className="SentryGun">
-        <Tabs>
-          {sentrykeys.map((x) => (
-            <Tabs.Tab
-              key={x}
-              selected={selectedSentry === x}
-              onClick={() => setSelectedSentry(x)}>
-              {x}
-            </Tabs.Tab>
-          ))}
-        </Tabs>
+        <Flex justify="space-between" align-items="center">
+          <Flex.Item>
+            <Tabs>
+              {sentrySpecs.map((x, index) => (
+                <Tabs.Tab
+                  key={x.index}
+                  selected={selectedSentry === index}
+                  onClick={() => setSelectedSentry(index)}>
+                  {x.nickname.length === 0 ? x.index : x.nickname}
+                </Tabs.Tab>
+              ))}
+              <Tabs.Tab
+                selected={selectedSentry === undefined}
+                onClick={() => setSelectedSentry(undefined)}>
+                All
+              </Tabs.Tab>
+            </Tabs>
+          </Flex.Item>
+          <Flex.Item align="center">
+            <ProgressBar
+              minValue={0}
+              maxValue={data.electrical.max_charge}
+              value={data.electrical.charge}>
+              {(
+                (data.electrical.charge / data.electrical.max_charge) *
+                100
+              ).toFixed(2)}{' '}
+              %
+            </ProgressBar>
+          </Flex.Item>
+        </Flex>
 
         {data.screen_state === 0 && (
           <div>
@@ -226,8 +437,11 @@ export const SentryGunUI = (_, context) => {
           </div>
         )}
         {!validSelection && <EmptyDisplay />}
-        {validSelection && (
-          <SentryGunDisplay data={sentrySpecs[selectedSentry ?? 0]} />
+        {validSelection && selectedSentry !== undefined && (
+          <ShowSingleSentry data={sentrySpecs[selectedSentry ?? 0]} />
+        )}
+        {validSelection && selectedSentry === undefined && (
+          <ShowAllSentry data={sentrySpecs} />
         )}
       </Window.Content>
     </Window>

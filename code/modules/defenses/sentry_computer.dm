@@ -34,8 +34,9 @@
 /obj/item/device/sentry_computer/process()
 	if(on)
 		if(cell)
-			if(cell.charge >= (power_consumption * CELLRATE))
-				cell.use(power_consumption * CELLRATE)
+			var/energy_cost = length(paired_sentry) * power_consumption * CELLRATE
+			if(cell.charge >= (energy_cost))
+				cell.use(energy_cost)
 			else
 				icon_state = "sentrycomp_op"
 
@@ -79,11 +80,13 @@
 		icon_state = "sentrycomp_on"
 		on = TRUE
 		state = 2
+		START_PROCESSING(SSobj, src)
 	else if(state == 2)
 		icon_state = "sentrycomp_op"
 		on = FALSE
 		screen_state = 0
 		state = 3
+		STOP_PROCESSING(SSobj, src)
 	else if(state == 3)
 		icon_state = "sentrycomp_cl"
 		open = FALSE
@@ -130,6 +133,8 @@
 		sentry_holder["rounds"] = sentrygun.ammo.current_rounds
 		sentry_holder["area"] = get_area(sentrygun)
 		sentry_holder["active"] = sentrygun.turned_on
+		sentry_holder["engaged"] = length(sentrygun.targets)
+		sentry_holder["nickname"] = sentrygun.nickname
 		sentry_holder["selection_state"] = list()
 		for(var/i in sentrygun.selected_categories)
 			sentry_holder["selection_state"] += list(list("[i]", sentrygun.selected_categories[i]))

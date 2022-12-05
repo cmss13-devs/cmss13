@@ -925,7 +925,7 @@
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, damage_result, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
 		return
 
-	if(damage || (CHECK_BITFIELD(ammo_flags, AMMO_SPECIAL_EMBED)))
+	if(damage || (ammo_flags & AMMO_SPECIAL_EMBED))
 
 		var/splatter_dir = get_dir(P.starting, loc)
 		handle_blood_splatter(splatter_dir)
@@ -935,7 +935,7 @@
 		P.play_damage_effect(src)
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
-			if(CHECK_BITFIELD(ammo_flags, AMMO_SPECIAL_EMBED))
+			if((ammo_flags & AMMO_SPECIAL_EMBED))
 				P.ammo.on_embed(src, organ)
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type

@@ -2784,12 +2784,9 @@
 	generated_projectile.overlays += hook_overlay
 
 /datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/item/projectile/fired_proj)
-	if(iscarbon(target))
-		var/mob/living/carbon/carbone = target
-		if((HAS_FLAG(carbone.status_flags, XENO_HOST) && HAS_TRAIT(carbone, TRAIT_NESTED)) || carbone.stat == DEAD)
-			return
-
-	playsound(fired_proj, 'sound/weapons/thudswoosh.ogg', 75, TRUE) // loud cuz tail sound overrides it otherwise
+	var/mob/living/carbon/Xenomorph/xeno_firer = fired_proj.firer
+	if(xeno_firer.can_not_harm(target))
+		return
 
 	shake_camera(target, 5, 0.1 SECONDS)
 	var/obj/effect/beam/tail_beam = fired_proj.firer.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 5)
@@ -2798,14 +2795,14 @@
 
 	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
 	// we dont mess with preexisting freezes
-	var/prefrozen = target.frozen == TRUE ? TRUE : FALSE
+	var/wasfrozen = target.frozen
 	//paralyzes target so they don't break the throw by moving...
-	if(!prefrozen)
+	if(!wasfrozen)
 		target.frozen = TRUE
 	//sleeps during this proc...
 	target.throw_atom(fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
 	//inmediately after the sleeps, unfreezes so they can wiggle around.
-	if(!prefrozen)
+	if(!wasfrozen)
 		target.frozen = FALSE
 
 	qdel(tail_beam)

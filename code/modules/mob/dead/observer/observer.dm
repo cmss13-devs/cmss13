@@ -946,6 +946,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	return "(<a href='?src=\ref[src];jumptocoord=1;X=[turf.x];Y=[turf.y];Z=[turf.z]'>[jump_tag]</a>)"
 
 /mob/dead/observer/point_to(atom/A in view())
+	if(!(client?.prefs?.toggles_chat & CHAT_DEAD))
+		return FALSE
 	if(A?.z != src.z || !A.mouse_opacity || get_dist(src, A) > client.view)
 		return FALSE
 	var/turf/turf = get_turf(A)
@@ -960,6 +962,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/mob/dead/observer/nearby_observer as anything in GLOB.observer_list)
 		var/client/observer_client = nearby_observer.client
 		// We check observer view range specifically to also show the message to zoomed out ghosts. Double check Z as get_dist goes thru levels.
-		if(observer_client && src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
+		if((observer_client?.prefs?.toggles_chat & CHAT_DEAD) \
+			&& src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
 			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
 	return TRUE

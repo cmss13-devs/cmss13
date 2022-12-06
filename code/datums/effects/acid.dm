@@ -8,6 +8,10 @@
 	var/damage_in_total_human = 25
 	var/damage_in_total_obj = 75
 	var/acid_multiplier = 1
+	 /// How 'goopy' the acid is. Each value is one stop drop roll.
+	var/acid_goopiness = 1
+	 /// If it's been enhanced by a spit combo.
+	var/acid_enhanced = FALSE
 
 /datum/effects/acid/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
 	..(A, from, last_dmg_source, zone)
@@ -71,3 +75,20 @@
 		var/obj/O = affected_atom
 		O.update_icon()
 	return ..()
+
+/datum/effects/acid/proc/enhance_acid()
+	duration = 40
+	damage_in_total_human = 50
+	acid_multiplier = 1.5
+	acid_goopiness++
+	acid_enhanced = TRUE
+	mob_icon_state_path = "human_acid_enhanced"
+	if(ishuman(affected_atom))
+		var/mob/living/carbon/human/affected_human = affected_atom
+		affected_human.update_effects()
+
+/datum/effects/acid/proc/cleanse_acid()
+	acid_goopiness--
+	if(acid_goopiness <= 0)
+		return TRUE
+	else return FALSE

@@ -234,16 +234,7 @@ The following list is non-exhaustive, but should give you a good idea of what th
 ### Coding
 <details>
 * Only direct changes to balance numbers on an MR (damage, recoil, health, armor, movespeed, etc), with nothing else to add to the game (without prior approval)
-* Removal of non-legacy features
-* Major overhauls of gameplay without prior approval
-* Adding additional factions, antagonists, or species
-* Again no additional species or races, even Arcturians
-* New cassette tapes
-* Vehicle removals
-* New jobs / roles
-* Changes to whitelist roles
-* Removal of jobs / roles
-* Major reworks of jobs / roles
+* No additional species or races, even Arcturians
 </details>
 
 Remember that the following lists are not exhaustive. And you can freely contribute an PR with content that can be shuffled into the “What we don’t want” category, and still get it merged. It is just unlikely without prior talk/approval from a maintainer.

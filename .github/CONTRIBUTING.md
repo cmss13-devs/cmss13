@@ -112,9 +112,9 @@ Potential bugs can be submitted to the project issue tracker on GitLab. While we
 
 When submitting an issue, use the provided template. A few things to keep in mind for a good issue report maximizing the chance of finding and fixing it:
 
- - Search quickly for existing related issues - add info there if applicable rather than duplicating them
- - Stay factual and as concise as possible
- - If possible, attempt to reproduce and confirm the issue, and detail steps
+ * Search quickly for existing related issues - add info there if applicable rather than duplicating them
+ * Stay factual and as concise as possible
+ * If possible, attempt to reproduce and confirm the issue, and detail steps
 
 The tracker is a powerful tool - it might look pointless, but ensures what's there can be known by anyone, team members and contributors alike, and won't be forgotten. This maximizes chances of issues being resolved. Don't be afraid to use it.
 
@@ -154,7 +154,7 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * If your pull request is not finished, you may open it as a draft for potential review. If you open it as a full-fledged PR make sure it is at least testable in a live environment. Pull requests that do not at least meet this requirement will be closed. You may request a maintainer reopen the pull request when you're ready, or make a new one.
 
-* While we have no issue helping contributors (and especially new contributors) bring reasonably sized contributions up to standards via the pull request review process, larger contributions are expected to pass a higher bar of completeness and code quality -before- you open a pull request. Maintainers may close such pull requests that are deemed to be substantially flawed. You should take some time to discuss with maintainers or other contributors on how to improve the changes.
+* While we have no issue helping contributors (and especially new contributors) bring reasonably sized contributions up to standards via the pull request review process, larger contributions are expected to pass a higher bar of completeness and code quality *before* you open a pull request. Maintainers may close such pull requests that are deemed to be substantially flawed. You should take some time to discuss with maintainers or other contributors on how to improve the changes.
 
 * After leaving reviews on an open pull request, maintainers may convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
 
@@ -200,7 +200,7 @@ The following list is non-exhaustive, but should give you a good idea of what th
 - Object placement quality of life improvements (such as widening hallways and combat lanes cluttered with props)
 - Extra map detailing (so long as it doesn’t negatively impact performance)
 - Removal of dead-ends or gameplay dead-space on existing maps
-- New maps-
+- New maps*
 - Bug fixes and inconsistency fixes
 
 **A note on new maps.**
@@ -240,6 +240,6 @@ Remember that the following lists are not exhaustive. And you can freely contrib
 
 ## Banned content
 Do not add any of the following in a Pull Request or risk getting the PR closed:
-- Any content that adds a specific character played by or reference to a single player, contributor, staff member, or maintainer.
+* Any content that adds a specific character played by or reference to a single player, contributor, staff member, or maintainer.
 For example, a PR that adds a blue crab named after a staff member’s username is not permitted, as it directly references a specific individual.
-- Code which violates GitHub's [terms of service](https://github.com/site/terms).
+* Code which violates GitHub's [terms of service](https://github.com/site/terms).

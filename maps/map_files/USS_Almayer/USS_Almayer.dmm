@@ -15615,11 +15615,14 @@
 /area/almayer/engineering/lower_engineering)
 "aVr" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/item/reagent_container/food/snacks/tofupie,
-/obj/item/reagent_container/food/snacks/tofuburger,
 /obj/structure/sign/safety/fridge{
 	pixel_x = 32
 	},
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/reagent_container/food/snacks/carpmeat,
+/obj/item/reagent_container/food/snacks/carpmeat,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -22340,6 +22343,7 @@
 	id = "cl_shutters 2";
 	name = "Quarters Shutters";
 	pixel_x = -25;
+	pixel_y = 23;
 	req_access_txt = "200"
 	},
 /turf/open/floor/almayer{
@@ -52264,6 +52268,17 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"kfE" = (
+/obj/structure/bed/sofa/south/grey/right,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silver";
+	tag = "icon-silver (NORTH)"
+	},
+/area/almayer/shipboard/brig/cic_hallway)
 "kfN" = (
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer{
@@ -54651,6 +54666,7 @@
 /area/almayer/squads/bravo)
 "ljG" = (
 /obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/condiment/coldsauce,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -66080,7 +66096,8 @@
 /obj/structure/machinery/chem_dispenser/soda{
 	density = 0;
 	pixel_x = 1;
-	pixel_y = 14
+	pixel_y = 14;
+	wrenchable = 0
 	},
 /obj/structure/sign/safety/coffee{
 	pixel_y = 32
@@ -77796,9 +77813,6 @@
 	dir = 1
 	},
 /obj/structure/bed/sofa/south/grey,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
@@ -100808,7 +100822,7 @@ wVV
 erx
 dsw
 vxM
-vGA
+kfE
 wsD
 jUY
 qwp

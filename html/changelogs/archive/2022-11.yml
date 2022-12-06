@@ -690,3 +690,52 @@
   theselfish:
   - bugfix: Fixes various obj sprites (mess tech, provost, armorvest, detective, pilot
       and some CLF armours) having directions.
+2022-11-30:
+  DexterDude:
+  - rscadd: Gives Maintenance Technicians, Cargo Technicians, and Mess Technicians
+      the rank of private if they have under 10 hours in the role
+  - rscadd: Gives Nurses the rank of Lance Corporal if they have under 10 hours in
+      the role
+  - balance: Changes the Senior Enlisted Advisor's endurance skill from 1 to 2
+  Mistfrag:
+  - bugfix: Fixed fireman carry having the same speed to pick someone up with regardless
+      of skill.
+  - refactor: 'Made mob_helpers easier to read.
+
+      :cl:'
+  Morrow:
+  - rscadd: Adds new trait "opiate receptor deficiency" which reduces potency of painkilling
+      effects.
+  - rscadd: Adds a trait point (now at two) for use in character creation.
+  - refactor: Refactors the poor eyesight preference into the trait system.
+  - spellcheck: Removes extraneous wording around robotic limb preferences.
+  NoKohi:
+  - bugfix: fixed missing access entries in airlock electronics and ID consoles
+  Segrain:
+  - bugfix: Examining papers properly shows their custom descriptions if present.
+  Shad0vvs:
+  - bugfix: Changed splint break sound from 100 to 20.
+  - bugfix: Consistency mapping fixes on Almayer for some floor markings and doors
+      of bravo and charlie prep.
+  ThePiachu:
+  - qol: More vendors vend their contents to user's hands.
+  - qol: Vending to user's hands prioritises active hand if it is empty.
+  - qol: The three main Requisitions vendors vend their items straight to the table
+      IF the dispensing person is in the correct spot. This should speed up Requisition
+      lines a bit!
+  - bugfix: Fixed a runtime error caused by APCs breaking down on their own.
+  ThePiachu, Triiodine:
+  - imageadd: Made the various Research-related papers a bit more visually distinct
+      from one another.
+  - qol: Research grants now delete themselves after they are cashed in.
+  - qol: Hydro trays now display their basic information when examined.
+  - qol: You can now rename mutated seeds by right-clicking on their packets. Should
+      come in very handy in Research!
+  - balance: Plant genes now tell you what they relate to for easier gene splicing
+      (CM isn't a botany-focused game, so we cut our Researchers some slack there!).
+  carlarctg:
+  - rscadd: Altered disarm flavor text depending on CQC skill.
+  - rscadd: Slightly increased disarm stun depending on CQC skill.
+  stanalbatross:
+  - bugfix: fixed some runtimes that were causing fancy storage items' examine text
+      to break, among other things.

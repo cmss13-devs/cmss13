@@ -490,11 +490,11 @@
 	category = "Medical Containers"
 
 /datum/autolathe/recipe/medilathe/pressurized_reagent_container
-	name = "Pressurized Reagent Container"
+	name = "Pressurized Reagent Canister Pouch"
 	path = /obj/item/storage/pouch/pressurized_reagent_canister
 	category = "Medical Containers"
 
 /datum/autolathe/recipe/medilathe/pressurized_canister
-	name = "Pressurized canister"
+	name = "Pressurized Canister"
 	path = /obj/item/reagent_container/glass/pressurized_canister
 	category = "Medical Containers"

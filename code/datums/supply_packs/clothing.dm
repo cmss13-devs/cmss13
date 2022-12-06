@@ -28,21 +28,6 @@
 	group = "Clothing"
 
 //---------------------------------------------
-//Backpacks
-//---------------------------------------------
-
-/datum/supply_packs/backpack/mortar_pack
-	name = "Mortar Shell Backpack Crate (x4)"
-	contains = list(
-		/obj/item/storage/backpack/marine/mortarpack,
-		/obj/item/storage/backpack/marine/mortarpack,
-		/obj/item/storage/backpack/marine/mortarpack,
-		/obj/item/storage/backpack/marine/mortarpack
-	)
-	cost = 30
-	containername = "Mortar Shell Backpack Crate"
-
-//---------------------------------------------
 //HOLSTERS & WEBBING BELOW THIS LINE
 //---------------------------------------------
 

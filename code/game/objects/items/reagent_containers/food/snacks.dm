@@ -2466,7 +2466,7 @@
 	reagents.add_reagent("cheese", 25)
 	reagents.add_reagent("sugar", 1)
 	reagents.add_reagent("sodiumchloride", 1)
-	reagents.add_reagent("universal enzyme", 1)
+	reagents.add_reagent("enzyme", 1)
 
 /obj/item/reagent_container/food/snacks/cheesewedge/extramature
 	name = "primordial cheese wedge"

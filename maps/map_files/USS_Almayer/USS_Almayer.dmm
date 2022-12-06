@@ -1174,7 +1174,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/cell_charger,
-/obj/item/cell/apc/full{
+/obj/item/cell/apc{
 	pixel_x = 2;
 	pixel_y = 3
 	},
@@ -37596,7 +37596,7 @@
 "dFV" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/cell_charger,
-/obj/item/cell/apc/full,
+/obj/item/cell/apc,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

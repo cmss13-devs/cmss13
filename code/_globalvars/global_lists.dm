@@ -175,6 +175,9 @@ var/global/list/pass_flags_cache = list()
 //Parameterss cache
 var/global/list/paramslist_cache = list()
 
+//Turf Edge info uberlist -- a list whos states contain GLOB.edgeinfo_X keyed as different icon_states
+var/global/list/turf_edgeinfo_cache = list()
+
 #define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, /proc/key_number_decode)
 #define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, /proc/number_list_decode)
 

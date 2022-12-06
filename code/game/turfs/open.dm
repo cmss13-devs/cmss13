@@ -45,14 +45,11 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 	var/scorchable = FALSE	//if TRUE set to be a turf which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
-	var/culling_mask_index //This list should contain a number of states keyed as various possible icon_state this turf could have each containing a GLOB.edgeinfo_X list
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
 
 	update_icon()
-	if(!culling_mask_index && scorchable)
-		culling_mask_index = list("[icon_state]"=GLOB.edgeinfo_full)
 
 /turf/open/update_icon()
 	overlays.Cut()
@@ -126,7 +123,7 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 				if(!T.icon_state_before_scorching)
 					T.icon_state_before_scorching = T.icon_state
 				var/direction_from_nieghbor_towards_src = get_dir(T, src)
-				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[T.culling_mask_index[T.icon_state_before_scorching][dir2indexnum(T.dir)][dir2indexnum(direction_from_nieghbor_towards_src)]]", direction_from_nieghbor_towards_src)
+				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[turf_edgeinfo_cache[T.icon_state_before_scorching][dir2indexnum(T.dir)][dir2indexnum(direction_from_nieghbor_towards_src)]]", direction_from_nieghbor_towards_src)
 				edge_overlay.Blend(culling_mask, ICON_OVERLAY)
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
@@ -363,13 +360,20 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
 	scorchable = "grass1"
-	culling_mask_index = list()
 
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()
 
-	culling_mask_index = list("grass1" = GLOB.edgeinfo_full, "grass2" = GLOB.edgeinfo_full, "grassbeach" = GLOB.edgeinfo_edge, "gbcorner" = GLOB.edgeinfo_corner)
-
+	if(!locate(icon_state) in turf_edgeinfo_cache)
+		switch(icon_state)
+			if("grass1")
+				turf_edgeinfo_cache["grass1"] = GLOB.edgeinfo_full
+			if("grass2")
+				turf_edgeinfo_cache["grass2"] = GLOB.edgeinfo_full
+			if("grassbeach")
+				turf_edgeinfo_cache["grassbeach"] = GLOB.edgeinfo_edge
+			if("gbcorner")
+				turf_edgeinfo_cache["gbcorner"] = GLOB.edgeinfo_corner
 
 /turf/open/gm/dirt2
 	name = "dirt"
@@ -381,12 +385,18 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 	icon_state = "grassdirt_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder
 	scorchable = "grass1"
-	culling_mask_index = list()
 
 /turf/open/gm/dirtgrassborder/Initialize(mapload, ...)
 	. = ..()
 
-	culling_mask_index = list("grassdirt_edge" = GLOB.edgeinfo_edge, "grassdirt_corner" = GLOB.edgeinfo_corner, "grassdirt_corner2" = GLOB.edgeinfo_corner2)
+	if(!locate(icon_state) in turf_edgeinfo_cache)
+		switch(icon_state)
+			if("grassdirt_edge")
+				turf_edgeinfo_cache["grassdirt_edge"] = GLOB.edgeinfo_edge
+			if("grassdirt_corner")
+				turf_edgeinfo_cache["grassdirt_corner"] = GLOB.edgeinfo_corner
+			if("grassdirt_corner2")
+				turf_edgeinfo_cache["grassdirt_corner2"] = GLOB.edgeinfo_corner2
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"

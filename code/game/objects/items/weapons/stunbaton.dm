@@ -103,7 +103,7 @@
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(bcell)
-			bcell.updateicon()
+			bcell.update_icon()
 			bcell.forceMove(get_turf(src.loc))
 			bcell = null
 			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))

@@ -190,7 +190,7 @@
 		return
 	if(world.time - user.timeofdeath < 3 MINUTES)
 		var/time_left = round((user.timeofdeath + 3 MINUTES - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until ([time_left] seconds has passed)"))
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return
 	if(!stored_huggers)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))

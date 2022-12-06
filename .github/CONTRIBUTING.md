@@ -97,18 +97,18 @@ Issue Managers help out the project by labelling bug reports and PRs and closing
 
 This should help you understand what you can and can't do with your newfound github permissions.
 
-Things you --CAN-- do:
+Things you **CAN** do:
 - Label issues appropriately
 - Close issues when appropriate
 
-Things you --CAN'T-- do:
+Things you **CAN'T** do:
 - Close PRs: Only maintainers are allowed to close PRs. Do not hit that button.
 - Label PRs, leave that for maintainers to handle.
 
 </details>
 
 ## Issues Tracker
-Potential bugs can be submitted to the project issue tracker on GitLab. While we appreciate suggestions, they should --not-- be posted here to make triaging technical issues and fixing bugs easier.
+Potential bugs can be submitted to the project issue tracker on GitLab. While we appreciate suggestions, they should **not** be posted here to make triaging technical issues and fixing bugs easier.
 
 When submitting an issue, use the provided template. A few things to keep in mind for a good issue report maximizing the chance of finding and fixing it:
 
@@ -138,25 +138,25 @@ The tracker is a powerful tool - it might look pointless, but ensures what's the
 
 There is no strict process when it comes to merging pull requests. Pull requests will sometimes take a while before they are looked at by a maintainer; the bigger the change, the more time it will take before they are accepted into the code. Every team member is a volunteer who is giving up their own time to help maintain and contribute, so please be courteous and respectful. Here are some helpful ways to make it easier for you and for the maintainers when making a pull request.
 
-- Make sure your pull request complies to the requirements outlined here
+* Make sure your pull request complies to the requirements outlined here
 
-- You are expected to have tested your pull requests if it is anything that would warrant testing. Text only changes, single number balance changes, and similar generally don't need testing, but anything else does. This means by extension web edits are disallowed for larger changes.
+* You are expected to have tested your pull requests if it is anything that would warrant testing. Text only changes, single number balance changes, and similar generally don't need testing, but anything else does. This means by extension web edits are disallowed for larger changes.
 
-- You are going to be expected to document all your changes in the pull request. Failing to do so will mean delaying it as we will have to question why you made the change. On the other hand, you can speed up the process by making the pull request readable and easy to understand, with diagrams or before/after data. Should you be optimizing a routine you must provide proof by way of profiling that your changes are faster.
+* You are going to be expected to document all your changes in the pull request. Failing to do so will mean delaying it as we will have to question why you made the change. On the other hand, you can speed up the process by making the pull request readable and easy to understand, with diagrams or before/after data. Should you be optimizing a routine you must provide proof by way of profiling that your changes are faster.
 
-- We ask that you use the changelog system to document your player facing changes, which prevents our players from being caught unaware by said changes - you can find more information about this [on this wiki page](http://tgstation13.org/wiki/Guide_to_Changelogs).
+* We ask that you use the changelog system to document your player facing changes, which prevents our players from being caught unaware by said changes - you can find more information about this [on this wiki page](http://tgstation13.org/wiki/Guide_to_Changelogs).
 
-- If you are proposing multiple changes, which change many different aspects of the code, you are expected to section them off into different pull requests in order to make it easier to review them and to deny/accept the changes that are deemed acceptable.
+* If you are proposing multiple changes, which change many different aspects of the code, you are expected to section them off into different pull requests in order to make it easier to review them and to deny/accept the changes that are deemed acceptable.
 
-- If your pull request is accepted, the code you add no longer belongs exclusively to you but to everyone; everyone is free to work on it, but you are also free to support or object to any changes being made, which will likely hold more weight, as you're the one who added the feature. It is a shame this has to be explicitly said, but there have been cases where this would've saved some trouble.
+* If your pull request is accepted, the code you add no longer belongs exclusively to you but to everyone; everyone is free to work on it, but you are also free to support or object to any changes being made, which will likely hold more weight, as you're the one who added the feature. It is a shame this has to be explicitly said, but there have been cases where this would've saved some trouble.
 
-- Please explain why you are submitting the pull request, and how you think your change will be beneficial to the game. Failure to do so will be grounds for rejecting the PR.
+* Please explain why you are submitting the pull request, and how you think your change will be beneficial to the game. Failure to do so will be grounds for rejecting the PR.
 
-- If your pull request is not finished, you may open it as a draft for potential review. If you open it as a full-fledged PR make sure it is at least testable in a live environment. Pull requests that do not at least meet this requirement will be closed. You may request a maintainer reopen the pull request when you're ready, or make a new one.
+* If your pull request is not finished, you may open it as a draft for potential review. If you open it as a full-fledged PR make sure it is at least testable in a live environment. Pull requests that do not at least meet this requirement will be closed. You may request a maintainer reopen the pull request when you're ready, or make a new one.
 
-- While we have no issue helping contributors (and especially new contributors) bring reasonably sized contributions up to standards via the pull request review process, larger contributions are expected to pass a higher bar of completeness and code quality -before- you open a pull request. Maintainers may close such pull requests that are deemed to be substantially flawed. You should take some time to discuss with maintainers or other contributors on how to improve the changes.
+* While we have no issue helping contributors (and especially new contributors) bring reasonably sized contributions up to standards via the pull request review process, larger contributions are expected to pass a higher bar of completeness and code quality -before- you open a pull request. Maintainers may close such pull requests that are deemed to be substantially flawed. You should take some time to discuss with maintainers or other contributors on how to improve the changes.
 
-- After leaving reviews on an open pull request, maintainers may convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
+* After leaving reviews on an open pull request, maintainers may convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
 
 ## Good Boy Points
 
@@ -203,7 +203,7 @@ The following list is non-exhaustive, but should give you a good idea of what th
 - New maps-
 - Bug fixes and inconsistency fixes
 
---A note on new maps.--
+**A note on new maps.**
 Entirely new maps are generally considered to be stepping stones into the Development team’s mapping dept. proper. However, making a new map is a months long process that requires dedication and constant communication and oversight from mappers on the Maintainer team. Mapping, like spriting and coding is an acquired skill, and it is highly likely your first map is going to suck. Maps are fluid entities that are never absolutely complete, don’t wed yourself to your initial layout, always be prepared to remap half the project when going in.
 
 
@@ -243,5 +243,3 @@ Do not add any of the following in a Pull Request or risk getting the PR closed:
 - Any content that adds a specific character played by or reference to a single player, contributor, staff member, or maintainer.
 For example, a PR that adds a blue crab named after a staff member’s username is not permitted, as it directly references a specific individual.
 - Code which violates GitHub's [terms of service](https://github.com/site/terms).
-
-Content that references, congratulates, or otherwise acknowledges the Dev or Staff teams as a whole, as well as content that violates this rule that existed prior to this rule’s implementation, is an exception to this restriction.

@@ -100,8 +100,7 @@
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 30
 
-
-/datum/action/xeno_action/activable/tail_Jab
+/datum/action/xeno_action/activable/tail_jab
 	name = "Tail Jab"
 	action_icon_state = "prae_pierce"
 	ability_name = "Tail Jab"

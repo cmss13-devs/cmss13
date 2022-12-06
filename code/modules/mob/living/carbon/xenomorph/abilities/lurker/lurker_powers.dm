@@ -160,7 +160,7 @@
 			if (!isXenoOrHuman(target) || xeno.can_not_harm(target))
 				continue
 
-			xeno.visible_message(SPAN_DANGER("[xeno] scratches [target] all around his body!"), \
+			xeno.visible_message(SPAN_DANGER("[xeno] scratches [target] all around its body!"), \
 			SPAN_XENOWARNING("You slash [target] multiple times!"))
 			xeno.flick_attack_overlay(target, "slash")
 			target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
@@ -173,7 +173,7 @@
 			..()
 			return
 
-/datum/action/xeno_action/activable/tail_Jab/use_ability(atom/targeted_atom)
+/datum/action/xeno_action/activable/tail_jab/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	var/mob/living/carbon/target = targeted_atom
 	var/distance = get_dist(xeno, target)
@@ -189,7 +189,7 @@
 		if(path_turf.density)
 			to_chat(xeno, SPAN_WARNING("There's something blocking you from stricking!"))
 			return
-		var/atom/barrier = path_turf.handle_barriers(xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		var/atom/barrier = path_turf.handle_barriers(A = xeno , pass_flags = (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
 		if(barrier != path_turf)
 			to_chat(xeno, SPAN_WARNING("There's something blocking you from stricking!"))
 			return
@@ -200,7 +200,7 @@
 					return
 				target_window.shatter_window(TRUE)
 				apply_cooldown(cooldown_modifier = 0.5)
-				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with his tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
+				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
 				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
 				return
 
@@ -223,7 +223,7 @@
 		if(xeno.action_busy)
 			return
 		xeno.visible_message(SPAN_DANGER("[xeno] prepares for devastating attack on [target]."), \
-		SPAN_XENOWARNING("You carefully aim your tail towards [target]’s vital organs."), null, 5)
+		SPAN_XENOWARNING("You carefully aim your tail towards [target]’s vital organs."), max_distance = 5)
 		if(!do_after(xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 		if(target.stat == DEAD)
@@ -237,7 +237,7 @@
 		xeno.xeno_jitter(1 SECONDS)
 		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 		target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-		log_attack("[key_name(xeno)] Executed [key_name(target)] with Tail Jab")
+		log_attack("[key_name(xeno)] executed [key_name(target)] with Tail Jab")
 		xeno.emote("roar")
 		apply_cooldown()
 		return

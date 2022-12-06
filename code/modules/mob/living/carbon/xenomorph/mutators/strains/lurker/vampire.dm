@@ -12,7 +12,7 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/pounce/rush,
 		/datum/action/xeno_action/activable/flurry,
-		/datum/action/xeno_action/activable/tail_Jab
+		/datum/action/xeno_action/activable/tail_jab
 	)
 	keystone = TRUE
 

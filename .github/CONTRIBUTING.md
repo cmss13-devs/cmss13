@@ -219,13 +219,9 @@ The following list is non-exhaustive, but should give you a good idea of what th
 
 ### Spriting
 <details>
-* Gun sprites & gun spriters. We have those bases covered.
 * Resprites of recently updated content, such as uniforms, guns, marine armor
-* Resprites that drastically alter the original CM-Styled item / object (Like turning the Staff Officer uniform into dress blues)
-* Donor item adjustments or changes (exemption for Donor’s making changes to their own items)
-* Adjustments or modifications to major factions without prior approval. (If you don’t have approval and don’t knock us out of the park, expect to get turned down)
-* Joke sprites (unless they’re of exceptional quality)
-* Attachment sprite changes
+* Donor item adjustments or changes
+* Joke sprites
 * Tacticool equipment and gear. We’re retro-future (or cassette punk if you will).
 </details>
 

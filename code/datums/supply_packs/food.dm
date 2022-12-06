@@ -97,7 +97,7 @@
 					/obj/item/reagent_container/food/snacks/grown/cocoapod,
 					/obj/item/reagent_container/food/snacks/grown/cocoapod,
 					)
-	containername = "\improper Cocoapods Crate
+	containername = "\improper Cocoapods Crate"
 
 /datum/supply_packs/plants/sugarcane
 	name = "sugarcane (x10)"
@@ -113,7 +113,7 @@
 					/obj/item/reagent_container/food/snacks/grown/sugarcane,
 					/obj/item/reagent_container/food/snacks/grown/sugarcane,
 					)
-	containername = "\improper Sugarcanes Crate
+	containername = "\improper Sugarcanes Crate"
 
 
 /datum/supply_packs/plants/vegetables

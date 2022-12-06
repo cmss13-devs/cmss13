@@ -116,7 +116,7 @@
 			if(!(M?.client?.prefs?.toggles_chat & CHAT_DEAD))
 				continue
 
-			if(isobserver(M))
+			if(isobserver(M) && !orbiting)
 				var/mob/dead/observer/observer = M
 				var/turf/their_turf = get_turf(M)
 				if(alpha && observer.ghostvision && my_turf.z == their_turf.z && get_dist(my_turf, their_turf) <= observer.client.view)

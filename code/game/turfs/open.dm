@@ -1,40 +1,6 @@
 
 //turfs with density = FALSE
 
-#define FULL_EDGE 1
-#define HALF_EDGE_RIGHT 2
-#define HALF_EDGE_LEFT 3
-//right and left looking from the turf who makes an overlay towards its neighbor thats it overlays upon
-
-//These are ordered just like sprites are in the dm dmi editor: 2/SOUTH then 1/NORTH then 4/EAST then 8/WEST
-GLOBAL_LIST_INIT(edgeinfo_full, list(
-									list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
-									list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
-									list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
-									list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE)
-									))
-
-GLOBAL_LIST_INIT(edgeinfo_edge, list(
-								list(null, FULL_EDGE, HALF_EDGE_LEFT, HALF_EDGE_RIGHT),
-								list(FULL_EDGE, null, HALF_EDGE_RIGHT, HALF_EDGE_LEFT),
-								list(HALF_EDGE_LEFT, HALF_EDGE_RIGHT, null, FULL_EDGE),
-								list(HALF_EDGE_RIGHT, HALF_EDGE_LEFT, FULL_EDGE, null)
-								))
-
-GLOBAL_LIST_INIT(edgeinfo_corner, list(
-								list( HALF_EDGE_LEFT, FULL_EDGE,FULL_EDGE, HALF_EDGE_RIGHT),
-								list(HALF_EDGE_RIGHT, FULL_EDGE, HALF_EDGE_LEFT, FULL_EDGE),
-								list(FULL_EDGE, HALF_EDGE_LEFT, FULL_EDGE, HALF_EDGE_LEFT),
-								list(FULL_EDGE, HALF_EDGE_RIGHT, HALF_EDGE_RIGHT, FULL_EDGE)
-								))
-
-GLOBAL_LIST_INIT(edgeinfo_corner2, list(
-								list(null, HALF_EDGE_LEFT, null,  HALF_EDGE_RIGHT),
-								list(HALF_EDGE_RIGHT, null, HALF_EDGE_RIGHT, null),
-								list(null, HALF_EDGE_RIGHT, HALF_EDGE_LEFT, null),
-								list(HALF_EDGE_LEFT, null, null, HALF_EDGE_LEFT)
-								))
-
 /turf/open
 	plane = FLOOR_PLANE
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.

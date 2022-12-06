@@ -69,8 +69,8 @@
 		pixel_x = dist_x * 32
 		pixel_y = dist_y * 32
 
-		var/offset_x = actual_pointed_atom?.pixel_x || 0
-		var/offset_y = actual_pointed_atom?.pixel_y || 0
+		var/offset_x = actual_pointed_atom ? get_pixel_position_x(actual_pointed_atom, relative = TRUE) : 0
+		var/offset_y = actual_pointed_atom ? get_pixel_position_y(actual_pointed_atom, relative = TRUE) : 0
 
 		animate(src, pixel_x = offset_x, pixel_y = offset_y, time = glide_time, easing = QUAD_EASING)
 

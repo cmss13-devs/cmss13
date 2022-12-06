@@ -1,7 +1,7 @@
 //-----------------------MISC SUPPLIES BOXES-----------------------
 
 /obj/item/ammo_box/magazine/misc
-	name = "miscellaneous equipment box"
+	name = "\improper miscellaneous equipment box"
 	desc = "A box for miscellaneous equipment."
 	icon_state = "supply_crate"
 	overlay_ammo_type = "blank"
@@ -56,7 +56,7 @@
 //------------------------MRE Box--------------------------
 
 /obj/item/ammo_box/magazine/misc/mre
-	name = "box of MREs"
+	name = "\improper box of MREs"
 	desc = "A box of MREs. Nutritious, but not delicious."
 	magazine_type = /obj/item/storage/box/MRE
 	num_of_magazines = 12
@@ -68,7 +68,7 @@
 //------------------------M94 Marking Flare Packs Box--------------------------
 
 /obj/item/ammo_box/magazine/misc/flares
-	name = "box of M94 marking flare packs"
+	name = "\improper box of M94 marking flare packs"
 	desc = "A box of M94 marking flare packs, to brighten up your day."
 	magazine_type = /obj/item/storage/box/m94
 	num_of_magazines = 10

@@ -12,13 +12,17 @@ var/list/all_supply_groups = list(
 	"Attachments",
 	"Ammo",
 	"Weapons Specialist Ammo",
-	"Armor",
+	"Restricted equipement",
 	"Clothing",
 	"Medical",
 	"Engineering",
-	"Science",
+	"Research",
 	"Supplies",
 	"Food",
+	"Gear",
+	"Mortar",
+	"Explosives",
+	"Reagent tanks",
 )
 
 /datum/supply_packs

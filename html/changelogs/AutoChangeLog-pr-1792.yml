@@ -1,0 +1,4 @@
+author: "NoKohi"
+delete-after: True
+changes:
+  - bugfix: "fixes pointing markers, aimed shot and spot target reticles not being centered"

@@ -24,7 +24,7 @@
 	containername = "\improper Powerloader Crate"
 	group = "Operations"
 
-/datum/supply_packs/mre
+/datum/supply_packs/bulk_mre
 	name = "USCM MRE crate (x60)"
 	contains = list(
 					/obj/item/ammo_box/magazine/misc/mre,
@@ -38,7 +38,7 @@
 	containername = "\improper USCM MRE Crate (x60)"
 	group = "Operations"
 
-/datum/supply_packs/flares
+/datum/supply_packs/bulk_flares
 	name = "Flare supply crate (x200)"
 	contains = list(
 					/obj/item/ammo_box/magazine/misc/flares,

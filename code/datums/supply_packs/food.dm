@@ -1,6 +1,6 @@
 //all the grown plants.
 
-/datum/supply_packs/grown
+/datum/supply_packs/plants
 	cost = 7
 	containertype = /obj/structure/closet/crate/freezer
 	group = "Food"
@@ -288,7 +288,7 @@
 	group = "Food"
 
 /datum/supply_packs/mre
-	name = "USCM MRE crate(x2)"
+	name = "boxe of USCM MRE(x2)"
 	contains = list(
 					/obj/item/ammo_box/magazine/misc/mre,
 					/obj/item/ammo_box/magazine/misc/mre,
@@ -338,7 +338,6 @@
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Special Ingredients Crate"
 	group = "Food"
-
 
 /datum/supply_packs/Ingredients
 	name = "ingredients supply crate"

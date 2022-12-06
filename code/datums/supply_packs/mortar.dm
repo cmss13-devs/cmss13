@@ -7,6 +7,7 @@
 		/obj/item/storage/backpack/marine/mortarpack
 	)
 	cost = 30
+	containertype = /obj/structure/closet/crate
 	containername = "\improper Mortar Shell Backpack Crate"
 	group = "Mortar"
 

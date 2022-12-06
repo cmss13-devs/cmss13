@@ -386,10 +386,10 @@
 					/obj/item/reagent_container/food/snacks/meat/syntiflesh,
 					/obj/item/reagent_container/food/snacks/meat/syntiflesh,
 					)
-	name = "contraband crate"
+	name = "exotic meat"
 	cost = 30
 	containertype = /obj/structure/closet/crate/supply
-	containername = "\improper Unlabeled Crate"
+	containername = "\improper Exotic Meat Crate"
 	contraband = 1
 	group = "Food"
 
@@ -400,9 +400,9 @@
 					/obj/item/storage/pill_bottle/happy,
 					/obj/item/reagent_container/food/drinks/bottle/pwine,
 					)
-	name = "contraband crate"
+	name = "unlabeled crate"
 	cost = 30
 	containertype = /obj/structure/closet/crate/supply
-	containername = "\improper Unlabeled Crate"
+	containername = "\improper Happy Crate"
 	contraband = 1
 	group = "Food"

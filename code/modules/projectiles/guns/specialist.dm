@@ -90,6 +90,8 @@
 		f_aiming_time *= 0.5
 
 	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-sniper", dir = get_cardinal_dir(M, H))
+	I.pixel_x = -M.pixel_x + M.base_pixel_x
+	I.pixel_y = (M.icon_size - world.icon_size) * 0.5 - M.pixel_y + M.base_pixel_y
 	M.overlays += I
 	if(H.client)
 		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)

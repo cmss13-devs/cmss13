@@ -894,7 +894,8 @@
 	color = "#828296"
 	ui_color = "#828296"
 
-	construction_allowed = XENO_QUEEN
+	construction_allowed = XENO_NOBODY
+	destruction_allowed = XENO_NOBODY
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE

@@ -194,10 +194,11 @@
 	return 0
 
 /mob/proc/movement_delay()
-	if(!legcuffed)
-		. = 2 + CONFIG_GET(number/run_speed)
-	else
-		. = 7 + CONFIG_GET(number/walk_speed)
+	switch(m_intent)
+		if(MOVE_INTENT_RUN)
+			. = 2 + CONFIG_GET(number/run_speed)
+		if(MOVE_INTENT_WALK)
+			. = 7 + CONFIG_GET(number/walk_speed)
 	. += speed
 	move_delay = .
 

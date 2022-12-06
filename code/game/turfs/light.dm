@@ -1,7 +1,8 @@
 /turf/open/floor/light
 	name = "light floor"
 	desc = "Beware of breakdancing on these tiles, glass shards embedded in the head is not a fun time."
-	var/on = FALSE
+	tile_type = /obj/item/stack/tile/light
+	var/on = TRUE
 	var/state = 0
 
 /turf/open/floor/light/is_light_floor()

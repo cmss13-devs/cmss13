@@ -1174,7 +1174,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/cell_charger,
-/obj/item/cell/apc/full{
+/obj/item/cell/apc{
 	pixel_x = 2;
 	pixel_y = 3
 	},
@@ -22343,6 +22343,7 @@
 	id = "cl_shutters 2";
 	name = "Quarters Shutters";
 	pixel_x = -25;
+	pixel_y = 23;
 	req_access_txt = "200"
 	},
 /turf/open/floor/almayer{
@@ -37595,7 +37596,7 @@
 "dFV" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/cell_charger,
-/obj/item/cell/apc/full,
+/obj/item/cell/apc,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -52267,6 +52268,17 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"kfE" = (
+/obj/structure/bed/sofa/south/grey/right,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "silver";
+	tag = "icon-silver (NORTH)"
+	},
+/area/almayer/shipboard/brig/cic_hallway)
 "kfN" = (
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer{
@@ -77801,9 +77813,6 @@
 	dir = 1
 	},
 /obj/structure/bed/sofa/south/grey,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
@@ -100813,7 +100822,7 @@ wVV
 erx
 dsw
 vxM
-vGA
+kfE
 wsD
 jUY
 qwp

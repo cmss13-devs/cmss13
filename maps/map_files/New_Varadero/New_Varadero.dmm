@@ -2717,10 +2717,10 @@
 	},
 /area/varadero/exterior/lz1_near)
 "cmU" = (
-/obj/structure/surface/table/holotable,
 /obj/item/reagent_container/food/snacks/fishfingers{
 	pixel_y = 7
 	},
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -10260,7 +10260,6 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 4
 	},
-/obj/structure/surface/table/holotable,
 /obj/item/reagent_container/food/snacks/wrapped/chunk{
 	pixel_x = 4;
 	pixel_y = 13
@@ -10273,6 +10272,7 @@
 	pixel_x = 3;
 	pixel_y = 5
 	},
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -14785,7 +14785,6 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/obj/structure/surface/table/holotable,
 /obj/item/device/camera{
 	pixel_x = -2;
 	pixel_y = 9
@@ -14795,6 +14794,7 @@
 	pixel_x = 7;
 	pixel_y = 4
 	},
+/obj/structure/surface/table,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "mIG" = (
@@ -18092,7 +18092,6 @@
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "pyk" = (
-/obj/structure/surface/table/holotable,
 /obj/item/reagent_container/food/snacks/wrapped/barcardine{
 	pixel_y = 7
 	},
@@ -18100,6 +18099,8 @@
 	pixel_x = 6;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/surface/table,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -20072,8 +20073,8 @@
 	},
 /area/varadero/interior/administration)
 "rgZ" = (
-/obj/structure/surface/table/holotable,
 /obj/item/tool/kitchen/knife,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
@@ -22057,7 +22058,6 @@
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "sJr" = (
-/obj/structure/surface/table/holotable,
 /obj/item/device/reagent_scanner{
 	pixel_x = 7;
 	pixel_y = 8
@@ -22066,6 +22066,7 @@
 	pixel_x = -13;
 	pixel_y = 6
 	},
+/obj/structure/surface/table,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "sJx" = (
@@ -22256,11 +22257,11 @@
 	pixel_x = -4;
 	pixel_y = 9
 	},
-/obj/structure/surface/table/holotable,
 /obj/item/evidencebag{
 	pixel_x = 13;
 	pixel_y = 5
 	},
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -23333,10 +23334,10 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior/toilets)
 "tZr" = (
-/obj/structure/surface/table/holotable,
 /obj/item/toy/deck/uno{
 	pixel_y = 6
 	},
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -23474,7 +23475,6 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 4
 	},
-/obj/structure/surface/table/holotable,
 /obj/item/reagent_container/food/snacks/wrapped/barcardine{
 	pixel_y = 7
 	},
@@ -23483,6 +23483,7 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -28354,11 +28355,11 @@
 	},
 /area/varadero/interior/medical)
 "ygY" = (
-/obj/structure/surface/table/holotable,
 /obj/item/card/id/silver{
 	pixel_x = 3;
 	pixel_y = 4
 	},
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";

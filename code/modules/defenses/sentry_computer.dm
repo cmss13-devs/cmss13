@@ -3,6 +3,8 @@
 	desc = "A laptop loaded with sentry control software."
 	icon = 'icons/obj/structures/props/sentrycomp.dmi'
 	icon_state = "sentrycomp_cl"
+	var/on_table = FALSE
+	var/setup = FALSE
 	var/open = FALSE
 	var/on = FALSE
 	var/obj/structure/machinery/defenses/sentry/paired_sentry = list()
@@ -23,6 +25,40 @@
 /obj/item/device/sentry_computer/Destroy()
 	. = ..()
 	QDEL_NULL(cell)
+
+/obj/item/device/sentry_computer/proc/setup()
+	world.log << "setup laptop"
+	on_table = TRUE
+	if (do_after(usr, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		setup = TRUE
+	else
+		to_chat(usr, "You fail to open the laptop")
+	setup = TRUE
+
+/obj/item/device/sentry_computer/MouseDrop(atom/dropping, mob/user)
+	world.log << "closing laptop"
+	on_table = FALSE
+	setup = FALSE
+	open = FALSE
+	on = FALSE
+	icon_state = "sentrycomp_cl"
+	STOP_PROCESSING(SSobj, src)
+	user.put_in_any_hand_if_possible(dropping, disable_warning = TRUE)
+
+/obj/item/device/sentry_computer/attack_hand(mob/user)
+	world.log << "attack hand"
+	if(on_table)
+		if(!on)
+			icon_state = "sentrycomp_on"
+			on = TRUE
+			START_PROCESSING(SSobj, src)
+		else
+			icon_state = "sentrycomp_op"
+			on = FALSE
+			screen_state = 0
+			STOP_PROCESSING(SSobj, src)
+	else
+		..()
 
 /obj/item/device/sentry_computer/get_examine_text()
 	. = ..()

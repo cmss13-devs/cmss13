@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - rscadd: "Observers will now see a message about where the dropship will be crashing right before the explosions start. This will let you see Marines get squished and blown up more easily!"

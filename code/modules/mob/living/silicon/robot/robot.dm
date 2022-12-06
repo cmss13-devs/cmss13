@@ -638,7 +638,7 @@ var/list/robot_verbs_default = list(
 	if(opened && !wiresexposed && (!isRemoteControlling(user)))
 		var/datum/robot_component/cell_component = components["power cell"]
 		if(cell)
-			cell.updateicon()
+			cell.update_icon()
 			cell.add_fingerprint(user)
 			user.put_in_active_hand(cell)
 			to_chat(user, "You remove \the [cell].")

@@ -243,11 +243,16 @@
 
 /// from /mob/living/carbon/Xenomorph/attack_alien()
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
+
 #define COMSIG_XENO_OVERWATCH_XENO "xeno_overwatch_xeno"
 #define COMSIG_XENO_STOP_OVERWATCH	"xeno_stop_overwatch"
 #define COMSIG_XENO_STOP_OVERWATCH_XENO "xeno_stop_overwatch_xeno"
+
 #define COMSIG_XENO_PRE_HEAL "xeno_pre_heal"
-#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
+	#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
+
+/// From ../xeno_action/activable/xeno_spit/use_ability
+#define COMSIG_XENO_POST_SPIT "xeno_spit"
 
 /// From /mob/living/carbon/Xenomorph/revive()
 #define COMSIG_XENO_REVIVED "xeno_revived"
@@ -503,3 +508,6 @@
 // Checks whether the xeno can build a thick structure regardless of hive weeds
 #define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
 	#define COMPONENT_THICK_BYPASS (1<<0)
+
+// Used for smothering fires upon weather event start/stop
+#define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"

@@ -14,6 +14,10 @@
 	if(..())
 		return 1
 
+	if (mods["shift"] && mods["middle"])
+		point_to(A)
+		return TRUE
+
 	if(mods["ctrl"])
 		if(A == src)
 			if(!can_reenter_corpse || !mind || !mind.current)

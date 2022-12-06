@@ -836,7 +836,7 @@
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(var/ragent)
 	inner.reagents.add_reagent(ragent, inner.volume)
 	if(contents.len > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/A = contents[1]
 		A.reagents.add_reagent(ragent, A.volume)
 		A.update_uses_left()
 		A.update_icon()
@@ -888,18 +888,22 @@
 
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/empty))
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
-		var/max_uses = A.volume / A.amount_per_transfer_from_this
-		max_uses = round(max_uses) == max_uses ? max_uses : round(max_uses) + 1
-		if(inner && inner.reagents.total_volume > 0 && (A.uses_left < max_uses))
-			inner.reagents.trans_to(A, A.volume)
-			A.update_uses_left()
-			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
-			A.update_icon()
+		fill_autoinjector(A)
 		return ..()
 	else if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
 		to_chat(user, SPAN_WARNING("[W] is not compatible with this system!"))
 	return ..()
 
+/obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(var/obj/item/reagent_container/hypospray/autoinjector/autoinjector)
+	var/max_uses = autoinjector.volume / autoinjector.amount_per_transfer_from_this
+	max_uses = round(max_uses) == max_uses ? max_uses : round(max_uses) + 1
+	if(inner && inner.reagents.total_volume > 0 && (autoinjector.uses_left < max_uses))
+		inner.reagents.trans_to(autoinjector, autoinjector.volume)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
+		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+		autoinjector.update_icon()
+		update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/afterattack(obj/target, mob/user, flag) //refuel at fueltanks & chem dispensers.
 	if(!inner)
@@ -934,7 +938,18 @@
 		to_chat(user, SPAN_WARNING("[O] is empty!"))
 		return
 
+	//Fill our inner reagent canister
 	O.reagents.trans_to(inner, amt_to_remove)
+
+	//Refill our autoinjector
+	if(contents.len > 0)
+		fill_autoinjector(contents[1])
+
+	//Top up our inner reagent canister after filling up the injector
+	amt_to_remove = Clamp(O.reagents.total_volume, 0, inner.volume)
+	if(amt_to_remove)
+		O.reagents.trans_to(inner, amt_to_remove)
+
 	playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 
 	to_chat(user, SPAN_NOTICE("You refill the [src]."))
@@ -951,7 +966,11 @@
 	if(length(contents))
 		overlays += "+[icon_state]_full"
 	if(inner)
-		overlays += "+[icon_state]_loaded"
+		//tint the inner display based on what chemical is inside
+		var/image/I = image(icon, icon_state="+[icon_state]_loaded")
+		if(inner.reagents)
+			I.color = mix_color_from_reagents(inner.reagents.reagent_list)
+		overlays += I
 
 
 /obj/item/storage/pouch/pressurized_reagent_canister/empty(mob/user)
@@ -1000,6 +1019,7 @@
 		if(inner)
 			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
 			inner.reagents.clear_reagents()
+			update_icon()
 
 /obj/item/storage/pouch/document
 	name = "large document pouch"

@@ -1,4 +1,0 @@
-author: "NoKohi"
-delete-after: True
-changes:
-  - bugfix: "fixed missing access entries in airlock electronics and ID consoles"

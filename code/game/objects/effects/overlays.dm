@@ -83,8 +83,11 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
-/obj/effect/overlay/temp/point/big/greyscale
+/obj/effect/overlay/temp/point/big/observer
 	icon_state = "big_arrow_grey"
+	color = "#1c00f6"
+	invisibility = INVISIBILITY_OBSERVER
+	plane = GHOST_PLANE
 
 /obj/effect/overlay/temp/point/big/queen
 	icon_state = "big_arrow_grey"

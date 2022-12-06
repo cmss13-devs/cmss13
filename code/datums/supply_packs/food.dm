@@ -215,7 +215,6 @@
 					/obj/item/reagent_container/food/snacks/grown/icepepper,
 					/obj/item/reagent_container/food/snacks/grown/goldapple,
 					/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
-					/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 					/obj/item/reagent_container/food/snacks/grown/mushroom/libertycap,
 					/obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
 					/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet,

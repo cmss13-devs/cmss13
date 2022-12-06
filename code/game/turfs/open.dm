@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
-	var/scorchable = FALSE	//if TRUE set to be a turf which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
+	var/scorchable = FALSE	//if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
 
@@ -313,7 +313,6 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 	name = "ground dirt"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
-	//overlay_icon = 'icons/turf/ground_map_scorchoverlays.dmi'
 
 /turf/open/gm/attackby(var/obj/item/I, var/mob/user)
 

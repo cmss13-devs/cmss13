@@ -389,7 +389,7 @@ Defined in conflicts.dm of the #defines folder.
 	SIGNAL_HANDLER
 	if(src == user.get_active_hand())
 		movedata["move_delay"] *= move_delay_mult
-		var/rng =  rand(0, 100)
+		var/rng = rand(0, 100)
 		switch(rng)
 			if(0 to 1)
 				user.visible_message(SPAN_NOTICE("[user] jumps and swerves in the air!?"), SPAN_NOTICE("You perform tactical evasive maneuvers."))

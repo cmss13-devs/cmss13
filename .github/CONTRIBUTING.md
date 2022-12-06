@@ -232,8 +232,6 @@ The following list is non-exhaustive, but should give you a good idea of what th
 ### Mapping
 <details>
 * Nightmare inserts with ridiculous loot or ones that are out of place (don’t put snow on LV, for example)
-* Major lane changes or remaps of legacy maps
-* Major remaps without prior approval
 * Additional detailing that degrades arena space or hinders gameplay in any sort of way
 </details>
 

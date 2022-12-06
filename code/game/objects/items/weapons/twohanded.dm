@@ -306,17 +306,25 @@
 	w_class = SIZE_LARGE
 	flags_item = TWOHANDED
 	flags_equip_slot = SLOT_BACK
+	var/really_heavy = TRUE
 
 	attack_verb = list("pulverized", "smashed", "thwacked", "crushed", "hammered", "wrecked")
 
+/obj/item/weapon/melee/twohanded/breacher/marine
+	name = "\improper D2 Breaching Hammer"
+	desc = "A much lighter version of the B5 Breaching Hammer, this destructive tool packs enough force in its swings to take down walls with relative ease. It can punch through almost anything, hit like a truck, and unlike its predecessor it can be wielded by most adult humans."
+	icon_state = "d2_breacher"
+	really_heavy = FALSE
+	force_wielded = MELEE_FORCE_NORMAL
+
 /obj/item/weapon/melee/twohanded/breacher/pickup(mob/user)
-	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || really_heavy == FALSE))
 		to_chat(user, SPAN_WARNING("You barely manage to lift \the [src] above your knees. This thing will probably be useless to you."))
 		return
 	..()
 
 /obj/item/weapon/melee/twohanded/breacher/attack(target as mob, mob/living/user as mob)
-	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || really_heavy == FALSE))
 		to_chat(user, SPAN_WARNING("\The [src] is too heavy for you to use as a weapon!"))
 		return
 	..()

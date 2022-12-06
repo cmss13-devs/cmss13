@@ -118,6 +118,7 @@
 				SPAN_XENONOTICE("You place the child from an egg into \the [src]."))
 			user.temp_drop_inv_item(egg)
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
+		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
 		qdel(egg)
 		return
 	return ..(I, user)

@@ -18,7 +18,7 @@
 		LAZYREMOVE(affected_atom.effects_list, src)
 
 	if(ishuman(affected_atom))
-		var/mob/living/carbon/human/H = affected_atom
-		to_chat(H, SPAN_WARNING("You feel the last of the weak acid coating on your legs dissipate."))
+		var/mob/living/carbon/human/hooman = affected_atom
+		to_chat(hooman, SPAN_WARNING("You feel the last of the weak acid coating on your legs dissipate."))
 
 	return ..()

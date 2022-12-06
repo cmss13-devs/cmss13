@@ -195,40 +195,40 @@
 
 	var/bonus_damage = 25
 
-/obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+/obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/carbone)
+	if(ishuman(carbone))
+		var/mob/living/carbon/human/hooman = carbone
 
 		var/damage = damage_amount
 
 		var/buffed_splash = FALSE
-		var/datum/effects/acid/A = locate() in H.effects_list
-		if(A && A.acid_enhanced == FALSE) // can't stack the bonus every splash. thatd be nuts!
+		var/datum/effects/acid/acid_effect = locate() in hooman.effects_list
+		if(acid_effect && acid_effect.acid_enhanced == FALSE) // can't stack the bonus every splash. thatd be nuts!
 			buffed_splash = TRUE
 			damage += bonus_damage
 
-			A.enhance_acid()
+			acid_effect.enhance_acid()
 
-		var/datum/effects/weak_spray_stack/spray_stack = locate() in H.effects_list
+		var/datum/effects/weak_spray_stack/spray_stack = locate() in hooman.effects_list
 		if(!spray_stack)
-			spray_stack = new /datum/effects/weak_spray_stack(H)
+			spray_stack = new /datum/effects/weak_spray_stack(hooman)
 		spray_stack.hit_count++
 		damage /= spray_stack.hit_count //less damage every hit
 
-		to_chat(H, SPAN_DANGER("Your legs scald and burn! Argh!"))
-		H.emote(pick("scream", "pain"))
+		to_chat(hooman, SPAN_DANGER("Your legs scald and burn! Argh!"))
+		hooman.emote(pick("scream", "pain"))
 		if (buffed_splash)
-			H.KnockDown(stun_duration)
-			to_chat(H, SPAN_HIGHDANGER("The acid coating on you starts bubbling and sizzling wildly!"))
-		H.last_damage_data = cause_data
-		H.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_foot", 20)
-		H.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_foot", 20)
-		H.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_leg", 20)
-		H.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_leg", 20)
-		H.UpdateDamageIcon()
-		H.updatehealth()
-	else if (isXeno(M))
-		..(M, FALSE)
+			hooman.KnockDown(stun_duration)
+			to_chat(hooman, SPAN_HIGHDANGER("The acid coating on you starts bubbling and sizzling wildly!"))
+		hooman.last_damage_data = cause_data
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_foot", 20)
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_foot", 20)
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_leg", 20)
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_leg", 20)
+		hooman.UpdateDamageIcon()
+		hooman.updatehealth()
+	else if (isXeno(carbone))
+		..(carbone, FALSE)
 
 /obj/effect/xenomorph/spray/strong
 	name = "strong splatter"

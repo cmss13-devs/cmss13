@@ -19,8 +19,6 @@
 	deevolves_to = list(XENO_CASTE_SENTINEL)
 	acid_level = 2
 
-	behavior_delegate_type = /datum/behavior_delegate/spitter_base
-
 	spit_delay = 2.5 SECONDS
 
 	tackle_min = 2
@@ -57,36 +55,3 @@
 
 	icon_xeno = 'icons/mob/xenos/spitter.dmi'
 	icon_xenonid = 'icons/mob/xenonids/spitter.dmi'
-
-/datum/behavior_delegate/spitter_base
-	name = "Base Spitter Behavior Delegate"
-/*
-	// list of atoms that we cannot apply a DoT effect to
-	var/list/dot_cooldown_atoms = list()
-	var/dot_cooldown_duration = 120 // every 12 seconds
-
-/datum/behavior_delegate/spitter_base/ranged_attack_additional_effects_target(atom/A)
-	if (ishuman(A))
-		var/mob/living/carbon/human/H = A
-		if (H.stat == DEAD)
-			return
-
-		if(WEAKREF(A) in dot_cooldown_atoms)
-			return
-
-	dot_cooldown_atoms += WEAKREF(A)
-	addtimer(CALLBACK(src, .proc/dot_cooldown_up, A), dot_cooldown_duration)
-
-	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_type))
-
-	if (ismob(A))
-		var/datum/action/xeno_action/onclick/charge_spit/SFA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/charge_spit)
-		if (istype(SFA) && !SFA.action_cooldown_check())
-			SFA.end_cooldown()
-
-/datum/behavior_delegate/spitter_base/proc/dot_cooldown_up(var/atom/A)
-	if (A != null && !QDELETED(src))
-		dot_cooldown_atoms -= WEAKREF(A)
-		if (istype(bound_xeno))
-			to_chat(bound_xeno, SPAN_XENOWARNING("You can soak [A] in acid again!"))
-*/

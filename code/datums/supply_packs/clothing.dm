@@ -10,7 +10,7 @@
 					)
 	cost = 20
 	containertype = /obj/structure/closet/crate
-	containername = "Large Pouch"
+	containername = "\improper Large Pouch Crate"
 	group = "Clothing"
 
 /datum/supply_packs/pouches_medical
@@ -24,7 +24,7 @@
 					)
 	cost = 20
 	containertype = /obj/structure/closet/crate
-	containername = "medical pouches crate"
+	containername = "\improper Medical Pouches Crate"
 	group = "Clothing"
 
 //---------------------------------------------
@@ -41,7 +41,7 @@
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
-	containername = "Brown And Black Webbing Crate"
+	containername = "\improper Brown And Black Webbing Crate"
 	group = "Clothing"
 
 /datum/supply_packs/webbing_large
@@ -54,7 +54,7 @@
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
-	containername = "Webbing Crate"
+	containername = "\improper Webbing Crate"
 	group = "Clothing"
 
 /datum/supply_packs/drop_pouches
@@ -67,11 +67,10 @@
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
-	containername = "Drop Pouch Crate"
+	containername = "\improper Drop Pouch Crate"
 	group = "Clothing"
 
-
-/datum/supply_packs/webbing_knives//for the lulz
+/datum/supply_packs/webbing_knives
 	name = "Knife Vest Crate (x3)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/knifeharness,//old unathi knife harness updated for our needs
@@ -80,7 +79,7 @@
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/green
-	containername = "Knife Vest Crate"
+	containername = "\improper Knife Vest Crate"
 	group = "Clothing"
 
 /datum/supply_packs/webbing_holster
@@ -93,7 +92,7 @@
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
-	containername = "Shoulder Holster Crate"
+	containername = "\improper Shoulder Holster Crate"
 	group = "Clothing"
 
 /datum/supply_packs/gunslinger_holster
@@ -105,7 +104,7 @@
 	cost = 20
 	contraband = 1
 	containertype = /obj/structure/closet/crate
-	containername = "Cowboy Costume Crate"
+	containername = "\improper Cowboy Costume Crate"
 	group = "Clothing"
 
 /datum/supply_packs/officer_outfits//lmao this shit is so hideously out of date
@@ -119,5 +118,5 @@
 	name = "officer outfit crate"
 	cost = 30
 	containertype = /obj/structure/closet/crate
-	containername = "officer dress crate"
+	containername = "\improper Officer Dress Crate"
 	group = "Clothing"

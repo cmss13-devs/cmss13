@@ -1,11 +1,5 @@
-// add all the gear in this group.
-
 /datum/supply_packs/binocs
 	name = "Mixed Binoculars Crate (x2 per, x6 total)"
-	cost = 20
-	containertype = /obj/structure/closet/crate/green
-	containername = "Mixed Binoculars Crate"
-	group = "Gear"
 	contains = list(
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/device/binoculars/range/designator,
@@ -14,6 +8,10 @@
 		/obj/item/device/binoculars,
 		/obj/item/device/binoculars
 	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/green
+	containername = "\improper Mixed Binoculars Crate"
+	group = "Gear"
 
 /datum/supply_packs/flares
 	name = "flare packs crate (x20)"
@@ -23,7 +21,7 @@
 					)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "flare pack crate"
+	containername = "\improper Flare Pack Crate"
 	group = "Gear"
 
 
@@ -35,7 +33,7 @@
 					)
 	cost = 40
 	containertype = /obj/structure/closet/crate/supply
-	containername = "Motion Detector crate"
+	containername = "\improper Motion Detector Crate"
 	group = "Gear"
 
 /datum/supply_packs/signal_flares
@@ -48,7 +46,7 @@
 					)
 	cost = 60
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "signal flare pack crate"
+	containername = "\improper Signal Flare Pack Crate"
 	group = "Gear"
 
 /datum/supply_packs/fulton
@@ -61,7 +59,7 @@
 					)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "fulton recovery device crate"
+	containername = "\improper Fulton Recovery Device Crate"
 	group = "Gear"
 
 /datum/supply_packs/nvg
@@ -73,5 +71,5 @@
 					)
 	cost = 60
 	containertype = /obj/structure/closet/crate/supply
-	containername = "M2 Night Vission Goggles Crate"
+	containername = "\improper M2 Night Vission Goggles Crate"
 	group = "Gear"

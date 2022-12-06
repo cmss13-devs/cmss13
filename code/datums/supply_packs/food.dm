@@ -1,11 +1,11 @@
-//all the grown food.
+//all the grown plants.
 
 /datum/supply_packs/grown
 	cost = 7
 	containertype = /obj/structure/closet/crate/freezer
 	group = "Food"
 
-/datum/supply_packs/grown/potato
+/datum/supply_packs/plants/potato
 	name = "Potatoes(x20)"
 	contains = list(
 					/obj/item/reagent_container/food/snacks/grown/potato,
@@ -31,7 +31,7 @@
 					)
 	containername = "\improper Potatoes Crate"
 
-/datum/supply_packs/grown/tomatoes
+/datum/supply_packs/plants/tomatoes
 	name = "tomatoes (x20)"
 	contains = list(
 					/obj/item/reagent_container/food/snacks/grown/tomato,
@@ -57,7 +57,7 @@
 					)
 	containername = "\improper Tomatoes Crate"
 
-/datum/supply_packs/grown/soybeans
+/datum/supply_packs/plants/soybeans
 	name = "soybeans (x20)"
 	contains = list(
 					/obj/item/reagent_container/food/snacks/grown/soybeans,
@@ -83,8 +83,8 @@
 					)
 	containername = "\improper Soybeans Crate"
 
-/datum/supply_packs/grown/soybeans
-	name = "cocoapod, sugarcane (x10)"
+/datum/supply_packs/plants/cocoapod
+	name = "cocoapod(x10)"
 	contains = list(
 					/obj/item/reagent_container/food/snacks/grown/cocoapod,
 					/obj/item/reagent_container/food/snacks/grown/cocoapod,
@@ -96,6 +96,12 @@
 					/obj/item/reagent_container/food/snacks/grown/cocoapod,
 					/obj/item/reagent_container/food/snacks/grown/cocoapod,
 					/obj/item/reagent_container/food/snacks/grown/cocoapod,
+					)
+	containername = "\improper Cocoapods Crate
+
+/datum/supply_packs/plants/sugarcane
+	name = "sugarcane (x10)"
+	contains = list(
 					/obj/item/reagent_container/food/snacks/grown/sugarcane,
 					/obj/item/reagent_container/food/snacks/grown/sugarcane,
 					/obj/item/reagent_container/food/snacks/grown/sugarcane,
@@ -107,10 +113,10 @@
 					/obj/item/reagent_container/food/snacks/grown/sugarcane,
 					/obj/item/reagent_container/food/snacks/grown/sugarcane,
 					)
-	containername = "\improper Sugarcane, Cocoapod Crate"
+	containername = "\improper Sugarcanes Crate
 
 
-/datum/supply_packs/grown/vegetables
+/datum/supply_packs/plants/vegetables
 	name = "vegetable supply crate"
 	contains = list(
 					/obj/item/reagent_container/food/snacks/grown/carrot,
@@ -140,7 +146,7 @@
 					)
 	containername = "\improper Vegetable Crate"
 
-/datum/supply_packs/grown/fruits
+/datum/supply_packs/plants/fruits
 	name = "fruits supply crate"
 	contains = list(
 					/obj/item/reagent_container/food/snacks/grown/banana,
@@ -174,7 +180,7 @@
 					)
 	containername = "\improper Fruits Crate"
 
-/datum/supply_packs/grown/wheat
+/datum/supply_packs/plants/wheat
 	name = "wheat (x20)"
 	contains = list(
 					/obj/item/reagent_container/food/snacks/grown/wheat,
@@ -202,7 +208,7 @@
 
 //special ingredients crates
 
-/datum/supply_packs/exoticingredients
+/datum/supply_packs/plants/exoticingredients
 	name = "exotic ingredients"
 	contains = list(
 					/obj/item/grown/nettle,
@@ -216,9 +222,7 @@
 					/obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle,
 					)
 	cost = 30
-	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Exotic Ingredients Crate"
-	group = "Food"
 
 //All the meats
 

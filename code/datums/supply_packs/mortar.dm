@@ -1,9 +1,3 @@
-//group for putting all the items about mortar. mortar/shells/backpack...
-
-//---------------------------------------------
-//Backpacks
-//---------------------------------------------
-
 /datum/supply_packs/backpack/mortar_pack
 	name = "Mortar Shell Backpack Crate (x4)"
 	contains = list(
@@ -13,7 +7,7 @@
 		/obj/item/storage/backpack/marine/mortarpack
 	)
 	cost = 30
-	containername = "Mortar Shell Backpack Crate"
+	containername = "\improper Mortar Shell Backpack Crate"
 
 /datum/supply_packs/mortar
 	name = "M402 mortar crate (Mortar x1, Mortar shell backpack x1)"
@@ -23,7 +17,7 @@
 					)
 	cost = 60
 	containertype = /obj/structure/closet/crate/weapon
-	containername = "\improper M402 mortar crate"
+	containername = "\improper M402 Mortar Crate"
 	group = "Mortar"
 
 //------------------------Mortar ammunition crates----------------
@@ -40,7 +34,7 @@
 					/obj/item/mortar_shell/he
 					)
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
-	containername = "\improper M402 mortar HE shells crate"
+	containername = "\improper M402 Mortar HE Shells Crate"
 	group = "Mortar"
 
 /datum/supply_packs/ammo_mortar_incend
@@ -55,7 +49,7 @@
 					/obj/item/mortar_shell/incendiary
 					)
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
-	containername = "\improper M402 mortar incendiary shells crate"
+	containername = "\improper M402 Mortar Incendiary Shells Crate"
 	group = "Mortar"
 
 /datum/supply_packs/ammo_mortar_flare
@@ -70,11 +64,11 @@
 					/obj/item/mortar_shell/flare
 					)
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
-	containername = "\improper M402 mortar flare shells crate"
+	containername = "\improper M402 Mortar Flare Shells Crate"
 	group = "Mortar"
 
 /datum/supply_packs/ammo_mortar_frag
-	name = "M402 mortar shells crate (x6 Frag)"
+	name = "M402 Mortar Fragmentation Shells(x6)"
 	cost = 20
 	contains = list(
 					/obj/item/mortar_shell/frag,
@@ -85,5 +79,5 @@
 					/obj/item/mortar_shell/frag,
 					)
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
-	containername = "\improper M402 mortar frag shells crate"
+	containername = "\improper M402 Mortar Fragmentation Shells Crate"
 	group = "Mortar"

@@ -12,7 +12,7 @@ var/list/all_supply_groups = list(
 	"Attachments",
 	"Ammo",
 	"Weapons Specialist Ammo",
-	"Restricted equipement",
+	"Restricted Equipement",
 	"Clothing",
 	"Medical",
 	"Engineering",
@@ -22,7 +22,7 @@ var/list/all_supply_groups = list(
 	"Gear",
 	"Mortar",
 	"Explosives",
-	"Reagent tanks",
+	"Reagent Tanks",
 )
 
 /datum/supply_packs
@@ -31,7 +31,7 @@ var/list/all_supply_groups = list(
 	var/manifest = ""
 	var/cost = 7 				/// Determine the price of the crate. Give it a value between 7 and 100 to avoid breaking the game.
 	var/containertype = null
-	var/containername = null
+	var/containername = null	/// start with \improper // end with Crate // and all the words need to be in maj.
 	var/access = null
 	var/hidden = 0 //Hidden packs only show up when the computer has been hacked
 	var/contraband = 0			/// Tell if the crate is a contraband value 1 or not 0.

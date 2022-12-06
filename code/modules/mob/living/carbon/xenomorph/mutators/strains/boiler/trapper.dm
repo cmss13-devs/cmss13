@@ -77,9 +77,9 @@
 
 	var/mob/living/carbon/human/target_human = target_atom
 	var/datum/effects/boiler_trap/found = null
-	for (var/datum/effects/boiler_trap/F in target_human.effects_list)
-		if (F.cause_data?.resolve_mob() == bound_xeno)
-			found = F
+	for (var/datum/effects/boiler_trap/trap in target_human.effects_list)
+		if (trap.cause_data?.resolve_mob() == bound_xeno)
+			found = trap
 			break
 
 	var/datum/action/xeno_action/activable/boiler_trap/trap_ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/boiler_trap)

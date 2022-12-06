@@ -279,6 +279,7 @@
 /turf/closed/wall/r_wall/elevator
 	icon = 'icons/turf/elevator.dmi'
 	icon_state = "wall"
+	special_icon = TRUE
 
 // Wall with gears that animate when elevator is moving
 /turf/closed/wall/r_wall/elevator/gears

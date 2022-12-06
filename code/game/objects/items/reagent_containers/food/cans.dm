@@ -148,8 +148,8 @@
 	flags_atom &= ~OPENCONTAINER
 	desc += "\nIts been crushed! A badass must have been through here..."
 	icon_state = "[icon_state]_crushed"
-	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]!"), null, null, CHAT_TYPE_FLUFF_ACTION)
-	playsound(src,"sound/items/can_crush.ogg")
+	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]"), null, null, CHAT_TYPE_FLUFF_ACTION)
+	playsound(src,"sound/items/can_crush.ogg", 20, FALSE, 15)
 
 //SODA
 

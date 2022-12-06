@@ -179,3 +179,15 @@
 		overlays += "cart_bucket"
 	if(signs)
 		overlays += "cart_sign[signs]"
+
+/obj/structure/janitorialcart/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(M.a_intent == INTENT_HARM)
+		M.animation_attack_on(src)
+		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),
+		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		qdel(src)
+		return XENO_ATTACK_ACTION
+	else
+		attack_hand(M)
+		return XENO_NONCOMBAT_ACTION

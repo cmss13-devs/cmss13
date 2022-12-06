@@ -79,12 +79,15 @@ const Contents = (
           .map((value) => {
             const key = value[0];
             const items = value[1];
+            const displayName = `${key
+              .substring(0, 1)
+              .toUpperCase()}${key.substring(1)}`;
             return (
               <Tabs.Tab
                 key={key}
                 selected={tabIndex === key}
                 onClick={() => setTabIndex(key)}>
-                {key} ({items.length})
+                {displayName} ({items.length})
               </Tabs.Tab>
             );
           })}

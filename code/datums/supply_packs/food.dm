@@ -284,7 +284,7 @@
 					)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
-	containername = "\improper Boxe Of Donut (x5)"
+	containername = "\improper Boxe Of Donut(x5) Crate"
 	group = "Food"
 
 /datum/supply_packs/mre
@@ -375,8 +375,7 @@
 
 //Contreband
 
-/datum/supply_packs/exoticmeat
-	randomised_num_contained = 5
+/datum/supply_packs/exotic_meat
 	contains = list(
 					/obj/item/reagent_container/food/snacks/meat/xenomeat,
 					/obj/item/reagent_container/food/snacks/meat/xenomeat,
@@ -401,7 +400,6 @@
 					/obj/item/storage/pill_bottle/happy,
 					/obj/item/reagent_container/food/drinks/bottle/pwine,
 					)
-
 	name = "contraband crate"
 	cost = 30
 	containertype = /obj/structure/closet/crate/supply

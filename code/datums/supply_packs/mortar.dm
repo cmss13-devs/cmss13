@@ -8,6 +8,7 @@
 	)
 	cost = 30
 	containername = "\improper Mortar Shell Backpack Crate"
+	group = "Mortar"
 
 /datum/supply_packs/mortar
 	name = "M402 mortar crate (Mortar x1, Mortar shell backpack x1)"

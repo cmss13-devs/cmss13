@@ -1,5 +1,3 @@
-//everything to reequip a specialist if needed.
-
 //SG
 
 /datum/supply_packs/Smartgunner_kit

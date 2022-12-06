@@ -902,6 +902,8 @@
 		autoinjector.update_uses_left()
 		autoinjector.update_icon()
 		playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+		autoinjector.update_icon()
+		update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/afterattack(obj/target, mob/user, flag) //refuel at fueltanks & chem dispensers.
 	if(!inner)
@@ -964,7 +966,11 @@
 	if(length(contents))
 		overlays += "+[icon_state]_full"
 	if(inner)
-		overlays += "+[icon_state]_loaded"
+		//tint the inner display based on what chemical is inside
+		var/image/I = image(icon, icon_state="+[icon_state]_loaded")
+		if(inner.reagents)
+			I.color = mix_color_from_reagents(inner.reagents.reagent_list)
+		overlays += I
 
 
 /obj/item/storage/pouch/pressurized_reagent_canister/empty(mob/user)
@@ -1013,6 +1019,7 @@
 		if(inner)
 			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
 			inner.reagents.clear_reagents()
+			update_icon()
 
 /obj/item/storage/pouch/document
 	name = "large document pouch"

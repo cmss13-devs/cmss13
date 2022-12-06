@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - qol: "All Pressurized Reagent Canister Pouches now change their canister tint based on the colour of the chemicals stored therein (while still being mixed with the default blue-ish tint of the canister). Canisters themselves similarly change their tint based on contents."

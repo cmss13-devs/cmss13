@@ -1,5 +1,5 @@
 /obj/structure/machinery/cell_charger
-	name = "heavy-duty cell charger"
+	name = "\improper heavy-duty cell charger"
 	desc = "A much more powerful version of the standard recharger that is specially designed for charging power cells."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "ccharger0"
@@ -31,7 +31,7 @@
 	. = ..()
 	. += "There's [charging ? "a" : "no"] cell in the charger."
 	if(charging)
-		. += "Current charge: [charging.charge]"
+		. += "Current charge: [charging.charge] ([charging.percent()]%)"
 
 /obj/structure/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)
@@ -68,7 +68,7 @@
 	if(charging)
 		usr.put_in_hands(charging)
 		charging.add_fingerprint(user)
-		charging.updateicon()
+		charging.update_icon()
 
 		src.charging = null
 		user.visible_message("[user] removes the cell from the charger.", "You remove the cell from the charger.")

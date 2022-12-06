@@ -175,6 +175,11 @@ In the above example, we made our health_loss variable a per second value rather
 
 For example, if SSmobs is set to run once every 4 seconds, it would call process once every 4 seconds and multiply your health_loss var by 4 before subtracting it. Ensuring that your code is frame independent.
 
+
+### Use of `.proc/xyz` format for callback timers
+
+This is a simple one - as we will eventually move to 515, we will need to ditch this kind of callback. So please don't add any new ones. Make our lives easier.
+
 ## Optimization
 ### Startup/Runtime tradeoffs with lists and the "hidden" init proc
 

@@ -202,23 +202,38 @@
 	accept_glass = 1
 	wrenchable = TRUE
 	network = "Misc"
-	dispensable_reagents = list("water","ice","coffee","cream","tea","icetea","cola","spacemountainwind","dr_gibb","space_up","tonic","sodawater","lemon_lime","sugar","orangejuice","limejuice","watermelonjuice")
+	dispensable_reagents = list("water","ice","coffee","cream","tea","cola","spacemountainwind","dr_gibb","space_up","tonic","sodawater","lemon_lime","sugar","orangejuice","limejuice",
+	"watermelonjuice","tomatojuice","carrotjuice","berryjuice","grapejuice","lemonjuice","banana")
 	var/hackedcheck = 0
 
 /obj/structure/machinery/chem_dispenser/soda/attackby(var/obj/item/B as obj, var/mob/user as mob)
 	..()
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
 		if(hackedcheck == 0)
-			to_chat(user, "You change the mode from 'McNano' to 'Pizza King'.")
-			dispensable_reagents += list("thirteenloko","grapesoda")
+			to_chat(user, "You change the mode from 'Soda Magic' to 'Milking Time'.")
+			dispensable_reagents += list("milk","soymilk")
 			hackedcheck = 1
 			return
 
 		else
-			to_chat(user, "You change the mode from 'Pizza King' to 'McNano'.")
-			dispensable_reagents -= list("thirteenloko","grapesoda")
+			to_chat(user, "You change the mode from 'Milking Time' to 'Soda Magic'.")
+			dispensable_reagents -= list("milk","soymilk")
 			hackedcheck = 0
 			return
+	else if(HAS_TRAIT(B, TRAIT_TOOL_WRENCH))
+		if(!wrenchable) return
+
+		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!src) return
+			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+			switch (anchored)
+				if (FALSE)
+					anchored = TRUE
+					user.visible_message("[user] tightens the bolts securing \the [src] to the surface.", "You tighten the bolts securing \the [src] to the surface.")
+				if (TRUE)
+					user.visible_message("[user] unfastens the bolts securing \the [src] to the surface.", "You unfasten the bolts securing \the [src] to the surface.")
+					anchored = FALSE
+		return
 
 /obj/structure/machinery/chem_dispenser/beer
 	icon_state = "booze_dispenser"
@@ -230,7 +245,7 @@
 	wrenchable = TRUE
 	network = "Misc"
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
-	dispensable_reagents = list("lemon_lime","sugar","orangejuice","limejuice","sodawater","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","tequilla","vermouth","cognac","ale","mead")
+	dispensable_reagents = list("water","ice","sodawater","sugar","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","vermouth","cognac","ale","mead","thirteenloko","tequila")
 	var/hackedcheck = 0
 
 /obj/structure/machinery/chem_dispenser/beer/attackby(var/obj/item/B as obj, var/mob/user as mob)
@@ -239,12 +254,26 @@
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
 		if(hackedcheck == 0)
 			to_chat(user, "You disable the 'Weyland-Yutani-are-cheap-bastards' lock, enabling hidden and very expensive boozes.")
-			dispensable_reagents += list("goldschlager","patron","watermelonjuice","berryjuice")
+			dispensable_reagents += list("goldschlager","patron","absinthe")
 			hackedcheck = 1
 			return
 
 		else
 			to_chat(user, "You re-enable the 'Weyland-Yutani-are-cheap-bastards' lock, disabling hidden and very expensive boozes.")
-			dispensable_reagents -= list("goldschlager","patron","watermelonjuice","berryjuice")
+			dispensable_reagents -= list("goldschlager","patron","absinthe")
 			hackedcheck = 0
 			return
+	else if(HAS_TRAIT(B, TRAIT_TOOL_WRENCH))
+		if(!wrenchable) return
+
+		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!src) return
+			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+			switch (anchored)
+				if (FALSE)
+					anchored = TRUE
+					user.visible_message("[user] tightens the bolts securing \the [src] to the surface.", "You tighten the bolts securing \the [src] to the surface.")
+				if (TRUE)
+					user.visible_message("[user] unfastens the bolts securing \the [src] to the surface.", "You unfasten the bolts securing \the [src] to the surface.")
+					anchored = FALSE
+		return

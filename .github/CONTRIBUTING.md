@@ -7,6 +7,7 @@
 	- [Meet the Team](#meet-the-team)
 		- [Head Maintainer and Project Manager](#head-maintainer-and-project-manager)
 		- [Maintainers](#maintainers)
+		- [Staff Tools and Major Rule changing PR’s](#staff-tools-and-major-rule-changing-prs)
 		- [Issue Managers](#issue-managers)
 	- [Issues Tracker](#issues-tracker)
 	- [Development Guides](#development-guides)
@@ -17,6 +18,14 @@
 	- [Pull Request Process](#pull-request-process)
 	- [Good Boy Points](#good-boy-points)
 	- [Porting features/sprites/sounds/tools from other codebases](#porting-featuresspritessoundstools-from-other-codebases)
+	- [Things you can work on](#things-you-can-work-on)
+		- [Spriting](#spriting)
+		- [Mapping](#mapping)
+		- [Coding](#coding)
+	- [What we don't want](#what-we-dont-want)
+		- [Spriting](#spriting-1)
+		- [Mapping](#mapping-1)
+		- [Coding](#coding-1)
 	- [Banned content](#banned-content)
 
 ## Reporting Issues
@@ -233,7 +242,7 @@ The following list is non-exhaustive, but should give you a good idea of what th
 
 ### Coding
 <details>
-* Only direct changes to balance numbers on an MR (damage, recoil, health, armor, movespeed, etc), with nothing else to add to the game (without prior approval)
+* Only direct changes to balance numbers on an PR (damage, recoil, health, armor, movespeed, etc), with nothing else to add to the game (without prior approval)
 * No additional species or races, even Arcturians
 </details>
 

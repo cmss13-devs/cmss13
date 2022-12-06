@@ -180,11 +180,11 @@
 	if(signs)
 		overlays += "cart_sign[signs]"
 
-/obj/structure/janitorialcart/attack_alien(mob/living/carbon/Xenomorph/M)
-	M.animation_attack_on(src)
+/obj/structure/janitorialcart/attack_alien(mob/living/carbon/Xenomorph/xeno_attacker)
+	xeno_attacker.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),
-	SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno_attacker.visible_message(SPAN_DANGER("[xeno_attacker] slices \the [src] apart!"),
+	SPAN_DANGER("You slice \the [src] apart!"), max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
 	qdel(src)
 	return XENO_ATTACK_ACTION
 

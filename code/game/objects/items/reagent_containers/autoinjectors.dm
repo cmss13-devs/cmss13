@@ -225,6 +225,17 @@
 	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)
 	update_icon()
 
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine
+	name = "ultrazine autoinjector"
+	chemname = "ultrazine"
+	desc = "An auto-injector loaded with a special illegal muscle stimulant, Do not administer more than twice at a time. Highly addictive."
+	amount_per_transfer_from_this = 5
+	volume = 25
+	uses_left = 5
+	icon_state = "stimpack"
+	item_state = "stimpack"
+	skilllock = SKILL_MEDICAL_DEFAULT
+
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
 	chemname = "thwei"

@@ -935,7 +935,7 @@
 		P.play_damage_effect(src)
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
-			if((ammo_flags & AMMO_SPECIAL_EMBED))
+			if(ammo_flags & AMMO_SPECIAL_EMBED)
 				P.ammo.on_embed(src, organ)
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type

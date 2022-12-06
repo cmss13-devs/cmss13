@@ -60,7 +60,7 @@
 		spawn_turf = get_turf(body)				//Where is the body located?
 		attack_log = body.attack_log	//preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
-    
+
 		appearance = body.appearance
 		base_transform = matrix(body.base_transform)
 		body.alter_ghost(src)
@@ -279,6 +279,13 @@ Works together with spawning an observer, noted above.
 	var/mob/dead/observer/ghost = new(loc, src)	//Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
+
+	// Carryover langchat settings since we kept the icon
+	ghost.langchat_height = langchat_height
+	ghost.icon_size = icon_size
+	ghost.langchat_image = null
+	ghost.langchat_make_image()
+
 	SStgui.on_transfer(src, ghost)
 	if(is_admin_level(z))
 		ghost.timeofdeath = 0 // Bypass respawn limit if you die on the admin zlevel

@@ -208,7 +208,7 @@
 
 //special ingredients crates
 
-/datum/supply_packs/plants/exoticingredients
+/datum/supply_packs/plants/exotic_ingredients
 	name = "exotic ingredients"
 	contains = list(
 					/obj/item/grown/nettle,
@@ -298,7 +298,7 @@
 	containername = "\improper USCM MRE Boxe(x2) Crate"
 	group = "Food"
 
-/datum/supply_packs/funfood
+/datum/supply_packs/fun_food
 	name = "special ingredients crate (x6)"
 	randomised_num_contained = 6
 	contains = list(

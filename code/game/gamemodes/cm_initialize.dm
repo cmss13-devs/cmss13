@@ -382,7 +382,7 @@ Additional game mode variables.
 
 				for(var/mob_name in picked_hive.banished_ckeys)
 					if(picked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-						to_chat(xeno_candidate, SPAN_WARNING("You are banished from this picked_hive, You may not rejoin unless the Queen re-admits you or dies."))
+						to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [picked_hive], You may not rejoin unless the Queen re-admits you or dies."))
 						return
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/noob = xeno_candidate

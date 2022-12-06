@@ -628,7 +628,7 @@
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
-		if(X.hive.hive_location.hardcore || world.time > HIVECORE_COOLDOWN_CUTOFF)
+		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
 			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
 			return
 		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") == "No")

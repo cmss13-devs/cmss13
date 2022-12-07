@@ -289,7 +289,7 @@
 // Causes flares to stop with a rotation offset for visual purposes
 /obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
 	clockwise = pick(TRUE, FALSE)
-	angular_offset = rand(360)
+	angular_offset = rand(180)-90
 	pixel_fuzz = 16
 	return ..()
 /obj/item/device/flashlight/flare/pickup()

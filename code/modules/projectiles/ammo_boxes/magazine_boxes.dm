@@ -53,8 +53,8 @@
 /obj/item/ammo_box/magazine/heap
 	name = "magazine box (HEAP M41A x 10)"
 	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = "_expl"
-	overlay_content = "_expl"
+	overlay_ammo_type = "_heap"
+	overlay_content = "_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/heap
 
 /obj/item/ammo_box/magazine/heap/empty
@@ -114,8 +114,8 @@
 
 /obj/item/ammo_box/magazine/m39/heap
 	name = "magazine box (HEAP m39 x 12)"
-	overlay_ammo_type = "_expl"
-	overlay_content = "_expl"
+	overlay_ammo_type = "_heap"
+	overlay_content = "_heap"
 	magazine_type = /obj/item/ammo_magazine/smg/m39/heap
 
 /obj/item/ammo_box/magazine/m39/heap/empty
@@ -173,8 +173,8 @@
 
 /obj/item/ammo_box/magazine/l42a/heap
 	name = "magazine box (HEAP L42A x 16)"
-	overlay_ammo_type = "_expl"
-	overlay_content = "_expl"
+	overlay_ammo_type = "_heap"
+	overlay_content = "_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/heap
 
 /obj/item/ammo_box/magazine/l42a/heap/empty

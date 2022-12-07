@@ -34,7 +34,7 @@
 /obj/item/ammo_box/rounds/heap
 	name = "rifle ammunition box (10x24mm HEAP)"
 	desc = "A 10x24mm high-explosive armor-piercing ammunition box. Used to refill magazines. It comes with a leather strap allowing to wear it on the back."
-	overlay_content = "_expl"
+	overlay_content = "_heap"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 
 /obj/item/ammo_box/rounds/heap/empty
@@ -89,7 +89,7 @@
 	name = "SMG ammunition box (10x20mm HEAP)"
 	desc = "A 10x20mm armor-piercing high-explosive ammunition box. Used to refill M39 HEAP magazines. It comes with a leather strap allowing to wear it on the back."
 	caliber = "10x20mm"
-	overlay_content = "_expl"
+	overlay_content = "_heap"
 	default_ammo = /datum/ammo/bullet/smg/heap
 
 /obj/item/ammo_box/rounds/smg/heap/empty

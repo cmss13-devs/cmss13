@@ -326,7 +326,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 						almayer_aa_cannon.is_disabled = TRUE
 				else
 					if(shuttle.require_link)
-						update_use_power(4080)
+						use_power(4080)
 					shuttle.launch(src)
 
 			else if(!onboard && isXenoQueen(M) && shuttle.location == 1 && !shuttle.iselevator)

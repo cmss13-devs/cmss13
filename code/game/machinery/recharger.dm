@@ -1,7 +1,7 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/structure/machinery/recharger
-	name = "recharger"
+	name = "\improper recharger"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "recharger"
 	anchored = 1
@@ -225,6 +225,14 @@
 		overlays += "recharger-taser"//todo make more generic I guess. It works for now -trii
 	else if(istype(charging, /obj/item/weapon/melee/baton))
 		overlays += "recharger-baton"
+
+/obj/structure/machinery/recharger/get_examine_text(mob/user)
+	. = ..()
+	. += "There's [charging ? "[charging]" : "nothing"] in the charger."
+	if(charging)
+		if(istype(charging, /obj/item/cell))
+			var/obj/item/cell/C = charging
+			. += "Current charge: [C.charge] ([C.percent()]%)"
 
 /*
 obj/structure/machinery/recharger/wallcharger

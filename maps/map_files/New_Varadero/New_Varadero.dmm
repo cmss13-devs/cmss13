@@ -838,10 +838,6 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/electrical)
-"aIv" = (
-/obj/structure/machinery/light/small,
-/turf/open/gm/dirt,
-/area/varadero/interior/comms3)
 "aJc" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -2858,13 +2854,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/caves)
-"csH" = (
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "multi_tiles"
-	},
-/area/varadero/interior/morgue)
 "cto" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -9817,6 +9806,10 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
+"iys" = (
+/obj/structure/machinery/light/small,
+/turf/open/gm/dirt,
+/area/varadero/interior/comms3)
 "izi" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/shuttle{
@@ -15435,6 +15428,13 @@
 	icon_state = "greencorners"
 	},
 /area/varadero/interior/hall_SE)
+"nlJ" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
+/area/varadero/interior/morgue)
 "nma" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/largecrate/random/mini/small_case/c{
@@ -16709,7 +16709,7 @@
 /area/varadero/interior/library)
 "opA" = (
 /obj/structure/machinery/light/small{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -20003,6 +20003,14 @@
 	icon_state = "yellowfull"
 	},
 /area/varadero/interior/cargo)
+"qZQ" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/interior/comms2)
 "rak" = (
 /obj/item/coin/uranium,
 /obj/structure/foamed_metal/iron,
@@ -37975,7 +37983,7 @@ hyr
 cKa
 iQS
 dNJ
-iQS
+opA
 iQS
 iQS
 hkc
@@ -38518,8 +38526,8 @@ bkU
 amu
 hyr
 hyr
-cKa
-opA
+cIV
+iQS
 iQS
 iQS
 fZo
@@ -38528,7 +38536,7 @@ iQS
 hza
 iQS
 iQS
-cKa
+cIV
 omj
 omj
 ghJ
@@ -38887,7 +38895,7 @@ vqV
 kAl
 iQS
 ymf
-iQS
+qZQ
 iIr
 hEE
 wBx
@@ -40353,7 +40361,7 @@ hyr
 hyr
 epQ
 kJu
-csH
+nlJ
 cOK
 rmZ
 eYG
@@ -44718,7 +44726,7 @@ oIN
 juW
 juW
 oDg
-aIv
+iys
 sXb
 nih
 jzZ
@@ -46366,7 +46374,7 @@ hyr
 hyr
 rPT
 iwQ
-wVI
+srY
 xWY
 xuW
 bih

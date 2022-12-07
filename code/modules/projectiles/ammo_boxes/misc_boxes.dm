@@ -146,6 +146,8 @@
 	desc = "A box of flashlights to brighten your day!"
 	magazine_type = /obj/item/device/flashlight
 	num_of_magazines = 8
+	icon_state = "flashlightbox"
+	icon_state_deployed = "flashlightbox_deployed"
 	overlay_content = "_flashlight"
 
 /obj/item/ammo_box/magazine/misc/flashlight/empty
@@ -158,7 +160,9 @@
 	desc = "A box of High-Capacity Power Cell to keep your electronics going all night long!"
 	magazine_type = /obj/item/cell/high
 	num_of_magazines = 8
-	overlay_content = "_power_cell"
+	icon_state = "batterybox"
+	icon_state_deployed = "batterybox_deployed"
+	overlay_content = "_battery"
 
 /obj/item/ammo_box/magazine/misc/power_cell/empty
 	empty = TRUE

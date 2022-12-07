@@ -1,0 +1,9 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscadd: "Added pay_multiplier to all paygrades. The higher your rank, the more money you'll start with, based on this multiplier. (For example, a Major will have a pay multiplier of 4.) Includes strange roles like VAIPO, UPP, PMCs, RESS..."
+  - rscdel: "Drastically nuked the amount of money people start with. People can no longer start with thousands of dollars.... they now get 30-50 dollars total. This value is multiplied by the pay_multiplier above."
+  - spellcheck: "Non-binary WY executives may now spawn with 'Mx.' as their communications prefix."
+  - balance: "Altered the prices of cigarette vending machines around to overall make them more expensive. PFCs will not be able to buy Executive Select with their starting cash."
+  - rscdel: "Made cassetes and Souto from vendors more expensive. Buying food from Hot Foods now costs money. Marine coffee now has an appropiate description. Souto vendors no longer vend water bottles."
+  - bugfix: "Fixed default parent type dollar items being worth 0 money..."

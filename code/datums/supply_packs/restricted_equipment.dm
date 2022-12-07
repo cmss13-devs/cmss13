@@ -6,7 +6,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper M56B Smartgun System Package"
-	group = "Restricted Equipement"
+	group = "Restricted Equipment"
 
 //SL
 
@@ -19,7 +19,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "\improper B12 Pattern Marine Armor Crate"
-	group = "Restricted Equipement"
+	group = "Restricted Equipment"
 
 //RTO
 
@@ -32,7 +32,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "\improper M4 pattern Marine Armor Crate"
-	group = "Restricted Equipement"
+	group = "Restricted Equipment"
 
 //contreband
 
@@ -43,4 +43,4 @@
 	contraband = 1
 	containertype = /obj/structure/largecrate/merc/clothing
 	containername = "\improper Unlabeled Crate"
-	group = "Restricted Equipement"
+	group = "Restricted Equipment"

@@ -12,7 +12,7 @@ var/list/all_supply_groups = list(
 	"Attachments",
 	"Ammo",
 	"Weapons Specialist Ammo",
-	"Restricted Equipement",
+	"Restricted Equipment",
 	"Clothing",
 	"Medical",
 	"Engineering",

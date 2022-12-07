@@ -319,11 +319,11 @@
 
 			targets += H
 	if (LAZYLEN(targets) == 1)
-		to_chat(X, SPAN_XENOHIGHDANGER("You hit one target! You will slow it."))
+		X.balloon_alert(X, "your tail catches and slows one target!", text_color = "#51a16c")
 	else if (LAZYLEN(targets) == 2)
-		to_chat(X, SPAN_XENOHIGHDANGER("You hit two targets! You will daze and root them!"))
+		X.balloon_alert(X, "your tail catches and roots two targets!", text_color = "#51a16c")
 	else if (LAZYLEN(targets) >= 3)
-		to_chat(X, SPAN_XENOHIGHDANGER("You hit [LAZYLEN(targets)] targets! You will stun them!"))
+		X.balloon_alert(X, "your tail catches and stuns [LAZYLEN(targets)] targets!", text_color = "#51a16c")
 
 	for (var/mob/living/carbon/H in targets)
 		X.visible_message(SPAN_XENODANGER("\The [X]'s hooked tail coils itself around [H]!"), SPAN_XENODANGER("Your hooked tail coils itself around [H]!"))

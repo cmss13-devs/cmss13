@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - bugfix: "fix not being able to cook bun by adding a requirement of 1u\"sodiumchloride\"(salt) to bun recipe."

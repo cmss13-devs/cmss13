@@ -91,7 +91,6 @@
 /turf/closed/wall/almayer/research/containment/wall/ex_act(severity, explosion_direction)
 	if(severity <= EXPLOSION_THRESHOLD_MEDIUM) // Wall is resistant to explosives (and also crusher charge)
 		return
-
 	. = ..()
 
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
@@ -397,9 +396,6 @@
 /turf/closed/wall/mineral/bone/is_weedable()
 	return NOT_WEEDABLE
 
-/turf/closed/wall/mineral/bone/ex_act(severity, explosion_direction, source, mob/source_mob)
-	return
-
 //Misc walls
 
 /turf/closed/wall/cult
@@ -497,9 +493,6 @@
 	desc = "An absolutely massive collection of columns made of ice. The longer you stare, the deeper the ice seems to go."
 	walltype = WALL_STRATA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
-
-/turf/closed/wall/strata_ice/ex_act(severity)
-	return
 
 /turf/closed/wall/strata_ice/dirty
 	icon_state = "strata_ice_dirty"
@@ -639,9 +632,6 @@
 	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
-
-/turf/closed/wall/strata_ice/ex_act(severity)
-	return
 
 /turf/closed/wall/shiva/prefabricated
 	name = "prefabricated structure wall"
@@ -1240,3 +1230,9 @@
 	icon_state = "metal"//DMI specific name
 	walltype = WALL_HUNTERSHIP
 	hull = 1
+
+/turf/closed/wall/huntership/destructible
+	name = "degraded hunter wall"
+	color = "#c5beb4"
+	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
+	hull = 0

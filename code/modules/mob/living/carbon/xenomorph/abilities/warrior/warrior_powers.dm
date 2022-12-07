@@ -171,7 +171,7 @@
 	if(ishuman(H))
 		if((L.status & LIMB_SPLINTED) && !(L.status & LIMB_SPLINTED_INDESTRUCTIBLE)) //If they have it splinted, the splint won't hold.
 			L.status &= ~LIMB_SPLINTED
-			playsound(get_turf(H), 'sound/items/splintbreaks.ogg')
+			playsound(get_turf(H), 'sound/items/splintbreaks.ogg', 20)
 			to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
 			H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 

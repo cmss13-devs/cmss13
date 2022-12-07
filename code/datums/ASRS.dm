@@ -110,3 +110,15 @@
 /datum/supply_packs/ammo_mortar_flare/asrs
 	buyable = 0
 	group = "ASRS"
+
+//===================================
+// Misc supplies
+/datum/supply_packs/flares/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_LOW_WEIGHT
+
+/datum/supply_packs/mre/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_VERY_LOW_WEIGHT

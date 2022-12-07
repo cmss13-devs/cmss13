@@ -838,6 +838,10 @@
 	icon_state = "yellow"
 	},
 /area/varadero/interior/electrical)
+"aIv" = (
+/obj/structure/machinery/light/small,
+/turf/open/gm/dirt,
+/area/varadero/interior/comms3)
 "aJc" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -1017,7 +1021,7 @@
 	dir = 9;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "aRr" = (
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -1436,7 +1440,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "biA" = (
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
 	density = 0
@@ -1514,7 +1518,7 @@
 	icon_state = "dark2";
 	tag = "icon-dark2"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "bkG" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced{
@@ -2267,7 +2271,7 @@
 	req_one_access = null
 	},
 /turf/open/floor/plating,
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "bRQ" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -2754,7 +2758,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "cpC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -2854,6 +2858,13 @@
 	icon_state = "asteroidplating"
 	},
 /area/varadero/interior_protected/caves)
+"csH" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
+/area/varadero/interior/morgue)
 "cto" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -3410,7 +3421,7 @@
 	dir = 4;
 	icon_state = "multi_tiles"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "cPI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3519,7 +3530,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "cTr" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -3696,10 +3707,11 @@
 	pixel_x = 8;
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	dir = 1
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "ddc" = (
 /obj/item/stack/cable_coil/cut{
 	pixel_x = 1;
@@ -3734,7 +3746,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "deg" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/plating,
@@ -3762,7 +3774,7 @@
 /turf/open/floor/shiva{
 	dir = 1
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "dfP" = (
 /obj/structure/machinery/computer/shuttle_control/ice_colony/elevator1{
 	pixel_y = 32
@@ -3775,7 +3787,7 @@
 /turf/open/floor/shiva{
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "dgP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4128,7 +4140,7 @@
 /turf/open/floor/shiva{
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "dDo" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -4511,7 +4523,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "dUA" = (
 /obj/structure/machinery/bioprinter,
 /turf/open/floor/shiva{
@@ -4863,7 +4875,7 @@
 /area/varadero/interior/hall_SE)
 "epQ" = (
 /turf/closed/wall,
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "epU" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/evidencebag,
@@ -5689,7 +5701,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "eZc" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/shiva{
@@ -6158,7 +6170,7 @@
 /turf/open/floor/shiva{
 	dir = 1
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "frQ" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/shiva{
@@ -6284,7 +6296,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "fAs" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
@@ -7122,7 +7134,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "ghs" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/icefloor{
@@ -7973,7 +7985,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "gUP" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -8038,7 +8050,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "gZN" = (
 /obj/structure/machinery/firealarm{
 	dir = 8;
@@ -8048,7 +8060,7 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "gZP" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
@@ -8886,7 +8898,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "hQb" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -8946,7 +8958,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "hSN" = (
 /turf/open/floor/plating,
 /area/varadero/interior/administration)
@@ -10000,7 +10012,7 @@
 /turf/open/floor/shiva{
 	dir = 1
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "iGW" = (
 /obj/item/reagent_container/glass/bucket{
 	pixel_y = -3
@@ -10394,7 +10406,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "iSW" = (
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
@@ -10406,7 +10418,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "iTF" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/shiva{
@@ -12265,7 +12277,7 @@
 /turf/open/floor/shiva{
 	dir = 1
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "kBo" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -12507,7 +12519,7 @@
 	dir = 4;
 	icon_state = "multi_tiles"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "kJX" = (
 /obj/structure/tunnel{
 	id = "south_tcomms_tunnel"
@@ -12858,7 +12870,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "leI" = (
 /obj/structure/sink{
 	dir = 1;
@@ -13112,12 +13124,6 @@
 	icon_state = "purple"
 	},
 /area/varadero/interior/research)
-"lpd" = (
-/obj/structure/sign/safety/airlock{
-	pixel_x = 8
-	},
-/turf/closed/wall/r_wall,
-/area/ice_colony/underground/crew/morgue)
 "lpv" = (
 /turf/open/floor{
 	icon_state = "white"
@@ -13676,7 +13682,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "lQg" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -15006,7 +15012,7 @@
 /turf/open/floor/shiva{
 	dir = 1
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "mRZ" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva{
@@ -15221,7 +15227,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "ncv" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -15529,7 +15535,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "npB" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
@@ -16264,7 +16270,7 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "nWg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -17041,9 +17047,6 @@
 	},
 /area/varadero/exterior/lz1_near)
 "oDg" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
@@ -17402,7 +17405,7 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "oUO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/inflatable,
@@ -17854,7 +17857,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "pkT" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor{
@@ -18037,7 +18040,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "pqY" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -19836,7 +19839,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "qSK" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -20302,7 +20305,7 @@
 /turf/open/floor/shiva{
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "rnj" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -21214,7 +21217,7 @@
 /turf/open/floor/shiva{
 	icon_state = "redcorners"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "rYi" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -22069,7 +22072,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "sGo" = (
 /turf/open/floor{
 	icon_state = "white"
@@ -22377,7 +22380,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "sTA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -22717,7 +22720,7 @@
 /turf/open/floor/shiva{
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "tpL" = (
 /turf/open/floor/shiva{
 	dir = 1;
@@ -23227,7 +23230,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "tQz" = (
 /obj/structure/sink{
 	pixel_y = 15
@@ -23675,7 +23678,7 @@
 	pixel_x = 8
 	},
 /turf/closed/wall,
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "uiy" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/taperecorder,
@@ -23893,7 +23896,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "uul" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -23945,7 +23948,7 @@
 	icon_state = "dark2";
 	tag = "icon-dark2"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "uvB" = (
 /obj/structure/machinery/shower{
 	dir = 8
@@ -24794,7 +24797,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "vco" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
@@ -25063,7 +25066,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "vnU" = (
 /obj/item/storage/box/bodybags,
 /obj/structure/surface/table/reinforced/prison,
@@ -26245,7 +26248,7 @@
 /turf/open/floor/shiva{
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "wlQ" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -26660,7 +26663,7 @@
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "wEU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/light/small{
@@ -27375,7 +27378,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "xpw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/circuitboard/computer/crew{
@@ -27972,7 +27975,7 @@
 	dir = 4;
 	icon_state = "multi_tiles"
 	},
-/area/ice_colony/underground/crew/morgue)
+/area/varadero/interior/morgue)
 "xMH" = (
 /obj/structure/prop/rock/brown,
 /turf/open/auto_turf/sand_white/layer0,
@@ -38900,7 +38903,7 @@ epQ
 epQ
 epQ
 uvw
-lpd
+uiv
 epQ
 ntw
 hvO
@@ -40350,7 +40353,7 @@ hyr
 hyr
 epQ
 kJu
-kJu
+csH
 cOK
 rmZ
 eYG
@@ -44715,7 +44718,7 @@ oIN
 juW
 juW
 oDg
-fal
+aIv
 sXb
 nih
 jzZ

@@ -1,6 +1,0 @@
-author: "PalJohnson"
-delete-after: True
-changes:
-  - rscadd: "Added new soro security locker with contents to match the map"
-  - qol: "removed old commie uniform and replaced it with updated sprite and locker"
-  - bugfix: "fixed pmc corpse from spawning and replaced with upp corpse"

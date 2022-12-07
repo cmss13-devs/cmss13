@@ -1,8 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - imageadd: "Resprited the W-Y Flask. Removed the gold badge from the former detective's flask."
-  - rscadd: "Renamed the former detective's flask and bar flask into the brown and black, respectively, leather flasks."
-  - rscadd: "Added a canteen (item) from an unused sprite."
-  - rscadd: "Canteens (item) and W-Y flasks can now be found in the canteen (place) vendors."
-  - rscadd: "All flasks, vacuum and leather included, (and canteen (item)) can be selected in the character loadout items menu at the bottom."

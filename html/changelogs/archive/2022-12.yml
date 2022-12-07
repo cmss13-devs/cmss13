@@ -104,3 +104,136 @@
   usnpeepoo:
   - balance: Warriors slash cooldown reduction has been reduced by 0.10 seconds
   - balance: Warriors Fling, and Punch have their cooldowns increased by 1 second
+2022-12-05:
+  NoKohi:
+  - spellcheck: changed all instances of Tychon's Rift to Neroid Sector
+  ThePiachu:
+  - bugfix: Fixed an error causing a lot of runtime error logs whenever a mob with
+      autopsy data would get gibbed.
+  - code_imp: Moved QDEL_NULL_LIST in along with other qdel procs.
+  carlarctg:
+  - imageadd: Gives GL gloves an unique sprite
+2022-12-06:
+  CrafticalDecoy:
+  - bugfix: Fixed crusher's shield ending before its full duration is covered.
+  Huffie56:
+  - qol: put a bit order in recipe making all the burger pie pizza etc in their own
+      sub section.
+  - qol: added a new parent class for spaghetti and cake with the reagent they have
+      in common.
+  - code_imp: change ingredient required form some recipe to improve their consistency...
+  - code_imp: bread no longer require an egg. superbiteburger require a bun instead
+      of dough.
+  - code_imp: donuts require doughslice instead of dough. appletart require flatdough
+      instead of dough.
+  - code_imp: all the cakes recipes require 5u of milk 15u of sugar and an egg.
+  - code_imp: all the pizza now require 5u of tomatojuice instead of a tomato but
+      vegi pizza still require one tomato on top.
+  NoKohi:
+  - bugfix: fixes pointing markers, aimed shot and spot target reticles not being
+      centered
+  PalJohnson:
+  - rscadd: Added new soro security locker with contents to match the map
+  - qol: removed old commie uniform and replaced it with updated sprite and locker
+  - bugfix: fixed pmc corpse from spawning and replaced with upp corpse
+  Shad0vvs:
+  - rscadd: Adds player time to SEA mentor alert message.
+  ThePiachu:
+  - bugfix: Fixed a runtime error for new Carriers around checking if they can use
+      their hugger ability.
+  - code_imp: Removed a double variable initialisation for Carriers.
+  carlarctg:
+  - imageadd: Resprited the W-Y Flask. Removed the gold badge from the former detective's
+      flask.
+  - rscadd: Renamed the former detective's flask and bar flask into the brown and
+      black, respectively, leather flasks.
+  - rscadd: Added a canteen (item) from an unused sprite.
+  - rscadd: Canteens (item) and W-Y flasks can now be found in the canteen (place)
+      vendors.
+  - rscadd: All flasks, vacuum and leather included, (and canteen (item)) can be selected
+      in the character loadout items menu at the bottom.
+  fira:
+  - code_imp: Fixed deletion issues with structure spawners.
+  theselfish:
+  - bugfix: Fixed the New Varadero holotables.
+2022-12-07:
+  ChainsawMullet:
+  - balance: Predator slots reduced from 4+1 per 40 players to 4+1 per 80 players.
+  CrafticalDecoy:
+  - bugfix: The janitorial cart can now be slashed.
+  Geevies:
+  - balance: You no longer have a typing indicator while cloaked. The regular speech
+      bubble when speaking still pops up, though.
+  Huffie56:
+  - bugfix: fix not being able to cook bun by adding a requirement of 1u"sodiumchloride"(salt)
+      to bun recipe.
+  ThePiachu:
+  - spellcheck: Made the message about the timer for joining as a facehugger clearer.
+  - bugfix: Empty cells now properly initialise with a correct charge indicator.
+  - qol: Chargers and battery chargers now display a charge percentage. Chargers let
+      you know the charge level if you're charging a battery.
+  - code_imp: Gave batteries a little bit less snowflake initialization code and made
+      update_icons calls more consistent.
+  - bugfix: Batteries now have a correct charge icon when ejected from a Smartgun
+      Powerpack.
+  - spellcheck: Batteries, chargers and rechargers are now properly \improper.
+  - qol: All Pressurized Reagent Canister Pouches now change their canister tint based
+      on the colour of the chemicals stored therein (while still being mixed with
+      the default blue-ish tint of the canister). Canisters themselves similarly change
+      their tint based on contents.
+  - rscadd: Observers will now see a message about where the dropship will be crashing
+      right before the explosions start. This will let you see Marines get squished
+      and blown up more easily!
+  Unknownity:
+  - balance: High tech equipment has been removed from the CLF Engineer in exchange
+      for breaching charges and C4
+  - balance: The PMC Support Synthetic has received significant loadout upgrades to
+      be on par or better with other ERT Synths
+  carlarctg:
+  - rscadd: Added pay_multiplier to all paygrades. The higher your rank, the more
+      money you'll start with, based on this multiplier. (For example, a Major will
+      have a pay multiplier of 4.) Includes strange roles like VAIPO, UPP, PMCs, RESS...
+  - rscdel: Drastically nuked the amount of money people start with. People can no
+      longer start with thousands of dollars.... they now get 30-50 dollars total.
+      This value is multiplied by the pay_multiplier above.
+  - spellcheck: Non-binary WY executives may now spawn with 'Mx.' as their communications
+      prefix.
+  - balance: Altered the prices of cigarette vending machines around to overall make
+      them more expensive. PFCs will not be able to buy Executive Select with their
+      starting cash.
+  - rscdel: Made cassetes and Souto from vendors more expensive. Buying food from
+      Hot Foods now costs money. Marine coffee now has an appropiate description.
+      Souto vendors no longer vend water bottles.
+  - bugfix: Fixed default parent type dollar items being worth 0 money...
+  - bugfix: Fixed resin fruit disappearing magically from bloodstream.
+  - balance: Increased alpha (reduced camo) of the camo belltower from 10 to 35. This
+      is mainly meant for engineers to be able to see their tower to pick it up, but
+      the inevitable balance changes aren't unintended.
+  - refactor: Added support for balloonchat colors. (Even TG doesn't have this, we're
+      awesome now!)
+  - rscadd: Spitter rework!
+  - rscadd: Spit is now full screen range but weaker.
+  - rscadd: Frenzy is renamed and causes spit to inflict spatter coating.
+  - rscadd: Acid spray's damage is halved every time it hits a human, but if it hits
+      someone coated in acid it will enhance it, making it more dangerous and need
+      two rolls to shake off.
+  fira:
+  - rscadd: Ghosts can now point at things too, using SHIFT+Middle Click.
+  - rscadd: Observers now have overhead text! It can be toggled with the regular Langchat
+      setting, or hiding your/others ghosts.
+  - bugfix: Fixed an oversight which would prevent either own Toggle Dchat or server's
+      from working (they had the same name).
+  - bugfix: Fixed Overhead chat not aligning properly with mob icon size, eg. for
+      large xenomorphs.
+  kugamo:
+  - rscadd: You can now crush cans on harm intent with your head, hands, or feet!
+  - soundadd: New sound for crushin cans.
+  - imageadd: New sprites for crushed cans.
+  realforest2001:
+  - rscadd: StaffWho can now show multiple roles per staff member. This is purely
+      aesthetical.
+  - code_imp: Adds two new hive traits. NO_HVE_DELAY and NO_COLOR. Delay regards to
+      round end and if they need to be wiped out or not. Color regards to xeno colours,
+      not weeds or anything else.
+  - code_imp: Examining xenos or structures now show the name of the hive they belong
+      to, rather than bastardising it by using [Hive.prefix] Hive

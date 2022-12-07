@@ -3,7 +3,6 @@
 	desc = "A laptop loaded with sentry control software."
 	icon = 'icons/obj/structures/props/sentrycomp.dmi'
 	icon_state = "sentrycomp_cl"
-	var/on_table = FALSE
 	var/setup = FALSE
 	var/open = FALSE
 	var/on = FALSE
@@ -26,37 +25,29 @@
 	. = ..()
 	QDEL_NULL(cell)
 
-/obj/item/device/sentry_computer/proc/setup()
-	world.log << "setup laptop"
-	on_table = TRUE
+/obj/item/device/sentry_computer/proc/setup(var/obj/structure/surface/target)
 	if (do_after(usr, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		setup = TRUE
+		usr.drop_inv_item_to_loc(src, target.loc)
 	else
-		to_chat(usr, "You fail to open the laptop")
-	setup = TRUE
+		to_chat(usr, "You fail to setup the laptop")
 
 /obj/item/device/sentry_computer/MouseDrop(atom/dropping, mob/user)
-	world.log << "closing laptop"
-	on_table = FALSE
 	setup = FALSE
 	open = FALSE
 	on = FALSE
 	icon_state = "sentrycomp_cl"
 	STOP_PROCESSING(SSobj, src)
-	user.put_in_any_hand_if_possible(dropping, disable_warning = TRUE)
+	usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
 /obj/item/device/sentry_computer/attack_hand(mob/user)
-	world.log << "attack hand"
-	if(on_table)
+	if(setup)
 		if(!on)
 			icon_state = "sentrycomp_on"
 			on = TRUE
 			START_PROCESSING(SSobj, src)
 		else
-			icon_state = "sentrycomp_op"
-			on = FALSE
-			screen_state = 0
-			STOP_PROCESSING(SSobj, src)
+			tgui_interact(user)
 	else
 		..()
 
@@ -95,39 +86,6 @@
 	paired_sentry -=list(target)
 	update_static_data_for_all_viewers()
 
-/obj/item/device/sentry_computer/verb/use_unique_action()
-	set category = "Misc"
-	set name = "Unique Action"
-	set desc = "Toggle laptop"
-	set src in usr
-	unique_action(usr)
-
-/obj/item/device/sentry_computer/verb/unique_action(mob/user as mob)
-	if(on)
-		tgui_interact(user)
-
-/obj/item/device/sentry_computer/attack_self(mob/user as mob)
-	. = ..()
-	if(state == 0)
-		icon_state = "sentrycomp_op"
-		open = TRUE
-		state = 1
-	else if(state == 1)
-		icon_state = "sentrycomp_on"
-		on = TRUE
-		state = 2
-		START_PROCESSING(SSobj, src)
-	else if(state == 2)
-		icon_state = "sentrycomp_op"
-		on = FALSE
-		screen_state = 0
-		state = 3
-		STOP_PROCESSING(SSobj, src)
-	else if(state == 3)
-		icon_state = "sentrycomp_cl"
-		open = FALSE
-		state = 0
-
 /obj/item/device/sentry_computer/proc/attempted_link(mob/linker)
 	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 
@@ -135,6 +93,8 @@
 	. = ..()
 	if(on == FALSE)
 		return UI_CLOSE
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		return UI_UPDATE
 
 /obj/item/device/sentry_computer/ui_static_data(mob/user)
 	. = list()
@@ -151,7 +111,6 @@
 		for(var/i in sentrygun.choice_categories)
 			sentry_holder["selection_menu"] += list(list("[i]", sentrygun.choice_categories[i]))
 		.["sentry_static"] += list(sentry_holder)
-
 
 /obj/item/device/sentry_computer/ui_data(mob/user)
 	. = list()
@@ -185,6 +144,9 @@
 /obj/item/device/sentry_computer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
+		return
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		to_chat(usr, SPAN_WARNING("You are not authorised to configure the sentry."))
 		return
 	if(params["index"])
 		// the action represents a sentry

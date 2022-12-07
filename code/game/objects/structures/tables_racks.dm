@@ -307,8 +307,7 @@
 
 	if (istype(W, /obj/item/device/sentry_computer))
 		var/obj/item/device/sentry_computer/computer = W
-		computer.setup()
-		computer.forceMove(src)
+		computer.setup(src)
 		return
 
 	if(istype(W, /obj/item/explosive/grenade))

@@ -5,5 +5,5 @@
 
 /datum/paygrade/misc/synth
 	name = "Synthetic"
-	paygrade = "S"
+    paygrade = "SYN"
 	pay_multiplier = 1

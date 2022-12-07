@@ -142,7 +142,7 @@
 //------------------------Flashlight Box--------------------------
 
 /obj/item/ammo_box/magazine/misc/flashlight
-	name = "box of flashlights"
+	name = "\improper box of flashlights"
 	desc = "A box of flashlights to brighten your day!"
 	magazine_type = /obj/item/device/flashlight
 	num_of_magazines = 8
@@ -157,7 +157,7 @@
 
 /obj/item/ammo_box/magazine/misc/power_cell
 	name = "\improper box of High-Capacity Power Cells"
-	desc = "A box of High-Capacity Power Cell to keep your electronics going all night long!"
+	desc = "A box of High-Capacity Power Cells to keep your electronics going all night long!"
 	magazine_type = /obj/item/cell/high
 	num_of_magazines = 8
 	icon_state = "batterybox"

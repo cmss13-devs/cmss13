@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Adds two new hive traits. NO_HVE_DELAY and NO_COLOR. Delay regards to round end and if they need to be wiped out or not. Color regards to xeno colours, not weeds or anything else."
-  - code_imp: "Examining xenos or structures now show the name of the hive they belong to, rather than bastardising it by using [Hive.prefix] Hive"

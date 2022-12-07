@@ -1,8 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Empty cells now properly initialise with a correct charge indicator."
-  - qol: "Chargers and battery chargers now display a charge percentage. Chargers let you know the charge level if you're charging a battery."
-  - code_imp: "Gave batteries a little bit less snowflake initialization code and made update_icons calls more consistent."
-  - bugfix: "Batteries now have a correct charge icon when ejected from a Smartgun Powerpack."
-  - spellcheck: "Batteries, chargers and rechargers are now properly \\improper."

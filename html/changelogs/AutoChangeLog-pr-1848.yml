@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - rscadd: "Ghosts can now point at things too, using SHIFT+Middle Click."

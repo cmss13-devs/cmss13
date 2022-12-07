@@ -7,6 +7,7 @@
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_PRAETORIAN)
 	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
@@ -14,6 +15,7 @@
 		/datum/action/xeno_action/activable/corrosive_acid,
 	)
 	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/tail_stab/tail_seize,
 		/datum/action/xeno_action/activable/prae_abduct,
 		/datum/action/xeno_action/activable/oppressor_punch,
 		/datum/action/xeno_action/activable/tail_lash

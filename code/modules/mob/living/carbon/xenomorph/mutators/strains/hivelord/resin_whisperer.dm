@@ -28,6 +28,7 @@
 	hivelord.can_stack_builds = TRUE
 
 	hivelord.client.change_view(10, src)
+	
 	hivelord.mutation_type = HIVELORD_RESIN_WHISPERER
 	mutator_update_actions(hivelord)
 	mutator_set.recalculate_actions(description, flavor_description)

@@ -637,7 +637,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	desc = "This is pure vendor without points system."
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list

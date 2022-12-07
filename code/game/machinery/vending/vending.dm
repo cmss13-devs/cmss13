@@ -606,7 +606,10 @@
 /obj/structure/machinery/vending/proc/release_item(var/datum/data/vending_product/R, var/delay_vending = 0, var/mob/living/carbon/human/user)
 	set waitfor = 0
 
-	ui_interact(user)
+	//We interact with the UI only if a user is present
+	//(This function can be called with no user if the machine gets blown up / malfunctions)
+	if(user)
+		ui_interact(user)
 
 	if (delay_vending)
 		use_power(vend_power_usage)	//actuators and stuff

@@ -185,6 +185,9 @@ directive is properly returned.
 
 /atom/proc/examine(mob/user)
 	var/list/examine_strings = get_examine_text(user)
+	if(!examine_strings)
+		log_debug("Attempted to create an examine block with no strings! Atom : [src], user : [user]")
+		return
 	to_chat(user, examine_block(examine_strings.Join("\n")))
 
 /atom/proc/get_examine_text(mob/user)
@@ -353,7 +356,10 @@ Parameters are passed from New.
 // EFFECTS
 /atom/proc/extinguish_acid()
 	for(var/datum/effects/acid/A in effects_list)
-		qdel(A)
+		if(A.cleanse_acid())
+			qdel(A)
+			return TRUE
+	return FALSE
 
 // Movement
 /atom/proc/add_temp_pass_flags(flags_to_add)

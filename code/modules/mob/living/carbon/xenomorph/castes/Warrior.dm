@@ -108,11 +108,11 @@
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"
 
-	var/slash_charge_cdr = 0.30 SECONDS // Amount to reduce charge cooldown by per slash
+	var/slash_charge_cdr = 0.20 SECONDS // Amount to reduce charge cooldown by per slash
 	var/lifesteal_percent = 7
 	var/max_lifesteal = 9
-	var/lifesteal_range =  3
-	var/lifesteal_lock_duration = 20
+	var/lifesteal_range =  3 // Marines within 3 tiles of range will give the warrior extra health
+	var/lifesteal_lock_duration = 20 // This will remove the glow effect on warrior after 2 seconds
 	var/color = "#6c6f24"
 	var/emote_cooldown = 0
 

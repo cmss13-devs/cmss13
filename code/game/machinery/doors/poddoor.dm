@@ -284,6 +284,9 @@
 /obj/structure/machinery/door/poddoor/almayer/blended
 	icon_state = "almayer_pdoor"
 
+/obj/structure/machinery/door/poddoor/almayer/blended/white
+	icon_state = "w_almayer_pdoor"
+
 /obj/structure/machinery/door/poddoor/almayer/Initialize()
 	. = ..()
 	addtimer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)

@@ -1,0 +1,8 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - refactor: "Added support for balloonchat colors. (Even TG doesn't have this, we're awesome now!)"
+  - rscadd: "Spitter rework!"
+  - rscadd: "Spit is now full screen range but weaker."
+  - rscadd: "Frenzy is renamed and causes spit to inflict spatter coating."
+  - rscadd: "Acid spray's damage is halved every time it hits a human, but if it hits someone coated in acid it will enhance it, making it more dangerous and need two rolls to shake off."

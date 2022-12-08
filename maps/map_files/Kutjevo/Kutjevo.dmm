@@ -456,7 +456,7 @@
 "aAg" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/power)
+/area/kutjevo/interior/complex/med/locks)
 "aAq" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/colors/cyan/inner_corner,
@@ -26042,7 +26042,7 @@ eyU
 dyU
 pyp
 pyp
-aAg
+hQj
 pyp
 xjY
 xjY
@@ -38489,7 +38489,7 @@ msK
 uAz
 bUI
 rES
-gUS
+aAg
 fpJ
 fpJ
 pIE

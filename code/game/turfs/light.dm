@@ -65,14 +65,10 @@
 
 
 /turf/open/floor/light/attack_hand(mob/user as mob) //turning the light on and off
-	if(!broken && on)
-		on = FALSE
+	if(!broken)
+		on = !on
 		update_icon()
-		to_chat(user, SPAN_NOTICE("You turn the light off."))
-	else if(!broken && !on)
-		on = TRUE
-		update_icon()
-		to_chat(user, SPAN_NOTICE("You turn the light on."))
+		to_chat(user, SPAN_NOTICE("You turn the light [on ? "on" : "off"]."))
 	else
 		to_chat(user, SPAN_NOTICE("It looks like the bulb inside has been shattered, you should think about replacing it.")) //if the light is broken and you try to turn it off and on
 

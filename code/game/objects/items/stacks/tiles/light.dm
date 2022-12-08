@@ -11,7 +11,7 @@
 
 /obj/item/stack/tile/light/attackby(obj/item/item_in_hand as obj, mob/user as mob)
 	..()
-	if(istype(item_in_hand,/obj/item/tool/crowbar))
+	if (HAS_TRAIT(item_in_hand, TRAIT_TOOL_CROWBAR))
 		new/obj/item/stack/sheet/metal(user.loc)
 		amount--
 		new/obj/item/stack/light_w(user.loc)

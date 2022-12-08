@@ -562,8 +562,8 @@
 // HIVECORE COOLDOWN TIME
 #define HIVECORE_COOLDOWN 5 MINUTES
 
-// The round time where the xenos will no longer be able to move hivecore without cooldowns
-#define HIVECORE_COOLDOWN_CUTOFF 20 MINUTES
+// Xeno 'pre-setup' duration, round time where the xenos will no longer be able to move hivecore without cooldowns or burrow up as larvae from the ground without a pool.
+#define XENOMORPH_PRE_SETUP_CUTOFF 20 MINUTES
 
 // Xeno shield HUD scale factor (1.5x so its easier to see, most times)
 #define XENO_SHIELD_HUD_SCALE_FACTOR 1.5

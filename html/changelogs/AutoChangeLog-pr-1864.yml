@@ -1,0 +1,4 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscadd: "Larvae can now pop out from the ground nearby the hive core, the queen, builder castes, larvae, or any xeno in that order, during the first 20 minutes of the round."

@@ -1,0 +1,8 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added reinforced white walls."
+  - rscadd: "Surrounded research and containment with reinforced walls."
+  - bugfix: "Briefing ladders no longer let CIC staff into areas they can't leave."
+  - bugfix: "ERT Station antag vendors can no longer be broken into."
+  - imageadd: "Added mapping sprites for reinforced and hull whitewalls."

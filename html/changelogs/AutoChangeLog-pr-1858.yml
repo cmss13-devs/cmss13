@@ -1,0 +1,6 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscadd: "Added 15 frontal armor to steelcrest defenders and 5 to normal defenders, The directional armor in total will be 50 and 70 respectively."
+  - balance: "Halved Fortify cooldown."
+  - bugfix: "Fixed the bug in which crested or fortified defenders didn't have crit sprites."

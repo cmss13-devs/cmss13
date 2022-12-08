@@ -8554,7 +8554,9 @@
 "awB" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
-	name = "\improper Engineering Storage"
+	name = "\improper Engineering Storage";
+	req_one_access = null;
+	req_one_access_txt = "2;7"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -12047,7 +12049,9 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
-	name = "\improper Engineering Storage"
+	name = "\improper Engineering Storage";
+	req_one_access_txt = "2;7";
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -12065,7 +12069,9 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
-	name = "\improper Engineering Storage"
+	name = "\improper Engineering Storage";
+	req_one_access_txt = "2;7";
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -18111,7 +18117,7 @@
 	dir = 1;
 	icon_state = "pipe-j2"
 	},
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/containment)
 "bfl" = (
 /turf/open/floor/almayer{
@@ -24031,13 +24037,15 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "bCf" = (
-/obj/structure/machinery/door/airlock/almayer/security{
-	dir = 2;
-	name = "\improper Security Checkpoint"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
 	tag = "icon-door_open"
+	},
+/obj/structure/machinery/door/airlock/almayer/security{
+	dir = 2;
+	name = "\improper Security Checkpoint";
+	req_access = null;
+	req_one_access_txt = "3;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -35359,7 +35367,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/closed/wall/almayer/white/outer_tile,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/testlab)
 "cLN" = (
 /obj/structure/machinery/cryopod{
@@ -37653,6 +37661,22 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/almayer/shipboard/brig/processing)
+"dGW" = (
+/obj/structure/machinery/door/airlock/almayer/security{
+	dir = 2;
+	name = "\improper Security Checkpoint";
+	req_access = null;
+	req_one_access_txt = "3;19"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2;
+	tag = "icon-door_open"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/almayer/living/briefing)
 "dHd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -37762,7 +37786,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/closed/wall/almayer/white/outer_tile,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/testlab)
 "dJo" = (
 /obj/structure/largecrate/supply/supplies/mre,
@@ -40860,7 +40884,7 @@
 	dir = 2;
 	id = "almayerlink_med_req"
 	},
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/containment)
 "eXE" = (
 /turf/open/floor/almayer{
@@ -45789,7 +45813,7 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/engine_core)
 "hgv" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/testlab)
 "hgB" = (
 /obj/structure/bed/chair/office/light,
@@ -47289,6 +47313,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
 /obj/item/device/binoculars,
+/obj/item/device/flash,
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "hQY" = (
@@ -48372,7 +48397,7 @@
 	},
 /area/almayer/lifeboat_pumps/south2)
 "irA" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/containment)
 "irI" = (
 /obj/structure/sign/safety/maint{
@@ -49703,7 +49728,7 @@
 	dir = 4;
 	id = "almayerlink_ot_med"
 	},
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/containment)
 "iWc" = (
 /obj/structure/surface/table/almayer,
@@ -60138,7 +60163,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/closed/wall/almayer/white/outer_tile,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/testlab)
 "nCG" = (
 /obj/structure/machinery/light/small{
@@ -60788,6 +60813,7 @@
 	dir = 4
 	},
 /obj/item/ashtray/glass,
+/obj/item/device/flash,
 /turf/open/floor/wood/ship,
 /area/almayer/squads/req)
 "nPX" = (
@@ -62333,7 +62359,7 @@
 /area/almayer/shipboard/brig/cells)
 "oBy" = (
 /obj/structure/disposalpipe/segment,
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/containment)
 "oBA" = (
 /obj/structure/sign/safety/conference_room{
@@ -66976,7 +67002,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "qJy" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/hydroponics)
 "qJF" = (
 /obj/structure/largecrate/supply,
@@ -70138,7 +70164,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/closed/wall/almayer/white/outer_tile,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/medical_science)
 "sco" = (
 /obj/structure/sign/prop1{
@@ -70768,6 +70794,9 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
+"sqf" = (
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/upper_medical)
 "sqo" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -71622,7 +71651,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/closed/wall/almayer/white/outer_tile,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/testlab)
 "sIT" = (
 /turf/closed/wall/almayer/reinforced,
@@ -72124,7 +72153,7 @@
 /area/almayer/medical/hydroponics)
 "sWZ" = (
 /obj/structure/disposalpipe/segment,
-/turf/closed/wall/almayer/white/outer_tile,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/testlab)
 "sXd" = (
 /obj/structure/surface/table/almayer,
@@ -73344,7 +73373,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 1
 	},
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/containment)
 "tvu" = (
 /obj/structure/filingcabinet/filingcabinet,
@@ -75148,7 +75177,9 @@
 /area/almayer/squads/charlie_delta_shared)
 "ukW" = (
 /obj/structure/machinery/door/airlock/almayer/security{
-	name = "\improper Security Checkpoint"
+	name = "\improper Security Checkpoint";
+	req_access = null;
+	req_one_access_txt = "3;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -75705,6 +75736,12 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
+"uvJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/medical_science)
 "uvS" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -75813,6 +75850,9 @@
 	tag = "icon-greencorner"
 	},
 /area/almayer/hallways/port_hallway)
+"uys" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/squads/req)
 "uyC" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
@@ -77097,7 +77137,7 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "uXj" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/containment/cell)
 "uXw" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
@@ -79088,8 +79128,8 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north2)
 "vOy" = (
-/turf/closed/wall/almayer/white/outer_tile,
-/area/almayer/medical/testlab)
+/turf/closed/wall/almayer/white/reinforced,
+/area/almayer/medical/medical_science)
 "vPj" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp{
@@ -79102,6 +79142,7 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
+/obj/item/device/flash,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -80703,7 +80744,9 @@
 "wvl" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
-	name = "\improper Security Checkpoint"
+	name = "\improper Security Checkpoint";
+	req_access = null;
+	req_one_access_txt = "3;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -82240,9 +82283,7 @@
 	},
 /area/almayer/command/lifeboat)
 "xba" = (
-/turf/closed/wall/almayer{
-	damage_cap = 15000
-	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/living/cryo_cells)
 "xbd" = (
 /obj/effect/decal/warning_stripes{
@@ -83430,7 +83471,7 @@
 /area/almayer/hallways/hangar)
 "xBe" = (
 /turf/closed/wall/almayer/reinforced,
-/area/almayer/living/briefing)
+/area/almayer/engineering/upper_engineering)
 "xBQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -110709,8 +110750,8 @@ bWM
 bWM
 bWM
 gQl
-cmp
-cmp
+asE
+asE
 asE
 asE
 asE
@@ -110912,7 +110953,7 @@ hKQ
 bWM
 bWM
 fps
-cmp
+asE
 asB
 atA
 bWM
@@ -111115,7 +111156,7 @@ aqd
 bWM
 bWM
 ask
-cmp
+asE
 asE
 asE
 atJ
@@ -113218,13 +113259,13 @@ lYA
 dtM
 akU
 wgd
-ajl
-ajl
-ajl
-ajl
-ajl
-ajl
-ajl
+sqf
+sqf
+sqf
+sqf
+sqf
+sqf
+sqf
 ajl
 ajl
 ajl
@@ -113421,13 +113462,13 @@ lYA
 dtM
 akU
 ajC
-ajl
+sqf
 anp
 wjz
 fnA
 jZY
 jZY
-ajl
+sqf
 vPj
 aot
 ajl
@@ -113624,13 +113665,13 @@ lYA
 dtM
 aii
 ajC
-ajl
+sqf
 sOZ
 oNJ
 eDo
 eDo
 eDo
-ajl
+sqf
 jUG
 awM
 gXl
@@ -113827,13 +113868,13 @@ lYA
 dtM
 ajt
 aik
-ajl
+sqf
 anq
 awn
 xsz
 jTj
 jTj
-ajl
+sqf
 xRh
 umC
 dwA
@@ -114030,13 +114071,13 @@ lYA
 dtM
 aii
 ajC
-ajl
+sqf
 anr
 awn
 tEi
 asu
 hbI
-ajl
+sqf
 ajl
 vtx
 ajl
@@ -114233,13 +114274,13 @@ lYA
 aEI
 aii
 ajC
-ajl
-ajl
+sqf
+sqf
 awp
-ajl
-ajl
-ajl
-ajl
+sqf
+sqf
+sqf
+sqf
 mNI
 sdn
 xNu
@@ -115060,7 +115101,7 @@ irA
 irA
 irA
 irA
-ajl
+sqf
 wMO
 wky
 ajl
@@ -116278,7 +116319,7 @@ irA
 pQP
 irA
 irA
-ajo
+vOy
 eNP
 hUR
 ajo
@@ -116887,10 +116928,10 @@ kex
 aoM
 aoM
 aMg
-ajo
+vOy
 aRd
 aIo
-ajo
+vOy
 qLK
 akU
 avj
@@ -117093,7 +117134,7 @@ ayZ
 aCD
 hFC
 qmy
-ajo
+vOy
 ayT
 akU
 avj
@@ -117905,7 +117946,7 @@ qqQ
 qMP
 aoM
 aSl
-ajo
+vOy
 aTL
 aii
 avm
@@ -118004,10 +118045,10 @@ beH
 beH
 vJZ
 bdd
-xBe
-xBe
-xBe
-xBe
+bdd
+bdd
+bdd
+bdd
 fZx
 bHT
 bJz
@@ -118108,7 +118149,7 @@ qqQ
 aoM
 aoM
 aSn
-ajo
+vOy
 ayT
 akU
 avj
@@ -118210,7 +118251,7 @@ wvl
 qby
 btY
 bAJ
-bCf
+dGW
 buH
 bHL
 buH
@@ -118311,7 +118352,7 @@ qqQ
 nPE
 oqZ
 uaI
-ajo
+vOy
 atV
 akU
 avj
@@ -118498,7 +118539,7 @@ aii
 ali
 amD
 cwJ
-amk
+vOy
 wWm
 mHD
 bkT
@@ -118514,7 +118555,7 @@ aQZ
 dBj
 drT
 aSo
-ajo
+vOy
 vIN
 aii
 avj
@@ -118701,7 +118742,7 @@ aii
 abx
 abx
 avj
-amk
+vOy
 ecx
 elH
 elH
@@ -118715,9 +118756,9 @@ aLP
 aqR
 krq
 ajo
-ajo
-ajo
-ajo
+vOy
+vOy
+vOy
 ayT
 aii
 avj
@@ -118904,7 +118945,7 @@ xGk
 all
 amK
 avj
-amk
+vOy
 tvu
 bnL
 bnL
@@ -118918,7 +118959,7 @@ aLP
 aqR
 xOY
 nCc
-amk
+vOy
 nzA
 amD
 ajr
@@ -119107,7 +119148,7 @@ hee
 aEX
 aii
 avm
-amk
+vOy
 aml
 anw
 uhV
@@ -119121,7 +119162,7 @@ hqh
 wLy
 eiE
 wuP
-amk
+vOy
 ayT
 akT
 amC
@@ -119310,7 +119351,7 @@ aNi
 ybf
 ajt
 avj
-amk
+vOy
 amm
 bnL
 bnL
@@ -119324,7 +119365,7 @@ aPJ
 aqQ
 aOe
 wTM
-amk
+vOy
 atU
 akU
 abg
@@ -119513,7 +119554,7 @@ egt
 ait
 ani
 avj
-amk
+vOy
 woh
 avp
 aoJ
@@ -119527,7 +119568,7 @@ aLP
 aqR
 aoM
 kHB
-amk
+vOy
 aOP
 aii
 aow
@@ -119716,7 +119757,7 @@ bgK
 bYe
 ajt
 avj
-amk
+vOy
 qxP
 anz
 aoJ
@@ -119730,7 +119771,7 @@ amk
 aoK
 aAr
 xQm
-amk
+vOy
 asp
 aii
 avj
@@ -119919,9 +119960,9 @@ aNi
 ayT
 amO
 avj
-amk
-amk
-amk
+vOy
+vOy
+vOy
 scl
 vkB
 aqR
@@ -119930,10 +119971,10 @@ oeg
 aOd
 sXd
 amk
-amk
-amk
-amk
-amk
+vOy
+vOy
+vOy
+vOy
 meJ
 amO
 avj
@@ -120125,7 +120166,7 @@ avj
 alH
 aqG
 ata
-jRU
+uvJ
 apR
 aqS
 kCE
@@ -120133,7 +120174,7 @@ kCE
 vYz
 awR
 uoi
-amk
+vOy
 aMh
 biB
 alH
@@ -120328,7 +120369,7 @@ bYe
 apI
 aqG
 atb
-jRU
+uvJ
 apS
 avA
 rzN
@@ -120336,7 +120377,7 @@ lto
 aqQ
 avA
 gLc
-amk
+vOy
 aMi
 biB
 apI
@@ -120539,10 +120580,10 @@ cJM
 jlA
 qLi
 jlA
-cJM
-cJM
-cJM
-cJM
+qJy
+qJy
+qJy
+qJy
 apv
 akU
 jHG
@@ -120745,7 +120786,7 @@ ean
 xXh
 aAt
 dMK
-cJM
+qJy
 ayT
 akU
 avj
@@ -120948,7 +120989,7 @@ tyD
 tyD
 tyD
 pTM
-cJM
+qJy
 ayT
 aii
 avj
@@ -121151,7 +121192,7 @@ tyD
 coZ
 coZ
 dnx
-cJM
+qJy
 ayT
 aii
 avj
@@ -121340,7 +121381,7 @@ aej
 pSL
 amT
 mIW
-vOy
+hgv
 amn
 anF
 anF
@@ -121354,7 +121395,7 @@ pvm
 pvm
 tfH
 cLI
-cJM
+qJy
 aEK
 aSv
 ioX
@@ -121543,7 +121584,7 @@ aej
 atL
 akV
 atL
-vOy
+hgv
 mYj
 anF
 anF
@@ -121557,7 +121598,7 @@ tyD
 coZ
 coZ
 dnx
-cJM
+qJy
 atL
 akV
 atL
@@ -128557,12 +128598,12 @@ tiE
 bMe
 tiE
 tiE
-bdl
-bdl
+uys
+uys
 gNp
 gNp
-bdl
-bdl
+uys
+uys
 bJz
 cbS
 bJz
@@ -128760,12 +128801,12 @@ bGy
 gvU
 bGy
 njw
-bdl
+uys
 tXj
 sgc
 xCa
 bUy
-bdl
+uys
 pJJ
 bHc
 bHa
@@ -128963,12 +129004,12 @@ nqx
 hzg
 bdj
 fIX
-bdl
+uys
 ipa
 sgc
 xCa
 noj
-bdl
+uys
 hlK
 bHc
 bHa
@@ -129166,10 +129207,10 @@ bNR
 tdt
 bdj
 mrM
-bdl
-bdl
-bdl
-bdl
+uys
+uys
+uys
+uys
 kxL
 kxL
 bdl
@@ -130688,11 +130729,11 @@ azn
 aBm
 azn
 alO
-alO
-alO
-alO
-alO
-alO
+xBe
+xBe
+xBe
+xBe
+xBe
 alG
 aDZ
 apf
@@ -130891,11 +130932,11 @@ ayV
 auu
 aBB
 aFm
-alO
+xBe
 aIV
 qqr
 arH
-alO
+xBe
 alG
 aDZ
 aWd
@@ -131094,11 +131135,11 @@ amA
 aBn
 aDm
 aFn
-alO
+xBe
 azo
 aJg
 abR
-alO
+xBe
 alG
 aDZ
 aWd
@@ -131301,7 +131342,7 @@ nFX
 atv
 auV
 amE
-alO
+xBe
 alG
 aDZ
 jQt
@@ -131504,7 +131545,7 @@ nFX
 atv
 auV
 amE
-alO
+xBe
 alG
 aYj
 rBZ
@@ -131703,11 +131744,11 @@ lEj
 nRX
 aDo
 aFr
-alO
+xBe
 nNY
 qKi
 abR
-alO
+xBe
 alG
 aYj
 qQI
@@ -131801,7 +131842,7 @@ bJf
 bJf
 bJf
 bJf
-bbs
+xba
 dNt
 dNt
 dNt
@@ -131906,11 +131947,11 @@ amx
 atq
 aDr
 aFu
-alO
+xBe
 azp
 qJf
 anV
-alO
+xBe
 alG
 ajR
 aTS
@@ -132109,11 +132150,11 @@ aya
 atq
 aDr
 aFv
-alO
-alO
-alO
-alO
-alO
+xBe
+xBe
+xBe
+xBe
+xBe
 alJ
 aYj
 apd
@@ -133425,7 +133466,7 @@ bJf
 bJf
 bJf
 bJf
-bbs
+xba
 dNt
 dNt
 dNt

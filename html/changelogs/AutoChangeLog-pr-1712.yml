@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - balance: "Gave POs and SLs basic Intel skill so they can see the Intel Objectives."

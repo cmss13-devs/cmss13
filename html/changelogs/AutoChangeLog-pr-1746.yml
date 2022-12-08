@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - balance: "Removed less useful crates ordered for free by ASRS (SMG ammo, turret ammo, armours) and replaced them with some flare and MRE crates."

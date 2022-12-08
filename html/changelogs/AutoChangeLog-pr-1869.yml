@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - bugfix: "Recharge Stations now properly update their icons when moving someone into them and to show the proper power drain."

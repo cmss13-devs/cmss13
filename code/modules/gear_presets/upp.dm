@@ -1992,7 +1992,16 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/upp/conscript
+	//event role
+	name = "UPP Conscript"
+	flags = EQUIPMENT_PRESET_EXTRA
 
+	skills = /datum/skills/upp
+	assignment = JOB_UPP_CONSCRIPT
+	rank = JOB_UPP_CONSCRIPT
+	role_comm_title = "Cons"
+	paygrade = "UE0"
 
 /datum/equipment_preset/upp/conscript/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

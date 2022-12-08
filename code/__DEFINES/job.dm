@@ -175,6 +175,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 //-------- UPP --------//
 #define JOB_UPP							"UPP Ryadovoy"
+#define JOB_UPP_CONSCRIPT 					"UPP Conscript"
 #define JOB_UPP_ENGI					"UPP MSgt Engineer"
 #define JOB_UPP_MEDIC					"UPP MSgt Medic"
 #define JOB_UPP_SPECIALIST				"UPP Sergeant"

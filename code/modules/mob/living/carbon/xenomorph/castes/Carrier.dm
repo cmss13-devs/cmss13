@@ -124,6 +124,15 @@
 	if(.)
 		var/chance = 75
 
+		if (huggers_cur)
+			//Hugger explosion, like an egg morpher
+			var/obj/item/clothing/mask/facehugger/hugger
+			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
+			for(var/i in 1 to huggers_cur)
+				if(prob(chance))
+					hugger = new(loc, hivenumber)
+					step_away(hugger, src, 1)
+
 		while (eggs_cur > 0)
 			if(prob(chance))
 				new /obj/item/xeno_egg(loc, hivenumber)

@@ -2587,13 +2587,13 @@
 	sound_hit 	 = "acid_hit"
 	sound_bounce	= "acid_bounce"
 	damage_type = BURN
-	added_spit_delay = 10
 	spit_cost = 25
 	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO
-	accuracy = HIT_ACCURACY_TIER_3
-	damage = 25
+	accuracy = HIT_ACCURACY_TIER_5
+	damage = 20
+	max_range = 8 // 7 will disappear on diagonals. i love shitcode
 	penetration = ARMOR_PENETRATION_TIER_2
-	shell_speed = AMMO_SPEED_TIER_2
+	shell_speed = AMMO_SPEED_TIER_3
 
 /datum/ammo/xeno/acid/on_shield_block(mob/M, obj/item/projectile/P)
 	burst(M,P,damage_type)
@@ -2602,16 +2602,21 @@
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
-			return
+			return FALSE
 	..()
 
-/datum/ammo/xeno/acid/medium
+/datum/ammo/xeno/acid/spatter
 	name = "acid spatter"
 
-	damage = 25
-	shell_speed = AMMO_SPEED_TIER_3
-	accuracy = HIT_ACCURACY_TIER_5*3
+	damage = 30
 	max_range = 6
+
+/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	if(. == FALSE)
+		return
+
+	new /datum/effects/acid(M, P.firer)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
@@ -2626,7 +2631,7 @@
 	name = "acid spit"
 
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
-	name = "acid spatter"
+	name = "acid scatter"
 
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5

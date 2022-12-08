@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "StaffWho can now show multiple roles per staff member. This is purely aesthetical."

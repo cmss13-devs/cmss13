@@ -320,7 +320,7 @@
 				thermitemelt(user)
 			return
 
-		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) && istype(/obj/item/weapon/melee/twohanded/breacher/synth))
+	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) && istype(/obj/item/weapon/melee/twohanded/breacher/synth))
 			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))

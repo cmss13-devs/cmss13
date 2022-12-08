@@ -21,6 +21,19 @@
 	var/hack_speed = 10 SECONDS // Only used for vendors right now
 	var/next_scan
 
+	var/list/encryption_keys = list()
+
+/obj/item/device/multitool/proc/load_encryption_key(var/key, var/obj/object)
+	encryption_keys[key] = object
+
+/obj/item/device/multitool/proc/has_encryption_key(var/key)
+	if(encryption_keys[key])
+		return TRUE
+	return FALSE
+
+/obj/item/device/multitool/proc/remove_encryption_key(var/key)
+	return encryption_keys.Remove(key)
+
 /obj/item/device/multitool/attack(mob/M as mob, mob/user as mob)
 	return FALSE
 

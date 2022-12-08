@@ -167,21 +167,34 @@
 	if(QDELETED(O) || QDELETED(user))
 		return
 
-	if(istype(O, /obj/item/device/sentry_computer))
-		var/obj/item/device/sentry_computer/computer = O
-		if(linked_laptop == null)
-			computer.pair_sentry(src)
-			linked_laptop = computer
-			to_chat(user, SPAN_WARNING("You pair the [src] to the sentry laptop."))
-		else
-			if(linked_laptop == O)
-				computer.unpair_sentry(src)
-				linked_laptop = null
-				to_chat(user, SPAN_WARNING("You unpair the [src] to the sentry laptop."))
+	if(istype(O, /obj/item/device/multitool))
+		var/obj/item/device/multitool/tool = O
+		var/list/options = list("register", "decon")
+		var/chosen = tgui_input_list(usr, "What to do", "Multitool Access", options)
+		if(chosen == "register")
+			if(linked_laptop == null)
+				// we register
+				var/key_found = FALSE
+				for(var/i in tool.encryption_keys)
+					var/obj/item = tool.encryption_keys[i]
+					if(istype(item, /obj/item/device/sentry_computer))
+						var/obj/item/device/sentry_computer/computer = item
+						to_chat(usr, SPAN_WARNING("Attempting link"))
+						computer.register(tool, user, src)
+						key_found = TRUE
+						break
+				if(!key_found)
+					to_chat(user, SPAN_WARNING("No valid encryption key found. Link the tool with a sentry computer."))
+				return
 			else
-				linked_laptop.attempted_link(user)
-				to_chat(user, SPAN_WARNING("\The [src] is already linked."))
-		return
+				// if linked laptop == referenced system
+				to_chat(usr, SPAN_WARNING("Attempting unlink"))
+				var/loaded_key = linked_laptop.serial_number
+				if(tool.encryption_keys[loaded_key])
+					linked_laptop.unregister(tool, user, src)
+				else
+					to_chat(usr, "Sentry gun is already encrypted by laptop [linked_laptop.serial_number].")
+				return
 
 	//Securing/Unsecuring
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))

@@ -14,6 +14,7 @@
 	w_class = SIZE_SMALL
 	var/state = 0
 	var/screen_state = 0
+	var/list/registered_tools = list()
 
 /obj/item/device/sentry_computer/Initialize()
 	. = ..()
@@ -75,8 +76,30 @@
 		cell = new_cell
 		user.drop_inv_item_to_loc(new_cell, src)
 		playsound(src,'sound/machines/click.ogg', 25, 1)
+	else if(istype(object, /obj/item/device/multitool))
+		var/obj/item/device/multitool/tool = object
+		var/id = tool.serial_number
+		if(tool.remove_encryption_key(serial_number))
+			to_chat(user, "You unload the encryption key to the multitool.")
+		else
+			to_chat(user, "You load an encryption key to the multitool.")
+			registered_tools += list(id)
+			tool.load_encryption_key(serial_number, src)
 	else
 		..()
+
+/obj/item/device/sentry_computer/proc/register(var/tool, mob/user, var/sentry_gun)
+	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
+	sentry.linked_laptop = src
+	pair_sentry(sentry)
+
+/obj/item/device/sentry_computer/proc/unregister(var/tool, mob/user, var/sentry_gun)
+	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
+	if(sentry.linked_laptop == src)
+		sentry.linked_laptop = null
+		unpair_sentry(sentry)
+	else
+		to_chat(user, SPAN_WARNING("Sentry gun is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
 
 /obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/sentry/target)
 	paired_sentry +=list(target)
@@ -145,7 +168,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(usr, SPAN_WARNING("You are not authorised to configure the sentry."))
 		return
 	if(params["index"])

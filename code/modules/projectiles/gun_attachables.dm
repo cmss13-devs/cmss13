@@ -505,9 +505,9 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	G.attachable_offset["muzzle_x"] = 27
 
-/obj/item/attachable/mateba/Detach(obj/item/weapon/gun/G)
+/obj/item/attachable/mateba/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
 	..()
-	G.attachable_offset["muzzle_x"] = 20
+	detaching_gub.attachable_offset["muzzle_x"] = 20
 
 /obj/item/attachable/mateba/dark
 	icon_state = "mateba_medium_a"
@@ -748,9 +748,9 @@ Defined in conflicts.dm of the #defines folder.
 	. = ..()
 	G.AddElement(/datum/element/drop_retrieval/gun, retrieval_slot)
 
-/obj/item/attachable/magnetic_harness/Detach(var/mob/user, var/obj/item/weapon/gun/G)
+/obj/item/attachable/magnetic_harness/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
 	. = ..()
-	G.RemoveElement(/datum/element/drop_retrieval/gun, retrieval_slot)
+	detaching_gub.RemoveElement(/datum/element/drop_retrieval/gun, retrieval_slot)
 
 /obj/item/attachable/magnetic_harness/lever_sling
 	name = "R4T magnetic sling" //please don't make this attachable to any other guns...
@@ -771,10 +771,10 @@ Defined in conflicts.dm of the #defines folder.
 	G.attachable_offset["under_y"] = 12
 
 
-/obj/item/attachable/magnetic_harness/lever_sling/Detach(var/mob/user, var/obj/item/weapon/gun/G)
+/obj/item/attachable/magnetic_harness/lever_sling/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
 	. = ..()
-	G.attachable_offset["under_x"] = 24
-	G.attachable_offset["under_y"] = 16
+	detaching_gub.attachable_offset["under_x"] = 24
+	detaching_gub.attachable_offset["under_y"] = 16
 
 /obj/item/attachable/magnetic_harness/lever_sling/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -1716,9 +1716,9 @@ Defined in conflicts.dm of the #defines folder.
 		R.flags_equip_slot &= ~SLOT_WAIST //Can't wear it on the belt slot with stock on when we attach it first time.
 
 // When taking it off we want to undo everything not statwise
-/obj/item/attachable/stock/revolver/Detach(var/mob/user, var/obj/item/weapon/gun/G)
+/obj/item/attachable/stock/revolver/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
 	..()
-	var/obj/item/weapon/gun/revolver/m44/R = G
+	var/obj/item/weapon/gun/revolver/m44/R = detaching_gub
 	if(!istype(R))
 		return 0
 
@@ -2360,9 +2360,9 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 
-/obj/item/attachable/bipod/Detach(obj/item/weapon/gun/G)
+/obj/item/attachable/bipod/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
 	if(bipod_deployed)
-		undeploy_bipod(G)
+		undeploy_bipod(detaching_gub)
 	..()
 
 /obj/item/attachable/bipod/update_icon()

@@ -346,10 +346,6 @@
 	else
 		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
 		SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	if(is_wired)
-		M.visible_message(SPAN_DANGER("The barbed wire slices into [M]!"),
-		SPAN_DANGER("The barbed wire slices into you!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		M.apply_damage(10)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/barricade/handle_tail_stab(mob/living/carbon/Xenomorph/xeno)

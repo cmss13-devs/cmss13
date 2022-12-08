@@ -109,9 +109,8 @@
 		if(iscarbon(AM))
 			var/mob/living/carbon/C = AM
 			if(C.mob_size <= MOB_SIZE_XENO)
-				C.visible_message(SPAN_DANGER("The barbed wire slices into [C]!"),
-				SPAN_DANGER("The barbed wire slices into you!"))
-				C.apply_damage(10)
+				C.visible_message(SPAN_DANGER("The barbed wire stuns [C]!"),
+				SPAN_DANGER("The barbed wire stuns you!"))
 				C.apply_effect(2, WEAKEN) //Leaping into barbed wire is VERY bad
 				playsound(C, "bonk", 75, FALSE)
 	..()
@@ -127,7 +126,6 @@
 
 		if(crusher_resistant)
 			visible_message(SPAN_DANGER("[C] smashes into [src]!"))
-			take_damage(150)
 			playsound(src, barricade_hitsound, 25, TRUE)
 
 		else if(!C.stat)
@@ -206,8 +204,8 @@
 				user.visible_message(SPAN_NOTICE("[user] sets up [W.name] on [src]."),
 				SPAN_NOTICE("You set up [W.name] on [src]."))
 
-				maxhealth += 50
-				update_health(-50)
+				maxhealth += 100
+				update_health(-100)
 				can_wire = FALSE
 				is_wired = TRUE
 				flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
@@ -227,8 +225,8 @@
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] removes the barbed wire on [src]."),
 				SPAN_NOTICE("You remove the barbed wire on [src]."))
-				maxhealth -= 50
-				update_health(50)
+				maxhealth -= 100
+				update_health(100)
 				can_wire = TRUE
 				is_wired = FALSE
 				flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB

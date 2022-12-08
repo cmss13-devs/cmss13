@@ -128,7 +128,7 @@
 			//Hugger explosion, like an egg morpher
 			var/obj/item/clothing/mask/facehugger/hugger
 			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
-			for(var/i in 0 to huggers_cur)
+			for(var/i in 1 to huggers_cur)
 				if(prob(chance))
 					hugger = new(loc, hivenumber)
 					step_away(hugger, src, 1)

@@ -88,8 +88,8 @@
 					edge_overlay = icon(T.icon, T.scorchable)
 				if(!T.icon_state_before_scorching)
 					T.icon_state_before_scorching = T.icon_state
-				var/direction_from_nieghbor_towards_src = get_dir(T, src)
-				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[turf_edgeinfo_cache[T.icon_state_before_scorching][dir2indexnum(T.dir)][dir2indexnum(direction_from_nieghbor_towards_src)]]", direction_from_nieghbor_towards_src)
+				var/direction_from_neighbor_towards_src = get_dir(T, src)
+				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[turf_edgeinfo_cache[T.icon_state_before_scorching][dir2indexnum(T.dir)][dir2indexnum(direction_from_neighbor_towards_src)]]", direction_from_neighbor_towards_src)
 				edge_overlay.Blend(culling_mask, ICON_OVERLAY)
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay

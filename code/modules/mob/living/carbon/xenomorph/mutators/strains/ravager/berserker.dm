@@ -18,24 +18,24 @@
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
 
-/datum/xeno_mutator/berserker/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/berserker/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
-	R.mutation_type = RAVAGER_BERSERKER
-	R.plasma_max = 0
-	R.health_modifier -= XENO_HEALTH_MOD_MED
-	R.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
-	R.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	R.received_phero_caps["frenzy"] = 2.9 // Moderate
-	mutator_update_actions(R)
-	MS.recalculate_actions(description, flavor_description)
+	var/mob/living/carbon/Xenomorph/Ravager/ravager = mutator_set.xeno
+	ravager.mutation_type = RAVAGER_BERSERKER
+	ravager.plasma_max = 0
+	ravager.health_modifier -= XENO_HEALTH_MOD_MED
+	ravager.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
+	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
+	ravager.received_phero_caps["frenzy"] = 2.9 // Moderate
+	mutator_update_actions(ravager)
+	mutator_set.recalculate_actions(description, flavor_description)
 
-	apply_behavior_delegate(R)
+	apply_behavior_delegate(ravager)
 
-	R.recalculate_everything()
+	ravager.recalculate_everything()
 
 // Mutator delegate for Berserker ravager
 /datum/behavior_delegate/ravager_berserker

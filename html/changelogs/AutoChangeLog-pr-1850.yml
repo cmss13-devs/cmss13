@@ -1,6 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - rscadd: "Observers now have overhead text! It can be toggled with the regular Langchat setting, or hiding your/others ghosts."
-  - bugfix: "Fixed an oversight which would prevent either own Toggle Dchat or server's from working (they had the same name)."
-  - bugfix: "Fixed Overhead chat not aligning properly with mob icon size, eg. for large xenomorphs."

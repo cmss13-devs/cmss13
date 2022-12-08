@@ -1,0 +1,6 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - rscadd: "You can now refill an Egg Morpher directly with an egg by clicking on it with the egg."
+  - qol: "Carriers can now take facehuggers directly from the Egg Morpher with their facehugger ability."
+  - qol: "Carriers now attempt to pick up all the eggs on a turf if they use their egg ability on an egg lying on the ground."

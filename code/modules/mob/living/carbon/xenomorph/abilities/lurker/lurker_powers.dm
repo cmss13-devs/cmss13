@@ -167,11 +167,11 @@
 			log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
 			target.apply_armoured_damage(30, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
-			xeno.emote("roar")
 			xeno.flick_heal_overlay(1 SECONDS, "#00B800")
 			xeno.gain_health(30)
-			..()
-			return
+	xeno.emote("roar")
+	..()
+	return
 
 /datum/action/xeno_action/activable/tail_jab/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/Xenomorph/xeno = owner
@@ -182,6 +182,9 @@
 		return
 
 	if(!xeno.check_state())
+		return
+
+	if(distance > 2)
 		return
 
 	var/list/turf/path = getline2(xeno, target, include_from_atom = FALSE)
@@ -210,13 +213,10 @@
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return
 
-	if(distance > 2)
-		return
-
 	if(target.stat == DEAD)
 		return
 
-	if(target.stat) //execute provides you with a good chuck of health by murdering your victim
+	if(target.knocked_out || target.stat == UNCONSCIOUS) //called knocked out because for some reason .stat seems to have a delay .
 		if(!xeno.Adjacent(target))
 			to_chat(xeno, SPAN_XENONOTICE("You cannot execute [target] from that far away."))
 			return

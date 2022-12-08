@@ -16,23 +16,22 @@
 	)
 	keystone = TRUE
 
-/datum/xeno_mutator/Vampire/apply_mutator(var/datum/mutator_set/individual_mutators/selected_xeno)
+/datum/xeno_mutator/Vampire/apply_mutator(var/datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if (. == FALSE)
 		return
 
-	var/mob/living/carbon/Xenomorph/Lurker/xeno_client = selected_xeno
+	var/mob/living/carbon/Xenomorph/Lurker/lurker = mutator_set.xeno
 
-	xeno_client.plasmapool_modifier = 0
-	xeno_client.health_modifier -= XENO_HEALTH_MOD_MED
-	xeno_client.speed_modifier += XENO_SPEED_FASTMOD_TIER_2
-	xeno_client.armor_modifier += XENO_ARMOR_MOD_LARGE
-	xeno_client.melee_damage_lower = XENO_DAMAGE_TIER_3
-	xeno_client.melee_damage_upper = XENO_DAMAGE_TIER_3
-	xeno_client.attack_speed_modifier -= 2
+	lurker.plasmapool_modifier = 0
+	lurker.health_modifier -= XENO_HEALTH_MOD_MED
+	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_2
+	lurker.armor_modifier += XENO_ARMOR_MOD_LARGE
+	lurker.melee_damage_lower = XENO_DAMAGE_TIER_3
+	lurker.melee_damage_upper = XENO_DAMAGE_TIER_3
+	lurker.attack_speed_modifier -= 2
 
-	mutator_update_actions(xeno_client)
-	xeno_client.recalculate_actions(description, flavor_description)
-	xeno_client.recalculate_plasma()
-	xeno_client.recalculate_stats()
-	xeno_client.mutation_type = LURKER_VAMPIRE
+	mutator_update_actions(lurker)
+	mutator_set.recalculate_actions(description, flavor_description)
+	lurker.recalculate_everything()
+	lurker.mutation_type = LURKER_VAMPIRE

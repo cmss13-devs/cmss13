@@ -54,7 +54,9 @@
 
 /datum/action/xeno_action/activable/sacrifice_egg/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	var/datum/behavior_delegate/carrier_shaman/BD = X.behavior_delegate
+	var/datum/behavior_delegate/carrier_shaman/BD
+	if(X)
+		BD = X.behavior_delegate
 	if(!istype(BD) || (!..()))
 		return FALSE
 	return !BD.used_shaman_ability

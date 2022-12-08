@@ -9,16 +9,11 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/populate_product_list(var/scale)
 	listed_products = list(
@@ -97,6 +92,7 @@
 		list("Autoinjector Pouch", round(scale * 2), /obj/item/storage/pouch/autoinjector, VENDOR_ITEM_REGULAR),
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),
 		list("Document Pouch", round(scale * 2), /obj/item/storage/pouch/document/small, VENDOR_ITEM_REGULAR),
+		list("Electronics Pouch", round(scale * 2), /obj/item/storage/pouch/electronics, VENDOR_ITEM_REGULAR),
 		list("Explosive Pouch", round(scale * 2), /obj/item/storage/pouch/explosive, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/firstaid/full, VENDOR_ITEM_REGULAR),
 		list("First Responder Pouch", round(scale * 2), /obj/item/storage/pouch/first_responder, VENDOR_ITEM_REGULAR),
@@ -118,7 +114,7 @@
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Combat Flashlight", round(scale * 5), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
-		list("Entrenching Tool", round(scale * 4), /obj/item/tool/shovel/etool, VENDOR_ITEM_REGULAR),
+		list("Entrenching Tool", round(scale * 4), /obj/item/tool/shovel/etool/folded, VENDOR_ITEM_REGULAR),
 		list("Gas Mask", round(scale * 10), /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", round(scale * 2), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
@@ -131,10 +127,13 @@
 		list("Laser Designator", round(scale * 1), /obj/item/device/binoculars/range/designator, VENDOR_ITEM_REGULAR),
 		list("Welding Goggles", round(scale * 3), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", round(scale * 3), /obj/item/tool/extinguisher/mini, VENDOR_ITEM_REGULAR),
+		list("High-Capacity Power Cell", round(scale * 1), /obj/item/cell/high, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", round(scale * 1), /obj/item/stack/fulton, VENDOR_ITEM_REGULAR),
 		list("JTAC Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/jtac, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/engineer, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", round(scale * 0.1), /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
+		list("Spare PDT/L Battle Buddy Kit", round(scale * 4), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
+		list("W-Y brand rechargeable mini-battery", round(scale * 3), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/stock(obj/item/item_to_stock, mob/user)
@@ -211,13 +210,33 @@
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
+//Special cargo-specific vendor with vending offsets
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+	var/turf/turf_to_vent_to
+	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
+	else
+		turf_to_vent_to = get_turf(get_step(src, NORTH))
+		if(H.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+		else
+			turf_to_vent_to = get_turf(get_step(src, SOUTH))
+			if(H.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+			else
+				turf_to_vent_to = loc
+	return turf_to_vent_to
+
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
 	icon_state = "req_guns_wall"
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall/almayer)
-
+ 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
 	desc = "An automated supply rack hooked up to a small storage of various firearms and explosives. Can be accessed by any Marine Rifleman."
@@ -227,6 +246,9 @@
 
 	vend_x_offset = 2
 	vend_y_offset = 1
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/populate_product_list(var/scale)
 	listed_products = list(
@@ -272,12 +294,13 @@
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Combat Flashlight", round(scale * 5), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
-		list("Entrenching Tool (ET)", round(scale * 2), /obj/item/tool/shovel/etool, VENDOR_ITEM_REGULAR),
+		list("Entrenching Tool (ET)", round(scale * 2), /obj/item/tool/shovel/etool/folded, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", round(scale * 1), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", round(scale * 5), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
 		list("Binoculars", round(scale * 1), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
 		list("MB-6 Folding Barricades (x3)", round(scale * 2), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
-		list("Spare PDT/L Battle Buddy Kit", round(scale * 1), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR)
+		list("Spare PDT/L Battle Buddy Kit", round(scale * 3), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
+		list("W-Y brand rechargeable mini-battery", round(scale * 2.5), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
 		)
 
 //------------AMMUNITION VENDOR---------------
@@ -289,16 +312,11 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
 	listed_products = list(
@@ -307,7 +325,7 @@
 		list("Box Of Flechette Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
 		list("Box Of Shotgun Slugs", round(scale * 2), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
 		list("L42A Magazine (10x24mm)", round(scale * 8), /obj/item/ammo_magazine/rifle/l42a, VENDOR_ITEM_REGULAR),
-		list("M41A MK2 Magazine (10x24mm", round(scale * 10), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
+		list("M41A MK2 Magazine (10x24mm)", round(scale * 10), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
 		list("M39 HV Magazine (10x20mm)", round(scale * 7.5), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M44 Speed Loader (.44)", round(scale * 5.3), /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
 		list("M4A3 Magazine (9mm)", round(scale * 6.1), /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
@@ -452,6 +470,10 @@
 
 	vend_x_offset = 2
 
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(var/scale)
 	listed_products = list(
 
@@ -481,6 +503,26 @@
 		list("M74 AGM-S Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/HE/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		)
 
+//Special cargo-specific vendor with vending offsets
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
+	
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+	var/turf/turf_to_vent_to
+	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
+	else
+		turf_to_vent_to = get_turf(get_step(src, NORTHWEST))
+		if(H.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+		else
+			turf_to_vent_to = get_turf(get_step(src, SOUTHWEST))
+			if(H.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
+			else
+				turf_to_vent_to = loc
+	return turf_to_vent_to
+
 //------------ATTACHMENTS VENDOR---------------
 
 /obj/structure/machinery/cm_vending/sorted/attachments
@@ -492,16 +534,11 @@
 
 	vend_delay = 3
 
-/obj/structure/machinery/cm_vending/sorted/attachments/Initialize()
-	. = ..()
-	GLOB.cm_vending_vendors += src
-
-/obj/structure/machinery/cm_vending/sorted/attachments/Destroy()
-	GLOB.cm_vending_vendors -= src
-	return ..()
-
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return
+
+/obj/structure/machinery/cm_vending/sorted/attachments/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
 	listed_products = list(
@@ -547,20 +584,20 @@
 		)
 
 /obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
-	var/turf/T
+	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
-		T = locate(x + vend_x_offset, y + vend_y_offset, z)
+		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
-		T = get_turf(get_step(src, NORTHEAST))
-		if(H.loc == T)
-			T = get_turf(get_step(src, NORTH))
+		turf_to_vent_to = get_turf(get_step(src, NORTHEAST))
+		if(H.loc == turf_to_vent_to)
+			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 		else
-			T = get_turf(get_step(src, SOUTHEAST))
-			if(H.loc == T)
-				T = get_turf(get_step(src, SOUTH))
+			turf_to_vent_to = get_turf(get_step(src, SOUTHEAST))
+			if(H.loc == turf_to_vent_to)
+				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
 			else
-				T = loc
-	return T
+				turf_to_vent_to = loc
+	return turf_to_vent_to
 
 /obj/structure/machinery/cm_vending/sorted/attachments/blend
 	icon_state = "req_attach_wall"
@@ -568,6 +605,7 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall/almayer)
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
 	name = "\improper Armat Systems Squad Attachments Vendor"
@@ -577,6 +615,9 @@
 	hackable = TRUE
 
 	vend_y_offset = 1
+
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad/populate_product_list(var/scale)
 	listed_products = list(
@@ -664,6 +705,9 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Gas Mask", 20, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
 		)
+
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/populate_product_list(var/scale)
 	return

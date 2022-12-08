@@ -56,6 +56,9 @@
 /datum/ammo/New()
 	set_bullet_traits()
 
+/datum/ammo/proc/on_bullet_generation(var/obj/item/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
+	return
+
 /// Populate traits_to_give in this proc
 /datum/ammo/proc/set_bullet_traits()
 	return
@@ -244,26 +247,27 @@
 	shrapnel_type = /obj/item/shard/shrapnel
 	shell_speed = AMMO_SPEED_TIER_4
 
-/datum/ammo/bullet/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
-	if(!(flags_ammo_behavior & AMMO_HIGHIMPACT))
-		return . = ..()
+/datum/ammo/bullet/proc/handle_battlefield_execution(datum/ammo/firing_ammo, mob/living/hit_mob, obj/item/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
+	SIGNAL_HANDLER
 
-	if(!user)
-		return FALSE
+	if(!user || hit_mob == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(hit_mob))
+		return
 
-	if(L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
-		return ..()
-
-	var/mob/living/carbon/human/execution_target = L
 	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
 		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return FALSE
+		return
+
+	var/mob/living/carbon/human/execution_target = hit_mob
 
 	if(execution_target.status_flags & PERMANENTLY_DEAD)
 		to_chat(user, SPAN_DANGER("[execution_target] has already been executed!"))
-		fired_from.delete_bullet(P, TRUE)
-		return TRUE
+		return
 
+	INVOKE_ASYNC(src, .proc/attempt_battlefield_execution, src, execution_target, firing_projectile, user, fired_from)
+
+	return COMPONENT_CANCEL_AMMO_POINT_BLANK
+
+/datum/ammo/bullet/proc/attempt_battlefield_execution(datum/ammo/firing_ammo, mob/living/carbon/human/execution_target, obj/item/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
 	user.affected_message(execution_target,
 		SPAN_HIGHDANGER("You aim \the [fired_from] at [execution_target]'s head!"),
 		SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
@@ -272,8 +276,15 @@
 	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(execution_target))
-		fired_from.delete_bullet(P, TRUE)
-		return TRUE
+		fired_from.delete_bullet(firing_projectile, TRUE)
+		return
+
+	if(!(fired_from.flags_gun_features & GUN_SILENCED))
+		playsound(user, fired_from.fire_sound, fired_from.firesound_volume, FALSE)
+	else
+		playsound(user, fired_from.fire_sound, 25, FALSE)
+
+	shake_camera(user, 1, 2)
 
 	execution_target.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
 	execution_target.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
@@ -281,10 +292,10 @@
 	shake_camera(execution_target, 3, 4)
 	execution_target.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
 
-	execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
+	execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[execution_target] WAS EXECUTED!")), \
 		SPAN_HIGHDANGER("You WERE EXECUTED!"))
 
-	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
+	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, firing_projectile.weapon_cause_data?.cause_name)
 
 	var/area/execution_area = get_area(execution_target)
 
@@ -293,7 +304,7 @@
 
 	if(flags_ammo_behavior & AMMO_EXPLOSIVE)
 		execution_target.gib()
-	return ..()
+
 
 /*
 //======
@@ -423,7 +434,11 @@
 	name = ".50 high-impact pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_2
 	debilitate = list(0,2,0,0,0,1,0,0)
-	flags_ammo_behavior = AMMO_HIGHIMPACT|AMMO_BALLISTIC
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/pistol/heavy/super/highimpact/New()
+	..()
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
@@ -679,7 +694,12 @@
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
 	penetration = ARMOR_PENETRATION_TIER_2
-	flags_ammo_behavior = AMMO_HIGHIMPACT|AMMO_BALLISTIC
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/revolver/mateba/highimpact/New()
+	..()
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
+
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
@@ -690,7 +710,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_10
 	damage_var_high = PROJECTILE_VARIANCE_TIER_1
 	penetration = ARMOR_PENETRATION_TIER_10
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HIGHIMPACT|AMMO_BALLISTIC
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
 	..()
@@ -805,7 +825,7 @@
 	if(!L || L == P.firer || L.lying)
 		return
 
-	L.AdjustSlowed(1) //Slow on hit.
+	L.adjust_effect(1, SLOW) //Slow on hit.
 	L.recalculate_move_delay = TRUE
 	var/super_slowdown_duration = 3
 	//If there's an obstacle on the far side, superslow and do extra damage.
@@ -821,7 +841,7 @@
 		return
 
 	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
-	L.AdjustSuperslowed(super_slowdown_duration)
+	L.adjust_effect(super_slowdown_duration, SUPERSLOW)
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
@@ -1531,7 +1551,7 @@
 			var/mob/living/carbon/Xenomorph/target = M
 			if(target.mob_size >= MOB_SIZE_BIG)
 				slow_duration = 4
-		M.AdjustSuperslowed(slow_duration)
+		M.adjust_effect(slow_duration, SUPERSLOW)
 		L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 	else
@@ -1879,8 +1899,8 @@
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/turf/T = get_turf(M)
 	M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-	M.KnockDown(2)
-	M.KnockOut(2)
+	M.apply_effect(2, WEAKEN)
+	M.apply_effect(2, PARALYZE)
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(300, P.dir, P.weapon_cause_data, 100)
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
@@ -1898,8 +1918,8 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-		M.KnockDown(4)
-		M.KnockOut(4)
+		M.apply_effect(4, WEAKEN)
+		M.apply_effect(4, PARALYZE)
 		hit_something = 1
 		continue
 	if(!hit_something)
@@ -1920,8 +1940,8 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(250, P.dir, P.weapon_cause_data, 100)
-		M.KnockDown(2)
-		M.KnockOut(2)
+		M.apply_effect(2, WEAKEN)
+		M.apply_effect(2, PARALYZE)
 		hit_something = 1
 		continue
 	if(!hit_something)
@@ -2199,11 +2219,11 @@
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			stun_time++
-			H.KnockDown(stun_time)
+			H.apply_effect(stun_time, WEAKEN)
 		else
-			M.KnockDown(stun_time, 1)
+			M.apply_effect(stun_time, WEAKEN)
 
-		C.Stun(stun_time)
+		C.apply_effect(stun_time, STUN)
 	..()
 
 /datum/ammo/energy/yautja/caster/sphere
@@ -2272,13 +2292,13 @@
 		if(isXenoPredalien(M))
 			continue
 		to_chat(M, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
-		M.Stun(stun_time)
+		M.apply_effect(stun_time, STUN)
 
 		if (ishuman(M))
 			var/mob/living/carbon/human/H = M
-			H.KnockDown(stun_time)
+			H.apply_effect(stun_time, WEAKEN)
 		else
-			M.KnockDown(stun_time, 1)
+			M.apply_effect(stun_time, WEAKEN)
 
 
 
@@ -2363,11 +2383,11 @@
 	if(!isXeno(M))
 		if(insta_neuro)
 			if(M.knocked_down < 3)
-				M.AdjustKnockeddown(1 * power)
+				M.adjust_effect(1 * power, WEAKEN)
 			return
 
 		if(ishuman(M))
-			M.Superslow(2.5)
+			M.apply_effect(2.5, SUPERSLOW)
 			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
@@ -2379,7 +2399,7 @@
 
 		if(no_clothes_neuro)
 			if(M.knocked_down < 5)
-				M.AdjustKnockeddown(1 * power) // KD them a bit more
+				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /proc/apply_scatter_neuro(mob/M)
@@ -2393,7 +2413,7 @@
 			return
 
 		if(M.knocked_down < 0.7) // apply knockdown only if current knockdown is less than 0.7 second
-			M.KnockDown(0.7)
+			M.apply_effect(0.7, WEAKEN)
 			M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -2524,13 +2544,13 @@
 	sound_hit 	 = "acid_hit"
 	sound_bounce	= "acid_bounce"
 	damage_type = BURN
-	added_spit_delay = 10
 	spit_cost = 25
 
-	accuracy = HIT_ACCURACY_TIER_3
-	damage = 25
+	accuracy = HIT_ACCURACY_TIER_5
+	damage = 20
+	max_range = 8 // 7 will disappear on diagonals. i love shitcode
 	penetration = ARMOR_PENETRATION_TIER_2
-	shell_speed = AMMO_SPEED_TIER_2
+	shell_speed = AMMO_SPEED_TIER_3
 
 /datum/ammo/xeno/acid/on_shield_block(mob/M, obj/item/projectile/P)
 	burst(M,P,damage_type)
@@ -2539,16 +2559,21 @@
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
-			return
+			return FALSE
 	..()
 
-/datum/ammo/xeno/acid/medium
+/datum/ammo/xeno/acid/spatter
 	name = "acid spatter"
 
-	damage = 25
-	shell_speed = AMMO_SPEED_TIER_3
-	accuracy = HIT_ACCURACY_TIER_5*3
+	damage = 30
 	max_range = 6
+
+/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	if(. == FALSE)
+		return
+
+	new /datum/effects/acid(M, P.firer)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
@@ -2563,7 +2588,7 @@
 	name = "acid spit"
 
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
-	name = "acid spatter"
+	name = "acid scatter"
 
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
@@ -2715,7 +2740,7 @@
 	if(isHumanStrict(M) || isXeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
 		if(M.slowed < 8)
-			M.Slow(8)
+			M.apply_effect(8, SLOW)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"
@@ -2745,7 +2770,51 @@
     if(isHumanStrict(M) || isXeno(M))
         playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
         if(M.slowed < 6)
-            M.Slow(6)
+            M.apply_effect(6, SLOW)
+
+/datum/ammo/xeno/oppressor_tail
+	name = "tail hook"
+	icon_state = "none"
+	ping = null
+	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	damage_type = BRUTE
+
+	damage = 0
+	max_range = 4
+	accuracy = HIT_ACCURACY_TIER_MAX
+
+/datum/ammo/xeno/oppressor_tail/on_bullet_generation(var/obj/item/projectile/generated_projectile, var/mob/bullet_generator)
+	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
+	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = BELOW_MOB_LAYER)
+	generated_projectile.overlays += hook_overlay
+
+/datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/item/projectile/fired_proj)
+	var/mob/living/carbon/Xenomorph/xeno_firer = fired_proj.firer
+	if(xeno_firer.can_not_harm(target))
+		return
+
+	shake_camera(target, 5, 0.1 SECONDS)
+	var/obj/effect/beam/tail_beam = fired_proj.firer.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 5)
+	var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
+	target.overlays += tail_image
+
+	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
+	// we dont mess with preexisting freezes
+	var/wasfrozen = target.frozen
+	//paralyzes target so they don't break the throw by moving...
+	if(!wasfrozen)
+		target.frozen = TRUE
+	//sleeps during this proc...
+	target.throw_atom(fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
+	//inmediately after the sleeps, unfreezes so they can wiggle around.
+	if(!wasfrozen)
+		target.frozen = FALSE
+
+	qdel(tail_beam)
+	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
+
+/datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(var/mob/overlayed_mob, var/image/tail_image)
+	overlayed_mob.overlays -= tail_image
 
 /*
 //======
@@ -2881,7 +2950,7 @@
 
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M))
-		M.Slow(0.4)
+		M.apply_effect(0.4, SLOW)
 
 /*
 //========
@@ -2957,7 +3026,7 @@
 	flamer_reagent_type = /datum/reagent/napalm/blue
 
 /datum/ammo/flamethrower/sentry_flamer
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
 	flamer_reagent_type = /datum/reagent/napalm/blue
 
 	accuracy = HIT_ACCURACY_TIER_8
@@ -2996,7 +3065,7 @@
 /datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
 		return
-	var/datum/reagent/napalm/R = new()
+	var/datum/reagent/napalm/ut/R = new()
 	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
 
@@ -3072,7 +3141,6 @@
 	shrapnel_type = /obj/item/reagent_container/food/drinks/cans/souto/classic
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_IGNORE_RESIST|AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER|AMMO_SPECIAL_EMBED
 	var/obj/item/reagent_container/food/drinks/cans/souto/can_type
-	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "souto_classic"
 
 	max_range = 12

@@ -42,10 +42,14 @@
 	. = ..()
 	. += SPAN_INFO("Blue bubble-like indicators on your HUD will show pings locations or direction to them. The device screen will show the amount of unidentified movements detected (up to 9). Has two modes: slow long-range [SPAN_HELPFUL("([MOTION_DETECTOR_RANGE_LONG] tiles)")] and fast short-range [SPAN_HELPFUL("([MOTION_DETECTOR_RANGE_SHORT] tiles)")]. Use [SPAN_HELPFUL("Alt + Click")] on the device to switch between modes. Using the device on the adjacent multitile vehicle will start the process of recalibrating and scanning vehicle interior for unidentified movements inside.")
 
-/obj/item/device/motiondetector/New()
+/obj/item/device/motiondetector/Initialize()
+	. = ..()
 	range_bounds = new //Just creating a rectangle datum
 	update_icon()
-	..()
+
+/obj/item/device/motiondetector/Destroy()
+	. = ..()
+	range_bounds = null
 
 /obj/item/device/motiondetector/update_icon()
 	//clear overlays
@@ -286,6 +290,11 @@
 	blip_type = "tracker"
 	long_range_locked = TRUE
 
+/obj/item/device/motiondetector/m717/hacked/contractor
+	name = "modified M717 pocket motion detector"
+	desc = "This prototype motion detector sacrifices versatility, having only the long-range mode, for size, being so small it can even fit in pockets. This one has been modified with an after-market IFF sensor to filter out Vanguard's Arrow Incorporated signals instead of USCM ones. Fight fire with fire!"
+	iff_signal = FACTION_CONTRACTOR
+
 /obj/item/device/motiondetector/hacked
 	name = "hacked motion detector"
 	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-UPP movement instead. Fight fire with fire!"
@@ -295,6 +304,11 @@
 	name = "hacked motion detector"
 	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-freelancer movement instead. Fight fire with fire!"
 	iff_signal = FACTION_MERCENARY
+
+/obj/item/device/motiondetector/hacked/contractor
+	name = "modified motion detector"
+	desc = "A device that usually picks up non-USCM signals, but this one's been modified with after-market IFF sensors to detect all non-Vanguard's Arrow Incorporated movement instead. Fight fire with fire!"
+	iff_signal = FACTION_CONTRACTOR
 
 #undef MOTION_DETECTOR_RANGE_LONG
 #undef MOTION_DETECTOR_RANGE_SHORT

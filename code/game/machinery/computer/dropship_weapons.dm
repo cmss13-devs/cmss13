@@ -19,6 +19,10 @@
 	var/datum/cas_fire_mission/editing_firemission
 	var/firemission_signal //id of the signal
 	var/in_firemission_mode = FALSE
+	var/upgraded = MATRIX_DEFAULT // we transport upgrade var from matrixdm
+	var/matrixcol //color of matrix, only used when we upgrade to nv
+	var/power //level of the property
+	var/datum/cas_signal/selected_cas_signal
 
 
 /obj/structure/machinery/computer/dropship_weapons/New()
@@ -36,6 +40,19 @@
 	user.set_interaction(src)
 	ui_interact(user)
 
+/obj/structure/machinery/computer/dropship_weapons/attackby(var/obj/item/W, mob/user as mob)
+	if(istype(W, /obj/item/frame/matrix))
+		var/obj/item/frame/matrix/MATRIX = W
+		if(MATRIX.state == ASSEMBLY_LOCKED)
+			user.drop_held_item(W, src)
+			W.forceMove(src)
+			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
+			upgraded = MATRIX.upgrade
+			matrixcol = MATRIX.matrixcol
+			power = MATRIX.power
+
+		else
+			to_chat(user, SPAN_WARNING("matrix is not complete!"))
 
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
@@ -157,12 +174,10 @@
 
 		if((screen_mode != 0 && in_firemission_mode) || !selected_firemission)
 			in_firemission_mode = FALSE
-
 		if(selected_firemission && in_firemission_mode)
 			if(selected_firemission.check(src)!=FIRE_MISSION_ALL_GOOD)
 				in_firemission_mode = FALSE
 				selected_firemission = null
-
 		if(selected_firemission && in_firemission_mode)
 			screen_mode = 3
 			fm_offset = firemission_envelope.recorded_offset
@@ -401,6 +416,7 @@
 		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
+		firemission_envelope.remove_user_from_tracking(usr)
 		in_firemission_mode = FALSE
 
 	if(href_list["change_direction"])
@@ -551,7 +567,6 @@
 			to_chat(usr, SPAN_DANGER("Bug encountered, no CAS group exists for this console, report this to a coder!"))
 			return
 
-		var/datum/cas_signal/selected_cas_signal
 		var/targ_id = text2num(href_list["cas_camera"])
 		for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
 			if(LT.target_id == targ_id && LT.valid_signal())
@@ -563,9 +578,18 @@
 			return
 
 		selected_cas_signal.linked_cam.view_directly(usr)
+		give_action(usr, /datum/action/human_action/cancel_view)
+		RegisterSignal(usr, COMSIG_MOB_RESET_VIEW, .proc/remove_from_view)
+		RegisterSignal(usr, COMSIG_MOB_RESISTED, .proc/remove_from_view)
+		firemission_envelope.apply_upgrade(usr)
 		to_chat(usr, "You peek through the guidance camera.")
 
 	ui_interact(usr)
+
+/obj/structure/machinery/computer/dropship_weapons/proc/remove_from_view()
+	UnregisterSignal(usr, COMSIG_MOB_RESET_VIEW)
+	selected_cas_signal.linked_cam.remove_from_view(usr)
+	firemission_envelope.remove_upgrades(usr)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission()
 	set waitfor = 0
@@ -616,7 +640,6 @@
 	..()
 	if(firemission_envelope && firemission_envelope.guidance)
 		firemission_envelope.remove_user_from_tracking(user)
-
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_trace_loc()
 	if(!firemission_envelope)

@@ -41,6 +41,7 @@
 
 	vis_contents.Cut()
 	QDEL_NULL(captured_mob)
+	range_bounds = null
 
 	. = ..()
 
@@ -86,6 +87,7 @@
 			captured_mob.pixel_x = 16
 			captured_mob.pixel_y = 16
 			vis_contents += captured_mob
+			user.stop_pulling() // Automatically remove the grab
 			huggers_to_grow += huggers_per_corpse
 			update_icon()
 		return
@@ -184,14 +186,14 @@
 
 /obj/effect/alien/resin/special/eggmorph/attack_ghost(mob/dead/observer/user)
 	if(world.time < hugger_timelock)
-		to_chat(user, SPAN_WARNING("The hive cannot support huggers yet..."))
+		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
 		return
 	if(world.time - user.timeofdeath < 3 MINUTES)
 		var/time_left = round((user.timeofdeath + 3 MINUTES - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. ([time_left] seconds left)"))
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return
 	if(!stored_huggers)
-		to_chat(user, SPAN_WARNING("\The [src] doesn't have any huggers to inhabit."))
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
 
 	if(world.time > last_marine_count + marine_count_cooldown)
@@ -206,7 +208,7 @@
 		if(isXenoFacehugger(mob))
 			current_hugger_count++
 	if(playable_hugger_limit <= current_hugger_count)
-		to_chat(user, SPAN_WARNING("\The [src] cannot support more huggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
+		to_chat(user, SPAN_WARNING("\The [src] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
 		return
 
 	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") == "No")

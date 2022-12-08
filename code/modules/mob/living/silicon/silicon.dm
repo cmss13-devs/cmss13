@@ -39,10 +39,10 @@
 	switch(severity)
 		if(1)
 			src.take_limb_damage(20)
-			Stun(rand(5,10))
+			apply_effect(rand(5,10), STUN)
 		if(2)
 			src.take_limb_damage(10)
-			Stun(rand(1,5))
+			apply_effect(rand(1,5), STUN)
 	flash_eyes(1, TRUE, type = /atom/movable/screen/fullscreen/flash/noise)
 
 	to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
@@ -86,7 +86,7 @@
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)
-			stat(null, eta_status)
+			stat(null, "Evacuation: [eta_status]")
 
 
 // this function displays the stations manifest in a separate window

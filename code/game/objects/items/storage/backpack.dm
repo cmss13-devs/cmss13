@@ -485,6 +485,13 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	. = ..()
 	internal_transmitter.phone_category = "Marine"
 
+/obj/item/storage/backpack/marine/satchel/rto/io
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)
+
+/obj/item/storage/backpack/marine/satchel/rto/io/Initialize()
+	. = ..()
+	internal_transmitter.phone_category = "IO"
+
 /obj/item/storage/backpack/marine/smock
 	name = "\improper M3 sniper's smock"
 	desc = "A specially-designed smock with pockets for all your sniper needs."
@@ -492,7 +499,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 
 /obj/item/storage/backpack/marine/marsoc
-	name = "\improper USCM MARSOC IMP tactical rucksack"
+	name = "\improper USCM SOF IMP tactical rucksack"
 	icon_state = "tacrucksack"
 	desc = "With a backpack like this, you'll forget you're on a hell march designed to kill you."
 	worn_accessible = TRUE

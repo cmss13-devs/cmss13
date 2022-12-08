@@ -8,6 +8,9 @@
 	var/item_state = null //if you don't want to use icon_state for onmob inhand/belt/back/ear/suitstorage/glove sprite.
 						//e.g. most headsets have different icon_state but they all use the same sprite when shown on the mob's ears.
 						//also useful for items with many icon_state values when you don't want to make an inhand sprite for each value.
+	/// When set to true, every single sprite can be found in the one icon .dmi, rather than being spread into onmobs, inhands, and objects
+	var/contained_sprite = FALSE
+
 	var/r_speed = 1.0
 	var/force = 0
 	var/damtype = BRUTE
@@ -114,7 +117,6 @@
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 
-	GLOB.item_list += src
 	if(inherent_traits)
 		for(var/trait in inherent_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_INHERENT)
@@ -134,7 +136,6 @@
 	QDEL_NULL_LIST(actions)
 	master = null
 	locked_to_mob = null
-	GLOB.item_list -= src
 
 	var/obj/item/storage/S = loc
 	if(istype(S))
@@ -147,22 +148,22 @@
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)
+	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
+	explosion_throw(severity, explosion_direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
 				if(!indestructible)
-					qdel(src)
-			else
-				explosion_throw(severity, explosion_direction)
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				if(!indestructible)
-					qdel(src)
-			else
-				explosion_throw(severity, explosion_direction)
+					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(!indestructible)
-				qdel(src)
+				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+				deconstruct(FALSE)
 
 /obj/item/mob_launch_collision(var/mob/living/L)
 	forceMove(L.loc)
@@ -198,7 +199,7 @@ cases. Override_icon_state should be a list.*/
 			if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				item_state = new_item_state ? new_item_state : "d_" + item_state
-			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3)
+			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
 				item_state = new_item_state ? new_item_state : "c_" + item_state
 		if(new_protection)
@@ -309,7 +310,7 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	if(dropsound && (src.loc.z))
+	if(dropsound && (src.loc?.z))
 		playsound(src, dropsound, dropvol, drop_vary)
 	src.do_drop_animation(user)
 
@@ -782,7 +783,7 @@ cases. Override_icon_state should be a list.*/
 	INVOKE_ASYNC(user, /atom.proc/visible_message, SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
-	user.zoom_cooldown = world.time + 20
+	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
@@ -806,9 +807,9 @@ cases. Override_icon_state should be a list.*/
 	unzoom(user)
 
 /obj/item/proc/do_zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0)
-	if(world.time <= user.zoom_cooldown) //If we are spamming the zoom, cut it out
+	if(!COOLDOWN_FINISHED(user, zoom_cooldown)) //If we are spamming the zoom, cut it out
 		return
-	user.zoom_cooldown = world.time + 20
+	COOLDOWN_START(user, zoom_cooldown, 20)
 	if(user.interactee)
 		user.unset_interaction()
 	else
@@ -855,6 +856,8 @@ cases. Override_icon_state should be a list.*/
 		mob_state = item_state
 	else
 		mob_state = icon_state
+	if(contained_sprite)
+		mob_state += GLOB.slot_to_contained_sprite_shorthand[slot]
 	return mob_state
 
 /obj/item/proc/drop_to_floor(mob/wearer)
@@ -895,9 +898,14 @@ cases. Override_icon_state should be a list.*/
 	var/list/viewers_clients = list()
 	for(var/mob/M as anything in viewers(7, src))
 		if(M.client)
+			if(M.client.prefs.item_animation_pref_level == SHOW_ITEM_ANIMATIONS_NONE)
+				continue
+			if(src.loc == target.loc && M.client.prefs.item_animation_pref_level == SHOW_ITEM_ANIMATIONS_HALF)
+				continue
 			viewers_clients += M.client
 
 	flick_overlay_to_clients(pickup_animation, viewers_clients, 4)
+
 	var/matrix/animation_matrix = new(pickup_animation.transform)
 	animation_matrix.Turn(pick(-30, 30))
 	animation_matrix.Scale(0.65)

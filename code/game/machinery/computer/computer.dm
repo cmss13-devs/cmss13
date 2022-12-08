@@ -17,9 +17,6 @@
 	. = ..()
 	if(processing)
 		start_processing()
-
-/obj/structure/machinery/computer/Initialize()
-	. = ..()
 	power_change()
 
 /obj/structure/machinery/computer/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -53,7 +50,7 @@
 				verbs.Cut()
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 		else
 	return
@@ -111,16 +108,16 @@
 			for (var/obj/C in src)
 				C.forceMove(loc)
 			if (src.stat & BROKEN)
-				to_chat(user, SPAN_NOTICE(" The broken glass falls out."))
+				to_chat(user, SPAN_NOTICE("The broken glass falls out."))
 				new /obj/item/shard( src.loc )
 				A.state = 3
 				A.icon_state = "3"
 			else
-				to_chat(user, SPAN_NOTICE(" You disconnect the monitor."))
+				to_chat(user, SPAN_NOTICE("You disconnect the monitor."))
 				A.state = 4
 				A.icon_state = "4"
-			M.deconstruct(src)
-			qdel(src)
+			M.disassemble(src)
+			deconstruct()
 	else
 		if(isXeno(user))
 			src.attack_alien(user)

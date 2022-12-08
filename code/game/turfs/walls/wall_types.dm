@@ -91,10 +91,7 @@
 /turf/closed/wall/almayer/research/containment/wall/ex_act(severity, explosion_direction)
 	if(severity <= EXPLOSION_THRESHOLD_MEDIUM) // Wall is resistant to explosives (and also crusher charge)
 		return
-
 	. = ..()
-
-
 
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
 	if(isXeno(M))
@@ -239,6 +236,7 @@
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
+	icon = 'icons/lobby/title.dmi'
 	icon_state = ""
 //	icon_state = "title_holiday"
 	layer = FLY_LAYER
@@ -246,7 +244,6 @@
 
 /turf/closed/wall/indestructible/splashscreen/Initialize()
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/lobby_art))
 	tag = "LOBBYART"
 
 /proc/force_lobby_art(art_id)
@@ -399,9 +396,6 @@
 /turf/closed/wall/mineral/bone/is_weedable()
 	return NOT_WEEDABLE
 
-/turf/closed/wall/mineral/bone/ex_act(severity, explosion_direction, source, mob/source_mob)
-	return
-
 //Misc walls
 
 /turf/closed/wall/cult
@@ -500,9 +494,6 @@
 	walltype = WALL_STRATA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
 
-/turf/closed/wall/strata_ice/ex_act(severity)
-	return
-
 /turf/closed/wall/strata_ice/dirty
 	icon_state = "strata_ice_dirty"
 	desc = "Columns and crags stacked atop one another. They defiantly push towards the heavens, but are stopped short by dripping frigid excess."
@@ -562,6 +553,9 @@
 
 /turf/closed/wall/solaris/reinforced/hull
 	hull = 1
+
+/turf/closed/wall/solaris/reinforced/hull/lv522
+	name = "Colony Windbreaker"
 
 /turf/closed/wall/solaris/rock
 	name = "solaris ridge rock wall"
@@ -639,9 +633,6 @@
 	walltype = WALL_SHIVA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
 
-/turf/closed/wall/strata_ice/ex_act(severity)
-	return
-
 /turf/closed/wall/shiva/prefabricated
 	name = "prefabricated structure wall"
 	icon_state = "shiva_fab"
@@ -689,7 +680,7 @@
 /turf/closed/wall/resin
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
-	icon = 'icons/mob/hostiles/structures.dmi'
+	icon = 'icons/mob/xenos/structures.dmi'
 	icon_state = "resin"
 	walltype = WALL_RESIN
 	damage_cap = HEALTH_WALL_XENO
@@ -943,7 +934,7 @@
 /obj/structure/alien/movable_wall/proc/take_damage(var/damage)
 	health -= damage
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 	else
 		update_icon()
 
@@ -1239,3 +1230,9 @@
 	icon_state = "metal"//DMI specific name
 	walltype = WALL_HUNTERSHIP
 	hull = 1
+
+/turf/closed/wall/huntership/destructible
+	name = "degraded hunter wall"
+	color = "#c5beb4"
+	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
+	hull = 0

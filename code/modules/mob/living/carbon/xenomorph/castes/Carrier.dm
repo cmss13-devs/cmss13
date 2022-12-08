@@ -17,7 +17,6 @@
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_DRONE)
-	eggs_max = 5
 	throwspeed = SPEED_AVERAGE
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_ONE_HAND
@@ -42,6 +41,7 @@
 	name = XENO_CASTE_CARRIER
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
 	icon_size = 64
+	icon_xeno = 'icons/mob/xenos/carrier.dmi'
 	icon_state = "Carrier Walking"
 	plasma_types = list(PLASMA_PURPLE)
 
@@ -116,10 +116,8 @@
 				hugger_image_index += funny_list[rand(1,length(funny_list))]
 
 /mob/living/carbon/Xenomorph/Carrier/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_carrier))
 	. = ..()
-
-	hugger_overlays_icon = mutable_appearance('icons/mob/hostiles/overlay_effects64x64.dmi',"empty")
+	hugger_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
 
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)

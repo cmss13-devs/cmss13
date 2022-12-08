@@ -6,7 +6,6 @@
 	var/tier = 0
 	var/dead_icon = "Drone Dead"
 	var/language = LANGUAGE_XENOMORPH
-
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
 	var/melee_vehicle_damage = 10	//allows fine tuning melee damage to vehicles per caste.
@@ -827,6 +826,8 @@
 	return allies[faction]
 
 /datum/hive_status/proc/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	if(HAS_TRAIT(src, TRAIT_NO_HIVE_DELAY))
+		return FALSE
 	return TRUE
 
 /datum/hive_status/corrupted
@@ -894,7 +895,8 @@
 	color = "#828296"
 	ui_color = "#828296"
 
-	construction_allowed = XENO_QUEEN
+	construction_allowed = XENO_NOBODY
+	destruction_allowed = XENO_NOBODY
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
@@ -918,7 +920,7 @@
 	return FALSE
 
 /datum/hive_status/yautja
-	name = "Yautja Hive"
+	name = "Hellhound Pack"
 	hivenumber = XENO_HIVE_YAUTJA
 	internal_faction = FACTION_YAUTJA
 
@@ -939,7 +941,7 @@
 	color = "#6abd99"
 	ui_color = "#6abd99"
 
-	hive_inherant_traits = list(TRAIT_XENONID)
+	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"

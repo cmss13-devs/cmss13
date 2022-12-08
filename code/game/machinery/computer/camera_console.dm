@@ -81,7 +81,7 @@
 			concurrent_users += user_ref
 		// Turn on the console
 		if(length(concurrent_users) == 1 && is_living)
-			use_power(active_power_usage)
+			update_use_power(2)
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
 		user.client.register_map_obj(cam_background)
@@ -207,7 +207,8 @@
 		current = null
 		last_camera_turf = null
 		range_turfs = list()
-		use_power(0)
+		if(use_power)
+			update_use_power(1)
 		STOP_PROCESSING(SSfastobj, src)
 	user.unset_interaction()
 
@@ -335,6 +336,7 @@
 	use_power = 0
 	idle_power_usage = 0
 	active_power_usage = 0
+	needs_power = FALSE
 	network = list(CAMERA_NET_MORTAR)
 	exproof = TRUE
 	colony_camera_mapload = FALSE

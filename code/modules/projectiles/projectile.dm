@@ -61,6 +61,9 @@
 
 	var/list/bullet_traits
 
+	 /// The beam linked to the projectile. Can be utilized for things like grappling hooks, harpoon guns, tripwire guns, etc..
+	var/obj/effect/bound_beam
+
 /obj/item/projectile/Initialize(mapload, var/datum/cause_data/cause_data)
 	. = ..(mapload)
 	path = list()
@@ -79,6 +82,8 @@
 	path = null
 	weapon_cause_data = null
 	firer = null
+	if(bound_beam)
+		qdel(bound_beam)
 	return ..()
 
 /obj/item/projectile/proc/apply_bullet_trait(list/entry)
@@ -102,9 +107,10 @@
 /obj/item/projectile/ex_act()
 	return FALSE //We do not want anything to delete these, simply to make sure that all the bullet references are not runtiming. Otherwise, constantly need to check if the bullet exists.
 
-/obj/item/projectile/proc/generate_bullet(ammo_datum, bonus_damage = 0, special_flags = 0)
+/obj/item/projectile/proc/generate_bullet(datum/ammo/ammo_datum, bonus_damage = 0, special_flags = 0, var/mob/bullet_generator)
 	ammo 		= ammo_datum
 	name 		= ammo.name
+	icon 		= ammo.icon
 	icon_state 	= ammo.icon_state
 	damage 		= ammo.damage + bonus_damage //Mainly for emitters.
 	scatter		= ammo.scatter
@@ -114,6 +120,8 @@
 	damage_falloff = ammo.damage_falloff
 	damage_buildup = ammo.damage_buildup
 	projectile_override_flags = special_flags
+
+	ammo_datum.on_bullet_generation(src, bullet_generator)
 
 	// Apply bullet traits from ammo
 	for(var/entry in ammo.traits_to_give)
@@ -917,7 +925,7 @@
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, damage_result, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
 		return
 
-	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
+	if(damage || (ammo_flags & AMMO_SPECIAL_EMBED))
 
 		var/splatter_dir = get_dir(P.starting, loc)
 		handle_blood_splatter(splatter_dir)
@@ -927,7 +935,7 @@
 		P.play_damage_effect(src)
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
-			if(ammo_flags && AMMO_SPECIAL_EMBED)
+			if(ammo_flags & AMMO_SPECIAL_EMBED)
 				P.ammo.on_embed(src, organ)
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type
@@ -960,6 +968,10 @@
 	var/damage_result = damage
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+
+	if((ammo_flags & AMMO_FLAME) && (src.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE))
+		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
+		return
 
 	if(isXeno(P.firer))
 		var/mob/living/carbon/Xenomorph/X = P.firer
@@ -1100,7 +1112,7 @@
 	health -= round(P.damage/2)
 	if(health < 0)
 		visible_message(SPAN_WARNING("[src] breaks down!"))
-		destroy()
+		deconstruct()
 	return TRUE
 
 
@@ -1132,13 +1144,8 @@
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P)
 		return
-	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & AMMO_IS_SILENCED)
-		var/hit_msg = "You've been shot in the [parse_zone(P.def_zone)] by [P.name]!"
-		to_chat(src, isXeno(src) ? SPAN_XENODANGER("[hit_msg]"):SPAN_HIGHDANGER("[hit_msg]"))
-	else
-		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
-						SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
+		SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 
 	last_damage_data = P.weapon_cause_data
 	if(P.firer && ismob(P.firer))

@@ -38,10 +38,10 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 		else
 	return
@@ -58,11 +58,14 @@
 			return
 		var/obj/item/tool/weldingtool/WT = C
 		if(WT.remove_fuel(0, user))
-			to_chat(user, SPAN_NOTICE(" Slicing lattice joints ..."))
-		new /obj/item/stack/rods(src.loc)
-		qdel(src)
-
+			to_chat(user, SPAN_NOTICE("Slicing lattice joints..."))
+		deconstruct()
 	return
+
+/obj/structure/lattice/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/rods(src.loc)
+	return ..()
 
 /obj/structure/lattice/proc/updateOverlays()
 	//if(!(istype(src.loc, /turf/open/space)))

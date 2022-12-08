@@ -132,10 +132,10 @@
 		var/list/obj/item/used_radios = list()
 		switch(message_mode)
 			if(MESSAGE_MODE_LOCAL)
-			if("whisper")
+			if(RADIO_MODE_WHISPER)
 				whisper_say(message, speaking, alt_name)
 				return
-			if("intercom")
+			if(RADIO_CHANNEL_INTERCOM)
 				message_mode = null
 				for(var/obj/item/device/radio/intercom/I in view(1))
 					used_radios += I

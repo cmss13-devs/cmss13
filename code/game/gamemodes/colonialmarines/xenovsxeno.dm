@@ -273,7 +273,7 @@
 
 	declare_completion_announce_xenomorphs()
 	calculate_end_statistics()
-	declare_random_fact()
+	declare_fun_facts()
 
 	return TRUE
 

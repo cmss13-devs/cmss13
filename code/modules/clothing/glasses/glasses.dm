@@ -370,6 +370,7 @@
 	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
 	icon_state = "mgoggles"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	var/activated = FALSE
 	var/active_icon_state = "mgoggles_down"
 	var/inactive_icon_state = "mgoggles"
@@ -531,8 +532,8 @@
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
-	name = "sunglasses"
+	desc = "Generic off-brand eyewear, used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
+	name = "cheap sunglasses"
 	icon_state = "sun"
 	item_state = "sunglasses"
 	darkness_view = -1
@@ -552,8 +553,8 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/sunglasses/big
-	name = "shades"
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks many flashes."
+	name = "\improper BiMex personal shades"
+	desc = "These are an expensive pair of BiMex sunglasses. This brand is popular with USCM foot sloggers because its patented mirror refraction has been said to offer protection from atomic flash, solar radiation, and targeting lasers. To top it all off, everyone seems to know a guy who knows a guy who knows a guy that had a laser pistol reflect off of his shades. BiMex came into popularity with the Marines after its 'Save the Colonies and Look Cool Doing It' ad campaign."
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE

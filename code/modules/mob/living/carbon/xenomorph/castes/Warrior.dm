@@ -31,7 +31,7 @@
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
 	desc = "A beefy, alien with an armored carapace."
-	icon = 'icons/mob/hostiles/warrior.dmi'
+	icon = 'icons/mob/xenos/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -52,7 +52,7 @@
 
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
-	icon_xeno = 'icons/mob/hostiles/warrior.dmi'
+	icon_xeno = 'icons/mob/xenos/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
@@ -63,8 +63,8 @@
 	if(isliving(pulling) && lunging)
 		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
 		var/mob/living/lunged = pulling
-		lunged.SetStunned(0)
-		lunged.SetKnockeddown(0)
+		lunged.set_effect(0, STUN)
+		lunged.set_effect(0, WEAKEN)
 	return ..()
 
 /mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
@@ -90,7 +90,7 @@
 
 		if(should_neckgrab && L.mob_size < MOB_SIZE_BIG)
 			L.drop_held_items()
-			L.KnockDown(get_xeno_stun_duration(L, 2))
+			L.apply_effect(get_xeno_stun_duration(L, 2), WEAKEN)
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))
@@ -108,11 +108,11 @@
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"
 
-	var/slash_charge_cdr = 0.30 SECONDS // Amount to reduce charge cooldown by per slash
+	var/slash_charge_cdr = 0.20 SECONDS // Amount to reduce charge cooldown by per slash
 	var/lifesteal_percent = 7
 	var/max_lifesteal = 9
-	var/lifesteal_range =  3
-	var/lifesteal_lock_duration = 20
+	var/lifesteal_range =  3 // Marines within 3 tiles of range will give the warrior extra health
+	var/lifesteal_lock_duration = 20 // This will remove the glow effect on warrior after 2 seconds
 	var/color = "#6c6f24"
 	var/emote_cooldown = 0
 

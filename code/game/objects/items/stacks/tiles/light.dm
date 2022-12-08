@@ -7,6 +7,7 @@
 	throwforce = 5.0
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "smashed")
 	stack_id = "light floor tile"
+	turf_type = /turf/open/floor/light
 	var/on = 1
 	var/state //0 = fine, 1 = flickering, 2 = breaking, 3 = broken
 

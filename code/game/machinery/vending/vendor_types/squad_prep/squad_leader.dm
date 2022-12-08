@@ -88,13 +88,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 	desc = "An automated gear rack for Squad Leaders."
 	icon_state = "sl_gear"
 	show_points = TRUE
-	use_points = TRUE
 	vendor_role = list(JOB_SQUAD_LEADER)
 	req_access = list(ACCESS_MARINE_LEADER)
 
-/obj/structure/machinery/cm_vending/gear/leader/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_gear_leader
+/obj/structure/machinery/cm_vending/gear/leader/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_gear_leader
 
 //------------CLOTHING VENDOR---------------
 
@@ -158,9 +156,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 	req_access = list(ACCESS_MARINE_LEADER)
 	vendor_role = list(JOB_SQUAD_LEADER)
 
-/obj/structure/machinery/cm_vending/clothing/leader/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_clothing_leader
+/obj/structure/machinery/cm_vending/clothing/leader/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_clothing_leader
 
 /obj/structure/machinery/cm_vending/clothing/leader/alpha
 	squad_tag = SQUAD_MARINE_1

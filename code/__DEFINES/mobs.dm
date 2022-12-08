@@ -50,6 +50,7 @@
 #define COUGHING		4
 #define TOURETTES		8
 #define NERVOUS			16
+#define OPIATE_RECEPTOR_DEFICIENCY 32
 //=================================================
 
 //sdisabilities
@@ -150,7 +151,11 @@
 
 //=================================================
 
-///////////////////INTERNAL ORGANS DEFINES///////////////////
+/*   MOVE DEFINES   */
+#define MOVE_INTENT_WALK        1
+#define MOVE_INTENT_RUN         2
+
+/*   INTERNAL ORGAN DEFINES   */
 #define ORGAN_ASSISTED	1
 #define ORGAN_ROBOT		2
 

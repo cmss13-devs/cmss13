@@ -46,6 +46,9 @@
 	// Weather
 	var/weather_enabled = TRUE	// Manual override for weather if set to false
 
+	// Fishing
+	var/fishing_loot = /datum/fish_loot_table
+
 	// Ambience sounds
 	var/list/soundscape_playlist = list() //Clients in this area will hear one of the sounds in this list from time to time
 	var/soundscape_interval = INITIAL_SOUNDSCAPE_COOLDOWN //The base interval between each soundscape.
@@ -116,6 +119,8 @@
 
 /// Returns the correct ambience sound track for a client in this area
 /area/proc/get_sound_ambience(client/target)
+	if(SSweather.is_weather_event && SSweather.map_holder.should_affect_area(src))
+		return SSweather.weather_event_instance.ambience
 	return ambience_exterior
 
 /area/proc/poweralert(var/state, var/obj/source as obj)
@@ -378,9 +383,6 @@
 		var/area/old_area = get_area(OldLoc)
 		if(old_area.master == master)
 			return
-		if(isliving(M))
-			var/mob/living/L = M
-			L.update_weather()
 		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
 	else if(istype(A, /obj/structure/machinery))
 		add_machine(A)
@@ -434,8 +436,8 @@
 		var/mob/living/carbon/human/H = M
 		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
 			return
-		H.AdjustStunned(5)
-		H.AdjustKnockeddown(5)
+		H.adjust_effect(5, STUN)
+		H.adjust_effect(5, WEAKEN)
 
 	to_chat(M, "Gravity!")
 

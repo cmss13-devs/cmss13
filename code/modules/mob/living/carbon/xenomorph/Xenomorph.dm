@@ -57,6 +57,9 @@
 
 	var/obj/item/iff_tag/iff_tag = null
 
+	var/static/list/walking_state_cache = list()
+	var/has_walking_icon_state = FALSE
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Core Stats
@@ -129,6 +132,7 @@
 	var/acid_level = 0
 
 	// Mutator-related and other important vars
+	var/mutation_icon_state = null
 	var/mutation_type = null
 	var/datum/mutator_set/individual_mutators/mutators = new
 
@@ -173,8 +177,8 @@
 	/// xenomorph type is given upon spawn
 	var/base_actions
 
-	// Mark tracking --
-	var/obj/effect/alien/resin/marker/tracked_marker = null //this is the resin mark that is currently being tracked by the xeno
+	/// this is the resin mark that is currently being tracked by the xeno
+	var/obj/effect/alien/resin/marker/tracked_marker
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -197,6 +201,7 @@
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
+	var/received_phero_caps = list()
 	var/acid_modifier = 0
 	var/weed_modifier = 0
 	var/evasion_modifier = 0
@@ -237,6 +242,13 @@
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
 
 	var/pounce_distance = 0
+
+	// Life reduction variables.
+	var/life_stun_reduction = -1.5
+	var/life_knockdown_reduction = -1.5
+	var/life_knockout_reduction = -1.5
+	var/life_daze_reduction = -1.5
+	var/life_slow_reduction = -1.5
 
 
 	//////////////////////////////////////////////////////////////////
@@ -294,7 +306,6 @@
 	var/recovery_aura = 0
 	var/ignore_aura = FALSE // ignore a specific pherom, input type
 
-
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Vars that should be deleted
@@ -334,6 +345,7 @@
 	vis_contents += wound_icon_carrier
 
 	if(oldXeno)
+		set_movement_intent(oldXeno.m_intent)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
 		life_kills_total = oldXeno.life_kills_total
@@ -361,13 +373,13 @@
 
 	mutators.xeno = src
 
-	update_icon_source()
-
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	else
 		to_world("something went very wrong")
 		return
+
+	update_icon_source()
 
 	acid_splash_cooldown = caste.acid_splash_cooldown
 
@@ -554,7 +566,8 @@
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = in_hive.color
+	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
+		color = in_hive.color
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
@@ -638,7 +651,7 @@
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/xeno = user
 		if(hivenumber != xeno.hivenumber)
-			. += "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive."
+			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
@@ -650,6 +663,10 @@
 /mob/living/carbon/Xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
+
+	if(tracked_marker)
+		tracked_marker.xenos_tracking -= src
+		tracked_marker = null
 
 	if(mind)
 		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
@@ -728,7 +745,7 @@
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
-		puller.KnockDown(rand(caste.tacklestrength_min,caste.tacklestrength_max))
+		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
 		return FALSE
@@ -943,6 +960,15 @@
 		current_aura = null
 		to_chat(src, SPAN_XENOWARNING("You lose your pheromones."))
 
+	// Also recalculate received pheros now
+	for(var/capped_aura in received_phero_caps)
+		switch(capped_aura)
+			if("frenzy")
+				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
+			if("warding")
+				warding_new = min(warding_new, received_phero_caps[capped_aura])
+			if("recovery")
+				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	evolution_threshold =  caste.evolution_threshold
@@ -965,7 +991,7 @@
 
 /mob/living/carbon/Xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
-	KnockDown(4, TRUE)
+	apply_effect(4, WEAKEN)
 	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 

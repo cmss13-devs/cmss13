@@ -1,0 +1,5 @@
+author: "Shad0vvs"
+delete-after: True
+changes:
+  - bugfix: "Fixed the door button for CIC Lobby."
+  - rscadd: "Added two buttons for brig perma lockdown to prevent being able to be locked inside."

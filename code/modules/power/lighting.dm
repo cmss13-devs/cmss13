@@ -38,6 +38,10 @@
 		if(3)
 			. += "The casing is closed."
 
+/obj/structure/machinery/light_construct/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/sheet/metal(get_turf(src.loc), sheets_refunded)
+	return ..()
 
 /obj/structure/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -47,15 +51,13 @@
 			to_chat(usr, "You begin deconstructing [src].")
 			if (!do_after(usr, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
-			new /obj/item/stack/sheet/metal( get_turf(src.loc), sheets_refunded )
 			user.visible_message("[user.name] deconstructs [src].", \
 				"You deconstruct [src].", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-			qdel(src)
+			deconstruct()
 		if (src.stage == 2)
 			to_chat(usr, "You have to remove the wires first.")
 			return
-
 		if (src.stage == 3)
 			to_chat(usr, "You have to unscrew the case first.")
 			return
@@ -132,7 +134,7 @@
 	desc = "A bright fluorescent tube light. Looking at it for too long makes your eyes go watery."
 	anchored = 1
 	layer = FLY_LAYER
-	use_power = 2
+	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
@@ -212,6 +214,7 @@
 			if(prob(5))
 				broken(1)
 
+	active_power_usage = (brightness * 10)
 	addtimer(CALLBACK(src, .proc/update, 0), 1)
 
 	set_pixel_location()
@@ -287,10 +290,9 @@
 				update_use_power(2)
 				SetLuminosity(brightness)
 	else
-		update_use_power(1)
+		update_use_power(0)
 		SetLuminosity(0)
 
-	active_power_usage = (luminosity * 10)
 	if(on != on_gs)
 		on_gs = on
 
@@ -302,7 +304,7 @@
 
 // examine verb
 /obj/structure/machinery/light/get_examine_text(mob/user)
-	..()
+	. = ..()
 	switch(status)
 		if(LIGHT_OK)
 			to_chat(user, "It is turned [on? "on" : "off"].")
@@ -411,6 +413,8 @@
 // true if area has power and lightswitch is on
 /obj/structure/machinery/light/proc/has_power()
 	var/area/A = src.loc.loc
+	if(!src.needs_power)
+		return A.master.lightswitch
 	return A.master.lightswitch && A.master.power_light
 
 /obj/structure/machinery/light/proc/flicker(var/amount = rand(10, 20))
@@ -543,7 +547,7 @@
 			if (prob(75))
 				broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 	return
 
@@ -563,6 +567,9 @@
 		if(loc)
 			var/area/A = src.loc.loc
 			A = A.master
+			if(!src.needs_power)
+				seton(A.lightswitch)
+				return
 			seton(A.lightswitch && A.power_light)
 
 // called when on fire

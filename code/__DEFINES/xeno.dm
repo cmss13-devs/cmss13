@@ -82,6 +82,8 @@
 #define NORMAL_XENO             0
 #define XENO_QUEEN              1
 #define XENO_LEADER             2
+/// Nobody can create constructions. (Feral)
+#define XENO_NOBODY             3
 
 #define XENO_HIVE_AREA_SIZE 21 //The turf size from the centrepiece of a hive in which special things can be done (like building structures)
 
@@ -662,3 +664,5 @@
 #define TAILSTAB_COOLDOWN_NORMAL 1
 #define TAILSTAB_COOLDOWN_HIGH 1.5
 #define TAILSTAB_COOLDOWN_VERY_HIGH 2
+
+#define FRENZY_DAMAGE_MULTIPLIER	2

@@ -234,8 +234,6 @@
 	. = ..()
 	create_reagents(30) //Used to be 300
 	reagents.add_reagent("chloralhydrate", 22)	//Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
-	..()
-	return
 
 
 /obj/item/tool/pen/sleepypen/attack(mob/M as mob, mob/user as mob)
@@ -326,3 +324,7 @@
 /obj/item/tool/stamp/ro
 	name = "requisitions officer's rubber stamp"
 	icon_state = "stamp-ro"
+/obj/item/tool/barricade_hammer//doesn't do anything, yet
+	name = "carpenter's hammer"
+	icon_state = "carpenters_hammer"
+	desc = "Can be used to thwack nails or wooden objects to hammer or even repair them."

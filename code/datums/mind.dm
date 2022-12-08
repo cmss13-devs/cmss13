@@ -18,6 +18,7 @@
 	// List of objectives you have knowledge about
 	var/datum/objective_memory_storage/objective_memory
 	var/datum/objective_memory_interface/objective_interface
+	var/datum/research_objective_memory_interface/research_objective_interface
 
 /datum/mind/New(var/key, var/ckey)
 	src.key = key
@@ -25,10 +26,12 @@
 	player_entity = setup_player_entity(ckey)
 	objective_memory = new()
 	objective_interface = new()
+	research_objective_interface = new()
 
 /datum/mind/Destroy()
 	QDEL_NULL(objective_memory)
 	QDEL_NULL(objective_interface)
+	QDEL_NULL(research_objective_interface)
 	return ..()
 
 /datum/mind/proc/transfer_to(mob/living/new_character, var/force = FALSE)
@@ -57,7 +60,7 @@
 		new_character.key = key		//now transfer the key to link the client to our new body
 		SSround_recording.recorder.update_key(new_character)
 		if(new_character.client)
-			new_character.client.init_statbrowser()
+			new_character.client.init_verbs()
 			new_character.client.change_view(world_view_size) //reset view range to default.
 			new_character.client.pixel_x = 0
 			new_character.client.pixel_y = 0
@@ -139,3 +142,6 @@
 
 	objective_interface.holder = GET_TREE(TREE_MARINE)
 	objective_interface.tgui_interact(current)
+
+/datum/mind/proc/view_research_objective_memories(mob/recipient)
+	research_objective_interface.tgui_interact(current)

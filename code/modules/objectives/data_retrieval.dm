@@ -48,7 +48,7 @@
 	initial_area = get_area(terminal)
 
 /datum/cm_objective/retrieve_data/terminal/Destroy()
-	terminal.objective = null
+	terminal?.objective = null
 	terminal = null
 	return ..()
 
@@ -215,9 +215,9 @@
 	w_class = SIZE_TINY
 
 /obj/item/disk/objective/Destroy()
-	objective?.disk = null
+	qdel(objective)
 	objective = null
-	retrieve_objective.target_item = null
+	qdel(retrieve_objective)
 	retrieve_objective = null
 	return ..()
 
@@ -243,6 +243,7 @@
 
 /obj/structure/machinery/computer/objective/Destroy()
 	objective?.terminal = null
+	qdel(objective)
 	objective = null
 	return ..()
 

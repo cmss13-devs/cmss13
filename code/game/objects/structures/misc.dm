@@ -21,15 +21,18 @@
 
 /obj/structure/showcase/proc/explode()
 	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
-	var/turf/Tsec = get_turf(src)
+	deconstruct(FALSE)
 
-	new /obj/item/stack/sheet/metal(Tsec)
-	new /obj/item/stack/rods(Tsec)
-	new /obj/item/stack/rods(Tsec)
+/obj/structure/showcase/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		var/turf/Tsec = get_turf(src)
 
-	new /obj/effect/spawner/gibspawner/robot(Tsec)
+		new /obj/item/stack/sheet/metal(Tsec)
+		new /obj/item/stack/rods(Tsec)
+		new /obj/item/stack/rods(Tsec)
 
-	qdel(src)
+		new /obj/effect/spawner/gibspawner/robot(Tsec)
+	return ..()
 
 /obj/structure/showcase/proc/healthcheck()
 	if(health <= 0)
@@ -39,9 +42,9 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				qdel(src)
+				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 
 /obj/structure/target
 	name = "shooting target"
@@ -140,6 +143,7 @@ obj/structure/xenoautopsy/tank/larva
 	unacidable = TRUE
 	health = null
 	layer = TURF_LAYER
+	plane = FLOOR_PLANE
 	density = 0
 	opacity = 0
 

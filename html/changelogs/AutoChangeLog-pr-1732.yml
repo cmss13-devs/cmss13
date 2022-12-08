@@ -1,0 +1,12 @@
+author: "Carlarc, Mikola Wei"
+delete-after: True
+changes:
+  - imageadd: "Resprited Oppressor, sprites made by Mikola Wei."
+  - imageadd: "Re-added animated telegraphs for Abduction. They've been tweaked to always have the default border - that way, the weird way byond handles short-lived animated objects doesn't make the telegraph absurdly small. It can always be easily seen."
+  - balance: "Oppressor can hook over the M2C and M56D again."
+  - refactor: "Tail stab's main ability usage is moved to a different proc for future custom tail stabs."
+  - rscadd: "Redesigned Tail Stab for Oppressor. Tail seize now utilizes a projectile and beams to fire a 3-tile reaching tail hook, that pulls in AND DOES NOT STUN marines. (It slows them for 0.5 seconds)"
+  - imageadd: "Oppressor's abduct has had its effect strings changed to imply coiling and uncoiling of the tail. Captured targets will now have a beam of the Oppressor's tail attached to them (Purely visual) until they reach the Praetorian, alongside an overlay of the vice grip on their legs."
+  - refactor: "Added a proc, .ammo/on_bullet_generation(), for the ammo datum to apply effects to the generated bullet/projectile."
+  - refactor: "Added the bound_beam variable to projectiles. Could be used in the future for things like harpoon guns, lasers, etc."
+  - bugfix: "Fixed non-damaging projectiles causing a blood spurt. (It was checking flags && FLAG instead of flag & flag, remember to use CHECK_BITFIELD folks!)"

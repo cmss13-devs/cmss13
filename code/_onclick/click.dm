@@ -98,15 +98,21 @@
 	var/obj/item/W = get_active_hand()
 
 	// Special gun mode stuff.
-	if (W == A)
+	if(W == A)
 		mode()
 		return
 
 	//Self-harm preference. isXeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if (A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src) && W.force && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
-		if (world.time % 3)
-			to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
-		return
+	if(A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src))
+		if(W)
+			if(W.force && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
+				if(world.time % 3)
+					to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
+				return
+		else
+			if(world.time % 3)
+				to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
+			return
 
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
@@ -187,8 +193,7 @@
 	if (mods["alt"])
 		var/turf/T = get_turf(src)
 		if(T && user.TurfAdjacent(T) && T.contents.len)
-			user.listed_turf = T
-			user.client << output("[url_encode(json_encode(T.name))];", "statbrowser:create_listedturf")
+			user.set_listed_turf(T)
 
 		return TRUE
 	return FALSE

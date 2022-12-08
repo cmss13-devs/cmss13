@@ -1,29 +1,5 @@
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-/datum/asset/simple/tgui
-	keep_local_name = TRUE
-	assets = list(
-		"tgui.bundle.js" = file("tgui/public/tgui.bundle.js"),
-		"tgui.bundle.css" = file("tgui/public/tgui.bundle.css"),
-	)
-
-/datum/asset/simple/tgui_panel
-	keep_local_name = TRUE
-	assets = list(
-		"tgui-panel.bundle.js" = file("tgui/public/tgui-panel.bundle.js"),
-		"tgui-panel.bundle.css" = file("tgui/public/tgui-panel.bundle.css"),
-	)
-
-/datum/asset/simple/fontawesome
-	keep_local_name = TRUE
-	assets = list(
-		"fa-regular-400.ttf" = 'html/font-awesome/webfonts/fa-regular-400.ttf',
-		"fa-solid-900.ttf" = 'html/font-awesome/webfonts/fa-solid-900.ttf',
-		"fa-v4compatibility.ttf" = 'html/font-awesome/webfonts/fa-v4compatibility.ttf',
-		"font-awesome.css" = 'html/font-awesome/css/all.min.css',
-		"v4shim.css" = 'html/font-awesome/css/v4-shims.min.css',
-	)
-
 /datum/asset/simple/common
 	assets = list(
 		"common.css" = 'html/browser/common.css',
@@ -256,11 +232,90 @@
 		Insert("[icon_name]_big", iconBig)
 	return ..()
 
+/datum/asset/spritesheet/ranks
+	name = "squadranks"
+
+/datum/asset/spritesheet/ranks/register()
+	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
+	var/list/squads = list("Alpha", "Bravo", "Charlie", "Delta", "Foxtrot", "Cryo")
+
+	var/list/icon_data = list(
+		list("Mar", null),
+		list("ass", "hudsquad_ass"),
+		list("Eng", "hudsquad_engi"),
+		list("Med", "hudsquad_med"),
+		list("SG", "hudsquad_gun"),
+		list("Spc", "hudsquad_spec"),
+		list("RTO", "hudsquad_rto"),
+		list("SL", "hudsquad_leader"),
+	)
+
+	var/i
+	for(i = 1; i < length(squads); i++)
+		var/squad = squads[i]
+		var/color = squad_colors[i]
+		for(var/iref in icon_data)
+			var/list/iconref = iref
+			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
+			background.Blend(color, ICON_MULTIPLY)
+			if(iconref[2])
+				var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)
+				background.Blend(squad_icon, ICON_OVERLAY)
+			background.Crop(25,25,32,32)
+			background.Scale(16,16)
+
+			Insert("squad-[squad]-hud-[iconref[1]]", background)
+	return ..()
+
+/datum/asset/spritesheet/vending_products
+	name = "vending"
+
+/datum/asset/spritesheet/vending_products/register()
+	for (var/k in GLOB.vending_products)
+		var/atom/item = k
+		var/icon_file = initial(item.icon)
+		var/icon_state = initial(item.icon_state)
+		var/icon/I
+
+		if (!ispath(item, /atom))
+			log_debug("not atom! [item]")
+			continue
+
+		if (sprites[icon_file])
+			continue
+
+		if(icon_state in icon_states(icon_file))
+			I = icon(icon_file, icon_state, SOUTH)
+			var/c = initial(item.color)
+			if (!isnull(c) && c != "#FFFFFF")
+				I.Blend(initial(c), ICON_MULTIPLY)
+		else
+			if (ispath(k, /obj/effect/essentials_set))
+				var/obj/effect/essentials_set/es_set = new k()
+				var/list/spawned_list = es_set.spawned_gear_list
+				if(LAZYLEN(spawned_list))
+					var/obj/item/target = spawned_list[1]
+					icon_file = initial(target.icon)
+					icon_state = initial(target.icon_state)
+					var/target_obj = new target()
+					I = getFlatIcon(target_obj)
+					I.Scale(32,32)
+					qdel(target_obj)
+			else
+				item = new k()
+				I = icon(item.icon, item.icon_state, SOUTH)
+				qdel(item)
+		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
+
+		Insert(imgid, I)
+	return ..()
+
+
 /datum/asset/spritesheet/choose_fruit
 	name = "choosefruit"
 
 /datum/asset/spritesheet/choose_fruit/register()
-	var/icon_file = 'icons/mob/hostiles/fruits.dmi'
+	var/icon_file = 'icons/mob/xenos/fruits.dmi'
 	var/icon_states_list = icon_states(icon_file)
 	for(var/obj/effect/alien/resin/fruit/fruit as anything in typesof(/obj/effect/alien/resin/fruit))
 		var/icon_state = initial(fruit.mature_icon_state)

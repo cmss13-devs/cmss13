@@ -1,0 +1,12 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscadd: "Added vendable spare batteries for the locator tube in its vendors, alongside one spare in every PDT/L kit."
+  - qol: "PDT/L kits now fold into cardboard."
+  - rscadd: "Added many spare PDT/L kits and batteries to req. (Marines dropped them off at req once they realized they were shitty milsurp knockoffs)"
+  - balance: "Made minibatteries tiny."
+  - refactor: "Added boldwarning span macro."
+  - imageadd: "Improved locator tube sprites: Now has a pop-out battery slot at the top that shows up if emptied. The main green stripe is now a battery indicator with appropiately-faded-out yellow warning and blinking red danger sprites. The small notch at the bottom is now a bracelet indicator that turns off without a battery and blinks red if the bracelet was somehow destroyed."
+  - qol: "The locator tube and PDT bracelet now share a serial number, easily viewed via examination. This lets you see which PDT/L kits are paired."
+  - soundadd: "Added a ton of sounds to interactions with the PDT/L kit. Beeps on scanning, buzzes on errors, clicks on handling."
+  - bugfix: "Fixed a bug in which a string referenced a null var."

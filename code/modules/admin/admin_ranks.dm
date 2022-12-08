@@ -37,7 +37,8 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 				if("rejuv","rejuvinate")		rights |= R_REJUVINATE
 				if("color")						rights |= R_COLOR
 				if("varedit")					rights |= R_VAREDIT
-				if("everything","host","all")	rights |= (R_HOST|R_BUILDMODE|R_ADMIN|R_BAN|R_SERVER|R_DEBUG|R_PERMISSIONS|R_POSSESS|R_STEALTH|R_REJUVINATE|R_COLOR|R_VAREDIT|R_SOUNDS|R_SPAWN|R_MOD|R_MENTOR)
+				if("event")						rights |= R_EVENT
+				if("everything","host","all")	rights |= (R_HOST|R_BUILDMODE|R_ADMIN|R_BAN|R_SERVER|R_DEBUG|R_PERMISSIONS|R_POSSESS|R_STEALTH|R_REJUVINATE|R_COLOR|R_VAREDIT|R_EVENT|R_SOUNDS|R_NOLOCK|R_SPAWN|R_MOD|R_MENTOR)
 				if("sound","sounds")			rights |= R_SOUNDS
 				if("nolock")					rights |= R_NOLOCK
 				if("spawn","create")			rights |= R_SPAWN
@@ -103,6 +104,10 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	if(List.len >= 2)
 		rank = ckeyEx(List[2])
 
+	var/list/extra_titles = list()
+	if(List.len >= 3)
+		extra_titles = List.Copy(3)
+
 	if(mentor)
 		if(!(LAZYISIN(MentorRanks, rank)))
 			log_admin("ADMIN LOADER: WARNING: Mentors.txt attempted to override staff ranks!")
@@ -113,7 +118,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	var/rights = admin_ranks[rank]
 
 	//create the admin datum and store it for later use
-	var/datum/admins/D = new /datum/admins(rank, rights, ckey)
+	var/datum/admins/D = new /datum/admins(rank, rights, ckey, extra_titles)
 
 	//find the client for a ckey if they are connected and associate them with the new admin datum
 	D.associate(GLOB.directory[ckey])

@@ -8,6 +8,11 @@
 	w_class = SIZE_TINY
 	garbage = TRUE
 
+/obj/item/prop/helmetgarb/Initialize(mapload, ...)
+	. = ..()
+	if(garbage)
+		flags_obj |= OBJ_IS_HELMET_GARB
+
 /obj/item/prop/helmetgarb/gunoil
 	name = "gun oil"
 	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self-cleaning firearm."
@@ -448,8 +453,9 @@
 	name = "old M2 night vision goggles"
 	desc = "This pair has been gutted of all electronics and therefore not working. But hey, they make you feel tacticool, and that's all that matters, right?"
 	shape = NVG_SHAPE_COSMETIC
+	garbage = TRUE
 
-/obj/item/prop/helmetgarb/helmet_nvg/marsoc //for MARSOC
+/obj/item/prop/helmetgarb/helmet_nvg/marsoc //for Marine Raiders
 	name = "\improper Tactical M3 night vision goggles"
 	desc = "With an integrated self-recharging battery, nothing can stop you. Put them on your helmet and press the button and it's go-time."
 	infinite_charge = TRUE
@@ -481,7 +487,7 @@
 
 /obj/item/prop/helmetgarb/spacejam_tickets
 	name = "\improper Tickets to Space Jam"
-	desc = "Two original, crisp, orange, tickets to the one and only Space Jam of 2188. And what a jam it was."
+	desc = "Two original, crisp, orange, tickets to the one and only Space Jam of 2181. And what a jam it was."
 	icon_state = "tickets_to_space_jam"
 
 /obj/item/prop/helmetgarb/riot_shield

@@ -42,11 +42,25 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	return shuttle
 
+/obj/structure/machinery/computer/shuttle_control/is_valid_user(mob/user)
+	if(isXeno(user))
+		var/mob/living/carbon/Xenomorph/xeno_user = user
+		if(xeno_user.caste?.is_intelligent)
+			return TRUE // Allow access by Queen and Predalien
+	return ..()
+
+/obj/structure/machinery/computer/shuttle_control/allowed(mob/M)
+	if(isXeno(M))
+		var/mob/living/carbon/Xenomorph/xeno_user = M
+		if(xeno_user.caste?.is_intelligent)
+			return TRUE // Allow access by Queen and Predalien
+	return ..()
+
 /obj/structure/machinery/computer/shuttle_control/attack_hand(mob/user)
 	if(..(user))
 		return
-	//src.add_fingerprint(user)	//shouldn't need fingerprints just for looking at it.
-	if((!allowed(user) || ismaintdrone(user)) && !isXeno(user))
+
+	if(!allowed(user) || ismaintdrone(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 
@@ -312,7 +326,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 						almayer_aa_cannon.is_disabled = TRUE
 				else
 					if(shuttle.require_link)
-						update_use_power(4080)
+						use_power(4080)
 					shuttle.launch(src)
 
 			else if(!onboard && isXenoQueen(M) && shuttle.location == 1 && !shuttle.iselevator)
@@ -501,7 +515,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	return 0
 
 /obj/structure/machinery/computer/shuttle_control/ex_act(severity)
-	if(unacidable) return //unacidable shuttle consoles are also immune to explosions.
+	if(unacidable)
+		return //unacidable shuttle consoles are also immune to explosions.
 	..()
 
 

@@ -7,7 +7,7 @@
 #define M2C_HIGH_COOLDOWN_ROLL 0.45
 #define M2C_PASSIVE_COOLDOWN_AMOUNT 4
 #define M2C_OVERHEAT_OVERLAY 14
-#define M2C_CRUSHER_STUN 3 SECONDS
+#define M2C_CRUSHER_STUN 3 //amount in ticks (roughly 3 seconds)
 
 //////////////////////////////////////////////////////////////
 //Mounted MG, Replacment for the current jury rig code.
@@ -458,6 +458,11 @@
 	var/user_old_x = 0
 	var/user_old_y = 0
 
+/obj/structure/machinery/m56d_hmg/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_THROW_MOB
+
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -612,6 +617,11 @@
 /obj/structure/machinery/m56d_hmg/ex_act(severity)
 	update_health(severity)
 	return
+
+/obj/structure/machinery/m56d_hmg/proc/exit_interaction(mob/user)
+	SIGNAL_HANDLER
+
+	user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/proc/update_damage_state()
 	var/health_percent = round(health/health_max * 100)
@@ -827,40 +837,46 @@
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 
-	if(!Adjacent(user))
-		return
-	src.add_fingerprint(usr)
-	if((over_object == user && (in_range(src, user) || locate(src) in user))) //Make sure its on ourselves
-		if(user.interactee == src)
-			user.unset_interaction()
-			user.visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[user] lets go of \the [src].")]", SPAN_NOTICE("You let go of \the [src]."))
-			return
-		if(operator) //If there is already a operator then they're manning it.
-			if(operator.interactee == null)
-				operator = null //this shouldn't happen, but just in case
-			else
-				to_chat(user, "Someone's already controlling it.")
-				return
+	var/user_turf = get_turf(user)
+
+	for(var/opp_dir in reverse_nearby_direction(src.dir))
+		if(get_step(src, opp_dir) == user_turf) //Players must be behind, or left or right of that back tile
+			src.add_fingerprint(usr)
+			if((over_object == user && (in_range(src, user) || locate(src) in user))) //Make sure its on ourselves
+				if(user.interactee == src)
+					user.unset_interaction()
+					user.visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[user] lets go of \the [src].")]", SPAN_NOTICE("You let go of \the [src]."))
+					return
+				if(operator) //If there is already a operator then they're manning it.
+					if(operator.interactee == null)
+						operator = null //this shouldn't happen, but just in case
+					else
+						to_chat(user, "Someone's already controlling it.")
+						return
+				else
+					if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
+						to_chat(user, "You're already manning something!")
+						return
+					if(user.get_active_hand() != null)
+						to_chat(user, SPAN_WARNING("You need a free hand to man \the [src]."))
+
+					if(!user.allow_gun_usage)
+						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+						return
+					else
+						user.freeze()
+						user.set_interaction(src)
+						give_action(user, /datum/action/human_action/mg_exit)
+
 		else
-			if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
-				to_chat(user, "You're already manning something!")
-				return
-			if(user.get_active_hand() != null)
-				to_chat(user, SPAN_WARNING("You need a free hand to man \the [src]."))
-
-			if(!user.allow_gun_usage)
-				to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
-				return
-
-			else
-				user.set_interaction(src)
+			to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
-	user.frozen = TRUE
+	RegisterSignal(user, COMSIG_MOB_RESISTED, .proc/exit_interaction)
+	RegisterSignal(user, COMSIG_MOB_MG_EXIT, .proc/exit_interaction)
 	flags_atom |= RELAY_CLICK
 	user.status_flags |= IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] mans \the [src]."),SPAN_NOTICE("You man \the [src], locked and loaded!"))
-	user.update_canmove()
 	user.forceMove(src.loc)
 	user.setDir(dir)
 	user_old_x = user.pixel_x
@@ -868,23 +884,26 @@
 	user.reset_view(src)
 	update_pixels(user)
 	operator = user
-	user.unfreeze()
 
 /obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
-	user.update_canmove()
+	user.unfreeze()
 	user.reset_view(null)
-	var/grip_dir = reverse_direction(dir)
-	var/old_dir = dir
-	step(user, grip_dir)
-	user_old_x = 0
-	user_old_y = 0
-	user.setDir(old_dir)
+	user.forceMove(get_step(src, reverse_direction(src.dir)))
+	user.setDir(dir) //set the direction of the player to the direction the gun is facing
+	user_old_x = 0 //reset our x
+	user_old_y = 0 //reset our y
 	update_pixels(user, FALSE)
-	if(operator == user)
+	if(operator == user) //We have no operator now
 		operator = null
+	remove_action(user, /datum/action/human_action/mg_exit)
+	UnregisterSignal(user, list(
+		COMSIG_MOB_MG_EXIT,
+		COMSIG_MOB_RESISTED
+	))
+
 
 /obj/structure/machinery/m56d_hmg/proc/update_pixels(var/mob/user, var/mounting = TRUE)
 	if(mounting)
@@ -942,7 +961,7 @@
 	if(operator)
 		to_chat(operator, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram!"))
 		operator.unset_interaction()
-		operator.KnockDown(M2C_CRUSHER_STUN)
+		operator.apply_effect(M2C_CRUSHER_STUN, WEAKEN)
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"
@@ -1095,6 +1114,7 @@
 	to_chat(user, SPAN_NOTICE("You deploy \the [M]."))
 	if((rounds > 0) && !user.get_inactive_hand())
 		user.set_interaction(M)
+		give_action(user, /datum/action/human_action/mg_exit)
 	M.rounds = rounds
 	M.overheat_value = overheat_value
 	M.health = health
@@ -1468,30 +1488,32 @@
 
 /obj/structure/machinery/m56d_hmg/auto/attack_hand(mob/user)
 	..()
-	grip_dir = reverse_direction(dir)
-	var/turf/T = get_step(src.loc, grip_dir)
-	if(user.loc == T)
-		if(operator) //If there is already a operator then they're manning it.
-			if(operator.interactee == null)
-				operator = null //this shouldn't happen, but just in case
+
+	var/turf/user_turf = get_turf(user)
+	for(var/opp_dir in reverse_nearby_direction(src.dir))
+		if(get_step(src, opp_dir) == user_turf)
+			if(operator) //If there is already a operator then they're manning it.
+				if(operator.interactee == null)
+					operator = null //this shouldn't happen, but just in case
+				else
+					to_chat(user, "Someone's already controlling it.")
+					return
+			if(!(user.alpha > 60))
+				to_chat(user, SPAN_WARNING("You aren't going to be setting up while cloaked."))
+				return
 			else
-				to_chat(user, "Someone's already controlling it.")
-				return
-		if(!(user.alpha > 60))
-			to_chat(user, SPAN_WARNING("You aren't going to be setting up while cloaked."))
-			return
-		else
-			if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
-				to_chat(user, "You're already manning something!")
-				return
+				if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
+					to_chat(user, "You're already manning something!")
+					return
 
-		if(user.get_active_hand() == null && user.get_inactive_hand() == null)
-			user.set_interaction(src)
+			if(user.get_active_hand() == null && user.get_inactive_hand() == null)
+				user.freeze()
+				user.set_interaction(src)
+				give_action(user, /datum/action/human_action/mg_exit)
+			else
+				to_chat(usr, SPAN_NOTICE("Your hands are too busy holding things to grab the handles!"))
 		else
-			to_chat(usr, SPAN_NOTICE("Your hands are too busy holding things to grab the handles!"))
-
-	else
-		to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
+			to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
 
 // DISASSEMBLY
 
@@ -1622,6 +1644,7 @@
 	update_pixels(user)
 	playsound(src.loc, 'sound/items/m56dauto_rotate.ogg', 25, 1)
 	to_chat(user, SPAN_NOTICE("You rotate [src], using the tripod to support your pivoting movement."))
+
 
 /obj/structure/machinery/m56d_hmg/auto/proc/disable_interaction(mob/user, NewLoc, direction)
 	SIGNAL_HANDLER

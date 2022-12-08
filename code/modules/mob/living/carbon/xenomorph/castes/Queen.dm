@@ -24,7 +24,7 @@
 	evolution_allowed = FALSE
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
-	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
+	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/spatter)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	acid_level = 2
@@ -188,7 +188,7 @@
 			if(X == Q) continue
 			to_chat(X, message)
 
-		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src)
+		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src, A)
 		point.color = color
 
 		return COMPONENT_INTERRUPT_CLICK
@@ -232,6 +232,7 @@
 		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)
 
 	remove_from_all_mob_huds()
+	is_watching = null
 
 	return ..()
 
@@ -257,6 +258,7 @@
 	small_explosives_stun = FALSE
 	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
+	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
 
 	var/breathing_counter = 0
@@ -334,6 +336,7 @@
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
+	mutation_icon_state = QUEEN_NORMAL
 	mutation_type = QUEEN_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
@@ -372,7 +375,6 @@
 	queen_aged = TRUE
 
 /mob/living/carbon/Xenomorph/Queen/Initialize()
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
 	. = ..()
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
@@ -416,6 +418,7 @@
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
+	color = in_hive.color
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -910,7 +913,7 @@
 	var/mob/living/carbon/Xenomorph/Queen/Queen = bound_xeno
 	if(Queen.ovipositor)
 		Queen.icon = Queen.queen_ovipositor_icon
-		Queen.icon_state = "[Queen.mutation_type] Queen Ovipositor"
+		Queen.icon_state = "[Queen.mutation_icon_state || Queen.mutation_type] Queen Ovipositor"
 		return TRUE
 
 	// Switch icon back and then let normal icon behavior happen

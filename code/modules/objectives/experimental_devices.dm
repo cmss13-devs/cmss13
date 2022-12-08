@@ -38,6 +38,7 @@
 	name += " #[serial_number]"
 
 /obj/item/device/mass_spectrometer/adv/objective/Destroy()
+	qdel(objective)
 	objective = null
 	// see [/datum/cm_objective/retrieve_item/proc/clean_up_ref]
 	return ..()
@@ -54,6 +55,7 @@
 	name += " #[serial_number]"
 
 /obj/item/device/reagent_scanner/adv/objective/Destroy()
+	qdel(objective)
 	objective = null
 	// see [/datum/cm_objective/retrieve_item/proc/clean_up_ref]
 	return ..()
@@ -70,6 +72,7 @@
 	name += " #[serial_number]"
 
 /obj/item/device/healthanalyzer/objective/Destroy()
+	qdel(objective)
 	objective = null
 	// see [/datum/cm_objective/retrieve_item/proc/clean_up_ref]
 	return ..()
@@ -86,6 +89,7 @@
 	name += " #[serial_number]"
 
 /obj/item/device/autopsy_scanner/objective/Destroy()
+	qdel(objective)
 	objective = null
 	// see [/datum/cm_objective/retrieve_item/proc/clean_up_ref]
 	return ..()

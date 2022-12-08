@@ -83,6 +83,7 @@
 #define PLASMA_CATECHOLAMINE 	"catecholamineplasma"
 #define PLASMA_EGG 				"eggplasma"
 #define PLASMA_NEUROTOXIN 		"neurotoxinplasma"
+#define PLASMA_HEMOCATALENE		"hemocatalene"
 #define PLASMA_ROYAL 			"royalplasma"
 
 // Flags for Reagent

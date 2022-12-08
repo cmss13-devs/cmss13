@@ -11,3 +11,10 @@
 	set hidden = 1
 	var/action_name = "Retrieve Egg"
 	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/verb_plasma_strike()
+	set category = "Alien"
+	set name = "Plasma Strike"
+	set hidden = 1
+	var/action_name = "Plasma Strike"
+	handle_xeno_macro(src, action_name)

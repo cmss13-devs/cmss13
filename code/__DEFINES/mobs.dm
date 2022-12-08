@@ -323,6 +323,7 @@
 #define CARRIER_NORMAL 		"Normal"
 #define CARRIER_SHAMAN		"Shaman"
 #define CARRIER_EGGSAC		"Eggsac"
+#define CARRIER_REAPER		"Reaper"
 
 // Burrower strain flags
 #define BURROWER_NORMAL 	"Normal"

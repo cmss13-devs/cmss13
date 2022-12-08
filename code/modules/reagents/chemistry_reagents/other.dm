@@ -973,6 +973,18 @@
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_BIOCIDIC = 2)
 
+/datum/reagent/plasma/hemocatalene
+	name = "Hemocatalene Plasma"
+	id = PLASMA_HEMOCATALENE
+	description = "A red-ish plasma..."
+	color = "#cf5b51"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_SPECIAL
+	objective_value = OBJECTIVE_EXTREME_VALUE
+	properties = list(PROPERTY_HEMOGENIC = 20, PROPERTY_REPAIRING = 2, PROPERTY_TOXIC = 1)
+	custom_metabolism = AMOUNT_PER_TIME(1, 12 SECONDS)
+
 /datum/reagent/plasma/royal
 	name = "Royal Plasma"
 	id = PLASMA_ROYAL

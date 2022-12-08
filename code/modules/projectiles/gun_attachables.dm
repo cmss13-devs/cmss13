@@ -378,7 +378,7 @@ Defined in conflicts.dm of the #defines folder.
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_speed = 6
 	melee_mod = MELEE_FORCE_STRONG
-	 /// You run faster with a knife!
+	/// You run faster with a knife!
 	var/move_delay_mult = 0.8
 
 /obj/item/attachable/bayonet/combat_knife/pickup(mob/user, silent)

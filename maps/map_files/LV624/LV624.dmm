@@ -2280,8 +2280,8 @@
 	name = "Corporate Lobby APC"
 	},
 /obj/structure/machinery/door_control{
-	id = "secure_outter_blast";
-	name = "Outter Blast Door";
+	id = "secure_outer_blast";
+	name = "Outer Blast Door";
 	pixel_x = 25;
 	pixel_y = -5
 	},
@@ -12010,8 +12010,8 @@
 /area/lv624/lazarus/secure_storage)
 "aWb" = (
 /obj/structure/machinery/door_control{
-	id = "secure_outter_blast";
-	name = "Outter Blast Door";
+	id = "secure_outer_blast";
+	name = "Outer Blast Door";
 	pixel_x = 25;
 	pixel_y = -5
 	},
@@ -12028,8 +12028,8 @@
 	anchored = 1
 	},
 /obj/structure/machinery/door_control{
-	id = "secure_outter_blast";
-	name = "Outter Blast Door";
+	id = "secure_outer_blast";
+	name = "Outer Blast Door";
 	pixel_x = 25;
 	pixel_y = -5
 	},
@@ -12168,7 +12168,7 @@
 "aWv" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
-	id = "secure_outter_blast";
+	id = "secure_outer_blast";
 	layer = 3.3;
 	name = "\improper Secure Armory Blast Door";
 	unacidable = 1
@@ -19987,8 +19987,8 @@
 "pRe" = (
 /obj/item/storage/firstaid/adv/empty,
 /obj/structure/machinery/door_control{
-	id = "secure_outter_blast";
-	name = "Outter Blast Door";
+	id = "secure_outer_blast";
+	name = "Outer Blast Door";
 	pixel_x = 25;
 	pixel_y = -5
 	},

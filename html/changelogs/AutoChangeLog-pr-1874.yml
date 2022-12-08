@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Infiltrator Synths now display as human in Follow."
+  - rscadd: "Supply crates/barrels can now have mobs placed inside them by staff without the mob being deleted."

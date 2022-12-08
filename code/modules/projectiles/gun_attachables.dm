@@ -121,7 +121,7 @@ Defined in conflicts.dm of the #defines folder.
 	*/
 	if(G.attachments[slot])
 		var/obj/item/attachable/A = G.attachments[slot]
-		A.Detach(null, G)
+		A.Detach(detaching_gub = G)
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/M = src.loc
@@ -166,32 +166,32 @@ Defined in conflicts.dm of the #defines folder.
 		// Apply bullet traits from attachment to gun's current projectile
 		G.in_chamber.apply_bullet_trait(L)
 
-/obj/item/attachable/proc/Detach(var/mob/user, var/obj/item/weapon/gun/G)
-	if(!istype(G)) return //Guns only
+/obj/item/attachable/proc/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+	if(!istype(detaching_gub)) return //Guns only
 
-	G.on_detach(user)
+	detaching_gub.on_detach(user)
 
 	if(flags_attach_features & ATTACH_ACTIVATION)
-		activate_attachment(G, null, TRUE)
+		activate_attachment(detaching_gub, null, TRUE)
 
-	G.attachments[slot] = null
-	G.recalculate_attachment_bonuses()
+	detaching_gub.attachments[slot] = null
+	detaching_gub.recalculate_attachment_bonuses()
 
-	for(var/X in G.actions)
+	for(var/X in detaching_gub.actions)
 		var/datum/action/DA = X
 		if(DA.target == src)
 			qdel(X)
 			break
 
-	forceMove(get_turf(G))
+	forceMove(get_turf(detaching_gub))
 
 	if(sharp)
-		G.sharp = 0
+		detaching_gub.sharp = 0
 
 	for(var/trait in gun_traits)
-		REMOVE_TRAIT(G, trait, TRAIT_SOURCE_ATTACHMENT(slot))
+		REMOVE_TRAIT(detaching_gub, trait, TRAIT_SOURCE_ATTACHMENT(slot))
 	for(var/entry in traits_to_give)
-		if(!G.in_chamber)
+		if(!detaching_gub.in_chamber)
 			break
 		var/list/L
 		if(istext(entry))
@@ -199,7 +199,7 @@ Defined in conflicts.dm of the #defines folder.
 		else
 			L = list(entry) + traits_to_give[entry]
 		// Remove bullet traits of attachment from gun's current projectile
-		G.in_chamber._RemoveElement(L)
+		detaching_gub.in_chamber._RemoveElement(L)
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	activate_attachment(G, user)

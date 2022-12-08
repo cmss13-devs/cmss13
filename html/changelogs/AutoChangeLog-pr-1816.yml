@@ -1,6 +1,0 @@
-author: "kugamo"
-delete-after: True
-changes:
-  - rscadd: "You can now crush cans on harm intent with your head, hands, or feet!"
-  - soundadd: "New sound for crushin cans."
-  - imageadd: "New sprites for crushed cans."

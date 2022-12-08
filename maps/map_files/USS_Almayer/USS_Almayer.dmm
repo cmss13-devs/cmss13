@@ -9915,7 +9915,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	id = "cic_exterior";
+	id_tag = "cic_exterior";
 	name = "\improper Combat Information Center"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -36959,7 +36959,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	id = "cic_exterior";
+	id_tag = "cic_exterior";
 	name = "\improper Combat Information Center"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -42474,6 +42474,13 @@
 "fHS" = (
 /obj/structure/sign/safety/rewire{
 	pixel_y = -32
+	},
+/obj/structure/machinery/door_control{
+	id = "perma_lockdown";
+	name = "\improper Perma Cells Lockdown";
+	pixel_x = 6;
+	pixel_y = -24;
+	req_access_txt = "3"
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
@@ -66005,6 +66012,13 @@
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 32;
 	pixel_y = -8
+	},
+/obj/structure/machinery/door_control{
+	id = "perma_lockdown";
+	name = "\improper Perma Cells Lockdown";
+	pixel_x = 24;
+	pixel_y = 6;
+	req_access_txt = "3"
 	},
 /turf/open/floor/almayer{
 	dir = 4;

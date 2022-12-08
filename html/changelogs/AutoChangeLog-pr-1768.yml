@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - balance: "Increased alpha (reduced camo) of the camo belltower from 10 to 35. This is mainly meant for engineers to be able to see their tower to pick it up, but the inevitable balance changes aren't unintended."

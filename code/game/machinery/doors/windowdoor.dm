@@ -7,7 +7,7 @@
 	var/base_state = "left"
 	health = 150.0 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
 	visible = 0.0
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	flags_atom = ON_BORDER
 	opacity = 0
 	var/obj/item/circuitboard/airlock/electronics = null

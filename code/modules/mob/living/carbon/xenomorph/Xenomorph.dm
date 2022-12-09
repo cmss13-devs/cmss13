@@ -57,6 +57,9 @@
 
 	var/obj/item/iff_tag/iff_tag = null
 
+	var/static/list/walking_state_cache = list()
+	var/has_walking_icon_state = FALSE
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Core Stats
@@ -198,6 +201,7 @@
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
+	var/received_phero_caps = list()
 	var/acid_modifier = 0
 	var/weed_modifier = 0
 	var/evasion_modifier = 0
@@ -302,7 +306,6 @@
 	var/recovery_aura = 0
 	var/ignore_aura = FALSE // ignore a specific pherom, input type
 
-
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Vars that should be deleted
@@ -342,6 +345,7 @@
 	vis_contents += wound_icon_carrier
 
 	if(oldXeno)
+		set_movement_intent(oldXeno.m_intent)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
 		life_kills_total = oldXeno.life_kills_total
@@ -369,13 +373,13 @@
 
 	mutators.xeno = src
 
-	update_icon_source() //I'm not sure why this is here. recalculate_everything() calls update_icon_source() later down this proc
-
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	else
 		to_world("something went very wrong")
 		return
+
+	update_icon_source()
 
 	acid_splash_cooldown = caste.acid_splash_cooldown
 
@@ -562,7 +566,8 @@
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = in_hive.color
+	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
+		color = in_hive.color
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
@@ -646,7 +651,7 @@
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/xeno = user
 		if(hivenumber != xeno.hivenumber)
-			. += "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive."
+			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
@@ -955,6 +960,15 @@
 		current_aura = null
 		to_chat(src, SPAN_XENOWARNING("You lose your pheromones."))
 
+	// Also recalculate received pheros now
+	for(var/capped_aura in received_phero_caps)
+		switch(capped_aura)
+			if("frenzy")
+				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
+			if("warding")
+				warding_new = min(warding_new, received_phero_caps[capped_aura])
+			if("recovery")
+				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	evolution_threshold =  caste.evolution_threshold

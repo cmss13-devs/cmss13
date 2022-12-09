@@ -2,6 +2,8 @@
  * Paper
  * also scraps of paper
  */
+ 
+#define MAX_FIELDS 51
 
 /obj/item/paper
 	name = "paper"
@@ -64,9 +66,7 @@
 	icon_state = "paper"
 
 /obj/item/paper/get_examine_text(mob/user)
-//	..()	//We don't want them to see the dumb "this is a paper" thing every time.
-// I didn't like the idea that people can read tiny pieces of paper from across the room.
-// Now you need to be next to the paper in order to read it.
+	. = ..()
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
@@ -75,7 +75,7 @@
 		else
 			read_paper(user)
 	else
-		return list(SPAN_NOTICE("It is too far away."))
+		. += SPAN_NOTICE("It is too far away.")
 
 /obj/item/paper/proc/read_paper(mob/user)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
@@ -185,7 +185,7 @@
 
 /obj/item/paper/proc/updateinfolinks()
 	info_links = info
-	for(var/i=1,  i<=min(fields, 15), i++)
+	for(var/i=1,  i<=min(fields, MAX_FIELDS), i++)
 		addtofield(i, "<font face=\"[deffont]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[deffont]\"><A href='?src=\ref[src];write=end'>write</A></font>"
 
@@ -267,7 +267,8 @@
 		if(i==0)
 			break
 		laststart = i+1
-		fields = min(fields+1, 20)
+		fields = min(fields+1, MAX_FIELDS)
+		//NOTE: The max here will include the auto-created field when hitting a paper with a pen. So it should be [your_desired_number]+1.
 	return t
 
 
@@ -864,3 +865,4 @@
 		\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
+#undef MAX_FIELDS

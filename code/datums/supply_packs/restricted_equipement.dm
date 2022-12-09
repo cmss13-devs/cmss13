@@ -1,3 +1,5 @@
+// here they will be all the equipement that are restricted to a role/job.
+
 /datum/supply_packs/armor_leader
 	name = "B12 pattern marine armor crate (x1 helmet, x1 armor)"
 	contains = list(
@@ -7,7 +9,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "B12 pattern marine armor crate"
-	group = "Armor"
+	group = "Restricted equipement"
 
 /datum/supply_packs/armor_rto
 	name = "M4 pattern marine armor crate (x1 helmet, x1 armor)"
@@ -16,7 +18,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "M4 pattern marine armor crate"
-	group = "Armor"
+	group = "Restricted equipement"
 	
 /datum/supply_packs/clothing/merc
 	contains = list()
@@ -25,4 +27,5 @@
 	contraband = 1
 	containertype = /obj/structure/largecrate/merc/clothing
 	containername = "\improper black market clothing crate"
-	group = "Clothing"
+	group = "Restricted equipement"
+	

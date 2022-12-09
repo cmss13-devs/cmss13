@@ -125,8 +125,7 @@
 	H.faction_group = faction_group.Copy()
 	if(H.mind)
 		H.mind.name = H.real_name
-		if(H.mind.initial_account)
-			W.associated_account_number = H.mind.initial_account.account_number
+		// Bank account details handled in generate_money_account()
 	H.job = rank
 	H.comm_title = role_comm_title
 

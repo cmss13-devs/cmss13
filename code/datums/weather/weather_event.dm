@@ -24,6 +24,8 @@
 	var/has_process = FALSE // to be used with handle_weather_process()
 	var/lightning_chance = 0
 
+	var/fire_smothering_strength = 0 // How much will this weather smother fires on turfs and on mobs - should be 0 to 10
+
 /datum/weather_event/proc/start_weather_event()
 	return
 

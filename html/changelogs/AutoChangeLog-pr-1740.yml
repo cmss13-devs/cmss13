@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Fixed a runtime error caused by APCs breaking down on their own."

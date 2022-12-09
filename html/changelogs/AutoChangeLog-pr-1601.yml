@@ -1,6 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - qol: "More vendors vend their contents to user's hands."
-  - qol: "Vending to user's hands prioritises active hand if it is empty."
-  - qol: "The three main Requisitions vendors vend their items straight to the table IF the dispensing person is in the correct spot. This should speed up Requisition lines a bit!"

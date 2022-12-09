@@ -14019,6 +14019,9 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
@@ -55232,8 +55235,8 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
+/obj/structure/machinery/atm{
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -84556,20 +84559,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
-"xYc" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	tag = "icon-intact-supply (EAST)"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/structure/machinery/atm{
-	pixel_y = 32
-	},
-/turf/open/floor/almayer,
-/area/almayer/shipboard/brig/cells)
 "xYf" = (
 /obj/structure/machinery/cm_vending/clothing/sea,
 /turf/open/floor/almayer{
@@ -94356,7 +94345,7 @@ xkd
 xkd
 xkd
 xkd
-xYc
+kmd
 tUx
 ebd
 tHS

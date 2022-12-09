@@ -235,6 +235,12 @@
 	icon_state = "stimpack"
 	item_state = "stimpack"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	display_maptext = TRUE
+	maptext_label = "??"
+
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
+	name = "white autoinjector"
+	desc = "You know what they say, don't jab yourself with suspicious syringes."
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"

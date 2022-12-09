@@ -1,5 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - rscadd: "SLs can now pick from a variety of starting weaponry kits rather than be forced to get the pyro kit."
-  - code_imp: "Small refactor of flags around which items you can vend from a vendor."

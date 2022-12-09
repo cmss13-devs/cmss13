@@ -1,5 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - rscadd: "Carriers once again drop huggers when killed."
-  - bugfix: "Fixed the Egg Morpher iterating from a wrong number for spawning huggers on destruction."

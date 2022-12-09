@@ -284,3 +284,80 @@
   - soundadd: Added a ton of sounds to interactions with the PDT/L kit. Beeps on scanning,
       buzzes on errors, clicks on handling.
   - bugfix: Fixed a bug in which a string referenced a null var.
+2022-12-09:
+  RenaRenaRe:
+  - bugfix: Cross-ciphering now works correctly
+  Sleepynecrons:
+  - imageadd: updated the rest of Oppressor's sprites to be the newer version
+  SpartanBobby:
+  - balance: A-Block Droms north-south hallways are now 1 tile wider on each side
+      with a 2x3 destructible blocker in the middle to hinder snipers and boilers
+  - balance: A-Block Drom south hallway now has a door leading outside
+  - balance: Some of the man-made barricades on the map have now been destroyed prior
+      to the Almayer landing
+  - balance: 'LV522 Chances Claim: Removed a lot of 1x1 tunnels and redundant areas
+      in the reactor'
+  - bugfix: fixed a strange bug with unbreakable cargo containers
+  ThePiachu:
+  - bugfix: Recharge Stations now properly update their icons when moving someone
+      into them and to show the proper power drain.
+  - balance: Gave POs and SLs basic Intel skill so they can see the Intel Objectives.
+  - rscadd: You can now refill an Egg Morpher directly with an egg by clicking on
+      it with the egg.
+  - qol: Carriers can now take facehuggers directly from the Egg Morpher with their
+      facehugger ability.
+  - qol: Carriers now attempt to pick up all the eggs on a turf if they use their
+      egg ability on an egg lying on the ground.
+  - rscadd: Carriers once again drop huggers when killed.
+  - bugfix: Fixed the Egg Morpher iterating from a wrong number for spawning huggers
+      on destruction.
+  - rscadd: SLs can now pick from a variety of starting weaponry kits rather than
+      be forced to get the pyro kit.
+  - code_imp: Small refactor of flags around which items you can vend from a vendor.
+  - balance: Removed less useful crates ordered for free by ASRS (SMG ammo, turret
+      ammo, armours) and replaced them with some flare and MRE crates.
+  - balance: Gave SOs access to basic Medical areas.
+  carlarctg:
+  - rscadd: Added 15 frontal armor to steelcrest defenders and 5 to normal defenders,
+      The directional armor in total will be 50 and 70 respectively.
+  - balance: Halved Fortify cooldown.
+  - bugfix: Fixed the bug in which crested or fortified defenders didn't have crit
+      sprites.
+  - rscadd: Larvae can now pop out from the ground nearby the hive core, the queen,
+      builder castes, larvae, or any xeno in that order, during the first 20 minutes
+      of the round.
+  harryob:
+  - bugfix: added some additional validation to bioprinter spawning
+  realforest2001:
+  - rscadd: Added reinforced white walls.
+  - rscadd: Surrounded research and containment with reinforced walls.
+  - bugfix: Briefing ladders no longer let CIC staff into areas they can't leave.
+  - bugfix: ERT Station antag vendors can no longer be broken into.
+  - imageadd: Added mapping sprites for reinforced and hull whitewalls.
+  - rscadd: Infiltrator Synths now display as human in Follow.
+  - rscadd: Supply crates/barrels can now have mobs placed inside them by staff without
+      the mob being deleted.
+  stanalbatross:
+  - bugfix: fixed a stray pixel in an elevator wall sprite
+  - bugfix: fixed a spelling mistake in the larva burst message shown to the host
+  - bugfix: fixed the spawn pool using a pink square for its splash overlay rather
+      than the actual sprite
+  - bugfix: added pred teleport landmarks to New Varadero
+  - bugfix: fixed an APC that could not be repaired on New Varadero
+  - rscadd: added some more corpse spawners to New Varadero
+  - rscadd: added versions of elevator walls that can be destroyed, added these to
+      New Varadero
+  - balance: removed all the heavy rwalls from New Varadero's landing zone, tuned
+      down r-walls in the area and added wider entrances.
+  - balance: removed a lot of the r-walls from New Varadero
+  - balance: halved the number of intel spawners on New Varadero from the old 300
+      to 130 to be more in line with the average for other maps (150)
+  - balance: halved the number of tunnels on New Varadero
+  - balance: removed the engineering hive spawn on New Varadero, added a new one to
+      central south caves.
+  - balance: made south maintenance on New Varadero not OBable, made all areas north
+      of caves OBable. Should be a lot more consistent.
+  - balance: majorly expanded the non-weedable area on New Varadero to prevent xeno
+      LZ rushes
+  - bugfix: added a 2 minute cooldown between ARES/QM last person alive callouts to
+      prevent spam

@@ -982,7 +982,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_HEMOGENIC = 20, PROPERTY_REPAIRING = 2, PROPERTY_TOXIC = 1)
+	properties = list(PROPERTY_HEMOGENIC = 20, PROPERTY_NEOGENETIC = 1, PROPERTY_TOXIC = 1)
 	custom_metabolism = AMOUNT_PER_TIME(1, 12 SECONDS)
 
 /datum/reagent/plasma/royal

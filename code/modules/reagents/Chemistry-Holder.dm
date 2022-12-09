@@ -611,6 +611,7 @@
 	var/duration = 0
 	var/supplemented = 0 //for determining fire shape. Intensifying chems add, moderating chems remove.
 	var/smokerad = 0
+	var/fire_penetrating = FALSE
 	var/list/supplements = list()
 	for(var/datum/reagent/R in reagent_list)
 		if(R.explosive)
@@ -624,6 +625,8 @@
 			intensity += R.intensitymod * R.volume
 			duration += R.durationmod * R.volume
 			radius += R.radiusmod * R.volume
+			if(R.fire_penetrating && R.volume >= 10)
+				fire_penetrating = TRUE
 		if(R.id == "phosphorus")
 			smokerad = min(R.volume / 10, max_fire_rad - 1)
 	if(istype(my_atom, /obj/item/explosive))
@@ -644,7 +647,7 @@
 		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle)
 	if(intensity > 0)
 		var/firecolor = mix_burn_colors(supplements)
-		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad) // TODO: Implement directional flames
+		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad, fire_penetrating) // TODO: Implement directional flames
 	if(exploded && sourceturf)
 		sourceturf.chemexploded = TRUE // to prevent grenade stacking
 		addtimer(CALLBACK(sourceturf, /turf.proc/reset_chemexploded), 2 SECONDS)
@@ -699,7 +702,7 @@
 
 	return exploded
 
-/datum/reagents/proc/combust(var/turf/sourceturf, var/radius, var/intensity, var/duration, var/supplemented, var/firecolor, var/smokerad)
+/datum/reagents/proc/combust(var/turf/sourceturf, var/radius, var/intensity, var/duration, var/supplemented, var/firecolor, var/smokerad, var/fire_penetrating)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -747,6 +750,8 @@
 
 	R.burncolor = firecolor
 	R.color = firecolor
+
+	R.fire_penetrating = fire_penetrating
 
 	new /obj/flamer_fire(sourceturf, create_cause_data("chemical fire", source_mob?.resolve()), R, radius, FALSE, flameshape)
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1), 0.5 SECONDS)

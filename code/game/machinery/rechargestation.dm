@@ -18,7 +18,6 @@
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)
 	. = ..()
-	build_icon()
 	update_icon()
 	flags_atom |= USES_HEARING
 
@@ -118,6 +117,13 @@
 
 /obj/structure/machinery/recharge_station/update_icon()
 	..()
+	if(!inoperable())
+		if(src.occupant)
+			icon_state = "borgcharger1"
+		else
+			icon_state = "borgcharger0"
+	else
+		icon_state = "borgcharger0"
 	overlays.Cut()
 	switch(round(chargepercentage()))
 		if(1 to 20)
@@ -132,16 +138,6 @@
 			overlays += image('icons/obj/objects.dmi', "statn_c80")
 		if(99 to 110)
 			overlays += image('icons/obj/objects.dmi', "statn_c100")
-
-/obj/structure/machinery/recharge_station/proc/build_icon()
-	if(!inoperable())
-		if(src.occupant)
-			icon_state = "borgcharger1"
-		else
-			icon_state = "borgcharger0"
-	else
-		icon_state = "borgcharger0"
-	update_icon()
 
 /obj/structure/machinery/recharge_station/proc/process_occupant()
 	if(src.occupant)
@@ -189,10 +185,9 @@
 		src.occupant.client.perspective = MOB_PERSPECTIVE
 	src.occupant.forceMove(loc)
 	src.occupant = null
-	build_icon()
+	update_icon()
 	update_use_power(1)
 	return
-
 
 /obj/structure/machinery/recharge_station/verb/move_eject()
 	set category = "Object"
@@ -225,7 +220,7 @@
 	src.occupant = M
 	start_processing()
 	src.add_fingerprint(usr)
-	build_icon()
+	update_icon()
 	update_use_power(1)
 	return TRUE
 

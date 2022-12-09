@@ -56,6 +56,9 @@
 /datum/ammo/New()
 	set_bullet_traits()
 
+/datum/ammo/proc/on_bullet_generation(var/obj/item/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
+	return
+
 /// Populate traits_to_give in this proc
 /datum/ammo/proc/set_bullet_traits()
 	return
@@ -2541,13 +2544,13 @@
 	sound_hit 	 = "acid_hit"
 	sound_bounce	= "acid_bounce"
 	damage_type = BURN
-	added_spit_delay = 10
 	spit_cost = 25
 
-	accuracy = HIT_ACCURACY_TIER_3
-	damage = 25
+	accuracy = HIT_ACCURACY_TIER_5
+	damage = 20
+	max_range = 8 // 7 will disappear on diagonals. i love shitcode
 	penetration = ARMOR_PENETRATION_TIER_2
-	shell_speed = AMMO_SPEED_TIER_2
+	shell_speed = AMMO_SPEED_TIER_3
 
 /datum/ammo/xeno/acid/on_shield_block(mob/M, obj/item/projectile/P)
 	burst(M,P,damage_type)
@@ -2556,16 +2559,21 @@
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
-			return
+			return FALSE
 	..()
 
-/datum/ammo/xeno/acid/medium
+/datum/ammo/xeno/acid/spatter
 	name = "acid spatter"
 
-	damage = 25
-	shell_speed = AMMO_SPEED_TIER_3
-	accuracy = HIT_ACCURACY_TIER_5*3
+	damage = 30
 	max_range = 6
+
+/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	if(. == FALSE)
+		return
+
+	new /datum/effects/acid(M, P.firer)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
@@ -2580,7 +2588,7 @@
 	name = "acid spit"
 
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
-	name = "acid spatter"
+	name = "acid scatter"
 
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
@@ -2763,6 +2771,50 @@
         playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
         if(M.slowed < 6)
             M.apply_effect(6, SLOW)
+
+/datum/ammo/xeno/oppressor_tail
+	name = "tail hook"
+	icon_state = "none"
+	ping = null
+	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	damage_type = BRUTE
+
+	damage = 0
+	max_range = 4
+	accuracy = HIT_ACCURACY_TIER_MAX
+
+/datum/ammo/xeno/oppressor_tail/on_bullet_generation(var/obj/item/projectile/generated_projectile, var/mob/bullet_generator)
+	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
+	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = BELOW_MOB_LAYER)
+	generated_projectile.overlays += hook_overlay
+
+/datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/item/projectile/fired_proj)
+	var/mob/living/carbon/Xenomorph/xeno_firer = fired_proj.firer
+	if(xeno_firer.can_not_harm(target))
+		return
+
+	shake_camera(target, 5, 0.1 SECONDS)
+	var/obj/effect/beam/tail_beam = fired_proj.firer.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 5)
+	var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
+	target.overlays += tail_image
+
+	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
+	// we dont mess with preexisting freezes
+	var/wasfrozen = target.frozen
+	//paralyzes target so they don't break the throw by moving...
+	if(!wasfrozen)
+		target.frozen = TRUE
+	//sleeps during this proc...
+	target.throw_atom(fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
+	//inmediately after the sleeps, unfreezes so they can wiggle around.
+	if(!wasfrozen)
+		target.frozen = FALSE
+
+	qdel(tail_beam)
+	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
+
+/datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(var/mob/overlayed_mob, var/image/tail_image)
+	overlayed_mob.overlays -= tail_image
 
 /*
 //======
@@ -3089,7 +3141,6 @@
 	shrapnel_type = /obj/item/reagent_container/food/drinks/cans/souto/classic
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_IGNORE_RESIST|AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER|AMMO_SPECIAL_EMBED
 	var/obj/item/reagent_container/food/drinks/cans/souto/can_type
-	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "souto_classic"
 
 	max_range = 12

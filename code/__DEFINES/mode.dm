@@ -273,3 +273,8 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define GAME_STATE_PLAYING		3
 #define GAME_STATE_FINISHED		4
 
+// global vars to prevent spam of the "one xyz alive" messages
+
+var/global/last_ares_callout
+
+var/global/last_qm_callout

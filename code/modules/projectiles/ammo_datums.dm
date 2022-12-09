@@ -135,8 +135,7 @@
 		var/mob/living/carbon/Xenomorph/target = L
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
-		target.apply_effect(2, SUPERSLOW)
-		target.apply_effect(5, SLOW)
+		target.apply_effect(4.5, SLOW)
 	else
 		if(!isYautja(L)) //Not predators.
 			L.apply_effect(1, SUPERSLOW)
@@ -1101,7 +1100,7 @@
 
 	accurate_range = 6
 	max_range = 8
-	damage = 70
+	damage = 110
 	penetration = ARMOR_PENETRATION_TIER_4
 	damage_armor_punch = 2
 	handful_state = "slug_shell"

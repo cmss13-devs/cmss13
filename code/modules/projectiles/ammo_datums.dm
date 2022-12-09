@@ -135,7 +135,7 @@
 		var/mob/living/carbon/Xenomorph/target = L
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
-		target.apply_effect(4.5, SLOW)
+		target.apply_effect(5, SLOW)
 	else
 		if(!isYautja(L)) //Not predators.
 			L.apply_effect(1, SUPERSLOW)

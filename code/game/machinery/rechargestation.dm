@@ -5,7 +5,7 @@
 	desc = "A recharge and repair station for robots and synthetics. Simply put the synthetic in need of repair in here and they will be fixed up in no time!"
 	density = TRUE
 	anchored = TRUE
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 50
 	active_power_usage = 50
 	var/mob/living/occupant = null
@@ -70,7 +70,7 @@
 
 	if(idle_power_usage != charge_diff) // Force update, but only when our power usage changed this tick.
 		idle_power_usage = charge_diff
-		update_use_power(1)
+		update_use_power(POWER_USE_IDLE_POWER)
 
 	current_internal_charge = min((current_internal_charge + ((charge_diff - 50) * CELLRATE)), max_internal_charge)
 
@@ -156,7 +156,7 @@
 				to_chat(occupant, "Recharging...")
 				doing_stuff = TRUE
 			else
-				update_use_power(1)
+				update_use_power(POWER_USE_IDLE_POWER)
 		if (isrobot(occupant) || isSynth(occupant))
 			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
 				occupant.heal_overall_damage(10, 10, TRUE)
@@ -186,7 +186,7 @@
 	src.occupant.forceMove(loc)
 	src.occupant = null
 	update_icon()
-	update_use_power(1)
+	update_use_power(POWER_USE_IDLE_POWER)
 	return
 
 /obj/structure/machinery/recharge_station/verb/move_eject()
@@ -221,7 +221,7 @@
 	start_processing()
 	src.add_fingerprint(usr)
 	update_icon()
-	update_use_power(1)
+	update_use_power(POWER_USE_IDLE_POWER)
 	return TRUE
 
 /obj/structure/machinery/recharge_station/verb/move_inside()

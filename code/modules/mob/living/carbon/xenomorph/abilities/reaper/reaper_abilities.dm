@@ -24,6 +24,7 @@
 
 /datum/action/xeno_action/activable/tail_stab/reaper
 	name = "Claw Strike"
+	action_icon_state = "claw_strike"
 	xeno_cooldown = 5 SECONDS
 	claw_stab = TRUE
 	stabbing_with_noun = "claw"

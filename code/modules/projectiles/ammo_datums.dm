@@ -1100,7 +1100,7 @@
 
 	accurate_range = 6
 	max_range = 8
-	damage = 110
+	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_4
 	damage_armor_punch = 2
 	handful_state = "slug_shell"

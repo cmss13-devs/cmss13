@@ -1,0 +1,7 @@
+author: "Molto"
+delete-after: True
+changes:
+  - rscadd: "Readded the different light floor colors, use multitool to cycle through them"
+  - bugfix: "Fixed light tiles being indestructible unless using a crowbar"
+  - code_imp: "Moved some part of the code that were only used by light tiles in floors.dm into light.dm directly"
+  - refactor: "Made one letter variables more lettered"

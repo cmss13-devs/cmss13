@@ -38,7 +38,7 @@
 	listening_level = TELECOMM_GROUND_Z
 	autolinkers = list("s_relay")
 	layer = ABOVE_FLY_LAYER
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	idle_power_usage = 0
 	unslashable = FALSE
 	unacidable = TRUE
@@ -195,7 +195,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms
 	name = "TC-3T static telecommunications tower"
 	desc = "A static heavy-duty TC-3T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations. Will need to have extra communication frequencies programmed into it by multitool."
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	idle_power_usage = 10000
 	icon = 'icons/obj/structures/machinery/comm_tower3.dmi'
 	icon_state = "static1"
@@ -227,10 +227,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	var/turf/commloc = get_turf(src)
 	var/area/commarea = get_area(src)
 	if(on) //now, if it went on it now uses power
-		use_power = 1
+		use_power = POWER_USE_IDLE_POWER
 		message_admins("[key_name(user)] turned \the [src] in [commarea] ON. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[commloc.loc.x];Y=[commloc.loc.y];Z=[commloc.loc.z]'>JMP</a>)")
 	else
-		use_power = 0
+		use_power = POWER_USE_NO_POWER
 		message_admins("[key_name(user)] turned \the [src] in [commarea] OFF. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[commloc.loc.x];Y=[commloc.loc.y];Z=[commloc.loc.z]'>JMP</a>)")
 	toggle_cooldown = world.time + 40
 
@@ -285,7 +285,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "Centcom Relay"
 	hide = 1
 	toggled = 1
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	autolinkers = list("c_relay")
 
 //HUB
@@ -484,7 +484,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	desc = "A compact machine used for portable subspace telecommunications processing."
 	density = 1
 	anchored = 1
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	idle_power_usage = 0
 	machinetype = 6
 	unslashable = TRUE

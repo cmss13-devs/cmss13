@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - code_imp: "Replaced magic numbers around power usage with proper defines."

@@ -17,9 +17,11 @@
 	var/title_buttons = ""
 	var/static/datum/asset/simple/common/common_asset = get_asset_datum(/datum/asset/simple/common)
 	var/static/datum/asset/simple/other/other_asset = get_asset_datum(/datum/asset/simple/other)
+	/// DEBUG: Disables any kind of asset sending
+	var/dumb = FALSE
 
 
-/datum/browser/New(nuser, nwindow_id, ntitle = 0, nstylesheet = "common.css", nwidth = 0, nheight = 0, var/atom/nref = null)
+/datum/browser/New(nuser, nwindow_id, ntitle = 0, nstylesheet = "common.css", nwidth = 0, nheight = 0, var/atom/nref = null, dumb = FALSE)
 	user = nuser
 	window_id = nwindow_id
 	if (ntitle)
@@ -31,6 +33,7 @@
 	if (nref)
 		ref = nref
 	stylesheet = nstylesheet
+	src.dumb = dumb
 
 /datum/browser/proc/set_title(ntitle)
 	title = format_text(ntitle)
@@ -45,6 +48,8 @@
 	window_options = nwindow_options
 
 /datum/browser/proc/add_stylesheet(name, file)
+	if(dumb)
+		return
 	if (istype(name, /datum/asset/spritesheet))
 		var/datum/asset/spritesheet/sheet = name
 		stylesheets["spritesheet_[sheet.name].css"] = "data/spritesheets/[sheet.name]"
@@ -57,6 +62,8 @@
 			SSassets.transport.register_asset(asset_name, file)
 
 /datum/browser/proc/add_script(name, file)
+	if(dumb)
+		return
 	scripts["[ckey(name)].js"] = file
 	SSassets.transport.register_asset("[ckey(name)].js", file)
 
@@ -67,20 +74,22 @@
 	content += ncontent
 
 /datum/browser/proc/get_header()
-	head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()[stylesheet]]'>"
-	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["search.js"]]'>"
-	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["loading.gif"]]'>"
+	var/title_attributes = ""
+	if(!dumb)
+		head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()[stylesheet]]'>"
+		head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["search.js"]]'>"
+		head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["loading.gif"]]'>"
 
-	for (var/file in stylesheets)
-		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'>"
+		for (var/file in stylesheets)
+			head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'>"
 
 
-	for (var/file in scripts)
-		head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(file)]'></script>"
+		for (var/file in scripts)
+			head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(file)]'></script>"
 
-	var/title_attributes = "class='uiTitle'"
-	if (title_image)
-		title_attributes = "class='uiTitle icon' style='background-image: url([title_image]);'"
+		title_attributes = "class='uiTitle'"
+		if (title_image)
+			title_attributes = "class='uiTitle icon' style='background-image: url([title_image]);'"
 
 	return {"<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -115,14 +124,16 @@
 	var/window_size = ""
 	if (width && height)
 		window_size = "size=[width]x[height];"
-	common_asset.send(user)
-	other_asset.send(user)
-	if (stylesheets.len)
-		SSassets.transport.send_assets(user, stylesheets)
-	if (scripts.len)
-		SSassets.transport.send_assets(user, scripts)
+	if(!dumb)
+		common_asset.send(user)
+		other_asset.send(user)
+		if (stylesheets.len)
+			SSassets.transport.send_assets(user, stylesheets)
+		if (scripts.len)
+			SSassets.transport.send_assets(user, scripts)
 
 	user << browse(get_content(), "window=[window_id];[window_size][window_options]")
+	log_debug("Opened DUMB Crew Manifest for user: [key_name(user)]")
 
 	if (use_onclose)
 		setup_onclose()
@@ -226,7 +237,7 @@
 		mob.unset_interaction()
 	return
 
-/proc/show_browser(var/target, var/browser_content, var/browser_name, var/id = null, var/window_options = null, closeref)
+/proc/show_browser(var/target, var/browser_content, var/browser_name, var/id = null, var/window_options = null, closeref, dumb = FALSE)
 	var/client/C = target
 
 	if (ismob(target))
@@ -241,7 +252,7 @@
 		C.prefs.stylesheet = "Modern"
 		stylesheet = "Modern"
 
-	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet], nref = closeref)
+	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet], nref = closeref, dumb = dumb)
 	popup.set_content(browser_content)
 	if (window_options)
 		popup.set_window_options(window_options)

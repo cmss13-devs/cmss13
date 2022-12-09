@@ -1100,7 +1100,7 @@
 		return
 	var/dat = GLOB.data_core.get_manifest()
 
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
+	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750", dumb = TRUE)
 
 /mob/living/carbon/human/verb/view_objective_memory()
     set name = "View objectives"

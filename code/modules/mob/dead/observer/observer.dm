@@ -647,6 +647,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/dat = GLOB.data_core.get_manifest()
 
 	show_browser(src, dat, "Crew Manifest (UGLY DEBUG EDITION)", "manifest", "size=450x750", dumb = TRUE)
+	log_debug("Opened DUMB Crew Manifest for user: [key_name(src)]")
 
 /mob/dead/verb/hive_status()
 	set name = "Hive Status"

@@ -1101,6 +1101,7 @@
 	var/dat = GLOB.data_core.get_manifest()
 
 	show_browser(src, dat, "Crew Manifest (UGLY DEBUG EDITION)", "manifest", "size=400x750", dumb = TRUE)
+	log_debug("Opened DUMB Crew Manifest for user: [key_name(src)]")
 
 /mob/living/carbon/human/verb/view_objective_memory()
     set name = "View objectives"

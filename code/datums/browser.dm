@@ -133,7 +133,6 @@
 			SSassets.transport.send_assets(user, scripts)
 
 	user << browse(get_content(), "window=[window_id];[window_size][window_options]")
-	log_debug("Opened DUMB Crew Manifest for user: [key_name(user)]")
 
 	if (use_onclose)
 		setup_onclose()

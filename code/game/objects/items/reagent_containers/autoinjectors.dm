@@ -228,7 +228,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine autoinjector"
 	chemname = "ultrazine"
-	desc = "An auto-injector loaded with a special illegal muscle stimulant, Do not administer more than twice at a time. Highly addictive."
+	desc = "An auto-injector loaded with a special illegal muscle stimulant, do not administer more than twice at a time. Highly addictive."
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5
@@ -236,12 +236,13 @@
 	item_state = "stimpack"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = TRUE
-	maptext_label = "??"
+	maptext_label = "UZ"
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
 	name = "white autoinjector"
 	desc = "You know what they say, don't jab yourself with suspicious syringes."
-
+	maptext_label = "??"
+	
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
 	chemname = "thwei"

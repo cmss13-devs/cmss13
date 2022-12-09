@@ -730,11 +730,14 @@
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(X.loc, sound_to_play, 25, 1)
 
+
 	var/obj/item/projectile/P = new /obj/item/projectile(current_turf, create_cause_data(initial(X.caste_type), X))
 	P.generate_bullet(X.ammo)
 	P.permutated += X
 	P.def_zone = X.get_limbzone_target()
 	P.fire_at(A, X, X, X.ammo.max_range, X.ammo.shell_speed)
+
+	SEND_SIGNAL(X, COMSIG_XENO_POST_SPIT)
 
 	apply_cooldown()
 	..()

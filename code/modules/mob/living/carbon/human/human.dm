@@ -1582,18 +1582,22 @@
 		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
-			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
+			SPAN_NOTICE("You expertly roll to get rid of the acid!"), max_distance = 5)
 	else
 		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
-			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
+			SPAN_NOTICE("You stop, drop, and roll!"), max_distance = 5)
 
 	sleep(sleep_amount)
 
-	visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
-			SPAN_NOTICE("You get rid of the acid."), null, 5)
-	extinguish_acid()
+	if( extinguish_acid() )
+		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
+				SPAN_NOTICE("You get rid of the acid."), max_distance = 5)
+	else
+		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"), \
+				SPAN_NOTICE("You manage to get rid of some of the acid... but it's still melting you!"), max_distance = 5)
+
 	return
 
 /mob/living/carbon/human/resist_restraints()

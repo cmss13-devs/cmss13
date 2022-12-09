@@ -201,6 +201,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	eye_protection = 2
 	anti_hug = 100
 
 /obj/item/clothing/mask/gas/yautja/hunter/toggle_zoom()

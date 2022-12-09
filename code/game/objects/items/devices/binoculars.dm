@@ -340,6 +340,7 @@
 	name = "spotter's laser designator"
 	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes. Additionally, a trained spotter can laze targets for a USCM marksman, increasing the speed of target acquisition."
 
+	var/is_spotting = FALSE
 	var/spotting_time = 10 SECONDS
 	var/spotting_cooldown_delay = 5 SECONDS
 	COOLDOWN_DECLARE(spotting_cooldown)
@@ -347,6 +348,14 @@
 /obj/item/device/binoculars/range/designator/spotter/Initialize()
 	LAZYADD(actions_types, /datum/action/item_action/specialist/spotter_target)
 	return ..()
+
+/obj/item/device/binoculars/range/designator/spotter/update_icon()
+	if(is_spotting)
+		overlays += "laser_spotter"
+	else if(mode)
+		overlays += "laser_range"
+	else
+		overlays += "laser_cas"
 
 /datum/action/item_action/specialist/spotter_target
 	ability_primacy = SPEC_PRIMARY_ACTION_1
@@ -411,20 +420,31 @@
 	var/distance = round(get_dist(target, human) * 0.5)
 	var/f_spotting_time = designator.spotting_time + distance
 
-	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-spotter", dir = get_cardinal_dir(target, human))
+	designator.is_spotting = TRUE
+	designator.update_icon()
+	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "spotter_lockon")
 	I.pixel_x = -target.pixel_x + target.base_pixel_x
 	I.pixel_y = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
 	target.overlays += I
 	ADD_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 	if(human.client)
-		playsound_client(human.client, 'sound/weapons/TargetOn.ogg', human, 50)
-	playsound(target, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
+		playsound_client(human.client, 'sound/effects/nightvision.ogg', human, 50)
+	playsound(target, 'sound/effects/nightvision.ogg', 70, FALSE, 8, falloff = 0.4)
+
+	var/obj/effect/beam/laser_beam = target.beam(human, "laser_beam_spotter", 'icons/effects/beam.dmi', f_spotting_time + 1 SECONDS, beam_type = /obj/effect/ebeam/laser/weak)
+	//timer is (f_spotting_time + 1 SECONDS) because sometimes it janks out. blame sleeps or something
 
 	if(!do_after(human, f_spotting_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
 		target.overlays -= I
+		designator.is_spotting = FALSE
+		designator.update_icon()
+		qdel(laser_beam)
 		REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 		return
 	target.overlays -= I
+	designator.is_spotting = FALSE
+	designator.update_icon()
+	qdel(laser_beam)
 	REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 
 /datum/action/item_action/specialist/spotter_target/proc/check_can_use(var/mob/target, var/cover_lose_focus)

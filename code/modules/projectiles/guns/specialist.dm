@@ -13,6 +13,10 @@
 	var/aimed_shot_cooldown
 	var/aimed_shot_cooldown_delay = 2.5 SECONDS
 
+	var/sniper_lockon_icon = "sniper_lockon"
+	var/obj/effect/ebeam/sniper_beam_type = /obj/effect/ebeam/laser
+	var/sniper_beam_icon = "laser_beam"
+
 /obj/item/weapon/gun/rifle/sniper/Initialize(mapload, spawn_empty)
 	if(has_aimed_shot)
 		LAZYADD(actions_types, /datum/action/item_action/specialist/aimed_shot)
@@ -89,7 +93,7 @@
 	if(HAS_TRAIT(M, TRAIT_SPOTTER_LAZED))
 		f_aiming_time *= 0.5
 
-	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-sniper", dir = get_cardinal_dir(M, H))
+	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = sniper_rifle.sniper_lockon_icon)
 	I.pixel_x = -M.pixel_x + M.base_pixel_x
 	I.pixel_y = (M.icon_size - world.icon_size) * 0.5 - M.pixel_y + M.base_pixel_y
 	M.overlays += I
@@ -97,11 +101,16 @@
 		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
 	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
 
+	var/obj/effect/beam/laser_beam = M.beam(H, sniper_rifle.sniper_beam_icon, 'icons/effects/beam.dmi', (f_aiming_time + 1 SECONDS), beam_type = sniper_rifle.sniper_beam_type)
+	////timer is (f_spotting_time + 1 SECONDS) because sometimes it janks out. blame sleeps or something
+
 	if(!do_after(H, f_aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
 		M.overlays -= I
+		qdel(laser_beam)
 		return
 
 	M.overlays -= I
+	qdel(laser_beam)
 
 	if(!check_can_use(M, TRUE))
 		return
@@ -238,6 +247,9 @@
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
+	sniper_beam_type = /obj/effect/ebeam/laser/intense
+	sniper_beam_icon = "laser_beam_intense"
+	sniper_lockon_icon = "sniper_lockon_intense"
 
 /obj/item/weapon/gun/rifle/sniper/XM42B/handle_starting_attachment()
 	..()
@@ -297,6 +309,9 @@
 	zoomdevicename = "scope"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
+	sniper_beam_type = /obj/effect/ebeam/laser/intense
+	sniper_beam_icon = "laser_beam_intense"
+	sniper_lockon_icon = "sniper_lockon_intense"
 
 /obj/item/weapon/gun/rifle/sniper/elite/handle_starting_attachment()
 	..()
@@ -352,7 +367,7 @@
 
 	has_aimed_shot = FALSE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
-
+	sniper_beam_type = null
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()

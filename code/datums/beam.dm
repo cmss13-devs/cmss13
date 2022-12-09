@@ -143,6 +143,39 @@
 	anchored = TRUE
 	var/datum/beam/owner
 
+/obj/effect/ebeam/laser
+	name = "laser beam"
+	desc = "A laser beam!"
+	var/strength = 1
+	var/probability = 20
+
+/obj/effect/ebeam/laser/Crossed(O)
+	. = ..()
+	if(!(prob(probability) && ishuman(O)))
+		return
+	var/mob/living/carbon/human/moving_human = O
+	var/laser_protection = moving_human.get_eye_protection()
+	var/rand_laser_power = rand(1, strength)
+	if(rand_laser_power > laser_protection)
+		INVOKE_ASYNC(moving_human, /mob/proc/emote, "pain")
+		visible_message(SPAN_DANGER("[moving_human] screams out in pain after \the [src] moves across their eyes!"), SPAN_NOTICE("Aurgh!!! \The [src] moves across your unprotected eyes for a split-second."))
+		//TODO when someone unfucks eye damage make this add a MINIMAL amount of it
+		moving_human.overlay_fullscreen("laserbeam", /atom/movable/screen/fullscreen/laser_blind)
+		//dmg burn eye
+		addtimer(CALLBACK(moving_human, /mob/proc/clear_fullscreen, "laserbeam"), 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
+	else if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
+		visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine for a moment as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades shine for a moment as \the [src] passes over them."))
+
+/obj/effect/ebeam/laser/intense
+	name = "intense laser beam"
+	strength = 2
+	probability = 35
+
+/obj/effect/ebeam/laser/weak
+	name = "weak laser beam"
+	strength = 1
+	probability = 5
+
 /obj/effect/ebeam/Destroy()
 	owner = null
 	return ..()

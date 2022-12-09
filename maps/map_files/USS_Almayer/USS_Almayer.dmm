@@ -1962,6 +1962,7 @@
 "afo" = (
 /obj/structure/safe,
 /obj/item/moneybag,
+/obj/item/clothing/glasses/monocle,
 /obj/item/weapon/melee/telebaton,
 /obj/item/book/codebook,
 /obj/item/coin/silver{

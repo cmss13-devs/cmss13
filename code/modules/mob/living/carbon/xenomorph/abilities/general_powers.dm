@@ -869,7 +869,7 @@
 		return FALSE
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
-	if(distance > 2)
+	if(distance > stab_range)
 		return FALSE
 
 	var/list/turf/path = getline2(stabbing_xeno, targetted_atom, include_from_atom = FALSE)
@@ -900,7 +900,7 @@
 		return ..()
 
 	if(!isXenoOrHuman(targetted_atom))
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their [stabbing_with_noun] through the air!"), SPAN_XENOWARNING("You swipe your [stabbing_with_noun] through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
 		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
@@ -922,25 +922,30 @@
 	if(!check_and_use_plasma_owner())
 		return FALSE
 
-	var/result = ability_act(stabbing_xeno, target, limb)
+	ability_act(stabbing_xeno, target, limb)
 
 	apply_cooldown()
 	xeno_attack_delay(stabbing_xeno)
 	..()
-	return result
+	return target
 
 /datum/action/xeno_action/activable/tail_stab/proc/ability_act(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/mob/living/carbon/target, var/obj/limb/limb)
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
-	 /// To reset the direction if they haven't moved since then in below callback.
+	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = stabbing_xeno.dir
-	 /// Direction var to make the tail stab look cool and immersive.
+	/// Direction var to make the tail stab look cool and immersive.
 	var/stab_direction
 
 	var/stab_overlay
 
-	if(blunt_stab)
+	if(claw_stab)
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its massive claws!"), SPAN_XENOWARNING("You skewer [target] through the [limb? limb.display_name : "chest"] with your massive claws!"))
+		playsound(target, "alien_bite", 50, TRUE)
+		stab_direction = last_dir
+		stab_overlay = "tail"
+	else if(blunt_stab)
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("You swipe your tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
 		playsound(target, "punch", 50, TRUE)
 		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
@@ -953,13 +958,13 @@
 		stab_direction = turn(get_dir(stabbing_xeno, target), 180)
 		stab_overlay = "tail"
 
-	stabbing_xeno.setDir(stab_direction)
-	stabbing_xeno.emote("tail")
+	if(last_dir != stab_direction)
+		stabbing_xeno.setDir(stab_direction)
+		var/new_dir = stabbing_xeno.dir
+		addtimer(CALLBACK(src, .proc/reset_direction, stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
 
-	 /// Ditto.
-	var/new_dir = stabbing_xeno.dir
-
-	addtimer(CALLBACK(src, .proc/reset_direction, stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
+	if(!claw_stab)
+		stabbing_xeno.emote("tail")
 
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)

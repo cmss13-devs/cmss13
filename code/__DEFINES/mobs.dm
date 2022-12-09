@@ -323,7 +323,6 @@
 #define CARRIER_NORMAL 		"Normal"
 #define CARRIER_SHAMAN		"Shaman"
 #define CARRIER_EGGSAC		"Eggsac"
-#define CARRIER_REAPER		"Reaper"
 
 // Burrower strain flags
 #define BURROWER_NORMAL 	"Normal"
@@ -371,6 +370,9 @@
 
 // Hellhound strain flags
 #define HELLHOUND_NORMAL	"Normal"
+
+// Reaper Strain Flags
+#define REAPER_NORMAL		"Normal"
 
 var/list/default_onmob_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',

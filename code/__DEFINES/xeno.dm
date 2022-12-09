@@ -606,7 +606,8 @@
 #define XENO_CASTE_PRAETORIAN        "Praetorian"
 #define XENO_CASTE_CRUSHER           "Crusher"
 #define XENO_CASTE_RAVAGER           "Ravager"
-#define XENO_T3_CASTES               list(XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER)
+#define XENO_CASTE_REAPER            "Reaper"
+#define XENO_T3_CASTES               list(XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_REAPER)
 //special
 #define XENO_CASTE_QUEEN             "Queen"
 #define XENO_CASTE_PREDALIEN         "Predalien"

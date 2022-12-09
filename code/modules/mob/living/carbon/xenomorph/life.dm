@@ -85,7 +85,7 @@
 		var/use_leader_aura = FALSE
 		var/aura_center = src
 		if(aura_strength > 0) //Ignoring pheromone underflow
-			if(current_aura && plasma_stored > 5)
+			if(current_aura && plasma_stored > aura_plasma_cost)
 				if(caste_type == XENO_CASTE_QUEEN && anchored) //stationary queen's pheromone apply around the observed xeno.
 					var/mob/living/carbon/Xenomorph/Queen/Q = src
 					var/atom/phero_center = Q
@@ -357,7 +357,7 @@ Make sure their actual health updates immediately.*/
 				armor_integrity = armor_integrity_max
 
 		else //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
-			if(prob(50) && !is_runner_hiding && !current_aura)
+			if(prob(50) && !is_runner_hiding && (!current_aura || aura_plasma_cost == 0))
 				plasma_stored += 0.1 * plasma_max / 100
 
 		if(isXenoHivelord(src))
@@ -369,14 +369,14 @@ Make sure their actual health updates immediately.*/
 					to_chat(src, SPAN_WARNING("You feel dizzy as the world slows down."))
 					recalculate_move_delay = TRUE
 
-		if(current_aura)
-			plasma_stored -= 5
+		if(current_aura && aura_plasma_cost)
+			plasma_stored -= aura_plasma_cost
 
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
 	if(plasma_stored < 0)
 		plasma_stored = 0
-		if(current_aura)
+		if(current_aura && aura_plasma_cost)
 			current_aura = null
 			to_chat(src, SPAN_WARNING("You have run out of pheromones and stopped emitting pheromones."))
 

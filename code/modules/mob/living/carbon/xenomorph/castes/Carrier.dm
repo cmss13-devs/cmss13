@@ -15,7 +15,8 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 
-	evolution_allowed = FALSE
+	evolution_allowed = TRUE
+	evolves_to = list(XENO_CASTE_REAPER)
 	deevolves_to = list(XENO_CASTE_DRONE)
 	throwspeed = SPEED_AVERAGE
 	can_hold_facehuggers = 1

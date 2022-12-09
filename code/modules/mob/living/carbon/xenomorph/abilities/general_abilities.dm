@@ -425,5 +425,9 @@
 	charge_time = 1 SECONDS
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
+	var/stabbing_with_noun = "tail"
+	var/stab_range = 2
+	/// Used for reaper's claw stab
+	var/claw_stab = FALSE
 	 /// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE

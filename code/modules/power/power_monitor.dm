@@ -10,7 +10,7 @@
 	density = 1
 	anchored = 1.0
 	var/circuit = /obj/item/circuitboard/computer/powermonitor
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 300
 	active_power_usage = 300
 

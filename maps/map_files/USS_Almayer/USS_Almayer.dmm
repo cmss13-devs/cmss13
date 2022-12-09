@@ -84556,6 +84556,20 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
+"xYc" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/structure/machinery/atm{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer,
+/area/almayer/shipboard/brig/cells)
 "xYf" = (
 /obj/structure/machinery/cm_vending/clothing/sea,
 /turf/open/floor/almayer{
@@ -94342,7 +94356,7 @@ xkd
 xkd
 xkd
 xkd
-kmd
+xYc
 tUx
 ebd
 tHS

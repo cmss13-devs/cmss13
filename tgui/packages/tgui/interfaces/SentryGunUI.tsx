@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Icon, Input, ProgressBar, Stack, Tabs } from '../components';
+import { Box, ByondUi, Button, Flex, Icon, Input, ProgressBar, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 import { Component } from 'inferno';
 
@@ -29,6 +29,8 @@ interface SentryData {
   sentry_static: SentrySpec[];
   screen_state: 0 | 1;
   electrical: ElectricalSpec;
+  mapRef: string;
+  camera_target?: string;
 }
 
 const SelectionGroup = (
@@ -133,6 +135,7 @@ const StatusTitleSection = (props: { data: SentrySpec }, context) => {
 };
 
 const GunMenu = (props: { data: SentrySpec }, context) => {
+  const { act } = useBackend<SentryData>(context);
   const isEngaged = props.data.engaged > 1;
   return (
     <Flex direction="column">
@@ -168,10 +171,16 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
       <Flex.Item>
         <Stack>
           <Stack.Item>
-            <Button icon="video" />
+            <Button
+              icon="video"
+              onClick={() => act('set-camera', { index: props.data.index })}
+            />
           </Stack.Item>
           <Stack.Item>
-            <Button icon="bullhorn" />
+            <Button
+              icon="bullhorn"
+              onClick={() => act('ping', { index: props.data.index })}
+            />
           </Stack.Item>
         </Stack>
       </Flex.Item>
@@ -368,6 +377,59 @@ const ShowAllSentry = (props: { data: SentrySpec[] }, context) => {
   );
 };
 
+const SentryCamera = (_, context) => {
+  const { data, act } = useBackend<SentryData>(context);
+  return (
+    <ByondUi
+      className="CameraConsole__map"
+      params={{
+        id: data.mapRef,
+        type: 'map',
+      }}
+    />
+  );
+};
+
+const SentryTabMenu = (
+  props: {
+    sentrySpecs: SentrySpec[];
+    selected?: number;
+    setSelected: (d) => void;
+  },
+  context
+) => {
+  return (
+    <Tabs>
+      {props.sentrySpecs.map((x, index) => (
+        <Tabs.Tab
+          key={x.index}
+          selected={props.selected === index}
+          onClick={() => props.setSelected(index)}>
+          {x.nickname.length === 0 ? x.index : x.nickname}
+        </Tabs.Tab>
+      ))}
+      <Tabs.Tab
+        selected={props.selected === undefined}
+        onClick={() => props.setSelected(undefined)}>
+        All
+      </Tabs.Tab>
+    </Tabs>
+  );
+};
+
+const PowerLevel = (_, context) => {
+  const { data } = useBackend<SentryData>(context);
+  return (
+    <ProgressBar
+      minValue={0}
+      maxValue={data.electrical.max_charge}
+      value={data.electrical.charge}>
+      {((data.electrical.charge / data.electrical.max_charge) * 100).toFixed(2)}{' '}
+      %
+    </ProgressBar>
+  );
+};
+
 export const SentryGunUI = (_, context) => {
   const { data, act } = useBackend<SentryData>(context);
   const sentrykeys =
@@ -377,8 +439,6 @@ export const SentryGunUI = (_, context) => {
   const sentrySpecs: SentrySpec[] = sentrykeys.map((x) => {
     return { ...data.sentry[x], ...data.sentry_static[x] };
   });
-
-  const [showConfig, setShowConfig] = useLocalState(context, 'showConf', true);
 
   const [selectedSentry, setSelectedSentry] = useLocalState<undefined | number>(
     context,
@@ -396,33 +456,14 @@ export const SentryGunUI = (_, context) => {
       <Window.Content className="SentryGun">
         <Flex justify="space-between" align-items="center">
           <Flex.Item>
-            <Tabs>
-              {sentrySpecs.map((x, index) => (
-                <Tabs.Tab
-                  key={x.index}
-                  selected={selectedSentry === index}
-                  onClick={() => setSelectedSentry(index)}>
-                  {x.nickname.length === 0 ? x.index : x.nickname}
-                </Tabs.Tab>
-              ))}
-              <Tabs.Tab
-                selected={selectedSentry === undefined}
-                onClick={() => setSelectedSentry(undefined)}>
-                All
-              </Tabs.Tab>
-            </Tabs>
+            <SentryTabMenu
+              sentrySpecs={sentrySpecs}
+              selected={selectedSentry}
+              setSelected={setSelectedSentry}
+            />
           </Flex.Item>
           <Flex.Item align="center">
-            <ProgressBar
-              minValue={0}
-              maxValue={data.electrical.max_charge}
-              value={data.electrical.charge}>
-              {(
-                (data.electrical.charge / data.electrical.max_charge) *
-                100
-              ).toFixed(2)}{' '}
-              %
-            </ProgressBar>
+            <PowerLevel />
           </Flex.Item>
         </Flex>
 
@@ -436,13 +477,22 @@ export const SentryGunUI = (_, context) => {
             <div className="BottomPanelSlide" />
           </div>
         )}
-        {!validSelection && <EmptyDisplay />}
-        {validSelection && selectedSentry !== undefined && (
-          <ShowSingleSentry data={sentrySpecs[selectedSentry ?? 0]} />
+        {data.camera_target === undefined && (
+          <>
+            {!validSelection && <EmptyDisplay />}
+            {validSelection && (
+              <>
+                {selectedSentry !== undefined && (
+                  <ShowSingleSentry data={sentrySpecs[selectedSentry ?? 0]} />
+                )}
+                {selectedSentry === undefined && (
+                  <ShowAllSentry data={sentrySpecs} />
+                )}
+              </>
+            )}
+          </>
         )}
-        {validSelection && selectedSentry === undefined && (
-          <ShowAllSentry data={sentrySpecs} />
-        )}
+        {data.camera_target !== undefined && <SentryCamera />}
       </Window.Content>
     </Window>
   );

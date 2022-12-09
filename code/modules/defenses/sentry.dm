@@ -22,6 +22,9 @@
 	var/omni_directional = FALSE
 	var/sentry_range = SENTRY_RANGE
 
+	var/has_camera = FALSE
+	var/camera_range = 7
+
 	var/damage_mult = 1
 	var/accuracy_mult = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
@@ -91,6 +94,9 @@
 	get_target(target)
 	return TRUE
 
+/obj/structure/machinery/defenses/sentry/proc/identify()
+	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
+
 /obj/structure/machinery/defenses/sentry/proc/set_range()
 	if(omni_directional)
 		range_bounds = RECT(x, y, 8, 8)
@@ -135,9 +141,12 @@
 /obj/structure/machinery/defenses/sentry/proc/update_choice(mob/user, var/category, var/selection)
 	if(category in selected_categories)
 		selected_categories[category] = selection
+		return TRUE
 	else
 		if(category == "nickname")
 			nickname = selection
+			return TRUE
+	return FALSE
 
 	// do your switch case here to implement action and selection
 

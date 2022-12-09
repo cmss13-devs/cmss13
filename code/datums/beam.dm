@@ -163,8 +163,13 @@
 		moving_human.overlay_fullscreen("laserbeam", /atom/movable/screen/fullscreen/laser_blind)
 		//dmg burn eye
 		addtimer(CALLBACK(moving_human, /mob/proc/clear_fullscreen, "laserbeam"), 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
-	else if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
-		visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine for a moment as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades shine for a moment as \the [src] passes over them."))
+	else
+		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
+			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine for a moment as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades shine for a moment as \the [src] passes over them."))
+			//drip = bonus balloonchat
+			balloon_alert_to_viewers(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine for a moment as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades shine for a moment as \the [src] passes over them."))
+		else
+			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src] passes over them."), SPAN_NOTICE("Your headgear protect you from  \the [src] passes over them."))
 
 /obj/effect/ebeam/laser/intense
 	name = "intense laser beam"

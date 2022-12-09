@@ -978,8 +978,8 @@
 	id = PLASMA_HEMOCATALENE
 	description = "A red-ish plasma..."
 	color = "#cf5b51"
-	overdose = REAGENTS_OVERDOSE
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	overdose = INFINITY // no overdose
+	overdose_critical = INFINITY
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_HEMOGENIC = 20, PROPERTY_NEOGENETIC = 1, PROPERTY_TOXIC = 1)

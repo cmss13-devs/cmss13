@@ -29,7 +29,7 @@
 		behavior.egg_plasma_primed = FALSE
 		behavior.remove_egg_plasma_slash_overlay()
 
-	to_chat(xeno, SPAN_XENODANGER("You have waited too long, your slash will no inject egg plasma!"))
+	to_chat(xeno, SPAN_XENODANGER("You have waited too long, your slash will no longer inject egg plasma!"))
 	button.icon_state = "template"
 
 

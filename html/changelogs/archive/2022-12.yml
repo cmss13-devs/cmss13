@@ -361,3 +361,21 @@
       LZ rushes
   - bugfix: added a 2 minute cooldown between ARES/QM last person alive callouts to
       prevent spam
+2022-12-10:
+  BeagleGaming1:
+  - rscadd: Puts a monocle back in the COs safe after "popular" demand (one person
+      asked me to do it)
+  Molto:
+  - rscadd: Readded the different light floor colors, use multitool to cycle through
+      them
+  - bugfix: Fixed light tiles being indestructible unless using a crowbar
+  - code_imp: Moved some part of the code that were only used by light tiles in floors.dm
+      into light.dm directly
+  - refactor: Made one letter variables more lettered
+  Sleepynecrons:
+  - imageadd: added new sprites for Resin Whisperer
+  ThePiachu:
+  - code_imp: Replaced magic numbers around power usage with proper defines.
+  - code_imp: Fixed DME file references being in wrong order.
+  - bugfix: Fixed a misleading comment around storage items' max_w_class
+  - bugfix: Fixed a runtime caused by Synths having no paygrade.

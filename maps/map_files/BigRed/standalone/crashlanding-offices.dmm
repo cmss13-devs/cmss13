@@ -810,7 +810,10 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cw" = (
-/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped,
+/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped{
+	name = "smashed NSG 23 assault rifle";
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Weyland-Yutani PMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close. This one seems to have been heavily damaged from impact, you can still see some debris that resembles a scope and underbarrel attachment point on it."
+	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin5";
 	icon_state = "rasputin12"
@@ -1242,8 +1245,6 @@
 "dI" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23/extended,
 /obj/item/ammo_magazine/rifle/nsg23/extended,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -1276,7 +1277,6 @@
 /area/bigredv2/outside/office_complex)
 "dM" = (
 /obj/structure/surface/rack,
-/obj/item/storage/firstaid,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1285,7 +1285,9 @@
 "dN" = (
 /obj/structure/surface/rack,
 /obj/item/device/flashlight,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/ammo_magazine/pistol/rubber,
+/obj/item/ammo_magazine/pistol/rubber,
+/obj/item/ammo_magazine/pistol/rubber,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1492,6 +1494,17 @@
 	icon_state = "rasputin15"
 	},
 /area/bigredv2/outside/office_complex)
+"jx" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	dir = 1
+	},
+/obj/item/limb/leg/l_leg,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
 "od" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
@@ -1526,11 +1539,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/gloves/marine/veteran/PMC,
 /obj/effect/spawner/gibspawner/human,
-/obj/item/limb/arm/l_arm,
-/obj/item/limb/leg/l_leg,
-/obj/item/limb/hand/l_hand,
+/obj/item/clothing/head/helmet/marine/veteran/PMC,
+/obj/item/clothing/under/marine/veteran/PMC,
 /obj/item/clothing/head/helmet/marine/veteran/PMC,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -1555,6 +1566,13 @@
 	icon_state = "rasputin3"
 	},
 /area/bigredv2/outside/office_complex)
+"sR" = (
+/obj/item/storage/firstaid,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
 "uC" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/item/weapon/gun/rifle/m41a/corporate{
@@ -1569,14 +1587,14 @@
 	},
 /area/bigredv2/outside/office_complex)
 "uL" = (
-/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"
 	},
 /area/bigredv2/outside/office_complex)
 "vw" = (
-/obj/item/clothing/under/marine/veteran/PMC,
+/obj/item/limb/arm/l_arm,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-rasputin7"
@@ -1599,6 +1617,9 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/wysec,
 /obj/item/limb/leg/r_leg,
+/obj/item/weapon/gun/pistol/m4a3/training{
+	name = "dented M4A3 service pistol"
+	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1613,6 +1634,16 @@
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
+"EE" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/item/limb/hand/l_hand,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
 	},
 /area/bigredv2/outside/office_complex)
 "GG" = (
@@ -1647,7 +1678,6 @@
 /area/bigredv2/outside/office_complex)
 "NK" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/rubber,
 /obj/item/ammo_magazine/rifle/rubber,
 /obj/item/ammo_magazine/rifle/rubber,
 /obj/item/ammo_magazine/rifle/rubber,
@@ -2005,7 +2035,7 @@ aT
 aO
 bl
 dz
-GG
+bc
 bc
 dB
 bc
@@ -2086,7 +2116,7 @@ aW
 uL
 bn
 rF
-dE
+jx
 dE
 dE
 bc
@@ -2112,7 +2142,7 @@ aQ
 aV
 aV
 vw
-bp
+EE
 dA
 bp
 bp
@@ -2170,7 +2200,7 @@ bc
 bc
 uC
 bc
-bc
+sR
 bc
 bc
 bc

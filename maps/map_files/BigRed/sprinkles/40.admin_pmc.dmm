@@ -163,9 +163,6 @@
 /area/bigredv2/outside/admin_building)
 "aA" = (
 /obj/effect/landmark/corpsespawner/wysec,
-/obj/item/weapon/gun/rifle/m41a/corporate{
-	pixel_x = -6
-	},
 /turf/open/floor{
 	tag = "icon-carpet7-3 (WEST)";
 	icon_state = "carpet7-3";
@@ -239,6 +236,10 @@
 /obj/structure/surface/table,
 /obj/item/device/radio/marine,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/weapon/gun/pistol/m4a3/training{
+	name = "dented M4A3 service pistol"
+	},
+/obj/item/ammo_magazine/pistol/rubber,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";
@@ -345,12 +346,6 @@
 "aX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/crap_item,
-/obj/item/weapon/gun/rifle/m41a/corporate{
-	current_mag = /obj/item/ammo_magazine/rifle/rubber;
-	name = "battered M41A pulse rifle MK2";
-	pixel_x = 4;
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up.."
-	},
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
 	icon_state = "darkred2";
@@ -372,6 +367,9 @@
 	current_rounds = 0;
 	pixel_x = -2;
 	pixel_y = -10
+	},
+/obj/item/ammo_box/magazine/m4a3{
+	num_of_magazines = 2
 	},
 /turf/open/floor{
 	tag = "icon-carpet7-3 (WEST)";
@@ -566,11 +564,8 @@
 	},
 /area/bigredv2/outside/admin_building)
 "is" = (
-/obj/item/weapon/gun/rifle/m41a/corporate{
-	current_mag = /obj/item/ammo_magazine/rifle/rubber;
-	name = "battered M41A pulse rifle MK2";
-	pixel_x = 4;
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up.."
+/obj/item/ammo_magazine/pistol/rubber{
+	current_rounds = 0
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
@@ -636,6 +631,16 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
+"AC" = (
+/obj/item/ammo_magazine/pistol/rubber{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
 "Br" = (
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/regular/empty,
@@ -644,6 +649,15 @@
 	icon_state = "carpet15-15";
 	dir = 8
 	},
+/area/bigredv2/outside/admin_building)
+"QR" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/item/ammo_magazine/pistol/rubber{
+	current_rounds = 0
+	},
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "Sz" = (
 /obj/item/ammo_magazine/rifle/rubber{
@@ -686,7 +700,7 @@ ab
 aj
 ak
 dp
-as
+AC
 aJ
 aO
 aJ
@@ -736,7 +750,7 @@ am
 av
 aP
 aP
-aP
+QR
 aP
 bd
 bl

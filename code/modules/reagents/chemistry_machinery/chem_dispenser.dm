@@ -4,7 +4,7 @@
 	anchored = 1
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "dispenser"
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	idle_power_usage = 40
 	layer = BELOW_OBJ_LAYER //So beakers reliably appear above it
 	var/req_skill = SKILL_MEDICAL

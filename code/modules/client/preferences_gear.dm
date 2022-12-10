@@ -257,40 +257,68 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/tacticalmask
-	display_name = "Tactical Mask (Gray)"
+	display_name = "Shemagh (Gray)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmasktan
-	display_name = "Tactical Mask (Tan)"
+	display_name = "Shemagh (Tan)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmaskgreen
-	display_name = "Tactical Mask (Red)"
+	display_name = "Shemagh (Red)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmaskblack
-	display_name = "Tactical Mask (Green)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
-	slot = WEAR_FACE
-	cost = 2
-
-
-
-/datum/gear/tacticalmaskblack
-	display_name = "Tactical Mask (Green)"
+	display_name = "Shemagh (Green)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmasksquad
-	display_name = "Tactical Mask (Squad)"
+	display_name = "Shemagh (Squad)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
+	slot = WEAR_FACE
+	cost = 2
+//
+/datum/gear/tornscarfclassic
+	display_name = "Scarf (Grey)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/classic
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfgreen
+	display_name = "Scarf (Green)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/green
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfwhite
+	display_name = "Scarf (White)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/snow
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfdesert
+	display_name = "Scarf (Desert)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/desert
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfurban
+	display_name = "Scarf (Urban)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/urban
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfblack
+	display_name = "Scarf (Black)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/black
 	slot = WEAR_FACE
 	cost = 2
 //

@@ -23,7 +23,7 @@
 	open_layer = FIREDOOR_OPEN_LAYER // Just below doors when open
 	closed_layer = FIREDOOR_CLOSED_LAYER // Just above doors when closed
 	power_channel = POWER_CHANNEL_ENVIRON
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 5
 
 	var/blocked = 0

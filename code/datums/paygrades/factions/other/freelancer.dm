@@ -1,5 +1,6 @@
 /datum/paygrade/freelancer
 	name = "Freelancer Paygrade"
+	pay_multiplier = 0.75 //these are shitty mercs.
 
 /datum/paygrade/freelancer/standard
 	paygrade = "Freelancer Standard"
@@ -15,9 +16,11 @@
 	paygrade = "Freelancer Leader"
 	name = "Freelancer Leader"
 	prefix = "Warlord"
+	pay_multiplier = 1
 
 /datum/paygrade/freelancer/elite
 	name = "Elite Freelancer Paygrade"
+	pay_multiplier = 1.25
 
 /datum/paygrade/freelancer/elite/standard
 	paygrade = "Elite Freelancer Standard"
@@ -43,3 +46,4 @@
 	paygrade = "Elite Freelancer Leader"
 	name = "Elite Freelancer Leader"
 	prefix = "Warlord"
+	pay_multiplier = 1.5

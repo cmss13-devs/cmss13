@@ -1,0 +1,8 @@
+author: "Googles_Hands"
+delete-after: True
+changes:
+  - bugfix: "Changed the WO CO, XO, QM and Mortar Crew ranks to be more lore friendly"
+  - bugfix: "Changed the WO reinforcement announcement to be more lore friendly"
+  - bugfix: "Fixed the description of the WO XO and CMP in reference to the XO's title"
+  - spellcheck: "Fixed a few misspellings in WO announcements"
+  - bugfix: "removes redundant welding protection from squad engies"

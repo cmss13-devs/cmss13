@@ -180,8 +180,8 @@
 	xeno.explosivearmor_modifier += 1000
 	xeno.recalculate_armor()
 
-	addtimer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE)
-	addtimer(CALLBACK(src, .proc/remove_shield), 70, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, .proc/remove_shield), 70, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	apply_cooldown()
 	..()

@@ -36569,6 +36569,11 @@
 	},
 /area/almayer/command/cichallway)
 "dmA" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera";
+	tag = ""
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/synthcloset)
 "dmE" = (
@@ -49800,10 +49805,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
-"iYf" = (
-/obj/structure/machinery/camera/autoname/almayer/containment,
-/turf/closed/wall/almayer/research/containment/wall/north,
-/area/almayer/medical/containment/cell)
 "iYi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -52878,9 +52879,7 @@
 	tag = ""
 	},
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
+	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
 "ksp" = (
@@ -52951,11 +52950,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	tag = "icon-N"
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
 	},
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/weapon/gun/rifle/l42a,
@@ -53159,11 +53153,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/cm_vending/sorted/marine_food,
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera";
-	tag = "icon-camera (EAST)"
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
@@ -57914,6 +57903,11 @@
 /obj/structure/sign/safety/rewire{
 	pixel_x = -17
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera";
+	tag = ""
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -61187,16 +61181,14 @@
 	},
 /area/almayer/squads/bravo)
 "odD" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera";
-	tag = ""
+/obj/structure/machinery/camera/autoname/almayer/containment{
+	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+/turf/open/floor/almayer/research/containment/floor2{
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
 	},
-/area/almayer/engineering/laundry)
+/area/almayer/medical/containment/cell)
 "odN" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -65509,6 +65501,11 @@
 	},
 /obj/structure/machinery/status_display{
 	pixel_x = 32
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera";
+	tag = "icon-camera (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -82805,6 +82802,11 @@
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_y = -30
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera";
+	tag = "icon-camera (NORTH)"
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -85021,11 +85023,6 @@
 	},
 /area/almayer/squads/charlie)
 "yiX" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera";
-	tag = ""
-	},
 /obj/structure/bed/chair{
 	dir = 8;
 	pixel_y = 3;
@@ -115438,9 +115435,9 @@ atL
 akV
 atL
 irA
-iYf
+icM
 oFj
-thN
+odD
 pNP
 oNp
 ruc
@@ -130077,7 +130074,7 @@ gdS
 wSn
 kXN
 fuT
-odD
+wSn
 xBY
 mOg
 oHx
@@ -132886,9 +132883,9 @@ wdJ
 atq
 atq
 alO
-krS
+amA
 awy
-civ
+krS
 eNi
 eNi
 eNi

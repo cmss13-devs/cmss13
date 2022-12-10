@@ -849,3 +849,16 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					qdel(x)
 				break
 
+/obj/structure/machinery/door/airlock/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+	if(isElectrified() && arePowerSystemsOn())
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(5, 1, src)
+		s.start()
+		xeno.apply_effect(1, WEAKEN)
+
+	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the [src] with its tail!"), SPAN_XENOWARNING("You strike the [src] with your tail!"))
+	xeno.emote("tail")
+	var/damage = xeno.melee_damage_upper * TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER
+	take_damage(damage, xeno)
+	return TAILSTAB_COOLDOWN_NORMAL

@@ -973,3 +973,35 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			&& src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
 			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
 	return TRUE
+
+mob/dead/observer/proc/can_spawn_as_hugger(var/hivenumber)
+	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
+		return
+	if(world.time < GLOB.hive_datum[hivenumber].hugger_timelock)
+		to_chat(usr, SPAN_WARNING("The hive cannot support facehuggers yet..."))
+		return FALSE
+	if(world.time - timeofdeath < 3 MINUTES)
+		var/time_left = round((timeofdeath + 3 MINUTES - world.time) / 10)
+		to_chat(usr, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
+		return FALSE
+
+	GLOB.hive_datum[hivenumber].update_hugger_limit()
+
+	var/current_hugger_count = 0
+	for(var/mob/mob as anything in GLOB.hive_datum[hivenumber].totalXenos)
+		if(isXenoFacehugger(mob))
+			current_hugger_count++
+	if(GLOB.hive_datum[hivenumber].playable_hugger_limit <= current_hugger_count)
+		to_chat(usr, SPAN_WARNING("\The [GLOB.hive_datum[hivenumber]] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[GLOB.hive_datum[hivenumber].playable_hugger_limit]</b>"))
+		return FALSE
+
+	if(alert(usr, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") == "No")
+		return FALSE
+	return TRUE
+
+mob/dead/observer/proc/spawn_as_hugger(atom/A, var/hivenumber)
+	var/mob/living/carbon/Xenomorph/Facehugger/hugger = new /mob/living/carbon/Xenomorph/Facehugger(A.loc, null, hivenumber)
+	usr.mind.transfer_to(hugger, TRUE)
+	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
+	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
+	hugger.generate_name()

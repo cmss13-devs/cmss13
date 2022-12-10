@@ -301,3 +301,19 @@
 	if(!istype(E)) //something else in our hand
 		to_chat(src, SPAN_WARNING("You need an empty hand to grab one of your stored eggs!"))
 		return
+
+/mob/living/carbon/Xenomorph/Carrier/attack_ghost(mob/dead/observer/user)
+	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
+	if(!huggers_max) //Eggsac, Shaman don't have huggers, do nothing!
+		return
+	if(!huggers_cur)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	if(!user.can_spawn_as_hugger(hivenumber))
+		return
+	//Need to check again because time passed due to the confirmation window
+	if(!huggers_cur)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	user.spawn_as_hugger(src, hivenumber)
+	huggers_cur--

@@ -264,6 +264,13 @@
 
 	var/need_round_end_check = FALSE
 
+	//Joining as Facehugger vars
+	//var/hugger_timelock = 15 MINUTES
+	var/hugger_timelock = 1 MINUTES
+	var/last_marine_count = -5 MINUTES
+	var/marine_count_cooldown = 2 MINUTES
+	var/playable_hugger_limit = 4
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
@@ -864,6 +871,14 @@
 	if(HAS_TRAIT(src, TRAIT_NO_HIVE_DELAY))
 		return FALSE
 	return TRUE
+
+/datum/hive_status/proc/update_hugger_limit()
+	if(world.time > last_marine_count + marine_count_cooldown)
+		var/marine_count = 0
+		for(var/mob/mob as anything in GLOB.human_mob_list)
+			if(mob.job in ROLES_MARINES)
+				marine_count++
+		playable_hugger_limit = round(marine_count / 5) + 1
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"

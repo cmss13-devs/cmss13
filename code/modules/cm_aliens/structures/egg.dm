@@ -109,7 +109,7 @@
 		var/obj/effect/egg_trigger/ET = trigger
 		ET.moveToNullspace()
 
-/obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/Xenomorph/X = null) //drops and kills the facehugger if any is remaining
+/obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/Xenomorph/X = null, var/is_hugger_player_controlled = FALSE) //drops and kills the facehugger if any is remaining
 	if(kill && status != EGG_DESTROYED)
 		hide_egg_triggers()
 		status = EGG_DESTROYED
@@ -122,13 +122,15 @@
 		icon_state = "Egg Opened"
 		flick("Egg Opening", src)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
-		addtimer(CALLBACK(src, .proc/release_hugger, instant_trigger, X), 1 SECONDS)
+		addtimer(CALLBACK(src, .proc/release_hugger, instant_trigger, X, is_hugger_player_controlled), 1 SECONDS)
 
-/obj/effect/alien/egg/proc/release_hugger(var/instant_trigger, var/mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/egg/proc/release_hugger(var/instant_trigger, var/mob/living/carbon/Xenomorph/X, var/is_hugger_player_controlled = FALSE)
 	if(!loc || status == EGG_DESTROYED)
 		return
 
 	status = EGG_BURST
+	if(is_hugger_player_controlled)
+		return //Don't need to spawn a hugger, a player controls it already!
 	var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
 
 	child.flags_embryo = flags_embryo
@@ -241,6 +243,24 @@
 
 /obj/effect/alien/egg/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN
+
+/obj/effect/alien/egg/attack_ghost(mob/dead/observer/user)
+	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
+	if(status == EGG_GROWING)
+		to_chat(user, SPAN_WARNING("\The [src] is still growing, give it some time!"))
+		return
+	if(status != EGG_GROWN)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+
+	if(!user.can_spawn_as_hugger(hivenumber))
+		return
+	//Need to check again because time passed due to the confirmation window
+	if(status != EGG_GROWN)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	user.spawn_as_hugger(src, hivenumber)
+	Burst(FALSE, FALSE, null, TRUE)
 
 //The invisible traps around the egg to tell it there's a mob right next to it.
 /obj/effect/egg_trigger

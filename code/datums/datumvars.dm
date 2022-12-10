@@ -594,7 +594,7 @@ body
 			return
 
 		var/datum/D = locate(href_list["adv_proccall"])
-		callproc(D)
+		callproc_datum(D)
 
 
 	else if(href_list["rotatedatum"])

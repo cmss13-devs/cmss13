@@ -6,52 +6,16 @@
 	name = "Vehicle NanoMed"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "nanomed"
-	desc = "A wall-mounted vendor containing medical supplies vital to survival. It has bigger stock than a regular NanoMed and can restock most common autoinjectors."
+	desc = "A wall-mounted vendor containing medical supplies vital to survival."
 
 	unacidable = TRUE
 	unslashable = TRUE
 	indestructible = TRUE
-	wrenchable = FALSE
 	hackable = FALSE
-	density = FALSE
-
-	listed_products = list(
-		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", 5, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", 5, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
-
-		list("DEVICES", -1, null, null),
-		list("Health Analyzer", 3, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
-
-		list("FIELD SUPPLIES", -1, null, null),
-		list("Advanced Burn Kit", 5, /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
-		list("Advanced Trauma Kit", 5, /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Ointment", 10, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
-		list("Roll of Gauze", 10, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Splints", 10, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR)
-	)
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
-		/obj/item/reagent_container/hypospray/autoinjector/inaprovaline,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
-		)
-
-	stack_refill = list(
-		/obj/item/stack/medical/advanced/ointment,
-		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
 	)
 
 //MED APC version of WY Med, provides resupply for basic stuff. Provides a decent amount of cryobags for evacuating hugged marines.

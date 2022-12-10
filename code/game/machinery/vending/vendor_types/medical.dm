@@ -330,11 +330,24 @@
 
 	chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/splint,
 		/obj/item/stack/medical/ointment
+	)
+
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited
+	desc = "Wall-mounted Medical Equipment Dispenser. This version is more limited than standard USCM NanoMeds."
+
+	chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat

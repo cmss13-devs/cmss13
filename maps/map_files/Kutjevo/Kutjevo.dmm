@@ -1076,7 +1076,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany)
 "bzY" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /obj/structure/machinery/light{
@@ -1658,7 +1658,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South/power2)
 "cpj" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
 /turf/open/floor/kutjevo/multi_tiles{
@@ -1925,7 +1925,7 @@
 "cFY" = (
 /obj/item/stool,
 /obj/item/frame/firstaid_arm_assembly,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /turf/open/floor/kutjevo/colors/green/tile,
@@ -4811,7 +4811,7 @@
 	},
 /area/kutjevo/interior/power/comms)
 "giZ" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /obj/structure/stairs/perspective/kutjevo{
@@ -5397,7 +5397,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_river)
 "gXP" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
 /turf/open/floor/kutjevo/colors/orange,
@@ -5442,7 +5442,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "haK" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
 /turf/open/floor/kutjevo/grey/plate,
@@ -7539,7 +7539,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/oob)
 "kmm" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
 /turf/open/floor/kutjevo/colors/purple/edge{
@@ -9671,7 +9671,7 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/cells)
 "neV" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /obj/structure/machinery/iv_drip,
@@ -14745,7 +14745,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
 "tZI" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /turf/open/floor/kutjevo/colors,
@@ -15503,7 +15503,7 @@
 	},
 /area/kutjevo/interior/power)
 "uTo" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /turf/open/floor/kutjevo/colors/orange,
@@ -17642,7 +17642,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
 /turf/open/floor/kutjevo/colors/cyan,

@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "UPP Spy and Santa presets now have the correct equipment and paygrades."
+  - rscadd: "Added a new proc to update fax options, rather than relying on Initialize."
+  - code_imp: "Removes the legacy code checking for snowflake Yautja masks."

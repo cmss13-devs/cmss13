@@ -1261,6 +1261,10 @@
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
 		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
 
+	else if(href_list["UpdateFax"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+		fax.update_departments()
+
 	else if(href_list["USCMFaxReply"])
 		var/mob/living/carbon/human/H = locate(href_list["USCMFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])

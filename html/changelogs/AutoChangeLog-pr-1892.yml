@@ -1,0 +1,4 @@
+author: "RenaRenaRe"
+delete-after: True
+changes:
+  - bugfix: "Research chems created via the synthesizer now work properly in chemical fires"

@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "apc_mapicon"
 	anchored = 1
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	unslashable = TRUE
 	unacidable = TRUE

@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
 	var/base_state = "mixer"
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 20
 	layer = BELOW_OBJ_LAYER //So bottles/pills reliably appear above it
 	var/req_skill = SKILL_MEDICAL

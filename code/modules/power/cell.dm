@@ -113,7 +113,7 @@
 	name = "\improper W-Y rechargeable mini-battery"
 	desc = "Cheap, throwaway batteries provided by the Weyland-Yutani Corporation. The 'rechargeable' feature was added to be more marketable to independent colonists hell-bent on 'using it till it disintegrates', a common sentiment on the frontier."
 	icon_state = "mini-cell"
-
+	w_class = SIZE_TINY
 	charge = 500
 	maxcharge = 500
 	matter = list("metal" = 700, "glass" = 40)

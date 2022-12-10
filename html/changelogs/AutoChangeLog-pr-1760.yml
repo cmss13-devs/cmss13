@@ -1,0 +1,8 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - balance: "Rebalanced the CO's Mateba and Desert Eagle so that each have their own strengths and weaknesses."
+  - balance: "Compared to each other, the Mateba has higher damage per shot and better accuracy at the cost of lower ammo count and lower firerate."
+  - balance: "The Deagle, by contrast, fires faster and has more ammo, but has less damage per shot and lower accuracy."
+  - balance: "All CO sidearms now come with high-impact ammunition only in their vendors. AP ammo available as a sidegrade."
+  - rscadd: "Adds high-impact AP ammo to the Deagle and Mateba that offers much higher armor penetration in exchange for decreased overall damage."

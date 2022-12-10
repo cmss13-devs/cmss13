@@ -857,7 +857,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		xeno.apply_effect(1, WEAKEN)
 
 	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the [src] with its tail!"), SPAN_XENOWARNING("You strike the [src] with your tail!"))
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes \the [src] with its tail!"), SPAN_XENOWARNING("You strike \the [src] with your tail!"))
 	xeno.emote("tail")
 	var/damage = xeno.melee_damage_upper * TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER
 	take_damage(damage, xeno)

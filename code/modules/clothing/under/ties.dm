@@ -354,6 +354,16 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
 
+/obj/item/clothing/accessory/patch/forecon
+	name = "\improper Force Recon patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women who serve as Force Recon in the USCM."
+	icon_state = "foreconpatch"
+
+/obj/item/clothing/accessory/patch/thirdfleet //admin spawn for now, likely for High Command personnel
+	name = "\improper Third Fleet patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women attached directly to headquarter sections of the Third Fleet."
+	icon_state = "thirdfleetpatch"
+
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
 	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."

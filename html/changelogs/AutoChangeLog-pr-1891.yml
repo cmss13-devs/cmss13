@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Projectiles no longer experience an unintended massive drop in accuracy immediately past their maximum accurate range."

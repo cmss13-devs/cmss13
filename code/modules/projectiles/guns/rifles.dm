@@ -1310,9 +1310,10 @@
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/stock/m4ra
+						/obj/item/attachable/attached_gun/m4ra
 						)
 
+	starting_attachment_types = (/obj/item/attachable/attached_gun/m4ra)
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
@@ -1320,18 +1321,20 @@
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	fire_delay = FIRE_DELAY_TIER_5
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0
 
+
 /obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
-	var/obj/item/attachable/stock/S = new /obj/item/attachable/stock/m4ra(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+	var/obj/item/attachable/attached_gun/m4ra/stock = new /obj/item/attachable/attached_gun/m4ra(src)
+	stock.flags_attach_features &= ~ATTACH_REMOVABLE
+	stock.Attach(src)
+	update_attachable(stock.slot)
 
 //-------------------------------------------------------
 //-------------------------------------------------------

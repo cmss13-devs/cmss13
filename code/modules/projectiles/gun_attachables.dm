@@ -1160,22 +1160,22 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
 
-/obj/item/attachable/stock/m4ra
+/obj/item/attachable/attached_gun/m4ra
 	name = "\improper M4RA barrel"
 	desc = "An M4RA barrel, specially designed for the M4RA. It can withstand the higher pressure cartridge and is designed to maximize velocity coming out of the gun."
 	icon_state = "m4ra_barrel_a"
 
-/obj/item/attachable/stock/m4ra_custom/Initialize()
-	..()
+/obj/item/attachable/attached_gun/m4ra/Initialize()
+	. = ..()
 	select_gamemode_skin(type)
 
-/obj/item/attachable/stock/m4ra_custom
+/obj/item/attachable/attached_gun/m4ra_custom
 	name = "\improper M4RA custom barrel"
 	desc = "A custom barrel specifically designed for the M4RA Custom, made on Chinook. These are only installed on the M4RA and are made specially to withstand the A19's velocity and PSI."
 	icon_state = "m4ra_custom_barrel_a"
 
-/obj/item/attachable/stock/m4ra_custom/Initialize()
-	..()
+/obj/item/attachable/attached_gun/m4ra_custom/Initialize()
+	. = ..()
 	select_gamemode_skin(type)
 
 /obj/item/attachable/stock/xm88

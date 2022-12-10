@@ -399,6 +399,7 @@
 	fire_sound = 'sound/weapons/gun_m4ra.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra
 	force = 16
+	starting_attachment_types = (/obj/item/attachable/attached_gun/m4ra_custom)
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/extended_barrel,
@@ -417,7 +418,7 @@
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/stock/m4ra_custom
+						/obj/item/attachable/attached_gun/m4ra_custom
 						)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -432,17 +433,17 @@
 
 /obj/item/weapon/gun/rifle/m4ra/custom/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	fire_delay = FIRE_DELAY_TIER_9
 	burst_amount = BURST_AMOUNT_TIER_2
 	burst_delay = FIRE_DELAY_TIER_8
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_4
 
 /obj/item/weapon/gun/rifle/m4ra/custom/handle_starting_attachment()
-	var/obj/item/attachable/stock/scout = new /obj/item/attachable/stock/m4ra_custom(src)
+	var/obj/item/attachable/stock/scout = new /obj/item/attachable/attached_gun/m4ra_custom(src)
 	scout.flags_attach_features &= ~ATTACH_REMOVABLE
 	scout.Attach(src)
 	update_attachable(scout.slot)

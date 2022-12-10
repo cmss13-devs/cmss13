@@ -1962,6 +1962,7 @@
 "afo" = (
 /obj/structure/safe,
 /obj/item/moneybag,
+/obj/item/clothing/glasses/monocle,
 /obj/item/weapon/melee/telebaton,
 /obj/item/book/codebook,
 /obj/item/coin/silver{
@@ -62450,9 +62451,6 @@
 /obj/item/storage/box/monkeycubes{
 	pixel_x = 7;
 	pixel_y = 7
-	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 7
 	},
 /turf/open/floor/almayer{
 	dir = 8;

@@ -1,8 +1,0 @@
-author: "SpartanBobby"
-delete-after: True
-changes:
-  - balance: "A-Block Droms north-south hallways are now 1 tile wider on each side with a 2x3 destructible blocker in the middle to hinder snipers and boilers"
-  - balance: "A-Block Drom south hallway now has a door leading outside"
-  - balance: "Some of the man-made barricades on the map have now been destroyed prior to the Almayer landing"
-  - balance: "LV522 Chances Claim: Removed a lot of 1x1 tunnels and redundant areas in the reactor"
-  - bugfix: "fixed a strange bug with unbreakable cargo containers"

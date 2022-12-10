@@ -54,3 +54,9 @@
 	to_chat(zenomorf, SPAN_XENOHIGHDANGER("You feel your movement speed slow down!"))
 	disable_spatter()
 	buffs_active = FALSE
+
+/datum/action/xeno_action/activable/tail_stab/spitter/use_ability(atom/A)
+	var/target = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		carbon_target.reagents.add_reagent("molecularacid", 5)

@@ -1,4 +1,0 @@
-author: "RenaRenaRe"
-delete-after: True
-changes:
-  - bugfix: "Cross-ciphering now works correctly"

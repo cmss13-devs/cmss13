@@ -1,0 +1,6 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - rscdel: "Removed one monkey cube box from Research."
+  - balance: "Increased rarity of MST and NST from Uncommon to Rare."
+  - balance: "Replaced the Ultrazine Pill Bottle with an Ultrazine auto-injector in the CL Vendor Briefcase."

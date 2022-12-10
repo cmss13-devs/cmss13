@@ -404,6 +404,16 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_inventory = BLOCKSHARPOBJ
 
+/obj/item/clothing/head/marine/cap
+	name = "officer peaked cap"
+	desc = "A stylish, black peaked cap. Designed to be worn with Class-Cs during formal engagements, balls and funerals alike."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "officers_peaked_cap"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+
 /obj/item/clothing/head/helmet/beret/marine/mp
 	name = "\improper USCM MP beret"
 	icon_state = "beretred"

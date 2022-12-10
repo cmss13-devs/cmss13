@@ -1,0 +1,6 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - rscadd: "Added three more Recharge Stations to Fiora Science Annex"
+  - rscadd: "Added four Recharge Stations to Kutjevo Refinery"
+  - rscadd: "Added one more Recharge Station to Solaris Ridge"

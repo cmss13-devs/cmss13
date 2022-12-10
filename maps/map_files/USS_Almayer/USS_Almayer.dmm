@@ -59512,18 +59512,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
-"nns" = (
-/obj/structure/machinery/cm_vending/clothing/staff_officer{
-	density = 0;
-	pixel_x = -30;
-	desc = "An automated equipment vendor for Staff Officers.";
-	name = "\improper ColMarTech Staff Officer Equipment Rack"
-	},
-/turf/open/floor/almayer{
-	icon_state = "bluefull";
-	tag = "icon-bluefull"
-	},
-/area/almayer/living/bridgebunks)
 "nny" = (
 /obj/structure/sign/safety/rewire{
 	pixel_x = -17;
@@ -68834,7 +68822,9 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "ryR" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
+	req_access = list(9,1)
+	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -84869,6 +84859,18 @@
 	tag = "icon-blue (NORTH)"
 	},
 /area/almayer/squads/delta)
+"ydk" = (
+/obj/structure/machinery/cm_vending/clothing/staff_officer{
+	density = 0;
+	pixel_x = -30;
+	desc = "An automated equipment vendor for Staff Officers.";
+	name = "\improper ColMarTech Staff Officer Equipment Rack"
+	},
+/turf/open/floor/almayer{
+	icon_state = "bluefull";
+	tag = "icon-bluefull"
+	},
+/area/almayer/living/bridgebunks)
 "ydx" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -104173,7 +104175,7 @@ aRq
 bHG
 ceK
 sxD
-nns
+ydk
 bMh
 ayP
 aES
@@ -104782,7 +104784,7 @@ lcy
 iTw
 ceK
 sxD
-nns
+ydk
 bMh
 nis
 aES
@@ -105391,7 +105393,7 @@ wVB
 psa
 ceK
 sxD
-nns
+ydk
 bMh
 brS
 aES
@@ -106000,7 +106002,7 @@ jUb
 qjz
 ceK
 sxD
-nns
+ydk
 bMh
 gCP
 aES

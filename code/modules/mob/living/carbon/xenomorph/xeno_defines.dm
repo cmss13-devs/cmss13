@@ -265,8 +265,7 @@
 	var/need_round_end_check = FALSE
 
 	//Joining as Facehugger vars
-	//var/hugger_timelock = 15 MINUTES
-	var/hugger_timelock = 1 MINUTES
+	var/hugger_timelock = 15 MINUTES
 	var/last_marine_count = -5 MINUTES
 	var/marine_count_cooldown = 2 MINUTES
 	var/playable_hugger_limit = 4
@@ -878,7 +877,7 @@
 		for(var/mob/mob as anything in GLOB.human_mob_list)
 			if(mob.job in ROLES_MARINES)
 				marine_count++
-		playable_hugger_limit = round(marine_count / 5) + 1
+		playable_hugger_limit = round(marine_count / 5)
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"

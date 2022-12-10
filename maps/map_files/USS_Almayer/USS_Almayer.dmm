@@ -62452,9 +62452,6 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 7
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";

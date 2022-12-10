@@ -519,7 +519,7 @@
 #include "code\datums\supply_packs\operations.dm"
 #include "code\datums\supply_packs\reagent_tanks.dm"
 #include "code\datums\supply_packs\research.dm"
-#include "code\datums\supply_packs\restricted_equipement.dm"
+#include "code\datums\supply_packs\restricted_equipment.dm"
 #include "code\datums\supply_packs\spec_ammo.dm"
 #include "code\datums\supply_packs\vehicle_ammo.dm"
 #include "code\datums\supply_packs\weapons.dm"

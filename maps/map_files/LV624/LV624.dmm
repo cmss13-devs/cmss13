@@ -617,7 +617,7 @@
 /area/lv624/ground/caves/west_caves)
 "acT" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -688,7 +688,7 @@
 	},
 /area/lv624/ground/caves/west_caves)
 "adf" = (
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -13595,7 +13595,7 @@
 /area/lv624/ground/caves/sand_temple)
 "bJz" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "bLs" = (
@@ -13709,7 +13709,7 @@
 "bXd" = (
 /obj/item/device/flashlight/on,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -20672,7 +20672,7 @@
 "rwx" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "rwB" = (
@@ -20920,7 +20920,7 @@
 "sbt" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/bed/roller,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor{
 	icon_state = "white"
 	},

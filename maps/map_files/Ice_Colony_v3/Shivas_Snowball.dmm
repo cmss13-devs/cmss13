@@ -13668,7 +13668,7 @@
 /area/shiva/interior/colony/botany)
 "iji" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/central)
 "ijq" = (

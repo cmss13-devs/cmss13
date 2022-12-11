@@ -134,7 +134,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "au" = (
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor{
 	tag = "icon-carpet11-12 (WEST)";
 	icon_state = "carpet11-12";
@@ -162,7 +162,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aA" = (
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor{
 	tag = "icon-carpet7-3 (WEST)";
 	icon_state = "carpet7-3";
@@ -396,7 +396,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";

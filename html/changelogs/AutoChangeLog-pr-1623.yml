@@ -1,6 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - bugfix: "fixed bug in turing autodispensor so that pill bottles can be in local smart fridge"
-  - refactor: "migrated smart fridge to tgui"
-  - refactor: "added common electrical panel for tgui components"

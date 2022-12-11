@@ -379,3 +379,50 @@
   - code_imp: Fixed DME file references being in wrong order.
   - bugfix: Fixed a misleading comment around storage items' max_w_class
   - bugfix: Fixed a runtime caused by Synths having no paygrade.
+2022-12-11:
+  Googles_Hands:
+  - bugfix: Changed the WO CO, XO, QM and Mortar Crew ranks to be more lore friendly
+  - bugfix: Changed the WO reinforcement announcement to be more lore friendly
+  - bugfix: Fixed the description of the WO XO and CMP in reference to the XO's title
+  - spellcheck: Fixed a few misspellings in WO announcements
+  - bugfix: removes redundant welding protection from squad engies
+  MidwayAtom:
+  - bugfix: Fixed the spelling and capitalisation of stuff on the Req Computer.
+  RenaRenaRe:
+  - bugfix: Research chems created via the synthesizer now work properly in chemical
+      fires
+  Segrain:
+  - bugfix: Projectiles no longer experience an unintended massive drop in accuracy
+      immediately past their maximum accurate range.
+  ThePiachu:
+  - rscadd: Added three more Recharge Stations to Fiora Science Annex
+  - rscadd: Added four Recharge Stations to Kutjevo Refinery
+  - rscadd: Added one more Recharge Station to Solaris Ridge
+  Unknownity:
+  - rscdel: Removed one monkey cube box from Research.
+  - balance: Increased rarity of MST and NST from Uncommon to Rare.
+  - balance: Replaced the Ultrazine Pill Bottle with an Ultrazine auto-injector in
+      the CL Vendor Briefcase.
+  carlarctg:
+  - balance: Spitter's Charge Spit's cooldown has been reduced from 15 to 12 seconds.
+  - rscadd: Spitter Tail Stab injects 5u monomolecular acid.
+  mullenpaul:
+  - bugfix: fixed bug in turing autodispensor so that pill bottles can be in local
+      smart fridge
+  - refactor: migrated smart fridge to tgui
+  - refactor: added common electrical panel for tgui components
+  nauticall:
+  - balance: Rebalanced the CO's Mateba and Desert Eagle so that each have their own
+      strengths and weaknesses.
+  - balance: Compared to each other, the Mateba has higher damage per shot and better
+      accuracy at the cost of lower ammo count and lower firerate.
+  - balance: The Deagle, by contrast, fires faster and has more ammo, but has less
+      damage per shot and lower accuracy.
+  - balance: All CO sidearms now come with high-impact ammunition only in their vendors.
+      AP ammo available as a sidegrade.
+  - rscadd: Adds high-impact AP ammo to the Deagle and Mateba that offers much higher
+      armor penetration in exchange for decreased overall damage.
+  realforest2001:
+  - bugfix: UPP Spy and Santa presets now have the correct equipment and paygrades.
+  - rscadd: Added a new proc to update fax options, rather than relying on Initialize.
+  - code_imp: Removes the legacy code checking for snowflake Yautja masks.

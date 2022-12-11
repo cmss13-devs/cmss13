@@ -109,7 +109,7 @@
 	var/turf/my_turf = get_turf(src)
 	var/list/mob/langchat_listeners = list()
 	if(message)
-		log_emote("Ghost/[src.key] : [message]")
+		log_emote("DEAD/[key_name(src)] : [message]")
 		for(var/mob/M in GLOB.player_list)
 			if(istype(M, /mob/new_player))
 				continue

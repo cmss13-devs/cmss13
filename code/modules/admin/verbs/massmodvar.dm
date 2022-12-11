@@ -301,7 +301,7 @@
 				if(!thing)
 					continue
 
-				if(thing.vv_edit_var(variable, new_value))
+				if(thing.vv_edit_var(variable, matrix_gotten))
 					accepted++
 				else
 					rejected++

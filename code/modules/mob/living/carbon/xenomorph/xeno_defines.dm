@@ -266,8 +266,6 @@
 
 	//Joining as Facehugger vars
 	var/hugger_timelock = 15 MINUTES //You can only join as a hugger 15 minutes into the round
-	var/last_marine_count = 0 MINUTES //Holds the time when we did the last marine count for joining as a hugger
-	var/marine_count_cooldown = 2 MINUTES //Not to do heavy operations, we only count Marines every 2 minutes for determining how many hugger can spawn
 	var/playable_hugger_limit = 0 //How many huggers can the hive support
 
 /datum/hive_status/New()
@@ -872,13 +870,7 @@
 	return TRUE
 
 /datum/hive_status/proc/update_hugger_limit()
-	if(world.time > last_marine_count + marine_count_cooldown)
-		var/marine_count = 0
-		for(var/mob/mob as anything in GLOB.human_mob_list)
-			if(mob.job in ROLES_MARINES)
-				marine_count++
-		playable_hugger_limit = round(marine_count / 5)
-		last_marine_count = world.time
+	playable_hugger_limit = 2 + Ceiling(totalXenos / 8)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])

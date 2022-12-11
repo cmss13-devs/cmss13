@@ -46,6 +46,7 @@
 	plasma_types = list(PLASMA_PURPLE)
 
 	drag_delay = 6 //pulling a big dead xeno is hard
+	var/huggers_reserved = 0
 
 	mob_size = MOB_SIZE_BIG
 	tier = 2
@@ -63,6 +64,7 @@
 		/datum/action/xeno_action/onclick/place_trap, //2nd macro
 		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
 		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
+		/datum/action/xeno_action/onclick/set_hugger_reserve,
 		)
 	mutation_type = CARRIER_NORMAL
 
@@ -308,6 +310,9 @@
 		return
 	if(!huggers_cur)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	if(huggers_cur <= huggers_reserved)
+		to_chat(user, SPAN_WARNING("\The [src] has reserved the remaining facehuggers for themselves."))
 		return
 	if(!GLOB.hive_datum[hivenumber].can_spawn_as_hugger(user))
 		return

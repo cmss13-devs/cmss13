@@ -418,8 +418,12 @@
 	projectile_coverage = flipped_projectile_coverage
 
 	setDir(direction)
-	if(dir != NORTH)
-		layer = FLY_LAYER
+	switch(dir)
+		if(SOUTH)
+			layer = FLY_LAYER
+		if(EAST, WEST)
+			layer = ABOVE_MOB_LAYER
+	handle_flux_layering(layer)
 	flipped = 1
 	flags_can_pass_all_temp &= ~PASS_UNDER
 	flags_atom |= ON_BORDER
@@ -439,6 +443,7 @@
 	projectile_coverage = upright_projectile_coverage
 
 	layer = initial(layer)
+	handle_flux_layering()
 	flipped = FALSE
 	climbable = initial(climbable)
 	flags_can_pass_all_temp |= PASS_UNDER

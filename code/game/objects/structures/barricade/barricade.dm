@@ -73,7 +73,7 @@
 			icon_state = "[barricade_type]"
 		switch(dir)
 			if(SOUTH)
-				layer = ABOVE_MOB_LAYER
+				layer = ABOVE_MOB_LAYER+0.2
 			else if(NORTH)
 				layer = initial(layer) - 0.01
 			else
@@ -86,6 +86,8 @@
 		else
 			icon_state = "[barricade_type]_closed"
 		layer = OBJ_LAYER
+
+	handle_flux_layering(layer)
 
 	if(upgraded)
 		switch(upgraded)

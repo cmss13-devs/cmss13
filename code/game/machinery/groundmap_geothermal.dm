@@ -292,7 +292,7 @@
 	icon_state = "flood_s_off"
 	density = 1
 	anchored = 1
-	layer = WINDOW_LAYER
+	layer = ABOVE_MOB_LAYER
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0 //whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
 	unslashable = TRUE

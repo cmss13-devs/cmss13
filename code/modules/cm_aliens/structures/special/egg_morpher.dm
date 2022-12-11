@@ -197,13 +197,13 @@
 	if(!stored_huggers)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
-	if(!user.can_spawn_as_hugger(linked_hive.hivenumber))
+	if(!linked_hive.can_spawn_as_hugger(user))
 		return
 	//Need to check again because time passed due to the confirmation window
 	if(!stored_huggers)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
-	user.spawn_as_hugger(src, linked_hive.hivenumber)
+	linked_hive.spawn_as_hugger(user, src)
 	stored_huggers--
 
 #undef EGGMORPG_RANGE

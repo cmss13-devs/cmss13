@@ -309,11 +309,11 @@
 	if(!huggers_cur)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
-	if(!user.can_spawn_as_hugger(hivenumber))
+	if(!GLOB.hive_datum[hivenumber].can_spawn_as_hugger(user))
 		return
 	//Need to check again because time passed due to the confirmation window
 	if(!huggers_cur)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
-	user.spawn_as_hugger(src, hivenumber)
+	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
 	huggers_cur--

@@ -253,13 +253,13 @@
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
 
-	if(!user.can_spawn_as_hugger(hivenumber))
+	if(!GLOB.hive_datum[hivenumber].can_spawn_as_hugger(user))
 		return
 	//Need to check again because time passed due to the confirmation window
 	if(status != EGG_GROWN)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
-	user.spawn_as_hugger(src, hivenumber)
+	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
 	Burst(FALSE, FALSE, null, TRUE)
 
 //The invisible traps around the egg to tell it there's a mob right next to it.

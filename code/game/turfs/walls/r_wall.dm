@@ -38,8 +38,12 @@
 	if(try_weldingtool_usage(W, user) || try_nailgun_usage(W, user))
 		return
 
-	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) && istype(/obj/item/weapon/melee/twohanded/breacher/synth))
+	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		if(user.action_busy)
+			return
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)) && istype(W, /obj/item/weapon/melee/twohanded/breacher/synth))
 			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
 		if(!do_after(user, 10 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))

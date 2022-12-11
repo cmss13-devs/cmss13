@@ -625,10 +625,10 @@
 			intensity += R.intensitymod * R.volume
 			duration += R.durationmod * R.volume
 			radius += R.radiusmod * R.volume
-			if(R.fire_penetrating && R.volume >= 10)
+			if(R.fire_penetrating && R.volume >= CHEM_FIRE_PENETRATION_THRESHOLD)
 				fire_penetrating = TRUE
 		if(R.id == "phosphorus")
-			smokerad = min(R.volume / 10, max_fire_rad - 1)
+			smokerad = min(R.volume / CHEM_FIRE_PHOSPHORUS_PER_RADIUS, max_fire_rad - 1)
 	if(istype(my_atom, /obj/item/explosive))
 		var/obj/item/explosive/E = my_atom
 		ex_falloff_shape = E.falloff_mode
@@ -660,7 +660,7 @@
 	if(sourceturf.chemexploded)
 		return // Has recently exploded, so no explosion this time. Prevents instagib satchel charges.
 
-	var/shards = 4 // Because explosions are messy
+	var/shards = EXPLOSION_BASE_SHARDS // Because explosions are messy
 	var/shard_type = /datum/ammo/bullet/shrapnel
 	var/atom/source_atom = source_mob?.resolve()
 
@@ -677,18 +677,18 @@
 		for(var/datum/reagent/R in reagent_list) // if you want to do extra stuff when other chems are present, do it here
 			if(R.id == "iron")
 				shards += round(R.volume)
-			else if(R.id == "phoron" && R.volume >= 10)
+			else if(R.id == "phoron" && R.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
 
 		// some upper limits
 		if(shards > max_ex_shards)
 			shards = max_ex_shards
-		if(istype(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / 4) // less max incendiary shards
-			shards = max_ex_shards / 4
+		if(istype(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION) // less max incendiary shards
+			shards = max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION
 		if(ex_power > max_ex_power)
 			ex_power = max_ex_power
-		if(ex_falloff < 25)
-			ex_falloff = 25
+		if(ex_falloff < EXPLOSION_MIN_FALLOFF)
+			ex_falloff = EXPLOSION_MIN_FALLOFF
 
 		//Note: No need to log here as that is done in cell_explosion()
 		var/datum/cause_data/cause_data = create_cause_data("chemical explosion", source_atom)
@@ -725,10 +725,10 @@
 		duration = max_fire_dur
 
 	// shape
-	if(supplemented > 0 && intensity > 30)
+	if(supplemented > 0 && intensity > CHEM_FIRE_STAR_THRESHOLD)
 		flameshape = FLAMESHAPE_STAR
 
-	if(supplemented < 0 && intensity < 15)
+	if(supplemented < 0 && intensity < CHEM_FIRE_IRREGULAR_THRESHOLD)
 		flameshape = FLAMESHAPE_IRREGULAR
 		radius += 2 //  to make up for tiles lost to irregular shape
 

@@ -28,6 +28,7 @@
 		src.layer = OBJ_LAYER
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
+	handle_flux_layering(layer)
 
 /obj/structure/bed/chair/MouseDrop(atom/over)
 	. = ..()

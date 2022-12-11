@@ -71,6 +71,7 @@
 				layer = ABOVE_MOB_LAYER
 			else
 				layer = initial(layer)
+		handle_flux_layering(layer)
 	else if(legacy_full)
 		junction = 0
 		if(anchored)

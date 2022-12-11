@@ -4,7 +4,7 @@
 	desc = "A builder of hives. Only drones may evolve into Queens."
 	icon = 'icons/mob/xenos/drone.dmi'
 	icon_gib = "syndicate_gib"
-	layer = BIG_XENO_LAYER
+	layer = ABOVE_MOB_LAYER
 	response_help = "pokes"
 	response_disarm = "shoves"
 	response_harm = "hits"

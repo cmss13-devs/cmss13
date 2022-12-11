@@ -30,7 +30,7 @@
 	//// ALL OLD SS13 VARS
 	name = "Drone"
 	desc = "What the hell is THAT?"
-	layer = BIG_XENO_LAYER
+	layer = ABOVE_MOB_LAYER
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")
 	attacktext = "claws"

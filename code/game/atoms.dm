@@ -560,3 +560,9 @@ Parameters are passed from New.
 /atom/proc/get_orbit_size()
 	var/icon/I = icon(icon, icon_state, dir)
 	return (I.Width() + I.Height()) * 0.5
+
+/atom/proc/handle_flux_layering(set_layer)
+	if(!set_layer)
+		set_layer = initial(layer)
+	layer = (3 + (1 - (y / 256))) + ((set_layer - 3) / 2)/1000
+	message_admins("[name]: [set_layer] --> [layer]")

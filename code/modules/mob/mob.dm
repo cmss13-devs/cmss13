@@ -71,8 +71,14 @@
 	prepare_huds()
 	langchat_make_image()
 	create_player_panel()
+	handle_flux_layering()
 
 	return ..()
+
+/mob/Move(NewLoc, direct)
+	. = ..()
+	if(last_move_dir < 3)
+		handle_flux_layering()
 
 /mob/proc/create_player_panel()
 	QDEL_NULL(mob_panel)

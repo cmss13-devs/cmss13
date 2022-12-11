@@ -68,6 +68,8 @@
 
 #define LOWER_ITEM_LAYER 2.99 //for items that should be at the bottom of the pile of items
 
+// ------------------ BEGIN FLUX ZONE -------------------------> flux zone layers are managed by their y position and are set dynamically live (3.0 --> 5.0)
+
 //#define OBJ_LAYER 3
 
 #define ABOVE_SPECIAL_RESIN_STRUCTURE_LAYER 3.01
@@ -108,12 +110,14 @@
 
 #define WEATHER_LAYER 4.14	// For WEATHER
 
-#define INTERIOR_WALL_SOUTH_LAYER 5.2
-#define INTERIOR_DOOR_LAYER       5.21
-
 //#define FLY_LAYER 5
 
+//----------------------------- END FLUX ZONE ----------------------------------
+
 #define RIPPLE_LAYER 5.1
+
+#define INTERIOR_WALL_SOUTH_LAYER 5.2
+#define INTERIOR_DOOR_LAYER       5.21
 
 #define ABOVE_FLY_LAYER 6
 

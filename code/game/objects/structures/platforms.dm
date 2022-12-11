@@ -35,10 +35,11 @@
 			I.pixel_y = 16
 		if(EAST)
 			I.pixel_x = 16
-			layer = ABOVE_MOB_LAYER+0.1
+			layer = ABOVE_MOB_LAYER
 		if(WEST)
 			I.pixel_x = -16
-			layer = ABOVE_MOB_LAYER+0.1
+			layer = ABOVE_MOB_LAYER
+	handle_flux_layering(layer)
 	overlays += I
 
 /obj/structure/platform/initialize_pass_flags(var/datum/pass_flags_container/PF)

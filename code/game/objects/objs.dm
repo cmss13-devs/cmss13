@@ -32,6 +32,9 @@
 	if(garbage)
 		add_to_garbage(src)
 
+	if(layer > 3)
+		handle_flux_layering()
+
 /obj/Destroy()
 	if(buckled_mob)
 		unbuckle()
@@ -278,6 +281,8 @@
 	handle_rotation()
 	if(. && buckled_mob && !handle_buckled_mob_movement(loc,direct)) //movement fails if buckled mob's move fails.
 		. = FALSE
+	if(last_move_dir < 3)
+		handle_flux_layering()
 
 /obj/forceMove(atom/dest)
 	. = ..()

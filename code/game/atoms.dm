@@ -565,4 +565,3 @@ Parameters are passed from New.
 	if(!set_layer)
 		set_layer = initial(layer)
 	layer = (3 + (1 - (y / 256))) + ((set_layer - 3) / 2)/1000
-	message_admins("[name]: [set_layer] --> [layer]")

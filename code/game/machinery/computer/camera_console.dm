@@ -81,7 +81,7 @@
 			concurrent_users += user_ref
 		// Turn on the console
 		if(length(concurrent_users) == 1 && is_living)
-			update_use_power(2)
+			update_use_power(POWER_USE_ACTIVE_POWER)
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
 		user.client.register_map_obj(cam_background)
@@ -208,7 +208,7 @@
 		last_camera_turf = null
 		range_turfs = list()
 		if(use_power)
-			update_use_power(1)
+			update_use_power(POWER_USE_IDLE_POWER)
 		STOP_PROCESSING(SSfastobj, src)
 	user.unset_interaction()
 
@@ -333,7 +333,7 @@
 	alpha = 0
 	mouse_opacity = 0
 	density = FALSE
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	idle_power_usage = 0
 	active_power_usage = 0
 	needs_power = FALSE

@@ -34,7 +34,7 @@
 		var/obj/item/clothing/mask/facehugger/F
 		var/chance = 60
 		visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
-		for(var/i in 0 to stored_huggers)
+		for(var/i in 1 to stored_huggers)
 			if(prob(chance))
 				F = new(loc, linked_hive.hivenumber)
 				step_away(F,src,1)
@@ -106,6 +106,20 @@
 			stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 			qdel(F)
 		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
+		return
+	//refill egg morpher from an egg
+	if(istype(I, /obj/item/xeno_egg))
+		var/obj/item/xeno_egg/egg = I
+		if(stored_huggers >= huggers_to_grow_max)
+			to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
+			return
+		if(user)
+			visible_message(SPAN_XENOWARNING("[user] slides a facehugger out of \the [egg] into \the [src]."), \
+				SPAN_XENONOTICE("You place the child from an egg into \the [src]."))
+			user.temp_drop_inv_item(egg)
+		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
+		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
+		qdel(egg)
 		return
 	return ..(I, user)
 

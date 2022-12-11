@@ -5,7 +5,7 @@
 	desc = "A recharge and repair station for robots and synthetics. Simply put the synthetic in need of repair in here and they will be fixed up in no time!"
 	density = TRUE
 	anchored = TRUE
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 50
 	active_power_usage = 50
 	var/mob/living/occupant = null
@@ -18,7 +18,6 @@
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)
 	. = ..()
-	build_icon()
 	update_icon()
 	flags_atom |= USES_HEARING
 
@@ -71,7 +70,7 @@
 
 	if(idle_power_usage != charge_diff) // Force update, but only when our power usage changed this tick.
 		idle_power_usage = charge_diff
-		update_use_power(1)
+		update_use_power(POWER_USE_IDLE_POWER)
 
 	current_internal_charge = min((current_internal_charge + ((charge_diff - 50) * CELLRATE)), max_internal_charge)
 
@@ -118,6 +117,13 @@
 
 /obj/structure/machinery/recharge_station/update_icon()
 	..()
+	if(!inoperable())
+		if(src.occupant)
+			icon_state = "borgcharger1"
+		else
+			icon_state = "borgcharger0"
+	else
+		icon_state = "borgcharger0"
 	overlays.Cut()
 	switch(round(chargepercentage()))
 		if(1 to 20)
@@ -132,16 +138,6 @@
 			overlays += image('icons/obj/objects.dmi', "statn_c80")
 		if(99 to 110)
 			overlays += image('icons/obj/objects.dmi', "statn_c100")
-
-/obj/structure/machinery/recharge_station/proc/build_icon()
-	if(!inoperable())
-		if(src.occupant)
-			icon_state = "borgcharger1"
-		else
-			icon_state = "borgcharger0"
-	else
-		icon_state = "borgcharger0"
-	update_icon()
 
 /obj/structure/machinery/recharge_station/proc/process_occupant()
 	if(src.occupant)
@@ -160,7 +156,7 @@
 				to_chat(occupant, "Recharging...")
 				doing_stuff = TRUE
 			else
-				update_use_power(1)
+				update_use_power(POWER_USE_IDLE_POWER)
 		if (isrobot(occupant) || isSynth(occupant))
 			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
 				occupant.heal_overall_damage(10, 10, TRUE)
@@ -189,10 +185,9 @@
 		src.occupant.client.perspective = MOB_PERSPECTIVE
 	src.occupant.forceMove(loc)
 	src.occupant = null
-	build_icon()
-	update_use_power(1)
+	update_icon()
+	update_use_power(POWER_USE_IDLE_POWER)
 	return
-
 
 /obj/structure/machinery/recharge_station/verb/move_eject()
 	set category = "Object"
@@ -225,8 +220,8 @@
 	src.occupant = M
 	start_processing()
 	src.add_fingerprint(usr)
-	build_icon()
-	update_use_power(1)
+	update_icon()
+	update_use_power(POWER_USE_IDLE_POWER)
 	return TRUE
 
 /obj/structure/machinery/recharge_station/verb/move_inside()

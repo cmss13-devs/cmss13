@@ -83,8 +83,11 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
-/obj/effect/overlay/temp/point/big/greyscale
+/obj/effect/overlay/temp/point/big/observer
 	icon_state = "big_arrow_grey"
+	color = "#1c00f6"
+	invisibility = INVISIBILITY_OBSERVER
+	plane = GHOST_PLANE
 
 /obj/effect/overlay/temp/point/big/queen
 	icon_state = "big_arrow_grey"
@@ -280,5 +283,5 @@
 /obj/effect/overlay/temp/acid_pool_splash
 	name = "acid splash"
 	icon = 'icons/mob/xenos/effects.dmi'
-	icon_state = "acidpoolsplash"
+	icon_state = "pool_splash"
 	effect_duration = 10 SECONDS

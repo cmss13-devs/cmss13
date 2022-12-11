@@ -146,38 +146,38 @@
 /obj/effect/ebeam/laser
 	name = "laser beam"
 	desc = "A laser beam!"
-	var/strength = 1
+	alpha = 200
+	var/strength = EYE_PROTECTION_FLAVOR
 	var/probability = 20
 
-/obj/effect/ebeam/laser/Crossed(O)
+/obj/effect/ebeam/laser/Crossed(var/atom/movable/AM)
 	. = ..()
-	if(!(prob(probability) && ishuman(O)))
+	if(! (prob(probability) && ishuman(AM)) )
 		return
-	var/mob/living/carbon/human/moving_human = O
+	var/mob/living/carbon/human/moving_human = AM
 	var/laser_protection = moving_human.get_eye_protection()
-	var/rand_laser_power = rand(1, strength)
+	var/rand_laser_power = rand(EYE_PROTECTION_FLAVOR, strength)
 	if(rand_laser_power > laser_protection)
+		//ouch!
 		INVOKE_ASYNC(moving_human, /mob/proc/emote, "pain")
-		visible_message(SPAN_DANGER("[moving_human] screams out in pain after \the [src] moves across their eyes!"), SPAN_NOTICE("Aurgh!!! \The [src] moves across your unprotected eyes for a split-second."))
-		//TODO when someone unfucks eye damage make this add a MINIMAL amount of it
-		moving_human.overlay_fullscreen("laserbeam", /atom/movable/screen/fullscreen/laser_blind)
-		//dmg burn eye
-		addtimer(CALLBACK(moving_human, /mob/proc/clear_fullscreen, "laserbeam"), 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
+		visible_message(SPAN_DANGER("[moving_human] screams out in pain as \the [src] moves across their eyes!"), SPAN_NOTICE("Aurgh!!! \The [src] moves across your unprotected eyes for a split-second!"))
 	else
 		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
 			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine for a moment as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades shine for a moment as \the [src] passes over them."))
 			//drip = bonus balloonchat
-			balloon_alert_to_viewers(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine for a moment as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades shine for a moment as \the [src] passes over them."))
+			moving_human.balloon_alert_to_viewers(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine for a moment as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades reflect \the [src]."))
 		else
 			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src] passes over them."), SPAN_NOTICE("Your headgear protect you from  \the [src] passes over them."))
 
 /obj/effect/ebeam/laser/intense
 	name = "intense laser beam"
-	strength = 2
+	alpha = 255
+	strength = EYE_PROTECTION_FLASH
 	probability = 35
 
 /obj/effect/ebeam/laser/weak
 	name = "weak laser beam"
+	alpha = 150
 	strength = 1
 	probability = 5
 

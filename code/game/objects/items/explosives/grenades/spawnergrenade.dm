@@ -3,7 +3,7 @@
 	name = "delivery grenade"
 	icon_state = "delivery"
 	item_state = "flashbang"
-	
+
 	var/banglet = 0
 	var/spawner_type = null // must be an object path
 	var/deliveryamt = 1 // amount of type to deliver
@@ -15,7 +15,7 @@
 			var/turf/T = get_turf(src)
 			playsound(T, 'sound/effects/phasein.ogg', 25, 1)
 			for(var/mob/living/carbon/human/M in viewers(T, null))
-				M.flash_eyes(1, TRUE)
+				M.flash_eyes(EYE_PROTECTION_FLASH, TRUE)
 
 			for(var/i=1, i<=deliveryamt, i++)
 				var/atom/movable/x = new spawner_type
@@ -33,4 +33,3 @@
 	name = "carp delivery grenade"
 	spawner_type = /mob/living/simple_animal/hostile/carp
 	deliveryamt = 5
-	

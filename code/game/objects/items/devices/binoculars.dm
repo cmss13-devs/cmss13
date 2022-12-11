@@ -338,7 +338,7 @@
 
 /obj/item/device/binoculars/range/designator/spotter
 	name = "spotter's laser designator"
-	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes. Additionally, a trained spotter can laze targets for a USCM marksman, increasing the speed of target acquisition."
+	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes. Additionally, a trained spotter can laze targets for a USCM marksman, increasing the speed of target acquisition. A targeting beam will connect the binoculars to the target, but it may inherit the user's cloak, if possible."
 
 	var/is_spotting = FALSE
 	var/spotting_time = 10 SECONDS
@@ -350,6 +350,7 @@
 	return ..()
 
 /obj/item/device/binoculars/range/designator/spotter/update_icon()
+	overlays += "spotter_overlay"
 	if(is_spotting)
 		overlays += "laser_spotter"
 	else if(mode)
@@ -431,7 +432,14 @@
 		playsound_client(human.client, 'sound/effects/nightvision.ogg', human, 50)
 	playsound(target, 'sound/effects/nightvision.ogg', 70, FALSE, 8, falloff = 0.4)
 
-	var/obj/effect/beam/laser_beam = target.beam(human, "laser_beam_spotter", 'icons/effects/beam.dmi', f_spotting_time + 1 SECONDS, beam_type = /obj/effect/ebeam/laser/weak)
+	var/datum/beam/laser_beam
+	if(human.alpha == initial(human.alpha))
+		laser_beam = target.beam(human, "laser_beam_spotter", 'icons/effects/beam.dmi', f_spotting_time + 1 SECONDS, beam_type = /obj/effect/ebeam/laser/weak)
+		laser_beam.visuals.alpha = 0
+		animate(laser_beam.visuals, alpha = initial(laser_beam.visuals.alpha), 1 SECONDS, easing = SINE_EASING|EASE_OUT)
+
+	//timer is a magic number because the trait is added instantly, spotting time is different from aiming time, it just ends the spot
+
 	//timer is (f_spotting_time + 1 SECONDS) because sometimes it janks out. blame sleeps or something
 
 	if(!do_after(human, f_spotting_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))

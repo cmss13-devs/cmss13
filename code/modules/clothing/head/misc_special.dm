@@ -32,9 +32,9 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
-	eye_protection = 2
+	eye_protection = EYE_PROTECTION_WELDING
 	vision_impair = VISION_IMPAIR_MAX
-	
+
 /obj/item/clothing/head/welding/attack_self(mob/user)
 	..()
 	toggle()
@@ -58,7 +58,7 @@
 			flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
 			flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
 			icon_state = "[initial(icon_state)]up"
-			eye_protection = 0
+			eye_protection = EYE_PROTECTION_NONE
 			to_chat(usr, "You push the [src] up out of your face.")
 		up = !up
 

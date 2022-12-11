@@ -974,7 +974,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
 	return TRUE
 
-mob/dead/observer/proc/can_spawn_as_hugger(var/hivenumber)
+/mob/dead/observer/proc/can_spawn_as_hugger(var/hivenumber)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
 		return
 	if(world.time < GLOB.hive_datum[hivenumber].hugger_timelock)
@@ -999,7 +999,7 @@ mob/dead/observer/proc/can_spawn_as_hugger(var/hivenumber)
 		return FALSE
 	return TRUE
 
-mob/dead/observer/proc/spawn_as_hugger(atom/A, var/hivenumber)
+/mob/dead/observer/proc/spawn_as_hugger(atom/A, var/hivenumber)
 	var/mob/living/carbon/Xenomorph/Facehugger/hugger = new /mob/living/carbon/Xenomorph/Facehugger(A.loc, null, hivenumber)
 	usr.mind.transfer_to(hugger, TRUE)
 	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))

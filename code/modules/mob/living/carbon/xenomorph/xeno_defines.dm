@@ -265,10 +265,10 @@
 	var/need_round_end_check = FALSE
 
 	//Joining as Facehugger vars
-	var/hugger_timelock = 15 MINUTES
-	var/last_marine_count = -5 MINUTES
-	var/marine_count_cooldown = 2 MINUTES
-	var/playable_hugger_limit = 4
+	var/hugger_timelock = 15 MINUTES //You can only join as a hugger 15 minutes into the round
+	var/last_marine_count = 0 MINUTES //Holds the time when we did the last marine count for joining as a hugger
+	var/marine_count_cooldown = 2 MINUTES //Not to do heavy operations, we only count Marines every 2 minutes for determining how many hugger can spawn
+	var/playable_hugger_limit = 0 //How many huggers can the hive support
 
 /datum/hive_status/New()
 	mutators.hive = src
@@ -878,6 +878,7 @@
 			if(mob.job in ROLES_MARINES)
 				marine_count++
 		playable_hugger_limit = round(marine_count / 5)
+		last_marine_count = world.time
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"

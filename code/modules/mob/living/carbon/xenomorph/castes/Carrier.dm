@@ -308,6 +308,9 @@
 	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
 	if(!huggers_max) //Eggsac, Shaman don't have huggers, do nothing!
 		return
+	if(stat == DEAD)
+		to_chat(user, SPAN_WARNING("\The [src] is dead and all their huggers died with it."))
+		return
 	if(!huggers_cur)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return

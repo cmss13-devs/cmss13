@@ -3764,8 +3764,15 @@
 /area/almayer/lifeboat_pumps/north1)
 "aku" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/clipboard,
-/obj/item/tool/pen,
+/obj/item/storage/fancy/cigar/tarbacktube,
+/obj/item/clothing/head/headset{
+	pixel_y = -7
+	},
+/obj/item/tool/crowbar,
+/obj/item/clothing/head/helmet/marine/pilottex{
+	pixel_x = -7;
+	pixel_y = 13
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -3773,7 +3780,17 @@
 /area/almayer/living/pilotbunks)
 "akv" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/folder/black,
+/obj/item/clothing/head/headset{
+	pixel_y = -7
+	},
+/obj/item/tool/crowbar,
+/obj/item/clothing/head/helmet/marine/pilot{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/item/device/camera{
+	pixel_x = 7
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -4356,6 +4373,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/weapon_room)
 "amh" = (
+/obj/structure/machinery/door_control{
+	id = "dccbunk1";
+	name = "DCC1 Privacy Shutters";
+	pixel_x = 24
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -6048,6 +6070,10 @@
 	pixel_y = -27;
 	tag = ""
 	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4;
+	tag = "icon-map-supply (EAST)"
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
 "aqz" = (
@@ -6651,6 +6677,7 @@
 	},
 /obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/machinery/door/window/westright,
+/obj/item/tool/soap,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -7398,6 +7425,11 @@
 /area/almayer/command/cic)
 "atS" = (
 /obj/structure/machinery/light,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile";
 	tag = "icon-sterile"
@@ -11184,10 +11216,7 @@
 	dir = 4;
 	icon_state = "pipe-j2"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	tag = "icon-intact-supply (EAST)"
-	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/aft_hallway)
 "aEg" = (
@@ -16018,8 +16047,11 @@
 "aXp" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "pobunk1";
+	id = "dccbunk2";
 	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/almayer/living/pilotbunks)
@@ -30343,6 +30375,7 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -35888,6 +35921,12 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/engineering/engine_core)
+"cZV" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/fancy/cigarettes/wypacket,
+/obj/item/tool/lighter,
+/turf/open/floor/almayer,
+/area/almayer/living/pilotbunks)
 "daj" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
@@ -37570,6 +37609,12 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
+"dGr" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/pilotbunks)
 "dGw" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/effect/decal/warning_stripes{
@@ -38281,6 +38326,13 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
+"dXY" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/pilotbunks)
 "dYu" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5;
@@ -41186,6 +41238,17 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
+"feS" = (
+/obj/structure/machinery/door_control{
+	id = "pobunk2";
+	name = "PO2 Privacy Shutters";
+	pixel_x = -24
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/pilotbunks)
 "feY" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/closet/secure_closet/surgical{
@@ -42239,9 +42302,10 @@
 /obj/item/clothing/head/headset{
 	pixel_y = -7
 	},
-/obj/item/clothing/head/helmet/marine/pilottex{
-	pixel_x = -7;
-	pixel_y = 13
+/obj/item/clothing/glasses/welding{
+	layer = 3.6;
+	pixel_x = 2;
+	pixel_y = 7
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -42531,6 +42595,10 @@
 /area/almayer/command/cichallway)
 "fJy" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/toy/deck{
+	pixel_x = -6;
+	pixel_y = 5
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
 "fJO" = (
@@ -44375,8 +44443,11 @@
 "gzI" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "pobunk2";
+	id = "pobunk1";
 	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/almayer/living/pilotbunks)
@@ -48395,6 +48466,17 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/hallways/aft_hallway)
+"itk" = (
+/obj/structure/machinery/door_control{
+	id = "dccbunk2";
+	name = "DCC2 Privacy Shutters";
+	pixel_x = 24
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/pilotbunks)
 "itR" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
@@ -54018,8 +54100,11 @@
 /area/almayer/hallways/hangar)
 "kUh" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Pilot's Office";
-	req_one_access_txt = "3;22;2;19"
+	name = "\improper Pilot's Quarters";
+	req_one_access_txt = "19;22"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	tag = "icon-door_open"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -58102,6 +58187,17 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_umbilical)
+"mLz" = (
+/obj/structure/machinery/door_control{
+	id = "pobunk1";
+	name = "PO1 Privacy Shutters";
+	pixel_x = -24
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/pilotbunks)
 "mLF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -60039,6 +60135,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
 "nBW" = (
@@ -61926,6 +62023,14 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
+"osT" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/prop/ice_colony/hula_girl{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/pilotbunks)
 "ott" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -63815,6 +63920,13 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
+"pqc" = (
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/pilotbunks)
 "pqi" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -64834,10 +64946,8 @@
 	},
 /area/almayer/hull/lower_hull/l_m_s)
 "pOD" = (
-/obj/structure/disposalpipe/segment{
-	layer = 5.1;
-	name = "water pipe"
-	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
 "pON" = (
@@ -65287,9 +65397,9 @@
 	},
 /area/almayer/shipboard/brig/main_office)
 "pWN" = (
-/obj/item/tool/crowbar,
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/north1)
+/area/almayer/living/pilotbunks)
 "pXj" = (
 /obj/structure/closet/radiation,
 /turf/open/floor/almayer{
@@ -68557,6 +68667,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
+"rtY" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/ashtray/bronze,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/pilotbunks)
 "ruc" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security/almayer,
@@ -68645,6 +68764,17 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
+"rwY" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "pobunk2";
+	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/almayer/living/pilotbunks)
 "rxk" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -71195,6 +71325,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/alpha)
+"sCI" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10;
+	tag = "icon-intact-supply (SOUTHWEST)"
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/pilotbunks)
 "sCQ" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -72762,6 +72899,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/door/window/westright,
+/obj/item/tool/soap,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -76985,6 +77123,11 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile";
 	tag = "icon-sterile"
@@ -79899,6 +80042,17 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/port_point_defense)
+"weD" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "dccbunk1";
+	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/almayer/living/pilotbunks)
 "weR" = (
 /obj/structure/machinery/cryopod,
 /turf/open/floor/almayer{
@@ -84069,11 +84223,10 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "xQg" = (
-/obj/structure/machinery/door_control{
-	id = "pobunk2";
-	name = "Privacy Shutters"
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
-/turf/closed/wall/almayer,
+/turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
 "xQm" = (
 /obj/structure/surface/table/almayer,
@@ -107488,7 +107641,7 @@ gwY
 gpY
 mto
 acW
-pWN
+awW
 awW
 awW
 awW
@@ -107897,7 +108050,7 @@ acW
 qdQ
 eFT
 hhA
-aXp
+weD
 unT
 kng
 nwL
@@ -108100,7 +108253,7 @@ abB
 add
 add
 add
-aXp
+weD
 fdE
 amh
 iFn
@@ -108305,7 +108458,7 @@ aka
 npx
 aiX
 aiX
-xQg
+aiX
 aiX
 aiX
 cJu
@@ -108709,15 +108862,15 @@ ajI
 add
 add
 add
-gzI
+aXp
 oho
-amh
+itk
 iFn
 qnD
 amd
 sHS
-fJy
-fJy
+osT
+cZV
 amd
 apq
 ana
@@ -108914,14 +109067,14 @@ add
 nJx
 aiX
 aiX
-xQg
+aiX
 aiX
 aiX
 oqw
-amd
+dGr
+rtY
 fJy
-fJy
-amd
+xQg
 apq
 szO
 aiX
@@ -109117,14 +109270,14 @@ aka
 aoI
 gzI
 fdE
-amh
+mLz
 iFn
 alw
 amd
-amd
+dXY
 fmB
 fmB
-amd
+dXY
 apq
 aqw
 aiX
@@ -109324,14 +109477,14 @@ eGH
 nwL
 aiX
 apt
-amd
-amd
-amd
+sCI
+pWN
+pWN
 aqy
 nBE
 pOD
 bZa
-cpw
+ahM
 aEf
 avj
 ahF
@@ -109523,7 +109676,7 @@ add
 aWu
 aiX
 aiX
-xQg
+aiX
 aiX
 aiX
 awq
@@ -109724,9 +109877,9 @@ ajI
 add
 add
 add
-aXp
+rwY
 fdE
-amh
+feS
 iFn
 alw
 amd
@@ -109927,14 +110080,14 @@ acW
 aeZ
 aka
 aoI
-aXp
+rwY
 akv
 eGH
 nwL
 aiX
 pQV
 uOJ
-amd
+pqc
 amd
 aiX
 aKH

@@ -316,7 +316,7 @@
 	force_wielded = MELEE_FORCE_VERY_STRONG
 
 /obj/item/weapon/melee/twohanded/breacher/synth/pickup(mob/user)
-	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
 		to_chat(user, SPAN_WARNING("You barely manage to lift \the [src] above your knees. This thing will probably be useless to you."))
 		return
 	..()

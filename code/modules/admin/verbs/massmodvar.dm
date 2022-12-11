@@ -200,7 +200,7 @@
 				if(!thing)
 					continue
 
-				if(thing.vv_edit_var(variable, initial(O.vars[variable])))
+				if(thing.vv_edit_var(variable, new_value))
 					accepted++
 				else
 					rejected++
@@ -224,7 +224,7 @@
 				if(!thing)
 					continue
 
-				if(thing.vv_edit_var(variable, initial(O.vars[variable])))
+				if(thing.vv_edit_var(variable, new_value))
 					accepted++
 				else
 					rejected++
@@ -247,7 +247,7 @@
 				if(!thing)
 					continue
 
-				if(thing.vv_edit_var(variable, initial(O.vars[variable])))
+				if(thing.vv_edit_var(variable, new_value))
 					accepted++
 				else
 					rejected++
@@ -270,7 +270,7 @@
 				if(!thing)
 					continue
 
-				if(thing.vv_edit_var(variable, initial(O.vars[variable])))
+				if(thing.vv_edit_var(variable, new_value))
 					accepted++
 				else
 					rejected++
@@ -301,7 +301,7 @@
 				if(!thing)
 					continue
 
-				if(thing.vv_edit_var(variable, initial(O.vars[variable])))
+				if(thing.vv_edit_var(variable, new_value))
 					accepted++
 				else
 					rejected++

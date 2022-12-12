@@ -279,11 +279,6 @@
 						playsound(src, get_sfx("terminal_type"), 25, FALSE)
 						update_active_camera()
 						return TRUE
-				if("clear-camera")
-					current = null
-					playsound(src, get_sfx("terminal_type"), 25, FALSE)
-					update_active_camera()
-					return TRUE
 				if("ping")
 					paired_sentry[sentry_index].identify()
 					return FALSE
@@ -291,6 +286,11 @@
 	switch(action)
 		if("screen-state")
 			screen_state = params["state"]
+		if("clear-camera")
+			current = null
+			playsound(src, get_sfx("terminal_type"), 25, FALSE)
+			update_active_camera()
+			return TRUE
 
 
 /obj/item/device/sentry_computer/proc/show_camera_static()

@@ -119,7 +119,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 
 /obj/item/weapon/gun/shotgun/reload(mob/user, var/obj/item/ammo_magazine/magazine)
-	if(flags_gun_features & GUN_BURST_FIRING) return
+	if(flags_gun_features & GUN_BURST_FIRING)
+		return
 
 	if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
 		to_chat(user, SPAN_WARNING("You can't use that to reload!"))
@@ -137,7 +138,8 @@ can cause issues with ammo types getting mixed up during the burst.
 		add_to_tube(user,mag_caliber) //This will check the other conditions.
 
 /obj/item/weapon/gun/shotgun/unload(mob/user)
-	if(flags_gun_features & GUN_BURST_FIRING) return
+	if(flags_gun_features & GUN_BURST_FIRING)
+		return
 	empty_chamber(user)
 
 /obj/item/weapon/gun/shotgun/proc/ready_shotgun_tube()
@@ -498,7 +500,8 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/check_chamber_position()
 	if(!current_mag)
 		return
-	if(current_mag.chamber_closed) return
+	if(current_mag.chamber_closed)
+		return
 	return 1
 
 /obj/item/weapon/gun/shotgun/double/add_to_tube(mob/user,selection) //Load it on the go, nothing chambered.
@@ -987,7 +990,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 //More or less chambers the round instead of load_into_chamber().
 /obj/item/weapon/gun/shotgun/pump/proc/pump_shotgun(mob/user)	//We can't fire bursts with pumps.
-	if(world.time < (recent_pump + pump_delay) ) return //Don't spam it.
+	if(world.time < (recent_pump + pump_delay) )
+		return //Don't spam it.
 	if(pumped)
 		if (world.time > (message + pump_delay))
 			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
@@ -1027,7 +1031,7 @@ can cause issues with ammo types getting mixed up during the burst.
 //-------------------------------------------------------
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube
-	name = "\improper generic dual-tube pump shotgun"
+	name = "generic dual-tube pump shotgun"
 	desc = "A twenty-round pump action shotgun with dual internal tube magazines. You can switch the active internal magazine by toggling burst fire mode."
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	var/obj/item/ammo_magazine/internal/shotgun/primary_tube
@@ -1059,7 +1063,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	else
 		current_mag = primary_tube
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch \the [src]'s active magazine to the [(current_mag == primary_tube) ? "<b>first</b>" : "<b>second</b>"] magazine."))
-	playsound(src, 'sound/machines/click.ogg', 20, TRUE)
+	playsound(src, 'sound/machines/click.ogg', 15, TRUE)
 	return TRUE
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/toggle_burst()

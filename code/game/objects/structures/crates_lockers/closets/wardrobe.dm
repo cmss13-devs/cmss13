@@ -328,7 +328,7 @@
 	name = "grey wardrobe"
 	icon_state = "white"
 	icon_closed = "white"
-	icon_opened = "white_open"
+	icon_opened = "white_opened"
 
 /obj/structure/closet/wardrobe/grey/Initialize()
 	. = ..()

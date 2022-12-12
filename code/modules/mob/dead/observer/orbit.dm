@@ -103,7 +103,7 @@
 			humans += list(serialized)
 		else if(ishuman(M))
 			var/mob/living/carbon/human/H = poi
-			if(isSynth(H) && !isInfiltratorSynthetic(H))
+			if(isSynth(H))
 				synthetics += list(serialized)
 			else if(isYautja(H))
 				predators += list(serialized)

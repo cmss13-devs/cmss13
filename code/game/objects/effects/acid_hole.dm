@@ -40,14 +40,9 @@
 
 
 /obj/effect/acid_hole/attack_alien(mob/living/carbon/Xenomorph/user)
-	if (!holed_wall)
-		qdel(src)		//no wall?! then cease existence...
-		return
-
-	if(!use_wall_hole(user))
-		if(user.mob_size >= MOB_SIZE_BIG)
-			expand_hole(user)
-			return XENO_NO_DELAY_ACTION
+	if(holed_wall && user.mob_size >= MOB_SIZE_BIG)
+		expand_hole(user)
+		return XENO_NO_DELAY_ACTION
 
 /obj/effect/acid_hole/proc/expand_hole(mob/living/carbon/Xenomorph/user)
 	if(user.action_busy || user.lying)
@@ -62,7 +57,7 @@
 /obj/effect/acid_hole/proc/use_wall_hole(mob/user)
 
 	if(user.mob_size >= MOB_SIZE_BIG || user.is_mob_incapacitated() || user.lying || user.buckled || user.anchored)
-		return FALSE
+		return
 
 	var/mob_dir = get_dir(user, src)
 	var/crawl_dir = dir & mob_dir

@@ -11,8 +11,21 @@
 #define ASRS_VERY_LOW_WEIGHT	50
 #define ASRS_LOWEST_WEIGHT		100
 
-//===================================
-// Rounds
+/datum/supply_packs/gun/ammo_hpr/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_LOWEST_WEIGHT
+
+/datum/supply_packs/ammo_rounds_box_smg/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_MEDIUM_WEIGHT
+
+/datum/supply_packs/ammo_rounds_box_smg_ap/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_LOW_WEIGHT
+
 /datum/supply_packs/ammo_rounds_box_rifle/asrs
 	buyable = 0
 	group = "ASRS"
@@ -28,13 +41,6 @@
 	group = "ASRS"
 	cost = ASRS_LOW_WEIGHT
 
-//===================================
-// Magazines
-/datum/supply_packs/gun/ammo_hpr/asrs
-	buyable = 0
-	group = "ASRS"
-	cost = ASRS_LOWEST_WEIGHT
-
 /datum/supply_packs/ammo_m4a3_mag_box/asrs
 	buyable = 0
 	group = "ASRS"
@@ -44,6 +50,15 @@
 	buyable = 0
 	group = "ASRS"
 	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/ammo_smg_mag_box/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/ammo_smg_mag_box_ap/asrs
+	buyable = 0
+	group = "ASRS"
 
 /datum/supply_packs/ammo_mag_box/asrs
 	buyable = 0
@@ -82,6 +97,16 @@
 	buyable = 0
 	group = "ASRS"
 
+/datum/supply_packs/ammo_sentry/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/ammo_sentry_flamer/asrs
+	buyable = 0
+	group = "ASRS"
+	cost = ASRS_VERY_LOW_WEIGHT
+
 /datum/supply_packs/ammo_napalm/asrs
 	buyable = 0
 	group = "ASRS"
@@ -96,6 +121,7 @@
 	buyable = 0
 	group = "ASRS"
 	cost = ASRS_VERY_LOW_WEIGHT
+
 
 //===================================
 // Mortar ammo
@@ -112,13 +138,13 @@
 	group = "ASRS"
 
 //===================================
-// Misc supplies
-/datum/supply_packs/flares/asrs
+//speciality armor
+/datum/supply_packs/armor_leader/asrs
 	buyable = 0
 	group = "ASRS"
-	cost = ASRS_LOW_WEIGHT
+	cost = ASRS_LOWEST_WEIGHT
 
-/datum/supply_packs/mre/asrs
+/datum/supply_packs/armor_rto/asrs
 	buyable = 0
 	group = "ASRS"
-	cost = ASRS_VERY_LOW_WEIGHT
+	cost = ASRS_LOWEST_WEIGHT

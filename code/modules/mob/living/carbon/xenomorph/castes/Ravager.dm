@@ -32,7 +32,7 @@
 	caste_type = XENO_CASTE_RAVAGER
 	name = XENO_CASTE_RAVAGER
 	desc = "A huge, nasty red alien with enormous scythed claws."
-	icon = 'icons/mob/xenos/ravager.dmi'
+	icon = 'icons/mob/hostiles/ravager.dmi'
 	icon_size = 64
 	icon_state = "Ravager Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -54,7 +54,7 @@
 		/datum/action/xeno_action/activable/scissor_cut,
 	)
 
-	icon_xeno = 'icons/mob/xenos/ravager.dmi'
+	icon_xeno = 'icons/mob/hostiles/ravager.dmi'
 	icon_xenonid = 'icons/mob/xenonids/ravager.dmi'
 
 

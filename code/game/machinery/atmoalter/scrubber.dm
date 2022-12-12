@@ -46,7 +46,7 @@
 	anchored = 1
 
 	chan
-	use_power = POWER_USE_NO_POWER
+	use_power = 0
 
 	var/global/gid = 1
 	var/id = 0

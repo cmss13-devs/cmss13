@@ -141,15 +141,15 @@
 	if(amount < 10)
 		return
 
-	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[level])
+	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == level)
 		return
 
 	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates"))
 
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 
-	E.hivenumber = GLOB.hive_datum[level]
-	set_hive_data(E, GLOB.hive_datum[level])
+	E.hivenumber = level
+	set_hive_data(E, level)
 	E.flags_embryo |= FLAG_EMBRYO_PREDATOR
 
 /datum/chem_property/special/crossmetabolizing

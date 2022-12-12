@@ -34,7 +34,7 @@
 	world.update_status()
 
 /datum/admins/proc/toggledsay()
-	set name = "Toggle Server Deadchat"
+	set name = "Toggle Deadchat"
 	set desc = "Globally Toggles Deadchat"
 	set category = "Server"
 

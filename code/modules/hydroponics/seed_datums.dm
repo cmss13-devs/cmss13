@@ -47,7 +47,7 @@ proc/populate_seed_list()
 
 	while(gene_tags && gene_tags.len)
 		var/gene_tag = pick(gene_tags)
-		var/gene_mask = "[num2hex(rand(0,255))] - [gene_tag]"
+		var/gene_mask = "[num2hex(rand(0,255))]"
 
 		while(gene_mask in used_masks)
 			gene_mask = "[num2hex(rand(0,255))]"

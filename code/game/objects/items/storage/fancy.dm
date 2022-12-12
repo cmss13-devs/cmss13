@@ -30,7 +30,7 @@
 
 
 /obj/item/storage/fancy/get_examine_text(mob/user)
-	. = ..()
+	..()
 	if(contents.len <= 0)
 		. += "There are no [src.icon_type]s left in the box."
 	else if(contents.len == 1)

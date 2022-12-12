@@ -11,8 +11,6 @@
 
 	ambience = 'sound/ambience/strata/strata_snow.ogg'
 
-	fire_smothering_strength = 2
-
 /datum/weather_event/sand
 	name = "Sandstorm"
 	display_name = "Sandstorm"
@@ -26,8 +24,6 @@
 
 	ambience = 'sound/ambience/strata/strata_snowstorm.ogg'
 
-	fire_smothering_strength = 3
-
 /datum/weather_event/rock
 	name = "Rockstorm"
 	display_name = "Rockstorm"
@@ -40,5 +36,3 @@
 	damage_type = BRUTE
 
 	ambience = 'sound/ambience/strata/strata_blizzard.ogg'
-
-	fire_smothering_strength = 4

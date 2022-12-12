@@ -135,8 +135,6 @@
 	disabilities = 0
 	drowsyness = 0
 	hallucination = 0
-	jitteriness = 0
-	dizziness = 0
 
 	// restore all of a human's blood
 	if(ishuman(src))

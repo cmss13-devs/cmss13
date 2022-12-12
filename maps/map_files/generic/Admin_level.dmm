@@ -2308,7 +2308,7 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security{
-	network = list("Military","Almayer")
+	network = list("Military", "Almayer")
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -4168,7 +4168,7 @@
 "Fd" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security{
-	network = list("Military","Almayer")
+	network = list("Military", "Almayer")
 	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -4672,10 +4672,7 @@
 	dir = 8;
 	name = "Secure Storage"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	unacidable = 1
-	},
+/obj/structure/machinery/door/poddoor/almayer,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";

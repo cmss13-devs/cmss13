@@ -15,7 +15,7 @@
 	var/list/click_border_start = new/list() 		//In slotless storage, stores areas where clicking will refer to the associated item
 	var/list/click_border_end = new/list()
 	var/list/hearing_items							//A list of items that use hearing for the purpose of performance
-	var/max_w_class = SIZE_SMALL 					//Max size of objects that this object can store
+	var/max_w_class = SIZE_SMALL 					//Max size of objects that this object can store (in effect only if can_hold isn't set)
 	var/max_storage_space = 14 						//The sum of the storage costs of all the items in this storage item.
 	var/storage_slots = 7 							//The number of storage slots in this container.
 	var/atom/movable/screen/storage/boxes = null

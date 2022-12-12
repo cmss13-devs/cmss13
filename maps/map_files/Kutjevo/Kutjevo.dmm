@@ -453,10 +453,6 @@
 	dir = 1
 	},
 /area/kutjevo/interior/power/comms)
-"aAg" = (
-/obj/structure/machinery/recharge_station,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/complex/med/locks)
 "aAq" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/colors/cyan/inner_corner,
@@ -1157,10 +1153,6 @@
 "bEH" = (
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_north)
-"bET" = (
-/obj/structure/machinery/recharge_station,
-/turf/open/floor/kutjevo/grey/plate,
-/area/kutjevo/interior/complex/Northwest_Dorms)
 "bFh" = (
 /obj/structure/platform/kutjevo/rock{
 	dir = 1
@@ -15855,13 +15847,6 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/telecomm/lz2_south)
-"vre" = (
-/obj/structure/platform/kutjevo{
-	dir = 8
-	},
-/obj/structure/machinery/recharge_station,
-/turf/open/floor/kutjevo/colors,
-/area/kutjevo/interior/power/comms)
 "vrB" = (
 /obj/structure/machinery/floodlight,
 /turf/open/floor/kutjevo/tan,
@@ -16349,12 +16334,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_river)
-"vYW" = (
-/obj/structure/machinery/recharge_station,
-/turf/open/floor/kutjevo/multi_tiles{
-	dir = 10
-	},
-/area/kutjevo/interior/colony_South/power2)
 "wae" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -22338,7 +22317,7 @@ lzb
 lzb
 lzb
 lzb
-vre
+ozs
 tlN
 dxF
 dxF
@@ -24085,7 +24064,7 @@ sjE
 sjE
 uHg
 upp
-bET
+fto
 jnV
 xZz
 vCx
@@ -38489,7 +38468,7 @@ msK
 uAz
 bUI
 rES
-aAg
+gUS
 fpJ
 fpJ
 pIE
@@ -44876,7 +44855,7 @@ klE
 pbR
 klE
 pbR
-vYW
+klE
 rdm
 rdm
 rdm

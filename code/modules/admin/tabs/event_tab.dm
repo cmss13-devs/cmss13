@@ -920,38 +920,3 @@
 	SSticker.mode.taskbar_icon = taskbar_icon
 	SSticker.set_clients_taskbar_icon(taskbar_icon)
 	message_staff("[key_name_admin(usr)] has changed the taskbar icon to [taskbar_icon].")
-
-/client/proc/change_weather()
-	set name = "Change Weather"
-	set category = "Admin.Events"
-
-	if(!check_rights(R_EVENT))
-		return
-
-	if(!SSweather.map_holder)
-		to_chat(src, SPAN_WARNING("This map has no weather data."))
-		return
-
-	if(SSweather.is_weather_event_starting)
-		to_chat(src, SPAN_WARNING("A weather event is already starting. Please wait."))
-		return
-
-	if(SSweather.is_weather_event)
-		if(tgui_alert(src, "A weather event is already in progress! End it?", "Confirm", list("End", "Continue"), 10 SECONDS) == "Continue")
-			return
-		if(SSweather.is_weather_event)
-			SSweather.end_weather_event()
-
-	var/list/mappings = list()
-	for(var/datum/weather_event/typepath as anything in subtypesof(/datum/weather_event))
-		mappings[initial(typepath.name)] = typepath
-	var/chosen_name = tgui_input_list(src, "Select a weather event to start", "Weather Selector", mappings)
-	var/chosen_typepath = mappings[chosen_name]
-	if(!chosen_typepath)
-		return
-
-	var/retval = SSweather.setup_weather_event(chosen_typepath)
-	if(!retval)
-		to_chat(src, SPAN_WARNING("Could not start the weather event at present!"))
-		return
-	to_chat(src, SPAN_BOLDNOTICE("Success! The weather event should start shortly."))

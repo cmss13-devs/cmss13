@@ -66,21 +66,6 @@
 	if(appearance_flags & PIXEL_SCALE)
 		langchat_image.appearance_flags |= PIXEL_SCALE
 
-/mob/langchat_make_image(var/override_color = null)
-	var/new_image = FALSE
-	if(!langchat_image)
-		new_image = TRUE
-	. = ..()
-	// Recenter for icons more than 32 wide
-	if(new_image)
-		langchat_image.maptext_x += (icon_size - 32) / 2
-
-/mob/dead/observer/langchat_make_image(var/override_color = null)
-	if(!override_color)
-		override_color = "#c51fb7"
-	. = ..()
-	langchat_image.appearance_flags |= RESET_ALPHA
-
 /atom/proc/langchat_speech(message, var/list/listeners, language, var/override_color, var/skip_language_check = FALSE, var/animation_style = LANGCHAT_DEFAULT_POP, var/list/additional_styles = list("langchat"))
 	langchat_drop_image()
 	langchat_make_image(override_color)

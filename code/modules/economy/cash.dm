@@ -1,6 +1,6 @@
 /obj/item/spacecash
-	name = "15 dollars"
-	desc = "You have 15 dollars."
+	name = "0 dollars"
+	desc = "You have no dollars."
 	gender = PLURAL
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "spacecash1"
@@ -12,7 +12,9 @@
 	throw_speed = SPEED_FAST
 	throw_range = 2
 	w_class = SIZE_TINY
-	var/worth = 15
+	var/access = list()
+	access = ACCESS_MARINE_COMMANDER
+	var/worth = 0
 
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))

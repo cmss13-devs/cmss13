@@ -1,9 +1,8 @@
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
 	skills = /datum/skills/synthetic
-	paygrade = "SYN"
 
 /datum/equipment_preset/synth/New()
 	. = ..()
@@ -39,7 +38,7 @@
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
-	paygrade = "SYN"
+	paygrade = ""
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/H)
@@ -63,7 +62,7 @@
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
-	paygrade = "SYN"
+	paygrade = ""
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/H)
@@ -262,7 +261,7 @@
 		first_name = "[pick(first_names_male_colonist)]"
 	else
 		first_name ="[pick(first_names_female_colonist)]"
-
+		
 	last_name ="[pick(last_names_colonist)]"
 	random_name = "[first_name] [last_name]"
 	H.change_real_name(H, random_name)

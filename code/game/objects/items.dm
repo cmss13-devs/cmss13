@@ -148,21 +148,21 @@
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)
-	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	explosion_throw(severity, explosion_direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
 				if(!indestructible)
-					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
 					deconstruct(FALSE)
+			else
+				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				if(!indestructible)
 					deconstruct(FALSE)
+			else
+				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(!indestructible)
-				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
 				deconstruct(FALSE)
 
 /obj/item/mob_launch_collision(var/mob/living/L)
@@ -310,7 +310,7 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	if(dropsound && (src.loc?.z))
+	if(dropsound && (src.loc.z))
 		playsound(src, dropsound, dropvol, drop_vary)
 	src.do_drop_animation(user)
 

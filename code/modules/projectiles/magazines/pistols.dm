@@ -157,22 +157,16 @@
 
 /obj/item/ammo_magazine/pistol/heavy/super //Commander's variant
 	name = "\improper Heavy Desert Eagle magazine (.50)"
-	desc = "Seven rounds of devastatingly powerful 50-caliber destruction."
+	desc = "A heavy variant of Desert Eagle magazines specially-tuned to fit a high-ranking officer. This variant is optimized for anti-armor."
 	gun_type = /obj/item/weapon/gun/pistol/heavy/co
 	default_ammo = /datum/ammo/bullet/pistol/heavy/super
 	icon_state = "deagleS"
 
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact
 	name = "\improper High Impact Desert Eagle magazine (.50)"
-	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. The bullets are tipped with a synthesized osmium and lead alloy to stagger absolutely anything they hit. Point away from anything you value."
+	desc = "A heavy variant of Desert Eagle magazines specially-tuned to fit a high-ranking officer. This variant is optimized for anti-personnel. Don't fire it at anyone you'd like to stay alive."
 	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact
 	icon_state = "deagleE"
-
-/obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
-	name = "\improper High Impact Armor-Piercing Desert Eagle magazine (.50)"
-	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
-	icon_state = "deagleAP"
 
 //-------------------------------------------------------
 //MAUSER MERC PISTOL //Inspired by the Makarov.

@@ -21,7 +21,7 @@
 	var/obj/structure/machinery/autodoc_console/connected
 
 	//It uses power
-	use_power = POWER_USE_IDLE_POWER
+	use_power = 1
 	idle_power_usage = 15
 	active_power_usage = 450 //Capable of doing various activities
 
@@ -591,7 +591,7 @@
 
 /obj/structure/machinery/autodoc/proc/go_in_autodoc(mob/M)
 	M.forceMove(src)
-	update_use_power(POWER_USE_ACTIVE_POWER)
+	update_use_power(2)
 	occupant = M
 	icon_state = "autodoc_closed"
 	start_processing()
@@ -609,7 +609,7 @@
 	occupant.update_med_icon()
 	occupant = null
 	surgery_todo_list = list()
-	update_use_power(POWER_USE_IDLE_POWER)
+	update_use_power(1)
 	icon_state = "autodoc_open"
 	stop_processing()
 	if(connected)
@@ -696,7 +696,7 @@
 	anchored = 1 //About time someone fixed this.
 	density = 0
 
-	use_power = POWER_USE_IDLE_POWER
+	use_power = 1
 	idle_power_usage = 40
 
 /obj/structure/machinery/autodoc_console/Initialize()

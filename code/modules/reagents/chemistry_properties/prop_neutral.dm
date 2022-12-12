@@ -56,7 +56,7 @@
 
 	if(M.nutrition + (holder.nutriment_factor * level) >= NUTRITION_MAX)
 		M.nutrition = NUTRITION_MAX
-		return
+		holder.volume = 0
 	else
 		M.nutrition += holder.nutriment_factor * level
 

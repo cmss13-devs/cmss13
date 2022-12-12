@@ -56,7 +56,7 @@
 	timer_id = addtimer(CALLBACK(src, .proc/mature), time_to_mature * W.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
 	. = ..()
 	// Need to do it here because baseline initialize override the icon through config.
-	icon = 'icons/mob/xenos/fruits.dmi'
+	icon = 'icons/mob/hostiles/fruits.dmi'
 
 /obj/effect/alien/resin/fruit/proc/on_weed_expire()
 	SIGNAL_HANDLER
@@ -321,7 +321,7 @@
 /obj/item/reagent_container/food/snacks/resin_fruit
 	name = XENO_FRUIT_LESSER
 	desc = "A strange fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
-	icon = 'icons/mob/xenos/fruits.dmi'
+	icon = 'icons/mob/hostiles/fruits.dmi'
 	icon_state = "fruit_lesser_item"
 	w_class = SIZE_LARGE
 	bitesize = 2

@@ -13,7 +13,7 @@
 	var/antigrief_protection
 	//Below is used for customization
 	var/obj/item/device/assembly_holder/detonator = null
-	var/list/obj/containers = list()
+	var/list/containers = new/list()
 	var/list/allowed_sensors = list()
 	var/list/allowed_containers = list(/obj/item/reagent_container/glass/beaker, /obj/item/reagent_container/glass/bucket, /obj/item/reagent_container/glass/bottle)
 	var/max_container_volume = 120
@@ -43,8 +43,6 @@
 /obj/item/explosive/Destroy()
 	cause_data = null
 	creator = null
-	QDEL_NULL(detonator)
-	QDEL_NULL_LIST(containers)
 	. = ..()
 
 /obj/item/explosive/clicked(mob/user, list/mods)

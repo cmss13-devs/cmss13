@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	19
+#define SAVEFILE_VERSION_MAX	18
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -67,12 +67,6 @@
 		S["toggle_prefs"] >> pref_toggles
 		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
 		S["toggle_prefs"] << pref_toggles
-
-	if(savefile_version < 19) // toggles vending to hand by default
-		var/pref_toggle_vend_item_tohand
-		S["toggle_prefs"] >> pref_toggle_vend_item_tohand
-		pref_toggle_vend_item_tohand |= TOGGLE_VEND_ITEM_TO_HAND
-		S["toggle_prefs"] << pref_toggle_vend_item_tohand
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -404,6 +398,7 @@
 	S["sec_record"]			>> sec_record
 	S["gen_record"]			>> gen_record
 	S["be_special"]			>> be_special
+	S["disabilities"]		>> disabilities
 	S["organ_data"]			>> organ_data
 	S["gear"]				>> gear
 	S["origin"] 			>> origin
@@ -470,6 +465,8 @@
 		for(var/job in job_preference_list)
 			job_preference_list[job] = sanitize_integer(job_preference_list[job], 0, 3, initial(job_preference_list[job]))
 
+	if(isnull(disabilities))
+		disabilities = 0
 	if(!organ_data)
 		organ_data = list()
 
@@ -546,6 +543,7 @@
 	S["sec_record"]			<< sec_record
 	S["gen_record"]			<< gen_record
 	S["be_special"]			<< be_special
+	S["disabilities"]		<< disabilities
 	S["organ_data"]			<< organ_data
 	S["gear"]				<< gear
 	S["origin"] 			<< origin

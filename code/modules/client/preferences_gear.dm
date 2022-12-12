@@ -599,48 +599,6 @@ var/global/list/gear_datums = list()
 	cost = 2
 	slot = WEAR_IN_BACK
 
-/datum/gear/flask
-	display_name = "Metal Flask"
-	path = /obj/item/reagent_container/food/drinks/flask
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_canteen
-	display_name = "Canteen"
-	path = /obj/item/reagent_container/food/drinks/flask/canteen
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_uscm
-	display_name = "USCM Flask"
-	path = /obj/item/reagent_container/food/drinks/flask/marine
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_wy
-	display_name = "WY Flask"
-	path = /obj/item/reagent_container/food/drinks/flask/weylandyutani
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_det
-	display_name = "Leather Flask"
-	path = /obj/item/reagent_container/food/drinks/flask/detflask
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_bar
-	display_name = "Black Leather Flask"
-	path = /obj/item/reagent_container/food/drinks/flask/barflask
-	cost = 2
-	slot = WEAR_IN_BACK
-
-/datum/gear/flask_vacuum
-	display_name = "Vacuum Flask"
-	path = /obj/item/reagent_container/food/drinks/flask/vacuumflask
-	cost = 3 //they're too cool for 2 points
-	slot = WEAR_IN_BACK
-
 /datum/gear/pdt_kit
 	display_name = "PDT/L Kit"
 	path = /obj/item/storage/box/pdt_kit

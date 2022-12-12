@@ -1,7 +1,6 @@
 /datum/paygrade/navy
 	name = "Navy Paygrade"
 	rank_pin = /obj/item/clothing/accessory/ranks/navy
-	//someone else can do the multipliers for this one
 
 // ENLISTED PAYGRADES
 

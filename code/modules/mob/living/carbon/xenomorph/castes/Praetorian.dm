@@ -54,8 +54,12 @@
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
 	)
 
-	icon_xeno = 'icons/mob/xenos/praetorian.dmi'
 	icon_xenonid = 'icons/mob/xenonids/praetorian.dmi'
+
+/mob/living/carbon/Xenomorph/Praetorian/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_praetorian))
+	. = ..()
+
 
 /datum/behavior_delegate/praetorian_base
 	name = "Base Praetorian Behavior Delegate"

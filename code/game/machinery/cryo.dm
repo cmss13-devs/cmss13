@@ -12,7 +12,7 @@
 	var/autoeject = FALSE
 	var/release_notice = FALSE
 	var/on = FALSE
-	use_power = POWER_USE_IDLE_POWER
+	use_power = 1
 	idle_power_usage = 20
 	active_power_usage = 200
 
@@ -243,7 +243,7 @@
 			if(dead)
 				reason = "<b>Reason for release:</b> Patient death."
 			ai_silent_announcement("Patient [occupant] has been automatically released from \the [src] at: [get_area(occupant)]. [reason]", MED_FREQ)
-	update_use_power(POWER_USE_IDLE_POWER)
+	update_use_power(1)
 	update_icon()
 	return
 
@@ -266,7 +266,7 @@
 		if(M.health >= -100 && (M.health <= 0 || M.sleeping))
 			to_chat(M, SPAN_NOTICE("<b>You feel cold liquid surround you. Your skin starts to freeze up.</b>"))
 		occupant = M
-		update_use_power(POWER_USE_ACTIVE_POWER)
+		update_use_power(2)
 		update_icon()
 		return TRUE
 

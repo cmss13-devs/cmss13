@@ -160,7 +160,7 @@
 	if(CONFIG_GET(flag/show_manager))
 		LAZYSET(mappings, "<B style='color:purple'>Management</B>", R_HOST)
 	if(CONFIG_GET(flag/show_devs))
-		LAZYSET(mappings, "<B style='color:blue'>Maintainers</B>", R_PROFILER)
+		LAZYSET(mappings, "<B style='color:blue'>Developers</B>", R_PROFILER)
 	LAZYSET(mappings, "<B style='color:red'>Admins</B>", R_ADMIN)
 	if(CONFIG_GET(flag/show_mods))
 		LAZYSET(mappings, "<B style='color:orange'>Moderators</B>", R_MOD)
@@ -183,9 +183,6 @@
 		dat += "<BR><B>Current [category] ([length(listings[category])]):<BR></B>\n"
 		for(var/client/entry in listings[category])
 			dat += "\t[entry.key] is a [entry.admin_holder.rank]"
-			if(entry.admin_holder.extra_titles?.len)
-				for(var/srank in entry.admin_holder.extra_titles)
-					dat += " & [srank]"
 			if(CLIENT_IS_STAFF(src))
 				if(entry.admin_holder?.fakekey)
 					dat += " <i>(HIDDEN)</i>"

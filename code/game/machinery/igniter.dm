@@ -7,7 +7,7 @@
 	var/id = null
 	var/on = 1.0
 	anchored = 1.0
-	use_power = POWER_USE_IDLE_POWER
+	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 4
 

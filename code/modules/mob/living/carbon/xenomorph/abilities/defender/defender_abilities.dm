@@ -37,12 +37,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_fortify
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_4
-	xeno_cooldown = 5 SECONDS
-
-	 /// Extra armor when fortified and facing bullets.
-	var/frontal_armor = 5
-	 /// Extra armor when steelcrest, fortified, and facing bullets.
-	var/steelcrest_frontal_armor = 15
+	xeno_cooldown = 100
 
 /datum/action/xeno_action/activable/tail_stab/slam
 	name = "Tail Slam"

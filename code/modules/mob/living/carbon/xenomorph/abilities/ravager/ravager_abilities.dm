@@ -69,7 +69,7 @@
 
 	// Config values
 	var/speed_buff = 0.75
-	var/buff_duration = 7 SECONDS
+	var/buff_duration = 8 SECONDS
 
 
 /datum/action/xeno_action/activable/clothesline

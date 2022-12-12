@@ -10,7 +10,7 @@
 	icon_state = "smes"
 	density = 1
 	anchored = 1
-	use_power = POWER_USE_NO_POWER
+	use_power = 0
 	directwired = 0
 
 	var/loaddemand = 0		//For use in restore()

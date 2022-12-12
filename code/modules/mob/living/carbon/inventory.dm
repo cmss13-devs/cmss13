@@ -7,8 +7,7 @@
 	update_inv_handcuffed()
 
 /mob/living/carbon/proc/legcuff_update()
-	if(legcuffed)
-		set_movement_intent(MOVE_INTENT_WALK)
+	recalculate_move_delay = TRUE
 	update_inv_legcuffed()
 
 

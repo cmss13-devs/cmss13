@@ -7,7 +7,7 @@
 	density = TRUE
 	anchored = TRUE
 	wrenchable = TRUE
-	use_power = POWER_USE_IDLE_POWER
+	use_power = 1
 	idle_power_usage = 5
 	active_power_usage = 100
 	flags_atom = OPENCONTAINER|NOREACT

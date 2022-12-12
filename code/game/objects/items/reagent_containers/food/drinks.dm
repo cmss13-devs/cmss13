@@ -211,9 +211,6 @@
 	. = ..()
 	reagents.add_reagent("coffee", 20)
 
-/obj/item/reagent_container/food/drinks/coffee/marine
-	desc = "Recycled water, lab-grown coffee plants genetically designed for minimum expense and maximum production, and re-recycled coffee grounds have mixed together to create this insultingly cheap USCM culinary 'wonder'. You're just glad the troops get issued water for free."
-
 /obj/item/reagent_container/food/drinks/tea
 	name = "\improper Duke Purple Tea"
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
@@ -341,42 +338,22 @@
 
 /obj/item/reagent_container/food/drinks/flask/weylandyutani
 	name = "\improper Weyland-Yutani flask"
-	desc = "A metal flask embossed with Weyland-Yutani's signature logo that some corporate bootlicker probably ordered to be stocked in USS military vessels' canteen vendors."
+	desc = "A metal flask embossed with Weyland-Yutani's signature logo. A nifty little corporate souvenir if you like the company."
 	icon_state = "flask_wy"
 	volume = 60
 	center_of_mass = "x=17;y=8"
 
-/obj/item/reagent_container/food/drinks/flask/weylandyutani/Initialize()
-	. = ..()
-	reagents.add_reagent("fruit_beer", 60)
-
-/obj/item/reagent_container/food/drinks/flask/canteen
-	name = "canteen"
-	desc = "You take a sip from your trusty USCM canteen..."
-	icon_state = "canteen"
-	volume = 60
-	center_of_mass = "x=17;y=8"
-
-/obj/item/reagent_container/food/drinks/flask/canteen/Initialize()
-	. = ..()
-	reagents.add_reagent("water", 60)
-
 /obj/item/reagent_container/food/drinks/flask/detflask
-	name = "brown leather flask"
-	desc = "A flask with a leather band around the sides, often seen filled with whiskey and carried by rugged, gritty detectives."
-	icon_state = "brownflask"
+	name = "detective's flask"
+	desc = "A metal flask with a leather band and golden badge belonging to the detective."
+	icon_state = "detflask"
 	volume = 60
 	center_of_mass = "x=17;y=8"
-
-/obj/item/reagent_container/food/drinks/flask/detflask/Initialize()
-	. = ..()
-	if(prob(15))
-		reagents.add_reagent("whiskey", 30)
 
 /obj/item/reagent_container/food/drinks/flask/barflask
-	name = "black leather flask"
-	desc = "A flask with a slick black leather band around the sides. For those who can't be bothered to hang out at the bar to drink."
-	icon_state = "blackflask"
+	name = "flask"
+	desc = "For those who can't be bothered to hang out at the bar to drink."
+	icon_state = "barflask"
 	volume = 60
 	center_of_mass = "x=17;y=7"
 

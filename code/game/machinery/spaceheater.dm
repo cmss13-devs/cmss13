@@ -128,7 +128,7 @@
 			if("cellremove")
 				if(open && cell && !usr.get_active_hand())
 					usr.visible_message(SPAN_NOTICE("[usr] removes \the [cell] from \the [src]."), SPAN_NOTICE("You remove \the [cell] from \the [src]."))
-					cell.update_icon()
+					cell.updateicon()
 					usr.put_in_hands(cell)
 					cell.add_fingerprint(usr)
 					cell = null

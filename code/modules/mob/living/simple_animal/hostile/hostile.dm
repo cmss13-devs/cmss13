@@ -14,11 +14,6 @@
 	stop_automated_movement_when_pulled = 0
 	var/destroy_surroundings = 1
 
-/mob/living/simple_animal/hostile/Destroy()
-	friends = null
-	target_mob = null
-	return ..()
-
 /mob/living/simple_animal/hostile/proc/FindTarget()
 
 	var/atom/T = null

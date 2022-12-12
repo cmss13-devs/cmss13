@@ -7,7 +7,7 @@
 	unacidable = TRUE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER //So you can't hide it under corpses
-	use_power = POWER_USE_NO_POWER
+	use_power = 0
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
 	var/list/faction_group
@@ -357,7 +357,7 @@
 /obj/structure/machinery/defenses/Destroy()
 	if(owner_mob)
 		owner_mob = null
-	HD = null // FIXME: Might also need to delete. Unsure.
+
 	. = ..()
 
 /obj/structure/machinery/defenses/verb/toggle_turret_locks_verb()

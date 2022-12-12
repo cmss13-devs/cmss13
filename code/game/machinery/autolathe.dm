@@ -10,7 +10,7 @@
 	unacidable = TRUE
 	density = 1
 	anchored = 1
-	use_power = POWER_USE_IDLE_POWER
+	use_power = 1
 	idle_power_usage = 10
 	active_power_usage = 100
 
@@ -99,7 +99,7 @@
 			dismantle()
 			return
 
-	if (inoperable())
+	if (stat)
 		return
 
 	//Resources are being loaded.
@@ -166,10 +166,12 @@
 		stop_processing()
 
 /obj/structure/machinery/autolathe/attack_hand(var/mob/user)
-	if(..())
+	if (stat)
 		return
+
 	if (seconds_electrified != 0)
 		shock(user, 50)
+
 	user.set_interaction(src)
 	ui_interact(user)
 

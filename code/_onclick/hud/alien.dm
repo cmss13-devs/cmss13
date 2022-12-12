@@ -6,7 +6,6 @@
 	ui_alien_datum = GLOB.custom_huds_list[HUD_ALIEN]
 
 	draw_act_intent(ui_alien_datum)
-	draw_mov_intent(ui_alien_datum)
 	draw_drop(ui_alien_datum)
 	draw_right_hand(ui_alien_datum)
 	draw_left_hand(ui_alien_datum)
@@ -85,7 +84,6 @@
 	..()
 	var/datum/custom_hud/alien/ui_alien_datum = GLOB.custom_huds_list[HUD_ALIEN]
 
-	draw_mov_intent(ui_alien_datum)
 	draw_healths(ui_alien_datum)
 
 	var/atom/movable/screen/using = new /atom/movable/screen/xenonightvision()

@@ -271,7 +271,6 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>"
 	)
 
@@ -366,14 +365,6 @@
 /client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
 	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
 	to_chat(src, SPAN_BOLDNOTICE("Middle Click [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
-	prefs.save_preferences()
-
-/client/proc/toggle_vend_item_to_hand() //Toggle whether vendors automatically vend to your hands
-	prefs.toggle_prefs ^= TOGGLE_VEND_ITEM_TO_HAND
-	if(prefs.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND)
-		to_chat(src, SPAN_BOLDNOTICE("Most vendors will now automatically vend directly into your hands."))
-	else
-		to_chat(src, SPAN_BOLDNOTICE("Vendors will no longer vend into your hands."))
 	prefs.save_preferences()
 
 /client/proc/switch_item_animations() //Switches tg-style item animations on, not-on-same-tile, and off

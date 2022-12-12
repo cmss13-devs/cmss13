@@ -428,7 +428,7 @@
 
 /obj/item/clothing/head/helmet/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
-	desc = "A Kevlar reinforced beret with the USCM Military Police First Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
+	desc = "A Kevlar reinforced beret with the USCM Military Police Lieutenant Commander insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
 
 /obj/item/clothing/head/helmet/beret/marine/mp/mppeaked

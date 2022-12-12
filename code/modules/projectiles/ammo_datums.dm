@@ -56,9 +56,6 @@
 /datum/ammo/New()
 	set_bullet_traits()
 
-/datum/ammo/proc/on_bullet_generation(var/obj/item/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
-	return
-
 /// Populate traits_to_give in this proc
 /datum/ammo/proc/set_bullet_traits()
 	return
@@ -247,27 +244,26 @@
 	shrapnel_type = /obj/item/shard/shrapnel
 	shell_speed = AMMO_SPEED_TIER_4
 
-/datum/ammo/bullet/proc/handle_battlefield_execution(datum/ammo/firing_ammo, mob/living/hit_mob, obj/item/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
-	SIGNAL_HANDLER
+/datum/ammo/bullet/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
+	if(!(flags_ammo_behavior & AMMO_HIGHIMPACT))
+		return . = ..()
 
-	if(!user || hit_mob == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(hit_mob))
-		return
+	if(!user)
+		return FALSE
 
+	if(L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
+		return ..()
+
+	var/mob/living/carbon/human/execution_target = L
 	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
 		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return
-
-	var/mob/living/carbon/human/execution_target = hit_mob
+		return FALSE
 
 	if(execution_target.status_flags & PERMANENTLY_DEAD)
 		to_chat(user, SPAN_DANGER("[execution_target] has already been executed!"))
-		return
+		fired_from.delete_bullet(P, TRUE)
+		return TRUE
 
-	INVOKE_ASYNC(src, .proc/attempt_battlefield_execution, src, execution_target, firing_projectile, user, fired_from)
-
-	return COMPONENT_CANCEL_AMMO_POINT_BLANK
-
-/datum/ammo/bullet/proc/attempt_battlefield_execution(datum/ammo/firing_ammo, mob/living/carbon/human/execution_target, obj/item/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
 	user.affected_message(execution_target,
 		SPAN_HIGHDANGER("You aim \the [fired_from] at [execution_target]'s head!"),
 		SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
@@ -276,15 +272,8 @@
 	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(execution_target))
-		fired_from.delete_bullet(firing_projectile, TRUE)
-		return
-
-	if(!(fired_from.flags_gun_features & GUN_SILENCED))
-		playsound(user, fired_from.fire_sound, fired_from.firesound_volume, FALSE)
-	else
-		playsound(user, fired_from.fire_sound, 25, FALSE)
-
-	shake_camera(user, 1, 2)
+		fired_from.delete_bullet(P, TRUE)
+		return TRUE
 
 	execution_target.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
 	execution_target.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
@@ -292,10 +281,10 @@
 	shake_camera(execution_target, 3, 4)
 	execution_target.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
 
-	execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[execution_target] WAS EXECUTED!")), \
+	execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
 		SPAN_HIGHDANGER("You WERE EXECUTED!"))
 
-	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, firing_projectile.weapon_cause_data?.cause_name)
+	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
 
 	var/area/execution_area = get_area(execution_target)
 
@@ -304,7 +293,7 @@
 
 	if(flags_ammo_behavior & AMMO_EXPLOSIVE)
 		execution_target.gib()
-
+	return ..()
 
 /*
 //======
@@ -432,18 +421,9 @@
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact
 	name = ".50 high-impact pistol bullet"
-	penetration = ARMOR_PENETRATION_TIER_1
-	debilitate = list(0,1.5,0,0,0,1,0,0)
-	flags_ammo_behavior = AMMO_BALLISTIC
-
-/datum/ammo/bullet/pistol/heavy/super/highimpact/ap
-	name = ".50 high-impact armor piercing pistol bullet"
-	penetration = ARMOR_PENETRATION_TIER_10
-	damage = 45
-
-/datum/ammo/bullet/pistol/heavy/super/highimpact/New()
-	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
+	penetration = ARMOR_PENETRATION_TIER_2
+	debilitate = list(0,2,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_HIGHIMPACT|AMMO_BALLISTIC
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
@@ -688,6 +668,7 @@
 
 /datum/ammo/bullet/revolver/mateba
 	name = ".454 heavy revolver bullet"
+	debilitate = list(0,2,0,0,0,1,0,0)
 
 	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
@@ -697,17 +678,8 @@
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
-	penetration = ARMOR_PENETRATION_TIER_1
-	flags_ammo_behavior = AMMO_BALLISTIC
-
-/datum/ammo/bullet/revolver/mateba/highimpact/ap
-	name = ".454 heavy high-impact armor piercing revolver bullet"
-	penetration = ARMOR_PENETRATION_TIER_10
-	damage = 45
-
-/datum/ammo/bullet/revolver/mateba/highimpact/New()
-	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
+	penetration = ARMOR_PENETRATION_TIER_2
+	flags_ammo_behavior = AMMO_HIGHIMPACT|AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
@@ -718,7 +690,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_10
 	damage_var_high = PROJECTILE_VARIANCE_TIER_1
 	penetration = ARMOR_PENETRATION_TIER_10
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HIGHIMPACT|AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
 	..()
@@ -2552,13 +2524,13 @@
 	sound_hit 	 = "acid_hit"
 	sound_bounce	= "acid_bounce"
 	damage_type = BURN
+	added_spit_delay = 10
 	spit_cost = 25
 
-	accuracy = HIT_ACCURACY_TIER_5
-	damage = 20
-	max_range = 8 // 7 will disappear on diagonals. i love shitcode
+	accuracy = HIT_ACCURACY_TIER_3
+	damage = 25
 	penetration = ARMOR_PENETRATION_TIER_2
-	shell_speed = AMMO_SPEED_TIER_3
+	shell_speed = AMMO_SPEED_TIER_2
 
 /datum/ammo/xeno/acid/on_shield_block(mob/M, obj/item/projectile/P)
 	burst(M,P,damage_type)
@@ -2567,21 +2539,16 @@
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
-			return FALSE
+			return
 	..()
 
-/datum/ammo/xeno/acid/spatter
+/datum/ammo/xeno/acid/medium
 	name = "acid spatter"
 
-	damage = 30
+	damage = 25
+	shell_speed = AMMO_SPEED_TIER_3
+	accuracy = HIT_ACCURACY_TIER_5*3
 	max_range = 6
-
-/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	if(. == FALSE)
-		return
-
-	new /datum/effects/acid(M, P.firer)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
@@ -2596,7 +2563,7 @@
 	name = "acid spit"
 
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
-	name = "acid scatter"
+	name = "acid spatter"
 
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
@@ -2779,50 +2746,6 @@
         playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
         if(M.slowed < 6)
             M.apply_effect(6, SLOW)
-
-/datum/ammo/xeno/oppressor_tail
-	name = "tail hook"
-	icon_state = "none"
-	ping = null
-	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
-	damage_type = BRUTE
-
-	damage = 0
-	max_range = 4
-	accuracy = HIT_ACCURACY_TIER_MAX
-
-/datum/ammo/xeno/oppressor_tail/on_bullet_generation(var/obj/item/projectile/generated_projectile, var/mob/bullet_generator)
-	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
-	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = BELOW_MOB_LAYER)
-	generated_projectile.overlays += hook_overlay
-
-/datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/item/projectile/fired_proj)
-	var/mob/living/carbon/Xenomorph/xeno_firer = fired_proj.firer
-	if(xeno_firer.can_not_harm(target))
-		return
-
-	shake_camera(target, 5, 0.1 SECONDS)
-	var/obj/effect/beam/tail_beam = fired_proj.firer.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 5)
-	var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
-	target.overlays += tail_image
-
-	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
-	// we dont mess with preexisting freezes
-	var/wasfrozen = target.frozen
-	//paralyzes target so they don't break the throw by moving...
-	if(!wasfrozen)
-		target.frozen = TRUE
-	//sleeps during this proc...
-	target.throw_atom(fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
-	//inmediately after the sleeps, unfreezes so they can wiggle around.
-	if(!wasfrozen)
-		target.frozen = FALSE
-
-	qdel(tail_beam)
-	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
-
-/datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(var/mob/overlayed_mob, var/image/tail_image)
-	overlayed_mob.overlays -= tail_image
 
 /*
 //======
@@ -3149,6 +3072,7 @@
 	shrapnel_type = /obj/item/reagent_container/food/drinks/cans/souto/classic
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_IGNORE_RESIST|AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER|AMMO_SPECIAL_EMBED
 	var/obj/item/reagent_container/food/drinks/cans/souto/can_type
+	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "souto_classic"
 
 	max_range = 12

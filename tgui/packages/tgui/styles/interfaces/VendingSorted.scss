@@ -8,188 +8,186 @@ $button-bg-opacity: 0.25;
 $recommended-color: #3a9b52;
 $mandatory-color: rgb(128, 83, 0);
 
-.Vendor {
-  .Description {
-    position: absolute;
-    right: 10vw;
-    margin-left: -5px;
-    margin-right: -5px;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    width: 79vw;
+.VendingSorted__Description {
+  position: absolute;
+  right: 10vw;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  width: 79vw;
+}
+.VendingSorted__DescIcon {
+  position: absolute;
+  display: inline-block;
+  width: 79vw;
+  height: 36%;
+  margin-top: -36px;
+  vertical-align: middle;
+}
+.VendingSorted_MandatoryDescription {
+  background-color: $mandatory-color;
+  .Section__title {
+    border-bottom: base.em(2px) solid $mandatory-color;
   }
-  .DescIcon {
-    position: absolute;
-    display: inline-block;
-    width: 79vw;
-    height: 36%;
-    margin-top: -36px;
-    vertical-align: middle;
+}
+
+.VendingSorted_RecommendedDescription {
+  background-color: $recommended-color;
+  .Section__title {
+    border-bottom: base.em(2px) solid $recommended-color;
   }
-  .MandatoryDescription {
-    background-color: $mandatory-color;
-    .Section__title {
-      border-bottom: base.em(2px) solid $mandatory-color;
-    }
+}
+
+.VendingSorted__Tooltip {
+  width: 100%;
+}
+
+.VendingSorted__SearchBox {
+  position: fixed;
+  width: calc(100% - 25px);
+  margin: 0px;
+  z-index: 1;
+  background-color: base.$color-bg;
+  top: 31px;
+}
+
+.VendingSorted__ItemContainer {
+  margin-top: 30px;
+  position: absolute;
+  width: 100%;
+  padding-right: 10px;
+}
+
+.VendingSorted__CategorySection {
+  width: 100%;
+
+  &:first-child {
+    margin-top: 0;
   }
+}
 
-  .RecommendedDescription {
-    background-color: $recommended-color;
-    .Section__title {
-      border-bottom: base.em(2px) solid $recommended-color;
-    }
-  }
+.VendingSorted__Category {
+  width: 100%;
+}
 
-  .Tooltip {
-    width: 100%;
-  }
+.VendingSorted__Input {
+  border: 1px solid white;
+  color: white;
+}
 
-  .SearchBox {
-    position: fixed;
-    width: calc(100% - 25px);
-    margin: 0px;
-    z-index: 1;
-    background-color: base.$color-bg;
-    top: 31px;
-  }
-
-  .ItemContainer {
-    margin-top: 30px;
-    position: absolute;
-    width: 100%;
-    padding-right: 10px;
-  }
-
-  .CategorySection {
-    width: 100%;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-
-  .Category {
-    width: 100%;
-  }
-
-  .Input {
-    border: 1px solid white;
-    color: white;
-  }
-
-  .VendButton {
-    width: 100%;
-    display: block;
-    font-size: base.em(14px);
-    font-weight: bold;
-    background-color: rgba(colors.$primary, $button-bg-opacity);
-    border: 2px solid colors.$primary;
-    display: block;
-    &:hover,
-    &:focus {
-      transition: colors.$primary 0ms, background-color 0ms;
-      background-color: colors.$primary;
-    }
-
+.theme-weyland {
+  .VendingSorted__VendButton {
+    background-color: rgba(#ffffff, $button-bg-opacity);
+    transition: none;
     .Button__content {
-      align-self: flex-start;
-      text-align: left;
-      margin-top: -2px;
-      margin-bottom: -1px;
+      color: #ffffff;
+      mix-blend-mode: difference;
+      text-shadow: 2px 2px #444444;
     }
   }
+}
 
-  .RecommendedVendButton {
-    background-color: rgba($recommended-color, $button-bg-opacity);
-    border: 1px solid rgba($recommended-color, 1);
-    transition: $recommended-color 50ms, background-color 50ms;
-    &:hover,
-    &:focus {
-      transition: $recommended-color 0ms, background-color 0ms;
-      background-color: $recommended-color;
-    }
+.VendingSorted__VendButton {
+  width: 100%;
+  display:block;
+  font-size: base.em(14px);
+  font-weight: bold;
+  background-color: rgba(colors.$primary, $button-bg-opacity);
+  border: 2px solid colors.$primary;
+  display: block;
+  &:hover,
+  &:focus {
+    transition: colors.$primary 0ms, background-color 0ms;
+    background-color: colors.$primary;
   }
 
-  .MandatoryVendButton {
-    background-color: rgba($mandatory-color, $button-bg-opacity);
-    border: 1px solid rgba($mandatory-color, 1);
-    transition: $mandatory-color 50ms, background-color 50ms;
-
-    &:hover,
-    &:focus {
-      background-color: $mandatory-color;
-      transition: $mandatory-color 0ms, background-color 0ms;
-    }
+  .Button__content {
+    align-self: flex-start;
+    text-align: left;
+    margin-top: -2px;
+    margin-bottom: -1px;
   }
+}
 
-  .VendingFlexAlt {
-    background-color: rgba(#000000, 0.6);
+.VendingSorted__RecommendedVendButton {
+  background-color: rgba($recommended-color, $button-bg-opacity);
+  border: 1px solid rgba($recommended-color, 1);
+  transition: $recommended-color 50ms, background-color 50ms;
+  &:hover,
+  &:focus {
+    transition: $recommended-color 0ms, background-color 0ms;
+    background-color: $recommended-color;
   }
+}
 
-  .VendingItem {
-    margin-top: 2px;
-    margin-bottom: 2px;
-  }
+.VendingSorted__MandatoryVendButton {
+  background-color: rgba($mandatory-color, $button-bg-opacity);
+  border: 1px solid rgba($mandatory-color, 1);
+  transition: $mandatory-color 50ms, background-color 50ms;
 
-  .ButtonCell {
-    width: 100%;
+  &:hover,
+  &:focus {
+    background-color: $mandatory-color;
+    transition: $mandatory-color 0ms, background-color 0ms;
   }
+}
 
-  .ItemTable {
-    width: 95vw;
-  }
+.VendingFlexAlt {
+  background-color: rgba(#000000, 0.6);
+}
 
-  .IconCell {
-    width: 32px;
-  }
+.VendingItem {
+  margin: 0;
+}
 
-  .Icon {
-    min-width: 32px;
-    max-width: 32px;
-    max-height: 32px;
-    margin-top: -6px;
-    margin-bottom: -6px;
-  }
+.VendingSorted__Icon {
+  min-width: 32px;
+  max-width: 32px;
+  max-height: 32px;
+  margin-top: -6px;
+  margin-bottom: -6px;
+}
 
-  .Cost {
-    width: base.em(30px);
-  }
+.VendingSorted__Cost {
+  width: 30px;
+}
 
-  .Text {
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline block;
-    width: inherit;
-  }
+.VendingSorted__Text {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: inherit;
+}
 
-  .Failure {
-    color: red;
-  }
+.VendingSorted__Failure {
+  color: red;
+}
 
-  .RegularItemText {
-    color: white;
-  }
+.VendingSorted__RegularItemText {
+  color: white;
+}
 
-  .MandatoryItemText {
-    color: rgb(255, 200, 90);
-  }
+.VendingSorted__MandatoryItemText {
+  color: rgb(255, 200, 90);
+}
 
-  .RecommendedItemText {
-    color: #56e97b;
-  }
+.VendingSorted__RecommendedItemText {
+  color: #56E97B;
+}
 
-  .Spacer {
-    width: 15px;
-  }
+.VendingSorted__Spacer {
+  width: 15px;
+}
 
-  .ItemSeparator {
-    height: 1px;
-    border: none;
-    background-color: base.$color-bg;
-    position: absolute;
-    width: 100%;
-    margin-top: -0px;
-  }
+
+.VendingSorted__ItemSeparator {
+  height: 1px;
+  border: none;
+  background-color: base.$color-bg;
+  position: absolute;
+  width: 100%;
+  margin-top: -0px;
 }

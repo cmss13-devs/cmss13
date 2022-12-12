@@ -3,7 +3,7 @@
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "autocam_editor"
-	use_power = POWER_USE_ACTIVE_POWER
+	use_power = 2
 	idle_power_usage = 5
 	active_power_usage = 10
 	layer = FLY_LAYER
@@ -54,10 +54,6 @@
 
 	set_pixel_location()
 	update_icon()
-
-/obj/structure/machinery/camera/Destroy()
-	. = ..()
-	QDEL_NULL(assembly)
 
 /obj/structure/machinery/camera/update_icon()
 	. = ..()

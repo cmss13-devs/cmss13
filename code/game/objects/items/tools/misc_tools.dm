@@ -234,6 +234,8 @@
 	. = ..()
 	create_reagents(30) //Used to be 300
 	reagents.add_reagent("chloralhydrate", 22)	//Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
+	..()
+	return
 
 
 /obj/item/tool/pen/sleepypen/attack(mob/M as mob, mob/user as mob)

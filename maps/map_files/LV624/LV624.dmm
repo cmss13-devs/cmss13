@@ -9781,8 +9781,7 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal Office";
-	req_access = null;
-	req_one_access_txt = "104;3"
+	req_access_txt = "100"
 	},
 /turf/open/floor,
 /area/lv624/lazarus/security)
@@ -10144,7 +10143,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	locked = 1;
 	name = "\improper Nexus Dome Armory";
-	req_one_access_txt = "19;106"
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "cult"

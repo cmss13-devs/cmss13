@@ -37,12 +37,6 @@
 	update()
 	start_processing()
 
-/obj/structure/machinery/disposal/Destroy()
-	if(contents.len)
-		eject()
-	trunk = null
-	return ..()
-
 /obj/structure/machinery/disposal/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -308,6 +302,11 @@
 			deconstruct(FALSE)
 			return
 
+/obj/structure/machinery/disposal/Destroy()
+	if(contents.len)
+		eject()
+	. = ..()
+
 //Update the icon & overlays to reflect mode & status
 /obj/structure/machinery/disposal/proc/update()
 	overlays.Cut()
@@ -338,7 +337,7 @@
 //Timed process, charge the gas reservoir and perform flush if ready
 /obj/structure/machinery/disposal/process()
 	if(stat & BROKEN) //Nothing can happen if broken
-		update_use_power(POWER_USE_NO_POWER)
+		update_use_power(0)
 		return
 
 	flush_count++
@@ -355,7 +354,7 @@
 		flush()
 
 	if(mode != 1) //If off or ready, no need to charge
-		update_use_power(POWER_USE_IDLE_POWER)
+		update_use_power(1)
 	else if(disposal_pressure >= SEND_PRESSURE)
 		mode = 2 //If full enough, switch to ready mode
 		update()
@@ -1246,10 +1245,6 @@
 /obj/structure/disposalpipe/trunk/LateInitialize()
 	. = ..()
 	getlinked()
-
-/obj/structure/disposalpipe/trunk/Destroy()
-	linked = null
-	return ..()
 
 /obj/structure/disposalpipe/trunk/proc/getlinked()
 	linked = null

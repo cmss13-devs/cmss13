@@ -397,6 +397,9 @@ var/list/datum/mob_hud/huds = list(
 				if(hive && hive.color)
 					holder3.color = hive.color
 
+			else if(locate(/mob/living/carbon/Xenomorph/Larva) in src)
+				holder.icon_state = "infected5"
+
 		if(stat == DEAD)
 			if(revive_enabled)
 				if(!client)

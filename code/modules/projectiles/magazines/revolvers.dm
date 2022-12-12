@@ -93,15 +93,9 @@
 
 /obj/item/ammo_magazine/revolver/mateba/highimpact
 	name = "\improper High Impact Mateba speed loader (.454)"
-	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This high impact variant is optimized for anti-personnel. Don't point at anything you don't want to destroy."
+	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This high impact variant is optimized for anti-personnel. Don't fire this at anyone you want to stay alive."
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
 	icon_state = "matebaE"
-
-/obj/item/ammo_magazine/revolver/mateba/highimpact/ap
-	name = "\improper High Impact Armor-Piercing Mateba speed loader (.454)"
-	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This armor-piercing variant is optimized against armored targets at the cost of lower overall damage. Don't point at anything you don't want to destroy."
-	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/ap
-	icon_state = "matebaAP"
 
 /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive
 	name = "\improper Mateba explosive speed loader (.454)"

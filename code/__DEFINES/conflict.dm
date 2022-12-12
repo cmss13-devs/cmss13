@@ -36,6 +36,8 @@
 ///Can only hit people with criminal status
 #define AMMO_MP					(1<<21)
 #define AMMO_FLAME				(1<<22) // Handles sentry flamers glob
+/// Can BE people with it
+#define AMMO_HIGHIMPACT			(1<<23)
 
 
 //Gun defines for gun related thing. More in the projectile folder.

@@ -49,7 +49,7 @@ display round(lastgen) and phorontank amount
 	density = 1
 	anchored = 0
 //	directwired = 0
-	use_power = POWER_USE_NO_POWER
+	use_power = 0
 	unslashable = FALSE
 
 	var/active = 0

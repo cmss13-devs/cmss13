@@ -51,8 +51,11 @@
 	)
 	mutation_type = SENTINEL_NORMAL
 
-	icon_xeno = 'icons/mob/xenos/sentinel.dmi'
 	icon_xenonid = 'icons/mob/xenonids/sentinel.dmi'
+
+/mob/living/carbon/Xenomorph/Sentinel/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_sentinel))
+	. = ..()
 
 /datum/behavior_delegate/sentinel_base
 	name = "Base Sentinel Behavior Delegate"

@@ -18,25 +18,25 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_hedgehog
 	keystone = TRUE
 
-/datum/xeno_mutator/hedgehog/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
+/datum/xeno_mutator/hedgehog/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Ravager/ravager = mutator_set.xeno
+	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
 
-	ravager.mutation_type = RAVAGER_HEDGEHOG
-	ravager.plasma_max = 0
-	ravager.small_explosives_stun = FALSE
-	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
-	ravager.speed_modifier += XENO_SPEED_SLOWMOD_TIER_8
+	R.mutation_type = RAVAGER_HEDGEHOG
+	R.plasma_max = 0
+	R.small_explosives_stun = FALSE
+	R.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
+	R.speed_modifier += XENO_SPEED_SLOWMOD_TIER_8
 
-	apply_behavior_holder(ravager)
+	apply_behavior_holder(R)
 
-	mutator_update_actions(ravager)
-	mutator_set.recalculate_actions(description, flavor_description)
+	mutator_update_actions(R)
+	MS.recalculate_actions(description, flavor_description)
 
-	ravager.recalculate_everything()
+	R.recalculate_everything()
 
 /datum/behavior_delegate/ravager_hedgehog
 	name = "Hedgehog Ravager Behavior Delegate"

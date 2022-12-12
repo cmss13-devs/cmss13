@@ -61,19 +61,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	var/announce_hacked = TRUE
 
-	//Resin constructions that will be SMUSHED by closing doors
-	var/static/list/resin_door_shmushereds = list(
-		/obj/effect/resin_construct/door,
-		/obj/structure/mineral_door/resin,
-		/obj/structure/bed/nest,
-		/obj/effect/alien/resin/spike,
-		/obj/effect/alien/resin/acid_pillar,
-		/obj/effect/alien/resin/shield_pillar,
-		/obj/item/explosive/grenade/alien/acid,
-		/obj/structure/alien/movable_wall,
-		/turf/closed/wall/resin,
-	)
-
 /obj/structure/machinery/door/airlock/Destroy()
 	QDEL_NULL_LIST(attached_signallers)
 	return ..()
@@ -767,8 +754,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			if(istype(location, /turf))
 				location.add_mob_blood(M)
 
-	break_resin_objects()
-
 	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
 		playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
@@ -832,20 +817,3 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (maint_all_access && check_access_list(list(ACCESS_MARINE_MAINT))))
 		return TRUE
 	return ..(M)
-
-/obj/structure/machinery/door/airlock/proc/break_resin_objects()
-	var/list/things_to_shmush = locs
-	for(var/turf/i in things_to_shmush)
-		things_to_shmush |= i.contents
-	for(var/x in things_to_shmush)
-		for(var/i in resin_door_shmushereds)
-			if(istype(x,i)) 								//I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
-				playsound(loc, "alien_resin_break", 25)
-				visible_message(SPAN_WARNING("The [src.name] closes on the [x], shmushing it!"))
-				if(isturf(x))
-					var/turf/closed/wall/resin_wall_to_destroy = x
-					resin_wall_to_destroy.dismantle_wall()
-				else
-					qdel(x)
-				break
-

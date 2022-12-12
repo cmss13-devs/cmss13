@@ -36,12 +36,12 @@
 	cost = 1
 
 /datum/character_trait/language/german
-	language_name = LANGUAGE_GERMAN
+	language_name = LANGUAGE_WELTRAUMDEUTSCH
 	applyable = TRUE
 	cost = 1
 
 /datum/character_trait/language/spanish
-	language_name = LANGUAGE_SPANISH
+	language_name = LANGUAGE_NEOSPANISH
 	applyable = TRUE
 	cost = 1
 

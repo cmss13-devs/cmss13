@@ -277,7 +277,6 @@
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = "WY-XB-X"
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -301,20 +300,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
 
 	..()
-
-/datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/H)
-	if(H.client)
-		var/playtime = get_job_playtime(H.client, JOB_CORPORATE_LIAISON)
-		if(H.client.prefs.playtime_perks)
-			if(playtime > JOB_PLAYTIME_TIER_4)
-				return "WY-XE"
-			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return "WY-XD"
-			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return "WY-XC"
-			else
-				return paygrade
-	return paygrade
 
 /datum/equipment_preset/survivor/corporate/shiva
 	name = "Survivor - Shivas Snowball Corporate Liaison"
@@ -1116,7 +1101,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
 	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_MARINE, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_WY
 	rank = JOB_WY_GOON
 	paygrade = "WEY-GOON"
 	idtype = /obj/item/card/id/silver/cl
@@ -1155,8 +1140,8 @@
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC (Standard)"
-	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_WY, FACTION_MARINE, FACTION_SURVIVOR)
+	faction = FACTION_PMC
+	faction_group = FACTION_LIST_WY
 	rank = JOB_PMC
 	paygrade = "PMC-OP"
 	idtype = /obj/item/card/id/pmc
@@ -1195,7 +1180,7 @@
 	role_comm_title = "Supervisor"
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
-	faction_group = list(FACTION_MARINE, FACTION_WY, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_WY
 	access = list(
 		ACCESS_WY_CORPORATE,
 		ACCESS_ILLEGAL_PIRATE,
@@ -1204,6 +1189,7 @@
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_MEDBAY
 	)
+
 /datum/equipment_preset/survivor/wy/manager/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)

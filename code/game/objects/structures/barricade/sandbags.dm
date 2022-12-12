@@ -105,8 +105,7 @@
 			new /obj/item/stack/barbed_wire(loc)
 		if(stack_type && health > 0)
 			new stack_type(loc, stack_amount)
-	density = 0
-	qdel(src)
+	return ..()
 
 /obj/structure/barricade/sandbags/proc/increment_build_stage()
 	switch(build_stage)

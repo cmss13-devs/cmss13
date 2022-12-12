@@ -308,9 +308,9 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 2
 
-//*****************************************************************************************************/
-//***************************************Cocktail Entities*********************************************/
-//*****************************************************************************************************/
+
+/////////////////////////////////////////////////////////////////cocktail entities//////////////////////////////////////////////
+
 
 /datum/reagent/ethanol/goldschlager
 	name = "Goldschlager"
@@ -750,10 +750,3 @@
 		M.stuttering += 10
 	else if(booze_data >= 115 && prob(33))
 		M.confused = max(M.confused+15,15)
-
-/datum/reagent/ethanol/mojito
-	name = "Mojito"
-	id = "mojito"
-	description = "You can almost feel the old fresh winds of Cuba with this one."
-	color = "#C0FF00" // rgb: 192, 255, 0
-	boozepwr = 1

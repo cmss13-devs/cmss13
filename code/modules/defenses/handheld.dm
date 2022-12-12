@@ -26,10 +26,6 @@
 	. = ..()
 	connect()
 
-/obj/item/defenses/handheld/Destroy()
-	TR = null // FIXME: Might also need to delete. Unsure.
-	return ..()
-
 /obj/item/defenses/handheld/proc/connect()
 	sleep(0.5 SECONDS)
 	if(dropped && !TR)

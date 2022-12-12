@@ -368,18 +368,17 @@
 				break
 
 /obj/item/clothing/equipped(mob/user, slot, silent)
-	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?
+	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && slot != WEAR_L_STORE && slot != WEAR_R_STORE  && slot != WEAR_J_STORE) //is it going to an actual clothing slot rather than a pocket, hand, or backpack?
 		if(!silent && LAZYLEN(equip_sounds))
 			playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 		if(clothing_traits_active)
 			for(var/trait in clothing_traits)
-				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
+				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
 	..()
 
 /obj/item/clothing/unequipped(mob/user, slot)
-	if(is_valid_slot(slot, TRUE))
-		for(var/trait in clothing_traits)
-			REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
+	for(var/trait in clothing_traits)
+		REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
 	. = ..()
 
 /obj/item/clothing/proc/get_pockets()

@@ -12,8 +12,6 @@
 
 	ambience = 'sound/ambience/rainforest.ogg'
 
-	fire_smothering_strength = 2
-
 /datum/weather_event/heavy_rain
 	name = "Heavy Rain"
 	display_name = "Heavy Rain"
@@ -30,5 +28,3 @@
 
 	has_process = TRUE
 	lightning_chance = 2
-
-	fire_smothering_strength = 6

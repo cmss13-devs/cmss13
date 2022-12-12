@@ -66,7 +66,6 @@
 		body.alter_ghost(src)
 		apply_transform(matrix())
 
-
 		own_orbit_size = body.get_orbit_size()
 
 		desc = initial(desc)
@@ -172,7 +171,6 @@
 	QDEL_NULL(last_health_display)
 	GLOB.observer_list -= src
 	following = null
-	observetarget = null
 	return ..()
 
 /mob/dead/observer/MouseDrop(atom/A)
@@ -279,13 +277,6 @@ Works together with spawning an observer, noted above.
 	var/mob/dead/observer/ghost = new(loc, src)	//Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
-
-	// Carryover langchat settings since we kept the icon
-	ghost.langchat_height = langchat_height
-	ghost.icon_size = icon_size
-	ghost.langchat_image = null
-	ghost.langchat_make_image()
-
 	SStgui.on_transfer(src, ghost)
 	if(is_admin_level(z))
 		ghost.timeofdeath = 0 // Bypass respawn limit if you die on the admin zlevel
@@ -940,36 +931,3 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /proc/message_ghosts(var/message)
 	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
 		to_chat(O, message)
-
-/// Format text and links to JuMP/FoLloW something
-/mob/dead/observer/proc/format_jump(atom/target, jump_tag)
-	if(ismob(target))
-		if(!jump_tag)
-			jump_tag = "FLW"
-		return "(<a href='?src=\ref[src];track=\ref[target]'>[jump_tag]</a>)"
-	if(!jump_tag)
-		jump_tag = "JMP"
-	var/turf/turf = get_turf(target)
-	return "(<a href='?src=\ref[src];jumptocoord=1;X=[turf.x];Y=[turf.y];Z=[turf.z]'>[jump_tag]</a>)"
-
-/mob/dead/observer/point_to(atom/A in view())
-	if(!(client?.prefs?.toggles_chat & CHAT_DEAD))
-		return FALSE
-	if(A?.z != src.z || !A.mouse_opacity || get_dist(src, A) > client.view)
-		return FALSE
-	var/turf/turf = get_turf(A)
-	if(recently_pointed_to > world.time)
-		return FALSE
-	point_to_atom(A, turf)
-	return TRUE
-
-/mob/dead/observer/point_to_atom(atom/A, turf/T)
-	recently_pointed_to = world.time + 4 SECONDS
-	new /obj/effect/overlay/temp/point/big/observer(T, src, A)
-	for(var/mob/dead/observer/nearby_observer as anything in GLOB.observer_list)
-		var/client/observer_client = nearby_observer.client
-		// We check observer view range specifically to also show the message to zoomed out ghosts. Double check Z as get_dist goes thru levels.
-		if((observer_client?.prefs?.toggles_chat & CHAT_DEAD) \
-			&& src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
-			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
-	return TRUE

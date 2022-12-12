@@ -96,7 +96,6 @@
 	else if(is_light_floor())
 		icon_state = "light_broken"
 		broken = 1
-		SetLuminosity(0)
 	else if(is_plating())
 		icon_state = "platingdmg[pick(1, 2, 3)]"
 		broken = 1
@@ -187,6 +186,18 @@
 				overlays -= wet_overlay
 				wet_overlay = null
 
+
+
+/turf/open/floor/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(is_light_floor())
+		M.animation_attack_on(src)
+		playsound(src, 'sound/effects/glasshit.ogg', 25, 1)
+		M.visible_message(SPAN_DANGER("\The [M] smashes \the [src]!"), \
+		SPAN_DANGER("You smash \the [src]!"), \
+		SPAN_DANGER("You hear broken glass!"), 5)
+		icon_state = "light_off"
+		SetLuminosity(0)
+		return XENO_ATTACK_ACTION
 
 /turf/open/floor/sandstone
 	name = "sandstone floor"

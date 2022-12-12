@@ -5,7 +5,7 @@
 	density = 0
 	unslashable = TRUE
 	unacidable = TRUE
-	use_power = POWER_USE_NO_POWER
+	use_power = 0
 	var/id
 
 /obj/structure/machinery/gear/proc/start_moving(direction = NORTH)
@@ -22,7 +22,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	density = 0
-	use_power = POWER_USE_NO_POWER
+	use_power = 0
 	opacity = 1
 	layer = ABOVE_MOB_LAYER
 	var/id

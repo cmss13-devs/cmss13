@@ -126,10 +126,10 @@
 //For some goddamn reason robots have this hardcoded. Redefining it for our fragile friends here.
 /mob/living/silicon/robot/drone/updatehealth()
 	if(status_flags & GODMODE)
-		health = health
+		health = 35
 		stat = CONSCIOUS
 		return
-	health = health - (getBruteLoss() + getFireLoss())
+	health = 35 - (getBruteLoss() + getFireLoss())
 	return
 
 //Easiest to check this here, then check again in the robot proc.

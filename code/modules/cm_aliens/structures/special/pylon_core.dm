@@ -130,14 +130,14 @@
 			to_chat(M,SPAN_WARNING("You have attempted to destroy \the [src] too recently! Wait a bit!")) // no spammy
 			return XENO_NO_DELAY_ACTION
 
-		else if(warn && world.time > XENOMORPH_PRE_SETUP_CUTOFF)
+		else if(warn && world.time > HIVECORE_COOLDOWN_CUTOFF)
 			if((alert(M, "Are you sure that you want to destroy the hive core? (There will be a 5 minute cooldown before you can build another one.)", , "Yes", "No") == "No"))
 				return XENO_NO_DELAY_ACTION
 
 			INVOKE_ASYNC(src, .proc/startDestroying,M)
 			return XENO_NO_DELAY_ACTION
 
-		else if(world.time < XENOMORPH_PRE_SETUP_CUTOFF)
+		else if(world.time < HIVECORE_COOLDOWN_CUTOFF)
 			if((alert(M, "Are you sure that you want to remove the hive core? No cooldown will be applied.", , "Yes", "No") == "No"))
 				return XENO_NO_DELAY_ACTION
 
@@ -162,7 +162,7 @@
 	if(linked_hive)
 		visible_message(SPAN_XENOHIGHDANGER("The resin roof withers away as \the [src] dies!"), max_distance = WEED_RANGE_CORE)
 		linked_hive.hive_location = null
-		if(world.time < XENOMORPH_PRE_SETUP_CUTOFF && !hardcore)
+		if(world.time < HIVECORE_COOLDOWN_CUTOFF && !hardcore)
 			. = ..()
 			return
 		linked_hive.hivecore_cooldown = TRUE

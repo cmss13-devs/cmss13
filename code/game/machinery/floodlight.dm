@@ -47,7 +47,7 @@
 			cell.forceMove(loc)
 
 		cell.add_fingerprint(user)
-		cell.update_icon()
+		cell.updateicon()
 
 		src.cell = null
 		to_chat(user, "You remove the power cell.")
@@ -123,7 +123,7 @@
 	on = 1
 	in_use = 1
 	luminosity = 6
-	use_power = POWER_USE_NO_POWER
+	use_power = 0
 
 	attack_hand()
 		return

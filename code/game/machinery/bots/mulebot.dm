@@ -303,7 +303,7 @@
 
 			if("cellremove")
 				if(open && cell && !usr.get_active_hand())
-					cell.update_icon()
+					cell.updateicon()
 					usr.put_in_active_hand(cell)
 					cell.add_fingerprint(usr)
 					cell = null

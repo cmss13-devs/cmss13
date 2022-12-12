@@ -11,7 +11,6 @@
 
 /obj/structure/closet/secure_closet/hydroponics/Initialize()
 	. = ..()
-	update_icon()
 	switch(rand(1,2))
 		if(1)
 			new /obj/item/clothing/suit/apron(src)

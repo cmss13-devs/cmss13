@@ -82,8 +82,6 @@
 #define NORMAL_XENO             0
 #define XENO_QUEEN              1
 #define XENO_LEADER             2
-/// Nobody can create constructions. (Feral)
-#define XENO_NOBODY             3
 
 #define XENO_HIVE_AREA_SIZE 21 //The turf size from the centrepiece of a hive in which special things can be done (like building structures)
 
@@ -562,8 +560,8 @@
 // HIVECORE COOLDOWN TIME
 #define HIVECORE_COOLDOWN 5 MINUTES
 
-// Xeno 'pre-setup' duration, round time where the xenos will no longer be able to move hivecore without cooldowns or burrow up as larvae from the ground without a pool.
-#define XENOMORPH_PRE_SETUP_CUTOFF 20 MINUTES
+// The round time where the xenos will no longer be able to move hivecore without cooldowns
+#define HIVECORE_COOLDOWN_CUTOFF 20 MINUTES
 
 // Xeno shield HUD scale factor (1.5x so its easier to see, most times)
 #define XENO_SHIELD_HUD_SCALE_FACTOR 1.5

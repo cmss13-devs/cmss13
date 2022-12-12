@@ -582,7 +582,7 @@
 			to_chat(usr, SPAN_WARNING("Not a xeno"))
 			return
 
-		if(alert("Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No) != "Yes")
+		if(alert("Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No") != "Yes")
 			return
 
 		if(!X.ckey)
@@ -609,7 +609,7 @@
 		var/mob/M = locate(href_list["xenobanname"])
 
 		if(ismob(M) && X.client && X.client.xeno_name_ban)
-			if(alert("Are you sure you want to UNBAN [X.ckey] and let them use xeno name?", ,"Yes", "No) != "Yes")
+			if(alert("Are you sure you want to UNBAN [X.ckey] and let them use xeno name?", ,"Yes", "No") != "Yes")
 				return
 			X.client.xeno_name_ban = FALSE
 			X.client.prefs.xeno_name_ban = FALSE
@@ -626,7 +626,7 @@
 			to_chat(usr, SPAN_WARNING("Not a xeno"))
 			return
 
-		if(alert("Are you sure you want to BAN [X.ckey] from ever using any xeno name?", , "Yes", "No) != "Yes")
+		if(alert("Are you sure you want to BAN [X.ckey] from ever using any xeno name?", , "Yes", "No") != "Yes")
 			return
 
 		if(!X.ckey)
@@ -1026,7 +1026,7 @@
 	else if(href_list["makeyautja"])
 		if(!check_rights(R_SPAWN))	return
 
-		if(alert("Are you sure you want to make this person into a yautja? It will delete their old character.","Make Yautja","Yes","No) != "Yes")
+		if(alert("Are you sure you want to make this person into a yautja? It will delete their old character.","Make Yautja","Yes","No") != "Yes")
 			return
 
 		var/mob/H = locate(href_list["makeyautja"])

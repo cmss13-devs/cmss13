@@ -134,7 +134,7 @@
 	desc = "A bright fluorescent tube light. Looking at it for too long makes your eyes go watery."
 	anchored = 1
 	layer = FLY_LAYER
-	use_power = 2
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
@@ -214,6 +214,7 @@
 			if(prob(5))
 				broken(1)
 
+	active_power_usage = (brightness * 10)
 	addtimer(CALLBACK(src, .proc/update, 0), 1)
 
 	set_pixel_location()
@@ -286,13 +287,12 @@
 					on = 0
 					SetLuminosity(0)
 			else
-				update_use_power(2)
+				update_use_power(POWER_USE_ACTIVE_POWER)
 				SetLuminosity(brightness)
 	else
-		update_use_power(1)
+		update_use_power(POWER_USE_NO_POWER)
 		SetLuminosity(0)
 
-	active_power_usage = (luminosity * 10)
 	if(on != on_gs)
 		on_gs = on
 
@@ -304,7 +304,7 @@
 
 // examine verb
 /obj/structure/machinery/light/get_examine_text(mob/user)
-	..()
+	. = ..()
 	switch(status)
 		if(LIGHT_OK)
 			to_chat(user, "It is turned [on? "on" : "off"].")
@@ -413,6 +413,8 @@
 // true if area has power and lightswitch is on
 /obj/structure/machinery/light/proc/has_power()
 	var/area/A = src.loc.loc
+	if(!src.needs_power)
+		return A.master.lightswitch
 	return A.master.lightswitch && A.master.power_light
 
 /obj/structure/machinery/light/proc/flicker(var/amount = rand(10, 20))
@@ -565,6 +567,9 @@
 		if(loc)
 			var/area/A = src.loc.loc
 			A = A.master
+			if(!src.needs_power)
+				seton(A.lightswitch)
+				return
 			seton(A.lightswitch && A.power_light)
 
 // called when on fire
@@ -717,7 +722,7 @@
 	anchored = 1
 	density = 0
 	layer = BELOW_TABLE_LAYER
-	use_power = 2
+	use_power = POWER_USE_ACTIVE_POWER
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list

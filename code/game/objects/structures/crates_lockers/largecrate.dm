@@ -18,8 +18,8 @@
 	return
 
 /obj/structure/largecrate/proc/unpack()
-	for(var/obj/O in contents)
-		O.forceMove(loc)
+	for(var/atom/movable/A in contents)
+		A.forceMove(loc)
 	playsound(src, unpacking_sound, 35)
 	deconstruct(TRUE)
 

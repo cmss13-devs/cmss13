@@ -1,0 +1,16 @@
+@use '../base.scss';
+@use '../colors.scss';
+@use '../functions.scss' as *;
+
+.PublishedDocs {
+  border: 1px;
+
+  td {
+    border: 1px solid base.$color-fg;
+  }
+
+  span {
+    line-height: base.em(18px);
+    font-size: base.em(16px);
+  }
+}

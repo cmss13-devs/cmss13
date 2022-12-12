@@ -41,7 +41,7 @@
 	caste_type = XENO_CASTE_HIVELORD
 	name = XENO_CASTE_HIVELORD
 	desc = "A builder of really big hives."
-	icon = 'icons/mob/hostiles/hivelord.dmi'
+	icon = 'icons/mob/xenos/hivelord.dmi'
 	icon_size = 64
 	icon_state = "Hivelord Walking"
 	plasma_types = list(PLASMA_PURPLE,PLASMA_PHEROMONE)
@@ -66,5 +66,5 @@
 		)
 	mutation_type = HIVELORD_NORMAL
 
-	icon_xeno = 'icons/mob/hostiles/hivelord.dmi'
+	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'

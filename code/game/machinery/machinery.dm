@@ -8,9 +8,15 @@ Class Variables:
    use_power (num)
       current state of auto power use.
       Possible Values:
-         0 -- no auto power use
-         1 -- machine is using power at its idle power level
-         2 -- machine is using power at its active power level
+         POWER_USE_NO_POWER: 0 -- no auto power use
+         POWER_USE_IDLE_POWER: 1 -- machine is using power at its idle power level
+         POWER_USE_ACTIVE_POWER: 2 -- machine is using power at its active power level
+
+	needs_power (num)
+	  is this thing affected by an area being unpowered
+	  Possible Values:
+	     FALSE -- machine will process as if though in a powered area
+	     TRUE -- machine will function normally
 
    active_power_usage (num)
       Value for the amount of power to use when in active power mode
@@ -85,7 +91,7 @@ Class Procs:
 	name = "machinery"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	var/stat = 0
-	var/use_power = 1
+	var/use_power = POWER_USE_IDLE_POWER
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
 	var/needs_power = TRUE
@@ -185,9 +191,9 @@ Class Procs:
 
 /obj/structure/machinery/proc/calculate_current_power_usage()
 	switch(use_power)
-		if(1)
+		if(POWER_USE_IDLE_POWER)
 			return idle_power_usage
-		if(2)
+		if(POWER_USE_ACTIVE_POWER)
 			return idle_power_usage + active_power_usage
 	return 0
 
@@ -195,25 +201,26 @@ Class Procs:
 	return !inoperable(additional_flags)
 
 /obj/structure/machinery/proc/inoperable(var/additional_flags = 0)
-	if (needs_power)
-		return (stat & (NOPOWER|BROKEN|additional_flags))
-	return (stat & (BROKEN|additional_flags))
+	return (stat & (NOPOWER|BROKEN|additional_flags))
 
 /obj/structure/machinery/Topic(href, href_list)
-	..()
+	. = ..()
+	if(.)
+		return TRUE
 	if(inoperable())
 		return 1
 	if(usr.is_mob_restrained() || usr.lying || usr.stat)
 		return 1
-	if ( ! (istype(usr, /mob/living/carbon/human) || \
-			isRemoteControlling(usr) || \
-			istype(usr, /mob/living/carbon/Xenomorph)))
+	if(!is_valid_user(usr))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 1
 
 	src.add_fingerprint(usr)
 
 	return 0
+
+/obj/structure/machinery/proc/is_valid_user(mob/user)
+	return (user.IsAdvancedToolUser(user) || isRemoteControlling(user))
 
 /obj/structure/machinery/attack_remote(mob/user as mob)
 	if(isrobot(user))
@@ -229,7 +236,7 @@ Class Procs:
 		return TRUE
 	if(user.lying || user.stat)
 		return TRUE
-	if(!(istype(user, /mob/living/carbon/human) || isRemoteControlling(user) || istype(user, /mob/living/carbon/Xenomorph)))
+	if(!is_valid_user(user))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return TRUE
 /*

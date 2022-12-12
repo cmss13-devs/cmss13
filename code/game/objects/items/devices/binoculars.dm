@@ -412,6 +412,8 @@
 	var/f_spotting_time = designator.spotting_time + distance
 
 	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-spotter", dir = get_cardinal_dir(target, human))
+	I.pixel_x = -target.pixel_x + target.base_pixel_x
+	I.pixel_y = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
 	target.overlays += I
 	ADD_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 	if(human.client)

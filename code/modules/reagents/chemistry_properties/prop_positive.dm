@@ -124,7 +124,7 @@
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"
 	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
-	rarity = PROPERTY_UNCOMMON
+	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 	value = 3
 
@@ -157,7 +157,7 @@
 	name = PROPERTY_MUSCLESTIMULATING
 	code = "MST"
 	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
-	rarity = PROPERTY_UNCOMMON
+	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
@@ -196,20 +196,21 @@
 /datum/chem_property/positive/painkilling/process(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
-
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
 
 /datum/chem_property/positive/painkilling/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
-
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
-	M.hallucination = max(M.hallucination, potency) //Hallucinations and tox damage
-	M.apply_damage(0.5 *  potency * delta_time, TOX)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
+	M.hallucination = max(M.hallucination, effective_potency) //Hallucinations and tox damage
+	M.apply_damage(0.5 *  effective_potency * delta_time, TOX)
 
 /datum/chem_property/positive/painkilling/process_critical(mob/living/M, var/potency = 1)
-	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * potency, "liver")
-	M.apply_damage(potency, BRAIN)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * effective_potency, "liver")
+	M.apply_damage(effective_potency, BRAIN)
 	M.apply_damage(3, OXY)
 
 /datum/chem_property/positive/hepatopeutic
@@ -489,7 +490,7 @@
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
 	code = "EGN"
-	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrilator. Can not be ingested."
+	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator. Can not be ingested."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 	value = 1

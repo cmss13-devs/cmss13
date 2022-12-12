@@ -332,7 +332,7 @@ const SentryCamera = (_, context) => {
       </Stack.Item>
       <Stack.Item>
         <ByondUi
-          className="CameraConsole__map"
+          className="CameraBox"
           params={{
             id: data.mapRef,
             type: 'map',

@@ -56473,6 +56473,13 @@
 	name = "Shutters";
 	pixel_y = 24
 	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 15;
+	pixel_y = 33
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 33
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -63920,13 +63927,6 @@
 	},
 /area/almayer/medical/hydroponics)
 "pvt" = (
-/obj/structure/sign/safety/refridgeration{
-	pixel_y = -32
-	},
-/obj/structure/sign/safety/medical{
-	pixel_x = 15;
-	pixel_y = -32
-	},
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera";
@@ -75173,6 +75173,10 @@
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 32
 	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 8;
+	pixel_y = 32
+	},
 /turf/open/floor/almayer,
 /area/almayer/medical/upper_medical)
 "upO" = (
@@ -79845,6 +79849,10 @@
 	},
 /area/almayer/living/briefing)
 "wgd" = (
+/obj/structure/sign/safety/hazard{
+	pixel_y = -32;
+	pixel_x = 15
+	},
 /obj/structure/sign/safety/restrictedarea{
 	pixel_y = -32
 	},
@@ -81574,6 +81582,9 @@
 	icon_state = "N";
 	pixel_y = 2;
 	tag = "icon-N"
+	},
+/obj/structure/sign/safety/refridgeration{
+	pixel_x = 30
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -112432,7 +112443,7 @@ aps
 lYA
 ahq
 akU
-ajC
+wgd
 arZ
 sKa
 cnZ
@@ -113041,7 +113052,7 @@ asm
 lYA
 dtM
 akU
-wgd
+ajC
 arZ
 iyf
 wUd

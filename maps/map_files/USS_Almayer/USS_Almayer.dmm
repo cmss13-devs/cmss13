@@ -7187,8 +7187,8 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "atA" = (
 /obj/structure/disposalpipe/junction{
-	dir = 8;
-	tag = "icon-pipe-j1 (WEST)"
+	dir = 4;
+	icon_state = "pipe-j2"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
@@ -7393,7 +7393,7 @@
 "aua" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
-	name = "Morgue";
+	name = "\improper Morgue";
 	req_access_txt = "25";
 	req_one_access = null
 	},
@@ -39704,7 +39704,7 @@
 /area/almayer/engineering/engineering_workshop/hangar)
 "eDG" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "\improper Medical Bay";
+	name = "\improper Morgue";
 	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -41343,7 +41343,7 @@
 /area/almayer/hull/lower_hull/l_f_s)
 "fps" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
-	name = "Autopsy";
+	name = "\improper Autopsy";
 	req_access_txt = "25";
 	req_one_access = null
 	},
@@ -41731,13 +41731,11 @@
 /area/almayer/shipboard/port_point_defense)
 "fwp" = (
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 8
 	},
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
 "fwD" = (
@@ -43528,10 +43526,6 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "gkw" = (
-/obj/structure/machinery/light{
-	dir = 8;
-	tag = "icon-tube1 (WEST)"
-	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	tag = "icon-plant-10"
@@ -43711,6 +43705,17 @@
 "gpY" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/lifeboat_pumps/north1)
+"gqA" = (
+/obj/structure/morgue{
+	dir = 1;
+	tag = "icon-morgue1 (WEST)"
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/morgue)
 "gqK" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -58401,8 +58406,8 @@
 "mVr" = (
 /obj/structure/curtain/medical,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "\improper Medical Bay";
-	req_one_access = "20";
+	name = "\improper Morgue";
+	req_one_access = null;
 	req_access_txt = "25"
 	},
 /turf/open/floor/almayer{
@@ -110738,7 +110743,7 @@ fps
 aoe
 asB
 auI
-aor
+fwp
 gkw
 aor
 ast
@@ -111350,7 +111355,7 @@ aop
 avk
 auN
 ati
-ava
+gqA
 coa
 suT
 ftl
@@ -112568,7 +112573,7 @@ yhQ
 wZy
 auN
 ati
-ava
+gqA
 coa
 scI
 oDf
@@ -113175,7 +113180,7 @@ azD
 azD
 yhQ
 wZy
-fwp
+auN
 ati
 ava
 coa

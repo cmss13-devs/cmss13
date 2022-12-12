@@ -9,7 +9,7 @@
 
 	var/canister_color = "yellow"
 	var/can_label = 1
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 
 /obj/structure/machinery/portable_atmospherics/canister/sleeping_agent
 	name = "Canister: \[N2O\]"

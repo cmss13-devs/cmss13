@@ -7,7 +7,7 @@
 	var/datum/powernet/powernet = null
 	var/directwired = 1		// by default, power machines are connected by a cable in a neighbouring turf
 							// if set to 0, requires a 0-X cable on this turf
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	idle_power_usage = 0
 	active_power_usage = 0
 
@@ -83,11 +83,13 @@
 			if(stat & NOPOWER)
 				addToListNoDupe(processing_machines, src) // power interupted us, start processing again
 		stat &= ~NOPOWER
+		src.update_use_power(POWER_USE_IDLE_POWER)
 
 	else
 		if(machine_processing)
 			processing_machines -= src // no power, can't process.
 		stat |= NOPOWER
+		src.update_use_power(POWER_USE_NO_POWER)
 
 // the powernet datum
 // each contiguous network of cables & nodes

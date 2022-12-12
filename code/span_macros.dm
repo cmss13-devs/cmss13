@@ -59,6 +59,7 @@
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 
 #define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
+#define SPAN_BOLDWARNING(X) "<span class='boldwarning'>[X]</span>"
 #define SPAN_ALERT(X) "<span class='alert'>[X]</span>"
 
 #define SPAN_INFO(X) "<span class='info'>[X]</span>"

@@ -1,6 +1,7 @@
 #define SENTRY_FIREANGLE 	135
 #define SENTRY_RANGE 		5
 #define SENTRY_MUZZLELUM	3
+#define COMSIG_ENGAGED_ALERT "sentry-engaged-alert"
 #define SENTRY_ENGAGED_TIMEOUT 60
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"

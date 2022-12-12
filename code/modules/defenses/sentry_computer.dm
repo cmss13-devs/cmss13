@@ -13,7 +13,7 @@
 	/// All turfs within range of the currently active camera
 	var/list/range_turfs = list()
 
-/datum/camera_holder/Setup(var/mapName)
+/datum/camera_holder/proc/Setup(var/mapName)
 	map_name = mapName
 	cam_screen = new
 	cam_screen.name = "screen"
@@ -321,7 +321,8 @@
 
 	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
 	last_camera_turf = get_turf(cam_location)
-
+	current.set_range()
+	var/current_bb = current.range_bounds
 	var/list/visible_things = view(current.camera_range, cam_location)
 
 	var/list/visible_turfs = list()

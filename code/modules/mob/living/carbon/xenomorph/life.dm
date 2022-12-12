@@ -26,6 +26,7 @@
 		update_canmove()
 		update_icons()
 		handle_luminosity()
+		handle_blood()
 
 		if(behavior_delegate)
 			behavior_delegate.on_life()
@@ -139,6 +140,17 @@
 		if("recovery")
 			if(strength > recovery_new)
 				recovery_new = strength
+
+	// Also cap the auras
+	for(var/capped_aura in received_phero_caps)
+		switch(capped_aura)
+			if("frenzy")
+				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
+			if("warding")
+				warding_new = min(warding_new, received_phero_caps[capped_aura])
+			if("recovery")
+				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
+
 
 /mob/living/carbon/Xenomorph/handle_regular_status_updates(regular_update = TRUE)
 	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure

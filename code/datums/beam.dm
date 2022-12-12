@@ -88,12 +88,12 @@
 	rot_matrix.Turn(Angle)
 
 	//Translation vector for origin and target
-	var/DX = (32*target.x+target.pixel_x)-(32*origin.x+origin.pixel_x)
-	var/DY = (32*target.y+target.pixel_y)-(32*origin.y+origin.pixel_y)
+	var/DX = get_pixel_position_x(target) - get_pixel_position_x(origin)
+	var/DY = get_pixel_position_y(target) - get_pixel_position_y(origin)
 	var/N = 0
 	var/length = round(sqrt((DX)**2+(DY)**2)) //hypotenuse of the triangle formed by target and origin's displacement
 
-	for(N in 0 to length-1 step 32)//-1 as we want < not <=, but we want the speed of X in Y to Z and step X
+	for(N in 0 to length-1 step world.icon_size)//-1 as we want < not <=, but we want the speed of X in Y to Z and step X
 		if(QDELETED(src))
 			break
 		var/obj/effect/ebeam/X = new beam_type(origin_turf)
@@ -102,9 +102,9 @@
 
 		//Assign our single visual ebeam to each ebeam's vis_contents
 		//ends are cropped by a transparent box icon of length-N pixel size laid over the visuals obj
-		if(N+32>length) //went past the target, we draw a box of space to cut away from the beam sprite so the icon actually ends at the center of the target sprite
+		if(N + world.icon_size > length) //went past the target, we draw a box of space to cut away from the beam sprite so the icon actually ends at the center of the target sprite
 			var/icon/II = new(icon, icon_state)//this means we exclude the overshooting object from the visual contents which does mean those visuals don't show up for the final bit of the beam...
-			II.DrawBox(null,1,(length-N),32,32)//in the future if you want to improve this, remove the drawbox and instead use a 513 filter to cut away at the final object's icon
+			II.DrawBox(null,1,(length-N), world.icon_size, world.icon_size)//in the future if you want to improve this, remove the drawbox and instead use a 513 filter to cut away at the final object's icon
 			X.icon = II
 		else
 			X.vis_contents += visuals
@@ -116,25 +116,26 @@
 		if(DX == 0)
 			Pixel_x = 0
 		else
-			Pixel_x = round(sin(Angle)+32*sin(Angle)*(N+16)/32)
+			Pixel_x = round(sin(Angle) + world.icon_size*sin(Angle)*(N+world.icon_size/2) / world.icon_size)
 		if(DY == 0)
 			Pixel_y = 0
 		else
-			Pixel_y = round(cos(Angle)+32*cos(Angle)*(N+16)/32)
+			Pixel_y = round(cos(Angle) + world.icon_size*cos(Angle)*(N+world.icon_size/2) / world.icon_size)
 
 		//Position the effect so the beam is one continous line
 		var/a
-		if(abs(Pixel_x)>32)
-			a = Pixel_x > 0 ? round(Pixel_x/32) : CEILING(Pixel_x/32, 1)
+		if(abs(Pixel_x)>world.icon_size)
+			a = Pixel_x > 0 ? round(Pixel_x/32) : CEILING(Pixel_x/world.icon_size, 1)
 			X.x += a
-			Pixel_x %= 32
-		if(abs(Pixel_y)>32)
-			a = Pixel_y > 0 ? round(Pixel_y/32) : CEILING(Pixel_y/32, 1)
+			Pixel_x %= world.icon_size
+		if(abs(Pixel_y)>world.icon_size)
+			a = Pixel_y > 0 ? round(Pixel_y/32) : CEILING(Pixel_y/world.icon_size, 1)
 			X.y += a
-			Pixel_y %= 32
+			Pixel_y %= world.icon_size
 
-		X.pixel_x = Pixel_x + origin.pixel_x
-		X.pixel_y = Pixel_y + origin.pixel_y
+		X.pixel_x = Pixel_x + get_pixel_position_x(origin, relative = TRUE)
+		X.pixel_y = Pixel_y + get_pixel_position_y(origin, relative = TRUE)
+
 		CHECK_TICK
 
 /obj/effect/ebeam

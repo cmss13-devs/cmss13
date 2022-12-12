@@ -70,13 +70,19 @@
 	icon = 'icons/turf/walls/almayer_white.dmi'
 	icon_state = "wwall"
 
+/turf/closed/wall/almayer/white/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
 /turf/closed/wall/almayer/white/outer_tile
 	tiles_with = list(/turf/closed/wall/almayer/white,/turf/closed/wall/almayer/outer)
 
 /turf/closed/wall/almayer/white/hull
-	name = "research hull"
+	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	hull = 1
+	icon_state = "hull"
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0
@@ -91,7 +97,6 @@
 /turf/closed/wall/almayer/research/containment/wall/ex_act(severity, explosion_direction)
 	if(severity <= EXPLOSION_THRESHOLD_MEDIUM) // Wall is resistant to explosives (and also crusher charge)
 		return
-
 	. = ..()
 
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
@@ -237,6 +242,7 @@
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
+	icon = 'icons/lobby/title.dmi'
 	icon_state = ""
 //	icon_state = "title_holiday"
 	layer = FLY_LAYER
@@ -244,7 +250,6 @@
 
 /turf/closed/wall/indestructible/splashscreen/Initialize()
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/lobby_art))
 	tag = "LOBBYART"
 
 /proc/force_lobby_art(art_id)
@@ -397,9 +402,6 @@
 /turf/closed/wall/mineral/bone/is_weedable()
 	return NOT_WEEDABLE
 
-/turf/closed/wall/mineral/bone/ex_act(severity, explosion_direction, source, mob/source_mob)
-	return
-
 //Misc walls
 
 /turf/closed/wall/cult
@@ -497,9 +499,6 @@
 	desc = "An absolutely massive collection of columns made of ice. The longer you stare, the deeper the ice seems to go."
 	walltype = WALL_STRATA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
-
-/turf/closed/wall/strata_ice/ex_act(severity)
-	return
 
 /turf/closed/wall/strata_ice/dirty
 	icon_state = "strata_ice_dirty"
@@ -640,9 +639,6 @@
 	walltype = WALL_SHIVA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
 
-/turf/closed/wall/strata_ice/ex_act(severity)
-	return
-
 /turf/closed/wall/shiva/prefabricated
 	name = "prefabricated structure wall"
 	icon_state = "shiva_fab"
@@ -690,7 +686,7 @@
 /turf/closed/wall/resin
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
-	icon = 'icons/mob/hostiles/structures.dmi'
+	icon = 'icons/mob/xenos/structures.dmi'
 	icon_state = "resin"
 	walltype = WALL_RESIN
 	damage_cap = HEALTH_WALL_XENO
@@ -1240,3 +1236,9 @@
 	icon_state = "metal"//DMI specific name
 	walltype = WALL_HUNTERSHIP
 	hull = 1
+
+/turf/closed/wall/huntership/destructible
+	name = "degraded hunter wall"
+	color = "#c5beb4"
+	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
+	hull = 0

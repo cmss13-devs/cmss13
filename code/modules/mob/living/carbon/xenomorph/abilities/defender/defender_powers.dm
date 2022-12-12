@@ -215,6 +215,7 @@
 			X.anchored = TRUE
 			X.small_explosives_stun = FALSE
 			X.update_canmove()
+		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, .proc/check_directional_armor)
 		X.mob_size = MOB_SIZE_IMMOBILE //knockback immune
 		X.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
 		X.update_icons()
@@ -232,11 +233,21 @@
 			X.armor_deflection_buff -= 30
 			X.armor_explosive_buff -= 60
 			X.small_explosives_stun = TRUE
+		UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
 		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		X.mob_flags |= SQUEEZE_UNDER_VEHICLES
 		X.update_canmove()
 		X.update_icons()
 		X.fortify = FALSE
+
+/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(var/mob/living/carbon/Xenomorph/defendy, list/damagedata)
+	SIGNAL_HANDLER
+	var/projectile_direction = damagedata["direction"]
+	if(defendy.dir & REVERSE_DIR(projectile_direction))
+		if(defendy.mutation_type == DEFENDER_STEELCREST)
+			damagedata["armor"] += steelcrest_frontal_armor
+		else
+			damagedata["armor"] += frontal_armor
 
 /datum/action/xeno_action/activable/fortify/proc/death_check()
 	SIGNAL_HANDLER

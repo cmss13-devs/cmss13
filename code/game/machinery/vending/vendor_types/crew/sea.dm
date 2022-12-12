@@ -21,10 +21,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_sea, list(
 	vendor_role = list(JOB_SEA)
 	icon_state = "guns"
 
-/obj/structure/machinery/cm_vending/gear/sea/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_gear_sea
-
+/obj/structure/machinery/cm_vending/gear/sea/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_gear_sea
 
 //------------CLOTHING VENDOR---------------
 

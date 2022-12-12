@@ -19,7 +19,7 @@
 
 	var/display_name
 
-	var/list/wounds = list()
+	var/list/datum/wound/wounds = list()
 	var/number_wounds = 0 // cache the number of wounds, which is NOT wounds.len!
 
 	var/tmp/perma_injury = 0
@@ -108,20 +108,10 @@
 			L.parent = null
 		children = null
 
-	if(hidden)
-		qdel(hidden)
-		hidden = null
-
-	if(internal_organs)
-		for(var/datum/internal_organ/IO in internal_organs)
-			IO.owner = null
-			qdel(IO)
-		internal_organs = null
-
-	if(implants)
-		for(var/I in implants)
-			qdel(I)
-		implants = null
+	QDEL_NULL(hidden)
+	QDEL_NULL_LIST(internal_organs)
+	QDEL_NULL_LIST(implants)
+	QDEL_LIST_ASSOC_VAL(autopsy_data)
 
 	if(bleeding_effects_list)
 		for(var/datum/effects/bleeding/B in bleeding_effects_list)
@@ -135,6 +125,8 @@
 		owner.limbs_to_process -= src
 		owner.update_body()
 	owner = null
+
+	QDEL_NULL_LIST(wounds)
 
 	return ..()
 
@@ -467,7 +459,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(!(status & LIMB_SPLINTED_INDESTRUCTIBLE) && (status & LIMB_SPLINTED) && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
-		playsound(get_turf(loc), 'sound/items/splintbreaks.ogg')
+		playsound(get_turf(loc), 'sound/items/splintbreaks.ogg', 20)
 		to_chat(owner, SPAN_DANGER("The splint on your [display_name] comes apart!"))
 		owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 		owner.update_med_icon()

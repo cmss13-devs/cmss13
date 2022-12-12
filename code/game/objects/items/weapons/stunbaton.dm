@@ -22,17 +22,17 @@
 	user.visible_message("<span class='suicide'>[user] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide.</span>")
 	return (FIRELOSS)
 
-/obj/item/weapon/melee/baton/New()
-	..()
+/obj/item/weapon/melee/baton/Initialize(mapload, ...)
+	. = ..()
 	bcell = new/obj/item/cell/high(src) //Fuckit lets givem all the good cells
 	update_icon()
-	return
 
-/obj/item/weapon/melee/baton/loaded/New() //this one starts with a cell pre-installed.
-	..()
-	bcell = new/obj/item/cell/high(src)
-	update_icon()
-	return
+/obj/item/weapon/melee/baton/Destroy()
+	QDEL_NULL(bcell)
+	return ..()
+
+// legacy type, remove when able
+/obj/item/weapon/melee/baton/loaded
 
 /obj/item/weapon/melee/baton/proc/deductcharge(var/chrgdeductamt)
 	if(bcell)
@@ -103,7 +103,7 @@
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(bcell)
-			bcell.updateicon()
+			bcell.update_icon()
 			bcell.forceMove(get_turf(src.loc))
 			bcell = null
 			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))

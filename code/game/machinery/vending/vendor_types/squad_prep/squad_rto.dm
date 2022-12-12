@@ -61,13 +61,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 	desc = "An automated gear rack for RTOs."
 	icon_state = "intel_gear"
 	show_points = TRUE
-	use_points = TRUE
 	req_access = list(ACCESS_MARINE_RTO_PREP)
 	vendor_role = list(JOB_SQUAD_RTO)
 
-/obj/structure/machinery/cm_vending/gear/rto/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_gear_rto
+/obj/structure/machinery/cm_vending/gear/rto/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_gear_rto
 
 //------------CLOTHING VENDOR---------------
 

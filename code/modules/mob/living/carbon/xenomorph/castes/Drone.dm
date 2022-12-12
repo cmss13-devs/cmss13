@@ -40,7 +40,7 @@
 	caste_type = XENO_CASTE_DRONE
 	name = XENO_CASTE_DRONE
 	desc = "An Alien Drone"
-	icon = 'icons/mob/hostiles/drone.dmi'
+	icon = 'icons/mob/xenos/drone.dmi'
 	icon_size = 48
 	icon_state = "Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
@@ -66,5 +66,5 @@
 		)
 	mutation_type = DRONE_NORMAL
 
-	icon_xeno = 'icons/mob/hostiles/drone.dmi'
+	icon_xeno = 'icons/mob/xenos/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/drone.dmi'

@@ -22,7 +22,7 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/particle_effect/smoke/New(loc, oldamount, new_cause_data)
+/obj/effect/particle_effect/smoke/Initialize(mapload, oldamount, new_cause_data)
 	..()
 	if(oldamount)
 		amount = oldamount - 1
@@ -35,6 +35,7 @@
 	if(opacity)
 		SetOpacity(0)
 	active_smoke_effects -= src
+	cause_data = null
 
 /obj/effect/particle_effect/smoke/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

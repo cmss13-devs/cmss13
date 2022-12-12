@@ -524,6 +524,50 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 
+	var/busy_fishing = FALSE
+	var/common_weight = 60
+	var/uncommon_weight = 15
+	var/rare_weight = 5
+	var/ultra_rare_weight = 1
+
+/obj/item/weapon/melee/twohanded/yautja/spear/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+	. = ..()
+	if(proximity_flag && !busy_fishing && isturf(target))
+		var/turf/T = target
+		if(!T.supports_fishing)
+			return
+		busy_fishing = TRUE
+		user.visible_message(SPAN_NOTICE("[user] starts aiming \the [src] at the water..."), SPAN_NOTICE("You prepare to catch something in the water..."), max_distance = 3)
+		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			if(prob(60)) // fishing rods are prefered
+				busy_fishing = FALSE
+				to_chat(user, SPAN_WARNING("You fail to catch anything!"))
+				return
+			user.animation_attack_on(T)
+			var/obj/item/caught_item = get_fishing_loot(T, get_area(T), common_weight, uncommon_weight, rare_weight, ultra_rare_weight)
+			if(user.put_in_inactive_hand(caught_item))
+				user.visible_message(SPAN_NOTICE("[user] quickly stabs \the [T] and pulls out \a <b>[caught_item]</b> with their free hand!"), SPAN_NOTICE("You quickly stab \the [T] and pull out \a <b>[caught_item]</b> with your free hand!"), max_distance = 3)
+				var/image/trick = image(caught_item.icon, user, caught_item.icon_state, BIG_XENO_LAYER)
+				switch(pick(1,2))
+					if(1) animation_toss_snatch(trick)
+					if(2) animation_toss_flick(trick, pick(1,-1))
+				caught_item.invisibility = 100
+				var/list/client/displayed_for = list()
+				for(var/mob/M in viewers(user))
+					var/client/C = M.client
+					if(C)
+						C.images += trick
+						displayed_for += C
+				sleep(6) // BOO
+				for(var/client/C in displayed_for)
+					C.images -= trick
+				trick = null
+				caught_item.invisibility = 0
+			else
+				user.visible_message(SPAN_NOTICE("[user] quickly stabs \the [T] and \a <b>[caught_item]</b> drifts to the surface!"), SPAN_NOTICE("You quickly stab \the [T] and \a <b>[caught_item]</b> drifts to the surface!"), max_distance = 3)
+				caught_item.sway_jitter(3, 6)
+		busy_fishing = FALSE
+
 /obj/item/weapon/melee/twohanded/yautja/glaive
 	name = "war glaive"
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."

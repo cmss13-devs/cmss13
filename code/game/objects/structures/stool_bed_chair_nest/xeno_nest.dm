@@ -111,7 +111,7 @@
 			to_chat(user, SPAN_WARNING("[H] was nested recently. Wait a bit."))
 			return
 		if(H.stat != DEAD)
-			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") == "No")
+			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No) != "Yes")
 				return
 			if(!buckled_mob || !user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
 				return

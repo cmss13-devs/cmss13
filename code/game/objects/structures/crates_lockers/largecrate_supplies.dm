@@ -342,7 +342,7 @@
 		if(turf_blocked_check())
 			to_chat(user, SPAN_WARNING("You need a clear space[dir_needed ? " to the [dir2text(dir_needed)] of the crate" : ""] in order to unpack \the [src]."))
 			return
-		if(alert(user, "Are you sure you want to unpack \the [src] here?", "Confirmation", "Yes", "No") == "No")
+		if(alert(user, "Are you sure you want to unpack \the [src] here?", "Confirmation", "Yes", "No) != "Yes")
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), SPAN_NOTICE("You pry open \the [src]."))

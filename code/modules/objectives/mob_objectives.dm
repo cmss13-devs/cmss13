@@ -152,11 +152,11 @@
 	objective_flags = OBJECTIVE_DO_NOT_TREE
 
 
-/datum/cm_objective/move_mob/New(var/mob/living/H)
-	if(istype(H, /mob/living))
-		target = H
-		RegisterSignal(H, COMSIG_MOB_DEATH, .proc/handle_death)
-		RegisterSignal(H, COMSIG_PARENT_QDELETING, .proc/handle_corpse_deletion)
+/datum/cm_objective/move_mob/New(var/mob/living/survivor)
+	if(istype(survivor, /mob/living))
+		target = survivor
+		RegisterSignal(survivor, COMSIG_MOB_DEATH, .proc/handle_death)
+		RegisterSignal(survivor, COMSIG_PARENT_QDELETING, .proc/handle_corpse_deletion)
 	activate()
 	. = ..()
 

@@ -426,3 +426,8 @@
   - bugfix: UPP Spy and Santa presets now have the correct equipment and paygrades.
   - rscadd: Added a new proc to update fax options, rather than relying on Initialize.
   - code_imp: Removes the legacy code checking for snowflake Yautja masks.
+2022-12-12:
+  carlarctg:
+  - rscadd: Queen eye shuffles weed sprites when passing over them.
+  - bugfix: Fixed some single letter vars so the mantainer agenda can't delay this
+      PR from merging.

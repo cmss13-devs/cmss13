@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - rscadd: "Queen eye shuffles weed sprites when passing over them."
-  - bugfix: "Fixed some single letter vars so the mantainer agenda can't delay this PR from merging."

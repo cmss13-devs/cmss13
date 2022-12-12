@@ -36,6 +36,8 @@
 			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
 	else
 		. += SPAN_NOTICE(" Nothing.")
+	if(reagents)
+		. += SPAN_NOTICE("Total volume: [reagents.total_volume] / [reagents.maximum_volume].")
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)

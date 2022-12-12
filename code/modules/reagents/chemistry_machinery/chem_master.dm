@@ -27,7 +27,7 @@
 
 /obj/structure/machinery/chem_master/Initialize()
 	. = ..()
-	create_reagents(240)
+	create_reagents(300)
 	connect_smartfridge()
 
 /obj/structure/machinery/chem_master/Destroy()

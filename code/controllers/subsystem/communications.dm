@@ -240,7 +240,7 @@ SUBSYSTEM_DEF(radio)
 		"[AI_FREQ]" = "airadio",
 		"[SEC_FREQ]" = "secradio",
 		"[ENG_FREQ]" = "engradio",
-		"[SENTRY_FREQ]" = "sentryradio"
+		"[SENTRY_FREQ]" = "sentryradio",
 		"[MED_FREQ]" = "medradio",
 		"[REQ_FREQ]" = "supradio",
 		"[JTAC_FREQ]" = "jtacradio",

@@ -2819,13 +2819,13 @@
 	if(!wasfrozen)
 		target.frozen = TRUE
 	//sleeps during this proc...
-	target.throw_atom(fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
+	INVOKE_ASYNC(target, /atom/movable.proc/throw_atom, fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
 	//inmediately after the sleeps, unfreezes so they can wiggle around.
 	if(!wasfrozen)
 		target.frozen = FALSE
 
 	qdel(tail_beam)
-	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
+	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail.proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
 /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(var/mob/overlayed_mob, var/image/tail_image)
 	overlayed_mob.overlays -= tail_image

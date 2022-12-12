@@ -96,7 +96,7 @@
 
 /obj/effect/landmark/corpsespawner/wygoon
 	name = "Weyland-Yutani Corporate Security Goon"
-	equip_path = /datum/equipment_preset/corpse/wysec
+	equip_path = /datum/equipment_preset/corpse/pmc/goon
 
 
 ///CM specific jobs///

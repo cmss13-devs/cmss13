@@ -5131,7 +5131,7 @@
 /obj/item/tool/hand_labeler,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -5150,7 +5150,7 @@
 /area/almayer/engineering/engineering_workshop/hangar)
 "aor" = (
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -5903,8 +5903,7 @@
 "aqd" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "silverfull"
 	},
 /area/almayer/medical/morgue)
 "aqe" = (
@@ -6237,7 +6236,7 @@
 /obj/item/storage/box/bodybags,
 /obj/item/storage/box/bodybags,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -6702,7 +6701,7 @@
 	name = "morgue closet"
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -6781,7 +6780,7 @@
 "asB" = (
 /obj/structure/morgue/crematorium,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -7040,8 +7039,9 @@
 /area/almayer/engineering/engineering_workshop/hangar)
 "ati" = (
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	dir = 1;
+	icon_state = "silver";
+	tag = "icon-silver (NORTH)"
 	},
 /area/almayer/medical/morgue)
 "atj" = (
@@ -7386,7 +7386,7 @@
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -7698,7 +7698,7 @@
 	req_access_txt = "25"
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -7734,9 +7734,8 @@
 /area/almayer/engineering/upper_engineering)
 "auN" = (
 /turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+	icon_state = "silver";
+	tag = "icon-silver"
 	},
 /area/almayer/medical/morgue)
 "auO" = (
@@ -7865,7 +7864,7 @@
 	tag = "icon-morgue1 (WEST)"
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -7887,9 +7886,9 @@
 /area/almayer/lifeboat_pumps/north1)
 "avi" = (
 /turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHWEST)"
+	dir = 6;
+	icon_state = "silver";
+	tag = "icon-silver (WEST)"
 	},
 /area/almayer/medical/morgue)
 "avj" = (
@@ -7904,7 +7903,7 @@
 	},
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -8140,9 +8139,9 @@
 	tag = "icon-camera (EAST)"
 	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
+	dir = 8;
+	icon_state = "silver";
+	tag = "icon-silver (WEST)"
 	},
 /area/almayer/medical/morgue)
 "avU" = (
@@ -39450,8 +39449,7 @@
 	tag = "icon-pipe-c (NORTH)"
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "silverfull"
 	},
 /area/almayer/medical/morgue)
 "eyG" = (
@@ -41734,7 +41732,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -43531,7 +43529,7 @@
 	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -43712,7 +43710,7 @@
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -44920,9 +44918,9 @@
 /area/almayer/engineering/upper_engineering)
 "gQl" = (
 /turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHWEST)"
+	dir = 5;
+	icon_state = "silver";
+	tag = "icon-silver (NORTHEAST)"
 	},
 /area/almayer/medical/morgue)
 "gQF" = (
@@ -51630,6 +51628,13 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/medical/upper_medical)
+"jTk" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silver";
+	tag = "icon-silver (WEST)"
+	},
+/area/almayer/medical/morgue)
 "jTu" = (
 /obj/structure/sign/safety/nonpress_ag{
 	pixel_x = 32
@@ -56804,7 +56809,7 @@
 	pixel_y = 20
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -57641,6 +57646,11 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"mFe" = (
+/turf/open/floor/almayer{
+	icon_state = "silverfull"
+	},
+/area/almayer/medical/morgue)
 "mFu" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/view_objectives{
@@ -63581,8 +63591,7 @@
 	pixel_y = 30
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	icon_state = "silverfull"
 	},
 /area/almayer/medical/morgue)
 "pky" = (
@@ -66127,6 +66136,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_m_s)
+"qsy" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "silver";
+	tag = "icon-silver (SOUTHWEST)"
+	},
+/area/almayer/medical/morgue)
 "qsC" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/junction,
@@ -66773,6 +66789,13 @@
 	tag = "icon-orange (NORTHEAST)"
 	},
 /area/almayer/engineering/upper_engineering)
+"qIw" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "silver";
+	tag = "icon-green (EAST)"
+	},
+/area/almayer/medical/morgue)
 "qJf" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/weapon/gun/shotgun/combat,
@@ -70389,7 +70412,7 @@
 "smb" = (
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -74972,7 +74995,7 @@
 /obj/item/storage/fancy/candle_box,
 /obj/item/tool/lighter/random,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -81972,7 +81995,7 @@
 	tag = "icon-morgue1 (WEST)"
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green";
+	icon_state = "sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
@@ -110950,11 +110973,11 @@ aud
 wjz
 aoe
 pjP
-apQ
-apQ
-apQ
-apQ
-apQ
+mFe
+mFe
+mFe
+mFe
+mFe
 ati
 ava
 coa
@@ -111152,10 +111175,10 @@ apQ
 apQ
 apQ
 ejW
-apQ
-apQ
-apQ
-apQ
+mFe
+mFe
+mFe
+mFe
 eyh
 aqd
 aqd
@@ -111964,11 +111987,11 @@ aud
 aud
 aud
 mVr
-aud
+qIw
 avi
 gQl
-aud
-aud
+qIw
+qIw
 avi
 ati
 ava
@@ -112167,12 +112190,12 @@ arE
 jUG
 arE
 asi
-arE
-arE
-arE
+jTk
+jTk
+jTk
 avT
-arE
-eGs
+jTk
+qsy
 ati
 ava
 coa

@@ -176,10 +176,8 @@
 		if(!chosen)
 			return
 		item_types = list(chosen)
-		to_world("item_types - [item_types.len]")
 
 	if(!items)
-		to_world("item_types - [item_types.len]")
 		items = list()
 		for(var/obj/item/item_type as anything in item_types)
 			add_items(item_type)

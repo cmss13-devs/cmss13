@@ -118,7 +118,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_blood_optimization,
 	/client/proc/toggle_combat_cas,
 	/client/proc/toggle_lz_protection, //Mortar hitting LZ
-	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
+	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
+	/client/proc/toggle_shipside_sd
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,

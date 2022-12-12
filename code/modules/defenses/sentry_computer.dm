@@ -25,6 +25,7 @@
 	cam_background.del_on_map_removal = FALSE
 
 /datum/camera_holder/Destroy(force, ...)
+	. = ..()
 	qdel(cam_background)
 	qdel(cam_screen)
 

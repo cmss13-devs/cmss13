@@ -2,7 +2,7 @@ import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, ByondUi, Button, Flex, Icon, Input, ProgressBar, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
-import { Component } from 'inferno';
+import { TimedCallback } from './common/TimedCallback';
 
 type SelectedState = [string, string];
 type SelectionState = [string, string[]];
@@ -86,33 +86,7 @@ const getSanitisedName = (name: string) => name.substring(0, name.length - 11);
 const sanitiseArea = (name: string) =>
   name.substring(name.includes('the') ? 4 : 0).trim();
 
-const ConfigurationTitleSection = (props: { data: SentrySpec }, context) => {
-  return (
-    <Stack vertical className="TitleContainer">
-      <Stack.Item className="TitleText">
-        <span>
-          {getSanitisedName(props.data.name)}: {sanitiseArea(props.data.area)}
-        </span>
-      </Stack.Item>
-      <Stack.Item className="TitleText">
-        <Stack>
-          <Stack.Item>
-            <span>{props.data.active === 0 ? 'INACTIVE' : 'ACTIVE'}</span>
-          </Stack.Item>
-          <Stack.Item>
-            <span>REMOTE SENTRY WEAPON SYSTEM</span>
-          </Stack.Item>
-        </Stack>
-      </Stack.Item>
-    </Stack>
-  );
-};
-
-const StatusTitleSection = (props: { data: SentrySpec }, context) => {
-  const getSanitisedName = (name: string) =>
-    name.substring(0, name.length - 11);
-  const sanitiseArea = (name: string) =>
-    name.substring(name.includes('the') ? 4 : 0).trim();
+const TitleSection = (props: { data: SentrySpec }, context) => {
   return (
     <Stack vertical className="TitleContainer">
       <Stack.Item className="TitleText">
@@ -246,7 +220,6 @@ const InputGroup = (
 };
 
 const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
-  const { data, act } = useBackend<SentryData>(context);
   const [showConfig, setShowConfig] = useLocalState(context, 'showConf', true);
   return (
     <Stack vertical>
@@ -256,7 +229,7 @@ const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
             <Box width={7} />
           </Flex.Item>
           <Flex.Item>
-            <ConfigurationTitleSection data={props.data} />
+            <TitleSection data={props.data} />
           </Flex.Item>
           <Flex.Item align="center">
             <Button onClick={() => setShowConfig(false)}>Status</Button>
@@ -292,7 +265,7 @@ const SentryGunStatus = (props: { data: SentrySpec }, context) => {
             <Box width={13} />
           </Flex.Item>
           <Flex.Item>
-            <StatusTitleSection data={props.data} />
+            <TitleSection data={props.data} />
           </Flex.Item>
           <Flex.Item align="center">
             <Button onClick={() => setShowConfig(true)}>Configuration</Button>
@@ -305,38 +278,6 @@ const SentryGunStatus = (props: { data: SentrySpec }, context) => {
     </Stack>
   );
 };
-
-interface TimedCallbackProps {
-  time: number;
-  callback: () => void;
-}
-
-interface TimedCallbackState {
-  timeout?: NodeJS.Timeout;
-}
-
-class CallbackHandler extends Component<
-  TimedCallbackProps,
-  TimedCallbackState
-> {
-  timeout?: NodeJS.Timeout;
-  constructor(props: TimedCallbackProps) {
-    super(props);
-  }
-
-  componentDidMount() {
-    this.timeout = setTimeout(() => this.props.callback(), this.props.time);
-  }
-
-  componentWillUnmount() {
-    if (this.state?.timeout) {
-      clearTimeout(this.state.timeout);
-    }
-  }
-  render() {
-    return <div />;
-  }
-}
 
 const ShowSingleSentry = (props: { data: SentrySpec }, context) => {
   const [showConfig, setShowConfig] = useLocalState(context, 'showConf', true);
@@ -481,7 +422,7 @@ export const SentryGunUI = (_, context) => {
 
         {data.screen_state === 0 && (
           <div>
-            <CallbackHandler
+            <TimedCallback
               time={1.5}
               callback={() => act('screen-state', { state: 1 })}
             />

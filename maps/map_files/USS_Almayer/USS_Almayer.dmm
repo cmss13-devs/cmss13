@@ -7818,9 +7818,9 @@
 	name = "\improper Secure Storage";
 	unacidable = 1
 	},
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/up/almayer{
 	dir = 8;
-	icon_state = "pipe-c"
+	id = "almayerlink_ot_med"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -34474,9 +34474,9 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "cws" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-j2"
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -62683,10 +62683,6 @@
 	},
 /area/almayer/powered/agent)
 "oMx" = (
-/obj/structure/disposalpipe/up/almayer{
-	dir = 8;
-	id = "almayerlink_ot_med"
-	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door/window/southleft{
 	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";

@@ -745,4 +745,4 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_SHIPSIDE_SD
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) ? "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds" : "toggled SD protection off, Yautja can now big self destruct anywhere."].")
+	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD) ? "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds" : "toggled SD protection off, Yautja can now big self destruct anywhere."].")

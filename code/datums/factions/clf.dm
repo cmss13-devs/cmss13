@@ -2,12 +2,12 @@
 	name = "Colonial Liberation Front"
 	faction_tag = FACTION_CLF
 
-/datum/faction/clf/modify_hud_holder(var/image/holder, var/mob/living/carbon/human/H)
+/datum/faction/clf/modify_hud_holder(var/image/holder, var/mob/living/carbon/human/human)
 	var/hud_icon_state
-	var/obj/item/card/id/ID = H.get_idcard()
+	var/obj/item/card/id/ID = human.get_idcard()
 	var/_role
-	if(H.mind)
-		_role = H.job
+	if(human.mind)
+		_role = human.job
 	else if(ID)
 		_role = ID.rank
 	switch(_role)
@@ -24,7 +24,7 @@
 		if(JOB_CLF_COMMANDER)
 			hud_icon_state = "cellcom"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "clf_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "clf_[hud_icon_state]")
 
 /datum/faction/clf/get_antag_guns_snowflake_equipment()
 	return list(

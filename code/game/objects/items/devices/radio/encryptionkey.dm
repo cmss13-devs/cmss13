@@ -35,6 +35,12 @@
 	icon_state = "cap_key"
 	channels = list(RADIO_CHANNEL_ALMAYER = 1, RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_MP = 1, RADIO_CHANNEL_ENGI = 1, RADIO_CHANNEL_MEDSCI = 1, RADIO_CHANNEL_REQ = 1, SQUAD_MARINE_1 = 1, SQUAD_MARINE_2 = 1, SQUAD_MARINE_3 = 1, SQUAD_MARINE_4 = 1, SQUAD_MARINE_5 = 1, SQUAD_MARINE_CRYO = 0, RADIO_CHANNEL_JTAC = 1, RADIO_CHANNEL_INTEL = 1)
 
+/obj/item/device/encryptionkey/sentry_laptop
+	name = "Sentry Network Status Encryption Key"
+	desc = "Automated channel to broadcast sentry gun updates"
+	icon_state = "eng_key"
+	channels = list(RADIO_CHANNEL_SENTY = 1)
+
 /obj/item/device/encryptionkey/engi
 	name = "Engineering Radio Encryption Key"
 	icon_state = "eng_key"

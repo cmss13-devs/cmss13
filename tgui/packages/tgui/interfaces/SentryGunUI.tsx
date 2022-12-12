@@ -380,13 +380,25 @@ const ShowAllSentry = (props: { data: SentrySpec[] }, context) => {
 const SentryCamera = (_, context) => {
   const { data, act } = useBackend<SentryData>(context);
   return (
-    <ByondUi
-      className="CameraConsole__map"
-      params={{
-        id: data.mapRef,
-        type: 'map',
-      }}
-    />
+    <Stack vertical>
+      <Stack.Item>
+        <Flex>
+          <Flex.Item>Name: Area</Flex.Item>
+          <Flex.Item>
+            <Button onClick={() => act('clear-camera', {})}>Close</Button>
+          </Flex.Item>
+        </Flex>
+      </Stack.Item>
+      <Stack.Item>
+        <ByondUi
+          className="CameraConsole__map"
+          params={{
+            id: data.mapRef,
+            type: 'map',
+          }}
+        />
+      </Stack.Item>
+    </Stack>
   );
 };
 
@@ -477,7 +489,7 @@ export const SentryGunUI = (_, context) => {
             <div className="BottomPanelSlide" />
           </div>
         )}
-        {data.camera_target === undefined && (
+        {data.camera_target === null && (
           <>
             {!validSelection && <EmptyDisplay />}
             {validSelection && (
@@ -492,7 +504,7 @@ export const SentryGunUI = (_, context) => {
             )}
           </>
         )}
-        {data.camera_target !== undefined && <SentryCamera />}
+        {data.camera_target !== null && <SentryCamera />}
       </Window.Content>
     </Window>
   );

@@ -1,4 +1,32 @@
 #define DEFAULT_MAP_SIZE 15
+#define COMSIG_ENGAGED_ALERT "signal_sentry_engaged"
+// can we refactor out the camera information to a datum? It would be really cool.
+/datum/camera_holder
+	// Stuff needed to render the map
+	var/map_name
+	var/atom/movable/screen/map_view/cam_screen
+	var/atom/movable/screen/background/cam_background
+
+	/// The turf where the camera was last updated.
+	var/turf/last_camera_turf
+
+	/// All turfs within range of the currently active camera
+	var/list/range_turfs = list()
+
+/datum/camera_holder/Setup(var/mapName)
+	map_name = mapName
+	cam_screen = new
+	cam_screen.name = "screen"
+	cam_screen.assigned_map = map_name
+	cam_screen.del_on_map_removal = FALSE
+	cam_screen.screen_loc = "[map_name]:1,1"
+	cam_background = new
+	cam_background.assigned_map = map_name
+	cam_background.del_on_map_removal = FALSE
+
+/datum/camera_holder/Destroy(force, ...)
+	qdel(cam_background)
+	qdel(cam_screen)
 
 /obj/item/device/sentry_computer
 	name = "Sentry Computer"
@@ -56,7 +84,7 @@
 		setup = TRUE
 		usr.drop_inv_item_to_loc(src, target.loc)
 	else
-		to_chat(usr, "You fail to setup the laptop")
+		to_chat(usr, SPAN_WARNING("You fail to setup the laptop"))
 
 /obj/item/device/sentry_computer/MouseDrop(atom/dropping, mob/user)
 	setup = FALSE
@@ -65,6 +93,25 @@
 	icon_state = "sentrycomp_cl"
 	STOP_PROCESSING(SSobj, src)
 	usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
+
+/obj/item/device/sentry_computer/proc/handle_engaged(var/obj/structure/machinery/defenses/sentry/sentrygun)
+	var/displayname = sentrygun.name
+	if(length(sentrygun.nickname) > 0)
+		displayname = sentrygun.nickname
+	var/areaname = get_area(sentrygun)
+	post_signal("[displayname]:[areaname] Engaged")
+
+/obj/item/device/sentry_computer/proc/post_signal(var/command)
+	var/datum/radio_frequency/frequency = SSradio.return_frequency(SENTRY_FREQ)
+
+	if(!frequency) return
+
+	var/datum/signal/status_signal = new
+	status_signal.source = src
+	status_signal.transmission_method = 1
+	status_signal.data["sentrylaptop"] = command
+
+	frequency.post_signal(src, status_signal)
 
 /obj/item/device/sentry_computer/attack_hand(mob/user)
 	if(setup)
@@ -96,7 +143,7 @@
 /obj/item/device/sentry_computer/attackby(var/obj/item/object, mob/user)
 	if(istype(object, /obj/item/cell))
 		var/obj/item/cell/new_cell = object
-		to_chat(user, "The new cell contains: [new_cell.charge] power.")
+		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.charge] power."))
 		cell.forceMove(get_turf(user))
 		cell = new_cell
 		user.drop_inv_item_to_loc(new_cell, src)
@@ -104,12 +151,14 @@
 	else if(istype(object, /obj/item/device/multitool))
 		var/obj/item/device/multitool/tool = object
 		var/id = tool.serial_number
-		if(tool.remove_encryption_key(serial_number))
-			to_chat(user, "You unload the encryption key to the multitool.")
-		else
-			to_chat(user, "You load an encryption key to the multitool.")
-			registered_tools += list(id)
-			tool.load_encryption_key(serial_number, src)
+		playsound(src, get_sfx("terminal_type"), 25, FALSE)
+		if (do_after(usr, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+			if(tool.remove_encryption_key(serial_number))
+				to_chat(user, SPAN_NOTICE("You unload the encryption key to the multitool."))
+			else
+				to_chat(user, SPAN_NOTICE("You load an encryption key to the multitool."))
+				registered_tools += list(id)
+				tool.load_encryption_key(serial_number, src)
 	else
 		..()
 
@@ -177,11 +226,16 @@
 		.["electrical"]["max_charge"] = cell.maxcharge
 	// if screen animation has played
 	.["screen_state"] = screen_state
-	.["camera_target"] = current
+	.["camera_target"] = null
+
+	var/index = 1
 
 	for(var/sentry in paired_sentry)
 		var/list/sentry_holder = list()
 		var/obj/structure/machinery/defenses/sentry/sentrygun = sentry
+		if(current == sentrygun)
+			.["camera_target"] = index
+		index += 1
 		sentry_holder["rounds"] = sentrygun.ammo.current_rounds
 		sentry_holder["area"] = get_area(sentrygun)
 		sentry_holder["active"] = sentrygun.turned_on
@@ -220,6 +274,12 @@
 			switch(action)
 				if("set-camera")
 					current = paired_sentry[sentry_index]
+					if(current.placed)
+						playsound(src, get_sfx("terminal_type"), 25, FALSE)
+						update_active_camera()
+						return TRUE
+				if("clear-camera")
+					current = null
 					playsound(src, get_sfx("terminal_type"), 25, FALSE)
 					update_active_camera()
 					return TRUE

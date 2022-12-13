@@ -27,7 +27,8 @@
 		SYNTH_GEN_ONE,
 		SYNTH_GEN_TWO,
 		SYNTH_GEN_THREE,
-		SYNTH_INFILTRATOR
+		SYNTH_INFILTRATOR,
+		SYNTH_WORKING_JOE
 		)
 
 /datum/surgery/head_reattach/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)

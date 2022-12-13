@@ -7,7 +7,7 @@
 	anchored = 1
 	unacidable = 1
 	unslashable = 1
-	use_power = 0
+	use_power = USE_POWER_NONE
 	health = 0
 
 /obj/structure/machinery/weather_siren/Initialize()

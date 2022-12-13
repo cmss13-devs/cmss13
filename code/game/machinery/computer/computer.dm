@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	density = FALSE
 	anchored = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	layer = BELOW_OBJ_LAYER
 	idle_power_usage = 300
 	active_power_usage = 300

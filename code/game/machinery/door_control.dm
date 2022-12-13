@@ -34,7 +34,7 @@
 	*/
 
 	anchored = 1.0
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 2
 	active_power_usage = 4
 

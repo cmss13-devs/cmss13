@@ -459,7 +459,7 @@
 	icon_state = "xeno_telegraph_green"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook
-	icon_state = "xeno_telegraph_abduct_hook"
+	icon_state = "xeno_telegraph_abduct_hook_anim"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/lash
 	icon_state = "xeno_telegraph_lash"

@@ -17,7 +17,6 @@
 	//1 = select event
 	//2 = authenticate
 	anchored = 1.0
-	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON

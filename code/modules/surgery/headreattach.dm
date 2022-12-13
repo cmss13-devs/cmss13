@@ -23,6 +23,8 @@
 	var/no_revive = FALSE
 	var/list/species_allowed = list(
 		SYNTH_COLONY,
+		SYNTH_COLONY_GEN_ONE,
+		SYNTH_COLONY_GEN_TWO,
 		SYNTH_COMBAT,
 		SYNTH_GEN_ONE,
 		SYNTH_GEN_TWO,

@@ -17,6 +17,7 @@
 		/datum/action/xeno_action/onclick/change_fruit
 	)
 	keystone = TRUE
+	behavior_delegate_type = /datum/behavior_delegate/drone_gardener
 
 /datum/xeno_mutator/gardener/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
@@ -29,6 +30,7 @@
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	drone.max_placeable = 6
 	mutator_update_actions(drone)
+	apply_behavior_holder(drone)
 	// Also change the primacy value for our place construction ability (because we want it in the same place but have another primacy ability)
 	for(var/datum/action/xeno_action/action in drone.actions)
 		if(istype(action, /datum/action/xeno_action/activable/place_construction))
@@ -115,6 +117,7 @@
 		var/number_of_fruit = length(xeno.current_fruits)
 		button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
 		update_button_icon()
+		xeno.update_icons()
 
 	apply_cooldown()
 	..()
@@ -358,3 +361,44 @@
 	set hidden = 1
 	var/action_name = "Plant Hardy Weeds (125)"
 	handle_xeno_macro(src, action_name)
+
+/datum/behavior_delegate/drone_gardener
+	name = "Gardener Drone Behavior Delegate"
+
+	var/fruit_on_cooldown = FALSE
+	var/mutable_appearance/fruit_sac_overlay_icon
+
+/datum/behavior_delegate/drone_gardener/add_to_xeno()
+	on_update_icons()
+
+/datum/behavior_delegate/drone_gardener/on_update_icons()
+	if(!fruit_sac_overlay_icon)
+		fruit_sac_overlay_icon = mutable_appearance('icons/mob/xenos/drone_strain_overlays.dmi',"Gardener Drone Walking")
+
+	bound_xeno.overlays -= fruit_sac_overlay_icon
+	fruit_sac_overlay_icon.overlays.Cut()
+
+	//var/image/image_to_add
+	if(bound_xeno.stat == DEAD)
+		fruit_sac_overlay_icon.icon_state = "Gardener Drone Knocked Down[fruit_on_cooldown ? "_spent" : ""]"
+	else if(bound_xeno.lying)
+		if((bound_xeno.resting || bound_xeno.sleeping) && (!bound_xeno.knocked_down && !bound_xeno.knocked_out && bound_xeno.health > 0))
+			fruit_sac_overlay_icon.icon_state = "Gardener Drone Sleeping[fruit_on_cooldown ? "_spent" : ""]"
+		else
+			fruit_sac_overlay_icon.icon_state = "Gardener Drone Knocked Down[fruit_on_cooldown ? "_spent" : ""]"
+	else
+		fruit_sac_overlay_icon.icon_state = "Gardener Drone Walking[fruit_on_cooldown ? "_spent" : ""]"
+
+	var/fruit_sac_color = initial(bound_xeno.selected_fruit.glow_color)
+
+/*¨
+Swapping to greater fruit changes the color to #17991B
+Swapping to spore fruit changes the color to #994617
+Swapping to unstable fruit changes the color to #179973
+Swapping to speed fruit changes the color to #5B248C
+Swapping to plasma fruit changes the color to #287A90
+*/
+
+	fruit_sac_overlay_icon.color = fruit_sac_color
+	//fruit_sac_overlay_icon.overlays += image_to_add
+	bound_xeno.overlays += fruit_sac_overlay_icon

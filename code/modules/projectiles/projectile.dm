@@ -551,7 +551,7 @@
 		if(distance_travelled <= ammo.accurate_range_min) // If bullet stays within max accurate range + random variance
 			effective_accuracy -= (ammo.accurate_range_min - distance_travelled) * 10 // Snipers have accuracy falloff at closer range before point blank
 	else
-		effective_accuracy -= (ammo_flags & AMMO_SNIPER) ? (distance_travelled * 1.5) : (distance_travelled * 10) // Snipers have a smaller falloff constant due to longer max range
+		effective_accuracy -= (distance_travelled - ammo.accurate_range) * ((ammo_flags & AMMO_SNIPER) ? 1.5 : 10) // Snipers have a smaller falloff constant due to longer max range
 
 	effective_accuracy = max(5, effective_accuracy) //default hit chance is at least 5%.
 

@@ -737,7 +737,7 @@
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "soil"
 	density = 0
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 	draw_warnings = 0
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/O as obj, var/mob/user as mob)

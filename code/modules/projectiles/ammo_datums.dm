@@ -432,9 +432,14 @@
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact
 	name = ".50 high-impact pistol bullet"
-	penetration = ARMOR_PENETRATION_TIER_2
-	debilitate = list(0,2,0,0,0,1,0,0)
+	penetration = ARMOR_PENETRATION_TIER_1
+	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/pistol/heavy/super/highimpact/ap
+	name = ".50 high-impact armor piercing pistol bullet"
+	penetration = ARMOR_PENETRATION_TIER_10
+	damage = 45
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/New()
 	..()
@@ -723,7 +728,6 @@
 
 /datum/ammo/bullet/revolver/mateba
 	name = ".454 heavy revolver bullet"
-	debilitate = list(0,2,0,0,0,1,0,0)
 
 	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
@@ -733,13 +737,17 @@
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
-	penetration = ARMOR_PENETRATION_TIER_2
+	penetration = ARMOR_PENETRATION_TIER_1
 	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/revolver/mateba/highimpact/ap
+	name = ".454 heavy high-impact armor piercing revolver bullet"
+	penetration = ARMOR_PENETRATION_TIER_10
+	damage = 45
 
 /datum/ammo/bullet/revolver/mateba/highimpact/New()
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
-
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)

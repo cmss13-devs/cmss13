@@ -8,7 +8,7 @@
 	wrenchable = TRUE
 	var/broken = 0
 	var/processing = 0
-	use_power = 1
+	use_power = POWER_USE_IDLE_POWER
 	idle_power_usage = 5
 	active_power_usage = 50
 

@@ -123,7 +123,7 @@
 	on = 1
 	in_use = 1
 	luminosity = 6
-	use_power = 0
+	use_power = POWER_USE_NO_POWER
 
 	attack_hand()
 		return

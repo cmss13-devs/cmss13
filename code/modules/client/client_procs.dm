@@ -49,8 +49,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
 	/client/proc/toggle_middle_mouse_swap_hands,
-	/client/proc/switch_item_animations,
-	/client/proc/receive_random_tip
+	/client/proc/receive_random_tip,
+	/client/proc/toggle_vend_item_to_hand,
+	/client/proc/switch_item_animations
 ))
 
 /client/Topic(href, href_list, hsrc)

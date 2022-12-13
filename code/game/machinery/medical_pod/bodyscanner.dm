@@ -1,28 +1,30 @@
 // Pretty much everything here is stolen from the dna scanner FYI
 
 
-/obj/structure/machinery/bodyscanner
+/obj/structure/machinery/medical_pod/bodyscanner
 	name = "body scanner"
-	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
-	icon_state = "body_scanner_0"
-	density = 1
-	anchored = 1
+	icon_state = "body_scanner"
 
-	use_power = 1
+
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 60
 	active_power_usage = 10000	//10 kW. It's a big all-body scanner.
-	var/mob/living/carbon/occupant
-	var/locked
+
+	push_in_timer = null
+
 	var/obj/structure/machinery/body_scanconsole/connected
 
 
-/obj/structure/machinery/bodyscanner/Initialize()
+/obj/structure/machinery/medical_pod/bodyscanner/Initialize()
 	. = ..()
 	connect_body_scanconsole()
 	flags_atom |= USES_HEARING
 
+/obj/structure/machinery/medical_pod/bodyscanner/go_in(mob/M, mob/putter)
+	. = ..()
+	playsound(src, 'sound/machines/scanning_pod1.ogg')
 
-/obj/structure/machinery/bodyscanner/proc/connect_body_scanconsole()
+/obj/structure/machinery/medical_pod/bodyscanner/proc/connect_body_scanconsole()
 	if(connected)
 		return
 	if(dir == EAST || dir == SOUTH)
@@ -32,7 +34,7 @@
 	if(connected)
 		connected.connected = src
 
-/obj/structure/machinery/bodyscanner/Destroy()
+/obj/structure/machinery/medical_pod/bodyscanner/Destroy()
 	if(occupant)
 		go_out()
 	if(connected)
@@ -40,116 +42,12 @@
 		QDEL_NULL(connected)
 	. = ..()
 
-/obj/structure/machinery/bodyscanner/relaymove(mob/user)
+/obj/structure/machinery/medical_pod/bodyscanner/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE))
 		return
 	go_out()
 
-
-/obj/structure/machinery/bodyscanner/verb/eject()
-	set src in oview(1)
-	set category = "Object"
-	set name = "Eject Body Scanner"
-
-	if (usr.stat != 0)
-		return
-	src.go_out()
-	add_fingerprint(usr)
-	return
-
-/obj/structure/machinery/bodyscanner/verb/move_inside()
-	set src in oview(1)
-	set category = "Object"
-	set name = "Enter Body Scanner"
-
-	if (usr.stat || !(ishuman(usr)))
-		return
-	if (src.occupant)
-		to_chat(usr, SPAN_BOLDNOTICE("The scanner is already occupied!"))
-		return
-	if (usr.abiotic())
-		to_chat(usr, SPAN_BOLDNOTICE("Subject cannot have abiotic items on."))
-		return
-	go_in_bodyscanner(usr)
-	add_fingerprint(usr)
-
-
-/obj/structure/machinery/bodyscanner/proc/go_in_bodyscanner(mob/M)
-	if(isXeno(M))
-		return
-	if(do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		if(occupant)
-			to_chat(usr, SPAN_BOLDNOTICE("The scanner is already occupied!"))
-			return
-		to_chat(usr, SPAN_NOTICE("You move [M.name] inside \the [src]."))
-		M.forceMove(src)
-		occupant = M
-		update_use_power(2)
-		icon_state = "body_scanner_1"
-		//prevents occupant's belonging from landing inside the machine
-		for(var/obj/O in src)
-			O.forceMove(loc)
-		playsound(src, 'sound/machines/scanning_pod1.ogg')
-
-/obj/structure/machinery/bodyscanner/proc/go_out()
-	if ((!( src.occupant ) || src.locked))
-		return
-	for(var/obj/O in src)
-		O.forceMove(loc)
-		//Foreach goto(30)
-	occupant.forceMove(loc)
-	occupant = null
-	update_use_power(1)
-	icon_state = "body_scanner_0"
-	playsound(src, 'sound/machines/hydraulics_3.ogg')
-
-
-/obj/structure/machinery/bodyscanner/attack_hand(mob/living/user)
-	go_out()
-
-//clickdrag code - "resist to get out" code is in living_verbs.dm
-/obj/structure/machinery/bodyscanner/MouseDrop_T(mob/target, mob/user)
-	. = ..()
-	var/mob/living/H = user
-	if(!istype(H) || target != user) //cant make others get in. grab-click for this
-		return
-
-	go_in_bodyscanner(target)
-
-/obj/structure/machinery/bodyscanner/attackby(obj/item/I, mob/living/user)
-	var/mob/M
-	if (istype(I, /obj/item/grab))
-		if (occupant)
-			to_chat(user, SPAN_WARNING("The scanner is already occupied!"))
-			return
-		var/obj/item/grab/G = I
-		if(istype(G.grabbed_thing,/obj/structure/closet/bodybag/cryobag))
-			var/obj/structure/closet/bodybag/cryobag/C = G.grabbed_thing
-			if(!C.stasis_mob)
-				to_chat(user, SPAN_WARNING("The stasis bag is empty!"))
-				return
-			M = C.stasis_mob
-			C.open()
-			user.start_pulling(M)
-		else if(ismob(G.grabbed_thing))
-			M = G.grabbed_thing
-		else
-			return
-	else
-		return
-	if (M.abiotic())
-		to_chat(user, SPAN_WARNING("Subject cannot have abiotic items on."))
-		return
-	if (isXeno(M))
-		to_chat(user, SPAN_WARNING("An unsupported lifeform was detected, aborting!"))
-		return
-
-	go_in_bodyscanner(M)
-	add_fingerprint(user)
-	//G = null
-
-
-/obj/structure/machinery/bodyscanner/ex_act(var/severity, var/datum/cause_data/cause_data)
+/obj/structure/machinery/medical_pod/bodyscanner/ex_act(var/severity, var/datum/cause_data/cause_data)
 	for(var/atom/movable/A as mob|obj in src)
 		A.forceMove(loc)
 		A.ex_act(severity, , cause_data)
@@ -170,7 +68,7 @@
 
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant
-/obj/structure/machinery/bodyscanner/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+/obj/structure/machinery/medical_pod/bodyscanner/hear_talk(mob/living/sourcemob, message, verb, language, italics)
 	if(!QDELETED(occupant) && istype(occupant) && occupant.stat != DEAD)
 		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics)
 	else
@@ -184,7 +82,8 @@
 	density = 0
 	anchored = TRUE
 	dir = SOUTH
-	var/obj/structure/machinery/bodyscanner/connected
+	unslashable = TRUE
+	var/obj/structure/machinery/medical_pod/bodyscanner/connected
 	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 	var/delete
 	var/temphtml
@@ -199,9 +98,9 @@
 	if(connected)
 		return
 	if(dir == EAST || dir == SOUTH)
-		connected = locate(/obj/structure/machinery/bodyscanner,get_step(src, WEST))
+		connected = locate(/obj/structure/machinery/medical_pod/bodyscanner,get_step(src, WEST))
 	if(dir == WEST || dir == NORTH)
-		connected = locate(/obj/structure/machinery/bodyscanner,get_step(src, EAST))
+		connected = locate(/obj/structure/machinery/medical_pod/bodyscanner,get_step(src, EAST))
 	if(connected)
 		connected.connected = src
 
@@ -296,7 +195,7 @@
 
 	return
 
-/obj/structure/machinery/bodyscanner/proc/get_occupant_data()
+/obj/structure/machinery/medical_pod/bodyscanner/proc/get_occupant_data()
 	if (!occupant || !istype(occupant, /mob/living/carbon/human))
 		return
 	var/mob/living/carbon/human/H = occupant

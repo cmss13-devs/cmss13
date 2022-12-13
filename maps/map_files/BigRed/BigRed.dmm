@@ -8063,7 +8063,7 @@
 	},
 /area/bigredv2/outside/medical)
 "auQ" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteblue";
@@ -8639,7 +8639,7 @@
 	},
 /area/bigredv2/outside/medical)
 "awk" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -9132,7 +9132,7 @@
 	},
 /area/bigredv2/outside/medical)
 "axC" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue"
@@ -10207,7 +10207,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aAt" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -12982,7 +12982,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aHr" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 10;
@@ -33671,6 +33671,10 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves/mining)
+"jYF" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "jYS" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/miner,
@@ -53819,7 +53823,7 @@ bmi
 bmi
 bpe
 axX
-bmi
+jYF
 bmi
 bmi
 bmg

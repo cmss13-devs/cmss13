@@ -46,6 +46,7 @@
 	var/state = 0
 	var/screen_state = 0
 	var/list/registered_tools = list()
+	var/list/faction_group
 
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
@@ -73,6 +74,8 @@
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
+
+	faction_group = FACTION_LIST_MARINE
 
 /obj/item/device/sentry_computer/Destroy()
 	. = ..()
@@ -245,6 +248,7 @@
 		sentry_holder["camera_available"] = sentrygun.has_camera && sentrygun.placed
 		sentry_holder["selection_state"] = list()
 		sentry_holder["iff_status"] = sentrygun.faction_group
+		sentry_holder["kills"] = sentrygun.kills
 		for(var/i in sentrygun.selected_categories)
 			sentry_holder["selection_state"] += list(list("[i]", sentrygun.selected_categories[i]))
 		.["sentry"] += list(sentry_holder)
@@ -302,7 +306,7 @@
 
 /obj/item/device/sentry_computer/proc/update_active_camera()
 	// Show static if can't use the camera
-	if(!(current?.has_camera || current?.placed))
+	if(current == null || !(current?.has_camera) || !(current?.placed))
 		show_camera_static()
 		return
 

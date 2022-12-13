@@ -122,8 +122,8 @@
 	original_state = "balaclava_gray"
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask
-	name = "tactical bandana"
-	desc = "A tactical bandana used by soldiers to conceal their face."
+	name = "tactical wrap"
+	desc = "A tactical wrap used by soldiers to conceal their face."
 	icon_state = "scarf_gray"
 	item_state = "scarf_gray"
 	original_state = "scarf_gray"
@@ -146,6 +146,11 @@
 	icon_state = "scarf_tan"
 	item_state = "scarf_tan"
 	original_state = "scarf_tan"
+
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
+	icon_state = "scarf_black"
+	item_state = "scarf_black"
+	original_state = "scarf_black"
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
 	icon_state = "scarf_%SQUAD%"

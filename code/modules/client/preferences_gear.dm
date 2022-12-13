@@ -257,32 +257,38 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/tacticalmask
-	display_name = "Shemagh (Gray)"
+	display_name = "Face Wrap (Gray)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmasktan
-	display_name = "Shemagh (Tan)"
+	display_name = "Face Wrap (Tan)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
 	slot = WEAR_FACE
 	cost = 2
 
-/datum/gear/tacticalmaskgreen
-	display_name = "Shemagh (Red)"
+/datum/gear/tacticalmaskred
+	display_name = "Face Wrap (Red)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	slot = WEAR_FACE
 	cost = 2
 
-/datum/gear/tacticalmaskblack
-	display_name = "Shemagh (Green)"
+/datum/gear/tacticalmaskgreeen
+	display_name = "Face Wrap (Green)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmasksquad
-	display_name = "Shemagh (Squad)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
+	display_name = "Face Wrap (Squad)"
+	path =/obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
+	slot = WEAR_FACE
+	cost = 2
+
+datum/gear/tacticalmaskblack
+	display_name = "Face Wrap (Black)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
 	slot = WEAR_FACE
 	cost = 2
 //

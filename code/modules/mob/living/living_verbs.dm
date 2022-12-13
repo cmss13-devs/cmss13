@@ -64,14 +64,14 @@
 		BB.eject()
 
 	//getting out of bodyscanner
-	if(loc && (istype(loc, /obj/structure/machinery/bodyscanner)))
-		var/obj/structure/machinery/bodyscanner/BB = loc
+	if(loc && (istype(loc, /obj/structure/machinery/medical_pod/bodyscanner)))
+		var/obj/structure/machinery/medical_pod/bodyscanner/BB = loc
 		BB.go_out() //This doesn't need flashiness as you can just WASD to walk out anyways
 
 	//getting out of autodoc, resist does the emergency eject
 	//regular ejection is done with verbs and doesnt work for half the time
-	if(loc && (istype(loc, /obj/structure/machinery/autodoc)))
-		var/obj/structure/machinery/autodoc/BB = loc
+	if(loc && (istype(loc, /obj/structure/machinery/medical_pod/autodoc)))
+		var/obj/structure/machinery/medical_pod/autodoc/BB = loc
 		if (alert(usr, "Would you like to emergency eject out of [BB]? A surgery may be in progress.", "Confirm", "Yes", "No") == "Yes")
 			visible_message(SPAN_WARNING ("[BB]'s emergency lights blare as the casket starts moving!"))
 			to_chat(usr, SPAN_NOTICE ("You are now leaving [BB]"))
@@ -87,8 +87,8 @@
 		BB.move_eject() //Ejection process listed under the machine, no need to list again
 
 	//getting out of sleeper
-	if(loc && (istype(loc, /obj/structure/machinery/sleeper)))
-		var/obj/structure/machinery/sleeper/BB = loc
+	if(loc && (istype(loc, /obj/structure/machinery/medical_pod/sleeper)))
+		var/obj/structure/machinery/medical_pod/sleeper/BB = loc
 		BB.go_out() //This doesn't need flashiness as the verb is instant as well
 
 	//Breaking out of a locker?

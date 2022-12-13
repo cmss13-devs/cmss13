@@ -20,7 +20,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bk" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	icon_state = "whitebluefull";
 	tag = "icon-whitebluefull"
@@ -62,7 +62,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "ih" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;

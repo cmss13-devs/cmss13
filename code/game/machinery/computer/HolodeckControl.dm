@@ -192,7 +192,7 @@
 	var/eventstarted = 0
 
 	anchored = 1.0
-	use_power = POWER_USE_IDLE_POWER
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON

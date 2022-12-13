@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/doors/railing.dmi'
 	icon_state = "railing0"
 	climbable = TRUE
-	use_power = POWER_USE_NO_POWER
+	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER
 	opacity = 0
 	unslashable = TRUE

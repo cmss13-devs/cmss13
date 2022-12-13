@@ -160,19 +160,12 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		icon_state = "cryo_rear"
 
 
-
-
-
-
-
-
-
 //Cryopods themselves.
 /obj/structure/machinery/cryopod
 	name = "hypersleep chamber"
 	desc = "A large automated capsule with LED displays intended to put anyone inside into 'hypersleep', a form of non-cryogenic statis used on most ships, linked to a long-term hypersleep bay on a lower level."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
-	icon_state = "body_scanner_0"
+	icon_state = "body_scanner_open"
 	density = 1
 	anchored = 1
 
@@ -366,7 +359,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			GLOB.data_core.general -= G
 			qdel(G)
 
-	icon_state = "body_scanner_0"
+	icon_state = "body_scanner_open"
 
 	if(occupant.key)
 		occupant.ghostize(0)
@@ -506,7 +499,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return
 	M.forceMove(src)
 	occupant = M
-	icon_state = "body_scanner_1"
+	icon_state = "body_scanner_closed"
 	time_entered = world.time
 	start_processing()
 
@@ -526,7 +519,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	occupant.forceMove(get_turf(src))
 	occupant = null
 	stop_processing()
-	icon_state = "body_scanner_0"
+	icon_state = "body_scanner_open"
 	playsound(src, 'sound/machines/pod_open.ogg', 30)
 
 #ifdef OBJECTS_PROXY_SPEECH

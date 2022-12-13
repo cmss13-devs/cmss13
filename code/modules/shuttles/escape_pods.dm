@@ -360,7 +360,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 			occupant.forceMove(get_turf(src))
 			occupant.in_stasis = FALSE
 			occupant = null
-			icon_state = orient_right ? "body_scanner_0-r" : "body_scanner_0"
+			icon_state = orient_right ? "body_scanner_open-r" : "body_scanner_open"
 
 	move_inside()
 		set name = "Enter Pod"
@@ -416,7 +416,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	occupant = M
 	occupant.in_stasis = STASIS_IN_CRYO_CELL
 	add_fingerprint(M)
-	icon_state = orient_right ? "body_scanner_1-r" : "body_scanner_1"
+	icon_state = orient_right ? "body_scanner_closed-r" : "body_scanner_closed"
 
 
 /obj/structure/machinery/door/airlock/evacuation

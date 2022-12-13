@@ -36550,8 +36550,8 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "dls" = (
-/obj/structure/sign/safety/medical{
-	pixel_x = -17
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -55265,8 +55265,8 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
+/obj/structure/machinery/atm{
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -79116,6 +79116,9 @@
 /area/almayer/command/cic)
 "vOd" = (
 /obj/structure/machinery/optable,
+/obj/structure/sign/safety/medical{
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"

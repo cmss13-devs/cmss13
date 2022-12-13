@@ -167,10 +167,13 @@ const EmptyDisplay = (_, context) => {
     <Box className="EmptyDisplay">
       <Stack vertical>
         <Stack.Item>
-          <span>No sentry detected</span>
+          <span>No sentry detected.</span>
         </Stack.Item>
         <Stack.Item>
-          <span>Connect the computer to a sentry gun to continue.</span>
+          <span>
+            Connect the multitool with the laptop to load the encryption keys.
+            Then connect the multitool to a sentry gun to continue.
+          </span>
         </Stack.Item>
       </Stack>
     </Box>
@@ -323,7 +326,7 @@ const SentryCamera = (_, context) => {
   return (
     <Stack vertical>
       <Stack.Item>
-        <Flex>
+        <Flex justify="space-between">
           <Flex.Item>Name: Area</Flex.Item>
           <Flex.Item>
             <Button onClick={() => act('clear-camera', {})}>Close</Button>

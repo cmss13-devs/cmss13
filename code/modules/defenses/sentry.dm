@@ -39,7 +39,7 @@
 	var/list/choice_categories = list(
 		"SYSTEM MODE" = list("AUTO-REMOTE", "MAN_OVERRIDE", "SEMI-AUTO"),
 		"WEAPON STATUS" = list("SAFE", "ARMED"),
-		"IFF STATUS" = list("SEARCH", "TEST", "ENGAGED", "INTERROGATE"),
+		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
 		"TEST ROUTINE" = list("AUTO","SELECTIVE"),
 		"TARGET PROFILE" = list("SOFT", "SEMIHARD", "HARD"),
 		"SPECIAL PROFILE" = list("BIO", "INERT"),
@@ -49,7 +49,7 @@
 	var/list/selected_categories = list(
 		"SYSTEM MODE" = "AUTO-REMOTE",
 		"WEAPON STATUS" = "SAFE",
-		"IFF STATUS" = "SEARCH",
+		"IFF STATUS" = "USMC",
 		"TEST ROUTINE" = "AUTO",
 		"TARGET PROFILE" = "SOFT",
 		"SPECIAL PROFILE" = "BIO",
@@ -144,6 +144,18 @@
 /obj/structure/machinery/defenses/sentry/proc/update_choice(mob/user, var/category, var/selection)
 	if(category in selected_categories)
 		selected_categories[category] = selection
+		switch(category)
+			if("IFF STATUS")
+				switch(selection)
+					if("USMC")
+						world.log << "iff usmc"
+						faction_group = FACTION_LIST_MARINE
+					if("WY")
+						world.log << "iff wy"
+						faction_group = FACTION_LIST_MARINE_WY
+					if("HUMAN")
+						world.log << "iff human"
+						faction_group = FACTION_LIST_HUMANOID
 		return TRUE
 	else
 		if(category == "nickname")
@@ -476,6 +488,11 @@
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 
+/obj/structure/machinery/defenses/sentry/premade/Initialize()
+	..()
+	if(selected_categories["IFF STATUS"])
+		selected_categories["IFF STATUS"] = "USMC"
+
 /obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it.")
@@ -517,12 +534,19 @@
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 	faction_group = list(FACTION_MARINE, FACTION_COLONIST)
 
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
+	..()
+	choice_categories["IFF STATUS"] = list("Colony", "WY")
+	selected_categories["IFF STATUS"] = "Colony"
+
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
 	omni_directional = TRUE
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
+	choice_categories = list()
+	selected_categories = list()
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)

@@ -349,6 +349,10 @@
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
 	)
+	stack_refill = list(
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/ointment
+	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat
 	name = "Lifeboat Medical Cabinet"

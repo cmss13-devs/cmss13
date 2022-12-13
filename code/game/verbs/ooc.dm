@@ -29,7 +29,7 @@
 		to_chat(src, SPAN_DANGER("You have OOC muted."))
 		return
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!admin_holder || !(admin_holder.rights & R_MOD) && !isnewplayer(mob))
 		if(!ooc_allowed) //Send to LOOC instead
 			looc(msg)
 			return

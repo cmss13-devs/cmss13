@@ -10105,7 +10105,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "aDI" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},

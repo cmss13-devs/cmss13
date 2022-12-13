@@ -405,7 +405,7 @@
 		new parts_type(loc, 2)
 	playsound(src, unpacking_sound, 35)
 
-	var/obj/structure/machinery/autodoc/event/E = new (T)
+	var/obj/structure/machinery/medical_pod/autodoc/unskilled/E = new (T)
 	var/obj/structure/machinery/autodoc_console/C = new (get_step(T, dir_needed))
 	E.connected = C
 	C.connected = E
@@ -426,7 +426,7 @@
 		new parts_type(loc, 2)
 	playsound(src, unpacking_sound, 35)
 
-	var/obj/structure/machinery/bodyscanner/E = new (T)
+	var/obj/structure/machinery/medical_pod/bodyscanner/E = new (T)
 	var/obj/structure/machinery/body_scanconsole/C = new (get_step(T, dir_needed))
 	C.connected = E
 
@@ -446,7 +446,7 @@
 		new parts_type(loc, 2)
 	playsound(src, unpacking_sound, 35)
 
-	var/obj/structure/machinery/sleeper/E = new (T)
+	var/obj/structure/machinery/medical_pod/sleeper/E = new (T)
 	var/obj/structure/machinery/sleep_console/C = new (get_step(T, dir_needed))
 	E.connected = C
 	C.connected = E

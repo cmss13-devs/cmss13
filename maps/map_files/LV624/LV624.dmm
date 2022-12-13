@@ -2976,7 +2976,7 @@
 	},
 /area/lv624/ground/jungle/south_east_jungle)
 "aoa" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	icon_state = "whitebluefull";
 	tag = "icon-whitebluefull"
@@ -3060,7 +3060,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aox" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;

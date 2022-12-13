@@ -14580,12 +14580,6 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
-/obj/item/clothing/under/marine/officer/command,
-/obj/item/clothing/under/marine/officer/command,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/gloves/combat,
-/obj/item/clothing/gloves/combat,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -25642,13 +25636,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/staff_officer/gear,
-/obj/item/clothing/under/marine/officer/command,
-/obj/item/clothing/under/marine/officer/command,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/suit/storage/webbing,
-/obj/item/clothing/gloves/combat,
-/obj/item/clothing/gloves/combat,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

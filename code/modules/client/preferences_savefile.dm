@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	19
+#define SAVEFILE_VERSION_MAX	20
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -68,11 +68,18 @@
 		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
 		S["toggle_prefs"] << pref_toggles
 
-	if(savefile_version < 19) // adds midi and atmospheric sounds on by default
+	if(savefile_version < 19) // toggles vending to hand by default
+		var/pref_toggle_vend_item_tohand
+		S["toggle_prefs"] >> pref_toggle_vend_item_tohand
+		pref_toggle_vend_item_tohand |= TOGGLE_VEND_ITEM_TO_HAND
+		S["toggle_prefs"] << pref_toggle_vend_item_tohand
+
+	if(savefile_version < 20) // adds midi and atmospheric sounds on by default
 		var/sound_toggles
 		S["toggles_sound"] >> sound_toggles
 		sound_toggles |= (SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
 		S["toggles_sound"] << sound_toggles
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 

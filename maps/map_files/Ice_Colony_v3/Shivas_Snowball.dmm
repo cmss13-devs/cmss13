@@ -2997,7 +2997,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "aor" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "wred"
@@ -8921,7 +8921,7 @@
 	},
 /area/shiva/exterior/cp_colony_grounds)
 "cQB" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "wred"
@@ -11799,7 +11799,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
 "gkL" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "wred"
@@ -19256,7 +19256,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "oah" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva{
 	icon_state = "wred"

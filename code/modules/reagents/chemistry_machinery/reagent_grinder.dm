@@ -5,7 +5,7 @@
 	layer = ABOVE_TABLE_LAYER
 	density = 0
 	anchored = 0
-	use_power = POWER_USE_IDLE_POWER
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
 	var/inuse = 0

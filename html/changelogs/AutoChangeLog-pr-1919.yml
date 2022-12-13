@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "CLs Containment cell is now only on it's hidden network rather than the entire ship network. Same for standard containment cells and their own network."
+  - bugfix: "Fixed a duplicate and misplaced camera in containment."

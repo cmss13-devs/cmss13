@@ -387,6 +387,26 @@
 			prefs.save_preferences()
 			return "Off"
 
+/client/proc/receive_random_tip()
+	var/picked_type = tgui_alert(src, "What kind of tip?", "Tip Type", list("Marine", "Xenomorph", "Meta")) //no memetips for them joker imp
+	var/message
+	var/list/types_to_pick = list(
+		"Marine" = "strings/marinetips.txt",
+		"Xenomorph" = "strings/xenotips.txt",
+		"Meta" = "strings/metatips.txt"
+	)
+	var/list/tip_list = file2list(types_to_pick[picked_type])
+	if(length(types_to_pick[picked_type]))
+		message = pick(tip_list)
+	else
+		CRASH("send_tip_of_the_round() failed somewhere")
+
+	if(message)
+		to_chat(src, "<span class='purple'><b>Random Tip: </b>[html_encode(message)]</span>")
+		return TRUE
+	else
+		return FALSE
+
 //------------ GHOST PREFERENCES ---------------------------------
 
 /client/proc/show_ghost_preferences() // Shows ghost-related preferences.

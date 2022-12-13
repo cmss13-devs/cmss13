@@ -431,3 +431,8 @@
   - rscadd: Queen eye shuffles weed sprites when passing over them.
   - bugfix: Fixed some single letter vars so the mantainer agenda can't delay this
       PR from merging.
+2022-12-13:
+  NoKohi:
+  - qol: added a "Toggle Vendors Vending to Hands" to preferences
+  realforest2001:
+  - config: Changed the discord links in the Changelog and Game Window.

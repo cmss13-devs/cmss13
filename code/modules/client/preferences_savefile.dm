@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	18
+#define SAVEFILE_VERSION_MAX	19
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -67,6 +67,12 @@
 		S["toggle_prefs"] >> pref_toggles
 		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
 		S["toggle_prefs"] << pref_toggles
+
+	if(savefile_version < 19) // adds midi and atmospheric sounds on by default
+		var/sound_toggles
+		S["toggles_sound"] >> sound_toggles
+		sound_toggles |= (SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
+		S["toggles_sound"] << sound_toggles
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 

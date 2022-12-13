@@ -149,21 +149,24 @@
 	X.reset_view()
 	return
 
-/mob/hologram/queen/proc/turf_weed_only(var/mob/self, var/turf/T)
+/mob/hologram/queen/proc/turf_weed_only(var/mob/self, var/turf/crossing_turf)
 	SIGNAL_HANDLER
 
-	if(!T)
+	if(!crossing_turf)
 		return COMPONENT_TURF_DENY_MOVEMENT
 
-	if(istype(T, /turf/closed/wall))
-		var/turf/closed/wall/W = T
-		if(W.hull)
+	if(istype(crossing_turf, /turf/closed/wall))
+		var/turf/closed/wall/crossing_wall = crossing_turf
+		if(crossing_wall.hull)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
-	var/list/turf_area = range(3, T)
+	var/list/turf_area = range(3, crossing_turf)
 
-	var/obj/effect/alien/weeds/W = locate() in turf_area
-	if(W && HIVE_ALLIED_TO_HIVE(W.hivenumber, hivenumber))
+	var/obj/effect/alien/weeds/nearby_weeds = locate() in turf_area
+	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
+		var/obj/effect/alien/crossing_turf_weeds = locate() in crossing_turf
+		if(crossing_turf_weeds)
+			crossing_turf_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 
 	return COMPONENT_TURF_DENY_MOVEMENT

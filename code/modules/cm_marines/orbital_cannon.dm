@@ -317,6 +317,7 @@ var/list/ob_type_fuel_requirements
 	anchored = 1
 	throwpass = TRUE
 	climbable = TRUE
+	unacidable = TRUE // issue: being used for defences, solution: abomb
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	var/is_solid_fuel = 0
 	var/source_mob

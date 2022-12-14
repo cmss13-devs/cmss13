@@ -793,14 +793,17 @@
 	//Formatted for the Groundside Operations Computer
 	var/squad_sorted_text_groundside_operations = ""
 
-//A proc for printing info for the Ovarwatch Console, the Squad Monitor, and the Groundside Operations computer
-//vars:
-//z_hidden_overwatch - ignores a Z-level (Overwatch Console)
-//marine_filter - ignored marines (Overwatch Console)
-//marine_filter_enabled - if the filter is enabled (Overwatch Console)
-//dead_hidden - whether to hide dead marines (Overwatch Console)
-//user - user of the device, used to determine distance between them and squad members (Squad Monitor)
-//z_hidden_groundside_ops - TRUE means we won't display user information if they are not on the ground (Groundside Operations)
+/**
+ * A proc for printing info for the Ovarwatch Console, the Squad Monitor, and the Groundside Operations computer
+ * 
+ * Arguments:
+ * * z_hidden_overwatch - ignores a Z-level (Overwatch Console)
+ * * marine_filter - ignored marines (Overwatch Console)
+ * * marine_filter_enabled - if the filter is enabled (Overwatch Console)
+ * * dead_hidden - whether to hide dead marines (Overwatch Console)
+ * * user - user of the device, used to determine distance between them and squad members (Squad Monitor)
+ * * z_hidden_groundside_ops - TRUE means we won't display user information if they are not on the ground (Groundside Operations)
+*/
 /datum/squad/proc/get_squad_overwatch_info(var/z_hidden_overwatch = OVERWATCH_HIDE_NONE, var/list/marine_filter = list(), var/marine_filter_enabled = TRUE, var/dead_hidden = FALSE, var/mob/user = null, z_hidden_groundside_ops = FALSE)
 	var/datum/squad_overwatch_info/info = new()
 

@@ -61,6 +61,9 @@
 
 	var/list/bullet_traits
 
+	 /// The beam linked to the projectile. Can be utilized for things like grappling hooks, harpoon guns, tripwire guns, etc..
+	var/obj/effect/bound_beam
+
 /obj/item/projectile/Initialize(mapload, var/datum/cause_data/cause_data)
 	. = ..(mapload)
 	path = list()
@@ -79,6 +82,8 @@
 	path = null
 	weapon_cause_data = null
 	firer = null
+	if(bound_beam)
+		qdel(bound_beam)
 	return ..()
 
 /obj/item/projectile/proc/apply_bullet_trait(list/entry)
@@ -102,9 +107,10 @@
 /obj/item/projectile/ex_act()
 	return FALSE //We do not want anything to delete these, simply to make sure that all the bullet references are not runtiming. Otherwise, constantly need to check if the bullet exists.
 
-/obj/item/projectile/proc/generate_bullet(ammo_datum, bonus_damage = 0, special_flags = 0)
+/obj/item/projectile/proc/generate_bullet(datum/ammo/ammo_datum, bonus_damage = 0, special_flags = 0, var/mob/bullet_generator)
 	ammo 		= ammo_datum
 	name 		= ammo.name
+	icon 		= ammo.icon
 	icon_state 	= ammo.icon_state
 	damage 		= ammo.damage + bonus_damage //Mainly for emitters.
 	scatter		= ammo.scatter
@@ -114,6 +120,8 @@
 	damage_falloff = ammo.damage_falloff
 	damage_buildup = ammo.damage_buildup
 	projectile_override_flags = special_flags
+
+	ammo_datum.on_bullet_generation(src, bullet_generator)
 
 	// Apply bullet traits from ammo
 	for(var/entry in ammo.traits_to_give)
@@ -543,7 +551,7 @@
 		if(distance_travelled <= ammo.accurate_range_min) // If bullet stays within max accurate range + random variance
 			effective_accuracy -= (ammo.accurate_range_min - distance_travelled) * 10 // Snipers have accuracy falloff at closer range before point blank
 	else
-		effective_accuracy -= (ammo_flags & AMMO_SNIPER) ? (distance_travelled * 1.5) : (distance_travelled * 10) // Snipers have a smaller falloff constant due to longer max range
+		effective_accuracy -= (distance_travelled - ammo.accurate_range) * ((ammo_flags & AMMO_SNIPER) ? 1.5 : 10) // Snipers have a smaller falloff constant due to longer max range
 
 	effective_accuracy = max(5, effective_accuracy) //default hit chance is at least 5%.
 
@@ -917,7 +925,7 @@
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, damage_result, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
 		return
 
-	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
+	if(damage || (ammo_flags & AMMO_SPECIAL_EMBED))
 
 		var/splatter_dir = get_dir(P.starting, loc)
 		handle_blood_splatter(splatter_dir)
@@ -927,7 +935,7 @@
 		P.play_damage_effect(src)
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
-			if(ammo_flags && AMMO_SPECIAL_EMBED)
+			if(ammo_flags & AMMO_SPECIAL_EMBED)
 				P.ammo.on_embed(src, organ)
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type

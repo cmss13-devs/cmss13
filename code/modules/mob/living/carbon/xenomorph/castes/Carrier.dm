@@ -124,6 +124,15 @@
 	if(.)
 		var/chance = 75
 
+		if (huggers_cur)
+			//Hugger explosion, like an egg morpher
+			var/obj/item/clothing/mask/facehugger/hugger
+			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
+			for(var/i in 1 to huggers_cur)
+				if(prob(chance))
+					hugger = new(loc, hivenumber)
+					step_away(hugger, src, 1)
+
 		while (eggs_cur > 0)
 			if(prob(chance))
 				new /obj/item/xeno_egg(loc, hivenumber)
@@ -151,6 +160,27 @@
 	else
 		to_chat(src, SPAN_WARNING("You can't carry more facehuggers on you."))
 
+/mob/living/carbon/Xenomorph/Carrier/proc/store_huggers_from_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
+	if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+		to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+		return
+
+	if(morpher.stored_huggers == 0)
+		to_chat(src, SPAN_WARNING("The egg morpher is empty!"))
+		return
+
+	if(huggers_max > 0 && huggers_cur < huggers_max)
+		var/huggers_to_transfer = min(morpher.stored_huggers, huggers_max-huggers_cur)
+		huggers_cur += huggers_to_transfer
+		morpher.stored_huggers -= huggers_to_transfer
+		if(huggers_to_transfer == 1)
+			to_chat(src, SPAN_NOTICE("You store one facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+		else
+			to_chat(src, SPAN_NOTICE("You store [huggers_to_transfer] facehuggers and carry them for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+		update_icons()
+	else
+		to_chat(src, SPAN_WARNING("You can't carry more facehuggers on you."))
+
 
 /mob/living/carbon/Xenomorph/Carrier/proc/throw_hugger(atom/T)
 	if(!T)
@@ -171,6 +201,19 @@
 				to_chat(src, SPAN_WARNING("Touching \the [F] while you're on fire would burn it!"))
 				return
 			store_hugger(F)
+			return
+
+	//target an egg morpher to top up on huggers
+	if(istype(T, /obj/effect/alien/resin/special/eggmorph))
+		var/obj/effect/alien/resin/special/eggmorph/morpher = T
+		if(Adjacent(morpher))
+			if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+				to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+				return
+			if(on_fire)
+				to_chat(src, SPAN_WARNING("Touching \the [morpher] while you're on fire would burn the facehuggers in it!"))
+				return
+			store_huggers_from_egg_morpher(morpher)
 			return
 
 	var/obj/item/clothing/mask/facehugger/F = get_active_hand()
@@ -224,7 +267,6 @@
 	else
 		to_chat(src, SPAN_WARNING("You can't carry more eggs on you."))
 
-
 /mob/living/carbon/Xenomorph/Carrier/proc/retrieve_egg(atom/T)
 	if(!T) return
 
@@ -235,7 +277,13 @@
 	if(istype(T, /obj/item/xeno_egg))
 		var/obj/item/xeno_egg/E = T
 		if(isturf(E.loc) && Adjacent(E))
+			var/turf/egg_turf = E.loc
 			store_egg(E)
+			//Grab all the eggs from the turf
+			if(eggs_cur < eggs_max)
+				for(E in egg_turf)
+					if(eggs_cur < eggs_max)
+						store_egg(E)
 			return
 
 	var/obj/item/xeno_egg/E = get_active_hand()

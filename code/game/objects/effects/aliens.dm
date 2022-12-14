@@ -292,6 +292,7 @@
 	var/acid_strength = 1 //100% speed, normal
 	var/barricade_damage = 40
 	var/barricade_damage_ticks = 10 // tick is once per 5 seconds. This tells us how many times it will try damaging barricades
+	var/in_weather = FALSE
 
 //Sentinel weakest acid
 /obj/effect/xenomorph/acid/weak
@@ -311,11 +312,28 @@
 	..(loc)
 	acid_t = target
 	var/strength_t = isturf(acid_t) ? 8:4 // Turf take twice as long to take down.
+	handle_weather()
 	tick(strength_t)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, .proc/handle_weather)
 
 /obj/effect/xenomorph/acid/Destroy()
 	acid_t = null
 	. = ..()
+
+/obj/effect/xenomorph/acid/handle_weather()
+	SIGNAL_HANDLER
+
+	var/area/A = get_area(src)
+	if(!A)
+		return
+
+	if(SSweather.is_weather_event && locate(A.master) in SSweather.weather_areas)
+		acid_strength = acid_strength + (SSweather.weather_event_instance.fire_smothering_strength / 3) //smothering_strength is 1-10, acid strench is a multiplier
+		in_weather = SSweather.weather_event_instance.fire_smothering_strength
+	else
+		acid_strength = initial(acid_strength)
+		in_weather = FALSE
 
 /obj/effect/xenomorph/acid/proc/handle_barricade()
 	var/obj/structure/barricade/cade = acid_t
@@ -329,7 +347,7 @@
 		return
 
 	if(istype(acid_t,/obj/structure/barricade))
-		if(++ticks >= barricade_damage_ticks)
+		if(++ticks >= barricade_damage_ticks || prob(in_weather))
 			visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
 			qdel(src)
 			return

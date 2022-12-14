@@ -28,6 +28,10 @@
 
 	original_duration = duration
 
+	handle_weather()
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, .proc/handle_weather)
+
 /datum/effects/acid/validate_atom(var/atom/A)
 	if(istype(A, /obj/structure/barricade))
 		return TRUE
@@ -92,3 +96,20 @@
 	if(acid_goopiness <= 0)
 		return TRUE
 	else return FALSE
+
+/datum/effects/acid/handle_weather()
+	SIGNAL_HANDLER
+
+	var/area/A = get_area(src)
+	if(!A)
+		return
+
+	if(SSweather.is_weather_event && locate(A.master) in SSweather.weather_areas)
+		//smothering_strength is 1-10, we use this to take a proportional amount off the stats
+		duration = duration - (duration * (SSweather.weather_event_instance.fire_smothering_strength / 10))
+		damage_in_total_human = damage_in_total_human - (damage_in_total_human * (SSweather.weather_event_instance.fire_smothering_strength / 10))
+		damage_in_total_obj = damage_in_total_obj - (damage_in_total_obj * (SSweather.weather_event_instance.fire_smothering_strength / 10))
+		//ideally this would look like the rain dilutting the acid
+		//but since we dont want to check every process if we're in weather etc...
+		//its just a one permenant time stat change
+

@@ -1063,7 +1063,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	else
 		current_mag = primary_tube
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch \the [src]'s active magazine to the [(current_mag == primary_tube) ? "<b>first</b>" : "<b>second</b>"] magazine."))
-	playsound(src, 'sound/machines/click.ogg', 15, TRUE)
+	playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 	return TRUE
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/toggle_burst()

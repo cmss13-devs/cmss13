@@ -2878,7 +2878,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "dKs" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "dKu" = (
@@ -7974,7 +7974,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 "kPa" = (
-/obj/item/weapon/gun/shotgun/pump/cmb/m3717,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central/mine_elevator)
 "kPw" = (
@@ -9348,7 +9348,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
 "mGE" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "mGJ" = (
@@ -12111,7 +12111,7 @@
 /area/kutjevo/interior/colony_South/power2)
 "qtK" = (
 /obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/shotgun/pump/cmb/m3717,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "qtN" = (
@@ -15177,7 +15177,7 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/botany/east_tech)
 "uBO" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "uCR" = (

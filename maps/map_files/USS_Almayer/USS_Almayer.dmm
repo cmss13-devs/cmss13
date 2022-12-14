@@ -6514,11 +6514,11 @@
 	},
 /area/shuttle/drop1/sulaco)
 "arC" = (
-/obj/structure/sign/safety/hazard{
-	pixel_y = -32;
-	pixel_x = 15
-	},
 /obj/structure/sign/safety/restrictedarea{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/fire_haz{
+	pixel_x = 14;
 	pixel_y = -32
 	},
 /turf/open/floor/almayer{
@@ -7651,16 +7651,6 @@
 /obj/structure/morgue{
 	dir = 2;
 	tag = "icon-morgue1 (WEST)"
-	},
-/turf/open/floor/almayer{
-	icon_state = "sterile";
-	tag = "icon-sterile"
-	},
-/area/almayer/medical/morgue)
-"aur" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile";
@@ -10688,7 +10678,8 @@
 	pixel_x = 15;
 	pixel_y = 33
 	},
-/obj/structure/sign/safety/hazard{
+/obj/structure/sign/safety/fire_haz{
+	pixel_x = 1;
 	pixel_y = 33
 	},
 /turf/open/floor/almayer{
@@ -33429,6 +33420,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/sign/safety/refridgeration{
+	step_x = 8;
+	step_y = 30
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -53012,6 +53007,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
+"kwM" = (
+/obj/structure/sign/safety/refridgeration{
+	step_y = -30;
+	step_x = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/port_hallway)
 "kwQ" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 16
@@ -63643,6 +63645,10 @@
 "pjP" = (
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile";
@@ -110834,8 +110840,8 @@ aoe
 asB
 atA
 pjP
-aur
-auI
+auC
+kiF
 dvF
 avk
 caE
@@ -111037,8 +111043,8 @@ auI
 auI
 auI
 auI
-auI
-auI
+auC
+kiF
 ava
 avk
 clP
@@ -111838,7 +111844,7 @@ imo
 ott
 bFu
 fpO
-buH
+kwM
 aoe
 app
 aCw
@@ -112540,7 +112546,7 @@ dxL
 aqd
 bWM
 aGW
-asv
+aqW
 uku
 uRt
 aQz
@@ -112742,7 +112748,7 @@ apV
 aAG
 aBd
 aBd
-aGW
+asv
 aRF
 uku
 uRt

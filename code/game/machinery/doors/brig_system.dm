@@ -318,7 +318,7 @@
 			timer_pause(usr)
 
 		if("pardon")
-			if(alert(usr, "Are you sure you want to pardon?", "Confirmation", "Yes", "No") == "No")
+			if(alert(usr, "Are you sure you want to pardon?", "Confirmation", "Yes", "No") != "Yes")
 				return
 
 			do_pardon(usr)

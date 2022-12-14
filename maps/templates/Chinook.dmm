@@ -1256,7 +1256,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/sec)
 "en" = (
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -1434,7 +1434,7 @@
 	},
 /area/adminlevel/chinook/offices)
 "eJ" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -2927,7 +2927,7 @@
 /area/adminlevel/chinook/shuttle/unpowered)
 "jr" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -3247,7 +3247,7 @@
 	},
 /area/adminlevel/chinook)
 "kr" = (
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -3264,7 +3264,7 @@
 	},
 /area/adminlevel/chinook/offices)
 "ku" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -4658,7 +4658,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cryo)
 "oU" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /obj/structure/sign/safety/autodoc{
 	pixel_x = -16
 	},
@@ -6004,7 +6004,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
 "tt" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -6569,7 +6569,7 @@
 	},
 /area/adminlevel/chinook/cargo)
 "uT" = (
-/obj/structure/machinery/bodyscanner{
+/obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -7528,7 +7528,7 @@
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
 "yr" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -7877,7 +7877,7 @@
 	},
 /area/adminlevel/chinook/sec)
 "zR" = (
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -8704,7 +8704,7 @@
 /area/adminlevel/chinook/cryo)
 "CM" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -10808,7 +10808,7 @@
 	},
 /area/adminlevel/chinook)
 "KN" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -13363,7 +13363,7 @@
 	},
 /area/adminlevel/chinook/medical)
 "Tp" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /obj/structure/sign/safety/autodoc{
 	pixel_x = -16
 	},
@@ -15404,7 +15404,7 @@
 	},
 /area/adminlevel/chinook/sec)
 "Zo" = (
-/obj/structure/machinery/bodyscanner{
+/obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 8
 	},
 /turf/open/floor/almayer{

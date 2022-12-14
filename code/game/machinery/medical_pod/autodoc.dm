@@ -1,12 +1,12 @@
 //Autodoc
-/obj/structure/machinery/autodoc
+/obj/structure/machinery/medical_pod/autodoc
 	name = "\improper autodoc medical system"
 	desc = "A fancy machine developed to be capable of operating on people with minimal human intervention. The interface is rather complex and would only be useful to trained Doctors however."
-	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
-	icon_state = "autodoc_open"
-	density = 1
-	anchored = 1
-	var/mob/living/carbon/human/occupant = null
+	icon_state = "autodoc"
+
+	entry_timer = 2 SECONDS
+	skilllock = SKILL_SURGERY_NOVICE
+
 	var/list/surgery_todo_list = list() //a list of surgeries to do.
 	var/surgery = 0 //Are we operating or no? 0 for no, 1 for yes
 	var/surgery_mod = 1 //What multiple to increase the surgery timer? This is used for any non-WO maps or events that are done.
@@ -16,29 +16,71 @@
 	var/heal_brute = 0
 	var/heal_burn = 0
 	var/heal_toxin = 0
-	var/event = FALSE
 
 	var/obj/structure/machinery/autodoc_console/connected
 
 	//It uses power
-	use_power = POWER_USE_IDLE_POWER
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 15
 	active_power_usage = 450 //Capable of doing various activities
 
 	var/stored_metal = 125 // starts with 125 metal loaded
 	var/max_metal = 500
 
-/obj/structure/machinery/autodoc/get_examine_text(mob/user)
+/obj/structure/machinery/medical_pod/autodoc/update_icon()
+	if(occupant)
+		if(surgery)
+			icon_state = "autodoc_operate"
+		else
+			icon_state = "autodoc_closed"
+	else
+		icon_state = "autodoc_open"
+
+/obj/structure/machinery/medical_pod/autodoc/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += SPAN_NOTICE("It has [stored_metal] metal avalible for limb replacements.")
+		. += SPAN_NOTICE("It has [stored_metal] metal available for limb replacements.")
 
-/obj/structure/machinery/autodoc/Initialize()
+/obj/structure/machinery/medical_pod/autodoc/Initialize()
 	. = ..()
 	connect_autodoc_console()
 	flags_atom |= USES_HEARING
 
-/obj/structure/machinery/autodoc/proc/connect_autodoc_console()
+// --- MEDICAL POD PROC OVERRIDES --- \\
+
+/obj/structure/machinery/medical_pod/autodoc/go_in(mob/M)
+	. = ..()
+	start_processing()
+	if(connected)
+		connected.start_processing()
+
+/obj/structure/machinery/medical_pod/autodoc/go_out()
+	. = ..()
+	surgery_todo_list = list()
+	stop_processing()
+	if(connected)
+		connected.stop_processing()
+		connected.process() // one last update
+
+/obj/structure/machinery/medical_pod/autodoc/extra_eject_checks()
+	if(usr == occupant)
+		if(surgery)
+			to_chat(usr, SPAN_WARNING("There's no way you're getting out while this thing is operating on you!"))
+			return FALSE
+		else
+			visible_message("[usr] engages the internal release mechanism, and climbs out of \the [src].")
+			return TRUE
+	if(surgery)
+		visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
+		occupant.take_limb_damage(rand(30,50),rand(30,50))
+		surgery = FALSE
+		// message_staff for now, may change to message_admins later
+		message_staff("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
+		return TRUE
+	return TRUE
+
+
+/obj/structure/machinery/medical_pod/autodoc/proc/connect_autodoc_console()
 	if(connected)
 		return
 	if(dir == EAST || dir == SOUTH)
@@ -48,7 +90,7 @@
 	if(connected)
 		connected.connected = src
 
-/obj/structure/machinery/autodoc/Destroy()
+/obj/structure/machinery/medical_pod/autodoc/Destroy()
 	if(occupant)
 		occupant.forceMove(loc)
 		occupant = null
@@ -62,7 +104,7 @@
 
 
 
-/obj/structure/machinery/autodoc/power_change(var/area/master_area = null)
+/obj/structure/machinery/medical_pod/autodoc/power_change(var/area/master_area = null)
 	..()
 	if(stat & NOPOWER)
 		visible_message("\The [src] engages the safety override, ejecting the occupant.")
@@ -70,7 +112,7 @@
 		go_out()
 		return
 
-/obj/structure/machinery/autodoc/proc/heal_limb(var/mob/living/carbon/human/human, var/brute, var/burn)
+/obj/structure/machinery/medical_pod/autodoc/proc/heal_limb(var/mob/living/carbon/human/human, var/brute, var/burn)
 	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
@@ -85,7 +127,7 @@
 	human.UpdateDamageIcon()
 	human.updatehealth()
 
-/obj/structure/machinery/autodoc/process()
+/obj/structure/machinery/medical_pod/autodoc/process()
 	set background = 1
 
 	updateUsrDialog()
@@ -173,7 +215,7 @@
 	A.organ_ref = organ_ref
 	return A
 
-/obj/structure/machinery/autodoc/allow_drop()
+/obj/structure/machinery/medical_pod/autodoc/allow_drop()
 	return 0
 
 /proc/generate_autodoc_surgery_list(mob/living/carbon/human/M)
@@ -236,7 +278,7 @@
 		surgery_list += create_autodoc_surgery(null,EXTERNAL_SURGERY,"blood")
 	return surgery_list
 
-/obj/structure/machinery/autodoc/proc/surgery_op(mob/living/carbon/M)
+/obj/structure/machinery/medical_pod/autodoc/proc/surgery_op(mob/living/carbon/M)
 	set background = 1
 
 	if(M.stat == DEAD||!ishuman(M))
@@ -263,7 +305,7 @@
 
 	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> begins to operate, loud audible clicks lock the pod.")
 	surgery = 1
-	icon_state = "autodoc_operate"
+	update_icon()
 
 	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 
@@ -497,7 +539,7 @@
 	go_out()
 
 
-/obj/structure/machinery/autodoc/proc/open_incision(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/medical_pod/autodoc/proc/open_incision(mob/living/carbon/human/target, var/obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SURFACE)
 		sleep(INCISION_MANAGER_MAX_DURATION*surgery_mod)
 		if(!surgery)
@@ -506,7 +548,7 @@
 		target.incision_depths[L.name] = SURGERY_DEPTH_SHALLOW //Can immediately proceed to other surgery steps
 		target.updatehealth()
 
-/obj/structure/machinery/autodoc/proc/close_incision(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/medical_pod/autodoc/proc/close_incision(mob/living/carbon/human/target, var/obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SHALLOW)
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery)
@@ -515,169 +557,23 @@
 		L.remove_all_bleeding(TRUE)
 		target.updatehealth()
 
-/obj/structure/machinery/autodoc/proc/open_encased(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/medical_pod/autodoc/proc/open_encased(mob/living/carbon/human/target, var/obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SHALLOW)
 		sleep((CIRCULAR_SAW_MAX_DURATION*surgery_mod) + (RETRACTOR_MAX_DURATION*surgery_mod))
 		if(!surgery)
 			return
 		target.incision_depths[L.name] = SURGERY_DEPTH_DEEP
 
-/obj/structure/machinery/autodoc/proc/close_encased(mob/living/carbon/human/target, var/obj/limb/L)
+/obj/structure/machinery/medical_pod/autodoc/proc/close_encased(mob/living/carbon/human/target, var/obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_DEEP)
 		sleep((RETRACTOR_MAX_DURATION*surgery_mod) + (BONEGEL_REPAIR_MAX_DURATION*surgery_mod))
 		if(!surgery)
 			return
 		target.incision_depths[L.name] = SURGERY_DEPTH_SHALLOW
 
-/obj/structure/machinery/autodoc/verb/eject()
-	set name = "Eject AutoDoc"
-	set category = "Object"
-	set src in oview(1)
-	if(usr.stat == DEAD)
-		return // nooooooooooo
-	if(occupant)
-		if(isXeno(usr)) // let xenos eject people hiding inside.
-			message_staff("[key_name(usr)] ejected [key_name(occupant)] from the autodoc.")
-			go_out()
-			add_fingerprint(usr)
-			return
-		if(!ishuman(usr))
-			return
-		if(usr == occupant)
-			if(surgery)
-				to_chat(usr, SPAN_WARNING("There's no way you're getting out while this thing is operating on you!"))
-			else
-				visible_message("[usr] engages the internal release mechanism, and climbs out of \the [src].")
-			return
-		if(!skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-			to_chat(usr, SPAN_WARNING("You don't have the training to use this."))
-			return
-		if(surgery)
-			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
-			occupant.take_limb_damage(rand(30,50),rand(30,50))
-			surgery = 0
-			// message_staff for now, may change to message_admins later
-			message_staff("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
-		go_out()
-		add_fingerprint(usr)
-
-/obj/structure/machinery/autodoc/verb/move_inside()
-	set name = "Enter Autodoc"
-	set category = "Object"
-	set src in oview(1)
-
-	if(usr.stat != 0 || !ishuman(usr)) return
-
-	if(occupant)
-		to_chat(usr, SPAN_NOTICE("\The [src] is already occupied!"))
-		return
-
-	if(inoperable())
-		to_chat(usr, SPAN_NOTICE("\The [src] is non-functional!"))
-		return
-
-	if(!skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_NOVICE) && !event)
-		to_chat(usr, SPAN_WARNING("You're going to need someone trained in the use of \the [src] to help you get into it."))
-		return
-
-	usr.visible_message(SPAN_NOTICE("[usr] starts climbing into \the [src]."),
-	SPAN_NOTICE("You start climbing into \the [src]."))
-	if(do_after(usr, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		if(occupant)
-			to_chat(usr, SPAN_NOTICE("\The [src] is already occupied!"))
-			return
-		go_in_autodoc(usr)
-		add_fingerprint(usr)
-
-/obj/structure/machinery/autodoc/proc/go_in_autodoc(mob/M)
-	M.forceMove(src)
-	update_use_power(POWER_USE_ACTIVE_POWER)
-	occupant = M
-	icon_state = "autodoc_closed"
-	start_processing()
-	if(connected)
-		connected.start_processing()
-	//prevents occupant's belonging from landing inside the machine
-	for(var/obj/O in src)
-		O.forceMove(loc)
-
-
-
-/obj/structure/machinery/autodoc/proc/go_out()
-	if(!occupant) return
-	occupant.forceMove(loc)
-	occupant.update_med_icon()
-	occupant = null
-	surgery_todo_list = list()
-	update_use_power(POWER_USE_IDLE_POWER)
-	icon_state = "autodoc_open"
-	stop_processing()
-	if(connected)
-		connected.stop_processing()
-		connected.process() // one last update
-
-
-//clickdrag code - "resist to get out" code is in living_verbs.dm
-/obj/structure/machinery/autodoc/MouseDrop_T(mob/target, mob/user)
-	. = ..()
-	var/mob/living/H = user
-	if(!istype(H) || target != user) //cant make others get in. grab-click for this
-		return
-
-	move_inside(target) //Using this so not everyone who is untrained can enter it.
-
-/obj/structure/machinery/autodoc/attackby(obj/item/W, mob/living/user)
-	if(!ishuman(user))
-		return // no
-	if(istype(W, /obj/item/stack/sheet/metal))
-		if(stored_metal == max_metal)
-			to_chat(user, SPAN_WARNING("\The [src] is full!"))
-			return
-		var/obj/item/stack/sheet/metal/M = W
-		var/sheets_to_eat = (round((max_metal - stored_metal), 100))/100
-		if(!sheets_to_eat)
-			sheets_to_eat = 1
-		if(M.amount >= sheets_to_eat)
-			stored_metal += sheets_to_eat * 100
-			M.use(sheets_to_eat)
-		else
-			stored_metal += M.amount * 100
-			M.use(M.amount)
-		if(stored_metal > max_metal)
-			stored_metal = max_metal
-		to_chat(user, SPAN_NOTICE("\The [src] processes \the [W]."))
-		return
-	if(istype(W, /obj/item/grab))
-		var/obj/item/grab/G = W
-		if(!ishuman(G.grabbed_thing)) // stop fucking monkeys and xenos being put in.
-			return
-		var/mob/M = G.grabbed_thing
-		if(src.occupant)
-			to_chat(user, SPAN_NOTICE("\The [src] is already occupied!"))
-			return
-
-		if(inoperable())
-			to_chat(user, SPAN_NOTICE("\The [src] is non-functional!"))
-			return
-
-		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE) && !event)
-			to_chat(user, SPAN_WARNING("You have no idea how to put someone into \the [src]!"))
-			return
-
-		visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."), null, null, 3)
-
-		if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-			if(src.occupant)
-				to_chat(user, SPAN_NOTICE("\The [src] is already occupied!"))
-				return
-			if(!G || !G.grabbed_thing) return
-			go_in_autodoc(M)
-
-			add_fingerprint(user)
-
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant
-/obj/structure/machinery/autodoc/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+/obj/structure/machinery/medical_pod/autodoc/hear_talk(mob/living/sourcemob, message, verb, language, italics)
 	if(!QDELETED(occupant) && istype(occupant) && occupant.stat != DEAD)
 		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics)
 	else
@@ -691,12 +587,12 @@
 	name = "\improper autodoc medical system control console"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
-	var/obj/structure/machinery/autodoc/connected = null
+	var/obj/structure/machinery/medical_pod/autodoc/connected = null
 	dir = SOUTH
 	anchored = 1 //About time someone fixed this.
 	density = 0
-
-	use_power = POWER_USE_IDLE_POWER
+	unslashable = TRUE
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
 
 /obj/structure/machinery/autodoc_console/Initialize()
@@ -707,9 +603,9 @@
 	if(connected)
 		return
 	if(dir == EAST || dir == SOUTH)
-		connected = locate(/obj/structure/machinery/autodoc,get_step(src, WEST))
+		connected = locate(/obj/structure/machinery/medical_pod/autodoc,get_step(src, WEST))
 	if(dir == WEST || dir == NORTH)
-		connected = locate(/obj/structure/machinery/autodoc,get_step(src, EAST))
+		connected = locate(/obj/structure/machinery/medical_pod/autodoc,get_step(src, EAST))
 	if(connected)
 		connected.connected = src
 
@@ -745,7 +641,7 @@
 		dat += "This console is not connected to a Auto-Doc or the Auto-Doc is non-functional."
 		to_chat(user, "This console seems to be powered down.")
 	else
-		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE) && !connected.event)
+		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
 			to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 			return
 		var/mob/living/occupant = connected.occupant
@@ -1006,5 +902,6 @@
 			updateUsrDialog()
 		add_fingerprint(usr)
 
-/obj/structure/machinery/autodoc/event
-	event = TRUE
+/obj/structure/machinery/medical_pod/autodoc/unskilled
+	desc = "This autodoc has been loaded with extra programming so that it can be used without training. Neat!"
+	skilllock = null

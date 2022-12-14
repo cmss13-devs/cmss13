@@ -8201,7 +8201,7 @@
 	},
 /area/prison/medbay)
 "aub" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -10663,7 +10663,7 @@
 /turf/open/space,
 /area/space)
 "aAP" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 10;
@@ -44534,7 +44534,7 @@
 	},
 /area/prison/cellblock/mediumsec/east)
 "cty" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ctz" = (

@@ -90,14 +90,14 @@
 
 //Preference toggles//
 //toggles_sound
-#define SOUND_ADMINHELP 1
-#define SOUND_MIDI 2
-#define SOUND_AMBIENCE 4
-#define SOUND_LOBBY	8
-#define SOUND_INTERNET 16
-#define SOUND_REBOOT 32
-#define SOUND_ADMIN_MEME 64
-#define SOUND_ADMIN_ATMOSPHERIC	128
+#define SOUND_ADMINHELP (1<<0)
+#define SOUND_MIDI (1<<1)
+#define SOUND_AMBIENCE (1<<2)
+#define SOUND_LOBBY	(1<<3)
+#define SOUND_INTERNET (1<<4)
+#define SOUND_REBOOT (1<<5)
+#define SOUND_ADMIN_MEME (1<<6)
+#define SOUND_ADMIN_ATMOSPHERIC	(1<<7)
 
 //toggles_chat
 #define CHAT_OOC			(1<<0)

@@ -100,6 +100,17 @@ $large-text: 1.5rem;
     height: 640px;
   }
 
+  .IFFBox {
+    @extend .EngagedBox;
+    span {
+      font-size: $large-text;
+      display: block;
+      width: 100%;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  }
+
   .EmptyDisplay {
     margin-top: 6px;
     width: 100%;

@@ -22,6 +22,8 @@ interface SentrySpec {
   index: number;
   engaged: number;
   nickname: string;
+  kills: number;
+  iff_status: string[];
 }
 
 interface SentryData {
@@ -140,6 +142,16 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
           className={classes(['EngagedBox', isEngaged && 'EngagedWarningBox'])}>
           {!isEngaged && <span>Not Engaged</span>}
           {isEngaged && <span>ENGAGED</span>}
+        </Box>
+      </Flex.Item>
+      <Flex.Item>
+        <Box className="EngagedBox">
+          <span>Kills: {props.data.kills}</span>
+        </Box>
+      </Flex.Item>
+      <Flex.Item>
+        <Box className="IFFBox">
+          <span>IFF: {props.data.iff_status.join(', ')}</span>
         </Box>
       </Flex.Item>
       <Flex.Item>
@@ -329,7 +341,7 @@ const SentryCamera = (_, context) => {
         <Flex justify="space-between">
           <Flex.Item>Name: Area</Flex.Item>
           <Flex.Item>
-            <Button onClick={() => act('clear-camera', {})}>Close</Button>
+            <Button onClick={() => act('clear-camera')}>Close</Button>
           </Flex.Item>
         </Flex>
       </Stack.Item>

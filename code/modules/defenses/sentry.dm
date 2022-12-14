@@ -23,7 +23,7 @@
 	var/omni_directional = FALSE
 	var/sentry_range = SENTRY_RANGE
 
-	var/has_camera = FALSE
+	var/has_camera = TRUE
 	var/camera_range = 7
 
 	var/damage_mult = 1

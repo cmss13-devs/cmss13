@@ -296,6 +296,11 @@
 	switch(action)
 		if("screen-state")
 			screen_state = params["state"]
+		if("clear-camera")
+			current = null
+			playsound(src, get_sfx("terminal_type"), 25, FALSE)
+			update_active_camera()
+			return TRUE
 
 
 /obj/item/device/sentry_computer/proc/show_camera_static()
@@ -306,7 +311,7 @@
 
 /obj/item/device/sentry_computer/proc/update_active_camera()
 	// Show static if can't use the camera
-	if(current == null || !(current?.has_camera) || !(current?.placed))
+	if(current == null || !(current?.has_camera == TRUE) || !(current?.placed == 1))
 		show_camera_static()
 		return
 
@@ -331,11 +336,8 @@
 	var/z_axis = current.loc.z
 	var/x_size = current_bb.width
 	var/y_size = current_bb.height
-	var/atom/target = new
-	target.loc.x = current_bb.center_x
-	target.loc.y = current_bb.center_y
-	target.loc.z = current.loc.z
-	var/list/visible_things = range("11x13", target)
+	var/target = locate(current_bb.center_x, current_bb.center_y, current.loc.z)
+	var/list/visible_things = range("[x_size]x[y_size]", target)
 
 	var/list/visible_turfs = list()
 	range_turfs.Cut()

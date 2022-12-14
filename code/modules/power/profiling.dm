@@ -30,7 +30,7 @@ var/global/list/power_update_requests_by_area = list()
 	set desc = "Toggles the recording of area power update requests."
 	set category = "Debug.Profiling"
 	if(!check_rights(R_DEBUG))	return
-	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
 	if(enable_power_update_profiling)
 		enable_power_update_profiling = 0
 

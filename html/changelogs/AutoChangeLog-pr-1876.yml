@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "added a 2 minute cooldown between ARES/QM last person alive callouts to prevent spam"

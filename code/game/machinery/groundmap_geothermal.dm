@@ -208,7 +208,7 @@
 	anchored = 1
 	var/ispowered = FALSE
 	var/turned_on = 0 //has to be toggled in engineering
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/list/floodlist = list() // This will save our list of floodlights on the map
@@ -298,7 +298,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/power_tick = 50 // power each floodlight takes up per process
-	use_power = 0 //It's the switch that uses the actual power, not the lights
+	use_power = USE_POWER_NONE //It's the switch that uses the actual power, not the lights
 	var/obj/structure/machinery/colony_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
 	var/lum_value = 7
 	var/repair_state = 0

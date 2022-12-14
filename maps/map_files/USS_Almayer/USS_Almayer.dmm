@@ -65480,8 +65480,6 @@
 /obj/structure/machinery/cm_vending/clothing/staff_officer{
 	density = 0;
 	pixel_x = -30;
-	desc = "An automated equipment vendor for Staff Officers.";
-	name = "\improper ColMarTech Staff Officer Equipment Rack"
 	},
 /turf/open/floor/almayer{
 	icon_state = "bluefull";

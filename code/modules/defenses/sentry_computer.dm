@@ -244,6 +244,7 @@
 		sentry_holder["nickname"] = sentrygun.nickname
 		sentry_holder["camera_available"] = sentrygun.has_camera && sentrygun.placed
 		sentry_holder["selection_state"] = list()
+		sentry_holder["iff_status"] = sentrygun.faction_group
 		for(var/i in sentrygun.selected_categories)
 			sentry_holder["selection_state"] += list(list("[i]", sentrygun.selected_categories[i]))
 		.["sentry"] += list(sentry_holder)
@@ -279,6 +280,11 @@
 						playsound(src, get_sfx("terminal_type"), 25, FALSE)
 						update_active_camera()
 						return TRUE
+				if("clear-camera")
+					current = null
+					playsound(src, get_sfx("terminal_type"), 25, FALSE)
+					update_active_camera()
+					return TRUE
 				if("ping")
 					paired_sentry[sentry_index].identify()
 					return FALSE
@@ -286,11 +292,6 @@
 	switch(action)
 		if("screen-state")
 			screen_state = params["state"]
-		if("clear-camera")
-			current = null
-			playsound(src, get_sfx("terminal_type"), 25, FALSE)
-			update_active_camera()
-			return TRUE
 
 
 /obj/item/device/sentry_computer/proc/show_camera_static()
@@ -322,8 +323,15 @@
 	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
 	last_camera_turf = get_turf(cam_location)
 	current.set_range()
-	var/current_bb = current.range_bounds
-	var/list/visible_things = view(current.camera_range, cam_location)
+	var/datum/shape/rectangle/current_bb = current.range_bounds
+	var/z_axis = current.loc.z
+	var/x_size = current_bb.width
+	var/y_size = current_bb.height
+	var/atom/target = new
+	target.loc.x = current_bb.center_x
+	target.loc.y = current_bb.center_y
+	target.loc.z = current.loc.z
+	var/list/visible_things = range("11x13", target)
 
 	var/list/visible_turfs = list()
 	range_turfs.Cut()

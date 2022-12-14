@@ -57,7 +57,7 @@
 	r_icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_righthand.dmi'
 	b_icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/back.dmi'
 	j_icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/suit_slot.dmi'
-	map_array = list(MAP_CORSAT, MAP_SOROKYNE_STRATA, MAP_ICE_COLONY, MAP_ICE_COLONY_V3)
+	map_array = list(MAP_CORSAT, MAP_SOROKYNE_STRATA, MAP_ICE_COLONY, MAP_ICE_COLONY_V1, MAP_ICE_COLONY_V3)
 
 /datum/decorator/weapon_map_decorator/urban
 	c_icon = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_obj.dmi'

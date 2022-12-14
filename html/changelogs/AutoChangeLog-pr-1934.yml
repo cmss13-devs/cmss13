@@ -1,0 +1,4 @@
+author: "ChainsawMullet"
+delete-after: True
+changes:
+  - config: "Highpop maps have had their poplocks returned to 130 from 100"

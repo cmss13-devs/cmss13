@@ -1006,4 +1006,4 @@
 
 		info.squad_sorted_text_groundside_operations = leader_text_groundside_operations + rto_text_crew_monitor + spec_text_crew_monitor + medic_text_crew_monitor + engi_text_crew_monitor + smart_text_crew_monitor + marine_text_crew_monitor + misc_text_crew_monitor
 
-		return info
+	return info

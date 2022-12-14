@@ -1021,6 +1021,19 @@
 			inner.reagents.clear_reagents()
 			update_icon()
 
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/remove_canister()
+	set category = "Weapons"
+	set name = "Remove Canister"
+	set desc = "Removes the Pressurized Canister from the pouch."
+	set src in usr
+	if(!inner)
+		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
+		return
+
+	usr.put_in_any_hand_if_possible(inner, disable_warning = TRUE)
+	inner = null
+	update_icon()
+
 /obj/item/storage/pouch/document
 	name = "large document pouch"
 	desc = "It can contain papers, folders, disks, technical manuals, and clipboards."

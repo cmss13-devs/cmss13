@@ -49834,8 +49834,13 @@
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "iYf" = (
-/obj/structure/machinery/camera/autoname/almayer/containment,
-/turf/closed/wall/almayer/research/containment/wall/north,
+/obj/structure/machinery/camera/autoname/almayer/containment{
+	dir = 4
+	},
+/turf/open/floor/almayer/research/containment/floor2{
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
+	},
 /area/almayer/medical/containment/cell)
 "iYi" = (
 /obj/effect/decal/warning_stripes{
@@ -115494,9 +115499,9 @@ atL
 akV
 atL
 irA
-iYf
+icM
 oFj
-thN
+iYf
 pNP
 oNp
 ruc

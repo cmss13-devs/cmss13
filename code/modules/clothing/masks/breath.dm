@@ -194,7 +194,7 @@
 	item_state = replacetext("[initial(item_state)][pulled ? "_down" : ""]", "%SQUAD%", squad_color)
 
 
-/obj/item/clothing/mask/rebreather/tornscarf/classic
+/obj/item/clothing/mask/rebreather/tornscarf
 	name = "tactical scarf"
 	desc = "A tactical scarf used to keep warm in the cold."
 	icon_state = "torn_scarf_classic"
@@ -215,7 +215,6 @@
 /obj/item/clothing/mask/rebreather/tornscarf/desert
 	icon_state = "torn_scarf_desert"
 	item_state = "torn_scarf_desert"
-
 
 /obj/item/clothing/mask/rebreather/tornscarf/urban
 	icon_state = "torn-scarf-urban"

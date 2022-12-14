@@ -294,7 +294,7 @@ datum/gear/tacticalmaskblack
 //
 /datum/gear/tornscarfclassic
 	display_name = "Scarf (Grey)"
-	path = /obj/item/clothing/mask/rebreather/tornscarf/classic
+	path = /obj/item/clothing/mask/rebreather/tornscarf
 	slot = WEAR_FACE
 	cost = 2
 

@@ -104,6 +104,7 @@
 		to_chat(usr, SPAN_DANGER("You have deadchat muted."))
 		return
 
+	log_say("DEAD/[key_name(src)] : [message]")
 	var/turf/my_turf = get_turf(src)
 	var/list/mob/langchat_listeners = list()
 	for(var/mob/M in GLOB.player_list)

@@ -272,7 +272,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>"
 	)
 
 	var/dat = ""
@@ -395,6 +396,18 @@
 			to_chat(src, SPAN_BOLDNOTICE("You will no longer see item animations."))
 			prefs.save_preferences()
 			return "Off"
+
+/client/proc/toggle_admin_sound_types()
+	//Entirely for code readability.
+	var/meme_toggle = prefs.toggles_sound & SOUND_ADMIN_MEME ? TRUE : FALSE
+	var/atmospheric_toggle = prefs.toggles_sound & SOUND_ADMIN_ATMOSPHERIC ? TRUE : FALSE
+	var/result = tgui_alert(src, "Which sound type do you want to toggle? Meme sounds are currently [meme_toggle ? "enabled" : "disabled"], Atmospheric sounds are currently [atmospheric_toggle ? "enabled" : "disabled"].", "Toggle MIDI/Internet sound type to play", list("Meme", "Atmospheric"))
+	if(result == "Meme")
+		prefs.toggles_sound ^= SOUND_ADMIN_MEME
+		to_chat(src, SPAN_NOTICE("You will [meme_toggle ? "now" : "no longer"] hear meme admin sounds."))
+	if(result == "Atmospheric")
+		prefs.toggles_sound ^= SOUND_ADMIN_ATMOSPHERIC
+		to_chat(src, SPAN_NOTICE("You will [atmospheric_toggle ? "now" : "no longer"] hear atmospheric admin sounds."))
 
 //------------ GHOST PREFERENCES ---------------------------------
 

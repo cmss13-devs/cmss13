@@ -81,7 +81,7 @@
 	for(var/i in targets)
 		var/mob/M = i
 		var/client/client = M?.client
-		if(client?.prefs.toggles_sound & SOUND_INTERNET && client?.prefs.toggles_sound & sound_type)
+		if((client?.prefs.toggles_sound & SOUND_INTERNET) && (client?.prefs.toggles_sound & sound_type))
 			client?.tgui_panel?.play_music(web_sound_url, music_extra_data)
 		else
 			client?.tgui_panel?.stop_music()

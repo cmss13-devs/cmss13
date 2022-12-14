@@ -1,0 +1,7 @@
+author: "Mistfrag"
+delete-after: True
+changes:
+  - rscadd: "Added external webbing, officer uniform and gloves to SO locker, alongside webbing to XOs locker in order to give them some more uniform choices."
+  - rscadd: "Added a vendor for SOs. It includes a lengthy list of belts, pouches and spare supplies incase they're deploying too assist marines. For shipside SOs, it has some sidearms and a M3-VL vest."
+  - bugfix: "Fixed CiC uniform vendor being set to squad access. It now responds to CiC access."
+  - bugfix: "Fixed staff officers being unable to access their own vendor."

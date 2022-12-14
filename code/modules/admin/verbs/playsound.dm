@@ -161,7 +161,7 @@
 	for(var/items in targets)
 		var/mob/Mob = items
 		var/client/client = Mob?.client
-		if(client?.prefs.toggles_sound & SOUND_INTERNET && client?.prefs.toggles_sound & sound_type)
+		if((client?.prefs.toggles_sound & SOUND_INTERNET) && (client?.prefs.toggles_sound & sound_type))
 			admin_sound.volume = vol * client?.admin_music_volume
 			SEND_SOUND(Mob, admin_sound)
 			admin_sound.volume = vol

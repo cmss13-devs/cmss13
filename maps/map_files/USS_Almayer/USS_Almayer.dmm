@@ -8698,7 +8698,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "awZ" = (
-/obj/structure/filingcabinet,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/emails{
+	dir = 1
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
 "axa" = (
@@ -39570,6 +39573,20 @@
 	tag = "icon-blue (EAST)"
 	},
 /area/almayer/living/basketball)
+"evg" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/clipboard{
+	pixel_x = -6
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 12;
+	pixel_x = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/pilotbunks)
 "evk" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/wrapped/barcardine{
@@ -53869,6 +53886,7 @@
 	pixel_y = 1;
 	tag = "icon-N"
 	},
+/obj/structure/bed/chair/comfy,
 /turf/open/floor/almayer{
 	icon_state = "bluefull";
 	tag = "icon-bluefull"
@@ -108525,7 +108543,7 @@ pXx
 pXx
 pXx
 jrm
-awZ
+evg
 aiX
 asj
 aAW

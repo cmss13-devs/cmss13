@@ -215,7 +215,8 @@
 
 	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
 
-	var/cdr_amount = 15
+	var/base_cdr_amount = 15
+	var/cdr_amount = base_cdr_amount
 	for (var/mob/living/carbon/H in orange(1, A))
 		if (H.stat == DEAD)
 			continue
@@ -252,6 +253,10 @@
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (!cAction.action_cooldown_check())
 		cAction.reduce_cooldown(cdr_amount)
+
+	var/datum/action/xeno_action/onclick/crusher_shield/sAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/crusher_shield)
+	if (!sAction.action_cooldown_check())
+		sAction.reduce_cooldown(base_cdr_amount)
 
 /datum/behavior_delegate/crusher_base/append_to_stat()
 	. = list()

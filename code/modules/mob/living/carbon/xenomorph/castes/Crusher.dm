@@ -253,10 +253,6 @@
 	if (!cAction.action_cooldown_check())
 		cAction.reduce_cooldown(cdr_amount)
 
-	var/datum/action/xeno_action/onclick/crusher_shield/sAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/crusher_shield)
-	if (!sAction.action_cooldown_check())
-		sAction.reduce_cooldown(cdr_amount)
-
 /datum/behavior_delegate/crusher_base/append_to_stat()
 	. = list()
 	var/shield_total = 0

@@ -40,7 +40,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 180
-	plasma_cost = 20
+	plasma_cost = 50
 
 	var/damage = 65
 
@@ -54,7 +54,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charger_stomp
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	plasma_cost = 25
+	plasma_cost = 50
 	damage = 75
 	distance = 3
 	xeno_cooldown = 12 SECONDS
@@ -67,7 +67,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	plasma_cost = 20
+	plasma_cost = 75
 	xeno_cooldown = 12 SECONDS
 	var/shield_amount = 200
 

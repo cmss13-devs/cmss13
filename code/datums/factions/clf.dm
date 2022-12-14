@@ -2,12 +2,12 @@
 	name = "Colonial Liberation Front"
 	faction_tag = FACTION_CLF
 
-/datum/faction/clf/modify_hud_holder(var/image/holder, var/mob/living/carbon/human/H)
+/datum/faction/clf/modify_hud_holder(var/image/holder, var/mob/living/carbon/human/human)
 	var/hud_icon_state
-	var/obj/item/card/id/ID = H.get_idcard()
+	var/obj/item/card/id/ID = human.get_idcard()
 	var/_role
-	if(H.mind)
-		_role = H.job
+	if(human.mind)
+		_role = human.job
 	else if(ID)
 		_role = ID.rank
 	switch(_role)
@@ -24,7 +24,7 @@
 		if(JOB_CLF_COMMANDER)
 			hud_icon_state = "cellcom"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "clf_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "clf_[hud_icon_state]")
 
 /datum/faction/clf/get_antag_guns_snowflake_equipment()
 	return list(
@@ -39,7 +39,7 @@
 		list("MAC-15 Submachinegun", 20, /obj/item/weapon/gun/smg/mac15, null, VENDOR_ITEM_REGULAR),
 		list("MP27 Submachinegun", 20, /obj/item/weapon/gun/smg/mp27, null, VENDOR_ITEM_REGULAR),
 		list("MP5 Submachinegun", 20, /obj/item/weapon/gun/smg/mp5, null, VENDOR_ITEM_REGULAR),
-		list("Sawn-Off Shotgun", 30, /obj/item/weapon/gun/shotgun/pump/cmb, null, VENDOR_ITEM_REGULAR),
+		list("Sawn-Off Shotgun", 30, /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("Basira-Armstrong Magazine (6.5mm)", 5, /obj/item/ammo_magazine/rifle/hunting, null, VENDOR_ITEM_REGULAR),
@@ -104,7 +104,7 @@
 		list("MAR-40 Battle Rifle", 20, /obj/item/weapon/gun/rifle/mar40, VENDOR_ITEM_REGULAR),
 		list("MP27 Submachinegun", 20, /obj/item/weapon/gun/smg/mp27, VENDOR_ITEM_REGULAR),
 		list("MP5 Submachinegun", 20, /obj/item/weapon/gun/smg/mp5, VENDOR_ITEM_REGULAR),
-		list("Sawn-Off Shotgun", 20, /obj/item/weapon/gun/shotgun/pump/cmb, VENDOR_ITEM_REGULAR),
+		list("Sawn-Off Shotgun", 20, /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", -1, null, null),
 		list("Basira-Armstrong Magazine (6.5mm)", 60, /obj/item/ammo_magazine/rifle/hunting, VENDOR_ITEM_REGULAR),

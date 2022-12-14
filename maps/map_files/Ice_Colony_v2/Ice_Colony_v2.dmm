@@ -5519,7 +5519,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "aox" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whitered";
@@ -5545,7 +5545,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "aoA" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitered";
@@ -27685,7 +27685,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bvQ" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whitered";
@@ -28390,7 +28390,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bxM" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "whitered";

@@ -26078,7 +26078,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -28159,7 +28159,7 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "bQM" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -36219,7 +36219,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "dfO" = (
-/obj/structure/machinery/bodyscanner{
+/obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -36682,7 +36682,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "doj" = (
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -36897,7 +36897,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -37291,7 +37291,7 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
-/obj/structure/machinery/bodyscanner{
+/obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -40867,7 +40867,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -46663,7 +46663,7 @@
 	},
 /area/almayer/powered/agent)
 "hAU" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -47673,7 +47673,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -47687,7 +47687,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "hZN" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -47796,7 +47796,7 @@
 	dir = 10;
 	tag = "icon-intact-supply (SOUTHWEST)"
 	},
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side";
@@ -66538,7 +66538,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "qxL" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -74793,7 +74793,7 @@
 	dir = 9;
 	tag = "icon-intact-supply (NORTHWEST)"
 	},
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";

@@ -97,7 +97,7 @@
 		return TRUE
 	else return FALSE
 
-/datum/effects/acid/handle_weather()
+/datum/effects/acid/proc/handle_weather()
 	SIGNAL_HANDLER
 
 	var/area/A = get_area(src)

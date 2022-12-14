@@ -321,7 +321,7 @@
 	acid_t = null
 	. = ..()
 
-/obj/effect/xenomorph/acid/handle_weather()
+/obj/effect/xenomorph/acid/proc/handle_weather()
 	SIGNAL_HANDLER
 
 	var/area/A = get_area(src)

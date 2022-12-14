@@ -145,7 +145,7 @@
 			if(!M)
 				return
 
-			if(alert("Are you sure you want to delete [selected_matrix]?", "Matrix deletion", "Yes", "No") == "No")
+			if(alert("Are you sure you want to delete [selected_matrix]?", "Matrix deletion", "Yes", "No") != "Yes")
 				return
 
 			qdel(M)

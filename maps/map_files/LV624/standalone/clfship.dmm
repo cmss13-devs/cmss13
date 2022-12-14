@@ -1387,7 +1387,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald";

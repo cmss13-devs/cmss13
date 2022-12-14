@@ -38,7 +38,7 @@
 		/obj/structure/machinery/disposal,
 		/mob/living/simple_animal/cow,
 		/mob/living/simple_animal/hostile/retaliate/goat,
-		/obj/structure/machinery/sleeper,
+		/obj/structure/machinery/medical_pod/sleeper,
 		/obj/structure/machinery/smartfridge/,
 		/obj/structure/machinery/biogenerator,
 		/obj/structure/machinery/reagent_analyzer,
@@ -69,18 +69,17 @@
 		update_icon()
 
 /obj/item/reagent_container/glass/afterattack(obj/target, mob/user , flag)
-
 	if(!reagents)
 		create_reagents(volume)
 
-	if(!is_open_container() || !flag)
+	if(!is_open_container_or_can_be_dispensed_into() || !flag)
 		return
 
 	for(var/type in src.can_be_placed_into)
 		if(istype(target, type))
 			return
 
-	if(ismob(target) && target.reagents && reagents.total_volume && user.a_intent == INTENT_HARM && splashable)
+	if(is_open_container() && ismob(target) && target.reagents && reagents.total_volume && user.a_intent == INTENT_HARM && splashable)
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 
@@ -119,23 +118,26 @@
 
 			to_chat(user, SPAN_NOTICE("You fill [src] with [trans] units of the contents of [target]."))
 		else
-			if(reagents && !reagents.total_volume)
-				to_chat(user, SPAN_WARNING("[src] is empty."))
-				return
+			if(is_open_container_or_can_be_dispensed_into())
+				if(reagents && !reagents.total_volume)
+					to_chat(user, SPAN_WARNING("[src] is empty."))
+					return
 
-			if(D.reagents.total_volume >= D.reagents.maximum_volume)
-				to_chat(user, SPAN_WARNING("[D] is full."))
-				return
+				if(D.reagents.total_volume >= D.reagents.maximum_volume)
+					to_chat(user, SPAN_WARNING("[D] is full."))
+					return
 
-			var/trans = reagents.trans_to(D, D:amount_per_transfer_from_this)
+				var/trans = reagents.trans_to(D, D:amount_per_transfer_from_this)
 
-			if(!trans)
-				to_chat(user, SPAN_DANGER("You fail to add reagents to [target]."))
-				return
+				if(!trans)
+					to_chat(user, SPAN_DANGER("You fail to add reagents to [target]."))
+					return
 
-			to_chat(user, SPAN_NOTICE("You fill [D] with [trans] units of the contents of [src]."))
+				to_chat(user, SPAN_NOTICE("You fill [D] with [trans] units of the contents of [src]."))
+			else
+				to_chat(user, SPAN_WARNING("You must open the container first!"))
 
-	else if(target.is_open_container() && target.reagents) //Something like a glass. Player probably wants to transfer TO it.
+	else if(is_open_container() && target.is_open_container() && target.reagents) //Something like a glass. Player probably wants to transfer TO it.
 
 		if(!reagents.total_volume)
 			to_chat(user, SPAN_WARNING("[src] is empty."))
@@ -156,7 +158,7 @@
 	else if(istype(target, /obj/structure/machinery/smartfridge))
 		return
 
-	else if((reagents.total_volume) && (user.a_intent == INTENT_HARM) && splashable)
+	else if(is_open_container() && (reagents.total_volume) && (user.a_intent == INTENT_HARM) && splashable)
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 		reagents.reaction(target, TOUCH)
@@ -254,7 +256,7 @@
 		/obj/item/storage/secure/safe,
 		/obj/structure/machinery/iv_drip,
 		/obj/structure/machinery/disposal,
-		/obj/structure/machinery/sleeper,
+		/obj/structure/machinery/medical_pod/sleeper,
 		/obj/structure/machinery/smartfridge/,
 		/obj/structure/machinery/biogenerator,
 		/obj/structure/machinery/reagent_analyzer,
@@ -522,11 +524,11 @@
 	icon_state = "pressurized_reagent_container"
 	item_state = "anesthetic"
 	amount_per_transfer_from_this = 0
-	possible_transfer_amounts = list(0)
+	possible_transfer_amounts = null
 	volume = 480
 	splashable = FALSE
 	w_class = SIZE_MASSIVE
-	flags_atom = CAN_BE_DISPENSED_INTO|OPENCONTAINER
+	flags_atom = CAN_BE_DISPENSED_INTO
 	matter = list("glass" = 2000)
 
 /obj/item/reagent_container/glass/pressurized_canister/Initialize()

@@ -497,7 +497,8 @@ Make sure their actual health updates immediately.*/
 				else
 					handle_crit()
 				next_grace_time = world.time + grace_time
-	med_hud_set_health()
+	if(!gibbing)
+		med_hud_set_health()
 
 /mob/living/carbon/Xenomorph/proc/handle_crit()
 	if(stat == DEAD || gibbing)

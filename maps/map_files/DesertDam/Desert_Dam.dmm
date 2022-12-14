@@ -11153,7 +11153,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "aFM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
@@ -43968,7 +43968,7 @@
 	},
 /area/desert_dam/building/medical/primary_storage)
 "cCp" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitered"
@@ -43996,7 +43996,7 @@
 	},
 /area/desert_dam/building/medical/surgery_room_one)
 "cCt" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitered"
@@ -60169,7 +60169,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dSs" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 8;
@@ -60202,7 +60202,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dSw" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "whitegreen"

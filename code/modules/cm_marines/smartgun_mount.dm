@@ -419,7 +419,7 @@
 	unacidable = TRUE //stop the xeno me(l)ta.
 	density = 1
 	layer = ABOVE_MOB_LAYER //no hiding the hmg beind corpse
-	use_power = POWER_USE_NO_POWER
+	use_power = USE_POWER_NONE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/rounds = 0 //Have it be empty upon spawn.
 	var/rounds_max = 700

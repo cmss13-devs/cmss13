@@ -426,3 +426,36 @@
   - bugfix: UPP Spy and Santa presets now have the correct equipment and paygrades.
   - rscadd: Added a new proc to update fax options, rather than relying on Initialize.
   - code_imp: Removes the legacy code checking for snowflake Yautja masks.
+2022-12-12:
+  carlarctg:
+  - rscadd: Queen eye shuffles weed sprites when passing over them.
+  - bugfix: Fixed some single letter vars so the mantainer agenda can't delay this
+      PR from merging.
+2022-12-13:
+  NoKohi:
+  - qol: added a "Toggle Vendors Vending to Hands" to preferences
+  realforest2001:
+  - config: Changed the discord links in the Changelog and Game Window.
+2022-12-14:
+  ThePiachu:
+  - bugfix: Fixed a runtime created when a Crusher Charger with the Charge ability
+      on was being dragged.
+  - bugfix: Fixed a runtime caused by the server trying to update a xeno's hud overlays
+      after it has been gibbed by fire.
+  Unknownity:
+  - bugfix: Working Joes can now have their head re-attached back.
+  realforest2001:
+  - rscadd: CLs Containment cell is now only on it's hidden network rather than the
+      entire ship network. Same for standard containment cells and their own network.
+  - bugfix: Fixed a duplicate and misplaced camera in containment.
+  stanalbatross:
+  - balance: autodocs, sleepers, and bodyscanners can no longer be slashed to break
+      them
+  - balance: xenos can now eject people from autodocs, sleepers, and bodyscanners
+  - balance: OB ammo and fuel can no longer be melted
+  - balance: there is now a slight stun when exiting an autodoc, sleeper, or bodyscanner
+  - code_imp: made some stuff use defines rather than magic numbers
+  - refactor: refactored autodocs, sleepers, and bodyscanners into subtypes of a single
+      medical_pod machine rather than all being separate
+  - qol: autodocs and sleepers now accept patients from cryobags
+  - qol: removed the windup on putting people into bodyscanners

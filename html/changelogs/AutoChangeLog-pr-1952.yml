@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixes Queen body being invisible upon death while ovii'd."
+  - bugfix: "Fixes Objective computers being blow-up-able, causing UI failures."
+  - bugfix: "Fixes Synthetic Infiltrator using the blaringly obvious Synthetic Paygrade from root."

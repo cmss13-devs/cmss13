@@ -1,0 +1,4 @@
+author: "kugamo"
+delete-after: True
+changes:
+  - imageadd: "Burnt grasses now have smoother borders on their sprites."

@@ -3458,7 +3458,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_small)
 "th" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -5342,7 +5342,7 @@
 /turf/open/space/transit/east/shuttlespace_ew6,
 /area/space)
 "VS" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -5493,7 +5493,7 @@
 	},
 /area/adminlevel/ert_station)
 "YJ" = (
-/obj/structure/machinery/autodoc/event,
+/obj/structure/machinery/medical_pod/autodoc/unskilled,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"

@@ -1,0 +1,4 @@
+author: "Misty"
+delete-after: True
+changes:
+  - rscadd: "Readded the ability for patches to be attached onto rolled uniforms."

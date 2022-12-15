@@ -361,3 +361,138 @@
       LZ rushes
   - bugfix: added a 2 minute cooldown between ARES/QM last person alive callouts to
       prevent spam
+2022-12-10:
+  BeagleGaming1:
+  - rscadd: Puts a monocle back in the COs safe after "popular" demand (one person
+      asked me to do it)
+  Molto:
+  - rscadd: Readded the different light floor colors, use multitool to cycle through
+      them
+  - bugfix: Fixed light tiles being indestructible unless using a crowbar
+  - code_imp: Moved some part of the code that were only used by light tiles in floors.dm
+      into light.dm directly
+  - refactor: Made one letter variables more lettered
+  Sleepynecrons:
+  - imageadd: added new sprites for Resin Whisperer
+  ThePiachu:
+  - code_imp: Replaced magic numbers around power usage with proper defines.
+  - code_imp: Fixed DME file references being in wrong order.
+  - bugfix: Fixed a misleading comment around storage items' max_w_class
+  - bugfix: Fixed a runtime caused by Synths having no paygrade.
+2022-12-11:
+  Googles_Hands:
+  - bugfix: Changed the WO CO, XO, QM and Mortar Crew ranks to be more lore friendly
+  - bugfix: Changed the WO reinforcement announcement to be more lore friendly
+  - bugfix: Fixed the description of the WO XO and CMP in reference to the XO's title
+  - spellcheck: Fixed a few misspellings in WO announcements
+  - bugfix: removes redundant welding protection from squad engies
+  MidwayAtom:
+  - bugfix: Fixed the spelling and capitalisation of stuff on the Req Computer.
+  RenaRenaRe:
+  - bugfix: Research chems created via the synthesizer now work properly in chemical
+      fires
+  Segrain:
+  - bugfix: Projectiles no longer experience an unintended massive drop in accuracy
+      immediately past their maximum accurate range.
+  ThePiachu:
+  - rscadd: Added three more Recharge Stations to Fiora Science Annex
+  - rscadd: Added four Recharge Stations to Kutjevo Refinery
+  - rscadd: Added one more Recharge Station to Solaris Ridge
+  Unknownity:
+  - rscdel: Removed one monkey cube box from Research.
+  - balance: Increased rarity of MST and NST from Uncommon to Rare.
+  - balance: Replaced the Ultrazine Pill Bottle with an Ultrazine auto-injector in
+      the CL Vendor Briefcase.
+  carlarctg:
+  - balance: Spitter's Charge Spit's cooldown has been reduced from 15 to 12 seconds.
+  - rscadd: Spitter Tail Stab injects 5u monomolecular acid.
+  mullenpaul:
+  - bugfix: fixed bug in turing autodispensor so that pill bottles can be in local
+      smart fridge
+  - refactor: migrated smart fridge to tgui
+  - refactor: added common electrical panel for tgui components
+  nauticall:
+  - balance: Rebalanced the CO's Mateba and Desert Eagle so that each have their own
+      strengths and weaknesses.
+  - balance: Compared to each other, the Mateba has higher damage per shot and better
+      accuracy at the cost of lower ammo count and lower firerate.
+  - balance: The Deagle, by contrast, fires faster and has more ammo, but has less
+      damage per shot and lower accuracy.
+  - balance: All CO sidearms now come with high-impact ammunition only in their vendors.
+      AP ammo available as a sidegrade.
+  - rscadd: Adds high-impact AP ammo to the Deagle and Mateba that offers much higher
+      armor penetration in exchange for decreased overall damage.
+  realforest2001:
+  - bugfix: UPP Spy and Santa presets now have the correct equipment and paygrades.
+  - rscadd: Added a new proc to update fax options, rather than relying on Initialize.
+  - code_imp: Removes the legacy code checking for snowflake Yautja masks.
+2022-12-12:
+  carlarctg:
+  - rscadd: Queen eye shuffles weed sprites when passing over them.
+  - bugfix: Fixed some single letter vars so the mantainer agenda can't delay this
+      PR from merging.
+2022-12-13:
+  NoKohi:
+  - qol: added a "Toggle Vendors Vending to Hands" to preferences
+  realforest2001:
+  - config: Changed the discord links in the Changelog and Game Window.
+2022-12-14:
+  ThePiachu:
+  - bugfix: Fixed a runtime created when a Crusher Charger with the Charge ability
+      on was being dragged.
+  - bugfix: Fixed a runtime caused by the server trying to update a xeno's hud overlays
+      after it has been gibbed by fire.
+  Unknownity:
+  - bugfix: Working Joes can now have their head re-attached back.
+  realforest2001:
+  - rscadd: CLs Containment cell is now only on it's hidden network rather than the
+      entire ship network. Same for standard containment cells and their own network.
+  - bugfix: Fixed a duplicate and misplaced camera in containment.
+  stanalbatross:
+  - balance: autodocs, sleepers, and bodyscanners can no longer be slashed to break
+      them
+  - balance: xenos can now eject people from autodocs, sleepers, and bodyscanners
+  - balance: OB ammo and fuel can no longer be melted
+  - balance: there is now a slight stun when exiting an autodoc, sleeper, or bodyscanner
+  - code_imp: made some stuff use defines rather than magic numbers
+  - refactor: refactored autodocs, sleepers, and bodyscanners into subtypes of a single
+      medical_pod machine rather than all being separate
+  - qol: autodocs and sleepers now accept patients from cryobags
+  - qol: removed the windup on putting people into bodyscanners
+2022-12-15:
+  ChainsawMullet:
+  - config: Highpop maps have had their poplocks returned to 130 from 100
+  Mistfrag:
+  - rscadd: Added external webbing, officer uniform and gloves to SO locker, alongside
+      webbing to XOs locker in order to give them some more uniform choices.
+  - rscadd: Added a vendor for SOs. It includes a lengthy list of belts, pouches and
+      spare supplies incase they're deploying too assist marines. For shipside SOs,
+      it has some sidearms and a M3-VL vest.
+  - bugfix: Fixed CiC uniform vendor being set to squad access. It now responds to
+      CiC access.
+  - bugfix: Fixed staff officers being unable to access their own vendor.
+  NoKohi:
+  - rscadd: changed the HG 37 shotguns to have dual internal tube magazines, switch
+      between them via toggle burst fire mode
+  - code_imp: cleaned up a few single letter var names
+  Unknownity:
+  - balance: Added Burrowers to Whiskey Outpost.
+  - rscadd: Added a new Defender/Crusher only random wave for Wave 15 in Whiskey Outpost.
+  - bugfix: Colony Gen 1 and Gen 2 synthetics can now have their head re-attached
+      back.
+  carlarctg:
+  - refactor: Updated savefile number from 18 to 19. Meme and atmospheric preferences
+      are enabled by default.
+  - admin: Admin sounds now need a selection between 'Meme' or 'Atmospheric' type.
+      Ideally, this would let players decide if they want to listen to hijack or first
+      drop songs without needing to listen to GOOD HITS or whatnot.
+  - balance: M3-H armor renamed to M3-EOD armor.
+  - balance: M3-EOD armor is now highly resistant to ballistics and explosives, and
+      has lost its additional acid protection.
+  realforest2001:
+  - bugfix: Fixed deadchat not logging correctly.
+  stanalbatross:
+  - bugfix: fixed a lot of scenarios where if an alert popped up on your screen and
+      you closed it instead of pressing no, the thing would happen anyway.
+  - bugfix: fixed a runtime on WO that was happening due to there being no defcon
+      objectives

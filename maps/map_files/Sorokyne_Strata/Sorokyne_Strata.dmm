@@ -4662,7 +4662,7 @@
 /area/strata/ag/interior/dorms/canteen)
 "anr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
 	pixel_y = -4
@@ -24921,7 +24921,7 @@
 /area/strata/ag/interior/disposals)
 "bEY" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/landmark/good_item,
 /obj/structure/surface/rack,
 /obj/structure/machinery/light/small{
@@ -26788,7 +26788,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
 	pixel_y = -4
@@ -36150,9 +36150,9 @@
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "lNr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_x = 6;
 	pixel_y = -4
 	},

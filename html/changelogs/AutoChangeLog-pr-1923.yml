@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Fixed a runtime caused by the server trying to update a xeno's hud overlays after it has been gibbed by fire."

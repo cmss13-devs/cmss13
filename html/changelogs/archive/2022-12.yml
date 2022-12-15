@@ -436,3 +436,63 @@
   - qol: added a "Toggle Vendors Vending to Hands" to preferences
   realforest2001:
   - config: Changed the discord links in the Changelog and Game Window.
+2022-12-14:
+  ThePiachu:
+  - bugfix: Fixed a runtime created when a Crusher Charger with the Charge ability
+      on was being dragged.
+  - bugfix: Fixed a runtime caused by the server trying to update a xeno's hud overlays
+      after it has been gibbed by fire.
+  Unknownity:
+  - bugfix: Working Joes can now have their head re-attached back.
+  realforest2001:
+  - rscadd: CLs Containment cell is now only on it's hidden network rather than the
+      entire ship network. Same for standard containment cells and their own network.
+  - bugfix: Fixed a duplicate and misplaced camera in containment.
+  stanalbatross:
+  - balance: autodocs, sleepers, and bodyscanners can no longer be slashed to break
+      them
+  - balance: xenos can now eject people from autodocs, sleepers, and bodyscanners
+  - balance: OB ammo and fuel can no longer be melted
+  - balance: there is now a slight stun when exiting an autodoc, sleeper, or bodyscanner
+  - code_imp: made some stuff use defines rather than magic numbers
+  - refactor: refactored autodocs, sleepers, and bodyscanners into subtypes of a single
+      medical_pod machine rather than all being separate
+  - qol: autodocs and sleepers now accept patients from cryobags
+  - qol: removed the windup on putting people into bodyscanners
+2022-12-15:
+  ChainsawMullet:
+  - config: Highpop maps have had their poplocks returned to 130 from 100
+  Mistfrag:
+  - rscadd: Added external webbing, officer uniform and gloves to SO locker, alongside
+      webbing to XOs locker in order to give them some more uniform choices.
+  - rscadd: Added a vendor for SOs. It includes a lengthy list of belts, pouches and
+      spare supplies incase they're deploying too assist marines. For shipside SOs,
+      it has some sidearms and a M3-VL vest.
+  - bugfix: Fixed CiC uniform vendor being set to squad access. It now responds to
+      CiC access.
+  - bugfix: Fixed staff officers being unable to access their own vendor.
+  NoKohi:
+  - rscadd: changed the HG 37 shotguns to have dual internal tube magazines, switch
+      between them via toggle burst fire mode
+  - code_imp: cleaned up a few single letter var names
+  Unknownity:
+  - balance: Added Burrowers to Whiskey Outpost.
+  - rscadd: Added a new Defender/Crusher only random wave for Wave 15 in Whiskey Outpost.
+  - bugfix: Colony Gen 1 and Gen 2 synthetics can now have their head re-attached
+      back.
+  carlarctg:
+  - refactor: Updated savefile number from 18 to 19. Meme and atmospheric preferences
+      are enabled by default.
+  - admin: Admin sounds now need a selection between 'Meme' or 'Atmospheric' type.
+      Ideally, this would let players decide if they want to listen to hijack or first
+      drop songs without needing to listen to GOOD HITS or whatnot.
+  - balance: M3-H armor renamed to M3-EOD armor.
+  - balance: M3-EOD armor is now highly resistant to ballistics and explosives, and
+      has lost its additional acid protection.
+  realforest2001:
+  - bugfix: Fixed deadchat not logging correctly.
+  stanalbatross:
+  - bugfix: fixed a lot of scenarios where if an alert popped up on your screen and
+      you closed it instead of pressing no, the thing would happen anyway.
+  - bugfix: fixed a runtime on WO that was happening due to there being no defcon
+      objectives

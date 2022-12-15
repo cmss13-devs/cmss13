@@ -29,6 +29,7 @@
 	heat_level_3 = 1100
 	knock_down_reduction = 2
 	stun_reduction = 2
+	weed_slowdown_mult = 0.5
 
 /datum/species/human/hero/handle_post_spawn(var/mob/living/carbon/human/H)
 	H.universal_understand = TRUE

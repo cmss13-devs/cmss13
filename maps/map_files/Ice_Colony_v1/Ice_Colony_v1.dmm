@@ -1876,6 +1876,10 @@
 	tag = "icon-darkbrown2 (NORTH)"
 	},
 /area/ice_colony/surface/garage/two)
+"fP" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/ice,
+/area/ice_colony/exterior/surface/valley/northeast)
 "fQ" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/wood,
@@ -7917,6 +7921,10 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/ice_colony/surface/garage/repair)
+"xK" = (
+/obj/effect/landmark/static_comms/net_two,
+/turf/open/auto_turf/snow/layer3,
+/area/ice_colony/exterior/surface/valley/southeast)
 "xL" = (
 /obj/structure/machinery/floodlight,
 /turf/open/floor{
@@ -9663,6 +9671,10 @@
 	tag = "icon-darkyellowcorners2 (EAST)"
 	},
 /area/ice_colony/surface/dorms/canteen)
+"CY" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/auto_turf/snow/layer3,
+/area/ice_colony/exterior/surface/valley/southeast)
 "Da" = (
 /turf/closed/wall/hangar,
 /area/ice_colony/underground/security)
@@ -14291,6 +14303,10 @@
 "Rx" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/storage_unit/telecomms)
+"RA" = (
+/obj/effect/landmark/static_comms/net_two,
+/turf/open/ice,
+/area/ice_colony/exterior/surface/valley/northeast)
 "RB" = (
 /obj/structure/prop/static_tank/water,
 /turf/open/floor/plating/icefloor,
@@ -62119,7 +62135,7 @@ su
 su
 su
 uJ
-uJ
+CY
 lP
 lP
 lP
@@ -62591,7 +62607,7 @@ Cj
 TZ
 TZ
 uJ
-uJ
+xK
 lP
 lP
 rf
@@ -62822,7 +62838,7 @@ rf
 rf
 zO
 TZ
-TZ
+fP
 TZ
 TZ
 TZ
@@ -63294,7 +63310,7 @@ rf
 zO
 zO
 TZ
-TZ
+RA
 TZ
 TZ
 TZ

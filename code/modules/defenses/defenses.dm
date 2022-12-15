@@ -7,7 +7,7 @@
 	unacidable = TRUE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER //So you can't hide it under corpses
-	use_power = POWER_USE_NO_POWER
+	use_power = USE_POWER_NONE
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
 	var/list/faction_group

@@ -2793,7 +2793,7 @@
 	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
 	damage_type = BRUTE
 
-	damage = 0
+	damage = XENO_DAMAGE_TIER_5
 	max_range = 4
 	accuracy = HIT_ACCURACY_TIER_MAX
 
@@ -2813,16 +2813,8 @@
 	target.overlays += tail_image
 
 	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
-	// we dont mess with preexisting freezes
-	var/wasfrozen = target.frozen
-	//paralyzes target so they don't break the throw by moving...
-	if(!wasfrozen)
-		target.frozen = TRUE
-	//sleeps during this proc...
+	target.apply_effect(0.5, STUN)
 	INVOKE_ASYNC(target, /atom/movable.proc/throw_atom, fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
-	//inmediately after the sleeps, unfreezes so they can wiggle around.
-	if(!wasfrozen)
-		target.frozen = FALSE
 
 	qdel(tail_beam)
 	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail.proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.

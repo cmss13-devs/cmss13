@@ -1,0 +1,11 @@
+author: "fira"
+delete-after: True
+changes:
+  - rscadd: "Added +-15% variation to bullet speed and firing offsets to result in a better bullet trail."
+  - rscadd: "Gun firing now takes into account click position. This can bend the bullet trajectory beyond the clicked point."
+  - rscadd: "Projectiles now attempt to mimick a proper bullet stream by offsetting slightly. This is purely visual."
+  - code_imp: "Removed rocket speed-up, and gave them full speed. Only really matters for offscreen admin-spawned thermobaric rockets."
+  - bugfix: "Fixed deletion issues with projectiles, and decoupled it from gun logic due to recurring issues."
+  - rscdel: "Removed simple_mob-s shooting and AMMO_SCANS_NEARY. They're defunct/broken."
+  - bugfix: "Removed a number of micro sleeps in explosion code. This may reduce amount of shrapnel hits."
+  - code_imp: "Tweaked Aimed Shot homing logic which should make it even more accurate in the offchance it ever matters."

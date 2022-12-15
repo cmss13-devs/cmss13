@@ -69,7 +69,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full/random(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/cmb(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(H), WEAR_BACK)
 	if(prob(50))
 		spawn_rebel_smg(H)
 	else

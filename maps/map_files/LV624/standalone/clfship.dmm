@@ -1147,13 +1147,13 @@
 /area/lv624/lazarus/crashed_ship)
 "DY" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = -3
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = 9
 	},
 /turf/open/floor/almayer{
@@ -1387,7 +1387,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald";

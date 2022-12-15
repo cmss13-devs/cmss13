@@ -16,6 +16,7 @@
 		ACCESS_MARINE_MEDBAY
 	)
 	skills = /datum/skills/civilian
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/headset_type = /obj/item/device/radio/headset/distress/WY
 
 /datum/equipment_preset/wy/New()

@@ -67,21 +67,25 @@
 	return FALSE
 
 /datum/ammo/proc/do_at_half_range(obj/item/projectile/P)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /datum/ammo/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
 	return
 
 /datum/ammo/proc/do_at_max_range(obj/item/projectile/P)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /datum/ammo/proc/on_shield_block(mob/M, obj/item/projectile/P) //Does it do something special when shield blocked? Ie. a flare or grenade that still blows up.
 	return
 
 /datum/ammo/proc/on_hit_turf(turf/T, obj/item/projectile/P) //Special effects when hitting dense turfs.
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /datum/ammo/proc/on_hit_mob(mob/M, obj/item/projectile/P, mob/user) //Special effects when hitting mobs.
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 ///Special effects when pointblanking mobs. Ultimately called from /living/attackby(). Return TRUE to end the PB attempt.
@@ -89,6 +93,7 @@
 	return
 
 /datum/ammo/proc/on_hit_obj(obj/O, obj/item/projectile/P) //Special effects when hitting objects.
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /datum/ammo/proc/on_near_target(turf/T, obj/item/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
@@ -1507,7 +1512,7 @@
 	damage_falloff = 0
 
 /datum/ammo/bullet/sniper/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.homing_target && M == P.homing_target)
+	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		L.apply_armoured_damage(damage*2, ARMOR_BULLET, BRUTE, null, penetration)
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
@@ -1529,7 +1534,7 @@
 	))
 
 /datum/ammo/bullet/sniper/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.homing_target && M == P.homing_target)
+	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		var/blind_duration = 5
 		if(isXeno(M))
@@ -1552,7 +1557,7 @@
 	penetration = 0
 
 /datum/ammo/bullet/sniper/flak/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.homing_target && M == P.homing_target)
+	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/slow_duration = 7
 		var/mob/living/L = M
 		if(isXeno(M))
@@ -1652,7 +1657,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.homing_target && M == P.homing_target)
+	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		var/size_damage_mod = 0.8
 		if(isXeno(M))
@@ -1680,7 +1685,7 @@
 	))
 
 /datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.homing_target && M == P.homing_target)
+	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		var/size_damage_mod = 0.5
 		if(isXeno(M))
@@ -1859,7 +1864,7 @@
 	accurate_range = 7
 	max_range = 7
 	damage = 15
-	shell_speed = AMMO_SPEED_TIER_1
+	shell_speed = AMMO_SPEED_TIER_2
 
 /datum/ammo/rocket/New()
 	..()
@@ -2060,6 +2065,7 @@
 
 	damage = 100
 	max_range = 32
+	shell_speed = AMMO_SPEED_TIER_3
 
 /datum/ammo/rocket/wp/quad/on_hit_mob(mob/M, obj/item/projectile/P)
 	drop_flame(get_turf(M), P.weapon_cause_data)
@@ -2813,13 +2819,13 @@
 	if(!wasfrozen)
 		target.frozen = TRUE
 	//sleeps during this proc...
-	target.throw_atom(fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
+	INVOKE_ASYNC(target, /atom/movable.proc/throw_atom, fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
 	//inmediately after the sleeps, unfreezes so they can wiggle around.
 	if(!wasfrozen)
 		target.frozen = FALSE
 
 	qdel(tail_beam)
-	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
+	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail.proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
 /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(var/mob/overlayed_mob, var/image/tail_image)
 	overlayed_mob.overlays -= tail_image
@@ -3270,4 +3276,4 @@
 /datum/ammo/hugger_container/proc/spawn_hugger(var/turf/T)
 	var/obj/item/clothing/mask/facehugger/child = new(T)
 	child.hivenumber = hugger_hive
-	child.leap_at_nearest_target()
+	INVOKE_ASYNC(child, /obj/item/clothing/mask/facehugger.proc/leap_at_nearest_target)

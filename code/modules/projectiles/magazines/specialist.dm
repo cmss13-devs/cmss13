@@ -129,7 +129,7 @@
 	flags_magazine = NO_FLAGS
 
 /obj/item/ammo_magazine/rocket/attack_self(mob/user)
-	..()
+	. = ..()
 	if(current_rounds <= 0)
 		to_chat(user, SPAN_NOTICE("You begin taking apart the empty tube frame..."))
 		if(do_after(user,10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

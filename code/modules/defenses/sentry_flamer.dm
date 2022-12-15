@@ -59,14 +59,14 @@
 	if(!QDELETED(src))
 		qdel(src)
 
-#define FLAMER_SENTRY_SNIPER_RANGE 14
+#define FLAMER_SENTRY_SNIPER_RANGE 10
 /obj/structure/machinery/defenses/sentry/flamer/plasma
 	name = "UA 60-FP Plasma Sentry"
 	defense_type = "Plasma"
 	ammo = new /obj/item/ammo_magazine/sentry_flamer/glob
 	health = 150
 	health_max = 150
-	fire_delay = 10 SECONDS
+	fire_delay = 5 SECONDS
 	sentry_range = FLAMER_SENTRY_SNIPER_RANGE
 	handheld_type = /obj/item/defenses/handheld/sentry/flamer/plasma
 	disassemble_time = 1.5 SECONDS

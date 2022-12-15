@@ -459,3 +459,40 @@
       medical_pod machine rather than all being separate
   - qol: autodocs and sleepers now accept patients from cryobags
   - qol: removed the windup on putting people into bodyscanners
+2022-12-15:
+  ChainsawMullet:
+  - config: Highpop maps have had their poplocks returned to 130 from 100
+  Mistfrag:
+  - rscadd: Added external webbing, officer uniform and gloves to SO locker, alongside
+      webbing to XOs locker in order to give them some more uniform choices.
+  - rscadd: Added a vendor for SOs. It includes a lengthy list of belts, pouches and
+      spare supplies incase they're deploying too assist marines. For shipside SOs,
+      it has some sidearms and a M3-VL vest.
+  - bugfix: Fixed CiC uniform vendor being set to squad access. It now responds to
+      CiC access.
+  - bugfix: Fixed staff officers being unable to access their own vendor.
+  NoKohi:
+  - rscadd: changed the HG 37 shotguns to have dual internal tube magazines, switch
+      between them via toggle burst fire mode
+  - code_imp: cleaned up a few single letter var names
+  Unknownity:
+  - balance: Added Burrowers to Whiskey Outpost.
+  - rscadd: Added a new Defender/Crusher only random wave for Wave 15 in Whiskey Outpost.
+  - bugfix: Colony Gen 1 and Gen 2 synthetics can now have their head re-attached
+      back.
+  carlarctg:
+  - refactor: Updated savefile number from 18 to 19. Meme and atmospheric preferences
+      are enabled by default.
+  - admin: Admin sounds now need a selection between 'Meme' or 'Atmospheric' type.
+      Ideally, this would let players decide if they want to listen to hijack or first
+      drop songs without needing to listen to GOOD HITS or whatnot.
+  - balance: M3-H armor renamed to M3-EOD armor.
+  - balance: M3-EOD armor is now highly resistant to ballistics and explosives, and
+      has lost its additional acid protection.
+  realforest2001:
+  - bugfix: Fixed deadchat not logging correctly.
+  stanalbatross:
+  - bugfix: fixed a lot of scenarios where if an alert popped up on your screen and
+      you closed it instead of pressing no, the thing would happen anyway.
+  - bugfix: fixed a runtime on WO that was happening due to there being no defcon
+      objectives

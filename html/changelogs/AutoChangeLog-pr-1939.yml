@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - refactor: "Updated savefile number from 18 to 19. Meme and atmospheric preferences are enabled by default."
-  - admin: "Admin sounds now need a selection between 'Meme' or 'Atmospheric' type. Ideally, this would let players decide if they want to listen to hijack or first drop songs without needing to listen to GOOD HITS or whatnot."

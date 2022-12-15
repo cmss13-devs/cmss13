@@ -34,7 +34,7 @@
 		var/obj/item/clothing/mask/facehugger/F
 		var/chance = 60
 		visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
-		for(var/i in 0 to stored_huggers)
+		for(var/i in 1 to stored_huggers)
 			if(prob(chance))
 				F = new(loc, linked_hive.hivenumber)
 				step_away(F,src,1)
@@ -225,7 +225,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
 		return
 
-	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") == "No")
+	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") != "Yes")
 		return
 
 	var/mob/living/carbon/Xenomorph/Facehugger/hugger = new /mob/living/carbon/Xenomorph/Facehugger(loc, null, linked_hive.hivenumber)

@@ -388,6 +388,7 @@
 	desc = "A reagent tank, typically used to store large quantities of chemicals."
 
 	chemical = null
+	dispensing = FALSE //Empty fuel tanks start by accepting chemicals by default. Can't dispense nothing!
 	icon_state = "tank_normal"
 
 /obj/structure/reagent_dispensers/fueltank/custom/Initialize(mapload, volume)

@@ -130,7 +130,9 @@
 			Xeno.stop_pulling()
 
 	if(Xeno.is_mob_incapacitated())
-		var/lol = get_ranged_target_turf(charge_dir,momentum/2)
+		if(!momentum)
+			return
+		var/lol = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
 		INVOKE_ASYNC(Xeno, /atom/movable.proc/throw_atom, lol, momentum/2, SPEED_FAST, null, TRUE)
 		stop_momentum()
 		return

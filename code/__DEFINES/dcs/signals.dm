@@ -417,6 +417,7 @@
 /// From /obj/item/projectile/scan_a_turf(): (turf/target)
 #define COMSIG_BULLET_PRE_HANDLE_TURF "bullet_pre_handle_turf"
 	#define COMPONENT_BULLET_PASS_THROUGH (1<<0)
+#define COMSIG_BULLET_TERMINAL "bullet_terminal"
 
 /// For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called
 #define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"

@@ -75,39 +75,39 @@
 	. = ..()
 	attack_speed = initial(attack_speed)
 
-/obj/item/weapon/wristblades/afterattack(atom/A, mob/user, proximity)
+/obj/item/weapon/wristblades/afterattack(atom/attacked_target, mob/user, proximity)
 	if(!proximity || !user || user.action_busy)
 		return FALSE
 
-	if(istype(A, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/D = A
-		if(D.operating || !D.density || D.locked)
+	if(istype(attacked_target, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/door = attacked_target
+		if(door.operating || !door.density || door.locked)
 			return FALSE
-		if(D.heavy)
-			to_chat(usr, SPAN_DANGER("[D] is too heavy to be forced open."))
+		if(door.heavy)
+			to_chat(usr, SPAN_DANGER("[door] is too heavy to be forced open."))
 			return FALSE
-		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open..."), SPAN_DANGER("You jam your [name] into [D] and strain to rip it open..."))
+		user.visible_message(SPAN_DANGER("[user] jams their [name] into [door] and strains to rip it open..."), SPAN_DANGER("You jam your [name] into [door] and strain to rip it open..."))
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
-			user.visible_message(SPAN_DANGER("[user] forces [D] open with the [name]!"), SPAN_DANGER("You force [D] open with the [name]."))
-			D.open(TRUE)
+		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
+			user.visible_message(SPAN_DANGER("[user] forces [door] open with the [name]!"), SPAN_DANGER("You force [door] open with the [name]."))
+			door.open(TRUE)
 
-	else if(istype(A, /obj/structure/mineral_door/resin))
-		var/obj/structure/mineral_door/resin/D = A
-		if(D.isSwitchingStates || user.a_intent == INTENT_HARM)
+	else if(istype(attacked_target, /obj/structure/mineral_door/resin))
+		var/obj/structure/mineral_door/resin/door = attacked_target
+		if(door.isSwitchingStates || user.a_intent == INTENT_HARM)
 			return
-		if(D.density)
-			user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open..."), SPAN_DANGER("You jam your [name] into [D] and strain to rip it open..."))
+		if(door.density)
+			user.visible_message(SPAN_DANGER("[user] jams their [name] into [door] and strains to rip it open..."), SPAN_DANGER("You jam your [name] into [door] and strain to rip it open..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
-				user.visible_message(SPAN_DANGER("[user] forces [D] open using the [name]!"), SPAN_DANGER("You force [D] open with your [name]."))
-				D.Open()
+			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
+				user.visible_message(SPAN_DANGER("[user] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))
+				door.Open()
 		else
-			user.visible_message(SPAN_DANGER("[user] pushes [D] with their [name] to force it closed..."), SPAN_DANGER("You push [D] with your [name] to force it closed..."))
+			user.visible_message(SPAN_DANGER("[user] pushes [door] with their [name] to force it closed..."), SPAN_DANGER("You push [door] with your [name] to force it closed..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !D.density)
-				user.visible_message(SPAN_DANGER("[user] forces [D] closed using the [name]!"), SPAN_DANGER("You force [D] closed with your [name]."))
-				D.Close()
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !door.density)
+				user.visible_message(SPAN_DANGER("[user] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
+				door.Close()
 
 /obj/item/weapon/wristblades/attack_self(mob/living/carbon/human/user)
 	..()
@@ -160,8 +160,8 @@
 /obj/item/weapon/melee/yautja/chain/attack(mob/target, mob/living/user)
 	. = ..()
 	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 30
+		var/mob/living/carbon/Xenomorph/xenomorph = target
+		xenomorph.interference = 30
 
 /obj/item/weapon/melee/yautja/sword
 	name = "clan sword"
@@ -184,8 +184,8 @@
 /obj/item/weapon/melee/yautja/sword/attack(mob/target, mob/living/user)
 	. = ..()
 	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 30
+		var/mob/living/carbon/Xenomorph/xenomorph = target
+		xenomorph.interference = 30
 
 /obj/item/weapon/melee/yautja/scythe
 	name = "double war scythe"
@@ -208,8 +208,8 @@
 /obj/item/weapon/melee/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	..()
 	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 15
+		var/mob/living/carbon/Xenomorph/xenomorph = target
+		xenomorph.interference = 15
 
 
 	if(prob(15))
@@ -347,8 +347,8 @@
 	if(!.)
 		return
 	if((human_adapted || isSpeciesYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 30
+		var/mob/living/carbon/Xenomorph/xenomorph = target
+		xenomorph.interference = 30
 
 	if(target == user || target.stat == DEAD)
 		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
@@ -373,8 +373,8 @@
 
 /obj/item/weapon/melee/yautja/combistick/launch_impact(atom/hit_atom)
 	if(isYautja(hit_atom))
-		var/mob/living/carbon/human/H = hit_atom
-		if(H.put_in_hands(src))
+		var/mob/living/carbon/human/human = hit_atom
+		if(human.put_in_hands(src))
 			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "), \
 				SPAN_NOTICE(" You easily catch [src]. "))
 			return
@@ -399,15 +399,15 @@
 	actions_types = list(/datum/action/item_action)
 	unacidable = TRUE
 
-/obj/item/weapon/melee/yautja/knife/attack(mob/living/M, mob/living/carbon/human/user)
-	if(M.stat != DEAD)
+/obj/item/weapon/melee/yautja/knife/attack(mob/living/target, mob/living/carbon/human/user)
+	if(target.stat != DEAD)
 		return ..()
 
-	if(!ishuman(M))
+	if(!ishuman(target))
 		to_chat(user, SPAN_WARNING("You can only use this dagger to flay humanoids!"))
 		return
 
-	var/mob/living/carbon/human/victim = M
+	var/mob/living/carbon/human/victim = target
 
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up.")) //look at this dumbass
@@ -424,14 +424,14 @@
 	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 		return
 
-	to_chat(user, SPAN_WARNING("You start flaying [victim].."))
+	to_chat(user, SPAN_WARNING("You start flaying [victim]."))
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
 	if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 		to_chat(user, SPAN_WARNING("You prepare the skin, cutting the flesh off in vital places."))
 		playsound(loc, 'sound/weapons/slash.ogg', 25)
 		create_leftovers(victim, has_meat = TRUE, skin_amount = 0)
-		for(var/L in victim.limbs)
-			victim.apply_damage(15, BRUTE, L, sharp = FALSE)
+		for(var/limb in victim.limbs)
+			victim.apply_damage(15, BRUTE, limb, sharp = FALSE)
 		victim.add_flay_overlay(stage = 1)
 
 		if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
@@ -454,8 +454,8 @@
 				to_chat(user, SPAN_WARNING("You jab \the [src] into the flesh cuts, using them to tear off most of the skin, the remainder skin hanging off the flesh."))
 				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 3)
-				for(var/L in victim.limbs)
-					victim.apply_damage(18, BRUTE, L, sharp = FALSE)
+				for(var/limb in victim.limbs)
+					victim.apply_damage(18, BRUTE, limb, sharp = FALSE)
 				victim.remove_overlay(UNDERWEAR_LAYER)
 				victim.f_style = "Shaved"
 				victim.update_hair() //then rip the beard off along the skin
@@ -465,10 +465,10 @@
 					to_chat(user, SPAN_WARNING("You completely flay [victim], sloppily ripping most remaining flesh and skin off the body. Use rope to hang them from the ceiling."))
 					playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 					create_leftovers(victim, has_meat = TRUE, skin_amount = 2)
-					for(var/L in victim.limbs)
-						victim.apply_damage(22, BRUTE, L, sharp = FALSE)
-					for(var/obj/item/I in victim)
-						victim.drop_inv_item_to_loc(I, victim.loc, FALSE, TRUE)
+					for(var/limb in victim.limbs)
+						victim.apply_damage(22, BRUTE, limb, sharp = FALSE)
+					for(var/obj/item/item in victim)
+						victim.drop_inv_item_to_loc(item, victim.loc, FALSE, TRUE)
 
 					victim.status_flags |= PERMANENTLY_DEAD
 					victim.add_flay_overlay(stage = 3)
@@ -587,8 +587,8 @@
 	if(!.)
 		return
 	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 30
+		var/mob/living/carbon/Xenomorph/xenomorph = target
+		xenomorph.interference = 30
 
 /obj/item/weapon/melee/twohanded/yautja/glaive/damaged
 	name = "ancient war glaive"
@@ -644,7 +644,7 @@
 	last_regen = world.time
 	update_icon()
 	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
+	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
@@ -737,7 +737,7 @@
 	update_icon()
 
 	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
+	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
@@ -787,9 +787,9 @@
 	else
 		ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
 		charge_time -= 10
-	var/obj/item/projectile/P = create_bullet(ammo, initial(name))
-	P.SetLuminosity(1)
-	in_chamber = P
+	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
+	projectile.SetLuminosity(1)
+	in_chamber = projectile
 	return in_chamber
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/has_ammunition()
@@ -824,7 +824,7 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
+	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 
 
@@ -872,9 +872,9 @@
 /obj/item/weapon/gun/energy/yautja/plasmapistol/load_into_chamber()
 	if(charge_time < 1)
 		return
-	var/obj/item/projectile/P = create_bullet(ammo, initial(name))
-	P.SetLuminosity(1)
-	in_chamber = P
+	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
+	projectile.SetLuminosity(1)
+	in_chamber = projectile
 	charge_time--
 	return in_chamber
 
@@ -931,7 +931,7 @@
 	. = ..()
 	source = loc
 	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
+	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Destroy()

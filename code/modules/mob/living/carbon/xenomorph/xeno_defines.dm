@@ -893,7 +893,7 @@
 		to_chat(user, SPAN_WARNING("\The [GLOB.hive_datum[hivenumber]] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
 		return FALSE
 
-	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") == "No")
+	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") != "Yes")
 		return FALSE
 	return TRUE
 

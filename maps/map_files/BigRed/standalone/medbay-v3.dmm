@@ -1491,7 +1491,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dV" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
@@ -1533,7 +1533,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eb" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
@@ -2091,7 +2091,7 @@
 	},
 /area/bigredv2/outside/medical)
 "fp" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "platingdmg1"

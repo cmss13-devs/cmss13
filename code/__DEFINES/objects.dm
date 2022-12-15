@@ -22,6 +22,11 @@
 #define ATMOS_DEFAULT_VOLUME_MIXER	200	//L
 #define ATMOS_DEFAULT_VOLUME_PIPE	70	//L
 
+//Power use states
+#define POWER_USE_NO_POWER		0
+#define POWER_USE_IDLE_POWER	1
+#define POWER_USE_ACTIVE_POWER	2
+
 // channel numbers for power
 #define POWER_CHANNEL_EQUIP		1
 #define POWER_CHANNEL_LIGHT		2

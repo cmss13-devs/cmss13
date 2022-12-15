@@ -59,21 +59,6 @@
 	containername = "\improper folding barricades crate"
 	group = "Engineering"
 
-/datum/supply_packs/binocs
-	name = "Mixed Binoculars Crate (x2 per, x6 total)"
-	cost = 20
-	containertype = /obj/structure/closet/crate/green
-	containername = "Mixed Binoculars Crate"
-	group = "Engineering"
-	contains = list(
-		/obj/item/device/binoculars/range/designator,
-		/obj/item/device/binoculars/range/designator,
-		/obj/item/device/binoculars/range,
-		/obj/item/device/binoculars/range,
-		/obj/item/device/binoculars,
-		/obj/item/device/binoculars
-	)
-
 /datum/supply_packs/smescoil
 	name = "superconducting magnetic coil crate (x1)"
 	contains = list(/obj/item/stock_parts/smes_coil)
@@ -115,14 +100,6 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/construction
 	containername = "mechanical maintenance crate"
-	group = "Engineering"
-
-/datum/supply_packs/fueltank
-	name = "fuel tank crate (x1)"
-	contains = list(/obj/structure/reagent_dispensers/fueltank)
-	cost = 20
-	containertype = /obj/structure/largecrate
-	containername = "fuel tank crate"
 	group = "Engineering"
 
 /datum/supply_packs/inflatable

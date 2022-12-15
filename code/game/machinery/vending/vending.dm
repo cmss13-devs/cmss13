@@ -26,7 +26,7 @@
 	density = 1
 	layer = BELOW_OBJ_LAYER
 
-	use_power = POWER_USE_IDLE_POWER
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/vend_power_usage = 150 //actuators and stuff
 

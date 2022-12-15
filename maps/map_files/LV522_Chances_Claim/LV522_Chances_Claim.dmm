@@ -14784,7 +14784,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "hbG" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -43931,7 +43931,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/spaceport)
 "szJ" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"

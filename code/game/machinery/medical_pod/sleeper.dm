@@ -6,11 +6,12 @@
 	name = "sleeper console"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
-	var/obj/structure/machinery/sleeper/connected = null
+	var/obj/structure/machinery/medical_pod/sleeper/connected = null
 	anchored = TRUE //About time someone fixed this.
 	density = FALSE
-	use_power = POWER_USE_IDLE_POWER
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
+	unslashable = TRUE
 
 
 /obj/structure/machinery/sleep_console/Initialize()
@@ -22,9 +23,9 @@
 	if(connected)
 		return
 	if(dir == EAST || dir == SOUTH)
-		connected = locate(/obj/structure/machinery/sleeper,get_step(src, WEST))
+		connected = locate(/obj/structure/machinery/medical_pod/sleeper,get_step(src, WEST))
 	if(dir == WEST || dir == NORTH)
-		connected = locate(/obj/structure/machinery/sleeper,get_step(src, EAST))
+		connected = locate(/obj/structure/machinery/medical_pod/sleeper,get_step(src, EAST))
 	if(connected)
 		connected.connected = src
 
@@ -52,8 +53,6 @@
 				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
-
-
 
 /obj/structure/machinery/sleep_console/attack_remote(mob/living/user)
 	return attack_hand(user)
@@ -229,14 +228,13 @@
 // THE SLEEPER ITSELF
 /////////////////////////////////////////
 
-/obj/structure/machinery/sleeper
+/obj/structure/machinery/medical_pod/sleeper
 	name = "sleeper"
+	icon_state = "sleeper"
 	desc = "A fancy bed with built-in injectors, a dialysis machine, and a limited health scanner."
-	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
-	icon_state = "sleeper_0"
-	density = TRUE
-	anchored = TRUE
-	var/mob/living/carbon/human/occupant = null
+
+	entry_timer = 2 SECONDS
+
 	var/available_chemicals = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine")
 	var/emergency_chems = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine", "oxycodone", "bicaridine", "kelotane")
 	var/amounts = list(5, 10)
@@ -248,16 +246,35 @@
 	var/reagent_removed_per_second = AMOUNT_PER_TIME(3, 1 SECONDS)
 	var/dialysis_started_reagent_vol = null // how many reagents the occupant had in them when we STARTED dialysis
 
-	use_power = POWER_USE_IDLE_POWER
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 15
 	active_power_usage = 200 //builtin health analyzer, dialysis machine, injectors.
 
 
-/obj/structure/machinery/sleeper/Initialize()
+/obj/structure/machinery/medical_pod/sleeper/Initialize()
 	. = ..()
 	connect_sleeper_console()
 
-/obj/structure/machinery/sleeper/proc/connect_sleeper_console()
+// --- MEDICAL POD PROC OVERRIDES --- \\
+
+
+/obj/structure/machinery/medical_pod/sleeper/go_in(mob/M)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+	START_PROCESSING(SSobj, connected)
+
+
+
+/obj/structure/machinery/medical_pod/sleeper/go_out()
+	. = ..()
+	if(filtering)
+		toggle_filter()
+	STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSobj, connected)
+
+
+
+/obj/structure/machinery/medical_pod/sleeper/proc/connect_sleeper_console()
 	if(connected)
 		return
 	if(dir == EAST || dir == SOUTH)
@@ -268,7 +285,7 @@
 		connected.connected = src
 
 
-/obj/structure/machinery/sleeper/Destroy()
+/obj/structure/machinery/medical_pod/sleeper/Destroy()
 	if(occupant)
 		go_out()
 	if(connected)
@@ -276,18 +293,10 @@
 		QDEL_NULL(connected)
 	. = ..()
 
-
-
-/obj/structure/machinery/sleeper/update_icon()
-	if(occupant)
-		icon_state = "sleeper_1"
-	else
-		icon_state = "sleeper_0"
-
-/obj/structure/machinery/sleeper/allow_drop()
+/obj/structure/machinery/medical_pod/sleeper/allow_drop()
 	return FALSE
 
-/obj/structure/machinery/sleeper/process(delta_time)
+/obj/structure/machinery/medical_pod/sleeper/process(delta_time)
 	if (inoperable())
 		return
 
@@ -308,34 +317,7 @@
 
 	updateUsrDialog()
 
-
-/obj/structure/machinery/sleeper/attackby(var/obj/item/W, var/mob/living/user)
-	if(istype(W, /obj/item/grab))
-		var/obj/item/grab/G = W
-		if(isXeno(G.grabbed_thing))
-			to_chat(user, SPAN_WARNING("An unsupported lifeform was detected, aborting!"))
-			return
-		if(!ismob(G.grabbed_thing) || (isXeno(user)))
-			return
-		if(occupant)
-			to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
-			return
-
-		visible_message(SPAN_NOTICE("[user] starts putting [G.grabbed_thing] into the sleeper."), null, null, 3)
-
-		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			if(occupant)
-				to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
-				return
-			if(!G || !G.grabbed_thing)
-				return
-			var/mob/M = G.grabbed_thing
-			go_in_sleeper(M)
-			add_fingerprint(user)
-
-
-
-/obj/structure/machinery/sleeper/ex_act(severity)
+/obj/structure/machinery/medical_pod/sleeper/ex_act(severity)
 	if(filtering)
 		toggle_filter()
 	switch(severity)
@@ -349,7 +331,7 @@
 			deconstruct(FALSE)
 
 
-/obj/structure/machinery/sleeper/emp_act(severity)
+/obj/structure/machinery/medical_pod/sleeper/emp_act(severity)
 	if(filtering)
 		toggle_filter()
 	if(inoperable())
@@ -359,7 +341,7 @@
 		go_out()
 	..()
 
-/obj/structure/machinery/sleeper/proc/toggle_filter()
+/obj/structure/machinery/medical_pod/sleeper/proc/toggle_filter()
 	if(!occupant)
 		filtering = FALSE
 		dialysis_started_reagent_vol = 0
@@ -371,51 +353,16 @@
 		filtering = TRUE
 		dialysis_started_reagent_vol = occupant.reagents.total_volume
 
-/obj/structure/machinery/sleeper/proc/go_in_sleeper(mob/M)
-	M.forceMove(src)
-	update_use_power(POWER_USE_ACTIVE_POWER)
-	occupant = M
-	START_PROCESSING(SSobj, src)
-	START_PROCESSING(SSobj, connected)
-	update_icon()
-	//prevents occupant's belonging from landing inside the machine
-	for(var/obj/O in src)
-		O.forceMove(loc)
-	playsound(src, 'sound/machines/hydraulics_3.ogg')
-
-
-/obj/structure/machinery/sleeper/proc/go_out()
-	if(filtering)
-		toggle_filter()
-	if(!occupant)
-		return
-	occupant.forceMove(loc)
-	occupant = null
-	STOP_PROCESSING(SSobj, src)
-	STOP_PROCESSING(SSobj, connected)
-	update_use_power(POWER_USE_IDLE_POWER)
-	update_icon()
-	playsound(src, 'sound/machines/hydraulics_3.ogg')
-
-//clickdrag code - "resist to get out" code is in living_verbs.dm
-/obj/structure/machinery/sleeper/MouseDrop_T(mob/target, mob/user)
-	. = ..()
-	var/mob/living/H = user
-	if(!istype(H) || target != user) //cant make others get in. grab-click for this
-		return
-
-	move_inside(target)
-
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant
-/obj/structure/machinery/sleeper/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+/obj/structure/machinery/medical_pod/sleeper/hear_talk(mob/living/sourcemob, message, verb, language, italics)
 	if(!QDELETED(occupant) && istype(occupant) && occupant.stat != DEAD)
 		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics)
 	else
 		..(sourcemob, message, verb, language, italics)
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
-/obj/structure/machinery/sleeper/proc/inject_chemical(mob/living/user as mob, chemical, amount)
+/obj/structure/machinery/medical_pod/sleeper/proc/inject_chemical(mob/living/user as mob, chemical, amount)
 	if(occupant && occupant.reagents)
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= max_chem)
 			occupant.reagents.add_reagent(chemical, amount, , , user)
@@ -426,7 +373,7 @@
 	return
 
 
-/obj/structure/machinery/sleeper/proc/check(mob/living/user)
+/obj/structure/machinery/medical_pod/sleeper/proc/check(mob/living/user)
 	if(occupant)
 		var/msg_occupant = "[occupant]"
 		to_chat(user, SPAN_NOTICE("<B>Occupant ([msg_occupant]) Statistics:</B>"))
@@ -452,35 +399,3 @@
 	return
 
 
-/obj/structure/machinery/sleeper/verb/eject()
-	set name = "Eject Sleeper"
-	set category = "Object"
-	set src in oview(1)
-	if(usr.is_mob_incapacitated())
-		return
-	go_out()
-	add_fingerprint(usr)
-
-
-/obj/structure/machinery/sleeper/verb/move_inside()
-	set name = "Enter Sleeper"
-	set category = "Object"
-	set src in oview(1)
-
-	if(usr.stat || !ishuman(usr))
-		return
-
-	var/mob/living/carbon/human/user = usr
-
-	if(occupant)
-		to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
-		return
-
-	visible_message("[user] starts climbing into the sleeper.", null, null, 3)
-
-	if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		if(occupant)
-			to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
-			return
-		go_in_sleeper(user)
-		add_fingerprint(user)

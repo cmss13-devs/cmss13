@@ -120,6 +120,9 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult =  BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
 
+/obj/item/weapon/gun/smg/m39/elite/whiteout//for the whiteout HEAP mag, nothing else
+	current_mag = /obj/item/ammo_magazine/smg/m39/heap
+
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.
 

@@ -289,6 +289,7 @@
 		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_COMMAND
 	)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(H), WEAR_BODY)
@@ -396,6 +397,7 @@
 /datum/equipment_preset/survivor/security/corsat
 	name = "Survivor - CORSAT Security Guard"
 	assignment = "Weyland-Yutani Corporate Security Guard"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/security/corsat/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(H), WEAR_BODY)
@@ -442,6 +444,7 @@
 /datum/equipment_preset/survivor/security/lv
 	name = "Survivor - LV-624 Security Guard"
 	assignment = "Weyland-Yutani Corporate Security Guard"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/security/lv/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(H), WEAR_BODY)
@@ -1121,7 +1124,7 @@
 	paygrade = "WEY-GOON"
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
-	languages = list(LANGUAGE_ENGLISH)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -1204,6 +1207,7 @@
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_MEDBAY
 	)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 /datum/equipment_preset/survivor/wy/manager/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)

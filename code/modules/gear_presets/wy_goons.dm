@@ -5,7 +5,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY)
-	languages = list(LANGUAGE_ENGLISH)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/goon/New()
 	. = ..()

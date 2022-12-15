@@ -1,0 +1,5 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - bugfix: "Fixed boiler and spitter's special tail stabs not working by adding a missing return value."
+  - balance: "Tail Seize now deals slash damage and stuns (standing up so they don't lose their gun) while they're being pulled back in."

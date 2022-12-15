@@ -404,9 +404,13 @@
 	var/result = tgui_alert(src, "Which sound type do you want to toggle? Meme sounds are currently [meme_toggle ? "enabled" : "disabled"], Atmospheric sounds are currently [atmospheric_toggle ? "enabled" : "disabled"].", "Toggle MIDI/Internet sound type to play", list("Meme", "Atmospheric"))
 	if(result == "Meme")
 		prefs.toggles_sound ^= SOUND_ADMIN_MEME
+		//Update the variables so it doesn't output the outdated toggle.
+		meme_toggle = prefs.toggles_sound & SOUND_ADMIN_MEME ? TRUE : FALSE
 		to_chat(src, SPAN_NOTICE("You will [meme_toggle ? "now" : "no longer"] hear meme admin sounds."))
 	if(result == "Atmospheric")
 		prefs.toggles_sound ^= SOUND_ADMIN_ATMOSPHERIC
+		//Ditto.
+		atmospheric_toggle = prefs.toggles_sound & SOUND_ADMIN_ATMOSPHERIC ? TRUE : FALSE
 		to_chat(src, SPAN_NOTICE("You will [atmospheric_toggle ? "now" : "no longer"] hear atmospheric admin sounds."))
 
 //------------ GHOST PREFERENCES ---------------------------------

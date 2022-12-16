@@ -1,7 +1,0 @@
-author: "CapCamIII"
-delete-after: True
-changes:
-  - rscadd: "Adds HEAP ammo, does more damage than standard bullets of its type, but has AP bullet AP, a direct upgrade, but admin-only."
-  - rscadd: "Adds magazines and ammo boxes that use HEAP ammo, in their respective calibers and bullet-types, NSG23, MK1, MK2, M39, Type71, HPR, M40SD, and L42A"
-  - balance: "Marine Raiders, Whiteout, UPP officers, and UPP commandos are now equipped with HEAP ammo"
-  - imageadd: "Added icons for HEAP Type71, M40SD, M39, MK1, NSG23, L42A, and HPR"

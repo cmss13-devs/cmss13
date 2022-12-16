@@ -511,6 +511,10 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
 
+/obj/item/storage/pouch/magazine/large/nsg_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/nsg23/heap(src)
+
 /obj/item/storage/pouch/magazine/large/pmc_p90/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/fp9000(src)
@@ -538,6 +542,14 @@
 /obj/item/storage/pouch/magazine/large/m16/ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap(src)
+
+/obj/item/storage/pouch/magazine/large/rifle_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/heap(src)
+
+/obj/item/storage/pouch/magazine/large/smg_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/m39/heap(src)
 
 /obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"

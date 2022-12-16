@@ -496,3 +496,44 @@
       you closed it instead of pressing no, the thing would happen anyway.
   - bugfix: fixed a runtime on WO that was happening due to there being no defcon
       objectives
+2022-12-16:
+  CapCamIII:
+  - rscadd: Adds HEAP ammo, does more damage than standard bullets of its type, but
+      has AP bullet AP, a direct upgrade, but admin-only.
+  - rscadd: Adds magazines and ammo boxes that use HEAP ammo, in their respective
+      calibers and bullet-types, NSG23, MK1, MK2, M39, Type71, HPR, M40SD, and L42A
+  - balance: Marine Raiders, Whiteout, UPP officers, and UPP commandos are now equipped
+      with HEAP ammo
+  - imageadd: Added icons for HEAP Type71, M40SD, M39, MK1, NSG23, L42A, and HPR
+  Misty:
+  - rscadd: Readded the ability for patches to be attached onto rolled uniforms.
+  carlarctg:
+  - admin: Fixed toggling admin sound types' confirmation message using the non-updated
+      value.
+  - bugfix: Fixed boiler and spitter's special tail stabs not working by adding a
+      missing return value.
+  - balance: Tail Seize now deals slash damage and stuns (standing up so they don't
+      lose their gun) while they're being pulled back in.
+  fira:
+  - rscadd: Added +-15% variation to bullet speed and firing offsets to result in
+      a better bullet trail.
+  - rscadd: Gun firing now takes into account click position. This can bend the bullet
+      trajectory beyond the clicked point.
+  - rscadd: Projectiles now attempt to mimick a proper bullet stream by offsetting
+      slightly. This is purely visual.
+  - code_imp: Removed rocket speed-up, and gave them full speed. Only really matters
+      for offscreen admin-spawned thermobaric rockets.
+  - bugfix: Fixed deletion issues with projectiles, and decoupled it from gun logic
+      due to recurring issues.
+  - rscdel: Removed simple_mob-s shooting and AMMO_SCANS_NEARY. They're defunct/broken.
+  - bugfix: Removed a number of micro sleeps in explosion code. This may reduce amount
+      of shrapnel hits.
+  - code_imp: Tweaked Aimed Shot homing logic which should make it even more accurate
+      in the offchance it ever matters.
+  kugamo:
+  - imageadd: Burnt grasses now have smoother borders on their sprites.
+  realforest2001:
+  - bugfix: Fixes Queen body being invisible upon death while ovii'd.
+  - bugfix: Fixes Objective computers being blow-up-able, causing UI failures.
+  - bugfix: Fixes Synthetic Infiltrator using the blaringly obvious Synthetic Paygrade
+      from root.

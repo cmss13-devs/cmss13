@@ -2250,7 +2250,7 @@ Defined in conflicts.dm of the #defines folder.
 	P.generate_bullet(ammo_datum)
 	P.icon_state = "naptha_ball"
 	P.color = flamer_reagent.color
-	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null, FALSE)
+	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null)
 	var/turf/user_turf = get_turf(user)
 	playsound(user_turf, pick(fire_sounds), 50, TRUE)
 

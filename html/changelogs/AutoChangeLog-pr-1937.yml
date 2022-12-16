@@ -1,4 +1,0 @@
-author: "Unknownity"
-delete-after: True
-changes:
-  - bugfix: "Colony Gen 1 and Gen 2 synthetics can now have their head re-attached back."

@@ -246,6 +246,7 @@
 	rank = JOB_COLONIST
 	skills = /datum/skills/infiltrator_synthetic
 	idtype = /obj/item/card/id/lanyard
+	paygrade = "C"
 
 /datum/equipment_preset/synth/infiltrator/New()
 	. = ..()

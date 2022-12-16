@@ -105,7 +105,8 @@
 #define SS_PRIORITY_QUADTREE       160
 #define SS_PRIORITY_CHAT		   155
 #define SS_PRIORITY_STATPANEL	   154
-#define SS_PRIORITY_CELLAUTO       151
+#define SS_PRIORITY_CELLAUTO       152
+#define SS_PRIORITY_PROJECTILES    151
 #define SS_PRIORITY_MOB            150
 #define SS_PRIORITY_XENO           149
 #define SS_PRIORITY_HUMAN          148

@@ -851,9 +851,9 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
 	if(isElectrified() && arePowerSystemsOn())
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(5, 1, src)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(5, 1, src)
+		sparks.start()
 		xeno.apply_effect(1, WEAKEN)
 
 	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)

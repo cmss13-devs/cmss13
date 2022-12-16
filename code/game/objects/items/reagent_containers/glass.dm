@@ -14,6 +14,7 @@
 	volume = 60
 	var/splashable = TRUE
 	flags_atom = FPRINT|OPENCONTAINER
+	flags_item = NOBLUDGEON
 	transparent = TRUE
 
 	var/label_text = ""

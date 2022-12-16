@@ -210,15 +210,15 @@
 
 /obj/item/clothing/mask/rebreather/tornscarf/snow
 	icon_state = "torn_scarf_snow"
-	item_state = "torn-scarf_snow"
+	item_state = "torn_scarf_snow"
 
 /obj/item/clothing/mask/rebreather/tornscarf/desert
 	icon_state = "torn_scarf_desert"
 	item_state = "torn_scarf_desert"
 
 /obj/item/clothing/mask/rebreather/tornscarf/urban
-	icon_state = "torn-scarf-urban"
-	item_state = "torn-scarf-urban"
+	icon_state = "torn_scarf_urban"
+	item_state = "torn_scarf_urban"
 
 /obj/item/clothing/mask/rebreather/tornscarf/black
 	icon_state = "torn_scarf_black"

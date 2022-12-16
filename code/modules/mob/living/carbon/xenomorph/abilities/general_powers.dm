@@ -976,6 +976,7 @@
 	shake_camera(target, 2, 1)
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
+	return target
 
 	return target
 

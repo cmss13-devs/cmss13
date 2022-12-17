@@ -749,9 +749,9 @@
 	desc = "A standard headset used by colonists."
 	frequency = COLONY_FREQ
 
-/obj/item/device/radio/headset/distress/goon
-	name = "WY corporate security headset"
-	desc = "A headset commonly worn by WY corporate security."
+/obj/item/device/radio/headset/distress/WY
+	name = "WY corporate headset"
+	desc = "A headset commonly worn by WY corporate personnel."
 	frequency = WY_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY)
 

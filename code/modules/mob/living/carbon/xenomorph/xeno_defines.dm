@@ -836,22 +836,23 @@
 	stored_larva--
 	hive_ui.update_pooled_larva()
 
-/mob/living/carbon/proc/ally_of_hivenumber(var/hivenumber)
-	var/datum/hive_status/H = GLOB.hive_datum[hivenumber]
-	if(!H)
+/mob/living/proc/ally_of_hivenumber(var/hivenumber)
+	var/datum/hive_status/indexed_hive = GLOB.hive_datum[hivenumber]
+	if(!indexed_hive)
 		return FALSE
 
-	return H.is_ally(src)
+	return indexed_hive.is_ally(src)
 
-/datum/hive_status/proc/is_ally(var/mob/living/carbon/C)
-	if(isXeno(C) && C.hivenumber == hivenumber)
-		var/mob/living/carbon/Xenomorph/X = C
-		return !X.banished
+/datum/hive_status/proc/is_ally(var/mob/living/living_mob)
+	if(isXeno(living_mob))
+		var/mob/living/carbon/Xenomorph/zenomorf = living_mob
+		if(zenomorf.hivenumber == hivenumber)
+			return !zenomorf.banished
 
-	if(!C.faction)
+	if(!living_mob.faction)
 		return FALSE
 
-	return faction_is_ally(C.faction)
+	return faction_is_ally(living_mob.faction)
 
 /datum/hive_status/proc/faction_is_ally(var/faction, var/ignore_queen_check = FALSE)
 	if(faction == internal_faction)

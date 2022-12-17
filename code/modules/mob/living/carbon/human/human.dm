@@ -1170,10 +1170,15 @@
 	if(oldspecies)
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)
+		if(oldspecies.weed_slowdown_mult != 1)
+			UnregisterSignal(src, COMSIG_MOB_WEEDS_CROSSED)
 
 	mob_flags = species.mob_flags
 	for(var/T in species.mob_inherent_traits)
 		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
+
+	if(species.weed_slowdown_mult != 1)
+		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, .proc/handle_weed_slowdown)
 
 	species.create_organs(src)
 
@@ -1211,6 +1216,9 @@
 	else
 		return FALSE
 
+/mob/living/carbon/human/proc/handle_weed_slowdown(mob/user, list/slowdata)
+	SIGNAL_HANDLER
+	slowdata["movement_slowdown"] *= species.weed_slowdown_mult
 
 /mob/living/carbon/human/print_flavor_text()
 	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)

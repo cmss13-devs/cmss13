@@ -537,3 +537,28 @@
   - bugfix: Fixes Objective computers being blow-up-able, causing UI failures.
   - bugfix: Fixes Synthetic Infiltrator using the blaringly obvious Synthetic Paygrade
       from root.
+2022-12-17:
+  BeagleGaming1:
+  - bugfix: stopped SO vendors not working
+  - bugfix: Fixes some scarves being invisible
+  Lacasitospro:
+  - bugfix: Made the M44 and MOU53 less loud.
+  Mistfrag, Frans, Wei:
+  - rscadd: Added new scarves to the loadout menu.
+  - imageadd: Added new scarves, coming in different camo and color options.
+  - imageadd: New black face-wrap.
+  - code_imp: Renamed tac-masks to face-wraps to distinguish between them and scarves.
+  - refactor: Made datums use the right names for items in preferences.dm (no idea
+      why they didn't.)
+  Morrow:
+  - rscadd: Xenos can now tailstab airlocks.
+  ThePiachu:
+  - bugfix: Fixed a name name runtime caused by trying to dereference a string that
+      is in a mixed mob-string list.
+  Unknownity:
+  - bugfix: Fixed a spot from being inaccessible by marines in a LV nightmare insert.
+  fira:
+  - rscadd: Flares will now land in different positions as they spin from throwing.
+  - rscadd: Flares flame is now separate and will always face up.
+  - rscadd: Converted flares flames to grayscale, allowing flares of any color to
+      be made.

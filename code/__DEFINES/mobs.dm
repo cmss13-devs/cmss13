@@ -393,6 +393,16 @@ var/list/default_onmob_icons = list(
 		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/ties.dmi'
 		)
 
+var/list/default_xeno_onmob_icons = list(
+		/mob/living/carbon/Xenomorph/Runner = 'icons/mob/xenos/onmob/runner.dmi',
+		/mob/living/carbon/Xenomorph/Praetorian = 'icons/mob/xenos/onmob/praetorian.dmi',
+		/mob/living/carbon/Xenomorph/Drone = 'icons/mob/xenos/onmob/drone.dmi',
+		/mob/living/carbon/Xenomorph/Warrior = 'icons/mob/xenos/onmob/warrior.dmi',
+		/mob/living/carbon/Xenomorph/Defender = 'icons/mob/xenos/onmob/defender.dmi',
+		/mob/living/carbon/Xenomorph/Sentinel = 'icons/mob/xenos/onmob/sentinel.dmi',
+		/mob/living/carbon/Xenomorph/Spitter = 'icons/mob/xenos/onmob/spitter.dmi'
+		)
+
 // species names
 #define SPECIES_HUMAN "Human"
 #define SPECIES_YAUTJA "Yautja"

@@ -161,10 +161,11 @@
 	name = "\improper Super Snowflake Vendor"
 	desc = "WARNING: The quantity of clothes contained within can slow down reality."
 	icon_state = "snowflake"
-	use_points = FALSE
+	use_points = TRUE //"use points", but everything is free
 	show_points = FALSE
 	use_snowflake_points = FALSE
 	vendor_theme = VENDOR_THEME_COMPANY
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_TO_HAND
 	vend_delay = 10
 	var/list/items
 	var/list/obj/item/item_types

@@ -207,23 +207,32 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 	animate(pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 2)
 
 
-/atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3)
+/atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
 	if(!sections)
 		return
 	var/section = 360/sections
 	if(!clockwise)
 		section = -section
+	if(angular_offset)
+		var/matrix/initial_matrix = matrix(transform)
+		initial_matrix.Turn(angular_offset)
+		apply_transform(initial_matrix)
+	var/dx = 0
+	var/dy = 0
+	if(pixel_fuzz)
+		dx = (rand()-0.5)*pixel_fuzz / sections
+		dy = (rand()-0.5)*pixel_fuzz / sections
 	var/list/matrix_list = list()
 	for(var/i in 1 to sections-1)
 		var/matrix/M = matrix(transform)
-		M.Turn(section*i)
+		M.Turn(section*i + angular_offset)
 		matrix_list += M
 	var/matrix/last = matrix(transform)
 	matrix_list += last
 	speed /= sections
-	animate(src, transform = matrix_list[1], time = speed, loop_amount)
+	animate(src, transform = matrix_list[1], pixel_x = pixel_x + dx, pixel_y = pixel_y + dy, time = speed, loop_amount)
 	for(var/i in 2 to sections)
-		animate(transform = matrix_list[i], time = speed)
+		animate(transform = matrix_list[i], pixel_x = pixel_x + dx*i, pixel_y = pixel_y + dy*i, time = speed)
 
 /atom/proc/animation_cancel()
 	animate(src)

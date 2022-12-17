@@ -128,6 +128,9 @@ directive is properly returned.
 /atom/proc/is_open_container()
 	return flags_atom & OPENCONTAINER
 
+/atom/proc/is_open_container_or_can_be_dispensed_into()
+	return flags_atom & OPENCONTAINER || flags_atom & CAN_BE_DISPENSED_INTO
+
 /atom/proc/can_be_syringed()
 	return flags_atom & CAN_BE_SYRINGED
 

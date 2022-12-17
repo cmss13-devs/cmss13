@@ -4,8 +4,6 @@
 	if (!message)
 		return
 
-	log_say("Ghost/[src.key] : [message]")
-
 	if (src.client)
 		if(src.client.prefs.muted & MUTE_DEADCHAT)
 			to_chat(src, SPAN_DANGER("You cannot talk in deadchat (muted)."))

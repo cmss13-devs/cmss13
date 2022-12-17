@@ -13026,6 +13026,7 @@
 	pixel_x = 3;
 	pixel_y = 10
 	},
+/obj/item/clothing/suit/storage/webbing,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -25635,7 +25636,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/staff_officer/gear,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -26078,7 +26078,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -28159,7 +28159,7 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "bQM" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -36219,7 +36219,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "dfO" = (
-/obj/structure/machinery/bodyscanner{
+/obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -36677,7 +36677,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "doj" = (
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -36892,7 +36892,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -37286,7 +37286,7 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
-/obj/structure/machinery/bodyscanner{
+/obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -40862,7 +40862,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -46658,7 +46658,7 @@
 	},
 /area/almayer/powered/agent)
 "hAU" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -47668,7 +47668,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -47682,7 +47682,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "hZN" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -47791,7 +47791,7 @@
 	dir = 10;
 	tag = "icon-intact-supply (SOUTHWEST)"
 	},
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side";
@@ -49834,8 +49834,13 @@
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "iYf" = (
-/obj/structure/machinery/camera/autoname/almayer/containment,
-/turf/closed/wall/almayer/research/containment/wall/north,
+/obj/structure/machinery/camera/autoname/almayer/containment{
+	dir = 4
+	},
+/turf/open/floor/almayer/research/containment/floor2{
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
+	},
 /area/almayer/medical/containment/cell)
 "iYi" = (
 /obj/effect/decal/warning_stripes{
@@ -65476,6 +65481,16 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/almayer/medical/medical_science)
+"pYq" = (
+/obj/structure/machinery/cm_vending/clothing/staff_officer{
+	density = 0;
+	pixel_x = -30;
+	},
+/turf/open/floor/almayer{
+	icon_state = "bluefull";
+	tag = "icon-bluefull"
+	},
+/area/almayer/living/bridgebunks)
 "pYu" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -12;
@@ -66541,7 +66556,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "qxL" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -68809,7 +68824,9 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "ryR" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
+	req_access = list(1)
+	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -74796,7 +74813,7 @@
 	dir = 9;
 	tag = "icon-intact-supply (NORTHWEST)"
 	},
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";
@@ -103536,7 +103553,7 @@ uiZ
 mKq
 qCy
 rpp
-vCO
+aES
 vCO
 vCO
 jxB
@@ -104148,7 +104165,7 @@ aRq
 bHG
 ceK
 sxD
-bhJ
+pYq
 bMh
 ayP
 aES
@@ -104757,7 +104774,7 @@ lcy
 iTw
 ceK
 sxD
-bhJ
+pYq
 bMh
 nis
 aES
@@ -105366,7 +105383,7 @@ wVB
 psa
 ceK
 sxD
-bhJ
+pYq
 bMh
 brS
 aES
@@ -105975,7 +105992,7 @@ jUb
 qjz
 ceK
 sxD
-bhJ
+pYq
 bMh
 gCP
 aES
@@ -115491,9 +115508,9 @@ atL
 akV
 atL
 irA
-iYf
+icM
 oFj
-thN
+iYf
 pNP
 oNp
 ruc

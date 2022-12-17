@@ -2073,6 +2073,14 @@ Defined in conflicts.dm of the #defines folder.
 	burn_level = BURN_LEVEL_TIER_5
 	burn_duration = BURN_TIME_TIER_2
 
+/obj/item/attachable/attached_gun/flamer/advanced//essentially a better version of mini-flamer for PMCs, copy of integrated but is removable
+	name = "advanced mini flamethrower"
+	current_rounds = 50
+	max_rounds = 50
+	max_range = 6
+	burn_level = BURN_LEVEL_TIER_5
+	burn_duration = BURN_TIME_TIER_2
+
 /obj/item/attachable/attached_gun/shotgun //basically, a masterkey
 	name = "\improper U7 underbarrel shotgun"
 	icon_state = "masterkey"

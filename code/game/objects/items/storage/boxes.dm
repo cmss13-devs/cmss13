@@ -357,6 +357,7 @@
 	name = "box of zip cuffs"
 	desc = "A box full of zip cuffs."
 	icon_state = "handcuff"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/zipcuffs/fill_preset_inventory()
 	new /obj/item/handcuffs/zip(src)

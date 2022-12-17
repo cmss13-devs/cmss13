@@ -1457,8 +1457,8 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartgunner/pmc/full/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba())
-	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/pmc())
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)

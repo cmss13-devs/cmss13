@@ -843,8 +843,8 @@
 		var/turf/SL_turf = get_turf(squad_leader)
 		SL_z = SL_turf.z
 
-	for(var/X in marines_list)
-		if(!X)
+	for(var/marine in marines_list)
+		if(!marine)
 			continue //just to be safe
 		var/mob_name = "unknown"
 		var/mob_state = ""
@@ -853,17 +853,17 @@
 		var/fteam = ""
 		var/dist = "<b>???</b>"
 		var/area_name = "<b>???</b>"
-		var/mob/living/carbon/human/H
+		var/mob/living/carbon/human/human_marine
 
 		var/is_filtered = FALSE
-		if(X && ("\ref[X]" in marine_filter))
+		if(marine && ("\ref[marine]" in marine_filter))
 			is_filtered = TRUE
 
-		if(ishuman(X))
-			H = X
-			mob_name = H.real_name
-			var/area/A = get_area(H)
-			var/turf/M_turf = get_turf(H)
+		if(ishuman(marine))
+			human_marine = marine
+			mob_name = human_marine.real_name
+			var/area/A = get_area(human_marine)
+			var/turf/M_turf = get_turf(human_marine)
 			if(!M_turf)
 				continue
 			if(A)
@@ -877,10 +877,10 @@
 					if(is_ground_level(M_turf.z))
 						continue
 
-			if(H.job)
-				role = H.job
-			else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-				var/obj/item/card/id/ID = H.wear_id		//we use their ID to get their role.
+			if(human_marine.job)
+				role = human_marine.job
+			else if(istype(human_marine.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
+				var/obj/item/card/id/ID = human_marine.wear_id		//we use their ID to get their role.
 				if(ID.rank) role = ID.rank
 
 			if(user)
@@ -889,46 +889,46 @@
 					var/area/mob_area = M_turf.loc
 					var/area/user_area = user_turf.loc
 					if(M_turf.z == user_turf.z && mob_area.fake_zlevel == user_area.fake_zlevel)
-						dist = "[get_dist(H, user)] ([dir2text_short(get_dir(user, H))])"
+						dist = "[get_dist(human_marine, user)] ([dir2text_short(get_dir(user, human_marine))])"
 			else if(squad_leader)
-				if(H == squad_leader)
+				if(human_marine == squad_leader)
 					dist = "<b>N/A</b>"
 					if(name == SQUAD_SOF)
-						if(H.job == JOB_MARINE_RAIDER_CMD)
+						if(human_marine.job == JOB_MARINE_RAIDER_CMD)
 							act_sl = " (direct command)"
-						else if(H.job != JOB_MARINE_RAIDER_SL)
+						else if(human_marine.job != JOB_MARINE_RAIDER_SL)
 							act_sl = " (acting TL)"
-					else if(H.job != JOB_SQUAD_LEADER)
+					else if(human_marine.job != JOB_SQUAD_LEADER)
 						act_sl = " (acting SL)"
 				else if(M_turf && (M_turf.z == SL_z))
-					dist = "[get_dist(H, squad_leader)] ([dir2text_short(get_dir(squad_leader, H))])"
+					dist = "[get_dist(human_marine, squad_leader)] ([dir2text_short(get_dir(squad_leader, human_marine))])"
 
 			if(is_filtered && marine_filter_enabled)
 				continue
 
-			switch(H.stat)
+			switch(human_marine.stat)
 				if(CONSCIOUS)
 					mob_state = "Conscious"
 					info.living_count++
-					conscious_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
+					conscious_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 
 				if(UNCONSCIOUS)
 					mob_state = "<b>Unconscious</b>"
 					info.living_count++
-					unconscious_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
+					unconscious_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 
 				if(DEAD)
 					if(dead_hidden)
 						continue
 					mob_state = SET_CLASS("DEAD", INTERFACE_RED)
-					dead_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
+					dead_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 
-			if(!istype(H.head, /obj/item/clothing/head/helmet/marine))
+			if(!istype(human_marine.head, /obj/item/clothing/head/helmet/marine))
 				mob_state += SET_CLASS(" <b>(NO HELMET)</b>", INTERFACE_ORANGE)
 				info.helmetless_count++
 
-			if(!H.key || !H.client)
-				if(H.stat != DEAD)
+			if(!human_marine.key || !human_marine.client)
+				if(human_marine.stat != DEAD)
 					mob_state += " (SSD)"
 					info.SSD_count++
 
@@ -937,8 +937,8 @@
 				if(z_hidden_groundside_ops)
 					continue
 
-			if(H.assigned_fireteam)
-				fteam = " [H.assigned_fireteam]"
+			if(human_marine.assigned_fireteam)
+				fteam = " [human_marine.assigned_fireteam]"
 
 		else //listed marine was deleted or gibbed, all we have is their name
 			if(dead_hidden)
@@ -952,14 +952,14 @@
 			mob_state = SET_CLASS("DEAD", INTERFACE_RED)
 			mob_name = X
 
-			dead_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
+			dead_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 
 
-		var/marine_infos_overwatch = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl][fteam]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
+		var/marine_infos_overwatch = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl][fteam]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 
 		var/marine_infos_crew_monitor = "<tr><td>[mob_name]</a></td><td>[name]</td><td>[role]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"
 
-		var/marine_infos_groundside_operations = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
+		var/marine_infos_groundside_operations = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
 
 		switch(role)
 			if(JOB_SQUAD_LEADER)

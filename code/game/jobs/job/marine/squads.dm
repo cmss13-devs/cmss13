@@ -862,12 +862,12 @@
 		if(ishuman(marine))
 			human_marine = marine
 			mob_name = human_marine.real_name
-			var/area/A = get_area(human_marine)
-			var/turf/M_turf = get_turf(human_marine)
-			if(!M_turf)
+			var/area/marine_area = get_area(human_marine)
+			var/turf/marine_turf = get_turf(human_marine)
+			if(!marine_turf)
 				continue
-			if(A)
-				area_name = sanitize_area(A.name)
+			if(marine_area)
+				area_name = sanitize_area(marine_area.name)
 
 			switch(z_hidden_overwatch)
 				if(OVERWATCH_HIDE_ALMAYER)

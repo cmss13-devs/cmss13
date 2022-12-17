@@ -412,7 +412,22 @@ datum/gear/tacticalmaskblack
 	display_name = "Jungle Pattern Combat Boots"
 	path = /obj/item/clothing/shoes/marine/jungle
 	slot = WEAR_IN_BACK
-	cost = 3
+	cost = 1
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/marine_brown_boots
+	display_name = "Brown Combat Boots"
+	path = /obj/item/clothing/shoes/marine/brown
+	slot = WEAR_IN_BACK
+	cost = 1
+	allowed_origins = USCM_ORIGIN
+
+/datum/gear/browngloves
+	display_name = "Brown Combat Boots"
+	path = /obj/item/clothing/gloves/marine/brown
+	slot = WEAR_IN_BACK
+	cost = 1
+	allowed_origins = USCM_ORIGIN
 
 /datum/gear/uno_reverse_red
 	display_name = "Uno Reverse - Red"

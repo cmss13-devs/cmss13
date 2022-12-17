@@ -946,11 +946,11 @@
 			if(z_hidden_overwatch) //gibbed marines are neither on the colony nor on the almayer
 				continue
 			for(var/datum/data/record/t in GLOB.data_core.general)
-				if(t.fields["name"] == X)
+				if(t.fields["name"] == marine)
 					role = t.fields["real_rank"]
 					break
 			mob_state = SET_CLASS("DEAD", INTERFACE_RED)
-			mob_name = X
+			mob_name = marine
 
 			dead_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 

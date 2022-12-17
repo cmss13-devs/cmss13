@@ -427,7 +427,7 @@ datum/gear/tacticalmaskblack
 	path = /obj/item/clothing/gloves/marine/brown
 	slot = WEAR_IN_BACK
 	cost = 1
-	allowed_origins = USCM_ORIGIN
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/uno_reverse_red
 	display_name = "Uno Reverse - Red"

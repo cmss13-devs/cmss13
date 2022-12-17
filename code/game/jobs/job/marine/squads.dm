@@ -885,8 +885,8 @@
 
 			if(user)
 				var/turf/user_turf = get_turf(user)
-				if(M_turf)
-					var/area/mob_area = M_turf.loc
+				if(marine_turf)
+					var/area/mob_area = marine_turf.loc
 					var/area/user_area = user_turf.loc
 					if(M_turf.z == user_turf.z && mob_area.fake_zlevel == user_area.fake_zlevel)
 						dist = "[get_dist(human_marine, user)] ([dir2text_short(get_dir(user, human_marine))])"

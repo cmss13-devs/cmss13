@@ -870,7 +870,7 @@
 	return TRUE
 
 /datum/hive_status/proc/update_hugger_limit()
-	playable_hugger_limit = 2 + Ceiling(totalXenos / 8)
+	playable_hugger_limit = 2 + Ceiling(totalXenos.len / 8)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])

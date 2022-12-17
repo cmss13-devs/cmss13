@@ -52,6 +52,12 @@
 	item_state = "monkey_shoes"
 	knife_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/brown
+	name = "brown combat boots"
+	icon_state = "marine_brown_boots"
+	item_state = "marine_brown_boots"
+	knife_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/marine/upp
 	name = "military combat boots"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW

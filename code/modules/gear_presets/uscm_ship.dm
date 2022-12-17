@@ -277,7 +277,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beanie(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/req(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
 
@@ -345,10 +345,10 @@
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/vp78
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/exec(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/marine/cap(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/senior(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new sidearmpath(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -370,7 +370,6 @@
 	minimum_age = 35
 
 /datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(H), WEAR_HEAD)
 	. = ..()
 
@@ -410,10 +409,10 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/exec(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/marine/cap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/senior(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_STORE)
@@ -439,7 +438,7 @@
 		backItem = /obj/item/storage/backpack/marine
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new obj/item/clothing/under/marine/officer/junior(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/marine/cap (H), WEAR_HEAD)

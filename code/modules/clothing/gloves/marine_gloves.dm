@@ -5,7 +5,7 @@
 	name = "marine combat gloves"
 	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'."
 	icon_state = "black"
-	item_state = "bgloves"
+	item_state = "black"
 	siemens_coefficient = 0.6
 	permeability_coefficient = 0.05
 	flags_cold_protection = BODY_FLAG_HANDS
@@ -36,6 +36,12 @@
 	item_state = "lightbrowngloves"
 	siemens_coefficient = 0
 
+/obj/item/clothing/gloves/marine/brown
+	name = "brown marine gloves"
+	icon_state = "marine_brown"
+	item_state = "marine_brown"
+	adopts_squad_color = FALSE
+
 /obj/item/clothing/gloves/marine/black
 	name = "marine black combat gloves"
 	adopts_squad_color = FALSE
@@ -45,6 +51,12 @@
 	desc = "Shiny and impressive. They look expensive."
 	icon_state = "black"
 	item_state = "bgloves"
+
+/obj/item/clothing/gloves/marine/senior
+	name = "senior officer gloves"
+	desc = "White gloves, worn by senior officers of the USCM."
+	icon_state = "class_D_gloves"
+	item_state = "class_D_gloves"
 
 /obj/item/clothing/gloves/marine/officer/chief
 	name = "chief officer gloves"

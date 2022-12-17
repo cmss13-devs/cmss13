@@ -194,12 +194,21 @@
 	specialty = "marine service"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
+
+obj/item/clothing/under/marine/officer/junior
+	name = "class c uniform"
+	desc = "A formal suit, worn by both junior officers and enlisted alike. These Class-Cs have served the marine corps for centuries before you. Wear them proudly."
+	icon_state = "class_C_jumpsuit"
+	worn_state = "class_C_jumpsuit"
+	specialty = "junior uniform"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
 /obj/item/clothing/under/marine/officer/exec
-	name = "executive officer uniform"
-	desc = "A uniform typically worn by a commander Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	icon_state = "BO_jumpsuit"
-	worn_state = "BO_jumpsuit"
-	specialty = "executive officer"
+	name = "senior officer uniform"
+	desc = "A formal suit, hard to clean, and easy to spot in its white colors. These are issued out exclusively to senior officers of the USCM. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "senior_officer_uniform"
+	worn_state = "senior_officer_uniform"
+	specialty = "senior uniform"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/command
@@ -208,6 +217,14 @@
 	icon_state = "CO_jumpsuit"
 	worn_state = "CO_jumpsuit"
 	specialty = "USCM officer"
+
+/obj/item/clothing/under/marine/officer/boilersuit
+	name = "USCM boiler suit"
+	desc = "A flexible boilersuit coming in a variety of camos. The standard issue uniform for comissioned officers operating within an AO while not in a 'hands-on' capacity."
+	icon_state = "boiler_uscm"
+	worn_state = "boiler_uscm"
+	specialty = "USCM boilersuit"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/general
 	name = "general uniform"

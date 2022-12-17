@@ -1,0 +1,4 @@
+author: "SpartanBobby"
+delete-after: True
+changes:
+  - balance: "LV522: Some walls in the Atmospheric processor have been removed/replaced with windows"

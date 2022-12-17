@@ -420,7 +420,7 @@ datum/gear/tacticalmaskblack
 	path = /obj/item/clothing/shoes/marine/brown
 	slot = WEAR_IN_BACK
 	cost = 1
-	allowed_origins = USCM_ORIGIN
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/browngloves
 	display_name = "Brown Combat Boots"

@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Fixed a name name runtime caused by trying to dereference a string that is in a mixed mob-string list."

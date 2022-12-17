@@ -1,6 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - rscadd: "Flares will now land in different positions as they spin from throwing."
-  - rscadd: "Flares flame is now separate and will always face up."
-  - rscadd: "Converted flares flames to grayscale, allowing flares of any color to be made."

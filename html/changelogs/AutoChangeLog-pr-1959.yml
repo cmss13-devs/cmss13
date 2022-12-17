@@ -1,4 +1,0 @@
-author: "Unknownity"
-delete-after: True
-changes:
-  - bugfix: "Fixed a spot from being inaccessible by marines in a LV nightmare insert."

@@ -243,11 +243,16 @@
 
 /// from /mob/living/carbon/Xenomorph/attack_alien()
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
+
 #define COMSIG_XENO_OVERWATCH_XENO "xeno_overwatch_xeno"
 #define COMSIG_XENO_STOP_OVERWATCH	"xeno_stop_overwatch"
 #define COMSIG_XENO_STOP_OVERWATCH_XENO "xeno_stop_overwatch_xeno"
+
 #define COMSIG_XENO_PRE_HEAL "xeno_pre_heal"
-#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
+	#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
+
+/// From ../xeno_action/activable/xeno_spit/use_ability
+#define COMSIG_XENO_POST_SPIT "xeno_spit"
 
 /// From /mob/living/carbon/Xenomorph/revive()
 #define COMSIG_XENO_REVIVED "xeno_revived"
@@ -413,6 +418,7 @@
 /// From /obj/item/projectile/scan_a_turf(): (turf/target)
 #define COMSIG_BULLET_PRE_HANDLE_TURF "bullet_pre_handle_turf"
 	#define COMPONENT_BULLET_PASS_THROUGH (1<<0)
+#define COMSIG_BULLET_TERMINAL "bullet_terminal"
 
 /// For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called
 #define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"

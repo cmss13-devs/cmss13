@@ -91,6 +91,7 @@
 #define TOGGLE_OOC_FLAG						(1<<12) // determines if your country flag appears by your name in ooc chat
 #define TOGGLE_MIDDLE_MOUSE_SWAP_HANDS		(1<<13) //Toggle whether middle click swaps your hands
 #define TOGGLE_AMBIENT_OCCLUSION            (1<<14) // toggles if ambient occlusion is turned on or off
+#define TOGGLE_VEND_ITEM_TO_HAND            (1<<15) // This toggles whether items from vendors will be automatically put into your hand.
 
 //=================================================
 #define SHOW_ITEM_ANIMATIONS_NONE				0 //Do not show any item pickup animations
@@ -274,3 +275,8 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define GAME_STATE_PLAYING		3
 #define GAME_STATE_FINISHED		4
 
+// global vars to prevent spam of the "one xyz alive" messages
+
+var/global/last_ares_callout
+
+var/global/last_qm_callout

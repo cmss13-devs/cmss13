@@ -1543,8 +1543,8 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun,
 /obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "red"
@@ -2147,7 +2147,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	flags_atom = 18
 	},
 /turf/open/floor/corsat{
@@ -22220,7 +22220,7 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -22774,7 +22774,7 @@
 	},
 /area/corsat/gamma/engineering/atmos)
 "biE" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "greenwhite"
@@ -25217,7 +25217,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "bpW" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -28941,7 +28941,7 @@
 	},
 /area/corsat/omega/complex)
 "bAO" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "greenwhite"
@@ -44387,7 +44387,7 @@
 	},
 /area/corsat/gamma/engineering/core)
 "hBp" = (
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	flags_atom = 18
 	},
 /turf/open/floor/corsat{
@@ -52979,7 +52979,7 @@
 /obj/item/ammo_magazine/shotgun,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"

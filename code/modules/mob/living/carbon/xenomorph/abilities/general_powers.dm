@@ -628,10 +628,10 @@
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
-		if(X.hive.hive_location.hardcore || world.time > HIVECORE_COOLDOWN_CUTOFF)
+		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
 			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
 			return
-		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") == "No")
+		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") != "Yes")
 			return
 		qdel(X.hive.hive_location)
 	else if(!X.hive.can_build_structure(choice))
@@ -730,11 +730,14 @@
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(X.loc, sound_to_play, 25, 1)
 
+
 	var/obj/item/projectile/P = new /obj/item/projectile(current_turf, create_cause_data(initial(X.caste_type), X))
 	P.generate_bullet(X.ammo)
 	P.permutated += X
 	P.def_zone = X.get_limbzone_target()
 	P.fire_at(A, X, X, X.ammo.max_range, X.ammo.shell_speed)
+
+	SEND_SIGNAL(X, COMSIG_XENO_POST_SPIT)
 
 	apply_cooldown()
 	..()
@@ -919,6 +922,15 @@
 	if(!check_and_use_plasma_owner())
 		return FALSE
 
+	var/result = ability_act(stabbing_xeno, target, limb)
+
+	apply_cooldown()
+	xeno_attack_delay(stabbing_xeno)
+	..()
+	return result
+
+/datum/action/xeno_action/activable/tail_stab/proc/ability_act(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/mob/living/carbon/target, var/obj/limb/limb)
+
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
 	 /// To reset the direction if they haven't moved since then in below callback.
@@ -964,11 +976,6 @@
 	shake_camera(target, 2, 1)
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
-
-	apply_cooldown()
-	xeno_attack_delay(stabbing_xeno)
-
-	..()
 	return target
 
 /datum/action/xeno_action/activable/tail_stab/proc/reset_direction(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/last_dir, var/new_dir)

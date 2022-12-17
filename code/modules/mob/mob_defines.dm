@@ -126,6 +126,7 @@
 	var/shakecamera = 0
 	var/recovery_constant = 1
 	var/a_intent = INTENT_HELP//Living
+	var/m_intent = MOVE_INTENT_RUN
 	var/lastKnownIP = null
 	var/obj/buckled = null//Living
 	var/obj/item/l_hand = null//Living

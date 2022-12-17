@@ -1,6 +1,6 @@
 /obj/structure/machinery/portable_atmospherics
 	name = "atmoalter"
-	use_power = 0
+	use_power = USE_POWER_NONE
 	var/destroyed = 0
 
 /obj/structure/machinery/portable_atmospherics/proc/disconnect()

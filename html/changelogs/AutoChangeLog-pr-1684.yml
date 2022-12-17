@@ -1,6 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - bugfix: "Fixed burrower tremor not working on enemy xenos. Only slows large xenos."
-  - rscadd: "Ferals get a hive leader now."
-  - bugfix: "Fixed an acid ability not having an XVX damage multiplier."

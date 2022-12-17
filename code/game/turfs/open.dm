@@ -1,5 +1,6 @@
 
 //turfs with density = FALSE
+
 /turf/open
 	plane = FLOOR_PLANE
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.
@@ -7,7 +8,7 @@
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
-	var/scorchable = FALSE
+	var/scorchable = FALSE	//if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
 
@@ -71,7 +72,27 @@
 	if(scorchedness)
 		if(!icon_state_before_scorching)				//I hate you mappers, stop var editting turfs
 			icon_state_before_scorching = icon_state
-		icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
+		var/new_icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
+		if(icon_state != new_icon_state)				//no point in updating the icon_state if it would be updated to be the same thing that it was
+			icon_state = new_icon_state
+			for(var/i in GLOB.cardinals)				//but we still check so that we can update our neighbor's overlays if we do
+				var/turf/open/T = get_step(src, i)		//since otherwise they'd be stuck with overlays that were made with
+				T.update_icon()
+		for(var/i in GLOB.cardinals)
+			var/turf/open/T = get_step(src, i)
+			if(istype(T, /turf/open) && T.scorchable && T.scorchedness < scorchedness)
+				var/icon/edge_overlay
+				if(T.scorchedness)
+					edge_overlay = icon(T.icon, "[T.scorchable]_scorched[T.scorchedness]")
+				else
+					edge_overlay = icon(T.icon, T.scorchable)
+				if(!T.icon_state_before_scorching)
+					T.icon_state_before_scorching = T.icon_state
+				var/direction_from_neighbor_towards_src = get_dir(T, src)
+				var/icon/culling_mask = icon(T.icon, "[T.scorchable]_mask[turf_edgeinfo_cache[T.icon_state_before_scorching][dir2indexnum(T.dir)][dir2indexnum(direction_from_neighbor_towards_src)]]", direction_from_neighbor_towards_src)
+				edge_overlay.Blend(culling_mask, ICON_OVERLAY)
+				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
+				overlays += edge_overlay
 
 /turf/open/proc/scorch(var/heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
@@ -303,7 +324,21 @@
 	name = "grass"
 	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
-	scorchable =TRUE
+	scorchable = "grass1"
+
+/turf/open/gm/grass/Initialize(mapload, ...)
+	. = ..()
+
+	if(!locate(icon_state) in turf_edgeinfo_cache)
+		switch(icon_state)
+			if("grass1")
+				turf_edgeinfo_cache["grass1"] = GLOB.edgeinfo_full
+			if("grass2")
+				turf_edgeinfo_cache["grass2"] = GLOB.edgeinfo_full
+			if("grassbeach")
+				turf_edgeinfo_cache["grassbeach"] = GLOB.edgeinfo_edge
+			if("gbcorner")
+				turf_edgeinfo_cache["gbcorner"] = GLOB.edgeinfo_corner
 
 /turf/open/gm/dirt2
 	name = "dirt"
@@ -314,13 +349,24 @@
 	name = "grass"
 	icon_state = "grassdirt_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder
-	scorchable = TRUE
+	scorchable = "grass1"
+
+/turf/open/gm/dirtgrassborder/Initialize(mapload, ...)
+	. = ..()
+
+	if(!locate(icon_state) in turf_edgeinfo_cache)
+		switch(icon_state)
+			if("grassdirt_edge")
+				turf_edgeinfo_cache["grassdirt_edge"] = GLOB.edgeinfo_edge
+			if("grassdirt_corner")
+				turf_edgeinfo_cache["grassdirt_corner"] = GLOB.edgeinfo_corner
+			if("grassdirt_corner2")
+				turf_edgeinfo_cache["grassdirt_corner2"] = GLOB.edgeinfo_corner2
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"
 	icon_state = "grassdirt2_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder2
-	scorchable = TRUE
 
 /turf/open/gm/river
 	name = "river"

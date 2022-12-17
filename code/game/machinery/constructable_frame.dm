@@ -7,7 +7,7 @@
 	var/base_state = "box"
 	density = 0
 	anchored = 1
-	use_power = 0
+	use_power = USE_POWER_NONE
 	var/requirements_left
 	var/obj/item/circuitboard/machine/circuit = null
 	var/list/components = null

@@ -28,6 +28,7 @@
 
 	var/damage_mult = 1
 	var/accuracy_mult = 1
+	var/burst = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
 
 	var/obj/item/device/sentry_computer/linked_laptop = null
@@ -37,23 +38,13 @@
 
 	// action list is configurable for all subtypes, this is just an example
 	var/list/choice_categories = list(
-		"SYSTEM MODE" = list("AUTO-REMOTE", "MAN_OVERRIDE", "SEMI-AUTO"),
-		"WEAPON STATUS" = list("SAFE", "ARMED"),
+		"RATE OF FIRE" = list("SINGLE", "BURST", "FULL-AUTO"),
 		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
-		"TEST ROUTINE" = list("AUTO","SELECTIVE"),
-		"TARGET PROFILE" = list("SOFT", "SEMIHARD", "HARD"),
-		"SPECIAL PROFILE" = list("BIO", "INERT"),
-		"TARGET SELECT" = list("MULTI SPEC", "INFRA RED", "UV")
 	)
 
 	var/list/selected_categories = list(
-		"SYSTEM MODE" = "AUTO-REMOTE",
-		"WEAPON STATUS" = "SAFE",
+		"RATE OF FIRE" = "SINGLE",
 		"IFF STATUS" = "USMC",
-		"TEST ROUTINE" = "AUTO",
-		"TARGET PROFILE" = "SOFT",
-		"SPECIAL PROFILE" = "BIO",
-		"TARGET SELECT" = "MULTI SPEC"
 	)
 
 /obj/structure/machinery/defenses/sentry/Initialize()
@@ -148,14 +139,14 @@
 			if("IFF STATUS")
 				switch(selection)
 					if("USMC")
-						world.log << "iff usmc"
 						faction_group = FACTION_LIST_MARINE
 					if("WY")
-						world.log << "iff wy"
 						faction_group = FACTION_LIST_MARINE_WY
 					if("HUMAN")
-						world.log << "iff human"
 						faction_group = FACTION_LIST_HUMANOID
+			if("RATE OF FIRE")
+				handle_rof(selection)
+				return TRUE
 		return TRUE
 	else
 		if(category == "nickname")
@@ -164,6 +155,21 @@
 	return FALSE
 
 	// do your switch case here to implement action and selection
+
+/obj/structure/machinery/defenses/sentry/proc/handle_rof(var/level)
+	switch(level)
+		if("SINGLE")
+			burst = 1
+			accuracy_mult = 1
+			fire_delay = 4
+		if("BURST")
+			burst = 3
+			accuracy_mult = 0.6
+			fire_delay = 4
+		if("FULL-AUTO")
+			burst = 1
+			accuracy_mult = 0.5
+			fire_delay = 0.5
 
 /obj/structure/machinery/defenses/sentry/get_examine_text(mob/user)
 	. = ..()
@@ -308,8 +314,8 @@
 
 	if(omni_directional)
 		setDir(get_dir(src, A))
-
-	actual_fire(A)
+	for(var/i = 0; i < burst; i++)
+		actual_fire(A)
 
 	if(targets.len)
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
@@ -322,6 +328,9 @@
 	broadcast_timer = null
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
+	if(ammo.current_rounds == 0)
+		handle_empty()
+		return
 	var/obj/item/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))
 	new_projectile.generate_bullet(new ammo.default_ammo)
 	new_projectile.damage *= damage_mult

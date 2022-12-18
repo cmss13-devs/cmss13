@@ -1347,7 +1347,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	name = "\improper M276 pattern SU-6 Smartpistol holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the SU-6 smartpistol."
 	icon_state = "smartpistol_holster"
-	storage_slots = 6
+	storage_slots = 7
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -5,
@@ -1358,10 +1358,17 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	)
 	has_gamemode_skin = TRUE
 
+/obj/item/storage/belt/gun/smartpistol/full
+	var/has_gun = TRUE
+
 /obj/item/storage/belt/gun/smartpistol/full/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/smart())
+	if(has_gun)
+		handle_item_insertion(new /obj/item/weapon/gun/pistol/smart())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/smart(src)
+
+/obj/item/storage/belt/gun/smartpistol/full/no_gun
+	has_gun = FALSE
 
 /obj/item/storage/belt/gun/flaregun
 	name = "\improper M276 pattern M82F flare gun holster rig"

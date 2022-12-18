@@ -562,8 +562,8 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 25
-	penetration= ARMOR_PENETRATION_TIER_5
+	damage = 30
+	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /*

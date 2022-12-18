@@ -1,3 +1,4 @@
+#define JOIN_AS_FACEHUGGER_DELAY 3 MINUTES
 
 // Actual caste datum basedef
 /datum/caste_datum
@@ -870,7 +871,7 @@
 	return TRUE
 
 /datum/hive_status/proc/update_hugger_limit()
-	playable_hugger_limit = 2 + Ceiling(totalXenos.len / 8)
+	playable_hugger_limit = 2 + Ceiling(totalXenos.len / 4)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
@@ -878,8 +879,8 @@
 	if(world.time < hugger_timelock)
 		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
 		return FALSE
-	if(world.time - user.timeofdeath < 3 MINUTES)
-		var/time_left = round((user.timeofdeath + 3 MINUTES - world.time) / 10)
+	if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
+		var/time_left = round((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
 	if(totalXenos.len <= 0)

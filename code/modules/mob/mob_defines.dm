@@ -49,7 +49,8 @@
 	var/monkeyizing = null	//Carbon
 	var/hand = null
 	var/eye_blind = null	//Carbon
-	var/eye_blurry = null	//Carbon
+	/// Does the mob have blurry sight
+	var/eye_blurry = 0 //Carbon
 	var/ear_deaf = null		//Carbon
 	var/ear_damage = null	//Carbon
 	var/stuttering = null	//Carbon

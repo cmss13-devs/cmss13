@@ -157,7 +157,7 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] on [key_name(M)]</font>")
 		msg_admin_attack("[key_name(user)] used the [src.name] on [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-		M.eye_blurry += force/7
+		M.EyeBlur(force/7)
 		if(prob(20))
 			M.apply_effect(force/6, PARALYZE)
 			M.apply_effect(force/15, WEAKEN)

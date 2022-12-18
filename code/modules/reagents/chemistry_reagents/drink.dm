@@ -84,7 +84,7 @@
 	on_mob_life(mob/living/M)
 		. = ..()
 		if(!.) return
-		M.eye_blurry = max(M.eye_blurry-1 , 0)
+		M.ReduceEyeBlur(1)
 		M.eye_blind = max(M.eye_blind-1 , 0)
 		if(!data) data = 1
 		switch(data)

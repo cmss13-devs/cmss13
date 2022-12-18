@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - refactor: "Refactored weed slowdown to work based on a signal sent to the recipient carrying list data."
-  - code_imp: "Added a variable for weed slowdown multiplier to species. Human Heroes have 0.5 weed slowdown because haha funny. Transferred Yautja's weed immunity to species."

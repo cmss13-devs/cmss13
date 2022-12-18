@@ -562,3 +562,43 @@
   - rscadd: Flares flame is now separate and will always face up.
   - rscadd: Converted flares flames to grayscale, allowing flares of any color to
       be made.
+2022-12-18:
+  Drathek, SubjectD9341:
+  - rscadd: Standard issue marine backpacks can now be equipped to most allied xenos
+      (Runners/Praetorians/Drones/Defenders/Warriors/Sentinels/Spitters) and accessed.
+      Use a pack in help intent on a xeno to strap it to her after a duration. Access
+      it with an empty hand in help intent after a duration. Drag a xeno with a pack
+      to you when you have an empty hand to unstrap it from her after a duration.
+  - rscadd: Added the Shake verb to storage items. Humans and xenos can now shake
+      emptyable inventories which has a 75% chance to drop an item if there are any.
+      Xenos also have a 25% chance to cause the pack fall off them when empty.
+  - balance: Resin fruit is now class size medium but size cost large so five can
+      fit in a backpack.
+  - soundadd: Emptying a storage item now uses the existing rustle sound (or whatever
+      use_sound its configured to use).
+  - soundadd: Unequipping a backpack now uses the existing rustle sound (or whatever
+      use_sound its configured to use).
+  - imageadd: Added sprites for regular and medical packs on Runners/Praetorians/Drones/Defenders/Warriors/Sentinels/Spitters.
+  - code_imp: Any storage item that is STORAGE_ALLOW_EMPTY now either adds/removes
+      empty_verb and toggle_click_empty depending on if the user is a xeno.
+  - code_imp: Refactored /atom/movable/vis_obj/xeno_wounds so it can be more generic
+      as just vis_obj (now it will be used by both wounds and packs and packs don't
+      need to be xeno_wounds) and use VIS_INHERIT_DIR instead of a signal.
+  - bugfix: Xeno wounds no longer inherit hive color.
+  SpartanBobby:
+  - balance: 'LV522: Some walls in the Atmospheric processor have been removed/replaced
+      with windows'
+  ThePiachu:
+  - rscadd: Added a set of Super Snowflake Vendors for admins and devs to play with.
+      If you spawn the base one you can stock it with any item and its subtypes as
+      defined when you first spawn it / interact with it.
+  carlarctg:
+  - refactor: Refactored weed slowdown to work based on a signal sent to the recipient
+      carrying list data.
+  - code_imp: Added a variable for weed slowdown multiplier to species. Human Heroes
+      have 0.5 weed slowdown because haha funny. Transferred Yautja's weed immunity
+      to species.
+  realforest2001:
+  - rscadd: Corporate Security radio renamed to Corporate, changed corporate equipment
+      presets to use it also.
+  - rscadd: Added Japanese to all corporate presets, including survivors.

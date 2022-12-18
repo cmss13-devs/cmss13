@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Corporate Security radio renamed to Corporate, changed corporate equipment presets to use it also."
-  - rscadd: "Added Japanese to all corporate presets, including survivors."

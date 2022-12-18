@@ -9,8 +9,28 @@
 	health = 200
 	health_max = 200
 
+	choice_categories = list(
+		"RATE OF FIRE" = list("SINGLE", "FULL-AUTO"),
+		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
+	)
+
+	selected_categories = list(
+		"RATE OF FIRE" = "SINGLE",
+		"IFF STATUS" = "USMC",
+	)
+
 /obj/structure/machinery/defenses/sentry/flamer/Initialize()
 	. = ..()
+
+/obj/structure/machinery/defenses/sentry/flamer/handle_rof(var/level)
+	burst = 1
+	switch(level)
+		if("SINGLE")
+			accuracy_mult = 1
+			fire_delay = 4
+		if("FULL-AUTO")
+			accuracy_mult = 0.1
+			fire_delay = 0.5
 
 /obj/structure/machinery/defenses/sentry/flamer/actual_fire(var/atom/A)
 	var/obj/item/projectile/P = new(create_cause_data(initial(name), owner_mob))

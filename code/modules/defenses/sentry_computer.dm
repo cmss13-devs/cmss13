@@ -176,8 +176,9 @@
 	if(sentry.linked_laptop == src)
 		sentry.linked_laptop = null
 		unpair_sentry(sentry)
+		to_chat(user, SPAN_NOTICE("Decrypted structure."))
 	else
-		to_chat(user, SPAN_WARNING("Sentry gun is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
+		to_chat(user, SPAN_WARNING("Structure is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
 
 /obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/sentry/target)
 	paired_sentry +=list(target)
@@ -236,21 +237,25 @@
 
 	for(var/sentry in paired_sentry)
 		var/list/sentry_holder = list()
-		var/obj/structure/machinery/defenses/sentry/sentrygun = sentry
-		if(current == sentrygun)
+		var/obj/structure/machinery/defenses/defence = sentry
+		if(current == defence)
 			.["camera_target"] = index
 		index += 1
-		sentry_holder["rounds"] = sentrygun.ammo.current_rounds
-		sentry_holder["area"] = get_area(sentrygun)
-		sentry_holder["active"] = sentrygun.turned_on
-		sentry_holder["engaged"] = length(sentrygun.targets)
-		sentry_holder["nickname"] = sentrygun.nickname
-		sentry_holder["camera_available"] = sentrygun.has_camera && sentrygun.placed
+
+		sentry_holder["area"] = get_area(defence)
+		sentry_holder["active"] = defence.turned_on
+		sentry_holder["nickname"] = defence.nickname
+		sentry_holder["camera_available"] = defence.has_camera && defence.placed
 		sentry_holder["selection_state"] = list()
-		sentry_holder["iff_status"] = sentrygun.faction_group
-		sentry_holder["kills"] = sentrygun.kills
-		for(var/i in sentrygun.selected_categories)
-			sentry_holder["selection_state"] += list(list("[i]", sentrygun.selected_categories[i]))
+		sentry_holder["kills"] = defence.kills
+		sentry_holder["iff_status"] = defence.faction_group
+		for(var/i in defence.selected_categories)
+			sentry_holder["selection_state"] += list(list("[i]", defence.selected_categories[i]))
+		if(istype(defence, /obj/structure/machinery/defenses/sentry))
+			var/obj/structure/machinery/defenses/sentry/sentrygun = sentry
+			sentry_holder["rounds"] = sentrygun.ammo.current_rounds
+			sentry_holder["engaged"] = length(sentrygun.targets)
+
 		.["sentry"] += list(sentry_holder)
 
 /obj/item/device/sentry_computer/tgui_interact(mob/user, datum/tgui/ui)
@@ -333,7 +338,6 @@
 	last_camera_turf = get_turf(cam_location)
 	current.set_range()
 	var/datum/shape/rectangle/current_bb = current.range_bounds
-	var/z_axis = current.loc.z
 	var/x_size = current_bb.width
 	var/y_size = current_bb.height
 	var/target = locate(current_bb.center_x, current_bb.center_y, current.loc.z)

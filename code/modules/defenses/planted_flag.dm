@@ -15,6 +15,14 @@
 
 	can_be_near_defense = TRUE
 
+	choice_categories = list(
+		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
+	)
+
+	selected_categories = list(
+		"IFF STATUS" = "USMC",
+	)
+
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()

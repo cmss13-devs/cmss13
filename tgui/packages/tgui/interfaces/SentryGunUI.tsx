@@ -15,15 +15,16 @@ interface ElectricalSpec {
 interface SentrySpec {
   selection_state: SelectedState[];
   selection_menu: SelectionState[];
-  rounds: number;
+  rounds?: number;
   name: string;
   area: string;
   active: 0 | 1;
   index: number;
-  engaged: number;
+  engaged?: number;
   nickname: string;
   kills: number;
   iff_status: string[];
+  camera_available: number;
 }
 
 interface SentryData {
@@ -112,7 +113,10 @@ const TitleSection = (props: { data: SentrySpec }, context) => {
 
 const GunMenu = (props: { data: SentrySpec }, context) => {
   const { act } = useBackend<SentryData>(context);
-  const isEngaged = props.data.engaged > 1;
+  const isEngaged = props.data.engaged !== undefined && props.data.engaged > 1;
+  const iff_info = props.data.selection_state.find(
+    (x) => x[0].localeCompare('IFF STATUS') === 0
+  )?.[1];
   return (
     <Flex direction="column">
       <Flex.Item>
@@ -136,28 +140,36 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
           {props.data.active === 1 && <span>Online</span>}
         </Box>
       </Flex.Item>
-      <Flex.Item>
-        <Box
-          height="3rem"
-          className={classes(['EngagedBox', isEngaged && 'EngagedWarningBox'])}>
-          {!isEngaged && <span>Not Engaged</span>}
-          {isEngaged && <span>ENGAGED</span>}
-        </Box>
-      </Flex.Item>
+      {props.data.engaged !== undefined && (
+        <Flex.Item>
+          <Box
+            height="3rem"
+            className={classes([
+              'EngagedBox',
+              isEngaged && 'EngagedWarningBox',
+            ])}>
+            {!isEngaged && <span>Not Engaged</span>}
+            {isEngaged && <span>ENGAGED</span>}
+          </Box>
+        </Flex.Item>
+      )}
       <Flex.Item>
         <Box className="EngagedBox">
           <span>Kills: {props.data.kills}</span>
         </Box>
       </Flex.Item>
-      <Flex.Item>
-        <Box className="IFFBox">
-          <span>IFF: {props.data.iff_status.join(', ')}</span>
-        </Box>
-      </Flex.Item>
+      {iff_info && (
+        <Flex.Item>
+          <Box className="IFFBox">
+            <span>IFF: {iff_info}</span>
+          </Box>
+        </Flex.Item>
+      )}
       <Flex.Item>
         <Stack>
           <Stack.Item>
             <Button
+              disabled={props.data.camera_available === 0}
               icon="video"
               onClick={() => act('set-camera', { index: props.data.index })}
             />
@@ -420,7 +432,7 @@ export const SentryGunUI = (_, context) => {
       : (selectedSentry ?? 0) < sentrySpecs.length;
 
   return (
-    <Window theme="crtyellow">
+    <Window theme="crtyellow" height={700}>
       <Window.Content className="SentryGun">
         <Flex justify="space-between" align-items="center">
           <Flex.Item>

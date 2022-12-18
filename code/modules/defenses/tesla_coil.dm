@@ -17,6 +17,16 @@
 	health_max = 150
 	display_additional_stats = TRUE
 
+	has_camera = FALSE
+
+	choice_categories = list(
+		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
+	)
+
+	selected_categories = list(
+		"IFF STATUS" = "USMC",
+	)
+
 
 /obj/structure/machinery/defenses/tesla_coil/Initialize()
 	. = ..()

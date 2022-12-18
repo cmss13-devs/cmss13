@@ -81,6 +81,9 @@
 
 
 /mob/living/carbon/Xenomorph/proc/tunnel(var/turf/T)
+	if(!check_state())
+		return
+
 	if(!burrow)
 		to_chat(src, SPAN_NOTICE("You must be burrowed to do this."))
 		return

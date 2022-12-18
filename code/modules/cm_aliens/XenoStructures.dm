@@ -163,7 +163,7 @@
 		return .
 	var/mob/living/carbon/Xenomorph/X = AM
 	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
-		X.next_move_slowdown = X.next_move_slowdown + (slow_amt * WEED_XENO_SPEED_MULT)
+		X.next_move_slowdown = X.next_move_slowdown + slow_amt
 		return .
 
 /obj/effect/alien/resin/spike

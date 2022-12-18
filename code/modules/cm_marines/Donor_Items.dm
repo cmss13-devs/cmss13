@@ -1309,6 +1309,8 @@
 	desc = "Black gloves, favored by Special Operations teams.  DONOR ITEM"
 	name = "Black Ops Black Gloves"
 
+/obj/item/storage/backpack/marine/fluff
+	xeno_types = null
 
 /obj/item/storage/backpack/marine/fluff/Sado
 	name = "Tanya's Backpack"

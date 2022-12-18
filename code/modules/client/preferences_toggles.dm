@@ -424,7 +424,7 @@
 		CRASH("receive_random_tip() failed: empty list")
 
 	if(message)
-		to_chat(src, "<span class='purple'><b>Random Tip: </b>[html_encode(message)]</span>")
+		to_chat(src, SPAN_PURPLE("<b>Random Tip: </b>[html_encode(message)]"))
 		return TRUE
 	else
 		CRASH("receive_random_tip() failed: null message")

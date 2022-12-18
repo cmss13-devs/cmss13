@@ -131,7 +131,7 @@
 			to_chat(usr, SPAN_DANGER("This weapon is ineffective, it does no damage."))
 			for(var/mob/M as anything in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O].", SHOW_MESSAGE_VISIBLE))
+					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O]."), SHOW_MESSAGE_VISIBLE)
 
 /mob/living/simple_animal/spiderbot/proc/transfer_personality(var/obj/item/device/mmi/M as obj)
 

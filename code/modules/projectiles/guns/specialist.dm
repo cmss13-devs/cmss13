@@ -90,6 +90,8 @@
 		f_aiming_time *= 0.5
 
 	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-sniper", dir = get_cardinal_dir(M, H))
+	I.pixel_x = -M.pixel_x + M.base_pixel_x
+	I.pixel_y = (M.icon_size - world.icon_size) * 0.5 - M.pixel_y + M.base_pixel_y
 	M.overlays += I
 	if(H.client)
 		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
@@ -105,8 +107,8 @@
 		return
 
 	var/obj/item/projectile/P = sniper_rifle.in_chamber
-	P.homing_target = M
-	P.projectile_override_flags |= AMMO_HOMING
+	P.projectile_flags |= PROJECTILE_BULLSEYE
+	P.AddComponent(/datum/component/homing_projectile, M, H)
 	sniper_rifle.Fire(M, H)
 
 /datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M, var/cover_lose_focus)
@@ -900,11 +902,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 /obj/item/weapon/gun/launcher/rocket/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		/*var/turf/current_turf = get_turf(user)
-		if (is_mainship_level(current_turf.z) || is_loworbit_level(current_turf.z)) //Can't fire on the Almayer, bub.
-			click_empty(user)
-			to_chat(user, SPAN_WARNING("You can't fire that here!"))
-			return 0*/
 		if(skill_locked && !skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return 0
@@ -1018,7 +1015,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
 /obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
-
+	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
 		var/mob/living/carbon/human/huser = user
 		to_chat(user, SPAN_WARNING("Augh!! \The [src]'s launch blast resonates extremely loudly in your ears! You probably should have worn some sort of ear protection..."))
@@ -1036,8 +1033,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			C.apply_effect(4, STUN) //For good measure
 			C.apply_effect(6, STUTTER)
 			C.emote("pain")
-
-		..()
 
 //-------------------------------------------------------
 //M5 RPG'S MEAN FUCKING COUSIN

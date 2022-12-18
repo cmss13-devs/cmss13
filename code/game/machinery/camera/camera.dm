@@ -3,7 +3,7 @@
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "autocam_editor"
-	use_power = 2
+	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
 	active_power_usage = 10
 	layer = FLY_LAYER

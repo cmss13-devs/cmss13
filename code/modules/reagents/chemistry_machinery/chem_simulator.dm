@@ -638,7 +638,7 @@
 	C.properties = list()
 	C.custom_metabolism = REAGENTS_METABOLISM
 	C.color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
-	C.burncolor = color
+	C.burncolor = C.color
 	for(var/datum/chem_property/P in creation_template)
 		C.insert_property(P.name, P.level)
 	creation_name = "" //reset it

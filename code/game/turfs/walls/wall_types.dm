@@ -70,13 +70,19 @@
 	icon = 'icons/turf/walls/almayer_white.dmi'
 	icon_state = "wwall"
 
+/turf/closed/wall/almayer/white/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
 /turf/closed/wall/almayer/white/outer_tile
 	tiles_with = list(/turf/closed/wall/almayer/white,/turf/closed/wall/almayer/outer)
 
 /turf/closed/wall/almayer/white/hull
-	name = "research hull"
+	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	hull = 1
+	icon_state = "hull"
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0
@@ -1093,7 +1099,7 @@
 		return
 
 	var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
-	new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING)
+	new_proj.generate_bullet(P.ammo)
 	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
 	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
 
@@ -1103,7 +1109,8 @@
 
 	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
 	var/atom/target = get_angle_target_turf(src, angle, get_dist(src, P.firer))
-	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed, is_shrapnel = TRUE)
+	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
+	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed)
 
 	return TRUE
 

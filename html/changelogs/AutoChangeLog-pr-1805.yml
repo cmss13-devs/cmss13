@@ -1,5 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - qol: "When you refill a Pressurized Reagent Canister Pouch with a Reagent Tank you now also automatically refill its autoinjector so you will be fully topped up in one click!"
-  - code_imp: "Simplified a casting of an autoinjector to a too detailed type during Pressurized Reagent Canister Pouch initialisation."

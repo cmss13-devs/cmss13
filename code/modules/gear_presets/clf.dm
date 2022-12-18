@@ -69,7 +69,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full/random(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/cmb(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(H), WEAR_BACK)
 	if(prob(50))
 		spawn_rebel_smg(H)
 	else
@@ -178,13 +178,16 @@
 	spawn_rebel_shoes(H)
 	spawn_rebel_gloves(H)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/refurbished, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/welding, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)

@@ -1,6 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - code_imp: "in ASRS menu change armor to Restricted equipment and change hardpoint_module to vehicle ammo."
-  - code_imp: "also added a reagent tank, a gear, a mortar, an explosive and a research supply group."
-  - code_imp: "moved all the corresponding code to their group."

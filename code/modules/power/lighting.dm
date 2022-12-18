@@ -134,7 +134,7 @@
 	desc = "A bright fluorescent tube light. Looking at it for too long makes your eyes go watery."
 	anchored = 1
 	layer = FLY_LAYER
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
@@ -287,10 +287,10 @@
 					on = 0
 					SetLuminosity(0)
 			else
-				update_use_power(2)
+				update_use_power(USE_POWER_ACTIVE)
 				SetLuminosity(brightness)
 	else
-		update_use_power(0)
+		update_use_power(USE_POWER_NONE)
 		SetLuminosity(0)
 
 	if(on != on_gs)
@@ -722,7 +722,7 @@
 	anchored = 1
 	density = 0
 	layer = BELOW_TABLE_LAYER
-	use_power = 2
+	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list

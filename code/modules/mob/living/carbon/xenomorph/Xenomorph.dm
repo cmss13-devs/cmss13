@@ -335,6 +335,7 @@
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
+	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
 
 /mob/living/carbon/Xenomorph/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	var/area/A = get_area(src)
@@ -566,7 +567,8 @@
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = in_hive.color
+	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
+		color = in_hive.color
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
@@ -650,7 +652,7 @@
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/xeno = user
 		if(hivenumber != xeno.hivenumber)
-			. += "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive."
+			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
@@ -701,6 +703,9 @@
 
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
+	if(backpack_icon_carrier)
+		vis_contents -= backpack_icon_carrier
+		QDEL_NULL(backpack_icon_carrier)
 
 	QDEL_NULL(iff_tag)
 

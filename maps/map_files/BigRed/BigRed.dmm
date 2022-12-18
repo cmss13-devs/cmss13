@@ -35,7 +35,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aag" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing/floor,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -927,7 +927,7 @@
 "acu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
@@ -2565,14 +2565,14 @@
 /area/bigredv2/outside/marshal_office)
 "agE" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshal_office)
 "agF" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -2581,7 +2581,7 @@
 /area/bigredv2/outside/marshal_office)
 "agG" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
@@ -8063,7 +8063,7 @@
 	},
 /area/bigredv2/outside/medical)
 "auQ" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteblue";
@@ -8639,7 +8639,7 @@
 	},
 /area/bigredv2/outside/medical)
 "awk" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -9132,7 +9132,7 @@
 	},
 /area/bigredv2/outside/medical)
 "axC" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue"
@@ -10207,7 +10207,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aAt" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -12982,7 +12982,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aHr" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 10;
@@ -22721,7 +22721,7 @@
 /area/bigredv2/outside/office_complex)
 "bgP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing/floor,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -25556,7 +25556,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bsa" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing/floor,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -30928,7 +30928,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "eGa" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_17";
 	tag = "icon-mars_cave_17"
@@ -33671,6 +33671,10 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves/mining)
+"jYF" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "jYS" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/miner,
@@ -33851,7 +33855,7 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/plating{
 	dir = 8;
@@ -35016,7 +35020,7 @@
 	},
 /area/bigredv2/outside/lz1_north_cas)
 "mFT" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/landmark/corpsespawner/russian,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/mars_cave{
@@ -37887,7 +37891,7 @@
 /area/bigredv2/caves/mining)
 "rXy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary{
 	pixel_y = 12
@@ -41396,7 +41400,7 @@
 	},
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/security/marshal,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -53819,7 +53823,7 @@ bmi
 bmi
 bpe
 axX
-bmi
+jYF
 bmi
 bmi
 bmg

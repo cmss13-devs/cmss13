@@ -800,22 +800,58 @@
 	else
 		hive_ui.update_pooled_larva()
 
-/mob/living/carbon/proc/ally_of_hivenumber(var/hivenumber)
-	var/datum/hive_status/H = GLOB.hive_datum[hivenumber]
-	if(!H)
+/datum/hive_status/proc/do_buried_larva_spawn(mob/xeno_candidate)
+	var/spawning_area
+	if(hive_location)
+		spawning_area = hive_location
+	else if(living_xeno_queen)
+		spawning_area = living_xeno_queen
+	else for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
+		if(isXenoLarva(xenomorpheus) || isXenoBuilder(xenomorpheus)) //next to xenos that should be in a safe spot
+			spawning_area = xenomorpheus
+	if(!spawning_area)
+		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
+	var/list/turf_list
+	for(var/turf/open/open_turf in orange(3, spawning_area))
+		LAZYADD(turf_list, open_turf)
+	var/turf/open/spawning_turf = pick(turf_list)
+
+	var/mob/living/carbon/Xenomorph/Larva/new_xeno = spawn_hivenumber_larva(spawning_turf, hivenumber)
+	if(isnull(new_xeno))
 		return FALSE
 
-	return H.is_ally(src)
+	if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
+		qdel(new_xeno)
+		return FALSE
+	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of \the [spawning_turf]!"),
+	SPAN_XENODANGER("You burrow out of \the [spawning_turf] and awaken from your slumber. For the Hive!"))
+	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[spawning_turf.x];Y=[spawning_turf.y];Z=[spawning_turf.z]'>JMP</a>)")
+	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
+	if(new_xeno.client)
+		if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+			window_flash(new_xeno.client)
 
-/datum/hive_status/proc/is_ally(var/mob/living/carbon/C)
-	if(isXeno(C) && C.hivenumber == hivenumber)
-		var/mob/living/carbon/Xenomorph/X = C
-		return !X.banished
+	stored_larva--
+	hive_ui.update_pooled_larva()
 
-	if(!C.faction)
+/mob/living/proc/ally_of_hivenumber(var/hivenumber)
+	var/datum/hive_status/indexed_hive = GLOB.hive_datum[hivenumber]
+	if(!indexed_hive)
 		return FALSE
 
-	return faction_is_ally(C.faction)
+	return indexed_hive.is_ally(src)
+
+/datum/hive_status/proc/is_ally(var/mob/living/living_mob)
+	if(isXeno(living_mob))
+		var/mob/living/carbon/Xenomorph/zenomorf = living_mob
+		if(zenomorf.hivenumber == hivenumber)
+			return !zenomorf.banished
+
+	if(!living_mob.faction)
+		return FALSE
+
+	return faction_is_ally(living_mob.faction)
 
 /datum/hive_status/proc/faction_is_ally(var/faction, var/ignore_queen_check = FALSE)
 	if(faction == internal_faction)
@@ -826,6 +862,8 @@
 	return allies[faction]
 
 /datum/hive_status/proc/can_delay_round_end(var/mob/living/carbon/Xenomorph/xeno)
+	if(HAS_TRAIT(src, TRAIT_NO_HIVE_DELAY))
+		return FALSE
 	return TRUE
 
 /datum/hive_status/corrupted
@@ -918,7 +956,7 @@
 	return FALSE
 
 /datum/hive_status/yautja
-	name = "Yautja Hive"
+	name = "Hellhound Pack"
 	hivenumber = XENO_HIVE_YAUTJA
 	internal_faction = FACTION_YAUTJA
 
@@ -939,7 +977,7 @@
 	color = "#6abd99"
 	ui_color = "#6abd99"
 
-	hive_inherant_traits = list(TRAIT_XENONID)
+	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"

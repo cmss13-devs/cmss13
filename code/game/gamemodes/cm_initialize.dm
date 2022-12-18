@@ -56,7 +56,7 @@ Additional game mode variables.
 	var/merc_starting_num 	= 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
 	var/pred_current_num 	= 0 //How many are there now?
-	var/pred_per_players 	= 40 //Preds per player
+	var/pred_per_players 	= 80 //Preds per player
 	var/pred_start_count	= 4 //The initial count of predators
 
 	var/pred_additional_max = 0
@@ -179,7 +179,7 @@ Additional game mode variables.
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", "Yes", "No") == "No")
+	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", "Yes", "No") != "Yes")
 		return
 
 	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
@@ -350,13 +350,12 @@ Additional game mode variables.
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		var/obj/effect/alien/resin/special/pool/SP = hive.spawn_pool
-		if(!isnull(SP) && SP.can_spawn_larva())
+		if(!hive.hardcore && hive.stored_larva && (hive.spawn_pool || (world.time < 30 MINUTES + SSticker.round_start_time)))
 			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
-				available_xenos |= "pooled larva"
-				LAZYADD(available_xenos["pooled larva"], hive)
+				available_xenos |= "any buried larva"
+				LAZYADD(available_xenos["any buried larva"], hive)
 			else
-				var/larva_option = "pooled larva ([hive])"
+				var/larva_option = "buried larva ([hive])"
 				available_xenos += larva_option
 				available_xenos[larva_option] = list(hive)
 
@@ -369,9 +368,8 @@ Additional game mode variables.
 		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
 		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
-			var/datum/hive_status/H = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
-			var/obj/effect/alien/resin/special/pool/SP = H.spawn_pool
-			if(!isnull(SP) && SP.can_spawn_larva()) //isnull() is checked here, in case the spawn pool gets destroyed while the menu is open.
+			var/datum/hive_status/picked_hive = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
+			if(picked_hive.stored_larva)
 				if(!xeno_bypass_timer)
 					var/deathtime = world.time - xeno_candidate.timeofdeath
 					if(isnewplayer(xeno_candidate))
@@ -379,20 +377,26 @@ Additional game mode variables.
 					if(deathtime < 2.5 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
 						var/message = SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)].")
 						to_chat(xeno_candidate, message)
-						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
+						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game as a buried larva!"))
 						return FALSE
 
-				for(var/mob_name in SP.linked_hive.banished_ckeys)
-					if(SP.linked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-						to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
+				for(var/mob_name in picked_hive.banished_ckeys)
+					if(picked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+						to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [picked_hive], you may not rejoin unless the Queen re-admits you or dies."))
 						return
 				if(isnewplayer(xeno_candidate))
-					var/mob/new_player/N = xeno_candidate
-					N.close_spawn_windows()
-				SP.spawn_pooled_larva(xeno_candidate)
+					var/mob/new_player/noob = xeno_candidate
+					noob.close_spawn_windows()
+				if(picked_hive.spawn_pool)
+					picked_hive.spawn_pool.spawn_pooled_larva(xeno_candidate)
+				else if((world.time < 30 MINUTES + SSticker.round_start_time))
+					picked_hive.do_buried_larva_spawn(xeno_candidate)
+				else
+					to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
+					return FALSE
 				return TRUE
 			else
-				to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again"))
+				to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
 				return FALSE
 
 		if(!isXeno(userInput) || !xeno_candidate)

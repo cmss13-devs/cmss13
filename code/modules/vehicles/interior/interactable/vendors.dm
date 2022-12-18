@@ -323,7 +323,7 @@
 		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
 		list("M10 Pattern Marine Helmet", round(scale * 3), /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Marine Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine, VENDOR_ITEM_REGULAR),
-		list("M3-H Pattern Heavy Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Heavy Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", round(scale * 1), /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 		)
 

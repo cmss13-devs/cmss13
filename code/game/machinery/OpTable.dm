@@ -14,7 +14,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	climbable = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 1
 	active_power_usage = 5
 	var/strapped = 0.0

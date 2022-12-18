@@ -133,6 +133,8 @@
 		list("JTAC Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/jtac, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/engineer, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", round(scale * 0.1), /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
+		list("Spare PDT/L Battle Buddy Kit", round(scale * 4), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
+		list("W-Y brand rechargeable mini-battery", round(scale * 3), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/stock(obj/item/item_to_stock, mob/user)
@@ -193,7 +195,7 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall/almayer)
- 
+
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
 	desc = "An automated supply rack hooked up to a small storage of various firearms and explosives. Can be accessed by any Marine Rifleman."
@@ -257,7 +259,8 @@
 		list("Machete Scabbard (Full)", round(scale * 5), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
 		list("Binoculars", round(scale * 1), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
 		list("MB-6 Folding Barricades (x3)", round(scale * 2), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
-		list("Spare PDT/L Battle Buddy Kit", round(scale * 1), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR)
+		list("Spare PDT/L Battle Buddy Kit", round(scale * 3), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
+		list("W-Y brand rechargeable mini-battery", round(scale * 2.5), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
 		)
 
 //------------AMMUNITION VENDOR---------------
@@ -585,7 +588,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("M3 Pattern Padless Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
-		list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
 		list("GLOVES", -1, null, null),

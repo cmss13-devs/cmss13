@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "apc_mapicon"
 	anchored = 1
-	use_power = 0
+	use_power = USE_POWER_NONE
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	unslashable = TRUE
 	unacidable = TRUE
@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	var/obj/item/cell/cell
 	var/start_charge = 90 //Initial cell charge %
-	var/cell_type = /obj/item/cell/apc //0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
+	var/cell_type = /obj/item/cell/apc/empty //0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
 
 	var/opened = APC_COVER_CLOSED
 	var/shorted = 0
@@ -864,7 +864,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return
 			user.put_in_hands(cell)
 			cell.add_fingerprint(user)
-			cell.updateicon()
+			cell.update_icon()
 
 			src.cell = null
 			user.visible_message(SPAN_NOTICE("[user] removes the power cell from [src]!"),
@@ -1310,7 +1310,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	update_icon()
 
 /obj/structure/machinery/power/apc/antag
-	cell_type = /obj/item/cell/apc/full
+	cell_type = /obj/item/cell/apc
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
 
 //------Almayer APCs ------//

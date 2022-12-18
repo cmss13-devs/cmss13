@@ -345,7 +345,7 @@
 	penetration = 0 //hollowpoint can't pierce armor!
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_3 //hollowpoint causes shrapnel
 
-// Used by M4A3 AP, Highpower and mod88
+// Used by M4A3 AP and mod88
 /datum/ammo/bullet/pistol/ap
 	name = "armor-piercing pistol bullet"
 
@@ -453,6 +453,18 @@
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
 
+/datum/ammo/bullet/pistol/deagle
+	name = ".50 heavy pistol bullet"
+	damage = 70
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	accuracy = -HIT_ACCURACY_TIER_3
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_10
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
+
+/datum/ammo/bullet/pistol/deagle/on_hit_mob(mob/M, obj/item/projectile/P)
+	knockback(M, P, 2)
+
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
 	damage_type = BURN
@@ -467,6 +479,23 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
+
+// Used by the hipower
+// I know that the 'high power' in the name is supposed to mean its 'impressive' magazine capacity
+// but this is CM, half our guns have baffling misconceptions and mistakes (how do you grab the type-71?) so it's on-brand.
+// maybe in the far flung future of 2280 someone screwed up the design.
+
+/datum/ammo/bullet/pistol/highpower
+	name = "high-powered pistol bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
+
+	accuracy = HIT_ACCURACY_TIER_3
+	damage = 50
+	penetration = ARMOR_PENETRATION_TIER_5
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
+
+/datum/ammo/bullet/pistol/highpower/on_hit_mob(mob/M, obj/item/projectile/P, mob/user)
+	pushback(M, P, 3)
 
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
@@ -660,6 +689,7 @@
 	headshot_state	= HEADSHOT_OVERLAY_HEAVY //Gol-dang shotgun blow your fething head off.
 	debilitate = list(0,0,0,0,0,0,0,0)
 	icon_state = "shrapnelshot"
+	handful_state = "shrapnel"
 	bonus_projectiles_type = /datum/ammo/bullet/revolver/nagant/shrapnel_bits
 
 	max_range = 6
@@ -689,7 +719,17 @@
 	name = "small revolver bullet"
 	headshot_state	= HEADSHOT_OVERLAY_LIGHT
 
-	damage = 30
+	damage = 45
+
+	penetration = ARMOR_PENETRATION_TIER_3
+
+/datum/ammo/bullet/revolver/small/hollowpoint
+	name = "small hollowpoint revolver bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
+
+	damage = 75 // way too strong because it's hard to make a good balance between HP and normal with this system, but the damage falloff is really strong
+	penetration = 0
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
 /datum/ammo/bullet/revolver/mateba
 	name = ".454 heavy revolver bullet"
@@ -2177,13 +2217,19 @@
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_MP
 
 /datum/ammo/energy/rxfm_eva
-	name = "focused energy bolt"
-	icon_state = "cm_laser"
-	flags_ammo_behavior = AMMO_ENERGY
-	accurate_range = 7
-	max_range = 14
-	damage = 25
-	shell_speed = AMMO_SPEED_TIER_2
+	name = "laser blast"
+	icon_state = "laser_new"
+	flags_ammo_behavior = AMMO_LASER
+	accurate_range = 14
+	max_range = 22
+	damage = 45
+	stamina_damage = 25 //why not
+	shell_speed = AMMO_SPEED_TIER_3
+
+/datum/ammo/energy/rxfm_eva/on_hit_mob(mob/living/M, obj/item/projectile/P)
+	..()
+	if(prob(10)) //small chance for one to ignite on hit
+		M.fire_act()
 
 /datum/ammo/energy/laz_uzi
 	name = "laser bolt"
@@ -2383,7 +2429,7 @@
 	icon_state = "neurotoxin"
 	ping = "ping_x"
 	damage_type = TOX
-	flags_ammo_behavior = AMMO_XENO_ACID
+	flags_ammo_behavior = AMMO_XENO
 	var/added_spit_delay = 0 //used to make cooldown of the different spits vary.
 	var/spit_cost
 
@@ -2393,7 +2439,7 @@
 /datum/ammo/xeno/toxin
 	name = "neurotoxic spit"
 	damage_falloff = 0
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
 	spit_cost = 25
 	var/effect_power = XENO_NEURO_TIER_4
 	var/datum/callback/neuro_callback
@@ -2481,7 +2527,7 @@
 
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
 	bonus_projectiles_type = /datum/ammo/xeno/toxin/shotgun/additional
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -2523,7 +2569,7 @@
 	name = "neurotoxic air splash"
 	effect_power = XENO_NEURO_TIER_1
 	spit_cost = 50
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
 
 /datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M) && isXeno(P.firer) && M:hivenumber == P.firer:hivenumber)
@@ -2581,7 +2627,7 @@
 	sound_bounce	= "acid_bounce"
 	damage_type = BURN
 	spit_cost = 25
-
+	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO
 	accuracy = HIT_ACCURACY_TIER_5
 	damage = 20
 	max_range = 8 // 7 will disappear on diagonals. i love shitcode
@@ -2656,7 +2702,7 @@
 	name = "blob of acid"
 	icon_state = "boiler_gas2"
 	ping = "ping_x"
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
 
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32
@@ -2703,7 +2749,7 @@
 	icon_state = "boiler_gas2"
 	ping = "ping_x"
 	debilitate = list(19,21,0,0,11,12,0,0)
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_ACIDIC
 	var/datum/effect_system/smoke_spread/smoke_system
 
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
@@ -2755,7 +2801,7 @@
 	name = "bone chips"
 	icon_state = "shrapnel_light"
 	ping = null
-	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
 	damage_type = BRUTE
 	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
 
@@ -2812,7 +2858,7 @@
 	name = "tail hook"
 	icon_state = "none"
 	ping = null
-	flags_ammo_behavior = AMMO_XENO_BONE|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
 	damage_type = BRUTE
 
 	damage = XENO_DAMAGE_TIER_5

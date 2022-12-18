@@ -223,8 +223,8 @@
 			return
 		if(xeno.action_busy)
 			return
-		xeno.visible_message(SPAN_DANGER("[xeno] grabs [target]’s head agressively."), \
-		SPAN_XENOWARNING("You grab [target]’s head aggresively."), max_distance = 5)
+		xeno.visible_message(SPAN_DANGER("[xeno] grabs [target]’s head aggressively."), \
+		SPAN_XENOWARNING("You grab [target]’s head aggressively."), max_distance = 5)
 		if(!do_after(xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 		if(target.stat == DEAD)

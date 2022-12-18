@@ -230,7 +230,6 @@
 			return 0
 		if (make_terminal(user))
 			building_terminal = 0
-			return 0
 		building_terminal = 0
 		CC.use(10)
 		user.visible_message(\

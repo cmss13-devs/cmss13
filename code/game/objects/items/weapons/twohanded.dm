@@ -300,7 +300,7 @@
 	desc = "A much lighter version of the B5 Breaching Hammer, this destructive tool packs enough force in its swings to take down walls with relative ease. It can punch through almost anything, hit like a truck, and unlike its predecessor it can be wielded by most adult humans."
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "d2_breacher"
-	item_state = "breacher"
+	item_state = "d2_breacher"
 	force = MELEE_FORCE_NORMAL
 	force_wielded = MELEE_FORCE_NORMAL
 	w_class = SIZE_LARGE
@@ -313,6 +313,7 @@
 	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "syn_breacher"
+	item_state = "syn_breacher"
 	force_wielded = MELEE_FORCE_VERY_STRONG
 
 /obj/item/weapon/melee/twohanded/breacher/synth/pickup(mob/user)

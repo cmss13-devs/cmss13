@@ -871,10 +871,10 @@
 
 			switch(z_hidden_overwatch)
 				if(OVERWATCH_HIDE_ALMAYER)
-					if(is_mainship_level(M_turf.z))
+					if(is_mainship_level(marine_turf.z))
 						continue
 				if(OVERWATCH_HIDE_GROUND)
-					if(is_ground_level(M_turf.z))
+					if(is_ground_level(marine_turf.z))
 						continue
 
 			if(human_marine.job)
@@ -888,7 +888,7 @@
 				if(marine_turf)
 					var/area/mob_area = marine_turf.loc
 					var/area/user_area = user_turf.loc
-					if(M_turf.z == user_turf.z && mob_area.fake_zlevel == user_area.fake_zlevel)
+					if(marine_turf.z == user_turf.z && mob_area.fake_zlevel == user_area.fake_zlevel)
 						dist = "[get_dist(human_marine, user)] ([dir2text_short(get_dir(user, human_marine))])"
 			else if(squad_leader)
 				if(human_marine == squad_leader)
@@ -900,7 +900,7 @@
 							act_sl = " (acting TL)"
 					else if(human_marine.job != JOB_SQUAD_LEADER)
 						act_sl = " (acting SL)"
-				else if(M_turf && (M_turf.z == SL_z))
+				else if(marine_turf && (marine_turf.z == SL_z))
 					dist = "[get_dist(human_marine, squad_leader)] ([dir2text_short(get_dir(squad_leader, human_marine))])"
 
 			if(is_filtered && marine_filter_enabled)
@@ -932,7 +932,7 @@
 					mob_state += " (SSD)"
 					info.SSD_count++
 
-			if(!is_ground_level(M_turf.z))
+			if(!is_ground_level(marine_turf.z))
 				info.almayer_count++
 				if(z_hidden_groundside_ops)
 					continue

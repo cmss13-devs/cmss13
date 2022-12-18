@@ -119,21 +119,23 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
   )?.[1];
   return (
     <Flex direction="column">
-      <Flex.Item>
-        <Box className="EngagedBox">
-          <Stack>
-            <Stack.Item align="center">
-              <span>Rounds Remaining</span>
-            </Stack.Item>
-            <Stack.Item align="center">
-              <Icon name="play" />
-            </Stack.Item>
-            <Stack.Item align="center" className="AmmoBoundingBox">
-              <span>{props.data.rounds}</span>
-            </Stack.Item>
-          </Stack>
-        </Box>
-      </Flex.Item>
+      {props.data.rounds !== undefined && (
+        <Flex.Item>
+          <Box className="EngagedBox">
+            <Stack>
+              <Stack.Item align="center">
+                <span>Rounds Remaining</span>
+              </Stack.Item>
+              <Stack.Item align="center">
+                <Icon name="play" />
+              </Stack.Item>
+              <Stack.Item align="center" className="AmmoBoundingBox">
+                <span>{props.data.rounds}</span>
+              </Stack.Item>
+            </Stack>
+          </Box>
+        </Flex.Item>
+      )}
       <Flex.Item>
         <Box className="EngagedBox">
           {props.data.active === 0 && <span>Offline</span>}
@@ -153,11 +155,13 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
           </Box>
         </Flex.Item>
       )}
-      <Flex.Item>
-        <Box className="EngagedBox">
-          <span>Kills: {props.data.kills}</span>
-        </Box>
-      </Flex.Item>
+      {props.data.engaged !== undefined && (
+        <Flex.Item>
+          <Box className="EngagedBox">
+            <span>Kills: {props.data.kills}</span>
+          </Box>
+        </Flex.Item>
+      )}
       {iff_info && (
         <Flex.Item>
           <Box className="IFFBox">

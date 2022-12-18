@@ -882,6 +882,10 @@
 		var/time_left = round((user.timeofdeath + 3 MINUTES - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
+	if(totalXenos.len == 0)
+		//This is to prevent people from joining as Forsaken Huggers on the pred ship
+		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
+		return FALSE
 
 	update_hugger_limit()
 

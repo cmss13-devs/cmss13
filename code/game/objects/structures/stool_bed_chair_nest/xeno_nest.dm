@@ -19,6 +19,13 @@
 
 	var/force_nest = FALSE
 
+/obj/structure/bed/nest/thick
+	name = "thick alien nest"
+	desc = "It's a gruesome pile of very thick, sticky resin shaped like a nest."
+	icon = 'icons/mob/xenos/effects.dmi'
+	icon_state = "thicknest"
+	health = 150
+
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
 

@@ -481,6 +481,8 @@
 	name = "thick resin door"
 	health = HEALTH_DOOR_XENO_THICK
 	hardness = 2.0
+	icon = 'icons/mob/xenos/effects.dmi'
+	icon_state = "thickresin"
 
 /obj/effect/alien/resin/acid_pillar
 	name = "acid pillar"

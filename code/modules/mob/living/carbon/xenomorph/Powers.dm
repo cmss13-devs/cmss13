@@ -75,6 +75,28 @@
 				return SECRETE_RESIN_FAIL
 			thickened = TRUE
 
+		else if(istype(A, /obj/structure/bed/nest))
+			var/obj/structure/bed/nest/NST = A
+			if (NST.hivenumber != hivenumber)
+				to_chat(src, SPAN_XENOWARNING("[NST] doesn't belong to your hive!"))
+				return SECRETE_RESIN_FAIL
+
+			for(var/datum/effects/xeno_structure_reinforcement/sf in NST.effects_list)
+				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing you from reinforcing [NST]. Wait until it elapse."))
+				return SECRETE_RESIN_FAIL
+
+			if(NST.health == 100) //non thickened
+				var/oldloc = NST.loc
+				qdel(NST)
+				new /obj/structure/mineral_door/resin/thick (oldloc, NST.hivenumber)
+				total_resin_cost = XENO_THICKEN_NEST_COST
+			else
+				to_chat(src, SPAN_XENOWARNING("[NST] can't be made thicker."))
+				return SECRETE_RESIN_FAIL
+			thickened = TRUE
+
+
+
 		if(thickened)
 			if(message)
 				visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and thickens [A]."), \

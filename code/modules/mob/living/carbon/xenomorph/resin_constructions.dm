@@ -227,7 +227,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	cost = XENO_RESIN_DOOR_THICK_COST
 
 	build_path = /obj/structure/mineral_door/resin/thick
-	build_animation_effect = /obj/effect/resin_construct/door
+	build_animation_effect = /obj/effect/resin_construct/door/thick
 
 
 // Resin Nests
@@ -236,8 +236,14 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	desc = "A resin nest used to contain any infected hosts."
 	construction_name = "resin nest"
 	cost = XENO_RESIN_NEST_COST
+	
+/datum/resin_construction/resin_obj/nest/thick
+	name = "Thick Resin Nest"
+	desc = "A thick resin nest used to contain any infected hosts."
+	construction_name = "thick resin nest"
+	cost = XENO_RESIN_NEST_THICK_COST
 
-	build_path = /obj/structure/bed/nest
+	build_path = /obj/structure/bed/nest/thick
 
 /datum/resin_construction/resin_obj/nest/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
 	if (!..())

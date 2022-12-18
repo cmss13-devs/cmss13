@@ -64,8 +64,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	//Resin constructions that will be SMUSHED by closing doors
 	var/static/list/resin_door_shmushereds = list(
 		/obj/effect/resin_construct/door,
+		/obj/effect/resin_construct/door/thick,
 		/obj/structure/mineral_door/resin,
 		/obj/structure/bed/nest,
+		/obj/structure/bed/nest/thick,
 		/obj/effect/alien/resin/spike,
 		/obj/effect/alien/resin/acid_pillar,
 		/obj/effect/alien/resin/shield_pillar,

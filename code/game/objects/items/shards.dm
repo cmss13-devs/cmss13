@@ -70,7 +70,6 @@
 	icon_state = "phoron"
 	source_sheet_type = /obj/item/stack/sheet/glass/phoronglass
 
-
 // Shrapnel.
 // on_embed is called from projectile.dm, bullet_act(obj/item/projectile/P).
 // on_embedded_movement is called from human.dm, handle_embedded_objects().
@@ -248,3 +247,56 @@
 /obj/item/shard/shrapnel/bone_chips/xeno
 	name = "alien bone fragments"
 	desc = "Sharp, jagged fragments of alien bone. Looks like the previous owner exploded violently..."
+
+/obj/item/sharp
+	name = "sharp dart shrapnel"
+	desc = "It looks like a used 9X-E Sticky Explosive Dart, useless now."
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
+	icon_state = "sonicharpoon" //to fix NEED SPRITE
+	sharp = IS_SHARP_ITEM_BIG
+	w_class = SIZE_SMALL
+	edge = 1
+	force = 0
+	throwforce = 0
+	var/damage_on_move = 3
+	var/count = 1
+	garbage = TRUE
+
+/obj/item/sharp/Initialize()
+	. = ..()
+	if(prob(50))
+		turn_object(90)
+	else
+		turn_object(270)
+
+/obj/item/sharp/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+	return
+
+/obj/item/sharp/proc/on_embedded_movement(var/mob/living/embedded_mob)
+	if(!ishuman(embedded_mob))
+		return
+	var/mob/living/carbon/human/H = embedded_mob
+	if(H.species.flags & NO_SHRAPNEL)
+		return
+	var/obj/limb/organ = embedded_organ
+	if(istype(organ))
+		organ.take_damage(damage_on_move * count, 0, 0, no_limb_loss = TRUE)
+		embedded_mob.pain.apply_pain(damage_on_move * count)
+
+/obj/item/sharp/proc/turn_object(amount)
+	var/matrix/initial_matrix = matrix(transform)
+	initial_matrix.Turn(amount)
+	apply_transform(initial_matrix)
+
+/obj/item/sharp/explosive
+	name = "\improper 9X-E Sticky Explosive Dart"
+
+/obj/item/sharp/track
+	name = "\improper 9X-T Sticky Tracker Dart"
+	desc = "It looks like a used 9X-T Sticky Tracker Dart, useless now."
+	icon_state = "sonicharpoon_tracker"
+
+/obj/item/sharp/flechette
+	name = "\improper 9X-F Flechette Dart"
+	desc = "It looks like a used 9X-F Flechette Dart, useless now."
+	icon_state = "sonicharpoon_flechette"

@@ -3340,3 +3340,151 @@
 	var/obj/item/clothing/mask/facehugger/child = new(T)
 	child.hivenumber = hugger_hive
 	INVOKE_ASYNC(child, TYPE_PROC_REF(/obj/item/clothing/mask/facehugger, leap_at_nearest_target))
+
+/*
+//========
+					SHARP Dart Ammo
+//========
+*/
+/datum/ammo/rifle/dart
+	name = "dart"
+	ping = null //no bounce off.
+	damage_type = BRUTE
+	shrapnel_type = /obj/item/sharp
+	flags_ammo_behavior = AMMO_SPECIAL_EMBED|AMMO_NO_DEFLECT|AMMO_STRIKES_SURFACEONL|AMMO_HITS_TARGET_TURF
+	icon_state = "sonicharpoon"
+	var/embed_object = /obj/item/sharp/explosive
+
+	shrapnel_chance = 100
+	accuracy = HIT_ACCURACY_TIER_MAX
+	accurate_range = 12
+	max_range = 7
+	damage = 35
+	shell_speed = AMMO_SPEED_TIER_1
+
+/datum/ammo/rifle/dart/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+	if(!ishuman(embedded_mob))
+		return
+	var/mob/living/carbon/human/H = embedded_mob
+	if(H.species.flags & NO_SHRAPNEL)
+		return
+	if(istype(target_organ))
+		target_organ.embed(new embed_object)
+
+/datum/ammo/rifle/dart/on_hit_obj(obj/O, obj/item/projectile/P)
+	drop_dart(P.loc, P)
+
+/datum/ammo/rifle/dart/on_hit_turf(turf/T, obj/item/projectile/P)
+	drop_dart(T)
+
+/datum/ammo/rifle/dart/do_at_max_range(obj/item/projectile/P)
+	drop_dart(P.loc, P)
+
+/datum/ammo/rifle/dart/proc/drop_dart(var/loc, obj/item/projectile/P)
+	new embed_object(loc)
+
+/datum/ammo/rifle/dart/explosive
+	name = "9X-E sticky explosive dart"
+
+/datum/ammo/rifle/dart/explosive/on_hit_mob(mob/living/M, obj/item/projectile/P)
+	if(!M || M == P.firer) return
+	var/mob/shooter = P.firer
+	if(shooter && ismob(shooter))
+		shake_camera(M, 2, 1) // to fix need xeno size check lol
+		if(!M.get_target_lock(shooter.faction_group))
+			addtimer(CALLBACK(src, .proc/delayed_explosion, P, M, shooter), 1 SECONDS)
+
+/datum/ammo/rifle/dart/explosive/drop_dart(var/loc, obj/item/projectile/P, var/mob/shooter)
+	var/signal_explosion = FALSE
+	if(locate(/obj/item/explosive/mine) in get_turf(loc)) // TO FIX MID SOLUTION?
+		signal_explosion = TRUE
+	var/obj/item/explosive/mine/sharp/dart = new /obj/item/explosive/mine/sharp(loc)
+	// if no darts on tile, don't arm, disarm instead.
+	if(signal_explosion)
+		INVOKE_ASYNC(dart, /obj/item/explosive/mine/sharp.proc/prime, shooter)
+	else
+		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/deploy_mine, shooter), 3 SECONDS)
+	if(dart)
+		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/disarm), 1 MINUTES)
+
+/datum/ammo/rifle/dart/explosive/proc/delayed_explosion(obj/item/projectile/P, mob/M, mob/shooter)
+	if(istype(M, /mob))
+		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
+		cell_explosion(get_turf(M), 50, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, cause_data)
+
+/datum/ammo/rifle/dart/track
+	name = "9X-T sticky tracker dart"
+	icon_state = "sonicharpoon_tracker"
+	flags_ammo_behavior = AMMO_SPECIAL_EMBED|AMMO_NO_DEFLECT|AMMO_STRIKES_SURFACEONL|AMMO_HITS_TARGET_TURF
+	embed_object = /obj/item/sharp/track
+	var/tracker_timer = 1 MINUTES
+
+/datum/ammo/rifle/dart/track/on_hit_mob(mob/living/M, obj/item/projectile/P)
+	if(!M || M == P.firer) return
+	shake_camera(M, 2, 1)
+	GLOB.sharp_tracked_mob_list |= M
+	addtimer(CALLBACK(src, .proc/remove_tracker, M), tracker_timer)
+
+/datum/ammo/rifle/dart/track/proc/remove_tracker(mob/living/M)
+	GLOB.sharp_tracked_mob_list -= M
+
+/datum/ammo/rifle/dart/flechette
+	name = "9X-F flechette dart"
+	icon_state = "sonicharpoon_flechette"
+	flags_ammo_behavior = AMMO_SPECIAL_EMBED|AMMO_NO_DEFLECT|AMMO_STRIKES_SURFACEONL|AMMO_HITS_TARGET_TURF
+	embed_object = /obj/item/sharp/flechette
+
+	shrapnel_type = /datum/ammo/bullet/shotgun/flechette_spread
+	var/shrapnel_count = 40
+	var/direct_hit_shrapnel = 8
+	var/dispersion_angle = 20
+
+/datum/ammo/rifle/dart/flechette/on_hit_mob(mob/living/M, obj/item/projectile/P)
+	if(!M || M == P.firer) return
+	var/mob/shooter = P.firer
+	shake_camera(M, 2, 1)
+	if(shooter && ismob(shooter))
+		if(!M.get_target_lock(shooter.faction_group))
+			create_shrapnel(M.loc, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
+			shrapnel_count -= direct_hit_shrapnel
+			if(shrapnel_count)
+				create_shrapnel(M.loc, shrapnel_count, P.dir, dispersion_angle ,shrapnel_type, P.weapon_cause_data, FALSE, 0)
+			apply_explosion_overlay(M.loc)
+
+/datum/ammo/rifle/dart/flechette/on_hit_obj(obj/O, obj/item/projectile/P)
+	/*create_shrapnel(O.loc, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
+	shrapnel_count -= direct_hit_shrapnel
+	if(shrapnel_count)
+		create_shrapnel(O.loc, shrapnel_count, P.dir, dispersion_angle ,shrapnel_type, P.weapon_cause_data, FALSE, 0)
+	apply_explosion_overlay(O.loc)*/
+	create_flechette(O.loc, P)
+
+/datum/ammo/rifle/dart/flechette/on_hit_turf(turf/T, obj/item/projectile/P)
+	/*create_shrapnel(T, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
+	shrapnel_count -= direct_hit_shrapnel
+	if(shrapnel_count)
+		create_shrapnel(T, shrapnel_count, P.dir, dispersion_angle ,shrapnel_type, P.weapon_cause_data, FALSE, 0)
+	apply_explosion_overlay(T)*/
+	create_flechette(T, P)
+
+/datum/ammo/rifle/dart/flechette/do_at_max_range(obj/item/projectile/P)
+	/*create_shrapnel(P.loc, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
+	shrapnel_count -= direct_hit_shrapnel
+	if(shrapnel_count)
+		create_shrapnel(P.loc, shrapnel_count, P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 0)
+	apply_explosion_overlay(P.loc)*/
+	create_flechette(P.loc, P)
+
+/datum/ammo/rifle/dart/flechette/proc/create_flechette(var/loc, obj/item/projectile/P)
+	create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
+	shrapnel_count -= direct_hit_shrapnel
+	if(shrapnel_count)
+		create_shrapnel(loc, shrapnel_count, P.dir, dispersion_angle ,shrapnel_type, P.weapon_cause_data, FALSE, 0)
+	apply_explosion_overlay(loc)
+
+/datum/ammo/rifle/dart/flechette/proc/apply_explosion_overlay(var/turf/loc)
+	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
+	O.name = "grenade"
+	O.icon = 'icons/effects/explosion.dmi'
+	flick("grenade", O)
+	QDEL_IN(O, 7)

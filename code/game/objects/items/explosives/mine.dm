@@ -312,3 +312,57 @@
 	customizable = TRUE
 	matter = list("metal" = 3750)
 	has_blast_wave_dampener = TRUE
+
+/obj/item/explosive/mine/sharp
+	name = "\improper P9 SHARP explosive dart"
+	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
+	icon_state = "sonicharpoon_g"
+	angle = 360
+	var/disarmed = FALSE
+
+/obj/item/explosive/mine/sharp/check_for_obstacles(mob/living/user)
+	return FALSE
+
+/obj/item/explosive/mine/sharp/attackby(obj/item/W, mob/user)
+	return ..()
+
+/obj/item/explosive/mine/sharp/set_tripwire()
+	if(!active && !tripwire)
+		for(var/direction in CARDINAL_ALL_DIRS)
+			var/tripwire_loc = get_turf(get_step(loc,direction))
+			tripwire = new(tripwire_loc)
+			tripwire.linked_claymore = src
+			active = TRUE
+
+/obj/item/explosive/mine/sharp/prime(var/mob/user)
+	set waitfor = 0
+	if(!cause_data)
+		cause_data = create_cause_data(initial(name), user)
+	cell_explosion(loc, 50, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
+	qdel(src)
+
+/obj/item/explosive/mine/sharp/disarm()
+	anchored = FALSE
+	active = FALSE
+	triggered = FALSE
+	icon_state = base_icon_state + "_disarmed"
+	QDEL_NULL(tripwire)
+	disarmed = TRUE
+	add_to_garbage(src)
+
+/obj/item/explosive/mine/sharp/attack_self(mob/living/user)
+	if(disarmed)
+		return
+	else 
+		return ..()
+
+/obj/item/explosive/mine/sharp/deploy_mine(var/mob/user)
+	if(disarmed)
+		return
+	if(!hard_iff_lock && user)
+		iff_signal = user.faction
+
+	cause_data = create_cause_data(initial(name), user)
+	anchored = TRUE
+	activate_sensors()
+	update_icon()

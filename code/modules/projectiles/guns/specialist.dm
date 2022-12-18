@@ -1397,3 +1397,88 @@
 	. = ..()
 	if(last_signal_flare_name)
 		. += SPAN_NOTICE("The last signal flare fired has the designation: [last_signal_flare_name]")
+
+//-------------------------------------------------------
+//P9 Sonic Harpoon Artillery Remote Projectile(SHARP) Rifle
+
+/obj/item/weapon/gun/rifle/sharp
+	name = "\improper P9 SHARP Rifle"
+	desc = "A experimental harpoon launcher rifle manufactured by Armat Systems. It's specialized for specific ammo types out of a 10-round magainze, best used for area denial and disruption."
+	icon_state = "sharprifle"
+	item_state = "sharp"
+	fire_sound = "gun_pulse" // to fix
+	reload_sound = 'sound/weapons/handling/m41_reload.ogg' // to fix
+	unload_sound = 'sound/weapons/handling/m41_unload.ogg' // to fix
+	unacidable = TRUE
+	indestructible = 1
+	muzzle_flash = null
+
+	current_mag = /obj/item/ammo_magazine/rifle/dart
+	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
+	matter = list("metal" = 6000)
+
+	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
+	wield_delay = WIELD_DELAY_NORMAL
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+
+	flags_item = TWOHANDED|NO_CRYO_STORE
+	map_specific_decoration = TRUE
+
+/obj/item/weapon/gun/rifle/sharp/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+
+/obj/item/weapon/gun/rifle/sharp/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_NONE
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_OFF
+
+/obj/item/weapon/gun/rifle/sharp/unique_action(mob/user)
+	track(user)
+
+/obj/item/weapon/gun/rifle/sharp/proc/track(mob/user)
+	var/mob/living/carbon/human/M = user
+
+	var/count = 0
+	var/max_count = 5
+	var/target
+	var/direction = -1
+	var/atom/areaLoc = null
+	var/output = FALSE
+	while(GLOB.sharp_tracked_mob_list.len > max_count)
+		popleft(GLOB.sharp_tracked_mob_list)
+
+	for(var/mob/living/mob_tracked as anything in GLOB.sharp_tracked_mob_list) // help we get qdel'ed mobs here AHHHHHHHHH
+		if(istype(mob_tracked, /mob))
+			if(count < max_count)
+				if(M.z == mob_tracked.z)
+					var/dist = get_dist(M,mob_tracked)
+					target = dist
+					direction = get_dir(M,mob_tracked)
+					areaLoc = loc
+
+				if(target < 900)
+					output = TRUE
+					var/areaName = get_area_name(areaLoc)
+					to_chat(M, SPAN_NOTICE("\The [mob_tracked] is [target > 10 ? "approximately <b>[round(target, 10)]</b>" : "<b>[target]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
+					count++
+	if(!output)
+		to_chat(M, SPAN_NOTICE("There is nothing currently tracked."))
+
+	return
+
+/obj/item/weapon/gun/rifle/sharp/able_to_fire(mob/living/user)
+	. = ..()
+	if (. && istype(user))
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			return FALSE
+
+/obj/item/weapon/gun/rifle/sharp/cock()
+	return
+
+//make this pickable at GL locker maybe? only 1 item etc....section...
+// Fix fucking ammo inspect and maybe the weird in chamber insert
+//shrapnel divide by 0 issue

@@ -34,8 +34,9 @@
 /// Can't be deflected
 #define AMMO_NO_DEFLECT (1<<20)
 ///Can only hit people with criminal status
-#define AMMO_MP (1<<21)
-#define AMMO_FLAME (1<<22) // Handles sentry flamers glob
+#define AMMO_MP					(1<<21)
+#define AMMO_FLAME				(1<<22) // Handles sentry flamers glob
+#define AMMO_STRIKES_SURFACEONL	(1<<23) // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself (This one does not work on mobs)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 /// Projectile is shrpanel which allow it to skip some collisions

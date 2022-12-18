@@ -102,10 +102,11 @@
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target
 	var/mob/living/carbon/Xenomorph/xeno = owner
-	target.dazed += 5
+	target.apply_effect(5, DAZE)
+	target.sway_jitter(times = 2)
 	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
 	target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-	target.apply_armoured_damage(20, ARMOR_MELEE, BRUTE)
+	target.apply_armoured_damage(30, ARMOR_MELEE, BRUTE)
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	shake_camera(target, 2, 1)
 	apply_cooldown_override(40)
@@ -201,15 +202,15 @@
 				var/obj/structure/window/framed/target_window = current_structure
 				if(target_window.unslashable)
 					return
-				target_window.shatter_window(TRUE)
-				apply_cooldown(cooldown_modifier = 0.5)
-				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
 				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
+				target_window.shatter_window(TRUE)
+				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
+				apply_cooldown(cooldown_modifier = 0.5)
 				return
 
 	if(!isXenoOrHuman(target) || xeno.can_not_harm(target))
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
-		apply_cooldown(cooldown_modifier = 0.1)
+		apply_cooldown(cooldown_modifier = 0.2)
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return
 
@@ -222,33 +223,33 @@
 			return
 		if(xeno.action_busy)
 			return
-		xeno.visible_message(SPAN_DANGER("[xeno] prepares for devastating attack on [target]."), \
-		SPAN_XENOWARNING("You carefully aim your tail towards [target]’s vital organs."), max_distance = 5)
+		xeno.visible_message(SPAN_DANGER("[xeno] grabs [target]’s head agressively."), \
+		SPAN_XENOWARNING("You grab [target]’s head aggresively."), max_distance = 5)
 		if(!do_after(xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 		if(target.stat == DEAD)
 			return
-		to_chat(xeno, SPAN_XENOHIGHDANGER("You brutally pierce [target]’s chest with your tail."))
-		xeno.visible_message(SPAN_DANGER("[xeno] pierces [target] chest with their tail."))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You pierce [target]’s head with your inner jaw."))
+		xeno.visible_message(SPAN_DANGER("[xeno] pierces [target]’s head with its inner jaw."))
 		playsound(target,'sound/weapons/alien_bite2.ogg', 50, 1)
 		xeno.flick_attack_overlay(target, "tail")
-		target.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, "chest", 5)
+		target.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, "head", 5)
+		target.death() //just in case
 		xeno.gain_health(150)
 		xeno.xeno_jitter(1 SECONDS)
 		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 		target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-		log_attack("[key_name(xeno)] executed [key_name(target)] with Tail Jab")
+		log_attack("[key_name(xeno)] executed [key_name(target)] with a headbite")
 		xeno.emote("roar")
-		apply_cooldown()
-		return
+		return // no cooldown in executions
 
 
 	to_chat(xeno, SPAN_XENOHIGHDANGER("You stab [target] with your tail, pushing it backwards."))
 	xeno.flick_attack_overlay(target, "tail")
 	playsound(target,'sound/weapons/alien_claw_block.ogg', 50, 1)
-	target.apply_armoured_damage(20, ARMOR_MELEE, BRUTE, "chest")
+	target.apply_armoured_damage(30 , ARMOR_MELEE, BRUTE, "chest")
 	target.KnockDown(0.5, 0.5)
 	target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 	log_attack("[key_name(xeno)] attacked [key_name(target)] with Tail Jab")
 	step_away(target, xeno, 2, 2)
-	apply_cooldown() // normal cooldown if you havent executed anyone
+	apply_cooldown()

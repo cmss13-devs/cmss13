@@ -7,7 +7,8 @@
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/onclick/lurker_invisibility,
 		/datum/action/xeno_action/onclick/lurker_assassinate,
-		/datum/action/xeno_action/activable/pounce/lurker
+		/datum/action/xeno_action/activable/pounce/lurker,
+		/datum/action/xeno_action/activable/tail_stab
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/pounce/rush,

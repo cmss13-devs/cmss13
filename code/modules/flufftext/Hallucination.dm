@@ -251,7 +251,7 @@ proc/check_panel(mob/M)
 		step_away(src,my_target,2)
 		for(var/mob/M in oviewers(world_view_size,my_target))
 			to_chat(M, SPAN_WARNING("<B>[my_target] flails around wildly.</B>"))
-		my_target.show_message(SPAN_DANGER("<B>[src] has been attacked by [my_target] </B>"), 1) //Lazy.
+		my_target.show_message(SPAN_DANGER("<B>[src] has been attacked by [my_target] </B>"), SHOW_MESSAGE_VISIBLE) //Lazy.
 
 		src.health -= P.force
 
@@ -313,7 +313,7 @@ proc/check_panel(mob/M)
 				if(prob(15))
 					if(weapon_name)
 						my_target << sound(pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
-						my_target.show_message(SPAN_DANGER("<B>[my_target] has been attacked with [weapon_name] by [src.name] </B>"), 1)
+						my_target.show_message(SPAN_DANGER("<B>[my_target] has been attacked with [weapon_name] by [src.name] </B>"), SHOW_MESSAGE_VISIBLE)
 						my_target.halloss += 8
 						if(prob(20)) my_target.eye_blurry += 3
 						if(prob(33))
@@ -321,7 +321,7 @@ proc/check_panel(mob/M)
 								fake_blood(my_target)
 					else
 						my_target << sound(pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg'))
-						my_target.show_message(SPAN_DANGER("<B>[src.name] has punched [my_target]!</B>"), 1)
+						my_target.show_message(SPAN_DANGER("<B>[src.name] has punched [my_target]!</B>"), SHOW_MESSAGE_VISIBLE)
 						my_target.halloss += 4
 						if(prob(33))
 							if(!locate(/obj/effect/overlay) in my_target.loc)

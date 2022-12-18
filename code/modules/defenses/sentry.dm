@@ -23,26 +23,25 @@
 	var/omni_directional = FALSE
 	var/sentry_range = SENTRY_RANGE
 
-	var/has_camera = TRUE
-	var/camera_range = 7
+	has_camera = TRUE
+	camera_range = 7
 
 	var/damage_mult = 1
 	var/accuracy_mult = 1
 	var/burst = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
 
-	var/obj/item/device/sentry_computer/linked_laptop = null
-	var/nickname = ""
+
 
 	var/broadcast_timer = null
 
 	// action list is configurable for all subtypes, this is just an example
-	var/list/choice_categories = list(
+	choice_categories = list(
 		"RATE OF FIRE" = list("SINGLE", "BURST", "FULL-AUTO"),
 		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
 	)
 
-	var/list/selected_categories = list(
+	selected_categories = list(
 		"RATE OF FIRE" = "SINGLE",
 		"IFF STATUS" = "USMC",
 	)
@@ -196,35 +195,6 @@
 /obj/structure/machinery/defenses/sentry/attackby(var/obj/item/O, var/mob/user)
 	if(QDELETED(O) || QDELETED(user))
 		return
-
-	if(istype(O, /obj/item/device/multitool))
-		var/obj/item/device/multitool/tool = O
-		var/list/options = list("register", "decon")
-		var/chosen = tgui_input_list(usr, "What to do", "Multitool Access", options)
-		if(chosen == "register")
-			if(linked_laptop == null)
-				// we register
-				var/key_found = FALSE
-				for(var/i in tool.encryption_keys)
-					var/obj/item = tool.encryption_keys[i]
-					if(istype(item, /obj/item/device/sentry_computer))
-						var/obj/item/device/sentry_computer/computer = item
-						to_chat(usr, SPAN_NOTICE("Attempting link"))
-						computer.register(tool, user, src)
-						key_found = TRUE
-						break
-				if(!key_found)
-					to_chat(user, SPAN_WARNING("No valid encryption key found. Link the tool with a sentry computer."))
-				return
-			else
-				// if linked laptop == referenced system
-				to_chat(usr, SPAN_WARNING("Attempting unlink"))
-				var/loaded_key = linked_laptop.serial_number
-				if(tool.encryption_keys[loaded_key])
-					linked_laptop.unregister(tool, user, src)
-				else
-					to_chat(usr, "Sentry gun is already encrypted by laptop [linked_laptop.serial_number].")
-				return
 
 	//Securing/Unsecuring
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
@@ -576,6 +546,18 @@
 	accuracy_mult = 4
 	damage_mult = 2
 	handheld_type = /obj/item/defenses/handheld/sentry/dmr
+
+	choice_categories = list(
+		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
+	)
+
+	selected_categories = list(
+		"IFF STATUS" = "USMC",
+	)
+
+
+/obj/structure/machinery/defenses/sentry/dmr/handle_rof(var/level)
+	return
 
 /obj/structure/machinery/defenses/sentry/dmr/set_range()
 	switch(dir)

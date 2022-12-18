@@ -33,6 +33,15 @@
 	var/placed = 0
 	var/obj/item/defenses/handheld/HD
 
+	// Defence Laptop
+	var/nickname = ""
+	var/obj/item/device/sentry_computer/linked_laptop = null
+	var/has_camera = FALSE
+	var/camera_range = 0
+	var/list/choice_categories = list()
+
+	var/list/selected_categories = list()
+
 
 /obj/structure/machinery/defenses/Initialize()
 	. = ..()
@@ -148,6 +157,33 @@
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
 
+		if(friendly_faction(user.faction))
+			var/obj/item/device/multitool/tool = O
+			if(length(tool.encryption_keys) > 0)
+				if(linked_laptop == null)
+					// register
+					var/key_found = FALSE
+					for(var/i in tool.encryption_keys)
+						var/obj/item = tool.encryption_keys[i]
+						if(istype(item, /obj/item/device/sentry_computer))
+							var/obj/item/device/sentry_computer/computer = item
+							to_chat(usr, SPAN_NOTICE("Attempting link"))
+							computer.register(tool, user, src)
+							key_found = TRUE
+							break
+					if(!key_found)
+						to_chat(user, SPAN_WARNING("No valid encryption key found. Link the tool with a sentry computer."))
+					return
+				else
+					// unregister
+					to_chat(usr, SPAN_WARNING("Attempting decryption of [name]"))
+					var/loaded_key = linked_laptop.serial_number
+					if(tool.encryption_keys[loaded_key])
+						linked_laptop.unregister(tool, user, src)
+					else
+						to_chat(usr, "Structure is already encrypted by laptop [linked_laptop.serial_number].")
+					return
+
 		if(health < health_max * 0.25)
 			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))
 			return
@@ -155,6 +191,9 @@
 		if(static)
 			to_chat(user, SPAN_WARNING("\The [src] is bolted to the ground!"))
 			return
+
+		if(linked_laptop != null)
+			to_chat(user, SPAN_WARNING("\The [src] is currently encrypted by [linked_laptop] and must first be unlinked."))
 
 		user.visible_message(SPAN_NOTICE("[user] begins disassembling \the [src]."), SPAN_NOTICE("You begin disassembling \the [src]."))
 

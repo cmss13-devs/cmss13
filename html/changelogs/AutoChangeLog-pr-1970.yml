@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - balance: "reduced the amount of monomolecular acid in spitter tailstab to 2u, reduced the amount of monomolecular acid in boiler tailstab to 6u."

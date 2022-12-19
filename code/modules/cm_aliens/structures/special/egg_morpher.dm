@@ -194,6 +194,9 @@
 
 /obj/effect/alien/resin/special/eggmorph/attack_ghost(mob/dead/observer/user)
 	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
+	join_as_facehugger_from_this(user)
+
+/obj/effect/alien/resin/special/eggmorph/proc/join_as_facehugger_from_this(mob/dead/observer/user)
 	if(!stored_huggers)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return

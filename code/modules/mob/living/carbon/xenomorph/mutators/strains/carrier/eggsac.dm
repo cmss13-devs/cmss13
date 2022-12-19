@@ -11,7 +11,7 @@
 		/datum/action/xeno_action/onclick/set_hugger_reserve,
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/generate_egg,
+		/datum/action/xeno_action/onclick/generate_egg,
 		/datum/action/xeno_action/activable/retrieve_egg // readding it so it gets at the end of the ability list
 	)
 	keystone = TRUE
@@ -35,35 +35,27 @@
 		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 	carrier.huggers_cur = 0
 	carrier.huggers_max = 0
+	carrier.eggs_max = 12
 	carrier.extra_build_dist = 1
 	return TRUE
 
-/datum/action/xeno_action/activable/generate_egg
-	name = "Generate Egg (200)"
+/datum/action/xeno_action/onclick/generate_egg
+	name = "Generate Egg (50)"
 	action_icon_state = "lay_egg"
 	ability_name = "generate egg"
-	xeno_cooldown = 30 SECONDS
-	cooldown_message = "You are ready to form another egg."
-	action_type = XENO_ACTION_ACTIVATE
-	plasma_cost = XENO_PLASMA_TIER_2
+	action_type = XENO_ACTION_CLICK
+	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-/datum/action/xeno_action/activable/generate_egg/can_use_action()
+/datum/action/xeno_action/onclick/generate_egg/can_use_action()
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if(xeno && !xeno.is_mob_incapacitated() && !xeno.dazed && !xeno.lying && !xeno.buckled && xeno.plasma_stored >= plasma_cost)
 		return TRUE
 
-/datum/action/xeno_action/activable/generate_egg/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
-	if(!istype(xeno) || !action_cooldown_check())
-		return FALSE
-	if(xeno.eggs_cur >= xeno.eggs_max)
-		to_chat(xeno, SPAN_XENOWARNING("You don't have any space to store a new egg!"))
-		return FALSE
-	to_chat(xeno, SPAN_NOTICE("You form a new egg inside your sac."))
-	xeno.eggs_cur++
-	xeno.use_plasma(plasma_cost)
-	apply_cooldown()
-	return TRUE
+/datum/action/xeno_action/onclick/generate_egg/give_to(mob/living/living_mob)
+	. = ..()
+	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
+	if(xeno.egg_generation_activated)
+		button.icon_state = "template_active"

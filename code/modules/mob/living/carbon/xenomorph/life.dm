@@ -364,6 +364,16 @@ Make sure their actual health updates immediately.*/
 					H.weedwalking_activated = 0
 					to_chat(src, SPAN_WARNING("You feel dizzy as the world slows down."))
 					recalculate_move_delay = TRUE
+		if(src.egg_generation_activated)
+			plasma_stored -= 15
+			if(plasma_stored < 0)
+				to_chat(src, SPAN_WARNING("You don't have enough plasma to support creating an egg."))
+				src.egg_generation_activated = 0
+			if(src.eggs_cur < src.eggs_max)
+				src.egg_generation_progress++
+				if(src.egg_generation_progress >= 15)
+					src.egg_generation_progress = 0
+					src.eggs_cur++
 
 		if(current_aura)
 			plasma_stored -= 5

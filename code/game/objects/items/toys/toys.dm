@@ -506,10 +506,14 @@
 							)
 
 /obj/item/toy/festivizer
-	name = "C92 pattern 'Festivizer' decorator"
+	name = "\improper C92 pattern 'Festivizer' decorator"
 	desc = "State of the art, WY-brand, high tech... ah who are we kidding, it's just a festivizer. You spot a label on it that says: <i> Attention: This device does not cover item in festive wire, but rather paints it a festive color. </i> What a rip!"
 	icon = 'icons/obj/items/marine-items_christmas.dmi'
 	icon_state = "barbed_wire"
+
+/obj/item/toy/festivizer/examine(mob/user)
+	. = ..()
+	to_chat(user, SPAN_BOLDNOTICE("You see another label on \the [src] that says: <i> INCLUDES SUPPORT FOR FOREIGN BIOFORMS! </i> You're not sure you like the sound of that.."))
 
 /obj/item/toy/festivizer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -523,3 +527,7 @@
 	to_chat(user, SPAN_GREEN("You festivize \the [target]! Merry christmas!"))
 	if(prob(5))
 		playsound(target, 'sound/voice/alien_queen_xmas.ogg', 25, TRUE)
+
+/obj/item/toy/festivizer/attack_alien(mob/living/carbon/Xenomorph/M)
+	attack_hand(M) //xenos can use them too.
+	return XENO_NONCOMBAT_ACTION

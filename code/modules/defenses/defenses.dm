@@ -167,7 +167,7 @@
 						var/obj/item = tool.encryption_keys[i]
 						if(istype(item, /obj/item/device/sentry_computer))
 							var/obj/item/device/sentry_computer/computer = item
-							to_chat(usr, SPAN_NOTICE("Attempting link to [item.name] [item.serial_number]"))
+							to_chat(usr, SPAN_NOTICE("Attempting link to [item.name] [computer.serial_number]"))
 							computer.register(tool, user, src)
 							key_found = TRUE
 							break

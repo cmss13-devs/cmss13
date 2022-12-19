@@ -16707,7 +16707,7 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "hQU" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 30
 	},
 /obj/structure/bed/chair/dropship/passenger{
@@ -39975,7 +39975,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qUD" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 30
 	},
 /obj/effect/decal/cleanable/blood/splatter,

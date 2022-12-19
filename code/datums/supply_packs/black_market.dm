@@ -1,0 +1,942 @@
+//*******************************************************************************
+//BLACK MARKET
+//*******************************************************************************/
+
+//------------------------crates----------------
+
+/datum/supply_packs/contraband//base
+	name = "contraband crate"
+	contains = list(/obj/item/toy/bikehorn)
+	cost = BLACK_MARKET_VALUE_AVERAGE
+	containertype = /obj/structure/closet/crate/trashcart
+	containername = "contraband crate"
+	group = "Black Market"
+	contraband = TRUE
+	hidden = TRUE
+
+/obj/structure/largecrate/black_market
+	//nothing special so it can be hidden
+
+/* --- SEIZED ITEMS --- */
+
+/*
+
+Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
+
+*/
+
+/datum/supply_packs/contraband/seized
+	group = "Seized Items"
+	contains = list()
+
+/datum/supply_packs/contraband/seized/black_market_scanner
+	name = "black market scanner crate"
+	contains = list(/obj/item/device/black_market_scanner)
+	cost = 5
+	containertype = /obj/structure/closet/crate/trashcart
+
+/datum/supply_packs/contraband/seized/confiscated_equipment
+	name = "seized foreign equipment crate"
+	cost = BLACK_MARKET_VALUE_EXCELLENT
+	containertype = /obj/structure/largecrate/black_market/confiscated_equipment
+
+/obj/structure/largecrate/black_market/confiscated_equipment/Initialize()
+	. = ..()
+	var/rng = rand(1,7)
+	switch(rng)
+		if(1) //pmc
+			new /obj/item/clothing/under/marine/veteran/PMC(src)
+			new /obj/item/clothing/head/helmet/marine/veteran/PMC(src)
+			new /obj/item/clothing/suit/storage/marine/veteran/PMC(src)
+			new /obj/item/clothing/gloves/marine/veteran/PMC(src)
+			new /obj/item/clothing/mask/gas/PMC(src)
+			new /obj/item/storage/backpack/lightpack(src)
+		if(2) //dutch's
+			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
+			new /obj/item/clothing/under/marine/veteran/dutch(src)
+			new /obj/item/clothing/suit/storage/marine/veteran/dutch(src)
+			new /obj/item/clothing/gloves/marine/veteran(src)
+		if(3) //pizza
+			new /obj/item/clothing/under/pizza(src)
+			new /obj/item/clothing/head/soft/red(src)
+		if(4) //clf
+			new /obj/item/clothing/under/colonist/clf(src)
+			new /obj/item/clothing/suit/storage/militia(src)
+			new /obj/item/clothing/head/militia(src)
+			new /obj/item/clothing/gloves/marine/veteran(src)
+			new /obj/item/storage/backpack/lightpack(src)
+		if(5) //upp
+			new /obj/item/clothing/head/helmet/marine/veteran/UPP(src)
+			new /obj/item/clothing/under/marine/veteran/UPP(src)
+			new /obj/item/clothing/suit/storage/marine/faction/UPP(src)
+			new /obj/item/clothing/shoes/marine/upp(src)
+			new /obj/item/clothing/gloves/marine/veteran(src)
+			new /obj/item/storage/backpack/lightpack(src)
+		if(6) //freelancer
+			new /obj/item/clothing/under/marine/veteran/freelancer(src)
+			new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
+			new /obj/item/clothing/gloves/marine/veteran(src)
+			new /obj/item/storage/backpack/lightpack(src)
+		if(7) //HEFA
+			new /obj/item/clothing/head/helmet/marine/specialist/hefa(src)
+			new /obj/item/clothing/suit/storage/marine/M3G/hefa/damaged(src)
+			new /obj/item/clothing/under/marine(src)
+
+/datum/supply_packs/contraband/seized/confiscated_weaponry
+	name = "seized foreign weaponry crate"
+	contains = list()
+	cost = BLACK_MARKET_VALUE_GREAT
+	containertype = /obj/structure/largecrate/black_market/confiscated_weaponry
+
+/obj/structure/largecrate/black_market/confiscated_weaponry/Initialize()
+	. = ..()
+	spawn_guns()
+	spawn_guns() //the crate gives 2 guns
+
+/obj/structure/largecrate/black_market/confiscated_weaponry/proc/spawn_guns()
+	var/rng = rand(1,7)
+	switch(rng)
+		if(1) //pmc
+			if(prob(50))
+				new /obj/item/weapon/gun/rifle/nsg23/no_lock(src)
+				new /obj/item/ammo_magazine/rifle/nsg23(src)
+				new /obj/item/ammo_magazine/rifle/nsg23(src)
+				new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
+				new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
+			else
+				new /obj/item/weapon/gun/smg/fp9000(src)
+				new /obj/item/ammo_magazine/smg/fp9000(src)
+				new /obj/item/ammo_magazine/smg/fp9000(src)
+				new /obj/item/ammo_magazine/smg/fp9000(src)
+				new /obj/item/ammo_magazine/smg/fp9000(src)
+		if(2) //dutch's
+			new /obj/item/weapon/gun/rifle/m16/dutch(src)
+			new /obj/item/ammo_magazine/rifle/m16/ap(src)
+			new /obj/item/ammo_magazine/rifle/m16/ap(src)
+			new /obj/item/ammo_magazine/rifle/m16/ap(src)
+			new /obj/item/ammo_magazine/rifle/m16/ap(src)
+		if(3) //pizza
+			new /obj/item/weapon/gun/pistol/holdout(src)
+			new /obj/item/ammo_magazine/pistol/holdout(src)
+		if(4) //clf
+			var/rngrng = rand(1, 4)
+			switch(rngrng)
+				if(1)
+					new /obj/item/weapon/melee/twohanded/lungemine/damaged(src)
+				if(2)
+					new /obj/item/weapon/gun/smg/uzi(src)
+					new /obj/item/ammo_magazine/smg/uzi/extended(src)
+					new /obj/item/ammo_magazine/smg/uzi(src)
+					new /obj/item/ammo_magazine/smg/uzi(src)
+				if(3)
+					new /obj/item/weapon/gun/smg/mac15(src)
+					new /obj/item/ammo_magazine/smg/mac15/extended(src)
+					new /obj/item/ammo_magazine/smg/mac15(src)
+					new /obj/item/ammo_magazine/smg/mac15(src)
+				if(4)
+					new /obj/item/weapon/gun/m60(src)
+					new /obj/item/ammo_magazine/m60(src)
+					new /obj/item/ammo_magazine/m60(src)
+					new /obj/item/ammo_magazine/m60(src)
+		if(5) //upp
+			if(prob(50))
+				new /obj/item/weapon/gun/rifle/type71(src)
+				new /obj/item/ammo_magazine/rifle/type71/ap(src)
+				new /obj/item/ammo_magazine/rifle/type71(src)
+				new /obj/item/ammo_magazine/rifle/type71(src)
+			else
+				new /obj/item/weapon/gun/shotgun/type23(src)
+				new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
+				new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
+				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
+				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
+				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src) //NO buckshot!
+		if(6) //freelancer
+			if(prob(80))
+				new /obj/item/weapon/gun/rifle/mar40(src)
+				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
+				new /obj/item/ammo_magazine/rifle/mar40(src)
+				new /obj/item/ammo_magazine/rifle/mar40(src)
+			else
+				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
+				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
+				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
+		if(7) //HEFA
+			new /obj/item/weapon/melee/claymore/hefa(src)
+			new /obj/item/weapon/melee/claymore/hefa(src)
+			var/obj/item/storage/belt/grenade/belt = new(src)
+			belt.name = "M42 HEFA rig Mk. IX"
+			for(var/i in 1 to belt.storage_slots)
+				new /obj/item/explosive/grenade/HE/frag(belt)
+
+/* Misc. Individual Guns */
+
+/* Prices are based on two things.
+
+- 1. How strong the weapon is.
+- 2. How underutilized it is by players.
+
+Magazine count is also similarly based on this.
+
+This way, underused-but-good weapons are incentivized to be bought for cheap like the PK-9.
+
+*/
+
+// Rifles
+
+/datum/supply_packs/contraband/seized/m16
+	name = "M16 crate (x4 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/rifle/m16,
+			/obj/item/ammo_magazine/rifle/m16,
+			/obj/item/ammo_magazine/rifle/m16,
+			/obj/item/ammo_magazine/rifle/m16,
+			/obj/item/ammo_magazine/rifle/m16
+	)
+	cost = BLACK_MARKET_VALUE_AVERAGE
+
+/datum/supply_packs/contraband/seized/ar10
+	name = "AR10 crate (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/rifle/ar10,
+			/obj/item/ammo_magazine/rifle/ar10,
+			/obj/item/ammo_magazine/rifle/ar10,
+			/obj/item/ammo_magazine/rifle/ar10,
+			/obj/item/ammo_magazine/rifle/ar10
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+
+/datum/supply_packs/contraband/seized/mar40
+	name = "MAR-40 crate (x4 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/rifle/mar40,
+			/obj/item/ammo_magazine/rifle/mar40,
+			/obj/item/ammo_magazine/rifle/mar40,
+			/obj/item/ammo_magazine/rifle/mar40,
+			/obj/item/ammo_magazine/rifle/mar40
+	)
+	cost = BLACK_MARKET_VALUE_AVERAGE
+
+/datum/supply_packs/contraband/seized/mar30
+	name = "MAR-30 crate (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/rifle/mar40/carbine,
+			/obj/item/ammo_magazine/rifle/mar40,
+			/obj/item/ammo_magazine/rifle/mar40,
+			/obj/item/ammo_magazine/rifle/mar40,
+			/obj/item/ammo_magazine/rifle/mar40,
+			/obj/item/ammo_magazine/rifle/mar40
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+
+/datum/supply_packs/contraband/seized/mar50
+	name = "MAR-50 crate (x3 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/rifle/mar40/lmg,
+			/obj/item/ammo_magazine/rifle/mar40/lmg,
+			/obj/item/ammo_magazine/rifle/mar40/lmg,
+			/obj/item/ammo_magazine/rifle/mar40/lmg
+	)
+	cost = BLACK_MARKET_VALUE_GOOD
+
+/datum/supply_packs/contraband/seized/hunting
+	name = "Basira-Armstrong hunting rifle crate (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/rifle/hunting,
+			/obj/item/ammo_magazine/rifle/hunting,
+			/obj/item/ammo_magazine/rifle/hunting,
+			/obj/item/ammo_magazine/rifle/hunting,
+			/obj/item/ammo_magazine/rifle/hunting,
+			/obj/item/ammo_magazine/rifle/hunting
+	)
+	cost = BLACK_MARKET_VALUE_CRAP
+
+// SMGs
+
+/datum/supply_packs/contraband/seized/fp9000
+	name = "FN FP9000 submachinegun crate (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/smg/fp9000,
+			/obj/item/ammo_magazine/smg/fp9000,
+			/obj/item/ammo_magazine/smg/fp9000,
+			/obj/item/ammo_magazine/smg/fp9000,
+			/obj/item/ammo_magazine/smg/fp9000,
+			/obj/item/ammo_magazine/smg/fp9000
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+
+/datum/supply_packs/contraband/seized/mp27
+	name = "MP-27 submachinegun crate (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/smg/mp27,
+			/obj/item/ammo_magazine/smg/mp27,
+			/obj/item/ammo_magazine/smg/mp27,
+			/obj/item/ammo_magazine/smg/mp27,
+			/obj/item/ammo_magazine/smg/mp27,
+			/obj/item/ammo_magazine/smg/mp27
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+
+/datum/supply_packs/contraband/seized/mp5
+	name = "MP5 submachinegun crate (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/smg/mp5,
+			/obj/item/ammo_magazine/smg/mp5,
+			/obj/item/ammo_magazine/smg/mp5,
+			/obj/item/ammo_magazine/smg/mp5,
+			/obj/item/ammo_magazine/smg/mp5,
+			/obj/item/ammo_magazine/smg/mp5
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+
+/datum/supply_packs/contraband/seized/uzi
+	name = "UZI submachinegun crate (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/smg/uzi,
+			/obj/item/ammo_magazine/smg/uzi,
+			/obj/item/ammo_magazine/smg/uzi,
+			/obj/item/ammo_magazine/smg/uzi,
+			/obj/item/ammo_magazine/smg/uzi,
+			/obj/item/ammo_magazine/smg/uzi
+	)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/seized/mac15
+	name = "MAC-15 submachinegun crate (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/smg/mac15,
+			/obj/item/ammo_magazine/smg/mac15,
+			/obj/item/ammo_magazine/smg/mac15,
+			/obj/item/ammo_magazine/smg/mac15,
+			/obj/item/ammo_magazine/smg/mac15,
+			/obj/item/ammo_magazine/smg/mac15
+	)
+	cost = BLACK_MARKET_VALUE_CRAP
+
+/datum/supply_packs/contraband/seized/ppsh
+	name = "PPSh-17b submachinegun crate (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/smg/ppsh,
+			/obj/item/ammo_magazine/smg/ppsh,
+			/obj/item/ammo_magazine/smg/ppsh,
+			/obj/item/ammo_magazine/smg/ppsh,
+			/obj/item/ammo_magazine/smg/ppsh,
+			/obj/item/ammo_magazine/smg/ppsh
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+
+//Pistols
+
+/datum/supply_packs/contraband/seized/b92fs
+	name = "Beretta pistol crate (x6 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/pistol/b92fs,
+			/obj/item/ammo_magazine/pistol/b92fs,
+			/obj/item/ammo_magazine/pistol/b92fs,
+			/obj/item/ammo_magazine/pistol/b92fs,
+			/obj/item/ammo_magazine/pistol/b92fs,
+			/obj/item/ammo_magazine/pistol/b92fs,
+			/obj/item/ammo_magazine/pistol/b92fs
+	)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/seized/heavy
+	name = "Desert Eagle crate (x4 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/pistol/heavy,
+			/obj/item/ammo_magazine/pistol/heavy,
+			/obj/item/ammo_magazine/pistol/heavy,
+			/obj/item/ammo_magazine/pistol/heavy,
+			/obj/item/ammo_magazine/pistol/heavy
+	)
+	cost = BLACK_MARKET_VALUE_GREAT
+
+/datum/supply_packs/contraband/seized/c99
+	name = "Korovin PK-9 crate (x6 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/pistol/c99,
+			/obj/item/ammo_magazine/pistol/c99,
+			/obj/item/ammo_magazine/pistol/c99,
+			/obj/item/ammo_magazine/pistol/c99,
+			/obj/item/ammo_magazine/pistol/c99,
+			/obj/item/ammo_magazine/pistol/c99,
+			/obj/item/ammo_magazine/pistol/c99
+	)
+	cost = BLACK_MARKET_VALUE_CRAP
+
+/datum/supply_packs/contraband/seized/kt42
+	name = "KT-42 Automag (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/pistol/kt42,
+			/obj/item/ammo_magazine/pistol/kt42,
+			/obj/item/ammo_magazine/pistol/kt42,
+			/obj/item/ammo_magazine/pistol/kt42,
+			/obj/item/ammo_magazine/pistol/kt42,
+			/obj/item/ammo_magazine/pistol/kt42
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+
+/datum/supply_packs/contraband/seized/holdout
+	name = "holdout pistol (x7 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/pistol/holdout,
+			/obj/item/ammo_magazine/pistol/holdout,
+			/obj/item/ammo_magazine/pistol/holdout,
+			/obj/item/ammo_magazine/pistol/holdout,
+			/obj/item/ammo_magazine/pistol/holdout,
+			/obj/item/ammo_magazine/pistol/holdout,
+			/obj/item/ammo_magazine/pistol/holdout,
+			/obj/item/ammo_magazine/pistol/holdout
+	)
+	cost = BLACK_MARKET_VALUE_CRAP
+
+/datum/supply_packs/contraband/seized/skorpion
+	name = "CZ-81 machine pistol (x4 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/pistol/skorpion,
+			/obj/item/ammo_magazine/pistol/skorpion,
+			/obj/item/ammo_magazine/pistol/skorpion,
+			/obj/item/ammo_magazine/pistol/skorpion,
+			/obj/item/ammo_magazine/pistol/skorpion
+	)
+	cost = BLACK_MARKET_VALUE_BAD
+
+//Revolvers
+
+/datum/supply_packs/contraband/seized/cmb
+	name = "CMB Spearhead revolver (x5 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/revolver/cmb,
+			/obj/item/ammo_magazine/revolver/cmb,
+			/obj/item/ammo_magazine/revolver/cmb,
+			/obj/item/ammo_magazine/revolver/cmb,
+			/obj/item/ammo_magazine/revolver/cmb,
+			/obj/item/ammo_magazine/revolver/cmb
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+
+/datum/supply_packs/contraband/seized/small
+	name = "S&W revolver (x6 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/revolver/small,
+			/obj/item/ammo_magazine/revolver/small,
+			/obj/item/ammo_magazine/revolver/small,
+			/obj/item/ammo_magazine/revolver/small,
+			/obj/item/ammo_magazine/revolver/small,
+			/obj/item/ammo_magazine/revolver/small,
+			/obj/item/ammo_magazine/revolver/small
+	)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/seized/nagant
+	name = "N-Y 7.62mm revolver (x6 magazines)"
+	contains = list(
+			/obj/item/weapon/gun/revolver/nagant,
+			/obj/item/ammo_magazine/revolver/upp,
+			/obj/item/ammo_magazine/revolver/upp,
+			/obj/item/ammo_magazine/revolver/upp,
+			/obj/item/ammo_magazine/revolver/upp,
+			/obj/item/ammo_magazine/revolver/upp,
+			/obj/item/ammo_magazine/revolver/upp
+	)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/* --- SHIPSIDE CONTRABAND --- */
+
+/*
+
+Primarily made up of things that would be best utilized, well, shipside. Recreational drugs, alcohol, toys...
+
+*/
+
+/datum/supply_packs/contraband/shipside
+	group = "Shipside Contraband"
+	contains = list()
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/shipside/confiscated_alcohol
+	name = "confiscated alcohol crate"
+	randomised_num_contained = 3
+	contains = list(
+					/obj/item/reagent_container/food/drinks/bottle/gin,
+					/obj/item/reagent_container/food/drinks/bottle/whiskey,
+					/obj/item/reagent_container/food/drinks/bottle/sake,
+					/obj/item/reagent_container/food/drinks/bottle/vodka,
+					/obj/item/reagent_container/food/drinks/bottle/vodka/chess/random,
+					/obj/item/reagent_container/food/drinks/bottle/tequila,
+					/obj/item/reagent_container/food/drinks/bottle/davenport,
+					/obj/item/reagent_container/food/drinks/bottle/bottleofnothing,
+					/obj/item/reagent_container/food/drinks/bottle/patron,
+					/obj/item/reagent_container/food/drinks/bottle/rum,
+					/obj/item/reagent_container/food/drinks/bottle/vermouth,
+					/obj/item/reagent_container/food/drinks/bottle/kahlua,
+					/obj/item/reagent_container/food/drinks/bottle/goldschlager,
+					/obj/item/reagent_container/food/drinks/bottle/cognac,
+					/obj/item/reagent_container/food/drinks/bottle/wine,
+					/obj/item/reagent_container/food/drinks/bottle/absinthe,
+					/obj/item/reagent_container/food/drinks/bottle/melonliquor,
+					/obj/item/reagent_container/food/drinks/bottle/bluecuracao,
+					/obj/item/reagent_container/food/drinks/bottle/grenadine,
+					/obj/item/reagent_container/food/drinks/bottle/pwine,
+					/obj/item/reagent_container/food/drinks/bottle/beer/craft,
+					/obj/item/reagent_container/food/drinks/bottle/beer/craft/tuxedo,
+					/obj/item/reagent_container/food/drinks/bottle/beer/craft/ganucci,
+					/obj/item/reagent_container/food/drinks/bottle/beer/craft/bluemalt,
+					/obj/item/reagent_container/food/drinks/bottle/beer/craft/partypopper,
+					/obj/item/reagent_container/food/drinks/bottle/beer/craft/tazhushka,
+					/obj/item/reagent_container/food/drinks/bottle/beer/craft/reaper,
+					/obj/item/reagent_container/food/drinks/bottle/beer/craft/mono
+	)
+	cost = BLACK_MARKET_VALUE_GOOD
+
+/datum/supply_packs/contraband/shipside/confiscated_medicine
+	name = "confiscated medicinal supplies crate"
+	randomised_num_contained = 3
+	contains = list(
+					/obj/item/stack/medical/advanced/bruise_pack/predator,
+					/obj/item/stack/medical/advanced/ointment/predator,
+					/obj/item/storage/pill_bottle/happy,
+					/obj/item/storage/pill_bottle/mystery,
+					/obj/item/storage/pill_bottle/russianRed/skillless,
+					/obj/item/reagent_container/food/drinks/flask/weylandyutani/poison,
+					/obj/item/reagent_container/food/drinks/bottle/holywater/bong,
+					/obj/item/storage/pill_bottle/paracetamol,
+					/obj/item/storage/pill_bottle/zombie_powder
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+
+/datum/supply_packs/contraband/shipside/confiscated_cuisine
+	name = "confiscated cuisine supplies crate"
+	randomised_num_contained = 4
+	contains = list(
+		/obj/item/reagent_container/food/drinks/bottle/absinthe,
+		/obj/item/reagent_container/food/drinks/bottle/pwine,
+		/obj/item/reagent_container/food/snacks/stew,
+		/obj/item/reagent_container/food/snacks/donut/chaos,
+		/obj/item/reagent_container/food/snacks/egg/random,
+		/obj/item/reagent_container/food/snacks/egg/random, //not a dupe
+		/obj/item/reagent_container/food/snacks/xemeatpie,
+		/obj/item/reagent_container/food/snacks/monkeycube/farwacube,
+		/obj/item/reagent_container/food/snacks/monkeycube/stokcube,
+		/obj/item/reagent_container/food/snacks/monkeycube/yirencube,
+		/obj/item/reagent_container/food/snacks/upp,
+		/obj/item/reagent_container/food/snacks/wrapped/chunk/hunk,
+		/obj/item/reagent_container/food/snacks/meat/human,
+		/obj/item/reagent_container/food/snacks/meat/corgi,
+		/obj/item/reagent_container/food/snacks/meat/xenomeat,
+		/obj/item/reagent_container/food/snacks/grown/apple/poisoned,
+		/obj/item/reagent_container/food/snacks/grown/poisonberries,
+		/obj/item/reagent_container/food/snacks/grown/deathberries,
+		/obj/item/reagent_container/food/snacks/carpmeat,
+		/obj/item/reagent_container/food/snacks/candy_corn,
+		/obj/item/reagent_container/food/snacks/monkeyburger,
+		/obj/item/reagent_container/food/snacks/human/burger,
+		/obj/item/reagent_container/food/snacks/xenoburger,
+		/obj/item/reagent_container/food/snacks/amanitajelly,
+		/obj/item/reagent_container/food/snacks/spacylibertyduff,
+		/obj/item/reagent_container/food/snacks/monkeysdelight,
+		/obj/item/reagent_container/food/snacks/sliceable/braincake,
+		/obj/item/reagent_container/food/snacks/resin_fruit,
+		/obj/item/reagent_container/food/condiment/hotsauce/franks/macho
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+
+/datum/supply_packs/contraband/shipside/confiscated_miscellaneous
+	name = "confiscated miscellaneous items crate"
+	randomised_num_contained = 4
+	contains = list(
+		/obj/item/toy/bikehorn,
+		/obj/item/storage/box/packet/hefa/toy,
+		/obj/item/toy/inflatable_duck,
+		/obj/item/toy/beach_ball,
+		/obj/item/toy/farwadoll,
+		/obj/item/toy/waterflower,
+		/obj/item/toy/spinningtoy,
+		/obj/item/storage/box/snappops,
+		/obj/item/storage/fancy/crayons,
+		/obj/item/toy/balloon,
+		/obj/item/storage/wallet,
+		/obj/item/storage/belt/champion,
+		/obj/item/clothing/mask/luchador,
+		/obj/item/tool/soap/deluxe,
+		/obj/item/explosive/grenade/smokebomb,
+		/obj/item/corncob,
+		/obj/item/poster,
+		/obj/item/weapon/melee/banhammer,
+		/obj/item/toy/prize/ripley,
+		/obj/item/toy/prize/fireripley,
+		/obj/item/toy/prize/deathripley,
+		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
+		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
+		/obj/item/clothing/accessory/horrible,
+		/obj/item/storage/belt/marine/quackers,
+		/obj/item/storage/belt/shotgun/full/quackers,
+		/obj/item/pamphlet/skill/powerloader,
+		/obj/item/pamphlet/language/russian,
+		/obj/item/pamphlet/language/japanese,
+		/obj/item/pamphlet/language/chinese,
+		/obj/item/pamphlet/language/german,
+		/obj/item/pamphlet/language/spanish
+		)
+	cost = BLACK_MARKET_VALUE_MEH
+
+
+/* --- SURPLUS EQUIPMENT --- */
+
+/*
+
+USCM spare items, miscellaneous gear that's too niche and distant (or restricted) to put in normal req but juuuust USCM-related enough to fit here.
+
+*/
+
+/datum/supply_packs/contraband/surplus
+	group = "Surplus Equipment"
+	contains = list()
+	containertype = /obj/structure/largecrate/black_market
+
+/* - Misc. USCM equipment - */
+
+/datum/supply_packs/contraband/surplus/uscm_poncho
+	name = "surplus USCM poncho crate (x2)"
+	cost = BLACK_MARKET_VALUE_CRAP
+	containertype = /obj/structure/largecrate/black_market/poncho
+
+/obj/structure/largecrate/black_market/poncho/Initialize()
+	. = ..()
+	var/obj/item/paper/nope = new(src)
+	nope.name = "automated ASRS note"
+	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not succesfully delivered because: 'No items of that type found in storage.'"
+	nope.color = "green"
+	nope.update_icon()
+
+/datum/supply_packs/contraband/surplus/surplus_police_equipment
+	name = "surplus riot control equipment"
+	randomised_num_contained = 3
+	contains = list(
+		/obj/item/weapon/melee/baton/damaged,
+		/obj/item/reagent_container/spray/pepper,
+		/obj/item/weapon/melee/baton/cattleprod,
+		/obj/item/ammo_magazine/shotgun/beanbag,
+		/obj/item/storage/box/packet/m15/rubber,
+		/obj/item/storage/box/guncase/m79,
+		/obj/item/clothing/head/helmet/marine/MP,
+		/obj/item/prop/helmetgarb/riot_shield
+	)
+	cost = BLACK_MARKET_VALUE_MEH
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/surplus/surplus_non_lethal_ammunition
+	name = "surplus non-lethal ammunition"
+	randomised_num_contained = 2
+	contains = list(
+		/obj/item/ammo_magazine/smg/m39/rubber,
+		/obj/item/ammo_magazine/pistol/rubber,
+		/obj/item/ammo_magazine/pistol/mod88/rubber,
+		/obj/item/ammo_magazine/rifle/rubber,
+		/obj/item/ammo_magazine/rifle/l42a/rubber,
+		/obj/item/ammo_magazine/shotgun/beanbag
+	)
+	cost = BLACK_MARKET_VALUE_AVERAGE
+	containertype = /obj/structure/largecrate/black_market
+
+/* - Misc. USCM weaponry - */
+
+/*datum/supply_packs/contraband/surplus/mk44 handgun
+	group = "Surplus Equipment"
+	contains = list()
+	containertype = /obj/structure/largecrate/black_market
+*/
+
+/datum/supply_packs/contraband/surplus/r4t
+	name = "surplus R4T field-testing case"
+	cost = BLACK_MARKET_VALUE_AVERAGE
+	contains = list(/obj/item/storage/box/guncase/r4t)
+
+/datum/supply_packs/contraband/surplus/nsg23_marine
+	name = "surplus NSG 23 assault rifle case"
+	cost = BLACK_MARKET_VALUE_MEH
+	contains = list(/obj/item/storage/box/guncase/nsg23_marine)
+
+/datum/supply_packs/contraband/surplus/m3717
+	name = "surplus M37-17 pump shotgun case"
+	cost = BLACK_MARKET_VALUE_GREAT
+	contains = list(/obj/item/storage/box/guncase/m3717)
+
+/datum/supply_packs/contraband/surplus/m1911
+	name = "surplus M1911 service pistol case"
+	cost = BLACK_MARKET_VALUE_BAD
+	contains = list(/obj/item/storage/box/guncase/m1911)
+
+/datum/supply_packs/contraband/surplus/m1911/socom
+	name = "surplus SOCOM M1911 service pistol case"
+	cost = BLACK_MARKET_VALUE_GOOD
+	contains = list(/obj/item/storage/box/guncase/m1911/socom)
+
+/* --- DEEP STORAGE --- */
+
+/*
+
+Some of the least-obtainable loadout items, now purchasable from the contraband menu. If you think this is filler, uh........ yeah.
+
+This is where the RO can reclaim their lost honor and purchase the M44 custom, though.
+
+*/
+
+/datum/supply_packs/contraband/deep_storage
+	group = "Deep Storage"
+	contains = list()
+	containertype = /obj/structure/largecrate/black_market
+
+
+// Helmet Garb
+
+/datum/supply_packs/contraband/deep_storage/spacejam
+	name = "Tickets to Space Jam"
+	contains = list(
+		/obj/item/prop/helmetgarb/spacejam_tickets
+		)
+	cost = BLACK_MARKET_VALUE_CRAP
+
+/datum/supply_packs/contraband/deep_storage/broken_nvgs
+	name = "Broken Night Vision Goggles"
+	contains = list(
+		/obj/item/prop/helmetgarb/helmet_nvg/cosmetic
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/xm42b_pipe
+	name = "10x99mm XM42B casing"
+	contains = list(
+		/obj/item/prop/helmetgarb/bullet_pipe
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/trimmed_wire
+	name = "Trimmed Barbed Wire"
+	contains = list(
+		/obj/item/prop/helmetgarb/trimmed_wire
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/lucky_feather_random
+	name = "Lucky Feather"
+	randomised_num_contained = 1
+	contains = list(
+		/obj/item/prop/helmetgarb/lucky_feather,
+		/obj/item/prop/helmetgarb/lucky_feather/blue,
+		/obj/item/prop/helmetgarb/lucky_feather/purple,
+		/obj/item/prop/helmetgarb/lucky_feather/yellow
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/rosary
+	name = "Rosary"
+	contains = list(
+		/obj/item/prop/helmetgarb/rosary
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/rabbitsfoot
+	name = "Rabbit's Foot"
+	contains = list(
+		/obj/item/prop/helmetgarb/rabbitsfoot
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+// Masks
+
+/datum/supply_packs/contraband/deep_storage/tacticalmask_random
+	name = "Tactical Mask"
+	randomised_num_contained = 1
+	contains = list(
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/red,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/green,
+		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/skull_balaclava_random
+	name = "Skull Balaclava"
+	randomised_num_contained = 1
+	contains = list(
+		/obj/item/clothing/mask/rebreather/skull/black,
+		/obj/item/clothing/mask/rebreather/skull
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+
+/datum/supply_packs/contraband/deep_storage/skull_facepaint
+	name = "Skull Facepaint"
+	contains = list(
+		/obj/item/facepaint/skull
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+//Glasses
+
+/datum/supply_packs/contraband/deep_storage/aviator_shades
+	name = "Aviator Shades"
+	contains = list(
+		/obj/item/clothing/glasses/sunglasses/aviator
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/ballistic_goggles_random
+	name = "Ballistic Goggles"
+	randomised_num_contained = 1
+	contains = list(
+		/obj/item/clothing/glasses/mgoggles,
+		/obj/item/clothing/glasses/mgoggles/orange,
+		/obj/item/clothing/glasses/mgoggles/black
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/bimex_shades
+	name = "BiMex Personal Shades"
+	contains = list(
+		/obj/item/clothing/glasses/sunglasses/big
+		)
+	cost = BLACK_MARKET_VALUE_MEH
+
+// Headgear
+
+/datum/supply_packs/contraband/deep_storage/bandana_random
+	name = "USCM Bandana"
+	randomised_num_contained = 1
+	contains = list(
+		/obj/item/clothing/head/cmbandana,
+		/obj/item/clothing/head/cmbandana/tan
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/uscm_earpiece
+	name = "USCM Earpiece"
+	randomised_num_contained = 1
+	contains = list(
+		/obj/item/clothing/head/headset
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/uscm_headband
+	name = "USCM Headband"
+	randomised_num_contained = 1
+	contains = list(
+		/obj/item/clothing/head/headband,
+		/obj/item/clothing/head/headband/brown,
+		/obj/item/clothing/head/headband/gray,
+		/obj/item/clothing/head/headband/red,
+		/obj/item/clothing/head/headband/tan
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/uscm_boonie_hat
+	name = "USCM Boonie Hat"
+	randomised_num_contained = 1
+	contains = list(
+		/obj/item/clothing/head/cmcap/boonie/tan,
+		/obj/item/clothing/head/cmcap/boonie
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+//Misc
+
+/datum/supply_packs/contraband/deep_storage/pdtl_kit
+	name = "PDT/L Kit"
+	contains = list(
+		/obj/item/storage/box/pdt_kit
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/lucky_lime
+	name = "Frozen Lime"
+	contains = list(
+		/obj/item/reagent_container/food/snacks/grown/lime
+		)
+	cost = BLACK_MARKET_VALUE_CRAP
+
+/datum/supply_packs/contraband/deep_storage/uno_reverse_random
+	name = "Uno Reverse Card"
+	randomised_num_contained = 1
+	contains = list(
+		/obj/item/toy/handcard/uno_reverse_red,
+		/obj/item/toy/handcard/uno_reverse_blue,
+		/obj/item/toy/handcard/uno_reverse_purple,
+		/obj/item/toy/handcard/uno_reverse_yellow
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/jungle_boots
+	name = "Jungle Pattern Combat Boots"
+	contains = list(
+		/obj/item/clothing/shoes/marine/jungle
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+//Weapons
+
+/datum/supply_packs/contraband/deep_storage/type_replica
+	name = "Type 80 Bayonet Replica"
+	contains = list(
+		/obj/item/attachable/bayonet/upp_replica
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/cartridge_bayonet
+	name = "M8 Cartridge Bayonet Kit"
+	contains = list(
+		/obj/item/storage/box/c02_knife
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/m43_holdout
+	name = "M43 Holdout Pistol"
+	contains = list(
+		/obj/item/storage/box/m43
+		)
+	cost = BLACK_MARKET_VALUE_BAD
+
+/datum/supply_packs/contraband/deep_storage/m4a3_c
+	name = "M4A3 Custom Pistol"
+	contains = list(
+		/obj/item/weapon/gun/pistol/m4a3/custom
+		)
+	cost = BLACK_MARKET_VALUE_EXCELLENT
+
+/datum/supply_packs/contraband/deep_storage/m44_c
+	name = "M44 Custom Revolver"
+	contains = list(
+		/obj/item/weapon/gun/revolver/m44/custom
+		)
+	cost = BLACK_MARKET_VALUE_MAX
+
+/* --- MISCELLANEOUS --- */
+
+/*
+
+Things that don't fit anywhere else. If they're meant for shipside use, they probably fit in shipside contraband.
+
+*/
+
+/datum/supply_packs/contraband/miscellaneous
+	group = "Miscellaneous"
+	contains = list()
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/miscellaneous/secured_wildlife
+	name = "secured wildlife container"
+	cost = BLACK_MARKET_VALUE_GOOD
+	containertype = /obj/structure/largecrate/black_market/secured_wildlife
+
+/obj/structure/largecrate/black_market/secured_wildlife
+	name = "secured wildlife container"
+	icon_state = "lisacrate"
+	var/mob/living/contained_mob
+
+/obj/structure/largecrate/black_market/secured_wildlife/unpack()
+	//We need to pick a 'secured wildlife' mob that actually makes sense.
+	var/fit_hostiles = list(/mob/living/simple_animal/hostile/giant_spider, /mob/living/simple_animal/hostile/bear, /mob/living/simple_animal/hostile/retaliate/malf_drone, /mob/living/simple_animal/hostile/retaliate/goat)
+	contained_mob = pick( ( subtypesof(/mob/living/simple_animal) - typesof(/mob/living/simple_animal/hostile) ) + fit_hostiles)
+	new contained_mob(loc)
+	. = ..()

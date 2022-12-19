@@ -1,5 +1,4 @@
 #define DEFAULT_MAP_SIZE 15
-#define COMSIG_SENTRY_ENGAGED_ALERT "signal_sentry_engaged"
 // can we refactor out the camera information to a datum? It would be really cool.
 /datum/camera_holder
 	// Stuff needed to render the map

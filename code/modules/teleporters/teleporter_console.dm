@@ -59,8 +59,14 @@
 
     return 1
 
-/obj/structure/machinery/computer/teleporter_console/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
-    var/data[0]
+/obj/structure/machinery/computer/teleporter_console/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TeleporterConsole", name, 800, 600)
+		ui.open()
+
+/obj/structure/machinery/computer/teleporter_console/ui_data(mob/user)
+	var/list/data = list()
     var/teleporter_status_message
 
     if(!linked_teleporter)
@@ -70,25 +76,47 @@
             log_admin("Couldn't find teleporter matching ID [teleporter_id]. Tell the devs. Code: TELEPORTER_CONSOLE_5")
             return
 
-    if(linked_teleporter.check_teleport_cooldown())
-        teleporter_status_message = "READY"
-    else
-        teleporter_status_message = "COOLING DOWN"
+	data["world_time"] = world.time
+	data["last_fire_time"] = linked_teleporter.time_last_used
+	data["cooldown"] = linked_teleporter.cooldown
 
-    // NanoUI template items
-    data = list(
-        "teleporter_status" = teleporter_status_message,                                                                // Pretty messages
-        "can_fire" = linked_teleporter.check_teleport_cooldown(),                                                       // Just whether or not we can fire
-        "time_to_ready" = round((linked_teleporter.time_last_used + linked_teleporter.cooldown - world.time)/10),       // How long until we can fire
-        "curr_time" = world.time,                                                                                       // Current time
-        "last_fire_time" = linked_teleporter.time_last_used,                                                            // Time we teleported last
-        "ready_time" = linked_teleporter.time_last_used + linked_teleporter.cooldown,                                   // When we will be ready
-        "cooldown" = linked_teleporter.cooldown,                                                                        // Our total cooldown time
-        "avail_locations" = linked_teleporter.locations,                                                                // Available locations
-        "selected_source" = selected_source,                                                                            // Selected source
-        "selected_destination" = selected_destination,                                                                  // Selected destination
-        "name" = linked_teleporter.name,                                                                                // Name
-    )
+	data["locations"] = linked_teleporter.locations
+	data["source"] = selected_source
+	data["destination"] = selected_destination
+	data["name"] = linked_teleporter.name
+
+	return data
+
+/obj/structure/machinery/computer/teleporter_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+    add_fingerprint(usr)
+
+	switch(action)
+		if("select_source")
+			var/new_source = tgui_input_list(usr, "Select source location","Source Location", linked_teleporter.locations)
+			if (selected_source && !new_source)
+				return
+			else
+				selected_source = new_source
+			. = TRUE
+
+		if("select_dest")
+			var/new_dest = tgui_input_list(usr, "Select destination location","Destination Location", linked_teleporter.locations)
+			if(selected_destination && !new_dest)
+				return
+			else
+				selected_destination = new_dest
+			. = TRUE
+
+		if("teleport")
+			carry_out_teleport()
+			. = TRUE
+
+
+/obj/structure/machinery/computer/teleporter_console/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
     ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
@@ -98,87 +126,65 @@
         ui.open()
         ui.set_auto_update(1)
 
-/obj/structure/machinery/computer/teleporter_console/Topic(href, href_list)
-    if(..())
-        return
+/obj/structure/machinery/computer/teleporter_console/proc/carry_out_teleport()
+	if(!selected_source || !selected_destination)
+		visible_message("<b>[src]</b> beeps, \"You must select a valid source and destination for teleportation.\"")
+		return
 
-    add_fingerprint(usr)
+	if(selected_source == selected_destination)
+		visible_message("<b>[src]</b> beeps, \"You must select a different source and destination for teleportation to succeed.\"")
+		return
 
-    if(href_list["select_source"])
-        var/new_source = tgui_input_list(usr, "Select source location","Source Location", linked_teleporter.locations)
-        if (selected_source && !new_source)
-            return
-        else
-            selected_source = new_source
+	if(!linked_teleporter.safety_check_destination(selected_destination))
+		visible_message("<b>[src]</b> beeps, \"The destination is unsafe. Please clear it of any dangerous or dense objects.\"")
+		return
 
-    if(href_list["select_dest"])
-        var/new_dest = tgui_input_list(usr, "Select destination location","Destination Location", linked_teleporter.locations)
-        if(selected_destination && !new_dest)
-            return
-        else
-            selected_destination = new_dest
+	if(!linked_teleporter.safety_check_source(selected_source))
+		visible_message("<b>[src]</b> beeps, \"The source location is unsafe. Any large objects must be completely inside the teleporter.\"")
+		return
 
-    if(href_list["teleport"])
-        if(!selected_source || !selected_destination)
-            visible_message("<b>[src]</b> beeps, \"You must select a valid source and destination for teleportation.\"")
-            return
+	if(!linked_teleporter.check_teleport_cooldown())
+		visible_message("<b>[src]</b> beeps, \"The [linked_teleporter.name] is on cooldown. Please wait.\"")
+		return
 
-        if(selected_source == selected_destination)
-            visible_message("<b>[src]</b> beeps, \"You must select a different source and destination for teleportation to succeed.\"")
-            return
+	var/list/turf_keys = linked_teleporter.get_turfs_by_location(selected_source)
+	var/turf/sound_turf = turf_keys[pick(turf_keys)]
+	playsound(sound_turf, 'sound/effects/corsat_teleporter.ogg', 80, 0, 20)
 
-        if(!linked_teleporter.safety_check_destination(selected_destination))
-            visible_message("<b>[src]</b> beeps, \"The destination is unsafe. Please clear it of any dangerous or dense objects.\"")
-            return
+	spawn(0)
+		linked_teleporter.apply_vfx(selected_source, 30)
 
-        if(!linked_teleporter.safety_check_source(selected_source))
-            visible_message("<b>[src]</b> beeps, \"The source location is unsafe. Any large objects must be completely inside the teleporter.\"")
-            return
+	visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 5 seconds....\"")
 
-        if(!linked_teleporter.check_teleport_cooldown())
-            visible_message("<b>[src]</b> beeps, \"The [linked_teleporter.name] is on cooldown. Please wait.\"")
-            return
+	sleep(10)
 
-        var/list/turf_keys = linked_teleporter.get_turfs_by_location(selected_source)
-        var/turf/sound_turf = turf_keys[pick(turf_keys)]
-        playsound(sound_turf, 'sound/effects/corsat_teleporter.ogg', 80, 0, 20)
+	visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 4 seconds....\"")
 
-        spawn(0)
-            linked_teleporter.apply_vfx(selected_source, 30)
+	sleep(10)
 
-        visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 5 seconds....\"")
+	visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 3 seconds....\"")
 
-        sleep(10)
+	sleep(10)
 
-        visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 4 seconds....\"")
+	visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 2 seconds....\"")
 
-        sleep(10)
+	sleep(10)
 
-        visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 3 seconds....\"")
+	visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 1 second....\"")
 
-        sleep(10)
+	for(var/turf_key in turf_keys)
+		var/turf/T = turf_keys[turf_key]
+		flick("corsat_teleporter_dynamic", T)
 
-        visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 2 seconds....\"")
+	sleep(10)
 
-        sleep(10)
+	visible_message("<b>[src]</b> beeps, \"INITIATING TELEPORTATION....\"")
 
-        visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 1 second....\"")
+	if(!linked_teleporter.safety_check_source(selected_source) || !linked_teleporter.safety_check_destination(selected_destination) || !linked_teleporter.check_teleport_cooldown())
+		visible_message("<b>[src]</b> beeps, \"TELEPORTATION ERROR; ABORTING....\"")
+		return
 
-        for(var/turf_key in turf_keys)
-            var/turf/T = turf_keys[turf_key]
-            flick("corsat_teleporter_dynamic", T)
-
-        sleep(10)
-
-        visible_message("<b>[src]</b> beeps, \"INITIATING TELEPORTATION....\"")
-
-        if(!linked_teleporter.safety_check_source(selected_source) || !linked_teleporter.safety_check_destination(selected_destination) || !linked_teleporter.check_teleport_cooldown())
-            visible_message("<b>[src]</b> beeps, \"TELEPORTATION ERROR; ABORTING....\"")
-            return
-
-        linked_teleporter.teleport(selected_source, selected_destination)
-
-
+	linked_teleporter.teleport(selected_source, selected_destination)
 
 /obj/structure/machinery/computer/teleporter_console/ex_act(severity)
     if(unacidable)

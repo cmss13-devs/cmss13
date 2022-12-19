@@ -2,6 +2,7 @@ import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, ByondUi, Button, Flex, Icon, Input, ProgressBar, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
+import { logger } from '../logging';
 import { TimedCallback } from './common/TimedCallback';
 
 type SelectedState = [string, string];
@@ -117,6 +118,9 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
   const iff_info = props.data.selection_state.find(
     (x) => x[0].localeCompare('IFF STATUS') === 0
   )?.[1];
+
+  const round_rep =
+    props.data.rounds !== undefined ? props.data.rounds.toFixed(0) : undefined;
   return (
     <Flex direction="column">
       {props.data.rounds !== undefined && (
@@ -129,8 +133,19 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
               <Stack.Item align="center">
                 <Icon name="play" />
               </Stack.Item>
-              <Stack.Item align="center" className="AmmoBoundingBox">
-                <span>{props.data.rounds}</span>
+              <Stack.Item
+                align="center"
+                className={classes([
+                  'AmmoBoundingBox',
+                  props.data.rounds < 100 && 'AmmoBoundingBoxWarning',
+                ])}>
+                {round_rep && (
+                  <span>
+                    {round_rep.length < 3 && '0'}
+                    {round_rep.length < 2 && '0'}
+                    {round_rep}
+                  </span>
+                )}
               </Stack.Item>
             </Stack>
           </Box>
@@ -349,13 +364,29 @@ const ShowAllSentry = (props: { data: SentrySpec[] }, context) => {
   );
 };
 
-const SentryCamera = (_, context) => {
+const SentryCamera = (props: { sentry_data: SentrySpec[] }, context) => {
   const { data, act } = useBackend<SentryData>(context);
+  const { sentry_data } = props;
+  logger.info(
+    `camera target: ${data.camera_target} ${typeof data.camera_target}`
+  );
+  const sentry = sentry_data.find((x) => {
+    const index = x.index?.toString(10) ?? '';
+    const targetIndex = data.camera_target?.toString() ?? '';
+    logger.info(`${targetIndex} == ${index}`);
+    return targetIndex.localeCompare(index) === 0;
+  });
+  logger.info(sentry);
+  const sentry_name = sentry?.name ?? 'Unknown';
+  const sentry_area = sentry?.area ?? 'Unknown';
+  logger.info(sentry_name);
   return (
     <Stack vertical>
       <Stack.Item>
         <Flex justify="space-between">
-          <Flex.Item>Name: Area</Flex.Item>
+          <Flex.Item>
+            {sentry_name}: {sentry_area}
+          </Flex.Item>
           <Flex.Item>
             <Button onClick={() => act('clear-camera')}>Close</Button>
           </Flex.Item>
@@ -420,7 +451,7 @@ export const SentryGunUI = (_, context) => {
     data.sentry.length === 0
       ? []
       : Array.from(Array(data.sentry.length).keys());
-  const sentrySpecs: SentrySpec[] = sentrykeys.map((x) => {
+  const sentrySpecs: Array<SentrySpec> = sentrykeys.map((x) => {
     return { ...data.sentry[x], ...data.sentry_static[x] };
   });
 
@@ -436,7 +467,7 @@ export const SentryGunUI = (_, context) => {
       : (selectedSentry ?? 0) < sentrySpecs.length;
 
   return (
-    <Window theme="crtyellow" height={700}>
+    <Window theme="crtyellow" height={700} width={680} scrollable>
       <Window.Content className="SentryGun">
         <Flex justify="space-between" align-items="center">
           <Flex.Item>
@@ -467,7 +498,7 @@ export const SentryGunUI = (_, context) => {
             {validSelection && (
               <>
                 {selectedSentry !== undefined && (
-                  <ShowSingleSentry data={sentrySpecs[selectedSentry ?? 0]} />
+                  <ShowSingleSentry data={sentrySpecs[selectedSentry]} />
                 )}
                 {selectedSentry === undefined && (
                   <ShowAllSentry data={sentrySpecs} />
@@ -476,7 +507,9 @@ export const SentryGunUI = (_, context) => {
             )}
           </>
         )}
-        {data.camera_target !== null && <SentryCamera />}
+        {data.camera_target !== null && (
+          <SentryCamera sentry_data={sentrySpecs} />
+        )}
       </Window.Content>
     </Window>
   );

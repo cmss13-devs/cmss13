@@ -37,12 +37,12 @@
 	// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
 		"RATE OF FIRE" = list("SINGLE", "BURST", "FULL-AUTO"),
-		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
+		"IFF STATUS" = list("USCM", "WY", "HUMAN"),
 	)
 
 	selected_categories = list(
 		"RATE OF FIRE" = "SINGLE",
-		"IFF STATUS" = "USMC",
+		"IFF STATUS" = "USCM",
 	)
 
 /obj/structure/machinery/defenses/sentry/Initialize()
@@ -135,13 +135,7 @@
 		selected_categories[category] = selection
 		switch(category)
 			if("IFF STATUS")
-				switch(selection)
-					if("USMC")
-						faction_group = FACTION_LIST_MARINE
-					if("WY")
-						faction_group = FACTION_LIST_MARINE_WY
-					if("HUMAN")
-						faction_group = FACTION_LIST_HUMANOID
+				handle_iff(selection)
 			if("RATE OF FIRE")
 				handle_rof(selection)
 				return TRUE
@@ -153,6 +147,17 @@
 	return FALSE
 
 	// do your switch case here to implement action and selection
+/obj/structure/machinery/defenses/sentry/proc/handle_iff(var/selection)
+	switch(selection)
+		if("USCM")
+			faction_group = FACTION_LIST_MARINE
+		if("WY")
+			faction_group = FACTION_LIST_MARINE_WY
+		if("HUMAN")
+			faction_group = FACTION_LIST_HUMANOID
+		if("COLONY")
+			faction_group = list(FACTION_MARINE, FACTION_COLONIST)
+
 
 /obj/structure/machinery/defenses/sentry/proc/handle_rof(var/level)
 	switch(level)
@@ -163,7 +168,7 @@
 		if("BURST")
 			burst = 3
 			accuracy_mult = 0.6
-			fire_delay = 4
+			fire_delay = 12
 		if("FULL-AUTO")
 			burst = 1
 			accuracy_mult = 0.5
@@ -469,7 +474,7 @@
 /obj/structure/machinery/defenses/sentry/premade/Initialize()
 	..()
 	if(selected_categories["IFF STATUS"])
-		selected_categories["IFF STATUS"] = "USMC"
+		selected_categories["IFF STATUS"] = "USCM"
 
 /obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
@@ -514,8 +519,8 @@
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	..()
-	choice_categories["IFF STATUS"] = list("Colony", "WY")
-	selected_categories["IFF STATUS"] = "Colony"
+	choice_categories["IFF STATUS"] = list("COLONY", "WY")
+	selected_categories["IFF STATUS"] = "COLONY"
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship

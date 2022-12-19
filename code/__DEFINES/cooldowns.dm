@@ -14,5 +14,8 @@
 
 #define COOLDOWN_TIMELEFT(cd_source, cd_index) (max(0, cd_source.cd_index - world.time))
 
+/// just pre-divides the result by 10 to give an output in seconds
+#define COOLDOWN_SECONDSLEFT(cd_source, cd_index) ((max(0, cd_source.cd_index - world.time))/10)
+
 //cooldowns themselves as defines
 #define COOLDOWN_ORBIT_CHANGE "cooldown_orbit_change"

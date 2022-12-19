@@ -487,7 +487,7 @@ Additional game mode variables.
 				available_facehugger_sources[descriptive_name] = morpher
 
 	if(available_facehugger_sources.len <= 0)
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Carriers or Egg Morphers with available Facehuggers for you to join. Please try agian later!"))
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Carriers or Egg Morphers with available Facehuggers for you to join. Please try again later!"))
 		return FALSE
 
 	var/source_picked = tgui_input_list(xeno_candidate, "Select a Facehugger source.", "Facehugger Source Choice", available_facehugger_sources, theme="hive_status")

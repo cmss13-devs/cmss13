@@ -333,6 +333,7 @@
 	var/cover_icon_state = "grate"
 	var/default_name = "river"
 	var/no_overlay = FALSE
+	var/base_river_slowdown = 1.75
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
 
@@ -380,7 +381,7 @@
 
 	if(!covered)
 		var/mob/living/carbon/C = AM
-		var/river_slowdown = 1.75
+		var/river_slowdown = base_river_slowdown
 
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = AM
@@ -393,9 +394,9 @@
 						Y.decloak(H, TRUE)
 
 		else if(isXeno(C))
-			river_slowdown = 1.3
+			river_slowdown -= 0.7
 			if(isXenoBoiler(C))
-				river_slowdown = -0.5
+				river_slowdown -= 1
 
 		var/new_slowdown = C.next_move_slowdown + river_slowdown
 		C.next_move_slowdown = new_slowdown
@@ -442,6 +443,30 @@
 
 /turf/open/gm/river/ocean
 	color = "#dae3e2"
+	base_river_slowdown = 4 // VERY. SLOW.
+
+/turf/open/gm/river/ocean/Entered(atom/movable/AM)
+	. = ..()
+	if(prob(20)) // fuck you
+		if(!ismob(AM))
+			return
+		var/mob/unlucky_mob = AM
+		var/turf/target_turf = get_random_turf_in_range(AM.loc, 3, 0)
+		var/datum/launch_metadata/LM = new()
+		LM.target = A
+		LM.range = get_dist(AM.loc, target_turf)
+		LM.speed = SPEED_FAST
+		LM.thrower = unlucky_mob
+		LM.spin = TRUE
+		LM.pass_flags = NO_FLAGS
+		to_chat(rivermob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
+		unlucky_mob.launch_towards(LM)
+		return
+
+	if(world.time % 5)
+		if(ismob(AM))
+			var/mob/rivermob = AM
+			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"

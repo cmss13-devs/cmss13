@@ -23,14 +23,14 @@ INITIALIZE_IMMEDIATE(/obj/plane_master_controller)
 		assoc_controlled_planes["[i]"] = instance
 	controlled_planes = assoc_controlled_planes
 
-///Full override so we can just use filterrific
+///Full override so we can just use filteriffic
 /obj/plane_master_controller/add_filter(name, priority, list/params)
 	. = ..()
 	for(var/i in controlled_planes)
 		var/atom/movable/screen/plane_master/pm_iterator = controlled_planes[i]
 		pm_iterator.add_filter(name, priority, params)
 
-///Full override so we can just use filterrific
+///Full override so we can just use filteriffic
 /obj/plane_master_controller/remove_filter(name_or_names)
 	. = ..()
 	for(var/i in controlled_planes)

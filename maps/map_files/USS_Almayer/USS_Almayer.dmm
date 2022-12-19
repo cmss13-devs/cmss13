@@ -28403,7 +28403,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "bRH" = (
-/obj/effect/landmark/start/cadet_police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "bRK" = (
@@ -39393,7 +39392,6 @@
 	pixel_x = 2;
 	tag = "icon-E"
 	},
-/obj/effect/landmark/start/cadet_police,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1;
@@ -39678,7 +39676,6 @@
 /obj/structure/machinery/cryopod/right{
 	pixel_y = 6
 	},
-/obj/effect/landmark/start/cadet_police,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"

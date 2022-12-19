@@ -1,5 +1,0 @@
-author: "NoKohi"
-delete-after: True
-changes:
-  - rscadd: "changed the HG 37 shotguns to have dual internal tube magazines, switch between them via toggle burst fire mode"
-  - code_imp: "cleaned up a few single letter var names"

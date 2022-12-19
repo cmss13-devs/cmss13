@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "fixed a lot of scenarios where if an alert popped up on your screen and you closed it instead of pressing no, the thing would happen anyway."

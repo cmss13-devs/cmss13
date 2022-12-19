@@ -24,7 +24,7 @@
 	cam_background.del_on_map_removal = FALSE
 
 /datum/camera_holder/Destroy(force, ...)
-	. = ..()
+	. = ..(force)
 	qdel(cam_background)
 	qdel(cam_screen)
 
@@ -84,6 +84,13 @@
 	qdel(cam_background)
 	qdel(cam_screen)
 
+/obj/item/device/sentry_computer/proc/has_los(var/atom/watcher, var/atom/target)
+	var/list/turf/path = getline2(watcher, target, include_from_atom = FALSE)
+	for(var/turf/point in path)
+		if(point.opacity)
+			return FALSE
+	return TRUE
+
 /obj/item/device/sentry_computer/proc/setup(var/obj/structure/surface/target)
 	if (do_after(usr, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		setup = TRUE
@@ -109,7 +116,9 @@
 /obj/item/device/sentry_computer/proc/post_signal(var/command)
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(SENTRY_FREQ)
 
-	if(!frequency) return
+	if(!frequency)
+		world.log << "no freq!"
+		return
 
 	var/datum/signal/status_signal = new
 	status_signal.source = src
@@ -117,6 +126,7 @@
 	status_signal.data["sentrylaptop"] = command
 
 	frequency.post_signal(src, status_signal)
+	world.log << "sent"
 
 /obj/item/device/sentry_computer/attack_hand(mob/user)
 	if(setup)
@@ -159,9 +169,10 @@
 		playsound(src, get_sfx("terminal_type"), 25, FALSE)
 		if (do_after(usr, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(tool.remove_encryption_key(serial_number))
-				to_chat(user, SPAN_NOTICE("You unload the encryption key to the multitool."))
+				to_chat(user, SPAN_NOTICE("You unload the encryption key to the [tool.name]."))
+				registered_tools -= list(id)
 			else
-				to_chat(user, SPAN_NOTICE("You load an encryption key to the multitool."))
+				to_chat(user, SPAN_NOTICE("You load an encryption key to the [tool.name]."))
 				registered_tools += list(id)
 				tool.load_encryption_key(serial_number, src)
 	else
@@ -177,9 +188,9 @@
 	if(sentry.linked_laptop == src)
 		sentry.linked_laptop = null
 		unpair_sentry(sentry)
-		to_chat(user, SPAN_NOTICE("Decrypted structure."))
+		to_chat(user, SPAN_NOTICE("\The [sentry_gun.name] has been decrypted."))
 	else
-		to_chat(user, SPAN_WARNING("Structure is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
+		to_chat(user, SPAN_WARNING("\The [sentry_gun.name] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
 
 /obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/sentry/target)
 	paired_sentry +=list(target)
@@ -342,12 +353,12 @@
 	var/x_size = current_bb.width
 	var/y_size = current_bb.height
 	var/target = locate(current_bb.center_x, current_bb.center_y, current.loc.z)
-	var/list/visible_things = range("[x_size]x[y_size]", target)
+	var/list/guncamera_zone = range("[x_size]x[y_size]", target)
 
 	var/list/visible_turfs = list()
 	range_turfs.Cut()
 	var/area/A
-	for(var/turf/visible_turf in visible_things)
+	for(var/turf/visible_turf in guncamera_zone)
 		range_turfs += visible_turf
 		A = visible_turf.loc
 		if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)

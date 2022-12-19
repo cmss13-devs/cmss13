@@ -188,9 +188,9 @@
 	if(sentry.linked_laptop == src)
 		sentry.linked_laptop = null
 		unpair_sentry(sentry)
-		to_chat(user, SPAN_NOTICE("\The [sentry_gun.name] has been decrypted."))
+		to_chat(user, SPAN_NOTICE("\The [sentry.name] has been decrypted."))
 	else
-		to_chat(user, SPAN_WARNING("\The [sentry_gun.name] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
+		to_chat(user, SPAN_WARNING("\The [sentry.name] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
 
 /obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/sentry/target)
 	paired_sentry +=list(target)

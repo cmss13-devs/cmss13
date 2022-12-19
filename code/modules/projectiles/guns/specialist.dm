@@ -454,7 +454,8 @@
 	var/GL_has_open_icon = FALSE
 
 	///Internal storage item used as magazine. Must be initialised to work! Set parameters by variables or it will inherit standard numbers from storage.dm. Got to call it *something* and 'magazine' or w/e would be confusing. If FALSE, is not active.
-	var/obj/item/storage/internal/cylinder = FALSE
+	var/uses_cylinder = FALSE
+	var/obj/item/storage/internal/cylinder
 	///What single item to fill the storage with, if any. This does not respect w_class.
 	var/preload
 	///How many items can be inserted. "Null" = backpack-style size-based inventory. You'll have to set max_storage_space too if you do that, and arrange any initial contents. Iff you arrange to put in more items than the storage can hold, they can be taken out but not replaced.
@@ -468,7 +469,7 @@
 
 /obj/item/weapon/gun/launcher/Initialize(mapload, spawn_empty) //If changing vars on init, be sure to do the parent proccall *after* the change.
 	. = ..()
-	if(cylinder)
+	if(uses_cylinder)
 		cylinder = new/obj/item/storage/internal(src)
 		cylinder.storage_slots = internal_slots
 		cylinder.max_w_class = internal_max_w_class
@@ -500,7 +501,7 @@
 	reload_sound = 'sound/weapons/gun_shotgun_open2.ogg' //Played when inserting nade.
 	unload_sound = 'sound/weapons/gun_revolver_unload.ogg'
 
-	cylinder = TRUE //This weapon won't work otherwise.
+	uses_cylinder = TRUE //This weapon won't work otherwise.
 	preload = /obj/item/explosive/grenade/HE
 	internal_slots = 1 //This weapon must use slots.
 	internal_max_w_class = SIZE_MEDIUM //MEDIUM = M15.
@@ -546,7 +547,7 @@
 obj/item/weapon/gun/launcher/grenade/update_icon()
 	..()
 	var/GL_sprite = base_gun_icon
-	if(GL_has_empty_icon && !length(cylinder.contents))
+	if(GL_has_empty_icon && (!cylinder || !length(cylinder.contents)))
 		GL_sprite += "_e"
 		playsound(loc, cocked_sound, 25, 1)
 	if(GL_has_open_icon && open_chamber)

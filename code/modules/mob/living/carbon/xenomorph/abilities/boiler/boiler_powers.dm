@@ -322,4 +322,4 @@
 	var/target = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		carbon_target.reagents.add_reagent("molecularacid", 10)
+		carbon_target.reagents.add_reagent("molecularacid", 6)

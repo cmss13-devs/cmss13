@@ -82,6 +82,11 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE
 
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = NONE
+
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoQueen(M) && density && !operating)
 		INVOKE_ASYNC(src, .proc/pry_open, M)
@@ -121,6 +126,11 @@
 	closed_layer = PODDOOR_CLOSED_LAYER
 	ex_act(severity)
 		return
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = NONE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors
 	name = "\improper Uniform Vendor Shutters"

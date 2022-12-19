@@ -430,6 +430,11 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	. = ..()
 	INVOKE_ASYNC(src, .proc/lock)
 
+/obj/structure/machinery/door/airlock/evacuation/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = NONE
+
 	//Can't interact with them, mostly to prevent grief and meta.
 /obj/structure/machinery/door/airlock/evacuation/Collided()
 	return FALSE

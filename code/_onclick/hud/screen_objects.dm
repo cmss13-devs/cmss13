@@ -659,7 +659,7 @@
 	if(!user.hive.living_xeno_queen)
 		to_chat(user, SPAN_WARNING("Your hive doesn't have a living queen!"))
 		return FALSE
-	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
+	if(user.burrow || user.is_mob_incapacitated() || user.buckled || user.fortify)
 		return FALSE
 	user.overwatch(user.hive.living_xeno_queen)
 

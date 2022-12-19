@@ -30,17 +30,19 @@
 			return
 		if(fortify)
 			to_chat(src, SPAN_XENOWARNING("You can't do this in this stance!"))
+			used_burrow = FALSE
 			return
 		var/obj/effect/alien/weeds/weeds = locate() in T
 		if(!weeds || !src.ally_of_hivenumber(weeds.hivenumber))
 			to_chat(src, SPAN_XENOWARNING("You need to burrow on weeds!"))
-			return
-		if(!do_after(src, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
+			used_burrow = FALSE
 			return
 		to_chat(src, SPAN_XENOWARNING("You begin burrowing yourself into the weeds."))
+		if(!do_after(src, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
+			used_burrow = FALSE
+			return
 		burrow = TRUE
-		invisibility = 101//tobechanged
 		wound_icon_carrier.alpha = 0
 		density = FALSE
 		add_temp_pass_flags(PASS_MOB_THRU|PASS_BUILDING|PASS_UNDER|PASS_BURROWED)
@@ -50,7 +52,7 @@
 			COMSIG_LIVING_FLAMER_FLAMED,
 		), .proc/flamer_crossed_immune)
 		ADD_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
-		mouse_opacity = FALSE
+		mob_size = MOB_SIZE_BIG
 		playsound(src.loc, 'sound/effects/burrowing_s.ogg', 25)
 		update_icons()
 		addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
@@ -96,12 +98,10 @@
 	var/obj/effect/alien/weeds/weeds = locate() in T
 	if(!burrow)
 		return
-	if(!weeds || !src.ally_of_hivenumber(weeds.hivenumber))
+	if((!weeds || !src.ally_of_hivenumber(weeds.hivenumber)) || (src.stat == UNCONSCIOUS && src.health < 0) || (src.stat == DEAD))
 		burrow_off()
-	if(observed_xeno)
-		overwatch(observed_xeno, TRUE)
 	if(burrow)
-		addtimer(CALLBACK(src, .proc/process_burrow_impaler), 1 SECONDS)
+		addtimer(CALLBACK(src, .proc/process_burrow_impaler), 0.5 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/burrow_off()
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
@@ -110,7 +110,7 @@
 	burrow = FALSE
 	if(mutation_type == BURROWER_IMPALER)
 		remove_temp_pass_flags(PASS_MOB_THRU|PASS_BUILDING|PASS_UNDER|PASS_BURROWED)
-		mouse_opacity = TRUE
+		mob_size = MOB_SIZE_XENO
 		wound_icon_carrier.alpha = 255
 	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
 		UnregisterSignal(src, list(
@@ -123,8 +123,10 @@
 	invisibility = FALSE
 	anchored = FALSE
 	density = TRUE
-	for(var/mob/living/carbon/human/H in loc)
-		H.apply_effect(2, WEAKEN)
+	playsound(src.loc, 'sound/effects/burrowoff.ogg', 25)
+	for(var/mob/living/carbon/C in loc)
+		if(!can_not_harm(C))
+			C.apply_effect(2, WEAKEN)
 	addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_canmove()
 	update_icons()
@@ -328,13 +330,13 @@
 
 		facing = get_dir(T, A)
 		target_turfs += T
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(T, 0.25 SECONDS)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(T, 0.25 SECONDS)
 
 	// Extract our 'optimal' turf, if it exists
 	if (target_turfs.len >= 2)
 		X.animation_attack_on(target_turfs[target_turfs.len], 15)
 
-	playsound(X.loc, "alien_sburrower_attack", 40)
+	playsound(X.loc, 'sound/effects/burrower_attack.ogg', 40)
 	X.visible_message(SPAN_XENODANGER("[X] shoots spikes though the ground in front of it!"), SPAN_XENODANGER("You shoot your spikes though the ground in front of you!"))
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
@@ -346,13 +348,14 @@
 
 /datum/action/xeno_action/activable/burrowed_spikes/proc/handle_damage(var/mob/living/carbon/Xenomorph/X, target_turfs, telegraph_atom_list, damage)
 	for (var/turf/target_turf in target_turfs)
-		telegraph_atom_list += new /obj/effect/xenomorph/ground_spike(target_turf)
+		telegraph_atom_list += new /obj/effect/xenomorph/ground_spike(target_turf, X)
 		for (var/mob/living/carbon/C in target_turf)
 			if (C.stat == DEAD || HAS_TRAIT(C, TRAIT_NESTED))
 				continue
 
 			if(X.can_not_harm(C))
 				continue
+			X.flick_attack_overlay(C, "slash")
 			C.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 			to_chat(C, SPAN_WARNING("You are stabbed with a spike from below!"))
 			playsound(get_turf(C), "alien_bite", 50, TRUE)
@@ -382,9 +385,11 @@
 
 	var/distance = max_distance
 	var/damage = base_damage
+	var/reinforced_modified = FALSE
 	if(X.fortify)
 		distance += reinforced_range_bonus
 		damage += reinforced_damage_bonus
+		reinforced_modified = TRUE
 
 	if(get_dist(A, X) > distance)
 		to_chat(X, SPAN_XENOWARNING("[A] is too far away!"))
@@ -397,40 +402,76 @@
 	if(!check_plasma_owner())
 		return
 
-	var/turf/target = locate(A.x, A.y, A.z)
+	var/turf/target = get_turf(A)
 	var/list/telegraph_atom_list = list()
-	telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(target, windup_delay)
 
+	telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(target, windup_delay)
 	if(!do_after(X, windup_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		apply_cooldown_override(5 SECONDS)
 		for(var/obj/effect/tele in telegraph_atom_list)
 			qdel(tele)
 		return
 	use_plasma_owner()
-	playsound(X.loc, 'sound/effects/burrower_attack3.ogg', 40)
+	playsound(X.loc, 'sound/effects/burrower_attack1.ogg', 40)
 	X.visible_message(SPAN_XENOWARNING("The [X] stabs its tail in the ground toward [A]!"), SPAN_XENOWARNING("You stab your tail into the ground toward [A]!"))
-	telegraph_atom_list += new /obj/effect/xenomorph/ground_spike(target)
-	for (var/mob/living/carbon/C in target)
-		if (C.stat == DEAD || HAS_TRAIT(C, TRAIT_NESTED))
-			continue
-
-		if(X.can_not_harm(C))
-			continue
-		C.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
-		to_chat(C, SPAN_WARNING("You are stabbed with a tail from below!"))
-		playsound(get_turf(C), "alien_bite", 50, TRUE)
-	for(var/obj/structure/S in target)
-		if(istype(S, /obj/structure/window/framed))
-			var/obj/structure/window/framed/W = S
-			if(!W.unslashable)
-				W.shatter_window(TRUE)
-				playsound(target, "windowshatter", 50, TRUE)
+	INVOKE_ASYNC(src, .proc/handle_damage, X, target, damage)
+	if(reinforced_modified)
+		recursive_spread(target, reinforced_spread_range, reinforced_spread_range, damage, target)
 
 	apply_cooldown()
 	..()
 	return
 
-/datum/action/xeno_action/activable/ensconce/use_ability()
+/datum/action/xeno_action/activable/sunken_tail/can_use_action()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!X) return
+	if(X.burrow) return FALSE
+	return ..()
+
+/datum/action/xeno_action/activable/sunken_tail/proc/handle_damage(var/mob/living/carbon/Xenomorph/X, target_turfs, damage, var/spike_circle = FALSE)
+	new /obj/effect/xenomorph/ground_spike(target_turfs, X)
+	for (var/mob/living/carbon/C in target_turfs)
+		if (C.stat == DEAD || HAS_TRAIT(C, TRAIT_NESTED))
+			continue
+
+		if(X.can_not_harm(C))
+			continue
+		X.flick_attack_overlay(C, "slash")
+		C.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+		if(spike_circle)
+			to_chat(C, SPAN_WARNING("You are stabbed with a spike from below!"))
+		else
+			to_chat(C, SPAN_WARNING("You are stabbed with a tail from below!"))
+		playsound(get_turf(C), "alien_bite", 50, TRUE)
+	for(var/obj/structure/S in target_turfs)
+		if(istype(S, /obj/structure/window/framed))
+			var/obj/structure/window/framed/W = S
+			if(!W.unslashable)
+				W.shatter_window(TRUE)
+				playsound(target_turfs, "windowshatter", 50, TRUE)
+
+/datum/action/xeno_action/activable/sunken_tail/proc/recursive_spread(turf/T, dist_left, orig_depth, damage, turf/original_turf)
+	if(!istype(T))
+		return
+	else if(!dist_left)
+		return
+	else if(istype(T, /turf/closed) || istype(T, /turf/open/space))
+		return
+
+	if(T != original_turf)
+		addtimer(CALLBACK(src, .proc/warning_circle, T, owner), ((windup_delay/2)*(orig_depth - dist_left)))
+		addtimer(CALLBACK(src, .proc/handle_damage, owner, T, (damage - reinforced_damage_bonus), TRUE), (((windup_delay/2)*(orig_depth - dist_left))+5))
+
+	for(var/dirn in alldirs)
+		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth, damage)
+
+/datum/action/xeno_action/activable/sunken_tail/proc/warning_circle(turf/T, mob/living/carbon/Xenomorph/X)
+	if(!istype(T))
+		return
+
+	new /obj/effect/xenomorph/xeno_telegraph/red(T, (windup_delay/2))
+
+/datum/action/xeno_action/onclick/ensconce/use_ability()
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if(!istype(xeno))
 		return
@@ -451,12 +492,23 @@
 		to_chat(xeno, SPAN_XENOWARNING("You need to do this on weeds!"))
 		return
 
+	var/mob/living/carbon/Xenomorph/Burrower/burrowerfortified = locate() in T
+	if(burrowerfortified != xeno)
+		if(burrowerfortified.fortify)
+			to_chat(xeno, SPAN_XENOWARNING("There is already another sister burrowed here!"))
+			return
+
 	if(!check_plasma_owner())
 		return
 
 	apply_cooldown()
 	if(!do_after(xeno, windup_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		return
+
+	if(burrowerfortified != xeno)
+		if(burrowerfortified.fortify)
+			to_chat(xeno, SPAN_XENOWARNING("There is already another sister burrowed here!"))
+			return
 
 	use_plasma_owner()
 
@@ -476,21 +528,13 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/ensconce/action_activate()
-	..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
-	if(xeno.fortify && xeno.selected_ability != src)
-		button.icon_state = "template_active"
+/datum/action/xeno_action/onclick/ensconce/can_use_action()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!X) return
+	if(X.burrow) return FALSE
+	return ..()
 
-/datum/action/xeno_action/activable/ensconce/action_deselect()
-	..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
-	if(xeno.fortify)
-		button.icon_state = "template_active"
-	else
-		button.icon_state = "template"
-
-/datum/action/xeno_action/activable/ensconce/proc/fortify_switch(var/mob/living/carbon/Xenomorph/X, var/fortify_state)
+/datum/action/xeno_action/onclick/ensconce/proc/fortify_switch(var/mob/living/carbon/Xenomorph/X, var/fortify_state)
 	if(X.fortify == fortify_state)
 		return
 
@@ -501,6 +545,7 @@
 		X.armor_explosive_buff += 50
 		X.frozen = TRUE
 		X.anchored = TRUE
+		X.density = FALSE
 		X.small_explosives_stun = FALSE
 		X.client?.change_view(reinforced_vision_range, X)
 		X.update_canmove()
@@ -513,6 +558,7 @@
 		to_chat(X, SPAN_XENOWARNING("You resume your normal stance."))
 		X.frozen = FALSE
 		X.anchored = FALSE
+		X.density = TRUE
 		X.armor_deflection_buff -= 25
 		X.armor_explosive_buff -= 50
 		X.small_explosives_stun = TRUE
@@ -522,20 +568,19 @@
 		X.update_canmove()
 		X.fortify = FALSE
 
-/datum/action/xeno_action/activable/ensconce/proc/death_check()
+/datum/action/xeno_action/onclick/ensconce/proc/death_check()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(owner, COMSIG_MOB_DEATH)
 	fortify_switch(owner, FALSE)
 
-/datum/action/xeno_action/activable/ensconce/proc/process_ensconce(var/mob/living/carbon/Xenomorph/xeno)
+/datum/action/xeno_action/onclick/ensconce/proc/process_ensconce(var/mob/living/carbon/Xenomorph/xeno)
 	var/turf/T = get_turf(xeno)
 	var/obj/effect/alien/weeds/weeds = locate() in T
 	if(!xeno.fortify)
 		return
-	if(!weeds || !xeno.ally_of_hivenumber(weeds.hivenumber))
+	if(!weeds || !xeno.ally_of_hivenumber(weeds.hivenumber) || (xeno.stat == UNCONSCIOUS && xeno.health < 0))
 		fortify_switch(xeno, FALSE)
 		UnregisterSignal(xeno, COMSIG_MOB_DEATH)
-		INVOKE_ASYNC(src, /datum/action/xeno_action/activable/ensconce.proc/action_deselect)
 	if(xeno.fortify)
 		addtimer(CALLBACK(src, .proc/process_ensconce, xeno), 1 SECONDS)

@@ -469,8 +469,11 @@
 	desc = ""
 	icon_state = "ground_spike"
 	mouse_opacity = FALSE
+	var/mob/living/carbon/Xenomorph/source_xeno = null
 
-/obj/effect/xenomorph/ground_spike/New(loc, ttl = 10)
+/obj/effect/xenomorph/ground_spike/New(loc, source_xeno = null, ttl = 10)
+	if(isXeno(source_xeno))
+		src.source_xeno = source_xeno
 	..(loc)
 	QDEL_IN(src, ttl)
 

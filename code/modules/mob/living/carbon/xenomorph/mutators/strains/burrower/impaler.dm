@@ -18,8 +18,8 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/burrowed_spikes,
 		/datum/action/xeno_action/activable/sunken_tail,
-		/datum/action/xeno_action/activable/burrow,
-		/datum/action/xeno_action/activable/ensconce
+		/datum/action/xeno_action/onclick/burrow,
+		/datum/action/xeno_action/onclick/ensconce
 	)
 
 /datum/xeno_mutator/burrower_impaler/apply_mutator(datum/mutator_set/individual_mutators/MS)

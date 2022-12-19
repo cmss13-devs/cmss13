@@ -713,6 +713,11 @@
 /obj/structure/machinery/door/airlock/dropship_hatch/ex_act(severity)
 	return
 
+/obj/structure/machinery/door/airlock/dropship_hatch/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = NONE
+
 /obj/structure/machinery/door/airlock/dropship_hatch/unlock()
 	if(is_loworbit_level(z)) // in flight
 		return

@@ -93,7 +93,8 @@
 /obj/structure/machinery/computer/shuttle/ert/ui_data(mob/user)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 	var/list/docks = SSshuttle.stationary
-	var/list/targets = list()
+	. = list()
+	.["destinations"]=list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
 		var/can_dock = ert.canDock(dock)
 		var/list/dockinfo = list(
@@ -102,16 +103,13 @@
 			"available"=can_dock == SHUTTLE_CAN_DOCK,
 			"error"=can_dock,
 		)
-		targets += list(dockinfo)
-	. = list()
-	.["destinations"]=targets
+		.["destinations"] += list(dockinfo)
 
 /obj/structure/machinery/computer/shuttle/ert/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
-	var/mob/living/carbon/human/H = usr
 	switch(action)
 		if("move")
 			var/dockId = params["target"]

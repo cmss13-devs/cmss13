@@ -192,25 +192,33 @@
 				dock_list = list("Port Engineering", "Starboard Engineering")
 			var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
 			switch(dock_name)
-				if("Port") dock_id = /area/shuttle/distress/arrive_2
-				if("Starboard") dock_id = /area/shuttle/distress/arrive_1
-				if("Aft") dock_id = /area/shuttle/distress/arrive_3
-				if("Port Hangar") dock_id = /area/shuttle/distress/arrive_s_hangar
-				if("Starboard Hangar") dock_id = /area/shuttle/distress/arrive_n_hangar
-				if("Port Engineering") dock_id = /area/shuttle/distress/arrive_s_engi
-				if("Starboard Engineering") dock_id = /area/shuttle/distress/arrive_n_engi
-				else return
-			for(var/datum/shuttle/ferry/ert/F in shuttle_controller.process_shuttles)
-				if(F != shuttle)
+				if("Port")
+					dock_id = /area/shuttle/distress/arrive_2
+				if("Starboard")
+					dock_id = /area/shuttle/distress/arrive_1
+				if("Aft")
+					dock_id = /area/shuttle/distress/arrive_3
+				if("Port Hangar")
+					dock_id = /area/shuttle/distress/arrive_s_hangar
+				if("Starboard Hangar")
+					dock_id = /area/shuttle/distress/arrive_n_hangar
+				if("Port Engineering")
+					dock_id = /area/shuttle/distress/arrive_s_engi
+				if("Starboard Engineering")
+					dock_id = /area/shuttle/distress/arrive_n_engi
+				else
+					return
+			for(var/datum/shuttle/ferry/ert/ferry in shuttle_controller.process_shuttles)
+				if(ferry != shuttle)
 					//other ERT shuttles already docked on almayer or about to be
-					if(!F.location || F.moving_status != SHUTTLE_IDLE)
-						if(F.area_station.type == dock_id)
+					if(!ferry.location || ferry.moving_status != SHUTTLE_IDLE)
+						if(ferry.area_station.type == dock_id)
 							message_staff("Warning: That docking zone is already taken by another shuttle. Aborting.")
 							return
 
-			for(var/area/A in all_areas)
-				if(A.type == dock_id)
-					shuttle.area_station = A
+			for(var/area/landing_zone in all_areas)
+				if(landing_zone.type == dock_id)
+					shuttle.area_station = landing_zone
 					break
 
 		if(!shuttle.can_launch())

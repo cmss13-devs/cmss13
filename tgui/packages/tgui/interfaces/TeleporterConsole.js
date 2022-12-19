@@ -15,11 +15,14 @@ export const TeleporterConsole = (_props, context) => {
     data.source === data.destination;
 
   return (
-    <Window width={500} height={250} theme="weyland">
+    <Window width={500} height={300} theme="weyland">
       <Window.Content scrollable>
+        <NoticeBox textAlign="center">
+          This teleporter is operating on the {data.name} network.
+        </NoticeBox>
         <Section title="Teleporter Control">
           {!data.source ? (
-            <NoticeBox danger textAlign="center">
+            <NoticeBox info textAlign="center">
               No source!
             </NoticeBox>
           ) : null}
@@ -35,7 +38,7 @@ export const TeleporterConsole = (_props, context) => {
           ) : null}
           {(timeLeft < 0 && (
             <NoticeBox success={1} textAlign="center">
-              Ready to send!
+              Capacitors charged!
             </NoticeBox>
           )) || (
             <ProgressBar

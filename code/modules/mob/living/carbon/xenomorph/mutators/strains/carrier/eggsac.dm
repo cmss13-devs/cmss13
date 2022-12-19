@@ -40,7 +40,7 @@
 	return TRUE
 
 /datum/action/xeno_action/active_toggle/generate_egg
-	name = "Generate Egg (50)"
+	name = "Generate Eggs (50)"
 	action_icon_state = "lay_egg"
 	ability_name = "generate egg"
 	action_type = XENO_ACTION_CLICK

@@ -964,7 +964,7 @@
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
-	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * 1.2
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
 
 	if(stabbing_xeno.behavior_delegate)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
@@ -976,6 +976,7 @@
 	shake_camera(target, 2, 1)
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
+	return target
 
 /datum/action/xeno_action/activable/tail_stab/proc/reset_direction(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/last_dir, var/new_dir)
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.

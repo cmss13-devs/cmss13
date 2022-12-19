@@ -63,6 +63,13 @@
 	if(crest_defense)
 		return "Defender_crest_[severity]"
 
+/mob/living/carbon/Xenomorph/Defender/handle_special_backpack_states()
+	. = ..()
+	if(fortify)
+		return " Fortify"
+	if(crest_defense)
+		return " Crest"
+
 /datum/behavior_delegate/defender_base
 	name = "Base Defender Behavior Delegate"
 

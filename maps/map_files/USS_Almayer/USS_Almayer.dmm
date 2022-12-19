@@ -13034,6 +13034,7 @@
 	pixel_x = 3;
 	pixel_y = 10
 	},
+/obj/item/clothing/suit/storage/webbing,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -25634,7 +25635,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/staff_officer/gear,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -36560,8 +36560,8 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "dls" = (
-/obj/structure/sign/safety/medical{
-	pixel_x = -17
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -55311,8 +55311,8 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
+/obj/structure/machinery/atm{
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -65553,6 +65553,16 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/almayer/medical/medical_science)
+"pYq" = (
+/obj/structure/machinery/cm_vending/clothing/staff_officer{
+	density = 0;
+	pixel_x = -30;
+	},
+/turf/open/floor/almayer{
+	icon_state = "bluefull";
+	tag = "icon-bluefull"
+	},
+/area/almayer/living/bridgebunks)
 "pYu" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -12;
@@ -68906,7 +68916,9 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "ryR" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
+	req_access = list(1)
+	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -79253,6 +79265,9 @@
 /area/almayer/command/cic)
 "vOd" = (
 /obj/structure/machinery/optable,
+/obj/structure/sign/safety/medical{
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -103688,7 +103703,7 @@ uiZ
 mKq
 qCy
 rpp
-vCO
+aES
 vCO
 vCO
 jxB
@@ -104300,7 +104315,7 @@ aRq
 bHG
 ceK
 sxD
-bhJ
+pYq
 bMh
 ayP
 aES
@@ -104909,7 +104924,7 @@ lcy
 iTw
 ceK
 sxD
-bhJ
+pYq
 bMh
 nis
 aES
@@ -105518,7 +105533,7 @@ wVB
 psa
 ceK
 sxD
-bhJ
+pYq
 bMh
 brS
 aES
@@ -106127,7 +106142,7 @@ jUb
 qjz
 ceK
 sxD
-bhJ
+pYq
 bMh
 gCP
 aES

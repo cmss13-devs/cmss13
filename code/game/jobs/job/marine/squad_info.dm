@@ -37,10 +37,9 @@
 	return FALSE
 
 /datum/squad/proc/get_marine_from_name(var/name)
-	for(var/marine in marines_list)
-		var/mob/living/carbon/human/H = marine
-		if(H.name == name)
-			return H
+	for(var/mob/living/carbon/human/marine in marines_list)
+		if(marine.name == name)
+			return marine
 	return null
 
 /datum/squad/ui_assets(mob/user)

@@ -335,6 +335,7 @@
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
+	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
 
 /mob/living/carbon/Xenomorph/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	var/area/A = get_area(src)
@@ -702,6 +703,9 @@
 
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
+	if(backpack_icon_carrier)
+		vis_contents -= backpack_icon_carrier
+		QDEL_NULL(backpack_icon_carrier)
 
 	QDEL_NULL(iff_tag)
 

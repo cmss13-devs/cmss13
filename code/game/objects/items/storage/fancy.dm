@@ -91,6 +91,7 @@
 	storage_slots = 6
 	icon_type = "crayon"
 	can_hold = list(/obj/item/toy/crayon)
+	black_market_value = 25
 
 /obj/item/storage/fancy/crayons/fill_preset_inventory()
 	new /obj/item/toy/crayon/red(src)

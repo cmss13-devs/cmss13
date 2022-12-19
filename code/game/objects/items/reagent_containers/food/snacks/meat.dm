@@ -29,7 +29,7 @@
 	desc = "A synthetic slab of flesh."
 
 /obj/item/reagent_container/food/snacks/meat/human
-	name = "meat"
+	name = "human meat"
 	desc = "A slab of flesh for cannibals."
 
 /obj/item/reagent_container/food/snacks/meat/monkey

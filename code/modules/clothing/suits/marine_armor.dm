@@ -328,6 +328,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 	specialty = "M2 pattern MP"
 	item_state_slots = list(WEAR_JACKET = "mp")
+	black_market_value = 20
 
 /obj/item/clothing/suit/storage/marine/MP/padless
 	name = "\improper M2 pattern padless MP armor"
@@ -372,6 +373,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
 	specialty = "M3 pattern chief MP"
 	item_state_slots = list(WEAR_JACKET = "warrant_officer")
+	black_market_value = 30
 
 /obj/item/clothing/suit/storage/marine/MP/WO/padless
 	name = "\improper M3 pattern padless chief MP armor"
@@ -422,6 +424,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M3 pattern captain"
 	item_state_slots = list(WEAR_JACKET = "co_officer")
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
+	black_market_value = 35
 
 
 /obj/item/clothing/suit/storage/marine/MP/CO/jacket
@@ -1564,6 +1567,18 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bomb = CLOTHING_ARMOR_GIGAHIGH
+
+
+/obj/item/clothing/suit/storage/marine/M3G/hefa/damaged
+	name = "damaged HEFA Knight armor"
+	desc = "A thick piece of armor adorning a HEFA. Usually seen on a HEFA knight. This one appears to have suffered heavy damage, especially on the front armor plating."
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_GIGAHIGH
+	flags_marine_armor = ARMOR_LAMP_OVERLAY
+	flags_inventory = NO_FLAGS
+	flags_item = NO_FLAGS
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 
 //=========================//PROVOST\\================================\\
 //=======================================================================\\

@@ -11,6 +11,7 @@
 	attack_verb = list("bashed", "whacked", "educated")
 	pickupsound = "sound/handling/book_pickup.ogg"
 	dropsound = "sound/handling/book_pickup.ogg"
+	black_market_value = 15 //mendoza likes to read
 	var/dat			 // Actual page content
 	var/due_date = 0 // Game time in 1/10th seconds
 	var/author		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned

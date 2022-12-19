@@ -217,6 +217,16 @@
 	icon_state = "hotsauce_tabasco"
 	item_state = "hotsauce_tabasco"
 
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho
+	name = "\improper Frank's ULTRA Hot bottle"
+	desc = "A bottle of Weyland-Yutani brand Frank's ULTRA Hot sauce, taken off the market after reports of what was described as 'something closer to ignition than digestion' happening to those who drink it."
+	icon_state = "hotsauce_franks"
+	item_state = "hotsauce_franks"
+
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho/Initialize()
+	. = ..()
+	reagents.add_reagent("machosauce", 60)
+
 /obj/item/reagent_container/food/condiment/coldsauce
 	name = "Cole's Cold bottle"
 	desc = "A bottle of cold sauce locally produced in Shivas Snowball. You probably shouldn't drink this on its own."

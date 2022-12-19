@@ -210,6 +210,14 @@
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
 
+/turf/open/floor/almayer/empty/Initialize(mapload, ...)
+	. = ..()
+	GLOB.asrs_empty_space_tiles_list += src
+
+/turf/open/floor/almayer/empty/Destroy(force) // may as well
+	. = ..()
+	GLOB.asrs_empty_space_tiles_list += src
+
 /turf/open/floor/almayer/empty/is_weedable()
 	return NOT_WEEDABLE
 

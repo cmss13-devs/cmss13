@@ -20,6 +20,7 @@
 	)
 	storage_slots = null
 	max_storage_space = 8
+	black_market_value = 15
 	var/mob/affecting = null
 	var/deity_name = "Christ"
 

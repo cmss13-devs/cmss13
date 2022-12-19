@@ -549,6 +549,12 @@
 	icon_state = "egg-yellow"
 	egg_color = "yellow"
 
+/obj/item/reagent_container/food/snacks/egg/random/Initialize()
+	. = ..()
+	var/newegg = pick(subtypesof(/obj/item/reagent_container/food/snacks/egg))
+	new newegg(loc)
+	qdel(src)
+
 /obj/item/reagent_container/food/snacks/friedegg
 	name = "Fried egg"
 	desc = "A fried egg, with a touch of salt and pepper."
@@ -755,7 +761,7 @@
 	filling_color = "#D63C3C"
 
 /obj/item/reagent_container/food/snacks/human/burger
-	name = "burger"
+	name = "bob burger"
 	desc = "A bloody burger."
 	icon_state = "hamburger"
 
@@ -1511,6 +1517,7 @@
 	icon_state = "monkeycube"
 	bitesize = 12
 	filling_color = "#ADAC7F"
+	black_market_value = 25
 	var/monkey_type = /mob/living/carbon/human/monkey
 
 /obj/item/reagent_container/food/snacks/monkeycube/Initialize()
@@ -2268,6 +2275,7 @@
 	icon_state = "cheesecake"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesecakeslice
 	filling_color = "#FAF7AF"
+	black_market_value = 30
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesecake/Initialize()
 	. = ..()
@@ -2282,6 +2290,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#FAF7AF"
 	bitesize = 2
+	black_market_value = 20
 
 /obj/item/reagent_container/food/snacks/sliceable/plaincake
 	name = "Vanilla Cake"
@@ -2396,6 +2405,7 @@
 	icon_state = "cheesewheel"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge
 	filling_color = "#FFF700"
+	black_market_value = 25 //mendoza likes cheese.
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/Initialize()
 	. = ..()
@@ -2408,6 +2418,7 @@
 	icon_state = "cheesewedge"
 	filling_color = "#FFF700"
 	bitesize = 2
+	black_market_value = 10
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature
 	name = "immature cheese wheel"
@@ -2594,7 +2605,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 1)
 	reagents.add_reagent("sodiumchloride", 1)
-	
+
 /*
 *PIZZA.
 *object parent for all the object pizza give the number of slice produce and the filling color.
@@ -2612,7 +2623,7 @@
 	name = "Mystery Pizza"
 	desc = "Edible looking, hunger inducing, mysterious pizza."
 	slice_path = /obj/item/reagent_container/food/snacks/mysteryslice
-	
+
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery/Initialize()
 	. = ..()
 	reagents.add_reagent("bread", 15)
@@ -2628,7 +2639,7 @@
 	desc = "You go first."
 	filling_color = "#BAA14C"
 	bitesize = 2
-	
+
 /obj/item/reagent_container/food/snacks/mysteryslice/Initialize()
 	. = ..() // I'm not rewriting a chunk of cooking backend for this, so this just slices into random icons. Intriguing!
 	icon_state = pick("pizzamargheritaslice","meatpizzaslice","mushroompizzaslice","vegetablepizzaslice")
@@ -3230,6 +3241,7 @@
 /obj/item/reagent_container/food/snacks/wrapped
 	package = 1
 	bitesize = 3
+	black_market_value = 5
 	var/obj/item/trash/wrapper = null //Why this and not trash? Because it pulls the wrapper off when you unwrap it as a trash item.
 
 /obj/item/reagent_container/food/snacks/wrapped/attack_self(mob/user)
@@ -3268,6 +3280,23 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 7)
 	reagents.add_reagent("coco", 10)
+
+/obj/item/reagent_container/food/snacks/wrapped/chunk/hunk
+	name = "HUNK crate"
+	desc = "A 'crate', as the marketing called it, of \"The <b>HUNK</b>\" brand chocolate. An early version of the CHUNK box, the HUNK bar was hit by a class action lawsuit and forced to go into bankruptcy and get bought out by the Company when hundreds of customers had their teeth crack from simply attempting to eat the bar."
+	icon_state = "hunk"
+	w_class = SIZE_MEDIUM
+	hitsound = "swing_hit"
+	force = 35 //ILLEGAL LIMIT OF CHOCOLATE
+	throwforce = 50
+	bitesize = 20
+	wrapper = /obj/item/trash/chunk/hunk
+
+/obj/item/reagent_container/food/snacks/wrapped/chunk/Initialize()
+	. = ..()
+	reagents.add_reagent("nutriment", 5)
+	reagents.add_reagent("iron", 30)
+	reagents.add_reagent("coco", 5)
 
 /obj/item/reagent_container/food/snacks/wrapped/barcardine
 	name = "Barcardine Bars"

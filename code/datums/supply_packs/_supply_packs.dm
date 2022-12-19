@@ -19,7 +19,15 @@ var/list/all_supply_groups = list(
 	"Science",
 	"Supplies",
 	"Food",
+	//"Black Market"
 )
+
+var/list/contraband_supply_groups = list(
+	"Seized Items",
+	"Shipside Contraband",
+	"Surplus Equipment",
+	"Deep Storage",
+	"Miscellaneous")
 
 /datum/supply_packs
 	var/name = "Basic supply pack."

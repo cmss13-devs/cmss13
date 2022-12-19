@@ -30,7 +30,7 @@
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Potato crate"
 	group = "Food"
-	
+
 /datum/supply_packs/tomato
 	name = "tomato (x20)"
 	contains = list(
@@ -90,7 +90,7 @@
 	group = "Food"
 
 //All the meats
-	
+
 /datum/supply_packs/meat
 	name = "meat(x5)"
 	contains = list(
@@ -104,7 +104,7 @@
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper meat crate"
 	group = "Food"
-	
+
 /datum/supply_packs/carp_fillet
 	name = "carp fillet (x5)"
 	contains = list(
@@ -119,7 +119,7 @@
 	containername = "\improper carp filet crate"
 	group = "Food"
 
-//all the condiment type items 
+//all the condiment type items
 
 /datum/supply_packs/condiment
 	name = "crate of condiments"
@@ -137,9 +137,9 @@
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper crate of condiment"
 	group = "Food"
-	
+
 	//all the finish snacks.
-	
+
 /datum/supply_packs/donuts
 	name = "boxe of donut (x5)"
 	contains = list(
@@ -153,7 +153,7 @@
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper boxe of donut (x5)"
 	group = "Food"
-	
+
 /datum/supply_packs/mre
 	name = "USCM MRE crate(x2)"
 	contains = list(
@@ -164,7 +164,7 @@
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper USCM MRE crate(x2)"
 	group = "Food"
-	
+
 /datum/supply_packs/funfood
 	name = "special ingredients crate (x6)"
 	randomised_num_contained = 6
@@ -205,7 +205,7 @@
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Special ingredients crate"
 	group = "Food"
-	
+
 /datum/supply_packs/pizzas
 	name = "pizza ready-to-eat (x3)"
 	contains = list(
@@ -214,20 +214,4 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Pizza crate"
-	group = "Food"
-
-//kind of is own sub category with the happy pill in it
-/datum/supply_packs/contraband
-	randomised_num_contained = 5
-	contains = list(
-					/obj/item/seeds/bloodtomatoseed,
-					/obj/item/storage/pill_bottle/happy,
-					/obj/item/reagent_container/food/drinks/bottle/pwine,
-					)
-
-	name = "contraband crate"
-	cost = 30
-	containertype = /obj/structure/closet/crate/supply
-	containername = "unlabeled crate"
-	contraband = 1
 	group = "Food"

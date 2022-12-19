@@ -6,6 +6,8 @@
 #define SUPPLY_COST_MULTIPLIER 1.08
 #define ASRS_COST_MULTIPLIER 1.2
 
+GLOBAL_LIST_EMPTY_TYPED(asrs_empty_space_tiles_list, /turf/open/floor/almayer/empty)
+
 var/datum/controller/supply/supply_controller = new()
 
 /area/supply
@@ -108,6 +110,27 @@ var/datum/controller/supply/supply_controller = new()
 	var/hacked = 0
 	var/can_order_contraband = 0
 	var/last_viewed_group = "categories"
+	var/first_time = TRUE
+	 /// If the players killed him by sending a live hostile below.. this goes false and they can't order any more contraband.
+	var/mendoza_status = TRUE
+
+/obj/structure/machinery/computer/supplycomp/Initialize()
+	. = ..()
+	if(supply_controller.bound_supply_computer)
+		return
+	supply_controller.bound_supply_computer = src
+
+/obj/structure/machinery/computer/supplycomp/attackby(obj/item/hit_item, mob/user)
+	if(istype(hit_item, /obj/item/spacecash))
+		if(can_order_contraband)
+			var/obj/item/spacecash/slotted_cash = hit_item
+			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You feed \the [slotted_cash] into it.."))
+			supply_controller.black_market_points += slotted_cash.worth
+			qdel(slotted_cash)
+		else
+			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [hit_item] into it, but it's seemingly blocked off from the inside."))
+			return
+	..()
 
 /obj/structure/machinery/computer/ordercomp
 	name = "Supply ordering console"
@@ -334,6 +357,15 @@ var/datum/controller/supply/supply_controller = new()
 	var/points_per_slip = 1
 	var/points_per_crate = 2
 
+	//black market stuff
+	 ///in Weyland-Yutani dollars - Not Stan_Albatross.
+	var/black_market_points = 0
+	 ///If the black market is enabled.
+	var/black_market_enabled = FALSE
+
+	 /// This contains a list of all typepaths of sold items and how many times they've been recieved. Used to calculate points dropoff (Can't send down a hundred blue souto cans for infinite points)
+	var/list/black_market_sold_items
+
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
 
 	var/crate_iteration = 0
@@ -346,12 +378,15 @@ var/datum/controller/supply/supply_controller = new()
 	//shuttle movement
 	var/datum/shuttle/ferry/supply/shuttle
 
+	var/obj/structure/machinery/computer/supplycomp/bound_supply_computer
+
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
 	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
 	var/tank_points = 0
 
 	New()
 		ordernum = rand(1,9000)
+		LAZYINITLIST(black_market_sold_items)
 
 //Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
 /datum/controller/supply/process()
@@ -446,14 +481,35 @@ var/datum/controller/supply/supply_controller = new()
 		qdel(C)
 
 	// Sell manifests.
-	for(var/atom/movable/MA in area_shuttle)
-		if(istype(MA, /obj/item/paper/manifest))
-			var/obj/item/paper/manifest/M = MA
+	for(var/atom/movable/movable_atom in area_shuttle)
+		if(istype(movable_atom, /obj/item/paper/manifest))
+			var/obj/item/paper/manifest/M = movable_atom
 			if(M.stamped && M.stamped.len)
 				points += points_per_slip
 
+		//black market points
+		if(black_market_enabled)
+			var/points_to_add
+			if(istype(movable_atom, /obj))
+				var/obj/black_object = movable_atom
+				if(black_object.black_market_value)
+					if(istype(black_object, /obj/item/stack))
+						var/obj/item/stack/black_stack = black_object
+						points_to_add += (black_stack.black_market_value * black_stack.amount)
+					else
+						points_to_add += black_object.black_market_value
+			else if(istype(movable_atom, /mob/living))
+				var/mob/black_mob = movable_atom
+				var/result = bound_supply_computer.handle_special_mob_insert(black_mob)
+				if(result)
+					points_to_add += result
+			black_market_sold_items[movable_atom.type] += 1
+			// so they cant sell the same thing over and over and over
+			points_to_add = POSITIVE(points_to_add - black_market_sold_items[movable_atom.type] * 0.5)
+			black_market_points += points_to_add
+
 		// Delete everything else.
-		qdel(MA)
+		qdel(movable_atom)
 
 //Buyin
 /datum/controller/supply/proc/buy()
@@ -809,15 +865,22 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "<b>Select a category</b><BR><BR>"
 			for(var/supply_group_name in all_supply_groups )
 				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
+			if(can_order_contraband)
+				temp += "<A href='?src=\ref[src];order=["Black Market"]'>[SPAN_DANGER("$E4RR301¿")]</A><BR>"
 		else
 			last_viewed_group = href_list["order"]
-			temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
-			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
-			for(var/supply_name in supply_controller.supply_packs )
-				var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-				if((N.hidden && !hacked) || (N.contraband && !can_order_contraband) || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
+			if(last_viewed_group == "Black Market")
+				handle_black_market(temp)
+			else if(last_viewed_group in contraband_supply_groups)
+				handle_black_market_groups()
+			else
+				temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+				temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
+				temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
+				for(var/supply_name in supply_controller.supply_packs )
+					var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
+					if((N.hidden && !hacked) || (N.contraband && !can_order_contraband) || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
+					temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
 
 		/*temp = "Supply points: [supply_controller.points]<BR><HR><BR>Request what?<BR><BR>"
 
@@ -965,6 +1028,138 @@ var/datum/controller/supply/supply_controller = new()
 	add_fingerprint(usr)
 	updateUsrDialog()
 	return
+
+/obj/structure/machinery/computer/supplycomp/proc/handle_black_market()
+
+	temp = "<b>W-Y Dollars: $[supply_controller.black_market_points * BLACK_MARKET_TO_MONEY_MUPLTIPLIER]</b><BR>"
+	temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
+	temp += SPAN_DANGER("ERR0R UNK7OWN C4T2G#!$0-<HR><HR><HR>")
+	temp += "KHZKNHZH#0-"
+	if(!mendoza_status) // he's daed
+		temp += "........."
+		return
+	handle_mendoza_dialogue() //mendoza has been in there for a while. he gets lonely sometimes
+	temp += "<b>[last_viewed_group]</b><BR><BR>"
+
+	for(var/supply_group_name in contraband_supply_groups)
+		temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
+
+/obj/structure/machinery/computer/supplycomp/proc/handle_black_market_groups()
+	temp = "<b>W-Y Dollars: $[supply_controller.black_market_points * BLACK_MARKET_TO_MONEY_MUPLTIPLIER]</b><BR>"
+	temp += "<A href='?src=\ref[src];order=Black Market'>Back to black market categories</A><HR><BR><BR>"
+	temp += "<b>Purchase from: [last_viewed_group]</b><BR><BR>"
+	for(var/supply_name in supply_controller.supply_packs )
+		var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
+		if(N.group != last_viewed_group)
+			continue
+		temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * BLACK_MARKET_TO_MONEY_MUPLTIPLIER]<BR>"
+
+/obj/structure/machinery/computer/supplycomp/proc/handle_mendoza_dialogue()
+
+	if(first_time)
+		first_time = FALSE
+		temp += SPAN_WARNING("Hold on- holy shit, what? Hey, hey! Finally! I've set THAT circuit board for replacement shipping off god knows who long ago. I had totally given up on it.<BR>")
+		temp += SPAN_WARNING("You probably have some questions, yes, yes... let me answer them.<BR><HR>")
+		//linebreak
+		temp += SPAN_WARNING("Name's Mendoza, Cargo Technician. Formerly, I suppose. I tripped into this stupid pit god knows how long ago. A crate of mattresses broke my fall, thankfully. The fuckin' MPs never even bothered to look for me!<BR>")
+		temp += SPAN_WARNING("They probably wrote off my file as a friggin' clerical error. Bastards, all of them.... but I've got a plan. <BR>")
+		temp += SPAN_WARNING("I'm gonna smuggle all these ASRS goods out of the ship next time it docks. I'm gonna sell them, and use the money to sue the fuck out of the USCM!<BR>")
+		temp += SPAN_WARNING("Imagine the look on their faces! Mendoza, the little CT, in court as they lose all their fuckin' money!<BR><HR>")
+		//linebreak
+		temp += SPAN_WARNING("I do need... money. You wouldn't believe the things I've seen here. There's an aisle full of auto-doc crates, and that's the least of it.<BR>")
+		temp += SPAN_WARNING("Here's the deal. There are certain... things that I need to pawn off for my plan. Anything valuable will do. Minerals, gold, unique items... lower them in the ASRS elevator.<BR>")
+		temp += SPAN_WARNING("Can't come back on it, the machinery's too damn dangerous. But in exchange for those valuables.. I'll give you... things. Confiscated equipment, 'Medicine', all the crap I've stumbled upon here.<BR>")
+		temp += SPAN_WARNING("The items will be delivered via the ASRS lift. Check the first item for a jury-rigged scanner, it'll tell you if I give a damn about whatever you're scanning or not.<BR><HR>")
+		//linebreak
+		temp += SPAN_WARNING("I'll repeat, just to clear it up since you chucklefucks can't do anything right. <b>Insert cash, buy my scanner, get valuables, bring them down the lift, gain dollars, buy contraband.</b><BR>")
+		temp += SPAN_WARNING("See you..<BR>")
+		return
+
+	var/rng = rand(1, 100) // Will only sometimes give messages
+	switch(rng)
+		if(1 to 5)
+			temp += "Sometimes I... hear things down 'ere. Crates bein' opened, shufflin', sometimes.. even breathing and chewin'. Even when the ASRS is on maintenance mode.<BR>"
+			temp += "Last month I swear i glimped some shirtless madman runnin' by at the edge of my screen. This place is haunted.<BR>"
+		if(6 to 10)
+			temp += "You know how I said there was a full aisle of autodoc crates? I just found <i>another!</i><BR>"
+			temp += "This one has body scanners, sleepers, WeyMeds.. why the fuck aren't these on the supply list? Why are they here to begin with?<BR>"
+		if(11 to 15)
+			temp += "You know, this place is a real fuckin' massive safety hazard. Nobody does maintenance on this part of the ship.<BR>"
+			temp += "Ever since that CLF operation cost us half the damn cargo hold, nothin' here quite works properly.<BR>"
+			temp += "Mechanical arms dropping crates in random places, from way too high up, knockin' shelves over.. it's fuckin' embarrassin'!<BR>"
+			temp += "I pity the damn' scrappers that'll be trying to salvage something from this junkyard of a ship once it's scuttled.<BR>"
+		if(16 to 20)
+			temp += "I still can't believe the whole ship's fucking supply of HEAP blew up. Some fuckin' moron decided our EXPLOSIVE AMMUNITION should be stored right next to the ship's hull.<BR>"
+			temp += "Even with the explosion concerns aside that's our main damn type of ammunition! What the hell are marines usin' this operation? Softpoint? Jesus.<BR>"
+			temp += "I do see a few scattered HEAP magazines every so often, but I know better than to throw them on the lift. Chances are some wet-behind-the-ears greenhorn is goin' to nab it and blow his fellow marines to shreds.<BR>"
+		if(21 to 25)
+			temp += "Wanna know a secret? I'm the one pushin' all those crates with crap on the ASRS lift.<BR>"
+			temp += "Not because I know you guys need surplus SMG ammunition or whatever. The fuckin' crates are taking up way too much space here. Why do we have HUNDREDS of mortar shells? By god, it's almost like a WW2 historical reenactment in here!<BR>"
+		if(26 to 30)
+			temp += "You know... don't tell anyone, but I actually really like blue-flavored Souto for some reason. Not the diet version, that cyan junk's as nasty as any other flavor, but... there's just somethin' about that blue-y goodness. If you see any, I wouldn't mind havin' them thrown down the elevator.<BR>"
+		if(31 to 35)
+			temp += "If you see any, er.. 'elite' equipment, be sure to throw it down here. I know a few people that'd offer quite the amount of money for a USCM commander's gun, or pet. Even the armor is worth a fortune. Don't kill yourself doin' it, though.<BR>"
+			temp += "Hell, any kind of wildlife too, actually! Anythin' that isn't a replicant animal is worth a truly ridiculous sum back on Terra, I'll give ya quite the amount of points for 'em. As long as it isn't plannin' on killing me.<BR>"
+
+/obj/structure/machinery/computer/supplycomp/proc/handle_special_mob_insert(var/mob/living/black_mob)
+	var/return_value
+	if(isanimal(black_mob))
+		return_value = 25 // no death check - he can sell the hide or something i guess.
+	if(iscat(black_mob) || iscorgi(black_mob) || iscrab(black_mob))
+		var/mob/living/hit_pet = black_mob
+		if(hit_pet.stat != DEAD)
+			return_value = 50 //mendoza likes pets
+		else
+			return_value = 0
+	if(istype(black_mob, /mob/living/simple_animal/hostile || istype(black_mob, /mob/living/carbon/Xenomorph)) && !istype(black_mob, /mob/living/simple_animal/hostile/retaliate))
+		var/mob/living/hit_hostile = black_mob
+		if(hit_hostile.stat != DEAD)
+			return_value = kill_mendoza() //you fucked up
+		else
+			return_value = 25
+
+	// so they cant sell the same thing over and over and over
+	return_value = POSITIVE(return_value - supply_controller.black_market_sold_items[black_mob.type] * 0.5)
+	return return_value
+
+/obj/structure/machinery/computer/supplycomp/proc/kill_mendoza()
+	balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
+
+	mendoza_status = FALSE // he'll die soon enough, and in the meantime will be too busy to handle requests.
+
+	//mendoza notices the bad guy
+
+	play_sound_handler("hiss_talk", 0.5 SECONDS)
+	play_sound_handler("male_scream", 1 SECONDS)
+
+	//mendoza is attacked by it
+	play_sound_handler("alien_claw_flesh", 2 SECONDS)
+	play_sound_handler("alien_claw_flesh", 2.5 SECONDS)
+	play_sound_handler(pick("male_scream", "male_pain"), 3 SECONDS)
+
+	//reacting...
+	play_sound_handler("gun_shotgun_tactical", 4 SECONDS)
+	play_sound_handler("gun_shotgun_tactical", 5 SECONDS)
+	play_sound_handler("m4a3", 6 SECONDS)
+	play_sound_handler("m4a3", 6.5 SECONDS)
+	play_sound_handler("m4a3", 7 SECONDS)
+	play_sound_handler("m4a3", 7.5 SECONDS)
+
+	//it didnt work.
+	play_sound_handler(pick("male_scream", "male_pain"), 8.5 SECONDS)
+	play_sound_handler(pick("male_scream", "male_pain"), 9 SECONDS)
+
+	// he's dead!
+	play_sound_handler("alien_bite", 10 SECONDS)
+	play_sound_handler('sound/handling/click_2.ogg', 11 SECONDS) // armor suit light turns off (cause he died)
+
+/obj/structure/machinery/computer/supplycomp/proc/get_rand_sound_tile()
+	var/atom/sound_tile = pick(GLOB.asrs_empty_space_tiles_list)
+	return sound_tile
+
+/obj/structure/machinery/computer/supplycomp/proc/play_sound_handler(var/sound_to_play, var/timer)
+	 /// For code readability.
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, get_rand_sound_tile(), sound_to_play, 25, TRUE), timer)
 
 /obj/structure/machinery/computer/supplycomp/proc/post_signal(var/command)
 

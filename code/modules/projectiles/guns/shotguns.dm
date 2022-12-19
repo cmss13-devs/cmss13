@@ -207,10 +207,26 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-
 /obj/item/weapon/gun/shotgun/merc/get_examine_text(mob/user)
 	. = ..()
 	if(in_chamber) . += "It has a chambered round."
+
+/obj/item/weapon/gun/shotgun/merc/damaged
+	name = "damaged custom built shotgun"
+	desc = "A cobbled-together pile of scrap and alien wood. Point end towards things you want to die. Has a burst fire feature, as if it needed it. Well, it had one, this one's barrel has apparently exploded outwards like an overripe grape. Guess that's what happens when you DIY a shotgun."
+
+/obj/item/weapon/gun/shotgun/merc/damaged/set_gun_config_values()
+	..()
+	fire_delay = 1.5 SECONDS
+	burst_amount = BURST_AMOUNT_TIER_1
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_5
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_3
+	scatter_unwielded = SCATTER_AMOUNT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
+	recoil = RECOIL_AMOUNT_TIER_3
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 
 //-------------------------------------------------------
 //TACTICAL SHOTGUN
@@ -574,6 +590,22 @@ can cause issues with ammo types getting mixed up during the burst.
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
+
+/obj/item/weapon/gun/shotgun/double/damaged
+	name = "semi-sawn-off Spearhead Rival 78"
+	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. For some reason it seems that someone tried to saw through the barrel and gave up halfway through. This probably isn't going to be the greatest gun for combat.."
+
+/obj/item/weapon/gun/shotgun/double/damaged/set_gun_config_values()
+	..()
+	burst_amount = BURST_AMOUNT_TIER_1
+	fire_delay = 0.9 SECONDS
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_7
+	recoil = RECOIL_AMOUNT_TIER_3
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 
 /obj/item/weapon/gun/shotgun/double/sawn
 	name = "\improper sawn-off Spearhead Rival 78"

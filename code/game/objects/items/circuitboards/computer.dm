@@ -213,29 +213,22 @@
 	name = "Circuit board (Research Data Terminal)"
 	build_path = /obj/structure/machinery/computer/research/main_terminal
 
-
-
-/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/I as obj, mob/user as mob)
-	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
-		var/catastasis = src.contraband_enabled
-		var/opposite_catastasis
-		if(catastasis)
-			opposite_catastasis = "STANDARD"
-			catastasis = "BROAD"
-		else
-			opposite_catastasis = "BROAD"
-			catastasis = "STANDARD"
-
-		switch( alert("Current receiver spectrum is set to: [catastasis]","Multitool-Circuitboard interface","Switch to [opposite_catastasis]","Cancel") )
-		//switch( alert("Current receiver spectrum is set to: " {(src.contraband_enabled) ? ("BROAD") : ("STANDARD")} , "Multitool-Circuitboard interface" , "Switch to " {(src.contraband_enabled) ? ("STANDARD") : ("BROAD")}, "Cancel") )
-			if("Switch to STANDARD","Switch to BROAD")
-				src.contraband_enabled = !src.contraband_enabled
-
-			if("Cancel")
+/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/multitool, mob/user)
+	if(HAS_TRAIT(multitool, TRAIT_TOOL_MULTITOOL))
+		to_chat(user, SPAN_WARNING("You start messing around with the electronics of \the [src]..."))
+		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
 				return
-			else
-				to_chat(user, "DERP! BUG! Report this (And what you were doing to cause it) to Agouri")
-	return
+			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
+			if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				if(!contraband_enabled)
+					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [multitool], and a red light starts blinking on and off on the board. Put it back in?"))
+					contraband_enabled = TRUE
+				else
+					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [multitool], and the red light stops blinking, turning off. It's probably good now.."))
+					contraband_enabled = FALSE
+	else ..()
 
 /obj/item/circuitboard/computer/security/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/card/id))

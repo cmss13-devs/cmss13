@@ -8,6 +8,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	flags_atom = FPRINT|CONDUCT
+	black_market_value = 10
 
 	var/skilllock = SKILL_POLICE_FLASH
 	var/flashes_stored = 5

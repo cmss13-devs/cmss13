@@ -608,7 +608,7 @@
 					/obj/item/attachable/mateba/long/dark,
 					/obj/item/attachable/mateba/short/dark)
 	starting_attachment_types = null
-	black_market_value = BLACK_MARKET_VALUE_MAX
+	black_market_value = 50
 
 /obj/item/weapon/gun/revolver/mateba/general/handle_starting_attachment()
 	..()

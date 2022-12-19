@@ -17,6 +17,7 @@
 	flags_item = NOBLUDGEON|NOTABLEMERGE
 	throw_range = 1
 	layer = FACEHUGGER_LAYER
+	black_market_value = 20
 
 	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
 	var/sterile = FALSE

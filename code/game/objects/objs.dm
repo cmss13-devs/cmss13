@@ -30,20 +30,6 @@
 	 /// How much this item is worth when lowered into the ASRS pit while the black market is unlocked.
 	var/black_market_value = 0
 
-//Primarily here to understand how much each value is.
-
-#define BLACK_MARKET_VALUE_DEFAULT 0
-
-#define BLACK_MARKET_VALUE_CRAP 5
-#define BLACK_MARKET_VALUE_BAD 10
-#define BLACK_MARKET_VALUE_MEH 15
-#define BLACK_MARKET_VALUE_AVERAGE 20
-#define BLACK_MARKET_VALUE_GOOD 25
-#define BLACK_MARKET_VALUE_GREAT 30
-#define BLACK_MARKET_VALUE_EXCELLENT 35
-
-#define BLACK_MARKET_VALUE_MAX 50
-
 /obj/Initialize(mapload, ...)
 	. = ..()
 	if(garbage)

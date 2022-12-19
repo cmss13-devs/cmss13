@@ -96,13 +96,13 @@
 
 //------------
 //R4T lever action rifle
-/obj/item/storage/box/guncase/r4t_scout
-	name = "\improper R4T lever action rifle case"
-	desc = "A gun case containing the R4T lever action rifle, intended for scouting. Comes with an ammunition belt, the optional revolver attachment for it, two boxes of ammunition, a sling, and a stock for the rifle."
+/obj/item/storage/box/guncase/r4t
+	name = "\improper R4T lever action rifle field-test case"
+	desc = "A vintage field-testing case containing the R4T lever action rifle, never opened. Where the hell did you find this? Comes with an ammunition belt, the optional revolver attachment for it, two boxes of ammunition, a sling, and a stock for the rifle."
 	storage_slots = 7
-	can_hold = list(/obj/item/weapon/gun/lever_action/r4t, /obj/item/attachable/stock/r4t, /obj/item/attachable/magnetic_harness/lever_sling, /obj/item/ammo_magazine/lever_action, /obj/item/ammo_magazine/lever_action/training, /obj/item/storage/belt/shotgun/lever_action, /obj/item/storage/belt/gun/m44/lever_action/attach_holster, /obj/item/device/motiondetector/m717)
+	can_hold = list(/obj/item/weapon/gun/lever_action/r4t, /obj/item/attachable/stock/r4t, /obj/item/attachable/magnetic_harness/lever_sling, /obj/item/ammo_magazine/lever_action, /obj/item/ammo_magazine/lever_action/training, /obj/item/storage/belt/shotgun/lever_action, /obj/item/storage/belt/gun/m44/lever_action/attach_holster)
 
-/obj/item/storage/box/guncase/r4t_scout/fill_preset_inventory()
+/obj/item/storage/box/guncase/r4t/fill_preset_inventory()
 	new /obj/item/weapon/gun/lever_action/r4t(src)
 	new /obj/item/attachable/stock/r4t(src)
 	new /obj/item/attachable/magnetic_harness/lever_sling(src)
@@ -182,8 +182,8 @@
 	new /obj/item/weapon/gun/rifle/m41a(src)
 	for(var/i = 1 to 4)
 		new /obj/item/ammo_magazine/rifle(src)
-	
-	
+
+
 //------------
 /obj/item/storage/box/guncase/pumpshotgun
 	name = "\improper M37A2 Pump Shotgun case"
@@ -202,3 +202,60 @@
 				new /obj/item/ammo_magazine/shotgun/flechette(src)
 			if(3)
 				new /obj/item/ammo_magazine/shotgun/slugs(src)
+
+/obj/item/storage/box/guncase/nsg23_marine
+	name = "\improper NSG 23 assault rifle case"
+	desc = "A gun case containing the NSG 23 assault rifle. While usually seen in the hands of PMCs, this weapon is sometimes issued to USCM personnel."
+	storage_slots = 6
+	can_hold = list(/obj/item/weapon/gun/rifle/nsg23/no_lock, /obj/item/ammo_magazine/rifle/nsg23)
+
+/obj/item/storage/box/guncase/nsg23/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/nsg23/no_lock(src)
+	new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
+	new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
+	new /obj/item/ammo_magazine/rifle/nsg23(src)
+	new /obj/item/ammo_magazine/rifle/nsg23(src)
+	new /obj/item/ammo_magazine/rifle/nsg23(src)
+
+/obj/item/storage/box/guncase/m3717
+	name = "\improper M37-17 pump shotgun case"
+	desc = "A gun case containing the M37-17 pump shotgun. Rarely seen issued to USCM vessels on the edges of inhabited space who need the extra bang for their buck (literally) the M37-17 has. Like this one! Well, if it had the budget for it."
+	storage_slots = 4
+	can_hold = list(/obj/item/weapon/gun/shotgun/pump/cmb/m3717, /obj/item/ammo_magazine/shotgun/buckshot)
+
+/obj/item/storage/box/guncase/m3717/fill_preset_inventory()
+	new /obj/item/weapon/gun/shotgun/pump/cmb/m3717(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+
+/obj/item/storage/box/guncase/m1911
+	name = "\improper M1911 service pistol case"
+	desc = "A gun case containing the M1911 service pistol. It might be three centuries old but it's still a damn good pistol. Back-issue only, though."
+	storage_slots = 7
+	can_hold = list(/obj/item/weapon/gun/pistol/m1911, /obj/item/ammo_magazine/pistol/m1911)
+
+/obj/item/storage/box/guncase/m1911/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+
+/obj/item/storage/box/guncase/m1911/socom
+	name = "\improper SOCOM M1911 service pistol case"
+	storage_slots = 7
+	can_hold = list(/obj/item/weapon/gun/pistol/m1911/socom, /obj/item/ammo_magazine/pistol/m1911)
+
+/obj/item/storage/box/guncase/m1911/socom/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/m1911/socom(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/pistol/m1911(src)

@@ -225,6 +225,12 @@
 	pill_initial_reagents = list("space_drugs" = 15, "sugar" = 15)
 	pill_icon_class = "drug"
 
+/obj/item/reagent_container/pill/zombie_powder
+	desc = "A strange pill that smells like death itself."
+	pill_desc = "A strange pill that smells like death itself."
+	pill_initial_reagents = list("zombiepowder" = 8, "copper" = 2) //roughly two minutes of death
+	pill_icon_class = "drug"
+
 /obj/item/reagent_container/pill/russianRed
 	pill_desc = "A Russian Red pill. A very dangerous radiation-countering substance."
 	pill_initial_reagents = list("russianred" = 10)

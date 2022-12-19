@@ -137,7 +137,7 @@
 	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/smg/uzi
 
-/obj/item/ammo_magazine/smg/mac15/extended
+/obj/item/ammo_magazine/smg/uzi/extended
 	name = "\improper UZI extended magazine (9x21mm)"
 	max_rounds = 32
 

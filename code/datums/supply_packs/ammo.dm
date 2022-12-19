@@ -227,7 +227,7 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper shotgun flechette crate"
 	group = "Ammo"
-		
+
 //------------------------For 88M4 ----------------
 
 /datum/supply_packs/ammo_mod88_mag_box_ap
@@ -283,7 +283,7 @@
 	containertype = /obj/structure/closet/crate
 	containername = "\improper M41AE2 HPR holo-target magazines crate"
 	group = "Ammo"
-	
+
 //------------------------Smartgunner stuff----------------
 
 /datum/supply_packs/ammo_smartgun_powerpack
@@ -307,7 +307,7 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper smartgun drums crate"
 	group = "Ammo"
-	
+
 //------------------------Sentries Ammo----------------
 
 /datum/supply_packs/ammo_sentry
@@ -342,7 +342,7 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper sentry shotgun ammo crate"
 	group = "Ammo"
-	
+
 //------------------------M240 flamer tanks----------------
 
 /datum/supply_packs/ammo_napalm
@@ -470,15 +470,4 @@
 					)
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar flare shells crate"
-	group = "Ammo"
-	
-//------------------------Contraband----------------
-
-/datum/supply_packs/merc/ammo
-	name = "Black market ammo crate"
-	contains = list()
-	cost = 20
-	contraband = 1
-	containertype = /obj/structure/largecrate/merc/ammo
-	containername = "\improper black market ammo crate"
 	group = "Ammo"

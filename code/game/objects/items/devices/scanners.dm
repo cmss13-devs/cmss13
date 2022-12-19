@@ -401,3 +401,77 @@ FORENSIC SCANNER
 		printing.name = scan_name
 		printing.info = "Chemicals found: [dat]"
 		user.put_in_hands(printing)
+
+/obj/item/device/black_market_scanner
+	name = "suspicious device"
+	desc = "This is... seemingly a makeshift combination between an autopsy scanner, an ancient t-ray scanner, and some sort of robotic clamp, but you can see a lightbulb inside it. What the hell is this?"
+	icon_state = "mendoza_scanner"
+	item_state = "analyzer"
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT|CONDUCT
+	flags_equip_slot = SLOT_WAIST
+	throwforce = 5
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 20
+	matter = list("metal" = 60,"glass" = 30)
+
+/obj/item/device/black_market_scanner/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/device/black_market_scanner/update_icon(var/scan_value = 0, var/scanning = FALSE)
+	. = ..()
+	overlays.Cut()
+	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_flash")
+	if(scanning)
+		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_on")
+		switch(scan_value)
+			if(0 to 15)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_red")
+			if(15 to 20)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_yellow")
+			if(25 to 30)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_green")
+			if(35 to 50-1)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_cyan")
+			else
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_white")
+		addtimer(CALLBACK(src, .proc/update_icon), 1 SECONDS)
+	else
+		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_off")
+
+/obj/item/device/black_market_scanner/afterattack(obj/hit_object, mob/user, proximity)
+	if(!proximity)
+		return
+	var/market_value
+	if(istype(hit_object))
+		market_value = hit_object.black_market_value
+	else
+		market_value = check_special_atoms(hit_object, user)
+	if(isnull(market_value))
+		return ..()
+	user.visible_message(SPAN_WARNING("[user] presses a button on the [src] and holds it over \the [hit_object]..."), SPAN_WARNING("You scan \the [hit_object]..."))
+	update_icon(market_value, TRUE)
+	playsound(user, 'sound/machines/twobeep.ogg', 15, TRUE)
+	to_chat(user, SPAN_NOTICE("You scan \the [hit_object] and notice a reading on \the [src]'s pad, it says:<b> ITEM HAS [market_value] VALUE <b>"))
+	return
+
+/obj/item/device/black_market_scanner/proc/check_special_atoms(atom/hit_atom, mob/user)
+	var/return_value
+	if(isanimal(hit_atom))
+		return_value = 25 // no death check - he can sell the hide or something i guess.
+	if(iscat(hit_atom) || iscorgi(hit_atom) || iscrab(hit_atom))
+		var/mob/living/simple_animal/hit_pet = hit_atom
+		if(hit_pet.stat != DEAD)
+			return_value = 50 //mendoza likes pets
+		else
+			return_value = 0
+	if(istype(hit_atom, /mob/living/simple_animal/hostile) && !istype(hit_atom, /mob/living/simple_animal/hostile/retaliate))
+		var/mob/living/simple_animal/hostile/hit_hostile = hit_atom
+		if(hit_hostile.stat != DEAD)
+			return_value = 0 //dont send a live baddie dopwnt he fucking hpit.
+		else
+			return_value = 25
+	// so they cant sell the same thing over and over and over
+	return_value = POSITIVE(return_value - supply_controller.black_market_sold_items[hit_atom.type] * 0.5)
+	return return_value

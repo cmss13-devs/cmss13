@@ -234,7 +234,6 @@
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_EVOPOD = 2,
 		XENO_STRUCTURE_RECOVERY = 6,
-		XENO_STRUCTURE_HOLDFAST = 0, //infinite
 	)
 
 	var/global/list/hive_structure_types = list(

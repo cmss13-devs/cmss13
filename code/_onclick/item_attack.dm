@@ -118,3 +118,6 @@
 			playsound(loc, hitsound, 25, 1)
 		return hit
 	return TRUE
+
+/proc/deconjugate(var/text = "")
+	return replacetext(text, "ed", "")

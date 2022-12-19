@@ -240,19 +240,22 @@
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), duration)
 
-/mob/living/carbon/Xenomorph/proc/create_custom_shield_image(var/duration = 10, var/img_color, var/alpha_mult)
-	remove_suit_layer()
+/mob/living/carbon/Xenomorph/proc/create_bulwark_image(var/alpha_mult, var/type = "full", var/enhanced)
+	remove_overlay(X_HEAD_LAYER)
 
-	var/image/shield_image = new("icon"='icons/mob/hostiles/overlay_effects64x64.dmi', "icon_state" = "shield_greyscale")
-	if(img_color)
-		shield_image.color = img_color
+	var/image/shield_image = new("icon" = 'icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "knight_shield_[type]")
+	if(hivenumber != XENO_HIVE_NORMAL)
+		shield_image.color = hive.color
 	shield_image.alpha *= alpha_mult
-	overlays_standing[X_SUIT_LAYER] = shield_image
-	apply_overlay(X_SUIT_LAYER)
-	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), duration)
+	overlays_standing[X_HEAD_LAYER] = shield_image
+	apply_overlay(X_HEAD_LAYER)
+	return shield_image
 
 /mob/living/carbon/Xenomorph/proc/remove_suit_layer()
 	remove_overlay(X_SUIT_LAYER)
+
+/mob/living/carbon/Xenomorph/proc/remove_head_layer()
+	remove_overlay(X_HEAD_LAYER)
 
 /mob/living/carbon/Xenomorph/update_fire()
 	remove_overlay(X_FIRE_LAYER)

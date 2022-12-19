@@ -98,7 +98,7 @@
 
 /datum/action/xeno_action/activable/pike
 	name = "Pike"
-	action_icon_state = "prae_pierce"
+	action_icon_state = "pike"
 	ability_name = "pike"
 	macro_path = /datum/action/xeno_action/verb/verb_pike
 	action_type = XENO_ACTION_CLICK
@@ -108,15 +108,13 @@
 	//Config
 
 	 /// Basic ability damage.
-	var/pike_damage = 30
+	var/pike_damage = 25
 	 /// Reach of the ability in tiles.
 	var/pike_len = 3
-	 /// Extra damage on every additional enemy hit by the pike.
-	var/bonus_dmg = 15
 
 /datum/action/xeno_action/onclick/bulwark
 	name = "Bulwark"
-	action_icon_state = "rav_shard_shield"
+	action_icon_state = "bulwark"
 	ability_name = "bulwark"
 	macro_path = /datum/action/xeno_action/verb/verb_bulwark
 	action_type = XENO_ACTION_CLICK
@@ -126,13 +124,15 @@
 
 	/// Config
 
-	var/dmg_reduc_duration = 10 SECONDS
+	var/shield_duration = 10 SECONDS
 	var/normal_damage_reduction = 0.8
 	var/enhanced_damage_reduction = 0.6
 
+	var/image/current_shield_image
+
 /datum/action/xeno_action/activable/pounce/leap
 	name = "Leap"
-	action_icon_state = "prae_dash"
+	action_icon_state = "leap"
 	ability_name = "leap"
 	macro_path = /datum/action/xeno_action/verb/verb_knight_leap
 	action_type = XENO_ACTION_CLICK
@@ -155,12 +155,3 @@
 //todo animate the leap so it looks like a leap. itd go hard
 /datum/action/xeno_action/activable/pounce/leap/initialize_pounce_pass_flags()
 	pounce_pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB
-
-/datum/action/xeno_action/activable/plant_holdfast
-	name = "Plant Holdfast"
-	action_icon_state = "morph_resin"
-	ability_name = "holdfast"
-	macro_path = /datum/action/xeno_action/verb/place_construction
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_4
-	xeno_cooldown = 2 MINUTES

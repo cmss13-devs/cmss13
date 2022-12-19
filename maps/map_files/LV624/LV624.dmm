@@ -4920,12 +4920,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Inner Blast Door";
-	pixel_x = 25;
-	pixel_y = 5
-	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -22856,6 +22850,18 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
+"wAe" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Inner Blast Door";
+	pixel_x = -25;
+	pixel_y = 5
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/research)
 "wAI" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -40899,7 +40905,7 @@ auV
 atU
 avE
 atp
-awr
+wAe
 atU
 axH
 aum

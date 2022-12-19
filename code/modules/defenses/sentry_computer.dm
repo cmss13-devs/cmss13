@@ -1,5 +1,5 @@
 #define DEFAULT_MAP_SIZE 15
-#define COMSIG_ENGAGED_ALERT "signal_sentry_engaged"
+#define COMSIG_SENTRY_ENGAGED_ALERT "signal_sentry_engaged"
 // can we refactor out the camera information to a datum? It would be really cool.
 /datum/camera_holder
 	// Stuff needed to render the map
@@ -76,6 +76,8 @@
 	cam_background.del_on_map_removal = FALSE
 
 	faction_group = FACTION_LIST_MARINE
+
+	RegisterSignal(src, COMSIG_SENTRY_ENGAGED_ALERT, .proc/post_signal)
 
 /obj/item/device/sentry_computer/Destroy()
 	. = ..()

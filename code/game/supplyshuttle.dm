@@ -107,18 +107,17 @@ var/datum/controller/supply/supply_controller = new()
 	circuit = /obj/item/circuitboard/computer/supplycomp
 	var/temp = null
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
-	var/hacked = 0
 	var/can_order_contraband = 0
 	var/last_viewed_group = "categories"
 	var/first_time = TRUE
-	 /// If the players killed him by sending a live hostile below.. this goes false and they can't order any more contraband.
-	var/mendoza_status = TRUE
 
 /obj/structure/machinery/computer/supplycomp/Initialize()
 	. = ..()
-	if(supply_controller.bound_supply_computer)
-		return
-	supply_controller.bound_supply_computer = src
+	LAZYADD(supply_controller.bound_supply_computer_list, src)
+
+/obj/structure/machinery/computer/supplycomp/Destroy()
+	. = ..()
+	LAZYREMOVE(supply_controller.bound_supply_computer_list, src)
 
 /obj/structure/machinery/computer/supplycomp/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/spacecash))
@@ -131,6 +130,16 @@ var/datum/controller/supply/supply_controller = new()
 			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [hit_item] into it, but it's seemingly blocked off from the inside."))
 			return
 	..()
+
+/obj/structure/machinery/computer/supplycomp/proc/toggle_contraband(var/contraband_enabled = FALSE)
+	can_order_contraband = contraband_enabled
+	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in supply_controller.bound_supply_computer_list)
+		if(computer.can_order_contraband)
+			supply_controller.black_market_enabled = TRUE
+			return
+	supply_controller.black_market_enabled = FALSE
+
+	//If any computers are able to order contraband, it's enabled. Otherwise, it's disabled!
 
 /obj/structure/machinery/computer/ordercomp
 	name = "Supply ordering console"
@@ -359,12 +368,15 @@ var/datum/controller/supply/supply_controller = new()
 
 	//black market stuff
 	 ///in Weyland-Yutani dollars - Not Stan_Albatross.
-	var/black_market_points = 0
+	var/black_market_points = 5 // 5 to start with to buy the scanner.
 	 ///If the black market is enabled.
 	var/black_market_enabled = FALSE
 
 	 /// This contains a list of all typepaths of sold items and how many times they've been recieved. Used to calculate points dropoff (Can't send down a hundred blue souto cans for infinite points)
 	var/list/black_market_sold_items
+
+	 /// If the players killed him by sending a live hostile below.. this goes false and they can't order any more contraband.
+	var/mendoza_status = TRUE
 
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
 
@@ -378,7 +390,7 @@ var/datum/controller/supply/supply_controller = new()
 	//shuttle movement
 	var/datum/shuttle/ferry/supply/shuttle
 
-	var/obj/structure/machinery/computer/supplycomp/bound_supply_computer
+	var/obj/structure/machinery/computer/supplycomp/bound_supply_computer_list
 
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
 	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
@@ -391,11 +403,11 @@ var/datum/controller/supply/supply_controller = new()
 //Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
 /datum/controller/supply/process()
 	for(var/typepath in subtypesof(/datum/supply_packs))
-		var/datum/supply_packs/P = new typepath()
-		if(P.group == "ASRS")
-			random_supply_packs += P
+		var/datum/supply_packs/supply_pack = new typepath()
+		if(supply_pack.group == "ASRS")
+			random_supply_packs += supply_pack
 		else
-			supply_packs[P.name] = P
+			supply_packs[supply_pack.name] = supply_pack
 	spawn(0)
 		set background = 1
 		while(1)
@@ -434,13 +446,13 @@ var/datum/controller/supply/supply_controller = new()
 		return
 	C.cost = round(C.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight
 	//We have to create a supply order to make the system spawn it. Here we transform a crate into an order.
-	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = supply_controller.ordernum
-	O.object = C
-	O.orderedby = "ASRS"
-	O.approvedby = "ASRS"
+	var/datum/supply_order/supply_order = new /datum/supply_order()
+	supply_order.ordernum = supply_controller.ordernum
+	supply_order.object = C
+	supply_order.orderedby = "ASRS"
+	supply_order.approvedby = "ASRS"
 	//We add the order to the shopping list
-	supply_controller.shoppinglist += O
+	supply_controller.shoppinglist += supply_order
 
 //Here we weigh the crate based upon it's cost
 /datum/controller/supply/proc/pick_weighted_crate(list/cratelist)
@@ -455,7 +467,7 @@ var/datum/controller/supply/supply_controller = new()
 
 //To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.
 /datum/controller/supply/proc/forbidden_atoms_check(atom/A)
-	if(istype(A,/mob/living))
+	if(istype(A,/mob/living) && !black_market_enabled)
 		return 1
 	if(istype(A,/obj/item/disk/nuclear))
 		return 1
@@ -500,7 +512,7 @@ var/datum/controller/supply/supply_controller = new()
 						points_to_add += black_object.black_market_value
 			else if(istype(movable_atom, /mob/living))
 				var/mob/black_mob = movable_atom
-				var/result = bound_supply_computer.handle_special_mob_insert(black_mob)
+				var/result = handle_special_mob_insert(black_mob)
 				if(result)
 					points_to_add += result
 			black_market_sold_items[movable_atom.type] += 1
@@ -679,9 +691,9 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 			for(var/supply_name in supply_controller.supply_packs )
-				var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-				if(N.hidden || N.contraband || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
+				var/datum/supply_packs/supply_pack = supply_controller.supply_packs[supply_name]
+				if(supply_pack.hidden || supply_pack.contraband || supply_pack.group != last_viewed_group || !supply_pack.buyable) continue								//Have to send the type instead of a reference to
+				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
@@ -690,10 +702,10 @@ var/datum/controller/supply/supply_controller = new()
 			return
 
 		//Find the correct supply_pack datum
-		var/datum/supply_packs/P = supply_controller.supply_packs[href_list["doorder"]]
-		if(!istype(P))	return
+		var/datum/supply_packs/supply_pack = supply_controller.supply_packs[href_list["doorder"]]
+		if(!istype(supply_pack))	return
 
-		if(P.hidden || P.contraband || !P.buyable)
+		if(supply_pack.hidden || supply_pack.contraband || !supply_pack.buyable)
 			return
 
 		var/timeout = world.time + 600
@@ -712,16 +724,16 @@ var/datum/controller/supply/supply_controller = new()
 
 		supply_controller.ordernum++
 		var/obj/item/paper/reqform = new /obj/item/paper(loc)
-		reqform.name = "Requisition Form - [P.name]"
+		reqform.name = "Requisition Form - [supply_pack.name]"
 		reqform.info += "<h3>[station_name] Supply Requisition Form</h3><hr>"
 		reqform.info += "INDEX: #[supply_controller.ordernum]<br>"
 		reqform.info += "REQUESTED BY: [idname]<br>"
 		reqform.info += "RANK: [idrank]<br>"
 		reqform.info += "REASON: [reason]<br>"
-		reqform.info += "SUPPLY CRATE TYPE: [P.name]<br>"
-		reqform.info += "ACCESS RESTRICTION: [get_access_desc(P.access)]<br>"
+		reqform.info += "SUPPLY CRATE TYPE: [supply_pack.name]<br>"
+		reqform.info += "ACCESS RESTRICTION: [get_access_desc(supply_pack.access)]<br>"
 		reqform.info += "CONTENTS:<br>"
-		reqform.info += P.manifest
+		reqform.info += supply_pack.manifest
 		reqform.info += "<hr>"
 		reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
 
@@ -729,11 +741,11 @@ var/datum/controller/supply/supply_controller = new()
 		reqtime = (world.time + 5) % 1e5
 
 		//make our supply_order datum
-		var/datum/supply_order/O = new /datum/supply_order()
-		O.ordernum = supply_controller.ordernum
-		O.object = P
-		O.orderedby = idname
-		supply_controller.requestlist += O
+		var/datum/supply_order/supply_order = new /datum/supply_order()
+		supply_order.ordernum = supply_controller.ordernum
+		supply_order.object = supply_pack
+		supply_order.orderedby = idname
+		supply_controller.requestlist += supply_order
 
 		temp = "Thanks for your request. The cargo team will process it as soon as possible.<BR>"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
@@ -878,17 +890,17 @@ var/datum/controller/supply/supply_controller = new()
 				temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 				temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 				for(var/supply_name in supply_controller.supply_packs )
-					var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-					if((N.hidden && !hacked) || (N.contraband && !can_order_contraband) || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
-					temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
+					var/datum/supply_packs/supply_pack = supply_controller.supply_packs[supply_name]
+					if((supply_pack.contraband && !can_order_contraband) || supply_pack.group != last_viewed_group || !supply_pack.buyable) continue								//Have to send the type instead of a reference to
+					temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
 
 		/*temp = "Supply points: [supply_controller.points]<BR><HR><BR>Request what?<BR><BR>"
 
 		for(var/supply_name in supply_controller.supply_packs )
-			var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-			if(N.hidden && !hacked) continue
-			if(N.contraband && !can_order_contraband) continue
-			temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [N.cost]<BR>"    //the obj because it would get caught by the garbage
+			var/datum/supply_packs/supply_pack = supply_controller.supply_packs[supply_name]
+			if(supply_pack.hidden && !hacked) continue
+			if(supply_pack.contraband && !can_order_contraband) continue
+			temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [supply_pack.cost]<BR>"    //the obj because it would get caught by the garbage
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"*/
 
 	else if (href_list["doorder"])
@@ -898,11 +910,11 @@ var/datum/controller/supply/supply_controller = new()
 			return
 
 		//Find the correct supply_pack datum
-		var/datum/supply_packs/P = supply_controller.supply_packs[href_list["doorder"]]
+		var/datum/supply_packs/supply_pack = supply_controller.supply_packs[href_list["doorder"]]
 
-		if(!istype(P))	return
+		if(!istype(supply_pack))	return
 
-		if((P.hidden && !hacked) || (P.contraband && !can_order_contraband) || !P.buyable)
+		if((supply_pack.contraband && !can_order_contraband) || !supply_pack.buyable)
 			return
 
 		var/timeout = world.time + 600
@@ -922,16 +934,16 @@ var/datum/controller/supply/supply_controller = new()
 
 		supply_controller.ordernum++
 		var/obj/item/paper/reqform = new /obj/item/paper(loc)
-		reqform.name = "Requisition Form - [P.name]"
+		reqform.name = "Requisition Form - [supply_pack.name]"
 		reqform.info += "<h3>[station_name] Supply Requisition Form</h3><hr>"
 		reqform.info += "INDEX: #[supply_controller.ordernum]<br>"
 		reqform.info += "REQUESTED BY: [idname]<br>"
 		reqform.info += "RANK: [idrank]<br>"
 		reqform.info += "REASON: [reason]<br>"
-		reqform.info += "SUPPLY CRATE TYPE: [P.name]<br>"
-		reqform.info += "ACCESS RESTRICTION: [get_access_desc(P.access)]<br>"
+		reqform.info += "SUPPLY CRATE TYPE: [supply_pack.name]<br>"
+		reqform.info += "ACCESS RESTRICTION: [get_access_desc(supply_pack.access)]<br>"
 		reqform.info += "CONTENTS:<br>"
-		reqform.info += P.manifest
+		reqform.info += supply_pack.manifest
 		reqform.info += "<hr>"
 		reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
 
@@ -939,20 +951,20 @@ var/datum/controller/supply/supply_controller = new()
 		reqtime = (world.time + 5) % 1e5
 
 		//make our supply_order datum
-		var/datum/supply_order/O = new /datum/supply_order()
-		O.ordernum = supply_controller.ordernum
-		O.object = P
-		O.orderedby = idname
-		supply_controller.requestlist += O
+		var/datum/supply_order/supply_order = new /datum/supply_order()
+		supply_order.ordernum = supply_controller.ordernum
+		supply_order.object = supply_pack
+		supply_order.orderedby = idname
+		supply_controller.requestlist += supply_order
 
 		temp = "Order request placed.<BR>"
-		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>|<A href='?src=\ref[src];confirmorder=[O.ordernum]'>Authorize Order</A>"
+		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>|<A href='?src=\ref[src];confirmorder=[supply_order.ordernum]'>Authorize Order</A>"
 
 	else if(href_list["confirmorder"])
 		//Find the correct supply_order datum
 		var/ordernum = text2num(href_list["confirmorder"])
-		var/datum/supply_order/O
-		var/datum/supply_packs/P
+		var/datum/supply_order/supply_order
+		var/datum/supply_packs/supply_pack
 		temp = "Invalid Request"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
@@ -963,17 +975,18 @@ var/datum/controller/supply/supply_controller = new()
 		for(var/i=1, i<=supply_controller.requestlist.len, i++)
 			var/datum/supply_order/SO = supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
-				O = SO
-				P = O.object
-				if(supply_controller.points >= round(P.cost))
+				supply_order = SO
+				supply_pack = supply_order.object
+				if(supply_controller.points >= round(supply_pack.cost) && supply_controller.black_market_points >= supply_pack.dollar_cost)
 					supply_controller.requestlist.Cut(i,i+1)
-					supply_controller.points -= round(P.cost)
-					supply_controller.shoppinglist += O
-					P.cost = P.cost * SUPPLY_COST_MULTIPLIER
+					supply_controller.points -= round(supply_pack.cost)
+					supply_controller.black_market_points -= round(supply_pack.dollar_cost)
+					supply_controller.shoppinglist += supply_order
+					supply_pack.cost = supply_pack.cost * SUPPLY_COST_MULTIPLIER
 					temp = "Thank you for your order.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
-					O.approvedby = usr.name
-					msg_admin_niche("[usr] confirmed supply order of [P.name].")
+					supply_order.approvedby = usr.name
+					msg_admin_niche("[usr] confirmed supply order of [supply_pack.name].")
 				else
 					temp = "Not enough money left.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
@@ -1035,7 +1048,7 @@ var/datum/controller/supply/supply_controller = new()
 	temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 	temp += SPAN_DANGER("ERR0R UNK7OWN C4T2G#!$0-<HR><HR><HR>")
 	temp += "KHZKNHZH#0-"
-	if(!mendoza_status) // he's daed
+	if(!supply_controller.mendoza_status) // he's daed
 		temp += "........."
 		return
 	handle_mendoza_dialogue() //mendoza has been in there for a while. he gets lonely sometimes
@@ -1049,10 +1062,10 @@ var/datum/controller/supply/supply_controller = new()
 	temp += "<A href='?src=\ref[src];order=Black Market'>Back to black market categories</A><HR><BR><BR>"
 	temp += "<b>Purchase from: [last_viewed_group]</b><BR><BR>"
 	for(var/supply_name in supply_controller.supply_packs )
-		var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-		if(N.group != last_viewed_group)
+		var/datum/supply_packs/supply_pack = supply_controller.supply_packs[supply_name]
+		if(supply_pack.group != last_viewed_group)
 			continue
-		temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * BLACK_MARKET_TO_MONEY_MUPLTIPLIER]<BR>"
+		temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(supply_pack.dollar_cost) * BLACK_MARKET_TO_MONEY_MUPLTIPLIER]<BR>"
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_mendoza_dialogue()
 
@@ -1101,7 +1114,7 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "If you see any, er.. 'elite' equipment, be sure to throw it down here. I know a few people that'd offer quite the amount of money for a USCM commander's gun, or pet. Even the armor is worth a fortune. Don't kill yourself doin' it, though.<BR>"
 			temp += "Hell, any kind of wildlife too, actually! Anythin' that isn't a replicant animal is worth a truly ridiculous sum back on Terra, I'll give ya quite the amount of points for 'em. As long as it isn't plannin' on killing me.<BR>"
 
-/obj/structure/machinery/computer/supplycomp/proc/handle_special_mob_insert(var/mob/living/black_mob)
+/datum/controller/supply/proc/handle_special_mob_insert(var/mob/living/black_mob)
 	var/return_value
 	if(isanimal(black_mob))
 		return_value = 25 // no death check - he can sell the hide or something i guess.
@@ -1111,7 +1124,7 @@ var/datum/controller/supply/supply_controller = new()
 			return_value = 50 //mendoza likes pets
 		else
 			return_value = 0
-	if(istype(black_mob, /mob/living/simple_animal/hostile || istype(black_mob, /mob/living/carbon/Xenomorph)) && !istype(black_mob, /mob/living/simple_animal/hostile/retaliate))
+	if(istype(black_mob, /mob/living/simple_animal/hostile) || istype(black_mob, /mob/living/carbon/Xenomorph) && !istype(black_mob, /mob/living/simple_animal/hostile/retaliate))
 		var/mob/living/hit_hostile = black_mob
 		if(hit_hostile.stat != DEAD)
 			return_value = kill_mendoza() //you fucked up
@@ -1122,14 +1135,17 @@ var/datum/controller/supply/supply_controller = new()
 	return_value = POSITIVE(return_value - supply_controller.black_market_sold_items[black_mob.type] * 0.5)
 	return return_value
 
-/obj/structure/machinery/computer/supplycomp/proc/kill_mendoza()
-	balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
+/datum/controller/supply/proc/kill_mendoza()
+	if(!mendoza_status)
+		return //cant kill him twice
+	for(var/atom/computer as anything in bound_supply_computer_list)
+		computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
 
 	mendoza_status = FALSE // he'll die soon enough, and in the meantime will be too busy to handle requests.
 
 	//mendoza notices the bad guy
 
-	play_sound_handler("hiss_talk", 0.5 SECONDS)
+	play_sound_handler("alien_growl", 0.5 SECONDS)
 	play_sound_handler("male_scream", 1 SECONDS)
 
 	//mendoza is attacked by it
@@ -1153,13 +1169,34 @@ var/datum/controller/supply/supply_controller = new()
 	play_sound_handler("alien_bite", 10 SECONDS)
 	play_sound_handler('sound/handling/click_2.ogg', 11 SECONDS) // armor suit light turns off (cause he died)
 
-/obj/structure/machinery/computer/supplycomp/proc/get_rand_sound_tile()
+	var/list/turf/open/clear_turfs = list()
+	var/area/area_shuttle = shuttle?.get_location_area()
+	if(!area_shuttle)
+		return
+	for(var/turf/elevator_turfs in area_shuttle)
+		if(elevator_turfs.density || elevator_turfs.contents?.len)
+			continue
+		clear_turfs |= elevator_turfs
+	var/turf/chosen_turf = pick(clear_turfs)
+
+	//his corpse
+	new /obj/effect/decal/remains/human(chosen_turf)
+	new /obj/effect/decal/cleanable/blood(chosen_turf)
+
+	//some of his blood
+	new /obj/effect/decal/cleanable/blood(pick(clear_turfs))
+	new /obj/effect/decal/cleanable/blood(pick(clear_turfs))
+
+	//some of the xeno's blood
+	new /obj/effect/decal/cleanable/blood/xeno(pick(clear_turfs))
+
+/datum/controller/supply/proc/get_rand_sound_tile()
 	var/atom/sound_tile = pick(GLOB.asrs_empty_space_tiles_list)
 	return sound_tile
 
-/obj/structure/machinery/computer/supplycomp/proc/play_sound_handler(var/sound_to_play, var/timer)
+/datum/controller/supply/proc/play_sound_handler(var/sound_to_play, var/timer)
 	 /// For code readability.
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, get_rand_sound_tile(), sound_to_play, 25, TRUE), timer)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, get_rand_sound_tile(), sound_to_play, 25, FALSE), timer)
 
 /obj/structure/machinery/computer/supplycomp/proc/post_signal(var/command)
 

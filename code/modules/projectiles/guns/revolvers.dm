@@ -552,6 +552,7 @@
 						/obj/item/attachable/mateba/short)
 	starting_attachment_types = list(/obj/item/attachable/mateba)
 	unacidable = TRUE
+	black_market_value = 100
 	var/is_locked = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
@@ -618,7 +619,6 @@
 					/obj/item/attachable/mateba/long/dark,
 					/obj/item/attachable/mateba/short/dark)
 	starting_attachment_types = null
-	black_market_value = 50
 
 /obj/item/weapon/gun/revolver/mateba/general/handle_starting_attachment()
 	..()

@@ -295,6 +295,7 @@
 	specialty = "marine dress"
 	flags_atom = NO_SNOW_TYPE
 	flags_jumpsuit = FALSE
+	black_market_value = 15
 
 //=========================//DRESS BLUES\\================================\\
 //=======================================================================\\

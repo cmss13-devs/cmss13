@@ -22,12 +22,13 @@ black market prices are NOT based on real or in-universe costs. they are based o
 /datum/supply_packs/contraband//base
 	name = "contraband crate"
 	contains = list(/obj/item/toy/bikehorn)
-	cost = 50
 	containertype = /obj/structure/closet/crate/trashcart
-	containername = "contraband crate"
+	containername = "large crate"
 	group = "Black Market"
 	contraband = TRUE
 	hidden = TRUE
+	cost = 0
+	dollar_cost = 50
 
 /obj/structure/largecrate/black_market
 	//no special name so it can be hidden
@@ -52,12 +53,13 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 /datum/supply_packs/contraband/seized/black_market_scanner
 	name = "black market scanner crate"
 	contains = list(/obj/item/device/black_market_scanner)
-	cost = 5
+	containername = "trash cart"
+	dollar_cost = 5
 	containertype = /obj/structure/closet/crate/trashcart
 
 /datum/supply_packs/contraband/seized/confiscated_equipment
 	name = "seized foreign equipment crate"
-	cost = 70
+	dollar_cost = 70
 	containertype = /obj/structure/largecrate/black_market/confiscated_equipment
 
 /obj/structure/largecrate/black_market/confiscated_equipment/Initialize()
@@ -105,7 +107,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 /datum/supply_packs/contraband/seized/confiscated_weaponry
 	name = "seized foreign weaponry crate"
 	contains = list()
-	cost = 45
+	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market/confiscated_weaponry
 
 /obj/structure/largecrate/black_market/confiscated_weaponry/Initialize()
@@ -216,7 +218,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/m16,
 			/obj/item/ammo_magazine/rifle/m16
 	)
-	cost = 35
+	dollar_cost = 35
 
 /datum/supply_packs/contraband/seized/ar10
 	name = "AR10 rifle crate (x5 magazines)"
@@ -227,7 +229,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/ar10,
 			/obj/item/ammo_magazine/rifle/ar10
 	)
-	cost = 30
+	dollar_cost = 30
 
 /datum/supply_packs/contraband/seized/mar40
 	name = "MAR-40 battle rifle crate (x4 magazines)"
@@ -238,7 +240,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/mar40,
 			/obj/item/ammo_magazine/rifle/mar40
 	)
-	cost = 35
+	dollar_cost = 35
 
 /datum/supply_packs/contraband/seized/mar30
 	name = "MAR-30 battle carbine crate (x5 magazines)"
@@ -250,7 +252,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/mar40,
 			/obj/item/ammo_magazine/rifle/mar40
 	)
-	cost = 30
+	dollar_cost = 30
 
 /datum/supply_packs/contraband/seized/mar50
 	name = "MAR-50 light machine gun crate (x3 drum magazines)"
@@ -260,7 +262,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/mar40/lmg,
 			/obj/item/ammo_magazine/rifle/mar40/lmg
 	)
-	cost = 40
+	dollar_cost = 40
 
 /datum/supply_packs/contraband/seized/hunting
 	name = "Basira-Armstrong hunting rifle crate (x5 magazines)"
@@ -272,7 +274,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/hunting,
 			/obj/item/ammo_magazine/rifle/hunting
 	)
-	cost = 5
+	dollar_cost = 5
 
 // Shotguns
 
@@ -282,7 +284,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/weapon/gun/shotgun/double/damaged, //its not actually sawed off........... get fuked
 			/obj/item/ammo_magazine/shotgun/buckshot,
 	)
-	cost = 45
+	dollar_cost = 45
 
 /datum/supply_packs/contraband/seized/custom
 	name = "custom-built shotgun crate (x1 box)"
@@ -290,7 +292,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/weapon/gun/shotgun/merc/damaged,
 			/obj/item/ammo_magazine/shotgun,
 	)
-	cost = 50
+	dollar_cost = 50
 
 // SMGs
 
@@ -304,7 +306,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/fp9000,
 			/obj/item/ammo_magazine/smg/fp9000
 	)
-	cost = 25
+	dollar_cost = 25
 
 /datum/supply_packs/contraband/seized/mp27
 	name = "MP-27 submachinegun crate (x5 magazines)"
@@ -316,7 +318,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/mp27,
 			/obj/item/ammo_magazine/smg/mp27
 	)
-	cost = 20
+	dollar_cost = 20
 
 /datum/supply_packs/contraband/seized/mp5
 	name = "MP5 submachinegun crate (x5 magazines)"
@@ -328,7 +330,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/mp5,
 			/obj/item/ammo_magazine/smg/mp5
 	)
-	cost = 25
+	dollar_cost = 25
 
 /datum/supply_packs/contraband/seized/uzi
 	name = "UZI submachinegun crate (x5 magazines)"
@@ -340,7 +342,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/uzi,
 			/obj/item/ammo_magazine/smg/uzi
 	)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/seized/mac15
 	name = "MAC-15 submachinegun crate (x5 magazines)"
@@ -352,7 +354,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/mac15,
 			/obj/item/ammo_magazine/smg/mac15
 	)
-	cost = 5
+	dollar_cost = 5
 
 /datum/supply_packs/contraband/seized/ppsh
 	name = "PPSh-17b submachinegun crate (x5 magazines)"
@@ -364,7 +366,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/ppsh,
 			/obj/item/ammo_magazine/smg/ppsh
 	)
-	cost = 15
+	dollar_cost = 15
 
 //Pistols
 
@@ -379,7 +381,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/b92fs,
 			/obj/item/ammo_magazine/pistol/b92fs
 	)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/seized/heavy
 	name = "Desert Eagle crate (x4 magazines)"
@@ -390,7 +392,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/heavy,
 			/obj/item/ammo_magazine/pistol/heavy
 	)
-	cost = 45
+	dollar_cost = 45
 
 /datum/supply_packs/contraband/seized/c99
 	name = "Korovin PK-9 pistol crate (x6 magazines)"
@@ -403,7 +405,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/c99,
 			/obj/item/ammo_magazine/pistol/c99
 	)
-	cost = 5
+	dollar_cost = 5
 
 /datum/supply_packs/contraband/seized/kt42
 	name = "KT-42 Automag pistol (x5 magazines)"
@@ -415,7 +417,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/kt42,
 			/obj/item/ammo_magazine/pistol/kt42
 	)
-	cost = 15
+	dollar_cost = 15
 
 /datum/supply_packs/contraband/seized/holdout
 	name = "holdout pistol (x7 magazines)"
@@ -429,7 +431,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/holdout,
 			/obj/item/ammo_magazine/pistol/holdout
 	)
-	cost = 5
+	dollar_cost = 5
 
 /datum/supply_packs/contraband/seized/skorpion
 	name = "CZ-81 machine pistol (x4 magazines)"
@@ -440,7 +442,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/skorpion,
 			/obj/item/ammo_magazine/pistol/skorpion
 	)
-	cost = 15
+	dollar_cost = 15
 
 //Revolvers
 
@@ -454,7 +456,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/revolver/cmb,
 			/obj/item/ammo_magazine/revolver/cmb
 	)
-	cost = 20
+	dollar_cost = 20
 
 /datum/supply_packs/contraband/seized/small
 	name = "S&W revolver (x6 magazines)"
@@ -467,7 +469,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/revolver/small,
 			/obj/item/ammo_magazine/revolver/small
 	)
-	cost = 15
+	dollar_cost = 15
 
 /datum/supply_packs/contraband/seized/nagant
 	name = "N-Y 7.62mm revolver (x6 magazines)"
@@ -480,7 +482,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/revolver/upp,
 			/obj/item/ammo_magazine/revolver/upp
 	)
-	cost = 10
+	dollar_cost = 10
 
 /* --- SHIPSIDE CONTRABAND --- */
 
@@ -528,7 +530,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 					/obj/item/reagent_container/food/drinks/bottle/beer/craft/reaper,
 					/obj/item/reagent_container/food/drinks/bottle/beer/craft/mono
 	)
-	cost = 35
+	dollar_cost = 35
 
 /datum/supply_packs/contraband/shipside/confiscated_medicine
 	name = "confiscated medicinal supplies crate"
@@ -544,7 +546,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 					/obj/item/storage/pill_bottle/paracetamol,
 					/obj/item/storage/pill_bottle/zombie_powder
 	)
-	cost = 25
+	dollar_cost = 25
 
 /datum/supply_packs/contraband/shipside/confiscated_cuisine
 	name = "confiscated cuisine supplies crate"
@@ -584,7 +586,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/resin_fruit,
 		/obj/item/reagent_container/food/condiment/hotsauce/franks/macho
 	)
-	cost = 15
+	dollar_cost = 15
 
 
 /datum/supply_packs/contraband/shipside/confiscated_nicotine
@@ -599,7 +601,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/fancy/cigar/tarbacks,
 		/obj/item/storage/fancy/cigar/tarbacktube
 	)
-	cost = 45
+	dollar_cost = 45
 
 /datum/supply_packs/contraband/shipside/confiscated_miscellaneous
 	name = "confiscated miscellaneous items crate"
@@ -638,7 +640,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/pamphlet/language/german,
 		/obj/item/pamphlet/language/spanish
 		)
-	cost = 30
+	dollar_cost = 30
 
 
 /* --- SURPLUS EQUIPMENT --- */
@@ -658,7 +660,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 
 /datum/supply_packs/contraband/surplus/uscm_poncho
 	name = "surplus USCM poncho crate (x2)"
-	cost = 15
+	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market/poncho
 
 /obj/structure/largecrate/black_market/poncho/Initialize()
@@ -671,7 +673,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 
 /datum/supply_packs/contraband/surplus/uscm_heap
 	name = "surplus high-explosive armor-piercing M41A magazine crate (x3)"
-	cost = 40
+	dollar_cost = 40
 	containertype = /obj/structure/largecrate/black_market/uscm_heap
 
 /obj/structure/largecrate/black_market/uscm_heap/Initialize()
@@ -695,7 +697,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/clothing/head/helmet/marine/MP,
 		/obj/item/prop/helmetgarb/riot_shield
 	)
-	cost = 55
+	dollar_cost = 55
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/surplus_non_lethal_ammunition
@@ -709,7 +711,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/ammo_magazine/rifle/l42a/rubber,
 		/obj/item/ammo_magazine/shotgun/beanbag
 	)
-	cost = 50
+	dollar_cost = 50
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/surplus_l42_extended
@@ -717,40 +719,39 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	contains = list(
 		/obj/item/ammo_box/magazine/l42a/ext
 	)
-	cost = 45
+	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market
 
 /* - Misc. USCM weaponry - */
 
-/*datum/supply_packs/contraband/surplus/mk44 handgun
-	group = "Surplus Equipment"
-	contains = list()
-	containertype = /obj/structure/largecrate/black_market
-*/
+datum/supply_packs/contraband/surplus/mk45_automag
+	name = "surplus MK-45 Automagnum case"
+	dollar_cost = 35
+	contains = list(/obj/item/storage/box/guncase/mk45_automag)
 
 /datum/supply_packs/contraband/surplus/r4t
 	name = "surplus R4T field-testing case"
-	cost = 75
+	dollar_cost = 75
 	contains = list(/obj/item/storage/box/guncase/r4t)
 
 /datum/supply_packs/contraband/surplus/nsg23_marine
 	name = "surplus NSG 23 assault rifle case"
-	cost = 45
+	dollar_cost = 45
 	contains = list(/obj/item/storage/box/guncase/nsg23_marine)
 
 /datum/supply_packs/contraband/surplus/m3717
 	name = "surplus M37-17 pump shotgun case"
-	cost = 80
+	dollar_cost = 80
 	contains = list(/obj/item/storage/box/guncase/m3717)
 
 /datum/supply_packs/contraband/surplus/m1911
 	name = "surplus M1911 service pistol case"
-	cost = 10
+	dollar_cost = 10
 	contains = list(/obj/item/storage/box/guncase/m1911)
 
 /datum/supply_packs/contraband/surplus/m1911/socom
 	name = "surplus SOCOM M1911 service pistol case"
-	cost = 25
+	dollar_cost = 25
 	contains = list(/obj/item/storage/box/guncase/m1911/socom)
 
 /* --- DEEP STORAGE --- */
@@ -776,28 +777,28 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	contains = list(
 		/obj/item/prop/helmetgarb/spacejam_tickets
 		)
-	cost = 5
+	dollar_cost = 5
 
 /datum/supply_packs/contraband/deep_storage/broken_nvgs
 	name = "Broken Night Vision Goggles"
 	contains = list(
 		/obj/item/prop/helmetgarb/helmet_nvg/cosmetic
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/xm42b_pipe
 	name = "10x99mm XM42B casing"
 	contains = list(
 		/obj/item/prop/helmetgarb/bullet_pipe
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/trimmed_wire
 	name = "Trimmed Barbed Wire"
 	contains = list(
 		/obj/item/prop/helmetgarb/trimmed_wire
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/lucky_feather_random
 	name = "Lucky Feather"
@@ -808,21 +809,21 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/prop/helmetgarb/lucky_feather/purple,
 		/obj/item/prop/helmetgarb/lucky_feather/yellow
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/rosary
 	name = "Rosary"
 	contains = list(
 		/obj/item/prop/helmetgarb/rosary
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/rabbitsfoot
 	name = "Rabbit's Foot"
 	contains = list(
 		/obj/item/prop/helmetgarb/rabbitsfoot
 		)
-	cost = 10
+	dollar_cost = 10
 
 // Masks
 
@@ -835,7 +836,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/green,
 		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/skull_balaclava_random
 	name = "Skull Balaclava"
@@ -844,7 +845,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/mask/rebreather/skull/black,
 		/obj/item/clothing/mask/rebreather/skull
 		)
-	cost = 10
+	dollar_cost = 10
 
 
 /datum/supply_packs/contraband/deep_storage/skull_facepaint
@@ -852,7 +853,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	contains = list(
 		/obj/item/facepaint/skull
 		)
-	cost = 10
+	dollar_cost = 10
 
 //Glasses
 
@@ -861,7 +862,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	contains = list(
 		/obj/item/clothing/glasses/sunglasses/aviator
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/ballistic_goggles_random
 	name = "Ballistic Goggles"
@@ -871,14 +872,14 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/glasses/mgoggles/orange,
 		/obj/item/clothing/glasses/mgoggles/black
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/bimex_shades
 	name = "BiMex Personal Shades"
 	contains = list(
 		/obj/item/clothing/glasses/sunglasses/big
 		)
-	cost = 15
+	dollar_cost = 15
 
 // Headgear
 
@@ -889,7 +890,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/cmbandana,
 		/obj/item/clothing/head/cmbandana/tan
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/uscm_earpiece
 	name = "USCM Earpiece"
@@ -897,7 +898,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	contains = list(
 		/obj/item/clothing/head/headset
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/uscm_headband
 	name = "USCM Headband"
@@ -909,7 +910,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/headband/red,
 		/obj/item/clothing/head/headband/tan
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/uscm_boonie_hat
 	name = "USCM Boonie Hat"
@@ -918,7 +919,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/cmcap/boonie/tan,
 		/obj/item/clothing/head/cmcap/boonie
 		)
-	cost = 10
+	dollar_cost = 10
 
 //Misc
 
@@ -927,14 +928,14 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	contains = list(
 		/obj/item/storage/box/pdt_kit
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/lucky_lime
 	name = "Frozen Lime"
 	contains = list(
 		/obj/item/reagent_container/food/snacks/grown/lime
 		)
-	cost = 5
+	dollar_cost = 5
 
 /datum/supply_packs/contraband/deep_storage/uno_reverse_random
 	name = "Uno Reverse Card"
@@ -945,14 +946,14 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/toy/handcard/uno_reverse_purple,
 		/obj/item/toy/handcard/uno_reverse_yellow
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/jungle_boots
 	name = "Jungle Pattern Combat Boots"
 	contains = list(
 		/obj/item/clothing/shoes/marine/jungle
 		)
-	cost = 10
+	dollar_cost = 10
 
 //Weapons
 
@@ -961,35 +962,35 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	contains = list(
 		/obj/item/attachable/bayonet/upp_replica
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/cartridge_bayonet
 	name = "M8 Cartridge Bayonet Kit"
 	contains = list(
 		/obj/item/storage/box/c02_knife
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/m43_holdout
 	name = "M43 Holdout Pistol"
 	contains = list(
 		/obj/item/storage/box/m43
 		)
-	cost = 10
+	dollar_cost = 10
 
 /datum/supply_packs/contraband/deep_storage/m4a3_c
 	name = "M4A3 Custom Pistol"
 	contains = list(
 		/obj/item/weapon/gun/pistol/m4a3/custom
 		)
-	cost = 35
+	dollar_cost = 35
 
 /datum/supply_packs/contraband/deep_storage/m44_c
 	name = "M44 Custom Revolver"
 	contains = list(
 		/obj/item/weapon/gun/revolver/m44/custom
 		)
-	cost = 70
+	dollar_cost = 70
 
 /* --- MISCELLANEOUS --- */
 
@@ -1006,7 +1007,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 
 /datum/supply_packs/contraband/miscellaneous/secured_wildlife
 	name = "secured wildlife container"
-	cost = 45
+	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market/secured_wildlife
 
 /obj/structure/largecrate/black_market/secured_wildlife

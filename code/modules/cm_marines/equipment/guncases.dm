@@ -203,13 +203,38 @@
 			if(3)
 				new /obj/item/ammo_magazine/shotgun/slugs(src)
 
+/obj/item/storage/box/guncase/mk45_automag
+	name = "\improper MK-45 Automagnum case"
+	desc = "A gun case containing the MK-45 'High-Power' Automagnum sidearm. While this weapon was rejected as a replacement for the M44 Combat Revolver, it is often back-issued to troops who prefer its powerful bullets over more common sidearms."
+	storage_slots = 6
+	can_hold = list(/obj/item/weapon/gun/pistol/highpower, /obj/item/ammo_magazine/pistol/highpower)
+
+/obj/item/storage/box/guncase/mk45_automag/fill_preset_inventory()
+	if(prob(30))
+		new /obj/item/weapon/gun/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+	else
+		new /obj/item/weapon/gun/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+
+
 /obj/item/storage/box/guncase/nsg23_marine
 	name = "\improper NSG 23 assault rifle case"
 	desc = "A gun case containing the NSG 23 assault rifle. While usually seen in the hands of PMCs, this weapon is sometimes issued to USCM personnel."
 	storage_slots = 6
 	can_hold = list(/obj/item/weapon/gun/rifle/nsg23/no_lock, /obj/item/ammo_magazine/rifle/nsg23)
 
-/obj/item/storage/box/guncase/nsg23/fill_preset_inventory()
+/obj/item/storage/box/guncase/nsg23_marine/fill_preset_inventory()
 	new /obj/item/weapon/gun/rifle/nsg23/no_lock(src)
 	new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
 	new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
@@ -221,10 +246,10 @@
 	name = "\improper M37-17 pump shotgun case"
 	desc = "A gun case containing the M37-17 pump shotgun. Rarely seen issued to USCM vessels on the edges of inhabited space who need the extra bang for their buck (literally) the M37-17 has. Like this one! Well, if it had the budget for it."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/shotgun/pump/cmb/m3717, /obj/item/ammo_magazine/shotgun/buckshot)
+	can_hold = list(/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717, /obj/item/ammo_magazine/shotgun/buckshot)
 
 /obj/item/storage/box/guncase/m3717/fill_preset_inventory()
-	new /obj/item/weapon/gun/shotgun/pump/cmb/m3717(src)
+	new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)

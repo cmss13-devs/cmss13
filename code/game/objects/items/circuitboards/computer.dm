@@ -162,11 +162,28 @@
 
 /obj/item/circuitboard/computer/supplycomp/construct(var/obj/structure/machinery/computer/supplycomp/SC)
 	if (..(SC))
-		SC.can_order_contraband = contraband_enabled
+		SC.toggle_contraband(contraband_enabled)
 
 /obj/item/circuitboard/computer/supplycomp/disassemble(var/obj/structure/machinery/computer/supplycomp/SC)
 	if (..(SC))
-		contraband_enabled = SC.can_order_contraband
+		SC.toggle_contraband(contraband_enabled)
+
+/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/multitool, mob/user)
+	if(HAS_TRAIT(multitool, TRAIT_TOOL_MULTITOOL))
+		to_chat(user, SPAN_WARNING("You start messing around with the electronics of \the [src]..."))
+		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
+				return
+			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
+			if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				if(!contraband_enabled)
+					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [multitool], and a red light starts blinking on and off on the board. Put it back in?"))
+					contraband_enabled = TRUE
+				else
+					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [multitool], and the red light stops blinking, turning off. It's probably good now.."))
+					contraband_enabled = FALSE
+	else ..()
 
 /obj/item/circuitboard/computer/supplycomp/vehicle
 	name = "Circuit board (vehicle ASRS console)"
@@ -213,22 +230,6 @@
 	name = "Circuit board (Research Data Terminal)"
 	build_path = /obj/structure/machinery/computer/research/main_terminal
 
-/obj/item/circuitboard/computer/supplycomp/attackby(obj/item/multitool, mob/user)
-	if(HAS_TRAIT(multitool, TRAIT_TOOL_MULTITOOL))
-		to_chat(user, SPAN_WARNING("You start messing around with the electronics of \the [src]..."))
-		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
-				return
-			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
-			if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-				if(!contraband_enabled)
-					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [multitool], and a red light starts blinking on and off on the board. Put it back in?"))
-					contraband_enabled = TRUE
-				else
-					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [multitool], and the red light stops blinking, turning off. It's probably good now.."))
-					contraband_enabled = FALSE
-	else ..()
 
 /obj/item/circuitboard/computer/security/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/card/id))

@@ -99,11 +99,17 @@
 		var/atom/movable/big_subject = subject
 		. += (big_subject.bound_height  - world.icon_size) / 2
 
-/proc/Get_Angle(atom/start,atom/end)//For beams.
+/proc/Get_Angle(atom/start,atom/end, var/tile_bound = FALSE)//For beams.
 	if(!start || !end) return 0
 	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
-	var/dy = get_pixel_position_y(end) - get_pixel_position_y(start)
-	var/dx = get_pixel_position_x(end) - get_pixel_position_x(start)
+	var/dx
+	var/dy
+	if(tile_bound)
+		dy=end.y-start.y
+		dx=end.x-start.x
+	else
+		dy = get_pixel_position_y(end) - get_pixel_position_y(start)
+		dx = get_pixel_position_x(end) - get_pixel_position_x(start)
 	if(!dy)
 		return (dx>=0)?90:270
 	.=arctan(dx/dy)

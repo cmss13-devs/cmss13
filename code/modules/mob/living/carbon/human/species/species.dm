@@ -95,6 +95,9 @@
 	var/stun_reduction = 1 //how much the stunned effect is reduced per Life call.
 	var/knock_out_reduction = 1 //same thing
 
+	 /// If different from 1, a signal is registered on post_spawn().
+	var/weed_slowdown_mult = 1
+
 	var/acid_blood_dodge_chance = 0
 
 	var/list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY

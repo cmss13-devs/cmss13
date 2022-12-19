@@ -70,13 +70,19 @@
 	icon = 'icons/turf/walls/almayer_white.dmi'
 	icon_state = "wwall"
 
+/turf/closed/wall/almayer/white/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
 /turf/closed/wall/almayer/white/outer_tile
 	tiles_with = list(/turf/closed/wall/almayer/white,/turf/closed/wall/almayer/outer)
 
 /turf/closed/wall/almayer/white/hull
-	name = "research hull"
+	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	hull = 1
+	icon_state = "hull"
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0
@@ -91,7 +97,6 @@
 /turf/closed/wall/almayer/research/containment/wall/ex_act(severity, explosion_direction)
 	if(severity <= EXPLOSION_THRESHOLD_MEDIUM) // Wall is resistant to explosives (and also crusher charge)
 		return
-
 	. = ..()
 
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
@@ -397,9 +402,6 @@
 /turf/closed/wall/mineral/bone/is_weedable()
 	return NOT_WEEDABLE
 
-/turf/closed/wall/mineral/bone/ex_act(severity, explosion_direction, source, mob/source_mob)
-	return
-
 //Misc walls
 
 /turf/closed/wall/cult
@@ -497,9 +499,6 @@
 	desc = "An absolutely massive collection of columns made of ice. The longer you stare, the deeper the ice seems to go."
 	walltype = WALL_STRATA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
-
-/turf/closed/wall/strata_ice/ex_act(severity)
-	return
 
 /turf/closed/wall/strata_ice/dirty
 	icon_state = "strata_ice_dirty"
@@ -639,9 +638,6 @@
 	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
-
-/turf/closed/wall/strata_ice/ex_act(severity)
-	return
 
 /turf/closed/wall/shiva/prefabricated
 	name = "prefabricated structure wall"
@@ -1103,7 +1099,7 @@
 		return
 
 	var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
-	new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING)
+	new_proj.generate_bullet(P.ammo)
 	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
 	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
 
@@ -1113,7 +1109,8 @@
 
 	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
 	var/atom/target = get_angle_target_turf(src, angle, get_dist(src, P.firer))
-	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed, is_shrapnel = TRUE)
+	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
+	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed)
 
 	return TRUE
 

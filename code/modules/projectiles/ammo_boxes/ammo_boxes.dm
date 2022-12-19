@@ -1,7 +1,7 @@
 //---------------------------MAGAZINE BOXES------------------
 
 /obj/item/ammo_box
-	name = "generic ammo box"
+	name = "\improper generic ammo box"
 	icon = 'icons/obj/items/weapons/guns/ammo_box.dmi'
 	icon_state = "base"
 	w_class = SIZE_HUGE
@@ -52,7 +52,7 @@
 	return
 
 /obj/item/ammo_box/magazine
-	name = "magazine box (M41A x 10)"
+	name = "\improper magazine box (M41A x 10)"
 	icon_state = "base_m41"			//base color of box
 	var/overlay_ammo_type = "_reg"		//used for ammo type color overlay
 	var/overlay_gun_type = "_m41"		//used for text overlay
@@ -244,7 +244,7 @@
 //-----------------------BIG AMMO BOX (with loose ammunition)---------------
 
 /obj/item/ammo_box/rounds
-	name = "rifle ammunition box (10x24mm)"
+	name = "\improper rifle ammunition box (10x24mm)"
 	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, L42A and M41AE2 HPR magazines. It comes with a leather strap allowing to wear it on the back."
 	icon_state = "base_m41"
 	item_state = "base_m41"

@@ -123,6 +123,11 @@
 	if(N)
 		amount_per_transfer_from_this = N
 
+/obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
+	if(istype(hit_item, /obj/item/reagent_container))
+		return
+	..()
+
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
@@ -389,6 +394,7 @@
 	desc = "A reagent tank, typically used to store large quantities of chemicals."
 
 	chemical = null
+	dispensing = FALSE //Empty fuel tanks start by accepting chemicals by default. Can't dispense nothing!
 	icon_state = "tank_normal"
 
 /obj/structure/reagent_dispensers/fueltank/custom/Initialize(mapload, volume)

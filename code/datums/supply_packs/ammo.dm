@@ -425,49 +425,13 @@
 	containername = "\improper surplus ammo crate"
 	group = "Ammo"
 
-//------------------------Mortar ammunition crates----------------
+//------------------------Contraband----------------
 
-/datum/supply_packs/ammo_mortar_he
-	name = "M402 mortar shells crate (x6 HE)"
+/datum/supply_packs/merc/ammo
+	name = "Black market ammo crate"
+	contains = list()
 	cost = 20
-	contains = list(
-					/obj/item/mortar_shell/he,
-					/obj/item/mortar_shell/he,
-					/obj/item/mortar_shell/he,
-					/obj/item/mortar_shell/he,
-					/obj/item/mortar_shell/he,
-					/obj/item/mortar_shell/he
-					)
-	containertype = /obj/structure/closet/crate/secure/mortar_ammo
-	containername = "\improper M402 mortar HE shells crate"
-	group = "Ammo"
-
-/datum/supply_packs/ammo_mortar_incend
-	name = "M402 mortar shells crate (x6 Incend)"
-	cost = 20
-	contains = list(
-					/obj/item/mortar_shell/incendiary,
-					/obj/item/mortar_shell/incendiary,
-					/obj/item/mortar_shell/incendiary,
-					/obj/item/mortar_shell/incendiary,
-					/obj/item/mortar_shell/incendiary,
-					/obj/item/mortar_shell/incendiary
-					)
-	containertype = /obj/structure/closet/crate/secure/mortar_ammo
-	containername = "\improper M402 mortar incendiary shells crate"
-	group = "Ammo"
-
-/datum/supply_packs/ammo_mortar_flare
-	name = "M402 mortar shells crate (x6 Flare/Camera)"
-	cost = 20
-	contains = list(
-					/obj/item/mortar_shell/flare,
-					/obj/item/mortar_shell/flare,
-					/obj/item/mortar_shell/flare,
-					/obj/item/mortar_shell/flare,
-					/obj/item/mortar_shell/flare,
-					/obj/item/mortar_shell/flare
-					)
-	containertype = /obj/structure/closet/crate/secure/mortar_ammo
-	containername = "\improper M402 mortar flare shells crate"
+	contraband = 1
+	containertype = /obj/structure/largecrate/merc/ammo
+	containername = "\improper black market ammo crate"
 	group = "Ammo"

@@ -180,8 +180,8 @@
 	xeno.explosivearmor_modifier += 1000
 	xeno.recalculate_armor()
 
-	addtimer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE)
-	addtimer(CALLBACK(src, .proc/remove_shield), 70, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, .proc/remove_shield), 70, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	apply_cooldown()
 	..()
@@ -223,6 +223,7 @@
 	to_chat(Xeno, SPAN_XENONOTICE("You will [will_charge] charge when moving."))
 	if(activated)
 		RegisterSignal(Xeno, COMSIG_MOVABLE_MOVED, .proc/handle_movement)
+		RegisterSignal(Xeno, COMSIG_MOB_KNOCKED_DOWN, .proc/handle_movement)
 		RegisterSignal(Xeno, COMSIG_ATOM_DIR_CHANGE, .proc/handle_dir_change)
 		RegisterSignal(Xeno, COMSIG_XENO_RECALCULATE_SPEED, .proc/update_speed)
 		RegisterSignal(Xeno, COMSIG_XENO_STOP_MOMENTUM, .proc/stop_momentum)
@@ -234,6 +235,7 @@
 		stop_momentum()
 		UnregisterSignal(Xeno, list(
 			COMSIG_MOVABLE_MOVED,
+			COMSIG_MOB_KNOCKED_DOWN,
 			COMSIG_ATOM_DIR_CHANGE,
 			COMSIG_XENO_RECALCULATE_SPEED,
 			COMSIG_MOVABLE_ENTERED_RIVER,

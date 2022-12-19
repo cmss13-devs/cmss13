@@ -12,7 +12,7 @@ var/list/alldepartments = list()
 	icon_state = "fax"
 	anchored = TRUE
 	density = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 200
 	power_channel = POWER_CHANNEL_EQUIP
@@ -38,15 +38,7 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
 	allfaxes += src
-
-	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
-		alldepartments += department
-	if(!(DEPARTMENT_WY in alldepartments))
-		alldepartments += DEPARTMENT_WY
-	if(!(DEPARTMENT_HC in alldepartments))
-		alldepartments += DEPARTMENT_HC
-	if(!(DEPARTMENT_PROVOST in alldepartments))
-		alldepartments += DEPARTMENT_PROVOST
+	update_departments()
 
 /obj/structure/machinery/faxmachine/Destroy()
 	allfaxes -= src
@@ -109,6 +101,15 @@ var/list/alldepartments = list()
 		to_chat(usr, "There is nothing to remove from \the [src].")
 	return
 
+/obj/structure/machinery/faxmachine/proc/update_departments()
+	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
+		alldepartments += department
+	if(!(DEPARTMENT_WY in alldepartments))
+		alldepartments += DEPARTMENT_WY
+	if(!(DEPARTMENT_HC in alldepartments))
+		alldepartments += DEPARTMENT_HC
+	if(!(DEPARTMENT_PROVOST in alldepartments))
+		alldepartments += DEPARTMENT_PROVOST
 // TGUI SHIT \\
 
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)

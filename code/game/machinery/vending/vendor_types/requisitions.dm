@@ -114,7 +114,7 @@
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Combat Flashlight", round(scale * 5), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
-		list("Entrenching Tool", round(scale * 4), /obj/item/tool/shovel/etool, VENDOR_ITEM_REGULAR),
+		list("Entrenching Tool", round(scale * 4), /obj/item/tool/shovel/etool/folded, VENDOR_ITEM_REGULAR),
 		list("Gas Mask", round(scale * 10), /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", round(scale * 2), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
@@ -132,6 +132,8 @@
 		list("JTAC Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/jtac, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/engineer, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", round(scale * 0.1), /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
+		list("Spare PDT/L Battle Buddy Kit", round(scale * 4), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
+		list("W-Y brand rechargeable mini-battery", round(scale * 3), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/stock(obj/item/item_to_stock, mob/user)
@@ -234,7 +236,7 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall/almayer)
- 
+
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
 	desc = "An automated supply rack hooked up to a small storage of various firearms and explosives. Can be accessed by any Marine Rifleman."
@@ -292,12 +294,13 @@
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Combat Flashlight", round(scale * 5), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
-		list("Entrenching Tool (ET)", round(scale * 2), /obj/item/tool/shovel/etool, VENDOR_ITEM_REGULAR),
+		list("Entrenching Tool (ET)", round(scale * 2), /obj/item/tool/shovel/etool/folded, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", round(scale * 1), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", round(scale * 5), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
 		list("Binoculars", round(scale * 1), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
 		list("MB-6 Folding Barricades (x3)", round(scale * 2), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
-		list("Spare PDT/L Battle Buddy Kit", round(scale * 1), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR)
+		list("Spare PDT/L Battle Buddy Kit", round(scale * 3), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
+		list("W-Y brand rechargeable mini-battery", round(scale * 2.5), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
 		)
 
 //------------AMMUNITION VENDOR---------------
@@ -503,7 +506,7 @@
 //Special cargo-specific vendor with vending offsets
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
-	
+
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/turf_to_vent_to
 	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
@@ -679,7 +682,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("M3 Pattern Padless Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
-		list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
 		list("GLOVES", -1, null, null),

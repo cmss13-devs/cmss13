@@ -57,6 +57,9 @@
 
 	var/obj/item/iff_tag/iff_tag = null
 
+	var/static/list/walking_state_cache = list()
+	var/has_walking_icon_state = FALSE
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Core Stats
@@ -261,13 +264,15 @@
 	// 		an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
-	var/weedwalking_activated = 0 //Hivelord's weedwalking
-	var/tunnel = 0
-	var/burrow = 0
-	var/fortify = 0
-	var/crest_defense = 0
-	var/agility = 0		// 0 - upright, 1 - all fours
-	var/ripping_limb = 0
+	var/weedwalking_activated = FALSE //Hivelord's weedwalking
+	var/tunnel = FALSE
+	var/stealth = FALSE // for check on lurker invisibility
+	var/burrow = FALSE
+	var/fortify = FALSE
+	var/crest_defense = FALSE
+	var/agility = FALSE		// 0 - upright, 1 - all fours
+	var/ripping_limb = FALSE
+	var/steelcrest = FALSE
 	// Related to zooming out (primarily queen and boiler)
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
@@ -278,7 +283,6 @@
 	var/selected_mark // If leader what mark you will place when you make one
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/tunnel_delay = 0
-	var/steelcrest = FALSE
 	var/list/available_fruits = list() // List of placeable the xenomorph has access to.
 	var/list/current_fruits = list() // If we have current_fruits that are limited, e.g. fruits
 	var/max_placeable = 0 // Limit to that amount
@@ -332,6 +336,7 @@
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
+	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
 
 /mob/living/carbon/Xenomorph/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	var/area/A = get_area(src)
@@ -342,6 +347,7 @@
 	vis_contents += wound_icon_carrier
 
 	if(oldXeno)
+		set_movement_intent(oldXeno.m_intent)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
 		life_kills_total = oldXeno.life_kills_total
@@ -369,13 +375,13 @@
 
 	mutators.xeno = src
 
-	update_icon_source() //I'm not sure why this is here. recalculate_everything() calls update_icon_source() later down this proc
-
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	else
 		to_world("something went very wrong")
 		return
+
+	update_icon_source()
 
 	acid_splash_cooldown = caste.acid_splash_cooldown
 
@@ -562,7 +568,8 @@
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = in_hive.color
+	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
+		color = in_hive.color
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
@@ -646,7 +653,7 @@
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/xeno = user
 		if(hivenumber != xeno.hivenumber)
-			. += "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive."
+			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
@@ -697,6 +704,9 @@
 
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
+	if(backpack_icon_carrier)
+		vis_contents -= backpack_icon_carrier
+		QDEL_NULL(backpack_icon_carrier)
 
 	QDEL_NULL(iff_tag)
 

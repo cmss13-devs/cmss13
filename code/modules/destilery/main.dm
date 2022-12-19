@@ -21,7 +21,7 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 1000
 
@@ -34,13 +34,13 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		if(input.len)
 			milled_item = input[1]
 			input -= milled_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(USE_POWER_ACTIVE)
 		return
 
 	progress++
@@ -92,7 +92,7 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 
@@ -105,13 +105,13 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		if(input.len)
 			fermenting_item = input[1]
 			input -= fermenting_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(USE_POWER_ACTIVE)
 		return
 
 	if(!water_level)
@@ -161,7 +161,7 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 10000
 
@@ -174,13 +174,13 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		if(input.len)
 			destilling_item = input[1]
 			input -= destilling_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(USE_POWER_ACTIVE)
 		return
 
 	progress++
@@ -226,7 +226,7 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 
@@ -250,7 +250,7 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 10000
 
@@ -259,13 +259,13 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		if(input.len)
 			spinning_item = input[1]
 			input -= spinning_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(USE_POWER_ACTIVE)
 		return
 
 	progress++

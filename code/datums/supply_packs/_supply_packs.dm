@@ -12,14 +12,17 @@ var/list/all_supply_groups = list(
 	"Attachments",
 	"Ammo",
 	"Weapons Specialist Ammo",
-	"Armor",
+	"Restricted Equipment",
 	"Clothing",
 	"Medical",
 	"Engineering",
-	"Science",
+	"Research",
 	"Supplies",
 	"Food",
-	//"Black Market"
+	"Gear",
+	"Mortar",
+	"Explosives",
+	"Reagent tanks",
 )
 
 var/list/contraband_supply_groups = list(

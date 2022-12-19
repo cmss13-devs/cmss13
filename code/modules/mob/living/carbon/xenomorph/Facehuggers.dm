@@ -159,7 +159,7 @@
 /obj/item/clothing/mask/facehugger/bullet_act(obj/item/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	if(ammo_flags & (AMMO_XENO))
 		return //Xeno spits ignore huggers.
 	if(P.damage)
 		die()

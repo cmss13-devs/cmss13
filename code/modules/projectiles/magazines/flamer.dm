@@ -52,7 +52,7 @@
 	if(usr.get_active_hand() != src)
 		return
 
-	if(alert(usr, "Do you really want to empty out [src]?", "Empty canister", "Yes", "No") == "No")
+	if(alert(usr, "Do you really want to empty out [src]?", "Empty canister", "Yes", "No") != "Yes")
 		return
 
 	reagents.clear_reagents()

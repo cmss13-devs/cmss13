@@ -602,3 +602,34 @@
   - rscadd: Corporate Security radio renamed to Corporate, changed corporate equipment
       presets to use it also.
   - rscadd: Added Japanese to all corporate presets, including survivors.
+2022-12-19:
+  Huffie56:
+  - rscadd: Added an ATM in brig and move the med vendor in brig infirmary
+  ThePiachu:
+  - bugfix: Fixed the DME file order again.
+  carlarctg:
+  - imageadd: 'Added attachment sprites for every bayonet type.
+
+      balance:The CMB revolver has received a complete overhaul. It has completely
+      refreshed alien isolation sounds, has gotten a complete stat pass, and now fires
+      by default hollowpoint rounds (Like in Isolation!)
+
+      add:The S&W ''model 48'' revolver is very powerful, but also inaccurate. You
+      will be able to focus on your shots better if you do some cool tricks with it
+      first?
+
+      add:Nagant: Shrapnel shot has unique handful sprites.
+
+      add:BR blasters have USCM pistol placeholder inhands.'
+  - bugfix: Fixes blood and footprints blocking weed clearing.
+  - bugfix: Hitting a turf with any item will first check if the item has weeds on
+      it, and attack them if so. You probably shouldn't be able to pry up floor tiles
+      while the floortile is covered in alien resin..
+  harryob:
+  - bugfix: you are now gentle with the reagent tanks.
+  realforest2001:
+  - bugfix: Fixes crit burrowers being able to move while burrowed still.
+  stanalbatross:
+  - balance: crusher AOE slashes will no longer reduce the cooldown of their shield
+      ability even more
+  - balance: increased the plasma cost of a few crusher abilities

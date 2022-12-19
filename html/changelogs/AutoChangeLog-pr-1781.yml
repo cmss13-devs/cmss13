@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - imageadd: "Added attachment sprites for every bayonet type.\nbalance:The CMB revolver has received a complete overhaul. It has completely refreshed alien isolation sounds, has gotten a complete stat pass, and now fires by default hollowpoint rounds (Like in Isolation!)\nadd:The S&W 'model 48' revolver is very powerful, but also inaccurate. You will be able to focus on your shots better if you do some cool tricks with it first?\nadd:Nagant: Shrapnel shot has unique handful sprites.\nadd:BR blasters have USCM pistol placeholder inhands."

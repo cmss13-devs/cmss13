@@ -356,7 +356,7 @@ datum/gear/tacticalmaskblack
     display_name = "Fullbody Paint"
     path = /obj/item/facepaint/sniper
     slot = WEAR_IN_BACK
-    cost = 4 //To match with the skull paint amount of point and hte reason it is 4 points
+    cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint
 
 /datum/gear/aceofspades
 	display_name = "Ace of Spades"

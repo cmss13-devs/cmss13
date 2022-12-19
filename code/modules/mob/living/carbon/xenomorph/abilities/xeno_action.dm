@@ -402,6 +402,7 @@
 
 //An ability that does something actively when toggled
 /datum/action/xeno_action/active_toggle
+	action_type = XENO_ACTION_ACTIVATE
 	var/action_active = FALSE //Is the action active
 	var/plasma_use_per_tick = 0 //How much plasma it costs us to upkeep
 	var/action_start_message = ""
@@ -413,10 +414,8 @@
 		return TRUE
 	return FALSE
 
-/datum/action/xeno_action/active_toggle/use_ability(atom/target)
-	. = ..()
-	if(.)
-		toggle_toggle()
+/datum/action/xeno_action/active_toggle/action_activate()
+	toggle_toggle()
 
 /datum/action/xeno_action/active_toggle/life_tick()
 	if(action_active && should_use_plasma())
@@ -447,5 +446,6 @@
 		return
 	action_active = TRUE
 	button.icon_state = "template_active"
+	track_xeno_ability_stats()
 	if(action_start_message)
 		to_chat(owner, SPAN_NOTICE(action_start_message))

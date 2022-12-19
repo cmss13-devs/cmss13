@@ -26,7 +26,7 @@
 	carrier.mutation_type = CARRIER_EGGSAC
 	carrier.plasma_types = list(PLASMA_EGG)
 	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
-	carrier.plasmapool_modifier = 1.5
+	carrier.plasmapool_modifier = 1.2
 	mutator_update_actions(carrier)
 	mutator_set.recalculate_actions(description, flavor_description)
 	carrier.recalculate_pheromones()
@@ -47,8 +47,8 @@
 	plasma_cost = 50
 	plasma_use_per_tick = 15
 
-	action_start_message = "You start forming an egg."
-	action_end_message = "You don't have enough plasma to support forming an egg."
+	action_start_message = "You start forming eggs."
+	action_end_message = "You don't have enough plasma to support forming eggs."
 	var/egg_generation_progress = 0
 
 	ability_primacy = XENO_PRIMARY_ACTION_3

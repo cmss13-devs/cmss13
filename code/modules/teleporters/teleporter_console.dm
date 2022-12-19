@@ -106,25 +106,12 @@
 			. = TRUE
 
 /obj/structure/machinery/computer/teleporter_console/proc/carry_out_teleport()
-	// tgui check
-	if(!selected_source || !selected_destination)
-		visible_message("<b>[src]</b> beeps, \"You must select a valid source and destination for teleportation.\"")
-		return
-	// tgui check
-	if(selected_source == selected_destination)
-		visible_message("<b>[src]</b> beeps, \"You must select a different source and destination for teleportation to succeed.\"")
-		return
-
 	if(!linked_teleporter.safety_check_destination(selected_destination))
 		visible_message("<b>[src]</b> beeps, \"The destination is unsafe. Please clear it of any dangerous or dense objects.\"")
 		return
 
 	if(!linked_teleporter.safety_check_source(selected_source))
 		visible_message("<b>[src]</b> beeps, \"The source location is unsafe. Any large objects must be completely inside the teleporter.\"")
-		return
-	// tgui check
-	if(!linked_teleporter.check_teleport_cooldown())
-		visible_message("<b>[src]</b> beeps, \"The [linked_teleporter.name] is on cooldown. Please wait.\"")
 		return
 
 	teleporting = TRUE

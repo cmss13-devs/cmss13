@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, ProgressBar, NoticeBox, Box, Dimmer, Icon, Dropdown } from '../components';
+import { Button, Section, ProgressBar, NoticeBox, Box, Dimmer, Icon, Dropdown, LabeledList } from '../components';
 import { Window } from '../layouts';
 
 export const TeleporterConsole = (_props, context) => {
@@ -15,9 +15,24 @@ export const TeleporterConsole = (_props, context) => {
     data.source === data.destination;
 
   return (
-    <Window width={500} height={350}>
+    <Window width={500} height={250} theme="weyland">
       <Window.Content scrollable>
         <Section title="Teleporter Control">
+          {!data.source ? (
+            <NoticeBox danger textAlign="center">
+              No source!
+            </NoticeBox>
+          ) : null}
+          {!data.destination ? (
+            <NoticeBox danger textAlign="center">
+              No destination!
+            </NoticeBox>
+          ) : null}
+          {data.source === data.destination ? (
+            <NoticeBox danger textAlign="center">
+              Source cannot match destination!
+            </NoticeBox>
+          ) : null}
           {(timeLeft < 0 && (
             <NoticeBox success={1} textAlign="center">
               Ready to send!
@@ -37,29 +52,44 @@ export const TeleporterConsole = (_props, context) => {
               </Box>
             </ProgressBar>
           )}
-          <Dropdown
-            displayText="Source"
-            icon="right-from-bracket"
-            width={12}
-            selected={data.source}
-            options={Object.keys(data.locations)}
-            onSelected={act('set_source', { location: value })}
-          />
-          <Dropdown
-            displayText="Destination"
-            icon="right-to-bracket"
-            width={12}
-            selected={data.destination}
-            options={Object.keys(data.locations)}
-            onSelected={act('set_dest', { location: value })}
-          />
+          <Box height="10px" />
+          <LabeledList>
+            <LabeledList.Item label="Source">
+              <Dropdown
+                displayText={data.source ? data.source : 'Select source'}
+                icon="right-from-bracket"
+                width="350px"
+                height="25px"
+                selected={data.source}
+                options={Object.keys(data.locations)}
+                onSelected={(value) => {
+                  act('set_source', { location: value });
+                }}
+              />
+            </LabeledList.Item>
+            <LabeledList.Item label="Destination">
+              <Dropdown
+                displayText={
+                  data.destination ? data.destination : 'Select destination'
+                }
+                icon="right-to-bracket"
+                width="350px"
+                height="25px"
+                selected={data.destination}
+                options={Object.keys(data.locations)}
+                onSelected={(value) => {
+                  act('set_dest', { location: value });
+                }}
+              />
+            </LabeledList.Item>
+          </LabeledList>
+          <Box height="10px" />
           <Button.Confirm
             fontSize="20px"
             textAlign="center"
             disabled={!!cantFire}
             fluid={1}
             icon="plane-departure"
-            color="good"
             content="Commence Teleportation Sequence"
             onClick={() => act('teleport')}
           />

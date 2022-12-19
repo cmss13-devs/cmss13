@@ -30363,7 +30363,7 @@
 "bZa" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Pilot's Quarters";
+	name = "\improper Flight Crew Quarters";
 	req_one_access_txt = "19;22"
 	},
 /obj/structure/disposalpipe/segment,
@@ -43960,8 +43960,10 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "gqP" = (
 /obj/structure/largecrate/random/case,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = -25
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera";
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -54141,7 +54143,7 @@
 /area/almayer/hallways/hangar)
 "kUh" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Pilot's Quarters";
+	name = "\improper Flight Crew Quarters";
 	req_one_access_txt = "19;22"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -78072,6 +78074,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_s)
+"vmN" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north1)
 "vmW" = (
 /turf/open/floor/almayer{
 	dir = 6;
@@ -106284,7 +106292,7 @@ bdH
 aaa
 bdH
 aaa
-aaa
+bdH
 bdH
 bdH
 bdH
@@ -109751,7 +109759,7 @@ add
 ajI
 add
 add
-aWu
+vmN
 aiX
 aiX
 aiX

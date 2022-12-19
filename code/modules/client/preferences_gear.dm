@@ -286,7 +286,7 @@ var/global/list/gear_datums = list()
 	slot = WEAR_FACE
 	cost = 2
 
-datum/gear/tacticalmaskblack
+/datum/gear/tacticalmaskblack
 	display_name = "Face Wrap (Black)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
 	slot = WEAR_FACE

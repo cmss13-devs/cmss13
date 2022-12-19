@@ -206,7 +206,7 @@
 	stages = list("big gaping wound" = 60, "healing gaping wound" = 40, "large angry scar" = 10, "large straight scar" = 0)
 	damage_type = CUT
 
-datum/wound/cut/massive
+/datum/wound/cut/massive
 	stages = list("massive wound" = 70, "massive healing wound" = 50, "massive angry scar" = 10,  "massive jagged scar" = 0)
 	damage_type = CUT
 

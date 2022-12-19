@@ -543,7 +543,7 @@
 		. += SPAN_NOTICE("It is empty.")
 
 
-obj/item/weapon/gun/launcher/grenade/update_icon()
+/obj/item/weapon/gun/launcher/grenade/update_icon()
 	..()
 	var/GL_sprite = base_gun_icon
 	if(GL_has_empty_icon && !length(cylinder.contents))

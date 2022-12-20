@@ -95,13 +95,13 @@
 	return FALSE
 
 /obj/structure/surface/proc/draw_item_overlays()
-    overlays.Cut()
-    for(var/obj/item/O in contents)
-        var/image/I = image(O.icon)
-        I.appearance = O.appearance
-        I.appearance_flags |= RESET_COLOR
-        I.overlays = O.overlays
-        LAZYADD(overlays, I)
+	overlays.Cut()
+	for(var/obj/item/O in contents)
+		var/image/I = image(O.icon)
+		I.appearance = O.appearance
+		I.appearance_flags |= RESET_COLOR
+		I.overlays = O.overlays
+		LAZYADD(overlays, I)
 
 /obj/structure/surface/clicked(var/mob/user, var/list/mods)
 	if(mods["shift"] && !mods["middle"])

@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - rscdel: "Removed ten unused nanoui templates. Don't worry, they'll all be going away soon."

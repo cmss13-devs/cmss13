@@ -51,6 +51,7 @@
 
 	knock_down_reduction = 4
 	stun_reduction = 4
+	weed_slowdown_mult = 0 // no slowdown!
 
 	icobase = 'icons/mob/humans/species/r_predator.dmi'
 	deform = 'icons/mob/humans/species/r_predator.dmi'

@@ -103,19 +103,19 @@
 	if(!client || !client.prefs)	return
 
 	if (type)
-		if(type & 1 && (sdisabilities & DISABILITY_BLIND || blinded) )//Vision related
-			if (!alt)
+		if(type & SHOW_MESSAGE_VISIBLE && (sdisabilities & DISABILITY_BLIND || blinded) )//Vision related
+			if(!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-		if (type & 2 && (sdisabilities & DISABILITY_DEAF || ear_deaf))//Hearing related
-			if (!alt)
+		if(type & SHOW_MESSAGE_AUDIBLE && (sdisabilities & DISABILITY_DEAF || ear_deaf))//Hearing related
+			if(!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-				if (type & 1 && (sdisabilities & DISABILITY_BLIND))
+				if (type & SHOW_MESSAGE_VISIBLE && (sdisabilities & DISABILITY_BLIND))
 					return
 	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
@@ -144,7 +144,7 @@
 			msg = self_message
 			if(flags & CHAT_TYPE_TARGETS_ME)
 				flags = CHAT_TYPE_BEING_HIT
-		M.show_message( msg, 1, blind_message, 2, flags)
+		M.show_message( msg, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, flags)
 		CHECK_TICK
 
 	for(var/obj/vehicle/V in orange(max_distance))
@@ -154,7 +154,7 @@
 				msg = self_message
 				if(flags & CHAT_TYPE_TARGETS_ME)
 					flags = CHAT_TYPE_BEING_HIT
-			M.show_message( msg, 1, blind_message, 2, flags)
+			M.show_message( msg, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, flags)
 		CHECK_TICK
 
 
@@ -163,12 +163,12 @@
 // message_affected: "Y does something to you!"
 // message_viewer: "X does something to Y!"
 /mob/proc/affected_message(mob/affected, message_mob, message_affected, message_viewer)
-	src.show_message(message_mob, 1)
+	src.show_message(message_mob, SHOW_MESSAGE_VISIBLE)
 	if(src != affected)
-		affected.show_message(message_affected, 1)
+		affected.show_message(message_affected, SHOW_MESSAGE_VISIBLE)
 	for(var/mob/V in viewers(7, src))
 		if(V != src && V != affected)
-			V.show_message(message_viewer, 1)
+			V.show_message(message_viewer, SHOW_MESSAGE_VISIBLE)
 
 // Show a message to all mobs in sight of this atom
 // Use for objects performing visible actions
@@ -178,13 +178,13 @@
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
-		M.show_message(message, 1, blind_message, 2, message_flags)
+		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M in orange(view_dist, src))
-		M.show_message(message, 1, blind_message, 2, message_flags)
+		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
 
 
 /mob/proc/findname(msg)

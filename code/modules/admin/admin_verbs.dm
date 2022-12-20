@@ -16,6 +16,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_object_narrate,
+	/client/proc/cmd_admin_add_items_to_vendor,
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
@@ -107,6 +108,7 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
 	/client/proc/cmd_admin_object_narrate,
+	/client/proc/cmd_admin_add_items_to_vendor,
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/toggle_ob_spawn,
@@ -248,6 +250,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_object_narrate,
+	/client/proc/cmd_admin_add_items_to_vendor,
 	/client/proc/cmd_admin_pm_context,
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/cmd_admin_check_contents,
@@ -419,7 +422,7 @@ var/list/roundstart_mod_verbs = list(
 		if(!msg)
 			return
 		for (var/mob/V in hearers(mob.control_object))
-			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
+			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", SHOW_MESSAGE_AUDIBLE)
 
 
 /client/proc/toggle_log_hrefs()

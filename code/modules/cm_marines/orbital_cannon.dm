@@ -317,6 +317,7 @@ var/list/ob_type_fuel_requirements
 	anchored = 1
 	throwpass = TRUE
 	climbable = TRUE
+	unacidable = TRUE // issue: being used for defences, solution: abomb
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	var/is_solid_fuel = 0
 	var/source_mob
@@ -359,8 +360,8 @@ var/list/ob_type_fuel_requirements
 		else
 			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 1, \
-			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 2 \
+			SPAN_HIGHDANGER("The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
@@ -370,15 +371,15 @@ var/list/ob_type_fuel_requirements
 		else
 			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 1, \
-			SPAN_HIGHDANGER("The sound becomes louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 2 \
+			SPAN_HIGHDANGER("The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("The sound becomes louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in range(15, target))
 		M.show_message( \
-			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), 1, \
-			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 2 \
+			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 

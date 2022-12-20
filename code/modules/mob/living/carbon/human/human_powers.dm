@@ -46,7 +46,7 @@
 
 	for(var/mob/O in viewers(src, null))
 		if((O.client && !( O.blinded )))
-			O.show_message(SPAN_DANGER("<B>[src] [failed ? "tried to tackle" : "has tackled"] down [T]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] [failed ? "tried to tackle" : "has tackled"] down [T]!</B>"), SHOW_MESSAGE_VISIBLE)
 
 /mob/living/carbon/human/proc/leap()
 	set category = "Abilities"

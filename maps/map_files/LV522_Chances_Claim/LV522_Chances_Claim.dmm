@@ -3001,6 +3001,12 @@
 	},
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/south_west_street)
+"bOE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/atmos/filt)
 "bOG" = (
 /obj/structure/closet/firecloset/full,
 /obj/effect/decal/cleanable/dirt,
@@ -8843,13 +8849,16 @@
 	pixel_x = 5;
 	pixel_y = 12
 	},
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "Marked_2";
+	name = "remote door-control"
+	},
 /obj/structure/machinery/door_control/brbutton/alt{
 	id = "Secure_Master_Armoury_2";
 	name = "remote door-control"
 	},
-/obj/structure/surface/table/almayer,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -11463,6 +11472,7 @@
 	pixel_x = 14;
 	pixel_y = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -12049,6 +12059,7 @@
 	pixel_y = 12;
 	tag = "icon-plant-10"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -12713,6 +12724,7 @@
 	pixel_x = -13;
 	pixel_y = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -14784,7 +14796,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "hbG" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -15081,10 +15093,9 @@
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "hhu" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat{
-	icon_state = "marked"
+	dir = 8;
+	icon_state = "browncorner"
 	},
 /area/lv522/atmos/east_reactor/east)
 "hhD" = (
@@ -16084,11 +16095,12 @@
 	},
 /area/lv522/atmos/command_centre)
 "hCU" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
-/area/lv522/atmos/filt)
+/area/lv522/atmos/east_reactor/east)
 "hCV" = (
 /obj/item/stool,
 /turf/open/floor/strata{
@@ -16695,7 +16707,7 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "hQU" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 30
 	},
 /obj/structure/bed/chair/dropship/passenger{
@@ -17210,7 +17222,9 @@
 /area/lv522/oob)
 "iam" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -24917,6 +24931,7 @@
 	},
 /obj/item/clothing/under/suit_jacket/stowaway,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -29255,6 +29270,10 @@
 	icon_state = "kitchen"
 	},
 /area/lv522/indoors/a_block/kitchen)
+"mRh" = (
+/obj/structure/window/framed/corsat,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor)
 "mRx" = (
 /obj/structure/prop/dam/drill{
 	layer = 3.1;
@@ -33418,6 +33437,12 @@
 	icon_state = "blue_plate"
 	},
 /area/lv522/indoors/a_block/admin)
+"oyM" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/lv522/atmos/filt)
 "oyN" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -39950,7 +39975,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qUD" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 30
 	},
 /obj/effect/decal/cleanable/blood/splatter,
@@ -43931,7 +43956,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/spaceport)
 "szJ" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -57820,6 +57845,10 @@
 	tag = "icon-floor_plate"
 	},
 /area/lv522/atmos/outdoor)
+"xQc" = (
+/obj/structure/window/framed/corsat,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "xQi" = (
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/prison{
@@ -74971,7 +75000,7 @@ uFG
 uFG
 hDy
 hDy
-oJS
+fTS
 xeG
 xZw
 xZw
@@ -75198,7 +75227,7 @@ wyv
 uFG
 uFG
 hDy
-oJS
+fTS
 xeG
 xZw
 xZw
@@ -75425,7 +75454,7 @@ hCv
 wyv
 uFG
 iwJ
-oJS
+fTS
 xeG
 xZw
 jwT
@@ -86778,7 +86807,7 @@ swu
 iUT
 kHX
 evx
-yaj
+xQc
 xmD
 hna
 juw
@@ -87459,7 +87488,7 @@ swu
 iUX
 tCX
 jcl
-yaj
+xQc
 jjV
 hna
 yiu
@@ -88816,7 +88845,7 @@ lXC
 lXC
 swu
 svW
-svW
+mRh
 iGl
 svW
 svW
@@ -92659,7 +92688,7 @@ mNm
 mNm
 kca
 kca
-qbi
+kca
 kca
 kca
 kca
@@ -92886,7 +92915,7 @@ cYQ
 rLg
 kca
 kca
-qbi
+kca
 qbi
 bzC
 kca
@@ -93112,8 +93141,8 @@ cWL
 dJN
 cIV
 kca
-qbi
-qbi
+kca
+kca
 qbi
 mNm
 kca
@@ -93340,7 +93369,7 @@ dKF
 cIW
 kca
 kca
-qbi
+kca
 qbi
 qbi
 eXO
@@ -93566,22 +93595,22 @@ dXN
 dKM
 cYQ
 kca
-qbi
-qbi
-qbi
+kca
+kca
+kca
 qbi
 crX
 mNm
-fuQ
-hTk
-hTk
-hTk
-isv
-hTk
+haR
+kca
+kca
+kca
 hhu
-nUV
-hCU
-nUV
+kca
+qbi
+ygK
+xSN
+xUx
 iam
 nUV
 nUV
@@ -93794,8 +93823,8 @@ dKO
 cYQ
 kca
 kca
-qbi
-qbi
+kca
+kca
 qbi
 qbi
 mNm
@@ -93805,11 +93834,11 @@ fSe
 fCP
 kca
 kca
-qbi
-ygK
+hig
+xUx
 xSN
 xUx
-woG
+mdD
 woG
 woG
 xUx
@@ -94021,22 +94050,22 @@ rLg
 rLg
 rLg
 rLg
-qbi
+kca
 qbi
 qbi
 qbi
 foO
-haR
+fuQ
 fDi
 fSR
 ghy
-kca
-kca
-hig
-xUx
-xSN
-xUx
-woG
+hTk
+hTk
+hCU
+nUV
+oyM
+nUV
+bOE
 woG
 woG
 xUx

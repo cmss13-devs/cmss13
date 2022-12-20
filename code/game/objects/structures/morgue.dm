@@ -143,7 +143,7 @@
 	O.forceMove(loc)
 	if(user != O)
 		for(var/mob/B in viewers(user, 3))
-			B.show_message(SPAN_DANGER("[user] stuffs [O] into [src]!"), 1)
+			B.show_message(SPAN_DANGER("[user] stuffs [O] into [src]!"), SHOW_MESSAGE_VISIBLE)
 			if(B.stat==DEAD)
 				bloody = TRUE
 				update_icon()

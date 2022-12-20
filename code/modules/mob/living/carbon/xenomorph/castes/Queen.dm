@@ -306,6 +306,7 @@
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_message,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
 	var/list/mobile_abilities = list(

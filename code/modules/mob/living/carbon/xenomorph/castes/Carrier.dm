@@ -66,6 +66,11 @@
 		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
 		/datum/action/xeno_action/onclick/set_hugger_reserve,
 		)
+	
+	inherent_verbs = list(
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
+		)
 	mutation_type = CARRIER_NORMAL
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'

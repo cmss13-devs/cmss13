@@ -12,6 +12,7 @@
 	var/huggers_to_grow = 0
 	var/huggers_per_corpse = 6
 	var/huggers_to_grow_max = 12
+	var/huggers_reserved = 0
 	var/mob/captured_mob
 	var/datum/shape/rectangle/range_bounds
 
@@ -42,7 +43,7 @@
 /obj/effect/alien/resin/special/eggmorph/get_examine_text(mob/user)
 	. = ..()
 	if(isXeno(user) || isobserver(user))
-		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow."
+		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow (reserved: [huggers_reserved])."
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/grab))
@@ -197,16 +198,33 @@
 	join_as_facehugger_from_this(user)
 
 /obj/effect/alien/resin/special/eggmorph/proc/join_as_facehugger_from_this(mob/dead/observer/user)
-	if(!stored_huggers)
+	if(stored_huggers <= huggers_reserved)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
 	if(!linked_hive.can_spawn_as_hugger(user))
 		return
 	//Need to check again because time passed due to the confirmation window
-	if(!stored_huggers)
+	if(stored_huggers <= huggers_reserved)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
 	linked_hive.spawn_as_hugger(user, src)
 	stored_huggers--
+
+/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher(var/obj/effect/alien/resin/special/eggmorph/morpher in oview(1))
+	set name = "Set Hugger Reserve"
+	set desc = "Set Hugger Reserve"
+	set category = null
+
+	if(!istype(morpher))
+		return
+
+	if(morpher.linked_hive)
+		if(hivenumber != morpher.linked_hive.hivenumber)
+			to_chat(usr, SPAN_WARNING("This belongs to another Hive! Yuck!"))
+			return
+
+	morpher.huggers_reserved = tgui_input_number(usr, "How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?", "How many to reserve?", 0, morpher.huggers_to_grow_max, morpher.huggers_reserved)
+
+	to_chat(usr, SPAN_XENONOTICE("You reserved [morpher.huggers_reserved] facehuggers for your sisters."))
 
 #undef EGGMORPG_RANGE

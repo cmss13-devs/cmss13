@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Fixed a runtime created when a Crusher Charger with the Charge ability on was being dragged."

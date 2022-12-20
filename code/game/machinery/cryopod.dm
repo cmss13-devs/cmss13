@@ -217,7 +217,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
 		switch(H.job)
-			if(JOB_POLICE_CADET, JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
+			if(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 				dept_console = GLOB.frozen_items["MP"]
 			if("Nurse", "Doctor","Researcher","Chief Medical Officer")
 				dept_console = GLOB.frozen_items["Med"]
@@ -442,7 +442,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		to_chat(usr, SPAN_WARNING("You can't drag people out of hypersleep!"))
 		return
 
-	if(!silent_exit && alert(usr, "Would you like eject out of the hypersleep chamber?", "Confirm", "Yes", "No") == "No")
+	if(!silent_exit && alert(usr, "Would you like eject out of the hypersleep chamber?", "Confirm", "Yes", "No") != "Yes")
 		return
 
 	go_out() //Not adding a delay for this because for some reason it refuses to work. Not a big deal imo

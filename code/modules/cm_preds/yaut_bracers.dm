@@ -254,7 +254,7 @@
 	SIGNAL_HANDLER
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_XENO_ACID)) //<--- These will auto uncloak.
+	if(ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_ACIDIC)) //<--- These will auto uncloak.
 		decloak(H) //Continue on to damage.
 	else if(prob(20))
 		decloak(H)

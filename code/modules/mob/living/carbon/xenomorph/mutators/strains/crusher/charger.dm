@@ -579,3 +579,26 @@
 		return XENO_CHARGE_TRY_MOVE
 
 	charger_ability.stop_momentum()
+
+// ye olde weldertanke
+
+/obj/structure/reagent_dispensers/fueltank/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(!charger_ability.momentum)
+		charger_ability.stop_momentum()
+		return
+
+	exploding = TRUE
+	explode()
+
+	if(QDELETED(src))
+		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER) //Lose two turfs worth of speed
+		return XENO_CHARGE_TRY_MOVE
+
+	health -= CHARGER_DESTROY //Usually knocks it down.
+	healthcheck()
+
+	if(QDELETED(src))
+		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER) //Lose two turfs worth of speed
+		return XENO_CHARGE_TRY_MOVE
+
+	charger_ability.stop_momentum()

@@ -34,7 +34,7 @@
 		return
 
 	var/datum/game_mode/predator_round = SSticker.mode
-	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") == "No")
+	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") != "Yes")
 		return
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))

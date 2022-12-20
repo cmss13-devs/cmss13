@@ -4662,7 +4662,7 @@
 /area/strata/ag/interior/dorms/canteen)
 "anr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
 	pixel_y = -4
@@ -4841,7 +4841,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "anR" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "anS" = (
@@ -10365,7 +10365,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "aEq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/structure/largecrate/random,
@@ -14956,7 +14956,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "aSn" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/item/reagent_container/spray/cleaner,
@@ -15683,7 +15683,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
 "aUS" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/engi)
 "aUT" = (
@@ -16400,7 +16400,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXr" = (
@@ -16959,7 +16959,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aZz" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aZA" = (
@@ -18133,7 +18133,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "bdE" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/admin)
 "bdG" = (
@@ -18356,7 +18356,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/bar)
 "bes" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/canteen/bar)
 "bev" = (
@@ -22303,9 +22303,9 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "bsx" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/gen/foyer)
 "bsy" = (
@@ -24921,7 +24921,7 @@
 /area/strata/ag/interior/disposals)
 "bEY" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/landmark/good_item,
 /obj/structure/surface/rack,
 /obj/structure/machinery/light/small{
@@ -26788,7 +26788,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
 	pixel_y = -4
@@ -29200,7 +29200,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "cls" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/shuttle/ert{
 	icon_state = "upp23"
 	},
@@ -32058,7 +32058,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "eRJ" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
@@ -32252,7 +32252,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "flK" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/med)
 "fno" = (
@@ -33506,7 +33506,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "hjC" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "hkn" = (
@@ -34656,7 +34656,7 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
@@ -35123,7 +35123,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "kaw" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "kaP" = (
@@ -36150,9 +36150,9 @@
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "lNr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_x = 6;
 	pixel_y = -4
 	},
@@ -36648,7 +36648,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "msG" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/med)
 "msP" = (

@@ -165,16 +165,16 @@
 		switch(sensor_mode)
 			if(SENSOR_MODE_OFF)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message(SPAN_DANGER("[user] disables [src.loc]'s remote sensing equipment."), 1)
+					V.show_message(SPAN_DANGER("[user] disables [src.loc]'s remote sensing equipment."), SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_BINARY)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] turns [src.loc]'s remote sensors to binary.", 1)
+					V.show_message("[user] turns [src.loc]'s remote sensors to binary.", SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_DAMAGE)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] sets [src.loc]'s sensors to track vitals.", 1)
+					V.show_message("[user] sets [src.loc]'s sensors to track vitals.", SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_LOCATION)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] sets [src.loc]'s sensors to maximum.", 1)
+					V.show_message("[user] sets [src.loc]'s sensors to maximum.", SHOW_MESSAGE_VISIBLE)
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Toggle Suit Sensors"
@@ -188,7 +188,7 @@
 		flags_jumpsuit ^= UNIFORM_SLEEVE_ROLLED
 		if(flags_jumpsuit & UNIFORM_JACKET_REMOVED)
 			if(show_message)
-				to_chat(user, SPAN_NOTICE("You roll the jacket's sleeves in your hands.")) //visual representation that the sleeves have been rolled while jacket has been removed.
+				to_chat(user, SPAN_NOTICE("You roll the jacket's sleeves in your hands."), SHOW_MESSAGE_VISIBLE) //visual representation that the sleeves have been rolled while jacket has been removed.
 		else if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLED)
 			LAZYSET(item_state_slots, WEAR_BODY, "[worn_state]_d")
 			update_clothing_icon()

@@ -1543,8 +1543,8 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun,
 /obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "red"
@@ -22220,7 +22220,7 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -28904,7 +28904,7 @@
 	},
 /area/corsat/gamma/medbay)
 "bAI" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	req_access = null
@@ -52979,7 +52979,7 @@
 /obj/item/ammo_magazine/shotgun,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -59236,7 +59236,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "sxB" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_y = 30;
 	req_access = null

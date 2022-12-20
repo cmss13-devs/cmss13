@@ -5254,7 +5254,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_west_jungle)
 "axS" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 29
 	},
 /obj/structure/reagent_dispensers/watertank,
@@ -9341,7 +9341,7 @@
 /area/lv624/lazarus/security)
 "aMb" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor{
 	icon_state = "red"
@@ -17507,7 +17507,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/belt/shotgun/full,
 /obj/item/weapon/gun/shotgun/double/with_stock,
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = -6
 	},
 /turf/open/shuttle{
@@ -19509,7 +19509,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_central_jungle)
 "oUK" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 29
 	},
 /turf/open/floor{
@@ -22025,7 +22025,7 @@
 	dir = 1
 	},
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = 3
 	},
 /turf/open/floor{

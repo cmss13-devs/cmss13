@@ -138,7 +138,6 @@
 		var/oldloc = loc
 		gib(last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, last_damage_data)
-		sleep(1)
 		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
@@ -228,7 +227,7 @@
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), SHOW_MESSAGE_VISIBLE)
 		last_damage_data = create_cause_data(initial(M.name), M)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
@@ -1171,10 +1170,15 @@
 	if(oldspecies)
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)
+		if(oldspecies.weed_slowdown_mult != 1)
+			UnregisterSignal(src, COMSIG_MOB_WEEDS_CROSSED)
 
 	mob_flags = species.mob_flags
 	for(var/T in species.mob_inherent_traits)
 		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
+
+	if(species.weed_slowdown_mult != 1)
+		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, .proc/handle_weed_slowdown)
 
 	species.create_organs(src)
 
@@ -1212,6 +1216,9 @@
 	else
 		return FALSE
 
+/mob/living/carbon/human/proc/handle_weed_slowdown(mob/user, list/slowdata)
+	SIGNAL_HANDLER
+	slowdata["movement_slowdown"] *= species.weed_slowdown_mult
 
 /mob/living/carbon/human/print_flavor_text()
 	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)
@@ -1638,14 +1645,14 @@
 	if(can_break_cuffs) //Don't want to do a lot of logic gating here.
 		to_chat(usr, SPAN_DANGER("You attempt to break [restraint]. (This will take around 5 seconds and you need to stand still)"))
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		if(!do_after(src, 50, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
 
 		if(!restraint || buckled)
 			return
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[src] manages to break [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] manages to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		to_chat(src, SPAN_WARNING("You successfully break [restraint]."))
 		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		if(handcuffed)
@@ -1665,7 +1672,7 @@
 		if(!restraint || buckled)
 			return // time leniency for lag which also might make this whole thing pointless but the server
 		for(var/mob/O in viewers(src))//                                         lags so hard that 40s isn't lenient enough - Quarxink
-			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		to_chat(src, SPAN_NOTICE(" You successfully remove [restraint]."))
 		drop_inv_item_on_ground(restraint)
 

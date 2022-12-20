@@ -656,18 +656,18 @@
 	if(affecting == "head" && iscarbon(target) && !isXeno(target))
 		for(var/mob/O in viewers(user, null))
 			if(target != user)
-				O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a glass of [name], by [user]!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a glass of [name], by [user]!</B>")), SHOW_MESSAGE_VISIBLE)
 			else
-				O.show_message(text(SPAN_DANGER("<B>[target] hit \himself with a glass of [name] on the head!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[target] hit \himself with a glass of [name] on the head!</B>")), SHOW_MESSAGE_VISIBLE)
 		if(drowsy_threshold > 0)
 			target.apply_effect(min(drowsy_threshold, 10) , DROWSY)
 
 	else //Regular attack text
 		for(var/mob/O in viewers(user, null))
 			if(target != user)
-				O.show_message(text(SPAN_DANGER("<B>[target] has been attacked with a glass of [name], by [user]!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[target] has been attacked with a glass of [name], by [user]!</B>")), SHOW_MESSAGE_VISIBLE)
 			else
-				O.show_message(text(SPAN_DANGER("<B>[target] has attacked \himself with a glass of [name]!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[target] has attacked \himself with a glass of [name]!</B>")), SHOW_MESSAGE_VISIBLE)
 
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has attacked [target.name] ([target.ckey]) with a glass!</font>")
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been smashed with a glass by [user.name] ([user.ckey])</font>")
@@ -675,7 +675,7 @@
 
 	if(reagents)
 		for(var/mob/O in viewers(user, null))
-			O.show_message(text(SPAN_NOTICE("<B>The contents of \the [src] splashes all over [target]!</B>")), 1)
+			O.show_message(text(SPAN_NOTICE("<B>The contents of \the [src] splashes all over [target]!</B>")), SHOW_MESSAGE_VISIBLE)
 		reagents.reaction(target, TOUCH)
 
 	smash(target, user)

@@ -43,4 +43,5 @@
 		else
 			var/angle = initial_angle + i*angle_increment + rand(-angle_randomization,angle_randomization)
 			var/atom/target = get_angle_target_turf(epicenter, angle, 20)
-			S.fire_at(target, source_mob, source, S.ammo.max_range, S.ammo.shell_speed, null, TRUE)
+			S.projectile_flags |= PROJECTILE_SHRAPNEL
+			S.fire_at(target, source_mob, source, S.ammo.max_range, S.ammo.shell_speed, null)

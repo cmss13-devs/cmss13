@@ -92,6 +92,36 @@
 	if(user != src)
 		return . = ..()
 
+	if(isXeno(dropping))
+		var/mob/living/carbon/Xenomorph/xeno = dropping
+		if(xeno.back)
+			var/obj/item/back_item = xeno.back
+			if(xeno.stat != DEAD) // If the Xeno is alive, fight back
+				var/mob/living/carbon/carbon_user = user
+				if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
+					user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
+					playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
+					user.visible_message(SPAN_WARNING("\The [user] tried to unstrap \the [back_item] from [xeno] but instead gets a tail swipe to the head!"))
+					return
+			if(user.get_active_hand())
+				to_chat(user, SPAN_WARNING("You can't unstrap \the [back_item] from [xeno] with your hands full."))
+				return
+			user.visible_message(SPAN_NOTICE("\The [user] starts unstrapping \the [back_item] from [xeno]"), \
+			SPAN_NOTICE("You start unstrapping \the [back_item] from [xeno]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
+			if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, xeno, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+				to_chat(user, SPAN_WARNING("You were interrupted!"))
+				return
+
+			if(user.get_active_hand())
+				return
+			if(!user.Adjacent(xeno))
+				return
+			xeno.drop_inv_item_on_ground(back_item)
+			if(!back_item || QDELETED(back_item)) //Might be self-deleted?
+				return
+			user.put_in_active_hand(back_item)
+			return
+
 	if(pulling != dropping || grab_level != GRAB_AGGRESSIVE || !ishuman(dropping) || !(a_intent & INTENT_GRAB))
 		return . = ..()
 

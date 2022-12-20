@@ -138,7 +138,7 @@ var/global/list/limb_types_by_name = list(
 		p++
 	return t
 
-proc/slur(phrase)
+/proc/slur(phrase)
 	phrase = html_decode(phrase)
 	var/leng=length(phrase)
 	var/counter=length(phrase)
@@ -185,7 +185,7 @@ proc/slur(phrase)
 	return strip_html(t)
 
 
-proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
+/proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
 	/* Turn text into complete gibberish! */
 	var/returntext = ""
 	for(var/i = 1, i <= length(t), i++)

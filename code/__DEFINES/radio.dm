@@ -36,7 +36,7 @@
 #define RADIO_CHANNEL_MP "MP"
 #define RADIO_CHANNEL_NORMANDY "Normandy"
 #define RADIO_CHANNEL_REQ "Req"
-#define RADIO_CHANNEL_SENTY "sentrylaptop"
+#define RADIO_CHANNEL_SENTY "Sentry Network"
 #define RADIO_CHANNEL_SPECIAL "special"
 #define RADIO_CHANNEL_SPECOPS "SpecOps"
 #define RADIO_CHANNEL_UPP "UPP"

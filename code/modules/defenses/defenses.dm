@@ -82,6 +82,8 @@
 	message += "\n"
 	if(display_additional_stats)
 		message += SPAN_INFO("Its display reads - Kills: [kills] | Shots: [shots].")
+	if(length(nickname) > 0)
+		message += SPAN_INFO("It has been assigned the name: [nickname]")
 	. += message
 
 /obj/structure/machinery/defenses/proc/power_on()
@@ -167,21 +169,21 @@
 						var/obj/item = tool.encryption_keys[i]
 						if(istype(item, /obj/item/device/sentry_computer))
 							var/obj/item/device/sentry_computer/computer = item
-							to_chat(usr, SPAN_NOTICE("Attempting link to [item.name] [computer.serial_number]"))
+							to_chat(usr, SPAN_NOTICE("Attempting link to [item.name] [computer.serial_number]."))
 							computer.register(tool, user, src)
 							key_found = TRUE
 							break
 					if(!key_found)
-						to_chat(user, SPAN_WARNING("No valid encryption key found. Link the [tool.name] with a sentry computer."))
+						to_chat(user, SPAN_WARNING("No valid encryption key found. Link \the [tool.name] with a sentry computer."))
 					return
 				else
 					// unregister
-					to_chat(usr, SPAN_NOTICE("Attempting decryption of [name]"))
+					to_chat(usr, SPAN_NOTICE("Attempting decryption of [name]."))
 					var/loaded_key = linked_laptop.serial_number
 					if(tool.encryption_keys[loaded_key])
 						linked_laptop.unregister(tool, user, src)
 					else
-						to_chat(usr, SPAN_WARNING("Structure is already encrypted by laptop [linked_laptop.serial_number]."))
+						to_chat(usr, SPAN_WARNING("\The [src.name] is already encrypted by laptop [linked_laptop.serial_number]."))
 					return
 
 		if(health < health_max * 0.25)
@@ -194,6 +196,7 @@
 
 		if(linked_laptop != null)
 			to_chat(user, SPAN_WARNING("\The [src] is currently encrypted by [linked_laptop]. To deconstruct \the [src.name] it must first be unlinked."))
+			return
 
 		user.visible_message(SPAN_NOTICE("[user] begins disassembling \the [src]."), SPAN_NOTICE("You begin disassembling \the [src]."))
 

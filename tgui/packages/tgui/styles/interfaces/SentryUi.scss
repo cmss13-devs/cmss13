@@ -175,16 +175,16 @@ $large-text: 1.5rem;
 
   @keyframes warningBoxAnimation {
     0% {
-      background-color: $dark;
+      background-color: rgba($color: $light, $alpha: 0);
     }
     49% {
-      background-color: $dark;
+      background-color: rgba($color: $light, $alpha: 0);
     }
     50% {
-      background-color: $light;
+      background-color: rgba($color: $light, $alpha: 1);
     }
     100% {
-      background-color: $light;
+      background-color: rgba($color: $light, $alpha: 1);
     }
   }
   @keyframes warningTextAnimation {

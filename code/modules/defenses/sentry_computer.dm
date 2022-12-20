@@ -50,6 +50,9 @@
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
 
+	var/obj/item/device/radio/transceiver = new /obj/item/device/radio
+	var/mob/living/voice = new /mob/living/silicon
+
 	// Stuff needed to render the map
 	var/map_name
 	var/atom/movable/screen/map_view/cam_screen
@@ -75,8 +78,11 @@
 	cam_background.del_on_map_removal = FALSE
 
 	faction_group = FACTION_LIST_MARINE
+	transceiver.forceMove(src)
+	transceiver.set_frequency(SENTRY_FREQ)
+	transceiver.config(list(RADIO_CHANNEL_SENTY=1))
 
-	RegisterSignal(src, COMSIG_SENTRY_ENGAGED_ALERT, .proc/post_signal)
+	RegisterSignal(src, COMSIG_SENTRY_ENGAGED_ALERT, .proc/handle_engaged)
 
 /obj/item/device/sentry_computer/Destroy()
 	. = ..()
@@ -106,28 +112,51 @@
 	STOP_PROCESSING(SSobj, src)
 	usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
-/obj/item/device/sentry_computer/proc/handle_engaged(var/obj/structure/machinery/defenses/sentry/sentrygun)
+/obj/item/device/sentry_computer/proc/handle_engaged(var/laptop, var/obj/structure/machinery/defenses/sentry/sentrygun)
 	var/displayname = sentrygun.name
 	if(length(sentrygun.nickname) > 0)
 		displayname = sentrygun.nickname
 	var/areaname = get_area(sentrygun)
-	post_signal("[displayname]:[areaname] Engaged")
+	var/message = "[displayname]:[areaname] Engaged"
+	INVOKE_ASYNC(src, .proc/send_message, message)
 
-/obj/item/device/sentry_computer/proc/post_signal(var/command)
+/obj/item/device/sentry_computer/proc/send_message(var/message)
+	world.log << "sending [message]"
+	transceiver.talk_into(voice, "[message]", RADIO_CHANNEL_SENTY)
+	/*
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(SENTRY_FREQ)
 
 	if(!frequency)
-		world.log << "no freq!"
 		return
+
+	var/target_zs = transceiver.get_target_zs(frequency)
+
+	Broadcast_Message(
+		frequency,
+		null,
+		0,
+		"",
+		src,
+		message,
+		src.name,
+		null,
+		src.name,
+		src.name,
+		RADIO_FILTER_TYPE_ALL,
+		0,
+		target_zs,
+		frequency,
+		"says",
+		null,
+		RADIO_VOLUME_QUIET)
 
 	var/datum/signal/status_signal = new
 	status_signal.source = src
 	status_signal.transmission_method = 1
-	status_signal.data["sentrylaptop"] = command
+	status_signal.data["message"] = message
 
 	frequency.post_signal(src, status_signal)
-	world.log << "sent"
-
+*/
 /obj/item/device/sentry_computer/attack_hand(mob/user)
 	if(setup)
 		if(!on)
@@ -169,28 +198,33 @@
 		playsound(src, get_sfx("terminal_type"), 25, FALSE)
 		if (do_after(usr, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(tool.remove_encryption_key(serial_number))
-				to_chat(user, SPAN_NOTICE("You unload the encryption key to the [tool.name]."))
+				to_chat(user, SPAN_NOTICE("You unload the encryption key to the [tool]."))
 				registered_tools -= list(id)
 			else
-				to_chat(user, SPAN_NOTICE("You load an encryption key to the [tool.name]."))
+				to_chat(user, SPAN_NOTICE("You load an encryption key to the [tool]."))
 				registered_tools += list(id)
 				tool.load_encryption_key(serial_number, src)
 	else
 		..()
 
 /obj/item/device/sentry_computer/proc/register(var/tool, mob/user, var/sentry_gun)
-	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
-	sentry.linked_laptop = src
-	pair_sentry(sentry)
+	if (do_after(user, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
+		sentry.linked_laptop = src
+		pair_sentry(sentry)
+		to_chat(user, SPAN_NOTICE("\The [sentry] has been encrypted."))
+		send_message("[sentry] added to [src]")
 
 /obj/item/device/sentry_computer/proc/unregister(var/tool, mob/user, var/sentry_gun)
 	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
 	if(sentry.linked_laptop == src)
-		sentry.linked_laptop = null
-		unpair_sentry(sentry)
-		to_chat(user, SPAN_NOTICE("\The [sentry.name] has been decrypted."))
+		if (do_after(user, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+			sentry.linked_laptop = null
+			unpair_sentry(sentry)
+			to_chat(user, SPAN_NOTICE("\The [sentry] has been decrypted."))
+			send_message("[sentry] removed from to [src]")
 	else
-		to_chat(user, SPAN_WARNING("\The [sentry.name] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
+		to_chat(user, SPAN_WARNING("\The [sentry] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
 
 /obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/sentry/target)
 	paired_sentry +=list(target)

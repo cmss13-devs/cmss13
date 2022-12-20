@@ -291,22 +291,19 @@
 	if(omni_directional)
 		setDir(get_dir(src, A))
 	for(var/i = 0; i < burst; i++)
-		actual_fire(A)
+		if(actual_fire(A))
+			break
 
 	if(targets.len)
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
-	if(!enaged_timer && linked_laptop)
-		SEND_SIGNAL(linked_laptop, COMSIG_SENTRY_ENGAGED_ALERT, src)
+	if(!enaged_timer)
+		SEND_SIGNAL(src, COMSIG_SENTRY_ENGAGED_ALERT, src)
 		enaged_timer = addtimer(CALLBACK(src, .proc/reset_engaged_timer), SENTRY_ENGAGED_TIMEOUT)
 
-	if(ammo && !low_ammo_timer && linked_laptop && ammo.current_rounds != 0 && ammo.current_rounds < (ammo.max_rounds * 0.2))
-		SEND_SIGNAL(linked_laptop, COMSIG_SENTRY_LOW_AMMO_ALERT, src)
+	if(ammo && !low_ammo_timer && ammo.current_rounds != 0 && ammo.current_rounds < (ammo.max_rounds * 0.2))
+		SEND_SIGNAL(src, COMSIG_SENTRY_LOW_AMMO_ALERT, src)
 		low_ammo_timer = addtimer(CALLBACK(src, .proc/reset_low_ammo_timer), SENTRY_LOW_AMMO_TIMEOUT)
-
-	if(ammo && ammo.current_rounds == 0 && linked_laptop && !sent_empty_ammo)
-		SEND_SIGNAL(linked_laptop, COMSIG_SENTRY_EMPTY_AMMO_ALERT, src)
-		sent_empty_ammo = TRUE
 
 /obj/structure/machinery/defenses/sentry/proc/reset_engaged_timer()
 	enaged_timer = null
@@ -315,9 +312,6 @@
 	low_ammo_timer = null
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
-	if(ammo.current_rounds == 0)
-		handle_empty()
-		return
 	var/obj/item/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))
 	new_projectile.generate_bullet(new ammo.default_ammo)
 	new_projectile.damage *= damage_mult
@@ -329,11 +323,15 @@
 	track_shot()
 	if(ammo.current_rounds == 0)
 		handle_empty()
+		return TRUE
+	return FALSE
 
 /obj/structure/machinery/defenses/sentry/proc/handle_empty()
 	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")
 	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 	update_icon()
+	sent_empty_ammo = TRUE
+	SEND_SIGNAL(src, COMSIG_SENTRY_EMPTY_AMMO_ALERT, src)
 
 //Mostly taken from gun code.
 /obj/structure/machinery/defenses/sentry/proc/muzzle_flash(var/angle)

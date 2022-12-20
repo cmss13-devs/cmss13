@@ -84,10 +84,6 @@
 	voice.name = "Laptop [serial_number]"
 	voice.forceMove(src)
 
-	RegisterSignal(src, COMSIG_SENTRY_ENGAGED_ALERT, .proc/handle_engaged)
-	RegisterSignal(src, COMSIG_SENTRY_LOW_AMMO_ALERT, .proc/handle_low_ammo)
-	RegisterSignal(src, COMSIG_SENTRY_EMPTY_AMMO_ALERT, .proc/handle_empty_ammo)
-
 /obj/item/device/sentry_computer/Destroy()
 	. = ..()
 	QDEL_NULL(cell)
@@ -118,7 +114,7 @@
 	STOP_PROCESSING(SSobj, src)
 	usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
-/obj/item/device/sentry_computer/proc/handle_engaged(var/laptop, var/obj/structure/machinery/defenses/sentry/sentrygun)
+/obj/item/device/sentry_computer/proc/handle_engaged(var/obj/structure/machinery/defenses/sentry/sentrygun)
 	var/displayname = sentrygun.name
 	if(length(sentrygun.nickname) > 0)
 		displayname = sentrygun.nickname
@@ -126,12 +122,20 @@
 	var/message = "[displayname]:[areaname] Engaged [sentrygun.target]."
 	INVOKE_ASYNC(src, .proc/send_message, message)
 
-/obj/item/device/sentry_computer/proc/handle_low_ammo(var/laptop, var/obj/structure/machinery/defenses/sentry/sentrygun)
+/obj/item/device/sentry_computer/proc/handle_low_ammo(var/obj/structure/machinery/defenses/sentry/sentrygun)
 	if(sentrygun.ammo)
+		var/displayname = sentrygun.name
+		if(length(sentrygun.nickname) > 0)
+			displayname = sentrygun.nickname
+		var/areaname = get_area(sentrygun)
 		var/message = "[displayname]:[areaname] Low ammo [sentrygun.ammo.current_rounds]/[sentrygun.ammo.max_rounds]."
 		INVOKE_ASYNC(src, .proc/send_message, message)
 
-/obj/item/device/sentry_computer/proc/handle_empty_ammo(var/laptop, var/obj/structure/machinery/defenses/sentry/sentrygun)
+/obj/item/device/sentry_computer/proc/handle_empty_ammo(var/obj/structure/machinery/defenses/sentry/sentrygun)
+	var/displayname = sentrygun.name
+	if(length(sentrygun.nickname) > 0)
+		displayname = sentrygun.nickname
+	var/areaname = get_area(sentrygun)
 	var/message = "[displayname]:[areaname] out of ammo."
 	INVOKE_ASYNC(src, .proc/send_message, message)
 
@@ -213,11 +217,18 @@
 	target.linked_laptop = src
 	paired_sentry +=list(target)
 	update_static_data_for_all_viewers()
+	RegisterSignal(target, COMSIG_SENTRY_ENGAGED_ALERT, .proc/handle_engaged)
+	RegisterSignal(target, COMSIG_SENTRY_LOW_AMMO_ALERT, .proc/handle_low_ammo)
+	RegisterSignal(target, COMSIG_SENTRY_EMPTY_AMMO_ALERT, .proc/handle_empty_ammo)
+
 
 /obj/item/device/sentry_computer/proc/unpair_sentry(var/obj/structure/machinery/defenses/sentry/target)
 	target.linked_laptop = null
 	paired_sentry -=list(target)
 	update_static_data_for_all_viewers()
+	UnregisterSignal(target, COMSIG_SENTRY_ENGAGED_ALERT)
+	UnregisterSignal(target, COMSIG_SENTRY_LOW_AMMO_ALERT)
+	UnregisterSignal(target, COMSIG_SENTRY_EMPTY_AMMO_ALERT)
 
 /obj/item/device/sentry_computer/proc/attempted_link(mob/linker)
 	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
@@ -381,7 +392,8 @@
 
 	for(var/turf/visible_turf in guncamera_zone)
 		range_turfs += visible_turf
-		if(!visible_turf.loc.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
+		var/area/visible_area = visible_turf.loc
+		if(!visible_area.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
 			visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)

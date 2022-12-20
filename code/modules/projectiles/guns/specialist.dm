@@ -100,18 +100,21 @@
 	var/distance = round(get_dist(target, human) * 0.5)
 	var/f_aiming_time = sniper_rifle.aiming_time + distance
 
+	var/aim_multiplier = 1
 	var/aiming_buffs
 
 	if(sniper_rifle.enable_aimed_shot_laser)
+		aim_multiplier = 0.6
 		aiming_buffs++
 
 	if(HAS_TRAIT(target, TRAIT_SPOTTER_LAZED))
+		aim_multiplier = 0.5
 		aiming_buffs++
 
-	if(aiming_buffs == 1)
-		f_aiming_time *= 0.6
-	else if(aiming_buffs == 2)
-		f_aiming_time *= 0.35
+	if(aiming_buffs > 1)
+		aim_multiplier = 0.35
+
+	f_aiming_time *= aim_multiplier
 
 	var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = sniper_rifle.sniper_lockon_icon)
 

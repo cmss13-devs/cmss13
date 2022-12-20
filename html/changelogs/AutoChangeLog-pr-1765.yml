@@ -1,0 +1,7 @@
+author: "fira"
+delete-after: True
+changes:
+  - code_imp: "Updated the Master Controller from /tg/"
+  - code_imp: "Database subsystems now load early, letting players join during game initialization."
+  - code_imp: "Rewrote speech spam filter, using a character budget over time. Old one wouldn't let you speak during init. Yes, you should still be able to use copypastas (within reason)"
+  - code_imp: "Changed error handling to work during static init, so early errors can be displayed in STUI instead of forgotten."

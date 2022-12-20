@@ -2,6 +2,7 @@
 #define SENTRY_RANGE 		5
 #define SENTRY_MUZZLELUM	3
 #define SENTRY_ENGAGED_TIMEOUT 60
+#define SENTRY_LOW_AMMO_TIMEOUT 20
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"
 	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
@@ -30,9 +31,9 @@
 	var/burst = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
 
-
-
-	var/broadcast_timer = null
+	var/enaged_timer = null
+	var/low_ammo_timer = null
+	var/sent_empty_ammo = FALSE
 
 	// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
@@ -245,6 +246,7 @@
 		ammo = O
 		user.drop_held_item(O)
 		O.forceMove(src)
+		sent_empty_ammo = FALSE
 		update_icon()
 		return
 
@@ -294,12 +296,23 @@
 	if(targets.len)
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
-	if(!broadcast_timer && linked_laptop)
+	if(!enaged_timer && linked_laptop)
 		SEND_SIGNAL(linked_laptop, COMSIG_SENTRY_ENGAGED_ALERT, src)
-		broadcast_timer = addtimer(CALLBACK(src, .proc/reset_broadcast_timer), SENTRY_ENGAGED_TIMEOUT)
+		enaged_timer = addtimer(CALLBACK(src, .proc/reset_engaged_timer), SENTRY_ENGAGED_TIMEOUT)
 
-/obj/structure/machinery/defenses/sentry/proc/reset_broadcast_timer()
-	broadcast_timer = null
+	if(ammo && !low_ammo_timer && linked_laptop && ammo.current_rounds != 0 && ammo.current_rounds < (ammo.max_rounds * 0.2))
+		SEND_SIGNAL(linked_laptop, COMSIG_SENTRY_LOW_AMMO_ALERT, src)
+		low_ammo_timer = addtimer(CALLBACK(src, .proc/reset_low_ammo_timer), SENTRY_LOW_AMMO_TIMEOUT)
+
+	if(ammo && ammo.current_rounds == 0 && linked_laptop && !sent_empty_ammo)
+		SEND_SIGNAL(linked_laptop, COMSIG_SENTRY_EMPTY_AMMO_ALERT, src)
+		sent_empty_ammo = TRUE
+
+/obj/structure/machinery/defenses/sentry/proc/reset_engaged_timer()
+	enaged_timer = null
+
+/obj/structure/machinery/defenses/sentry/proc/reset_low_ammo_timer()
+	low_ammo_timer = null
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
 	if(ammo.current_rounds == 0)

@@ -85,6 +85,8 @@
 	voice.forceMove(src)
 
 	RegisterSignal(src, COMSIG_SENTRY_ENGAGED_ALERT, .proc/handle_engaged)
+	RegisterSignal(src, COMSIG_SENTRY_LOW_AMMO_ALERT, .proc/handle_low_ammo)
+	RegisterSignal(src, COMSIG_SENTRY_EMPTY_AMMO_ALERT, .proc/handle_empty_ammo)
 
 /obj/item/device/sentry_computer/Destroy()
 	. = ..()
@@ -121,7 +123,16 @@
 	if(length(sentrygun.nickname) > 0)
 		displayname = sentrygun.nickname
 	var/areaname = get_area(sentrygun)
-	var/message = "[displayname]:[areaname] Engaged"
+	var/message = "[displayname]:[areaname] Engaged [sentrygun.target]."
+	INVOKE_ASYNC(src, .proc/send_message, message)
+
+/obj/item/device/sentry_computer/proc/handle_low_ammo(var/laptop, var/obj/structure/machinery/defenses/sentry/sentrygun)
+	if(sentrygun.ammo)
+		var/message = "[displayname]:[areaname] Low ammo [sentrygun.ammo.current_rounds]/[sentrygun.ammo.max_rounds]."
+		INVOKE_ASYNC(src, .proc/send_message, message)
+
+/obj/item/device/sentry_computer/proc/handle_empty_ammo(var/laptop, var/obj/structure/machinery/defenses/sentry/sentrygun)
+	var/message = "[displayname]:[areaname] out of ammo."
 	INVOKE_ASYNC(src, .proc/send_message, message)
 
 /obj/item/device/sentry_computer/proc/send_message(var/message)

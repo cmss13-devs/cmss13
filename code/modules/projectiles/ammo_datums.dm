@@ -3165,10 +3165,10 @@
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flare(get_turf(P), P, P.firer)
+	drop_flare(get_turf(M), P, P.firer)
 
 /datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_flare(get_turf(P), P, P.firer)
+	drop_flare(get_turf(O), P, P.firer)
 
 /datum/ammo/flare/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density && isturf(P.loc))

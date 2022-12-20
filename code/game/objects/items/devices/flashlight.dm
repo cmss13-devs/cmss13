@@ -273,7 +273,7 @@
 	var/ammo_datum = /datum/ammo/flare
 
 	/// Tint for the greyscale flare flame
-	var/flame_tint = "#ddbbbb"
+	var/flame_tint = "#ffcccc"
 	/// Color correction, added to the whole flame overlay
 	var/flame_base_tint = "#ff0000"
 	// "But, why are there two colors?"

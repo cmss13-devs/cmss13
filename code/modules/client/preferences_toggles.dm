@@ -273,7 +273,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>"
 	)
 
 	var/dat = ""
@@ -412,6 +413,22 @@
 		//Ditto.
 		atmospheric_toggle = prefs.toggles_sound & SOUND_ADMIN_ATMOSPHERIC ? TRUE : FALSE
 		to_chat(src, SPAN_NOTICE("You will [atmospheric_toggle ? "now" : "no longer"] hear atmospheric admin sounds."))
+
+/client/proc/set_eye_blur_type()
+	//Entirely for code readability.
+	var/alert_string = "Blurry: Directly blurs your screen a varying amount depending on eye_blur.<BR>\
+						Impair: Impairs your screen like a welding helmet does, reducing vision range, depending on eye_blur.<BR>\
+						Legacy: Creates a legacy blurring effect over your screen if you have any eye_blur at all. Not recommended.<BR>\ "
+	var/result = tgui_alert(src, alert_string, "What type of eye blur do you want?", list("Blurry", "Impair", "Legacy"))
+	if(result == "Blurry")
+		prefs.pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
+		to_chat(src, SPAN_NOTICE("Your vision will now be directly blurred."))
+	if(result == "Impair")
+		prefs.pain_overlay_pref_level = PAIN_OVERLAY_IMPAIR
+		to_chat(src, SPAN_NOTICE("Your vision will now be impaired on blur."))
+	if(result == "Legacy")
+		prefs.pain_overlay_pref_level = PAIN_OVERLAY_LEGACY
+		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
 
 //------------ GHOST PREFERENCES ---------------------------------
 

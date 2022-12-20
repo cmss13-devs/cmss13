@@ -131,6 +131,12 @@
 	icon_state = "druggy"
 	layer = FULLSCREEN_DRUGGY_LAYER
 
+/atom/movable/screen/fullscreen/blurry
+	icon = 'icons/mob/hud/screen1.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "blurry"
+	layer = FULLSCREEN_BLURRY_LAYER
+
 /atom/movable/screen/fullscreen/nvg
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"

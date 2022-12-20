@@ -486,46 +486,39 @@
 
 //Xeno stims
 
-/datum/chemical_reaction/purple_plasma_stim
-	name = "Purple Plasma Stim Reaction"
-	id = "purple_plasma_stim"
-	result = "purple_plasma_stim"
-	required_reagents = list("purpleplasma" = 10, "tricordrazine" = 1, "cryoxadone" = 1)
+/datum/chemical_reaction/neuro_cate_plasma_stim
+	name = "Neuro-Catechlamine Plasma Stim Reaction"
+	id = "neuro_cate_plasma_stim"
+	result = "neuro_cate_plasma_stim"
+	required_reagents = list("neurotoxinplasma" = 10, "catecholamineplasma" = 10, "methylphenidate" = 1, "citalopram" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/pheromone_plasma_stim
-	name = "Pheromone Plasma Stim Reaction"
-	id = "pheromone_plasma_stim"
-	result = "pheromone_plasma_stim"
-	required_reagents = list("pheromoneplasma" = 10, "clonexadone" = 1, "sterilizine" = 1)
+/datum/chemical_reaction/chitin_pheromone_plasma_stim
+	name = "Chitin-Pheromone Plasma Stim Reaction"
+	id = "chitin_pheromone_plasma_stim"
+	result = "chitin_pheromone_plasma_stim"
+	required_reagents = list("chitinplasma" = 10, "pheromoneplasma" = 10, "lipozine" = 1, "sterilizine" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/chitin_plasma_stim
-	name = "Chitin Plasma Stim Reaction"
-	id = "chitin_plasma_stim"
-	result = "chitin_plasma_stim"
-	required_reagents = list("chitinplasma" = 10, "inaprovaline" = 1, "mutagen" = 1)
+/datum/chemical_reaction/purple_chitin_plasma_stim
+	name = "Purple-Chitin Plasma Stim Reaction"
+	id = "purple_chitin_plasma_stim"
+	result = "purple_chitin_plasma_stim"
+	required_reagents = list("purpleplasma" = 10, "chitinplasma" = 10, "cryoxadone" = 1, "mutagen" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/catecholamine_plasma_stim
-	name = "Catecholamine Plasma Stim Reaction"
-	id = "catecholamine_plasma_stim"
-	result = "catecholamine_plasma_stim"
-	required_reagents = list("catecholamineplasma" = 10, "lipozine" = 1, "paroxetine" = 1)
+/datum/chemical_reaction/phero_purple_plasma_stim
+	name = "Phero-Purple Plasma Stim Reaction"
+	id = "phero_purple_plasma_stim"
+	result = "phero_purple_plasma_stim"
+	required_reagents = list("pheromoneplasma" = 10, "purpleplasma" = 10, "clonexadone" = 1, "inaprovaline" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/egg_plasma_stim
-	name = "Egg Plasma Stim Reaction"
-	id = "egg_plasma_stim"
-	result = "egg_plasma_stim"
-	required_reagents = list("eggplasma" = 10, "soporific" = 1)
-	result_amount = 1
-
-/datum/chemical_reaction/neurotoxin_plasma_stim
-	name = "Neurotoxin Plasma Stim Reaction"
-	id = "neurotoxin_plasma_stim"
-	result = "neurotoxin_plasma_stim"
-	required_reagents = list("neurotoxinplasma" = 10, "methylphenidate" = 1, "citalopram" = 1)
+/datum/chemical_reaction/neuro_egg_plasma_stim
+	name = "Neuro-Egg Plasma Stim Reaction"
+	id = "neuro_egg_plasma_stim"
+	result = "neuro_egg_plasma_stim"
+	required_reagents = list("neurotoxinplasma" = 10, "eggplasma" = 10, "paroxetine" = 1, "soporific" = 1)
 	result_amount = 1
 
 /datum/chemical_reaction/royal_plasma_stim
@@ -534,4 +527,3 @@
 	result = "royal_plasma_stim"
 	required_reagents = list("royalplasma" = 10, "mindbreaker" = 1, "lexorin" = 1, "ryetalyn" = 1)
 	result_amount = 1
-

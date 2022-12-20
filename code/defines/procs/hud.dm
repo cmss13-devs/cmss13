@@ -1,6 +1,6 @@
 
 
-mob/proc/in_view(var/turf/T)
+/mob/proc/in_view(var/turf/T)
 	return view(T)
 
 /mob/aiEye/in_view(var/turf/T)

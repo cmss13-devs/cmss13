@@ -33,11 +33,11 @@
 /**Whether this step is optional and can be skipped if it isn't the last step. There must be a step after it to skip to. As this may be used when
 initiating a surgery and deciding whether to skip the first step, it must be able to work without reference to the parent surgery's status,
 affected_limb, or location vars. Also, in that case there may be a wait between passing the check and beginning the step while the user picks a surgery.**/
-datum/surgery_step/proc/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/proc/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return FALSE
 
 ///Used by repeating steps to determine whether to keep looping. tool_type may be a typepath or simply '1'.
-datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/proc/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	return FALSE
 
 ///Checks the given tool, if any, against the step's tools list, and returns one of three options: the tool list key, TRUE, or FALSE to fail the surgery.

@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - admin: "ported the filter editor from tgstation, it is a VV dropdown option."

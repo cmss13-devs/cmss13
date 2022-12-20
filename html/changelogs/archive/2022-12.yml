@@ -633,3 +633,38 @@
   - balance: crusher AOE slashes will no longer reduce the cooldown of their shield
       ability even more
   - balance: increased the plasma cost of a few crusher abilities
+2022-12-20:
+  CometBlaze:
+  - bugfix: Terminals will now spawn on the correct side of SMESes
+  - bugfix: Round start broken SMESes will now function as expected once repaired
+  Morrow:
+  - balance: Removes groundside nanomeds refilling splints and skilless injectors.
+  - balance: Nerfs non-med APC nanomeds to basic groundside level.
+  carlarctg:
+  - bugfix: Fixes a runtime in specialist.dm
+  diegoflores31:
+  - rscadd: Added a new strain for lurker "Vampire".
+  - rscadd: 'Vampire Lurker exchanges all of your abilities for a fast paced combat
+      style more focused into dealing damage and
+
+      mobility.'
+  - rscadd: 'Active 1 : Rush . Pounces for a maximun of 4 tiles and slashes the objetive
+      once on impact . applying a screenshake and daze to the target . Landing this
+      ability reduces the cooldown by half. (cooldown 6 seconds)'
+  - rscadd: 'Active 2 . Flurry : unleashes a 1X3 slash at the targeted direction that
+      slows your enemies on impact healing you by 30 hp . (cooldown 3 seconds)'
+  - rscadd: 'Active 3 : Tail Jab : Attacks your enemies from a maximun of  2 tiles
+      away while dealing a small amount of damage ( 20)  and knocking them down .
+      if you attack a enemy that is on critical state it will deal 80 damage with
+      penetration and heal you by 150 hp. (cooldown 7 seconds)'
+  stanalbatross:
+  - refactor: refactored show_message to use defines over magic numbers
+  - refactor: cleaned up megaphone code a bit
+  - admin: disabled the "x cut a wire" message as wires (cables) are unimportant
+  - balance: reduced the amount of monomolecular acid in spitter tailstab to 2u, reduced
+      the amount of monomolecular acid in boiler tailstab to 6u.
+  - balance: halved the sniper sentry's range to 10 tiles
+  - balance: reduced the sniper sentry's accuracy by 20%
+  - balance: reduced the sniper sentry's delay between shots from 2s to 1.25s
+  - balance: reduced the plasma sentry's range to 10 tiles
+  - balance: reduced the plasma sentry's delay between shots from 10s to 7s

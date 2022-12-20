@@ -262,7 +262,7 @@
 	M.setBrainLoss(0)
 	M.disabilities = 0
 	M.sdisabilities = 0
-	M.eye_blurry = 0
+	M.SetEyeBlur(0)
 	M.eye_blind = 0
 	M.set_effect(0, WEAKEN)
 	M.set_effect(0, STUN)

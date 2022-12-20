@@ -17,9 +17,6 @@
 
 	health = ((species != null)? species.total_health : 200) - oxy_l - tox_l - clone_l - total_burn - total_brute
 
-	if(isSynth(src) && pulledby && health <= 0 && isXeno(pulledby))	// Xenos lose grab on critted synths
-		pulledby.stop_pulling()
-
 	recalculate_move_delay = TRUE
 
 	med_hud_set_health()

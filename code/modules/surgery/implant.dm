@@ -89,7 +89,7 @@
 	accept_any_item = TRUE //Any item except a surgery tool or substitute for such.
 	time = 5 SECONDS
 
-datum/surgery_step/place_item/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/place_item/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
 
 /datum/surgery_step/place_item/proc/get_max_wclass(datum/surgery/surgery)
@@ -157,7 +157,7 @@ datum/surgery_step/place_item/skip_step_criteria(mob/user, mob/living/carbon/tar
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
-datum/surgery_step/remove_implant/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/remove_implant/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
 
 /datum/surgery_step/remove_implant/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

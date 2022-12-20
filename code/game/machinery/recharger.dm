@@ -235,7 +235,7 @@
 			. += "Current charge: [C.charge] ([C.percent()]%)"
 
 /*
-obj/structure/machinery/recharger/wallcharger
+/obj/structure/machinery/recharger/wallcharger
 	name = "wall recharger"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "wrecharger0"

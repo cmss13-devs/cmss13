@@ -109,6 +109,12 @@
 	bound_xeno.armor_modifier += armor_buff_count * armor_buff_per_fifty_shards
 	bound_xeno.recalculate_armor()
 	times_armor_buffed = armor_buff_count
+
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+	var/percentage_shards = round((shards / max_shards) * 100, 10)
+	if(percentage_shards)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
 	return
 
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()

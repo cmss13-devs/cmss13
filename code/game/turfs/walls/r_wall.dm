@@ -239,7 +239,7 @@
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	icon = 'icons/turf/walls/prison.dmi'
-	icon_state = "rwall"
+	icon_state = "hwall"
 	walltype = WALL_REINFORCED
 	hull = 1
 
@@ -263,6 +263,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
+	icon_state = "h_dome"
 	hull = 1
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable/ex_act(severity) //Should make it indestructible

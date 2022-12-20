@@ -558,6 +558,7 @@
 	max_temperature = 28000
 
 /turf/closed/wall/solaris/reinforced/hull
+	icon_state = "solaris_interior_h"
 	hull = 1
 
 /turf/closed/wall/solaris/reinforced/hull/lv522

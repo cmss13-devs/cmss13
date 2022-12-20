@@ -5,7 +5,8 @@
 
 // define when you wanna decorate
 /datum/decorator/christmas/is_active_decor()
-	return is_month(12) && (is_day(21) || is_day(22) || is_day(23) || is_day(24) || is_day(25) || is_day(26))
+	return TRUE
+//	return is_month(12) && (is_day(21) || is_day(22) || is_day(23) || is_day(24) || is_day(25) || is_day(26))
 
 // define who is being decorated
 /datum/decorator/christmas/queen/get_decor_types()
@@ -68,8 +69,10 @@
 
 /// Replaces marine food dispensers contents with more festive MREs
 /datum/decorator/christmas/food
+
 /datum/decorator/christmas/food/get_decor_types()
 	return list(/obj/structure/machinery/cm_vending/sorted/marine_food)
+
 /datum/decorator/christmas/food/decorate(obj/structure/machinery/cm_vending/sorted/marine_food/dispenser)
 	// This happens during atom init before vending init, so we can hotswap the list before it gets processed
 	dispenser.listed_products = list(
@@ -87,3 +90,11 @@
 		list("UTILITIES", -1, null, null),
 		list("C92 pattern 'Festivizer' decorator", 10, /obj/item/toy/festivizer, VENDOR_ITEM_REGULAR)
 	)
+
+/datum/decorator/christmas/builder_list/get_decor_types()
+	return typesof(/mob/living/carbon/Xenomorph)
+
+/datum/decorator/christmas/builder_list/decorate(var/mob/living/carbon/Xenomorph/Xeno)
+	if(!istype(Xeno))
+		return
+	LAZYADD(Xeno.resin_build_order, /datum/resin_construction/resin_obj/festivizer)

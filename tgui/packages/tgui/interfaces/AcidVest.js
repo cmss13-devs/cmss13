@@ -13,7 +13,7 @@ export const AcidVest = (_props, context) => {
   const Ormode = injectLogic === 'OR' ? true : false;
 
   return (
-    <Window width={400} height={320}>
+    <Window width={400} height={800}>
       <Window.Content scrollable>
         <Section>
           <LabeledList>
@@ -53,19 +53,29 @@ export const AcidVest = (_props, context) => {
           </LabeledList>
         </Section>
         <Section title="Configuration">
-          <Flex>
+          <Flex direction="column" grow>
+            {
+              // the code you are about to see..
+              // may be disturbing to some
+              // small children and those unfamiliar with SS13 are advised to look away
+              // as we witness FOUR LEVELS OF LIST NESTING
+              // data list -> config list -> category list -> entry list -> entry data
+            }
             {Object.keys(configList).map((category) => (
               <Flex.Item key={category}>
                 <Section title={category}>
-                  <Flex direction="column">
-                    {configList[category].map((entry) => (
+                  <Flex direction="column" grow>
+                    {Object.keys(configList[category]).map((entry) => (
                       <Flex.Item key={entry}>
                         <Button.Checkbox
                           content={entry}
-                          backgroundColor="rgba(40, 40, 40, 255)"
-                          width="100%"
-                          height="2px"
-                          mt="2px"
+                          checked={!!entry[1]}
+                          onClick={() =>
+                            act('configurate', {
+                              config_type: category,
+                              config_value: entry[2],
+                            })
+                          }
                         />
                       </Flex.Item>
                     ))}

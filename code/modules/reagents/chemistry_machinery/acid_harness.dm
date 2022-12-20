@@ -157,7 +157,7 @@
 			else
 				acid_core.inject_logic = ACID_LOGIC_OR
 			. = TRUE
-		if("config")
+		if("configurate")
 			var/flag_value = params["config_value"]
 			switch(params["config_type"])
 				if("Damage")

@@ -41196,6 +41196,20 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
+"fqm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/classic{
+	pixel_x = 9
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "fqu" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer,
@@ -51390,6 +51404,20 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
+"jTB" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "jTI" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -54346,9 +54374,9 @@
 	},
 /area/almayer/medical/containment)
 "lmN" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/book/manual/medical_diagnostics_manual,
+/obj/item/device/megaphone,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -59630,16 +59658,15 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "nyt" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 28
 	},
 /obj/structure/machinery/light{
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -60431,6 +60458,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/synthcloset)
+"nPt" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "nPB" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -63187,6 +63221,13 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltopright";
 	tag = "icon-triagedecaltopright"
+	},
+/obj/structure/transmitter{
+	dir = 8;
+	name = "Medical Telephone";
+	phone_category = "Almayer";
+	phone_id = "Medical Lower";
+	pixel_x = 23
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -69806,9 +69847,7 @@
 /area/almayer/living/offices/flight)
 "rYK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/junction{
-	dir = 1
-	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -70638,11 +70677,6 @@
 	allow_construction = 0
 	},
 /area/almayer/stair_clone/upper)
-"sty" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/plating,
-/area/almayer/medical/lower_medical_medbay)
 "stY" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -78085,6 +78119,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/disposalpipe/trunk,
+/obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -79977,6 +80013,20 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/port_point_defense)
+"wjR" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/hand_labeler{
+	pixel_x = 7
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 5
+	},
+/obj/item/tool/pen,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "wka" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha{
@@ -111489,8 +111539,8 @@ bgG
 nvM
 bkA
 vwF
-bei
-ben
+nPt
+jTB
 bei
 bei
 bei
@@ -112302,9 +112352,9 @@ bei
 bei
 ben
 bei
-bei
+fqm
 lmN
-bei
+wjR
 bei
 ben
 bei
@@ -116766,7 +116816,7 @@ kan
 kan
 dBH
 ggJ
-sty
+kan
 ggJ
 dBH
 kan

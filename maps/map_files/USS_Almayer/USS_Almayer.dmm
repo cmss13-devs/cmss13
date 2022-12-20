@@ -3949,14 +3949,6 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/hallways/starboard_hallway)
-"akQ" = (
-/obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHEAST)"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "akS" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/light,
@@ -35725,6 +35717,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig/perma)
+"def" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "deg" = (
 /obj/structure/platform_decoration{
 	dir = 1;
@@ -43480,6 +43484,15 @@
 	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/almayer/medical/medical_science)
+"grP" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "grR" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -44015,6 +44028,13 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cichallway)
+"gAn" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "gAt" = (
 /obj/structure/platform_decoration{
 	dir = 1;
@@ -45732,6 +45752,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"hoV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "hoX" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
@@ -47155,11 +47185,11 @@
 	},
 /area/almayer/hull/lower_hull/l_f_p)
 "hYn" = (
-/obj/structure/machinery/medical_pod/bodyscanner,
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
 /turf/open/floor/almayer{
-	dir = 5;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHEAST)"
+	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "hYG" = (
@@ -47169,6 +47199,14 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
+"hYP" = (
+/obj/structure/machinery/medical_pod/autodoc,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "hZN" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
@@ -50530,14 +50568,6 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/almayer/squads/alpha_bravo_shared)
-"jxi" = (
-/obj/structure/machinery/sleep_console,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "jxx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -50649,6 +50679,17 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/almayer/shipboard/brig/surgery)
+"jAI" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4;
+	tag = "icon-map-supply (EAST)"
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "jBy" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -57466,14 +57507,15 @@
 	},
 /area/almayer/living/briefing)
 "mEz" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera";
-	tag = "icon-camera (EAST)"
+/obj/structure/machinery/autodoc_console,
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "mEE" = (
@@ -57508,6 +57550,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"mFK" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "mFL" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "43";
@@ -58412,7 +58462,7 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "mYI" = (
-/obj/structure/machinery/sleep_console,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
 	tag = "icon-sterile"
@@ -58692,6 +58742,14 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/stern_hallway)
+"nfH" = (
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "nfI" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating/plating_catwalk,
@@ -58899,14 +58957,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/bridgebunks)
-"niF" = (
-/obj/structure/machinery/sleep_console,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "niL" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -59372,13 +59422,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
-"nrN" = (
-/obj/structure/machinery/sleep_console,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "nsc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9;
@@ -60862,7 +60905,6 @@
 /turf/closed/wall/almayer,
 /area/almayer/squads/req)
 "obx" = (
-/obj/structure/machinery/autodoc_console,
 /obj/structure/machinery/door_control{
 	dir = 1;
 	id = "tc03";
@@ -60871,14 +60913,14 @@
 	pixel_x = 28;
 	pixel_y = -23
 	},
-/obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera";
+	tag = "icon-camera (EAST)"
 	},
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "oby" = (
@@ -63261,13 +63303,6 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/shipboard/brig/chief_mp_office)
-"peQ" = (
-/obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "pfa" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
@@ -66270,7 +66305,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "qxL" = (
-/obj/structure/machinery/medical_pod/autodoc,
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -68072,6 +68107,15 @@
 	tag = "icon-green (NORTH)"
 	},
 /area/almayer/living/grunt_rnr)
+"rmd" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "rmv" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
@@ -78592,6 +78636,16 @@
 	tag = "icon-orangefull"
 	},
 /area/almayer/living/briefing)
+"vGH" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4;
+	tag = "icon-map-supply (EAST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "vHh" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/item/tool/warning_cone{
@@ -78893,7 +78947,7 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north2)
 "vOr" = (
-/obj/structure/machinery/medical_pod/sleeper,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -79091,6 +79145,13 @@
 	dir = 10
 	},
 /area/almayer/command/cic)
+"vRp" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "vRz" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_f_p)
@@ -80359,7 +80420,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "wqP" = (
-/obj/structure/machinery/medical_pod/sleeper,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
@@ -82695,6 +82756,14 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/operating_room_four)
+"xqA" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "xqD" = (
 /obj/structure/surface/rack,
 /obj/structure/sign/safety/rewire{
@@ -113364,15 +113433,15 @@ bev
 bgA
 eas
 bkE
-jxi
-buu
-beA
-beA
-beA
-beA
-beA
-buu
-nrN
+bLr
+def
+qwN
+gAn
+gAn
+gAn
+qwN
+hoV
+lJG
 cpJ
 kRd
 bCl
@@ -113770,7 +113839,7 @@ bev
 dBO
 waD
 bkE
-hYn
+rmd
 buu
 beA
 hrJ
@@ -113973,7 +114042,7 @@ bbd
 bcL
 bez
 bkE
-bLr
+mFK
 buu
 beA
 pnC
@@ -113981,7 +114050,7 @@ oTL
 qni
 ryt
 buu
-lJG
+vRp
 cpJ
 bmi
 bnT
@@ -114788,9 +114857,9 @@ bgy
 xMj
 uYX
 aZK
-beA
 vhJ
 beA
+vhJ
 hBc
 oWn
 xMj
@@ -114988,15 +115057,15 @@ dUS
 mqU
 bgs
 bgw
-akQ
-oYA
-beA
-bqR
+rmd
+grP
+vGH
+hYP
 qxL
-sYh
-beA
-buu
-peQ
+xqA
+jAI
+hoV
+hYn
 xqy
 jhn
 jZd
@@ -115196,10 +115265,10 @@ oYA
 beA
 mEz
 obx
-beA
+nfH
 beA
 buu
-niF
+tUv
 xqy
 nYD
 boh

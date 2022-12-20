@@ -418,9 +418,10 @@
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
 	if(client)
-		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
+		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
-	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
+		name += " [name_client_prefix][name_client_postfix]"
+	full_designation = "[name_client_prefix]-[nicknumber][name_client_postfix]"
 	color = in_hive.color
 
 	//Update linked data so they show up properly

@@ -657,7 +657,7 @@
 
 //------------UNIFORM VENDOR---------------
 
-obj/structure/machinery/cm_vending/sorted/uniform_supply
+/obj/structure/machinery/cm_vending/sorted/uniform_supply
 	name = "\improper ColMarTech Surplus Uniform Vendor"
 	desc = "An automated supply rack hooked up to a big storage of standard marine uniforms. Can be accessed by the Requisitions Officer and Cargo Techs."
 	icon_state = "clothing"

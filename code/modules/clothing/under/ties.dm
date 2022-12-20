@@ -602,7 +602,7 @@
 	icon_state = "unathiharness2"
 	hold = /obj/item/storage/internal/accessory/knifeharness/duelling
 
-obj/item/storage/internal/accessory/knifeharness/duelling
+/obj/item/storage/internal/accessory/knifeharness/duelling
 	storage_slots = 2
 	max_storage_space = 2
 	can_hold = list(

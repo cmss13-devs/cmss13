@@ -765,7 +765,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	var/scribble=""
 	var/scribble_page = null
 
-obj/item/newspaper/attack_self(mob/user as mob)
+/obj/item/newspaper/attack_self(mob/user as mob)
 	..()
 	if(!ishuman(user))
 		to_chat(user, "The paper is full of intelligible symbols!")
@@ -847,7 +847,7 @@ obj/item/newspaper/attack_self(mob/user as mob)
 	onclose(human_user, "newspaper_main")
 
 
-obj/item/newspaper/Topic(href, href_list)
+/obj/item/newspaper/Topic(href, href_list)
 	var/mob/living/U = usr
 	..()
 	if ((src in U.contents) || ( istype(loc, /turf) && in_range(src, U) ))
@@ -879,7 +879,7 @@ obj/item/newspaper/Topic(href, href_list)
 			src.attack_self(src.loc)
 
 
-obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/pen))
 		if(src.scribble_page == src.curr_page)
 			to_chat(user, "<FONT COLOR='blue'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")

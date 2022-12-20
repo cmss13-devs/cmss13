@@ -62,6 +62,23 @@
 	var/action_name = "Plant Resin Fruit"
 	handle_xeno_macro(src, action_name)
 
+/datum/action/xeno_action/onclick/plant_resin_fruit/greater/apply_cooldown(cooldown_modifier)
+	. = ..()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.mutation_type != DRONE_GARDENER)
+		return
+	var/datum/behavior_delegate/drone_gardener/gardener_delegate = xeno.behavior_delegate
+	gardener_delegate.fruit_on_cooldown = TRUE
+
+
+/datum/action/xeno_action/onclick/plant_resin_fruit/greater/on_cooldown_end()
+	. = ..()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno.mutation_type != DRONE_GARDENER)
+		return
+	var/datum/behavior_delegate/drone_gardener/gardener_delegate = xeno.behavior_delegate
+	gardener_delegate.fruit_on_cooldown = FALSE
+
 /datum/action/xeno_action/onclick/plant_resin_fruit/use_ability(atom/target_atom)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	if(!istype(xeno))
@@ -122,7 +139,6 @@
 	apply_cooldown()
 	..()
 	return
-
 
 /datum/action/xeno_action/onclick/change_fruit
 	name = "Change Fruit"
@@ -373,12 +389,12 @@
 
 /datum/behavior_delegate/drone_gardener/on_update_icons()
 	if(!fruit_sac_overlay_icon)
-		fruit_sac_overlay_icon = mutable_appearance('icons/mob/xenos/drone_strain_overlays.dmi',"Gardener Drone Walking")
+		fruit_sac_overlay_icon = mutable_appearance('icons/mob/xenos/drone_strain_overlays.dmi', bound_xeno.icon_state)
 
 	bound_xeno.overlays -= fruit_sac_overlay_icon
 	fruit_sac_overlay_icon.overlays.Cut()
 
-	//var/image/image_to_add
+	/*//var/image/image_to_add
 	if(bound_xeno.stat == DEAD)
 		fruit_sac_overlay_icon.icon_state = "Gardener Drone Knocked Down[fruit_on_cooldown ? "_spent" : ""]"
 	else if(bound_xeno.lying)
@@ -387,18 +403,20 @@
 		else
 			fruit_sac_overlay_icon.icon_state = "Gardener Drone Knocked Down[fruit_on_cooldown ? "_spent" : ""]"
 	else
-		fruit_sac_overlay_icon.icon_state = "Gardener Drone Walking[fruit_on_cooldown ? "_spent" : ""]"
+		fruit_sac_overlay_icon.icon_state = "Gardener Drone Walking[fruit_on_cooldown ? "_spent" : ""]"*/
 
-	var/fruit_sac_color = initial(bound_xeno.selected_fruit.glow_color)
+	fruit_sac_overlay_icon.icon_state = bound_xeno.icon_state + "[fruit_on_cooldown ? "_spent" : ""]"
 
-/*¨
+	var/fruit_sac_color = initial(bound_xeno.selected_fruit.gardener_sac_color)
+
+	fruit_sac_overlay_icon.color = fruit_sac_color
+	//fruit_sac_overlay_icon.overlays += image_to_add
+	bound_xeno.overlays += fruit_sac_overlay_icon
+
+/*
 Swapping to greater fruit changes the color to #17991B
 Swapping to spore fruit changes the color to #994617
 Swapping to unstable fruit changes the color to #179973
 Swapping to speed fruit changes the color to #5B248C
 Swapping to plasma fruit changes the color to #287A90
 */
-
-	fruit_sac_overlay_icon.color = fruit_sac_color
-	//fruit_sac_overlay_icon.overlays += image_to_add
-	bound_xeno.overlays += fruit_sac_overlay_icon

@@ -143,23 +143,3 @@
 /datum/behavior_delegate/drone_healer/proc/un_salve()
 	salve_applied_recently = FALSE
 	bound_xeno.update_icons()
-/*
-/datum/behavior_delegate/drone_healer/on_update_icons()
-	if(!salve_applied_icon)
-		salve_applied_icon = mutable_appearance('icons/mob/xenos/drone_strain_overlays.dmi',"Healer Drone Walking")
-
-	bound_xeno.overlays -= salve_applied_icon
-	salve_applied_icon.overlays.Cut()
-
-	if(bound_xeno.stat == DEAD)
-		salve_applied_icon.icon_state = "Healer Drone Knocked Down")
-	else if(bound_xeno.lying)
-		if((bound_xeno.resting || bound_xeno.sleeping) && (!bound_xeno.knocked_down && !bound_xeno.knocked_out && bound_xeno.health > 0))
-			salve_applied_icon.icon_state = "Healer Drone Sleeping")
-		else
-			salve_applied_icon.icon_state = "Healer Drone Knocked Down")
-	else
-		salve_applied_icon.icon_state = "Healer Drone Walking")
-
-	bound_xeno.overlays += salve_applied_icon
-*/

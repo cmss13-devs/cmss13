@@ -22,7 +22,8 @@
 	var/mature_icon_state = "fruit_lesser"
 	var/consumed_icon_state = "fruit_spent"
 
-	var/glow_color = "#17991B"
+	var/glow_color = "#17991b80"
+	var/gardener_sac_color = "#17991B"
 
 	var/mob/living/carbon/Xenomorph/bound_xeno // Drone linked to this fruit
 	var/fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit
@@ -214,7 +215,8 @@
 	var/shield_duration = 1 MINUTES
 	var/shield_decay = 10
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/unstable
-	glow_color = "#179973"
+	glow_color = "#17997280"
+	gardener_sac_color = "#179973"
 
 /obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
@@ -239,7 +241,8 @@
 	var/pheromone_range = 1
 	consumed_icon_state = "fruit_spent_2"
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/spore
-	glow_color = "#994617"
+	glow_color = "#99461780"
+	gardener_sac_color = "#994617"
 
 /obj/effect/alien/resin/fruit/spore/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
@@ -277,7 +280,8 @@
 	consumed_icon_state = "fruit_spent_2"
 	flags = CAN_CONSUME_AT_FULL_HEALTH
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/speed
-	glow_color = "#5B248C"
+	glow_color = "#9559ca80"
+	gardener_sac_color = "#5B248C"
 	var/speed_buff_amount = 0.4
 	var/speed_duration = 15 SECONDS
 
@@ -303,7 +307,7 @@
 	consumed_icon_state = "fruit_spent_2"
 	flags = CAN_CONSUME_AT_FULL_HEALTH
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/plasma
-	glow_color = "#287A90"
+	gardener_sac_color = "#287A90"
 	var/plasma_amount = 240
 	var/plasma_time = 15
 	var/time_between_plasmas = 3

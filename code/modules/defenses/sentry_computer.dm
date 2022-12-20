@@ -92,6 +92,12 @@
 	qdel(transceiver)
 	qdel(voice)
 
+/obj/item/device/sentry_computer/Move(NewLoc, direct)
+	..()
+	if(setup || open || on)
+		teardown()
+
+
 /obj/item/device/sentry_computer/proc/has_los(var/atom/watcher, var/atom/target)
 	var/list/turf/path = getline2(watcher, target, include_from_atom = FALSE)
 	for(var/turf/point in path)
@@ -106,12 +112,15 @@
 	else
 		to_chat(usr, SPAN_WARNING("You fail to setup the laptop"))
 
-/obj/item/device/sentry_computer/MouseDrop(atom/dropping, mob/user)
+/obj/item/device/sentry_computer/proc/teardown()
 	setup = FALSE
 	open = FALSE
 	on = FALSE
 	icon_state = "sentrycomp_cl"
 	STOP_PROCESSING(SSobj, src)
+
+/obj/item/device/sentry_computer/MouseDrop(atom/dropping, mob/user)
+	teardown()
 	usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
 /obj/item/device/sentry_computer/proc/handle_engaged(var/obj/structure/machinery/defenses/sentry/sentrygun)

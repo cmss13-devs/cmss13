@@ -267,6 +267,7 @@
 		sentry_holder["selection_menu"] = list()
 		sentry_holder["index"] = index
 		sentry_holder["name"] = sentrygun.name
+		sentry_holder["health_max"] = sentrygun.health_max
 		index += 1
 
 		for(var/i in sentrygun.choice_categories)
@@ -300,6 +301,7 @@
 		sentry_holder["selection_state"] = list()
 		sentry_holder["kills"] = defence.kills
 		sentry_holder["iff_status"] = defence.faction_group
+		sentry_holder["health"] = defence.health
 		for(var/i in defence.selected_categories)
 			sentry_holder["selection_state"] += list(list("[i]", defence.selected_categories[i]))
 		if(istype(defence, /obj/structure/machinery/defenses/sentry))

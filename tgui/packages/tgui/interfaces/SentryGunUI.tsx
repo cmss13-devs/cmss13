@@ -22,6 +22,8 @@ interface SentrySpec {
   index: number;
   engaged?: number;
   nickname: string;
+  health: number;
+  health_max: number;
   kills: number;
   iff_status: string[];
   camera_available: number;
@@ -117,11 +119,22 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
   const iff_info = props.data.selection_state.find(
     (x) => x[0].localeCompare('IFF STATUS') === 0
   )?.[1];
-
+  const isCritical = props.data.health < props.data.health_max * 0.2;
   const round_rep =
     props.data.rounds !== undefined ? props.data.rounds.toFixed(0) : undefined;
   return (
     <Flex direction="column">
+      <Flex.Item>
+        <Box
+          className={classes([
+            'EngagedBox',
+            isCritical && 'EngagedWarningBox',
+          ])}>
+          <span>
+            Integrity: {props.data.health} / {props.data.health_max}
+          </span>
+        </Box>
+      </Flex.Item>
       {props.data.rounds !== undefined && (
         <Flex.Item>
           <Box className="EngagedBox">

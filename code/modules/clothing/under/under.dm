@@ -188,7 +188,7 @@
 		flags_jumpsuit ^= UNIFORM_SLEEVE_ROLLED
 		if(flags_jumpsuit & UNIFORM_JACKET_REMOVED)
 			if(show_message)
-				to_chat(user, SPAN_NOTICE("You roll the jacket's sleeves in your hands."), SHOW_MESSAGE_VISIBLE) //visual representation that the sleeves have been rolled while jacket has been removed.
+				to_chat(user, SPAN_NOTICE("You roll the jacket's sleeves in your hands.")) //visual representation that the sleeves have been rolled while jacket has been removed.
 		else if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLED)
 			LAZYSET(item_state_slots, WEAR_BODY, "[worn_state]_d")
 			update_clothing_icon()

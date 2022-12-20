@@ -42,7 +42,7 @@
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
 	name = "A.C.I.D. Harness"
-	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken webbing made by a researcher with poor tailoring skills."
+	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken webbing made by a researcher with poor tailoring skills. Can be configured with a multitool."
 	icon_state = "vest_acid_black"
 	hold = /obj/item/storage/internal/accessory/black_vest/acid_harness
 	var/obj/item/reagent_container/glass/beaker/vial/vial
@@ -61,7 +61,7 @@
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/attackby(obj/item/B, mob/living/user)
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
-		ui_interact(user)
+		tgui_interact(user)
 		return
 	. = ..()
 
@@ -80,100 +80,102 @@
 	if(.)
 		acid_core.user = null
 
-/obj/item/clothing/accessory/storage/black_vest/acid_harness/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = TRUE)
-	var/list/data = list(
-		"inject_amount" = acid_core.inject_amount,
-		"inject_damage_threshold" = acid_core.inject_damage_threshold,
-		"inject_logic" = acid_core.inject_logic,
-		"config" = list(
-			"Damage" = list(
-				"Brute" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BRUTE),ACID_SCAN_DAMAGE_BRUTE),
-				"Burn" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BURN),ACID_SCAN_DAMAGE_BURN),
-				"Toxin" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_TOXIN),ACID_SCAN_DAMAGE_TOXIN),
-				"Oxygen" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_OXYGEN),ACID_SCAN_DAMAGE_OXYGEN),
-				"Genetic" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_CLONE),ACID_SCAN_DAMAGE_CLONE),
-				"Heart" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_HEART),ACID_SCAN_DAMAGE_HEART),
-				"Liver" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_LIVER),ACID_SCAN_DAMAGE_LIVER),
-				"Lungs" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_LUNGS),ACID_SCAN_DAMAGE_LUNGS),
-				"Kidneys" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_KIDNEYS),ACID_SCAN_DAMAGE_KIDNEYS),
-				"Brain" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BRAIN),ACID_SCAN_DAMAGE_BRAIN)
-			),
-			"Conditions" = list(
-				"Vitals Level" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_VITALS),ACID_SCAN_CONDITION_VITALS),
-				"Bleeding" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLEEDING),ACID_SCAN_CONDITION_BLEEDING),
-				"Internal" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLEEDING_INTERNAL),ACID_SCAN_CONDITION_BLEEDING_INTERNAL),
-				"Bloodloss" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLOODLOSS_HIGH),ACID_SCAN_CONDITION_BLOODLOSS_HIGH),
-				"Fracture" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_FRACTURE),ACID_SCAN_CONDITION_FRACTURE),
-				"Splinted" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_SPLINT),ACID_SCAN_CONDITION_SPLINT),
-				"Organ Damage" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_ORGAN_DAMAGED),ACID_SCAN_CONDITION_ORGAN_DAMAGED),
-				"Organ Failure" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_ORGAN_FAILURE),ACID_SCAN_CONDITION_ORGAN_FAILURE),
-				"Death" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_DEATH),ACID_SCAN_CONDITION_DEATH),
-				"Defibrillation" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_DEFIB),ACID_SCAN_CONDITION_DEFIB),
-				"Concussion" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_CONCUSSION),ACID_SCAN_CONDITION_CONCUSSION),
-				"Intoxication" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_INTOXICATION),ACID_SCAN_CONDITION_INTOXICATION),
-				"Foreign Object" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_FOREIGN_OBJECT),ACID_SCAN_CONDITION_FOREIGN_OBJECT)
-			),
-			"Vitals" = list(
-				"Optimal" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_OPTIMAL),ACID_VITALS_OPTIMAL),
-				"Nominal" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_NOMINAL),ACID_VITALS_NOMINAL),
-				"Low" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_DROPPING),ACID_VITALS_DROPPING),
-				"Very low" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_LOW),ACID_VITALS_LOW),
-				"Critical" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_CRITICAL),ACID_VITALS_CRITICAL),
-				"Emergency" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_EMERGENCY),ACID_VITALS_EMERGENCY)
-			)
-		)
-	)
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+/obj/item/clothing/accessory/storage/black_vest/acid_harness/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "acid_core_config.tmpl", "A.C.I.D. CORE CONFIG", 460, 760)
-		ui.set_initial_data(data)
+		ui = new(user, src, "AcidVest", name)
 		ui.open()
 
+/obj/item/clothing/accessory/storage/black_vest/acid_harness/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_state
 
-/obj/item/clothing/accessory/storage/black_vest/acid_harness/Topic(href, href_list)
+/obj/item/clothing/accessory/storage/black_vest/acid_harness/ui_data(mob/user)
+	var/list/data = list()
+	var/list/config = list()
+
+	data["inject_amount"] = acid_core.inject_amount
+	data["inject_damage_threshold"] = acid_core.inject_damage_threshold
+	data["inject_logic"] = acid_core.inject_logic
+
+	config["Damage"] = list(list(
+		"Brute" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BRUTE), ACID_SCAN_DAMAGE_BRUTE),
+		"Burn" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BURN), ACID_SCAN_DAMAGE_BURN),
+		"Toxin" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_TOXIN), ACID_SCAN_DAMAGE_TOXIN),
+		"Oxygen" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_OXYGEN), ACID_SCAN_DAMAGE_OXYGEN),
+		"Genetic" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_CLONE), ACID_SCAN_DAMAGE_CLONE),
+		"Heart" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_HEART), ACID_SCAN_DAMAGE_HEART),
+		"Liver" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_LIVER), ACID_SCAN_DAMAGE_LIVER),
+		"Lungs" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_LUNGS), ACID_SCAN_DAMAGE_LUNGS),
+		"Kidneys" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_KIDNEYS), ACID_SCAN_DAMAGE_KIDNEYS),
+		"Brain" = list(check_bitflag(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BRAIN), ACID_SCAN_DAMAGE_BRAIN)
+	))
+
+	config["Conditions"] = list(list(
+		"Vitals Level" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_VITALS), ACID_SCAN_CONDITION_VITALS),
+		"Bleeding" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLEEDING), ACID_SCAN_CONDITION_BLEEDING),
+		"Internal" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLEEDING_INTERNAL), ACID_SCAN_CONDITION_BLEEDING_INTERNAL),
+		"Bloodloss" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_BLOODLOSS_HIGH), ACID_SCAN_CONDITION_BLOODLOSS_HIGH),
+		"Fracture" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_FRACTURE), ACID_SCAN_CONDITION_FRACTURE),
+		"Splinted" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_SPLINT), ACID_SCAN_CONDITION_SPLINT),
+		"Organ Damage" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_ORGAN_DAMAGED), ACID_SCAN_CONDITION_ORGAN_DAMAGED),
+		"Organ Failure" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_ORGAN_FAILURE), ACID_SCAN_CONDITION_ORGAN_FAILURE),
+		"Death" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_DEATH), ACID_SCAN_CONDITION_DEATH),
+		"Defibrillation" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_DEFIB), ACID_SCAN_CONDITION_DEFIB),
+		"Concussion" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_CONCUSSION), ACID_SCAN_CONDITION_CONCUSSION),
+		"Intoxication" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_INTOXICATION), ACID_SCAN_CONDITION_INTOXICATION),
+		"Foreign Object" = list(check_bitflag(acid_core.inject_conditions, ACID_SCAN_CONDITION_FOREIGN_OBJECT), ACID_SCAN_CONDITION_FOREIGN_OBJECT)
+	))
+
+	config["Vitals"] = list(list(
+		"Optimal" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_OPTIMAL), ACID_VITALS_OPTIMAL),
+		"Nominal" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_NOMINAL), ACID_VITALS_NOMINAL),
+		"Low" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_DROPPING), ACID_VITALS_DROPPING),
+		"Very low" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_LOW), ACID_VITALS_LOW),
+		"Critical" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_CRITICAL), ACID_VITALS_CRITICAL),
+		"Emergency" = list(check_bitflag(acid_core.inject_vitals, ACID_VITALS_EMERGENCY), ACID_VITALS_EMERGENCY)
+	))
+
+	data["configList"] = config
+
+	return data
+
+/obj/item/clothing/accessory/storage/black_vest/acid_harness/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
-	if(!ishuman(usr))
-		return
-	var/mob/living/carbon/human/user = usr
-	if(user.stat || user.is_mob_restrained())
-		return
-	if(href_list["inject_amount"])
-		acid_core.inject_amount = tgui_input_number(usr, "Set inject amount:","[src]")
-		if(acid_core.inject_amount < 1)
-			acid_core.inject_amount = 1
-	else if(href_list["inject_damage_threshold"])
-		acid_core.inject_damage_threshold = tgui_input_number(usr, "Set damage threshold:","[src]")
-	else if(href_list["inject_logic"])
-		if(acid_core.inject_logic == ACID_LOGIC_OR)
-			acid_core.inject_logic = ACID_LOGIC_AND
-		else
-			acid_core.inject_logic = ACID_LOGIC_OR
-	else if(href_list["config_type"])
-		var/flag_value = text2num(href_list["config_value"])
-		switch(href_list["config_type"])
-			if("Damage")
-				if(acid_core.inject_damage_types & flag_value)
-					acid_core.inject_damage_types &= ~flag_value
-				else
-					acid_core.inject_damage_types |= flag_value
-			if("Conditions")
-				if(acid_core.inject_conditions & flag_value)
-					acid_core.inject_conditions &= ~flag_value
-				else
-					acid_core.inject_conditions |= flag_value
-			if("Vitals")
-				if(acid_core.inject_vitals & flag_value)
-					acid_core.inject_vitals &= ~flag_value
-				else
-					acid_core.inject_vitals |= flag_value
 
-
-	nanomanager.update_uis(src) // update all UIs attached to src
-	add_fingerprint(user)
-
+	switch(action)
+		if("set_inject_amount")
+			acid_core.inject_amount = round(text2num(params["value"]))
+			. = TRUE
+		if("set_inject_damage_threshold")
+			acid_core.inject_damage_threshold = round(text2num(params["value"]))
+			. = TRUE
+		if("inject_logic")
+			if(acid_core.inject_logic == ACID_LOGIC_OR)
+				acid_core.inject_logic = ACID_LOGIC_AND
+			else
+				acid_core.inject_logic = ACID_LOGIC_OR
+			. = TRUE
+		if("config")
+			var/flag_value = params["config_value"]
+			switch(params["config_type"])
+				if("Damage")
+					if(acid_core.inject_damage_types & flag_value)
+						acid_core.inject_damage_types &= ~flag_value
+					else
+						acid_core.inject_damage_types |= flag_value
+				if("Conditions")
+					if(acid_core.inject_conditions & flag_value)
+						acid_core.inject_conditions &= ~flag_value
+					else
+						acid_core.inject_conditions |= flag_value
+				if("Vitals")
+					if(acid_core.inject_vitals & flag_value)
+						acid_core.inject_vitals &= ~flag_value
+					else
+						acid_core.inject_vitals |= flag_value
+			. = TRUE
 
 /obj/structure/machinery/acid_core
 	name = "A.C.I.D. CORE"

@@ -731,7 +731,7 @@
 	name = "CLF Multipurpose Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list(LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	languages = ALL_SYNTH_LANGUAGES
 
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH

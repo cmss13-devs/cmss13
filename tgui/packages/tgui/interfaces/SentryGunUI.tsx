@@ -2,7 +2,6 @@ import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, ByondUi, Button, Flex, Icon, Input, ProgressBar, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
-import { logger } from '../logging';
 import { TimedCallback } from './common/TimedCallback';
 
 type SelectedState = [string, string];
@@ -367,19 +366,13 @@ const ShowAllSentry = (props: { data: SentrySpec[] }, context) => {
 const SentryCamera = (props: { sentry_data: SentrySpec[] }, context) => {
   const { data, act } = useBackend<SentryData>(context);
   const { sentry_data } = props;
-  logger.info(
-    `camera target: ${data.camera_target} ${typeof data.camera_target}`
-  );
   const sentry = sentry_data.find((x) => {
     const index = x.index?.toString(10) ?? '';
     const targetIndex = data.camera_target?.toString() ?? '';
-    logger.info(`${targetIndex} == ${index}`);
     return targetIndex.localeCompare(index) === 0;
   });
-  logger.info(sentry);
   const sentry_name = sentry?.name ?? 'Unknown';
   const sentry_area = sentry?.area ?? 'Unknown';
-  logger.info(sentry_name);
   return (
     <Stack vertical>
       <Stack.Item>

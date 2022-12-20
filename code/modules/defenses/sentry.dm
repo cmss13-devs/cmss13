@@ -295,7 +295,7 @@
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
 	if(!broadcast_timer && linked_laptop)
-		SEND_SIGNAL(linked_laptop, COMSIG_SENTRY_ENGAGED_ALERT)
+		SEND_SIGNAL(linked_laptop, COMSIG_SENTRY_ENGAGED_ALERT, src)
 		broadcast_timer = addtimer(CALLBACK(src, .proc/reset_broadcast_timer), SENTRY_ENGAGED_TIMEOUT)
 
 /obj/structure/machinery/defenses/sentry/proc/reset_broadcast_timer()

@@ -315,7 +315,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 						my_target << sound(pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
 						my_target.show_message(SPAN_DANGER("<B>[my_target] has been attacked with [weapon_name] by [src.name] </B>"), SHOW_MESSAGE_VISIBLE)
 						my_target.halloss += 8
-						if(prob(20)) my_target.eye_blurry += 3
+						if(prob(20)) my_target.AdjustEyeBlur(3)
 						if(prob(33))
 							if(!locate(/obj/effect/overlay) in my_target.loc)
 								fake_blood(my_target)

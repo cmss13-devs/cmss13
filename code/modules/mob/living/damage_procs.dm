@@ -95,7 +95,7 @@
 			if(status_flags & CANSTUN) // stun is usually associated with stutter
 				stuttering = max(stuttering, effect)
 		if(EYE_BLUR)
-			eye_blurry = max(eye_blurry, effect)
+			EyeBlur(effect)
 		if(DROWSY)
 			drowsyness = max(drowsyness, effect)
 	updatehealth()
@@ -131,7 +131,7 @@
 			if(status_flags & CANSTUN) // stun is usually associated with stutter
 				stuttering = POSITIVE(stuttering + effect)
 		if(EYE_BLUR)
-			eye_blurry = POSITIVE(eye_blurry + effect)
+			AdjustEyeBlur(effect)
 		if(DROWSY)
 			drowsyness = POSITIVE(drowsyness + effect)
 	updatehealth()
@@ -164,7 +164,7 @@
 			if(status_flags & CANSTUN) // stun is usually associated with stutter
 				stuttering = POSITIVE(effect)
 		if(EYE_BLUR)
-			eye_blurry = POSITIVE(effect)
+			SetEyeBlur(effect)
 		if(DROWSY)
 			drowsyness = POSITIVE(effect)
 	updatehealth()

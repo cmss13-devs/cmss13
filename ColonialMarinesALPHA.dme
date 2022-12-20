@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\_byond_version_compat.dm"
 #include "code\_compile_options.dm"
 #include "code\_macros.dm"
 #include "code\global.dm"
@@ -84,7 +85,7 @@
 #include "code\__DEFINES\stamina.dm"
 #include "code\__DEFINES\stats.dm"
 #include "code\__DEFINES\STUI.dm"
-#include "code\__DEFINES\subsystem.dm"
+#include "code\__DEFINES\subsystems.dm"
 #include "code\__DEFINES\surgery.dm"
 #include "code\__DEFINES\techtree.dm"
 #include "code\__DEFINES\tests.dm"
@@ -104,6 +105,7 @@
 #include "code\__DEFINES\dcs\flags.dm"
 #include "code\__DEFINES\dcs\helpers.dm"
 #include "code\__DEFINES\dcs\signals.dm"
+#include "code\__DEFINES\dcs\signals\signals_subsystem.dm"
 #include "code\__DEFINES\typecheck\assemblers.dm"
 #include "code\__DEFINES\typecheck\datums.dm"
 #include "code\__DEFINES\typecheck\generic_types.dm"
@@ -126,6 +128,7 @@
 #include "code\__HELPERS\logging.dm"
 #include "code\__HELPERS\matrices.dm"
 #include "code\__HELPERS\mobs.dm"
+#include "code\__HELPERS\nameof.dm"
 #include "code\__HELPERS\qdel.dm"
 #include "code\__HELPERS\sanitize_values.dm"
 #include "code\__HELPERS\shell.dm"
@@ -246,6 +249,7 @@
 #include "code\controllers\subsystem\x_evolution.dm"
 #include "code\controllers\subsystem\xeno.dm"
 #include "code\controllers\subsystem\xenocon.dm"
+#include "code\controllers\subsystem\init\earlyruntimes.dm"
 #include "code\controllers\subsystem\init\landmarks.dm"
 #include "code\controllers\subsystem\init\law.dm"
 #include "code\controllers\subsystem\init\lobby_art.dm"
@@ -446,6 +450,7 @@
 #include "code\datums\factions\upp.dm"
 #include "code\datums\factions\uscm.dm"
 #include "code\datums\helper_datums\getrev.dm"
+#include "code\datums\helper_datums\stack_end_detector.dm"
 #include "code\datums\helper_datums\teleport.dm"
 #include "code\datums\helper_datums\topic_input.dm"
 #include "code\datums\keybinding\_defines.dm"
